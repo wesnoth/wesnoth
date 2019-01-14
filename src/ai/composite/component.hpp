@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,28 +17,19 @@
  * A component of the AI framework
  */
 
-#ifndef AI_COMPOSITE_COMPONENT_HPP_INCLUDED
-#define AI_COMPOSITE_COMPONENT_HPP_INCLUDED
+#pragma once
 
 class config;
 
 #include <iostream>
 #include <map>
+#include <memory>
 #include <string>
 #include <vector>
-
-#include <boost/shared_ptr.hpp>
-
-#ifdef _MSC_VER
-#pragma warning(push)
-//silence "inherits via dominance" warnings
-#pragma warning(disable:4250)
-#endif
 
 //============================================================================
 namespace ai {
 
-//TODO: find a good place for this
 struct path_element {
 	path_element()
 		: property()
@@ -53,7 +44,7 @@ struct path_element {
 };
 
 class base_property_handler;
-typedef boost::shared_ptr<base_property_handler> property_handler_ptr;
+typedef std::shared_ptr<base_property_handler> property_handler_ptr;
 typedef std::map<std::string,property_handler_ptr> property_handler_map;
 
 class component {
@@ -94,9 +85,3 @@ public:
 } //end of namespace ai
 
 std::ostream &operator<<(std::ostream &o, const ai::path_element &e);
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
-#endif

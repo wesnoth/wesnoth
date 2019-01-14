@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2012 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,47 +17,49 @@
  * File-IO
  */
 
-#include "global.hpp"
-
-// Include files for opendir(3), readdir(3), etc.
-// These files may vary from platform to platform,
-// since these functions are NOT ANSI-conforming functions.
-// They may have to be altered to port to new platforms
-
-//for mkdir
-#include <sys/stat.h>
-
-#ifdef _WIN32
-#include "filesystem_win32.ii"
-#include <cctype>
-#else /* !_WIN32 */
-#include <unistd.h>
-#include <dirent.h>
-#include <libgen.h>
-#endif /* !_WIN32 */
-
-// for getenv
-#include <cerrno>
-#include <fstream>
-#include <iomanip>
-#include <set>
-#include <boost/algorithm/string.hpp>
-
-// for strerror
-#include <cstring>
+#include "filesystem.hpp"
 
 #include "config.hpp"
-#include "filesystem.hpp"
 #include "game_config.hpp"
-#include "game_preferences.hpp"
 #include "log.hpp"
-#include "loadscreen.hpp"
-#include "scoped_resource.hpp"
-#include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "version.hpp"
+#include "serialization/unicode_cast.hpp"
+#include "game_version.hpp"
 
-#include <boost/foreach.hpp>
+#include <boost/algorithm/string.hpp>
+#include <boost/filesystem.hpp>
+#include <boost/filesystem/fstream.hpp>
+#include <boost/iostreams/device/file_descriptor.hpp>
+#include <boost/iostreams/stream.hpp>
+#include <boost/system/windows_error.hpp>
+
+#ifdef _WIN32
+#include "log_windows.hpp"
+
+#include <boost/locale.hpp>
+
+#include <windows.h>
+#include <shlobj.h>
+#include <shlwapi.h>
+
+// Work around TDM-GCC not #defining this according to @newfrenchy83.
+#ifndef VOLUME_NAME_NONE
+#define VOLUME_NAME_NONE 0x4
+#endif
+
+#endif /* !_WIN32 */
+
+#include <algorithm>
+#include <set>
+
+// Copied from boost::predef, as it's there only since 1.55.
+#if defined(__APPLE__) && defined(__MACH__) && defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__)
+
+#define WESNOTH_BOOST_OS_IOS (__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__*1000)
+#include <SDL_filesystem.h>
+
+#endif
+
 
 static lg::log_domain log_filesystem("filesystem");
 #define DBG_FS LOG_STREAM(debug, log_filesystem)
@@ -65,264 +67,441 @@ static lg::log_domain log_filesystem("filesystem");
 #define WRN_FS LOG_STREAM(warn, log_filesystem)
 #define ERR_FS LOG_STREAM(err, log_filesystem)
 
-namespace {
-	const mode_t AccessMode = 00770;
+namespace bfs = boost::filesystem;
+using boost::system::error_code;
 
-	// These are the filenames that get special processing
-	const std::string maincfg_filename = "_main.cfg";
-	const std::string finalcfg_filename = "_final.cfg";
-	const std::string initialcfg_filename = "_initial.cfg";
+namespace
+{
+// These are the filenames that get special processing
+const std::string maincfg_filename = "_main.cfg";
+const std::string finalcfg_filename = "_final.cfg";
+const std::string initialcfg_filename = "_initial.cfg";
 
+// only used by windows but put outside the ifdef to let it check by ci build.
+class customcodecvt : public std::codecvt<wchar_t /*intern*/, char /*extern*/, std::mbstate_t>
+{
+private:
+	// private static helper things
+	template<typename char_t_to>
+	struct customcodecvt_do_conversion_writer
+	{
+		customcodecvt_do_conversion_writer(char_t_to*& _to_next, char_t_to* _to_end)
+			: to_next(_to_next)
+			, to_end(_to_end)
+		{
+		}
+
+		char_t_to*& to_next;
+		char_t_to* to_end;
+
+		bool can_push(std::size_t count) const
+		{
+			return static_cast<std::size_t>(to_end - to_next) > count;
+		}
+
+		void push(char_t_to val)
+		{
+			assert(to_next != to_end);
+			*to_next++ = val;
+		}
+	};
+
+	template<typename char_t_from, typename char_t_to>
+	static void customcodecvt_do_conversion(std::mbstate_t& /*state*/,
+			const char_t_from* from,
+			const char_t_from* from_end,
+			const char_t_from*& from_next,
+			char_t_to* to,
+			char_t_to* to_end,
+			char_t_to*& to_next)
+	{
+		typedef typename ucs4_convert_impl::convert_impl<char_t_from>::type impl_type_from;
+		typedef typename ucs4_convert_impl::convert_impl<char_t_to>::type impl_type_to;
+
+		from_next = from;
+		to_next = to;
+		customcodecvt_do_conversion_writer<char_t_to> writer(to_next, to_end);
+
+		while(from_next != from_end) {
+			impl_type_to::write(writer, impl_type_from::read(from_next, from_end));
+		}
+	}
+
+public:
+	// Not used by boost filesystem
+	int do_encoding() const noexcept
+	{
+		return 0;
+	}
+
+	// Not used by boost filesystem
+	bool do_always_noconv() const noexcept
+	{
+		return false;
+	}
+
+	int do_length(std::mbstate_t& /*state*/, const char* /*from*/, const char* /*from_end*/, std::size_t /*max*/) const
+	{
+		// Not used by boost filesystem
+		throw "Not supported";
+	}
+
+	std::codecvt_base::result unshift(
+			std::mbstate_t& /*state*/, char* /*to*/, char* /*to_end*/, char*& /*to_next*/) const
+	{
+		// Not used by boost filesystem
+		throw "Not supported";
+	}
+
+	// there are still some methods which could be implemented but aren't because boost filesystem won't use them.
+	std::codecvt_base::result do_in(std::mbstate_t& state,
+			const char* from,
+			const char* from_end,
+			const char*& from_next,
+			wchar_t* to,
+			wchar_t* to_end,
+			wchar_t*& to_next) const
+	{
+		try {
+			customcodecvt_do_conversion<char, wchar_t>(state, from, from_end, from_next, to, to_end, to_next);
+		} catch(...) {
+			ERR_FS << "Invalid UTF-8 string'" << std::string(from, from_end) << "' " << std::endl;
+			return std::codecvt_base::error;
+		}
+
+		return std::codecvt_base::ok;
+	}
+
+	std::codecvt_base::result do_out(std::mbstate_t& state,
+			const wchar_t* from,
+			const wchar_t* from_end,
+			const wchar_t*& from_next,
+			char* to,
+			char* to_end,
+			char*& to_next) const
+	{
+		try {
+			customcodecvt_do_conversion<wchar_t, char>(state, from, from_end, from_next, to, to_end, to_next);
+		} catch(...) {
+			ERR_FS << "Invalid UTF-16 string" << std::endl;
+			return std::codecvt_base::error;
+		}
+
+		return std::codecvt_base::ok;
+	}
+};
+
+#ifdef _WIN32
+class static_runner
+{
+public:
+	static_runner()
+	{
+		// Boost uses the current locale to generate a UTF-8 one
+		std::locale utf8_loc = boost::locale::generator().generate("");
+
+		// use a custom locale because we want to use out log.hpp functions in case of an invalid string.
+		utf8_loc = std::locale(utf8_loc, new customcodecvt());
+
+		boost::filesystem::path::imbue(utf8_loc);
+	}
+};
+
+static static_runner static_bfs_path_imbuer;
+
+typedef DWORD(WINAPI* GetFinalPathNameByHandleWPtr)(HANDLE, LPWSTR, DWORD, DWORD);
+static GetFinalPathNameByHandleWPtr dyn_GetFinalPathNameByHandle;
+
+bool is_filename_case_correct(const std::string& fname, const boost::iostreams::file_descriptor_source& fd)
+{
+	if(dyn_GetFinalPathNameByHandle == nullptr) {
+		// Windows XP. Just assume that the case is correct.
+		return true;
+	}
+
+	wchar_t real_path[MAX_PATH];
+	dyn_GetFinalPathNameByHandle(fd.handle(), real_path, MAX_PATH - 1, VOLUME_NAME_NONE);
+
+	std::string real_name = filesystem::base_name(unicode_cast<std::string>(std::wstring(real_path)));
+	return real_name == filesystem::base_name(fname);
 }
 
-#ifdef __APPLE__
-#include <CoreFoundation/CoreFoundation.h>
-#include <CoreFoundation/CFString.h>
-#include <CoreFoundation/CFBase.h>
+#else
+bool is_filename_case_correct(const std::string& /*fname*/, const boost::iostreams::file_descriptor_source& /*fd*/)
+{
+	return true;
+}
 #endif
+} // namespace
 
-bool ends_with(const std::string& str, const std::string& suffix)
+namespace filesystem
 {
-	return str.size() >= suffix.size() && std::equal(suffix.begin(),suffix.end(),str.end()-suffix.size());
+void init()
+{
+#ifdef _WIN32
+	HMODULE kernel32 = GetModuleHandle(TEXT("Kernel32.dll"));
+	// Note that this returns a null pointer on Windows XP!
+	dyn_GetFinalPathNameByHandle
+			= reinterpret_cast<GetFinalPathNameByHandleWPtr>(GetProcAddress(kernel32, "GetFinalPathNameByHandleW"));
+#endif
 }
 
-void get_files_in_dir(const std::string &directory,
-					  std::vector<std::string>* files,
-					  std::vector<std::string>* dirs,
-					  file_name_option mode,
-					  file_filter_option filter,
-					  file_reorder_option reorder,
-					  file_tree_checksum* checksum)
+static void push_if_exists(std::vector<std::string>* vec, const bfs::path& file, bool full)
 {
-	// If we have a path to find directories in,
-	// then convert relative pathnames to be rooted
-	// on the wesnoth path
-	if(!directory.empty() && directory[0] != '/' && !game_config::path.empty()){
-		std::string dir = game_config::path + "/" + directory;
-		if(is_directory(dir)) {
-			get_files_in_dir(dir,files,dirs,mode,filter,reorder,checksum);
+	if(vec != nullptr) {
+		if(full) {
+			vec->push_back(file.generic_string());
+		} else {
+			vec->push_back(file.filename().generic_string());
+		}
+	}
+}
+
+static inline bool error_except_not_found(const error_code& ec)
+{
+	return (ec && ec.value() != boost::system::errc::no_such_file_or_directory
+#ifdef _WIN32
+		&& ec.value() != boost::system::windows_error::path_not_found
+#endif /*_WIN32*/
+	);
+}
+
+static bool is_directory_internal(const bfs::path& fpath)
+{
+	error_code ec;
+	bool is_dir = bfs::is_directory(fpath, ec);
+	if(error_except_not_found(ec)) {
+		LOG_FS << "Failed to check if " << fpath.string() << " is a directory: " << ec.message() << '\n';
+	}
+
+	return is_dir;
+}
+
+static bool file_exists(const bfs::path& fpath)
+{
+	error_code ec;
+	bool exists = bfs::exists(fpath, ec);
+	if(error_except_not_found(ec)) {
+		ERR_FS << "Failed to check existence of file " << fpath.string() << ": " << ec.message() << '\n';
+	}
+
+	return exists;
+}
+
+static bfs::path get_dir(const bfs::path& dirpath)
+{
+	bool is_dir = is_directory_internal(dirpath);
+	if(!is_dir) {
+		error_code ec;
+		bfs::create_directory(dirpath, ec);
+
+		if(ec) {
+			ERR_FS << "Failed to create directory " << dirpath.string() << ": " << ec.message() << '\n';
+		}
+
+		// This is probably redundant
+		is_dir = is_directory_internal(dirpath);
+	}
+
+	if(!is_dir) {
+		ERR_FS << "Could not open or create directory " << dirpath.string() << '\n';
+		return std::string();
+	}
+
+	return dirpath;
+}
+
+static bool create_directory_if_missing(const bfs::path& dirpath)
+{
+	error_code ec;
+	bfs::file_status fs = bfs::status(dirpath, ec);
+
+	if(error_except_not_found(ec)) {
+		ERR_FS << "Failed to retrieve file status for " << dirpath.string() << ": " << ec.message() << '\n';
+		return false;
+	} else if(bfs::is_directory(fs)) {
+		DBG_FS << "directory " << dirpath.string() << " exists, not creating\n";
+		return true;
+	} else if(bfs::exists(fs)) {
+		ERR_FS << "cannot create directory " << dirpath.string() << "; file exists\n";
+		return false;
+	}
+
+	bool created = bfs::create_directory(dirpath, ec);
+	if(ec) {
+		ERR_FS << "Failed to create directory " << dirpath.string() << ": " << ec.message() << '\n';
+	}
+
+	return created;
+}
+
+static bool create_directory_if_missing_recursive(const bfs::path& dirpath)
+{
+	DBG_FS << "creating recursive directory: " << dirpath.string() << '\n';
+
+	if(dirpath.empty()) {
+		return false;
+	}
+
+	error_code ec;
+	bfs::file_status fs = bfs::status(dirpath);
+
+	if(error_except_not_found(ec)) {
+		ERR_FS << "Failed to retrieve file status for " << dirpath.string() << ": " << ec.message() << '\n';
+		return false;
+	} else if(bfs::is_directory(fs)) {
+		return true;
+	} else if(bfs::exists(fs)) {
+		return false;
+	}
+
+	if(!dirpath.has_parent_path() || create_directory_if_missing_recursive(dirpath.parent_path())) {
+		return create_directory_if_missing(dirpath);
+	} else {
+		ERR_FS << "Could not create parents to " << dirpath.string() << '\n';
+		return false;
+	}
+}
+
+void get_files_in_dir(const std::string& dir,
+		std::vector<std::string>* files,
+		std::vector<std::string>* dirs,
+		file_name_option mode,
+		file_filter_option filter,
+		file_reorder_option reorder,
+		file_tree_checksum* checksum)
+{
+	if(bfs::path(dir).is_relative() && !game_config::path.empty()) {
+		bfs::path absolute_dir(game_config::path);
+		absolute_dir /= dir;
+
+		if(is_directory_internal(absolute_dir)) {
+			get_files_in_dir(absolute_dir.string(), files, dirs, mode, filter, reorder, checksum);
 			return;
 		}
 	}
 
-	struct stat st;
+	const bfs::path dirpath(dir);
 
-	if (reorder == DO_REORDER) {
-		LOG_FS << "searching for _main.cfg in directory " << directory << '\n';
-		std::string maincfg;
-		if (directory.empty() || directory[directory.size()-1] == '/')
-			maincfg = directory + maincfg_filename;
-		else
-			maincfg = (directory + "/") + maincfg_filename;
+	if(reorder == DO_REORDER) {
+		LOG_FS << "searching for _main.cfg in directory " << dir << '\n';
+		const bfs::path maincfg = dirpath / maincfg_filename;
 
-		if (::stat(maincfg.c_str(), &st) != -1) {
+		if(file_exists(maincfg)) {
 			LOG_FS << "_main.cfg found : " << maincfg << '\n';
-			if (files != NULL) {
-				if (mode == ENTIRE_FILE_PATH)
-					files->push_back(maincfg);
-				else
-					files->push_back(maincfg_filename);
-			}
+			push_if_exists(files, maincfg, mode == ENTIRE_FILE_PATH);
 			return;
 		}
 	}
 
-	DIR* dir = opendir(directory.c_str());
+	error_code ec;
+	bfs::directory_iterator di(dirpath, ec);
+	bfs::directory_iterator end;
 
-	if(dir == NULL) {
+	// Probably not a directory, let the caller deal with it.
+	if(ec) {
 		return;
 	}
 
-	struct dirent* entry;
-	while((entry = readdir(dir)) != NULL) {
-		if(entry->d_name[0] == '.')
+	for(; di != end; ++di) {
+		bfs::file_status st = di->status(ec);
+		if(ec) {
+			LOG_FS << "Failed to get file status of " << di->path().string() << ": " << ec.message() << '\n';
 			continue;
-#ifdef __APPLE__
-		// HFS Mac OS X decomposes filenames using combining unicode characters.
-		// Try to get the precomposed form.
-		char macname[MAXNAMLEN+1];
-		CFStringRef cstr = CFStringCreateWithCString(NULL,
-							 entry->d_name,
-							 kCFStringEncodingUTF8);
-		CFMutableStringRef mut_str = CFStringCreateMutableCopy(NULL,
-							 0, cstr);
-		CFStringNormalize(mut_str, kCFStringNormalizationFormC);
-		CFStringGetCString(mut_str,
-				macname,sizeof(macname)-1,
-				kCFStringEncodingUTF8);
-		CFRelease(cstr);
-		CFRelease(mut_str);
-		const std::string basename = macname;
-#else
-		// generic Unix
-		const std::string basename = entry->d_name;
-#endif /* !APPLE */
+		}
 
-		std::string fullname;
-		if (directory.empty() || directory[directory.size()-1] == '/')
-			fullname = directory + basename;
-		else
-			fullname = directory + "/" + basename;
-
-		if (::stat(fullname.c_str(), &st) != -1) {
-			if (S_ISREG(st.st_mode)) {
-				if(filter == SKIP_PBL_FILES && looks_like_pbl(basename)) {
+		if(st.type() == bfs::regular_file) {
+			{
+				std::string basename = di->path().filename().string();
+				if(filter == SKIP_PBL_FILES && looks_like_pbl(basename))
 					continue;
-				}
-				if (files != NULL) {
-					if (mode == ENTIRE_FILE_PATH)
-						files->push_back(fullname);
-					else
-						files->push_back(basename);
-				}
-				if (checksum != NULL) {
-					if(st.st_mtime > checksum->modified) {
-						checksum->modified = st.st_mtime;
-					}
-					checksum->sum_size += st.st_size;
-					checksum->nfiles++;
-				}
-			} else if (S_ISDIR(st.st_mode)) {
-				if (filter == SKIP_MEDIA_DIR
-						&& (basename == "images"|| basename == "sounds"))
+				if(!basename.empty() && basename[0] == '.')
 					continue;
+			}
 
-				if (reorder == DO_REORDER &&
-						::stat((fullname+"/"+maincfg_filename).c_str(), &st)!=-1 &&
-						S_ISREG(st.st_mode)) {
-					LOG_FS << "_main.cfg found : ";
-					if (files != NULL) {
-						if (mode == ENTIRE_FILE_PATH) {
-							files->push_back(fullname + "/" + maincfg_filename);
-							LOG_FS << fullname << "/" << maincfg_filename << '\n';
-						} else {
-							files->push_back(basename + "/" + maincfg_filename);
-							LOG_FS << basename << "/" << maincfg_filename << '\n';
-					}
-					} else {
-					// Show what I consider strange
-						LOG_FS << fullname << "/" << maincfg_filename << " not used now but skip the directory " << std::endl;
-					}
-				} else if (dirs != NULL) {
-					if (mode == ENTIRE_FILE_PATH)
-						dirs->push_back(fullname);
-					else
-						dirs->push_back(basename);
+			push_if_exists(files, di->path(), mode == ENTIRE_FILE_PATH);
+
+			if(checksum != nullptr) {
+				std::time_t mtime = bfs::last_write_time(di->path(), ec);
+				if(ec) {
+					LOG_FS << "Failed to read modification time of " << di->path().string() << ": " << ec.message()
+						   << '\n';
+				} else if(mtime > checksum->modified) {
+					checksum->modified = mtime;
 				}
+
+				uintmax_t size = bfs::file_size(di->path(), ec);
+				if(ec) {
+					LOG_FS << "Failed to read filesize of " << di->path().string() << ": " << ec.message() << '\n';
+				} else {
+					checksum->sum_size += size;
+				}
+
+				checksum->nfiles++;
+			}
+		} else if(st.type() == bfs::directory_file) {
+			std::string basename = di->path().filename().string();
+
+			if(!basename.empty() && basename[0] == '.') {
+				continue;
+			}
+
+			if(filter == SKIP_MEDIA_DIR && (basename == "images" || basename == "sounds")) {
+				continue;
+			}
+
+			const bfs::path inner_main(di->path() / maincfg_filename);
+			bfs::file_status main_st = bfs::status(inner_main, ec);
+
+			if(error_except_not_found(ec)) {
+				LOG_FS << "Failed to get file status of " << inner_main.string() << ": " << ec.message() << '\n';
+			} else if(reorder == DO_REORDER && main_st.type() == bfs::regular_file) {
+				LOG_FS << "_main.cfg found : "
+					   << (mode == ENTIRE_FILE_PATH ? inner_main.string() : inner_main.filename().string()) << '\n';
+				push_if_exists(files, inner_main, mode == ENTIRE_FILE_PATH);
+			} else {
+				push_if_exists(dirs, di->path(), mode == ENTIRE_FILE_PATH);
 			}
 		}
 	}
 
-	closedir(dir);
+	if(files != nullptr) {
+		std::sort(files->begin(), files->end());
+	}
 
-	if(files != NULL)
-		std::sort(files->begin(),files->end());
+	if(dirs != nullptr) {
+		std::sort(dirs->begin(), dirs->end());
+	}
 
-	if (dirs != NULL)
-		std::sort(dirs->begin(),dirs->end());
-
-	if (files != NULL && reorder == DO_REORDER) {
+	if(files != nullptr && reorder == DO_REORDER) {
 		// move finalcfg_filename, if present, to the end of the vector
-		for (unsigned int i = 0; i < files->size(); i++) {
-			if (ends_with((*files)[i], "/" + finalcfg_filename)) {
+		for(unsigned int i = 0; i < files->size(); i++) {
+			if(ends_with((*files)[i], "/" + finalcfg_filename)) {
 				files->push_back((*files)[i]);
-				files->erase(files->begin()+i);
+				files->erase(files->begin() + i);
 				break;
 			}
 		}
+
 		// move initialcfg_filename, if present, to the beginning of the vector
-		unsigned int foundit = 0;
-		for (unsigned int i = 0; i < files->size(); i++)
-			if (ends_with((*files)[i], "/" + initialcfg_filename)) {
+		int foundit = -1;
+		for(unsigned int i = 0; i < files->size(); i++)
+			if(ends_with((*files)[i], "/" + initialcfg_filename)) {
 				foundit = i;
 				break;
 			}
-		// If _initial.cfg needs to be moved (it was found, but not at index 0).
-		if (foundit > 0) {
+		if(foundit > 0) {
 			std::string initialcfg = (*files)[foundit];
-			for (unsigned int i = foundit; i > 0; --i)
-				(*files)[i] = (*files)[i-1];
+			for(unsigned int i = foundit; i > 0; i--)
+				(*files)[i] = (*files)[i - 1];
 			(*files)[0] = initialcfg;
 		}
 	}
 }
 
-#ifdef __native_client__
-// For performance reasons, on NaCl we only keep preferences and saves in persistent storage.
-std::string get_prefs_file()
+std::string get_dir(const std::string& dir)
 {
-	return "/wesnoth-userdata/preferences";
-}
-
-std::string get_save_index_file()
-{
-	return "/wesnoth-userdata/save_index";
-}
-
-std::string get_saves_dir()
-{
-	const std::string dir_path = "/wesnoth-userdata/saves";
-	return get_dir(dir_path);
-}
-
-#else
-
-std::string get_prefs_file()
-{
-	return get_user_config_dir() + "/preferences";
-}
-
-std::string get_default_prefs_file()
-{
-#ifdef HAS_RELATIVE_DEFPREF
-	return game_config::path + "/" + game_config::default_preferences_path;
-#else
-	return game_config::default_preferences_path;
-#endif
-}
-
-std::string get_save_index_file()
-{
-	return get_user_data_dir() + "/save_index";
-}
-
-std::string get_saves_dir()
-{
-	const std::string dir_path = get_user_data_dir() + "/saves";
-	return get_dir(dir_path);
-}
-#endif
-
-std::string get_addon_campaigns_dir()
-{
-	const std::string dir_path = get_user_data_dir() + "/data/add-ons";
-	return get_dir(dir_path);
-}
-
-std::string get_intl_dir()
-{
-#ifdef _WIN32
-	return get_cwd() + "/translations";
-#else
-
-#ifdef USE_INTERNAL_DATA
-	return get_cwd() + "/" LOCALEDIR;
-#endif
-
-#if HAS_RELATIVE_LOCALEDIR
-	std::string res = game_config::path + "/" LOCALEDIR;
-#else
-	std::string res = LOCALEDIR;
-#endif
-
-	return res;
-#endif
-}
-
-std::string get_screenshot_dir()
-{
-	const std::string dir_path = get_user_data_dir() + "/screenshots";
-	return get_dir(dir_path);
+	return get_dir(bfs::path(dir)).string();
 }
 
 std::string get_next_filename(const std::string& name, const std::string& extension)
@@ -338,165 +517,16 @@ std::string get_next_filename(const std::string& name, const std::string& extens
 		filename.fill('0');
 		filename.setf(std::ios_base::right);
 		filename << counter << extension;
+
 		counter++;
 		next_filename = filename.str();
 	} while(file_exists(next_filename) && counter < 1000);
+
 	return next_filename;
 }
 
+static bfs::path user_data_dir, user_config_dir, cache_dir;
 
-std::string get_dir(const std::string& dir_path)
-{
-	DIR* dir = opendir(dir_path.c_str());
-	if(dir == NULL) {
-		const int res = mkdir(dir_path.c_str(),AccessMode);
-		if(res == 0) {
-			dir = opendir(dir_path.c_str());
-		} else {
-			ERR_FS << "could not open or create directory: " << dir_path << std::endl;
-		}
-	}
-
-	if(dir == NULL)
-		return "";
-
-	closedir(dir);
-
-	return dir_path;
-}
-
-bool make_directory(const std::string& path)
-{
-	return (mkdir(path.c_str(),AccessMode) == 0);
-}
-
-bool looks_like_pbl(const std::string& file)
-{
-	return utils::wildcard_string_match(utf8::lowercase(file), "*.pbl");
-}
-
-// This deletes a directory with no hidden files and subdirectories.
-// Also deletes a single file.
-bool delete_directory(const std::string& path, const bool keep_pbl)
-{
-	bool ret = true;
-	std::vector<std::string> files;
-	std::vector<std::string> dirs;
-
-	get_files_in_dir(path, &files, &dirs, ENTIRE_FILE_PATH, keep_pbl ? SKIP_PBL_FILES : NO_FILTER);
-
-	if(!files.empty()) {
-		for(std::vector<std::string>::const_iterator i = files.begin(); i != files.end(); ++i) {
-			errno = 0;
-			if(remove((*i).c_str()) != 0) {
-				LOG_FS << "remove(" << (*i) << "): " << strerror(errno) << std::endl;
-				ret = false;
-			}
-		}
-	}
-
-	if(!dirs.empty()) {
-		for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
-			if(!delete_directory(*j))
-				ret = false;
-		}
-	}
-
-	errno = 0;
-#ifdef _WIN32
-	// remove() doesn't delete directories on windows.
-	int (*remove)(const char*);
-	if(is_directory(path))
-		remove = rmdir;
-	else
-		remove = ::remove;
-#endif
-	if(remove(path.c_str()) != 0) {
-		LOG_FS << "remove(" << path << "): " << strerror(errno) << std::endl;
-		ret = false;
-	}
-	return ret;
-}
-
-std::string get_cwd()
-{
-	char buf[1024];
-	const char* const res = getcwd(buf,sizeof(buf));
-	if(res != NULL) {
-		std::string str(res);
-
-#ifdef _WIN32
-		std::replace(str.begin(),str.end(),'\\','/');
-#endif
-
-		return str;
-	} else {
-		return "";
-	}
-}
-
-std::string get_exe_dir()
-{
-#ifndef _WIN32
-	char buf[1024];
-	size_t path_size = readlink("/proc/self/exe", buf, sizeof(buf)-1);
-	if(path_size == static_cast<size_t>(-1))
-		return std::string();
-	buf[path_size] = 0;
-	return std::string(dirname(buf));
-#else
-	return get_cwd();
-#endif
-}
-
-bool create_directory_if_missing(const std::string& dirname)
-{
-	if(is_directory(dirname)) {
-		DBG_FS << "directory " << dirname << " exists, not creating" << std::endl;
-		return true;
-	} else if(file_exists(dirname)) {
-		ERR_FS << "cannot create directory " << dirname << "; file exists" << std::endl;
-		return false;
-	}
-	DBG_FS << "creating missing directory " << dirname << '\n';
-	return make_directory(dirname);
-}
-bool create_directory_if_missing_recursive(const std::string& dirname)
-{
-	DBG_FS<<"creating recursive directory: "<<dirname<<'\n';
-	if (is_directory(dirname) == false && dirname.empty() == false)
-	{
-		std::string tmp_dirname = dirname;
-		// remove trailing slashes or backslashes
-		while ((tmp_dirname[tmp_dirname.size()-1] == '/' ||
-			  tmp_dirname[tmp_dirname.size()-1] == '\\') &&
-			  !tmp_dirname.empty())
-		{
-			tmp_dirname.erase(tmp_dirname.size()-1);
-		}
-
-		// create the first non-existing directory
-		size_t pos = tmp_dirname.rfind("/");
-
-		// we get the most right directory and *skip* it
-		// we are creating it when we get back here
-		if (tmp_dirname.rfind('\\') != std::string::npos &&
-			tmp_dirname.rfind('\\') > pos )
-			pos = tmp_dirname.rfind('\\');
-
-		if (pos != std::string::npos)
-			create_directory_if_missing_recursive(tmp_dirname.substr(0,pos));
-
-		return create_directory_if_missing(tmp_dirname);
-	}
-	return create_directory_if_missing(dirname);
-}
-
-static std::string user_data_dir, user_config_dir, cache_dir;
-
-static void setup_user_data_dir();
-
-#ifndef _WIN32
 static const std::string& get_version_path_suffix()
 {
 	static std::string suffix;
@@ -506,479 +536,634 @@ static const std::string& get_version_path_suffix()
 
 	if(suffix.empty()) {
 		std::ostringstream s;
-		s << game_config::wesnoth_version.major_version() << '.'
-		  << game_config::wesnoth_version.minor_version();
+		s << game_config::wesnoth_version.major_version() << '.' << game_config::wesnoth_version.minor_version();
 		suffix = s.str();
 	}
 
 	return suffix;
 }
+
+static void setup_user_data_dir()
+{
+	if(!create_directory_if_missing_recursive(user_data_dir)) {
+		ERR_FS << "could not open or create user data directory at " << user_data_dir.string() << '\n';
+		return;
+	}
+	// TODO: this may not print the error message if the directory exists but we don't have the proper permissions
+
+	// Create user data and add-on directories
+	create_directory_if_missing(user_data_dir / "editor");
+	create_directory_if_missing(user_data_dir / "editor" / "maps");
+	create_directory_if_missing(user_data_dir / "editor" / "scenarios");
+	create_directory_if_missing(user_data_dir / "data");
+	create_directory_if_missing(user_data_dir / "data" / "add-ons");
+	create_directory_if_missing(user_data_dir / "saves");
+	create_directory_if_missing(user_data_dir / "persist");
+
+#ifdef _WIN32
+	lg::finish_log_file_setup();
+#endif
+}
+
+#ifdef _WIN32
+// As a convenience for portable installs on Windows, relative paths with . or
+// .. as the first component are considered relative to the current workdir
+// instead of Documents/My Games.
+static bool is_path_relative_to_cwd(const std::string& str)
+{
+	const bfs::path p(str);
+
+	if(p.empty()) {
+		return false;
+	}
+
+	return *p.begin() == "." || *p.begin() == "..";
+}
 #endif
 
-void set_user_data_dir(std::string path)
+void set_user_data_dir(std::string newprefdir)
 {
+#ifdef PREFERENCES_DIR
+	if(newprefdir.empty()) {
+		newprefdir = PREFERENCES_DIR;
+	}
+#endif
+
 #ifdef _WIN32
-	if(path.empty()) {
-		user_data_dir = get_cwd() + "/userdata";
-	} else if (path.size() > 2 && path[1] == ':') {
-		//allow absolute path override
-		user_data_dir = path;
+	if(newprefdir.size() > 2 && newprefdir[1] == ':') {
+		// allow absolute path override
+		user_data_dir = newprefdir;
+	} else if(is_path_relative_to_cwd(newprefdir)) {
+		// Custom directory relative to workdir (for portable installs, etc.)
+		user_data_dir = get_cwd() + "/" + newprefdir;
 	} else {
-		typedef BOOL (WINAPI *SHGSFPAddress)(HWND, LPSTR, int, BOOL);
-		SHGSFPAddress SHGetSpecialFolderPathA;
-		HMODULE module = LoadLibraryA("shell32");
-		SHGetSpecialFolderPathA = reinterpret_cast<SHGSFPAddress>(GetProcAddress(module, "SHGetSpecialFolderPathA"));
-		if(SHGetSpecialFolderPathA) {
-			LOG_FS << "Using SHGetSpecialFolderPath to find My Documents" << std::endl;
-			char my_documents_path[MAX_PATH];
-			if(SHGetSpecialFolderPathA(NULL, my_documents_path, 5, 1)) {
-				std::string mygames_path = std::string(my_documents_path) + "/" + "My Games";
-				boost::algorithm::replace_all(mygames_path, std::string("\\"), std::string("/"));
-				create_directory_if_missing(mygames_path);
-				user_data_dir = mygames_path + "/" + path;
-			} else {
-				WRN_FS << "SHGetSpecialFolderPath failed" << std::endl;
-				user_data_dir = get_cwd() + "/" + path;
-			}
-		} else {
-			LOG_FS << "Failed to load SHGetSpecialFolderPath function" << std::endl;
-			user_data_dir = get_cwd() + "/" + path;
+		if(newprefdir.empty()) {
+			newprefdir = "Wesnoth" + get_version_path_suffix();
 		}
+
+		PWSTR docs_path = nullptr;
+		HRESULT res = SHGetKnownFolderPath(FOLDERID_Documents, KF_FLAG_CREATE, nullptr, &docs_path);
+
+		if(res != S_OK) {
+			//
+			// Crummy fallback path full of pain and suffering.
+			//
+			ERR_FS << "Could not determine path to user's Documents folder! (" << std::hex << "0x" << res << std::dec << ") "
+				   << "User config/data directories may be unavailable for "
+				   << "this session. Please report this as a bug.\n";
+			user_data_dir = bfs::path(get_cwd()) / newprefdir;
+		} else {
+			bfs::path games_path = bfs::path(docs_path) / "My Games";
+			create_directory_if_missing(games_path);
+
+			user_data_dir = games_path / newprefdir;
+		}
+
+		CoTaskMemFree(docs_path);
 	}
 
 #else /*_WIN32*/
 
-#ifdef PREFERENCES_DIR
-	if (path.empty()) path = PREFERENCES_DIR;
+	std::string backupprefdir = ".wesnoth" + get_version_path_suffix();
+
+#ifdef WESNOTH_BOOST_OS_IOS
+	char *sdl_pref_path = SDL_GetPrefPath("wesnoth.org", "iWesnoth");
+	if(sdl_pref_path) {
+		backupprefdir = std::string(sdl_pref_path) + backupprefdir;
+		SDL_free(sdl_pref_path);
+	}
 #endif
 
-	std::string path2 = ".wesnoth" + get_version_path_suffix();
-
 #ifdef _X11
-	const char *home_str = getenv("HOME");
+	const char* home_str = getenv("HOME");
 
-	if (path.empty()) {
-		char const *xdg_data = getenv("XDG_DATA_HOME");
-		if (!xdg_data || xdg_data[0] == '\0') {
-			if (!home_str) {
-				path = path2;
+	if(newprefdir.empty()) {
+		char const* xdg_data = getenv("XDG_DATA_HOME");
+		if(!xdg_data || xdg_data[0] == '\0') {
+			if(!home_str) {
+				newprefdir = backupprefdir;
 				goto other;
 			}
-			user_data_dir = home_str;
-			user_data_dir += "/.local/share";
-		} else user_data_dir = xdg_data;
-		user_data_dir += "/wesnoth/";
-		user_data_dir += get_version_path_suffix();
-		create_directory_if_missing_recursive(user_data_dir);
-	} else {
-		other:
-		std::string home = home_str ? home_str : ".";
 
-		if (path[0] == '/')
-			user_data_dir = path;
-		else
-			user_data_dir = home + "/" + path;
+			user_data_dir = home_str;
+			user_data_dir /= ".local/share";
+		} else {
+			user_data_dir = xdg_data;
+		}
+
+		user_data_dir /= "wesnoth";
+		user_data_dir /= get_version_path_suffix();
+	} else {
+	other:
+		bfs::path home = home_str ? home_str : ".";
+
+		if(newprefdir[0] == '/') {
+			user_data_dir = newprefdir;
+		} else {
+			user_data_dir = home / newprefdir;
+		}
 	}
 #else
-	if (path.empty()) path = path2;
+	if(newprefdir.empty()) {
+		newprefdir = backupprefdir;
+	}
 
 	const char* home_str = getenv("HOME");
-	std::string home = home_str ? home_str : ".";
+	bfs::path home = home_str ? home_str : ".";
 
-	if (path[0] == '/')
-		user_data_dir = path;
-	else
-		user_data_dir = home + std::string("/") + path;
+	if(newprefdir[0] == '/') {
+		user_data_dir = newprefdir;
+	} else {
+		user_data_dir = home / newprefdir;
+	}
 #endif
 
 #endif /*_WIN32*/
 	setup_user_data_dir();
+	user_data_dir = normalize_path(user_data_dir.string(), true, true);
 }
 
-void set_user_config_dir(std::string path)
+static void set_user_config_path(bfs::path newconfig)
 {
-	user_config_dir = path;
-	create_directory_if_missing(user_config_dir);
-}
-
-static void setup_user_data_dir()
-{
-#ifdef _WIN32
-	_mkdir(user_data_dir.c_str());
-	_mkdir((user_data_dir + "/editor").c_str());
-	_mkdir((user_data_dir + "/editor/maps").c_str());
-	_mkdir((user_data_dir + "/editor/scenarios").c_str());
-	_mkdir((user_data_dir + "/data").c_str());
-	_mkdir((user_data_dir + "/data/add-ons").c_str());
-	_mkdir((user_data_dir + "/saves").c_str());
-	_mkdir((user_data_dir + "/persist").c_str());
-#else
-	const std::string& dir_path = user_data_dir;
-
-	const bool res = create_directory_if_missing(dir_path);
-	// probe read permissions (if we could make the directory)
-	DIR* const dir = res ? opendir(dir_path.c_str()) : NULL;
-	if(dir == NULL) {
-		ERR_FS << "could not open or create preferences directory at " << dir_path << std::endl;
-		return;
+	user_config_dir = newconfig;
+	if(!create_directory_if_missing_recursive(user_config_dir)) {
+		ERR_FS << "could not open or create user config directory at " << user_config_dir.string() << '\n';
 	}
-	closedir(dir);
-
-	// Create user data and add-on directories
-	create_directory_if_missing(dir_path + "/editor");
-	create_directory_if_missing(dir_path + "/editor/maps");
-	create_directory_if_missing(dir_path + "/editor/scenarios");
-	create_directory_if_missing(dir_path + "/data");
-	create_directory_if_missing(dir_path + "/data/add-ons");
-	create_directory_if_missing(dir_path + "/saves");
-	create_directory_if_missing(dir_path + "/persist");
-#endif
 }
 
-const std::string& get_user_data_dir()
+void set_user_config_dir(const std::string& newconfigdir)
 {
-	// ensure setup gets called only once per session
-	// FIXME: this is okay and optimized, but how should we react
-	// if the user deletes a dir while we are running?
-	if (user_data_dir.empty())
-	{
+	set_user_config_path(newconfigdir);
+}
+
+static const bfs::path& get_user_data_path()
+{
+	if(user_data_dir.empty()) {
 		set_user_data_dir(std::string());
 	}
+
 	return user_data_dir;
 }
 
-const std::string &get_user_config_dir()
+std::string get_user_config_dir()
 {
-	if (user_config_dir.empty())
-	{
+	if(user_config_dir.empty()) {
 #if defined(_X11) && !defined(PREFERENCES_DIR)
-		char const *xdg_config = getenv("XDG_CONFIG_HOME");
-		std::string path;
-		if (!xdg_config || xdg_config[0] == '\0') {
+		char const* xdg_config = getenv("XDG_CONFIG_HOME");
+
+		if(!xdg_config || xdg_config[0] == '\0') {
 			xdg_config = getenv("HOME");
-			if (!xdg_config) {
-				user_config_dir = get_user_data_dir();
-				return user_config_dir;
+			if(!xdg_config) {
+				user_config_dir = get_user_data_path();
+				return user_config_dir.string();
 			}
-			path = xdg_config;
-			path += "/.config";
-		} else path = xdg_config;
-		path += "/wesnoth";
-		set_user_config_dir(path);
+
+			user_config_dir = xdg_config;
+			user_config_dir /= ".config";
+		} else {
+			user_config_dir = xdg_config;
+		}
+
+		user_config_dir /= "wesnoth";
+		set_user_config_path(user_config_dir);
 #else
-		user_config_dir = get_user_data_dir();
+		user_config_dir = get_user_data_path();
 #endif
 	}
-	return user_config_dir;
+
+	return user_config_dir.string();
 }
 
-const std::string &get_cache_dir()
+std::string get_user_data_dir()
 {
-	if (cache_dir.empty())
-	{
+	return get_user_data_path().string();
+}
+
+std::string get_cache_dir()
+{
+	if(cache_dir.empty()) {
 #if defined(_X11) && !defined(PREFERENCES_DIR)
-		char const *xdg_cache = getenv("XDG_CACHE_HOME");
-		if (!xdg_cache || xdg_cache[0] == '\0') {
+		char const* xdg_cache = getenv("XDG_CACHE_HOME");
+
+		if(!xdg_cache || xdg_cache[0] == '\0') {
 			xdg_cache = getenv("HOME");
-			if (!xdg_cache) {
-				cache_dir = get_dir(get_user_data_dir() + "/cache");
-				return cache_dir;
+			if(!xdg_cache) {
+				cache_dir = get_dir(get_user_data_path() / "cache");
+				return cache_dir.string();
 			}
+
 			cache_dir = xdg_cache;
-			cache_dir += "/.cache";
-		} else cache_dir = xdg_cache;
-		cache_dir += "/wesnoth";
+			cache_dir /= ".cache";
+		} else {
+			cache_dir = xdg_cache;
+		}
+
+		cache_dir /= "wesnoth";
 		create_directory_if_missing_recursive(cache_dir);
 #else
-		cache_dir = get_dir(get_user_data_dir() + "/cache");
+		cache_dir = get_dir(get_user_data_path() / "cache");
 #endif
 	}
-	return cache_dir;
+
+	return cache_dir.string();
 }
 
-static std::string read_stream(std::istream& s)
+std::string get_cwd()
 {
+	error_code ec;
+	bfs::path cwd = bfs::current_path(ec);
+
+	if(ec) {
+		ERR_FS << "Failed to get current directory: " << ec.message() << '\n';
+		return "";
+	}
+
+	return cwd.generic_string();
+}
+std::string get_exe_dir()
+{
+#ifdef _WIN32
+	wchar_t process_path[MAX_PATH];
+	SetLastError(ERROR_SUCCESS);
+
+	GetModuleFileNameW(nullptr, process_path, MAX_PATH);
+
+	if(GetLastError() != ERROR_SUCCESS) {
+		return get_cwd();
+	}
+
+	bfs::path exe(process_path);
+	return exe.parent_path().string();
+#else
+	if(bfs::exists("/proc/")) {
+		bfs::path self_exe("/proc/self/exe");
+		error_code ec;
+		bfs::path exe = bfs::read_symlink(self_exe, ec);
+		if(ec) {
+			return std::string();
+		}
+
+		return exe.parent_path().string();
+	} else {
+		return get_cwd();
+	}
+#endif
+}
+
+bool make_directory(const std::string& dirname)
+{
+	error_code ec;
+	bool created = bfs::create_directory(bfs::path(dirname), ec);
+	if(ec) {
+		ERR_FS << "Failed to create directory " << dirname << ": " << ec.message() << '\n';
+	}
+
+	return created;
+}
+
+bool delete_directory(const std::string& dirname, const bool keep_pbl)
+{
+	bool ret = true;
+	std::vector<std::string> files;
+	std::vector<std::string> dirs;
+	error_code ec;
+
+	get_files_in_dir(dirname, &files, &dirs, ENTIRE_FILE_PATH, keep_pbl ? SKIP_PBL_FILES : NO_FILTER);
+
+	if(!files.empty()) {
+		for(const std::string& f : files) {
+			bfs::remove(bfs::path(f), ec);
+			if(ec) {
+				LOG_FS << "remove(" << f << "): " << ec.message() << '\n';
+				ret = false;
+			}
+		}
+	}
+
+	if(!dirs.empty()) {
+		for(const std::string& d : dirs) {
+			// TODO: this does not preserve any other PBL files
+			// filesystem.cpp does this too, so this might be intentional
+			if(!delete_directory(d))
+				ret = false;
+		}
+	}
+
+	if(ret) {
+		bfs::remove(bfs::path(dirname), ec);
+		if(ec) {
+			LOG_FS << "remove(" << dirname << "): " << ec.message() << '\n';
+			ret = false;
+		}
+	}
+
+	return ret;
+}
+
+bool delete_file(const std::string& filename)
+{
+	error_code ec;
+	bool ret = bfs::remove(bfs::path(filename), ec);
+	if(ec) {
+		ERR_FS << "Could not delete file " << filename << ": " << ec.message() << '\n';
+	}
+
+	return ret;
+}
+
+std::string read_file(const std::string& fname)
+{
+	scoped_istream is = istream_file(fname);
 	std::stringstream ss;
-	ss << s.rdbuf();
+	ss << is->rdbuf();
 	return ss.str();
 }
 
-std::istream *istream_file(const std::string &fname, bool treat_failure_as_error)
+filesystem::scoped_istream istream_file(const std::string& fname, bool treat_failure_as_error)
 {
-	LOG_FS << "Streaming " << fname << " for reading." << std::endl;
-	if (fname.empty())
-	{
-		ERR_FS << "Trying to open file with empty name." << std::endl;
-		std::ifstream *s = new std::ifstream();
+	LOG_FS << "Streaming " << fname << " for reading.\n";
+
+	if(fname.empty()) {
+		ERR_FS << "Trying to open file with empty name.\n";
+		filesystem::scoped_istream s(new bfs::ifstream());
 		s->clear(std::ios_base::failbit);
 		return s;
 	}
 
-	std::ifstream *s = new std::ifstream(fname.c_str(),std::ios_base::binary);
-	if (s->is_open()) {
+	// mingw doesn't  support std::basic_ifstream::basic_ifstream(const wchar_t* fname)
+	// that why boost::filesystem::fstream.hpp doesn't work with mingw.
+	try {
+		boost::iostreams::file_descriptor_source fd(bfs::path(fname), std::ios_base::binary);
+
+		// TODO: has this still use ?
+		if(!fd.is_open() && treat_failure_as_error) {
+			ERR_FS << "Could not open '" << fname << "' for reading.\n";
+		} else if(!is_filename_case_correct(fname, fd)) {
+			ERR_FS << "Not opening '" << fname << "' due to case mismatch.\n";
+			filesystem::scoped_istream s(new bfs::ifstream());
+			s->clear(std::ios_base::failbit);
+			return s;
+		}
+
+		return std::make_unique<boost::iostreams::stream<boost::iostreams::file_descriptor_source>>(fd, 4096, 0);
+	} catch(const std::exception&) {
+		if(treat_failure_as_error) {
+			ERR_FS << "Could not open '" << fname << "' for reading.\n";
+		}
+
+		filesystem::scoped_istream s(new bfs::ifstream());
+		s->clear(std::ios_base::failbit);
 		return s;
 	}
+}
 
-	if (treat_failure_as_error) {
-		ERR_FS << "Could not open '" << fname << "' for reading." << std::endl;
-	} else {
-		LOG_FS << "Could not open '" << fname << "' for reading." << std::endl;
+filesystem::scoped_ostream ostream_file(const std::string& fname, bool create_directory)
+{
+	LOG_FS << "streaming " << fname << " for writing.\n";
+#if 1
+	try {
+		boost::iostreams::file_descriptor_sink fd(bfs::path(fname), std::ios_base::binary);
+		return std::make_unique<boost::iostreams::stream<boost::iostreams::file_descriptor_sink>>(fd, 4096, 0);
+	} catch(const BOOST_IOSTREAMS_FAILURE& e) {
+		// If this operation failed because the parent directory didn't exist, create the parent directory and
+		// retry.
+		error_code ec_unused;
+		if(create_directory && bfs::create_directories(bfs::path(fname).parent_path(), ec_unused)) {
+			return ostream_file(fname, false);
+		}
+
+		throw filesystem::io_exception(e.what());
 	}
-	return s;
-}
-
-std::string read_file(const std::string &fname)
-{
-	scoped_istream s = istream_file(fname);
-	return read_stream(*s);
-}
-
-std::ostream *ostream_file(std::string const &fname)
-{
-	LOG_FS << "streaming " << fname << " for writing." << std::endl;
-	return new std::ofstream(fname.c_str(), std::ios_base::binary);
+#else
+	return new bfs::ofstream(bfs::path(fname), std::ios_base::binary);
+#endif
 }
 
 // Throws io_exception if an error occurs
 void write_file(const std::string& fname, const std::string& data)
 {
-	//const util::scoped_resource<FILE*,close_FILE> file(fopen(fname.c_str(),"wb"));
-	const util::scoped_FILE file(fopen(fname.c_str(),"wb"));
-	if(file.get() == NULL) {
-		throw io_exception("Could not open file for writing: '" + fname + "'");
-	}
+	scoped_ostream os = ostream_file(fname);
+	os->exceptions(std::ios_base::goodbit);
 
-	const size_t block_size = 4096;
+	const std::size_t block_size = 4096;
 	char buf[block_size];
 
-	for(size_t i = 0; i < data.size(); i += block_size) {
-		const size_t bytes = std::min<size_t>(block_size,data.size() - i);
-		std::copy(data.begin() + i, data.begin() + i + bytes,buf);
-		const size_t res = fwrite(buf,1,bytes,file.get());
-		if(res != bytes) {
+	for(std::size_t i = 0; i < data.size(); i += block_size) {
+		const std::size_t bytes = std::min<std::size_t>(block_size, data.size() - i);
+		std::copy(data.begin() + i, data.begin() + i + bytes, buf);
+
+		os->write(buf, bytes);
+		if(os->bad()) {
 			throw io_exception("Error writing to file: '" + fname + "'");
 		}
 	}
 }
 
-
-std::string read_map(const std::string& name)
+bool create_directory_if_missing(const std::string& dirname)
 {
-	std::string res;
-	std::string map_location = get_wml_location("maps/" + name);
-	if(!map_location.empty()) {
-		res = read_file(map_location);
-	}
-
-	if (res.empty()) {
-		res = read_file(get_user_data_dir() + "/editor/maps/" + name);
-	}
-
-	return res;
+	return create_directory_if_missing(bfs::path(dirname));
 }
 
-static bool is_directory_internal(const std::string& fname)
+bool create_directory_if_missing_recursive(const std::string& dirname)
 {
-#ifdef _WIN32
-	_finddata_t info;
-	const long handle = _findfirst((fname + "/*").c_str(),&info);
-	if(handle >= 0) {
-		_findclose(handle);
-		return true;
-	} else {
-		return false;
-	}
-
-#else
-	struct stat dir_stat;
-	if(::stat(fname.c_str(), &dir_stat) == -1) {
-		return false;
-	}
-	return S_ISDIR(dir_stat.st_mode);
-#endif
+	return create_directory_if_missing_recursive(bfs::path(dirname));
 }
 
 bool is_directory(const std::string& fname)
 {
-	if(fname.empty()) {
-		return false;
-	}
-	if(fname[0] != '/' && !game_config::path.empty()) {
-		if(is_directory_internal(game_config::path + "/" + fname))
-			return true;
-	}
-
-	return is_directory_internal(fname);
+	return is_directory_internal(bfs::path(fname));
 }
 
 bool file_exists(const std::string& name)
 {
-#ifdef _WIN32
-       struct stat st;
-       return (::stat(name.c_str(), &st) == 0);
-#else
-	struct stat st;
-	return (::stat(name.c_str(), &st) != -1);
-#endif
+	return file_exists(bfs::path(name));
 }
 
-time_t file_create_time(const std::string& fname)
+std::time_t file_modified_time(const std::string& fname)
 {
-	struct stat buf;
-	if(::stat(fname.c_str(),&buf) == -1)
-		return 0;
+	error_code ec;
+	std::time_t mtime = bfs::last_write_time(bfs::path(fname), ec);
+	if(ec) {
+		LOG_FS << "Failed to read modification time of " << fname << ": " << ec.message() << '\n';
+	}
 
-	return buf.st_mtime;
+	return mtime;
 }
 
-/**
- * Returns true if the file ends with '.gz'.
- *
- * @param filename                The name to test.
- */
 bool is_gzip_file(const std::string& filename)
 {
-	return (filename.length() > 3
-		&& filename.substr(filename.length() - 3) == ".gz");
+	return bfs::path(filename).extension() == ".gz";
 }
 
-/**
- * Returns true if the file ends with '.bz2'.
- *
- * @param filename                The name to test.
- */
 bool is_bzip2_file(const std::string& filename)
 {
-	return (filename.length() > 4
-		&& filename.substr(filename.length() - 4) == ".bz2");
-}
-
-file_tree_checksum::file_tree_checksum()
-	: nfiles(0), sum_size(0), modified(0)
-{}
-
-file_tree_checksum::file_tree_checksum(const config& cfg) :
-	nfiles	(cfg["nfiles"].to_size_t()),
-	sum_size(cfg["size"].to_size_t()),
-	modified(cfg["modified"].to_time_t())
-{
-}
-
-void file_tree_checksum::write(config& cfg) const
-{
-	cfg["nfiles"] = nfiles;
-	cfg["size"] = sum_size;
-	cfg["modified"] = modified;
-}
-
-bool file_tree_checksum::operator==(const file_tree_checksum &rhs) const
-{
-	return nfiles == rhs.nfiles && sum_size == rhs.sum_size &&
-		modified == rhs.modified;
-}
-
-static void get_file_tree_checksum_internal(const std::string& path, file_tree_checksum& res)
-{
-
-	std::vector<std::string> dirs;
-	get_files_in_dir(path,NULL,&dirs, ENTIRE_FILE_PATH, SKIP_MEDIA_DIR, DONT_REORDER, &res);
-	loadscreen::increment_progress();
-
-	for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
-		get_file_tree_checksum_internal(*j,res);
-	}
-}
-
-const file_tree_checksum& data_tree_checksum(bool reset)
-{
-	static file_tree_checksum checksum;
-	if (reset)
-		checksum.reset();
-	if(checksum.nfiles == 0) {
-		get_file_tree_checksum_internal("data/",checksum);
-		get_file_tree_checksum_internal(get_user_data_dir() + "/data/",checksum);
-		LOG_FS << "calculated data tree checksum: "
-			   << checksum.nfiles << " files; "
-			   << checksum.sum_size << " bytes" << std::endl;
-	}
-
-	return checksum;
+	return bfs::path(filename).extension() == ".bz2";
 }
 
 int file_size(const std::string& fname)
 {
-	struct stat buf;
-	if(::stat(fname.c_str(),&buf) == -1)
+	error_code ec;
+	uintmax_t size = bfs::file_size(bfs::path(fname), ec);
+	if(ec) {
+		LOG_FS << "Failed to read filesize of " << fname << ": " << ec.message() << '\n';
 		return -1;
-
-	return buf.st_size;
+	} else if(size > INT_MAX) {
+		return INT_MAX;
+	} else {
+		return size;
+	}
 }
 
-int dir_size(const std::string& path)
+int dir_size(const std::string& pname)
 {
-	std::vector<std::string> files, dirs;
-	get_files_in_dir(path, &files, &dirs, ENTIRE_FILE_PATH);
-
-	int res = 0;
-
-	BOOST_FOREACH(const std::string& file_path, files)
-	{
-		res += file_size(file_path);
+	bfs::path p(pname);
+	uintmax_t size_sum = 0;
+	error_code ec;
+	for(bfs::recursive_directory_iterator i(p), end; i != end && !ec; ++i) {
+		if(bfs::is_regular_file(i->path())) {
+			size_sum += bfs::file_size(i->path(), ec);
+		}
 	}
 
-	BOOST_FOREACH(const std::string& dir_path, dirs)
-	{
-		// FIXME: this could result in infinite recursion with symlinks!!
-		res += dir_size(dir_path);
+	if(ec) {
+		LOG_FS << "Failed to read directorysize of " << pname << ": " << ec.message() << '\n';
+		return -1;
+	} else if(size_sum > INT_MAX) {
+		return INT_MAX;
+	} else {
+		return size_sum;
 	}
-
-	return res;
 }
 
-std::string file_name(const std::string& file)
-// Analogous to POSIX basename(3), but for C++ string-object pathnames
+std::string base_name(const std::string& file, const bool remove_extension)
 {
-#ifdef _WIN32
-	static const std::string dir_separators = "\\/:";
-#else
-	static const std::string dir_separators = "/";
-#endif
-
-	std::string::size_type pos = file.find_last_of(dir_separators);
-
-	if(pos == std::string::npos)
-		return file;
-	if(pos >= file.size()-1)
-		return "";
-
-	return file.substr(pos+1);
+	if(!remove_extension) {
+		return bfs::path(file).filename().string();
+	} else {
+		return bfs::path(file).stem().string();
+	}
 }
 
 std::string directory_name(const std::string& file)
-// Analogous to POSIX dirname(3), but for C++ string-object pathnames
 {
-#ifdef _WIN32
-	static const std::string dir_separators = "\\/:";
-#else
-	static const std::string dir_separators = "/";
-#endif
-
-	std::string::size_type pos = file.find_last_of(dir_separators);
-
-	if(pos == std::string::npos)
-		return "";
-
-	return file.substr(0,pos+1);
+	return bfs::path(file).parent_path().string();
 }
 
-namespace {
+std::string nearest_extant_parent(const std::string& file)
+{
+	if(file.empty()) {
+		return "";
+	}
 
+	bfs::path p{file};
+	error_code ec;
+
+	do {
+		p = p.parent_path();
+		bfs::path q = canonical(p, ec);
+		if(!ec) {
+			p = q;
+		}
+	} while(ec && !is_root(p.string()));
+
+	return ec ? "" : p.string();
+}
+
+bool is_path_sep(char c)
+{
+	static const bfs::path sep = bfs::path("/").make_preferred();
+	const std::string s = std::string(1, c);
+	return sep == bfs::path(s).make_preferred();
+}
+
+char path_separator()
+{
+	return bfs::path::preferred_separator;
+}
+
+bool is_root(const std::string& path)
+{
+#ifndef _WIN32
+	error_code ec;
+	const bfs::path& p = bfs::canonical(path, ec);
+	return ec ? false : !p.has_parent_path();
+#else
+	//
+	// Boost.Filesystem is completely unreliable when it comes to detecting
+	// whether a path refers to a drive's root directory on Windows, so we are
+	// forced to take an alternative approach here. Instead of hand-parsing
+	// strings we'll just call a graphical shell service.
+	//
+	// There are several poorly-documented ways to refer to a drive in Windows by
+	// escaping the filesystem namespace using \\.\, \\?\, and \??\. We're just
+	// going to ignore those here, which may yield unexpected results in places
+	// such as the file dialog. This function really shouldn't be used for
+	// security validation anyway, and there are virtually infinite ways to name
+	// a drive's root using the NT object namespace so it's pretty pointless to
+	// try to catch those there.
+	//
+	// (And no, shlwapi.dll's PathIsRoot() doesn't recognize \\.\C:\, \\?\C:\, or
+	// \??\C:\ as roots either.)
+	//
+	// More generally, do NOT use this code in security-sensitive applications.
+	//
+	// See also: <https://googleprojectzero.blogspot.com/2016/02/the-definitive-guide-on-win32-to-nt.html>
+	//
+	const std::wstring& wpath = bfs::path{path}.make_preferred().wstring();
+	return PathIsRootW(wpath.c_str()) == TRUE;
+#endif
+}
+
+std::string root_name(const std::string& path)
+{
+	return bfs::path{path}.root_name().string();
+}
+
+bool is_relative(const std::string& path)
+{
+	return bfs::path{path}.is_relative();
+}
+
+std::string normalize_path(const std::string& fpath, bool normalize_separators, bool resolve_dot_entries)
+{
+	if(fpath.empty()) {
+		return fpath;
+	}
+
+	error_code ec;
+	bfs::path p = resolve_dot_entries ? bfs::canonical(fpath, ec) : bfs::absolute(fpath);
+
+	if(ec) {
+		return "";
+	}
+
+	if(normalize_separators) {
+		return p.make_preferred().string();
+	} else {
+		return p.string();
+	}
+}
+
+/**
+ *  The paths manager is responsible for recording the various paths
+ *  that binary files may be located at.
+ *  It should be passed a config object which holds binary path information.
+ *  This is in the format
+ *@verbatim
+ *    [binary_path]
+ *      path=<path>
+ *    [/binary_path]
+ *  Binaries will be searched for in [wesnoth-path]/data/<path>/images/
+ *@endverbatim
+ */
+namespace
+{
 std::set<std::string> binary_paths;
 
-typedef std::map<std::string,std::vector<std::string> > paths_map;
+typedef std::map<std::string, std::vector<std::string>> paths_map;
 paths_map binary_paths_cache;
 
-}
+} // namespace
 
 static void init_binary_paths()
 {
@@ -987,10 +1172,13 @@ static void init_binary_paths()
 	}
 }
 
-binary_paths_manager::binary_paths_manager() : paths_()
-{}
+binary_paths_manager::binary_paths_manager()
+	: paths_()
+{
+}
 
-binary_paths_manager::binary_paths_manager(const config& cfg) : paths_()
+binary_paths_manager::binary_paths_manager(const config& cfg)
+	: paths_()
 {
 	set_paths(cfg);
 }
@@ -1005,14 +1193,15 @@ void binary_paths_manager::set_paths(const config& cfg)
 	cleanup();
 	init_binary_paths();
 
-	BOOST_FOREACH(const config &bp, cfg.child_range("binary_path"))
-	{
+	for(const config& bp : cfg.child_range("binary_path")) {
 		std::string path = bp["path"].str();
-		if (path.find("..") != std::string::npos) {
-			ERR_FS << "Invalid binary path '" << path << "'" << std::endl;
+		if(path.find("..") != std::string::npos) {
+			ERR_FS << "Invalid binary path '" << path << "'\n";
 			continue;
 		}
-		if (!path.empty() && path[path.size()-1] != '/') path += "/";
+
+		if(!path.empty() && path.back() != '/')
+			path += "/";
 		if(binary_paths.count(path) == 0) {
 			binary_paths.insert(path);
 			paths_.push_back(path);
@@ -1024,8 +1213,8 @@ void binary_paths_manager::cleanup()
 {
 	binary_paths_cache.clear();
 
-	for(std::vector<std::string>::const_iterator i = paths_.begin(); i != paths_.end(); ++i) {
-		binary_paths.erase(*i);
+	for(const std::string& p : paths_) {
+		binary_paths.erase(p);
 	}
 }
 
@@ -1034,6 +1223,46 @@ void clear_binary_paths_cache()
 	binary_paths_cache.clear();
 }
 
+static bool is_legal_file(const std::string& filename_str)
+{
+	DBG_FS << "Looking for '" << filename_str << "'.\n";
+
+	if(filename_str.empty()) {
+		LOG_FS << "  invalid filename\n";
+		return false;
+	}
+
+	if(filename_str.find("..") != std::string::npos) {
+		ERR_FS << "Illegal path '" << filename_str << "' (\"..\" not allowed).\n";
+		return false;
+	}
+
+	if(filename_str.find('\\') != std::string::npos) {
+		ERR_FS << "Illegal path '" << filename_str
+			   << R"end(' ("\" not allowed, for compatibility with GNU/Linux and macOS).)end" << std::endl;
+		return false;
+	}
+
+	bfs::path filepath(filename_str);
+
+	if(default_blacklist.match_file(filepath.filename().string())) {
+		ERR_FS << "Illegal path '" << filename_str << "' (blacklisted filename)." << std::endl;
+		return false;
+	}
+
+	if(std::any_of(filepath.begin(), filepath.end(),
+			   [](const bfs::path& dirname) { return default_blacklist.match_dir(dirname.string()); })) {
+		ERR_FS << "Illegal path '" << filename_str << "' (blacklisted directory name)." << std::endl;
+		return false;
+	}
+
+	return true;
+}
+
+/**
+ * Returns a vector with all possible paths to a given type of binary,
+ * e.g. 'images', 'sounds', etc,
+ */
 const std::vector<std::string>& get_binary_paths(const std::string& type)
 {
 	const paths_map::const_iterator itor = binary_paths_cache.find(type);
@@ -1041,9 +1270,9 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 		return itor->second;
 	}
 
-	if (type.find("..") != std::string::npos) {
+	if(type.find("..") != std::string::npos) {
 		// Not an assertion, as language.cpp is passing user data as type.
-		ERR_FS << "Invalid WML type '" << type << "' for binary paths" << std::endl;
+		ERR_FS << "Invalid WML type '" << type << "' for binary paths\n";
 		static std::vector<std::string> dummy;
 		return dummy;
 	}
@@ -1052,8 +1281,7 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 
 	init_binary_paths();
 
-	BOOST_FOREACH(const std::string &path, binary_paths)
-	{
+	for(const std::string& path : binary_paths) {
 		res.push_back(get_user_data_dir() + "/" + path + type + "/");
 
 		if(!game_config::path.empty()) {
@@ -1064,288 +1292,189 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 	// not found in "/type" directory, try main directory
 	res.push_back(get_user_data_dir() + "/");
 
-	if(!game_config::path.empty())
-		res.push_back(game_config::path+"/");
+	if(!game_config::path.empty()) {
+		res.push_back(game_config::path + "/");
+	}
 
 	return res;
 }
 
 std::string get_binary_file_location(const std::string& type, const std::string& filename)
 {
-	DBG_FS << "Looking for '" << filename << "'." << std::endl;
+	// We define ".." as "remove everything before" this is needed because
+	// on the one hand allowing ".." would be a security risk but
+	// especially for terrains the c++ engine puts a hardcoded "terrain/" before filename
+	// and there would be no way to "escape" from "terrain/" otherwise. This is not the
+	// best solution but we cannot remove it without another solution (subtypes maybe?).
 
-	if (filename.empty()) {
-		LOG_FS << "  invalid filename (type: " << type <<")" << std::endl;
-		return std::string();
-	}
-
-	// Some parts of Wesnoth enjoy putting ".." inside filenames. This is
-	// bad and should be fixed. But in the meantime, deal with them in a dumb way.
-	std::string::size_type pos = filename.rfind("../");
-	if (pos != std::string::npos) {
-		std::string nf = filename.substr(pos + 3);
-		LOG_FS << "Illegal path '" << filename << "' replaced by '" << nf << "'" << std::endl;
-		return get_binary_file_location(type, nf);
-	}
-
-	if (filename.find("..") != std::string::npos) {
-		ERR_FS << "Illegal path '" << filename << "' (\"..\" not allowed)." << std::endl;
-		return std::string();
-	}
-
-	BOOST_FOREACH(const std::string &path, get_binary_paths(type))
 	{
-		const std::string file = path + filename;
-		DBG_FS << "  checking '" << path << "'" << std::endl;
-		if(file_exists(file)) {
-			DBG_FS << "  found at '" << file << "'" << std::endl;
-			return file;
+		std::string::size_type pos = filename.rfind("../");
+		if(pos != std::string::npos) {
+			return get_binary_file_location(type, filename.substr(pos + 3));
 		}
 	}
 
-	DBG_FS << "  not found" << std::endl;
-	return std::string();
-}
-
-std::string get_binary_dir_location(const std::string &type, const std::string &filename)
-{
-	DBG_FS << "Looking for '" << filename << "'." << std::endl;
-
-	if (filename.empty()) {
-		LOG_FS << "  invalid filename (type: " << type <<")" << std::endl;
+	if(!is_legal_file(filename)) {
 		return std::string();
 	}
 
-	if (filename.find("..") != std::string::npos) {
-		ERR_FS << "Illegal path '" << filename << "' (\"..\" not allowed)." << std::endl;
-		return std::string();
-	}
+	for(const std::string& bp : get_binary_paths(type)) {
+		bfs::path bpath(bp);
+		bpath /= filename;
 
-	BOOST_FOREACH(const std::string &path, get_binary_paths(type))
-	{
-		const std::string file = path + filename;
-		DBG_FS << "  checking '" << path << "'" << std::endl;
-		if (is_directory(file)) {
-			DBG_FS << "  found at '" << file << "'" << std::endl;
-			return file;
+		DBG_FS << "  checking '" << bp << "'\n";
+
+		if(file_exists(bpath)) {
+			DBG_FS << "  found at '" << bpath.string() << "'\n";
+			return bpath.string();
 		}
 	}
 
-	DBG_FS << "  not found" << std::endl;
+	DBG_FS << "  not found\n";
 	return std::string();
 }
 
-std::string get_wml_location(const std::string &filename, const std::string &current_dir)
+std::string get_binary_dir_location(const std::string& type, const std::string& filename)
 {
-	DBG_FS << "Looking for '" << filename << "'." << std::endl;
+	if(!is_legal_file(filename)) {
+		return std::string();
+	}
+
+	for(const std::string& bp : get_binary_paths(type)) {
+		bfs::path bpath(bp);
+		bpath /= filename;
+		DBG_FS << "  checking '" << bp << "'\n";
+		if(is_directory_internal(bpath)) {
+			DBG_FS << "  found at '" << bpath.string() << "'\n";
+			return bpath.string();
+		}
+	}
+
+	DBG_FS << "  not found\n";
+	return std::string();
+}
+
+std::string get_wml_location(const std::string& filename, const std::string& current_dir)
+{
+	if(!is_legal_file(filename)) {
+		return std::string();
+	}
 
 	assert(game_config::path.empty() == false);
 
-	std::string result;
+	bfs::path fpath(filename);
+	bfs::path result;
 
-	if (filename.empty()) {
-		LOG_FS << "  invalid filename" << std::endl;
-		return result;
-	}
-
-	if (filename.find("..") != std::string::npos) {
-		ERR_FS << "Illegal path '" << filename << "' (\"..\" not allowed)." << std::endl;
-		return result;
-	}
-
-	bool already_found = false;
-
-	if (filename[0] == '~')
-	{
-		// If the filename starts with '~', look in the user data directory.
-		result = get_user_data_dir() + "/data/" + filename.substr(1);
-		DBG_FS << "  trying '" << result << "'" << std::endl;
-
-		already_found = file_exists(result) || is_directory(result);
-	}
-	else if (filename.size() >= 2 && filename[0] == '.' && filename[1] == '/')
-	{
-		// If the filename begins with a "./", look in the same directory
-		// as the file currently being preprocessed.
-
-		if (!current_dir.empty())
-		{
-			result = current_dir;
-		}
-		else
-		{
-			result = game_config::path;
+	if(filename[0] == '~') {
+		result /= get_user_data_path() / "data" / filename.substr(1);
+		DBG_FS << "  trying '" << result.string() << "'\n";
+	} else if(*fpath.begin() == ".") {
+		if(!current_dir.empty()) {
+			result /= bfs::path(current_dir);
+		} else {
+			result /= bfs::path(game_config::path) / "data";
 		}
 
-		result += filename.substr(2);
+		result /= filename;
+	} else if(!game_config::path.empty()) {
+		result /= bfs::path(game_config::path) / "data" / filename;
 	}
-	else if (!game_config::path.empty())
-		result = game_config::path + "/data/" + filename;
 
-	DBG_FS << "  trying '" << result << "'" << std::endl;
-
-	if (result.empty() ||
-	    (!already_found && !file_exists(result) && !is_directory(result)))
-	{
-		DBG_FS << "  not found" << std::endl;
+	if(result.empty() || !file_exists(result)) {
+		DBG_FS << "  not found\n";
 		result.clear();
+	} else {
+		DBG_FS << "  found: '" << result.string() << "'\n";
 	}
-	else
-		DBG_FS << "  found: '" << result << "'" << std::endl;
 
-	return result;
+	return result.string();
 }
 
-std::string get_short_wml_path(const std::string &filename)
+static bfs::path subtract_path(const bfs::path& full, const bfs::path& prefix)
 {
-	std::string match = get_user_data_dir() + "/data/";
-	if (filename.find(match) == 0) {
-		return "~" + filename.substr(match.size());
+	bfs::path::iterator fi = full.begin(), fe = full.end(), pi = prefix.begin(), pe = prefix.end();
+	while(fi != fe && pi != pe && *fi == *pi) {
+		++fi;
+		++pi;
 	}
-	match = game_config::path + "/data/";
-	if (filename.find(match) == 0) {
-		return filename.substr(match.size());
+
+	bfs::path rest;
+	if(pi == pe) {
+		while(fi != fe) {
+			rest /= *fi;
+			++fi;
+		}
 	}
+
+	return rest;
+}
+
+std::string get_short_wml_path(const std::string& filename)
+{
+	bfs::path full_path(filename);
+
+	bfs::path partial = subtract_path(full_path, get_user_data_path() / "data");
+	if(!partial.empty()) {
+		return "~" + partial.generic_string();
+	}
+
+	partial = subtract_path(full_path, bfs::path(game_config::path) / "data");
+	if(!partial.empty()) {
+		return partial.generic_string();
+	}
+
 	return filename;
 }
 
-std::string get_independent_image_path(const std::string &filename)
+std::string get_independent_image_path(const std::string& filename)
 {
-	std::string full_path = get_binary_file_location("images", filename);
+	bfs::path full_path(get_binary_file_location("images", filename));
 
-	if(!full_path.empty()) {
-		std::string match = get_user_data_dir() + "/";
-		if(full_path.find(match) == 0) {
-			return full_path.substr(match.size());
-		}
-		match = game_config::path + "/";
-		if(full_path.find(match) == 0) {
-			return full_path.substr(match.size());
-		}
+	if(full_path.empty()) {
+		return full_path.generic_string();
 	}
 
-	return full_path;
+	bfs::path partial = subtract_path(full_path, get_user_data_path());
+	if(!partial.empty()) {
+		return partial.generic_string();
+	}
+
+	partial = subtract_path(full_path, game_config::path);
+	if(!partial.empty()) {
+		return partial.generic_string();
+	}
+
+	return full_path.generic_string();
 }
 
-std::string get_program_invocation(const std::string& program_name) {
+std::string get_program_invocation(const std::string& program_name)
+{
+	const std::string real_program_name(program_name
 #ifdef DEBUG
-  #ifdef _WIN32
-	const char *program_suffix = "-debug.exe";
-  #else
-	const char *program_suffix = "-debug";
-  #endif
-#else
-  #ifdef _WIN32
-	const char *program_suffix = ".exe";
-  #else
-	const char *program_suffix = "";
-  #endif
+										+ "-debug"
 #endif
-
-	const std::string real_program_name(program_name + program_suffix);
-	if(game_config::wesnoth_program_dir.empty()) return real_program_name;
 #ifdef _WIN32
-	return game_config::wesnoth_program_dir + "\\" + real_program_name;
-#else
-	return game_config::wesnoth_program_dir + "/" + real_program_name;
+										+ ".exe"
 #endif
+	);
+
+	return (bfs::path(game_config::wesnoth_program_dir) / real_program_name).string();
 }
 
-bool is_path_sep(char c)
+std::string sanitize_path(const std::string& path)
 {
 #ifdef _WIN32
-	if (c == '/' || c == '\\') return true;
+	const char* user_name = getenv("USERNAME");
 #else
-	if (c == '/') return true;
-#endif
-	return false;
-}
-
-std::string normalize_path(const std::string &p1)
-{
-	if (p1.empty()) return p1;
-
-	std::string p2;
-#ifdef _WIN32
-	if (p1.size() >= 2 && p1[1] == ':')
-		// Windows relative paths with explicit drive name are not handled.
-		p2 = p1;
-	else
-#endif
-	if (!is_path_sep(p1[0]))
-		p2 = get_cwd() + "/" + p1;
-	else
-		p2 = p1;
-
-#ifdef _WIN32
-	std::string drive;
-	if (p2.size() >= 2 && p2[1] == ':') {
-		drive = p2.substr(0, 2);
-		p2.erase(0, 2);
-	}
+	const char* user_name = getenv("USER");
 #endif
 
-	std::vector<std::string> components(1);
-	for (int i = 0, i_end = p2.size(); i <= i_end; ++i)
-	{
-		std::string &last = components[components.size() - 1];
-		char c = p2.c_str()[i];
-		if (is_path_sep(c) || c == 0)
-		{
-			if (last == ".")
-				last.clear();
-			else if (last == "..")
-			{
-				if (components.size() >= 2) {
-					components.pop_back();
-					components[components.size() - 1].clear();
-				} else
-					last.clear();
-			}
-			else if (!last.empty())
-				components.push_back(std::string());
-		}
-		else
-			last += c;
+	std::string canonicalized = filesystem::normalize_path(path, true, false);
+	if(user_name != nullptr) {
+		boost::replace_all(canonicalized, user_name, "USER");
 	}
 
-	std::ostringstream p4;
-	components.pop_back();
-
-#ifdef _WIN32
-	p4 << drive;
-#endif
-
-	BOOST_FOREACH(const std::string &s, components)
-	{
-		p4 << '/' << s;
-	}
-
-	DBG_FS << "Normalizing '" << p2 << "' to '" << p4.str() << "'" << std::endl;
-
-	return p4.str();
+	return canonicalized;
 }
 
-scoped_istream& scoped_istream::operator=(std::istream *s)
-{
-	delete stream;
-	stream = s;
-	return *this;
-}
-
-scoped_istream::~scoped_istream()
-{
-	delete stream;
-}
-
-scoped_ostream& scoped_ostream::operator=(std::ostream *s)
-{
-	delete stream;
-	stream = s;
-	return *this;
-}
-
-scoped_ostream::~scoped_ostream()
-{
-	delete stream;
-}
+} // namespace filesystem

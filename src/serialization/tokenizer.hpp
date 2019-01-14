@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2004 - 2009 by Philippe Plantier <ayin@anathas.org>
-   Copyright (C) 2010 - 2014 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org
+   Copyright (C) 2010 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef TOKENIZER_H_INCLUDED
-#define TOKENIZER_H_INCLUDED
+#pragma once
 
 //#define DEBUG_TOKENIZER
 
@@ -22,8 +21,6 @@
 
 #include <istream>
 #include <string>
-
-class config;
 
 struct token
 {
@@ -98,7 +95,7 @@ private:
 
 	void next_char()
 	{
-		if (UNLIKELY(current_ == '\n'))
+		if (current_ == '\n')
 			++lineno_;
 		next_char_fast();
 	}
@@ -107,15 +104,15 @@ private:
 	{
 		do {
 			current_ = in_.get();
-		} while (UNLIKELY(current_ == '\r'));
+		} while (current_ == '\r');
 #if 0
-			/// @todo disabled untill campaign server is fixed
-			if(LIKELY(in_.good())) {
+			/// @todo disabled until the campaign server is fixed
+			if(in_.good()) {
 				current_ = in_.get();
-				if (UNLIKELY(current_ == '\r'))
+				if (current_ == '\r')
 				{
 					// we assume that there is only one '\r'
-					if(LIKELY(in_.good())) {
+					if(in_.good()) {
 						current_ = in_.get();
 					} else {
 						current_ = EOF;
@@ -177,6 +174,3 @@ private:
 	buffered_istream in_;
 	char char_types_[128];
 };
-
-#endif
-

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-18 09:41+0200\n"
+"POT-Creation-Date: 2018-02-12 17:01 UTC\n"
 "PO-Revision-Date: 2009-10-12 18:45-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -40,7 +40,7 @@ msgstr ""
 "𐑕𐑧𐑑𐑦𐑙𐑟. 𐑮𐑧𐑒𐑩𐑥𐑧𐑯𐑛𐑩𐑛 𐑕𐑑𐑸𐑑𐑦𐑙 gold=100."
 
 #. [part]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:24
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:27
 msgid ""
 "In the aftermath of the great war the remnants of humanity fled to an "
 "obscure secluded glen. Though they knew they could not hide from the mighty "
@@ -52,65 +52,96 @@ msgstr ""
 "𐑤𐑰𐑛𐑼𐑟 𐑝 𐑞 𐑮𐑦𐑟𐑦𐑕𐑑𐑩𐑯𐑕 𐑣𐑴𐑐𐑑 𐑴𐑯𐑤𐑦 𐑓𐑹 𐑦𐑯𐑳𐑓 𐑑𐑲𐑥 𐑑 𐑮𐑰𐑚𐑦𐑤𐑛 𐑞𐑺 𐑓𐑹𐑕𐑩𐑟."
 
 #. [objectives]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:32
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:35
 msgid "Right-click on your leader during your turn for help"
 msgstr "𐑮𐑲𐑑-𐑒𐑤𐑦𐑒 𐑪𐑯 𐑿𐑼 𐑤𐑰𐑛𐑻 𐑛𐑘𐑫𐑼𐑦𐑙 𐑿𐑼 𐑑𐑻𐑯 𐑓𐑹 𐑣𐑧𐑤𐑐"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:34
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:37
 msgid "You must survive until turn 25."
 msgstr "𐑿 𐑥𐑳𐑕𐑑 𐑕𐑻𐑝𐑲𐑝 𐑳𐑯𐑑𐑦𐑤 𐑑𐑻𐑯 25."
 
 #. [side]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:51
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:66
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:81
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:96
-msgid "teamname^Team 1"
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:57
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:71
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:85
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:99
+#, fuzzy
+#| msgid "teamname^Team 1"
+msgid "teamname^Settlers"
 msgstr "𐑑𐑰𐑥 1"
 
 #. [side]: type=Death Knight
 #. [side]: type=Orcish Sovereign
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:114
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:141
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:168
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:195
-msgid "teamname^Team 2"
-msgstr "𐑑𐑰𐑥 2"
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:117
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:148
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:179
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:210
+#, fuzzy
+#| msgid "teamname^Team 1"
+msgid "teamname^Enemies"
+msgstr "𐑑𐑰𐑥 1"
+
+#. [side]: type=Death Knight
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:126
+msgid "Mal Sevu"
+msgstr ""
+
+#. [side]: type=Orcish Sovereign
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:157
+msgid "Gol Goroth"
+msgstr ""
+
+#. [side]: type=Orcish Sovereign
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:188
+msgid "Greg"
+msgstr ""
+
+#. [side]: type=Death Knight
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:219
+msgid "Mal Shiki"
+msgstr ""
+
+#. [side]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:245
+#, fuzzy
+#| msgid "teamname^Team 1"
+msgid "teamname^Prisoners"
+msgstr "𐑑𐑰𐑥 1"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:407
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:426
 msgid ""
 "You destroy the mushroom mine. The northwest undead now have 10 less income."
 msgstr "𐑿 𐑛𐑩𐑕𐑑𐑮𐑶 𐑞 𐑥𐑳𐑖𐑮𐑵𐑥 𐑥𐑲𐑯. 𐑞 𐑯𐑹𐑔𐑢𐑧𐑕𐑑 𐑳𐑯𐑛𐑧𐑛 𐑯𐑬 𐑣𐑨𐑝 10 𐑤𐑧𐑕 𐑦𐑯𐑒𐑳𐑥."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:430
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:449
 msgid ""
 "You destroy the mushroom mine. The northeast orcs now have 10 less income."
 msgstr "𐑿 𐑛𐑩𐑕𐑑𐑮𐑶 𐑞 𐑥𐑳𐑖𐑮𐑵𐑥 𐑥𐑲𐑯. 𐑞 𐑯𐑹𐑔𐑰𐑕𐑑 𐑹𐑒𐑕 𐑯𐑬 𐑣𐑨𐑝 10 𐑤𐑧𐑕 𐑦𐑯𐑒𐑳𐑥."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:453
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:472
 msgid ""
 "You destroy the mushroom mine. The southwest orcs now have 10 less income."
 msgstr "𐑿 𐑛𐑩𐑕𐑑𐑮𐑶 𐑞 𐑥𐑳𐑖𐑮𐑵𐑥 𐑥𐑲𐑯. 𐑞 𐑕𐑬𐑔𐑢𐑧𐑕𐑑 𐑹𐑒𐑕 𐑯𐑬 𐑣𐑨𐑝 10 𐑤𐑧𐑕 𐑦𐑯𐑒𐑳𐑥."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:476
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:495
 msgid ""
 "You destroy the mushroom mine. The southeast undead now have 10 less income."
 msgstr "𐑿 𐑛𐑩𐑕𐑑𐑮𐑶 𐑞 𐑥𐑳𐑖𐑮𐑵𐑥 𐑥𐑲𐑯. 𐑞 𐑕𐑬𐑔𐑰𐑕𐑑 𐑳𐑯𐑛𐑧𐑛 𐑯𐑬 𐑣𐑨𐑝 10 𐑤𐑧𐑕 𐑦𐑯𐑒𐑳𐑥."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:585
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:604
 msgid ""
 "One of your peasants has happened upon some spiders’ nests in the north and "
 "south."
 msgstr "𐑢𐑳𐑯 𐑝 𐑿𐑼 𐑐𐑧𐑟𐑩𐑯𐑑𐑕 𐑣𐑨𐑟 𐑣𐑨𐑐𐑩𐑯𐑛 𐑩𐑐𐑪𐑯 𐑕𐑳𐑥 𐑕𐑐𐑲𐑛𐑻𐑟 𐑯𐑧𐑕𐑑𐑕 𐑦𐑯 𐑞 𐑯𐑹𐑔 𐑯 𐑕𐑬𐑔."
 
 #. [message]: type=Peasant
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:591
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:610
 #, fuzzy
 #| msgid ""
 #| "I swear I saw somebody trapped in the spider’s web. Maybe we should "
@@ -121,7 +152,7 @@ msgid ""
 msgstr "𐑲 𐑕𐑢𐑺 𐑲 𐑕𐑷 𐑕𐑳𐑥𐑚𐑪𐑛𐑦 𐑑𐑮𐑨𐑐𐑑 𐑦𐑯 𐑞 𐑕𐑐𐑲𐑛𐑻𐑟 𐑢𐑧𐑚. 𐑥𐑱𐑚𐑰 𐑢𐑰 𐑖𐑫𐑛 𐑮𐑧𐑕𐑒𐑿 𐑞𐑧𐑥?"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:613
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:632
 msgid ""
 "Move any unit next to these captives and they will join your side. The "
 "spiders guarding each captive are currently wounded, the sooner you get "
@@ -131,13 +162,13 @@ msgstr ""
 "𐑒𐑨𐑐𐑑𐑦𐑝 𐑸 𐑒𐑳𐑮𐑩𐑯𐑑𐑤𐑦 𐑢𐑵𐑯𐑛𐑩𐑛, 𐑞 𐑕𐑵𐑯𐑼 𐑿 𐑜𐑧𐑑 𐑞𐑺 𐑞 𐑚𐑧𐑑𐑼 𐑗𐑭𐑯𐑕 𐑿 𐑣𐑨𐑝 𐑝 𐑒𐑦𐑤𐑦𐑙 𐑞𐑧𐑥."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:625
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:644
 msgid ""
 "Your men report strange sounds coming from some caves to the east and west."
 msgstr "𐑿𐑼 𐑥𐑧𐑯 𐑮𐑩𐑐𐑹𐑑 𐑕𐑑𐑮𐑱𐑯𐑡 𐑕𐑬𐑯𐑛𐑟 𐑒𐑳𐑥𐑦𐑙 𐑓𐑮𐑪𐑥 𐑕𐑳𐑥 𐑒𐑱𐑝𐑟 𐑑 𐑞 𐑰𐑕𐑑 𐑯 𐑢𐑧𐑕𐑑."
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:631
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:650
 msgid ""
 "It would seem the enemy has built some underground mushroom mines nearby — "
 "it must be where the mainstay of their resources are produced. If we could "
@@ -148,7 +179,7 @@ msgstr ""
 "𐑕𐑴 𐑕𐑤𐑦𐑥."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:653
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:672
 msgid ""
 "Move any unit onto these villages to destroy the mine. Each one you destroy "
 "will reduce the enemy’s income by 10."
@@ -157,12 +188,12 @@ msgstr ""
 "𐑧𐑯𐑩𐑥𐑦'𐑟 𐑦𐑯𐑒𐑳𐑥 𐑚𐑲 10."
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:666
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:685
 msgid "This battle is nearly at an end. Victory is close at hand!"
 msgstr "𐑞𐑦𐑕 𐑚𐑨𐑑𐑩𐑤 𐑦𐑟 𐑯𐑽𐑤𐑦 𐑨𐑑 𐑩𐑯 𐑧𐑯𐑛. 𐑝𐑦𐑒𐑑𐑼𐑦 𐑦𐑟 𐑒𐑤𐑴𐑟 𐑨𐑑 𐑣𐑨𐑯𐑛!"
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:678
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:697
 msgid ""
 "We have survived the onslaught! The tide of the battle has turned, victory "
 "cannot elude us now!"
@@ -170,27 +201,27 @@ msgstr ""
 "𐑢𐑰 𐑣𐑨𐑝 𐑕𐑻𐑝𐑲𐑝𐑛 𐑞 𐑪𐑯𐑕𐑤𐑪𐑑! 𐑞 𐑑𐑲𐑛 𐑝 𐑞 𐑚𐑨𐑑𐑩𐑤 𐑣𐑨𐑟 𐑑𐑻𐑯𐑛, 𐑝𐑦𐑒𐑑𐑼𐑦 𐑒𐑨𐑯𐑪𐑑 𐑦𐑤𐑵𐑛 𐑳𐑕 𐑯𐑬!"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:682
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:701
 msgid "You have won the game, but you may continue if you wish..."
 msgstr "𐑿 𐑣𐑨𐑝 𐑢𐑳𐑯 𐑞 𐑜𐑱𐑥, 𐑚𐑳𐑑 𐑿 𐑥𐑱 𐑒𐑩𐑯𐑑𐑦𐑯𐑿 𐑦𐑓 𐑿 𐑢𐑦𐑖..."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:698
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:717
 msgid "I have fallen, but all is not lost!"
 msgstr "𐑲 𐑣𐑨𐑝 𐑓𐑷𐑤𐑩𐑯, 𐑚𐑳𐑑 𐑷𐑤 𐑦𐑟 𐑯𐑪𐑑 𐑤𐑪𐑕𐑑!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:711
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:730
 msgid "I am done for, but we have yet to lose this battle!"
 msgstr "𐑲 𐑨𐑥 𐑛𐑳𐑯 𐑓𐑹, 𐑚𐑳𐑑 𐑢𐑰 𐑣𐑨𐑝 𐑘𐑧𐑑 𐑑 𐑤𐑵𐑟 𐑞𐑦𐑕 𐑚𐑨𐑑𐑩𐑤!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:724
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:743
 msgid "Comrades, avenge me!"
 msgstr "𐑒𐑪𐑥𐑮𐑩𐑛𐑟, 𐑩𐑝𐑧𐑯𐑡 𐑥𐑰!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:737
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:756
 msgid "Do not fear, there is hope for us still!"
 msgstr "𐑛𐑵 𐑯𐑪𐑑 𐑓𐑽, 𐑞𐑺 𐑦𐑟 𐑣𐑴𐑐 𐑓𐑹 𐑳𐑕 𐑕𐑑𐑦𐑤!"
 
@@ -205,7 +236,7 @@ msgid "Return to menu"
 msgstr "𐑮𐑦𐑑𐑻𐑯 𐑑 𐑥𐑧𐑯𐑿"
 
 #. [message]: speaker=narrator
-#. [option]: speaker=narrator
+#. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:16
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:125
 msgid "Peasants"
@@ -222,7 +253,7 @@ msgstr ""
 "𐑑𐑺𐑩𐑓𐑹𐑥 𐑞 𐑤𐑨𐑯𐑛𐑕𐑒𐑨𐑐 𐑯/𐑹 𐑚𐑦𐑤𐑛 𐑒𐑭𐑕𐑩𐑤𐑟, 𐑥𐑲𐑯𐑟, 𐑓𐑸𐑥𐑟, 𐑝𐑦𐑤𐑦𐑡𐑦𐑟 𐑯 𐑿𐑯𐑦𐑝𐑻𐑕𐑩𐑑𐑦𐑟."
 
 #. [message]: speaker=narrator
-#. [option]: speaker=narrator
+#. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:27
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:132
 msgid "Mages"
@@ -238,7 +269,7 @@ msgstr ""
 "𐑓𐑸𐑥𐑦𐑙 𐑯 𐑮𐑩𐑒𐑮𐑵𐑑𐑥𐑩𐑯𐑑."
 
 #. [message]: speaker=narrator
-#. [option]: speaker=narrator
+#. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:37
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:139
 msgid "Farms"
@@ -254,7 +285,7 @@ msgstr ""
 "𐑑 𐑷𐑑𐑩𐑥𐑨𐑑𐑦𐑒𐑤𐑦 𐑣𐑸𐑝𐑧𐑕𐑑 𐑞 𐑒𐑨𐑖 𐑒𐑮𐑪𐑐."
 
 #. [message]: speaker=narrator
-#. [option]: speaker=narrator
+#. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:47
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:146
 msgid "Villages"
@@ -271,7 +302,7 @@ msgstr ""
 "𐑒𐑤𐑦𐑒 𐑪𐑯 𐑩 𐑐𐑧𐑟𐑩𐑯𐑑 𐑦𐑯 𐑩 𐑝𐑦𐑤𐑦𐑡 𐑯 𐑿 𐑒𐑨𐑯 𐑩𐑕𐑑𐑨𐑚𐑤𐑦𐑖 𐑩 𐑿𐑯𐑦𐑝𐑻𐑕𐑩𐑑𐑦."
 
 #. [message]: speaker=narrator
-#. [option]: speaker=narrator
+#. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:57
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:153
 msgid "Mines"
@@ -287,7 +318,7 @@ msgstr ""
 "𐑜𐑴𐑤𐑛 𐑨𐑑 𐑞 𐑕𐑑𐑸𐑑 𐑝 𐑿𐑼 𐑑𐑻𐑯."
 
 #. [message]: speaker=narrator
-#. [option]: speaker=narrator
+#. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:67
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:160
 msgid "Universities"
@@ -306,11 +337,11 @@ msgstr ""
 "𐑒𐑤𐑦𐑒 𐑪𐑯 𐑩 𐑥𐑱𐑡 𐑦𐑯 𐑩 𐑿𐑯𐑦𐑝𐑻𐑕𐑩𐑑𐑦 𐑑 𐑗𐑱𐑯𐑡 𐑮𐑰𐑕𐑻𐑗 𐑑𐑸𐑜𐑧𐑑."
 
 #. [message]: speaker=narrator
-#. [option]: speaker=narrator
+#. [option]
 #. [set_menu_item]: id=anl_diplomacy
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:77
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:167
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:196
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:199
 msgid "Diplomacy"
 msgstr "𐑛𐑦𐑐𐑤𐑴𐑥𐑩𐑕𐑰"
 
@@ -338,7 +369,7 @@ msgstr "𐑩 𐑯𐑿 𐑤𐑨𐑯𐑛 - 𐑣𐑧𐑤𐑐"
 msgid "Select a topic."
 msgstr "𐑕𐑩𐑤𐑧𐑒𐑑 𐑩 𐑑𐑪𐑐𐑦𐑒."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:115
 msgid "Done"
 msgstr "𐑛𐑳𐑯"
@@ -349,7 +380,7 @@ msgid "I hereby donate 20 gold to the coffers of $df_player_name|."
 msgstr "𐑲 𐑣𐑽𐑚𐑲 𐑛𐑴𐑯𐑱𐑑 20 𐑜𐑴𐑤𐑛 𐑑 𐑞 𐑒𐑭𐑓𐑻𐑟 𐑝 $df_player_name|."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:100
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:101
 msgid ""
 "$sf_player_name|, since our wisdom exceeds yours I have instructed my "
 "scholars to further your understanding of agriculture."
@@ -358,7 +389,7 @@ msgstr ""
 "𐑓𐑻𐑞𐑼 𐑿𐑼 𐑳𐑯𐑛𐑼𐑕𐑑𐑨𐑯𐑛𐑦𐑙 𐑝 𐑨𐑜𐑮𐑦𐑒𐑳𐑤𐑗𐑼."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:138
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:140
 msgid ""
 "$sm_player_name|, since the wisdom of my people exceeds yours I have "
 "instructed my scholars to aid you in your efforts to learn the science of "
@@ -368,7 +399,7 @@ msgstr ""
 "𐑕𐑒𐑭𐑤𐑻𐑟 𐑑 𐑲𐑛 𐑿 𐑦𐑯 𐑿𐑼 𐑧𐑓𐑼𐑑𐑕 𐑑 𐑤𐑻𐑯 𐑞 𐑕𐑲𐑩𐑯𐑕 𐑝 𐑥𐑲𐑯𐑦𐑙."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:183
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:186
 msgid ""
 "You know worryingly little about the arts of war, $sw_player_name|. I feel "
 "an obligation to instruct you in this vital matter."
@@ -377,7 +408,7 @@ msgstr ""
 "𐑦𐑯𐑕𐑑𐑮𐑳𐑒𐑑 𐑿 𐑦𐑯 𐑞𐑦𐑕 𐑝𐑲𐑑𐑩𐑤 𐑥𐑨𐑑𐑼."
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:249
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:248
 #, fuzzy
 #| msgid ""
 #| "$player_name\n"
@@ -390,7 +421,7 @@ msgstr ""
 "𐑖𐑺 𐑯𐑪𐑤𐑦𐑡 𐑝 𐑨𐑜𐑮𐑦𐑒𐑳𐑤𐑗𐑼"
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:256
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:255
 #, fuzzy
 #| msgid ""
 #| "$player_name\n"
@@ -403,7 +434,7 @@ msgstr ""
 "𐑖𐑺 𐑯𐑪𐑤𐑦𐑡 𐑝 𐑥𐑲𐑯𐑦𐑙"
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:263
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:262
 #, fuzzy
 #| msgid ""
 #| "$player_name\n"
@@ -416,24 +447,24 @@ msgstr ""
 "𐑖𐑺 𐑯𐑪𐑤𐑦𐑡 𐑝 𐑢𐑹𐑓𐑺"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:293
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:292
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:330
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:374
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:375
 msgid "Diplomatic Options"
 msgstr "𐑛𐑦𐑐𐑤𐑩𐑥𐑨𐑑𐑦𐑒 𐑪𐑐𐑖𐑩𐑯𐑟"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:296
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:295
 msgid "What shall I do?"
 msgstr "𐑢𐑪𐑑 𐑖𐑨𐑤 𐑲 𐑛𐑵?"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:302
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:54
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:301
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:47
 msgid "Nothing"
 msgstr "𐑯𐑳𐑔𐑦𐑙"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:314
 #, fuzzy
 msgid ""
@@ -448,14 +479,14 @@ msgstr ""
 msgid "Who will you donate funds to?"
 msgstr "𐑣𐑵 𐑢𐑦𐑤 𐑿 𐑛𐑴𐑯𐑱𐑑 𐑓𐑩𐑯𐑛𐑟 𐑑?"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:336
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:380
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:381
 msgid "Back"
 msgstr "𐑚𐑨𐑒"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:358
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:359
 #, fuzzy
 msgid ""
 "<span color='green'>Share Knowledge</span>\n"
@@ -465,12 +496,12 @@ msgstr ""
 "𐑣𐑧𐑤𐑐 𐑩𐑯 𐑨𐑤𐑲 𐑢𐑦𐑞 𐑞𐑺 𐑮𐑰𐑕𐑻𐑗"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:377
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:378
 msgid "Who will you share knowledge with?"
 msgstr "𐑣𐑵 𐑢𐑦𐑤 𐑿 𐑖𐑺 𐑯𐑪𐑤𐑦𐑡 𐑢𐑦𐑞?"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:415
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:417
 #, fuzzy
 msgid ""
 "<span color='green'>Negotiate with the Dwarves</span>\n"
@@ -483,8 +514,8 @@ msgstr ""
 "𐑯𐑦𐑜𐑴𐑖𐑰𐑱𐑖𐑩𐑯 𐑐𐑮𐑩𐑜𐑮𐑧𐑕: $player_$side_number|.leader_option_1.progress|/$player_"
 "$side_number|.leader_option_1.target"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:470
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:473
 #, fuzzy
 msgid ""
 "<span color='green'>Negotiate with the Elves</span>\n"
@@ -498,13 +529,13 @@ msgstr ""
 "$side_number|.leader_option_2.target"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:538
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:570
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:541
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:573
 msgid "Negotiation Complete"
 msgstr "𐑯𐑦𐑜𐑴𐑖𐑰𐑱𐑖𐑩𐑯 𐑒𐑩𐑥𐑐𐑤𐑰𐑑"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:541
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:544
 msgid ""
 "Our talks are complete — the Dwarves will gladly fight by your side. Which "
 "of our brethren do you want to recruit?"
@@ -513,7 +544,7 @@ msgstr ""
 "𐑢𐑪𐑯𐑑 𐑑 𐑮𐑩𐑒𐑮𐑵𐑑?"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:573
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:576
 msgid ""
 "Our talks are complete — the Elves shall aid you in this battle. Which our "
 "of kin do you wish to recruit?"
@@ -526,32 +557,32 @@ msgstr ""
 msgid "Choose New Recruit"
 msgstr "𐑗𐑵𐑟 𐑯𐑿 𐑮𐑩𐑒𐑮𐑵𐑑"
 
-#. [message]: speaker=narrator
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:62
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:245
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:277
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:304
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:58
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:236
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:268
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:295
 msgid "Study Complete"
 msgstr "𐑕𐑑𐑳𐑛𐑦 𐑒𐑩𐑥𐑐𐑤𐑰𐑑"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:64
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:59
 msgid "Which type of unit would you like to be able to recruit?"
 msgstr "𐑢𐑦𐑗 𐑑𐑲𐑐 𐑝 𐑿𐑯𐑦𐑑 𐑢𐑫𐑛 𐑿 𐑤𐑲𐑒 𐑑 𐑚𐑰 𐑱𐑚𐑩𐑤 𐑑 𐑮𐑩𐑒𐑮𐑵𐑑?"
 
 #. [set_menu_item]: id=anl_oversee_research
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:89
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:82
 msgid "Oversee Research"
 msgstr "𐑴𐑝𐑼𐑕𐑰 𐑮𐑰𐑕𐑻𐑗"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:138
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:126
 msgid "Research"
 msgstr "𐑮𐑰𐑕𐑻𐑗"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:140
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:128
 msgid ""
 "We are currently studying $player_$side_number|.research."
 "target_language_name|. To which end would you have our scholars devote their "
@@ -566,13 +597,13 @@ msgstr ""
 "𐑬𐑼 𐑓𐑸𐑥𐑟 𐑐𐑮𐑩𐑛𐑿𐑕 $player_$side_number|.farming.gold|g\n"
 "𐑬𐑼 𐑥𐑲𐑯𐑟 𐑐𐑮𐑩𐑛𐑿𐑕 $player_$side_number|.mining.gold|g\n"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:148
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:136
 msgid "Continue as before"
 msgstr "𐑒𐑩𐑯𐑑𐑦𐑯𐑿 𐑨𐑟 𐑚𐑦𐑓𐑹"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:165
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:154
 #, fuzzy
 #| msgid ""
 #| "Agriculture\n"
@@ -592,13 +623,13 @@ msgstr ""
 
 #. [command]
 #. [research]
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:169
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:158
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:102
 msgid "agriculture"
 msgstr ""
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:176
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:166
 #, fuzzy
 msgid ""
 "<span color='green'>Mining</span>\n"
@@ -612,12 +643,12 @@ msgstr ""
 "𐑥𐑲𐑯𐑦𐑙.𐑑𐑸𐑜𐑧𐑑"
 
 #. [command]
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:180
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:170
 msgid "mining"
 msgstr ""
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:187
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:178
 #, fuzzy
 msgid ""
 "<span color='green'>Warfare</span>\n"
@@ -631,12 +662,12 @@ msgstr ""
 "warfare.target"
 
 #. [command]
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:198
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:189
 msgid "warfare"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:247
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:238
 msgid ""
 "$player_$side_number|.name|’s farms now produce $player_$side_number|."
 "farming.gold gold."
@@ -645,7 +676,7 @@ msgstr ""
 "𐑜𐑴𐑤𐑛 𐑜𐑴𐑤𐑛."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:279
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:270
 msgid ""
 "$player_$side_number|.name|’s mines now produce $player_$side_number|.mining."
 "gold gold."
@@ -654,7 +685,7 @@ msgstr ""
 "𐑜𐑴𐑤𐑛 𐑜𐑴𐑤𐑛."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:306
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:297
 msgid ""
 "$player_$side_number|.name|, we have finished researching warfare. Right-"
 "click on a mage in a university to select a unit to recruit."
@@ -663,12 +694,12 @@ msgstr ""
 "𐑦𐑯 𐑩 𐑿𐑯𐑦𐑝𐑻𐑕𐑩𐑑𐑦 𐑑 𐑕𐑩𐑤𐑧𐑒𐑑 𐑩 𐑿𐑯𐑦𐑑 𐑑 𐑮𐑩𐑒𐑮𐑵𐑑."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:197
+#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:198
 msgid "Let’s cut you free!"
 msgstr "𐑤𐑧𐑑'𐑕 𐑒𐑳𐑑 𐑿 𐑓𐑮𐑰!"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:201
+#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:202
 msgid "You release the creature from the web and it agrees to help you."
 msgstr "𐑿 𐑮𐑦𐑤𐑰𐑕 𐑞 𐑒𐑮𐑰𐑗𐑼 𐑓𐑮𐑪𐑥 𐑞 𐑢𐑧𐑚 𐑯 𐑦𐑑 𐑩𐑜𐑮𐑰𐑟 𐑑 𐑣𐑧𐑤𐑐 𐑿."
 
@@ -678,156 +709,158 @@ msgid "Get to Work!"
 msgstr "𐑜𐑧𐑑 𐑑 𐑢𐑻𐑒!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:50
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:44
 msgid "What shall I do my liege?"
 msgstr "𐑢𐑪𐑑 𐑖𐑨𐑤 𐑲 𐑛𐑵 𐑥𐑲 𐑤𐑰𐑡?"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:69
-msgid "Convert to Grassland"
-msgstr "𐑒𐑩𐑯𐑝𐑻𐑑 𐑑 𐑜𐑮𐑨𐑕𐑤𐑨𐑯𐑛"
-
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:69
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:86
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:352
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:547
-msgid "Cost: 0g"
-msgstr "𐑒𐑪𐑕𐑑: 0g"
-
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:86
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:63
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:82
 msgid "Plant Farm"
 msgstr "𐑐𐑤𐑭𐑯𐑑 𐑓𐑸𐑥"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:100
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:64
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:83
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:368
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:577
+msgid "Cost: 0g"
+msgstr "𐑒𐑪𐑕𐑑: 0g"
+
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:98
 msgid "Build Village"
 msgstr "𐑚𐑦𐑤𐑛 𐑝𐑦𐑤𐑦𐑡"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:100
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:99
 msgid "Cost: 15g"
 msgstr "𐑒𐑪𐑕𐑑: 15g"
 
-#. [option]: speaker=unit
+#. [option]: description=<span size='small'>
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:122
 msgid "Build Castle"
 msgstr "𐑚𐑦𐑤𐑛 𐑒𐑨𐑕𐑩𐑤"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:122
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:498
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:123
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:524
 msgid "Cost: 6g"
 msgstr "𐑒𐑪𐑕𐑑: 6g"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:143
-msgid "Cost: 4g"
-msgstr "𐑒𐑪𐑕𐑑: 4g"
-
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:143
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:145
 msgid "Flood the Field"
 msgstr "𐑓𐑤𐑳𐑛 𐑞 𐑓𐑰𐑤𐑛"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:166
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:375
-msgid "Cost: 1g"
-msgstr "𐑒𐑪𐑕𐑑: 1g"
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:146
+msgid "Cost: 4g"
+msgstr "𐑒𐑪𐑕𐑑: 4g"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:166
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:170
 msgid "Plant Saplings"
 msgstr "𐑐𐑤𐑭𐑯𐑑 𐑕𐑨𐑐𐑤𐑦𐑙𐑟"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:192
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:171
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:393
+msgid "Cost: 1g"
+msgstr "𐑒𐑪𐑕𐑑: 1g"
+
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:198
 msgid "Chop Down Forest"
 msgstr "𐑗𐑪𐑐 𐑛𐑬𐑯 𐑓𐑹𐑦𐑕𐑑"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:192
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:199
 msgid "Earns: 1g"
 msgstr "𐑻𐑯𐑟: 1g"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:247
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:272
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:254
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:281
 msgid "Build Mine"
 msgstr "𐑚𐑦𐑤𐑛 𐑥𐑲𐑯"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:247
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:272
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:255
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:282
 msgid "Cost: 25g"
 msgstr "𐑒𐑪𐑕𐑑: 25g"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:297
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:427
-msgid "Cost: 3g"
-msgstr "𐑒𐑪𐑕𐑑: 3g"
-
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:297
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:308
 msgid "Make a Ford"
 msgstr "𐑥𐑱𐑒 𐑩 𐑓𐑹𐑛"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:323
-msgid "Cost: 5g"
-msgstr "𐑒𐑪𐑕𐑑: 5g"
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:309
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:449
+msgid "Cost: 3g"
+msgstr "𐑒𐑪𐑕𐑑: 3g"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:323
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:375
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:336
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:392
 msgid "Landfill"
 msgstr "𐑤𐑨𐑯𐑛𐑓𐑦𐑤"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:352
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:337
+msgid "Cost: 5g"
+msgstr "𐑒𐑪𐑕𐑑: 5g"
+
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:367
 msgid "Destroy the Ford"
 msgstr "𐑛𐑩𐑕𐑑𐑮𐑶 𐑞 𐑓𐑹𐑛"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:404
-msgid "Cost: 2g"
-msgstr "𐑒𐑪𐑕𐑑: 2g"
-
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:404
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:427
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:423
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:448
 msgid "Smash Cave Floor"
 msgstr "𐑕𐑥𐑨𐑖 𐑒𐑱𐑝 𐑓𐑤𐑹"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:450
-msgid "Earns: 3g"
-msgstr "𐑻𐑯𐑟: 3g"
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:424
+msgid "Cost: 2g"
+msgstr "𐑒𐑪𐑕𐑑: 2g"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:450
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:473
 msgid "Harvest Mushrooms"
 msgstr "𐑣𐑸𐑝𐑧𐑕𐑑 𐑥𐑳𐑖𐑮𐑵𐑥𐑟"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:498
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:474
+msgid "Earns: 3g"
+msgstr "𐑻𐑯𐑟: 3g"
+
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:523
 msgid "Build a Keep"
 msgstr "𐑚𐑦𐑤𐑛 𐑩 𐑒𐑰𐑐"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:522
-msgid "Cost: 7g"
-msgstr "𐑒𐑪𐑕𐑑: 7g"
-
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:522
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:549
 msgid "Establish University"
 msgstr "𐑩𐑕𐑑𐑨𐑚𐑤𐑦𐑖 𐑿𐑯𐑦𐑝𐑻𐑕𐑩𐑑𐑦"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:547
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:550
+msgid "Cost: 7g"
+msgstr "𐑒𐑪𐑕𐑑: 7g"
+
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:576
 msgid "Clear the Ground"
 msgstr "𐑒𐑤𐑽 𐑞 𐑜𐑮𐑬𐑯𐑛"
+
+#~ msgid "teamname^Team 2"
+#~ msgstr "𐑑𐑰𐑥 2"
+
+#~ msgid "Convert to Grassland"
+#~ msgstr "𐑒𐑩𐑯𐑝𐑻𐑑 𐑑 𐑜𐑮𐑨𐑕𐑤𐑨𐑯𐑛"

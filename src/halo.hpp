@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,16 +14,13 @@
 
 /** @file */
 
-#ifndef HALO_HPP_INCLUDED
-#define HALO_HPP_INCLUDED
+#pragma once
 
 class display;
 
-#include "map_location.hpp"
+#include "map/location.hpp"
 
-#include <boost/noncopyable.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/weak_ptr.hpp>
+#include <memory>
 
 namespace halo
 {
@@ -33,7 +30,7 @@ class halo_impl;
 
 class halo_record;
 
-typedef boost::shared_ptr<halo_record> handle;
+typedef std::shared_ptr<halo_record> handle;
 
 enum ORIENTATION { NORMAL, HREVERSE, VREVERSE, HVREVERSE };
 
@@ -42,7 +39,7 @@ const int NO_HALO = 0;
 class manager
 {
 public:
-	manager(display& disp);
+	manager(display& screen);
 
 	/**
 	 * Add a haloing effect using 'image centered on (x,y).
@@ -72,17 +69,20 @@ public:
 	void render();
 
 private:
-	boost::shared_ptr<halo_impl> impl_;
+	std::shared_ptr<halo_impl> impl_;
 };
 
 /**
  * RAII object which manages a halo. When it goes out of scope it removes the corresponding halo entry.
  */
-class halo_record : public boost::noncopyable
+class halo_record
 {
 public:
+	halo_record(const halo_record&) = delete;
+	halo_record& operator=(const halo_record&) = delete;
+
 	halo_record();
-	halo_record(int id, const boost::shared_ptr<halo_impl> & my_manager);
+	halo_record(int id, const std::shared_ptr<halo_impl> & my_manager);
 	~halo_record();
 
 	bool valid() const {
@@ -92,10 +92,8 @@ public:
 	friend class manager;
 private:
 	int id_;
-	boost::weak_ptr<halo_impl> my_manager_;
+	std::weak_ptr<halo_impl> my_manager_;
 
 };
 
 } // end namespace halo
-
-#endif

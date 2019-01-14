@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2007 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2007 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,15 +18,12 @@
  * doesn't contain any problems that might crash the game.
  */
 
-#ifndef WML_EXCEPTION_HPP_INCLUDED
-#define WML_EXCEPTION_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "lua_jailbreak_exception.hpp"
 
 #include <string>
-
-class display;
 
 /**
  * The macro to use for the validation of WML
@@ -34,12 +31,6 @@ class display;
  *  @param cond         The condition to test, if false and exception is generated.
  *  @param message      The translatable message to show at the user.
  */
-#ifdef _MSC_VER
- #if _MSC_VER < 1300
-  #define __FUNCTION__ "(Unspecified)"
- #endif
-#endif
-
 #ifndef __func__
  #ifdef __FUNCTION__
   #define __func__ __FUNCTION__
@@ -49,14 +40,14 @@ class display;
 #define VALIDATE(cond, message)                                           \
 	do {                                                                  \
 		if(!(cond)) {                                                     \
-			wml_exception(#cond, __FILE__, __LINE__, __func__, message);  \
+			throw_wml_exception(#cond, __FILE__, __LINE__, __func__, message);  \
 		}                                                                 \
 	} while(0)
 
 #define VALIDATE_WITH_DEV_MESSAGE(cond, message, dev_message)             \
 	do {                                                                  \
 		if(!(cond)) {                                                     \
-			wml_exception(#cond                                           \
+			throw_wml_exception(#cond                                           \
 					, __FILE__                                            \
 					, __LINE__                                            \
 					, __func__                                            \
@@ -67,23 +58,17 @@ class display;
 
 #define FAIL(message)                                                     \
 	do {                                                                  \
-		wml_exception(NULL, __FILE__, __LINE__, __func__, message);       \
-		/* wml_exception never returns. */                                \
-		/* Help the compiler to figure that out */                        \
-		throw 42;                                                         \
+		throw_wml_exception(nullptr, __FILE__, __LINE__, __func__, message);       \
 	} while(0)
 
 #define FAIL_WITH_DEV_MESSAGE(message, dev_message)                       \
 	do {                                                                  \
-		wml_exception(NULL                                                \
+		throw_wml_exception(nullptr                                                \
 				, __FILE__                                                \
 				, __LINE__                                                \
 				, __func__                                                \
 				, message                                                 \
 				, dev_message);                                           \
-		/* wml_exception never returns. */                                \
-		/* Help the compiler to figure that out */                        \
-		throw 42;                                                         \
 	} while(0)
 
 /**
@@ -95,7 +80,7 @@ class display;
  *  @param function     The function in which the test failed.
  *  @param message      The translated message to show the user.
  */
-void wml_exception(
+[[noreturn]] void throw_wml_exception(
 		  const char* cond
 		, const char* file
 		, int line
@@ -104,16 +89,16 @@ void wml_exception(
 		, const std::string& dev_message = "");
 
 /** Helper class, don't construct this directly. */
-struct twml_exception
-	: public tlua_jailbreak_exception
+struct wml_exception
+	: public lua_jailbreak_exception
 {
-	twml_exception(const std::string& user_msg, const std::string& dev_msg)
+	wml_exception(const std::string& user_msg, const std::string& dev_msg)
 		: user_message(user_msg)
 		, dev_message(dev_msg)
 	{
 	}
 
-	~twml_exception() throw() {}
+	~wml_exception() noexcept {}
 
 	/**
 	 *  The message for the user explaining what went wrong. This message can
@@ -130,11 +115,10 @@ struct twml_exception
 
 	/**
 	 * Shows the error in a dialog.
-	 *  @param disp         The display object to show the message on.
 	 */
-	void show(display &disp);
+	void show() const;
 private:
-	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(twml_exception)
+	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(wml_exception)
 };
 
 /**
@@ -157,12 +141,15 @@ std::string missing_mandatory_wml_key(
 		, const std::string& key
 		, const std::string& primary_key = ""
 		, const std::string& primary_value = "");
+
+// TODO: In 1.15 we could rework these two to provide standard detail messages
+// for the deprecated_message() function.
+
 /**
  * Returns a standard warning message for using a deprecated wml key.
  *
  * @param key                     The deprecated key.
- * @param removal_version         The version in which the key will be
- *                                removed key.
+ * @param removal_version         The version in which the key will be removed.
  *
  * @returns                       The warning message.
  */
@@ -175,8 +162,7 @@ std::string deprecate_wml_key_warning(
  *
  * @param deprecated_key          The deprecated key.
  * @param key                     The new key to be used.
- * @param removal_version         The version in which the key will be
- *                                removed key.
+ * @param removal_version         The version in which the key will be removed.
  *
  * @returns                       The warning message.
  */
@@ -209,6 +195,3 @@ const config::attribute_value& get_renamed_config_attribute(
 		, const std::string& deprecated_key
 		, const std::string& key
 		, const std::string& removal_version);
-
-#endif
-

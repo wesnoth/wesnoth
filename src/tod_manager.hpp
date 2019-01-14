@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Eugen Jiresch
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Eugen Jiresch
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -11,27 +11,24 @@
 
    See the COPYING file for more details.
  */
-#ifndef TOD_MANAGER_HPP_INCLUDED
-#define TOD_MANAGER_HPP_INCLUDED
 
-#include "map_location.hpp"
+#pragma once
+
+#include "map/location.hpp"
 #include "config.hpp"
 #include "time_of_day.hpp"
-#include "savegame_config.hpp"
-
-#include <boost/optional.hpp>
 
 class gamemap;
 class unit_map;
 class game_data;
 
-namespace random_new
+namespace randomness
 {
 	class rng;
 }
 
 //time of day and turn functionality
-class tod_manager : public savegame::savegame_config
+class tod_manager
 {
 	public:
 	explicit tod_manager(const config& scenario_cfg = config());
@@ -42,17 +39,12 @@ class tod_manager : public savegame::savegame_config
 		/**
 			handles random_start_time, should be called before the game starts.
 		*/
-		void resolve_random(random_new::rng& r);
+		void resolve_random(randomness::rng& r);
 		int get_current_time(const map_location& loc = map_location::null_location()) const;
 
-		void set_current_time(int time) { currentTime_ = time; }
-
-		void set_current_time(int time, int area_index) {
-			assert(area_index < static_cast<int>(areas_.size()));
-			assert(time < static_cast<int>(areas_[area_index].times.size()) );
-			areas_[area_index].currentTime = time;
-		}
-
+		void set_current_time(int time);
+		void set_current_time(int time, int area_index);
+		void set_current_time(int time, const std::string& area_id);
 		void set_area_id(int area_index, const std::string& id);
 
 		/**
@@ -158,22 +150,36 @@ class tod_manager : public savegame::savegame_config
 		void modify_turns(const std::string& mod);
 		void set_number_of_turns(int num);
 
+		void update_server_information() const;
+		void modify_turns_by_wml(const std::string& mod);
+		void set_number_of_turns_by_wml(int num);
+
 		/** Dynamically change the current turn number. */
-		void set_turn(const int num, boost::optional<game_data&> vars = boost::none, const bool increase_limit_if_needed = true);
+		void set_turn(const int num, game_data* vars = nullptr, const bool increase_limit_if_needed = true);
+		/** Dynamically change the current turn number. */
+		void set_turn_by_wml(const int num, game_data* vars = nullptr, const bool increase_limit_if_needed = true);
 
 		/**
 		 * Function to move to the next turn.
 		 *
 		 * @returns                   True if time has not expired.
 		 */
-		bool next_turn(boost::optional<game_data&> vars);
+		bool next_turn(game_data* vars);
 
 		/**
 		 * Function to check the end of turns.
 		 *
 		 * @returns                   True if time has not expired.
 		 */
-		bool is_time_left();
+		bool is_time_left() const;
+		bool has_turn_event_fired() const
+		{ return has_turn_event_fired_; }
+		void turn_event_fired()
+		{ has_turn_event_fired_ = true; }
+		bool has_tod_bonus_changed() const
+		{ return has_tod_bonus_changed_; }
+		int get_max_liminal_bonus() const
+		{ return liminal_bonus_; }
 	private:
 
 		/**
@@ -194,6 +200,10 @@ class tod_manager : public savegame::savegame_config
 			const int for_turn_number,
 			const int current_time,
 			const bool only_to_allowed_range = false) const;
+		/**
+		 * Computes the maximum absolute value of lawful_bonus in the schedule.
+		 */
+		int calculate_best_liminal_bonus(const std::vector<time_of_day>& schedule) const;
 
 		/**
 		 * For a change of the current turn number, sets the current times of the main time
@@ -219,16 +229,24 @@ class tod_manager : public savegame::savegame_config
 			int currentTime;
 		};
 
+		void set_current_time(int time, area_time_of_day& area);
+
 		//index of the times vector of the main time where we're currently at
 		int currentTime_;
 		std::vector<time_of_day> times_;
 		std::vector<area_time_of_day> areas_;
 
+		//max liminal bonus
+		int liminal_bonus_;
+
 		// current turn
 		int turn_;
 		//turn limit
 		int num_turns_;
+		//Whether the "turn X" and the "new turn" events were already fired this turn.
+		bool has_turn_event_fired_;
+		bool has_tod_bonus_changed_;
+		bool has_cfg_liminal_bonus_;
 		//
 		config::attribute_value random_tod_;
 };
-#endif

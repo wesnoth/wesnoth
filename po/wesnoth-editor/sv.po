@@ -8,44 +8,42 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
-"PO-Revision-Date: 2011-04-25 04:55+0100\n"
-"Last-Translator: Niklas Bolmdahl <niklas.spamfilter@karragard.com>\n"
+"POT-Creation-Date: 2018-03-27 04:26+0300\n"
+"PO-Revision-Date: 2016-01-10 14:34+0100\n"
+"Last-Translator: Susanna Björverud <susanna.bjorverud@gmail.com>\n"
 "Language-Team: Swedish\n"
-"Language: \n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Poedit 1.8.6\n"
 "X-Poedit-Basepath: /home/tigge/Source/Wesnoth/Source/Wesnoth-trunk\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
 msgid "Single Hex"
-msgstr "Enkel hex"
+msgstr "Enkel ruta"
 
 #. [brush]: id=brush-2
 #: data/core/editor/brushes.cfg:16
 msgid "Radius 1 Hex"
-msgstr "Radie 1-hex"
+msgstr "Radie 1-ruta"
 
 #. [brush]: id=brush-3
 #: data/core/editor/brushes.cfg:26
 msgid "Radius 2 Hex"
-msgstr "Radie 2-hex"
+msgstr "Radie 2-ruta"
 
 #. [brush]: id=brush-nw-se
 #: data/core/editor/brushes.cfg:47
 msgid "Hex Line NW-SE"
-msgstr "Hex-linje NV-SÖ"
+msgstr "Rad av rutor NV-SÖ"
 
 #. [brush]: id=brush-sw-ne
 #: data/core/editor/brushes.cfg:63
-#, fuzzy
-#| msgid "Hex Line NW-SE"
-msgid "Hex Line SE-NW"
-msgstr "Hex-linje NV-SÖ"
+msgid "Hex Line SW-NE"
+msgstr "Rad av rutor NV-SÖ"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -80,7 +78,7 @@ msgstr "skog"
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
 msgid "fall"
-msgstr ""
+msgstr "höst"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
@@ -130,163 +128,174 @@ msgstr "Ingen"
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:10
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 #. [editor_times]: id=default
 #: data/core/editor/time-of-day.cfg:21
 msgid "Default"
-msgstr ""
+msgstr "Förval"
 
 #. [editor_times]: id=summer
 #: data/core/editor/time-of-day.cfg:27
 msgid "Summer"
-msgstr ""
+msgstr "Sommar"
 
 #. [editor_times]: id=winter
 #: data/core/editor/time-of-day.cfg:33
 msgid "Winter"
-msgstr ""
+msgstr "Vinter"
 
 #. [editor_times]: id=underground
 #: data/core/editor/time-of-day.cfg:39
 msgid "Underground"
-msgstr ""
+msgstr "Underjordiskt"
 
 #. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:45
 msgid "Deep Underground"
-msgstr ""
+msgstr "Djupt underjordiskt"
 
 #. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:51
 msgid "Indoors"
-msgstr ""
+msgstr "Inomhus"
 
 #. [editor_times]: id=24
 #: data/core/editor/time-of-day.cfg:57
 msgid "24 Hour Schedule"
-msgstr ""
+msgstr "24-timmarsschema"
 
+# Two Suns Default Schedule
 #. [editor_times]: id=after_the_fall
 #: data/core/editor/time-of-day.cfg:63
 msgid "After the Fall"
-msgstr ""
+msgstr "Efter fallet"
 
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
-#, fuzzy
-#| msgid "Quit Editor"
 msgid "theme^Editor"
-msgstr "Vill du verkligen sluta?"
+msgstr "Redigerare"
 
 #. [menu]: id=menu-editor-file, type=turbo
-#: data/themes/editor.cfg:63
+#: data/themes/editor.cfg:61
 msgid "File"
 msgstr "Arkiv"
 
+#. [menu]: id=menu-editor-recent
+#: data/themes/editor.cfg:72
+msgid "Load Recent"
+msgstr "Läs in senaste"
+
 #. [menu]: id=menu-editor-map
-#: data/themes/editor.cfg:84
+#: data/themes/editor.cfg:90
 msgid "Map"
 msgstr "Karta"
 
+#. [menu]: id=menu-unit-facing
+#: data/themes/editor.cfg:98
+msgid "Unit Facing"
+msgstr "Trupp vänd mot"
+
 #. [menu]: id=menu-editor-transitions
-#: data/themes/editor.cfg:92
-#, fuzzy
-#| msgid "Delay transition updates"
+#: data/themes/editor.cfg:104
 msgid "Transition Update"
-msgstr "Fördröj övergångsuppdateringar"
+msgstr "Övergångsuppdateringar"
 
 #. [menu]: id=menu-editor-window
-#: data/themes/editor.cfg:99
+#: data/themes/editor.cfg:111
 msgid "Window"
 msgstr "Fönster"
 
 #. [menu]: id=menu-editor-areas
-#: data/themes/editor.cfg:108
+#: data/themes/editor.cfg:120
 msgid "Areas"
-msgstr ""
+msgstr "Områden"
 
 #. [menu]: id=menu-editor-local-time
-#: data/themes/editor.cfg:116
+#: data/themes/editor.cfg:128
 msgid "Assign Local Time"
-msgstr ""
+msgstr "Ange lokal tid"
 
 #. [menu]: id=menu-editor-local-schedule
-#: data/themes/editor.cfg:122
+#: data/themes/editor.cfg:134
 msgid "Assign Local Time Schedule"
-msgstr ""
+msgstr "Ange schema för lokal tild"
 
 #. [menu]: id=menu-editor-side
-#: data/themes/editor.cfg:130
+#: data/themes/editor.cfg:142
 msgid "Side"
-msgstr ""
+msgstr "Sida"
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:148
+#: data/themes/editor.cfg:159
 msgid "villages"
 msgstr "byar"
 
 #. [label]: id=units-icon
-#: data/themes/editor.cfg:165
+#: data/themes/editor.cfg:175
 msgid "units"
-msgstr ""
+msgstr "trupper"
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:444
+#: data/themes/editor.cfg:454
 msgid "Time Schedule Menu"
-msgstr ""
+msgstr "Meny för tidsschema"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:455
+#: data/themes/editor.cfg:465
 msgid "Playlist"
-msgstr ""
+msgstr "Spellista"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:461
+#: data/themes/editor.cfg:471
 msgid "Assign Time Schedule"
-msgstr ""
+msgstr "Ange tidsschema"
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:54
+msgid "Identifier: "
+msgstr "Identifierare: "
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:55
+msgid "Name: "
+msgstr "Namn: "
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:56
+msgid "Type: "
+msgstr "Typ: "
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:57
+msgid "Level: "
+msgstr "Nivå: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:58
-msgid "Identifier: "
-msgstr ""
+msgid "Cost: "
+msgstr "Kostnad: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:59
-msgid "Name: "
-msgstr ""
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:60
-msgid "Type: "
-msgstr ""
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:61
-msgid "Level: "
-msgstr ""
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:62
-msgid "Cost: "
-msgstr ""
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Recruit: "
-msgstr ""
+msgstr "Rekrytera: "
 
-#: src/editor/editor_controller.cpp:177
+#: src/editor/controller/editor_controller.cpp:176
 msgid "Fatal error"
 msgstr "Allvarligt fel"
 
-#: src/editor/editor_controller.cpp:205
+#: src/editor/controller/editor_controller.cpp:206
 msgid "Do you really want to quit?"
 msgstr "Vill du verkligen avsluta?"
 
-#: src/editor/editor_controller.cpp:207
+#: src/editor/controller/editor_controller.cpp:208
+#, fuzzy
+#| msgid ""
+#| "Do you really want to quit? Changes in the map since the last save will "
+#| "be lost."
 msgid ""
-"Do you really want to quit? Changes in the map since the last save will be "
+"Do you really want to quit? Changes to this map since the last save will be "
 "lost."
 msgstr ""
 "Vill du verkligen avsluta? Ändringar i kartan sedan den senast sparats "
 "kommer att förloras."
 
-#: src/editor/editor_controller.cpp:209
+#: src/editor/controller/editor_controller.cpp:210
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -294,150 +303,137 @@ msgstr ""
 "Vill du verkligen avsluta? Följande kartor har modifierats och alla "
 "ändringar sedan de senast sparats kommer att förloras."
 
-#: src/editor/editor_controller.cpp:212
-msgid "Quit"
-msgstr "Avsluta"
-
-#: src/editor/editor_controller.cpp:223
+#: src/editor/controller/editor_controller.cpp:219
 msgid "No editor time-of-day found."
-msgstr "Ingen tid-på-dan för editorn hittades."
+msgstr "Ingen redigerare för tid-på-dagen hittades."
 
-#: src/editor/editor_controller.cpp:1070
+#: src/editor/controller/editor_controller.cpp:1137
 msgid "Change Unit ID"
-msgstr ""
+msgstr "Byt trupp-ID"
 
-#: src/editor/editor_controller.cpp:1071
+#: src/editor/controller/editor_controller.cpp:1138
 msgid "ID:"
-msgstr ""
+msgstr "ID:"
 
-#: src/editor/editor_controller.cpp:1087
+#: src/editor/controller/editor_controller.cpp:1154
 msgid "Rename Unit"
-msgstr ""
+msgstr "Döp om trupp"
 
-#: src/editor/editor_controller.cpp:1088
+#: src/editor/controller/editor_controller.cpp:1155
 msgid "Name:"
+msgstr "Namn:"
+
+#: src/editor/map/context_manager.cpp:189
+msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:127
-#: src/editor/map/context_manager.cpp:288
-msgid "(New Map)"
-msgstr "(Ny karta)"
+#: src/editor/map/context_manager.cpp:257 src/editor/map/map_context.cpp:831
+msgid "New Map"
+msgstr "Ny karta"
 
-#: src/editor/map/context_manager.cpp:184
+#: src/editor/map/context_manager.cpp:270 src/editor/map/map_context.cpp:831
+msgid "New Scenario"
+msgstr "Nytt scenario"
+
+#: src/editor/map/context_manager.cpp:326
+msgid "No Recent Files"
+msgstr "Inga nyligen använda filer"
+
+#: src/editor/map/context_manager.cpp:364
 #, fuzzy
-#| msgid "Choose a Map to Open"
-msgid "Choose a File to Open"
-msgstr "Välj en karta att öppna"
+#| msgid "(Unnamed Area)"
+msgid "Unnamed Area"
+msgstr "(Område utan namn)"
 
-#: src/editor/map/context_manager.cpp:290
+#: src/editor/map/context_manager.cpp:395
 #, fuzzy
-#| msgid "(New Map)"
-msgid "(New Scenario)"
-msgstr "(Ny karta)"
+#| msgid "(New Side)"
+msgid "New Side"
+msgstr "(Ny sida)"
 
-#: src/editor/map/context_manager.cpp:322
-#, fuzzy
-#| msgid "(New Map)"
-msgid "(Unnamed Area)"
-msgstr "(Ny karta)"
+#: src/editor/map/context_manager.cpp:451
+msgid "Apply Mask"
+msgstr ""
 
-#: src/editor/map/context_manager.cpp:345
-#, fuzzy
-#| msgid "(New Map)"
-msgid "(New Side)"
-msgstr "(Ny karta)"
-
-#: src/editor/map/context_manager.cpp:411
-msgid "Choose a Mask to Apply"
-msgstr "Välj en markering att applicera"
-
-#: src/editor/map/context_manager.cpp:418
+#: src/editor/map/context_manager.cpp:460
 msgid "Error loading mask"
 msgstr "Fel vid öppning av markering"
 
-#: src/editor/map/context_manager.cpp:437
+#: src/editor/map/context_manager.cpp:480
 msgid "Identifier:"
-msgstr ""
+msgstr "Identifierare:"
 
-#: src/editor/map/context_manager.cpp:437
+#: src/editor/map/context_manager.cpp:480
 msgid "Rename Area"
-msgstr ""
+msgstr "Döp om område"
 
-#: src/editor/map/context_manager.cpp:448
+#: src/editor/map/context_manager.cpp:494
 msgid "Choose Target Map"
 msgstr "Välj målkarta"
 
-#: src/editor/map/context_manager.cpp:455
-#: src/editor/map/context_manager.cpp:887
+#: src/editor/map/context_manager.cpp:503
+#: src/editor/map/context_manager.cpp:905
 msgid "Error loading map"
 msgstr "Fel vid öppning av karta"
 
-#: src/editor/map/context_manager.cpp:572
-msgid "Save the Map As"
-msgstr "Spara kartan som"
-
-#: src/editor/map/context_manager.cpp:576
-#: src/editor/map/context_manager.cpp:604
-msgid "The file already exists. Do you want to overwrite it?"
-msgstr "Filen existerar redan. Vill du skriva över den?"
-
-#: src/editor/map/context_manager.cpp:600
+#: src/editor/map/context_manager.cpp:621
 #, fuzzy
 #| msgid "Save the Map As"
-msgid "Save the Scenario As"
+msgid "Save Map As"
 msgstr "Spara kartan som"
 
-#: src/editor/map/context_manager.cpp:639
+#: src/editor/map/context_manager.cpp:642
+#, fuzzy
+#| msgid "Save the Scenario As"
+msgid "Save Scenario As"
+msgstr "Spara scenariot som"
+
+#: src/editor/map/context_manager.cpp:674
 msgid "No random map generators found."
 msgstr "Ingen slumpgeneratorer för kartor hittades."
 
-#: src/editor/map/context_manager.cpp:652
-#: src/editor/map/context_manager.cpp:656
+#: src/editor/map/context_manager.cpp:688
+#: src/editor/map/context_manager.cpp:693
 msgid "Map creation failed."
 msgstr "Misslyckades med att skapa karta."
 
-#: src/editor/map/context_manager.cpp:668
+#: src/editor/map/context_manager.cpp:708
 msgid "Unsaved Changes"
 msgstr "Osparade ändringar"
 
-#: src/editor/map/context_manager.cpp:669
-msgid ""
-"Do you want to discard all changes you made to the map since the last save?"
+#: src/editor/map/context_manager.cpp:709
+msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "Vill du överge alla ändringar du har gjort i kartan sedan den senast "
 "sparades?"
 
-#: src/editor/map/context_manager.cpp:766
-#, fuzzy
-#| msgid "This map is already open."
+#: src/editor/map/context_manager.cpp:765
 msgid "This scenario is already open."
-msgstr "Den här kartan är redan öppen."
+msgstr "Det här scenariot är redan öppet."
 
 #: src/editor/map/context_manager.cpp:788
-#: src/editor/map/context_manager.cpp:843
+#: src/editor/map/context_manager.cpp:851
 msgid "This map is already open."
 msgstr "Den här kartan är redan öppen."
 
-#: src/editor/map/context_manager.cpp:809
-#, fuzzy
-#| msgid "Map saved."
+#: src/editor/map/context_manager.cpp:812
 msgid "Scenario saved."
-msgstr "Kartan har sparats."
+msgstr "Scenariot har sparats."
 
-#: src/editor/map/context_manager.cpp:823
+#: src/editor/map/context_manager.cpp:827
 msgid "Map saved."
 msgstr "Kartan har sparats."
 
-#: src/editor/map/context_manager.cpp:866
+#: src/editor/map/context_manager.cpp:884
 msgid "Loaded embedded map data"
 msgstr "Laddade inbyggd kart-data"
 
-#: src/editor/map/context_manager.cpp:867
-#: src/editor/map/context_manager.cpp:881
+#: src/editor/map/context_manager.cpp:885
+#: src/editor/map/context_manager.cpp:898
 msgid "Map loaded from scenario"
 msgstr "Karta från scenario laddad"
 
-#: src/editor/map/context_manager.cpp:877
+#: src/editor/map/context_manager.cpp:895
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -445,25 +441,26 @@ msgstr ""
 "Hänvisad kartfil laddad:\n"
 "$new"
 
-#: src/editor/map/editor_map.cpp:149
-msgid "Player"
-msgstr "Spelare"
+#: src/editor/map/editor_map.cpp:148
+#: src/editor/palette/location_palette.cpp:111
+#, fuzzy
+#| msgid "Player $player_number"
+msgid "Player $side_num"
+msgstr "Spelare $player_number"
 
-#: src/editor/map/editor_map.cpp:266
+#: src/editor/map/editor_map.cpp:283
 msgid "The size of the target map is different from the current map"
 msgstr "Storleken på målkartan är skiljer sig från den aktuella kartan"
 
-#: src/editor/map/map_context.cpp:127
+#: src/editor/map/map_context.cpp:145
 msgid "File not found"
 msgstr "Filen kunde inte hittas"
 
-#: src/editor/map/map_context.cpp:133
-#, fuzzy
-#| msgid "Empty map file"
+#: src/editor/map/map_context.cpp:152
 msgid "Empty file"
-msgstr "Tom kartfil"
+msgstr "Tom fil"
 
-#: src/editor/map/map_context.cpp:175
+#: src/editor/map/map_context.cpp:208
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -471,56 +468,97 @@ msgstr ""
 "Kartfilen ser ut som ett scenario, men värdet i map_data pekar inte på en "
 "existerande fil"
 
-#: src/editor/map/map_context.cpp:508
-#, fuzzy
-#| msgid "Could not save the map: $msg"
+#: src/editor/map/map_context.cpp:600
 msgid "Could not save the scenario: $msg"
-msgstr "Kunde inte spara kartan: $msg"
+msgstr "Kunde inte spara scenariot: $msg"
 
-#: src/editor/map/map_context.cpp:535
+#: src/editor/map/map_context.cpp:632
 msgid "Could not save into scenario"
 msgstr "Kunde inte spara till ett scenario"
 
-#: src/editor/map/map_context.cpp:542
+#: src/editor/map/map_context.cpp:642
 msgid "Could not save the map: $msg"
 msgstr "Kunde inte spara kartan: $msg"
 
-#: src/editor/palette/editor_palettes.cpp:59
-#: src/editor/palette/editor_palettes.cpp:114
+#: src/editor/palette/editor_palettes.cpp:51
 msgid "(Unknown Group)"
-msgstr ""
+msgstr "(Okänd grupp)"
 
-#: src/editor/palette/editor_palettes.cpp:383
+#: src/editor/palette/editor_palettes.cpp:287
 msgid "(non-core)"
 msgstr "(ej standard)"
 
-#: src/editor/palette/editor_palettes.cpp:384
+#: src/editor/palette/editor_palettes.cpp:288
 msgid "Will not work in game without extra care."
 msgstr "Kommer inte fungera i spelet utan speciell hänsyn."
 
-#: src/editor/palette/terrain_palettes.cpp:223
+#: src/editor/palette/location_palette.cpp:230
+msgid "Go To"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:237
+msgid "Add"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:239
+msgid "New Location Identifier"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:243
+msgid "Delete"
+msgstr ""
+
+#: src/editor/palette/terrain_palettes.cpp:231
 msgid "FG: "
 msgstr "FG:"
 
-#: src/editor/palette/terrain_palettes.cpp:224
+#: src/editor/palette/terrain_palettes.cpp:232
 msgid "BG: "
 msgstr "BG:"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:129
-#, fuzzy
-#| msgid "Choose player"
-msgid "Choose File"
-msgstr "Välj spelare"
+#: src/gui/dialogs/editor/custom_tod.cpp:137
+msgid "Clipboard support not found, contact your packager"
+msgstr ""
 
-#: src/gui/dialogs/editor_set_starting_position.cpp:87
-#, fuzzy
-#| msgid "(Player)^None"
+#: src/gui/dialogs/editor/custom_tod.cpp:201
+msgid "Choose File"
+msgstr "Välj fil"
+
+#: src/gui/dialogs/editor/custom_tod.cpp:202
+msgid "Select"
+msgstr ""
+
+#: src/gui/dialogs/editor/set_starting_position.cpp:88
 msgid "player^None"
 msgstr "Ingen"
 
-#: src/gui/dialogs/editor_set_starting_position.cpp:100
+#: src/gui/dialogs/editor/set_starting_position.cpp:101
 msgid "Player $player_number"
-msgstr ""
+msgstr "Spelare $player_number"
+
+#~ msgid "(New Map)"
+#~ msgstr "(Ny karta)"
+
+#~ msgid "(New Scenario)"
+#~ msgstr "(Nytt scenario)"
+
+#~ msgid "Choose a File to Open"
+#~ msgstr "Välj en fil att öppna"
+
+#~ msgid "Choose a Mask to Apply"
+#~ msgstr "Välj en markering att applicera"
+
+#~ msgid "The file already exists. Do you want to overwrite it?"
+#~ msgstr "Filen existerar redan. Vill du skriva över den?"
+
+#~ msgid "Player"
+#~ msgstr "Spelare"
+
+#~ msgid "Quit"
+#~ msgstr "Avsluta"
+
+#~ msgid "The Battle for Wesnoth"
+#~ msgstr "Kampen om Wesnoth"
 
 #~ msgid ""
 #~ "Use left/right mouse button to draw fore-/background terrain. Hold Shift "
@@ -654,9 +692,6 @@ msgstr ""
 
 #~ msgid "Choose your preferred language:"
 #~ msgstr "Välj språk: "
-
-#~ msgid "Battle for Wesnoth Map Editor"
-#~ msgstr "Kampen om Wesnoths karteditor"
 
 #~ msgid "Which Player?"
 #~ msgstr "Vilken spelare?"

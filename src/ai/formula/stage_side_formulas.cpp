@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,13 +18,12 @@
  */
 
 
-#include "stage_side_formulas.hpp"
-#include "ai.hpp"
+#include "ai/formula/stage_side_formulas.hpp"
+#include "ai/formula/ai.hpp"
 
-#include "../../formula.hpp"
-#include "../../formula_function.hpp"
-#include "../../log.hpp"
-#include <boost/lexical_cast.hpp>
+#include "formula/formula.hpp"
+#include "formula/function.hpp"
+#include "log.hpp"
 
 static lg::log_domain log_ai("ai/stage/side_formulas");
 #define LOG_AI LOG_STREAM(info, log_ai)
@@ -34,7 +33,7 @@ static lg::log_domain log_ai("ai/stage/side_formulas");
 namespace ai {
 
 stage_side_formulas::stage_side_formulas(ai_context &context, const config &cfg, formula_ai &fai)
-       	: stage(context,cfg), cfg_(cfg), fai_(fai), move_formula_()
+		: stage(context,cfg), cfg_(cfg), fai_(fai), move_formula_()
 {
 
 }
@@ -46,8 +45,7 @@ stage_side_formulas::~stage_side_formulas()
 
 bool stage_side_formulas::do_play_stage()
 {
-	game_logic::map_formula_callable callable(&fai_);
-	callable.add_ref();
+	wfl::map_formula_callable callable(fai_.fake_ptr());
 	try {
 		if (move_formula_) {
 			while( !fai_.make_action(move_formula_,callable).is_empty() ) { }
@@ -55,7 +53,7 @@ bool stage_side_formulas::do_play_stage()
 			WRN_AI << "Side formula skipped, maybe it's empty or incorrect" << std::endl;
 		}
 	}
-	catch(game_logic::formula_error& e) {
+	catch(wfl::formula_error& e) {
 		if(e.filename == "formula") {
 			e.line = 0;
 		}
@@ -74,7 +72,6 @@ void stage_side_formulas::on_create()
 config stage_side_formulas::to_config() const
 {
 	config cfg = stage::to_config();
-	///@todo 1.7: serialize to config
 	cfg.append(cfg_);
 	return cfg;
 }

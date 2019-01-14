@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,13 +12,21 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_PANEL_HPP_INCLUDED
-#define GUI_WIDGETS_PANEL_HPP_INCLUDED
+#pragma once
 
-#include "gui/widgets/container.hpp"
+#include "gui/widgets/container_base.hpp"
+
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
 
 namespace gui2
 {
+namespace implementation
+{
+struct builder_panel;
+}
+
+// ------------ WIDGET -----------{
 
 /**
  * Visible container to hold multiple widgets.
@@ -26,55 +34,85 @@ namespace gui2
  * This widget can draw items beyond the widgets it holds and in front of them.
  * A panel is always active so these functions return dummy values.
  */
-class tpanel : public tcontainer_
+class panel : public container_base
 {
-
 public:
 	/**
 	 * Constructor.
-	 *
-	 * @param canvas_count        The canvas count for tcontrol.
 	 */
-	explicit tpanel(const unsigned canvas_count = 2) : tcontainer_(canvas_count)
-	{
-	}
+	panel(const implementation::builder_styled_widget& builder, const std::string& control_type = "");
 
-	/** See @ref tcontainer_::get_client_rect. */
-	virtual SDL_Rect get_client_rect() const OVERRIDE;
+	/** See @ref container_base::get_client_rect. */
+	virtual SDL_Rect get_client_rect() const override;
 
-	/** See @ref tcontrol::get_active. */
-	virtual bool get_active() const OVERRIDE;
+	/** See @ref styled_widget::get_active. */
+	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
-	virtual unsigned get_state() const OVERRIDE;
+	/** See @ref styled_widget::get_state. */
+	virtual unsigned get_state() const override;
 
 private:
-	/** See @ref twidget::impl_draw_background. */
-	virtual void impl_draw_background(surface& frame_buffer) OVERRIDE;
-
-	/** See @ref twidget::impl_draw_background. */
+	/** See @ref widget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,
 									  int x_offset,
-									  int y_offset) OVERRIDE;
+									  int y_offset) override;
 
-	/** See @ref twidget::impl_draw_foreground. */
-	virtual void impl_draw_foreground(surface& frame_buffer) OVERRIDE;
-
-	/** See @ref twidget::impl_draw_foreground. */
+	/** See @ref widget::impl_draw_foreground. */
 	virtual void impl_draw_foreground(surface& frame_buffer,
 									  int x_offset,
-									  int y_offset) OVERRIDE;
+									  int y_offset) override;
 
-	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
 
-	/** See @ref tcontainer_::border_space. */
-	virtual tpoint border_space() const OVERRIDE;
+private:
+	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
+	virtual const std::string& get_control_type() const override;
 
-	/** See @ref tcontainer_::set_self_active. */
-	virtual void set_self_active(const bool active) OVERRIDE;
+	/** See @ref container_base::border_space. */
+	virtual point border_space() const override;
+
+	/** See @ref container_base::set_self_active. */
+	virtual void set_self_active(const bool active) override;
 };
 
-} // namespace gui2
+// }---------- DEFINITION ---------{
 
-#endif
+struct panel_definition : public styled_widget_definition
+{
+	explicit panel_definition(const config& cfg);
+
+	struct resolution : public resolution_definition
+	{
+		explicit resolution(const config& cfg);
+
+		unsigned top_border;
+		unsigned bottom_border;
+
+		unsigned left_border;
+		unsigned right_border;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct builder_panel : public builder_styled_widget
+{
+	explicit builder_panel(const config& cfg);
+
+	using builder_styled_widget::build;
+
+	widget* build() const;
+
+	builder_grid_ptr grid;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
+
+} // namespace gui2

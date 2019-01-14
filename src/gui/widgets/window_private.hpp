@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_WINDOW_PRIVATE_HPP_INCLUDED
-#define GUI_WIDGETS_WINDOW_PRIVATE_HPP_INCLUDED
+#pragma once
 
 /**
  * @file
@@ -36,7 +35,7 @@ namespace gui2
  * The class is a helper to avoid recompilation and only has static
  * functions.
  */
-struct twindow_implementation
+struct window_implementation
 {
 	/**
 	 * Layouts the window.
@@ -49,11 +48,9 @@ struct twindow_implementation
 	 * @param maximum_width       The maximum width of the window.
 	 * @param maximum_height      The maximum height of the window.
 	 */
-	static void layout(twindow& window,
+	static void layout(window& window,
 					   const unsigned maximum_width,
 					   const unsigned maximum_height);
 };
 
 } // namespace gui2
-
-#endif

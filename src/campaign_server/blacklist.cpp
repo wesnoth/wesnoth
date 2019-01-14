@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,8 +17,6 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-
-#include <boost/foreach.hpp>
 
 static lg::log_domain log_campaignd_bl("campaignd/blacklist");
 #define LOG_BL LOG_STREAM(err, log_campaignd_bl)
@@ -96,7 +94,7 @@ bool blacklist::is_in_globlist(const std::string& str, const blacklist::globlist
 	if (!str.empty())
 	{
 		const std::string& lc_str = utf8::lowercase(str);
-		BOOST_FOREACH(const std::string& glob, glist)
+		for(const std::string& glob : glist)
 		{
 			const std::string& lc_glob = utf8::lowercase(glob);
 			if (utils::wildcard_string_match(lc_str, lc_glob)) {
@@ -113,7 +111,7 @@ bool blacklist::is_in_ip_masklist(const std::string& ip, const blacklist::globli
 {
 	if (!ip.empty())
 	{
-		BOOST_FOREACH(const std::string& ip_mask, mlist)
+		for(const std::string& ip_mask : mlist)
 		{
 			if (ip_matches(ip, ip_mask)) {
 				LOG_BL << "Blacklisted IP found: " << ip << " (" << ip_mask << ")\n";
@@ -125,7 +123,7 @@ bool blacklist::is_in_ip_masklist(const std::string& ip, const blacklist::globli
 	return false;
 }
 
-bool blacklist::ip_matches(const std::string& ip, const blacklist::glob& ip_mask) const
+bool blacklist::ip_matches(const std::string& ip, const std::string& ip_mask) const
 {
 	// TODO: we want CIDR subnet mask matching here, not glob matching!
 	return utils::wildcard_string_match(ip, ip_mask);

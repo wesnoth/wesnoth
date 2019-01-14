@@ -1,8 +1,8 @@
 /*
-   Copyright (C) 2009 - 2014 by Thomas Baumhauer
+   Copyright (C) 2009 - 2018 by Thomas Baumhauer
    <thomas.baumhauer@NOSPAMgmail.com>
-   Copyright (C) 2009 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,14 +14,13 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_PASSWORD_BOX_HPP_INCLUDED
-#define GUI_WIDGETS_PASSWORD_BOX_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/text_box.hpp"
 
 
 /**
- * A class inherited from ttext_box that displays
+ * A class inherited from text_box that displays
  * its input as stars
  *
  * @todo This implementation is quite a hack that
@@ -29,35 +28,20 @@
  */
 namespace gui2
 {
-
-class tpassword_box : public ttext_box
+namespace implementation
 {
+	struct builder_password_box;
+}
 
-	// The hack works like this: we add the member real_value_
-	// that holds the actual user input.
-	// Overridden functions now simply
-	//  - call set_value() from ttext_box with real_value_,
-	//    which is done in prefunction()
-	//  - call ttext_box::overridden_function()
-	//  - set real_value_ to get_value() from ttext_box and
-	//    call set_value() from ttext_box with real_value_
-	//    turned into stars, which is done in post_function()
-	//
-	// and overridden function should therefore look like this:
-	//
-	// overridden_function(some parameter) {
-	// 	pre_function();
-	// 	ttext_box::overridden_function(some parameter);
-	// 	post_function();
-	// }
+// ------------ WIDGET -----------{
 
+class password_box : public text_box
+{
 public:
-	tpassword_box() : ttext_box(), real_value_()
-	{
-	}
+	explicit password_box(const implementation::builder_password_box& builder);
 
-	/** Inherited from ttext_. */
-	virtual void set_value(const std::string& text);
+	/** Inherited from text_box_base. */
+	virtual void set_value(const std::string& text) override;
 	std::string get_real_value() const
 	{
 		return real_value_;
@@ -65,27 +49,48 @@ public:
 
 
 protected:
-	void insert_char(const utf8::string& unicode);
-	void delete_char(const bool before_cursor);
-
-	void paste_selection(const bool mouse);
+	void insert_char(const std::string& unicode) override;
+	void paste_selection(const bool mouse) override;
+	void delete_selection() override;
 
 	// We do not override copy_selection because we
 	// actually want it to copy just the stars
 
 private:
-	void handle_key_backspace(SDLMod modifier, bool& handled);
-	void handle_key_delete(SDLMod modifier, bool& handled);
-
-	void pre_function();
-	void post_function();
 
 	std::string real_value_;
 
-	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
+	/** See @ref styled_widget::get_control_type. */
+	virtual const std::string& get_control_type() const override;
 };
 
-} // namespace gui2
+// }---------- BUILDER -----------{
 
-#endif
+namespace implementation
+{
+
+// copy & paste from builder_text_box...
+// does it make more sense to inherit from it?
+struct builder_password_box : public builder_styled_widget
+{
+public:
+	explicit builder_password_box(const config& cfg);
+
+	using builder_styled_widget::build;
+
+	widget* build() const;
+
+private:
+	std::string history_;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
+
+} // namespace gui2

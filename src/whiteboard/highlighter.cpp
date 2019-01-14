@@ -1,6 +1,6 @@
 /*
- Copyright (C) 2010 - 2014 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -18,20 +18,21 @@
 
 #include <algorithm>
 #include <iterator>
+#include <boost/range/adaptor/reversed.hpp>
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
-#include "highlighter.hpp"
+#include "whiteboard/highlighter.hpp"
 
-#include "action.hpp"
-#include "attack.hpp"
-#include "manager.hpp"
-#include "move.hpp"
-#include "recall.hpp"
-#include "recruit.hpp"
-#include "side_actions.hpp"
-#include "suppose_dead.hpp"
-#include "utility.hpp"
+#include "whiteboard/action.hpp"
+#include "whiteboard/attack.hpp"
+#include "whiteboard/manager.hpp"
+#include "whiteboard/move.hpp"
+#include "whiteboard/recall.hpp"
+#include "whiteboard/recruit.hpp"
+#include "whiteboard/side_actions.hpp"
+#include "whiteboard/suppose_dead.hpp"
+#include "whiteboard/utility.hpp"
 
 #include "arrow.hpp"
 #include "config.hpp"
@@ -41,18 +42,15 @@
 #include "game_errors.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
-#include "unit.hpp"
-#include "unit_animation_component.hpp"
-#include "unit_map.hpp"
-
-#include <boost/foreach.hpp>
+#include "units/unit.hpp"
+#include "units/animation_component.hpp"
+#include "units/map.hpp"
 
 namespace wb
 {
 
-highlighter::highlighter(unit_map& unit_map, side_actions_ptr side_actions)
-	: unit_map_(unit_map)
-	, mouseover_hex_()
+highlighter::highlighter(side_actions_ptr side_actions)
+	: mouseover_hex_()
 	, exclusive_display_hexes_()
 	, owner_unit_()
 	, selection_candidate_()
@@ -66,7 +64,7 @@ highlighter::highlighter(unit_map& unit_map, side_actions_ptr side_actions)
 highlighter::~highlighter()
 {
 	try {
-	if(resources::screen && owner_unit_) {
+	if(game_display::get_singleton() && owner_unit_) {
 		unhighlight();
 	}
 	} catch (...) {}
@@ -83,11 +81,11 @@ void highlighter::set_mouseover_hex(const map_location& hex)
 	real_map ensure_real_map;
 	mouseover_hex_ = hex;
 	//if we're right over a unit, just highlight all of this unit's actions
-	unit_map::iterator it = unit_map_.find(hex);
-	if(it != unit_map_.end()) {
+	unit_map::iterator it = get_unit_map().find(hex);
+	if(it != get_unit_map().end()) {
 		selection_candidate_ = it.get_shared_ptr();
 
-		if(resources::teams->at(it->side()-1).get_side_actions()->unit_has_actions(*it)) {
+		if(resources::gameboard->get_team(it->side()).get_side_actions()->unit_has_actions(*it)) {
 			owner_unit_ = it.get_shared_ptr();
 		}
 
@@ -111,9 +109,9 @@ void highlighter::set_mouseover_hex(const map_location& hex)
 	if(side_actions_->empty()) {
 		return;
 	}
-	BOOST_REVERSE_FOREACH(action_ptr act, *side_actions_) {
+	for(action_ptr act : boost::adaptors::reverse(*side_actions_)) {
 		/**@todo "is_numbering_hex" is not the "correct" criterion by which to
-		 * select the hightlighted/selected action. It's just convenient for me
+		 * select the highlighted/selected action. It's just convenient for me
 		 * to use at the moment since it happens to coincide with the "correct"
 		 * criterion, which is to use find_main_highlight.*/
 		if(act->is_numbering_hex(hex)) {
@@ -148,13 +146,13 @@ void highlighter::highlight()
 		find_secondary_highlights();
 
 		//Make sure owner unit is the only one displayed in its hex
-		resources::screen->add_exclusive_draw(owner_unit_->get_location(), *owner_unit_);
+		display::get_singleton()->add_exclusive_draw(owner_unit_->get_location(), *owner_unit_);
 		exclusive_display_hexes_.insert(owner_unit_->get_location());
 
 		if(!secondary_highlights_.empty()) {
 			//Highlight secondary highlights
 			highlight_secondary_visitor hs_visitor(*this);
-			BOOST_FOREACH(weak_action_ptr weak, secondary_highlights_) {
+			for(weak_action_ptr weak : secondary_highlights_) {
 				if(action_ptr action = weak.lock()) {
 					action->accept(hs_visitor);
 				}
@@ -173,15 +171,15 @@ void highlighter::unhighlight()
 	}
 
 	//unhighlight secondary highlights
-	BOOST_FOREACH(weak_action_ptr weak, secondary_highlights_) {
+	for(weak_action_ptr weak : secondary_highlights_) {
 		if(action_ptr action = weak.lock()) {
 			action->accept(uh_visitor);
 		}
 	}
 
 	//unhide other units if needed
-	BOOST_FOREACH(map_location hex, exclusive_display_hexes_) {
-		resources::screen->remove_exclusive_draw(hex);
+	for(map_location hex : exclusive_display_hexes_) {
+		display::get_singleton()->remove_exclusive_draw(hex);
 	}
 	exclusive_display_hexes_.clear();
 }
@@ -190,8 +188,9 @@ void highlighter::last_action_redraw(move_ptr move)
 {
 	//Last action with a fake unit always gets normal appearance
 	if(move->get_fake_unit()) {
-		side_actions& sa = *resources::teams->at(move->team_index()).get_side_actions();
-		side_actions::iterator last_action = sa.find_last_action_of(*(move->get_unit()));
+		side_actions& sa = *resources::gameboard->teams().at(move->team_index()).get_side_actions().get();
+
+		side_actions::iterator last_action = sa.find_last_action_of(move->get_unit_id());
 		side_actions::iterator second_to_last_action = last_action != sa.end() && last_action != sa.begin() ? last_action - 1 : sa.end();
 
 		bool this_is_last_action = last_action != sa.end() && move == *last_action;
@@ -211,7 +210,7 @@ void highlighter::find_main_highlight()
 	assert(main_highlight_.expired());
 	//@todo re-enable the following assert once I find out what happends to
 	// viewing side assignments after victory
-	//assert(side_actions_->team_index() == resources::screen->viewing_team());
+	//assert(side_actions_->team_index() == display::get_singleton()->viewing_team());
 
 	main_highlight_ = find_action_at(mouseover_hex_);
 	if(action_ptr main = main_highlight_.lock()) {
@@ -224,7 +223,7 @@ void highlighter::find_secondary_highlights()
 	assert(owner_unit_);
 	assert(secondary_highlights_.empty());
 
-	if(owner_unit_ == NULL) {
+	if(owner_unit_ == nullptr) {
 		return;
 	}
 
@@ -242,7 +241,7 @@ void highlighter::find_secondary_highlights()
 action_ptr highlighter::get_execute_target()
 {
 	if(action_ptr locked = selected_action_.lock()) {
-		return *side_actions_->find_first_action_of(*(locked->get_unit()));
+		return *side_actions_->find_first_action_of(locked->get_unit_id());
 	} else {
 		return action_ptr();
 	}
@@ -250,7 +249,7 @@ action_ptr highlighter::get_execute_target()
 action_ptr highlighter::get_delete_target()
 {
 	if(action_ptr locked = selected_action_.lock()) {
-		return *side_actions_->find_last_action_of(*(locked->get_unit()));
+		return *side_actions_->find_last_action_of(locked->get_unit_id());
 	} else {
 		return action_ptr();
 	}
@@ -279,7 +278,7 @@ void highlighter::highlight_main_visitor::visit(move_ptr move)
 		///@todo find some highlight animation
 		move->get_fake_unit()->anim_comp().set_ghosted(true);
 		//Make sure the fake unit is the only one displayed in its hex
-		resources::screen->add_exclusive_draw(move->get_fake_unit()->get_location(), *move->get_fake_unit());
+		display::get_singleton()->add_exclusive_draw(move->get_fake_unit()->get_location(), *move->get_fake_unit());
 		highlighter_.exclusive_display_hexes_.insert(move->get_fake_unit()->get_location());
 
 		highlighter_.last_action_redraw(move);
@@ -289,7 +288,7 @@ void highlighter::highlight_main_visitor::visit(move_ptr move)
 void highlighter::highlight_main_visitor::visit(attack_ptr attack)
 {
 	///@todo: highlight the attack indicator
-	visit(boost::static_pointer_cast<move>(attack));
+	visit(std::static_pointer_cast<move>(attack));
 }
 
 void highlighter::highlight_main_visitor::visit(recruit_ptr recruit)
@@ -298,7 +297,7 @@ void highlighter::highlight_main_visitor::visit(recruit_ptr recruit)
 		///@todo: find some suitable effect for mouseover on planned recruit.
 
 		//Make sure the fake unit is the only one displayed in its hex
-		resources::screen->add_exclusive_draw(recruit->get_fake_unit()->get_location(), *recruit->get_fake_unit());
+		display::get_singleton()->add_exclusive_draw(recruit->get_fake_unit()->get_location(), *recruit->get_fake_unit());
 		highlighter_.exclusive_display_hexes_.insert(recruit->get_fake_unit()->get_location());
 	}
 }
@@ -311,7 +310,7 @@ void highlighter::highlight_secondary_visitor::visit(move_ptr move)
 	if(move->get_fake_unit()) {
 		move->get_fake_unit()->anim_comp().set_ghosted(true);
 		//Make sure the fake unit is the only one displayed in its hex
-		resources::screen->add_exclusive_draw(move->get_fake_unit()->get_location(), *move->get_fake_unit());
+		display::get_singleton()->add_exclusive_draw(move->get_fake_unit()->get_location(), *move->get_fake_unit());
 		highlighter_.exclusive_display_hexes_.insert(move->get_fake_unit()->get_location());
 
 		highlighter_.last_action_redraw(move);
@@ -320,7 +319,7 @@ void highlighter::highlight_secondary_visitor::visit(move_ptr move)
 
 void highlighter::highlight_secondary_visitor::visit(attack_ptr attack)
 {
-	visit(boost::static_pointer_cast<move>(attack));
+	visit(std::static_pointer_cast<move>(attack));
 }
 
 void highlighter::unhighlight_visitor::visit(move_ptr move)
@@ -337,7 +336,7 @@ void highlighter::unhighlight_visitor::visit(move_ptr move)
 
 void highlighter::unhighlight_visitor::visit(attack_ptr attack)
 {
-	visit(boost::static_pointer_cast<move>(attack));
+	visit(std::static_pointer_cast<move>(attack));
 }
 
 void highlighter::unhighlight_visitor::visit(recall_ptr recall)
@@ -346,9 +345,14 @@ void highlighter::unhighlight_visitor::visit(recall_ptr recall)
 		//@todo: find some suitable effect for mouseover on planned recall.
 
 		//Make sure the fake unit is the only one displayed in its hex
-		resources::screen->add_exclusive_draw(recall->get_fake_unit()->get_location(), *recall->get_fake_unit());
+		display::get_singleton()->add_exclusive_draw(recall->get_fake_unit()->get_location(), *recall->get_fake_unit());
 		highlighter_.exclusive_display_hexes_.insert(recall->get_fake_unit()->get_location());
 	}
+}
+unit_map& highlighter::get_unit_map()
+{
+	assert(resources::gameboard);
+	return resources::gameboard->units();
 }
 
 } // end namespace wb

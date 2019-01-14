@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2012 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2012 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,28 +14,25 @@
 
 #include "tracer.hpp"
 
-#include <boost/foreach.hpp>
-
 #include <iomanip>
 #include <iostream>
 
-ttracer::tprint::tprint(const ttracer* const tracer__)
-	: tracer(tracer__)
+tracer::printer::printer(const tracer* const t)
+	: tracer_(t)
 {
 }
 
-ttracer::tprint::~tprint()
+tracer::printer::~printer()
 {
-	if(!tracer) {
+	if(!tracer_) {
 		return;
 	}
 
-	std::cerr << "Run statistics for " << tracer->function << ":\n"
-			<< "Runs:\t" << std::dec << tracer->run << "\n";
+	std::cerr << "Run statistics for " << tracer_->function << ":\n"
+			<< "Runs:\t" << std::dec << tracer_->run << "\n";
 
-	typedef std::pair<std::pair<int, std::string>, int> thack;
-	size_t maximum_length = 0;
-	BOOST_FOREACH(const thack& counter, tracer->counters) {
+	std::size_t maximum_length = 0;
+	for(const auto& counter : tracer_->counters) {
 		maximum_length = std::max(
 				  maximum_length
 				, counter.first.second.length());
@@ -45,7 +42,7 @@ ttracer::tprint::~tprint()
 			  std::ios_base::left
 			, std::ios_base::adjustfield);
 
-	BOOST_FOREACH(const thack& counter, tracer->counters) {
+	for(const auto& counter : tracer_->counters) {
 		std::cerr << "Marker: "
 				<< std::left
 				<< std::setw(maximum_length) << counter.first.second
@@ -57,9 +54,9 @@ ttracer::tprint::~tprint()
 	std::cerr.setf(original_flag, std::ios_base::adjustfield);
 }
 
-ttracer::ttracer(const char* const function__)
+tracer::tracer(const char* const function)
 	: run(0)
-	, function(function__)
+	, function(function)
 	, counters()
 {
 }

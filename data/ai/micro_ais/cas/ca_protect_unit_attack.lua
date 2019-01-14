@@ -1,26 +1,23 @@
-local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 
-local ca_protect_unit_attack = {}
+local ca_protect_unit_attack, best_attack = {}
 
-function ca_protect_unit_attack:evaluation(ai, cfg, self)
+function ca_protect_unit_attack:evaluation(cfg)
     -- Find possible attacks for the units
     -- This is set up very conservatively: if a unit can die in the attack
     -- or the counter attack on the enemy turn, it does not attack, even if that's really unlikely
 
     local units = {}
-    for _,id in ipairs(cfg.id) do
-        table.insert(units, AH.get_units_with_attacks { id = id }[1])
+    for u in wml.child_range(cfg, "unit") do
+        table.insert(units, AH.get_units_with_attacks { id = u.id }[1])
     end
     if (not units[1]) then return 0 end
 
     local attacks = AH.get_attacks(units, { simulate_combat = true })
     if (not attacks[1]) then return 0 end
 
-    local enemies = wesnoth.get_units {
-        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
-    }
+    local enemies = AH.get_attackable_enemies()
 
     -- Counter attack calculation
     local enemy_attacks = {}
@@ -32,7 +29,7 @@ function ca_protect_unit_attack:evaluation(ai, cfg, self)
     -- Set up a counter attack damage table, as many pairs of attacks will be the same
     local counter_damage_table = {}
 
-    local max_rating, best_attack = -9e99
+    local max_rating = - math.huge
     for _,attack in pairs(attacks) do
         -- Only consider attack if there is no chance to die or to be poisoned or slowed
         if (attack.att_stats.hp_chance[0] == 0)
@@ -50,12 +47,9 @@ function ca_protect_unit_attack:evaluation(ai, cfg, self)
                     if counter_damage_table[str] then  -- If so, use saved value
                         max_counter_damage = max_counter_damage + counter_damage_table[str]
                     else  -- if not, calculate it and save value
-                        -- Go thru all weapons, as "best weapon" might be different later on
-                        local n_weapon = 0
+                        -- Go through all weapons, as "best weapon" might be different later on
                         local min_hp = unit.hitpoints
-                        for weapon in H.child_range(enemy_attack.enemy.__cfg, "attack") do
-                            n_weapon = n_weapon + 1
-
+                        for n_weapon,weapon in ipairs(enemy_attack.enemy.attacks) do
                             -- Terrain does not matter for this, we're only interested in the maximum damage
                             local att_stats, def_stats = wesnoth.simulate_combat(enemy_attack.enemy, n_weapon, unit)
 
@@ -76,7 +70,7 @@ function ca_protect_unit_attack:evaluation(ai, cfg, self)
             end
 
             -- Add this to damage possible on this attack
-            local min_hp = 1000
+            local min_hp = math.huge
             for hp,chance in pairs(attack.att_stats.hp_chance) do
                 if (chance > 0) and (hp < min_hp) then
                     min_hp = hp
@@ -96,22 +90,14 @@ function ca_protect_unit_attack:evaluation(ai, cfg, self)
     end
 
     if best_attack then
-        self.data.PU_best_attack = best_attack
         return 95000
     end
     return 0
 end
 
-function ca_protect_unit_attack:execution(ai, cfg, self)
-    local attacker = wesnoth.get_unit(self.data.PU_best_attack.src.x, self.data.PU_best_attack.src.y)
-    local defender = wesnoth.get_unit(self.data.PU_best_attack.target.x, self.data.PU_best_attack.target.y)
-
-    AH.movefull_stopunit(ai, attacker, self.data.PU_best_attack.dst.x, self.data.PU_best_attack.dst.y)
-    if (not attacker) or (not attacker.valid) then return end
-    if (not defender) or (not defender.valid) then return end
-
-    AH.checked_attack(ai, attacker, defender)
-    self.data.PU_best_attack = nil
+function ca_protect_unit_attack:execution(cfg)
+    AH.robust_move_and_attack(ai, best_attack.src, best_attack.dst, best_attack.target)
+    best_attack = nil
 end
 
 return ca_protect_unit_attack

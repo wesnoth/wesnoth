@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Pauli Nieminen <paniemin@cc.hut.fi>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,11 +14,12 @@
 
 #define GETTEXT_DOMAIN "wesnoth-test"
 
-#include "fake_display.hpp"
+#include "tests/utils/fake_display.hpp"
 
 #include "game_board.hpp"
 #include "game_display.hpp"
-#include "tod_manager.hpp"
+#include "terrain/type_data.hpp"
+#include "reports.hpp"
 
 namespace wb {
 	class manager;
@@ -33,7 +34,7 @@ namespace test_utils {
 		config dummy_cfg_;
 		config dummy_cfg2_;
 		game_board dummy_board_;
-		tod_manager dummy_tod_;
+		reports dummy_reports;
 		const events::event_context main_event_context_;
 
 
@@ -59,14 +60,12 @@ namespace test_utils {
 	}
 
 	fake_display_manager::fake_display_manager() :
-	   	video_(CVideo::FAKE_TEST),
+		video_(CVideo::FAKE_TEST),
 		dummy_cfg_(),
 		dummy_cfg2_(),
-		dummy_board_(dummy_cfg_, dummy_cfg2_),
-		dummy_tod_(dummy_cfg_),
+		dummy_board_(std::make_shared<terrain_type_data>(dummy_cfg_), dummy_cfg2_),
 		main_event_context_(),
-		disp_(dummy_board_, video_, boost::shared_ptr<wb::manager> (), dummy_tod_,
-				dummy_cfg_, dummy_cfg_)
+		disp_(dummy_board_, std::shared_ptr<wb::manager> (), dummy_reports, dummy_cfg_, dummy_cfg_)
 	{
 	}
 

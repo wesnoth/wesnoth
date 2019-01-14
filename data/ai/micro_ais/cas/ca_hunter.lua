@@ -1,7 +1,7 @@
-local H = wesnoth.require "lua/helper.lua"
-local W = H.set_wml_action_metatable {}
+local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
+local M = wesnoth.map
 
 local function hunter_attack_weakest_adj_enemy(ai, hunter)
     -- Attack the enemy with the fewest hitpoints adjacent to 'hunter', if there is one
@@ -12,10 +12,10 @@ local function hunter_attack_weakest_adj_enemy(ai, hunter)
 
     if (hunter.attacks_left == 0) then return 'no_attack' end
 
-    local min_hp, target = 9e99
+    local min_hp, target = math.huge
     for xa,ya in H.adjacent_tiles(hunter.x, hunter.y) do
         local enemy = wesnoth.get_unit(xa, ya)
-        if enemy and wesnoth.is_enemy(enemy.side, wesnoth.current.side) then
+        if AH.is_attackable_enemy(enemy) then
             if (enemy.hitpoints < min_hp) then
                 min_hp, target = enemy.hitpoints, enemy
             end
@@ -35,7 +35,7 @@ local function hunter_attack_weakest_adj_enemy(ai, hunter)
 end
 
 local function get_hunter(cfg)
-    local filter = cfg.filter or { id = cfg.id }
+    local filter = wml.get_child(cfg, "filter") or { id = cfg.id }
     local hunter = AH.get_units_with_moves {
         side = wesnoth.current.side,
         { "and", filter }
@@ -45,14 +45,14 @@ end
 
 local ca_hunter = {}
 
-function ca_hunter:evaluation(ai, cfg)
+function ca_hunter:evaluation(cfg)
     if get_hunter(cfg) then return cfg.ca_score end
     return 0
 end
 
-function ca_hunter:execution(ai, cfg)
+function ca_hunter:execution(cfg)
     -- Hunter does a random wander in area given by @cfg.hunting_ground until it finds
-    -- and kills an enemy unit, then retreats to position given by @cfg.home_x/y
+    -- and kills an enemy unit, then retreats to position given by @cfg.home_loc or @cfg.home_x/y
     -- for @cfg.rest_turns turns, or until fully healed
 
     local hunter = get_hunter(cfg)
@@ -64,7 +64,7 @@ function ca_hunter:execution(ai, cfg)
         local rand = math.random(10)
         if (not hunter_vars.goal_x) or (rand == 1) then
             -- 'locs' includes border hexes, but that does not matter here
-            locs = AH.get_passable_locations((cfg.filter_location or {}), hunter)
+            locs = AH.get_passable_locations((wml.get_child(cfg, "filter_location") or {}), hunter)
             local rand = math.random(#locs)
 
             hunter_vars.goal_x, hunter_vars.goal_y = locs[rand][1], locs[rand][2]
@@ -74,16 +74,16 @@ function ca_hunter:execution(ai, cfg)
         local reach_map = AH.get_reachable_unocc(hunter)
 
         -- Now find the one of these hexes that is closest to the goal
-        local max_rating, best_hex = -9e99
+        local max_rating, best_hex = - math.huge
         reach_map:iter( function(x, y, v)
             -- Distance from goal is first rating
-            local rating = - H.distance_between(x, y, hunter_vars.goal_x, hunter_vars.goal_y)
+            local rating = -M.distance_between(x, y, hunter_vars.goal_x, hunter_vars.goal_y)
 
             -- Huge rating bonus if this is next to an enemy
             local enemy_hp = 500
             for xa,ya in H.adjacent_tiles(x, y) do
                 local enemy = wesnoth.get_unit(xa, ya)
-                if enemy and wesnoth.is_enemy(enemy.side, wesnoth.current.side) then
+                if AH.is_attackable_enemy(enemy) then
                     if (enemy.hitpoints < enemy_hp) then enemy_hp = enemy.hitpoints end
                 end
             end
@@ -120,7 +120,7 @@ function ca_hunter:execution(ai, cfg)
             MAIUV.set_mai_unit_variables(hunter, cfg.ai_id, hunter_vars)
 
             if cfg.show_messages then
-                W.message { speaker = hunter.id, message = 'Now that I have eaten, I will go back home.' }
+                wesnoth.wml_actions.message { speaker = hunter.id, message = 'Now that I have eaten, I will go back home.' }
             end
         end
 
@@ -129,7 +129,8 @@ function ca_hunter:execution(ai, cfg)
 
     -- If we got here, this means the hunter is either returning, or resting
     if (hunter_vars.hunting_status == 'returning') then
-        goto_x, goto_y = wesnoth.find_vacant_tile(cfg.home_x, cfg.home_y)
+        local home_loc = AH.get_named_loc_xy('home', cfg)
+        goto_x, goto_y = wesnoth.find_vacant_tile(home_loc[1], home_loc[2], hunter)
 
         local next_hop = AH.next_hop(hunter, goto_x, goto_y)
         if next_hop then
@@ -137,11 +138,11 @@ function ca_hunter:execution(ai, cfg)
             if (not hunter) or (not hunter.valid) then return end
 
             -- If there's an enemy on the 'home' hex and we got right next to it, attack that enemy
-            if (H.distance_between(cfg.home_x, cfg.home_y, next_hop[1], next_hop[2]) == 1) then
-                local enemy = wesnoth.get_unit(cfg.home_x, cfg.home_y)
-                if enemy and wesnoth.is_enemy(enemy.side, hunter.side) then
+            if (M.distance_between(home_loc[1], home_loc[2], hunter.x, hunter.y) == 1) then
+                local enemy = wesnoth.get_unit(home_loc[1], home_loc[2])
+                if AH.is_attackable_enemy(enemy) then
                     if cfg.show_messages then
-                        W.message { speaker = hunter.id, message = 'Get out of my home!' }
+                        wesnoth.wml_actions.message { speaker = hunter.id, message = 'Get out of my home!' }
                     end
 
                     AH.checked_attack(ai, hunter, enemy)
@@ -155,13 +156,13 @@ function ca_hunter:execution(ai, cfg)
         if (not hunter) or (not hunter.valid) then return end
 
         -- If the hunter got home, start the resting counter
-        if (hunter.x == cfg.home_x) and (hunter.y == cfg.home_y) then
+        if (hunter.x == home_loc[1]) and (hunter.y == home_loc[2]) then
             hunter_vars.hunting_status = 'resting'
             hunter_vars.resting_until = wesnoth.current.turn + (cfg.rest_turns or 3)
             MAIUV.set_mai_unit_variables(hunter, cfg.ai_id, hunter_vars)
 
             if cfg.show_messages then
-                W.message { speaker = hunter.id, message = 'I made it home - resting now until the end of Turn ' .. hunter_vars.resting_until .. ' or until fully healed.' }
+                wesnoth.wml_actions.message { speaker = hunter.id, message = 'I made it home - resting now until the end of Turn ' .. hunter_vars.resting_until .. ' or until fully healed.' }
             end
         end
 
@@ -184,7 +185,7 @@ function ca_hunter:execution(ai, cfg)
             MAIUV.set_mai_unit_variables(hunter, cfg.ai_id, hunter_vars)
 
             if cfg.show_messages then
-                W.message { speaker = hunter.id, message = 'I am done resting. It is time to go hunting again next turn.' }
+                wesnoth.wml_actions.message { speaker = hunter.id, message = 'I am done resting. It is time to go hunting again next turn.' }
             end
         end
         return

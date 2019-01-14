@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,15 +12,23 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_MINIMAP_HPP_INCLUDED
-#define GUI_WIDGETS_MINIMAP_HPP_INCLUDED
+#pragma once
 
-#include "gui/widgets/control.hpp"
+#include "gui/widgets/styled_widget.hpp"
+
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
 
 class config;
 
 namespace gui2
 {
+namespace implementation
+{
+struct builder_minimap;
+}
+
+// ------------ WIDGET -----------{
 
 /**
  * The basic minimap class.
@@ -28,26 +36,24 @@ namespace gui2
  * This minimap can only show a minimap, but it can't be interacted with. For
  * that the tminimap_interactive class will be created.
  */
-class tminimap : public tcontrol
+class minimap : public styled_widget
 {
 public:
-	tminimap() : tcontrol(1), map_data_(), terrain_(NULL)
-	{
-	}
+	explicit minimap(const implementation::builder_minimap& builder);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref tcontrol::set_active. */
-	virtual void set_active(const bool active) OVERRIDE;
+	/** See @ref styled_widget::set_active. */
+	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
-	virtual bool get_active() const OVERRIDE;
+	/** See @ref styled_widget::get_active. */
+	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
-	virtual unsigned get_state() const OVERRIDE;
+	/** See @ref styled_widget::get_state. */
+	virtual unsigned get_state() const override;
 
-	/** See @ref twidget::disable_click_dismiss. */
-	bool disable_click_dismiss() const OVERRIDE;
+	/** See @ref widget::disable_click_dismiss. */
+	bool disable_click_dismiss() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -91,22 +97,52 @@ private:
 	 * @param w                   The wanted width of the image.
 	 * @param h                   The wanted height of the image.
 	 *
-	 * @returns                   The image, NULL upon error.
+	 * @returns                   The image, nullptr upon error.
 	 */
 	const surface get_image(const int w, const int h) const;
 
-	/** See @ref twidget::impl_draw_background. */
-	virtual void impl_draw_background(surface& frame_buffer) OVERRIDE;
-
-	/** See @ref twidget::impl_draw_background. */
+	/** See @ref widget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,
 									  int x_offset,
-									  int y_offset) OVERRIDE;
+									  int y_offset) override;
 
-	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
+	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
+	virtual const std::string& get_control_type() const override;
 };
 
-} // namespace gui2
+// }---------- DEFINITION ---------{
 
-#endif
+struct minimap_definition : public styled_widget_definition
+{
+	explicit minimap_definition(const config& cfg);
+
+	struct resolution : public resolution_definition
+	{
+		explicit resolution(const config& cfg);
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct builder_minimap : public builder_styled_widget
+{
+	explicit builder_minimap(const config& cfg);
+
+	using builder_styled_widget::build;
+
+	widget* build() const;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
+
+} // namespace gui2

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,10 +12,10 @@
    See the COPYING file for more details.
 */
 
-#ifndef KEY_HPP_INCLUDED
-#define KEY_HPP_INCLUDED
+#pragma once
 
-#include <boost/cstdint.hpp>
+#include <cstdint>
+#include <SDL.h>
 
 /**
  * Class that keeps track of all the keys on the keyboard.
@@ -26,11 +26,10 @@
  */
 class CKey
 {
-	const boost::uint8_t *key_list;
+	const uint8_t *key_list;
 
 public:
 	CKey();
 	bool operator[](int k) const;
+	static bool is_uncomposable(const SDL_KeyboardEvent &event);
 };
-
-#endif

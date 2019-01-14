@@ -146,7 +146,7 @@ Update to-do list and walkthrough.
 r4393 | esr | 2009-04-08 08:48:12 -0400 (Wed, 08 Apr 2009) | 5 lines
 
 Cope with the fact that saved recruit lists currently seem to override SideWML
-declarations, soo they have to be hacked with [allow_recruit] and 
+declarations, soo they have to be hacked with [allow_recruit] and
 [disallow_recruit] explicitly.  YogiHH admits there may be a core bug here
 due to recent savegame changes; this revision should bulletproof us.
 
@@ -215,7 +215,7 @@ Removed the sighted event in favour of some filtering.
 r4329 | fabi_wesnoth | 2009-04-06 12:58:48 -0400 (Mon, 06 Apr 2009) | 3 lines
 
 Added a filter for Kalenz to the KALENZ_TAKES_CONTROL makro that prevents him from being removed from the scenario that he should take control over.
-It's tested that Kalenz is no longer removed from the scenario (13 at least) but not if the list with chantal and the elvish veterans is still saved for reapearing in a later scenario. 
+It's tested that Kalenz is no longer removed from the scenario (13 at least) but not if the list with chantal and the elvish veterans is still saved for reapearing in a later scenario.
 
 ------------------------------------------------------------------------
 r4328 | esr | 2009-04-06 12:47:28 -0400 (Mon, 06 Apr 2009) | 2 lines
@@ -295,7 +295,7 @@ Remove a sentence that is not consistent with the revised history.
 r4309 | esr | 2009-04-06 00:11:28 -0400 (Mon, 06 Apr 2009) | 4 lines
 
 By changing the date of Garard I's death from 473 to early in 470, we put the
-King (Garard II, not Garard I) back in charge of the army at Abez and 
+King (Garard II, not Garard I) back in charge of the army at Abez and
 eliminate a portrait requirement.
 
 ------------------------------------------------------------------------
@@ -332,7 +332,7 @@ Remove 'Mal-' prefix from Sagus.
 ------------------------------------------------------------------------
 r4302 | fabi_wesnoth | 2009-04-04 21:24:03 -0400 (Sat, 04 Apr 2009) | 2 lines
 
-Extracted some more units to characters.cfg. Removed an old hack for starting positions that is not a keep. 
+Extracted some more units to characters.cfg. Removed an old hack for starting positions that is not a keep.
 
 ------------------------------------------------------------------------
 r4301 | fabi_wesnoth | 2009-04-04 20:00:15 -0400 (Sat, 04 Apr 2009) | 2 lines
@@ -362,15 +362,15 @@ Added the canrecuit=yes attribute to Delfador in 19.
 ------------------------------------------------------------------------
 r4295 | fabi_wesnoth | 2009-04-04 14:43:52 -0400 (Sat, 04 Apr 2009) | 3 lines
 
-Adjusted the campaigns pathes to fit with the namechange from data/campaign to data/add-on for the 
+Adjusted the campaigns pathes to fit with the namechange from data/campaign to data/add-on for the
 parent directory.
 
 ------------------------------------------------------------------------
 r4293 | esr | 2009-04-03 16:36:31 -0400 (Fri, 03 Apr 2009) | 5 lines
 
 During the event where Niktor puts his men under Delfador's command,
-try to unfog the mage keep before we scroll to it.  Does not work yet 
-at trunk rev 34422; an engine change to enable [modify_side] to work 
+try to unfog the mage keep before we scroll to it.  Does not work yet
+at trunk rev 34422; an engine change to enable [modify_side] to work
 on share_view is in progress.
 
 ------------------------------------------------------------------------
@@ -406,8 +406,8 @@ now, and capitalization variation  in both has been removed.
 ------------------------------------------------------------------------
 r4279 | esr | 2009-04-02 07:18:50 -0400 (Thu, 02 Apr 2009) | 4 lines
 
-Changes for more continuity in recruit lists -- now, we never throw away a 
-veteran unless there's a strong storyline reason.  (One difference this makes 
+Changes for more continuity in recruit lists -- now, we never throw away a
+veteran unless there's a strong storyline reason.  (One difference this makes
 is that dwarves will fight in the showdown with Iliah-Malal.)
 
 ------------------------------------------------------------------------
@@ -651,7 +651,7 @@ version++
 r3531 | fabi_wesnoth | 2009-01-30 16:25:17 -0300 (Fri, 30 Jan 2009) | 3 lines
 
 S21: Fixed Kalenz not being able to recruit.
-     Added a filter to a kill tag that avoids killing the enemy humans. 
+     Added a filter to a kill tag that avoids killing the enemy humans.
 
 ------------------------------------------------------------------------
 r3521 | kalenz | 2009-01-29 20:16:22 -0300 (Thu, 29 Jan 2009) | 1 line
@@ -751,7 +751,7 @@ scenario19 40 truns, dwarves recruitable
 ------------------------------------------------------------------------
 r3461 | kalenz | 2009-01-25 14:50:14 -0300 (Sun, 25 Jan 2009) | 1 line
 
-scenario18 32 turns, code cleanup and modify side at end 
+scenario18 32 turns, code cleanup and modify side at end
 ------------------------------------------------------------------------
 r3457 | kalenz | 2009-01-25 14:30:49 -0300 (Sun, 25 Jan 2009) | 1 line
 
@@ -771,7 +771,7 @@ Changed back the Prince to passive because otherwise he goes out and gets himsel
 ------------------------------------------------------------------------
 r3430 | fabi_wesnoth | 2009-01-23 12:03:28 -0300 (Fri, 23 Jan 2009) | 3 lines
 
-Fixed the kill command that should clean the recall list in the Protagonist 
+Fixed the kill command that should clean the recall list in the Protagonist
 switch.
 
 ------------------------------------------------------------------------
@@ -784,8 +784,8 @@ r3428 | fabi_wesnoth | 2009-01-23 10:41:01 -0300 (Fri, 23 Jan 2009) | 5 lines
 
 Fixes for the persistent system.
 S 13: Hardcoded the apeareance of Kalenz
-S 15 + S 18: Moved the unstoring of wesnoth_store from 15 victory to 18 
-prestart 
+S 15 + S 18: Moved the unstoring of wesnoth_store from 15 victory to 18
+prestart
 
 ------------------------------------------------------------------------
 r3409 | fabi_wesnoth | 2009-01-22 19:03:16 -0300 (Thu, 22 Jan 2009) | 2 lines
@@ -835,7 +835,7 @@ Moved the UNSTORE MEMOIRS macro to a better location.
 ------------------------------------------------------------------------
 r3368 | fabi_wesnoth | 2009-01-19 20:58:58 -0300 (Mon, 19 Jan 2009) | 3 lines
 
-This fixes the delfador persistent bug in 15 and 18. 
+This fixes the delfador persistent bug in 15 and 18.
 Gave a save_id=Player to delfador and kalenz.
 
 ------------------------------------------------------------------------
@@ -970,7 +970,7 @@ Ford of Abez.
 ------------------------------------------------------------------------
 r2822 | esr | 2008-12-07 13:36:29 -0300 (Sun, 07 Dec 2008) | 3 lines
 
-Try to move Delf's re-assummption of control of side 1 from 18 to 15, since 
+Try to move Delf's re-assummption of control of side 1 from 18 to 15, since
 Kalenz agreed the Elves should follow him in 14.
 
 ------------------------------------------------------------------------
@@ -1001,7 +1001,7 @@ Add Santi's IRC nick, fnaek, to credits.
 ------------------------------------------------------------------------
 r2788 | esr | 2008-12-05 18:32:40 -0300 (Fri, 05 Dec 2008) | 2 lines
 
-Up-gun Kalenz's recruit list DM::13 isn't survivable otherwise. 
+Up-gun Kalenz's recruit list DM::13 isn't survivable otherwise.
 
 ------------------------------------------------------------------------
 r2787 | shikadilord | 2008-12-05 17:54:21 -0300 (Fri, 05 Dec 2008) | 2 lines
@@ -1072,7 +1072,7 @@ r2734 | esr | 2008-12-01 17:06:43 -0300 (Mon, 01 Dec 2008) | 5 lines
 
 Trim the Parthyn Ford map further, assign all villages omn the souuth shore,
 add a few villages to compensate for those lost by trimming.  This change should
-save the player from getting involved in a boring village-chasing exercise on 
+save the player from getting involved in a boring village-chasing exercise on
 the south shore of the river.
 
 ------------------------------------------------------------------------
@@ -1088,7 +1088,7 @@ DM 12: increases the INCOME of side 5 to balance the loss of some villages durin
 ------------------------------------------------------------------------
 r2731 | fabi_wesnoth | 2008-12-01 15:03:10 -0300 (Mon, 01 Dec 2008) | 2 lines
 
-Croped the map of DM 12 by 10 tiles. Moved the keep of player 5 to the northeast. 
+Croped the map of DM 12 by 10 tiles. Moved the keep of player 5 to the northeast.
 
 ------------------------------------------------------------------------
 r2730 | esr | 2008-12-01 14:20:40 -0300 (Mon, 01 Dec 2008) | 2 lines
@@ -1126,7 +1126,7 @@ r2721 | esr | 2008-11-30 19:12:27 -0300 (Sun, 30 Nov 2008) | 5 lines
 
 Having to run around nailing villages in your rear is irritating.
 Give Delf a larger control radius to prevent this. Gives him a bit of
-an income boost, but only enough for one unit every other turn 
+an income boost, but only enough for one unit every other turn
 and that's if he hires only spearmen.
 
 ------------------------------------------------------------------------
@@ -1136,7 +1136,7 @@ Revert 2717, 2715 and 2715 to make the campaign menu have working images again.
 ------------------------------------------------------------------------
 r2718 | fabi_wesnoth | 2008-11-29 14:01:36 -0300 (Sat, 29 Nov 2008) | 2 lines
 
-removed a space 
+removed a space
 
 ------------------------------------------------------------------------
 r2717 | fabi_wesnoth | 2008-11-29 13:57:21 -0300 (Sat, 29 Nov 2008) | 2 lines
@@ -1161,7 +1161,7 @@ Give Mal-Sagus a portrait.
 ------------------------------------------------------------------------
 r2713 | fabi_wesnoth | 2008-11-29 13:12:23 -0300 (Sat, 29 Nov 2008) | 2 lines
 
-fixed the binary_path and delfador image 
+fixed the binary_path and delfador image
 
 ------------------------------------------------------------------------
 r2712 | esr | 2008-11-29 13:08:51 -0300 (Sat, 29 Nov 2008) | 2 lines
@@ -1470,7 +1470,7 @@ Add a to-do to DM.
 ------------------------------------------------------------------------
 r2487 | esr | 2008-11-11 00:46:25 -0300 (Tue, 11 Nov 2008) | 3 lines
 
-Get rid of bogus path-abstraction macros, they only obscure what's going on 
+Get rid of bogus path-abstraction macros, they only obscure what's going on
 and confuse wmllint without actually helping anything.
 
 ------------------------------------------------------------------------
@@ -1536,7 +1536,7 @@ Update TODO, some issues have been resolved.
 ------------------------------------------------------------------------
 r2261 | esr | 2008-10-30 06:28:16 -0300 (Thu, 30 Oct 2008) | 2 lines
 
-Epilogu revisions, and note the changed length. 
+Epilogu revisions, and note the changed length.
 
 ------------------------------------------------------------------------
 r2260 | esr | 2008-10-30 06:14:06 -0300 (Thu, 30 Oct 2008) | 3 lines
@@ -1562,7 +1562,7 @@ Restore some journey tracks lost by a finger error.
 ------------------------------------------------------------------------
 r2256 | esr | 2008-10-29 20:24:53 -0300 (Wed, 29 Oct 2008) | 2 lines
 
-Finish the DM renumbering. 
+Finish the DM renumbering.
 
 ------------------------------------------------------------------------
 r2255 | esr | 2008-10-29 17:50:09 -0300 (Wed, 29 Oct 2008) | 2 lines
@@ -1667,7 +1667,7 @@ honorific (through it's not implemented yet.
 ------------------------------------------------------------------------
 r2236 | esr | 2008-10-28 00:52:07 -0300 (Tue, 28 Oct 2008) | 3 lines
 
-Remove unused portraits and clean uup broken references.  
+Remove unused portraits and clean uup broken references.
 DM is now wmlscope- and wmllint-clean.
 
 ------------------------------------------------------------------------
@@ -1822,9 +1822,9 @@ Transplant some macro definitions from LoW.
 ------------------------------------------------------------------------
 r2004 | esr | 2008-10-06 18:36:44 -0400 (Mon, 06 Oct 2008) | 5 lines
 
-Finish LoW at after scenario 24. Move LoW scenarios 25-32 to the directory 
+Finish LoW at after scenario 24. Move LoW scenarios 25-32 to the directory
 for DM, where they will eventually be merged.  Perform apprppriate moves of
-unit and graphics resources, and delete things no longer used when they 
+unit and graphics resources, and delete things no longer used when they
 have duplicates in mainline.
 
 ------------------------------------------------------------------------
@@ -2014,7 +2014,7 @@ Fix a glitch detectected by wmllint.
 ------------------------------------------------------------------------
 r1979 | esr | 2008-01-30 23:35:15 -0500 (Wed, 30 Jan 2008) | 3 lines
 
-Reinstate the Cockatrice unit and images.  Fix some recuitment-pattern 
+Reinstate the Cockatrice unit and images.  Fix some recuitment-pattern
 glitches revealed by wmllint.
 
 ------------------------------------------------------------------------
@@ -2074,7 +2074,7 @@ Fix some dialogue markup.
 ------------------------------------------------------------------------
 r1961 | esr | 2008-01-28 16:18:47 -0500 (Mon, 28 Jan 2008) | 3 lines
 
-Create new 4th-level Mage Magister for Delfador.  Mage Commander advances 
+Create new 4th-level Mage Magister for Delfador.  Mage Commander advances
 to it, it advances to Elder Mage.
 
 ------------------------------------------------------------------------
@@ -2114,7 +2114,7 @@ Typo fix.
 ------------------------------------------------------------------------
 r1948 | esr | 2008-01-27 22:06:56 -0500 (Sun, 27 Jan 2008) | 3 lines
 
-Cosmetic improvements to maps -- use new trrrains including farmlands, 
+Cosmetic improvements to maps -- use new trrrains including farmlands,
 great trees, stone path, flowered grass etc.
 
 ------------------------------------------------------------------------
@@ -2135,7 +2135,7 @@ Remove unused path.
 ------------------------------------------------------------------------
 r1938 | esr | 2008-01-26 20:52:16 -0500 (Sat, 26 Jan 2008) | 3 lines
 
-Junk the tiny 1.2-style mage images and rebase the special mage units 
+Junk the tiny 1.2-style mage images and rebase the special mage units
 on the mainline ones.
 
 ------------------------------------------------------------------------

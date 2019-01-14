@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,9 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef PLAYER_HPP_INCLUDED
-#define PLAYER_HPP_INCLUDED
-
+#pragma once
 
 #include "simple_wml.hpp"
 
@@ -34,9 +32,9 @@ public:
 		OBSERVING
 	};
 
-	player(const std::string& n, simple_wml::node& cfg, bool registered,
-	       const size_t max_messages=4, const size_t time_period=10,
-	       const bool sp=false, const bool moderator=false);
+	player(const std::string& n, simple_wml::node& cfg, bool registered, const std::string& version,
+	       const std::size_t max_messages=4, const std::size_t time_period=10,
+	       const bool moderator=false);
 
 	void set_status(STATUS status);
 
@@ -49,8 +47,7 @@ public:
 
 
 	const std::string& name() const { return name_; }
-	bool selective_ping() const { return selective_ping_ ; }
-
+	const std::string& version() const { return version_; }
 	const simple_wml::node* config_address() const { return &cfg_; }
 
 	bool is_message_flooding();
@@ -58,10 +55,10 @@ public:
 	/**
 	 * @return true iff the player is in a game
 	 */
-	bool in_game() const { return get_game() != NULL; }
+	bool in_game() const { return get_game() != nullptr; }
 
 	/**
-	 * @return a pointer to the game the player is in, or NULL if he/she is not
+	 * @return a pointer to the game the player is in, or nullptr if he/she is not
 	 * in a game at the moment
 	 */
 	const game* get_game() const;
@@ -73,19 +70,17 @@ public:
 
 private:
 	const std::string name_;
+	std::string version_;
 	simple_wml::node& cfg_;
-	const bool selective_ping_ ;
 
 	bool registered_;
 
-	time_t flood_start_;
+	std::time_t flood_start_;
 	unsigned int messages_since_flood_start_;
-	const size_t MaxMessages;
-	const time_t TimePeriod;
+	const std::size_t MaxMessages;
+	const std::time_t TimePeriod;
 	STATUS status_;
 	bool moderator_;
 };
 
 } //namespace wesnothd
-
-#endif

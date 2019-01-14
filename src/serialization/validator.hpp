@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2011 - 2014 by Sytyi Nick <nsytyi@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2011 - 2018 by Sytyi Nick <nsytyi@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,10 +16,9 @@
  * This file contains information about validation abstract level interface.
  */
 
-#ifndef SERIALIZATION_VALIDATOR_HPP_INCLUDED
-#define SERIALIZATION_VALIDATOR_HPP_INCLUDED
+#pragma once
 
-#include "game_errors.hpp"
+#include "exceptions.hpp"
 
 #include <string>
 
@@ -40,7 +39,7 @@ public:
 	 * Constructor of validator can throw validator::error
 	 * @throws abstract_validator::error
 	 */
-	abstract_validator(){}
+	abstract_validator(const std::string& name) : name_(name) {}
 
 	virtual ~abstract_validator(){}
 	/**
@@ -50,6 +49,7 @@ public:
 	 * @param file        Name of file
 	 */
 	virtual void open_tag(const std::string & name,
+						  const config& parent,
 						  int start_line,
 						  const std::string &file,
 						  bool addittion = false) = 0;
@@ -92,5 +92,6 @@ public:
 	struct error : public game::error {
 		error(const std::string& message) : game::error(message) {}
 	};
+	
+	const std::string name_;
 };
-#endif // SERIALIZATION_VALIDATOR_HPP_INCLUDED

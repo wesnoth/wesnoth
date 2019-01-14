@@ -1,7 +1,7 @@
 /*
-   Copyright (C) 2006 - 2014 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,179 +19,58 @@
  * completion of a scenario, campaign or turn.
  */
 
-#ifndef GAME_END_EXCEPTIONS_HPP_INCLUDED
-#define GAME_END_EXCEPTIONS_HPP_INCLUDED
+#pragma once
 
 #include "lua_jailbreak_exception.hpp"
 
-#include "config.hpp"
+#include "utils/make_enum.hpp"
 
 #include <string>
+#include <exception>
 
-#include <boost/optional.hpp>
-#include <boost/variant/variant.hpp>
+class config;
 
-enum LEVEL_RESULT {
-	NONE,
-	VICTORY,
-	DEFEAT,
-	QUIT,
-	OBSERVER_END,
-	SKIP_TO_LINGER
-};
+MAKE_ENUM(LEVEL_RESULT,
+	(VICTORY,      "victory")
+	(DEFEAT,       "defeat")
+	(QUIT,         "quit")
+	(OBSERVER_END, "observer_end")
+)
 
 /**
- * Struct used to transmit info caught from an end_turn_exception.
+ * Exception used to escape form the ai or ui code to playsingle_controller::play_side.
+ * Never thrown during replays.
  */
-struct end_turn_struct {
-	unsigned redo;
-};
-
-/**
- * Exception used to signal the end of a player turn.
- */
-class end_turn_exception
-	: public tlua_jailbreak_exception
+class return_to_play_side_exception : public lua_jailbreak_exception, public std::exception
 {
 public:
 
-	end_turn_exception(unsigned r = 0)
-		: tlua_jailbreak_exception()
-		, redo(r)
+	return_to_play_side_exception()
+		: lua_jailbreak_exception()
+		, std::exception()
 	{
 	}
-
-	unsigned redo;
-
-	end_turn_struct to_struct() {
-		end_turn_struct ets = {redo};
-		return ets;
-	}
-
+	const char * what() const noexcept { return "return_to_play_side_exception"; }
 private:
 
-	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(end_turn_exception)
+	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(return_to_play_side_exception)
 };
 
-/**
- * Struct used to transmit info caught from an end_turn_exception.
- */
-struct end_level_struct {
-	LEVEL_RESULT result;
-};
-
-/**
- * Exception used to signal the end of a scenario.
- */
-class end_level_exception
-	: public tlua_jailbreak_exception
+class quit_game_exception
+	: public lua_jailbreak_exception
+	, public std::exception
 {
 public:
 
-	end_level_exception(LEVEL_RESULT res)
-		: tlua_jailbreak_exception()
-		, result(res)
+	quit_game_exception()
+		: lua_jailbreak_exception()
+		, std::exception()
 	{
 	}
-
-	LEVEL_RESULT result;
-
-	end_level_struct to_struct() {
-		end_level_struct els = {result};
-		return els;
-	}
-
+	const char * what() const noexcept { return "quit_game_exception"; }
 private:
-
-	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(end_level_exception)
+	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(quit_game_exception)
 };
-
-/**
- * The two end_*_exceptions are caught and transformed to this signaling object
- */
-typedef boost::optional<boost::variant<end_turn_struct, end_level_struct> > possible_end_play_signal;
-
-#define HANDLE_END_PLAY_SIGNAL( X )\
-do\
-{\
-	try {\
-		X;\
-	} catch (end_level_exception & e) {\
-		return possible_end_play_signal(e.to_struct());\
-	} catch (end_turn_exception & e) {\
-		return possible_end_play_signal(e.to_struct());\
-	}\
-}\
-while(0)
-
-
-
-#define PROPOGATE_END_PLAY_SIGNAL( X )\
-do\
-{\
-	possible_end_play_signal temp;\
-	temp = X;\
-	if (temp) {\
-		return temp;\
-	}\
-}\
-while(0)
-
-
-
-#define HANDLE_AND_PROPOGATE_END_PLAY_SIGNAL( X )\
-do\
-{\
-	possible_end_play_signal temp;\
-	HANDLE_END_PLAY_SIGNAL( temp = X );\
-	if (temp) {\
-		return temp;\
-	}\
-}\
-while(0)
-
-
-enum END_PLAY_SIGNAL_TYPE {END_TURN, END_LEVEL};
-
-class get_signal_type : public boost::static_visitor<END_PLAY_SIGNAL_TYPE> {
-public:
-	END_PLAY_SIGNAL_TYPE operator()(end_turn_struct &) const
-	{
-		return END_TURN;
-	}
-
-	END_PLAY_SIGNAL_TYPE operator()(end_level_struct& ) const
-	{
-		return END_LEVEL;
-	}
-};
-
-class get_redo : public boost::static_visitor<unsigned> {
-public:
-	unsigned operator()(end_turn_struct & s) const
-	{
-		return s.redo;
-	}
-
-	unsigned operator()(end_level_struct &) const
-	{
-		return 0;
-	}
-};
-
-class get_result : public boost::static_visitor<LEVEL_RESULT> {
-public:
-	LEVEL_RESULT operator()(end_turn_struct & ) const
-	{
-		return NONE;
-	}
-
-	LEVEL_RESULT operator()(end_level_struct & s) const
-	{
-		return s.result;
-	}
-};
-
 
 /**
  * The non-persistent part of end_level_data
@@ -202,9 +81,9 @@ struct transient_end_level{
 
 	bool carryover_report;             /**< Should a summary of the scenario outcome be displayed? */
 	bool linger_mode;                  /**< Should linger mode be invoked? */
-	std::string custom_endlevel_music; /**< Custom short music played at the end. */
 	bool reveal_map;                   /**< Should we reveal map when game is ended? (Multiplayer only) */
-	bool disabled;                     /**< Limits execution of tag [endlevel] to a single time > */
+
+	void write(config& cfg) const;
 };
 
 /**
@@ -217,22 +96,20 @@ struct end_level_data
 
 	bool prescenario_save;             /**< Should a prescenario be created the next game? */
 	bool replay_save;                  /**< Should a replay save be made? */
-	bool gold_bonus;                   /**< Should early-finish bonus be applied? */
-	int carryover_percentage;          /**< How much gold is carried over to next scenario. */
-	bool carryover_add;                /**< Add or replace next scenario's minimum starting gold. */
-	bool proceed_to_next_level;        /**< whether to proceed to the next scenario, equals (res == VICTORY) in sp. We need to save this in saves during linger mode. > */
+	bool proceed_to_next_level;        /**< whether to proceed to the next scenario, equals is_victory in sp. We need to save this in saves during linger mode. > */
+	bool is_victory;
 	transient_end_level transient;
-
 	void write(config& cfg) const;
 
 	void read(const config& cfg);
 
-	config to_config() const
-	{
-		config r;
-		write(r);
-		return r;
-	}
+	config to_config() const;
+	config to_config_full() const; ///< Includes the transient data
 };
-
-#endif /* ! GAME_END_EXCEPTIONS_HPP_INCLUDED */
+inline void throw_quit_game_exception()
+{
+	// Distinguish 'Quit' from 'Regular' end_level_exceptions to solve the following problem:
+	//   If a player quits the game during an event after an [endlevel] occurs, the game won't
+	//   Quit but continue with the [endlevel] instead.
+	throw quit_game_exception();
+}

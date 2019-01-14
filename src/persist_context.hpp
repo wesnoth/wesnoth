@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2010 - 2014 by Jody Northup
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2010 - 2018 by Jody Northup
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef PERSIST_CONTEXT_H_INCLUDED
-#define PERSIST_CONTEXT_H_INCLUDED
+#pragma once
+
 #include "config.hpp"
 #include "log.hpp"
 static lg::log_domain log_persist("engine/persistence");
@@ -45,7 +45,7 @@ public:
 					break;
 				}
 				std::string infix = namespace_.substr(namespace_.find_first_of("^"));
-				size_t end = infix.find_first_not_of("^");
+				std::size_t end = infix.find_first_not_of("^");
 				if (!((end >= infix.length()) || (infix[end] == '.'))) {
 					//TODO: Throw a WML error
 					namespace_ = "";
@@ -126,7 +126,7 @@ protected:
 			else if (cfg.has_child(next.root_))
 				return get_node(cfg.child(next.root_), next);
 			else
-				return NULL;
+				return nullptr;
 		}
 		else
 			return &cfg;
@@ -138,7 +138,7 @@ protected:
 			if (cfg.has_child(next.root_))
 				return get_node(cfg.child(next.root_), next);
 			else
-				return NULL;
+				return nullptr;
 		}
 		else
 			return &cfg;
@@ -193,4 +193,3 @@ public:
 		return true;
 	}
 };
-#endif

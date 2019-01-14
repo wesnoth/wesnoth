@@ -1,8 +1,8 @@
 /*
-   Copyright (C) 2009 - 2014 by Thomas Baumhauer
+   Copyright (C) 2009 - 2018 by Thomas Baumhauer
    <thomas.baumhauer@NOSPAMgmail.com>
-   Copyright (C) 2009 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,14 +18,13 @@
 
 #include "gui/widgets/password_box.hpp"
 
-#include "gui/auxiliary/log.hpp"
-#include "gui/auxiliary/widget_definition/text_box.hpp"
-#include "gui/auxiliary/window_builder/password_box.hpp"
-#include "gui/widgets/detail/register.tpp"
+#include "gui/core/log.hpp"
+#include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
-#include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 
-#include <boost/bind.hpp>
+#include "desktop/clipboard.hpp"
+#include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -33,119 +32,127 @@
 namespace gui2
 {
 
-REGISTER_WIDGET3(ttext_box_definition, password_box, "text_box_definition")
+// ------------ WIDGET -----------{
 
-namespace
-{
+REGISTER_WIDGET3(text_box_definition, password_box, "text_box_definition")
 
-size_t get_text_length(const std::string& str)
+password_box::password_box(const implementation::builder_password_box& builder)
+	: text_box(builder)
+	, real_value_()
 {
-	return utf8::size(str);
 }
 
-} // namespace
-
-void tpassword_box::set_value(const std::string& text)
+void password_box::set_value(const std::string& text)
 {
-	ttext_box::set_value(text);
-	real_value_ = get_value();
-	ttext_box::set_value(std::string(get_text_length(real_value_), '*'));
+	real_value_ = text;
+	std::size_t sz = utf8::size(text);
+	std::string passwd;
+	for(std::size_t i = 0; i < sz; i++) {
+		passwd.append(font::unicode_bullet);
+	}
+	text_box::set_value(passwd);
 }
 
-void tpassword_box::insert_char(const utf8::string& unicode)
+void password_box::delete_selection()
 {
-	pre_function();
-	ttext_box::insert_char(unicode);
-	post_function();
-}
-
-void tpassword_box::delete_char(const bool before_cursor)
-{
-	pre_function();
-	ttext_box::delete_char(before_cursor);
-	post_function();
-}
-
-void tpassword_box::handle_key_backspace(SDLMod /*modifier*/, bool& handled)
-{
-	pre_function();
-
-	// Copy & paste from ttext_::handle_key_backspace()
-	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
-
-	handled = true;
-	if(get_selection_length() != 0) {
-		delete_selection();
-	} else if(get_selection_start()) {
-		delete_char(true);
+	int len = get_selection_length();
+	if(len == 0) {
+		return;
+	}
+	unsigned start = get_selection_start();
+	if(len < 0) {
+		len = -len;
+		start -= len;
 	}
 
-	post_function();
+	utf8::erase(real_value_, start, len);
+	set_value(real_value_);
+	set_cursor(start, false);
 }
 
-void tpassword_box::handle_key_delete(SDLMod /*modifier*/, bool& handled)
+void password_box::insert_char(const std::string& unicode)
 {
-	pre_function();
-
-	// Copy & paste from ttext_::handle_key_delete()
-	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
-
-	handled = true;
-	if(get_selection_length() != 0) {
-		delete_selection();
-	} else if(get_selection_start() < get_text_length(text())) {
-		delete_char(false);
+	int len = get_selection_length();
+	unsigned sel = get_selection_start();
+	if(len < 0) {
+		len = -len;
+		sel -= len;
 	}
 
-	post_function();
+	std::size_t sz = utf8::size(unicode);
+	if(sz == 1) {
+		text_box::insert_char(font::unicode_bullet);
+	} else {
+		std::string passwd;
+		for(std::size_t i = 0; i < sz; i++) {
+			passwd.append(font::unicode_bullet);
+		}
+		text_box::insert_char(passwd);
+	}
+	utf8::insert(real_value_, sel, unicode);
 }
 
-void tpassword_box::paste_selection(const bool mouse)
+void password_box::paste_selection(const bool mouse)
 {
-	pre_function();
-	ttext_box::paste_selection(mouse);
-	post_function();
+	const std::string& text = desktop::clipboard::copy_from_clipboard(mouse);
+	if(text.empty()) {
+		return;
+	}
+	insert_char(text);
 }
 
-void tpassword_box::pre_function()
-{
-	// ttext_box::set_value() will reset the selection,
-	// we therefore have to remember it
-	size_t selection_start = get_selection_start();
-	size_t selection_length = get_selection_length();
-
-	// Tell ttext_box the actual input of this box
-	ttext_box::set_value(real_value_);
-
-	// Restore the selection
-	set_selection_start(selection_start);
-	set_selection_length(selection_length);
-}
-
-void tpassword_box::post_function()
-{
-	// See above
-	size_t selection_start = get_selection_start();
-	size_t selection_length = get_selection_length();
-
-	// Get the input back and make ttext_box forget it
-	real_value_ = get_value();
-	ttext_box::set_value(std::string(get_text_length(real_value_), '*'));
-
-	// See above
-	set_selection_start(selection_start);
-	set_selection_length(selection_length);
-
-	// Why do the selection functions not update
-	// the canvas?
-	update_canvas();
-	set_is_dirty(true);
-}
-
-const std::string& tpassword_box::get_control_type() const
+const std::string& password_box::type()                                                                                      \
 {
 	static const std::string type = "password_box";
 	return type;
 }
+
+const std::string& password_box::get_control_type() const
+{
+	return type();
+}
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+/*WIKI
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_password_box
+ *
+ * == Password box ==
+ *
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="password_box"}{min=0}{max=-1}{super="generic/widget_instance"}
+ * @begin{table}{config}
+ *     label & t_string & "" &         The initial text of the password box. $
+ * @end{table}
+ * @end{tag}{name="password_box"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
+ */
+
+builder_password_box::builder_password_box(const config& cfg)
+	: builder_styled_widget(cfg), history_(cfg["history"])
+{
+}
+
+widget* builder_password_box::build() const
+{
+	password_box* widget = new password_box(*this);
+
+	// A password box doesn't have a label but a text.
+	// It also has no history.
+	widget->set_value(label_string);
+
+	DBG_GUI_G << "Window builder: placed password box '" << id
+			  << "' with definition '" << definition << "'.\n";
+
+	return widget;
+}
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2

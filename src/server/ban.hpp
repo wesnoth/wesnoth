@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Pauli Nieminen <paniemin@cc.hut.fi>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef SERVER_GAME_HPP_INCLUDED
-#define SERVER_GAME_HPP_INCLUDED
+#pragma once
+
 #include "exceptions.hpp"
 
 #include <set>
@@ -21,8 +21,6 @@
 #include <list>
 #include <queue>
 #include <ctime>
-
-#include <boost/shared_ptr.hpp>
 
 class config;
 
@@ -32,7 +30,7 @@ namespace wesnothd {
 
 	std::ostream& operator<<(std::ostream& o, const banned& n);
 
-	typedef boost::shared_ptr<banned> banned_ptr;
+	typedef std::shared_ptr<banned> banned_ptr;
 
 	/** We want to move the lowest value to the top. */
 	struct banned_compare {
@@ -50,7 +48,7 @@ namespace wesnothd {
 	typedef std::set<banned_ptr,banned_compare_subnet > ban_set;
 	typedef std::list<banned_ptr> deleted_ban_list;
 	typedef std::priority_queue<banned_ptr,std::vector<banned_ptr>, banned_compare> ban_time_queue;
-	typedef std::map<std::string, size_t> default_ban_times;
+	typedef std::map<std::string, std::size_t> default_ban_times;
 	typedef std::pair<unsigned int, unsigned int> ip_mask;
 
 	ip_mask parse_ip(const std::string&);
@@ -59,8 +57,8 @@ namespace wesnothd {
 		unsigned int ip_;
 		unsigned int mask_;
 		std::string ip_text_;
-		time_t end_time_;
-		time_t start_time_;
+		std::time_t end_time_;
+		std::time_t start_time_;
 		std::string reason_;
 		std::string who_banned_;
 		std::string group_;
@@ -70,19 +68,19 @@ namespace wesnothd {
 		banned(const std::string& ip);
 
 	public:
-		banned(const std::string& ip, const time_t end_time, const std::string& reason, const std::string& who_banned=who_banned_default_, const std::string& group="", const std::string& nick="");
+		banned(const std::string& ip, const std::time_t end_time, const std::string& reason, const std::string& who_banned=who_banned_default_, const std::string& group="", const std::string& nick="");
 		banned(const config&);
 
 		void read(const config&);
 		void write(config&) const;
 
-		time_t get_end_time() const
+		std::time_t get_end_time() const
 		{ return end_time_;	}
 
 		std::string get_human_end_time() const;
 		std::string get_human_start_time() const;
 		std::string get_human_time_span() const;
-		static std::string get_human_time(const time_t&);
+		static std::string get_human_time(const std::time_t&);
 
 		std::string get_reason() const
 		{ return reason_; }
@@ -115,8 +113,8 @@ namespace wesnothd {
 
 		bool operator>(const banned& b) const;
 
-		struct error : public game::error {
-			error(const std::string& message) : game::error(message) {}
+		struct error : public ::game::error {
+			error(const std::string& message) : ::game::error(message) {}
 		};
 	};
 
@@ -133,10 +131,14 @@ namespace wesnothd {
 
 		bool is_digit(const char& c) const
 		{ return c >= '0' && c <= '9'; }
-		size_t to_digit(const char& c) const
+		std::size_t to_digit(const char& c) const
 		{ return c - '0'; }
 
 		void init_ban_help();
+		void check_ban_times(std::time_t time_now);
+		inline void expire_bans() {
+			check_ban_times(std::time(nullptr));
+		}
 	public:
 		ban_manager();
 		~ban_manager();
@@ -150,19 +152,17 @@ namespace wesnothd {
 		 * @returns false if an invalid time modifier is encountered.
 		 * *time is undefined in that case.
 		 */
-		bool parse_time(const std::string& duration, time_t* time) const;
+		bool parse_time(const std::string& duration, std::time_t* time) const;
 
-		std::string ban(const std::string&, const time_t&, const std::string&, const std::string&, const std::string&, const std::string& = "");
-		void unban(std::ostringstream& os, const std::string& ip);
+		std::string ban(const std::string&, const std::time_t&, const std::string&, const std::string&, const std::string&, const std::string& = "");
+		void unban(std::ostringstream& os, const std::string& ip, bool immediate_write=true);
 		void unban_group(std::ostringstream& os, const std::string& group);
 
 
-		void check_ban_times(time_t time_now);
-
 		void list_deleted_bans(std::ostringstream& out, const std::string& mask = "*") const;
-		void list_bans(std::ostringstream& out, const std::string& mask = "*") const;
+		void list_bans(std::ostringstream& out, const std::string& mask = "*");
 
-		std::string is_ip_banned(const std::string& ip) const;
+		std::string is_ip_banned(const std::string& ip);
 
 		const std::string& get_ban_help() const
 		{ return ban_help_; }
@@ -171,5 +171,3 @@ namespace wesnothd {
 
 	};
 }
-
-#endif

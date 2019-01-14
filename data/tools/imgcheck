@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+
 """
 imgcheck - check a sequence of images for exiguous colors
 
@@ -10,34 +11,45 @@ as animation images.  Report on colors not present in the baseframe.
 The Python Imaging Library must be available for this tool to work
 """
 
-import sys, Image
+import sys
+try:
+    from PIL import Image
+except ImportError:
+    print("""Please install the Python Pillow Library to run this script.
+You can download it from https://pypi.python.org/pypi/Pillow
+On Debian and Ubuntu you can also type in a Terminal
+sudo apt-get install python-pil""", file=sys.stderr)
+    sys.exit(1)
 
 # Extract a color table list from the images
 colortables = []
 for filename in sys.argv[1:]:
     img = Image.open(filename).convert("RGB")
     colortable = img.getcolors()
+    # getcolors() returns None if an image has more than 256 colors
     if colortable:
         colortables.append([filename, colortable])
     else:
-        print "imgcheck: %s has no color table" % filename
-    #img.close()
+        print("imgcheck: %s has more than 256 colors" % filename)
 
 # Perform color table subtraction
-basecolors = map(lambda (n, rgb): rgb, colortables[0][1])
-basecolors.sort()
+# each color value is a (count, pixel) tuple
+# get the pixel datas, which are RGB tuples, and sort them
+basetable = colortables.pop(0)
+basecolors = sorted(map(lambda elem: elem[1], basetable[1]))
 subtracted = []
-for i in xrange(1, len(colortables)):
+for table in colortables:
     exiguous = []
-    for (n, rgb) in colortables[i][1]:
+    for (n, rgb) in table[1]:
         if rgb not in basecolors:
             exiguous.append((n, rgb))
-    exiguous.sort(lambda (an, argb), (bn, brgb): cmp(argb, brgb))
-    subtracted.append((colortables[i][0], exiguous))
+    # again, sort according to RGB data
+    exiguous.sort(key=lambda elem: elem[1])
+    subtracted.append((table[0], exiguous))
 
-print "Base colors:"
-print basecolors
+print("Base colors:")
+print(basecolors)
 for (filename, colors) in subtracted:
-    print filename + ":"
+    print(filename + ":")
     for (n, rgb) in colors:
-        print repr(rgb) + " * " + repr(n)
+        print("(%3d, %3d, %3d) * %d" % (rgb[0], rgb[1], rgb[2], n))

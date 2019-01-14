@@ -135,4 +135,3 @@ void tunit_attack::post_show(twindow& window)
 }
 
 } // namespace gui2
-

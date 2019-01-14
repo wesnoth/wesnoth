@@ -1,5 +1,5 @@
 return {
-    init = function(ai)
+    init = function()
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
         local urudin = {}

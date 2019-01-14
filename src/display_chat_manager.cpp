@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -13,33 +13,30 @@
 */
 
 #include "display_chat_manager.hpp"
-#include "global.hpp"
 
 #include "desktop/notifications.hpp"
 #include "display.hpp"
-#include "font.hpp"
+#include "floating_label.hpp"
 #include "game_board.hpp" // <-- only needed for is_observer()
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "log.hpp"
-#include "marked-up_text.hpp"
-#include "sound.hpp"
+#include "font/marked-up_text.hpp"
+#include "mp_ui_alerts.hpp"
 #include "serialization/string_utils.hpp"
+#include "color.hpp"
+#include "preferences/credentials.hpp"
+#include "serialization/utf8_exception.hpp"
 
-#include <boost/cstdint.hpp>
-#include <boost/foreach.hpp>
-#include "SDL_timer.h"
-#include "SDL_video.h"
+#include <SDL_timer.h>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 
-using boost::uint32_t;
-
 namespace {
 	const int chat_message_border = 5;
 	const int chat_message_x = 10;
-	const SDL_Color chat_message_color = {255,255,255,255};
-	const SDL_Color chat_message_bg     = {0,0,0,140};
+	const color_t chat_message_color {255,255,255,SDL_ALPHA_OPAQUE};
+	const color_t chat_message_bg    {0,0,0,140};
 }
 
 display_chat_manager::chat_message::chat_message(int speaker, int h)
@@ -47,7 +44,7 @@ display_chat_manager::chat_message::chat_message(int speaker, int h)
 {}
 
 
-void display_chat_manager::add_chat_message(const time_t& time, const std::string& speaker,
+void display_chat_manager::add_chat_message(const std::time_t& time, const std::string& speaker,
 		int side, const std::string& message, events::chat_handler::MESSAGE_TYPE type,
 		bool bell)
 {
@@ -55,7 +52,16 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 	std::string sender = speaker;
 	if (whisper) {
 		sender.assign(speaker, 9, speaker.size());
+		add_whisperer( sender );
 	}
+	//remove disconnected user from whisperer
+	std::string::size_type pos = message.find(" has disconnected");
+	if (pos != std::string::npos){
+		for(std::set<std::string>::const_iterator w = whisperers().begin(); w != whisperers().end(); ++w){
+			if (*w == message.substr(0,pos)) remove_whisperer(*w);
+		}
+	}
+
 	if (!preferences::parse_should_show_lobby_join(sender, message)) return;
 	if (preferences::is_ignored(sender)) return;
 
@@ -74,13 +80,13 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 	if (bell) {
 		if ((type == events::chat_handler::MESSAGE_PRIVATE && (!is_observer || whisper))
 			|| utils::word_match(message, preferences::login())) {
-			sound::play_UI_sound(game_config::sounds::receive_message_highlight);
+			mp_ui_alerts::private_message(false, sender, message);
 		} else if (preferences::is_friend(sender)) {
-			sound::play_UI_sound(game_config::sounds::receive_message_friend);
+			mp_ui_alerts::friend_message(false, sender, message);
 		} else if (sender == "server") {
-			sound::play_UI_sound(game_config::sounds::receive_message_server);
+			mp_ui_alerts::server_message(false, sender, message);
 		} else {
-			sound::play_UI_sound(game_config::sounds::receive_message);
+			mp_ui_alerts::public_message(false, sender, message);
 		}
 	}
 
@@ -88,17 +94,17 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 
 	std::string msg;
 
-	if (message.find("/me ") == 0) {
+	if (message.compare(0,4,"/me ") == 0) {
 		msg.assign(message, 4, message.size());
 		action = true;
 	} else {
-		msg += message;
+		msg = message;
 	}
 
 	try {
 		// We've had a joker who send an invalid utf-8 message to crash clients
 		// so now catch the exception and ignore the message.
-		msg = font::word_wrap_text(msg,font::SIZE_SMALL,my_disp_.map_outside_area().w*3/4);
+		msg = my_disp_.video().faked() ? "" : font::word_wrap_text(msg,font::SIZE_15,my_disp_.map_outside_area().w*3/4);
 	} catch (utf8::invalid_utf8_exception&) {
 		ERR_NG << "Invalid utf-8 found, chat message is ignored." << std::endl;
 		return;
@@ -109,12 +115,12 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 		ypos += std::max(font::get_floating_label_rect(m->handle).h,
 			font::get_floating_label_rect(m->speaker_handle).h);
 	}
-	SDL_Color speaker_color = {255,255,255,255};
+	color_t speaker_color {255,255,255,SDL_ALPHA_OPAQUE};
 	if(side >= 1) {
-		speaker_color = int_to_color(team::get_side_color_range(side).mid());
+		speaker_color = team::get_side_color_range(side).mid();
 	}
 
-	SDL_Color message_color = chat_message_color;
+	color_t message_color = chat_message_color;
 	std::stringstream str;
 	std::stringstream message_str;
 
@@ -147,7 +153,7 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 	const SDL_Rect rect = my_disp_.map_outside_area();
 
 	font::floating_label spk_flabel(message_complete.str());
-	spk_flabel.set_font_size(font::SIZE_SMALL);
+	spk_flabel.set_font_size(font::SIZE_15);
 	spk_flabel.set_color(speaker_color);
 	spk_flabel.set_position(rect.x + chat_message_x, rect.y + ypos);
 	spk_flabel.set_clip_rect(rect);
@@ -159,7 +165,7 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 	int speaker_handle = font::add_floating_label(spk_flabel);
 
 	font::floating_label msg_flabel(message_str.str());
-	msg_flabel.set_font_size(font::SIZE_SMALL);
+	msg_flabel.set_font_size(font::SIZE_15);
 	msg_flabel.set_color(message_color);
 	msg_flabel.set_position(rect.x + chat_message_x + font::get_floating_label_rect(speaker_handle).w,
 	rect.y + ypos);
@@ -171,10 +177,7 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 
 	int message_handle = font::add_floating_label(msg_flabel);
 
-	// Send system notification if appropriate.
-	desktop::notifications::send(speaker, message, desktop::notifications::CHAT);
-
-	chat_messages_.push_back(chat_message(speaker_handle,message_handle));
+	chat_messages_.emplace_back(speaker_handle,message_handle);
 
 	prune_chat_messages();
 }
@@ -199,11 +202,8 @@ void display_chat_manager::prune_chat_messages(bool remove_all)
 		}
 	}
 
-	BOOST_FOREACH(const chat_message &cm, chat_messages_) {
+	for(const chat_message &cm : chat_messages_) {
 		font::move_floating_label(cm.speaker_handle, 0, - movement);
 		font::move_floating_label(cm.handle, 0, - movement);
 	}
 }
-
-
-

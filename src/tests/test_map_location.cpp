@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,12 +14,10 @@
 
 #define GETTEXT_DOMAIN "wesnoth-test"
 
-#include <boost/assign/list_of.hpp>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #include <boost/test/unit_test.hpp>
 
-#include "log.hpp"
-#include "map_location.hpp"
+#include "map/location.hpp"
 
 static std::vector<map_location> preset_locs;
 static map_location va,vb,vc,vz,vt1,vt2,vt3,vs1,vs2,vs3,vs4;
@@ -64,7 +62,7 @@ struct MLFixture
 	~MLFixture() {}
 };
 
-BOOST_GLOBAL_FIXTURE ( MLFixture )
+BOOST_GLOBAL_FIXTURE ( MLFixture );
 
 BOOST_AUTO_TEST_SUITE ( test_map_location )
 
@@ -79,12 +77,12 @@ static map_location vector_difference(const map_location & v1, const map_locatio
 }
 #endif
 
-static void characterization_distance_direction (const std::vector<map_location> & locs, const std::vector<map_location::DIRECTION> & dir_answers, const std::vector<size_t> & int_answers, map_location::RELATIVE_DIR_MODE mode)
+static void characterization_distance_direction (const std::vector<map_location> & locs, const std::vector<map_location::DIRECTION> & dir_answers, const std::vector<std::size_t> & int_answers, map_location::RELATIVE_DIR_MODE mode)
 {
 	BOOST_CHECK_EQUAL(dir_answers.size(), int_answers.size());
 
 	std::vector<map_location::DIRECTION>::const_iterator dir_it = dir_answers.begin();
-	std::vector<size_t>::const_iterator int_it = int_answers.begin();
+	std::vector<std::size_t>::const_iterator int_it = int_answers.begin();
 
 	for (std::vector<map_location>::const_iterator it_a = locs.begin(); it_a != locs.end(); ++it_a) {
 		for (std::vector<map_location>::const_iterator it_b = it_a + 1; it_b != locs.end(); ++it_b) {
@@ -129,14 +127,14 @@ static void characterization_distance_direction (const std::vector<map_location>
 	BOOST_CHECK_MESSAGE( int_it == int_answers.end(), "Did not exhaust answers list.");
 }
 
-static size_t get_first (std::pair<size_t, std::string> arg) {return arg.first; }
-static map_location::DIRECTION get_second (std::pair<size_t, std::string> arg) {return map_location::parse_direction(arg.second); }
+static std::size_t get_first (std::pair<std::size_t, std::string> arg) {return arg.first; }
+static map_location::DIRECTION get_second (std::pair<std::size_t, std::string> arg) {return map_location::parse_direction(arg.second); }
 
 /* This has to be recomputed, I'm commenting out the test so that it doesn't fail in the meantime. --iceiceice
 
 BOOST_AUTO_TEST_CASE ( map_location_characterization_test_default_mode )
 {
-	std::vector<std::pair<size_t, std::string> > generated_answers = boost::assign::list_of(std::make_pair(7,	"se"))
+	std::vector<std::pair<std::size_t, std::string>> generated_answers = boost::assign::list_of(std::make_pair(7,	"se"))
 (std::make_pair(6,	"s"))
 (std::make_pair(6,	"nw"))
 (std::make_pair(12,	"n"))
@@ -192,7 +190,7 @@ BOOST_AUTO_TEST_CASE ( map_location_characterization_test_default_mode )
 (std::make_pair(3,	"s"))
 (std::make_pair(1,	"sw")).to_container(generated_answers);
 
-	std::vector<size_t> ans1;
+	std::vector<std::size_t> ans1;
 	std::vector<map_location::DIRECTION> ans2;
 	std::transform(generated_answers.begin(), generated_answers.end(), back_inserter(ans1), &get_first);
 	std::transform(generated_answers.begin(), generated_answers.end(), back_inserter(ans2), &get_second);
@@ -202,63 +200,64 @@ BOOST_AUTO_TEST_CASE ( map_location_characterization_test_default_mode )
 
 BOOST_AUTO_TEST_CASE ( map_location_characterization_test_radial_mode )
 {
-	std::vector<std::pair<size_t, std::string> > generated_answers = boost::assign::list_of(std::make_pair(7,	"se"))
-(std::make_pair(6,	"sw"))
-(std::make_pair(6,	"n"))
-(std::make_pair(12,	"n"))
-(std::make_pair(16,	"s"))
-(std::make_pair(9,	"n"))
-(std::make_pair(7,	"nw"))
-(std::make_pair(7,	"n"))
-(std::make_pair(4,	"n"))
-(std::make_pair(5,	"nw"))
-(std::make_pair(10,	"sw"))
-(std::make_pair(13,	"nw"))
-(std::make_pair(19,	"nw"))
-(std::make_pair(9,	"s"))
-(std::make_pair(16,	"n"))
-(std::make_pair(14,	"nw"))
-(std::make_pair(14,	"nw"))
-(std::make_pair(11,	"nw"))
-(std::make_pair(12,	"nw"))
-(std::make_pair(9,	"n"))
-(std::make_pair(15,	"n"))
-(std::make_pair(13,	"se"))
-(std::make_pair(15,	"n"))
-(std::make_pair(10,	"n"))
-(std::make_pair(11,	"n"))
-(std::make_pair(8,	"n"))
-(std::make_pair(8,	"n"))
-(std::make_pair(6,	"n"))
-(std::make_pair(22,	"s"))
-(std::make_pair(6,	"ne"))
-(std::make_pair(1,	"nw"))
-(std::make_pair(2,	"ne"))
-(std::make_pair(2,	"s"))
-(std::make_pair(1,	"s"))
-(std::make_pair(28,	"s"))
-(std::make_pair(6,	"se"))
-(std::make_pair(5,	"s"))
-(std::make_pair(5,	"se"))
-(std::make_pair(8,	"s"))
-(std::make_pair(7,	"s"))
-(std::make_pair(25,	"n"))
-(std::make_pair(23,	"n"))
-(std::make_pair(23,	"n"))
-(std::make_pair(20,	"n"))
-(std::make_pair(21,	"n"))
-(std::make_pair(6,	"sw"))
-(std::make_pair(4,	"sw"))
-(std::make_pair(7,	"s"))
-(std::make_pair(7,	"s"))
-(std::make_pair(2,	"ne"))
-(std::make_pair(3,	"se"))
-(std::make_pair(2,	"s"))
-(std::make_pair(3,	"s"))
-(std::make_pair(3,	"s"))
-(std::make_pair(1,	"nw")).to_container(generated_answers);
+	std::vector<std::pair<std::size_t, std::string>> generated_answers {
+std::make_pair(7,	"se"),
+std::make_pair(6,	"sw"),
+std::make_pair(6,	"n"),
+std::make_pair(12,	"n"),
+std::make_pair(16,	"s"),
+std::make_pair(9,	"n"),
+std::make_pair(7,	"nw"),
+std::make_pair(7,	"n"),
+std::make_pair(4,	"n"),
+std::make_pair(5,	"nw"),
+std::make_pair(10,	"sw"),
+std::make_pair(13,	"nw"),
+std::make_pair(19,	"nw"),
+std::make_pair(9,	"s"),
+std::make_pair(16,	"n"),
+std::make_pair(14,	"nw"),
+std::make_pair(14,	"nw"),
+std::make_pair(11,	"nw"),
+std::make_pair(12,	"nw"),
+std::make_pair(9,	"n"),
+std::make_pair(15,	"n"),
+std::make_pair(13,	"se"),
+std::make_pair(15,	"n"),
+std::make_pair(10,	"n"),
+std::make_pair(11,	"n"),
+std::make_pair(8,	"n"),
+std::make_pair(8,	"n"),
+std::make_pair(6,	"n"),
+std::make_pair(22,	"s"),
+std::make_pair(6,	"ne"),
+std::make_pair(1,	"nw"),
+std::make_pair(2,	"ne"),
+std::make_pair(2,	"s"),
+std::make_pair(1,	"s"),
+std::make_pair(28,	"s"),
+std::make_pair(6,	"se"),
+std::make_pair(5,	"s"),
+std::make_pair(5,	"se"),
+std::make_pair(8,	"s"),
+std::make_pair(7,	"s"),
+std::make_pair(25,	"n"),
+std::make_pair(23,	"n"),
+std::make_pair(23,	"n"),
+std::make_pair(20,	"n"),
+std::make_pair(21,	"n"),
+std::make_pair(6,	"sw"),
+std::make_pair(4,	"sw"),
+std::make_pair(7,	"s"),
+std::make_pair(7,	"s"),
+std::make_pair(2,	"ne"),
+std::make_pair(3,	"se"),
+std::make_pair(2,	"s"),
+std::make_pair(3,	"s"),
+std::make_pair(3,	"s"),
+std::make_pair(1,	"nw")};
 
-	std::vector<size_t> ans1;
+	std::vector<std::size_t> ans1;
 	std::vector<map_location::DIRECTION> ans2;
 	std::transform(generated_answers.begin(), generated_answers.end(), back_inserter(ans1), &get_first);
 	std::transform(generated_answers.begin(), generated_answers.end(), back_inserter(ans2), &get_second);

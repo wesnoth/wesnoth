@@ -1,6 +1,6 @@
 /*
- Copyright (C) 2010 - 2014 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -16,20 +16,20 @@
  * @file
  */
 
-#include "mapbuilder.hpp"
+#include "whiteboard/mapbuilder.hpp"
 
-#include "action.hpp"
-#include "move.hpp"
-#include "side_actions.hpp"
-#include "utility.hpp"
+#include "whiteboard/action.hpp"
+#include "whiteboard/move.hpp"
+#include "whiteboard/side_actions.hpp"
+#include "whiteboard/utility.hpp"
 
 #include "game_board.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
-#include "unit.hpp"
-#include "unit_map.hpp"
+#include "units/unit.hpp"
+#include "units/map.hpp"
 
-#include <boost/foreach.hpp>
+#include <boost/range/adaptor/reversed.hpp>
 
 namespace wb
 {
@@ -56,20 +56,20 @@ mapbuilder::~mapbuilder()
 
 void mapbuilder::pre_build()
 {
-	BOOST_FOREACH(team& t, *resources::teams) {
+	for (team& t : resources::gameboard->teams()) {
 		//Reset spent gold to zero, it'll be recalculated during the map building
 		t.get_side_actions()->reset_gold_spent();
 	}
 
 	int current_side = resources::controller->current_side();
-	BOOST_FOREACH(unit& u, *resources::units) {
+	for (unit& u : resources::gameboard->units()) {
 		bool on_current_side = (u.side() == current_side);
 
 		//Remove any unit the current side cannot see to avoid their detection by planning
 		//Units will be restored to the unit map by destruction of removers_
 
-		if(!on_current_side && !u.is_visible_to_team((*resources::teams)[viewer_team()], resources::gameboard->map(), false)) {
-			removers_.push_back(new temporary_unit_remover(*resources::units, u.get_location()));
+		if(!on_current_side && !u.is_visible_to_team(resources::gameboard->teams()[viewer_team()], false)) {
+			removers_.push_back(new temporary_unit_remover(resources::gameboard->units(), u.get_location()));
 
 			//Don't do anything else to the removed unit!
 			continue;
@@ -93,17 +93,17 @@ void mapbuilder::build_map()
 		return;
 	}
 
-	bool end = false;
-	for(size_t turn=0; !end; ++turn) {
-		end = true;
-		BOOST_FOREACH(team &side, *resources::teams) {
+	bool stop = false;
+	for(std::size_t turn=0; !stop; ++turn) {
+		stop = true;
+		for (team &side : resources::gameboard->teams()) {
 			side_actions &actions = *side.get_side_actions();
 			if(turn < actions.num_turns() && team_has_visible_plan(side)) {
-				end = false;
+				stop = false;
 				side_actions::iterator it = actions.turn_begin(turn), next = it, end = actions.turn_end(turn);
 				while(it != end) {
 					std::advance(next, 1);
-					process(actions, it);
+					process(actions, it, side.is_local());
 					it = next;
 				}
 
@@ -113,7 +113,7 @@ void mapbuilder::build_map()
 	}
 }
 
-void mapbuilder::process(side_actions &sa, side_actions::iterator action_it)
+void mapbuilder::process(side_actions &sa, side_actions::iterator action_it, bool is_local_side)
 {
 	action_ptr action = *action_it;
 	bool acted=false;
@@ -122,7 +122,8 @@ void mapbuilder::process(side_actions &sa, side_actions::iterator action_it)
 		return;
 	}
 
-	if(acted_this_turn_.find(unit.get()) == acted_this_turn_.end()) {
+
+	if(acted_this_turn_.find(unit.get()) == acted_this_turn_.end() && !action->places_new_unit()) {
 		//reset MP
 		unit->set_movement(unit->total_movement());
 		acted=true;
@@ -135,7 +136,7 @@ void mapbuilder::process(side_actions &sa, side_actions::iterator action_it)
 	if(erval != action::OK) {
 		// We do not delete obstructed moves, nor invalid actions caused by obstructed moves.
 		if(has_invalid_actions_.find(unit.get()) == has_invalid_actions_.end()) {
-			if(erval == action::TOO_FAR || (erval == action::LOCATION_OCCUPIED && boost::dynamic_pointer_cast<move>(action))) {
+			if(!is_local_side || erval == action::TOO_FAR || (erval == action::LOCATION_OCCUPIED && std::dynamic_pointer_cast<move>(action))) {
 				has_invalid_actions_.insert(unit.get());
 				invalid_actions_.push_back(action_it);
 			} else {
@@ -149,20 +150,22 @@ void mapbuilder::process(side_actions &sa, side_actions::iterator action_it)
 	}
 
 	// We do not keep invalid actions replaced by a valid one.
-	std::set<class unit const*>::iterator invalid_it = has_invalid_actions_.find(unit.get());
-	if(invalid_it != has_invalid_actions_.end()) {
-		for(std::list<side_actions::iterator>::iterator it = invalid_actions_.begin(); it != invalid_actions_.end();) {
-			if((**it)->get_unit().get() == unit.get()) {
-				sa.remove_action(*it, false);
-				it = invalid_actions_.erase(it);
-			} else {
-				++it;
+	if(is_local_side) {
+		std::set<class unit const*>::iterator invalid_it = has_invalid_actions_.find(unit.get());
+		if(invalid_it != has_invalid_actions_.end()) {
+			for(std::list<side_actions::iterator>::iterator it = invalid_actions_.begin(); it != invalid_actions_.end();) {
+				if((**it)->get_unit().get() == unit.get()) {
+					sa.remove_action(*it, false);
+					it = invalid_actions_.erase(it);
+				} else {
+					++it;
+				}
 			}
+			has_invalid_actions_.erase(invalid_it);
 		}
-		has_invalid_actions_.erase(invalid_it);
 	}
 
-	if(acted) {
+	if(acted || action->places_new_unit()) {
 		acted_this_turn_.insert(unit.get());
 	}
 
@@ -171,14 +174,14 @@ void mapbuilder::process(side_actions &sa, side_actions::iterator action_it)
 	applied_actions_this_turn_.push_back(action);
 }
 
-void mapbuilder::post_visit_team(size_t turn)
+void mapbuilder::post_visit_team(std::size_t turn)
 {
 	std::set<unit const*> seen;
 
 	// Go backwards through the actions of this turn to identify
 	// which ones are moves that end a turn.
-	BOOST_REVERSE_FOREACH(action_ptr action, applied_actions_this_turn_) {
-		move_ptr move = boost::dynamic_pointer_cast<class move>(action);
+	for(action_ptr action : boost::adaptors::reverse(applied_actions_this_turn_)) {
+		move_ptr move = std::dynamic_pointer_cast<class move>(action);
 		if(move) {
 			move->set_turn_number(0);
 			if(move->get_route().steps.size() > 1 && seen.count(move->get_unit().get()) == 0) {
@@ -197,7 +200,7 @@ void mapbuilder::post_visit_team(size_t turn)
 void mapbuilder::restore_normal_map()
 {
 	//applied_actions_ contain only the actions that we applied to the unit map
-	BOOST_REVERSE_FOREACH(action_ptr act, applied_actions_) {
+	for(action_ptr act : boost::adaptors::reverse(applied_actions_)) {
 		act->remove_temp_modifier(unit_map_);
 	}
 }

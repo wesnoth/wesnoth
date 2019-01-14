@@ -1,7 +1,7 @@
 /*
 
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,8 +15,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
-
 #include "widgets/widget.hpp"
 #include "video.hpp"
 #include "sdl/rect.hpp"
@@ -25,7 +23,7 @@
 #include <cassert>
 
 namespace {
-	const SDL_Rect EmptyRect = {-1234,-1234,0,0};
+	const SDL_Rect EmptyRect {-1234,-1234,0,0};
 }
 
 namespace gui {
@@ -33,7 +31,7 @@ namespace gui {
 bool widget::mouse_lock_ = false;
 
 widget::widget(const widget &o)
-	: events::handler(), focus_(o.focus_), video_(o.video_), restorer_(o.restorer_), rect_(o.rect_),
+	: events::sdl_handler(), focus_(o.focus_), video_(o.video_), restorer_(o.restorer_), rect_(o.rect_),
 	   needs_restore_(o.needs_restore_), state_(o.state_), hidden_override_(o.hidden_override_),
 	  enabled_(o.enabled_), clip_(o.clip_), clip_rect_(o.clip_rect_), volatile_(o.volatile_),
 	  help_text_(o.help_text_), tooltip_text_(o.tooltip_text_), help_string_(o.help_string_), id_(o.id_), mouse_lock_local_(o.mouse_lock_local_)
@@ -41,7 +39,7 @@ widget::widget(const widget &o)
 }
 
 widget::widget(CVideo& video, const bool auto_join)
-	: handler(auto_join), focus_(true), video_(&video), rect_(EmptyRect), needs_restore_(false),
+	: events::sdl_handler(auto_join), focus_(true), video_(&video), rect_(EmptyRect), needs_restore_(false),
 	  state_(UNINIT), hidden_override_(false), enabled_(true), clip_(false),
 	  clip_rect_(EmptyRect), volatile_(false), help_string_(0), mouse_lock_local_(false)
 {
@@ -82,7 +80,7 @@ void widget::bg_cancel()
 	restorer_.clear();
 }
 
-void widget::set_location(SDL_Rect const &rect)
+void widget::set_location(const SDL_Rect& rect)
 {
 	if(rect_.x == rect.x && rect_.y == rect.y && rect_.w == rect.w && rect_.h == rect.h)
 		return;
@@ -96,47 +94,47 @@ void widget::set_location(SDL_Rect const &rect)
 	update_location(rect);
 }
 
-void widget::update_location(SDL_Rect const &rect)
+void widget::update_location(const SDL_Rect& rect)
 {
 	bg_register(rect);
 }
 
 const SDL_Rect* widget::clip_rect() const
 {
-	return clip_ ? &clip_rect_ : NULL;
+	return clip_ ? &clip_rect_ : nullptr;
 }
 
-void widget::bg_register(SDL_Rect const &rect)
+void widget::bg_register(const SDL_Rect& rect)
 {
-	restorer_.push_back(surface_restorer(&video(), rect));
+	restorer_.emplace_back(&video(), rect);
 }
 
 void widget::set_location(int x, int y)
 {
-	set_location(sdl::create_rect(x, y, rect_.w, rect_.h));
+	set_location({x, y, rect_.w, rect_.h});
 }
 
-void widget::set_width(unsigned w)
+void widget::set_width(int w)
 {
-	set_location(sdl::create_rect(rect_.x, rect_.y, w, rect_.h));
+	set_location({rect_.x, rect_.y, w, rect_.h});
 }
 
-void widget::set_height(unsigned h)
+void widget::set_height(int h)
 {
-	set_location(sdl::create_rect(rect_.x, rect_.y, rect_.w, h));
+	set_location({rect_.x, rect_.y, rect_.w, h});
 }
 
-void widget::set_measurements(unsigned w, unsigned h)
+void widget::set_measurements(int w, int h)
 {
-	set_location(sdl::create_rect(rect_.x, rect_.y, w, h));
+	set_location({rect_.x, rect_.y, w, h});
 }
 
-unsigned widget::width() const
+int widget::width() const
 {
 	return rect_.w;
 }
 
-unsigned widget::height() const
+int widget::height() const
 {
 	return rect_.h;
 }
@@ -257,14 +255,10 @@ void widget::bg_restore() const
 		    i_end = restorer_.end(); i != i_end; ++i)
 			i->restore();
 		needs_restore_ = false;
-	} else {
-		//this function should be able to be relied upon to update the rectangle,
-		//so do that even if we don't restore
-		update_rect(rect_);
 	}
 }
 
-void widget::bg_restore(SDL_Rect const &rect) const
+void widget::bg_restore(const SDL_Rect& rect) const
 {
 	clip_rect_setter clipper(video().getSurface(), &clip_rect_, clip_);
 
@@ -291,7 +285,6 @@ void widget::draw()
 
 	draw_contents();
 
-	update_rect(rect_);
 	set_dirty(false);
 }
 
@@ -324,7 +317,7 @@ void widget::set_tooltip_string(const std::string& str)
 void widget::process_help_string(int mousex, int mousey)
 {
 	if (!hidden() && sdl::point_in_rect(mousex, mousey, rect_)) {
-		if(help_string_ == 0 && help_text_ != "") {
+		if(help_string_ == 0 && !help_text_.empty()) {
 			//std::cerr << "setting help string to '" << help_text_ << "'\n";
 			help_string_ = video().set_help_string(help_text_);
 		}
@@ -339,6 +332,25 @@ void widget::process_tooltip_string(int mousex, int mousey)
 	if (!hidden() && sdl::point_in_rect(mousex, mousey, rect_)) {
 		if (!tooltip_text_.empty())
 			tooltips::add_tooltip(rect_, tooltip_text_ );
+	}
+}
+
+void widget::handle_event(const SDL_Event& event) {
+	if (event.type == DRAW_ALL_EVENT) {
+		set_dirty();
+		draw();
+	}
+}
+
+void widget::handle_window_event(const SDL_Event& event) {
+	if (event.type == SDL_WINDOWEVENT) {
+		switch (event.window.event) {
+		case SDL_WINDOWEVENT_RESIZED:
+		case SDL_WINDOWEVENT_RESTORED:
+		case SDL_WINDOWEVENT_SHOWN:
+		case SDL_WINDOWEVENT_EXPOSED:
+			set_dirty();
+		}
 	}
 }
 

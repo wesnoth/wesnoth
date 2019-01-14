@@ -20,6 +20,7 @@ set(NORMAL_DOMAINS
 	wesnoth-multiplayer
 	wesnoth-nr
 	wesnoth-sof
+	wesnoth-sota
 	wesnoth-sotbe
 	wesnoth-tb
 	wesnoth-test
@@ -41,7 +42,7 @@ set(DOMAINS
 # If a source file has not GETTEXT_DOMAIN it belongs to this domain.
 set(DEFAULT_DOMAIN wesnoth)
 
-set(WMLXGETTEXT ${PROJECT_SOURCE_DIR}/utils/wmlxgettext)
+set(WMLXGETTEXT ${PROJECT_SOURCE_DIR}/data/tools/wmlxgettext)
 
 ############ pot update. ###########
 
@@ -58,11 +59,11 @@ if(ENABLE_POT_UPDATE_TARGET)
 			OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
 			# create the pot file make sure we always get output.
 			COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} ${GETTEXT_XGETTEXT_OPTIONS}
-					--files-from=${PROJECT_SOURCE_DIR}/po/${DOMAIN}/POTFILES.in 
+					--files-from=${PROJECT_SOURCE_DIR}/po/${DOMAIN}/POTFILES.in
 					--output=${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
 			# replace the chartype
-			COMMAND sed -i 
-				s/charset=CHARSET/charset=UTF-8/ 
+			COMMAND sed -i
+				s/charset=CHARSET/charset=UTF-8/
 				${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
 			# Remove some header info - Need to test whether needed.
 			DEPENDS ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/POTFILES.in
@@ -74,12 +75,12 @@ if(ENABLE_POT_UPDATE_TARGET)
 		add_custom_command(
 			OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.wml.pot
 
-			COMMAND ${WMLXGETTEXT} 
-				--directory=${PROJECT_SOURCE_DIR} 
-				--domain=${DOMAIN} 
-				`cd ${PROJECT_SOURCE_DIR} && 
+			COMMAND ${WMLXGETTEXT}
+				--directory=${PROJECT_SOURCE_DIR}
+				--domain=${DOMAIN}
+				`cd ${PROJECT_SOURCE_DIR} &&
 					sh ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/FINDCFG`
-					> ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.wml.pot
+					-o ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.wml.pot
 			DEPENDS ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/FINDCFG
 			WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
 			COMMENT "pot-update [${DOMAIN}]: Generated wml pot file."
@@ -91,18 +92,18 @@ if(ENABLE_POT_UPDATE_TARGET)
 			# what we need to do with it.
 			OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.pot
 
-			COMMAND ${GETTEXT_MSGCAT_EXECUTABLE} 
-				--sort-by-file 
+			COMMAND ${GETTEXT_MSGCAT_EXECUTABLE}
+				--sort-by-file
 					 ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
 					 ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.wml.pot
 				--output ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.pot
 
-			COMMAND ${CMAKE_COMMAND} -E remove 
+			COMMAND ${CMAKE_COMMAND} -E remove
 					 ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
 					 ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.wml.pot
 
 			WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-			DEPENDS 
+			DEPENDS
 					${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
 					${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.wml.pot
 			COMMENT "pot-update [${DOMAIN}]: Generated pot file."
@@ -122,14 +123,14 @@ if(ENABLE_POT_UPDATE_TARGET)
 				add_custom_command(
 					OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LINGUA}.po
 					COMMAND ${GETTEXT_MSGINIT_EXECUTABLE}
-							--no-translator 
-							--input=${DOMAIN}.pot 
+							--no-translator
+							--input=${DOMAIN}.pot
 							--output-file=${LINGUA}.po
 							--locale=${LINGUA}
 					WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/po/${DOMAIN}
 					DEPENDS
 						${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.pot
-					COMMENT 
+					COMMENT
 						"pot-update [${DOMAIN}-${LINGUA}]: Initialized po file."
 				)
 			endif(NOT EXISTS ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LINGUA}.po)
@@ -140,13 +141,13 @@ if(ENABLE_POT_UPDATE_TARGET)
 				# make. We don't make this dummy file but the pot-update
 				# still works.
 				OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LINGUA}.po.dummy
-				COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} 
+				COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE}
 						--backup=none
 						--previous
-						-U ${LINGUA}.po 
+						-U ${LINGUA}.po
 						${DOMAIN}.pot
 				DEPENDS
-					${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.pot 
+					${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.pot
 					${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LINGUA}.po
 				WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/po/${DOMAIN}
 				COMMENT "pot-update [${DOMAIN}-${LINGUA}]: Updated po file."
@@ -157,12 +158,24 @@ if(ENABLE_POT_UPDATE_TARGET)
 		endforeach(LINGUA ${LINGUAS})
 
 		# Add to target list
-		SET(pot-update-SRC 
-			${pot-update-SRC} 
+		SET(pot-update-SRC
+			${pot-update-SRC}
 			${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.pot # should depend on languages
 		)
 
 	endforeach(DOMAIN ${NORMAL_DOMAINS})
+
+	add_custom_command(
+			# Same idea with a dummy file as in pot-update: we never make it, and run the command each time.
+			OUTPUT ${PROJECT_SOURCE_DIR}/po/po_stat.dummy
+			COMMAND python utils/po_stat.py
+			--update-cfg
+			--textdomains=wesnoth,wesnoth-editor,wesnoth-help,wesnoth-lib,wesnoth-multiplayer,wesnoth-tutorial,wesnoth-units
+			WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+			COMMENT "pot-update Updated data/languages/*.cfg files."
+	)
+
+	SET(pot-update-SRC ${pot-update-SRC} ${PROJECT_SOURCE_DIR}/po/po_stat.dummy)
 
 	# The target to call
 	add_custom_target(pot-update
@@ -200,7 +213,7 @@ if(ENABLE_POT_UPDATE_TARGET)
 				COMMENT "po-update [${DOMAIN}-${LINGUA}]: Updated po file."
 			)
 
-			set(po-update-LINGUA-SRC ${po-update-LINGUA-SRC} 
+			set(po-update-LINGUA-SRC ${po-update-LINGUA-SRC}
 				${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LINGUA}.po.lang.dummy
 			)
 
@@ -216,7 +229,7 @@ endif(ENABLE_POT_UPDATE_TARGET)
 
 if(ENABLE_NLS)
 
-	set(GETTEXT_MSGFMT_PARAMETER --check-format --check-domain )
+	set(GETTEXT_MSGFMT_PARAMETER --check-domain )
 
 	if(ENABLE_POT_UPDATE_TARGET)
 		# Only set the verbose flag for maintainers.
@@ -229,7 +242,7 @@ if(ENABLE_NLS)
 
 			add_custom_command(
 				OUTPUT ${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LINGUA}/LC_MESSAGES
-				COMMAND ${CMAKE_COMMAND} -E make_directory 
+				COMMAND ${CMAKE_COMMAND} -E make_directory
 						${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LINGUA}/LC_MESSAGES
 				COMMENT "mo-update [${LINGUA}]: Creating locale directory."
 			)
@@ -239,7 +252,7 @@ if(ENABLE_NLS)
 				COMMAND ${GETTEXT_MSGFMT_EXECUTABLE}
 						${GETTEXT_MSGFMT_PARAMETER}
 						-o ${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LINGUA}/LC_MESSAGES/${DOMAIN}.mo ${LINGUA}.po
-				DEPENDS 
+				DEPENDS
 					${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LINGUA}/LC_MESSAGES
 					${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LINGUA}.po
 				WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/po/${DOMAIN}
@@ -249,10 +262,10 @@ if(ENABLE_NLS)
 			install(FILES ${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LINGUA}/LC_MESSAGES/${DOMAIN}.mo
 					DESTINATION ${LOCALE_INSTALL}/${LINGUA}/LC_MESSAGES)
 
-			set(mo-update-SRC ${mo-update-SRC} 
+			set(mo-update-SRC ${mo-update-SRC}
 				${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LINGUA}/LC_MESSAGES/${DOMAIN}.mo
 			)
-			set(mo-update-LINGUA-SRC ${mo-update-LINGUA-SRC} 
+			set(mo-update-LINGUA-SRC ${mo-update-LINGUA-SRC}
 				${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LINGUA}/LC_MESSAGES/${DOMAIN}.mo
 			)
 
@@ -274,9 +287,8 @@ if(ENABLE_NLS)
 		DEPENDS ${mo-update-SRC}
 	)
 
-	set_directory_properties(properties 
+	set_directory_properties(properties
 		ADDITIONAL_MAKE_CLEAN_FILES ${CMAKE_SOURCE_DIR}/${LOCALEDIR}
 	)
 
 endif(ENABLE_NLS)
-

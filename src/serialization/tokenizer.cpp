@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2004 - 2009 by Philippe Plantier <ayin@anathas.org>
-   Copyright (C) 2010 - 2014 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org
+   Copyright (C) 2010 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,10 +16,8 @@
 /** @file */
 
 #include "global.hpp"
-
-#include "wesconfig.h"
 #include "serialization/tokenizer.hpp"
-
+#include "wesconfig.h"
 
 tokenizer::tokenizer(std::istream& in) :
 	current_(EOF),
@@ -54,7 +52,7 @@ tokenizer::~tokenizer()
 
 const token &tokenizer::next_token()
 {
-#if DEBUG_TOKENIZER
+#ifdef DEBUG_TOKENIZER
 	previous_token_ = token_;
 #endif
 	token_.value.clear();
@@ -136,10 +134,10 @@ const token &tokenizer::next_token()
 			token_.value = current_;
 			break;
 		}
-		// no break
+		FALLTHROUGH;
 
 	default:
-		if (is_alnum(current_)) {
+		if (is_alnum(current_) || current_ == '$') {
 			token_.type = token::STRING;
 			do {
 				token_.value += current_;
@@ -148,7 +146,7 @@ const token &tokenizer::next_token()
 					skip_comment();
 					next_char_fast();
 				}
-			} while (is_alnum(current_));
+			} while (is_alnum(current_) || current_ == '$');
 		} else {
 			token_.type = token::MISC;
 			token_.value += current_;
@@ -179,7 +177,7 @@ void tokenizer::skip_comment()
 {
 	next_char_fast();
 	if (current_ == '\n' || current_ == EOF) return;
-	std::string *dst = NULL;
+	std::string *dst = nullptr;
 
 	if (current_ == 't')
 	{

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,11 +12,11 @@
    See the COPYING file for more details.
 */
 
-#include "sample_user_handler.hpp"
+#include "server/sample_user_handler.hpp"
 
 #include "config.hpp"
+#include "lexical_cast.hpp"
 #include "serialization/string_utils.hpp"
-#include "util.hpp"
 
 #include <iostream>
 
@@ -28,19 +28,14 @@ suh::suh(config c)
 	if(c["user_expiration"].empty()) {
 		user_expiration_ = 60;
 	} else {
-		try {
-			user_expiration_ = lexical_cast_default<int>(c["user_expiration"]);
-		} catch (bad_lexical_cast) {
-			std::cerr << "Bad lexical cast reading 'user_expiration', using default value.\n";
-			user_expiration_ = 60;
-		}
+		user_expiration_ = lexical_cast_default<int>(c["user_expiration"], 60);
 	}
 }
 
 void suh::add_user(const std::string& name, const std::string& mail, const std::string& password) {
 	if(user_exists(name)) throw error("This nickname is already registered");
 
-	users_.insert(std::pair<std::string, user>(name, user()));
+	users_.emplace(name, user());
 
 	set_password(name, password);
 	set_mail(name, mail);
@@ -100,6 +95,11 @@ void suh::set_is_moderator(const std::string& name, const bool& is_moderator) {
 	users_[name].is_moderator = is_moderator;
 }
 
+suh::BAN_TYPE suh::user_is_banned(const std::string&, const std::string&) {
+	// FIXME: stub
+	return BAN_NONE;
+}
+
 void suh::set_mail(const std::string& user, const std::string& mail) {
 	check_mail(mail);
 	users_[user].mail = mail;
@@ -119,7 +119,7 @@ void suh::set_realname(const std::string& user, const std::string& realname) {
 // set_lastlogin() is not called by the server via set_user_detail()
 // and thus must not throw user_handler::error
 
-void suh::set_lastlogin(const std::string& user, const time_t& lastlogin) {
+void suh::set_lastlogin(const std::string& user, const std::time_t& lastlogin) {
 	users_[user].lastlogin = lastlogin;
 }
 
@@ -137,11 +137,11 @@ std::string suh::get_realname(const std::string& user) {
 	return users_[user].realname;
 }
 
-time_t suh::get_lastlogin(const std::string& user) {
+std::time_t suh::get_lastlogin(const std::string& user) {
 	return users_[user].lastlogin;
 }
 
-time_t suh::get_registrationdate(const std::string& user) {
+std::time_t suh::get_registrationdate(const std::string& user) {
 	return users_[user].registrationdate;
 }
 
@@ -185,11 +185,11 @@ void suh::clean_up() {
 		return;
 	}
 
-	time_t now = time(NULL);
+	std::time_t now = std::time(nullptr);
 
 	//A minute has 60 seconds, an hour 60 minutes and
 	//a day 24 hours.
-	time_t limit = user_expiration_ * 60 * 60 * 24;
+	std::time_t limit = user_expiration_ * 60 * 60 * 24;
 
 	std::vector<std::string> us = users();
 	for(std::vector<std::string>::const_iterator u = us.begin(); u != us.end(); ++u) {
@@ -205,20 +205,14 @@ bool suh::login(const std::string& name, const std::string& password, const std:
 }
 
 void suh::user_logged_in(const std::string& name) {
-	set_lastlogin(name, time(NULL));
-}
-
-void suh::password_reminder(const std::string& name) {
-	std::stringstream msg;
-	msg << "Hello " << name << ",\nyour password is '" << get_password(name) << "'.\n\nHave fun playing Wesnoth :)";
-	send_mail(name, "Wesnoth Password Reminder", msg.str());
+	set_lastlogin(name, std::time(nullptr));
 }
 
 std::string suh::user_info(const std::string& name) {
 	if(!user_exists(name)) throw error("No user with the name '" + name + "' exists.");
 
-	time_t reg_date = get_registrationdate(name);
-	time_t ll_date = get_lastlogin(name);
+	std::time_t reg_date = get_registrationdate(name);
+	std::time_t ll_date = get_lastlogin(name);
 
 	std::string reg_string = ctime(&reg_date);
 	std::string ll_string;

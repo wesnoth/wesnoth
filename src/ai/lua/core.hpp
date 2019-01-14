@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2010 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2010 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,19 +15,17 @@
 #ifndef AI_LUA_CORE_HPP
 #define AI_LUA_CORE_HPP
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 struct lua_State;
-class LuaKernel;
+class game_lua_kernel;
 class config;
-
-
 
 namespace ai {
 
 class engine_lua;
 class lua_object_base;
-typedef boost::shared_ptr<lua_object_base> lua_object_ptr;
+typedef std::shared_ptr<lua_object_base> lua_object_ptr;
 
 /**
  * Proxy table for the AI context
@@ -44,20 +42,26 @@ private:
 	static lua_ai_context* create(lua_State *L, char const *code, engine_lua *engine);
 public:
 	~lua_ai_context();
-	lua_ai_context()
-		: L(NULL)
-		, num_(0)
-		, side_(0)
-	{
-	}
-	void load();
-	void load_and_inject_ai_table(engine_lua* engine);
+	void update_state();
 	void get_persistent_data(config &) const;
 	void set_persistent_data(const config &);
+	void get_arguments(config &) const;
+	void set_arguments(const config &);
+	void push_ai_table();
 	static void init(lua_State *L);
-	friend class ::LuaKernel;
+	friend class ::game_lua_kernel;
+	friend class lua_ai_load;
 };
 
+class lua_ai_load
+{
+	lua_State* L;
+	static int refcount;
+public:
+	bool was_readonly;
+	lua_ai_load(lua_ai_context& ctx, bool read_only);
+	~lua_ai_load();
+};
 
 /**
  * Proxy class for calling AI action handlers defined in Lua.
@@ -74,8 +78,8 @@ private:
 	static lua_ai_action_handler* create(lua_State *L, char const *code, lua_ai_context &context);
 public:
 	~lua_ai_action_handler();
-	void handle(config &, bool configOut, lua_object_ptr);
-	friend class ::LuaKernel;
+	void handle(const config &cfg, bool read_only, lua_object_ptr l_obj);
+	friend class ::game_lua_kernel;
 };
 
 }//of namespace ai

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,8 +17,7 @@
  * All known AI parts
  */
 
-#ifndef AI_REGISTRY_HPP_INCLUDED
-#define AI_REGISTRY_HPP_INCLUDED
+#pragma once
 
 namespace ai {
 namespace registry {
@@ -27,5 +26,3 @@ void init();
 
 }
 } //end of namespace ai
-
-#endif

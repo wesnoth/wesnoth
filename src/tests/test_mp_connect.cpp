@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2013 - 2014 by Andrius Silinskas <silinskas.andrius@gmail.com>
-   Part of thie Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2013 - 2018 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,83 +18,68 @@
 
 #include "game_config_manager.hpp"
 #include "game_display.hpp"
-#include "multiplayer_connect.hpp"
-#include "multiplayer_ui.hpp"
+#include "game_initialization/connect_engine.hpp"
 #include "hotkey/hotkey_manager.hpp"
+#include "mt_rng.hpp"
 #include "saved_game.hpp"
+#include "tests/utils/fake_display.hpp"
 
-#include <boost/foreach.hpp>
-#include <boost/scoped_ptr.hpp>
-
+#include <boost/assign.hpp>
 
 /* Definitions */
 
-/*class test_mp_connect : public mp::connect {
-public:
-	test_mp_connect(game_display& disp, const std::string& game_name,
-		const config& game_config, mp::chat& c, config& gamelist,
-		mp::connect_engine& engine) :
-		mp::connect(disp, game_name, game_config, c, gamelist, engine)
-		{}
-};*/
-
 class test_connect_engine : public ng::connect_engine {
 public:
-	test_connect_engine(game_display& /*disp*/, saved_game& gamestate) :
-		ng::connect_engine(gamestate, true, true)
+	test_connect_engine(saved_game& gamestate) :
+		ng::connect_engine(gamestate, true, nullptr)
 		{}
 };
-
 
 /* Variables */
 
 namespace {
 
-boost::scoped_ptr<game_display> disp;
-boost::scoped_ptr<saved_game> state;
+std::unique_ptr<saved_game> state;
+std::unique_ptr<randomness::mt_rng> rng;
 
 }
-
 
 /* Global fixture */
 
 struct mp_connect_fixture {
 	mp_connect_fixture() :
-		video(),
-		dummy_argv(),
-		cmdline_opts(1, dummy_argv),
+		dummy_args({"wesnoth", "--noaddons"}),
+		cmdline_opts(dummy_args),
 		hotkey_manager(),
 		config_manager()
 	{
-		video.make_fake();
-		disp.reset(game_display::create_dummy_display(video));
 
-		config_manager.reset(new game_config_manager(cmdline_opts, *disp,
-			false));
+		config_manager.reset(new game_config_manager(cmdline_opts, false));
 		config_manager->init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
 		state.reset(new saved_game());
-		state->classification().campaign_type = game_classification::MULTIPLAYER;
+		state->classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 		config_manager->load_game_config_for_game(state->classification());
 
 		state->mp_settings().mp_era = "era_default";
 		state->mp_settings().name = "multiplayer_The_Freelands";
 		state->mp_settings().use_map_settings = true;
-		state->mp_settings().saved_game = false;
+		state->mp_settings().saved_game = mp_game_settings::SAVED_GAME_MODE::NONE;
 
 		state->set_scenario(config_manager->
-			game_config().find_child(lexical_cast<std::string>(game_classification::MULTIPLAYER), "id", state->mp_settings().name));
+			game_config().find_child("multiplayer", "id", state->mp_settings().name));
 
-		state->mp_settings().num_turns = state->get_starting_pos()["turns"];
+		state->mp_settings().num_turns = state->get_starting_point()["turns"];
+
+		rng.reset(new randomness::mt_rng());
 	}
 	~mp_connect_fixture()
 	{
 	}
-	CVideo video;
-	char** dummy_argv;
+	std::vector<std::string> dummy_args;
 	commandline_options cmdline_opts;
 	hotkey::manager hotkey_manager;
-	boost::scoped_ptr<game_config_manager> config_manager;
+	std::unique_ptr<game_config_manager> config_manager;
 };
 
 
@@ -103,7 +88,7 @@ struct mp_connect_fixture {
 static test_connect_engine* create_test_connect_engine()
 {
 	test_connect_engine* connect_engine =
-		new test_connect_engine(*disp, *state);
+		new test_connect_engine(*state);
 
 	return connect_engine;
 }
@@ -112,6 +97,8 @@ static ng::side_engine* create_side_engine(const config& defaults,
 	test_connect_engine* connect_engine)
 {
 	config side_cfg = connect_engine->current_config()->child("side");
+	side_cfg.remove_attributes("faction");
+	side_cfg.clear_children("default_faction");
 	side_cfg.append(defaults);
 
 	return new ng::side_engine(side_cfg, *connect_engine, 0);
@@ -120,7 +107,7 @@ static ng::side_engine* create_side_engine(const config& defaults,
 
 /* Tests */
 
-BOOST_GLOBAL_FIXTURE( mp_connect_fixture )
+BOOST_GLOBAL_FIXTURE( mp_connect_fixture );
 BOOST_AUTO_TEST_SUITE( mp_connect )
 
 
@@ -128,8 +115,8 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
-	state->mp_settings().saved_game = false;
-	boost::scoped_ptr<test_connect_engine>
+	state->mp_settings().saved_game = mp_game_settings::SAVED_GAME_MODE::NONE;
+	std::unique_ptr<test_connect_engine>
 		connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
@@ -185,7 +172,6 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side["previous_recruits"] = "Elvish Archer";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	//BOOST_CHECK_EQUAL( side_engine->flg().choosable_factions().size(), 1 );
-	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Custom" );
 	BOOST_CHECK_EQUAL( side_engine->new_config()["previous_recruits"],
 		"Elvish Archer" );
 
@@ -289,7 +275,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 
 	// No leader.
 	side.clear();
-	side["no_leader"] = true;
+	side["leader_lock"] = true;
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "null" );
@@ -298,7 +284,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side.clear();
 	side["faction"] = "Random";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	side_engine->resolve_random();
+	side_engine->resolve_random(*rng);
 	BOOST_CHECK( side_engine->flg().current_faction()["id"] != "Random" );
 	BOOST_CHECK( side_engine->flg().current_leader() != "random" &&
 		side_engine->flg().current_leader() != "null");
@@ -310,7 +296,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side["faction"] = "Random";
 	side["type"] = "Troll";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	side_engine->resolve_random();
+	side_engine->resolve_random(*rng);
 	BOOST_CHECK( side_engine->flg().current_faction()["id"] != "Random" );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "Troll" );
 	BOOST_CHECK( side_engine->flg().current_gender() != "random" &&
@@ -322,7 +308,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side["type"] = "White Mage";
 	side["gender"] = "male";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	side_engine->resolve_random();
+	side_engine->resolve_random(*rng);
 	BOOST_CHECK( side_engine->flg().current_faction()["id"] != "Random" );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "White Mage" );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "male" );
@@ -331,7 +317,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side.clear();
 	side["type"] = "random";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	side_engine->resolve_random();
+	side_engine->resolve_random(*rng);
 	BOOST_CHECK( side_engine->flg().current_leader() != "random" );
 }
 
@@ -339,8 +325,8 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings )
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = false;
-	state->mp_settings().saved_game = false;
-	boost::scoped_ptr<test_connect_engine>
+	state->mp_settings().saved_game = mp_game_settings::SAVED_GAME_MODE::NONE;
+	const std::unique_ptr<test_connect_engine>
 		connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
@@ -365,7 +351,6 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings )
 	side["previous_recruits"] = "Elvish Archer";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK( side_engine->flg().choosable_factions().size() >  1 );
-	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Custom" );
 	BOOST_CHECK_EQUAL( side_engine->new_config()["previous_recruits"],
 		"Elvish Archer" );
 
@@ -402,4 +387,3 @@ BOOST_AUTO_TEST_CASE( flg_saved_game )
 }
 
 BOOST_AUTO_TEST_SUITE_END()
-

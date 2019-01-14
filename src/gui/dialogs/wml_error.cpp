@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Ignacio R. Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,25 +17,27 @@
 #include "gui/dialogs/wml_error.hpp"
 
 #include "addon/info.hpp"
-#include "addon/manager.hpp"
-#include "clipboard.hpp"
+// Needs the full path to avoid confusion with gui/dialogs/addon/manager.hpp.
+#include "../../addon/manager.hpp"
+#include "desktop/clipboard.hpp"
 #include "filesystem.hpp"
-#include "gettext.hpp"
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/control.hpp"
+#include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <boost/bind.hpp>
+#include "gettext.hpp"
+
+#include "utils/functional.hpp"
 
 namespace
 {
 
 void strip_trailing_dir_separators(std::string& str)
 {
-	while(is_path_sep(str[str.size() - 1])) {
+	while(filesystem::is_path_sep(str.back())) {
 		str.erase(str.size() - 1);
 	}
 }
@@ -46,36 +48,36 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 		return "";
 	}
 
-	const std::string& addons_path = get_addon_campaigns_dir();
+	const std::string& addons_path = filesystem::get_addons_dir();
 	std::vector<std::string> files(files_original);
 
-	BOOST_FOREACH(std::string & file, files)
+	for(std::string & file : files)
 	{
 		std::string base;
-		std::string filename = file_name(file);
+		std::string filename = filesystem::base_name(file);
 		std::string parent_path;
 
 		const bool is_main_cfg = filename == "_main.cfg";
 
 		if(is_main_cfg) {
-			parent_path = directory_name(file) + "/..";
+			parent_path = filesystem::directory_name(file) + "/..";
 		} else {
-			parent_path = directory_name(file);
+			parent_path = filesystem::directory_name(file);
 		}
 
 		// Only proceed to pretty-format the filename if it's from the add-ons
 		// directory.
-		if(normalize_path(parent_path) != normalize_path(addons_path)) {
+		if(filesystem::normalize_path(parent_path) != filesystem::normalize_path(addons_path)) {
 			continue;
 		}
 
 		if(is_main_cfg) {
-			base = directory_name(file);
-			// HACK: fool file_name() into giving us the parent directory name
+			base = filesystem::directory_name(file);
+			// HACK: fool filesystem::base_name() into giving us the parent directory name
 			//       alone by making base seem not like a directory path,
 			//       otherwise it returns an empty string.
 			strip_trailing_dir_separators(base);
-			base = file_name(base);
+			base = filesystem::base_name(base);
 		} else {
 			base = filename;
 		}
@@ -95,7 +97,7 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 			static const std::string wml_suffix = ".cfg";
 
 			if(base.size() > wml_suffix.size()) {
-				const size_t suffix_pos = base.size() - wml_suffix.size();
+				const std::size_t suffix_pos = base.size() - wml_suffix.size();
 				if(base.substr(suffix_pos) == wml_suffix) {
 					base.erase(suffix_pos);
 				}
@@ -131,6 +133,8 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -142,20 +146,20 @@ namespace gui2
  *
  * @begin{table}{dialog_widgets}
  *
- * summary & & control & m &
+ * summary & & styled_widget & m &
  *         Label used for displaying a brief summary of the error(s). $
  *
- * files & & control & m &
+ * files & & styled_widget & m &
  *         Label used to display the list of affected add-ons or files, if
  *         applicable. It is hidden otherwise. It is recommended to place it
  *         after the summary label. $
  *
- * post_summary & & control & m &
+ * post_summary & & styled_widget & m &
  *         Label used for displaying instructions for reporting the error.
  *         It is recommended to place it after the file list label. It may be
  *         hidden if empty. $
  *
- * details & & control & m &
+ * details & & styled_widget & m &
  *         Full report of the parser or preprocessor error(s) found. $
  *
  * copy & & button & m &
@@ -167,7 +171,7 @@ namespace gui2
 
 REGISTER_DIALOG(wml_error)
 
-twml_error::twml_error(const std::string& summary,
+wml_error::wml_error(const std::string& summary,
 					   const std::string& post_summary,
 					   const std::vector<std::string>& files,
 					   const std::string& details)
@@ -175,6 +179,8 @@ twml_error::twml_error(const std::string& summary,
 	, have_post_summary_(!post_summary.empty())
 	, report_()
 {
+	set_restore(true);
+
 	const std::string& file_list_text = format_file_list(files);
 
 	report_ = summary;
@@ -200,28 +206,34 @@ twml_error::twml_error(const std::string& summary,
 	register_label("details", true, details);
 }
 
-void twml_error::pre_show(CVideo& /*video*/, twindow& window)
+void wml_error::pre_show(window& window)
 {
 	if(!have_files_) {
-		tcontrol& filelist = find_widget<tcontrol>(&window, "files", false);
-		filelist.set_visible(tcontrol::tvisible::invisible);
+		styled_widget& filelist = find_widget<styled_widget>(&window, "files", false);
+		filelist.set_visible(widget::visibility::invisible);
 	}
 
 	if(!have_post_summary_) {
-		tcontrol& post_summary
-				= find_widget<tcontrol>(&window, "post_summary", false);
-		post_summary.set_visible(tcontrol::tvisible::invisible);
+		styled_widget& post_summary
+				= find_widget<styled_widget>(&window, "post_summary", false);
+		post_summary.set_visible(widget::visibility::invisible);
 	}
 
-	tbutton& copy_button = find_widget<tbutton>(&window, "copy", false);
+	button& copy_button = find_widget<button>(&window, "copy", false);
 
 	connect_signal_mouse_left_click(
-			copy_button, boost::bind(&twml_error::copy_report_callback, this));
+			copy_button, std::bind(&wml_error::copy_report_callback, this));
+
+	if (!desktop::clipboard::available()) {
+		copy_button.set_active(false);
+		copy_button.set_tooltip(_("Clipboard support not found, contact your packager"));
+	}
 }
 
-void twml_error::copy_report_callback()
+void wml_error::copy_report_callback()
 {
-	copy_to_clipboard(report_, false);
+	desktop::clipboard::copy_to_clipboard(report_, false);
 }
 
+} // end namespace dialogs
 } // end namespace gui2

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,23 +12,40 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_MAP_CONTEXT_HPP_INCLUDED
-#define EDITOR_MAP_CONTEXT_HPP_INCLUDED
+#pragma once
 
-#include "editor_map.hpp"
+#include "editor/map/editor_map.hpp"
 #include "game_classification.hpp"
-#include "map_label.hpp"
+#include "map/label.hpp"
 #include "mp_game_settings.hpp"
 #include "sound_music_track.hpp"
+#include "team.hpp"
 #include "tod_manager.hpp"
-#include "unit_map.hpp"
+#include "units/map.hpp"
 #include "overlay.hpp"
-#include "../../display_context.hpp"
+#include "display_context.hpp"
 
-#include <boost/utility.hpp>
-#include <boost/scoped_ptr.hpp>
+#include <vector>
 
 namespace editor {
+
+struct editor_team_info {
+	editor_team_info(const team& t);
+
+	int side;
+	std::string id;
+	std::string name;
+	int gold;
+	int income;
+	int village_income;
+	int village_support;
+	bool fog;
+	bool shroud;
+	team::SHARE_VISION share_vision;
+	team::CONTROLLER controller;
+	bool no_leader;
+	bool hidden;
+};
 
 /**
  * This class wraps around a map to provide a concise interface for the editor to work with.
@@ -37,15 +54,18 @@ namespace editor {
  * as e.g. the undo stack is part of the map, not the editor as a whole. This might allow many
  * maps to be open at the same time.
  */
-class map_context : public display_context, private boost::noncopyable
+class map_context : public display_context
 {
 public:
+	map_context(const map_context&) = delete;
+	map_context& operator=(const map_context&) = delete;
+
 	/**
 	 * Create a map context from an existing map. The filename is set to be
 	 * empty, indicating a new map.
 	 * Marked "explicit" to avoid automatic conversions.
 	 */
-	explicit map_context(const editor_map& map, const display& disp, bool pure_map, const config& schedule);
+	explicit map_context(const editor_map& map, bool pure_map, const config& schedule);
 
 	/**
 	 * Create map_context from a map file. If the map cannot be loaded, an
@@ -55,7 +75,7 @@ public:
 	 * inside scenarios do not change the filename, but set the "embedded" flag
 	 * instead.
 	 */
-	map_context(const config& game_config, const std::string& filename, const display& disp);
+	map_context(const config& game_config, const std::string& filename);
 
 	/**
 	 * Map context destructor
@@ -68,28 +88,13 @@ public:
 	 */
 	bool select_area(int index);
 
-	/**
-	 * Map accessor
-	 */
-	editor_map& get_map() { return map_; }
-
-	/**
-	 * Map accessor - const version
-	 */
-	const editor_map& get_map() const { return map_; }
-
 	/** Adds a new side to the map */
-	void new_side() {
-		team t;
-		t.set_hidden(false);
-    	teams_.push_back(t);
-    	actions_since_save_++;
-    }
+	void new_side();
 
 	/** removes the last side from the scenario */
 	void remove_side() {
 		teams_.pop_back();
-		actions_since_save_++;
+		++actions_since_save_;
 	}
 
 	void save_area(const std::set<map_location>& area) {
@@ -99,42 +104,61 @@ public:
 	void new_area(const std::set<map_location>& area) {
 		tod_manager_->add_time_area("", area, config());
 		active_area_ = tod_manager_->get_area_ids().size() -1;
-		actions_since_save_++;
+		++actions_since_save_;
 	}
 
 	void remove_area(int index);
-
-	/** Get the team from the current map context object */
-	std::vector<team>& get_teams() {
-		return teams_;
-	}
 
 	map_labels& get_labels() {
 		return labels_;
 	}
 
-	/** Get the unit map from the current map context object */
-	unit_map& get_units() {
-		return units_;
-	}
-
-	const unit_map& get_units() const {
-		return units_;
-	}
-
 	void replace_schedule(const std::vector<time_of_day>& schedule);
 
-	/**
-	 * Const accessor names needed to implement "display_context" interface
-	 */
-	virtual const unit_map & units() const {
+	// Import symbols from base class.
+	using display_context::units;
+	using display_context::teams;
+	using display_context::map;
+
+	/** Const units accessor. */
+	virtual const unit_map& units() const override
+	{
 		return units_;
 	}
-	virtual const std::vector<team>& teams() const {
+
+	/** Local non-const overload of @ref units */
+	unit_map& units()
+	{
+		return units_;
+	}
+
+	/** Const teams accessor. */
+	virtual const std::vector<team>& teams() const override
+	{
 		return teams_;
 	}
-	virtual const gamemap & map() const {
+
+	/** Local non-const overload of @ref teams */
+	std::vector<team>& teams()
+	{
+		return teams_;
+	}
+
+	/** Const map accessor. */
+	virtual const editor_map& map() const override
+	{
 		return map_;
+	}
+
+	/** Local non-const overload of @ref map */
+	editor_map& map()
+	{
+		return map_;
+	}
+
+	virtual const std::vector<std::string>& hidden_label_categories() const override
+	{
+		return lbl_categories_;
 	}
 
 	/**
@@ -152,7 +176,11 @@ public:
 	 */
 	void set_local_starting_time(int time) {
 		tod_manager_->set_current_time(time, active_area_);
-		actions_since_save_++;
+		++actions_since_save_;
+	}
+
+	const tod_manager* get_time_manager() const {
+		return tod_manager_.get();
 	}
 
 	tod_manager* get_time_manager() {
@@ -168,8 +196,8 @@ public:
 
 	/**
 	 *
- 	 * @return the index of the currently active area.
- 	 */
+	 * @return the index of the currently active area.
+	 */
 	int get_active_area() const {
 		return active_area_;
 	}
@@ -185,7 +213,7 @@ public:
 	void add_to_playlist(const sound::music_track& track) {
 
 		if (music_tracks_.find(track.id()) == music_tracks_.end())
-				music_tracks_.insert(std::pair<std::string, sound::music_track>(track.id(), track));
+				music_tracks_.emplace(track.id(), track);
 		else music_tracks_.erase(track.id());
 	}
 
@@ -193,20 +221,20 @@ public:
 	 * Draw a terrain on a single location on the map.
 	 * Sets the refresh flags accordingly.
 	 */
-	void draw_terrain(const t_translation::t_terrain & terrain, const map_location& loc,
+	void draw_terrain(const t_translation::terrain_code & terrain, const map_location& loc,
 		bool one_layer_only = false);
 
 	/**
 	 * Actual drawing function used by both overloaded variants of draw_terrain.
 	 */
-	void draw_terrain_actual(const t_translation::t_terrain & terrain, const map_location& loc,
+	void draw_terrain_actual(const t_translation::terrain_code & terrain, const map_location& loc,
 		bool one_layer_only = false);
 
 	/**
 	 * Draw a terrain on a set of locations on the map.
 	 * Sets the refresh flags accordingly.
 	 */
-	void draw_terrain(const t_translation::t_terrain & terrain, const std::set<map_location>& locs,
+	void draw_terrain(const t_translation::terrain_code & terrain, const std::set<map_location>& locs,
 		bool one_layer_only = false);
 
 	/**
@@ -239,10 +267,7 @@ public:
 	/**
 	 * TODO
 	 */
-	void set_side_setup(int side, const std::string& id, const std::string& name,
-			int gold, int income, int village_gold, int village_support,
-			bool fog, bool share_view, bool shroud, bool share_maps,
-			team::CONTROLLER controller, bool hidden, bool no_leader);
+	void set_side_setup(editor_team_info& info);
 
 	/**
 	 * Getter for the labels reset flag. Set when the labels need to be refreshed.
@@ -278,6 +303,8 @@ public:
 	const std::string& get_id() const { return scenario_id_; }
 	const std::string& get_description() const { return scenario_description_; }
 	const std::string& get_name() const { return scenario_name_; }
+
+	const t_string get_default_context_name() const;
 
 	int get_xp_mod() const { return xp_mod_; }
 
@@ -329,16 +356,19 @@ public:
 	/** Clear the modified state */
 	void clear_modified();
 
+	/** Adds the map to the editor's recent files list. */
+	void add_to_recent_files();
+
 	/** @return true when undo can be performed, false otherwise */
 	bool can_undo() const;
 
 	/** @return true when redo can be performed, false otherwise */
 	bool can_redo() const;
 
-	/** @return a pointer to the last undo action or NULL if the undo stack is empty */
+	/** @return a pointer to the last undo action or nullptr if the undo stack is empty */
 	editor_action* last_undo_action();
 
-	/** @return a pointer to the last redo action or NULL if the undo stack is empty */
+	/** @return a pointer to the last redo action or nullptr if the undo stack is empty */
 	editor_action* last_redo_action();
 
 	/** const version of last_undo_action */
@@ -394,22 +424,10 @@ protected:
 	 */
 	editor_map map_;
 
-
-	/**
-	 * Container type used to store actions in the undo and redo stacks
-	 */
-	typedef std::deque<editor_action*> action_stack;
-
 	/**
 	 * Checks if an action stack reached its capacity and removes the front element if so.
 	 */
 	void trim_stack(action_stack& stack);
-
-	/**
-	 * Clears an action stack and deletes all its contents. Helper function used when the undo
-	 * or redo stack needs to be cleared
-	 */
-	void clear_stack(action_stack& stack);
 
 	/**
 	 * Perform an action at the back of one stack, and then move it to the back of the other stack.
@@ -436,7 +454,7 @@ protected:
 	/**
 	 * Action stack (i.e. undo and redo) maximum size
 	 */
-	static const size_t max_action_stack_size_;
+	static const std::size_t max_action_stack_size_;
 
 	/**
 	 * Number of actions performed since the map was saved. Zero means the map was not modified.
@@ -478,14 +496,15 @@ private:
 	map_labels labels_;
 	unit_map units_;
 	std::vector<team> teams_;
-	boost::scoped_ptr<tod_manager> tod_manager_;
+	std::vector<std::string> lbl_categories_;
+	std::unique_ptr<tod_manager> tod_manager_;
 	mp_game_settings mp_settings_;
 	game_classification game_classification_;
 
 	typedef std::map<std::string, sound::music_track> music_map;
 	music_map music_tracks_;
 
-	typedef std::multimap<map_location, overlay> overlay_map;
+	typedef std::map<map_location, std::vector<overlay>> overlay_map;
 	overlay_map overlays_;
 
 public:
@@ -496,5 +515,3 @@ public:
 
 
 } //end namespace editor
-
-#endif

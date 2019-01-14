@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,14 +12,19 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_TOGGLE_BUTTON_HPP_INCLUDED
-#define GUI_WIDGETS_TOGGLE_BUTTON_HPP_INCLUDED
+#pragma once
 
-#include "gui/widgets/control.hpp"
-#include "gui/widgets/selectable.hpp"
+#include "gui/widgets/styled_widget.hpp"
+#include "gui/widgets/selectable_item.hpp"
 
 namespace gui2
 {
+namespace implementation
+{
+	struct builder_toggle_button;
+}
+
+// ------------ WIDGET -----------{
 
 /**
  * Class for a toggle button.
@@ -27,58 +32,55 @@ namespace gui2
  * A toggle button is a button with two states 'up' and 'down' or 'selected' and
  * 'deselected'. When the mouse is pressed on it the state changes.
  */
-class ttoggle_button : public tcontrol, public tselectable_
+class toggle_button : public styled_widget, public selectable_item
 {
 public:
-	ttoggle_button();
+	explicit toggle_button(const implementation::builder_toggle_button& builder);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref tcontrol::set_members. */
-	void set_members(const string_map& data);
+	/** See @ref styled_widget::set_members. */
+	void set_members(const string_map& data) override;
 
-	/** See @ref tcontrol::set_active. */
-	virtual void set_active(const bool active) OVERRIDE;
+	/** See @ref styled_widget::set_active. */
+	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
-	virtual bool get_active() const OVERRIDE;
+	/** See @ref styled_widget::get_active. */
+	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
-	virtual unsigned get_state() const OVERRIDE;
+	/** See @ref styled_widget::get_state. */
+	virtual unsigned get_state() const override;
 
-	/** Inherited from tcontrol. */
-	void update_canvas();
+	/** Inherited from styled_widget. */
+	virtual void update_canvas() override;
 
-	/** Inherited from tselectable_ */
-	bool get_value() const
+	/** Inherited from selectable_item */
+	virtual unsigned get_value() const override
 	{
-		return state_ >= ENABLED_SELECTED;
+		return state_num_;
 	}
 
-	/** Inherited from tselectable_ */
-	void set_value(const bool selected);
+	/** Inherited from selectable_item */
+	virtual unsigned num_states() const override;
+
+	/** Inherited from selectable_item */
+	virtual void set_value(unsigned selected, bool fire_event = false) override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_retval(const int retval);
-
-	/** Inherited from tselectable_. */
-	void set_callback_state_change(boost::function<void(twidget&)> callback)
-	{
-		callback_state_change_ = callback;
-	}
 
 	void set_icon_name(const std::string& icon_name)
 	{
 		icon_name_ = icon_name;
 		update_canvas();
 	}
+
 	const std::string& icon_name() const
 	{
 		return icon_name_;
 	}
 
-private:
 	/**
 	 * Possible states of the widget.
 	 *
@@ -87,17 +89,16 @@ private:
 	 * same and also that 'up' is before 'down'. 'up' has no suffix, 'down' has
 	 * the SELECTED suffix.
 	 */
-	enum tstate {
+	enum state_t {
 		ENABLED,
 		DISABLED,
-		FOCUSSED,
-		ENABLED_SELECTED,
-		DISABLED_SELECTED,
-		FOCUSSED_SELECTED,
+		FOCUSED,
 		COUNT
 	};
 
-	void set_state(const tstate state);
+private:
+
+	void set_state(const state_t state);
 
 	/**
 	 * Current state of the widget.
@@ -105,8 +106,11 @@ private:
 	 * The state of the widget determines what to render and how the widget
 	 * reacts to certain 'events'.
 	 */
-	tstate state_;
-
+	state_t state_;
+	/**
+	 *	Usually 1 for selected and 0 for not selected, can also have higher values in tristate buttons.
+	 */
+	unsigned state_num_;
 	/**
 	 * The return value of the button.
 	 *
@@ -115,31 +119,66 @@ private:
 	 */
 	int retval_;
 
-	/** See tselectable_::set_callback_state_change. */
-	boost::function<void(twidget&)> callback_state_change_;
-
 	/**
 	 * The toggle button can contain an icon next to the text.
-	 * Maybe this will move the the tcontrol class if deemed needed.
+	 * Maybe this will move the the styled_widget class if deemed needed.
 	 */
 	std::string icon_name_;
 
-	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
+	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
+	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_mouse_enter(const event::tevent event, bool& handled);
+	void signal_handler_mouse_enter(const event::ui_event event, bool& handled);
 
-	void signal_handler_mouse_leave(const event::tevent event, bool& handled);
+	void signal_handler_mouse_leave(const event::ui_event event, bool& handled);
 
-	void signal_handler_left_button_click(const event::tevent event,
+	void signal_handler_left_button_click(const event::ui_event event,
 										  bool& handled);
 
-	void signal_handler_left_button_double_click(const event::tevent event,
+	void signal_handler_left_button_double_click(const event::ui_event event,
 												 bool& handled);
 };
 
-} // namespace gui2
+// }---------- DEFINITION ---------{
 
-#endif
+struct toggle_button_definition : public styled_widget_definition
+{
+	explicit toggle_button_definition(const config& cfg);
+
+	struct resolution : public resolution_definition
+	{
+		explicit resolution(const config& cfg);
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct builder_toggle_button : public builder_styled_widget
+{
+	explicit builder_toggle_button(const config& cfg);
+
+	using builder_styled_widget::build;
+
+	widget* build() const;
+
+private:
+	std::string icon_name_;
+	std::string retval_id_;
+	int retval_;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
+
+} // namespace gui2

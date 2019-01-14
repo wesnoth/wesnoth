@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 18:56+0100\n"
-"PO-Revision-Date: 2014-06-24 23:07+0700\n"
+"POT-Creation-Date: 2018-03-27 01:26 UTC\n"
+"PO-Revision-Date: 2014-06-24 23:03+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
 "Language: vi\n"
@@ -17,47 +17,55 @@ msgstr ""
 "X-Generator: Lokalize 1.4\n"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:11
-msgid "The Eastern Invasion"
+#: data/campaigns/Eastern_Invasion/_main.cfg:13
+#, fuzzy
+#| msgid "The Eastern Invasion"
+msgid "Eastern Invasion"
 msgstr "Cuộc xâm lược từ phương đông"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:12
+#: data/campaigns/Eastern_Invasion/_main.cfg:14
 msgid "EI"
 msgstr "CXLTPĐ"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:16
-msgid "(Easy)"
+#: data/campaigns/Eastern_Invasion/_main.cfg:18
+#, fuzzy
+#| msgid "(Easy)"
+msgid "Easy"
 msgstr "(Dễ)"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:16
+#: data/campaigns/Eastern_Invasion/_main.cfg:18
 msgid "Spearman"
 msgstr "Lính giáo"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:17
-msgid "(Normal)"
+#: data/campaigns/Eastern_Invasion/_main.cfg:19
+#, fuzzy
+#| msgid "(Normal)"
+msgid "Normal"
 msgstr "(Bình thường)"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:17
+#: data/campaigns/Eastern_Invasion/_main.cfg:19
 msgid "Swordsman"
 msgstr "Lính kiếm"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:18
-msgid "(Challenging)"
+#: data/campaigns/Eastern_Invasion/_main.cfg:20
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
 msgstr "(Thử thách)"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:18
+#: data/campaigns/Eastern_Invasion/_main.cfg:20
 msgid "Royal Guard"
 msgstr "Vệ sĩ hoàng gia"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:19
+#: data/campaigns/Eastern_Invasion/_main.cfg:22
 msgid ""
 "There are rumors of undead attacks on the eastern border of Wesnoth. You, an "
 "officer in the Royal Army, have been sent to the eastern front to protect "
@@ -70,42 +78,54 @@ msgstr ""
 "\n"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:21
+#: data/campaigns/Eastern_Invasion/_main.cfg:24
 msgid "(Intermediate level, 16 scenarios.)"
 msgstr "(Mức độ trung bình, 16 màn chơi)"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:25
+#: data/campaigns/Eastern_Invasion/_main.cfg:28
 msgid "Campaign Design"
 msgstr "Thiết kế chiến dịch"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:31
+#: data/campaigns/Eastern_Invasion/_main.cfg:34
 msgid "Campaign Maintenance"
 msgstr "Bảo trì chiến dịch"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:41
+#: data/campaigns/Eastern_Invasion/_main.cfg:47
 msgid "Campaign Epilogue and Continuity"
 msgstr "Hồi kết và tính liên tục của chiến dịch"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:47
+#: data/campaigns/Eastern_Invasion/_main.cfg:53
 msgid "Prose and Story Edits"
 msgstr "Sửa lời và cốt truyện"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:53
+#: data/campaigns/Eastern_Invasion/_main.cfg:59
 msgid "Artwork and Graphics Design"
 msgstr "Thiết kế nghệ thuật và đồ họa"
 
+#. [lua]: wml_actions.bandit_village_capture
+#: data/campaigns/Eastern_Invasion/lua/bandits.lua:83
+#, fuzzy
+#| msgid "They’re here!"
+msgid "They're here!"
+msgstr "Chúng ở đây!"
+
+#. [lua]: wml_actions.bandit_village_capture
+#: data/campaigns/Eastern_Invasion/lua/bandits.lua:90
+msgid "No outlaws in this village."
+msgstr "Không có kẻ phạm pháp nào trong ngôi làng này."
+
 #. [scenario]: id=01_The_Outpost
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:4
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:5
 msgid "The Outpost"
 msgstr "Tiền đồn"
 
 #. [part]
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:17
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:21
 msgid ""
 "It was the thirteenth year of Konrad II’s reign when the strange occurrences "
 "in the Estmark Hills on the eastern border of Wesnoth began."
@@ -114,7 +134,7 @@ msgstr ""
 "vùng đồi biên giới phía đông của Wesnoth."
 
 #. [part]
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:21
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:25
 msgid ""
 "Cattle and beasts of burden were found dead in the fields, and men went "
 "missing from their houses, with no clues but a thin stream of black blood. "
@@ -128,7 +148,7 @@ msgstr ""
 "thấy gì ngoài một dãy núi nhỏ và hàng dặm đầm lầy."
 
 #. [part]
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:25
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:29
 msgid ""
 "The disappearances did not stop, and every day the terror grew greater. "
 "Eventually, the people living in the eastern villages sent a messenger to "
@@ -141,7 +161,7 @@ msgstr ""
 "cùng cũng đến được thành phố Weldyn."
 
 #. [part]
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:29
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:33
 msgid ""
 "When the King received news of the problem, his advisor Dacyn had much to "
 "say. Apparently, these attacks were connected to similar ones that occurred "
@@ -154,7 +174,7 @@ msgstr ""
 "một kế hoạch đối phó với cuộc xâm phạm này."
 
 #. [part]
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:36
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:40
 msgid ""
 "In the days of the king Garard I, two strong-points had been built along the "
 "near bank of the Weldyn, south of Soradoc, to stop bandits and orcish "
@@ -170,7 +190,7 @@ msgstr ""
 "đẩy lùi về phía bắc của Dòng Sông Lớn."
 
 #. [part]
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:40
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:44
 msgid ""
 "With unknown enemies pressing Wesnoth from the East, Konrad II decided to re-"
 "build and re-man the River Guard outposts, and use them to keep the Crown’s "
@@ -183,7 +203,7 @@ msgstr ""
 "hai phía của Weldyn. Ông điều hai sĩ quan trẻ có triển vọng nhất đến đó."
 
 #. [part]
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:44
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:48
 msgid ""
 "To the northern outpost he sent Owaec, a clan noble. To the southern "
 "outpost, he sent Gweddry, who would be accompanied by Dacyn the mage. Our "
@@ -194,7 +214,7 @@ msgstr ""
 "chuyện của chúng ta bắt đầu ở đó."
 
 #. [part]
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:48
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:52
 msgid ""
 "All went well once the King’s forces arrived. There were no attacks for "
 "several weeks, and Gweddry’s men started to grow incautious. Then, at dawn "
@@ -206,102 +226,67 @@ msgstr ""
 "ngày, vào lúc sáng sớm, Gweddry và người của mình bị đánh thức bởi tiếng "
 "thét bất ngờ của những người gác đêm..."
 
-#. [side]: race=Humans, type=Lieutenant, id=Gweddry
-#. [side]: type=General, id=Gweddry
-#. [side]: type=Lieutenant, id=Gweddry
-#. [side]: type=Sergeant, id=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:61
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:22
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:22
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:29
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:23
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:31
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:22
-#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:22
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:22
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:19
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:27
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:23
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:28
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:30
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:29
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:22
-#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:22
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:48
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:39
-#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:20
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:28
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:32
-msgid "Gweddry"
-msgstr "Gweddry"
-
 #. [side]
-#. [side]: race=Humans, type=Lieutenant, id=Gweddry
 #. [side]: type=Dwarvish Steelclad, id=Knutan
-#. [side]: type=General, id=Gweddry
+#. [side]: type=Lieutenant, id=Gweddry
+#. [side]: type=General, id=Konrad II
 #. [side]: type=General, id=Halrad
 #. [side]: type=General, id=Halric
 #. [side]: type=General, id=Halrod
-#. [side]: type=General, id=Konrad II
 #. [side]: type=Great Mage, id=Kaldor
-#. [side]: type=Lieutenant, id=Gweddry
-#. [side]: type=Mounted Fighter, id=Owaec
-#. [side]: type=Sergeant, id=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:70
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:28
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:56
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:27
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:28
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:36
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:127
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:28
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:44
-#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:27
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:27
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:67
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:25
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:63
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:24
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:26
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:33
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:131
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:25
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:38
+#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:23
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:21
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:24
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:32
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:28
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:33
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:35
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:34
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:27
-#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:27
-#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:116
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:54
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:68
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:81
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:44
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:61
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:78
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:95
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:28
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:25
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:31
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:33
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:32
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:25
+#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:25
+#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:114
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:51
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:65
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:78
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:42
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:59
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:76
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:93
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:25
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:34
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:37
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:33
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:36
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:50
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:62
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:63
 msgid "Wesnothians"
 msgstr "Người Wesnoth"
 
-#. [unit]: type=White Mage, id=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:74
-msgid "Dacyn"
-msgstr "Dacyn"
-
 #. [side]: type=Dark Sorcerer, id=Mal-Sakkat
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:109
-msgid "Mal-Sakkat"
-msgstr "Mal-Sakkat"
-
-#. [side]
-#. [side]: type=Ancient Lich, id=Mal-Ravanal
-#. [side]: type=Dark Adept, id=Mal-Tar
-#. [side]: type=Dark Sorcerer, id=Mal-Galkar
-#. [side]: type=Dark Sorcerer, id=Mal-Kallat
-#. [side]: type=Dark Sorcerer, id=Mal-Marak
-#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
-#. [side]: type=Dark Sorcerer, id=Mal-Skraat
 #. [side]: type=Dark Sorcerer, id=Mal-Talar
+#. [side]: type=Lich, id=Mal-Uldhar
+#. [side]
+#. [side]: type=Dark Sorcerer, id=Mal-Skraat
+#. [side]: type=Lich, id=Mal-Telnarad
+#. [side]: type=Dark Sorcerer, id=Mal-Marak
+#. [side]: type=Dark Sorcerer, id=Mal-Galkar
 #. [side]: type=Death Knight, id=Ravanal-Guard
+#. [side]: type=Revenant, id=Lanar-Skal
+#. [side]: type=Bone Knight, id=Garnad
+#. [side]: type=Necromancer, id=Mal-un-Karad
+#. [side]: type=Necromancer, id=Mal-un-Darak
+#. [side]: type=Necromancer, id=Mal-un-Zanrad
+#. [side]: type=Necromancer, id=Mal-un-Xadrux
+#. [side]: type=Lich, id=Mal-Grekulak
+#. [side]: type=Lich, id=Mal-Xakralan
+#. [side]: type=Lich, id=Mal-Uknalu
 #. [side]: type=Lich Lord, id=Mal-Ravanal
 #. [side]: type=Lich, id=Lich2
 #. [side]: type=Lich, id=Lich3
@@ -310,160 +295,142 @@ msgstr "Mal-Sakkat"
 #. [side]: type=Lich, id=Lich6
 #. [side]: type=Lich, id=Lich7
 #. [side]: type=Lich, id=Lich8
-#. [side]: type=Lich, id=Mal-Grekulak
-#. [side]: type=Lich, id=Mal-Telnarad
-#. [side]: type=Lich, id=Mal-Uknalu
-#. [side]: type=Lich, id=Mal-Uldhar
-#. [side]: type=Lich, id=Mal-Xakralan
-#. [side]: type=Necromancer, id=Mal-un-Darak
-#. [side]: type=Necromancer, id=Mal-un-Karad
-#. [side]: type=Necromancer, id=Mal-un-Xadrux
-#. [side]: type=Necromancer, id=Mal-un-Zanrad
-#. [side]: type=Revenant, id=Garnad
-#. [side]: type=Revenant, id=Lanar-Skal
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:122
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:144
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:165
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:83
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:45
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:66
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:95
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:47
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:69
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:55
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:75
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:92
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:112
+#. [side]: type=Dark Adept, id=Mal-Tar
+#. [side]: type=Dark Sorcerer, id=Mal-Kallat
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:95
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:123
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:158
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:99
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:38
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:74
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:96
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:41
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:73
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:47
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:67
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:87
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:111
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:67
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:45
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:41
-#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:63
-#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:81
-#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:99
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:111
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:128
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:145
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:44
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:44
+#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:61
+#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:79
+#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:97
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:109
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:126
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:143
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:40
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:55
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:72
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:89
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:106
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:123
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:140
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:157
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:73
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:91
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:109
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:127
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:145
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:163
 msgid "Undead"
 msgstr "Ma quái"
 
+#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:100
+msgid "Mal-Sakkat"
+msgstr "Mal-Sakkat"
+
 #. [side]: type=Dark Sorcerer, id=Mal-Talar
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:133
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:128
 msgid "Mal-Talar"
 msgstr "Mal-Talar"
 
 #. [side]: type=Lich, id=Mal-Uldhar
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:155
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:163
 msgid "Mal-Uldhar"
 msgstr "Mal-Uldhar"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:190
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:209
 msgid "Defend the outpost"
 msgstr "Bảo vệ tiền đồn"
 
 #. [objective]: condition=lose
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:194
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:381
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:100
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:126
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:83
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:90
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:146
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:106
-#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:81
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:103
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:61
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:82
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:112
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:91
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:258
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1019
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:159
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:142
-#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:134
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:169
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:213
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:440
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:151
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:362
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:158
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:118
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:107
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:159
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:138
+#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:111
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:108
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:83
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:81
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:173
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:101
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1067
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:154
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:140
+#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:132
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:167
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:69
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:171
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:184
 msgid "Death of Gweddry"
 msgstr "Gweddry chết"
 
 #. [objective]: condition=lose
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:198
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:385
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:104
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:130
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:87
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:94
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:150
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:110
-#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:85
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:107
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:65
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:86
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:116
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:95
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1023
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:163
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:146
-#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:138
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:173
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:217
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:444
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:155
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:366
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:162
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:122
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:111
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:163
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:142
+#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:115
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:112
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:87
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:85
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:177
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:105
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1071
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:158
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:144
+#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:136
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:171
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:73
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:175
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:188
 msgid "Death of Dacyn"
 msgstr "Dacyn chết"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:223
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:244
 msgid "What? What is going on?"
 msgstr "Cái gì? Cái gì đang xảy ra thế?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:227
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:249
 msgid "Look. To the east. Undead approach!"
 msgstr "Nhìn kìa. Ở phía đông. Ma quái đang đến!"
 
 #. [message]: speaker=Mal-Talar
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:231
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:254
 msgid "Ah, interesting..."
 msgstr "À, thật thú vị..."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:235
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:259
 msgid "Men, to arms!"
 msgstr "Mọi người, vào vị trí!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:246
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:272
 msgid "I sense a great evil... Can it be? Gweddry, I must not be seen."
 msgstr ""
 "Tôi cảm nhận được một điều rất xấu... Có khi nào? Gweddry, tôi không thể bị "
 "phát hiện."
 
-#. [event]
-#. [modify_unit]: type=Lich Lord, id=Mal-Ravanal
-#. [side]: type=Ancient Lich, id=Mal-Ravanal
-#. [side]: type=Lich Lord, id=Mal-Ravanal
-#. [unit]: type=Lich Lord, id=Mal-Ravanal
-#. [variable]
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:274
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:103
-#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:33
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:226
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:280
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:295
-msgid "Mal-Ravanal"
-msgstr "Mal-Ravanal"
-
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:283
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:312
 msgid ""
 "This is the resistance you spoke of, an untrained commander and a few fresh "
 "recruits? You will suffer for your incompetence. Destroy them, and dare not "
@@ -474,12 +441,12 @@ msgstr ""
 "Tiêu diệt chúng, và đừng làm ta bực mình nữa."
 
 #. [message]: speaker=Mal-Talar
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:288
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:318
 msgid "Apologies, Dark Archon. They will die. And then?"
 msgstr "Chúng tôi xin lỗi, thưa chúa tể bóng tối. Chúng sẽ chết. Và sau đó?"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:292
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:323
 msgid ""
 "Slaughter the villagers and march onwards. You have wasted enough time here "
 "already."
@@ -488,23 +455,23 @@ msgstr ""
 "thời gian ở đây rồi."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:306
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:347
 msgid "What?! We must hold the outpost! And where did Dacyn go?!"
 msgstr "Cái gì?! Chúng ta phải giữ tiền đồn! Dacyn đi đâu rồi?!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:339
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:386
 msgid "Gweddry? Good! You are still alive. Quickly, we must leave this place!"
 msgstr ""
 "Gweddry? Tốt! Cậu vẫn còn sống. Nhanh lên, chúng ta phải rời khỏi nơi này!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:343
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:391
 msgid "Where did you go?! And where did you come from?"
 msgstr "Ngài đã đi đâu?! Và ngài từ đâu đến vậy?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:347
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:396
 msgid ""
 "There is no time to explain. If you wish to survive, you will escape through "
 "this trapdoor."
@@ -513,12 +480,12 @@ msgstr ""
 "thoát qua cửa chui này."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:351
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:401
 msgid "But what about the outpost?"
 msgstr "Còn tiền đồn thì sao?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:355
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:406
 msgid ""
 "This outpost is already lost. We must defeat this evil if Wesnoth is to "
 "survive. Now, come on, we do not have much time to spare!"
@@ -527,62 +494,68 @@ msgstr ""
 "sót. Giờ, đi thôi, chúng ta không có nhiều thời gian để lãng phí đâu!"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:377
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:436
 msgid "Move Gweddry to the trapdoor"
 msgstr "Di chuyển Gweddry đến cửa chui"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:419
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:480
 msgid "Hurry! We cannot defeat this evil today! We must escape!"
 msgstr ""
 "Mau lên! Hôm nay chúng ta không thể đánh bại kẻ xấu này! Chúng ta phải trốn "
 "thoát!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:427
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:489
 msgid "Follow me, men! Through the trapdoor!"
 msgstr "Theo tôi, mọi người! Qua cửa chui!"
 
 #. [scenario]: id=02_The_Escape_Tunnel
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:4
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:5
 msgid "The Escape Tunnel"
 msgstr "Đường hầm trốn thoát"
 
 #. [side]: type=Troll, id=Kabak
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:36
-msgid "Kabak"
-msgstr "Kabak"
-
-#. [side]: type=Gryphon, id=Kraagak
 #. [side]: type=Ogre, id=Grug
-#. [side]: type=Orcish Warrior, id=Gruga-Har
+#. [side]
 #. [side]: type=Troll Warrior, id=Darg
-#. [side]: type=Troll, id=Kabak
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:43
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:67
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:76
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:51
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:67
+#. [side]: type=Gryphon, id=Kraagak
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:42
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:83
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:69
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:49
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:65
 msgid "Monsters"
 msgstr "Quái vật"
 
+#. [side]: type=Troll, id=Kabak
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:46
+msgid "Kabak"
+msgstr "Kabak"
+
 #. [side]: type=Dwarvish Steelclad, id=Knutan
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:49
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:68
 msgid "Knutan"
 msgstr "Knutan"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:96
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:147
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:358
 msgid "Move Gweddry to the tunnel exit"
 msgstr "Di chuyển Gweddry đến lối ra của đường hầm"
 
+#. [note]
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:168
+msgid "Get moving quickly."
+msgstr ""
+
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:125
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:183
 msgid "Where are we? I can’t see where we are going."
 msgstr "Chúng ta đang ở đâu đây? Tôi không nhìn thấy gì cả."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:129
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:188
 msgid ""
 "This is an old escape tunnel for the outpost; unfortunately these caves are "
 "currently inhabited by trolls. Now hurry, we have to move quickly; the "
@@ -593,12 +566,12 @@ msgstr ""
 "nhanh chóng. Lũ ma quái chắc chắn sẽ theo chúng ta xuống đây."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:133
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:193
 msgid "Wait, before we go anywhere — who were those undead?"
 msgstr "Khoan đã, trước khi chúng ta đi bất cứ đâu - lũ ma quái đó là ai vậy?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:137
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:198
 msgid ""
 "I will explain later. For now, suffice to say they are much too powerful for "
 "us; our only hope is to head north."
@@ -607,17 +580,17 @@ msgstr ""
 "ta. Hy vọng duy nhất của chúng ta là đi về phía bắc."
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:163
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:212
 msgid "TROL TREZZUR HOLE: KEEP OWT"
 msgstr "HAN KHO BÁU CỦ QUỶ MÚI: CẤM DÀO"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:180
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:230
 msgid "Who goes there?"
 msgstr "Ai đó?"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:184
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:235
 msgid ""
 "We are soldiers of the king of Wesnoth. Will you help us fight these trolls?"
 msgstr ""
@@ -625,7 +598,7 @@ msgstr ""
 "với bọn quỷ núi đó chứ?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:188
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:240
 msgid ""
 "Aye, we’ll help ye, for we have nae love for the trolls. Anyone attacked by "
 "them deserves some help, I think."
@@ -634,7 +607,7 @@ msgstr ""
 "nghĩ bất kỳ ai bị chúng tấn công đều xứng đáng được giúp đỡ."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:195
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:248
 msgid ""
 "Thank you. Now, I invite you to join us. Undead have followed us into these "
 "caves, and they will kill you if you stay behind."
@@ -644,7 +617,7 @@ msgstr ""
 "anh ở lại."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:201
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:254
 msgid ""
 "Thank you. Now, I invite you to join us. Undead are in these lands, and they "
 "will find these caves."
@@ -653,7 +626,7 @@ msgstr ""
 "đang ở trong vùng đất, chúng sẽ tìm thấy hang động này."
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:207
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:261
 msgid ""
 "My clan ha’ lived in these caves for centuries. We’ll no’ be scattered now "
 "by a few undead."
@@ -662,87 +635,29 @@ msgstr ""
 "rời đi chỉ vì một ít ma quái."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:211
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:266
 msgid "Very well. The best of luck in your battle."
 msgstr "Thôi được. Chúc các anh may mắn khi chiến đấu."
 
-#. [scenario]: id=02_The_Escape_Tunnel
-#. [scenario]: id=05_Northern_Outpost
-#. [scenario]: id=09_Xenophobia
-#. [scenario]: id=11_Captured
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:216
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:620
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:321
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1170
-msgid ""
-"Wearing this amulet will cause every blow you deal to inflict <i>arcane</i> "
-"damage!"
-msgstr ""
-"Đeo bùa này sẽ khiến mọi đòn đánh của bạn đều gây ra thiệt hại kiểu <i>bí "
-"kíp</i>!"
-
-#. [scenario]: id=02_The_Escape_Tunnel
-#. [scenario]: id=05_Northern_Outpost
-#. [scenario]: id=09_Xenophobia
-#. [scenario]: id=11_Captured
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:217
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:621
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:322
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1171
-msgid "holy amulet^Take it"
-msgstr "Giữ lấy"
-
-#. [scenario]: id=02_The_Escape_Tunnel
-#. [scenario]: id=05_Northern_Outpost
-#. [scenario]: id=09_Xenophobia
-#. [scenario]: id=11_Captured
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:218
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:622
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:323
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1172
-msgid "holy amulet^Leave it"
-msgstr "Bỏ lại"
-
-#. [scenario]: id=02_The_Escape_Tunnel
-#. [scenario]: id=05_Northern_Outpost
-#. [scenario]: id=09_Xenophobia
-#. [scenario]: id=11_Captured
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:219
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:623
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:324
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1173
-msgid "I am not suited to using this item! Let another take it."
-msgstr "Tôi không thích hợp để sử dụng thứ này! Để người khác lấy nó."
-
-#. [object]
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:221
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:625
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:326
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1175
-msgid "Holy Amulet"
-msgstr "Bùa thánh"
-
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:257
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:285
 msgid ""
-"There is a great fortune in this chest of treasure! I can count two hundred "
-"pieces of gold."
+"It seems these trolls were hiding some gold. I think I can count fifty gold "
+"pieces!"
 msgstr ""
-"Có một đống của cải lớn trong hòm kho báu này! Tôi có thể đếm được hai trăm "
-"lượng vàng!"
 
-#. [unit]: type=Dark Sorcerer, id=Mal-Bakral
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:299
+#. [unit]: type=Necromancer, id=Mal-Bakral
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:336
 msgid "Mal-Bakral"
 msgstr "Mal-Bakral"
 
 #. [message]: speaker=Mal-Bakral
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:306
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:346
 msgid "We have found you, fleshbag! Prepare to die!"
 msgstr "Bọn ta tìm thấy các ngươi rồi, bị thịt! Chuẩn bị chết đi!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:310
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:351
 msgid ""
 "They follow us... we must get out of this tunnel. It looks like it is "
 "leading east. That is unfortunate, for it will take us beyond the borders of "
@@ -753,46 +668,46 @@ msgstr ""
 "giới Wesnoth. Nhưng đó là lựa chọn duy nhất."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:323
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:388
 msgid "We have reached the end of the tunnel. I see daylight above us!"
 msgstr ""
 "Chúng ta đã đến được đoạn cuối của đường hầm. Tôi thấy ánh sáng ban ngày "
 "trên đầu chúng ta!"
 
 #. [scenario]: id=03_An_Unexpected_Appearance
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:4
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:5
 msgid "An Unexpected Appearance"
 msgstr "Sự xuất hiện không mong đợi"
 
 #. [side]: type=Dark Sorcerer, id=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:35
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:36
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:43
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:46
 msgid "Mal-Skraat"
 msgstr "Mal-Skraat"
 
 #. [side]: type=Dark Adept, id=Mal-Tar
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:59
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:79
 msgid "Mal-Tar"
 msgstr "Mal-Tar"
 
 #. [side]: type=Dark Sorcerer, id=Mal-Kallat
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:86
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:101
 msgid "Mal-Kallat"
 msgstr "Mal-Kallat"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:122
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:154
 msgid "Defeat either enemy dark sorcerer"
 msgstr "Đánh bại một trong hai phù thủy bóng tối"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:150
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:184
 msgid "We have escaped from those dark tunnels! But where are we now?"
 msgstr ""
 "Chúng ta đã thoát khỏi đường hầm tăm tối đó! Nhưng chúng ta đang ở đâu đây?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:154
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:189
 msgid ""
 "We are in the middle of the eastern mountains, in a mountain pass leading "
 "east and west. We need to head north, but we cannot go through the "
@@ -804,12 +719,12 @@ msgstr ""
 "núi."
 
 #. [message]: speaker=Mal-Kallat
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:158
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:194
 msgid "Hahaha! We have you surrounded!"
 msgstr "Ha ha ha! Bọn ta đã bao vây các ngươi!"
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:162
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:199
 msgid ""
 "Why don’t we see if the new recruit can handle them. After all, there are "
 "only two!"
@@ -818,17 +733,17 @@ msgstr ""
 "Rốt cuộc, cũng chỉ có hai đứa thôi!"
 
 #. [message]: speaker=Mal-Tar
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:166
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:204
 msgid "No!! They’ll kill me!"
 msgstr "Không!! Chúng sẽ giết tôi!"
 
 #. [message]: speaker=Mal-Kallat
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:170
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:209
 msgid "That would be your problem, then."
 msgstr "Thế thì, đó là vấn đề của ngươi."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:174
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:214
 msgid ""
 "These undead are toying with us! This adept is weak — we may be able to take "
 "his fort."
@@ -837,7 +752,7 @@ msgstr ""
 "chiếm pháo đài của hắn."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:178
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:219
 msgid ""
 "A good idea. Then, we must kill either of the dark sorcerers. I would prefer "
 "to attack the western one, so we can return to Wesnoth."
@@ -847,24 +762,24 @@ msgstr ""
 "Wesnoth."
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:189
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:231
 msgid "No! You have defeated me, and can re-enter Wesnoth!"
 msgstr "Không! Các ngươi đã đánh bại ta, và có thể vào lại Wesnoth!"
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:210
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:252
 msgid "You have defeated my brother, but I will follow you and kill you!"
 msgstr ""
 "Các ngươi đã đánh bại người anh em của ta, nhưng ta sẽ đuổi theo và giết các "
 "ngươi!"
 
 #. [scenario]: id=04a_An_Elven_Alliance
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:4
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:5
 msgid "An Elven Alliance"
 msgstr "Liên minh thần tiên"
 
 #. [part]
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:19
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:24
 msgid ""
 "But Gweddry and Dacyn were to find no respite within the borders of Wesnoth. "
 "They marched out of the foothills of the Estmarks into an unknown forest..."
@@ -873,40 +788,51 @@ msgstr ""
 "biên giới Wesnoth. Họ hành quân ra khỏi chân đồi vùng biên giới phía đông "
 "vào một khu rừng xa lạ..."
 
+#. [side]
 #. [side]: type=Elvish Ranger, id=Volas
-#. [side]: type=Lieutenant, id=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:34
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:51
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:37
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:52
 msgid "Allies"
 msgstr "Đồng minh"
 
 #. [side]: type=Elvish Ranger, id=Volas
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:44
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:57
 msgid "Volas"
 msgstr "Volas"
 
 #. [side]: type=Orcish Warrior, id=Gruga-Har
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:60
+#. [side]: type=Orcish Nightblade, id=Bagork
+#. [side]: type=Orcish Warlord, id=Prok-Bak
+#. [side]: type=Orcish Warlord, id=King Dra-Nak
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:75
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:80
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:134
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:71
+msgid "Orcs"
+msgstr "Người thú"
+
+#. [side]: type=Orcish Warrior, id=Gruga-Har
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:80
 msgid "Gruga-Har"
 msgstr "Gruga-Har"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:79
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:114
 msgid "Defeat enemy leader"
 msgstr "Đánh bại chỉ huy của kẻ thù"
 
 #. [objective]: condition=lose
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:91
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:126
 msgid "Death of Volas"
 msgstr "Volas chết"
 
 #. [message]: speaker=Volas
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:118
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:154
 msgid "Greetings, travelers! Welcome to my realm."
 msgstr "Xin chào, các lữ khách! Chào mừng đến vương quốc của tôi."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:122
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:159
 msgid ""
 "Would it be possible for us to rest in your lands for a while? We have been "
 "pursued by fell undead, although they did not dare follow us into the "
@@ -917,12 +843,12 @@ msgstr ""
 "chúng tôi vào rừng."
 
 #. [message]: speaker=Volas
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:126
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:164
 msgid "Certainly."
 msgstr "Chắc chắn rồi."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:130
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:169
 msgid ""
 "Good. Now, you should be warned: this undead warlord is very powerful. If "
 "you choose to fight, even if you are victorious, few will survive. I invite "
@@ -933,7 +859,7 @@ msgstr ""
 "sót. Tôi mời anh tham gia cùng chúng tôi, đi về phía bắc."
 
 #. [message]: speaker=Volas
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:134
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:174
 msgid ""
 "I thank you for your offer. But I will not leave my homeland. These undead "
 "cannot be as powerful as you say; I will fight them."
@@ -942,7 +868,7 @@ msgstr ""
 "Lũ ma quái đó không thể mạnh như anh nói. Tôi sẽ chiến đấu với chúng."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:138
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:179
 msgid ""
 "This is not a wise choice, but it is yours to make. If you will not join us, "
 "will you at least help us reach the northern outpost? We wish to warn our "
@@ -953,7 +879,7 @@ msgstr ""
 "đồn phía bắc chứ? Chúng tôi muốn cảnh báo đồng đội của mình ở đó."
 
 #. [message]: speaker=Volas
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:142
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:184
 msgid ""
 "I will aid you. Although, I too, think that yours is the foolish choice. You "
 "should stay, and fight."
@@ -962,24 +888,24 @@ msgstr ""
 "dại dột. Các anh nên ở lại, và chiến đấu."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:146
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:189
 msgid ""
 "After we rest for a short while, we will leave. We have little time to spare."
 msgstr ""
 "Sau khi nghỉ một lát, chúng tôi sẽ rời đi. Chúng tôi có rất ít thời gian."
 
 #. [message]: speaker=Gruga-Har
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:160
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:204
 msgid "Intruders!"
 msgstr "Có kẻ xâm nhập!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:164
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:209
 msgid "What? Orcs! Where did they come from?"
 msgstr "Cái gì? Người thú! Bọn chúng từ đâu đến vậy?"
 
 #. [message]: speaker=Volas
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:168
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:214
 msgid ""
 "I know not. But they have made camp on the northern path. You will have to "
 "fight them to move on."
@@ -988,18 +914,17 @@ msgstr ""
 "phải chiến đấu với chúng để tiến lên."
 
 #. [message]: speaker=Gruga-Har
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:172
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:219
 msgid "Bring forth the assassins, we may be able to poison them!"
 msgstr "Mang các sát thủ lại đây, chúng ta có thể đầu độc chúng!"
 
-#. [unit]: type=Orcish Slayer, id=Nafga
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:183
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:217
+#. [unit]: type=Orcish Nightblade, type=Orcish Slayer, id=Nafga
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:240
 msgid "Nafga"
 msgstr "Nafga"
 
 #. [message]: speaker=Nafga
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:191
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:248
 msgid ""
 "Your Warlordship, I am the only assassin left! Do you want me to go poison "
 "their leader?"
@@ -1008,12 +933,12 @@ msgstr ""
 "chỉ huy của chúng không?"
 
 #. [message]: speaker=Gruga-Har
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:195
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:253
 msgid "Perfect! Go, into the forest!"
 msgstr "Tốt lắm! Đi đi, vào trong rừng!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:208
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:273
 msgid ""
 "They have sent an assassin into the forest. We will have to be careful, and "
 "make sure he does not come out and attack us unexpectedly."
@@ -1022,12 +947,12 @@ msgstr ""
 "bảo hắn không xông ra để bất ngờ tấn công chúng ta."
 
 #. [message]: speaker=Nafga
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:224
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:292
 msgid "Hahaha! Nafga will kill the elves!"
 msgstr "Ha ha ha! Nafga sẽ giết bọn thần tiên!"
 
 #. [message]: speaker=Nafga
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:235
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:304
 msgid ""
 "No! This is the first time I have failed a mission, and it will be my last!"
 msgstr ""
@@ -1035,7 +960,7 @@ msgstr ""
 "cùng!"
 
 #. [message]: speaker=Gruga-Har
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:243
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:316
 msgid ""
 "My assassin is dead! The elves must pay, not for his death, but for stopping "
 "him in his mission!"
@@ -1044,19 +969,19 @@ msgstr ""
 "của hắn, mà vì đã ngăn hắn làm nhiệm vụ!"
 
 #. [message]: speaker=Volas
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:258
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:333
 msgid "You have failed me, man of Wesnoth..."
 msgstr "Các anh làm tôi thất vọng, những con người Wesnoth..."
 
 #. [message]: speaker=Volas
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:269
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:353
 msgid "We have defeated the orcs! Now you can rest before your journey."
 msgstr ""
 "Chúng ta đã đánh bại bọn người thú! Giờ các anh có thể nghỉ ngơi trước cuộc "
 "hành trình."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:273
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:358
 msgid ""
 "We have not the time. This battle has wasted too much of it already. We must "
 "leave now."
@@ -1065,30 +990,30 @@ msgstr ""
 "Chúng tôi phải đi ngay."
 
 #. [message]: speaker=Volas
-#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:277
+#: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:363
 msgid "Very well. I will send guides to lead you north to your allies."
 msgstr ""
 "Thôi được. Tôi sẽ cử người dẫn đường để dẫn các anh về phía bắc đến gặp đồng "
 "minh của mình."
 
 #. [scenario]: id=04b_The_Undead_Border_Patrol
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:4
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:5
 msgid "The Undead Border Patrol"
 msgstr "Đội tuần tra biên giới ma quái"
 
 #. [side]: type=Lich, id=Mal-Telnarad
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:53
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:78
 msgid "Mal-Telnarad"
 msgstr "Mal-Telnarad"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:86
-#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:77
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:103
+#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:107
 msgid "Defeat either enemy leader"
 msgstr "Đánh bại một trong hai chỉ huy của kẻ thù"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:114
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:134
 msgid ""
 "Now that we are free of the mountain range the path northwards is clear. Let "
 "us go north and try to reach Owaec at the outpost."
@@ -1097,7 +1022,7 @@ msgstr ""
 "gì. Chúng ta hãy đi về phía bắc, và cố gắng gặp được Owaec ở tiền đồn."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:118
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:139
 msgid ""
 "Wait. I am not sure that is the best option. If we go east now, we may be "
 "able to find the lich who attacked us and destroy him. He must be nearby."
@@ -1107,7 +1032,7 @@ msgstr ""
 "hắn. Hắn phải ở gần đây."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:123
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:145
 msgid ""
 "This is no ordinary Lich you hunt. Even if you manage to find him, how will "
 "you prevent him from simply teleporting away? We should head north; there is "
@@ -1119,7 +1044,7 @@ msgstr ""
 "chúng ta chạm trán với mối đe dọa này."
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:127
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:150
 msgid ""
 "They run from me! Still, it will not help them, the border patrol will "
 "destroy them. I may even be promoted!"
@@ -1128,17 +1053,17 @@ msgstr ""
 "tiêu diệt chúng. Thậm chí ta còn có thể được thăng chức!"
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:138
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:162
 msgid "Now I will never get promoted!"
 msgstr "Giờ thì ta sẽ chẳng bao giờ được thăng chức!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:146
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:172
 msgid "Come, let us return to Wesnoth and head for the Northern Outpost."
 msgstr "Đi thôi, chúng ta hãy trở về Wesnoth và hướng đến tiền đồn phía bắc."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:164
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:193
 msgid ""
 "We have defeated this patrol, but we can still turn back! Do you insist on "
 "traveling east, or shall we defeat this dark sorcerer?"
@@ -1147,42 +1072,42 @@ msgstr ""
 "đi về phía đông sao, hay chúng ta đánh bại tên phù thủy bóng tối?"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:168
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:249
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:198
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:247
 msgid "Hmm..."
 msgstr "Hừm..."
 
-#. [option]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:170
+#. [option]
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:200
 msgid "I wish to destroy the evil before it can spread. East we go!"
 msgstr ""
 "Tôi muốn tiêu diệt cái ác trước khi nó có thể lan rộng. Đi về phía đông!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:174
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:204
 msgid "I cannot say this is a good decision, but I will follow you."
 msgstr ""
 "Tôi không thể nói đây là một quyết định đúng đắn, nhưng tôi sẽ theo cậu."
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:178
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:209
 msgid "Noo!! I can’t be promoted if they run away!"
 msgstr "Khôông!! Ta không thể thăng chức nếu chúng chạy đi!"
 
-#. [option]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:190
+#. [option]
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:223
 msgid "You are right. It is foolish to go onward — we will turn back."
 msgstr ""
 "Ngài nói đúng. Thật ngốc nghếch khi tiến về phía trước - chúng ta sẽ quay "
 "lại."
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:194
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:227
 msgid "Good! If I defeat them, I can become a lich!"
 msgstr "Tốt! Nếu ta đánh bại chúng, ta có thể trở thành một thây ma!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:210
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:244
 msgid ""
 "We failed to defeat either enemy! Now more undead will come and we will be "
 "overwhelmed!"
@@ -1191,7 +1116,7 @@ msgstr ""
 "chúng ta sẽ bị áp đảo!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:219
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:254
 msgid ""
 "We cannot spend any more time attempting to defeat Mal-Skraat. Like it or "
 "not, we must go further into these undead lands."
@@ -1201,7 +1126,7 @@ msgstr ""
 "quái."
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:223
+#: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:259
 msgid ""
 "Noo!! He will reach Mal-Ravanal’s capital, and I shall be punished for "
 "letting him escape!"
@@ -1210,37 +1135,37 @@ msgstr ""
 "để hắn trốn thoát!"
 
 #. [scenario]: id=04c_Mal-Ravanals_Capital
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:4
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:5
 msgid "Mal-Ravanal’s Capital"
 msgstr "Thủ phủ của Mal-Ravanal"
 
 #. [side]: type=Dark Sorcerer, id=Mal-Marak
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:44
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:52
 msgid "Mal-Marak"
 msgstr "Mal-Marak"
 
 #. [side]: type=Dark Sorcerer, id=Mal-Galkar
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:64
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:72
 msgid "Mal-Galkar"
 msgstr "Mal-Galkar"
 
 #. [side]: type=Death Knight, id=Ravanal-Guard
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:84
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:92
 msgid "Rava-Krodaz"
 msgstr "Rava-Krodaz"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:142
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:155
 msgid "Escape by defeating one of the dark sorcerers"
 msgstr "Trốn thoát bằng cách đánh bại một trong các phù thủy bóng tối"
 
 #. [unit]: type=Paladin, id=Terraent
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:209
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:227
 msgid "Terraent"
 msgstr "Terraent"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:239
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:265
 msgid ""
 "The Bitter Swamp’s ill reputation is, it seems, well merited. Mal-Ravanal’s "
 "capital lies before us!"
@@ -1249,7 +1174,7 @@ msgstr ""
 "Ravanal nằm trước chúng ta!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:244
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:270
 msgid ""
 "Yes, but look! The undead forces are closing in behind us. As I said before "
 "we cannot kill Mal-Ravanal. It was foolish to come this far; we must turn "
@@ -1260,7 +1185,7 @@ msgstr ""
 "đến mức này. Chúng ta phải quay lại."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:249
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:275
 msgid ""
 "Perhaps. To retreat, we must kill one of these dark sorcerers that follow "
 "us. But, perhaps we can kill this Mal-Ravanal. I might wish to try."
@@ -1270,13 +1195,13 @@ msgstr ""
 "Tôi muốn thử."
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:254
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:280
 msgid ""
 "These humans have dared foolishly to come this far into my land. Crush them!"
 msgstr "Bọn con người ngu ngốc dám đến tận vùng đất của ta. Hãy đè bẹp chúng!"
 
 #. [message]: speaker=$freed_prisoner.id
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:393
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:335
 msgid ""
 "Thank you for destroying that skeleton warrior! Every time you kill one of "
 "the Revenants, one of us knights is let free!"
@@ -1285,12 +1210,12 @@ msgstr ""
 "xương giữ mộ, một người trong số các hiệp sĩ chúng tôi được thả tự do!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:397
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:340
 msgid "Why? Are you the undead’s prisoners?"
 msgstr "Tại sao? Có phải các anh là tù nhân của lũ ma quái không?"
 
 #. [message]: speaker=$freed_prisoner.id
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:401
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:345
 msgid ""
 "Yes. My allies and I were questing when we were ambushed by undead. The "
 "guard is playing a sick game — whenever one of their warriors dies, one of "
@@ -1303,7 +1228,7 @@ msgstr ""
 "trong số chúng tôi."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:405
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:350
 msgid ""
 "This sounds dangerous. We will try to free as many of you as possible before "
 "we escape from here."
@@ -1312,7 +1237,7 @@ msgstr ""
 "anh càng tốt trước khi thoát khỏi đây."
 
 #. [message]: speaker=$freed_prisoner.id
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:409
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:355
 msgid ""
 "Five of my comrades are still imprisoned. We will gladly enter your service "
 "in appreciation for our freedom."
@@ -1321,7 +1246,7 @@ msgstr ""
 "đền ơn cho tự do của chúng tôi."
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:543
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:486
 msgid ""
 "Wait! I recognize that magic! Dacyn, have you come to surrender to me? Or "
 "perhaps you wish to finish the duel we started so long ago?"
@@ -1330,7 +1255,7 @@ msgstr ""
 "ngươi muốn kết thúc trận đấu tay đôi mà chúng ta đã bắt đầu cách đây lâu rồi?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:547
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:491
 msgid ""
 "If I have one regret, it is that mercy slowed my hand thirty three years "
 "ago. Stop this madness and I will release you from your torment."
@@ -1340,7 +1265,7 @@ msgstr ""
 "ngươi khỏi nỗi đau khổ."
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:551
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:496
 msgid ""
 "Torment?! You have no idea... but you soon will. Kill them all and bring "
 "Dacyn to me!"
@@ -1349,12 +1274,12 @@ msgstr ""
 "bọn chúng và đem Dacyn đến chỗ ta!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:555
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:501
 msgid "You know this lich?"
 msgstr "Ngài biết thây ma này sao?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:559
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:506
 msgid ""
 "Yes... We studied together many years ago. He was most powerful then, but "
 "the dark power I sense today is far greater. We must escape immediately!"
@@ -1364,27 +1289,27 @@ msgstr ""
 "Chúng ta phải trốn thoát ngay lập tức!"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:575
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:522
 msgid "Ah, so you’ve decided to fight me."
 msgstr "À, vậy là ngươi đã quyết định đánh lại ta."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:579
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:527
 msgid "I will atone for my failure thirty three years ago."
 msgstr "Ta sẽ chuộc lại thất bại của mình cách đây ba mươi ba năm."
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:592
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:540
 msgid "Enough! You cannot possibly defeat me!"
 msgstr "Đủ rồi! Ngươi không thể đánh bại ta đâu!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:606
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:555
 msgid "Is he... dead?"
 msgstr "Hắn... chết rồi sao?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:610
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:560
 msgid ""
 "Merely departed. He will return once he has recovered; we would best be away "
 "from here by then."
@@ -1393,7 +1318,7 @@ msgstr ""
 "nên tránh xa khỏi đây trước lúc đó."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:644
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:597
 msgid ""
 "Gweddry’s men retreated swiftly from the Bitter Swamp, fleeing north and "
 "west as if their heels were winged. Finding a low pass through the northern "
@@ -1406,76 +1331,58 @@ msgstr ""
 "thung lũng Weldyn mở ra trước mắt họ ở phía bên kia."
 
 #. [scenario]: id=05_Northern_Outpost
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:4
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:5
 msgid "Northern Outpost"
 msgstr "Tiền đồn phía bắc"
 
-#. [side]: type=Mounted Fighter, id=Owaec
-#. [unit]: id=Owaec, type=$stored_Owaec.type
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:38
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:602
-msgid "Owaec"
-msgstr "Owaec"
-
 #. [side]: type=Revenant, id=Lanar-Skal
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:61
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:72
 msgid "Lanar-Skal"
 msgstr "Lanar-Skal"
 
-#. [side]
-#. [side]: type=Dark Sorcerer, id=Mal-Arnai
-#. [side]: type=Orcish Warlord, id=Draka-Kura
-#. [side]: type=Orcish Warlord, id=Ran-Lar
-#. [side]: type=Orcish Warlord, id=Varrak-Klar
-#. [side]: type=Orcish Warlord, id=Wak-Rano
-#. [side]: type=Troll Warrior, id=Unhk
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:81
-#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:44
-#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:63
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:61
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:51
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:74
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:97
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:39
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:47
-msgid "Evil"
-msgstr "Kẻ xấu"
-
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:98
-msgid "Find the outlaw leader and defeat him"
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:110
+#, fuzzy
+#| msgid "Find the outlaw leader and defeat him"
+msgid "Find the outlaw leader"
 msgstr "Tìm tên cầm đầu những kẻ phạm pháp và đánh bại hắn"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:102
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:117
+#, fuzzy
+#| msgid "Shodrano"
+msgid "Kill Shodrano"
+msgstr "Shodrano"
+
+#. [objective]: condition=win
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:128
 msgid "Defeat the undead leader"
 msgstr "Đánh bại chỉ huy ma quái"
 
 #. [objective]: condition=lose
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:114
-#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:89
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:111
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:69
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:90
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:120
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:99
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:262
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1027
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:167
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:150
-#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:142
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:177
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:179
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:146
+#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:119
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:116
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:91
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:89
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:181
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:109
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1075
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:162
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:148
+#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:140
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:175
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:192
 msgid "Death of Owaec"
 msgstr "Owaec chết"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:140
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:193
 msgid "Hail, Gweddry!"
 msgstr "Chào, Gweddry!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:144
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:198
 msgid ""
 "Greetings, Owaec! We have been forced from our positions by undead invaders. "
 "They follow us even now."
@@ -1484,7 +1391,7 @@ msgstr ""
 "mình. Kể cả bây giờ bọn chúng cũng theo chúng tôi."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:148
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:203
 msgid ""
 "Indeed, they do. And do not think you will be able to defeat them. They are "
 "too powerful. We are heading for the Northlands, where I hope to find a "
@@ -1495,7 +1402,7 @@ msgstr ""
 "biện pháp ngăn chặn cuộc xâm lược này. Cậu sẽ tham gia cùng chúng tôi chứ?"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:152
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:208
 msgid ""
 "I cannot. My orders were to protect these villages. If I leave, the "
 "villagers will be at the mercy of a gang of bandits. I cannot find a way to "
@@ -1506,7 +1413,7 @@ msgstr ""
 "chúng. Bọn trộm cướp ẩn nấp trong làng cứ mỗi lần tôi điều động binh lính."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:156
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:213
 msgid ""
 "Hoping to protect these villages is foolish; all who stay here will die. "
 "However, if we can drive these bandits out, will you organize the villagers "
@@ -1519,7 +1426,7 @@ msgstr ""
 "lâu nữa, sẽ chẳng có nơi nào an toàn ở Wesnoth cả."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:160
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:218
 msgid ""
 "If the situation is as dire as you’ve described, I must... but we have no "
 "way to remove these bandits."
@@ -1528,7 +1435,7 @@ msgstr ""
 "không có cách nào trừ khử bọn cướp cả."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:164
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:223
 msgid ""
 "I think I may be able to help. Gweddry, I believe I can cast a spell that "
 "will reveal the bandits when our troops enter a village. However, this magic "
@@ -1539,7 +1446,7 @@ msgstr ""
 "của tôi đòi hỏi sự tập trung cao độ. Tôi sẽ không thể giúp cậu chiến đấu."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:168
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:228
 msgid ""
 "That sounds good; it is time to drive out some bandits. Dacyn, cast your "
 "spell!"
@@ -1547,7 +1454,7 @@ msgstr ""
 "Nghe có vẻ tốt đấy. Đã đến lúc đuổi bọn cướp đi rồi. Dacyn, ngài làm phép đi!"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:172
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:233
 msgid ""
 "I believe there is a leader behind these outlaws; kill him and we will face "
 "no further resistance. I will place my clansmen at your service."
@@ -1557,19 +1464,19 @@ msgstr ""
 "phục vụ anh cho các thành viên thị tộc của tôi."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:176
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:244
 msgid "You may now recruit horsemen!"
 msgstr "Bây giờ bạn có thể tuyển các kỵ sĩ!"
 
 #. [message]: speaker=Lanar-Skal
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:181
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:249
 msgid "Go, go far from here! But me and my kind will chase you, and kill you!"
 msgstr ""
 "Đi đi, đi xa khỏi đây! Nhưng ta và người của ta sẽ đuổi theo, để giết các "
 "ngươi!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:185
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:254
 msgid ""
 "It seems the undead have caught up with us! We will have to kill them too if "
 "we want the villagers to be safe. Well, I will begin casting the spell."
@@ -1577,18 +1484,13 @@ msgstr ""
 "Hình như lũ ma quái đã bắt kịp chúng ta! Chúng ta cũng phải giết chúng, nếu "
 "muốn dân làng được an toàn. Chuẩn bị, tôi bắt đầu làm phép."
 
-#. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:295
-msgid "They’re here!"
-msgstr "Chúng ở đây!"
-
 #. [unit]: type=Assassin, id=Shodrano
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:443
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:319
 msgid "Shodrano"
 msgstr "Shodrano"
 
 #. [message]: speaker=Shodrano
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:448
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:327
 msgid ""
 "So, you have found my hiding place. Very well, I guess I will have to kill "
 "you!"
@@ -1597,27 +1499,22 @@ msgstr ""
 "giết ngươi!"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:452
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:332
 msgid "That’s the bandit leader! Kill him!"
 msgstr "Đó là tên tướng cướp! Giết hắn!"
 
-#. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:492
-msgid "No outlaws in this village."
-msgstr "Không có kẻ phạm pháp nào trong ngôi làng này."
-
 #. [message]: speaker=Shodrano
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:503
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:346
 msgid "You have defeated me! I can terrorize the villagers no more..."
 msgstr "Ngươi đã đánh bại ta! Ta không thể khủng bố dân làng được nữa..."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:531
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:367
 msgid "We still need to defeat these undead for the villagers to be safe."
 msgstr "Chúng ta vẫn cần phải đánh bại lũ ma quái để dân làng được an toàn."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:562
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:393
 msgid ""
 "There are still these outlaws to take care of — we must continue fighting "
 "here."
@@ -1626,7 +1523,7 @@ msgstr ""
 "đây."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:582
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:415
 msgid ""
 "Well, both the outlaws and undead are defeated. We have some time to spare "
 "now before more undead arrive."
@@ -1635,7 +1532,7 @@ msgstr ""
 "thời gian trước khi lũ ma quái đến nhiều hơn."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:587
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:420
 msgid ""
 "Good! Now, we must move onward, north. Tell the villagers to pack their "
 "belongings and head west."
@@ -1643,28 +1540,52 @@ msgstr ""
 "Tốt! Giờ, chúng ta phải tiến về phía trước, phía bắc. Báo cho dân làng gói "
 "ghém đồ đạc và hướng về phía tây."
 
+#. [unit]: id=Owaec, type=$stored_Owaec.type
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:435
+#: data/campaigns/Eastern_Invasion/utils/character-definitions.cfg:40
+msgid "Owaec"
+msgstr "Owaec"
+
 #. [scenario]: id=06_Two_Paths
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:4
 msgid "Two Paths"
 msgstr "Hai con đường"
 
 #. [side]: type=Orcish Warlord, id=Wak-Rano
-#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:37
+#. [side]: type=Dark Sorcerer, id=Mal-Arnai
+#. [side]: type=Orcish Ruler, id=Draka-Kura
+#. [side]: type=Orcish Warlord, id=Varrak-Klar
+#. [side]: type=Troll Warrior, id=Unhk
+#. [side]: type=Orcish Warlord, id=Ran-Lar
+#. [side]
+#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:38
+#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:67
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:60
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:49
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:71
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:93
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:37
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:45
+msgid "Evil"
+msgstr "Kẻ xấu"
+
+#. [side]: type=Orcish Warlord, id=Wak-Rano
+#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:43
 msgid "Wak-Rano"
 msgstr "Wak-Rano"
 
 #. [side]: type=Dark Sorcerer, id=Mal-Arnai
-#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:53
+#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:72
 msgid "Mal-Arnai"
 msgstr "Mal-Arnai"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:112
+#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:145
 msgid "It looks like the road splits here. Which way shall we go?"
 msgstr "Hình như con đường phân chia ở đây. Chúng ta nên đi đường nào?"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:116
+#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:150
 msgid ""
 "We’re in the land of the Clans now; I know it well. The road north leads "
 "directly to the Great River; across it lies the orcs’ home country in the "
@@ -1680,7 +1601,7 @@ msgstr ""
 "không phải chiến đấu với bọn người thú ngay lập tức."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:120
+#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:155
 msgid ""
 "We should probably go north to the orcish lands as quickly as possible. The "
 "longer we tarry in Wesnoth, the more undead we will have to face."
@@ -1690,7 +1611,7 @@ msgstr ""
 "phải đối mặt càng nhiều."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:124
+#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:160
 msgid ""
 "The orcs are more powerful than you suspect. I doubt the few undead in "
 "Wesnoth can rival the might of the orcish homeland."
@@ -1699,7 +1620,7 @@ msgstr ""
 "thể địch với sức mạnh của xứ sở người thú."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:128
+#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:165
 msgid ""
 "Either way we will have to fight. Look, the orcs and undead block our path "
 "ahead!"
@@ -1708,7 +1629,7 @@ msgstr ""
 "chặn trước đường đi của chúng ta!"
 
 #. [message]: speaker=Mal-Arnai
-#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:132
+#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:170
 msgid ""
 "Well, orc, we can either continue this fight, or we can crush the humans and "
 "battle later. How shall it be?"
@@ -1717,7 +1638,7 @@ msgstr ""
 "con người và chiến đấu sau. Nên thế nào đây?"
 
 #. [message]: speaker=Wak-Rano
-#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:136
+#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:175
 msgid ""
 "Hmm... I know. We will make a pact to destroy these men, and continue our "
 "fight later. "
@@ -1726,27 +1647,27 @@ msgstr ""
 "và tiếp tục trận đấu của chúng ta sau."
 
 #. [message]: speaker=Wak-Rano
-#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:136
+#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:175
 msgid "Perhaps he will die, and I will win our battle without fighting."
 msgstr "Có lẽ hắn sẽ chết, và ta sẽ thắng mà không cần chiến đấu."
 
 #. [message]: speaker=Mal-Arnai
-#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:140
+#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:180
 msgid "This foolish orc will surely perish."
 msgstr "Tên người thú ngu ngốc chắc chắn sẽ bỏ mạng."
 
 #. [message]: speaker=Mal-Arnai
-#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:140
+#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:180
 msgid "Very well, we are allies, for now. "
 msgstr "Tốt lắm, giờ chúng ta là đồng minh."
 
 #. [message]: speaker=Wak-Rano
-#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:151
+#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:192
 msgid "Arrgh! I have failed to defend the northern homeland!"
 msgstr "Aaa! Ta đã không thể bảo vệ quê hương phương bắc!"
 
 #. [message]: speaker=Mal-Arnai
-#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:172
+#: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:213
 msgid "I was supposed to kill you all! I have failed."
 msgstr "Ta cứ nghĩ có thể giết tất cả các ngươi! Ta đã thất bại."
 
@@ -1755,30 +1676,28 @@ msgstr "Ta cứ nghĩ có thể giết tất cả các ngươi! Ta đã thất b
 msgid "The Crossing"
 msgstr "Vượt sông"
 
-#. [side]: type=Revenant, id=Garnad
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:35
+#. [side]: type=Bone Knight, id=Garnad
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:32
 msgid "Garnad"
 msgstr "Garnad"
 
-#. [side]: type=Orcish Warlord, id=Draka-Kura
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:55
+#. [side]: type=Orcish Ruler, id=Draka-Kura
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:54
 msgid "Draka-Kura"
 msgstr "Draka-Kura"
 
 #. [side]: type=Ogre, id=Grug
-#. [unit]: type=Ogre, id=Grug
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:69
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:317
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:75
 msgid "Grug"
 msgstr "Grug"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:99
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:104
 msgid "Move Gweddry and Owaec across the river"
 msgstr "Di chuyển Gweddry và Owaec qua dòng sông"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:134
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:145
 msgid ""
 "We have come to the Great River. Should we cross here, or try to find a ford?"
 msgstr ""
@@ -1786,18 +1705,23 @@ msgstr ""
 "khúc cạn?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:138
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:149
+#, fuzzy
+#| msgid ""
+#| "We must cross here. The undead are chasing us, and their hordes are much "
+#| "too great for us to defeat. Reinforcements for the undead will arrive "
+#| "soon. We must be across the river before that happens."
 msgid ""
 "We must cross here. The undead are chasing us, and their hordes are much too "
-"great for us to defeat. Reinforcements for the undead will arrive soon. We "
-"must be across the river before that happens."
+"great for us to defeat. We've haven't faced even a small part of their force "
+"yet. We need to cross the river before the bulk of their army arrives!"
 msgstr ""
 "Chúng ta phải băng qua đây. Lũ ma quái đang đuổi theo chúng ta, đạo quân của "
 "chúng quá lớn để chúng ta có thể đánh bại. Viện binh cho lũ ma quái sẽ sớm "
 "đến đây. Chúng ta phải băng qua sông trước khi điều đó xảy ra."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:142
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:153
 msgid ""
 "Across this river lies the Northlands. If we can get there, we may be able "
 "to get some ogres to help us — but the orcs will definitely attack us before "
@@ -1808,14 +1732,14 @@ msgstr ""
 "chắc chắn sẽ tấn công chúng ta trước khi điều đó xảy ra."
 
 #. [message]: speaker=Grug
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:146
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:157
 msgid "Grug say we no help you! We finish must battle orc with!"
 msgstr ""
 "Grug nói bọn ta giúp không các ngươi! Bọn ta hoàn thành phải trận chiến "
 "người thú với!"
 
 #. [message]: speaker=Draka-Kura
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:150
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:161
 msgid ""
 "Was that comprehensible to anyone? Silence, foolish ogre. I will deal with "
 "you later. Right now there are men trying to cross this river."
@@ -1824,12 +1748,12 @@ msgstr ""
 "Ngay bây giờ đang có kẻ đang tìm cách băng qua dòng sông này."
 
 #. [message]: speaker=Grug
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:154
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:165
 msgid "Orc foolish! Die you now!"
 msgstr "Đồ người thú ngu ngốc! Chết ngươi giờ!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:158
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:169
 msgid ""
 "If we show ourselves as enemies of the orcs, they may aid us. But first we "
 "need to cross the river."
@@ -1837,24 +1761,41 @@ msgstr ""
 "Nếu chúng ta thể hiện mình là kẻ thù của bọn người thú, chúng có thể giúp "
 "chúng ta. Nhưng trước hết chúng ta cần băng qua sông."
 
+#. [message]: speaker=Garnad
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:204
+msgid "We have you now, mortals!"
+msgstr ""
+
+#. [message]: speaker=Dacyn
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:208
+msgid "They're closing in on us! We must get moving quickly."
+msgstr ""
+
 #. [unit]: type=Lich, id=Mal-Hakralan
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:190
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:223
 msgid "Mal-Hakralan"
 msgstr "Mal-Hakralan"
 
+#. [message]: speaker=Mal-Hakralan
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:241
+msgid ""
+"I see, this is where the scared dogs ran to. Don't think you can get away "
+"<b>this</b> easily."
+msgstr ""
+
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:199
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:245
 msgid ""
 "The undead reinforcements have arrived! We must cross the river immediately!"
 msgstr "Viện binh ma quái đã đến! Chúng ta phải băng qua sông ngay lập tức!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:245
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:292
 msgid "Hurry up. We must get across before these undead slaughter us!"
 msgstr "Mau lên. Chúng ta phải băng qua trước khi lũ ma quái tàn sát chúng ta!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:292
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:339
 msgid ""
 "Good! We have crossed. Now let’s see if we can get the ogres to join us. "
 "They have been convinced to work for the Crown in the past; maybe it can be "
@@ -1865,17 +1806,17 @@ msgstr ""
 "triều đình trong quá khứ. Điều đó có thể được thực hiện lần nữa."
 
 #. [message]: speaker=Grug
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:301
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:348
 msgid "Grug say join you will he."
 msgstr "Grug nói cùng các ngươi tham gia sẽ anh ta."
 
 #. [unit]: type=Ogre
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:333
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:367
 msgid "Gork"
 msgstr "Gork"
 
 #. [unit]: type=Ogre
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:340
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:374
 msgid "Drog"
 msgstr "Drog"
 
@@ -1885,17 +1826,17 @@ msgid "Undead Crossing"
 msgstr "Vượt sông ma quái"
 
 #. [side]: type=Necromancer, id=Mal-un-Karad
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:34
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:37
 msgid "Mal-un-Karad"
 msgstr "Mal-un-Karad"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:57
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:79
 msgid "Defeat the enemy leader"
 msgstr "Đánh bại chỉ huy của kẻ thù"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:92
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:114
 msgid ""
 "These fens look impassable. I don’t think we will be able to continue on "
 "this road; it is time to turn northwards, away from these undead."
@@ -1905,7 +1846,7 @@ msgstr ""
 "quái."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:96
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:118
 msgid ""
 "We must cross this river, then. We must make haste, already we have wasted "
 "too much time. Undead have positioned themselves in the middle of the ford."
@@ -1915,7 +1856,7 @@ msgstr ""
 "giữa khúc cạn."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:100
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:122
 msgid ""
 "Across this river lies the Northland. Ogres live there, as do orcs. We "
 "should proceed with caution. The undead are dangerous, but the orcs may be "
@@ -1926,7 +1867,7 @@ msgstr ""
 "thú có thể còn nguy hiểm hơn."
 
 #. [message]: speaker=Mal-un-Karad
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:104
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:126
 msgid ""
 "I will leave your bodies to rot in the river, then I will raise you up to "
 "serve in my Master’s undead hordes!"
@@ -1935,12 +1876,12 @@ msgstr ""
 "ngươi dậy để phục vụ trong đạo quân ma quái của chủ nhân ta!"
 
 #. [message]: speaker=Mal-un-Karad
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:121
-msgid "I summon from the depths of the river beasts to destroy you!"
-msgstr "Ta triệu gọi quái vật từ dưới đáy sông để tiêu diệt các ngươi!"
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:135
+msgid "Creatures from the deep, I summon thee to destroy this foe!"
+msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:152
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:220
 msgid ""
 "It seems as if in addition to summoning undead this foul sorcerer has "
 "learned to call up monsters from the deep!"
@@ -1948,28 +1889,50 @@ msgstr ""
 "Hình như ngoài khả năng triệu tập ma quái, tên phù thủy bẩn thỉu này còn học "
 "được cách kêu gọi quái vật từ đáy sông!"
 
+#. [message]: speaker=unit
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:261
+msgid "I failed my Master..."
+msgstr ""
+
+#. [message]
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:280
+msgid "<i>HISS!</i>"
+msgstr ""
+
+#. [message]: speaker=Owaec
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:290
+msgid "The sea creatures are gone!"
+msgstr ""
+
+#. [message]: speaker=Dacyn
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:299
+msgid ""
+"We have no time to lose! Let's get moving quickly before the rest of their "
+"army catches up with us."
+msgstr ""
+
 #. [scenario]: id=08_Training_the_Ogres
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:4
 msgid "Capturing the Ogres"
 msgstr "Bắt quỷ khổng lồ"
 
 #. [side]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:42
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:41
 msgid "Ogres"
 msgstr "Quỷ khổng lồ"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:77
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:76
 msgid "(captured ogres will be made available for recall)"
 msgstr "(quỷ khổng lồ bị bắt sẽ có thể gọi lại được)"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:77
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:76
 msgid "Capture as many ogres as you can"
 msgstr "Bắt càng nhiều quỷ khổng lồ càng tốt"
 
 #. [note]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:95
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:94
 msgid ""
 "An ogre is captured when it starts a turn being unable to move more than one "
 "hex."
@@ -1978,12 +1941,12 @@ msgstr ""
 "nhiều hơn một ô lục giác."
 
 #. [note]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:98
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:97
 msgid "If an ogre reaches the edge of the map, it will escape."
 msgstr "Nếu một con quỷ khổng lồ đến được rìa bản đồ, nó sẽ trốn thoát."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:121
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:120
 msgid ""
 "Look, this valley is inhabited by a tribe of ogres. We should try to capture "
 "some to train."
@@ -1992,12 +1955,12 @@ msgstr ""
 "nên thử bắt vài con để huấn luyện."
 
 #. [message]: race=ogre
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:125
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:124
 msgid "Humans are coming! Run!"
 msgstr "Con người đang đến! Chạy mau!"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:129
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:128
 msgid ""
 "Looks like they are fleeing. I think they will surrender easily if we can "
 "surround them."
@@ -2006,68 +1969,68 @@ msgstr ""
 "ta có thể bao vây chúng."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:133
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:132
 msgid "All right, we have to capture them one by one."
 msgstr "Được rồi, chúng ta phải bắt chúng từng con một."
 
 #. [value]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:152
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:151
 msgid "Waah! Run!"
 msgstr "Á! Chạy mau!"
 
 #. [value]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:156
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:155
 msgid "Run for your lives!"
 msgstr "Mau chạy thoát thân!"
 
 #. [value]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:160
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:159
 msgid "Help!"
 msgstr "Cứu!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:204
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:203
 msgid "We have let one escape. Let’s hope they don’t all!"
 msgstr "Chúng ta đã để một con trốn thoát. Hy vọng chúng không chạy hết!"
 
 #. [value]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:255
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:256
 msgid "$ogre_name surrender!"
 msgstr "$ogre_name đầu hàng!"
 
 #. [value]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:259
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:260
 msgid "Don't hurt $ogre_name|!"
 msgstr "Đừng làm hại $ogre_name|!"
 
 #. [value]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:263
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:264
 msgid "$ogre_name will be good! Promise!"
 msgstr "$ogre_name sẽ tốt! Xin hứa!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:350
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:352
 msgid "We failed to capture any of them!"
 msgstr "Chúng ta đã không thể bắt được con nào!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:359
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:361
 msgid "We only captured one ogre."
 msgstr "Chúng ta chỉ bắt được một con quỷ khổng lồ."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:368
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:370
 msgid "We failed to capture more than two of the ogres."
 msgstr "Chúng ta đã không thể bắt được nhiều hơn hai con quỷ khổng lồ."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:377
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:379
 msgid "We captured three ogres! I hope they will prove useful."
 msgstr ""
 "Chúng ta đã bắt được ba con quỷ khổng lồ! Tôi hy vọng chúng sẽ tỏ ra hữu ích."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:384
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:386
 msgid ""
 "We managed to capture many ogres! They will make a good addition to our "
 "troops."
@@ -2085,23 +2048,38 @@ msgstr "Bài ngoại"
 msgid "Pelathsil"
 msgstr "Pelathsil"
 
-#. [side]: type=Orcish Warlord, id=Prok-Bak
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:56
-msgid "Prok-Bak"
-msgstr "Prok-Bak"
+#. [side]: type=Dwarvish Lord, id=Pelathsil
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:43
+msgid "Dwarves"
+msgstr ""
 
-#. [side]: type=Elvish Marshal, id=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:77
+#. [side]: type=Orcish Nightblade, id=Bagork
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:75
+msgid "Bagork"
+msgstr ""
+
+#. [side]: type=Elvish Avenger, id=Elandin
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:97
 msgid "Elandin"
 msgstr "Elandin"
 
+#. [side]: type=Elvish Avenger, id=Elandin
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:102
+msgid "Elves"
+msgstr ""
+
+#. [side]: type=Orcish Warlord, id=Prok-Bak
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:129
+msgid "Prok-Bak"
+msgstr "Prok-Bak"
+
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:108
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:169
 msgid "Defeat all enemy leaders"
 msgstr "Đánh bại tất cả các chỉ huy của kẻ thù"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:149
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:210
 msgid ""
 "Hail, dwarves! Will you help us get by these foul orcs? We are headed "
 "farther north."
@@ -2110,17 +2088,17 @@ msgstr ""
 "này chứ? Chúng tôi cần đi xa hơn về phía bắc."
 
 #. [message]: speaker=Prok-Bak
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:153
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:214
 msgid "You human! Call us foul, will you?!"
 msgstr "Ngươi, con người! Dám gọi bọn ta là hôi thối à?!"
 
 #. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:157
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:218
 msgid "Why should we help you? You’re not a dwarf!"
 msgstr "Tại sao bọn ta phải giúp ngươi? Ngươi không phải là một người lùn!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:161
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:222
 msgid ""
 "Your people helped us in the past, in the tunnels in the south. Will you not "
 "help us now?"
@@ -2129,39 +2107,39 @@ msgstr ""
 "phía nam. Tại sao giờ các anh lại không giúp chúng tôi?"
 
 #. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:165
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:226
 msgid "Impossible! I canna’ believe any of my kin would ha’ helped a human!"
 msgstr ""
 "Không thể! Ta không tin có bất kì người lùn nào lại giúp một con người!"
 
 #. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:169
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:230
 msgid "Indeed. Why should any of us help those not of our people?"
 msgstr ""
 "Đúng thế. Tại sao bất cứ ai trong số chúng ta lại phải giúp những người "
 "không phải là người của mình?"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:173
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:234
 msgid "Will you but let us pass, so that we may fight the orcs on our own?"
 msgstr ""
 "Vậy các anh sẽ cho chúng tôi đi qua, để chúng tôi có thể tự chiến đấu với "
 "bọn người thú chứ?"
 
 #. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:177
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:238
 msgid "I am afraid that is... impossible."
 msgstr "Ta e điều đó là... không thể."
 
-#. [message]: speaker=Prok-Bak
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:182
+#. [message]: speaker=Bagork
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:243
 msgid "Orcs, kill’em all! Humans, elves or dwarves, it don’t matter!"
 msgstr ""
 "Người thú, giết hết bọn chúng! Con người, thần tiên hay người lùn, điều đó "
 "chẳng quan trọng!"
 
 #. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:186
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:247
 msgid ""
 "These orcs will die. But so will you, human. You have trespassed on elvish "
 "land."
@@ -2170,14 +2148,14 @@ msgstr ""
 "xâm phạm vùng đất của thần tiên."
 
 #. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:190
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:251
 msgid "Oh, elvish land is it now? Die, ye elf-dog! And you too, human!"
 msgstr ""
 "Ồ, đây mà là vùng đất của thần tiên ư? Chết đi, đồ chó-thần tiên! Và cả con "
 "người các ngươi nữa!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:194
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:255
 msgid ""
 "These people won’t listen to reason, they are all blinded by their beliefs "
 "in their own supposed superiority. We probably will have to fight them, "
@@ -2188,7 +2166,7 @@ msgstr ""
 "với họ, mặc dù chúng ta có thể để họ đánh nhau trước."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:198
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:259
 msgid ""
 "True. As much as I dislike killing anything but orcs and undead, it seems we "
 "will have to kill these elves, and these dwarves, before they do the same to "
@@ -2198,44 +2176,49 @@ msgstr ""
 "nhưng có vẻ như chúng ta sẽ phải giết cả thần tiên lẫn người lùn, trước khi "
 "họ làm điều tương tự với chúng ta."
 
-#. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:209
-msgid "Argh! I’m dead! Well, dwarves are still the best!"
-msgstr "Á! Chết ta rồi! Nhưng, người lùn vẫn là giỏi nhất!"
+#. [message]: speaker=Bagork
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:270
+msgid "I will kill all of you!"
+msgstr ""
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:285
+msgid "Not very likely."
+msgstr ""
 
 #. [message]: speaker=Prok-Bak
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:224
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:296
 msgid "I die? Orcs rule all!"
 msgstr "Ta chết sao? Người thú thống trị tất cả!"
 
 #. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:242
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:314
 msgid "It seems these humans are more powerful than I thought. Ugh."
 msgstr "Có vẻ như bọn con người này mạnh hơn ta nghĩ. Ặc."
 
 #. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:260
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:328
 msgid "Cursed dwarves! Perhaps we should have allied with the humans..."
 msgstr ""
 "Lũ người lùn đáng nguyền rủa! Lẽ ra bọn ta nên liên minh với con người..."
 
 #. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:274
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:342
 msgid "Foul orcs! Perhaps we should have allied with the humans..."
 msgstr "Lũ người thú bẩn thỉu! Lẽ ra bọn ta nên liên minh với con người..."
 
 #. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:288
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:356
 msgid "It seems yon humans are mightier than I kenned..."
 msgstr "Có vẻ như bọn con người các ngươi mạnh hơn ta nghĩ..."
 
 #. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:302
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:370
 msgid "Foul orcs! Perhaps we should ha’ allied wi’ the humans..."
 msgstr "Lũ người thú bẩn thỉu! Lẽ ra bọn ta nên liên minh với con người..."
 
 #. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:316
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:384
 msgid "Cursed elves! Perhaps we should have allied wi’ the humans..."
 msgstr ""
 "Lũ thần tiên đáng nguyền rủa! Lẽ ra bọn ta nên liên minh với con người..."
@@ -2245,29 +2228,43 @@ msgstr ""
 msgid "Lake Vrug"
 msgstr "Hồ Vrug"
 
+#. [side]: type=Lieutenant, id=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:26
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:28
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:27
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:20
+#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:20
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:45
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:37
+#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:20
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:27
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:31
+#: data/campaigns/Eastern_Invasion/utils/character-definitions.cfg:6
+msgid "Gweddry"
+msgstr "Gweddry"
+
 #. [side]: type=Troll Warrior, id=Darg
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:42
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:40
 msgid "Darg"
 msgstr "Darg"
 
 #. [side]: type=Gryphon, id=Kraagak
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:58
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:56
 msgid "Kraagak"
 msgstr "Kraagak"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:83
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:254
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:81
 msgid "Defeat the enemy leaders"
 msgstr "Đánh bại các chỉ huy của kẻ thù"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:87
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:91
 msgid "Move Dacyn to the stronghold"
 msgstr "Di chuyển Dacyn đến thành trì"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:138
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:148
 msgid ""
 "The trail stops soon. We have almost reached Lake Vrug. There is a small "
 "island off the coast ahead that was once home to a great school of magic. I "
@@ -2278,12 +2275,12 @@ msgstr ""
 "mong thư viện vẫn còn nguyên vẹn."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:142
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:152
 msgid "But what happened to the people living on it?"
 msgstr "Nhưng điều gì đã xảy ra với người dân sống trên đó?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:146
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:156
 msgid ""
 "Few enough remained before the trolls and gryphons took up residence in the "
 "mountains. But now the school is deserted, and has been for decades."
@@ -2292,7 +2289,7 @@ msgstr ""
 "cư trú ở vùng núi. Nhưng giờ trường học bị bỏ hoang, đã hàng thập kỷ."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:150
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:160
 msgid ""
 "Very well, we will take care of the trolls and gryphons. Search the library "
 "and may you find us an answer. Onward!"
@@ -2301,7 +2298,7 @@ msgstr ""
 "viện, ngài có thể tìm thấy câu trả lời cho chúng ta. Lên đường!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:179
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:189
 msgid ""
 "The island ahead is mountainous; it would be wise to select troops that do "
 "well on such terrain."
@@ -2310,12 +2307,12 @@ msgstr ""
 "đấu tốt trên địa hình như thế."
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:194
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:213
 msgid "This must be the academy Dacyn mentioned."
 msgstr "Đây chắc hẳn phải là học viện mà Dacyn đã đề cập đến."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:198
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:217
 msgid ""
 "It still looks quite defensible. We should be able to hold there while Dacyn "
 "is working."
@@ -2324,7 +2321,7 @@ msgstr ""
 "Dacyn làm việc."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:202
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:221
 msgid ""
 "Very well. Let us rally there after the trolls and gryphons are defeated."
 msgstr ""
@@ -2332,33 +2329,38 @@ msgstr ""
 "chim."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:218
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:237
 msgid "You find 100 gold in the fortress!"
 msgstr "Bạn tìm thấy 100 lượng vàng trong pháo đài!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:234
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:254
 msgid "Excellent; I’ll start my research."
 msgstr "Tuyệt vời. Tôi sẽ bắt đầu nghiên cứu."
 
+#. [message]: speaker=narrator
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:284
+msgid "Some time later..."
+msgstr ""
+
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:280
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:305
 msgid "Alright, now we should be safe while Dacyn is researching."
 msgstr "Được rồi, giờ chúng ta sẽ an toàn trong lúc Dacyn đang nghiên cứu."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:332
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:356
 msgid "I have found an answer! We must return to Wesnoth immediately! ..."
 msgstr ""
 "Tôi đã tìm thấy câu trả lời! Chúng ta phải trở về Wesnoth ngay lập tức! ..."
 
 #. [unit]: type=Troll Warrior, id=Groog
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:343
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:367
 msgid "Groog"
 msgstr "Groog"
 
 #. [message]: speaker=Groog
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:375
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:399
 msgid "Be not going too fast. You gonna come wid us."
 msgstr "Đừng đi nhanh thế. Các ngươi đi cùng bọn ta."
 
@@ -2368,7 +2370,7 @@ msgid "Captured"
 msgstr "Bị bắt"
 
 #. [part]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:20
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:18
 msgid ""
 "After reaching what they believed was safety, Gweddry and his men had been "
 "captured by northern orcs."
@@ -2377,7 +2379,7 @@ msgstr ""
 "người thú phương bắc bắt giữ."
 
 #. [part]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:23
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:21
 msgid ""
 "Gweddry, Dacyn and Owaec were promptly taken before the orcish king, Dra-"
 "Nak, while the rest were thrown into the orcish prisons to await their "
@@ -2388,22 +2390,17 @@ msgstr ""
 "thú để chờ đến lượt..."
 
 #. [side]: type=Orcish Warlord, id=King Dra-Nak
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:44
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:42
 msgid "King Dra-Nak"
 msgstr "Vua Dra-Nak"
 
-#. [side]: type=Orcish Warlord, id=King Dra-Nak
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:74
-msgid "Orcs"
-msgstr "Người thú"
-
 #. [side]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:83
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:80
 msgid "Prisoners"
 msgstr "Tù nhân"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:372
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:415
 msgid ""
 "Several of Gweddry's men find themselves locked away in a crude orcish cell."
 msgstr ""
@@ -2411,29 +2408,29 @@ msgstr ""
 "của bọn người thú."
 
 #. [message]: role=escapee sidekick 1
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:378
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:421
 msgid "We've got to get out of here!"
 msgstr "Chúng ta cần ra khỏi đây!"
 
 #. [message]: role=escapee sidekick 2
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:383
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:426
 msgid "I'm sure the commander will come and save us!"
 msgstr "Tôi chắc chắn chỉ huy sẽ đến và cứu chúng ta!"
 
 #. [message]: role=escapee sidekick 1
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:388
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:431
 msgid "What? Didn't you see those huge trolls drag them away? It's hopeless!"
 msgstr ""
 "Cái gì? Anh không thấy những con quỷ núi khổng lồ đó lôi họ đi sao? Hết hy "
 "vọng rồi!"
 
 #. [message]: role=escapee leader
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:393
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:436
 msgid "Be quiet, you two! There's something back here..."
 msgstr "Yên nào, hai người! Có thứ gì đó ở đây..."
 
 #. [message]: role=escapee leader
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:400
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:443
 msgid ""
 "Look! There's a gap in the wall over here. I think I can slip through if I "
 "clear away some of these rocks..."
@@ -2442,62 +2439,62 @@ msgstr ""
 "nếu dọn dẹp một số tảng đá..."
 
 #. [message]: role=escapee leader
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:436
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:479
 msgid "Come on! This way!"
 msgstr "Đi thôi! Lối này!"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:444
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:487
 msgid "Find Gweddry, Dacyn and Owaec"
 msgstr "Tìm Gweddry, Dacyn và Owaec"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:448
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:491
 msgid "Release the other prisoners"
 msgstr "Giải thoát các tù nhân khác"
 
 #. [objective]: condition=lose
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:452
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:495
 msgid "Death of the escapees"
 msgstr "Những người trốn thoát chết"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:469
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:512
 msgid "The door won't open from this side."
 msgstr "Cửa sẽ không mở từ bên này."
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:487
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:530
 msgid "There's strange noises coming from those pits. I don't like this."
 msgstr ""
 "Có tiếng động kỳ lạ phát ra từ những cái hố đó. Tôi không thích điều này."
 
-#. [message]: side,race=2,bat
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:498
+#. [message]
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:541
 msgid "Neep! Neep!"
 msgstr "Chít! Chít!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:529
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:572
 msgid "Ack! Get away from me!"
 msgstr "Á! Tránh xa ta ra!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:544
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:587
 msgid "This tunnel seems to go deeper into the caves. We can't go that way."
 msgstr ""
 "Đường hầm này có vẻ đi xa hơn vào trong hang động. Chúng ta không thể đi "
 "đường đó."
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:569
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:602
 msgid "There's a pile of orcish gear and trash here. The stench is wretched."
 msgstr ""
 "Có một đống đồ đạc và rác rưởi của bọn người thú ở đây. Mùi hôi thối thật là "
 "kinh khủng."
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:595
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:628
 msgid ""
 "The other prison cells should be to the north of that chamber. If we can get "
 "past those trolls we could free our comrades."
@@ -2507,39 +2504,39 @@ msgstr ""
 "chúng ta."
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:603
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:636
 msgid "But there's too many of them!"
 msgstr "Nhưng chúng quá đông!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:608
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:641
 msgid "Hmm... I have an idea."
 msgstr "Hừm... tôi có một ý tưởng."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:623
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:656
 msgid "After a while..."
 msgstr "Sau chốc lát..."
 
 #. [message]: id=$unit.id
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:654
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:687
 msgid "So, how do I look?"
 msgstr "Trông tôi thế nào?"
 
 #. [message]: id=$unit.id
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:659
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:692
 msgid "I'll try to slip past the trolls. You wait here."
 msgstr "Tôi sẽ thử trượt qua bọn quỷ khổng lồ. Các anh chờ ở đây."
 
 #. [message]: speaker=King Dra-Nak
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:696
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:729
 msgid "Ha-ha! These humans will make excellent slaves in my mines!"
 msgstr ""
 "Ha ha! Bọn con người này sẽ trở thành những nô lệ tuyệt vời trong các hầm mỏ "
 "của ta!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:701
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:734
 msgid ""
 "Opening the cells should confuse the guards for a moment. But I better not "
 "get too close to them..."
@@ -2548,57 +2545,57 @@ msgstr ""
 "là tôi không nên đến quá gần chúng..."
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:769
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:802
 msgid "Eh?"
 msgstr "Ơ?"
 
 #. [message]: speaker=King Dra-Nak
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:781
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:814
 msgid "Hey! Who are you? Get her!"
 msgstr "Này? Ngươi là ai? Tóm lấy ả!"
 
 #. [message]: speaker=King Dra-Nak
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:788
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:821
 msgid "Hey! Who are you? Get him!"
 msgstr "Này! Ngươi là ai? Tóm lấy hắn!"
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:795
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:828
 msgid "Uh oh!"
 msgstr "Úi trời!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:826
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:859
 msgid "Here's one of the prison cells! Let me open it..."
 msgstr "Đây là một trong số các hầm ngục! Để tôi mở nó..."
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:885
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:918
 msgid "Finally, we're rescued!"
 msgstr "Cuối cùng, chúng ta cũng được cứu!"
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:907
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:940
 msgid "At last!"
 msgstr "Cuối cùng!"
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:929
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:962
 msgid "Now let's get out of here!"
 msgstr "Giờ hãy ra khỏi đây!"
 
 #. [message]: speaker=King Dra-Nak
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:942
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:975
 msgid "What? Who's there? Get them!"
 msgstr "Cái gì? Ai đó? Bắt lấy chúng!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:980
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1013
 msgid "The guards are distracted! Now is the time to escape!"
 msgstr "Bọn lính gác đang bị đánh lạc hướng! Giờ là lúc để trốn thoát!"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:985
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1018
 msgid ""
 "The eastern entrance is teeming with orcs. We have to find another way to "
 "exit to the west!"
@@ -2607,7 +2604,7 @@ msgstr ""
 "thoát về phía tây!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:990
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1030
 msgid ""
 "We have to get our gold back first! It must have been taken to their "
 "treasury."
@@ -2616,22 +2613,22 @@ msgstr ""
 "chúng."
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1002
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1044
 msgid "Gweddry reaches the western exit"
 msgstr "Gweddry đến được lối ra phía tây"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1006
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1048
 msgid "Retrieve the stolen gold"
 msgstr "Lấy lại vàng bị đánh cắp"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1010
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1058
 msgid "Release the remaining prisoners"
 msgstr "Giải thoát những tù nhân còn lại"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1097
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1145
 msgid ""
 "They have reinforcements pouring in from the eastern entrance! We have to "
 "get out of here quickly!"
@@ -2640,27 +2637,27 @@ msgstr ""
 "chóng ra khỏi đây!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1143
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1201
 msgid "All the gold the orcs took is in this chest!"
 msgstr "Toàn bộ vàng bọn người thú lấy ở trong chiếc hòm này!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1154
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1212
 msgid "You've regained $stored_player_gold gold!"
 msgstr "Bạn đã giành lại được $stored_player_gold vàng!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1208
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1245
 msgid "Phew! I made it."
 msgstr "Phù! Mình đã làm được."
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1216
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1253
 msgid "Where are you going?! Come back!"
 msgstr "Đi đâu thế?! Quay lại!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1235
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1272
 msgid "Good! We have escaped these accursed caves!"
 msgstr "Tốt! Chúng ta đã thoát khỏi những cái hang đáng nguyền rủa đó!"
 
@@ -2670,7 +2667,7 @@ msgid "Evacuation"
 msgstr "Di tản"
 
 #. [part]
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:19
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:17
 msgid ""
 "Gweddry and his men had escaped from the orcish prisons, but after returning "
 "to the daylight they soon found themselves surrounded by a host of orcs."
@@ -2680,41 +2677,45 @@ msgstr ""
 "đạo quân người thú bao vây."
 
 #. [side]: type=Orcish Warlord, id=Varrak-Klar
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:42
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:40
 msgid "Varrak-Klar"
 msgstr "Varrak-Klar"
 
 #. [side]: type=Troll Warrior, id=Unhk
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:66
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:63
 msgid "Unhk"
 msgstr "Unhk"
 
 #. [side]: type=Orcish Warlord, id=Ran-Lar
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:88
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:84
 msgid "Ran-Lar"
 msgstr "Ran-Lar"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:155
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:150
 msgid "Destroy the bridge OR defeat all enemies"
 msgstr "Phá hủy cây cầu HOẶC đánh bại tất cả các kẻ thù"
 
-#. [objectives]
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:178
+#. [note]
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:174
+#, fuzzy
+#| msgid ""
+#| "Note: every unit not south of the bridge when it is destroyed will be "
+#| "lost (including non-recalled units)"
 msgid ""
-"Note: every unit not south of the bridge when it is destroyed will be lost "
+"Every unit not south of the bridge when it is destroyed will be lost "
 "(including non-recalled units)"
 msgstr ""
 "Chú ý: mọi đơn vị không ở phía nam của cây cầu khi nó bị phá hủy sẽ bị mất "
 "(bao gồm cả các đơn vị không được gọi lại)"
 
 #. [unit]: id=Engineer, type=Red Mage
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:187
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:184
 msgid "Engineer"
 msgstr "Kỹ sư"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:199
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:197
 msgid ""
 "We have to get out of the Northlands as quickly as possible! Run for your — "
 "what the...?! Who are you?"
@@ -2724,7 +2725,7 @@ msgstr ""
 
 #. [message]: speaker=Engineer
 #. This is thickly accented English
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:204
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:202
 msgid ""
 "I’m an enginea’. I s’pect you’ll have a need of me services. I bet you’re "
 "gonna want me to blow up that bridge ov’r theah."
@@ -2733,12 +2734,12 @@ msgstr ""
 "tôi cho nổ tung kây kầu đằng kia."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:208
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:206
 msgid "Why would we want to do that?!"
 msgstr "Tại sao chúng tôi lại muốn làm điều đó?!"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:212
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:210
 msgid ""
 "Well, I see those orcs are chasin’ you, and if I blow up the bridge, they "
 "can’t get across. It’ll help you to escape."
@@ -2748,12 +2749,12 @@ msgstr ""
 "thoát."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:216
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:214
 msgid "I see... I think it is a good idea to hire him. How much?"
 msgstr "Tôi hiểu... tôi nghĩ thuê anh ta là một ý kiến hay. Bao nhiêu?"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:220
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:218
 msgid ""
 "I ain’t charging gold — I wants protecshun! Everywhere I go, I see orcs, "
 "undead. ’T’ain’t safe ’round ’ere!"
@@ -2762,7 +2763,7 @@ msgstr ""
 "thú, ma quái. Quanh đây không an toàn!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:224
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:222
 msgid ""
 "Very well, we’ll protect you from the undead. But we can’t help you until we "
 "get off this island. Now let’s go!"
@@ -2771,7 +2772,7 @@ msgstr ""
 "thể giúp anh đến khi chúng tôi ra khỏi hòn đảo này. Giờ đi thôi!"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:228
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:226
 msgid ""
 "Deal. I c’n blow’er up once I get to that signpost ov’r dere. That’s where "
 "my eq’pment is. But ev’ryone not ov’r theah on that side when it blows w’ll "
@@ -2782,52 +2783,52 @@ msgstr ""
 "kia khi nó nổ chắc chắn sẽ bị bọn người thú giết!"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:245
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:243
 msgid "So, d’ya want me to blow up der bridge yet, Cap’n?"
 msgstr "Vậy, anh kó muốn tôi cho nổ tung kây kầu không, đội trưởng?"
 
-#. [option]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:251
+#. [option]
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:249
 msgid "Yes, blow it up."
 msgstr "Được, cho nổ đi."
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:255
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:253
 msgid "All right! Blast’n time!"
 msgstr "Được rồi! Nổ tung nè!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:268
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:266
 msgid "<big><i>BOOM!!</i></big>"
 msgstr "<big><i>BÙM!!</i></big>"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:307
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:305
 msgid ""
 "Good, we have escaped from the orcs. Now we must return to save Wesnoth."
 msgstr ""
 "Tốt, chúng ta đã thoát khỏi bọn người thú. Giờ chúng ta phải trở về để giải "
 "cứu Wesnoth."
 
-#. [option]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:319
+#. [option]
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:317
 msgid "No, wait until later."
 msgstr "Không, hãy chờ sau."
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:323
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:321
 msgid "Neh? A’right then, we’ll wait fa’ later, eh?"
 msgstr "Không ư? Thôi được, chúng ta sẽ chờ sau."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:336
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:334
 msgid "We have not thrown down the bridge in time! The orcs will kill us all!"
 msgstr ""
 "Chúng ta không kịp đánh sập cây cầu rồi! Bọn người thú sẽ giết tất cả chúng "
 "ta!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:344
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:342
 msgid ""
 "Well, we didn’t have to blow up the bridge after all. Now we must return to "
 "save Wesnoth."
@@ -2836,12 +2837,12 @@ msgstr ""
 "về để giải cứu Wesnoth."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:358
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:356
 msgid "How do you propose to do that?"
 msgstr "Anh đề xuất làm điều đó như thế nào?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:363
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:361
 msgid ""
 "We head south. My research revealed that the dragon Khrakrahs is in "
 "possession of a Null Stone; with it I will be able to block Mal-Ravanal’s "
@@ -2858,7 +2859,7 @@ msgstr ""
 "cần báo cho nhà vua: tôi biết điểm yếu của Mal-Ravanal."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:367
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:365
 msgid ""
 "Very well, we will head south. Let us hope we reach Weldyn before Mal-"
 "Ravanal."
@@ -2867,7 +2868,7 @@ msgstr ""
 "trước Mal-Ravanal."
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:371
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:369
 msgid ""
 "I’ll be followin’ yah from now on. Hope yah can get to Weld’n an’ all so I "
 "c’n stop runnin’..."
@@ -2881,25 +2882,25 @@ msgid "The Drowned Plains"
 msgstr "Đồng bằng ngập nước"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:138
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:136
 msgid "Defeat Khrakrahs"
 msgstr "Đánh bại Khrakrahs"
 
-#. [message]
 #. [unit]: type=Skeletal Dragon, id=Khrakrahs
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:165
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:436
+#. [message]
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:163
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:385
 msgid "Khrakrahs"
 msgstr "Khrakrahs"
 
 #. [object]
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:174
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:506
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:172
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:458
 msgid "Null Stone"
 msgstr "Hòn đá triệt tiêu"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:418
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:367
 msgid ""
 "Now, we have reached the Horse Plains, the fair homeland of my people. They "
 "may be able to help us find—"
@@ -2908,7 +2909,7 @@ msgstr ""
 "Họ có thể giúp chúng ta tìm -"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:422
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:371
 msgid ""
 "What?! Swamps?! Those undead have destroyed the grasslands of my House, and "
 "they shall pay for it!"
@@ -2917,7 +2918,7 @@ msgstr ""
 "sẽ phải trả giá vì điều đó!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:426
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:375
 msgid ""
 "The lich-lord must have flooded the valley. The undead like the swamp. It is "
 "death, decay, everything that they are themselves. I can sense them lurking "
@@ -2928,22 +2929,22 @@ msgstr ""
 "thể cảm nhận chúng đang ẩn nấp trong đầm lầy, chờ để phục kích chúng ta."
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:430
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:379
 msgid "I s’ppose we’ll hav’ to wade across it anyway... ugh."
 msgstr "Tôi cho rằng kiểu gì chúng ta kũng phải lội qua nó... ọe."
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:438
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:387
 msgid "Findshhhh... slayhhhh... killhhhh..."
 msgstr "Tìmmmm... giếtttt... giếtttt..."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:442
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:391
 msgid "What was that?!"
 msgstr "Cái gì thế?!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:446
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:395
 msgid ""
 "That was the dragon Khrakrahs. He was a powerful beast indeed in the time of "
 "Haldric, living in the Northern Mountains. But he radiates a dark power "
@@ -2956,7 +2957,7 @@ msgstr ""
 "Chúng ta phải tìm ra nó, cầu mong nó vẫn có hòn đá triệt tiêu."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:482
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:434
 msgid ""
 "Ah! It appears that the mighty Khrakrahs is no longer among the living. But "
 "this undead abomination does not appear weak to my arcane powers... he must "
@@ -2967,7 +2968,7 @@ msgstr ""
 "có hòn đá triệt tiêu!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:500
+#: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:452
 msgid "The Null Stone! With it we may finally defeat Mal-Ravanal!"
 msgstr ""
 "Hòn đá triệt tiêu! Có nó, cuối cùng chúng ta cũng có thể đánh bại Mal-"
@@ -2979,42 +2980,42 @@ msgid "Approaching Weldyn"
 msgstr "Tiếp cận Weldyn"
 
 #. [side]: type=Necromancer, id=Mal-un-Darak
-#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:52
+#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:50
 msgid "Mal-un-Darak"
 msgstr "Mal-un-Darak"
 
 #. [side]: type=Necromancer, id=Mal-un-Zanrad
-#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:71
+#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:69
 msgid "Mal-un-Zanrad"
 msgstr "Mal-un-Zanrad"
 
 #. [side]: type=Necromancer, id=Mal-un-Xadrux
-#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:89
+#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:87
 msgid "Mal-un-Xadrux"
 msgstr "Mal-un-Xadrux"
 
 #. [side]: type=General, id=Konrad II
 #. [unit]: id=Konrad, type=General
-#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:107
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:61
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:214
+#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:105
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:58
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:212
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:44
 msgid "Konrad II"
 msgstr "Konrad đệ nhị"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:130
+#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:128
 msgid "Move Gweddry to Weldyn castle"
 msgstr "Di chuyển Gweddry đến lâu đài Weldyn"
 
 #. [objective]: condition=lose
-#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:146
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:181
+#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:144
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:179
 msgid "Death of Konrad II"
 msgstr "Konrad đệ nhị chết"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:214
+#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:182
 msgid ""
 "We have finally reached Weldyn, but it seems the undead have it surrounded. "
 "We must break through to reach the king!"
@@ -3023,7 +3024,7 @@ msgstr ""
 "vây thành phố. Chúng ta phải xông qua để đến được chỗ nhà vua!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:218
+#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:186
 msgid ""
 "It would be best not to waste time defeating these undead, they are but a "
 "small fraction of the host we face. We should go straight to the city and "
@@ -3034,18 +3035,18 @@ msgstr ""
 "đến thành phố và chuẩn bị lực lượng phòng thủ."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:231
+#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:199
 msgid "My liege, we have vital information about the leader of these undead."
 msgstr ""
 "Tâu bệ hạ, chúng thần có thông tin sống còn về kẻ chỉ huy của lũ ma quái này."
 
 #. [message]: speaker=Konrad II
-#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:235
+#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:203
 msgid "Come, into the castle."
 msgstr "Vào đi, vào trong lâu đài."
 
 #. [message]: speaker=Konrad II
-#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:251
+#: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:219
 msgid "Weldyn has been captured, and Wesnoth is no more..."
 msgstr "Weldyn đã bị chiếm, và Wesnoth không còn nữa..."
 
@@ -3055,7 +3056,7 @@ msgid "The Council"
 msgstr "Hội đồng"
 
 #. [part]
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:22
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:19
 msgid ""
 "Before we begin our council, I must tell you all the history of this lich we "
 "face. He was at first a mage of the realm, like me, and his fall began "
@@ -3067,7 +3068,7 @@ msgstr ""
 "thất..."
 
 #. [part]
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:26
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:23
 msgid ""
 "The greatest seer in the land, Galdren, foresaw that some day, some day "
 "soon, a great evil would spread over the land. The king, naturally, was "
@@ -3082,7 +3083,7 @@ msgstr ""
 "tối, làm cố vấn của đức vua."
 
 #. [part]
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:29
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:26
 msgid ""
 "In all the land, there were two magi that clearly stood out from the rest. A "
 "mage from the east named Ravan, and myself. The King, wishing to choose the "
@@ -3097,7 +3098,7 @@ msgstr ""
 "thông báo rằng nhà tiên tri đã chết, và đã chọn tôi làm cố vấn mới."
 
 #. [part]
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:32
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:29
 msgid ""
 "Ravan took this quietly enough, we all thought, but now I think that this "
 "was when he began his fall. He went deep into conversation with the spirits "
@@ -3110,7 +3111,7 @@ msgstr ""
 "mới là những kẻ tìm ra điểm yếu của hắn."
 
 #. [part]
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:35
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:32
 msgid ""
 "One day, Ravan returned to the castle where I was living. He demanded to see "
 "me and the guards let him in, for then he was still a well-respected mage. "
@@ -3121,7 +3122,7 @@ msgstr ""
 "chào hắn, hắn tự xưng là Mal-Ravanal, và thách tôi một trận đấu tay đôi."
 
 #. [part]
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:38
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:35
 msgid ""
 "His attack was swift and his power great, but through unwavering faith and "
 "no small skill I emerged victorious. As he lie there mortally wounded I "
@@ -3132,7 +3133,7 @@ msgstr ""
 "thương gần chết, tôi chuẩn bị loại bỏ bóng tối khỏi tâm hồn hắn."
 
 #. [part]
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:41
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:38
 msgid ""
 "But I hesitated too long... He simply vanished, teleported away. The mage "
 "Ravan died that day; yet death is a mere inconvenience to those most skilled "
@@ -3143,23 +3144,23 @@ msgstr ""
 "tiện với những kẻ thông thạo thuật gọi hồn..."
 
 #. [side]: type=Great Mage, id=Kaldor
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:75
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:57
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:72
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:58
 msgid "Kaldor"
 msgstr "Kaldor"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:105
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:102
 msgid "This is the lich we are facing: Mal-Ravanal."
 msgstr "Đây là thây ma chúng ta đang đối mặt: Mal-Ravanal."
 
 #. [message]: speaker=Konrad II
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:109
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:106
 msgid "So what should we do now?"
 msgstr "Thế giờ chúng ta nên làm gì?"
 
 #. [message]: speaker=Kaldor
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:113
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:110
 msgid ""
 "We must fight, obviously. Surely the might of Wesnoth can triumph over a "
 "mere lich!"
@@ -3168,7 +3169,7 @@ msgstr ""
 "thể chiến thắng trước một thây ma bình thường!"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:117
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:114
 msgid ""
 "I can tell by your words that you have not seen the hordes for yourself. It "
 "is like all of the dead warriors from all the ages have come back to attack "
@@ -3182,7 +3183,7 @@ msgstr ""
 "những kẻ đã triệu chúng dậy."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:121
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:118
 msgid ""
 "We barely escaped the Southern Outpost with our lives; Mal-Ravanal’s army "
 "cannot be defeated by even the might of all Wesnoth."
@@ -3191,7 +3192,7 @@ msgstr ""
 "Ravanal không thể bị đánh bại kể cả bằng sức mạnh của toàn bộ Wesnoth."
 
 #. [message]: speaker=Kaldor
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:125
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:122
 msgid ""
 "That simply makes you cowards. True warriors would have stayed and fought to "
 "the death!"
@@ -3200,7 +3201,7 @@ msgstr ""
 "chiến binh thực sự lẽ ra phải ở lại và chiến đấu đến chết!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:129
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:126
 msgid ""
 "A meaningless sacrifice and a few more corpses marching upon Weldyn. We "
 "realized our only path to victory is to destroy the head of these "
@@ -3214,14 +3215,14 @@ msgstr ""
 "cuối cùng đưa linh hồn bị tra tấn của hắn về nơi yên nghỉ."
 
 #. [message]: speaker=Kaldor
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:133
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:130
 msgid "But if we cannot defeat the army, how may we strike at the leader?!"
 msgstr ""
 "Nhưng nếu chúng ta không thể đánh bại cả quân đội, chúng ta tiêu diệt tên "
 "chỉ huy bằng cách nào?!"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:137
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:134
 msgid ""
 "I recommend a full assault. Our mounted units are more maneuverable; if we "
 "attack in force we may be able to punch through the enemy lines and isolate "
@@ -3232,7 +3233,7 @@ msgstr ""
 "cô lập Mal-Ravanal giữa trận chiến hỗn loạn."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:141
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:138
 msgid ""
 "I suggest that we appeal to his arrogance: I believe Mal-Ravanal would be "
 "<i>compelled</i> to face me if I were to challenge him to a duel."
@@ -3241,7 +3242,7 @@ msgstr ""
 "<i>bắt buộc</i> đối mặt với tôi nếu tôi thách hắn một trận đấu tay đôi."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:145
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:142
 msgid ""
 "We cannot trust that he would honor the terms of the challenge! You would "
 "likely find yourself facing his entire army!"
@@ -3250,7 +3251,7 @@ msgstr ""
 "nhiều khả năng sẽ thấy mình đang đối mặt với toàn bộ quân đội của hắn!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:149
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:146
 msgid ""
 "We face his entire army regardless. The only difference is whether Mal-"
 "Ravanal is commanding in back or gloating in front."
@@ -3259,7 +3260,7 @@ msgstr ""
 "nhất là Mal-Ravanal chỉ huy đằng sau hay hả hê đằng trước."
 
 #. [message]: speaker=Konrad II
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:153
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:150
 msgid ""
 "Two risky plans. But if these undead are as strong as you say then we are "
 "pressed for options. Gweddry, you are most familiar with this situation. I "
@@ -3270,12 +3271,12 @@ msgstr ""
 "huống này. Ta sẽ để lựa chọn này trong tay ngươi."
 
 #. [message]: speaker=guard
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:170
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:167
 msgid "Sire, the undead armies are attacking!"
 msgstr "Tâu bệ hạ, quân đội ma quái đang tấn công!"
 
 #. [message]: speaker=Konrad II
-#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:174
+#: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:171
 msgid "Well, that will have to be the end of our council. Let us fight!"
 msgstr "Hừm, đó là lý do kết thúc hội đồng. Chúng ta hãy chiến đấu!"
 
@@ -3285,42 +3286,42 @@ msgid "Weldyn under Attack"
 msgstr "Weldyn bị tấn công"
 
 #. [side]: type=General, id=Halrad
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:54
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:52
 msgid "Halrad"
 msgstr "Halrad"
 
 #. [side]: type=General, id=Halric
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:71
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:69
 msgid "Halric"
 msgstr "Halric"
 
 #. [side]: type=General, id=Halrod
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:88
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:86
 msgid "Halrod"
 msgstr "Halrod"
 
 #. [side]: type=Lich, id=Mal-Grekulak
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:106
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:104
 msgid "Mal-Grekulak"
 msgstr "Mal-Grekulak"
 
 #. [side]: type=Lich, id=Mal-Xakralan
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:123
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:121
 msgid "Mal-Xakralan"
 msgstr "Mal-Xakralan"
 
 #. [side]: type=Lich, id=Mal-Uknalu
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:140
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:138
 msgid "Mal-Uknalu"
 msgstr "Mal-Uknalu"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:164
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:162
 msgid "Survive the long night"
 msgstr "Sống sót qua đêm dài"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:235
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:233
 msgid ""
 "We will fight soon, my lord. Look, night approaches; and with it the undead "
 "hordes. I stand ready to defend the kingdom."
@@ -3329,14 +3330,14 @@ msgstr ""
 "cùng với nó là đạo quân ma quái. Thần sẵn sàng bảo vệ vương quốc."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:239
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:237
 msgid "Very well. But this... Mal-Ravanal, that you spoke of, is he here?"
 msgstr ""
 "Được rồi. Nhưng... Mal-Ravanal, kẻ mà các ngươi nói đến đó, hắn có ở đây "
 "không?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:243
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:241
 msgid ""
 "I sense his dark magic prolonging the night, but I do not feel his presence."
 msgstr ""
@@ -3344,7 +3345,7 @@ msgstr ""
 "nhận được sự có mặt của hắn."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:247
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:245
 msgid ""
 "In any case, the undead are attacking now. Let us show them the might of "
 "Wesnoth!"
@@ -3353,23 +3354,23 @@ msgstr ""
 "thấy sức mạnh của Wesnoth!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:258
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:256
 msgid "I have died, and with me gone the kingdom is lost."
 msgstr "Ta chết rồi, khi ta ra đi vương quốc cũng mất."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:270
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:268
 msgid "Look, the sun has finally risen, and the undead are retreating."
 msgstr "Nhìn kìa, cuối cùng mặt trời cũng đã mọc, lũ ma quái đang rút lui."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:283
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:281
 msgid "Even this infernal darkness cannot dim the spirits of our men!"
 msgstr ""
 "Kể cả bóng tối địa ngục này cũng không thể làm lu mờ tinh thần của chúng ta!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:297
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:295
 msgid ""
 "This long night is over, and Wesnoth still stands. Yet I do not know how "
 "many more such nights we can endure."
@@ -3378,34 +3379,34 @@ msgstr ""
 "ta có thể chịu đựng được bao đêm như thế nữa."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:301
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:299
 msgid "Gweddry, have you made a decision regarding our course of action?"
 msgstr ""
 "Gweddry, ngươi đã có quyết định liên quan đến phương án hành động của chúng "
 "ta chưa?"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:306
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:304
 msgid "I have. I think we should..."
 msgstr "Thần có rồi. Thần nghĩ chúng ta nên..."
 
-#. [option]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:308
+#. [option]
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:306
 msgid "challenge Mal-Ravanal to a duel."
 msgstr "thách Mal-Ravanal một trận đấu tay đôi."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:312
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:310
 msgid "I will send the message at once."
 msgstr "Tôi sẽ gửi thông điệp ngay lập tức."
 
-#. [option]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:322
+#. [option]
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:320
 msgid "try to isolate Mal-Ravanal in battle."
 msgstr "tìm cách cô lập Mal-Ravanal trong trận chiến."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:326
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:324
 msgid "I will begin preparing our troops."
 msgstr "Tôi sẽ chuẩn bị binh lính."
 
@@ -3414,26 +3415,34 @@ msgstr "Tôi sẽ chuẩn bị binh lính."
 msgid "The Duel"
 msgstr "Trận đấu tay đôi"
 
+#. [side]: type=Lich Lord, id=Mal-Ravanal
+#. [modify_unit]: type=Lich Lord, id=Mal-Ravanal
+#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:33
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:339
+#: data/campaigns/Eastern_Invasion/utils/character-definitions.cfg:29
+msgid "Mal-Ravanal"
+msgstr "Mal-Ravanal"
+
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:65
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:167
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:180
 msgid "Defeat Mal-Ravanal while Dacyn is nearby"
 msgstr "Đánh bại Mal-Ravanal khi Dacyn ở gần"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:96
+#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:97
 msgid ""
 "I have waited a long time for this day to come. I shall have my revenge, "
 "Dacyn!"
 msgstr "Ta đã chờ ngày này lâu lắm rồi. Ta sẽ báo thù, Dacyn!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:100
+#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:101
 msgid "Indeed, it is time to end this."
 msgstr "Đúng vậy, đã đến lúc kết thúc."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:106
+#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:107
 msgid ""
 "The rules of the duel are these:\n"
 "You may recruit or recall up to 5 units.\n"
@@ -3446,7 +3455,7 @@ msgstr ""
 "với bất kỳ binh lính nào mà bạn có vào lúc đó."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:114
+#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:115
 msgid ""
 "When we attack Mal-Ravanal I will need to be nearby with the Null Stone to "
 "prevent his teleportation. We cannot afford to let him escape."
@@ -3455,7 +3464,7 @@ msgstr ""
 "ngăn hắn dịch chuyển tức thời. Chúng ta không thể để hắn trốn thoát."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:254
+#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:247
 msgid ""
 "Wait — what just happened? He called more warriors out of the ground! That’s "
 "not allowed!"
@@ -3464,7 +3473,7 @@ msgstr ""
 "đất. Điều đó không được phép!"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:258
+#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:251
 msgid ""
 "Stop talking and fight! The rules say nothing about bringing up warriors "
 "that were already here."
@@ -3473,12 +3482,12 @@ msgstr ""
 "ra khi họ đã ở đây."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:269
+#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:262
 msgid "No! This cannot be the way it was meant to end!"
 msgstr "Không! Đây không thể là cách để kết thúc!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:283
+#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:276
 msgid "Wesnoth, I have failed you..."
 msgstr "Wesnoth, ta đã làm ngươi thất vọng..."
 
@@ -3494,28 +3503,33 @@ msgstr "Weldyn bị bao vây"
 #. [side]: type=Lich, id=Lich6
 #. [side]: type=Lich, id=Lich7
 #. [side]: type=Lich, id=Lich8
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:45
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:44
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:62
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:79
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:96
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:113
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:130
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:147
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:80
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:98
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:116
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:134
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:152
 msgid "?"
 msgstr "?"
 
+#. [objective]: condition=win
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:176
+msgid "Kill $liches_to_kill liches to reveal Mal-Ravanal"
+msgstr ""
+
 #. [objective]: condition=lose
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:183
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:196
 msgid "Death of Konrad"
 msgstr "Konrad chết"
 
 #. [objective]: condition=lose
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:187
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:200
 msgid "Letting any enemy unit onto your keep"
 msgstr "Để bất kỳ đơn vị nào của kẻ thù vào pháo đài của bạn"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:216
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:230
 msgid ""
 "I can sense Mal-Ravanal is here somewhere... When we attack him I will need "
 "to be nearby with the Null Stone to prevent his teleportation. We cannot "
@@ -3525,78 +3539,95 @@ msgstr ""
 "hắn, tôi cần ở gần, với hòn đá triệt tiêu để ngăn hắn dịch chuyển tức thời. "
 "Chúng ta không thể để hắn trốn thoát."
 
-#. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:220
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:260
+msgid "But how? We don't know which one of them he is."
+msgstr ""
+
+#. [message]: speaker=Dacyn
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:265
+msgid ""
+"They are channeling some dark magic to hide themselves. We have to kill some "
+"of them to break the spell."
+msgstr ""
+
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:272
 msgid "Mal-Hadanak"
 msgstr "Mal-Hadanak"
 
-#. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:221
-msgid "Mal-Katklagad"
-msgstr "Mal-Katklagad"
-
-#. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:222
-msgid "Mal-Xaskanat"
-msgstr "Mal-Xaskanat"
-
-#. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:223
-msgid "Mal-Akranbral"
-msgstr "Mal-Akranbral"
-
-#. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:224
-msgid "Mal-Larakan"
-msgstr "Mal-Larakan"
-
-#. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:225
-msgid "Mal-Drakanal"
-msgstr "Mal-Drakanal"
-
-#. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:228
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:273
 msgid "You dare to attack me? Now you will pay!"
 msgstr "Các ngươi dám tấn công ta sao? Giờ các ngươi sẽ phải trả giá!"
 
-#. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:229
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:276
+msgid "Mal-Katklagad"
+msgstr "Mal-Katklagad"
+
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:277
 msgid "I will enjoy watching you suffer!"
 msgstr "Ta sẽ hả hê chứng kiến cảnh các ngươi chịu đau khổ!"
 
-#. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:230
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:280
+msgid "Mal-Xaskanat"
+msgstr "Mal-Xaskanat"
+
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:281
 msgid "Death will only be the beginning of your torment!"
 msgstr "Cái chết sẽ chỉ là mở đầu cho nỗi đau khổ của các ngươi!"
 
-#. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:231
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:284
+msgid "Mal-Akranbral"
+msgstr "Mal-Akranbral"
+
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:285
 msgid "You will serve me in death!"
 msgstr "Các ngươi sẽ phục vụ ta khi chết!"
 
-#. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:232
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:288
+msgid "Mal-Larakan"
+msgstr "Mal-Larakan"
+
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:289
 msgid "Allow me to free you from your wretched existence!"
 msgstr "Hãy để ta giải phóng các ngươi khỏi sự tồn tại khốn khổ!"
 
-#. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:233
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:292
+msgid "Mal-Drakanal"
+msgstr "Mal-Drakanal"
+
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:293
 msgid "My master is merely toying with you!"
 msgstr "Chủ nhân của ta chỉ đang đùa bỡn với các ngươi thôi!"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:317
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:374
 msgid "I shall destroy you personally!"
 msgstr "Đích thân ta sẽ tiêu diệt các ngươi!"
 
+#. [message]: speaker=Owaec
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:518
+msgid "Their spell is broken! There he is!"
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:386
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:673
 msgid "Kill them all!"
 msgstr "Giết hết bọn chúng!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:390
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:677
 msgid ""
 "They killed the royal family... now, even if we save Weldyn, Wesnoth has "
 "fallen."
@@ -3605,7 +3636,7 @@ msgstr ""
 "Weldyn, Wesnoth cũng đã thất thủ."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:405
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:692
 msgid "The Kingdom of Wesnoth dies with me!"
 msgstr "Vương quốc Wesnoth chết cùng với ta!"
 
@@ -3615,7 +3646,7 @@ msgid "Epilogue"
 msgstr "Hồi kết"
 
 #. [part]
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:18
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:17
 msgid ""
 "When Mal-Ravanal fell his undead army simply collapsed like puppets with "
 "their strings cut. As the lich’s death-scream echoed in the air, a vast and "
@@ -3636,7 +3667,7 @@ msgstr ""
 "hãi, khi bức màn bóng tối khổng lồ che khuất mặt trời..."
 
 #. [part]
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:24
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:23
 msgid ""
 "... and then it thinned, and paled, and a breeze from the west dissolved it "
 "in tatters, and the light of day shone once again undiminished on Weldyn."
@@ -3645,7 +3676,7 @@ msgstr ""
 "mảnh, và ánh sáng ban ngày một lần nữa lại tỏa sáng trên Weldyn."
 
 #. [message]: speaker=Konrad II
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:98
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:100
 msgid ""
 "It is a great victory we have won here today, vanquishing the arch-lich Mal-"
 "Ravanal."
@@ -3654,7 +3685,7 @@ msgstr ""
 "thây ma Mal-Ravanal."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:103
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:105
 msgid ""
 "So many months of fighting... I feel as though I am awakening from a long "
 "nightmare."
@@ -3663,7 +3694,7 @@ msgstr ""
 "cơn ác mộng dài."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:108
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:110
 msgid ""
 "Nor is our work yet complete. Mal-Ravanal’s host has been broken, but in its "
 "wake chaos and disorder prevail throughout the countryside."
@@ -3672,7 +3703,7 @@ msgstr ""
 "tiêu diệt, nhưng theo chân nó, hỗn độn và rối loạn sẽ lan tràn khắp vùng quê."
 
 #. [message]: speaker=Konrad II
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:113
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:115
 msgid ""
 "We will be years... perhaps decades... recovering from the ill he has "
 "wrought."
@@ -3681,7 +3712,7 @@ msgstr ""
 "tổn hại hắn đã gây ra."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:123
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:125
 msgid ""
 "Even now we should be sending our cavalry to restore order throughout the "
 "land."
@@ -3690,7 +3721,7 @@ msgstr ""
 "trên khắp vùng đất."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:129
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:131
 msgid ""
 "Even now we should be sending our troops to restore order throughout the "
 "land."
@@ -3699,7 +3730,7 @@ msgstr ""
 "vùng đất."
 
 #. [message]: speaker=Konrad II
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:136
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:138
 msgid ""
 "It shall be so. But first, know that you have served Us, and Our Kingdom, "
 "full well. We are minded to reward you."
@@ -3708,7 +3739,7 @@ msgstr ""
 "vương quốc, rất tốt. Ta sẵn lòng ban thưởng cho các ngươi."
 
 #. [message]: speaker=Konrad II
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:146
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:148
 msgid ""
 "Sir Terraent, your service to the crown has been a beacon of light in these "
 "dark times. We are appointing you to command the River Guard in Estmark."
@@ -3718,13 +3749,13 @@ msgstr ""
 "vùng biên giới phía Đông."
 
 #. [message]: speaker=Terraent
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:150
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:152
 msgid ""
 "It is an honor to serve my kingdom, and I humbly accept your commission."
 msgstr "Phục vụ vương quốc là một vinh dự, thần xin nhận mệnh lệnh của bệ hạ."
 
 #. [message]: speaker=Konrad II
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:162
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:164
 msgid ""
 "Grug, Gweddry has told me of the help you and your tribe provided his men. "
 "We wish to offer you a new home in the Estmark Hills along with Our thanks."
@@ -3734,12 +3765,12 @@ msgstr ""
 "với lời cảm ơn của ta."
 
 #. [message]: speaker=Grug
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:166
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:168
 msgid "Grug say new home will make thanks with."
 msgstr "Grug nói nơi ở mới cảm ơn vì."
 
 #. [message]: speaker=Konrad II
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:173
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:175
 msgid ""
 "Dacyn. I would have you remain by Our side, here; as you counseled these two "
 "in war, so shall you counsel Us in peace and the rebuilding of the Kingdom."
@@ -3749,12 +3780,12 @@ msgstr ""
 "việc xây dựng lại vương quốc."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:177
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:179
 msgid "I am honored, your highness."
 msgstr "Thần rất vinh dự, tâu bệ hạ."
 
 #. [message]: speaker=Konrad II
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:187
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:189
 msgid ""
 "Engineer, much of Estmark region stands in ruins. The crown has need of your "
 "skills to clear the wreckage and organize the reconstruction."
@@ -3763,28 +3794,28 @@ msgstr ""
 "cần năng lực của ngươi để dọn dẹp đống đổ nát và tổ chức việc xây dựng lại."
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:191
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:193
 msgid "I’ll be glad ta help yah. It’ll be fun to work in peace again."
 msgstr ""
 "Thần rất hân hạnh được giúp bệ hạ. Thật vui khi lại được yên ổn làm việc."
 
 #. [message]: speaker=Konrad II
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:198
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:200
 msgid "Now as for you..."
 msgstr "Giờ cho các ngươi..."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:208
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:210
 msgid "Sire, we but did our duty."
 msgstr "Tâu bệ hạ, chúng thần chỉ thực hiện nghĩa vụ của mình."
 
 #. [message]: speaker=Konrad II
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:213
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:215
 msgid "Quite. Now do not interrupt while I am doing mine... Kneel, Owaec."
 msgstr "Yên nào. Giờ đừng ngắt lời khi ta đang nói... Quỳ xuống, Owaec."
 
 #. [message]: speaker=Konrad II
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:220
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:222
 msgid ""
 "Arise, Owaec, Knight Commander of the King’s Horse. And take as Our first "
 "command to you your own wish; go from here, secure our borders, and show all "
@@ -3795,22 +3826,22 @@ msgstr ""
 "thấy rằng sức mạnh của Wesnoth sẽ kéo dài."
 
 #. [message]: speaker=Konrad II
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:249
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:251
 msgid "Kneel, Gweddry."
 msgstr "Quỳ xuống, Gweddry."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:255
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:257
 msgid "Sire, I but did my duty."
 msgstr "Tâu bệ hạ, thần chỉ thực hiện nghĩa vụ của mình."
 
 #. [message]: speaker=Konrad II
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:259
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:261
 msgid "Quite. Now do not interrupt while I am doing mine... Kneel, Gweddry."
 msgstr "Yên nào. Đừng ngắt lời khi ta đang nói... Quỳ xuống, Gweddry."
 
 #. [message]: speaker=Konrad II
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:268
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:270
 msgid ""
 "And arise, Gweddry, Earl of Estmark. The land for which you shed your blood "
 "shall be put under your hand to be made green again."
@@ -3819,7 +3850,7 @@ msgstr ""
 "đã đổ máu sẽ được đặt dưới tay ngươi để xanh tươi trở lại."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:273
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:275
 msgid ""
 "And so began the Silver Age of Wesnoth, that time known to historians as the "
 "Reconstruction..."
@@ -3827,13 +3858,33 @@ msgstr ""
 "Và như thế thời đại bạc của Wesnoth bắt đầu, thời kỳ đó được các nhà sử học "
 "biết đến với tên Tái thiết..."
 
+#. [unit_type]: id=Bone Knight, race=undead
+#: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:5
+#, fuzzy
+#| msgid "Mounted Fighter"
+msgid "Bone Knight"
+msgstr "Đấu sĩ cưỡi ngựa"
+
+#. [unit_type]: id=Bone Knight, race=undead
+#: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:26
+msgid ""
+"Once great warriors across the plains, these mounted riders atop their "
+"skeletal horses were raised from the ground by unholy magic to spread fear "
+"and destruction."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:41
+msgid "trample"
+msgstr ""
+
 #. [unit_type]: id=Horse Lord, race=human
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:4
 msgid "Horse Lord"
 msgstr "Chủ tướng cưỡi ngựa"
 
 #. [unit_type]: id=Horse Lord, race=human
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:20
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:19
 msgid ""
 "The greatest of the men of the plains, Horse Lords are heads of their houses "
 "and are respected by all, friend or foe. Their sword can kill most ordinary "
@@ -3843,19 +3894,6 @@ msgstr ""
 "đứng đầu trong dòng tộc và được tất cả mọi người, dù là bạn hay kẻ thù, đều "
 "kính trọng. Lưỡi kiếm của họ có thể giết gần hết các kẻ thù tầm thường, và "
 "quả chùy gai của họ đập nát những kẻ còn sót lại."
-
-#. [attack]: type=blade
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:24
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:23
-msgid "greatsword"
-msgstr "đại kiếm"
-
-#. [attack]: type=impact
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:33
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:32
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:32
-msgid "morning star"
-msgstr "chùy gai"
 
 #. [unit_type]: id=Lich Lord
 #: data/campaigns/Eastern_Invasion/units/Lich_Lord.cfg:7
@@ -3868,7 +3906,7 @@ msgid "Mounted Fighter"
 msgstr "Đấu sĩ cưỡi ngựa"
 
 #. [unit_type]: id=Mounted Fighter, race=human
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:19
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:18
 msgid ""
 "The nobles of the men of the plains are trained with the rest of the "
 "horsemen to become great warriors. However, they are also trained in "
@@ -3879,18 +3917,13 @@ msgstr ""
 "trở thành chiến binh vĩ đại. Tuy nhiên, họ cũng được đào tạo để chỉ huy đồng "
 "đội, và là những người có thể trở thành thủ lĩnh của quân đội thị tộc."
 
-#. [attack]: type=blade
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:23
-msgid "sword"
-msgstr "kiếm"
-
 #. [unit_type]: id=Mounted Warrior, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:4
 msgid "Mounted Warrior"
 msgstr "Chiến binh cưỡi ngựa"
 
 #. [unit_type]: id=Mounted Warrior, race=human
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:19
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:18
 msgid ""
 "Leaders of the plains, Mounted Warriors are skilled with the use of the "
 "sword and the morning star. Riding horses, they are able to move around the "
@@ -3901,6 +3934,19 @@ msgstr ""
 "lẫn chùy gai. Cưỡi trên lưng ngựa, họ có thể di chuyển khắp chiến trường với "
 "tốc độ nhanh, và có thể cung cấp sự hỗ trợ cần thiết cho nhiều mặt trận khác "
 "nhau."
+
+#. [unit_type]: id=Skeleton Rider, race=undead
+#: data/campaigns/Eastern_Invasion/units/Skeleton_Rider.cfg:5
+msgid "Skeleton Rider"
+msgstr ""
+
+#. [unit_type]: id=Skeleton Rider, race=undead
+#: data/campaigns/Eastern_Invasion/units/Skeleton_Rider.cfg:33
+msgid ""
+"Once great warriors thundering across the plains, these mounted riders atop "
+"their skeletal horses were raised from the grave by unholy magic to spread "
+"fear and destruction."
+msgstr ""
 
 #. [attacks]: id=shock
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:8
@@ -3918,33 +3964,37 @@ msgstr ""
 "Khi đòn này được sử dụng để tấn công, đối thủ sẽ đánh trả ít hơn bình thường "
 "một đòn, hoặc ở mức tối thiểu một đòn."
 
+#: data/campaigns/Eastern_Invasion/utils/character-definitions.cfg:15
+msgid "Dacyn"
+msgstr "Dacyn"
+
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:9
+#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:12
 msgid "No! I... die..."
 msgstr "Không! Ta... chết..."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:23
+#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:30
 msgid "We are doomed..."
 msgstr "Chúng ta tận số rồi..."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:37
+#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:48
 msgid "I... must— Argh...!"
 msgstr "Ta... phải... Aaaa...!"
 
 #. [message]: speaker=Grug
-#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:51
+#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:66
 msgid "Grarrgghh..."
 msgstr "Grrrừừ..."
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:62
+#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:80
 msgid "Wha’? Yah fail’d to give me protecshun..."
 msgstr "Kái gì? Các anh đã không thể bảo vệ tôi..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:73
+#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:92
 msgid ""
 "It was perhaps as well for the men of Gweddry’s troop that they did not live "
 "to see the grim tide of undead sweeping westward into Wesnoth, laying waste "
@@ -3955,7 +4005,7 @@ msgstr ""
 "thứ trên đường đi của nó."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:85
+#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:104
 msgid ""
 "Wesnoth never learned the fate of Gweddry’s band, but all too soon they "
 "would suffer the rage and malice of marauding orcs and undead in a war that "
@@ -3967,7 +4017,7 @@ msgstr ""
 "chết chóc."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:97
+#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:116
 msgid ""
 "Their home country proved to be no refuge for Gweddry’s weary men, and no "
 "more would it for the inhabitants of Wesnoth as foes pressed them on all "
@@ -3978,7 +4028,7 @@ msgstr ""
 "mọi phía vào một cuộc kháng cự cuối cùng bảo vệ vương quốc sắp sụp đổ."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:109
+#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:128
 msgid ""
 "With the staunchest defenders of Wesnoth bested on their home ground, the "
 "once-great kingdom was plunged into final darkness under the vengeful hand "
@@ -4026,20 +4076,67 @@ msgstr ""
 "Các ngươi mạnh hơn ta tưởng, nhưng các ngươi không thể đánh bại ta đâu."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/utils/final_battle.cfg:126
+#: data/campaigns/Eastern_Invasion/utils/final_battle.cfg:131
 msgid "No. Your reign of terror ends today."
 msgstr "Không. Hôm nay triều đại khủng bố của ngươi sẽ kết thúc."
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/utils/final_battle.cfg:131
+#: data/campaigns/Eastern_Invasion/utils/final_battle.cfg:136
 msgid "What?!... I... cannot... lose..."
 msgstr "Cái gì?!... Ta... không... thể... thua..."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/utils/final_battle.cfg:176
+#: data/campaigns/Eastern_Invasion/utils/final_battle.cfg:184
 msgid "I wasn’t able to prevent his escape from here. Now Wesnoth is doomed..."
 msgstr ""
 "Ta đã không thể ngăn hắn trốn thoát khỏi đây. Giờ Wesnoth tận số rồi..."
+
+#: data/campaigns/Eastern_Invasion/utils/macros.cfg:62
+msgid ""
+"Wearing this amulet will cause every blow you deal to inflict <i>arcane</i> "
+"damage!"
+msgstr ""
+"Đeo bùa này sẽ khiến mọi đòn đánh của bạn đều gây ra thiệt hại kiểu <i>bí "
+"kíp</i>!"
+
+#: data/campaigns/Eastern_Invasion/utils/macros.cfg:63
+msgid "holy amulet^Take it"
+msgstr "Giữ lấy"
+
+#: data/campaigns/Eastern_Invasion/utils/macros.cfg:64
+msgid "holy amulet^Leave it"
+msgstr "Bỏ lại"
+
+#: data/campaigns/Eastern_Invasion/utils/macros.cfg:65
+msgid "I am not suited to using this item! Let another take it."
+msgstr "Tôi không thích hợp để sử dụng thứ này! Để người khác lấy nó."
+
+#. [object]
+#: data/campaigns/Eastern_Invasion/utils/macros.cfg:67
+msgid "Holy Amulet"
+msgstr "Bùa thánh"
+
+#~ msgid "greatsword"
+#~ msgstr "đại kiếm"
+
+#~ msgid "morning star"
+#~ msgstr "chùy gai"
+
+#~ msgid "sword"
+#~ msgstr "kiếm"
+
+#~ msgid "I summon from the depths of the river beasts to destroy you!"
+#~ msgstr "Ta triệu gọi quái vật từ dưới đáy sông để tiêu diệt các ngươi!"
+
+#~ msgid "Argh! I’m dead! Well, dwarves are still the best!"
+#~ msgstr "Á! Chết ta rồi! Nhưng, người lùn vẫn là giỏi nhất!"
+
+#~ msgid ""
+#~ "There is a great fortune in this chest of treasure! I can count two "
+#~ "hundred pieces of gold."
+#~ msgstr ""
+#~ "Có một đống của cải lớn trong hòm kho báu này! Tôi có thể đếm được hai "
+#~ "trăm lượng vàng!"
 
 #~ msgid "You may now recruit young ogres!"
 #~ msgstr "Bây giờ bạn có thể tuyển quỷ khổng lồ trẻ tuổi!"

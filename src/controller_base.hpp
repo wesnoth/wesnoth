@@ -1,7 +1,7 @@
 /*
-   Copyright (C) 2006 - 2014 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -13,55 +13,114 @@
    See the COPYING file for more details.
 */
 
-#ifndef CONTROLLER_BASE_H_INCLUDED
-#define CONTROLLER_BASE_H_INCLUDED
+/**
+ * @file
+ * controller_base framework:
+ * controller_base is roughly analogous to a "dialog" class in a GUI toolkit
+ * which is appropriate for deriving wesnoth game modes, e.g. single player
+ * mode, multiplayer mode, replay mode, editor mode.
+ *
+ * It provides implementation details for:
+ * - play_slice, which is essentially one pass of the "main loop" of
+ *   the application, pumping and dispatching SDL events, raising draw
+ *   events, handling scrolling, sound sources, and some joystick issues
+ *   It also handles displaying menus (Menu, Action).
+ *
+ * - showing context menus (much is delegated to command executor though)
+ *
+ * Other than this it functions as an abstract interface, enforcing that
+ * controllers derive from events::sdl_handler, hotkey_command_executor,
+ * and provide some accessors needed for event handling.
+ */
 
-#include "global.hpp"
+#pragma once
 
-#include "hotkey/command_executor.hpp"
-#include "key.hpp"
-
+#include "events.hpp"
+#include "hotkey/hotkey_command.hpp"
 #include "joystick.hpp"
+#include "key.hpp"
+#include "quit_confirmation.hpp"
+#include "video.hpp"
 
-#include "map.hpp"
+class display;
+class plugins_context;
 
-class CVideo;
-
-namespace events {
+namespace events
+{
 class mouse_handler_base;
 }
 
-class controller_base : public hotkey::command_executor, public events::handler
+namespace hotkey
+{
+class command_executor;
+}
+
+namespace soundsource
+{
+class manager;
+}
+
+class controller_base : public video2::draw_layering, public events::pump_monitor
 {
 public:
-	controller_base(const int ticks, const config& game_config, CVideo& video);
+	controller_base();
 	virtual ~controller_base();
 
-	void play_slice(bool is_delay_enabled = true);
+	virtual void play_slice(bool is_delay_enabled = true);
 
-	int get_ticks();
+	static const config& get_theme(const config& game_config, std::string theme_name);
+
+	void apply_keyboard_scroll(int x, int y);
+
+	void set_scroll_up(bool on)
+	{
+		scroll_up_ = on;
+	}
+
+	void set_scroll_down(bool on)
+	{
+		scroll_down_ = on;
+	}
+
+	void set_scroll_left(bool on)
+	{
+		scroll_left_ = on;
+	}
+
+	void set_scroll_right(bool on)
+	{
+		scroll_right_ = on;
+	}
+
+	/** Optionally get a command executor to handle context menu events. */
+	virtual hotkey::command_executor* get_hotkey_command_executor()
+	{
+		return nullptr;
+	}
 
 protected:
-	/**
-	 * Called by play_slice after events:: calls, but before processing scroll
-	 * and other things like menu.
-	 */
-	virtual void slice_before_scroll();
+	virtual bool is_browsing() const
+	{
+		return false;
+	}
 
-	/**
-	 * Called at the very end of play_slice
-	 */
-	virtual void slice_end();
-
-	/**
-	 * Get a reference to a mouse handler member a derived class uses
-	 */
+	/** Get a reference to a mouse handler member a derived class uses. */
 	virtual events::mouse_handler_base& get_mouse_handler_base() = 0;
-	/**
-	 * Get a reference to a display member a derived class uses
-	 */
+
+	/** Get a reference to a display member a derived class uses. */
 	virtual display& get_display() = 0;
 
+	/** Get (optionally) a soundsources manager a derived class uses. */
+	virtual soundsource::manager* get_soundsource_man()
+	{
+		return nullptr;
+	}
+
+	/** Get (optionally) a plugins context a derived class uses. */
+	virtual plugins_context* get_plugins_context()
+	{
+		return nullptr;
+	}
 
 	/**
 	 * Derived classes should override this to return false when arrow keys
@@ -71,51 +130,93 @@ protected:
 	 */
 	virtual bool have_keyboard_focus();
 
+	virtual std::vector<std::string> additional_actions_pressed()
+	{
+		return std::vector<std::string>();
+	}
 
 	/**
 	 * Handle scrolling by keyboard, joystick and moving mouse near map edges
-	 * @see is_keyboard_scroll_active
+	 * @see scrolling_, which is set if the display is being scrolled
 	 * @return true when there was any scrolling, false otherwise
 	 */
-	bool handle_scroll(CKey& key, int mousex, int mousey, int mouse_flags, double joystickx, double joysticky);
+	bool handle_scroll(int mousex, int mousey, int mouse_flags, double joystickx, double joysticky);
 
 	/**
 	 * Process mouse- and keypress-events from SDL.
-	 * Not virtual but calls various virtual function to allow specialized
+	 * Calls various virtual function to allow specialized
 	 * behavior of derived classes.
 	 */
-	void handle_event(const SDL_Event& event);
+	void handle_event(const SDL_Event& event) override;
 
-	/**
-	 * Process keydown (only when the general map display does not have focus).
-	 */
-	virtual void process_focus_keydown_event(const SDL_Event& event);
+	void handle_window_event(const SDL_Event& /*event*/) override
+	{
+		// No action by default
+	}
 
-	/**
-	 * Process keydown (always).
-	 * Overridden in derived classes
-	 */
-	virtual void process_keydown_event(const SDL_Event& event);
+	/** Process keydown (only when the general map display does not have focus). */
+	virtual void process_focus_keydown_event(const SDL_Event& /*event*/)
+	{
+		// No action by default
+	}
 
-	/**
-	 * Process keyup (always).
-	 * Overridden in derived classes
-	 */
-	virtual void process_keyup_event(const SDL_Event& event);
+	virtual void process(events::pump_info&) override;
 
-	virtual void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp);
+	/** Process keydown (always). Overridden in derived classes */
+	virtual void process_keydown_event(const SDL_Event& /*event*/)
+	{
+		// No action by default
+	}
+
+	/** Process keyup (always). * Overridden in derived classes */
+	virtual void process_keyup_event(const SDL_Event& /*event*/)
+	{
+		// No action by default
+	}
+
+	virtual void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp);
 	virtual void execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
 
 	virtual bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
+	
+	void long_touch_callback(int x, int y);
 
-	const config &get_theme(const config& game_config, std::string theme_name);
 	const config& game_config_;
-	const int ticks_;
+
 	CKey key_;
-	bool browse_;
+
 	bool scrolling_;
+	bool scroll_up_;
+	bool scroll_down_;
+	bool scroll_left_;
+	bool scroll_right_;
+
 	joystick_manager joystick_manager_;
+
+private:
+	/* A separate class for listening key-up events.
+	It's needed because otherwise such events might be consumed by a different event context
+	and the input system would believe that the player is still holding a key (bug #2573) */
+	class keyup_listener : public events::sdl_handler
+	{
+	public:
+		keyup_listener(controller_base& controller)
+			: events::sdl_handler(false)
+			, controller_(controller)
+		{
+			join_global();
+		}
+
+		void handle_event(const SDL_Event& event) override;
+		void handle_window_event(const SDL_Event&) override {}
+
+	private:
+		controller_base& controller_;
+	};
+
+	keyup_listener key_release_listener_;
+
+	bool last_mouse_is_touch_;
+	/** Context menu timer */
+	size_t long_touch_timer_;
 };
-
-
-#endif

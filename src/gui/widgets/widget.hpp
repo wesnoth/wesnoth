@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2007 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2007 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,30 +12,30 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_WIDGET_HPP_INCLUDED
-#define GUI_WIDGETS_WIDGET_HPP_INCLUDED
+#pragma once
 
-#include "gui/auxiliary/event/dispatcher.hpp"
-#include "gui/lib/types/point.hpp"
+#include "gui/core/event/dispatcher.hpp"
+#include "sdl/point.hpp"
 #include "gui/widgets/event_executor.hpp"
-
-#include "sdl/utils.hpp"
-
-#include <boost/noncopyable.hpp>
+#include "color.hpp"
 
 #include <string>
+
+class surface;
+
+typedef std::map<std::string, t_string> string_map;
 
 namespace gui2
 {
 
-struct tbuilder_widget;
-class tdialog;
-class twindow;
+struct builder_widget;
+class window;
+class grid;
 
-namespace iterator
+namespace iteration
 {
-class twalker_;
-} // namespace iterator
+class walker_base;
+} // namespace iteration
 
 /**
  * Base class for all widgets.
@@ -44,109 +44,96 @@ class twalker_;
  * info needed for a real widget and some pure abstract functions which need to
  * be implemented by classes deriving from this class.
  */
-class twidget : private boost::noncopyable,
-				public tevent_executor,
-				public event::tdispatcher
+class widget : public event_executor, public event::dispatcher
 {
-	friend class tdebug_layout_graph;
-	friend class twindow; // needed for modifying the layout_size.
+	friend class debug_layout_graph;
+	friend class window; // needed for modifying the layout_size.
 
 
 	/***** ***** ***** ***** ***** Types. ***** ***** ***** ***** *****/
 
 public:
 	/** Visibility settings done by the user. */
-	class tvisible : private boost::noncopyable
+	enum class visibility
 	{
-		friend class tno_such_friend_exists_but_it_makes_the_compiler_happy;
-		tvisible();
+		/**
+		 * The user sets the widget visible, that means:
+		 * * The widget is visible.
+		 * * @ref find_at always 'sees' the widget (the active flag is
+		 *   tested later).
+		 * * The widget (if active) handles events (and sends events to
+		 *   its children).
+		 * * The widget is drawn (and sends the call to
+		 *   @ref populate_dirty_list to children).
+		 */
+		visible,
 
-	public:
-		/** @todo C++11 use a scoped enum. */
-		enum scoped_enum {
-			/**
-			 * The user sets the widget visible, that means:
-			 * * The widget is visible.
-			 * * @ref find_at always 'sees' the widget (the active flag is
-			 *   tested later).
-			 * * The widget (if active) handles events (and sends events to
-			 *   its children).
-			 * * The widget is drawn (and sends the call to
-			 *   @ref populate_dirty_list to children).
-			 */
-			visible,
+		/**
+		 * The user sets the widget hidden, that means:
+		 * * The widget is invisible but keeps its size.
+		 * * @ref find_at 'sees' the widget if active is @c false.
+		 * * The widget doesn't handle events (and doesn't send events to
+		 *   its children).
+		 * * The widget doesn't add itself @ref window::dirty_list_ when
+		 *   @ref populate_dirty_list is called (nor does it send the
+		 *   request to its children).
+		 */
+		hidden,
 
-			/**
-			 * The user sets the widget hidden, that means:
-			 * * The widget is invisible but keeps its size.
-			 * * @ref find_at 'sees' the widget if active is @c false.
-			 * * The widget doesn't handle events (and doesn't send events to
-			 *   its children).
-			 * * The widget doesn't add itself @ref twindow::dirty_list_ when
-			 *   @ref populate_dirty_list is called (nor does it send the
-			 *   request to its children).
-			 */
-			hidden,
-
-			/**
-			 * The user set the widget invisible, that means:
-			 * * The widget is invisible and its grid cell has size 0,0.
-			 * * @ref find_at never 'sees' the widget.
-			 * * The widget doesn't handle events (and doesn't send events to
-			 *   its children).
-			 * * The widget doesn't add itself @ref twindow::dirty_list_ when
-			 *   @ref populate_dirty_list is called (nor does it send the
-			 *   request to its children).
-			 */
-			invisible
-		};
+		/**
+		 * The user set the widget invisible, that means:
+		 * * The widget is invisible and its grid cell has size 0,0.
+		 * * @ref find_at never 'sees' the widget.
+		 * * The widget doesn't handle events (and doesn't send events to
+		 *   its children).
+		 * * The widget doesn't add itself @ref window::dirty_list_ when
+		 *   @ref populate_dirty_list is called (nor does it send the
+		 *   request to its children).
+		 */
+		invisible
 	};
 
 	/**
 	 * Visibility set by the engine.
 	 *
-	 * This state only will be used if @ref visible_ is @ref tvisible::visible
+	 * This state only will be used if @ref visible_ is @ref visibility::visible
 	 * depending on this state the widget might not be visible after all.
 	 */
-	class tredraw_action : private boost::noncopyable
+	enum class redraw_action
 	{
-		friend class tno_such_friend_exists_but_it_makes_the_compiler_happy;
-		tredraw_action();
+		/**
+		 * The widget is fully visible.
+		 *
+		 * The widget should be drawn if @ref dirty_ is @c true. The entire
+		 * widget's rectangle should be redrawn.
+		 */
+		full,
 
-	public:
-		/** @todo C++11 use a scoped enum. */
-		enum scoped_enum {
-			/**
-			 * The widget is fully visible.
-			 *
-			 * The widget should be drawn if @ref dirty_ is @c true. The entire
-			 * widget's rectangle should be redrawn.
-			 */
-			full,
+		/**
+		 * The widget is partly visible.
+		 *
+		 * The should be drawn if @ref dirty_ is @c true. The rectangle to
+		 * redraw in determined by @ref clipping_rectangle_
+		 */
+		partly,
 
-			/**
-			 * The widget is partly visible.
-			 *
-			 * The should be drawn if @ref dirty_ is @c true. The rectangle to
-			 * redraw in determined by @ref clipping_rectangle_
-			 */
-			partly,
-
-			/**
-			 * The widget is not visible.
-			 *
-			 * The widget should not be drawn if @ref dirty_ is @c true.
-			 */
-			none
-		};
+		/**
+		 * The widget is not visible.
+		 *
+		 * The widget should not be drawn if @ref dirty_ is @c true.
+		 */
+		none
 	};
 
 
 	/***** ***** ***** Constructor and destructor. ***** ***** *****/
 
 public:
+	widget(const widget&) = delete;
+	widget& operator=(const widget&) = delete;
+
 	/** @deprecated use the second overload. */
-	twidget();
+	widget();
 
 	/**
 	 * Constructor.
@@ -154,9 +141,9 @@ public:
 	 * @param builder             The builder object with the settings for the
 	 *                            object.
 	 */
-	explicit twidget(const tbuilder_widget& builder);
+	explicit widget(const builder_widget& builder);
 
-	virtual ~twidget() OVERRIDE;
+	virtual ~widget() override;
 
 
 	/***** ***** ***** ***** ID functions. ***** ***** ***** *****/
@@ -188,33 +175,25 @@ public:
 	 * Get the parent window.
 	 *
 	 * @returns                   Pointer to parent window.
-	 * @retval NULL               No parent window found.
+	 * @retval nullptr            No parent window found.
 	 */
-	twindow* get_window();
+	window* get_window();
 
 	/** The constant version of @ref get_window. */
-	const twindow* get_window() const;
+	const window* get_window() const;
 
 	/**
-	 * Returns the top-level dialogue.
+	 * Get the parent grid.
 	 *
-	 * A window is most of the time created by a dialogue, this function returns
-	 * that dialogue.
-	 *
-	 * @deprecated The function was used to install callbacks to member
-	 * functions of the dialogue. Once all widgets are converted to signals this
-	 * function will be removed.
-	 *
-	 * @returns                   The top-level dialogue.
-	 * @retval NULL               No top-level window or the top-level window is
-	 *                            not owned by a dialogue.
+	 * @returns                 Pointer to parent grid.
+	 * @retval nullptr          No parent grid found.
 	 */
-	tdialog* dialog();
+	grid* get_parent_grid();
 
 	/*** *** *** *** *** *** Setters and getters. *** *** *** *** *** ***/
 
-	void set_parent(twidget* parent);
-	twidget* parent();
+	void set_parent(widget* parent);
+	widget* parent();
 
 	/*** *** *** *** *** *** *** *** Members. *** *** *** *** *** *** *** ***/
 
@@ -223,9 +202,9 @@ private:
 	 * The parent widget.
 	 *
 	 * If the widget has a parent it contains a pointer to the parent, else it
-	 * is set to @c NULL.
+	 * is set to @c nullptr.
 	 */
-	twidget* parent_;
+	widget* parent_;
 
 
 	/***** ***** ***** ***** Size and layout functions. ***** ***** ***** *****/
@@ -236,7 +215,7 @@ public:
 	 *
 	 * Every widget has a member @ref layout_size_ which holds the best size in
 	 * the current layout phase. When the windows starts the layout phase it
-	 * calls @ref layout_initialise which resets this value.
+	 * calls @ref layout_initialize which resets this value.
 	 *
 	 * Every widget has two function to get the best size. @ref get_best_size
 	 * tests whether layout_size_ is set and if so returns that value otherwise
@@ -255,12 +234,12 @@ public:
 	 *
 	 * See @ref layout_algorithm for more information.
 	 *
-	 * @param full_initialisation For widgets with scrollbars it hides them
+	 * @param full_initialization For widgets with scrollbars it hides them
 	 *                            unless the mode is
-	 *                            @ref tscrollbar_mode::always_visible. For
+	 *                            @ref scrollbar_mode::ALWAYS_VISIBLE. For
 	 *                            other widgets this flag is a @em NOP.
 	 */
-	virtual void layout_initialise(const bool full_initialisation);
+	virtual void layout_initialize(const bool full_initialization);
 
 	/**
 	 * Tries to reduce the width of a widget.
@@ -325,7 +304,7 @@ public:
 	 * @returns                      The best size for the widget.
 	 * @retval 0,0                   The best size is 0,0.
 	 */
-	tpoint get_best_size() const;
+	point get_best_size() const;
 
 private:
 	/**
@@ -338,9 +317,13 @@ private:
 	 * @returns                      The best size for the widget.
 	 * @retval 0,0                   The best size is 0,0.
 	 */
-	virtual tpoint calculate_best_size() const = 0;
+	virtual point calculate_best_size() const = 0;
 
 public:
+	/**
+	 * Whether the mouse move/click event go 'through' this widget.
+	 */
+	virtual bool can_mouse_focus() const { return true; }
 	/**
 	 * Can the widget wrap.
 	 *
@@ -362,7 +345,7 @@ public:
 	 *
 	 * @param origin              The new origin.
 	 */
-	virtual void set_origin(const tpoint& origin);
+	virtual void set_origin(const point& origin);
 
 	/**
 	 * Sets the size of the widget.
@@ -373,7 +356,7 @@ public:
 	 *
 	 * @param size                The size of the widget.
 	 */
-	virtual void set_size(const tpoint& size);
+	virtual void set_size(const point& size);
 
 	/**
 	 * Places the widget.
@@ -384,7 +367,7 @@ public:
 	 * @param origin              The position of top left of the widget.
 	 * @param size                The size of the widget.
 	 */
-	virtual void place(const tpoint& origin, const tpoint& size);
+	virtual void place(const point& origin, const point& size);
 
 	/**
 	 * Moves a widget.
@@ -401,6 +384,20 @@ public:
 	virtual void move(const int x_offset, const int y_offset);
 
 	/**
+	 * Sets the horizontal alignment of the widget within its parent grid.
+	 *
+	 * @param alignment           The new alignment.
+	 */
+	virtual void set_horizontal_alignment(const std::string& alignment);
+
+	/**
+	 * Sets the horizontal alignment of the widget within its parent grid.
+	 *
+	 * @param alignment           The new alignment.
+	 */
+	virtual void set_vertical_alignment(const std::string& alignment);
+
+	/**
 	 * Allows a widget to update its children.
 	 *
 	 * Before the window is populating the dirty list the widgets can update
@@ -415,14 +412,14 @@ public:
 	 *
 	 * @returns                   The origin of the widget.
 	 */
-	tpoint get_origin() const;
+	point get_origin() const;
 
 	/**
 	 * Returns the size of the widget.
 	 *
 	 * @returns                   The size of the widget.
 	 */
-	tpoint get_size() const;
+	point get_size() const;
 
 	/**
 	 * Gets the bounding rectangle of the widget on the screen.
@@ -442,8 +439,17 @@ public:
 	unsigned get_height() const;
 
 protected:
-	void set_layout_size(const tpoint& size);
-	const tpoint& layout_size() const;
+	void set_layout_size(const point& size);
+	const point& layout_size() const;
+
+	/**
+	* Throws away @ref layout_size_.
+	*
+	* Use with care: this function does not recurse to child widgets.
+	*
+	* See @ref layout_algorithm for more information.
+	*/
+	void clear_layout_size() { set_layout_size(point()); }
 
 public:
 	void set_linked_group(const std::string& linked_group);
@@ -469,8 +475,11 @@ private:
 	 * When 0,0 the real best size is returned, but in the layout phase a
 	 * wrapping or a scrollbar might change the best size for that widget.
 	 * This variable holds that best value.
+	 *
+	 * If the widget size hasn't been changed from the default that
+	 * calculate_best_size() returns, layout_size_ is (0,0).
 	 */
-	tpoint layout_size_;
+	point layout_size_;
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 
@@ -480,19 +489,19 @@ private:
 	 * We're mutable so calls can stay const and this is disabled in
 	 * production code.
 	 */
-	mutable tpoint last_best_size_;
+	mutable point last_best_size_;
 
 #endif
 
 	/**
 	 * The linked group the widget belongs to.
 	 *
-	 * @todo For now the linked group is initialised when the layout of the
-	 * widget is initialised. The best time to set it would be upon adding the
+	 * @todo For now the linked group is initialized when the layout of the
+	 * widget is initialized. The best time to set it would be upon adding the
 	 * widget in the window. Need to look whether it is possible in a clean way.
 	 * Maybe a signal just prior to showing a window where the widget can do
 	 * some of it's on things, would also be nice for widgets that need a
-	 * finaliser function.
+	 * finalizer function.
 	 */
 	std::string linked_group_;
 
@@ -518,8 +527,8 @@ public:
 	 * Calculates the clipping rectangle of the widget.
 	 *
 	 * The clipping rectangle is used then the @ref redraw_action_ is
-	 * @ref tredraw_action::partly. Since the drawing can be offsetted it also
-	 * needs offset paramters.
+	 * @ref redraw_action::partly. Since the drawing can be offsetted it also
+	 * needs offset parameters.
 	 *
 	 * @param x_offset            The offset in the x-direction when drawn.
 	 * @param y_offset            The offset in the y-direction when drawn.
@@ -542,7 +551,6 @@ public:
 	 *                            @p frame_buffer to draw.
 	 */
 	void draw_background(surface& frame_buffer, int x_offset, int y_offset);
-	void draw_background(surface& frame_buffer);
 
 	/**
 	 * Draws the children of a widget.
@@ -559,7 +567,6 @@ public:
 	 *                            @p frame_buffer to draw.
 	 */
 	void draw_children(surface& frame_buffer, int x_offset, int y_offset);
-	void draw_children(surface& frame_buffer);
 
 	/**
 	 * Draws the foreground of the widget.
@@ -577,7 +584,6 @@ public:
 	 *                            @p frame_buffer to draw.
 	 */
 	void draw_foreground(surface& frame_buffer, int x_offset, int y_offset);
-	void draw_foreground(surface& frame_buffer);
 
 private:
 	/** See @ref draw_background. */
@@ -593,9 +599,6 @@ private:
 	}
 
 	/** See @ref draw_children. */
-	virtual void impl_draw_children(surface& /*frame_buffer*/)
-	{
-	}
 	virtual void impl_draw_children(surface& /*frame_buffer*/
 									,
 									int /*x_offset*/
@@ -605,9 +608,6 @@ private:
 	}
 
 	/** See @ref draw_foreground. */
-	virtual void impl_draw_foreground(surface& /*frame_buffer*/)
-	{
-	}
 	virtual void impl_draw_foreground(surface& /*frame_buffer*/
 									  ,
 									  int /*x_offset*/
@@ -620,7 +620,7 @@ public:
 	/**
 	 * Adds a widget to the dirty list if it is dirty.
 	 *
-	 * See @ref twindow::dirty_list_ for more information regarding the dirty
+	 * See @ref window::dirty_list_ for more information regarding the dirty
 	 * list.
 	 *
 	 * If the widget is not dirty and has children it should add itself to the
@@ -631,8 +631,8 @@ public:
 	 * @param call_stack          The call-stack of widgets traversed to reach
 	 *                            this function.
 	 */
-	void populate_dirty_list(twindow& caller,
-							 std::vector<twidget*>& call_stack);
+	void populate_dirty_list(window& caller,
+							 std::vector<widget*>& call_stack);
 
 private:
 	/**
@@ -647,8 +647,8 @@ private:
 	 *                            this function.
 	 */
 	virtual void
-	child_populate_dirty_list(twindow& caller,
-							  const std::vector<twidget*>& call_stack);
+	child_populate_dirty_list(window& caller,
+							  const std::vector<widget*>& call_stack);
 
 public:
 	/**
@@ -676,18 +676,14 @@ public:
 	void set_is_dirty(const bool is_dirty);
 	bool get_is_dirty() const;
 
-	void set_visible(const tvisible::scoped_enum visible);
-	tvisible::scoped_enum get_visible() const;
+	void set_visible(const visibility visible);
+	visibility get_visible() const;
 
-	tredraw_action::scoped_enum get_drawing_action() const;
-
-#ifndef LOW_MEM
+	redraw_action get_drawing_action() const;
 
 	void set_debug_border_mode(const unsigned debug_border_mode);
 
-	void set_debug_border_colour(const unsigned debug_border_colour);
-
-#endif
+	void set_debug_border_color(const color_t debug_border_color);
 
 	/*** *** *** *** *** *** *** *** Members. *** *** *** *** *** *** *** ***/
 
@@ -704,15 +700,13 @@ private:
 	bool is_dirty_;
 
 	/** Field for the status of the visibility. */
-	tvisible::scoped_enum visible_;
+	visibility visible_;
 
 	/** Field for the action to do on a drawing request. */
-	tredraw_action::scoped_enum redraw_action_;
+	redraw_action redraw_action_;
 
 	/** The clipping rectangle if a widget is partly visible. */
 	SDL_Rect clipping_rectangle_;
-
-#ifndef LOW_MEM
 
 	/**
 	 * Mode for drawing the debug border.
@@ -727,23 +721,11 @@ private:
 	 */
 	unsigned debug_border_mode_;
 
-	/** The colour for the debug border. */
-	unsigned debug_border_colour_;
+	/** The color for the debug border. */
+	color_t debug_border_color_;
 
-	void draw_debug_border(surface& frame_buffer);
-	void draw_debug_border(surface& frame_buffer, int x_offset, int y_offset);
-
-#else
-
-	void draw_debug_border(surface&)
-	{
-	}
-	void draw_debug_border(surface&, int, int)
-	{
-	}
-
-#endif
-
+	void draw_debug_border();
+	void draw_debug_border(int x_offset, int y_offset);
 
 	/***** ***** ***** ***** Query functions ***** ***** ***** *****/
 
@@ -758,14 +740,14 @@ public:
 	 *                            flag.
 	 *
 	 * @returns                   The widget with the id.
-	 * @retval NULL               No widget at the wanted coordinate found (or
+	 * @retval nullptr               No widget at the wanted coordinate found (or
 	 *                            not active if must_be_active was set).
 	 */
-	virtual twidget* find_at(const tpoint& coordinate,
+	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active);
 
 	/** The constant version of @ref find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
+	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const;
 
 	/**
@@ -780,13 +762,13 @@ public:
 	 *                            flag.
 	 *
 	 * @returns                   The widget with the id.
-	 * @retval NULL               No widget with the id found (or not active if
+	 * @retval nullptr               No widget with the id found (or not active if
 	 *                            must_be_active was set).
 	 */
-	virtual twidget* find(const std::string& id, const bool must_be_active);
+	virtual widget* find(const std::string& id, const bool must_be_active);
 
 	/** The constant version of @ref find. */
-	virtual const twidget* find(const std::string& id,
+	virtual const widget* find(const std::string& id,
 								const bool must_be_active) const;
 
 	/**
@@ -800,11 +782,11 @@ public:
 	 *
 	 * @returns                   Whether or not the @p widget was found.
 	 */
-	virtual bool has_widget(const twidget& widget) const;
+	virtual bool has_widget(const widget& widget) const;
 
 private:
-	/** See @ref event::tdispatcher::is_at. */
-	virtual bool is_at(const tpoint& coordinate) const OVERRIDE;
+	/** See @ref event::dispatcher::is_at. */
+	virtual bool is_at(const point& coordinate) const override;
 
 	/**
 	 * Is the coordinate inside our area.
@@ -819,8 +801,19 @@ private:
 	 *
 	 * @returns                   Status.
 	 */
-	bool is_at(const tpoint& coordinate, const bool must_be_active) const;
+	bool is_at(const point& coordinate, const bool must_be_active) const;
 
+	/**
+	 * Is the widget and every single one of its parents visible?
+	 *
+	 * @param widget              Widget where to start the check.
+	 * @param must_be_active      The widget should be active, not all widgets
+	 *                            have an active flag, those who don't ignore
+	 *                            flag.
+	 *
+	 * @returns                   Status.
+	 */
+	bool recursive_is_visible(const widget* widget, const bool must_be_active) const;
 
 	/***** ***** ***** ***** Miscellaneous ***** ***** ****** *****/
 
@@ -829,9 +822,7 @@ public:
 	virtual bool disable_click_dismiss() const = 0;
 
 	/** Creates a new walker object on the heap. */
-	virtual iterator::twalker_* create_walker() = 0;
+	virtual iteration::walker_base* create_walker() = 0;
 };
 
 } // namespace gui2
-
-#endif

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,17 +14,16 @@
 
 /** @file */
 
-#ifndef PATHUTILS_H_INCLUDED
-#define PATHUTILS_H_INCLUDED
+#pragma once
 
-#include "map_location.hpp"
+#include "map/location.hpp"
 
 class gamemap;
 
-class xy_pred : public std::unary_function<map_location const&, bool>
+class xy_pred
 {
 public:
-	virtual bool operator()(map_location const&) const = 0;
+	virtual bool operator()(const map_location&) const = 0;
 protected:
 	virtual ~xy_pred() {}
 };
@@ -50,7 +49,7 @@ void get_tiles_in_radius(const map_location& center, const int radius,
  * of @a center (including @a center itself). @a result must be a std::set
  * of locations.
  */
-void get_tiles_radius(const map_location& center, size_t radius,
+void get_tiles_radius(const map_location& center, std::size_t radius,
                       std::set<map_location>& result);
 
 /**
@@ -59,7 +58,7 @@ void get_tiles_radius(const map_location& center, size_t radius,
  * @a result must be a std::set of locations.
  */
 void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
-                      size_t radius, std::set<map_location>& result,
+                      std::size_t radius, std::set<map_location>& result,
                       bool with_border=false);
 
 /**
@@ -69,8 +68,5 @@ void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
  * @a result must be a std::set of locations.
  */
 void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
-                      size_t radius, std::set<map_location>& result,
+                      std::size_t radius, std::set<map_location>& result,
                       bool with_border, const xy_pred &pred);
-
-#endif
-

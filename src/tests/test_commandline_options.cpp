@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2011 - 2014 by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2011 - 2018 by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,19 +16,20 @@
 #include "commandline_options.hpp"
 
 #include <boost/test/unit_test.hpp>
+#include <boost/assign.hpp>
 
 BOOST_AUTO_TEST_SUITE( cmdline_opts )
 
 BOOST_AUTO_TEST_CASE (test_empty_options)
 {
-	const char *argv[] = {"wesnoth"};
-	const int argc = sizeof(argv)/sizeof(const char *);
-	commandline_options co(argc,const_cast<char**>(argv));
 
-	BOOST_CHECK(!co.bpp);
+	std::vector<std::string> args {"wesnoth"};
+	commandline_options co(args);
+
 	BOOST_CHECK(!co.campaign);
 	BOOST_CHECK(!co.campaign_difficulty);
 	BOOST_CHECK(!co.campaign_scenario);
+	BOOST_CHECK(!co.campaign_skip_story);
 	BOOST_CHECK(!co.clock);
 	BOOST_CHECK(!co.data_dir);
 	BOOST_CHECK(!co.data_path);
@@ -64,18 +65,12 @@ BOOST_AUTO_TEST_CASE (test_empty_options)
 	BOOST_CHECK(!co.nomusic);
 	BOOST_CHECK(!co.nosound);
 	BOOST_CHECK(!co.new_widgets);
-	BOOST_CHECK(!co.path);
 	BOOST_CHECK(!co.preprocess);
 	BOOST_CHECK(!co.preprocess_defines);
 	BOOST_CHECK(!co.preprocess_input_macros);
 	BOOST_CHECK(!co.preprocess_output_macros);
 	BOOST_CHECK(!co.preprocess_path);
 	BOOST_CHECK(!co.preprocess_target);
-	BOOST_CHECK(!co.proxy);
-	BOOST_CHECK(!co.proxy_address);
-	BOOST_CHECK(!co.proxy_password);
-	BOOST_CHECK(!co.proxy_port);
-	BOOST_CHECK(!co.proxy_user);
 	BOOST_CHECK(!co.resolution);
 	BOOST_CHECK(!co.rng_seed);
 	BOOST_CHECK(!co.multiplayer_scenario);
@@ -96,23 +91,20 @@ BOOST_AUTO_TEST_CASE (test_empty_options)
 
 BOOST_AUTO_TEST_CASE (test_default_options)
 {
-	const char *argv[] =
-	{
+	std::vector<std::string> args {
 		"wesnoth",
 		"--campaign",
 		"--editor",
 		"--logdomains",
 		"--preprocess-output-macros",
 		"--server",
-		"--test"
-	};
-	const int argc = sizeof(argv)/sizeof(const char *);
-	commandline_options co(argc,const_cast<char**>(argv));
+		"--test"};
 
-	BOOST_CHECK(!co.bpp);
+	commandline_options co(args);
 	BOOST_CHECK(co.campaign && co.campaign->empty());
 	BOOST_CHECK(!co.campaign_difficulty);
 	BOOST_CHECK(!co.campaign_scenario);
+	BOOST_CHECK(!co.campaign_skip_story);
 	BOOST_CHECK(!co.clock);
 	BOOST_CHECK(!co.data_dir);
 	BOOST_CHECK(!co.data_path);
@@ -149,18 +141,12 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 	BOOST_CHECK(!co.nomusic);
 	BOOST_CHECK(!co.nosound);
 	BOOST_CHECK(!co.new_widgets);
-	BOOST_CHECK(!co.path);
 	BOOST_CHECK(!co.preprocess);
 	BOOST_CHECK(!co.preprocess_defines);
 	BOOST_CHECK(!co.preprocess_input_macros);
 	BOOST_CHECK(co.preprocess_output_macros && co.preprocess_output_macros->empty());
 	BOOST_CHECK(!co.preprocess_path);
 	BOOST_CHECK(!co.preprocess_target);
-	BOOST_CHECK(!co.proxy);
-	BOOST_CHECK(!co.proxy_address);
-	BOOST_CHECK(!co.proxy_password);
-	BOOST_CHECK(!co.proxy_port);
-	BOOST_CHECK(!co.proxy_user);
 	BOOST_CHECK(!co.resolution);
 	BOOST_CHECK(!co.rng_seed);
 	BOOST_CHECK(co.server && co.server->empty());
@@ -180,17 +166,16 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 
 BOOST_AUTO_TEST_CASE (test_full_options)
 {
-	const char *argv[] =
-	{
+	std::vector<std::string> args {
 		"wesnoth",
 		"--ai-config=1:aifoo",
 		"--ai-config=2:aibar",
 		"--algorithm=3:algfoo",
 		"--algorithm=4:algbar",
-		"--bpp=32",
 		"--campaign=campfoo",
 		"--campaign-difficulty=16",
 		"--campaign-scenario=scenfoo",
+		"--campaign-skip-story",
 		"--clock",
 		"--controller=5:confoo",
 		"--controller=6:conbar",
@@ -227,16 +212,10 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--nogui",
 		"--parm=7:parmfoo:valfoo",
 		"--parm=8:parmbar:valbar",
-		"--path",
 		"--preprocess", "preppathfoo", "preptargfoo",
 		"--preprocess-defines=DEFFOO,DEFBAR",
 		"--preprocess-input-macros=inmfoo",
 		"--preprocess-output-macros=outmfoo",
-		"--proxy",
-		"--proxy-address=addressfoo",
-		"--proxy-password=passfoo",
-		"--proxy-port=portfoo",
-		"--proxy-user=userfoo",
 		"--resolution=800x600",
 		"--rng-seed=1234",
 		"--scenario=scenfoo",
@@ -253,15 +232,14 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--validcache",
 		"--version",
 		"--windowed",
-		"--with-replay"
-	};
-	const int argc = sizeof(argv)/sizeof(const char *);
-	commandline_options co(argc,const_cast<char**>(argv));
+		"--with-replay"};
 
-	BOOST_CHECK(co.bpp && *co.bpp == 32);
+	commandline_options co(args);
+
 	BOOST_CHECK(co.campaign && *co.campaign == "campfoo");
 	BOOST_CHECK(co.campaign_difficulty && *co.campaign_difficulty == 16);
 	BOOST_CHECK(co.campaign_scenario && *co.campaign_scenario == "scenfoo");
+	BOOST_CHECK(co.campaign_skip_story);
 	BOOST_CHECK(co.clock);
 	BOOST_CHECK(co.data_dir && *co.data_dir == "datadirfoo");
 	BOOST_CHECK(co.data_path);
@@ -279,38 +257,38 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.load && *co.load == "loadfoo");
 	BOOST_CHECK(co.log);
 	BOOST_CHECK(co.log->size()==8);
-	BOOST_CHECK(co.log->at(0).get<0>() == 0 && co.log->at(1).get<0>() == 0);
-	BOOST_CHECK(co.log->at(0).get<1>() == "errfoo" && co.log->at(1).get<1>() == "errbar/*");
-	BOOST_CHECK(co.log->at(2).get<0>() == 1 && co.log->at(3).get<0>() == 1);
-	BOOST_CHECK(co.log->at(2).get<1>() == "warnfoo" && co.log->at(3).get<1>() == "warnfoo/bar");
-	BOOST_CHECK(co.log->at(4).get<0>() == 2);
-	BOOST_CHECK(co.log->at(4).get<1>() == "infofoo");
-	BOOST_CHECK(co.log->at(5).get<0>() == 3 && co.log->at(6).get<0>() == 3 && co.log->at(7).get<0>() == 3);
-	BOOST_CHECK(co.log->at(5).get<1>() == "dbgfoo" && co.log->at(6).get<1>() == "dbgbar" && co.log->at(7).get<1>() == "dbg/foo/bar/baz");
+	BOOST_CHECK(co.log->at(0).first  == 0         && co.log->at(1).first  == 0);
+	BOOST_CHECK(co.log->at(0).second == "errfoo"  && co.log->at(1).second == "errbar/*");
+	BOOST_CHECK(co.log->at(2).first  == 1         && co.log->at(3).first == 1);
+	BOOST_CHECK(co.log->at(2).second == "warnfoo" && co.log->at(3).second == "warnfoo/bar");
+	BOOST_CHECK(co.log->at(4).first  == 2);
+	BOOST_CHECK(co.log->at(4).second == "infofoo");
+	BOOST_CHECK(co.log->at(5).first  == 3         && co.log->at(6).first == 3        && co.log->at(7).first == 3);
+	BOOST_CHECK(co.log->at(5).second == "dbgfoo"  && co.log->at(6).second == "dbgbar" && co.log->at(7).second == "dbg/foo/bar/baz");
 	BOOST_CHECK(co.logdomains && *co.logdomains == "filterfoo");
 	BOOST_CHECK(co.multiplayer);
 	BOOST_CHECK(co.multiplayer_ai_config);
 	BOOST_CHECK(co.multiplayer_ai_config->size() == 2);
-	BOOST_CHECK(co.multiplayer_ai_config->at(0).get<0>() == 1 && co.multiplayer_ai_config->at(0).get<1>() == "aifoo");
-	BOOST_CHECK(co.multiplayer_ai_config->at(1).get<0>() == 2 && co.multiplayer_ai_config->at(1).get<1>() == "aibar");
+	BOOST_CHECK(co.multiplayer_ai_config->at(0).first == 1 && co.multiplayer_ai_config->at(0).second == "aifoo");
+	BOOST_CHECK(co.multiplayer_ai_config->at(1).first == 2 && co.multiplayer_ai_config->at(1).second == "aibar");
 	BOOST_CHECK(co.multiplayer_algorithm);
-	BOOST_CHECK(co.multiplayer_algorithm->at(0).get<0>() == 3 && co.multiplayer_algorithm->at(0).get<1>() == "algfoo");
-	BOOST_CHECK(co.multiplayer_algorithm->at(1).get<0>() == 4 && co.multiplayer_algorithm->at(1).get<1>() == "algbar");
+	BOOST_CHECK(co.multiplayer_algorithm->at(0).first == 3 && co.multiplayer_algorithm->at(0).second == "algfoo");
+	BOOST_CHECK(co.multiplayer_algorithm->at(1).first == 4 && co.multiplayer_algorithm->at(1).second == "algbar");
 	BOOST_CHECK(co.multiplayer_controller);
-	BOOST_CHECK(co.multiplayer_controller->at(0).get<0>() == 5 && co.multiplayer_controller->at(0).get<1>() == "confoo");
-	BOOST_CHECK(co.multiplayer_controller->at(1).get<0>() == 6 && co.multiplayer_controller->at(1).get<1>() == "conbar");
+	BOOST_CHECK(co.multiplayer_controller->at(0).first == 5 && co.multiplayer_controller->at(0).second == "confoo");
+	BOOST_CHECK(co.multiplayer_controller->at(1).first == 6 && co.multiplayer_controller->at(1).second == "conbar");
 	BOOST_CHECK(co.multiplayer_era && *co.multiplayer_era == "erafoo");
 	BOOST_CHECK(co.multiplayer_exit_at_end);
 	BOOST_CHECK(co.multiplayer_ignore_map_settings);
 	BOOST_CHECK(co.multiplayer_label && *co.multiplayer_label == "labelfoo");
 	BOOST_CHECK(co.multiplayer_parm);
-	BOOST_CHECK(co.multiplayer_parm->at(0).get<0>() == 7 && co.multiplayer_parm->at(0).get<1>() == "parmfoo" && co.multiplayer_parm->at(0).get<2>() == "valfoo");
-	BOOST_CHECK(co.multiplayer_parm->at(1).get<0>() == 8 && co.multiplayer_parm->at(1).get<1>() == "parmbar" && co.multiplayer_parm->at(1).get<2>() == "valbar");
+	BOOST_CHECK(std::get<0>(co.multiplayer_parm->at(0)) == 7 && std::get<1>(co.multiplayer_parm->at(0)) == "parmfoo" && std::get<2>(co.multiplayer_parm->at(0)) == "valfoo");
+	BOOST_CHECK(std::get<0>(co.multiplayer_parm->at(1)) == 8 && std::get<1>(co.multiplayer_parm->at(1)) == "parmbar" && std::get<2>(co.multiplayer_parm->at(1)) == "valbar");
 	BOOST_CHECK(co.multiplayer_scenario && *co.multiplayer_scenario == "scenfoo");
 	BOOST_CHECK(co.multiplayer_side);
 	BOOST_CHECK(co.multiplayer_side->size() == 2);
-	BOOST_CHECK(co.multiplayer_side->at(0).get<0>() == 9 && co.multiplayer_side->at(0).get<1>() == "sidefoo");
-	BOOST_CHECK(co.multiplayer_side->at(1).get<0>() == 10 && co.multiplayer_side->at(1).get<1>() == "sidebar");
+	BOOST_CHECK(co.multiplayer_side->at(0).first == 9  && co.multiplayer_side->at(0).second == "sidefoo");
+	BOOST_CHECK(co.multiplayer_side->at(1).first == 10 && co.multiplayer_side->at(1).second == "sidebar");
 	BOOST_CHECK(co.multiplayer_turns && *co.multiplayer_turns == "42");
 	BOOST_CHECK(co.max_fps && *co.max_fps == 100);
 	BOOST_CHECK(co.nocache);
@@ -319,20 +297,14 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.nomusic);
 	BOOST_CHECK(co.nosound);
 	BOOST_CHECK(co.new_widgets);
-	BOOST_CHECK(co.path);
 	BOOST_CHECK(co.preprocess && co.preprocess_path && co.preprocess_target);
 	BOOST_CHECK(*co.preprocess_path == "preppathfoo" && *co.preprocess_target == "preptargfoo");
 	BOOST_CHECK(co.preprocess_defines && co.preprocess_defines->size() == 2);
 	BOOST_CHECK(co.preprocess_defines->at(0) == "DEFFOO" && co.preprocess_defines->at(1) == "DEFBAR");
 	BOOST_CHECK(co.preprocess_input_macros && *co.preprocess_input_macros == "inmfoo");
 	BOOST_CHECK(co.preprocess_output_macros && *co.preprocess_output_macros == "outmfoo");
-	BOOST_CHECK(co.proxy);
-	BOOST_CHECK(co.proxy_address && *co.proxy_address == "addressfoo");
-	BOOST_CHECK(co.proxy_password && *co.proxy_password == "passfoo");
-	BOOST_CHECK(co.proxy_port && *co.proxy_port == "portfoo");
-	BOOST_CHECK(co.proxy_user && *co.proxy_user == "userfoo");
 	BOOST_CHECK(co.resolution);
-	BOOST_CHECK(co.resolution->get<0>() == 800 && co.resolution->get<1>() == 600);
+	BOOST_CHECK(co.resolution->first == 800 && co.resolution->second == 600);
 	BOOST_CHECK(co.rng_seed && *co.rng_seed == 1234);
 	BOOST_CHECK(co.server && *co.server == "servfoo");
 	BOOST_CHECK(co.screenshot && co.screenshot_map_file && co.screenshot_output_file);
@@ -350,18 +322,16 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 
 BOOST_AUTO_TEST_CASE (test_positional_options)
 {
-	const char *argv[] =
-	{
+	std::vector<std::string> args {
 		"wesnoth",
-		"datadirfoo"
-	};
-	const int argc = sizeof(argv)/sizeof(const char *);
-	commandline_options co(argc,const_cast<char**>(argv));
+		"datadirfoo"};
 
-	BOOST_CHECK(!co.bpp);
+	commandline_options co(args);
+
 	BOOST_CHECK(!co.campaign);
 	BOOST_CHECK(!co.campaign_difficulty);
 	BOOST_CHECK(!co.campaign_scenario);
+	BOOST_CHECK(!co.campaign_skip_story);
 	BOOST_CHECK(!co.clock);
 	BOOST_CHECK(co.data_dir && *co.data_dir == "datadirfoo");
 	BOOST_CHECK(!co.data_path);
@@ -398,18 +368,12 @@ BOOST_AUTO_TEST_CASE (test_positional_options)
 	BOOST_CHECK(!co.nomusic);
 	BOOST_CHECK(!co.nosound);
 	BOOST_CHECK(!co.new_widgets);
-	BOOST_CHECK(!co.path);
 	BOOST_CHECK(!co.preprocess);
 	BOOST_CHECK(!co.preprocess_defines);
 	BOOST_CHECK(!co.preprocess_input_macros);
 	BOOST_CHECK(!co.preprocess_output_macros);
 	BOOST_CHECK(!co.preprocess_path);
 	BOOST_CHECK(!co.preprocess_target);
-	BOOST_CHECK(!co.proxy);
-	BOOST_CHECK(!co.proxy_address);
-	BOOST_CHECK(!co.proxy_password);
-	BOOST_CHECK(!co.proxy_port);
-	BOOST_CHECK(!co.proxy_user);
 	BOOST_CHECK(!co.resolution);
 	BOOST_CHECK(!co.rng_seed);
 	BOOST_CHECK(!co.server);

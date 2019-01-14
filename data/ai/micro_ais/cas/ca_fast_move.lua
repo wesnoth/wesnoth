@@ -1,18 +1,21 @@
-local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local M = wesnoth.map
 
 local ca_fast_move = {}
 
-function ca_fast_move:evaluation(ai, cfg, self)
+function ca_fast_move:evaluation(cfg)
     local unit = AH.get_units_with_moves { side = wesnoth.current.side, canrecruit = 'no' }[1]
 
     if unit then return 20000 end
     return 0
 end
 
-function ca_fast_move:execution(ai, cfg, self)
+function ca_fast_move:execution(cfg)
     local move_cost_factor = cfg.move_cost_factor or 2.0
     if (move_cost_factor < 1.1) then move_cost_factor = 1.1 end
+
+    -- Get the locations to be avoided
+    local avoid_map = AH.get_avoid_map(ai, wml.get_child(cfg, "avoid"), true)
 
     local all_units_MP = AH.get_units_with_moves { side = wesnoth.current.side, canrecruit = 'no' }
     local units = {}
@@ -25,20 +28,22 @@ function ca_fast_move:execution(ai, cfg, self)
     local goals = {}
 
     -- Villages get added first, so that (hopefully, scouts and faster units will go for them first)
-    local village_value = ai.get_village_value()
-    if (village_value > 0) then
+    local village_value = ai.aspects.village_value
+    if leader and (village_value > 0) then
         local villages = wesnoth.get_villages()
 
-        -- Eliminate villages owned by a side that is not an enemy
+        -- Eliminate villages in avoid_map and those owned by an allied side
         -- Also remove unowned villages if the AI has no leader
         for i = #villages,1,-1 do
-            local owner = wesnoth.get_village_owner(villages[i][1], villages[i][2])
-            if owner and (not wesnoth.is_enemy(owner, wesnoth.current.side)) then
+            if avoid_map:get(villages[i][1], villages[i][2]) then
                 table.remove(villages, i)
-            end
-
-            if (not leader) and (not owner) then
-                table.remove(villages, i)
+            else
+                local owner = wesnoth.get_village_owner(villages[i][1], villages[i][2])
+                if owner and (not wesnoth.is_enemy(owner, wesnoth.current.side)) then
+                    table.remove(villages, i)
+                elseif (not leader) and (not owner) then
+                    table.remove(villages, i)
+                end
             end
         end
 
@@ -48,7 +53,7 @@ function ca_fast_move:execution(ai, cfg, self)
             for j = i+1,#villages do
                 local v2 = villages[j]
 
-                local dist = H.distance_between(v1[1], v1[2], v2[1], v2[2])
+                local dist = M.distance_between(v1[1], v1[2], v2[1], v2[2])
                 dist = math.ceil(dist / 5.)  -- In discrete steps of 5 hexes
 
                 v1.rating = (v1.rating or 0) + 1. / dist
@@ -61,7 +66,7 @@ function ca_fast_move:execution(ai, cfg, self)
             local dist = 1  -- Just in case there is no leader
             dist = math.ceil(dist / 5.)  -- In discrete steps of 5 hexes
             if leader then
-                dist = H.distance_between(village[1], village[2], leader.x, leader.y)
+                dist = M.distance_between(village[1], village[2], leader.x, leader.y)
             end
 
             village.rating = (village.rating or 1.) * 1. / dist
@@ -87,31 +92,29 @@ function ca_fast_move:execution(ai, cfg, self)
 
                 for _,village in ipairs(villages) do
                     village.rating = village.rating / base_rating
-                        * H.distance_between(x, y, village[1], village[2])
+                        * M.distance_between(x, y, village[1], village[2])
                 end
             end
         end
     end
 
     -- Now add enemy leaders to the goals
-    local enemy_leaders =
-        wesnoth.get_units {
-            { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
-            canrecruit = 'yes'
-        }
+    local enemy_leaders = AH.get_attackable_enemies { canrecruit = 'yes' }
 
     -- Sort enemy leaders by distance to AI leader
     if leader then
         table.sort(enemy_leaders, function(a, b)
-            local dist_a = H.distance_between(leader.x, leader.y, a.x, a.y)
-            local dist_b = H.distance_between(leader.x, leader.y, b.x, b.y)
+            local dist_a = M.distance_between(leader.x, leader.y, a.x, a.y)
+            local dist_b = M.distance_between(leader.x, leader.y, b.x, b.y)
             return (dist_a < dist_b)
         end)
     end
 
     for i_el,enemy_leader in ipairs(enemy_leaders) do
-        local goal = { x = enemy_leader.x, y = enemy_leader.y }
-        table.insert(goals, goal)
+        if (not avoid_map:get(enemy_leader.x, enemy_leader.y)) then
+            local goal = { x = enemy_leader.x, y = enemy_leader.y }
+            table.insert(goals, goal)
+        end
     end
 
     -- Putting information about all the units into the goals
@@ -119,7 +122,7 @@ function ca_fast_move:execution(ai, cfg, self)
     for _,goal in ipairs(goals) do
         -- Insert information about the units
         for i_u,unit in ipairs(units) do
-            local dist = H.distance_between(unit.x, unit.y, goal.x, goal.y)
+            local dist = M.distance_between(unit.x, unit.y, goal.x, goal.y)
 
             goal[i_u] = {
                 dist = dist / unit.max_moves,
@@ -131,6 +134,7 @@ function ca_fast_move:execution(ai, cfg, self)
     end
 
     local keep_moving, next_goal = true, 0
+    if (not goals[1]) then keep_moving = false end
     while keep_moving do
         keep_moving = false
 
@@ -138,12 +142,12 @@ function ca_fast_move:execution(ai, cfg, self)
         if (next_goal > #goals) then next_goal = 1 end
         local goal = goals[next_goal]
 
-        local max_rating, best_unit_info = -9e99
+        local max_rating, best_unit_info = - math.huge
         for _,unit_info in ipairs(goal) do
             if (not unit_info.cost) then
                 local _,cost =
-                    wesnoth.find_path(
-                        units[unit_info.i_unit].x, units[unit_info.i_unit].y,
+                    AH.find_path_with_shroud(
+                        units[unit_info.i_unit],
                         goal.x, goal.y,
                         { ignore_units = true }
                     )
@@ -167,13 +171,13 @@ function ca_fast_move:execution(ai, cfg, self)
 
             -- We now want the hex that is 2 steps beyond the next hop for the unit
             -- on its way toward the goal, ignoring any unit along the way
-            local path = wesnoth.find_path(unit, goal.x, goal.y, { ignore_units = true })
+            local path = AH.find_path_with_shroud(unit, goal.x, goal.y, { ignore_units = true })
 
             -- Use current unit position as default
             local short_goal, index = { unit.x, unit.y }, 1
 
             for i = 2,#path do
-                local _, sub_cost = wesnoth.find_path(unit, path[i][1], path[i][2], { ignore_units = true })
+                local _, sub_cost = AH.find_path_with_shroud(unit, path[i][1], path[i][2], { ignore_units = true })
 
                 if (sub_cost <= unit.moves) then
                     short_goal, index = path[i], i
@@ -193,37 +197,41 @@ function ca_fast_move:execution(ai, cfg, self)
             local reach = wesnoth.find_reach(unit)
 
             local pre_ratings = {}
-            local max_rating, best_hex = -9e99
+            local max_rating, best_hex = - math.huge
             for _,loc in ipairs(reach) do
-                local rating = - H.distance_between(loc[1], loc[2], short_goal[1], short_goal[2])
-                local other_rating = - H.distance_between(loc[1], loc[2], goal.x, goal.y) / 10.
-                rating = rating + other_rating
+                if (not avoid_map:get(loc[1], loc[2])) then
+                    local rating = -M.distance_between(loc[1], loc[2], short_goal[1], short_goal[2])
+                    local other_rating = -M.distance_between(loc[1], loc[2], goal.x, goal.y) / 10.
+                    rating = rating + other_rating
 
-                local unit_in_way
-                if (rating > max_rating) then
-                    unit_in_way = wesnoth.get_unit(loc[1], loc[2])
-                    if (unit_in_way == unit) then unit_in_way = nil end
-
-                    if unit_in_way and (unit_in_way.side == unit.side) then
-                        local reach = AH.get_reachable_unocc(unit_in_way)
-                        if (reach:size() > 1) then
+                    local unit_in_way
+                    if (rating > max_rating) then
+                        unit_in_way = wesnoth.get_unit(loc[1], loc[2])
+                        if (unit_in_way == unit) or (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then
                             unit_in_way = nil
-                            rating = rating - 0.01
-                            other_rating = other_rating - 0.01
+                        end
+
+                        if unit_in_way and (unit_in_way.side == unit.side) then
+                            local reach = AH.get_reachable_unocc(unit_in_way)
+                            if (reach:size() > 1) then
+                                unit_in_way = nil
+                                rating = rating - 0.01
+                                other_rating = other_rating - 0.01
+                            end
                         end
                     end
-                end
 
-                if (not unit_in_way) then
-                    if cfg.dungeon_mode then
-                        table.insert(pre_ratings, {
-                            rating = rating,
-                            other_rating = other_rating,
-                            x = loc[1], y = loc[2]
-                        })
-                    else
-                        if (rating > max_rating) then
-                            max_rating, best_hex = rating, { loc[1], loc[2] }
+                    if (not unit_in_way) then
+                        if cfg.dungeon_mode then
+                            table.insert(pre_ratings, {
+                                rating = rating,
+                                other_rating = other_rating,
+                                x = loc[1], y = loc[2]
+                            })
+                        else
+                            if (rating > max_rating) then
+                                max_rating, best_hex = rating, { loc[1], loc[2] }
+                            end
                         end
                     end
                 end
@@ -234,10 +242,10 @@ function ca_fast_move:execution(ai, cfg, self)
             if cfg.dungeon_mode then
                 table.sort(pre_ratings, function(a,b) return (a.rating > b.rating) end)
 
-                wesnoth.extract_unit(unit)
+                unit:extract()
                 local old_x, old_y = unit.x, unit.y
 
-                local max_rating = -9e99
+                local max_rating = - math.huge
                 for _,pre_rating in ipairs(pre_ratings) do
                     -- If pre_rating is worse than the full rating, we are done because the
                     -- move cost can never be less than the distance, so we cannot possibly do
@@ -245,7 +253,7 @@ function ca_fast_move:execution(ai, cfg, self)
                     if (pre_rating.rating <= max_rating) then break end
 
                     unit.x, unit.y = pre_rating.x, pre_rating.y
-                    local _,cost = wesnoth.find_path(unit, short_goal[1], short_goal[2])
+                    local _,cost = AH.find_path_with_shroud(unit, short_goal[1], short_goal[2])
 
                     local rating = - cost + pre_rating.other_rating
 
@@ -254,15 +262,14 @@ function ca_fast_move:execution(ai, cfg, self)
                     end
                 end
 
-                unit.x, unit.y = old_x, old_y
-                wesnoth.put_unit(unit)
+                unit:to_map(old_x, old_y)
             end
 
             if best_hex then
                 local dx, dy = goal.x - best_hex[1], goal.y - best_hex[2]
-                local r = math.sqrt(dx * dx + dy * dy)
-                dx, dy = dx / r, dy / r
-                AH.movefull_outofway_stopunit(ai, unit, best_hex[1], best_hex[2], { dx = dx, dy = dy })
+                local move_result = AH.robust_move_and_attack(ai, unit, best_hex, nil, { dx = dx, dy = dy })
+                -- If something unexpected happened, return and reconsider
+                if (not move_result.ok) then return end
             end
 
             -- Also remove this unit from all the tables; using table.remove is fine here

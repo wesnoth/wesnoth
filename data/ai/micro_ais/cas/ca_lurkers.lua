@@ -1,45 +1,44 @@
-local LS = wesnoth.require "lua/location_set.lua"
+local LS = wesnoth.require "location_set"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local function get_lurker(cfg)
     -- We simply pick the first of the lurkers, they have no strategy
     local lurker = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", cfg.filter }
+        { "and", wml.get_child(cfg, "filter") }
     }[1]
     return lurker
 end
 
 local ca_lurkers = {}
 
-function ca_lurkers:evaluation(ai, cfg)
+function ca_lurkers:evaluation(cfg)
     if get_lurker(cfg) then return cfg.ca_score end
     return 0
 end
 
-function ca_lurkers:execution(ai, cfg)
+function ca_lurkers:execution(cfg)
     local lurker = get_lurker(cfg)
-    local targets = wesnoth.get_units {
-        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
-    }
+    local targets = AH.get_attackable_enemies()
 
     -- Sort targets by hitpoints (lurkers choose lowest HP target)
     table.sort(targets, function(a, b) return (a.hitpoints < b.hitpoints) end)
 
     local reach = LS.of_pairs(wesnoth.find_reach(lurker.x, lurker.y))
+    local lurk_area = wml.get_child(cfg, "filter_location")
     local reachable_attack_terrain =
          LS.of_pairs(wesnoth.get_locations  {
             { "and", { x = lurker.x, y = lurker.y, radius = lurker.moves } },
-            { "and", cfg.filter_location }
+            { "and", lurk_area }
         })
     reachable_attack_terrain:inter(reach)
 
     -- Need to restrict that to reachable and not occupied by an ally (except own position)
     local reachable_attack_terrain = reachable_attack_terrain:filter(function(x, y, v)
-        local occ_hex = wesnoth.get_units {
+        local occ_hex = AH.get_visible_units(wesnoth.current.side, {
             x = x, y = y,
             { "not", { x = lurker.x, y = lurker.y } }
-        }[1]
+        })[1]
         return not occ_hex
     end)
 
@@ -56,10 +55,7 @@ function ca_lurkers:execution(ai, cfg)
             local rand = math.random(1, reachable_attack_terrrain_adj_target:size())
             local dst = reachable_attack_terrrain_adj_target:to_stable_pairs()
 
-            AH.movefull_stopunit(ai, lurker, dst[rand])
-            if (not lurker) or (not lurker.valid) then return end
-
-            AH.checked_attack(ai, lurker, target)
+            AH.robust_move_and_attack(ai, lurker, dst[rand], target)
             return
        end
     end
@@ -69,9 +65,18 @@ function ca_lurkers:execution(ai, cfg)
         local reachable_wander_terrain =
             LS.of_pairs( wesnoth.get_locations {
                 { "and", { x = lurker.x, y = lurker.y, radius = lurker.moves } },
-                { "and", (cfg.filter_location_wander or cfg.filter_location) }
+                { "and", wml.get_child(cfg, "filter_location_wander") or lurk_area }
             })
         reachable_wander_terrain:inter(reach)
+
+        -- Need to restrict that to reachable and not occupied by an ally (except own position)
+        local reachable_wander_terrain = reachable_wander_terrain:filter(function(x, y, v)
+            local occ_hex = AH.get_visible_units(wesnoth.current.side, {
+                x = x, y = y,
+                { "not", { x = lurker.x, y = lurker.y } }
+            })[1]
+            return not occ_hex
+        end)
 
         if (reachable_wander_terrain:size() > 0) then
             local dst = reachable_wander_terrain:to_stable_pairs()

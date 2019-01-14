@@ -14,7 +14,7 @@ if [[ "$#" -ne 1 ]]; then
     echo "option passed in) as first and only arg. This file must be located at the root"
     echo "of the wesnoth repository directory, and the argument should just be its name"
     echo "and extension."
-    echo 
+    echo
     echo "Expects the current working directory to be the root directory of the repo."
     echo
     echo "Example Usage:"
@@ -25,7 +25,10 @@ if [[ "$#" -ne 1 ]]; then
     exit 1;
 fi
 
-rm -r headers-annotated
+if [ -d headers-annotated ]; then
+    rm -r headers-annotated
+fi
+
 cp -fR headers headers-annotated
 cd headers-annotated/
 for file in `find . -name "*.cpp" -type f -print0 | xargs -0`; do

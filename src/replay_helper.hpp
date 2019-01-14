@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -11,12 +11,12 @@
 
    See the COPYING file for more details.
 */
-#ifndef REPLAY_HELPER_H_INCLUDED
-#define REPLAY_HELPER_H_INCLUDED
 
+#pragma once
 
-#include "config.hpp"
+#include <vector>
 #include <string>
+class config;
 struct map_location;
 struct time_of_day;
 
@@ -34,7 +34,7 @@ public:
 	static config get_attack(const map_location& a, const map_location& b,
 		int att_weapon, int def_weapon, const std::string& attacker_type_id,
 		const std::string& defender_type_id, int attacker_lvl,
-		int defender_lvl, const size_t turn, const time_of_day &t);
+		int defender_lvl, const std::size_t turn, const time_of_day &t);
 
 	static config get_auto_shroud(bool turned_on);
 
@@ -49,5 +49,3 @@ public:
 	static config get_lua_ai(const std::string& lua_code);
 
 };
-
-#endif

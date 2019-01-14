@@ -2,7 +2,7 @@
  * @author Timotei Dolean
  */
 grammar org.wesnoth.WML hidden(EOL, WS, SL_COMMENT)
-generate wml "http://www.wesnoth.org/WML"
+generate wml "https://www.wesnoth.org/WML"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 WMLRoot:

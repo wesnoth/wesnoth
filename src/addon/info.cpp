@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2012 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2012 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,21 +15,18 @@
 #include "addon/info.hpp"
 
 #include "addon/manager.hpp"
-#include "game_config.hpp"
+#include "config.hpp"
+#include "font/pango/escape.hpp"
 #include "gettext.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
-
-#include <boost/foreach.hpp>
 
 static lg::log_domain log_addons_client("addons-client");
 #define ERR_AC LOG_STREAM(err ,  log_addons_client)
 #define LOG_AC LOG_STREAM(info,  log_addons_client)
 
 namespace {
-	const std::string fallback_addon_icon = "misc/blank-hex.png";
-
 	void resolve_deps_recursive(const addons_list& addons, const std::string& base_id, std::set<std::string>& dest)
 	{
 		addons_list::const_iterator it = addons.find(base_id);
@@ -44,7 +41,7 @@ namespace {
 			return;
 		}
 
-		BOOST_FOREACH(const std::string& dep, base_deps) {
+		for(const std::string& dep : base_deps) {
 			if(base_id == dep) {
 				LOG_AC << dep << " depends upon itself; breaking circular dependency\n";
 				continue;
@@ -73,18 +70,21 @@ void addon_info::read(const config& cfg)
 	this->uploads = cfg["uploads"];
 	this->type = get_addon_type(cfg["type"].str());
 
-	const config::const_child_itors& locales = cfg.child_range("translation");
+	const config::const_child_itors& locales_as_configs = cfg.child_range("translation");
 
-	BOOST_FOREACH(const config& locale, locales) {
+	for(const config& locale : locales_as_configs) {
 		this->locales.push_back(locale["language"].str());
 	}
 
 	this->core = cfg["core"].str();
 	this->depends = utils::split(cfg["dependencies"].str());
+	this->tags = utils::split(cfg["tags"].str());
 	this->feedback_url = cfg["feedback_url"].str();
 
 	this->updated = cfg["timestamp"].to_time_t();
 	this->created = cfg["original_timestamp"].to_time_t();
+
+	this->local_only = cfg["local_only"].to_bool();
 }
 
 void addon_info::write(config& cfg) const
@@ -100,12 +100,13 @@ void addon_info::write(config& cfg) const
 	cfg["uploads"] = this->uploads;
 	cfg["type"] = get_addon_type_string(this->type);
 
-	BOOST_FOREACH(const std::string& locale_id, this->locales) {
+	for (const std::string& locale_id : this->locales) {
 		cfg.add_child("translation")["language"] = locale_id;
 	}
 
 	cfg["core"] = this->core;
 	cfg["dependencies"] = utils::join(this->depends);
+	cfg["tags"] = utils::join(this->tags);
 	cfg["feedback_url"] = this->feedback_url;
 
 	cfg["timestamp"] = this->updated;
@@ -125,9 +126,9 @@ void addon_info::write_minimal(config& cfg) const
 std::string addon_info::display_title() const
 {
 	if(this->title.empty()) {
-		return make_addon_title(this->id);
+		return font::escape_text(make_addon_title(this->id));
 	} else {
-		return this->title;
+		return font::escape_text(this->title);
 	}
 }
 
@@ -137,13 +138,9 @@ std::string addon_info::display_icon() const
 
 	if(ret.empty()) {
 		ERR_AC << "add-on '" << id << "' doesn't have an icon path set" << std::endl;
-		ret = fallback_addon_icon;
-	}
-	else if(!image::exists(ret)) {
+	} else if(!image::exists(ret)) {
 		ERR_AC << "add-on '" << id << "' has an icon which cannot be found: '" << ret << "'" << std::endl;
-		ret = game_config::debug ? game_config::images::missing : fallback_addon_icon;
-	}
-	else if(ret.find("units/") != std::string::npos && ret.find_first_of('~') == std::string::npos) {
+	} else if(ret.find("units/") != std::string::npos && ret.find_first_of('~') == std::string::npos) {
 		// HACK: prevent magenta icons, because they look awful
 		LOG_AC << "add-on '" << id << "' uses a unit baseframe as icon without TC/RC specifications\n";
 		ret += "~RC(magenta>red)";
@@ -171,8 +168,8 @@ std::string addon_info::display_type() const
 		return _("addon_type^MP scenario");
 	case ADDON_MP_CAMPAIGN:
 		return _("addon_type^MP campaign");
-	case ADDON_MP_MOD:
-		return _("addon_type^MP modification");
+	case ADDON_MOD:
+		return _("addon_type^Modification");
 	case ADDON_CORE:
 		return _("addon_type^Core");
 	case ADDON_MEDIA:
@@ -203,9 +200,10 @@ void read_addons_list(const config& cfg, addons_list& dest)
 
 	unsigned order = 0;
 
-	/** @todo FIXME: get rid of this legacy "campaign"/"campaigns" silliness */
+	/** @todo FIXME: get rid of this legacy "campaign"/"campaigns" silliness
+	 */
 	const config::const_child_itors &addon_cfgs = cfg.child_range("campaign");
-	BOOST_FOREACH(const config& addon_cfg, addon_cfgs) {
+	for(const config& addon_cfg : addon_cfgs) {
 		const std::string& id = addon_cfg["name"].str();
 		if(dest.find(id) != dest.end()) {
 			ERR_AC << "add-ons list has multiple entries for '" << id << "', not good; ignoring them" << std::endl;

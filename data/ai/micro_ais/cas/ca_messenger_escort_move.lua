@@ -1,21 +1,21 @@
-local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
-local LS = wesnoth.require "lua/location_set.lua"
+local LS = wesnoth.require "location_set"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
+local M = wesnoth.map
 
 local messenger_next_waypoint = wesnoth.require "ai/micro_ais/cas/ca_messenger_f_next_waypoint.lua"
 
 local function get_escorts(cfg)
     local escorts = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", cfg.filter_second }
+        { "and", wml.get_child(cfg, "filter_second") }
     }
     return escorts
 end
 
 local ca_messenger_escort_move = {}
 
-function ca_messenger_escort_move:evaluation(ai, cfg)
+function ca_messenger_escort_move:evaluation(cfg)
     -- Move escort units close to messengers, and in between messengers and enemies
     -- The messengers have moved at this time, so we don't need to exclude them,
     -- but we check that there are messengers left
@@ -28,16 +28,14 @@ function ca_messenger_escort_move:evaluation(ai, cfg)
     return cfg.ca_score
 end
 
-function ca_messenger_escort_move:execution(ai, cfg)
+function ca_messenger_escort_move:execution(cfg)
     local escorts = get_escorts(cfg)
     local _, _, _, messengers = messenger_next_waypoint(cfg)
 
-    local enemies = wesnoth.get_units {
-        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
-    }
+    local enemies = AH.get_attackable_enemies()
 
     local base_rating_map = LS.create()
-    local max_rating, best_unit, best_hex = -9e99
+    local max_rating, best_unit, best_hex = - math.huge
     for _,unit in ipairs(escorts) do
         -- Only considering hexes unoccupied by other units is good enough for this
         local reach_map = AH.get_reachable_unocc(unit)
@@ -53,9 +51,9 @@ function ca_messenger_escort_move:execution(ai, cfg)
 
                 -- Distance from messenger is most important; only closest messenger counts for this
                 -- Give somewhat of a bonus for the messenger that has moved the farthest through the waypoints
-                local max_messenger_rating = -9e99
+                local max_messenger_rating = - math.huge
                 for _,m in ipairs(messengers) do
-                    local messenger_rating = 1. / (H.distance_between(x, y, m.x, m.y) + 2.)
+                    local messenger_rating = 1. / (M.distance_between(x, y, m.x, m.y) + 2.)
                     local wp_rating = MAIUV.get_mai_unit_variables(m, cfg.ai_id, "wp_rating")
                     messenger_rating = messenger_rating * 10. * (1. + wp_rating * 2.)
 
@@ -69,7 +67,7 @@ function ca_messenger_escort_move:execution(ai, cfg)
                 -- Distance from (sum of) enemies is important too
                 -- This favors placing escort units between the messenger and close enemies
                 for _,e in ipairs(enemies) do
-                    base_rating = base_rating + 1. / (H.distance_between(x, y, e.x, e.y) + 2.)
+                    base_rating = base_rating + 1. / (M.distance_between(x, y, e.x, e.y) + 2.)
                 end
 
                 base_rating_map:insert(x, y, base_rating)

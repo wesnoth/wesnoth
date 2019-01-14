@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2010 - 2014 by Jody Northup
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2010 - 2018 by Jody Northup
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,15 +12,13 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #include "filesystem.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "persist_context.hpp"
 #include "persist_manager.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
-#include "util.hpp"
 
 config pack_scalar(const std::string &name, const t_string &val)
 {
@@ -30,18 +28,18 @@ config pack_scalar(const std::string &name, const t_string &val)
 }
 
 static std::string get_persist_cfg_name(const std::string &name_space) {
-	return (get_dir(get_user_data_dir() + "/persist/") + name_space + ".cfg");
+	return (filesystem::get_dir(filesystem::get_user_data_dir() + "/persist/") + name_space + ".cfg");
 }
 
 void persist_file_context::load()
 {
 	std::string cfg_name = get_persist_cfg_name(namespace_.root_);
-	if (file_exists(cfg_name) && !is_directory(cfg_name)) {
-		scoped_istream file_stream = istream_file(cfg_name);
+	if (filesystem::file_exists(cfg_name) && !filesystem::is_directory(cfg_name)) {
+		filesystem::scoped_istream file_stream = filesystem::istream_file(cfg_name);
 		if (!(file_stream->fail())) {
 			try {
 				read(cfg_,*file_stream);
-			} catch (config::error &err) {
+			} catch (const config::error &err) {
 				LOG_PERSIST << err.message << std::endl;
 			}
 		}
@@ -66,7 +64,7 @@ bool persist_file_context::clear_var(const std::string &global, bool immediate)
 		load();
 	}
 	config *active = get_node(cfg_, namespace_);
-	if (active == NULL)
+	if (active == nullptr)
 		return false;
 
 	bool ret = active->has_child("variables");
@@ -81,7 +79,7 @@ bool persist_file_context::clear_var(const std::string &global, bool immediate)
 				{
 					const std::string::const_iterator index_end = std::find(global.begin(),global.end(),']');
 					const std::string index_str(index_start+1,index_end);
-					size_t index = static_cast<size_t>(lexical_cast_default<int>(index_str));
+					std::size_t index = static_cast<std::size_t>(lexical_cast_default<int>(index_str));
 					cfg.remove_child(global,index);
 					if (immediate) bactive.remove_child(global,index);
 				} else {
@@ -115,7 +113,7 @@ bool persist_file_context::clear_var(const std::string &global, bool immediate)
 				ret = save_context();
 				cfg_ = bak;
 				active = get_node(cfg_, namespace_);
-				if (active != NULL) {
+				if (active != nullptr) {
 					active->clear_children("variables");
 					active->remove_attribute("variables");
 					if (!bactive.empty())
@@ -127,23 +125,28 @@ bool persist_file_context::clear_var(const std::string &global, bool immediate)
 		} else {
 			if (immediate) {
 				cfg_ = bak;
-				config *active = get_node(cfg_, namespace_);
-				if (active != NULL) {
+				active = get_node(cfg_, namespace_);
+				if (active != nullptr) {
 					active->clear_children("variables");
 					active->remove_attribute("variables");
 					if (!bactive.empty())
-						active->add_child("variables",bactive);
+						active->add_child("variables", bactive);
 				}
 			}
 			ret = exists;
 		}
 	}
-	while ((active->empty()) && (!namespace_.lineage_.empty())) {
+
+	// TODO: figure out when this is the case and adjust the next loop
+	//       condition accordingly. -- shadowm
+	assert(active);
+
+	while (active && active->empty() && !namespace_.lineage_.empty()) {
 		name_space prev = namespace_.prev();
 		active = get_node(cfg_, prev);
-		/// @todo: This assertion replaces a seg fault. Still need to fix the
-		/// real bug (documented as bug #21093).
-		assert(active != NULL);
+		if (active == nullptr) {
+			break;
+		}
 		active->clear_children(namespace_.node_);
 		if (active->has_child("variables") && active->child("variables").empty()) {
 			active->clear_children("variables");
@@ -160,9 +163,9 @@ config persist_file_context::get_var(const std::string &global) const
 	const config *active = get_node(cfg_, namespace_);
 	if (active && (active->has_child("variables"))) {
 		const config &cfg = active->child("variables");
-		size_t arrsize = cfg.child_count(global);
+		std::size_t arrsize = cfg.child_count(global);
 		if (arrsize > 0) {
-			for (size_t i = 0; i < arrsize; i++)
+			for (std::size_t i = 0; i < arrsize; i++)
 				ret.add_child(global,cfg.child(global,i));
 		} else {
 			ret = pack_scalar(global,cfg[global]);
@@ -178,9 +181,9 @@ bool persist_file_context::save_context() {
 	std::string cfg_name = get_persist_cfg_name(namespace_.root_);
 	if (!cfg_name.empty()) {
 		if (cfg_.empty()) {
-			success = delete_directory(cfg_name);
+			success = filesystem::delete_file(cfg_name);
 		} else {
-			scoped_ostream out = ostream_file(cfg_name);
+			filesystem::scoped_ostream out = filesystem::ostream_file(cfg_name);
 			if (!out->fail())
 			{
 				config_writer writer(*out,false);
@@ -249,4 +252,3 @@ std::string persist_context::get_node() const
 {
 	return namespace_.namespace_;
 }
-

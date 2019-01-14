@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,17 +17,10 @@
  * Composite AI stages
  */
 
-#ifndef AI_COMPOSITE_STAGE_HPP_INCLUDED
-#define AI_COMPOSITE_STAGE_HPP_INCLUDED
+#pragma once
 
-#include "component.hpp"
-#include "contexts.hpp"
-
-#ifdef _MSC_VER
-#pragma warning(push)
-//silence "inherits via dominance" warnings
-#pragma warning(disable:4250)
-#endif
+#include "ai/composite/component.hpp"
+#include "ai/composite/contexts.hpp"
 
 namespace ai {
 
@@ -54,7 +47,7 @@ public:
 
 	/**
 	 * Play the turn - strategy
-	 * @return true only if game state has changed. Really only needed for ministages. Returning false is always safe.
+	 * @return true only if game state has changed. Returning false is always safe.
 	 */
 	bool play_stage();
 
@@ -77,7 +70,7 @@ public:
 protected:
 	/**
 	 * Play the turn - implementation
-	 * @return true only if game state has changed. Really only needed for ministages. Returning false is always safe.
+	 * @return true only if game state has changed. Returning false is always safe.
 	 */
 	virtual bool do_play_stage() = 0;
 
@@ -99,14 +92,15 @@ public:
 
 
 class stage_factory{
+	bool is_duplicate(const std::string &name);
 public:
-	typedef boost::shared_ptr< stage_factory > factory_ptr;
+	typedef std::shared_ptr< stage_factory > factory_ptr;
 	typedef std::map<std::string, factory_ptr> factory_map;
 	typedef std::pair<const std::string, factory_ptr> factory_map_pair;
 
 	static factory_map& get_list() {
 		static factory_map *stage_factories;
-		if (stage_factories==NULL) {
+		if (stage_factories==nullptr) {
 			stage_factories = new factory_map;
 		}
 		return *stage_factories;
@@ -116,8 +110,11 @@ public:
 
 	stage_factory( const std::string &name )
 	{
+		if (is_duplicate(name)) {
+			return;
+		}
 		factory_ptr ptr_to_this(this);
-		get_list().insert(make_pair(name,ptr_to_this));
+		get_list().emplace(name,ptr_to_this);
 	}
 
 	virtual ~stage_factory() {}
@@ -133,30 +130,10 @@ public:
 	}
 
 	virtual stage_ptr get_new_instance( ai_context &context, const config &cfg ){
-		stage_ptr a(new STAGE(context,cfg));
+		stage_ptr a = std::make_shared<STAGE>(context, cfg);
 		a->on_create();
 		return a;
 	}
 };
 
-
-/** this class is a lazily-initializing proxy for a stage **/
-class ministage {
-public:
-	ministage(const config &cfg);
-	virtual ~ministage();
-	stage_ptr get_stage_ptr(ai_context &context);
-	config to_config() const;
-
-private:
-	config cfg_;
-	stage_ptr stage_;
-};
-
 } //end of namespace ai
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
-#endif

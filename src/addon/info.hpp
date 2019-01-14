@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2010 - 2014 by Ignacio R. Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2010 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,17 +12,18 @@
    See the COPYING file for more details.
 */
 
-#ifndef ADDON_INFO_HPP_INCLUDED
-#define ADDON_INFO_HPP_INCLUDED
+#pragma once
 
-#include "config.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 
 #include "addon/validation.hpp"
 
+#include <ctime>
 #include <set>
+#include <map>
 
 struct addon_info;
+class config;
 typedef std::map<std::string, addon_info> addons_list;
 
 struct addon_info
@@ -43,6 +44,7 @@ struct addon_info
 
 	ADDON_TYPE type;
 
+	std::vector<std::string> tags;
 	std::vector<std::string> locales;
 
 	std::string core;
@@ -52,36 +54,42 @@ struct addon_info
 
 	std::string feedback_url;
 
-	time_t updated;
-	time_t created;
+	std::time_t updated;
+	std::time_t created;
 
 	// Artificial upload order index used to preserve add-ons upload order
 	// until we have actual first-upload timestamps implemented. This index
 	// is not serialized anywhere.
 	unsigned order;
 
+	// Flag to indicate whether this object was generaled from pbl info for an addon
+	// not previously published.
+	bool local_only;
+
 	addon_info()
 		: id(), title(), description(), icon()
 		, version(), author(), size(), downloads()
-		, uploads(), type(), locales()
+		, uploads(), type(), tags(), locales()
 		, core()
 		, depends()
 		, feedback_url()
 		, updated()
 		, created()
 		, order()
+		, local_only(false)
 	{}
 
 	explicit addon_info(const config& cfg)
 		: id(), title(), description(), icon()
 		, version(), author(), size(), downloads()
-		, uploads(), type(), locales()
+		, uploads(), type(), tags(), locales()
 		, core()
 		, depends()
 		, feedback_url()
 		, updated()
 		, created()
 		, order()
+		, local_only(false)
 	{
 		this->read(cfg);
 	}
@@ -98,6 +106,7 @@ struct addon_info
 			this->downloads = o.downloads;
 			this->uploads = o.uploads;
 			this->type = o.type;
+			this->tags = o.tags;
 			this->locales = o.locales;
 			this->core = o.core;
 			this->depends = o.depends;
@@ -105,6 +114,7 @@ struct addon_info
 			this->updated = o.updated;
 			this->created = o.created;
 			this->order = o.order;
+			this->local_only = o.local_only;
 		}
 		return *this;
 	}
@@ -178,5 +188,3 @@ std::string size_display_string(double size);
  *       somehow.
  */
 std::string make_addon_title(const std::string& id);
-
-#endif

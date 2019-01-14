@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2013 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2013 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,6 +18,8 @@
 #include "serialization/unicode.hpp"
 
 #if defined(_X11) || defined(__APPLE__)
+
+#include <thread>
 
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -52,6 +54,8 @@ bool open_object_is_supported()
 
 bool open_object(const std::string& path_or_url)
 {
+	LOG_DU << "open_object(): requested object: " << path_or_url << '\n';
+
 #if defined(_X11) || defined(__APPLE__)
 
 #ifndef __APPLE__
@@ -62,30 +66,18 @@ bool open_object(const std::string& path_or_url)
 	const char launcher[] = "open";
 #endif
 
-	int child_status = 0;
 	const pid_t child = fork();
 
 	if(child == -1) {
 		ERR_DU << "open_object(): fork() failed" << std::endl;
 		return false;
 	} else if(child == 0) {
-		execlp(launcher, launcher, path_or_url.c_str(), reinterpret_cast<char*>(NULL));
+		execlp(launcher, launcher, path_or_url.c_str(), nullptr);
 		_exit(1); // This shouldn't happen.
-	} else if(waitpid(child, &child_status, 0) == -1) {
-		ERR_DU << "open_object(): waitpid() failed" << std::endl;
-		return false;
 	}
 
-	if(child_status) {
-		if(WIFEXITED(child_status)) {
-			ERR_DU << "open_object(): " << launcher << " returned "
-			       << WEXITSTATUS(child_status) << '\n';
-		} else {
-			ERR_DU << "open_object(): " << launcher << " failed" << std::endl;
-		}
-
-		return false;
-	}
+	std::thread t { [child](){ int status; waitpid(child, &status, 0); } };
+	t.detach();
 
 	return true;
 
@@ -93,10 +85,9 @@ bool open_object(const std::string& path_or_url)
 
 	LOG_DU << "open_object(): on Win32, will use ShellExecute()\n";
 
-	utf16::string u16path = unicode_cast<utf16::string>(path_or_url);
-	u16path.push_back(wchar_t(0)); // Make wpath NULL-terminated
+	std::wstring u16path = unicode_cast<std::wstring>(path_or_url);
 
-	const ptrdiff_t res = reinterpret_cast<ptrdiff_t>(ShellExecute(NULL, L"open", &u16path.front(), NULL, NULL, SW_SHOW));
+	const ptrdiff_t res = reinterpret_cast<ptrdiff_t>(ShellExecute(nullptr, L"open", u16path.c_str(), nullptr, nullptr, SW_SHOW));
 	if(res <= 32) {
 		ERR_DU << "open_object(): ShellExecute() failed (" << res << ")" << std::endl;
 		return false;
@@ -106,7 +97,7 @@ bool open_object(const std::string& path_or_url)
 
 #else
 
-	(void)(path_or_url); // silence gcc's -Wunused-parameter
+	UNUSED(path_or_url); // silence gcc's -Wunused-parameter
 	ERR_DU << "open_object(): unsupported platform" << std::endl;
 	return false;
 

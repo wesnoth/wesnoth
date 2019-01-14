@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -11,12 +11,12 @@
 
    See the COPYING file for more details.
 */
-#ifndef SYNCMP_HANDLER_HPP_INCLUDED
-#define SYNCMP_HANDLER_HPP_INCLUDED
+
+#pragma once
 
 #include<vector>
 /*
-	Automaticly registrates itself in the registry in the constructor.
+	Automatically registrates itself in the registry in the constructor.
 */
 class syncmp_handler
 {
@@ -36,10 +36,8 @@ public:
 	static void send_user_choice();
 private:
 	friend class syncmp_handler;
-	typedef std::vector<syncmp_handler*> t_handlers;
+	typedef std::vector<syncmp_handler*> handler_list;
 	static void remove_handler(syncmp_handler* handler);
 	static void add_handler(syncmp_handler* handler);
-	static t_handlers& handlers();
+	static handler_list& handlers();
 };
-
-#endif

@@ -86,6 +86,12 @@ function methods:filter(f)
 end
 
 function methods:iter(f)
+	if f == nil then
+		local locs = self
+		return coroutine.wrap(function()
+			locs:iter(coroutine.yield)
+		end)
+	end
 	for p,v in pairs(self.values) do
 		local x, y = revindex(p)
 		f(x, y, v)
@@ -97,10 +103,16 @@ function methods:stable_iter(f)
 	for p,v in pairs(self.values) do
 		table.insert(indices, p)
 	end
+	if f == nil then
+		local locs = self
+		return coroutine.wrap(function()
+			locs:stable_iter(coroutine.yield)
+		end)
+	end
 	table.sort(indices)
 	for i,p in ipairs(indices) do
 		local x, y = revindex(p)
-		f(x, y, v)
+		f(x, y, self.values[p])
 	end
 end
 
@@ -133,12 +145,20 @@ end
 
 function methods:of_wml_var(name)
 	local values = self.values
-	for i = 0, wesnoth.get_variable(name .. ".length") - 1 do
-		local t = wesnoth.get_variable(string.format("%s[%d]", name, i))
+	for i = 0, wml.variables[name .. ".length"] - 1 do
+		local t = wml.variables[string.format("%s[%d]", name, i)]
 		local x, y = t.x, t.y
 		t.x, t.y = nil, nil
 		values[index(x, y)] = next(t) and t or true
 	end
+end
+
+function methods:of_triples(t)
+    -- Create a location set from a table of 3-element tables
+    -- Elements 1 and 2 are x,y coordinates, #3 is value to be inserted
+    for k,v in pairs(t) do
+        self:insert(v[1], v[2], v[3])
+    end
 end
 
 function methods:to_pairs()
@@ -155,20 +175,42 @@ end
 
 function methods:to_wml_var(name)
 	local i = 0
-	wesnoth.set_variable(name)
+	wml.variables[name] = nil
 	self:stable_iter(function(x, y, v)
 		if type(v) == 'table' then
-			wesnoth.set_variable(string.format("%s[%d]", name, i), v)
+			wml.variables[string.format("%s[%d]", name, i)] = v
 		end
-		wesnoth.set_variable(string.format("%s[%d].x", name, i), x)
-		wesnoth.set_variable(string.format("%s[%d].y", name, i), y)
+		wml.variables[string.format("%s[%d].x", name, i)] = x
+		wml.variables[string.format("%s[%d].y", name, i)] = y
 		i = i + 1
 	end)
 end
 
+function methods:to_triples()
+    local res = {}
+    self:iter(function(x, y, v) table.insert(res, { x, y, v }) end)
+    return res
+end
+
+function methods:random()
+	-- Select a random hex from the hexes in the location set
+	-- This seems "inelegant", but I can't come up with another way without creating an extra array
+	-- Return -1, -1 if empty
+	local r = wesnoth.random(self:size())
+	local i, xr, yr = 1, -1, -1
+	self:iter( function(x, y, v)
+		if (i == r) then xr, yr = x, y end
+		i = i + 1
+	end)
+	return xr, yr
+end
+
 function location_set.create()
-	local w,h,b = wesnoth.get_map_size()
-	assert(h + 2 * b < 9000)
+	if wesnoth.get_map_size then
+		-- If called from the mapgen kernel, there's no map
+		local w,h,b = wesnoth.get_map_size()
+		assert(h + 2 * b < 9000)
+	end
 	return setmetatable({ values = {} }, locset_meta)
 end
 
@@ -182,6 +224,12 @@ function location_set.of_wml_var(name)
 	local s = location_set.create()
 	s:of_wml_var(name)
 	return s
+end
+
+function location_set.of_triples(t)
+    local s = location_set.create()
+    s:of_triples(t)
+    return s
 end
 
 return location_set

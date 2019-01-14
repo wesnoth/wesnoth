@@ -1,5 +1,6 @@
 /*
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -11,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef COMPRESSION_HPP_INCLUDED
-#define COMPRESSION_HPP_INCLUDED
+#pragma once
 
 #include <string>
 
@@ -36,5 +36,3 @@ namespace compression {
 		return "";
 	}
 }
-
-#endif

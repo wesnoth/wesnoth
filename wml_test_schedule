@@ -11,6 +11,11 @@
 0 fixed_lua_random_replay_with_sync_choice
 0 test_end_turn
 #
+# Security test
+#
+0 cve_2018_1999023
+1 cve_2018_1999023_2
+#
 # Test Check Victory (If this isn't working other tests may have dubious value)
 #
 2 check_victory_basic_timeout
@@ -43,6 +48,8 @@
 0 two_plus_two
 1 two_plus_two_fail
 0 order_of_nested_events
+0 test_clear_one
+0 test_clear_two
 0 test_unit_map
 0 unit_spawns_at_nearest_vacant_hex
 0 units_offmap_goto_recall
@@ -53,6 +60,7 @@
 1 test_move_fail_4
 1 test_move_fail_5
 1 test_move_fail_6
+0 test_move_unit
 0 sighted_events
 1 sighted_events_fail
 0 sighted_on_opponents_turn
@@ -80,12 +88,30 @@
 0 event_handlers_in_events_7
 0 event_handlers_in_events_8
 0 filter_vision
+0 scatter_units
 0 has_ally
+0 xp_mod_1
+0 xp_mod_2
+0 xp_mod_3
+0 test_role_1
+0 test_role_2
+0 test_role_3
+0 test_role_lua
+#
+# LUA
+#
+0 lua_dofile
+0 lua_require
+0 lua_get_sides
+0 test_wml_actions
+0 test_wml_conditionals
+0 lua_wml_tagnames
 #
 # Pathfinding
 #
 0 store_locations_one
-0 characterize_pathfinding_one
+# This test occasionally takes too long... (FIXME):       0 characterize_pathfinding_one
+# The following tests segfault becasue of http://gna.org/bugs/?23188
 0 characterize_pathfinding_reach_1
 0 characterize_pathfinding_reach_2
 0 characterize_pathfinding_reach_3
@@ -103,11 +129,83 @@
 0 alice_kills_bob_on_retal
 0 alice_kills_bob_on_retal_levelup
 0 test_grunt_tod_damage
+0 test_time_area_damage
+0 test_time_area_prestart
 0 test_berzerk_firststrike
 0 feeding
+0 swarm_disables_upgrades
 #
 # Deterministic unit facing tests
 0 recruit_facing_enemy_one
 0 recruit_facing_enemy_two
 0 recruit_facing_leader
 0 recruit_facing_center
+#
+# Interface tests
+#
+0 test_wml_menu_items_1
+1 test_wml_menu_items_2
+0 test_wml_menu_items_3
+#
+# Conditional tests
+#
+0 check_conditionals_1
+0 check_conditionals_2
+# Standard Unit Filter tests
+0 filter_this_unit_wml
+0 filter_this_unit_tl
+0 filter_this_unit_fai
+0 filter_fai_unit
+1 filter_fai_unit_error
+# Interrupt tag tests
+0 check_interrupts_break
+0 check_interrupts_return
+0 check_interrupts_continue
+0 check_interrupts_break_global
+0 check_interrupts_return_nested
+0 check_interrupts_continue_global
+0 check_interrupts_elseif
+0 check_interrupts_case
+# For-loop tests
+0 forloop_all_zero
+0 forloop_step_zero
+0 forloop_once_positive
+0 forloop_once_negative
+0 forloop_twice_matched
+0 forloop_twice_unmatched
+0 forloop_empty_array
+0 forloop_array
+0 forloop_array_reverse
+0 forloop_step_large_positive
+0 forloop_step_large_negative
+0 for_defaults
+0 for_start2
+0 for_end2
+0 for_end2_step2
+0 for_end-2
+0 for_end-2_step-2
+# AI Config Parsing tests
+0 test_basic_simplified_aspect
+0 test_basic_abbreviated_aspect
+0 test_basic_standard_aspect
+0 test_basic_composite_aspect
+0 test_basic_lua_aspect
+0 test_basic_composite_facet
+0 test_basic_lua_facet
+0 test_basic_composite_default_facet
+0 test_basic_lua_default_facet
+# AI Modification tests
+0 test_modify_ai_delete_facet
+0 test_modify_ai_change_facet
+0 test_modify_ai_replace_facet
+0 test_modify_ai_add_facet
+0 test_modify_ai_change_default_facet
+0 test_modify_ai_nested_facets
+0 test_modify_ai_composite_default_facets
+0 test_modify_ai_change_aspect
+# Event tests
+0 order_of_variable_events1
+1 order_of_variable_events2
+0 event_name_variable_substitution
+# Game mechanics
+0 heal

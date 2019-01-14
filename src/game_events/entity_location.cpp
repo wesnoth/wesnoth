@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,13 +17,13 @@
  * The structure that tracks WML event locations.
  */
 
-#include "global.hpp"
-#include "entity_location.hpp"
+#include "game_events/entity_location.hpp"
 
-#include "../resources.hpp"
-#include "../unit.hpp"
-#include "../unit_filter.hpp"
-#include "../variable.hpp"
+#include "game_board.hpp"
+#include "resources.hpp"
+#include "units/unit.hpp"
+#include "units/filter.hpp"
+#include "variable.hpp"
 
 
 // This file is in the game_events namespace.
@@ -36,7 +36,7 @@ const entity_location entity_location::null_entity(map_location::null_location()
  * Can also be used if the event has a unit and the caller already has the
  * unit's location and underlying ID.
  */
-entity_location::entity_location(const map_location &loc, size_t id)
+entity_location::entity_location(const map_location &loc, std::size_t id)
 	: map_location(loc), id_(id), filter_loc_(loc)
 {}
 
@@ -44,7 +44,7 @@ entity_location::entity_location(const map_location &loc, size_t id)
  * Constructor for when an event has a unit that needs to be filtered as if
  * it was in a different location.
  */
-entity_location::entity_location(const map_location &loc, size_t id,
+entity_location::entity_location(const map_location &loc, std::size_t id,
                                  const map_location & filter_loc)
 	: map_location(loc), id_(id), filter_loc_(filter_loc)
 {}
@@ -100,9 +100,23 @@ bool entity_location::matches_unit_filter(const unit_map::const_iterator & un_it
 
 	// Filter the unit at the filter location (should be the unit's
 	// location if no special filter location was specified).
-	return unit_filter(filter, resources::filter_con).matches(*un_it, filter_loc_)  &&
+	return unit_filter(filter).matches(*un_it, filter_loc_)  &&
 	       matches_unit(un_it);
 }
 
-} // end namespace game_events
+unit_const_ptr entity_location::get_unit() const
+{
+	if(!resources::gameboard) {
+		return nullptr;
+	}
+	if(id_ == 0) {
+		auto un_it = resources::gameboard->units().find(*this);
+		if(un_it.valid()) {
+			return un_it.get_shared_ptr();
+		}
+		return nullptr;
+	}
+	return resources::gameboard->units().find(id_).get_shared_ptr();
+}
 
+} // end namespace game_events

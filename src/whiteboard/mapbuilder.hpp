@@ -1,6 +1,6 @@
 /*
- Copyright (C) 2010 - 2014 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -16,8 +16,7 @@
  * @file
  */
 
-#ifndef WB_MAPBUILDER_HPP_
-#define WB_MAPBUILDER_HPP_
+#pragma once
 
 #include "side_actions.hpp"
 
@@ -51,10 +50,10 @@ public:
 
 private:
 	/** Function called on each action. */
-	void process(side_actions &sa, side_actions::iterator action_it);
+	void process(side_actions &sa, side_actions::iterator action_it, bool is_local_side);
 
 	/** Function called after visiting a team. */
-	void post_visit_team(size_t turn);
+	void post_visit_team(std::size_t turn);
 
 	/** Does various preliminary actions on the unit map such as resetting moves for some units. */
 	void pre_build();
@@ -77,5 +76,3 @@ private:
 };
 
 }
-
-#endif /* WB_MAPBUILDER_HPP_ */

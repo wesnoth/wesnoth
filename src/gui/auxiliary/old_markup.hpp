@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_AUXILIARY_OLD_MARKUP_INCLUDED
-#define GUI_AUXILIARY_OLD_MARKUP_INCLUDED
+#pragma once
 
 #include <string>
 
@@ -23,7 +22,7 @@ namespace gui2
 /**
  * Implements simple parsing of legacy GUI1 item markup.
  */
-class tlegacy_menu_item
+class legacy_menu_item
 {
 	/*
 	 * Legacy options/menu items have some special markup:
@@ -40,7 +39,7 @@ class tlegacy_menu_item
 	 * with special meanings for certain characters.
 	 */
 public:
-	explicit tlegacy_menu_item(const std::string& str = std::string());
+	explicit legacy_menu_item(const std::string& str = "", const std::string deprecation_msg = "");
 
 	const std::string& icon() const
 	{
@@ -62,12 +61,19 @@ public:
 		return default_;
 	}
 
-	tlegacy_menu_item& operator=(const tlegacy_menu_item& rhs)
+	bool contained_markup() const
+	{
+		return contained_markup_;
+	}
+
+	legacy_menu_item& operator=(const legacy_menu_item& rhs)
 	{
 		if(&rhs != this) {
 			icon_ = rhs.icon_;
 			label_ = rhs.label_;
 			desc_ = rhs.desc_;
+			default_ = rhs.default_;
+			contained_markup_ = rhs.contained_markup_;
 		}
 		return *this;
 	}
@@ -88,7 +94,10 @@ private:
 	 * It's unspecified what happens if multiple items in a menu are selected.
 	 */
 	bool default_;
+
+	/**
+	 * Was any old markup actually parsed?
+	 */
+	bool contained_markup_;
 };
 }
-
-#endif

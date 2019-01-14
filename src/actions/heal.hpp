@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,13 +17,10 @@
  * Various functions that implement healing of units (when a side turn starts).
  */
 
-#ifndef ACTIONS_HEAL_H_INCLUDED
-#define ACTIONS_HEAL_H_INCLUDED
+#pragma once
 
 /**
  * Calculates healing for all units for the given side.
  * Should be called at the beginning of a side's turn.
  */
 void calculate_healing(int side, bool update_display);
-
-#endif

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,16 +17,13 @@
  *  Manage statistics: recruitments, recalls, kills, losses, etc.
  */
 
-#include "global.hpp"
+#include "game_board.hpp"
 #include "statistics.hpp"
 #include "log.hpp"
 #include "resources.hpp" // Needed for teams, to get team save_id for a unit
 #include "serialization/binary_or_text.hpp"
 #include "team.hpp" // Needed to get team save_id
-#include "unit.hpp"
-#include "util.hpp"
-
-#include <boost/foreach.hpp>
+#include "units/unit.hpp"
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -43,8 +40,8 @@ typedef std::map<std::string,stats> team_stats_t;
 
 std::string get_team_save_id(const unit & u)
 {
-	assert(resources::teams);
-	return resources::teams->at(u.side()-1).save_id();
+	assert(resources::gameboard);
+	return resources::gameboard->get_team(u.side()).save_id_or_number();
 }
 
 struct scenario_stats
@@ -67,7 +64,7 @@ scenario_stats::scenario_stats(const config& cfg) :
 	team_stats(),
 	scenario_name(cfg["scenario"])
 {
-	BOOST_FOREACH(const config &team, cfg.child_range("team")) {
+	for(const config &team : cfg.child_range("team")) {
 		team_stats[team["save_id"]] = stats(team);
 	}
 }
@@ -100,7 +97,7 @@ std::vector<scenario_stats> master_stats;
 static stats &get_stats(const std::string &save_id)
 {
 	if(master_stats.empty()) {
-		master_stats.push_back(scenario_stats(std::string()));
+		master_stats.emplace_back(std::string());
 	}
 
 	team_stats_t& team_stats = master_stats.back().team_stats;
@@ -111,7 +108,12 @@ static config write_str_int_map(const stats::str_int_map& m)
 {
 	config res;
 	for(stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
-		res[i->first] = i->second;
+		std::string n = std::to_string(i->second);
+		if(res.has_attribute(n)) {
+			res[n] = res[n].str() + "," + i->first;
+		} else {
+			res[n] = i->first;
+		}
 	}
 
 	return res;
@@ -119,16 +121,38 @@ static config write_str_int_map(const stats::str_int_map& m)
 
 static void write_str_int_map(config_writer &out, const stats::str_int_map& m)
 {
-	for(stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
-		out.write_key_val(i->first, i->second);
+	using reverse_map = std::multimap<int, std::string>;
+	reverse_map rev;
+	std::transform(
+		m.begin(), m.end(),
+		std::inserter(rev, rev.begin()),
+		[](const stats::str_int_map::value_type p) {
+			return std::make_pair(p.second, p.first);
+		}
+	);
+	reverse_map::const_iterator i = rev.begin(), j;
+	while(i != rev.end()) {
+		j = rev.upper_bound(i->first);
+		std::vector<std::string> vals;
+		std::transform(i, j, std::back_inserter(vals), [](const reverse_map::value_type& p) {
+			return p.second;
+		});
+		out.write_key_val(std::to_string(i->first), utils::join(vals));
+		i = j;
 	}
 }
 
 static stats::str_int_map read_str_int_map(const config& cfg)
 {
 	stats::str_int_map m;
-	BOOST_FOREACH(const config::attribute &i, cfg.attribute_range()) {
-		m[i.first] = i.second;
+	for(const config::attribute &i : cfg.attribute_range()) {
+		try {
+			for(const std::string& val : utils::split(i.second)) {
+				m[val] = std::stoi(i.first);
+			}
+		} catch(const std::invalid_argument&) {
+			ERR_NG << "Invalid statistics entry; skipping\n";
+		}
 	}
 
 	return m;
@@ -159,7 +183,7 @@ static void write_battle_result_map(config_writer &out, const stats::battle_resu
 static stats::battle_result_map read_battle_result_map(const config& cfg)
 {
 	stats::battle_result_map m;
-	BOOST_FOREACH(const config &i, cfg.child_range("sequence"))
+	for(const config &i : cfg.child_range("sequence"))
 	{
 		config item = i;
 		int key = item["_num"];
@@ -372,7 +396,7 @@ void stats::read(const config& cfg)
 scenario_context::scenario_context(const std::string& name)
 {
 	if(!mid_scenario || master_stats.empty()) {
-		master_stats.push_back(scenario_stats(name));
+		master_stats.emplace_back(name);
 	}
 
 	mid_scenario = true;
@@ -417,8 +441,8 @@ stats& attack_context::defender_stats()
 
 void attack_context::attack_expected_damage(double attacker_inflict_, double defender_inflict_)
 {
-	int attacker_inflict = round_double(attacker_inflict_ * stats::decimal_shift);
-	int defender_inflict = round_double(defender_inflict_ * stats::decimal_shift);
+	int attacker_inflict = std::round(attacker_inflict_ * stats::decimal_shift);
+	int defender_inflict = std::round(defender_inflict_ * stats::decimal_shift);
 	stats &att_stats = attacker_stats(), &def_stats = defender_stats();
 	att_stats.expected_damage_inflicted += attacker_inflict;
 	att_stats.expected_damage_taken     += defender_inflict;
@@ -509,8 +533,6 @@ void un_recruit_unit(const unit& u)
 
 int un_recall_unit_cost(const unit& u)  // this really belongs elsewhere, perhaps in undo.cpp
 {					// but I'm too lazy to do it at the moment
-	stats& s = get_stats(get_team_save_id(u));
-	s.recalls[u.type_id()]--;
 	return u.recall_cost();
 }
 
@@ -538,7 +560,7 @@ stats calculate_stats(const std::string & save_id)
 	DBG_NG << "calculate_stats, side: " << save_id << " master_stats.size: " << master_stats.size() << "\n";
 	// The order of this loop matters since the turn stats are taken from the
 	// last stats merged.
-	for ( size_t i = 0; i != master_stats.size(); ++i ) {
+	for ( std::size_t i = 0; i != master_stats.size(); ++i ) {
 		team_stats_t::const_iterator find_it = master_stats[i].team_stats.find(save_id);
 		if ( find_it != master_stats[i].team_stats.end() )
 			merge_stats(res, find_it->second);
@@ -565,19 +587,18 @@ levels level_stats(const std::string & save_id)
 
 	levels level_list;
 
-	for ( size_t level = 0; level != master_stats.size(); ++level ) {
+	for ( std::size_t level = 0; level != master_stats.size(); ++level ) {
 		const team_stats_t & team_stats = master_stats[level].team_stats;
 
 		team_stats_t::const_iterator find_it = team_stats.find(save_id);
 		if ( find_it != team_stats.end() )
-			level_list.push_back(make_pair(&master_stats[level].scenario_name,
-			                               &find_it->second));
+			level_list.emplace_back(&master_stats[level].scenario_name, &find_it->second);
 	}
 
 	// Make sure we do return something (so other code does not have to deal
 	// with an empty list).
 	if ( level_list.empty() )
-			level_list.push_back(make_pair(&null_name, &null_stats));
+			level_list.emplace_back(&null_name, &null_stats);
 
 	return level_list;
 }
@@ -611,8 +632,8 @@ void read_stats(const config& cfg)
 	fresh_stats();
 	mid_scenario = cfg["mid_scenario"].to_bool();
 
-	BOOST_FOREACH(const config &s, cfg.child_range("scenario")) {
-		master_stats.push_back(scenario_stats(s));
+	for(const config &s : cfg.child_range("scenario")) {
+		master_stats.emplace_back(s);
 	}
 }
 
@@ -656,4 +677,3 @@ int sum_cost_str_int_map(const stats::str_int_map &m)
 }
 
 } // end namespace statistics
-

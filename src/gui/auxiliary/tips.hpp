@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2010 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2010 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_AUXILIARY_TIPS_HPP_INCLUDED
-#define GUI_AUXILIARY_TIPS_HPP_INCLUDED
+#pragma once
 
 #include "tstring.hpp"
 
@@ -23,12 +22,10 @@ class config;
 
 namespace gui2
 {
+class game_tip;
 
-class ttip;
-
-namespace tips
+namespace tip_of_the_day
 {
-
 /**
  * Loads the tips from a config.
  *
@@ -36,7 +33,7 @@ namespace tips
  *
  * @returns                       The loaded tips.
  */
-std::vector<ttip> load(const config& cfg);
+std::vector<game_tip> load(const config& cfg);
 
 /**
  * Shuffles the tips.
@@ -47,29 +44,29 @@ std::vector<ttip> load(const config& cfg);
  *
  * @returns                       The filtered tips in random order.
  */
-std::vector<ttip> shuffle(const std::vector<ttip>& tips);
+std::vector<game_tip> shuffle(const std::vector<game_tip>& tips);
 
-} // namespace tips {
+} // namespace tip_of_the_day
 
 /** The tips of day structure. */
-class ttip
+class game_tip
 {
 public:
+	game_tip(const t_string& text, const t_string& source, const std::string& unit_filter);
+
 	const t_string& text() const
 	{
 		return text_;
 	}
+
 	const t_string& source() const
 	{
 		return source_;
 	}
 
 private:
-	friend std::vector<ttip> tips::load(const config&);
-	friend std::vector<ttip> tips::shuffle(const std::vector<ttip>& tips);
-	ttip(const t_string& text,
-		 const t_string& source,
-		 const std::string& unit_filter);
+	friend std::vector<game_tip> tip_of_the_day::load(const config&);
+	friend std::vector<game_tip> tip_of_the_day::shuffle(const std::vector<game_tip>& tips);
 
 	/** The text of the tip. */
 	t_string text_;
@@ -81,12 +78,9 @@ private:
 	 * List of units to filter the tip upon.
 	 *
 	 * If the list is empty the tip is shown.
-	 * Else the unit must have encountered at least one of the units in the
-	 * list.
+	 * Else the unit must have encountered at least one of the units in the list.
 	 */
 	std::vector<std::string> unit_filter_;
 };
 
 } // namespace gui2
-
-#endif

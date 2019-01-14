@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2013 - 2014 by Maxim Biro <nurupo.contributions@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2013 - 2018 by Maxim Biro <nurupo.contributions@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef WINDOWS_TRAY_NOTIFICATION_HPP_INCLUDED
-#define WINDOWS_TRAY_NOTIFICATION_HPP_INCLUDED
+#pragma once
 
 #include <SDL.h>
 #include <string>
@@ -23,7 +22,7 @@
 #endif
 //defines that mingw misses
 #ifndef _WIN32_IE
-    #define _WIN32_IE 0x0600 //specifying target platform to be Windows XP and higher
+    #define _WIN32_IE _WIN32_WINNT_WIN7 //specifying target platform to be Windows 7 and higher
 #endif
 #ifndef NIIF_USER
     #define NIIF_USER 0x00000004
@@ -66,8 +65,8 @@ private:
 	static bool message_reset;
 	static const int ICON_ID = 1007; // just a random number
 	static const unsigned int WM_TRAYNOTIFY = 32868; // WM_APP+100
-	static const size_t MAX_TITLE_LENGTH = 63; // 64 including the terminating null character
-	static const size_t MAX_MESSAGE_LENGTH = 255; // 256 including the terminating null character
+	static const std::size_t MAX_TITLE_LENGTH = 63; // 64 including the terminating null character
+	static const std::size_t MAX_MESSAGE_LENGTH = 255; // 256 including the terminating null character
 
 	static bool create_tray_icon();
 	static void destroy_tray_icon();
@@ -75,11 +74,9 @@ private:
 	static void adjust_length(std::string& title, std::string& message);
 	static HWND get_window_handle();
 	static void switch_to_wesnoth_window();
-	static std::wstring string_to_wstring(const std::string& string, size_t maxlength);
+	static std::wstring string_to_wstring(const std::string& string, std::size_t maxlength);
 
 	explicit windows_tray_notification();
 	windows_tray_notification(const windows_tray_notification& w);
 	windows_tray_notification& operator=(const windows_tray_notification& w);
 };
-
-#endif // WINDOWS_TRAY_NOTIFICATION_HPP_INCLUDED

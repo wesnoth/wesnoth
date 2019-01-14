@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,14 +17,13 @@
  * @file
  * */
 
-#ifndef AI_ACTIONS_HPP_INCLUDED
-#define AI_ACTIONS_HPP_INCLUDED
+#pragma once
 
-#include "game_info.hpp"
+#include "ai/game_info.hpp"
 
-#include "../actions/move.hpp"
-#include "lua/unit_advancements_aspect.hpp"
-#include "../unit_ptr.hpp"
+#include "actions/move.hpp"
+#include "ai/lua/aspect_advancements.hpp"
+#include "units/ptr.hpp"
 
 namespace pathfind {
 struct plain_route;
@@ -33,7 +32,6 @@ struct plain_route;
 class unit;
 class unit_type;
 class team;
-class gamemap;
 
 namespace ai {
 
@@ -42,7 +40,7 @@ friend void sim_gamestate_changed(action_result *result, bool gamestate_changed)
 
 public:
 
-	enum tresult {
+	enum result {
 		AI_ACTION_SUCCESS = 0,
 		AI_ACTION_STARTED = 1,
 		AI_ACTION_FAILURE = -1
@@ -137,7 +135,7 @@ public:
 		double aggression,
 		const unit_advancements_aspect& advancements = unit_advancements_aspect());
 
-	enum tresult {
+	enum result {
 		E_EMPTY_ATTACKER = 1001,
 		E_EMPTY_DEFENDER = 1002,
 		E_INCAPACITATED_ATTACKER = 1003,
@@ -172,7 +170,7 @@ public:
 		bool remove_movement,
 		bool unreach_is_ok);
 
-	enum tresult {
+	enum result {
 		E_EMPTY_MOVE = 2001,
 		E_NO_UNIT = 2002,
 		E_NOT_OWN_UNIT = 2003,
@@ -196,7 +194,7 @@ private:
 	const map_location from_;
 	const map_location to_;
 	bool remove_movement_;
-	boost::shared_ptr<pathfind::plain_route> route_;
+	std::shared_ptr<pathfind::plain_route> route_;
 	map_location unit_location_;
 	bool unreach_is_ok_;
 	bool has_ambusher_;
@@ -208,7 +206,7 @@ class recall_result : public action_result {
 public:
 	recall_result (side_number side, const std::string &unit_id, const map_location& where, const map_location& from);
 
-	enum tresult {
+	enum result {
 		E_NOT_AVAILABLE_FOR_RECALLING = 6001,
 		E_NO_GOLD = 6003,
 		E_NO_LEADER = 6004,
@@ -239,7 +237,7 @@ class recruit_result : public action_result {
 public:
 	recruit_result( side_number side, const std::string& unit_name, const map_location& where, const map_location& from);
 
-	enum tresult {
+	enum result {
 		E_NOT_AVAILABLE_FOR_RECRUITING = 3001,
 		E_UNKNOWN_OR_DUMMY_UNIT_TYPE = 3002,
 		E_NO_GOLD = 3003,
@@ -275,7 +273,7 @@ public:
 		bool remove_movement,
 		bool remove_attacks );
 
-	enum tresult {
+	enum result {
 		E_NO_UNIT = 4002,
 		E_NOT_OWN_UNIT = 4003,
 		E_INCAPACITATED_UNIT = 4004
@@ -450,16 +448,11 @@ static std::map<int,std::string> error_names_;
 };
 
 
-///@todo 1.7.11 important! Add an ai action (and fai function) to set a goto on a unit
-///@todo 1.7.11 important! Add an ai action (and fai function) to send a chat message to a player
-
 } //end of namespace ai
 
-std::ostream &operator<<(std::ostream &s, ai::attack_result const &r);
-std::ostream &operator<<(std::ostream &s, ai::move_result const &r);
-std::ostream &operator<<(std::ostream &s, ai::recall_result const &r);
-std::ostream &operator<<(std::ostream &s, ai::recruit_result const &r);
-std::ostream &operator<<(std::ostream &s, ai::stopunit_result const &r);
-std::ostream &operator<<(std::ostream &s, ai::synced_command_result const &r);
-
-#endif
+std::ostream &operator<<(std::ostream &s, const ai::attack_result& r);
+std::ostream &operator<<(std::ostream &s, const ai::move_result& r);
+std::ostream &operator<<(std::ostream &s, const ai::recall_result& r);
+std::ostream &operator<<(std::ostream &s, const ai::recruit_result& r);
+std::ostream &operator<<(std::ostream &s, const ai::stopunit_result& r);
+std::ostream &operator<<(std::ostream &s, const ai::synced_command_result& r);

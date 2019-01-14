@@ -1,6 +1,6 @@
 /*
- Copyright (C) 2010 - 2014 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -16,11 +16,10 @@
  * @file
  */
 
-#ifndef WB_HIGHLIGHTER_HPP_
-#define WB_HIGHLIGHTER_HPP_
+#pragma once
 
 #include "visitor.hpp"
-#include "map_location.hpp"
+#include "map/location.hpp"
 
 static lg::log_domain log_whiteboard_highlight("whiteboard/highlight");
 #define ERR_WB_H LOG_STREAM(err, log_whiteboard_highlight)
@@ -39,7 +38,7 @@ class highlighter
 {
 
 public:
-	highlighter(unit_map& unit_map, side_actions_ptr side_actions);
+	highlighter(side_actions_ptr side_actions);
 	virtual ~highlighter();
 
 	void set_mouseover_hex(const map_location& hex);
@@ -59,7 +58,10 @@ public:
 	/// @return the collection of actions that are highlighted but don't have the focus
 	secondary_highlights_t get_secondary_highlights() { return secondary_highlights_; }
 
+	void set_selection_candidate(unit_ptr candidate) { selection_candidate_ = candidate; }
+
 private:
+	unit_map& get_unit_map();
 	/** Unhighlight a given action (main or secondary). */
 	class unhighlight_visitor;
 
@@ -75,8 +77,6 @@ private:
 
 	/** Redraw the given move action when needed. */
 	void last_action_redraw(move_ptr);
-
-	unit_map& unit_map_;
 
 	map_location mouseover_hex_;
 	std::set<map_location> exclusive_display_hexes_;
@@ -128,5 +128,3 @@ private:
 };
 
 } // end namespace wb
-
-#endif /* WB_HIGHLIGHTER_HPP_ */

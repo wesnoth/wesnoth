@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2011 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2011 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,40 +16,39 @@
 
 #include "gui/auxiliary/iterator/walker_grid.hpp"
 
-#include "asserts.hpp"
+#include "global.hpp"
+
+#include <cassert>
 
 namespace gui2
 {
 
-namespace iterator
+namespace iteration
 {
 
-tgrid::tgrid(gui2::tgrid& grid)
+grid::grid(gui2::grid& grid)
 	: grid_(grid), widget_(&grid), itor_(grid.begin())
 {
 }
 
-twalker_::tstate tgrid::next(const tlevel level)
+walker_base::state_t grid::next(const level level)
 {
 	if(at_end(level)) {
 		return fail;
 	}
 
 	switch(level) {
-		case widget:
+		case self:
 			if(widget_) {
-				widget_ = NULL;
+				widget_ = nullptr;
 				return invalid;
-			} else {
-				/* FALL DOWN */
 			}
-		case grid:
+			FALLTHROUGH;
+		case internal:
 			assert(false);
 			return fail;
 		case child:
-			if(itor_ == grid_.end()) {
-				/* FALL DOWN */
-			} else {
+			if(itor_ != grid_.end()) {
 				++itor_;
 				return itor_ == grid_.end() ? invalid : valid;
 			}
@@ -59,12 +58,12 @@ twalker_::tstate tgrid::next(const tlevel level)
 	return fail;
 }
 
-bool tgrid::at_end(const tlevel level) const
+bool grid::at_end(const level level) const
 {
 	switch(level) {
-		case widget:
-			return widget_ == NULL;
-		case grid:
+		case self:
+			return widget_ == nullptr;
+		case internal:
 			return true;
 		case child:
 			return (itor_ == grid_.end());
@@ -74,25 +73,25 @@ bool tgrid::at_end(const tlevel level) const
 	return true;
 }
 
-gui2::twidget* tgrid::get(const tlevel level)
+gui2::widget* grid::get(const level level)
 {
 	switch(level) {
-		case widget:
+		case self:
 			return widget_;
-		case grid:
-			return NULL;
+		case internal:
+			return nullptr;
 		case child:
 			if(itor_ == grid_.end()) {
-				return NULL;
+				return nullptr;
 			} else {
 				return *itor_;
 			}
 	}
 
 	assert(false);
-	return NULL;
+	return nullptr;
 }
 
-} // namespace iterator
+} // namespace iteration
 
 } // namespace gui2

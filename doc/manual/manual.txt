@@ -94,7 +94,7 @@ your language; then click the "Tutorial" button to run the tutorial;
 and then play the campaign, "A Tale of Two Brothers" by clicking the "Campaign"
 button and selecting it from the list provided.
 
-image:images/main-menu-1.11.9.jpg["Main Menu"]
+image:images/main-menu-1.13.11+dev.jpg["Main Menu"]
 
 Tutorial::
  The tutorial is a real, but basic, game which teaches you some of
@@ -130,7 +130,7 @@ Load::
  Click this button to load a previously saved game. You will be shown
  a dialogue listing saved games. Select the game and click Ok to load
  and continue, or Cancel to return to the Main Menu. If you select a
- replay game, you can check the Replay check box. The loaded game will
+ replay game, you can check the "Show replay" check box. The loaded game will
  make all the moves from the beginning while you watch.
 
 Add-ons::
@@ -156,7 +156,7 @@ Preferences::
 Credits::
  Click this button for a list of major Wesnoth contributors. You
  will often be able to reach them in real time at
- irc.freenode.org:6667 on #wesnoth.
+ irc.freenode.org:6667 on #wesnoth or at https://discord.gg/battleforwesnoth
 
 Quit::
  Click this button to close Wesnoth.
@@ -172,6 +172,10 @@ Next::
 Previous::
  Click this button to read the previous little tip from the "Tome of Wesnoth".
 
+i::
+ Click this button to view game version and technical information. It may be
+ useful when troubleshooting issues.
+
 Game Modes
 ~~~~~~~~~~
 
@@ -180,6 +184,8 @@ There are two basic ways to play Battle for Wesnoth:
  - Play a sequence of connected scenarios, known as a campaign, against
    the computer.
  - Play a single scenario against computer or human opponents.
+
+There are also campaigns that can be played in multiplayer.
 
 Campaigns
 ^^^^^^^^^
@@ -213,20 +219,20 @@ take anywhere from 1 hour to 10 hours, depending on how many players
 there are (and the size of the map). The average time is between 3 to
 7 hours. Games can be saved and loaded as many times as you like. So,
 it's possible for some games to last 1 or 2 weeks, even though the play
-time is only a few hours. You cannot carry over units in multiplayer
-from one scenario to the next, so building up your army's strength is
-possible only within the scenario.
+time is only a few hours. When playing just a single scenario, your units won't
+carry to future games and building up your army's strength is possible only
+within the scenario.
 
 There are several possible options you are provided with when clicking on the
 "Multiplayer" button:
 
-image:images/multiplayer-1.11.9.jpg["Multiplayer dialog"]
+image:images/multiplayer-1.13.11+dev.png["Multiplayer dialog"]
 
 Login
 +++++
 
 This will be your name on the multiplayer server. If you have an account on the
-http://www.wesnoth.org/forum[Wesnoth forums], you may use the same username and
+https://forums.wesnoth.org/[Wesnoth forums], you may use the same username and
 password for joining the official server. A password box will pop up if a
 password is required for the current username. You cannot use a registered name
 without the password.
@@ -247,7 +253,7 @@ there also is the button "View List" that does show a list of official servers
 that can be used as backup if the main server is currently not available.
 
 A complete list of official and user setup servers is listed at this
-website: http://wesnoth.org/wiki/MultiplayerServers[Multiplayer servers].
+website: https://wiki.wesnoth.org/MultiplayerServers[Multiplayer servers].
 
 You can also reach servers hosted by any other player with this menu option.
 So if you got a server running in your local network, just enter the address
@@ -289,7 +295,7 @@ a game with a friend against an AI opponent.
 The Game Screen
 ^^^^^^^^^^^^^^^
 
-image:images/game-screen-1.11.9.jpg["Game Screen"]
+image:images/game-screen-1.13.11+dev.jpg["Game Screen"]
 
 Regardless of whether you are playing a scenario or a campaign, the
 basic layout of the game screen is the same. The majority of the screen
@@ -297,7 +303,7 @@ is filled with a map which shows all of the action that takes place
 in the game. Around the map are various elements which provide useful
 information about the game and are described in more detail below.
 
-image:images/top_pane-1.11.9.jpg["Top Panel"]
+image:images/top_pane-1.13.11+dev.png["Top Panel"]
 
 Across the top of the screen from left to right are the following items:
 
@@ -311,7 +317,7 @@ Across the top of the screen from left to right are the following items:
   8. Your income
   9. Current time or time left (in timed multiplayer games)
 
-image:images/right_pane-1.11.9.jpg["Right Panel"]
+image:images/right_pane-1.13.11+dev.png["Right Panel"]
 
 Down the right of the screen from top to bottom are:
 
@@ -322,7 +328,7 @@ Down the right of the screen from top to bottom are:
   4. Time of day indicator
   5. Unit profile for last selected unit
   6. End Turn button
- 
+
 Recruit and Recall
 ^^^^^^^^^^^^^^^^^^
 
@@ -505,7 +511,7 @@ Ctrl+c         Clear onscreen labels
 Alt+l          Attach a text label to a terrain hex
 Ctrl+l         Set team label
 
-:              http://www.wesnoth.org/wiki/CommandMode[Command mode]
+:              https://wiki.wesnoth.org/CommandMode[Command mode]
 F5             Refresh Cache
 Shift+c        Create Unit (Debug!)
 f              Run AI formula
@@ -522,21 +528,6 @@ Ctrl+F5         Refresh Cache
 Option+Space    End this player's turn
 ------------------------------------------------------------------------------
 
-Some hotkeys were changed slightly to make better use of the controls provided
-by the Pandora. If you are using a Pandora, these keys differ from the lists
-above:
-
-.Pandora specific controls and hotkeys
-`-------------------`---------------------------------------------------------
-D-Pad               Scroll
-GamingButton A      Recruit unit
-GamingButton B      Undo last move (only deterministic moves can be undone)
-GamingButton X      Cycle through units that have movement left
-GamingButton Y      Recall unit
-Alt+GamingButton Y  Move action down queue
-Alt+GamingButton X  Move action up queue
-------------------------------------------------------------------------------
-
 Gold
 ~~~~
 
@@ -551,7 +542,7 @@ displayed as part of the scenario objectives.
 Recruiting and Recalling
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-image:images/recruit-1.11.9.jpg["Recruit dialog"]
+image:images/recruit-1.13.11+dev.png["Recruit dialog"]
 
 The major use for gold is to build your army by recruiting new units
 or recalling units from previous scenarios in a campaign. Units may be
@@ -624,12 +615,12 @@ the damage dealt by lawful, chaotic, and liminal units:
 Turn    Image                                    Day-phase             Lawful  Chaotic Liminal
 ----------------------------------------------------------------------------------------------
 1       image:images/schedule-dawn.png[]         Dawn                  --      --      --
-2       image:images/schedule-morning.png[]      Day (morning)         +25%    −25%    −25%    
-3       image:images/schedule-afternoon.png[]    Day (afternoon)       +25%    −25%    −25%    
+2       image:images/schedule-morning.png[]      Day (morning)         +25%    −25%    −25%
+3       image:images/schedule-afternoon.png[]    Day (afternoon)       +25%    −25%    −25%
 4       image:images/schedule-dusk.png[]         Dusk                  --      --      --
-5       image:images/schedule-firstwatch.png[]   Night (first watch)   −25%    +25%    −25%    
-6       image:images/schedule-secondwatch.png[]  Night (second watch)  −25%    +25%    −25%    
-Special image:images/schedule-underground.png[]  Underground           −25%    +25%    −25%    
+5       image:images/schedule-firstwatch.png[]   Night (first watch)   −25%    +25%    −25%
+6       image:images/schedule-secondwatch.png[]  Night (second watch)  −25%    +25%    −25%
+Special image:images/schedule-underground.png[]  Underground           −25%    +25%    −25%
 ----------------------------------------------------------------------------------------------
 
 Keep in mind that some scenarios take place underground, where it is
@@ -698,6 +689,9 @@ Dextrous::
 Fearless::
   Does not suffer from a negative attack bonus during its unfavorable
   time of day (Heavy Infantry, Necrophage, Trolls, Walking Corpses).
+Feral::
+  Units with the Feral trait only receive 50% defense in villages regardless of
+  the base terrain the village is on (Bats, Falcons).
 Healthy::
   Renowned for their vitality, some dwarves are sturdier than others and can
   rest heal even when traveling or fighting.
@@ -709,7 +703,7 @@ These traits can either be assigned by the scenario designer or are always
 assigned based on the unit type:
 
 Aged::
-  The oldest units may have the Aged trait, receiving an 8 points HP decrease and 
+  The oldest units may have the Aged trait, receiving an 8 points HP decrease and
   having -1 movement and melee damage.
 Dim::
   Units with the Dim trait require 20% more experience to advance.
@@ -717,9 +711,6 @@ Elemental::
   Elemental units aren't alive and thus are immune to poison, and drain and
   plague don't work on them.
   Elemental units generally have 'Elemental' as their only trait.
-Feral::
-  Units with the Feral trait only receive 50% defense in villages regardless of
-  the base terrain the village is on.
 Loyal::
   Loyal units don't incur upkeep. Most units incur an upkeep cost at the end
   of every turn, which is equal to their level. Loyal units do not incur this
@@ -866,9 +857,6 @@ Submerge::
 Teleport::
   This unit may teleport between any two friendly villages using one of its
   moves.
-Unpoison::
-  A curer can cure a unit of poison, although that unit will receive no additional
-  healing on the turn it is cured of the poison.
 
 Experience
 ^^^^^^^^^^
@@ -967,13 +955,13 @@ Yellow image:images/orb-yellow.jpg["Yellow orb"]  If you control the unit and \
                                                   it has moved this turn, but \
                                                   could still move further or \
                                                   attack
-Black  image:images/orb-red.jpg["Black orb"]      If you control the unit, but \
+Red    image:images/orb-red.jpg["Red orb"]        If you control the unit, but \
                                                   it can no longer move or \
                                                   attack, or the user ended \
                                                   the unit's turn
 Blue   image:images/orb-blue.jpg["Blue orb"]      If the unit is an ally you \
                                                   do not control
-Red    image:images/orb-none.jpg["Red orb"]       Enemy units have a red orb on \
+-      image:images/orb-none.jpg["No orb"]        Enemy units have no orb on \
                                                   the top of their energy bar
 --------------------------------------------------------------------------------
 
@@ -1017,7 +1005,7 @@ Different types of attacks do different amounts of damage, and a certain
 number of strikes may be made with each weapon. For instance, an Elvish
 Fighter does 5 points of damage with its sword every time it hits,
 and can strike 4 blows with the sword in one exchange. This is written
-as 5–4, meaning 5 damage per hit, and 4 strikes.
+as 5&times;4, meaning 5 damage per hit, and 4 strikes.
 
 Every unit has a chance of being hit based on the terrain it is in. For
 instance, units in castles and villages have a lower chance of being
@@ -1267,15 +1255,14 @@ allows the enemy to do least damage to you, rather than choosing the
 maximum expected damage to the enemy.
 
 In particular, use your ranged weapons if the enemy has no ranged
-attack. The computer's default choice only looks for the most damage
-you can deal, so using it will often result in your units taking more
-damage than necessary.
+attack. Using it will often reduce the damage which your units take
+until the enemy dies.
 
 Time of Day
 ^^^^^^^^^^^
 
 Remember that Lawful units like humans fight better at daytime, Chaotic
-units like orcs or undead fight better at night, and Liminal units fight 
+units like orcs or undead fight better at night, and Liminal units fight
 best during the twilight. Ideally you want to
 first meet the enemy when you are strong and/or he is weak. When the
 enemy has its strong time, it often pays off to strengthen your lines

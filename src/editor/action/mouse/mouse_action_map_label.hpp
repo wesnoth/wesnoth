@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Fabian Mueller <fabianmueller5@gmx.de>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Fabian Mueller <fabianmueller5@gmx.de>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,12 +12,10 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_MOUSE_ACTION_MAP_LABEL_HPP
-#define EDITOR_MOUSE_ACTION_MAP_LABEL_HPP
+#pragma once
 
 #include "mouse_action.hpp"
 #include "editor/palette/empty_palette.hpp"
-#include "../../../map_label.hpp"
 
 class CKey;
 
@@ -62,5 +60,3 @@ private:
 };
 
 } //end namespace editor
-
-#endif

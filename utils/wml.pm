@@ -59,7 +59,7 @@ sub add_child
 sub read_binary
 {
 	my ($schema,$input) = @_;
-	
+
 	my $doc = {'name' => '', 'children' => [], 'attr' => {}};
 	my @stack = ($doc);
 	my $cur = $doc;
@@ -72,7 +72,7 @@ sub read_binary
 
 	#to see all the characters input for debugging
 	#print STDERR "INPUT: " . (join ', ', (map {ord} @chars)) . "\n";
-	
+
 	while(@chars) {
 		my $char = shift @chars;
 		my $code = ord $char;
@@ -162,7 +162,7 @@ sub read_text
 				while(@names and @values) {
 					my $name = shift @names;
 					my $value = shift @values;
-				
+
 					$cur->{'attr'}->{$name} = $value;
 				}
 				$state = 'SEEK';
@@ -220,7 +220,7 @@ sub read_text
 		while(@names and @values) {
 			my $name = shift @names;
 			my $value = shift @values;
-			
+
 			$cur->{'attr'}->{$name} = $value;
 		}
 	} elsif($state ne 'SEEK' or $#stack != 0) {
@@ -386,14 +386,14 @@ sub docs_equal
 	while(my ($key, $value) = each %$attr1) {
 		return 0 if $attr2->{$key} ne $value;
 	}
-	
+
 	while(my ($key, $value) = each %$attr2) {
 		return 0 if $attr1->{$key} ne $value;
 	}
 
 	my $children1 = $doc1->{'children'};
 	my $children2 = $doc2->{'children'};
-	
+
 	if(scalar(@$children1) != scalar(@$children2)) {
 		return 0;
 	}

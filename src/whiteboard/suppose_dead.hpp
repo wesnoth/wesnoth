@@ -1,6 +1,6 @@
 /*
- Copyright (C) 2011 - 2014 by Tommy Schmitz
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Copyright (C) 2011 - 2018 by Tommy Schmitz
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -16,8 +16,7 @@
  * @file
  */
 
-#ifndef WB_SUPPOSE_DEAD_HPP_
-#define WB_SUPPOSE_DEAD_HPP_
+#pragma once
 
 #include "action.hpp"
 
@@ -30,8 +29,8 @@ namespace wb {
 class suppose_dead: public action
 {
 public:
-	suppose_dead(size_t team_index, bool hidden, unit& curr_unit, map_location const& loc);
-	suppose_dead(config const&, bool hidden); // For deserialization
+	suppose_dead(std::size_t team_index, bool hidden, unit& curr_unit, const map_location& loc);
+	suppose_dead(const config&, bool hidden); // For deserialization
 	virtual ~suppose_dead();
 
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
@@ -71,11 +70,11 @@ public:
 
 protected:
 
-	boost::shared_ptr<suppose_dead> shared_from_this() {
-		return boost::static_pointer_cast<suppose_dead>(action::shared_from_this());
+	std::shared_ptr<suppose_dead> shared_from_this() {
+		return std::static_pointer_cast<suppose_dead>(action::shared_from_this());
 	}
 
-	size_t unit_underlying_id_;
+	std::size_t unit_underlying_id_;
 	std::string unit_id_;
 	map_location loc_;
 
@@ -87,6 +86,3 @@ private:
 std::ostream &operator<<(std::ostream &s, suppose_dead_ptr sup_d);
 std::ostream &operator<<(std::ostream &s, suppose_dead_const_ptr sup_d);
 } // end namespace wb
-
-#endif /* WB_SUPPOSE_DEAD_HPP_ */
-

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SDL_EXCEPTION_HPP_INCLUDED
-#define SDL_EXCEPTION_HPP_INCLUDED
+#pragma once
 
 /**
  * @file
@@ -25,7 +24,7 @@
 namespace sdl
 {
 
-struct texception : public game::error
+struct exception : public game::error
 {
 	/**
 	 * Constructor.
@@ -36,16 +35,8 @@ struct texception : public game::error
 	 *                            @p operation is the error message for the
 	 *                            exception.
 	 */
-	texception(const std::string& operation, const bool use_sdl_error);
+	exception(const std::string& operation, const bool use_sdl_error);
 };
 
-#ifdef SDL_GPU
-struct tgpu_exception : public game::error
-{
-	tgpu_exception(const std::string &op, const bool fetch_error_msg);
-};
-#endif
 
 } // namespace sdl
-
-#endif

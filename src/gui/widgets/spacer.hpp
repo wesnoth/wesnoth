@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,13 +12,22 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_SPACER_HPP_INCLUDED
-#define GUI_WIDGETS_SPACER_HPP_INCLUDED
+#pragma once
 
-#include "gui/widgets/control.hpp"
+#include "gui/widgets/styled_widget.hpp"
+
+#include "gui/auxiliary/typed_formula.hpp"
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
 
 namespace gui2
 {
+namespace implementation
+{
+struct builder_spacer;
+}
+
+// ------------ WIDGET -----------{
 
 /**
  * An empty widget.
@@ -29,58 +38,94 @@ namespace gui2
  * Since we're a kind of dummy class we're always active, our drawing does
  * nothing.
  */
-class tspacer : public tcontrol
+class spacer : public styled_widget
 {
 public:
-	tspacer() : tcontrol(0), best_size_(0, 0)
-	{
-	}
+	spacer(const implementation::builder_spacer& builder, const std::string& w = "0", const std::string& h = "0");
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
+	/** See @ref widget::request_reduce_width. */
+	virtual void request_reduce_width(const unsigned maximum_width) override;
+
+	/** See @ref widget::request_reduce_height. */
+	virtual void request_reduce_height(const unsigned maximum_height) override;
+
 private:
-	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const OVERRIDE;
+	/** See @ref widget::calculate_best_size. */
+	virtual point calculate_best_size() const override;
 
 public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref tcontrol::set_active. */
-	virtual void set_active(const bool active) OVERRIDE;
+	/** See @ref styled_widget::set_active. */
+	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
-	virtual bool get_active() const OVERRIDE;
+	/** See @ref styled_widget::get_active. */
+	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
-	virtual unsigned get_state() const OVERRIDE;
+	/** See @ref styled_widget::get_state. */
+	virtual unsigned get_state() const override;
 
-	/** See @ref twidget::disable_click_dismiss. */
-	bool disable_click_dismiss() const OVERRIDE;
+	/** See @ref widget::disable_click_dismiss. */
+	bool disable_click_dismiss() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_best_size(const tpoint& best_size)
-	{
-		best_size_ = best_size;
-	}
-
 private:
-	/** When we're used as a fixed size item, this holds the best size. */
-	tpoint best_size_;
+	typed_formula<unsigned> width_;
+	typed_formula<unsigned> height_;
 
-	/** See @ref twidget::impl_draw_background. */
-	virtual void impl_draw_background(surface& frame_buffer) OVERRIDE;
+	bool fills_available_space();
 
-	/** See @ref twidget::impl_draw_background. */
+	/** See @ref widget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,
 									  int x_offset,
-									  int y_offset) OVERRIDE;
+									  int y_offset) override;
 
-	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
+	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
+	virtual const std::string& get_control_type() const override;
 };
 
+// }---------- DEFINITION ---------{
+
+struct spacer_definition : public styled_widget_definition
+{
+	explicit spacer_definition(const config& cfg);
+
+	struct resolution : public resolution_definition
+	{
+		explicit resolution(const config& cfg);
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct builder_spacer : public builder_styled_widget
+{
+	explicit builder_spacer(const config& cfg);
+
+	using builder_styled_widget::build;
+
+	widget* build() const;
+
+private:
+	// We store these as strings since they could contain formulas.
+	// The widget handles the parsing.
+	const std::string width_;
+	const std::string height_;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
-
-#endif

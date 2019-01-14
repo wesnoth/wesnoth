@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,112 +17,44 @@
  * Various functions that implement the undoing (and redoing) of in-game commands.
  */
 
-#ifndef ACTIONS_UNDO_H_INCLUDED
-#define ACTIONS_UNDO_H_INCLUDED
+#pragma once
 
 #include "vision.hpp"
-#include "../map_location.hpp"
-#include "../unit_ptr.hpp"
+#include "map/location.hpp"
+#include "units/ptr.hpp"
+#include "undo_action.hpp"
 
-#include <boost/noncopyable.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
-#include <vector>
 
+#include <vector>
 
 namespace actions {
 
 
 /// Class to store the actions that a player can undo and redo.
-class undo_list : boost::noncopyable {
-	/// Records information to be able to undo an action.
-	/// Each type of action gets its own derived type.
-	struct undo_action : boost::noncopyable {
-		/// Constructor for move actions.
-		undo_action(const unit_const_ptr u,
-			        const std::vector<map_location>::const_iterator & begin,
-			        const std::vector<map_location>::const_iterator & end) :
-				route(begin, end),
-				view_info(new clearer_info(*u))
-			{
-			}
-		/// Constructor for recruit and recall actions.
-		/// These types of actions are guaranteed to have a non-empty route.
-		undo_action(const unit_const_ptr u, const map_location& loc) :
-				route(1, loc),
-				view_info(new clearer_info(*u))
-			{}
-		/// Constructor from a config storing the view info.
-		/// Does not set @a route.
-		explicit undo_action(const config & cfg) :
-				route(),
-				view_info(new clearer_info(cfg))
-			{}
-		/// Constructor from a config storing the view info and a location.
-		/// Guarantees a non-empty route.
-		explicit undo_action(const config & cfg, const map_location & loc) :
-				route(1, loc),
-				view_info(new clearer_info(cfg))
-			{}
-		/// Default constructor.
-		/// This is the only way to get NULL view_info.
-		undo_action() :
-				route(),
-				view_info(NULL)
-			{}
-		// Virtual destructor to support derived classes.
-		virtual ~undo_action();
+class undo_list {
 
-
-		/// Creates an undo_action based on a config.
-		/// Throws bad_lexical_cast if it cannot parse the config properly.
-		static undo_action * create(const config & cfg, const std::string & tag);
-		/// Writes this into the provided config.
-		virtual void write(config & cfg) const = 0;
-
-		/// Undoes this action.
-		/// @return true on success; false on an error.
-		virtual bool undo(int side, undo_list & undos) = 0;
-		/// Redoes this action.
-		/// @return true on success; false on an error.
-		virtual bool redo(int side) = 0;
-
-		config& get_replay_data() { return replay_data; }
-
-		// Data:
-		/// the replay data to do this action, this is only !empty() when this action is on the redo stack
-		/// we need this because we dont recalculate the redos like they would be in real game,
-		/// but even undoable comands can have "dependent" (= user_input) commands, which we save here.
-		config replay_data;
-
-		/// The hexes occupied by the affected unit during this action.
-		std::vector<map_location> route;
-		/// A record of the affected unit's ability to see.
-		/// For derived classes that use this, it must be never NULL.
-		clearer_info * const view_info;
-		// This pointer is the reason for deriving from noncopyable (an
-		// alternative would be to implement deep copies, but we have no
-		// need for copying, so noncopyable is simpler).
-	};
-	// The structs derived from undo_action.
-	struct dismiss_action;
-	struct move_action;
-	struct recall_action;
-	struct recruit_action;
-	struct auto_shroud_action;
-	struct update_shroud_action;
-	// The update_shroud_action needs to be able to call add_update_shroud().
-	friend struct update_shroud_action;
-
-	typedef boost::ptr_vector<undo_action> action_list;
+	typedef std::unique_ptr<undo_action_base> action_ptr_t;
+	typedef std::vector<action_ptr_t> action_list;
+	typedef std::vector<std::unique_ptr<config>> redos_list;
 
 public:
+	undo_list(const undo_list&) = delete;
+	undo_list& operator=(const undo_list&) = delete;
+
 	explicit undo_list(const config & cfg);
 	~undo_list();
+
+	/// Creates an undo_action based on a config.
+	/// Throws bad_lexical_cast or config::error if it cannot parse the config properly.
+	static undo_action_base * create_action(const config & cfg);
 
 	// Functions related to managing the undo stack:
 
 	/// Adds an auto-shroud toggle to the undo stack.
 	void add_auto_shroud(bool turned_on);
+	/// Adds an auto-shroud toggle to the undo stack.
+	void add_dummy();
 	/// Adds a dismissal to the undo stack.
 	void add_dismissal(const unit_const_ptr u);
 	/// Adds a move to the undo stack.
@@ -133,13 +65,13 @@ public:
 	              const map_location::DIRECTION dir=map_location::NDIRECTIONS);
 	/// Adds a recall to the undo stack.
 	void add_recall(const unit_const_ptr u, const map_location& loc,
-	                const map_location& from);
+	                const map_location& from, int orig_village_owner, bool time_bonus);
 	/// Adds a recruit to the undo stack.
 	void add_recruit(const unit_const_ptr u, const map_location& loc,
-	                 const map_location& from);
-private:
+	                 const map_location& from, int orig_village_owner, bool time_bonus);
 	/// Adds a shroud update to the undo stack.
 	void add_update_shroud();
+private:
 public:
 	/// Clears the stack of undoable (and redoable) actions.
 	void clear();
@@ -168,14 +100,14 @@ public:
 
 private: // functions
 	/// Adds an action to the undo stack.
-	void add(undo_action * action)
-	{ undos_.push_back(action);  redos_.clear(); }
+	void add(undo_action_base * action)
+	{ undos_.emplace_back(action);  redos_.clear(); }
 	/// Applies the pending fog/shroud changes from the undo stack.
-	size_t apply_shroud_changes() const;
+	bool apply_shroud_changes() const;
 
 private: // data
 	action_list undos_;
-	action_list redos_;
+	redos_list redos_;
 
 	/// Tracks the current side.
 	int side_;
@@ -185,5 +117,3 @@ private: // data
 
 
 }//namespace actions
-
-#endif

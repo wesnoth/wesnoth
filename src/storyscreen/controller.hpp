@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Ignacio R. Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,59 +17,44 @@
  * Storyscreen controller (interface).
  */
 
-#ifndef STORYSCREEN_CONTROLLER_HPP_INCLUDED
-#define STORYSCREEN_CONTROLLER_HPP_INCLUDED
+#pragma once
 
-#include "events.hpp"
-#include "interface.hpp"
-#include "video.hpp"
+#include "storyscreen/parser.hpp"
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
+#include <string>
+#include <vector>
 
-class display;
-class vconfig;
-
-namespace storyscreen {
-
-enum STORY_RESULT {
-	NEXT,
-	BACK,
-	QUIT
-};
-
+namespace storyscreen
+{
 class part;
-class part_ui;
 class floating_image;
 
-class controller
+class controller : private story_parser
 {
 public:
-	controller(display& disp, const vconfig& data, const std::string& scenario_name,
-		   int segment_index);
+	typedef std::shared_ptr<part> part_pointer_type;
 
-	/**
-	 * Display all story screen parts in a first..last sequence.
-	 */
-	STORY_RESULT show(START_POSITION startpos=START_BEGINNING);
+	controller(const vconfig& data, const std::string& scenario_name);
+
+	part_pointer_type get_part(int index) const
+	{
+		return parts_.at(index);
+	}
+
+	int max_parts() const
+	{
+		return parts_.size();
+	}
 
 private:
-	typedef boost::shared_ptr< part    > part_pointer_type;
-	typedef boost::shared_ptr< part_ui > render_pointer_type;
-
-	// Executes WML flow instructions and inserts parts.
-	void resolve_wml(const vconfig& cfg);
-
-	display& disp_;
-	const resize_lock disp_resize_lock_;
-	const events::event_context evt_context_;
+	/** Inherited from story_parser. */
+	virtual bool resolve_wml_helper(const std::string& key, const vconfig& node) override;
 
 	std::string scenario_name_;
-	int segment_index_;
 
 	// The part cache.
-	std::vector< part_pointer_type > parts_;
+	std::vector<part_pointer_type> parts_;
 };
 
 } // end namespace storyscreen
-
-#endif /* ! STORYSCREEN_CONTROLLER_HPP_INCLUDED */

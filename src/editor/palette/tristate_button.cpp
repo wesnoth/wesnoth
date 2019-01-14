@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2013 - 2014 by Fabian Mueller <fabianmueller5@gmx.de>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2013 - 2018 by Fabian Mueller <fabianmueller5@gmx.de>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,39 +14,31 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
+#include "editor/palette/tristate_button.hpp"
 
-#include "tristate_button.hpp"
-
-#include "font.hpp"
 #include "game_config.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 #include "log.hpp"
-#include "marked-up_text.hpp"
-#include "serialization/string_utils.hpp"
-#include "sdl/alpha.hpp"
+#include "sdl/rect.hpp"
 #include "sound.hpp"
 #include "video.hpp"
-#include "wml_separators.hpp"
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
 namespace gui {
 
-const int font_size = font::SIZE_SMALL;
-const int checkbox_horizontal_padding = font::SIZE_SMALL / 2;
-
 tristate_button::tristate_button(CVideo& video,
-		editor::common_palette* palette,
+		editor::tristate_palette* palette,
 		std::string button_image_name,
 		const bool auto_join) :
 				widget(video, auto_join),
-				baseImage_(NULL), touchedBaseImage_(NULL), activeBaseImage_(NULL),
-				itemImage_(NULL),
-				pressedDownImage_(NULL), pressedUpImage_(NULL), pressedBothImage_(NULL),
-				pressedBothActiveImage_(NULL), pressedDownActiveImage_(NULL), pressedUpActiveImage_(NULL),
-				touchedDownImage_(NULL), touchedUpImage_(NULL), touchedBothImage_(NULL),
+				baseImage_(nullptr), touchedBaseImage_(nullptr), activeBaseImage_(nullptr),
+				itemImage_(nullptr),
+				pressedDownImage_(nullptr), pressedUpImage_(nullptr), pressedBothImage_(nullptr),
+				pressedBothActiveImage_(nullptr), pressedDownActiveImage_(nullptr), pressedUpActiveImage_(nullptr),
+				touchedDownImage_(nullptr), touchedUpImage_(nullptr), touchedBothImage_(nullptr),
+				textRect_(),
 				state_(NORMAL), pressed_(false),
 				base_height_(0), base_width_(0),
 				palette_(palette), item_id_()
@@ -163,12 +155,11 @@ void tristate_button::enable(bool new_val) {
 
 void tristate_button::draw_contents() {
 
-	surface image(NULL);
+	surface image(nullptr);
 
-	surface overlay(NULL);
+	surface overlay(nullptr);
 	surface base = baseImage_;
 
-	int offset = 0;
 	switch (state_) {
 
 	case UNINIT:
@@ -222,52 +213,28 @@ void tristate_button::draw_contents() {
 
 	image = base;
 
-	const int image_w = image->w;
-	SDL_Rect const &loc = location();
-	SDL_Rect clipArea = loc;
-	const int texty = loc.y + loc.h / 2 - textRect_.h / 2 + offset;
-	int textx;
-
-	clipArea.w += image_w + checkbox_horizontal_padding;
-	textx = loc.x + image_w + checkbox_horizontal_padding / 2;
-
-	SDL_Color button_color = font::BUTTON_COLOR;
+	const SDL_Rect& loc = location();
 
 	surface scalled_item;
 	scalled_item.assign(scale_surface(itemImage_,
 			36, 36));
 
-	// blit_surface want neutral surfaces
 	surface nitem = make_neutral_surface(scalled_item);
 	surface nbase = make_neutral_surface(base);
 
 	//TODO avoid magic numbers
-	SDL_Rect r = sdl::create_rect(1, 1, 0, 0);
-	blit_surface(nitem, NULL, nbase, &r);
+	SDL_Rect r {1, 1, 0, 0};
+	sdl_blit(nitem, nullptr, nbase, &r);
 
 	if (!overlay.null()) {
 		surface noverlay = make_neutral_surface(overlay);
-		blit_surface(noverlay, NULL, nbase, NULL);
+		sdl_blit(noverlay, nullptr, nbase, nullptr);
 	}
 
-//  TODO for later reference
-//	SDL_SetAlpha(nbase, SDL_SRCALPHA, SDL_ALPHA_OPAQUE);
-//	SDL_SetAlpha(image, 0, 0);
-//
-//	TODO might be needed.
 	bg_restore();
 
 	image = nbase;
 	video().blit_surface(loc.x, loc.y, image);
-
-	clipArea.x += offset;
-	clipArea.y += offset;
-	clipArea.w -= 2 * offset;
-	clipArea.h -= 2 * offset;
-	font::draw_text(&video(), clipArea, font_size, button_color, label_, textx,
-			texty);
-
-	update_rect(loc);
 }
 
 //TODO move to widget
@@ -275,7 +242,7 @@ bool tristate_button::hit(int x, int y) const {
 	return sdl::point_in_rect(x, y, location());
 }
 
-void tristate_button::mouse_motion(SDL_MouseMotionEvent const &event) {
+void tristate_button::mouse_motion(const SDL_MouseMotionEvent& event) {
 
 	if (hit(event.x, event.y))
 	{ // the cursor is over the widget
@@ -330,7 +297,7 @@ void tristate_button::mouse_motion(SDL_MouseMotionEvent const &event) {
 	}
 }
 
-void tristate_button::mouse_down(SDL_MouseButtonEvent const &event) {
+void tristate_button::mouse_down(const SDL_MouseButtonEvent& event) {
 
 	if (!hit(event.x, event.y))
 		return;
@@ -356,7 +323,7 @@ void tristate_button::release() {
 	draw_contents();
 }
 
-void tristate_button::mouse_up(SDL_MouseButtonEvent const &event) {
+void tristate_button::mouse_up(const SDL_MouseButtonEvent& event) {
 
 	if (!(hit(event.x, event.y)))
 		return;
@@ -405,6 +372,8 @@ void tristate_button::mouse_up(SDL_MouseButtonEvent const &event) {
 }
 
 void tristate_button::handle_event(const SDL_Event& event) {
+
+	gui::widget::handle_event(event);
 
 	if (hidden() || !enabled())
 		return;

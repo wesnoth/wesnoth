@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2010 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2010 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,38 +12,47 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_TREE_VIEW_NODE_HPP_INCLUDED
-#define GUI_WIDGETS_TREE_VIEW_NODE_HPP_INCLUDED
+#pragma once
 
-#include "gui/auxiliary/window_builder/tree_view.hpp"
+#include "gui/widgets/widget.hpp"
+#include "gui/widgets/grid.hpp"
 
-#include <boost/ptr_container/ptr_vector.hpp>
+#include <memory>
 
 namespace gui2
 {
 
-class tselectable_;
-class ttoggle_button;
-class ttree_view;
+namespace implementation {
+	struct tree_node;
+}
 
-class ttree_view_node : public twidget
+class selectable_item;
+class tree_view;
+
+class tree_view_node : public widget
 {
-	friend struct ttree_view_node_implementation;
-	friend class ttree_view;
+	friend struct tree_view_node_implementation;
+	friend class tree_view;
 
 public:
-	typedef implementation::tbuilder_tree_view::tnode tnode_definition;
-	ttree_view_node(
+	using ptr_t = std::shared_ptr<tree_view_node>;
+	using node_children_vector = std::vector<ptr_t>;
+
+	bool operator==(const tree_view_node& node)
+	{
+		return &node == this;
+	}
+
+	tree_view_node(
 			const std::string& id,
-			const std::vector<tnode_definition>& node_definitions,
-			ttree_view_node* parent_node,
-			ttree_view& parent_tree_view,
+			tree_view_node* parent_node,
+			tree_view& parent_tree_view,
 			const std::map<std::string /* widget id */, string_map>& data);
 
-	~ttree_view_node();
+	~tree_view_node();
 
 	/**
-	 * Adds a child item to the list of child nodes.
+	 * Constructs a new child node.
 	 *
 	 * @param id                  The id of the node definition to use for the
 	 *                            new node.
@@ -57,10 +66,26 @@ public:
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */
-	ttree_view_node&
-	add_child(const std::string& id,
-			  const std::map<std::string /* widget id */, string_map>& data,
-			  const int index = -1);
+	tree_view_node& add_child(const std::string& id,
+			const std::map<std::string /* widget id */, string_map>& data,
+			const int index = -1)
+	{
+		ptr_t new_node(new tree_view_node(id, this, get_tree_view(), data));
+		return add_child_impl(std::move(new_node), index);
+	}
+
+	/**
+	 * Adds a previously-constructed node as a child of this node at the given position.
+	 *
+	 * @param new_node            A smart pointer to the node object to insert.
+	 * @param index               The item before which to add the new item,
+	 *                            0 == begin, -1 == end.
+	 */
+	tree_view_node& add_child(ptr_t new_node, const int index = -1)
+	{
+		new_node->parent_node_ = this;
+		return add_child_impl(std::move(new_node), index);
+	}
 
 	/**
 	 * Adds a sibbling for a node at the end of the list.
@@ -75,7 +100,7 @@ public:
 	 *                            Having both empty and non-empty id's gives
 	 *                            undefined behavior.
 	 */
-	ttree_view_node&
+	tree_view_node&
 	add_sibling(const std::string& id,
 				const std::map<std::string /* widget id */, string_map>& data)
 	{
@@ -83,24 +108,32 @@ public:
 		return parent_node().add_child(id, data);
 	}
 
+private:
+	/** Implementation detail for @ref add_child. */
+	tree_view_node& add_child_impl(ptr_t&& new_node, const int index);
+
+public:
 	/**
 	 * Is this node the root node?
 	 *
 	 * When the parent tree view is created it adds one special node, the root
 	 * node. This node has no parent node and some other special features so
 	 * several code paths need to check whether they are the parent node.
+	 *
+	 * This also returns true for a detecthed node returned with @ref tree_view::
+	 * remove_node.
 	 */
 	bool is_root_node() const
 	{
-		return parent_node_ == NULL;
+		return parent_node_ == nullptr;
 	}
 
 	/**
-	 * The indention level of the node.
+	 * The indentation level of the node.
 	 *
 	 * The root node starts at level 0.
 	 */
-	unsigned get_indention_level() const;
+	unsigned get_indentation_level() const;
 
 	/** Does the node have children? */
 	bool empty() const
@@ -109,56 +142,54 @@ public:
 	}
 
 	/** Is the node folded? */
-	bool is_folded() const;
+	bool is_folded() const
+	{
+		return !unfolded_;
+	}
 
 #if 0
-	enum texpand_mode
-	{
-		  recursive_restore // recursively restores collapse mode
-		, recursive_expand // recursively expands the children
-		, not_recursive
+	// TODO: implement if different expand modes become necessary
+	enum expand_mode {
+		recursive_restore, // recursively restores collapse mode
+		recursive_expand, // recursively expands the children
+		not_recursive
 	};
-
-
-
-	// If recursive all children will be closed recursively causing
-	// restore expaning not to expand anything
-//		void fold(const bool recursive); // FIXME implement
-
-//		void unfold(const texpand_mode mode); // FIXME implement
 #endif
 
+	void fold(const bool recursive = false);
+	void unfold(const bool recursive = false);
+
 	/**
-	 * See @ref twidget::create_walker.
+	 * See @ref widget::create_walker.
 	 *
 	 * @todo Implement properly.
 	 */
-	virtual iterator::twalker_* create_walker() OVERRIDE
+	virtual iteration::walker_base* create_walker() override;
+
+	node_children_vector& children()
 	{
-		return NULL;
+		return children_;
 	}
 
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const tpoint& coordinate,
-							 const bool must_be_active) OVERRIDE;
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& coordinate,
+							 const bool must_be_active) override;
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
-								   const bool must_be_active) const OVERRIDE;
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& coordinate,
+								   const bool must_be_active) const override;
 
-	/** See @ref twidget::find. */
-	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
+	/** See @ref widget::find. */
+	widget* find(const std::string& id, const bool must_be_active) override;
 
-	/** See @ref twidget::find. */
-	const twidget* find(const std::string& id,
-						const bool must_be_active) const OVERRIDE;
+	/** See @ref widget::find. */
+	const widget* find(const std::string& id,
+						const bool must_be_active) const override;
 
 	/**
-	 * The "size" of the widget.
-	 *
-	 * @todo Rename this function, names to close to the size of the widget.
+	 * The number of children in this widget.
 	 */
-	size_t size() const
+	std::size_t count_children() const
 	{
 		return children_.size();
 	}
@@ -175,116 +206,131 @@ public:
 	 *
 	 * @pre                       is_root_node() == false.
 	 */
-	ttree_view_node& parent_node();
+	tree_view_node& parent_node();
 
 	/** The const version of @ref parent_node. */
-	const ttree_view_node& parent_node() const;
+	const tree_view_node& parent_node() const;
 
-	ttree_view& tree_view();
+	tree_view& get_tree_view()
+	{
+		return *tree_view_;
+	}
 
-	const ttree_view& tree_view() const;
+	const tree_view& get_tree_view() const
+	{
+		return *tree_view_;
+	}
+
+	tree_view_node& get_child_at(int index);
+
+	/**
+	 * Calculates the node indices needed to get from the root node to this node.
+	 */
+	std::vector<int> describe_path();
+
+	tree_view_node* get_last_visible_parent_node();
+	tree_view_node* get_node_above();
+	tree_view_node* get_node_below();
+	tree_view_node* get_selectable_node_above();
+	tree_view_node* get_selectable_node_below();
+	void select_node(bool expand_parents = false);
+	grid& get_grid() { return grid_; }
+	void layout_initialize(const bool full_initialization) override;
+
+	void clear_before_destruct();
 
 private:
-	/** See @ref twidget::request_reduce_width. */
-	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
+	int calculate_ypos();
+
+	/** See @ref widget::request_reduce_width. */
+	virtual void request_reduce_width(const unsigned maximum_width) override;
 
 	/**
 	 * Our parent node.
 	 *
 	 * All nodes except the root node have a parent node.
 	 */
-	ttree_view_node* parent_node_;
+	tree_view_node* parent_node_;
 
 	/** The tree view that owns us. */
-	ttree_view& tree_view_;
+	tree_view* tree_view_;
 
 	/** Grid holding our contents. */
-	tgrid grid_;
+	grid grid_;
 
 	/**
 	 * Our children.
 	 *
 	 * We want the returned child nodes to remain stable so store pointers.
 	 */
-	boost::ptr_vector<ttree_view_node> children_;
+	node_children_vector children_;
 
-	/**
-	 * The node definitions known to use.
-	 *
-	 * This list is needed to create new nodes.
-	 *
-	 * @todo Maybe store this list in the tree_view to avoid copying the
-	 * reference.
-	 */
-	const std::vector<tnode_definition>& node_definitions_;
-
-	/** The icon to show the folded state. */
-	ttoggle_button* icon_;
+	/** The toggle for the folded state. */
+	selectable_item* toggle_;
 
 	/** The label to show our selected state. */
-	tselectable_* label_;
+	selectable_item* label_;
+
+	bool unfolded_;
+	void fold_internal();
+	void unfold_internal();
 
 	/**
-	 * "Inherited" from twidget.
+	 * "Inherited" from widget.
 	 *
 	 * This version needs to call its children, which are it's child nodes.
 	 */
-	void impl_populate_dirty_list(twindow& caller,
-								  const std::vector<twidget*>& call_stack);
+	void impl_populate_dirty_list(window& caller,
+								  const std::vector<widget*>& call_stack);
 
-	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const OVERRIDE;
+	/** See @ref widget::calculate_best_size. */
+	virtual point calculate_best_size() const override;
 
-	/** See @ref twidget::disable_click_dismiss. */
-	bool disable_click_dismiss() const OVERRIDE;
+	/** See @ref widget::disable_click_dismiss. */
+	bool disable_click_dismiss() const override;
 
-	tpoint calculate_best_size(const int indention_level,
-							   const unsigned indention_step_size) const;
+	point calculate_best_size(const int indentation_level,
+							   const unsigned indentation_step_size) const;
+	/** @param assume_visible if false (default) it will return 0 if the parent node is folded*/
+	point get_current_size(bool assume_visible = false) const;
+	point get_folded_size() const;
+	point get_unfolded_size() const;
 
-	tpoint get_current_size() const;
-	tpoint get_folded_size() const;
-	tpoint get_unfolded_size() const;
+	/** See @ref widget::set_origin. */
+	virtual void set_origin(const point& origin) override;
 
-	/** See @ref twidget::set_origin. */
-	virtual void set_origin(const tpoint& origin) OVERRIDE;
-
-	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
+	/** See @ref widget::place. */
+	virtual void place(const point& origin, const point& size) override;
 
 	unsigned
-	place(const unsigned indention_step_size, tpoint origin, unsigned width);
+	place(const unsigned indentation_step_size, point origin, unsigned width);
 
-	/** See @ref twidget::set_visible_rectangle. */
-	virtual void set_visible_rectangle(const SDL_Rect& rectangle) OVERRIDE;
+	/** See @ref widget::set_visible_rectangle. */
+	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override;
 
-	/** See @ref twidget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer) OVERRIDE;
-
-	/** See @ref twidget::impl_draw_children. */
+	/** See @ref widget::impl_draw_children. */
 	virtual void impl_draw_children(surface& frame_buffer,
 									int x_offset,
-									int y_offset) OVERRIDE;
+									int y_offset) override;
 
 	// FIXME rename to icon
-	void signal_handler_left_button_click(const event::tevent event);
+	void signal_handler_left_button_click(const event::ui_event event);
 
-	void signal_handler_label_left_button_click(const event::tevent event,
+	void signal_handler_label_left_button_click(const event::ui_event event,
 												bool& handled,
 												bool& halt);
 
 	void
-	init_grid(tgrid* grid,
+	init_grid(grid* grid,
 			  const std::map<std::string /* widget id */, string_map>& data);
 
 	/**
-	 * Returns the control_type of the @ref ttree_view_node.
+	 * Returns the control_type of the @ref tree_view_node.
 	 *
-	 * This class does not derive from @ref tcontrol but the function behaves
-	 * similar as @ref tcontrol::get_control_type.
+	 * This class does not derive from @ref styled_widget but the function behaves
+	 * similar as @ref styled_widget::get_control_type.
 	 */
 	const std::string& get_control_type() const;
 };
 
 } // namespace gui2
-
-#endif

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -13,12 +13,10 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "brush.hpp"
+#include "editor/toolkit/brush.hpp"
 #include "editor/editor_common.hpp"
 
 #include "pathutils.hpp"
-
-#include <boost/foreach.hpp>
 
 namespace editor {
 
@@ -67,18 +65,18 @@ brush::brush()
 
 brush::brush(const config& cfg)
 	: relative_tiles_()
- 	, name_(cfg["name"])
+	, name_(cfg["name"])
 	, id_(cfg["id"])
 {
 	int radius = cfg["radius"];
 	if (radius > 0) {
 		std::vector<map_location> in_radius;
 		get_tiles_in_radius(map_location(0, 0), radius, in_radius);
-		BOOST_FOREACH(map_location& loc, in_radius) {
+		for (map_location& loc : in_radius) {
 			add_relative_location(loc.x, loc.y);
 		}
 	}
-	BOOST_FOREACH(const config &relative, cfg.child_range("relative"))
+	for (const config &relative : cfg.child_range("relative"))
 	{
 		int x = relative["x"];
 		int y = relative["y"];
@@ -97,7 +95,7 @@ void brush::add_relative_location(int relative_x, int relative_y)
 std::set<map_location> brush::project(const map_location& hotspot) const
 {
 	std::set<map_location> result;
-	BOOST_FOREACH(const map_location& relative, relative_tiles_) {
+	for (const map_location& relative : relative_tiles_) {
 		result.insert(relative.vector_sum(hotspot));
 	}
 	return result;

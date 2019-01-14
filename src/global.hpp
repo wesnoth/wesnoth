@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,61 +12,87 @@
    See the COPYING file for more details.
 */
 
-#ifndef GLOBAL_HPP_INCLUDED
-#define GLOBAL_HPP_INCLUDED
+#pragma once
 
 #ifdef _MSC_VER
 
-#undef snprintf
-#define snprintf _snprintf
-
-// Disable warning about source encoding not in current code page.
-#pragma warning(disable: 4819)
-
-// Disable warning about deprecated functions.
-#pragma warning(disable: 4996)
-
-//disable some MSVC warnings which are useless according to mordante
-#pragma warning(disable: 4244)
-#pragma warning(disable: 4345)
-#pragma warning(disable: 4250)
-#pragma warning(disable: 4355)
-#pragma warning(disable: 4351)
+// Enable C99 support
+#define STDC99
 
 #endif //_MSC_VER
-
-/**
- * Enable C++11 support in some parts of the code.
- *
- * These parts \em must  also work without C++11, since Wesnoth still uses C++98
- * as the official C++ version.
- *
- * @note Older versions of GCC don't define the proper version for
- * @c __cplusplus,  but have their own test macro. That test is omitted since
- * the amount of support for these compilers depends a lot on the exact
- * compiler version. If you want to enable it for these compilers simply define
- * the macro manually.
- */
-#if (__cplusplus >= 201103L)
-#define HAVE_CXX11
-#endif
-
-#ifdef HAVE_CXX11
-#define FINAL final
-#define OVERRIDE override
-#else
-#define FINAL
-#define OVERRIDE
-#endif
 
 #ifdef NDEBUG
 /*
  * Wesnoth uses asserts to avoid undefined behaviour. For example, to make sure
- * pointers are not NULL before deferring them, or collections are not empty
+ * pointers are not nullptr before dereferencing them, or collections are not empty
  * before accessing their elements. Therefore Wesnoth should not be compiled
  * with assertions disabled.
  */
 #error "Compilation with NDEBUG defined isn't supported, Wesnoth depends on asserts."
 #endif
 
-#endif //GLOBAL_HPP_INCLUDED
+#define UNUSED(x)  ((void)(x))     /* to avoid warnings */
+
+// To allow using some optional C++14 and C++17 features
+#if __cplusplus >= 201402L
+#define HAVE_CXX14
+#if __cplusplus >= 201703L
+#define HAVE_CXX17
+#endif
+#endif
+
+// Some C++11 features are not available on all supported platforms
+#if defined(_MSC_VER)
+// MSVC supports these starting in MSVC 2015
+#if _MSC_VER >= 1900
+#define HAVE_REF_QUALIFIERS 1
+#define HAVE_INHERITING_CTORS 1
+#else
+#endif
+// MSVC supports these starting in 2017?
+// Some sources claim MSVC 2015 supports them, but let's be safe...
+#if _MSC_VER >= 1910
+#define DEPRECATED(reason) [[deprecated(reason)]]
+#if _MSVC_LANG > 201402	// fallthrough only supported when MSVC targets later than C++14
+#define FALLTHROUGH [[fallthrough]]
+#else
+#define FALLTHROUGH
+#endif
+#else
+#define DEPRECATED(reason) __declspec(deprecated)
+#define FALLTHROUGH
+#endif
+#endif
+
+#if defined(__clang__)
+#include <ciso646> // To ensure standard library version macros are defined
+
+// Clang has convenient feature detection macros \o/
+#define HAVE_REF_QUALIFIERS __has_feature(cxx_reference_qualified_functions)
+#define HAVE_INHERITING_CTORS __has_feature(cxx_inheriting_constructors)
+// All supported versions of clang have these
+#define FALLTHROUGH [[clang::fallthrough]]
+// Use GCC-style attribute because the __has_cpp_attribute feature-checking macro doesn't exist in clang 3.5
+#define DEPRECATED(reason) __attribute__((deprecated(reason)))
+
+#endif
+
+#if defined(__GNUC__) && !defined(__clang__)
+// GCC supports these from 4.8 up
+#define HAVE_REF_QUALIFIERS 1
+#define HAVE_INHERITING_CTORS 1
+
+// Deprecated is supported from 4.9 up
+#if __GNUC__ >= 5 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 9)
+#define DEPRECATED(reason) [[deprecated(reason)]]
+#else
+#define DEPRECATED(reason) __attribute__((deprecated(reason)))
+#endif
+
+// Fallthrough is supported from GCC 7 up
+#if __GNUC__ >= 7
+#define FALLTHROUGH [[fallthrough]]
+#else
+#define FALLTHROUGH
+#endif
+#endif

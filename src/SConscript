@@ -1,578 +1,129 @@
 # vi: syntax=python:et:ts=4
 
-import commands, os
+import os
 from subprocess import Popen, PIPE
 from glob import glob
 
 Import("*")
 
-for env in [test_env, client_env, env]:
-    env.Append(CPPDEFINES = "$EXTRA_DEFINE")
+#
+# load list of sources from the file in source_lists/
+#
+def GetSources(filename):
+    sources = []
+    with open(File("#/source_lists/" + filename).rfile().abspath) as file:
+        for line in file.readlines():
+            sources.append(line.strip())
+    return sources
+
+#
+# setup the FIFODIR, WESNOTH_PATH
+#
+
+for environ in [test_env, client_env, env]:
+# controls displaying git revision next to the version on the title screen
+    if environ.get("have_autorevision"):
+        environ.Append(CPPDEFINES = 'LOAD_REVISION')
+
+# if not windows, then set FIFODIR and WESNOTH_PATH defines, and configure the locale and preferences locations
+    if environ["PLATFORM"] != "win32":
+        environ.Append(CPPDEFINES = "FIFODIR='\"$fifodir\"'")
+        environ.Append(CPPDEFINES = "WESNOTH_PATH='\"$datadir\"'")
+        if env['localedirname']:
+            environ.Append(CPPDEFINES = "LOCALEDIR='\"$localedirname\"'")
+            if not os.path.isabs(env['localedirname']):
+                environ.Append(CPPDEFINES = "HAS_RELATIVE_LOCALEDIR")
+        if env['version_suffix'] and not env['prefsdir']:
+            environ['prefsdir'] = ".wesnoth$version_suffix"
+        if environ['prefsdir']:
+            environ.Append(CPPDEFINES = "PREFERENCES_DIR=\\\"$prefsdir\\\"")
+    else:
+        environ["fifodir"] = ""
+
+# if a default preference file exists, configure its location
+    if env['default_prefs_file']:
+        environ['default_prefs_file'] = env['default_prefs_file']
+        environ.Append(CPPDEFINES = "DEFAULT_PREFS_PATH='\"$default_prefs_file\"'")
+        if not os.path.isabs(env['default_prefs_file']):
+            environ.Append(CPPDEFINES = "HAS_RELATIVE_DEFPREF")
+
+# Inject boost::bind patch everywhere
+for environ in [test_env, client_env, env]:
+    environ.Append(CCFLAGS = Split("-include boost-patched/bind/arg.hpp"))
+
+for environ in [test_env, client_env, env]:
+    environ.Append(CPPDEFINES = "$EXTRA_DEFINE")
+
+#---libwesnoth_core---
 
 #color_range.cpp should be removed, but game_config depends on it.
 #game_config has very few things that are needed elsewhere, it should be
 #removed.  Requires moving path and version at least to other files.
 
-libwesnoth_core_sources = Split("""
-    color_range.cpp
-    config.cpp
-    gettext.cpp
-    hash.cpp
-    log.cpp
-    map.cpp
-    map_location.cpp
-    md5.cpp
-    network.cpp
-    thread.cpp
-    tstring.cpp
-    util.cpp
-    version.cpp
-    serialization/binary_or_text.cpp
-    serialization/parser.cpp
-    serialization/preprocessor.cpp
-    serialization/schema_validator.cpp
-    serialization/string_utils.cpp
-    serialization/tokenizer.cpp
-    serialization/unicode.cpp
-    serialization/validator.cpp
-    tools/schema/tag.cpp
-    """)
-
-libwesnoth_core_sources.extend(env.Object("network_worker.cpp", EXTRA_DEFINE = env['raw_sockets'] and "NETWORK_USE_RAW_SOCKETS" or None))
-
-game_config_env = env.Clone()
-filesystem_env = env.Clone()
-if env["PLATFORM"] != "win32":
-    game_config_env.Append(CPPDEFINES = "WESNOTH_PATH='\"$datadir\"'")
-    if env['localedirname']:
-        filesystem_env.Append(CPPDEFINES = "LOCALEDIR='\"$localedirname\"'")
-        if not os.path.isabs(env['localedirname']):
-            filesystem_env.Append(CPPDEFINES = "HAS_RELATIVE_LOCALEDIR")
-    if env['version_suffix'] and not env['prefsdir']:
-        filesystem_env['prefsdir'] = ".wesnoth$version_suffix"
-    if filesystem_env['prefsdir']:
-        filesystem_env.Append(CPPDEFINES = "PREFERENCES_DIR='\"$prefsdir\"'")
-
-if env['default_prefs_file']:
-    client_env.Append(CPPDEFINES = "DEFAULT_PREFS_PATH='\"$default_prefs_file\"'")
-
-    game_config_env['default_prefs_file'] = env['default_prefs_file']
-    game_config_env.Append(CPPDEFINES = "DEFAULT_PREFS_PATH='\"$default_prefs_file\"'")
-    if not os.path.isabs(env['default_prefs_file']):
-        filesystem_env.Append(CPPDEFINES = "HAS_RELATIVE_DEFPREF")
-
-libwesnoth_core_sources.extend([
-    game_config_env.Object("game_config.cpp"),
-    filesystem_env.Object("filesystem.cpp")
-    ])
-
-libwesnoth_core = [env.Library("wesnoth_core", libwesnoth_core_sources)]
-
-libwesnoth_sources = Split("""
-    arrow.cpp
-    clipboard.cpp
-    construct_dialog.cpp
-    cursor.cpp
-    display.cpp
-    display_context.cpp
-    events.cpp
-    format_time_summary.cpp
-    generic_event.cpp
-    hotkey/hotkey_item.cpp
-    hotkey/hotkey_command.cpp
-    hotkey/command_executor.cpp
-    hotkey/hotkey_manager.cpp
-    image.cpp
-    image_modifications.cpp
-    joystick.cpp
-    game_end_exceptions.cpp
-    generators/cave_map_generator.cpp
-    generators/map_create.cpp
-    generators/map_generator.cpp
-    generators/default_map_generator.cpp
-    generators/yamg/ya_mapgen.cpp
-    generators/yamg/yamg_hex.cpp
-    generators/yamg/yamg_hexheap.cpp
-    generators/yamg/yamg_params.cpp
-    key.cpp
-    language.cpp
-    loadscreen.cpp
-    map_label.cpp
-    marked-up_text.cpp
-    minimap.cpp
-    pathfind/astarsearch.cpp
-    pathutils.cpp
-    preferences.cpp
-    preferences_display.cpp
-    race.cpp
-    reports.cpp
-    show_dialog.cpp
-    simple_rng.cpp
-    sound.cpp
-    soundsource.cpp
-    sound_music_track.cpp
-    terrain.cpp
-    terrain_builder.cpp
-    terrain_translation.cpp
-    text.cpp
-    time_of_day.cpp
-    tooltips.cpp
-    video.cpp
-    theme.cpp
-    widgets/button.cpp
-    widgets/file_menu.cpp
-    widgets/label.cpp
-    widgets/menu.cpp
-    widgets/menu_style.cpp
-    widgets/progressbar.cpp
-    widgets/scrollarea.cpp
-    widgets/scrollbar.cpp
-    widgets/slider.cpp
-    widgets/textbox.cpp
-    widgets/widget.cpp
-    wml_exception.cpp
-    """)
-libwesnoth_sources.extend([
-    client_env.Object("font.cpp", EXTRA_DEFINE = client_env['fribidi'] and "HAVE_FRIBIDI" or None),
-    ])
-
-libwesnoth = client_env.Library("wesnoth", libwesnoth_sources)
-
-libwesnothd_sources = Split("""
-    loadscreen_empty.cpp
-    tools/dummy_video.cpp
-    """)
-libwesnothd = env.Library("wesnothd", libwesnothd_sources)
-
-libcampaignd_sources = Split("""
-    addon/validation.cpp
-    """)
-libcampaignd = env.Library("campaignd", libcampaignd_sources, OBJPREFIX = "campaignd_")
-
-libwesnoth_sdl_sources = Split("""
-    sdl/utils.cpp
-    sdl/alpha.cpp
-    sdl/exception.cpp
-    sdl/rect.cpp
-    sdl/image.cpp
-    sdl/window.cpp
-    tracer.cpp
-    """)
-libwesnoth_sdl = client_env.Library("wesnoth_sdl", libwesnoth_sdl_sources)
-
-libcutter_sources = Split("""
-    tools/exploder_utils.cpp
-    tools/exploder_cutter.cpp
-    """)
-libcutter = client_env.Library("cutter", libcutter_sources)
-
-# Used by both 'wesnoth' and 'test' targets
-wesnoth_sources = Split("""
-    about.cpp
-    actions/attack.cpp
-    actions/create.cpp
-    actions/heal.cpp
-    actions/move.cpp
-    actions/undo.cpp
-    actions/vision.cpp
-    addon/client.cpp
-    addon/info.cpp
-    addon/manager.cpp
-    addon/manager_ui.cpp
-    addon/state.cpp
-    addon/validation.cpp
-    ai/actions.cpp
-    ai/akihara/recruitment.cpp
-    ai/composite/ai.cpp
-    ai/composite/aspect.cpp
-    ai/composite/component.cpp
-    ai/composite/contexts.cpp
-    ai/composite/engine.cpp
-    ai/composite/engine_default.cpp
-    ai/composite/engine_fai.cpp
-    ai/composite/engine_lua.cpp
-    ai/composite/goal.cpp
-    ai/composite/rca.cpp
-    ai/composite/stage.cpp
-    ai/configuration.cpp
-    ai/contexts.cpp
-    ai/default/ai.cpp
-    ai/default/attack.cpp
-    ai/default/contexts.cpp
-    ai/formula/ai.cpp
-    ai/formula/callable_objects.cpp
-    ai/formula/candidates.cpp
-    ai/formula/function_table.cpp
-    ai/formula/stage_side_formulas.cpp
-    ai/formula/stage_unit_formulas.cpp
-    ai/game_info.cpp
-    ai/gamestate_observer.cpp
-    ai/interface.cpp
-    ai/lua/core.cpp
-    ai/lua/lua_object.cpp
-    ai/lua/unit_advancements_aspect.cpp
-    ai/manager.cpp
-    ai/recruitment/recruitment.cpp
-    ai/registry.cpp
-    ai/simulated_actions.cpp
-    ai/testing.cpp
-    ai/testing/aspect_attacks.cpp
-    ai/testing/ca.cpp
-    ai/testing/ca_global_fallback.cpp
-    ai/testing/ca_testing_move_to_targets.cpp
-    ai/testing/ca_testing_recruitment.cpp
-    ai/testing/stage_fallback.cpp
-    ai/testing/stage_rca.cpp
-    ai/testing/stage_sf_with_rca.cpp
-    animated_game.cpp
-    attack_prediction.cpp
-    attack_prediction_display.cpp
-    callable_objects.cpp
-    commandline_options.cpp
-    carryover.cpp
-    config_cache.cpp
-    configure_engine.cpp
-    connect_engine.cpp
-    controller_base.cpp
-    create_engine.cpp
-    desktop/notifications.cpp
-    desktop/open.cpp
-    depcheck.cpp
-    dialogs.cpp
-    display_chat_manager.cpp
-    editor/action/action.cpp
-    editor/action/action_unit.cpp
-    editor/action/action_label.cpp
-    editor/action/action_village.cpp
-    editor/action/action_item.cpp
-    editor/action/action_select.cpp
-    editor/action/mouse/mouse_action.cpp
-    editor/action/mouse/mouse_action_map_label.cpp
-    editor/action/mouse/mouse_action_unit.cpp
-    editor/action/mouse/mouse_action_village.cpp
-    editor/action/mouse/mouse_action_item.cpp
-    editor/action/mouse/mouse_action_select.cpp
-    editor/map/editor_map.cpp
-    editor/map/map_context.cpp
-    editor/map/map_fragment.cpp
-    editor/map/context_manager.cpp
-    editor/palette/editor_palettes.cpp
-    editor/palette/terrain_palettes.cpp
-    editor/palette/tristate_button.cpp
-    editor/palette/unit_palette.cpp
-    editor/palette/item_palette.cpp
-    editor/palette/palette_manager.cpp
-    editor/editor_controller.cpp
-    editor/editor_display.cpp
-    editor/editor_main.cpp
-    editor/editor_preferences.cpp
-    editor/toolkit/brush.cpp
-    editor/toolkit/editor_toolkit.cpp
-    fake_unit_manager.cpp
-    fake_unit_ptr.cpp
-    filechooser.cpp
-    flg_manager.cpp
-    floating_textbox.cpp
-    formula.cpp
-    formula_debugger.cpp
-    formula_debugger_fwd.cpp
-    formula_function.cpp
-    formula_string_utils.cpp
-    formula_tokenizer.cpp
-    game_board.cpp
-    game_classification.cpp
-    game_config_manager.cpp
-    game_data.cpp
-    game_display.cpp
-    game_errors.cpp
-    game_events/action_wml.cpp
-    game_events/conditional_wml.cpp
-    game_events/entity_location.cpp
-    game_events/handlers.cpp
-    game_events/menu_item.cpp
-    game_events/pump.cpp
-    game_events/wmi_container.cpp
-    game_launcher.cpp
-    game_preferences.cpp
-    game_state.cpp
-    gui/auxiliary/canvas.cpp
-    gui/auxiliary/event/dispatcher.cpp
-    gui/auxiliary/event/distributor.cpp
-    gui/auxiliary/event/handler.cpp
-    gui/auxiliary/iterator/iterator.cpp
-    gui/auxiliary/iterator/walker_grid.cpp
-    gui/auxiliary/iterator/walker_widget.cpp
-    gui/auxiliary/log.cpp
-    gui/auxiliary/placer.cpp
-    gui/auxiliary/placer/horizontal_list.cpp
-    gui/auxiliary/placer/vertical_list.cpp
-    gui/auxiliary/old_markup.cpp
-    gui/auxiliary/timer.cpp
-    gui/auxiliary/tips.cpp
-    gui/auxiliary/widget_definition.cpp
-    gui/auxiliary/widget_definition/button.cpp
-    gui/auxiliary/widget_definition/drawing.cpp
-    gui/auxiliary/widget_definition/horizontal_scrollbar.cpp
-    gui/auxiliary/widget_definition/image.cpp
-    gui/auxiliary/widget_definition/label.cpp
-    gui/auxiliary/widget_definition/listbox.cpp
-    gui/auxiliary/widget_definition/matrix.cpp
-    gui/auxiliary/widget_definition/minimap.cpp
-    gui/auxiliary/widget_definition/multi_page.cpp
-    gui/auxiliary/widget_definition/panel.cpp
-    gui/auxiliary/widget_definition/progress_bar.cpp
-    gui/auxiliary/widget_definition/repeating_button.cpp
-    gui/auxiliary/widget_definition/scroll_label.cpp
-    gui/auxiliary/widget_definition/scrollbar_panel.cpp
-    gui/auxiliary/widget_definition/slider.cpp
-    gui/auxiliary/widget_definition/spacer.cpp
-    gui/auxiliary/widget_definition/stacked_widget.cpp
-    gui/auxiliary/widget_definition/text_box.cpp
-    gui/auxiliary/widget_definition/toggle_button.cpp
-    gui/auxiliary/widget_definition/toggle_panel.cpp
-    gui/auxiliary/widget_definition/tree_view.cpp
-    gui/auxiliary/widget_definition/vertical_scrollbar.cpp
-    gui/auxiliary/widget_definition/window.cpp
-    gui/auxiliary/window_builder.cpp
-    gui/auxiliary/window_builder/button.cpp
-    gui/auxiliary/window_builder/control.cpp
-    gui/auxiliary/window_builder/drawing.cpp
-    gui/auxiliary/window_builder/helper.cpp
-    gui/auxiliary/window_builder/horizontal_listbox.cpp
-    gui/auxiliary/window_builder/horizontal_scrollbar.cpp
-    gui/auxiliary/window_builder/instance.cpp
-    gui/auxiliary/window_builder/image.cpp
-    gui/auxiliary/window_builder/label.cpp
-    gui/auxiliary/window_builder/listbox.cpp
-    gui/auxiliary/window_builder/matrix.cpp
-    gui/auxiliary/window_builder/minimap.cpp
-    gui/auxiliary/window_builder/multi_page.cpp
-    gui/auxiliary/window_builder/pane.cpp
-    gui/auxiliary/window_builder/panel.cpp
-    gui/auxiliary/window_builder/password_box.cpp
-    gui/auxiliary/window_builder/progress_bar.cpp
-    gui/auxiliary/window_builder/repeating_button.cpp
-    gui/auxiliary/window_builder/scroll_label.cpp
-    gui/auxiliary/window_builder/scrollbar_panel.cpp
-    gui/auxiliary/window_builder/slider.cpp
-    gui/auxiliary/window_builder/spacer.cpp
-    gui/auxiliary/window_builder/stacked_widget.cpp
-    gui/auxiliary/window_builder/text_box.cpp
-    gui/auxiliary/window_builder/toggle_button.cpp
-    gui/auxiliary/window_builder/toggle_panel.cpp
-    gui/auxiliary/window_builder/tree_view.cpp
-    gui/auxiliary/window_builder/vertical_scrollbar.cpp
-    gui/auxiliary/window_builder/viewport.cpp
-    gui/dialogs/addon/description.cpp
-    gui/dialogs/addon/filter_options.cpp
-    gui/dialogs/addon/uninstall_list.cpp
-    gui/dialogs/addon_connect.cpp
-    gui/dialogs/addon_list.cpp
-    gui/dialogs/campaign_difficulty.cpp
-    gui/dialogs/campaign_selection.cpp
-    gui/dialogs/campaign_settings.cpp
-    gui/dialogs/core_selection.cpp
-    gui/dialogs/chat_log.cpp
-    gui/dialogs/data_manage.cpp
-    gui/dialogs/debug_clock.cpp
-    gui/dialogs/depcheck_confirm_change.cpp
-    gui/dialogs/depcheck_select_new.cpp
-    gui/dialogs/dialog.cpp
-    gui/dialogs/edit_label.cpp
-    gui/dialogs/editor/editor_edit_label.cpp
-    gui/dialogs/editor/editor_edit_scenario.cpp
-    gui/dialogs/editor/editor_edit_side.cpp
-    gui/dialogs/editor/custom_tod.cpp
-    gui/dialogs/editor_generate_map.cpp
-    gui/dialogs/editor_new_map.cpp
-    gui/dialogs/editor_resize_map.cpp
-    gui/dialogs/editor_set_starting_position.cpp
-    gui/dialogs/folder_create.cpp
-    gui/dialogs/formula_debugger.cpp
-    gui/dialogs/game_cache_options.cpp
-    gui/dialogs/game_delete.cpp
-    gui/dialogs/game_load.cpp
-    gui/dialogs/game_paths.cpp
-    gui/dialogs/game_save.cpp
-    gui/dialogs/gamestate_inspector.cpp
-    gui/dialogs/language_selection.cpp
-    gui/dialogs/lobby/lobby_data.cpp
-    gui/dialogs/lobby/lobby_info.cpp
-    gui/dialogs/lobby_main.cpp
-    gui/dialogs/lobby_player_info.cpp
-    gui/dialogs/message.cpp
-    gui/dialogs/mp_cmd_wrapper.cpp
-    gui/dialogs/mp_change_control.cpp
-    gui/dialogs/mp_connect.cpp
-    gui/dialogs/mp_create_game.cpp
-    gui/dialogs/mp_create_game_set_password.cpp
-    gui/dialogs/mp_host_game_prompt.cpp
-    gui/dialogs/mp_login.cpp
-    gui/dialogs/mp_method_selection.cpp
-    gui/dialogs/network_transmission.cpp
-    gui/dialogs/popup.cpp
-    gui/dialogs/edit_text.cpp
-    gui/dialogs/screenshot_notification.cpp
-    gui/dialogs/simple_item_selector.cpp
-    gui/dialogs/theme_list.cpp
-    gui/dialogs/tip.cpp
-    gui/dialogs/title_screen.cpp
-    gui/dialogs/transient_message.cpp
-    gui/dialogs/unit_attack.cpp
-    gui/dialogs/unit_create.cpp
-    gui/dialogs/wml_error.cpp
-    gui/dialogs/wml_message.cpp
-    gui/lib/types/point.cpp
-    gui/widgets/button.cpp
-    gui/widgets/container.cpp
-    gui/widgets/control.cpp
-    gui/widgets/drawing.cpp
-    gui/widgets/generator.cpp
-    gui/widgets/grid.cpp
-    gui/widgets/helper.cpp
-    gui/widgets/horizontal_scrollbar.cpp
-    gui/widgets/image.cpp
-    gui/widgets/label.cpp
-    gui/widgets/list.cpp
-    gui/widgets/listbox.cpp
-    gui/widgets/matrix.cpp
-    gui/widgets/minimap.cpp
-    gui/widgets/multi_page.cpp
-    gui/widgets/pane.cpp
-    gui/widgets/panel.cpp
-    gui/widgets/password_box.cpp
-    gui/widgets/progress_bar.cpp
-    gui/widgets/repeating_button.cpp
-    gui/widgets/scroll_label.cpp
-    gui/widgets/scrollbar.cpp
-    gui/widgets/scrollbar_container.cpp
-    gui/widgets/scrollbar_panel.cpp
-    gui/widgets/settings.cpp
-    gui/widgets/slider.cpp
-    gui/widgets/spacer.cpp
-    gui/widgets/stacked_widget.cpp
-    gui/widgets/text.cpp
-    gui/widgets/text_box.cpp
-    gui/widgets/toggle_button.cpp
-    gui/widgets/toggle_panel.cpp
-    gui/widgets/tree_view.cpp
-    gui/widgets/tree_view_node.cpp
-    gui/widgets/vertical_scrollbar.cpp
-    gui/widgets/viewport.cpp
-    gui/widgets/widget.cpp
-    gui/widgets/window.cpp
-    halo.cpp
-    help.cpp
-    hotkey/hotkey_preferences_display.cpp
-    intro.cpp
-    leader_scroll_dialog.cpp
-    lobby_preferences.cpp
-    menu_events.cpp
-    mouse_events.cpp
-    mouse_handler_base.cpp
-    movetype.cpp
-    mp_game_settings.cpp
-    mp_game_utils.cpp
-    mp_options.cpp
-    multiplayer.cpp
-    multiplayer_configure.cpp
-    multiplayer_connect.cpp
-    multiplayer_create.cpp
-    multiplayer_lobby.cpp
-    multiplayer_ui.cpp
-    multiplayer_wait.cpp
-    network_asio.cpp
-    pathfind/pathfind.cpp
-    pathfind/teleport.cpp
-    persist_context.cpp
-    persist_manager.cpp
-    persist_var.cpp
-    play_controller.cpp
-    playcampaign.cpp
-    playmp_controller.cpp
-    playsingle_controller.cpp
-    playturn.cpp
-    playturn_network_adapter.cpp
-    portrait.cpp
-    random_new.cpp
-    random_new_deterministic.cpp
-    random_new_synced.cpp
-    recall_list_manager.cpp
-    replay.cpp
-    replay_helper.cpp
-    replay_controller.cpp
-    resources.cpp
-    save_blocker.cpp
-    save_index.cpp
-    saved_game.cpp
-    savegame.cpp
-    scripting/debug_lua.cpp
-    scripting/lua.cpp
-    scripting/lua_api.cpp
-    scripting/lua_types.cpp
-    settings.cpp
-    side_filter.cpp
-    singleplayer.cpp
-    statistics.cpp
-    statistics_dialog.cpp
-    storyscreen/controller.cpp
-    storyscreen/interface.cpp
-    storyscreen/part.cpp
-    storyscreen/render.cpp
-    strftime.cpp
-    synced_checkup.cpp
-    synced_context.cpp
-    synced_commands.cpp
-    syncmp_handler.cpp
-    team.cpp
-    terrain_filter.cpp
-    tod_manager.cpp
-    unit.cpp
-    unit_abilities.cpp
-    unit_animation.cpp
-    unit_animation_component.cpp
-    unit_display.cpp
-    unit_drawer.cpp
-    unit_filter.cpp
-    unit_formula_manager.cpp
-    unit_frame.cpp
-    unit_helper.cpp
-    unit_id.cpp
-    unit_map.cpp
-    unit_types.cpp
-    utils/sha1.cpp
-    variable.cpp
-    variable_info.cpp
-    variant.cpp
-    whiteboard/action.cpp
-    whiteboard/attack.cpp
-    whiteboard/highlighter.cpp
-    whiteboard/manager.cpp
-    whiteboard/mapbuilder.cpp
-    whiteboard/move.cpp
-    whiteboard/recall.cpp
-    whiteboard/recruit.cpp
-    whiteboard/side_actions.cpp
-    whiteboard/suppose_dead.cpp
-    whiteboard/utility.cpp
-    widgets/combo.cpp
-    widgets/combo_drag.cpp
-    widgets/drop_target.cpp
-    widgets/scrollpane.cpp
-    wmi_pager.cpp
-    """)
+libwesnoth_core_sources = GetSources("libwesnoth_core")
 
 if env["PLATFORM"] == "win32":
-    wesnoth_sources.append("desktop/windows_tray_notification.cpp")
+    libwesnoth_core_sources.append("log_windows.cpp")
+
+libwesnoth_core = env.Library("wesnoth-core", libwesnoth_core_sources)
+
+#---libwesnoth_game---
+libwesnoth_game_sources = GetSources("libwesnoth")
+libwesnoth_game = client_env.Library("wesnoth-game", libwesnoth_game_sources)
+
+#---libwesnoth_sdl---
+libwesnoth_sdl_sources = GetSources("libwesnoth_sdl")
+
+libwesnoth_sdl = client_env.Library("wesnoth-sdl", libwesnoth_sdl_sources)
+
+#---libwesnoth_widgets---
+libwesnoth_widgets_sources = GetSources("libwesnoth_widgets")
+libwesnoth_widgets = client_env.Library("wesnoth-widgets", libwesnoth_widgets_sources)
+
+#---wesnoth---
+# Used by both 'wesnoth' and 'boost_unit_tests' targets
+
+wesnoth_client_sources = GetSources("wesnoth")
+
+if env["PLATFORM"] == "win32":
+    wesnoth_client_sources.append("desktop/windows_tray_notification.cpp")
+    wesnoth_client_sources.append("desktop/windows_battery_info.cpp")
+
+if env["PLATFORM"] == 'darwin':
+    wesnoth_client_sources.append("desktop/apple_battery_info.mm")
+    wesnoth_client_sources.append("desktop/apple_notification.mm")
+    wesnoth_client_sources.append("desktop/apple_version.mm")
 
 if env["notifications"]:
-    wesnoth_sources.append("desktop/dbus_notification.cpp")
+    wesnoth_client_sources.append("desktop/dbus_features.cpp")
 
-wesnoth_sources.extend(client_env.Object("game_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
+libwesnoth_client = client_env.Library("wesnoth-client", wesnoth_client_sources)
 
-libwesnoth_extras = client_env.Library("wesnoth_extras", wesnoth_sources)
+#---lua---
+lua_sources = GetSources("lua")
 
-libwesnoth_extras.extend(SConscript("lua/SConscript"))
+env_lua = env.Clone(
+    CCCOM = env["CXXCOM"],
+    CPPPATH = ["$CPPPATH", Dir(".").srcnode()],
+    CPPDEFINES = ["$CPPDEFINES", env["PLATFORM"] != "win32" and "LUA_USE_POSIX" or []])
+
+env_lua.AppendUnique(CCFLAGS = Split("-Wno-old-style-cast -Wno-useless-cast"))
+# Silence some Clang-specific warnings due to extra parentheses in if statements when comparing.
+if "clang" in env["CXX"]:
+    env_lua.AppendUnique(CCFLAGS = Split("-Wno-parentheses-equality"))
+
+if env_lua["enable_lto"] == True:
+    env_lua["AR"] = 'gcc-ar'
+    env_lua["RANLIB"] = 'gcc-ranlib'
+
+env_lua["wesnoth_lua_config"] = File("#/src/wesnoth_lua_config.h").rfile()
+env_lua.Append(CCFLAGS = Split("-include $wesnoth_lua_config"))
+
+objs_lua = env_lua.Object(lua_sources)
+for obj in objs_lua:
+    env_lua.Depends(obj, env_lua["wesnoth_lua_config"])
+
+liblua = env_lua.Library("lua", objs_lua)
 
 #
 # Target declarations
@@ -580,12 +131,16 @@ libwesnoth_extras.extend(SConscript("lua/SConscript"))
 
 def error_action(target, source, env):
     from SCons.Errors import UserError
-    raise UserError, "Target disabled because its prerequisites are not met"
+    raise UserError("Target disabled because its prerequisites are not met")
 
 def WesnothProgram(env, target, source, can_build, **kw):
+    if env["enable_lto"] == True:
+        env["AR"] = 'gcc-ar'
+        env["RANLIB"] = 'gcc-ranlib'
+
     if can_build:
-        if env["build"] == "base":
-            bin = env.Program(target, source, **kw)
+        if env["use_srcdir"] == True:
+            bin = env.Program(target + build_suffix, source, **kw)
         else:
             bin = env.Program("#/" + target + build_suffix, source, **kw)
         env.Alias(target, bin)
@@ -594,135 +149,51 @@ def WesnothProgram(env, target, source, can_build, **kw):
         AlwaysBuild(bin)
     locals()[target] = bin
     Export(target)
+    return bin
 
 for env in [test_env, client_env, env]:
     env.AddMethod(WesnothProgram)
 
-wesnoth_objects = ["wesnoth.cpp", libwesnoth_extras, libwesnoth_core, libwesnoth,
-                   libwesnoth_sdl, libwesnoth_extras, env["wesnoth_res"]]
-if env["host"] in ["x86_64-nacl", "i686-nacl"]:
-    wesnoth_objects += [SConscript("nacl/SConscript")]
-client_env.WesnothProgram("wesnoth", wesnoth_objects, have_client_prereqs)
+#---wesnoth---
+# for wesnoth_res and wesnothd_res, see packaging/windows/SConscript
+# used to set the executable icon for wesnoth and wesnothd
+libwesnoth_objects = libwesnoth_client + liblua + libwesnoth_core + libwesnoth_game + libwesnoth_sdl + libwesnoth_client
+if env["PLATFORM"] == 'darwin':
+    wesnoth = client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects + ["macosx/SDLMain.mm"], have_client_prereqs)
+    client_env.Append(LINKFLAGS=['-Wl,-force_load', libwesnoth_widgets])
+elif env["PLATFORM"] == 'win32':
+    wesnoth = client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects + env["wesnoth_res"], have_client_prereqs)
+    client_env.Append(LINKFLAGS=['-Wl,--whole-archive', libwesnoth_widgets, '-Wl,--no-whole-archive'])
+else:
+    wesnoth = client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects, have_client_prereqs)
+    client_env.Append(LINKFLAGS=['-Wl,--whole-archive', libwesnoth_widgets, '-Wl,--no-whole-archive'])
+if have_client_prereqs:
+    Depends(wesnoth, libwesnoth_widgets)
 
-campaignd_sources = Split("""
-    campaign_server/addon_utils.cpp
-    campaign_server/blacklist.cpp
-    server/input_stream.cpp
-    """)
+#---wesnothd---
+wesnothd_sources = GetSources("wesnothd")
+if env["PLATFORM"] == 'win32':
+    env.WesnothProgram("wesnothd", wesnothd_sources + libwesnoth_core + env["wesnothd_res"], have_server_prereqs)
+else:
+    env.WesnothProgram("wesnothd", wesnothd_sources + libwesnoth_core, have_server_prereqs)
 
-if env["PLATFORM"] == "win32": env["fifodir"] = ""
-campaignd_sources.extend(env.Object("campaign_server/campaign_server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
+#---campaignd---
+campaignd_sources = GetSources("campaignd")
+env.WesnothProgram("campaignd", campaignd_sources + libwesnoth_core, have_server_prereqs, OBJPREFIX = "campaignd_")
 
-env.WesnothProgram("campaignd", campaignd_sources + [libwesnoth_core, libwesnothd, libcampaignd], have_server_prereqs)
-
-wesnothd_sources = Split("""
-    server/ban.cpp
-    server/forum_user_handler.cpp
-    server/game.cpp
-    server/input_stream.cpp
-    server/metrics.cpp
-    server/player.cpp
-    server/player_network.cpp
-    server/proxy.cpp
-    server/room.cpp
-    server/room_manager.cpp
-    server/sample_user_handler.cpp
-    server/simple_wml.cpp
-    server/user_handler.cpp
-    """)
-wesnothd_sources.extend(env.Object("server/server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
-
-env.WesnothProgram("wesnothd", wesnothd_sources + [libwesnoth_core, libwesnothd], have_server_prereqs)
-
-cutter_sources = Split("""
-    tools/cutter.cpp
-    """)
-client_env.WesnothProgram("cutter", cutter_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth], have_client_prereqs, LIBS = ["$LIBS", "png"])
-
-exploder_sources = Split("""
-    tools/exploder.cpp
-    tools/exploder_composer.cpp
-    """)
-client_env.WesnothProgram("exploder", exploder_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth], have_client_prereqs, LIBS = ["$LIBS", "png"])
-
-schema_generator_sources = Split("""
-    tools/schema/schema_generator.cpp
-    tools/schema/sourceparser.cpp
-    tools/schema/error_container.cpp
-    """)
-client_env.WesnothProgram("schema_generator", schema_generator_sources + [libwesnoth_core, libwesnothd], have_client_prereqs)
-
-test_utils_sources = Split("""
-    tests/utils/game_config_manager.cpp
-    tests/utils/fake_event_source.cpp
-    tests/utils/fake_display.cpp
-    """)
-
-wesmage_sources = Split("""
-    wesmage/wesmage.cpp
-    wesmage/exit.cpp
-    wesmage/filter.cpp
-    wesmage/options.cpp
-    tools/dummy_video.cpp
-    tools/exploder_utils.cpp
-    sdl/utils.cpp
-    sdl/alpha.cpp
-    sdl/window.cpp
-    tracer.cpp
-    loadscreen_empty.cpp
-    """)
-client_env.WesnothProgram("wesmage", wesmage_sources + [libwesnoth_core], have_client_prereqs, OBJPREFIX = "wesmage_", LIBS = ["$LIBS", "png"])
-
-libtest_utils = test_env.Library("test_utils", test_utils_sources)
-
-test_sources = Split("""
-    tests/floating_point_emulation.cpp
-    tests/gui/fire_event.cpp
-    tests/gui/iterator.cpp
-    tests/gui/test_drop_target.cpp
-    tests/gui/test_gui2.cpp
-    tests/gui/test_save_dialog.cpp
-    tests/gui/visitor.cpp
-    tests/main.cpp
-    tests/test_addons.cpp
-    tests/test_commandline_options.cpp
-    tests/test_config.cpp
-    tests/test_formula_ai.cpp
-    tests/test_formula_function.cpp
-    tests/test_image_modifications.cpp
-    tests/test_lexical_cast.cpp
-    tests/test_map_location.cpp
-    tests/test_make_enum.cpp
-    tests/test_mp_connect.cpp
-    tests/test_network_worker.cpp
-    tests/test_sdl_utils.cpp
-    tests/test_serialization.cpp
-    tests/test_team.cpp
-    tests/test_unit_map.cpp
-    tests/test_util.cpp
-    tests/test_version.cpp
-    tests/test_whiteboard_side_actions.cpp
-    tests/utils/play_scenario.cpp
-    """)
-test_sources.extend(test_env.Object("tests/test_config_cache.cpp"))
-
-test = test_env.WesnothProgram("test", test_sources +  [libtest_utils, libwesnoth_extras, libwesnoth_core, libwesnoth, libwesnoth_sdl, libwesnoth_extras], have_test_prereqs)
-
-create_images_sources = Split("""
-    tests/create_images.cpp
-    tools/dummy_video.cpp
-    tools/exploder_utils.cpp
-    sdl/utils.cpp
-    sdl/alpha.cpp
-    sdl/window.cpp
-    tracer.cpp
-    loadscreen_empty.cpp
-""")
-
-env.WesnothProgram("create_images", create_images_sources + [libwesnoth_core], have_server_prereqs, OBJPREFIX = "create_images_", LIBS = ["$LIBS", "png"])
-
-if env.get("have_autorevision"):
-    game_config_env.Append(CPPDEFINES = 'LOAD_REVISION')
+#---boost_unit_tests---
+test_sources = GetSources("boost_unit_tests")
+if env["PLATFORM"] == 'darwin':
+    boost_unit_tests = test_env.WesnothProgram("boost_unit_tests", test_sources + libwesnoth_objects, have_client_prereqs)
+    test_env.Append(LINKFLAGS=['-Wl,-force_load', libwesnoth_widgets])
+elif env["PLATFORM"] == 'win32':
+    boost_unit_tests = test_env.WesnothProgram("boost_unit_tests", test_sources + libwesnoth_objects, have_client_prereqs)
+    test_env.Append(LINKFLAGS=['-Wl,--whole-archive', libwesnoth_widgets, '-Wl,--no-whole-archive'])
+else:
+    boost_unit_tests = test_env.WesnothProgram("boost_unit_tests", test_sources + libwesnoth_objects, have_client_prereqs)
+    test_env.Append(LINKFLAGS=['-Wl,--whole-archive', libwesnoth_widgets, '-Wl,--no-whole-archive'])
+Depends(boost_unit_tests, libwesnoth_widgets)
+#---end of getting sources---
 
 sources = []
 if "TAGS" in COMMAND_LINE_TARGETS:

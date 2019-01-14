@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Ignacio R. Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,15 +15,22 @@
 #define GETTEXT_DOMAIN "wesnoth-test"
 
 #include <boost/test/unit_test.hpp>
-#include "version.hpp"
+#include "game_version.hpp"
 
 BOOST_AUTO_TEST_SUITE( version )
 
 BOOST_AUTO_TEST_CASE( test_version_info )
 {
-	version_info invalid(0,0,0,false,'!',"d'oh");
+	version_info empty;
 
-	BOOST_CHECK( !invalid.good() );
+	BOOST_CHECK( empty == version_info(0, 0, 0) );
+	BOOST_CHECK( empty.str() == "0.0.0" );
+
+	version_info dots1("........");
+	version_info dots2("...hullo");
+
+	BOOST_CHECK( dots1 == empty);
+	BOOST_CHECK( dots2.str() == "0.0.0hullo" );
 
 	version_info canonical("1.2.3");
 

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,71 +12,58 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_SAVE_GAME_HPP_INCLUDED
-#define GUI_DIALOGS_SAVE_GAME_HPP_INCLUDED
+#pragma once
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tgame_save : public tdialog
+class game_save : public modal_dialog
 {
 public:
-	tgame_save(std::string& filename, const std::string& title);
+	game_save(std::string& filename, const std::string& title);
 
 	static bool
-	execute(std::string& filename, const std::string& title, CVideo& video)
+	execute(std::string& filename, const std::string& title)
 	{
-		return tgame_save(filename, title).show(video);
+		return game_save(filename, title).show();
 	}
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
+	virtual const std::string& window_id() const override;
 };
 
-class tgame_save_message : public tdialog
+class game_save_message : public modal_dialog
 {
 public:
-	tgame_save_message(std::string& filename,
+	game_save_message(std::string& filename,
 					   const std::string& title,
 					   const std::string& message);
 
-	static bool execute(std::string& filename,
-						const std::string& title,
-						const std::string& message,
-						CVideo& video)
-	{
-		return tgame_save_message(filename, title, message).show(video);
-	}
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(game_save_message)
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
+	virtual const std::string& window_id() const override;
 };
 
-class tgame_save_oos : public tdialog
+class game_save_oos : public modal_dialog
 {
 public:
-	tgame_save_oos(bool& ignore_all,
+	game_save_oos(bool& ignore_all,
 				   std::string& filename,
 				   const std::string& title,
 				   const std::string& message);
 
-	static bool execute(bool& ignore_all,
-						std::string& filename,
-						const std::string& title,
-						const std::string& message,
-						CVideo& video)
-	{
-		return tgame_save_oos(ignore_all, filename, title, message).show(video);
-	}
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(game_save_oos)
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
+	virtual const std::string& window_id() const override;
 };
-}
-
-#endif
+} // namespace dialogs
+} // namespace gui2

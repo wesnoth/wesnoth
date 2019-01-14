@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2012 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2012 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,38 +17,39 @@
  * Contains code for tracing the code.
  */
 
-#ifndef TRACER_HPP_INCLUDED
-#define TRACER_HPP_INCLUDED
-
-#include <boost/noncopyable.hpp>
+#pragma once
 
 #include <map>
 #include <string>
 
 /** Helper structure for gathering the tracing statistics. */
-struct ttracer
-	: private boost::noncopyable
+struct tracer
 {
 	/**
 	 * Helper structure to print the tracing statistics.
 	 *
-	 * When the constructor gets a valid @ref ttracer pointer it prints the
+	 * When the constructor gets a valid @ref tracer pointer it prints the
 	 * tracing statistics in its destructor. This allows the structure to be
 	 * initialised at the beginning of a scope and print the statistics once
 	 * the scope is left. (This makes it easier to write the tracing macros.)
 	 */
-	struct tprint
-		: private boost::noncopyable
+	struct printer
 	{
-		explicit tprint(const ttracer* const tracer__);
+		printer(const printer&) = delete;
+		printer& operator=(const printer&) = delete;
 
-		~tprint();
+		explicit printer(const tracer* const tracer__);
+
+		~printer();
 
 		/** The tracer, whose statistics to print. */
-		const ttracer* const tracer;
+		const tracer* const tracer_;
 	};
 
-	explicit ttracer(const char* const function__);
+	tracer(const tracer&) = delete;
+	tracer& operator=(const tracer&) = delete;
+
+	explicit tracer(const char* const function__);
 
 	/** The total number of runs. */
 	int run;
@@ -81,12 +82,12 @@ struct ttracer
  */
 #ifdef __GNUC__
 #define TRACER_ENTRY(interval)                                               \
-	static ttracer tracer(__PRETTY_FUNCTION__);                              \
-	ttracer::tprint print((++tracer.run % interval) == 0 ? &tracer : NULL)
+	static struct tracer tracer(__PRETTY_FUNCTION__);                              \
+	tracer::printer print((++tracer.run % interval) == 0 ? &tracer : nullptr)
 #else
 #define TRACER_ENTRY(interval)                                               \
-	static ttracer tracer(__FUNCTION__);                                     \
-	ttracer::tprint print((++tracer.run % interval) == 0 ? &tracer : NULL)
+	static struct tracer tracer(__FUNCTION__);                                     \
+	tracer::printer print((++tracer.run % interval) == 0 ? &tracer : nullptr)
 #endif
 
 /**
@@ -100,5 +101,3 @@ struct ttracer
 	do {                                                                     \
 		++tracer.counters[std::make_pair(__LINE__, marker)];                 \
 	} while(0)
-
-#endif

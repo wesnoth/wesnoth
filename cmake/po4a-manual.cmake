@@ -5,4 +5,3 @@ if(EXISTS ${SOURCE})
 	separate_arguments(CMD)
 	execute_process(COMMAND ${CMD})
 endif(EXISTS ${SOURCE})
-

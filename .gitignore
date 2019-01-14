@@ -17,6 +17,7 @@ cmake_install.cmake
 CPack*Config.cmake
 uninstall.cmake
 CMakeCache.txt
+install_manifest.txt
 
 # scons
 .scons-option-cache
@@ -24,27 +25,21 @@ CMakeCache.txt
 .sconf_temp
 buildlog.txt
 
-# win32/MSVC:
-ALL_BUILD.vcproj
-INSTALL.vcproj
-PACKAGE.vcproj
-ZERO_CHECK.vcproj
-uninstall.vcproj
-*.vcproj.*.user
-projectfiles/VC[12]*
-src/**/*.vcproj
-
 # XCode
 projectfiles/Xcode/**/build
+projectfiles/Xcode/**/DerivedData
 projectfiles/Xcode/**/Headers
+projectfiles/Xcode/**/temp
+projectfiles/Xcode/**/Index
 projectfiles/Xcode/**/Wesnoth.dmgCanvas
 projectfiles/Xcode/**/*.mode1v3
 projectfiles/Xcode/**/*.pbxuser
 projectfiles/Xcode/**/xcuserdata
-projectfiles/Xcode/**/project.xcworkspace
+projectfiles/Xcode/**/*.xcworkspace
 
 # CodeBlocks
 projectfiles/**/.clang
+projectfiles/**/cb
 projectfiles/**/wesnoth.tags
 projectfiles/**/wesnoth.workspace.*
 projectfiles/**/*.depend
@@ -52,10 +47,39 @@ projectfiles/**/*.layout
 projectfiles/**/*_build_log.html
 projectfiles/**/*objs*
 
+# Visual Studio
+projectfiles/VC*
+!projectfiles/VC14
+projectfiles/VC*/.vs/
+projectfiles/VC*/*.vc.*db
+projectfiles/VC*/*.sdf
+projectfiles/VC*/*.suo
+projectfiles/VC*/*.aps
+projectfiles/VC*/*.user
+ALL_BUILD.vcproj
+INSTALL.vcproj
+PACKAGE.vcproj
+ZERO_CHECK.vcproj
+uninstall.vcproj
+*.vcproj.*.user
+src/**/*.vcproj
+/WindowsTimeout.ilk
+/WindowsTimeout.pdb
+.vscode
+/.vs
+
+# CLion
+/.idea
+cmake-build-debug
+cmake-build-release
+
 # eclipse
 .settings
 !utils/umc_dev/org.wesnoth*/.settings/
 !utils/umc_dev/org.wesnoth*/.project
+
+# KDevelop caches (KDevelop 4.3.1, KDE Development Platform 4.8.4).
+*.kate-swp
 
 # autotools
 config.h
@@ -81,10 +105,17 @@ cutter/
 Release
 Debug
 ReleaseDEBUG
+Test_Debug
+Test_Release
 Debug (fast)
 tags
+/schema_generator*
+/schema_validator*
+/create_images*
+/wesmage*
+pgo_data/
 
-# build results ect.
+# build results etc.
 wesnoth_zip
 wesnoth.exp
 wesnoth.ilk
@@ -95,6 +126,7 @@ wesnoth.opt
 wesnoth.plg
 *.exe
 *.dll
+*.so
 
 # library files
 .libs
@@ -108,20 +140,19 @@ userdata
 
 # testing
 /test*
+/boost_unit_tests*
 !/test_wrapper.sh
 src/test
 error*.log
-do_build_and_tests.sh
 boost_test_result.xml
+*build*.sh
 
 # translations
 locales
 make_translation
 merge_translations
 *.gmo
-po/**/[a-z][a-z]
-po/**/[a-z][a-z]_[GB]R
-po/**/POTFILES
+po/wesnoth*/POTFILES*
 po/**/pot-update.sh
 po/**/stamp-po
 po/**/remove-potcdate.s*
@@ -159,6 +190,8 @@ data/campaigns/**/images/**/.gitignore
 .DS_Store
 [Tt]humbs.db
 *Neuer Ordner*
+.directory
+fonts/.uuid
 
 # extensions
 *.pyc

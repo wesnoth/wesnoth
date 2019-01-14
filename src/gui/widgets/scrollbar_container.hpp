@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,160 +12,157 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_SCROLLBAR_CONTAINER_HPP_INCLUDED
-#define GUI_WIDGETS_SCROLLBAR_CONTAINER_HPP_INCLUDED
+#pragma once
 
-#include "gui/auxiliary/notifiee.hpp"
-#include "gui/widgets/container.hpp"
+#include "gui/core/notifiee.hpp"
+#include "gui/widgets/container_base.hpp"
 #include "gui/widgets/scrollbar.hpp"
 
 namespace gui2
 {
-
-class tspacer;
+class spacer;
 
 namespace implementation
 {
-struct tbuilder_scroll_label;
-struct tbuilder_scrollbar_panel;
+struct builder_scroll_label;
+struct builder_scrollbar_panel;
+struct builder_styled_widget;
 }
 
 /**
  * Base class for creating containers with one or two scrollbar(s).
  *
- * For now users can't instanciate this class directly and needs to use small
+ * For now users can't instantiate this class directly and needs to use small
  * wrapper classes. Maybe in the future users can use the class directly.
  *
  * @todo events are not yet send to the content grid.
  */
-class tscrollbar_container : public tcontainer_
+class scrollbar_container : public container_base
 {
-	friend class tdebug_layout_graph;
+	friend class debug_layout_graph;
 
-	friend struct implementation::tbuilder_scroll_label;
-	friend struct implementation::tbuilder_scrollbar_panel;
-#ifndef GUI2_EXPERIMENTAL_LISTBOX
-	friend class tlistbox;
-#endif
-	friend class ttree_view;
-	friend struct tscrollbar_container_implementation;
+	friend struct implementation::builder_scroll_label;
+	friend struct implementation::builder_scrollbar_panel;
+	friend class listbox;
+	friend class tree_view;
+	friend struct scrollbar_container_implementation;
 
 public:
-	explicit tscrollbar_container(const unsigned canvas_count);
+	explicit scrollbar_container(const implementation::builder_styled_widget& builder, const std::string& control_type);
 
-	~tscrollbar_container()
+	virtual ~scrollbar_container()
 	{
-		delete content_grid_;
 	}
 
 	/** The way to handle the showing or hiding of the scrollbar. */
-	enum tscrollbar_mode {
-		always_visible, /**<
-						 * The scrollbar is always shown, whether
-						 * needed or not.
-						 */
-		always_invisible, /**<
-						   * The scrollbar is never shown even not
-						   * when needed. There's also no space
-						   * reserved for the scrollbar.
-						   */
-		auto_visible, /**<
-					   * The scrollbar is shown when the number of
-					   * items is larger as the visible items. The
-					   * space for the scrollbar is always
-					   * reserved, just in case it's needed after
-					   * the initial sizing (due to adding items).
-					   */
-		auto_visible_first_run /**<
-								* Like auto_visible, but when not needed
-								* upon the initial layout phase, the bars
-								* are not shown and no space is reserved
-								* for them. (The algorithm hides them by
-								* default.
-								*/
+	enum scrollbar_mode {
+		/**
+		 * The scrollbar is always shown, whether needed or not.
+		 */
+		ALWAYS_VISIBLE,
+
+		/**
+		 * The scrollbar is never shown even notwhen needed. There's also no space
+		 * reserved for the scrollbar.
+		 */
+		ALWAYS_INVISIBLE,
+
+		/**
+		 * The scrollbar is shown when the number of items is larger as the visible items.
+		 * The space for the scrollbar is always reserved, just in case it's needed after
+		 * the initial sizing (due to adding items).
+		 */
+		AUTO_VISIBLE,
+
+		/**
+		 * Like AUTO_VISIBLE, but when not needed upon the initial layout phase, the bars
+		 * are not shown and no space is reserved for them. (The algorithm hides them by
+		 * default.
+		 */
+		AUTO_VISIBLE_FIRST_RUN,
 	};
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
-	/** See @ref twidget::layout_initialise. */
-	virtual void layout_initialise(const bool full_initialisation) OVERRIDE;
+	/** See @ref widget::layout_initialize. */
+	virtual void layout_initialize(const bool full_initialization) override;
 
-	/** See @ref twidget::request_reduce_height. */
-	virtual void request_reduce_height(const unsigned maximum_height) OVERRIDE;
+	/** See @ref widget::request_reduce_height. */
+	virtual void request_reduce_height(const unsigned maximum_height) override;
 
-	/** See @ref twidget::request_reduce_width. */
-	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
+	/** See @ref widget::request_reduce_width. */
+	virtual void request_reduce_width(const unsigned maximum_width) override;
 
 	/**
-	 * See @ref twidget::can_wrap.
+	 * See @ref widget::can_wrap.
 	 *
-	 * @note This function is called before the object is finalised.
+	 * @note This function is called before the object is finalized.
 	 */
-	virtual bool can_wrap() const OVERRIDE;
+	virtual bool can_wrap() const override;
 
 private:
-	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const OVERRIDE;
+	/** See @ref widget::calculate_best_size. */
+	virtual point calculate_best_size() const override;
 
 public:
-	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
+	/** See @ref widget::place. */
+	virtual void place(const point& origin, const point& size) override;
 
-	/** See @ref twidget::set_origin. */
-	virtual void set_origin(const tpoint& origin) OVERRIDE;
+	/** See @ref widget::set_origin. */
+	virtual void set_origin(const point& origin) override;
 
-	/** See @ref twidget::set_visible_rectangle. */
-	virtual void set_visible_rectangle(const SDL_Rect& rectangle) OVERRIDE;
+	/** See @ref widget::set_visible_rectangle. */
+	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override;
 
 	/***** ***** ***** inherited ****** *****/
 
-	/** See @ref tcontrol::get_active. */
-	virtual bool get_active() const OVERRIDE;
+	/** See @ref styled_widget::get_active. */
+	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
-	virtual unsigned get_state() const OVERRIDE;
+	/** See @ref styled_widget::get_state. */
+	virtual unsigned get_state() const override;
 
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const tpoint& coordinate,
-							 const bool must_be_active) OVERRIDE;
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& coordinate, const bool must_be_active) override;
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
-								   const bool must_be_active) const OVERRIDE;
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& coordinate, const bool must_be_active) const override;
 
-	/** See @ref twidget::find. */
-	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
+	/** See @ref widget::find. */
+	widget* find(const std::string& id, const bool must_be_active) override;
 
-	/** See @ref twidget::find. */
-	const twidget* find(const std::string& id,
-						const bool must_be_active) const OVERRIDE;
+	/** See @ref widget::find. */
+	const widget* find(const std::string& id, const bool must_be_active) const override;
 
-	/** See @ref twidget::disable_click_dismiss. */
-	bool disable_click_dismiss() const OVERRIDE;
+	/** See @ref widget::disable_click_dismiss. */
+	bool disable_click_dismiss() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	/** @note shouldn't be called after being shown in a dialog. */
-	void set_vertical_scrollbar_mode(const tscrollbar_mode scrollbar_mode);
-	tscrollbar_mode get_vertical_scrollbar_mode() const
+	void set_vertical_scrollbar_mode(const scrollbar_mode scrollbar_mode);
+
+	scrollbar_mode get_vertical_scrollbar_mode() const
 	{
 		return vertical_scrollbar_mode_;
 	}
 
 	/** @note shouldn't be called after being shown in a dialog. */
-	void set_horizontal_scrollbar_mode(const tscrollbar_mode scrollbar_mode);
-	tscrollbar_mode get_horizontal_scrollbar_mode() const
+	void set_horizontal_scrollbar_mode(const scrollbar_mode scrollbar_mode);
+
+	scrollbar_mode get_horizontal_scrollbar_mode() const
 	{
 		return horizontal_scrollbar_mode_;
 	}
 
-	tgrid* content_grid()
+	grid* content_grid()
 	{
-		return content_grid_;
+		return content_grid_.get();
 	}
-	const tgrid* content_grid() const
+
+	const grid* content_grid() const
 	{
-		return content_grid_;
+		return content_grid_.get();
 	}
 
 	const SDL_Rect& content_visible_area() const
@@ -175,19 +172,50 @@ public:
 
 	/***** ***** ***** scrollbar helpers ***** ****** *****/
 
+	/* Returns at_end status of the vertical scrollbar.
+	 *
+	 */
+	bool vertical_scrollbar_at_end();
+
+	/**
+	 * Returns current position of the vertical scrollbar.
+	 *
+	 */
+	unsigned get_vertical_scrollbar_item_position() const;
+
+	/**
+	 * Move the vertical scrollbar to a position.
+	 *
+	 * @param position              The position to scroll to.
+	 */
+	void set_vertical_scrollbar_item_position(const unsigned position);
+
+	/**
+	 * Returns current position of the horizontal scrollbar.
+	 *
+	 */
+	unsigned get_horizontal_scrollbar_item_position() const;
+
+	/**
+	 * Move the horizontal scrollbar to a position.
+	 *
+	 * @param position              The position to scroll to.
+	 */
+	void set_horizontal_scrollbar_item_position(const unsigned position);
+
 	/**
 	 * Scrolls the vertical scrollbar.
 	 *
 	 * @param scroll              The position to scroll to.
 	 */
-	void scroll_vertical_scrollbar(const tscrollbar_::tscroll scroll);
+	void scroll_vertical_scrollbar(const scrollbar_base::scroll_mode scroll);
 
 	/**
 	 * Scrolls the horizontal scrollbar.
 	 *
 	 * @param scroll              The position to scroll to.
 	 */
-	void scroll_horizontal_scrollbar(const tscrollbar_::tscroll scroll);
+	void scroll_horizontal_scrollbar(const scrollbar_base::scroll_mode scroll);
 
 	/**
 	 * Callback when the scrollbar moves (NOTE maybe only one callback needed).
@@ -242,7 +270,7 @@ protected:
 	 *
 	 * When a resize is required the container first can try to handle it
 	 * itself. If it can't honor the request the function will call @ref
-	 * twindow::invalidate_layout().
+	 * window::invalidate_layout().
 	 *
 	 * @note Calling this function on a widget with size == (0, 0) results
 	 * false but doesn't call invalidate_layout, the engine expects to be in
@@ -262,14 +290,14 @@ protected:
 	 * Request from the content to modify the size of the container.
 	 *
 	 * When the wanted resize fails the function will call @ref
-	 * twindow::invalidate_layout().
+	 * window::invalidate_layout().
 	 *
 	 *
 	 * @note Calling this function on a widget with size == (0, 0) results
 	 * false but doesn't call invalidate_layout, the engine expects to be in
 	 * build up phase with the layout already invalidated.
 	 *
-	 * @note If @ref twindow::get_need_layout() is true the function returns
+	 * @note If @ref window::get_need_layout() is true the function returns
 	 * false and doesn't try to fit the contents since a layout phase will be
 	 * triggered anyway.
 	 *
@@ -283,12 +311,22 @@ protected:
 	 *                            * negative values reduce height.
 	 *                            * zero leave height as is.
 	 *                            * positive values increase height.
+	 * @param width_modification_pos
+	 *                            The position where the additional content was
+	 *                            inserted/removed, defaults to -1 which means
+	 *                            'at end'
+	 * @param height_modification_pos
+	 *                            The position where the additional content was
+	 *                            inserted/removed, defaults to -1 which means
+	 *                            'at end'
 	 *
 	 * @returns                   True is wanted modification is accepted false
 	 *                            otherwise.
 	 */
 	bool content_resize_request(const int width_modification,
-								const int height_modification);
+			const int height_modification,
+			const int width_modification_pos = -1,
+			const int height_modification_pos = -1);
 
 private:
 	/**
@@ -296,14 +334,14 @@ private:
 	 *
 	 * Handle the width modification.
 	 */
-	bool content_resize_width(const int width_modification);
+	bool content_resize_width(const int width_modification, const int width_modification_pos);
 
 	/**
 	 * Helper for @ref content_resize_request.
 	 *
 	 * Handle the height modification.
 	 */
-	bool content_resize_height(const int height_modification);
+	bool content_resize_height(const int height_modification, const int width_modification_pos);
 
 protected:
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
@@ -318,7 +356,7 @@ protected:
 	 *                            This is used in the keyboard event
 	 *                            changing.
 	 */
-	virtual void handle_key_home(SDLMod modifier, bool& handled);
+	virtual void handle_key_home(SDL_Keymod modifier, bool& handled);
 
 	/**
 	 * End key pressed.
@@ -330,7 +368,7 @@ protected:
 	 *                            This is used in the keyboard event
 	 *                            changing.
 	 */
-	virtual void handle_key_end(SDLMod modifier, bool& handled);
+	virtual void handle_key_end(SDL_Keymod modifier, bool& handled);
 
 	/**
 	 * Page up key pressed.
@@ -342,7 +380,7 @@ protected:
 	 *                            This is used in the keyboard event
 	 *                            changing.
 	 */
-	virtual void handle_key_page_up(SDLMod modifier, bool& handled);
+	virtual void handle_key_page_up(SDL_Keymod modifier, bool& handled);
 
 	/**
 	 * Page down key pressed.
@@ -354,8 +392,7 @@ protected:
 	 *                            This is used in the keyboard event
 	 *                            changing.
 	 */
-	virtual void handle_key_page_down(SDLMod modifier, bool& handled);
-
+	virtual void handle_key_page_down(SDL_Keymod modifier, bool& handled);
 
 	/**
 	 * Up arrow key pressed.
@@ -367,7 +404,7 @@ protected:
 	 *                            This is used in the keyboard event
 	 *                            changing.
 	 */
-	virtual void handle_key_up_arrow(SDLMod modifier, bool& handled);
+	virtual void handle_key_up_arrow(SDL_Keymod modifier, bool& handled);
 
 	/**
 	 * Down arrow key pressed.
@@ -379,7 +416,7 @@ protected:
 	 *                            This is used in the keyboard event
 	 *                            changing.
 	 */
-	virtual void handle_key_down_arrow(SDLMod modifier, bool& handled);
+	virtual void handle_key_down_arrow(SDL_Keymod modifier, bool& handled);
 
 	/**
 	 * Left arrow key pressed.
@@ -391,7 +428,7 @@ protected:
 	 *                            This is used in the keyboard event
 	 *                            changing.
 	 */
-	virtual void handle_key_left_arrow(SDLMod modifier, bool& handled);
+	virtual void handle_key_left_arrow(SDL_Keymod modifier, bool& handled);
 
 	/**
 	 * Right arrow key pressed.
@@ -403,7 +440,7 @@ protected:
 	 *                            This is used in the keyboard event
 	 *                            changing.
 	 */
-	virtual void handle_key_right_arrow(SDLMod modifier, bool& handled);
+	virtual void handle_key_right_arrow(SDL_Keymod modifier, bool& handled);
 
 private:
 	/**
@@ -411,10 +448,9 @@ private:
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum tstate {
+	enum state_t {
 		ENABLED,
 		DISABLED,
-		COUNT
 	};
 
 	/**
@@ -423,7 +459,7 @@ private:
 	 * The state of the widget determines what to render and how the widget
 	 * reacts to certain 'events'.
 	 */
-	tstate state_;
+	state_t state_;
 
 	/**
 	 * The mode of how to show the scrollbar.
@@ -431,19 +467,19 @@ private:
 	 * This value should only be modified before showing, doing it while
 	 * showing results in UB.
 	 */
-	tscrollbar_mode vertical_scrollbar_mode_, horizontal_scrollbar_mode_;
+	scrollbar_mode vertical_scrollbar_mode_, horizontal_scrollbar_mode_;
 
 	/** These are valid after finalize_setup(). */
-	tgrid* vertical_scrollbar_grid_, *horizontal_scrollbar_grid_;
+	grid *vertical_scrollbar_grid_, *horizontal_scrollbar_grid_;
 
 	/** These are valid after finalize_setup(). */
-	tscrollbar_* vertical_scrollbar_, *horizontal_scrollbar_;
+	scrollbar_base *vertical_scrollbar_, *horizontal_scrollbar_;
 
 	/** The grid that holds the content. */
-	tgrid* content_grid_;
+	std::unique_ptr<grid> content_grid_;
 
 	/** Dummy spacer to hold the contents location. */
-	tspacer* content_;
+	spacer* content_;
 
 	/**
 	 * Cache for the visible area for the content.
@@ -464,21 +500,14 @@ private:
 	{
 	}
 
-	/** See @ref twidget::layout_children. */
-	virtual void layout_children() OVERRIDE;
+	/** See @ref widget::layout_children. */
+	virtual void layout_children() override;
 
-	/** See @ref twidget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer) OVERRIDE;
+	/** See @ref widget::impl_draw_children. */
+	virtual void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset) override;
 
-	/** See @ref twidget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer,
-									int x_offset,
-									int y_offset) OVERRIDE;
-
-	/** See @ref twidget::child_populate_dirty_list. */
-	virtual void
-	child_populate_dirty_list(twindow& caller,
-							  const std::vector<twidget*>& call_stack) OVERRIDE;
+	/** See @ref widget::child_populate_dirty_list. */
+	virtual void child_populate_dirty_list(window& caller, const std::vector<widget*>& call_stack) override;
 
 	/**
 	 * Sets the size of the content grid.
@@ -489,30 +518,51 @@ private:
 	 * @param origin              The origin for the content.
 	 * @param size                The size of the content.
 	 */
-	virtual void set_content_size(const tpoint& origin, const tpoint& size);
+	virtual void set_content_size(const point& origin, const point& size);
 
 	/** Helper function which needs to be called after the scollbar moved. */
 	void scrollbar_moved();
 
-	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
+	/** See @ref styled_widget::get_control_type. */
+	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_sdl_key_down(const event::tevent event,
-									 bool& handled,
-									 const SDLKey key,
-									 SDLMod modifier);
+	void signal_handler_sdl_key_down(
+			const event::ui_event event, bool& handled, const SDL_Keycode key, SDL_Keymod modifier);
 
-	void signal_handler_sdl_wheel_up(const event::tevent event, bool& handled);
-	void signal_handler_sdl_wheel_down(const event::tevent event,
-									   bool& handled);
-	void signal_handler_sdl_wheel_left(const event::tevent event,
-									   bool& handled);
-	void signal_handler_sdl_wheel_right(const event::tevent event,
-										bool& handled);
+	void signal_handler_sdl_wheel_up(const event::ui_event event, bool& handled);
+	void signal_handler_sdl_wheel_down(const event::ui_event event, bool& handled);
+	void signal_handler_sdl_wheel_left(const event::ui_event event, bool& handled);
+	void signal_handler_sdl_wheel_right(const event::ui_event event, bool& handled);
+	void signal_handler_sdl_touch_motion(const event::ui_event event, bool& handled,
+                                         const point& position, const point& distance);
+
+public:
+	scrollbar_base* horizontal_scrollbar()
+	{
+		return horizontal_scrollbar_;
+	}
+
+	scrollbar_base* vertical_scrollbar()
+	{
+		return vertical_scrollbar_;
+	}
+
+	grid* get_horizontal_scrollbar_grid()
+	{
+		return horizontal_scrollbar_grid_;
+	}
+
+	grid* get_vertical_scrollbar_grid()
+	{
+		return vertical_scrollbar_grid_;
+	}
 };
 
 } // namespace gui2
-
-#endif

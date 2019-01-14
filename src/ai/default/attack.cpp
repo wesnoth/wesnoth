@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,18 +17,22 @@
  * Calculate & analyze attacks of the default ai
  */
 
-#include "../../global.hpp"
+#include "ai/manager.hpp"
+#include "ai/default/contexts.hpp"
+#include "ai/actions.hpp"
+#include "ai/formula/ai.hpp"
+#include "ai/composite/contexts.hpp"
 
-#include "ai.hpp"
-#include "../manager.hpp"
-
-#include "../../actions/attack.hpp"
-#include "../../attack_prediction.hpp"
-#include "../../game_config.hpp"
-#include "../../log.hpp"
-#include "../../map.hpp"
-#include "../../team.hpp"
-#include "../../unit.hpp"
+#include "actions/attack.hpp"
+#include "attack_prediction.hpp"
+#include "game_config.hpp"
+#include "log.hpp"
+#include "map/map.hpp"
+#include "team.hpp"
+#include "units/unit.hpp"
+#include "formula/callable_objects.hpp" // for location_callable
+#include "resources.hpp"
+#include "game_board.hpp"
 
 static lg::log_domain log_ai("ai/attack");
 #define LOG_AI LOG_STREAM(info, log_ai)
@@ -36,19 +40,21 @@ static lg::log_domain log_ai("ai/attack");
 
 namespace ai {
 
+extern ai_context& get_ai_context(wfl::const_formula_callable_ptr for_fai);
+
 void attack_analysis::analyze(const gamemap& map, unit_map& units,
-				  const readonly_context& ai_obj,
-                                  const move_map& dstsrc, const move_map& srcdst,
-                                  const move_map& enemy_dstsrc, double aggression)
+                              const readonly_context& ai_obj,
+                              const move_map& dstsrc, const move_map& srcdst,
+                              const move_map& enemy_dstsrc, double aggression)
 {
 	const unit_map::const_iterator defend_it = units.find(target);
 	assert(defend_it != units.end());
 
 	// See if the target is a threat to our leader or an ally's leader.
-	map_location adj[6];
-	get_adjacent_tiles(target,adj);
-	size_t tile;
-	for(tile = 0; tile != 6; ++tile) {
+	adjacent_loc_array_t adj;
+	get_adjacent_tiles(target,adj.data());
+	std::size_t tile;
+	for(tile = 0; tile < adj.size(); ++tile) {
 		const unit_map::const_iterator leader = units.find(adj[tile]);
 		if(leader != units.end() && leader->can_recruit() && !ai_obj.current_team().is_enemy(leader->side())) {
 			break;
@@ -59,8 +65,8 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 	uses_leader = false;
 
 	target_value = defend_it->cost();
-	target_value += (double(defend_it->experience())/
-	                 double(defend_it->max_experience()))*target_value;
+	target_value += (static_cast<double>(defend_it->experience())/
+	                 static_cast<double>(defend_it->max_experience()))*target_value;
 	target_starting_damage = defend_it->max_hitpoints() -
 	                         defend_it->hitpoints();
 
@@ -70,7 +76,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 	// making itself.
 	alternative_terrain_quality = 0.0;
 	double cost_sum = 0.0;
-	for(size_t i = 0; i != movements.size(); ++i) {
+	for(std::size_t i = 0; i != movements.size(); ++i) {
 		const unit_map::const_iterator att = units.find(movements[i].first);
 		const double cost = att->cost();
 		cost_sum += cost;
@@ -90,10 +96,12 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 	double prob_dead_already = 0.0;
 	assert(!movements.empty());
-	std::vector<std::pair<map_location,map_location> >::const_iterator m;
+	std::vector<std::pair<map_location,map_location>>::const_iterator m;
 
-	battle_context *prev_bc = NULL;
-	const combatant *prev_def = NULL;
+	std::unique_ptr<battle_context> bc(nullptr);
+	std::unique_ptr<battle_context> old_bc(nullptr);
+
+	const combatant *prev_def = nullptr;
 
 	for (m = movements.begin(); m != movements.end(); ++m) {
 		// We fix up units map to reflect what this would look like.
@@ -110,7 +118,11 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		}
 
 		bool from_cache = false;
-		battle_context *bc;
+
+		// Swap the two context pointers. old_bc should be null at this point, so bc is cleared
+		// and old_bc takes ownership of the context pointer. This allows prev_def to remain
+		// valid until it's reassigned.
+		old_bc.swap(bc);
 
 		// This cache is only about 99% correct, but speeds up evaluation by about 1000 times.
 		// We recalculate when we actually attack.
@@ -122,27 +134,28 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 				static_cast<int>(up->attacks().size())) {
 
 			from_cache = true;
-			bc = new battle_context(usc->second.first, usc->second.second);
+			bc.reset(new battle_context(usc->second.first, usc->second.second));
 		} else {
-			bc = new battle_context(units, m->second, target, -1, -1, m_aggression, prev_def);
+			bc.reset(new battle_context(units, m->second, target, -1, -1, m_aggression, prev_def));
 		}
 		const combatant &att = bc->get_attacker_combatant(prev_def);
 		const combatant &def = bc->get_defender_combatant(prev_def);
 
-		delete prev_bc;
-		prev_bc = bc;
 		prev_def = &bc->get_defender_combatant(prev_def);
 
+		// We no longer need the old context since prev_def has been reassigned.
+		old_bc.reset(nullptr);
+
 		if ( !from_cache ) {
-			ai_obj.unit_stats_cache().insert(
-				std::make_pair(cache_key, std::make_pair(bc->get_attacker_stats(),
-				                                         bc->get_defender_stats())));
+			ai_obj.unit_stats_cache().emplace(cache_key, std::make_pair(
+				bc->get_attacker_stats(),
+				bc->get_defender_stats()
+			));
 		}
 
 		// Note we didn't fight at all if defender is already dead.
 		double prob_fought = (1.0 - prob_dead_already);
 
-		/** @todo 1.9 add combatant.prob_killed */
 		double prob_killed = def.hp_dist[0] - prob_dead_already;
 		prob_dead_already = def.hp_dist[0];
 
@@ -152,7 +165,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		double cost = up->cost();
 		const bool on_village = map.is_village(m->second);
 		// Up to double the value of a unit based on experience
-		cost += (double(up->experience()) / up->max_experience())*cost;
+		cost += (static_cast<double>(up->experience()) / up->max_experience())*cost;
 		resources_used += cost;
 		avg_losses += cost * prob_died;
 
@@ -168,19 +181,19 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 			avg_damage_taken -= game_config::poison_amount*2 * prob_survived;
 		}
 
-		terrain_quality += (double(bc->get_defender_stats().chance_to_hit)/100.0)*cost * (on_village ? 0.5 : 1.0);
+		terrain_quality += (static_cast<double>(bc->get_defender_stats().chance_to_hit)/100.0)*cost * (on_village ? 0.5 : 1.0);
 
 		double advance_prob = 0.0;
 		// The reward for advancing a unit is to get a 'negative' loss of that unit
 		if (!up->advances_to().empty()) {
-			int xp_for_advance = up->max_experience() - up->experience();
+			int xp_for_advance = up->experience_to_advance();
 
 			// See bug #6272... in some cases, unit already has got enough xp to advance,
 			// but hasn't (bug elsewhere?).  Can cause divide by zero.
-			if (xp_for_advance <= 0)
+			if (xp_for_advance == 0)
 				xp_for_advance = 1;
 
-			int fight_xp = defend_it->level();
+			int fight_xp = game_config::combat_xp(defend_it->level());
 			int kill_xp = game_config::kill_xp(fight_xp);
 
 			if (fight_xp >= xp_for_advance) {
@@ -214,12 +227,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		// If we didn't advance, we took this damage.
 		avg_damage_taken += (up->hitpoints() - att.average_hp()) * (1.0 - advance_prob);
 
-		/**
-		 * @todo 1.9: attack_prediction.cpp should understand advancement
-		 * directly.  For each level of attacker def gets 1 xp or
-		 * kill_experience.
-		 */
-		int fight_xp = up->level();
+		int fight_xp = game_config::combat_xp(up->level());
 		int kill_xp = game_config::kill_xp(fight_xp);
 		def_avg_experience += fight_xp * (1.0 - att.hp_dist[0]) + kill_xp * att.hp_dist[0];
 		if (m == movements.begin()) {
@@ -228,7 +236,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 	}
 
 	if (!defend_it->advances_to().empty() &&
-		def_avg_experience >= defend_it->max_experience() - defend_it->experience()) {
+		def_avg_experience >= defend_it->experience_to_advance()) {
 		// It's likely to advance: only if we can kill with first blow.
 		chance_to_kill = first_chance_kill;
 		// Negative average damage (it will advance).
@@ -238,7 +246,6 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		avg_damage_inflicted += defend_it->hitpoints() - prev_def->average_hp(map.gives_healing(defend_it->get_location()));
 	}
 
-	delete prev_bc;
 	terrain_quality /= resources_used;
 
 	// Restore the units to their original positions.
@@ -249,7 +256,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 bool attack_analysis::attack_close(const map_location& loc) const
 {
-	std::set<map_location> &attacks = manager::get_ai_info().recent_attacks;
+	std::set<map_location> &attacks = manager::get_singleton().get_ai_info().recent_attacks;
 	for(std::set<map_location>::const_iterator i = attacks.begin(); i != attacks.end(); ++i) {
 		if(distance_between(*i,loc) < 4) {
 			return true;
@@ -278,14 +285,8 @@ double attack_analysis::rating(double aggression, const readonly_context& ai_obj
 		// into sub-optimal terrain.
 		// Calculate the 'exposure' of our units to risk.
 
-#ifdef SUOKKO
-		//FIXME: this code was in sukko's r29531  Correct?
-		const double exposure_mod = uses_leader ? ai_obj.current_team().caution()* 8.0 : ai_obj.current_team().caution() * 4.0;
-		const double exposure = exposure_mod*resources_used*((terrain_quality - alternative_terrain_quality)/10)*vulnerability/std::max<double>(0.01,support);
-#else
 		const double exposure_mod = uses_leader ? 2.0 : ai_obj.get_caution();
 		const double exposure = exposure_mod*resources_used*(terrain_quality - alternative_terrain_quality)*vulnerability/std::max<double>(0.01,support);
-#endif
 		LOG_AI << "attack option has base value " << value << " with exposure " << exposure << ": "
 			<< vulnerability << "/" << support << " = " << (vulnerability/std::max<double>(support,0.1)) << "\n";
 		value -= exposure*(1.0-aggression);
@@ -309,7 +310,7 @@ double attack_analysis::rating(double aggression, const readonly_context& ai_obj
                }
         }
 
-	if(!leader_threat && vulnerability*terrain_quality > 0.0  && !is_surrounded) {
+	if(!leader_threat && vulnerability*terrain_quality > 0.0 && support != 0) {
 		value *= support/(vulnerability*terrain_quality);
 	}
 
@@ -329,6 +330,134 @@ double attack_analysis::rating(double aggression, const readonly_context& ai_obj
 		<< " alternative quality: " << alternative_terrain_quality << "\n";
 
 	return value;
+}
+
+wfl::variant attack_analysis::get_value(const std::string& key) const
+{
+	using namespace wfl;
+	if(key == "target") {
+		return variant(std::make_shared<location_callable>(target));
+	} else if(key == "movements") {
+		std::vector<variant> res;
+		for(std::size_t n = 0; n != movements.size(); ++n) {
+			auto item = std::make_shared<map_formula_callable>(nullptr);
+			item->add("src", variant(std::make_shared<location_callable>(movements[n].first)));
+			item->add("dst", variant(std::make_shared<location_callable>(movements[n].second)));
+			res.emplace_back(item);
+		}
+
+		return variant(res);
+	} else if(key == "units") {
+		std::vector<variant> res;
+		for(std::size_t n = 0; n != movements.size(); ++n) {
+			res.emplace_back(std::make_shared<location_callable>(movements[n].first));
+		}
+
+		return variant(res);
+	} else if(key == "target_value") {
+		return variant(static_cast<int>(target_value*1000));
+	} else if(key == "avg_losses") {
+		return variant(static_cast<int>(avg_losses*1000));
+	} else if(key == "chance_to_kill") {
+		return variant(static_cast<int>(chance_to_kill*100));
+	} else if(key == "avg_damage_inflicted") {
+		return variant(static_cast<int>(avg_damage_inflicted));
+	} else if(key == "target_starting_damage") {
+		return variant(target_starting_damage);
+	} else if(key == "avg_damage_taken") {
+		return variant(static_cast<int>(avg_damage_taken));
+	} else if(key == "resources_used") {
+		return variant(static_cast<int>(resources_used));
+	} else if(key == "terrain_quality") {
+		return variant(static_cast<int>(terrain_quality));
+	} else if(key == "alternative_terrain_quality") {
+		return variant(static_cast<int>(alternative_terrain_quality));
+	} else if(key == "vulnerability") {
+		return variant(static_cast<int>(vulnerability));
+	} else if(key == "support") {
+		return variant(static_cast<int>(support));
+	} else if(key == "leader_threat") {
+		return variant(leader_threat);
+	} else if(key == "uses_leader") {
+		return variant(uses_leader);
+	} else if(key == "is_surrounded") {
+		return variant(is_surrounded);
+	} else {
+		return variant();
+	}
+}
+
+void attack_analysis::get_inputs(wfl::formula_input_vector& inputs) const
+{
+	add_input(inputs, "target");
+	add_input(inputs, "movements");
+	add_input(inputs, "units");
+	add_input(inputs, "target_value");
+	add_input(inputs, "avg_losses");
+	add_input(inputs, "chance_to_kill");
+	add_input(inputs, "avg_damage_inflicted");
+	add_input(inputs, "target_starting_damage");
+	add_input(inputs, "avg_damage_taken");
+	add_input(inputs, "resources_used");
+	add_input(inputs, "terrain_quality");
+	add_input(inputs, "alternative_terrain_quality");
+	add_input(inputs, "vulnerability");
+	add_input(inputs, "support");
+	add_input(inputs, "leader_threat");
+	add_input(inputs, "uses_leader");
+	add_input(inputs, "is_surrounded");
+}
+
+wfl::variant attack_analysis::execute_self(wfl::variant ctxt) {
+	//If we get an attack analysis back we will do the first attack.
+	//Then the AI can get run again and re-choose.
+	if(movements.empty()) {
+		return wfl::variant(false);
+	}
+
+	unit_map& units = resources::gameboard->units();
+
+	//make sure that unit which has to attack is at given position and is able to attack
+	unit_map::const_iterator unit = units.find(movements.front().first);
+	if(!unit.valid() || unit->attacks_left() == 0) {
+		return wfl::variant(false);
+	}
+
+	const map_location& move_from = movements.front().first;
+	const map_location& att_src = movements.front().second;
+	const map_location& att_dst = target;
+
+	//check if target is still valid
+	unit = units.find(att_dst);
+	if(unit == units.end()) {
+		return wfl::variant(std::make_shared<wfl::safe_call_result>(fake_ptr(), attack_result::E_EMPTY_DEFENDER, move_from));
+	}
+
+	//check if we need to move
+	if(move_from != att_src) {
+		//now check if location to which we want to move is still unoccupied
+		unit = units.find(att_src);
+		if(unit != units.end()) {
+			return wfl::variant(std::make_shared<wfl::safe_call_result>(fake_ptr(), move_result::E_NO_UNIT, move_from));
+		}
+
+		ai::move_result_ptr result = get_ai_context(ctxt.as_callable()).execute_move_action(move_from, att_src);
+		if(!result->is_ok()) {
+			//move part failed
+			LOG_AI << "ERROR #" << result->get_status() << " while executing 'attack' formula function\n" << std::endl;
+			return wfl::variant(std::make_shared<wfl::safe_call_result>(fake_ptr(), result->get_status(), result->get_unit_location()));
+		}
+	}
+
+	if(units.count(att_src)) {
+		ai::attack_result_ptr result = get_ai_context(ctxt.as_callable()).execute_attack_action(movements.front().second, target, -1);
+		if(!result->is_ok()) {
+			//attack failed
+			LOG_AI << "ERROR #" << result->get_status() << " while executing 'attack' formula function\n" << std::endl;
+			return wfl::variant(std::make_shared<wfl::safe_call_result>(fake_ptr(), result->get_status()));
+		}
+	}
+	return wfl::variant(true);
 }
 
 } //end of namespace ai

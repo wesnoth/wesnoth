@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,23 +17,20 @@
 
 namespace resources
 {
-	game_board           *gameboard = NULL;
-	game_config_manager  *config_manager = NULL;
-	play_controller      *controller = NULL;
-	game_data            *gamedata = NULL;
-	filter_context	     *filter_con = NULL;
-	LuaKernel            *lua_kernel = NULL;
-	persist_manager      *persist = NULL;
-	game_display         *screen = NULL;
-	soundsource::manager *soundsources = NULL;
-	std::vector<team>    *teams = NULL;
-	::tod_manager        *tod_manager = NULL;
-	fake_unit_manager    *fake_units = NULL;
-	pathfind::manager    *tunnels = NULL;
-	actions::undo_list   *undo_stack = NULL;
-	unit_map             *units = NULL;
-	boost::shared_ptr<wb::manager> whiteboard = boost::shared_ptr<wb::manager>();
-	game_classification  *classification = NULL;
-	const mp_game_settings *mp_settings = NULL;
+	game_board           *gameboard = nullptr;
+	play_controller      *controller = nullptr;
+	game_data            *gamedata = nullptr;
+	filter_context	     *filter_con = nullptr;
+	game_events::manager *game_events = nullptr;
+	game_lua_kernel            *lua_kernel = nullptr;
+	persist_manager      *persist = nullptr;
+	soundsource::manager *soundsources = nullptr;
+	replay               *recorder = nullptr;
+	::tod_manager        *tod_manager = nullptr;
+	fake_unit_manager    *fake_units = nullptr;
+	pathfind::manager    *tunnels = nullptr;
+	actions::undo_list   *undo_stack = nullptr;
+	std::shared_ptr<wb::manager> whiteboard = std::shared_ptr<wb::manager>();
+	game_classification  *classification = nullptr;
 	bool                 simulation_ = false;
 }

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -13,12 +13,14 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "editor_display.hpp"
+#include "editor/controller/editor_controller.hpp"
+#include "editor/editor_display.hpp"
+#include "lexical_cast.hpp"
+#include "overlay.hpp"
 #include "reports.hpp"
-#include "terrain_builder.hpp"
-#include "unit_map.hpp"
-
-#include <boost/shared_ptr.hpp>
+#include "team.hpp"
+#include "terrain/builder.hpp"
+#include "units/map.hpp"
 
 namespace wb {
 	class manager;
@@ -26,39 +28,12 @@ namespace wb {
 
 namespace editor {
 
-// Define dummy display context;
-
-class dummy_editor_display_context : public display_context
-{
-	config dummy_cfg1;
-
-	editor_map em;
-	unit_map u;
-	std::vector<team> t;
-
-public:
-	dummy_editor_display_context() : dummy_cfg1(), em(dummy_cfg1), u(), t() {}
-	virtual ~dummy_editor_display_context(){}
-
-	virtual const gamemap & map() const { return em; }
-	virtual const unit_map & units() const { return u; }
-	virtual const std::vector<team> & teams() const { return t; }
-};
-
-const display_context * get_dummy_display_context() {
-	static const dummy_editor_display_context dedc = dummy_editor_display_context();
-	return &dedc;
-}
-
-// End dummy display context
-
-editor_display::editor_display(const display_context * dc, CVideo& video,
-		const config& theme_cfg, const config& level)
-	: display(dc, video, boost::shared_ptr<wb::manager>(), theme_cfg, level)
+editor_display::editor_display(editor_controller& controller, reports& reports_object, const config& theme_cfg)
+	: display(nullptr, std::shared_ptr<wb::manager>(), reports_object, theme_cfg, config())
 	, brush_locations_()
-	, palette_report_()
+	, controller_(controller)
 {
-	clear_screen();
+	video().clear_screen();
 }
 
 void editor_display::add_brush_loc(const map_location& hex)
@@ -108,22 +83,6 @@ void editor_display::draw_hex(const map_location& loc)
 	int ypos = get_location_y(loc);
 	display::draw_hex(loc);
 	if (map().on_board_with_border(loc)) {
-#ifdef SDL_GPU
-		if (map().in_selection(loc)) {
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos,
-				image::get_texture("editor/selection-overlay.png", image::TOD_COLORED));
-		}
-
-		if (brush_locations_.find(loc) != brush_locations_.end()) {
-			static const image::locator brush(game_config::images::editor_brush);
-			drawing_buffer_add(LAYER_SELECTED_HEX, loc, xpos, ypos,
-					image::get_texture(brush, image::SCALED_TO_HEX));
-		}
-		if (map().on_board(loc) && loc == mouseoverHex_) {
-			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
-					image::get_texture("misc/hover-hex.png", image::SCALED_TO_HEX));
-		}
-#else
 		if (map().in_selection(loc)) {
 			drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos,
 				image::get_image("editor/selection-overlay.png", image::TOD_COLORED));
@@ -134,11 +93,6 @@ void editor_display::draw_hex(const map_location& loc)
 			drawing_buffer_add(LAYER_SELECTED_HEX, loc, xpos, ypos,
 					image::get_image(brush, image::SCALED_TO_HEX));
 		}
-		if (map().on_board(loc) && loc == mouseoverHex_) {
-			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
-					image::get_image("misc/hover-hex.png", image::SCALED_TO_HEX));
-		}
-#endif
 	}
 }
 
@@ -156,7 +110,7 @@ void editor_display::draw_sidebar()
 		text = get_map().get_terrain_editor_string(mouseoverHex_);
 		refresh_report("terrain", &element);
 		refresh_report("terrain_info");
-		text = str_cast(mouseoverHex_);
+		text = lexical_cast<std::string>(mouseoverHex_);
 		refresh_report("position", &element);
 	}
 
@@ -169,5 +123,14 @@ void editor_display::draw_sidebar()
 	}
 }
 
+const time_of_day& editor_display::get_time_of_day(const map_location& /*loc*/) const
+{
+	return controller_.get_current_map_context().get_time_manager()->get_time_of_day();
+}
+
+display::overlay_map& editor_display::get_overlays()
+{
+	return controller_.get_current_map_context().get_overlays();
+}
 
 } //end namespace editor

@@ -1,6 +1,6 @@
 /*
- Copyright (C) 2010 - 2014 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -18,8 +18,7 @@
  *       action.accept(visitor)   calls    visitor.visit(action)
  */
 
-#ifndef WB_VISITOR_HPP_
-#define WB_VISITOR_HPP_
+#pragma once
 
 #include "typedefs.hpp"
 
@@ -43,5 +42,3 @@ protected:
 };
 
 }
-
-#endif /* WB_VISITOR_HPP_ */

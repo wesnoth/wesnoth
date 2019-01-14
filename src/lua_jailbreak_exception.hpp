@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2011 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2011 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef LUA_JAILBREAK_EXCEPTION
-#define LUA_JAILBREAK_EXCEPTION
+#pragma once
 
 #include "global.hpp"
 
@@ -23,13 +22,13 @@
  * Classes inheriting from this class need to use the @ref
  * IMPLEMENT_LUA_JAILBREAK_EXCEPTION macro in the class definition.
  */
-class tlua_jailbreak_exception
+class lua_jailbreak_exception
 {
 public:
-	virtual ~tlua_jailbreak_exception() throw() {}
+	virtual ~lua_jailbreak_exception() noexcept {}
 
 	/** Stores a copy the current exception to be rethrown. */
-	void store() const throw();
+	void store() const noexcept;
 
 	/**
 	 * Rethrows the stored exception.
@@ -41,12 +40,12 @@ public:
 protected:
 
 	/** The exception to be rethrown. */
-	static tlua_jailbreak_exception* jailbreak_exception;
+	static lua_jailbreak_exception* jailbreak_exception;
 
 private:
 
 	/** Clears the current exception. */
-	static void clear() throw();
+	static void clear() noexcept;
 
 	/**
 	 * Creates a copy of the current exception.
@@ -58,7 +57,7 @@ private:
 	 *
 	 * @returns                   A pointer to a copy of the class on the heap.
 	 */
-	virtual tlua_jailbreak_exception* clone() const = 0;
+	virtual lua_jailbreak_exception* clone() const = 0;
 
 	/**
 	 * Executes the exception.
@@ -70,18 +69,18 @@ private:
 	 *
 	 * @note it's implemented by the subclass to avoid slicing.
 	 *
-	 * @pre                       jailbreak_exception != NULL
+	 * @pre                       jailbreak_exception != nullptr
 	 */
 	virtual void execute() = 0;
 };
 
 /**
- * Helper macro for classes deriving from @ref tlua_jailbreak_exception.
+ * Helper macro for classes deriving from @ref lua_jailbreak_exception.
  *
- * @ref tlua_jailbreak_exception has several pure virtual functions, this
+ * @ref lua_jailbreak_exception has several pure virtual functions, this
  * macro implements them properly. This macro needs to be placed in the
  * definition of the most derived class, which uses @ref
- * tlua_jailbreak_exception as baseclass.
+ * lua_jailbreak_exception as baseclass.
  *
  * @param type                    The type of the class whc
  */
@@ -94,6 +93,3 @@ private:
 		type exception(dynamic_cast<type&>(*jailbreak_exception));   \
 		throw exception;                                             \
 	}
-
-#endif
-

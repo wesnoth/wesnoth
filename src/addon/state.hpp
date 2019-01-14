@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2012 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2012 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,10 +12,10 @@
    See the COPYING file for more details.
 */
 
-#ifndef ADDON_STATE_HPP_INCLUDED
-#define ADDON_STATE_HPP_INCLUDED
+#pragma once
 
 #include "addon/info.hpp"
+#include <map>
 
 /** Defines various add-on installation statuses. */
 enum ADDON_STATUS {
@@ -27,6 +27,8 @@ enum ADDON_STATUS {
 	ADDON_INSTALLED_UPGRADABLE,
 	/** Version in the server is older than local installation. */
 	ADDON_INSTALLED_OUTDATED,
+	/** No version in the server. */
+	ADDON_INSTALLED_LOCAL_ONLY,
 	/** Dependencies not satisfied.
 	 *  @todo This option isn't currently implemented! */
 	ADDON_INSTALLED_BROKEN,
@@ -47,6 +49,7 @@ struct addon_tracking_info
 		, can_publish(false)
 		, in_version_control(false)
 		, installed_version()
+		, remote_version()
 	{
 	}
 
@@ -54,6 +57,7 @@ struct addon_tracking_info
 	bool can_publish;
 	bool in_version_control;
 	version_info installed_version;
+	version_info remote_version;
 };
 
 typedef std::map<std::string, addon_tracking_info> addons_tracking_list;
@@ -80,6 +84,7 @@ enum ADDON_STATUS_FILTER {
 	FILTER_ALL,
 	FILTER_INSTALLED,
 	FILTER_UPGRADABLE,
+	FILTER_PUBLISHABLE,
 	FILTER_NOT_INSTALLED,
 	FILTER_COUNT
 };
@@ -100,5 +105,3 @@ enum ADDON_SORT_DIRECTION {
 	DIRECTION_ASCENDING,		/**< Ascending sort. */
 	DIRECTION_DESCENDING		/**< Descending sort. */
 };
-
-#endif

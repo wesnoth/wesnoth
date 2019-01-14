@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,17 +16,19 @@
  *
  * This class is an abstract base class which represents a display context
  * (game map, units, and teams) together with a TOD manager. This, plus
- * a lua kernel (currently a singleton) is sufficient to evaluate filters.
+ * the game data (WML variables) and a lua kernel (currently a singleton)
+ * is sufficient to evaluate filters.
  *
  **/
 
-#ifndef FILTER_CONTEXT_HPP_INCLUDED
-#define FILTER_CONTEXT_HPP_INCLUDED
+#pragma once
 
 #include <vector>
 
 class display_context;
 class tod_manager;
+class game_data;
+class game_lua_kernel;
 
 class filter_context {
 public:
@@ -34,10 +36,10 @@ public:
 
 	virtual const display_context & get_disp_context() const = 0;
 	virtual const tod_manager & get_tod_man() const = 0;
+	virtual const game_data * get_game_data() const = 0;
+	virtual game_lua_kernel * get_lua_kernel() const = 0;
 
 	// Dtor
 
 	virtual ~filter_context() {}
 };
-
-#endif

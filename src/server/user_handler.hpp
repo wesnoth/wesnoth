@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,13 +12,11 @@
    See the COPYING file for more details.
 */
 
-#ifndef USER_HANDLER_HPP_INCLUDED
-#define USER_HANDLER_HPP_INCLUDED
+#pragma once
 
 class config;
 
-#include "../exceptions.hpp"
-#include "../global.hpp"
+#include "exceptions.hpp"
 
 #include <string>
 
@@ -69,14 +67,6 @@ class user_handler {
 		virtual void clean_up() =0;
 
 		/**
-		 * Send a password reminder email to the given user.
-		 *
-		 * Should throw user_handler::error if sending fails
-		 * (e.g. because we cannot send email).
-		 */
-		virtual void password_reminder(const std::string& name) =0;
-
-		/**
 		 * Return true if the given password matches the password for the given user.
 		 *
 		 * Password could also be a hash
@@ -118,6 +108,23 @@ class user_handler {
 		/** Mark this user as a moderator */
 		virtual void set_is_moderator(const std::string& name, const bool& is_moderator) =0;
 
+		enum BAN_TYPE
+		{
+			BAN_NONE,
+			BAN_USER,
+			BAN_IP,
+			BAN_EMAIL,
+		};
+
+		/**
+		 * Returns true if this user account or IP address is banned.
+		 *
+		 * @note The IP address is only used by the @a forum_user_handler
+		 *       subclass. Regular IP ban checks are done by @a server_base
+		 *       instead.
+		 */
+		virtual BAN_TYPE user_is_banned(const std::string& name, const std::string& addr="") = 0;
+
 		struct error : public game::error {
 			error(const std::string& message) : game::error(message) {}
 		};
@@ -126,14 +133,15 @@ class user_handler {
 		void init_mailer(const config &c);
 
 		/** Create a random string of digits for password encryption. */
-		std::string create_salt(int length =8);
+		std::string create_unsecure_nonce(int length = 8);
+		std::string create_secure_nonce();
 
 		/**
 		 * Create custom salt.
 		 *
 		 * If not needed let it return and empty string or whatever you feel like.
 		 */
-		virtual std::string create_pepper(const std::string& username) =0;
+		virtual std::string extract_salt(const std::string& username) =0;
 
 		/**
 		 * Does this user_handler want passwords passed encrypted using phpbb's algorithm?
@@ -158,5 +166,3 @@ class user_handler {
 		 */
 		virtual std::string get_mail(const std::string& user) =0;
 };
-
-#endif //USER_HANDLER_HPP_INCLUDED

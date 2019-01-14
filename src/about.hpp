@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,24 +12,56 @@
    See the COPYING file for more details.
 */
 
-#ifndef ABOUT_H_INCLUDED
-#define ABOUT_H_INCLUDED
+#pragma once
 
-#include "global.hpp"
-
-class display;
-class config;
+#include "tstring.hpp"
 
 #include <vector>
 #include <string>
 
+class config;
+
 namespace about
 {
+struct credits_group
+{
+	struct about_group
+	{
+		explicit about_group(const config& cfg);
 
-void show_about(display &disp, const std::string &campaign = std::string());
+		/** Contributor names. */
+		std::vector<std::string> names;
+
+		/** The section title. */
+		t_string title;
+
+		bool operator<(const about_group& o) const;
+	};
+
+	credits_group(const config& cfg, bool is_campaign_credits);
+
+	/** The group's sub-groups. Corresponds to each [about] tag .*/
+	std::vector<about_group> sections;
+
+	/** Optional group ID. Currently only used for identifying campaigns. */
+	std::string id;
+
+	/** Optional group tite. Currently only used for identifying campaigns. */
+	t_string header;
+};
+
+using credits_data = std::vector<credits_group>;
+
+/**
+ * General getter methods for the credits config and image lists by campaign id
+ */
+const credits_data& get_credits_data();
+
+std::vector<std::string> get_background_images(const std::string& campaign);
+
+/**
+ * Regenerates the credits config
+ */
 void set_about(const config& cfg);
-std::vector<std::string> get_text(const std::string &campaign = std::string(), bool split_multiline_headers = false);
 
 }
-
-#endif

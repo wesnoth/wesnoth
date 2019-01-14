@@ -13,7 +13,7 @@ info :
 	makeinfo $(DOC)
 
 pdf :
-	texi2dvi -q --pdf -c $(DOC) 
+	texi2dvi -q --pdf -c $(DOC)
 
 doc : info pdf
 

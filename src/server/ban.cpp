@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Pauli Nieminen <paniemin@cc.hut.fi>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -13,18 +13,17 @@
 */
 
 #include "config.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "filesystem.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "util.hpp"
 
-#include "ban.hpp"
+#include "server/ban.hpp"
 
-#include <boost/foreach.hpp>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace wesnothd {
 
@@ -86,7 +85,7 @@ static lg::log_domain log_server("server");
 	}
 
 	banned::banned(const std::string& ip,
-				   const time_t end_time,
+				   const std::time_t end_time,
 				   const std::string& reason,
 				   const std::string& who_banned,
 				   const std::string& group,
@@ -95,7 +94,7 @@ static lg::log_domain log_server("server");
 		mask_(0),
 		ip_text_(ip),
 		end_time_(end_time),
-		start_time_(time(0)),
+		start_time_(std::time(0)),
 		reason_(reason),
 		who_banned_(who_banned),
 		group_(group),
@@ -175,9 +174,9 @@ static lg::log_domain log_server("server");
 		}
 		nick_ = cfg["nick"].str();
 		if (cfg.has_attribute("end_time"))
-			end_time_ = lexical_cast_default<time_t>(cfg["end_time"], 0);
+			end_time_ = cfg["end_time"].to_time_t(0);
 		if (cfg.has_attribute("start_time"))
-			start_time_ = lexical_cast_default<time_t>(cfg["start_time"], 0);
+			start_time_ = cfg["start_time"].to_time_t(0);
 		reason_ = cfg["reason"].str();
 
 		// only overwrite defaults if exists
@@ -237,7 +236,7 @@ static lg::log_domain log_server("server");
 		{
 			return "permanent";
 		}
-		return lg::get_timespan(end_time_ - time(NULL));
+		return lg::get_timespan(end_time_ - std::time(nullptr));
 	}
 
 	bool banned::operator>(const banned& b) const
@@ -261,14 +260,15 @@ static lg::log_domain log_server("server");
 
 	void ban_manager::read()
 	{
-		if (filename_.empty() || !file_exists(filename_))
+		if (filename_.empty() || !filesystem::file_exists(filename_))
 			return;
 		LOG_SERVER << "Reading bans from " <<  filename_ << "\n";
 		config cfg;
-		scoped_istream ban_file = istream_file(filename_);
+		dirty_ = false;
+		filesystem::scoped_istream ban_file = filesystem::istream_file(filename_);
 		read_gz(cfg, *ban_file);
 
-		BOOST_FOREACH(const config &b, cfg.child_range("ban"))
+		for (const config &b : cfg.child_range("ban"))
 		{
 			try {
 				banned_ptr new_ban(new banned(b));
@@ -276,7 +276,7 @@ static lg::log_domain log_server("server");
 
 				if (new_ban->get_end_time() != 0)
 					time_queue_.push(new_ban);
-			} catch (banned::error& e) {
+			} catch (const banned::error& e) {
 				ERR_SERVER << e.message << " while reading bans" << std::endl;
 			}
 		}
@@ -284,12 +284,12 @@ static lg::log_domain log_server("server");
 		// load deleted too
 		if (const config &cfg_del = cfg.child("deleted"))
 		{
-			BOOST_FOREACH(const config &b, cfg_del.child_range("ban"))
+			for (const config &b : cfg_del.child_range("ban"))
 			{
 				try {
 					banned_ptr new_ban(new banned(b));
 					deleted_bans_.push_back(new_ban);
-				} catch (banned::error& e) {
+				} catch (const banned::error& e) {
 					ERR_SERVER << e.message << " while reading deleted bans" << std::endl;
 				}
 			}
@@ -319,20 +319,20 @@ static lg::log_domain log_server("server");
 			(*itor)->write(child);
 		}
 
-		scoped_ostream ban_file = ostream_file(filename_);
+		filesystem::scoped_ostream ban_file = filesystem::ostream_file(filename_);
 		config_writer writer(*ban_file, true);
 		writer.write(cfg);
 	}
 
-	bool ban_manager::parse_time(const std::string& duration, time_t* time) const
+	bool ban_manager::parse_time(const std::string& duration, std::time_t* time) const
 	{
 		if (!time) return false;
 
 		if (duration.substr(0,4) == "TIME") {
-			struct tm* loc;
-			loc = localtime(time);
+			std::tm* loc;
+			loc = std::localtime(time);
 
-			size_t number = 0;
+			std::size_t number = 0;
 			for (std::string::const_iterator i = duration.begin() + 4;
 					i != duration.end(); ++i) {
 				if (is_digit(*i))
@@ -372,7 +372,16 @@ static lg::log_domain log_server("server");
 			return true;
 		}
 		default_ban_times::const_iterator time_itor = ban_times_.find(duration);
-		if (utf8::lowercase(duration) == "permanent" || duration == "0") {
+
+		std::string dur_lower;
+		try {
+			dur_lower = utf8::lowercase(duration);
+		} catch (const utf8::invalid_utf8_exception & e ) {
+			ERR_SERVER << "While parsing ban command duration string, caught an invalid utf8 exception: " << e.what() << std::endl;
+			return false;
+		}
+
+		if (dur_lower == "permanent" || duration == "0") {
 			*time = 0;
 		} else if (ban_times_.find(duration) != ban_times_.end()) {
 			*time += time_itor->second;
@@ -480,7 +489,7 @@ static lg::log_domain log_server("server");
 	}
 
 	std::string ban_manager::ban(const std::string& ip,
-								 const time_t& end_time,
+								 const std::time_t& end_time,
 								 const std::string& reason,
 								 const std::string& who_banned,
 								 const std::string& group,
@@ -495,7 +504,7 @@ static lg::log_domain log_server("server");
 				ret << "Overwriting ban: " << (**ban) << "\n";
 				bans_.erase(ban);
 			}
-		} catch (banned::error& e) {
+		} catch (const banned::error& e) {
 			ERR_SERVER << e.message << " while creating dummy ban for finding existing ban" << std::endl;
 			return e.message;
 		}
@@ -505,20 +514,21 @@ static lg::log_domain log_server("server");
 			if (end_time != 0)
 				time_queue_.push(new_ban);
 			ret << *new_ban;
-		} catch (banned::error& e) {
+		} catch (const banned::error& e) {
 			ERR_SERVER << e.message << " while banning" << std::endl;
 			return e.message;
 		}
 		dirty_ = true;
+		write();
 		return ret.str();
 	}
 
-	void ban_manager::unban(std::ostringstream& os, const std::string& ip)
+	void ban_manager::unban(std::ostringstream& os, const std::string& ip, bool immediate_write)
 	{
 		ban_set::iterator ban;
 		try {
 			ban = bans_.find(banned::create_dummy(ip));
-		} catch (banned::error& e) {
+		} catch (const banned::error& e) {
 			ERR_SERVER << e.message << std::endl;
 			os << e.message;
 			return;
@@ -535,21 +545,24 @@ static lg::log_domain log_server("server");
 		if ((*ban)->get_group().empty()) deleted_bans_.push_back(*ban);
 		bans_.erase(ban);
 		dirty_ = true;
-
+		if (immediate_write) {
+			write();
+		}
 	}
 
 	void ban_manager::unban_group(std::ostringstream& os, const std::string& group)
 	{
 		ban_set temp;
 		std::insert_iterator<ban_set> temp_inserter(temp, temp.begin());
-		std::remove_copy_if(bans_.begin(), bans_.end(), temp_inserter, boost::bind(&banned::match_group,boost::bind(&banned_ptr::get,_1),group));
+		std::remove_copy_if(bans_.begin(), bans_.end(), temp_inserter, [&group](const banned_ptr& p) { return p->match_group(group); });
 
 		os << "Removed " << (bans_.size() - temp.size()) << " bans";
 		bans_.swap(temp);
 		dirty_ = true;
+		write();
 	}
 
-	void ban_manager::check_ban_times(time_t time_now)
+	void ban_manager::check_ban_times(std::time_t time_now)
 	{
 		while (!time_queue_.empty())
 		{
@@ -565,7 +578,7 @@ static lg::log_domain log_server("server");
 			// This ban is going to expire so delete it.
 			LOG_SERVER << "Remove a ban " << ban->get_ip() << ". time: " << time_now << " end_time " << ban->get_end_time() << "\n";
 			std::ostringstream os;
-			unban(os, ban->get_ip());
+			unban(os, ban->get_ip(), false);
 			time_queue_.pop();
 
 		}
@@ -584,7 +597,7 @@ static lg::log_domain log_server("server");
 		ip_mask pair;
 		try {
 			pair = parse_ip(mask);
-		} catch (banned::error& e) {
+		} catch (const banned::error& e) {
 			out << "parse error: " << e.message;
 			return;
 		}
@@ -601,8 +614,9 @@ static lg::log_domain log_server("server");
 
 
 
-	void ban_manager::list_bans(std::ostringstream& out, const std::string& mask) const
+	void ban_manager::list_bans(std::ostringstream& out, const std::string& mask)
 	{
+		expire_bans();
 		if (bans_.empty())
 		{
 			out << "No bans set.";
@@ -612,7 +626,7 @@ static lg::log_domain log_server("server");
 		ip_mask pair;
 		try {
 			pair = parse_ip(mask);
-		} catch (banned::error& e) {
+		} catch (const banned::error& e) {
 			out << "parse error: " << e.message;
 			return;
 		}
@@ -638,24 +652,25 @@ static lg::log_domain log_server("server");
 
 			out << *groups.begin();
 			std::ostream& (*fn)(std::ostream&,const std::string&) = &std::operator<<;
-			std::for_each( ++groups.begin(), groups.end(), boost::bind(fn,boost::bind(fn,boost::ref(out),std::string(", ")),_1));
+			std::for_each( ++groups.begin(), groups.end(), std::bind(fn,std::bind(fn,std::ref(out),std::string(", ")),_1));
 		}
 
 	}
 
 
-	std::string ban_manager::is_ip_banned(const std::string& ip) const
+	std::string ban_manager::is_ip_banned(const std::string& ip)
 	{
+		expire_bans();
 		ip_mask pair;
 		try {
 			pair = parse_ip(ip);
-		} catch (banned::error&) {
+		} catch (const banned::error&) {
 			return "";
 		}
-		ban_set::const_iterator ban = std::find_if(bans_.begin(), bans_.end(), boost::bind(&banned::match_ip, boost::bind(&banned_ptr::get, _1), pair));
+		ban_set::const_iterator ban = std::find_if(bans_.begin(), bans_.end(), [pair](const banned_ptr& p) { return p->match_ip(pair); });
 		if (ban == bans_.end()) return "";
 		const std::string& nick = (*ban)->get_nick();
-		return (*ban)->get_reason() + (nick.empty() ? "" : " (" + nick + ")") + " (" + (*ban)->get_human_time_span() + ")";
+		return (*ban)->get_reason() + (nick.empty() ? "" : " (" + nick + ")") + " (Remaining ban duration: " + (*ban)->get_human_time_span() + ")";
 	}
 
 	void ban_manager::init_ban_help()
@@ -688,10 +703,10 @@ static lg::log_domain log_server("server");
 	void ban_manager::load_config(const config& cfg)
 	{
 		ban_times_.clear();
-		BOOST_FOREACH(const config &bt, cfg.child_range("ban_time")) {
-			time_t duration = 0;
+		for (const config &bt : cfg.child_range("ban_time")) {
+			std::time_t duration = 0;
 			if (parse_time(bt["time"], &duration)) {
-				ban_times_.insert(default_ban_times::value_type(bt["name"], duration));
+				ban_times_.emplace(bt["name"], duration);
 			}
 		}
 		init_ban_help();

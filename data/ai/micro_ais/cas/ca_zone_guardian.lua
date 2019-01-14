@@ -1,9 +1,10 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
-local LS = wesnoth.require "lua/location_set.lua"
+local LS = wesnoth.require "location_set"
+local M = wesnoth.map
 
 local function get_guardian(cfg)
-    local filter = cfg.filter or { id = cfg.id }
+    local filter = wml.get_child(cfg, "filter") or { id = cfg.id }
     local guardian = AH.get_units_with_moves {
         side = wesnoth.current.side,
         { "and", filter }
@@ -13,24 +14,22 @@ end
 
 local ca_zone_guardian = {}
 
-function ca_zone_guardian:evaluation(ai, cfg)
+function ca_zone_guardian:evaluation(cfg)
     if get_guardian(cfg) then return cfg.ca_score end
     return 0
 end
 
-function ca_zone_guardian:execution(ai, cfg)
+function ca_zone_guardian:execution(cfg)
     local guardian = get_guardian(cfg)
     local reach = wesnoth.find_reach(guardian)
 
-    local zone_enemy = cfg.filter_location_enemy or cfg.filter_location
-    local enemies = wesnoth.get_units {
-            { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
-            { "filter_location", zone_enemy }
-        }
+    local zone = wml.get_child(cfg, "filter_location")
+    local zone_enemy = wml.get_child(cfg, "filter_location_enemy") or zone
+    local enemies = AH.get_attackable_enemies { { "filter_location", zone_enemy } }
     if enemies[1] then
-        local min_dist, target = 9e99
+        local min_dist, target = math.huge
         for _,enemy in ipairs(enemies) do
-            local dist = H.distance_between(guardian.x, guardian.y, enemy.x, enemy.y)
+            local dist = M.distance_between(guardian.x, guardian.y, enemy.x, enemy.y)
             if (dist < min_dist) then
                 target, min_dist = enemy, dist
             end
@@ -40,12 +39,14 @@ function ca_zone_guardian:execution(ai, cfg)
         if target then
             -- Find tiles adjacent to the target
             -- Save the one with the highest defense rating that guardian can reach
-            local best_defense, attack_loc = -9e99
+            local best_defense, attack_loc = - math.huge
             for xa,ya in H.adjacent_tiles(target.x, target.y) do
                 -- Only consider unoccupied hexes
-                local occ_hex = wesnoth.get_units { x = xa, y = ya, { "not", { id = guardian.id } } }[1]
-                if not occ_hex then
-                    local defense = 100 - wesnoth.unit_defense(guardian, wesnoth.get_terrain(xa, ya))
+                local unit_in_way = wesnoth.get_unit(xa, ya)
+                if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way))
+                    or (unit_in_way == guardian)
+                then
+                    local defense = 100 - guardian:defense(wesnoth.get_terrain(xa, ya))
                     local nh = AH.next_hop(guardian, xa, ya)
                     if nh then
                         if (nh[1] == xa) and (nh[2] == ya) and (defense > best_defense) then
@@ -57,22 +58,20 @@ function ca_zone_guardian:execution(ai, cfg)
 
             -- If a valid hex was found: move there and attack
             if attack_loc then
-                AH.movefull_stopunit(ai, guardian, attack_loc)
-                if (not guardian) or (not guardian.valid) then return end
-                if (not target) or (not target.valid) then return end
-
-                AH.checked_attack(ai, guardian, target)
+                AH.robust_move_and_attack(ai, guardian, attack_loc, target)
             else  -- Otherwise move toward that enemy
                 local reach = wesnoth.find_reach(guardian)
 
                 -- Go through all hexes the guardian can reach, find closest to target
                 -- Cannot use next_hop here since target hex is occupied by enemy
-                local min_dist, nh = 9e99
+                local min_dist, nh = math.huge
                 for _,hex in ipairs(reach) do
                     -- Only consider unoccupied hexes
-                    local occ_hex = wesnoth.get_units { x = hex[1], y = hex[2], { "not", { id = guardian.id } } }[1]
-                    if not occ_hex then
-                        local dist = H.distance_between(hex[1], hex[2], target.x, target.y)
+                    local unit_in_way = wesnoth.get_unit(hex[1], hex[2])
+                    if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way))
+                        or (unit_in_way == guardian)
+                    then
+                        local dist = M.distance_between(hex[1], hex[2], target.x, target.y)
                         if (dist < min_dist) then
                             min_dist, nh = dist, { hex[1], hex[2] }
                         end
@@ -85,18 +84,11 @@ function ca_zone_guardian:execution(ai, cfg)
 
     -- If no enemy around or within the zone, move toward station or zone
     else
-        local newpos
-        -- If cfg.station_x/y are given, move toward that location
-        if cfg.station_x and cfg.station_y then
-            newpos = { cfg.station_x, cfg.station_y }
+        -- If cfg.station_loc or cfg.station_x/y are given, move toward that location
+        local newpos = AH.get_named_loc_xy('station', cfg)
         -- Otherwise choose one randomly from those given in filter_location
-        else
-            local width, height = wesnoth.get_map_size()
-            local locs_map = LS.of_pairs(wesnoth.get_locations {
-                x = '1-' .. width,
-                y = '1-' .. height,
-                { "and", cfg.filter_location }
-            })
+        if (not newpos) then
+            local locs_map = LS.of_pairs(AH.get_locations_no_borders(zone))
 
             -- Check out which of those hexes the guardian can reach
             local reach_map = LS.of_pairs(wesnoth.find_reach(guardian))

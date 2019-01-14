@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2012 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2012 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,55 +12,54 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_PANE_HPP_INCLUDED
-#define GUI_WIDGETS_PANE_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/widget.hpp"
-#include "gui/auxiliary/window_builder.hpp"
-#include "gui/auxiliary/placer.hpp"
+#include "gui/core/window_builder.hpp"
+#include "gui/core/placer.hpp"
 
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
 
 #include <list>
-
-typedef std::map<std::string, t_string> string_map;
 
 namespace gui2
 {
 
+// ------------ WIDGET -----------{
+
 namespace implementation
 {
-struct tbuilder_pane;
+struct builder_pane;
 } // namespace implementation
 
-class tgrid;
+class grid;
 
-class tpane : public twidget
+class pane : public widget
 {
-	friend struct tpane_implementation;
+	friend struct pane_implementation;
 
 public:
-	struct titem
+	struct item
 	{
 
 		unsigned id;
 		std::map<std::string, std::string> tags;
 
-		tgrid* grid;
+		grid* item_grid;
 	};
 
-	typedef boost::function<bool(const titem&, const titem&)> tcompare_functor;
+	typedef std::function<bool(const item&, const item&)> compare_functor_t;
 
-	typedef boost::function<bool(const titem&)> tfilter_functor;
+	typedef std::function<bool(const item&)> filter_functor_t;
 
 	/** @deprecated Use the second overload. */
-	explicit tpane(const tbuilder_grid_ptr item_builder);
+	explicit pane(const builder_grid_ptr item_builder);
 
 private:
-	explicit tpane(const implementation::tbuilder_pane& builder);
+	explicit pane(const implementation::builder_pane& builder);
 
 public:
-	static tpane* build(const implementation::tbuilder_pane& builder);
+	static pane* build(const implementation::builder_pane& builder);
 
 	/**
 	 * Creates a new item.
@@ -68,39 +67,39 @@ public:
 	unsigned create_item(const std::map<std::string, string_map>& item_data,
 						 const std::map<std::string, std::string>& tags);
 
-	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
+	/** See @ref widget::place. */
+	virtual void place(const point& origin, const point& size) override;
 
-	/** See @ref twidget::layout_initialise. */
-	virtual void layout_initialise(const bool full_initialisation) OVERRIDE;
+	/** See @ref widget::layout_initialize. */
+	virtual void layout_initialize(const bool full_initialization) override;
 
-	/** See @ref twidget::impl_draw_children. */
+	/** See @ref widget::impl_draw_children. */
 	virtual void impl_draw_children(surface& frame_buffer,
 									int x_offset,
-									int y_offset) OVERRIDE;
+									int y_offset) override;
 
-	/** See @ref twidget::child_populate_dirty_list. */
+	/** See @ref widget::child_populate_dirty_list. */
 	virtual void
-	child_populate_dirty_list(twindow& caller,
-							  const std::vector<twidget*>& call_stack) OVERRIDE;
+	child_populate_dirty_list(window& caller,
+							  const std::vector<widget*>& call_stack) override;
 
-	/** See @ref twidget::request_reduce_width. */
-	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
+	/** See @ref widget::request_reduce_width. */
+	virtual void request_reduce_width(const unsigned maximum_width) override;
 
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const tpoint& coordinate,
-							 const bool must_be_active) OVERRIDE;
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& coordinate,
+							 const bool must_be_active) override;
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
-								   const bool must_be_active) const OVERRIDE;
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& coordinate,
+								   const bool must_be_active) const override;
 
 	/**
 	 * Sorts the contents of the pane.
 	 *
 	 * @param compare_functor     The functor to use to sort the items.
 	 */
-	void sort(const tcompare_functor& compare_functor);
+	void sort(const compare_functor_t& compare_functor);
 
 	/**
 	 * Filters the contents of the pane.
@@ -111,30 +110,18 @@ public:
 	 * @param filter_functor      The functor to determine whether an item
 	 *                            should be shown or hidden.
 	 */
-	void filter(const tfilter_functor& filter_functor);
+	void filter(const filter_functor_t& filter_functor);
 
 private:
-	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const OVERRIDE;
+	/** See @ref widget::calculate_best_size. */
+	virtual point calculate_best_size() const override;
 
 public:
-	/** See @ref twidget::disable_click_dismiss. */
-	bool disable_click_dismiss() const OVERRIDE;
+	/** See @ref widget::disable_click_dismiss. */
+	bool disable_click_dismiss() const override;
 
-	/** See @ref twidget::create_walker. */
-	virtual iterator::twalker_* create_walker() OVERRIDE;
-
-	/**
-	 * Returns a grid in the pane.
-	 *
-	 * @param id                  The id of the item whose grid to return. The
-	 *                            id is the value returned by
-	 *                            @ref create_item().
-	 *
-	 * @returns                   The wanted grid.
-	 * @retval NULL               The id isn't associated with an item.
-	 */
-	tgrid* grid(const unsigned id);
+	/** See @ref widget::create_walker. */
+	virtual iteration::walker_base* create_walker() override;
 
 	/**
 	 * Returns a grid in the pane.
@@ -144,22 +131,34 @@ public:
 	 *                            @ref create_item().
 	 *
 	 * @returns                   The wanted grid.
-	 * @retval NULL               The id isn't associated with an item.
+	 * @retval nullptr               The id isn't associated with an item.
 	 */
-	const tgrid* grid(const unsigned id) const;
+	grid* get_grid(const unsigned id);
+
+	/**
+	 * Returns a grid in the pane.
+	 *
+	 * @param id                  The id of the item whose grid to return. The
+	 *                            id is the value returned by
+	 *                            @ref create_item().
+	 *
+	 * @returns                   The wanted grid.
+	 * @retval nullptr               The id isn't associated with an item.
+	 */
+	const grid* get_grid(const unsigned id) const;
 
 private:
 	/** The items in the pane. */
-	std::list<titem> items_;
+	std::list<item> items_;
 
 	/** The builer for the items in the list. */
-	tbuilder_grid_ptr item_builder_;
+	builder_grid_ptr item_builder_;
 
 	/** The id generator for the items. */
 	unsigned item_id_generator_;
 
 	/** Helper to do the placement. */
-	std::auto_ptr<tplacer_> placer_;
+	std::unique_ptr<placer_base> placer_;
 
 	/** Places the children on the pane. */
 	void place_children();
@@ -189,11 +188,33 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_request_placement(tdispatcher& dispatcher,
-										  const event::tevent event,
+	void signal_handler_request_placement(dispatcher& dispatcher,
+										  const event::ui_event event,
 										  bool& handled);
 };
 
-} // namespace gui2
+// }---------- BUILDER -----------{
 
-#endif
+namespace implementation
+{
+
+struct builder_pane : public builder_widget
+{
+	explicit builder_pane(const config& cfg);
+
+	widget* build() const;
+
+	widget* build(const replacements_map& replacements) const;
+
+	placer_base::tgrow_direction grow_direction;
+
+	unsigned parallel_items;
+
+	builder_grid_ptr item_definition;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
+
+} // namespace gui2

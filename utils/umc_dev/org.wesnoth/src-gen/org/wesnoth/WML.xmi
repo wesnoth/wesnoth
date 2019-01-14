@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xtext:Grammar xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xtext="http://www.eclipse.org/2008/Xtext" name="org.wesnoth.WML" definesHiddenTokens="true" hiddenTokens="//@rules.32 //@rules.33 //@rules.35">
   <metamodelDeclarations xsi:type="xtext:GeneratedMetamodel" name="wml">
-    <ePackage href="http://www.wesnoth.org/WML#/"/>
+    <ePackage href="https://www.wesnoth.org/WML#/"/>
   </metamodelDeclarations>
   <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="ecore">
     <ePackage href="http://www.eclipse.org/emf/2002/Ecore#/"/>
   </metamodelDeclarations>
   <rules xsi:type="xtext:ParserRule" name="WMLRoot">
     <type metamodel="//@metamodelDeclarations.0">
-      <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLRoot"/>
+      <classifier xsi:type="ecore:EClass" href="https://www.wesnoth.org/WML#//WMLRoot"/>
     </type>
     <alternatives xsi:type="xtext:Assignment" cardinality="*" feature="Expressions" operator="+=">
       <terminal xsi:type="xtext:RuleCall" rule="//@rules.10"/>
@@ -16,7 +16,7 @@
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLGrammarElement">
     <type metamodel="//@metamodelDeclarations.0">
-      <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLGrammarElement"/>
+      <classifier xsi:type="ecore:EClass" href="https://www.wesnoth.org/WML#//WMLGrammarElement"/>
     </type>
     <alternatives xsi:type="xtext:Alternatives">
       <elements xsi:type="xtext:RuleCall" rule="//@rules.0"/>
@@ -27,7 +27,7 @@
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLTag">
     <type metamodel="//@metamodelDeclarations.0">
-      <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLTag"/>
+      <classifier xsi:type="ecore:EClass" href="https://www.wesnoth.org/WML#//WMLTag"/>
     </type>
     <alternatives xsi:type="xtext:Group">
       <elements xsi:type="xtext:Keyword" value="["/>
@@ -50,7 +50,7 @@
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLKey" definesHiddenTokens="true" hiddenTokens="//@rules.33">
     <type metamodel="//@metamodelDeclarations.0">
-      <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLKey"/>
+      <classifier xsi:type="ecore:EClass" href="https://www.wesnoth.org/WML#//WMLKey"/>
     </type>
     <alternatives xsi:type="xtext:Group">
       <elements xsi:type="xtext:Assignment" feature="name" operator="=">
@@ -78,7 +78,7 @@
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLKeyValue">
     <type metamodel="//@metamodelDeclarations.0">
-      <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLKeyValue"/>
+      <classifier xsi:type="ecore:EClass" href="https://www.wesnoth.org/WML#//WMLKeyValue"/>
     </type>
     <alternatives xsi:type="xtext:Alternatives">
       <elements xsi:type="xtext:RuleCall" rule="//@rules.16"/>
@@ -89,7 +89,7 @@
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLMacroCall">
     <type metamodel="//@metamodelDeclarations.0">
-      <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLMacroCall"/>
+      <classifier xsi:type="ecore:EClass" href="https://www.wesnoth.org/WML#//WMLMacroCall"/>
     </type>
     <alternatives xsi:type="xtext:Group">
       <elements xsi:type="xtext:Keyword" value="{"/>
@@ -110,7 +110,7 @@
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLMacroCallParameter">
     <type metamodel="//@metamodelDeclarations.0">
-      <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLMacroCallParameter"/>
+      <classifier xsi:type="ecore:EClass" href="https://www.wesnoth.org/WML#//WMLMacroCallParameter"/>
     </type>
     <alternatives xsi:type="xtext:Alternatives">
       <elements xsi:type="xtext:RuleCall" rule="//@rules.15"/>
@@ -119,7 +119,7 @@
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLArrayCall">
     <type metamodel="//@metamodelDeclarations.0">
-      <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLArrayCall"/>
+      <classifier xsi:type="ecore:EClass" href="https://www.wesnoth.org/WML#//WMLArrayCall"/>
     </type>
     <alternatives xsi:type="xtext:Group">
       <elements xsi:type="xtext:Keyword" value="["/>
@@ -131,7 +131,7 @@
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLMacroDefine">
     <type metamodel="//@metamodelDeclarations.0">
-      <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLMacroDefine"/>
+      <classifier xsi:type="ecore:EClass" href="https://www.wesnoth.org/WML#//WMLMacroDefine"/>
     </type>
     <alternatives xsi:type="xtext:Group">
       <elements xsi:type="xtext:Assignment" feature="name" operator="=">
@@ -147,7 +147,7 @@
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLPreprocIF">
     <type metamodel="//@metamodelDeclarations.0">
-      <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLPreprocIF"/>
+      <classifier xsi:type="ecore:EClass" href="https://www.wesnoth.org/WML#//WMLPreprocIF"/>
     </type>
     <alternatives xsi:type="xtext:Group">
       <elements xsi:type="xtext:Assignment" feature="name" operator="=">
@@ -178,7 +178,7 @@
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLRootExpression">
     <type metamodel="//@metamodelDeclarations.0">
-      <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLRootExpression"/>
+      <classifier xsi:type="ecore:EClass" href="https://www.wesnoth.org/WML#//WMLRootExpression"/>
     </type>
     <alternatives xsi:type="xtext:Alternatives">
       <elements xsi:type="xtext:RuleCall" rule="//@rules.2"/>
@@ -190,7 +190,7 @@
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLExpression">
     <type metamodel="//@metamodelDeclarations.0">
-      <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLExpression"/>
+      <classifier xsi:type="ecore:EClass" href="https://www.wesnoth.org/WML#//WMLExpression"/>
     </type>
     <alternatives xsi:type="xtext:Alternatives">
       <elements xsi:type="xtext:RuleCall" rule="//@rules.10"/>
@@ -199,7 +199,7 @@
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLValuedExpression">
     <type metamodel="//@metamodelDeclarations.0">
-      <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLValuedExpression"/>
+      <classifier xsi:type="ecore:EClass" href="https://www.wesnoth.org/WML#//WMLValuedExpression"/>
     </type>
     <alternatives xsi:type="xtext:Alternatives">
       <elements xsi:type="xtext:RuleCall" rule="//@rules.11"/>
@@ -208,7 +208,7 @@
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLTextdomain">
     <type metamodel="//@metamodelDeclarations.0">
-      <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLTextdomain"/>
+      <classifier xsi:type="ecore:EClass" href="https://www.wesnoth.org/WML#//WMLTextdomain"/>
     </type>
     <alternatives xsi:type="xtext:Assignment" feature="name" operator="=">
       <terminal xsi:type="xtext:RuleCall" rule="//@rules.29"/>
@@ -216,7 +216,7 @@
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLLuaCode">
     <type metamodel="//@metamodelDeclarations.0">
-      <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLLuaCode"/>
+      <classifier xsi:type="ecore:EClass" href="https://www.wesnoth.org/WML#//WMLLuaCode"/>
     </type>
     <alternatives xsi:type="xtext:Assignment" feature="value" operator="=">
       <terminal xsi:type="xtext:RuleCall" rule="//@rules.18"/>
@@ -224,7 +224,7 @@
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLMacroParameter">
     <type metamodel="//@metamodelDeclarations.0">
-      <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLMacroParameter"/>
+      <classifier xsi:type="ecore:EClass" href="https://www.wesnoth.org/WML#//WMLMacroParameter"/>
     </type>
     <alternatives xsi:type="xtext:Alternatives">
       <elements xsi:type="xtext:RuleCall" rule="//@rules.16"/>
@@ -233,7 +233,7 @@
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLValue">
     <type metamodel="//@metamodelDeclarations.0">
-      <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLValue"/>
+      <classifier xsi:type="ecore:EClass" href="https://www.wesnoth.org/WML#//WMLValue"/>
     </type>
     <alternatives xsi:type="xtext:Assignment" feature="value" operator="=">
       <terminal xsi:type="xtext:Alternatives">
@@ -253,7 +253,7 @@
   </rules>
   <rules xsi:type="xtext:ParserRule" name="MacroTokens">
     <type metamodel="//@metamodelDeclarations.0">
-      <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//MacroTokens"/>
+      <classifier xsi:type="ecore:EClass" href="https://www.wesnoth.org/WML#//MacroTokens"/>
     </type>
     <alternatives xsi:type="xtext:Assignment" feature="value" operator="=">
       <terminal xsi:type="xtext:Alternatives">

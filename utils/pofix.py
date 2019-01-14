@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python3
+# encoding: utf-8
 
 # pofix - perform string fixups on incoming .po files.
 #
@@ -9,6 +9,9 @@
 # Translations receives it.  However, translators may run it on their
 # own .po files to be sure, as a second application will harmlessly do
 # nothing.
+#
+# This script will not alter the cfg files but only the po files. So fixes
+# have to be manually applied to the source files of the strings!
 #
 # To use this script, give it one or more paths to .po files as
 # command-line arguments.  Each file will be tweaked as needed.
@@ -59,11 +62,32 @@
 # which pofix will be applied. All replacements will always be applied on *ALL*
 # files!
 
-stringfixes = {
+game_stringfixes = {
 
 "wesnoth" : (
 # conversion added in 1.11.10+dev
 ("Save and Abort game", "Save and abort game"),
+("Filters on addon descripton,", "Filters on addon description,"),
+("Messanger Waypoint 1", "Messenger Waypoint 1"),
+("Identifer", "Identifier"),
+
+# conversion added in 1.13.5+dev
+("You don’t have a leader to", "You do not have a leader to"),
+("You don’t have enough gold to recruit that unit", "You do not have enough gold to recruit that unit"),
+
+# conversion added in 1.13.6+dev
+("The server accepts versions '$version1' while you are using version '$version2'", "The server accepts versions '$required_version', but you are using version '$your_version'")
+),
+
+"wesnoth-ai": (
+# conversion added in 1.14.3+dev
+("http://wiki.wesnoth.org/Micro_AIs", "https://wiki.wesnoth.org/Micro_AIs"),
+),
+
+"wesnoth-aoi": (
+# conversion added in 1.14.4+dev
+("the bodies of both sides, ", "the bodies of both sides. "),
+("there was no hale orc in sight,", "There was no hale orc in sight,"),
 ),
 
 "wesnoth-editor" : (
@@ -71,18 +95,116 @@ stringfixes = {
 ("Choose file", "Choose File"),
 ),
 
+"wesnoth-help" : (
+# fix added in 1.13.10+dev
+("displayed in the upper right, (under the default theme)", "displayed in the upper right (under the default theme)"),
+("However the few implements", "However, the few implements"),
+("humans can learn to wield it and able to learn", "humans can learn to wield it and are able to learn"),
+("toggle bewteen human and AI.", "toggle between human and AI."),
+#fix added in 1.13.11+dev
+("This unit can lead our own units", "This unit can lead your own units"),
+("moreso", "more so"),
+# Typographical fixes added in 1.14.3+dev
+("Despite orcs' reliance on raw strength", "Despite orcs’ reliance on raw strength"),
+# FIXME: this won't work for some mysterious reason. The strings will have to be fuzzied.
+#('who grow to the strength of a \\"true orc\\"', "who grow to the strength of a “true orc”"),
+("making them a useful asset to aid in an army's charge.", "making them a useful asset to aid in an army’s charge."),
+("The Dunefolk's inclination", "The Dunefolk’s inclination"),
+("The Dunefolk's inquisitive", "The Dunefolk’s inquisitive"),
+("the heritage of the Dunefolk's", "the heritage of the Dunefolk’s"),
+),
+
+"wesnoth-l" : (
+# conversion added in 1.14.4+dev
+("Retreat!!", "Retreat!"),
+),
+
 "wesnoth-lib" : (
 # conversion added in 1.11.15+dev
 ("SP/MP Campaigns", "SP/MP campaigns"),
-),
 
-"1.10-announcement" : (
-("roleplaying", "role-playing"),
+# conversion added in 1.13.5+dev
+("If you don’t want to receive messages", "If you do not want to receive messages"),
 ),
 
 "wesnoth-httt" : (
 # fix added in 1.10.0+dev
 ("Second, who you most", "Second, whom you most"),
+# fix added in 1.11.16+dev
+("Who then is your leader? Who do we serve?", "Who then is your leader? Whom do we serve?"),
+# fix added in 1.13.10+dev
+("might we ask your assistance.", "might we ask your assistance?"),
+("Onward men!", "Onward, men!"),
+("No we have not.", "No, we have not."),
+("If it is necessary, princess, I will ask", "If it is necessary, Princess, I will ask"),
+("What secret Delfador?", "What secret, Delfador?"),
+("I High Provost", "I, High Provost"),
+("both a great combatant and leader", "both a great combatant and a leader"),
+("You must lead your men to the city and help defend it. Or recapture it if it falls before you arrive.", "You must lead your men to the city. Help defend it, or recapture it if it falls before you arrive!"),
+# fix added in 1.13.11+dev
+("with the greatest generals, and battle tactics", "with the greatest generals and battle tactics"),
+# fixes added in 1.14.3+dev
+("Whatever.... I still think we should make an effort", "Whatever... I still think we should make an effort"),
+("That is so very encouraging....","That is so very encouraging..."),
+),
+
+"wesnoth-low" : (
+# added for 1.13.4+dev
+("If you loose you still have a chance to defeat Kalenz in the next scenario.", "If you lose you still have a chance to defeat Kalenz in the next scenario."),
+),
+
+"wesnoth-nr" : (
+# fixes added in 1.12.0+dev
+("They are stronger then we thought.", "They are stronger than we thought."),
+("Hmmm, they are stronger then we thought", "Hmmm, they are stronger than we thought"),
+("torment other then self destruction.", "torment other than self destruction."),
+("Rod of Justice for more then a few", "Rod of Justice for more than a few"),
+("you have aided the Northern Elves more then you can imagine.", "you have aided the Northern Elves more than you can imagine."),
+("been more then a few months ago", "been more than a few months ago"),
+("they cannot be more then two days’ march from here.", "they cannot be more than two days’ march from here."),
+("It couldna’ been more then a day now.", "It couldna’ been more than a day now."),
+("It couldna’ ha’ been more then a day now.", "It couldna’ ha’ been more than a day now."),
+("They are no more then a few days", "They are no more than a few days"),
+("fearsome a foe then a dwarf.", "fearsome a foe than a dwarf."),
+("hold the orcs off far longer and with less loss then ye could ha’ done", "hold the orcs off far longer and with less loss than ye could ha’ done"),
+("Bah! I have better things to do then stamp out your insignificant life.", "Bah! I have better things to do than stamp out your insignificant life."),
+# fixes added in 1.14.3+dev
+("most important things about being a leader is....", "most important things about being a leader is..."),
+),
+
+"wesnoth-sota" : (
+# fixes added in 1.13.13+dev
+("Welcome to my laboratory, Ardonna of Tarynth", "Welcome to my laboratory, Ardonna of Tarrynth"),
+# fixes added in 1.14.3+dev
+("others.... An altar serves", "others... An altar serves"),
+),
+
+# fixes added in 1.13.13+dev
+"wesnoth-sota" : (
+("Welcome to my laboratory, Ardonna of Tarynth", "Welcome to my laboratory, Ardonna of Tarrynth"),
+),
+
+"wesnoth-sotbe" : (
+# fixes added in 1.12.0+dev
+("Easier said then done, Chief. There are many humans in that city.", "Easier said than done, Chief. There are many humans in that city."),
+("then your kind can. Take the orcish prisoners and hurry to Melmog.", "than your kind can. Take the orcish prisoners and hurry to Melmog."),
+("Better late then never. Now it’s time to kill!", "Better late than never. Now it’s time to kill!"),
+("becomes no less then a boot-licking spy for the humans.", "becomes no less than a boot-licking spy for the humans."),
+("consequently, those orcs thirsting for battle got more then", "consequently, those orcs thirsting for battle got more than"),
+),
+
+"wesnoth-tb" : (
+("try to force him off of his keep", "try to force him off his keep"),
+),
+
+"wesnoth-tsg": (
+# fixes added in 1.14.4+dev
+("Bury me deeply my friends...", "Bury me deeply, my friends..."),
+),
+
+"wesnoth-trow" : (
+# fixes added in 1.14.3+dev
+("a noble of the line of Kings should utter the following....", "a noble of the line of Kings should utter the following..."),
 ),
 
 "wesnoth-tutorial" : (
@@ -90,14 +212,79 @@ stringfixes = {
 ("$unit.type", "$unit.language_name"),
 ),
 
+"wesnoth-units" : (
+# conversion added in 1.12.5+dev
+("Ghazis are", "Ghazi are"),
+("Hakims are", "Hakim are"),
+("Shujas are", "Shuja are"),
+("Mudafis excel", "Mudafi excel"),
+("uses to this advantage", "uses this to their advantage"),
+("and are valuable enough that auxilliaries who specialize", "and are valuable enough that auxiliaries who specialize"),
+("Their remedies cannot only heal wounds", "Their remedies can not only heal wounds"),
+# fix added in 1.13.11+dev
+("the singleminded tenacity of an oak.", "the single-minded tenacity of an oak."),
+),
+
+"wesnoth-utbs" : (
+# fixes added in 1.12.0+dev
+("On the tallest peak was build", "On the tallest peak was built"),
+("He killed himself rather then surrender to us!", "He killed himself rather than surrender to us!"),
+("bigger distraction then they were expecting.", "bigger distraction than they were expecting."),
+
+# added in 1.13.14+dev
+("the one thing she not will be anticipating.", "the one thing she will not be anticipating."),
+),
+
+"wesnoth-multiplayer" : (
+# 1.13.4+dev
+("Changes the gold worth of the enemy spawns by a certain perentage", "Changes the gold worth of the enemy spawns by a certain percentage"),
+# fixes added in 1.14.3+dev
+("Rah Ihn Mar began the hunt.....", "Rah Ihn Mar began the hunt..."),
+("Perhaps he should not have shouted quite so loudly.... ", "Perhaps he should not have shouted quite so loudly..."),
+("but the two men never found one another. ", "but the two men never found one another."),
+),
+
 }
+
+website_stringfixes = {
+
+"1.14-announcement" : (
+("better ingrate them", "better integrate them"),
+
+# Lua version number
+("5.3.4", "5.3"),
+
+# Yes, these are really flimsy. In hindsight it was a bad idea to include
+# download sizes in the announcement. Hopefully we won't end up with
+# files that have the same size in a release/in the last two releases
+# any time soon.
+
+# Source
+("wesnoth-1.14.4/wesnoth-1.14.4.tar.bz2", "wesnoth-1.14.5/wesnoth-1.14.5.tar.bz2"),
+("450.6", "450.8"),
+# Windows
+("wesnoth-1.14.4/wesnoth-1.14.4-win32.exe", "wesnoth-1.14.5/wesnoth-1.14.5-win32.exe"),
+("408.2", "408.4"),
+# macOS
+("wesnoth-1.14.4/Wesnoth_1.14.4.dmg", "wesnoth-1.14.5/Wesnoth_1.14.5.dmg"),
+("466.9", "472.7"),
+),
+
+}
+
+# Whether -w was passed in the command line. Selects website_stringfixes
+# instead of game_stringfixes.
+website_mode = 0
 
 # Speak, if all argument files are newer than this timestamp
 # Try to use UTC here
 # date --utc "+%s  # %c"
-timecheck = 1283156523  # Mo 30 Aug 2010 08:22:03 UTC
+timecheck = 1462268096  # Tue May  3 09:34:56 2016
 
-import os, sys, time, stat, re
+import os, sys, time, stat, re, argparse, glob, io
+if sys.version_info < (3, 0):
+    reload(sys)
+    sys.setdefaultencoding('utf8')
 try:
     from multiprocessing import Pool, cpu_count
     def parallel_map(*args, **kw):
@@ -108,14 +295,19 @@ except ImportError:
     parallel_map = map
 
 def process_file(path):
-    before = open(path, "r").read()
+    before = io.open(path, "r", encoding="utf-8").read()
     decommented = re.sub("#.*", "", before)
+    decommented_msgids = re.sub(r'^msgstr .*?' + '\n\n', '', decommented, flags = re.MULTILINE | re.DOTALL)
     lines = before.split('\n')
+    if website_mode:
+        stringfixes = website_stringfixes
+    else:
+        stringfixes = game_stringfixes
     for (domain, fixes) in stringfixes.items():
         # In case of screwed-up pairs that are hard to find, uncomment the following:
         #for fix in fixes:
         #    if len(fix) != 2:
-        #        print fix
+        #        print(fix)
         for (old, new) in fixes:
             if old is new:
                 #complain loudly
@@ -126,7 +318,7 @@ def process_file(path):
             #lead to "real" probs not found, the real check would be "does replacing
             #old with new lead to duplicate msgids? (including old ones marked with #~)"
             #which is not easily done in the current design...
-            elif new in decommented and old in decommented and not new in old:
+            elif new in decommented_msgids and old in decommented_msgids and not new in old:
                 print ("pofix: %s already includes the new string\n\t\"%s\"\nbut also the old\n\t\"%s\"\nthis needs handfixing for now since it likely creates duplicate msgids." % (path, new, old))
             else:
                 for (i, line) in enumerate(lines):
@@ -138,7 +330,7 @@ def process_file(path):
         # Save a backup
         os.rename(path, path + "-bak")
         # Write out transformed version
-        ofp = open(path, "w")
+        ofp = io.open(path, "w", encoding="utf-8")
         ofp.write(after)
         ofp.close()
         return 1
@@ -146,12 +338,21 @@ def process_file(path):
         return 0
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-w', action='store_true', dest='website_mode',
+                        help='selects the website string fixes table instead of the game string fixes table')
+    parser.add_argument('paths', nargs='*')
+    args = parser.parse_args()
+    website_mode = args.website_mode
+    if website_mode:
+        print("pofix: Using website string fixes table")
     newer = 0
     modified = 0
     pocount = 0
     files = []
-    for path in sys.argv[1:]:
-        if not path.endswith(".po") and not path.endswith(".pot") and not path.endswith(".cfg"):
+    for arg in args.paths:
+      for path in glob.glob(arg):
+        if not path.endswith(".po") and not path.endswith(".pot") and not path.endswith(".cfg") and not path.endswith(".html"):
             continue
         pocount += 1
         # Notice how many files are newer than the time check

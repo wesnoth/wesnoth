@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2006 - 2014 by Karol Nowak <grzywacz@sul.uni.lodz.pl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2006 - 2018 by Karol Nowak <grzywacz@sul.uni.lodz.pl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -11,14 +11,13 @@
 
    See the COPYING file for more details.
 */
-#ifndef SOUNDSOURCE_HPP_INCLUDED
-#define SOUNDSOURCE_HPP_INCLUDED
+
+#pragma once
 
 #include <map>
 
 #include "generic_event.hpp"
-#include "map_location.hpp"
-#include "savegame_config.hpp"
+#include "map/location.hpp"
 
 class config;
 class display;
@@ -60,7 +59,7 @@ public:
 	positional_source(const sourcespec &spec);
 	~positional_source();
 
-	bool is_global();
+	bool is_global() const;
 
 	void update(unsigned int time, const display &disp);
 	void update_positions(unsigned int time, const display &disp);
@@ -74,9 +73,10 @@ public:
 	void write_config(config& cfg) const;
 };
 
-class manager : public events::observer, public savegame::savegame_config {
+class manager : public events::observer
+{
 
-	typedef std::map<std::string, positional_source *> positional_source_map;
+	typedef std::map<std::string, std::unique_ptr<positional_source>> positional_source_map;
 	typedef positional_source_map::iterator            positional_source_iterator;
 	typedef positional_source_map::const_iterator      positional_source_const_iterator;
 
@@ -93,6 +93,7 @@ public:
 	// add or replace a soundsource
 	void add(const sourcespec &source);
 	void remove(const std::string &id);
+	config get(const std::string &id);
 	void update();
 
 	// checks which sound sources are visible
@@ -103,8 +104,6 @@ public:
 	 * "sound_source", appended to existing content.
 	 */
 	void write_sourcespecs(config& cfg) const;
-
-	config to_config() const;
 };
 
 /**
@@ -203,5 +202,3 @@ public:
 };
 
 } // namespace soundsource
-
-#endif

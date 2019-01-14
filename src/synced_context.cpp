@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,29 +16,30 @@
 
 #include "actions/undo.hpp"
 #include "ai/manager.hpp"
-#include "global.hpp"
 #include "config.hpp"
-#include "config_assign.hpp"
 #include "game_classification.hpp"
 #include "replay.hpp"
-#include "random_new.hpp"
-#include "random_new_synced.hpp"
-#include "random_new_deterministic.hpp"
+#include "random.hpp"
+#include "random_synced.hpp"
+#include "random_deterministic.hpp"
 #include "resources.hpp"
 #include "synced_checkup.hpp"
 #include "game_data.hpp"
-#include "network.hpp"
+#include "game_board.hpp"
 #include "log.hpp"
 #include "lua_jailbreak_exception.hpp"
 #include "play_controller.hpp"
 #include "actions/undo.hpp"
 #include "game_end_exceptions.hpp"
+#include "seed_rng.hpp"
 #include "syncmp_handler.hpp"
-
-#include <boost/lexical_cast.hpp>
+#include "units/id.hpp"
+#include "whiteboard/manager.hpp"
 
 #include <cassert>
-#include <stdlib.h>
+#include <cstdlib>
+#include <sstream>
+#include <iomanip>
 static lg::log_domain log_replay("replay");
 #define DBG_REPLAY LOG_STREAM(debug, log_replay)
 #define LOG_REPLAY LOG_STREAM(info, log_replay)
@@ -47,30 +48,20 @@ static lg::log_domain log_replay("replay");
 
 
 synced_context::synced_state synced_context::state_ = synced_context::UNSYNCED;
+int synced_context::last_unit_id_ = 0;
+synced_context::event_list synced_context::undo_commands_;
 bool synced_context::is_simultaneously_ = false;
 
-bool synced_context::run_in_synced_context(const std::string& commandname, const config& data, bool use_undo, bool show,  bool store_in_replay, synced_command::error_handler_function error_handler)
+bool synced_context::run(const std::string& commandname, const config& data, bool use_undo, bool show, synced_command::error_handler_function error_handler)
 {
 	DBG_REPLAY << "run_in_synced_context:" << commandname << "\n";
 
-	if(!recorder.at_end() && store_in_replay)
-	{
-		//Most likeley we are in a replay now.
-		//We don't want to execute [do_command] & similar now
-		WRN_REPLAY << "invalid run_in_synced_context call ignored" << std::endl;
-		return false;
-	}
-
 	assert(use_undo || (!resources::undo_stack->can_redo() && !resources::undo_stack->can_undo()));
-	if(store_in_replay)
-	{
-		recorder.add_synced_command(commandname, data);
-	}
 	/*
-		use this after recorder.add_synced_command
+		use this after resources::recorder->add_synced_command
 		because set_scontext_synced sets the checkup to the last added command
 	*/
-	set_scontext_synced sco;
+	set_scontext_synced sync;
 	synced_command::map::iterator it = synced_command::registry().find(commandname);
 	if(it == synced_command::registry().end())
 	{
@@ -79,10 +70,8 @@ bool synced_context::run_in_synced_context(const std::string& commandname, const
 	else
 	{
 		bool success = it->second(data, use_undo, show, error_handler);
-		if(!success && store_in_replay)
+		if(!success)
 		{
-			//remove it from replay if we weren't sucessful.
-			recorder.undo();
 			return false;
 		}
 	}
@@ -90,27 +79,59 @@ bool synced_context::run_in_synced_context(const std::string& commandname, const
 	// this might also be a good point to call resources::controller->check_victory();
 	// because before for example if someone kills all units during a moveto event they don't loose.
 	resources::controller->check_victory();
+	sync.do_final_checkup();
 	DBG_REPLAY << "run_in_synced_context end\n";
 	return true;
 }
 
+bool synced_context::run_and_store(const std::string& commandname, const config& data, bool use_undo, bool show, synced_command::error_handler_function error_handler)
+{
+	if(resources::controller->is_replay())
+	{
+		ERR_REPLAY << "ignored attempt to invoke a synced command during replay\n";
+		return false;
+	}
+
+	assert(resources::recorder->at_end());
+	resources::recorder->add_synced_command(commandname, data);
+	bool success = run(commandname, data, use_undo, show, error_handler);
+	if(!success)
+	{
+		resources::recorder->undo();
+	}
+	return success;
+}
+
+bool synced_context::run_and_throw(const std::string& commandname, const config& data, bool use_undo, bool show, synced_command::error_handler_function error_handler)
+{
+	bool success = run_and_store(commandname, data, use_undo, show, error_handler);
+	if(success)
+	{
+		resources::controller->maybe_throw_return_to_play_side();
+	}
+	return success;
+}
 
 bool synced_context::run_in_synced_context_if_not_already(const std::string& commandname,const config& data, bool use_undo, bool show, synced_command::error_handler_function error_handler)
 {
 	switch(synced_context::get_synced_state())
 	{
 	case(synced_context::UNSYNCED):
-		return run_in_synced_context(commandname, data, use_undo, show, true, error_handler);
+	{
+		return run_and_throw(commandname, data, use_undo, show, error_handler);
+	}
 	case(synced_context::LOCAL_CHOICE):
 		ERR_REPLAY << "trying to execute action while being in a local_choice" << std::endl;
-		//we reject it because such actions usually change the gamestate badly which is not intented during a local_choice.
+		//we reject it because such actions usually change the gamestate badly which is not intended during a local_choice.
+		//Also we cannot invoke synced commands here, because multiple clients might run local choices
+		//simultaniously so it could result in invoking different synced commands simultaniously.
 		return false;
 	case(synced_context::SYNCED):
 	{
 		synced_command::map::iterator it = synced_command::registry().find(commandname);
 		if(it == synced_command::registry().end())
 		{
-			error_handler("commandname [" +commandname +"]not found", true);
+			error_handler("commandname [" +commandname +"] not found", true);
 			return false;
 		}
 		else
@@ -126,8 +147,8 @@ bool synced_context::run_in_synced_context_if_not_already(const std::string& com
 
 void synced_context::default_error_function(const std::string& message, bool /*heavy*/)
 {
-	ERR_REPLAY << "Very strange Error during synced execution " << message;
-	assert(false && "Very strange Error during synced execution");
+	ERR_REPLAY << "Unexpected Error during synced execution" << message << std::endl;
+	assert(!"Unexpected Error during synced execution, more info in stderr.");
 }
 
 void synced_context::just_log_error_function(const std::string& message, bool /*heavy*/)
@@ -145,16 +166,48 @@ synced_context::synced_state synced_context::get_synced_state()
 	return state_;
 }
 
+bool synced_context::is_synced()
+{
+	return get_synced_state() == SYNCED;
+}
+
+bool synced_context::is_unsynced()
+{
+	return get_synced_state() == UNSYNCED;
+}
+
 void synced_context::set_synced_state(synced_state newstate)
 {
 	state_ = newstate;
 }
 
-int synced_context::generate_random_seed()
+namespace
 {
-	random_seed_choice cho;
-	config retv_c = synced_context::ask_server("random_seed", cho);
-	return retv_c["new_seed"];
+	class random_server_choice : public synced_context::server_choice
+	{
+	public:
+		/// We are in a game with no mp server and need to do this choice locally
+		virtual config local_choice() const
+		{
+			return config {"new_seed", seed_rng::next_seed_str()};
+		}
+		/// the request which is sent to the mp server.
+		virtual config request() const
+		{
+			return config();
+		}
+		virtual const char* name() const
+		{
+			return "random_seed";
+		}
+	};
+}
+std::string synced_context::generate_random_seed()
+{
+	config retv_c = synced_context::ask_server_choice(random_server_choice());
+	config::attribute_value seed_val = retv_c["new_seed"];
+
+	return seed_val.str();
 }
 
 bool synced_context::is_simultaneously()
@@ -167,103 +220,80 @@ void  synced_context::reset_is_simultaneously()
 	is_simultaneously_ = false;
 }
 
+void  synced_context::set_is_simultaneously()
+{
+	resources::undo_stack->clear();
+	is_simultaneously_ = true;
+}
+
 bool synced_context::can_undo()
 {
 	//this method should only works in a synced context.
-	assert(get_synced_state() == SYNCED);
-	//if we called the rng or if we sended data of this action over the network already, undoing is impossible.
-	return (!is_simultaneously_) && (random_new::generator->get_random_calls() == 0);
+	assert(is_synced());
+	//if we called the rng or if we sent data of this action over the network already, undoing is impossible.
+	return (!is_simultaneously_) && (randomness::generator->get_random_calls() == 0);
 }
-namespace
+
+void synced_context::set_last_unit_id(int id)
 {
-	class lua_network_error : public network::error , public tlua_jailbreak_exception
-	{
-	public:
-		lua_network_error(network::error base)
-			: network::error(base), tlua_jailbreak_exception()
-		{}
-	private:
-		IMPLEMENT_LUA_JAILBREAK_EXCEPTION(lua_network_error)
-	};
+	last_unit_id_ = id;
+}
+
+int synced_context::get_unit_id_diff()
+{
+	//this method only works in a synced context.
+	assert(is_synced());
+	return resources::gameboard->unit_id_manager().get_save_id() - last_unit_id_;
 }
 
 void synced_context::pull_remote_user_input()
 {
-	//we sended data over the network.
-	is_simultaneously_ = true;
-	//code copied form persist_var, feels strange to call ai::.. functions for something where the ai isn't involved....
-	//note that ai::manager::raise_sync_network isn't called by the ai at all anymore (one more reason to put it somehwere else)
-	try{
-		if(resources::gamedata->phase() == game_data::PLAY || resources::gamedata->phase() == game_data::START)
-		{
-			//during the prestart/preload event the screen is locked and we shouldn't call user_interact.
-			//because that might result in crashs if someone clicks anywhere during screenlock.
-			try
-			{
-				ai::manager::raise_user_interact();
-			}
-			catch(end_turn_exception&)
-			{
-				//ignore, since it will be thwown throw again.
-			}
-		}
-		syncmp_registry::pull_remote_choice();
-	}
-	catch(network::error& err)
-	{
-		throw lua_network_error(err);
-	}
-
+	syncmp_registry::pull_remote_choice();
 }
 
 void synced_context::send_user_choice()
 {
-	is_simultaneously_ = true;
+	assert(is_simultaneously_);
 	syncmp_registry::send_user_choice();
 }
 
-boost::shared_ptr<random_new::rng> synced_context::get_rng_for_action()
+std::shared_ptr<randomness::rng> synced_context::get_rng_for_action()
 {
 	const std::string& mode = resources::classification->random_mode;
 	if(mode == "deterministic")
 	{
-		return boost::shared_ptr<random_new::rng>(new random_new::rng_deterministic(resources::gamedata->rng()));
+		return std::make_shared<randomness::rng_deterministic>(resources::gamedata->rng());
 	}
 	else
 	{
-		return boost::shared_ptr<random_new::rng>(new random_new::synced_rng(generate_random_seed));
+		return std::make_shared<randomness::synced_rng>(generate_random_seed);
 	}
 }
 
-config synced_context::ask_server(const std::string &name, const mp_sync::user_choice &uch)
+void synced_context::server_choice::send_request() const
 {
-	assert(get_synced_state() == synced_context::SYNCED);
+	resources::controller->send_to_wesnothd(config {
+		"request_choice", config {
+			"request_id", resources::controller->get_server_request_number(),
+			name(), request(),
+		},
+	});
+}
 
-	int current_side = resources::controller->current_side();
-	int side = current_side;
-	bool is_mp_game = network::nconnections() != 0;
-	const int max_side  = static_cast<int>(resources::teams->size());
+
+
+config synced_context::ask_server_choice(const server_choice& sch)
+{
+	if (!is_synced()) {
+		ERR_REPLAY << "Trying to ask the server for a '" << sch.name() << "' choice in a unsynced context, doing the choice locally. This can cause OOS.\n";
+		return sch.local_choice();
+	}
+	set_is_simultaneously();
+	resources::controller->increase_server_request_number();
+	const bool is_mp_game = resources::controller->is_networked_mp();
 	bool did_require = false;
 
-
-	if ((*resources::teams)[side-1].is_empty())
-	{
-		/*
-
-		*/
-		DBG_REPLAY << "MP synchronization: side 1 being null-controlled in get_user_choice.\n";
-		side = 1;
-		while ( side <= max_side  &&  (*resources::teams)[side-1].is_empty() )
-			side++;
-		assert(side <= max_side);
-	}
-
-
-
-	assert(1 <= side  && side  <= max_side);
-	assert(1 <= current_side  && current_side  <= max_side);
-
-	DBG_REPLAY << "ask_server for :" << name << "\n";
+	DBG_REPLAY << "ask_server for random_seed\n";
 	/*
 		as soon as random or similar is involved, undoing is impossible.
 	*/
@@ -271,21 +301,20 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 	/*
 		there might be speak or similar commands in the replay before the user input.
 	*/
-	while(true){
+	while(true) {
 
 		do_replay_handle();
-		// the current_side on the server is a lie because it can happen on one client we are already executing side 2
-		bool is_local_side = (*resources::teams)[side-1].is_local();
-		bool is_replay_end = get_replay_source().at_end();
+		bool is_replay_end = resources::recorder->at_end();
 
 		if (is_replay_end && !is_mp_game)
 		{
 			/* The decision is ours, and it will be inserted
 			into the replay. */
 			DBG_REPLAY << "MP synchronization: local server choice\n";
-			config cfg = uch.query_user(-1);
+			leave_synced_context sync;
+			config cfg = sch.local_choice();
 			//-1 for "server" todo: change that.
-			recorder.user_input(name, cfg, -1);
+			resources::recorder->user_input(sch.name(), cfg, -1);
 			return cfg;
 
 		}
@@ -295,31 +324,18 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 
 			//here we can get into the situation that the decision has already been made but not received yet.
 			synced_context::pull_remote_user_input();
-
+			//FIXME: we should call play_controller::play_silce or the application will freeze while waiting for a remote choice.
+			resources::controller->play_slice();
 			/*
 				we don't want to send multiple "require_random" to the server.
 			*/
-			if(is_local_side && !did_require)
+			if(!did_require)
 			{
-				config data;
-				data.add_child("require_random");
-				network::send_data(data,0);
+				sch.send_request();
 				did_require = true;
 			}
-			else if (!did_require)
-			{
-				if(resources::gamedata->phase() != game_data::PLAY && resources::gamedata->phase() != game_data::START)
-				{
-					//this is needed becasue sometimes a package gets stuck on the server
-					//and in this case sending any package can free that package
-					//especialy when this function is called from prestart events where the screen is locked, we don't want to make the user wait.
-					//I currently can only reproduce this bug on local wesnothd (windows 7x64, msvc 32 bit release build), not on the offical server
-					network::send_data(config_of("give_me_a_package", "now"));
-				}
-				did_require = true;
-			}
-			SDL_Delay(10);
 
+			SDL_Delay(10);
 			continue;
 
 		}
@@ -329,75 +345,148 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 			be extracted from the replay. */
 			DBG_REPLAY << "MP synchronization: replay server choice\n";
 			do_replay_handle();
-			const config *action = get_replay_source().get_next_action();
+			const config *action = resources::recorder->get_next_action();
 			if (!action)
 			{
-				replay::process_error("[" + name + "] expected but none found\n");
-				get_replay_source().revert_action();
-				return uch.query_user(-1);
+				replay::process_error("[" + std::string(sch.name()) + "] expected but none found\n");
+				resources::recorder->revert_action();
+				return sch.local_choice();
 			}
-			if (!action->has_child(name))
+			if (!action->has_child(sch.name()))
 			{
-				replay::process_error("[" + name + "] expected but none found, found instead:\n " + action->debug() + "\n");
+				replay::process_error("[" + std::string(sch.name()) + "] expected but none found, found instead:\n " + action->debug() + "\n");
 
-				get_replay_source().revert_action();
-				return uch.query_user(-1);
+				resources::recorder->revert_action();
+				return sch.local_choice();
 			}
 			if((*action)["from_side"].str() != "server" || (*action)["side_invalid"].to_bool(false) )
 			{
 				//we can proceed without getting OOS in this case, but allowing this would allow a "player chan choose their attack results in mp" cheat
 				replay::process_error("wrong from_side or side_invalid this could mean someone wants to cheat\n");
 			}
-			return action->child(name);
+			return action->child(sch.name());
 		}
 	}
 }
 
+void synced_context::add_undo_commands(const config& commands, const game_events::queued_event& ctx)
+{
+	undo_commands_.emplace_front(commands, ctx);
+}
+
+void synced_context::reset_undo_commands()
+{
+	undo_commands_.clear();
+}
+
+set_scontext_synced_base::set_scontext_synced_base()
+	: new_rng_(synced_context::get_rng_for_action())
+	, old_rng_(randomness::generator)
+{
+	LOG_REPLAY << "set_scontext_synced_base::set_scontext_synced_base\n";
+	assert(!resources::whiteboard->has_planned_unit_map());
+	assert(synced_context::get_synced_state() == synced_context::UNSYNCED);
+	synced_context::set_synced_state(synced_context::SYNCED);
+	synced_context::reset_is_simultaneously();
+	synced_context::set_last_unit_id(resources::gameboard->unit_id_manager().get_save_id());
+	synced_context::reset_undo_commands();
+	old_rng_ = randomness::generator;
+	randomness::generator = new_rng_.get();
+}
+set_scontext_synced_base::~set_scontext_synced_base()
+{
+	LOG_REPLAY << "set_scontext_synced_base:: destructor\n";
+	assert(synced_context::get_synced_state() == synced_context::SYNCED);
+	randomness::generator = old_rng_;
+	synced_context::set_synced_state(synced_context::UNSYNCED);
+}
+
 set_scontext_synced::set_scontext_synced()
-	: new_rng_(synced_context::get_rng_for_action()), new_checkup_(recorder.get_last_real_command().child_or_add("checkup")), disabler_()
+	: set_scontext_synced_base()
+	, new_checkup_(generate_checkup("checkup")), disabler_()
 {
 	init();
 }
 
 set_scontext_synced::set_scontext_synced(int number)
-	: new_rng_(synced_context::get_rng_for_action()), new_checkup_(recorder.get_last_real_command().child_or_add("checkup" + boost::lexical_cast<std::string>(number))), disabler_()
+	: set_scontext_synced_base()
+	, new_checkup_(generate_checkup("checkup" + std::to_string(number))), disabler_()
 {
 	init();
 }
 
+checkup* set_scontext_synced::generate_checkup(const std::string& tagname)
+{
+	if(resources::classification->oos_debug)
+	{
+		return new mp_debug_checkup();
+	}
+	else
+	{
+		return new synced_checkup(resources::recorder->get_last_real_command().child_or_add(tagname));
+	}
+}
+
 /*
-	so we dont have to write the same code 3 times.
+	so we don't have to write the same code 3 times.
 */
 void set_scontext_synced::init()
 {
-
 	LOG_REPLAY << "set_scontext_synced::set_scontext_synced\n";
-	assert(synced_context::get_synced_state() == synced_context::UNSYNCED);
-
-	synced_context::set_synced_state(synced_context::SYNCED);
-	synced_context::reset_is_simultaneously();
-
+	did_final_checkup_ = false;
 	old_checkup_ = checkup_instance;
-	checkup_instance = & new_checkup_;
-	old_rng_ = random_new::generator;
-	random_new::generator = new_rng_.get();
+	checkup_instance = &*new_checkup_;
 }
+
+void set_scontext_synced::do_final_checkup(bool dont_throw)
+{
+	assert(!did_final_checkup_);
+	std::stringstream msg;
+	config co;
+	config cn {
+		"random_calls", new_rng_->get_random_calls(),
+		"next_unit_id", resources::gameboard->unit_id_manager().get_save_id() + 1,
+	};
+	if(checkup_instance->local_checkup(cn, co))
+	{
+		return;
+	}
+	if(co["random_calls"].empty())
+	{
+		msg << "cannot find random_calls check in replay" << std::endl;
+	}
+	else if(co["random_calls"] != cn["random_calls"])
+	{
+		msg << "We called random " << new_rng_->get_random_calls() << " times, but the original game called random " << co["random_calls"].to_int() << " times." << std::endl;
+	}
+	//Ignore empty next_unit_id to prevent false positives with older saves.
+	if(!co["next_unit_id"].empty() && co["next_unit_id"] != cn["next_unit_id"])
+	{
+		msg << "Our next unit id is " << cn["next_unit_id"].to_int() << " but during the original the next unit id was " << co["next_unit_id"].to_int() << std::endl;
+	}
+	if(!msg.str().empty())
+	{
+		msg << co.debug() << std::endl;
+		if(dont_throw)
+		{
+			ERR_REPLAY << msg.str() << std::flush;
+		}
+		else
+		{
+			replay::process_error(msg.str());
+		}
+	}
+	did_final_checkup_ = true;
+}
+
 set_scontext_synced::~set_scontext_synced()
 {
 	LOG_REPLAY << "set_scontext_synced:: destructor\n";
-	assert(synced_context::get_synced_state() == synced_context::SYNCED);
-	assert(checkup_instance == &new_checkup_);
-	config co;
-	if(!checkup_instance->local_checkup(config_of("random_calls", new_rng_->get_random_calls()), co))
+	assert(checkup_instance == &*new_checkup_);
+	if(!did_final_checkup_)
 	{
-		//if we really get -999 we have a very serious OOS.
-		ERR_REPLAY << "We called random " << new_rng_->get_random_calls() << " times, but the original game called random " << co["random_calls"].to_int(-99) << " times." << std::endl;
-		ERR_REPLAY << co.debug() << std::endl;
+		//do_final_checkup(true);
 	}
-
-	random_new::generator = old_rng_;
-	synced_context::set_synced_state(synced_context::UNSYNCED);
-
 	checkup_instance = old_checkup_;
 }
 
@@ -407,84 +496,26 @@ int set_scontext_synced::get_random_calls()
 }
 
 
-set_scontext_local_choice::set_scontext_local_choice()
+leave_synced_context::leave_synced_context()
+	: old_rng_(randomness::generator)
 {
-
 	assert(synced_context::get_synced_state() == synced_context::SYNCED);
 	synced_context::set_synced_state(synced_context::LOCAL_CHOICE);
 
-
-	old_rng_ = random_new::generator;
 	//calling the synced rng form inside a local_choice would cause oos.
-	//TODO use a member variable instead if new/delete
-	random_new::generator = new random_new::rng();
+	//TODO: should we also reset the synced checkup?
+	randomness::generator = &randomness::rng::default_instance();
 }
-set_scontext_local_choice::~set_scontext_local_choice()
+
+leave_synced_context::~leave_synced_context()
 {
 	assert(synced_context::get_synced_state() == synced_context::LOCAL_CHOICE);
 	synced_context::set_synced_state(synced_context::SYNCED);
-	delete random_new::generator;
-	random_new::generator = old_rng_;
+	randomness::generator = old_rng_;
 }
 
-set_scontext_leave_for_draw::set_scontext_leave_for_draw()
-	: previous_state_(synced_context::get_synced_state())
-{
-	if(previous_state_ != synced_context::SYNCED)
-	{
-		old_rng_= NULL;
-		return;
-	}
-	synced_context::set_synced_state(synced_context::LOCAL_CHOICE);
-
-	assert(random_new::generator);
-	old_rng_ = random_new::generator;
-	//calling the synced rng form inside a local_choice would cause oos.
-	//TODO use a member variable instead if new/delete
-	random_new::generator = new random_new::rng();
-}
-set_scontext_leave_for_draw::~set_scontext_leave_for_draw()
-{
-	if(previous_state_ != synced_context::SYNCED)
-	{
-		return;
-	}
-	assert(old_rng_);
-	assert(random_new::generator);
-	assert(synced_context::get_synced_state() == synced_context::LOCAL_CHOICE);
-	synced_context::set_synced_state(synced_context::SYNCED);
-	delete random_new::generator;
-	random_new::generator = old_rng_;
-}
-
-
-
-random_seed_choice::random_seed_choice()
+set_scontext_unsynced::set_scontext_unsynced()
+	: leaver_(synced_context::is_synced() ? new leave_synced_context() : nullptr)
 {
 
-}
-
-random_seed_choice::~random_seed_choice()
-{
-
-}
-
-config random_seed_choice::query_user(int /*side*/) const
-{
-	//getting here means we are in a sp game
-
-
-	config retv;
-	retv["new_seed"] = rand();
-	return retv;
-}
-config random_seed_choice::random_choice(int /*side*/) const
-{
-	//it obviously doesn't make sense to call the uninitialized random generator to generatoe a seed ofr the same random generator;
-	//this shoud never happen
-	assert(false && "random_seed_choice::random_choice called");
-
-	config retv;
-	retv["new_seed"] = 0;
-	return retv;
 }

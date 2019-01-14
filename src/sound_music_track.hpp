@@ -1,7 +1,7 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Copyright (C) 2009 - 2014 by Ignacio R. Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Copyright (C) 2009 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -13,10 +13,10 @@
    See the COPYING file for more details.
 */
 
-#ifndef SOUND_MUSIC_TRACK_HPP_INCLUDED
-#define SOUND_MUSIC_TRACK_HPP_INCLUDED
+#pragma once
 
 #include <string>
+#include <memory>
 
 class config;
 
@@ -30,7 +30,7 @@ class music_track
 public:
 	music_track();
 	music_track(const config& node);
-	music_track(const std::string& v_name);
+	explicit music_track(const std::string& v_name);
 	void write(config& parent_node, bool append) const;
 
 	bool valid() const { return file_path_.empty() != true; }
@@ -47,6 +47,10 @@ public:
 	const std::string& title() const { return title_; }
 
 	void set_play_once(bool v) { once_ = v; }
+	void set_shuffle(bool v) { shuffle_ = v; }
+	void set_ms_before(int v) { ms_before_ = v; }
+	void set_ms_after(int v) { ms_after_ = v; }
+	void set_title(const std::string& v) { title_ = v; }
 
 private:
 	void resolve();
@@ -63,6 +67,9 @@ private:
 	bool shuffle_;
 };
 
+std::shared_ptr<music_track> get_track(unsigned int i);
+void set_track(unsigned int i, const std::shared_ptr<music_track>& to);
+
 } /* end namespace sound */
 
 inline bool operator==(const sound::music_track& a, const sound::music_track& b) {
@@ -71,5 +78,3 @@ inline bool operator==(const sound::music_track& a, const sound::music_track& b)
 inline bool operator!=(const sound::music_track& a, const sound::music_track& b) {
 	return a.file_path() != b.file_path();
 }
-
-#endif /* ! SOUND_MUSIC_TRACK_HPP_INCLUDED */

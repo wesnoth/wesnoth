@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Guorui Xi <kevin.xgr@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Guorui Xi <kevin.xgr@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,12 +17,11 @@
  * @file
  */
 
-#ifndef AI_SIMULATED_ACTIONS_HPP_INCLUDED
-#define AI_SIMULATED_ACTIONS_HPP_INCLUDED
+#pragma once
 
-#include "game_info.hpp"
+#include "ai/game_info.hpp"
 
-#include "lua/unit_advancements_aspect.hpp"
+#include "lua/aspect_advancements.hpp"
 
 class unit_type;
 
@@ -41,5 +40,3 @@ bool simulated_stopunit(const map_location& unit_location, bool remove_movement,
 bool simulated_synced_command();
 
 }
-
-#endif

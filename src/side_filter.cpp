@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2010 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2010 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,8 +14,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
-
 #include "config.hpp"
 #include "display_context.hpp"
 #include "filter_context.hpp"
@@ -25,32 +23,19 @@
 #include "variable.hpp"
 #include "team.hpp"
 #include "serialization/string_utils.hpp"
-#include "network.hpp"
-#include "unit.hpp"
-#include "unit_filter.hpp"
-#include "unit_map.hpp"
+#include "play_controller.hpp"
+#include "resources.hpp"
+#include "synced_context.hpp"
+#include "units/unit.hpp"
+#include "units/filter.hpp"
+#include "units/map.hpp"
 #include "variable.hpp"
-
-#include <boost/foreach.hpp>
+#include "formula/callable_objects.hpp"
+#include "formula/formula.hpp"
+#include "formula/function_gamestate.hpp"
 
 static lg::log_domain log_engine_sf("engine/side_filter");
 #define ERR_NG LOG_STREAM(err, log_engine_sf)
-
-#ifdef _MSC_VER
-// This is a workaround for a VC bug; this constructor is never called
-// and so we don't care about the warnings this quick fix generates
-#pragma warning(push)
-#pragma warning(disable:4413)
-side_filter::side_filter()
-	: cfg_(vconfig::unconstructed_vconfig())
-	, flat_()
-	, side_string_()
-	, fc_(NULL)
-{
-	assert(false);
-}
-#pragma warning(pop)
-#endif
 
 side_filter::~side_filter() {}
 
@@ -72,7 +57,7 @@ std::vector<int> side_filter::get_teams() const
 	assert(fc_);
 	//@todo: replace with better implementation
 	std::vector<int> result;
-	BOOST_FOREACH(const team &t, fc_->get_disp_context().teams()) {
+	for(const team &t : fc_->get_disp_context().teams()) {
 		if (match(t)) {
 			result.push_back(t.side());
 		}
@@ -82,10 +67,10 @@ std::vector<int> side_filter::get_teams() const
 
 static bool check_side_number(const team &t, const std::string &str)
 {
-		std::vector<std::pair<int,int> > ranges = utils::parse_ranges(str);
+		std::vector<std::pair<int,int>> ranges = utils::parse_ranges(str);
 		int side_number = t.side();
 
-		std::vector<std::pair<int,int> >::const_iterator range, range_end = ranges.end();
+		std::vector<std::pair<int,int>>::const_iterator range, range_end = ranges.end();
 		for (range = ranges.begin(); range != range_end; ++range) {
 			if(side_number >= range->first && side_number <= range->second) {
 				return true;
@@ -125,7 +110,7 @@ bool side_filter::match_internal(const team &t) const
 		else {
 			const std::vector<std::string>& these_team_names = utils::split(this_team_name);
 			bool search_futile = true;
-			BOOST_FOREACH(const std::string& this_single_team_name, these_team_names) {
+			for(const std::string& this_single_team_name : these_team_names) {
 				if(this_single_team_name == that_team_name) {
 					search_futile = false;
 					break;
@@ -138,10 +123,12 @@ bool side_filter::match_internal(const team &t) const
 	//Allow filtering on units
 	if(cfg_.has_child("has_unit")) {
 		const vconfig & ufilt_cfg = cfg_.child("has_unit");
-		if (!ufilter_)
-			ufilter_.reset(new unit_filter(ufilt_cfg, fc_, flat_));
+		if (!ufilter_) {
+			ufilter_.reset(new unit_filter(ufilt_cfg.make_safe()));
+			ufilter_->set_use_flat_tod(flat_);
+		}
 		bool found = false;
-		BOOST_FOREACH(const unit &u, fc_->get_disp_context().units()) {
+		for(const unit &u : fc_->get_disp_context().units()) {
 			if (u.side() != t.side()) {
 				continue;
 			}
@@ -151,8 +138,8 @@ bool side_filter::match_internal(const team &t) const
 			}
 		}
 		if(!found && ufilt_cfg["search_recall_list"].to_bool(false)) {
-			BOOST_FOREACH(const unit_const_ptr & u, t.recall_list()) {
-				scoped_recall_unit this_unit("this_unit", t.save_id(),t.recall_list().find_index(u->id()));
+			for(const unit_const_ptr & u : t.recall_list()) {
+				scoped_recall_unit this_unit("this_unit", t.save_id_or_number(), t.recall_list().find_index(u->id()));
 				if(ufilter_->matches(*u)) {
 					found = true;
 					break;
@@ -170,8 +157,8 @@ bool side_filter::match_internal(const team &t) const
 			enemy_filter_.reset(new side_filter(enemy_of, fc_));
 		const std::vector<int>& teams = enemy_filter_->get_teams();
 		if(teams.empty()) return false;
-		BOOST_FOREACH(const int side, teams) {
-			if(!(fc_->get_disp_context().teams())[side - 1].is_enemy(t.side()))
+		for(const int side : teams) {
+			if(!fc_->get_disp_context().get_team(side).is_enemy(t.side()))
 				return false;
 		}
 	}
@@ -182,8 +169,8 @@ bool side_filter::match_internal(const team &t) const
 			allied_filter_.reset(new side_filter(allied_with, fc_));
 		const std::vector<int>& teams = allied_filter_->get_teams();
 		if(teams.empty()) return false;
-		BOOST_FOREACH(const int side, teams) {
-			if((fc_->get_disp_context().teams())[side - 1].is_enemy(t.side()))
+		for(const int side : teams) {
+			if(fc_->get_disp_context().get_team(side).is_enemy(t.side()))
 				return false;
 		}
 	}
@@ -194,8 +181,8 @@ bool side_filter::match_internal(const team &t) const
 			has_enemy_filter_.reset(new side_filter(has_enemy, fc_));
 		const std::vector<int>& teams = has_enemy_filter_->get_teams();
 		bool found = false;
-		BOOST_FOREACH(const int side, teams) {
-			if((fc_->get_disp_context().teams())[side - 1].is_enemy(t.side()))
+		for(const int side : teams) {
+			if(fc_->get_disp_context().get_team(side).is_enemy(t.side()))
 			{
 				found = true;
 				break;
@@ -210,8 +197,8 @@ bool side_filter::match_internal(const team &t) const
 			has_ally_filter_.reset(new side_filter(has_ally, fc_));
 		const std::vector<int>& teams = has_ally_filter_->get_teams();
 		bool found = false;
-		BOOST_FOREACH(const int side, teams) {
-			if(!(fc_->get_disp_context().teams())[side - 1].is_enemy(t.side()))
+		for(const int side : teams) {
+			if(!fc_->get_disp_context().get_team(side).is_enemy(t.side()))
 			{
 				found = true;
 				break;
@@ -224,12 +211,35 @@ bool side_filter::match_internal(const team &t) const
 	const config::attribute_value cfg_controller = cfg_["controller"];
 	if (!cfg_controller.blank())
 	{
-		if (network::nconnections() > 0)
+		if (resources::controller->is_networked_mp() && synced_context::is_synced()) {
 			ERR_NG << "ignoring controller= in SSF due to danger of OOS errors" << std::endl;
-		else
-		{
-			if(cfg_controller.str() != team::CONTROLLER_to_string (t.controller()))
+		}
+		else {
+			bool found = false;
+			for(const std::string& controller : utils::split(cfg_controller))
+			{
+				if(t.controller().to_string() == controller) {
+					found = true;
+				}
+			}
+			if(!found) {
 				return false;
+			}
+		}
+	}
+
+	if (cfg_.has_attribute("formula")) {
+		try {
+			const wfl::team_callable callable(t);
+			const wfl::formula form(cfg_["formula"], new wfl::gamestate_function_symbol_table);
+			if(!form.evaluate(callable).as_bool()) {
+				return false;
+			}
+			return true;
+		} catch(const wfl::formula_error& e) {
+			lg::wml_error() << "Formula error in side filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+			// Formulae with syntax errors match nothing
+			return false;
 		}
 	}
 
@@ -239,7 +249,7 @@ bool side_filter::match_internal(const team &t) const
 bool side_filter::match(int side) const
 {
 	assert(fc_);
-	return this->match((fc_->get_disp_context().teams())[side-1]);
+	return this->match((fc_->get_disp_context().get_team(side)));
 }
 
 bool side_filter::match(const team& t) const

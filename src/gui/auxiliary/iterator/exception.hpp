@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2011 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2011 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,11 +14,10 @@
 
 /**
  * @file
- * Contains the exceptions throw by the @ref gui2::iterator::titerator classes.
+ * Contains the exceptions thrown by the @ref gui2::iteration::iterator classes.
  */
 
-#ifndef GUI_WIDGETS_AUXILIARY_ITERATOR_EXCEPTION_HPP_INCLUDED
-#define GUI_WIDGETS_AUXILIARY_ITERATOR_EXCEPTION_HPP_INCLUDED
+#pragma once
 
 #include "lua_jailbreak_exception.hpp"
 
@@ -28,7 +27,7 @@
 namespace gui2
 {
 
-namespace iterator
+namespace iteration
 {
 
 /**
@@ -36,17 +35,17 @@ namespace iterator
  *
  * Invalid means the initial state at_end() == true.
  */
-class tlogic_error : public std::logic_error, public tlua_jailbreak_exception
+class logic_error : public std::logic_error, public lua_jailbreak_exception
 {
 public:
-	explicit tlogic_error(const std::string& message)
+	explicit logic_error(const std::string& message)
 		: std::logic_error("GUI2 ITERATOR: " + message)
-		, tlua_jailbreak_exception()
+		, lua_jailbreak_exception()
 	{
 	}
 
 private:
-	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(tlogic_error)
+	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(logic_error)
 };
 
 /**
@@ -54,21 +53,19 @@ private:
  *
  * Invalid means the initial state at_end() == true.
  */
-class trange_error : public std::range_error, public tlua_jailbreak_exception
+class range_error : public std::range_error, public lua_jailbreak_exception
 {
 public:
-	explicit trange_error(const std::string& message)
+	explicit range_error(const std::string& message)
 		: std::range_error("GUI2 ITERATOR: " + message)
-		, tlua_jailbreak_exception()
+		, lua_jailbreak_exception()
 	{
 	}
 
 private:
-	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(trange_error)
+	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(range_error)
 };
 
-} // namespace iterator
+} // namespace iteration
 
 } // namespace gui2
-
-#endif

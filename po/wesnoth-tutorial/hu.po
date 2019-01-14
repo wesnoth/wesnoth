@@ -3,328 +3,372 @@
 # Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2007-2009, 2011, 2012, 2014.
 # Barthalos Márton <barthalosmarton@yahoo.com>, 2008, 2009, 2014.
 # Farkas János <mail.janos.farkas@gmail.com>, 2014.
+# Széll András <szell.andris@gmail.com>, 2018.
+# Krutki Tamás <krtamas@0x64.org>, 2018.
+# Pazurik L. Ádám <pazurik.laszlo.adam@gmail.com>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-tutorial\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 18:57+0100\n"
-"PO-Revision-Date: 2014-03-29 09:21+0100\n"
-"Last-Translator: Farkas János <mail.janos.farkas@gmail.com>\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2018-03-17 18:31 UTC\n"
+"PO-Revision-Date: 2018-07-15 00:16+0200\n"
+"Last-Translator: Széll András <szell.andris@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.9\n"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:39
-msgid ""
-"\n"
-"<big>Click a mouse button or press the spacebar to continue...</big>"
-msgstr ""
-"\n"
-"<big>Egérkattintás vagy szóköz billentyű a folytatáshoz...</big>"
+#. [lua]: wml_actions.select_character
+#: data/campaigns/tutorial/lua/character_selection.lua:26
+msgid "Select Character"
+msgstr "Válassz szereplőt"
 
-#. [tutorial]: id=tutorial
-#. Hello, translators! The tutorial is meant to be a bit funny at the start,
-#. welcoming new players. Please keep the friendly fun feeling!
-#. If you have any questions, ask in the forums or in the #wesnoth-dev channel on the Freenode IRC network.
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:49
-msgid "Wesnoth Tutorial Part I"
-msgstr "Wesnoth gyakorlópálya I. rész"
+#. [lua]: wml_actions.select_character
+#: data/campaigns/tutorial/lua/character_selection.lua:37
+msgid "Who do you want to play?"
+msgstr "Kivel akarsz játszani?"
 
-#. [command]
-#. [option]: speaker=narrator
 #. [side]: type=Fighter, id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:82
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:175
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:177
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:356
+#. [lua]: wml_actions.select_character
+#: data/campaigns/tutorial/lua/character_selection.lua:68
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:33
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:30
 msgid "Konrad"
 msgstr "Konrad"
 
-#. [event]
+#. [modify_side]
+#. [lua]: wml_actions.select_character
+#: data/campaigns/tutorial/lua/character_selection.lua:77
+#: data/campaigns/tutorial/lua/character_selection.lua:95
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:148
+msgid "Li’sar"
+msgstr "Li’sar"
+
+#. [tutorial]: id=tutorial
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:9
+msgid "Wesnoth Tutorial — Part I"
+msgstr "Wesnoth gyakorlópálya — I. rész"
+
+#. [side]: type=Fighter, id=student
+#. [side]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:29
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:26
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:74
+msgid "team_name^Student"
+msgstr "Tanuló"
+
 #. [unit]: id=Delfador, type=Elder Mage
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:140
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:147
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:75
 msgid "Delfador"
 msgstr "Delfador"
 
 #. [objectives]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:151
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:119
 msgid ""
 "You will learn the basics of:\n"
-"Movement\n"
-"Attacking\n"
-"Healing\n"
-"Recruiting"
+"• <small>Movement</small>\n"
+"• <small>Attacking</small>\n"
+"• <small>Healing</small>\n"
+"• <small>Recruiting</small>"
 msgstr ""
 "Meg fogod ismerni az alapokat:\n"
-"Mozgás\n"
-"Támadás\n"
-"Gyógyulás\n"
-"Toborzás"
+"• <small>Mozgás</small>\n"
+"• <small>Támadás</small>\n"
+"• <small>Gyógyulás</small>\n"
+"• <small>Toborzás</small>"
 
 #. [objective]: condition=win
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:157
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:125
 msgid "Destroy a fierce enemy"
 msgstr "Legyőzöd az ádáz ellenséget"
 
 #. [objective]: condition=lose
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:161
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:129
 msgid "Get yourself killed"
 msgstr "Elesel a harcban"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:173
-msgid "Who would you like to play?"
-msgstr "Kivel szeretnél játszani?"
-
-#. [command]
-#. [option]: speaker=narrator
-#. [unit]: type=Fighteress, id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:182
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:184
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:197
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:431
-msgid "Li’sar"
-msgstr "Li’sar"
-
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:213
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:219
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:144
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:157
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:165
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:161
 msgid "Welcome to Wesnoth!"
 msgstr "Üdvözlet a Wesnoth játékban!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:214
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:146
 msgid ""
-"For this tutorial, you are playing Konrad.\n"
-"You are standing in the keep, and your mentor Delfador is on the east side "
-"of the river."
+"This is a two-part tutorial intended for people who are new to the game. "
+"Part 1 will teach you the basics about movement, attacking, healing, and "
+"recruiting. Firstly, you’ll choose a hero (both heroes play the same)."
 msgstr ""
-"A gyakorlás alatt Te leszel Konrad.\n"
-"A várkastélyban állsz, Delfador, a mentorod pedig a folyó keleti oldalán."
+"Ez egy két részes gyakorlópálya a játékkal most ismerkedők számára. Az első "
+"részben megtanulod a mozgás, támadás, gyógyítás és toborzás alapjait. "
+"Először is válassz egy hőst! (Mindketten ugyanazt játsszák.)"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:220
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:159
 msgid ""
-"For this tutorial, you are playing Li’sar.\n"
-"You are standing in the keep, and your mentor Delfador is on the east side "
-"of the river."
+"For this tutorial, you are playing Konrad. You are standing on the keep, and "
+"your mentor Delfador is on the east side of the river. You can move the "
+"mouse over a unit to see a summary of its abilities and stats on the right "
+"of the screen."
 msgstr ""
-"A gyakorlás alatt Te leszel Li’sar.\n"
-"A várkastélyban állsz, Delfador, a mentorod pedig a folyó keleti oldalán."
+"A gyakorlás alatt Te leszel Konrad. A várkastélyban állsz, Delfador, a "
+"mentorod pedig a folyó keleti oldalán. Ha valamelyik egység fölé viszed az "
+"egeret, megnézheted képességeit a képernyő jobb oldalán."
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:167
+msgid ""
+"For this tutorial, you are playing Li’sar. You are standing on the keep, and "
+"your mentor Delfador is on the east side of the river. You can move the "
+"mouse over a unit to see a summary of its abilities and stats on the right "
+"of the screen."
+msgstr ""
+"A gyakorlás alatt Te leszel Li’sar. A várkastélyban állsz, Delfador, a "
+"mentorod pedig a folyó keleti oldalán. Ha valamelyik egység fölé viszed az "
+"egeret, megnézheted képességeit a képernyő jobb oldalán."
 
 #. [event]
-#. [event]: id=student moves 0}
-#. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:225
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:411
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:533
-msgid "Left click on Konrad"
-msgstr "Kattints a bal egérgombbal Konradra"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:173
+msgid "Click on Konrad"
+msgstr "Kattints Konradra"
 
 #. [event]
-#. [event]: id=student moves 0}
-#. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:226
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:412
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:534
-msgid "Left click on Li’sar"
-msgstr "Kattints a bal egérgombbal Li’sarra"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:175
+msgid "Click on Li’sar"
+msgstr "Kattints Li’sarra"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:244
-msgid ""
-"<big>You have selected Konrad.</big>\n"
-"The places he can move to are highlighted."
-msgstr ""
-"<big>Kijelölted Konradot.</big>\n"
-"A mezők, ahová Konraddal léphetsz, világosabbak."
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:209
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:217
+msgid "Movement"
+msgstr "Mozgás"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:251
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:211
+#, fuzzy
+#| msgid ""
+#| "When you hover over or select a unit, in this case Konrad, the places he "
+#| "can move to are highlighted. All units have a certain number of "
+#| "<i>movement points</i>, which dictate how many hexes that unit can move "
+#| "per turn. Normally, moving one hex on flat terrain uses one movement "
+#| "point. To move, simply click on Konrad and then your destination. (You "
+#| "can press <b>u</b> to undo a move if you move to the wrong place.)"
 msgid ""
-"<big>You have selected Li’sar.</big>\n"
-"The places she can move to are highlighted."
+"When you select a unit, in this case Konrad, the places he can move to are "
+"highlighted. All units have a certain number of <i>movement points</i>, "
+"which dictate how many hexes that unit can move per turn. Normally, moving "
+"one hex on flat terrain uses one movement point. To move, simply click on "
+"your destination. (You can press <b>u</b> to undo a move if you move to the "
+"wrong place.)"
 msgstr ""
-"<big>Kijelölted Li’sart.</big>\n"
-"A mezők, ahová Li’sarral léphetsz, világosabbak."
+"Ha kiválasztod az egyik egységet vagy az egeret fölé viszed (ebben az "
+"esetben Konradot), világosabban kiemeltek a mezők, amikre léphetsz. Minden "
+"egységnek bizonyos számú <i>lépéspontja</i> van, ez határozza meg, hány "
+"mezőt haladhat körönként. Sík terepen általában egy lépéspontba kerül egy "
+"lépés. Ha lépni szeretnél, egyszerűen kattints a célmezőre. (Ha rossz helyre "
+"kattintanál, visszavonni az <b>u</b> (undo) gombbal tudod.)"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:219
+#, fuzzy
+#| msgid ""
+#| "When you hover over or select a unit, in this case Li’sar, the places she "
+#| "can move to are highlighted. All units have a certain number of "
+#| "<i>movement points</i>, which dictate how many hexes that unit can move "
+#| "per turn. Normally, moving one hex on flat terrain uses one movement "
+#| "point. To move, simply click on Li’sar and then your destination. (You "
+#| "can press <b>u</b> to undo a move if you move to the wrong place.)"
+msgid ""
+"When you select a unit, in this case Li’sar, the places she can move to are "
+"highlighted. All units have a certain number of <i>movement points</i>, "
+"which dictate how many hexes that unit can move per turn. Normally, moving "
+"one hex on flat terrain uses one movement point. To move, simply click on "
+"your destination. (You can press <b>u</b> to undo a move if you move to the "
+"wrong place.)"
+msgstr ""
+"Ha kiválasztod az egyik egységet vagy az egeret fölé viszed (ebben az "
+"esetben Li’sart), világosabban kiemeltek a mezők, amikre léphetsz. Minden "
+"egységnek bizonyos számú <i>lépéspontja</i> van, ez határozza meg, hány "
+"mezőt haladhat körönként. Sík terepen általában egy lépéspontba kerül egy "
+"lépés. Ha lépni szeretnél, egyszerűen kattints a célmezőre. (Ha rossz helyre "
+"kattintanál, visszavonni az <b>u</b> (undo) gombbal tudod.)"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:257
-msgid "Here"
-msgstr "Ide"
-
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:263
-msgid ""
-"Move Konrad next to Delfador by clicking on the tile marked <b>Here</b>."
-msgstr ""
-"Lépj Konraddal közvetlenül Delfador mellé, ehhez kattints az <b>Ide</b> "
-"feliratú mezőre!"
-
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:267
-msgid ""
-"Move Li’sar next to Delfador by clicking on the tile marked <b>Here</b>."
-msgstr ""
-"Lépj Li’sarral közvetlenül Delfador mellé, ehhez kattints az <b>Ide</b> "
-"feliratú mezőre!"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:230
+#, fuzzy
+#| msgid "Move Konrad next to Delfador"
+msgid "Move Konrad next to Delfador."
+msgstr "Lépj Konraddal Delfador mellé"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:272
-msgid "Left click on tile labeled <b>Here</b>"
-msgstr "Kattints bal egérgombbal az <b>Ide</b> címkéjű mezőre"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:232
+#, fuzzy
+#| msgid "Move Li’sar next to Delfador"
+msgid "Move Li’sar next to Delfador."
+msgstr "Lépj Li’sarral Delfador mellé"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:297
-msgid "Oops!"
-msgstr "Hoppá!"
-
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:299
-msgid ""
-"You moved to the wrong place! After this message, you can press <b>u</b> to "
-"undo, then try again."
-msgstr ""
-"Rossz helyre léptél! Ezután az üzenet után megnyomhatod az <b>u</b> gombot a "
-"billentyűzeten, amivel visszavonhatod a lépést; utána próbáld újra."
-
-#. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:321
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:249
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "Jó reggelt, Delfador! Harcolhatok ma végre?"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:325
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:250
+msgid "female^Good morning, Delfador! Is it time to attack things?"
+msgstr "Jó reggelt, Delfador! Harcolhatok ma végre?"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:255
 msgid "Um, well..."
 msgstr "Hát, nem is tudom..."
 
-#. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:329
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:260
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr "Egy ork ellen kell küzdenem? Vagy egy trollal harcoljak?"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:333
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:261
+msgid "female^Have you found an orc for me to fight, huh? A troll?"
+msgstr "Egy ork ellen kell küzdenem? Vagy egy trollal harcoljak?"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:266
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "Nyugalom! Megidézek egy ellenfelet neked..."
 
-#. [event]: id=student moves 0}
-#. [unit_type]: id=Quintain, race=mechanical
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:361
-#: data/campaigns/tutorial/units/Quintain.cfg:4
-msgid "Quintain"
-msgstr "Homokzsák"
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:365
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:313
 msgid "... this quintain!"
 msgstr "... ezt a homokzsákot!"
 
-#. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:369
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:318
 msgid "A quintain? You want me to fight a dummy?"
 msgstr "Egy homokzsákot? Azt akarod, hogy egy bábuval harcoljak?"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:376
-msgid "You have 32 hitpoints and a sword, boy. I’m fairly sure you’ll win."
-msgstr ""
-"Neked 32 életerőpontod van és mellé egy kardod, fiam. Egészen biztos vagyok "
-"benne, hogy nyersz."
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:319
+msgid "female^A quintain? You want me to fight a dummy?"
+msgstr "Egy homokzsákot? Azt akarod, hogy egy bábuval harcoljak?"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:381
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:325
 msgid ""
-"female^Young lady, you have 32 hitpoints and a sword. I’m fairly sure you’ll "
-"win."
+"Young man, you have $student_hp hitpoints and a sword. I’m fairly sure "
+"you’ll win."
 msgstr ""
-"Ifjú hölgy, neked 32 életerőpontod van és mellé egy kardod. Egészen biztos "
-"vagyok benne, hogy nyersz."
+"Fiatalember, neked $student_hp életerőpontod van és mellé egy kardod. "
+"Egészen biztos vagyok benne, hogy nyersz."
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:330
+msgid ""
+"female^Young lady, you have $student_hp hitpoints and a sword. I’m fairly "
+"sure you’ll win."
+msgstr ""
+"Ifjú hölgy, neked $student_hp életerőpontod van és mellé egy kardod. Egészen "
+"biztos vagyok benne, hogy nyersz."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:389
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:395
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:338
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:345
 msgid "Attacking"
 msgstr "Támadás"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:391
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:340
+#, fuzzy
+#| msgid ""
+#| "To attack the quintain, first select the attacker (Konrad), then the "
+#| "target (the quintain). You will see an attack description. Click "
+#| "<b>Attack</b> when you’re ready."
 msgid ""
-"To attack the quintain, first select the attacker (Konrad) then the target "
+"To attack the quintain, first select the attacker (Konrad), then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
 "b>, Konrad will attack."
 msgstr ""
 "Ahhoz, hogy megtámadd a homokzsákot, először válaszd ki a támadót (Konrad) "
 "és utána a célpontot (homokzsák). Egy leírást fogsz látni a támadásról. "
-"Amikor a <b>Rendben</b> gombra kattintasz, Konrad támadni fog."
+"Kattints a <b>Támadás</b> gombra, ha készen állsz."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:396
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:347
+#, fuzzy
+#| msgid ""
+#| "To attack the quintain, first select the attacker (Li’sar), then the "
+#| "target (the quintain). You will see an attack description. Click "
+#| "<b>Attack</b> when you’re ready."
 msgid ""
-"To attack the quintain, first select the attacker (Li’sar) then the target "
+"To attack the quintain, first select the attacker (Li’sar), then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
 "b>, Li’sar will attack."
 msgstr ""
 "Ahhoz, hogy megtámadd a homokzsákot, először válaszd ki a támadót (Li’sar) "
 "és utána a célpontot (homokzsák). Egy leírást fogsz látni a támadásról. "
-"Amikor a <b>Rendben</b> gombra kattintasz, Li’sar támadni fog."
+"Kattints a <b>Támadás</b> gombra, ha készen állsz."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:407
-msgid "Click on the quintain to attack it"
-msgstr "Kattints a homokzsákra, hogy megtámadd"
-
-#. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:443
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:362
 msgid "Hey! This quintain fights back!"
 msgstr "Hé! Ez a homokzsák visszaüt!"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:447
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:367
 msgid "Hmm, perhaps we should have started with a doll."
 msgstr "Hmm, talán egy játékbabával kellett volna kezdenünk."
 
-#. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:451
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:372
 msgid "Should I retreat?"
 msgstr "Nem kellene visszavonulnom?"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:455
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:373
+msgid "female^Should I retreat?"
+msgstr "Nem kellene visszavonulnom?"
+
+#. [message]: speaker=Galdrad
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:378
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:756
 msgid "Good idea!"
 msgstr "Jó ötlet!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:460
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:464
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:384
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:391
 msgid "Crowns"
 msgstr "Koronák"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:461
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:386
 msgid ""
-"The tiny metal crown above Delfador means you will lose the game if he is "
-"killed. You will also lose the game if your leader (Konrad) is killed."
+"The tiny golden crown above your leader (Konrad) indicates he is a side "
+"leader. In most scenarios, you will lose if your leader is killed. Be sure "
+"to keep him safe!"
 msgstr ""
-"Az apró fém korona Delfador mellett azt jelenti, hogy ha ő elesik, a csatát "
-"is elveszted. Ugyancsak veszítesz, ha a vezéredet (Konradot) megölik."
+"Hősöd (Konrad) felett a kis aranykorona jelzi, hogy ő az egyik oldal vezére. "
+"A legtöbb pályán veszítesz, ha vezéred meghal. Mindig ügyelj a biztonságára!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:465
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:393
 msgid ""
-"The tiny metal crown above Delfador means you will lose the game if he is "
-"killed. You will also lose the game if your leader (Li’sar) is killed."
+"The tiny golden crown above your leader (Li’sar) indicates she is a side "
+"leader. In most scenarios, you will lose if your leader is killed. Be sure "
+"to keep her safe!"
 msgstr ""
-"Az apró fém korona Delfador mellett azt jelenti, hogy ha ő elesik, a csatát "
-"is elveszted. Ugyancsak veszítesz, ha a vezéredet (Li’sart) megölik."
+"Hősöd (Li’sar) felett a kis aranykorona jelzi, hogy ő az egyik oldal vezére. "
+"A legtöbb pályán veszítesz, ha vezéred meghal. Mindig ügyelj a biztonságára!"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:477
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:403
 msgid ""
 "Unfortunately, you’ve used up your turn attacking the quintain. The quintain "
 "now gets to attack."
@@ -332,370 +376,314 @@ msgstr ""
 "Sajnos elhasználtad a köröd a homokzsák megtámadására. Most a homokzsák köre "
 "következik."
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:482
-msgid ""
-"female^Unfortunately, you’ve used up your turn attacking the quintain. The "
-"quintain now gets to attack."
-msgstr ""
-"Sajnos elhasználtad a köröd a homokzsák megtámadására. Most a homokzsák köre "
-"következik."
-
-#. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:488
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:408
 msgid "The <i>dummy</i> gets a turn?"
 msgstr "Ennek a <i>madárijesztőnek</i> is van köre?"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:493
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:413
 msgid ""
-"Yes. It’s a magical quintain.\n"
-"Now, this quintain gets 5 chances to hit you for 3 damage each. If it hits "
-"every time, you’ll drop from $student_hp to $future_hp hit points. Brace "
-"yourself!"
+"Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
+"chances. If it hits every time, you’ll drop from $student_hp to "
+"$($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
-"Persze. Ez egy mágikus homokzsák.\n"
-"Most a homokzsáknak 5 lehetősége van arra, hogy megüssön, egy-egy ütés 3 "
-"pontot sebez. Ha minden esetben eltalál, akkor az életerőd $student_hp "
-"pontról $future_hp pontra fog esni. Szedd össze magad!"
+"Persze. Ez egy mágikus homokzsák! Most a homokzsáknak 5 lehetősége van arra, "
+"hogy megüssön, egy-egy ütés 3 pontot sebez. Ha minden esetben eltalál, akkor "
+"az életerőd $student_hp pontról $($student_hp-15) pontra fog esni. Szedd "
+"össze magad!"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:420
+msgid "Turns"
+msgstr "Körök"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:422
+msgid ""
+"Every turn, each side in a scenario gets a chance to make their move. Once "
+"you’ve completed everything you wish to do this turn, click on the <b>End "
+"Turn</b> button in the bottom right of the screen. The other teams, whether "
+"controlled by the AI or other human players, will then make their move. Some "
+"scenarios must be completed in a certain number of turns. You can see what "
+"turn it is, and any applicable turn limit, next to the flag icon at the top "
+"of the screen."
+msgstr ""
+"Minden körben minden oldal lehetőséget kap lépései végrehajtására. Amikor "
+"mindent elvégeztél ebben a körben, kattints a <b>Kör vége</b> gombra a kép "
+"jobb alsó sarkában. A többi csapat, akár ember, akár MI irányítja, ezt "
+"követően fog lépni. Néhány pályát adott számú körön belül be kell fejezni. A "
+"képernyő tetején a zászló jel mellett láthatod, melyik körben jársz, és hogy "
+"van-e körlimit."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:497
-msgid "Click on the <b>End Turn</b> button in the bottom right of the screen"
-msgstr "Kattints a <b>Kör vége</b> gombra a képernyő jobb alsó sarkában"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:425
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:474
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:562
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:381
+msgid "End your turn"
+msgstr "Fejezd be a köröd"
 
-#. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:518
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:442
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr "Aú! Gyógyulnom kell! Csak $student_hp életpontom maradt!"
 
-#. [event]
-#. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:520
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:510
-msgid "Village"
-msgstr "Falu"
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:443
+msgid "female^Ouch! I need to heal! Only $student_hp hitpoints left!"
+msgstr "Aú! Gyógyulnom kell! Csak $student_hp életpontom maradt!"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:525
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:448
 msgid ""
-"There is a village on the other side of the river. Visiting villages is a "
-"good idea, and ending your turn in one will heal you. To the village!"
+"There are two villages within your reach. Visiting villages is a good idea, "
+"and ending your turn on one will heal you. To a village!"
 msgstr ""
-"Van egy falu a folyó túlsó partján. Hasznos dolog a falvakba látogatni, mert "
-"ha a körödet ott fejezed be, akkor gyógyulsz. Irány a falu!"
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:530
-msgid ""
-"female^There is a village on the other side of the river. Visiting villages "
-"is a good idea, and ending your turn in one will heal you. To the village!"
-msgstr ""
-"Van egy falu a folyó túlsó partján. Hasznos dolog a falvakba látogatni, mert "
-"ha a körödet ott fejezed be, akkor gyógyulsz. Irány a falu!"
+"Két falu van elérhető közelségben. Hasznos dolog a falvakba látogatni, és ha "
+"a körödet ott fejezed be, akkor gyógyulsz. Irány az egyik falu!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:543
-msgid "Click on the village to move Konrad"
-msgstr "Kattints a falura, hogy Konraddal oda lépj"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:452
+msgid "Move Konrad to a nearby village"
+msgstr "Lépj Konraddal egy faluba és foglald el"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:544
-msgid "Click on the village to move Li’sar"
-msgstr "Kattints a falura, hogy Li’sarral oda lépj"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:454
+msgid "Move Li’sar to a nearby village"
+msgstr "Lépj Li’sarral egy faluba és foglald el"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:562
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:467
 msgid "Villages"
 msgstr "Falvak"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:564
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:469
 msgid ""
-"You have captured a village! It now flies your flag and has been added to "
-"your total village count. (The house icon at the top of the screen shows how "
-"many villages you currently control.) Villages provide the gold needed to "
-"recruit units. Each turn, you gain two gold plus one for every village you "
-"own."
+"You have captured a village! It now flies your colors and has been added to "
+"your total village count (the house icon at the top of the screen shows how "
+"many villages you currently control). Villages provide the gold needed to "
+"recruit units. Each turn, you gain 2 gold, plus 1 for every village you own."
 msgstr ""
 "Elfoglaltad a falut! Kitűzték rá a zászlódat, és hozzá is adódott a "
 "birtokodban lévő faluk számához (ház ikon a képernyő tetején). A falvak "
-"biztosítják a toborzáshoz szükséges aranyat. Alapesetben körönként két "
-"aranyat kapsz, ezenfelül minden birtokodban lévő falu után még egyet."
+"biztosítják a toborzáshoz szükséges aranyat. Alapesetben körönként 2 aranyat "
+"kapsz, ezenfelül minden birtokodban lévő falu után jár még 1."
 
-#. [else]
-#. [event]
-#. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:568
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:700
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:733
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:873
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:925
-msgid "Click on the <b>End Turn</b> button"
-msgstr "Kattints a <b>Kör vége</b> gombra"
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:604
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:491
 msgid ""
-"You’re about to be healed by $hp_difference hitpoints, but it’s time to "
-"summon some help against that quintain."
+"Since you started your turn on a village, you regained some health! Villages "
+"heal units 8 hitpoints per turn, or enough to top off their health, "
+"whichever is less. In your case, you regained $student_hp_heal_amount "
+"hitpoints."
 msgstr ""
-"Rövidesen gyógyulsz $hp_difference életerőponttal, de itt az ideje, hogy "
-"segítséget szerezz a homokzsák ellen."
+"Visszanyertél egy kis életerőt, mert faluban kezdted a köröd! A falvakban 8 "
+"életerőpontot nyersz körönként, vagy ha ennél kevesebb hiányzik, akkor "
+"annyit. Te most $student_hp_heal_amount életerőpontot gyógyultál."
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:609
-msgid ""
-"female^You’re about to be healed by $hp_difference hitpoints, but it’s time "
-"to summon some help against that quintain."
-msgstr ""
-"Rövidesen gyógyulsz $hp_difference életerőponttal, de itt az ideje, hogy "
-"segítséget szerezz a homokzsák ellen."
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:496
+msgid "Now, it’s time to summon some help against that quintain."
+msgstr "Itt az ideje, hogy segítséget szerezz a homokzsák ellen."
 
-#. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:615
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:501
 msgid "I’ll recruit some elves!"
 msgstr "Toborzok néhány tündét!"
 
-#. [event]
-#. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:617
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1034
-msgid "Keep"
-msgstr "Várkastély"
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:502
+msgid "female^I’ll recruit some elves!"
+msgstr "Toborzok néhány tündét!"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:622
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:507
 msgid ""
-"A splendid idea. You can recruit two units if you return to the keep. You "
+"A splendid idea! It’s probably best not to attempt attacking the quintain "
+"this turn. Instead, you should return to the keep and recruit two units; you "
 "have plenty of gold for that."
 msgstr ""
-"Pompás ötlet. Ha visszatérsz a várkastélyodba, toborozhatsz két egységet. "
-"Bőségesen elég aranyad van hozzá."
+"Pompás ötlet! Valószínűleg jobb, ha ebben a körben nem próbálod megtámadni a "
+"homokzsákot. Inkább térj vissza a várkastélyba és toborozz két egységet, "
+"bőségesen elég aranyad van hozzá."
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:627
-msgid ""
-"female^A splendid idea. You can recruit two units if you return to the keep. "
-"You have plenty of gold for that."
-msgstr ""
-"Pompás ötlet. Ha visszatérsz a várkastélyodba, toborozhatsz két egységet. "
-"Bőségesen elég aranyad van hozzá."
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:633
+#. [event]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:511
 msgid "Move Konrad to the keep"
 msgstr "Lépj Konraddal a várkastélyba"
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:634
+#. [event]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:513
 msgid "Move Li’sar to the keep"
 msgstr "Lépj Li’sarral a várkastélyba"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:651
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:531
 msgid "Recruiting"
 msgstr "Toborzás"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:653
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:533
 msgid ""
-"Whenever you’re on a <i>keep</i>, you can <i>recruit</i> into the castle "
-"tiles around it by right-clicking and selecting <b>Recruit</b>. This time "
-"you will only be given one type of unit to choose: the Elvish Fighter."
+"Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the castle "
+"tiles around it by right-clicking and selecting <b>Recruit</b>. Note that "
+"newly recruited units cannot act the turn you recruit them; you will be able "
+"to use them next turn. This scenario you have only one type of unit to "
+"choose from: the Elvish Fighter."
 msgstr ""
 "Amikor a <i>várkastélyban</i> vagy, a körülötte lévő vár mezőkre "
-"<i>toborozhatsz</i> is a jobb gombos menü <i>Toborzás</i> opcióját "
-"választva. Most csak egyfajta egységből lehet választani: Tünde harcos."
+"<i>toborozhatsz</i> a jobb gombos menü <b>Toborzás</b> opcióját választva. A "
+"frissen toborzott egységeket csak a toborzást követő körtől tudod használni. "
+"Most csak egyfajta egységből lehet választani: Tünde harcos."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:657
-msgid "Right click on a castle tile and select <b>Recruit</b>"
-msgstr "Jobb kattintás egy vár mezőn, majd válaszd a <i>Toborzás</i> opciót"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:536
+msgid "Recruit two Elvish Fighters"
+msgstr "Toborozz két tünde harcost"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:691
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:724
-msgid "New Recruits"
-msgstr "Újoncok"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:555
+msgid "Traits"
+msgstr "Jellemvonások"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:693
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:726
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:557
 msgid ""
-"New units cannot act in the turn they appear; you will gain control of them "
-"next turn.\n"
-"After this dialog, you can move the mouse over a unit to see a summary of "
-"its abilities on the right of the screen."
+"Be sure to examine the <i>traits</i> of your new recruits. They are listed "
+"under its race in the sidebar. Traits can subtly affect how you use your "
+"troops. For example, units with the <i>quick</i> trait can move a extra hex "
+"each turn, and units with the <i>intelligent</i> trait require 20% less "
+"experience to level up."
 msgstr ""
-"Ezek az újonnan toborzott egységek semmit sem csinálhatnak ebben a körben; "
-"már csak a következő körben irányíthatod őket.\n"
-"Jó, ha tudod: ezután a párbeszédablak után az egységekre viheted az "
-"egérmutatót, hogy egy leírást olvashass róluk a képernyő jobb oldalán."
+"Figyeld meg újoncaid <i>jellemvonásait</i>!  Ezek a faj alatt láthatóak az "
+"oldalsávban. A jellemvonások finoman befolyásolják egységeid rátermettségét. "
+"A <i>gyors</i> jellemvonással rendelkező egységek például egy mezővel többet "
+"léphetnek körönként, míg az <i>intelligens</i> egységek szintlépéséhez 20%-"
+"kal kevesebb tapasztalat is elegendő."
 
-#. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:705
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:738
-msgid "Right click on the other castle tile and recruit another unit"
-msgstr "Kattints jobb gombbal a másik vár mezőre, és toborozz még egy egységet"
-
-#. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:760
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:593
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgstr ""
 "Hé, a homokzsák az imént két életerőpontot gyógyult! Jobb lenne, ha azonnal "
 "megtámadnám!"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:764
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:594
+msgid ""
+"female^Hey, the quintain just healed 2 hitpoints! I’d better attack it at "
+"once!"
+msgstr ""
+"Hé, a homokzsák az imént két életerőpontot gyógyult! Jobb lenne, ha azonnal "
+"megtámadnám!"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:599
 msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr ""
 "Igen, ha egy egység semmit sem csinál egy körben, lassan gyógyulni kezd."
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:770
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:604
 msgid ""
-"Had the quintain survived your onslaught, it would have regained two "
-"hitpoints. If a unit doesn’t do anything for a turn, it will slowly heal."
-msgstr ""
-"Ha a homokzsák túlélte volna a támadásodat, két életerőpontot gyógyult "
-"volna. Ha egy egység semmit sem csinál egy körben, lassan gyógyulni kezd."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:784
-msgid ""
-"But before you send your fighters against the quintain, you should know they "
+"Before you send your fighters against the quintain, you should know they "
 "have two kinds of attack..."
 msgstr ""
-"Mielőtt azonban odaküldöd a harcosaidat, tudnod kell, hogy kétfajta "
-"támadásuk van..."
+"Mielőtt odaküldöd a harcosaidat, tudnod kell, hogy kétfajta támadásuk van..."
 
-#. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:788
-msgid "I’ll tell them to use the one that does the most damage!"
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:609
+msgid "I’ll tell them to use the one that does more damage!"
 msgstr "Megmondom majd nekik, hogy azt használják, amelyik többet sebez!"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:792
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:610
+msgid "female^I’ll tell them to use the one that does more damage!"
+msgstr "Megmondom majd nekik, hogy azt használják, amelyik többet sebez!"
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:615
 msgid ""
-"And which would that be? The sword (5–4) or the bow (3–3)? I suppose you’ll "
-"find out..."
+"And which would that be? The sword (5×4; or 5 damage on each hit, with 4 "
+"attacks) or the bow (3×3; or 3 damage on each hit, with 3 attacks)? I "
+"suppose you’ll find out..."
 msgstr ""
-"És vajon melyik lenne az? A kard (5-4) vagy az íj (3-3)? Szerintem ki fogod "
-"találni..."
+"És vajon melyik lenne az? A kard (5×4; 5 sebzés minden találat esetén, 4 "
+"támadással) vagy az íj (3×3, azaz 3 sebzés találatonként, 3 támadással)? "
+"Szerintem ki fogod találni..."
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:794
-msgid "Left click on an Elvish Fighter"
-msgstr "Kattints bal gombbal a tünde harcosra"
+#. [event]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:618
+msgid "Attack the quintain with your fighters"
+msgstr "Támadd meg a homokzsákot a harcosaiddal"
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:795
-msgid "End your turn and attack again."
-msgstr "Fejezd be a köröd, és támadj újra."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:813
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:629
 msgid ""
 "You wouldn’t do anything stupid like charging that quintain yourself again, "
-"now would you?\n"
-"Use the fighters you recruited first; they’ll be a lot of help."
+"now would you? Use the fighters you recruited first; they’ll be a lot of "
+"help."
 msgstr ""
 "Ugye eszed ágában sincs semmi olyan butaság, hogy megint magad támadd meg a "
 "homokzsákot?\n"
 "Vesd be az imént toborzott harcosokat; sokat segíthetnek."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:825
-msgid "Left click on the quintain to attack it."
-msgstr "Kattints bal gombbal a homokzsákra, hogy megtámadd. "
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:862
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:869
-msgid " The ranged attack would have been safer."
-msgstr " A távolsági támadás biztonságosabb lett volna."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:862
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:869
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:881
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:660
 msgid ""
-"Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a <i>melee</i> "
-"attack. The quintain defended with its melee attack (3–5)."
+"Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), which "
+"is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
+"or 3 damage on each hit, with 5 attacks). The ranged attack (the bow) would "
+"have been safer."
 msgstr ""
-"A tündéd a kardját használta (5-4; azaz 5 sebzés és 4 támadás), amely egy "
-"<i>közelharci</i> fegyver. A homokzsák védekezhetett az ő közelharci "
-"támadásával (3-5)."
+"A tündéd a kardját használta (5×4; azaz 5 sebzés találatonként és 4 "
+"támadás), amely egy <i>közelharci</i> fegyver. A homokzsák védekezhetett az "
+"ő közelharci támadásával (3×5, vagyis 3 sebzés találatonként, 5 támadással). "
+"A távolsági támadás (az íj) biztonságosabb lett volna."
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:869
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:921
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:672
 msgid ""
-"\n"
-"End your turn, then attack again."
+"Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage on "
+"each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
+"attack, so it could not defend itself."
 msgstr ""
-"\n"
-"Fejezd be a köröd, és támadj újra."
+"A tündéd az íját használta, amely <i>távolsági</i> támadás (3×3; azaz 3 "
+"sebzés találatonként és 3 támadás). A homokzsáknak nincs távolsági fegyvere, "
+"csak közelharci, tehát nem tudta magát védeni."
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:881
-msgid ""
-"\n"
-"You should tell the other elf to use the bow."
-msgstr ""
-"\n"
-"A másik tündének mondd, hogy használja az íját."
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:885
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:934
-msgid "Attack with the other elf"
-msgstr "Támadj a másik tündével"
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:914
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:921
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:932
-msgid ""
-"Your elf used a bow, which is a <i>ranged</i> attack (3–3; or 3 damage, 3 "
-"attacks). The quintain has no ranged attack, only a melee attack, so it "
-"could not defend itself."
-msgstr ""
-"A tündéd az íját használta, amely <i>távolsági</i> támadás (3-3; azaz 3 "
-"sebzés és 3 támadás). A homokzsáknak nincs távolsági fegyvere, csak "
-"közelharci, tehát nem tudta magát védeni."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:953
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:687
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "Támadj addig mindkét tündével, amíg a homokzsák még él!"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:967
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:702
 msgid "Maybe you should recruit another elf?"
 msgstr "Talán toboroznod kéne még egy tündét?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:971
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:712
 msgid "Unit Descriptions"
 msgstr "Egységek leírásai"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:973
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:714
 msgid ""
 "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
 "Jobb gombbal kattintva az egységre megtekintheted az <b>Egység leírását</b>"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:994
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:724
 msgid "Protect Your Troops"
 msgstr "Védd az egységeidet"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:996
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:726
 msgid ""
 "Remember to pull back wounded units into villages and recruit more if "
 "needed. Take special care of units with the highest <i>experience points "
@@ -707,12 +695,12 @@ msgstr ""
 "erősebbek lehessenek!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1013
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:736
 msgid "Support"
 msgstr "Fenntartás"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1015
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:738
 msgid ""
 "Each village you control will <i>support</i> one unit for free. After that, "
 "each unit costs you one gold per turn."
@@ -720,85 +708,103 @@ msgstr ""
 "Minden falu, amelyet irányítasz, egy egységedet ingyen <i>fenntartja</i>. "
 "Ezen felül a többi egység fenntartása körönként egy aranyba fog kerülni."
 
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:748
+msgid "You had really better finish off that quintain."
+msgstr "Jobb lenne, ha végeznél azzal a homokzsákkal!"
+
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1030
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:758
 msgid "Advancement"
 msgstr "Szintlépés"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1032
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:760
 msgid ""
 "When a unit gains enough experience points (the <i>experience bar</i>, if "
-"present, is on the <b>right</b> of the <i>hitpoints bar</i>), it will go up "
-"a level. Elvish Fighters have two advancement options, and you will be able "
-"to choose which one you want. However, second level units cost twice as much "
-"to support as first level units."
+"present, is on the <b>right</b> of the <i>hitpoints bar</i>), it will gain a "
+"level. Elvish Fighters have two advancement options, and you will be able to "
+"choose which one you want. However, second level units cost twice as much to "
+"support as first level units."
 msgstr ""
-"Ha egy egység elég tapasztalati pontot gyűjtött (a <i>TP-t mutató "
-"állapotjelző</i> a jobbra lévő kisebbik), akkor szintet fog lépni. A tünde "
-"harcosoknak két továbbfejlődési lehetőségük is van, ezek közül lehetőséged "
-"lesz választani. Megjegyzendő, hogy egy kettes szintű egység fenntartása "
-"kétszer annyi aranyba kerül, mint egy egyes szintűé."
+"Ha egy egység elég tapasztalati pontot gyűjtött, akkor szintet fog lépni. (A "
+"<i>TP-t jelző csík</i>, ha látható, az <i>életerő jelző</i> <b>jobb oldalán</"
+"b> van.) A tünde harcosoknak két továbbfejlődési lehetőségük is van, ezek "
+"közül lehetőséged lesz választani. Megjegyzendő, hogy egy második szintű "
+"egység fenntartása kétszer annyi aranyba kerül, mint egy első szintűé."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1047
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:770
 msgid "Defenses"
 msgstr "Védekezés"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1050
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:773
 msgid ""
 "Whenever one of your units is selected, you’ll see varying percentages as "
 "you move the mouse over the map. The higher the percentage, the more "
 "<i>defense</i> that unit has in that kind of terrain. For example, most "
 "units have good defenses in castles and villages but poor defenses in "
-"rivers. However, these quintains use a <i>magical</i> attack, which always "
-"has a 70% chance of hitting no matter what terrain its target occupies."
+"rivers. Some units, like these quintains, have a <i>magical</i> attack, "
+"which always has a 70% chance of hitting no matter what terrain their "
+"targets occupy."
 msgstr ""
 "Amint kiválasztasz egy egységet, különböző százalékokat láthatsz különböző "
 "helyeken: minél magasabb, annál jobban tud <i>védekezni</i> az egység az "
 "adott terepen. Például a védekezés jobb a várakban és falvakban, de rosszabb "
-"a folyókban. A bábuk támadása <i>mágikus</i>, ezért nekik 70%-os esélyük van "
-"téged eltalálni, bármilyen terepen is állsz."
+"a folyókban. Néhány egységnek, mint ezeknek a bábuknak a támadása "
+"<i>mágikus</i>, ezért nekik 70%-os esélyük van téged eltalálni, bármilyen "
+"terepen is állsz."
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:785
+msgid "Agh! This training is too much for me..."
+msgstr "Ááá! Ez a gyakorlás túl sok nekem..."
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:786
+msgid "female^Agh! This training is too much for me..."
+msgstr "Ááá! Ez a gyakorlás túl sok nekem..."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1075
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:816
 msgid "The quintain is destroyed, and I have gained more experience!"
 msgstr "A homokzsák megsemmisült, és tapasztalati pontokat is szereztem!"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1081
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:821
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
-"Gain enough experience and you’ll become more powerful.\n"
+"Gain enough experience and you’ll become more powerful."
+msgstr ""
+"Igen, a csatákban tapasztalati pontokat szerezhetsz, főleg ha megölsz egy "
+"ellenséget: gyűjts elég TP-t és még erősebb leszel."
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:827
+msgid ""
 "Now, Konrad, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
 msgstr ""
-"Igen, a csatákban tapasztalati pontokat szerezhetsz, főleg ha megölsz egy "
-"ellenséget: gyűjts elég TP-t és még erősebb leszel.\n"
 "Most pedig, Konrad, hagyok itt neked még néhány bábut, amikkel "
 "gyakorolhatsz! Azután viszont komoly dolgunk lesz..."
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1085
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:832
 msgid ""
-"Yes, you gain experience through battle, especially by killing an opponent. "
-"Gain enough experience and you’ll become more powerful.\n"
 "Now, Li’sar, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
 msgstr ""
-"Igen, a csatákban tapasztalati pontokat szerezhetsz, főleg ha megölsz egy "
-"ellenséget: gyűjts elég TP-t és még erősebb leszel.\n"
 "Most pedig, Li’sar, hagyok itt neked még néhány bábut, amikkel "
 "gyakorolhatsz! Azután viszont komoly dolgunk lesz..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1124
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:911
 msgid "Note"
 msgstr "Megjegyzés"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1126
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:913
 msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
@@ -806,237 +812,193 @@ msgstr ""
 "Ezek a bábuk csak akkor támadnak, ha legfeljebb egy mezőnyi távolságra vagy "
 "tőlük. Megfelelő körültekintéssel egyesével bánhatsz el velük."
 
-# A wesnoth fájlban "Küldetés vége" szerepel, egységes használat miatt ezt emelem át
-#. [set_menu_item]: id=skip_item
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1134
-msgid "End Scenario"
-msgstr "Küldetés vége"
-
-# Előreugró max előugró lehet, de itt a jobb gombbal aktiválható menüre gondolnak.
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1147
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:922
 msgid ""
-"Do you want to keep practicing? You can end this scenario at any time by "
-"using the <b>End Scenario</b> item in the context menu."
+"Well, I think I know the basics. Onwards! Maybe I can fight in a real battle "
+"next?"
 msgstr ""
-"Szeretnél még gyakorolni? A jobb gombos menüben a <b>Küldetés vége</b> "
-"elemre kattintva bármikor befejezheted a pályát."
+"Nos, szerintem megértettem az alapokat. Előre! Következhet végre egy valódi "
+"csata?"
 
-#. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1149
-msgid "Yes, I’m still figuring it out."
-msgstr "Igen, még gyakorlok egy kicsit."
-
-#. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1152
-msgid "No, I think I’ve got it."
-msgstr "Nem, úgy érzem, már értek mindent."
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:923
+msgid ""
+"female^Well, I think I know the basics. Onwards! Maybe I can fight in a real "
+"battle next?"
+msgstr ""
+"Nos, szerintem megértettem az alapokat. Előre! Következhet végre egy valódi "
+"csata?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1193
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:939
 msgid "Victory"
 msgstr "Győzelem"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1194
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:941
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "
-"scenario is over, but you will still be able to examine the final positions "
-"and state of your troops and any surviving enemies. This is called <i>linger "
-"mode</i>. When you’re finished, click the <b>End Scenario</b> button to go "
-"on the next scenario in the campaign."
+"scenario is over; this is called <i>linger mode</i>. You will still be able "
+"to examine the final positions and state of your troops and any surviving "
+"enemies. When you’re finished, click the <b>End Scenario</b> button to go on "
+"to the next scenario in the campaign."
 msgstr ""
 "Miután győzelmet arattál, a térkép el fog szürkülni jelezvén, hogy a pálya "
-"véget ért. Ezután még tanulmányozhatod a végső állást és csapataid, vagy a "
-"még megmaradt ellenfelek állapotát (ezt hívják <i>tétovázó módnak</i>), "
+"véget ért; ezt hívják <i>nézelődő módnak</i>. Ezután még tanulmányozhatod a "
+"végső állást és csapataid, vagy a még megmaradt ellenfelek állapotát, "
 "mielőtt a <b>Pálya vége</b> gombra kattintanál, és a következő pályára "
 "lépnél."
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:31
-msgid "Undo"
-msgstr "Visszavonás"
-
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:32
-msgid ""
-"Don’t forget, you can press <b>u</b> to undo most things; useful for "
-"correcting mistakes."
-msgstr ""
-"Ne felejtsd el: használd az <b>u</b> gombot a lépések visszavonására; "
-"hasznos a hibák javításában."
-
-#. [then]
-#. This string used as follows: "<unit name>', your new recruit, has two traits...'"
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:79
-msgid ""
-", your new recruit, has two traits: <i>strong</i> and <i>intelligent</i>. "
-"‘Strong’ means a unit does more damage, and ‘intelligent’ means it needs "
-"less experience to advance a level."
-msgstr ""
-", az újoncod, két jellemvonással rendelkezik: <i>erős</i> és <i>eszes</i>. "
-"Az „erősség” azt jelenti, hogy többet sebez, az „eszesség” pedig azt, hogy "
-"kevesebb tapasztalati pontra van szüksége a szintlépéshez."
-
-#. [then]
-#. This string used as follows: "<unit name>' has two traits: <i>quick</i> and ...'"
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:94
-msgid ""
-" has two traits: <i>quick</i> and <i>resilient</i>. ‘Quick’ means a unit can "
-"move one tile further each turn, and ‘resilient’ means it has more hitpoints."
-msgstr ""
-" szintén két jellemvonással bír: <i>gyors</i> és <i>ellenálló</i>. A "
-"„gyorsaság” azt jelenti, hogy az egység körönként egy mezővel többet léphet, "
-"az „ellenállóság” pedig azt, hogy több életerőpontja van."
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:25
-msgid "Patch of forest"
-msgstr "Erdőfolt"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:26
-msgid ""
-"Now put an unwounded unit, preferably a Fighter, in that patch of forest on "
-"the south-east of the island; a nice, defensible spot."
-msgstr ""
-"Most pedig rakj egy ép egységet, lehetőleg egy harcost arra az erdőfoltra a "
-"sziget délkeleti részén: az egy szép, jól védhető hely."
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:27
-msgid "Can one unit survive against all those enemies?"
-msgstr "Túlélheti az ott álló egyetlen egységem annyi ellenség támadását?"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:28
-msgid ""
-"With a little help, yes. If you move your Shaman next to the defending unit, "
-"she will heal it 4 hitpoints per turn. Just be careful not to expose the "
-"Shaman to attack since she is fairly weak herself."
-msgstr ""
-"Egy kis segítséggel igen. Ha a sámánnőt a védekező egység mellé mozgatod, "
-"gyógyítani fogja sebeit körönként 4 életerőpontot visszaadva. Csak vigyázz, "
-"nehogy támadásnak tedd ki a sámánnőt, mert önmagában elég gyenge."
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:29
-msgid "Move a unit (a Fighter if possible) to the patch of forest"
-msgstr "Vigyél egy egységet (lehetőleg egy harcost) az erdőfoltra"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:36
-msgid ""
-"Advance other units onto the island or to capture villages, then <b>End "
-"Turn</b>"
-msgstr ""
-"Vezess még néhány egységet a szigetre, vagy a falvakat elfoglalni, utána "
-"<b>fejezd be a köröd</b>."
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:234
-msgid ""
-"That unit is about one kill (8 experience points) away from gaining a level! "
-"Do not let it die!"
-msgstr ""
-"Annak az egységnek már csak 8 tapasztalati pont (egy ellenséges egység "
-"megölése) kell a szintlépéshez! Ne hagyd, hogy elessen!"
-
-#. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:287
-msgid "I hope I have a chance to retreat after this!"
-msgstr "Remélem, ezután visszavonulhatok!"
-
-#. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:298
-msgid "One lucky attack by an Orcish Grunt, and I’m done for!"
-msgstr "Egy szerencsés támadás az ork közkatonától és végem van!"
-
-#. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:309
-msgid "Ouch! I could make use of some healing in a village."
-msgstr "Aú! Rám férne már egy kis gyógyulás egy faluban."
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:336
-msgid "I have $side.gold gold; enough to recruit!"
-msgstr "Van $side.gold aranyam: ez még elég a toborzáshoz!"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:337
-msgid "Yes, keep recruiting more units: I think you might need them!"
-msgstr "Valóban, csak folytasd a toborzást: szükséged lehet még csapatokra."
-
 #. [tutorial]: id=2_Tutorial
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:347
-msgid "Wesnoth Tutorial Part II"
-msgstr "Wesnoth gyakorlópálya II. rész"
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:5
+msgid "Wesnoth Tutorial — Part II"
+msgstr "Wesnoth gyakorlópálya — II. rész"
 
 #. [side]: type=Orcish Warrior, id=Thrag
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:369
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:43
+msgid "team_name^Orcs"
+msgstr "Orkok"
+
+#. [side]: type=Orcish Warrior, id=Thrag
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:47
 msgid "Thrag"
 msgstr "Thrag"
 
-#. [objective]: condition=win
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:399
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:437
-msgid "Defeat the Orc Leader"
-msgstr "Legyőzöd az ork vezért"
-
-#. [objective]: condition=lose
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:403
-msgid "Death of Konrad"
-msgstr "Konrad elesik"
-
-#. [objective]: condition=lose
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:441
-msgid "Death of Li’sar"
-msgstr "Li’sar elesik"
-
-#. [unit]: id=Galdrad, type=Elvish Captain
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:452
+#. [unit]: id=Galdrad, type=Elvish Champion
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:80
 msgid "Galdrad"
 msgstr "Galdrad"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:479
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:94
+msgid "I hope I have a chance to retreat after this!"
+msgstr "Remélem, ezután visszavonulhatok!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:95
+msgid "One lucky attack by an Orcish Grunt, and I’m done for!"
+msgstr "Egy szerencsés támadás az ork közkatonától és végem van!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:96
+msgid "I could make use of some healing in a village."
+msgstr "Rám férne már egy kis gyógyulás egy faluban."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:97
+msgid "I had better retreat, before I get caught out with such low health!"
+msgstr "Jobb lenne visszavonulnom, mielőtt elkapnak ilyen kevés életerővel!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:98
+msgid "female^I hope I have a chance to retreat after this!"
+msgstr "Remélem, ezután visszavonulhatok!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:99
+msgid "female^One lucky attack by an Orcish Grunt, and I’m done for!"
+msgstr "Egy szerencsés támadás az ork közkatonától és végem van!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:100
+msgid "female^I could make use of some healing in a village."
+msgstr "Rám férne már egy kis gyógyulás egy faluban."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:101
+msgid ""
+"female^I had better retreat, before I get caught out with such low health!"
+msgstr "Jobb lenne visszavonulnom, mielőtt elkapnak ilyen kevés életerővel!"
+
+#. [objective]: condition=win
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:106
+msgid "Defeat the Orc Leader"
+msgstr "Legyőzöd az ork vezért"
+
+#. [objective]: condition=lose
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:111
+msgid "Death of Konrad"
+msgstr "Konrad elesik"
+
+#. [objective]: condition=lose
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:122
+msgid "Death of Li’sar"
+msgstr "Li’sar elesik"
+
+#. [objective]: condition=lose
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:133
+msgid "Death of Galdrad"
+msgstr "Galdrad elesik"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:163
+msgid ""
+"Welcome back! This is second part of the two-part tutorial. Part 2 will "
+"teach you about recalling units, abilities and weapon specials, income and "
+"upkeep, long-distance movement, zone of control, and time of day."
+msgstr ""
+"Üdv újra! Ez a kétrészes gyakorlópálya második része, mely megtanít az "
+"egységek visszahívására, bemutatja az egységek képességeit és a fegyverek "
+"különleges támadásait, a jövedelmet és a fenntartási költségeket, mozgást "
+"nagy távolságokra, valamint a területek ellenőrzését és a napszakokat."
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:169
 msgid ""
 "Ho, Galdrad! Has Delfador conjured something else to beat me with? A flock "
 "of scarecrows, perhaps?"
 msgstr ""
-"Héj, Galdrad! Delfador megint varázsolt valami ellenfelet nekem, hogy "
-"legyőzzem? Egy csapat ijesztő varjút talán?"
+"Hé, Galdrad! Delfador megint varázsolt valami ellenfelet nekem, hogy "
+"legyőzzem? Talán egy csapat madárijesztőt?"
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:481
-msgid "This is no game, Konrad! "
-msgstr "Ez nem játék, Konrad! "
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:482
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:483
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:170
 msgid ""
-"Orcs have encamped across the river. This is elven country; they are fools "
-"to enter here. We Elves are fast and hard to hit in forests. You must defeat "
-"their leader so they never threaten us again. I will advise you."
+"female^Ho, Galdrad! Has Delfador conjured something else to beat me with? A "
+"flock of scarecrows, perhaps?"
 msgstr ""
-"Orkok táboroztak le a folyó túlpartján. Ez a tündék földje: bolondok, hogy "
-"ide mertek jönni. Mi, tündék, gyorsak és erősek vagyunk az erdőkben.  Le "
-"kell győznöd a vezérüket, nehogy ezután is galibát okozzon nekünk. Majd a "
-"tanácsaimmal segítelek."
+"Hé, Galdrad! Delfador megint varázsolt valami ellenfelet nekem, hogy "
+"legyőzzem? Talán egy csapat madárijesztőt?"
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:482
-msgid "This is no game, Li’sar! "
-msgstr "Ez nem játék, Li’sar! "
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:176
+msgid ""
+"This is no game, Konrad! Orcs have encamped across the river. This is elven "
+"country; they are fools to enter here. We Elves are fast and hard to hit in "
+"forests. You must defeat their leader so they never threaten us again. I "
+"will advise you."
+msgstr ""
+"Ez nem játék, Konrad! Orkok táboroztak le a folyó túlpartján. Ez a tündék "
+"földje: bolondok, hogy ide mertek jönni. Mi, tündék, gyorsak és erősek "
+"vagyunk az erdőkben. Le kell győznöd a vezérüket, hogy soha többé ne okozzon "
+"galibát nekünk. Majd a tanácsaimmal segítelek."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:485
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:181
+msgid ""
+"This is no game, Li’sar! Orcs have encamped across the river. This is elven "
+"country; they are fools to enter here. We Elves are fast and hard to hit in "
+"forests. You must defeat their leader so they never threaten us again. I "
+"will advise you."
+msgstr ""
+"Ez nem játék, Li’sar! Orkok táboroztak le a folyó túlpartján. Ez a tündék "
+"földje: bolondok, hogy ide mertek jönni. Mi, tündék, gyorsak és erősek "
+"vagyunk az erdőkben. Le kell győznöd a vezérüket, hogy soha többé ne okozzon "
+"galibát nekünk. Majd a tanácsaimmal segítelek."
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:187
 msgid "What should I do?"
 msgstr "Mitévő legyek?"
 
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:188
+msgid "female^What should I do?"
+msgstr "Mitévő legyek?"
+
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:490
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:191
 msgid ""
 "First, we will have to deal with the Orcish Grunt stationed in the middle of "
 "the river. He should be little trouble."
@@ -1045,32 +1007,16 @@ msgstr ""
 "nagy gondot."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:491
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:193
 msgid ""
 "By then, their leader will have recruited more units to send against us and "
 "the real fight will begin."
 msgstr ""
 "Addigra a vezérük több egységet is toborozni fog, majd ellenünk küldi őket, "
-"és az igazi harc kezdetét veszi."
+"és kezdetét veszi az igazi harc."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:492
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:493
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:494
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:495
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:496
-msgid "Shallow"
-msgstr "Sekély"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:497
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:498
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:499
-msgid "Deep water"
-msgstr "Mély víz"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:501
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:195
 msgid ""
 "See this dark blue water? It’s too deep for either side to cross. The orcs "
 "could slowly wade through that narrow band of shallow lighter-blue water in "
@@ -1084,7 +1030,7 @@ msgstr ""
 "viszont védve maradhatunk az erdőben."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:511
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:197
 msgid ""
 "The more likely attack, then, is across the bridge. That middle island is "
 "the key: it has a village for healing injured units and forests in which we "
@@ -1094,395 +1040,368 @@ msgstr ""
 "kulcsfontosságú: van rajta egy falu, ahol gyógyulni lehet és erdő is, ahol "
 "nagyon jól harcolunk."
 
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:201
+msgid "Let’s go! Attack!"
+msgstr "Gyerünk! Támadás!"
+
+#. [message]: speaker=student
+#. The "us" in "let's" refers to Galdrad and Li'sar.
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:203
+msgid "female^Let’s go! Attack!"
+msgstr "Gyerünk! Támadás!"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:208
+msgid ""
+"Hang on! You need to gather your forces. Or do you intend to fight the orcs "
+"single-handedly?"
+msgstr ""
+"Várj kicsit! Össze kell gyűjtened a csapataidat! Vagy egyedül akarsz "
+"nekiesni az orkoknak?"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:221
+msgid ""
+"I see you have veteran troops from your training! You should <i>recall</i> "
+"them so as to start off the battle with more experienced units. Think "
+"carefully, though; if a unit has too little experience, it might be better "
+"to recruit a new one."
+msgstr ""
+"Látom, a gyakorlásod során katonáid edződtek! <i>Hívd vissza</i> őket, hogy "
+"tapasztaltabb egységekkel kezdd a csatát! De gondold végig alaposan: ha egy "
+"egységnek túl kevés tapasztalata van, többet érhet újat toborozni helyette."
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:227
+msgid ""
+"Some of your units have also managed to level up. They’re even more "
+"formidable, so you should recall them as well."
+msgstr ""
+"Néhány egységed szintet is lépett. Ők még erősebbek, őket is érdemes "
+"visszahívnod."
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:242
+msgid ""
+"Unfortunately, none of your troops survived your training, so you will have "
+"to recruit new units. If you had any veteran troops, you could have "
+"<i>recalled</i> them to battle this scenario. More experienced units would "
+"have been of help against these orcs."
+msgstr ""
+"Sajnos, egyik egységed sem élte túl a gyakorlást, új egységeket kell "
+"toboroznod. Ha lennének veterán katonáid, <i>visszahívhattad</i> volna őket, "
+"hogy ezen a pályán is csatázzanak. A gyakorlottabb egységek segítséget "
+"jelentettek volna az orkok ellen."
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:249
+msgid "Recalling"
+msgstr "Visszahívás"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:251
+msgid ""
+"In addition to recruiting new units each scenario, you can also <i>recall</"
+"i> your experienced veterans from previous scenarios, for the cost of 20 "
+"gold each. This allows you to build up a formidable army over the course of "
+"multiple scenarios by recalling your highest leveled troops or those with "
+"good combinations of traits and abilities. To recall a unit, right click "
+"while your leader stands on a keep and select the <i>Recall</i> option. "
+"Remember to also recruit new troops in addition to recalling old ones."
+msgstr ""
+"Új egységek toborzása mellett gyakorlott veterán harcosaid is "
+"<i>visszahívhatod</i> az előző pályákról, fejenként 20 aranyért. Így "
+"legmagasabb szintű, vagy jó képességekkel és tulajdonságokkal rendelkező "
+"harcosaid visszahívásával jelentős haderőt képezhetsz ki egy pályasorozatot "
+"végigjátszva. Egy egység visszahívásához jobb gombbal kattints, miközben "
+"vezéred a várkastélyban tartózkodik, és válaszd a <i>Visszahívás</i> "
+"lehetőséget. A régi egységek visszahívásán túl ne feledj újakat is toborozni!"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:256
+msgid ""
+"You also have two new types of units to recruit this scenario: Elvish "
+"Archers and Elvish Shamans. I’ll tell you more about them when you recruit "
+"them. Personally, I would recommend a balanced force of two archers, two "
+"fighters, and a shaman."
+msgstr ""
+"Két új egységet is toborozhatsz ezen a pályán: tünde íjászokat és tünde "
+"sámánnőket. Majd akkor beszélek róluk, ha már rendelkezel velük. Szerintem "
+"egy kiegyensúlyozott sereggel jársz a legjobban, melyet két íjász, két "
+"harcos és egy sámán alkot."
+
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:514
-msgid ""
-"To start, we will need some units:\n"
-"two Elvish Fighters\n"
-"two Elvish Archers\n"
-"one Elvish Shaman"
-msgstr ""
-"Kezdéshez szükségünk lesz néhány egységre:\n"
-"két tünde harcosra\n"
-"két tünde íjászra\n"
-"egy tünde sámánnőre"
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:259
+msgid "Recruit or recall your troops"
+msgstr "Toborozz vagy hívj vissza katonákat!"
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:592
-msgid ""
-"During your tutorial, both $recall_name1 and $recall_name2 gained "
-"$recall_xp1 experience points. You should <i>recall</i> them now so they can "
-"gain more experience, rather than recruiting new Fighters."
-msgstr ""
-"A gyakorlásod közben $recall_name1 és $recall_name2 egyaránt $recall_xp1 "
-"tapasztalati pontot szerzett. Új harcosok toborzása helyett inkább őket kéne "
-"<i>visszahívnod</i>, hogy több tapasztalatot szerezhessenek."
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:273
+msgid "Elvish Shaman"
+msgstr "Tünde sámánnő"
 
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:595
-msgid ""
-"During your tutorial, $recall_name1 gained $recall_xp1 experience points, "
-"and $recall_name2 gained $recall_xp2. You should <i>recall</i> them now so "
-"they can gain more experience, rather than recruiting new Fighters."
-msgstr ""
-"A gyakorlásod közben $recall_name1 $recall_xp1 tapasztalati pontot szerzett, "
-"$recall_name2 pedig $recall_xp2 pontot. Új harcosok toborzása helyett inkább "
-"őket kéne <i>visszahívnod</i>, hogy több tapasztalatot szerezhessenek."
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:601
-msgid ""
-"During your tutorial, $recall_name1 gained $recall_xp1 experience points. "
-"You should recall that unit now, and recruit a second one (which is cheaper "
-"than recalling, anyway)."
-msgstr ""
-"Gyakorlásod alatt $recall_name1 $recall_xp1 tapasztalati pontot gyűjtött. "
-"Vissza kéne most hívnod őt, és egy új egységet is toborozhatnál (ami "
-"ráadásul olcsóbb is, mint visszahívni)."
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:604
-msgid "RECALL $recall_name1"
-msgstr "HÍVD VISSZA őt: $recall_name1"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:605
-msgid ""
-"Right click on the tile north-east of you and <i>recall</i> $recall_name1"
-msgstr ""
-"Kattints jobb gombbal a tőled északkeletre fekvő mezőre, és <i>hívd vissza</"
-"i> $recall_name1 nevű egységedet"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:614
-msgid ""
-"If any Elvish Fighters from your last battle had experience, we would "
-"<i>recall</i> them to the current battlefield. However, your veterans gained "
-"no experience so it’s cheaper to recruit new units instead. Recruit an "
-"Elvish Fighter."
-msgstr ""
-"Ha bármelyik tünde harcosod az utóbbi csatában tapasztalatot szerzett volna, "
-"<i>visszahívnánk</i> őt... mivel azonban egyikük sem szerzett, így olcsóbb "
-"egy új egységet toborozni. Tehát toborozz egy tünde harcost."
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:617
-msgid ""
-"If you had any experienced units alive from your last battle we would "
-"<i>recall</i> them. Instead we must recruit some new Elvish Fighters."
-msgstr ""
-"Ha van még élő tapasztalt harcosod az előző csatából, <i>vissza kéne "
-"hívnunk</i> őt, különben viszont muszáj új tünde harcosokat toboroznunk."
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:620
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:873
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:915
-msgid "Elvish Fighter"
-msgstr "Tünde harcos"
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:621
-msgid "Right click on the tile north-east of you and recruit an Elvish Fighter"
-msgstr ""
-"Kattints jobb gombbal a tőled északkeletre fekvő mezőre, és toborozz egy "
-"tünde harcost"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:661
-msgid "No! I said recruit an Elvish <i>Shaman</i>! Now try again..."
-msgstr ""
-"Nem! Azt mondtam, hogy toborozz egy tünde <i>sámánnőt</i>! Próbáld meg "
-"újra..."
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:670
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:274
 msgid ""
 "The Shaman is a fairly weak unit, but she has the ability to <i>heal</i> "
 "friendly units around her. She also has a special attack which <i>slows</i> "
-"enemies, halving the damage they do."
+"enemies, halving the damage they do for one turn."
 msgstr ""
-"A sámánnő egy viszonylag gyenge egység, azonban képes a mellette álló "
-"szövetséges egységek sebeit <i>gyógyítani</i>. Ezenkívül van egy speciális "
+"A sámánnő viszonylag gyenge egység, azonban képes a mellette álló "
+"szövetségesek sebeit <i>gyógyítani</i>. Ezenkívül van egy speciális "
 "támadása, amely <i>lelassítja</i> az ellenfelet, és megfelezi az általa "
-"okozható sebzést is!"
+"okozott sebzést is egy körig."
 
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:671
-msgid "So, should I end my turn now?"
-msgstr "Nos, befejezhetem már a köröm?"
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:279
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:286
+msgid "Abilities and Weapon Specials"
+msgstr "Képességek és különleges támadások"
 
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:673
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:281
 msgid ""
-"While none of your recruited units can move, you still can. Your five units "
-"cost you 5 gold in upkeep, leaving you 3 gold poorer per turn. You need more "
-"income."
+"Certain unit types have special <i>abilities</i>. Unlike traits, which "
+"usually provide small buffs or debuffs, abilities give units special "
+"behaviors that normal units do not have. In this case, the Elvish Shaman has "
+"the Heal ability, which allows her to heal allied adjacent units 4 hitpoints "
+"at the start of each turn. Unit types with abilities, especially ones like "
+"Heal, can be very useful, so be careful when sending them into battle."
 msgstr ""
-"Az igaz, hogy az újonnan toborzott egységeid nem mozoghatnak, viszont te még "
-"tudsz. Az öt egységedet 5 aranyba kerül fenntartani, így 3 arannyal "
-"kevesebbed lesz minden kör után. Több bevételre lesz szükséged."
+"Bizonyos típusú egységek speciális <i>képességekkel</i> rendelkeznek. A "
+"kisebb bónuszokat és hátrányokat adó jellemvonásokkal szemben a képességek "
+"olyan tevékenységeket tesznek lehetővé, melyekkel normál egységeid nem "
+"rendelkeznek. A tünde sámánnő például Gyógyítás képességgel rendelkezik, "
+"mellyel minden szomszédos szövetséges egységet 4 életerőponttal gyógyít a "
+"kör elején. A képességekkel, különösen a gyógyítás képességgel rendelkező "
+"egységek nagyon hasznosak lehetnek, jól gondold meg, mikor küldöd őket "
+"csatába!"
 
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:675
-msgid "Move Konrad to capture a village"
-msgstr "Lépj Konraddal egy faluba és foglald el"
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:676
-msgid "Move Li’sar to capture a village"
-msgstr "Lépj Li’sarral egy faluba és foglald el"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:693
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:731
-msgid "No! I said recruit an Elvish <i>Archer</i>! Now try again..."
-msgstr ""
-"Nem! Azt mondtam, hogy toborozz egy tünde <i>íjászt</i>! Próbáld meg újra..."
-
-#. [else]
-#. [unit]: id=Eowynial, type=Elvish Archer
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:699
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:710
-msgid "Eowynial"
-msgstr "Eowynial"
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:714
-msgid "Shaman"
-msgstr "Sámánnő"
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:715
-msgid "Recruit an Elvish Shaman to your north"
-msgstr "Toborozz egy tünde sámánnőt tőled északra"
-
-#. [else]
-#. [unit]: id=Elriend, type=Elvish Archer
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:737
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:747
-msgid "Elriend"
-msgstr "Elriend"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:770
-msgid "No! I said <i>recall</i> $recall_name2|! Now try again..."
-msgstr ""
-"Nem! Azt mondtam, hogy <i>hívd vissza</i> $recall_name2| nevű egységedet! "
-"Próbáld meg újra..."
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:779
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:815
-msgid "Archer #1"
-msgstr "Íjász 1"
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:780
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:816
-msgid "Archer #2"
-msgstr "Íjász 2"
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:782
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:818
-msgid "Recruit two Elvish Archers in the tiles to your west"
-msgstr "Toborozz két tünde íjászt a tőled nyugatra fekvő mezőkre"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:795
-msgid "No! I said recruit an Elvish <i>Fighter</i>! Now try again..."
-msgstr ""
-"Nem! Azt mondtam, hogy toborozz egy tünde <i>harcost</i>! Próbáld meg újra..."
-
-#. [else]
-#. [unit]: id=Golir, type=Elvish Fighter
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:801
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:811
-msgid "Golir"
-msgstr "Golir"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:849
-msgid "No! I said recall $recall_name1, not $recall_name2|! Now try again..."
-msgstr ""
-"Nem! Azt mondtam, hogy $recall_name1 nevű egységed hívd vissza, nem pedig "
-"őt: $recall_name2|! Próbáld meg újra..."
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:853
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:288
 msgid ""
-"No! I said <i>recall</i> $recall_name1 from the last battle, not recruit a "
-"new $recruit.language_name|! Now try again..."
+"Weapon specials are special attack modifiers that make certain attacks more "
+"powerful. Once again, in this case, the Shaman has the Slows special on her "
+"entangle attack. When this attack is used on an enemy, it will halve the "
+"damage they do for one turn. Other weapon specials include First Strike, "
+"which allows that attack to always hit first no matter who attacks first, "
+"and Magical, which gives that attack a constant 70% chance to hit.\n"
+"\n"
+"A full list of abilities and weapons specials, along with traits, may be "
+"found in help."
 msgstr ""
-"Nem! Azt mondtam, hogy <i>hívd vissza</i> $recall_name1 nevű egységedet az "
-"utóbbi ütközetből, nem pedig, hogy toborozz egy új $recruit.language_name| "
-"egységet! Próbáld meg újra..."
+"A különleges támadások olyan módosítók, amelyek bizonyos támadásokat "
+"erősebbé tesznek. Esetünkben a sámánnő Behálózás támadásához tartozó "
+"Lassítás módosító hatására az ellenfél egy körön át feleakkorát tud sebezni "
+"támadásaival. Az Első ütés módosító lehetővé teszi, hogy a találat először "
+"következzen be függetlenül attól, hogy ki támadott először, és a Mágikus "
+"támadás minden esetben 70% találati esélyt garantál.\n"
+"\n"
+"A képességek és különleges támadások teljes listája a jellemvonásokkal "
+"együtt a súgóban található."
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:869
-msgid "Right click on the tile east of you and recall $recall_name2"
-msgstr ""
-"Kattints jobb gombbal a tőled keletre fekvő mezőre, és hívd vissza "
-"$recall_name2 nevű egységedet"
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:305
+msgid "Elvish Archer"
+msgstr "Tünde íjász"
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:870
-msgid "RECALL $recall_name2"
-msgstr "HÍVD VISSZA őt: $recall_name2"
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:874
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:916
-msgid "Right click on the tile east of you and recruit an Elvish Fighter"
-msgstr ""
-"Kattints jobb gombbal a tőled keletre levő mezőre, és toborozz egy tünde "
-"harcost"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:897
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:306
 msgid ""
-"$recruit.language_name|? I said <i>recruit</i> a new <i>Elvish Fighter</i>. "
-"Now try again..."
+"Unlike the Elvish Fighter, which has strong melee attacks, the Elvish Archer "
+"has strong ranged attacks. It’s useful to attack enemy units with strong "
+"melee attacks with strong ranged attacks, and vice versa. This allows your "
+"units to take less damage overall when your enemy counterattacks."
 msgstr ""
-"$recruit</i>.language_name|? Nem! Azt mondtam, hogy <i>toborozz</i> egy "
-"<i>tünde harcost</i>! Próbáld meg újra..."
+"Míg a tünde harcos közelharcban, a tünde íjász távolsági támadásban erős. Jó "
+"közelharcosokat erős távolsági támadásokkal érdemes támadni, és viszont. Így "
+"egységeid általában kisebb sérüléseket szenvednek az ellentámadásnál."
 
-#. [else]
-#. [unit]: id=Elindel, type=Elvish Fighter
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:904
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:914
-msgid "Elindel"
-msgstr "Elindel"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:943
-msgid "You’ve learned well, Konrad! "
-msgstr "Gyorsan tanulsz, Konrad!"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:944
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:946
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:333
 msgid ""
-"The village supports one unit and pays 1 gold per turn. You’re only losing 1 "
-"gold per turn now."
+"You certainly have a fondness for shamans, I see. They will provide a lot of "
+"healing, but not much offensive potential."
 msgstr ""
-"A falu egy egységet fenntart, és ad még egy aranyat is minden körben: most "
-"már csak egy aranyat vesztesz körönként."
+"Látom, vonzódsz a sámánnőkhöz. Jól gyógyítanak, de nem sokat érnek, ha "
+"támadni kell."
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:945
-msgid "You’ve learned well, Li’sar! "
-msgstr "Gyorsan tanulsz, Li’sar!"
-
-#. [event]
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:948
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1076
-msgid "End your turn"
-msgstr "Fejezd be a köröd"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:954
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:344
 msgid ""
-"You’ve captured all the villages around the keep, but stay near so you can "
-"recruit more units."
+"While none of your recruited units can move yet, you still can. You need "
+"more income; there are some villages near the keep you can capture."
 msgstr ""
-"Elfoglaltad az összes falut a vár körül, de maradj a közelben, hogy új "
-"egységeket tudjál toborozni."
+"Az igaz, hogy az újonnan toborzott egységeid még nem mozoghatnak, te viszont "
+"tudsz. Több bevételre lesz szükséged; a várkastély közelében levő falvakat "
+"elfoglalhatod."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:969
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:347
+msgid "Capture a village"
+msgstr "Foglalj el egy falut"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:362
 msgid ""
-"You should leave the villages near your keep for Konrad to capture. He needs "
-"to stay nearby to recruit more units anyway."
+"Excellent! As Delfador mentioned earlier, each captured village will support "
+"one unit and provide you with 1 extra gold per turn."
 msgstr ""
-"Hagynod kéne a vár melletti falvakat Konradnak, hogy ő foglalja el őket: "
-"neki mindenképpen a közelben kell maradnia, hogy új egységeket toborozhasson."
+"Kitűnő! Ahogy Delfador említette, minden elfoglalt falu egy egységet lát el, "
+"és még egy aranyat ad ezen felül körönként."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:970
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:367
+msgid "Income and Upkeep"
+msgstr "Jövedelem és fenntartási költség"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:369
 msgid ""
-"You should leave the villages near your keep for Li’sar to capture. She "
-"needs to stay nearby to recruit more units anyway."
+"Each turn, you will gain 2 gold plus one for each village you own. However, "
+"<i>upkeep</i> is subtracted from that. You can support as many levels worth "
+"of units as the number of villages you own; beyond that, you must pay 1 gold "
+"per turn. Be careful, as owning too many units can cause you to have "
+"negative income and lose gold each turn!"
 msgstr ""
-"Hagynod kéne a vár melletti falvakat Li’sarnak, hogy ő foglalja el őket: "
-"neki mindenképpen a közelben kell maradnia, hogy új egységeket toborozhasson."
+"Minden körben 2 aranyat kapsz, plusz falvanként egyet. De a <i>fenntartási "
+"költséget</i> ebből kell levonni. Összesen annyi szintnyi egységed lehet, "
+"ahány faluval rendelkezel, ezen felül 1 aranyat kell fizetned körönként. "
+"Légy óvatos, ha túl sok egységgel rendelkezel, negatívvá válhat a "
+"jövedelmed, és minden körben csökkenni fog aranyaid mennyisége!"
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:976
-msgid "Orcish Grunts have no ranged attacks, so use your archers against them."
-msgstr ""
-"Az ork közkatonáknak nincsen távolsági támadásuk, használd ezért az "
-"íjászaidat ellenük."
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:374
+msgid "Status Table"
+msgstr "Csapatok adatai"
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:978
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1103
-msgid "Attack the orc with an Archer"
-msgstr "Támadd meg az orkot egy íjásszal"
-
-# /n maradásának oka volt?
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:376
+#, fuzzy
+#| msgid ""
+#| "The Status Table details the sides’ current status and starting "
+#| "conditions. Fog and shroud will affect what you can see in this table, "
+#| "and occasionally a side may be hidden. It is useful to check this table "
+#| "when a scenario begins."
 msgid ""
-"To review the capabilities of any unit—including an enemy—hover the mouse "
-"over it, and you will see a unit summary on the right of the screen"
+"The Status Table details the sides’ current status and starting conditions. "
+"Fog and shroud will affect what you can see in this table, and occasionally "
+"a side may be hidden. It is useful to check this table when a scenario "
+"begins."
 msgstr ""
-"Ha át akarod tekinteni egy egység képességeit – beleértve az ellenséges "
-"katonákat is –, vidd az egeret fölé: egy egység összefoglaló fog megjelenni "
-"a képernyő jobb oldalán."
+"A Csapatok adatai táblázat bemutatja a jelenlegi helyzetet és a kiindulási "
+"feltételeket. A köd és eltakarás befolyásolja, mit látsz ebben a "
+"táblázatban, és emiatt előfordulhat, hogy nem látod az egyik résztvevőt. "
+"Érdemes a pálya kezdetén átnézni ezt a táblázatot."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
-msgid "Unit Summaries"
-msgstr "Egység összefoglalók"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:987
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:394
 msgid ""
-"Excellent. Elves are well-protected in the forest. There’s only a 30% chance "
-"of hitting an Elvish Archer in that tile."
+"Now, young man, it is time to discuss strategy. Your units are ready to "
+"attack, and the orcish leader has begun gathering his own troops."
 msgstr ""
-"Kitűnő! A tündék remekül védve vannak az erdőben: csak 30% esély van arra, "
-"hogy egy tünde íjászt megüssenek, amikor egy olyan mezőn van."
+"Nos, fiatalember, itt az ideje megvitatni a stratégiát! Egységeid készen "
+"állnak a támadásra, és az ork vezér is elkezdte összegyűjteni katonáit."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:996
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:399
 msgid ""
-"It’s very dangerous to stand in water when there are enemies about! Your "
-"unit will have an 80% chance of being hit when the enemy counter-attacks! "
-"Cancel!"
+"Now, young lady, it is time to discuss strategy. Your units are ready to "
+"attack, and the orcish leader has begun gathering his own troops."
 msgstr ""
-"Nagyon veszélyes vízben állni, amikor ellenség van a közelben! Ha egy ork "
-"visszatámadna, 80% lenne az esélye, hogy eltalál! Lépj vissza!"
+"Nos, ifjú hölgy, itt az ideje megvitatni a stratégiát! Egységeid készen "
+"állnak a támadásra, és az ork vezér is elkezdte összegyűjteni katonáit."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1002
-msgid "Attack the orc with the other Archer"
-msgstr "Támadd meg az orkot a másik íjászoddal"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1014
-msgid "Fighter to HERE"
-msgstr "A harcost IDE"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1015
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:405
 msgid ""
-"Your other units cannot reach the orc this turn. Send a Fighter to the "
-"village in the far east of the map. It will take two turns to reach it."
+"Galdrad, if I go by the ford, I could sneak up near his keep and dispatch "
+"him quickly."
 msgstr ""
-"A többi egységed nem érhet oda az orkhoz ebben a körben. Küldj egy harcost a "
-"keleten lévő távoli faluba: ez két körig is el fog tartani."
+"Galdrad, a gázló felől odalopózhatnék a kastélyához, és gyorsan végezhetnék "
+"vele."
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:406
+msgid ""
+"female^Galdrad, if I go by the ford, I could sneak up near his keep and "
+"dispatch him quickly."
+msgstr ""
+"Galdrad, a gázló felől odalopózhatnék a kastélyához, és gyorsan végezhetnék "
+"vele."
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:411
+#, fuzzy
+#| msgid ""
+#| "You could. However, elves (and orcs) have bad <i>defense</i> in water. "
+#| "You’ll be more vulnerable as you try to wade slowly across the ford; the "
+#| "enemy will have an 80% chance to hit you. Since elves have good defense "
+#| "in the forest, I would advise you keep to the trees and attack the orcs "
+#| "from there; your Fighters will only suffer a 40% chance of being hit in "
+#| "return, while Shamans and Archers will only incur a 30% chance."
+msgid ""
+"You could. However, elves (and orcs) have bad <i>defense</i> in water. "
+"You’ll be more vulnerable as you try to wade slowly across the ford; the "
+"enemy will have an 80% chance to hit you. Since elves have good defense in "
+"the forest, I would advise you keep to the trees and attack the orcs from "
+"there; you’ll only have a 40% chance of being hit in return."
+msgstr ""
+"Megtehetnéd, de a tündék (és orkok) nagyon ügyetlenül <i>védekeznek</i> "
+"vízben. Sérülékenyebb lennél a vízben gázolva, az ellenségnek 80% esélye "
+"lenne a találatra. Mivel a tündéknek az erdőben jó a védelmük, azt javaslom, "
+"maradj a fák között és onnan ronts az orkokra, így harcosaiddal szemben csak "
+"40% esélyük lesz visszavágni, míg az íjászokkal és sámánnőkkel szemben "
+"mindössze 30%."
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:416
+msgid ""
+"However, keep an eye on that ford. The orcs may try to sneak around behind "
+"our forces. It might do to send a few units to defend the banks, and the "
+"village there."
+msgstr ""
+"Mindenesetre tartsd szemmel a gázlót. Az orkok lehet, hogy megpróbálnak a "
+"csapataink mögé lopózni. Érdemes lehet néhány egységet elküldeni a partok és "
+"az ottani falu védelmére."
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:421
+msgid ""
+"Alright. The bridge it is, then, but I’ll be careful about the crossing."
+msgstr "Rendben, akkor a hidat választom. De figyelni fogok az átkelőre is."
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:422
+msgid ""
+"female^Alright. The bridge it is, then, but I’ll be careful about the "
+"crossing."
+msgstr "Rendben, akkor a hidat választom. De figyelni fogok az átkelőre is."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1016
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:425
+msgid ""
+"That Orcish Grunt is still blocking our path. He has no ranged attacks, so "
+"your archers should be able to engage him with little risk. Unfortunately, "
+"your units cannot reach him this turn, but you should not let them languish! "
+"Move them into position so they can attack next turn. There are also other "
+"villages on this side of the river. You should secure them for income and "
+"healing."
+msgstr ""
+"Az az ork közkatona még elállja az utunkat. Nincs távolsági támadása, szóval "
+"íjászaid kis kockázattal megtámadhatják. Sajnos egységeid nem érhetik el "
+"ebben a körben, de ne hagyd őket henyélni! Állítsd őket fel úgy, hogy a "
+"következő körben már támadhassanak. A folyónak ezen az oldalán vannak még "
+"más falvak is, a jövedelem és gyógyítás céljából érdemes elfoglalni őket."
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:429
 msgid "Long-distance Movement"
 msgstr "Hosszú távú mozgás"
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1016
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:431
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
@@ -1492,172 +1411,209 @@ msgstr ""
 "felé: válaszd ki az egységet, azután kattints a célra. A megjelenő szám azt "
 "mutatja, hogy hány körig tart oda az út."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1017
-msgid "Tell a Fighter to move to the far east village"
-msgstr "Mondd meg egy harcosnak, hogy menjen a keleten levő távoli faluba"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1035
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:436
 msgid ""
-"Send the other Fighter and the Shaman south so they can attack next turn, "
-"then return to the keep to recruit more units!"
+"I think I’ll stick around the keep for now, in order to recruit more units."
 msgstr ""
-"Küldd a másik harcosodat és a sámánnőt délre, hogy a következő körben "
-"támadhassanak, utána térj vissza a várba, hogy még több egységet toborozhass!"
+"Szerintem a várkastély körül maradok, hogy még egységeket toborozhassak."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1036
-msgid "Move your Fighter and Shaman south, then return Konrad to the keep"
-msgstr ""
-"Lépj a harcossal és a sámánnővel délre, majd térj vissza Konraddal a várba"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1037
-msgid "Move your Fighter and Shaman south, then return Li’sar to the keep"
-msgstr ""
-"Lépj a harcossal és a sámánnővel délre, majd térj vissza Li’sarral a várba"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1047
-msgid "Recruit another Archer and a Fighter"
-msgstr "Toborozz még egy harcost és egy íjászt"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1062
-msgid "I have no more money to recruit!"
-msgstr "Nincs több pénzem toborzáshoz!"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1063
-msgid "That is often a problem, which is why owning villages is important."
-msgstr "Ez gyakran probléma, ezért olyan fontos, hogy sok falvad legyen."
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1064
-msgid "Move Konrad to another (unowned) village"
-msgstr "Lépj Konraddal egy újabb (még nem elfoglalt) faluba"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1065
-msgid "Move Li’sar to another (unowned) village"
-msgstr "Lépj Li’sarral egy újabb (még nem elfoglalt) faluba"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1090
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:437
 msgid ""
-"That Grunt is blocking the bridge! We must occupy that island before the "
-"Wolf Riders reach it."
+"female^I think I’ll stick around the keep for now, in order to recruit more "
+"units."
 msgstr ""
-"Az ork közkatona elzárja a hidat! Muszáj elfoglalnunk a szigetet mielőtt a "
-"farkaslovasok elérik azt."
+"Szerintem a várkastély körül maradok, hogy még egységeket toborozhassak."
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:443
+msgid ""
+"You’ve learned well, Konrad. It is indeed a good idea to keep your leader "
+"safe and protected and in range of your keep early in the game. The tide of "
+"battle can turn quickly, and you don’t want to find yourself cut off from "
+"recruiting reinforcements."
+msgstr ""
+"Sokat tanultál, Konrad! Valóban jó ötlet a vezéred biztonságban tudni, és az "
+"ellenségtől távol tartani a játék elején. A hadiszerencse forgandó, nem "
+"kellene magad az utánpótlás lehetőségétől megfosztani!"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:448
+msgid ""
+"You’ve learned well, Li’sar. It is indeed a good idea to keep your leader "
+"safe and protected and in range of your keep early in the game. The tide of "
+"battle can turn quickly, and you don’t want to find yourself cut off from "
+"recruiting reinforcements."
+msgstr ""
+"Sokat tanultál, Li’sar! Valóban jó ötlet a vezéred biztonságban tudni, és az "
+"ellenségtől távol tartani a játék elején. A hadiszerencse forgandó, nem "
+"kellene magad az utánpótlás lehetőségétől megfosztani!"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:458
+msgid "Tracking Enemy Movement"
+msgstr "Ellenséges mozgások követése"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:460
+msgid ""
+"You can see where an enemy can reach by moving the mouse over them. You can "
+"see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
+"command from the <b>Actions</b> menu."
+msgstr ""
+"Láthatod, hogy meddig juthat az adott ellenséges egység, ha fölé viszed az "
+"egeret. Megnézheted, hogy az ellenséges egységek mely területeket tudják "
+"elérni, ha a <b>Parancsok</b> menü <b>Ellenséges lépések mutatása</b> "
+"opcióját választod."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1091
-msgid "Can’t our units just move around him?"
-msgstr "Nem tudnak az egységeink egyszerűen elmenni mellette?"
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:463
+msgid "We must occupy that island before the Wolf Riders reach it!"
+msgstr "Muszáj elfoglalnunk a szigetet, mielőtt a farkaslovasok elérik azt!"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:468
+msgid "Can’t we just move around the orcs?"
+msgstr "Nem tudnak az egységeink egyszerűen elmenni az orkok mellett?"
+
+#. [message]: speaker=student
+#. "we" refers to Li'sar, Galdrad, and the mixed-gender troops
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:470
+msgid "female^Can’t we just move around the orcs?"
+msgstr "Nem tudnak az egységeink egyszerűen elmenni az orkok mellett?"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1094
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1095
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1096
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1097
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1098
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1099
-msgid "ZoC"
-msgstr "ET"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1101
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:483
 msgid ""
 "No. Once you move close to an enemy unit, you are in its <i>Zone of Control</"
-"i> and cannot move further that turn.\n"
-"To move your troops onto that island without wading slowly through the "
-"water, you’ll have to kill the Grunt."
+"i> and cannot move further that turn. To move your troops onto that island "
+"without wading slowly through the water, you’ll have to kill the Grunt."
 msgstr ""
-"Nem. Amint egy egységeddel egy ellenséges egység mellé lépsz, az általa "
-"<i>ellenőrzött területen</i> (ET) leszel, és nem mozoghatsz rajta tovább.\n"
-"Ahhoz, hogy arra a szigetre léphess a vízen keresztüli hosszadalmas "
-"átgázolás elkerülésével, meg kell ölnöd az ork közkatonát."
+"Nem. Amint egy ellenséges egység mellé lépsz, az általa <i>ellenőrzött "
+"területre</i> kerülsz, és nem mozoghatsz tovább abban a körben. Ahhoz, hogy "
+"arra a szigetre léphess a vízen keresztüli hosszadalmas átgázolás "
+"elkerülésével, meg kell ölnöd az ork közkatonát."
 
-#. [event]
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1133
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1157
-msgid "Advance other units and capture villages, then <b>End Turn</b>"
-msgstr ""
-"Juttasd előrébb a többi egységet és foglalj falvakat, utána <b>add át a "
-"köröd</b>"
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:487
+msgid "Zone of Control"
+msgstr "Ellenőrzött terület"
 
-#. [then]
-#. The unit with unit type $unit.language_name is male.
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1143
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:489
 msgid ""
-"No other units can reach that orc. I hope my $unit.language_name survives "
-"its counter-attack! I’d better grab more villages and move everyone closer "
+"The hexes immediately around a unit constitute its <i>Zone of Control</i>. "
+"When an enemy unit enters those hexes, they cannot move any further that "
+"turn. (An exception are units with the <i>skirmisher</i> ability, who are "
+"unaffected by zones of control.) This can be used to create a blockade to "
+"prevent stronger enemies from reaching key locations, such as villages, even "
+"if you have limited manpower."
+msgstr ""
+"Az egységet közvetlenül körülvevő mezők alkotják az <i>ellenőrzött "
+"területet</i>. Ha egy ellenséges egység ezen mezők valamelyikére lép, nem "
+"léphet tovább abban a körben (kivéve a <i>portyázó</i> képességgel "
+"rendelkező egységek, akiket nem befolyásolnak az ellenőrzött területek.) Ezt "
+"kihasználva blokádot alakíthatunk ki a kulcsfontosságú helyszínek, például "
+"falvak megvédésére erősebb ellenfelekkel szemben is, akár szűkös haderő "
+"mellett is."
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:504
+msgid ""
+"I hope my units survive the counter-attack if I can’t take this grunt out "
+"this turn. I’d better grab more villages if I can and move everyone closer "
 "for next turn."
 msgstr ""
-"A többi egység nem tudja elérni az orkot. Remélem, a $unit.language_name "
-"egységem túléli az ellentámadást! Jobban tenném, ha foglalnék még falvakat, "
-"és mindenkit közelebb tolnék hozzájuk a következő körre."
+"Remélem, egységeim túlélik az ellentámadást, ha nem tudom legyőzni a "
+"közkatonát ebben a körben! Jobban tenném, ha elfoglalnék még falvakat, és "
+"mindenkit közelebb vinnék a következő körre."
 
-#. [else]
-#. The unit with unit type $unit.language_name is female.
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1147
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:509
 msgid ""
-"female^No other units can reach that orc. I hope my $unit.language_name "
-"survives its counter-attack! I’d better grab more villages and move everyone "
-"closer for next turn."
+"If one of your Shamans stands just behind your wounded units, she will heal "
+"them each 4 hitpoints at the beginning of the next turn."
 msgstr ""
-"A többi egység nem tudja elérni az orkot. Remélem, a $unit.language_name "
-"egységem túléli az ellentámadást! Jobban tenném, ha foglalnék még falvakat, "
-"és mindenkit közelebb tolnék hozzájuk a következő körre."
+"Ha egy sámánnőd közvetlenül a sérült egységeid mögött áll, akkor 4 "
+"életerőponttal fogja gyógyítani őket a következő köröd elején."
 
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1150
+#. [message]: speaker=second_unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:543
 msgid ""
-"Yes. If your Shaman stands just behind that unit on the bridge, she will "
-"heal it at the beginning of the next turn."
+"One fewer orc to deal with, and our way across the bridge is clear! I also "
+"gained experience from striking the killing blow!"
 msgstr ""
-"Igen. Ráadásul ha a sámánnő közvetlenül a hídon álló egységed mögött áll, "
-"akkor gyógyítani fogja sebeit a következő köröd elején."
+"Eggyel kevesebb orkkal kell bajlódnunk, és szabad az út a hídon át! Ráadásul "
+"mivel én vittem be az utolsó ütést, még több tapasztalatot szereztem!"
 
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1151
-msgid "Move your Shaman onto the bridge to stand behind your other unit"
-msgstr "Mozgasd a sámánnőt a hídra, hogy az egység mögött álljon"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1197
+#. [message]: speaker=second_unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:544
 msgid ""
-"Be careful: if you stand on the bridge you are exposed to attack from "
-"multiple directions!"
+"female^One fewer orc to deal with, and our way across the bridge is clear! I "
+"also gained experience from striking the killing blow!"
+msgstr ""
+"Eggyel kevesebb orkkal kell bajlódnunk, és szabad az út a hídon át! Ráadásul "
+"mivel én vittem be az utolsó ütést, még több tapasztalatot szereztem!"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:565
+msgid ""
+"Be careful! If you stand on the bridge you are exposed to attack from "
+"multiple directions! Even though the orcs have low defense in water, they "
+"will overwhelm you with their numbers."
 msgstr ""
 "Légy óvatos: ha a hídon állsz, akkor ki vagy téve minden irányból a "
-"támadásoknak!"
+"támadásoknak! Noha az orkok ügyetlenül védekeznek vízben, túlerejük "
+"elsodorhat."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1210
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:581
+msgid ""
+"Well done! The island village is ours. You can use the trees to set up a "
+"blockade against the orcs; they can only come across the bridge one by one "
+"without wading through the water, and you will be securely on a terrain with "
+"good defense."
+msgstr ""
+"Remek! A szigeten levő falut megszereztük. A környező fákat felhasználva "
+"blokádot alakíthatsz ki az orkok ellen - csak egyesével kelhetnek át a "
+"hídon, ha nem szeretnének a vízben gázolni, te pedig eközben jól védhető "
+"terepen leszel."
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:593
+msgid ""
+"Don’t forget about that last village near the channel. The orcs will capture "
+"it if they try to sneak around via the ford! It will be hard to dislodge "
+"them if they do."
+msgstr ""
+"Ne feledkezz meg az utolsó faluról a csatorna közelében! Az orkok "
+"elfoglalhatják, ha megpróbálkoznak a gázlón való átkeléssel. Ha ez  "
+"történne, nehéz lesz tőlük megszabadulni."
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:609
 msgid ""
 "It’s very dangerous to stand in water when there are enemies about! Your "
-"unit will have an 80% chance of being hit! Cancel, and wait for them to "
+"unit will have an 80% chance of being hit. Get back, and wait for them to "
 "attack you!"
 msgstr ""
 "Nagyon veszélyes vízben állni, amikor ellenség van a közelben! 80% az "
 "esélye, hogy az ork eltalál téged, amikor visszatámad! Vond vissza a "
 "lépésedet, és várj, hogy ők támadjanak meg téged!"
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1220
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:632
 msgid ""
-"Don’t forget about your Fighter in the east; you can move him south to that "
-"last village near the channel."
+"You’re venturing away from your keep. You might need recruit more units, and "
+"I doubt the orc leader will let you use his! Careful!"
 msgstr ""
-"Ne feledkezz meg a keleten álló harcosodról: délre mozgathatod a csatorna "
-"melletti utolsó faluhoz."
+"Messzire kerültél a váradtól. Lehet, hogy további egységeket kell "
+"toboroznod, és az ork vezér nem fogja megengedni, hogy az ő várában "
+"toborozz! Légy óvatos!"
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1225
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:649
 msgid ""
 "We need to occupy that village, otherwise they will take it next turn! Move "
 "a unit into the village to stop the orcs capturing it. Whichever unit you "
@@ -1668,7 +1624,7 @@ msgstr ""
 "előnyös, hogy a faluban gyógyulni fog."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1237
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:655
 msgid ""
 "Careful! It is now nighttime. Orcs are <i>chaotic</i>, which means their "
 "attacks are now 25% stronger. By day, their attacks are 25% weaker, which is "
@@ -1678,26 +1634,38 @@ msgid ""
 msgstr ""
 "Légy óvatos! Éjszaka van. Az orkok <i>törvénytelenek</i>: támadásuk ilyenkor "
 "25%-kal erősebb. Nappal 25%-kal gyengébbek, ez jelentős különbség. Te "
-"<i>igazságos</i> vagy: erősebb nappal, gyengébb éjszaka. A tündék </"
-"i>semlegesek</i>: ránk nincs hatással a napszakok váltakozása."
+"<i>igazságos</i> vagy: erősebb nappal, gyengébb éjszaka. A tündék "
+"<i>semlegesek</i>: ránk nincs hatással a napszakok váltakozása."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1238
-msgid ""
-"After this dialog, hold the mouse over the landscape image below the minimap "
-"on the right. This brings up a description of the time of day, showing who "
-"has the advantage."
-msgstr ""
-"Ezután a párbeszédablak után vidd az egeret a tájat ábrázoló kis képre jobb "
-"oldalt. Ott látható a napszak leírása, hogy mikor kinek van előnye."
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1238
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:659
 msgid "Time of Day"
 msgstr "Napszak"
 
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:661
+#, fuzzy
+#| msgid ""
+#| "During a scenario, the time of day will shift as turns pass. There are "
+#| "four <i>alignments</i> a unit may be: Lawful, Neutral, Chaotic, or "
+#| "Liminal. Each alignment gets a different bonus or handicap depending on "
+#| "the time of day. You can hover over the sky image below the minimap on "
+#| "the right to see the current time of day and who has the advantage."
+msgid ""
+"During a scenario, the time of day will shift as turns pass. There are four "
+"<i>alignments</i> a unit may be: Lawful, Neutral, Chaotic, or Liminal. Each "
+"alignment gets a different bonus or handicap depending on the time of day. "
+"You can mouse over the landscape image below the minimap on the right to see "
+"the current time of day and who has the advantage."
+msgstr ""
+"A pályán a körök előrehaladtával változnak a napszakok. Az egységek "
+"<i>beállítottsága</i> négyféle lehet: igazságos, semleges, törvénytelen és "
+"ingatag. Minden beállítottság különböző bónuszokat vagy megkötéseket kaphat "
+"napszaktól függően. A kistérkép alatti égképen tartva az egérmutatót "
+"megnézheted, milyen napszak van épp, és ilyenkor kik vannak előnyben."
+
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1245
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:672
 msgid ""
 "Remember to retreat your wounded units to villages. Healers can only heal 4 "
 "hitpoints at a time, while villages can heal 8 (the maximum healing for any "
@@ -1708,12 +1676,7 @@ msgstr ""
 "egységnél)."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1252
-msgid "Defend here"
-msgstr "Itt védekezz"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1253
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:682
 msgid ""
 "Beware of those orcs crossing the river! If they get into the forest they’ll "
 "be hard to dislodge!"
@@ -1721,13 +1684,13 @@ msgstr ""
 "Vigyázz, azok az orkok átkelnek a folyón! Ha beérnek az erdőbe, nehéz lesz "
 "őket kiűznöd!"
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1259
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:690
 msgid "Tracking Unused Units"
 msgstr "Tétlen egységek követése"
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1259
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:692
 msgid ""
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
 "unit to the next. If you press <b>space</b>, you can mark the currently "
@@ -1738,32 +1701,37 @@ msgstr ""
 "Meg tudod nézni, hogy minden egységgel léptél-e már a körben: nyomd meg az "
 "<b>n</b> billentyűt a következő egységre ugráshoz, a <b>szóközt</b> pedig, "
 "hogy jelezd, ha ezzel a katonával már nem is szándékozol lépni (így "
-"megelőzheted, hogy később véletlenül mégis lépj vele). Amikor az </b>n</b> "
+"megelőzheted, hogy később véletlenül mégis lépj vele). Amikor az <b>n</b> "
 "billentyű nem választ ki újabb egységet, befejezheted a köröd."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1264
-msgid ""
-"In this scenario, you only need to defeat the orc leader to win. (Victory "
-"conditions for a scenario are given under <b>Scenario Objectives</b> in the "
-"<b>Main Menu</b>)."
-msgstr ""
-"Ezen a pályán csak az ork vezért kell megsemmisítened a győzelemhez. Egy "
-"adott pálya célkitűzései a <b>Pálya céljai</b> opciónál tekinthetők meg a "
-"<b>Menü</b> gombra kattintva."
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1264
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:701
 msgid "Victory Conditions"
 msgstr "Győzelmi feltételek"
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1269
-msgid "Recruit the Right Unit Types"
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:703
+#, fuzzy
+#| msgid ""
+#| "In this scenario, you only need to defeat the orc leader to win. Victory "
+#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
+#| "<b>Menu</b>."
+msgid ""
+"In this scenario, you only need to defeat the orc leader to win. Victory "
+"conditions for a scenario are given under <b>Scenario Objectives</b> in  "
+"<b>Menu</b>)."
+msgstr ""
+"Ezen a pályán csak az ork vezért kell megsemmisítened a győzelemhez. Egy "
+"adott pálya célkitűzései a <b>Pálya céljai</b> opciónál tekinthetők meg a "
+"<b>Menü</b>-ben."
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:712
+msgid "Recruit the Right Units"
 msgstr "Megfelelő egységek toborzása"
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1269
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:714
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
@@ -1772,17 +1740,32 @@ msgstr ""
 "kiváltképp hatásosak az ork közkatonákkal, a farkaslovasokkal és a "
 "vezérükkel szemben."
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1287
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:723
+msgid "Hurry up and defeat the orcs before they become entrenched!"
+msgstr "Siess és semmisítsd meg az orkokat, mielőtt elsáncolnák magukat!"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:750
+msgid "I have enough gold to recruit more units!"
+msgstr "Van még pénzem több egységet toborozni!"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:751
+msgid "female^I have enough gold to recruit more units!"
+msgstr "Van még pénzem több egységet toborozni!"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:797
 msgid ""
-"Stay near the keep! You need to be on a keep to recruit more units, and I "
-"doubt the orc leader will let you use his!"
+"That unit is about one kill (8 experience points) away from gaining a level! "
+"Do not let it die!"
 msgstr ""
-"Maradj a várad közelében: csak várban tudsz egységeket toborozni, és nem "
-"hiszem, hogy az ork vezér hagyná neked használni az ő várát!"
+"Annak az egységnek már csak 8 tapasztalati pont (egy ellenséges egység "
+"megölése) kell a szintlépéshez! Ne hagyd, hogy elessen!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1301
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:819
 msgid ""
 "Their leader has moved into that village! He’s not as stupid as I thought. "
 "The village heals him each turn and provides good defense."
@@ -1791,7 +1774,7 @@ msgstr ""
 "minden körben gyógyul és jó védekezést is biztosít neki."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1312
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:830
 msgid ""
 "That unit has captured our village! You’d better get him out; it heals him "
 "each turn and provides good defense."
@@ -1800,7 +1783,8 @@ msgstr ""
 "ott minden körben gyógyul és védekezni is jól tud."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1324
+#. The speaker is female
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:843
 msgid ""
 "Using me to attack is risky! I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
@@ -1809,9 +1793,8 @@ msgstr ""
 "távolsági támadásommal, de remélem, van egy terved arra az esetre, ha "
 "elvéteném!"
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1360
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1376
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:859
 msgid ""
 "You are close to killing their leader! The unit who finishes him will gain "
 "16 experience points because he is second level. Choose your attacking unit "
@@ -1821,78 +1804,58 @@ msgstr ""
 "őt, 16 tapasztalati pontot kap, mert a vezérük kettes szintű. Figyelemmel "
 "válaszd ki, hogy mely egységed legyen a szerencsés!"
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1425
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:884
 msgid ""
-"We will miss $deadguy.name| because he had $deadguy.experience experience "
-"points. He would have advanced to second level soon."
+"We will miss $unit.name| because he had $unit.experience experience points. "
+"He would have advanced a level soon."
 msgstr ""
-"$deadguy.name| hiányozni fog, mert neki már $deadguy.experience tapasztalati "
-"pontja volt... már nem kellet volna neki sok a szintlépéshez."
+"$unit.name| hiányozni fog, mert már $unit.experience tapasztalati pontja "
+"volt... Már nem kellett volna neki sok a szintlépéshez."
 
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1428
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:890
 msgid ""
-"We will miss $deadguy.name| because she had $deadguy.experience experience "
-"points. She would have advanced to second level soon."
+"We will miss $unit.name| because she had $unit.experience experience points. "
+"She would have advanced a level soon."
 msgstr ""
-"$deadguy.name| hiányozni fog, mert neki már $deadguy.experience tapasztalati "
-"pontja volt... már nem kellet volna neki sok a szintlépéshez."
+"$unit.name| hiányozni fog, mert már $unit.experience tapasztalati pontja "
+"volt... Már nem kellett volna neki sok a szintlépéshez."
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1445
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:919
 msgid ""
-"We will miss $deadguy.name|, but at least he was not one of our experienced "
+"We will miss $unit.name|, but at least he was not one of our experienced "
 "troops!"
 msgstr ""
-"Elveszítjük $deadguy.name| egységet, de legalább nem egy tapasztalt katonánk "
-"hal meg!"
+"$unit.name| hiányozni fog, de legalább nem egy tapasztalt katonánk hal meg!"
 
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1448
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:925
 msgid ""
-"We will miss $deadguy.name|, but at least she was not one of our experienced "
+"We will miss $unit.name|, but at least she was not one of our experienced "
 "troops!"
 msgstr ""
-"Elveszítjük $deadguy.name| egységet, de legalább nem egy tapasztalt katonánk "
-"hal meg!"
+"$unit.name| hiányozni fog, de legalább nem egy tapasztalt katonánk hal meg!"
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1463
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:942
+msgid ""
+"Higher level units are powerful, but not invulnerable. Goodbye, $unit.name|."
+msgstr ""
+"A magasabb szintű egységek sokkal erősebbek, de nem sérthetetlenek. Nyugodj "
+"békében, $unit.name|!"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:956
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy’s reach!"
 msgstr ""
 "Egy gyógyító elvesztése minden katonát rosszul érint! Tartsd őket távol az "
 "ellenségtől, hogy ne érjék el!"
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1464
-msgid "Tracking Enemy Movement"
-msgstr "Ellenséges mozgások követése"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1464
-msgid ""
-"You can see where an enemy can reach by moving the mouse over them. You can "
-"see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
-"command from the <b>Actions</b> menu."
-msgstr ""
-"Láthatod, hogy meddig juthat az adott ellenséges egység, ha fölé viszed az "
-"egeret. Megnézheted, hogy az ellenséges egységek mely területeket tudják "
-"elérni, ha a </b>Parancsok</b> menü </b>Ellenséges lépések mutatása</b> "
-"opcióját választod."
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1468
-msgid ""
-"Second level units are powerful, but not invulnerable! Goodbye, $deadguy."
-"name|."
-msgstr ""
-"A kettes szintű egységek sokkal erősebbek, de nem sérthetetlenek. Nyugodj "
-"békében $deadguy.name|!"
-
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1483
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:968
 msgid ""
 "Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
 "with many units at once during the day."
@@ -1901,85 +1864,159 @@ msgstr ""
 "egységgel, még nappal."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1503
+#. The speaker is female
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:982
 msgid ""
-"Advancing a level has fully healed me!\n"
-"I always have a 60% chance of hitting with my <i>Marksman</i> ability, and I "
-"deal 9 damage each for 4 attacks. Use me to dislodge hard-to-hit units."
+"Advancing a level has fully healed me! I am able to heal units 8 hitpoints "
+"per turn, instead of just 4, and may also cure them of poison if they cannot "
+"reach a village! I also have gained a new <i>magical</i> attack, meaning it "
+"always has a 70% chance to hit, but it is not as powerful as the similar "
+"attack wielded by the Elvish Sorceress."
 msgstr ""
-"A szintlépés teljesen meggyógyított!\n"
-"A <i>mesterlövész</i> képességemnek hála minden támadásomnál 60% az esélye, "
-"hogy az íjammal eltalálom az ellenfelet, és ráadásul már 9-et sebez mind a "
-"négy lövésem. Velem könnyedén kifüstölheted a nehezen megüthető egységeket."
+"A szintlépés teljesen meggyógyított! A szomszédos egységeket már 8 "
+"életerőponttal tudom gyógyítani az eddigi négy helyett, és mérgezéseiket is "
+"tudom kezelni, ha nem érnének el egy falut! Szereztem egy új <i>mágikus</i> "
+"támadást is, ami így mindig 70% eséllyel talál, bár nem olyan erős, mint a "
+"tünde boszorkányok hasonló támadása."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1512
+#. The speaker is female
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:996
 msgid ""
-"female^Advancing a level has fully healed me!\n"
-"I always have a 60% chance of hitting with my <i>Marksman</i> ability, and I "
-"deal 9 damage each for 4 attacks. Use me to dislodge hard-to-hit units."
+"Advancing a level has fully healed me! I cannot heal adjacent units anymore, "
+"but to compensate, I have a new, powerful faerie fire attack that deals 7 "
+"damage each for 4 strikes. It also has the <i>magical</i> weapon special, "
+"meaning it always has a 70% chance to hit."
 msgstr ""
-"A szintlépés teljesen meggyógyított!\n"
-"A <i>mesterlövész</i> képességemnek hála minden támadásomnál 60% az esélye, "
-"hogy az íjammal eltalálom az ellenfelet, és ráadásul már 9-et sebez mind a "
-"négy lövésem. Velem könnyedén kifüstölheted a nehezen megüthető egységeket."
+"A szintlépés teljesen meggyógyított! A szomszédos egységeket már nem tudom "
+"meggyógyítani, de cserébe új, erőteljes tündértűz varázslatot tanultam, ami "
+"7-et sebezhet mind a négy támadásommal. A <i>mágikus</i> különleges "
+"támadásnak köszönhetően ráadásul 70% esélyem van a találatra!"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1528
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1010
+#, fuzzy
+#| msgid ""
+#| "Advancing a level has fully healed me! When attacking, I always have at "
+#| "least a 60% chance of hitting with my longbow thanks to my <i>Marksman</"
+#| "i> ability, and I deal 9 damage each for 4 attacks. Use me to dislodge "
+#| "hard-to-hit units."
 msgid ""
-"Advancing a level has fully healed me!\n"
-"I am good with both bow and sword, and I have a special ability: <i>Ambush</"
-"i>. I can hide in forests where enemies can only see me if they are right "
-"next to me."
+"Advancing a level has fully healed me! I always have a 60% chance of hitting "
+"with my <i>Marksman</i> ability, and I deal 9 damage each for 4 attacks. Use "
+"me to dislodge hard-to-hit units."
 msgstr ""
-"A szintlépés teljesen meggyógyított!\n"
-"Jó vagyok a kardforgatásban és az íjlövészetben egyaránt, és van egy "
-"különleges képességem is: a <i>rajtaütés</i>. El tudok bújni az erdő fái "
-"közt és az ellenség csak akkor lát, ha közvetlenül mellettük vagyok."
+"A szintlépés teljesen meggyógyított! A <i>mesterlövész</i> képességemnek "
+"hála minden támadásomnál 60% az esélye, hogy az íjammal eltalálom az "
+"ellenfelet, és ráadásul már 9-et sebez mind a négy lövésem. Velem könnyedén "
+"kifüstölheted a nehezen megüthető egységeket."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1542
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1011
+#, fuzzy
+#| msgid ""
+#| "female^Advancing a level has fully healed me! When attacking, I always "
+#| "have at least a 60% chance of hitting with my longbow thanks to my "
+#| "<i>Marksman</i> ability, and I deal 9 damage each for 4 attacks. Use me "
+#| "to dislodge hard-to-hit units."
 msgid ""
-"Advancing a level has fully healed me!\n"
-"I am good with both bow and sword, and I have a special ability: "
-"<i>Leadership</i>. First level units around me do 25% more damage, so "
-"position me carefully."
+"female^Advancing a level has fully healed me! I always have a 60% chance of "
+"hitting with my <i>Marksman</i> ability, and I deal 9 damage each for 4 "
+"attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
-"A szintlépés teljesen meggyógyított!\n"
-"Jó vagyok a kardforgatásban és az íjlövészetben egyaránt, és van egy "
-"különleges képességem is: a <i>hadvezetés</i>. A körülöttem álló egyes "
-"szintű egységek 25%-kal többet sebeznek, úgyhogy lehetőleg figyelj oda, hogy "
-"hol állok."
+"A szintlépés teljesen meggyógyított! A <i>mesterlövész</i> képességemnek "
+"hála minden támadásomnál 60% az esélye, hogy az íjammal eltalálom az "
+"ellenfelet, és ráadásul már 9-et sebez mind a négy lövésem. Velem könnyedén "
+"kifüstölheted a nehezen megüthető egységeket."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1557
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1024
 msgid ""
-"Advancing a level has fully healed me!\n"
-"I am particularly good with the sword, dealing 8 damage in 4 attacks."
+"Advancing a level has fully healed me! I am good with both bow and sword, "
+"and I have a special ability: <i>Ambush</i>. I can hide in forests where "
+"enemies can only see me if they are right next to me."
 msgstr ""
-"A szintlépés teljesen meggyógyított!\n"
-"Kiváltképp a kardforgatásban jeleskedem: mind a négy támadásom egyenként 8 "
-"sebzést okoz."
+"A szintlépés teljesen meggyógyított! Jó vagyok a kardforgatásban és az "
+"íjászatban egyaránt, és van egy különleges képességem is: a <i>rajtaütés</"
+"i>. El tudok bújni az erdő fái közt és az ellenség csak akkor lát, ha "
+"közvetlenül mellém kerül."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1726
-msgid "You took too long! We’ll never be rid of these orcs!"
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1025
+msgid ""
+"female^Advancing a level has fully healed me! I am good with both bow and "
+"sword, and I have a special ability: <i>Ambush</i>. I can hide in forests "
+"where enemies can only see me if they are right next to me."
+msgstr ""
+"A szintlépés teljesen meggyógyított! Jó vagyok a kardforgatásban és az "
+"íjászatban egyaránt, és van egy különleges képességem is: a <i>rajtaütés</"
+"i>. El tudok bújni az erdő fái közt és az ellenség csak akkor lát, ha "
+"közvetlenül mellém kerül."
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1039
+msgid ""
+"Advancing a level has fully healed me! I am good with both bow and sword, "
+"and I have a special ability: <i>Leadership</i>. I do less damage myself "
+"than the Elvish Hero, but my ability allows my allies to fight better. First "
+"level units around me do 25% more damage, so position me carefully!"
+msgstr ""
+"A szintlépés teljesen meggyógyított! Jó vagyok a kardforgatásban és az "
+"íjlövészetben egyaránt, és van egy különleges képességem is: a "
+"<i>hadvezetés</i>. Bár kevesebbet sebzek, mint a tünde hős, képességem miatt "
+"szövetségeseim jobban harcolhatnak. A körülöttem álló egyes szintű egységek "
+"25%-kal többet sebeznek, úgyhogy lehetőleg figyelj oda, hogy hol állok!"
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1052
+msgid ""
+"Advancing a level has fully healed me! I am particularly good with the "
+"sword, dealing 8 damage in 4 attacks. While I don’t have the Leadership "
+"abilities of the Elvish Captain, my superior fighting skills allow my "
+"attacks to do more damage!"
+msgstr ""
+"A szintlépés teljesen meggyógyított! Kiváltképp a kardforgatásban "
+"jeleskedem: mind a négy támadásom egyenként 8 sebzést okoz. Noha nem "
+"rendelkezem a tünde kapitányok hadvezetés képességével, az ő harci tudásukat "
+"meghaladó támadásaim többet sebeznek!"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1061
+msgid "You took too long! Now we’ll never be rid of these orcs!"
 msgstr "Túl régóta hadakozunk, már sosem szabadulunk meg az orkoktól!"
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1749
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1077
+msgid "That... was foolish. Next time I should be more careful."
+msgstr "Ez... butaság volt. Legközelebb jobban kell vigyáznom."
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1078
+msgid "female^That... was foolish. Next time I should be more careful."
+msgstr "Ez... butaság volt. Legközelebb jobban kell vigyáznom."
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1101
+msgid "Agh! Now who will teach you how to defeat these orcs!"
+msgstr ""
+"Ááá! Most ki fog téged megtanítani arra, hogyan kell leszámolni ezekkel az "
+"orkokkal?"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1127
 msgid ""
-"You have beaten the orcs! You may want to try some novice-level campaigns "
-"next, such as: <i>The South Guard</i>, <i>An Orcish Incursion</i>, <i>A Tale "
-"of Two Brothers</i>, or <i>Heir to the Throne</i>. <i>The South Guard</i> "
-"was specifically designed as a beginner’s campaign. Konrad, Li’sar and "
-"Delfador are characters from <i>Heir to the Throne</i>."
+"You have beaten the orcs! You may want to try one of the novice-level "
+"campaigns next, such as <i>A Tale of Two Brothers</i>, <i>An Orcish "
+"Incursion</i>, or <i>The South Guard</i>. Konrad, Li’sar and Delfador are "
+"characters from <i>Heir to the Throne</i>. You can also refer to the in-game "
+"help browser if you ever need to refresh your memory on gameplay mechanics."
 msgstr ""
 "Győzedelmeskedtél az orkok felett. Ezután minden bizonnyal kipróbálnál egy "
-"hadjáratot kezdő nehézségi szinten, például <i>A Déli őrhelyet</i>, <i>Az "
-"ork betörést</i>, a <i>Két fivér meséjét</i> vagy <i>A trónörököst</i>. A "
-"<i>Déli őrhely</i> kifejezetten egy kezdőknek készített hadjárat. Konrad, "
-"Li’sar és Delfador <i>A trónörökös</i> című hadjárat szereplői."
+"hadjáratot kezdő nehézségi szinten, például a <i>Két fivér meséjét</i>, "
+"<i>Az ork betörést</i> vagy <i>A Déli őrhelyet</i>. Konrad, Li’sar és "
+"Delfador <i>A trónörökös</i> című hadjárat szereplői. Ha a játék működésével "
+"kapcsolatos emlékeid szeretnéd felfrissíteni, bármikor megnyithatod a "
+"játékon belüli súgót is."
 
 #. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
@@ -1988,8 +2025,8 @@ msgstr "Csatlós"
 
 #. [unit_type]: id=Fighter, race=human
 #. [unit_type]: id=Fighteress, race=human
-#: data/campaigns/tutorial/units/Fighter.cfg:18
-#: data/campaigns/tutorial/units/Fighteress.cfg:20
+#: data/campaigns/tutorial/units/Fighter.cfg:19
+#: data/campaigns/tutorial/units/Fighteress.cfg:21
 msgid ""
 "Young and brash, Fighters are skilled with swords and are vulnerable to "
 "attack from enemies. However, they have the potential to become great "
@@ -1999,20 +2036,15 @@ msgstr ""
 "támadása könnyen túljárhat az eszükön, ám egy napon nagy harcos válhat "
 "belőlük."
 
-#. [attack]: type=blade
-#: data/campaigns/tutorial/units/Fighter.cfg:23
-msgid "sword"
-msgstr "kard"
-
 #. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
 msgstr "Csatlósnő"
 
-#. [attack]: type=blade
-#: data/campaigns/tutorial/units/Fighteress.cfg:24
-msgid "saber"
-msgstr "szablya"
+#. [unit_type]: id=Quintain, race=mechanical
+#: data/campaigns/tutorial/units/Quintain.cfg:4
+msgid "Quintain"
+msgstr "Homokzsák"
 
 #. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/units/Quintain.cfg:16
@@ -2024,10 +2056,613 @@ msgstr ""
 "tornákra való készülés során. Igen különös lenne, ha valamelyik megtámadna "
 "közülük."
 
-#. [attack]: type=impact
-#: data/campaigns/tutorial/units/Quintain.cfg:24
-msgid "flail"
-msgstr "cséphadaró"
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/utils/utils.cfg:54
+msgid "Undo"
+msgstr "Visszavonás"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/utils/utils.cfg:56
+msgid ""
+"Don’t forget, you can press <b>u</b> to undo most things if you make a "
+"mistake."
+msgstr ""
+"Ne felejtsd el: használd az <b>u</b> gombot a lépések visszavonására, ha "
+"hibáznál."
+
+#: data/campaigns/tutorial/utils/utils.cfg:92
+msgid ""
+"\n"
+"<big>Click a mouse button or press the spacebar to continue...</big>"
+msgstr ""
+"\n"
+"<big>Egérkattintás vagy szóköz billentyű a folytatáshoz...</big>"
+
+#~ msgid "Village"
+#~ msgstr "Falu"
+
+#~ msgid "Keep"
+#~ msgstr "Várkastély"
+
+#~ msgid ""
+#~ "female^Hang on! You need to gather your forces. Or do you intend to fight "
+#~ "the orcs single-handedly?"
+#~ msgstr ""
+#~ "Várj kicsit! Össze kell gyűjtened a csapataidat! Vagy egyedül akarsz "
+#~ "nekiesni az orkoknak?"
+
+# A wesnoth fájlban "Küldetés vége" szerepel, egységes használat miatt ezt emelem át
+#~ msgid "End Scenario"
+#~ msgstr "Küldetés vége"
+
+# Előreugró max előugró lehet, de itt a jobb gombbal aktiválható menüre gondolnak.
+#, fuzzy
+#~| msgid ""
+#~| "Do you want to keep practicing? You can end this scenario at any time by "
+#~| "using the <b>End Scenario</b> item in the context menu."
+#~ msgid ""
+#~ "Do you want to keep practicing? You can end this scenario at any time by "
+#~ "using the <b>End Scenario</b> item in the context menu to move on to the "
+#~ "next phase of your training."
+#~ msgstr ""
+#~ "Szeretnél még gyakorolni? A jobb gombos menüben a <b>Küldetés vége</b> "
+#~ "elemre kattintva bármikor befejezheted a pályát."
+
+#~ msgid "Yes, I’m still figuring it out."
+#~ msgstr "Igen, még gyakorlok egy kicsit."
+
+#, fuzzy
+#~| msgid "Yes, I’m still figuring it out."
+#~ msgid "female^Yes, I’m still figuring it out."
+#~ msgstr "Igen, még gyakorlok egy kicsit."
+
+#~ msgid "No, I think I’ve got it."
+#~ msgstr "Nem, úgy érzem, már értek mindent."
+
+#, fuzzy
+#~| msgid "No, I think I’ve got it."
+#~ msgid "female^No, I think I’ve got it."
+#~ msgstr "Nem, úgy érzem, már értek mindent."
+
+#~ msgid "sword"
+#~ msgstr "kard"
+
+#~ msgid "saber"
+#~ msgstr "szablya"
+
+#~ msgid "flail"
+#~ msgstr "cséphadaró"
+
+#, fuzzy
+#~| msgid "You have 32 hitpoints and a sword, boy. I’m fairly sure you’ll win."
+#~ msgid ""
+#~ "You have $student_hp hitpoints and a sword, boy. I’m fairly sure you’ll "
+#~ "win."
+#~ msgstr ""
+#~ "Neked 32 életerőpontod van és mellé egy kardod, fiam. Egészen biztos "
+#~ "vagyok benne, hogy nyersz."
+
+#~ msgid ""
+#~ "<big>You have selected Konrad.</big>\n"
+#~ "The places he can move to are highlighted."
+#~ msgstr ""
+#~ "<big>Kijelölted Konradot.</big>\n"
+#~ "A mezők, ahová Konraddal léphetsz, világosabbak."
+
+#~ msgid ""
+#~ "<big>You have selected Li’sar.</big>\n"
+#~ "The places she can move to are highlighted."
+#~ msgstr ""
+#~ "<big>Kijelölted Li’sart.</big>\n"
+#~ "A mezők, ahová Li’sarral léphetsz, világosabbak."
+
+#~ msgid "Here"
+#~ msgstr "Ide"
+
+#~ msgid ""
+#~ "Move Konrad next to Delfador by clicking on the tile marked <b>Here</b>."
+#~ msgstr ""
+#~ "Lépj Konraddal közvetlenül Delfador mellé, ehhez kattints az <b>Ide</b> "
+#~ "feliratú mezőre!"
+
+#~ msgid ""
+#~ "Move Li’sar next to Delfador by clicking on the tile marked <b>Here</b>."
+#~ msgstr ""
+#~ "Lépj Li’sarral közvetlenül Delfador mellé, ehhez kattints az <b>Ide</b> "
+#~ "feliratú mezőre!"
+
+#~ msgid "Left click on tile labeled <b>Here</b>"
+#~ msgstr "Kattints bal egérgombbal az <b>Ide</b> címkéjű mezőre"
+
+#~ msgid "Oops!"
+#~ msgstr "Hoppá!"
+
+#~ msgid ""
+#~ "You moved to the wrong place! After this message, you can press <b>u</b> "
+#~ "to undo, then try again."
+#~ msgstr ""
+#~ "Rossz helyre léptél! Ezután az üzenet után megnyomhatod az <b>u</b> "
+#~ "gombot a billentyűzeten, amivel visszavonhatod a lépést; utána próbáld "
+#~ "újra."
+
+#~ msgid "Click on the quintain to attack it"
+#~ msgstr "Kattints a homokzsákra, hogy megtámadd"
+
+#~ msgid ""
+#~ "The tiny metal crown above Delfador means you will lose the game if he is "
+#~ "killed. You will also lose the game if your leader (Konrad) is killed."
+#~ msgstr ""
+#~ "Az apró fém korona Delfador mellett azt jelenti, hogy ha ő elesik, a "
+#~ "csatát is elveszted. Ugyancsak veszítesz, ha a vezéredet (Konradot) "
+#~ "megölik."
+
+#~ msgid ""
+#~ "The tiny metal crown above Delfador means you will lose the game if he is "
+#~ "killed. You will also lose the game if your leader (Li’sar) is killed."
+#~ msgstr ""
+#~ "Az apró fém korona Delfador mellett azt jelenti, hogy ha ő elesik, a "
+#~ "csatát is elveszted. Ugyancsak veszítesz, ha a vezéredet (Li’sart) "
+#~ "megölik."
+
+#~ msgid ""
+#~ "female^Unfortunately, you’ve used up your turn attacking the quintain. "
+#~ "The quintain now gets to attack."
+#~ msgstr ""
+#~ "Sajnos elhasználtad a köröd a homokzsák megtámadására. Most a homokzsák "
+#~ "köre következik."
+
+#~ msgid ""
+#~ "Click on the <b>End Turn</b> button in the bottom right of the screen"
+#~ msgstr "Kattints a <b>Kör vége</b> gombra a képernyő jobb alsó sarkában"
+
+#~ msgid ""
+#~ "female^There is a village on the other side of the river. Visiting "
+#~ "villages is a good idea, and ending your turn in one will heal you. To "
+#~ "the village!"
+#~ msgstr ""
+#~ "Van egy falu a folyó túlsó partján. Hasznos dolog a falvakba látogatni, "
+#~ "mert ha a körödet ott fejezed be, akkor gyógyulsz. Irány a falu!"
+
+#~ msgid "Click on the village to move Konrad"
+#~ msgstr "Kattints a falura, hogy Konraddal oda lépj"
+
+#~ msgid "Click on the village to move Li’sar"
+#~ msgstr "Kattints a falura, hogy Li’sarral oda lépj"
+
+#~ msgid "Click on the <b>End Turn</b> button"
+#~ msgstr "Kattints a <b>Kör vége</b> gombra"
+
+#~ msgid ""
+#~ "female^You’re about to be healed by $hp_difference hitpoints, but it’s "
+#~ "time to summon some help against that quintain."
+#~ msgstr ""
+#~ "Rövidesen gyógyulsz $hp_difference életerőponttal, de itt az ideje, hogy "
+#~ "segítséget szerezz a homokzsák ellen."
+
+#~ msgid ""
+#~ "female^A splendid idea. You can recruit two units if you return to the "
+#~ "keep. You have plenty of gold for that."
+#~ msgstr ""
+#~ "Pompás ötlet. Ha visszatérsz a várkastélyodba, toborozhatsz két egységet. "
+#~ "Bőségesen elég aranyad van hozzá."
+
+#~ msgid "Right click on a castle tile and select <b>Recruit</b>"
+#~ msgstr "Jobb kattintás egy vár mezőn, majd válaszd a <i>Toborzás</i> opciót"
+
+#~ msgid "New Recruits"
+#~ msgstr "Újoncok"
+
+#~ msgid ""
+#~ "New units cannot act in the turn they appear; you will gain control of "
+#~ "them next turn.\n"
+#~ "After this dialog, you can move the mouse over a unit to see a summary of "
+#~ "its abilities on the right of the screen."
+#~ msgstr ""
+#~ "Ezek az újonnan toborzott egységek semmit sem csinálhatnak ebben a "
+#~ "körben; már csak a következő körben irányíthatod őket.\n"
+#~ "Jó, ha tudod: ezután a párbeszédablak után az egységekre viheted az "
+#~ "egérmutatót, hogy egy leírást olvashass róluk a képernyő jobb oldalán."
+
+#~ msgid "Right click on the other castle tile and recruit another unit"
+#~ msgstr ""
+#~ "Kattints jobb gombbal a másik vár mezőre, és toborozz még egy egységet"
+
+#~ msgid ""
+#~ "Had the quintain survived your onslaught, it would have regained two "
+#~ "hitpoints. If a unit doesn’t do anything for a turn, it will slowly heal."
+#~ msgstr ""
+#~ "Ha a homokzsák túlélte volna a támadásodat, két életerőpontot gyógyult "
+#~ "volna. Ha egy egység semmit sem csinál egy körben, lassan gyógyulni kezd."
+
+#~ msgid "End your turn and attack again."
+#~ msgstr "Fejezd be a köröd, és támadj újra."
+
+#~ msgid "Left click on the quintain to attack it."
+#~ msgstr "Kattints bal gombbal a homokzsákra, hogy megtámadd. "
+
+#~ msgid " The ranged attack would have been safer."
+#~ msgstr " A távolsági támadás biztonságosabb lett volna."
+
+#~ msgid ""
+#~ "\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "\n"
+#~ "Fejezd be a köröd, és támadj újra."
+
+#~ msgid ""
+#~ "\n"
+#~ "You should tell the other elf to use the bow."
+#~ msgstr ""
+#~ "\n"
+#~ "A másik tündének mondd, hogy használja az íját."
+
+#~ msgid "Attack with the other elf"
+#~ msgstr "Támadj a másik tündével"
+
+#~ msgid ""
+#~ ", your new recruit, has two traits: <i>strong</i> and <i>intelligent</i>. "
+#~ "‘Strong’ means a unit does more damage, and ‘intelligent’ means it needs "
+#~ "less experience to advance a level."
+#~ msgstr ""
+#~ ", az újoncod, két jellemvonással rendelkezik: <i>erős</i> és <i>eszes</"
+#~ "i>. Az „erősség” azt jelenti, hogy többet sebez, az „eszesség” pedig azt, "
+#~ "hogy kevesebb tapasztalati pontra van szüksége a szintlépéshez."
+
+#~ msgid ""
+#~ " has two traits: <i>quick</i> and <i>resilient</i>. ‘Quick’ means a unit "
+#~ "can move one tile further each turn, and ‘resilient’ means it has more "
+#~ "hitpoints."
+#~ msgstr ""
+#~ " szintén két jellemvonással bír: <i>gyors</i> és <i>ellenálló</i>. A "
+#~ "„gyorsaság” azt jelenti, hogy az egység körönként egy mezővel többet "
+#~ "léphet, az „ellenállóság” pedig azt, hogy több életerőpontja van."
+
+#~ msgid "Patch of forest"
+#~ msgstr "Erdőfolt"
+
+#~ msgid ""
+#~ "Now put an unwounded unit, preferably a Fighter, in that patch of forest "
+#~ "on the south-east of the island; a nice, defensible spot."
+#~ msgstr ""
+#~ "Most pedig rakj egy ép egységet, lehetőleg egy harcost arra az erdőfoltra "
+#~ "a sziget délkeleti részén: az egy szép, jól védhető hely."
+
+#~ msgid "Can one unit survive against all those enemies?"
+#~ msgstr "Túlélheti az ott álló egyetlen egységem annyi ellenség támadását?"
+
+#~ msgid ""
+#~ "With a little help, yes. If you move your Shaman next to the defending "
+#~ "unit, she will heal it 4 hitpoints per turn. Just be careful not to "
+#~ "expose the Shaman to attack since she is fairly weak herself."
+#~ msgstr ""
+#~ "Egy kis segítséggel igen. Ha a sámánnőt a védekező egység mellé mozgatod, "
+#~ "gyógyítani fogja sebeit körönként 4 életerőpontot visszaadva. Csak "
+#~ "vigyázz, nehogy támadásnak tedd ki a sámánnőt, mert önmagában elég gyenge."
+
+#~ msgid "Move a unit (a Fighter if possible) to the patch of forest"
+#~ msgstr "Vigyél egy egységet (lehetőleg egy harcost) az erdőfoltra"
+
+#~ msgid ""
+#~ "Advance other units onto the island or to capture villages, then <b>End "
+#~ "Turn</b>"
+#~ msgstr ""
+#~ "Vezess még néhány egységet a szigetre, vagy a falvakat elfoglalni, utána "
+#~ "<b>fejezd be a köröd</b>."
+
+#~ msgid "I have $side.gold gold; enough to recruit!"
+#~ msgstr "Van $side.gold aranyam: ez még elég a toborzáshoz!"
+
+#~ msgid "Yes, keep recruiting more units: I think you might need them!"
+#~ msgstr "Valóban, csak folytasd a toborzást: szükséged lehet még csapatokra."
+
+#~ msgid "This is no game, Konrad! "
+#~ msgstr "Ez nem játék, Konrad! "
+
+#~ msgid "This is no game, Li’sar! "
+#~ msgstr "Ez nem játék, Li’sar! "
+
+#~ msgid "Shallow"
+#~ msgstr "Sekély"
+
+#~ msgid "Deep water"
+#~ msgstr "Mély víz"
+
+#~ msgid ""
+#~ "To start, we will need some units:\n"
+#~ "two Elvish Fighters\n"
+#~ "two Elvish Archers\n"
+#~ "one Elvish Shaman"
+#~ msgstr ""
+#~ "Kezdéshez szükségünk lesz néhány egységre:\n"
+#~ "két tünde harcosra\n"
+#~ "két tünde íjászra\n"
+#~ "egy tünde sámánnőre"
+
+#~ msgid ""
+#~ "During your tutorial, both $recall_name1 and $recall_name2 gained "
+#~ "$recall_xp1 experience points. You should <i>recall</i> them now so they "
+#~ "can gain more experience, rather than recruiting new Fighters."
+#~ msgstr ""
+#~ "A gyakorlásod közben $recall_name1 és $recall_name2 egyaránt $recall_xp1 "
+#~ "tapasztalati pontot szerzett. Új harcosok toborzása helyett inkább őket "
+#~ "kéne <i>visszahívnod</i>, hogy több tapasztalatot szerezhessenek."
+
+#~ msgid ""
+#~ "During your tutorial, $recall_name1 gained $recall_xp1 experience points, "
+#~ "and $recall_name2 gained $recall_xp2. You should <i>recall</i> them now "
+#~ "so they can gain more experience, rather than recruiting new Fighters."
+#~ msgstr ""
+#~ "A gyakorlásod közben $recall_name1 $recall_xp1 tapasztalati pontot "
+#~ "szerzett, $recall_name2 pedig $recall_xp2 pontot. Új harcosok toborzása "
+#~ "helyett inkább őket kéne <i>visszahívnod</i>, hogy több tapasztalatot "
+#~ "szerezhessenek."
+
+#~ msgid ""
+#~ "During your tutorial, $recall_name1 gained $recall_xp1 experience points. "
+#~ "You should recall that unit now, and recruit a second one (which is "
+#~ "cheaper than recalling, anyway)."
+#~ msgstr ""
+#~ "Gyakorlásod alatt $recall_name1 $recall_xp1 tapasztalati pontot gyűjtött. "
+#~ "Vissza kéne most hívnod őt, és egy új egységet is toborozhatnál (ami "
+#~ "ráadásul olcsóbb is, mint visszahívni)."
+
+#~ msgid "RECALL $recall_name1"
+#~ msgstr "HÍVD VISSZA őt: $recall_name1"
+
+#~ msgid ""
+#~ "Right click on the tile north-east of you and <i>recall</i> $recall_name1"
+#~ msgstr ""
+#~ "Kattints jobb gombbal a tőled északkeletre fekvő mezőre, és <i>hívd "
+#~ "vissza</i> $recall_name1 nevű egységedet"
+
+#~ msgid ""
+#~ "If any Elvish Fighters from your last battle had experience, we would "
+#~ "<i>recall</i> them to the current battlefield. However, your veterans "
+#~ "gained no experience so it’s cheaper to recruit new units instead. "
+#~ "Recruit an Elvish Fighter."
+#~ msgstr ""
+#~ "Ha bármelyik tünde harcosod az utóbbi csatában tapasztalatot szerzett "
+#~ "volna, <i>visszahívnánk</i> őt... mivel azonban egyikük sem szerzett, így "
+#~ "olcsóbb egy új egységet toborozni. Tehát toborozz egy tünde harcost."
+
+#~ msgid ""
+#~ "If you had any experienced units alive from your last battle we would "
+#~ "<i>recall</i> them. Instead we must recruit some new Elvish Fighters."
+#~ msgstr ""
+#~ "Ha van még élő tapasztalt harcosod az előző csatából, <i>vissza kéne "
+#~ "hívnunk</i> őt, különben viszont muszáj új tünde harcosokat toboroznunk."
+
+#~ msgid ""
+#~ "Right click on the tile north-east of you and recruit an Elvish Fighter"
+#~ msgstr ""
+#~ "Kattints jobb gombbal a tőled északkeletre fekvő mezőre, és toborozz egy "
+#~ "tünde harcost"
+
+#~ msgid "No! I said recruit an Elvish <i>Shaman</i>! Now try again..."
+#~ msgstr ""
+#~ "Nem! Azt mondtam, hogy toborozz egy tünde <i>sámánnőt</i>! Próbáld meg "
+#~ "újra..."
+
+#~ msgid "So, should I end my turn now?"
+#~ msgstr "Nos, befejezhetem már a köröm?"
+
+#~ msgid "No! I said recruit an Elvish <i>Archer</i>! Now try again..."
+#~ msgstr ""
+#~ "Nem! Azt mondtam, hogy toborozz egy tünde <i>íjászt</i>! Próbáld meg "
+#~ "újra..."
+
+#~ msgid "Eowynial"
+#~ msgstr "Eowynial"
+
+#~ msgid "Recruit an Elvish Shaman to your north"
+#~ msgstr "Toborozz egy tünde sámánnőt tőled északra"
+
+#~ msgid "Elriend"
+#~ msgstr "Elriend"
+
+#~ msgid "No! I said <i>recall</i> $recall_name2|! Now try again..."
+#~ msgstr ""
+#~ "Nem! Azt mondtam, hogy <i>hívd vissza</i> $recall_name2| nevű egységedet! "
+#~ "Próbáld meg újra..."
+
+#~ msgid "Archer #1"
+#~ msgstr "Íjász 1"
+
+#~ msgid "Archer #2"
+#~ msgstr "Íjász 2"
+
+#~ msgid "Recruit two Elvish Archers in the tiles to your west"
+#~ msgstr "Toborozz két tünde íjászt a tőled nyugatra fekvő mezőkre"
+
+#~ msgid "No! I said recruit an Elvish <i>Fighter</i>! Now try again..."
+#~ msgstr ""
+#~ "Nem! Azt mondtam, hogy toborozz egy tünde <i>harcost</i>! Próbáld meg "
+#~ "újra..."
+
+#~ msgid "Golir"
+#~ msgstr "Golir"
+
+#~ msgid ""
+#~ "No! I said recall $recall_name1, not $recall_name2|! Now try again..."
+#~ msgstr ""
+#~ "Nem! Azt mondtam, hogy $recall_name1 nevű egységed hívd vissza, nem pedig "
+#~ "őt: $recall_name2|! Próbáld meg újra..."
+
+#~ msgid ""
+#~ "No! I said <i>recall</i> $recall_name1 from the last battle, not recruit "
+#~ "a new $recruit.language_name|! Now try again..."
+#~ msgstr ""
+#~ "Nem! Azt mondtam, hogy <i>hívd vissza</i> $recall_name1 nevű egységedet "
+#~ "az utóbbi ütközetből, nem pedig, hogy toborozz egy új $recruit."
+#~ "language_name| egységet! Próbáld meg újra..."
+
+#~ msgid "Right click on the tile east of you and recall $recall_name2"
+#~ msgstr ""
+#~ "Kattints jobb gombbal a tőled keletre fekvő mezőre, és hívd vissza "
+#~ "$recall_name2 nevű egységedet"
+
+#~ msgid "RECALL $recall_name2"
+#~ msgstr "HÍVD VISSZA őt: $recall_name2"
+
+#~ msgid "Right click on the tile east of you and recruit an Elvish Fighter"
+#~ msgstr ""
+#~ "Kattints jobb gombbal a tőled keletre levő mezőre, és toborozz egy tünde "
+#~ "harcost"
+
+#~ msgid ""
+#~ "$recruit.language_name|? I said <i>recruit</i> a new <i>Elvish Fighter</"
+#~ "i>. Now try again..."
+#~ msgstr ""
+#~ "$recruit</i>.language_name|? Nem! Azt mondtam, hogy <i>toborozz</i> egy "
+#~ "<i>tünde harcost</i>! Próbáld meg újra..."
+
+#~ msgid "Elindel"
+#~ msgstr "Elindel"
+
+#~ msgid "You’ve learned well, Konrad! "
+#~ msgstr "Gyorsan tanulsz, Konrad!"
+
+#~ msgid ""
+#~ "The village supports one unit and pays 1 gold per turn. You’re only "
+#~ "losing 1 gold per turn now."
+#~ msgstr ""
+#~ "A falu egy egységet fenntart, és ad még egy aranyat is minden körben: "
+#~ "most már csak egy aranyat vesztesz körönként."
+
+#~ msgid "You’ve learned well, Li’sar! "
+#~ msgstr "Gyorsan tanulsz, Li’sar!"
+
+#~ msgid ""
+#~ "You should leave the villages near your keep for Konrad to capture. He "
+#~ "needs to stay nearby to recruit more units anyway."
+#~ msgstr ""
+#~ "Hagynod kéne a vár melletti falvakat Konradnak, hogy ő foglalja el őket: "
+#~ "neki mindenképpen a közelben kell maradnia, hogy új egységeket "
+#~ "toborozhasson."
+
+#~ msgid ""
+#~ "You should leave the villages near your keep for Li’sar to capture. She "
+#~ "needs to stay nearby to recruit more units anyway."
+#~ msgstr ""
+#~ "Hagynod kéne a vár melletti falvakat Li’sarnak, hogy ő foglalja el őket: "
+#~ "neki mindenképpen a közelben kell maradnia, hogy új egységeket "
+#~ "toborozhasson."
+
+#~ msgid ""
+#~ "Orcish Grunts have no ranged attacks, so use your archers against them."
+#~ msgstr ""
+#~ "Az ork közkatonáknak nincsen távolsági támadásuk, használd ezért az "
+#~ "íjászaidat ellenük."
+
+# /n maradásának oka volt?
+#~ msgid ""
+#~ "To review the capabilities of any unit—including an enemy—hover the mouse "
+#~ "over it, and you will see a unit summary on the right of the screen"
+#~ msgstr ""
+#~ "Ha át akarod tekinteni egy egység képességeit – beleértve az ellenséges "
+#~ "katonákat is –, vidd az egeret fölé: egy egység összefoglaló fog "
+#~ "megjelenni a képernyő jobb oldalán."
+
+#~ msgid "Unit Summaries"
+#~ msgstr "Egység összefoglalók"
+
+#~ msgid ""
+#~ "Excellent. Elves are well-protected in the forest. There’s only a 30% "
+#~ "chance of hitting an Elvish Archer in that tile."
+#~ msgstr ""
+#~ "Kitűnő! A tündék remekül védve vannak az erdőben: csak 30% esély van "
+#~ "arra, hogy egy tünde íjászt megüssenek, amikor egy olyan mezőn van."
+
+#~ msgid ""
+#~ "It’s very dangerous to stand in water when there are enemies about! Your "
+#~ "unit will have an 80% chance of being hit when the enemy counter-attacks! "
+#~ "Cancel!"
+#~ msgstr ""
+#~ "Nagyon veszélyes vízben állni, amikor ellenség van a közelben! Ha egy ork "
+#~ "visszatámadna, 80% lenne az esélye, hogy eltalál! Lépj vissza!"
+
+#~ msgid "Attack the orc with the other Archer"
+#~ msgstr "Támadd meg az orkot a másik íjászoddal"
+
+#~ msgid "Fighter to HERE"
+#~ msgstr "A harcost IDE"
+
+#~ msgid ""
+#~ "Your other units cannot reach the orc this turn. Send a Fighter to the "
+#~ "village in the far east of the map. It will take two turns to reach it."
+#~ msgstr ""
+#~ "A többi egységed nem érhet oda az orkhoz ebben a körben. Küldj egy "
+#~ "harcost a keleten lévő távoli faluba: ez két körig is el fog tartani."
+
+#~ msgid "Tell a Fighter to move to the far east village"
+#~ msgstr "Mondd meg egy harcosnak, hogy menjen a keleten levő távoli faluba"
+
+#~ msgid ""
+#~ "Send the other Fighter and the Shaman south so they can attack next turn, "
+#~ "then return to the keep to recruit more units!"
+#~ msgstr ""
+#~ "Küldd a másik harcosodat és a sámánnőt délre, hogy a következő körben "
+#~ "támadhassanak, utána térj vissza a várba, hogy még több egységet "
+#~ "toborozhass!"
+
+#~ msgid "Move your Fighter and Shaman south, then return Konrad to the keep"
+#~ msgstr ""
+#~ "Lépj a harcossal és a sámánnővel délre, majd térj vissza Konraddal a várba"
+
+#~ msgid "Move your Fighter and Shaman south, then return Li’sar to the keep"
+#~ msgstr ""
+#~ "Lépj a harcossal és a sámánnővel délre, majd térj vissza Li’sarral a várba"
+
+#~ msgid "Recruit another Archer and a Fighter"
+#~ msgstr "Toborozz még egy harcost és egy íjászt"
+
+#~ msgid "That is often a problem, which is why owning villages is important."
+#~ msgstr "Ez gyakran probléma, ezért olyan fontos, hogy sok falvad legyen."
+
+#~ msgid "Move Konrad to another (unowned) village"
+#~ msgstr "Lépj Konraddal egy újabb (még nem elfoglalt) faluba"
+
+#~ msgid "Move Li’sar to another (unowned) village"
+#~ msgstr "Lépj Li’sarral egy újabb (még nem elfoglalt) faluba"
+
+#~ msgid "ZoC"
+#~ msgstr "ET"
+
+#~ msgid "Advance other units and capture villages, then <b>End Turn</b>"
+#~ msgstr ""
+#~ "Juttasd előrébb a többi egységet és foglalj falvakat, utána <b>add át a "
+#~ "köröd</b>"
+
+#~ msgid ""
+#~ "female^No other units can reach that orc. I hope my $unit.language_name "
+#~ "survives its counter-attack! I’d better grab more villages and move "
+#~ "everyone closer for next turn."
+#~ msgstr ""
+#~ "A többi egység nem tudja elérni az orkot. Remélem, a $unit.language_name "
+#~ "egységem túléli az ellentámadást! Jobban tenném, ha foglalnék még "
+#~ "falvakat, és mindenkit közelebb tolnék hozzájuk a következő körre."
+
+#~ msgid "Move your Shaman onto the bridge to stand behind your other unit"
+#~ msgstr "Mozgasd a sámánnőt a hídra, hogy az egység mögött álljon"
+
+#~ msgid ""
+#~ "Don’t forget about your Fighter in the east; you can move him south to "
+#~ "that last village near the channel."
+#~ msgstr ""
+#~ "Ne feledkezz meg a keleten álló harcosodról: délre mozgathatod a csatorna "
+#~ "melletti utolsó faluhoz."
+
+#~ msgid ""
+#~ "After this dialog, hold the mouse over the landscape image below the "
+#~ "minimap on the right. This brings up a description of the time of day, "
+#~ "showing who has the advantage."
+#~ msgstr ""
+#~ "Ezután a párbeszédablak után vidd az egeret a tájat ábrázoló kis képre "
+#~ "jobb oldalt. Ott látható a napszak leírása, hogy mikor kinek van előnye."
+
+#~ msgid "Defend here"
+#~ msgstr "Itt védekezz"
 
 #~ msgid "Do you want to keep practicing?"
 #~ msgstr "Szeretnél még gyakorolni?"

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,23 +19,23 @@
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "editor/action/action.hpp"
+
 #include "editor/map/map_context.hpp"
 #include "gettext.hpp"
-#include "util.hpp"
+#include "random.hpp"
 
-#include "resources.hpp"
+#include <memory>
 
-#include <boost/foreach.hpp>
-
-namespace editor {
-
+namespace editor
+{
 int editor_action::next_id_ = 1;
 int editor_action::instance_count_ = 0;
 
 editor_action::editor_action()
-: id_(next_id_++)
+	: id_(next_id_++)
 {
-	instance_count_++;
+	++instance_count_;
+
 #ifdef EDITOR_DEBUG_ACTION_LIFETIME
 	LOG_ED << "Action " << std::setw(2) << id_ << " ctor " << this << " (count is " << instance_count << "\n";
 #endif
@@ -44,6 +44,7 @@ editor_action::editor_action()
 editor_action::~editor_action()
 {
 	instance_count_--;
+
 #ifdef EDITOR_DEBUG_ACTION_LIFETIME
 	LOG_ED << "Action " << std::setw(2) << id_ << " dtor " << this << " (count is " << instance_count << "\n";
 #endif
@@ -61,92 +62,119 @@ std::string editor_action::get_description() const
 
 editor_action* editor_action::perform(map_context& mc) const
 {
-	util::unique_ptr<editor_action> undo(new editor_action_whole_map(mc.get_map()));
+	editor_action_ptr undo(new editor_action_whole_map(mc.map()));
 	perform_without_undo(mc);
 	return undo.release();
 }
 
-editor_action_whole_map* editor_action_whole_map::clone() const
+IMPLEMENT_ACTION(whole_map)
+
+void editor_action_whole_map::perform_without_undo(map_context& mc) const
 {
-	return new editor_action_whole_map(*this);
-}
-void editor_action_whole_map::perform_without_undo(map_context& mc) const {
 	mc.set_map(m_);
 }
 
-editor_action_chain::editor_action_chain(const editor::editor_action_chain &other)
-	: editor_action(), actions_()
+editor_action_chain::editor_action_chain(const editor::editor_action_chain& other)
+	: editor_action()
+	, actions_()
 {
-	BOOST_FOREACH(editor_action* a, other.actions_) {
+	for(editor_action* a : other.actions_) {
 		actions_.push_back(a->clone());
 	}
 }
+
 editor_action_chain& editor_action_chain::operator=(const editor_action_chain& other)
 {
-	if (this == &other) return *this;
-	BOOST_FOREACH(editor_action* a, actions_) {
+	if(this == &other) {
+		return *this;
+	}
+
+	for(editor_action* a : actions_) {
 		delete a;
 	}
+
 	actions_.clear();
-	BOOST_FOREACH(editor_action* a, other.actions_) {
+
+	for(editor_action* a : other.actions_) {
 		actions_.push_back(a->clone());
 	}
+
 	return *this;
 }
 editor_action_chain::~editor_action_chain()
 {
-	BOOST_FOREACH(editor_action* a, actions_) {
+	for(editor_action* a : actions_) {
 		delete a;
 	}
 }
-editor_action_chain* editor_action_chain::clone() const
+
+IMPLEMENT_ACTION(chain)
+
+int editor_action_chain::action_count() const
 {
-	return new editor_action_chain(*this);
-}
-int editor_action_chain::action_count() const {
 	int count = 0;
-	BOOST_FOREACH(const editor_action* a, actions_) {
-		if (a) {
+	for(const editor_action* a : actions_) {
+		if(a) {
 			count += a->action_count();
 		}
 	}
+
 	return count;
 }
-void editor_action_chain::append_action(editor_action* a) {
+
+void editor_action_chain::append_action(editor_action* a)
+{
 	actions_.push_back(a);
 }
-void editor_action_chain::prepend_action(editor_action* a) {
+
+void editor_action_chain::prepend_action(editor_action* a)
+{
 	actions_.push_front(a);
 }
-bool editor_action_chain::empty() const {
+
+bool editor_action_chain::empty() const
+{
 	return actions_.empty();
 }
-editor_action* editor_action_chain::pop_last_action() {
-	if (empty()) throw editor_action_exception("pop_last_action requested on an empty action_chain");
+
+editor_action* editor_action_chain::pop_last_action()
+{
+	if(empty()) {
+		throw editor_action_exception("pop_last_action requested on an empty action_chain");
+	}
+
 	editor_action* last = actions_.back();
 	actions_.pop_back();
 	return last;
 }
-editor_action* editor_action_chain::pop_first_action() {
-	if (empty()) throw editor_action_exception("pop_first_action requested on an empty action_chain");
+
+editor_action* editor_action_chain::pop_first_action()
+{
+	if(empty()) {
+		throw editor_action_exception("pop_first_action requested on an empty action_chain");
+	}
+
 	editor_action* last = actions_.front();
 	actions_.pop_front();
 	return last;
 }
-editor_action_chain* editor_action_chain::perform(map_context& mc) const {
-	util::unique_ptr<editor_action_chain> undo(new editor_action_chain());
-	BOOST_FOREACH(editor_action* a, actions_) {
-		if (a != NULL) {
+
+editor_action_chain* editor_action_chain::perform(map_context& mc) const
+{
+	std::unique_ptr<editor_action_chain> undo(new editor_action_chain());
+	for(editor_action* a : actions_) {
+		if(a != nullptr) {
 			undo->append_action(a->perform(mc));
 		}
 	}
+
 	std::reverse(undo->actions_.begin(), undo->actions_.end());
 	return undo.release();
 }
 void editor_action_chain::perform_without_undo(map_context& mc) const
 {
-	BOOST_FOREACH(editor_action* a, actions_) {
-		if (a != NULL) {
+	for(editor_action* a : actions_) {
+		if(a != nullptr) {
 			a->perform_without_undo(mc);
 		}
 	}
@@ -157,142 +185,143 @@ void editor_action_area::extend(const editor_map& /*map*/, const std::set<map_lo
 	area_.insert(locs.begin(), locs.end());
 }
 
-editor_action_paste* editor_action_paste::clone() const
-{
-	return new editor_action_paste(*this);
-}
+IMPLEMENT_ACTION(paste)
+
 void editor_action_paste::extend(const editor_map& map, const std::set<map_location>& locs)
 {
 	paste_.add_tiles(map, locs);
 }
+
 editor_action_paste* editor_action_paste::perform(map_context& mc) const
 {
-	map_fragment mf(mc.get_map(), paste_.get_offset_area(offset_));
-	util::unique_ptr<editor_action_paste> undo(new editor_action_paste(mf));
+	map_fragment mf(mc.map(), paste_.get_offset_area(offset_));
+	auto undo = std::make_unique<editor_action_paste>(mf);
+
 	perform_without_undo(mc);
 	return undo.release();
 }
+
 void editor_action_paste::perform_without_undo(map_context& mc) const
 {
-	paste_.paste_into(mc.get_map(), offset_);
+	paste_.paste_into(mc.map(), offset_);
 	mc.add_changed_location(paste_.get_offset_area(offset_));
 	mc.set_needs_terrain_rebuild();
 }
 
+IMPLEMENT_ACTION(paint_area)
 
-editor_action_paint_area* editor_action_paint_area::clone() const
-{
-	return new editor_action_paint_area(*this);
-}
 editor_action_paste* editor_action_paint_area::perform(map_context& mc) const
 {
-	map_fragment mf(mc.get_map(), area_);
-	util::unique_ptr<editor_action_paste> undo(new editor_action_paste(mf));
+	map_fragment mf(mc.map(), area_);
+	std::unique_ptr<editor_action_paste> undo(new editor_action_paste(mf));
+
 	perform_without_undo(mc);
 	return undo.release();
 }
+
 void editor_action_paint_area::perform_without_undo(map_context& mc) const
 {
 	mc.draw_terrain(t_, area_, one_layer_);
 	mc.set_needs_terrain_rebuild();
 }
 
-editor_action_fill* editor_action_fill::clone() const
-{
-	return new editor_action_fill(*this);
-}
+IMPLEMENT_ACTION(fill)
+
 editor_action_paint_area* editor_action_fill::perform(map_context& mc) const
 {
-	std::set<map_location> to_fill = mc.get_map().get_contiguous_terrain_tiles(loc_);
-	util::unique_ptr<editor_action_paint_area> undo(new editor_action_paint_area(to_fill, mc.get_map().get_terrain(loc_)));
+	std::set<map_location> to_fill = mc.map().get_contiguous_terrain_tiles(loc_);
+	std::unique_ptr<editor_action_paint_area> undo(
+			new editor_action_paint_area(to_fill, mc.map().get_terrain(loc_)));
+
 	mc.draw_terrain(t_, to_fill, one_layer_);
 	mc.set_needs_terrain_rebuild();
+
 	return undo.release();
 }
+
 void editor_action_fill::perform_without_undo(map_context& mc) const
 {
-	std::set<map_location> to_fill = mc.get_map().get_contiguous_terrain_tiles(loc_);
+	std::set<map_location> to_fill = mc.map().get_contiguous_terrain_tiles(loc_);
 	mc.draw_terrain(t_, to_fill, one_layer_);
 	mc.set_needs_terrain_rebuild();
 }
 
-editor_action_starting_position* editor_action_starting_position::clone() const
-{
-	return new editor_action_starting_position(*this);
-}
+IMPLEMENT_ACTION(starting_position)
+
 editor_action* editor_action_starting_position::perform(map_context& mc) const
 {
-	util::unique_ptr<editor_action> undo;
-	int old_player = mc.get_map().is_starting_position(loc_) + 1;
-	map_location old_loc = mc.get_map().starting_position(player_);
-	LOG_ED << "ssp perform, player_" << player_ << ", loc_ " << loc_ << ", old_player " << old_player << ", old_loc " << old_loc << "\n";
-	if (old_player != -1) {
-		// If another player was starting at the location, we actually perform two actions, so the undo is an action_chain.
+	editor_action_ptr undo;
+
+	const std::string* old_loc_id = mc.map().is_starting_position(loc_);
+	map_location old_loc = mc.map().special_location(loc_id_);
+
+	if(old_loc_id != nullptr) {
+		// If another player was starting at the location, we actually perform two actions, so the undo is an
+		// action_chain.
 		editor_action_chain* undo_chain = new editor_action_chain();
-		undo_chain->append_action(new editor_action_starting_position(loc_, old_player));
-		undo_chain->append_action(new editor_action_starting_position(old_loc, player_));
+
+		undo_chain->append_action(new editor_action_starting_position(loc_, *old_loc_id));
+		undo_chain->append_action(new editor_action_starting_position(old_loc, loc_id_));
+
 		undo.reset(undo_chain);
-		LOG_ED << "ssp actual: " << old_player << " to " << map_location() << "\n";
-		mc.get_map().set_starting_position(old_player, map_location());
+
+		LOG_ED << "ssp actual: " << *old_loc_id << " to " << map_location() << "\n";
+
+		mc.map().set_special_location(*old_loc_id, map_location());
 	} else {
-		undo.reset(new editor_action_starting_position(old_loc, player_));
+		undo.reset(new editor_action_starting_position(old_loc, loc_id_));
 	}
-	LOG_ED << "ssp actual: " << player_ << " to " << loc_ << "\n";
-	mc.get_map().set_starting_position(player_, loc_);
+
+	LOG_ED << "ssp actual: " << loc_id_ << " to " << loc_ << "\n";
+
+	mc.map().set_special_location(loc_id_, loc_);
 	mc.set_needs_labels_reset();
+
 	return undo.release();
 }
+
 void editor_action_starting_position::perform_without_undo(map_context& mc) const
 {
-	int old_player = mc.get_map().is_starting_position(loc_);
-	if (old_player != -1) {
-		mc.get_map().set_starting_position(old_player, map_location());
+	const std::string* old_id = mc.map().is_starting_position(loc_);
+	if(old_id != nullptr) {
+		mc.map().set_special_location(*old_id, map_location());
 	}
-	mc.get_map().set_starting_position(player_, loc_);
+
+	mc.map().set_special_location(loc_id_, loc_);
 	mc.set_needs_labels_reset();
 }
 
+IMPLEMENT_ACTION(resize_map)
 
-
-
-editor_action_resize_map* editor_action_resize_map::clone() const
-{
-	return new editor_action_resize_map(*this);
-}
 void editor_action_resize_map::perform_without_undo(map_context& mc) const
 {
-	mc.get_map().resize(x_size_, y_size_, x_offset_, y_offset_, fill_);
+	mc.map().resize(x_size_, y_size_, x_offset_, y_offset_, fill_);
 	mc.set_needs_reload();
 }
 
-editor_action_apply_mask* editor_action_apply_mask::clone() const
-{
-	return new editor_action_apply_mask(*this);
-}
+IMPLEMENT_ACTION(apply_mask)
+
 void editor_action_apply_mask::perform_without_undo(map_context& mc) const
 {
-	mc.get_map().overlay(mask_, config(), 0, 0, true);
+	mc.map().overlay(mask_, {0, 0, wml_loc()});
 	mc.set_needs_terrain_rebuild();
 }
 
-editor_action_create_mask* editor_action_create_mask::clone() const
-{
-	return new editor_action_create_mask(*this);
-}
+IMPLEMENT_ACTION(create_mask)
+
 void editor_action_create_mask::perform_without_undo(map_context& mc) const
 {
-	mc.set_map(editor_map(mc.get_map().mask_to(target_)));
+	mc.set_map(editor_map(mc.map().mask_to(target_)));
 	mc.set_needs_terrain_rebuild();
 }
 
-editor_action_shuffle_area* editor_action_shuffle_area::clone() const
-{
-	return new editor_action_shuffle_area(*this);
-}
+IMPLEMENT_ACTION(shuffle_area)
+
 editor_action_paste* editor_action_shuffle_area::perform(map_context& mc) const
 {
-	map_fragment mf(mc.get_map(), area_);
-	util::unique_ptr<editor_action_paste> undo(new editor_action_paste(mf));
+	map_fragment mf(mc.map(), area_);
+	std::unique_ptr<editor_action_paste> undo(new editor_action_paste(mf));
+
 	perform_without_undo(mc);
 	return undo.release();
 }
@@ -300,18 +329,24 @@ editor_action_paste* editor_action_shuffle_area::perform(map_context& mc) const
 void editor_action_shuffle_area::perform_without_undo(map_context& mc) const
 {
 	std::vector<map_location> shuffle;
+
 	std::copy(area_.begin(), area_.end(), std::inserter(shuffle, shuffle.begin()));
-	std::random_shuffle(shuffle.begin(), shuffle.end());
+	std::shuffle(shuffle.begin(), shuffle.end(), randomness::rng::default_instance());
+
 	std::vector<map_location>::const_iterator shuffle_it = shuffle.begin();
 	std::set<map_location>::const_iterator orig_it = area_.begin();
-	while (orig_it != area_.end()) {
-		t_translation::t_terrain tmp = mc.get_map().get_terrain(*orig_it);
-		mc.draw_terrain(mc.get_map().get_terrain(*shuffle_it), *orig_it);
+
+	while(orig_it != area_.end()) {
+		t_translation::terrain_code tmp = mc.map().get_terrain(*orig_it);
+
+		mc.draw_terrain(mc.map().get_terrain(*shuffle_it), *orig_it);
 		mc.draw_terrain(tmp, *shuffle_it);
+
 		++orig_it;
 		++shuffle_it;
 	}
+
 	mc.set_needs_terrain_rebuild();
 }
 
-} //end namespace editor
+} // end namespace editor

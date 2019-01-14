@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -11,14 +11,16 @@
 
    See the COPYING file for more details.
 */
-#ifndef SYNCED_COMMANDS_H_INCLUDED
-#define SYNCED_COMMANDS_H_INCLUDED
+
+#pragma once
 
 #include <map>
 #include <exception>
-#include "config.hpp"
 
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
+
+class config;
+
 class synced_command {
 	public:
 		/*
@@ -28,9 +30,9 @@ class synced_command {
 			TODO: remove the second argument because it isn't used.
 
 		*/
-		typedef boost::function2<void, const std::string&, bool> error_handler_function;
+		typedef std::function<void(const std::string&, bool)> error_handler_function;
 		/*
-			returns: true if the action succeeded correclty,
+			returns: true if the action succeeded correctly,
 
 		*/
 		typedef bool (*handler)(const config &, bool use_undo, bool show, error_handler_function error_handler);
@@ -52,5 +54,3 @@ class synced_command {
 	static bool synced_command_func_##pname(const config & pcfg, bool use_undo, bool show, synced_command::error_handler_function error_handler ); \
 	static synced_command synced_command_action_##pname(#pname, &synced_command_func_##pname);  \
 	static bool synced_command_func_##pname(const config & pcfg, bool use_undo, bool show, synced_command::error_handler_function error_handler)
-
-#endif

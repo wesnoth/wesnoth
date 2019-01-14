@@ -1,14 +1,14 @@
 set_directory_properties(PROPERTIES CLEAN_NO_CUSTOM true)
 
-install(FILES manual.en.html DESTINATION "${DOCDIR}")
+install(FILES manual.en.html DESTINATION "${CMAKE_INSTALL_DOCDIR}/html")
 install(DIRECTORY images styles
-	DESTINATION "${DOCDIR}"
+	DESTINATION "${CMAKE_INSTALL_DOCDIR}/html"
 	PATTERN ".git" EXCLUDE
 )
 
 if(ENABLE_NLS)
 	foreach(LANG ${LINGUAS})
-		install(FILES manual.${LANG}.html DESTINATION "${DOCDIR}" OPTIONAL)
+		install(FILES manual.${LANG}.html DESTINATION "${CMAKE_INSTALL_DOCDIR}/html" OPTIONAL)
 	endforeach(LANG ${LINGUAS})
 endif(ENABLE_NLS)
 
@@ -23,9 +23,9 @@ if(ENABLE_POT_UPDATE_TARGET)
 				-o manual.en.xml
 				manual.txt
 		COMMAND ${DOS2UNIX_EXECUTABLE} manual.en.xml
-		COMMAND ${XSLTPROC_EXECUTABLE} ${XSLTPROC_OPTIONS} 
+		COMMAND ${XSLTPROC_EXECUTABLE} ${XSLTPROC_OPTIONS}
 				-o manual.en.html
-				/usr/share/asciidoc/docbook-xsl/xhtml.xsl
+				${ASCIIDOC_DOCBOOK_XSL_PATH}/xhtml.xsl
 				manual.en.xml
 		DEPENDS manual.txt
 		COMMENT "[update-po4a-manual] Building manual.xml."
@@ -72,18 +72,18 @@ if(ENABLE_POT_UPDATE_TARGET)
 		# Only create a .html if there is an .xml file. Since it's not
 		# possible to only execute cmake code if the file exists directly,
 		# build the command here. Then send it to a small script that only
-		# executes if the .html file exists. 
+		# executes if the .html file exists.
 		set(CMD "${XSLTPROC_EXECUTABLE} ${XSLTPROC_OPTIONS}")
 		set(CMD "${CMD} -o manual.${LINGUA}.html")
-		set(CMD "${CMD} /usr/share/asciidoc/docbook-xsl/xhtml.xsl")
+		set(CMD "${CMD} ${ASCIIDOC_DOCBOOK_XSL_PATH}/xhtml.xsl")
 		set(CMD "${CMD} manual.${LINGUA}.xml")
 		add_custom_command(
 			OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/manual.${LINGUA}.html
-			COMMAND ${CMAKE_COMMAND} -E remove manual.${LINGUA}.html 
+			COMMAND ${CMAKE_COMMAND} -E remove manual.${LINGUA}.html
 			COMMAND ${CMAKE_COMMAND}
 				-DSOURCE="manual.${LINGUA}.xml"
 				-DCMD="${CMD}"
-				-P "${CMAKE_MODULE_PATH}/po4a-manual.cmake"
+				-P "${CMAKE_SOURCE_DIR}/cmake/po4a-manual.cmake"
 			COMMAND ${CMAKE_COMMAND} -E remove manual.${LINGUA}.xml
 			DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/manual.${LINGUA}.xml
 			COMMENT "[update-po4a-manual ${LINGUA}] Building ${LINGUA}.html."
@@ -99,10 +99,8 @@ if(ENABLE_POT_UPDATE_TARGET)
 	add_custom_target(update-po4a-manual
 		COMMAND ${CMAKE_COMMAND} -E remove manual.en.xml
 		DEPENDS
-			${UPDATE-PO4A-MANUAL_DEPENDENCIES}		
+			${UPDATE-PO4A-MANUAL_DEPENDENCIES}
 		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 	)
 
 endif(ENABLE_POT_UPDATE_TARGET)
-
-

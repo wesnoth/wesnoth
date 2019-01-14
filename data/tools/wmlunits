@@ -1,49 +1,43 @@
-#!/usr/bin/env python
-#encoding: utf8
+#!/usr/bin/env python3
+# encoding: utf-8
 """
 wmlunits -- tool to output information on all units in HTML
 
 Run without arguments to see usage.
 """
 
-# Makes things faster on 32-bit systems
-try: import psyco; psyco.full()
-except ImportError: pass
-  
-import sys, os, glob, shutil, urllib2, argparse, traceback
-import subprocess, yaml
-import multiprocessing, Queue
+import argparse
+import os
+import shutil
+import sys
+import traceback
+import subprocess
+import multiprocessing
+import queue
+import yaml
 
-import wesnoth.wmlparser2 as wmlparser2
+import wesnoth.wmlparser3 as wmlparser3
 import unit_tree.helpers as helpers
 import unit_tree.animations as animations
 import unit_tree.html_output as html_output
 import unit_tree.overview
 import unit_tree.wiki_output as wiki_output
 
-TIMEOUT = 15
+TIMEOUT = 20
 
 def copy_images():
     print("Recolorizing pictures.")
     image_collector.copy_and_color_images(options.output)
-    shutil.copy2(os.path.join(image_collector.datadir,
-        "data/tools/unit_tree/style.css"), options.output)
-    shutil.copy2(os.path.join(image_collector.datadir,
-        "data/tools/unit_tree/menu.js"), options.output)
-    for grab in [
-        "http://www.wesnoth.org/mw/skins/glamdrol/headerbg.jpg",
-        "http://www.wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg",
-        "http://www.wesnoth.org/mw/skins/glamdrol/navbg.png"]:
-        local = os.path.join(options.output, grab[grab.rfind("/") + 1:])
-        if not os.path.exists(local):
-            print "Fetching", grab
-            url = urllib2.urlopen(grab)
-            file(local, "w").write(url.read())
+    shutil.copy2(os.path.join(os.path.dirname(os.path.realpath(__file__)),
+                              "unit_tree/menu.js"),
+                 options.output)
 
 def shell(com):
     #print(com)
-    p = subprocess.Popen(com, stdout = subprocess.PIPE,
-        stderr = subprocess.PIPE, shell = True)
+    p = subprocess.Popen(com,
+                         stdout=subprocess.PIPE,
+                         stderr=subprocess.PIPE,
+                         shell=True)
     out, err = p.communicate()
     #if out: sys.stdout.write(out)
     #if err: sys.stdout.write(err)
@@ -52,7 +46,8 @@ def shell(com):
 
 def shell_out(com):
     p = subprocess.Popen(com,
-        stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+                         stdout=subprocess.PIPE,
+                         stderr=subprocess.PIPE)
     out, err = p.communicate()
     return out
 
@@ -67,7 +62,7 @@ def move(f, t, name):
 
     com = "mv " + f + "/" + bash(name) + " " + t + "/"
     return shell(com)
-   
+
 _info = {}
 def get_info(addon):
     global _info
@@ -77,13 +72,14 @@ def get_info(addon):
     try:
         path = options.addons + "/" + addon + "/_info.cfg"
         if os.path.exists(path):
-            parser = wmlparser2.Parser(options.wesnoth, options.config_dir,
-                options.data_dir, no_preprocess = False)
+            parser = wmlparser3.Parser(options.wesnoth,
+                                       options.config_dir,
+                                       options.data_dir)
             parser.parse_file(path)
             _info[addon] = parser
         else:
             print("Cannot find " + path)
-    except wmlparser2.WMLError as e:
+    except wmlparser3.WMLError as e:
         print(e)
     return _info[addon]
 
@@ -96,7 +92,7 @@ def get_dependencies(addon):
         return _deps[addon]
     _deps[addon] = []
     try:
-        info = get_info(addon).get_all(tag = "info")[0]
+        info = get_info(addon).get_all(tag="info")[0]
         row = info.get_text_val("dependencies")
         if row:
             deps1 = row.split(",")
@@ -119,8 +115,8 @@ def get_all_dependencies(addon):
     check = get_dependencies(addon)[:]
     while check:
         d = check.pop()
-        if d == addon: continue
-        if d in result: continue
+        if d == addon or d in result:
+            continue
         result.append(d)
         check += get_dependencies(d)
     return result
@@ -140,33 +136,32 @@ def sorted_by_dependencies(addons):
                 n += 1
                 continue
         if n == 0:
-             print("Cannot sort dependencies for these addons: " + str(unsorted))
-             sorted += unsorted
-             break
+            print("Cannot sort dependencies for these addons: " + str(unsorted))
+            sorted += unsorted
+            break
     return sorted
 
 def search(batchlist, name):
     for info in batchlist:
-        if info and info["name"] == name: return info
+        if info and info["name"] == name:
+            return info
     batchlist.append({})
     batchlist[-1]["name"] = name
     return batchlist[-1]
 
 def list_contents():
-    class Empty: pass
-    local = Empty()
+    class Empty:
+        pass
 
+    local = Empty()
     mainline_eras = set()
     filename = options.list
-    
-    def append(info, id, define, c = None, name = None, domain = None):
+
+    def append(info, id, define, c=None, name=None, domain=None):
         info.append({})
-        info[-1]["id"]= id
+        info[-1]["id"] = id
         info[-1]["define"] = define
-        if c:
-            info[-1]["name"] = c.get_text_val("name")
-        else:
-            info[-1]["name"] = name
+        info[-1]["name"] = c.get_text_val("name") if c else name
         info[-1]["units"] = "?"
         info[-1]["translations"] = {}
 
@@ -175,7 +170,7 @@ def list_contents():
             def translate(string, domain):
                 return translation.translate(string, domain)
             if c:
-                t = c.get_text_val("name", translation = translate)
+                t = c.get_text_val("name", translation=translate)
             else:
                 t = translate(name, domain)
             if t != info[-1]["name"]:
@@ -185,12 +180,12 @@ def list_contents():
         dependency_eras = list(mainline_eras)
         for d in get_all_dependencies(addon):
             dinfo = search(batchlist, d)
-            for era in dinfo["eras"]:
+            for era in dinfo.get("eras", []):
                 dependency_eras.append(era["id"])
         return dependency_eras
 
     def list_eras(batchlist, addon):
-        eras = local.wesnoth.parser.get_all(tag = "era")
+        eras = local.wesnoth.parser.get_all(tag="era")
         if addon != "mainline":
             dependency_eras = get_dependency_eras(batchlist, addon)
             eras = [x for x in eras if not x.get_text_val("id") in dependency_eras]
@@ -199,23 +194,31 @@ def list_contents():
             eid = era.get_text_val("id")
             if addon == "mainline":
                 mainline_eras.add(eid)
-            append(info, eid, "MULTIPLAYER", c = era)
+            append(info, eid, "MULTIPLAYER", c=era)
 
         return info
-    
+
     def list_campaigns(batchlist, addon):
-        campaigns = local.wesnoth.parser.get_all(tag = "campaign")
+        campaigns = local.wesnoth.parser.get_all(tag="campaign")
         info = []
 
         for campaign in campaigns:
             cid = campaign.get_text_val("id")
             d = campaign.get_text_val("define")
             d2 = campaign.get_text_val("extra_defines")
-            if d2: d += "," + d2
+            if d2:
+                d += "," + d2
             d3 = campaign.get_text_val("difficulties")
             if d3:
                 d += "," + d3.split(",")[0]
-            append(info, cid, d, c = campaign)
+            else:
+                difficulty = campaign.get_all(tag="difficulty")
+                if difficulty:
+                    d3 = difficulty[0].get_text_val("define")
+                    if d3:
+                        d += "," + d3
+
+            append(info, cid, d, c=campaign)
 
         return info
 
@@ -234,11 +237,11 @@ def list_contents():
                 q.put(("e", e))
 
         q = multiprocessing.Queue()
-        p = multiprocessing.Process(target = f, args = (options, wml, defines, q))
+        p = multiprocessing.Process(target=f, args=(options, wml, defines, q))
         p.start()
         try:
-            s, local.wesnoth = q.get(timeout = TIMEOUT)
-        except Queue.Empty:
+            s, local.wesnoth = q.get(timeout=TIMEOUT)
+        except queue.Empty:
             p.terminate()
             raise
         #print("local", s, local.wesnoth)
@@ -246,15 +249,17 @@ def list_contents():
         if s == "e":
             remote_exception = local.wesnoth
             raise remote_exception
-   
+
     def get_version(addon):
         parser = get_info(addon)
         if parser:
-            for info in parser.get_all(tag = "info"):
+            for info in parser.get_all(tag="info"):
                 return info.get_text_val("version") + "*" + info.get_text_val("uploads")
 
-    try: os.makedirs(options.output + "/mainline")
-    except OSError: pass
+    try:
+        os.makedirs(options.output + "/mainline")
+    except OSError:
+        pass
 
     try:
         batchlist = yaml.load(open(options.list))
@@ -267,15 +272,15 @@ def list_contents():
     info["version"] = "mainline"
     info["parsed"] = "false"
 
-    parse("{core}{multiplayer/eras.cfg}", "SKIP_CORE")
+    parse("{core}{multiplayer/eras.cfg}", "__WMLUNITS__,SKIP_CORE")
     info["eras"] = list_eras(batchlist, "mainline")
 
     # Fake mainline campaign to have an overview of the mainline units
     info["campaigns"] = []
-    append(info["campaigns"], "mainline", "", name = "Units", domain = "wesnoth-help")
-        
+    append(info["campaigns"], "mainline", "", name="Units", domain="wesnoth-help")
+
     if not options.addons_only:
-        parse("{core}{campaigns}", "SKIP_CORE")
+        parse("{core}{campaigns}", "__WMLUNITS__,SKIP_CORE")
         info["campaigns"] += list_campaigns(batchlist, "mainline")
 
     addons = []
@@ -293,38 +298,45 @@ def list_contents():
     addons = sorted_by_dependencies(addons)
 
     for i, addon in enumerate(addons):
-        if not os.path.isdir(options.addons + "/" + addon): continue
-        sys.stdout.write("%4d/%4d " % (1 + i, len(addons)) + addon + " ... ")
+        if not os.path.isdir(options.addons + "/" + addon):
+            continue
+        mem = "? KB"
+        try:
+            mem = dict([x.split("\t", 1) for x in open("/proc/self/status").read().split("\n") if x])["VmRSS:"]
+        except:
+            pass
+        sys.stdout.write("%4d/%4d " % (1 + i, len(addons)) + addon + " [" + mem + "] ... ")
         sys.stdout.flush()
         d = options.output + "/" + addon
         logname = d + "/error.log"
-        try: os.makedirs(d)
-        except OSError: pass
+        try:
+            os.makedirs(d)
+        except OSError:
+            pass
         version = get_version(addon)
         move(options.addons, options.config_dir + "/data/add-ons", addon)
         for d in get_dependencies(addon):
             move(options.addons, options.config_dir + "/data/add-ons", d)
         try:
             info = search(batchlist, addon)
-
-            if info.get("version", "") == version and info.get("parsed", False) == True:
+            if info.get("version", "") == version and info.get("parsed", False) is True:
                 sys.stdout.write("up to date\n")
                 continue
             info["parsed"] = False
             info["dependencies"] = get_dependencies(addon)
-            parse("{core}{multiplayer}{~add-ons}", "MULTIPLAYER,SKIP_CORE")
+            parse("{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "__WMLUNITS__,MULTIPLAYER,SKIP_CORE")
             info["eras"] = list_eras(batchlist, addon)
             info["campaigns"] = list_campaigns(batchlist, addon)
             info["version"] = version
             sys.stdout.write("ok\n")
-        except wmlparser2.WMLError as e:
+        except wmlparser3.WMLError as e:
             ef = open(logname, "w")
             ef.write("<PARSE ERROR>\n")
             ef.write(str(e))
             ef.write("</PARSE ERROR>\n")
             ef.close()
             sys.stdout.write("failed\n")
-        except Queue.Empty as e:
+        except queue.Empty as e:
             ef = open(logname, "w")
             ef.write("<TIMEOUT ERROR>\n")
             ef.write("Failed to parse the WML within " + str(TIMEOUT) + " seconds.")
@@ -334,23 +346,25 @@ def list_contents():
         except Exception as e:
             ef = open(logname, "w")
             ef.write("<INTERNAL ERROR>\n")
-            ef.write(str(e))
+            ef.write(repr(e))
             ef.write("</INTERNAL ERROR>\n")
             ef.close()
             sys.stdout.write("failed\n")
-
         finally:
             move(options.config_dir + "/data/add-ons", options.addons, addon)
             for d in get_dependencies(addon):
                 move(options.config_dir + "/data/add-ons", options.addons, d)
-        
+
     yaml.safe_dump(batchlist, open(filename, "w"),
-        encoding = "utf-8", default_flow_style = False)
+                   encoding="utf-8", default_flow_style=False)
 
 def process_campaign_or_era(addon, cid, define, batchlist):
     n = 0
-    
-    print(addon + ": " + cid + " " + define)
+
+    print(str(addon) + ": " + str(cid) + " " + str(define))
+
+    if not define:
+        define = ""
 
     wesnoth = helpers.WesnothList(
         options.wesnoth,
@@ -359,34 +373,34 @@ def process_campaign_or_era(addon, cid, define, batchlist):
         options.transdir)
     wesnoth.batchlist = batchlist
     wesnoth.cid = cid
-    
+
     wesnoth.parser.parse_text("{core/units.cfg}", "NORMAL")
     wesnoth.add_units("mainline")
-    
+
     if define == "MULTIPLAYER":
-        wesnoth.parser.parse_text("{core}{multiplayer}{~add-ons}", "MULTIPLAYER,SKIP_CORE")
+        wesnoth.parser.parse_text("{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "__WMLUNITS__,MULTIPLAYER,SKIP_CORE")
         wesnoth.add_units(cid)
     else:
         if addon == "mainline":
             if cid != "mainline":
-                wesnoth.parser.parse_text("{core}{campaigns}", "SKIP_CORE,NORMAL," + define)
+                wesnoth.parser.parse_text("{core}{campaigns}", "__WMLUNITS__,SKIP_CORE,NORMAL," + define)
                 wesnoth.add_units(cid)
         else:
-            wesnoth.parser.parse_text("{core}{~add-ons}", "SKIP_CORE," + define)
+            wesnoth.parser.parse_text("{core}{~add-ons}", "__WMLUNITS__,SKIP_CORE," + define)
             wesnoth.add_units(cid)
-    
+
     if addon == "mainline" and cid == "mainline":
         write_animation_statistics(wesnoth)
 
     wesnoth.add_binary_paths(addon, image_collector)
 
     if define == "MULTIPLAYER":
-        eras = wesnoth.parser.get_all(tag = "era")
+        eras = wesnoth.parser.get_all(tag="era")
         for era in eras:
             wesnoth.add_era(era)
         wesnoth.find_unit_factions()
     else:
-        campaigns = wesnoth.parser.get_all(tag = "campaign")
+        campaigns = wesnoth.parser.get_all(tag="campaign")
         for campaign in campaigns:
             wesnoth.add_campaign(campaign)
 
@@ -395,11 +409,10 @@ def process_campaign_or_era(addon, cid, define, batchlist):
     wesnoth.check_units()
 
     for isocode in languages:
-        
-        if addon != "mainline" and isocode != "en_US": continue
-        
+        if addon != "mainline" and isocode != "en_US":
+            continue
         if define == "MULTIPLAYER":
-            for era in wesnoth.era_lookup.values():
+            for era in list(wesnoth.era_lookup.values()):
                 if era.get_text_val("id") == cid:
                     n = html_output.generate_era_report(addon, isocode, era, wesnoth)
                     break
@@ -407,11 +420,10 @@ def process_campaign_or_era(addon, cid, define, batchlist):
             if cid == "mainline":
                 n = html_output.generate_campaign_report(addon, isocode, None, wesnoth)
 
-            for campaign in wesnoth.campaign_lookup.values():
+            for campaign in list(wesnoth.campaign_lookup.values()):
                 if campaign.get_text_val("id") == cid:
                     n = html_output.generate_campaign_report(addon, isocode, campaign, wesnoth)
                     break
-        
         html_output.generate_single_unit_reports(addon, isocode, wesnoth)
 
     return n
@@ -422,12 +434,13 @@ def batch_process():
     for addon in batchlist:
         name = addon["name"]
         set_dependencies(name, addon.get("dependencies", []))
-    
+
     for addon in batchlist:
         name = addon["name"]
-        
-        if not options.reparse and addon.get("parsed", False) == True: continue
-        
+
+        if not options.reparse and addon.get("parsed", False) == True:
+            continue
+
         if name == "mainline":
             worked = True
         else:
@@ -435,22 +448,24 @@ def batch_process():
             for d in addon.get("dependencies", []):
                 move(options.addons, options.config_dir + "/data/add-ons", d)
         d = options.output + "/" + name
-        try: os.makedirs(d)
-        except OSError: pass
+        try:
+            os.makedirs(d)
+        except OSError:
+            pass
         logname = d + "/error.log"
-        
+
         def err(mess):
             ef = open(logname, "a")
             ef.write(str(mess))
             ef.close()
 
         html_output.write_error = err
-        
+
         try:
             if not worked:
                 print(name + " not found")
                 continue
-            
+
             for era in addon.get("eras", []):
                 eid = era["id"]
                 n = process_campaign_or_era(name, eid, era["define"], batchlist)
@@ -458,12 +473,14 @@ def batch_process():
 
             for campaign in addon.get("campaigns", []):
                 cid = campaign["id"]
-                if cid == None: cid = campaign["define"]
-                if cid == None: cid = name
+                if cid is None:
+                    cid = campaign["define"]
+                if cid is None:
+                    cid = name
                 n = process_campaign_or_era(name, cid, campaign["define"], batchlist)
                 campaign["units"] = n
-            
-        except wmlparser2.WMLError as e:
+
+        except wmlparser3.WMLError as e:
             ef = open(logname, "a")
             ef.write("<WML ERROR>\n")
             ef.write(str(e))
@@ -484,15 +501,15 @@ def batch_process():
                 move(options.config_dir + "/data/add-ons", options.addons, name)
                 for d in addon.get("dependencies", []):
                     move(options.config_dir + "/data/add-ons", options.addons, d)
-                
+
         addon["parsed"] = True
 
         yaml.safe_dump(batchlist, open(options.batch, "w"),
-            encoding = "utf-8", default_flow_style = False)
-        
+                       encoding="utf-8", default_flow_style=False)
+
         try:
-            unit_tree.overview.write_addon_overview(os.path.join(options.output,
-                name), addon)
+            unit_tree.overview.write_addon_overview(
+                os.path.join(options.output, name), addon)
         except Exception as e:
             pass
 
@@ -500,11 +517,12 @@ def batch_process():
 
 def write_unit_ids_UNUSED():
     # Write a list with all unit ids, just for fun.
-    uids = wesnoth.unit_lookup.keys()
+    uids = list(wesnoth.unit_lookup.keys())
     def by_race(u1, u2):
         r = cmp(wesnoth.unit_lookup[u1].rid,
-            wesnoth.unit_lookup[u2].rid)
-        if r == 0: r = cmp(u1, u2)
+                wesnoth.unit_lookup[u2].rid)
+        if r == 0:
+            r = cmp(u1, u2)
         return r
     uids.sort(by_race)
     race = None
@@ -513,7 +531,8 @@ def write_unit_ids_UNUSED():
     for uid in uids:
         u = wesnoth.unit_lookup[uid]
         if u.rid != race:
-            if race != None: f.write("</ul>")
+            if race is not None:
+                f.write("</ul>")
             f.write("<p>%s</p>\n" % (u.rid,))
             f.write("<ul>")
             race = u.rid
@@ -529,12 +548,11 @@ def write_animation_statistics(wesnoth):
     f.close()
 
 if __name__ == '__main__':
-
     # We change the process name to "wmlunits"
     try:
         import ctypes
         libc = ctypes.CDLL("libc.so.6")
-        libc.prctl(15, "wmlunits", 0, 0, 0)
+        libc.prctl(15, b"wmlunits", 0, 0, 0)
     except: # oh well...
         pass
 
@@ -543,38 +561,41 @@ if __name__ == '__main__':
 
     ap = argparse.ArgumentParser()
     ap.add_argument("-C", "--config-dir",
-        help="Specify the user configuration dir (wesnoth --config-path).")
+                    help="Specify the user configuration dir (wesnoth --config-path).")
     ap.add_argument("-D", "--data-dir",
-        help="Specify the wesnoth data dir (wesnoth --path).")
+                    help="Specify the wesnoth data dir (wesnoth --path).")
     ap.add_argument("-l", "--language", default="all",
-        help="Specify a language to use. Else output is produced for all languages.")
+                    help="Specify a language to use. Else output is produced for all languages.")
     ap.add_argument("-o", "--output",
-        help="Specify the output directory.")
+                    help="Specify the output directory.")
     ap.add_argument("-n", "--nocopy", action="store_true",
-        help="No copying of files. By default all images are copied to the output dir.")
+                    help="No copying of files. By default all images are copied to the output dir.")
     ap.add_argument("-w", "--wesnoth",
-        help="Specify the wesnoth executable to use. Whatever data " +
-        "and config paths that executable is configured for will be " +
-        "used to find game files and addons.")
+                    help="Specify the wesnoth executable to use. Whatever data " +
+                    "and config paths that executable is configured for will be " +
+                    "used to find game files and addons.")
     ap.add_argument("-t", "--transdir",
-        help="Specify the directory with gettext message catalogues. " +
-        "Defaults to ./translations.", default="translations")
+                    help="Specify the directory with gettext message catalogues. " +
+                    "Defaults to ./translations.", default="translations")
+    ap.add_argument("-T", "--timeout",
+                    help="Use the timeout iven in seconds when parsing WML, default is 20 " +
+                    "seconds.")
     ap.add_argument("-r", "--reparse", action="store_true",
-        help="Reparse everything.")
+                    help="Reparse everything.")
     ap.add_argument("-a", "--addons",
-        help="Specify path to a folder with all addons. This should be " +
-        "outside the user config folder.")
+                    help="Specify path to a folder with all addons. This should be " +
+                    "outside the user config folder.")
     ap.add_argument("-L", "--list",
-        help = "List available eras and campaigns.")
+                    help="List available eras and campaigns.")
     ap.add_argument("-B", "--batch",
-        help = "Batch process the given list.")
-    ap.add_argument("-A", "--addons-only", action = "store_true",
-        help = "Do only process addons (for debugging).")
-    ap.add_argument("-v", "--verbose", action = "store_true")
-    ap.add_argument("-W", "--wiki", action = "store_true",
-        help = "write wikified units list to stdout")
+                    help="Batch process the given list.")
+    ap.add_argument("-A", "--addons-only", action="store_true",
+                    help="Do only process addons (for debugging).")
+    ap.add_argument("-v", "--verbose", action="store_true")
+    ap.add_argument("-W", "--wiki", action="store_true",
+                    help="write wikified units list to stdout")
     options = ap.parse_args()
-    
+
     html_output.options = options
     helpers.options = options
     unit_tree.overview.options = options
@@ -588,32 +609,37 @@ if __name__ == '__main__':
     if options.output:
         options.output = os.path.expanduser(options.output)
 
+    if options.timeout:
+        TIMEOUT = int(options.timeout)
+
     if not options.wesnoth:
         options.wesnoth = "wesnoth"
 
     if not options.data_dir:
-        options.data_dir = shell_out([options.wesnoth, "--path"]).strip()
+        options.data_dir = shell_out([options.wesnoth, "--path"]).strip().decode("utf8")
         print("Using " + options.data_dir + " as data dir.")
 
     if not options.config_dir:
-        options.config_dir = shell_out([options.wesnoth, "--config-path"]).strip()
+        options.config_dir = shell_out([options.wesnoth, "--config-path"]).strip().decode("utf8")
         print("Using " + options.config_dir + " as config dir.")
 
     if not options.transdir:
         options.transdir = os.getcwd()
-    
+
     if options.wiki:
         wiki_output.main()
         sys.exit(0)
 
     image_collector = helpers.ImageCollector(options.wesnoth,
-        options.config_dir, options.data_dir)
+                                             options.config_dir,
+                                             options.data_dir)
     html_output.image_collector = image_collector
 
     if options.language == "all":
         languages = []
-        parser = wmlparser2.Parser(options.wesnoth, options.config_dir,
-            options.data_dir, no_preprocess = False)
+        parser = wmlparser3.Parser(options.wesnoth,
+                                   options.config_dir,
+                                   options.data_dir)
         parser.parse_text("{languages}")
 
         for locale in parser.get_all(tag="locale"):
@@ -629,22 +655,21 @@ if __name__ == '__main__':
     if not options.list and not options.batch:
         sys.stderr.write("Need --list or --batch (or both).\n")
         sys.exit(-1)
-        
+
     if options.output:
         # Generate output dir.
         if not os.path.isdir(options.output):
             os.mkdir(options.output)
-        
+
     if options.list:
         list_contents()
-    
+
     if options.batch:
         batch_process()
-        
+
         unit_tree.overview.main(options.output)
 
         if not options.nocopy:
             copy_images()
-    
-    html_output.write_index(options.output)
 
+    html_output.write_index(options.output)

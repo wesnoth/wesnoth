@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,10 +14,9 @@
 
 /** @file */
 
-#ifndef CURSOR_HPP_INCLUDED
-#define CURSOR_HPP_INCLUDED
+#pragma once
 
-struct surface;
+class surface;
 
 namespace cursor
 {
@@ -38,9 +37,6 @@ void set(CURSOR_TYPE type = NUM_CURSORS);
 void set_dragging(bool drag);
 CURSOR_TYPE get();
 
-void draw(surface screen);
-void undraw(surface screen);
-
 void set_focus(bool focus);
 
 struct setter
@@ -53,5 +49,3 @@ private:
 };
 
 } // end namespace cursor
-
-#endif

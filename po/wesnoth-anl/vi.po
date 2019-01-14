@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.7+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-09 08:51+0100\n"
+"POT-Creation-Date: 2018-02-12 17:01 UTC\n"
 "PO-Revision-Date: 2014-07-10 22:17+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -37,7 +37,7 @@ msgstr ""
 "100."
 
 #. [part]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:24
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:27
 msgid ""
 "In the aftermath of the great war the remnants of humanity fled to an "
 "obscure secluded glen. Though they knew they could not hide from the mighty "
@@ -50,69 +50,100 @@ msgstr ""
 "chiến chỉ hy vọng có đủ thời gian để xây dựng lại lực lượng."
 
 #. [objectives]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:32
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:35
 msgid "Right-click on your leader during your turn for help"
 msgstr "Nhấn chuột phải lên người chỉ huy trong lượt của bạn để được trợ giúp"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:34
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:37
 msgid "You must survive until turn 25."
 msgstr "Bạn phải sống sót đến lượt 25."
 
 #. [side]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:51
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:66
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:81
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:96
-msgid "teamname^Team 1"
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:57
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:71
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:85
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:99
+#, fuzzy
+#| msgid "teamname^Team 1"
+msgid "teamname^Settlers"
 msgstr "Đội 1"
 
 #. [side]: type=Death Knight
 #. [side]: type=Orcish Sovereign
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:114
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:141
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:168
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:195
-msgid "teamname^Team 2"
-msgstr "Đội 2"
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:117
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:148
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:179
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:210
+#, fuzzy
+#| msgid "teamname^Team 1"
+msgid "teamname^Enemies"
+msgstr "Đội 1"
+
+#. [side]: type=Death Knight
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:126
+msgid "Mal Sevu"
+msgstr ""
+
+#. [side]: type=Orcish Sovereign
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:157
+msgid "Gol Goroth"
+msgstr ""
+
+#. [side]: type=Orcish Sovereign
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:188
+msgid "Greg"
+msgstr ""
+
+#. [side]: type=Death Knight
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:219
+msgid "Mal Shiki"
+msgstr ""
+
+#. [side]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:245
+#, fuzzy
+#| msgid "teamname^Team 1"
+msgid "teamname^Prisoners"
+msgstr "Đội 1"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:407
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:426
 msgid ""
 "You destroy the mushroom mine. The northwest undead now have 10 less income."
 msgstr ""
 "Bạn đã phá hủy mỏ nấm. Bọn ma quái phía tây bắc giờ có thu nhập ít đi 10."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:430
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:449
 msgid ""
 "You destroy the mushroom mine. The northeast orcs now have 10 less income."
 msgstr ""
 "Bạn đã phá hủy mỏ nấm. Bọn người thú phía đông bắc giờ có thu nhập ít đi 10."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:453
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:472
 msgid ""
 "You destroy the mushroom mine. The southwest orcs now have 10 less income."
 msgstr ""
 "Bạn đã phá hủy mỏ nấm. Bọn người thú phía tây nam giờ có thu nhập ít đi 10."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:476
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:495
 msgid ""
 "You destroy the mushroom mine. The southeast undead now have 10 less income."
 msgstr ""
 "Bạn đã phá hủy mỏ nấm. Bọn ma quái phía đông nam giờ có thu nhập ít đi 10."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:585
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:604
 msgid ""
 "One of your peasants has happened upon some spiders’ nests in the north and "
 "south."
 msgstr "Một nông dân của bạn tình cờ thấy một số ổ nhện ở phía bắc và nam."
 
 #. [message]: type=Peasant
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:591
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:610
 msgid ""
 "I swear I saw somebody trapped in the spider’s web. Maybe we should rescue "
 "him?"
@@ -121,7 +152,7 @@ msgstr ""
 "cứu họ chăng?"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:613
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:632
 msgid ""
 "Move any unit next to these captives and they will join your side. The "
 "spiders guarding each captive are currently wounded, the sooner you get "
@@ -132,7 +163,7 @@ msgstr ""
 "sớm bạn càng có cơ hội giết chúng."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:625
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:644
 msgid ""
 "Your men report strange sounds coming from some caves to the east and west."
 msgstr ""
@@ -140,7 +171,7 @@ msgstr ""
 "và tây."
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:631
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:650
 msgid ""
 "It would seem the enemy has built some underground mushroom mines nearby — "
 "it must be where the mainstay of their resources are produced. If we could "
@@ -151,7 +182,7 @@ msgstr ""
 "chúng thì cơ hội của chúng ta sẽ bớt mong manh hơn."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:653
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:672
 msgid ""
 "Move any unit onto these villages to destroy the mine. Each one you destroy "
 "will reduce the enemy’s income by 10."
@@ -160,12 +191,12 @@ msgstr ""
 "bạn phá hủy sẽ giảm thu nhập của kẻ thù đi 10."
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:666
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:685
 msgid "This battle is nearly at an end. Victory is close at hand!"
 msgstr "Trận chiến đã đến hồi kết thúc. Chiến thắng đã gần trong tay!"
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:678
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:697
 msgid ""
 "We have survived the onslaught! The tide of the battle has turned, victory "
 "cannot elude us now!"
@@ -174,27 +205,27 @@ msgstr ""
 "đổi, giờ chúng ta đã nắm chắc chiến thắng!"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:682
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:701
 msgid "You have won the game, but you may continue if you wish..."
 msgstr "Bạn đã thắng trò chơi, nhưng bạn vẫn có thể tiếp tục nếu muốn..."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:698
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:717
 msgid "I have fallen, but all is not lost!"
 msgstr "Tôi đã thất bại, nhưng vẫn chưa mất tất cả!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:711
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:730
 msgid "I am done for, but we have yet to lose this battle!"
 msgstr "Tôi phải kết thúc rồi, nhưng chúng ta vẫn chưa thua trận chiến này!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:724
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:743
 msgid "Comrades, avenge me!"
 msgstr "Đồng đội, hãy trả thù cho tôi!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:737
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:756
 msgid "Do not fear, there is hope for us still!"
 msgstr "Đừng sợ, vẫn còn hy vọng cho chúng ta!"
 
@@ -209,7 +240,7 @@ msgid "Return to menu"
 msgstr "Trở lại trình đơn"
 
 #. [message]: speaker=narrator
-#. [option]: speaker=narrator
+#. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:16
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:125
 msgid "Peasants"
@@ -227,7 +258,7 @@ msgstr ""
 "nông trại, làng và trường đại học."
 
 #. [message]: speaker=narrator
-#. [option]: speaker=narrator
+#. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:27
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:132
 msgid "Mages"
@@ -243,7 +274,7 @@ msgstr ""
 "đẩy tiến bộ trong khai khoáng, nông nghiệp và tuyển quân."
 
 #. [message]: speaker=narrator
-#. [option]: speaker=narrator
+#. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:37
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:139
 msgid "Farms"
@@ -259,7 +290,7 @@ msgstr ""
 "nông trại, anh ta sẽ bắt đầu thu hoạch vụ mùa một cách tự động."
 
 #. [message]: speaker=narrator
-#. [option]: speaker=narrator
+#. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:47
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:146
 msgid "Villages"
@@ -277,7 +308,7 @@ msgstr ""
 "có thể thành lập một trường đại học."
 
 #. [message]: speaker=narrator
-#. [option]: speaker=narrator
+#. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:57
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:153
 msgid "Mines"
@@ -293,7 +324,7 @@ msgstr ""
 "đào vàng ở đầu lượt của bạn."
 
 #. [message]: speaker=narrator
-#. [option]: speaker=narrator
+#. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:67
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:160
 msgid "Universities"
@@ -313,11 +344,11 @@ msgstr ""
 "trong trường đại học để thay đổi mục tiêu nghiên cứu."
 
 #. [message]: speaker=narrator
-#. [option]: speaker=narrator
+#. [option]
 #. [set_menu_item]: id=anl_diplomacy
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:77
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:167
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:196
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:199
 msgid "Diplomacy"
 msgstr "Ngoại giao"
 
@@ -345,7 +376,7 @@ msgstr "Vùng đất mới - Trợ giúp"
 msgid "Select a topic."
 msgstr "Chọn một chủ đề."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:115
 msgid "Done"
 msgstr "Hoàn thành"
@@ -356,7 +387,7 @@ msgid "I hereby donate 20 gold to the coffers of $df_player_name|."
 msgstr "Tôi xin ủng hộ 20 lượng vàng vào kho bạc của $df_player_name|."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:100
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:101
 msgid ""
 "$sf_player_name|, since our wisdom exceeds yours I have instructed my "
 "scholars to further your understanding of agriculture."
@@ -365,7 +396,7 @@ msgstr ""
 "cho các học giả của tôi nâng cao hơn nữa hiểu biết của bạn về nông nghiệp."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:138
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:140
 msgid ""
 "$sm_player_name|, since the wisdom of my people exceeds yours I have "
 "instructed my scholars to aid you in your efforts to learn the science of "
@@ -376,7 +407,7 @@ msgstr ""
 "khoáng."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:183
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:186
 msgid ""
 "You know worryingly little about the arts of war, $sw_player_name|. I feel "
 "an obligation to instruct you in this vital matter."
@@ -386,7 +417,7 @@ msgstr ""
 "sống còn này."
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:249
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:248
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of agriculture"
@@ -395,7 +426,7 @@ msgstr ""
 "Chia sẻ kiến thức về nông nghiệp."
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:256
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:255
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of mining"
@@ -404,7 +435,7 @@ msgstr ""
 "Chia sẻ kiến thức về khai khoáng"
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:263
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:262
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of warfare"
@@ -413,24 +444,24 @@ msgstr ""
 "Chia sẻ kiến thức về quân sự"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:293
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:292
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:330
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:374
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:375
 msgid "Diplomatic Options"
 msgstr "Tùy chọn ngoại giao"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:296
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:295
 msgid "What shall I do?"
 msgstr "Tôi phải làm gì?"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:302
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:54
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:301
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:47
 msgid "Nothing"
 msgstr "Không có gì"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:314
 msgid ""
 "<span color='green'>Donate Funds</span>\n"
@@ -444,14 +475,14 @@ msgstr ""
 msgid "Who will you donate funds to?"
 msgstr "Bạn muốn ủng hộ tiền bạc cho ai?"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:336
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:380
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:381
 msgid "Back"
 msgstr "Trở lại"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:358
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:359
 msgid ""
 "<span color='green'>Share Knowledge</span>\n"
 "Help an ally with their research"
@@ -460,12 +491,12 @@ msgstr ""
 "Giúp đỡ một đồng minh trong nghiên cứu"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:377
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:378
 msgid "Who will you share knowledge with?"
 msgstr "Bạn muốn chia sẻ kiến thức với ai?"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:415
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:417
 msgid ""
 "<span color='green'>Negotiate with the Dwarves</span>\n"
 "Lets you recruit a Dwarvish unit\n"
@@ -477,8 +508,8 @@ msgstr ""
 "Quá trình thương lượng: $player_$side_number|.leader_option_1.progress|/"
 "$player_$side_number|.leader_option_1.target"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:470
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:473
 msgid ""
 "<span color='green'>Negotiate with the Elves</span>\n"
 "Lets you recruit an Elvish unit\n"
@@ -491,13 +522,13 @@ msgstr ""
 "$player_$side_number|.leader_option_2.target"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:538
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:570
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:541
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:573
 msgid "Negotiation Complete"
 msgstr "Hoàn thành thương lượng"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:541
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:544
 msgid ""
 "Our talks are complete — the Dwarves will gladly fight by your side. Which "
 "of our brethren do you want to recruit?"
@@ -506,7 +537,7 @@ msgstr ""
 "các bạn. Bạn muốn tuyển ai trong số anh em chúng tôi?"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:573
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:576
 msgid ""
 "Our talks are complete — the Elves shall aid you in this battle. Which our "
 "of kin do you wish to recruit?"
@@ -519,32 +550,32 @@ msgstr ""
 msgid "Choose New Recruit"
 msgstr "Chọn đơn vị mới"
 
-#. [message]: speaker=narrator
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:62
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:245
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:277
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:304
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:58
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:236
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:268
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:295
 msgid "Study Complete"
 msgstr "Hoàn thành nghiên cứu"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:64
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:59
 msgid "Which type of unit would you like to be able to recruit?"
 msgstr "Bạn muốn có khả năng tuyển kiểu đơn vị nào?"
 
 #. [set_menu_item]: id=anl_oversee_research
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:89
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:82
 msgid "Oversee Research"
 msgstr "Giám sát nghiên cứu"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:138
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:126
 msgid "Research"
 msgstr "Nghiên cứu"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:140
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:128
 msgid ""
 "We are currently studying $player_$side_number|.research."
 "target_language_name|. To which end would you have our scholars devote their "
@@ -560,13 +591,13 @@ msgstr ""
 "Nông trại của chúng ta sản xuất $player_$side_number|.farming.gold|g\n"
 "Mỏ của chúng ta sản xuất $player_$side_number|.mining.gold|g\n"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:148
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:136
 msgid "Continue as before"
 msgstr "Tiếp tục như trước"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:165
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:154
 msgid ""
 "<span color='green'>Agriculture</span>\n"
 "Farmers produce +1 gold\n"
@@ -580,13 +611,13 @@ msgstr ""
 
 #. [command]
 #. [research]
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:169
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:158
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:102
 msgid "agriculture"
 msgstr "nông nghiệp"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:176
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:166
 msgid ""
 "<span color='green'>Mining</span>\n"
 "Miners produce +1 gold\n"
@@ -599,12 +630,12 @@ msgstr ""
 "$side_number|.mining.target"
 
 #. [command]
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:180
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:170
 msgid "mining"
 msgstr "khai khoáng"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:187
+#. [option]
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:178
 msgid ""
 "<span color='green'>Warfare</span>\n"
 "Allows you to recruit a new type of unit\n"
@@ -617,12 +648,12 @@ msgstr ""
 "$side_number|.warfare.target"
 
 #. [command]
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:198
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:189
 msgid "warfare"
 msgstr "quân sự"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:247
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:238
 msgid ""
 "$player_$side_number|.name|’s farms now produce $player_$side_number|."
 "farming.gold gold."
@@ -631,7 +662,7 @@ msgstr ""
 "$side_number|.farming.gold lượng vàng."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:279
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:270
 msgid ""
 "$player_$side_number|.name|’s mines now produce $player_$side_number|.mining."
 "gold gold."
@@ -640,7 +671,7 @@ msgstr ""
 "mining.gold lượng vàng."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:306
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:297
 msgid ""
 "$player_$side_number|.name|, we have finished researching warfare. Right-"
 "click on a mage in a university to select a unit to recruit."
@@ -650,12 +681,12 @@ msgstr ""
 "tuyển."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:197
+#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:198
 msgid "Let’s cut you free!"
 msgstr "Để ta cởi trói cho ngươi nào!"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:201
+#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:202
 msgid "You release the creature from the web and it agrees to help you."
 msgstr "Bạn giải thoát con vật khỏi lưới nhện và nó đồng ý giúp bạn."
 
@@ -665,156 +696,158 @@ msgid "Get to Work!"
 msgstr "Làm việc đi!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:50
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:44
 msgid "What shall I do my liege?"
 msgstr "Tôi phải làm gì thưa chủ tướng?"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:69
-msgid "Convert to Grassland"
-msgstr "Chuyển thành đồng cỏ"
-
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:69
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:86
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:352
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:547
-msgid "Cost: 0g"
-msgstr "Tốn: 0 vàng"
-
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:86
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:63
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:82
 msgid "Plant Farm"
 msgstr "Xây dựng nông trại"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:100
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:64
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:83
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:368
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:577
+msgid "Cost: 0g"
+msgstr "Tốn: 0 vàng"
+
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:98
 msgid "Build Village"
 msgstr "Xây làng"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:100
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:99
 msgid "Cost: 15g"
 msgstr "Tốn: 15 vàng"
 
-#. [option]: speaker=unit
+#. [option]: description=<span size='small'>
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:122
 msgid "Build Castle"
 msgstr "Xây lâu đài"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:122
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:498
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:123
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:524
 msgid "Cost: 6g"
 msgstr "Tốn: 6 vàng"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:143
-msgid "Cost: 4g"
-msgstr "Tốn: 4 vàng"
-
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:143
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:145
 msgid "Flood the Field"
 msgstr "Làm ngập cánh đồng"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:166
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:375
-msgid "Cost: 1g"
-msgstr "Tốn: 1 vàng"
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:146
+msgid "Cost: 4g"
+msgstr "Tốn: 4 vàng"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:166
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:170
 msgid "Plant Saplings"
 msgstr "Trồng cây non"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:192
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:171
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:393
+msgid "Cost: 1g"
+msgstr "Tốn: 1 vàng"
+
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:198
 msgid "Chop Down Forest"
 msgstr "Chặt rừng"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:192
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:199
 msgid "Earns: 1g"
 msgstr "Kiếm được: 1 vàng"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:247
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:272
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:254
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:281
 msgid "Build Mine"
 msgstr "Xây mỏ"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:247
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:272
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:255
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:282
 msgid "Cost: 25g"
 msgstr "Tốn: 25 vàng"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:297
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:427
-msgid "Cost: 3g"
-msgstr "Tốn: 3 vàng"
-
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:297
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:308
 msgid "Make a Ford"
 msgstr "Tạo một chỗ cạn"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:323
-msgid "Cost: 5g"
-msgstr "Tốn: 5 vàng"
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:309
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:449
+msgid "Cost: 3g"
+msgstr "Tốn: 3 vàng"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:323
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:375
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:336
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:392
 msgid "Landfill"
 msgstr "Đống đất"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:352
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:337
+msgid "Cost: 5g"
+msgstr "Tốn: 5 vàng"
+
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:367
 msgid "Destroy the Ford"
 msgstr "Phá chỗ cạn"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:404
-msgid "Cost: 2g"
-msgstr "Tốn: 2 vàng"
-
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:404
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:427
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:423
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:448
 msgid "Smash Cave Floor"
 msgstr "Đập vỡ nền hang"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:450
-msgid "Earns: 3g"
-msgstr "Kiếm được: 3 vàng"
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:424
+msgid "Cost: 2g"
+msgstr "Tốn: 2 vàng"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:450
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:473
 msgid "Harvest Mushrooms"
 msgstr "Thu hoạch nấm"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:498
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:474
+msgid "Earns: 3g"
+msgstr "Kiếm được: 3 vàng"
+
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:523
 msgid "Build a Keep"
 msgstr "Xây một pháo đài"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:522
-msgid "Cost: 7g"
-msgstr "Tốn: 7 vàng"
-
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:522
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:549
 msgid "Establish University"
 msgstr "Thành lập trường đại học"
 
-#. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:547
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:550
+msgid "Cost: 7g"
+msgstr "Tốn: 7 vàng"
+
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:576
 msgid "Clear the Ground"
 msgstr "Dọn sạch mặt đất"
+
+#~ msgid "teamname^Team 2"
+#~ msgstr "Đội 2"
+
+#~ msgid "Convert to Grassland"
+#~ msgstr "Chuyển thành đồng cỏ"

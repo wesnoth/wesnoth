@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 def write_animation(out, aa, name):
     c = [0, 0]
     for a in aa:
@@ -62,7 +64,7 @@ def write_table_row(out, unit, color, name = None):
         if abil.get_all(tag = "teleport"):
             needed["teleport"] = True
 
-    if name == None: name = unit.id
+    if name is None: name = unit.id
 
     out.write("<tr><td class=\"%s\">%s</td>" % (color and "c1" or "c2", name))
 
@@ -119,13 +121,9 @@ def put_units(f, us):
 
     f.write("</tr>\n")
 
-    def by_race(u1, u2):
-        r1 = u1.rid
-        r2 = u2.rid
-        r = cmp(r1, r2)
-        if r == 0: r = cmp(u1.id, u2.id)
-        return r
-    us.sort(by_race)
+    def by_race(u):
+        return u.rid + u.id
+    us.sort(key = by_race)
     race = None
     color = 0
     for u in us:
@@ -156,7 +154,7 @@ td.none {border: solid 1px; background-color: #ffffff;}
     f.write("<i>total frames (number of animations)</i>\n")
 
     f.write("<h2>Mainline</h2>\n")
-    us = [x for x in wesnoth.unit_lookup.values() if x.campaigns[0] == "mainline"]
+    us = [x for x in list(wesnoth.unit_lookup.values()) if x.campaigns[0] == "mainline"]
     put_units(f, us)
 
     #f.write("<h2>Campaigns and Addons</h2>\n")

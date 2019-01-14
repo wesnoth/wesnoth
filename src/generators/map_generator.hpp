@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,16 +14,15 @@
 
 /** @file */
 
-#ifndef MAP_GEN_HPP_INCLUDED
-#define MAP_GEN_HPP_INCLUDED
+#pragma once
 
 class config;
-class display;
 
 #include "exceptions.hpp"
-#include "map_location.hpp"
+#include "map/location.hpp"
 
-#include <map>
+#include <boost/optional.hpp>
+#include <cstdint>
 
 struct mapgen_exception : public game::error
 {
@@ -48,7 +47,7 @@ public:
 	 * to modify how the generator behaves.
 	 * (This function will not be called if allow_user_config() returns false).
 	 */
-	virtual void user_config(display& disp);
+	virtual void user_config();
 
 	/**
 	 * Returns a string identifying the generator by name.
@@ -66,16 +65,7 @@ public:
 	 * Creates a new map and returns it.
 	 * args may contain arguments to the map generator.
 	 */
-	virtual std::string create_map() = 0;
+	virtual std::string create_map(boost::optional<uint32_t> randomseed = boost::none) = 0;
 
-	virtual config create_scenario();
+	virtual config create_scenario(boost::optional<uint32_t> randomseed = boost::none);
 };
-
-/** Generate the map. */
-std::string default_generate_map(size_t width, size_t height, size_t island_size, size_t island_off_center,
-                                 size_t iterations, size_t hill_size,
-								 size_t max_lakes, size_t nvillages, size_t castle_size, size_t nplayers,
-								 bool roads_between_castles, std::map<map_location,std::string>* labels,
-						         const config& cfg);
-
-#endif

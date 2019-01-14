@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,16 +14,15 @@
 
 /** @file */
 
-#ifndef CAVE_MAP_GENERATOR_HPP_INCLUDED
-#define CAVE_MAP_GENERATOR_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "generators/map_generator.hpp"
-#include "simple_rng.hpp"
-#include "terrain_translation.hpp"
+#include "terrain/translation.hpp"
 
 #include <set>
 #include <boost/optional.hpp>
+#include <random>
 
 class cave_map_generator : public map_generator
 {
@@ -34,19 +33,19 @@ public:
 
 	std::string config_name() const;
 
-	std::string create_map();
-	config create_scenario();
+	std::string create_map(boost::optional<uint32_t> randomseed = boost::none);
+	config create_scenario(boost::optional<uint32_t> randomseed = boost::none);
 
 private:
 	struct cave_map_generator_job
 	{
-		cave_map_generator_job(const cave_map_generator& params, boost::optional<int> randomseed = boost::none);
+		cave_map_generator_job(const cave_map_generator& params, boost::optional<uint32_t> randomseed = boost::none);
 
 		struct chamber {
 			chamber()
 				: center()
 				, locs()
-				, items(0)
+				, items(nullptr)
 			{
 			}
 
@@ -64,29 +63,29 @@ private:
 		};
 
 		void generate_chambers();
-		void build_chamber(map_location loc, std::set<map_location>& locs, size_t size, size_t jagged);
+		void build_chamber(map_location loc, std::set<map_location>& locs, std::size_t size, std::size_t jagged);
 
 		void place_chamber(const chamber& c);
 
 		void place_passage(const passage& p);
 
-		void set_terrain(map_location loc, const t_translation::t_terrain & t);
+		void set_terrain(map_location loc, const t_translation::terrain_code & t);
 		void place_castle(int starting_position, const map_location &loc);
 
-	size_t translate_x(size_t x) const;
-	size_t translate_y(size_t y) const;
+		std::size_t translate_x(std::size_t x) const;
+		std::size_t translate_y(std::size_t y) const;
 
-		
+
 		const cave_map_generator& params;
 		bool flipx_, flipy_;
 
-		t_translation::t_map map_;
-		std::map<int, t_translation::coordinate> starting_positions_;
-		std::map<std::string,size_t> chamber_ids_;
+		t_translation::ter_map map_;
+		t_translation::starting_positions starting_positions_;
+		std::map<std::string,std::size_t> chamber_ids_;
 		std::vector<chamber> chambers_;
 		std::vector<passage> passages_;
 		config res_;
-		rand_rng::simple_rng rng_;
+		std::mt19937 rng_;
 	};
 
 	bool on_board(const map_location& loc) const
@@ -94,7 +93,7 @@ private:
 		return loc.x >= 0 && loc.y >= 0 && loc.x < width_ && loc.y < height_;
 	}
 
-	t_translation::t_terrain wall_, clear_, village_, castle_, keep_;
+	t_translation::terrain_code wall_, clear_, village_, castle_, keep_;
 
 	config cfg_;
 	int width_, height_, village_density_;
@@ -103,5 +102,3 @@ private:
 	// to make the scenario appear all random. This is kept track of here.
 	int flipx_chance_, flipy_chance_;
 };
-
-#endif

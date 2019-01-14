@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
 #include "display.hpp"
 #include "fake_unit_ptr.hpp"
 #include "log.hpp"
-#include "unit.hpp"
-#include "unit_animation_component.hpp"
+#include "units/unit.hpp"
+#include "units/animation_component.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -42,6 +42,8 @@ void fake_unit_manager::place_temporary_unit(internal_ptr_type u)
 int fake_unit_manager::remove_temporary_unit(internal_ptr_type u)
 {
 	int removed = 0;
+	if (fake_units_.empty())
+		return removed;
 	std::deque<internal_ptr_type>::iterator it =
 			std::remove(fake_units_.begin(), fake_units_.end(), u);
 	if (it != fake_units_.end()) {
@@ -57,4 +59,3 @@ int fake_unit_manager::remove_temporary_unit(internal_ptr_type u)
 	}
 	return removed;
 }
-

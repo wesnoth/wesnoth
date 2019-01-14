@@ -1,4 +1,3 @@
-local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 
@@ -10,30 +9,25 @@ return function(cfg)
     -- Returns nil for first 3 arguments if no messenger has moves left
     -- Returns nil for all arguments if there are no messengers on the map
 
-    local filter = cfg.filter or { id = cfg.id }
+    local filter = wml.get_child(cfg, "filter") or { id = cfg.id }
     local messengers = wesnoth.get_units { side = wesnoth.current.side, { "and", filter } }
     if (not messengers[1]) then return end
 
-    local waypoint_x = AH.split(cfg.waypoint_x, ",")
-    local waypoint_y = AH.split(cfg.waypoint_y, ",")
-    for i,_ in ipairs(waypoint_x) do
-        waypoint_x[i] = tonumber(waypoint_x[i])
-        waypoint_y[i] = tonumber(waypoint_y[i])
-    end
+    local waypoints = AH.get_multi_named_locs_xy('waypoint', cfg)
 
     -- Set the next waypoint for all messengers
     -- Also find those with MP left and return the one to next move, together with the WP to move toward
-    local max_rating, best_messenger, x, y = -9e99
+    local max_rating, best_messenger, x, y = - math.huge
     for _,messenger in ipairs(messengers) do
         -- To avoid code duplication and ensure consistency, we store some pieces of
         -- information in the messenger units, even though it could be calculated each time it is needed
         local wp_i = MAIUV.get_mai_unit_variables(messenger, cfg.ai_id, "wp_i") or 1
-        local wp_x, wp_y = waypoint_x[wp_i], waypoint_y[wp_i]
+        local wp_x, wp_y = waypoints[wp_i][1], waypoints[wp_i][2]
 
         -- If this messenger is within 3 hexes of the next waypoint, we go on to the one after that
         -- except if it's the last one
-        local dist_wp = H.distance_between(messenger.x, messenger.y, wp_x, wp_y)
-        if (dist_wp <= 3) and (wp_i < #waypoint_x) then wp_i = wp_i + 1 end
+        local dist_wp = wesnoth.map.distance_between(messenger.x, messenger.y, wp_x, wp_y)
+        if (dist_wp <= 3) and (wp_i < #waypoints) then wp_i = wp_i + 1 end
 
         -- Also store the rating for each messenger
         -- For now, this is simply a "forward rating"

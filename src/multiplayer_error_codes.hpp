@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,8 +17,7 @@
  * Define the errors the server may send during the login procedure
  */
 
-#ifndef MULTIPLAYER_ERROR_CODES_HPP_INCLUDED
-#define MULTIPLAYER_ERROR_CODES_HPP_INCLUDED
+#pragma once
 
 #define MP_MUST_LOGIN					"100"
 #define MP_NAME_TAKEN_ERROR				"101"
@@ -27,14 +26,12 @@
 #define MP_NAME_RESERVED_ERROR				"104"
 #define MP_NAME_UNREGISTERED_ERROR			"105"
 #define MP_NAME_INACTIVE_WARNING			"106"
+#define MP_NAME_AUTH_BAN_USER_ERROR			"107"
+#define MP_NAME_AUTH_BAN_IP_ERROR			"108"
+#define MP_NAME_AUTH_BAN_EMAIL_ERROR		"109"
 
 #define MP_PASSWORD_REQUEST				"200"
 #define MP_PASSWORD_REQUEST_FOR_LOGGED_IN_NAME		"201"
 #define MP_NO_SEED_ERROR				"202"
 #define MP_INCORRECT_PASSWORD_ERROR			"203"
 #define MP_TOO_MANY_ATTEMPTS_ERROR			"204"
-
-#endif // MULTIPLAYER_ERROR_CODES_HPP_INCLUDES
-
-
-

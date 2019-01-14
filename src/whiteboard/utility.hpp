@@ -1,6 +1,6 @@
 /*
- Copyright (C) 2010 - 2014 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -16,13 +16,12 @@
  * @file
  */
 
-#ifndef WB_UTILITY_HPP_
-#define WB_UTILITY_HPP_
+#pragma once
 
 #include <vector>
 #include <deque>
 
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
 
 #include "typedefs.hpp"
 
@@ -32,7 +31,7 @@ class team;
 namespace wb {
 
 /// @return The current viewing team's index
-size_t viewer_team();
+std::size_t viewer_team();
 
 /// @return The current viewing side's number (i.e. team index + 1)
 int viewer_side();
@@ -45,27 +44,32 @@ side_actions_ptr current_side_actions();
 
 /**
  * For a given leader on a keep, find another leader on another keep in the same castle.
- * @retval NULL if no such leader has been found
+ * @retval nullptr if no such leader has been found
  */
-unit_const_ptr find_backup_leader(unit const& leader);
+unit_const_ptr find_backup_leader(const unit& leader);
 
 /**
  * @return a leader from the specified team who can recruit on the specified hex
- * @retval NULL if no such leader has been found
+ * @retval nullptr if no such leader has been found
  */
-unit* find_recruiter(size_t team_index, map_location const&);
+unit* find_recruiter(std::size_t team_index, const map_location&);
+/**
+ * executes @a func for each unti of side of @a side_num that can recruit on @a loc.
+ * @a func takes the leader unit and can return true to 'break' the loop
+ */
+bool any_recruiter(int side_num, const map_location& loc, std::function<bool(unit&)> func);
 
 /// Applies the future unit map and @return a pointer to the unit at hex
-/// @retval NULL if none is visible to the specified viewer side
+/// @retval nullptr if none is visible to the specified viewer side
 unit* future_visible_unit(map_location hex, int viewer_side = wb::viewer_side());
 
 /// Applies the future unit map and @return a pointer to the unit at hex
-/// @retval NULL if none is visible to the specified viewer side
+/// @retval nullptr if none is visible to the specified viewer side
 /// @param on_side Only search for units of this side.
 unit* future_visible_unit(int on_side, map_location hex, int viewer_side = wb::viewer_side());
 
 /// Computes the MP cost for u to travel path
-int path_cost(std::vector<map_location> const& path, unit const& u);
+int path_cost(const std::vector<map_location>& path, const unit& u);
 
 struct temporary_unit_hider {
 	temporary_unit_hider(unit& u);
@@ -87,14 +91,14 @@ public:
 	{}
 	~variable_finalizer()
 	{
-		if(variable_ != NULL) {
+		if(variable_ != nullptr) {
 			*variable_ = value_;
 		}
 	}
 	/** Stop tracking the variable, i.e. this object won't do anything on destruction. */
 	void clear()
 	{
-		variable_ = NULL;
+		variable_ = nullptr;
 	}
 private:
 	T * variable_;
@@ -112,7 +116,7 @@ bool has_actions();
  *
  * The argument is the team to consider.
  */
-typedef boost::function<bool(team&)> team_filter;
+typedef std::function<bool(team&)> team_filter;
 
 /** Returns whether a given team's plan is visible. */
 bool team_has_visible_plan(team&);
@@ -126,11 +130,11 @@ bool team_has_visible_plan(team&);
  * @param function the function to execute.
  * @param team_filter select whether a team is visited (default to @ref team_has_visible_plan).
  */
-void for_each_action(boost::function<void(action_ptr)> function,
+void for_each_action(std::function<void(action*)> function,
                      team_filter team_filter = team_has_visible_plan);
 
 /**
- * Find the first action occuring on a given hex.
+ * Find the first action occurring on a given hex.
  *
  * The actions are processed chronologically.
  * The second parameter is a @ref team_filter, it is called for each team, if it returns false, the actions of this team won't be considered.
@@ -146,8 +150,6 @@ action_ptr find_action_at(map_location hex, team_filter team_filter = team_has_v
  *
  * @param target the unit owning the actions.
  */
-std::deque<action_ptr> find_actions_of(unit const &target);
+std::deque<action_ptr> find_actions_of(const unit& target);
 
 } //end namespace wb
-
-#endif /* WB_UTILITY_HPP_ */

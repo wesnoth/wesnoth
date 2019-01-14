@@ -1,6 +1,6 @@
 /*
- Copyright (C) 2010 - 2014 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -16,18 +16,17 @@
  * @file
  */
 
-#include "action.hpp"
-#include "move.hpp"
-#include "attack.hpp"
-#include "recruit.hpp"
-#include "recall.hpp"
-#include "suppose_dead.hpp"
+#include "whiteboard/action.hpp"
+#include "whiteboard/move.hpp"
+#include "whiteboard/attack.hpp"
+#include "whiteboard/recruit.hpp"
+#include "whiteboard/recall.hpp"
+#include "whiteboard/suppose_dead.hpp"
 
 #include "config.hpp"
 #include "game_board.hpp"
 #include "resources.hpp"
-#include "team.hpp"
-#include "unit.hpp"
+#include "units/unit.hpp"
 
 namespace wb {
 
@@ -57,7 +56,7 @@ config action::to_config() const
 }
 
 /* static */
-action_ptr action::from_config(config const& cfg, bool hidden)
+action_ptr action::from_config(const config& cfg, bool hidden)
 {
 	std::string type = cfg["type"];
 
@@ -72,7 +71,7 @@ action_ptr action::from_config(config const& cfg, bool hidden)
 			return action_ptr(new recall(cfg,hidden));
 		else if(type=="suppose_dead")
 			return action_ptr(new suppose_dead(cfg,hidden));
-	} catch(action::ctor_err const&) {}
+	} catch(const action::ctor_err&) {}
 
 	return action_ptr();
 }
@@ -93,20 +92,20 @@ void action::show()
 	do_show();
 }
 
-action::action(size_t team_index, bool hidden)
+action::action(std::size_t team_index, bool hidden)
 	: team_index_(team_index)
 	, hidden_(hidden)
 {
 }
 
-action::action(config const& cfg, bool hidden)
+action::action(const config& cfg, bool hidden)
 	: team_index_()
 	, hidden_(hidden)
 {
 	// Construct and validate team_index_
 	int team_index_temp = cfg["team_index_"].to_int(-1); //default value: -1
 	if(team_index_temp < 0
-			|| team_index_temp >= static_cast<int>(resources::teams->size()))
+			|| team_index_temp >= static_cast<int>(resources::gameboard->teams().size()))
 		throw ctor_err("action: Invalid team_index_");
 	team_index_ = team_index_temp;
 }
@@ -115,7 +114,7 @@ action::~action()
 {
 }
 
-size_t action::get_unit_id() const
+std::size_t action::get_unit_id() const
 {
 	unit_ptr ret = get_unit();
 	return ret ? ret->underlying_id() : 0;

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2012 - 2014 by Boldizsár Lipka <lipkab@zoho.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2012 - 2018 by Boldizsár Lipka <lipkab@zoho.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,27 +12,28 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_MP_DEPCHECK_SELECT_NEW_HPP_INCLUDED
-#define GUI_DIALOGS_MP_DEPCHECK_SELECT_NEW_HPP_INCLUDED
+#pragma once
 
-#include "gui/dialogs/dialog.hpp"
-#include "depcheck.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
+#include "game_initialization/depcheck.hpp"
 #include <vector>
 
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tdepcheck_select_new : public tdialog
+class depcheck_select_new : public modal_dialog
 {
 public:
 	/**
 	 * Constructor.
 	 *
 	 * @param name 		the type of which we want to select a new item
-	 * @param options 	the names of the components which can be choosed
+	 * @param options 	the names of the components which can be chosen
 	 */
-	tdepcheck_select_new(ng::depcheck::component_type name,
+	depcheck_select_new(ng::depcheck::component_type name,
 							const std::vector<std::string>& options);
 
 	/**
@@ -47,14 +48,14 @@ public:
 	}
 
 protected:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
+	virtual const std::string& window_id() const override;
 
-	/** Inherited from tdialog */
-	virtual void pre_show(CVideo& video, twindow& window);
+	/** Inherited from modal_dialog */
+	virtual void pre_show(window& window) override;
 
-	/** Inherited from tdialog */
-	virtual void post_show(twindow& window);
+	/** Inherited from modal_dialog */
+	virtual void post_show(window& window) override;
 
 private:
 	/** the options available */
@@ -63,5 +64,5 @@ private:
 	/** the index of the selected item */
 	int result_;
 };
-}
-#endif
+} // namespace dialogs
+} // namespace gui2

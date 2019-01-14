@@ -1,6 +1,7 @@
 # vi: syntax=python:et:ts=4
 from config_check_utils import find_include
-from os.path import join, dirname, basename
+from os.path import join, dirname, basename, normpath
+import sys
 from glob import glob
 import re
 
@@ -27,10 +28,12 @@ def find_boost(env):
         versions = []
         for prefix, includefile in includes:
             try:
-                versions.append(map(int, re.findall(r"^boost-(\d*)_(\d*)$", basename(dirname(dirname(includefile))))[0]))
+                testname = basename(dirname(dirname(includefile)))
+                major, minor = re.findall(r"^boost-(\d*)_(\d*)$", testname)[0]
+                versions.append((int(major), int(minor)))
             except IndexError:
                 versions.append((0,0))
-        version_nums = map(lambda (major, minor): 100000 * major + 100 * minor, versions)
+        version_nums = [100000 * major_minor[0] + 100 * major_minor[1] for major_minor in versions]
         include_index = version_nums.index(max(version_nums))
         prefix, includefile = includes[include_index]
         version = versions[include_index]
@@ -60,18 +63,22 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
 
     boost_headers = { "regex" : "regex/config.hpp",
                       "iostreams" : "iostreams/constants.hpp",
+                      "locale" : "locale/info.hpp",
                       "unit_test_framework" : "test/unit_test.hpp",
+                      "filesystem" : "filesystem/operations.hpp",
+                      "random" : "random/random_number_generator.hpp",
                       "system" : "system/error_code.hpp"}
 
     header_name = boost_headers.get(boost_lib, boost_lib + ".hpp")
     libname = "boost_" + boost_lib + env.get("boost_suffix", "")
 
-    if env["fast"]:
-        env.AppendUnique(CXXFLAGS = "-I" + boostdir, LIBPATH = [boostlibdir])
-    else:
-        env.AppendUnique(CPPPATH = [boostdir], LIBPATH = [boostlibdir])
+    if sys.platform == "win32" or normpath(boostdir) != "/usr/include":
+        if env["fast"]:
+            env.AppendUnique(CXXFLAGS = ["-isystem", boostdir], LIBPATH = [boostlibdir])
+        else:
+            env.AppendUnique(CPPPATH = [boostdir], LIBPATH = [boostlibdir])
     if not header_only:
-        env.AppendUnique(LIBS = [libname])
+        env.PrependUnique(LIBS = [libname])
     if boost_lib == "thread" and env["PLATFORM"] == "posix":
         env.AppendUnique(CCFLAGS = ["-pthread"], LINKFLAGS = ["-pthread"])
 
@@ -99,6 +106,10 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
         \n"""
 
     test_program += """
+        // Workaround for sdl #defining main breaking non sdl programs
+        #ifdef main
+        #undef main
+        #endif
         int main()
         {
         }
@@ -174,4 +185,44 @@ def CheckBoostIostreamsBZip2(context):
     context.Result("no")
     return False
 
-config_checks = { "CheckBoost" : CheckBoost, "CheckBoostIostreamsGZip" : CheckBoostIostreamsGZip, "CheckBoostIostreamsBZip2" : CheckBoostIostreamsBZip2 }
+def CheckBoostLocaleBackends(context, backends):
+    env = context.env
+    backup = env.Clone().Dictionary()
+
+    context.Message("Checking for available Boost Locale backends... ")
+    test_program = """
+        #include <boost/locale/localization_backend.hpp>
+        #include <iostream>
+        #include <assert.h>
+
+        int main()
+        {
+            auto manager { boost::locale::localization_backend_manager::global() };
+            auto backends { manager.get_all_backends() };
+            assert(backends.size() >= 1);
+            for(auto backend : backends) {
+                std::cout << backend << std::endl;
+            }
+        }
+        \n"""
+
+    if(env["PLATFORM"] != "win32"):
+        env.Append(LIBS = ["icudata", "icui18n", "icuuc"])
+
+    res, output = context.TryRun(test_program, ".cpp")
+    result = False
+    found_backends = "no"
+    if res:
+        supported_backends = output.splitlines()
+        result = bool(set(backends).intersection(supported_backends))
+        found_backends = ",".join(supported_backends)
+
+    context.Result(found_backends)
+    if result:
+        return True
+    else:
+        env.Replace(**backup)
+
+    return False
+
+config_checks = { "CheckBoost" : CheckBoost, "CheckBoostIostreamsGZip" : CheckBoostIostreamsGZip, "CheckBoostIostreamsBZip2" : CheckBoostIostreamsBZip2, "CheckBoostLocaleBackends" : CheckBoostLocaleBackends }

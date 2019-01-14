@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2013 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2013 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,15 +12,16 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_EDIT_TEXT_INCLUDED
-#define GUI_DIALOGS_EDIT_TEXT_INCLUDED
+#pragma once
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tedit_text : public tdialog
+class edit_text : public modal_dialog
 {
 public:
 	/**
@@ -31,16 +32,16 @@ public:
 	 * @param [in, out] text      The parameter's usage is:
 	 *                            - Input: The initial value of the text field.
 	 *                            - Output: The new unit name the user entered
-	 *                              if the dialog returns @ref twindow::OK,
+	 *                              if the dialog returns @ref retval::OK,
 	 *                              undefined otherwise.
 	 */
-	tedit_text(const std::string& title,
+	edit_text(const std::string& title,
 			   const std::string& label,
 			   std::string& text);
 
 	/**
 	 * Executes the dialog.
-	 * See @ref tdialog for more information.
+	 * See @ref modal_dialog for more information.
 	 *
 	 * @param [in, out] text      The parameter's usage is:
 	 *                            - Input:  The initial value of the unit name.
@@ -48,18 +49,11 @@ public:
 	 *                              if this method returns @a true, undefined
 	 *                              otherwise.
 	 */
-	static bool execute(const std::string& title,
-						const std::string& label,
-						std::string& text,
-						CVideo& video)
-	{
-		return tedit_text(title, label, text).show(video);
-	}
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(edit_text)
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
+	virtual const std::string& window_id() const override;
 };
-}
-
-#endif /* ! GUI_DIALOGS_EDIT_TEXT_INCLUDED */
+} // namespace dialogs
+} // namespace gui2

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2011 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2011 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,6 +16,7 @@
 
 #include <boost/test/unit_test.hpp>
 
+#include "config.hpp"
 #include "config_cache.hpp"
 #include "gui/auxiliary/iterator/iterator.hpp"
 #include "gui/widgets/label.hpp"
@@ -103,33 +104,31 @@ static std::string bottom_up_t_t_t_result()
 	return result;
 }
 
-static void add_widget(gui2::tgrid& grid
-		, gui2::twidget* widget
+static void add_widget(gui2::grid& grid
+		, gui2::widget* widget
 		, const std::string& id
 		, const unsigned row
 		, const unsigned column)
 {
-	BOOST_REQUIRE_NE(widget, static_cast<gui2::twidget*>(NULL));
+	BOOST_REQUIRE_NE(widget, static_cast<gui2::widget*>(nullptr));
 
 	widget->set_id(id);
 	grid.set_child(widget
 			, row
 			, column
-			, gui2::tgrid::VERTICAL_GROW_SEND_TO_CLIENT
-				| gui2::tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
+			, gui2::grid::VERTICAL_GROW_SEND_TO_CLIENT
+				| gui2::grid::HORIZONTAL_GROW_SEND_TO_CLIENT
 			, 0);
 }
 
 template<class T>
-static void test_control()
+static void test_control(T&& control)
 {
-	T control;
-
 	{
-		gui2::iterator::titerator< gui2::iterator::policy::order::ttop_down<
+		gui2::iteration::iterator< gui2::iteration::policy::order::top_down<
 				true
 				, true
-				, true> >
+				, true>>
 			iterator(control);
 
 		/***** INITIAL STATE *****/
@@ -146,10 +145,10 @@ static void test_control()
 
 	}
 	{
-		gui2::iterator::titerator< gui2::iterator::policy::order::ttop_down<
+		gui2::iteration::iterator< gui2::iteration::policy::order::top_down<
 				false
 				, true
-				, true> >
+				, true>>
 			iterator(control);
 
 		/***** INITIAL STATE *****/
@@ -158,11 +157,11 @@ static void test_control()
 	}
 
 	{
-		gui2::iterator::titerator<gui2::iterator::policy::order::tbottom_up<true, true, true> > iterator(control);
+		gui2::iteration::iterator<gui2::iteration::policy::order::bottom_up<true, true, true>> iterator(control);
 		BOOST_CHECK_EQUAL(iterator.at_end(), false);
 	}
 	{
-		gui2::iterator::titerator<gui2::iterator::policy::order::tbottom_up<false, false, false> > iterator(control);
+		gui2::iteration::iterator<gui2::iteration::policy::order::bottom_up<false, false, false>> iterator(control);
 		BOOST_CHECK_EQUAL(iterator.at_end(), true);
 	}
 }
@@ -170,38 +169,38 @@ static void test_control()
 static void test_control()
 {
 	/* Could add more widgets to the list. */
-	test_control<gui2::tlabel>();
+	test_control(gui2::label(gui2::implementation::builder_label(config())));
 
 }
 
 static void test_grid()
 {
 	/* An empty grid behaves the same as a control so test here. */
-	test_control<gui2::tgrid>();
+	test_control(gui2::grid());
 
 	/* Test the child part here. */
-	gui2::tgrid grid(2 ,2);
+	gui2::grid grid(2 ,2);
 	grid.set_id("0");
 
-	gui2::tgrid* g = new gui2::tgrid(2, 2);
+	gui2::grid* g = new gui2::grid(2, 2);
 	add_widget(grid, g, "1", 0, 0);
-	add_widget(grid, new gui2::tlabel(), "2", 1, 0);
-	add_widget(grid, new gui2::tlabel(), "3", 0, 1);
-	add_widget(grid, new gui2::tlabel(), "4", 1, 1);
+	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "2", 1, 0);
+	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "3", 0, 1);
+	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "4", 1, 1);
 
-	add_widget(*g, new gui2::tlabel(), "5", 0, 0);
-	add_widget(*g, new gui2::tlabel(), "6", 1, 0);
-	add_widget(*g, new gui2::tlabel(), "7", 0, 1);
-	add_widget(*g, new gui2::tlabel(), "8", 1, 1);
+	add_widget(*g, new gui2::label(gui2::implementation::builder_label(config())), "5", 0, 0);
+	add_widget(*g, new gui2::label(gui2::implementation::builder_label(config())), "6", 1, 0);
+	add_widget(*g, new gui2::label(gui2::implementation::builder_label(config())), "7", 0, 1);
+	add_widget(*g, new gui2::label(gui2::implementation::builder_label(config())), "8", 1, 1);
 
 	{
 		std::stringstream sstr;
-		lg::tredirect_output_setter redirect_output(sstr);
+		lg::redirect_output_setter redirect_output(sstr);
 
-		gui2::iterator::titerator<gui2::iterator::policy::order::ttop_down<
+		gui2::iteration::iterator<gui2::iteration::policy::order::top_down<
 				true
 				, true
-				, true> >
+				, true>>
 			iterator(grid);
 
 		while(iterator.next()) {
@@ -212,12 +211,12 @@ static void test_grid()
 	}
 	{
 		std::stringstream sstr;
-		lg::tredirect_output_setter redirect_output(sstr);
+		lg::redirect_output_setter redirect_output(sstr);
 
-		gui2::iterator::titerator<gui2::iterator::policy::order::ttop_down<
+		gui2::iteration::iterator<gui2::iteration::policy::order::top_down<
 				true
 				, true
-				, true> >
+				, true>>
 			iterator(grid);
 
 		for( ; !iterator.at_end(); ++iterator) {
@@ -228,12 +227,12 @@ static void test_grid()
 	}
 	{
 		std::stringstream sstr;
-		lg::tredirect_output_setter redirect_output(sstr);
+		lg::redirect_output_setter redirect_output(sstr);
 
-		gui2::iterator::titerator<gui2::iterator::policy::order::tbottom_up<
+		gui2::iteration::iterator<gui2::iteration::policy::order::bottom_up<
 				true
 				, true
-				, true> >
+				, true>>
 			iterator(grid);
 
 		while(iterator.next()) {
@@ -244,12 +243,12 @@ static void test_grid()
 	}
 	{
 		std::stringstream sstr;
-		lg::tredirect_output_setter redirect_output(sstr);
+		lg::redirect_output_setter redirect_output(sstr);
 
-		gui2::iterator::titerator<gui2::iterator::policy::order::tbottom_up<
+		gui2::iteration::iterator<gui2::iteration::policy::order::bottom_up<
 				true
 				, true
-				, true> >
+				, true>>
 			iterator(grid);
 
 		for( ; !iterator.at_end(); ++iterator) {
@@ -269,13 +268,12 @@ BOOST_AUTO_TEST_CASE(test_gui2_iterator)
 	cache.add_define("EDITOR");
 	cache.add_define("MULTIPLAYER");
 
-	lg::set_log_domain_severity("gui/iterator", lg::debug);
+	lg::set_log_domain_severity("gui/iterator", lg::debug());
 	lg::timestamps(false);
 
 	std::stringstream sstr;
-	lg::tredirect_output_setter redirect_output(sstr);
+	lg::redirect_output_setter redirect_output(sstr);
 
 	test_control();
 	test_grid();
 }
-

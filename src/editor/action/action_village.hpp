@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Fabian Mueller <fabianmueller5@gmx.de>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Fabian Mueller <fabianmueller5@gmx.de>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -23,30 +23,36 @@
  *   need to ensure the pointer is deleted.
  */
 
-#ifndef EDITOR_ACTION_VILLAGE_HPP
-#define EDITOR_ACTION_VILLAGE_HPP
+#pragma once
 
-#include "action.hpp"
+#include "editor/action/action.hpp"
 
-
-namespace editor {
-
+namespace editor
+{
 /**
  * Sets the ownership of a village to the current side.
  */
 class editor_action_village : public editor_action_location
 {
-	public:
-		editor_action_village(map_location loc, int side_number)
-		: editor_action_location(loc), side_number_(side_number)
-		{
-		}
-		editor_action_village* clone() const;
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "village"; }
-	private:
-		int side_number_;
+public:
+	editor_action_village(map_location loc, int side_number)
+		: editor_action_location(loc)
+		, side_number_(side_number)
+	{
+	}
+
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	editor_action_village* clone() const;
+
+	editor_action* perform(map_context& mc) const;
+
+	void perform_without_undo(map_context& mc) const;
+
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const std::string& get_name() const;
+
+private:
+	int side_number_;
 };
 
 /**
@@ -54,18 +60,21 @@ class editor_action_village : public editor_action_location
  */
 class editor_action_village_delete : public editor_action_location
 {
-	public:
-		editor_action_village_delete(map_location loc)
+public:
+	editor_action_village_delete(map_location loc)
 		: editor_action_location(loc)
-		{
-		}
-		editor_action_village_delete* clone() const;
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "village_delete"; }
+	{
+	}
+
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	editor_action_village_delete* clone() const;
+
+	editor_action* perform(map_context& mc) const;
+
+	void perform_without_undo(map_context& mc) const;
+
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const std::string& get_name() const;
 };
 
-
-} //end namespace editor
-
-#endif
+} // end namespace editor

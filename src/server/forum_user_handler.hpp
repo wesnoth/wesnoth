@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,14 +12,14 @@
    See the COPYING file for more details.
 */
 
-#ifndef FORUM_USER_HANDLER_HPP_INCLUDED
-#define FORUM_USER_HANDLER_HPP_INCLUDED
+#pragma once
 
 #include "user_handler.hpp"
 
 #include <vector>
+#include <memory>
+#include <ctime>
 
-#include <boost/shared_ptr.hpp>
 #include <mysql/mysql.h>
 
 // The [user_handler] section in the server configuration
@@ -31,6 +31,7 @@
 //	db_user=root
 //	db_password=secret
 //	db_users_table=users
+//	db_banlist_table=banlist
 //	db_extra_table=extra_data
 //[/user_handler]
 
@@ -58,7 +59,7 @@ class fuh : public user_handler {
 		 *
 		 * Return an empty string if an error occurs
 		 */
-		std::string create_pepper(const std::string& name);
+		std::string extract_salt(const std::string& name);
 
 		void user_logged_in(const std::string& name);
 
@@ -69,8 +70,7 @@ class fuh : public user_handler {
 		bool user_is_moderator(const std::string& name);
 		void set_is_moderator(const std::string& name, const bool& is_moderator);
 
-		// Throws user_handler::error
-		void password_reminder(const std::string& name);
+		BAN_TYPE user_is_banned(const std::string& name, const std::string& addr);
 
 		// Throws user_handler::error
 		std::string user_info(const std::string& name);
@@ -86,35 +86,30 @@ class fuh : public user_handler {
 		std::string get_mail(const std::string& user);
 		/*std::vector<std::string> get_friends(const std::string& user);
 		std::vector<std::string> get_ignores(const std::string& user);*/
-		time_t get_lastlogin(const std::string& user);
-		time_t get_registrationdate(const std::string& user);
+		std::time_t get_lastlogin(const std::string& user);
+		std::time_t get_registrationdate(const std::string& user);
 		bool is_inactive(const std::string& user);
 
-		void set_lastlogin(const std::string& user, const time_t& lastlogin);
+		void set_lastlogin(const std::string& user, const std::time_t& lastlogin);
 
-		std::string db_name_, db_host_, db_user_, db_password_, db_users_table_, db_extra_table_;
+		std::string db_name_, db_host_, db_user_, db_password_, db_users_table_, db_banlist_table_, db_extra_table_;
 
-		// std::unique_ptr would be better, as the object isn't actually shared
-		// boost::scoped_ptr cannot be returned, so we can't use that
-		// TODO C++11: switch to std::unique_ptr
-		typedef boost::shared_ptr<MYSQL_RES> mysql_result;
+		typedef std::unique_ptr<MYSQL_RES, decltype(&mysql_free_result)> mysql_result;
 
-		// Throws user_handler::error
-		mysql_result db_query(const std::string& query);
-
-		// Throws user_handler::error via db_query()
-		std::string db_query_to_string(const std::string& query);
 		MYSQL *conn;
 
+		template<typename T, typename... Args>
+		inline T prepared_statement(const std::string& sql, Args&&...);
 		// Query a detail for a particular user from the database
-		std::string get_detail_for_user(const std::string& name, const std::string& detail);
-		std::string get_writable_detail_for_user(const std::string& name, const std::string& detail);
+		template<typename T>
+		T get_detail_for_user(const std::string& name, const std::string& detail);
+		template<typename T>
+		T get_writable_detail_for_user(const std::string& name, const std::string& detail);
 
 		// Write something to the write table
-		void write_detail(const std::string& name, const std::string& detail, const std::string& value);
+		template<typename T>
+		void write_detail(const std::string& name, const std::string& detail, T&& value);
 
 		// Same as user_exists() but checks if we have a row for this user in the extra table
 		bool extra_row_exists(const std::string& name);
 };
-
-#endif //FORUM_USER_HANDLER_HPP_INCLUDED

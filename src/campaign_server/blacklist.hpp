@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,12 +12,9 @@
    See the COPYING file for more details.
 */
 
-#ifndef CAMPAIGN_SERVER_BLACKLIST_HPP_INCLUDED
-#define CAMPAIGN_SERVER_BLACKLIST_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
-
-#include <boost/noncopyable.hpp>
 
 namespace campaignd
 {
@@ -41,11 +38,13 @@ namespace campaignd
  *     author = (add-on author patterns)
  *     description = (add-on description patterns)
  */
-class blacklist : private boost::noncopyable
+class blacklist
 {
 public:
-	typedef std::string       glob;
-	typedef std::vector<glob> globlist;
+	typedef std::vector<std::string> globlist;
+
+	blacklist(const blacklist&) = delete;
+	blacklist& operator=(const blacklist&) = delete;
 
 	blacklist();
 	explicit blacklist(const config& cfg);
@@ -93,9 +92,7 @@ private:
 	bool is_in_globlist(const std::string& str, const globlist& glist) const;
 
 	bool is_in_ip_masklist(const std::string& ip, const globlist& mlist) const;
-	bool ip_matches(const std::string& ip, const glob& ip_mask) const;
+	bool ip_matches(const std::string& ip, const std::string& ip_mask) const;
 };
 
 }
-
-#endif

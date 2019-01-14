@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,40 +17,41 @@
  * Default AI contexts
  */
 
-#ifndef AI_DEFAULT_CONTEXTS_HPP_INCLUDED
-#define AI_DEFAULT_CONTEXTS_HPP_INCLUDED
+#pragma once
 
-#include "../contexts.hpp"
-#include "formula_callable.hpp"
-
-#ifdef _MSC_VER
-#pragma warning(push)
-//silence "inherits via dominance" warnings
-#pragma warning(disable:4250)
-#endif
+#include "ai/contexts.hpp"
+#include "formula/callable.hpp"
+#include "utils/make_enum.hpp"
 
 //============================================================================
 namespace ai {
 
 
 struct target {
-	enum TYPE { VILLAGE, LEADER, EXPLICIT, THREAT, BATTLE_AID, MASS, SUPPORT };
+	MAKE_ENUM(TYPE,
+		(VILLAGE, "village")
+		(LEADER, "leader")
+		(EXPLICIT, "explicit")
+		(THREAT, "threat")
+		(BATTLE_AID, "battle aid")
+		(MASS, "mass")
+		(SUPPORT, "support")
+	)
 
-	target(const map_location& pos, double val, TYPE target_type=VILLAGE) : loc(pos), value(val), type(target_type)
+	target(const map_location& pos, double val, TYPE target_type=TYPE::VILLAGE) : loc(pos), value(val), type(target_type)
 	{}
 	map_location loc;
 	double value;
 
 	TYPE type;
-	///@todo 1.7: ai goals: this is a 'target' marker class which should be expanded with additional information which is generic enough to apply to all targets.
 };
 
 
-class attack_analysis : public game_logic::formula_callable
+class attack_analysis : public wfl::action_callable
 {
 public:
 	attack_analysis() :
-		game_logic::formula_callable(),
+		wfl::action_callable(),
 		target(),
 		movements(),
 		target_value(0.0),
@@ -76,13 +77,13 @@ public:
 				 const move_map& enemy_dstsrc, double aggression);
 
 	double rating(double aggression, const readonly_context& ai_obj) const;
-	variant get_value(const std::string& key) const;
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+	wfl::variant get_value(const std::string& key) const override;
+	void get_inputs(wfl::formula_input_vector& inputs) const override;
 
 	bool attack_close(const map_location& loc) const;
 
 	map_location target;
-	std::vector<std::pair<map_location,map_location> > movements;
+	std::vector<std::pair<map_location,map_location>> movements;
 
 	/** The value of the unit being targeted. */
 	double target_value;
@@ -129,6 +130,7 @@ public:
 	/** Is true if the units involved in this attack sequence are surrounded. */
 	bool is_surrounded;
 
+	wfl::variant execute_self(wfl::variant ctxt) override;
 };
 
 
@@ -182,7 +184,7 @@ public:
 
 
 	default_ai_context_proxy()
-		: target_(NULL)
+		: target_(nullptr)
 	{
 	}
 
@@ -283,16 +285,9 @@ public:
 
 private:
 	recursion_counter recursion_counter_;
-	mutable std::vector<target> additional_targets_;///@todo 1.9 refactor this
+	mutable std::vector<target> additional_targets_;// TODO: refactor this (remove mutable)
 
 
 };
 
 } //end of namespace ai
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
-
-#endif

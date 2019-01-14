@@ -1,8 +1,8 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2014 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2005 - 2018 by Philippe Plantier <ayin@anathas.org>
 
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -13,16 +13,22 @@
 
    See the COPYING file for more details.
 */
-#ifndef VARIABLE_H_INCLUDED
-#define VARIABLE_H_INCLUDED
+
+#pragma once
 
 #include "config.hpp"
-
-#include <boost/shared_ptr.hpp>
+#include "map/location.hpp"
 
 #include <utility>
 
 class unit_map;
+
+class config_variable_set : public variable_set {
+	const config& cfg_;
+public:
+	config_variable_set(const config& cfg) : cfg_(cfg) {}
+	virtual config::attribute_value get_variable_const(const std::string &id) const;
+};
 
 /**
  * A variable-expanding proxy for the config class. This class roughly behaves
@@ -47,40 +53,31 @@ private:
 	friend class std::pair;
 #endif
 
-#ifndef HAVE_CXX11
-	struct safe_bool_impl { void nonnull() {} };
-	/// Used as the return type of the conversion operator for boolean contexts.
-	typedef void (safe_bool_impl::*safe_bool)();
-#endif
-
 	vconfig();
-	vconfig(const config & cfg, const boost::shared_ptr<const config> & cache);
+	vconfig(const config & cfg, const std::shared_ptr<const config> & cache);
 public:
 	/// Constructor from a config.
 	/// Equivalent to vconfig(cfg, false).
 	/// Do not use if the vconfig will persist after @a cfg is destroyed!
 	explicit vconfig(const config &cfg) : cache_(), cfg_(&cfg) {}
+	explicit vconfig(config &&cfg) : cache_(new config(std::move(cfg))), cfg_(cache_.get()) { }
 	vconfig(const config &cfg, bool manage_memory);
 	~vconfig();
 
 	static vconfig empty_vconfig(); // Valid to dereference. Contains nothing
 	static vconfig unconstructed_vconfig(); // Must not be dereferenced
 
-#ifdef HAVE_CXX11
 	/// A vconfig evaluates to true iff it can be dereferenced.
 	explicit operator bool() const	{ return !null(); }
-#else
-	/// A vconfig evaluates to true iff it can be dereferenced.
-	operator safe_bool() const	{ return !null() ? &safe_bool_impl::nonnull : NULL; }
-#endif
 
-	bool null() const { return cfg_ == NULL; }
-	void make_safe() const; //!< instruct the vconfig to make a private copy of its underlying data.
+	bool null() const { assert(cfg_); return cfg_ == &default_empty_config; }
+	const vconfig& make_safe() const; //!< instruct the vconfig to make a private copy of its underlying data.
 	const config& get_config() const { return *cfg_; }
 	config get_parsed_config() const;
 
 	typedef std::vector<vconfig> child_list;
 	child_list get_children(const std::string& key) const;
+	std::size_t count_children(const std::string& key) const;
 	vconfig child(const std::string& key) const;
 	bool has_child(const std::string& key) const;
 
@@ -102,21 +99,56 @@ public:
 	bool has_attribute(const std::string& key) const { return cfg_->has_attribute(key); }
 	bool empty() const { return (null() || cfg_->empty()); }
 
+	struct attribute_iterator
+	{
+		struct pointer_proxy;
+
+		typedef const config::attribute value_type;
+		typedef std::bidirectional_iterator_tag iterator_category;
+		typedef int difference_type;
+		typedef const pointer_proxy pointer;
+		typedef const config::attribute reference;
+		typedef config::const_attribute_iterator Itor;
+		explicit attribute_iterator(const Itor &i): i_(i) {}
+
+		attribute_iterator &operator++() { ++i_; return *this; }
+		attribute_iterator operator++(int) { return attribute_iterator(i_++); }
+
+		attribute_iterator &operator--() { --i_; return *this; }
+		attribute_iterator operator--(int) { return attribute_iterator(i_--); }
+
+		reference operator*() const;
+		pointer operator->() const;
+
+		bool operator==(const attribute_iterator &i) const { return i_ == i.i_; }
+		bool operator!=(const attribute_iterator &i) const { return i_ != i.i_; }
+
+	private:
+		Itor i_;
+	};
+
+	boost::iterator_range<attribute_iterator> attribute_range() {
+		config::const_attr_itors range = cfg_->attribute_range();
+		return boost::make_iterator_range(attribute_iterator(range.begin()), attribute_iterator(range.end()));
+	}
+
 	struct all_children_iterator
 	{
 		struct pointer_proxy;
 
-		typedef std::pair<std::string, vconfig> value_type;
-		typedef std::forward_iterator_tag iterator_category;
+		typedef const std::pair<std::string, vconfig> value_type;
+		typedef std::bidirectional_iterator_tag iterator_category;
 		typedef int difference_type;
 		typedef const pointer_proxy pointer;
 		typedef const value_type reference;
-		typedef config::all_children_iterator Itor;
+		typedef config::const_all_children_iterator Itor;
 		explicit all_children_iterator(const Itor &i);
-		all_children_iterator(const Itor &i, const boost::shared_ptr<const config> & cache);
+		all_children_iterator(const Itor &i, const std::shared_ptr<const config> & cache);
 
 		all_children_iterator& operator++();
 		all_children_iterator  operator++(int);
+		all_children_iterator& operator--();
+		all_children_iterator  operator--(int);
 
 		reference operator*() const;
 		pointer operator->() const;
@@ -143,7 +175,7 @@ public:
 			in this case inner_index_ points to the index in 'a' we are currently processing.
 		*/
 		int inner_index_;
-		boost::shared_ptr<const config> cache_;
+		std::shared_ptr<const config> cache_;
 	};
 
 	struct recursion_error : public config::error {
@@ -153,6 +185,9 @@ public:
 	/** In-order iteration over all children. */
 	all_children_iterator ordered_begin() const;
 	all_children_iterator ordered_end() const;
+	boost::iterator_range<all_children_iterator> all_ordered() const {
+		return boost::make_iterator_range(ordered_begin(), ordered_end());
+	}
 
 private:
 	/// Returns true if *this has made a copy of its config.
@@ -160,15 +195,24 @@ private:
 
 	/// Keeps a copy of our config alive when we manage our own memory.
 	/// If this is not null, then cfg_ points to *cache_ or a child of *cache_.
-	mutable boost::shared_ptr<const config> cache_;
+	mutable std::shared_ptr<const config> cache_;
 	/// Used to access our config (original or copy, as appropriate).
 	mutable const config* cfg_;
+	static const config default_empty_config;
+};
+
+struct vconfig::attribute_iterator::pointer_proxy
+{
+	value_type p;
+	pointer_proxy(value_type p) : p(p) {}
+	value_type *operator->() const { return &p; }
 };
 
 struct vconfig::all_children_iterator::pointer_proxy
 {
 	value_type p;
-	const value_type *operator->() const { return &p; }
+	pointer_proxy(value_type p) : p(p) {}
+	value_type *operator->() const { return &p; }
 };
 
 
@@ -194,17 +238,17 @@ public:
 		: scoped_wml_variable(var_name), data_(data) {}
 	void activate();
 private:
-	config const &data_;
+	const config& data_;
 };
 
 class scoped_xy_unit : public scoped_wml_variable
 {
 public:
-	scoped_xy_unit(const std::string& var_name, const int x, const int y, const unit_map& umap)
-		: scoped_wml_variable(var_name), x_(x), y_(y), umap_(umap) {}
+	scoped_xy_unit(const std::string& var_name, map_location loc, const unit_map& umap)
+		: scoped_wml_variable(var_name), loc_(loc), umap_(umap) {}
 	void activate();
 private:
-	const int x_, y_;
+	const map_location loc_;
 	const unit_map& umap_;
 };
 
@@ -219,5 +263,3 @@ private:
 	const std::string player_;
 	unsigned int recall_index_;
 };
-
-#endif

@@ -1,11 +1,10 @@
-local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local messenger_next_waypoint = wesnoth.require "ai/micro_ais/cas/ca_messenger_f_next_waypoint.lua"
 
 local ca_messenger_move = {}
 
-function ca_messenger_move:evaluation(ai, cfg)
+function ca_messenger_move:evaluation(cfg)
     -- Move the messenger toward goal, potentially attack adjacent unit
 
     local messenger = messenger_next_waypoint(cfg)
@@ -14,7 +13,7 @@ function ca_messenger_move:evaluation(ai, cfg)
     return 0
 end
 
-function ca_messenger_move:execution(ai, cfg)
+function ca_messenger_move:execution(cfg)
     local messenger, x, y = messenger_next_waypoint(cfg)
 
     if (messenger.x ~= x) or (messenger.y ~= y) then
@@ -30,14 +29,17 @@ function ca_messenger_move:execution(ai, cfg)
     if (not next_hop) then next_hop = { messenger.x, messenger.y } end
 
     -- Compare this to the "ideal path"
-    local path = wesnoth.find_path(messenger, x, y, { ignore_units = 'yes' })
+    local path = AH.find_path_with_shroud(messenger, x, y, { ignore_units = 'yes' })
     local optimum_hop, optimum_cost = { messenger.x, messenger.y }, 0
     for _,step in ipairs(path) do
-        local sub_path, sub_cost = wesnoth.find_path(messenger, step[1], step[2])
+        local sub_path, sub_cost = AH.find_path_with_shroud(messenger, step[1], step[2])
         if sub_cost > messenger.moves then
             break
         else
             local unit_in_way = wesnoth.get_unit(step[1], step[2])
+            if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then
+                unit_in_way = nil
+            end
 
             if unit_in_way and (unit_in_way.side == messenger.side) then
                 local reach = AH.get_reachable_unocc(unit_in_way)
@@ -55,32 +57,28 @@ function ca_messenger_move:execution(ai, cfg)
 
     local unit_in_way = wesnoth.get_unit(next_hop[1], next_hop[2])
     if (unit_in_way == messenger) then unit_in_way = nil end
-    if unit_in_way then wesnoth.extract_unit(unit_in_way) end
+    if unit_in_way then unit_in_way:extract() end
 
-    wesnoth.put_unit(next_hop[1], next_hop[2], messenger)
-    local _, cost1 = wesnoth.find_path(messenger, x, y, { ignore_units = 'yes' })
+    messenger.loc = { next_hop[1], next_hop[2] }
+    local _, cost1 = AH.find_path_with_shroud(messenger, x, y, { ignore_units = 'yes' })
 
     local unit_in_way2 = wesnoth.get_unit(optimum_hop[1], optimum_hop[2])
     if (unit_in_way2 == messenger) then unit_in_way2 = nil end
-    if unit_in_way2 then wesnoth.extract_unit(unit_in_way2) end
+    if unit_in_way2 then unit_in_way2:extract() end
 
-    wesnoth.put_unit(optimum_hop[1], optimum_hop[2], messenger)
-    local _, cost2 = wesnoth.find_path(messenger, x, y, { ignore_units = 'yes' })
+    messenger.loc = { optimum_hop[1], optimum_hop[2] }
+    local _, cost2 = AH.find_path_with_shroud(messenger, x, y, { ignore_units = 'yes' })
 
-    wesnoth.put_unit(x_current, y_current, messenger)
-    if unit_in_way then wesnoth.put_unit(unit_in_way) end
-    if unit_in_way2 then wesnoth.put_unit(unit_in_way2) end
+    messenger.loc = { x_current, y_current }
+    if unit_in_way then unit_in_way:to_map() end
+    if unit_in_way2 then unit_in_way2:to_map() end
 
     -- If cost2 is significantly less, that means that the optimum path might
     -- overall be faster even though it is currently blocked
     if (cost2 + messenger.max_moves/2 < cost1) then next_hop = optimum_hop end
 
     if next_hop and ((next_hop[1] ~= messenger.x) or (next_hop[2] ~= messenger.y)) then
-        local unit_in_way = wesnoth.get_unit(next_hop[1], next_hop[2])
-        if unit_in_way then AH.move_unit_out_of_way(ai, unit_in_way) end
-        if (not messenger) or (not messenger.valid) then return end
-
-        AH.checked_move(ai, messenger, next_hop[1], next_hop[2])
+        AH.robust_move_and_attack(ai, messenger, next_hop)
     else
         AH.checked_stopunit_moves(ai, messenger)
     end
@@ -88,22 +86,16 @@ function ca_messenger_move:execution(ai, cfg)
 
     -- Test whether an attack without retaliation or with little damage is possible
     if (messenger.attacks_left <= 0) then return end
-    if (not H.get_child(messenger.__cfg, 'attack')) then return end
+    if (#messenger.attacks == 0) then return end
 
-    local targets = wesnoth.get_units {
-        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
-        { "filter_adjacent", { id = messenger.id } }
-    }
+    local targets = AH.get_attackable_enemies { { "filter_adjacent", { id = messenger.id } } }
 
-    local max_rating, best_target, best_weapon = -9e99
+    local max_rating, best_target, best_weapon = - math.huge
     for _,target in ipairs(targets) do
-        local n_weapon = 0
-        for weapon in H.child_range(messenger.__cfg, "attack") do
-            n_weapon = n_weapon + 1
-
+        for n_weapon,weapon in ipairs(messenger.attacks) do
             local att_stats, def_stats = wesnoth.simulate_combat(messenger, n_weapon, target)
 
-            local rating = -9e99
+            local rating = - math.huge
             -- This is an acceptable attack if:
             -- 1. There is no counter attack
             -- 2. Probability of death is >=67% for enemy, 0% for attacker (default values)
@@ -127,12 +119,10 @@ function ca_messenger_move:execution(ai, cfg)
         AH.checked_attack(ai, messenger, best_target, best_weapon)
     else
         -- Always attack enemy on last waypoint
-        local waypoint_x = AH.split(cfg.waypoint_x, ",")
-        local waypoint_y = AH.split(cfg.waypoint_y, ",")
-        local target = wesnoth.get_units {
-            x = tonumber(waypoint_x[#waypoint_x]),
-            y = tonumber(waypoint_y[#waypoint_y]),
-            { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
+        local waypoints = AH.get_multi_named_locs_xy('waypoint', cfg)
+        local target = AH.get_attackable_enemies {
+            x = waypoints[#waypoints][1],
+            y = waypoints[#waypoints][2],
             { "filter_adjacent", { id = messenger.id } }
         }[1]
 

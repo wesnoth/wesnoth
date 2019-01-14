@@ -1,54 +1,83 @@
-/**
-	Some information about savefiles:
-	A saveile can contain:
-	 * General information (toplevel atributes, [multiplayer])
-	    This is present in all savefiles
-	 * [statistics]
-	    This is present in all savefiles but it's not handled by playcampaign/play_controller/saved_game.
-		It's handled by savegame.cpp
-	 * [snapshot]
-	    If a savegame was saved during a scenaio this contzaings a snapshot of teh game at the point when it was saved.
-	 * [carryover_sides_start]
-	    At start-of-scenrio saves this contains data from the previous scenario that was preserved
-	 * [carryover_sides]
-	    In savefile made during the game, this tag contains data from [carryover_sides_start] that was not used in the current scenario but should be saved for a next scenario
-	 * [replay_start]
-	    A snapshot made very early to replay the game from.
-	 * [replay]
-	    A record of game actions that was made between the creation of [replay_start] and [snapshot].
+/*
+   Copyright (C) 2003 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
 
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
 
-
-	The following types of savegames are known:
-	 * Start of scenario savefiles
-	    These files only contain general information, statistics, and [carryover_sides_start]
-		When these saves are loaded the scenario is loaded form teh game config by the next_scenario attribute from [carryover_sides_start]
-	 * Expanded Start of scenario savefiles
-	    Similar to normal Start-of-scenario savefiles, but the also contain a [scenario] that contins the scenario
-		This type is only used internaly and usualy doesn't get written to the disk.
-	 * Ingame savefile
-	    These files contain genral information, statistics, [snapshot], [replay], [replay_start], [snapshot], [carryover_sides]
-		Thedse files don't contain a [carryover_sides_start] because both starting points ([replay_start] and [snapshot])
-		were made after [carryover_sides_start] was merged into the scenario.
-	 * Replay savefiles
-	    Like a Ingame save made durign linger mode, but without the [snapshot]
+   See the COPYING file for more details.
 */
 
+/**
+ * 	Some information about savefiles:
+ *
+ *	A savefile can contain:
+ *
+ *  - General information (toplevel attributes, [multiplayer])
+ *	  This is present in all savefiles
+ *
+ *  - [statistics]
+ *    This is present in all savefiles but it's not handled by playcampaign/play_controller/saved_game.
+ *    It's handled by savegame.cpp
+ *
+ *  - [snapshot]
+ *    If a savegame was saved during a scenario this contains a snapshot of the game at the point when
+ *    it was saved.
+ *
+ *  - [carryover_sides_start]
+ *    At start-of-scenario saves this contains data from the previous scenario that was preserved.
+ *
+ *  - [carryover_sides]
+ *    In savefile made during the game, this tag contains data from [carryover_sides_start] that was not
+ *    used in the current scenario but should be saved for a next scenario
+ *
+ *  - [replay_start]
+ *    A snapshot made very early to replay the game from.
+ *
+ *  - [replay]
+ *    A record of game actions that was made between the creation of [replay_start] and [snapshot].
+ *
+ *
+ * The following types of savegames are known:
+ *
+ * - Start of scenario savefiles
+ *   These files only contain general information, statistics, and [carryover_sides_start]. When these
+ *   saves are loaded, the scenario data is loaded form the game config using the next_scenario attribute
+ *   from [carryover_sides_start].
+ *
+ * - Expanded Start of scenario savefiles
+ *   Similar to normal Start-of-scenario savefiles, but the also contain a [scenario] that contains the
+ *   scenario data. This type is only used internally and usually doesn't get written to the disk.
+ *
+ * - In-game savefile
+ *   These files contain general information, statistics, [snapshot], [replay], [replay_start], [snapshot],
+ *   and [carryover_sides]. These files don't contain a [carryover_sides_start] because both starting points
+ *   ([replay_start] and [snapshot]) were made after [carryover_sides_start] was merged into the scenario.
+ *
+ * - Replay savefiles
+ *   Like a in-game save made during linger mode, but without the [snapshot].
+ */
+
 #include "saved_game.hpp"
+
 #include "carryover.hpp"
+#include "config.hpp"
 #include "cursor.hpp"
-#include "log.hpp"
-#include "resources.hpp"
+#include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
 #include "generators/map_create.hpp"
-#include "statistics.hpp"
+#include "log.hpp"
+#include "random.hpp"
 #include "serialization/binary_or_text.hpp"
-#include "util.hpp"
+#include "statistics.hpp"
+#include "variable.hpp" // for config_variable_set
+#include "variable_info.hpp"
 
-#include <boost/range/adaptors.hpp>
-#include <boost/range/algorithm.hpp>
-#include <boost/foreach.hpp>
 #include <cassert>
+#include <iomanip>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -57,90 +86,44 @@ static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
 saved_game::saved_game()
-	: replay_data()
-	, has_carryover_expanded_(false)
+	: has_carryover_expanded_(false)
 	, carryover_(carryover_info().to_config())
 	, replay_start_()
 	, classification_()
 	, mp_settings_()
-	, starting_pos_type_(STARTINGPOS_NONE)
-	, starting_pos_()
+	, starting_point_type_(STARTING_POINT_NONE)
+	, starting_point_()
+	, replay_data_()
+	, skip_story_(false)
 {
-
 }
 
-saved_game::saved_game(const config& cfg)
-	: replay_data()
-	, has_carryover_expanded_(false)
+saved_game::saved_game(config cfg)
+	: has_carryover_expanded_(false)
 	, carryover_()
 	, replay_start_()
 	, classification_(cfg)
-	, mp_settings_(cfg)
-	, starting_pos_type_(STARTINGPOS_NONE)
-	, starting_pos_()
+	, mp_settings_()
+	, starting_point_type_(STARTING_POINT_NONE)
+	, starting_point_()
+	, replay_data_()
+	, skip_story_(false)
 
 {
-	log_scope("read_game");
-
-	if(const config & caryover_sides = cfg.child("carryover_sides"))
-	{
-		carryover_ = caryover_sides;
-		has_carryover_expanded_ = true;
-	}
-	else
-	{
-		carryover_ = cfg.child_or_empty("carryover_sides_start");
-	}
-
-	
-	//Serversided replays can contain multiple [replay]
-	replay_start_ = cfg.child_or_empty("replay_start");
-	replay_data = config(); //cfg.child_or_empty("replay");
-	BOOST_FOREACH(const config& replay, cfg.child_range("replay"))
-	{
-		replay_data.append_children(replay);
-	}
-
-	if(const config& snapshot = cfg.child("snapshot"))
-	{
-		this->starting_pos_type_ = STARTINGPOS_SNAPSHOT;
-		this->starting_pos_ = snapshot;
-	}
-	else if(const config& scenario = cfg.child("scenario"))
-	{
-		this->starting_pos_type_ = STARTINGPOS_SCENARIO;
-		this->starting_pos_ = scenario;
-	}
-
-	LOG_NG << "scenario: '" << carryover_["next_scenario"].str() << "'\n";
-
-	if (const config &stats = cfg.child("statistics")) {
-		statistics::fresh_stats();
-		statistics::read_stats(stats);
-	}
-
+	set_data(cfg);
 }
 
 saved_game::saved_game(const saved_game& state)
-	: replay_data(state.replay_data)
-	, has_carryover_expanded_(state.has_carryover_expanded_)
+	: has_carryover_expanded_(state.has_carryover_expanded_)
 	, carryover_(state.carryover_)
 	, replay_start_(state.replay_start_)
 	, classification_(state.classification_)
 	, mp_settings_(state.mp_settings_)
-	, starting_pos_type_(state.starting_pos_type_)
-	, starting_pos_(state.starting_pos_)
+	, starting_point_type_(state.starting_point_type_)
+	, starting_point_(state.starting_point_)
+	, replay_data_(state.replay_data_)
+	, skip_story_(state.skip_story_)
 {
-}
-
-saved_game& saved_game::operator=(const saved_game& state)
-{
-	// Use copy constructor to make sure we are coherent
-	if (this != &state) {
-		this->~saved_game();
-		new (this) saved_game(state) ;
-	}
-	return *this ;
 }
 
 void saved_game::set_carryover_sides_start(config carryover_sides_start)
@@ -151,178 +134,284 @@ void saved_game::set_carryover_sides_start(config carryover_sides_start)
 
 void saved_game::set_random_seed()
 {
-	if(has_carryover_expanded_ || !carryover_["random_seed"].empty())
-	{
+	if(has_carryover_expanded_ || !carryover_["random_seed"].empty()) {
 		return;
 	}
-	carryover_["random_seed"] = rand();
+
+	std::stringstream stream;
+	stream << std::setfill('0') << std::setw(8) << std::hex << randomness::generator->get_random_int(0, INT_MAX);
+	carryover_["random_seed"] = stream.str();
 	carryover_["random_calls"] = 0;
 }
 
 void saved_game::write_config(config_writer& out) const
 {
 	write_general_info(out);
-	write_starting_pos(out);
-	if(!this->replay_start_.empty())
-	{
+	write_starting_point(out);
+
+	if(!this->replay_start_.empty()) {
 		out.write_child("replay_start", replay_start_);
 	}
-	if(!this->replay_data.empty())
-	{
-		out.write_child("replay", replay_data);
-	}
+
+	out.open_child("replay");
+	replay_data_.write(out);
+
+	out.close_child("replay");
 	write_carryover(out);
 }
 
-void saved_game::write_starting_pos(config_writer& out) const
+void saved_game::write_starting_point(config_writer& out) const
 {
-	if(starting_pos_type_ == STARTINGPOS_SNAPSHOT)
-	{
-		out.write_child("snapshot", starting_pos_);
-	}
-	else if(starting_pos_type_ == STARTINGPOS_SCENARIO)
-	{
-		out.write_child("scenario", starting_pos_);
+	if(starting_point_type_ == STARTING_POINT_SNAPSHOT) {
+		out.write_child("snapshot", starting_point_);
+	} else if(starting_point_type_ == STARTING_POINT_SCENARIO) {
+		out.write_child("scenario", starting_point_);
 	}
 }
+
 void saved_game::write_carryover(config_writer& out) const
 {
 	assert(not_corrupt());
 	out.write_child(has_carryover_expanded_ ? "carryover_sides" : "carryover_sides_start", carryover_);
 }
 
-
 void saved_game::write_general_info(config_writer& out) const
 {
 	out.write(classification_.to_config());
-	if (classification_.campaign_type == game_classification::MULTIPLAYER
-			|| classification_.campaign_type == game_classification::SCENARIO) {
-		out.write_child("multiplayer", mp_settings_.to_config());
-	}
+	out.write_child("multiplayer", mp_settings_.to_config());
 }
 
+void saved_game::set_defaults()
+{
+	const bool is_loaded_game = this->starting_point_type_ != STARTING_POINT_SCENARIO;
+	const bool is_multiplayer_tag = classification().get_tagname() == "multiplayer";
+
+	static const std::vector<std::string> team_defaults {
+		"carryover_percentage",
+		"carryover_add",
+	};
+
+	for(config& side : starting_point_.child_range("side")) {
+		// Set save_id default value directly after loading to its default to prevent different default behaviour in
+		// mp_connect code and sp code.
+
+		if(side["no_leader"].to_bool()) {
+			side["leader_lock"] = true;
+			side.remove_attribute("type");
+		}
+
+		if(side["save_id"].empty()) {
+			side["save_id"] = side["id"];
+		}
+
+		if(!is_multiplayer_tag && side["side_name"].blank()) {
+			side["side_name"] = side["name"];
+		}
+
+		if(!is_loaded_game && !side["current_player"].empty()) {
+			ERR_NG << "Removed invalid 'current_player' attribute from [side] while loading a scenario. Consider using "
+					  "'side_name' instead\n";
+
+			side["current_player"] = config::attribute_value();
+		}
+
+		// Set some team specific values to their defaults specified in scenario
+		for(const std::string& att_name : team_defaults) {
+			const config::attribute_value* scenario_value = starting_point_.get(att_name);
+			config::attribute_value& team_value = side[att_name];
+
+			if(scenario_value && team_value.empty()) {
+				team_value = *scenario_value;
+			}
+		}
+	}
+}
 
 void saved_game::expand_scenario()
 {
-	if(this->starting_pos_type_ == STARTINGPOS_NONE && !has_carryover_expanded_)
-	{
-		resources::config_manager->load_game_config_for_game(this->classification());
-		const config& game_config = resources::config_manager->game_config();
-		const config& scenario = game_config.find_child(lexical_cast_default<std::string>
-				(classification().campaign_type == game_classification::SCENARIO ?
-				 game_classification::MULTIPLAYER : classification().campaign_type),
-				"id", carryover_["next_scenario"]);
-		if(scenario)
-		{
-			this->starting_pos_type_ = STARTINGPOS_SCENARIO;
-			this->starting_pos_ = scenario;
+	if(this->starting_point_type_ == STARTING_POINT_NONE && !has_carryover_expanded_) {
+		game_config_manager::get()->load_game_config_for_game(this->classification());
+
+		const config& game_config = game_config_manager::get()->game_config();
+		const config& scenario =
+			game_config.find_child(classification().get_tagname(), "id", carryover_["next_scenario"]);
+
+		if(scenario) {
+			this->starting_point_type_ = STARTING_POINT_SCENARIO;
+			this->starting_point_ = scenario;
+
 			// A hash has to be generated using an unmodified scenario data.
 			mp_settings_.hash = scenario.hash();
 
-			update_label();
+			check_require_scenario();
 
-			//Set this default value immideately after reading the scenario is importent because otherwise
-			//we might endup settings this value to the multiplayer players name, which would break carryover.
-			//(doing this in at config loading in game_config would be ok too i think.)
-			BOOST_FOREACH(config& side, starting_pos_.child_range("side"))
-			{
-				if(side["save_id"].str() == "")
-				{
-					side["save_id"] = side["id"];
-				}
-			}
-		}
-		else
-		{
-			this->starting_pos_type_ = STARTINGPOS_INVALID;
-			this->starting_pos_ = config();
+			update_label();
+			set_defaults();
+		} else {
+			this->starting_point_type_ = STARTING_POINT_INVALID;
+			this->starting_point_.clear();
 		}
 	}
 }
 
-//helper objects for saved_game::expand_mp_events()
+void saved_game::check_require_scenario()
+{
+	if(!starting_point_["require_scenario"].to_bool(false)) {
+		return;
+	}
+
+	if(starting_point_["addon_id"].empty()) {
+		//ERR_NG << "cannot handle require_scenario=yes because we don't know from which addon that scenario came from\n";
+		return;
+	}
+
+	config required_scenario;
+
+	required_scenario["id"] = starting_point_["addon_id"];
+	required_scenario["name"] = starting_point_["addon_title"];
+	required_scenario["version"] = starting_point_["addon_version"];
+	required_scenario["min_version"] = starting_point_["addon_min_version"];
+
+	mp_settings_.update_addon_requirements(required_scenario);
+}
+
+namespace
+{
+bool variable_to_bool(const config& vars, const std::string& expression)
+{
+	std::string res = utils::interpolate_variables_into_string(expression, config_variable_set(vars));
+	return res == "true" || res == "yes" || res == "1";
+}
+
+// helper objects for saved_game::expand_mp_events()
 struct modevents_entry
 {
-	modevents_entry(const std::string& _type, const std::string& _id) : type(_type), id(_id) {}
+	modevents_entry(const std::string& _type, const std::string& _id)
+		: type(_type)
+		, id(_id)
+	{
+	}
+
 	std::string type;
 	std::string id;
 };
-struct modevents_entry_for
+
+} // end anon namespace
+
+void saved_game::load_mod(const std::string& type, const std::string& id, size_t pos)
 {
-	//this typedef is used by boost.
-    typedef modevents_entry result_type;
-	modevents_entry_for(const std::string& type ) : type_(type) {}
-	modevents_entry operator()(const std::string& id) const
-	{
-		return modevents_entry(type_, id);
-	}
-private:
-	std::string type_;
-};
+	if(const config& cfg = game_config_manager::get()->game_config().find_child(type, "id", id)) {
+		// Note the addon_id if this mod is required to play the game in mp.
+		std::string require_attr = "require_" + type;
 
-void saved_game::expand_mp_events()
-{
-	expand_scenario();
-	if(this->starting_pos_type_ == STARTINGPOS_SCENARIO && !this->starting_pos_["has_mod_events"].to_bool(false))
-	{
-		std::vector<modevents_entry> mods;
+		// By default, eras have "require_era = true", and mods have "require_modification = false".
+		bool require_default = (type == "era");
 
-		boost::copy( mp_settings_.active_mods
-			| boost::adaptors::transformed(modevents_entry_for("modification"))
-			, std::back_inserter(mods) );
-		if(mp_settings_.mp_era != "") //We don't want the error message below if there is no era (= if this is a sp game)
-		{ mods.push_back(modevents_entry("era", mp_settings_.mp_era)); }
+		if(!cfg["addon_id"].empty() && cfg[require_attr].to_bool(require_default)) {
+			config required_mod;
 
-		BOOST_FOREACH(modevents_entry& mod, mods)
-		{
-			if(const config& cfg = resources::config_manager->
-				game_config().find_child(mod.type, "id", mod.id))
-			{
-				BOOST_FOREACH(const config& modevent, cfg.child_range("event"))
-				{
-					this->starting_pos_.add_child("event", modevent);
-				}
-				BOOST_FOREACH(const config& modlua, cfg.child_range("lua"))
-				{
-					this->starting_pos_.add_child("lua", modlua);
-				}
-			}
-			else
-			{
-				//TODO: A user message instead?
-				ERR_NG << "Couldn't find [" << mod.type<< "] with id=" << mod.id <<std::endl;
+			required_mod["id"] = cfg["addon_id"];
+			required_mod["name"] = cfg["addon_title"];
+			required_mod["version"] = cfg["addon_version"];
+			required_mod["min_version"] = cfg["addon_min_version"];
+
+			mp_settings_.update_addon_requirements(required_mod);
+		}
+
+		// Copy events
+		for(const config& modevent : cfg.child_range("event")) {
+			if(modevent["enable_if"].empty()
+				|| variable_to_bool(carryover_.child_or_empty("variables"), modevent["enable_if"])
+			) {
+				this->starting_point_.add_child_at_total("event", modevent, pos++);
 			}
 		}
 
-		this->starting_pos_["has_mod_events"] = true;
+		// Copy lua
+		for(const config& modlua : cfg.child_range("lua")) {
+			this->starting_point_.add_child_at_total("lua", modlua, pos++);
+		}
+
+		// Copy load_resource
+		for(const config& load_resource : cfg.child_range("load_resource")) {
+			this->starting_point_.add_child_at_total("load_resource", load_resource, pos++);
+		}
+	} else {
+		// TODO: A user message instead?
+		ERR_NG << "Couldn't find [" << type << "] with id=" << id << std::endl;
+	}
+}
+
+// Gets the ids of the mp_era and modifications which were set to be active, then fetches these configs from the
+// game_config and copies their [event] and [lua] to the starting_point_.
+// At this time, also collect the addon_id attributes which appeared in them and put this list in the addon_ids
+// attribute of the mp_settings.
+void saved_game::expand_mp_events()
+{
+	expand_scenario();
+
+	if(this->starting_point_type_ == STARTING_POINT_SCENARIO && !this->starting_point_["has_mod_events"].to_bool(false)) {
+		std::vector<modevents_entry> mods;
+		std::set<std::string> loaded_resources;
+
+		std::transform(mp_settings_.active_mods.begin(), mp_settings_.active_mods.end(), std::back_inserter(mods),
+			[](const std::string& id) { return modevents_entry("modification", id); }
+		);
+
+		// We don't want the error message below if there is no era (= if this is a sp game).
+		if(!mp_settings_.mp_era .empty()) {
+			mods.emplace_back("era", mp_settings_.mp_era);
+		}
+
+		if(!classification_.campaign.empty()) {
+			mods.emplace_back("campaign", classification_.campaign);
+		}
+
+		for(modevents_entry& mod : mods) {
+			load_mod(mod.type, mod.id, starting_point_.all_children_count());
+		}
+		mods.clear();
+
+		while(starting_point_.has_child("load_resource")) {
+			assert(starting_point_.child_count("load_resource") > 0);
+			std::string id = starting_point_.child("load_resource")["id"];
+			size_t pos = starting_point_.find_total_first_of("load_resource");
+			starting_point_.remove_child("load_resource", 0);
+			if(loaded_resources.find(id) == loaded_resources.end()) {
+				loaded_resources.insert(id);
+				load_mod("resource", id, pos);
+			}
+		}
+		this->starting_point_["has_mod_events"] = true;
 	}
 }
 
 void saved_game::expand_mp_options()
 {
-	if(starting_pos_type_ == STARTINGPOS_SCENARIO && !has_carryover_expanded_)
-	{
+	if(starting_point_type_ == STARTING_POINT_SCENARIO && !has_carryover_expanded_) {
 		std::vector<modevents_entry> mods;
 
-		boost::copy( mp_settings_.active_mods
-			| boost::adaptors::transformed(modevents_entry_for("modification"))
-			, std::back_inserter(mods) );
-		mods.push_back(modevents_entry("era", mp_settings_.mp_era));
-		mods.push_back(modevents_entry("multiplayer", get_scenario_id()));
+		std::transform(mp_settings_.active_mods.begin(), mp_settings_.active_mods.end(), std::back_inserter(mods),
+			[](const std::string& id) { return modevents_entry("modification", id); }
+		);
+
+		mods.emplace_back("era", mp_settings_.mp_era);
+		mods.emplace_back("multiplayer", get_scenario_id());
+		mods.emplace_back("campaign", classification().campaign);
 
 		config& variables = carryover_.child_or_add("variables");
-		BOOST_FOREACH(modevents_entry& mod, mods)
-		{
-			if(const config& cfg = this->mp_settings().options.find_child(mod.type, "id", mod.id))
-			{
-				BOOST_FOREACH(const config& option, cfg.child_range("option"))
-				{
-					variables[option["id"]] = option["value"];
+
+		for(modevents_entry& mod : mods) {
+			if(const config& cfg = this->mp_settings().options.find_child(mod.type, "id", mod.id)) {
+				for(const config& option : cfg.child_range("option")) {
+					try {
+						variable_access_create(option["id"], variables).as_scalar() = option["value"];
+					} catch(const invalid_variablename_exception&) {
+						ERR_NG << "variable " << option["id"] << "cannot be set to " << option["value"] << std::endl;
+					}
 				}
-			}
-			else
-			{
-				LOG_NG << "Couldn't find [" << mod.type<< "] with id=" << mod.id << " for [option]s" << std::endl;
+			} else {
+				LOG_NG << "Couldn't find [" << mod.type << "] with id=" << mod.id << " for [option]s" << std::endl;
 			}
 		}
 	}
@@ -331,165 +420,191 @@ void saved_game::expand_mp_options()
 void saved_game::expand_random_scenario()
 {
 	expand_scenario();
-	if(this->starting_pos_type_ == STARTINGPOS_SCENARIO)
-	{
+
+	if(this->starting_point_type_ == STARTING_POINT_SCENARIO) {
 		// If the entire scenario should be randomly generated
-		if(!starting_pos_["scenario_generation"].empty())
-		{
+		if(!starting_point_["scenario_generation"].empty()) {
 			LOG_NG << "randomly generating scenario...\n";
 			const cursor::setter cursor_setter(cursor::WAIT);
 
-			config scenario_new = random_generate_scenario(starting_pos_["scenario_generation"],
-				starting_pos_.child("generator"));
-			//Preserve "story" form the scenario toplevel.
-			BOOST_FOREACH(config& story, starting_pos_.child_range("story"))
-			{
-				scenario_new.add_child("story", story);
-			}
-			scenario_new["id"] = starting_pos_["id"]; 
-			starting_pos_ = scenario_new;
+			config scenario_new =
+				random_generate_scenario(starting_point_["scenario_generation"], starting_point_.child("generator"), &carryover_.child_or_empty("variables"));
+
+			post_scenario_generation(starting_point_, scenario_new);
+			starting_point_ = std::move(scenario_new);
+
 			update_label();
+			set_defaults();
 		}
-		//it looks like we support a map= where map=filename equals more or less map_data={filename}
-		if(starting_pos_["map_data"].empty() && !starting_pos_["map"].empty()) {
-			starting_pos_["map_data"] = read_map(starting_pos_["map"]);
+
+		// If no map_data is provided, try to load the specified file directly
+		if(starting_point_["map_data"].empty() && !starting_point_["map_file"].empty()) {
+			starting_point_["map_data"] = filesystem::read_map(starting_point_["map_file"]);
 		}
+
 		// If the map should be randomly generated
-		// We dont want that we accidently to this twice so we check for starting_pos_["map_data"].empty()
-		if(starting_pos_["map_data"].empty() && !starting_pos_["map_generation"].empty()) {
+		// We don’t want that we accidentally to this twice so we check for starting_point_["map_data"].empty()
+		if(starting_point_["map_data"].empty() && !starting_point_["map_generation"].empty()) {
 			LOG_NG << "randomly generating map...\n";
 			const cursor::setter cursor_setter(cursor::WAIT);
 
-			starting_pos_["map_data"] = random_generate_map(
-				starting_pos_["map_generation"], starting_pos_.child("generator"));
+			starting_point_["map_data"] =
+				random_generate_map(starting_point_["map_generation"], starting_point_.child("generator"), &carryover_.child_or_empty("variables"));
 		}
 	}
 }
+
+void saved_game::post_scenario_generation(const config& old_scenario, config& generated_scenario)
+{
+	static const std::vector<std::string> attributes_to_copy {
+		"id",
+		"addon_id",
+		"addon_title",
+		"addon_version",
+		"addon_min_version",
+		"require_scenario",
+	};
+
+	// TODO: should we add "description" to this list?
+	// TODO: in theory it is possible that whether the scenario is required depends on the generated scenario, so maybe remove require_scenario from this list.
+
+	for(const auto& str : attributes_to_copy) {
+		generated_scenario[str] = old_scenario[str];
+	}
+
+	// Preserve "story" form the scenario toplevel.
+	// Note that it does not delete [story] tags in generated_scenario, so you can still have your story
+	// dependent on the generated scenario.
+	for(const config& story : old_scenario.child_range("story")) {
+		generated_scenario.add_child("story", story);
+	}
+}
+
 
 void saved_game::expand_carryover()
 {
 	expand_scenario();
-	if(this->starting_pos_type_ == STARTINGPOS_SCENARIO && !has_carryover_expanded_)
-	{
+	if(this->starting_point_type_ == STARTING_POINT_SCENARIO && !has_carryover_expanded_) {
 		carryover_info sides(carryover_);
 
-		sides.transfer_to(get_starting_pos());
-		BOOST_FOREACH(config& side_cfg, get_starting_pos().child_range("side")){
+		sides.transfer_to(get_starting_point());
+		for(config& side_cfg : get_starting_point().child_range("side")) {
 			sides.transfer_all_to(side_cfg);
 		}
 
 		carryover_ = sides.to_config();
+		has_carryover_expanded_ = true;
 	}
 }
 
-bool saved_game::valid()
+bool saved_game::valid() const
 {
-	return this->starting_pos_type_ != STARTINGPOS_INVALID;
+	return this->starting_point_type_ != STARTING_POINT_INVALID;
 }
 
-void saved_game::set_snapshot(const config& snapshot)
+config& saved_game::set_snapshot(config snapshot)
 {
-	this->starting_pos_type_ = STARTINGPOS_SNAPSHOT;
-	this->starting_pos_ = snapshot;
+	this->starting_point_type_ = STARTING_POINT_SNAPSHOT;
+	this->starting_point_.swap(snapshot);
+
+	return this->starting_point_;
 }
 
-void saved_game::set_scenario(const config& scenario)
+void saved_game::set_scenario(config scenario)
 {
-	this->starting_pos_type_ = STARTINGPOS_SCENARIO;
-	this->starting_pos_ = scenario;
+	this->starting_point_type_ = STARTING_POINT_SCENARIO;
+	this->starting_point_.swap(scenario);
+
 	has_carryover_expanded_ = false;
+
 	update_label();
 }
 
 void saved_game::remove_snapshot()
 {
-	this->starting_pos_type_ = STARTINGPOS_NONE;
-	this->starting_pos_ = config();
+	this->starting_point_type_ = STARTING_POINT_NONE;
+	this->starting_point_.clear();
 }
 
-config& saved_game::get_starting_pos()
+config& saved_game::get_starting_point()
 {
-	return starting_pos_;
+	return starting_point_;
 }
 
-
-const config& saved_game::get_replay_starting_pos()
+const config& saved_game::get_replay_starting_point()
 {
-	if(!replay_start_.empty())
-	{
+	if(!replay_start_.empty()) {
 		return replay_start_;
 	}
-	if(!has_carryover_expanded_)
-	{
-		//Try to load the scenario form game config or from [scenario] if there is no [replay_start]
+
+	if(!has_carryover_expanded_) {
+		// Try to load the scenario form game config or from [scenario] if there is no [replay_start]
 		expand_scenario();
 		expand_carryover();
 	}
-	if(starting_pos_type_ == STARTINGPOS_SCENARIO)
-	{
-		return starting_pos_;
+
+	if(starting_point_type_ == STARTING_POINT_SCENARIO) {
+		return starting_point_;
 	}
+
 	return this->replay_start_.child("some_non_existet_invalid");
 }
 
 void saved_game::convert_to_start_save()
 {
-	assert(starting_pos_type_ == STARTINGPOS_SNAPSHOT);
-	carryover_info sides(starting_pos_, true);
+	assert(starting_point_type_ == STARTING_POINT_SNAPSHOT);
+
+	carryover_info sides(starting_point_, true);
+
 	sides.merge_old_carryover(carryover_info(carryover_));
 	sides.rng().rotate_random();
+
 	carryover_ = sides.to_config();
+
 	has_carryover_expanded_ = false;
-	replay_data = config();
-	replay_start_ = config();
+
+	replay_data_ = replay_recorder_base();
+	replay_start_.clear();
+
 	remove_snapshot();
 }
 
 config saved_game::to_config() const
 {
-	//TODO: remove this code dublication with write_... functions.
+	// TODO: remove this code duplication with write_... functions.
 	config r = classification_.to_config();
-	if(!this->replay_start_.empty())
-	{
+
+	if(!this->replay_start_.empty()) {
 		r.add_child("replay_start", replay_start_);
 	}
-	if(!this->replay_data.empty())
-	{
-		r.add_child("replay", replay_data);
+
+	replay_data_.write(r.add_child("replay"));
+
+	if(starting_point_type_ == STARTING_POINT_SNAPSHOT) {
+		r.add_child("snapshot", starting_point_);
+	} else if(starting_point_type_ == STARTING_POINT_SCENARIO) {
+		r.add_child("scenario", starting_point_);
 	}
-	if(starting_pos_type_ == STARTINGPOS_SNAPSHOT)
-	{
-		r.add_child("snapshot", starting_pos_);
-	}
-	else if(starting_pos_type_ == STARTINGPOS_SCENARIO)
-	{
-		r.add_child("scenario", starting_pos_);
-	}
-	r.add_child(has_carryover_expanded_ ? "carryover_sides" : "carryover_sides_start" , carryover_);
-	if (classification_.campaign_type == game_classification::MULTIPLAYER
-		|| classification_.campaign_type == game_classification::SCENARIO) {
-		r.add_child("multiplayer", mp_settings_.to_config());
-	}
+
+	r.add_child(has_carryover_expanded_ ? "carryover_sides" : "carryover_sides_start", carryover_);
+	r.add_child("multiplayer", mp_settings_.to_config());
+
 	return r;
 }
 
 std::string saved_game::get_scenario_id()
 {
 	std::string scenario_id;
-	if(this->starting_pos_type_ == STARTINGPOS_SNAPSHOT
-		|| this->starting_pos_type_ == STARTINGPOS_SCENARIO)
-	{
-		scenario_id = starting_pos_["id"].str();
-	}
-	else if(!has_carryover_expanded_)
-	{
+
+	if(this->starting_point_type_ == STARTING_POINT_SNAPSHOT || this->starting_point_type_ == STARTING_POINT_SCENARIO) {
+		scenario_id = starting_point_["id"].str();
+	} else if(!has_carryover_expanded_) {
 		scenario_id = carryover_["next_scenario"].str();
-	}
-	else
-	{
+	} else {
 		assert(!"cannot figure out scenario_id");
-		throw "assertion ingnored";
+		throw "assertion ignored";
 	}
+
 	return scenario_id == "null" ? "" : scenario_id;
 }
 
@@ -500,9 +615,133 @@ bool saved_game::not_corrupt() const
 
 void saved_game::update_label()
 {
-	if (classification().abbrev.empty())
-		classification().label = starting_pos_["name"].str();
-	else {
-		classification().label = classification().abbrev + "-" + starting_pos_["name"];
+	if(classification().abbrev.empty()) {
+		classification().label = starting_point_["name"].str();
+	} else {
+		classification().label = classification().abbrev + "-" + starting_point_["name"];
 	}
+}
+
+void saved_game::cancel_orders()
+{
+	for(config& side : this->starting_point_.child_range("side")) {
+		// for humans "goto_x/y" is used for multi-turn-moves
+		// for the ai "goto_x/y" is a way for wml to order the ai to move a unit to a certain place.
+		// we want to cancel human order but not to break wml.
+		if(side["controller"] != "human" && side["controller"] != "network") {
+			continue;
+		}
+
+		for(config& unit : side.child_range("unit")) {
+			unit["goto_x"] = -999;
+			unit["goto_y"] = -999;
+		}
+	}
+}
+
+void saved_game::unify_controllers()
+{
+	for(config& side : this->starting_point_.child_range("side")) {
+		side.remove_attribute("is_local");
+		//TODO: the old code below is probably not needed anymore
+		if(side["controller"] == "network") {
+			side["controller"] = "human";
+		}
+
+		if(side["controller"] == "network_ai") {
+			side["controller"] = "ai";
+		}
+	}
+}
+
+saved_game& saved_game::operator=(saved_game&& other)
+{
+	this->swap(other);
+	return *this;
+}
+
+void saved_game::swap(saved_game& other)
+{
+	carryover_.swap(other.carryover_);
+
+	std::swap(classification_, other.classification_);
+	std::swap(has_carryover_expanded_, other.has_carryover_expanded_);
+	std::swap(mp_settings_, other.mp_settings_);
+
+	replay_data_.swap(other.replay_data_);
+	replay_start_.swap(other.replay_start_);
+	starting_point_.swap(other.starting_point_);
+
+	std::swap(starting_point_type_, other.starting_point_type_);
+}
+
+void saved_game::set_data(config& cfg)
+{
+	log_scope("read_game");
+
+	if(config& caryover_sides = cfg.child("carryover_sides")) {
+		carryover_.swap(caryover_sides);
+		has_carryover_expanded_ = true;
+	} else if(config& caryover_sides_start = cfg.child("carryover_sides_start")) {
+		carryover_.swap(caryover_sides_start);
+		has_carryover_expanded_ = false;
+	} else {
+		carryover_.clear();
+		has_carryover_expanded_ = false;
+	}
+
+	if(config& replay_start = cfg.child("replay_start")) {
+		replay_start_.swap(replay_start);
+	} else {
+		replay_start_.clear();
+	}
+
+	replay_data_ = replay_recorder_base();
+
+	// Serversided replays can contain multiple [replay]
+	for(config& replay : cfg.child_range("replay")) {
+		replay_data_.append_config(replay);
+	}
+
+	replay_data_.set_to_end();
+
+	if(config& snapshot = cfg.child("snapshot")) {
+		this->starting_point_type_ = STARTING_POINT_SNAPSHOT;
+		this->starting_point_.swap(snapshot);
+	} else if(config& scenario = cfg.child("scenario")) {
+		this->starting_point_type_ = STARTING_POINT_SCENARIO;
+		this->starting_point_.swap(scenario);
+	} else {
+		this->starting_point_type_ = STARTING_POINT_NONE;
+		this->starting_point_.clear();
+	}
+
+	LOG_NG << "scenario: '" << carryover_["next_scenario"].str() << "'\n";
+
+	if(const config& stats = cfg.child("statistics")) {
+		statistics::fresh_stats();
+		statistics::read_stats(stats);
+	}
+
+	classification_ = game_classification(cfg);
+	mp_settings_ = mp_game_settings(cfg.child_or_empty("multiplayer"));
+
+	cfg.clear();
+}
+
+void saved_game::clear()
+{
+	carryover_.clear();
+	classification_ = game_classification();
+	has_carryover_expanded_ = false;
+	mp_settings_ = mp_game_settings();
+	replay_data_.swap(replay_recorder_base());
+	replay_start_.clear();
+	starting_point_.clear();
+	starting_point_type_ = STARTING_POINT_NONE;
+}
+
+void swap(saved_game& lhs, saved_game& rhs)
+{
+	lhs.swap(rhs);
 }

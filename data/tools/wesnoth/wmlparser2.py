@@ -1,9 +1,12 @@
-#!/usr/bin/env python
-# encoding: utf8
+#!/usr/bin/env python2
+# encoding: utf-8
 
 """
 This parser uses the --preprocess option of wesnoth so a working
 wesnoth executable must be available at runtime.
+
+If you are using this you shold instead use wmlparser3.py and upgrade
+your code to Python 3.
 """
 
 import os, glob, sys, re, subprocess, argparse, tempfile, shutil
@@ -241,7 +244,7 @@ class Parser:
         else:
             output = tempfile.mkdtemp(prefix="wmlparser_")
             tempdirs_to_clean.append(output)
-            
+
         self.temp_dir = output
         commandline = [self.wesnoth_exe]
         if self.data_dir:
@@ -261,8 +264,10 @@ class Parser:
         self.preprocessed = output + "/" + os.path.basename(self.path) +\
             ".plain"
         if not os.path.exists(self.preprocessed):
+            first_line = open(self.path).readline().strip()
             raise WMLError(self, "Preprocessor error:\n" +
                 " ".join(commandline) + "\n" +
+                "First line: " + first_line + "\n" +
                 out +
                 err)
 
@@ -357,7 +362,7 @@ class Parser:
                 self.handle_attribute(line)
         else:
             for i, segment in enumerate(line.split("+")):
-                segment = segment.lstrip(" ")
+                segment = segment.lstrip(" \t")
 
                 if i > 0:
                     # If the last segment is empty (there was a plus sign
@@ -366,7 +371,7 @@ class Parser:
 
                 if not segment: continue
 
-                if segment[0] == "_":
+                if segment.rstrip() == '_':
                     self.translatable = True
                     segment = segment[1:].lstrip(" ")
                     if not segment: continue
@@ -680,6 +685,18 @@ x = _ "abc" + {X}
     x=_<B>'abc' .. _<A>'abc'
 [/test]
 """, "textdomain")
+
+        test(
+"""
+[test]
+x,y = _1,_2
+[/test]
+""", """
+[test]
+    x='_1'
+    y='_2'
+[/test]
+""", "underscores")
 
         test(
 """

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,26 +16,25 @@
 
 #include "gui/dialogs/editor/custom_tod.hpp"
 
-#include "dialogs.hpp"
+#include "desktop/clipboard.hpp"
+#include "display.hpp"
 #include "filesystem.hpp"
-#include "filechooser.hpp"
-#include "editor/editor_preferences.hpp"
-#include "editor/editor_display.hpp"
-#include "gui/dialogs/field.hpp"
-#include "gui/dialogs/helper.hpp"
-#include "gui/widgets/button.hpp"
-#include "gui/widgets/label.hpp"
-#include "gui/widgets/slider.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/toggle_button.hpp"
-#include "gui/widgets/image.hpp"
-#include "gui/widgets/text_box.hpp"
+#include "formatter.hpp"
 #include "gettext.hpp"
-#include "image.hpp"
+#include "gui/auxiliary/field.hpp"
+#include "gui/dialogs/file_dialog.hpp"
+#include "gui/widgets/button.hpp"
+#include "gui/widgets/image.hpp"
+#include "gui/widgets/label.hpp"
+#include "gui/widgets/settings.hpp"
+#include "gui/widgets/slider.hpp"
+#include "gui/widgets/text_box.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2
+{
+namespace dialogs
 {
 
 /*WIKI
@@ -84,115 +83,200 @@ namespace gui2
  * @end{table}
  */
 
+static custom_tod::string_pair tod_getter_image(const time_of_day& tod)
+{
+	static std::string type = "image";
+	return {type, tod.image};
+}
+
+static custom_tod::string_pair tod_getter_mask(const time_of_day& tod)
+{
+	static std::string type = "mask";
+	return {type, tod.image_mask};
+}
+
+static custom_tod::string_pair tod_getter_sound(const time_of_day& tod)
+{
+	static std::string type = "sound";
+	return {type, tod.sounds};
+}
+
 REGISTER_DIALOG(custom_tod)
 
-tcustom_tod::tcustom_tod(editor::editor_display* display,
-						 const std::vector<time_of_day>& tods)
-	: tods_(tods)
-	, current_tod_(0)
-	, current_tod_name_(NULL)
-	, current_tod_id_(NULL)
-	, current_tod_image_(NULL)
-	, current_tod_mask_(NULL)
-	, current_tod_sound_(NULL)
-	, current_tod_number_(NULL)
-	, lawful_bonus_field_(register_integer("lawful_bonus", true))
-	, tod_red_field_(register_integer("tod_red",
-									  true,
-									  &preferences::editor::tod_r,
-									  &preferences::editor::set_tod_r))
-	, tod_green_field_(register_integer("tod_green",
-										true,
-										&preferences::editor::tod_g,
-										&preferences::editor::set_tod_g))
-	, tod_blue_field_(register_integer("tod_blue",
-									   true,
-									   &preferences::editor::tod_b,
-									   &preferences::editor::set_tod_b))
-	, display_(display)
+custom_tod::custom_tod(const std::vector<time_of_day>& times, int current_time)
+	: times_(times)
+	, current_tod_(current_time)
+	, color_field_r_(register_integer("tod_red",   true))
+	, color_field_g_(register_integer("tod_green", true))
+	, color_field_b_(register_integer("tod_blue",  true))
 {
+	assert(!times_.empty());
 }
 
-void tcustom_tod::select_file(const std::string& filename,
-							  const std::string& dir,
-							  const std::string& vector_attrib,
-							  twindow& window)
+void custom_tod::pre_show(window& window)
 {
-	std::string va = vector_attrib;
-	std::string fn = file_name(filename);
-	std::string dn = directory_name(fn);
-	if(dn.empty()) {
-		dn = dir;
-	}
+	static std::map<std::string, tod_attribute_getter> metadata_stuff {
+		{"image", tod_getter_image},
+		{"mask",  tod_getter_mask },
+		{"sound", tod_getter_sound}
+	};
 
-	int res = dialogs::show_file_chooser_dialog(
-			*display_, dn, _("Choose File"));
-	if(res == 0) {
-		if(va == "image") {
-			tods_[current_tod_].image = dn;
-		} else if(va == "mask") {
-			tods_[current_tod_].image_mask = dn;
-		} else if(va == "sound") {
-			tods_[current_tod_].sounds = dn;
+	window.add_to_tab_order(find_widget<text_box>(&window, "tod_name", false, true));
+	window.add_to_tab_order(find_widget<text_box>(&window, "tod_id", false, true));
+
+	for(const auto& data : metadata_stuff) {
+		find_widget<text_box>(&window, "path_" + data.first, false).set_active(false);
+
+		button& copy_w = find_widget<button>(&window, "copy_" + data.first, false);
+
+		connect_signal_mouse_left_click(copy_w,
+			std::bind(&custom_tod::copy_to_clipboard_callback, this, data.second));
+
+		if(!desktop::clipboard::available()) {
+			copy_w.set_active(false);
+			copy_w.set_tooltip(_("Clipboard support not found, contact your packager"));
 		}
 	}
+
+	connect_signal_mouse_left_click(
+			find_widget<button>(&window, "browse_image", false),
+			std::bind(&custom_tod::select_file<tod_getter_image>, this, std::ref(window), "data/core/images/misc"));
+
+	connect_signal_mouse_left_click(
+			find_widget<button>(&window, "browse_mask", false),
+			std::bind(&custom_tod::select_file<tod_getter_mask>,  this, std::ref(window), "data/core/images"));
+
+	connect_signal_mouse_left_click(
+			find_widget<button>(&window, "browse_sound", false),
+			std::bind(&custom_tod::select_file<tod_getter_sound>, this, std::ref(window), "data/core/sounds/ambient"));
+
+	connect_signal_mouse_left_click(
+			find_widget<button>(&window, "next_tod", false),
+			std::bind(&custom_tod::do_next_tod, this, std::ref(window)));
+
+	connect_signal_mouse_left_click(
+			find_widget<button>(&window, "previous_tod", false),
+			std::bind(&custom_tod::do_prev_tod, this, std::ref(window)));
+
+	connect_signal_mouse_left_click(
+			find_widget<button>(&window, "new", false),
+			std::bind(&custom_tod::do_new_tod, this, std::ref(window)));
+
+	connect_signal_mouse_left_click(
+			find_widget<button>(&window, "delete", false),
+			std::bind(&custom_tod::do_delete_tod, this, std::ref(window)));
+
+	connect_signal_notify_modified(
+			find_widget<slider>(&window, "lawful_bonus", false),
+			std::bind(&custom_tod::update_lawful_bonus, this, std::ref(window)));
+
+	connect_signal_notify_modified(
+			*(color_field_r_->get_widget()),
+			std::bind(&custom_tod::color_slider_callback, this, std::ref(window)));
+
+	connect_signal_notify_modified(
+			*(color_field_g_->get_widget()),
+			std::bind(&custom_tod::color_slider_callback, this, std::ref(window)));
+
+	connect_signal_notify_modified(
+			*(color_field_b_->get_widget()),
+			std::bind(&custom_tod::color_slider_callback, this, std::ref(window)));
+
 	update_selected_tod_info(window);
 }
 
-void tcustom_tod::do_next_tod(twindow& window)
+template<custom_tod::string_pair(*fptr)(const time_of_day&)>
+void custom_tod::select_file(window& window, const std::string& default_dir)
 {
-	current_tod_ = (current_tod_ + 1) % tods_.size();
-	update_selected_tod_info(window);
-}
+	const string_pair& data = (*fptr)(get_selected_tod());
 
-void tcustom_tod::do_prev_tod(twindow& window)
-{
-	current_tod_ = (current_tod_ ? current_tod_ : tods_.size()) - 1;
-	update_selected_tod_info(window);
-}
-
-void tcustom_tod::do_new_tod(twindow& window)
-{
-	tods_.insert(tods_.begin() + current_tod_, time_of_day());
-	update_selected_tod_info(window);
-}
-
-void tcustom_tod::do_delete_tod(twindow& window)
-{
-	assert(tods_.begin() + current_tod_ < tods_.end());
-	if(tods_.size() == 1) {
-		tods_.at(0) = time_of_day();
-		update_selected_tod_info(window);
-		return;
+	std::string fn = filesystem::base_name(data.second);
+	std::string dn = filesystem::directory_name(fn);
+	if(dn.empty()) {
+		dn = default_dir;
 	}
-	tods_.erase(tods_.begin() + current_tod_);
-	if(tods_.begin() + current_tod_ >= tods_.end()) {
-		current_tod_ = tods_.size() - 1;
+
+	gui2::dialogs::file_dialog dlg;
+
+	dlg.set_title(_("Choose File"))
+	   .set_ok_label(_("Select"))
+	   .set_path(dn)
+	   .set_read_only(true);
+
+	if(dlg.show()) {
+		dn = dlg.path();
+
+		if(data.first == "image") {
+			times_[current_tod_].image = dn;
+		} else if(data.first == "mask") {
+			times_[current_tod_].image_mask = dn;
+		} else if(data.first == "sound") {
+			times_[current_tod_].sounds = dn;
+		}
 	}
+
 	update_selected_tod_info(window);
 }
 
-const std::vector<time_of_day>& tcustom_tod::do_save_schedule() const
+void custom_tod::do_next_tod(window& window)
 {
-	return tods_;
+	current_tod_ = (current_tod_ + 1) % times_.size();
+	update_selected_tod_info(window);
 }
 
-const time_of_day& tcustom_tod::get_selected_tod() const
+void custom_tod::do_prev_tod(window& window)
 {
-	assert(static_cast<size_t>(current_tod_) < tods_.size());
-	return tods_[current_tod_];
+	current_tod_ = (current_tod_ ? current_tod_ : times_.size()) - 1;
+	update_selected_tod_info(window);
 }
 
-void tcustom_tod::update_tod_display(twindow& window)
+void custom_tod::do_new_tod(window& window)
 {
-	image::set_color_adjustment(tod_red_field_->get_widget_value(window),
-								tod_green_field_->get_widget_value(window),
-								tod_blue_field_->get_widget_value(window));
+	times_.insert(times_.begin() + current_tod_, time_of_day());
+	update_selected_tod_info(window);
+}
 
-	if(!display_) {
-		return;
+void custom_tod::do_delete_tod(window& window)
+{
+	assert(times_.begin() + current_tod_ < times_.end());
+
+	if(times_.size() == 1) {
+		times_.emplace_back();
+	} else {
+		times_.erase(times_.begin() + current_tod_);
+
+		if(times_.begin() + current_tod_ >= times_.end()) {
+			current_tod_ = times_.size() - 1;
+		}
 	}
 
+	update_selected_tod_info(window);
+}
+
+const time_of_day& custom_tod::get_selected_tod() const
+{
+	try {
+		return times_.at(current_tod_);
+	} catch(const std::out_of_range&) {
+		throw std::string("Attempted to fetch a non-existant ToD!");
+	}
+}
+
+void custom_tod::color_slider_callback(window& window)
+{
+	time_of_day& current_tod = times_[current_tod_];
+
+	current_tod.color.r = color_field_r_->get_widget_value(window);
+	current_tod.color.g = color_field_g_->get_widget_value(window);
+	current_tod.color.b = color_field_b_->get_widget_value(window);
+
+	update_tod_display(window);
+}
+
+void custom_tod::update_tod_display(window& window)
+{
+	display* disp = display::get_singleton();
+	assert(disp && "Display pointer is null!");
 
 	// Prevent a floating slice of window appearing alone over the
 	// theme UI sidebar after redrawing tiles and before we have a
@@ -208,166 +292,62 @@ void tcustom_tod::update_tod_display(twindow& window)
 	// If this ceases to be the case in the future, you'll need to call
 	// redraw_everything() instead.
 
+	disp->update_tod(&get_selected_tod());
+
 	// invalidate all tiles so they are redrawn with the new ToD tint next
-	display_->invalidate_all();
+	disp->invalidate_all();
+
 	// redraw tiles
-	display_->draw(false);
+	disp->draw(false);
 
-	window.invalidate_layout();
+	// NOTE: revert to invalidate_layout if necessary to display the ToD mask image.
+	window.set_is_dirty(true);
 }
 
-void tcustom_tod::update_lawful_bonus(twindow& window)
+void custom_tod::update_lawful_bonus(window& window)
 {
-	tods_[current_tod_].lawful_bonus
-			= lawful_bonus_field_->get_widget_value(window);
+	times_[current_tod_].lawful_bonus = find_widget<slider>(&window, "lawful_bonus", false).get_value();
 }
 
-void tcustom_tod::slider_update_callback(twindow& window)
+void custom_tod::update_selected_tod_info(window& window)
 {
+	const time_of_day& current_tod = get_selected_tod();
+
+	find_widget<text_box>(&window, "tod_name", false).set_value(current_tod.name);
+	find_widget<text_box>(&window, "tod_id", false).set_value(current_tod.id);
+
+	find_widget<text_box>(&window, "path_image", false).set_value(current_tod.image);
+	find_widget<text_box>(&window, "path_mask", false).set_value(current_tod.image_mask);
+	find_widget<text_box>(&window, "path_sound", false).set_value(current_tod.sounds);
+
+	find_widget<image>(&window, "current_tod_image", false).set_image(current_tod.image);
+	find_widget<image>(&window, "current_tod_mask", false).set_image(current_tod.image_mask);
+
+	find_widget<slider>(&window, "lawful_bonus", false).set_value(current_tod.lawful_bonus);
+
+	color_field_r_->set_widget_value(window, current_tod.color.r);
+	color_field_g_->set_widget_value(window, current_tod.color.g);
+	color_field_b_->set_widget_value(window, current_tod.color.b);
+
+	const std::string new_index_str = formatter() << (current_tod_ + 1) << "/" << times_.size();
+	find_widget<label>(&window, "tod_number", false).set_label(new_index_str);
+
 	update_tod_display(window);
 }
 
-void tcustom_tod::update_selected_tod_info(twindow& window)
+void custom_tod::copy_to_clipboard_callback(tod_attribute_getter getter)
 {
-	current_tod_name_->set_value(get_selected_tod().name);
-	current_tod_id_->set_value(get_selected_tod().id);
-	current_tod_image_->set_image(get_selected_tod().image);
-	current_tod_mask_->set_image(get_selected_tod().image_mask);
-	current_tod_sound_->set_label(get_selected_tod().sounds);
-
-	std::stringstream ss;
-	ss << (current_tod_ + 1);
-	ss << "/" << tods_.size();
-	current_tod_number_->set_label(ss.str());
-
-	lawful_bonus_field_->set_widget_value(window,
-										  get_selected_tod().lawful_bonus);
-	tod_red_field_->set_widget_value(window, get_selected_tod().color.r);
-	tod_green_field_->set_widget_value(window, get_selected_tod().color.g);
-	tod_blue_field_->set_widget_value(window, get_selected_tod().color.b);
-
-	update_tod_display(window);
-	window.invalidate_layout();
+	desktop::clipboard::copy_to_clipboard(getter(get_selected_tod()).second, false);
 }
 
-void tcustom_tod::pre_show(CVideo& /*video*/, twindow& window)
+void custom_tod::post_show(window& window)
 {
-	assert(!tods_.empty());
-	current_tod_name_
-			= find_widget<ttext_box>(&window, "tod_name", false, true);
+	update_tod_display(window);
 
-	current_tod_id_ = find_widget<ttext_box>(&window, "tod_id", false, true);
-
-	current_tod_image_
-			= find_widget<timage>(&window, "current_tod_image", false, true);
-
-	current_tod_mask_
-			= find_widget<timage>(&window, "current_tod_mask", false, true);
-
-	current_tod_sound_
-			= find_widget<tlabel>(&window, "current_sound", false, true);
-
-	current_tod_number_
-			= find_widget<tlabel>(&window, "tod_number", false, true);
-
-	tbutton& image_button
-			= find_widget<tbutton>(&window, "image_button", false);
-	connect_signal_mouse_left_click(image_button,
-									boost::bind(&tcustom_tod::select_file,
-												this,
-												get_selected_tod().image,
-												"data/core/images/misc",
-												"image",
-												boost::ref(window)));
-
-	tbutton& mask_button = find_widget<tbutton>(&window, "mask_button", false);
-	;
-	connect_signal_mouse_left_click(mask_button,
-									boost::bind(&tcustom_tod::select_file,
-												this,
-												get_selected_tod().image_mask,
-												"data/core/images",
-												"mask",
-												boost::ref(window)));
-
-	tbutton& sound_button
-			= find_widget<tbutton>(&window, "sound_button", false);
-	connect_signal_mouse_left_click(sound_button,
-									boost::bind(&tcustom_tod::select_file,
-												this,
-												get_selected_tod().sounds,
-												"data/core/sounds/ambient",
-												"sound",
-												boost::ref(window)));
-
-	tbutton& next_tod_button = find_widget<tbutton>(&window, "next_tod", false);
-	connect_signal_mouse_left_click(
-			next_tod_button,
-			boost::bind(&tcustom_tod::do_next_tod, this, boost::ref(window)));
-
-	tbutton& prev_tod_button
-			= find_widget<tbutton>(&window, "previous_tod", false);
-	connect_signal_mouse_left_click(
-			prev_tod_button,
-			boost::bind(&tcustom_tod::do_prev_tod, this, boost::ref(window)));
-
-	tbutton& new_button = find_widget<tbutton>(&window, "new", false);
-	connect_signal_mouse_left_click(
-			new_button,
-			boost::bind(&tcustom_tod::do_new_tod, this, boost::ref(window)));
-
-	tbutton& delete_button = find_widget<tbutton>(&window, "delete", false);
-	connect_signal_mouse_left_click(
-			delete_button,
-			boost::bind(&tcustom_tod::do_delete_tod, this, boost::ref(window)));
-
-	tbutton& save_button = find_widget<tbutton>(&window, "save", false);
-	connect_signal_mouse_left_click(
-			save_button, boost::bind(&tcustom_tod::do_save_schedule, this));
-
-	connect_signal_notify_modified(
-			*(lawful_bonus_field_->widget()),
-			boost::bind(&tcustom_tod::update_lawful_bonus,
-						this,
-						boost::ref(window)));
-
-	connect_signal_notify_modified(
-			*(tod_red_field_->widget()),
-			boost::bind(&tcustom_tod::slider_update_callback,
-						this,
-						boost::ref(window)));
-
-	connect_signal_notify_modified(
-			*(tod_green_field_->widget()),
-			boost::bind(&tcustom_tod::slider_update_callback,
-						this,
-						boost::ref(window)));
-
-	connect_signal_notify_modified(
-			*(tod_blue_field_->widget()),
-			boost::bind(&tcustom_tod::slider_update_callback,
-						this,
-						boost::ref(window)));
-
-	for(size_t i = 0; i < tods_.size(); ++i) {
-
-		time_of_day& tod = tods_[i];
-		const int r = tod_red_field_->get_widget_value(window);
-		const int g = tod_green_field_->get_widget_value(window);
-		const int b = tod_blue_field_->get_widget_value(window);
-		if(tod.color.r == r && tod.color.g == g && tod.color.b == b) {
-			current_tod_ = i;
-			update_selected_tod_info(window);
-			return;
-		}
+	if(get_retval() == retval::OK) {
+		// TODO: save ToD
 	}
-
-	update_selected_tod_info(window);
 }
 
-void tcustom_tod::post_show(twindow& window)
-{
-	update_tod_display(window);
-}
-
+} // namespace dialogs
 } // namespace gui2

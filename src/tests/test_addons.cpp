@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2012 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2012 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,8 +17,6 @@
 #include <boost/test/unit_test.hpp>
 
 #include "addon/validation.hpp"
-
-#include <boost/foreach.hpp>
 
 BOOST_AUTO_TEST_SUITE( addons )
 
@@ -45,8 +43,8 @@ BOOST_AUTO_TEST_CASE( validation )
 
 BOOST_AUTO_TEST_CASE( encoding )
 {
-	BOOST_CHECK( encode_binary("") == "" );
-	BOOST_CHECK( unencode_binary("") == "" );
+	BOOST_CHECK( encode_binary("").empty() );
+	BOOST_CHECK( unencode_binary("").empty() );
 
 	//
 	// Plain string.
@@ -78,7 +76,7 @@ BOOST_AUTO_TEST_CASE( encoding )
 	// There is no test for \x00 here because \x00 really shouldn't occur in
 	// a string -- otherwise things get weird.
 	//
-	BOOST_FOREACH(const char c, raw)
+	for(const char c : raw)
 	{
 		if(c == bin_escape || bin_special.find(c) != std::string::npos) {
 			encoded += bin_escape;

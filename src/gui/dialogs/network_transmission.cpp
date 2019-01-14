@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2011 - 2014 Sergey Popov <loonycyborg@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2011 - 2018 Sergey Popov <loonycyborg@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,9 +16,8 @@
 
 #include "gui/dialogs/network_transmission.hpp"
 
-#include "formula_string_utils.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/label.hpp"
@@ -26,66 +25,59 @@
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+#include "wesnothd_connection.hpp"
 
 namespace gui2
+{
+namespace dialogs
 {
 
 REGISTER_DIALOG(network_transmission)
 
-void tnetwork_transmission::pump_monitor::process(events::pump_info&)
+void network_transmission::pump_monitor::process(events::pump_info&)
 {
-	connection_.poll();
 	if(!window_)
 		return;
-	if(connection_.done()) {
-		window_.get().set_retval(twindow::OK);
+	connection_->poll();
+	if(connection_->finished()) {
+		window_.get().set_retval(retval::OK);
 	} else {
-		size_t completed, total;
-		if(track_upload_) {
-			completed = connection_.bytes_written();
-			total = connection_.bytes_to_write();
-		} else {
-			completed = connection_.bytes_read();
-			total = connection_.bytes_to_read();
-		}
+		std::size_t completed, total;
+			completed = connection_->current();
+			total = connection_->total();
 		if(total) {
-			find_widget<tprogress_bar>(&(window_.get()), "progress", false)
+			find_widget<progress_bar>(&(window_.get()), "progress", false)
 					.set_percentage((completed * 100.) / total);
 
 			std::stringstream ss;
 			ss << utils::si_string(completed, true, _("unit_byte^B")) << "/"
 			   << utils::si_string(total, true, _("unit_byte^B"));
 
-			find_widget<tlabel>(&(window_.get()), "numeric_progress", false)
+			find_widget<label>(&(window_.get()), "numeric_progress", false)
 					.set_label(ss.str());
 			window_->invalidate_layout();
 		}
 	}
 }
 
-tnetwork_transmission::tnetwork_transmission(
-		network_asio::connection& connection,
+network_transmission::network_transmission(
+		connection_data& connection,
 		const std::string& title,
 		const std::string& subtitle)
-	: connection_(connection)
-	, track_upload_(false)
-	, pump_monitor_(connection, track_upload_)
+	: connection_(&connection)
+	, pump_monitor_(connection_)
 	, subtitle_(subtitle)
 {
 	register_label("title", true, title, false);
+	set_restore(true);
 }
 
-void tnetwork_transmission::set_subtitle(const std::string& subtitle)
-{
-	subtitle_ = subtitle;
-}
-
-void tnetwork_transmission::pre_show(CVideo& /*video*/, twindow& window)
+void network_transmission::pre_show(window& window)
 {
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
 	if(!subtitle_.empty()) {
-		tlabel& subtitle_label
-				= find_widget<tlabel>(&window, "subtitle", false);
+		label& subtitle_label
+				= find_widget<label>(&window, "subtitle", false);
 		subtitle_label.set_label(subtitle_);
 		subtitle_label.set_use_markup(true);
 	}
@@ -93,10 +85,14 @@ void tnetwork_transmission::pre_show(CVideo& /*video*/, twindow& window)
 	pump_monitor_.window_ = window;
 }
 
-void tnetwork_transmission::post_show(twindow& /*window*/)
+void network_transmission::post_show(window& /*window*/)
 {
 	pump_monitor_.window_.reset();
-	connection_.cancel();
+
+	if(get_retval() == retval::CANCEL) {
+		connection_->cancel();
+	}
 }
 
+} // namespace dialogs
 } // namespace gui2

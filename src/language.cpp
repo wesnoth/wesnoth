@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,24 +12,20 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
 #include "log.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 
 #include <stdexcept>
 #include <clocale>
-#include <boost/scoped_array.hpp>
-#include <boost/foreach.hpp>
 
 #ifdef _WIN32
 #include <windows.h>
-#ifndef _MSC_VER
+#if !defined(_MSC_VER) && !defined(__MINGW32__)
 extern "C" int _putenv(const char*);
 #endif
 #endif
@@ -38,15 +34,16 @@ extern "C" int _putenv(const char*);
 #include <cerrno>
 #endif
 
-#define DBG_G LOG_STREAM(debug, lg::general)
-#define LOG_G LOG_STREAM(info, lg::general)
-#define WRN_G LOG_STREAM(warn, lg::general)
-#define ERR_G LOG_STREAM(err, lg::general)
+#define DBG_G LOG_STREAM(debug, lg::general())
+#define LOG_G LOG_STREAM(info, lg::general())
+#define WRN_G LOG_STREAM(warn, lg::general())
+#define ERR_G LOG_STREAM(err, lg::general())
 
 namespace {
 	language_def current_language;
 	std::vector<config> languages_;
 	utils::string_map strings_;
+	int min_translation_percent = 80;
 }
 
 static language_list known_languages;
@@ -96,21 +93,20 @@ bool load_language_list()
 {
 	config cfg;
 	try {
-		scoped_istream stream = preprocess_file(get_wml_location("hardwired/language.cfg"));
+		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("hardwired/language.cfg"));
 		read(cfg, *stream);
-	} catch(config::error &) {
+	} catch(const config::error &) {
 		return false;
 	}
 
 	known_languages.clear();
-	known_languages.push_back(
-		language_def("", t_string(N_("System default language"), "wesnoth"), "ltr", "", "A"));
+	known_languages.emplace_back("", t_string(N_("System default language"), "wesnoth"), "ltr", "", "A", "100");
 
-	BOOST_FOREACH(const config &lang, cfg.child_range("locale"))
+	for (const config &lang : cfg.child_range("locale"))
 	{
-		known_languages.push_back(
-			language_def(lang["locale"], lang["name"], lang["dir"],
-			             lang["alternates"], lang["sort_name"]));
+		known_languages.emplace_back(
+			lang["locale"], lang["name"], lang["dir"],
+			lang["alternates"], lang["sort_name"], lang["percent"]);
 	}
 
 	return true;
@@ -121,10 +117,23 @@ language_list get_languages()
 	// We sort every time, the local might have changed which can modify the
 	// sort order.
 	std::sort(known_languages.begin(), known_languages.end());
-	return known_languages;
+
+	if(min_translation_percent == 0) {
+		return known_languages;
+	}
+
+	language_list result;
+	std::copy_if(known_languages.begin(), known_languages.end(), std::back_inserter(result),
+		[](const language_def& lang) { return lang.percent >= min_translation_percent; });
+
+	return result;
 }
 
-static void wesnoth_setlocale(int category, std::string const &slocale,
+void set_min_translation_percent(int percent) {
+	min_translation_percent = percent;
+}
+
+static void wesnoth_setlocale(int category, const std::string& slocale,
 	std::vector<std::string> const *alternates)
 {
 	std::string locale = slocale;
@@ -133,29 +142,31 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 	// instead of en_US the first time round
 	// LANGUAGE overrides other settings, so for now just get rid of it
 	// FIXME: add configure check for unsetenv
+
+	//category is never LC_MESSAGES since that case was moved to gettext.cpp to remove the dependency to libintl.h in this file
+	//that's why code like if (category == LC_MESSAGES) is outcommented here.
 #ifndef _WIN32
 	unsetenv ("LANGUAGE"); // void so no return value to check
 #endif
-
 #ifdef __APPLE__
-	if (category == LC_MESSAGES && setenv("LANG", locale.c_str(), 1) == -1) {
-		ERR_G << "setenv LANG failed: " << strerror(errno);
-	}
+	//if (category == LC_MESSAGES && setenv("LANG", locale.c_str(), 1) == -1) {
+	//	ERR_G << "setenv LANG failed: " << strerror(errno);
+	//}
 #endif
 
 #ifdef _WIN32
 	std::string win_locale(locale, 0, 2);
 	#include "language_win32.ii"
-	if(category == LC_MESSAGES) {
-		SetEnvironmentVariableA("LANG", win_locale.c_str());
-		std::string env = "LANGUAGE=" + locale;
-		_putenv(env.c_str());
-		return;
-	}
+	//if(category == LC_MESSAGES) {
+	//	SetEnvironmentVariableA("LANG", win_locale.c_str());
+	//	std::string env = "LANGUAGE=" + locale;
+	//	_putenv(env.c_str());
+	//	return;
+	//}
 	locale = win_locale;
 #endif
 
-	char *res = NULL;
+	char *res = nullptr;
 	std::vector<std::string>::const_iterator i;
 	if (alternates) i = alternates->begin();
 
@@ -172,7 +183,7 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 		 * The "" is the last item to work-around a problem in glibc picking
 		 * the non utf8 locale instead an utf8 version if available.
 		 */
-		char const *encoding[] = { ".utf-8", ".UTF-8", "" };
+		char const *encoding[] { ".utf-8", ".UTF-8", "" };
 		for (int j = 0; j != 3; ++j)
 		{
 			locale = lang + encoding[j] + extra;
@@ -195,16 +206,16 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 	}
 
 #ifndef _WIN32
-		if(category == LC_MESSAGES) {
-			WRN_G << "Setting LANGUAGE to '" << slocale << "'." << std::endl;
-			setenv("LANGUAGE", slocale.c_str(), 1);
-			std::setlocale(LC_MESSAGES, "");
-		}
+		//if(category == LC_MESSAGES) {
+		//	WRN_G << "Setting LANGUAGE to '" << slocale << "'." << std::endl;
+		//	setenv("LANGUAGE", slocale.c_str(), 1);
+		//	std::setlocale(LC_MESSAGES, "");
+		//}
 #endif
 
 	done:
-	DBG_G << "Numeric locale: " << std::setlocale(LC_NUMERIC, NULL) << '\n';
-	DBG_G << "Full locale: " << std::setlocale(LC_ALL, NULL) << '\n';
+	DBG_G << "Numeric locale: " << std::setlocale(LC_NUMERIC, nullptr) << '\n';
+	DBG_G << "Full locale: " << std::setlocale(LC_ALL, nullptr) << '\n';
 }
 
 void set_language(const language_def& locale)
@@ -220,8 +231,7 @@ void set_language(const language_def& locale)
 
 	wesnoth_setlocale(LC_COLLATE, locale.localename, &locale.alternates);
 	wesnoth_setlocale(LC_TIME, locale.localename, &locale.alternates);
-	wesnoth_setlocale(LC_MESSAGES, locale.localename, &locale.alternates);
-
+	translation::set_language(locale.localename, &locale.alternates);
 	load_strings(false);
 }
 
@@ -235,9 +245,9 @@ bool load_strings(bool complain)
 		std::cerr << "No [language] block found\n";
 		return false;
 	}
-	BOOST_FOREACH(const config &lang, languages_) {
+	for (const config &lang : languages_) {
 		DBG_G << "[language]\n";
-		BOOST_FOREACH(const config::attribute &j, lang.attribute_range()) {
+		for (const config::attribute &j : lang.attribute_range()) {
 			DBG_G << j.first << "=\"" << j.second << "\"\n";
 			strings_[j.first] = j.second;
 		}
@@ -258,7 +268,7 @@ const language_def& get_locale()
 
 	const std::string& prefs_locale = preferences::language();
 	if(prefs_locale.empty() == false) {
-		wesnoth_setlocale(LC_MESSAGES, prefs_locale, NULL);
+		translation::set_language(prefs_locale, nullptr);
 		for(language_list::const_iterator i = known_languages.begin();
 				i != known_languages.end(); ++i) {
 			if (prefs_locale == i->localename)
@@ -275,7 +285,7 @@ const language_def& get_locale()
 		#include "language_win32.ii"
 		return win_locale;
 	#endif
-	if(locale != NULL && strlen(locale) >= 2) {
+	if(locale != nullptr && strlen(locale) >= 2) {
 		//we can't pass pointers into the string to the std::string
 		//constructor because some STL implementations don't support
 		//it (*cough* MSVC++6)
@@ -292,15 +302,15 @@ const language_def& get_locale()
 
 void init_textdomains(const config& cfg)
 {
-	BOOST_FOREACH(const config &t, cfg.child_range("textdomain"))
+	for (const config &t : cfg.child_range("textdomain"))
 	{
 		const std::string &name = t["name"];
 		const std::string &path = t["path"];
 
 		if(path.empty()) {
-			t_string::add_textdomain(name, get_intl_dir());
+			t_string::add_textdomain(name, filesystem::get_intl_dir());
 		} else {
-			std::string location = get_binary_dir_location("", path);
+			std::string location = filesystem::get_binary_dir_location("", path);
 
 			if (location.empty()) {
 				//if location is empty, this causes a crash on Windows, so we
@@ -316,7 +326,7 @@ void init_textdomains(const config& cfg)
 bool init_strings(const config& cfg)
 {
 	languages_.clear();
-	BOOST_FOREACH(const config &l, cfg.child_range("language")) {
+	for (const config &l : cfg.child_range("language")) {
 		languages_.push_back(l);
 	}
 	return load_strings(true);

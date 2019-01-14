@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2006 - 2014 by Karol Nowak <grzywacz@sul.uni.lodz.pl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2006 - 2018 by Karol Nowak <grzywacz@sul.uni.lodz.pl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,16 +12,13 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
-
 #include "display.hpp"
 #include "log.hpp"
-#include "serialization/string_utils.hpp"
+#include "random.hpp"
 #include "sound.hpp"
 #include "soundsource.hpp"
 
-#include "SDL.h" // Travis doesn't like this, although it works on my machine -> '#include "SDL_sound.h"
+#include <SDL_timer.h>
 
 namespace soundsource {
 
@@ -32,7 +29,6 @@ unsigned int positional_source::last_id = 0;
 
 manager::manager(const display &disp) :
 	observer(),
-	savegame_config(),
 	sources_(),
 	disp_(disp)
 {
@@ -42,10 +38,6 @@ manager::manager(const display &disp) :
 
 manager::~manager()
 {
-	for(positional_source_iterator it = sources_.begin(); it != sources_.end(); ++it) {
-		delete (*it).second;
-	}
-
 	sources_.clear();
 }
 
@@ -57,14 +49,17 @@ void manager::handle_generic_event(const std::string &event_name)
 
 void manager::add(const sourcespec &spec)
 {
-	positional_source_iterator it;
+	sources_[spec.id()].reset(new positional_source(spec));
+}
 
-	if((it = sources_.find(spec.id())) == sources_.end()) {
-		sources_[spec.id()] = new positional_source(spec);
-	} else {
-		delete (*it).second;
-		(*it).second = new positional_source(spec);
+config manager::get(const std::string &id)
+{
+	config cfg;
+	positional_source_iterator it = sources_.find(id);
+	if(it != sources_.end()) {
+		it->second->write_config(cfg);
 	}
+	return cfg;
 }
 
 void manager::remove(const std::string &id)
@@ -74,7 +69,6 @@ void manager::remove(const std::string &id)
 	if((it = sources_.find(id)) == sources_.end())
 		return;
 	else {
-		delete (*it).second;
 		sources_.erase(it);
 	}
 }
@@ -108,13 +102,6 @@ void manager::write_sourcespecs(config& cfg) const
 	}
 }
 
-config manager::to_config() const
-{
-	config cfg;
-	write_sourcespecs(cfg);
-	return cfg.child("sound_source");
-}
-
 positional_source::positional_source(const sourcespec &spec) :
 	last_played_(0),
 	min_delay_(spec.minimum_delay()),
@@ -134,20 +121,20 @@ positional_source::positional_source(const sourcespec &spec) :
 
 positional_source::~positional_source()
 {
-	sound::reposition_sound(id_, DISTANCE_SILENT);
+	sound::stop_sound(id_);
 }
 
-bool positional_source::is_global()
+bool positional_source::is_global() const
 {
 	return locations_.empty();
 }
 
 void positional_source::update(unsigned int time, const display &disp)
 {
-	if (time - last_played_ < unsigned(min_delay_) || sound::is_sound_playing(id_))
+	if (time - last_played_ < static_cast<unsigned>(min_delay_) || sound::is_sound_playing(id_))
 		return;
 
-	int i = rand() % 100 + 1;
+	int i = randomness::rng::default_instance().get_random_int(1, 100);
 
 	if(i <= chance_) {
 		last_played_ = time;
@@ -160,8 +147,8 @@ void positional_source::update(unsigned int time, const display &disp)
 		}
 
 		int distance_volume = DISTANCE_SILENT;
-		for(std::vector<map_location>::iterator i = locations_.begin(); i != locations_.end(); ++i) {
-			int v = calculate_volume(*i, disp);
+		for(const map_location& l : locations_) {
+			int v = calculate_volume(l, disp);
 			if(v < distance_volume) {
 				distance_volume = v;
 			}
@@ -244,4 +231,3 @@ sourcespec::sourcespec(const config& cfg) :
 }
 
 } // namespace soundsource
-

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,75 +16,48 @@
 
 #include "gui/widgets/helper.hpp"
 
-#include "gui/auxiliary/log.hpp"
+#include "color.hpp"
+#include "formula/callable.hpp"
+#include "formula/string_utils.hpp"
+#include "gui/core/log.hpp"
+#include "sdl/point.hpp"
 #include "gui/widgets/settings.hpp"
 #include "sdl/rect.hpp"
+#include "tstring.hpp"
 
-#include "formula_string_utils.hpp"
-
-#include "SDL_ttf.h"
+#include <SDL.h>
 
 namespace gui2
 {
-
-namespace
+SDL_Rect create_rect(const point& origin, const point& size)
 {
-static bool initialized_ = false;
+	return {origin.x, origin.y, size.x, size.y};
 }
 
-bool init()
+font::pango_text::FONT_STYLE decode_font_style(const std::string& style)
 {
-	if(initialized_) {
-		return true;
+	static std::map<std::string, font::pango_text::FONT_STYLE> font_style_map {
+		{"normal",    font::pango_text::STYLE_NORMAL},
+		{"bold",      font::pango_text::STYLE_BOLD},
+		{"italic",    font::pango_text::STYLE_ITALIC},
+		{"underline", font::pango_text::STYLE_UNDERLINE},
+	};
+
+	if(style.empty()) {
+		return font::pango_text::STYLE_NORMAL;
 	}
 
-	load_settings();
-
-	initialized_ = true;
-
-	return initialized_;
-}
-
-SDL_Rect create_rect(const tpoint& origin, const tpoint& size)
-{
-	return sdl::create_rect(origin.x, origin.y, size.x, size.y);
-}
-
-unsigned decode_font_style(const std::string& style)
-{
-	if(style == "bold") {
-		return TTF_STYLE_BOLD;
-	} else if(style == "italic") {
-		return TTF_STYLE_ITALIC;
-	} else if(style == "underline") {
-		return TTF_STYLE_UNDERLINE;
-	} else if(style.empty() || style == "normal") {
-		return TTF_STYLE_NORMAL;
+	if(font_style_map.find(style) == font_style_map.end()) {
+		ERR_GUI_G << "Unknown style '" << style << "', using 'normal' instead." << std::endl;
+		return font::pango_text::STYLE_NORMAL;
 	}
 
-	ERR_GUI_G << "Unknown style '" << style << "' using 'normal' instead."
-			  << std::endl;
-
-	return TTF_STYLE_NORMAL;
+	return font_style_map[style];
 }
 
-boost::uint32_t decode_color(const std::string& color)
+color_t decode_color(const std::string& color)
 {
-	std::vector<std::string> fields = utils::split(color);
-
-	// make sure we have four fields
-	while(fields.size() < 4)
-		fields.push_back("0");
-
-	boost::uint32_t result = 0;
-	for(int i = 0; i < 4; ++i) {
-		// shift the previous value before adding, since it's a nop on the
-		// first run there's no need for an if.
-		result = result << 8;
-		result |= lexical_cast_default<int>(fields[i]);
-	}
-
-	return result;
+	return color_t::from_rgba_string(color);
 }
 
 PangoAlignment decode_text_alignment(const std::string& alignment)
@@ -93,13 +66,13 @@ PangoAlignment decode_text_alignment(const std::string& alignment)
 		return PANGO_ALIGN_CENTER;
 	} else if(alignment == "right") {
 		return PANGO_ALIGN_RIGHT;
-	} else {
-		if(!alignment.empty() && alignment != "left") {
-			ERR_GUI_E << "Invalid text alignment '" << alignment
-					  << "' falling back to 'left'.\n";
-		}
-		return PANGO_ALIGN_LEFT;
 	}
+
+	if(!alignment.empty() && alignment != "left") {
+		ERR_GUI_E << "Invalid text alignment '" << alignment << "', falling back to 'left'." << std::endl;
+	}
+
+	return PANGO_ALIGN_LEFT;
 }
 
 std::string encode_text_alignment(const PangoAlignment alignment)
@@ -112,44 +85,40 @@ std::string encode_text_alignment(const PangoAlignment alignment)
 		case PANGO_ALIGN_CENTER:
 			return "center";
 	}
+
 	assert(false);
-	// FIXME: without this "control reaches end of non-void function" in release
-	// mode
+	// FIXME: without this "styled_widget reaches end of non-void function" in release mode
 	throw "Control should not reach this point.";
 }
 
 t_string missing_widget(const std::string& id)
 {
-	utils::string_map symbols;
-	symbols["id"] = id;
-
-	return t_string(
-			vgettext("Mandatory widget '$id' hasn't been defined.", symbols));
+	return t_string(VGETTEXT("Mandatory widget '$id' hasn't been defined.", {{"id", id}}));
 }
 
-void get_screen_size_variables(game_logic::map_formula_callable& variable)
+void get_screen_size_variables(wfl::map_formula_callable& variable)
 {
-	variable.add("screen_width", variant(settings::screen_width));
-	variable.add("screen_height", variant(settings::screen_height));
-	variable.add("gamemap_width", variant(settings::gamemap_width));
-	variable.add("gamemap_height", variant(settings::gamemap_height));
-	variable.add("gamemap_x_offset", variant(settings::gamemap_x_offset));
+	variable.add("screen_width", wfl::variant(settings::screen_width));
+	variable.add("screen_height", wfl::variant(settings::screen_height));
+	variable.add("gamemap_width", wfl::variant(settings::gamemap_width));
+	variable.add("gamemap_height", wfl::variant(settings::gamemap_height));
+	variable.add("gamemap_x_offset", wfl::variant(settings::gamemap_x_offset));
 }
 
-game_logic::map_formula_callable get_screen_size_variables()
+wfl::map_formula_callable get_screen_size_variables()
 {
-	game_logic::map_formula_callable result;
+	wfl::map_formula_callable result;
 	get_screen_size_variables(result);
 
 	return result;
 }
 
-tpoint get_mouse_position()
+point get_mouse_position()
 {
 	int x, y;
 	SDL_GetMouseState(&x, &y);
 
-	return tpoint(x, y);
+	return point(x, y);
 }
 
 std::string debug_truncate(const std::string& text)

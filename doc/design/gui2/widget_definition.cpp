@@ -36,4 +36,3 @@ tprogress_bar_definition::tresolution::tresolution(const config& cfg) /*@ \label
 }
 
 } // namespace gui2
-

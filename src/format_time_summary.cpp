@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,28 +16,27 @@
 
 #include "assert.h"
 #include "gettext.hpp"
-#include "preferences.hpp"
-#include "strftime.hpp"
+#include "preferences/general.hpp"
 
-namespace util {
+namespace utils {
 
-std::string format_time_summary(time_t t) {
-	time_t curtime = time(NULL);
-	const struct tm* timeptr = localtime(&curtime);
-	if(timeptr == NULL) {
+std::string format_time_summary(std::time_t t) {
+	std::time_t curtime = std::time(nullptr);
+	const std::tm* timeptr = std::localtime(&curtime);
+	if(timeptr == nullptr) {
 		return "";
 	}
 
-	const struct tm current_time = *timeptr;
+	const std::tm current_time = *timeptr;
 
-	timeptr = localtime(&t);
-	if(timeptr == NULL) {
+	timeptr = std::localtime(&t);
+	if(timeptr == nullptr) {
 		return "";
 	}
 
-	const struct tm save_time = *timeptr;
+	const std::tm save_time = *timeptr;
 
-	const char* format_string = NULL;
+	std::string format_string;
 
 	if(current_time.tm_year == save_time.tm_year) {
 		const int days_apart = current_time.tm_yday - save_time.tm_yday;
@@ -65,15 +64,9 @@ std::string format_time_summary(time_t t) {
 		// save is from a different year
 		format_string = _("%b %d %Y");
 	}
-	assert(format_string);
+	assert(!format_string.empty());
 
-	char buf[40];
-	const size_t res = util::strftime(buf,sizeof(buf),format_string,&save_time);
-	if(res == 0) {
-		buf[0] = 0;
-	}
-
-	return buf;
+	return translation::strftime(format_string, &save_time);
 }
 
 }

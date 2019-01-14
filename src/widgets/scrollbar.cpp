@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-                 2004 - 2014 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+                 2004 - 2015 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,31 +17,29 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
-
 #include "widgets/scrollbar.hpp"
-#include "image.hpp"
+#include "picture.hpp"
 #include "sdl/rect.hpp"
 #include "video.hpp"
 
 #include <iostream>
 
 namespace {
-	const std::string scrollbar_top = "buttons/scrolltop.png";
-	const std::string scrollbar_bottom = "buttons/scrollbottom.png";
-	const std::string scrollbar_mid = "buttons/scrollmid.png";
+	const std::string scrollbar_top = "buttons/scrollbars_large/scrolltop.png";
+	const std::string scrollbar_bottom = "buttons/scrollbars_large/scrollbottom.png";
+	const std::string scrollbar_mid = "buttons/scrollbars_large/scrollmid.png";
 
-	const std::string scrollbar_top_hl = "buttons/scrolltop-active.png";
-	const std::string scrollbar_bottom_hl = "buttons/scrollbottom-active.png";
-	const std::string scrollbar_mid_hl = "buttons/scrollmid-active.png";
+	const std::string scrollbar_top_hl = "buttons/scrollbars_large/scrolltop-active.png";
+	const std::string scrollbar_bottom_hl = "buttons/scrollbars_large/scrollbottom-active.png";
+	const std::string scrollbar_mid_hl = "buttons/scrollbars_large/scrollmid-active.png";
 
-	const std::string scrollbar_top_pressed = "buttons/scrolltop-pressed.png";
-	const std::string scrollbar_bottom_pressed = "buttons/scrollbottom-pressed.png";
-	const std::string scrollbar_mid_pressed = "buttons/scrollmid-pressed.png";
+	const std::string scrollbar_top_pressed = "buttons/scrollbars_large/scrolltop-pressed.png";
+	const std::string scrollbar_bottom_pressed = "buttons/scrollbars_large/scrollbottom-pressed.png";
+	const std::string scrollbar_mid_pressed = "buttons/scrollbars_large/scrollmid-pressed.png";
 
-	const std::string groove_top = "buttons/scrollgroove-top.png";
-	const std::string groove_mid = "buttons/scrollgroove-mid.png";
-	const std::string groove_bottom = "buttons/scrollgroove-bottom.png";
+	const std::string groove_top = "buttons/scrollbars_large/scrollgroove-top.png";
+	const std::string groove_mid = "buttons/scrollbars_large/scrollgroove-mid.png";
+	const std::string groove_bottom = "buttons/scrollbars_large/scrollgroove-bottom.png";
 
 }
 
@@ -49,8 +47,8 @@ namespace gui {
 
 scrollbar::scrollbar(CVideo &video)
 	: widget(video)
-	, mid_scaled_(NULL)
-	, groove_scaled_(NULL)
+	, mid_scaled_(nullptr)
+	, groove_scaled_(nullptr)
 	, uparrow_(video, "", button::TYPE_TURBO, "button_square/button_square_25"
 			, gui::button::DEFAULT_SPACE, true,"icons/arrows/arrows_ornate_up_25")
 	, downarrow_(video, "", button::TYPE_TURBO, "button_square/button_square_25"
@@ -68,22 +66,22 @@ scrollbar::scrollbar(CVideo &video)
 
 	static const surface img(image::get_image(scrollbar_mid));
 
-	if (img != NULL) {
+	if (img != nullptr) {
 		set_width(img->w);
 		// this is a bit rough maybe
 		minimum_grip_height_ = 2 * img->h;
 	}
 }
 
-handler_vector scrollbar::handler_members()
+sdl_handler_vector scrollbar::handler_members()
 {
-	handler_vector h;
+	sdl_handler_vector h;
 	h.push_back(&uparrow_);
 	h.push_back(&downarrow_);
 	return h;
 }
 
-void scrollbar::update_location(SDL_Rect const &rect)
+void scrollbar::update_location(const SDL_Rect& rect)
 {
 	int uh = uparrow_.height(), dh = downarrow_.height();
 	uparrow_.set_location(rect.x, rect.y);
@@ -222,14 +220,14 @@ SDL_Rect scrollbar::groove_area() const
 
 SDL_Rect scrollbar::grip_area() const
 {
-	SDL_Rect const &loc = groove_area();
+	const SDL_Rect& loc = groove_area();
 	if (full_height_ == grip_height_)
 		return loc;
 	int h = static_cast<int>(loc.h) * grip_height_ / full_height_;
 	if (h < minimum_grip_height_)
 		h = minimum_grip_height_;
 	int y = loc.y + (static_cast<int>(loc.h) - h) * grip_position_ / (full_height_ - grip_height_);
-	return sdl::create_rect(loc.x, y, loc.w, h);
+	return {loc.x, y, loc.w, h};
 }
 
 void scrollbar::draw_contents()
@@ -267,8 +265,8 @@ void scrollbar::draw_contents()
 	const surface mid_grv(image::get_image(groove_mid));
 	const surface bottom_grv(image::get_image(groove_bottom));
 
-	if (mid_img == NULL || bottom_img == NULL || top_img == NULL
-	 || top_grv == NULL || bottom_grv == NULL || mid_grv == NULL) {
+	if (mid_img == nullptr || bottom_img == nullptr || top_img == nullptr
+	 || top_grv == nullptr || bottom_grv == nullptr || mid_grv == nullptr) {
 		std::cerr << "Failure to load scrollbar image.\n";
 		return;
 	}
@@ -306,8 +304,6 @@ void scrollbar::draw_contents()
 		return;
 	}
 
-	surface const screen = video().getSurface();
-
 	// Draw scrollbar "groove"
 	video().blit_surface(groove.x, groove.y, top_grv);
 	video().blit_surface(groove.x, groove.y + top_grv->h, groove_scaled_);
@@ -317,40 +313,33 @@ void scrollbar::draw_contents()
 	video().blit_surface(grip.x, grip.y, top_img);
 	video().blit_surface(grip.x, grip.y + top_img->h, mid_scaled_);
 	video().blit_surface(grip.x, grip.y + top_img->h + mid_height, bottom_img);
-
-	update_rect(groove);
 }
 
 void scrollbar::handle_event(const SDL_Event& event)
 {
+	gui::widget::handle_event(event);
+
 	if (mouse_locked() || hidden())
 		return;
 
 	STATE new_state = state_;
-	SDL_Rect const &grip = grip_area();
-	SDL_Rect const &groove = groove_area();
+	const SDL_Rect& grip = grip_area();
+	const SDL_Rect& groove = groove_area();
 
 
 	switch (event.type) {
 	case SDL_MOUSEBUTTONUP:
 	{
-		SDL_MouseButtonEvent const &e = event.button;
+		const SDL_MouseButtonEvent& e = event.button;
 		bool on_grip = sdl::point_in_rect(e.x, e.y, grip);
 		new_state = on_grip ? ACTIVE : NORMAL;
 		break;
 	}
 	case SDL_MOUSEBUTTONDOWN:
 	{
-		SDL_MouseButtonEvent const &e = event.button;
+		const SDL_MouseButtonEvent& e = event.button;
 		bool on_grip = sdl::point_in_rect(e.x, e.y, grip);
 		bool on_groove = sdl::point_in_rect(e.x, e.y, groove);
-#if !SDL_VERSION_ATLEAST(2,0,0)
-		if (on_groove && e.button == SDL_BUTTON_WHEELDOWN) {
-			move_position(scroll_rate_);
-		} else if (on_groove && e.button == SDL_BUTTON_WHEELUP) {
-			move_position(-scroll_rate_);
-		} else
-#endif
 		if (on_grip && e.button == SDL_BUTTON_LEFT) {
 			mousey_on_grip_ = e.y - grip.y;
 			new_state = DRAGGED;
@@ -359,7 +348,7 @@ void scrollbar::handle_event(const SDL_Event& event)
 				move_position(-static_cast<int>(grip_height_));
 			else
 				move_position(grip_height_);
-		} else if (on_groove && e.button == SDL_BUTTON_MIDDLE) {
+		} else if (on_groove && e.button == SDL_BUTTON_MIDDLE && groove.h != grip.h) {
 			int y_dep = e.y - grip.y - grip.h/2;
 			int dep = y_dep * int(full_height_ - grip_height_)/ (groove.h - grip.h);
 			move_position(dep);
@@ -368,7 +357,7 @@ void scrollbar::handle_event(const SDL_Event& event)
 	}
 	case SDL_MOUSEMOTION:
 	{
-		SDL_MouseMotionEvent const &e = event.motion;
+		const SDL_MouseMotionEvent& e = event.motion;
 		if (state_ == NORMAL || state_ == ACTIVE) {
 			bool on_grip = sdl::point_in_rect(e.x, e.y, grip);
 			new_state = on_grip ? ACTIVE : NORMAL;
@@ -379,7 +368,6 @@ void scrollbar::handle_event(const SDL_Event& event)
 		}
 		break;
 	}
-#if SDL_VERSION_ATLEAST(2,0,0)
 	case SDL_MOUSEWHEEL:
 	{
 		const SDL_MouseWheelEvent& e = event.wheel;
@@ -393,7 +381,6 @@ void scrollbar::handle_event(const SDL_Event& event)
 		}
 		break;
 	}
-#endif
 	default:
 		break;
 	}
@@ -401,10 +388,9 @@ void scrollbar::handle_event(const SDL_Event& event)
 
 	if (new_state != state_) {
 		set_dirty();
-		mid_scaled_.assign(NULL);
+		mid_scaled_.assign(nullptr);
 		state_ = new_state;
 	}
 }
 
 } // end namespace gui
-

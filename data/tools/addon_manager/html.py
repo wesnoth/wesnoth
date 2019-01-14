@@ -1,184 +1,351 @@
-# encoding: utf8
-import time, os, glob, sys, re
+#!/usr/bin/env python3
+# encoding: utf-8
+
+import html
+import glob
+import os
+import re
+import sys
+import time
+import urllib.parse
 from subprocess import Popen
 
-def output(path, url, data):
-    try: os.mkdir(path)
-    except OSError: pass
+#
+# HTML template bits
+#
 
-    f = open(path + "/index.html", "w")
-    def w(x):
-        f.write(x + "\n")
-    w("""\
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+# HTML assets that need to be copied to the destination dir.
+HTML_RESOURCES = (
+    "style.css", "jquery.js", "tablesorter.js",
+    "asc.gif", "bg.gif", "desc.gif" # Used by style.css:
+)
+
+WESMERE_CSS_VERSION = "1.1.1"
+WESMERE_CSS_PREFIX = "https://www.wesnoth.org"
+
+WESMERE_HEADER = '''\
+<!DOCTYPE html>
+
+<html class="no-js addonsweb" lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">""")
-    w("<title>Add-ons for Wesnoth %s</title>" % os.path.basename(path))
-    w("""\
-<link rel=stylesheet href="style.css" type="text/css">
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="tablesorter.js"></script>
-<script type="text/javascript">
-$(document).ready(function() 
-{ 
-    $("#campaigns").tablesorter(
-    {
-        headers: { 1: { sorter: false} }
-    }
-    ); 
-} 
-); 
-</script>
-</head>
-<body>""")
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    w("""\
-<div class="header">
-<a href="http://www.wesnoth.org">
-<img src="http://www.wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg" alt="Wesnoth logo"/>
-</a>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montaga%%7COpen+Sans:400,400i,700,700i" type="text/css" />
+    <link rel="icon" type="image/png" href="%(css_prefix)s/wesmere/img/favicon-32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="%(css_prefix)s/wesmere/img/favicon-16.png" sizes="16x16" />
+    <link rel="stylesheet" type="text/css" href="%(css_prefix)s/wesmere/css/wesmere-%(css_version)s.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <title>Wesnoth %(server_name)s Add-ons List - The Battle for Wesnoth</title>
+
+    <script src="%(css_prefix)s/wesmere/js/modernizr.js"></script>
+    <script src="jquery.js"></script>
+    <script src="tablesorter.js"></script>
+    <script>
+    $(document).ready(function() {
+        $("#campaigns").tablesorter({
+            headers: { 1: { sorter: false }, 2: { sortInitialOrder: "asc" } },
+        });
+    });
+    </script>
+</head>
+
+<body>
+
+<div id="main">
+
+<div id="nav" role="banner">
+<div class="centerbox">
+
+    <div id="logo">
+        <a href="https://www.wesnoth.org/" aria-label="Wesnoth logo"></a>
+    </div>
+
+    <ul id="navlinks">
+        <li><a href="https://addons.wesnoth.org/">Add-ons</a></li>
+        <li><a href="https://www.wesnoth.org/">Home</a></li>
+        <li><a href="https://forums.wesnoth.org/viewforum.php?f=62">News</a></li>
+        <li><a href="https://wiki.wesnoth.org/Play">Play</a></li>
+        <li><a href="https://wiki.wesnoth.org/Create">Create</a></li>
+        <li><a href="https://forums.wesnoth.org/">Forums</a></li>
+        <li><a href="https://wiki.wesnoth.org/Project">About</a></li>
+    </ul>
+
+    <div id="sitesearch" role="search">
+        <form method="get" action="https://wiki.wesnoth.org/">
+            <input id="searchbox" type="search" name="search" placeholder="Search" title="Search the wiki [Alt+Shift+f]" accesskey="f" />
+            <span id="searchbox-controls">
+                <button id="search-go" class="search-button" type="submit" title="Search">
+                    <i class="search-icon" aria-hidden="true"></i>
+                    <span class="sr-label">Search the wiki</span>
+                </button>
+            </span>
+        </form>
+    </div>
+
+    <div class="reset"></div>
 </div>
-<div class="topnav">
-<a href="index.html">Wesnoth Addons</a>
 </div>
-<div class="main">
-<p>To install an add-on please go to the title screen of Battle for Wesnoth. Select "Add-ons" from the menu and click "OK" to connect to add-ons.wesnoth.org.
-Select the add-on you want to install from the list and click "OK". The download will commence immediately. Wesnoth will then automatically install and load the add-on so you can use it. Remember that not all add-ons are campaigns!</p>
-<p>Note: Hover over the type field to see an explanation of the type and over an icon to see the description of the add-on.</p>
-""")
-    if url:
-        w("""<p>PS: If you really have to download an add-on from here uncompress it to the <a href="http://www.wesnoth.org/wiki/EditingWesnoth#Where_is_my_user_data_directory.3F">userdata</a>/data/add-ons/ directory for wesnoth to find it.
-""")
+
+<div id="content">
+    <h1>Wesnoth %(server_name)s Add-ons List</h1>
+
+    <p>To install add-ons using the in-game client, choose “Add-ons” from the main menu, and click “Connect” to connect to the add-ons server. Pick the add-on you want to install from the list and click the “+” icon — the download will commence immediately and the add-on will be automatically installed once finished. Bear in mind that not all add-ons are singleplayer campaigns!</p>
+'''
+
+WESMERE_DOWNLOAD_HELP = '''\
+    <p><strong>If</strong> you really need or would prefer to download add-ons from this web page instead of using the built-in client, use a compatible program to uncompress the full contents of the <code class="noframe">tar.bz2</code> file — including the subfolder named after the add-on — to the <code class="noframe">data/add-ons/</code> folder in your game’s <a href="https://wiki.wesnoth.org/EditingWesnoth#The_user_data_directory">user data folder</a>. The add-on will be recognized next time you launch Wesnoth or press F5 on the main menu.</p>
+
+    <p><b>Tip:</b> Hover over the type field to see an explanation of the add-on type and over an icon to see a description for the add-on.</p>
+'''
+
+WESMERE_FOOTER = '''\
+</div> <!-- end content -->
+
+</div> <!-- end main -->
+
+<div id="footer-sep"></div>
+
+<div id="footer"><div id="footer-content"><div>
+	<a href="https://wiki.wesnoth.org/StartingPoints">Site Map</a> &#8226; <a href="https://status.wesnoth.org/">Site Status</a><br />
+	Copyright &copy; 2003&ndash;2018 by <a rel="author" href="https://wiki.wesnoth.org/Project">The Battle for Wesnoth Project</a>.<br />
+	Site design Copyright &copy; 2017&ndash;2018 by Iris Morelle.
+</div></div></div>
+</body>
+</html>
+'''
+
+ADDON_TYPES_INFO = {
+    "scenario": {
+        "short": "Scenario",
+        "long": "Singleplayer scenario",
+        "help": "After install the scenario will show up in the list you get when choosing “Campaign” in the main menu. (Basically it is just a campaign with only one scenario.)",
+    },
+    "campaign": {
+        "short": "Campaign",
+        "long": "Singleplayer campaign",
+        "help": "After install the campaign will show up in the list you get when choosing “Campaign” in the main menu.",
+    },
+    "campaign_sp_mp": {
+        "short": "SP/MP Campaign",
+        "long": "Single/multiplayer campaign",
+        "help": "After install the campaign will show up both in the list you get when choosing “Campaign” in the main menu, and in the map list in the multiplayer “Create Game” dialog.",
+    },
+    "campaign_mp": {
+        "short": "MP Campaign",
+        "long": "Multiplayer campaign",
+        "help": "After install the first scenario of the campaign will be available in the map list in the multiplayer “Create Game” dialog.",
+    },
+    "scenario_mp": {
+        "short": "MP Scenario",
+        "long": "Multiplayer scenario",
+        "help": "After install the scenario will be available in the map list in the multiplayer “Create Game” dialog.",
+    },
+    "map_pack": {
+        "short": "MP Map Pack",
+        "long": "Multiplayer map pack",
+        "help": "After install the maps/scenarios will be available in the map list in the multiplayer “Create Game” dialog.",
+    },
+    "era": {
+        "short": "MP Era",
+        "long": "Multiplayer era",
+        "help": "After install the included era(s) will be available in the multiplayer “Create Game” dialog.",
+    },
+    "faction": {
+        "short": "MP Faction",
+        "long": "Multiplayer faction",
+        "help": "Usually comes with an era or is a dependency of another add-on.",
+    },
+    "mod_mp": {
+        "short": "Modification",
+        "long": "Modification",
+        "help": "After install the included gameplay modification(s) will be available when choosing “Campaign” in the main menu, and in the multiplayer “Create Game” dialog.",
+    },
+    "media": {
+        "short": "Resources",
+        "long": "Miscellaneous content/media",
+        "help": "Unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) dependency of another add-on.",
+    },
+}
+
+
+def htmlescape(text, quote=True):
+    """Escape any HTML special characters in the given string."""
+    if text is None:
+        return text
+    return html.escape(text, quote)
+
+def urlencode(text):
+    """
+    Encode the given string to ensure it only contains valid URL characters
+    (also known as percent-encoding).
+    """
+    if text is None:
+        return text
+    return urllib.parse.quote(text, encoding='utf-8')
+
+def output(path, url, datadir, data):
+    """Write the HTML index of add-ons into the specified directory."""
+    try:
+        os.mkdir(path)
+    except OSError:
+        pass
+
+    outfile = open(path + "/index.html", "w")
+
+    def w(line):
+        outfile.write(line + "\n")
 
     am_dir = os.path.dirname(__file__) + "/"
-    for name in ["style.css", "jquery.js", "tablesorter.js",
-        "asc.gif", "bg.gif", "desc.gif"]:
-        Popen(["cp", "-u", am_dir + name, path])
-
-    campaigns = data.get_or_create_sub("campaigns")
-    w("<table class=\"tablesorter\" id=\"campaigns\">")
-    w("<thead>")
-    w("<tr>")
-    for header in ["Type", "Icon", "Addon", "Size", "Traffic", "Date", "Notes"]:
-        w("<th>%s&nbsp;&nbsp;&nbsp;</th>" % header)
-    w("</tr>")
-    w("</thead>")
-    w("<tbody>")
-    root_dir = am_dir + "../../../"
+    root_dir = datadir + "/" if datadir is not None else am_dir + "../../../"
     images_to_tc = []
-    for campaign in campaigns.get_all("campaign"):
-        v = campaign.get_text_val
-        translations = campaign.get_all("translation")
-        languages = [x.get_text_val("language") for x in translations]
-        w("<tr>")
-        icon = v("icon", "")
+
+    # Copy required HTML assets into the destination dir.
+    for filename in HTML_RESOURCES:
+        Popen(["cp", "-u", am_dir + filename, path])
+
+    server_name = os.path.basename(path)
+    if server_name == "1.9":
+        # 1.9 became the 1.10 add-ons server. Reflect that here.
+        server_name = "1.10"
+    elif server_name == "trunk":
+        server_name = "Testing (Trunk)"
+
+    w(WESMERE_HEADER % {
+        "css_version": WESMERE_CSS_VERSION,
+        "css_prefix": WESMERE_CSS_PREFIX,
+        "server_name": server_name,
+    })
+    if url:
+        w(WESMERE_DOWNLOAD_HELP)
+
+    w('<table class="tablesorter" id="campaigns">\n<thead>\n<tr>')
+    table_headers = [
+        ("type", "Type"),
+        ("icon", "Icon"),
+        ("name", "Addon"),
+        ("size", "Size"),
+        ("stats", "Traffic"),
+        ("date", "Date"),
+        ("locales", "Translations")
+    ]
+    for header_class, header_label in table_headers:
+        w('<th class="addon-%s">%s&nbsp;&nbsp;&nbsp;</th>' % (header_class, header_label))
+    w('</tr>\n</thead>\n<tbody>')
+
+    addons = data.get_all(tag="campaigns")[0]
+    for addon in addons.get_all(tag="campaign"):
+        v = addon.get_text_val
+
+        addon_id = v("name") # Escaped as part of a path composition later on.
+        title = htmlescape(v("title", "unknown"))
+        size = float(v("size", "0")) # bytes
+        display_size = size / (1024 * 1024) # MiB
+        addon_type = htmlescape(v("type", "none"))
+        version = htmlescape(v("version", "unknown"))
+        author = htmlescape(v("author", "unknown"))
+        feedback_url = v("feedback_url", None) # Escaped by a function call.
+
+        icon = htmlescape(v("icon", ""))
+        description = htmlescape(v('description', '(no description)'))
         imgurl = ""
+
+        downloads = int(v("downloads", "0"))
+        uploads = int(v("uploads", "0"))
+        timestamp = int(v("timestamp", "0"))
+        display_ts = time.strftime("%b %d %Y", time.localtime(timestamp))
+
+        translations = addon.get_all(tag="translation")
+        languages = [x.get_text_val("language") for x in translations]
+
         if icon:
             icon = icon.strip()
-            tilde = icon.find("~")
-            if tilde >= 0: icon = icon[:tilde]
-            if "\\" in icon: icon = icon.replace("\\", "/")
-            try: os.mkdir(path + "/icons")
-            except OSError: pass
-            if "." not in icon: icon += ".png"
-            src = root_dir + icon
-            imgurl = "icons/" + os.path.basename(icon)
-            if not os.path.exists(src):
-                src = root_dir + "data/core/images/" + icon
-            if not os.path.exists(src):
-                src = root_dir + "images/" + icon
-            if not os.path.exists(src):
-                src = glob.glob(root_dir + "data/campaigns/*/images/" + icon)
-                if src: src = src[0]
-                if not src or not os.path.exists(src):
-                    sys.stderr.write("Cannot find icon " + icon + "\n")
-                    src = root_dir + "images/misc/missing-image.png"
-                    imgurl = "icons/missing-image.png"
-            images_to_tc.append( (src, path + "/" + imgurl) )
+            uri_manifest = re.match('^data:(image/(?:png|jpeg));base64,', icon)
 
-        type = v("type", "none")
-        size = float(v("size", "0"))
-        name = v("title", "unknown")
-        if type == "scenario":
-            w("""\
-<td>Scenario<div class="type"><b>single player scenario</b><br/>
-After install the scenario will show up in the list you get when choosing "Campaign" in the main menu. (Basically it's just a campaign with only one scenario.)</div></td>""")
-        elif type == "campaign":
-            w("""\
-<td>Campaign<div class="type"><b>single player campaign</b><br/>
-After install the campaign will show up in the list you get when choosing "Campaign" in the main menu.</div></td>""")
-        elif type == "campaign_sp_mp":
-            w("""\
-<td>SP/SP Campaign<div class="type"><b>single/multi player campaign</b><br />
-After install the campaign will show up both in the list you get when choosing "Campaign" in the main menu, and in the map list in the multiplayer "Create Game" dialog.</div></td>""")
-        elif type == "campaign_mp":
-            w("""\
-<td>MP Campaign<div class="type"><b>multiplayer campaign</b><br/>
-After install the first scenario of the campaign will be available in the map list in the multiplayer "Create Game" dialog.</div></td>""")
-        elif type == "scenario_mp":
-            w("""\
-<td>MP Scenario<div class="type"><b>multiplayer scenario</b><br/>
-After install the scenario will be available in the map list in the multiplayer "Create Game" dialog.</div></td>""")
-        elif type == "map_pack":
-            w("""\
-<td>MP map-pack<div class="type"><b>multiplayer map pack</b><br/>
-After install the maps/scenarios will be available in the map list in the multiplayer "Create Game" dialog.</div></td>""")
-        elif type == "era":
-            w("""\
-<td>MP era<div class="type"><b>multiplayer era</b><br/>
-After install the included era(s) will be available in the multiplayer "Create Game" dialog.</div></td>""")
-        elif type == "faction":
-            w("""\
-<td>MP faction<div class="type"><b>multiplayer faction</b><br/>
-Usually comes with an era or is dependency of another add-on.</div></td>""")
-        elif type == "mod_mp":
-            w("""\
-<td>MP modification<div class="type"><b>multiplayer modification</b><br />
-After install the included MP gameplay modification(s) will be available in the multiplayer "Create Game" dialog.</div></td>""")
-        elif type == "media":
-            w("""\
-<td>Resources<div class="type"><b>miscellaneous content/media</b><br/>
-Unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) dependency of another add-on.</div></td>""")
-        else: w(('<td>%s</td>') % type)
-        w(('<td><img alt="%s" src="%s" width="72px" height="72px"/>'
-            ) % (icon, imgurl))
-        described = v("description", "(no description)")
-        if described != "(no description)":
-            described = re.sub(r'(?<![">])http://([\w/=%~-]|[.?&]\w)+', r'<a href="\g<0>">\g<0></a>', described)
-            described = re.sub(r'(?<![\w>"/])(forums?|r|R|wiki)\.wesnoth\.org([\w/=%~-]|[.?&]\w)*', r'<a href="http://\g<0>">\g<0></a>', described)
-        w('<div class="desc"><b>%s</b><pre>%s</pre></div></td>' % (
-            name, described))
-        w("<td><b>%s</b><br/>" % name)
-        w("Version: %s<br/>" % v("version", "unknown"))
-        w("Author: %s</td>" % v("author", "unknown"))
-        MiB = 1024 * 1024
-        w("<td><span class=\"hidden\">%d</span><b>%.2f</b>MiB" % (size, size / MiB))
-        if url:
-            link = url.rstrip("/") + "/" + v("name") + ".tar.bz2"
-            w("<br/><a href=\"%s\">download</a></td>" % link)
+            if uri_manifest:
+                if uri_manifest.group(1) not in ('image/png', 'image/jpeg'):
+                    sys.stderr.write("Data URI icon using unsupported content type " + uri_manifest.group(1))
+                else:
+                    imgurl = icon
+            else:
+                tilde = icon.find("~")
+                if tilde >= 0:
+                    icon = icon[:tilde]
+                if "\\" in icon:
+                    icon = icon.replace("\\", "/")
+                try:
+                    os.mkdir(path + "/icons")
+                except OSError:
+                    pass
+                if "." not in icon:
+                    icon += ".png"
+                src = root_dir + icon
+                imgurl = "icons/" + os.path.basename(icon)
+                if not os.path.exists(src):
+                    src = root_dir + "data/core/images/" + icon
+                if not os.path.exists(src):
+                    src = root_dir + "images/" + icon
+                if not os.path.exists(src):
+                    src = glob.glob(root_dir + "data/campaigns/*/images/" + icon)
+                    if src:
+                        src = src[0]
+                    if not src or not os.path.exists(src):
+                        sys.stderr.write("Cannot find icon " + icon + "\n")
+                        src = root_dir + "images/misc/missing-image.png"
+                        imgurl = "icons/missing-image.png"
+                images_to_tc.append((src, path + "/" + imgurl))
+
+        w('<tr>')
+
+        w('<td class="addon-type">')
+        if addon_type in ADDON_TYPES_INFO:
+            w('%(short)s<div class="type-tooltip"><b>%(long)s</b><br/>%(help)s</div>' \
+                % ADDON_TYPES_INFO[addon_type])
         else:
-            w("</td>")
-        downloads = int(v("downloads", "0"))
-        w("<td><b>%d</b> down<br/>" % (downloads))
-        w("%s up</td>" % v("uploads", "unknown"))
-        timestamp = int(v("timestamp", "0"))
-        t = time.localtime(timestamp)
-        w("<td><span class=\"hidden\">%d</span>%s</td>" % (timestamp,
-            time.strftime("%b %d %Y", t)))
-        w("<td>%s</td>" % (", ".join(languages)))
-        w("</tr>")
-    w("</tbody>")
-    w("</table>")
+            w(addon_type)
+        w('</td>')
 
-    w("""\
-</div>
-<div id="footer">
-<p><a href="http://www.wesnoth.org/wiki/Site_Map">Site map</a></p>
-<p><a href="http://www.wesnoth.org/wiki/Wesnoth:Copyrights">Copyright</a> &copy; 2003-2014 The Battle for Wesnoth</p>
-<p>Supported by <a href="http://www.jexiste.fr/">Jexiste</a></p>
-</div>
-</body></html>""")
+        w(('<td class="addon-icon"><img alt="" src="%s"/>'
+           '<div class="desc-tooltip"><b>%s</b><pre>%s</pre></div></td>') % (
+               imgurl, title, description))
+
+        def make_icon_button(url, label, icon):
+            w(('<a href="{0}" title="{1}">'
+               '<i class="fa fa-fw fa-2x fa-{2}" aria-hidden="true"></i>'
+               '<span class="sr-only">{1}</span></a>').format(
+                    htmlescape(url), htmlescape(label), icon))
+
+        w('<td class="addon"><span hidden>%s</span>' % title)
+        if url or feedback_url:
+            w('<span class="addon-download">')
+            if feedback_url:
+                make_icon_button(feedback_url, "Forum topic", "comment")
+            if url:
+                link = url.rstrip("/") + "/" + urlencode(addon_id) + ".tar.bz2"
+                make_icon_button(link, "Download", "download")
+            w('</span>')
+        w(('<b>%s</b><br/>'
+           '<span class="addon-meta"><span class="addon-meta-label">Version:</span> %s<br/>'
+           '<span class="addon-meta-label">Author:</span> %s</span></td>') % (
+               title, version, author))
+
+        w("<td><span hidden>%d</span><b>%.2f</b>&nbsp;MiB</td>" % (size, display_size))
+
+        w("<td><b>%d</b> down<br/>%s up</td>" % (downloads, uploads))
+
+        w('<td><span hidden>%d</span>%s</td>' % (timestamp, display_ts))
+
+        w("<td>%s</td>" % htmlescape(", ".join(languages), quote=False))
+
+        w("</tr>")
+
+    w('</tbody>\n</table>')
+    w(WESMERE_FOOTER)
+
     sys.stderr.write("Done outputting html, now generating %d TC'ed images\n" % len(images_to_tc))
     for pair in images_to_tc:
-        Popen([os.path.join(am_dir, "../unit_tree/TeamColorizer"), pair[0], pair[1]]).wait() # wait() to ensure only one process is exists at any time
+        # wait() to ensure only one process exists at any time
+        Popen([os.path.join(am_dir, "../unit_tree/TeamColorizer"), pair[0], pair[1]]).wait()
+
+# kate: indent-mode normal; encoding utf-8; space-indent on;

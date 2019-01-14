@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,19 +17,18 @@
  *  Replay control code.
  */
 
-#ifndef REPLAY_H_INCLUDED
-#define REPLAY_H_INCLUDED
+#pragma once
 
-#include "config.hpp"
-#include "map_location.hpp"
+#include "map/location.hpp"
 
+#include <ctime>
 #include <deque>
+#include <iterator>
 #include <map>
 #include <set>
-class game_display;
+class replay_recorder_base;
 class terrain_label;
-class unit_map;
-class play_controller;
+class config;
 struct time_of_day;
 
 class chat_msg {
@@ -37,28 +36,24 @@ public:
 	const std::string &text() const { return text_; }
 	const std::string &nick() const { return nick_; }
 	const std::string &color() const { return color_; }
-	const time_t &time() const { return time_; }
+	const std::time_t &time() const { return time_; }
 	chat_msg(const config &cfg);
 	virtual ~chat_msg();
 private:
 	std::string color_;
 	std::string nick_;
 	std::string text_;
-	time_t time_;
+	std::time_t time_;
 };
 
 class replay
 {
 public:
-	replay();
-	explicit replay(const config& cfg);
+	explicit replay(replay_recorder_base& base);
 
-	void append(const config& cfg);
-
-	void set_skip(bool skip);
-	bool is_skipping() const;
 
 	void add_start();
+	void add_surrender(int side_number);
 	void add_countdown_update(int value,int team);
 
 	void add_synced_command(const std::string& name, const config& command);
@@ -76,17 +71,20 @@ public:
 	void add_label(const terrain_label*);
 	void clear_labels(const std::string&, bool);
 	void add_rename(const std::string& name, const map_location& loc);
-	void end_turn();
+	void end_turn(int next_player_number);
 	void add_unit_checksum(const map_location& loc,config& cfg);
-	void add_checksum_check(const map_location& loc);
 	void add_log_data(const std::string &key, const std::string &var);
 	void add_log_data(const std::string &category, const std::string &key, const std::string &var);
 	void add_log_data(const std::string &category, const std::string &key, const config& c);
 
-
-	void add_chat_message_location();
+	/**
+		adds a chat message if it wasn't added yet.
+		@returns true if a message location was added
+	*/
+	bool add_chat_message_location();
+	bool add_chat_message_location(int pos);
 	void speak(const config& cfg);
-	const std::vector<chat_msg>& build_chat_log();
+	const std::vector<chat_msg>& build_chat_log() const;
 
 	//get data range will get a range of moves from the replay system.
 	//if data_type is 'ALL_DATA' then it will return all data in this range
@@ -96,20 +94,19 @@ public:
 	//undoable data includes moves such as placing a label or speaking, which is
 	//ignored by the undo system.
 	enum DATA_TYPE { ALL_DATA, NON_UNDO_DATA };
-	config get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type=ALL_DATA);
-	config get_last_turn(int num_turns=1);
-	const config& get_replay_data() const { return cfg_; }
+	config get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type=ALL_DATA) const;
 
 	void undo();
 	/*
 		undoes the last move and puts it into given config to be reone with redo
-		this is good, because even undoable commands can have dependent commands, which would otherwise get lost causing oos.
+		The retuned config also contains the depended commands for that user action.
+		This is needed be because we also want to readd those dependent commands to the replay when redoing the command.
 	*/
 	void undo_cut(config& dst);
 	/*
 		puts the given config which was cut with undo_cut back in the replay.
 	*/
-	void redo(const config& dst);
+	void redo(const config& dst, bool set_to_end = false);
 
 	void start_replay();
 	void revert_action();
@@ -118,8 +115,7 @@ public:
 	bool at_end() const;
 	void set_to_end();
 
-	void clear();
-	bool empty();
+	bool empty() const;
 
 	enum MARK_SENT { MARK_AS_UNSENT, MARK_AS_SENT };
 	void add_config(const config& cfg, MARK_SENT mark=MARK_AS_UNSENT);
@@ -132,11 +128,12 @@ public:
 		returns true if a [start] was added.
 	*/
 	bool add_start_if_not_there_yet();
+	void delete_upcoming_commands();
 private:
 
-	void add_chat_log_entry(const config &speak, std::back_insert_iterator< std::vector<chat_msg> > &i) const;
+	void add_chat_log_entry(const config &speak, std::back_insert_iterator< std::vector<chat_msg>> &i) const;
 
-	config &command(int);
+	config &command(int) const;
 	void remove_command(int);
 	/** Adds a new empty command to the command list at the end.
 	 *
@@ -149,24 +146,18 @@ private:
 	 * @return a reference to the added command
 	 */
 	config& add_nonundoable_command();
-	config cfg_;
-	int pos_;
-
-	bool skip_;
-
+	replay_recorder_base* base_;
 	std::vector<int> message_locations;
 };
-
-replay& get_replay_source();
-
-extern replay recorder;
 
 enum REPLAY_RETURN
 {
 	REPLAY_RETURN_AT_END,
 	REPLAY_FOUND_DEPENDENT,
 	REPLAY_FOUND_END_TURN,
-	REPLAY_FOUND_END_MOVE
+	REPLAY_FOUND_INIT_TURN,
+	REPLAY_FOUND_END_MOVE,
+	REPLAY_FOUND_END_LEVEL
 };
 //replays up to one turn from the recorder object
 //returns true if it got to the end of the turn without data running out
@@ -186,54 +177,3 @@ private:
 	replay& obj_;
 	int upto_;
 };
-
-namespace mp_sync {
-
-/**
- * Interface for querying local choices.
- * It has to support querying the user and making a random choice
- */
-struct user_choice
-{
-	virtual ~user_choice() {}
-	virtual config query_user(int side) const = 0;
-	virtual config random_choice(int side) const = 0;
-	///whether the choice is visible for the user like an advacement choice
-	///a non-visible choice is for example get_global_variable
-	virtual bool is_visible() const { return true; }
-};
-
-/**
- * Performs a choice for WML events.
- *
- * The choice is synchronized across all the multiplayer clients and
- * stored into the replay. The function object is called if the local
- * client is responsible for making the choice.
- * otherwise this function waits for a remote choice and returns it when it is received.
- * information about the choice made is saved in replay with dependent=true
- *
- * @param name Tag used for storing the choice into the replay.
- * @param side The number of the side responsible for making the choice.
- *             If zero, it defaults to the currently active side.
- *
- * @note In order to prevent issues with sync, crash, or infinite loop, a
- *       number of precautions must be taken when getting a choice from a
- *       specific side.
- *       - The server must recognize @name replay commands as legal from
- *         non-active players. Preferably the server should be notified
- *         about which player the data is expected from, and discard data
- *         from unexpected players.
- */
-config get_user_choice(const std::string &name, const user_choice &uch,
-	int side = 0);
-/**
- * Performs a choice for mutiple sides for WML events.
- * uch is called on all sies specified in sides, this in done simulaniously on all those sides (or one after another if one client controlls mutiple sides)
- * and after all calls are executed the results are returned.
- */
-std::map<int, config> get_user_choice_multiple_sides(const std::string &name, const user_choice &uch,
-	std::set<int> sides);
-
-}
-
-#endif

@@ -1,9 +1,9 @@
-local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local M = wesnoth.map
 
 local ca_swarm_move = {}
 
-function ca_swarm_move:evaluation(ai, cfg)
+function ca_swarm_move:evaluation(cfg)
     local units = wesnoth.get_units { side = wesnoth.current.side }
     for _,unit in ipairs(units) do
         if (unit.moves > 0) then return cfg.ca_score end
@@ -12,7 +12,7 @@ function ca_swarm_move:evaluation(ai, cfg)
     return 0
 end
 
-function ca_swarm_move:execution(ai, cfg)
+function ca_swarm_move:execution(cfg)
     local enemy_distance = cfg.enemy_distance or 5
     local vision_distance = cfg.vision_distance or 12
 
@@ -27,9 +27,9 @@ function ca_swarm_move:execution(ai, cfg)
         end
     end
 
-    local enemies = wesnoth.get_units {
-        { "filter_side", { { "enemy_of", {side = wesnoth.current.side } } } }
-    }
+    local enemies = AH.get_attackable_enemies()
+
+    local avoid_map = AH.get_avoid_map(ai, wml.get_child(cfg, "avoid"), true)
 
     -- Pick one unit at random, swarm does not move systematically
     local unit = units[math.random(#units)]
@@ -41,32 +41,32 @@ function ca_swarm_move:execution(ai, cfg)
         -- Only units within 'vision_distance' count for rejoining
         local close_units_no_moves = {}
         for _,unit_noMP in ipairs(units_no_moves) do
-            if (H.distance_between(unit.x, unit.y, unit_noMP.x, unit_noMP.y) <= vision_distance) then
+            if (M.distance_between(unit.x, unit.y, unit_noMP.x, unit_noMP.y) <= vision_distance) then
                 table.insert(close_units_no_moves, unit_noMP)
             end
         end
 
         -- If all units on the side have moves left, simply go to a hex far away
         if (not close_units_no_moves[1]) then
-            rating = rating + H.distance_between(x, y, unit.x, unit.y)
+            rating = rating + M.distance_between(x, y, unit.x, unit.y)
         else  -- Otherwise, minimize distance from units that have already moved
             for _,close_unit in ipairs(close_units_no_moves) do
-                rating = rating - H.distance_between(x, y, close_unit.x, close_unit.y)
+                rating = rating - M.distance_between(x, y, close_unit.x, close_unit.y)
             end
         end
 
         -- We also try to stay out of attack range of any enemy
         for _,enemy in ipairs(enemies) do
-            local dist = H.distance_between(x, y, enemy.x, enemy.y)
+            local dist = M.distance_between(x, y, enemy.x, enemy.y)
             if (dist < enemy_distance) then
                 rating = rating - (enemy_distance - dist) * 10.
             end
         end
 
         return rating
-    end)
+    end, { avoid_map = avoid_map })
 
-    AH.movefull_stopunit(ai, unit, best_hex)
+    AH.movefull_stopunit(ai, unit, best_hex or { unit.x, unit.y })
 end
 
 return ca_swarm_move

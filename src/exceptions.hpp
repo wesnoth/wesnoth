@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2010 - 2014 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2010 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -11,8 +11,10 @@
 
    See the COPYING file for more details.
 */
-#ifndef EXCEPTIONS_HPP_INCLUDED
-#define EXCEPTIONS_HPP_INCLUDED
+
+#pragma once
+
+#include "global.hpp"
 
 #include <exception>
 #include <string>
@@ -30,14 +32,12 @@ struct error : std::exception
 
 	error() : message() {}
 	error(const std::string &msg) : message(msg) {}
-	~error() throw() {}
+	~error() noexcept {}
 
-	const char *what() const throw()
+	const char *what() const noexcept
 	{
 		return message.c_str();
 	}
 };
 
 }
-
-#endif

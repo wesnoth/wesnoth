@@ -1,7 +1,8 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local messenger_next_waypoint = wesnoth.require "ai/micro_ais/cas/ca_messenger_f_next_waypoint.lua"
+local best_attack
 
 local function messenger_find_enemies_in_way(messenger, goal_x, goal_y)
     -- Returns the first unit on or next to the path of the messenger
@@ -9,7 +10,7 @@ local function messenger_find_enemies_in_way(messenger, goal_x, goal_y)
     -- @goal_x,@goal_y: coordinates of the goal toward which the messenger moves
     -- Returns proxy table for the first unit found, or nil if none was found
 
-    local path, cost = wesnoth.find_path(messenger, goal_x, goal_y, { ignore_units = true })
+    local path, cost = AH.find_path_with_shroud(messenger, goal_x, goal_y, { ignore_units = true })
     if cost >= 42424242 then return end
 
     -- The second path hex is the first that is important for the following analysis
@@ -17,20 +18,16 @@ local function messenger_find_enemies_in_way(messenger, goal_x, goal_y)
 
     -- Is there an enemy unit on the second path hex?
     -- This would be caught by the adjacent hex check later, but not in the right order
-    local enemy = wesnoth.get_units { x = path[2][1], y = path[2][2],
-        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
-    }[1]
-    if enemy then return enemy end
+    local enemy = wesnoth.get_unit(path[2][1], path[2][2])
+    if AH.is_attackable_enemy(enemy) then return enemy end
 
     -- After that, go through adjacent hexes of all the other path hexes
     for i = 2,#path do
-        local sub_path, sub_cost = wesnoth.find_path(messenger, path[i][1], path[i][2], { ignore_units = true })
+        local sub_path, sub_cost = AH.find_path_with_shroud(messenger, path[i][1], path[i][2], { ignore_units = true })
         if (sub_cost <= messenger.moves) then
             for xa,ya in H.adjacent_tiles(path[i][1], path[i][2]) do
-                local enemy = wesnoth.get_units { x = xa, y = ya,
-                    { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
-                }[1]
-                if enemy then return enemy end
+                local enemy = wesnoth.get_unit(xa, ya)
+                if AH.is_attackable_enemy(enemy) then return enemy end
             end
         else  -- If we've reached the end of the path for this turn
             return
@@ -48,18 +45,17 @@ local function messenger_find_clearing_attack(messenger, goal_x, goal_y, cfg)
     local enemy_in_way = messenger_find_enemies_in_way(messenger, goal_x, goal_y)
     if (not enemy_in_way) then return end
 
-
-    local filter = cfg.filter or { id = cfg.id }
+    local filter = wml.get_child(cfg, "filter") or { id = cfg.id }
     local units = AH.get_units_with_attacks {
         side = wesnoth.current.side,
         { "not", filter },
-        { "and", cfg.filter_second }
+        { "and", wml.get_child(cfg, "filter_second") }
     }
     if (not units[1]) then return end
 
     local attacks = AH.get_attacks(units, { simulate_combat = true })
 
-    local max_rating, best_attack = -9e99
+    local max_rating = - math.huge
     for _,attack in ipairs(attacks) do
         if (attack.target.x == enemy_in_way.x) and (attack.target.y == enemy_in_way.y) then
 
@@ -82,7 +78,7 @@ local function messenger_find_clearing_attack(messenger, goal_x, goal_y, cfg)
 
         -- Give a huge bonus for closeness to enemy_in_way
         local tmp_defender = wesnoth.get_unit(attack.target.x, attack.target.y)
-        local dist = H.distance_between(enemy_in_way.x, enemy_in_way.y, tmp_defender.x, tmp_defender.y)
+        local dist = wesnoth.map.distance_between(enemy_in_way.x, enemy_in_way.y, tmp_defender.x, tmp_defender.y)
 
         rating = rating + 100. / dist
 
@@ -96,7 +92,7 @@ end
 
 local ca_messenger_attack = {}
 
-function ca_messenger_attack:evaluation(ai, cfg, self)
+function ca_messenger_attack:evaluation(cfg)
     -- Attack units in the path of the messengers
 
     local messenger, x, y = messenger_next_waypoint(cfg)
@@ -105,23 +101,15 @@ function ca_messenger_attack:evaluation(ai, cfg, self)
     local attack = messenger_find_clearing_attack(messenger, x, y, cfg)
 
     if attack then
-        self.data.ME_best_attack = attack
         return cfg.ca_score
     end
 
     return 0
 end
 
-function ca_messenger_attack:execution(ai, cfg, self)
-    local attacker = wesnoth.get_unit(self.data.ME_best_attack.src.x, self.data.ME_best_attack.src.y)
-    local defender = wesnoth.get_unit(self.data.ME_best_attack.target.x, self.data.ME_best_attack.target.y)
-
-    AH.movefull_stopunit(ai, attacker, self.data.ME_best_attack.dst.x, self.data.ME_best_attack.dst.y)
-    if (not attacker) or (not attacker.valid) then return end
-    if (not defender) or (not defender.valid) then return end
-
-    AH.checked_attack(ai, attacker, defender)
-    self.data.ME_best_attack = nil
+function ca_messenger_attack:execution(cfg)
+    AH.robust_move_and_attack(ai, best_attack.src, best_attack.dst, best_attack.target)
+    best_attack = nil
 end
 
 return ca_messenger_attack

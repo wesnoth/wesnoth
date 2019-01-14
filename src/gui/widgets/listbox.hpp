@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,46 +12,56 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_LISTBOX_HPP_INCLUDED
-#define GUI_WIDGETS_LISTBOX_HPP_INCLUDED
-
-#ifndef GUI2_EXPERIMENTAL_LISTBOX
+#pragma once
 
 #include "gui/widgets/generator.hpp"
 #include "gui/widgets/scrollbar_container.hpp"
 
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
+
+#include <boost/dynamic_bitset.hpp>
+#include <functional>
+
 namespace gui2
 {
+// ------------ WIDGET -----------{
 
+class selectable_item;
 namespace implementation
 {
-struct tbuilder_listbox;
-struct tbuilder_horizontal_listbox;
+struct builder_listbox;
+struct builder_horizontal_listbox;
+struct builder_grid_listbox;
+struct builder_styled_widget;
 }
 
 /** The listbox class. */
-class tlistbox : public tscrollbar_container
+class listbox : public scrollbar_container
 {
-	friend struct implementation::tbuilder_listbox;
-	friend struct implementation::tbuilder_horizontal_listbox;
-	friend class tdebug_layout_graph;
+	friend struct implementation::builder_listbox;
+	friend struct implementation::builder_horizontal_listbox;
+	friend struct implementation::builder_grid_listbox;
+	friend class debug_layout_graph;
 
 public:
 	/**
 	 * Constructor.
 	 *
-	 * @param has_minimum         Does the listbox need to have one item
-	 *                            selected.
-	 * @param has_maximum         Can the listbox only have one item
-	 *                            selected.
+	 * @param builder             The builder for the appropriate listbox variant.
 	 * @param placement           How are the items placed.
-	 * @param select              Select an item when selected, if false it
-	 *                            changes the visible state instead.
+	 * @param list_builder        Grid builder for the listbox definition grid.
+	 * @param has_minimum         Does the listbox need to have one item selected.
+	 * @param has_maximum         Can the listbox only have one item selected.
+	 * @param select              Select an item when selected. If false it changes
+	 *                            the visible state instead. Default true.
 	 */
-	tlistbox(const bool has_minimum,
-			 const bool has_maximum,
-			 const tgenerator_::tplacement placement,
-			 const bool select);
+	listbox(const implementation::builder_styled_widget& builder,
+			const generator_base::placement placement,
+			builder_grid_ptr list_builder,
+			const bool has_minimum,
+			const bool has_maximum,
+			const bool select = true);
 
 	/***** ***** ***** ***** Row handling. ***** ***** ****** *****/
 	/**
@@ -64,7 +74,7 @@ public:
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */
-	void add_row(const string_map& item, const int index = -1);
+	grid& add_row(const string_map& item, const int index = -1);
 
 	/**
 	 * Adds single row to the grid.
@@ -83,8 +93,7 @@ public:
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */
-	void add_row(const std::map<std::string /* widget id */, string_map>& data,
-				 const int index = -1);
+	grid& add_row(const std::map<std::string /* widget id */, string_map>& data, const int index = -1);
 
 	/**
 	 * Removes a row in the listbox.
@@ -132,7 +141,16 @@ public:
 	 *                            be equal to the number of items in the
 	 *                            listbox.
 	 */
-	void set_row_shown(const std::vector<bool>& shown);
+	void set_row_shown(const boost::dynamic_bitset<>& shown);
+
+	/**
+	 * Returns a list of visible rows
+	 *
+	 * @returns                   A mask indicating which rows are visible
+	 */
+	boost::dynamic_bitset<> get_rows_shown() const;
+
+	bool any_rows_shown() const;
 
 	/**
 	 * Returns the grid of the wanted row.
@@ -146,7 +164,7 @@ public:
 	 *                            to make sure the row is a valid row.
 	 * @returns                   The grid of the wanted row.
 	 */
-	const tgrid* get_row_grid(const unsigned row) const;
+	const grid* get_row_grid(const unsigned row) const;
 
 	/**
 	 * The possibly-giving-problems nonconst version of get_row_grid
@@ -155,36 +173,71 @@ public:
 	 *                            to make sure the row is a valid row.
 	 * @returns                   The grid of the wanted row.
 	 */
-	tgrid* get_row_grid(const unsigned row);
+	grid* get_row_grid(const unsigned row);
 
 	/**
-	 * Selectes a row.
+	 * Selects a row.
 	 *
 	 * @param row                 The row to select.
 	 * @param select              Select or deselect the row.
+	 * @returns                   True if the operation succeeded.
 	 */
 	bool select_row(const unsigned row, const bool select = true);
 
 	/**
+	 * Does exactly as advertised: selects the list's last row.
+	 *
+	 * @param select              Select or deselect the row.
+	 */
+	bool select_last_row(const bool select = true)
+	{
+		return select_row(get_item_count() - 1, select);
+	}
+
+	/**
+	 * Selects a row at the given position, regardless of sorting order.
+	 *
+	 * When using @ref select_row the relevant row is located by index regardless
+	 * of its actual position in the list, which could differ if the list had been
+	 * sorted. In that case, `select_row(0)` would not select the list's first row
+	 * as displayed.
+	 *
+	 * This function allows row selection based on position. `select_row_at(0)` will
+	 * always select the list's first row, regardless of sorting order.
+	 *
+	 * @param row                 The row to select.
+	 * @param select              Select or deselect the row.
+	 *
+	 * @returns                   True if the operation succeeded.
+	 */
+	bool select_row_at(const unsigned row, const bool select = true);
+
+	/**
+	 * Check if a row is selected
+	 * @param row                 The row to test
+	 * @returns                   True if it is selected.
+	 */
+	bool row_selected(const unsigned row);
+
+	/**
 	 * Returns the first selected row
 	 *
-	 * @returns                   The first selected row.
-	 * @retval -1                 No row selected.
+	 * @returns                   The first selected row, or -1 if no row is selected.
 	 */
 	int get_selected_row() const;
 
 	/** Function to call after the user clicked on a row. */
-	void list_item_clicked(twidget& caller);
+	void list_item_clicked(widget& caller);
 
-	/** See @ref tcontainer_::set_self_active. */
-	virtual void set_self_active(const bool active) OVERRIDE;
+	/** See @ref container_base::set_self_active. */
+	virtual void set_self_active(const bool active) override;
 
 	/**
 	 * Request to update the size of the content after changing the content.
 	 *
 	 * When a resize is required the container first can try to handle it
 	 * itself. If it can't honor the request the function will call @ref
-	 * twindow::invalidate_layout().
+	 * window::invalidate_layout().
 	 *
 	 * @note Calling this function on a widget with size == (0, 0) results
 	 * false but doesn't call invalidate_layout, the engine expects to be in
@@ -197,51 +250,91 @@ public:
 
 	/***** ***** ***** ***** inherited ***** ***** ****** *****/
 
-	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
+	/** See @ref widget::place. */
+	virtual void place(const point& origin, const point& size) override;
 
-	/** See @ref twidget::layout_children. */
-	virtual void layout_children() OVERRIDE;
+	/** See @ref widget::layout_children. */
+	virtual void layout_children() override;
 
-	/** See @ref twidget::child_populate_dirty_list. */
-	virtual void
-	child_populate_dirty_list(twindow& caller,
-							  const std::vector<twidget*>& call_stack) OVERRIDE;
+	/** See @ref widget::child_populate_dirty_list. */
+	virtual void child_populate_dirty_list(window& caller, const std::vector<widget*>& call_stack) override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
-	void
-	set_callback_item_change(const boost::function<void(size_t)>& callback)
+
+	void order_by(const generator_base::order_func& func);
+
+	void set_column_order(unsigned col, const generator_sort_array& func);
+
+	template<typename Func>
+	void register_sorting_option(const int col, const Func& f)
 	{
-		callback_item_changed_ = callback;
+		set_column_order(col, {{
+			[f](int lhs, int rhs) { return f(lhs) < f(rhs); },
+			[f](int lhs, int rhs) { return f(lhs) > f(rhs); }
+		}});
 	}
 
-	void
-	set_callback_value_change(const boost::function<void(twidget&)>& callback)
-	{
-		callback_value_changed_ = callback;
-	}
+	using translatable_sorter_func_t = std::function<std::string(const int)>;
 
-	void set_list_builder(tbuilder_grid_ptr list_builder)
+	/** Registers a special sorting function specifically for translatable values. */
+	void register_translatable_sorting_option(const int col, translatable_sorter_func_t f);
+
+	enum SORT_ORDER {
+		SORT_NONE,
+		SORT_ASCENDING,
+		SORT_DESCENDING,
+	};
+
+	using order_pair = std::pair<int, SORT_ORDER>;
+
+	/**
+	 * Sorts the listbox by a pre-set sorting option. The corresponding header widget will also be toggled.
+	 * The sorting option should already have been registered by @ref listbox::register_sorting_option().
+	 *
+	 * @param sort_by         Pair of column index and sort direction. The column (first arguemnt)
+	 *                        argument will be sorted in the specified direction (second argument)
+	 *
+	 * @param select_first    If true, the first row post-sort will be selected. If false (default),
+	 *                        the selected row will be maintained post-sort  as per standard sorting
+	 *                        functionality.
+	 */
+	void set_active_sorting_option(const order_pair& sort_by, const bool select_first = false);
+
+	const order_pair get_active_sorting_option();
+
+	/** Deactivates all sorting toggle buttons at the top, making the list look like it's not sorted. */
+	void mark_as_unsorted();
+
+	/** Registers a callback to be called when the active sorting option changes. */
+	void set_callback_order_change(std::function<void(unsigned, SORT_ORDER)> callback)
 	{
-		list_builder_ = list_builder;
+		callback_order_change_ = callback;
 	}
 
 protected:
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
-	/** Inherited from tscrollbar_container. */
-	void handle_key_up_arrow(SDLMod modifier, bool& handled);
+	/** Inherited from scrollbar_container. */
+	void handle_key_up_arrow(SDL_Keymod modifier, bool& handled) override;
 
-	/** Inherited from tscrollbar_container. */
-	void handle_key_down_arrow(SDLMod modifier, bool& handled);
+	/** Inherited from scrollbar_container. */
+	void handle_key_down_arrow(SDL_Keymod modifier, bool& handled) override;
 
-	/** Inherited from tscrollbar_container. */
-	void handle_key_left_arrow(SDLMod modifier, bool& handled);
+	/** Inherited from scrollbar_container. */
+	void handle_key_left_arrow(SDL_Keymod modifier, bool& handled) override;
 
-	/** Inherited from tscrollbar_container. */
-	void handle_key_right_arrow(SDLMod modifier, bool& handled);
+	/** Inherited from scrollbar_container. */
+	void handle_key_right_arrow(SDL_Keymod modifier, bool& handled) override;
 
 private:
+	/** See @ref widget::calculate_best_size. */
+	virtual point calculate_best_size() const override;
+
+	enum KEY_SCROLL_DIRECTION { KEY_VERTICAL, KEY_HORIZONTAL };
+
+	/** Helper to update visible area after a key event. */
+	void update_visible_area_on_key_event(const KEY_SCROLL_DIRECTION direction);
+
 	/**
 	 * @todo A listbox must have the following config parameters in the
 	 * instantiation:
@@ -256,7 +349,6 @@ private:
 	 * For now it's always fixed width depending on the first row.
 	 */
 
-
 	/**
 	 * Finishes the building initialization of the widget.
 	 *
@@ -264,38 +356,29 @@ private:
 	 * @param footer              Builder for the footer.
 	 * @param list_data           The initial data to fill the listbox with.
 	 */
-	void finalize(tbuilder_grid_const_ptr header,
-				  tbuilder_grid_const_ptr footer,
-				  const std::vector<string_map>& list_data);
+	void finalize(builder_grid_const_ptr header,
+			builder_grid_const_ptr footer,
+			const std::vector<std::map<std::string, string_map>>& list_data);
 	/**
 	 * Contains a pointer to the generator.
 	 *
 	 * The pointer is not owned by this class, it's stored in the content_grid_
-	 * of the tscrollbar_container super class and freed when it's grid is
+	 * of the scrollbar_container super class and freed when it's grid is
 	 * freed.
 	 */
-	tgenerator_* generator_;
+	generator_base* generator_;
+
+	const bool is_horizontal_;
 
 	/** Contains the builder for the new items. */
-	tbuilder_grid_const_ptr list_builder_;
-
-	/**
-	 * This callback is called when a list item is clicked (toggled).
-	 *
-	 * The function is passed the index of the toggled item.
-	 */
-	boost::function<void(size_t)> callback_item_changed_;
-
-	/**
-	 * This callback is called when the value in the listbox changes.
-	 *
-	 * @todo the implementation of the callback hasn't been tested a lot and
-	 * there might be too many calls. That might happen if an arrow up didn't
-	 * change the selected item.
-	 */
-	boost::function<void(twidget&)> callback_value_changed_;
+	builder_grid_const_ptr list_builder_;
 
 	bool need_layout_;
+
+	typedef std::vector<std::pair<selectable_item*, generator_sort_array>> torder_list;
+	torder_list orders_;
+
+	std::function<void(unsigned, SORT_ORDER)> callback_order_change_;
 
 	/**
 	 * Resizes the content.
@@ -313,7 +396,9 @@ private:
 	 *                            * positive values increase height.
 	 */
 	void resize_content(const int width_modification,
-						const int height_modification);
+			const int height_modification,
+			const int width__modification_pos = -1,
+			const int height_modification_pos = -1);
 
 	/**
 	 * Resizes the content.
@@ -322,19 +407,120 @@ private:
 	 *
 	 * @param row                 The new row added to the listbox.
 	 */
-	void resize_content(const twidget& row);
+	void resize_content(const widget& row);
 
 	/** Layouts the children if needed. */
 	void layout_children(const bool force);
 
-	/** Inherited from tscrollbar_container. */
-	virtual void set_content_size(const tpoint& origin, const tpoint& size);
+	/** Inherited from scrollbar_container. */
+	virtual void set_content_size(const point& origin, const point& size) override;
 
-	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
+	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
+	virtual const std::string& get_control_type() const override;
+
+	void order_by_column(unsigned column, widget& widget);
 };
 
-} // namespace gui2
+// }---------- DEFINITION ---------{
 
-#endif
-#endif
+struct listbox_definition : public styled_widget_definition
+{
+	explicit listbox_definition(const config& cfg);
+
+	struct resolution : public resolution_definition
+	{
+		explicit resolution(const config& cfg);
+
+		builder_grid_ptr grid;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+struct builder_listbox : public builder_styled_widget
+{
+	explicit builder_listbox(const config& cfg);
+
+	using builder_styled_widget::build;
+
+	widget* build() const;
+
+	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
+
+	builder_grid_ptr header;
+	builder_grid_ptr footer;
+
+	builder_grid_ptr list_builder;
+
+	/**
+	 * Listbox data.
+	 *
+	 * Contains a vector with the data to set in every cell, it's used to
+	 * serialize the data in the config, so the config is no longer required.
+	 */
+	std::vector<std::map<std::string, string_map>> list_data;
+
+	bool has_minimum_, has_maximum_;
+};
+
+struct builder_horizontal_listbox : public builder_styled_widget
+{
+	explicit builder_horizontal_listbox(const config& cfg);
+
+	using builder_styled_widget::build;
+
+	widget* build() const;
+
+	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
+
+	builder_grid_ptr list_builder;
+
+	/**
+	 * Listbox data.
+	 *
+	 * Contains a vector with the data to set in every cell, it's used to
+	 * serialize the data in the config, so the config is no longer required.
+	 */
+	std::vector<std::map<std::string, string_map>> list_data;
+
+	bool has_minimum_, has_maximum_;
+};
+
+struct builder_grid_listbox : public builder_styled_widget
+{
+	explicit builder_grid_listbox(const config& cfg);
+
+	using builder_styled_widget::build;
+
+	widget* build() const;
+
+	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
+
+	builder_grid_ptr list_builder;
+
+	/**
+	 * Listbox data.
+	 *
+	 * Contains a vector with the data to set in every cell, it's used to
+	 * serialize the data in the config, so the config is no longer required.
+	 */
+	std::vector<std::map<std::string, string_map>> list_data;
+
+	bool has_minimum_, has_maximum_;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
+
+} // namespace gui2

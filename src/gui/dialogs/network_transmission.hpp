@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2011 - 2014 by Sergey Popov <loonycyborg@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2011 - 2018 by Sergey Popov <loonycyborg@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,19 +12,19 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_NETWORK_RECEIVE_HPP_INCLUDED
-#define GUI_DIALOGS_NETWORK_RECEIVE_HPP_INCLUDED
+#pragma once
 
-#include "gui/dialogs/dialog.hpp"
-#include "gui/widgets/control.hpp"
-#include "network_asio.hpp"
-#include <boost/optional.hpp>
 #include "events.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
+#include "network_asio.hpp"
+#include "wesnothd_connection.hpp"
+
+#include <boost/optional.hpp>
 
 namespace gui2
 {
-
-class tnetwork_transmission;
+namespace dialogs
+{
 
 /**
  * Dialog that tracks network transmissions
@@ -32,44 +32,49 @@ class tnetwork_transmission;
  * It shows upload/download progress and allows the user
  * to cancel the transmission.
  */
-class tnetwork_transmission : public tdialog
+class network_transmission : public modal_dialog
 {
-	network_asio::connection& connection_;
+public:
+	/** A wrapper of either a wesnothd_connection or a network_asio::connection. */
+	class connection_data
+	{
+	public:
+		virtual std::size_t total() { return 0; }
+		virtual std::size_t current() { return 0; }
+		virtual bool finished() = 0;
+		virtual void cancel() = 0;
+		virtual void poll() = 0;
+		virtual ~connection_data() {}
+	};
 
-	bool track_upload_;
+private:
+	connection_data* connection_;
 
 	class pump_monitor : public events::pump_monitor
 	{
-		network_asio::connection& connection_;
-		bool& track_upload_;
+	public:
+		connection_data*& connection_;
 		virtual void process(events::pump_info&);
 
-	public:
-		pump_monitor(network_asio::connection& connection, bool& track_upload)
-			: connection_(connection), track_upload_(track_upload), window_()
+		pump_monitor(connection_data*& connection)
+			: connection_(connection), window_()
 		{
 		}
 
-		boost::optional<twindow&> window_;
+		boost::optional<window&> window_;
 	} pump_monitor_;
 
 public:
-	tnetwork_transmission(network_asio::connection& connection,
+	network_transmission(connection_data& connection,
 						  const std::string& title,
 						  const std::string& subtitle);
 
-	void set_subtitle(const std::string&);
-	void set_track_upload(bool track_upload)
-	{
-		track_upload_ = track_upload;
-	}
-
 protected:
-	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
+	/** Inherited from modal_dialog. */
+	virtual void pre_show(window& window) override;
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	virtual void post_show(window& window) override;
 
 private:
 	/**
@@ -80,10 +85,9 @@ private:
 	 */
 	std::string subtitle_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
+	virtual const std::string& window_id() const override;
 };
 
+} // namespace dialogs
 } // namespace gui2
-
-#endif

@@ -1,6 +1,6 @@
 /*
- Copyright (C) 2010 - 2014 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -16,11 +16,10 @@
  * @file
  */
 
-#ifndef WB_RECALL_HPP_
-#define WB_RECALL_HPP_
+#pragma once
 
 #include "action.hpp"
-#include "map_location.hpp"
+#include "map/location.hpp"
 
 namespace wb
 {
@@ -28,8 +27,8 @@ namespace wb
 class recall: public action
 {
 public:
-	recall(size_t team_index, bool hidden, const unit& unit, const map_location& recall_hex);
-	recall(config const&, bool hidden); // For deserialization
+	recall(std::size_t team_index, bool hidden, const unit& unit, const map_location& recall_hex);
+	recall(const config&, bool hidden); // For deserialization
 	virtual ~recall();
 
 	virtual std::ostream& print(std::ostream& s) const;
@@ -63,6 +62,7 @@ public:
 
 	/** @return pointer to a copy of the recall unit. */
 	virtual unit_ptr get_unit() const { return temp_unit_; }
+	virtual bool places_new_unit() const { return true; }
 	/** @return pointer to the fake unit used only for visuals */
 	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
 
@@ -72,8 +72,8 @@ public:
 
 protected:
 
-	boost::shared_ptr<recall> shared_from_this() {
-		return boost::static_pointer_cast<recall>(action::shared_from_this());
+	std::shared_ptr<recall> shared_from_this() {
+		return std::static_pointer_cast<recall>(action::shared_from_this());
 	}
 
 private:
@@ -82,14 +82,17 @@ private:
 	virtual void do_hide();
 	virtual void do_show();
 
+	// This is the pointer to the real recall unit.
 	unit_ptr temp_unit_;
 	map_location recall_hex_;
 	fake_unit_ptr fake_unit_;
+	
+	int original_mp_;
+	int original_ap_;
+	int original_recall_pos_;
 };
 
 std::ostream& operator<<(std::ostream& s, recall_ptr recall);
 std::ostream& operator<<(std::ostream& s, recall_const_ptr recall);
 
 }
-
-#endif /* WB_RECALL_HPP_ */

@@ -17,11 +17,16 @@ def CheckCPlusPlus(context, gcc_version = None):
         multipliers = (10000, 100, 1)
         version_num = sum(map(operator.mul, version, multipliers))
         test_program += """
+        #ifndef __clang__
+
         #define GCC_VERSION (__GNUC__ * 10000 \\
                            + __GNUC_MINOR__ * 100 \\
                            + __GNUC_PATCHLEVEL__)
+
         #if GCC_VERSION < %d
         #error Compiler version is too old!
+        #endif
+
         #endif
         \n""" % version_num
     message += "... "
@@ -33,4 +38,19 @@ def CheckCPlusPlus(context, gcc_version = None):
         context.Result("no")
         return False
 
-config_checks = { "CheckCPlusPlus" : CheckCPlusPlus }
+def CheckFortifySource(context):
+    message = "Checking whether compiler has built-in -D_FORTIFY_SOURCE... "
+    test_program = """
+    #ifndef _FORTIFY_SOURCE
+    #error _FORTIFY_SOURCE not defined
+    #endif
+    """
+    context.Message(message)
+    if context.TryBuild(context.env.Object, test_program, ".c") == 1:
+        context.Result("yes")
+        return True
+    else:
+        context.Result("no")
+        return False
+
+config_checks = { "CheckCPlusPlus" : CheckCPlusPlus, "CheckFortifySource" : CheckFortifySource }

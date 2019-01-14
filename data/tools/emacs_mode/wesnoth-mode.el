@@ -1429,7 +1429,7 @@ END is the end of the region searched."
   (interactive)
   (let ((target
 	 (if (fboundp 'next-overlay-change)
-  	     (save-excursion
+         (save-excursion
 	       (end-of-line)
 	       (wesnoth-locate-warning (next-overlay-change (point))
 				       (point-min)

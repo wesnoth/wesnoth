@@ -1,13 +1,16 @@
 /*
+** $Id: lmem.c,v 1.91.1.1 2017/04/19 17:20:42 roberto Exp $
 ** Interface to Memory Manager
 ** See Copyright Notice in lua.h
 */
 
-
-#include <stddef.h>
-
 #define lmem_c
 #define LUA_CORE
+
+#include "lprefix.h"
+
+
+#include <stddef.h>
 
 #include "lua.h"
 
@@ -23,15 +26,15 @@
 /*
 ** About the realloc function:
 ** void * frealloc (void *ud, void *ptr, size_t osize, size_t nsize);
-** (`osize' is the old size, `nsize' is the new size)
+** ('osize' is the old size, 'nsize' is the new size)
 **
-** * frealloc(ud, NULL, x, s) creates a new block of size `s' (no
+** * frealloc(ud, NULL, x, s) creates a new block of size 's' (no
 ** matter 'x').
 **
-** * frealloc(ud, p, x, 0) frees the block `p'
+** * frealloc(ud, p, x, 0) frees the block 'p'
 ** (in this specific case, frealloc must return NULL);
 ** particularly, frealloc(ud, NULL, 0, 0) does nothing
-** (which is equivalent to free(NULL) in ANSI C)
+** (which is equivalent to free(NULL) in ISO C)
 **
 ** frealloc returns NULL if it cannot create or reallocate the area
 ** (any reallocation to an equal or smaller size cannot fail!)
@@ -82,9 +85,8 @@ void *luaM_realloc_ (lua_State *L, void *block, size_t osize, size_t nsize) {
 #endif
   newblock = (*g->frealloc)(g->ud, block, osize, nsize);
   if (newblock == NULL && nsize > 0) {
-    api_check(L, nsize > realosize,
-                 "realloc cannot fail when shrinking a block");
-    if (g->gcrunning) {
+    lua_assert(nsize > realosize);  /* cannot fail when shrinking a block */
+    if (g->version) {  /* is state fully built? */
       luaC_fullgc(L, 1);  /* try to free some memory... */
       newblock = (*g->frealloc)(g->ud, block, osize, nsize);  /* try again */
     }
@@ -93,22 +95,6 @@ void *luaM_realloc_ (lua_State *L, void *block, size_t osize, size_t nsize) {
   }
   lua_assert((nsize == 0) == (newblock == NULL));
   g->GCdebt = (g->GCdebt + nsize) - realosize;
-#if defined(TRACEMEM)
-  { /* auxiliary patch to monitor garbage collection.
-    ** To plot, gnuplot with following command:
-    ** plot TRACEMEM using 1:2 with lines, TRACEMEM using 1:3 with lines
-    */
-    static unsigned long total = 0;  /* our "time" */
-    static FILE *f = NULL;  /* output file */
-    total++;  /* "time" always grows */
-    if ((total % 200) == 0) {
-      if (f == NULL) f = fopen(TRACEMEM, "w");
-      fprintf(f, "%lu %u %d %d\n", total,
-              gettotalbytes(g), g->GCdebt, g->gcstate * 10000);
-    }
-  }
-#endif
-
   return newblock;
 }
 

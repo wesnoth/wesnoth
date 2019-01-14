@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -11,16 +11,13 @@
 
    See the COPYING file for more details.
 */
-#ifndef BUTTON_H_INCLUDED
-#define BUTTON_H_INCLUDED
+
+#pragma once
 
 #include "widget.hpp"
 
-#include "../exceptions.hpp"
+#include "exceptions.hpp"
 
-#ifdef SDL_GPU
-#include "sdl/image.hpp"
-#endif
 
 namespace gui {
 
@@ -34,6 +31,7 @@ public:
     };
 
 	enum TYPE { TYPE_PRESS, TYPE_CHECK, TYPE_TURBO, TYPE_IMAGE, TYPE_RADIO };
+	TYPE get_type() const { return type_; }
 
 	enum SPACE_CONSUMPTION { DEFAULT_SPACE, MINIMUM_SPACE };
 
@@ -75,18 +73,10 @@ private:
 
 	std::string label_text_;
 
-#ifdef SDL_GPU
-	sdl::timage label_image_;
-	sdl::timage image_, pressedImage_, activeImage_, pressedActiveImage_,
-		touchedImage_, disabledImage_, pressedDisabledImage_,
-		overlayImage_, overlayPressedImage_, overlayPressedDisabledImage_, overlayDisabledImage_,
-		overlayActiveImage_;
-#else
 	surface image_, pressedImage_, activeImage_, pressedActiveImage_,
 		touchedImage_, disabledImage_, pressedDisabledImage_,
 		overlayImage_, overlayPressedImage_, overlayPressedDisabledImage_, overlayDisabledImage_,
 		overlayActiveImage_;
-#endif
 	SDL_Rect textRect_;
 
 	enum STATE { UNINIT, NORMAL, ACTIVE, PRESSED, PRESSED_ACTIVE, TOUCHED_NORMAL, TOUCHED_PRESSED };
@@ -105,5 +95,3 @@ private:
 }; //end class button
 
 }
-
-#endif

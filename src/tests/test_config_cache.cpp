@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Pauli Nieminen <paniemin@cc.hut.fi>
-   Part of thie Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -21,11 +21,11 @@
 #include "config.hpp"
 #include "game_config.hpp"
 #include "language.hpp"
-#include "version.hpp"
+#include "game_version.hpp"
 
-#include "tests/utils/game_config_manager.hpp"
+#include "tests/utils/game_config_manager_tests.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 
 static preproc_map setup_test_preproc_map()
@@ -317,4 +317,3 @@ BOOST_AUTO_TEST_CASE( test_performance )
 
 /* vim: set ts=4 sw=4: */
 BOOST_AUTO_TEST_SUITE_END()
-

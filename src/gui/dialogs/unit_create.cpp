@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Ignacio R. Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,41 +16,32 @@
 
 #include "gui/dialogs/unit_create.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
-#include "gui/auxiliary/log.hpp"
-#include "gui/dialogs/helper.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
+#include "gui/auxiliary/find_widget.hpp"
+#include "gui/core/log.hpp"
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/button.hpp"
+#include "gui/widgets/image.hpp"
+#include "gui/widgets/label.hpp"
+#include "gui/widgets/grid.hpp"
+#include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
+#include "gui/widgets/unit_preview_pane.hpp"
 #include "gui/widgets/window.hpp"
-#include "unit_types.hpp"
-#include "utils/foreach.tpp"
+#include "help/help.hpp"
+#include "gettext.hpp"
+#include "play_controller.hpp"
+#include "units/types.hpp"
 
-namespace
-{
+#include "utils/functional.hpp"
+#include <boost/dynamic_bitset.hpp>
+
 static std::string last_chosen_type_id = "";
 static unit_race::GENDER last_gender = unit_race::MALE;
 
-/**
- * Helper function for updating the male/female checkboxes.
- * It's not a private member of class gui2::tunit_create so
- * we don't have to expose a forward-declaration of ttoggle_button
- * in the interface.
- */
-void update_male_female_toggles(gui2::ttoggle_button& male,
-								gui2::ttoggle_button& female,
-								unit_race::GENDER choice)
-{
-	male.set_value(choice == unit_race::MALE);
-	female.set_value(choice == unit_race::FEMALE);
-}
-}
-
 namespace gui2
+{
+namespace dialogs
 {
 
 /*WIKI
@@ -72,10 +63,10 @@ namespace gui2
  * unit_type_list & & listbox & m &
  *         Listbox displaying existing unit types sorted by name and race. $
  *
- * -unit_type & & control & m &
+ * -unit_type & & styled_widget & m &
  *         Widget which shows the unit type name label. $
  *
- * -race & & control & m &
+ * -race & & styled_widget & m &
  *         Widget which shows the unit race name label. $
  *
  * @end{table}
@@ -83,109 +74,202 @@ namespace gui2
 
 REGISTER_DIALOG(unit_create)
 
-tunit_create::tunit_create()
-	: gender_(last_gender), choice_(last_chosen_type_id), type_ids_()
+unit_create::unit_create()
+	: gender_(last_gender)
+	, choice_(last_chosen_type_id)
+	, last_words_()
 {
+	set_restore(true);
 }
 
-void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
+void unit_create::pre_show(window& window)
 {
-	ttoggle_button& male_toggle
-			= find_widget<ttoggle_button>(&window, "male_toggle", false);
-	ttoggle_button& female_toggle
-			= find_widget<ttoggle_button>(&window, "female_toggle", false);
-	tlistbox& list = find_widget<tlistbox>(&window, "unit_type_list", false);
+	toggle_button& male_toggle
+			= find_widget<toggle_button>(&window, "male_toggle", false);
+	toggle_button& female_toggle
+			= find_widget<toggle_button>(&window, "female_toggle", false);
 
-	male_toggle.set_callback_state_change(
-			dialog_callback<tunit_create,
-							&tunit_create::gender_toggle_callback>);
-	female_toggle.set_callback_state_change(
-			dialog_callback<tunit_create,
-							&tunit_create::gender_toggle_callback>);
-	update_male_female_toggles(male_toggle, female_toggle, gender_);
+	gender_toggle.add_member(&male_toggle, unit_race::MALE);
+	gender_toggle.add_member(&female_toggle, unit_race::FEMALE);
+
+	gender_toggle.set_member_states(last_gender);
+
+	gender_toggle.set_callback_on_value_change(
+		std::bind(&unit_create::gender_toggle_callback, this));
+
+	listbox& list = find_widget<listbox>(&window, "unit_type_list", false);
+
+	text_box* filter
+			= find_widget<text_box>(&window, "filter_box", false, true);
+
+	filter->set_text_changed_callback(
+			std::bind(&unit_create::filter_text_changed, this, _1, _2));
+
+	window.keyboard_capture(filter);
+	window.add_to_keyboard_chain(&list);
+
+	connect_signal_notify_modified(list, std::bind(&unit_create::list_item_clicked, this, std::ref(window)));
+
 	list.clear();
 
-	// We use this container to "map" unit_type ids to list subscripts
-	// later, so it ought to be empty before proceeding.
-	type_ids_.clear();
-
-	FOREACH(const AUTO & i, unit_types.types())
+	for(const auto & i : unit_types.types())
 	{
-		if(i.second.do_not_list())
-			continue;
-
 		// Make sure this unit type is built with the data we need.
-		unit_types.build_unit_type(i.second, unit_type::HELP_INDEXED);
+		unit_types.build_unit_type(i.second, unit_type::FULL);
 
-		// And so we map an unit_type id to a list subscript. Ugh.
-		type_ids_.push_back(i.first);
+		units_.push_back(&i.second);
 
 		std::map<std::string, string_map> row_data;
 		string_map column;
 
-		column["label"] = i.second.type_name();
-		row_data.insert(std::make_pair("unit_type", column));
-		column["label"] = i.second.race()->plural_name();
-		row_data.insert(std::make_pair("race", column));
+		column["label"] = units_.back()->race()->plural_name();
+		row_data.emplace("race", column);
+
+		column["label"] = units_.back()->type_name();
+		row_data.emplace("unit_type", column);
 
 		list.add_row(row_data);
 
 		// Select the previous choice, if any.
-		if(choice_.empty() != true && choice_ == i.first) {
-			list.select_row(list.get_item_count() - 1);
+		if(!choice_.empty() && choice_ == i.first) {
+			list.select_last_row();
 		}
 	}
 
-	if(type_ids_.empty()) {
+	if(units_.empty()) {
 		ERR_GUI_G << "no unit types found for unit create dialog; not good"
 				  << std::endl;
 	}
+
+	list.register_translatable_sorting_option(0, [this](const int i) { return (*units_[i]).race()->plural_name().str(); });
+	list.register_translatable_sorting_option(1, [this](const int i) { return (*units_[i]).type_name().str(); });
+
+	// Select the first entry on sort if no previous selection was provided.
+	list.set_active_sorting_option({0, listbox::SORT_ASCENDING}, choice_.empty());
+
+	list_item_clicked(window);
 }
 
-void tunit_create::post_show(twindow& window)
+void unit_create::post_show(window& window)
 {
-	ttoggle_button& female_toggle
-			= find_widget<ttoggle_button>(&window, "female_toggle", false);
-	tlistbox& list = find_widget<tlistbox>(&window, "unit_type_list", false);
+	listbox& list = find_widget<listbox>(&window, "unit_type_list", false);
 
 	choice_ = "";
 
-	if(get_retval() != twindow::OK) {
+	if(get_retval() != retval::OK) {
 		return;
 	}
 
 	const int selected_row = list.get_selected_row();
 	if(selected_row < 0) {
 		return;
-	} else if(static_cast<size_t>(selected_row) >= type_ids_.size()) {
+	} else if(static_cast<std::size_t>(selected_row) >= units_.size()) {
 		// FIXME: maybe assert?
 		ERR_GUI_G << "unit create dialog has more list items than known unit "
 					 "types; not good\n";
 		return;
 	}
 
-	last_chosen_type_id = choice_
-			= type_ids_[static_cast<size_t>(selected_row)];
-	last_gender = gender_ = female_toggle.get_value() ? unit_race::FEMALE
-													  : unit_race::MALE;
+	last_chosen_type_id = choice_ = units_[selected_row]->id();
+	last_gender = gender_;
 }
 
-void tunit_create::gender_toggle_callback(twindow& window)
+void unit_create::update_displayed_type() const
 {
-	ttoggle_button& male_toggle
-			= find_widget<ttoggle_button>(&window, "male_toggle", false);
-	ttoggle_button& female_toggle
-			= find_widget<ttoggle_button>(&window, "female_toggle", false);
+	window* w = get_window();
 
-	// TODO Ye olde ugly hack for the lack of radio buttons.
+	const int selected_row
+		= find_widget<listbox>(w, "unit_type_list", false).get_selected_row();
 
-	if(gender_ == unit_race::MALE) {
-		gender_ = female_toggle.get_value() ? unit_race::FEMALE
-											: unit_race::MALE;
-	} else {
-		gender_ = male_toggle.get_value() ? unit_race::MALE : unit_race::FEMALE;
+	if(selected_row == -1) {
+		return;
 	}
 
-	update_male_female_toggles(male_toggle, female_toggle, gender_);
+	find_widget<unit_preview_pane>(w, "unit_details", false)
+		.set_displayed_type(units_[selected_row]->get_gender_unit_type(gender_));
 }
+
+void unit_create::list_item_clicked(window& window)
+{
+	const int selected_row
+		= find_widget<listbox>(&window, "unit_type_list", false).get_selected_row();
+
+	if(selected_row == -1) {
+		return;
+	}
+
+	update_displayed_type();
+
+	gender_toggle.set_members_enabled([&](const unit_race::GENDER& gender)->bool {
+		return units_[selected_row]->has_gender_variation(gender);
+	});
 }
+
+namespace
+{
+
+bool ci_search(const std::string& a, const std::string& b)
+{
+	return std::search(a.begin(), a.end(),
+	                   b.begin(), b.end(),
+	                   chars_equal_insensitive) != a.end();
+}
+
+} // end unnamed namespace
+
+void unit_create::filter_text_changed(text_box_base* textbox, const std::string& text)
+{
+	window& window = *textbox->get_window();
+
+	listbox& list = find_widget<listbox>(&window, "unit_type_list", false);
+
+	const std::vector<std::string> words = utils::split(text, ' ');
+
+	if(words == last_words_)
+		return;
+	last_words_ = words;
+
+	boost::dynamic_bitset<> show_items;
+	show_items.resize(list.get_item_count(), true);
+
+	if(!text.empty()) {
+		for(unsigned int i = 0; i < list.get_item_count(); i++) {
+			grid* row = list.get_row_grid(i);
+
+			grid::iterator it = row->begin();
+			label& type_label
+					= find_widget<label>(*it, "unit_type", false);
+			label& race_label
+					= find_widget<label>(*it, "race", false);
+
+			assert(i < units_.size());
+			const std::string& unit_type_id = units_[i] ? units_[i]->id() : "";
+
+			bool found = false;
+			for(const auto & word : words)
+			{
+				found = ci_search(type_label.get_label().str(), word) ||
+				        ci_search(race_label.get_label().str(), word) ||
+				        ci_search(unit_type_id, word);
+
+				if(!found) {
+					// one word doesn't match, we don't reach words.end()
+					break;
+				}
+			}
+
+			show_items[i] = found;
+		}
+	}
+
+	list.set_row_shown(show_items);
+}
+
+void unit_create::gender_toggle_callback()
+{
+	gender_ = gender_toggle.get_active_member_value();
+
+	update_displayed_type();
+}
+} // namespace dialogs
+} // namespace gui2

@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="wml"
-    nsURI="http://www.wesnoth.org/WML" nsPrefix="wml">
+    nsURI="https://www.wesnoth.org/WML" nsPrefix="wml">
   <eClassifiers xsi:type="ecore:EClass" name="WMLRoot" eSuperTypes="platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLGrammarElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="Expressions" upperBound="-1"
         eType="ecore:EClass platform:/resource/org.wesnoth/src-gen/org/wesnoth/WML.ecore#//WMLRootExpression"

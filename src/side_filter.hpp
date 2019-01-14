@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2010 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2010 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,12 +12,10 @@
    See the COPYING file for more details.
 */
 
-#ifndef SIDE_FILTER_H_INCLUDED
-#define SIDE_FILTER_H_INCLUDED
+#pragma once
 
 #include "variable.hpp"
 
-#include <boost/scoped_ptr.hpp>
 #include <set>
 #include <string>
 #include <vector>
@@ -26,19 +24,12 @@ class config;
 class filter_context;
 class unit;
 class unit_filter;
-class unit_map;
 class team;
 
 //side_filter: a class that implements the Standard Side Filter
 class side_filter {
 public:
 
-#ifdef _MSC_VER
-	// This constructor is required for MSVC 9 SP1 due to a bug there
-	// see http://social.msdn.microsoft.com/forums/en-US/vcgeneral/thread/34473b8c-0184-4750-a290-08558e4eda4e
-	// other compilers don't need it.
-	side_filter();
-#endif
 	~side_filter();
 
 	side_filter(const std::string &side_string, const filter_context * fc, bool flat_tod = false);
@@ -62,12 +53,9 @@ private:
 
 	const filter_context * fc_; //!< The filter context for this filter. It should be a pointer because otherwise the default ctor doesn't work
 
-	mutable boost::scoped_ptr<unit_filter> ufilter_;
-	mutable boost::scoped_ptr<side_filter> allied_filter_;
-	mutable boost::scoped_ptr<side_filter> enemy_filter_;
-        mutable boost::scoped_ptr<side_filter> has_ally_filter_;
-        mutable boost::scoped_ptr<side_filter> has_enemy_filter_;
+	mutable std::unique_ptr<unit_filter> ufilter_;
+	mutable std::unique_ptr<side_filter> allied_filter_;
+	mutable std::unique_ptr<side_filter> enemy_filter_;
+	mutable std::unique_ptr<side_filter> has_ally_filter_;
+	mutable std::unique_ptr<side_filter> has_enemy_filter_;
 };
-
-#endif
-

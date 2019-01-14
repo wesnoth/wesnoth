@@ -13,7 +13,7 @@
 .\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 .\"
 .
-.TH WESNOTH 6 "2013" "wesnoth" "Battle for Wesnoth"
+.TH WESNOTH 6 "2018" "wesnoth" "Battle for Wesnoth"
 .
 .SH NAME
 wesnoth \- Battle for Wesnoth, a turn-based fantasy strategy game
@@ -43,36 +43,73 @@ campaigns, and share them with others.
 .SH OPTIONS
 .
 .TP
-.BI --bpp \ number
-sets BitsPerPixel value. Example:
-.B --bpp 32
+.B --all-translations
+Show all translations in the in-game language selection list,
+even if they are deemed insufficiently complete.
 .TP
-.B -c, --campaign \ [<id_campaign>]
-goes directly to the campaign with id <id_campaign>. A selection menu will appear if no id was specified.
-.B Note:
-When using this switch please ensure that you specify the data directory path as the final argument aswell, otherwise the game will take the campaign/scenario id as the data dir.
+.BI --bunzip2 \ infile.bz2
+decompresses a file which should be in bzip2 format and stores it
+without the .bz2 suffix. The
+.I infile.bz2
+will be removed.
 .TP
-.B --campaign-difficulty [<difficulty>]
-The difficulty of the specified campaign (1 to max). If none specified, the campaign difficulty selection widget will appear.
+.BI --bzip2 \ infile
+compresses a file in bzip2 format, stores it as
+.IR infile .bz2
+and removes
+.IR infile .
 .TP
-.B --campaign-scenario <id_scenario>
+.BI -c[ id_campaign ],\ --campaign[ =id_campaign ]
+goes directly to the campaign with id
+.IR id_campaign .
+A selection menu will appear if no id was specified.
+.TP
+.BI --campaign-difficulty[ =difficulty ]
+The difficulty of the specified campaign (1 to max). If none specified,
+the campaign difficulty selection widget will appear.
+.TP
+.BI --campaign-scenario \ id_scenario
 The id of the scenario from the specified campaign. The default is the first scenario.
 .TP
-.B --data-dir <directory>
+.B --campaign-skip-story
+Skip [story] screens and dialog through the end of the
+.B start
+event.
+.TP
+.B --clock
+Adds the option to show a clock for testing the drawing timer.
+.TP
+.BI --config-dir \ name
+Deprecated, use
+.BR --userdata-dir .
+.TP
+.B --config-path
+Deprecated, use
+.BR --userdata-path .
+.TP
+.BI --core \ id_core
+overrides the loaded core with the one whose id is specified.
+.TP
+.BI --data-dir \ directory
 overrides the data directory with the one specified
 .TP
 .B --data-path
-path the path of the data directory and exits.
+prints the path of the data directory and exits.
 .TP
 .B -d, --debug
 enables additional command mode options in-game
-(see the wiki page at http://www.wesnoth.org/wiki/CommandMode for more information about command mode).
+(see the wiki page at https://www.wesnoth.org/wiki/CommandMode for more
+information about command mode).
 .TP
-.BI -e,\ --editor \ file
+.B --debug-lua
+enables some Lua debugging mechanisms
+.TP
+.BI -e[ file ],\ --editor[ =file ]
 start the in-game map editor directly. If
 .I file
 is specified, equivalent to
-.B -l --load
+.B -l
+.BR --load .
 .TP
 .B --fps
 displays the number of frames per second the game is currently running
@@ -99,8 +136,7 @@ displays a summary of command line options to standard output, and exits.
 .BI -l,\ --load \ file
 loads the savegame
 .I file
-from the standard save game directory.
-If the
+from the standard save game directory. If the
 .B -e
 or
 .B --editor
@@ -108,100 +144,240 @@ option is used as well, starts the editor with the map from
 .I file
 open. If it is a directory, the editor will start with a load map dialog opened there.
 .TP
+.BI -L,\ --language \ lang
+uses language
+.I lang
+(symbol) this session.
+Example:
+.B --language ang_GB@latin
+.TP
 .BI --log- level = domain1 , domain2 , ...
 sets the severity level of the log domains.
 .B all
 can be used to match any log domain. Available levels:
-.BR error ,\  warning ,\  info ,\  debug .
+.BR error ,\  warning ,\  info ,\  debug ,\  none .
 By default the
-.B error
-level is used.
+.B warning
+level is used for most domains, but
+.B deprecation
+defaults to
+.B none
+unless combined with the
+.B -d
+option.
 .TP
-.B --logdomains\ [filter]
+.B --log-precise
+shows the timestamps in the logfile with more precision.
+.TP
+.B --log-strict
+sets the strict level of the logger. Any messages sent to log domains
+of this level or more severe will cause the unit test to fail regardless
+of the victory result. Only relevant when used with
+.BR -u .
+.TP
+.BI --logdomains[ =filter ]
 lists defined log domains (only the ones containing
-.B filter
+.I filter
 if used) and exits
 .TP
-.B --max-fps
+.BI --max-fps \ fps
 the number of frames per second the game can show, the value should be between
-the 1 and 1000, the default is
-.BR 50 .
+.B 1
+and
+.BR 1000 ,
+the default is the monitor's refresh rate.
 .TP
 .B -m, --multiplayer
 runs a multiplayer game. There are additional options that can be used
 together with
 .B --multiplayer
-as explained below. Only these additional options can follow
-.BR --multiplayer .
+as explained below.
 .TP
-.B --no-delay
+.B --mp-test
+load the test mp scenarios.
+.TP
+.B --new-widgets
+there is a new WIP widget toolkit, this option enables it. This is very experimental, don't fill bug reports since most are known. Parts of the library are deemed stable and will work without this switch.
+.TP
+.B --nodelay
 runs the game without any delays for graphic benchmarking. This is automatically enabled by
 .BR --nogui .
+.TP
+.B --noaddons
+disables loading of user addons.
 .TP
 .B --nocache
 disables caching of game data.
 .TP
+.B --nogui
+runs the game without the GUI. Only available in combination with
+.B --multiplayer
+or
+.B --screenshot
+or
+.BR --plugin .
+.TP
 .B --nomusic
 runs the game without music.
+.TP
+.B --noreplaycheck
+don't try to validate replay of unit test. Only relevant when used with
+.BR -u .
 .TP
 .B --nosound
 runs the game without sounds and music.
 .TP
-.B --path
-prints the name of the game data directory and exits.
+.BI --password \ password
+uses
+.I password
+when connecting to a server, ignoring other preferences. Unsafe.
 .TP
-.B -p, --preprocess <source file/folder> <target directory>
-preprocesses a specified file/folder. For each file(s) a plain .cfg file and a processed
- .cfg file will be written in specified target directory. If a folder is specified, it will
-be preprocessed recursively based on the known preprocessor rules. The common macroses
+.BI --plugin \ script
+(experimental) load a
+.I script
+which defines a Wesnoth plugin. Similar to
+.BR --script ,
+but Lua file should return a function which will be run as a coroutine and periodically woken up with updates.
+.TP
+.BI -p,\ --preprocess \ source-file/folder \  target-directory
+preprocesses a specified file/folder. For each file(s) a plain .cfg file and a processed .cfg
+file will be written in specified target directory. If a folder is specified, it will
+be preprocessed recursively based on the known preprocessor rules. The common macros
 from the "data/core/macros" directory will be preprocessed before the specified resources.
 Example:
 .B -p ~/wesnoth/data/campaigns/tutorial ~/result.
 For details regarding the preprocessor visit:
-http://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor
-
+https://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor.
 .TP
-.B --preprocess-defines=DEFINE1,DEFINE2,etc
-comma separated list of defines to be used by the '--preprocess' command. If
+.BI --preprocess-defines= DEFINE1 , DEFINE2 , ...
+comma separated list of defines to be used by the
+.B --preprocess
+command. If
 .B SKIP_CORE
 is in the define list the "data/core" directory won't be preprocessed.
 .TP
-.B --preprocess-input-macros <source file>
-used only by the '--preprocess' command.
-Specifies a file that contains [preproc_define]s to be included before preprocessing.
+.BI --preprocess-input-macros \ source-file
+used only by the
+.B --preprocess
+command. Specifies a file that contains
+.BR [preproc_define] s
+to be included before preprocessing.
 .TP
-.B --preprocess-output-macros [<target file>]
-used only by the '--preprocess' command.
-Will output all preprocessed macros in the target file. If the file is not specified
-the output will be file '_MACROS_.cfg' in the target directory of preprocess's command.
-This switch should be typed before the --preprocess command.
+.BI --preprocess-output-macros[ =target-file ]
+used only by the
+.B --preprocess
+command. Will output all preprocessed macros in the target file. If the file is not specified
+the output will be file '_MACROS_.cfg' in the target directory of preprocess's command. The
+output file can be passed to
+.BR --preprocess-input-macros .
+This switch should be typed before the
+.B --preprocess
+command.
+.TP
+.B --proxy
+enables usage of proxy for network connections.
+.TP
+.BI --proxy-address \ address
+specifies
+.I address
+of the proxy.
+.TP
+.BI --proxy-port \ port
+specifies
+.I port
+of the proxy.
+.TP
+.BI --proxy-user \ username
+specifies
+.I username
+to log in to the proxy.
+.TP
+.BI --proxy-password \ password
+specifies
+.I password
+to log in to the proxy.
 .TP
 .BI -r\  X x Y ,\ --resolution\  X x Y
 sets the screen resolution. Example:
-.B -r 800x600
+.B -r
+.BR 800x600 .
 .TP
-.BI -s,\ --server\ [host]
+.BI --render-image \ image \  output
+takes a valid wesnoth 'image path string' with image path functions, and outputs to a .png file. Image path functions are documented at https://wiki.wesnoth.org/ImagePathFunctionWML.
+.TP
+.BI -R,\ --report
+initializes game directories, prints build information suitable for use in bug reports, and exits.
+.TP
+.BI --rng-seed \ number
+seeds the random number generator with
+.IR number .
+Example:
+.B --rng-seed
+.BR 0 .
+.TP
+.BI --screenshot \ map \  output
+saves a screenshot of
+.I map
+to
+.I output
+without initializing a screen.
+.TP
+.BI --script \ file
+(experimental)
+.I file
+containing a Lua script to control the client.
+.TP
+.BI -s[ host ],\ --server[ =host ]
 connects to the specified host if any, otherwise connect to the first server in preferences. Example:
-.B --server server.wesnoth.org
+.B --server
+.BR server.wesnoth.org .
 .TP
-.BI --username <username>
-uses <username> when connecting to a server, ignoring other preferences.
-.TP
-.BI --password <password>
-uses <password> when connecting to a server, ignoring other preferences. Unsafe.
+.B --showgui
+runs the game with the GUI, overriding any implicit
+.BR --nogui .
 .TP
 .B --strict-validation
 validation errors are treated as fatal errors.
 .TP
-.B -t, --test
-runs the game in a small test scenario.
+.BI -t[ scenario_id ],\ --test[ =scenario_id ]
+runs the game in a small test scenario. The scenario should be one defined with a
+.B [test]
+WML tag. The default is
+.BR test .
+A demonstration of the
+.B [micro_ai]
+feature can be started with
+.BR micro_ai_test .
+Implies
+.BR --nogui .
+.TP
+.BI --translations-over \ percent
+Set the standard for deeming a translation is complete enough to show in the
+in-game language list to
+.IR percent .
+Valid values are 0 to 100.
+.TP
+.BI -u,\ --unit \ scenario-id
+runs the specified test scenario as a unit test. Implies
+.BR --nogui .
+.TP
+.B --unsafe-scripts
+makes the
+.B package
+package available to lua scripts, so that they can load arbitrary packages. Do not do this with untrusted scripts! This action gives lua the same permissions as the wesnoth executable.
+.TP
+.BI -S,--use-schema  \ path
+sets the WML schema for use with
+.BR -V,--validate .
 .TP
 .BI --userconfig-dir \ name
 sets the user configuration directory to
 .I name
 under $HOME or "My Documents\\My Games" for windows.
 You can also specify an absolute path for the configuration directory outside
-the $HOME or "My Documents\\My Games".
+the $HOME or "My Documents\\My Games". On Windows it is also possible to
+specify a directory relative to the process working directory by using path
+starting with ".\\" or "..\\".
 Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth,
 on other systems to the userdata path.
 .TP
@@ -213,10 +389,29 @@ sets the userdata directory to
 .I name
 under $HOME or "My Documents\\My Games" for windows.
 You can also specify an absolute path for the userdata directory outside
-the $HOME or "My Documents\\My Games".
+the $HOME or "My Documents\\My Games". On Windows it is also possible to
+specify a directory relative to the process working directory by using path
+starting with ".\\" or "..\\".
 .TP
 .B --userdata-path
 prints the path of the userdata directory and exits.
+.TP
+.BI --username \ username
+uses
+.I username
+when connecting to a server, ignoring other preferences.
+.TP
+.BI --validate \ path
+validates a file against the WML schema.
+.TP
+.BI --validate-addon \ addon_id
+validates the WML of the given addon as you play.
+.TP
+.B --validate-core
+validates the core WML as you play.
+.TP
+.B --validate-schema \ path
+validates a file as a WML schema.
 .TP
 .B --validcache
 assumes that the cache is valid. (dangerous)
@@ -240,23 +435,26 @@ The side-specific multiplayer options are marked with
 has to be replaced by a side number. It usually is 1 or 2 but depends on
 the number of players possible in the chosen scenario.
 .TP
-.BI --ai_config number = value
+.BI --ai-config \ number : value
 selects a configuration file to load for the AI controller for this side.
 .TP
-.BI --algorithm number = value
+.BI --algorithm \ number : value
 selects a non-standard algorithm to be used by the AI controller for
-this side. Available values:
+this side. The algorithm is defined by an
+.B [ai]
+tag, which can be a core one either in "data/ai/ais" or "data/ai/dev"
+or an algorithm defined by an addon. Available values include:
 .B idle_ai
 and
-.BR sample_ai .
+.BR experimental_ai .
 .TP
-.BI --controller number = value
+.BI --controller \ number : value
 selects the controller for this side. Available values:
 .B human
 and
 .BR ai .
 .TP
-.BI --era= value
+.BI --era \ value
 use this option to play in the selected era instead of the
 .B Default
 era. The era is chosen by an id. Eras are described in the
@@ -264,25 +462,25 @@ era. The era is chosen by an id. Eras are described in the
 file.
 .TP
 .B --exit-at-end
-exits once the scenario is over, without displaying victory/defeat dialog which requires the user to click OK.
+exits once the scenario is over, without displaying victory/defeat dialog which normally requires the user to click End Scenario.
 This is also used for scriptable benchmarking.
 .TP
 .B --ignore-map-settings
 do not use map settings, use default values instead.
 .TP
-.BI --multiplayer-repeat= value
+.BI --label \ label
+sets the
+.I label
+for AIs.
+.TP
+.BI --multiplayer-repeat \ value
 repeats a multiplayer game
 .I value
 times. Best to use with
 .B --nogui
 for scriptable benchmarking.
 .TP
-.B --nogui
-runs the game without the GUI. Must appear before
-.B --multiplayer
-to have the desired effect.
-.TP
-.BI --parm number = name : value
+.BI --parm \ number : name : value
 sets additional parameters for this side. This parameter depends on the
 options used with
 .B --controller
@@ -291,22 +489,35 @@ and
 It should only be useful for people designing their own AI. (not yet
 documented completely)
 .TP
-.BI --scenario= value
+.BI --scenario \ value
 selects a multiplayer scenario by id. The default scenario id is
 .BR multiplayer_The_Freelands .
 .TP
-.BI --side number = value
+.BI --side \ number : value
 selects a faction of the current era for this side. The faction is
 chosen by an id. Factions are described in the data/multiplayer.cfg
 file.
 .TP
-.BI --turns= value
-sets the number of turns for the chosen scenario. The default is
-.BR 50 .
+.BI --turns \ value
+sets the number of turns for the chosen scenario. By default no turn limit is set.
 .
 .SH EXIT STATUS
 .
-Normal exit status is 0. An exit status of 1 indicates an (SDL, video, fonts, etc) initialization error. An exit status of 2 indicates an error with the command line options.
+Normal exit status is 0.
+An exit status of 1 indicates an (SDL, video, fonts, etc) initialization error. An
+exit status of 2 indicates an error with the command line options.
+.br
+When running unit tests
+.RB (with \ -u ),
+the exit status is different. An exit
+status of 0 indicates that the test passed,
+and 1 indicates that the test failed. An exit status of 3 indicates that the test passed, but produced an invalid
+replay file. An exit status of 4 indicates that the test passed, but the replay produced errors. These latter
+two are only returned if
+.B --noreplaycheck
+is not passed. An exit status of 2 indicates that the test timed out, when used with the deprecated
+.B --timeout
+option.
 .
 .SH AUTHOR
 .
@@ -316,15 +527,15 @@ Edited by Nils Kneuper <crazy-ivanovic@gmx.net>, ott <ott@gaon.net> and Soliton 
 .br
 This manual page was originally written by Cyril Bouthors <cyril@bouthors.org>.
 .br
-Visit the official homepage: http://www.wesnoth.org/
+Visit the official homepage: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003-2013 David White <davidnwhite@verizon.net>
+Copyright \(co 2003-2018 David White <davidnwhite@verizon.net>
 .br
 This is Free Software; this software is licensed under the GPL version 2, as published by the Free Software Foundation.
 There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 .
 .SH SEE ALSO
 .
-.BR wesnothd (6).
+.BR wesnothd (6)

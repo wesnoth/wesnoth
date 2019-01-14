@@ -1,7 +1,7 @@
 
 /*
-   Copyright (C) 2009 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,11 +18,10 @@
  * @file
  */
 
-#ifndef AI_COMPOSITE_ENGINE_HPP_INCLUDED
-#define AI_COMPOSITE_ENGINE_HPP_INCLUDED
+#pragma once
 
-#include "component.hpp"
-#include "../contexts.hpp"
+#include "ai/composite/component.hpp"
+#include "ai/contexts.hpp"
 
 #include <algorithm>
 #include <iterator>
@@ -44,37 +43,37 @@ public:
 
 	virtual bool is_ok() const;
 
-	static void parse_aspect_from_config( readonly_context &context, const config &cfg, const std::string &id, std::back_insert_iterator<std::vector< aspect_ptr > > b );
+	static void parse_aspect_from_config( readonly_context &context, const config &cfg, const std::string &id, std::back_insert_iterator<std::vector< aspect_ptr >> b );
 
 
-	static void parse_goal_from_config( readonly_context &context, const config &cfg, std::back_insert_iterator<std::vector< goal_ptr > > b );
+	static void parse_goal_from_config( readonly_context &context, const config &cfg, std::back_insert_iterator<std::vector< goal_ptr >> b );
 
 
-	static void parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b );
+	static void parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr >> b );
 
 
-	static void parse_engine_from_config( readonly_context &context, const config &cfg, std::back_insert_iterator<std::vector< engine_ptr > > b );
+	static void parse_engine_from_config( readonly_context &context, const config &cfg, std::back_insert_iterator<std::vector< engine_ptr >> b );
 
 
-	static void parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr > > b );
+	static void parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr >> b );
 
 
 	//do not override that method in subclasses which cannot create aspects
-	virtual void do_parse_aspect_from_config( const config &cfg, const std::string &id, std::back_insert_iterator< std::vector< aspect_ptr> > b );
+	virtual void do_parse_aspect_from_config( const config &cfg, const std::string &id, std::back_insert_iterator< std::vector< aspect_ptr>> b );
 
 
 	//do not override that method in subclasses which cannot create candidate_actions
-	virtual void do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b );
+	virtual void do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr >> b );
 
 	//do not override that method in subclasses which cannot create goals
-	virtual void do_parse_goal_from_config( const config &cfg, std::back_insert_iterator<std::vector< goal_ptr > > b );
+	virtual void do_parse_goal_from_config( const config &cfg, std::back_insert_iterator<std::vector< goal_ptr >> b );
 
 	//do not override that method in subclasses which cannot create engines
-	virtual void do_parse_engine_from_config( const config &cfg, std::back_insert_iterator<std::vector< engine_ptr > > b );
+	virtual void do_parse_engine_from_config( const config &cfg, std::back_insert_iterator<std::vector< engine_ptr >> b );
 
 
 	//do not override that method in subclasses which cannot create stages
-	virtual void do_parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr > > b );
+	virtual void do_parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr >> b );
 
 	//do not override that method in subclasses which cannot evaluate formulas
 	virtual std::string evaluate(const std::string& str);
@@ -116,14 +115,15 @@ protected:
 class engine_factory;
 
 class engine_factory{
+	bool is_duplicate(const std::string &name);
 public:
-	typedef boost::shared_ptr< engine_factory > factory_ptr;
+	typedef std::shared_ptr< engine_factory > factory_ptr;
 	typedef std::map<std::string, factory_ptr> factory_map;
 	typedef std::pair<const std::string, factory_ptr> factory_map_pair;
 
 	static factory_map& get_list() {
 		static factory_map *engine_factories;
-		if (engine_factories==NULL) {
+		if (engine_factories==nullptr) {
 			engine_factories = new factory_map;
 		}
 		return *engine_factories;
@@ -134,8 +134,11 @@ public:
 
 	engine_factory( const std::string &name )
 	{
+		if (is_duplicate(name)) {
+			return;
+		}
 		factory_ptr ptr_to_this(this);
-		get_list().insert(make_pair(name,ptr_to_this));
+		get_list().emplace(name,ptr_to_this);
 	}
 
 	virtual ~engine_factory() {}
@@ -151,7 +154,7 @@ public:
 	}
 
 	virtual engine_ptr get_new_instance( readonly_context &ai, const config &cfg ){
-		engine_ptr e = engine_ptr(new ENGINE(ai,cfg));
+		engine_ptr e = std::make_shared<ENGINE>(ai, cfg);
 		if (!e->is_ok()) {
 			return engine_ptr();
 		}
@@ -162,10 +165,8 @@ public:
 		config cfg;
 		cfg["name"] = name;
 		cfg["engine"] = "cpp"; // @Crab: what is the purpose of this line(neph)
-		return engine_ptr(new ENGINE(ai,cfg));
+		return std::make_shared<ENGINE>(ai, cfg);
 	}
 };
 
 } //end of namespace ai
-
-#endif

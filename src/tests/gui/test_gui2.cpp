@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,117 +15,155 @@
 // In this domain since it compares a shared string from this domain.
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include <boost/test/unit_test.hpp>
-
+#include "addon/client.hpp"
+#include "addon/info.hpp"
 #include "config_cache.hpp"
 #include "filesystem.hpp"
-#include "formula_debugger.hpp"
-#include "gettext.hpp"
+#include "formula/debugger.hpp"
 #include "game_classification.hpp"
 #include "game_config.hpp"
 #include "game_display.hpp"
+#include "game_events/manager.hpp"
+#include "game_initialization/create_engine.hpp"
+#include "game_initialization/lobby_data.hpp"
+#include "game_initialization/lobby_info.hpp"
+#include "game_launcher.hpp"
 #include "generators/map_create.hpp"
-#include "gui/auxiliary/layout_exception.hpp"
-#include "gui/dialogs/addon_connect.hpp"
-#include "gui/dialogs/addon_list.hpp"
+#include "gettext.hpp"
+#include "gui/core/layout_exception.hpp"
+#include "gui/dialogs/addon/connect.hpp"
+#include "gui/dialogs/addon/install_dependencies.hpp"
+#include "gui/dialogs/addon/manager.hpp"
+#include "gui/dialogs/advanced_graphics_options.hpp"
+#include "gui/dialogs/attack_predictions.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
-#include "gui/dialogs/campaign_settings.hpp"
 #include "gui/dialogs/chat_log.hpp"
-#include "gui/dialogs/data_manage.hpp"
+#include "gui/dialogs/core_selection.hpp"
 #include "gui/dialogs/debug_clock.hpp"
+#include "gui/dialogs/depcheck_confirm_change.hpp"
+#include "gui/dialogs/depcheck_select_new.hpp"
 #include "gui/dialogs/edit_label.hpp"
 #include "gui/dialogs/edit_text.hpp"
-#include "gui/dialogs/editor_generate_map.hpp"
-#include "gui/dialogs/editor_new_map.hpp"
-#include "gui/dialogs/editor_resize_map.hpp"
-#include "gui/dialogs/editor_set_starting_position.hpp"
+#include "gui/dialogs/editor/custom_tod.hpp"
+#include "gui/dialogs/editor/edit_label.hpp"
+#include "gui/dialogs/editor/edit_scenario.hpp"
+#include "gui/dialogs/editor/edit_side.hpp"
+#include "gui/dialogs/editor/generate_map.hpp"
+#include "gui/dialogs/editor/generator_settings.hpp"
+#include "gui/dialogs/editor/new_map.hpp"
+#include "gui/dialogs/editor/resize_map.hpp"
+#include "gui/dialogs/editor/set_starting_position.hpp"
+#include "gui/dialogs/end_credits.hpp"
+#include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/folder_create.hpp"
 #include "gui/dialogs/formula_debugger.hpp"
 #include "gui/dialogs/game_cache_options.hpp"
 #include "gui/dialogs/game_delete.hpp"
 #include "gui/dialogs/game_load.hpp"
-#include "gui/dialogs/game_paths.hpp"
 #include "gui/dialogs/game_save.hpp"
+#include "gui/dialogs/game_stats.hpp"
+#include "gui/dialogs/game_version_dialog.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
+#include "gui/dialogs/help_browser.hpp"
+#include "gui/dialogs/hotkey_bind.hpp"
+#include "gui/dialogs/label_settings.hpp"
 #include "gui/dialogs/language_selection.hpp"
-#include "gui/dialogs/lobby_main.hpp"
-#include "gui/dialogs/lobby_player_info.hpp"
+#include "gui/dialogs/loading_screen.hpp"
+#include "gui/dialogs/log_settings.hpp"
+#include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/dialogs/mp_change_control.hpp"
-#include "gui/dialogs/mp_cmd_wrapper.hpp"
-#include "gui/dialogs/mp_connect.hpp"
-#include "gui/dialogs/mp_create_game.hpp"
-#include "gui/dialogs/mp_create_game_set_password.hpp"
-#include "gui/dialogs/depcheck_confirm_change.hpp"
-#include "gui/dialogs/depcheck_select_new.hpp"
-#include "gui/dialogs/mp_login.hpp"
-#include "gui/dialogs/mp_method_selection.hpp"
-#include "gui/dialogs/simple_item_selector.hpp"
+#include "gui/dialogs/multiplayer/faction_select.hpp"
+#include "gui/dialogs/multiplayer/lobby.hpp"
+#include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
+#include "gui/dialogs/multiplayer/mp_change_control.hpp"
+#include "gui/dialogs/multiplayer/mp_connect.hpp"
+#include "gui/dialogs/multiplayer/mp_create_game.hpp"
+#include "gui/dialogs/multiplayer/mp_join_game.hpp"
+#include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
+#include "gui/dialogs/multiplayer/mp_login.hpp"
+#include "gui/dialogs/multiplayer/mp_method_selection.hpp"
+#include "gui/dialogs/multiplayer/mp_staging.hpp"
+#include "gui/dialogs/multiplayer/player_info.hpp"
+#include "gui/dialogs/outro.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
+#include "gui/dialogs/select_orb_colors.hpp"
+#include "gui/dialogs/simple_item_selector.hpp"
+#include "gui/dialogs/sp_options_configure.hpp"
+#include "gui/dialogs/statistics_dialog.hpp"
+#include "gui/dialogs/story_viewer.hpp"
+#include "gui/dialogs/surrender_quit.hpp"
+#include "gui/dialogs/terrain_layers.hpp"
 #include "gui/dialogs/theme_list.hpp"
 #include "gui/dialogs/title_screen.hpp"
-#include "gui/dialogs/tip.hpp"
+#include "gui/dialogs/tooltip.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "gui/dialogs/unit_advance.hpp"
 #include "gui/dialogs/unit_attack.hpp"
 #include "gui/dialogs/unit_create.hpp"
+#include "gui/dialogs/unit_list.hpp"
+#include "gui/dialogs/unit_recall.hpp"
+#include "gui/dialogs/unit_recruit.hpp"
 #include "gui/dialogs/wml_error.hpp"
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
-#include "create_engine.hpp"
-#include "tests/utils/fake_display.hpp"
+#include "map/map.hpp"
+#include "replay.hpp"
 #include "saved_game.hpp"
+#include "terrain/type_data.hpp"
+#include "tests/utils/fake_display.hpp"
+//#include "scripting/lua_kernel_base.hpp"
+#include "utils/functional.hpp"
 #include "video.hpp"
+#include "wesnothd_connection.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/assign/list_of.hpp>
-#include <boost/bind.hpp>
-#include <boost/foreach.hpp>
+#include <boost/test/unit_test.hpp>
 
 #include <memory>
 
+using namespace gui2::dialogs;
+
 namespace gui2 {
 
-std::vector<std::string>& unit_test_registered_window_list()
+static
+std::set<std::string>& unit_test_registered_window_list()
 {
-	static std::vector<std::string> result =
-			tunit_test_access_only::get_registered_window_list();
-
+	static std::set<std::string> result = registered_window_types();
 	return result;
 }
 
-std::string unit_test_mark_as_tested(const tdialog& dialog)
+namespace dialogs {
+
+std::string unit_test_mark_as_tested(const modal_dialog& dialog)
 {
-	std::vector<std::string>& list = unit_test_registered_window_list();
-	list.erase(
-			std::remove(list.begin(), list.end(), dialog.window_id())
-			, list.end());
+	std::set<std::string>& list = unit_test_registered_window_list();
+	list.erase(dialog.window_id());
 	return dialog.window_id();
 }
 
-std::string unit_test_mark_popup_as_tested(const tpopup& dialog)
+std::string unit_test_mark_popup_as_tested(const modeless_dialog& dialog)
 {
-	std::vector<std::string>& list = unit_test_registered_window_list();
-	list.erase(
-			std::remove(list.begin(), list.end(), dialog.window_id())
-			, list.end());
+	std::set<std::string>& list = unit_test_registered_window_list();
+	list.erase(dialog.window_id());
 	return dialog.window_id();
 }
 
-twindow* unit_test_window(const tpopup& dialog)
+window* unit_test_window(const modeless_dialog& dialog)
 {
-	return dialog.window_;
+	return dialog.window_.get();
 }
 
-class tmp_server_list;
+class mp_server_list;
 
-tdialog* unit_test_mp_server_list()
+modal_dialog* unit_test_mp_server_list()
 {
-	return tmp_connect::mp_server_list_for_unit_test();
+	return mp_connect::mp_server_list_for_unit_test();
 }
 
+} // namespace dialogs
 } // namespace gui2
 
 namespace {
@@ -140,42 +178,38 @@ namespace {
 	 * The specialized versions are at the end of this file.
 	 */
 	template<class T>
-	struct twrapper
+	struct dialog_tester
 	{
-		static T* create() { return new T(); }
+		T* create() { return new T(); }
 	};
 
-	typedef std::pair<unsigned, unsigned> tresolution;
-	typedef std::vector<std::pair<unsigned, unsigned> > tresolution_list;
-
-CVideo & video() {
-	static CVideo * v_ = new CVideo(CVideo::FAKE_TEST);
-	return *v_;
-}
+	typedef std::pair<unsigned, unsigned> resolution;
+	typedef std::vector<std::pair<unsigned, unsigned>> resolution_list;
 
 	template<class T>
-	void test_resolutions(const tresolution_list& resolutions)
+	void test_resolutions(const resolution_list& resolutions)
 	{
-		BOOST_FOREACH(const tresolution& resolution, resolutions) {
-			video().make_test_fake(resolution.first, resolution.second);
+		for(const resolution& resolution : resolutions) {
+			test_utils::get_fake_display(resolution.first, resolution.second);
 
-			boost::scoped_ptr<gui2::tdialog> dlg(twrapper<T>::create());
+			dialog_tester<T> ctor;
+			const std::unique_ptr<modal_dialog> dlg(ctor.create());
 			BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
 
-			const std::string id = gui2::unit_test_mark_as_tested(*(dlg.get()));
+			const std::string id = unit_test_mark_as_tested(*(dlg.get()));
 
 			std::string exception;
 			try {
-				dlg->show(video(), 1);
-			} catch(gui2::tlayout_exception_width_modified&) {
-				exception = "gui2::tlayout_exception_width_modified";
-			} catch(gui2::tlayout_exception_width_resize_failed&) {
-				exception = "gui2::tlayout_exception_width_resize_failed";
-			} catch(gui2::tlayout_exception_height_resize_failed&) {
-				exception = "gui2::tlayout_exception_height_resize_failed";
-			} catch(twml_exception& e) {
+				dlg->show(1);
+			} catch(const gui2::layout_exception_width_modified&) {
+				exception = "gui2::layout_exception_width_modified";
+			} catch(const gui2::layout_exception_width_resize_failed&) {
+				exception = "gui2::layout_exception_width_resize_failed";
+			} catch(const gui2::layout_exception_height_resize_failed&) {
+				exception = "gui2::layout_exception_height_resize_failed";
+			} catch(const wml_exception& e) {
 				exception = e.dev_message;
-			} catch(std::exception& e) {
+			} catch(const std::exception& e) {
 				exception = e.what();
 			} catch(...) {
 				exception = "unknown";
@@ -190,33 +224,34 @@ CVideo & video() {
 	}
 
 	template<class T>
-	void test_popup_resolutions(const tresolution_list& resolutions)
+	void test_popup_resolutions(const resolution_list& resolutions)
 	{
 		bool interact = false;
 		for(int i = 0; i < 2; ++i) {
-			BOOST_FOREACH(const tresolution& resolution, resolutions) {
-				video().make_test_fake(resolution.first, resolution.second);
+			for(const resolution& resolution : resolutions) {
+				test_utils::get_fake_display(resolution.first, resolution.second);
 
-				boost::scoped_ptr<gui2::tpopup> dlg(twrapper<T>::create());
+				dialog_tester<T> ctor;
+				const std::unique_ptr<modeless_dialog> dlg(ctor.create());
 				BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
 
-				const std::string id = gui2::unit_test_mark_popup_as_tested(*(dlg.get()));
+				const std::string id = unit_test_mark_popup_as_tested(*(dlg.get()));
 
 				std::string exception;
 				try {
-					dlg->show(video(), interact);
-					gui2::twindow* window = gui2::unit_test_window((*dlg.get()));
-					BOOST_REQUIRE_NE(window, static_cast<void*>(NULL));
+					dlg->show(interact);
+					gui2::window* window = unit_test_window((*dlg.get()));
+					BOOST_REQUIRE_NE(window, static_cast<void*>(nullptr));
 					window->draw();
-				} catch(gui2::tlayout_exception_width_modified&) {
-					exception = "gui2::tlayout_exception_width_modified";
-				} catch(gui2::tlayout_exception_width_resize_failed&) {
-					exception = "gui2::tlayout_exception_width_resize_failed";
-				} catch(gui2::tlayout_exception_height_resize_failed&) {
-					exception = "gui2::tlayout_exception_height_resize_failed";
-				} catch(twml_exception& e) {
+				} catch(const gui2::layout_exception_width_modified&) {
+					exception = "gui2::layout_exception_width_modified";
+				} catch(const gui2::layout_exception_width_resize_failed&) {
+					exception = "gui2::layout_exception_width_resize_failed";
+				} catch(const gui2::layout_exception_height_resize_failed&) {
+					exception = "gui2::layout_exception_height_resize_failed";
+				} catch(const wml_exception& e) {
 					exception = e.dev_message;
-				} catch(std::exception& e) {
+				} catch(const std::exception& e) {
 					exception = e.what();
 				} catch(...) {
 					exception = "unknown";
@@ -237,40 +272,30 @@ CVideo & video() {
 #pragma warning(push)
 #pragma warning(disable: 4702)
 #endif
-	void test_tip_resolutions(const tresolution_list& resolutions
+	void test_tip_resolutions(const resolution_list& resolutions
 			, const std::string& id)
 	{
-		BOOST_FOREACH(const tresolution& resolution, resolutions) {
-			video().make_test_fake(resolution.first, resolution.second);
+		for(const auto& resolution : resolutions) {
+			test_utils::get_fake_display(resolution.first, resolution.second);
 
-			std::vector<std::string>& list =
-					gui2::unit_test_registered_window_list();
-			list.erase(std::remove(list.begin(), list.end(), id), list.end());
+			std::set<std::string>& list = gui2::unit_test_registered_window_list();
+			list.erase(id);
 
 			std::string exception;
 			try {
-/**
- * @todo The code crashes for some unknown reason when this code is disabled.
- * The backtrace however doesn't show this path, in fact the crash occurs
- * before this code is used. So not entirely sure whether it's a compiler bug
- * or a part of the static initialization fiasco. Need to test with different
- * compilers and try to find the cause.
- */
-#if 0
-				gui2::tip::show(video()
-						, id
-						, "Test messsage for a tooltip."
-						, gui2::tpoint(0, 0));
-#endif
-			} catch(gui2::tlayout_exception_width_modified&) {
-				exception = "gui2::tlayout_exception_width_modified";
-			} catch(gui2::tlayout_exception_width_resize_failed&) {
-				exception = "gui2::tlayout_exception_width_resize_failed";
-			} catch(gui2::tlayout_exception_height_resize_failed&) {
-				exception = "gui2::tlayout_exception_height_resize_failed";
-			} catch(twml_exception& e) {
+				tip::show(id
+						, "Test message for a tooltip."
+						, point(0, 0)
+						, {0,0,0,0});
+			} catch(const gui2::layout_exception_width_modified&) {
+				exception = "gui2::layout_exception_width_modified";
+			} catch(const gui2::layout_exception_width_resize_failed&) {
+				exception = "gui2::layout_exception_width_resize_failed";
+			} catch(const gui2::layout_exception_height_resize_failed&) {
+				exception = "gui2::layout_exception_height_resize_failed";
+			} catch(const wml_exception& e) {
 				exception = e.dev_message;
-			} catch(std::exception& e) {
+			} catch(const std::exception& e) {
 				exception = e.what();
 			} catch(...) {
 				exception = "unknown";
@@ -287,24 +312,15 @@ CVideo & video() {
 #pragma warning(pop)
 #endif
 
-const tresolution_list& get_small_gui_resolutions()
+const resolution_list& get_gui_resolutions()
 {
-	static tresolution_list result;
-	if(result.empty()) {
-		result.push_back(std::make_pair(800, 480));
-	}
-	return result;
-}
+	static resolution_list result {
+		{800,  600},
+		{1024, 768},
+		{1280, 1024},
+		{1680, 1050},
+	};
 
-const tresolution_list& get_gui_resolutions()
-{
-	static tresolution_list result;
-	if(result.empty()) {
-		result.push_back(std::make_pair(800, 600));
-		result.push_back(std::make_pair(1024, 768));
-		result.push_back(std::make_pair(1280, 1024));
-		result.push_back(std::make_pair(1680, 1050));
-	}
 	return result;
 }
 
@@ -313,14 +329,13 @@ void test()
 {
 	gui2::new_widgets = false;
 
-	for(size_t i = 0; i < 2; ++i) {
+//	for(std::size_t i = 0; i < 2; ++i) {
 
-		test_resolutions<T>(get_small_gui_resolutions());
 		test_resolutions<T>(get_gui_resolutions());
 
-		break; // FIXME: New widgets break
-		gui2::new_widgets = true;
-	}
+//		break; // FIXME: New widgets break
+//		gui2::new_widgets = true;
+//	}
 }
 
 template<class T>
@@ -328,9 +343,8 @@ void test_popup()
 {
 	gui2::new_widgets = false;
 
-	for(size_t i = 0; i < 2; ++i) {
+	for(std::size_t i = 0; i < 2; ++i) {
 
-		test_popup_resolutions<T>(get_small_gui_resolutions());
 		test_popup_resolutions<T>(get_gui_resolutions());
 
 		gui2::new_widgets = true;
@@ -341,14 +355,49 @@ void test_tip(const std::string& id)
 {
 	gui2::new_widgets = false;
 
-	for(size_t i = 0; i < 2; ++i) {
+	for(std::size_t i = 0; i < 2; ++i) {
 
-		test_tip_resolutions(get_small_gui_resolutions(), id);
 		test_tip_resolutions(get_gui_resolutions(), id);
 
 		gui2::new_widgets = true;
 	}
 }
+
+#if 0
+class dummy_display_context : public display_context
+{
+public:
+	dummy_display_context()
+		: dummy_cfg()
+		, m(std::make_shared<terrain_type_data>(dummy_cfg), "")
+		, u()
+		, t()
+		, lbls()
+	{
+	}
+
+	virtual ~dummy_display_context(){}
+
+	virtual const gamemap & map() const override { return m; }
+	virtual const unit_map & units() const override { return u; }
+	virtual const std::vector<team> & teams() const override { return t; }
+	virtual const std::vector<std::string> & hidden_label_categories() const override { return lbls; }
+
+private:
+	config dummy_cfg;
+
+	gamemap m;
+	unit_map u;
+	std::vector<team> t;
+	std::vector<std::string> lbls;
+};
+
+const display_context& get_dummy_display_context()
+{
+	static const dummy_display_context dedc = dummy_display_context();
+	return dedc;
+}
+#endif
 
 } // namespace
 
@@ -362,100 +411,161 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	cache.add_define("MULTIPLAYER");
 	cache.get_config(game_config::path +"/data", main_config);
 
-	const binary_paths_manager bin_paths_manager(main_config);
+	const filesystem::binary_paths_manager bin_paths_manager(main_config);
 
 	load_language_list();
 	game_config::load_config(main_config.child("game_config"));
 
 	/**** Run the tests. *****/
 
-	/* The tdialog classes. */
-	test<gui2::taddon_connect>();
-	test<gui2::taddon_list>();
-	test<gui2::tcampaign_difficulty>();
-	test<gui2::tcampaign_selection>();
-	test<gui2::tcampaign_settings>();
-//	test<gui2::tchat_log>(); /** @todo ENABLE */
-	test<gui2::tdata_manage>();
-	test<gui2::tedit_label>();
-	test<gui2::tedit_text>();
-	test<gui2::teditor_generate_map>();
-	test<gui2::teditor_new_map>();
-	test<gui2::teditor_resize_map>();
-	test<gui2::teditor_set_starting_position>();
-	test<gui2::tfolder_create>();
-	test<gui2::tformula_debugger>();
-	test<gui2::tgame_cache_options>();
-	test<gui2::tgame_delete>();
-	test<gui2::tgame_load>();
-	test<gui2::tgame_paths>();
-	test<gui2::tgame_save>();
-	test<gui2::tgame_save_message>();
-	test<gui2::tgame_save_oos>();
-	test<gui2::tgamestate_inspector>();
-	test<gui2::tlanguage_selection>();
-	test<gui2::tlobby_main>();
-	test<gui2::tlobby_player_info>();
-	test<gui2::tmessage>();
-	test<gui2::tmp_change_control>();
-	test<gui2::tmp_cmd_wrapper>();
-	test<gui2::tmp_connect>();
-	test<gui2::tmp_create_game>();
-	test<gui2::tmp_create_game_set_password>();
-	test<gui2::tdepcheck_confirm_change>();
-	test<gui2::tdepcheck_select_new>();
-	test<gui2::tmp_login>();
-	test<gui2::tmp_method_selection>();
-	test<gui2::tmp_server_list>();
-	test<gui2::tsimple_item_selector>();
-	test<gui2::tscreenshot_notification>();
-	test<gui2::ttheme_list>();
-	test<gui2::ttitle_screen>();
-	test<gui2::ttransient_message>();
-//	test<gui2::tunit_attack>(); /** @todo ENABLE */
-	test<gui2::tunit_create>();
-	test<gui2::twml_error>();
-	test<gui2::twml_message_left>();
-	test<gui2::twml_message_right>();
+	/* The modal_dialog classes. */
+	test<addon_connect>();
+	//test<addon_manager>();
+	test<advanced_graphics_options>();
+	//test<attack_predictions>();
+	test<campaign_difficulty>();
+	test<campaign_selection>();
+	test<chat_log>();
+	test<core_selection>();
+	test<custom_tod>();
+	test<depcheck_confirm_change>();
+	test<depcheck_select_new>();
+	test<edit_label>();
+	test<edit_text>();
+	test<editor_edit_label>();
+	test<editor_edit_side>();
+	test<editor_edit_scenario>();
+	test<editor_generate_map>();
+	test<editor_new_map>();
+	test<editor_resize_map>();
+	test<editor_set_starting_position>();
+	//test<end_credits>();
+	test<faction_select>();
+	test<file_dialog>();
+	test<folder_create>();
+	test<formula_debugger>();
+	test<game_cache_options>();
+	test<game_delete>();
+	test<game_load>();
+	test<game_version>();
+	test<game_save>();
+	test<game_save_message>();
+	test<game_save_oos>();
+	// test<game_stats>();
+	// test<gamestate_inspector>();
+	test<generator_settings>();
+	//test<help_browser>();
+	test<hotkey_bind>();
+	test<install_dependencies>();
+	test<language_selection>();
+	// test<loading_screen>(); TODO: enable
+	test<mp_lobby>();
+	test<lobby_player_info>();
+	test<log_settings>();
+	//test<lua_interpreter>(& lua_kernel_base());
+	test<message>();
+	test<mp_alerts_options>();
+	//test<mp_change_control>();
+	test<mp_connect>();
+	//test<mp_create_game>();
+	//test<mp_join_game>();
+	test<mp_join_game_password_prompt>();
+	test<mp_login>();
+	test<mp_method_selection>();
+	test<mp_server_list>();
+	//test<mp_staging>();
+	//test<outro>();
+	test<simple_item_selector>();
+	test<screenshot_notification>();
+	test<select_orb_colors>();
+	test<sp_options_configure>();
+	test<statistics_dialog>();
+	test<surrender_quit>();
+	//test<story_viewer>();
+	test<theme_list>();
+	//test<terrain_layers>();
+	//test<title_screen>();
+	test<transient_message>();
+	//test<unit_advance>();
+	//test<unit_attack>();
+	test<unit_create>();
+	//test<unit_list>();
+	//test<unit_recall>();
+	//test<unit_recruit>();
+	test<wml_error>();
+	test<wml_message_left>();
+	test<wml_message_right>();
+	test<wml_message_double>();
 
-	/* The tpopup classes. */
-	test_popup<gui2::tdebug_clock>();
+	/* The modeless_dialog classes. */
+	test_popup<debug_clock>();
 
 	/* The tooltip classes. */
 	test_tip("tooltip_large");
+	test_tip("tooltip");
 
-	std::vector<std::string>& list = gui2::unit_test_registered_window_list();
+	std::set<std::string>& list = gui2::unit_test_registered_window_list();
+	std::set<std::string> omitted {
+		/*
+		 * The unit attack unit test are disabled for now, they calling parameters
+		 * don't allow 'nullptr's needs to be fixed.
+		 */
+		"unit_attack",
+		// No test for this right now, not sure how to use the test system
+		// for dialog with no default constructor
+		"lua_interpreter",
+		/*
+		 * Disable label settings dialog test because we need a display_context
+		 * object, which we don't have, and it's a lot of work to produce a dummy
+		 * one.
+		 */
+		"label_settings",
+		"addon_uninstall_list",
+		"addon_manager",
+		"loading_screen",
+		"network_transmission",
+		"synched_choice_wait",
+		"drop_down_menu",
+		"preferences_dialog",
+		"unit_recruit",
+		"unit_recall",
+		"unit_list",
+		"unit_advance",
+		"mp_host_game_prompt",
+		"mp_create_game",
+		// The title screen appears to be throwing a bad_alloc on Travis, so disable it for now
+		"title_screen",
+		"end_credits",
+		"mp_staging",
+		"mp_join_game",
+		"terrain_layers",
+		"attack_predictions",
+		"help_browser",
+		"story_viewer",
+		"outro",
+		"mp_change_control", // Basically useless without a game_board object, so disabling
+		"game_stats", // segfault with LTO
+		"gamestate_inspector", // segfault with LTO
+	};
 
-	/*
-	 * The unit attack unit test are disabled for now, they calling parameters
-	 * don't allow 'NULL's needs to be fixed.
-	 */
-	list.erase(
-			std::remove(list.begin(), list.end(), "unit_attack")
-			, list.end());
-	/*
-	 * The chat log unit test are disabled for now, they calling parameters
-	 * don't allow 'NULL's needs to be fixed.
-	 */
-	list.erase(
-			std::remove(list.begin(), list.end(), "chat_log")
-			, list.end());
+	std::vector<std::string> missing;
+	std::set_difference(list.begin(), list.end(), omitted.begin(), omitted.end(), std::back_inserter(missing));
 
 	// Test size() instead of empty() to get the number of offenders
-	BOOST_CHECK_EQUAL(list.size(), 0);
-	BOOST_FOREACH(const std::string& id, list) {
+	BOOST_CHECK_EQUAL(missing.size(), 0);
+	for(const std::string& id : missing) {
 		std::cerr << "Window '" << id << "' registered but not tested.\n";
 	}
 }
 
 BOOST_AUTO_TEST_CASE(test_make_test_fake)
 {
-	video().make_test_fake(10, 10);
+	test_utils::get_fake_display(10, 10);
 
 	try {
-		gui2::tmessage dlg("title", "message", true, false);
-		dlg.show(video(), 1);
-	} catch(twml_exception& e) {
+		message dlg("title", "message", true, false, false);
+		dlg.show(1);
+	} catch(const wml_exception& e) {
 		BOOST_CHECK(e.user_message == _("Failed to show a dialog, "
 					"which doesn't fit on the screen."));
 		return;
@@ -467,322 +577,419 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 namespace {
 
 template<>
-struct twrapper<gui2::taddon_connect>
+struct dialog_tester<addon_connect>
 {
-	static gui2::taddon_connect* create()
+	std::string host_name = "host_name";
+	addon_connect* create()
 	{
-		static std::string host_name = "host_name";
-		return new gui2::taddon_connect(host_name, true);
+		return new addon_connect(host_name, true);
 	}
 };
 
 template<>
-struct twrapper<gui2::taddon_list>
+struct dialog_tester<addon_manager>
 {
-	static gui2::taddon_list* create()
+	CVideo& video = test_utils::get_fake_display(10, 10).video();
+	dialog_tester()
 	{
-		/** @todo Would nice to add one or more dummy addons in the list. */
-		static config cfg;
-		return new gui2::taddon_list(cfg);
+	}
+	addon_manager* create()
+	{
+		addons_client client("localhost:15999");
+		return new addon_manager(client);
 	}
 };
 
 template<>
-struct twrapper<gui2::tcampaign_difficulty>
+struct dialog_tester<campaign_difficulty>
 {
-	static gui2::tcampaign_difficulty* create()
+	campaign_difficulty* create()
 	{
-		static std::vector<std::string> items;
+		const config items("difficulty");
 
-		return new gui2::tcampaign_difficulty(items);
+		return new campaign_difficulty(items);
 	}
 };
 
 template<>
-struct twrapper<gui2::tcampaign_selection>
+struct dialog_tester<campaign_selection>
 {
-	static gui2::tcampaign_selection* create()
+	saved_game state;
+	ng::create_engine ng;
+	dialog_tester() : state(config {"campaign_type", "scenario"}), ng(state)
 	{
-		static saved_game state;
-		state.classification().campaign_type = game_classification::SCENARIO;
-		static ng::create_engine ng(test_utils::get_fake_display(-1, -1), state);
-		return new gui2::tcampaign_selection(ng);
+	}
+	campaign_selection* create()
+	{
+		return new campaign_selection(ng);
 	}
 };
 
 template<>
-struct twrapper<gui2::tcampaign_settings>
+struct dialog_tester<chat_log>
 {
-	static gui2::tcampaign_settings* create()
+	config cfg;
+	vconfig vcfg;
+	replay_recorder_base rbase;
+	replay r;
+	dialog_tester() : vcfg(cfg), r(rbase) {}
+	chat_log* create()
 	{
-		static saved_game state;
-		state.classification().campaign_type = game_classification::SCENARIO;
-		static ng::create_engine ng(test_utils::get_fake_display(-1, -1), state);
-		return new gui2::tcampaign_settings(ng);
+		return new chat_log(vcfg, r);
 	}
 };
 
 template<>
-struct twrapper<gui2::tchat_log>
+struct dialog_tester<core_selection>
 {
-	static gui2::tchat_log* create()
+	std::vector<config> cores;
+	dialog_tester()
 	{
-		static config cfg;
-		static vconfig vcfg(cfg);
-
-		return new gui2::tchat_log(vcfg, NULL);
+		cores.resize(1);
+	}
+	core_selection* create()
+	{
+		return new core_selection(cores, 0);
 	}
 };
 
 template<>
-struct twrapper<gui2::tdata_manage>
+struct dialog_tester<custom_tod>
 {
-	static gui2::tdata_manage* create()
+	std::vector<time_of_day> times;
+	int current_tod = 0;
+	dialog_tester()
 	{
-		return new gui2::tdata_manage();
+		times.resize(1);
+	}
+	custom_tod* create()
+	{
+		return new custom_tod(times, current_tod);
 	}
 };
 
 template<>
-struct twrapper<gui2::tedit_label>
+struct dialog_tester<edit_label>
 {
-	static gui2::tedit_label* create()
+	std::string label = "Label text to modify";
+	bool team_only = false;
+	edit_label* create()
 	{
-		static std::string label = "Label text to modify";
-		static bool team_only = false;
-		return new gui2::tedit_label(label, team_only);
+		return new edit_label(label, team_only);
 	}
 };
 
 template<>
-struct twrapper<gui2::tedit_text>
+struct dialog_tester<edit_text>
 {
-	static gui2::tedit_text* create()
+	std::string text = "text to modify";
+	edit_text* create()
 	{
-		static std::string text = "text to modify";
-		return new gui2::tedit_text("title", "label", text);
+		return new edit_text("title", "label", text);
 	}
 };
 
 template<>
-struct twrapper<gui2::tformula_debugger>
+struct dialog_tester<editor_edit_label>
 {
-	static gui2::tformula_debugger* create()
+	std::string label = "Label text to modify";
+	std::string category = "test";
+	bool immutable = false, fog = false, shroud = false;
+	color_t color;
+	editor_edit_label* create()
 	{
-		static game_logic::formula_debugger debugger;
-		return new gui2::tformula_debugger(debugger);
+		return new editor_edit_label(label, immutable, fog, shroud, color, category);
 	}
 };
 
 template<>
-struct twrapper<gui2::tgame_load>
+struct dialog_tester<editor_edit_scenario>
 {
-	static gui2::tgame_load* create()
+	std::string id, name, descr;
+	int turns = 0, xp_mod = 50;
+	bool defeat_enemies = false, random_start = false;
+	editor_edit_scenario* create()
+	{
+		return new editor_edit_scenario(id, name, descr, turns, xp_mod, defeat_enemies, random_start);
+	}
+};
+
+template<>
+struct dialog_tester<editor_edit_side>
+{
+	team t;
+	editor::editor_team_info info;
+	dialog_tester() : info(t) {}
+	editor_edit_side* create()
+	{
+		return new editor_edit_side(info);
+	}
+};
+
+template<>
+struct dialog_tester<formula_debugger>
+{
+	wfl::formula_debugger debugger;
+	formula_debugger* create()
+	{
+		return new formula_debugger(debugger);
+	}
+};
+
+template<>
+struct dialog_tester<game_load>
+{
+	config cfg;
+	savegame::load_game_metadata data;
+	dialog_tester()
 	{
 		/** @todo Would be nice to add real data to the config. */
-		static config cfg;
-		return new gui2::tgame_load(cfg);
+	}
+	game_load* create()
+	{
+		return new game_load(cfg, data);
 	}
 
 };
 
 template<>
-struct twrapper<gui2::tgame_paths>
+struct dialog_tester<game_save>
 {
-	static gui2::tgame_paths* create()
+	std::string title = "Title";
+	std::string filename = "filename";
+	game_save* create()
 	{
-		return new gui2::tgame_paths();
+		return new game_save(title, filename);
 	}
 
 };
 
 template<>
-struct twrapper<gui2::tgame_save>
+struct dialog_tester<game_save_message>
 {
-	static gui2::tgame_save* create()
+	std::string title = "Title";
+	std::string filename = "filename";
+	std::string message = "message";
+	game_save_message* create()
 	{
-		static std::string title = "Title";
-		static std::string filename = "filename";
-		return new gui2::tgame_save(title, filename);
+		return new game_save_message(title, filename, message);
 	}
 
 };
 
 template<>
-struct twrapper<gui2::tgame_save_message>
+struct dialog_tester<game_save_oos>
 {
-	static gui2::tgame_save_message* create()
+	bool ignore_all = false;
+	std::string title = "Title";
+	std::string filename = "filename";
+	std::string message = "message";
+	game_save_oos* create()
 	{
-		static std::string title = "Title";
-		static std::string filename = "filename";
-		static std::string message = "message";
-		return new gui2::tgame_save_message(title, filename, message);
+		return new game_save_oos(ignore_all, title, filename, message);
 	}
 
 };
 
+#if 0
 template<>
-struct twrapper<gui2::tgame_save_oos>
+struct dialog_tester<gamestate_inspector>
 {
-	static gui2::tgame_save_oos* create()
+	config vars;
+	game_events::manager events;
+	gamestate_inspector* create()
 	{
-		static bool ignore_all = false;
-		static std::string title = "Title";
-		static std::string filename = "filename";
-		static std::string message = "message";
-		return new gui2::tgame_save_oos(ignore_all, title, filename, message);
+		return new gamestate_inspector(vars, events, get_dummy_display_context(), "Unit Test");
 	}
 
 };
+#endif
 
 template<>
-struct twrapper<gui2::tgamestate_inspector>
+struct dialog_tester<install_dependencies>
 {
-	static gui2::tgamestate_inspector* create()
+	addons_list addons;
+	install_dependencies* create()
 	{
-		/**
-		 * @todo Would be nice to add real data to the vconfig.
-		 * It would also involve adding real data to the resources.
-		 */
-		static config cfg;
-		static vconfig vcfg(cfg);
-		return new gui2::tgamestate_inspector(vcfg);
+		return new install_dependencies(addons);
 	}
-
 };
 
 template<>
-struct twrapper<gui2::tlobby_main>
+struct dialog_tester<hotkey_bind>
 {
-	static gui2::tlobby_main* create()
+	std::string id = "";
+
+	hotkey_bind* create()
 	{
-		static config game_config;
-		static lobby_info li(game_config);
-		return new gui2::tlobby_main(game_config, li,
-			*static_cast<display*>(&test_utils::get_fake_display(-1, -1)));
+		return new hotkey_bind(id);
+	}
+};
+
+struct wesnothd_connection_init
+{
+	wesnothd_connection_init(wesnothd_connection& conn)
+	{
+		//Swallow the 'cannot connect' execption so that the connection object doesn't throw while we test the dialog.
+		try
+		{
+			while (true) {
+				conn.poll();
+			}
+		}
+		catch (...)
+		{
+
+		}
+	}
+};
+
+template<>
+struct dialog_tester<mp_lobby>
+{
+	config game_config;
+	wesnothd_connection connection;
+	wesnothd_connection_init init;
+	std::vector<std::string> installed_addons;
+	mp::lobby_info li;
+	dialog_tester() : connection("", ""), init(connection), li(installed_addons)
+	{
+	}
+	mp_lobby* create()
+	{
+		return new mp_lobby(game_config, li, connection);
 	}
 };
 
 class fake_chat_handler : public events::chat_handler {
-	void add_chat_message(const time_t&,
+	void add_chat_message(const std::time_t&,
 		const std::string&, int, const std::string&,
 		MESSAGE_TYPE) {}
 	void send_chat_message(const std::string&, bool) {}
+	void send_to_server(const config&) {}
 };
 
 template<>
-struct twrapper<gui2::tlobby_player_info>
+struct dialog_tester<lobby_player_info>
 {
-	static gui2::tlobby_player_info* create()
+	config c;
+	fake_chat_handler ch;
+	wesnothd_connection connection;
+	wesnothd_connection_init init;
+	mp::user_info ui;
+	std::vector<std::string> installed_addons;
+	mp::lobby_info li;
+	dialog_tester()
+		: connection("", ""), init(connection)
+		, ui(c), li(installed_addons)
 	{
-		static config c;
-		static fake_chat_handler ch;
-		static user_info ui(c);
-		static lobby_info li(c);
-		return new gui2::tlobby_player_info(ch, ui, li);
+	}
+	lobby_player_info* create()
+	{
+		return new lobby_player_info(ch, ui, li);
 	}
 };
 
 template<>
-struct twrapper<gui2::tmessage>
+struct dialog_tester<log_settings>
 {
-	static gui2::tmessage* create()
+	log_settings* create()
 	{
-		return new gui2::tmessage("Title", "Message", false, false);
+		return new log_settings();
 	}
 };
 
 template<>
-struct twrapper<gui2::tmp_change_control>
+struct dialog_tester<message>
 {
-	static gui2::tmp_change_control* create()
+	message* create()
 	{
-		return new gui2::tmp_change_control(NULL);
+		return new message("Title", "Message", false, false, false);
+	}
+};
+#if 0
+template<>
+struct dialog_tester<mp_change_control>
+{
+	mp_change_control* create()
+	{
+		return new mp_change_control(nullptr);
+	}
+};
+#endif
+
+template<>
+struct dialog_tester<mp_create_game>
+{
+	saved_game state;
+	dialog_tester() : state(config {"campaign_type", "multiplayer"})
+	{
+	}
+	mp_create_game* create()
+	{
+		return new mp_create_game(main_config, state, true, nullptr);
 	}
 };
 
 template<>
-struct twrapper<gui2::tmp_cmd_wrapper>
+struct dialog_tester<mp_join_game_password_prompt>
 {
-	static gui2::tmp_cmd_wrapper* create()
+	std::string password;
+	mp_join_game_password_prompt* create()
 	{
-		return new gui2::tmp_cmd_wrapper("foo");
+		return new mp_join_game_password_prompt(password);
+	}
+};
+
+static std::vector<std::string> depcheck_mods {"mod_one", "some other", "more"};
+
+template<>
+struct dialog_tester<depcheck_confirm_change>
+{
+	depcheck_confirm_change* create()
+	{
+		return new depcheck_confirm_change(true, depcheck_mods, "requester");
 	}
 };
 
 template<>
-struct twrapper<gui2::tmp_create_game>
+struct dialog_tester<depcheck_select_new>
 {
-	static gui2::tmp_create_game* create()
+	depcheck_select_new* create()
 	{
-		return new gui2::tmp_create_game(main_config);
+		return new depcheck_select_new(ng::depcheck::MODIFICATION, depcheck_mods);
 	}
 };
 
 template<>
-struct twrapper<gui2::tmp_create_game_set_password>
+struct dialog_tester<mp_login>
 {
-	static gui2::tmp_create_game_set_password* create()
+	mp_login* create()
 	{
-		static std::string password;
-		return new gui2::tmp_create_game_set_password(password);
+		return new mp_login("wesnoth.org", "label", true);
 	}
 };
 
 template<>
-struct twrapper<gui2::tdepcheck_confirm_change>
+struct dialog_tester<simple_item_selector>
 {
-	static gui2::tdepcheck_confirm_change* create()
+	simple_item_selector* create()
 	{
-		static std::vector<std::string> mods = boost::assign::list_of("mod_one")("some other")("more");
-		return new gui2::tdepcheck_confirm_change(true, mods, "requester");
+		return new simple_item_selector("title", "message", std::vector<std::string>(), false, false);
 	}
 };
 
 template<>
-struct twrapper<gui2::tdepcheck_select_new>
+struct dialog_tester<screenshot_notification>
 {
-	static gui2::tdepcheck_select_new* create()
+	screenshot_notification* create()
 	{
-		static std::vector<std::string> mods = boost::assign::list_of("mod_one")("some other")("more");
-		return new gui2::tdepcheck_select_new(ng::depcheck::MODIFICATION, mods);
+		return new screenshot_notification("path", nullptr);
 	}
 };
 
 template<>
-struct twrapper<gui2::tmp_login>
-{
-	static gui2::tmp_login* create()
-	{
-		return new gui2::tmp_login("label", true);
-	}
-};
-
-template<>
-struct twrapper<gui2::tsimple_item_selector>
-{
-	static gui2::tsimple_item_selector* create()
-	{
-		return new gui2::tsimple_item_selector("title"
-				, "message"
-				, std::vector<std::string>()
-				, false
-				, false);
-	}
-};
-
-template<>
-struct twrapper<gui2::tscreenshot_notification>
-{
-	static gui2::tscreenshot_notification* create()
-	{
-		return new gui2::tscreenshot_notification("path"
-				, 0);
-	}
-};
-
-template<>
-struct twrapper<gui2::ttheme_list>
+struct dialog_tester<theme_list>
 {
 	static theme_info make_theme(std::string name)
 	{
@@ -792,136 +999,232 @@ struct twrapper<gui2::ttheme_list>
 		ti.description = name + " this is a description";
 		return ti;
 	}
-	static gui2::ttheme_list* create()
+	static std::vector<theme_info> themes;
+	theme_list* create()
 	{
-		static std::vector<theme_info> themes = boost::assign::list_of(make_theme("classic"))
-		(make_theme("new"))(make_theme("more"))(make_theme("themes"));
-		return new gui2::ttheme_list(themes, 0);
+		return new theme_list(themes, 0);
 	}
 };
+std::vector<theme_info> dialog_tester<theme_list>::themes {make_theme("classic"), make_theme("new"), make_theme("more"), make_theme("themes")};
 
 template<>
-struct twrapper<gui2::teditor_generate_map>
+struct dialog_tester<editor_generate_map>
 {
-	static gui2::teditor_generate_map* create()
+	std::vector<std::unique_ptr<map_generator>> map_generators;
+	editor_generate_map* create()
 	{
-		gui2::teditor_generate_map* result = new gui2::teditor_generate_map();
-		BOOST_REQUIRE_MESSAGE(result, "Failed to create a dialog.");
-
-		std::vector<map_generator*> map_generators;
-		BOOST_FOREACH(const config &i, main_config.child_range("multiplayer")) {
-			if(i["map_generation"] == "default") {
+		for(const config &i : main_config.child_range("multiplayer")) {
+			if(i["scenario_generation"] == "default") {
 				const config &generator_cfg = i.child("generator");
 				if (generator_cfg) {
-					map_generators.push_back(
-							create_map_generator("", generator_cfg));
+					map_generators.emplace_back(create_map_generator("", generator_cfg));
 				}
 			}
 		}
-		result->set_map_generators(map_generators);
 
-		result->set_gui(
-				static_cast<display*>(&test_utils::get_fake_display(-1, -1)));
+		editor_generate_map* result = new editor_generate_map(map_generators);
+		BOOST_REQUIRE_MESSAGE(result, "Failed to create a dialog.");
 
 		return result;
 	}
 };
 
 template<>
-struct twrapper<gui2::teditor_new_map>
+struct dialog_tester<editor_new_map>
 {
-	static gui2::teditor_new_map* create()
+	int width = 10;
+	int height = 10;
+	editor_new_map* create()
 	{
-		static int width;
-		static int height;
-		return new gui2::teditor_new_map(width, height);
+		return new editor_new_map("Test", width, height);
 	}
 };
 
 template<>
-struct twrapper<gui2::teditor_set_starting_position>
+struct dialog_tester<editor_set_starting_position>
 {
-	static gui2::teditor_set_starting_position* create()
+	std::vector<map_location> locations;
+	editor_set_starting_position* create()
 	{
-		static std::vector<map_location> locations;
-
-		return new gui2::teditor_set_starting_position(0, 0, locations);
+		return new editor_set_starting_position(0, 0, locations);
 	}
 };
 
 template<>
-struct twrapper<gui2::teditor_resize_map>
+struct dialog_tester<editor_resize_map>
 {
-	static gui2::teditor_resize_map* create()
+	int width = 0;
+	int height = 0;
+	editor_resize_map::EXPAND_DIRECTION expand_direction = editor_resize_map::EXPAND_TOP;
+	bool copy = false;
+	editor_resize_map* create()
 	{
-		static int width = 0;
-		static int height = 0;
-		static gui2::teditor_resize_map::EXPAND_DIRECTION expand_direction =
-				gui2::teditor_resize_map::EXPAND_TOP;
-		static bool copy = false;
-		return new gui2::teditor_resize_map(
-				  width
-				, height
-				, expand_direction
-				, copy);
+		return new editor_resize_map(width, height, expand_direction, copy);
 	}
 };
 
 template<>
-struct twrapper<gui2::tfolder_create>
+struct dialog_tester<file_dialog>
 {
-	static gui2::tfolder_create* create()
+	file_dialog* create()
 	{
-		static std::string folder_name;
-		return new gui2::tfolder_create(folder_name);
+		return new file_dialog();
 	}
 };
 
 template<>
-struct twrapper<gui2::tmp_server_list>
+struct dialog_tester<folder_create>
 {
-	static gui2::tdialog* create()
+	std::string folder_name;
+	folder_create* create()
 	{
-		return gui2::unit_test_mp_server_list();
+		return new folder_create(folder_name);
 	}
 };
 
 template<>
-struct twrapper<gui2::ttransient_message>
+struct dialog_tester<mp_server_list>
 {
-	static gui2::ttransient_message* create()
+	static modal_dialog* create()
 	{
-		return new gui2::ttransient_message("Title", false, "Message", false, "");
+		return unit_test_mp_server_list();
 	}
 };
 
 template<>
-struct twrapper<gui2::twml_error>
+struct dialog_tester<transient_message>
 {
-	static gui2::twml_error* create()
+	transient_message* create()
 	{
-		static std::vector<std::string> files = boost::assign::list_of("some")("files")("here");
-		return new gui2::twml_error("Summary", "Post summary", files, "Details");
+		return new transient_message("Title", false, "Message", false, "");
 	}
 };
 
 template<>
-struct twrapper<gui2::twml_message_left>
+struct dialog_tester<title_screen>
 {
-	static gui2::twml_message_left* create()
+	std::vector<std::string> args;
+	commandline_options opts;
+	game_launcher game;
+	dialog_tester() : opts(args), game(opts, "unit_tests") {}
+	title_screen* create()
 	{
-		return new gui2::twml_message_left("Title", "Message", "", false);
+		return new title_screen(game);
 	}
 };
 
 template<>
-struct twrapper<gui2::twml_message_right>
+struct dialog_tester<wml_error>
 {
-	static gui2::twml_message_right* create()
+	static std::vector<std::string> files;
+	wml_error* create()
 	{
-		return new gui2::twml_message_right("Title", "Message", "", false);
+		return new wml_error("Summary", "Post summary", files, "Details");
+	}
+};
+std::vector<std::string> dialog_tester<wml_error>::files {"some", "files", "here"};
+
+template<>
+struct dialog_tester<wml_message_left>
+{
+	wml_message_left* create()
+	{
+		return new wml_message_left("Title", "Message", "", false);
+	}
+};
+
+template<>
+struct dialog_tester<wml_message_right>
+{
+	wml_message_right* create()
+	{
+		return new wml_message_right("Title", "Message", "", false);
+	}
+};
+
+template<>
+struct dialog_tester<wml_message_double>
+{
+	wml_message_double* create()
+	{
+		return new wml_message_double("Title", "Message", "", false, "", true);
+	}
+};
+
+template<>
+struct dialog_tester<faction_select>
+{
+	config era_cfg, side_cfg;
+	std::vector<const config*> eras;
+	ng::flg_manager flg;
+	std::string color;
+	dialog_tester()
+		: era_cfg(), side_cfg(), eras(1, &era_cfg) // TODO: Add an actual era definition
+		, flg(eras, side_cfg, false, false, false)
+		, color("teal")
+	{}
+	faction_select* create() {
+		return new faction_select(flg, color, 1);
+	}
+};
+
+#if 0
+template<>
+struct dialog_tester<game_stats>
+{
+	int i = 1;
+	game_stats* create()
+	{
+		return new game_stats(get_dummy_display_context(), 1, i);
+	}
+};
+#endif
+
+template<>
+struct dialog_tester<generator_settings>
+{
+	config cfg;
+	generator_data data;
+	dialog_tester() : data(cfg) {}
+	generator_settings* create()
+	{
+		return new generator_settings(data);
+	}
+};
+
+template<>
+struct dialog_tester<sp_options_configure>
+{
+	saved_game state;
+	ng::create_engine create_eng;
+	ng::configure_engine config_eng;
+	dialog_tester() : create_eng(state)
+		, config_eng(create_eng.get_state()) {}
+	sp_options_configure* create()
+	{
+		return new sp_options_configure(create_eng, config_eng);
+	}
+};
+
+template<>
+struct dialog_tester<statistics_dialog>
+{
+	team t;
+	dialog_tester() : t() {}
+	statistics_dialog* create()
+	{
+		return new statistics_dialog(t);
+	}
+};
+
+template<>
+struct dialog_tester<surrender_quit>
+{
+	dialog_tester() {}
+	surrender_quit* create()
+	{
+		return new surrender_quit();
 	}
 };
 
 } // namespace
-

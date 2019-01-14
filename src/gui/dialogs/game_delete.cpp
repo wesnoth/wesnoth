@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,10 +14,12 @@
 
 #include "gui/dialogs/game_delete.hpp"
 
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gui/widgets/settings.hpp"
 
 namespace gui2
+{
+namespace dialogs
 {
 
 /*WIKI
@@ -58,10 +60,13 @@ static void set_dont_ask_again(const bool ask_again)
 	preferences::set_ask_delete_saves(!ask_again);
 }
 
-tgame_delete::tgame_delete()
+game_delete::game_delete()
 {
+	set_restore(true);
+
 	register_bool(
 			"dont_ask_again", true, &get_dont_ask_again, &set_dont_ask_again);
 }
 
+} // namespace dialogs
 } // namespace gui2

@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2014 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2005 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,8 +15,7 @@
 
 /** @file */
 
-#ifndef SERIALIZATION_BINARY_OR_TEXT_HPP_INCLUDED
-#define SERIALIZATION_BINARY_OR_TEXT_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "preprocessor.hpp"
@@ -59,5 +58,3 @@ private:
 	unsigned int level_;
 	std::string textdomain_;
 };
-
-#endif

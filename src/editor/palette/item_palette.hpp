@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2012 - 2014 by Fabian Mueller <fabianmueller5@gmx.de>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2012 - 2018 by Fabian Mueller <fabianmueller5@gmx.de>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,13 +16,14 @@
  * Manage the item-palette in the editor.
  */
 
-#ifndef ITEM_PALETTES_H_INCLUDED
-#define ITEM_PALETTES_H_INCLUDED
+#pragma once
 
-#include "editor_palettes.hpp"
+#include "editor/palette/editor_palettes.hpp"
 #include "overlay.hpp"
 
 namespace editor {
+
+class editor_toolkit;
 
 //std::string get_selected_terrain();
 
@@ -31,8 +32,8 @@ class item_palette : public editor_palette<overlay> {
 public:
 
 	item_palette(editor_display &gui,
-			const config& cfg,
-			mouse_action** active_mouse_action);
+	             const config& cfg,
+	             editor_toolkit &toolkit);
 
 	virtual void setup(const config& cfg);
 
@@ -47,4 +48,3 @@ private:
 };
 
 }
-#endif

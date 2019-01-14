@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,11 +12,9 @@
    See the COPYING file for more details.
 */
 
-#ifndef INCL_FAKE_UNIT_HPP_
-#define INCL_FAKE_UNIT_HPP_
+#pragma once
 
-#include "unit_ptr.hpp"
-#include "unit_types.hpp"
+#include "units/ptr.hpp"
 
 class fake_unit_manager;
 
@@ -39,6 +37,7 @@ public:
 	explicit fake_unit_ptr(const internal_ptr & u); //!< Construct a fake unit pointer wrapping a normal unit pointer, marking it as a fake unit.
 	fake_unit_ptr(const internal_ptr & u, fake_unit_manager * mgr); //!< Construct a fake unit pointer, and simultaenously register with a manager.
 	fake_unit_ptr(const fake_unit_ptr & ptr); //!< Copy construct a fake unit pointer. Does not reallocate the underlying unit.
+	fake_unit_ptr(fake_unit_ptr && ptr);
 
 	void swap (fake_unit_ptr & o); //!< Pointer swap.
 
@@ -68,24 +67,8 @@ private :
 	internal_ptr unit_; //!< Internal unit pointer.
 	fake_unit_manager * my_manager_; //!< Raw pointer to the manager.
 
-#ifndef HAVE_CXX11
-	struct safe_bool_impl { void nonnull() {} };
-	/**
-	 * Used as t he return type of the conversion operator for boolean contexts.
-	 * Needed, since the compiler would otherwise consider the following
-	 * conversion (C legacy): cfg["abc"] -> "abc"[bool(cfg)] -> 'b'
-	 */
-	typedef void (safe_bool_impl::*safe_bool)();
-#endif
-
 public:
-#ifdef HAVE_CXX11
-	explicit operator bool() const
-	{ return unit_.get(); }
-#else
-	operator safe_bool() const
-	{ return unit_ ? &safe_bool_impl::nonnull : NULL; }
-#endif
-};
 
-#endif
+	explicit operator bool() const
+	{ return unit_.get() != nullptr; }
+};

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef LANGUAGE_HPP_INCLUDED
-#define LANGUAGE_HPP_INCLUDED
+
+#pragma once
 
 #include "tstring.hpp"
 #include "serialization/string_utils.hpp"
@@ -30,17 +30,23 @@ struct language_def
 		alternates(),
 		language(),
 		sort_name(),
-		rtl(false)
+		rtl(false),
+		percent(100)
 		{}
 
 	language_def(const std::string& name, const t_string& lang, const std::string& dir,
-		    const std::string &salternates = "", const std::string& sort_name = "") :
+		    const std::string &salternates = "", const std::string& sort_name = "", const std::string& percent = "100") :
 		localename(name),
 		alternates(utils::split(salternates)),
 		language(lang),
 		sort_name(sort_name.empty() ? std::string(lang) : sort_name),
 		rtl(dir == "rtl")
 	{
+		try {
+			this->percent = percent.empty() ? 100 : std::stoi(percent);
+		} catch(const std::invalid_argument&) {
+			this->percent = 100;
+		}
     }
 
 	std::string localename;
@@ -48,6 +54,8 @@ struct language_def
 	t_string language;
 	std::string sort_name;
 	bool rtl;		// A right to left language? (e.g: Hebrew)
+	/** % of translated text in core po-s */
+	int percent;
 	bool operator== (const language_def&) const;
 	bool operator< (const language_def& a) const
 		{ return sort_name < a.sort_name; }
@@ -93,4 +101,4 @@ bool init_strings(const config& cfg);
 
 bool load_language_list();
 
-#endif
+void set_min_translation_percent(int percent);

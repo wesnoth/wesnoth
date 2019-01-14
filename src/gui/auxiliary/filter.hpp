@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2012 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2012 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,32 +14,30 @@
 
 /**
  * @file
- * Define the common filters for the @ref gui2::tpane class.
+ * Define the common filters for the @ref gui2::pane class.
  */
 
-#ifndef GUI_AUXILIARY_FILTER_HPP_INCLUDED
-#define GUI_AUXILIARY_FILTER_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/text_box.hpp"
-#include "map_utils.hpp"
-#include "util.hpp"
-#include "serialization/string_utils.hpp"
+#include "lexical_cast.hpp"
+#include "serialization/unicode.hpp"
 
 namespace gui2
 {
 
 template <class T>
-inline bool sort(const tpane::titem& lhs,
-				 const tpane::titem& rhs,
+inline bool sort(const pane::item& lhs,
+				 const pane::item& rhs,
 				 const std::string& tag,
 				 const bool ascending)
 {
 	if(ascending) {
-		return lexical_cast<T>(at(lhs.tags, tag))
-			   < lexical_cast<T>(at(rhs.tags, tag));
+		return lexical_cast<T>(lhs.tags.at(tag))
+			   < lexical_cast<T>(rhs.tags.at(tag));
 	} else {
-		return lexical_cast<T>(at(lhs.tags, tag))
-			   > lexical_cast<T>(at(rhs.tags, tag));
+		return lexical_cast<T>(lhs.tags.at(tag))
+			   > lexical_cast<T>(rhs.tags.at(tag));
 	}
 }
 
@@ -49,7 +47,7 @@ inline bool sort(const tpane::titem& lhs,
  * The comparison is a lower-case comparison.
  *
  * The function is expected to be used as a functor for
- * @ref gui2::tpane::filter().
+ * @ref gui2::pane::filter().
  *
  * @param item                    The pane item to search in.
  * @param tag                     The tag of the field containing the text to
@@ -62,14 +60,12 @@ inline bool sort(const tpane::titem& lhs,
  *
  * @returns                       Whether or not the comparison found a match.
  */
-inline bool contains(const tpane::titem& item,
+inline bool contains(const pane::item& item,
 					 const std::string& tag,
-					 const ttext_box& text_box)
+					 const text_box& text_box)
 {
-	return at(item.tags, tag).find(utf8::lowercase(text_box.text()))
+	return item.tags.at(tag).find(utf8::lowercase(text_box.text()))
 		   != std::string::npos;
 }
 
 } // namespace gui2
-
-#endif

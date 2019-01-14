@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.7+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-08-17 11:31+0200\n"
+"POT-Creation-Date: 2018-02-04 16:39 UTC\n"
 "PO-Revision-Date: 2013-03-23 13:18+0800\n"
 "Last-Translator: Phạm Thành Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -32,37 +32,7 @@ msgid "AOI"
 msgstr "CXLCNT"
 
 #. [campaign]: id=An_Orcish_Incursion
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:16
-msgid "(Beginner)"
-msgstr "(Mới bắt đầu)"
-
-#. [campaign]: id=An_Orcish_Incursion
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:16
-msgid "Fighter"
-msgstr "Đấu sĩ"
-
-#. [campaign]: id=An_Orcish_Incursion
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:17
-msgid "(Normal)"
-msgstr "(Bình thường)"
-
-#. [campaign]: id=An_Orcish_Incursion
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:17
-msgid "Lord"
-msgstr "Chủ tướng"
-
-#. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:18
-msgid "(Challenging)"
-msgstr "(Thử thách)"
-
-#. [campaign]: id=An_Orcish_Incursion
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:18
-msgid "High Lord"
-msgstr "Chủ tướng cấp cao"
-
-#. [campaign]: id=An_Orcish_Incursion
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:20
 msgid ""
 "Defend the forests of the elves against the first orcs to reach the Great "
 "Continent, learning valuable tactics as you do so.\n"
@@ -73,79 +43,78 @@ msgstr ""
 "\n"
 
 #. [campaign]: id=An_Orcish_Incursion
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:22
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:20
 msgid "(Novice level, 7 scenarios.)"
 msgstr "(Mức độ mới bắt đầu, 7 màn chơi)"
 
+#. [campaign]: id=An_Orcish_Incursion
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:22
+#, fuzzy
+#| msgid "(Beginner)"
+msgid "Beginner"
+msgstr "(Mới bắt đầu)"
+
+#. [campaign]: id=An_Orcish_Incursion
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:22
+msgid "Fighter"
+msgstr "Đấu sĩ"
+
+#. [campaign]: id=An_Orcish_Incursion
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:23
+msgid "Lord"
+msgstr "Chủ tướng"
+
+#. [campaign]: id=An_Orcish_Incursion
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:23
+#, fuzzy
+#| msgid "(Normal)"
+msgid "Normal"
+msgstr "(Bình thường)"
+
+#. [campaign]: id=An_Orcish_Incursion
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:24
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
+msgstr "(Thử thách)"
+
+#. [campaign]: id=An_Orcish_Incursion
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:24
+msgid "High Lord"
+msgstr "Chủ tướng cấp cao"
+
 #. [about]
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:35
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:38
 msgid "Campaign Design"
 msgstr "Thiết kế chiến dịch"
 
 #. [about]
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:41
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:44
 msgid "Adaptation for mainline"
 msgstr "Điều chỉnh để phát hành chính thức"
 
 #. [about]
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:47
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:50
 msgid "Post 1.4 story and gameplay improvements"
 msgstr "Cải thiện cốt truyện và trò chơi sau 1.4"
 
 #. [about]
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:53
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:56
 msgid "Artwork and Graphics Design"
 msgstr "Thiết kế nghệ thuật và đồ họa"
 
 #. [about]
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:60
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:67
 msgid "Editing, proofreading and gameplay testing"
 msgstr "Hiệu chỉnh, biên tập và thử nghiệm trò chơi"
 
 #. [scenario]: id=01_Defend_the_Forest
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:9
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:10
 msgid "Defend the Forest"
 msgstr "Bảo vệ khu rừng"
 
-#. [side]: type=Elvish Lord, id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:24
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:42
-msgid "Erlornas"
-msgstr "Erlornas"
-
-#. [side]: type=Elvish Lord, id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:31
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:27
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:29
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:29
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:47
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:28
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:27
-msgid "Elves"
-msgstr "Thần tiên"
-
-#. [side]: type=Orcish Warrior, id=Urugha
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:43
-msgid "Urugha"
-msgstr "Urugha"
-
-#. [side]: type=Lich, id=Keremal
-#. [side]: type=Orcish Slayer, id=Gharlsa
-#. [side]: type=Orcish Sovereign, id=Rualsha
-#. [side]: type=Orcish Warlord, id=Gnargha
-#. [side]: type=Orcish Warlord, id=Krughnar
-#. [side]: type=Orcish Warrior, id=Urugha
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:49
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:44
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:45
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:68
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:38
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:80
-msgid "Orcs"
-msgstr "Người thú"
-
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:65
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:25
 msgid ""
 "The arrival of humans and orcs caused turmoil among the nations of the Great "
 "Continent. Elves, previously in uneasy balance with dwarves and others, had "
@@ -159,7 +128,7 @@ msgstr ""
 "đột dữ dội hơn hẳn so với trước kia."
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:69
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:29
 msgid ""
 "Their first encounter with the newcomers went less well than either side "
 "might have wished."
@@ -168,7 +137,7 @@ msgstr ""
 "muốn của cả hai bên."
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:73
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:33
 msgid ""
 "But humans, though crude and brash, at least had in them a creative spark "
 "which elves could recognize as akin to their own nature. Orcs seemed "
@@ -179,7 +148,7 @@ msgstr ""
 "dường như hoàn toàn xa lạ."
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:77
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:37
 msgid ""
 "For some years after Haldric’s people landed, orcs remained scarce more than "
 "a rumor to trouble the green fastnesses of the elves. That remained so until "
@@ -194,7 +163,7 @@ msgstr ""
 #. [part]
 #. "northern marches" is *not* a typo for "northern marshes" here.
 #. In archaic English, "march" means "border country".
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:83
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:43
 msgid ""
 "The orcs were first sighted from the north marches of the great forest of "
 "Wesmere."
@@ -202,10 +171,66 @@ msgstr ""
 "Bọn người thú được phát hiện lần đầu tiên ở vùng biên giới phía bắc của khu "
 "rừng Wesmere rộng lớn."
 
+#. [side]
+#. [side]: type=Elvish Lord
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:56
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:41
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:49
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:44
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:47
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:28
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:29
+msgid "Elves"
+msgstr "Thần tiên"
+
+#. [unit]: type=Elvish Rider, id=Lomarfel
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:68
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:119
+msgid "Lomarfel"
+msgstr "Lomarfel"
+
+#. [side]: type=Orcish Sovereign, id=Rualsha
+#. [side]: type=Orcish Warrior, id=Urugha
+#. [side]: type=Orcish Slayer, id=Gharlsa
+#. [side]: type=Orcish Warlord, id=Gnargha
+#. [side]: type=Orcish Warlord, id=Krughnar
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:88
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:59
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:66
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:64
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:58
+msgid "Orcs"
+msgstr "Người thú"
+
+#. [side]: type=Orcish Warrior, id=Urugha
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:93
+msgid "Urugha"
+msgstr "Urugha"
+
+#. [objective]: condition=win
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:113
+msgid "Defeat Urugha"
+msgstr "Đánh bại Urugha"
+
+#. [objective]: condition=lose
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:117
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:102
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:91
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:158
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:111
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:74
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:94
+msgid "Death of Erlornas"
+msgstr "Erlornas chết"
+
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:96
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:129
+#, fuzzy
+#| msgid ""
+#| "Hint:\n"
+#| "Elves can move quickly and safely among the trees. Pick off the enemy "
+#| "grunts with your archers from the safety of the forest."
 msgid ""
-"Hint:\n"
 "Elves can move quickly and safely among the trees. Pick off the enemy grunts "
 "with your archers from the safety of the forest."
 msgstr ""
@@ -213,29 +238,8 @@ msgstr ""
 "Thần tiên có thể di chuyển nhanh chóng và an toàn trong rừng. Bắn hạ bộ binh "
 "của kẻ thù bằng cung thủ của bạn từ nơi an toàn của khu rừng."
 
-#. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:100
-msgid "Defeat Urugha"
-msgstr "Đánh bại Urugha"
-
-#. [objective]: condition=lose
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:104
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:102
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:91
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:165
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:114
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:71
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:116
-msgid "Death of Erlornas"
-msgstr "Erlornas chết"
-
-#. [event]
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:116
-msgid "Lomarfel"
-msgstr "Lomarfel"
-
-#. [message]: id=Lomarfel
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:127
+#. [message]: speaker=Lomarfel
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:139
 msgid ""
 "My lord! A party of aliens has made camp to the north and lays waste to the "
 "forest. Our scouts believe it’s a band of orcs."
@@ -243,8 +247,8 @@ msgstr ""
 "Thưa ngài! Một nhóm các sinh vật lạ đã dựng trại ở phía bắc và tàn phá khu "
 "rừng. Các trinh sát của chúng ta tin rằng đó là một băng nhóm người thú."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:131
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:144
 msgid ""
 "Orcs? It seems unlikely. The human king, Haldric, crushed them when they "
 "landed on these shores, and since then they’ve been no more than a bogey "
@@ -254,8 +258,8 @@ msgstr ""
 "chúng đổ bộ lên bờ biển, và kể từ đó chúng không là gì ngoài một con ngáo ộp "
 "mà các bà mẹ dùng để dọa trẻ con."
 
-#. [message]: id=Lomarfel
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:135
+#. [message]: speaker=Lomarfel
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:149
 msgid ""
 "So it seemed, my lord. Yet there is a band of them in the north cutting down "
 "healthy trees by the dozen, and making great fires from the wood. They "
@@ -267,8 +271,8 @@ msgstr ""
 "giẫm nát thảm cỏ thành bùn lầy và thậm chí còn không chôn phân hôi thối của "
 "mình. Tôi tin tôi có thể ngửi thấy mùi thối ngay cả ở đây."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:139
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:154
 msgid ""
 "So the grim tales of them prove true. They must not be allowed to continue; "
 "we must banish this blight from our forests. I shall marshal the wardens and "
@@ -280,13 +284,13 @@ msgstr ""
 "những người gác rừng và đánh đuổi bọn chúng. Hội đồng cần nghe điều này, hãy "
 "đưa tin và trở về cùng viện binh, bọn chúng có thể còn đông hơn."
 
-#. [message]: id=Lomarfel
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:143
+#. [message]: speaker=Lomarfel
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:159
 msgid "Yes, my lord!"
 msgstr "Vâng, thưa ngài!"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:160
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:178
 msgid ""
 "Look at them. Big, slow, clumsy and hardly a bow in hand. Keep to the trees, "
 "use your arrows and the day will be ours."
@@ -296,12 +300,12 @@ msgstr ""
 "là của chúng ta."
 
 #. [message]: race=elf
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:169
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:187
 msgid "It’s hopeless; we’ve tried everything, and they’re still coming back."
 msgstr "Thật vô vọng, chúng ta đã thử mọi thứ, vậy mà chúng vẫn trở lại."
 
-#. [message]: id=Urugha
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:173
+#. [message]: speaker=Urugha
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:192
 msgid ""
 "Forward, you worthless worms! Look at them, they’re tired and afraid! You "
 "killed their will to fight, now go and finish the job!"
@@ -310,8 +314,8 @@ msgstr ""
 "sợ hãi! Các ngươi đã giết chết ý chí chiến đấu của chúng, giờ thì đi hoàn "
 "thành công việc đi!"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:177
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:197
 msgid ""
 "That cloud of dust on the horizon... flee! There’s more of the abominations "
 "heading this way! Fall back before we’re outnumbered and crushed."
@@ -320,7 +324,7 @@ msgstr ""
 "đây! Rút lui trước khi chúng ta bị áp đảo và tiêu diệt."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:181
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:203
 msgid ""
 "Lord Erlornas didn’t drive the orcs back, although he and his warriors tried "
 "their absolute best. When another war band arrived, elvish resistance "
@@ -331,7 +335,7 @@ msgstr ""
 "chống cự của thần tiên vỡ vụn."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:186
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:209
 msgid ""
 "Of the ensuing events little is known, since much was lost in the chaos and "
 "confusion, but one thing is painfully sure. Elves lost the campaign."
@@ -340,28 +344,28 @@ msgstr ""
 "loạn và lẫn lộn, nhưng có một điều thực sự đau đớn. Thần tiên đã thất bại "
 "trong chiến dịch."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:199
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:221
 msgid "Ugh..."
 msgstr "Hựự..."
 
-#. [message]: id=Urugha
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:203
+#. [message]: speaker=Urugha
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:226
 msgid "Finally! Got him!"
 msgstr "Cuối cùng! Thanh toán hắn!"
 
 #. [message]: race=elf
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:210
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:234
 msgid "Lord!"
 msgstr "Chủ tướng!"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:214
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:239
 msgid "Take... command... Drive them... away."
 msgstr "Nhận...lệnh... Đuổi...chúng đi."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:218
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:245
 msgid ""
 "Lord Erlornas died the day he first fought the orcs and never saw the end of "
 "the war. Given its final outcome, this was perhaps for the best."
@@ -371,7 +375,7 @@ msgstr ""
 "của nó, đây có lẽ là điều tốt nhất."
 
 #. [message]: speaker=unit
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:230
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:257
 msgid ""
 "I’ve been bested, but the combat wasn’t fair... A thousand curses on you, "
 "withered coward! May you suffer... and when my master, Rualsha, finds you "
@@ -381,8 +385,8 @@ msgstr ""
 "ngươi, đồ nhát gan tiều tụy! Các ngươi sẽ hứng chịu... khi chủ nhân của ta, "
 "Rualsha, tìm thấy các ngươi, ngài sẽ quét sạch các ngươi khỏi mặt đất này!"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:241
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:269
 msgid ""
 "Rualsha? Hmm... What if... Assemble a war-party, we need to scout north!"
 msgstr ""
@@ -390,17 +394,12 @@ msgstr ""
 "phía bắc!"
 
 #. [scenario]: id=02_Assassins
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:9
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:10
 msgid "Assassins"
 msgstr "Những kẻ ám sát"
 
-#. [side]: type=Orcish Slayer, id=Gharlsa
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:39
-msgid "Gharlsa"
-msgstr "Gharlsa"
-
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:79
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:25
 msgid ""
 "The path of the orcish war band was easy to follow — a wide swathe of "
 "trampled ground through violated forest. Erlornas and his party swiftly "
@@ -411,7 +410,7 @@ msgstr ""
 "chóng theo dấu chân về phía bắc và phía tây."
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:83
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:29
 msgid ""
 "Soon they arrived at a region where the forest was cut through by many "
 "streams, only to find something unexpected."
@@ -419,10 +418,25 @@ msgstr ""
 "Không bao lâu sau họ đến một vùng mà khu rừng bị chia cắt bởi nhiều dòng "
 "suối, chỉ để nhận thấy một điều gì đó không mong đợi."
 
+#. [side]: type=Orcish Slayer, id=Gharlsa
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:65
+msgid "Gharlsa"
+msgstr "Gharlsa"
+
+#. [objective]: condition=win
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:98
+msgid "Defeat Gharlsa"
+msgstr "Đánh bại Gharlsa"
+
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:94
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:114
+#, fuzzy
+#| msgid ""
+#| "Hint:\n"
+#| "Assassins are hard to hit, and their poison is insidious. Stay close to "
+#| "the villages, where poisoning can be cured, and force your enemies to "
+#| "attack you from the river."
 msgid ""
-"Hint:\n"
 "Assassins are hard to hit, and their poison is insidious. Stay close to the "
 "villages, where poisoning can be cured, and force your enemies to attack you "
 "from the river."
@@ -432,18 +446,13 @@ msgstr ""
 "gần các ngôi làng, nơi có thể giải độc, và buộc kẻ thù của bạn phải tấn công "
 "từ dòng sông."
 
-#. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:98
-msgid "Defeat Gharlsa"
-msgstr "Đánh bại Gharlsa"
-
-#. [message]: role=Adviser
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:131
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:128
 msgid "The trail leads straight to this place, my lord."
 msgstr "Dấu vết dẫn thẳng đến nơi này, thưa ngài."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:135
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:133
 msgid ""
 "There is a keep ahead of us. How comes it that we know nothing of it? I "
 "thought our borders were watched more carefully."
@@ -451,8 +460,8 @@ msgstr ""
 "Có một pháo đài phía trước. Sao chúng ta không biết gì về nó nhỉ? Ta cứ nghĩ "
 "biên giới của chúng ta được canh phòng cẩn thận."
 
-#. [message]: role=Adviser
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:139
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:138
 msgid ""
 "I... I know not, my lord. For ages there was no one in these lands that "
 "could build such a thing save us. I fear we have fallen prey a false sense "
@@ -462,45 +471,45 @@ msgstr ""
 "chúng ta có thể xây dựng một công trình như thế. Tôi sợ chúng ta đã mắc ảo "
 "giác về sự an toàn, khiến các trinh sát của chúng ta lơ là cảnh giác."
 
-#. [message]: id=Erlornas
+#. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:143
 msgid "When the fighting ends, I’ll have some answers. But for now—"
 msgstr "Khi trận đấu kết thúc, ta sẽ có câu trả lời. Còn bây giờ..."
 
-#. [message]: id=Gharlsa
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:147
+#. [message]: speaker=Gharlsa
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:148
 msgid "Gharlsa sees elves... yes... Fresh meat for wolves. Yes, yes..."
 msgstr ""
 "Gharlsa thấy lũ thần tiên... được... Thịt tươi cho chó sói. Được, được..."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:151
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:153
 msgid "— let’s focus on the task at hand."
 msgstr "... hãy tập trung vào nhiệm vụ trong tay."
 
-#. [message]: role=Adviser
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:155
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:158
 msgid "Does that demented creature truly believe he can kill us?"
 msgstr ""
 "Sinh vật mất trí đó thực sự tin rằng hắn có thể giết được chúng ta sao?"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:159
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:163
 msgid "Appearances can be deceiving. Tell the men to be cautious."
 msgstr "Bề ngoài có thể không phản ánh bản chất. Bảo mọi người cẩn thận."
 
-#. [message]: id=Gharlsa
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:170
+#. [message]: speaker=Gharlsa
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:175
 msgid "Yes... yes... Slay them!"
 msgstr "Được... được... Giết chúng!"
 
 #. [message]: speaker=unit
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:181
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:187
 msgid "Hurts... failed... Rualsha gonna be angry..."
 msgstr "Đau... thất bại... Rualsha sẽ tức giận..."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:192
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:199
 msgid ""
 "This... ‘Rualsha’ again. We need to forge ahead; the answers we seek are not "
 "here. Perhaps we will find them further north."
@@ -508,8 +517,8 @@ msgstr ""
 "Lại là... ‘Rualsha’. Chúng ta cần tiến lên phía trước, câu trả lời chúng ta "
 "tìm không có ở đây. Có lẽ chúng ta sẽ tìm thấy ở xa hơn về phía bắc."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:196
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:204
 msgid ""
 "Destroy this place and let the forest take the ruins. We don’t want any more "
 "undesirables to use it."
@@ -518,17 +527,12 @@ msgstr ""
 "kẻ nào sử dụng nó nữa."
 
 #. [scenario]: id=03_Wasteland
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:9
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:10
 msgid "Wasteland"
 msgstr "Vùng đất hoang"
 
-#. [side]: type=Orcish Warlord, id=Gnargha
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:39
-msgid "Gnargha"
-msgstr "Gnargha"
-
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:60
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:25
 msgid ""
 "As they fared further north the green forest thinned around them, slowly "
 "fading into a barren and fallow country. The signs were obvious and "
@@ -543,7 +547,7 @@ msgstr ""
 "rừng, giống như khu rừng mà họ gọi là nhà. Nó đã bị giết hại."
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:64
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:29
 msgid ""
 "There was no trail to be found here; wind and rain had erased the spoor. "
 "Fortunately, there was no need of a trail; smoke on the horizon betrayed the "
@@ -553,7 +557,7 @@ msgstr ""
 "cần dấu vết nữa, khói phía chân trời đã tiết lộ sự hiện diện của kẻ thù."
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:68
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:33
 msgid ""
 "Erlornas was near-certain they would find orcs there. No clan of dwarves "
 "would break their ancient treaties with the elves in this way; humans were "
@@ -568,7 +572,7 @@ msgstr ""
 "nhất vẫn còn - liệu anh có tìm thấy Rualsha?"
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:72
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:37
 msgid ""
 "Perhaps, but not here. The tribe this camp housed was too small to impress "
 "fear on other orcs. Come next morning, the elves were prepared for battle."
@@ -577,10 +581,24 @@ msgstr ""
 "nạt những người thú khác. Buổi sáng hôm sau, các thần tiên đã chuẩn bị cho "
 "trận chiến."
 
+#. [side]: type=Orcish Warlord, id=Gnargha
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:71
+msgid "Gnargha"
+msgstr "Gnargha"
+
+#. [objective]: condition=win
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:87
+msgid "Defeat Gnargha"
+msgstr "Đánh bại Gnargha"
+
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:83
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:103
+#, fuzzy
+#| msgid ""
+#| "Hint:\n"
+#| "There are no villages in this scenario — you must use healers instead. "
+#| "Use hit-and-run tactics to weaken enemy units who cannot heal themselves."
 msgid ""
-"Hint:\n"
 "There are no villages in this scenario — you must use healers instead. Use "
 "hit-and-run tactics to weaken enemy units who cannot heal themselves."
 msgstr ""
@@ -589,13 +607,8 @@ msgstr ""
 "điều trị viên. Sử dụng chiến thuật đánh-và-chạy để làm yếu các đơn vị kẻ thù "
 "những kẻ không thể tự điều trị."
 
-#. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:87
-msgid "Defeat Gnargha"
-msgstr "Đánh bại Gnargha"
-
-#. [message]: role=Adviser
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:168
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:121
 msgid ""
 "Lord... I’m... I am filled with grief. This senseless destruction is... "
 "overwhelming."
@@ -603,8 +616,8 @@ msgstr ""
 "Thưa ngài... Tôi... Tôi vô cùng đau lòng. Sự phá hoại vô nghĩa này thật... "
 "quá mức."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:172
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:126
 msgid ""
 "Yes. And this is the threat we were blind to but are now facing. This tribe "
 "is small, yet we must drive them back to the north. They must have no "
@@ -614,8 +627,8 @@ msgstr ""
 "phải đối mặt. Bộ lạc này nhỏ, nhưng chúng ta phải đuổi chúng về phía bắc. "
 "Chúng không được đặt chân ở phía nam vùng đồi."
 
-#. [message]: id=Gnargha
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:176
+#. [message]: speaker=Gnargha
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:131
 msgid ""
 "Elves!? This means Urugha failed and his spirit will suffer greatly for his "
 "weakness. So be it!"
@@ -623,8 +636,8 @@ msgstr ""
 "Thần tiên!? Điều này có nghĩa là Urugha đã thất bại và linh hồn của hắn sẽ "
 "phải chịu đựng khủng khiếp cho sự yếu đuối của mình. Được lắm!"
 
-#. [message]: id=Gnargha
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:180
+#. [message]: speaker=Gnargha
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:136
 msgid ""
 "Rise up, grunts! We have a great fight upon us! Let your rage flow freely! "
 "Let your blades slay all! First one to draw blood will feast by my fire this "
@@ -635,8 +648,8 @@ msgstr ""
 "giết tất cả bọn chúng! Kẻ đầu tiên làm đổ máu sẽ ăn mừng bên đống lửa của ta "
 "đêm nay!"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:184
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:141
 msgid ""
 "Aim true, men, with wit and courage the day will be ours. And spare no-one, "
 "there can be no orc south of the hills, else we’ll never have peace again."
@@ -645,15 +658,15 @@ msgstr ""
 "nay sẽ là của chúng ta. Và đừng tha một ai, không được có người thú ở phía "
 "nam vùng đồi, nếu không chúng ta sẽ không bao giờ có hòa bình nữa."
 
-#. [message]: id=Gnargha
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:196
+#. [message]: speaker=unit
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:199
 msgid "You won... elf... But it changes... nothing... (<i>cough</i>)"
 msgstr ""
 "Ngươi đã thắng... thần tiên... Nhưng chẳng thay đổi được... gì đâu... "
 "(<i>ho</i>)"
 
-#. [message]: id=Gnargha
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:200
+#. [message]: speaker=unit
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:204
 msgid ""
 "We found the way... Now... we will come in numbers... (<i>cough</i>) you "
 "can’t imagine..."
@@ -661,17 +674,17 @@ msgstr ""
 "Bọn ta đã tìm thấy đường... Giờ... bọn ta sẽ đến với quân số... (<i>ho</i>) "
 "ngươi không thể tưởng tượng được..."
 
-#. [message]: id=Gnargha
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:204
+#. [message]: speaker=unit
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:209
 msgid "(<i>Cough</i>) I’ll be waiting... among the dead..."
 msgstr "(<i>Ho</i>) Ta sẽ chờ... giữa những người chết..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:215
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:222
 msgid ""
 "The orcish chieftain finally fell, overcome by his wounds. The elves found "
-"themselves in a half-ruined camp littered with the bodies of both sides, "
-"there was no hale orc in sight, nor did any of the wounded beg mercy. The "
+"themselves in a half-ruined camp littered with the bodies of both sides. "
+"There was no hale orc in sight, nor did any of the wounded beg mercy. The "
 "elves took no prisoners."
 msgstr ""
 "Tên thủ lĩnh người thú cuối cùng gục ngã, kiệt sức vì những vết thương. Các "
@@ -679,7 +692,7 @@ msgstr ""
 "của cả hai bên, không có tên người thú nào còn khỏe mạnh, hay bất kỳ kẻ bị "
 "thương nào cầu xin tha mạng. Các thần tiên không giữ tù nhân."
 
-#. [message]: role=Adviser
+#. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:239
 msgid ""
 "It’s done, lord. No-one escaped. No-one tried to escape. I’m... disturbed."
@@ -687,8 +700,8 @@ msgstr ""
 "Xong rồi, thưa ngài. Không một kẻ nào trốn thoát. Không một kẻ nào cố để "
 "trốn thoát. Tôi... rất bối rối."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:243
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:244
 msgid ""
 "Good. But their disregard for self-preservation is astounding. As is their "
 "ferocity when defending what they claim as their own. Have the scouts found "
@@ -698,8 +711,8 @@ msgstr ""
 "như tính tàn bạo khi bảo vệ những gì chúng cho là của mình. Các trinh sát có "
 "tìm thấy ai khác phía bên này vùng đồi không?"
 
-#. [message]: role=Adviser
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:247
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:249
 msgid ""
 "No, lord. But trolls were spotted in the hills ahead. Do we really need to "
 "cross them to the north?"
@@ -707,8 +720,8 @@ msgstr ""
 "Không, thưa ngài. Nhưng quỷ núi được phát hiện ở vùng đồi phía trước. Chúng "
 "ta có thực sự cần băng qua chúng để đi về phía bắc không?"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:251
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:254
 msgid ""
 "Yes. The council has spoken to me through a dream-sending. They are "
 "troubled. Reinforcements have been sent after us, but we need to press on. "
@@ -718,8 +731,8 @@ msgstr ""
 "theo sau chúng ta, nhưng chúng ta vẫn cần tiến lên. Bảo mọi người nghỉ ngơi, "
 "chúng ta sẽ khởi hành vào lúc bình minh."
 
-#. [message]: role=Adviser
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:261
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:265
 msgid ""
 "What about the loot lord? We found supplies worth over a hundred gold in the "
 "camp."
@@ -727,8 +740,8 @@ msgstr ""
 "Còn chiến lợi phẩm thì sao? Chúng tôi tìm thấy hàng tiếp tế đáng giá trên "
 "một trăm lượng vàng trong doanh trại."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:265
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:270
 msgid ""
 "Distribute some among the men, save the rest for the road. This country is a "
 "wasteland now; we won’t find much forage on the march."
@@ -737,8 +750,8 @@ msgstr ""
 "là một vùng đất hoang rồi, chúng ta sẽ không tìm nhiều thấy thức ăn trên "
 "đường hành quân đâu."
 
-#. [message]: role=Adviser
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:281
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:287
 msgid ""
 "We found some supplies when searching the camp, but nothing much. What is to "
 "be done with them?"
@@ -746,8 +759,8 @@ msgstr ""
 "Chúng tôi tìm thấy một ít hàng tiếp tế khi lục soát doanh trại, nhưng không "
 "nhiều. Chúng ta làm gì với chúng?"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:285
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:292
 msgid ""
 "Save it for the march north. There is little to be found in this barren "
 "country."
@@ -755,44 +768,21 @@ msgstr ""
 "Để dành cho cuộc hành quân về phía bắc. Không có gì nhiều ở vùng đất cằn cỗi "
 "này đâu."
 
-#. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:314
-msgid ""
-"Lord Erlornas never saw the blade that felled him. He died on the spot, with "
-"not a chance to issue last commands or farewells. Without him his wardens "
-"soon fell into confusion, and losing heart withdrew from the battle."
-msgstr ""
-"Chủ tướng Erlornas không bao giờ nhìn thấy lưỡi kiếm đã hạ gục anh. Anh hy "
-"sinh ngay tại chỗ, không có một cơ hội để nói ra những mệnh lệnh cuối cùng "
-"hay lời vĩnh biệt. Không có anh quân lính nhanh chóng rơi vào hỗn loạn và "
-"không còn dũng khí, họ rút lui khỏi trận chiến."
-
-#. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:319
-msgid ""
-"When reinforcements finally arrived, elves managed to dislodge the orcish "
-"tribe. But the threat from the north remained unresolved and loomed large "
-"over their future."
-msgstr ""
-"Khi viện binh đến, các thần tiên đã đánh bật được bộ lạc người thú. Nhưng "
-"mối đe dọa từ phía bắc vẫn còn chưa được giải quyết và hiện ra lù lù trước "
-"tương lai của họ."
-
-#. [message]: role=Adviser
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:337
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:320
 msgid "We can’t carry on Lord, the men are too tired. We have to fall back."
 msgstr ""
 "Thưa ngài, chúng ta không thể tiếp tục, mọi người đã quá mệt mỏi. Chúng ta "
 "phải rút lui."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:341
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:325
 msgid "Damn it. Sound the retreat, we’ll try again when reinforcements arrive."
 msgstr ""
 "Thật đáng nguyền rủa. Ra hiệu rút lui, chúng ta sẽ thử lại khi viện binh đến."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:345
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:331
 msgid ""
 "The expected relief caught up with them a few days later. The following "
 "morning they took the field against a far larger host of orcs. The battle "
@@ -803,29 +793,12 @@ msgstr ""
 "thúc bất phân thắng bại, chiến tranh diễn ra ác liệt hàng năm trời..."
 
 #. [scenario]: id=04_Valley_of_Trolls
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:9
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:10
 msgid "Valley of Trolls"
 msgstr "Thung lũng quỷ núi"
 
-#. [side]: type=Troll, type=Troll Warrior, id=Gurk
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:41
-msgid "Gurk"
-msgstr "Gurk"
-
-#. [side]: type=Troll, type=Troll Warrior, id=Gurk
-#. [side]: type=Troll, type=Troll Warrior, id=Hrugu
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:53
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:92
-msgid "Trolls"
-msgstr "Quỷ núi"
-
-#. [side]: type=Troll, type=Troll Warrior, id=Hrugu
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:81
-msgid "Hrugu"
-msgstr "Hrugu"
-
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:124
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:25
 msgid ""
 "Next morning, the elves set off again, increasingly wearied by the hardships "
 "of the campaign and longing for the green comfort of their home forests. "
@@ -838,7 +811,7 @@ msgstr ""
 "bắc rét buốt trên hành trình đến dãy núi lờ mờ phía trước."
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:128
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:29
 msgid ""
 "At dusk they arrived at the mouth of a valley cutting almost straight "
 "through the range and made camp, as scouts warned that the area was hostile "
@@ -853,7 +826,7 @@ msgstr ""
 "may mắn còn phải thức để canh chừng."
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:132
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:33
 msgid ""
 "When sunrise came, the elves moved into battle formations. Whatever waited "
 "in the slopes ahead, it would not find them unprepared."
@@ -861,10 +834,36 @@ msgstr ""
 "Khi bình minh đến, các thần tiên di chuyển theo đội hình chiến đấu. Họ chuẩn "
 "bị sẵn sàng cho bất kỳ điều gì đang chờ đợi ở những con dốc phía trước."
 
+#. [side]: type=Troll, type=Troll Warrior, id=Gurk
+#. [side]: type=Troll, type=Troll Warrior, id=Hrugu
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:66
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:106
+msgid "Trolls"
+msgstr "Quỷ núi"
+
+#. [side]: type=Troll, type=Troll Warrior, id=Gurk
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:75
+msgid "Gurk"
+msgstr "Gurk"
+
+#. [side]: type=Troll, type=Troll Warrior, id=Hrugu
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:115
+msgid "Hrugu"
+msgstr "Hrugu"
+
+#. [objective]: condition=win
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:154
+msgid "Defeat all enemy leaders"
+msgstr "Đánh bại tất cả các chỉ huy của kẻ thù"
+
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:157
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:170
+#, fuzzy
+#| msgid ""
+#| "Hint:\n"
+#| "Trolls are poor fighters when not on rugged terrain and fare even worse "
+#| "during the daytime. Lure them out of the hills and attack in the sunlight."
 msgid ""
-"Hint:\n"
 "Trolls are poor fighters when not on rugged terrain and fare even worse "
 "during the daytime. Lure them out of the hills and attack in the sunlight."
 msgstr ""
@@ -873,13 +872,8 @@ msgstr ""
 "còn tệ hơn nữa vào ban ngày. Dụ chúng ra khỏi vùng đồi và tấn công dưới ánh "
 "mặt trời."
 
-#. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:161
-msgid "Defeat all enemy leaders"
-msgstr "Đánh bại tất cả các chỉ huy của kẻ thù"
-
-#. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:194
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:184
 msgid ""
 "We are far from our lands, now, Erlornas, and we have driven the orcs from "
 "the forest. Why do we not return home?"
@@ -887,8 +881,8 @@ msgstr ""
 "Giờ chúng ta đang ở xa vùng đất của mình, Erlornas, và chúng ta đã đánh đuổi "
 "bọn người thú khỏi khu rừng rồi. Tại sao chúng ta không trở về nhà?"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:198
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:189
 msgid ""
 "You know well enough... Rualsha. That name sounds everywhere we go since the "
 "incursion began. That orc is much more than a mere marauding bandit in "
@@ -902,21 +896,21 @@ msgstr ""
 "chúng ta</i>. Hắn đang lập kế hoạnh xâm lược, tôi chắc chắn về điều đó. "
 "Chúng ta phải thu thập thêm thông tin về kế hoạnh của hắn trước khi trở về."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:202
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:194
 msgid "And tell me... How did you sleep last night?"
 msgstr "Và hãy cho ta biết... Tối qua ngươi ngủ ra sao?"
 
-#. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:206
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:199
 msgid ""
 "How did I?... Uneasy, lord. My dreams were bleak, some of them nightmares."
 msgstr ""
 "Tôi ngủ ra sao ư?... Không yên, thưa ngài. Những giấc mơ của tôi trống trải, "
 "một số còn là ác mộng."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:210
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:204
 msgid ""
 "Yes. The earth currents are perturbed here, and the bridges to the dreamland "
 "are tainted. I think there is a mage dwelling somewhere nearby. Or perhaps "
@@ -928,8 +922,8 @@ msgstr ""
 "Cũng có thể còn nhiều hơn một, các dấu vết hòa trộn lẫn lộn, một số chúng "
 "còn có mùi độc hại."
 
-#. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:214
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:209
 msgid ""
 "It would be dire indeed for us if these orcs have magic to add to their "
 "battle-might."
@@ -937,13 +931,13 @@ msgstr ""
 "Quả thực sẽ rất kinh khủng cho chúng ta nếu bọn người thú này có phép thuật "
 "để thêm vào sức mạnh chiến đấu của chúng."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:218
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:214
 msgid "We must discover if this is so."
 msgstr "Chúng ta phải khám phá liệu có đúng là như vậy."
 
-#. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:222
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:219
 msgid ""
 "Information will do us no good if we are killed before we return with it! "
 "These mountains look like troll territory."
@@ -951,14 +945,14 @@ msgstr ""
 "Thông tin sẽ chẳng có ích lợi gì nếu chúng ta bị giết trước khi trở về! "
 "Những ngọn núi này giống như lãnh thổ của quỷ núi."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:226
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:224
 msgid "Enough. The sun’s fully over the horizon. Give the order to advance."
 msgstr ""
 "Được rồi. Mặt trời đã hiện trọn vẹn trên đường chân trời. Ra lệnh tiến lên."
 
-#. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:243
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:235
 msgid ""
 "That was the last of the chieftains, lord. The lesser trolls seem to be "
 "retreating now."
@@ -966,8 +960,8 @@ msgstr ""
 "Đó là tên thủ lĩnh cuối cùng, thưa ngài. Những con quỷ núi nhỏ hơn hình như "
 "đang rút lui."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:247
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:240
 msgid ""
 "It is well. Break camp and move everyone through the pass before they rally. "
 "We’ll rest a bit on the other side; we have earned it."
@@ -975,13 +969,13 @@ msgstr ""
 "Tốt lắm. Dỡ trại và đưa mọi người qua đèo trước khi chúng tập hợp lại. Chúng "
 "ta sẽ nghỉ ngơi một chút ở phía bên kia."
 
-#. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:251
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:245
 msgid "At once. How much time do you think we have?"
 msgstr "Ngay lập tức. Ngài nghĩ chúng ta có bao nhiêu thời gian?"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:255
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:250
 msgid ""
 "A day, perhaps. We fought two clans today; they won’t take long to rally. We "
 "need to be gone from here by sunset next."
@@ -990,25 +984,25 @@ msgstr ""
 "mất nhiều thời gian để tập hợp lại. Chúng ta cần rời khỏi đây trước lúc mặt "
 "trời lặn ngày mai."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:274
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:269
 msgid "We have slain a chieftain! Take heart! This battle is almost won!"
 msgstr ""
 "Chúng ta đã giết được một tên thủ lĩnh! Can đảm lên! Chúng ta gần thắng trận "
 "chiến này rồi!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:295
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:284
 msgid "Ha! Me smashed da funny elf. Me got a trophy!"
 msgstr "Ha! Tau đã đập nát tên thần tiên. Tau được cúp!"
 
-#. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:299
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:289
 msgid "No! This can’t be!"
 msgstr "Không! Không thể nào!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:303
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:295
 msgid ""
 "Soon after Erlornas died, the elven party, lacking a leader and pressed from "
 "all sides, scattered and fled. Their retreat to Wesmere was arduous and long."
@@ -1018,7 +1012,7 @@ msgstr ""
 "của họ về Wesmere rất gian khổ và dài lâu."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:308
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:300
 msgid ""
 "During their retreat, the pass was crossed by another army moving in the "
 "opposite direction. Orcs were back south of the pass, and this time they "
@@ -1028,8 +1022,8 @@ msgstr ""
 "đối diện. Bọn người thú đã trở lại phía nam con đèo, và lần này chúng ở đó "
 "rất, rất lâu."
 
-#. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:318
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:311
 msgid ""
 "We can’t get through, my Lord. These whelps are not individually very "
 "dangerous, but there are huge numbers of them."
@@ -1037,14 +1031,14 @@ msgstr ""
 "Chúng ta không thể đi qua, thưa ngài. Những con quỷ núi này một mình thì "
 "không nguy hiểm lắm, nhưng chúng rất đông."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:322
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:316
 msgid ""
 "Four days of combat and nothing to show for it. How does it feel to you?"
 msgstr "Bốn ngày chiến đấu và chẳng có thay đổi gì. Cảm giác như thế nào?"
 
-#. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:326
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:321
 msgid ""
 "Terrible, my lord. Never in my life did I dream I’d be bested by mere "
 "trolls. What are your orders?"
@@ -1052,8 +1046,8 @@ msgstr ""
 "Thật kinh khủng, thưa ngài. Chưa bao giờ trong đời tôi mơ thấy rằng tôi bị "
 "quỷ núi đánh bại. Mệnh lệnh của ngài là gì ạ?"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:330
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:326
 msgid ""
 "Withdraw and make camp a safe distance from the hills. There is no further "
 "point in this fight. We’ll wait for reinforcements."
@@ -1062,7 +1056,7 @@ msgstr ""
 "này. Chúng ta sẽ chờ viện binh."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:334
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:332
 msgid ""
 "The reinforcements arrived a few days later, a crack force of rangers with "
 "some cavalry support. When they attempted the pass again, they found not "
@@ -1073,7 +1067,7 @@ msgstr ""
 "tệ hơn - một quân đội người thú đang đến từ phía bắc."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:339
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:338
 msgid ""
 "The battle that ensued was bloody and inconclusive, and the elven losses "
 "were only the beginning of the mournful toll in a war that would rage for "
@@ -1084,12 +1078,12 @@ msgstr ""
 "chiến tranh ác liệt nhiều năm sau đó."
 
 #. [scenario]: id=05_Linaera_the_Quick
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:9
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:10
 msgid "Linaera the Quick"
 msgstr "Linaera nhanh nhẹn"
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:24
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:26
 msgid ""
 "After a day of hard-earned rest the elves marched north again. This was "
 "unknown country, not frequented even by Wesmere’s furthermost-faring scouts."
@@ -1099,7 +1093,7 @@ msgstr ""
 "nhất của Wesmere."
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:28
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:30
 msgid ""
 "Two days’ travel later, the forward scouts reported another orcish warband "
 "laying siege to a tower."
@@ -1108,7 +1102,7 @@ msgstr ""
 "thú khác đang bao vây một ngọn tháp."
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:32
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:34
 msgid ""
 "Erlornas surveyed the siege from atop a small tree-covered hill overlooking "
 "the tower valley..."
@@ -1117,24 +1111,40 @@ msgstr ""
 "thung lũng có ngọn tháp..."
 
 #. [side]: type=Orcish Warlord, id=Krughnar
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:62
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:69
 msgid "Krughnar"
 msgstr "Krughnar"
 
-#. [side]: type=Silver Mage, id=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:90
-msgid "Linaera"
-msgstr "Linaera"
+#. [side]
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:89
+msgid "Mages"
+msgstr ""
 
-#. [side]: type=Silver Mage, id=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:94
-msgid "Wizards"
-msgstr "Pháp sư"
+#. [objective]: condition=win
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:107
+msgid "Defeat Krughnar and break the siege"
+msgstr "Đánh bại Krughnar và phá cuộc bao vây"
+
+#. [objective]: condition=lose
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:115
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:78
+msgid "Death of Linaera"
+msgstr "Linaera chết"
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:106
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:121
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:89
+msgid "Linaera is a leader and can recruit mages when standing on a keep."
+msgstr ""
+
+#. [objectives]
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:129
+#, fuzzy
+#| msgid ""
+#| "Hint:\n"
+#| "Use Elven Scouts and Linaera’s power of teleportation to mount hit-and-"
+#| "run attacks."
 msgid ""
-"Hint:\n"
 "Use Elven Scouts and Linaera’s power of teleportation to mount hit-and-run "
 "attacks."
 msgstr ""
@@ -1142,24 +1152,13 @@ msgstr ""
 "Sử dụng các trinh sát thần tiên và sức mạnh dịch chuyển tức thời của Linaera "
 "để tấn công theo kiểu đánh-và-chạy."
 
-#. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:110
-msgid "Defeat Krughnar and break the siege"
-msgstr "Đánh bại Krughnar và phá cuộc bao vây"
-
-#. [objective]: condition=lose
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:118
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:75
-msgid "Death of Linaera"
-msgstr "Linaera chết"
-
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:148
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:143
 msgid "Report."
 msgstr "Báo cáo đi."
 
-#. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:152
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:148
 msgid ""
 "A warband of orcs, no women or children among them, besieges a tower. It’s "
 "of human design... but we are far from the lands granted to humans by "
@@ -1169,8 +1168,8 @@ msgstr ""
 "một ngọn tháp. Đó là thiết kế của con người... nhưng chúng ta đang ở xa vùng "
 "đất được cấp cho con người theo hiệp ước, thưa chủ tướng Erlornas."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:156
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:153
 msgid ""
 "Under the letter of the treaty, it is so. But this country is too cold and "
 "barren for us. I wonder, what manner of human would choose to live here, far "
@@ -1180,13 +1179,13 @@ msgstr ""
 "và cằn cỗi đối với chúng ta. Ta tự hỏi, kiểu người gì lại chọn sống ở đây, "
 "xa cách đồng loại của mình? Hừm..."
 
-#. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:160
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:158
 msgid "It trespasses, and should be driven out!"
 msgstr "Như vậy là xâm phạm, bọn người đó nên bị đuổi đi!"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:164
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:163
 msgid ""
 "Hold. It is only one human, or a few of them at most. Time enough to speak "
 "of driving it out when we have no enemies in common."
@@ -1194,7 +1193,7 @@ msgstr ""
 "Khoan. Chỉ có một người, hoặc nhiều nhất là vài người. Chúng ta sẽ có đủ "
 "thời gian để nói về việc đuổi đi khi chúng ta không có kẻ thù nào chung."
 
-#. [message]: id=Erlornas
+#. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:168
 msgid ""
 "Tell me: I see no bridge over the chasm around that keep. Is there any sign "
@@ -1204,8 +1203,8 @@ msgstr ""
 "pháo đài đó cả. Có dấu hiệu nào cho thấy nó đã bị những người phòng thủ rút "
 "đi không?"
 
-#. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:172
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:173
 msgid ""
 "No, lord. No traces of any construction. It looks like no bridge has ever "
 "existed there. There must be other, hidden means of access to the tower."
@@ -1214,8 +1213,8 @@ msgstr ""
 "cầu nào đã từng tồn tại ở đó. Chắc phải có một cách khác bí mật để vào ngọn "
 "tháp."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:176
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:178
 msgid ""
 "Interesting... Go to my personal stores and bring me a bottle of wine. And a "
 "couple of glasses."
@@ -1223,13 +1222,13 @@ msgstr ""
 "Thú vị đấy... Hãy đến kho riêng của ta và mang cho ta một chai rượu. Và hai "
 "cái ly."
 
-#. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:180
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:183
 msgid "... Glasses?"
 msgstr "... Hai cái?"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:184
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:188
 msgid "Do it. We’ll have a guest soon."
 msgstr "Làm đi. Chúng ta sắp có một vị khách."
 
@@ -1241,8 +1240,8 @@ msgstr "Làm đi. Chúng ta sắp có một vị khách."
 #. and fairies was extremely blurry. In Wesnoth it is
 #. deliberately unclear whether Faerie is a place that is
 #. the source of magical power or a label for the inner
-#. nonhuman/magical nature of the Elves.  Translate freely.
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:196
+#. nonhuman/magical nature of the Elves. Translate freely.
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:202
 msgid ""
 "Erlornas closed his eyes and brought his hands forward, joined palms forming "
 "a cup open to the sky. Soon they began to glow, then to flare like a brazier "
@@ -1260,12 +1259,12 @@ msgstr ""
 "trước."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:204
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:212
 msgid "Some time later..."
 msgstr "Một lúc sau..."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:238
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:236
 msgid ""
 "So you decided to accept the invitation. Good. Welcome, I am lord Erlornas "
 "of Wesmere. I find your presence here... surprising."
@@ -1274,7 +1273,7 @@ msgstr ""
 "Wesmere. Tôi thấy sự có mặt của cô ở đây thật là... bất ngờ."
 
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:242
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:241
 msgid ""
 "Scarcely less than I find yours, my lord elf, but I would welcome your aid "
 "against these orcs. They have been besieging my tower for weeks."
@@ -1295,14 +1294,14 @@ msgstr ""
 "chừng xứ sở này."
 
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:250
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:251
 msgid "Count me an ally, then, lord Erlornas. We can defeat them together."
 msgstr ""
 "Hãy coi tôi là một đồng minh, chủ tướng Erlornas. Chúng ta có thể cùng đánh "
 "bại chúng."
 
-#. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:270
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:265
 msgid ""
 "My lord... humans cannot be trusted! They shift their allegiances with the "
 "changing of the wind!"
@@ -1310,8 +1309,8 @@ msgstr ""
 "Thưa ngài... không thể tin tưởng con người được! Bọn họ thay đổi lòng trung "
 "thành theo chiều gió!"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:274
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:270
 msgid ""
 "That may be, but I do not think this one will betray us to the orcs. And we "
 "may need her assistance, too: that is a powerful force of orcs ahead."
@@ -1320,14 +1319,8 @@ msgstr ""
 "thú. Và chúng ta có thể cần sự hỗ trợ của cô ta: có một lực lượng người thú "
 "mạnh phía trước."
 
-#. [message]: id=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:286
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:131
-msgid "Alas, Erlornas, I have failed us..."
-msgstr "Ôi, Erlornas, tôi đã thất bại rồi..."
-
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:304
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:279
 msgid ""
 "And that is well ended. But, Linaera, there is somewhat else that concerns "
 "me. You are a mage; do you not feel something... wrong... to the east of "
@@ -1338,7 +1331,7 @@ msgstr ""
 "phía đông nơi đây sao?"
 
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:308
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:284
 msgid ""
 "I do indeed. Something evil has recently made a nest in the next valley "
 "over; its servants have been sniffing at the edges of my domain. I had meant "
@@ -1350,25 +1343,39 @@ msgstr ""
 "nhưng nếu thần tiên các bạn muốn bảo vệ đất đai xanh tươi thì tôi nghĩ các "
 "bạn cũng sẽ muốn trừ khử nó không kém gì tôi đâu."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:312
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:289
 msgid "We are of one mind, then. Let us go to it."
 msgstr "Vậy là chúng ta cùng chung ý nghĩ. Hãy đi đến đó."
 
 #. [scenario]: id=06_A_Detour_through_the_Swamp
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:9
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:10
 msgid "A Detour through the Swamp"
 msgstr "Chuyến đi vòng qua đầm lầy"
 
 #. [side]: type=Lich, id=Keremal
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:44
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:45
+msgid "Undead"
+msgstr ""
+
+#. [side]: type=Lich, id=Keremal
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:50
 msgid "Keremal"
 msgstr "Keremal"
 
+#. [objective]: condition=win
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:70
+msgid "Defeat Keremal"
+msgstr "Đánh bại Keremal"
+
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:63
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:90
+#, fuzzy
+#| msgid ""
+#| "Hint:\n"
+#| "Undead are resistant to physical attack. Use mages to attack the undead, "
+#| "and elves to protect and support the mages."
 msgid ""
-"Hint:\n"
 "Undead are resistant to physical attack. Use mages to attack the undead, and "
 "elves to protect and support the mages."
 msgstr ""
@@ -1376,13 +1383,8 @@ msgstr ""
 "Ma quái kháng cự với các kiểu tấn công hữu hình. Sử dụng các pháp sư để tấn "
 "công ma quái, và các thần tiên để bảo vệ và hỗ trợ các pháp sư."
 
-#. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:67
-msgid "Defeat Keremal"
-msgstr "Đánh bại Keremal"
-
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:120
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:107
 msgid ""
 "The evil spirits who have settled in this wetland have turned it into a vile "
 "bog. My apprentices and I have the power to dispel them, but you must "
@@ -1392,17 +1394,8 @@ msgstr ""
 "bãi lầy gớm ghiếc. Tôi và các học trò của tôi có sức mạnh để xua đuổi chúng, "
 "nhưng các bạn phải bảo vệ chúng tôi trước những vũ khí của chúng."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:142
-msgid ""
-"All is lost! Without Linaera’s help, I cannot hope to defeat these "
-"horrifying apparitions!"
-msgstr ""
-"Tất cả thế là hết! Không có sự giúp đỡ của Linaera, ta không thể hy vọng "
-"đánh bại được bọn ma quái kinh tởm này!"
-
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:157
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:118
 msgid ""
 "Thank you, Erlornas... now I can return to my tower in peace. But I think "
 "some of my apprentices wish to follow you north in pursuit of the orcs."
@@ -1412,7 +1405,7 @@ msgstr ""
 "truy đuổi bọn người thú."
 
 #. [message]: role=mage
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:161
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:123
 msgid ""
 "I have always wished to see elves, and now I have fought alongside them! May "
 "I please travel with you?"
@@ -1420,25 +1413,34 @@ msgstr ""
 "Tôi luôn ước ao được nhìn thấy các thần tiên, và giờ thì tôi chiến đấu bên "
 "cạnh họ! Tôi có thể đi cùng các ngài không?"
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:165
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:128
 msgid "Certainly... I shall be glad of your help."
 msgstr "Chắc chắn rồi... Tôi rất vui vì sự giúp đỡ của các bạn."
 
 #. [scenario]: id=07_Showdown
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:9
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:10
 msgid "Showdown"
 msgstr "Trận quyết chiến"
 
 #. [side]: type=Orcish Sovereign, id=Rualsha
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:86
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:63
 msgid "Rualsha"
 msgstr "Rualsha"
 
+#. [objective]: condition=win
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:90
+msgid "Defeat Rualsha"
+msgstr "Đánh bại Rualsha"
+
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:108
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:102
+#, fuzzy
+#| msgid ""
+#| "Hint:\n"
+#| "Your enemy is well-defended against attacks from the south. Use rangers "
+#| "to sneak through the forest and mount a surprise attack from the north."
 msgid ""
-"Hint:\n"
 "Your enemy is well-defended against attacks from the south. Use rangers to "
 "sneak through the forest and mount a surprise attack from the north."
 msgstr ""
@@ -1446,13 +1448,28 @@ msgstr ""
 "Kẻ thù của bạn được bảo vệ tốt trước những đòn tấn công từ phía nam. Sử dụng "
 "các thần tiên gác rừng để lẻn qua khu rừng và tấn công bất ngờ từ phía bắc."
 
-#. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:112
-msgid "Defeat Rualsha"
-msgstr "Đánh bại Rualsha"
+#. [unit]: type=Elvish Ranger, id=Celodith
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:139
+msgid "Celodith"
+msgstr ""
+
+#. [unit]: type=Elvish Ranger, id=Earanduil
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:159
+msgid "Earanduil"
+msgstr ""
+
+#. [unit]: type=Elvish Ranger, id=Elvyniel
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:179
+msgid "Elvyniel"
+msgstr ""
+
+#. [unit]: type=Elvish Ranger, id=Delorfilith
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:199
+msgid "Delorfilith"
+msgstr ""
 
 #. [message]: speaker=Lomarfel
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:218
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:212
 msgid ""
 "My lord! We have ridden hard for over a week to catch up with you! The "
 "Ka’lian has deliberated, and asks you to defeat Rualsha quickly before he "
@@ -1463,7 +1480,7 @@ msgstr ""
 "có thể tập hợp một lực lượng xâm lược hùng mạnh."
 
 #. [message]: speaker=Rualsha
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:222
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:217
 msgid ""
 "Puny elves! My full army will be here soon, and then we will crush you. You "
 "will beg for a quick death!"
@@ -1472,7 +1489,7 @@ msgstr ""
 "bẹp các ngươi. Các ngươi sẽ cầu xin để được chết nhanh chóng!"
 
 #. [message]: speaker=unit
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:232
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:229
 msgid ""
 "You may slay me, Erlornas, but my people live on. They will not forget! They "
 "will pursue you, and destroy you utterly... we will... we... arrgh..."
@@ -1482,7 +1499,7 @@ msgstr ""
 "sẽ... bọn ta... ặặc..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:243
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:242
 msgid ""
 "But Rualsha overestimated the will of his troops. With their leader dead, "
 "they scattered, and fled from the elves back to their fastnesses in the far "
@@ -1492,20 +1509,20 @@ msgstr ""
 "chúng tan rã, và chạy trốn khỏi các thần tiên trở về thành trì của chúng ở "
 "xa về phía bắc."
 
-#. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:255
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:253
 msgid "It grieves me to take life, even of a barbarian such as Rualsha."
 msgstr ""
 "Ta thật đau lòng khi phải giết người, ngay cả với một kẻ man rợ như Rualsha."
 
-#. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:259
+#. [message]: role=advisor
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:258
 msgid ""
 "If the orcs press us, we shall need to become more accustomed to fighting."
 msgstr ""
 "Nếu người thú đe dọa chúng ta, chúng ta cần phải quen với việc chiến đấu."
 
-#. [message]: id=Erlornas
+#. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:263
 msgid ""
 "I fear it will be so. We have won a first victory here, but dark times come "
@@ -1513,6 +1530,62 @@ msgid ""
 msgstr ""
 "Ta sợ sẽ phải như vậy. Chúng ta đã giành chiến thắng đầu tiên ở đây, nhưng "
 "những ngày tháng đen tối sẽ theo sau gót."
+
+#: data/campaigns/An_Orcish_Incursion/utils/characters.cfg:6
+msgid "Erlornas"
+msgstr "Erlornas"
+
+#: data/campaigns/An_Orcish_Incursion/utils/characters.cfg:16
+msgid "Linaera"
+msgstr "Linaera"
+
+#. [message]: speaker=narrator
+#: data/campaigns/An_Orcish_Incursion/utils/deaths.cfg:13
+msgid ""
+"Lord Erlornas never saw the blade that felled him. He died on the spot, with "
+"not a chance to issue last commands or farewells. Without him his wardens "
+"soon fell into confusion, and losing heart withdrew from the battle."
+msgstr ""
+"Chủ tướng Erlornas không bao giờ nhìn thấy lưỡi kiếm đã hạ gục anh. Anh hy "
+"sinh ngay tại chỗ, không có một cơ hội để nói ra những mệnh lệnh cuối cùng "
+"hay lời vĩnh biệt. Không có anh quân lính nhanh chóng rơi vào hỗn loạn và "
+"không còn dũng khí, họ rút lui khỏi trận chiến."
+
+#. [message]: speaker=narrator
+#: data/campaigns/An_Orcish_Incursion/utils/deaths.cfg:19
+msgid ""
+"When reinforcements finally arrived, elves managed to dislodge the orcish "
+"tribe. But the threat from the north remained unresolved and loomed large "
+"over their future."
+msgstr ""
+"Khi viện binh đến, các thần tiên đã đánh bật được bộ lạc người thú. Nhưng "
+"mối đe dọa từ phía bắc vẫn còn chưa được giải quyết và hiện ra lù lù trước "
+"tương lai của họ."
+
+#. [message]: speaker=Linaera
+#: data/campaigns/An_Orcish_Incursion/utils/deaths.cfg:37
+msgid "Alas, Erlornas, I have failed us..."
+msgstr "Ôi, Erlornas, tôi đã thất bại rồi..."
+
+#. [message]: speaker=Erlornas
+#: data/campaigns/An_Orcish_Incursion/utils/deaths.cfg:49
+#, fuzzy
+#| msgid ""
+#| "All is lost! Without Linaera’s help, I cannot hope to defeat these "
+#| "horrifying apparitions!"
+msgid ""
+"All is lost! Without Linaera’s help, I cannot hope to defeat these "
+"abominations!"
+msgstr ""
+"Tất cả thế là hết! Không có sự giúp đỡ của Linaera, ta không thể hy vọng "
+"đánh bại được bọn ma quái kinh tởm này!"
+
+#: data/campaigns/An_Orcish_Incursion/utils/macros.cfg:4
+msgid "Hint:"
+msgstr ""
+
+#~ msgid "Wizards"
+#~ msgstr "Pháp sư"
 
 #~ msgid "Time runs out"
 #~ msgstr "Hết thời gian"

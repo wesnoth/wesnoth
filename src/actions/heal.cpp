@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,22 +17,19 @@
  * Healing (at start of side turn).
  */
 
-#include "heal.hpp"
+#include "actions/heal.hpp"
 
-#include "../game_board.hpp"
-#include "../game_display.hpp"
-#include "../gettext.hpp"
-#include "../log.hpp"
-#include "../map.hpp"
-#include "../replay.hpp"
-#include "../resources.hpp"
-#include "../team.hpp"
-#include "../unit.hpp"
-#include "../unit_abilities.hpp"
-#include "../unit_display.hpp"
-#include "../unit_map.hpp"
+#include "gettext.hpp"
+#include "log.hpp"
+#include "map/map.hpp"
+#include "play_controller.hpp"
+#include "resources.hpp"
+#include "team.hpp"
+#include "units/unit.hpp"
+#include "units/abilities.hpp"
+#include "units/udisplay.hpp"
+#include "units/map.hpp"
 
-#include <boost/foreach.hpp>
 #include <list>
 #include <vector>
 
@@ -85,8 +82,8 @@ namespace {
 	POISON_STATUS poison_progress(int side, const unit & patient,
 	                              std::vector<unit *> & healers)
 	{
-		const std::vector<team> &teams = *resources::teams;
-		unit_map &units = *resources::units;
+		const std::vector<team> &teams = resources::gameboard->teams();
+		unit_map &units = resources::gameboard->units();
 
 		POISON_STATUS curing = POISON_NORMAL;
 
@@ -98,8 +95,7 @@ namespace {
 				return POISON_CURE;
 
 			// Regeneration?
-			BOOST_FOREACH (const unit_ability & regen,
-			               patient.get_abilities("regenerate"))
+			for (const unit_ability & regen : patient.get_abilities("regenerate"))
 			{
 				curing = std::max(curing, poison_status((*regen.first)["poison"]));
 				if ( curing == POISON_CURE )
@@ -111,7 +107,7 @@ namespace {
 		// Look through the healers to find a curer.
 		unit_map::iterator curer = units.end();
 		// Assumed: curing is not POISON_CURE at the start of any iteration.
-		BOOST_FOREACH (const unit_ability & heal, patient.get_abilities("heals"))
+		for (const unit_ability & heal : patient.get_abilities("heals"))
 		{
 			POISON_STATUS this_cure = poison_status((*heal.first)["poison"]);
 			if ( this_cure <= curing )
@@ -182,7 +178,7 @@ namespace {
 	 */
 	int heal_amount(int side, const unit & patient, std::vector<unit *> & healers)
 	{
-		unit_map &units = *resources::units;
+		unit_map &units = resources::gameboard->units();
 
 		int healing = 0;
 		int harming = 0;
@@ -219,7 +215,7 @@ namespace {
 		if ( update_healing(healing, harming, heal_effect.get_composite_value()) )
 		{
 			// Collect the healers involved.
-			BOOST_FOREACH (const unit_abilities::individual_effect & heal, heal_effect)
+			for (const unit_abilities::individual_effect & heal : heal_effect)
 				healers.push_back(&*units.find(heal.loc));
 
 			if ( !healers.empty() ) {
@@ -242,7 +238,7 @@ namespace {
 			patient.heal(amount);
 		else if ( amount < 0 )
 			patient.take_hit(-amount);
-		resources::screen->invalidate_unit();
+		game_display::get_singleton()->invalidate_unit();
 	}
 
 
@@ -300,11 +296,9 @@ void calculate_healing(int side, bool update_display)
 	std::list<heal_unit> unit_list;
 
 	// We look for all allied units, then we see if our healer is near them.
-	BOOST_FOREACH(unit &patient, *resources::units) {
+	for (unit &patient : resources::gameboard->units()) {
 
 		if ( patient.get_state("unhealable") || patient.incapacitated() ) {
-			if ( patient.side() == side )
-				patient.set_resting(true);
 			continue;
 		}
 
@@ -319,7 +313,6 @@ void calculate_healing(int side, bool update_display)
 		if ( patient.side() == side ) {
 			if ( patient.resting() || patient.is_healthy() )
 				healing += game_config::rest_heal_amount;
-			patient.set_resting(true);
 		}
 
 		// Main healing.
@@ -350,12 +343,9 @@ void calculate_healing(int side, bool update_display)
 			DBG_NG << "Just before healing animations, unit has " << healers.size() << " potential healers.\n";
 		}
 
-		const team & viewing_team =
-			(*resources::teams)[resources::screen->viewing_team()];
-		if (!recorder.is_skipping() && update_display &&
-		    patient.is_visible_to_team(viewing_team, resources::gameboard->map(), false) )
+		if (!resources::controller->is_skipping_replay() && update_display)
 		{
-			unit_list.push_front(heal_unit(patient, healers, healing, curing == POISON_CURE));
+			unit_list.emplace_front(patient, healers, healing, curing == POISON_CURE);
 		}
 		else
 		{
@@ -368,4 +358,3 @@ void calculate_healing(int side, bool update_display)
 
 	DBG_NG << "end of healing calculations\n";
 }
-

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SAMPLE_USER_HANDLER_HPP_INCLUDED
-#define SAMPLE_USER_HANDLER_HPP_INCLUDED
+#pragma once
 
 #include "user_handler.hpp"
 
@@ -38,13 +37,13 @@ class suh : public user_handler {
 		bool login(const std::string& name, const std::string& password, const std::string&);
 		void user_logged_in(const std::string& name);
 
-		void password_reminder(const std::string& name);
-
 		bool user_exists(const std::string& name);
 		bool user_is_active(const std::string& name);
 
 		bool user_is_moderator(const std::string& name);
 		void set_is_moderator(const std::string& name, const bool& is_moderator);
+
+		BAN_TYPE user_is_banned(const std::string& name, const std::string&);
 
 		std::string user_info(const std::string& name);
 
@@ -53,29 +52,29 @@ class suh : public user_handler {
 					password(),
 					realname(),
 					mail(),
-					lastlogin(time(NULL)),
-					registrationdate(time(NULL)),
+					lastlogin(std::time(nullptr)),
+					registrationdate(std::time(nullptr)),
 					is_moderator(false) {}
 			std::string password;
 			std::string realname;
 			std::string mail;
-			time_t lastlogin;
-			time_t registrationdate;
+			std::time_t lastlogin;
+			std::time_t registrationdate;
 			bool is_moderator;
 		};
 
 		void set_user_detail(const std::string& user, const std::string& detail, const std::string& value);
 		std::string get_valid_details();
 
-		std::string create_pepper(const std::string&) { return ""; }
+		std::string extract_salt(const std::string&) { return ""; }
 		bool use_phpbb_encryption() const { return false; }
 
 	private:
 		std::string get_mail(const std::string& user);
 		std::string get_password(const std::string& user);
 		std::string get_realname(const std::string& user) ;
-		time_t get_lastlogin(const std::string& user);
-		time_t get_registrationdate(const std::string& user);
+		std::time_t get_lastlogin(const std::string& user);
+		std::time_t get_registrationdate(const std::string& user);
 
 		void check_name(const std::string& name);
 		void check_mail(const std::string& mail);
@@ -86,12 +85,10 @@ class suh : public user_handler {
 		void set_password(const std::string& user, const std::string& password);
 		void set_realname(const std::string& user, const std::string& realname);
 
-		void set_lastlogin(const std::string& user, const time_t& lastlogin);
+		void set_lastlogin(const std::string& user, const std::time_t& lastlogin);
 
 		int user_expiration_;
 
 		std::map <std::string,user> users_;
 		std::vector<std::string> users();
 };
-
-#endif //SAMPLE_USER_HANDLER_HPP_INCLUDED

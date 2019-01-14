@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2010 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2010 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,13 +12,22 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_DRAWING_HPP_INCLUDED
-#define GUI_WIDGETS_DRAWING_HPP_INCLUDED
+#pragma once
 
-#include "gui/widgets/control.hpp"
+#include "gui/widgets/styled_widget.hpp"
+
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
+
+class config;
 
 namespace gui2
 {
+namespace implementation
+{
+	struct builder_drawing;
+}
+// ------------ WIDGET -----------{
 
 /**
  * A widget to draw upon.
@@ -26,37 +35,56 @@ namespace gui2
  * This widget has a fixed size like the spacer, but allows the user to
  * manual draw items. The widget is display only.
  */
-class tdrawing : public tcontrol
+class drawing : public styled_widget
 {
 public:
-	tdrawing() : tcontrol(COUNT), best_size_(0, 0)
+	explicit drawing(const implementation::builder_drawing& builder);
+
+	canvas& get_drawing_canvas()
 	{
+		return get_canvas(0);
+	}
+
+	void set_drawing_data(const ::config& cfg)
+	{
+		get_drawing_canvas().set_cfg(cfg);
+	}
+
+	void append_drawing_data(const ::config& cfg)
+	{
+		get_drawing_canvas().append_cfg(cfg);
 	}
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
+	/** See @ref widget::request_reduce_width. */
+	virtual void request_reduce_width(const unsigned maximum_width) override;
+
+	/** See @ref widget::request_reduce_height. */
+	virtual void request_reduce_height(const unsigned maximum_height) override;
+
 private:
-	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const OVERRIDE;
+	/** See @ref widget::calculate_best_size. */
+	virtual point calculate_best_size() const override;
 
 public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref tcontrol::set_active. */
-	virtual void set_active(const bool active) OVERRIDE;
+	/** See @ref styled_widget::set_active. */
+	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
-	virtual bool get_active() const OVERRIDE;
+	/** See @ref styled_widget::get_active. */
+	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
-	virtual unsigned get_state() const OVERRIDE;
+	/** See @ref styled_widget::get_state. */
+	virtual unsigned get_state() const override;
 
-	/** See @ref twidget::disable_click_dismiss. */
-	bool disable_click_dismiss() const OVERRIDE;
+	/** See @ref widget::disable_click_dismiss. */
+	bool disable_click_dismiss() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_best_size(const tpoint& best_size)
+	void set_best_size(const point& best_size)
 	{
 		best_size_ = best_size;
 	}
@@ -68,19 +96,59 @@ private:
 	 * Note the order of the states must be the same as defined in
 	 * settings.hpp.
 	 */
-	enum tstate {
+	enum state_t {
 		ENABLED,
-		COUNT
 	};
 
 	/** When we're used as a fixed size item, this holds the best size. */
-	tpoint best_size_;
+	point best_size_;
 
-	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
+	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
+	virtual const std::string& get_control_type() const override;
 };
 
+// }---------- DEFINITION ---------{
+
+struct drawing_definition : public styled_widget_definition
+{
+	explicit drawing_definition(const config& cfg);
+
+	struct resolution : public resolution_definition
+	{
+		explicit resolution(const config& cfg);
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct builder_drawing : public builder_styled_widget
+{
+	explicit builder_drawing(const config& cfg);
+
+	using builder_styled_widget::build;
+
+	widget* build() const;
+
+	/** The width of the widget. */
+	typed_formula<unsigned> width;
+
+	/** The height of the widget. */
+	typed_formula<unsigned> height;
+
+	/** Config containing what to draw on the widgets canvas. */
+	config draw;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
-
-#endif

@@ -1,9 +1,46 @@
 [Unit]
-Description=Wesnoth Multiplayer Server Daemon
+Description=Wesnoth@BINARY_SUFFIX@ Multiplayer Server Daemon
+Documentation=https://www.wesnoth.org/wiki/ServerAdministration
+Documentation=man:wesnothd(6)
 After=network.target
+# Other wesnothd installations use the same port by default
+# Conflicts=wesnothd-1.12.service wesnothd-1.10.service
 
 [Service]
-ExecStart=@CMAKE_INSTALL_PREFIX@/@BINDIR@/wesnothd
+# If wesnothd is started from within the game it runs under a different user
+# Deleting the pipe resets owner, group and mode
+ExecStartPre=/bin/rm -f @FIFO_DIR@/socket
+
+ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/wesnothd@BINARY_SUFFIX@ -t 2 -T 5
+# You can use -c to specify the same configuration file
+# which is used when starting wensothd from within the wesnoth UI
+# e.g. -c /home/user/.local/share/wesnoth/1.14/lan_server.cfg
+# (and make sure wesnothd has the required access permissions)
+
+ExecStopPost=/bin/rm -f @FIFO_DIR@/socket
+
+SyslogIdentifier=Wesnothd@BINARY_SUFFIX@
+WorkingDirectory=@FIFODIR@
+User=nobody
+Group=users
+
+# Additional security-related features
+# (when using the -c option, do not use ProtectHome)
+ProtectHome=yes
+ProtectSystem=strict
+ReadWritePaths=@FIFO_DIR@
+PrivateTmp=yes
+PrivateDevices=yes
+NoNewPrivileges=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictRealtime=yes
+MemoryDenyWriteExecute=yes
+SystemCallArchitectures=native
+ProtectControlGroups=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+RestrictNamespaces=yes
+LockPersonality=yes
 
 [Install]
 WantedBy=multi-user.target

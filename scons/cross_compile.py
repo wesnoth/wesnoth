@@ -2,7 +2,7 @@
 import os
 
 def setup_cross_compile(env):
-    if "mingw" in env["host"]:
+    if "mingw" in env["host"] or env["PLATFORM"] == "msys":
         env["PLATFORM"] = "win32"
         env["PROGSUFFIX"] = ".exe"
         env.Tool("mingw")
@@ -19,7 +19,7 @@ def setup_cross_compile(env):
             "RC"
             ]
         for tool in tools:
-            if env.has_key(tool):
+            if tool in env:
                 env[tool] = env["host"] + "-" + env[tool]
 
         env.PrependUnique(CPPPATH="$prefix/include", LIBPATH="$prefix/lib")

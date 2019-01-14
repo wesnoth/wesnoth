@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2013 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2013 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,6 +19,8 @@
 #include "gui/widgets/settings.hpp"
 
 namespace gui2
+{
+namespace dialogs
 {
 
 /*WIKI
@@ -39,7 +41,8 @@ namespace gui2
 
 REGISTER_DIALOG(edit_text)
 
-tedit_text::tedit_text(const std::string& title,
+//TODO: add  a way to disallow certain characters (like spaces or ")
+edit_text::edit_text(const std::string& title,
 					   const std::string& label,
 					   std::string& text)
 {
@@ -47,4 +50,5 @@ tedit_text::tedit_text(const std::string& title,
 	register_label("label", true, label, true);
 	register_text("text", true, text, true);
 }
-}
+} // namespace dialogs
+} // namespace gui2

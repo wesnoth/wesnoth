@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
-                 2008 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+                 2008 - 2015 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,15 +15,23 @@
 
 #include "addon/info.hpp"
 #include "addon/manager.hpp"
+#include "addon/state.hpp"
 #include "addon/validation.hpp"
 #include "cursor.hpp"
-#include "display.hpp"
-#include "formula_string_utils.hpp"
+#include "font/pango/escape.hpp"
+#include "formula/string_utils.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/widgets/retval.hpp"
 #include "log.hpp"
+#include "random.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/utf8_exception.hpp"
+#include "utils/parse_network_address.hpp"
+
+#include <stdexcept>
 
 #include "addon/client.hpp"
 
@@ -33,26 +41,21 @@ static lg::log_domain log_addons_client("addons-client");
 #define LOG_ADDONS LOG_STREAM(info,  log_addons_client)
 #define DBG_ADDONS LOG_STREAM(debug, log_addons_client)
 
-addons_client::addons_client(display& disp, const std::string& address)
-	: disp_(disp)
-	, addr_(address)
+using gui2::dialogs::network_transmission;
+
+addons_client::addons_client(const std::string& address)
+	: addr_(address)
 	, host_()
 	, port_()
-	, conn_(NULL)
-	, stat_(NULL)
+	, conn_(nullptr)
 	, last_error_()
+	, last_error_data_()
 {
-	const std::vector<std::string>& address_components =
-		utils::split(addr_, ':');
-
-	if(address_components.empty()) {
+	try {
+		std::tie(host_, port_) = parse_network_address(addr_, std::to_string(default_campaignd_port));
+	} catch(const std::runtime_error&) {
 		throw invalid_server_address();
 	}
-
-	// FIXME: this parsing will break IPv6 numeric addresses! */
-	host_ = address_components[0];
-	port_ = address_components.size() == 2 ?
-		address_components[1] : str_cast(default_campaignd_port);
 }
 
 void addons_client::connect()
@@ -62,10 +65,11 @@ void addons_client::connect()
 	utils::string_map i18n_symbols;
 	i18n_symbols["server_address"] = addr_;
 
-	conn_ = new network_asio::connection(host_, port_);
+	conn_.reset(new network_asio::connection(host_, port_));
 
 	this->wait_for_transfer_done(
-		vgettext("Connecting to $server_address|...", i18n_symbols));
+		VGETTEXT("Connecting to $server_address|...", i18n_symbols),
+		transfer_mode::connect);
 }
 
 bool addons_client::request_addons_list(config& cfg)
@@ -74,12 +78,13 @@ bool addons_client::request_addons_list(config& cfg)
 
 	config response_buf;
 
-	/** @todo FIXME: get rid of this legacy "campaign"/"campaigns" silliness */
+	/** @todo FIXME: get rid of this legacy "campaign"/"campaigns" silliness
+	 */
 
 	this->send_simple_request("request_campaign_list", response_buf);
 	this->wait_for_transfer_done(_("Downloading list of add-ons..."));
 
-	cfg = response_buf.child("campaigns");
+	std::swap(cfg, response_buf.child("campaigns"));
 
 	return !this->update_last_error(response_buf);
 }
@@ -100,28 +105,33 @@ bool addons_client::request_distribution_terms(std::string& terms)
 	return !this->update_last_error(response_buf);
 }
 
-bool addons_client::upload_addon(const std::string& id, std::string& response_message)
+bool addons_client::upload_addon(const std::string& id, std::string& response_message, config& cfg)
 {
 	LOG_ADDONS << "preparing to upload " << id << '\n';
 
 	response_message.clear();
 
-	config cfg;
-	get_addon_pbl_info(id, cfg);
-
 	utils::string_map i18n_symbols;
-	i18n_symbols["addon_title"] = cfg["title"];
+	i18n_symbols["addon_title"] = font::escape_text(cfg["title"]);
 	if(i18n_symbols["addon_title"].empty()) {
-		i18n_symbols["addon_title"] = make_addon_title(id);
+		i18n_symbols["addon_title"] = font::escape_text(make_addon_title(id));
+	}
+
+	if(!addon_name_legal(id)){
+		i18n_symbols["addon_id"] = font::escape_text(id);
+		this->last_error_ =
+			VGETTEXT("The add-on <i>$addon_title</i> has an invalid id '$addon_id' "
+				"and cannot be published.", i18n_symbols);
+		return false;
 	}
 
 	std::string passphrase = cfg["passphrase"];
 	// generate a random passphrase and write it to disk
 	// if the .pbl file doesn't provide one already
 	if(passphrase.empty()) {
-		passphrase.resize(8);
-		for(size_t n = 0; n != 8; ++n) {
-			passphrase[n] = 'a' + (rand()%26);
+		passphrase.resize(16);
+		for(std::size_t n = 0; n < passphrase.size(); ++n) {
+			passphrase[n] = randomness::generator->get_random_int('a', 'z');
 		}
 		cfg["passphrase"] = passphrase;
 		set_addon_pbl_info(id, cfg);
@@ -132,16 +142,43 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	cfg["name"] = id;
 
 	config addon_data;
-	archive_addon(id, addon_data);
+	try {
+		archive_addon(id, addon_data);
+	} catch(const utf8::invalid_utf8_exception&){
+		this->last_error_ =
+			VGETTEXT("The add-on <i>$addon_title</i> has a file or directory "
+				"containing invalid characters and cannot be published.", i18n_symbols);
+		return false;
+	}
+
+	std::vector<std::string> badnames;
+	if(!check_names_legal(addon_data, &badnames)){
+		this->last_error_ =
+			VGETTEXT("The add-on <i>$addon_title</i> has an invalid file or directory "
+				"name and cannot be published. "
+
+				"File or directory names may not contain '..' or end with '.' or be longer than 255 characters. "
+				"It also may not contain whitespace, control characters, or any of the following characters:\n\n&quot; * / : &lt; &gt; ? \\ | ~"
+				, i18n_symbols);
+		this->last_error_data_ = font::escape_text(utils::join(badnames, "\n"));
+		return false;
+	}
+	if(!check_case_insensitive_duplicates(addon_data, &badnames)){
+		this->last_error_ =
+			VGETTEXT("The add-on <i>$addon_title</i> contains files or directories with case conflicts. "
+				"File or directory names may not be differently-cased versions of the same string.", i18n_symbols);
+		this->last_error_data_ = font::escape_text(utils::join(badnames, "\n"));
+		return false;
+	}
 
 	config request_buf, response_buf;
-	request_buf.add_child("upload", cfg).add_child("data", addon_data);
+	request_buf.add_child("upload", cfg).add_child("data", std::move(addon_data));
 
 	LOG_ADDONS << "sending " << id << '\n';
 
 	this->send_request(request_buf, response_buf);
-	this->wait_for_transfer_done(vgettext("Sending add-on <i>$addon_title</i>...", i18n_symbols
-	), true);
+	this->wait_for_transfer_done(VGETTEXT("Sending add-on <i>$addon_title</i>...", i18n_symbols
+	), transfer_mode::upload);
 
 	if(const config& message_cfg = response_buf.child("message")) {
 		response_message = message_cfg["message"].str();
@@ -156,13 +193,12 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 {
 	response_message.clear();
 
-	config cfg;
-	get_addon_pbl_info(id, cfg);
+	config cfg = get_addon_pbl_info(id);
 
 	utils::string_map i18n_symbols;
-	i18n_symbols["addon_title"] = cfg["title"];
+	i18n_symbols["addon_title"] = font::escape_text(cfg["title"]);
 	if(i18n_symbols["addon_title"].empty()) {
-		i18n_symbols["addon_title"] = make_addon_title(id);
+		i18n_symbols["addon_title"] = font::escape_text(make_addon_title(id));
 	}
 
 	config request_buf, response_buf;
@@ -174,7 +210,7 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 	LOG_ADDONS << "requesting server to delete " << id << '\n';
 
 	this->send_request(request_buf, response_buf);
-	this->wait_for_transfer_done(vgettext("Removing add-on <i>$addon_title</i> from the server...", i18n_symbols
+	this->wait_for_transfer_done(VGETTEXT("Removing add-on <i>$addon_title</i> from the server...", i18n_symbols
 	));
 
 	if(const config& message_cfg = response_buf.child("message")) {
@@ -196,12 +232,12 @@ bool addons_client::download_addon(config& archive_cfg, const std::string& id, c
 	request_body["increase_downloads"] = increase_downloads;
 
 	utils::string_map i18n_symbols;
-	i18n_symbols["addon_title"] = title;
+	i18n_symbols["addon_title"] = font::escape_text(title);
 
 	LOG_ADDONS << "downloading " << id << '\n';
 
 	this->send_request(request_buf, archive_cfg);
-	this->wait_for_transfer_done(vgettext("Downloading add-on <i>$addon_title</i>...", i18n_symbols));
+	this->wait_for_transfer_done(VGETTEXT("Downloading add-on <i>$addon_title</i>...", i18n_symbols));
 
 	return !this->update_last_error(archive_cfg);
 }
@@ -211,13 +247,18 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 	const cursor::setter cursor_setter(cursor::WAIT);
 
 	utils::string_map i18n_symbols;
-	i18n_symbols["addon_title"] = info.title;
+	i18n_symbols["addon_title"] = font::escape_text(info.title);
 
 	if(!check_names_legal(archive_cfg)) {
-		gui2::show_error_message(disp_.video(),
-			vgettext("The add-on <i>$addon_title</i> has an invalid file or directory "
+		gui2::show_error_message(
+			VGETTEXT("The add-on <i>$addon_title</i> has an invalid file or directory "
 				"name and cannot be installed.", i18n_symbols));
 		return false;
+	}
+	if(!check_case_insensitive_duplicates(archive_cfg)){
+		gui2::show_error_message(
+			VGETTEXT("The add-on <i>$addon_title</i> has file or directory names "
+				"with case conflicts. This may cause problems.", i18n_symbols));
 	}
 
 	// Add local version information before unpacking
@@ -262,22 +303,206 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 	return true;
 }
 
+bool addons_client::try_fetch_addon(const addon_info & addon)
+{
+	config archive;
+
+	if(!(
+		download_addon(archive, addon.id, addon.title, !is_addon_installed(addon.id)) &&
+		install_addon(archive, addon)
+		)) {
+		const std::string& server_error = get_last_server_error();
+		if(!server_error.empty()) {
+			gui2::show_error_message(
+				_("The server responded with an error:") + "\n" + server_error);
+		}
+		return false;
+	} else {
+		return true;
+	}
+}
+
+addons_client::install_result addons_client::do_resolve_addon_dependencies(const addons_list& addons, const addon_info& addon)
+{
+	install_result result;
+	result.outcome = install_outcome::success;
+	result.wml_changed = false;
+
+	auto cursor_setter = std::make_unique<cursor::setter>(cursor::WAIT);
+
+	// TODO: We don't currently check for the need to upgrade. I'll probably
+	// work on that when implementing dependency tiers later.
+
+	const std::set<std::string>& deps = addon.resolve_dependencies(addons);
+
+	std::vector<std::string> missing_deps;
+	std::vector<std::string> broken_deps;
+
+	for(const std::string& dep : deps) {
+		try {
+			addon_tracking_info info = get_addon_tracking_info(addons.at(dep));
+
+			// ADDON_NONE means not installed.
+			if(info.state == ADDON_NONE) {
+				missing_deps.push_back(dep);
+			} else if(info.state == ADDON_INSTALLED_UPGRADABLE) {
+				// Tight now, we don't need to distinguish the lists of missing
+				// and outdated addons, so just add them to missing.
+				missing_deps.push_back(dep);
+			}
+		} catch(const std::out_of_range&) {
+			// Dependency wasn't found on server, check locally directly.
+			if(!is_addon_installed(dep)) {
+				broken_deps.push_back(dep);
+			}
+		}
+	}
+
+	cursor_setter.reset();
+
+	if(!broken_deps.empty()) {
+		std::string broken_deps_report;
+
+		broken_deps_report = _n(
+			"The selected add-on has the following dependency, which is not currently installed or available from the server. Do you wish to continue?",
+			"The selected add-on has the following dependencies, which are not currently installed or available from the server. Do you wish to continue?",
+			broken_deps.size());
+		broken_deps_report += "\n";
+
+		for(const std::string& broken_dep_id : broken_deps) {
+			broken_deps_report += "\n    " + font::unicode_bullet + " " + make_addon_title(broken_dep_id);
+		}
+
+		if(gui2::show_message(_("Broken Dependencies"), broken_deps_report, gui2::dialogs::message::yes_no_buttons) != gui2::retval::OK) {
+			result.outcome = install_outcome::abort;
+			return result; // canceled by user
+		}
+	}
+
+	if(missing_deps.empty()) {
+		// No dependencies to install, carry on.
+		return result;
+	}
+
+	{
+		addons_list options;
+		for(const std::string& dep : missing_deps) {
+			options[dep] = addons.at(dep);
+		}
+
+		gui2::dialogs::install_dependencies dlg(options);
+		bool cont = dlg.show();
+		if(!cont) {
+			return result; // the user has chosen to continue without installing anything.
+		}
+	}
+
+	//
+	// Install dependencies now.
+	//
+
+	std::vector<std::string> failed_titles;
+
+	for(const std::string& dep : missing_deps) {
+		const addon_info& missing_addon = addons.at(dep);
+
+		if(!try_fetch_addon(missing_addon)) {
+			failed_titles.push_back(missing_addon.title);
+		} else {
+			result.wml_changed = true;
+		}
+	}
+
+	if(!failed_titles.empty()) {
+		const std::string& failed_deps_report = _n(
+			"The following dependency could not be installed. Do you still wish to continue?",
+			"The following dependencies could not be installed. Do you still wish to continue?",
+			failed_titles.size()) + std::string("\n\n") + utils::bullet_list(failed_titles);
+
+		result.outcome = gui2::show_message(_("Dependencies Installation Failed"), failed_deps_report, gui2::dialogs::message::yes_no_buttons) == gui2::retval::OK ? install_outcome::success : install_outcome::abort; // If the user cancels, return abort. Otherwise, return success, since the user chose to ignore the failure.
+		return result;
+	}
+
+	return result;
+}
+
+bool addons_client::do_check_before_overwriting_addon(const addon_info& addon)
+{
+	const std::string& addon_id = addon.id;
+
+	const bool pbl = have_addon_pbl_info(addon_id);
+	const bool vcs = have_addon_in_vcs_tree(addon_id);
+
+	if(!pbl && !vcs) {
+		return true;
+	}
+
+	utils::string_map symbols;
+	symbols["addon"] = font::escape_text(addon.title);
+	std::string text;
+	std::vector<std::string> extra_items;
+
+	text = VGETTEXT("The add-on '$addon|' is already installed and contains additional information that will be permanently lost if you continue:", symbols);
+	text += "\n\n";
+
+	if(pbl) {
+		extra_items.push_back(_("Publishing information file (.pbl)"));
+	}
+
+	if(vcs) {
+		extra_items.push_back(_("Version control system (VCS) information"));
+	}
+
+	text += utils::bullet_list(extra_items) + "\n\n";
+	text += _("Do you really wish to continue?");
+
+	return gui2::show_message(_("Confirm"), text, gui2::dialogs::message::yes_no_buttons) == gui2::retval::OK;
+}
+
+addons_client::install_result addons_client::install_addon_with_checks(const addons_list& addons, const addon_info& addon)
+{
+	if(!(do_check_before_overwriting_addon(addon))) {
+		// Just do nothing and leave.
+		install_result result;
+		result.outcome = install_outcome::abort;
+		result.wml_changed = false;
+
+		return result;
+	}
+
+	// Resolve any dependencies
+	install_result res = do_resolve_addon_dependencies(addons, addon);
+	if(res.outcome != install_outcome::success) { // this function only returns SUCCESS and ABORT as outcomes
+		return res; // user aborted
+	}
+
+	if(!try_fetch_addon(addon)) {
+		res.outcome = install_outcome::failure;
+		return res; //wml_changed should have whatever value was obtained in resolving dependencies
+	} else {
+		res.wml_changed = true;
+		return res; //we successfully installed something, so now the wml was definitely changed
+	}
+}
+
 bool addons_client::update_last_error(config& response_cfg)
 {
-	if(config const &error = response_cfg.child("error")) {
-		this->last_error_ = error["message"].str();
+	if(const config& error = response_cfg.child("error")) {
+		this->last_error_ = font::escape_text(error["message"].str());
+		this->last_error_data_ = font::escape_text(error["extra_data"].str());
 		ERR_ADDONS << "server error: " << error << '\n';
 		return true;
 	} else {
 		this->last_error_.clear();
+		this->last_error_data_.clear();
 		return false;
 	}
 }
 
 void addons_client::check_connected() const
 {
-	assert(conn_ != NULL);
-	if(conn_ == NULL) {
+	assert(conn_ != nullptr);
+	if(conn_ == nullptr) {
 		ERR_ADDONS << "not connected to server" << std::endl;
 		throw not_connected_to_server();
 	}
@@ -297,26 +522,68 @@ void addons_client::send_simple_request(const std::string& request_string, confi
 	request.add_child(request_string);
 	this->send_request(request, response);
 }
-
-void addons_client::wait_for_transfer_done(const std::string& status_message, bool track_upload)
+struct read_addon_connection_data : public network_transmission::connection_data
+{
+	read_addon_connection_data(network_asio::connection& conn, addons_client& client)
+		: conn_(conn), client_(client) {}
+	std::size_t total() override { return conn_.bytes_to_read(); }
+	virtual std::size_t current()  override { return conn_.bytes_read(); }
+	virtual bool finished() override { return conn_.done(); }
+	virtual void cancel() override { client_.connect(); }
+	virtual void poll() override { conn_.poll(); }
+	network_asio::connection& conn_;
+	addons_client& client_;
+};
+struct connect_connection_data : public network_transmission::connection_data
+{
+	connect_connection_data(network_asio::connection& conn, addons_client& client)
+		: conn_(conn), client_(client) {}
+	std::size_t total() override { return conn_.bytes_to_read(); }
+	std::size_t current() override { return conn_.bytes_read(); }
+	bool finished() override { return conn_.done(); }
+	void cancel() override { client_.disconnect(); }
+	void poll() override { conn_.poll(); }
+	network_asio::connection& conn_;
+	addons_client& client_;
+};
+struct write_addon_connection_data : public network_transmission::connection_data
+{
+	write_addon_connection_data(network_asio::connection& conn, addons_client& client)
+		: conn_(conn), client_(client) {}
+	std::size_t total() override { return conn_.bytes_to_write(); }
+	virtual std::size_t current()  override { return conn_.bytes_written(); }
+	virtual bool finished() override { return conn_.done(); }
+	virtual void cancel() override { client_.connect(); }
+	virtual void poll() override { conn_.poll(); }
+	network_asio::connection& conn_;
+	addons_client& client_;
+};
+void addons_client::wait_for_transfer_done(const std::string& status_message, transfer_mode mode)
 {
 	check_connected();
-
-	if(!stat_) {
-		stat_ = new gui2::tnetwork_transmission(*conn_, _("Add-ons Manager"), status_message);
-	} else {
-		stat_->set_subtitle(status_message);
-		stat_->set_track_upload(track_upload);
+	std::unique_ptr<network_transmission::connection_data> cd;
+	switch(mode) {
+	case transfer_mode::download:
+		cd.reset(new read_addon_connection_data{*conn_, *this});
+		break;
+	case transfer_mode::connect:
+		cd.reset(new connect_connection_data{*conn_, *this});
+		break;
+	case transfer_mode::upload:
+		cd.reset(new write_addon_connection_data{*conn_, *this});
+		break;
+	default:
+		throw std::invalid_argument("Addon client: invalid transfer mode");
 	}
 
-	if(!stat_->show(disp_.video())) {
+	gui2::dialogs::network_transmission stat(*cd, _("Add-ons Manager"), status_message);
+
+	if(!stat.show()) {
 		// Notify the caller chain that the user aborted the operation.
-		throw user_exit();
+		if(mode == transfer_mode::connect) {
+			throw user_disconnect();
+		} else {
+			throw user_exit();
+		}
 	}
-}
-
-addons_client::~addons_client()
-{
-	delete stat_; // stat_ depends on conn_, so it must be destroyed first!
-	delete conn_;
 }

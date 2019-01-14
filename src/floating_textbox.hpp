@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2014 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -13,18 +13,15 @@
    See the COPYING file for more details.
 */
 
-#ifndef FLOATING_TEXTBOX_H_INCLUDED
-#define FLOATING_TEXTBOX_H_INCLUDED
+#pragma once
 
 // Scoped_resource can't use a pointer to an incomplete pointer with MSVC.
 #include "widgets/textbox.hpp"
-#include "scoped_resource.hpp"
 
+#include <memory>
 #include <set>
 
 class game_display;
-class team;
-class unit_map;
 
 namespace gui{
 
@@ -38,19 +35,19 @@ namespace gui{
 		floating_textbox();
 
 		TEXTBOX_MODE mode() const { return mode_; }
-		const util::scoped_ptr<gui::button>& check() const { return check_; }
-		const util::scoped_ptr<gui::textbox>& box() const { return box_; }
+		const std::unique_ptr<gui::button>& check() const { return check_; }
+		const std::unique_ptr<gui::textbox>& box() const { return box_; }
 
 		void close(game_display& gui);
 		void update_location(game_display& gui);
 		void show(gui::TEXTBOX_MODE mode, const std::string& label,
 			const std::string& check_label, bool checked, game_display& gui);
 		void tab(const std::set<std::string>& dictionary);
-		bool active() const { return box_.get() != NULL; }
+		bool active() const { return box_.get() != nullptr; }
 
 	private:
-		util::scoped_ptr<gui::textbox> box_;
-		util::scoped_ptr<gui::button> check_;
+		std::unique_ptr<gui::textbox> box_;
+		std::unique_ptr<gui::button> check_;
 
 		TEXTBOX_MODE mode_;
 
@@ -58,5 +55,3 @@ namespace gui{
 		int label_;
 	};
 }
-
-#endif

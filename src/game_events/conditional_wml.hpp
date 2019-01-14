@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,8 +18,7 @@
  * a.k.a. conditional actions WML.
  */
 
-#ifndef GAME_EVENTS_CONDITIONAL_WML_H_INCLUDED
-#define GAME_EVENTS_CONDITIONAL_WML_H_INCLUDED
+#pragma once
 
 class  config;
 class vconfig;
@@ -27,9 +26,12 @@ class vconfig;
 
 namespace game_events
 {
-	bool conditional_passed(const vconfig& cond, bool backwards_compat=true);
+	bool conditional_passed(const vconfig& cond);
 	bool matches_special_filter(const config &cfg, const vconfig& filter);
+
+	namespace builtin_conditions {
+		bool have_unit(const vconfig& cfg);
+		bool have_location(const vconfig& cfg);
+		bool variable_matches(const vconfig& cfg);
+	}
 }
-
-#endif // GAME_EVENTS_CONDITIONAL_WML_H_INCLUDED
-

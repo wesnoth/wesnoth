@@ -1,52 +1,49 @@
-# #-#-#-#-#  wesnoth-editor.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
-# Japanese translations for Battle for Wesnoth package.
-# Copyright (C) 2005-2006 Wesnoth development team
-# This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2005.
-# Nobuhito Okada <okyada@gmail.com>, 2005-2007.
-# Naoki IIMURA <amatubu@gmail.com>, 2008.
+# #-#-#-#-#  wesnoth-editor.cpp.pot (PACKAGE VERSION)  #-#-#-#-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Wesnoth development team
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.7.x-dev\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
-"PO-Revision-Date: 2010-01-31 12:03+0900\n"
-"Last-Translator: \n"
-"Language-Team: none\n"
-"Language: \n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2018-03-27 04:26+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: tamanegi, 2018\n"
+"Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
+"ja/)\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: KBabel 1.9\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
 msgid "Single Hex"
-msgstr "1 マス"
+msgstr "1ヘクス"
 
 #. [brush]: id=brush-2
 #: data/core/editor/brushes.cfg:16
 msgid "Radius 1 Hex"
-msgstr "半径 1 マス"
+msgstr "半径1ヘクス"
 
 #. [brush]: id=brush-3
 #: data/core/editor/brushes.cfg:26
 msgid "Radius 2 Hex"
-msgstr "半径 2 マス"
+msgstr "半径2ヘクス"
 
 #. [brush]: id=brush-nw-se
 #: data/core/editor/brushes.cfg:47
 msgid "Hex Line NW-SE"
-msgstr "北西から南東へのライン"
+msgstr "北西-南東ブラシ"
 
 #. [brush]: id=brush-sw-ne
 #: data/core/editor/brushes.cfg:63
-#, fuzzy
-#| msgid "Hex Line NW-SE"
-msgid "Hex Line SE-NW"
-msgstr "北西から南東へのライン"
+msgid "Hex Line SW-NE"
+msgstr "南西-北東ブラシ"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -71,7 +68,7 @@ msgstr "砂漠"
 #. [editor_group]: id=embellishments
 #: data/core/editor/terrain-groups.cfg:38
 msgid "embellishments"
-msgstr ""
+msgstr "飾り"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:45
@@ -81,7 +78,7 @@ msgstr "森林"
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
 msgid "fall"
-msgstr ""
+msgstr "秋"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
@@ -101,7 +98,7 @@ msgstr "洞窟"
 #. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:80
 msgid "obstacle"
-msgstr ""
+msgstr "障害物"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:87
@@ -116,7 +113,7 @@ msgstr "城"
 #. [editor_group]: id=bridge
 #: data/core/editor/terrain-groups.cfg:101
 msgid "bridge"
-msgstr ""
+msgstr "橋"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:108
@@ -126,168 +123,172 @@ msgstr "特殊地形"
 #. [editor_times]: id=empty
 #: data/core/editor/time-of-day.cfg:5
 msgid "None"
-msgstr "なし"
+msgstr ""
 
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:10
 msgid "Test"
-msgstr ""
+msgstr "テスト"
 
 #. [editor_times]: id=default
 #: data/core/editor/time-of-day.cfg:21
 msgid "Default"
-msgstr ""
+msgstr "デフォルト"
 
 #. [editor_times]: id=summer
 #: data/core/editor/time-of-day.cfg:27
 msgid "Summer"
-msgstr ""
+msgstr "夏"
 
 #. [editor_times]: id=winter
 #: data/core/editor/time-of-day.cfg:33
 msgid "Winter"
-msgstr ""
+msgstr "冬"
 
 #. [editor_times]: id=underground
 #: data/core/editor/time-of-day.cfg:39
 msgid "Underground"
-msgstr ""
+msgstr "地下"
 
 #. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:45
 msgid "Deep Underground"
-msgstr ""
+msgstr "深い地下"
 
 #. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:51
 msgid "Indoors"
-msgstr ""
+msgstr "屋内"
 
 #. [editor_times]: id=24
 #: data/core/editor/time-of-day.cfg:57
 msgid "24 Hour Schedule"
-msgstr ""
+msgstr "24時間スケジュール"
 
 #. [editor_times]: id=after_the_fall
 #: data/core/editor/time-of-day.cfg:63
 msgid "After the Fall"
-msgstr ""
+msgstr "「滅び」後"
 
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
-#, fuzzy
-#| msgid "Quit Editor"
 msgid "theme^Editor"
-msgstr "エディタを終了"
+msgstr "エディタ"
 
 #. [menu]: id=menu-editor-file, type=turbo
-#: data/themes/editor.cfg:63
+#: data/themes/editor.cfg:61
 msgid "File"
 msgstr "ファイル"
 
+#. [menu]: id=menu-editor-recent
+#: data/themes/editor.cfg:72
+msgid "Load Recent"
+msgstr "最近のファイルを読み込む"
+
 #. [menu]: id=menu-editor-map
-#: data/themes/editor.cfg:84
+#: data/themes/editor.cfg:90
 msgid "Map"
 msgstr "マップ"
 
+#. [menu]: id=menu-unit-facing
+#: data/themes/editor.cfg:98
+msgid "Unit Facing"
+msgstr "ユニットの色"
+
 #. [menu]: id=menu-editor-transitions
-#: data/themes/editor.cfg:92
-#, fuzzy
-#| msgid "Delay transition updates"
+#: data/themes/editor.cfg:104
 msgid "Transition Update"
-msgstr "変化の更新を遅らせる"
+msgstr "地形のつながりを更新"
 
 #. [menu]: id=menu-editor-window
-#: data/themes/editor.cfg:99
+#: data/themes/editor.cfg:111
 msgid "Window"
 msgstr "ウィンドウ"
 
 #. [menu]: id=menu-editor-areas
-#: data/themes/editor.cfg:108
+#: data/themes/editor.cfg:120
 msgid "Areas"
-msgstr ""
+msgstr "領域"
 
 #. [menu]: id=menu-editor-local-time
-#: data/themes/editor.cfg:116
+#: data/themes/editor.cfg:128
 msgid "Assign Local Time"
-msgstr ""
+msgstr "ローカルタイムを指定する"
 
 #. [menu]: id=menu-editor-local-schedule
-#: data/themes/editor.cfg:122
+#: data/themes/editor.cfg:134
 msgid "Assign Local Time Schedule"
-msgstr ""
+msgstr "ローカルタイムスケジュールを指定する"
 
 #. [menu]: id=menu-editor-side
-#: data/themes/editor.cfg:130
+#: data/themes/editor.cfg:142
 msgid "Side"
-msgstr ""
+msgstr "陣営"
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:148
+#: data/themes/editor.cfg:159
 msgid "villages"
 msgstr "村"
 
 #. [label]: id=units-icon
-#: data/themes/editor.cfg:165
+#: data/themes/editor.cfg:175
 msgid "units"
-msgstr ""
+msgstr "ユニット"
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:444
+#: data/themes/editor.cfg:454
 msgid "Time Schedule Menu"
-msgstr ""
+msgstr "タイムスケジュールメニュー"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:455
+#: data/themes/editor.cfg:465
 msgid "Playlist"
-msgstr ""
+msgstr "プレイリスト"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:461
+#: data/themes/editor.cfg:471
 msgid "Assign Time Schedule"
-msgstr ""
+msgstr "タイムスケジュールを指定する"
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:54
+msgid "Identifier: "
+msgstr "id: "
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:55
+msgid "Name: "
+msgstr "名前: "
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:56
+msgid "Type: "
+msgstr "タイプ: "
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:57
+msgid "Level: "
+msgstr "レベル: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:58
-msgid "Identifier: "
-msgstr ""
+msgid "Cost: "
+msgstr "コスト: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:59
-msgid "Name: "
-msgstr ""
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:60
-msgid "Type: "
-msgstr ""
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:61
-msgid "Level: "
-msgstr ""
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:62
-msgid "Cost: "
-msgstr ""
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Recruit: "
-msgstr ""
+msgstr "雇用リスト: "
 
-#: src/editor/editor_controller.cpp:177
+#: src/editor/controller/editor_controller.cpp:176
 msgid "Fatal error"
 msgstr "致命的なエラー"
 
-#: src/editor/editor_controller.cpp:205
+#: src/editor/controller/editor_controller.cpp:206
 msgid "Do you really want to quit?"
 msgstr "本当に終了してもよろしいですか？"
 
-#: src/editor/editor_controller.cpp:207
+#: src/editor/controller/editor_controller.cpp:208
 msgid ""
-"Do you really want to quit? Changes in the map since the last save will be "
+"Do you really want to quit? Changes to this map since the last save will be "
 "lost."
-msgstr ""
-"本当に終了してもよろしいですか？ 最後に保存したところからのマップの変更は失わ"
-"れます。"
+msgstr "本当に終了しますか？このマップに加えた変更を失われます。"
 
-#: src/editor/editor_controller.cpp:209
+#: src/editor/controller/editor_controller.cpp:210
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -295,148 +296,127 @@ msgstr ""
 "本当に終了してもよろしいですか？ マップは変更されていますが、最後に保存したと"
 "ころからの変更は全て失われます。"
 
-#: src/editor/editor_controller.cpp:212
-msgid "Quit"
-msgstr "終了"
-
-#: src/editor/editor_controller.cpp:223
+#: src/editor/controller/editor_controller.cpp:219
 msgid "No editor time-of-day found."
 msgstr "エディタの時刻設定が見つかりません。"
 
-#: src/editor/editor_controller.cpp:1070
+#: src/editor/controller/editor_controller.cpp:1137
 msgid "Change Unit ID"
-msgstr ""
+msgstr "ユニットIDを変更"
 
-#: src/editor/editor_controller.cpp:1071
+#: src/editor/controller/editor_controller.cpp:1138
 msgid "ID:"
-msgstr ""
+msgstr "ID:"
 
-#: src/editor/editor_controller.cpp:1087
+#: src/editor/controller/editor_controller.cpp:1154
 msgid "Rename Unit"
-msgstr ""
+msgstr "ユニット名を変更"
 
-#: src/editor/editor_controller.cpp:1088
+#: src/editor/controller/editor_controller.cpp:1155
 msgid "Name:"
-msgstr ""
+msgstr "名前:"
 
-#: src/editor/map/context_manager.cpp:127
-#: src/editor/map/context_manager.cpp:288
-msgid "(New Map)"
-msgstr "（新規マップ）"
+#: src/editor/map/context_manager.cpp:189
+msgid "Load Map"
+msgstr "マップ読み込み"
 
-#: src/editor/map/context_manager.cpp:184
-#, fuzzy
-#| msgid "Choose a Map to Open"
-msgid "Choose a File to Open"
-msgstr "読み込むマップを選択"
+#: src/editor/map/context_manager.cpp:257 src/editor/map/map_context.cpp:831
+msgid "New Map"
+msgstr "新規マップ"
 
-#: src/editor/map/context_manager.cpp:290
-#, fuzzy
-#| msgid "(New Map)"
-msgid "(New Scenario)"
-msgstr "（新規マップ）"
+#: src/editor/map/context_manager.cpp:270 src/editor/map/map_context.cpp:831
+msgid "New Scenario"
+msgstr "新しいシナリオ"
 
-#: src/editor/map/context_manager.cpp:322
-#, fuzzy
-#| msgid "(New Map)"
-msgid "(Unnamed Area)"
-msgstr "（新規マップ）"
+#: src/editor/map/context_manager.cpp:326
+msgid "No Recent Files"
+msgstr "最近開いたファイルはありません"
 
-#: src/editor/map/context_manager.cpp:345
-#, fuzzy
-#| msgid "(New Map)"
-msgid "(New Side)"
-msgstr "（新規マップ）"
+#: src/editor/map/context_manager.cpp:364
+msgid "Unnamed Area"
+msgstr "無名の領域"
 
-#: src/editor/map/context_manager.cpp:411
-msgid "Choose a Mask to Apply"
-msgstr "適用するマスクを選択"
+#: src/editor/map/context_manager.cpp:395
+msgid "New Side"
+msgstr "新しい陣営"
 
-#: src/editor/map/context_manager.cpp:418
+#: src/editor/map/context_manager.cpp:451
+msgid "Apply Mask"
+msgstr "マスクを適用"
+
+#: src/editor/map/context_manager.cpp:460
 msgid "Error loading mask"
 msgstr "マスクの読み込みに失敗"
 
-#: src/editor/map/context_manager.cpp:437
+#: src/editor/map/context_manager.cpp:480
 msgid "Identifier:"
-msgstr ""
+msgstr "ID:"
 
-#: src/editor/map/context_manager.cpp:437
+#: src/editor/map/context_manager.cpp:480
 msgid "Rename Area"
-msgstr ""
+msgstr "領域名を変更"
 
-#: src/editor/map/context_manager.cpp:448
+#: src/editor/map/context_manager.cpp:494
 msgid "Choose Target Map"
 msgstr "ターゲットマップを選択"
 
-#: src/editor/map/context_manager.cpp:455
-#: src/editor/map/context_manager.cpp:887
+#: src/editor/map/context_manager.cpp:503
+#: src/editor/map/context_manager.cpp:905
 msgid "Error loading map"
 msgstr "マップの読み込みに失敗"
 
-#: src/editor/map/context_manager.cpp:572
-msgid "Save the Map As"
-msgstr "マップに名前を付けて保存"
+#: src/editor/map/context_manager.cpp:621
+msgid "Save Map As"
+msgstr "名前を付けてマップを保存"
 
-#: src/editor/map/context_manager.cpp:576
-#: src/editor/map/context_manager.cpp:604
-msgid "The file already exists. Do you want to overwrite it?"
-msgstr "マップはすでに存在します。上書きしますか？"
+#: src/editor/map/context_manager.cpp:642
+msgid "Save Scenario As"
+msgstr "名前を付けてシナリオを保存"
 
-#: src/editor/map/context_manager.cpp:600
-#, fuzzy
-#| msgid "Save the Map As"
-msgid "Save the Scenario As"
-msgstr "マップに名前を付けて保存"
-
-#: src/editor/map/context_manager.cpp:639
+#: src/editor/map/context_manager.cpp:674
 msgid "No random map generators found."
 msgstr "ランダムマップジェネレータがありません。"
 
-#: src/editor/map/context_manager.cpp:652
-#: src/editor/map/context_manager.cpp:656
+#: src/editor/map/context_manager.cpp:688
+#: src/editor/map/context_manager.cpp:693
 msgid "Map creation failed."
 msgstr "マップの作成に失敗しました。"
 
-#: src/editor/map/context_manager.cpp:668
+#: src/editor/map/context_manager.cpp:708
 msgid "Unsaved Changes"
 msgstr "保存されていない変更点"
 
-#: src/editor/map/context_manager.cpp:669
-msgid ""
-"Do you want to discard all changes you made to the map since the last save?"
-msgstr "最後に保存したところからの変更を全て放棄しますか？"
+#: src/editor/map/context_manager.cpp:709
+msgid "Do you want to discard all changes made to the map since the last save?"
+msgstr "本当にこれまでにマップに加えた変更を破棄しますか？"
 
-#: src/editor/map/context_manager.cpp:766
-#, fuzzy
-#| msgid "This map is already open."
+#: src/editor/map/context_manager.cpp:765
 msgid "This scenario is already open."
-msgstr "このマップは既に開かれています。"
+msgstr "このシナリオは既に開かれています。"
 
 #: src/editor/map/context_manager.cpp:788
-#: src/editor/map/context_manager.cpp:843
+#: src/editor/map/context_manager.cpp:851
 msgid "This map is already open."
 msgstr "このマップは既に開かれています。"
 
-#: src/editor/map/context_manager.cpp:809
-#, fuzzy
-#| msgid "Map saved."
+#: src/editor/map/context_manager.cpp:812
 msgid "Scenario saved."
-msgstr "マップを保存しました。"
+msgstr "シナリオを保存しました。"
 
-#: src/editor/map/context_manager.cpp:823
+#: src/editor/map/context_manager.cpp:827
 msgid "Map saved."
 msgstr "マップを保存しました。"
 
-#: src/editor/map/context_manager.cpp:866
+#: src/editor/map/context_manager.cpp:884
 msgid "Loaded embedded map data"
 msgstr "読み込まれた埋め込みマップデータ"
 
-#: src/editor/map/context_manager.cpp:867
-#: src/editor/map/context_manager.cpp:881
+#: src/editor/map/context_manager.cpp:885
+#: src/editor/map/context_manager.cpp:898
 msgid "Map loaded from scenario"
-msgstr "シナリオからを読み込まれたマップ"
+msgstr "シナリオから読み込まれたマップ"
 
-#: src/editor/map/context_manager.cpp:877
+#: src/editor/map/context_manager.cpp:895
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -444,25 +424,24 @@ msgstr ""
 "読み込まれた参照マップ:\n"
 "$new"
 
-#: src/editor/map/editor_map.cpp:149
-msgid "Player"
-msgstr "プレイヤー"
+#: src/editor/map/editor_map.cpp:148
+#: src/editor/palette/location_palette.cpp:111
+msgid "Player $side_num"
+msgstr "プレイヤー $side_num"
 
-#: src/editor/map/editor_map.cpp:266
+#: src/editor/map/editor_map.cpp:283
 msgid "The size of the target map is different from the current map"
 msgstr "ターゲットマップのサイズが現在のマップのサイズと異なります"
 
-#: src/editor/map/map_context.cpp:127
+#: src/editor/map/map_context.cpp:145
 msgid "File not found"
 msgstr "ファイルが見つかりません"
 
-#: src/editor/map/map_context.cpp:133
-#, fuzzy
-#| msgid "Empty map file"
+#: src/editor/map/map_context.cpp:152
 msgid "Empty file"
-msgstr "空のマップファイル"
+msgstr "ファイルが空です"
 
-#: src/editor/map/map_context.cpp:175
+#: src/editor/map/map_context.cpp:208
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -470,219 +449,81 @@ msgstr ""
 "マップファイルはシナリオのようですが、map_data 値が存在するファイルを指し示し"
 "ていません"
 
-#: src/editor/map/map_context.cpp:508
-#, fuzzy
-#| msgid "Could not save the map: $msg"
+#: src/editor/map/map_context.cpp:600
 msgid "Could not save the scenario: $msg"
-msgstr "マップを保存できませんでした: $msg"
+msgstr "シナリオを保存できませんでした: $msg"
 
-#: src/editor/map/map_context.cpp:535
+#: src/editor/map/map_context.cpp:632
 msgid "Could not save into scenario"
 msgstr "シナリオに保存できませんでした。"
 
-#: src/editor/map/map_context.cpp:542
+#: src/editor/map/map_context.cpp:642
 msgid "Could not save the map: $msg"
 msgstr "マップを保存できませんでした: $msg"
 
-#: src/editor/palette/editor_palettes.cpp:59
-#: src/editor/palette/editor_palettes.cpp:114
+#: src/editor/palette/editor_palettes.cpp:51
 msgid "(Unknown Group)"
-msgstr ""
+msgstr "（未知のグループ）"
 
-#: src/editor/palette/editor_palettes.cpp:383
+#: src/editor/palette/editor_palettes.cpp:287
 msgid "(non-core)"
 msgstr "（コア以外）"
 
-#: src/editor/palette/editor_palettes.cpp:384
+#: src/editor/palette/editor_palettes.cpp:288
 msgid "Will not work in game without extra care."
 msgstr "更に手を入れなければゲームで動作しません。"
 
-#: src/editor/palette/terrain_palettes.cpp:223
+#: src/editor/palette/location_palette.cpp:230
+msgid "Go To"
+msgstr "地点へ向かう"
+
+#: src/editor/palette/location_palette.cpp:237
+msgid "Add"
+msgstr "追加"
+
+#: src/editor/palette/location_palette.cpp:239
+msgid "New Location Identifier"
+msgstr "新しい地点の識別子"
+
+#: src/editor/palette/location_palette.cpp:243
+msgid "Delete"
+msgstr "削除"
+
+#: src/editor/palette/terrain_palettes.cpp:231
 msgid "FG: "
-msgstr ""
+msgstr "前景："
 
-#: src/editor/palette/terrain_palettes.cpp:224
+#: src/editor/palette/terrain_palettes.cpp:232
 msgid "BG: "
-msgstr ""
+msgstr "背景："
 
-#: src/gui/dialogs/editor/custom_tod.cpp:129
-#, fuzzy
-#| msgid "Choose player"
+#: src/gui/dialogs/editor/custom_tod.cpp:137
+msgid "Clipboard support not found, contact your packager"
+msgstr ""
+"クリップボードサポートが無効となっています。パッケージャーに連絡してくださ"
+"い。"
+
+#: src/gui/dialogs/editor/custom_tod.cpp:201
 msgid "Choose File"
-msgstr "プレイヤーを選んでください"
+msgstr "ファイルを選択"
 
-#: src/gui/dialogs/editor_set_starting_position.cpp:87
-#, fuzzy
-#| msgid "(Player)^None"
+#: src/gui/dialogs/editor/custom_tod.cpp:202
+msgid "Select"
+msgstr "選択"
+
+#: src/gui/dialogs/editor/set_starting_position.cpp:88
 msgid "player^None"
-msgstr "プレイヤーなし"
+msgstr "選択を解除"
 
-#: src/gui/dialogs/editor_set_starting_position.cpp:100
+#: src/gui/dialogs/editor/set_starting_position.cpp:101
 msgid "Player $player_number"
-msgstr ""
+msgstr "プレイヤー $player_number"
 
-#~ msgid ""
-#~ "Use left/right mouse button to draw fore-/background terrain. Hold Shift "
-#~ "to paint base layer only. Ctrl+click to sample terrain under cursor."
-#~ msgstr ""
-#~ "左右クリックで割り当てられた地形を描画。シフトキーを押しながらなら、ベース"
-#~ "レイヤーのみに描画。コントロールキーを押しながらクリックで、カーソルの下の"
-#~ "地形に切り替え。"
-
-#~ msgid ""
-#~ "Left mouse button selects, right deselects. Hold Shift for magic-wand "
-#~ "selection of tiles with same terrain."
-#~ msgstr ""
-#~ "左クリックで選択、右でキャンセル。シフトキーを押したままにすれば、同じ地形"
-#~ "をまとめて選択。"
-
-#~ msgid ""
-#~ "Left mouse button displays player selection, right clears. Number keys "
-#~ "scroll to the starting position, alt+number sets respective starting "
-#~ "position under cursor, delete clears."
-#~ msgstr ""
-#~ "左クリックでプレイヤーのスタート地点を決定、右でキャンセル。数字キーでその"
-#~ "番号のプレイヤーのスタート地点へ移動、Alt キーと数字キーでその番号のプレイ"
-#~ "ヤーのスタート地点を設定。"
-
-#~ msgid ""
-#~ "Click to paste, zoom out for more accuracy when pasting large areas. Use "
-#~ "the edit menu to transform the clipboard (rotate, mirror)."
-#~ msgstr ""
-#~ "クリックで貼り付け。大きな範囲を貼り付ける場合は、遠目からやった方が正確で"
-#~ "す。クリップボードの中身を変形（回転、反転）させるには、編集メニューを使"
-#~ "用。"
-
-#, fuzzy
-#~| msgid "Action not implemented"
-#~ msgid "Not implemented yet."
-#~ msgstr "実行されませんでした"
-
-#~ msgid "Empty map file"
-#~ msgstr "空のマップファイル"
-
-#~ msgid "Custom setting"
-#~ msgstr "設定の変更"
-
-#~ msgid "Edit"
-#~ msgstr "編集"
-
-#~ msgid "Undo"
-#~ msgstr "元に戻す"
-
-#~ msgid "Can’t Undo"
-#~ msgstr "アンドゥできません"
-
-#~ msgid "Redo"
-#~ msgstr "やり直す"
-
-#~ msgid "Can’t Redo"
-#~ msgstr "リドゥできません"
-
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "地形変化を自動的に更新: 有効"
-
-#~ msgid "Auto-update Terrain Transitions: Partial"
-#~ msgstr "地形変化を自動的に更新: 部分的"
-
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "地形変化を自動的に更新: 無効"
-
-#~ msgid ""
-#~ "Which player should start here? You can use alt and a number key to set "
-#~ "the starting position for a player, and del to clear the starting "
-#~ "position under the cursor. Pressing a number key by itself will scroll to "
-#~ "that player’s starting position."
-#~ msgstr ""
-#~ "どのプレイヤーをここから開始させますか？ Alt キーと数字キーを使用してプレ"
-#~ "イヤーの開始位置を設定することができます。Del キーでカーソルの下の開始位置"
-#~ "を消去できます。数字キーを押すとそのプレイヤーの開始位置にスクロールしま"
-#~ "す。"
-
-#~ msgid "FG"
-#~ msgstr "左クリック地形"
-
-#~ msgid "BG"
-#~ msgstr "右クリック地形"
-
-#~ msgid "Error creating action object"
-#~ msgstr "アクションオブジェクトの作成失敗"
+#~ msgid "time of day^None"
+#~ msgstr "なし"
 
 #~ msgid "Error"
 #~ msgstr "エラー"
 
-#~ msgid ""
-#~ "Which player should start here? You can also use the 1-9 and delete keys "
-#~ "to set/clear starting positions."
-#~ msgstr ""
-#~ "どのプレイヤーをここからスタートさせますか？ 1～9 とデリートキーをスタート"
-#~ "地点の配置、削除に利用できます。"
-
-#~ msgid "Settings"
-#~ msgstr "設定"
-
-#~ msgid "Draw tiles"
-#~ msgstr "タイル描画"
-
-#~ msgid "Fill"
-#~ msgstr "塗りつぶし"
-
-#~ msgid "Set player's starting position"
-#~ msgstr "プレイヤーの開始位置を設定"
-
-#~ msgid "Zoom in"
-#~ msgstr "ズーム・イン"
-
-#~ msgid "Zoom out"
-#~ msgstr "ズーム・アウト"
-
-#~ msgid "Zoom to default view"
-#~ msgstr "初期視点にズーム"
-
-#~ msgid "Toggle grid"
-#~ msgstr "グリッド切替"
-
-#~ msgid "Resize the map"
-#~ msgstr "マップサイズ変更"
-
-#~ msgid "Flip map"
-#~ msgstr "マップを反転する"
-
-#~ msgid "Language"
-#~ msgstr "言語"
-
-#~ msgid "Choose your preferred language:"
-#~ msgstr "お好みの言語を選んで下さい:"
-
-#~ msgid "Battle for Wesnoth Map Editor"
-#~ msgstr "Battle for Wesnoth マップエディタ"
-
-#~ msgid "Which Player?"
-#~ msgstr "どのプレイヤー？"
-
-#~ msgid "Which player should start here?"
-#~ msgstr "どのプレイヤーがここからスタートしますか？"
-
-#~ msgid ""
-#~ "Warning: Illegal characters found in the map name. Please save under a "
-#~ "different name."
-#~ msgstr ""
-#~ "警告: マップ名に無効な文字が見つかりました。別な名前で保存して下さい。"
-
-#~ msgid "The file does not contain a valid map."
-#~ msgstr "そのファイルには有効なマップがありません。"
-
-#~ msgid "Do you want to save the map before quitting?"
-#~ msgstr "終了前にマップを保存しますか？"
-
-#~ msgid "Error: Illegal character in filename."
-#~ msgstr "エラー: ファイル名に無効な文字"
-
-#~ msgid ""
-#~ "Can't resize the map, the requested size is bigger than the maximum, size="
-#~ msgstr ""
-#~ "マップをリサイズできません。要求されたサイズは最大値よりも大きいです。サイ"
-#~ "ズ="
-
-#~ msgid " maximum="
-#~ msgstr " 最大値="
+#~ msgid "Invalid location id"
+#~ msgstr "無効な地点 ID です (Invalid location id)"

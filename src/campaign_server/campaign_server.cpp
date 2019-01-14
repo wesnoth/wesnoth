@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -22,8 +22,9 @@
 #include "campaign_server/campaign_server.hpp"
 
 #include "filesystem.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"
-#include "network_worker.hpp"
+#include "serialization/base64.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
@@ -32,15 +33,18 @@
 #include "addon/validation.hpp"
 #include "campaign_server/addon_utils.hpp"
 #include "campaign_server/blacklist.hpp"
-#include "version.hpp"
-#include "util.hpp"
+#include "campaign_server/control.hpp"
+#include "campaign_server/fs_commit.hpp"
+#include "game_version.hpp"
+#include "hash.hpp"
 
 #include <csignal>
+#include <ctime>
 
-#include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 #include <boost/exception/get_error_info.hpp>
+#include <boost/random.hpp>
+#include <boost/generator_iterator.hpp>
 
 // the fork execute is unix specific only tested on Linux quite sure it won't
 // work on Windows not sure which other platforms have a problem with it.
@@ -54,62 +58,95 @@ static lg::log_domain log_campaignd("campaignd");
 #define WRN_CS LOG_STREAM(warn,  log_campaignd)
 #define ERR_CS LOG_STREAM(err,   log_campaignd)
 
-//compatibility code for MS compilers
-#ifndef SIGHUP
-#define SIGHUP 20
-#endif
-/** @todo FIXME: should define SIGINT here too, but to what? */
+static lg::log_domain log_config("config");
+#define ERR_CONFIG LOG_STREAM(err, log_config)
+#define WRN_CONFIG LOG_STREAM(warn, log_config)
+
+static lg::log_domain log_server("server");
+#define ERR_SERVER LOG_STREAM(err, log_server)
+
+#include "server/send_receive_wml_helpers.ipp"
 
 namespace {
 
-void exit_sighup(int signal)
+/* Secure password storage functions */
+bool authenticate(config& campaign, const config::attribute_value& passphrase)
 {
-	assert(signal == SIGHUP);
-	LOG_CS << "SIGHUP caught, exiting without cleanup immediately.\n";
-	exit(128 + SIGHUP);
+	return utils::md5(passphrase, campaign["passsalt"]).base64_digest() == campaign["passhash"];
 }
 
-void exit_sigint(int signal)
+std::string generate_salt(std::size_t len)
 {
-	assert(signal == SIGINT);
-	LOG_CS << "SIGINT caught, exiting without cleanup immediately.\n";
-	exit(0);
+	boost::mt19937 mt(std::time(0));
+	std::string salt = std::string(len, '0');
+	boost::uniform_int<> from_str(0, 63); // 64 possible values for base64
+	boost::variate_generator< boost::mt19937, boost::uniform_int<>> get_char(mt, from_str);
+
+	for(std::size_t i = 0; i < len; i++) {
+		salt[i] = crypt64::encode(get_char());
+	}
+
+	return salt;
 }
 
-void exit_sigterm(int signal)
+void set_passphrase(config& campaign, std::string passphrase)
 {
-	assert(signal == SIGTERM);
-	LOG_CS << "SIGTERM caught, exiting without cleanup immediately.\n";
-	exit(128 + SIGTERM);
+	std::string salt = generate_salt(16);
+	campaign["passsalt"] = salt;
+	campaign["passhash"] = utils::md5(passphrase, salt).base64_digest();
 }
 
 } // end anonymous namespace
 
 namespace campaignd {
 
-server::server(const std::string& cfg_file, size_t min_threads, size_t max_threads)
-	: cfg_()
+server::server(const std::string& cfg_file)
+	: server_base(default_campaignd_port, true)
+	, cfg_()
 	, cfg_file_(cfg_file)
 	, read_only_(false)
 	, compress_level_(0)
-	, input_()
 	, hooks_()
 	, handlers_()
 	, feedback_url_format_()
 	, blacklist_()
 	, blacklist_file_()
-	, net_manager_(min_threads, max_threads)
-	, server_manager_(load_config())
+	, stats_exempt_ips_()
+	, flush_timer_(io_service_)
 {
-#ifndef _MSC_VER
-	signal(SIGHUP, exit_sighup);
-#endif
-	signal(SIGINT, exit_sigint);
-	signal(SIGTERM, exit_sigterm);
 
-	cfg_.child_or_add("campaigns");
+#ifndef _WIN32
+	struct sigaction sa;
+	std::memset( &sa, 0, sizeof(sa) );
+	#pragma GCC diagnostic ignored "-Wold-style-cast"
+	sa.sa_handler = SIG_IGN;
+	int res = sigaction( SIGPIPE, &sa, nullptr);
+	assert( res == 0 );
+#endif
+
+	load_config();
+
+	LOG_CS << "Port: " << port_ << "\n";
+
+	// Ensure all campaigns to use secure hash passphrase storage
+	if(!read_only_) {
+		for(config& campaign : campaigns().child_range("campaign")) {
+			// Campaign already has a hashed password
+			if(campaign["passphrase"].empty()) {
+				continue;
+			}
+
+			LOG_CS << "Campaign '" << campaign["title"] << "' uses unhashed passphrase. Fixing.\n";
+			set_passphrase(campaign, campaign["passphrase"]);
+			campaign["passphrase"] = "";
+		}
+		write_config();
+	}
 
 	register_handlers();
+
+	start_server();
+	flush_cfg();
 }
 
 server::~server()
@@ -117,9 +154,11 @@ server::~server()
 	write_config();
 }
 
-int server::load_config()
+void server::load_config()
 {
-	scoped_istream in = istream_file(cfg_file_);
+	LOG_CS << "Reading configuration from " << cfg_file_ << "...\n";
+
+	filesystem::scoped_istream in = filesystem::istream_file(cfg_file_);
 	read(cfg_, *in);
 
 	read_only_ = cfg_["read_only"].to_bool(false);
@@ -127,9 +166,6 @@ int server::load_config()
 	if(read_only_) {
 		LOG_CS << "READ-ONLY MODE ACTIVE\n";
 	}
-
-	const bool use_system_sendfile = cfg_["network_use_system_sendfile"].to_bool();
-	network_worker_pool::set_use_system_sendfile(use_system_sendfile);
 
 	// Seems like compression level above 6 is a waste of CPU cycles.
 	compress_level_ = cfg_["compress_level"].to_int(6);
@@ -142,23 +178,233 @@ int server::load_config()
 	blacklist_file_ = cfg_["blacklist_file"].str();
 	load_blacklist();
 
-	// Load any configured hooks.
-	hooks_.insert(std::make_pair(std::string("hook_post_upload"), cfg_["hook_post_upload"]));
-	hooks_.insert(std::make_pair(std::string("hook_post_erase"), cfg_["hook_post_erase"]));
+	stats_exempt_ips_ = utils::split(cfg_["stats_exempt_ips"].str());
 
+	// Load any configured hooks.
+	hooks_.emplace(std::string("hook_post_upload"), cfg_["hook_post_upload"]);
+	hooks_.emplace(std::string("hook_post_erase"), cfg_["hook_post_erase"]);
+
+#ifndef _WIN32
 	// Open the control socket if enabled.
 	if(!cfg_["control_socket"].empty()) {
-		input_.reset(new input_stream(cfg_["control_socket"]));
+		const std::string& path = cfg_["control_socket"].str();
+
+		if(path != fifo_path_) {
+			const int res = mkfifo(path.c_str(),0660);
+			if(res != 0 && errno != EEXIST) {
+				ERR_CS << "could not make fifo at '" << path << "' (" << strerror(errno) << ")\n";
+			} else {
+				input_.close();
+				int fifo = open(path.c_str(), O_RDWR|O_NONBLOCK);
+				input_.assign(fifo);
+				LOG_CS << "opened fifo at '" << path << "'. Server commands may be written to this file.\n";
+				read_from_fifo();
+				fifo_path_ = path;
+			}
+		}
 	}
+#endif
+
+	// Ensure the campaigns list WML exists even if empty, other functions
+	// depend on its existence.
+	cfg_.child_or_add("campaigns");
 
 	// Certain config values are saved to WML again so that a given server
 	// instance's parameters remain constant even if the code defaults change
 	// at some later point.
-	cfg_["network_use_system_sendfile"] = use_system_sendfile;
 	cfg_["compress_level"] = compress_level_;
 
 	// But not the listening port number.
-	return cfg_["port"].to_int(default_campaignd_port);
+	port_ = cfg_["port"].to_int(default_campaignd_port);
+
+	// Limit the max size of WML documents received from the net to prevent the
+	// possible excessive use of resources due to malformed packets received.
+	// Since an addon is sent in a single WML document this essentially limits
+	// the maximum size of an addon that can be uploaded.
+	simple_wml::document::document_size_limit = cfg_["document_size_limit"].to_int(default_document_size_limit);
+}
+
+void server::handle_new_client(socket_ptr socket)
+{
+	async_receive_doc(socket,
+					  std::bind(&server::handle_request, this, _1, _2)
+					  );
+}
+
+void server::handle_request(socket_ptr socket, std::shared_ptr<simple_wml::document> doc)
+{
+	config data;
+	read(data, doc->output());
+
+	config::all_children_iterator i = data.ordered_begin();
+
+	if(i != data.ordered_end()) {
+		// We only handle the first child.
+		const config::any_child& c = *i;
+
+		request_handlers_table::const_iterator j
+				= handlers_.find(c.key);
+
+		if(j != handlers_.end()) {
+			// Call the handler.
+			j->second(this, request(c.key, c.cfg, socket));
+		} else {
+			send_error("Unrecognized [" + c.key + "] request.",socket);
+		}
+	}
+}
+
+#ifndef _WIN32
+
+void server::handle_read_from_fifo(const boost::system::error_code& error, std::size_t)
+{
+	if(error) {
+		if(error == boost::asio::error::operation_aborted)
+			// This means fifo was closed by load_config() to open another fifo
+			return;
+		ERR_CS << "Error reading from fifo: " << error.message() << '\n';
+		return;
+	}
+
+	std::istream is(&admin_cmd_);
+	std::string cmd;
+	std::getline(is, cmd);
+
+	const control_line ctl = cmd;
+
+	if(ctl == "shut_down") {
+		LOG_CS << "Shut down requested by admin, shutting down...\n";
+		throw server_shutdown("Shut down via fifo command");
+	} else if(ctl == "readonly") {
+		if(ctl.args_count()) {
+			cfg_["read_only"] = read_only_ = utils::string_bool(ctl[1], true);
+		}
+
+		LOG_CS << "Read only mode: " << (read_only_ ? "enabled" : "disabled") << '\n';
+	} else if(ctl == "flush") {
+		LOG_CS << "Flushing config to disk...\n";
+		write_config();
+	} else if(ctl == "reload") {
+		if(ctl.args_count()) {
+			if(ctl[1] == "blacklist") {
+				LOG_CS << "Reloading blacklist...\n";
+				load_blacklist();
+			} else {
+				ERR_CS << "Unrecognized admin reload argument: " << ctl[1] << '\n';
+			}
+		} else {
+			LOG_CS << "Reloading all configuration...\n";
+			load_config();
+			LOG_CS << "Reloaded configuration\n";
+		}
+	} else if(ctl == "delete") {
+		if(ctl.args_count() != 1) {
+			ERR_CS << "Incorrect number of arguments for 'delete'\n";
+		} else {
+			const std::string& addon_id = ctl[1];
+
+			LOG_CS << "deleting add-on '" << addon_id << "' requested from control FIFO\n";
+			delete_campaign(addon_id);
+		}
+	} else if(ctl == "hide" || ctl == "unhide") {
+		if(ctl.args_count() != 1) {
+			ERR_CS << "Incorrect number of arguments for '" << ctl.cmd() << "'\n";
+		} else {
+			const std::string& addon_id = ctl[1];
+			config& campaign = get_campaign(addon_id);
+
+			if(!campaign) {
+				ERR_CS << "Add-on '" << addon_id << "' not found, cannot " << ctl.cmd() << "\n";
+			} else {
+				campaign["hidden"] = ctl.cmd() == "hide";
+				write_config();
+				LOG_CS << "Add-on '" << addon_id << "' is now " << (ctl.cmd() == "hide" ? "hidden" : "unhidden") << '\n';
+			}
+		}
+	} else if(ctl == "setpass") {
+		if(ctl.args_count() != 2) {
+			ERR_CS << "Incorrect number of arguments for 'setpass'\n";
+		} else {
+			const std::string& addon_id = ctl[1];
+			const std::string& newpass = ctl[2];
+			config& campaign = get_campaign(addon_id);
+
+			if(!campaign) {
+				ERR_CS << "Add-on '" << addon_id << "' not found, cannot set passphrase\n";
+			} else if(newpass.empty()) {
+				// Shouldn't happen!
+				ERR_CS << "Add-on passphrases may not be empty!\n";
+			} else {
+				set_passphrase(campaign, newpass);
+				write_config();
+				LOG_CS << "New passphrase set for '" << addon_id << "'\n";
+			}
+		}
+	} else if(ctl == "setattr") {
+		if(ctl.args_count() != 3) {
+			ERR_CS << "Incorrect number of arguments for 'setattr'\n";
+		} else {
+			const std::string& addon_id = ctl[1];
+			const std::string& key = ctl[2];
+			const std::string& value = ctl[3];
+
+			config& campaign = get_campaign(addon_id);
+
+			if(!campaign) {
+				ERR_CS << "Add-on '" << addon_id << "' not found, cannot set attribute\n";
+			} else if(key == "name") {
+				ERR_CS << "setattr cannot be used to rename add-ons\n";
+			} else if(key == "passphrase" || key == "passhash"|| key == "passsalt") {
+				ERR_CS << "setattr cannot be used to set auth data -- use setpass instead\n";
+			} else if(!campaign.has_attribute(key)) {
+				// NOTE: This is a very naive approach for validating setattr's
+				//       input, but it should generally work since add-on
+				//       uploads explicitly set all recognized attributes to
+				//       the values provided by the .pbl data or the empty
+				//       string if absent, and this is normally preserved by
+				//       the config serialization.
+				ERR_CS << "Attribute '" << value << "' is not a recognized add-on attribute\n";
+			} else {
+				campaign[key] = value;
+				write_config();
+				LOG_CS << "Set attribute on add-on '" << addon_id << "':\n"
+				       << key << "=\"" << value << "\"\n";
+			}
+		}
+	} else {
+		ERR_CS << "Unrecognized admin command: " << ctl.full() << '\n';
+	}
+
+	read_from_fifo();
+}
+
+void server::handle_sighup(const boost::system::error_code&, int)
+{
+	LOG_CS << "SIGHUP caught, reloading config.\n";
+
+	load_config(); // TODO: handle port number config changes
+
+	LOG_CS << "Reloaded configuration\n";
+
+	sighup_.async_wait(std::bind(&server::handle_sighup, this, _1, _2));
+}
+
+#endif
+
+void server::flush_cfg()
+{
+	flush_timer_.expires_from_now(std::chrono::minutes(10));
+	flush_timer_.async_wait(std::bind(&server::handle_flush, this, _1));
+}
+
+void server::handle_flush(const boost::system::error_code& error)
+{
+	if(error) {
+		ERR_CS << "Error from reload timer: " << error.message() << "\n";
+		throw boost::system::system_error(error);
+	}
+	write_config();
+	flush_cfg();
 }
 
 void server::load_blacklist()
@@ -172,7 +418,7 @@ void server::load_blacklist()
 	}
 
 	try {
-		scoped_istream in = istream_file(blacklist_file_);
+		filesystem::scoped_istream in = filesystem::istream_file(blacklist_file_);
 		config blcfg;
 
 		read(blcfg, *in);
@@ -186,8 +432,11 @@ void server::load_blacklist()
 
 void server::write_config()
 {
-	scoped_ostream out = ostream_file(cfg_file_);
-	write(*out, cfg_);
+	DBG_CS << "writing configuration and add-ons list to disk...\n";
+	filesystem::atomic_commit out(cfg_file_);
+	write(*out.ostream(), cfg_);
+	out.commit();
+	DBG_CS << "... done\n";
 }
 
 void server::fire(const std::string& hook, const std::string& addon)
@@ -203,6 +452,7 @@ void server::fire(const std::string& hook, const std::string& addon)
 	}
 
 #if defined(_WIN32)
+	UNUSED(addon);
 	ERR_CS << "Tried to execute a script on an unsupported platform\n";
 	return;
 #else
@@ -217,11 +467,11 @@ void server::fire(const std::string& hook, const std::string& addon)
 		// We are the child process. Execute the script. We run as a
 		// separate thread sharing stdout/stderr, which will make the
 		// log look ugly.
-		execlp(script.c_str(), script.c_str(), addon.c_str(), static_cast<char *>(NULL));
+		execlp(script.c_str(), script.c_str(), addon.c_str(), static_cast<char *>(nullptr));
 
 		// exec() and family never return; if they do, we have a problem
 		std::cerr << "ERROR: exec failed with errno " << errno << " for addon " << addon
-		          << '\n';
+				  << '\n';
 		exit(errno);
 
 	} else {
@@ -230,114 +480,87 @@ void server::fire(const std::string& hook, const std::string& addon)
 #endif
 }
 
-void server::send_message(const std::string& msg, network::connection sock)
+bool server::ignore_address_stats(const std::string& addr) const
 {
-	config cfg;
-	cfg.add_child("message")["message"] = msg;
-	network::send_data(cfg, sock);
+	for(const auto& mask : stats_exempt_ips_) {
+		// TODO: we want CIDR subnet mask matching here, not glob matching!
+		if(utils::wildcard_string_match(addr, mask)) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
-void server::send_error(const std::string& msg, network::connection sock)
+void server::send_message(const std::string& msg, socket_ptr sock)
 {
-	config cfg;
-	cfg.add_child("error")["message"] = msg;
-	ERR_CS << "[" << network::ip_address(sock) << "]: " << msg << '\n';
-	network::send_data(cfg, sock);
+	simple_wml::document doc;
+	doc.root().add_child("message").set_attr_dup("message", msg.c_str());
+	async_send_doc(sock, doc, std::bind(&server::handle_new_client, this, _1), null_handler);
 }
 
-void server::run()
+void server::send_error(const std::string& msg, socket_ptr sock)
 {
-	network::connection sock = 0;
+	ERR_CS << "[" << client_address(sock) << "]: " << msg << '\n';
+	simple_wml::document doc;
+	doc.root().add_child("error").set_attr_dup("message", msg.c_str());
+	async_send_doc(sock, doc, std::bind(&server::handle_new_client, this, _1), null_handler);
+}
 
-	time_t last_ts = time(NULL);
+void server::send_error(const std::string& msg, const std::string& extra_data, socket_ptr sock)
+{
+	ERR_CS << "[" << client_address(sock) << "]: " << msg << '\n';
+	simple_wml::document doc;
+	simple_wml::node& err_cfg = doc.root().add_child("error");
+	err_cfg.set_attr_dup("message", msg.c_str());
+	err_cfg.set_attr_dup("extra_data", extra_data.c_str());
+	async_send_doc(sock, doc, std::bind(&server::handle_new_client, this, _1), null_handler);
+}
 
-	for(;;)
-	{
-		try {
-			std::string admin_cmd;
+void server::delete_campaign(const std::string& id)
+{
+	config::child_itors itors = campaigns().child_range("campaign");
 
-			if(input_ && input_->read_line(admin_cmd)) {
-				// process command
-				if(admin_cmd == "shut_down") {
-					break;
-				}
-			}
+	std::size_t pos = 0;
+	bool found = false;
+	std::string fn;
 
-			const time_t cur_ts = time(NULL);
-			// Write config to disk every ten minutes.
-			if(cur_ts - last_ts >= 10*60) {
-				write_config();
-				last_ts = cur_ts;
-			}
-
-			network::process_send_queue();
-
-			sock = network::accept_connection();
-			if(sock) {
-				LOG_CS << "received connection from " << network::ip_address(sock) << "\n";
-			}
-
-			config data;
-
-			while((sock = network::receive_data(data, 0)) != network::null_connection)
-			{
-				config::all_children_iterator i = data.ordered_begin();
-
-				if(i != data.ordered_end()) {
-					// We only handle the first child.
-					const config::any_child& c = *i;
-
-					request_handlers_table::const_iterator j
-							= handlers_.find(c.key);
-
-					if(j != handlers_.end()) {
-						// Call the handler.
-						j->second(request(c.key, c.cfg, sock));
-					} else {
-						send_error("Unrecognized [" + c.key + "] request.",
-								   sock);
-					}
-				}
-			}
-		} catch(network::error& e) {
-			if(!e.socket) {
-				ERR_CS << "fatal network error: " << e.message << "\n";
-				throw;
-			} else {
-				LOG_CS << "client disconnect: " << e.message << " " << network::ip_address(e.socket) << "\n";
-				e.disconnect();
-			}
-		} catch(const config::error& e) {
-			network::connection err_sock = 0;
-			network::connection const * err_connection = boost::get_error_info<network::connection_info>(e);
-
-			if(err_connection != NULL) {
-				err_sock = *err_connection;
-			}
-
-			if(err_sock == 0 && sock > 0) {
-				err_sock = sock;
-			}
-
-			if(err_sock) {
-				ERR_CS << "client disconnect due to exception: " << e.what() << " " << network::ip_address(err_sock) << "\n";
-				network::disconnect(err_sock);
-			} else {
-				throw;
-			}
+	for(config& cfg : itors) {
+		if(cfg["name"] == id) {
+			fn = cfg["filename"].str();
+			found = true;
+			break;
 		}
 
-		SDL_Delay(20);
+		++pos;
 	}
-}
 
-void server::register_handler(const std::string& cmd, const request_handler& func)
-{
-	handlers_[cmd] = func;
+	if(!found) {
+		ERR_CS << "Cannot delete unrecognized add-on '" << id << "'\n";
+		return;
+	}
+
+	if(fn.empty()) {
+		ERR_CS << "Add-on '" << id << "' does not have an associated filename, cannot delete\n";
+	}
+
+	filesystem::write_file(fn, {});
+	if(std::remove(fn.c_str()) != 0) {
+		ERR_CS << "Could not delete archive for campaign '" << id
+		       << "' (" << fn << "): " << strerror(errno) << '\n';
+	}
+
+	campaigns().remove_child("campaign", pos);
+	write_config();
+
+	fire("hook_post_erase", id);
+
+	LOG_CS << "Deleted add-on '" << id << "'\n";
 }
 
 #define REGISTER_CAMPAIGND_HANDLER(req_id) \
-	register_handler(#req_id, boost::bind(&server::handle_##req_id, this, _1))
+	handlers_[#req_id] = std::bind(&server::handle_##req_id, \
+		std::placeholders::_1, std::placeholders::_2)
 
 void server::register_handlers()
 {
@@ -351,9 +574,9 @@ void server::register_handlers()
 
 void server::handle_request_campaign_list(const server::request& req)
 {
-	LOG_CS << "sending campaign list to " << req.addr << " using gzip";
+	LOG_CS << "sending campaign list to " << req.addr << " using gzip\n";
 
-	time_t epoch = time(NULL);
+	std::time_t epoch = std::time(nullptr);
 	config campaign_list;
 
 	campaign_list["timestamp"] = epoch;
@@ -362,41 +585,45 @@ void server::handle_request_campaign_list(const server::request& req)
 	}
 
 	bool before_flag = false;
-	time_t before = epoch;
+	std::time_t before = epoch;
 	try {
-		before = before + lexical_cast<time_t>(req.cfg["before"]);
+		before += req.cfg["before"].to_time_t();
 		before_flag = true;
-	} catch(bad_lexical_cast) {}
+	} catch(const bad_lexical_cast&) {}
 
 	bool after_flag = false;
-	time_t after = epoch;
+	std::time_t after = epoch;
 	try {
-		after = after + lexical_cast<time_t>(req.cfg["after"]);
+		after += req.cfg["after"].to_time_t();
 		after_flag = true;
-	} catch(bad_lexical_cast) {}
+	} catch(const bad_lexical_cast&) {}
 
 	const std::string& name = req.cfg["name"];
 	const std::string& lang = req.cfg["language"];
 
-	BOOST_FOREACH(const config& i, campaigns().child_range("campaign"))
+	for(const config& i : campaigns().child_range("campaign"))
 	{
 		if(!name.empty() && name != i["name"]) {
 			continue;
 		}
 
-		const std::string& tm = i["timestamp"];
-
-		if(before_flag && (tm.empty() || lexical_cast_default<time_t>(tm, 0) >= before)) {
+		if(i["hidden"].to_bool()) {
 			continue;
 		}
-		if(after_flag && (tm.empty() || lexical_cast_default<time_t>(tm, 0) <= after)) {
+
+		const auto& tm = i["timestamp"];
+
+		if(before_flag && (tm.empty() || tm.to_time_t(0) >= before)) {
+			continue;
+		}
+		if(after_flag && (tm.empty() || tm.to_time_t(0) <= after)) {
 			continue;
 		}
 
 		if(!lang.empty()) {
 			bool found = false;
 
-			BOOST_FOREACH(const config& j, i.child_range("translation"))
+			for(const config& j : i.child_range("translation"))
 			{
 				if(j["language"] == lang) {
 					found = true;
@@ -412,9 +639,11 @@ void server::handle_request_campaign_list(const server::request& req)
 		campaign_list.add_child("campaign", i);
 	}
 
-	BOOST_FOREACH(config& j, campaign_list.child_range("campaign"))
+	for(config& j : campaign_list.child_range("campaign"))
 	{
 		j["passphrase"] = "";
+		j["passhash"] = "";
+		j["passsalt"] = "";
 		j["upload_ip"] = "";
 		j["email"] = "";
 		j["feedback_url"] = "";
@@ -422,29 +651,36 @@ void server::handle_request_campaign_list(const server::request& req)
 		// Build a feedback_url string attribute from the
 		// internal [feedback] data.
 		const config& url_params = j.child_or_empty("feedback");
-		j.clear_children("feedback");
-
 		if(!url_params.empty() && !feedback_url_format_.empty()) {
 			j["feedback_url"] = format_addon_feedback_url(feedback_url_format_, url_params);
 		}
+
+		// Clients don't need to see the original data, so discard it.
+		j.clear_children("feedback");
 	}
 
 	config response;
-	response.add_child("campaigns", campaign_list);
+	response.add_child("campaigns", std::move(campaign_list));
 
-	std::cerr << " size: " << (network::send_data(response, req.sock)/1024) << "KiB\n";
+	std::ostringstream ostr;
+	write(ostr, response);
+	std::string wml = ostr.str();
+	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
+	doc.compress();
+
+	async_send_doc(req.sock, doc, std::bind(&server::handle_new_client, this, _1));
 }
 
 void server::handle_request_campaign(const server::request& req)
 {
-	LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " using gzip";
+	LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " using gzip\n";
 
-	config& campaign = campaigns().find_child("campaign", "name", req.cfg["name"]);
+	config& campaign = get_campaign(req.cfg["name"]);
 
-	if(!campaign) {
+	if(!campaign || campaign["hidden"].to_bool()) {
 		send_error("Add-on '" + req.cfg["name"].str() + "' not found.", req.sock);
 	} else {
-		const int size = file_size(campaign["filename"]);
+		const int size = filesystem::file_size(campaign["filename"]);
 
 		if(size < 0) {
 			std::cerr << " size: <unknown> KiB\n";
@@ -454,11 +690,12 @@ void server::handle_request_campaign(const server::request& req)
 		}
 
 		std::cerr << " size: " << size/1024 << "KiB\n";
-		network::send_file(campaign["filename"], req.sock);
+		async_send_file(req.sock, campaign["filename"],
+				std::bind(&server::handle_new_client, this, _1), null_handler);
 		// Clients doing upgrades or some other specific thing shouldn't bump
 		// the downloads count. Default to true for compatibility with old
 		// clients that won't tell us what they are trying to do.
-		if(req.cfg["increase_downloads"].to_bool(true)) {
+		if(req.cfg["increase_downloads"].to_bool(true) && !ignore_address_stats(req.addr)) {
 			const int downloads = campaign["downloads"].to_int() + 1;
 			campaign["downloads"] = downloads;
 		}
@@ -475,8 +712,19 @@ void server::handle_request_terms(const server::request& req)
 		return;
 	}
 
+	// TODO: possibly move to server.cfg
+	static const std::string terms = R"""(All content within add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL), with the sole exception of graphics and audio explicitly denoted as released under a Creative Commons license either in:
+
+    a) a combined toplevel file, e.g. “My_Addon/ART_LICENSE”; <b>or</b>
+    b) a file with the same path as the asset with “.license” appended, e.g. “My_Addon/images/units/axeman.png.license”.
+
+<b>By uploading content to this server, you certify that you have the right to:</b>
+
+    a) release all included art and audio explicitly denoted with a Creative Commons license in the proscribed manner under that license; <b>and</b>
+    b) release all other included content under the terms of the GPL; and that you choose to do so.)""";
+
 	LOG_CS << "sending terms " << req.addr << "\n";
-	send_message("All add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL). By uploading content to this server, you certify that you have the right to place the content under the conditions of the GPL, and choose to do so.", req.sock);
+	send_message(terms, req.sock);
 	LOG_CS << " Done\n";
 }
 
@@ -488,17 +736,36 @@ void server::handle_upload(const server::request& req)
 	config data = upload.child("data");
 
 	const std::string& name = upload["name"];
-	const std::string& lc_name = utf8::lowercase(name);
+	config *campaign = nullptr;
 
-	config *campaign = NULL;
+	bool passed_name_utf8_check = false;
 
-	BOOST_FOREACH(config& c, campaigns().child_range("campaign"))
-	{
-		if(utf8::lowercase(c["name"]) == lc_name) {
-			campaign = &c;
-			break;
+	try {
+		const std::string& lc_name = utf8::lowercase(name);
+		passed_name_utf8_check = true;
+
+		for(config& c : campaigns().child_range("campaign"))
+		{
+			if(utf8::lowercase(c["name"]) == lc_name) {
+				campaign = &c;
+				break;
+			}
 		}
+	} catch(const utf8::invalid_utf8_exception&) {
+		if(!passed_name_utf8_check) {
+			LOG_CS << "Upload aborted - invalid_utf8_exception caught on handle_upload() check 1, "
+				   << "the add-on pbl info contains invalid UTF-8\n";
+			send_error("Add-on rejected: The add-on name contains an invalid UTF-8 sequence.", req.sock);
+		} else {
+			LOG_CS << "Upload aborted - invalid_utf8_exception caught on handle_upload() check 2, "
+				   << "the internal add-ons list contains invalid UTF-8\n";
+			send_error("Server error: The server add-ons list is damaged.", req.sock);
+		}
+
+		return;
 	}
+
+	std::vector<std::string> badnames;
 
 	if(read_only_) {
 		LOG_CS << "Upload aborted - uploads not permitted in read-only mode.\n";
@@ -533,38 +800,60 @@ void server::handle_upload(const server::request& req)
 	} else if(upload["email"].empty()) {
 		LOG_CS << "Upload aborted - no add-on email specified.\n";
 		send_error("Add-on rejected: You did not specify your email address in the pbl file!", req.sock);
-	} else if(!check_names_legal(data)) {
-		LOG_CS << "Upload aborted - invalid file names in add-on data.\n";
-		send_error("Add-on rejected: The add-on contains an illegal file or directory name."
-				   " File or directory names may not contain whitespace or any of the following characters: '/ \\ : ~'",
-				   req.sock);
-	} else if(campaign && (*campaign)["passphrase"].str() != upload["passphrase"]) {
+	} else if(!check_names_legal(data, &badnames)) {
+		const std::string& filelist = utils::join(badnames, "\n");
+		LOG_CS << "Upload aborted - invalid file names in add-on data (" << badnames.size() << " entries).\n";
+		send_error(
+			"Add-on rejected: The add-on contains files or directories with illegal names. "
+			// Note: the double double quote will be flattened to a single double quote.
+			"File or directory names may not contain whitespace, control characters or any of the following characters: '\"\" * / : < > ? \\ | ~'. "
+			"It also may not contain '..' end with '.' or be longer than 255 characters.",
+			filelist, req.sock);
+	} else if(!check_case_insensitive_duplicates(data, &badnames)) {
+		const std::string& filelist = utils::join(badnames, "\n");
+		LOG_CS << "Upload aborted - case conflict in add-on data (" << badnames.size() << " entries).\n";
+		send_error(
+			"Add-on rejected: The add-on contains files or directories with case conflicts. "
+			"File or directory names may not be differently-cased versions of the same string.",
+			filelist, req.sock);
+	} else if(upload["passphrase"].empty()) {
+		LOG_CS << "Upload aborted - missing passphrase.\n";
+		send_error("No passphrase was specified.", req.sock);
+	} else if(campaign && !authenticate(*campaign, upload["passphrase"])) {
 		LOG_CS << "Upload aborted - incorrect passphrase.\n";
 		send_error("Add-on rejected: The add-on already exists, and your passphrase was incorrect.", req.sock);
+	} else if(campaign && (*campaign)["hidden"].to_bool()) {
+		LOG_CS << "Upload denied - hidden add-on.\n";
+		send_error("Add-on upload denied. Please contact the server administration for assistance.", req.sock);
 	} else {
-		const time_t upload_ts = time(NULL);
+		const std::time_t upload_ts = std::time(nullptr);
 
 		LOG_CS << "Upload is owner upload.\n";
 
-		if(blacklist_.is_blacklisted(name,
-									 upload["title"].str(),
-									 upload["description"].str(),
-									 upload["author"].str(),
-									 req.addr,
-									 upload["email"].str()))
-		{
-			LOG_CS << "Upload denied - blacklisted add-on information.\n";
-			send_error("Add-on upload denied. Please contact the server administration for assistance.", req.sock);
+		try {
+			if(blacklist_.is_blacklisted(name,
+										 upload["title"].str(),
+										 upload["description"].str(),
+										 upload["author"].str(),
+										 req.addr,
+										 upload["email"].str()))
+			{
+				LOG_CS << "Upload denied - blacklisted add-on information.\n";
+				send_error("Add-on upload denied. Please contact the server administration for assistance.", req.sock);
+				return;
+			}
+		} catch(const utf8::invalid_utf8_exception&) {
+			LOG_CS << "Upload aborted - the add-on pbl info contains invalid UTF-8 and cannot be "
+				   << "checked against the blacklist\n";
+			send_error("Add-on rejected: The add-on publish information contains an invalid UTF-8 sequence.", req.sock);
 			return;
 		}
 
+		const bool existing_upload = campaign != nullptr;
+
 		std::string message = "Add-on accepted.";
 
-		if(!version_info(upload["version"]).good()) {
-			message += "\n\nNote: The version you specified is invalid. This add-on will be ignored for automatic update checks.";
-		}
-
-		if(campaign == NULL) {
+		if(campaign == nullptr) {
 			campaign = &campaigns().add_child("campaign");
 			(*campaign)["original_timestamp"] = upload_ts;
 		}
@@ -572,7 +861,6 @@ void server::handle_upload(const server::request& req)
 		(*campaign)["title"] = upload["title"];
 		(*campaign)["name"] = upload["name"];
 		(*campaign)["filename"] = "data/" + upload["name"].str();
-		(*campaign)["passphrase"] = upload["passphrase"];
 		(*campaign)["author"] = upload["author"];
 		(*campaign)["description"] = upload["description"];
 		(*campaign)["version"] = upload["version"];
@@ -581,7 +869,12 @@ void server::handle_upload(const server::request& req)
 		(*campaign)["dependencies"] = upload["dependencies"];
 		(*campaign)["upload_ip"] = req.addr;
 		(*campaign)["type"] = upload["type"];
+		(*campaign)["tags"] = upload["tags"];
 		(*campaign)["email"] = upload["email"];
+
+		if(!existing_upload) {
+			set_passphrase(*campaign, upload["passphrase"]);
+		}
 
 		if((*campaign)["downloads"].empty()) {
 			(*campaign)["downloads"] = 0;
@@ -607,18 +900,20 @@ void server::handle_upload(const server::request& req)
 		data["original_timestamp"] = (*campaign)["original_timestamp"];
 		data["icon"] = (*campaign)["icon"];
 		data["type"] = (*campaign)["type"];
+		data["tags"] = (*campaign)["tags"];
 		(*campaign).clear_children("translation");
 		find_translations(data, *campaign);
 
 		add_license(data);
 
 		{
-			scoped_ostream campaign_file = ostream_file(filename);
-			config_writer writer(*campaign_file, true, compress_level_);
+			filesystem::atomic_commit campaign_file(filename);
+			config_writer writer(*campaign_file.ostream(), true, compress_level_);
 			writer.write(data);
+			campaign_file.commit();
 		}
 
-		(*campaign)["size"] = file_size(filename);
+		(*campaign)["size"] = filesystem::file_size(filename);
 
 		write_config();
 
@@ -631,53 +926,44 @@ void server::handle_upload(const server::request& req)
 void server::handle_delete(const server::request& req)
 {
 	const config& erase = req.cfg;
+	const std::string& id = erase["name"].str();
 
 	if(read_only_) {
-		LOG_CS << "in read-only mode, request to delete '" << erase["name"] << "' from " << req.addr << " denied\n";
+		LOG_CS << "in read-only mode, request to delete '" << id << "' from " << req.addr << " denied\n";
 		send_error("Cannot delete add-on: The server is currently in read-only mode.", req.sock);
 		return;
 	}
 
-	LOG_CS << "deleting campaign '" << erase["name"] << "' requested from " << req.addr << "\n";
+	LOG_CS << "deleting campaign '" << id << "' requested from " << req.addr << "\n";
 
-	const config& campaign = campaigns().find_child("campaign", "name", erase["name"]);
+	config& campaign = get_campaign(id);
 
 	if(!campaign) {
 		send_error("The add-on does not exist.", req.sock);
 		return;
 	}
 
-	if(campaign["passphrase"] != erase["passphrase"]
-	   && (campaigns()["master_password"].empty()
-	   || campaigns()["master_password"] != erase["passphrase"]))
-	{
+	const config::attribute_value& pass = erase["passphrase"];
+
+	if(pass.empty()) {
+		send_error("No passphrase was specified.", req.sock);
+		return;
+	}
+
+	if(!authenticate(campaign, pass)) {
 		send_error("The passphrase is incorrect.", req.sock);
 		return;
 	}
 
-	// Erase the campaign.
-	write_file(campaign["filename"], std::string());
-	if(remove(campaign["filename"].str().c_str()) != 0) {
-		ERR_CS << "failed to delete archive for campaign '" << erase["name"]
-			   << "' (" << campaign["filename"] << "): " << strerror(errno)
-			   << '\n';
+	if(campaign["hidden"].to_bool()) {
+		LOG_CS << "Add-on removal denied - hidden add-on.\n";
+		send_error("Add-on deletion denied. Please contact the server administration for assistance.", req.sock);
+		return;
 	}
 
-	config::child_itors itors = campaigns().child_range("campaign");
-	for(size_t index = 0; itors.first != itors.second; ++index, ++itors.first)
-	{
-		if(&campaign == &*itors.first) {
-			campaigns().remove_child("campaign", index);
-			break;
-		}
-	}
-
-	write_config();
+	delete_campaign(id);
 
 	send_message("Add-on deleted.", req.sock);
-
-	fire("hook_post_erase", erase["name"]);
-
 }
 
 void server::handle_change_passphrase(const server::request& req)
@@ -690,52 +976,47 @@ void server::handle_change_passphrase(const server::request& req)
 		return;
 	}
 
-	config& campaign = campaigns().find_child("campaign", "name", cpass["name"]);
+	config& campaign = get_campaign(cpass["name"]);
 
 	if(!campaign) {
 		send_error("No add-on with that name exists.", req.sock);
-	} else if(campaign["passphrase"] != cpass["passphrase"]) {
+	} else if(!authenticate(campaign, cpass["passphrase"])) {
 		send_error("Your old passphrase was incorrect.", req.sock);
+	} else if(campaign["hidden"].to_bool()) {
+		LOG_CS << "Passphrase change denied - hidden add-on.\n";
+		send_error("Add-on passphrase change denied. Please contact the server administration for assistance.", req.sock);
 	} else if(cpass["new_passphrase"].empty()) {
 		send_error("No new passphrase was supplied.", req.sock);
 	} else {
-		campaign["passphrase"] = cpass["new_passphrase"];
-
+		set_passphrase(campaign, cpass["new_passphrase"]);
 		write_config();
-
 		send_message("Passphrase changed.", req.sock);
 	}
 }
 
 } // end namespace campaignd
 
-int main(int argc, char**argv)
+int main()
 {
-	game_config::path = get_cwd();
+	game_config::path = filesystem::get_cwd();
 
-	lg::set_log_domain_severity("campaignd", lg::info);
+	lg::set_log_domain_severity("campaignd", lg::info());
+	lg::set_log_domain_severity("server", lg::info());
 	lg::timestamps(true);
 
 	try {
-		printf("argc %d argv[0] %s 1 %s\n",argc,argv[0],argv[1]);
+		std::cerr << "Wesnoth campaignd v" << game_config::revision << " starting...\n";
 
-		const std::string& cfg_path = normalize_path("server.cfg");
+		const std::string cfg_path = filesystem::normalize_path("server.cfg");
 
-		if(argc >= 2 && atoi(argv[1])){
-			campaignd::server(cfg_path, atoi(argv[1])).run();
-		} else {
-			campaignd::server(cfg_path).run();
-		}
-	} catch(config::error& /*e*/) {
+		campaignd::server(cfg_path).run();
+	} catch(const config::error& /*e*/) {
 		std::cerr << "Could not parse config file\n";
 		return 1;
-	} catch(io_exception& /*e*/) {
-		std::cerr << "File I/O error\n";
+	} catch(const filesystem::io_exception& e) {
+		std::cerr << "File I/O error: " << e.what() << "\n";
 		return 2;
-	} catch(network::error& e) {
-		std::cerr << "Aborted with network error: " << e.message << '\n';
-		return 3;
-	} catch(boost::bad_function_call& /*e*/) {
+	} catch(const std::bad_function_call& /*e*/) {
 		std::cerr << "Bad request handler function call\n";
 		return 4;
 	}

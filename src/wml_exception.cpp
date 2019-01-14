@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2007 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2007 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,19 +19,17 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
 #include "wml_exception.hpp"
 
-#include "display.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/message.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "log.hpp"
 
 static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)
 
-void wml_exception(
+void throw_wml_exception(
 		  const char* cond
 		, const char* file
 		, const int line
@@ -52,10 +50,10 @@ void wml_exception(
 		sstr << " Extra development information: " << dev_message;
 	}
 
-	throw twml_exception(message, sstr.str());
+	throw wml_exception(message, sstr.str());
 }
 
-void twml_exception::show(display &disp)
+void wml_exception::show() const
 {
 	std::ostringstream sstr;
 
@@ -66,7 +64,7 @@ void twml_exception::show(display &disp)
 		<< _("When reporting the bug please include the following error message :")
 		<< "\n" << dev_message;
 
-	gui2::show_error_message(disp.video(), sstr.str());
+	gui2::show_error_message(sstr.str());
 }
 
 std::string missing_mandatory_wml_key(
@@ -93,10 +91,10 @@ std::string missing_mandatory_wml_key(
 		symbols["primary_key"] = primary_key;
 		symbols["primary_value"] = primary_value;
 
-		return vgettext("In section '[$section|]' where '$primary_key| = "
+		return VGETTEXT("In section '[$section|]' where '$primary_key| = "
 			"$primary_value' the mandatory key '$key|' isn't set.", symbols);
 	} else {
-		return vgettext("In section '[$section|]' the "
+		return VGETTEXT("In section '[$section|]' the "
 			"mandatory key '$key|' isn't set.", symbols);
 	}
 }
@@ -112,7 +110,7 @@ std::string deprecate_wml_key_warning(
 	symbols["key"] = key;
 	symbols["removal_version"] = removal_version;
 
-	return vgettext("The key '$key' is deprecated and support "
+	return VGETTEXT("The key '$key' is deprecated and support "
 			"will be removed in version $removal_version.", symbols);
 }
 
@@ -130,7 +128,7 @@ std::string deprecated_renamed_wml_key_warning(
 	symbols["key"] = key;
 	symbols["removal_version"] = removal_version;
 
-	return vgettext(
+	return VGETTEXT(
 			  "The key '$deprecated_key' has been renamed to '$key'. "
 				"Support for '$deprecated_key' will be removed in version "
 				"$removal_version."
@@ -151,7 +149,7 @@ const config::attribute_value& get_renamed_config_attribute(
 
 	result = cfg.get(deprecated_key);
 	if(result) {
-		lg::wml_error
+		lg::wml_error()
 			<< deprecated_renamed_wml_key_warning(
 				  deprecated_key
 				, key
@@ -164,4 +162,3 @@ const config::attribute_value& get_renamed_config_attribute(
 	static const config::attribute_value empty_attribute;
 	return empty_attribute;
 }
-

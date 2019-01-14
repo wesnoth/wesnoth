@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GETTEXT_HPP_INCLUDED
-#define GETTEXT_HPP_INCLUDED
+#pragma once
 
 /**
  * How to use gettext for wesnoth source files:
@@ -34,40 +33,65 @@
  */
 
 // gettext-related declarations
+#include "wesconfig.h"
+#include <string>
+#include <vector>
+#include <ctime>
 
-#include <libintl.h>
-
-#ifdef setlocale
-// Someone in libintl world decided it was a good idea to define a "setlocale" macro.
-#undef setlocale
+#ifndef GETTEXT_DOMAIN
+# define GETTEXT_DOMAIN PACKAGE
 #endif
-
-const char* egettext(const char*);
-const char* sgettext(const char*);
-const char* dsgettext(const char * domainname, const char *msgid);
-const char* sngettext(const char *singular, const char *plural, int n);
-const char* dsngettext(const char * domainname, const char *singular, const char *plural, int n);
 
 //A Hack to make the eclipse-cdt parser happy.
 #ifdef __CDT_PARSER__
-#define GETTEXT_DOMAIN ""
+# define GETTEXT_DOMAIN ""
 #endif
 
-#ifdef GETTEXT_DOMAIN
-# define _(String) dsgettext(GETTEXT_DOMAIN,String)
-# define _n(String1,String2,Int) dsngettext(String1,String2,Int)
-# ifdef gettext
-#  undef gettext
-# endif
-# define gettext(String) dgettext(GETTEXT_DOMAIN,String)
-# define sgettext(String) dsgettext(GETTEXT_DOMAIN,String)
-# define sngettext(String1,String2,Int) dsngettext(GETTEXT_DOMAIN,String1,String2,Int)
+#ifdef HAVE_CXX17
+#define UNUSEDNOWARN [[maybe_unused]]
+#elif defined(__GNUCC__) || defined(__clang__) || defined(__MINGW32__)
+#define UNUSEDNOWARN __attribute__((unused))
 #else
-# define _(String) sgettext(String)
-# define _n(String1,String2,Int) sngettext(String1,String2,Int)
+#define UNUSEDNOWARN
 #endif
+
+namespace translation
+{
+	std::string dgettext(const char* domain, const char* msgid);
+	std::string egettext(const char*);
+	std::string dsgettext(const char * domainname, const char *msgid);
+	//const char* sngettext(const char *singular, const char *plural, int n);
+	std::string dsngettext(const char * domainname, const char *singular, const char *plural, int n);
+
+	UNUSEDNOWARN inline static std::string gettext(const char* str)
+	{ return translation::dgettext(GETTEXT_DOMAIN, str); }
+	UNUSEDNOWARN inline static std::string sgettext(const char* str)
+	{ return translation::dsgettext(GETTEXT_DOMAIN, str); }
+	UNUSEDNOWARN inline static std::string sngettext(const char* str1, const char* str2, int n)
+	{ return translation::dsngettext(GETTEXT_DOMAIN, str1, str2 , n); }
+
+
+	void bind_textdomain(const char* domain, const char* directory, const char* encoding);
+	void set_default_textdomain(const char* domain);
+
+	void set_language(const std::string& language, const std::vector<std::string>* alternates);
+
+	/** Case-sensitive lexicographical comparison. */
+	int compare(const std::string& s1,const std::string& s2);
+
+	/** Case-insensitive lexicographical comparison. */
+	int icompare(const std::string& s1,const std::string& s2);
+
+	std::string strftime(const std::string& format, const std::tm* time);
+}
+
+//#define _(String) translation::dsgettext(GETTEXT_DOMAIN,String)
+UNUSEDNOWARN inline static std::string _(const char* str)
+{ return translation::dsgettext(GETTEXT_DOMAIN, str); }
+
+//#define _n(String1, String2, Int) translation::dsngettext(GETTEXT_DOMAIN, String1,String2,Int)
+UNUSEDNOWARN inline static std::string _n(const char* str1, const char* str2, int n)
+{ return translation::dsngettext(GETTEXT_DOMAIN, str1, str2, n); }
 
 #define gettext_noop(String) String
 #define N_(String) gettext_noop (String)
-
-#endif

@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # vim: tabstop=4: shiftwidth=4: expandtab: softtabstop=4: autoindent:
 
 """
@@ -16,12 +17,12 @@ except ImportError:
 import shutil
 import subprocess
 import tempfile
-import urllib2
+import urllib.request
 
 
 #TODO: document and log where missing
 
-class Error(StandardError):
+class Error(Exception):
     """Base class for exceptions in this module."""
     pass
 
@@ -91,7 +92,7 @@ class Addon(object):
 
 
         def remove_untracked():
-            untracked = [line.replace("?? ","",1) for line in self._status() if line.startswith("??")]
+            untracked = [line.replace("?? ", "", 1) for line in self._status() if line.startswith("??")]
             for item in untracked:
                 try:
                     path = os.path.join(self.get_dir(), item)
@@ -161,7 +162,7 @@ class Addon(object):
 
         self._rmtree(".", exclude)
         #actual copying
-        self._copytree(src, self.get_dir(), ignore=lambda src,names: [n for n in names if n in exclude])
+        self._copytree(src, self.get_dir(), ignore=lambda src, names: [n for n in names if n in exclude])
         self._execute(["git", "add", "."], check_error=True)
 
         status = self._status()
@@ -468,7 +469,7 @@ class GitHub(object):
     def _github_api_request(self, url, data=None, method=None, authenticate=False):
         logging.debug("Making github API request {0}".format(url))
 
-        request = urllib2.Request(url)
+        request = urllib.request.Request(url)
         if method:
             request.get_method = lambda: method
 
@@ -486,14 +487,14 @@ class GitHub(object):
             auth = self._github_authorization()
             if ":" in auth:
                 # username:password
-                base64string = encodestring(auth).replace('\n','')
+                base64string = encodestring(auth).replace('\n', '')
                 request.add_header("Authorization", "Basic {0}".format(base64string))
             else:
                 # token
                 request.add_header("Authorization", "Bearer {0}".format(auth))
 
         try:
-            response = urllib2.urlopen(request)
+            response = urllib.request.urlopen(request)
         except IOError as e:
             raise Error("GitHub API failure: " + str(e))
         if response.code == 204:
@@ -509,7 +510,7 @@ class GitHub(object):
             links_raw = link_header.split(",")
             links_split_raw = [link.split(";") for link in links_raw]
             links_split_proc = [(l[1].strip().lstrip('rel="').rstrip('"'), l[0].strip().lstrip("<").rstrip(">")) for l in links_split_raw]
-            links_dict = dict((k,v) for (k,v) in links_split_proc)
+            links_dict = dict((k, v) for (k, v) in links_split_proc)
             if "next" in links_dict:
                 logging.debug("Link with rel=\"next\" found, recursing to deal with pagination")
                 rest = self._github_api_request(links_dict["next"], data, method, authenticate)
@@ -518,7 +519,7 @@ class GitHub(object):
         return json_parsed
 
     def _github_have_authorization(self):
-        return self.authorization != None
+        return self.authorization is not None
     def _github_authorization(self):
         if self.authorization:
             return self.authorization
@@ -540,7 +541,7 @@ class GitHub(object):
         p = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True, cwd=cwd)
         out = ""
         err = ""
-        while(p.poll() == None):
+        while(p.poll() is None):
             out += p.stdout.read()
             err += p.stderr.read()
 
@@ -582,7 +583,7 @@ def _gen(possible_dirs):
 
         logging.debug("No candidates left, creating new checkout")
 
-        realish_github = GitHub(tempfile.mkdtemp(),"system")
+        realish_github = GitHub(tempfile.mkdtemp(), "system")
         build_system = realish_github.addon("build", readonly=True)
         return build_system, True
     try:
@@ -592,7 +593,7 @@ def _gen(possible_dirs):
         # Exception to make sure nobody catches it
         # Use raise ... from syntax in python3
         import sys
-        raise Exception(str(e)), None, sys.exc_info()[2]
+        raise Exception(str(e)).with_traceback(sys.exc_info()[2])
     # Add references to shutil and os to ensure we're destructed before they are
     stored_shutil = shutil
     stored_os = os
@@ -614,6 +615,6 @@ def get_build_system(possible_dirs=[]):
     Returns: The Addon object of the build-system
     """
     global _g
-    if _g == None:
+    if _g is None:
         _g = _gen(possible_dirs)
-    return _g.next()
+    return next(_g)

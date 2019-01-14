@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Ignacio R. Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,16 +12,17 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_WML_ERROR_HPP_INCLUDED
-#define GUI_DIALOGS_WML_ERROR_HPP_INCLUDED
+#pragma once
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /** WML preprocessor/parser error report dialog. */
-class twml_error : public tdialog
+class wml_error : public modal_dialog
 {
 public:
 	/**
@@ -33,27 +34,25 @@ public:
 	 * @param files        List of WML files on which errors were detected.
 	 * @param details      Detailed WML preprocessor/parser error report.
 	 */
-	twml_error(const std::string& summary,
+	wml_error(const std::string& summary,
 			   const std::string& post_summary,
 			   const std::vector<std::string>& files,
 			   const std::string& details);
 
-	/** The display function; see @ref tdialog for more information. */
+	/** The display function; see @ref modal_dialog for more information. */
 	static void display(const std::string& summary,
 						const std::string& post_summary,
 						const std::vector<std::string>& files,
-						const std::string& details,
-						CVideo& video)
+						const std::string& details)
 	{
-		twml_error(summary, post_summary, files, details).show(video);
+		wml_error(summary, post_summary, files, details).show();
 	}
 
-	/** The display function; see @ref tdialog for more information. */
+	/** The display function; see @ref modal_dialog for more information. */
 	static void display(const std::string& summary,
-						const std::string& details,
-						CVideo& video)
+						const std::string& details)
 	{
-		display(summary, "", std::vector<std::string>(), details, video);
+		display(summary, "", std::vector<std::string>(), details);
 	}
 
 private:
@@ -61,15 +60,14 @@ private:
 	bool have_post_summary_;
 	std::string report_; // Plain text report for copying to clipboard.
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
+	virtual const std::string& window_id() const override;
 
-	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
+	/** Inherited from modal_dialog. */
+	virtual void pre_show(window& window) override;
 
 	void copy_report_callback();
 };
 
+} // end namespace dialogs
 } // end namespace gui2
-
-#endif

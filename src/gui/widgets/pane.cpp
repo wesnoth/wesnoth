@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2012 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2012 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,21 +16,25 @@
 
 #include "gui/widgets/pane.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
-#include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/find_widget.hpp"
+#include "gui/core/log.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/window.hpp"
-#include "utils/const_clone.tpp"
-#include "gui/auxiliary/window_builder/pane.hpp"
-#include "gui/auxiliary/event/message.hpp"
+#include "utils/const_clone.hpp"
+#include "gui/core/event/message.hpp"
+#include "gettext.hpp"
+#include "lexical_cast.hpp"
+#include "sdl/rect.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
-#define LOG_SCOPE_HEADER "tpane [" + id() + "] " + __func__
+#define LOG_SCOPE_HEADER "pane [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 /**
  * Helper to implement private functions without modifying the header.
@@ -39,31 +43,30 @@ namespace gui2
  * functions. It also facilitates to create duplicates of functions for a const
  * and a non-const member function.
  */
-struct tpane_implementation
+struct pane_implementation
 {
 	/**
 	 * Implementation for the wrappers for
-	 * [const] twidget* tpane::find_at(const tpoint&, const bool) [const].
+	 * [const] widget* pane::find_at(const point&, const bool) [const].
 	 *
 	 * @tparam W                  A pointer to the pane.
 	 */
 	template <class W>
-	static typename utils::tconst_clone<twidget, W>::pointer
-	find_at(W pane, tpoint coordinate, const bool must_be_active)
+	static utils::const_clone_ptr<widget, W>
+	find_at(W pane, point coordinate, const bool must_be_active)
 	{
 
 		/*
 		 * First test whether the mouse is at the pane.
 		 */
-		if(pane->twidget::find_at(coordinate, must_be_active) != pane) {
-			return NULL;
+		if(pane->widget::find_at(coordinate, must_be_active) != pane) {
+			return nullptr;
 		}
 
-		typedef typename utils::tconst_clone<tpane::titem, W>::reference thack;
-		BOOST_FOREACH(thack item, pane->items_)
+		for(auto item : pane->items_)
 		{
 
-			if(item.grid->get_visible() == twidget::tvisible::invisible) {
+			if(item.item_grid->get_visible() == widget::visibility::invisible) {
 				continue;
 			}
 
@@ -71,83 +74,78 @@ struct tpane_implementation
 			 * If the adjusted coordinate is in the item's grid let the grid
 			 * resolve the coordinate.
 			 */
-			const SDL_Rect rect = item.grid->get_rectangle();
-			if(coordinate.x >= rect.x && coordinate.y >= rect.y
-			   && coordinate.x < rect.x + rect.w
-			   && coordinate.y < rect.y + rect.h) {
-
-				return item.grid->find_at(coordinate, must_be_active);
+			if(sdl::point_in_rect(coordinate, item.item_grid->get_rectangle())) {
+				return item.item_grid->find_at(coordinate, must_be_active);
 			}
 		}
 
-		return NULL;
+		return nullptr;
 	}
 
 	/**
 	 * Implementation for the wrappers for
-	 * [const] tgrid* tpane::grid(const unsigned id) [const].
+	 * [const] grid* pane::grid(const unsigned id) [const].
 	 *
 	 * @tparam W                  A pointer to the pane.
 	 */
 	template <class W>
-	static typename utils::tconst_clone<tgrid, W>::pointer
-	grid(W pane, const unsigned id)
+	static utils::const_clone_ptr<grid, W>
+	get_grid(W pane, const unsigned id)
 	{
-		typedef typename utils::tconst_clone<tpane::titem, W>::reference thack;
-		BOOST_FOREACH(thack item, pane->items_)
+		for(auto item : pane->items_)
 		{
 
 			if(item.id == id) {
-				return item.grid;
+				return item.item_grid;
 			}
 		}
 
-		return NULL;
+		return nullptr;
 	}
 };
 
-tpane::tpane(const tbuilder_grid_ptr item_builder)
-	: twidget()
+pane::pane(const builder_grid_ptr item_builder)
+	: widget()
 	, items_()
 	, item_builder_(item_builder)
 	, item_id_generator_(0)
-	, placer_(tplacer_::build(tplacer_::vertical, 1))
+	, placer_(placer_base::build(placer_base::tgrow_direction::vertical, 1))
 {
 	connect_signal<event::REQUEST_PLACEMENT>(
-			boost::bind(
-					&tpane::signal_handler_request_placement, this, _1, _2, _3),
-			event::tdispatcher::back_pre_child);
+			std::bind(
+					&pane::signal_handler_request_placement, this, _1, _2, _3),
+			event::dispatcher::back_pre_child);
 }
 
-tpane::tpane(const implementation::tbuilder_pane& builder)
-	: twidget(builder)
+pane::pane(const implementation::builder_pane& builder)
+	: widget(builder)
 	, items_()
 	, item_builder_(builder.item_definition)
 	, item_id_generator_(0)
-	, placer_(tplacer_::build(builder.grow_direction, builder.parallel_items))
+	, placer_(placer_base::build(builder.grow_direction, builder.parallel_items))
 {
 	connect_signal<event::REQUEST_PLACEMENT>(
-			boost::bind(
-					&tpane::signal_handler_request_placement, this, _1, _2, _3),
-			event::tdispatcher::back_pre_child);
+			std::bind(
+					&pane::signal_handler_request_placement, this, _1, _2, _3),
+			event::dispatcher::back_pre_child);
 }
 
-tpane* tpane::build(const implementation::tbuilder_pane& builder)
+pane* pane::build(const implementation::builder_pane& builder)
 {
-	return new tpane(builder);
+	return new pane(builder);
 }
 
-unsigned tpane::create_item(const std::map<std::string, string_map>& item_data,
+unsigned pane::create_item(const std::map<std::string, string_map>& item_data,
 							const std::map<std::string, std::string>& tags)
 {
-	titem item = { item_id_generator_++, tags, item_builder_->build() };
+	item item = { item_id_generator_++, tags, item_builder_->build() };
 
-	item.grid->set_parent(this);
+	item.item_grid->set_parent(this);
 
-	FOREACH(const AUTO & data, item_data)
+	for(const auto & data : item_data)
 	{
-		tcontrol* control
-				= find_widget<tcontrol>(item.grid, data.first, false, false);
+		styled_widget* control
+				= find_widget<styled_widget>(item.item_grid, data.first, false, false);
 
 		if(control) {
 			control->set_members(data.second);
@@ -156,16 +154,16 @@ unsigned tpane::create_item(const std::map<std::string, string_map>& item_data,
 
 	items_.push_back(item);
 
-	event::tmessage message;
+	event::message message;
 	fire(event::REQUEST_PLACEMENT, *this, message);
 
 	return item.id;
 }
 
-void tpane::place(const tpoint& origin, const tpoint& size)
+void pane::place(const point& origin, const point& size)
 {
 	DBG_GUI_L << LOG_HEADER << '\n';
-	twidget::place(origin, size);
+	widget::place(origin, size);
 
 	assert(origin.x == 0);
 	assert(origin.y == 0);
@@ -173,185 +171,185 @@ void tpane::place(const tpoint& origin, const tpoint& size)
 	place_children();
 }
 
-void tpane::layout_initialise(const bool full_initialisation)
+void pane::layout_initialize(const bool full_initialization)
 {
 	DBG_GUI_D << LOG_HEADER << '\n';
 
-	twidget::layout_initialise(full_initialisation);
+	widget::layout_initialize(full_initialization);
 
-	FOREACH(AUTO & item, items_)
+	for(auto & item : items_)
 	{
-		if(item.grid->get_visible() != twidget::tvisible::invisible) {
-			item.grid->layout_initialise(full_initialisation);
+		if(item.item_grid->get_visible() != widget::visibility::invisible) {
+			item.item_grid->layout_initialize(full_initialization);
 		}
 	}
 }
 
 void
-tpane::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
+pane::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 {
 	DBG_GUI_D << LOG_HEADER << '\n';
 
-	FOREACH(AUTO & item, items_)
+	for(auto & item : items_)
 	{
-		if(item.grid->get_visible() != twidget::tvisible::invisible) {
-			item.grid->draw_children(frame_buffer, x_offset, y_offset);
+		if(item.item_grid->get_visible() != widget::visibility::invisible) {
+			item.item_grid->draw_children(frame_buffer, x_offset, y_offset);
 		}
 	}
 }
 
-void tpane::child_populate_dirty_list(twindow& caller,
-									  const std::vector<twidget*>& call_stack)
+void pane::child_populate_dirty_list(window& caller,
+									  const std::vector<widget*>& call_stack)
 {
-	FOREACH(AUTO & item, items_)
+	for(auto & item : items_)
 	{
-		std::vector<twidget*> child_call_stack = call_stack;
-		item.grid->populate_dirty_list(caller, child_call_stack);
+		std::vector<widget*> child_call_stack = call_stack;
+		item.item_grid->populate_dirty_list(caller, child_call_stack);
 	}
 }
 
-void tpane::sort(const tcompare_functor& compare_functor)
+void pane::sort(const compare_functor_t& compare_functor)
 {
 	items_.sort(compare_functor);
 
 	set_origin_children();
 }
 
-void tpane::filter(const tfilter_functor& filter_functor)
+void pane::filter(const filter_functor_t& filter_functor)
 {
-	FOREACH(AUTO & item, items_)
+	for(auto & item : items_)
 	{
-		item.grid->set_visible(filter_functor(item)
-									   ? twidget::tvisible::visible
-									   : twidget::tvisible::invisible);
+		item.item_grid->set_visible(filter_functor(item)
+									   ? widget::visibility::visible
+									   : widget::visibility::invisible);
 	}
 
 	set_origin_children();
 }
 
-void tpane::request_reduce_width(const unsigned /*maximum_width*/)
+void pane::request_reduce_width(const unsigned /*maximum_width*/)
 {
 }
 
-twidget* tpane::find_at(const tpoint& coordinate, const bool must_be_active)
+widget* pane::find_at(const point& coordinate, const bool must_be_active)
 {
-	return tpane_implementation::find_at(this, coordinate, must_be_active);
+	return pane_implementation::find_at(this, coordinate, must_be_active);
 }
 
-const twidget* tpane::find_at(const tpoint& coordinate,
+const widget* pane::find_at(const point& coordinate,
 							  const bool must_be_active) const
 {
-	return tpane_implementation::find_at(this, coordinate, must_be_active);
+	return pane_implementation::find_at(this, coordinate, must_be_active);
 }
 
-tpoint tpane::calculate_best_size() const
+point pane::calculate_best_size() const
 {
 	prepare_placement();
 	return placer_->get_size();
 }
 
-bool tpane::disable_click_dismiss() const
+bool pane::disable_click_dismiss() const
 {
 	return false;
 }
 
-iterator::twalker_* tpane::create_walker()
+iteration::walker_base* pane::create_walker()
 {
 	/**
 	 * @todo Implement properly.
 	 */
-	return NULL;
+	return nullptr;
 }
 
-tgrid* tpane::grid(const unsigned id)
+grid* pane::get_grid(const unsigned id)
 {
-	return tpane_implementation::grid(this, id);
+	return pane_implementation::get_grid(this, id);
 }
 
-const tgrid* tpane::grid(const unsigned id) const
+const grid* pane::get_grid(const unsigned id) const
 {
-	return tpane_implementation::grid(this, id);
+	return pane_implementation::get_grid(this, id);
 }
 
-void tpane::place_children()
+void pane::place_children()
 {
 	prepare_placement();
 	unsigned index = 0;
-	FOREACH(AUTO & item, items_)
+	for(auto & item : items_)
 	{
-		if(item.grid->get_visible() == twidget::tvisible::invisible) {
+		if(item.item_grid->get_visible() == widget::visibility::invisible) {
 			continue;
 		}
 
-		const tpoint origin = placer_->get_origin(index);
-		item.grid->place(origin, item.grid->get_best_size());
+		const point origin = placer_->get_origin(index);
+		item.item_grid->place(origin, item.item_grid->get_best_size());
 		++index;
 	}
 }
 
-void tpane::set_origin_children()
+void pane::set_origin_children()
 {
 	prepare_placement();
 	unsigned index = 0;
-	FOREACH(AUTO & item, items_)
+	for(auto & item : items_)
 	{
-		if(item.grid->get_visible() == twidget::tvisible::invisible) {
+		if(item.item_grid->get_visible() == widget::visibility::invisible) {
 			continue;
 		}
 
-		const tpoint origin = placer_->get_origin(index);
-		item.grid->set_origin(origin);
+		const point origin = placer_->get_origin(index);
+		item.item_grid->set_origin(origin);
 		++index;
 	}
 }
 
-void tpane::place_or_set_origin_children()
+void pane::place_or_set_origin_children()
 {
 	prepare_placement();
 	unsigned index = 0;
-	FOREACH(AUTO & item, items_)
+	for(auto & item : items_)
 	{
-		if(item.grid->get_visible() == twidget::tvisible::invisible) {
+		if(item.item_grid->get_visible() == widget::visibility::invisible) {
 			continue;
 		}
 
-		const tpoint origin = placer_->get_origin(index);
-		if(item.grid->get_size() != item.grid->get_best_size()) {
-			item.grid->place(origin, item.grid->get_best_size());
+		const point origin = placer_->get_origin(index);
+		if(item.item_grid->get_size() != item.item_grid->get_best_size()) {
+			item.item_grid->place(origin, item.item_grid->get_best_size());
 		} else {
-			item.grid->set_origin(origin);
+			item.item_grid->set_origin(origin);
 		}
 		++index;
 	}
 }
 
-void tpane::prepare_placement() const
+void pane::prepare_placement() const
 {
 	assert(placer_.get());
-	placer_->initialise();
+	placer_->initialize();
 
-	FOREACH(const AUTO & item, items_)
+	for(const auto & item : items_)
 	{
-		if(item.grid->get_visible() == twidget::tvisible::invisible) {
+		if(item.item_grid->get_visible() == widget::visibility::invisible) {
 			continue;
 		}
 
-		placer_->add_item(item.grid->get_best_size());
+		placer_->add_item(item.item_grid->get_best_size());
 	}
 }
 
-void tpane::signal_handler_request_placement(tdispatcher& dispatcher,
-											 const event::tevent event,
+void pane::signal_handler_request_placement(dispatcher& dispatcher,
+											 const event::ui_event event,
 											 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	twidget* widget = dynamic_cast<twidget*>(&dispatcher);
-	if(widget) {
-		FOREACH(AUTO & item, items_)
+	widget* wgt = dynamic_cast<widget*>(&dispatcher);
+	if(wgt) {
+		for(auto & item : items_)
 		{
-			if(item.grid->has_widget(*widget)) {
-				if(item.grid->get_visible() != twidget::tvisible::invisible) {
+			if(item.item_grid->has_widget(*wgt)) {
+				if(item.item_grid->get_visible() != widget::visibility::invisible) {
 
 					/*
 					 * This time we call init layout but also the linked widget
@@ -359,7 +357,7 @@ void tpane::signal_handler_request_placement(tdispatcher& dispatcher,
 					 * addon_list. This code can use some more tuning,
 					 * polishing and testing.
 					 */
-					item.grid->layout_initialise(false);
+					item.item_grid->layout_initialize(false);
 					get_window()->layout_linked_widgets();
 
 					/*
@@ -367,7 +365,7 @@ void tpane::signal_handler_request_placement(tdispatcher& dispatcher,
 					 * what seems to work properly when showing and hiding
 					 * items. Might fail with new items (haven't tested yet).
 					 */
-					item.grid->place(tpoint(0, 0), item.grid->get_best_size());
+					item.item_grid->place(point(), item.item_grid->get_best_size());
 				}
 				place_or_set_origin_children();
 				DBG_GUI_E << LOG_HEADER << ' ' << event << " handled.\n";
@@ -381,5 +379,68 @@ void tpane::signal_handler_request_placement(tdispatcher& dispatcher,
 	assert(false);
 	handled = false;
 }
+
+// }---------- BUILDER -----------{
+
+/*WIKI_MACRO
+ * @begin{macro}{pane_description}
+ *
+ *        A pane is a container where new members can be added and removed
+ *        during run-time.
+ * @end{macro}
+ */
+
+/*WIKI
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_viewport
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="pane"}{min=0}{max=-1}{super="generic/widget_instance"}
+ * == Label ==
+ *
+ * @macro = viewport_description
+ *
+ * List with the label specific variables:
+ * @begin{table}{config}
+ *     grow_direction & grow_direction & &
+ *                                The direction in which new items grow. $
+ *     parallel_items & unsigned & &
+ *                                The number of items that are growing in
+ *                                parallel. $
+ *     item_definition & section & &
+ *                                The definition of a new item. $
+ * @end{table}
+ *
+ * @begin{tag}{name="item_definition"}{min=1}{max=1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="item_definition"}
+ * @end{tag}{name="pane"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
+ */
+
+namespace implementation
+{
+
+builder_pane::builder_pane(const config& cfg)
+	: builder_widget(cfg)
+	, grow_direction(
+			  lexical_cast<placer_base::tgrow_direction>(cfg["grow_direction"]))
+	, parallel_items(cfg["parallel_items"])
+	, item_definition(new builder_grid(cfg.child("item_definition", "[pane]")))
+{
+	VALIDATE(parallel_items > 0, _("Need at least 1 parallel item."));
+}
+
+widget* builder_pane::build() const
+{
+	return build(replacements_map());
+}
+
+widget* builder_pane::build(const replacements_map& /*replacements*/) const
+{
+	return pane::build(*this);
+}
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2

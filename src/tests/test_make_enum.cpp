@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,8 +16,9 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include "make_enum.hpp"
-#include "util.hpp"
+#include "config.hpp"
+#include "lexical_cast.hpp"
+#include "utils/make_enum.hpp"
 
 namespace foo {
 
@@ -26,8 +27,6 @@ namespace foo {
 	        (con2, "name2")
 	        (con3, "name3")
 	)
-
-	MAKE_ENUM_STREAM_OPS1(enumname)
 }
 
 
@@ -44,17 +43,14 @@ foo::enumname lexical_cast<std::string> ( std::string str ) throws bad_lexical_c
 */
 
 class bar {
-	public:
-
+public:
 	MAKE_ENUM(another,
 	        (val1, "name1")
 	        (val2, "name2")
 	        (val3, "name3")
 	)
-
 };
 
-MAKE_ENUM_STREAM_OPS2(bar,another)
 
 /** Tests begin **/
 
@@ -62,11 +58,11 @@ BOOST_AUTO_TEST_SUITE ( test_make_enum )
 
 BOOST_AUTO_TEST_CASE ( test_make_enum_namespace )
 {
-	foo::enumname e = foo::string_to_enumname_default("name2", foo::con1); //returns con2
+	foo::enumname e = foo::enumname::string_to_enum("name2", foo::enumname::con1); //returns con2
 
-	BOOST_CHECK_EQUAL ( e, foo::con2 );
+	BOOST_CHECK_EQUAL ( e, foo::enumname::con2 );
 
-	std::string str = foo::enumname_to_string(foo::con1); //returns "name1"
+	std::string str = foo::enumname::enum_to_string(foo::enumname::con1); //returns "name1"
 
 	BOOST_CHECK_EQUAL ( str, "name1" );
 
@@ -78,7 +74,7 @@ BOOST_AUTO_TEST_CASE ( test_make_enum_namespace )
 
 	try {
 		e = lexical_cast<foo::enumname> ("name3"); //returns con3
-	} catch (bad_lexical_cast & e) {
+	} catch (const bad_lexical_cast & /*e*/) {
 		//std::cerr << "enum lexical cast didn't work!" << std::endl;
 		threw_exception_when_it_wasnt_supposed_to = true;
 	}
@@ -89,7 +85,7 @@ BOOST_AUTO_TEST_CASE ( test_make_enum_namespace )
 
 	try {
 		e = lexical_cast<foo::enumname> ("name4"); //throw bad_lexical_cast
-	} catch (bad_lexical_cast & e) {
+	} catch (const bad_lexical_cast & /*e*/) {
 		//std::cerr << "enum lexical cast worked!" << std::endl;
 		threw_exception_when_it_was_supposed_to = true;
 	}
@@ -103,11 +99,11 @@ BOOST_AUTO_TEST_CASE ( test_make_enum_namespace )
 
 BOOST_AUTO_TEST_CASE ( test_make_enum_class )
 {
-	bar::another e = bar::string_to_another_default("name2", bar::val1); //returns val2
+	bar::another e = bar::another::string_to_enum("name2", bar::another::val1); //returns val2
 
-	BOOST_CHECK_EQUAL ( e, bar::val2 );
+	BOOST_CHECK_EQUAL ( e, bar::another::val2 );
 
-	std::string str = bar::another_to_string(bar::val1); //returns "name1"
+	std::string str = bar::another::enum_to_string(bar::another::val1); //returns "name1"
 
 	BOOST_CHECK_EQUAL ( str, "name1" );
 
@@ -119,7 +115,7 @@ BOOST_AUTO_TEST_CASE ( test_make_enum_class )
 
 	try {
 		e = lexical_cast<bar::another> ("name3"); //returns val3
-	} catch (bad_lexical_cast & e) {
+	} catch(const bad_lexical_cast & /*e*/) {
 		//std::cerr << "enum lexical cast didn't work!" << std::endl;
 		threw_exception_when_it_wasnt_supposed_to = true;
 	}
@@ -130,7 +126,7 @@ BOOST_AUTO_TEST_CASE ( test_make_enum_class )
 
 	try {
 		e = lexical_cast<bar::another> ("name4"); //throw bad_lexical_cast
-	} catch (bad_lexical_cast & e) {
+	} catch (const bad_lexical_cast & /*e*/) {
 		//std::cerr << "enum lexical cast worked!" << std::endl;
 		threw_exception_when_it_was_supposed_to = true;
 	}
@@ -140,6 +136,71 @@ BOOST_AUTO_TEST_CASE ( test_make_enum_class )
 	std::stringstream ss;
 	ss << e;
 	BOOST_CHECK_EQUAL (ss.str(), "name3");
+}
+
+BOOST_AUTO_TEST_CASE ( test_make_enum_config )
+{
+	config cfg;
+	foo::enumname e1 = foo::enumname::con1;
+	foo::enumname e2 = foo::enumname::con2;
+	foo::enumname e3 = foo::enumname::con3;
+
+	cfg["t1"] = e2;
+	cfg["t2"] = foo::enumname::enum_to_string(e2);
+	cfg["t3"] = "name2";
+	cfg["t4"] = "345646";
+
+	BOOST_CHECK_EQUAL(cfg["t1"].to_enum<foo::enumname>(foo::enumname::con1) , e2);
+	BOOST_CHECK_EQUAL(cfg["t2"].to_enum<foo::enumname>(foo::enumname::con1) , e2);
+	BOOST_CHECK_EQUAL(cfg["t3"].to_enum<foo::enumname>(foo::enumname::con1) , e2);
+
+	BOOST_CHECK_EQUAL(cfg["t1"].to_enum(e1) , e2);
+	BOOST_CHECK_EQUAL(cfg["t2"].to_enum(e1) , e2);
+	BOOST_CHECK_EQUAL(cfg["t3"].to_enum(e1) , e2);
+
+
+	BOOST_CHECK_EQUAL(cfg["t4"].to_enum<foo::enumname>(foo::enumname::con3) , e3);
+
+	BOOST_CHECK_EQUAL(cfg["t1"].str() , "name2");
+}
+
+
+BOOST_AUTO_TEST_CASE ( test_make_enum_parse )
+{
+	config cfg;
+	foo::enumname e1 = foo::enumname::con1;
+	foo::enumname e2 = foo::enumname::con2;
+	foo::enumname e3 = foo::enumname::con3;
+
+	cfg["t1"] = e2;
+	cfg["t2"] = foo::enumname::enum_to_string(e1);
+	cfg["t3"] = e1.to_string();
+	cfg["t4"] = "name3";
+	cfg["t5"] = "345646";
+
+	foo::enumname dummy = foo::enumname::con1;
+
+	BOOST_CHECK_EQUAL(dummy, e1);
+	BOOST_CHECK_EQUAL(dummy.parse("name1"), true);
+	BOOST_CHECK_EQUAL(dummy, e1);
+	BOOST_CHECK_EQUAL(dummy.parse("name2"), true);
+	BOOST_CHECK_EQUAL(dummy, e2);
+	BOOST_CHECK_EQUAL(dummy.parse("name3"), true);
+	BOOST_CHECK_EQUAL(dummy, e3);
+	BOOST_CHECK_EQUAL(dummy.parse("name2 "), false);
+	BOOST_CHECK_EQUAL(dummy, e3);
+	BOOST_CHECK_EQUAL(dummy.parse("kdfg89"), false);
+	BOOST_CHECK_EQUAL(dummy, e3);
+	BOOST_CHECK_EQUAL(dummy.parse("NAME2"), false);
+	BOOST_CHECK_EQUAL(dummy, e3);
+	BOOST_CHECK_EQUAL(dummy.parse(""), false);
+	BOOST_CHECK_EQUAL(dummy, e3);
+	BOOST_CHECK_EQUAL(dummy.parse("name2"), true);
+	BOOST_CHECK_EQUAL(dummy, e2);
+
+	BOOST_CHECK_EQUAL(foo::enumname::name(), "enumname");
+
+
 }
 
 

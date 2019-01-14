@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,7 +15,6 @@
 #include "sdl/exception.hpp"
 
 #include <SDL_error.h>
-#include "gpu.hpp"
 
 namespace sdl
 {
@@ -29,29 +28,11 @@ static std::string create_error(const std::string& operation,
 		return operation;
 	}
 }
-#ifdef SDL_GPU
-static std::string create_gpu_error(const std::string &op,
-									const bool fetch_error_msg)
-{
-	if (fetch_error_msg) {
-		return op + " Error »" + GPU_PopErrorCode().details + "«.\n";
-	} else {
-		return op;
-	}
-}
-#endif
 
-texception::texception(const std::string& operation, const bool use_sdl_error)
+exception::exception(const std::string& operation, const bool use_sdl_error)
 	: game::error(create_error(operation, use_sdl_error))
 {
 }
 
-#ifdef SDL_GPU
-tgpu_exception::tgpu_exception(const std::string &op,
-							   const bool fetch_error_msg)
-	: game::error(create_gpu_error(op, fetch_error_msg))
-{
-}
-#endif
 
 } // namespace sdl

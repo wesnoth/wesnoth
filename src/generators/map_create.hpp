@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,17 +12,14 @@
    See the COPYING file for more details.
 */
 
-#ifndef MAP_CREATE_HPP_INCLUDED
-#define MAP_CREATE_HPP_INCLUDED
+#pragma once
 
 class config;
 class map_generator;
 
 #include <string>
 
-std::string random_generate_map(const std::string& parms, const config &cfg);
-config random_generate_scenario(const std::string& parms, const config &cfg);
+std::string random_generate_map(const std::string& parms, const config &cfg, const config* vars = nullptr);
+config random_generate_scenario(const std::string& parms, const config &cfg, const config* vars = nullptr);
 
-map_generator* create_map_generator(const std::string& name, const config &cfg);
-
-#endif
+map_generator* create_map_generator(const std::string& name, const config &cfg, const config* vars = nullptr);

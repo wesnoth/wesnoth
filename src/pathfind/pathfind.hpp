@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,15 +17,14 @@
  * This module contains various pathfinding functions and utilities.
  */
 
-#ifndef PATHFIND_H_INCLUDED
-#define PATHFIND_H_INCLUDED
+#pragma once
 
 class gamemap;
 class team;
 class unit;
 class unit_type;
-
-#include "map_location.hpp"
+class game_board;
+#include "map/location.hpp"
 #include "movetype.hpp"
 
 #include <vector>
@@ -42,15 +41,16 @@ enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
 /// to @a loc as possible, but which is unoccupied by any units.
 map_location find_vacant_tile(const map_location& loc,
                               VACANT_TILE_TYPE vacancy=VACANT_ANY,
-                              const unit* pass_check=NULL,
-                              const team* shroud_check=NULL);
+                              const unit* pass_check=nullptr,
+                              const team* shroud_check=nullptr,
+                              const game_board* board=nullptr);
 /// Wrapper for find_vacant_tile() when looking for a vacant castle tile
 /// near a leader.
 map_location find_vacant_castle(const unit & leader);
 
 /** Determines if a given location is in an enemy zone of control. */
-bool enemy_zoc(team const &current_team, map_location const &loc,
-               team const &viewing_team, bool see_all=false);
+bool enemy_zoc(const team& current_team, const map_location& loc,
+               const team& viewing_team, bool see_all=false);
 
 
 struct cost_calculator
@@ -105,7 +105,7 @@ struct paths
 struct vision_path : public paths
 {
 	/// Construct a list of seen hexes for a unit.
-	vision_path(const unit& viewer, map_location const &loc,
+	vision_path(const unit& viewer, const map_location& loc,
 	            const std::map<map_location, int>& jamming_map);
 	vision_path(const movetype::terrain_costs & view_costs, bool slowed,
 	            int sight_range, const map_location & loc,
@@ -122,7 +122,7 @@ struct vision_path : public paths
 struct jamming_path : public paths
 {
 	/// Construct a list of jammed hexes for a unit.
-	jamming_path(const unit& jammer, map_location const &loc);
+	jamming_path(const unit& jammer, const map_location& loc);
 	virtual ~jamming_path();
 };
 
@@ -189,16 +189,16 @@ struct marked_route
 	mark_map marks;
 };
 
-plain_route a_star_search(map_location const &src, map_location const &dst,
-		double stop_at, const cost_calculator* costCalculator,
-		const size_t parWidth, const size_t parHeight,
-		const teleport_map* teleports = NULL);
+plain_route a_star_search(const map_location& src, const map_location& dst,
+		double stop_at, const cost_calculator& costCalculator,
+		const std::size_t parWidth, const std::size_t parHeight,
+		const teleport_map* teleports = nullptr, bool border = false);
 
 /**
  * Add marks on a route @a rt assuming that the unit located at the first hex of
  * rt travels along it.
  */
-marked_route mark_route(const plain_route &rt);
+marked_route mark_route(const plain_route &rt, bool update_move_cost = false);
 
 struct shortest_path_calculator : cost_calculator
 {
@@ -209,12 +209,12 @@ struct shortest_path_calculator : cost_calculator
 	virtual double cost(const map_location& loc, const double so_far) const;
 
 private:
-	unit const &unit_;
-	team const &viewing_team_;
-	std::vector<team> const &teams_;
-	gamemap const &map_;
-	int const movement_left_;
-	int const total_movement_;
+	const unit& unit_;
+	const team& viewing_team_;
+	const std::vector<team>& teams_;
+	const gamemap& map_;
+	const int movement_left_;
+	const int total_movement_;
 	bool const ignore_unit_;
 	bool const ignore_defense_;
 	bool see_all_;
@@ -229,8 +229,8 @@ private:
 	const movetype &movement_type_;
 	const int movement_left_;
 	const int total_movement_;
-	team const &viewing_team_;
-	gamemap const &map_;
+	const team& viewing_team_;
+	const gamemap& map_;
 };
 
 /**
@@ -243,8 +243,8 @@ struct emergency_path_calculator : cost_calculator
 	virtual double cost(const map_location& loc, const double so_far) const;
 
 private:
-	unit const &unit_;
-	gamemap const &map_;
+	const unit& unit_;
+	const gamemap& map_;
 };
 
 /**
@@ -292,7 +292,7 @@ struct full_cost_map
 	// The second int is how many units can reach this hex.
 	// (For some units some hexes or even a whole regions are unreachable)
 	// To calculate a *average cost map* it is recommended to divide first/second.
-	std::vector<std::pair<int, int> > cost_map;
+	std::vector<std::pair<int, int>> cost_map;
 
 private:
 	const bool force_ignore_zoc_;
@@ -302,5 +302,3 @@ private:
 	const bool ignore_units_;
 };
 }
-
-#endif

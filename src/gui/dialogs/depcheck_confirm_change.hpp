@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2012 - 2014 by Boldizsár Lipka <lipkab@zoho.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2012 - 2018 by Boldizsár Lipka <lipkab@zoho.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,17 +12,18 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_MP_DEPCHECK_CONFIRM_CHANGE_HPP_INCLUDED
-#define GUI_DIALOGS_MP_DEPCHECK_CONFIRM_CHANGE_HPP_INCLUDED
+#pragma once
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include <vector>
 #include <string>
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tdepcheck_confirm_change : public tdialog
+class depcheck_confirm_change : public modal_dialog
 {
 public:
 	/**
@@ -34,15 +35,14 @@ public:
 	 * @param requester 	the name of the component which requests the change
 	 *
 	 */
-	tdepcheck_confirm_change(bool action,
+	depcheck_confirm_change(bool action,
 								const std::vector<std::string>& mods,
 								const std::string& requester);
 
 protected:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
+	virtual const std::string& window_id() const override;
 };
 
+} // namespace dialogs
 } // namespace gui2
-
-#endif

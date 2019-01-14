@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,11 +18,13 @@
  * logging macro definitions and base exception declarations
  */
 
-#ifndef EDITOR_EDITOR_COMMON_HPP_INCLUDED
-#define EDITOR_EDITOR_COMMON_HPP_INCLUDED
+#pragma once
 
-#include "../exceptions.hpp"
-#include "../log.hpp"
+#include "exceptions.hpp"
+#include "log.hpp"
+
+#include <deque>
+#include <memory>
 
 extern lg::log_domain log_editor;
 #define DBG_ED LOG_STREAM_INDENT(debug, log_editor)
@@ -32,7 +34,6 @@ extern lg::log_domain log_editor;
 #define SCOPE_ED log_scope2(log_editor, __func__)
 
 class display;
-class gamemap;
 
 namespace editor {
 
@@ -63,6 +64,10 @@ class map_context;
 class map_fragment;
 class mouse_action;
 
-} //end namespace editor
+/** Action pointer typedef. */
+using editor_action_ptr = std::unique_ptr<editor_action>;
 
-#endif
+/** Action stack typedef. */
+using action_stack = std::deque<editor_action_ptr>;
+
+} //end namespace editor

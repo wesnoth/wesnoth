@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2013 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2013 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,8 +17,7 @@
  * Desktop environment interaction functions.
  */
 
-#ifndef DESKTOP_OPEN_HPP_INCLUDED
-#define DESKTOP_OPEN_HPP_INCLUDED
+#pragma once
 
 #include <string>
 
@@ -54,5 +53,3 @@ bool open_object(const std::string& path_or_url);
 bool open_object_is_supported();
 
 }
-
-#endif

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2010 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2010 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,45 +12,54 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_CAMPAIGN_DIFFICULTY_HPP_INCLUDED
-#define GUI_DIALOGS_CAMPAIGN_DIFFICULTY_HPP_INCLUDED
+#pragma once
 
-#include "gui/dialogs/dialog.hpp"
+#include "config.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
-#include "gui/auxiliary/old_markup.hpp"
 #include <vector>
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tcampaign_difficulty : public tdialog
+/**
+ * Helper function to convert old difficulty markup. Declared outside class to allow other
+ * classes to make use of it.
+ */
+config generate_difficulty_config(const config& source);
+
+class campaign_difficulty : public modal_dialog
 {
 public:
-	explicit tcampaign_difficulty(const std::vector<std::string>& items);
+	/**
+	 * @param campaign The campaign the difficulty is being chosen for
+	 */
+	campaign_difficulty(const config& campaign);
 
 	/**
-	 * Returns the selected item index after displaying.
-	 * @return -1 if the dialog was canceled.
+	 * Returns the selected difficulty define after displaying.
+	 * @return 'CANCEL' if the dialog was canceled.
 	 */
-	int selected_index() const
+	std::string selected_difficulty() const
 	{
-		return index_;
+		return selected_difficulty_;
 	}
 
 private:
-	int index_;
-	std::vector<tlegacy_menu_item> items_;
+	config difficulties_;
+	std::string campaign_id_;
+	std::string selected_difficulty_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
+	virtual const std::string& window_id() const override;
 
-	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
+	/** Inherited from modal_dialog. */
+	virtual void pre_show(window& window) override;
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	virtual void post_show(window& window) override;
 };
-}
-
-
-#endif /* ! GUI_DIALOGS_CAMPAIGN_DIFFICULTY_HPP_INCLUDED */
+} // namespace dialogs
+} // namespace gui2

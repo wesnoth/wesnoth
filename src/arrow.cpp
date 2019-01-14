@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2010 - 2014 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org
+   Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -21,17 +21,12 @@
 
 #include "game_display.hpp"
 #include "log.hpp"
-#include "resources.hpp"
-
-#include <boost/foreach.hpp>
 
 static lg::log_domain log_arrows("arrows");
 #define ERR_ARR LOG_STREAM(err, log_arrows)
 #define WRN_ARR LOG_STREAM(warn, log_arrows)
 #define LOG_ARR LOG_STREAM(info, log_arrows)
 #define DBG_ARR LOG_STREAM(debug, log_arrows)
-
-#define SCREEN (static_cast<display*>(resources::screen))
 
 arrow::arrow(bool hidden)
 	: layer_(display::LAYER_ARROWS)
@@ -57,10 +52,9 @@ void arrow::hide()
 		return;
 	hidden_ = true;
 
-	if (SCREEN)
-	{
+	if(display* disp = display::get_singleton()) {
 		invalidate_arrow_path(path_);
-		SCREEN->remove_arrow(*this);
+		disp->remove_arrow(*this);
 	}
 }
 
@@ -70,11 +64,12 @@ void arrow::show()
 		return;
 	hidden_ = false;
 
-	if(SCREEN)
-		SCREEN->add_arrow(*this);
+	if(display* disp = display::get_singleton()) {
+		disp->add_arrow(*this);
+	}
 }
 
-void arrow::set_path(arrow_path_t const& path)
+void arrow::set_path(const arrow_path_t& path)
 {
 	if (valid_path(path))
 	{
@@ -99,7 +94,7 @@ void arrow::reset()
 	notify_arrow_changed();
 }
 
-void arrow::set_color(std::string const& color)
+void arrow::set_color(const std::string& color)
 {
 	color_ = color;
 	if (valid_path(path_))
@@ -108,10 +103,10 @@ void arrow::set_color(std::string const& color)
 	}
 }
 
-std::string const arrow::STYLE_STANDARD = "standard";
-std::string const arrow::STYLE_HIGHLIGHTED = "highlighted";
-std::string const arrow::STYLE_FOCUS = "focus";
-std::string const arrow::STYLE_FOCUS_INVALID = "focus_invalid";
+const std::string arrow::STYLE_STANDARD = "standard";
+const std::string arrow::STYLE_HIGHLIGHTED = "highlighted";
+const std::string arrow::STYLE_FOCUS = "focus";
+const std::string arrow::STYLE_FOCUS_INVALID = "focus_invalid";
 
 void arrow::set_style(const std::string& style)
 {
@@ -122,32 +117,33 @@ void arrow::set_style(const std::string& style)
 	}
 }
 
-arrow_path_t const& arrow::get_path() const
+const arrow_path_t& arrow::get_path() const
 {
 	return path_;
 }
 
-arrow_path_t const& arrow::get_previous_path() const
+const arrow_path_t& arrow::get_previous_path() const
 {
 	return previous_path_;
 }
 
-bool arrow::path_contains(map_location const& hex) const
+bool arrow::path_contains(const map_location& hex) const
 {
 	bool contains = symbols_map_.find(hex) != symbols_map_.end();
 	return contains;
 }
 
-void arrow::draw_hex(map_location const& hex)
+void arrow::draw_hex(const map_location& hex)
 {
 	if(path_contains(hex))
 	{
-		SCREEN->render_image(SCREEN->get_location_x(hex), SCREEN->get_location_y(hex), layer_,
+		display* disp = display::get_singleton();
+		disp->render_image(disp->get_location_x(hex), disp->get_location_y(hex), layer_,
 					hex, image::get_image(symbols_map_[hex], image::SCALED_TO_ZOOM));
 	}
 }
 
-bool arrow::valid_path(arrow_path_t const& path)
+bool arrow::valid_path(const arrow_path_t& path)
 {
 	if (path.size() >= 2)
 		return true;
@@ -166,9 +162,9 @@ void arrow::update_symbols()
 	symbols_map_.clear();
 	invalidate_arrow_path(path_);
 
-	std::string const mods = "~RC(FF00FF>"+ color_ + ")"; //magenta to current color
+	const std::string mods = "~RC(FF00FF>"+ color_ + ")"; //magenta to current color
 
-	std::string const dirname = "arrows/";
+	const std::string dirname = "arrows/";
 	std::string prefix = "";
 	std::string suffix = "";
 	std::string image_filename = "";
@@ -254,7 +250,7 @@ void arrow::update_symbols()
 				exit = exit + "_ending";
 			}
 
-			assert(abs(enter_dir - exit_dir) > 1); //impossible turn?
+			assert(std::abs(enter_dir - exit_dir) > 1); //impossible turn?
 			if (enter_dir < exit_dir)
 			{
 				prefix = enter;
@@ -268,12 +264,12 @@ void arrow::update_symbols()
 		}
 
 		image_filename = dirname + style_ + "/" + prefix;
-		if (suffix != "")
+		if (!suffix.empty())
 		{
 			image_filename += ("-" + suffix);
 		}
 		image_filename += ".png";
-		assert(image_filename != "");
+		assert(!image_filename.empty());
 
 		image::locator image = image::locator(image_filename, mods);
 		if (!image.file_exists())
@@ -285,19 +281,18 @@ void arrow::update_symbols()
 	}
 }
 
-void arrow::invalidate_arrow_path(arrow_path_t const& path)
+void arrow::invalidate_arrow_path(const arrow_path_t& path)
 {
-	if(!SCREEN) return;
-
-	BOOST_FOREACH(map_location const& loc, path)
-	{
-		SCREEN->invalidate(loc);
+	if(display* disp = display::get_singleton()) {
+		for(const map_location& loc : path) {
+			disp->invalidate(loc);
+		}
 	}
 }
 
 void arrow::notify_arrow_changed()
 {
-	if(!SCREEN) return;
-
-	SCREEN->update_arrow(*this);
+	if(display* disp = display::get_singleton()) {
+		disp->update_arrow(*this);
+	}
 }

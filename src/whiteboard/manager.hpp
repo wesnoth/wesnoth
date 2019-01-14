@@ -1,6 +1,6 @@
 /*
- Copyright (C) 2010 - 2014 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -16,14 +16,13 @@
  * @file
  */
 
-#ifndef WB_MANAGER_HPP_
-#define WB_MANAGER_HPP_
+#pragma once
 
 #include "side_actions.hpp"
 
-#include "../unit_map.hpp"
+#include "units/map.hpp"
 
-#include <boost/noncopyable.hpp>
+#include <boost/dynamic_bitset.hpp>
 
 class CKey;
 class team;
@@ -40,13 +39,15 @@ class highlighter;
 /**
  * This class is the frontend of the whiteboard framework for the rest of the Wesnoth code.
  */
-class manager : private boost::noncopyable
+class manager
 {
 	friend struct future_map;
 	friend struct future_map_if_active;
 	friend struct real_map;
 
 public:
+	manager(const manager&) = delete;
+	manager& operator=(const manager&) = delete;
 
 	manager();
 	~manager();
@@ -78,7 +79,7 @@ public:
 	/** Used to ask the whiteboard if its action reordering hotkeys should be available to the user */
 	bool can_enable_reorder_hotkeys() const;
 	/** Used to ask permission to the wb to move a leader, to avoid invalidating planned recruits */
-	bool allow_leader_to_move(unit const& leader) const;
+	bool allow_leader_to_move(const unit& leader) const;
 	/** @ return true if the whiteboard is ready to end turn. Triggers the execution of remaining planned actions. */
 	bool allow_end_turn();
 	/**
@@ -89,8 +90,9 @@ public:
 	void on_mouseover_change(const map_location& hex);
 	void on_deselect_hex(){ erase_temp_move();}
 	void on_gamestate_change();
-	void on_viewer_change(size_t team_index);
+	void on_viewer_change(std::size_t team_index);
 	void on_change_controller(int side, const team& t);
+	void on_kill_unit();
 	/** Handles various cleanup right before removing an action from the queue */
 	void pre_delete_action(action_ptr action);
 	/** Handles various cleanup right after removing an action from the queue */
@@ -99,9 +101,9 @@ public:
 	/** Called by replay_network_sender to add whiteboard data to the outgoing network packets */
 	void send_network_data();
 	/** Called by turn_info::process_network_data() when network data needs to be processed */
-	void process_network_data(config const&);
+	void process_network_data(const config&);
 	/** Adds a side_actions::net_cmd to net_buffer_[team_index], whereupon it will (later) be sent to all allies */
-	void queue_net_cmd(size_t team_index, side_actions::net_cmd const&);
+	void queue_net_cmd(std::size_t team_index, const side_actions::net_cmd&);
 
 	/** Whether the current side has actions in the first turn of its planned actions queue */
 	static bool current_side_has_actions();
@@ -137,7 +139,7 @@ public:
 	/** Creates a move action for the current side, and erases the temp move.
 	 *  The move action is inserted at the end of the queue, to be executed last. */
 	void save_temp_move();
-	/** @return an iterator to the unit that owns the temp move, resources::units->end() if there's none. */
+	/** @return an iterator to the unit that owns the temp move, resources::gameboard->units().end() if there's none. */
 	unit_map::iterator get_temp_move_unit() const;
 
 	/** Creates an attack or attack-move action for the current side */
@@ -152,7 +154,7 @@ public:
 	bool save_recall(const unit& unit, int side_num, const map_location& recall_hex);
 
 	/** Creates a suppose-dead action for the current side */
-	void save_suppose_dead(unit& curr_unit, map_location const& loc);
+	void save_suppose_dead(unit& curr_unit, const map_location& loc);
 
 	/** Executes first action in the queue for current side */
 	void contextual_execute();
@@ -167,7 +169,7 @@ public:
 	void contextual_bump_down_action();
 
 	/** Get the highlight visitor instance in use by the manager */
-	boost::weak_ptr<highlighter> get_highlighter() { return highlighter_; }
+	std::weak_ptr<highlighter> get_highlighter() { return highlighter_; }
 
 	/** Checks whether the whiteboard has any planned action on any team */
 	bool has_actions() const;
@@ -179,8 +181,8 @@ public:
 	int get_spent_gold_for(int side);
 
 	/** Determines whether or not the undo_stack should be cleared.
-	 *  @todo Only when there are networked allies and we have set a preferences option */
-	bool should_clear_undo() const {return true;}
+	 *  @todo When there are network allies, only clear the undo stack when we have set a preferences option */
+	bool should_clear_undo() const;
 
 	/** Displays the whiteboard options dialog. */
 	void options_dlg();
@@ -194,7 +196,7 @@ private:
 
 	void validate_actions_if_needed();
 	/** Called by all of the save_***() methods after they have added their action to the queue */
-	void update_plan_hiding(size_t viewing_team);
+	void update_plan_hiding(std::size_t viewing_team);
 	void update_plan_hiding(); //same as above, but uses wb::viewer_team() as default argument
 
 	/** Tracks whether the whiteboard is active. */
@@ -221,16 +223,16 @@ private:
 	whiteboard_lock unit_map_lock_;
 
 
-	boost::scoped_ptr<mapbuilder> mapbuilder_;
-	boost::shared_ptr<highlighter> highlighter_;
+	std::unique_ptr<mapbuilder> mapbuilder_;
+	std::shared_ptr<highlighter> highlighter_;
 
-	boost::scoped_ptr<pathfind::marked_route> route_;
+	std::unique_ptr<pathfind::marked_route> route_;
 
 	std::vector<arrow_ptr> move_arrows_;
 	std::vector<fake_unit_ptr> fake_units_;
-	size_t temp_move_unit_underlying_id_;
+	std::size_t temp_move_unit_underlying_id_;
 
-	boost::scoped_ptr<CKey> key_poller_;
+	const std::unique_ptr<CKey> key_poller_;
 
 	std::vector<map_location> hidden_unit_hexes_;
 
@@ -238,10 +240,10 @@ private:
 	std::vector<config> net_buffer_;
 
 	///team_plans_hidden_[i] = whether or not to hide actions from teams[i].
-	std::vector<bool> team_plans_hidden_;
+	boost::dynamic_bitset<> team_plans_hidden_;
 
 	///used to keep track of units owning planned moves for visual ghosting/unghosting
-	std::set<size_t> units_owning_moves_;
+	std::set<std::size_t> units_owning_moves_;
 };
 
 /** Applies the planned unit map for the duration of the struct's life.
@@ -251,6 +253,18 @@ struct future_map
 	future_map();
 	~future_map();
 	bool initial_planned_unit_map_;
+};
+
+struct future_map_if
+{
+	const std::unique_ptr<future_map> future_map_;
+
+	/** @param cond If true, applies the planned unit map for the duration of the struct's life and reverts to real unit map on destruction.
+			No effect if cond == false.
+	*/
+	future_map_if(bool cond)
+		: future_map_(cond ? new future_map() : nullptr)
+	{}
 };
 
 /** ONLY IF whiteboard is currently active, applies the planned unit map for the duration of the struct's life.
@@ -274,5 +288,3 @@ struct real_map
 };
 
 } // end namespace wb
-
-#endif /* WB_MANAGER_HPP_ */

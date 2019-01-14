@@ -4,19 +4,21 @@ from glob import glob
 import SCons.Node
 Import("env")
 
-binaries = ["wesnoth"]
+binaries = ["wesnoth", "wesnothd"]
 for bin in binaries:
     #icon = env.Command(bin + "-icon.ico", join("../../icons", bin + "-icon.png"), "$IM_CONVERT $SOURCE $TARGET")
     try:
         env["RCCOM"] = '$RC $_CPPDEFFLAGS $RCINCFLAGS ${RCINCPREFIX} ${SOURCE.dir} $RCFLAGS -i $SOURCE -o $TARGET'
-        res = [env.RES(bin + ".rc", CPPPATH=[])]
+        res = [env.RES(bin + ".rc", CPPPATH=["#/"])]
         #env.Depends(res, icon)
     except AttributeError:
         res = []
     env[bin + "_res"] = res
+if env["multilib_arch"] == "32":
+    env.AppendUnique(RCFLAGS = Split("-F pe-i386"))
 
 def WindowsInstaller(env, files):
-    files = map(Entry, Flatten(files))
+    files = [Entry(file) for file in Flatten(files)]
     env["NSIS_INSTALL_FILES"] = ""
     env["NSIS_UNINSTALL_FILES"] = ""
     try:

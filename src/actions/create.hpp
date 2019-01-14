@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,69 +18,17 @@
  * and placed units).
  */
 
-#ifndef ACTIONS_CREATE_H_INCLUDED
-#define ACTIONS_CREATE_H_INCLUDED
+#pragma once
 
-class config;
 class team;
 class unit_type;
-class vconfig;
 
-#include "../map_location.hpp"
-#include "../unit_ptr.hpp"
+#include "unit_creator.hpp"
 
+#include "map/location.hpp"
+#include "units/ptr.hpp"
 
-class unit_creator {
-public:
-	unit_creator(team &tm, const map_location &start_pos);
-	unit_creator& allow_show(bool b);
-	unit_creator& allow_get_village(bool b);
-	unit_creator& allow_rename_side(bool b);
-	unit_creator& allow_invalidate(bool b);
-	unit_creator& allow_discover(bool b);
-	unit_creator& allow_add_to_recall(bool b);
-
-	/**
-	 * finds a suitable location for unit
-	 * @retval map_location::null_location() if unit is to be put into recall list
-	 * @retval valid on-board map location otherwise
-	 */
-	map_location find_location(const config &cfg, const unit* pass_check=NULL);
-
-
-	/**
-	 * adds a unit on map without firing any events (so, usable during team construction in gamestatus)
-	 */
-	void add_unit(const config &cfg, const vconfig* vcfg = NULL);
-
-private:
-	void post_create(const map_location &loc, const unit &new_unit, bool anim);
-
-	bool add_to_recall_;
-	bool discover_;
-	bool get_village_;
-	bool invalidate_;
-	bool rename_side_;
-	bool show_;
-	const map_location start_pos_;
-	team &team_;
-
-};
-
-
-/// Checks to see if a leader at @a leader_loc could recruit somewhere.
-bool can_recruit_from(const map_location& leader_loc, int side);
-/// Checks to see if @a leader (assumed a leader) can recruit somewhere.
-/// This takes into account terrain, shroud, and the presence of visible units.
-bool can_recruit_from(const unit& leader);
-
-/// Checks to see if a leader at @a leader_loc could recruit on @a recruit_loc.
-bool can_recruit_on(const map_location& leader_loc, const map_location& recruit_loc, int side);
-/// Checks to see if @a leader (assumed a leader) can recruit on @a recruit_loc.
-/// This takes into account terrain, shroud, and whether or not there is already
-/// a visible unit at recruit_loc.
-bool can_recruit_on(const unit& leader, const map_location& recruit_loc);
-
+#include <tuple>
 
 namespace actions {
 
@@ -191,15 +139,17 @@ const std::set<std::string> get_recruits(int side, const map_location &recruit_l
  */
 std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_loc);
 
+typedef std::tuple<bool /*event modified*/, int /*previous village owner side*/, bool /*capture bonus time*/> place_recruit_result;
+
 /**
  * Place a unit into the game.
  * The unit will be placed on @a recruit_location, which should be retrieved
  * through a call to recruit_location().
+ * @param facing the desired facing for the unit, map_location::NDIRECTIONS to determine facing automatically.
  * @returns true if an event (or fog clearing) has mutated the game state.
  */
-bool place_recruit(const unit &u, const map_location &recruit_location, const map_location& recruited_from,
-	int cost, bool is_recall, bool show = false, bool fire_event = true, bool full_movement = false,
-	bool wml_triggered = false);
+place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_location, const map_location& recruited_from,
+	int cost, bool is_recall, map_location::DIRECTION facing = map_location::NDIRECTIONS, bool show = false, bool fire_event = true, bool full_movement = false, bool wml_triggered = false);
 
 /**
  * Recruits a unit of the given type for the given side.
@@ -219,11 +169,11 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
  * found, and it handles moving the unit to the board, paying gold, firing events,
  * tracking statistics, updating the undo stack (unless @a use_undo is false), and
  * recording the recall (unless @a use_recorder is false).
+ * @param facing the desired facing for the unit, map_location::NDIRECTIONS to determine facing automatically.
  * @returns false if the recall could not be found in the team's recall list.
  */
 bool recall_unit(const std::string & id, team & current_team,
                  const map_location & loc, const map_location & from,
+                 map_location::DIRECTION facing = map_location::NDIRECTIONS,
                  bool show=true, bool use_undo=true);
 }//namespace actions
-
-#endif

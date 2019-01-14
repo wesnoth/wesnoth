@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,12 +12,11 @@
    See the COPYING file for more details.
 */
 
-#ifndef INCL_DISPLAY_CHAT_MGR_HPP_
-#define INCL_DISPLAY_CHAT_MGR_HPP_
+#pragma once
 
 #include "chat_events.hpp"
 
-#include <boost/cstdint.hpp>
+#include <cstdint>
 #include <ctime>
 #include <set>
 #include <string>
@@ -33,13 +32,18 @@ public:
 	void remove_observer(const std::string& name) { observers_.erase(name); }
 	const std::set<std::string>& observers() const { return observers_; }
 
-	void add_chat_message(const time_t& time, const std::string& speaker,
+	void add_whisperer(const std::string& nick) { whisperers_.insert(nick); }
+	void remove_whisperer(const std::string& nick) { whisperers_.erase(nick); }
+	const std::set<std::string>& whisperers() const { return whisperers_; }
+
+	void add_chat_message(const std::time_t& time, const std::string& speaker,
 		int side, const std::string& msg, events::chat_handler::MESSAGE_TYPE type, bool bell);
 	void clear_chat_messages() { prune_chat_messages(true); }
 
 	friend class game_display; //needed because it calls prune_chat_message
 private:
 	std::set<std::string> observers_;
+	std::set<std::string> whisperers_; //nicks who whisper you for tab-completition purpose
 
 	struct chat_message
 	{
@@ -47,7 +51,7 @@ private:
 
 		int speaker_handle;
 		int handle;
-		boost::uint32_t created_at;
+		uint32_t created_at;
 	};
 
 	void prune_chat_messages(bool remove_all=false);
@@ -56,5 +60,3 @@ private:
 
 	display & my_disp_;
 };
-
-#endif

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,15 +17,13 @@
  * Various server-statistics.
  */
 
-#include "../global.hpp"
-
-#include "metrics.hpp"
+#include "server/metrics.hpp"
 
 #include <algorithm>
 #include <iostream>
 
 struct compare_samples_to_stringspan {
-	bool operator()(const simple_wml::string_span& a, const simple_wml::string_span& b)
+	bool operator()(const simple_wml::string_span& a, const simple_wml::string_span& b) const
 	{
 		return a < b;
 	}
@@ -44,7 +42,7 @@ metrics::metrics() :
 	current_requests_(0),
 	nrequests_(0),
 	nrequests_waited_(0),
-	started_at_(time(NULL)),
+	started_at_(std::time(nullptr)),
 	terminations_()
 {}
 
@@ -87,7 +85,7 @@ void metrics::record_sample(const simple_wml::string_span& name,
 		if(samples_.size() > 30) {
 			return;
 		}
-		int index = isample - samples_.begin();
+		int index = std::distance(samples_.begin(), isample);
 		simple_wml::string_span dup_name(name.duplicate());
 		sample new_sample;
 		new_sample.name = dup_name;
@@ -112,7 +110,7 @@ std::ostream& metrics::games(std::ostream& out) const
 {
 	if (terminations_.empty()) return out << "No game ended so far.";
 
-	size_t n = 0;
+	std::size_t n = 0;
 	out << "Games have been terminated in the following ways:\n";
 	for(std::map<std::string,int>::const_iterator i = terminations_.begin(); i != terminations_.end(); ++i) {
 		out << i->first << ": " << i->second << "\n";
@@ -132,9 +130,9 @@ std::ostream& metrics::requests(std::ostream& out) const
 
 	out << "\nSampled request types:\n";
 
-	size_t n = 0;
-	size_t pa = 0;
-	size_t pr = 0;
+	std::size_t n = 0;
+	std::size_t pa = 0;
+	std::size_t pr = 0;
 	for(std::vector<metrics::sample>::const_iterator s = ordered_samples.begin(); s != ordered_samples.end(); ++s) {
 		out << "'" << s->name << "' called " << s->nsamples << " times "
 			<< s->parsing_time << "("<< s->max_parsing_time <<") parsing time, "
@@ -152,7 +150,7 @@ std::ostream& metrics::requests(std::ostream& out) const
 
 std::ostream& operator<<(std::ostream& out, metrics& met)
 {
-	const time_t time_up = time(NULL) - met.started_at_;
+	const std::time_t time_up = std::time(nullptr) - met.started_at_;
 	const int seconds = time_up%60;
 	const int minutes = (time_up/60)%60;
 	const int hours = (time_up/(60*60))%24;

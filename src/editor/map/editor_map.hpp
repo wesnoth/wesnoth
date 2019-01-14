@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,12 +12,11 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_EDITOR_MAP_HPP_INCLUDED
-#define EDITOR_EDITOR_MAP_HPP_INCLUDED
+#pragma once
 
-#include "../editor_common.hpp"
+#include "editor/editor_common.hpp"
 
-#include "../../map.hpp"
+#include "map/map.hpp"
 
 #include <deque>
 
@@ -45,7 +44,7 @@ struct editor_map_load_exception : public editor_exception
 	: editor_exception(msg), filename(fn)
 	{
 	}
-	~editor_map_load_exception() throw() {}
+	~editor_map_load_exception() noexcept {}
 	std::string filename;
 };
 
@@ -55,7 +54,7 @@ struct editor_map_save_exception : public editor_exception
 	: editor_exception(msg)
 	{
 	}
-	~editor_map_save_exception() throw() {}
+	~editor_map_save_exception() noexcept {}
 };
 
 
@@ -90,7 +89,7 @@ public:
 	/**
 	 * Create an editor map with the given dimensions and filler terrain
 	 */
-	editor_map(const config& terrain_cfg, size_t width, size_t height, const t_translation::t_terrain & filler);
+	editor_map(const config& terrain_cfg, std::size_t width, std::size_t height, const t_translation::terrain_code & filler);
 
 	/**
 	 * Create an editor_map by upgrading an existing gamemap. The map data is
@@ -174,7 +173,7 @@ public:
 	 * when expanding, otherwise the filler terrain will be inserted there
 	 */
 	void resize(int width, int height, int x_offset, int y_offset,
-		const t_translation::t_terrain & filler = t_translation::NONE_TERRAIN);
+		const t_translation::terrain_code & filler = t_translation::NONE_TERRAIN);
 
 	/**
 	 * A sort-of diff operation returning a mask that, when applied to the current editor_map,
@@ -189,13 +188,11 @@ public:
 	bool same_size_as(const gamemap& other) const;
 
 protected:
-	t_translation::t_list clone_column(int x, const t_translation::t_terrain & filler);
-
 	//helper functions for resizing
-	void expand_right(int count, const t_translation::t_terrain & filler);
-	void expand_left(int count, const t_translation::t_terrain & filler);
-	void expand_top(int count, const t_translation::t_terrain & filler);
-	void expand_bottom(int count, const t_translation::t_terrain & filler);
+	void expand_right(int count, const t_translation::terrain_code & filler);
+	void expand_left(int count, const t_translation::terrain_code & filler);
+	void expand_top(int count, const t_translation::terrain_code & filler);
+	void expand_bottom(int count, const t_translation::terrain_code & filler);
 	void shrink_right(int count);
 	void shrink_left(int count);
 	void shrink_top(int count);
@@ -209,5 +206,3 @@ protected:
 
 
 } //end namespace editor
-
-#endif

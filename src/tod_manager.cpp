@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Eugen Jiresch
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Eugen Jiresch
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,34 +15,35 @@
 #include "tod_manager.hpp"
 
 #include "display_context.hpp"
-#include "formula_string_utils.hpp"
+#include "serialization/string_utils.hpp"
 #include "game_data.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "play_controller.hpp"
-#include "random_new.hpp"
-#include "unit.hpp"
-#include "unit_abilities.hpp"
-#include "wml_exception.hpp"
+#include "random.hpp"
+#include "units/unit.hpp"
+#include "units/abilities.hpp"
+#include "resources.hpp"
 
-#include <boost/foreach.hpp>
-#include <boost/range/adaptors.hpp>
-#include <boost/range/algorithm.hpp>
-#include <boost/lambda/bind.hpp>
-#include <boost/lambda/lambda.hpp>
-#include <boost/bind.hpp>
+#include <algorithm>
+#include <iterator>
+#include "utils/functional.hpp"
+#include "actions/attack.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 
 tod_manager::tod_manager(const config& scenario_cfg):
-	savegame_config(),
 	currentTime_(0),
 	times_(),
 	areas_(),
+	liminal_bonus_(25),
 	turn_(scenario_cfg["turn_at"].to_int(1)),
-	num_turns_(scenario_cfg["turns"].to_int(-1))
+	num_turns_(scenario_cfg["turns"].to_int(-1)),
+	has_turn_event_fired_(!scenario_cfg["it_is_a_new_turn"].to_bool(true)),
+	has_tod_bonus_changed_ (false),
+	has_cfg_liminal_bonus_ (false)
 {
 	// ? : operator doesn't work in this case.
 	if (scenario_cfg["current_time"].to_int(-17403) == -17403)
@@ -51,6 +52,11 @@ tod_manager::tod_manager(const config& scenario_cfg):
 		random_tod_ = false;
 
 	time_of_day::parse_times(scenario_cfg,times_);
+	liminal_bonus_ = calculate_best_liminal_bonus(times_);
+	if (scenario_cfg.has_attribute("liminal_bonus")) {
+		liminal_bonus_ = scenario_cfg["liminal_bonus"].to_int(liminal_bonus_);
+		has_cfg_liminal_bonus_ = true;
+	}
 	//We need to call parse_times before calculate_current_time because otherwise the first parameter will always be 0.
 	currentTime_ = calculate_current_time(times_.size(), turn_, scenario_cfg["current_time"].to_int(0), true);
 
@@ -65,34 +71,48 @@ tod_manager& tod_manager::operator=(const tod_manager& manager)
 	currentTime_ = manager.currentTime_;
 	times_ = manager.times_;
 	areas_ = manager.areas_;
+	liminal_bonus_ = manager.liminal_bonus_;
 
 	turn_ = manager.turn_;
 	num_turns_ = manager.num_turns_;
 
+	has_turn_event_fired_ = manager.has_turn_event_fired_;
+	has_tod_bonus_changed_= manager.has_tod_bonus_changed_;
+	has_cfg_liminal_bonus_ = manager.has_cfg_liminal_bonus_;
+
+	random_tod_ = manager.random_tod_;
+
 	return *this;
 }
 
-template <typename T>
-struct greater
-{
-	greater(T val) : value (val) {}
-	bool operator () (T v2)
-	{
-		return value < v2;
-	}
-
-	T value;
-};
-
-void tod_manager::resolve_random(random_new::rng& r)
+void tod_manager::resolve_random(randomness::rng& r)
 {
 	//process the random_start_time string, which can be boolean yes/no true/false or a
 	//comma-separated string of integers >= 1 referring to the times_ array indices
+	std::vector<std::string> output_strings = utils::split(random_tod_.str());
 	std::vector<int> output;
-	boost::copy( utils::split(random_tod_.str())
-		| boost::adaptors::transformed(boost::bind(lexical_cast_default<int, std::string>, _1 , 0))
-		| boost::adaptors::filtered(greater<int>(0))
-		, std::back_inserter(output) );
+
+	try
+	{
+		std::transform(output_strings.begin(), output_strings.end(), std::back_inserter(output),
+			[](const std::string& str)
+		{
+			return std::stoi(str);
+		});
+	}
+	catch (const std::invalid_argument&)
+	{
+		// This happens if the random_start_time string is a boolean.
+		// Simply ignore the exception.
+	}
+
+	// Remove non-positive times
+	output.erase(
+		std::remove_if(
+			output.begin(),
+			output.end(),
+			[](int time){ return time <= 0; }),
+		output.end());
 
 	if(!output.empty())
 	{
@@ -113,27 +133,42 @@ config tod_manager::to_config() const
 	cfg["turns"] = num_turns_;
 	cfg["current_time"] = currentTime_;
 	cfg["random_start_time"] = random_tod_;
+	cfg["it_is_a_new_turn"] = !has_turn_event_fired_;
+	if (has_cfg_liminal_bonus_)
+		cfg["liminal_bonus"] = liminal_bonus_;
 
-	std::vector<time_of_day>::const_iterator t;
-	for(t = times_.begin(); t != times_.end(); ++t) {
-		t->write(cfg.add_child("time"));
+	for(const time_of_day& tod : times_) {
+		// Don't write the stub default ToD if it happens to be present.
+		if(tod.id != "nulltod") {
+			tod.write(cfg.add_child("time"));
+		}
 	}
-	for(std::vector<area_time_of_day>::const_iterator i = areas_.begin(); i != areas_.end(); ++i) {
+
+	for(const area_time_of_day& a_tod : areas_) {
 		config& area = cfg.add_child("time_area");
-		// if no ranges, then use hexes to generate ranges
-		if(i->xsrc.empty() && i->ysrc.empty()) {
-			write_location_range(i->hexes, area);
+
+		// If no ranges, then use hexes to generate ranges
+		if(a_tod.xsrc.empty() && a_tod.ysrc.empty()) {
+			write_location_range(a_tod.hexes, area);
 		} else {
-			area["x"] = i->xsrc;
-			area["y"] = i->ysrc;
+			area["x"] = a_tod.xsrc;
+			area["y"] = a_tod.ysrc;
 		}
-		for(t = i->times.begin(); t != i->times.end(); ++t) {
-			t->write(area.add_child("time"));
+
+		for(const time_of_day& tod : a_tod.times) {
+			// Don't write the stub default ToD if it happens to be present.
+			if(tod.id != "nulltod") {
+				tod.write(area.add_child("time"));
+			}
 		}
-		area["current_time"] = i->currentTime;
-		if (!i->id.empty())
-			area["id"] = i->id;
+
+		area["current_time"] = a_tod.currentTime;
+
+		if(!a_tod.id.empty()) {
+			area["id"] = a_tod.id;
+		}
 	}
+
 	return cfg;
 }
 
@@ -210,10 +245,10 @@ const time_of_day tod_manager::get_illuminated_time_of_day(const unit_map & unit
 		int most_sub = 0;
 
 		// Find the "illuminates" effects from units that can affect loc.
-		map_location locs[7];
+		std::array<map_location, 7> locs;
 		locs[0] = loc;
-		get_adjacent_tiles(loc,locs+1);
-		for ( size_t i = 0; i != 7; ++i ) {
+		get_adjacent_tiles(loc, locs.data() + 1); // start at [1]
+		for ( std::size_t i = 0; i < locs.size(); ++i ) {
 			const unit_map::const_iterator itor = units.find(locs[i]);
 			if (itor != units.end() &&
 			    itor->get_ability_bool("illuminates") &&
@@ -238,9 +273,8 @@ const time_of_day tod_manager::get_illuminated_time_of_day(const unit_map & unit
 		// Apply each unit's effect, tracking the best result.
 		int best_result = terrain_light;
 		const int base_light = terrain_light + (net_darker ? most_add : most_sub);
-		for ( size_t i = 0; i != mod_list.size(); ++i ) {
-			int result =
-				bounded_add(base_light, mod_list[i], max_list[i], min_list[i]);
+		for ( std::size_t i = 0; i != mod_list.size(); ++i ) {
+			int result = bounded_add( base_light, mod_list[i], max_list[i], min_list[i] );
 
 			if ( net_darker  &&  result < best_result )
 				best_result = result;
@@ -265,27 +299,47 @@ bool tod_manager::is_start_ToD(const std::string& random_start_time)
 
 void tod_manager::replace_schedule(const config& time_cfg)
 {
+	int bonus = times_[currentTime_].lawful_bonus;
 	times_.clear();
 	time_of_day::parse_times(time_cfg,times_);
 	currentTime_ = time_cfg["current_time"].to_int(0);
+	if (bonus != times_[currentTime_].lawful_bonus) {
+		has_tod_bonus_changed_ = true;
+	}
 }
 
 void tod_manager::replace_schedule(const std::vector<time_of_day>& schedule)
 {
+	int bonus = times_[currentTime_].lawful_bonus;
 	times_ = schedule;
+
+	if(schedule.empty()) {
+		// Make sure that there is at least one ToD
+		times_.emplace_back();
+	}
+
 	currentTime_ = 0;
+	if (bonus != times_[currentTime_].lawful_bonus) {
+		has_tod_bonus_changed_ = true;
+	}
 }
 
 void tod_manager::replace_area_locations(int area_index, const std::set<map_location>& locs) {
 	assert(area_index < static_cast<int>(areas_.size()));
 	areas_[area_index].hexes = locs;
+	has_tod_bonus_changed_ = true;
 }
 
 void tod_manager::replace_local_schedule(const std::vector<time_of_day>& schedule, int area_index)
 {
 	assert(area_index < static_cast<int>(areas_.size()));
-	areas_[area_index].times = schedule;
-	areas_[area_index].currentTime = 0;
+	area_time_of_day& area = areas_[area_index];
+	int bonus = area.times[area.currentTime].lawful_bonus;
+	area.times = schedule;
+	area.currentTime = 0;
+	if (bonus != area.times[area.currentTime].lawful_bonus) {
+		has_tod_bonus_changed_ = true;
+	}
 }
 
 void tod_manager::set_area_id(int area_index, const std::string& id) {
@@ -296,7 +350,7 @@ void tod_manager::set_area_id(int area_index, const std::string& id) {
 std::vector<std::string> tod_manager::get_area_ids() const
 {
 	std::vector<std::string> areas;
-	BOOST_FOREACH(const area_time_of_day& area, areas_) {
+	for (const area_time_of_day& area : areas_) {
 		areas.push_back(area.id);
 	}
 	return areas;
@@ -304,11 +358,12 @@ std::vector<std::string> tod_manager::get_area_ids() const
 
 const std::set<map_location>& tod_manager::get_area_by_id(const std::string& id) const
 {
-	BOOST_FOREACH(const area_time_of_day& area, areas_) {
+	for (const area_time_of_day& area : areas_) {
 		if (area.id == id)
 			return area.hexes;
 	}
-	return areas_[0].hexes;
+	static const std::set<map_location> res;
+	return res;
 }
 
 const std::set<map_location>& tod_manager::get_area_by_index(int index) const
@@ -318,26 +373,28 @@ const std::set<map_location>& tod_manager::get_area_by_index(int index) const
 
 void tod_manager::add_time_area(const gamemap & map, const config& cfg)
 {
-	areas_.push_back(area_time_of_day());
+	areas_.emplace_back();
 	area_time_of_day &area = areas_.back();
 	area.id = cfg["id"].str();
 	area.xsrc = cfg["x"].str();
 	area.ysrc = cfg["y"].str();
 	area.currentTime = cfg["current_time"].to_int(0);
-	std::vector<map_location> const& locs (map.parse_location_range(area.xsrc, area.ysrc, true));
+	const std::vector<map_location>& locs (map.parse_location_range(area.xsrc, area.ysrc, true));
 	area.hexes.insert(locs.begin(), locs.end());
 	time_of_day::parse_times(cfg, area.times);
+	has_tod_bonus_changed_ = true;
 }
 
 void tod_manager::add_time_area(const std::string& id, const std::set<map_location>& locs,
 		const config& time_cfg)
 {
-	areas_.push_back(area_time_of_day());
+	areas_.emplace_back();
 	area_time_of_day& area = areas_.back();
 	area.id = id;
 	area.hexes = locs;
 	area.currentTime = time_cfg["current_time"].to_int(0);
 	time_of_day::parse_times(time_cfg, area.times);
+	has_tod_bonus_changed_ = true;
 }
 
 void tod_manager::remove_time_area(const std::string& area_id)
@@ -355,12 +412,14 @@ void tod_manager::remove_time_area(const std::string& area_id)
 			}
 		}
 	}
+	has_tod_bonus_changed_ = true;
 }
 
 void tod_manager::remove_time_area(int area_index)
 {
 	assert(area_index < static_cast<int>(areas_.size()));
 	areas_.erase(areas_.begin() + area_index);
+	has_tod_bonus_changed_ = true;
 }
 
 const time_of_day& tod_manager::get_time_of_day_turn(const std::vector<time_of_day>& times, int nturn, const int current_time) const
@@ -378,8 +437,35 @@ void tod_manager::set_number_of_turns(int num)
 	num_turns_ = std::max<int>(num, -1);
 }
 
-void tod_manager::set_turn(const int num, boost::optional<game_data &> vars, const bool increase_limit_if_needed)
+void tod_manager::update_server_information() const
 {
+	if(resources::controller->current_team().is_local()) {
+		//the currently active side informs the mp server about the turn change.
+		//NOTE: The current implementation does not guarnateee that the server gets informed
+		// about those changes in 100% of cases. But that is ok because the information is only
+		// used to display the turn limit in the lobby (as opposed to things that cause OOS).
+		resources::controller->send_to_wesnothd(config {
+			"change_turns_wml", config {
+				"current", turn_,
+				"max", num_turns_,
+			},
+		});
+	}
+}
+void tod_manager::modify_turns_by_wml(const std::string& mod)
+{
+	modify_turns(mod);
+	update_server_information();
+}
+void tod_manager::set_number_of_turns_by_wml(int num)
+{
+	set_number_of_turns(num);
+	update_server_information();
+}
+
+void tod_manager::set_turn(const int num, game_data* vars, const bool increase_limit_if_needed)
+{
+	has_tod_bonus_changed_ = false;
 	const int new_turn = std::max<int>(num, 1);
 	LOG_NG << "changing current turn number from " << turn_ << " to " << new_turn << '\n';
 	// Correct ToD
@@ -393,14 +479,20 @@ void tod_manager::set_turn(const int num, boost::optional<game_data &> vars, con
 		vars->get_variable("turn_number") = new_turn;
 }
 
+void tod_manager::set_turn_by_wml(const int num, game_data* vars, const bool increase_limit_if_needed)
+{
+	set_turn(num, vars, increase_limit_if_needed);
+	update_server_information();
+}
 void tod_manager::set_new_current_times(const int new_current_turn_number)
 {
-	currentTime_ = calculate_current_time(times_.size(), new_current_turn_number, currentTime_);
-	BOOST_FOREACH(area_time_of_day& area, areas_) {
-		area.currentTime = calculate_current_time(
+	set_current_time(calculate_current_time(times_.size(), new_current_turn_number, currentTime_));
+	for (area_time_of_day& area : areas_) {
+		set_current_time(calculate_current_time(
 			area.times.size(),
 			new_current_turn_number,
-			area.currentTime);
+			area.currentTime),
+			area);
 	}
 }
 
@@ -418,14 +510,68 @@ int tod_manager::calculate_current_time(
 	return new_current_time;
 }
 
-bool tod_manager::next_turn(boost::optional<game_data&> vars)
+void tod_manager::set_current_time(int time) {
+	if (times_[time].lawful_bonus != times_[currentTime_].lawful_bonus) {
+		has_tod_bonus_changed_ = true;
+	}
+	currentTime_ = time;
+}
+
+void tod_manager::set_current_time(int time, int area_index) {
+	assert(area_index < static_cast<int>(areas_.size()));
+	set_current_time(time, areas_[area_index]);
+}
+
+void tod_manager::set_current_time(int time, const std::string& area_id) {
+	for (area_time_of_day& area : areas_) {
+		if (area.id == area_id)
+			set_current_time(time, area);
+	}
+}
+
+void tod_manager::set_current_time(int time, area_time_of_day& area) {
+	assert(time < static_cast<int>(area.times.size()) );
+	if (area.times[time].lawful_bonus != area.times[area.currentTime].lawful_bonus) {
+		has_tod_bonus_changed_ = true;
+	}
+	area.currentTime = time;
+}
+
+bool tod_manager::next_turn(game_data* vars)
 {
 	set_turn(turn_ + 1, vars, false);
+	has_turn_event_fired_ = false;
 	return is_time_left();
 }
 
 
-bool tod_manager::is_time_left()
+bool tod_manager::is_time_left() const
 {
 	return num_turns_ == -1 || turn_ <= num_turns_;
+}
+
+int tod_manager::calculate_best_liminal_bonus(const std::vector<time_of_day>& schedule) const
+{
+	int fearless_chaotic = 0;
+	int fearless_lawful = 0;
+	std::set<int> bonuses;
+	for (const auto& tod : schedule) {
+		fearless_chaotic += generic_combat_modifier(tod.lawful_bonus, unit_type::ALIGNMENT::CHAOTIC, true, 0);
+		fearless_lawful += generic_combat_modifier(tod.lawful_bonus, unit_type::ALIGNMENT::LAWFUL, true, 0);
+		bonuses.insert(std::abs(tod.lawful_bonus));
+	}
+	int target = std::max(fearless_chaotic, fearless_lawful);
+	int delta = target;
+	int result = 0;
+	for (int bonus : bonuses) {
+		int liminal_effect = 0;
+		for (const auto& tod : schedule) {
+			liminal_effect += generic_combat_modifier(tod.lawful_bonus, unit_type::ALIGNMENT::LIMINAL, false, bonus);
+		}
+		if (std::abs(target - liminal_effect) < delta) {
+			result = bonus;
+			delta = std::abs(target - liminal_effect);
+		}
+	}
+	return result;
 }

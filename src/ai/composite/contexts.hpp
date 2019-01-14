@@ -1,7 +1,7 @@
 
 /*
-   Copyright (C) 2009 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,17 +18,9 @@
  * Composite AI contexts
  */
 
-#ifndef AI_COMPOSITE_CONTEXTS_HPP_INCLUDED
-#define AI_COMPOSITE_CONTEXTS_HPP_INCLUDED
+#pragma once
 
-#include "../default/contexts.hpp"
-
-#ifdef _MSC_VER
-#pragma warning(push)
-//silence "inherits via dominance" warnings
-#pragma warning(disable:4250)
-#endif
-
+#include "ai/default/contexts.hpp"
 
 //============================================================================
 namespace ai {
@@ -157,10 +149,3 @@ private:
 
 
 } //end of namespace ai
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
-
-#endif

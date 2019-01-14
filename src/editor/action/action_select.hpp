@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Fabian Mueller <fabianmueller5@gmx.de>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Fabian Mueller <fabianmueller5@gmx.de>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -23,29 +23,34 @@
  *   need to ensure the pointer is deleted.
  */
 
-#ifndef EDITOR_ACTION_SELECT_HPP
-#define EDITOR_ACTION_SELECT_HPP
+#pragma once
 
-#include "action.hpp"
+#include "editor/action/action.hpp"
 
-
-namespace editor {
-
+namespace editor
+{
 /**
  * Select the given locations
  */
 class editor_action_select : public editor_action_area
 {
-	public:
-		editor_action_select(const std::set<map_location>& area)
+public:
+	editor_action_select(const std::set<map_location>& area)
 		: editor_action_area(area)
-		{
-		}
-		editor_action_select* clone() const;
-		void extend(const editor_map& map, const std::set<map_location>& locs);
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "select"; }
+	{
+	}
+
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	editor_action_select* clone() const;
+
+	void extend(const editor_map& map, const std::set<map_location>& locs);
+
+	editor_action* perform(map_context& mc) const;
+
+	void perform_without_undo(map_context& mc) const;
+
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const std::string& get_name() const;
 };
 
 /**
@@ -54,14 +59,22 @@ class editor_action_select : public editor_action_area
 class editor_action_deselect : public editor_action_area
 {
 public:
-	editor_action_deselect(const std::set<map_location>& area) :
-		editor_action_area(area) {}
+	editor_action_deselect(const std::set<map_location>& area)
+		: editor_action_area(area)
+	{
+	}
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_deselect* clone() const;
+
 	void extend(const editor_map& map, const std::set<map_location>& locs);
+
 	editor_action* perform(map_context& mc) const;
+
 	void perform_without_undo(map_context& mc) const;
-	const char* get_name() const { return "deselect"; }
+
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const std::string& get_name() const;
 };
 
 /**
@@ -69,14 +82,20 @@ public:
  */
 class editor_action_select_all : public editor_action
 {
-	public:
-		editor_action_select_all()
-		{
-		}
-		editor_action_select_all* clone() const;
-		editor_action_select* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "select_all"; }
+public:
+	editor_action_select_all()
+	{
+	}
+
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	editor_action_select_all* clone() const;
+
+	editor_action_select* perform(map_context& mc) const;
+
+	void perform_without_undo(map_context& mc) const;
+
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const std::string& get_name() const;
 };
 
 /**
@@ -84,14 +103,20 @@ class editor_action_select_all : public editor_action
  */
 class editor_action_select_none : public editor_action
 {
-	public:
-		editor_action_select_none()
-		{
-		}
-		editor_action_select_none* clone() const;
-		editor_action_select* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "select_none"; }
+public:
+	editor_action_select_none()
+	{
+	}
+
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	editor_action_select_none* clone() const;
+
+	editor_action_select* perform(map_context& mc) const;
+
+	void perform_without_undo(map_context& mc) const;
+
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const std::string& get_name() const;
 };
 
 /**
@@ -99,18 +124,20 @@ class editor_action_select_none : public editor_action
  */
 class editor_action_select_inverse : public editor_action
 {
-	public:
-		editor_action_select_inverse()
-		{
-		}
-		editor_action_select_inverse* clone() const;
-		editor_action_select_inverse* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "select_inverse"; }
+public:
+	editor_action_select_inverse()
+	{
+	}
+
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	editor_action_select_inverse* clone() const;
+
+	editor_action_select_inverse* perform(map_context& mc) const;
+
+	void perform_without_undo(map_context& mc) const;
+
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const std::string& get_name() const;
 };
 
-
-
-} //end namespace editor
-
-#endif
+} // end namespace editor

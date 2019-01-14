@@ -1,7 +1,5 @@
 return {
     -- init parameters:
-    -- ai: a reference to the ai engine so recruit has access to ai functions
-    --   It is also possible to pass an ai table directly to the execution function, which will then override the value passed here
     -- ai_cas: an object reference to store the CAs and associated data
     --   the CA will use the function names ai_cas:recruit_rushers_eval/exec, so should be referenced by the object name used by the calling AI
     --   ai_cas also has the functions find_best_recruit, find_best_recruit_hex and analyze_enemy_unit added to it
@@ -15,25 +13,21 @@ return {
     --      min_turn_1_recruit: function that returns true if only enough units to grab nearby villages should be recruited turn 1, false otherwise
     --          (default always returns false)
     --      leader_takes_village: function that returns true if and only if the leader is going to move to capture a village this turn
-    --          (default always returns true)
-    init = function(ai, ai_cas, params)
+    --          (default returns 'not ai.aspects.passive_leader')
+    --      enemy_types: array of default enemy unit types to consider if there are no enemies on the map
+    --          and no enemy sides exist or have recruit lists
+    -- Note: the recruiting code assumes full knowledge of units on the map and the recruit lists of other sides for the purpose of
+    --   finding the best unit types to recruit. It does not work otherwise. It assumes normal vision of the AI side (that is, it disregards
+    --   hidden enemy units) for determining from which keep hex the leader should recruit and on which castle hexes to recruit new units
+    init = function(ai_cas, params)
         if not params then
             params = {}
         end
         math.randomseed(os.time())
 
-        local H = wesnoth.require "lua/helper.lua"
-        local W = H.set_wml_action_metatable {}
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
-        local LS = wesnoth.require "lua/location_set.lua"
-
-        local function print_time(...)
-            if turn_start_time then
-                AH.print_ts_delta(turn_start_time, ...)
-            else
-                AH.print_ts(...)
-            end
-        end
+        local M = wesnoth.map
+        local LS = wesnoth.require "location_set"
 
         local recruit_data = {}
 
@@ -58,10 +52,10 @@ return {
                 random_gender = false
             }
             -- Find the best regeneration ability and use it to estimate hp regained by regeneration
-            local abilities = H.get_child(unit.__cfg, "abilities")
+            local abilities = wml.get_child(unit.__cfg, "abilities")
             local regen_amount = 0
             if abilities then
-                for regen in H.child_range(abilities, "regenerate") do
+                for regen in wml.child_range(abilities, "regenerate") do
                     if regen.value > regen_amount then
                         regen_amount = regen.value
                     end
@@ -91,7 +85,7 @@ return {
             local best_defense = 100
 
             for i, terrain in ipairs(terrain_archetypes) do
-                local defense = wesnoth.unit_defense(unit, terrain)
+                local defense = unit:defense(terrain)
                 if defense < best_defense then
                     best_defense = defense
                 end
@@ -112,28 +106,28 @@ return {
                 -- In several cases this function only approximates the correct value (eg Thunderguard vs Goblin Spearman has damage capped by target health)
                 -- In some cases (like poison), this approximation is preferred to the actual value.
                 local best_damage = 0
-                local best_attack = nil
+                local best_attack
                 local best_poison_damage = 0
                 -- Steadfast is currently disabled because it biases the AI too much in favour of Guardsmen
                 -- Basically it sees the defender stats for damage and wrongfully concludes that the unit is amazing
                 -- This may be rectifiable by looking at retaliation damage as well.
                 local steadfast = false
 
-                for attack in H.child_range(wesnoth.unit_types[attacker.type].__cfg, "attack") do
+                for attack in wml.child_range(wesnoth.unit_types[attacker.type].__cfg, "attack") do
                     local defense = defender_defense
                     local poison = false
                     local damage_multiplier = 1
                     local damage_bonus = 0
                     local weapon_damage = attack.damage
 
-                    for special in H.child_range(attack, 'specials') do
+                    for special in wml.child_range(attack, 'specials') do
                         local mod
-                        if H.get_child(special, 'poison') and can_poison then
+                        if wml.get_child(special, 'poison') and can_poison then
                             poison = true
                         end
 
                         -- Handle marksman and magical
-                        mod = H.get_child(special, 'chance_to_hit')
+                        mod = wml.get_child(special, 'chance_to_hit')
                         if mod then
                             if mod.value then
                                 if mod.cumulative then
@@ -155,7 +149,7 @@ return {
                         end
 
                         -- Handle most damage specials (assumes all are cumulative)
-                        mod = H.get_child(special, 'damage')
+                        mod = wml.get_child(special, 'damage')
                         if mod and mod.active_on ~= "defense" then
                             local special_multiplier = 1
                             local special_bonus = 0
@@ -178,13 +172,13 @@ return {
                                 -- TODO: find out what actual probability of getting to backstab is
                                 damage_multiplier = damage_multiplier*(special_multiplier*0.5 + 0.5)
                                 damage_bonus = damage_bonus+(special_bonus*0.5)
-                                if mod.value ~= nil then
+                                if mod.value then
                                     weapon_damage = (weapon_damage+mod.value)/2
                                 end
                             else
                                 damage_multiplier = damage_multiplier*special_multiplier
                                 damage_bonus = damage_bonus+special_bonus
-                                if mod.value ~= nil then
+                                if mod.value then
                                     weapon_damage = mod.value
                                 end
                             end
@@ -193,13 +187,15 @@ return {
 
                     -- Handle drain for defender
                     local drain_recovery = 0
-                    for defender_attack in H.child_range(defender.__cfg, 'attack') do
+                    local defender_attacks = defender.attacks
+                    for i_d = 1,#defender_attacks do
+                        local defender_attack = defender_attacks[i_d]
                         if (defender_attack.range == attack.range) then
-                            for special in H.child_range(defender_attack, 'specials') do
-                                if H.get_child(special, 'drains') and drainable(attacker) then
+                            for _,sp in ipairs(defender_attack.specials) do
+                                if (sp[1] == 'drains') and drainable(attacker) then
                                     -- TODO: calculate chance to hit
                                     -- currently assumes 50% chance to hit using supplied constant
-                                    local attacker_resistance = wesnoth.unit_resistance(attacker, defender_attack.type)
+                                    local attacker_resistance = attacker:resistance(defender_attack.type)
                                     drain_recovery = (defender_attack.damage*defender_attack.number*attacker_resistance*attacker_defense/2)/10000
                                 end
                             end
@@ -207,7 +203,7 @@ return {
                     end
 
                     defense = defense/100.0
-                    local resistance = wesnoth.unit_resistance(defender, attack.type)
+                    local resistance = defender:resistance(attack.type)
                     if steadfast and (resistance < 100) then
                         resistance = 100 - ((100 - resistance) * 2)
                         if (resistance < 50) then
@@ -228,7 +224,7 @@ return {
                     local poison_damage = 0
                     if poison then
                         -- Add poison damage * probability of poisoning
-                        poison_damage = 8*(1-((1-defense)^attack.number))
+                        poison_damage = wesnoth.game_config.poison_amount*(1-((1-defense)^attack.number))
                     end
 
                     if (not best_attack) or (attack_damage+poison_damage > best_damage+best_poison_damage) then
@@ -260,8 +256,8 @@ return {
                 name = "X",
                 random_gender = false
             }
-            local can_poison = poisonable(unit) and (not wesnoth.unit_ability(unit, 'regenerate'))
-            local flat_defense = wesnoth.unit_defense(unit, "Gt")
+            local can_poison = poisonable(unit) and (not unit:ability('regenerate'))
+            local flat_defense = unit:defense("Gt")
             local best_defense = get_best_defense(unit)
 
             local recruit = wesnoth.create_unit {
@@ -270,10 +266,10 @@ return {
                 name = "X",
                 random_gender = false
             }
-            local recruit_flat_defense = wesnoth.unit_defense(recruit, "Gt")
+            local recruit_flat_defense = recruit:defense("Gt")
             local recruit_best_defense = get_best_defense(recruit)
 
-            local can_poison_retaliation = poisonable(recruit) and (not wesnoth.unit_ability(recruit, 'regenerate'))
+            local can_poison_retaliation = poisonable(recruit) and (not recruit:ability('regenerate'))
             best_flat_attack, best_flat_damage, flat_poison = get_best_attack(recruit, unit, flat_defense, recruit_best_defense, can_poison)
             best_high_defense_attack, best_high_defense_damage, high_defense_poison = get_best_attack(recruit, unit, best_defense, recruit_flat_defense, can_poison)
             best_retaliation, best_retaliation_damage, retaliation_poison = get_best_attack(unit, recruit, recruit_flat_defense, best_defense, can_poison_retaliation)
@@ -291,9 +287,10 @@ return {
         end
 
         function can_slow(unit)
-            for defender_attack in H.child_range(unit.__cfg, 'attack') do
-                for special in H.child_range(defender_attack, 'specials') do
-                    if H.get_child(special, 'slow') then
+            local attacks = unit.attacks
+            for i_a = 1,#attacks do
+                for _,sp in ipairs(attacks[i_a].specials) do
+                    if (sp[1] == 'slow') then
                         return true
                     end
                 end
@@ -356,7 +353,7 @@ return {
             local no_space = true
             for i,c in ipairs(data.castle.locs) do
                 local unit = wesnoth.get_unit(c[1], c[2])
-                if (not unit) then
+                if (not AH.is_visible_unit(wesnoth.current.side, unit)) then
                     no_space = false
                     break
                 end
@@ -372,12 +369,12 @@ return {
                 end
             end
 
-            if data.recruit == nil then
+            if not data.recruit then
                 data.recruit = init_data(leader)
             end
             data.recruit.cheapest_unit_cost = cheapest_unit_cost
 
-            local score = 180000 -- default score if one not provided. Same as RCA AI
+            local score = 180010 -- default score if one not provided, just above RCA AI recruiting
             if params.score_function then
                 score = params.score_function()
             end
@@ -396,7 +393,7 @@ return {
             local possible_enemy_recruit_count = 0
 
             local function add_unit_type(unit_type)
-                if enemy_counts[unit_type] == nil then
+                if not enemy_counts[unit_type] then
                     table.insert(enemy_types, unit_type)
                     enemy_counts[unit_type] = 1
                 else
@@ -418,9 +415,27 @@ return {
                     add_unit_type(unit_type)
                 end
             end
+
+            -- If no enemies were found, check params.enemy_types,
+            -- otherwise add a small number of "representative" unit types
+            if #enemy_types == 0 then
+                if params.enemy_types then
+                    for _,enemy_type in ipairs(params.enemy_types) do
+                        add_unit_type(enemy_type)
+                    end
+                else
+                    add_unit_type('Orcish Grunt')
+                    add_unit_type('Orcish Archer')
+                    add_unit_type('Wolf Rider')
+                    add_unit_type('Spearman')
+                    add_unit_type('Bowman')
+                    add_unit_type('Cavalryman')
+                end
+            end
+
             data.enemy_counts = enemy_counts
             data.enemy_types = enemy_types
-            data.num_enemies = #enemies
+            data.num_enemies = math.max(#enemies, 1)
             data.possible_enemy_recruit_count = possible_enemy_recruit_count
 
             return data
@@ -428,7 +443,7 @@ return {
 
         function ai_cas:recruit_rushers_eval()
             local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'recruit_rushers'
-            if AH.print_eval() then print_time('     - Evaluating recruit_rushers CA:') end
+            if AH.print_eval() then AH.print_ts('     - Evaluating recruit_rushers CA:') end
 
             local score = do_recruit_eval(recruit_data)
             if score == 0 then
@@ -440,10 +455,9 @@ return {
             return score
         end
 
-        function ai_cas:recruit_rushers_exec(ai_local)
-            if ai_local then ai = ai_local end
-
-            if AH.show_messages() then W.message { speaker = 'narrator', message = 'Recruiting' } end
+        function ai_cas:recruit_rushers_exec()
+            if AH.print_exec() then AH.print_ts('   Executing recruit_rushers CA') end
+            if AH.show_messages() then wesnoth.wml_actions.message { speaker = 'narrator', message = 'Recruiting' } end
 
             local enemy_counts = recruit_data.recruit.enemy_counts
             local enemy_types = recruit_data.recruit.enemy_types
@@ -471,7 +485,7 @@ return {
                 for i, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
                     local analysis = analyze_enemy_unit(unit_type, recruit_id)
 
-                    if recruit_effectiveness[recruit_id] == nil then
+                    if not recruit_effectiveness[recruit_id] then
                         recruit_effectiveness[recruit_id] = {damage = 0, poison_damage = 0}
                         recruit_vulnerability[recruit_id] = 0
                     end
@@ -485,23 +499,23 @@ return {
                     recruit_vulnerability[recruit_id] = recruit_vulnerability[recruit_id] + (analysis.retaliation.damage * enemy_counts[unit_type])^3
 
                     local attack_type = analysis.defense.attack.type
-                    if attack_type_count[attack_type] == nil then
+                    if not attack_type_count[attack_type] then
                         attack_type_count[attack_type] = 0
                     end
                     attack_type_count[attack_type] = attack_type_count[attack_type] + recruit_count[recruit_id]
 
                     local attack_range = analysis.defense.attack.range
-                    if attack_range_count[attack_range] == nil then
+                    if not attack_range_count[attack_range] then
                         attack_range_count[attack_range] = 0
                     end
                     attack_range_count[attack_range] = attack_range_count[attack_range] + recruit_count[recruit_id]
 
-                    if unit_attack_type_count[recruit_id] == nil then
+                    if not unit_attack_type_count[recruit_id] then
                         unit_attack_type_count[recruit_id] = {}
                     end
                     unit_attack_type_count[recruit_id][attack_type] = true
 
-                    if unit_attack_range_count[recruit_id] == nil then
+                    if not unit_attack_range_count[recruit_id] then
                         unit_attack_range_count[recruit_id] = {}
                     end
                     unit_attack_range_count[recruit_id][attack_range] = true
@@ -537,7 +551,7 @@ return {
                 end
             end
             -- Correct count of units for each range
-            local most_common_range = nil
+            local most_common_range
             local most_common_range_count = 0
             for range, count in pairs(attack_range_count) do
                 attack_range_count[range] = count/enemy_type_count
@@ -551,18 +565,18 @@ return {
                 attack_type_count[attack_type] = count/enemy_type_count
             end
 
-            local recruit_type = nil
+            local recruit_type
             local leader = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'yes' }[1]
             repeat
                 recruit_data.recruit.best_hex, recruit_data.recruit.target_hex = ai_cas:find_best_recruit_hex(leader, recruit_data)
                 recruit_type = ai_cas:find_best_recruit(attack_type_count, unit_attack_type_count, recruit_effectiveness, recruit_vulnerability, attack_range_count, unit_attack_range_count, most_common_range_count)
-            until recruit_type ~= nil
+            until recruit_type
 
             if wesnoth.unit_types[recruit_type].cost <= wesnoth.sides[wesnoth.current.side].gold then
                 AH.checked_recruit(ai, recruit_type, recruit_data.recruit.best_hex[1], recruit_data.recruit.best_hex[2])
 
                 -- If the recruited unit cannot reach the target hex, return it to the pool of targets
-                if recruit_data.recruit.target_hex ~= nil and recruit_data.recruit.target_hex[1] ~= nil then
+                if recruit_data.recruit.target_hex and recruit_data.recruit.target_hex[1] then
                     local unit = wesnoth.get_unit(recruit_data.recruit.best_hex[1], recruit_data.recruit.best_hex[2])
                     local path, cost = wesnoth.find_path(unit, recruit_data.recruit.target_hex[1], recruit_data.recruit.target_hex[2], {viewing_side=0, max_cost=unit.max_moves+1})
                     if cost > unit.max_moves then
@@ -577,18 +591,18 @@ return {
 
                 return true
             else
+                -- This results in the CA being blacklisted -> clear cache
+                recruit_data.recruit = nil
+
                 return false
             end
         end
 
         function get_current_castle(leader, data)
             if (not data.castle) or (data.castle.x ~= leader.x) or (data.castle.y ~= leader.y) then
-                data.castle = {}
-                local width,height,border = wesnoth.get_map_size()
-
                 data.castle = {
-                    locs = wesnoth.get_locations {
-                        x = "1-"..width, y = "1-"..height,
+                    locs = AH.get_locations_no_borders {
+                        { "filter_vision", { side = wesnoth.current.side, visible = 'yes' } },
                         { "and", {
                             x = leader.x, y = leader.y, radius = 200,
                             { "filter_radius", { terrain = 'C*,K*,C*^*,K*^*,*^K*,*^C*' } }
@@ -615,19 +629,19 @@ return {
                 -- and also the closest enemy
                 local max_rating = -1
 
-                local enemy_leaders = AH.get_live_units { canrecruit = 'yes',
-                    { "filter_side", { { "enemy_of", {side = wesnoth.current.side} } } }
-                }
-                local closest_enemy_distance, closest_enemy_location = AH.get_closest_enemy()
+                local enemy_leaders = AH.get_attackable_enemies { canrecruit = 'yes' }
+                local closest_enemy = AH.get_closest_enemy()
 
                 for i,c in ipairs(data.castle.locs) do
                     local rating = 0
                     local unit = wesnoth.get_unit(c[1], c[2])
-                    if (not unit) then
+                    if (not AH.is_visible_unit(wesnoth.current.side, unit)) then
                         for j,e in ipairs(enemy_leaders) do
-                            rating = rating + 1 / H.distance_between(c[1], c[2], e.x, e.y) ^ 2.
+                            rating = rating + 1 / M.distance_between(c[1], c[2], e.x, e.y) ^ 2.
                         end
-                        rating = rating + 1 / H.distance_between(c[1], c[2], closest_enemy_location.x, closest_enemy_location.y) ^ 2.
+                        if closest_enemy then
+                            rating = rating + 1 / M.distance_between(c[1], c[2], closest_enemy.x, closest_enemy.y) ^ 2.
+                        end
                         if (rating > max_rating) then
                             max_rating, best_hex = rating, { c[1], c[2] }
                         end
@@ -637,9 +651,9 @@ return {
 
             if AH.print_eval() then
                 if village[1] then
-                    print("Recruit at: " .. best_hex[1] .. "," .. best_hex[2] .. " -> " .. village[1] .. "," .. village[2])
+                    std_print("Recruit at: " .. best_hex[1] .. "," .. best_hex[2] .. " -> " .. village[1] .. "," .. village[2])
                 else
-                    print("Recruit at: " .. best_hex[1] .. "," .. best_hex[2])
+                    std_print("Recruit at: " .. best_hex[1] .. "," .. best_hex[2])
                 end
             end
             return best_hex, village
@@ -651,18 +665,36 @@ return {
             local best_scores = {offense = 0, defense = 0, move = 0}
             local best_hex = recruit_data.recruit.best_hex
             local target_hex = recruit_data.recruit.target_hex
-            local distance_to_enemy, enemy_location
-            if target_hex[1] then
-                distance_to_enemy, enemy_location = AH.get_closest_enemy(target_hex)
-            else
-                distance_to_enemy, enemy_location = AH.get_closest_enemy(best_hex)
+
+            local reference_hex = target_hex[1] and target_hex or best_hex
+            local enemy_location, distance_to_enemy = AH.get_closest_enemy(reference_hex, wesnoth.current.side, { viewing_side = 0 })
+
+            -- If no enemy is on the map, then we first use closest enemy start hex,
+            -- and if that does not exist either, a location mirrored w.r.t the center of the map
+            if not enemy_location then
+                local enemy_sides = wesnoth.get_sides({ { "enemy_of", {side = wesnoth.current.side} } })
+                local min_dist = math.huge
+                for _, side in ipairs(enemy_sides) do
+                    local enemy_start_hex = wesnoth.special_locations[side.side]
+                    if enemy_start_hex then
+                        local dist = wesnoth.map.distance_between(reference_hex[1], reference_hex[2], enemy_start_hex[1], enemy_start_hex[2])
+                        if dist < min_dist then
+                            min_dist = dist
+                            enemy_location = { x = enemy_start_hex[1], y = enemy_start_hex[2] }
+                        end
+                    end
+                end
+                if not enemy_location then
+                    local width, height = wesnoth.get_map_size()
+                    enemy_location = { x = width + 1 - reference_hex[1], y = height + 1 - reference_hex[2] }
+                end
+                distance_to_enemy = wesnoth.map.distance_between(reference_hex[1], reference_hex[2], enemy_location.x, enemy_location.y)
             end
 
-            local gold_limit = 9e99
+            local gold_limit = math.huge
             if recruit_data.castle.loose_gold_limit >= recruit_data.recruit.cheapest_unit_cost then
                 gold_limit = recruit_data.castle.loose_gold_limit
             end
-            --print (recruit_data.castle.loose_gold_limit .. " " .. recruit_data.recruit.cheapest_unit_cost .. " " .. gold_limit)
 
             local recruitable_units = {}
 
@@ -736,17 +768,17 @@ return {
                 if can_slow(recruit_unit) then
                     unit_score["slows"] = true
                 end
-                if wesnoth.match_unit(recruit_unit, { ability = "healing" }) then
+                if recruit_unit:matches { ability = "healing" } then
                     unit_score["heals"] = true
                 end
-                if wesnoth.match_unit(recruit_unit, { ability = "skirmisher" }) then
+                if recruit_unit:matches { ability = "skirmisher" } then
                     unit_score["skirmisher"] = true
                 end
                 recruitable_units[recruit_id] = recruit_unit
             end
             local healer_count, healable_count = get_unit_counts_for_healing()
             local best_score = 0
-            local recruit_type = nil
+            local recruit_type
             local offense_weight = 2.5
             local defense_weight = 1/hp_ratio^0.5
             local move_weight = math.max((distance_to_enemy/20)^2, 0.25)
@@ -770,7 +802,9 @@ return {
                 for attack_range, count in pairs(unit_attack_range_count[recruit_id]) do
                     bonus = bonus + 0.02 * most_common_range_count / (attack_range_count[attack_range]+1)
                 end
-                bonus = bonus + 0.03 * wesnoth.races[wesnoth.unit_types[recruit_id].__cfg.race].num_traits^2
+                local race = wesnoth.races[wesnoth.unit_types[recruit_id].__cfg.race]
+                local num_traits = race and race.num_traits or 0
+                bonus = bonus + 0.03 * num_traits^2
                 if target_hex[1] then
                     recruitable_units[recruit_id].x = best_hex[1]
                     recruitable_units[recruit_id].y = best_hex[2]
@@ -784,7 +818,7 @@ return {
                 local score = offense_score*offense_weight + defense_score*defense_weight + move_score*move_weight + bonus
 
                 if AH.print_eval() then
-                    print(recruit_id .. " score: " .. offense_score*offense_weight .. " + " .. defense_score*defense_weight .. " + " .. move_score*move_weight  .. " + " .. bonus  .. " = " .. score)
+                    std_print(recruit_id .. " score: " .. offense_score*offense_weight .. " + " .. defense_score*defense_weight .. " + " .. move_score*move_weight  .. " + " .. bonus  .. " = " .. score)
                 end
                 if score > best_score and wesnoth.unit_types[recruit_id].cost <= gold_limit then
                     best_score = score
@@ -817,27 +851,31 @@ return {
                 end
             end
 
-            local locsx, locsy = AH.split_location_list_to_strings(data.castle.locs)
-
-            -- get a list of all unowned villages within fastest_unit_speed
-            -- TODO get list of villages not owned by allies instead
+            -- get a list of all unowned and enemy-owned villages within fastest_unit_speed
             -- this may have false positives (villages that can't be reached due to difficult/impassible terrain)
-            local exclude_x, exclude_y = "0", "0"
-            if data.castle.assigned_villages_x ~= nil and data.castle.assigned_villages_x[1] then
-                exclude_x = table.concat(data.castle.assigned_villages_x, ",")
-                exclude_y = table.concat(data.castle.assigned_villages_y, ",")
+            local exclude_map = LS.create()
+            if data.castle.assigned_villages_x and data.castle.assigned_villages_x[1] then
+                for i,x in ipairs(data.castle.assigned_villages_x) do
+                    exclude_map:insert(x, data.castle.assigned_villages_y[i])
+                end
             end
-            local villages = wesnoth.get_villages {
-                owner_side = 0,
-                { "and", {
-                    radius = fastest_unit_speed,
-                    x = locsx, y = locsy
-                }},
-                { "not", {
-                    x = exclude_x,
-                    y = exclude_y
-                }}
-            }
+
+            local all_villages = wesnoth.get_villages()
+            local villages = {}
+            for _,v in ipairs(all_villages) do
+                local owner = wesnoth.get_village_owner(v[1], v[2])
+                if ((not owner) or wesnoth.is_enemy(owner, wesnoth.current.side))
+                    and (not exclude_map:get(v[1], v[2]))
+                then
+                    for _,loc in ipairs(data.castle.locs) do
+                        local dist = M.distance_between(v[1], v[2], loc[1], loc[2])
+                        if (dist <= fastest_unit_speed) then
+                           table.insert(villages, v)
+                           break
+                        end
+                    end
+                end
+            end
 
             local hex, target, shortest_distance = {}, {}, AH.no_path
 
@@ -845,7 +883,7 @@ return {
                 data.castle.assigned_villages_x = {}
                 data.castle.assigned_villages_y = {}
 
-                if not params.leader_takes_village or params.leader_takes_village() then
+                if not ai.aspects.passive_leader and (not params.leader_takes_village or params.leader_takes_village()) then
                     -- skip one village for the leader
                     for i,v in ipairs(villages) do
                         local path, cost = wesnoth.find_path(leader, v[1], v[2], {max_cost = leader.max_moves+1})
@@ -867,20 +905,23 @@ return {
                 c_index = c[1] + c[2]*1000
                 total_village_distance[c_index] = 0
                 for i,v in ipairs(villages) do
-                    total_village_distance[c_index] = total_village_distance[c_index] + H.distance_between(c[1], c[2], v[1], v[2])
+                    total_village_distance[c_index] = total_village_distance[c_index] + M.distance_between(c[1], c[2], v[1], v[2])
                 end
             end
 
             local width,height,border = wesnoth.get_map_size()
+            if (not recruit_data.unit_distances) then recruit_data.unit_distances = {} end
             for i,v in ipairs(villages) do
-                local close_castle_hexes = wesnoth.get_locations {
-                    x = locsx, y = locsy,
-                    { "and", {
-                      x = v[1], y = v[2],
-                      radius = fastest_unit_speed
-                    }},
-                    { "not", { { "filter", {} } } }
-                }
+                local close_castle_hexes = {}
+                for _,loc in ipairs(data.castle.locs) do
+                    local dist = M.distance_between(v[1], v[2], loc[1], loc[2])
+                    if (dist <= fastest_unit_speed) then
+                        if (not wesnoth.get_unit(loc[1], loc[2])) then
+                           table.insert(close_castle_hexes, loc)
+                        end
+                    end
+                end
+
                 for u,unit in ipairs(test_units) do
                     test_units[u].x = v[1]
                     test_units[u].y = v[2]
@@ -892,7 +933,15 @@ return {
                     if c[1] > 0 and c[2] > 0 and c[1] <= width and c[2] <= height then
                         local distance = 0
                         for x,unit in ipairs(test_units) do
-                            local path, unit_distance = wesnoth.find_path(unit, c[1], c[2], {viewing_side=0, max_cost=fastest_unit_speed+1})
+                            local key = unit.type .. '_' .. v[1] .. '-' .. v[2] .. '_' .. c[1]  .. '-' .. c[2]
+                            local path, unit_distance
+                            if (not recruit_data.unit_distances[key]) then
+                                path, unit_distance = wesnoth.find_path(unit, c[1], c[2], {viewing_side=0, max_cost=fastest_unit_speed+1})
+                                recruit_data.unit_distances[key] = unit_distance
+                            else
+                                unit_distance = recruit_data.unit_distances[key]
+                            end
+
                             distance = distance + unit_distance
 
                             -- Village is only viable if at least one unit can reach it
@@ -935,7 +984,7 @@ return {
             local test_units, num_recruits = {}, 0
             local movetypes = {}
             for x,id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
-                local custom_movement = H.get_child(wesnoth.unit_types[id].__cfg, "movement_costs")
+                local custom_movement = wml.get_child(wesnoth.unit_types[id].__cfg, "movement_costs")
                 local movetype = wesnoth.unit_types[id].__cfg.movement_type
                 if custom_movement
                 or (not movetypes[movetype])

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,77 +14,56 @@
 
 /** @file */
 
-#ifndef GAME_STATUS_HPP_INCLUDED
-#define GAME_STATUS_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "game_end_exceptions.hpp"
-#include "game_events/wmi_container.hpp"
-#include "map_location.hpp"
-#include "simple_rng.hpp"
+#include "map/location.hpp"
+#include "mt_rng.hpp"
 #include "variable_info.hpp"
-#include <boost/shared_ptr.hpp>
 
-class config_writer;
-class game_display;
-class gamemap;
 class scoped_wml_variable;
 class t_string;
-class team;
-class unit_map;
-
-namespace t_translation {
-	struct t_match;
-}
-extern int sdfasf;
-class team_builder;
-typedef boost::shared_ptr<team_builder> team_builder_ptr;
 
 class game_data  : public variable_set  {
 public:
-	game_data();
 	explicit game_data(const config& level);
 	game_data(const game_data& data);
 
 	std::vector<scoped_wml_variable*> scoped_variables;
 
 	const config& get_variables() const { return variables_; }
-
-	// Variable access
+	/// throws invalid_variablename_exception if varname is no valid variable name.
 	config::attribute_value &get_variable(const std::string &varname);
+	/// returns a blank attribute value if varname is no valid variable name.
 	virtual config::attribute_value get_variable_const(const std::string& varname) const;
+	/// throws invalid_variablename_exception if varname is no valid variable name.
 	config& get_variable_cfg(const std::string& varname);
-
+	/// does nothing if varname is no valid variable name.
 	void set_variable(const std::string& varname, const t_string& value);
+	/// throws invalid_variablename_exception if varname is no valid variable name.
 	config& add_variable_cfg(const std::string& varname, const config& value=config());
-
-	void activate_scope_variable(std::string var_name) const;
-
-	// returns a variable_access that cannot be used to change the game variables
+	/// returns a variable_access that cannot be used to change the game variables
 	variable_access_const get_variable_access_read(const std::string& varname) const
 	{
-		assert(this != NULL);
 		activate_scope_variable(varname);
 		return variable_access_const(varname, variables_);
 	}
-
-	// returns a variable_access that cannot be used to change the game variables
+	/// returns a variable_access that can be used to change the game variables
 	variable_access_create get_variable_access_write(const std::string& varname)
 	{
-		assert(this != NULL);
 		activate_scope_variable(varname);
 		return variable_access_create(varname, variables_);
 	}
-
-
-
+	/// Clears attributes config children
+	/// does nothing if varname is no valid variable name.
 	void clear_variable(const std::string& varname);
-	void clear_variable_cfg(const std::string& varname); // Clears only the config children
+	/// Clears only the config children
+	/// does nothing if varname is no valid variable name.
+	void clear_variable_cfg(const std::string& varname);
 
-	game_events::wmi_container& get_wml_menu_items() { return wml_menu_items_; }
-
-	const rand_rng::simple_rng& rng() const { return rng_; }
-	rand_rng::simple_rng& rng() { return rng_; }
+	const randomness::mt_rng& rng() const { return rng_; }
+	randomness::mt_rng& rng() { return rng_; }
 
 	enum PHASE {
 		INITIAL,
@@ -93,52 +72,58 @@ public:
 		START,
 		PLAY
 	};
+
 	PHASE phase() const { return phase_; }
 	void set_phase(PHASE phase) { phase_ = phase; }
 
-	//create an object responsible for creating and populating a team from a config
-	team_builder_ptr create_team_builder(const config& side_cfg, std::vector<team>& teams,
-		const config& level, gamemap& map);
-
-	//do first stage of team initialization (everything except unit placement)
-	void build_team_stage_one(team_builder_ptr tb_ptr);
-
-	//do second stage of team initialization (unit placement)
-	void build_team_stage_two(team_builder_ptr tb_ptr);
-
+	const t_string& cannot_end_turn_reason() {
+		return cannot_end_turn_reason_;
+	}
 	bool allow_end_turn() const { return can_end_turn_; }
-	void set_allow_end_turn(bool value) { can_end_turn_ = value; }
+	void set_allow_end_turn(bool value, const t_string& reason = "") {
+		can_end_turn_ = value;
+		cannot_end_turn_reason_ = reason;
+	}
 
-	/** the last location where a select event fired. */
+	/** the last location where a select event fired. Used by wml menu items with needs_select=yes*/
 	map_location last_selected;
 
-	void write_snapshot(config& cfg) const ;
-	void write_config(config_writer& out);
+	void write_snapshot(config& cfg) const;
 
 	const std::string& next_scenario() const { return next_scenario_; }
 	void set_next_scenario(const std::string& next_scenario) { next_scenario_ = next_scenario; }
 
-	game_data& operator=(const game_data& info);
-	game_data* operator=(const game_data* info);
+	const std::string& get_id() const { return id_; }
+	void set_id(const std::string& value) { id_ = value; }
+
+	const std::string& get_theme() const { return theme_; }
+	void set_theme(const std::string& value) { theme_ = value; }
+
+	const std::vector<std::string>& get_defeat_music() const { return defeat_music_; }
+	void set_defeat_music(std::vector<std::string> value) { defeat_music_ = std::move(value); }
+
+	const std::vector<std::string>& get_victory_music() const { return victory_music_; }
+	void set_victory_music(std::vector<std::string> value) { victory_music_ = std::move(value); }
 
 private:
-
-
+	void activate_scope_variable(std::string var_name) const;
 	///Used to delete variables.
 	variable_access_throw get_variable_access_throw(const std::string& varname)
 	{
-		assert(this != NULL);
 		activate_scope_variable(varname);
 		return variable_access_throw(varname, variables_);
 	}
 
-	game_events::wmi_container wml_menu_items_;
-	rand_rng::simple_rng rng_;
+	randomness::mt_rng rng_;
 	config variables_;
 	PHASE phase_;
 	bool can_end_turn_;
-	std::string scenario_;                            /**< the scenario being played */
-	std::string next_scenario_;                       /**< the scenario coming next (for campaigns) */
+	t_string cannot_end_turn_reason_;
+	/// the scenario coming next (for campaigns)
+	std::string next_scenario_;
+	// the id of a scenario cannot change during a scenario
+	std::string id_;
+	std::string theme_;
+	std::vector<std::string> defeat_music_;
+	std::vector<std::string> victory_music_;
 };
-
-#endif

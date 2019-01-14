@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,32 +12,35 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_LANGUAGE_SELECTION_HPP_INCLUDED
-#define GUI_DIALOGS_LANGUAGE_SELECTION_HPP_INCLUDED
+#pragma once
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tlanguage_selection : public tdialog
+class language_selection : public modal_dialog
 {
 public:
-	tlanguage_selection()
+	language_selection()
 	{
 	}
 
+	/** The execute function. See @ref modal_dialog for more information. */
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(language_selection)
+
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
+	virtual const std::string& window_id() const override;
 
-	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
+	/** Inherited from modal_dialog. */
+	virtual void pre_show(window& window) override;
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	virtual void post_show(window& window) override;
 };
 
+} // namespace dialogs
 } // namespace gui2
-
-#endif

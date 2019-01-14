@@ -1,24 +1,22 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
-local LS = wesnoth.require "lua/location_set.lua"
+local LS = wesnoth.require "location_set"
 
-local ca_simple_attack = {}
+local ca_simple_attack, best_attack = {}
 
-function ca_simple_attack:evaluation(ai, cfg, self)
+function ca_simple_attack:evaluation(cfg)
     local units = AH.get_units_with_attacks {
         side = wesnoth.current.side,
-        { "and", cfg.filter }
+        { "and", wml.get_child(cfg, "filter") }
     }
     if (not units[1]) then return 0 end
 
     -- If cfg.filter_second is set, set up a map (location set)
     -- of enemies that it is okay to attack
+    local enemy_filter = wml.get_child(cfg, "filter_second")
     local enemy_map
-    if cfg.filter_second then
-        local enemies = wesnoth.get_units {
-            { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
-            { "and", cfg.filter_second }
-        }
+    if enemy_filter then
+        local enemies = AH.get_attackable_enemies(enemy_filter)
         if (not enemies[1]) then return 0 end
 
         enemy_map = LS.create()
@@ -29,10 +27,10 @@ function ca_simple_attack:evaluation(ai, cfg, self)
     local attacks = AH.get_attacks(units, { include_occupied = true })
     if (not attacks[1]) then return 0 end
 
-    local max_rating, best_attack = -9e99
+    local max_rating = - math.huge
     for _, att in ipairs(attacks) do
         local valid_target = true
-        if cfg.filter_second and (not enemy_map:get(att.target.x, att.target.y)) then
+        if enemy_filter and (not enemy_map:get(att.target.x, att.target.y)) then
             valid_target = false
         end
 
@@ -50,23 +48,15 @@ function ca_simple_attack:evaluation(ai, cfg, self)
     end
 
     if best_attack then
-        self.data.SA_attack = best_attack
         return cfg.ca_score
     end
 
     return 0
 end
 
-function ca_simple_attack:execution(ai, cfg, self)
-    local attacker = wesnoth.get_unit(self.data.SA_attack.src.x, self.data.SA_attack.src.y)
-    local defender = wesnoth.get_unit(self.data.SA_attack.target.x, self.data.SA_attack.target.y)
-
-    AH.movefull_outofway_stopunit(ai, attacker, self.data.SA_attack.dst.x, self.data.SA_attack.dst.y)
-    if (not attacker) or (not attacker.valid) then return end
-    if (not defender) or (not defender.valid) then return end
-
-    AH.checked_attack(ai, attacker, defender, (cfg.weapon or -1))
-    self.data.SA_attack = nil
+function ca_simple_attack:execution(cfg)
+    AH.robust_move_and_attack(ai, best_attack.src, best_attack.dst, best_attack.target, cfg)
+    best_attack = nil
 end
 
 return ca_simple_attack

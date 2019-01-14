@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,18 +12,16 @@
    See the COPYING file for more details.
 */
 
-#ifndef GAME_BOARD_HPP_INCLUDED
-#define GAME_BOARD_HPP_INCLUDED
-
-#include "global.hpp"
+#pragma once
 
 #include "display_context.hpp"
 #include "team.hpp"
-#include "unit_map.hpp"
+#include "terrain/type_data.hpp"
+#include "units/map.hpp"
+#include "units/id.hpp"
 
 #include <boost/optional.hpp>
-#include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
+#include <set>
 #include <vector>
 
 class config;
@@ -49,11 +47,14 @@ namespace events {
  *
  **/
 
-class game_board : public display_context {
+class game_board : public display_context
+{
 
 	std::vector<team> teams_;
+	std::vector<std::string> labels_;
 
-	boost::scoped_ptr<gamemap> map_;
+	std::unique_ptr<gamemap> map_;
+	n_unit::id_manager unit_id_manager_;
 	unit_map units_;
 
 	//TODO: Remove these when we have refactored enough to make it possible.
@@ -61,6 +62,7 @@ class game_board : public display_context {
 	friend class events::mouse_handler;
 	friend class events::menu_handler;
 	friend class game_state;
+	friend class game_lua_kernel;
 
 	/**
 	 * Temporary unit move structs:
@@ -80,21 +82,54 @@ class game_board : public display_context {
 	friend struct temporary_unit_mover;
 	friend struct temporary_unit_remover;
 
-	public:
-
+public:
+	n_unit::id_manager& unit_id_manager() { return unit_id_manager_; }
 	// Constructors, trivial dtor, and const accessors
 
-	game_board(const config & game_config, const config & level);
+	game_board(const ter_data_cache & tdata, const config & level);
 	virtual ~game_board();
 
-	virtual const std::vector<team> & teams() const { return teams_; }
-	virtual const gamemap & map() const { return *map_; }
-	virtual const unit_map & units() const { return units_; }
+	virtual const std::vector<team>& teams() const override
+	{
+		return teams_;
+	}
+
+	std::vector<team>& teams()
+	{
+		return teams_;
+	}
+
+	using display_context::get_team; // so as not to hide the const version
+
+	team& get_team(int i)
+	{
+		return teams_.at(i - 1);
+	}
+
+	virtual const gamemap& map() const override
+	{
+		return *map_;
+	}
+
+	virtual const unit_map& units() const override
+	{
+		return units_;
+	}
+
+	unit_map& units()
+	{
+		return units_;
+	}
+
+	virtual const std::vector<std::string>& hidden_label_categories() const override
+	{
+		return labels_;
+	}
 
 	// Copy and swap idiom, because we have a scoped pointer.
 
 	game_board(const game_board & other);
-	game_board & operator= (game_board other);
+	game_board& operator=(const game_board& other) = delete;
 
 	friend void swap(game_board & one, game_board & other);
 
@@ -108,34 +143,37 @@ class game_board : public display_context {
 	void end_turn(int pnum);
 	void set_all_units_user_end_turn();
 
-	void all_survivors_to_recall();
+	void heal_all_survivors();
+
+	void check_victory(bool &, bool &, bool &, bool &, std::set<unsigned> &, bool);
 
 	// Manipulator from playturn
 
-	void side_drop_to (int side_num, team::CONTROLLER ctrl);
-	void side_change_controller (int side_num, team::CONTROLLER ctrl, const std::string pname = "");
+	void side_drop_to (int side_num, team::CONTROLLER ctrl, team::PROXY_CONTROLLER proxy = team::PROXY_CONTROLLER::PROXY_HUMAN);
+	void side_change_controller (int side_num, bool is_local, const std::string& pname = "");
 
 	// Manipulator from actionwml
 
 	bool try_add_unit_to_recall_list(const map_location& loc, const unit_ptr u);
-	boost::optional<std::string> replace_map (const gamemap & r);
-	void overlay_map (const gamemap & o, const config & cfg, map_location loc, bool border);
+	boost::optional<std::string> replace_map(const gamemap & r);
 
 	bool change_terrain(const map_location &loc, const std::string &t,
-                    const std::string & mode, bool replace_if_failed); //used only by lua
+	                    const std::string & mode, bool replace_if_failed); //used only by lua
 
 	// Global accessor from unit.hpp
 
 	unit_map::iterator find_visible_unit(const map_location &loc, const team& current_team, bool see_all = false);
-	unit_map::iterator find_visible_unit(const map_location & loc, size_t team, bool see_all = false) { return find_visible_unit(loc, teams_[team], see_all); }
-	bool has_visible_unit (const map_location & loc, const team & team, bool see_all = false);
-	bool has_visible_unit (const map_location & loc, size_t team, bool see_all = false) { return has_visible_unit(loc, teams_[team], see_all); }
+	unit_map::iterator find_visible_unit(const map_location & loc, std::size_t team, bool see_all = false) { return find_visible_unit(loc, teams_[team], see_all); }
+	bool has_visible_unit (const map_location & loc, const team & team, bool see_all = false) const;
+	bool has_visible_unit (const map_location & loc, std::size_t team, bool see_all = false) const { return has_visible_unit(loc, teams_[team], see_all); }
 
 	unit* get_visible_unit(const map_location &loc, const team &current_team, bool see_all = false); //TODO: can this not return a pointer?
 
 	// Wrapped functions from unit_map. These should ultimately provide notification to observers, pathfinding.
 
 	unit_map::iterator find_unit(const map_location & loc) { return units_.find(loc); }
+	/// Calculates whether a team is defeated
+	bool team_is_defeated(const team& t) const;
 };
 
 void swap(game_board & one, game_board & other);
@@ -204,6 +242,3 @@ private:
 	int old_moves_;
 	unit_ptr temp_;
 };
-
-
-#endif

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2007 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2007 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,13 +12,12 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_EVENT_EXECUTOR_HPP_INCLUDED
-#define GUI_WIDGETS_EVENT_EXECUTOR_HPP_INCLUDED
+#pragma once
 
 namespace gui2
 {
 
-class tevent_handler;
+class event_handler;
 
 /**
  * Event execution calls.
@@ -28,13 +27,13 @@ class tevent_handler;
  * execution function and implement the wanted behavior. The default behavior
  * defined here is to do nothing.
  *
- * For more info about the event handling have a look at the tevent_handler
+ * For more info about the event handling have a look at the event_handler
  * class which 'translates' sdl events into 'widget' events.
  */
-class tevent_executor
+class event_executor
 {
 public:
-	tevent_executor()
+	event_executor()
 		: wants_mouse_hover_(false)
 		, wants_mouse_left_double_click_(false)
 		, wants_mouse_middle_double_click_(false)
@@ -42,7 +41,7 @@ public:
 	{
 	}
 
-	virtual ~tevent_executor()
+	virtual ~event_executor()
 	{
 	}
 
@@ -75,7 +74,7 @@ public:
 		return wants_mouse_middle_double_click_;
 	}
 
-	tevent_executor& set_wants_mouse_right_double_click(const bool click = true)
+	event_executor& set_wants_mouse_right_double_click(const bool click = true)
 	{
 		wants_mouse_right_double_click_ = click;
 		return *this;
@@ -103,5 +102,3 @@ private:
 };
 
 } // namespace gui2
-
-#endif

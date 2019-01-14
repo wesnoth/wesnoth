@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,14 +12,16 @@
    See the COPYING file for more details.
 */
 
-#ifndef HOTKEY_COMMAND_HPP_INCLUDED
-#define HOTKEY_COMMAND_HPP_INCLUDED
+#pragma once
 
 #include "tooltips.hpp"
 #include "tstring.hpp"
-#include "boost/ptr_container/ptr_vector.hpp"
 
 #include <bitset>
+#include <list>
+#include <map>
+#include <vector>
+
 class config;
 
 namespace hotkey {
@@ -48,7 +50,7 @@ enum HOTKEY_COMMAND {
 	HOTKEY_RECRUIT, HOTKEY_REPEAT_RECRUIT, HOTKEY_RECALL, HOTKEY_ENDTURN,
 	HOTKEY_TOGGLE_ELLIPSES, HOTKEY_TOGGLE_GRID, HOTKEY_STATUS_TABLE, HOTKEY_MUTE, HOTKEY_MOUSE_SCROLL,
 	HOTKEY_SPEAK, HOTKEY_CREATE_UNIT, HOTKEY_CHANGE_SIDE, HOTKEY_KILL_UNIT, HOTKEY_PREFERENCES,
-	HOTKEY_OBJECTIVES, HOTKEY_UNIT_LIST, HOTKEY_STATISTICS, HOTKEY_STOP_NETWORK, HOTKEY_START_NETWORK, HOTKEY_QUIT_GAME,
+	HOTKEY_OBJECTIVES, HOTKEY_UNIT_LIST, HOTKEY_STATISTICS, HOTKEY_STOP_NETWORK, HOTKEY_START_NETWORK, HOTKEY_SURRENDER, HOTKEY_QUIT_GAME, HOTKEY_QUIT_TO_DESKTOP,
 	HOTKEY_LABEL_TEAM_TERRAIN, HOTKEY_LABEL_TERRAIN, HOTKEY_CLEAR_LABELS,HOTKEY_SHOW_ENEMY_MOVES, HOTKEY_BEST_ENEMY_MOVES,
 	HOTKEY_DELAY_SHROUD, HOTKEY_UPDATE_SHROUD, HOTKEY_CONTINUE_MOVE,
 	HOTKEY_SEARCH, HOTKEY_SPEAK_ALLY, HOTKEY_SPEAK_ALL, HOTKEY_HELP,
@@ -59,10 +61,14 @@ enum HOTKEY_COMMAND {
 	HOTKEY_REPLAY_NEXT_SIDE, HOTKEY_REPLAY_NEXT_MOVE, HOTKEY_REPLAY_SHOW_EVERYTHING,
 	HOTKEY_REPLAY_SHOW_EACH, HOTKEY_REPLAY_SHOW_TEAM1,
 	HOTKEY_REPLAY_SKIP_ANIMATION,
+	HOTKEY_REPLAY_EXIT,
 
 	// Controls
 	HOTKEY_SELECT_HEX, HOTKEY_DESELECT_HEX,
-	HOTKEY_MOVE_ACTION, HOTKEY_SELECT_AND_ACTION,
+	HOTKEY_MOVE_ACTION, HOTKEY_SELECT_AND_ACTION, HOTKEY_TOUCH_HEX,
+
+	// Camera movement
+	HOTKEY_SCROLL_UP, HOTKEY_SCROLL_DOWN, HOTKEY_SCROLL_LEFT, HOTKEY_SCROLL_RIGHT,
 
 	// Dialog control
 	HOTKEY_CANCEL, HOTKEY_OKAY,
@@ -79,6 +85,7 @@ enum HOTKEY_COMMAND {
 	HOTKEY_CUSTOM_CMD,
 	HOTKEY_AI_FORMULA,
 	HOTKEY_CLEAR_MSG,
+	HOTKEY_LABEL_SETTINGS,
 
 	// Minimap
 	HOTKEY_MINIMAP_CODING_TERRAIN, HOTKEY_MINIMAP_CODING_UNIT,
@@ -95,12 +102,13 @@ enum HOTKEY_COMMAND {
 	TITLE_SCREEN__CORES,
 	TITLE_SCREEN__EDITOR,
 	TITLE_SCREEN__CREDITS,
+	TITLE_SCREEN__TEST,
 	GLOBAL__HELPTIP,
+	LUA_CONSOLE,
 
 	HOTKEY_WML,
 
 	/* Editor commands */
-	HOTKEY_EDITOR_QUIT_TO_DESKTOP,
 	HOTKEY_EDITOR_CUSTOM_TODS,
 	HOTKEY_EDITOR_PARTIAL_UNDO,
 
@@ -108,6 +116,7 @@ enum HOTKEY_COMMAND {
 	HOTKEY_EDITOR_PALETTE_ITEM_SWAP, HOTKEY_EDITOR_PALETTE_ITEMS_CLEAR,
 	HOTKEY_EDITOR_PALETTE_GROUPS, HOTKEY_EDITOR_PALETTE_UPSCROLL, HOTKEY_EDITOR_PALETTE_DOWNSCROLL,
 
+	HOTKEY_EDITOR_REMOVE_LOCATION,
 	HOTKEY_EDITOR_PLAYLIST,
 	HOTKEY_EDITOR_SCHEDULE,
 	HOTKEY_EDITOR_LOCAL_TIME,
@@ -160,7 +169,7 @@ enum HOTKEY_COMMAND {
 	HOTKEY_EDITOR_REFRESH_IMAGE_CACHE,
 
 	// Draw
-	HOTKEY_EDITOR_DRAW_COORDINATES, HOTKEY_EDITOR_DRAW_TERRAIN_CODES,
+	HOTKEY_EDITOR_DRAW_COORDINATES, HOTKEY_EDITOR_DRAW_TERRAIN_CODES, HOTKEY_EDITOR_DRAW_NUM_OF_BITMAPS,
 
 	// Side
 	HOTKEY_EDITOR_SIDE_NEW,
@@ -182,54 +191,107 @@ enum HOTKEY_COMMAND {
 	HOTKEY_NULL
 };
 
-typedef std::bitset<SCOPE_COUNT> hk_scopes;
-
-/// Stores all information related to functions that can be bound to hotkeys.
-/// this is currently a semi struct: it haves a constructor, but only const-public members.
-struct hotkey_command {
-public:
-	/// the compiler want me to make a default constructor
-	/// since most member are const, calling the default constructor is normally no use.
-	hotkey_command();
-	hotkey_command(hotkey::HOTKEY_COMMAND cmd, const std::string& id, const t_string& desc, bool hidden, hotkey::hk_scopes scope, const t_string& tooltip);
-	/// the names are strange: the "hotkey::HOTKEY_COMMAND" is named id, and the string to identify the object is called "command"
-	/// there is some inconstancy with that names in this file.
-	/// This binds the command to a function. Does not need to be unique.
-	const hotkey::HOTKEY_COMMAND id;
-	/// The command is unique.
-	const std::string command;
-	// since the wml_menu hotkey_command s can have different textdomains we need t_string now.
-	const t_string description;
-	/// If hidden then don't show the command in the hotkey preferences.
-	const bool hidden;
-	/// The visibility scope of the command.
-	const hotkey::hk_scopes scope;
-
-	const t_string tooltip;
-
-	/// checks weather this is the null hotkey_command
-	bool null() const;
-	/// returns the command that is treated as null
-	static const hotkey_command& null_command();
-	/// the execute_command argument was changed from HOTKEY_COMMAND to hotkey_command,
-	/// to be able to call it with HOTKEY_COMMAND, this function was created
-	static const hotkey_command& get_command_by_command(HOTKEY_COMMAND command);
+enum HOTKEY_CATEGORY {
+	HKCAT_GENERAL,
+	HKCAT_SAVING,
+	HKCAT_MAP,
+	HKCAT_UNITS,
+	HKCAT_CHAT,
+	HKCAT_REPLAY,
+	HKCAT_WHITEBOARD,
+	HKCAT_SCENARIO,
+	HKCAT_PALETTE,
+	HKCAT_TOOLS,
+	HKCAT_CLIPBOARD,
+	HKCAT_DEBUG,
+	HKCAT_CUSTOM,
+	HKCAT_PLACEHOLDER // Keep this one last
 };
 
-/// Do not use this outside hotkeys.cpp.
-/// hotkey_command uses t_string which might cause bugs when used at program startup, so use this for the hotkey_list_ (and only there).
-struct hotkey_command_temp {
-	hotkey::HOTKEY_COMMAND id;
+using category_name_map_t = std::map<HOTKEY_CATEGORY, std::string>;
 
-	const char* command;
+/**
+ * Returns the map of hotkey categories and their display names.
+ *
+ * These aren't translated and need be converted to a t_string before
+ * being displayed to the player.
+ */
+const category_name_map_t& get_category_names();
+
+/** Returns a list of all the hotkeys belonging to the given category. */
+std::list<HOTKEY_COMMAND> get_hotkeys_by_category(HOTKEY_CATEGORY category);
+
+typedef std::bitset<SCOPE_COUNT> hk_scopes;
+
+/// Do not use this outside hotkeys.cpp.
+/// hotkey_command uses t_string which might cause bugs when used at program startup,
+/// so use this for the master hotkey list (and only there).
+struct hotkey_command_temp
+{
+	HOTKEY_COMMAND id;
+
+	std::string command;
+
 	/// description, tooltip are untranslated
-	const char* description;
+	std::string description;
 
 	bool hidden;
 
-	hotkey::hk_scopes scope;
+	hk_scopes scope;
+	HOTKEY_CATEGORY category;
 
-	const char* tooltip;
+	std::string tooltip;
+};
+
+/// Stores all information related to functions that can be bound to hotkeys.
+/// this is currently a semi struct: it haves a constructor, but only const-public members.
+struct hotkey_command
+{
+	hotkey_command() = delete;
+
+	/** Constuct a new command from a temporary static hotkey object. */
+	hotkey_command(const hotkey_command_temp& temp_command);
+
+	hotkey_command(HOTKEY_COMMAND cmd, const std::string& id, const t_string& desc, bool hidden, bool toggle, hk_scopes scope, HOTKEY_CATEGORY category, const t_string& tooltip);
+
+	hotkey_command(const hotkey_command&) = default;
+	hotkey_command& operator=(const hotkey_command&) = default;
+
+	/// the names are strange: the "hotkey::HOTKEY_COMMAND" is named id, and the string to identify the object is called "command"
+	/// there is some inconstancy with that names in this file.
+	/// This binds the command to a function. Does not need to be unique.
+	HOTKEY_COMMAND id;
+
+	/// The command is unique.
+	std::string command;
+
+	// since the wml_menu hotkey_command s can have different textdomains we need t_string now.
+	t_string description;
+
+	/// If hidden then don't show the command in the hotkey preferences.
+	bool hidden;
+
+	/// Toggle hotkeys have some restrictions on what can be bound to them.
+	/// They require a binding that has two states, "pressed" and "released".
+	bool toggle;
+
+	/// The visibility scope of the command.
+	hk_scopes scope;
+
+	/// The category of the command.
+	HOTKEY_CATEGORY category;
+
+	t_string tooltip;
+
+	/// checks weather this is the null hotkey_command
+	bool null() const;
+
+	/// returns the command that is treated as null
+	static const hotkey_command& null_command();
+
+	/// the execute_command argument was changed from HOTKEY_COMMAND to hotkey_command,
+	/// to be able to call it with HOTKEY_COMMAND, this function was created
+	static const hotkey_command& get_command_by_command(HOTKEY_COMMAND command);
 };
 
 class scope_changer {
@@ -242,7 +304,7 @@ private:
 
 /// returns a container that contains all currently active hotkey_commands.
 /// everything that wants a hotkey, must be in this container.
-const boost::ptr_vector<hotkey_command>& get_hotkey_commands();
+const std::vector<hotkey_command>& get_hotkey_commands();
 
 /// returns the hotkey_command with the given name
 const hotkey_command& get_hotkey_command(const std::string& command);
@@ -253,6 +315,7 @@ const hotkey_command& get_hotkey_null();
 void deactivate_all_scopes();
 void set_scope_active(scope s, bool set = true);
 void set_active_scopes(hk_scopes s);
+bool is_scope_active(scope s);
 bool is_scope_active(hk_scopes s);
 
 ///
@@ -277,5 +340,3 @@ void clear_hotkey_commands();
 /// returns get_hotkey_command(command).id
 HOTKEY_COMMAND get_id(const std::string& command);
 }
-
-#endif

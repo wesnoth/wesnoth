@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,29 +12,26 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_DELETE_GAME_HPP_INCLUDED
-#define GUI_DIALOGS_DELETE_GAME_HPP_INCLUDED
+#pragma once
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tgame_delete : public tdialog
+class game_delete : public modal_dialog
 {
 public:
-	tgame_delete();
+	game_delete();
 
-	/** The execute function see @ref tdialog for more information. */
-	static bool execute(CVideo& video)
-	{
-		return tgame_delete().show(video);
-	}
+	/** The execute function. See @ref modal_dialog for more information. */
+    DEFINE_SIMPLE_EXECUTE_WRAPPER(game_delete)
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
+	virtual const std::string& window_id() const override;
 };
-}
-
-#endif
+} // namespace dialogs
+} // namespace gui2

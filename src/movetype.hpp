@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -11,16 +11,14 @@
 
    See the COPYING file for more details.
 */
-#ifndef MOVETYPE_H_INCLUDED
-#define MOVETYPE_H_INCLUDED
+
+#pragma once
 
 #include "config.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <boost/shared_ptr.hpp>
-
 class attack_type;
-namespace t_translation { struct t_terrain; }
+namespace t_translation { struct terrain_code; }
 
 
 /// The basic "size" of the unit - flying, small land, large land, etc.
@@ -39,14 +37,14 @@ class movetype
 		struct parameters;
 
 		explicit terrain_info(const parameters & params,
-		                      const terrain_info * fallback=NULL,
-		                      const terrain_info * cascade=NULL);
+		                      const terrain_info * fallback=nullptr,
+		                      const terrain_info * cascade=nullptr);
 		terrain_info(const config & cfg, const parameters & params,
-		             const terrain_info * fallback=NULL,
-		             const terrain_info * cascade=NULL);
+		             const terrain_info * fallback=nullptr,
+		             const terrain_info * cascade=nullptr);
 		terrain_info(const terrain_info & that,
-		             const terrain_info * fallback=NULL,
-		             const terrain_info * cascade=NULL);
+		             const terrain_info * fallback=nullptr,
+		             const terrain_info * cascade=nullptr);
 		~terrain_info();
 
 		terrain_info & operator=(const terrain_info & that);
@@ -59,21 +57,21 @@ class movetype
 		/// Merges the given config over the existing values.
 		void merge(const config & new_values, bool overwrite);
 		/// Returns the value associated with the given terrain.
-		int value(const t_translation::t_terrain & terrain) const;
+		int value(const t_translation::terrain_code & terrain) const;
 		/// Writes our data to a config.
 		void write(config & cfg, const std::string & child_name="", bool merged=true) const;
 
 	private:
 		// Returns a pointer to data the incorporates our fallback.
-		const boost::shared_ptr<data> & get_merged() const;
+		const std::shared_ptr<data> & get_merged() const;
 		// Ensures our data is not shared, and propagates to our cascade.
 		void make_unique_cascade() const;
 		// Ensures our data is not shared, and propagates to our fallback.
 		void make_unique_fallback() const;
 
 	private:
-		boost::shared_ptr<data> data_;                 /// Never NULL
-		mutable boost::shared_ptr<data> merged_data_;  /// Created as needed.
+		std::shared_ptr<data> data_;                 /// Never nullptr
+		mutable std::shared_ptr<data> merged_data_;  /// Created as needed.
 		const terrain_info * const fallback_;
 		const terrain_info * const cascade_;
 	};
@@ -89,24 +87,24 @@ public:
 	{
 		static const parameters params_;
 	public:
-		explicit terrain_costs(const terrain_costs * fallback=NULL,
-		                       const terrain_costs * cascade=NULL) :
+		explicit terrain_costs(const terrain_costs * fallback=nullptr,
+		                       const terrain_costs * cascade=nullptr) :
 			terrain_info(params_, fallback, cascade)
 		{}
 		explicit terrain_costs(const config & cfg,
-		                       const terrain_costs * fallback=NULL,
-		                       const terrain_costs * cascade=NULL) :
+		                       const terrain_costs * fallback=nullptr,
+		                       const terrain_costs * cascade=nullptr) :
 			terrain_info(cfg, params_, fallback, cascade)
 		{}
 		terrain_costs(const terrain_costs & that,
-		              const terrain_costs * fallback=NULL,
-		              const terrain_costs * cascade=NULL) :
+		              const terrain_costs * fallback=nullptr,
+		              const terrain_costs * cascade=nullptr) :
 			terrain_info(that, fallback, cascade)
 		{}
 
 		/// Returns the cost associated with the given terrain.
 		/// Costs are doubled when @a slowed is true.
-		int cost(const t_translation::t_terrain & terrain, bool slowed=false) const
+		int cost(const t_translation::terrain_code & terrain, bool slowed=false) const
 		{ int result = value(terrain);
 		  return  slowed  &&  result != movetype::UNREACHABLE ? 2 * result : result; }
 
@@ -128,10 +126,10 @@ public:
 		{}
 
 		/// Returns the defense associated with the given terrain.
-		int defense(const t_translation::t_terrain & terrain) const
+		int defense(const t_translation::terrain_code & terrain) const
 		{ return std::max(min_.value(terrain), max_.value(terrain)); }
 		/// Returns whether there is a defense cap associated to this terrain.
-		bool capped(const t_translation::t_terrain & terrain) const
+		bool capped(const t_translation::terrain_code & terrain) const
 		{ return min_.value(terrain) != 0; }
 		/// Merges the given config over the existing costs.
 		/// (Not overwriting implies adding.)
@@ -196,17 +194,17 @@ public:
 	void set_flying(bool flies=true) { flying_ = flies; }
 
 	/// Returns the cost to move through the indicated terrain.
-	int movement_cost(const t_translation::t_terrain & terrain, bool slowed=false) const
+	int movement_cost(const t_translation::terrain_code & terrain, bool slowed=false) const
 	{ return movement_.cost(terrain, slowed); }
 	/// Returns the cost to see through the indicated terrain.
-	int vision_cost(const t_translation::t_terrain & terrain, bool slowed=false) const
+	int vision_cost(const t_translation::terrain_code & terrain, bool slowed=false) const
 	{ return vision_.cost(terrain, slowed); }
 	/// Returns the cost to "jam" through the indicated terrain.
-	int jamming_cost(const t_translation::t_terrain & terrain, bool slowed=false) const
+	int jamming_cost(const t_translation::terrain_code & terrain, bool slowed=false) const
 	{ return jamming_.cost(terrain, slowed); }
 
 	/// Returns the defensive value of the indicated terrain.
-	int defense_modifier(const t_translation::t_terrain & terrain) const
+	int defense_modifier(const t_translation::terrain_code & terrain) const
 	{ return defense_.defense(terrain); }
 
 	/// Returns the resistance against the indicated attack.
@@ -220,7 +218,7 @@ public:
 	{ return resist_.damage_table(); }
 
 	/// Returns whether or not there are any terrain caps with respect to a set of terrains.
-	bool has_terrain_defense_caps(const std::set<t_translation::t_terrain> & ts) const;
+	bool has_terrain_defense_caps(const std::set<t_translation::terrain_code> & ts) const;
 	/// Returns whether or not there are any vision-specific costs.
 	bool has_vision_data()  const { return !vision_.empty(); }
 	/// Returns whether or not there are any jamming-specific costs.
@@ -244,7 +242,3 @@ private:
 
 	bool flying_;
 };
-
-
-#endif // MOVETYPE_H_INCLUDED
-

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,25 +16,14 @@
  * @file
  */
 
-#ifndef AI_COMPOSITE_GOAL_HPP_INCLUDED
-#define AI_COMPOSITE_GOAL_HPP_INCLUDED
+#pragma once
 
-
-#ifdef _MSC_VER
-#pragma warning(push)
-//silence "inherits via dominance" warnings
-#pragma warning(disable:4250)
-#endif
-
-#include "component.hpp"
-
-#include "global.hpp"
+#include "ai/composite/component.hpp"
 
 #include "ai/default/contexts.hpp"
 #include "ai/game_info.hpp"
 #include "config.hpp"
 
-#include <boost/shared_ptr.hpp>
 #include <iterator>
 #include <map>
 #include <set>
@@ -58,17 +47,18 @@ public:
 	virtual ~goal();
 
 
-	virtual void add_targets(std::back_insert_iterator< std::vector< target > > target_list);
+	virtual void add_targets(std::back_insert_iterator< std::vector< target >> target_list);
 
 
 	virtual config to_config() const;
 
 
 	virtual void on_create();
-	virtual void on_create(boost::shared_ptr<ai::lua_ai_context>);
+	virtual void on_create(std::shared_ptr<ai::lua_ai_context>);
 
 
 	bool active() const;
+	bool ok() const;
 
 	virtual std::string get_id() const;
 	virtual std::string get_name() const;
@@ -78,8 +68,9 @@ public:
 
 
 protected:
+	void unrecognized();
 	config cfg_;
-
+	bool ok_;
 
 };
 
@@ -89,7 +80,7 @@ public:
 	target_unit_goal(readonly_context &context, const config &cfg);
 
 
-	virtual void add_targets(std::back_insert_iterator< std::vector< target > > target_list);
+	virtual void add_targets(std::back_insert_iterator< std::vector< target >> target_list);
 
 
 	virtual void on_create();
@@ -108,7 +99,7 @@ public:
 	target_location_goal(readonly_context &context, const config &cfg);
 
 
-	virtual void add_targets(std::back_insert_iterator< std::vector< target > > target_list);
+	virtual void add_targets(std::back_insert_iterator< std::vector< target >> target_list);
 
 
 	virtual void on_create();
@@ -118,17 +109,17 @@ private:
 	{
 		return value_;
 	}
-	boost::shared_ptr<terrain_filter> filter_ptr_;
+	std::shared_ptr<terrain_filter> filter_ptr_;
 	double value_;
 };
 
 
 class protect_goal : public goal {
 public:
-	protect_goal(readonly_context &context, const config &cfg, bool protect_only_own_unit, bool protect_unit);
+	protect_goal(readonly_context &context, const config &cfg, bool protect_unit);
 
 
-	virtual void add_targets(std::back_insert_iterator< std::vector< target > > target_list);
+	virtual void add_targets(std::back_insert_iterator< std::vector< target >> target_list);
 
 
 	virtual void on_create();
@@ -140,8 +131,7 @@ private:
 		return value_;
 	}
 
-	boost::shared_ptr<terrain_filter> filter_ptr_;
-	bool protect_only_own_unit_;
+	std::shared_ptr<terrain_filter> filter_ptr_;
 	bool protect_unit_;
 	int radius_;
 	double value_;
@@ -151,7 +141,7 @@ private:
 class protect_location_goal : public protect_goal {
 public:
 	protect_location_goal(readonly_context &context, const config &cfg)
-	: protect_goal(context,cfg,false,false)
+	: protect_goal(context,cfg,false)
 	{
 	}
 };
@@ -160,16 +150,7 @@ public:
 class protect_unit_goal : public protect_goal {
 public:
 	protect_unit_goal(readonly_context &context, const config &cfg)
-	: protect_goal(context,cfg,false,true)
-	{
-	}
-};
-
-
-class protect_my_unit_goal : public protect_goal {
-public:
-	protect_my_unit_goal(readonly_context &context, const config &cfg)
-	: protect_goal(context,cfg,true,true)
+	: protect_goal(context,cfg,true)
 	{
 	}
 };
@@ -177,24 +158,25 @@ public:
 class lua_goal : public goal {
 public:
 	lua_goal(readonly_context& context, const config& cfg);
-	virtual void add_targets(std::back_insert_iterator< std::vector< target > > target_list);
-	void on_create(boost::shared_ptr<ai::lua_ai_context>);
+	virtual void add_targets(std::back_insert_iterator< std::vector< target >> target_list);
+	void on_create(std::shared_ptr<ai::lua_ai_context>);
 
 private:
 	std::string code_;
-	boost::shared_ptr<lua_ai_action_handler> handler_;
+	std::shared_ptr<lua_ai_action_handler> handler_;
 };
 
 
 class goal_factory{
+	bool is_duplicate(const std::string &name);
 public:
-	typedef boost::shared_ptr< goal_factory > factory_ptr;
+	typedef std::shared_ptr< goal_factory > factory_ptr;
 	typedef std::map<std::string, factory_ptr> factory_map;
 	typedef std::pair<const std::string, factory_ptr> factory_map_pair;
 
 	static factory_map& get_list() {
 		static factory_map *goal_factories;
-		if (goal_factories==NULL) {
+		if (goal_factories==nullptr) {
 			goal_factories = new factory_map;
 		}
 		return *goal_factories;
@@ -204,8 +186,11 @@ public:
 
 	goal_factory( const std::string &name )
 	{
+		if (is_duplicate(name)) {
+			return;
+		}
 		factory_ptr ptr_to_this(this);
-		get_list().insert(make_pair(name,ptr_to_this));
+		get_list().emplace(name,ptr_to_this);
 	}
 
 	virtual ~goal_factory() {}
@@ -221,7 +206,7 @@ public:
 	}
 
 	virtual goal_ptr get_new_instance( readonly_context &context, const config &cfg ){
-		goal_ptr a(new GOAL(context,cfg));
+		goal_ptr a = std::make_shared<GOAL>(context, cfg);
 		a->on_create();
 		return a;
 	}
@@ -229,10 +214,3 @@ public:
 
 
 } //end of namespace ai
-
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
-#endif

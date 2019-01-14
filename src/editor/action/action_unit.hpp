@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Fabian Mueller <fabianmueller5@gmx.de>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Fabian Mueller <fabianmueller5@gmx.de>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -23,35 +23,38 @@
  *   need to ensure the pointer is deleted.
  */
 
-#ifndef EDITOR_ACTION_UNIT_HPP
-#define EDITOR_ACTION_UNIT_HPP
+#pragma once
 
 #include "editor/action/action.hpp"
 
-#include "../../unit_types.hpp"
-#include "../../unit.hpp"
+#include "units/unit.hpp"
 
-
-namespace editor {
-
-
+namespace editor
+{
 /**
  * place a new unit on the map
  */
 class editor_action_unit : public editor_action_location
 {
-	public:
-		editor_action_unit(map_location loc,
-				const unit& u)
-		: editor_action_location(loc), u_(u)
-		{
-		}
-		editor_action_unit* clone() const;
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "unit"; }
-	protected:
-		unit u_;
+public:
+	editor_action_unit(map_location loc, const unit& u)
+		: editor_action_location(loc)
+		, u_(u.clone())
+	{
+	}
+
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	editor_action_unit* clone() const;
+
+	editor_action* perform(map_context& mc) const;
+
+	void perform_without_undo(map_context& mc) const;
+
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const std::string& get_name() const;
+
+protected:
+	unit_ptr u_;
 };
 
 /**
@@ -59,49 +62,70 @@ class editor_action_unit : public editor_action_location
  */
 class editor_action_unit_delete : public editor_action_location
 {
-	public:
-		editor_action_unit_delete(map_location loc)
+public:
+	editor_action_unit_delete(map_location loc)
 		: editor_action_location(loc)
-		{
-		}
-		editor_action_unit_delete* clone() const;
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "unit_delete"; }
+	{
+	}
+
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	editor_action_unit_delete* clone() const;
+
+	editor_action* perform(map_context& mc) const;
+
+	void perform_without_undo(map_context& mc) const;
+
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const std::string& get_name() const;
 };
 
 class editor_action_unit_replace : public editor_action_location
 {
-	public:
-		editor_action_unit_replace(map_location loc, map_location new_loc)
-		: editor_action_location(loc), new_loc_(new_loc)
-		{
-		}
-		editor_action_unit_replace* clone() const;
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "unit_replace"; }
-	protected:
-		map_location new_loc_;
+public:
+	editor_action_unit_replace(map_location loc, map_location new_loc)
+		: editor_action_location(loc)
+		, new_loc_(new_loc)
+	{
+	}
+
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	editor_action_unit_replace* clone() const;
+
+	editor_action* perform(map_context& mc) const;
+
+	void perform_without_undo(map_context& mc) const;
+
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const std::string& get_name() const;
+
+protected:
+	map_location new_loc_;
 };
 
 class editor_action_unit_facing : public editor_action_location
 {
-	public:
-	editor_action_unit_facing(map_location loc, map_location::DIRECTION new_direction, map_location::DIRECTION old_direction)
-	: editor_action_location(loc), new_direction_(new_direction), old_direction_(old_direction)
+public:
+	editor_action_unit_facing(
+			map_location loc, map_location::DIRECTION new_direction, map_location::DIRECTION old_direction)
+		: editor_action_location(loc)
+		, new_direction_(new_direction)
+		, old_direction_(old_direction)
 	{
 	}
+
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_unit_facing* clone() const;
+
 	editor_action* perform(map_context& mc) const;
+
 	void perform_without_undo(map_context& mc) const;
-	const char* get_name() const { return "unit_facing"; }
+
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const std::string& get_name() const;
+
 protected:
 	map_location::DIRECTION new_direction_;
 	map_location::DIRECTION old_direction_;
 };
 
-
-} //end namespace editor
-
-#endif
+} // end namespace editor

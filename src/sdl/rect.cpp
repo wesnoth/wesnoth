@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,41 +12,22 @@
    See the COPYING file for more details.
 */
 
+#include "sdl/point.hpp"
 #include "sdl/rect.hpp"
-#include "sdl/alpha.hpp"
-#include "sdl/utils.hpp"
-
-#ifdef SDL_GPU
+#include "sdl/window.hpp"
 #include "video.hpp"
-#endif
 
 namespace sdl
 {
-
-const SDL_Rect empty_rect = { 0, 0, 0, 0 };
-
-SDL_Rect create_rect(const int x, const int y, const int w, const int h)
-{
-	SDL_Rect rect;
-	rect.x = x;
-	rect.y = y;
-	rect.w = w;
-	rect.h = h;
-	return rect;
-}
-
-#ifdef SDL_GPU
-GPU_Rect create_gpu_rect(const float x, const float y, const float w, const float h)
-{
-	GPU_Rect result = {x, y, w, h};
-
-	return result;
-}
-#endif
-
 bool point_in_rect(int x, int y, const SDL_Rect& rect)
 {
-	return x >= rect.x && y >= rect.y && x < rect.x + rect.w && y < rect.y + rect.h;
+	SDL_Point p {x, y};
+	return SDL_PointInRect(&p, &rect) != SDL_FALSE;
+}
+
+bool point_in_rect(const point& point, const SDL_Rect& rect)
+{
+	return point_in_rect(point.x, point.y, rect);
 }
 
 bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2)
@@ -55,116 +36,54 @@ bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2)
 			rect1.y < rect2.y+rect2.h && rect2.y < rect1.y+rect1.h);
 }
 
-SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2)
+SDL_Rect intersect_rects(const SDL_Rect& rect1, const SDL_Rect& rect2)
 {
 	SDL_Rect res;
-	res.x = std::max<int>(rect1.x, rect2.x);
-	res.y = std::max<int>(rect1.y, rect2.y);
-	int w = std::min<int>(rect1.x + rect1.w, rect2.x + rect2.w) - res.x;
-	int h = std::min<int>(rect1.y + rect1.h, rect2.y + rect2.h) - res.y;
-	if (w <= 0 || h <= 0) return empty_rect;
-	res.w = w;
-	res.h = h;
+	if(!SDL_IntersectRect(&rect1, &rect2, &res)) {
+		return empty_rect;
+	}
+
 	return res;
 }
 
-SDL_Rect union_rects(SDL_Rect const &rect1, SDL_Rect const &rect2)
+SDL_Rect union_rects(const SDL_Rect& rect1, const SDL_Rect& rect2)
 {
-	if (rect1.w == 0 || rect1.h == 0) return rect2;
-	if (rect2.w == 0 || rect2.h == 0) return rect1;
 	SDL_Rect res;
-	res.x = std::min<int>(rect1.x, rect2.x);
-	res.y = std::min<int>(rect1.y, rect2.y);
-	res.w = std::max<int>(rect1.x + rect1.w, rect2.x + rect2.w) - res.x;
-	res.h = std::max<int>(rect1.y + rect1.h, rect2.y + rect2.h) - res.y;
+	SDL_UnionRect(&rect1, &rect2, &res);
+
 	return res;
 }
 
-void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, surface target)
+void draw_rectangle(const SDL_Rect& rect, const color_t& color)
 {
-	if(alpha == SDL_ALPHA_OPAQUE) {
-		sdl::fill_rect(target,&rect,color);
-		return;
-	} else if(alpha == SDL_ALPHA_TRANSPARENT) {
-		return;
-	}
+	SDL_Renderer* renderer = *CVideo::get_singleton().get_window();
 
-	surface tmp(create_compatible_surface(target,rect.w,rect.h));
-	if(tmp == NULL) {
-		return;
-	}
-
-	SDL_Rect r = {0,0,rect.w,rect.h};
-	sdl::fill_rect(tmp,&r,color);
-	SDL_SetAlpha(tmp,SDL_SRCALPHA,alpha);
-	sdl_blit(tmp,NULL,target,&rect);
+	SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+	SDL_RenderDrawRect(renderer, &rect);
 }
 
-void draw_rectangle(int x, int y, int w, int h, Uint32 color, surface target)
+void fill_rectangle(const SDL_Rect& rect, const color_t& color)
 {
+	SDL_Renderer* renderer = *CVideo::get_singleton().get_window();
 
-	SDL_Rect top = create_rect(x, y, w, 1);
-	SDL_Rect bot = create_rect(x, y + h - 1, w, 1);
-	SDL_Rect left = create_rect(x, y, 1, h);
-	SDL_Rect right = create_rect(x + w - 1, y, 1, h);
-
-	sdl::fill_rect(target,&top,color);
-	sdl::fill_rect(target,&bot,color);
-	sdl::fill_rect(target,&left,color);
-	sdl::fill_rect(target,&right,color);
+	SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+	SDL_RenderFillRect(renderer, &rect);
 }
-
-void draw_solid_tinted_rectangle(int x, int y, int w, int h,
-								 int r, int g, int b,
-								 double alpha, surface target)
-{
-
-	SDL_Rect rect = create_rect(x, y, w, h);
-	fill_rect_alpha(rect,SDL_MapRGB(target->format,r,g,b),Uint8(alpha*255),target);
-}
-
-#ifdef SDL_GPU
-void draw_rect(CVideo &video, const SDL_Rect &rect, Uint8 r, Uint8 g,
-			   Uint8 b, Uint8 a)
-{
-	video.set_texture_color_modulation(0, 0, 0, 0);
-	SDL_Color color = {r, g, b, a};
-	GPU_Rectangle(video.render_target(), rect.x, rect.y, rect.x + rect.w, rect.y + rect.h,
-				  color);
-}
-
-void draw_rect(CVideo &video, const SDL_Rect &rect, SDL_Color color)
-{
-	video.set_texture_color_modulation(0, 0, 0, 0);
-	GPU_Rectangle(video.render_target(), rect.x, rect.y, rect.x + rect.w, rect.y + rect.h,
-				  color);
-}
-
-void fill_rect(CVideo &video, const SDL_Rect &rect, Uint8 r, Uint8 g,
-			   Uint8 b, Uint8 a)
-{
-	video.set_texture_color_modulation(0, 0, 0, 0);
-	SDL_Color color = {r, g, b, a};
-	GPU_RectangleFilled(video.render_target(), rect.x, rect.y, rect.x + rect.w,
-						rect.y + rect.h, color);
-}
-
-void fill_rect(CVideo &video, const SDL_Rect &rect, SDL_Color color)
-{
-	video.set_texture_color_modulation(0, 0, 0, 0);
-	GPU_RectangleFilled(video.render_target(), rect.x, rect.y, rect.x + rect.w,
-						rect.y + rect.h, color);
-}
-#endif
 
 } // namespace sdl
 
 bool operator==(const SDL_Rect& a, const SDL_Rect& b)
 {
-	return a.x == b.x && a.y == b.y && a.w == b.w && a.h == b.h;
+	return SDL_RectEquals(&a, &b) != SDL_FALSE;
 }
 
 bool operator!=(const SDL_Rect& a, const SDL_Rect& b)
 {
 	return !operator==(a,b);
+}
+
+std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect)
+{
+	s << "x: " << rect.x << ", y: " << rect.y << ", w: " << rect.w << ", h: " << rect.h;
+	return s;
 }

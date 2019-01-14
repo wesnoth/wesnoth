@@ -39,6 +39,8 @@ public class AddonManagerPreferencePage extends AbstractPreferencePage
     public final static Map< String, String > ADDON_SERVER_PORTS       = new HashMap< String, String >( );
 
     static {
+        ADDON_SERVER_PORTS.put( "15008", "1.13.x" ); //$NON-NLS-1$ //$NON-NLS-2$
+        ADDON_SERVER_PORTS.put( "15007", "1.12.x" ); //$NON-NLS-1$ //$NON-NLS-2$
         ADDON_SERVER_PORTS.put( "15006", "1.11.x" ); //$NON-NLS-1$ //$NON-NLS-2$
         ADDON_SERVER_PORTS.put( "15002", "1.10.x" ); //$NON-NLS-1$ //$NON-NLS-2$
         ADDON_SERVER_PORTS.put( "15002", "1.9.x" ); //$NON-NLS-1$ //$NON-NLS-2$
@@ -88,7 +90,6 @@ public class AddonManagerPreferencePage extends AbstractPreferencePage
         portsRegex.deleteCharAt( portsRegex.length( ) - 1 );
         portsRegex.append( ")*" ); //$NON-NLS-1$
 
-        // System.out.println(portsRegex.toString());
         addField(
             new RegexStringFieldEditor( Preferences.ADDON_MANAGER_PORT,
                 Messages.AddonManagerPreferencePage_22,

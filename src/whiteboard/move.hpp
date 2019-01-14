@@ -1,6 +1,6 @@
 /*
- Copyright (C) 2010 - 2014 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -16,13 +16,12 @@
  * @file
  */
 
-#ifndef WB_MOVE_HPP_
-#define WB_MOVE_HPP_
+#pragma once
 
 #include "action.hpp"
-#include "../game_errors.hpp"
 
 struct temporary_unit_mover;
+class unit;
 
 namespace wb {
 
@@ -33,9 +32,9 @@ namespace wb {
 class move : public action
 {
 public:
-	move(size_t team_index, bool hidden, unit& mover, const pathfind::marked_route& route,
+	move(std::size_t team_index, bool hidden, unit& mover, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
-	move(config const&, bool hidden); // For deserialization
+	move(const config&, bool hidden); // For deserialization
 	virtual ~move();
 
 	virtual std::ostream& print(std::ostream& s) const;
@@ -54,12 +53,16 @@ public:
 
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
 	virtual unit_ptr get_unit() const;
+	virtual size_t get_unit_id() const { return unit_underlying_id_; }
 	/** @return pointer to the fake unit used only for visuals */
 	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
 
 	virtual map_location get_source_hex() const;
 	virtual map_location get_dest_hex() const;
 
+	std::size_t raw_uid() const { return unit_underlying_id_; }
+
+	void modify_unit(unit& new_unit);
 	virtual void set_route(const pathfind::marked_route& route);
 	virtual const pathfind::marked_route& get_route() const { assert(route_); return *route_; }
 	/// attempts to pathfind a new marked route for this path between these two hexes;
@@ -74,7 +77,7 @@ public:
 	virtual void remove_temp_modifier(unit_map& unit_map);
 
 	/** Gets called by display when drawing a hex, to allow actions to draw to the screen. */
-	virtual void draw_hex(map_location const& hex);
+	virtual void draw_hex(const map_location& hex);
 	/** Redrawing function, called each time the action situation might have changed. */
 	void redraw();
 
@@ -93,15 +96,15 @@ public:
 
 protected:
 
-	boost::shared_ptr<move> shared_from_this() {
-		return boost::static_pointer_cast<move>(action::shared_from_this());
+	std::shared_ptr<move> shared_from_this() {
+		return std::static_pointer_cast<move>(action::shared_from_this());
 	}
 
-	void calculate_move_cost();
+	int calculate_moves_left(unit& u);
 
-	size_t unit_underlying_id_;
+	std::size_t unit_underlying_id_;
 	std::string unit_id_;
-	boost::scoped_ptr<pathfind::marked_route> route_;
+	std::unique_ptr<pathfind::marked_route> route_;
 	int movement_cost_;
 	/// Turn end number to draw if greater than zero. Assigned by the map builder.
 	int turn_number_;
@@ -119,9 +122,9 @@ private:
 	void hide_fake_unit();
 	void show_fake_unit();
 
-	void init();
+	void init(unit* u = nullptr);
 	void update_arrow_style();
-	boost::scoped_ptr<temporary_unit_mover> mover_;
+	std::unique_ptr<temporary_unit_mover> mover_;
 	bool fake_unit_hidden_;
 };
 
@@ -130,5 +133,3 @@ std::ostream &operator<<(std::ostream &s, move_ptr move);
 std::ostream &operator<<(std::ostream &s, move_const_ptr move);
 
 } // end namespace wb
-
-#endif /* WB_MOVE_HPP_ */

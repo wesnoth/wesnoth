@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
-                 2008 - 2014 by Ignacio R. Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+                 2008 - 2015 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -13,19 +13,31 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
 #include "addon/validation.hpp"
 #include "config.hpp"
+#include "serialization/unicode_cast.hpp"
 
-#include <boost/foreach.hpp>
+#include <algorithm>
+#include <boost/algorithm/string.hpp>
+#include <set>
 
-const unsigned short default_campaignd_port = 15007;
+const unsigned short default_campaignd_port = 15014;
 
 namespace {
-	const std::string addon_type_strings[] = {
+	const std::string addon_type_strings[] {
 		"unknown", "core", "campaign", "scenario", "campaign_sp_mp", "campaign_mp",
 		"scenario_mp", "map_pack", "era", "faction", "mod_mp", /*"gui", */ "media",
 		"other", ""
+	};
+
+	// Reserved DOS device names on Windows XP and later.
+	const std::set<std::string> dos_device_names = {
+		"NUL", "CON", "AUX", "PRN",
+		// Console API devices
+		"CONIN$", "CONOUT$",
+		// Configuration-dependent devices
+		"COM1", "COM2", "COM3", "COM4", "COM5", "COM6", "COM7", "COM8", "COM9",
+		"LPT1", "LPT2", "LPT3", "LPT4", "LPT5", "LPT6", "LPT7", "LPT8", "LPT9",
 	};
 
 	struct addon_name_char_illegal
@@ -33,7 +45,7 @@ namespace {
 		/**
 		 * Returns whether the given add-on name char is not whitelisted.
 		 */
-		inline bool operator()(char c)
+		inline bool operator()(char c) const
 		{
 			switch(c)
 			{
@@ -45,13 +57,40 @@ namespace {
 			}
 		}
 	};
+
+	struct addon_filename_ucs4char_illegal
+	{
+		inline bool operator()(char32_t c) const
+		{
+			switch(c){
+			case ' ':
+			case '"':
+			case '*':
+			case '/':
+			case ':':
+			case '<':
+			case '>':
+			case '?':
+			case '\\':
+			case '|':
+			case '~':
+			case 0x7F: // DEL
+				return true;
+			default:
+				return (
+					c < 0x20 ||                 // C0 control characters
+					(c >= 0x80 && c < 0xA0) ||  // C1 control characters
+					(c >= 0xD800 && c < 0xE000) // surrogate pairs
+				);
+			}
+		}
+	};
 }
 
 bool addon_name_legal(const std::string& name)
 {
-	if(name.empty() || name == "." ||
-	   std::find_if(name.begin(), name.end(), addon_name_char_illegal()) != name.end() ||
-	   name.find("..") != std::string::npos) {
+	if(name.empty() ||
+	   std::find_if(name.begin(), name.end(), addon_name_char_illegal()) != name.end()) {
 		return false;
 	} else {
 	   return true;
@@ -60,25 +99,137 @@ bool addon_name_legal(const std::string& name)
 
 bool addon_filename_legal(const std::string& name)
 {
-	if(name.empty() || name == "." ||
-	   name.find_first_of("/:\\~ \r\n\v\t") != std::string::npos ||
-	   name.find("..") != std::string::npos) {
+	if(name.empty() || name.back() == '.' ||
+	   name.find("..") != std::string::npos ||
+	   name.size() > 255) {
 		return false;
 	} else {
-		return true;
+		// NOTE: We can't use filesystem::base_name() here, since it returns
+		//       the filename up to the *last* dot. "CON.foo.bar" in
+		//       "CON.foo.bar.baz" is still redirected to "CON" on Windows;
+		//       the base_name() approach would cause the name to not match
+		//       any entries on our blacklist.
+		//       Do also note that we're relying on the next check after this
+		//       to flag the name as illegal if it contains a ':' -- a
+		//       trailing colon is a valid way to refer to DOS device names,
+		//       meaning that e.g. "CON:" is equivalent to "CON".
+		const std::string stem = boost::algorithm::to_upper_copy(name.substr(0, name.find('.')), std::locale::classic());
+		if(dos_device_names.find(stem) != dos_device_names.end()) {
+			return false;
+		}
+
+		const std::u32string name_ucs4 = unicode_cast<std::u32string>(name);
+		const std::string name_utf8 = unicode_cast<std::string>(name_ucs4);
+		if(name != name_utf8){ // name is invalid UTF-8
+			return false;
+		}
+		return std::find_if(name_ucs4.begin(), name_ucs4.end(), addon_filename_ucs4char_illegal()) == name_ucs4.end();
 	}
 }
 
-bool check_names_legal(const config& dir)
+namespace {
+
+bool check_names_legal_internal(const config& dir, std::string current_prefix, std::vector<std::string>* badlist)
 {
-	BOOST_FOREACH(const config &path, dir.child_range("file")) {
-		if (!addon_filename_legal(path["name"])) return false;
+	if (!current_prefix.empty()) {
+		current_prefix += '/';
 	}
-	BOOST_FOREACH(const config &path, dir.child_range("dir")) {
-		if (!addon_filename_legal(path["name"])) return false;
-		if (!check_names_legal(path)) return false;
+
+	for(const config& path : dir.child_range("file")) {
+		const std::string& filename = path["name"];
+
+		if(!addon_filename_legal(filename)) {
+			if(badlist) {
+				badlist->push_back(current_prefix + filename);
+			} else {
+				return false;
+			}
+		}
 	}
-	return true;
+
+	for(const config& path : dir.child_range("dir")) {
+		const std::string& dirname = path["name"];
+		const std::string& new_prefix = current_prefix + dirname;
+
+		if(!addon_filename_legal(dirname)) {
+			if(badlist) {
+				badlist->push_back(new_prefix + "/");
+			} else {
+				return false;
+			}
+		}
+
+		// Recurse into subdir.
+		if(!check_names_legal_internal(path, new_prefix, badlist) && !badlist) {
+			return false;
+		}
+	}
+
+	return badlist ? badlist->empty() : true;
+}
+
+bool check_case_insensitive_duplicates_internal(const config& dir, std::string prefix, std::vector<std::string>* badlist){
+	typedef std::pair<bool, std::string> printed_and_original;
+	std::map<std::string, printed_and_original> filenames;
+	bool inserted;
+	bool printed;
+	std::string original;
+	for (const config &path : dir.child_range("file")) {
+		const config::attribute_value &filename = path["name"];
+		const std::string lowercase = boost::algorithm::to_lower_copy(filename.str(), std::locale::classic());
+		const std::string with_prefix = prefix + filename.str();
+		std::tie(std::ignore, inserted) = filenames.emplace(lowercase, std::make_pair(false, with_prefix));
+		if (!inserted){
+			if(badlist){
+				std::tie(printed, original) = filenames[lowercase];
+				if(!printed){
+					badlist->push_back(original);
+					filenames[lowercase] = make_pair(true, std::string());
+				}
+				badlist->push_back(with_prefix);
+			} else {
+				return false;
+			}
+		}
+	}
+	for (const config &path : dir.child_range("dir")) {
+		const config::attribute_value &filename = path["name"];
+		const std::string lowercase = boost::algorithm::to_lower_copy(filename.str(), std::locale::classic());
+		const std::string with_prefix = prefix + filename.str();
+		std::tie(std::ignore, inserted) = filenames.emplace(lowercase, std::make_pair(false, with_prefix));
+		if (!inserted) {
+			if(badlist){
+				std::tie(printed, original) = filenames[lowercase];
+				if(!printed){
+					badlist->push_back(original);
+					filenames[lowercase] = make_pair(true, std::string());
+				}
+				badlist->push_back(with_prefix);
+			} else {
+				return false;
+			}
+		}
+		if (!check_case_insensitive_duplicates_internal(path, prefix + filename + "/", badlist) && !badlist){
+			return false;
+		}
+	}
+
+	return badlist ? badlist->empty() : true;
+}
+
+} // end unnamed namespace 3
+
+bool check_names_legal(const config& dir, std::vector<std::string>* badlist)
+{
+	// Usually our caller is passing us the root [dir] for an add-on, which
+	// shall contain a single subdir named after the add-on itself, so we can
+	// start with an empty display prefix and that'll reflect the addon
+	// structure correctly (e.g. "Addon_Name/~illegalfilename1").
+	return check_names_legal_internal(dir, "", badlist);
+}
+
+bool check_case_insensitive_duplicates(const config& dir, std::vector<std::string>* badlist){
+    return check_case_insensitive_duplicates_internal(dir, "", badlist);
 }
 
 ADDON_TYPE get_addon_type(const std::string& str)
@@ -123,7 +274,7 @@ std::string encode_binary(const std::string& str)
 {
 	std::string res;
 	res.resize(str.size());
-	size_t n = 0;
+	std::size_t n = 0;
 	for(std::string::const_iterator j = str.begin(); j != str.end(); ++j) {
 		if(needs_escaping(*j)) {
 			res.resize(res.size()+1);
@@ -139,21 +290,17 @@ std::string encode_binary(const std::string& str)
 
 std::string unencode_binary(const std::string& str)
 {
-	std::string res;
-	res.resize(str.size());
+	std::string res(str.size(), '\0');
 
-	size_t n = 0;
-	for(std::string::const_iterator j = str.begin(); j != str.end(); ++j) {
-		if(*j == escape_char && j+1 != str.end()) {
-			++j;
-			res[n++] = *j - 1;
-			res.resize(res.size()-1);
-		} else {
-			res[n++] = *j;
+	std::size_t n = 0;
+	for(std::string::const_iterator j = str.begin(); j != str.end(); ) {
+		char c = *j++;
+		if((c == escape_char) && (j != str.end())) {
+			c = (*j++) - 1;
 		}
+		res[n++] = c;
 	}
 
+	res.resize(n);
 	return res;
 }
-
-

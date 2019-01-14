@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,17 +12,21 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_SCROLLBAR_PANEL_HPP_INCLUDED
-#define GUI_WIDGETS_SCROLLBAR_PANEL_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/scrollbar_container.hpp"
+
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
 
 namespace gui2
 {
 
+// ------------ WIDGET -----------{
+
 namespace implementation
 {
-struct tbuilder_scrollbar_panel;
+struct builder_scrollbar_panel;
 }
 
 /**
@@ -31,35 +35,69 @@ struct tbuilder_scrollbar_panel;
  * This widget can draw items beyond the widgets it holds and in front of
  * them. A panel is always active so these functions return dummy values.
  */
-class tscrollbar_panel : public tscrollbar_container
+class scrollbar_panel : public scrollbar_container
 {
-	friend struct implementation::tbuilder_scrollbar_panel;
+	friend struct implementation::builder_scrollbar_panel;
 
 public:
 	/**
 	 * Constructor.
-	 *
-	 * @param canvas_count        The canvas count for tcontrol.
 	 */
-	explicit tscrollbar_panel(const unsigned canvas_count = 2)
-		: tscrollbar_container(canvas_count)
-	{
-	}
+	explicit scrollbar_panel(const implementation::builder_scrollbar_panel& builder);
 
-	/** See @ref tcontrol::get_active. */
-	virtual bool get_active() const OVERRIDE;
+	/** See @ref styled_widget::get_active. */
+	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
-	virtual unsigned get_state() const OVERRIDE;
+	/** See @ref styled_widget::get_state. */
+	virtual unsigned get_state() const override;
+
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
 
 private:
-	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
+	virtual const std::string& get_control_type() const override;
 
-	/** See @ref tcontainer_::set_self_active. */
-	virtual void set_self_active(const bool active) OVERRIDE;
+	/** See @ref container_base::set_self_active. */
+	virtual void set_self_active(const bool active) override;
 };
 
-} // namespace gui2
+// }---------- DEFINITION ---------{
 
-#endif
+struct scrollbar_panel_definition : public styled_widget_definition
+{
+
+	explicit scrollbar_panel_definition(const config& cfg);
+
+	struct resolution : public resolution_definition
+	{
+		explicit resolution(const config& cfg);
+
+		builder_grid_ptr grid;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct builder_scrollbar_panel : public builder_styled_widget
+{
+	explicit builder_scrollbar_panel(const config& cfg);
+
+	using builder_styled_widget::build;
+
+	widget* build() const;
+
+	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
+
+	builder_grid_ptr grid_;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
+
+} // namespace gui2

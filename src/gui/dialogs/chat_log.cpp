@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2011 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2011 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,30 +16,27 @@
 
 #include "gui/dialogs/chat_log.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
-#include "gui/dialogs/helper.hpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
+#include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/slider.hpp"
-#include "utils/foreach.tpp"
 
-#include "../../clipboard.hpp"
-#include "../../game_preferences.hpp"
-#include "../../log.hpp"
-#include "../../resources.hpp"
-#include "../../team.hpp"
-#include "../../replay.hpp"
+#include "font/pango/escape.hpp"
+#include "desktop/clipboard.hpp"
+#include "serialization/unicode.hpp"
+#include "preferences/game.hpp"
+#include "log.hpp"
+#include "replay.hpp"
+#include "gettext.hpp"
+
+#include "utils/functional.hpp"
+#include "utils/iterable_pair.hpp"
 
 #include <vector>
-#include <boost/bind.hpp>
-#include <boost/shared_ptr.hpp>
 
 static lg::log_domain log_chat_log("chat_log");
 #define DBG_CHAT_LOG LOG_STREAM(debug, log_chat_log)
@@ -48,6 +45,8 @@ static lg::log_domain log_chat_log("chat_log");
 #define ERR_CHAT_LOG LOG_STREAM(err, log_chat_log)
 
 namespace gui2
+{
+namespace dialogs
 {
 
 /*WIKI
@@ -65,13 +64,13 @@ REGISTER_DIALOG(chat_log)
 
 // The model is an interface defining the data to be displayed or otherwise
 // acted upon in the user interface.
-class tchat_log::model
+class chat_log::model
 {
 public:
-	model(const vconfig& c, replay* r)
+	model(const vconfig& c, const replay& r)
 		: cfg(c)
-		, msg_label(NULL)
-		, chat_log_history(r->build_chat_log())
+		, msg_label(nullptr)
+		, chat_log_history(r.build_chat_log())
 		, page(0)
 		, page_number()
 		, page_label()
@@ -80,28 +79,28 @@ public:
 		, filter()
 		, copy_button()
 	{
-		LOG_CHAT_LOG << "entering tchat_log::model...\n";
-		LOG_CHAT_LOG << "finished tchat_log::model...\n";
+		LOG_CHAT_LOG << "entering chat_log::model...\n";
+		LOG_CHAT_LOG << "finished chat_log::model...\n";
 	}
 
 	vconfig cfg;
-	tcontrol* msg_label;
+	styled_widget* msg_label;
 	const std::vector<chat_msg>& chat_log_history;
 	int page;
 	static const int COUNT_PER_PAGE = 100;
-	tslider* page_number;
-	tcontrol* page_label;
-	tbutton* previous_page;
-	tbutton* next_page;
-	ttext_box* filter;
-	tbutton* copy_button;
+	slider* page_number;
+	styled_widget* page_label;
+	button* previous_page;
+	button* next_page;
+	text_box* filter;
+	button* copy_button;
 
 	void clear_chat_msg_list()
 	{
 		msg_label->set_label("");
 	}
 
-	int count_of_pages()
+	int count_of_pages() const
 	{
 		int size = chat_log_history.size();
 		return (size % COUNT_PER_PAGE == 0) ? (size / COUNT_PER_PAGE)
@@ -118,9 +117,9 @@ public:
 		}
 
 		const std::string& lcfilter = utf8::lowercase(filter->get_value());
-		LOG_CHAT_LOG << "entering tchat_log::model::stream_log\n";
+		LOG_CHAT_LOG << "entering chat_log::model::stream_log\n";
 
-		FOREACH(const AUTO & t, make_pair(chat_log_history.begin() + first,
+		for(const auto & t : make_pair(chat_log_history.begin() + first,
 										  chat_log_history.begin() + last))
 		{
 			const std::string& timestamp
@@ -195,31 +194,38 @@ public:
 		std::ostringstream s;
 		stream_log(s, first, last);
 		msg_label->set_label(s.str());
+
+		// It makes sense to always scroll to the bottom, since the newest messages are there.
+		// The only time this might not be desired is tabbing forward through the pages, since
+		// one might want to continue reading the conversation in order.
+		//
+		// TODO: look into implementing the above suggestion
+		dynamic_cast<scroll_label&>(*msg_label).scroll_vertical_scrollbar(scrollbar_base::END);
 	}
 
 	void chat_message_list_to_clipboard(int first, int last)
 	{
 		std::ostringstream s;
 		stream_log(s, first, last, true);
-		copy_to_clipboard(s.str(), false);
+		desktop::clipboard::copy_to_clipboard(s.str(), false);
 	}
 };
 
 // The controller acts upon the model. It retrieves data from repositories,
 // persists it, manipulates it, and determines how it will be displayed in the
 // view.
-class tchat_log::controller
+class chat_log::controller
 {
 public:
 	controller(model& m) : model_(m)
 	{
-		LOG_CHAT_LOG << "Entering tchat_log::controller" << std::endl;
-		LOG_CHAT_LOG << "Exiting tchat_log::controller" << std::endl;
+		LOG_CHAT_LOG << "Entering chat_log::controller" << std::endl;
+		LOG_CHAT_LOG << "Exiting chat_log::controller" << std::endl;
 	}
 
 	void next_page()
 	{
-		LOG_CHAT_LOG << "Entering tchat_log::controller::next_page"
+		LOG_CHAT_LOG << "Entering chat_log::controller::next_page"
 					 << std::endl;
 		if(model_.page >= model_.count_of_pages() - 1) {
 			return;
@@ -227,12 +233,12 @@ public:
 		model_.page++;
 		LOG_CHAT_LOG << "Set page to " << model_.page + 1 << std::endl;
 		update_view_from_model();
-		LOG_CHAT_LOG << "Exiting tchat_log::controller::next_page" << std::endl;
+		LOG_CHAT_LOG << "Exiting chat_log::controller::next_page" << std::endl;
 	}
 
 	void previous_page()
 	{
-		LOG_CHAT_LOG << "Entering tchat_log::controller::previous_page"
+		LOG_CHAT_LOG << "Entering chat_log::controller::previous_page"
 					 << std::endl;
 		if(model_.page == 0) {
 			return;
@@ -240,27 +246,27 @@ public:
 		model_.page--;
 		LOG_CHAT_LOG << "Set page to " << model_.page + 1 << std::endl;
 		update_view_from_model();
-		LOG_CHAT_LOG << "Exiting tchat_log::controller::previous_page"
+		LOG_CHAT_LOG << "Exiting chat_log::controller::previous_page"
 					 << std::endl;
 	}
 
 	void filter()
 	{
-		LOG_CHAT_LOG << "Entering tchat_log::controller::filter" << std::endl;
+		LOG_CHAT_LOG << "Entering chat_log::controller::filter" << std::endl;
 		update_view_from_model();
-		LOG_CHAT_LOG << "Exiting tchat_log::controller::filter" << std::endl;
+		LOG_CHAT_LOG << "Exiting chat_log::controller::filter" << std::endl;
 	}
 
 	void handle_page_number_changed()
 	{
 		LOG_CHAT_LOG
-		<< "Entering tchat_log::controller::handle_page_number_changed"
+		<< "Entering chat_log::controller::handle_page_number_changed"
 		<< std::endl;
 		model_.page = model_.page_number->get_value() - 1;
 		LOG_CHAT_LOG << "Set page to " << model_.page + 1 << std::endl;
 		update_view_from_model();
 		LOG_CHAT_LOG
-		<< "Exiting tchat_log::controller::handle_page_number_changed"
+		<< "Exiting chat_log::controller::handle_page_number_changed"
 		<< std::endl;
 	}
 
@@ -285,17 +291,20 @@ public:
 		return std::make_pair(first, last);
 	}
 
-	void update_view_from_model()
+	void update_view_from_model(bool select_last_page = false)
 	{
-		LOG_CHAT_LOG << "Entering tchat_log::controller::update_view_from_model"
+		LOG_CHAT_LOG << "Entering chat_log::controller::update_view_from_model"
 					 << std::endl;
 		model_.msg_label->set_use_markup(true);
 		int size = model_.chat_log_history.size();
 		LOG_CHAT_LOG << "Number of chat messages: " << size << std::endl;
-		// get page
-		const int page = model_.page;
 		// determine count of pages
 		const int count_of_pages = std::max(1, model_.count_of_pages());
+		if(select_last_page) {
+			model_.page = count_of_pages - 1;
+		}
+		// get page
+		const int page = model_.page;
 		// determine first and last
 		const std::pair<int, int>& range = calculate_log_line_range();
 		const int first = range.first;
@@ -306,8 +315,7 @@ public:
 		model_.previous_page->set_active(has_previous);
 		model_.next_page->set_active(has_next);
 		model_.populate_chat_message_list(first, last);
-		model_.page_number->set_minimum_value(1);
-		model_.page_number->set_maximum_value(count_of_pages);
+		model_.page_number->set_value_range(1, count_of_pages);
 		model_.page_number->set_active(count_of_pages > 1);
 		LOG_CHAT_LOG << "Maximum value of page number slider: "
 					 << count_of_pages << std::endl;
@@ -317,7 +325,7 @@ public:
 		cur_page_text << (page + 1) << '/' << std::max(1, count_of_pages);
 		model_.page_label->set_label(cur_page_text.str());
 
-		LOG_CHAT_LOG << "Exiting tchat_log::controller::update_view_from_model"
+		LOG_CHAT_LOG << "Exiting chat_log::controller::update_view_from_model"
 					 << std::endl;
 	}
 
@@ -334,86 +342,83 @@ private:
 
 // The view is an interface that displays data (the model) and routes user
 // commands to the controller to act upon that data.
-class tchat_log::view
+class chat_log::view
 {
 public:
-	view(const vconfig& cfg, replay* r) : model_(cfg, r), controller_(model_)
+	view(const vconfig& cfg, const replay& r) : model_(cfg, r), controller_(model_)
 	{
 	}
 
-	void pre_show(CVideo& /*video*/, twindow& window)
+	void pre_show()
 	{
-		LOG_CHAT_LOG << "Entering tchat_log::view::pre_show" << std::endl;
-		controller_.update_view_from_model();
-		window.invalidate_layout(); // workaround for assertion failure
-		LOG_CHAT_LOG << "Exiting tchat_log::view::pre_show" << std::endl;
+		LOG_CHAT_LOG << "Entering chat_log::view::pre_show" << std::endl;
+		controller_.update_view_from_model(true);
+		LOG_CHAT_LOG << "Exiting chat_log::view::pre_show" << std::endl;
 	}
 
-	void handle_page_number_changed(twindow& window)
+	void handle_page_number_changed()
 	{
 		controller_.handle_page_number_changed();
-		window.invalidate_layout(); // workaround for assertion failure
 	}
 
-	void next_page(twindow& window)
+	void next_page()
 	{
 		controller_.next_page();
-		window.invalidate_layout(); // workaround for assertion failure
 	}
 
-	void previous_page(twindow& window)
+	void previous_page()
 	{
 		controller_.previous_page();
-		window.invalidate_layout(); // workaround for assertion failure
 	}
 
-	void filter(twindow& window)
+	void filter()
 	{
 		controller_.filter();
-		window.invalidate_layout(); // workaround for assertion failure
 	}
 
-	void handle_copy_button_clicked(twindow& /*window*/)
+	void handle_copy_button_clicked(window& /*window*/)
 	{
 		controller_.handle_copy_button_clicked();
 	}
 
-	void bind(twindow& window)
+	void bind(window& window)
 	{
-		LOG_CHAT_LOG << "Entering tchat_log::view::bind" << std::endl;
-		model_.msg_label = &find_widget<tcontrol>(&window, "msg", false);
+		LOG_CHAT_LOG << "Entering chat_log::view::bind" << std::endl;
+		model_.msg_label = find_widget<styled_widget>(&window, "msg", false, true);
 		model_.page_number
-				= &find_widget<tslider>(&window, "page_number", false);
+				= find_widget<slider>(&window, "page_number", false, true);
 		connect_signal_notify_modified(
 				*model_.page_number,
-				boost::bind(&view::handle_page_number_changed,
-							this,
-							boost::ref(window)));
+				std::bind(&view::handle_page_number_changed, this));
 
 		model_.previous_page
-				= &find_widget<tbutton>(&window, "previous_page", false);
+				= find_widget<button>(&window, "previous_page", false, true);
 		model_.previous_page->connect_click_handler(
-				boost::bind(&view::previous_page, this, boost::ref(window)));
+				std::bind(&view::previous_page, this));
 
-		model_.next_page = &find_widget<tbutton>(&window, "next_page", false);
+		model_.next_page = find_widget<button>(&window, "next_page", false, true);
 		model_.next_page->connect_click_handler(
-				boost::bind(&view::next_page, this, boost::ref(window)));
+				std::bind(&view::next_page, this));
 
-		model_.filter = &find_widget<ttext_box>(&window, "filter", false);
+		model_.filter = find_widget<text_box>(&window, "filter", false, true);
 		model_.filter->set_text_changed_callback(
-				boost::bind(&view::filter, this, boost::ref(window)));
+				std::bind(&view::filter, this));
 		window.keyboard_capture(model_.filter);
 
-		model_.copy_button = &find_widget<tbutton>(&window, "copy", false);
+		model_.copy_button = find_widget<button>(&window, "copy", false, true);
 		connect_signal_mouse_left_click(
 				*model_.copy_button,
-				boost::bind(&view::handle_copy_button_clicked,
+				std::bind(&view::handle_copy_button_clicked,
 							this,
-							boost::ref(window)));
+							std::ref(window)));
+		if (!desktop::clipboard::available()) {
+			model_.copy_button->set_active(false);
+			model_.copy_button->set_tooltip(_("Clipboard support not found, contact your packager"));
+		}
 
-		model_.page_label = &find_widget<tcontrol>(&window, "page_label", false);
+		model_.page_label = find_widget<styled_widget>(&window, "page_label", false, true);
 
-		LOG_CHAT_LOG << "Exiting tchat_log::view::bind" << std::endl;
+		LOG_CHAT_LOG << "Exiting chat_log::view::bind" << std::endl;
 	}
 
 private:
@@ -422,29 +427,25 @@ private:
 };
 
 
-tchat_log::tchat_log(const vconfig& cfg, replay* r) : view_()
+chat_log::chat_log(const vconfig& cfg, const replay& r) : view_()
 {
-	LOG_CHAT_LOG << "Entering tchat_log::tchat_log" << std::endl;
-	view_ = boost::shared_ptr<view>(new view(cfg, r));
-	LOG_CHAT_LOG << "Exiting tchat_log::tchat_log" << std::endl;
+	LOG_CHAT_LOG << "Entering chat_log::chat_log" << std::endl;
+	view_ = std::make_shared<view>(cfg, r);
+	LOG_CHAT_LOG << "Exiting chat_log::chat_log" << std::endl;
 }
 
-boost::shared_ptr<tchat_log::view> tchat_log::get_view()
+std::shared_ptr<chat_log::view> chat_log::get_view()
 {
 	return view_;
 }
 
-twindow* tchat_log::build_window(CVideo& video)
+void chat_log::pre_show(window& window)
 {
-	return build(video, window_id());
-}
-
-void tchat_log::pre_show(CVideo& video, twindow& window)
-{
-	LOG_CHAT_LOG << "Entering tchat_log::pre_show" << std::endl;
+	LOG_CHAT_LOG << "Entering chat_log::pre_show" << std::endl;
 	view_->bind(window);
-	view_->pre_show(video, window);
-	LOG_CHAT_LOG << "Exiting tchat_log::pre_show" << std::endl;
+	view_->pre_show();
+	LOG_CHAT_LOG << "Exiting chat_log::pre_show" << std::endl;
 }
 
-} // end of namespace gui2
+} // namespace dialogs
+} // namespace gui2

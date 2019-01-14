@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Pauli Nieminen <paniemin@cc.hut.fi>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef TESTS_UTILS_FAKE_DISPLAY_HPP_INCLUDED
-#define TESTS_UTILS_FAKE_DISPLAY_HPP_INCLUDED
+#pragma once
 
 class game_display;
 
@@ -26,7 +25,7 @@ namespace test_utils {
 	 * than zero.
 	 *
 	 * @param width               The width of the display.
-	 * @param height              The height of the dislay.
+	 * @param height              The height of the display.
 	 *
 	 * @returns                   The display.
 	 */
@@ -35,4 +34,3 @@ namespace test_utils {
 
 
 }
-#endif

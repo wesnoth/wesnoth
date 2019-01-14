@@ -1,18 +1,17 @@
-local H = wesnoth.require "lua/helper.lua"
-local W = H.set_wml_action_metatable {}
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
+local M = wesnoth.map
 
 local wolves_multipacks_functions = {}
 
 function wolves_multipacks_functions.clear_label(x, y)
-    W.label{ x = x, y = y, text = "" }
+    wesnoth.label{ x = x, y = y, text = "" }
 end
 
 function wolves_multipacks_functions.put_label(x, y, text)
     -- For displaying the wolf pack number underneath each wolf
     -- Only use gray for now, but easily expandable to add a color option
     text = "<span color='#c0c0c0'>" .. text .. "</span>"
-    W.label{ x = x, y = y, text = text }
+    wesnoth.label{ x = x, y = y, text = text }
 end
 
 function wolves_multipacks_functions.assign_packs(cfg)
@@ -57,11 +56,11 @@ function wolves_multipacks_functions.assign_packs(cfg)
     -- First, go through packs that have less than pack_size members
     for pack_number,pack in pairs(packs) do
         if (#pack < pack_size) then
-            local min_dist, best_wolf, best_ind = 9e99
+            local min_dist, best_wolf, best_ind = math.huge
             for ind,wolf in ipairs(nopack_wolves) do
                 -- Criterion is distance from the first two wolves of the pack
-                local dist1 = H.distance_between(wolf.x, wolf.y, pack[1].x, pack[1].y)
-                local dist2 = H.distance_between(wolf.x, wolf.y, pack[2].x, pack[2].y)
+                local dist1 = M.distance_between(wolf.x, wolf.y, pack[1].x, pack[1].y)
+                local dist2 = M.distance_between(wolf.x, wolf.y, pack[2].x, pack[2].y)
                 if (dist1 + dist2 < min_dist) then
                     min_dist = dist1 + dist2
                     best_wolf, best_ind = wolf, ind
@@ -96,11 +95,11 @@ function wolves_multipacks_functions.assign_packs(cfg)
         -- They form the next pack
         local new_pack_wolves = {}
         while (#new_pack_wolves < pack_size) do
-            local min_dist, best_wolf, best_wolf_ind = 9e99
+            local min_dist, best_wolf, best_wolf_ind = math.huge
             for ind,nopack_wolf in ipairs(nopack_wolves) do
                 local dist = 0
                 for _,pack_wolf in ipairs(new_pack_wolves) do
-                    dist = dist + H.distance_between(nopack_wolf.x, nopack_wolf.y, pack_wolf.x, pack_wolf.y)
+                    dist = dist + M.distance_between(nopack_wolf.x, nopack_wolf.y, pack_wolf.x, pack_wolf.y)
                 end
                 if dist < min_dist then
                     min_dist, best_wolf, best_wolf_ind = dist, nopack_wolf, ind

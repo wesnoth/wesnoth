@@ -21,5 +21,3 @@ struct tbuilder_progress_bar /*@ \label{window_builder.hpp:control} @*/
 } // namespace gui2
 
 #endif
-
-

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,32 +14,32 @@
 
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "palette_manager.hpp"
+#include "editor/palette/palette_manager.hpp"
 #include "widgets/widget.hpp"
 
 #include "tooltips.hpp"
-#include "editor/action/mouse/mouse_action.hpp"
-#include <boost/foreach.hpp>
+#include "editor/toolkit/editor_toolkit.hpp"
 
 namespace editor {
 
 palette_manager::palette_manager(editor_display& gui, const config& cfg
-		, mouse_action** active_mouse_action)
+                               , editor_toolkit& toolkit)
 		: gui::widget(gui.video()),
 		  gui_(gui),
 		  palette_start_(0),
-		  mouse_action_(active_mouse_action),
-		  terrain_palette_(new terrain_palette(gui, cfg, active_mouse_action)),
-		  unit_palette_(new unit_palette(gui, cfg, active_mouse_action)),
+		  toolkit_(toolkit),
+		  terrain_palette_(new terrain_palette(gui, cfg, toolkit)),
+		  unit_palette_(new unit_palette(gui, cfg, toolkit)),
 		  empty_palette_(new empty_palette(gui)),
-		  item_palette_(new item_palette(gui, cfg, active_mouse_action))
+		  item_palette_(new item_palette(gui, cfg, toolkit))
+		, location_palette_(new location_palette(gui, cfg, toolkit))
 {
 	unit_palette_->setup(cfg);
 	terrain_palette_->setup(cfg);
 	item_palette_->setup(cfg);
 }
 
-void palette_manager::set_group(size_t index)
+void palette_manager::set_group(std::size_t index)
 {
 	active_palette().set_group(index);
 	scroll_top();
@@ -47,7 +47,7 @@ void palette_manager::set_group(size_t index)
 
 void palette_manager::adjust_size()
 {
-	scroll_top();
+	restore_palette_bg(false);
 	const SDL_Rect& rect = gui_.palette_area();
 	set_location(rect);
 	palette_start_ = rect.y;
@@ -92,15 +92,22 @@ void palette_manager::scroll_up()
 
 void palette_manager::scroll_top()
 {
+	restore_palette_bg(true);
+}
+
+void palette_manager::restore_palette_bg(bool scroll_top)
+{
 	const SDL_Rect rect = gui_.palette_area();
-	active_palette().set_start_item(0);
+	if (scroll_top) {
+		active_palette().set_start_item(0);
+	}
 	bg_restore(rect);
 	set_dirty();
 }
 
 common_palette& palette_manager::active_palette()
 {
-	return (*mouse_action_)->get_palette();
+	return toolkit_.get_palette();
 }
 
 void palette_manager::scroll_bottom()
@@ -123,28 +130,28 @@ void palette_manager::draw_contents()
 
 	tooltips::clear_tooltips(loc);
 
-	gui::button* upscroll_button = gui_.find_action_button("upscroll-button-editor");
+	std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
 	if (upscroll_button)
 		upscroll_button->hide(false);
-	gui::button* downscroll_button = gui_.find_action_button("downscroll-button-editor");
+	std::shared_ptr<gui::button> downscroll_button = gui_.find_action_button("downscroll-button-editor");
 	if (downscroll_button)
 		downscroll_button->hide(false);
-	gui::button* palette_menu_button = gui_.find_action_button("menu-editor-terrain");
+	std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
 	if (palette_menu_button)
 		palette_menu_button->hide(false);
 
 //	bg_restore(loc);
 	active_palette().set_dirty(true);
+	active_palette().hide(false);
 	active_palette().draw();
-	//active_palette().hide(false);
 
 //	set_dirty(false);
 }
 
-handler_vector palette_manager::handler_members()
+sdl_handler_vector palette_manager::handler_members()
 {
 	//handler_vector h;
-//	BOOST_FOREACH(gui::widget& b, active_palette().get_widgets()) {
+//	for (gui::widget& b : active_palette().get_widgets()) {
 //		h.push_back(&b);
 //	}
 	//return h;
@@ -152,6 +159,8 @@ handler_vector palette_manager::handler_members()
 }
 
 void palette_manager::handle_event(const SDL_Event& event) {
+
+	gui::widget::handle_event(event);
 
 	if (event.type == SDL_MOUSEMOTION) {
 		// If the mouse is inside the palette, give it focus.
@@ -167,27 +176,7 @@ void palette_manager::handle_event(const SDL_Event& event) {
 
 	const SDL_MouseButtonEvent &mouse_button_event = event.button;
 
-#if !SDL_VERSION_ATLEAST(2,0,0)
-	if (mouse_button_event.type == SDL_MOUSEBUTTONDOWN) {
-		if (mouse_button_event.button == SDL_BUTTON_WHEELUP) {
-			scroll_up();
-		}
-		if (mouse_button_event.button == SDL_BUTTON_WHEELDOWN) {
-			scroll_down();
-		}
-		if (mouse_button_event.button == SDL_BUTTON_WHEELLEFT) {
-			active_palette().prev_group();
-			scroll_top();
-		}
-		if (mouse_button_event.button == SDL_BUTTON_WHEELRIGHT) {
-			active_palette().next_group();
-			scroll_top();
-		}
-		//set_dirty(true);
-	}
-#endif
 
-#if SDL_VERSION_ATLEAST(2,0,0)
 	if (event.type == SDL_MOUSEWHEEL) {
 		if (event.wheel.y > 0) {
 			scroll_up();
@@ -203,7 +192,6 @@ void palette_manager::handle_event(const SDL_Event& event) {
 			scroll_top();
 		}
 	}
-#endif
 
 	if (mouse_button_event.type == SDL_MOUSEBUTTONUP) {
 		//set_dirty(true);

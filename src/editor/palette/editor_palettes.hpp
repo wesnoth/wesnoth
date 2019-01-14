@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,25 +12,24 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_PALETTES_H_INCLUDED
-#define EDITOR_PALETTES_H_INCLUDED
+#pragma once
 
-#include "../editor_display.hpp"
-#include "common_palette.hpp"
-#include "tristate_button.hpp"
-
-#include <boost/foreach.hpp>
+#include "editor/editor_display.hpp"
+#include "editor/palette/common_palette.hpp"
+#include "editor/palette/tristate_button.hpp"
 
 namespace editor {
 
+class editor_toolkit;
+
 template<class Item>
-class editor_palette : public common_palette {
+class editor_palette : public tristate_palette {
 
 public:
 
 	editor_palette(editor_display &gui, const config& /*cfg*/
-			, size_t item_size, size_t item_width, mouse_action** active_mouse_action)
-		: common_palette(gui)
+	             , std::size_t item_size, std::size_t item_width, editor_toolkit &toolkit)
+		: tristate_palette(gui.video())
 		, groups_()
 		, gui_(gui)
 		, item_size_(item_size)
@@ -48,7 +47,7 @@ public:
 		, active_group_()
 		, selected_fg_item_()
 		, selected_bg_item_()
-		, active_mouse_action_(active_mouse_action)
+		, toolkit_(toolkit)
 		, buttons_()
 		, help_handle_(-1)
 	{
@@ -56,30 +55,29 @@ public:
 
 
 
-	virtual handler_vector handler_members();
+	virtual sdl_handler_vector handler_members() override;
 
-	void set_start_item(size_t index) { items_start_ = index; }
+	void set_start_item(std::size_t index) override { items_start_ = index; }
 
-	size_t start_num(void) { return items_start_; }
+	std::size_t start_num(void) override { return items_start_; }
 
 	/** Menu expanding for palette group list */
-	void expand_palette_groups_menu(std::vector< std::pair<std::string, std::string> >& items);
-	void expand_palette_groups_menu(std::vector<std::string>& items);
+	void expand_palette_groups_menu(std::vector<config>& items, int i) override;
 
-	void set_group(size_t index);
+	void set_group(std::size_t index) override;
 //	int active_group();
 
-	const std::vector<item_group>& get_groups() const { return groups_; }
+	const std::vector<item_group>& get_groups() const override { return groups_; }
 
-	virtual void draw() {
+	virtual void draw() override {
 		widget::draw();
 	}
-	virtual void draw_contents();
+	virtual void draw_contents() override;
 
-	void next_group() {
+	void next_group() override {
 		set_group( (active_group_index() +1) % (groups_.size()) );
 	}
-	void prev_group() {
+	void prev_group() override {
 		set_group( (active_group_index() -1) % (groups_.size()) );
 	}
 
@@ -88,16 +86,14 @@ public:
 	 *
 	 * Use if the size_specs have changed.
 	 */
-	void adjust_size(const SDL_Rect& target);
+	void adjust_size(const SDL_Rect& target) override;
 
-	virtual bool scroll_up();
-	virtual bool can_scroll_up();
-	virtual bool scroll_down();
-	virtual bool can_scroll_down();
+	virtual bool scroll_up() override;
+	virtual bool can_scroll_up() override;
+	virtual bool scroll_down() override;
+	virtual bool can_scroll_down() override;
 
-	virtual const config active_group_report();
-
-	void swap();
+	void swap() override;
 
 	virtual std::string get_help_string() = 0;
 
@@ -107,13 +103,7 @@ public:
 
 private:
 
-	size_t active_group_index();
-
-	/** Scroll the editor-palette to the top. */
-	void scroll_top();
-
-	/** Scroll the editor-palette to the bottom. */
-	void scroll_bottom();
+	std::size_t active_group_index();
 
 	virtual void draw_item(const Item& item, surface& item_image, std::stringstream& tooltip) = 0;
 
@@ -128,14 +118,17 @@ private:
 	virtual bool is_selected_bg_item(const std::string& id);
 
 	/** Return the number of items in the palette. */
-	size_t num_items();
+	int num_items() override;
 
-	void hide(bool hidden) {
+	/** Return the number of items in the palette. */
+	int num_visible_items() { return buttons_.size();  }
+
+	void hide(bool hidden) override {
 		widget::hide(hidden);
 		if (!hidden)
 			help_handle_ = gui_.video().set_help_string(get_help_string());
 		else gui_.video().clear_help_string(help_handle_);
-		BOOST_FOREACH(gui::widget& w, buttons_) {
+		for (gui::widget& w : buttons_) {
 			w.hide(hidden);
 		}
 	}
@@ -151,8 +144,8 @@ protected:
 	const std::vector<std::string>& active_group() { return group_map_[active_group_]; }
 
 	/** Select a foreground item. */
-	virtual void select_fg_item(const std::string& item_id);
-	virtual void select_bg_item(const std::string& item_id);
+	virtual void select_fg_item(const std::string& item_id) override;
+	virtual void select_bg_item(const std::string& item_id) override;
 
 	/**
 	 * The editor_groups as defined in editor-groups.cfg.
@@ -173,11 +166,11 @@ private:
 	unsigned int palette_x_;
 
 protected:
-	std::map<std::string, std::vector<std::string> > group_map_;
+	std::map<std::string, std::vector<std::string>> group_map_;
 
 	typedef std::map<std::string, Item> item_map;
 	item_map item_map_;
-	size_t nitems_, nmax_items_, items_start_;
+	int nitems_, nmax_items_, items_start_;
     std::set<std::string> non_core_items_;
 
 private:
@@ -185,7 +178,7 @@ private:
 	std::string selected_fg_item_;
 	std::string selected_bg_item_;
 
-    mouse_action** active_mouse_action_;
+    editor_toolkit& toolkit_;
     std::vector<gui::tristate_button> buttons_;
 
     int help_handle_;
@@ -193,5 +186,3 @@ private:
 
 
 } //end namespace editor
-#endif // EDITOR_PALETTES_H_INCLUDED
-

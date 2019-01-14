@@ -2,7 +2,7 @@
 
 return {
 	init = function(ai)
-		
+
 		ai.cache = {}
 		ai.cache.data = {}
 

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2011 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2011 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,15 +19,14 @@
  * See @ref gui2_iterator for more information.
  */
 
-#ifndef GUI_WIDGETS_AUXILIARY_ITERATOR_ITERATOR_HPP_INCLUDED
-#define GUI_WIDGETS_AUXILIARY_ITERATOR_ITERATOR_HPP_INCLUDED
+#pragma once
 
 #include "gui/auxiliary/iterator/policy_order.hpp"
 
 namespace gui2
 {
 
-namespace iterator
+namespace iteration
 {
 
 /**
@@ -36,15 +35,18 @@ namespace iterator
  * See @ref gui2_iterator_iterator for more information.
  */
 template <class order>
-class titerator : private order, private boost::noncopyable
+class iterator : private order
 {
 public:
+	iterator(const iterator&) = delete;
+	iterator& operator=(const iterator&) = delete;
+
 	/**
 	 * Constructor.
 	 *
 	 * @param root                The widget where to start the iteration.
 	 */
-	titerator(twidget& root) : order(root)
+	iterator(widget& root) : order(root)
 	{
 	}
 
@@ -66,7 +68,7 @@ public:
 	 * @pre                       The following assertion holds:
 	 *                            @code at_end() == false @endcode
 	 *
-	 * @throws                    A @ref trange_error exception upon pre
+	 * @throws                    A @ref range_error exception upon pre
 	 *                            condition violation.
 	 *
 	 * @returns                   Whether the next widget can be safely
@@ -78,7 +80,7 @@ public:
 	}
 
 	/** See @ref next. */
-	titerator<order>& operator++()
+	iterator<order>& operator++()
 	{
 		order::next();
 		return *this;
@@ -89,20 +91,32 @@ public:
 	 *
 	 * @returns                   The current widget.
 	 */
-	twidget& operator*()
+	widget& operator*()
 	{
 		return order::operator*();
 	}
 
 	/** See @ref operator*. */
-	twidget* operator->()
+	widget* operator->()
 	{
 		return &(operator*());
 	}
+
+	/** See @ref operator*. */
+	widget* get()
+	{
+		return operator->();
+	}
 };
 
-} // namespace iterator
+/* Helper aliases templates. */
+
+template<bool visit_self, bool visit_internal, bool visit_child>
+using top_down_iterator = iterator<policy::order::top_down<visit_self, visit_internal, visit_child>>;
+
+template<bool visit_self, bool visit_internal, bool visit_child>
+using bottom_up_iterator = iterator<policy::order::bottom_up<visit_self, visit_internal, visit_child>>;
+
+} // namespace iteration
 
 } // namespace gui2
-
-#endif

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+tab="--tab"
+cmd0="bash -c './wesnothd --port 12345 --log-debug=server --log-warning=config';bash"
+cmd1="bash -c '"
+cmd1+='gdb -q -batch -return-child-result -ex "run" -ex "thread apply all bt" -ex "quit" --args ./wesnoth --plugin=host.lua --server=localhost:12345 --username=host --nogui --mp-test'
+cmd1+="';bash"
+cmd2="bash -c '"
+cmd2+='gdb -q -batch -return-child-result -ex "run" -ex "thread apply all bt" -ex "quit" --args ./wesnoth --plugin=join.lua --server=localhost:12345 --username=join --nogui --mp-test'
+cmd2+="';bash"
+#cmd3="bash -c './client3';bash"
+
+foo=""
+
+foo+=($tab -e "$cmd0")
+foo+=($tab -e "$cmd1")
+foo+=($tab -e "$cmd2")
+#foo+=($tab -e "$cmd3")
+
+gnome-terminal "${foo[@]}"
+
+exit 0

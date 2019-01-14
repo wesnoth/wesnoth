@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,12 +12,11 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_SCROLLBAR_CONTAINER_PRIVATE_HPP_INCLUDED
-#define GUI_WIDGETS_SCROLLBAR_CONTAINER_PRIVATE_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/scrollbar_container.hpp"
 
-#include "utils/const_clone.tpp"
+#include "utils/const_clone.hpp"
 
 /**
  * @file
@@ -26,7 +25,7 @@
  * @note This file should only be included by scrollbar_container.cpp.
  *
  * This file is being used for a small experiment in which some private
- * functions of tscrollbar_container are no longer in tscrollbar_container
+ * functions of scrollbar_container are no longer in scrollbar_container
  * but moved in a friend class with static functions. The goal is to have
  * less header recompilations, when there's a need to add or remove a private
  * function.  Also non-trivial functions like 'const foo& bar() const' and
@@ -43,27 +42,27 @@ namespace gui2
  * The class is a helper to avoid recompilation and only has static
  * functions.
  */
-struct tscrollbar_container_implementation
+struct scrollbar_container_implementation
 {
 	/**
 	 * Implementation for the wrappers for
-	 * [const] twidget* tscrollbar_container::find_at(
-	 * const tpoint&, const bool) [const].
+	 * [const] widget* scrollbar_container::find_at(
+	 * const point&, const bool) [const].
 	 *
-	 * @tparam W                  twidget or const twidget.
+	 * @tparam W                  widget or const widget.
 	 */
 	template <class W>
 	static W*
-	find_at(typename utils::tconst_clone<tscrollbar_container, W>::reference
+	find_at(utils::const_clone_ref<scrollbar_container, W>
 					scrollbar_container,
-			const tpoint& coordinate,
+			const point& coordinate,
 			const bool must_be_active)
 	{
 
 		assert(scrollbar_container.content_
 			   && scrollbar_container.content_grid_);
 
-		W* result = scrollbar_container.tcontainer_::find_at(coordinate,
+		W* result = scrollbar_container.container_base::find_at(coordinate,
 															 must_be_active);
 
 		if(result == scrollbar_container.content_) {
@@ -76,20 +75,20 @@ struct tscrollbar_container_implementation
 
 	/**
 	 * Implementation for the wrappers for
-	 * [const] twidget* tscrollbar_container::find(
+	 * [const] widget* scrollbar_container::find(
 	 * const std::string&, const bool) [const].
 	 *
-	 * @tparam W                  twidget or const twidget.
+	 * @tparam W                  widget or const widget.
 	 */
 	template <class W>
 	static W*
-	find(typename utils::tconst_clone<tscrollbar_container, W>::reference
+	find(utils::const_clone_ref<scrollbar_container, W>
 				 scrollbar_container,
 		 const std::string& id,
 		 const bool must_be_active)
 	{
 		// Inherited.
-		W* result = scrollbar_container.tcontainer_::find(id, must_be_active);
+		W* result = scrollbar_container.container_base::find(id, must_be_active);
 
 		// Can be called before finalize so test instead of assert for the grid.
 		if(!result && scrollbar_container.content_grid_) {
@@ -102,5 +101,3 @@ struct tscrollbar_container_implementation
 };
 
 } // namespace gui2
-
-#endif

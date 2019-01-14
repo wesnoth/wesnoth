@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,39 +12,41 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_GAME_CACHE_OPTIONS_HPP_INCLUDED
-#define GUI_DIALOGS_GAME_CACHE_OPTIONS_HPP_INCLUDED
+#pragma once
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
 namespace gui2
 {
-class tlabel;
+class label;
+class button;
+namespace dialogs
+{
 
-class tgame_cache_options : public tdialog
+class game_cache_options : public modal_dialog
 {
 public:
 	/** Constructor. */
-	tgame_cache_options();
+	game_cache_options();
 
 	/**
      * The display function.
 	 *
-	 * See @ref tdialog for more information.
+	 * See @ref modal_dialog for more information.
      */
-	static void display(CVideo& video)
-	{
-		tgame_cache_options().show(video);
-	}
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(game_cache_options)
 
 private:
 	std::string cache_path_;
-	tlabel* size_label_;
 
-	void clean_cache_callback(CVideo& video);
+	button* clean_button_;
+	button* purge_button_;
+	label* size_label_;
+
+	void clean_cache_callback();
 	bool clean_cache();
 
-	void purge_cache_callback(CVideo& video);
+	void purge_cache_callback();
 	bool purge_cache();
 
 	void copy_to_clipboard_callback();
@@ -53,16 +55,15 @@ private:
 
 	void update_cache_size_display();
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
+	virtual const std::string& window_id() const override;
 
-	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
+	/** Inherited from modal_dialog. */
+	virtual void pre_show(window& window) override;
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	virtual void post_show(window& window) override;
 };
 
-}
-
-#endif
+} // namespace dialogs
+} // namespace gui2

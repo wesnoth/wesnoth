@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2014 by Fabian Mueller
+   Copyright (C) 2011 - 2018 by Fabian Mueller
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -13,8 +13,10 @@
 */
 
 #include "joystick.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "log.hpp"
+#include "sdl/surface.hpp"
+#include "utils/math.hpp"
 #include <boost/math/constants/constants.hpp>
 using namespace boost::math::constants;
 
@@ -35,35 +37,21 @@ joystick_manager::~joystick_manager() {
 	close();
 }
 
-#if SDL_VERSION_ATLEAST(2,0,0)
 
 static bool attached(
 		  const std::vector<SDL_Joystick*>& joysticks
-		, const size_t index)
+		, const std::size_t index)
 {
-	return SDL_JoystickGetAttached(joysticks[index]);
+	return SDL_JoystickGetAttached(joysticks[index]) == SDL_TRUE;
 }
 
 static const char* name(
 		  const std::vector<SDL_Joystick*>& joysticks
-		, const size_t index)
+		, const std::size_t index)
 {
 	return SDL_JoystickName(joysticks[index]);
 }
 
-#else
-
-static bool attached(const std::vector<SDL_Joystick*>&, const size_t index)
-{
-	return SDL_JoystickOpened(index) == 1;
-}
-
-static const char* name(const std::vector<SDL_Joystick*>&, const size_t index)
-{
-	return SDL_JoystickName(index);
-}
-
-#endif
 
 bool joystick_manager::close() {
 	if(SDL_WasInit(SDL_INIT_JOYSTICK) == 0)
@@ -145,7 +133,7 @@ std::pair<double, double> joystick_manager::get_mouse_axis_pair() {
 		thrust = get_thrusta_axis();
 	}
 
-	const int radius = round_double(sqrt(pow(values.first, 2.0f) + pow(values.second, 2.0f)));
+	const int radius = std::round(std::sqrt(std::pow(values.first, 2.0f) + std::pow(values.second, 2.0f)));
 	const int deadzone = preferences::joystick_mouse_deadzone();
 	const double multiplier = 1.0 + thrust;
 
@@ -153,8 +141,8 @@ std::pair<double, double> joystick_manager::get_mouse_axis_pair() {
 		return std::make_pair(0.0, 0.0);
 
 	// TODO do some math to normalize over the value - deadzone.
-	//const double relation = abs( (double)values.first / (double)values.second );
-	//const int range_x = values.first - round_double(relation * deadzone);
+	//const double relation = std::abs( (double)values.first / (double)values.second );
+	//const int range_x = values.first - std::round(relation * deadzone);
 	//const int range_y = values.second - ((1.0 - relation) * deadzone);
 	//double x_value = ((double)(values.first - deadzone) / (double)(32768 - deadzone)) *
 
@@ -181,7 +169,7 @@ std::pair<double, double> joystick_manager::get_scroll_axis_pair() {
 		thrust = get_thrusta_axis();
 	}
 
-	const int radius = round_double(sqrt(pow(values.first, 2.0f) + pow(values.second, 2.0f)));
+	const int radius = std::round(std::sqrt(std::pow(values.first, 2.0f) + std::pow(values.second, 2.0f)));
 	const int deadzone = preferences::joystick_scroll_deadzone();
 	const double multiplier = 1.0 + thrust;
 
@@ -230,7 +218,7 @@ std::pair<double, double> joystick_manager::get_cursor_polar_coordinates() {
 std::pair<double, double> joystick_manager::get_polar_coordinates(int joystick_xaxis, int xaxis, int joystick_yaxis, int yaxis) {
 
 	const std::pair<int, int> values = get_axis_pair(joystick_xaxis, xaxis, joystick_yaxis, yaxis);
-	const double radius = (sqrt(pow(values.first, 2.0f) + pow(values.second, 2.0f))) / 32768.0;
+	const double radius = (std::sqrt(std::pow(values.first, 2.0f) + std::pow(values.second, 2.0f))) / 32768.0;
 	const double angle = (atan2(
 			  static_cast<double>(values.second)
 			, static_cast<double>(values.first))) * 180.0 / pi<double>();
@@ -287,7 +275,7 @@ bool joystick_manager::update_highlighted_hex(map_location& highlighted_hex, con
 	const int x_axis = values.first;
 	const int y_axis = values.second;
 
-	//const int radius = round_double(sqrt(pow(x_axis, 2.0f) + pow(y_axis, 2.0f)));
+	//const int radius = std::round(std::(std::pow(x_axis, 2.0f) + std::pow(y_axis, 2.0f)));
 
 //	const int deadzone = preferences::joystick_cursor_deadzone();
 	//const int threshold2 = 10*threshold;
@@ -296,9 +284,8 @@ bool joystick_manager::update_highlighted_hex(map_location& highlighted_hex, con
 	//const bool greater_deadzone = radius > deadzone;
 	//const bool greater_threshold2 = radius > threshold2;
 
-	int x = selected_hex.x + round_double(x_axis / 3200);
-	int y = selected_hex.y + round_double(y_axis / 3200);
-	highlighted_hex = map_location(x,y);
+	highlighted_hex = selected_hex;
+	highlighted_hex.add(std::round(x_axis / 3200), std::round(y_axis / 3200));
 
 	//if (!greater_threshold) {
 	//	counter_ = 0;
@@ -323,7 +310,7 @@ bool joystick_manager::update_highlighted_hex(map_location& highlighted_hex) {
 	const int x_axis = values.first;
 	const int y_axis = values.second;
 
-	const int radius = round_double(sqrt(pow(x_axis, 2.0f) + pow(y_axis, 2.0f)));
+	const int radius = std::round(std::sqrt(std::pow(x_axis, 2.0f) + std::pow(y_axis, 2.0f)));
 
 	const int deadzone = preferences::joystick_cursor_deadzone();
 	const int threshold = deadzone + preferences::joystick_cursor_threshold();
@@ -357,20 +344,19 @@ bool joystick_manager::update_highlighted_hex(map_location& highlighted_hex) {
 	return true;
 }
 
-const map_location joystick_manager::get_direction(const map_location& loc, joystick_manager::DIRECTION direction) {
-
-	int x = loc.x;
-	int y = loc.y;
+const map_location joystick_manager::get_direction(const map_location& loc, joystick_manager::DIRECTION direction)
+{
+	map_location l = loc;
 
 	switch(direction) {
-		case NORTH:      return map_location(x, y - 1);
-		case SOUTH:      return map_location(x, y + 1);
-		case SOUTH_EAST: return map_location(x + 1, y + (1+is_odd(x))/2 );
-		case SOUTH_WEST: return map_location(x - 1, y + (1+is_odd(x))/2 );
-		case NORTH_EAST: return map_location(x + 1, y - (1+is_even(x))/2 );
-		case NORTH_WEST: return map_location(x - 1, y - (1+is_even(x))/2 );
-		case WEST:       return map_location(x - 1, y);
-		case EAST:       return map_location(x + 1, y);
+		case NORTH:      return l.get_direction(map_location::NORTH);
+		case SOUTH:      return l.get_direction(map_location::SOUTH);
+		case SOUTH_EAST: return l.get_direction(map_location::SOUTH_EAST);
+		case SOUTH_WEST: return l.get_direction(map_location::SOUTH_WEST);
+		case NORTH_EAST: return l.get_direction(map_location::NORTH_EAST);
+		case NORTH_WEST: return l.get_direction(map_location::NORTH_WEST);
+		case WEST:       l.add(-1, 0); return l;
+		case EAST:       l.add(1, 0); return l;
 		default:
 			assert(false);
 			return map_location();
@@ -434,4 +420,3 @@ const map_location joystick_manager::get_next_hex(int x_axis, int y_axis, map_lo
 
 	return new_loc;
 }
-

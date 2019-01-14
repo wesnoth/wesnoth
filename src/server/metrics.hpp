@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,16 +14,15 @@
 
 /** @file */
 
-#ifndef METRICS_HPP_INCLUDED
-#define METRICS_HPP_INCLUDED
+#pragma once
 
 #include <iosfwd>
 
 #include <map>
 #include <string>
-#include <time.h>
+#include <ctime>
 
-#include "simple_wml.hpp"
+#include "server/simple_wml.hpp"
 
 class metrics
 {
@@ -73,10 +72,8 @@ private:
 	int current_requests_;
 	int nrequests_;
 	int nrequests_waited_;
-	const time_t started_at_;
+	const std::time_t started_at_;
 	std::map<std::string,int> terminations_;
 };
 
 std::ostream& operator<<(std::ostream& out, metrics& met);
-
-#endif

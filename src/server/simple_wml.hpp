@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org
+   Copyright (C) 2008 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License 2
@@ -12,10 +12,9 @@
    See the COPYING file for more details.
 */
 
-#ifndef SIMPLE_WML_HPP_INCLUDED
-#define SIMPLE_WML_HPP_INCLUDED
+#pragma once
 
-#include <string.h>
+#include <cstring>
 
 #include <cstddef>
 #include <iosfwd>
@@ -34,12 +33,18 @@ struct error : public game::error {
 class string_span
 {
 public:
-	string_span() : str_(NULL), size_(0)
+	string_span() : str_(nullptr), size_(0)
 	{}
 	string_span(const char* str, int size) : str_(str), size_(size)
 	{}
 	string_span(const char* str) : str_(str), size_(strlen(str))
 	{}
+	string_span(const char* begin, const char* end) : str_(begin), size_(end - begin)
+	{}
+
+	typedef const char* const_iterator;
+	typedef const char* iterator;
+	typedef const char value_type;
 
 	bool operator==(const char* o) const {
 		const char* i1 = str_;
@@ -86,7 +91,7 @@ public:
 
 	int size() const { return size_; }
 	bool empty() const { return size_ == 0; }
-	bool is_null() const { return str_ == NULL; }
+	bool is_null() const { return str_ == nullptr; }
 
 	bool to_bool(bool default_value=false) const;
 	int to_int() const;
@@ -110,8 +115,12 @@ public:
 	node(document& doc, node* parent);
 	node(document& doc, node* parent, const char** str, int depth=0);
 	~node();
-
-	typedef std::pair<string_span, string_span> attribute;
+	struct attribute
+	{
+		attribute(const string_span& k, const string_span& v) : key(k), value(v) {}
+		string_span key;
+		string_span value;
+	};
 	typedef std::vector<node*> child_list;
 
 	const string_span& operator[](const char* key) const;
@@ -137,9 +146,9 @@ public:
 	node& set_attr_int(const char* key, int value);
 
 	node& add_child(const char* name);
-	node& add_child_at(const char* name, size_t index);
-	void remove_child(const char* name, size_t index);
-	void remove_child(const string_span& name, size_t index);
+	node& add_child_at(const char* name, std::size_t index);
+	void remove_child(const char* name, std::size_t index);
+	void remove_child(const string_span& name, std::size_t index);
 
 	node* child(const char* name);
 	const node* child(const char* name) const;
@@ -277,6 +286,7 @@ public:
 
 	static std::string stats();
 
+	static std::size_t document_size_limit;
 private:
 	void generate_root();
 	document(const document&);
@@ -294,6 +304,7 @@ private:
 	document* next_;
 };
 
-}
+/** Implement non-member swap function for std::swap (calls @ref document::swap). */
+void swap(document& lhs, document& rhs);
 
-#endif
+}

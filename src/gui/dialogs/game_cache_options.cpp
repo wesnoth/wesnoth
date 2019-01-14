@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,11 +16,12 @@
 
 #include "gui/dialogs/game_cache_options.hpp"
 
-#include "clipboard.hpp"
+#include "desktop/clipboard.hpp"
 #include "config_cache.hpp"
+#include "cursor.hpp"
 #include "desktop/open.hpp"
 #include "filesystem.hpp"
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
@@ -28,11 +29,13 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #include "gettext.hpp"
 
 namespace gui2
+{
+namespace dialogs
 {
 
 /*WIKI
@@ -73,117 +76,122 @@ namespace gui2
 
 REGISTER_DIALOG(game_cache_options)
 
-tgame_cache_options::tgame_cache_options()
-	: cache_path_(get_cache_dir())
-	, size_label_(NULL)
+game_cache_options::game_cache_options()
+	: cache_path_(filesystem::get_cache_dir())
+	, clean_button_(nullptr)
+	, purge_button_(nullptr)
+	, size_label_(nullptr)
 {
 }
 
-void tgame_cache_options::pre_show(CVideo& video, twindow& window)
+void game_cache_options::pre_show(window& window)
 {
-	size_label_ = &find_widget<tlabel>(&window, "size", false);
+	clean_button_ = find_widget<button>(&window, "clean", false, true);
+	purge_button_ = find_widget<button>(&window, "purge", false, true);
+	size_label_ = find_widget<label>(&window, "size", false, true);
+
 	update_cache_size_display();
 
-	ttext_& path_box = find_widget<ttext_>(&window, "path", false);
+	text_box_base& path_box = find_widget<text_box_base>(&window, "path", false);
 	path_box.set_value(cache_path_);
 	path_box.set_active(false);
 
-	tbutton& copy = find_widget<tbutton>(&window, "copy", false);
+	button& copy = find_widget<button>(&window, "copy", false);
 	connect_signal_mouse_left_click(copy,
-									boost::bind(&tgame_cache_options::copy_to_clipboard_callback,
+									std::bind(&game_cache_options::copy_to_clipboard_callback,
 												this));
+	if (!desktop::clipboard::available()) {
+		copy.set_active(false);
+		copy.set_tooltip(_("Clipboard support not found, contact your packager"));
+	}
 
-	tbutton& browse = find_widget<tbutton>(&window, "browse", false);
+	button& browse = find_widget<button>(&window, "browse", false);
 	connect_signal_mouse_left_click(browse,
-									boost::bind(&tgame_cache_options::browse_cache_callback,
+									std::bind(&game_cache_options::browse_cache_callback,
 												this));
 
-	tbutton& clean = find_widget<tbutton>(&window, "clean", false);
-	connect_signal_mouse_left_click(clean,
-									boost::bind(&tgame_cache_options::clean_cache_callback,
-												this,
-												boost::ref(video)));
+	connect_signal_mouse_left_click(*clean_button_,
+									std::bind(&game_cache_options::clean_cache_callback,
+												this));
 
-	tbutton& purge = find_widget<tbutton>(&window, "purge", false);
-	connect_signal_mouse_left_click(purge,
-									boost::bind(&tgame_cache_options::purge_cache_callback,
-												this,
-												boost::ref(video)));
+	connect_signal_mouse_left_click(*purge_button_,
+									std::bind(&game_cache_options::purge_cache_callback,
+												this));
 }
 
-void tgame_cache_options::post_show(twindow& /*window*/)
+void game_cache_options::post_show(window& /*window*/)
 {
-	size_label_ = NULL;
+	size_label_ = nullptr;
 }
 
-void tgame_cache_options::update_cache_size_display()
+void game_cache_options::update_cache_size_display()
 {
 	if(!size_label_) {
 		return;
 	}
 
-	size_label_->set_label(utils::si_string(dir_size(cache_path_),
-											true,
-											_("unit_byte^B")));
+	const cursor::setter cs(cursor::WAIT);
+	const int size = filesystem::dir_size(cache_path_);
+
+	if(size < 0) {
+		size_label_->set_label(_("dir_size^Unknown"));
+	} else {
+		size_label_->set_label(utils::si_string(size, true, _("unit_byte^B")));
+	}
+
+	if(size == 0) {
+		clean_button_->set_active(false);
+		purge_button_->set_active(false);
+	}
 }
 
-void tgame_cache_options::copy_to_clipboard_callback()
+void game_cache_options::copy_to_clipboard_callback()
 {
-	copy_to_clipboard(cache_path_, false);
+	desktop::clipboard::copy_to_clipboard(cache_path_, false);
 }
 
-void tgame_cache_options::browse_cache_callback()
+void game_cache_options::browse_cache_callback()
 {
 	desktop::open_object(cache_path_);
 }
 
-void tgame_cache_options::clean_cache_callback(CVideo& video)
+void game_cache_options::clean_cache_callback()
 {
 	if(clean_cache()) {
-		show_message(video,
+		show_message(
 					 _("Cache Cleaned"),
 					 _("The game data cache has been cleaned."));
 	} else {
-		show_error_message(video,
-						   _("The game data cache could not be completely cleaned."));
+		show_error_message(_("The game data cache could not be completely cleaned."));
 	}
 
 	update_cache_size_display();
 }
 
-bool tgame_cache_options::clean_cache()
+bool game_cache_options::clean_cache()
 {
+	const cursor::setter cs(cursor::WAIT);
 	return game_config::config_cache::instance().clean_cache();
 }
 
-void tgame_cache_options::purge_cache_callback(CVideo& video)
+void game_cache_options::purge_cache_callback()
 {
-	if(show_message(video,
-					 _("Purge Cache"),
-					 _("Are you sure you want to purge the game data cache? "
-					   "All files in the cache directory will be deleted, and "
-					   "the cache will be regenerated next time it is "
-					   "required."),
-					 gui2::tmessage::yes_no_buttons) != gui2::twindow::OK)
-	{
-		return;
-	}
-
 	if(purge_cache()) {
-		show_message(video,
+		show_message(
 					 _("Cache Purged"),
 					 _("The game data cache has been purged."));
 	} else {
-		show_error_message(video,
-						   _("The game data cache could not be purged."));
+		show_error_message(_("The game data cache could not be purged."));
 	}
 
 	update_cache_size_display();
 }
 
-bool tgame_cache_options::purge_cache()
+bool game_cache_options::purge_cache()
 {
+	const cursor::setter cs(cursor::WAIT);
 	return game_config::config_cache::instance().purge_cache();
 }
 
-} // end namespace gui2
+} // namespace dialogs
+} // namespace gui2

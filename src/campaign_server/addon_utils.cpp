@@ -1,7 +1,7 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-                 2013 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+                 2013 - 2015 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -21,10 +21,10 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <boost/foreach.hpp>
+#include <boost/algorithm/string.hpp>
 
 static lg::log_domain log_network("network");
-#define LOG_CS if (lg::err.dont_log(log_network)) ; else lg::err(log_network, false)
+#define LOG_CS if (lg::err().dont_log(log_network)) ; else lg::err()(log_network, false)
 
 namespace {
 
@@ -44,8 +44,8 @@ std::string fast_interpolate_variables_into_string(const std::string &str, const
 	std::string res = str;
 
 	if(symbols) {
-		BOOST_FOREACH(const plain_string_map::value_type& sym, *symbols) {
-			res = utils::replace(res, "$" + sym.first, sym.second);
+		for(const plain_string_map::value_type& sym : *symbols) {
+			boost::replace_all(res, "$" + sym.first, sym.second);
 		}
 	}
 
@@ -70,7 +70,7 @@ std::string format_addon_feedback_url(const std::string& format, const config& p
 		// Percent-encode parameter values for URL interpolation. This is
 		// VERY important since otherwise people could e.g. alter query
 		// strings from the format string.
-		BOOST_FOREACH(const config::attribute& a, attrs) {
+		for(const config::attribute& a : attrs) {
 			escaped[a.first] = utils::urlencode(a.second.str());
 		}
 
@@ -94,7 +94,14 @@ std::string format_addon_feedback_url(const std::string& format, const config& p
 
 void find_translations(const config& base_dir, config& addon)
 {
-	BOOST_FOREACH(const config &dir, base_dir.child_range("dir"))
+	for(const config& file : base_dir.child_range("file")) {
+		const std::string& fn = file["name"].str();
+		if(filesystem::ends_with(fn, ".po")) {
+			addon.add_child("translation")["language"] = filesystem::base_name(fn, true);
+		}
+	}
+
+	for(const config &dir : base_dir.child_range("dir"))
 	{
 		if(dir["name"] == "LC_MESSAGES") {
 			addon.add_child("translation")["language"] = base_dir["name"];
@@ -124,7 +131,7 @@ void add_license(config& cfg)
 	}
 
 	// Copy over COPYING.txt
-	const std::string& contents = read_file("COPYING.txt");
+	const std::string& contents = filesystem::read_file("COPYING.txt");
 	if (contents.empty()) {
 		LOG_CS << "Could not find COPYING.txt, path is \"" << game_config::path << "\"\n";
 		return;

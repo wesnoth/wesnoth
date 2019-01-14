@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,34 +12,50 @@
    See the COPYING file for more details.
 */
 
-#ifndef DEFAULT_MAP_GENERATOR_HPP_INCLUDED
-#define DEFAULT_MAP_GENERATOR_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "generators/map_generator.hpp"
+
+struct generator_data {
+	generator_data(const config& cfg);
+	generator_data() = default;
+
+	int width;
+	int height;
+	int default_width;
+	int default_height;
+	int nplayers;
+	int nvillages;
+	int iterations;
+	int hill_size;
+	int castle_size;
+	int island_size;
+	int island_off_center;
+	int max_lakes;
+	bool link_castles;
+	bool show_labels;
+};
 
 class default_map_generator : public map_generator
 {
 public:
 	default_map_generator(const config &game_config);
 
-	bool allow_user_config() const;
-	void user_config(display& disp);
+	bool allow_user_config() const override;
+	void user_config() override;
 
-	std::string name() const;
+	std::string name() const override;
 
-	std::string config_name() const;
+	std::string config_name() const override;
 
-	std::string create_map();
-	config create_scenario();
+	std::string create_map(boost::optional<uint32_t> randomseed) override;
+	config create_scenario(boost::optional<uint32_t> randomseed) override;
 
 private:
+	std::string generate_map(std::map<map_location,std::string>* labels, boost::optional<uint32_t> randomseed);
 
-	std::string generate_map(std::map<map_location,std::string>* labels=NULL);
-
-	size_t default_width_, default_height_, width_, height_, island_size_, iterations_, hill_size_, max_lakes_, nvillages_, castle_size_, nplayers_;
-	bool link_castles_, show_labels_;
 	config cfg_;
-};
 
-#endif
+	generator_data data_;
+};

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,32 +14,39 @@
 
 #include "display_context.hpp"
 
-#include "map.hpp"
-#include "map_location.hpp"
+#include "map/map.hpp"
+#include "map/location.hpp"
 #include "team.hpp"
-#include "unit.hpp"
-#include "unit_map.hpp"
+#include "units/unit.hpp"
+#include "units/map.hpp"
 
-#include <boost/foreach.hpp>
+std::vector<std::string>& display_context::hidden_label_categories_ref() {
+	return const_cast<std::vector<std::string>&>(this->hidden_label_categories());
+}
+
+const team& display_context::get_team(int side) const
+{
+	return teams().at(side - 1);
+}
 
 bool display_context::would_be_discovered(const map_location & loc, int side_num, bool see_all)
 {
-	map_location adjs[6];
-	get_adjacent_tiles(loc,adjs);
+	adjacent_loc_array_t adjs;
+	get_adjacent_tiles(loc,adjs.data());
 
-	BOOST_FOREACH(const map_location &u_loc, adjs)
+	for (const map_location &u_loc : adjs)
 	{
 		unit_map::const_iterator u_it = units().find(u_loc);
 		if (!u_it.valid()) {
 			continue;
 		}
 		const unit & u = *u_it;
-		if (teams()[side_num-1].is_enemy(u.side()) && !u.incapacitated()) {
+		if (get_team(side_num).is_enemy(u.side()) && !u.incapacitated()) {
 			// Enemy spotted in adjacent tiles, check if we can see him.
 			// Watch out to call invisible with see_all=true to avoid infinite recursive calls!
 			if(see_all) {
 				return true;
-			} else if (!teams()[side_num-1].fogged(u_loc)
+			} else if (!get_team(side_num).fogged(u_loc)
 			&& !u.invisible(u_loc, true)) {
 				return true;
 			}
@@ -50,10 +57,10 @@ bool display_context::would_be_discovered(const map_location & loc, int side_num
 
 const unit * display_context::get_visible_unit(const map_location & loc, const team &current_team, bool see_all) const
 {
-	if (!map().on_board(loc)) return NULL;
+	if (!map().on_board(loc)) return nullptr;
 	const unit_map::const_iterator u = units().find(loc);
-	if (!u.valid() || !u->is_visible_to_team(current_team, map(), see_all)) {
-		return NULL;
+	if (!u.valid() || !u->is_visible_to_team(current_team, see_all)) {
+		return nullptr;
 	}
 	return &*u;
 }
@@ -74,11 +81,11 @@ bool display_context::unit_can_move(const unit &u) const
 		return false;
 	}
 
-	const team &current_team = teams()[u.side() - 1];
+	const team &current_team = get_team(u.side());
 
-	map_location locs[6];
-	get_adjacent_tiles(u.get_location(), locs);
-	for(int n = 0; n != 6; ++n) {
+	adjacent_loc_array_t locs;
+	get_adjacent_tiles(u.get_location(), locs.data());
+	for(unsigned n = 0; n < locs.size(); ++n) {
 		if (map().on_board(locs[n])) {
 			const unit_map::const_iterator i = units().find(locs[n]);
 			if (i.valid() && !i->incapacitated() &&
@@ -103,7 +110,7 @@ bool display_context::unit_can_move(const unit &u) const
 int display_context::village_owner(const map_location& loc) const
 {
 	const std::vector<team> & t = teams();
-	for(size_t i = 0; i != t.size(); ++i) {
+	for(std::size_t i = 0; i != t.size(); ++i) {
 		if(t[i].owns_village(loc))
 			return i;
 	}
@@ -115,7 +122,7 @@ int display_context::village_owner(const map_location& loc) const
  */
 bool display_context::is_observer() const
 {
-	BOOST_FOREACH(const team &t, teams()) {
+	for (const team &t : teams()) {
 		if (t.is_local())
 			return false;
 	}
@@ -128,7 +135,7 @@ bool display_context::is_observer() const
 int display_context::side_units(int side) const
 {
 	int res = 0;
-	BOOST_FOREACH(const unit &u, units()) {
+	for (const unit &u : units()) {
 		if (u.side() == side) ++res;
 	}
 	return res;
@@ -137,7 +144,7 @@ int display_context::side_units(int side) const
 int display_context::side_units_cost(int side) const
 {
 	int res = 0;
-	BOOST_FOREACH(const unit &u, units()) {
+	for (const unit &u : units()) {
 		if (u.side() == side) res += u.cost();
 	}
 	return res;
@@ -146,17 +153,17 @@ int display_context::side_units_cost(int side) const
 int display_context::side_upkeep(int side) const
 {
 	int res = 0;
-	BOOST_FOREACH(const unit &u, units()) {
+	for (const unit &u : units()) {
 		if (u.side() == side) res += u.upkeep();
 	}
 	return res;
 }
 
-team_data display_context::calculate_team_data(const team& tm, int side) const
+team_data display_context::calculate_team_data(const team& tm) const
 {
 	team_data res;
-	res.units = side_units(side);
-	res.upkeep = side_upkeep(side);
+	res.units = side_units(tm.side());
+	res.upkeep = side_upkeep(tm.side());
 	res.villages = tm.villages().size();
 	res.expenses = std::max<int>(0,res.upkeep - tm.support());
 	res.net_income = tm.total_income() - res.expenses;
@@ -164,4 +171,3 @@ team_data display_context::calculate_team_data(const team& tm, int side) const
 	res.teamname = tm.user_team_name();
 	return res;
 }
-

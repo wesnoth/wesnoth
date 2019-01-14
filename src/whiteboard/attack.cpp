@@ -1,6 +1,6 @@
 /*
- Copyright (C) 2010 - 2014 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -16,10 +16,10 @@
  * @file
  */
 
-#include "attack.hpp"
+#include "whiteboard/attack.hpp"
 
-#include "visitor.hpp"
-#include "utility.hpp"
+#include "whiteboard/visitor.hpp"
+#include "whiteboard/utility.hpp"
 
 #include "arrow.hpp"
 #include "config.hpp"
@@ -27,8 +27,8 @@
 #include "game_board.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
-#include "unit.hpp"
-#include "unit_map.hpp"
+#include "units/unit.hpp"
+#include "units/map.hpp"
 
 namespace wb
 {
@@ -52,20 +52,20 @@ std::ostream& attack::print(std::ostream& s) const
 	return s;
 }
 
-attack::attack(size_t team_index, bool hidden, unit& u, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
+attack::attack(std::size_t team_index, bool hidden, unit& u, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
-	: move(team_index, hidden, u, route, arrow, fake_unit),
+	: move(team_index, hidden, u, route, arrow, std::move(fake_unit)),
 	target_hex_(target_hex),
 	weapon_choice_(weapon_choice),
-	attack_movement_cost_(get_unit()->attacks()[weapon_choice_].movement_used()),
+	attack_movement_cost_(u.attacks()[weapon_choice_].movement_used()),
 	temp_movement_subtracted_(0)
 {
 	this->init();
 }
 
-attack::attack(config const& cfg, bool hidden)
+attack::attack(const config& cfg, bool hidden)
 	: move(cfg,hidden)
-	, target_hex_(cfg.child("target_hex_")["x"],cfg.child("target_hex_")["y"])
+	, target_hex_(cfg.child("target_hex_")["x"],cfg.child("target_hex_")["y"], wml_loc())
 	, weapon_choice_(cfg["weapon_choice_"].to_int(-1)) //default value: -1
 	, attack_movement_cost_()
 	, temp_movement_subtracted_(0)
@@ -79,6 +79,7 @@ attack::attack(config const& cfg, bool hidden)
 		throw action::ctor_err("attack: Invalid weapon_choice_");
 
 	// Construct attack_movement_cost_
+	assert(get_unit());
 	attack_movement_cost_ = get_unit()->attacks()[weapon_choice_].movement_used();
 
 	this->init();
@@ -86,7 +87,7 @@ attack::attack(config const& cfg, bool hidden)
 
 void attack::init()
 {
-	resources::screen->invalidate(target_hex_);
+	display::get_singleton()->invalidate(target_hex_);
 }
 
 attack::~attack()
@@ -102,11 +103,11 @@ void attack::accept(visitor& v)
 /* private */
 void attack::invalidate()
 {
-	if(resources::screen)
+	if(display::get_singleton())
 	{
 		//invalidate dest and target hex so attack indicator is properly cleared
-		resources::screen->invalidate(get_dest_hex());
-		resources::screen->invalidate(target_hex_);
+		display::get_singleton()->invalidate(get_dest_hex());
+		display::get_singleton()->invalidate(target_hex_);
 	}
 }
 
@@ -137,8 +138,8 @@ void attack::execute(bool& success, bool& complete)
 	complete = true;
 
 	//check that attacking unit is still alive, if not, consider the attack a failure
-	unit_map::const_iterator survivor = resources::units->find(get_dest_hex());
-	if(!survivor.valid() || survivor->id() != unit_id_)
+	unit_map::const_iterator survivor = resources::gameboard->units().find(get_dest_hex());
+	if(!survivor.valid() || (!unit_id_.empty() && (survivor->id() != unit_id_)))
 	{
 		success = false;
 	}
@@ -192,54 +193,35 @@ void attack::draw_hex(const map_location& hex)
 	{
 		//@todo: replace this by either the use of transparency + LAYER_ATTACK_INDICATOR,
 		//or a dedicated layer
-		const display::tdrawing_layer layer = display::LAYER_FOOTSTEPS;
+		const display::drawing_layer layer = display::LAYER_FOOTSTEPS;
 
 		//calculate direction (valid for both hexes)
 		std::string direction_text = map_location::write_direction(
 				get_dest_hex().get_relative_dir(target_hex_));
 
-#ifdef SDL_GPU
 		if (hex == get_dest_hex()) //add symbol to attacker hex
 		{
-			int xpos = resources::screen->get_location_x(get_dest_hex());
-			int ypos = resources::screen->get_location_y(get_dest_hex());
+			int xpos = display::get_singleton()->get_location_x(get_dest_hex());
+			int ypos = display::get_singleton()->get_location_y(get_dest_hex());
 
-			resources::screen->drawing_buffer_add(layer, get_dest_hex(), xpos, ypos,
-					image::get_texture("whiteboard/attack-indicator-src-" + direction_text + ".png", image::SCALED_TO_HEX));
-		}
-		else if (hex == target_hex_) //add symbol to defender hex
-		{
-			int xpos = resources::screen->get_location_x(target_hex_);
-			int ypos = resources::screen->get_location_y(target_hex_);
-
-			resources::screen->drawing_buffer_add(layer, target_hex_, xpos, ypos,
-					image::get_texture("whiteboard/attack-indicator-dst-" + direction_text + ".png", image::SCALED_TO_HEX));
-		}
-#else
-		if (hex == get_dest_hex()) //add symbol to attacker hex
-		{
-			int xpos = resources::screen->get_location_x(get_dest_hex());
-			int ypos = resources::screen->get_location_y(get_dest_hex());
-
-			resources::screen->drawing_buffer_add(layer, get_dest_hex(), xpos, ypos,
+			display::get_singleton()->drawing_buffer_add(layer, get_dest_hex(), xpos, ypos,
 					image::get_image("whiteboard/attack-indicator-src-" + direction_text + ".png", image::SCALED_TO_HEX));
 		}
 		else if (hex == target_hex_) //add symbol to defender hex
 		{
-			int xpos = resources::screen->get_location_x(target_hex_);
-			int ypos = resources::screen->get_location_y(target_hex_);
+			int xpos = display::get_singleton()->get_location_x(target_hex_);
+			int ypos = display::get_singleton()->get_location_y(target_hex_);
 
-			resources::screen->drawing_buffer_add(layer, target_hex_, xpos, ypos,
+			display::get_singleton()->drawing_buffer_add(layer, target_hex_, xpos, ypos,
 					image::get_image("whiteboard/attack-indicator-dst-" + direction_text + ".png", image::SCALED_TO_HEX));
 		}
-#endif
 	}
 }
 
 void attack::redraw()
 {
 	move::redraw();
-	resources::screen->invalidate(target_hex_);
+	display::get_singleton()->invalidate(target_hex_);
 }
 
 action::error attack::check_validity() const
@@ -253,7 +235,7 @@ action::error attack::check_validity() const
 		return INVALID_LOCATION;
 	}
 	// Verify that the target hex isn't empty
-	if(resources::units->find(target_hex_) == resources::units->end()){
+	if(resources::gameboard->units().find(target_hex_) == resources::gameboard->units().end()){
 		return NO_TARGET;
 	}
 	// Verify that the attacking unit has attacks left
@@ -261,7 +243,7 @@ action::error attack::check_validity() const
 		return NO_ATTACK_LEFT;
 	}
 	// Verify that the attacker and target are enemies
-	if(!(*resources::teams)[get_unit()->side() - 1].is_enemy(resources::units->find(target_hex_)->side())){
+	if(!resources::gameboard->get_team(get_unit()->side()).is_enemy(resources::gameboard->units().find(target_hex_)->side())){
 		return NOT_AN_ENEMY;
 	}
 	//@todo: (maybe) verify that the target hex contains the same unit that before,
@@ -280,9 +262,9 @@ config attack::to_config() const
 //	final_cfg["temp_movement_subtracted_"] = temp_movement_subtracted_; //Unnecessary
 
 	config target_hex_cfg;
-	target_hex_cfg["x"]=target_hex_.x;
-	target_hex_cfg["y"]=target_hex_.y;
-	final_cfg.add_child("target_hex_",target_hex_cfg);
+	target_hex_cfg["x"]=target_hex_.wml_x();
+	target_hex_cfg["y"]=target_hex_.wml_y();
+	final_cfg.add_child("target_hex_", std::move(target_hex_cfg));
 
 	return final_cfg;
 }

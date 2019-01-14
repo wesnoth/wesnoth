@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,8 +20,6 @@
 
 #include "ai/contexts.hpp"
 
-#include "global.hpp"
-
 #include "actions/attack.hpp"
 
 #include "ai/actions.hpp"                  // for actions
@@ -29,8 +27,8 @@
 #include "ai/composite/engine.hpp"         // for engine, engine_factory, etc
 #include "ai/composite/goal.hpp"           // for goal
 #include "ai/composite/stage.hpp"       // for ministage
-#include "ai/game_info.hpp"             // for aspect_type<>::typesafe_ptr, etc
-#include "ai/lua/unit_advancements_aspect.hpp"
+#include "ai/game_info.hpp"             // for typesafe_aspect_ptr, etc
+#include "ai/lua/aspect_advancements.hpp"
 #include "ai/manager.hpp"                  // for manager
 
 #include "chat_events.hpp"              // for chat_handler, etc
@@ -39,30 +37,25 @@
 #include "game_board.hpp"            // for game_board
 #include "game_config.hpp"              // for debug
 #include "game_display.hpp"          // for game_display
-#include "game_errors.hpp"		// for throw
 #include "log.hpp"                   // for LOG_STREAM, logger, etc
-#include "map.hpp"                   // for gamemap
+#include "map/map.hpp"                   // for gamemap
 #include "pathfind/pathfind.hpp"        // for paths::dest_vect, paths, etc
-#include "recall_list_manager.hpp"   // for recall_list_manager
 #include "resources.hpp"             // for units, gameboard, etc
 #include "serialization/string_utils.hpp"  // for split, etc
 #include "team.hpp"                     // for team
-#include "terrain_filter.hpp"  // for terrain_filter
-#include "terrain_translation.hpp"      // for t_terrain
+#include "terrain/filter.hpp"  // for terrain_filter
+#include "terrain/translation.hpp"      // for terrain_code
 #include "time_of_day.hpp"              // for time_of_day
 #include "tod_manager.hpp"           // for tod_manager
-#include "unit.hpp"                  // for unit, intrusive_ptr_release, etc
-#include "unit_map.hpp"  // for unit_map::iterator_base, etc
-#include "unit_ptr.hpp"                 // for unit_ptr
-#include "unit_types.hpp"  // for attack_type, unit_type, etc
-#include "variant.hpp"                  // for variant
+#include "units/unit.hpp"                  // for unit
+#include "units/map.hpp"  // for unit_map::iterator_base, etc
+#include "units/ptr.hpp"                 // for unit_ptr
+#include "units/types.hpp"  // for attack_type, unit_type, etc
+#include "formula/variant.hpp"                  // for variant
 
 #include <algorithm>                    // for find, count, max, fill_n
-#include <boost/foreach.hpp>            // for auto_any_base, etc
-#include <boost/smart_ptr/intrusive_ptr.hpp>  // for intrusive_ptr
-#include <boost/smart_ptr/shared_ptr.hpp>  // for dynamic_pointer_cast, etc
 #include <cmath>                       // for sqrt
-#include <cstdlib>                     // for NULL, abs
+#include <cstdlib>                     // for abs
 #include <ctime>                       // for time
 #include <iterator>                     // for back_inserter
 #include <ostream>                      // for operator<<, basic_ostream, etc
@@ -98,23 +91,23 @@ int readwrite_context_impl::get_recursion_count() const
 
 void readonly_context_impl::raise_user_interact() const
 {
-	manager::raise_user_interact();
+	manager::get_singleton().raise_user_interact();
 }
 
 
 void readwrite_context_impl::raise_gamestate_changed() const
 {
-	manager::raise_gamestate_changed();
+	manager::get_singleton().raise_gamestate_changed();
 }
 
 
 team& readwrite_context_impl::current_team_w()
 {
-	return (*resources::teams)[get_side()-1];
+	return resources::gameboard->get_team(get_side());
 }
 
 attack_result_ptr readwrite_context_impl::execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
-	unit_map::iterator i = resources::units->find(attacker_loc);
+	unit_map::iterator i = resources::gameboard->units().find(attacker_loc);
 	double m_aggression = i.valid() && i->can_recruit() ? get_leader_aggression() : get_aggression();
 	const unit_advancements_aspect& m_advancements = get_advancements();
 	return actions::execute_attack_action(get_side(),true,attacker_loc,defender_loc,attacker_weapon, m_aggression, m_advancements);
@@ -122,7 +115,7 @@ attack_result_ptr readwrite_context_impl::execute_attack_action(const map_locati
 
 
 attack_result_ptr readonly_context_impl::check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
-	unit_map::iterator i = resources::units->find(attacker_loc);
+	unit_map::iterator i = resources::gameboard->units().find(attacker_loc);
 	double m_aggression = i.valid() && i->can_recruit() ? get_leader_aggression() : get_aggression();
 	const unit_advancements_aspect& m_advancements = get_advancements();
 	return actions::execute_attack_action(get_side(),false,attacker_loc,defender_loc,attacker_weapon, m_aggression, m_advancements);
@@ -178,12 +171,10 @@ synced_command_result_ptr readonly_context_impl::check_synced_command_action(con
 	return actions::execute_synced_command_action(get_side(),false,lua_code,location);
 }
 
-
 template<typename T>
-void readonly_context_impl::add_known_aspect(const std::string &name, boost::shared_ptr< typesafe_aspect <T> > &where)
+void readonly_context_impl::add_known_aspect(const std::string& name, typesafe_aspect_ptr<T>& where)
 {
-	boost::shared_ptr< typesafe_known_aspect <T> > ka_ptr(new typesafe_known_aspect<T>(name,where,aspects_));
-	known_aspects_.insert(make_pair(name,ka_ptr));
+	known_aspects_.emplace(name, std::make_shared<typesafe_known_aspect<T>>(name, where, aspects_));
 }
 
 readonly_context_impl::readonly_context_impl(side_context &context, const config &cfg)
@@ -192,7 +183,6 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		known_aspects_(),
 		advancements_(),
 		aggression_(),
-		attack_depth_(),
 		aspects_(),
 		attacks_(),
 		avoid_(),
@@ -214,14 +204,10 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		dst_src_enemy_valid_lua_(false),
 		src_dst_valid_lua_(false),
 		src_dst_enemy_valid_lua_(false),
-		number_of_possible_recruits_to_force_recruit_(),
 		passive_leader_(),
 		passive_leader_shares_keep_(),
 		possible_moves_(),
-		recruitment_(),
 		recruitment_diversity_(),
-		recruitment_ignore_bad_combat_(),
-		recruitment_ignore_bad_movement_(),
 		recruitment_instructions_(),
 		recruitment_more_(),
 		recruitment_pattern_(),
@@ -237,11 +223,10 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		villages_per_scout_()
 	{
 		init_side_context_proxy(context);
-		manager::add_gamestate_observer(this);
+		manager::get_singleton().add_gamestate_observer(this);
 
 		add_known_aspect("advancements", advancements_);
 		add_known_aspect("aggression",aggression_);
-		add_known_aspect("attack_depth",attack_depth_);
 		add_known_aspect("attacks",attacks_);
 		add_known_aspect("avoid",avoid_);
 		add_known_aspect("caution",caution_);
@@ -250,13 +235,9 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		add_known_aspect("leader_goal",leader_goal_);
 		add_known_aspect("leader_ignores_keep",leader_ignores_keep_);
 		add_known_aspect("leader_value",leader_value_);
-		add_known_aspect("number_of_possible_recruits_to_force_recruit",number_of_possible_recruits_to_force_recruit_);
 		add_known_aspect("passive_leader",passive_leader_);
 		add_known_aspect("passive_leader_shares_keep",passive_leader_shares_keep_);
-		add_known_aspect("recruitment",recruitment_);
 		add_known_aspect("recruitment_diversity",recruitment_diversity_);
-		add_known_aspect("recruitment_ignore_bad_combat",recruitment_ignore_bad_combat_);
-		add_known_aspect("recruitment_ignore_bad_movement",recruitment_ignore_bad_movement_);
 		add_known_aspect("recruitment_instructions",recruitment_instructions_);
 		add_known_aspect("recruitment_more",recruitment_more_);
 		add_known_aspect("recruitment_pattern",recruitment_pattern_);
@@ -273,19 +254,19 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 
 void readonly_context_impl::on_readonly_context_create() {
 	//init the composite ai engines
-	BOOST_FOREACH(const config &cfg_element, cfg_.child_range("engine")){
+	for(const config &cfg_element : cfg_.child_range("engine")) {
 		engine::parse_engine_from_config(*this,cfg_element,std::back_inserter(engines_));
 	}
 
 	// init the composite ai aspects
-	BOOST_FOREACH(const config &cfg_element, cfg_.child_range("aspect")){
+	for(const config &cfg_element : cfg_.child_range("aspect")) {
 		std::vector<aspect_ptr> aspects;
 		engine::parse_aspect_from_config(*this,cfg_element,cfg_element["id"],std::back_inserter(aspects));
 		add_aspects(aspects);
 	}
 
 	// init the composite ai goals
-	BOOST_FOREACH(const config &cfg_element, cfg_.child_range("goal")){
+	for(const config &cfg_element : cfg_.child_range("goal")) {
 		engine::parse_goal_from_config(*this,cfg_element,std::back_inserter(get_goals()));
 	}
 }
@@ -305,13 +286,13 @@ config readwrite_context_impl::to_readwrite_context_config() const
 config readonly_context_impl::to_readonly_context_config() const
 {
 	config cfg;
-	BOOST_FOREACH(const engine_ptr e, engines_) {
+	for(const engine_ptr e : engines_) {
 		cfg.add_child("engine",e->to_config());
 	}
-	BOOST_FOREACH(const aspect_map::value_type a, aspects_) {
+	for(const aspect_map::value_type a : aspects_) {
 		cfg.add_child("aspect",a.second->to_config());
 	}
-	BOOST_FOREACH(const goal_ptr g, goals_) {
+	for(const goal_ptr g : goals_) {
 		cfg.add_child("goal",g->to_config());
 	}
 	return cfg;
@@ -319,7 +300,7 @@ config readonly_context_impl::to_readonly_context_config() const
 
 readonly_context_impl::~readonly_context_impl()
 {
-	manager::remove_gamestate_observer(this);
+	manager::get_singleton().remove_gamestate_observer(this);
 }
 
 void readonly_context_impl::handle_generic_event(const std::string& /*event_name*/)
@@ -329,33 +310,33 @@ void readonly_context_impl::handle_generic_event(const std::string& /*event_name
 
 
 const game_info& readonly_context_impl::get_info() const{
-	return manager::get_active_ai_info_for_side(get_side());
+	return manager::get_singleton().get_active_ai_info_for_side(get_side());
 }
 
 
 game_info& readwrite_context_impl::get_info_w(){
-	return manager::get_active_ai_info_for_side(get_side());
+	return manager::get_singleton().get_active_ai_info_for_side(get_side());
 }
 
 void readonly_context_impl::diagnostic(const std::string& msg)
 {
 	if(game_config::debug) {
-		resources::screen->set_diagnostic(msg);
+		display::get_singleton()->set_diagnostic(msg);
 	}
 }
 
 
 const team& readonly_context_impl::current_team() const
 {
-	return (*resources::teams)[get_side()-1];
+	return resources::gameboard->get_team(get_side());
 }
 
 
 void readonly_context_impl::log_message(const std::string& msg)
 {
 	if(game_config::debug) {
-		resources::screen->get_chat_manager().add_chat_message(time(NULL), "ai", get_side(), msg,
-				events::chat_handler::MESSAGE_PUBLIC, false);
+		game_display::get_singleton()->get_chat_manager().add_chat_message(
+			std::time(nullptr), "ai", get_side(), msg, events::chat_handler::MESSAGE_PUBLIC, false);
 	}
 }
 
@@ -364,7 +345,7 @@ void readonly_context_impl::calculate_possible_moves(std::map<map_location,pathf
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
 		const terrain_filter* remove_destinations) const
 {
-  calculate_moves(*resources::units,res,srcdst,dstsrc,enemy,assume_full_movement,remove_destinations);
+  calculate_moves(resources::gameboard->units(),res,srcdst,dstsrc,enemy,assume_full_movement,remove_destinations);
 }
 
 void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_location,pathfind::paths>& res, move_map& srcdst,
@@ -394,8 +375,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 			continue;
 		}
 		// If it's an enemy unit, reset its moves while we do the calculations.
-		unit* held_unit = const_cast<unit *>(&*un_it);
-		const unit_movement_resetter move_resetter(*held_unit,enemy || assume_full_movement);
+		const unit_movement_resetter move_resetter(*un_it,enemy || assume_full_movement);
 
 		// Insert the trivial moves of staying on the same map location.
 		if (un_it->movement_left() > 0) {
@@ -404,35 +384,33 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 			dstsrc.insert(trivial_mv);
 		}
 		/**
-		 * @todo This is where support for a speculative unit map is incomplete.
+		 * TODO: This is where support for a speculative unit map is incomplete.
 		 *       There are several places (deep) within the paths constructor
-		 *       where *resources::units is assumed to be the unit map. Rather
+		 *       where resources::gameboard->units() is assumed to be the unit map. Rather
 		 *       than introduce a new parameter to numerous functions, a better
 		 *       solution may be for the creator of the speculative map (if one
-		 *       is used in the future) to cause resources::units to point to
+		 *       is used in the future) to cause resources::gameboard->units() to point to
 		 *       that map (and restore the "real" pointer when the speculating
 		 *       is completed). If that approach is adopted, calculate_moves()
 		 *       and calculate_possible_moves() become redundant, and one of
 		 *       them should probably be eliminated.
 		 */
-		res.insert(std::pair<map_location,pathfind::paths>(
-			un_it->get_location(), pathfind::paths(
-				*un_it, false, true, current_team(), 0, see_all)));
+		res.emplace(un_it->get_location(), pathfind::paths(*un_it, false, true, current_team(), 0, see_all));
 	}
 
 	// deactivate terrain filtering if it's just the dummy 'matches nothing'
 	static const config only_not_tag("not");
 	if(remove_destinations && remove_destinations->to_config() == only_not_tag) {
-		remove_destinations = NULL;
+		remove_destinations = nullptr;
 	}
 
 	for(std::map<map_location,pathfind::paths>::iterator m = res.begin(); m != res.end(); ++m) {
-		BOOST_FOREACH(const pathfind::paths::step &dest, m->second.destinations)
+		for(const pathfind::paths::step &dest : m->second.destinations)
 		{
 			const map_location& src = m->first;
 			const map_location& dst = dest.curr;
 
-			if(remove_destinations != NULL && remove_destinations->match(dst)) {
+			if(remove_destinations != nullptr && remove_destinations->match(dst)) {
 				continue;
 			}
 
@@ -440,8 +418,8 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 
 			// Don't take friendly villages
 			if(!enemy && resources::gameboard->map().is_village(dst)) {
-				for(size_t n = 0; n != resources::teams->size(); ++n) {
-					if((*resources::teams)[n].owns_village(dst)) {
+				for(std::size_t n = 0; n != resources::gameboard->teams().size(); ++n) {
+					if(resources::gameboard->teams()[n].owns_village(dst)) {
 						int side = n + 1;
 						if (get_side() != side && !current_team().is_enemy(side)) {
 							friend_owns = true;
@@ -456,9 +434,9 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 				continue;
 			}
 
-			if(src != dst && (resources::gameboard->find_visible_unit(dst, current_team()) == resources::units->end()) ) {
-				srcdst.insert(std::pair<map_location,map_location>(src,dst));
-				dstsrc.insert(std::pair<map_location,map_location>(dst,src));
+			if(src != dst && (resources::gameboard->find_visible_unit(dst, current_team()) == resources::gameboard->units().end()) ) {
+				srcdst.emplace(src, dst);
+				dstsrc.emplace(dst, src);
 			}
 		}
 	}
@@ -467,7 +445,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 
 void readonly_context_impl::add_aspects(std::vector< aspect_ptr > &aspects )
 {
-	BOOST_FOREACH(aspect_ptr a, aspects) {
+	for(aspect_ptr a : aspects) {
 		const std::string id = a->get_id();
 		known_aspect_map::iterator i = known_aspects_.find(id);
 		if (i != known_aspects_.end()) {
@@ -491,8 +469,8 @@ void readonly_context_impl::add_facet(const std::string &id, const config &cfg) 
 const defensive_position& readonly_context_impl::best_defensive_position(const map_location& loc,
 		const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const
 {
-	const unit_map::const_iterator itor = resources::units->find(loc);
-	if(itor == resources::units->end()) {
+	const unit_map::const_iterator itor = resources::gameboard->units().find(loc);
+	if(itor == resources::gameboard->units().end()) {
 		static defensive_position pos;
 		pos.chance_to_hit = 0;
 		pos.vulnerability = pos.support = 0;
@@ -530,7 +508,7 @@ const defensive_position& readonly_context_impl::best_defensive_position(const m
 		}
 	}
 
-	defensive_position_cache_.insert(std::pair<map_location,defensive_position>(loc,pos));
+	defensive_position_cache_.emplace(loc, pos);
 	return defensive_position_cache_[loc];
 }
 
@@ -561,15 +539,6 @@ double readonly_context_impl::get_aggression() const
 }
 
 
-int readonly_context_impl::get_attack_depth() const
-{
-	if (attack_depth_) {
-		return std::max<int>(1,attack_depth_->get()); ///@todo 1.9: add validators, such as minmax filters to aspects
-	}
-	return 1;
-}
-
-
 const aspect_map& readonly_context_impl::get_aspects() const
 {
 	return aspects_;
@@ -592,12 +561,12 @@ const attacks_vector& readonly_context_impl::get_attacks() const
 }
 
 
-const variant& readonly_context_impl::get_attacks_as_variant() const
+const wfl::variant& readonly_context_impl::get_attacks_as_variant() const
 {
 	if (attacks_) {
 		return attacks_->get_variant();
 	}
-	static variant v;///@todo 1.9: replace with variant::null_variant;
+	static wfl::variant v;
 	return v;
 }
 
@@ -608,7 +577,7 @@ const terrain_filter& readonly_context_impl::get_avoid() const
 	}
 	config cfg;
 	cfg.add_child("not");
-	static terrain_filter tf(vconfig(cfg),resources::filter_con);
+	static terrain_filter tf(vconfig(cfg, true), resources::filter_con);
 	return tf;
 }
 
@@ -673,7 +642,6 @@ engine_ptr readonly_context_impl::get_engine_by_cfg(const config& cfg)
 		return *en;
 	}
 
-	//TODO: fix, removing some code duplication
 	engine_factory::factory_map::iterator eng = engine_factory::get_list().find(engine_name);
 	if (eng == engine_factory::get_list().end()){
 		ERR_AI << "side "<<get_side()<<" : UNABLE TO FIND engine["<<
@@ -764,15 +732,6 @@ double readonly_context_impl::get_leader_value() const
 }
 
 
-double readonly_context_impl::get_number_of_possible_recruits_to_force_recruit() const
-{
-	if (number_of_possible_recruits_to_force_recruit_) {
-		return number_of_possible_recruits_to_force_recruit_->get();
-	}
-	return 0;
-}
-
-
 bool readonly_context_impl::get_passive_leader() const
 {
 	if (passive_leader_) {
@@ -800,53 +759,12 @@ const moves_map& readonly_context_impl::get_possible_moves() const
 }
 
 
-const std::vector<unit_ptr>& readonly_context_impl::get_recall_list() const
-{
-	static std::vector<unit_ptr> dummy_units;
-	///@todo 1.9: check for (level_["disallow_recall"]))
-	if(!current_team().persistent()) {
-		return dummy_units;
-	}
-
-	return current_team().recall_list().recall_list_; //TODO: Refactor ai so that friend of ai context is not required of recall_list_manager at this line
-}
-
-stage_ptr readonly_context_impl::get_recruitment(ai_context &context) const
-{
-	if (recruitment_) {
-		ministage_ptr m = recruitment_->get_ptr();
-		if (m) {
-			return m->get_stage_ptr(context);
-		}
-	}
-	return stage_ptr();
-}
-
-
 double readonly_context_impl::get_recruitment_diversity() const
 {
 	if (recruitment_diversity_) {
 		return recruitment_diversity_->get();
 	}
 	return 0.;
-}
-
-
-bool readonly_context_impl::get_recruitment_ignore_bad_combat() const
-{
-	if (recruitment_ignore_bad_combat_) {
-		return recruitment_ignore_bad_combat_->get();
-	}
-	return false;
-}
-
-
-bool readonly_context_impl::get_recruitment_ignore_bad_movement() const
-{
-	if (recruitment_ignore_bad_movement_) {
-		return recruitment_ignore_bad_movement_->get();
-	}
-	return false;
 }
 
 
@@ -1007,18 +925,18 @@ const std::set<map_location>& readonly_context_impl::keeps() const
 
 
 keeps_cache::keeps_cache()
-	: map_(NULL)
+	: map_(nullptr)
 	, keeps_()
 {
-	ai::manager::add_turn_started_observer(this);
-	ai::manager::add_map_changed_observer(this);
+	ai::manager::get_singleton().add_turn_started_observer(this);
+	ai::manager::get_singleton().add_map_changed_observer(this);
 }
 
 
 keeps_cache::~keeps_cache()
 {
-	ai::manager::remove_turn_started_observer(this);
-	ai::manager::remove_map_changed_observer(this);
+	ai::manager::get_singleton().remove_turn_started_observer(this);
+	ai::manager::get_singleton().remove_map_changed_observer(this);
 }
 
 void keeps_cache::clear()
@@ -1037,13 +955,13 @@ const std::set<map_location>& keeps_cache::get()
 	if(keeps_.empty()) {
 		// Generate the list of keeps:
 		// iterate over the entire map and find all keeps.
-		for(size_t x = 0; x != size_t(map_->w()); ++x) {
-			for(size_t y = 0; y != size_t(map_->h()); ++y) {
+		for(int x = 0; x != map_->w(); ++x) {
+			for(int y = 0; y != map_->h(); ++y) {
 				const map_location loc(x,y);
 				if(map_->is_keep(loc)) {
-					map_location adj[6];
-					get_adjacent_tiles(loc,adj);
-					for(size_t n = 0; n != 6; ++n) {
+					adjacent_loc_array_t adj;
+					get_adjacent_tiles(loc,adj.data());
+					for(std::size_t n = 0; n < adj.size(); ++n) {
 						if(map_->is_castle(adj[n])) {
 							keeps_.insert(loc);
 							break;
@@ -1060,8 +978,8 @@ const std::set<map_location>& keeps_cache::get()
 
 bool readonly_context_impl::leader_can_reach_keep() const
 {
-	const unit_map::iterator leader = resources::units->find_leader(get_side());
-	if(leader == resources::units->end() || leader->incapacitated()) {
+	const unit_map::iterator leader = resources::gameboard->units().find_leader(get_side());
+	if(leader == resources::gameboard->units().end() || leader->incapacitated()) {
 		return false;
 	}
 
@@ -1091,14 +1009,14 @@ const map_location& readonly_context_impl::nearest_keep(const map_location& loc)
 		return dummy;
 	}
 
-	const map_location* res = NULL;
+	const map_location* res = nullptr;
 	int closest = -1;
 	for(std::set<map_location>::const_iterator i = keeps.begin(); i != keeps.end(); ++i) {
 		if (avoided_locations.find(*i)!=avoided_locations.end()) {
 			continue;
 		}
 		const int distance = distance_between(*i,loc);
-		if(res == NULL || distance < closest) {
+		if(res == nullptr || distance < closest) {
 			closest = distance;
 			res = &*i;
 		}
@@ -1118,11 +1036,11 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 	std::fill_n(ratings, 0, 6);
 	int num_used_locs = 0;
 
-	map_location locs[6];
-	get_adjacent_tiles(loc,locs);
+	adjacent_loc_array_t locs;
+	get_adjacent_tiles(loc,locs.data());
 
 	const gamemap& map_ = resources::gameboard->map();
-	unit_map& units_ = *resources::units;
+	unit_map& units_ = resources::gameboard->units();
 
 	int res = 0;
 
@@ -1140,7 +1058,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 			continue;
 		}
 
-		const t_translation::t_terrain terrain = map_[locs[i]];
+		const t_translation::terrain_code terrain = map_[locs[i]];
 
 		typedef move_map::const_iterator Itor;
 		typedef std::pair<Itor,Itor> Range;
@@ -1170,18 +1088,18 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 			// Considering the unit location would be too slow, we only apply the bonus granted by the global ToD
 			const int lawful_bonus = resources::tod_manager->get_time_of_day(attack_turn).lawful_bonus;
 			int tod_modifier = 0;
-			if(un.alignment() == unit_type::LAWFUL) {
+			if(un.alignment() == unit_type::ALIGNMENT::LAWFUL) {
 				tod_modifier = lawful_bonus;
-			} else if(un.alignment() == unit_type::CHAOTIC) {
+			} else if(un.alignment() == unit_type::ALIGNMENT::CHAOTIC) {
 				tod_modifier = -lawful_bonus;
-			} else if(un.alignment() == unit_type::LIMINAL) {
-				tod_modifier = -(abs(lawful_bonus));
+			} else if(un.alignment() == unit_type::ALIGNMENT::LIMINAL) {
+				tod_modifier = -(std::abs(lawful_bonus));
 			}
 
 			// The 0.5 power avoids underestimating too much the damage of a wounded unit.
-			int hp = int(sqrt(double(un.hitpoints()) / un.max_hitpoints()) * 1000);
-			int most_damage = 0;
-			BOOST_FOREACH(const attack_type &att, un.attacks())
+			int64_t hp = static_cast<int>(std::sqrt(static_cast<double>(un.hitpoints()) / un.max_hitpoints()) * 1000);
+			int64_t most_damage = 0;
+			for(const attack_type &att : un.attacks())
 			{
 				int damage = att.damage() * att.num_attacks() * (100 + tod_modifier);
 				if (damage > most_damage) {
@@ -1189,9 +1107,13 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 				}
 			}
 
-			int village_bonus = map_.is_village(terrain) ? 3 : 2;
-			int defense = 100 - un.defense_modifier(terrain);
-			int rating = hp * defense * most_damage * village_bonus / 200;
+			int64_t village_bonus = map_.is_village(terrain) ? 3 : 2;
+			int64_t defense = 100 - un.defense_modifier(terrain);
+			int64_t rating_64 = hp * defense * most_damage * village_bonus / 200;
+			int rating = rating_64;
+			if(static_cast<int64_t>(rating) != rating_64) {
+				WRN_AI << "overflow in ai attack calculation\n";
+			}
 			if(rating > best_rating) {
 				map_location *pos = std::find(beg_used, end_used, it->second);
 				// Check if the spot is the same or better than an older one.
@@ -1230,18 +1152,17 @@ void readonly_context_impl::recalculate_move_maps() const
 	srcdst_ = move_map();
 	calculate_possible_moves(possible_moves_,srcdst_,dstsrc_,false,false,&get_avoid());
 	if (get_passive_leader()||get_passive_leader_shares_keep()) {
-		unit_map::iterator i = resources::units->find_leader(get_side());
+		unit_map::iterator i = resources::gameboard->units().find_leader(get_side());
 		if (i.valid()) {
 			map_location loc = i->get_location();
 			srcdst_.erase(loc);
-			for(move_map::iterator i = dstsrc_.begin(); i != dstsrc_.end(); ) {
-				if(i->second == loc) {
-					dstsrc_.erase(i++);
+			for(move_map::iterator it = dstsrc_.begin(); it != dstsrc_.end(); ) {
+				if(it->second == loc) {
+					it = dstsrc_.erase(it);
 				} else {
-					++i;
+					++it;
 				}
 			}
-		///@todo 1.9: shall possible moves be modified as well ?
 		}
 	}
 	move_maps_valid_ = true;
@@ -1285,7 +1206,7 @@ void readonly_context_impl::set_src_dst_enemy_valid_lua()
 	src_dst_enemy_valid_lua_ = true;
 }
 
-const map_location& readonly_context_impl::suitable_keep(const map_location& leader_location, const pathfind::paths& leader_paths){
+const map_location& readonly_context_impl::suitable_keep(const map_location& leader_location, const pathfind::paths& leader_paths) const {
 	if (resources::gameboard->map().is_keep(leader_location)) {
 		return leader_location; //if leader already on keep, then return leader_location
 	}
@@ -1296,13 +1217,13 @@ const map_location& readonly_context_impl::suitable_keep(const map_location& lea
 	map_location const* best_occupied_keep = &map_location::null_location();
 	double move_left_at_best_occupied_keep = 0.0;
 
-	BOOST_FOREACH(const pathfind::paths::step &dest, leader_paths.destinations)
+	for(const pathfind::paths::step &dest : leader_paths.destinations)
 	{
 		const map_location &loc = dest.curr;
 		if (keeps().find(loc)!=keeps().end()){
 
 			const int move_left_at_loc = dest.move_left;
-			if (resources::units->count(loc) == 0) {
+			if (resources::gameboard->units().count(loc) == 0) {
 				if ((*best_free_keep==map_location::null_location())||(move_left_at_loc>move_left_at_best_free_keep)){
 					best_free_keep = &loc;
 					move_left_at_best_free_keep = move_left_at_loc;

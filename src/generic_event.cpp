@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2006 - 2014 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
 
 namespace events{
 
-generic_event::generic_event(std::string name) :
+generic_event::generic_event(const std::string& name) :
 	name_(name),
 	observers_(),
 	change_handler_(false),
@@ -57,20 +57,13 @@ bool generic_event::detach_handler(observer* obs){
 
 	//make sure observers are not notified right now
 	if (!notify_active_){
-		change_handler_ = true;
-		try{
-			std::vector<observer*>::iterator it = std::find(observers_.begin(), observers_.end(), obs);
-			if (it == observers_.end()){
-				handler_detached = false;
-			}
-			else{
-				observers_.erase(it);
-				handler_detached = true;
-			}
+		auto it = std::find(observers_.begin(), observers_.end(), obs);
+		if (it == observers_.end()){
+			handler_detached = false;
 		}
-		catch (...){
-			change_handler_ = false;
-			throw;
+		else{
+			observers_.erase(it);
+			handler_detached = true;
 		}
 		change_handler_ = false;
 	}

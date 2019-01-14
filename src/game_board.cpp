@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,15 +14,15 @@
 
 #include "config.hpp"
 #include "game_board.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "recall_list_manager.hpp"
-#include "unit.hpp"
+#include "terrain/type_data.hpp"
+#include "units/unit.hpp"
 
-#include "utils/foreach.tpp"
-
-#include <boost/foreach.hpp>
+#include <set>
+#include <vector>
 
 static lg::log_domain log_engine("enginerefac");
 #define DBG_RG LOG_STREAM(debug, log_engine)
@@ -30,30 +30,39 @@ static lg::log_domain log_engine("enginerefac");
 #define WRN_RG LOG_STREAM(warn, log_engine)
 #define ERR_RG LOG_STREAM(err, log_engine)
 
-game_board::game_board(const config & game_config, const config & level) : teams_(), map_(new gamemap(game_config, level)), units_() {}
+static lg::log_domain log_engine_enemies("engine/enemies");
+#define DBG_EE LOG_STREAM(debug, log_engine_enemies)
 
-game_board::game_board(const game_board & other) : teams_(other.teams_), map_(new gamemap(*(other.map_))), units_(other.units_) {}
+game_board::game_board(const ter_data_cache & tdata, const config & level)
+	: teams_()
+	, map_(new gamemap(tdata, level["map_data"]))
+	, unit_id_manager_(level["next_underlying_unit_id"])
+	, units_()
+{
+}
+
+game_board::game_board(const game_board & other)
+	: teams_(other.teams_)
+	, labels_(other.labels_)
+	, map_(new gamemap(*(other.map_)))
+	, unit_id_manager_(other.unit_id_manager_)
+	, units_(other.units_) {}
 
 game_board::~game_board() {}
 
 
-//TODO: Fix this so that we swap pointers to maps, and also fix replace_map to use scoped_ptr::reset.
+//TODO: Fix this so that we swap pointers to maps
 // However, then anytime gameboard is overwritten, resources::gamemap must be updated. So might want to
 // just get rid of resources::gamemap and replace with resources::gameboard->map() at that point.
 void swap(game_board & one, game_board & other) {
 	std::swap(one.teams_, other.teams_);
 	std::swap(one.units_, other.units_);
+	std::swap(one.unit_id_manager_, other.unit_id_manager_);
 	one.map_.swap(other.map_);
 }
 
-game_board & game_board::operator= (game_board other)
-{
-	swap(*this, other);
-	return(*this);
-}
-
 void game_board::new_turn(int player_num) {
-	BOOST_FOREACH (unit & i, units_) {
+	for (unit & i : units_) {
 		if (i.side() == player_num) {
 			i.new_turn();
 		}
@@ -61,7 +70,7 @@ void game_board::new_turn(int player_num) {
 }
 
 void game_board::end_turn(int player_num) {
-	BOOST_FOREACH (unit & i, units_) {
+	for (unit & i : units_) {
 		if (i.side() == player_num) {
 			i.end_turn();
 		}
@@ -69,22 +78,91 @@ void game_board::end_turn(int player_num) {
 }
 
 void game_board::set_all_units_user_end_turn() {
-	BOOST_FOREACH (unit & i, units_) {
+	for (unit & i : units_) {
 		i.set_user_end_turn(true);
 	}
 }
 
-void game_board::all_survivors_to_recall() {
+void game_board::heal_all_survivors() {
 	for (unit_map::iterator it = units_.begin(); it != units_.end(); it++) {
 		unit_ptr un =  it.get_shared_ptr();
 		if (teams_[un->side() - 1].persistent()) {
 			un->new_turn();
 			un->new_scenario();
-#if 0
-			teams_[un->side() - 1].recall_list().push_back(un);
-#endif
 		}
 	}
+}
+
+void game_board::check_victory(bool & continue_level, bool & found_player, bool & found_network_player, bool & cleared_villages, std::set<unsigned> & not_defeated, bool remove_from_carryover_on_defeat)
+{
+	continue_level = true;
+	found_player = false;
+	found_network_player = false;
+	cleared_villages = false;
+
+	not_defeated = std::set<unsigned>();
+
+	for (const unit & i : units())
+	{
+		DBG_EE << "Found a unit: " << i.id() << " on side " << i.side() << std::endl;
+		const team& tm = get_team(i.side());
+		DBG_EE << "That team's defeat condition is: " << tm.defeat_condition() << std::endl;
+		if (i.can_recruit() && tm.defeat_condition() == team::DEFEAT_CONDITION::NO_LEADER) {
+			not_defeated.insert(i.side());
+		} else if (tm.defeat_condition() == team::DEFEAT_CONDITION::NO_UNITS) {
+			not_defeated.insert(i.side());
+		}
+	}
+
+	for (team& tm : teams_)
+	{
+		if(tm.defeat_condition() == team::DEFEAT_CONDITION::NEVER)
+		{
+			not_defeated.insert(tm.side());
+		}
+		// Clear villages for teams that have no leader and
+		// mark side as lost if it should be removed from carryover.
+		if (not_defeated.find(tm.side()) == not_defeated.end())
+		{
+			tm.clear_villages();
+			// invalidate_all() is overkill and expensive but this code is
+			// run rarely so do it the expensive way.
+			cleared_villages = true;
+
+			if (remove_from_carryover_on_defeat)
+			{
+				tm.set_lost(true);
+			}
+		}
+		else if(remove_from_carryover_on_defeat)
+		{
+			tm.set_lost(false);
+		}
+	}
+
+	for (std::set<unsigned>::iterator n = not_defeated.begin(); n != not_defeated.end(); ++n) {
+		std::size_t side = *n - 1;
+
+		DBG_EE << "Side " << (side+1) << " is a not-defeated team" << std::endl;
+
+		std::set<unsigned>::iterator m(n);
+		for (++m; m != not_defeated.end(); ++m) {
+			if (teams()[side].is_enemy(*m)) {
+				return;
+			}
+			DBG_EE << "Side " << (side+1) << " and " << *m << " are not enemies." << std::endl;
+		}
+
+		if (teams()[side].is_local_human()) {
+			found_player = true;
+		}
+
+		if (teams()[side].is_network_human()) {
+			found_network_player = true;
+		}
+	}
+
+	continue_level = false;
 }
 
 unit_map::iterator game_board::find_visible_unit(const map_location &loc,
@@ -92,16 +170,16 @@ unit_map::iterator game_board::find_visible_unit(const map_location &loc,
 {
 	if (!map_->on_board(loc)) return units_.end();
 	unit_map::iterator u = units_.find(loc);
-	if (!u.valid() || !u->is_visible_to_team(current_team, *map_, see_all))
+	if (!u.valid() || !u->is_visible_to_team(current_team, see_all))
 		return units_.end();
 	return u;
 }
 
-bool game_board::has_visible_unit(const map_location & loc, const team& current_team, bool see_all)
+bool game_board::has_visible_unit(const map_location & loc, const team& current_team, bool see_all) const
 {
 	if (!map_->on_board(loc)) return false;
-	unit_map::iterator u = units_.find(loc);
-	if (!u.valid() || !u->is_visible_to_team(current_team, *map_, see_all))
+	unit_map::const_iterator u = units_.find(loc);
+	if (!u.valid() || !u->is_visible_to_team(current_team, see_all))
 		return false;
 	return true;
 }
@@ -110,28 +188,30 @@ unit* game_board::get_visible_unit(const map_location &loc,
 	const team &current_team, bool see_all)
 {
 	unit_map::iterator ui = find_visible_unit(loc, current_team, see_all);
-	if (ui == units_.end()) return NULL;
+	if (ui == units_.end()) return nullptr;
 	return &*ui;
 }
 
-void game_board::side_drop_to(int side_num, team::CONTROLLER ctrl) {
-	team &tm = teams_[side_num-1];
+void game_board::side_drop_to(int side_num, team::CONTROLLER ctrl, team::PROXY_CONTROLLER proxy) {
+	team& tm = get_team(side_num);
 
 	tm.change_controller(ctrl);
+	tm.change_proxy(proxy);
+	tm.set_local(true);
 
-	tm.set_current_player(lexical_cast<std::string> (ctrl) + lexical_cast<std::string> (side_num));
+	tm.set_current_player(ctrl.to_string() + std::to_string(side_num));
 
 	unit_map::iterator leader = units_.find_leader(side_num);
-	if (leader.valid()) leader->rename(lexical_cast<std::string> (ctrl) + lexical_cast<std::string> (side_num));
+	if (leader.valid()) leader->rename(ctrl.to_string() + std::to_string(side_num));
 }
 
-void game_board::side_change_controller(int side_num, team::CONTROLLER ctrl, const std::string pname) {
-	team &tm = teams_[side_num-1];
+void game_board::side_change_controller(int side_num, bool is_local, const std::string& pname) {
+	team &tm = get_team(side_num);
 
-	tm.change_controller(ctrl);
+	tm.set_local(is_local);
 
-	if (pname.empty()) {
-		return ;
+	if (pname.empty() || !tm.is_human()) {
+		return;
 	}
 
 	tm.set_current_player(pname);
@@ -142,25 +222,39 @@ void game_board::side_change_controller(int side_num, team::CONTROLLER ctrl, con
 	}
 }
 
-bool game_board::try_add_unit_to_recall_list(const map_location& loc, const unit_ptr u)
+bool game_board::team_is_defeated(const team& t) const
 {
-	if(teams_[u->side()-1].persistent()) {
-		teams_[u->side()-1].recall_list().add(u);
+	switch(t.defeat_condition().v)
+	{
+	case team::DEFEAT_CONDITION::ALWAYS:
 		return true;
-	} else {
-		ERR_RG << "unit with id " << u->id() << ": location (" << loc.x << "," << loc.y <<") is not on the map, and player "
-			<< u->side() << " has no recall list.\n";
+	case team::DEFEAT_CONDITION::NO_LEADER:
+		return !units_.find_leader(t.side()).valid();
+	case team::DEFEAT_CONDITION::NO_UNITS:
+		for (const unit& u : units_)
+		{
+			if(u.side() == t.side())
+				return false;
+		}
+		return true;
+	case team::DEFEAT_CONDITION::NEVER:
+	default:
 		return false;
 	}
 }
 
+bool game_board::try_add_unit_to_recall_list(const map_location&, const unit_ptr u)
+{
+	get_team(u->side()).recall_list().add(u);
+	return true;
+}
 
 boost::optional<std::string> game_board::replace_map(const gamemap & newmap) {
 	boost::optional<std::string> ret = boost::optional<std::string> ();
 
 	/* Remember the locations where a village is owned by a side. */
 	std::map<map_location, int> villages;
-	FOREACH(const AUTO& village, map_->villages()) {
+	for(const auto& village : map_->villages()) {
 		const int owner = village_owner(village);
 		if(owner != -1) {
 			villages[village] = owner;
@@ -179,7 +273,7 @@ boost::optional<std::string> game_board::replace_map(const gamemap & newmap) {
 	}
 
 	/* Disown villages that are no longer villages. */
-	FOREACH(const AUTO& village, villages) {
+	for(const auto& village : villages) {
 		if(!newmap.is_village(village.first)) {
 			teams_[village.second].lose_village(village.first);
 		}
@@ -189,23 +283,17 @@ boost::optional<std::string> game_board::replace_map(const gamemap & newmap) {
 	return ret;
 }
 
-
-
-void game_board::overlay_map(const gamemap & mask_map, const config & cfg, map_location loc, bool border) {
-	map_->overlay(mask_map, cfg, loc.x, loc.y, border);
-}
-
 bool game_board::change_terrain(const map_location &loc, const std::string &t_str,
                     const std::string & mode_str, bool replace_if_failed)
 {
 	//Code internalized from the implementation in lua.cpp
-	t_translation::t_terrain terrain = t_translation::read_terrain_code(t_str);
+	t_translation::terrain_code terrain = t_translation::read_terrain_code(t_str);
 	if (terrain == t_translation::NONE_TERRAIN) return false;
 
-	gamemap::tmerge_mode mode = gamemap::BOTH;
+	terrain_type_data::merge_mode mode = terrain_type_data::BOTH;
 
-	if (mode_str == "base") mode = gamemap::BASE;
-	else if (mode_str == "overlay") mode = gamemap::OVERLAY;
+	if (mode_str == "base") mode = terrain_type_data::BASE;
+	else if (mode_str == "overlay") mode = terrain_type_data::OVERLAY;
 
 	/*
 	 * When a hex changes from a village terrain to a non-village terrain, and
@@ -217,13 +305,13 @@ bool game_board::change_terrain(const map_location &loc, const std::string &t_st
 	 * easier to do this as wanted by the author in WML.
 	 */
 
-	t_translation::t_terrain
+	t_translation::terrain_code
 		old_t = map_->get_terrain(loc),
-		new_t = map_->merge_terrains(old_t, terrain, mode, replace_if_failed);
+		new_t = map_->tdata()->merge_terrains(old_t, terrain, mode, replace_if_failed);
 	if (new_t == t_translation::NONE_TERRAIN) return false;
 	preferences::encountered_terrains().insert(new_t);
 
-	if (map_->is_village(old_t) && !map_->is_village(new_t)) {
+	if (map_->tdata()->is_village(old_t) && !map_->tdata()->is_village(new_t)) {
 		int owner = village_owner(loc);
 		if (owner != -1)
 			teams_[owner].lose_village(loc);
@@ -231,58 +319,53 @@ bool game_board::change_terrain(const map_location &loc, const std::string &t_st
 
 	map_->set_terrain(loc, new_t);
 
-	BOOST_FOREACH(const t_translation::t_terrain &ut, map_->underlying_union_terrain(loc)) {
+	for(const t_translation::terrain_code &ut : map_->underlying_union_terrain(loc)) {
 		preferences::encountered_terrains().insert(ut);
 	}
 	return true;
 }
 
-void game_board::write_config(config & cfg) const {
+void game_board::write_config(config & cfg) const
+{
+	cfg["next_underlying_unit_id"] = unit_id_manager_.get_save_id();
 	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		int side_num = t - teams_.begin() + 1;
+		int side_num = std::distance(teams_.begin(), t) + 1;
 
 		config& side = cfg.add_child("side");
 		t->write(side);
 		side["no_leader"] = true;
-		side["side"] = str_cast(side_num);
+		side["side"] = std::to_string(side_num);
 
 		//current units
-		{
-			BOOST_FOREACH(const unit & i, units_) {
-				if (i.side() == side_num) {
-					config& u = side.add_child("unit");
-					i.get_location().write(u);
-					i.write(u);
-				}
+		for(const unit & i : units_) {
+			if(i.side() == side_num) {
+				config& u = side.add_child("unit");
+				i.get_location().write(u);
+				i.write(u, false);
 			}
 		}
 		//recall list
-		{
-			BOOST_FOREACH(const unit_const_ptr & j, t->recall_list()) {
-				config& u = side.add_child("unit");
-				j->write(u);
-			}
+		for(const unit_const_ptr & j : t->recall_list()) {
+			config& u = side.add_child("unit");
+			j->write(u);
 		}
 	}
 
 	//write the map
 	cfg["map_data"] = map_->write();
-
-	//Used by the carryover calculations.
-	cfg["map_villages_num"] = map_->villages().size();
 }
 
 temporary_unit_placer::temporary_unit_placer(unit_map& m, const map_location& loc, unit& u)
 	: m_(m), loc_(loc), temp_(m_.extract(loc))
 {
-	u.clone();
+	u.mark_clone(true);
 	m_.add(loc, u);
 }
 
 temporary_unit_placer::temporary_unit_placer(game_board& b, const map_location& loc, unit& u)
 	: m_(b.units_), loc_(loc), temp_(m_.extract(loc))
 {
-	u.clone();
+	u.mark_clone(true);
 	m_.add(loc, u);
 }
 
@@ -386,4 +469,3 @@ temporary_unit_mover::~temporary_unit_mover()
 	}
 	} catch (...) {}
 }
-

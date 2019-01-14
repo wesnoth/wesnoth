@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2012 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2012 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,10 +17,10 @@
  * Helper class for buffering a @c std::istream.
  */
 
-#ifndef BUFFERED_ISTREAM_HPP_INCLUDED
-#define BUFFERED_ISTREAM_HPP_INCLUDED
+#pragma once
 
-#include "util.hpp"
+#include <cstdio>
+#include <sstream>
 
 /**
  * Helper class for buffering a @c std::istream.
@@ -60,7 +60,7 @@ public:
 	{
 		fill_buffer();
 
-		if(UNLIKELY(eof_)) {
+		if(eof_) {
 			return EOF;
 		} else {
 			/*
@@ -87,7 +87,7 @@ public:
 	{
 		fill_buffer();
 
-		if(UNLIKELY(eof_)) {
+		if(eof_) {
 			return EOF;
 		} else {
 			/* See get() */
@@ -153,21 +153,19 @@ private:
 	 */
 	void fill_buffer()
 	{
-		if(UNLIKELY(buffer_offset_ >= buffer_size_)) {
+		if(buffer_offset_ >= buffer_size_) {
 			/*
 			 * This does not only test for the EOF, but also makes sure the
 			 * data is available in the buffer. Without it readsome will read
 			 * nothing, after its first call, even if the EOF has not been
 			 * reached.
 			 */
-			if(UNLIKELY(stream_.rdbuf()->sgetc() == EOF)) {
+			if(stream_.rdbuf()->sgetc() == EOF) {
 				eof_ = true;
 			} else {
 				buffer_offset_ = 0;
-				buffer_size_ = stream_.readsome(buffer_, sizeof(buffer_));
+				buffer_size_ = static_cast<unsigned> (stream_.readsome(buffer_, sizeof(buffer_)));
 			}
 		}
 	}
 };
-
-#endif

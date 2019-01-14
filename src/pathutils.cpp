@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,13 +17,10 @@
  * Various pathfinding functions and utilities.
  */
 
-#include "global.hpp"
-
 #include "pathutils.hpp"
+#include "pathutils_impl.hpp"
 
-#include "map.hpp"
-
-#include <boost/foreach.hpp>
+#include "map/map.hpp"
 
 
 /**
@@ -69,7 +66,7 @@ void get_tiles_in_radius(const map_location& center, const int radius,
  * of @a center (including @a center itself). @a result must be a std::set
  * of locations.
  */
-void get_tiles_radius(const map_location& center, size_t radius,
+void get_tiles_radius(const map_location& center, std::size_t radius,
                       std::set<map_location>& result)
 {
 	// Re-use some logic.
@@ -84,9 +81,9 @@ void get_tiles_radius(const map_location& center, size_t radius,
 namespace { // Helpers for get_tiles_radius() without a radius filter.
 
 	// Ranges of rows are stored as pairs of a row number and a number of rows.
-	typedef std::pair<int, size_t> row_range;
+	typedef std::pair<int, std::size_t> row_range;
 	// This is a map from column numbers to sets of ranges of rows.
-	typedef std::map<int, std::set<row_range> > column_ranges;
+	typedef std::map<int, std::set<row_range>> column_ranges;
 
 
 	/**
@@ -98,7 +95,7 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 	// probably a rare event).
 	void get_column_ranges(column_ranges & collected_tiles,
 	                       const std::vector<map_location>& locs,
-	                       const size_t radius,
+	                       const std::size_t radius,
 	                       const int col_begin, const int col_end)
 	{
 		// Shorter names for the directions we'll use.
@@ -109,11 +106,11 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 		// Perform this conversion once.
 		const int radius_i = static_cast<int>(radius);
 
-		BOOST_FOREACH (const map_location &loc, locs)
+		for (const map_location &loc : locs)
 			if ( loc != map_location::null_location() )
 			{
 				// Calculate the circle of hexes around this one.
-				size_t height = radius;
+				std::size_t height = radius;
 				map_location top = loc.get_direction(NORTH_WEST, radius_i);
 				// Don't start off the map edge.
 				if ( top.x < col_begin ) {
@@ -142,7 +139,7 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 
 	/**
 	 * Function that interprets @a collected_tiles and adds to @a result those
-	 * whose y-coordinate satisifies row_begin <= y < row_end.
+	 * whose y-coordinate satisfies row_begin <= y < row_end.
 	 * When passed to this function, @a result must not be empty. (This allows
 	 * a code simplification and is currently always the case anyway.)
 	 */
@@ -160,7 +157,7 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 		// Note: This hint will get incremented later, which is the only
 		// reason we require result to be initially non-empty.
 
-		BOOST_FOREACH (const column_ranges::value_type & column, collected_tiles)
+		for (const column_ranges::value_type & column : collected_tiles)
 		{
 			// For this loop, the order within the set is crucial; we need
 			// rows.first to be non-decreasing with each iteration.
@@ -168,7 +165,7 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 			// have been processed and either added to result or skipped.
 			// There is no going back (nor a need to).
 			int next_row = row_begin;
-			BOOST_FOREACH (const row_range &rows, column.second)
+			for (const row_range &rows : column.second)
 			{
 				// Skipping some rows?
 				if ( next_row < rows.first )
@@ -199,7 +196,7 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 // Complexity: O(nr lg(nr) + nr^2), where n = locs.size(), r = radius.
 // The nr^2 term is bounded by the size of the board.
 void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
-                      size_t radius, std::set<map_location>& result,
+                      std::size_t radius, std::set<map_location>& result,
                       bool with_border)
 {
 	// Make sure the provided locations are included.
@@ -237,42 +234,19 @@ void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
  * locs by a chain of at most @a radius tiles, each of which matches @a pred.
  * @a result must be a std::set of locations.
  */
-void get_tiles_radius(gamemap const &map, std::vector<map_location> const &locs,
-                      size_t radius, std::set<map_location> &result,
-                      bool with_border, xy_pred const &pred)
+void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
+                      std::size_t radius, std::set<map_location> &result,
+                      bool with_border, const xy_pred& pred)
 {
 	typedef std::set<map_location> location_set;
-
-	location_set must_visit, filtered_out;
 	location_set not_visited(locs.begin(), locs.end());
 
-	for ( ; radius != 0  &&  !not_visited.empty(); --radius )
-	{
-		location_set::const_iterator it = not_visited.begin();
-		location_set::const_iterator it_end = not_visited.end();
-
-		result.insert(it, it_end);
-		for(; it != it_end; ++it) {
-			map_location adj[6];
-			get_adjacent_tiles(*it, adj);
-			for(size_t i = 0; i != 6; ++i) {
-				map_location const &loc = adj[i];
-				if ( with_border ? map.on_board_with_border(loc) :
-				                   map.on_board(loc) ) {
-					if ( !result.count(loc) && !filtered_out.count(loc) ) {
-						if ( pred(loc) )
-							must_visit.insert(loc);
-						else
-							filtered_out.insert(loc);
-					}
-				}
-			}
+	get_tiles_radius(std::move(not_visited), radius, result, 
+		[&](const map_location& l) {
+			return with_border ? map.on_board_with_border(l) : map.on_board(l);
+		},
+		[&](const map_location& l) {
+			return pred(l);
 		}
-
-		not_visited.swap(must_visit);
-		must_visit.clear();
-	}
-
-	result.insert(not_visited.begin(), not_visited.end());
+	);
 }
-

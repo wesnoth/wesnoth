@@ -1,6 +1,6 @@
 /*
- Copyright (C) 2010 - 2014 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -16,13 +16,12 @@
  * @file
  */
 
-#ifndef WB_RECRUIT_HPP_
-#define WB_RECRUIT_HPP_
+#pragma once
 
 #include <string>
 
 #include "action.hpp"
-#include "map_location.hpp"
+#include "map/location.hpp"
 
 namespace wb
 {
@@ -33,8 +32,8 @@ namespace wb
 class recruit: public action
 {
 public:
-	recruit(size_t team_index, bool hidden, const std::string& unit_name, const map_location& recruit_hex);
-	recruit(config const&, bool hidden); // For deserialization
+	recruit(std::size_t team_index, bool hidden, const std::string& unit_name, const map_location& recruit_hex);
+	recruit(const config&, bool hidden); // For deserialization
 	virtual ~recruit();
 
 	virtual std::ostream& print(std::ostream& s) const;
@@ -57,7 +56,7 @@ public:
 	virtual void remove_temp_modifier(unit_map& unit_map);
 
 	/** Gets called by display when drawing a hex, to allow actions to draw to the screen. */
-	virtual void draw_hex(map_location const& hex);
+	virtual void draw_hex(const map_location& hex);
 	/** Redrawing function, called each time the action situation might have changed. */
 	virtual void redraw();
 
@@ -68,6 +67,7 @@ public:
 
 	/** @return pointer to a fake unit representing the one that will eventually be recruited. */
 	virtual unit_ptr get_unit() const { return temp_unit_; }
+	virtual bool places_new_unit() const { return true; }
 	/** @return pointer to the fake unit used only for visuals */
 	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
 
@@ -77,8 +77,8 @@ public:
 
 protected:
 
-	boost::shared_ptr<recruit> shared_from_this() {
-		return boost::static_pointer_cast<recruit>(action::shared_from_this());
+	std::shared_ptr<recruit> shared_from_this() {
+		return std::static_pointer_cast<recruit>(action::shared_from_this());
 	}
 
 	std::string unit_name_;
@@ -101,5 +101,3 @@ std::ostream& operator<<(std::ostream& s, recruit_ptr recruit);
 std::ostream& operator<<(std::ostream& s, recruit_const_ptr recruit);
 
 }
-
-#endif /* WB_RECRUIT_HPP_ */

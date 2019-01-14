@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -11,213 +11,289 @@
 
    See the COPYING file for more details.
 */
-#ifndef VIDEO_HPP_INCLUDED
-#define VIDEO_HPP_INCLUDED
+
+#pragma once
 
 #include "events.hpp"
 #include "exceptions.hpp"
 #include "lua_jailbreak_exception.hpp"
 
-#include <boost/utility.hpp>
+#include <memory>
 
-#if SDL_VERSION_ATLEAST(2,0,0)
-#include "sdl/window.hpp"
-#endif
-
-struct surface;
-#ifdef SDL_GPU
-#include "sdl/shader.hpp"
-#include "sdl/utils.hpp"
+class surface;
+struct point;
 
 namespace sdl
 {
-class timage;
+class window;
 }
-#endif
 
-//possible flags when setting video modes
-#define FULL_SCREEN SDL_FULLSCREEN
+class CVideo
+{
+public:
+	CVideo(const CVideo&) = delete;
+	CVideo& operator=(const CVideo&) = delete;
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-#define SDL_APPMOUSEFOCUS	0x01		/**< The app has mouse coverage */
-#define SDL_APPINPUTFOCUS	0x02		/**< The app has input focus */
-#define SDL_APPACTIVE		0x04		/**< The application is active */
-#endif
-
-struct GPU_Target;
-GPU_Target *get_render_target();
-
-surface display_format_alpha(surface surf);
-surface get_video_surface();
-SDL_Rect screen_area();
-
-
-bool non_interactive();
-
-//which areas of the screen will be updated when the buffer is flipped?
-void update_rect(size_t x, size_t y, size_t w, size_t h);
-void update_rect(const SDL_Rect& rect);
-void update_whole_screen();
-
-class CVideo : private boost::noncopyable {
-     public:
-		 enum FAKE_TYPES {
-			 NO_FAKE,
-			 FAKE,
-			 FAKE_TEST
-		 };
+	enum FAKE_TYPES { NO_FAKE, FAKE, FAKE_TEST };
 
 	CVideo(FAKE_TYPES type = NO_FAKE);
+
 	~CVideo();
 
-
-	int bppForMode( int x, int y, int flags);
-	int modePossible( int x, int y, int bits_per_pixel, int flags, bool current_screen_optimal=false);
-	int setMode( int x, int y, int bits_per_pixel, int flags );
-
-	//did the mode change, since the last call to the modeChanged() method?
-	bool modeChanged();
-
-	//functions to get the dimensions of the current video-mode
-	int getx() const;
-	int gety() const;
-
-	//blits a surface with black as alpha
-	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect=NULL, SDL_Rect* clip_rect=NULL);
-#ifdef SDL_GPU
-	GPU_Target *render_target() const;
-
-	void draw_texture(sdl::timage &texture, int x, int y);
-	void set_texture_color_modulation(int r, int g, int b, int a);
-	void set_texture_submerge(float f);
-	void set_texture_effects(int effects);
-
-	void blit_to_overlay(surface surf, int x, int y);
-	void clear_overlay_area(SDL_Rect area);
-	void clear_overlay();
-#endif
-	void flip();
-
-	surface& getSurface();
-
-	bool isFullScreen() const;
-
-	struct error : public game::error
+	static CVideo& get_singleton()
 	{
-		error() : game::error("Video initialization failed") {}
-	};
+		return *singleton_;
+	}
 
-	class quit
-		: public tlua_jailbreak_exception
-	{
-	public:
-
-		quit()
-			: tlua_jailbreak_exception()
-		{
-		}
-
-	private:
-
-		IMPLEMENT_LUA_JAILBREAK_EXCEPTION(quit)
-	};
-
-	//functions to allow changing video modes when 16BPP is emulated
-	void setBpp( int bpp );
-	int getBpp();
+	/***** ***** ***** ***** Unit test-related functions ***** ***** ****** *****/
 
 	void make_fake();
+
 	/**
 	 * Creates a fake frame buffer for the unit tests.
 	 *
 	 * @param width               The width of the buffer.
 	 * @param height              The height of the buffer.
-	 * @param bpp                 The bpp of the buffer.
 	 */
-	void make_test_fake(const unsigned width = 1024,
-			const unsigned height = 768, const unsigned bpp = 32);
-	bool faked() const { return fake_screen_; }
+	void make_test_fake(const unsigned width = 1024, const unsigned height = 768);
 
-	//functions to set and clear 'help strings'. A 'help string' is like a tooltip, but it appears
-	//at the bottom of the screen, so as to not be intrusive. Setting a help string sets what
-	//is currently displayed there.
-	int set_help_string(const std::string& str);
-	void clear_help_string(int handle);
-	void clear_all_help_strings();
+	bool faked() const
+	{
+		return fake_screen_;
+	}
 
-	//function to stop the screen being redrawn. Anything that happens while
-	//the update is locked will be hidden from the user's view.
-	//note that this function is re-entrant, meaning that if lock_updates(true)
-	//is called twice, lock_updates(false) must be called twice to unlock
-	//updates.
-	void lock_updates(bool value);
-	bool update_locked() const;
+	bool non_interactive() const;
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
+	/***** ***** ***** ***** Window-related functions ***** ***** ****** *****/
+
+	/** Initializes a new SDL window instance, taking into account any preiously saved states. */
+	void init_window();
+
+	/** Returns a pointer to the underlying SDL window. */
+	sdl::window* get_window();
+
+private:
+	enum MODE_EVENT { TO_RES, TO_FULLSCREEN, TO_WINDOWED, TO_MAXIMIZED_WINDOW };
+
 	/**
-	 * Wrapper for SDL_GetAppState.
+	 * Sets the window's mode - ie, changing it to fullscreen, maximizing, etc.
+	 *
+	 * @param mode                The action to perform.
+	 * @param size                The new window size. Utilized if @a mode is TO_RES.
 	 */
-	static Uint8 window_state();
+	void set_window_mode(const MODE_EVENT mode, const point& size);
+
+public:
+	void set_fullscreen(bool ison);
+
+	void toggle_fullscreen();
+
+	bool is_fullscreen() const;
+
+	bool set_resolution(const unsigned width, const unsigned height);
+
+	/**
+	 * Set the window resolution.
+	 *
+	 * @param resolution          The new width and height.
+	 *
+	 * @returns                   Whether the resolution was successfully changed.
+	 */
+	bool set_resolution(const point& resolution);
+
+	point current_resolution();
+
+	/** Returns the list of available screen resolutions. */
+	std::vector<point> get_available_resolutions(const bool include_current = false);
+
+	/**
+	 * Returns the current window renderer area, either in pixels or screen coordinates.
+	 *
+	 * @param as_pixels           Whether to return the area in pixels (default true) or
+	 *                            DPI-independent (DIP) screen coordinates.
+	 */
+	SDL_Rect screen_area(bool as_pixels = true) const;
+
+	/** Returns the window renderer width in pixels or screen coordinates. */
+	int get_width(bool as_pixels = true) const;
+
+	/** Returns the window renderer height in pixels or in screen coordinates. */
+	int get_height(bool as_pixels = true) const;
+
+	/** The current scale factor on High-DPI screens. */
+	std::pair<float, float> get_dpi_scale_factor() const;
+
+	/**
+	 * Tests whether the given flags are currently set on the SDL window.
+	 *
+	 * @param flags               The flags to test, OR'd together.
+	 */
+	bool window_has_flags(uint32_t flags) const;
 
 	/**
 	 * Sets the title of the main window.
 	 *
 	 * @param title               The new title for the window.
 	 */
-	static void set_window_title(const std::string& title);
+	void set_window_title(const std::string& title);
 
 	/**
 	 * Sets the icon of the main window.
 	 *
 	 * @param icon                The new icon for the window.
 	 */
-	static void set_window_icon(surface& icon);
+	void set_window_icon(surface& icon);
 
-	static sdl::twindow *get_window();
-#endif
+	int current_refresh_rate() const
+	{
+		return refresh_rate_;
+	}
+
+	/***** ***** ***** ***** Drawing functions ***** ***** ****** *****/
 
 	/**
-	 * Returns the list of available screen resolutions.
+	 * Draws a surface directly onto the screen framebuffer.
+	 *
+	 * @param x                   The x coordinate at which to draw.
+	 * @param y                   The y coordinate at which to draw.
+	 * @param surf                The surface to draw.
+	 * @param srcrect             The area of the surface to draw. This defaults to nullptr,
+	 *                            which implies the entire thing.
+	 * @param clip_rect           The clippin rect. If not null, the surface will only be drawn
+	 *                            within the bounds of the given rectangle.
 	 */
-	std::vector<std::pair<int, int> > get_available_resolutions();
+	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect = nullptr, SDL_Rect* clip_rect = nullptr);
+
+	/** Renders the screen. Should normally not be called directly! */
+	void flip();
+
+	/**
+	 * Updates and ensures the framebuffer surface is valid.
+	 * This needs to be invoked immediately after a resize event or the game will crash.
+	 */
+	void update_framebuffer();
+
+	/** Clear the screen contents */
+	void clear_screen();
+
+	/** Returns a reference to the framebuffer. */
+	surface& getSurface();
+
+	/**
+	 * Stop the screen being redrawn. Anything that happens while the updates are locked will
+	 * be hidden from the user's view.
+	 *
+	 * Note that this function is re-entrant, meaning that if lock_updates(true) is called twice,
+	 * lock_updates(false) must be called twice to unlock updates.
+	 */
+	void lock_updates(bool value);
+
+	/** Whether the screen has been 'locked' or not. */
+	bool update_locked() const;
+
+	void lock_flips(bool);
+
+	/***** ***** ***** ***** Help string functions ***** ***** ****** *****/
+
+	/**
+	 * Displays a help string with the given text. A 'help string' is like a tooltip,
+	 * but appears at the bottom of the screen so as to not be intrusive.
+	 *
+	 * @param str                 The text to display.
+	 *
+	 * @returns                   The handle id of the new help string.
+	 */
+	int set_help_string(const std::string& str);
+
+	/** Removes the help string with the given handle. */
+	void clear_help_string(int handle);
+
+	/** Removes all help strings. */
+	void clear_all_help_strings();
+
+	/***** ***** ***** ***** General utils ***** ***** ****** *****/
+
+	/** Waits a given number of milliseconds before returning. */
+	static void delay(unsigned int milliseconds);
+
+	struct error : public game::error
+	{
+		error()
+			: game::error("Video initialization failed")
+		{
+		}
+	};
+
+	/** Type that can be thrown as an exception to quit to desktop. */
+	class quit : public lua_jailbreak_exception
+	{
+	public:
+		quit()
+			: lua_jailbreak_exception()
+		{
+		}
+
+	private:
+		IMPLEMENT_LUA_JAILBREAK_EXCEPTION(quit)
+	};
 
 private:
+	static CVideo* singleton_;
 
+	/** The SDL window object. */
+	std::unique_ptr<sdl::window> window;
+
+	/** Initializes the SDL video subsystem. */
 	void initSDL();
-#ifdef SDL_GPU
-	void update_overlay(SDL_Rect *rect = NULL);
 
-	sdl::shader_program shader_; 
-	surface overlay_;
-#endif
-
-	bool mode_changed_;
-
-	int bpp_;	// Store real bits per pixel
-
-	//if there is no display at all, but we 'fake' it for clients
+	// if there is no display at all, but we 'fake' it for clients
 	bool fake_screen_;
 
-	//variables for help strings
+	/** Helper class to manage SDL events. */
+	class video_event_handler : public events::sdl_handler
+	{
+	public:
+		virtual void handle_event(const SDL_Event&)
+		{
+		}
+
+		virtual void handle_window_event(const SDL_Event& event);
+
+		video_event_handler()
+			: sdl_handler(false)
+		{
+		}
+	};
+
+	video_event_handler event_handler_;
+
+	/** Curent ID of the help string. */
 	int help_string_;
 
-	int updatesLocked_;
+	int updated_locked_;
+	int flip_locked_;
+	int refresh_rate_;
 };
 
-//an object which will lock the display for the duration of its lifetime.
+/** An object which will lock the display for the duration of its lifetime. */
 struct update_locker
 {
-	update_locker(CVideo& v, bool lock=true) : video(v), unlock(lock) {
+	update_locker(CVideo& v, bool lock = true)
+		: video(v)
+		, unlock(lock)
+	{
 		if(lock) {
 			video.lock_updates(true);
 		}
 	}
 
-	~update_locker() {
+	~update_locker()
+	{
 		unlock_update();
 	}
 
-	void unlock_update() {
+	void unlock_update()
+	{
 		if(unlock) {
 			video.lock_updates(false);
 			unlock = false;
@@ -229,15 +305,32 @@ private:
 	bool unlock;
 };
 
-class resize_monitor : public events::pump_monitor {
-	void process(events::pump_info &info);
+class flip_locker
+{
+public:
+	flip_locker(CVideo& video)
+		: video_(video)
+	{
+		video_.lock_flips(true);
+	}
+
+	~flip_locker()
+	{
+		video_.lock_flips(false);
+	}
+
+private:
+	CVideo& video_;
 };
 
-//an object which prevents resizing of the screen occurring during
-//its lifetime.
-struct resize_lock {
-	resize_lock();
-	~resize_lock();
+namespace video2
+{
+class draw_layering : public events::sdl_handler
+{
+protected:
+	draw_layering(const bool auto_join = true);
+	virtual ~draw_layering();
 };
 
-#endif
+void trigger_full_redraw();
+}

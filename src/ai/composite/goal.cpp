@@ -1,7 +1,7 @@
 
 /*
-   Copyright (C) 2009 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,8 +17,7 @@
  * @file
  */
 
-#include "goal.hpp"
-#include "global.hpp"
+#include "ai/composite/goal.hpp"
 
 #include "ai/default/contexts.hpp"
 #include "ai/lua/core.hpp"
@@ -27,18 +26,14 @@
 #include "filter_context.hpp"
 #include "game_board.hpp"
 #include "log.hpp"
-#include "map_location.hpp"
+#include "map/location.hpp"
 #include "resources.hpp"
-#include "scripting/lua.hpp"
-#include "team.hpp"
-#include "terrain_filter.hpp"
-#include "unit.hpp"
-#include "unit_map.hpp"
-#include "unit_filter.hpp"
-#include "wml_exception.hpp"
+#include "scripting/game_lua_kernel.hpp"
+#include "terrain/filter.hpp"
+#include "units/unit.hpp"
+#include "units/map.hpp"
+#include "units/filter.hpp"
 
-#include <boost/lexical_cast.hpp>
-#include <boost/foreach.hpp>
 #include <set>
 #include <sstream>
 
@@ -50,7 +45,7 @@ static lg::log_domain log_ai_goal("ai/goal");
 #define ERR_AI_GOAL LOG_STREAM(err, log_ai_goal)
 
 goal::goal(readonly_context &context, const config &cfg)
-	: readonly_context_proxy(), cfg_(cfg)
+	: readonly_context_proxy(), cfg_(cfg), ok_(true)
 {
 	init_readonly_context_proxy(context);
 }
@@ -59,10 +54,18 @@ goal::goal(readonly_context &context, const config &cfg)
 
 void goal::on_create()
 {
+	LOG_AI_GOAL << "side " << get_side() << " : " << " created goal with name=[" << cfg_["name"] << "]" << std::endl;
 }
 
-void goal::on_create(boost::shared_ptr<ai::lua_ai_context>)
+void goal::on_create(std::shared_ptr<ai::lua_ai_context>)
 {
+	unrecognized();
+}
+
+void goal::unrecognized()
+{
+	ERR_AI_GOAL << "side " << get_side() << " : " << " tried to create goal with name=[" << cfg_["name"] << "], but the [" << cfg_["engine"] << "] engine did not recognize that type of goal. " << std::endl;
+	ok_ = false;
 }
 
 
@@ -71,7 +74,7 @@ goal::~goal()
 }
 
 
-void goal::add_targets(std::back_insert_iterator< std::vector< target > > /*target_list*/)
+void goal::add_targets(std::back_insert_iterator< std::vector< target >> /*target_list*/)
 {
 }
 
@@ -106,6 +109,12 @@ bool goal::redeploy(const config &cfg)
 }
 
 
+bool goal::ok() const
+{
+	return ok_;
+}
+
+
 bool goal::active() const
 {
 	return is_active(cfg_["time_of_day"],cfg_["turns"]);
@@ -115,17 +124,17 @@ bool goal::active() const
 void target_unit_goal::on_create()
 {
 	goal::on_create();
+	if (!cfg_["engine"].empty() && cfg_["engine"] != "cpp") {
+		unrecognized();
+		value_ = 0;
+		return;
+	}
 	if (const config::attribute_value *v = cfg_.get("value")) {
-		try {
-			value_ = boost::lexical_cast<double>(*v);
-		} catch (boost::bad_lexical_cast){
-			ERR_AI_GOAL << "bad value of goal"<<std::endl;
-			value_ = 0;
-		}
+		value_ = v->to_double(0);
 	}
 }
 
-void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< target > > target_list)
+void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< target >> target_list)
 {
 	if (!(this)->active()) {
 		return;
@@ -135,11 +144,11 @@ void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< targe
 	if (!criteria) return;
 
 	//find the enemy leaders and explicit targets
-	const unit_filter ufilt(vconfig(criteria), resources::filter_con);
-	BOOST_FOREACH(const unit &u, *resources::units) {
+	const unit_filter ufilt{ vconfig(criteria) };
+	for (const unit &u : resources::gameboard->units()) {
 		if (ufilt( u )) {
 			LOG_AI_GOAL << "found explicit target unit at ... " << u.get_location() << " with value: " << value() << "\n";
-			*target_list = target(u.get_location(), value(), target::EXPLICIT);
+			*target_list = target(u.get_location(), value(), target::TYPE::EXPLICIT);
 		}
 	}
 
@@ -157,21 +166,21 @@ target_unit_goal::target_unit_goal(readonly_context &context, const config &cfg)
 void target_location_goal::on_create()
 {
 	goal::on_create();
+	if (!cfg_["engine"].empty() && cfg_["engine"] != "cpp") {
+		unrecognized();
+		value_ = 0;
+		return;
+	}
 	if (cfg_.has_attribute("value")) {
-		try {
-			value_ = boost::lexical_cast<double>(cfg_["value"]);
-		} catch (boost::bad_lexical_cast){
-			ERR_AI_GOAL << "bad value of goal"<<std::endl;
-			value_ = 0;
-		}
+		value_ = cfg_["value"].to_double(0);
 	}
 	const config &criteria = cfg_.child("criteria");
 	if (criteria) {
-		filter_ptr_ = boost::shared_ptr<terrain_filter>(new terrain_filter(vconfig(criteria),resources::filter_con));
+		filter_ptr_.reset(new terrain_filter(vconfig(criteria),resources::filter_con));
 	}
 }
 
-void target_location_goal::add_targets(std::back_insert_iterator< std::vector< target > > target_list)
+void target_location_goal::add_targets(std::back_insert_iterator< std::vector< target >> target_list)
 {
 	if (!(this)->active()) {
 		return;
@@ -181,10 +190,10 @@ void target_location_goal::add_targets(std::back_insert_iterator< std::vector< t
 
 	std::set<map_location> items;
 	filter_ptr_->get_locations(items);
-	BOOST_FOREACH(const map_location &loc, items)
+	for (const map_location &loc : items)
 	{
 		LOG_AI_GOAL << "found explicit target location ... " << loc << " with value: " << value() << std::endl;
-		*target_list = target(loc, value(), target::EXPLICIT);
+		*target_list = target(loc, value(), target::TYPE::EXPLICIT);
 	}
 
 }
@@ -201,21 +210,16 @@ target_location_goal::target_location_goal(readonly_context &context, const conf
 void protect_goal::on_create()
 {
 	goal::on_create();
+	if (!cfg_["engine"].empty() && cfg_["engine"] != "cpp") {
+		unrecognized();
+		value_ = 0;
+		return;
+	}
 	if (const config::attribute_value *v = cfg_.get("value")) {
-		try {
-			value_ = boost::lexical_cast<double>(*v);
-		} catch (boost::bad_lexical_cast){
-			ERR_AI_GOAL << "bad value of protect_goal"<<std::endl;
-			value_ = 0;
-		}
+		value_ = v->to_double(0);
 	}
 	if (const config::attribute_value *v = cfg_.get("protect_radius")) {
-		try {
-			radius_ = boost::lexical_cast<int>(*v);
-		} catch (boost::bad_lexical_cast){
-			ERR_AI_GOAL << "bad protection radius of protect_goal"<<std::endl;
-			radius_ = 1;
-		}
+		radius_ = (*v).to_int(1);
 	}
 
 	if (radius_<1) {
@@ -223,22 +227,18 @@ void protect_goal::on_create()
 	}
 	const config &criteria = cfg_.child("criteria");
 	if (criteria) {
-		filter_ptr_ = boost::shared_ptr<terrain_filter>(new terrain_filter(vconfig(criteria),resources::filter_con));
+		filter_ptr_.reset(new terrain_filter(vconfig(criteria),resources::filter_con));
 	}
 
 
 }
 
 
-void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > > target_list)
+void protect_goal::add_targets(std::back_insert_iterator< std::vector< target >> target_list)
 {
 	std::string goal_type;
 	if (protect_unit_) {
-		if (protect_only_own_unit_) {
-			goal_type = "protect_my_unit";
-		} else {
-			goal_type = "protect_unit";
-		}
+		goal_type = "protect_unit";
 	} else {
 		goal_type ="protect_location";
 	}
@@ -256,18 +256,19 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 		DBG_AI_GOAL << "side " << get_side() << ": "<< goal_type << " goal with criteria" << std::endl << cfg_.child("criteria") << std::endl;
 	}
 
-	unit_map &units = *resources::units;
+	unit_map &units = resources::gameboard->units();
 
 	std::set<map_location> items;
 	if (protect_unit_) {
-		const unit_filter ufilt(vconfig(criteria), resources::filter_con);
-		BOOST_FOREACH(const unit &u, units)
+		const unit_filter ufilt{ vconfig(criteria) };
+		for (const unit &u : units)
 		{
-			if (protect_only_own_unit_ && u.side() != get_side()) {
-				continue;
-			}
-			//TODO: we will protect hidden units, by not testing for invisibility to current side
-			if (ufilt(u)) {
+			// 'protect_unit' can be set to any unit of any side -> exclude hidden units
+			// unless they are visible to the AI side (e.g. allies with shared vision).
+			// As is done in other parts of the AI, units under fog/shroud count as visible to the AI.
+			if (ufilt(u)
+				&& (!u.invisible(u.get_location()) || u.is_visible_to_team(current_team(), false)))
+			{
 				DBG_AI_GOAL << "side " << get_side() << ": in " << goal_type << ": " << u.get_location() << " should be protected\n";
 				items.insert(u.get_location());
 			}
@@ -275,11 +276,11 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 	} else {
 		filter_ptr_->get_locations(items);
 	}
-	DBG_AI_GOAL << "side " << get_side() << ": seaching for threats in "+goal_type+" goal" << std::endl;
+	DBG_AI_GOAL << "side " << get_side() << ": searching for threats in "+goal_type+" goal" << std::endl;
 	// Look for directions to protect a specific location or specific unit.
-	BOOST_FOREACH(const map_location &loc, items)
+	for (const map_location &loc : items)
 	{
-		BOOST_FOREACH(const unit &u, units)
+		for (const unit &u : units)
 		{
 			int distance = distance_between(u.get_location(), loc);
 			if (current_team().is_enemy(u.side()) && distance < radius_ &&
@@ -287,8 +288,8 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 			{
 				DBG_AI_GOAL << "side " << get_side() << ": in " << goal_type << ": found threat target. " << u.get_location() << " is a threat to "<< loc << '\n';
 				*target_list = target(u.get_location(),
-					value_ * double(radius_ - distance) /
-					radius_, target::THREAT);
+					value_ * static_cast<double>(radius_ - distance) /
+					radius_, target::TYPE::THREAT);
 			}
 		}
 	}
@@ -297,17 +298,13 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 }
 
 
-protect_goal::protect_goal(readonly_context &context, const config &cfg, bool protect_only_own_unit, bool protect_unit)
+protect_goal::protect_goal(readonly_context &context, const config &cfg, bool protect_unit)
 	: goal(context,cfg)
 	, filter_ptr_()
-	, protect_only_own_unit_(protect_only_own_unit)
 	, protect_unit_(protect_unit)
 	, radius_(20) //this default radius is taken from old code
 	, value_(1.0) //this default value taken from old code
 {
-	if(protect_only_own_unit_) {
-		lg::wml_error << deprecate_wml_key_warning("protect_my_unit", "1.13.0") << "\n";
-	}
 }
 
 lua_goal::lua_goal(readonly_context &context, const config &cfg)
@@ -320,30 +317,43 @@ lua_goal::lua_goal(readonly_context &context, const config &cfg)
 	}
 	else
 	{
-		// report failure
+		ERR_AI_GOAL << "side " << get_side() << " : Error creating Lua goal (missing code= key)" << std::endl;
 	}
 }
 
-void lua_goal::on_create(boost::shared_ptr<ai::lua_ai_context> l_ctx)
+void lua_goal::on_create(std::shared_ptr<ai::lua_ai_context> l_ctx)
 {
-	handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(), *l_ctx));
+	handler_.reset(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(), *l_ctx));
 }
 
-void lua_goal::add_targets(std::back_insert_iterator< std::vector< target > > target_list)
+void lua_goal::add_targets(std::back_insert_iterator< std::vector< target >> target_list)
 {
-	boost::shared_ptr< lua_object< std::vector < target > > > l_obj
-		= boost::shared_ptr< lua_object< std::vector < target > > >(new lua_object< std::vector < target > >());
-	config c = config();
+	std::shared_ptr<lua_object<std::vector<target>>> l_obj = std::make_shared<lua_object<std::vector<target>>>();
+	config c(cfg_.child_or_empty("args"));
 	handler_->handle(c, true, l_obj);
-	std::vector < target > targets = *(l_obj->get());
+	try {
+		std::vector < target > targets = *(l_obj->get());
 
- 	BOOST_FOREACH(target tg, targets)
- 	{
- 		*target_list = tg;
- 	}
+		for (target tg : targets)
+		{
+			*target_list = tg;
+		}
+	} catch(const bad_enum_cast& e) {
+		ERR_AI_GOAL << "A Lua goal returned a target of an unknown type (\"" << e.value() << "\"; unfortunately, the engine cannot recover from this error. As a result, all targets returned by the goal have been lost.\n";
+	}
 
 }
 
+
+// This is defined in the source file so that it can easily access the logger
+bool goal_factory::is_duplicate(const std::string& name)
+{
+	if (get_list().find(name) != get_list().end()) {
+		ERR_AI_GOAL << "Error: Attempt to double-register goal " << name << std::endl;
+		return true;
+	}
+	return false;
+}
 
 
 } //end of namespace ai

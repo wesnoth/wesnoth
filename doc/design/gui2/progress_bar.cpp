@@ -37,4 +37,3 @@ const std::string& tprogress_bar::get_control_type() const /*@ \label{progress_b
 }
 
 } // namespace gui2
-

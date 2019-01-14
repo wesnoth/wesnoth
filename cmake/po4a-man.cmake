@@ -6,8 +6,8 @@ find_program(PO4A "po4a")
 set(PO4A_options --rm-backups --copyright-holder "Wesnoth Development Team")
 
 foreach(LANG ${LANGUAGES})
-	execute_process(COMMAND ${CMAKE_COMMAND} -E remove ${LANG}/wesnoth.6) 
-	execute_process(COMMAND ${CMAKE_COMMAND} -E remove ${LANG}/wesnothd.6) 
+	execute_process(COMMAND ${CMAKE_COMMAND} -E remove ${LANG}/wesnoth.6)
+	execute_process(COMMAND ${CMAKE_COMMAND} -E remove ${LANG}/wesnothd.6)
 endforeach(LANG ${LANGUAGES})
 
 

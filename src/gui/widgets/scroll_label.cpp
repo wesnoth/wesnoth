@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,17 +17,17 @@
 #include "gui/widgets/scroll_label.hpp"
 
 #include "gui/widgets/label.hpp"
-#include "gui/auxiliary/find_widget.tpp"
-#include "gui/auxiliary/log.hpp"
-#include "gui/auxiliary/widget_definition/scroll_label.hpp"
-#include "gui/auxiliary/window_builder/scroll_label.hpp"
-#include "gui/widgets/detail/register.tpp"
+#include "gui/auxiliary/find_widget.hpp"
+#include "gui/core/log.hpp"
+#include "gui/core/window_builder/helper.hpp"
+#include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/scrollbar.hpp"
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/window.hpp"
+#include "gettext.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -35,84 +35,261 @@
 namespace gui2
 {
 
+// ------------ WIDGET -----------{
+
 REGISTER_WIDGET(scroll_label)
 
-tscroll_label::tscroll_label() : tscrollbar_container(COUNT), state_(ENABLED)
+scroll_label::scroll_label(const implementation::builder_scroll_label& builder)
+	: scrollbar_container(builder, type())
+	, state_(ENABLED)
+	, wrap_on_(builder.wrap_on)
+	, text_alignment_(builder.text_alignment)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
-			boost::bind(
-					&tscroll_label::signal_handler_left_button_down, this, _2),
-			event::tdispatcher::back_pre_child);
+		std::bind(&scroll_label::signal_handler_left_button_down, this, _2),
+		event::dispatcher::back_pre_child);
 }
 
-void tscroll_label::set_label(const t_string& label)
+label* scroll_label::get_internal_label()
+{
+	if(content_grid()) {
+		return dynamic_cast<label*>(content_grid()->find("_label", false));
+	}
+
+	return nullptr;
+}
+
+void scroll_label::set_label(const t_string& lbl)
 {
 	// Inherit.
-	tcontrol::set_label(label);
+	styled_widget::set_label(lbl);
 
-	if(content_grid()) {
-		tlabel* widget
-				= find_widget<tlabel>(content_grid(), "_label", false, true);
-		widget->set_label(label);
+	if(label* widget = get_internal_label()) {
+		widget->set_label(lbl);
 
-		content_resize_request();
+		bool resize_needed = !content_resize_request();
+		if(resize_needed && get_size() != point()) {
+			place(get_origin(), get_size());
+		}
 	}
 }
 
-void tscroll_label::set_use_markup(bool use_markup)
+void scroll_label::set_text_alignment(const PangoAlignment text_alignment)
 {
 	// Inherit.
-	tcontrol::set_use_markup(use_markup);
+	styled_widget::set_text_alignment(text_alignment);
 
-	if(content_grid()) {
-		tlabel* widget
-				= find_widget<tlabel>(content_grid(), "_label", false, true);
+	text_alignment_ = text_alignment;
+
+	if(label* widget = get_internal_label()) {
+		widget->set_text_alignment(text_alignment_);
+	}
+}
+
+void scroll_label::set_use_markup(bool use_markup)
+{
+	// Inherit.
+	styled_widget::set_use_markup(use_markup);
+
+	if(label* widget = get_internal_label()) {
 		widget->set_use_markup(use_markup);
 	}
 }
 
-void tscroll_label::set_self_active(const bool active)
+void scroll_label::set_text_alpha(unsigned short alpha)
+{
+	if(label* widget = get_internal_label()) {
+		widget->set_text_alpha(alpha);
+	}
+}
+
+void scroll_label::set_link_aware(bool l)
+{
+	if(label* widget = get_internal_label()) {
+		widget->set_link_aware(l);
+	}
+}
+
+void scroll_label::set_self_active(const bool active)
 {
 	state_ = active ? ENABLED : DISABLED;
 }
 
-bool tscroll_label::get_active() const
+bool scroll_label::get_active() const
 {
 	return state_ != DISABLED;
 }
 
-unsigned tscroll_label::get_state() const
+unsigned scroll_label::get_state() const
 {
 	return state_;
 }
 
-void tscroll_label::finalize_subclass()
+void scroll_label::finalize_subclass()
 {
-	assert(content_grid());
-	tlabel* lbl = dynamic_cast<tlabel*>(content_grid()->find("_label", false));
-
+	label* lbl = get_internal_label();
 	assert(lbl);
-	lbl->set_label(label());
 
-	/**
-	 * @todo wrapping should be a label setting.
-	 * This setting shoul be mutual exclusive with the horizontal scrollbar.
-	 * Also the scroll_grid needs to set the status for the scrollbars.
-	 */
-	lbl->set_can_wrap(true);
+	lbl->set_label(get_label());
+	lbl->set_can_wrap(wrap_on_);
+	lbl->set_text_alignment(text_alignment_);
+	lbl->set_use_markup(get_use_markup());
 }
 
-const std::string& tscroll_label::get_control_type() const
+void scroll_label::set_can_wrap(bool can_wrap)
 {
-	static const std::string type = "scroll_label";
-	return type;
+	label* lbl = get_internal_label();
+	assert(lbl);
+
+	wrap_on_ = can_wrap;
+	lbl->set_can_wrap(wrap_on_);
 }
 
-void tscroll_label::signal_handler_left_button_down(const event::tevent event)
+bool scroll_label::can_wrap() const
+{
+	return wrap_on_;
+}
+
+void scroll_label::signal_handler_left_button_down(const event::ui_event event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	get_window()->keyboard_capture(this);
 }
+
+// }---------- DEFINITION ---------{
+
+scroll_label_definition::scroll_label_definition(const config& cfg)
+	: styled_widget_definition(cfg)
+{
+	DBG_GUI_P << "Parsing scroll label " << id << '\n';
+
+	load_resolutions<resolution>(cfg);
+}
+
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_scroll_label
+ *
+ * == Scroll label ==
+ *
+ * @macro = scroll_label_description
+ *
+ * @begin{parent}{name="gui/"}
+ * This widget is slower as a normal label widget so only use this widget
+ * when the scrollbar is required (or expected to become required).
+ * @begin{tag}{name="scroll_label_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
+ * @begin{table}{config}
+ *     grid & grid & &                 A grid containing the widgets for main
+ *                                     widget. $
+ * @end{table}
+ * @allow{link}{name="gui/window/resolution/grid"}
+ * TODO we need one definition for a vertical scrollbar since this is the second
+ * time we use it.
+ *
+ * @begin{table}{dialog_widgets}
+ *     _content_grid & & grid & m &    A grid which should only contain one
+ *                                     label widget. $
+ *     _scrollbar_grid & & grid & m &  A grid for the scrollbar
+ *                                     (Merge with listbox info.) $
+ * @end{table}
+ * @begin{tag}{name="content_grid"}{min=0}{max=1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="content_grid"}
+ * @begin{tag}{name="scrollbar_grid"}{min=0}{max=1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="scrollbar_grid"}
+ * The following states exist:
+ * * state_enabled, the scroll label is enabled.
+ * * state_disabled, the scroll label is disabled.
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_disabled"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="scroll_label_definition"}
+ * @end{parent}{name="gui/"}
+ */
+scroll_label_definition::resolution::resolution(const config& cfg)
+	: resolution_definition(cfg), grid(nullptr)
+{
+	// Note the order should be the same as the enum state_t is scroll_label.hpp.
+	state.emplace_back(cfg.child("state_enabled"));
+	state.emplace_back(cfg.child("state_disabled"));
+
+	const config& child = cfg.child("grid");
+	VALIDATE(child, _("No grid defined."));
+
+	grid = std::make_shared<builder_grid>(child);
+}
+
+// }---------- BUILDER -----------{
+
+/*WIKI_MACRO
+ * @begin{macro}{scroll_label_description}
+ *
+ *        A scroll label is a label that wraps its text and also has a
+ *        vertical scrollbar. This way a text can't be too long to be shown
+ *        for this widget.
+ * @end{macro}
+ */
+
+/*WIKI
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_scroll_label
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="scroll_label"}{min="0"}{max="-1"}{super="generic/widget_instance"}
+ * == Scroll label ==
+ *
+ * @macro = scroll_label_description
+ *
+ * List with the scroll label specific variables:
+ * @begin{table}{config}
+ *     vertical_scrollbar_mode & scrollbar_mode & initial_auto &
+ *                                     Determines whether or not to show the
+ *                                     scrollbar. $
+ *     horizontal_scrollbar_mode & scrollbar_mode & initial_auto &
+ *                                     Determines whether or not to show the
+ *                                     scrollbar. $
+ *     wrap & boolean & true &         Determines whether the text of the
+ *                                     label is allowed to wrap. $
+ * @end{table}
+ * @end{tag}{name="scroll_label"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
+ */
+
+namespace implementation
+{
+
+builder_scroll_label::builder_scroll_label(const config& cfg)
+	: implementation::builder_styled_widget(cfg)
+	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
+	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+	, wrap_on(cfg["wrap"].to_bool(true))
+	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
+{
+}
+
+widget* builder_scroll_label::build() const
+{
+	scroll_label* widget = new scroll_label(*this);
+
+	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
+	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
+
+	const auto conf = widget->cast_config_to<scroll_label_definition>();
+	assert(conf);
+
+	widget->init_grid(conf->grid);
+	widget->finalize_setup();
+
+	DBG_GUI_G << "Window builder: placed scroll label '" << id
+			  << "' with definition '" << definition << "'.\n";
+
+	return widget;
+}
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2

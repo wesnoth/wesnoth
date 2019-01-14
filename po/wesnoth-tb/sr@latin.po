@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tb\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-12-07 20:59+0100\n"
+"POT-Creation-Date: 2018-03-17 18:31 UTC\n"
 "PO-Revision-Date: 2011-12-04 13:25+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -21,38 +21,42 @@ msgstr ""
 "X-Wrapping: fine\n"
 
 #. [campaign]: id=Two_Brothers
-#: data/campaigns/Two_Brothers/_main.cfg:12
+#: data/campaigns/Two_Brothers/_main.cfg:13
 msgid "A Tale of Two Brothers"
 msgstr "Priča o dva brata"
 
 # |, no-check-spell
 #. [campaign]: id=Two_Brothers
-#: data/campaigns/Two_Brothers/_main.cfg:13
+#: data/campaigns/Two_Brothers/_main.cfg:14
 msgid "AToTB"
 msgstr "PoDB"
 
 #. [campaign]: id=Two_Brothers
-#: data/campaigns/Two_Brothers/_main.cfg:17
-msgid "(Beginner)"
+#: data/campaigns/Two_Brothers/_main.cfg:18
+#, fuzzy
+#| msgid "(Beginner)"
+msgid "Beginner"
 msgstr "(početnik)"
 
 #. [campaign]: id=Two_Brothers
-#: data/campaigns/Two_Brothers/_main.cfg:17
+#: data/campaigns/Two_Brothers/_main.cfg:18
 msgid "Horseman"
 msgstr "konjanik"
 
 #. [campaign]: id=Two_Brothers
-#: data/campaigns/Two_Brothers/_main.cfg:18
-msgid "(Challenging)"
+#: data/campaigns/Two_Brothers/_main.cfg:19
+#, fuzzy
+#| msgid "(Challenging)"
+msgid "Challenging"
 msgstr "(izazovno)"
 
 #. [campaign]: id=Two_Brothers
-#: data/campaigns/Two_Brothers/_main.cfg:18
+#: data/campaigns/Two_Brothers/_main.cfg:19
 msgid "Knight"
 msgstr "vitez"
 
 #. [campaign]: id=Two_Brothers
-#: data/campaigns/Two_Brothers/_main.cfg:19
+#: data/campaigns/Two_Brothers/_main.cfg:21
 msgid ""
 "An evil mage is threatening the small village of Maghre and its inhabitants. "
 "The village’s mage sends to his warrior brother for help, but not all goes "
@@ -64,42 +68,42 @@ msgstr ""
 "\n"
 
 #. [campaign]: id=Two_Brothers
-#: data/campaigns/Two_Brothers/_main.cfg:21
+#: data/campaigns/Two_Brothers/_main.cfg:23
 msgid "(Novice level, 4 scenarios.)"
 msgstr "(Početnički nivo, 4 scenarija.)"
 
 #. [about]
-#: data/campaigns/Two_Brothers/_main.cfg:28
+#: data/campaigns/Two_Brothers/_main.cfg:30
 msgid "Campaign Design"
 msgstr "Dizajn pohoda"
 
 #. [about]
-#: data/campaigns/Two_Brothers/_main.cfg:37
+#: data/campaigns/Two_Brothers/_main.cfg:39
 msgid "Prose and Story Edits"
 msgstr "Uređivanje proze i priče"
 
 #. [about]
-#: data/campaigns/Two_Brothers/_main.cfg:46
+#: data/campaigns/Two_Brothers/_main.cfg:48
 msgid "Campaign Maintenance"
 msgstr "Održavanje pohoda"
 
 #. [about]
-#: data/campaigns/Two_Brothers/_main.cfg:52
+#: data/campaigns/Two_Brothers/_main.cfg:57
 msgid "Artwork and Graphics Design"
 msgstr "Crteži i grafički dizajn"
 
 #. [about]
-#: data/campaigns/Two_Brothers/_main.cfg:68
+#: data/campaigns/Two_Brothers/_main.cfg:73
 msgid "Miscellaneous"
 msgstr "Razno"
 
 #. [entry]
-#: data/campaigns/Two_Brothers/_main.cfg:82
+#: data/campaigns/Two_Brothers/_main.cfg:87
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr "I posebne zahvalnice svima koje zaboravih da pomenem."
 
 #. [scenario]: id=01_Rooting_Out_a_Mage
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:4
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:5
 msgid "Rooting Out a Mage"
 msgstr "Iskorenjivanje maga"
 
@@ -205,146 +209,140 @@ msgstr ""
 "Odazvavši se zovu svoje amajlije, Arvit okupi ljudi koliko je mogao i pohita "
 "u Magre da pomogne Baranu."
 
-#. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:86
-msgid "Slay Mordak, the evil mage"
-msgstr "Posečeš li Mordaka, zlog maga"
-
-#. [objective]: condition=lose
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:90
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:90
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:362
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:566
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:202
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:573
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:699
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:55
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:253
-msgid "Death of Arvith"
-msgstr "Nastrada li Arvit"
-
-#. [side]: type=Knight, id=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:113
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:120
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:60
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:84
-#: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:52
-msgid "Arvith"
-msgstr "Arvit"
-
-#. [unit]: id=Baran, type=Red Mage
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:123
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:639
-msgid "Baran"
-msgstr "Baran"
-
-# |, no-check-spell
-#. [side]: type=Knight, id=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:143
-msgid "Alwyn"
-msgstr "Alvin"
-
-# |, no-check-spell
-#. [side]: type=Knight, id=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:144
-msgid "Brent"
-msgstr "Brent"
-
-# |, no-check-spell
-#. [side]: type=Knight, id=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:145
-msgid "Cadell"
-msgstr "Kadel"
-
-# |, no-check-spell
-#. [side]: type=Knight, id=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:146
-msgid "Dannen"
-msgstr "Danen"
-
-# |, no-check-spell
-#. [side]: type=Knight, id=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:147
-msgid "Efran"
-msgstr "Efran"
-
-# |, no-check-spell
-#. [side]: type=Knight, id=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:148
-msgid "Faren"
-msgstr "Faren"
-
-# |, no-check-spell
-#. [side]: type=Knight, id=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:151
-msgid "Tarek"
-msgstr "Tarek"
-
-# |, no-check-spell
-#. [side]: type=Knight, id=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:152
-msgid "Hann"
-msgstr "Han"
-
-# |, no-check-spell
-#. [side]: type=Knight, id=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:153
-msgid "Magrid"
-msgstr "Magrid"
-
-#. [side]: type=Knight, id=Arvith
+#. [side]
 #. [side]: type=Longbowman, id=Reeve Hoban
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:157
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:128
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:69
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:92
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:135
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:93
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:66
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:56
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:58
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:111
 msgid "Humans"
 msgstr "Ljudi"
 
 #. [side]: type=Dark Sorcerer, id=Mordak
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:170
-msgid "Mordak"
-msgstr "Mordak"
-
-#. [side]
-#. [side]: type=Dark Sorcerer, id=Mordak
-#. [side]: type=Dark Sorcerer, id=Rotharik
 #. [side]: type=Orcish Warlord, id=Tairach
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:184
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:102
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:144
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:122
+#. [side]: type=Dark Sorcerer, id=Rotharik
+#. [side]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:114
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:81
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:131
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:82
 msgid "Enemies"
 msgstr "Neprijatelji"
 
+#. [side]: type=Dark Sorcerer, id=Mordak
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:119
+msgid "Mordak"
+msgstr "Mordak"
+
+# |, no-check-spell
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:146
+msgid "Alwyn"
+msgstr "Alvin"
+
+# |, no-check-spell
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:147
+msgid "Brent"
+msgstr "Brent"
+
+# |, no-check-spell
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:148
+msgid "Cadell"
+msgstr "Kadel"
+
+# |, no-check-spell
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:149
+msgid "Dannen"
+msgstr "Danen"
+
+# |, no-check-spell
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:150
+msgid "Efran"
+msgstr "Efran"
+
+# |, no-check-spell
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:151
+msgid "Faren"
+msgstr "Faren"
+
+# |, no-check-spell
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:154
+msgid "Tarek"
+msgstr "Tarek"
+
+# |, no-check-spell
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:155
+msgid "Hann"
+msgstr "Han"
+
+# |, no-check-spell
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:156
+msgid "Magrid"
+msgstr "Magrid"
+
+#. [objective]: condition=win
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:161
+msgid "Slay Mordak, the evil mage"
+msgstr "Posečeš li Mordaka, zlog maga"
+
+#. [objective]: condition=lose
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:165
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:292
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:307
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:143
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:288
+msgid "Death of Arvith"
+msgstr "Nastrada li Arvit"
+
+#. [objectives]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:176
+msgid ""
+"Use footpads as fodder to protect your loyal units and attack during the day "
+"to minimize the damage your forces take."
+msgstr ""
+
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:203
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:186
 msgid "Greetings, brother, and welcome home."
 msgstr "Pozdrav, brate, i dobro došao kući."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:207
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:191
 msgid "Hail."
 msgstr "Pozdrav."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:211
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:196
 msgid "Is that all, Arvith? I understand, but..."
 msgstr "Zar je to sve, Arvite? Razumem, ali..."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:215
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:201
 msgid "You called, and I came; be content with that. What ails Maghre?"
 msgstr "Pozvao si, i došao sam; budi zadovoljan time. Šta muči Magre?"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:219
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:206
+#, fuzzy
+#| msgid ""
+#| "A dark mage has come upon us; his creatures call him Mordak. They have "
+#| "been terrorizing outlying farms, and we fear they may soon attack the "
+#| "village itself! The villagers of Maghre have taken up weapons but they "
+#| "are not trained fighters; but we need your men, and you to lead them."
 msgid ""
 "A dark mage has come upon us; his creatures call him Mordak. They have been "
 "terrorizing outlying farms, and we fear they may soon attack the village "
 "itself! The villagers of Maghre have taken up weapons but they are not "
-"trained fighters; but we need your men, and you to lead them."
+"trained fighters; we need your men, and you to lead them."
 msgstr ""
 "Mračni mag nadvio se nad nas; njegova stvorenja ga zovu Mordak. Ruše i pale "
 "podvojena imanja, plašimo se da bi uskoro mogli udariti na samo selo! "
@@ -352,7 +350,7 @@ msgstr ""
 "tvoji ljudi, i ti da ih povedeš."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:223
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:211
 msgid ""
 "I can feel Mordak’s foul touch on the hidden currents of the earth and air. "
 "He is somewhere due north of here, I would say not more than two days’ ride."
@@ -361,14 +359,14 @@ msgstr ""
 "Negde je na sever odavde, rekao bih ne više od dva dana jahanja."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:227
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:216
 msgid ""
 "All right. I will do this for the village. Can you keep the mage off our "
 "backs?"
 msgstr "U redu. Učiniću to radi sela. Možeš li zadržati maga podalje od nas?"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:231
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:221
 msgid ""
 "I will go stealthily with a handful of our best scouts and woodsmen. While "
 "you demonstrate against him and kill his creatures, I will try to defeat "
@@ -381,12 +379,12 @@ msgstr ""
 "sam. Ti ćeš biti desna ruka, a ja leva... tako, brate?"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:235
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:226
 msgid "... Aye. Just make sure you’re there when we need you."
 msgstr "...tako. Samo se postaraj da budeš tu kad nam zatrebaš."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:246
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:237
 msgid ""
 "Baran should be in position by now. Press them, distract the adept so Baran "
 "can spring his trap!"
@@ -395,17 +393,17 @@ msgstr ""
 "posvećenika da Baran može da razapne zamku!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:254
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:248
 msgid "Baran has not made his attack!"
 msgstr "Baran nije izveo napad!"
 
 #. [message]: role=Mercenary
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:258
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:253
 msgid "Could he have abandoned us?"
 msgstr "Može li biti da nas je ostavio na cedilu?"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:262
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:258
 msgid ""
 "No... No. This is something else. I’m worried about him... but right now it "
 "means we have to deal with this Mordak ourselves."
@@ -415,30 +413,30 @@ msgstr ""
 
 # well-spelled: Аооо
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:273
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:270
 msgid "Argh!"
 msgstr "Aooo!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:277
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:275
 msgid "Good work, men! But what has become of my brother?"
 msgstr "Valjan posao, ljudi! Ali šta bi s mojim bratom?"
 
 # well-spelled: ках, кх
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:281
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:280
 msgid "Worried about him, are you? E-he-he... hergh... gaargh..."
 msgstr "Brineš za njega, je li? H-a, kh, h-a... kah, kh..."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:289
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:290
 msgid ""
 "There’s nothing more to be had from this one; we will have to search for "
 "Baran ourselves!"
 msgstr "Ništa se više od ovoga izvući ne može; moraćemo sami potražiti Barana!"
 
 #. [message]: role=Reporter
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:297
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:312
 msgid ""
 "Sir, our scouts report that Baran was seen captured and carried away further "
 "north!"
@@ -447,18 +445,18 @@ msgstr ""
 "na sever!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:301
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:317
 msgid "That they should dare this! We will give chase at once."
 msgstr "Tako li su se usudili! Odmah krećemo u poteru."
 
 #. [message]: speaker=Mordak
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:315
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:338
 msgid "Your brother’s plan to ambush me has failed. He is our prisoner now."
 msgstr ""
 "Plan tvoga brata da me uhvati u stupicu propade. Sada je naš zatočenik."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:319
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:343
 msgid ""
 "My brother, kidnapped? I have failed you, Baran! And even now Mordak’s "
 "forces descend upon the village!"
@@ -467,35 +465,29 @@ msgstr ""
 "selu!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:334
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:359
 msgid "I hear these creatures are nigh-immune to our weapons, let us see!"
 msgstr ""
 "Načuh da ova stvorenja gotovo ne osećaju čelik naših oružja, da proverimo!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:349
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:375
 msgid "That was not so hard!"
 msgstr "To ne bejaše preteško!"
 
-#. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:360
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:586
-msgid "All is lost now that I am dead..."
-msgstr "Sada kad umirem, sve je izgubljeno..."
-
 #. [scenario]: id=02_The_Chase
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:4
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:5
 msgid "The Chase"
 msgstr "Potera"
 
 #. [part]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:30
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:27
 msgid "Arvith and his band rode north in search of his missing brother."
 msgstr ""
 "Arvit i njegova družina pojahaše na sever u potragu za nestalim bratom."
 
 #. [part]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:36
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:34
 msgid ""
 "16 V, 363 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -528,7 +520,7 @@ msgstr ""
 "se priključi."
 
 #. [part]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:45
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:43
 msgid ""
 "16 V, 363 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -559,40 +551,83 @@ msgstr ""
 "\n"
 "Pored toga... hoću da izbavim brata."
 
-#. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:86
-msgid "Fight your way through the woods before the kidnappers escape"
-msgstr "Probiješ li se kroz šumu pre nego što otimači izbegnu"
-
 #. [side]: type=Elvish Rider, id=Nil-Galion
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:144
-msgid "Nil-Galion"
-msgstr "Nil-Galion"
-
-#. [side]: type=Elvish Rider, id=Nil-Galion
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:151
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:88
 msgid "Elves"
 msgstr "Vilenjaci"
 
+#. [side]: type=Elvish Rider, id=Nil-Galion
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:93
+msgid "Nil-Galion"
+msgstr "Nil-Galion"
+
+#. [side]: type=Dark Adept, id=Muff Toras
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:170
+#, fuzzy
+#| msgid "Catch the kidnappers"
+msgid "Kidnappers"
+msgstr "Uhvatiš li otimače"
+
+# well-spelled: Торас
+#. [side]: type=Dark Adept, id=Muff Toras
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:174
+msgid "Muff Toras"
+msgstr "maf Toras"
+
+#. [objective]: condition=win
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:261
+msgid "Fight your way through the woods before the kidnappers escape"
+msgstr "Probiješ li se kroz šumu pre nego što otimači izbegnu"
+
+#. [objective]: condition=win
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:278
+msgid "Catch the kidnappers"
+msgstr "Uhvatiš li otimače"
+
+#. [objective]: condition=win
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:288
+msgid "Kill the Dark Adept before his reinforcements arrive"
+msgstr "Ubiješ li mračnog upućenika pre nego što mu stigne pojačanje"
+
+#. [objectives]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:304
+msgid ""
+"The Elvish forces are spread out. Seek to fight them one at a time with "
+"several of your units."
+msgstr ""
+
+#. [objectives]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:317
+msgid ""
+"Use horsemen or footpads to quickly explore the shrouded woods to locate the "
+"kidnappers."
+msgstr ""
+
+#. [objectives]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:332
+msgid ""
+"Separate the Dark Adept from his guards and attack in force for an easy kill."
+msgstr ""
+
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:262
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:375
 msgid ""
 "Come on, men. A stroll through such lovely green woods, what could be finer?"
 msgstr ""
 "Hajdemo, ljudi. Šetnja kroz divnu ozelenjenu šumu, šta može biti prijatnije?"
 
 #. [message]: speaker=Nil-Galion
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:266
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:380
 msgid "You there! Halt and explain yourself."
 msgstr "Ti tamo! Stoj i objasni svoje namere."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:270
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:385
 msgid "We’re chasing after some men who kidnapped my brother!"
 msgstr "Jurimo neke neljude što oteše brata moga!"
 
 #. [message]: speaker=Nil-Galion
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:274
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:390
 msgid ""
 "Those men told me their prisoner had attempted to murder their master, and "
 "warned that evil men would follow him. Advance no further, or you will die."
@@ -601,7 +636,7 @@ msgstr ""
 "upozoriše me da će ih zlikovci slediti po tragu. Stupite li dalje, pomrećete."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:278
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:395
 msgid ""
 "So much for those ghost stories. Mere elves will not stop me from freeing "
 "Baran!"
@@ -609,8 +644,8 @@ msgstr ""
 "Toliko o pričama i duhovima. Neće me puki vilenjaci sprečiti da oslobodim "
 "Barana!"
 
-#. [message]: role=speaker
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:282
+#. [message]: role=Mercenary
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:400
 msgid ""
 "I am glad at least that we will not have to face ghosts. But those elves "
 "will have us at a disadvantage; our horses will not maneuver well in the "
@@ -620,7 +655,7 @@ msgstr ""
 "nama. Naši konji će se teško probijati i okretati među drvećem."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:286
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:405
 msgid ""
 "Bah, just stay on the paths; our spearmen and bowmen can fight in the deeper "
 "woods. We have faced and won through greater perils than those amateurs can "
@@ -629,19 +664,13 @@ msgstr ""
 "Samo se vi držite staza; kopljanici i lukaši biće nam brana u dubljoj šumi. "
 "Suočismo i nadvladasmo veće muke nego što ti diletanti mogu da zadaju."
 
-# well-spelled: Торас
-#. [unit]: type=Dark Adept, id=Muff Toras
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:301
-msgid "Muff Toras"
-msgstr "maf Toras"
-
-#. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:349
+#. [message]: speaker=second_unit
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:437
 msgid "I see them! There they are!"
 msgstr "Vidim ih! Eno, tamo!"
 
 #. [message]: speaker=Muff Toras
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:353
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:442
 msgid ""
 "Curses! If they had been an hour slower our master’s reinforcements would "
 "already be here to meet us."
@@ -649,18 +678,13 @@ msgstr ""
 "Prokletstvo! Da su samo sat zadocnili, pojačanja našeg gospodara već bi nas "
 "čekala ovde."
 
-#. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:358
-msgid "Kill the Dark Adept before his reinforcements arrive"
-msgstr "Ubiješ li mračnog upućenika pre nego što mu stigne pojačanje"
-
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:379
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:454
 msgid "Come on, men, let’s catch those kidnappers!"
 msgstr "Napred, ljudi, pohvatajmo te otimače!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:390
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:468
 msgid ""
 "Hah! You have captured me, but it will avail you nothing. I sent your "
 "precious brother the mage north with half my men a day since; he will be "
@@ -671,7 +695,7 @@ msgstr ""
 "zaključan u gospodarevim tamnicama."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:394
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:473
 msgid ""
 "My blade is at your throat. Give us the way to my brother now, or I will "
 "spill your wretched blood on the ground."
@@ -681,70 +705,75 @@ msgstr ""
 
 # |, no-check-spell
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:397
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:476
 msgid "Sithrak"
 msgstr "Sitrak"
 
 # |, no-check-spell
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:398
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:477
 msgid "Eleben"
 msgstr "Eleben"
 
 # |, no-check-spell
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:399
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:478
 msgid "Jarlom"
 msgstr "Jarlom"
 
 # |, no-check-spell
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:400
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:479
 msgid "Hamik"
 msgstr "Hamik"
 
 # |, no-check-spell
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:403
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:483
 msgid "Akranbral"
 msgstr "Akranbral"
 
 # |, no-check-spell
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:404
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:484
 msgid "Drakanal"
 msgstr "Drakanal"
 
 # |, no-check-spell
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:405
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:485
 msgid "Xaskanat"
 msgstr "Ksaskanat"
 
 # |, no-check-spell
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:406
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:486
 msgid "Katklagad"
 msgstr "Katklagad"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:429
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:492
+#, fuzzy
+#| msgid ""
+#| "Three days ride to the northeast, in a deserted castle. The passwords to "
+#| "the guards are $first_password_$first_password_number and "
+#| "$second_password_$second_password_number|."
 msgid ""
 "Three days ride to the northeast, in a deserted castle. The passwords to the "
-"guards are $first_password_$first_password_number and $second_password_"
-"$second_password_number|."
+"guards are $first_password_$first_password and $second_password_"
+"$second_password|."
 msgstr ""
 "Tri dana jahanja na severoistok, u napuštenom zamku. Lozinke za stražare su "
 "‘$first_password_$first_password_number|’ i ‘$second_password_"
 "$second_password_number|’."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:433
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:500
 msgid "Bind him and take him with us. If he has played us false, he will die."
 msgstr "Svežite ga i povedite s nama. Ako nas je izigrao, umreće."
 
-#. [message]: role=speaker
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:437
+#. [message]: role=Mercenary
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:512
 msgid ""
 "Captain, what are we riding into? I thought you wanted nothing to do with "
 "Baran any more, not since Toen Caric."
@@ -753,7 +782,7 @@ msgstr ""
 "sa Baranom, ne posle Toena Karika."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:441
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:517
 msgid ""
 "I’m no longer sure. What’s between us remains, but knowing someone else has "
 "lain hands on him changes things. Mount up, and let’s get moving."
@@ -762,12 +791,12 @@ msgstr ""
 "drugi digao ruku na njega menja stvari. U sedla, krećemo."
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:451
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:532
 msgid "Brena"
 msgstr "Brena"
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:460
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:542
 msgid ""
 "Greetings. I am Brena, a knight errant. I saw you pursuing and fighting the "
 "foul undead. Are there more of them to be destroyed?"
@@ -776,7 +805,7 @@ msgstr ""
 "nemrtvace. Ima li ih još da se satru?"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:464
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:547
 msgid ""
 "Aye. We think there’s a nest of them north-east of here. They’ve captured my "
 "brother."
@@ -784,7 +813,7 @@ msgstr ""
 "Uistinu. Mislimo da im je gnezdo severoistočno odavde. Zarobiše moga brata."
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:468
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:552
 msgid ""
 "I bear a great hatred towards their kind. I will follow and fight them with "
 "you, if you permit."
@@ -792,35 +821,35 @@ msgstr ""
 "Gajim veliku mržnju prema njihovoj sorti. Pratiću vas i boriti se kraj vas, "
 "ako dopustite."
 
-#. [message]: role=speaker
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:472
+#. [message]: role=Mercenary
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:557
 msgid "He would only slow us down!"
 msgstr "Samo bi nas zadržavao!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:476
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:562
 msgid "It is my place to decide this."
 msgstr "Na meni je da odlučim o tome."
 
-#. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:478
+#. [option]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:564
 msgid "Oh, all right then. Come along with us."
 msgstr "U redu, pođi s nama."
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:482
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:568
 msgid "Thank you. My comrades and I will help you on your noble quest."
 msgstr ""
 "Zahvaljujem. Sadruzi moji i ja smo vam na raspoloženju u vašoj plemenitoj "
 "potrazi."
 
-#. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:491
+#. [option]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:573
 msgid "I am sorry. We have not the time to spare."
 msgstr "Žao mi je, nemamo vremena za gubljenje."
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:495
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:577
 msgid ""
 "Take this, then, for I see that you are on a quest. My comrades will help "
 "you whenever you call for them."
@@ -829,22 +858,22 @@ msgstr ""
 "kad god pozovete po njih."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:513
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:592
 msgid "You receive 70 pieces of gold!"
 msgstr "Dobi 70 zlatnika!"
 
 #. [message]: speaker=Muff Toras
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:534
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:615
 msgid "My reinforcements are here!"
 msgstr "Stiže mi pojačanje!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:538
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:620
 msgid "He escaped us..."
 msgstr "Izmače nam..."
 
 #. [message]: speaker=Nil-Galion
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:549
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:632
 msgid ""
 "Foolish human, you have killed me but you will not catch the undead in time. "
 "I have fulfilled my contract, and will be reanimated soon to become a lord "
@@ -854,24 +883,39 @@ msgstr ""
 "svoju nagodbu i biću ubrzo posuvraćen, da postanem gospodar njihovih armija."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:557
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:642
 msgid "Follow their back trail!"
 msgstr "Pratite njihov pogani trag!"
 
-#. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:562
-msgid "Catch the kidnappers"
-msgstr "Uhvatiš li otimače"
-
 #. [scenario]: id=03_Guarded_Castle
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:6
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:5
 msgid "Guarded Castle"
 msgstr "Čuvani zamak"
 
 #. [part]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:34
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:26
+#, fuzzy
+#| msgid ""
+#| "19 IV, 363 YW\n"
+#| "Excerpt from the journal of Rotharik the Clanless\n"
+#| "\n"
+#| "The last of Mordak’s servants arrived this morning bearing the news of "
+#| "his death, as well as a bundle so well-bound it was barely recognizable "
+#| "as a man. Mordak was always reckless. This whole desperate scheme was "
+#| "his, and I suppose I could blame him for everything that we have suffered "
+#| "through if it still mattered. It was he who brought the wrath of the orcs "
+#| "down on us, too. But all the same, he managed to accomplish what he set "
+#| "out to do. I still cannot believe the finality of what has happened; "
+#| "until now we had always managed to make it through somehow.\n"
+#| "\n"
+#| "We had hoped to deliver the mage to Tairach in return for our lives. I do "
+#| "not know what the warlord wants with this man, but he matches the "
+#| "description. I suppose that Mordak’s plan would have worked perfectly if "
+#| "not for the appearance of the horse warriors. Now they are coming here, "
+#| "led by a man rumored to be this mage’s brother. If that is true, he will "
+#| "stop at nothing, no more than would I if they held Mordak."
 msgid ""
-"19 IV, 363 YW\n"
+"19 V, 363 YW\n"
 "Excerpt from the journal of Rotharik the Clanless\n"
 "\n"
 "The last of Mordak’s servants arrived this morning bearing the news of his "
@@ -909,9 +953,24 @@ msgstr ""
 "Mordaka."
 
 #. [part]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:42
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:34
+#, fuzzy
+#| msgid ""
+#| "19 IV, 363 YW\n"
+#| "Excerpt from the journal of Rotharik the Clanless\n"
+#| "\n"
+#| "I have done what I can to fortify this dilapidated castle. The orcs who "
+#| "came with us stand guard at the gates, and I am gathering all of my "
+#| "servants to me in the inner sanctum. But ill fate awaits. Whether I "
+#| "defeat this horse-warrior or no, the orcs will still come for me; they "
+#| "have been scouring the borderlands and raiding the northern farm country "
+#| "in search of us.\n"
+#| "\n"
+#| "Yet for some reason I fear these brothers more. If Mordak were here it "
+#| "would be different, but we are broken... and these two men are whole. In "
+#| "each other, in the ties that bind them, they have strength."
 msgid ""
-"19 IV, 363 YW\n"
+"19 V, 363 YW\n"
 "Excerpt from the journal of Rotharik the Clanless\n"
 "\n"
 "I have done what I can to fortify this dilapidated castle. The orcs who came "
@@ -938,47 +997,85 @@ msgstr ""
 "drugom, u svezama koje ih vežu, naći će snagu."
 
 #. [side]: type=Dark Sorcerer, id=Rotharik
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:84
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:86
 msgid "Rotharik"
 msgstr "Rotarik"
 
-#. [unit]: id=Guard2_leader, type=Rogue
-#. [unit]: id=Guard_leader, type=Assassin
+#. [unit]: role=Guard, id=Guard_leader, type=Assassin
 #. [unit]: role=Guard, type=Bandit
+#. [unit]: role=Guard2, id=Guard2_leader, type=Rogue
 #. [unit]: role=Guard2, type=Bandit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:106
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:114
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:123
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:131
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:434
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:442
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:450
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:459
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:94
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:102
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:111
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:119
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:552
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:562
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:571
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:581
 msgid "Guard"
 msgstr "Straža"
 
 # |, no-check-spell
 #. [unit]: id=Knago-Brek, type=Orcish Warrior
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:150
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:138
 msgid "Knago-Brek"
 msgstr "Knago-Brek"
 
 #. [unit]: type=Orcish Grunt
 #. [unit]: type=Orcish Warrior
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:159
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:167
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:176
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:184
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:146
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:154
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:163
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:171
 msgid "Castle Guard"
 msgstr "Straža zamka"
 
 #. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:198
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:277
 msgid "Rescue Baran"
 msgstr "Spasiš li Barana"
 
+#. [objective]: condition=win
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:289
+msgid "Kill the dark sorcerer to get the cell key"
+msgstr "Ubiješ li mračnog čarobnjaka i uzmeš mu ključ ćelije"
+
+#. [objective]: condition=win
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:303
+msgid "Move Arvith to the cell with his brother to free him"
+msgstr "Dovedeš li Arvita do ćelije sa njegovim bratom da ga oslobodi"
+
+#. [objective]: condition=lose
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:316
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:147
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:292
+msgid "Death of Baran"
+msgstr "Nastrada li Baran"
+
+#. [objectives]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:328
+msgid ""
+"When facing an unknown situation, take into account details from story and "
+"dialog to inform your strategy."
+msgstr ""
+
+#. [objectives]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:337
+msgid ""
+"The dark sorcerer is a strong unit; attack him with multiple units at once "
+"and try to force him off his keep."
+msgstr ""
+
+#. [objectives]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:347
+msgid ""
+"Markings or decorations on hexes may indicate something to be found. If you "
+"can, it is usually a good idea to investigate."
+msgstr ""
+
 #. [message]: speaker=narrator
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:288
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:384
 msgid ""
 "Arvith and his men halt outside of the castle, gazing for a moment at the "
 "hulking mass of stone looming in the fog. There is movement in the mist."
@@ -987,42 +1084,54 @@ msgstr ""
 "masu kamenja što se nadvijala iz magle. Nešto mrdnu u izmaglici."
 
 #. [message]: speaker=Guard_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:292
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:389
 msgid "Halt! Friend or foe? Give the password."
 msgstr "Stoj tamo! Prijatelj ili ne? Lozinku podajte."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:297
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:394
 msgid "The password is"
 msgstr "Lozinka je"
 
-#. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:299
-msgid "$first_password_1|!"
-msgstr "$first_password_1|!"
+# |, no-check-spell
+#. [option]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:397
+#, fuzzy
+#| msgid "Sithrak"
+msgid "Sithrak!"
+msgstr "Sitrak"
 
-#. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:305
-msgid "$first_password_2|!"
-msgstr "$first_password_2|!"
+# |, no-check-spell
+#. [option]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:400
+#, fuzzy
+#| msgid "Eleben"
+msgid "Eleben!"
+msgstr "Eleben"
 
-#. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:311
-msgid "$first_password_3|!"
-msgstr "$first_password_3|!"
+# |, no-check-spell
+#. [option]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:403
+#, fuzzy
+#| msgid "Jarlom"
+msgid "Jarlom!"
+msgstr "Jarlom"
 
-#. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:317
-msgid "$first_password_4|!"
-msgstr "$first_password_4|!"
+# |, no-check-spell
+#. [option]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:406
+#, fuzzy
+#| msgid "Hamik"
+msgid "Hamik!"
+msgstr "Hamik"
 
 #. [message]: speaker=Guard_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:333
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:419
 msgid "Pass, friend."
 msgstr "Prođi, prijatelju."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:348
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:434
 msgid ""
 "The adept didn’t lead us astray after all. I’ll keep my word, distasteful as "
 "it may be; cut him loose, and let’s be rid of him."
@@ -1031,13 +1140,13 @@ msgstr ""
 "neukusno bilo: oslobodite ga, i neka se goni."
 
 #. [message]: speaker=Guard_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:359
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:445
 msgid "Wrong! Die!"
 msgstr "Pogrešno! Umrite!"
 
 # well-spelled: хоћи, крвац
 #. [message]: speaker=Knago-Brek
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:373
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:463
 msgid ""
 "Haha! We not kill people for long time. Weapon wants blood. We now kill "
 "humans!!"
@@ -1045,7 +1154,7 @@ msgstr ""
 "Ha-ha! Mi ne ubij ljudi vreme dugo. Nož hoći krvac. Mi sada ljudi ubij!!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:377
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:468
 msgid ""
 "My sword-arm has a say in who will do the dying. Come on, men, let’s kill "
 "some orcs."
@@ -1054,72 +1163,84 @@ msgstr ""
 "orke neke."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:388
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:480
 msgid "One less braggart orc in the world."
 msgstr "Jedan ork hvalisavac manje na svetu."
 
 #. [message]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:396
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:489
 msgid "Captain, what are <i>orcs</i> doing this far south?"
 msgstr "Kapetane, otkud <i>orkovi</i> ovako daleko na jugu?"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:400
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:494
 msgid "Good question. Perhaps my brother will have found out."
 msgstr "Valjano pitanje. Možda je moj brat saznao šta o tome."
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:467
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:594
 msgid "Are you our relief arriving? Does this mean we get to leave here now?"
 msgstr "Vi li ste naša smena? Znači li to da možemo otići sada?"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:471
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:599
 msgid "Um, yes. Fine. You can go."
 msgstr "Hm, da, tako. Možete ići."
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:475
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:604
 msgid "Um, you’re supposed to give the password."
 msgstr "Setih se, morao bih lozinku od vas čuti."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:479
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:609
 msgid "Oh, of course. I had nearly forgotten."
 msgstr "Naravno, prijatelju. Skoro zaboravih."
 
-#. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:481
-msgid "$second_password_1|!"
-msgstr "$second_password_1|!"
+# |, no-check-spell
+#. [option]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:612
+#, fuzzy
+#| msgid "Akranbral"
+msgid "Akranbral!"
+msgstr "Akranbral"
 
-#. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:487
-msgid "$second_password_2|!"
-msgstr "$second_password_2|!"
+# |, no-check-spell
+#. [option]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:615
+#, fuzzy
+#| msgid "Drakanal"
+msgid "Drakanal!"
+msgstr "Drakanal"
 
-#. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:493
-msgid "$second_password_3|!"
-msgstr "$second_password_3|!"
+# |, no-check-spell
+#. [option]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:618
+#, fuzzy
+#| msgid "Xaskanat"
+msgid "Xaskanat!"
+msgstr "Ksaskanat"
 
-#. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:499
-msgid "$second_password_4|!"
-msgstr "$second_password_4|!"
+# |, no-check-spell
+#. [option]
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:621
+#, fuzzy
+#| msgid "Katklagad"
+msgid "Katklagad!"
+msgstr "Katklagad"
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:514
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:634
 msgid "Thanks! Irritating little formality, isn’t it?"
 msgstr "Zahvaljujem! Nezgodacija je ta formalizacija, ne?"
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:527
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:644
 msgid "That’s the wrong password! These aren’t our relief! Get them!"
 msgstr "Pogrešno je to što čuh! Ovo nije naša smena, na njih!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:533
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:652
 msgid ""
 "I think I should better support my men at the front to make sure we can free "
 "my brother."
@@ -1129,66 +1250,61 @@ msgstr ""
 
 # well-spelled: ауух
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:544
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:664
 msgid "Your hand or Tairach’s, death is still death... (argh)"
 msgstr "Od tvoje ruke ili Tajrahove, smrt je smrt... auuh."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:552
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:674
 msgid "‘Tairach’? Who or what is Tairach?"
 msgstr "Tajrah? Ko ili šta je Tajrah?"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:556
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:679
 msgid "There’s a key in his robes."
 msgstr "Eto ključa u njegovoj odeždi."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:560
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:689
 msgid ""
 "That may well be the key to the cell they’re holding Baran in! I will take "
 "it."
 msgstr "To lako može biti ključ ćelije gde drže Barana! Dajte ga meni."
 
-#. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:569
-msgid "Move Arvith to the cell with his brother to free him"
-msgstr "Dovedeš li Arvita do ćelije sa njegovim bratom da ga oslobodi"
-
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:599
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:737
 msgid "Look what I have found in here! I can count a hundred pieces of gold."
 msgstr "Vidi šta nađoh ovde! Mogu nabrojati stotinu zlatnika."
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:612
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:751
 msgid "Look what I have found in here! I can count fifty pieces of gold."
 msgstr "Vidi šta nađoh ovde! Mogu nabrojati pedeset zlatnika."
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:658
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:790
 msgid "I found Baran. He is in this cell."
 msgstr "Nađoh Barana. Eto ga u onoj ćeliji."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:668
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:801
 msgid "It’s good to see you, Arvith."
 msgstr "Dobro je videti te, Arvite."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:672
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:806
 msgid "And you too, brother."
 msgstr "I tebe, brate."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:678
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:812
 msgid ""
 "You must be one of Arvith’s men. Please help me get out of this dungeon."
 msgstr ""
 "Ti mora da si od Arvitovih ljudi. Molim te, pomogni mi izaći iz ove tamnice."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:684
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:819
 msgid ""
 "The accursed dark sorcerer Rotharik has imprisoned me behind this magically "
 "enhanced iron gate. It can only be opened with the correct key. You must get "
@@ -1198,23 +1314,32 @@ msgstr ""
 "gvozdenih dveri. Može se otvoriti samo pravim ključem, koji mu morate oteti "
 "da biste me oslobodili."
 
-#. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:695
-msgid "Kill the dark sorcerer to get the cell key"
-msgstr "Ubiješ li mračnog čarobnjaka i uzmeš mu ključ ćelije"
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:831
+msgid ""
+"I have already met, and killed, the sorcerer. Is this the key to which you "
+"referred?"
+msgstr ""
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:741
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:835
+msgid ""
+"Yes, it is. Come, unlock this cell door, and let us depart this place, "
+"brother!"
+msgstr ""
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:889
 msgid "Thank you for saving me. I... was not certain you would come."
 msgstr "Zahvaljujem na spasenju. Nisam bio... siguran da ćeš doći."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:745
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:894
 msgid "Have you no faith in your brother, Baran?"
 msgstr "Nemaš li vere u svoga brata, Barane?"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:749
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:899
 msgid ""
 "It’s not that. Perhaps I deserved to rot here. I failed you. I failed you "
 "again."
@@ -1222,7 +1347,7 @@ msgstr ""
 "Nije to. Možda mi i treba da istrunem ovde. Izneverih te. Izneverih te opet."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:753
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:904
 msgid ""
 "That is as may be. But you are my brother still. And... I never doubted you "
 "would have come for me."
@@ -1231,7 +1356,7 @@ msgstr ""
 "mene, ne sumnjam."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:757
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:909
 msgid ""
 "It was no great trial, after all. A few elves, one or two dark sorcerers, a "
 "gang of orcs and some undead. Really just a day’s work for the company."
@@ -1240,34 +1365,33 @@ msgstr ""
 "mračnih, šaka orkova i zdela nemrtvih. Uistinu jedan prosečan dan za četu."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:761
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:914
 msgid "Thank you for coming to my aid. Let us return to the village."
 msgstr "Hvala što mi u pomoć pritrča. Vratimo se sada u selo."
 
-#. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:782
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:307
-msgid "Everything is lost now that I am dead..."
-msgstr "Sada kad umirem, sve je izgubljeno..."
+#. [unit]: id=Rotharik, type=Orcish Assassin
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:948
+msgid "Minion of Tairach"
+msgstr ""
 
 #. [message]: speaker=Rotharik
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:794
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:960
 msgid "You are too late! Your brother is already dead! Muahahaha...!"
 msgstr "Stiže prekasno! Tvoj brat mrtav je već! Ha-ha-ha-ha...!"
 
 # well-spelled: Аооо
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:798
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:965
 msgid "Argh!!"
 msgstr "Aooo!!"
 
 #. [scenario]: id=04_Return_to_the_Village
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:4
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:5
 msgid "Return to the Village"
 msgstr "Povratak u selo"
 
 #. [part]
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:27
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:26
 msgid ""
 "27 V, 363 YW\n"
 "Excerpt from the journal of Baran of Maghre\n"
@@ -1301,7 +1425,7 @@ msgstr ""
 "putovali smo kroz prelepu prirodu. Imali smo puno vremena za razgovor."
 
 #. [part]
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:35
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:34
 msgid ""
 "27 V, 363 YW\n"
 "Excerpt from the journal of Baran of Maghre\n"
@@ -1338,30 +1462,31 @@ msgstr ""
 "Tu nije kraj mojim morama. Pitam se... da li je ovo osećanje slutnje tek "
 "zaostatak od mog utamničenja, ili vesnik nečega stvarnog?"
 
-#. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:51
-msgid "Find out what is happening in the village"
-msgstr "Izvidiš li šta se u selu zbiva"
-
-#. [objective]: condition=lose
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:59
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:257
-msgid "Death of Baran"
-msgstr "Nastrada li Baran"
-
 #. [side]: type=Orcish Warlord, id=Tairach
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:100
-#: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:63
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:87
+#: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:56
 msgid "Tairach"
 msgstr "Tajrah"
 
 #. [side]: type=Longbowman, id=Reeve Hoban
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:129
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:116
 msgid "Reeve Hoban"
 msgstr "Riv Hoban"
 
+#. [objective]: condition=win
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:139
+msgid "Find out what is happening in the village"
+msgstr "Izvidiš li šta se u selu zbiva"
+
+#. [objectives]
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:155
+msgid ""
+"Recruit or Recall some high-move units to be able to see as far as possible "
+"through the fog for approaching units."
+msgstr ""
+
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:160
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:171
 msgid ""
 "There. The village is just across those hills, and already I see men coming "
 "to greet us!"
@@ -1370,69 +1495,69 @@ msgstr ""
 "pozdrav!"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:164
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:176
 msgid ""
 "No, they are fleeing from something. We must find out what is happening over "
 "there!"
 msgstr "Ne, to oni beže od nečega. Moramo iznaći šta ih je to snašlo!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:168
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:181
 msgid "Men! Ready your arms!"
 msgstr "Ljudi! Na oružje!"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:172
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:186
 msgid "We should find Reeve Hoban. Maybe he knows what is going on here."
 msgstr "Valja nam potražiti Riva Hobana; možda on zna šta se događa."
 
-#. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:183
+#. [message]: speaker=second_unit
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:201
 msgid "We’re almost there!"
 msgstr "Skoro smo stigli!"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:187
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:206
 msgid "That warlord! It’s..."
 msgstr "Taj ratovođ! To je..."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:191
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:211
 msgid "Yes, I’d know that face anywhere. Especially after what you did to it."
 msgstr "Da, svuda bih poznao tu njušku. Posebno posle onoga što si mu učinio."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:195
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:216
 msgid "The warlord from Toen Caric."
 msgstr "Ratovođ iz Toena Karika."
 
 #. [message]: speaker=Tairach
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:199
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:221
 msgid "You! The mage who scarred me with fire! KILL THEM!"
 msgstr "Ti! Mag što me unakazi vatrom! POBIJTE IH!"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:203
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:226
 msgid "Let’s finish what we started, brother."
 msgstr "Dovršimo započeto, brate."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:207
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:231
 msgid "Aye. I’ll be the right arm, and you’ll be the left. Let’s go!"
 msgstr "Nego šta. Ja ću biti desna ruka, a ti ćeš biti leva. Napred!"
 
 #. [message]: speaker=Reeve Hoban
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:221
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:250
 msgid "I am glad to see you returned."
 msgstr "Drago mi je videti vas nazad."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:225
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:255
 msgid "No gladder than I am to be here. But what has happened to Maghre?"
 msgstr "Ne draže nego meni što sam ovde. Ali šta se zbi s Magreom?"
 
 #. [message]: speaker=Reeve Hoban
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:229
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:260
 msgid ""
 "Soon after you departed we were beset by orcs. With half the men of Maghre "
 "gone, we could not stop them."
@@ -1441,7 +1566,7 @@ msgstr ""
 "mogasmo ih zadržati."
 
 #. [message]: speaker=Reeve Hoban
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:233
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:265
 msgid ""
 "The orcish warlord aims to enslave us. We will not be able to hold out for "
 "much longer."
@@ -1449,7 +1574,7 @@ msgstr ""
 "Orkovski ratovođ hoće da nas u roblje potera. Ne možemo se još dugo odupreti."
 
 #. [message]: speaker=Reeve Hoban
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:237
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:270
 msgid ""
 "Have a care, his men are fell fighters and have killed many. Very few remain "
 "who can bear arms, but I will send them to aid you in battle."
@@ -1458,12 +1583,17 @@ msgstr ""
 "može oružjem rukovati, ali ćemo koga god nađemo poslati vama na pomoć."
 
 #. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:249
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:284
 msgid "Slay the Orcish Warlord to free the village"
 msgstr "Posečeš li orkovskog ratovođa i tako oslobodiš selo"
 
+#. [objectives]
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:300
+msgid "You can use Reeve Hoban’s keep to recruit or recall additional units."
+msgstr ""
+
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:270
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:310
 msgid ""
 "It is finished. We’ve defeated him at last. It was good to have you at my "
 "side, Baran."
@@ -1471,7 +1601,7 @@ msgstr ""
 "Gotovo je. Porazismo ga konačno. Drago mi je bilo imati te kraj sebe, Barane."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:274
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:315
 msgid ""
 "So much has been destroyed. It will be difficult to repair all that the orcs "
 "and undead have wrecked. And they could come again."
@@ -1480,7 +1610,7 @@ msgstr ""
 "nemrtvi razorili. A mogli bi se i navratiti."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:278
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:320
 msgid ""
 "I must go back to earning my living. But we have our amulets, little "
 "brother. If you are beset again, I will come."
@@ -1488,28 +1618,23 @@ msgstr ""
 "Moram se vratiti zarađivanju za život. Ali su nam tu amajlije, mlađi brate. "
 "Ophrva li te opet nešto, jednako ću doći."
 
-#. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:293
-msgid "It is over, I am vanquished."
-msgstr "Gotovo je, pokoren sam."
-
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:318
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:338
 msgid "I don’t think we can rescue anyone from these villages. It is too late."
 msgstr "Mislim da se niko više spasti iz ovih sela ne može. Prekasno je."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:322
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:343
 msgid "I was too weak to protect these people. Oh, why did this happen to me?!"
 msgstr "Bejah preslab da zaštitim ove ljude. Što li me snađe takva sudba?!"
 
 #. [scenario]: id=05_Epilogue
-#: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:4
+#: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:5
 msgid "A Tale of Two Brothers — Epilogue"
 msgstr "Priča o dva brata — epilog"
 
 #. [part]
-#: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:20
+#: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:18
 msgid ""
 "22 IX, 365 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -1538,7 +1663,7 @@ msgstr ""
 "njega dopust da posetim brata. I odobrio mi ga je."
 
 #. [part]
-#: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:29
+#: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:27
 msgid ""
 "22 IX, 365 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -1559,6 +1684,56 @@ msgstr ""
 "susretnu. Mislim da ćemo uskoro morati da se pomučimo za svoju nadnicu.\n"
 "\n"
 "U međuvremenu, lepo je malo opustiti se i uživati u miru."
+
+#: data/campaigns/Two_Brothers/utils/characters.cfg:6
+msgid "Arvith"
+msgstr "Arvit"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/utils/characters.cfg:21
+msgid "All is lost now that I am dead..."
+msgstr "Sada kad umirem, sve je izgubljeno..."
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/utils/characters.cfg:39
+msgid "It is over, I am vanquished."
+msgstr "Gotovo je, pokoren sam."
+
+#. [unit]: id=Baran, type=Red Mage
+#: data/campaigns/Two_Brothers/utils/characters.cfg:128
+msgid "Baran"
+msgstr "Baran"
+
+#: data/campaigns/Two_Brothers/utils/macros.cfg:4
+msgid "Hint:"
+msgstr ""
+
+#~ msgid "$first_password_1|!"
+#~ msgstr "$first_password_1|!"
+
+#~ msgid "$first_password_2|!"
+#~ msgstr "$first_password_2|!"
+
+#~ msgid "$first_password_3|!"
+#~ msgstr "$first_password_3|!"
+
+#~ msgid "$first_password_4|!"
+#~ msgstr "$first_password_4|!"
+
+#~ msgid "$second_password_1|!"
+#~ msgstr "$second_password_1|!"
+
+#~ msgid "$second_password_2|!"
+#~ msgstr "$second_password_2|!"
+
+#~ msgid "$second_password_3|!"
+#~ msgstr "$second_password_3|!"
+
+#~ msgid "$second_password_4|!"
+#~ msgstr "$second_password_4|!"
+
+#~ msgid "Everything is lost now that I am dead..."
+#~ msgstr "Sada kad umirem, sve je izgubljeno..."
 
 #~ msgid "Irongate"
 #~ msgstr "gvozdodveri"

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Ignacio R. Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,22 +12,30 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_UNIT_CREATE_HPP_INCLUDED
-#define GUI_DIALOGS_UNIT_CREATE_HPP_INCLUDED
+#pragma once
 
-#include "gui/dialogs/dialog.hpp"
-#include "race.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
+#include "gui/widgets/group.hpp"
+#include "units/race.hpp"
 
 #include <string>
 #include <vector>
 
+class display;
+class unit_type;
+
 namespace gui2
 {
 
-class tunit_create : public tdialog
+class text_box_base;
+
+namespace dialogs
+{
+
+class unit_create : public modal_dialog
 {
 public:
-	tunit_create();
+	unit_create();
 
 	/** Unit type choice from the user. */
 	const std::string& choice() const
@@ -48,22 +56,31 @@ public:
 	}
 
 private:
+	std::vector<const unit_type*> units_;
+
 	unit_race::GENDER gender_;
 
 	std::string choice_;
-	std::vector<std::string> type_ids_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	std::vector<std::string> last_words_;
 
-	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
+	virtual const std::string& window_id() const override;
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	virtual void pre_show(window& window) override;
 
-	void gender_toggle_callback(twindow& window);
+	/** Inherited from modal_dialog. */
+	virtual void post_show(window& window) override;
+
+	/** Callbacks */
+	void list_item_clicked(window& window);
+	void filter_text_changed(text_box_base* textbox, const std::string& text);
+	void gender_toggle_callback();
+
+	void update_displayed_type() const;
+
+	group<unit_race::GENDER> gender_toggle;
 };
-}
-
-#endif /* ! GUI_DIALOGS_UNIT_CREATE_HPP_INCLUDED */
+} // namespace dialogs
+} // namespace gui2

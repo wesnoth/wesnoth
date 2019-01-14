@@ -726,7 +726,7 @@ public class ResourceUtils
     /**
      * This is a WML files comparator, based on the WML parsing rules.
      * 
-     * @see <a href="http://wiki.wesnoth.org/PreprocessorRef"> Preprocessor
+     * @see <a href="https://wiki.wesnoth.org/PreprocessorRef"> Preprocessor
      *      Reference </a>
      */
     public static class WMLFilesComparator implements Comparator< IResource >,

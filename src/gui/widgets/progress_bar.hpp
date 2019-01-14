@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2010 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2010 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,36 +12,40 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_PROGRESS_BAR_HPP_INCLUDED
-#define GUI_WIDGETS_PROGRESS_BAR_HPP_INCLUDED
+#pragma once
 
-#include "gui/widgets/control.hpp"
+#include "gui/widgets/styled_widget.hpp"
+
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
 
 namespace gui2
 {
+namespace implementation
+{
+struct builder_progress_bar;
+}
 
-class tprogress_bar : public tcontrol
+// ------------ WIDGET -----------{
+
+class progress_bar : public styled_widget
 {
 public:
-	tprogress_bar() : tcontrol(COUNT), percentage_(static_cast<unsigned>(-1))
-	{
-		// Force canvas update
-		set_percentage(0);
-	}
+	explicit progress_bar(const implementation::builder_progress_bar& builder);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref tcontrol::set_active. */
-	virtual void set_active(const bool active) OVERRIDE;
+	/** See @ref styled_widget::set_active. */
+	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
-	virtual bool get_active() const OVERRIDE;
+	/** See @ref styled_widget::get_active. */
+	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
-	virtual unsigned get_state() const OVERRIDE;
+	/** See @ref styled_widget::get_state. */
+	virtual unsigned get_state() const override;
 
-	/** See @ref twidget::disable_click_dismiss. */
-	bool disable_click_dismiss() const OVERRIDE;
+	/** See @ref widget::disable_click_dismiss. */
+	bool disable_click_dismiss() const override;
 
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
@@ -58,18 +62,51 @@ private:
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum tstate {
+	enum state_t {
 		ENABLED,
-		COUNT
 	};
 
 	/** The percentage done. */
 	unsigned percentage_;
 
-	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
+	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
+	virtual const std::string& get_control_type() const override;
 };
 
-} // namespace gui2
+// }---------- DEFINITION ---------{
 
-#endif
+struct progress_bar_definition : public styled_widget_definition
+{
+	explicit progress_bar_definition(const config& cfg);
+
+	struct resolution : public resolution_definition
+	{
+		explicit resolution(const config& cfg);
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct builder_progress_bar : public builder_styled_widget
+{
+
+	explicit builder_progress_bar(const config& cfg);
+
+	using builder_styled_widget::build;
+
+	widget* build() const;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
+
+} // namespace gui2

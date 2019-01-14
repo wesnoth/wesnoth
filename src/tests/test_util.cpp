@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2007 - 2014 by Karol Nowak <grywacz@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2007 - 2018 by Karol Nowak <grywacz@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,77 +16,23 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include "util.hpp"
+#include "utils/math.hpp"
 
-#include <boost/cstdint.hpp>
+#include <cstdint>
 
 BOOST_AUTO_TEST_SUITE( util )
 
-BOOST_AUTO_TEST_CASE( test_lexical_cast )
-{
-	/* First check if lexical_cast returns correct results for correct args */
-	int result = lexical_cast<int, const std::string&>(std::string("1"));
-	BOOST_CHECK( result == 1 );
-
-	int result2 = lexical_cast<int, const char*>("2");
-	BOOST_CHECK( result2 == 2 );
-
-	/* Check that an exception is thrown when an invalid argument is passed */
-	try {
-		lexical_cast<int, const std::string&>(std::string("iddqd"));
-
-		/* A bad_lexical_cast should have been thrown already */
-		BOOST_CHECK( false );
-	}
-	catch( const bad_lexical_cast &) {
-		// Don't do anything, we succeeded.
-	}
-
-	try {
-		lexical_cast<int, const char*>("idkfa");
-
-		/* A bad_lexical_cast should have been thrown already */
-		BOOST_CHECK( false );
-	}
-	catch( const bad_lexical_cast &) {
-		// Don't do anything, we succeeded.
-	}
-}
-
-BOOST_AUTO_TEST_CASE( test_lexical_cast_default )
-{
-	/* First check if it works with correct values */
-	int result = lexical_cast_default<int, const std::string&>(std::string("1"));
-	BOOST_CHECK( result == 1 );
-
-	int result2 = lexical_cast_default<int, const char*>("2");
-	BOOST_CHECK( result2 == 2 );
-
-	double result3 = lexical_cast_default<double, const std::string&>(std::string("0.5"));
-	BOOST_CHECK( result3 >= 0.499 && result3 <= 0.511 );
-
-	/* Check if default is returned when argument is empty/invalid */
-	int result4 = lexical_cast_default<int, const std::string&>(std::string(), 4);
-	BOOST_CHECK( result4 == 4 );
-
-	int result5 = lexical_cast_default<int, const char*>("", 5);
-	BOOST_CHECK( result5 == 5 );
-
-	double result6 = lexical_cast_default<double, const std::string&>(std::string(), 0.5);
-	BOOST_CHECK( result6 >= 0.499 && result6 <= 0.511 );
-}
-
 BOOST_AUTO_TEST_CASE( test_bit_width )
 {
-	BOOST_CHECK( bit_width<boost::uint8_t>() == 8 );
-	BOOST_CHECK( bit_width<boost::uint16_t>() == 16 );
-	BOOST_CHECK( bit_width<boost::uint32_t>() == 32 );
-	BOOST_CHECK( bit_width<boost::uint64_t>() == 64 );
+	BOOST_CHECK( bit_width<uint8_t>() == 8 );
+	BOOST_CHECK( bit_width<uint16_t>() == 16 );
+	BOOST_CHECK( bit_width<uint32_t>() == 32 );
+	BOOST_CHECK( bit_width<uint64_t>() == 64 );
 
-	BOOST_CHECK( bit_width(static_cast<boost::uint8_t>(0)) == 8 );
-	BOOST_CHECK( bit_width(static_cast<boost::uint16_t>(0)) == 16 );
-	BOOST_CHECK( bit_width(static_cast<boost::uint32_t>(0)) == 32 );
-	BOOST_CHECK( bit_width(static_cast<boost::uint64_t>(0)) == 64 );
+	BOOST_CHECK( bit_width(static_cast<uint8_t>(0)) == 8 );
+	BOOST_CHECK( bit_width(static_cast<uint16_t>(0)) == 16 );
+	BOOST_CHECK( bit_width(static_cast<uint32_t>(0)) == 32 );
+	BOOST_CHECK( bit_width(static_cast<uint64_t>(0)) == 64 );
 }
 
 BOOST_AUTO_TEST_CASE( test_count_ones )
@@ -106,11 +52,11 @@ BOOST_AUTO_TEST_CASE( test_count_ones )
 
 BOOST_AUTO_TEST_CASE( test_count_leading_zeros )
 {
-	BOOST_CHECK( count_leading_zeros(static_cast<boost::uint8_t>(1)) == 7 );
-	BOOST_CHECK( count_leading_zeros(static_cast<boost::uint16_t>(1)) == 15 );
-	BOOST_CHECK( count_leading_zeros(static_cast<boost::uint32_t>(1)) == 31 );
-	BOOST_CHECK( count_leading_zeros(static_cast<boost::uint64_t>(1)) == 63 );
-	BOOST_CHECK( count_leading_zeros(static_cast<boost::uint8_t>(0xFF)) == 0 );
+	BOOST_CHECK( count_leading_zeros(static_cast<uint8_t>(1)) == 7 );
+	BOOST_CHECK( count_leading_zeros(static_cast<uint16_t>(1)) == 15 );
+	BOOST_CHECK( count_leading_zeros(static_cast<uint32_t>(1)) == 31 );
+	BOOST_CHECK( count_leading_zeros(static_cast<uint64_t>(1)) == 63 );
+	BOOST_CHECK( count_leading_zeros(static_cast<uint8_t>(0xFF)) == 0 );
 	BOOST_CHECK( count_leading_zeros(static_cast<unsigned int>(0))
 		== bit_width<unsigned int>() );
 	BOOST_CHECK( count_leading_zeros(static_cast<unsigned long int>(0))
@@ -131,13 +77,12 @@ BOOST_AUTO_TEST_CASE( test_count_leading_ones )
 {
 	BOOST_CHECK( count_leading_ones(0) == 0 );
 	BOOST_CHECK( count_leading_ones(1) == 0 );
-	BOOST_CHECK( count_leading_ones(static_cast<boost::uint8_t>(0xFF)) == 8 );
-	BOOST_CHECK( count_leading_ones(static_cast<boost::uint16_t>(0xFFFF)) == 16 );
-	BOOST_CHECK( count_leading_ones(static_cast<boost::uint32_t>(0xFFFFFFFF)) == 32 );
-	BOOST_CHECK( count_leading_ones(static_cast<boost::uint64_t>(0xFFFFFFFFFFFFFFFF))
-		== 64 );
-	BOOST_CHECK( count_leading_ones(static_cast<boost::uint8_t>(0xF8)) == 5 );
-	BOOST_CHECK( count_leading_ones(static_cast<boost::uint16_t>(54321)) == 2 );
+	BOOST_CHECK( count_leading_ones(static_cast<uint8_t>(0xFF)) == 8 );
+	BOOST_CHECK( count_leading_ones(static_cast<uint16_t>(0xFFFF)) == 16 );
+	BOOST_CHECK( count_leading_ones(0xFFFFFFFFU) == 32 );
+	BOOST_CHECK( count_leading_ones(0xFFFFFFFFFFFFFFFFULL) == 64 );
+	BOOST_CHECK( count_leading_ones(static_cast<uint8_t>(0xF8)) == 5 );
+	BOOST_CHECK( count_leading_ones(static_cast<uint16_t>(54321)) == 2 );
 }
 
 /* vim: set ts=4 sw=4: */

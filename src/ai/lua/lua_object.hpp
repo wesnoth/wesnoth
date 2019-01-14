@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2011 - 2014 by Dmitry Kovalenko <nephro.wes@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2011 - 2018 by Dmitry Kovalenko <nephro.wes@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -21,17 +21,16 @@
 #ifndef LUA_OBJECT_HPP_INCLUDED
 #define LUA_OBJECT_HPP_INCLUDED
 
-#include "../../config.hpp"
-#include "../../lua/lua.h"
-#include "../../map_location.hpp"
-#include "../../resources.hpp"
-#include "../../scripting/lua_api.hpp"
-#include "../../terrain_filter.hpp"
-#include "../../variable.hpp"
-#include "../default/contexts.hpp"
-#include "unit_advancements_aspect.hpp"
+#include "config.hpp"
+#include "lua/lua.h"
+#include "map/location.hpp"
+#include "resources.hpp"
+#include "scripting/lua_common.hpp"
+#include "terrain/filter.hpp"
+#include "variable.hpp"
+#include "ai/default/contexts.hpp"
+#include "ai/lua/aspect_advancements.hpp"
 
-#include <boost/shared_ptr.hpp>
 #include <iterator>
 #include <string>
 #include <vector>
@@ -61,55 +60,55 @@ public:
 		// empty
 	}
 
-	boost::shared_ptr<T> get()
+	std::shared_ptr<T> get()
 	{
 		return value_;
 	}
 
 	void store(lua_State* L, int n)
 	{
-		this->value_ = boost::shared_ptr<T>(to_type(L, n));
+		this->value_ = to_type(L, lua_absindex(L, n));
 	}
 
 protected:
 
 	// A group of functions that deal with the translation of the results to C++
-	boost::shared_ptr<T> to_type(lua_State *, int)
+	std::shared_ptr<T> to_type(lua_State *, int)
 	{
-		return boost::shared_ptr<T>();
+		return std::shared_ptr<T>();
 	}
 
-	boost::shared_ptr<T> value_;
+	std::shared_ptr<T> value_;
 };
 
 template <>
-inline boost::shared_ptr<double> lua_object<double>::to_type(lua_State *L, int n)
+inline std::shared_ptr<double> lua_object<double>::to_type(lua_State *L, int n)
 {
-	return boost::shared_ptr<double>(new double(lua_tonumber(L, n)));
+	return std::make_shared<double>(lua_tonumber(L, n));
 }
 
 template <>
-inline boost::shared_ptr<std::string> lua_object<std::string>::to_type(lua_State *L, int n)
+inline std::shared_ptr<std::string> lua_object<std::string>::to_type(lua_State *L, int n)
 {
-	return boost::shared_ptr<std::string>(new std::string(lua_tostring(L, n)));
+	return std::make_shared<std::string>(lua_tostring(L, n));
 }
 
 template <>
-inline boost::shared_ptr<bool> lua_object<bool>::to_type(lua_State *L, int n)
+inline std::shared_ptr<bool> lua_object<bool>::to_type(lua_State *L, int n)
 {
-	return boost::shared_ptr<bool>(new bool(luaW_toboolean(L, n)));
+	return std::make_shared<bool>(luaW_toboolean(L, n));
 }
 
 template <>
-inline boost::shared_ptr<int> lua_object<int>::to_type(lua_State *L, int n)
+inline std::shared_ptr<int> lua_object<int>::to_type(lua_State *L, int n)
 {
-	return boost::shared_ptr<int>(new int(lua_tointeger(L, n)));
+	return std::make_shared<int>(static_cast<int>(lua_tointeger(L, n)));
 }
 
 template <>
-inline boost::shared_ptr< std::vector<std::string> > lua_object< std::vector<std::string> >::to_type(lua_State *L, int n)
+inline std::shared_ptr< std::vector<std::string> > lua_object< std::vector<std::string> >::to_type(lua_State *L, int n)
 {
-	boost::shared_ptr< std::vector<std::string> > v = boost::shared_ptr< std::vector<std::string> >(new std::vector<std::string>());
+	std::shared_ptr<std::vector<std::string>> v(new std::vector<std::string>());
 	int l = lua_rawlen(L, n);
 	for (int i = 1; i < l + 1; ++i)
 	{
@@ -124,28 +123,30 @@ inline boost::shared_ptr< std::vector<std::string> > lua_object< std::vector<std
 }
 
 template <>
-inline boost::shared_ptr<config> lua_object<config>::to_type(lua_State *L, int n)
+inline std::shared_ptr<config> lua_object<config>::to_type(lua_State *L, int n)
 {
-	boost::shared_ptr<config> cfg = boost::shared_ptr<config>(new config());
+	std::shared_ptr<config> cfg(new config());
 	luaW_toconfig(L, n, *cfg);
 	return cfg;
 }
 
 template <>
-inline boost::shared_ptr<terrain_filter> lua_object<terrain_filter>::to_type(lua_State *L, int n)
+inline std::shared_ptr<terrain_filter> lua_object<terrain_filter>::to_type(lua_State *L, int n)
 {
-	// To Crab_: Is this part ok? I tested it, works fine
-	boost::shared_ptr<config> cfg = boost::shared_ptr<config>(new config());
-	boost::shared_ptr<vconfig> vcfg = boost::shared_ptr<vconfig>(new vconfig(*cfg));
-	luaW_tovconfig(L, n, *vcfg);
-	boost::shared_ptr<terrain_filter> tf = boost::shared_ptr<terrain_filter>(new terrain_filter(*vcfg, resources::filter_con));
+	std::shared_ptr<config> cfg(new config());
+	std::shared_ptr<vconfig> vcfg(new vconfig(*cfg));
+	if (!luaW_tovconfig(L, n, *vcfg)) {
+		cfg->add_child("not");
+	}
+	vcfg->make_safe();
+	std::shared_ptr<terrain_filter> tf(new terrain_filter(*vcfg, resources::filter_con));
 	return tf;
 }
 
 template <>
-inline boost::shared_ptr<std::vector<target> > lua_object< std::vector<target> >::to_type(lua_State *L, int n)
+inline std::shared_ptr<std::vector<target> > lua_object< std::vector<target> >::to_type(lua_State *L, int n)
 {
-	boost::shared_ptr<std::vector<target> > targets = boost::shared_ptr<std::vector<target> >(new std::vector<target>());
+	std::shared_ptr<std::vector<target>> targets(new std::vector<target>());
 	std::back_insert_iterator< std::vector<target> > tg(*targets);
 	int l = lua_rawlen(L, n);
 
@@ -158,26 +159,31 @@ inline boost::shared_ptr<std::vector<target> > lua_object< std::vector<target> >
 
 		lua_pushstring(L, "x"); // st n + 3
 		lua_rawget(L, -2); // st n + 3
-		int x = lua_tointeger(L, -1); // st n + 3
+		int x = static_cast<int>(lua_tointeger(L, -1)); // st n + 3
 		lua_pop(L, 1); // st n + 2
 
 		lua_pushstring(L, "y"); // st n + 3
 		lua_rawget(L, -2); // st n + 3
-		int y = lua_tointeger(L, -1); // st n + 3
+		int y = static_cast<int>(lua_tointeger(L, -1)); // st n + 3
 
 		lua_pop(L, 2); // st n + 1
 
 		lua_pushstring(L, "type"); // st n + 2
 		lua_rawget(L, -2);  // st n + 2
-		target::TYPE type = static_cast<target::TYPE>(lua_tointeger(L, -1));  // st n + 2
+		target::TYPE type = target::TYPE::EXPLICIT;
+		if(lua_isnumber(L, -1)) {
+			type = target::TYPE::from_int(static_cast<int>(lua_tointeger(L, -1)));  // st n + 2
+		} else if(lua_isstring(L, -1)) {
+			type = target::TYPE::string_to_enum(lua_tostring(L, -1));  // st n + 2
+		}
 		lua_pop(L, 1); // st n + 1
 
 
 		lua_pushstring(L, "value");
 		lua_rawget(L, -2);
-		int value = lua_tointeger(L, -1);
+		int value = static_cast<int>(lua_tointeger(L, -1));
 
-		map_location ml(x - 1, y - 1);
+		map_location ml(x, y, wml_loc());
 
 		*tg = target(ml, value, type);
 	}
@@ -187,11 +193,15 @@ inline boost::shared_ptr<std::vector<target> > lua_object< std::vector<target> >
 }
 
 template <>
-inline boost::shared_ptr<unit_advancements_aspect> lua_object<unit_advancements_aspect>::to_type(lua_State *L, int n)
+inline std::shared_ptr<unit_advancements_aspect> lua_object<unit_advancements_aspect>::to_type(lua_State *L, int n)
 {
-	boost::shared_ptr<unit_advancements_aspect> uaa = boost::shared_ptr<unit_advancements_aspect>(new unit_advancements_aspect(L, n));
-	return uaa;
+	return std::make_shared<unit_advancements_aspect>(L, n);
 }
+
+// This one is too complex to define in the header.
+struct aspect_attacks_lua_filter;
+template <>
+std::shared_ptr<aspect_attacks_lua_filter> lua_object<aspect_attacks_lua_filter>::to_type(lua_State *L, int n);
 } // end of namespace ai
 
 

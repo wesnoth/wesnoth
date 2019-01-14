@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2010 - 2014 by Fabian Mueller <fabianmueller5@gmx.de>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2010 - 2018 by Fabian Mueller <fabianmueller5@gmx.de>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -22,22 +22,26 @@
 
 #include "editor/map/map_context.hpp"
 
-
-namespace editor {
-
-editor_action_label* editor_action_label::clone() const
+namespace editor
 {
-	return new editor_action_label(*this);
-}
+IMPLEMENT_ACTION(label)
 
 editor_action* editor_action_label::perform(map_context& mc) const
 {
-	std::auto_ptr<editor_action> undo;
+	editor_action_ptr undo;
 
-	const terrain_label *old_label = mc.get_labels().get_label(loc_);
-	if (old_label) {
-		undo.reset(new editor_action_label(loc_, old_label->text(), old_label->team_name(), old_label->color()
-				, old_label->visible_in_fog(), old_label->visible_in_shroud(), old_label->immutable()) );
+	const terrain_label* old_label = mc.get_labels().get_label(loc_);
+	if(old_label) {
+		undo.reset(new editor_action_label(
+			loc_,
+			old_label->text(),
+			old_label->team_name(),
+			old_label->color(),
+			old_label->visible_in_fog(),
+			old_label->visible_in_shroud(),
+			old_label->immutable(),
+			old_label->category())
+		);
 	} else {
 		undo.reset(new editor_action_label_delete(loc_));
 	}
@@ -48,25 +52,32 @@ editor_action* editor_action_label::perform(map_context& mc) const
 
 void editor_action_label::perform_without_undo(map_context& mc) const
 {
-	mc.get_labels()
-			.set_label(loc_, text_, team_name_, color_, visible_fog_, visible_shroud_, immutable_);
+	mc.get_labels().set_label(
+		loc_, text_, -1, team_name_, color_, visible_fog_, visible_shroud_, immutable_, category_);
 }
 
-editor_action_label_delete* editor_action_label_delete::clone() const
-{
-	return new editor_action_label_delete(*this);
-}
+IMPLEMENT_ACTION(label_delete)
 
 editor_action* editor_action_label_delete::perform(map_context& mc) const
 {
-	std::auto_ptr<editor_action> undo;
+	editor_action_ptr undo;
 
 	const terrain_label* deleted = mc.get_labels().get_label(loc_);
 
-	if (!deleted) return NULL;
+	if(!deleted) {
+		return nullptr;
+	}
 
-	undo.reset(new editor_action_label(loc_, deleted->text(), deleted->team_name()
-			, deleted->color(), deleted->visible_in_fog(), deleted->visible_in_shroud(), deleted->immutable()));
+	undo.reset(new editor_action_label(
+		loc_,
+		deleted->text(),
+		deleted->team_name(),
+		deleted->color(),
+		deleted->visible_in_fog(),
+		deleted->visible_in_shroud(),
+		deleted->immutable(),
+		deleted->category())
+	);
 
 	perform_without_undo(mc);
 	return undo.release();
@@ -77,5 +88,4 @@ void editor_action_label_delete::perform_without_undo(map_context& mc) const
 	mc.get_labels().set_label(loc_, "");
 }
 
-
-} //end namespace editor
+} // end namespace editor

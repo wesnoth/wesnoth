@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2014 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -13,14 +13,14 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
 #include "floating_textbox.hpp"
 
 #include "display_chat_manager.hpp"
+#include "floating_label.hpp"
+#include "font/standard_colors.hpp"
 #include "game_display.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "log.hpp"
-#include "resources.hpp"
 
 #include <ctime>
 
@@ -29,8 +29,8 @@ static lg::log_domain log_display("display");
 
 namespace gui{
 	floating_textbox::floating_textbox() :
-		box_(NULL),
-		check_(NULL),
+		box_(nullptr),
+		check_(nullptr),
 		mode_(TEXTBOX_NONE),
 		label_string_(),
 		label_(0)
@@ -41,13 +41,13 @@ namespace gui{
 		if(!active()) {
 			return;
 		}
-		if(check_ != NULL) {
+		if(check_ != nullptr) {
 			if(mode_ == TEXTBOX_MESSAGE) {
 				preferences::set_message_private(check_->checked());
 			}
 		}
-		box_.assign(NULL);
-		check_.assign(NULL);
+		box_.reset(nullptr);
+		check_.reset(nullptr);
 		font::remove_floating_label(label_);
 		mode_ = TEXTBOX_NONE;
 		gui.invalidate_all();
@@ -55,14 +55,14 @@ namespace gui{
 
 	void floating_textbox::update_location(game_display& gui)
 	{
-		if (box_ == NULL)
+		if (box_ == nullptr)
 			return;
 
 		const SDL_Rect& area = gui.map_outside_area();
 
 		const int border_size = 10;
 
-		const int ypos = area.y+area.h-30 - (check_ != NULL ? check_->height() + border_size : 0);
+		const int ypos = area.y+area.h-30 - (check_ != nullptr ? check_->height() + border_size : 0);
 
 		if (label_ != 0)
 			font::remove_floating_label(label_);
@@ -86,18 +86,19 @@ namespace gui{
 			return;
 		}
 
-		if(box_ != NULL) {
+		if(box_ != nullptr) {
 			box_->set_volatile(true);
-			const SDL_Rect rect = sdl::create_rect(
+			const SDL_Rect rect {
 				  area.x + label_area.w + border_size * 2
 				, ypos
 				, textbox_width
-				, box_->height());
+				, box_->height()
+			};
 
 			box_->set_location(rect);
 		}
 
-		if(check_ != NULL) {
+		if(check_ != nullptr) {
 			check_->set_volatile(true);
 			check_->set_location(box_->location().x,box_->location().y + box_->location().h + border_size);
 		}
@@ -111,13 +112,13 @@ namespace gui{
 		label_string_ = label;
 		mode_ = mode;
 
-		if(check_label != "") {
-			check_.assign(new gui::button(gui.video(),check_label,gui::button::TYPE_CHECK));
+		if(!check_label.empty()) {
+			check_.reset(new gui::button(gui.video(),check_label,gui::button::TYPE_CHECK));
 			check_->set_check(checked);
 		}
 
 
-		box_.assign(new gui::textbox(gui.video(),100,"",true,256,font::SIZE_PLUS,0.8,0.6));
+		box_.reset(new gui::textbox(gui.video(),100,"",true,256,font::SIZE_PLUS,0.8,0.6));
 
 		update_location(gui);
 	}
@@ -137,7 +138,7 @@ namespace gui{
 			text.append(line_start ? ": " : " ");
 		} else if (matches.size() > 1) {
 			std::string completion_list = utils::join(matches, " ");
-			resources::screen->get_chat_manager().add_chat_message(time(NULL), "", 0, completion_list,
+			game_display::get_singleton()->get_chat_manager().add_chat_message(time(nullptr), "", 0, completion_list,
 					events::chat_handler::MESSAGE_PRIVATE, false);
 		}
 		box_->set_text(text);

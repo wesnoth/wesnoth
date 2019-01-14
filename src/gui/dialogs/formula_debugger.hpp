@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,45 +12,45 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_FORMULA_DEBUGGER_HPP_INCLUDED
-#define GUI_DIALOGS_FORMULA_DEBUGGER_HPP_INCLUDED
+#pragma once
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
-namespace game_logic
+namespace wfl
 {
 class formula_debugger;
 }
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tformula_debugger : public tdialog
+class formula_debugger : public modal_dialog
 {
 public:
-	explicit tformula_debugger(game_logic::formula_debugger& fdb) : fdb_(fdb)
+	explicit formula_debugger(wfl::formula_debugger& fdb) : fdb_(fdb)
 	{
 	}
 
 private:
-	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
+	/** Inherited from modal_dialog. */
+	virtual void pre_show(window& window) override;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
+	virtual const std::string& window_id() const override;
 
 	/***** ***** button callbacks ***** *****/
-	void callback_continue_button(twindow& window);
+	void callback_continue_button(window& window);
 
-	void callback_next_button(twindow& window);
+	void callback_next_button(window& window);
 
-	void callback_step_button(twindow& window);
+	void callback_step_button(window& window);
 
-	void callback_stepout_button(twindow& window);
+	void callback_stepout_button(window& window);
 
-	game_logic::formula_debugger& fdb_;
+	wfl::formula_debugger& fdb_;
 };
 
+} // namespace dialogs
 } // namespace gui2
-
-#endif /* ! GUI_DIALOGS_FORMULA_DEBUGGER_HPP_INCLUDED */

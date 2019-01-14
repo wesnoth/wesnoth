@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,16 +12,11 @@
    See the COPYING file for more details.
 */
 
-#ifndef FORMAT_TIME_SUMMARY_H_INCLUDED
-#define FORMAT_TIME_SUMMARY_H_INCLUDED
-
-#include "global.hpp"
+#pragma once
 
 #include <ctime>
 #include <string>
 
-namespace util {
-	std::string format_time_summary(time_t t);
+namespace utils {
+	std::string format_time_summary(std::time_t t);
 }
-
-#endif

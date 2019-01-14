@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-                 2004 - 2014 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+                 2004 - 2015 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,19 +19,15 @@
  * See also the command line switches --logdomains and --log-@<level@>="domain".
  */
 
-#include "game_errors.hpp"
-#include "global.hpp"
-
-#include "SDL_timer.h"
-
 #include "log.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/date_time.hpp>
 
 #include <map>
 #include <sstream>
 #include <ctime>
+
+#include "global.hpp"
 
 namespace {
 
@@ -50,7 +46,7 @@ static bool timestamp = true;
 static bool precise_timestamp = false;
 
 static boost::posix_time::time_facet facet("%Y%m%d %H:%M:%S%F ");
-static std::ostream *output_stream = NULL;
+static std::ostream *output_stream = nullptr;
 
 static std::ostream& output()
 {
@@ -62,13 +58,13 @@ static std::ostream& output()
 
 namespace lg {
 
-tredirect_output_setter::tredirect_output_setter(std::ostream& stream)
+redirect_output_setter::redirect_output_setter(std::ostream& stream)
 	: old_stream_(output_stream)
 {
 	output_stream = &stream;
 }
 
-tredirect_output_setter::~tredirect_output_setter()
+redirect_output_setter::~redirect_output_setter()
 {
 	output_stream = old_stream_;
 }
@@ -79,26 +75,55 @@ static int strict_level_ = -1;
 void timestamps(bool t) { timestamp = t; }
 void precise_timestamps(bool pt) { precise_timestamp = pt; }
 
-logger err("error", 0), warn("warning", 1), info("info", 2), debug("debug", 3);
-log_domain general("general");
+logger& err()
+{
+	static logger lg("error", 0);
+	return lg;
+}
 
-log_domain::log_domain(char const *name)
-	: domain_(NULL)
+logger& warn()
+{
+	static logger lg("warning", 1);
+	return lg;
+}
+
+logger& info()
+{
+	static logger lg("info", 2);
+	return lg;
+}
+
+logger& debug()
+{
+	static logger lg("debug", 3);
+	return lg;
+}
+
+static log_domain dom("general");
+
+log_domain& general()
+{
+	return dom;
+}
+
+log_domain::log_domain(char const *name, int severity)
+	: domain_(nullptr)
 {
 	// Indirection to prevent initialization depending on link order.
 	if (!domains) domains = new domain_map;
-	domain_ = &*domains->insert(logd(name, 1)).first;
+	domain_ = &*domains->insert(logd(name, severity)).first;
+	domain_->second = severity;
 }
 
-bool set_log_domain_severity(std::string const &name, int severity)
+bool set_log_domain_severity(const std::string& name, int severity)
 {
 	std::string::size_type s = name.size();
 	if (name == "all") {
-		BOOST_FOREACH(logd &l, *domains) {
+		for(logd &l : *domains) {
 			l.second = severity;
 		}
 	} else if (s > 2 && name.compare(s - 2, 2, "/*") == 0) {
-		BOOST_FOREACH(logd &l, *domains) {
+		for(logd &l : *domains) {
 			if (l.first.compare(0, s - 1, name, 0, s - 1) == 0)
 				l.second = severity;
 		}
@@ -110,14 +135,23 @@ bool set_log_domain_severity(std::string const &name, int severity)
 	}
 	return true;
 }
-bool set_log_domain_severity(std::string const &name, const logger &lg) {
+bool set_log_domain_severity(const std::string& name, const logger &lg) {
 	return set_log_domain_severity(name, lg.get_severity());
+}
+
+bool get_log_domain_severity(const std::string& name, int &severity)
+{
+	domain_map::iterator it = domains->find(name);
+	if (it == domains->end())
+		return false;
+	severity = it->second;
+	return true;
 }
 
 std::string list_logdomains(const std::string& filter)
 {
 	std::ostringstream res;
-	BOOST_FOREACH(logd &l, *domains) {
+	for(logd &l : *domains) {
 		if(l.first.find(filter) != std::string::npos)
 			res << l.first << "\n";
 	}
@@ -138,41 +172,42 @@ bool broke_strict() {
 	return strict_threw_;
 }
 
-std::string get_timestamp(const time_t& t, const std::string& format) {
-	char buf[100] = {0};
-	tm* lt = localtime(&t);
-	if (lt) {
-		strftime(buf, 100, format.c_str(), lt);
-	}
-	return buf;
+std::string get_timestamp(const std::time_t& t, const std::string& format) {
+	std::ostringstream ss;
+
+	ss << std::put_time(std::localtime(&t), format.c_str());
+
+	return ss.str();
 }
-std::string get_timespan(const time_t& t) {
-	char buf[100];
+std::string get_timespan(const std::time_t& t) {
+	std::ostringstream sout;
 	// There doesn't seem to be any library function for this
-	const time_t minutes = t / 60;
-	const time_t days = minutes / 60 / 24;
+	const std::time_t minutes = t / 60;
+	const std::time_t days = minutes / 60 / 24;
 	if(t <= 0) {
-		strncpy(buf, "expired", 100);
+		sout << "expired";
 	} else if(minutes == 0) {
-		snprintf(buf, 100, "00:00:%02ld", t);
+		sout << t << " seconds";
 	} else if(days == 0) {
-		snprintf(buf, 100, "%02ld:%02ld", minutes / 60, minutes % 60);
+		sout << minutes / 60 << " hours, " << minutes % 60 << " minutes";
 	} else {
-		snprintf(buf, 100, "%ld %02ld:%02ld", days, (minutes / 60) % 24, minutes % 60);
+		sout << days << " days, " << (minutes / 60) % 24 << " hours, " << minutes % 60 << " minutes";
 	}
-	return buf;
+	return sout.str();
 }
 
-static void print_precise_timestamp(std::ostream & out)
+static void print_precise_timestamp(std::ostream & out) noexcept
 {
-	facet.put(
-		std::ostreambuf_iterator<char>(out),
-		out,
-		' ',
-		boost::posix_time::microsec_clock::local_time());
+	try {
+		facet.put(
+			std::ostreambuf_iterator<char>(out),
+			out,
+			' ',
+			boost::posix_time::microsec_clock::local_time());
+	} catch(...) {}
 }
 
-std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool do_indent) const
+std::ostream &logger::operator()(const log_domain& domain, bool show_names, bool do_indent) const
 {
 	if (severity_ > domain.domain_->second) {
 		return null_ostream;
@@ -192,7 +227,7 @@ std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool
 			if(precise_timestamp) {
 				print_precise_timestamp(stream);
 			} else {
-				stream << get_timestamp(time(NULL));
+				stream << get_timestamp(std::time(nullptr));
 			}
 		}
 		if (show_names) {
@@ -202,21 +237,26 @@ std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool
 	}
 }
 
-void scope_logger::do_log_entry(log_domain const &domain, const std::string& str)
+void scope_logger::do_log_entry(const log_domain& domain, const std::string& str) noexcept
 {
-	output_ = &debug(domain, false, true);
+	output_ = &debug()(domain, false, true);
 	str_ = str;
-	ticks_ = SDL_GetTicks();
+	try {
+		ticks_ = boost::posix_time::microsec_clock::local_time();
+	} catch(...) {}
 	(*output_) << "{ BEGIN: " << str_ << "\n";
 	++indent;
 }
 
-void scope_logger::do_log_exit()
+void scope_logger::do_log_exit() noexcept
 {
-	const int ticks = SDL_GetTicks() - ticks_;
+	long ticks = 0;
+	try {
+		ticks = (boost::posix_time::microsec_clock::local_time() - ticks_).total_milliseconds();
+	} catch(...) {}
 	--indent;
 	do_indent();
-	if (timestamp) (*output_) << get_timestamp(time(NULL));
+	if (timestamp) (*output_) << get_timestamp(std::time(nullptr));
 	(*output_) << "} END: " << str_ << " (took " << ticks << "ms)\n";
 }
 
@@ -226,7 +266,11 @@ void scope_logger::do_indent() const
 		(*output_) << "  ";
 }
 
-std::stringstream wml_error;
+std::stringstream& wml_error()
+{
+	static std::stringstream lg;
+	return lg;
+}
 
 } // end namespace lg
 

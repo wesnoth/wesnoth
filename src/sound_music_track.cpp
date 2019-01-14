@@ -1,7 +1,7 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Copyright (C) 2009 - 2014 by Ignacio R. Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Copyright (C) 2009 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,8 +19,7 @@
 #include "filesystem.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
-#include "util.hpp"
-#if !defined(_WIN32) && !defined(__APPLE__) && !defined(PANDORA)
+#if !defined(_WIN32) && !defined(__APPLE__)
 #include "vorbis/vorbisfile.h"
 #endif
 
@@ -77,7 +76,7 @@ void music_track::resolve()
 		return;
 	}
 
-	file_path_ = get_binary_file_location("music", id_);
+	file_path_ = filesystem::get_binary_file_location("music", id_);
 
 	if (file_path_.empty()) {
 		LOG_AUDIO << "could not find track '" << id_ << "' for track identification\n";
@@ -85,18 +84,18 @@ void music_track::resolve()
 	}
 
 
-#if !defined(_WIN32) && !defined(__APPLE__) && !defined(PANDORA)
+#if !defined(_WIN32) && !defined(__APPLE__)
 	if (title_.empty()) {
 		FILE* f;
 		f = fopen(file_path_.c_str(), "r");
-		if (f == NULL) {
+		if (f == nullptr) {
 			LOG_AUDIO << "Error opening file '" << file_path_
 					<< "' for track identification\n";
 			return;
 		}
 
 		OggVorbis_File vf;
-		if(ov_open(f, &vf, NULL, 0) < 0) {
+		if(ov_open(f, &vf, nullptr, 0) < 0) {
 			LOG_AUDIO << "track does not appear to be an Ogg file '"
 					<< id_ << "', cannot be identified\n";
 			ov_clear(&vf);

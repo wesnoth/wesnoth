@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2012 - 2014 by Fabian Mueller <fabianmueller5@gmx.de>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2012 - 2018 by Fabian Mueller <fabianmueller5@gmx.de>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,17 +12,14 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_TOOLKIT_H_INCLUDED
-#define EDITOR_TOOLKIT_H_INCLUDED
+#pragma once
 
-
-#include "config.hpp"
 #include "editor/map/context_manager.hpp"
 #include "editor/palette/palette_manager.hpp"
 #include "editor/toolkit/brush.hpp"
 #include "hotkey/hotkey_command.hpp"
 
-#include <boost/scoped_ptr.hpp>
+class config;
 
 namespace editor {
 
@@ -50,7 +47,8 @@ private:
 	void init_mouse_actions(context_manager& c_manager);
 
 public:
-	void set_mouseover_overlay();
+	void set_mouseover_overlay(editor_display& gui);
+	void set_mouseover_overlay() { set_mouseover_overlay(gui_); }
 	void clear_mouseover_overlay();
 
 	/**
@@ -65,7 +63,11 @@ public:
 
 
 	/** Get the current mouse action */
-	mouse_action* get_mouse_action() { return mouse_action_; }
+	mouse_action& get_mouse_action() { return *mouse_action_; }
+	/** Get the current mouse action */
+	const mouse_action& get_mouse_action() const { return *mouse_action_; }
+	/** Get the current palette */
+	common_palette& get_palette();
 
 // Brush related methods
 
@@ -86,15 +88,15 @@ private:
 
 	const CKey& key_;
 
-	boost::scoped_ptr<palette_manager> palette_manager_;
+	std::unique_ptr<palette_manager> palette_manager_;
 
 //Tools
 
 	/** The current mouse action */
-	mouse_action* mouse_action_;
+	std::shared_ptr<mouse_action> mouse_action_;  // Never null (outside the constructor).
 
 	/** The mouse actions */
-	typedef std::map<hotkey::HOTKEY_COMMAND, mouse_action*> mouse_action_map;
+	typedef std::map<hotkey::HOTKEY_COMMAND, std::shared_ptr<mouse_action>> mouse_action_map;
 	mouse_action_map mouse_actions_;
 
 //Brush members
@@ -108,5 +110,3 @@ private:
 };
 
 }
-
-#endif

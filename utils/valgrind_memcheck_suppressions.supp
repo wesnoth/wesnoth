@@ -47,7 +47,7 @@
 
 #SECTION: Static Pointers Initialized with new to force proper order of initialization
 
-#Using a new without a matching delete to initialize a static pointer.  
+#Using a new without a matching delete to initialize a static pointer.
 #This is not a leak.  i.e.
 # static *thingy;
 # void function_to_intialize_static_thingy(){

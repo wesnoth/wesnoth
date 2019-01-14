@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,18 +18,15 @@
  * this is part of AI interface
  */
 
-#ifndef AI_CONTEXTS_HPP_INCLUDED
-#define AI_CONTEXTS_HPP_INCLUDED
+#pragma once
 
-#include "ai/game_info.hpp"                // for move_map, aspect_type, etc
+#include "ai/game_info.hpp"                // for move_map, typesafe_aspect_ptr, etc
 
-#include "global.hpp"
-
-#include "../config.hpp"                // for config
-#include "../game_errors.hpp"
-#include "../generic_event.hpp"         // for observer
-#include "../unit_ptr.hpp"              // for unit_ptr
-#include "../map_location.hpp"       // for map_location
+#include "config.hpp"                // for config
+#include "game_errors.hpp"
+#include "generic_event.hpp"         // for observer
+#include "units/ptr.hpp"              // for unit_ptr
+#include "map/location.hpp"       // for map_location
 
 #include <map>                          // for map, map<>::value_compare
 #include <set>                          // for set
@@ -42,20 +39,13 @@ class team;
 class terrain_filter;  // lines 43-43
 class unit_map;
 class unit_type;  // lines 46-46
-class variant;  // lines 42-42
+namespace wfl { class variant; }
 namespace ai { class ai_context; }  // lines 51-51
-namespace ai { class ministage; }
 namespace ai { class unit_advancements_aspect; }
 namespace ai { template <typename T> class typesafe_aspect; }
 namespace boost { template <class T> class shared_ptr; }
 namespace pathfind { struct paths; }
 struct battle_context_unit_stats;  // lines 39-39
-
-#ifdef _MSC_VER
-#pragma warning(push)
-//silence "inherits via dominance" warnings
-#pragma warning(disable:4250)
-#endif
 
 namespace ai {
 
@@ -200,18 +190,18 @@ public:
 	virtual void calculate_possible_moves(std::map<map_location,pathfind::paths>& possible_moves,
 		move_map& srcdst, move_map& dstsrc, bool enemy,
 		bool assume_full_movement=false,
-		const terrain_filter* remove_destinations=NULL) const = 0;
+		const terrain_filter* remove_destinations=nullptr) const = 0;
 	virtual void calculate_moves(const unit_map& units,
 		std::map<map_location,pathfind::paths>& possible_moves, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement=false,
-		const terrain_filter* remove_destinations=NULL,
+		const terrain_filter* remove_destinations=nullptr,
 		bool see_all=false) const = 0;
 
 	virtual const game_info& get_info() const = 0;
 
 
 	//@note: following part is in alphabetic order
-	virtual defensive_position const& best_defensive_position(const map_location& unit,
+	virtual const defensive_position& best_defensive_position(const map_location& unit,
 			const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const = 0;
 
 
@@ -222,9 +212,6 @@ public:
 
 
 	virtual double get_aggression() const = 0;
-
-
-	virtual int get_attack_depth() const = 0;
 
 
 	virtual const aspect_map& get_aspects() const = 0;
@@ -242,7 +229,7 @@ public:
 	virtual const attacks_vector& get_attacks() const = 0;
 
 
-	virtual const variant& get_attacks_as_variant() const = 0;
+	virtual const wfl::variant& get_attacks_as_variant() const = 0;
 
 
 	virtual const terrain_filter& get_avoid() const = 0;
@@ -295,9 +282,6 @@ public:
 	virtual double get_leader_value() const = 0;
 
 
-	virtual double get_number_of_possible_recruits_to_force_recruit() const = 0;
-
-
 	virtual bool get_passive_leader() const = 0;
 
 
@@ -307,19 +291,7 @@ public:
 	virtual const moves_map& get_possible_moves() const = 0;
 
 
-	virtual const std::vector<unit_ptr>& get_recall_list() const = 0;
-
-
-	virtual stage_ptr get_recruitment(ai_context &context) const = 0;
-
-
 	virtual double get_recruitment_diversity() const = 0;
-
-
-	virtual bool get_recruitment_ignore_bad_combat() const = 0;
-
-
-	virtual bool get_recruitment_ignore_bad_movement() const = 0;
 
 
 	virtual const config get_recruitment_instructions() const = 0;
@@ -412,7 +384,7 @@ public:
 	virtual void set_dst_src_enemy_valid_lua() = 0;
 
 	/** get most suitable keep for leader - nearest free that can be reached in 1 turn, if none - return nearest occupied that can be reached in 1 turn, if none - return nearest keep, if none - return null_location */
-	virtual const map_location& suitable_keep( const map_location& leader_location, const pathfind::paths& leader_paths ) = 0;
+	virtual const map_location& suitable_keep( const map_location& leader_location, const pathfind::paths& leader_paths ) const = 0;
 
 	/**
 	 * serialize to config
@@ -421,7 +393,7 @@ public:
 
 
 	typedef std::map<std::pair<map_location,const unit_type *>,
-	                 std::pair<battle_context_unit_stats,battle_context_unit_stats> >
+	                 std::pair<battle_context_unit_stats,battle_context_unit_stats>>
 	        unit_stats_cache_t;
 	virtual unit_stats_cache_t & unit_stats_cache() const = 0;
 
@@ -478,7 +450,7 @@ public:
 class side_context_proxy : public virtual side_context {
 public:
 	side_context_proxy()
-		: target_(NULL)
+		: target_(nullptr)
 	{
 	}
 
@@ -490,28 +462,28 @@ public:
 		target_= &target.get_side_context();
 	}
 
-	virtual side_number get_side() const
+	virtual side_number get_side() const override
 	{
 		return target_->get_side();
 	}
 
-	virtual void set_side(side_number side)
+	virtual void set_side(side_number side) override
 	{
 		return target_->set_side(side);
 	}
 
-	virtual side_context& get_side_context()
+	virtual side_context& get_side_context() override
 	{
 		return target_->get_side_context();
 	}
 
-	virtual int get_recursion_count() const
+	virtual int get_recursion_count() const override
 	{
 		return target_->get_recursion_count();
 	}
 
 
-	virtual config to_side_context_config() const
+	virtual config to_side_context_config() const override
 	{
 		return target_->to_side_context_config();
 	}
@@ -525,7 +497,7 @@ private:
 class readonly_context_proxy : public virtual readonly_context, public virtual side_context_proxy {
 public:
 	readonly_context_proxy()
-		: target_(NULL)
+		: target_(nullptr)
 	{
 	}
 
@@ -537,63 +509,63 @@ public:
 		target_ = &target.get_readonly_context();
 	}
 
-	virtual readonly_context& get_readonly_context()
+	virtual readonly_context& get_readonly_context() override
 	{
 		return target_->get_readonly_context();
 	}
 
 
-	virtual void on_readonly_context_create()
+	virtual void on_readonly_context_create() override
 	{
 		return target_->on_readonly_context_create();
 	}
 
 
-	virtual const team& current_team() const
+	virtual const team& current_team() const override
 	{
 		return target_->current_team();
 	}
 
-	virtual void diagnostic(const std::string& msg)
+	virtual void diagnostic(const std::string& msg) override
 	{
 		target_->diagnostic(msg);
 	}
 
-	virtual void log_message(const std::string& msg)
+	virtual void log_message(const std::string& msg) override
 	{
 		target_->log_message(msg);
 	}
 
-	virtual attack_result_ptr check_attack_action(const map_location &attacker_loc, const map_location &defender_loc, int attacker_weapon)
+	virtual attack_result_ptr check_attack_action(const map_location &attacker_loc, const map_location &defender_loc, int attacker_weapon) override
 	{
 		return target_->check_attack_action(attacker_loc, defender_loc, attacker_weapon);
 	}
 
-	virtual move_result_ptr check_move_action(const map_location &from, const map_location &to, bool remove_movement=true, bool unreach_is_ok=false)
+	virtual move_result_ptr check_move_action(const map_location &from, const map_location &to, bool remove_movement=true, bool unreach_is_ok=false) override
 	{
 		return target_->check_move_action(from, to, remove_movement, unreach_is_ok);
 	}
 
 
 	virtual recall_result_ptr check_recall_action(const std::string &id, const map_location &where = map_location::null_location(),
-			const map_location &from = map_location::null_location())
+			const map_location &from = map_location::null_location()) override
 	{
 		return target_->check_recall_action(id, where, from);
 	}
 
 
 	virtual recruit_result_ptr check_recruit_action(const std::string &unit_name, const map_location &where = map_location::null_location(),
-			const map_location &from = map_location::null_location())
+			const map_location &from = map_location::null_location()) override
 	{
 		return target_->check_recruit_action(unit_name, where, from);
 	}
 
-	virtual stopunit_result_ptr check_stopunit_action(const map_location &unit_location, bool remove_movement = true, bool remove_attacks = false)
+	virtual stopunit_result_ptr check_stopunit_action(const map_location &unit_location, bool remove_movement = true, bool remove_attacks = false) override
 	{
 		return target_->check_stopunit_action(unit_location, remove_movement, remove_attacks);
 	}
 
-	virtual synced_command_result_ptr check_synced_command_action(const std::string& lua_code, const map_location& location = map_location::null_location())
+	virtual synced_command_result_ptr check_synced_command_action(const std::string& lua_code, const map_location& location = map_location::null_location()) override
 	{
 		return target_->check_synced_command_action(lua_code, location);
 	}
@@ -601,7 +573,7 @@ public:
 	virtual void calculate_possible_moves(std::map<map_location,pathfind::paths>& possible_moves,
 		move_map& srcdst, move_map& dstsrc, bool enemy,
 		bool assume_full_movement=false,
-		const terrain_filter* remove_destinations=NULL) const
+		const terrain_filter* remove_destinations=nullptr) const override
 	{
 		target_->calculate_possible_moves(possible_moves, srcdst, dstsrc, enemy, assume_full_movement, remove_destinations);
 	}
@@ -609,427 +581,391 @@ public:
 	virtual void calculate_moves(const unit_map& units,
 		std::map<map_location,pathfind::paths>& possible_moves, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement=false,
-		const terrain_filter* remove_destinations=NULL,
-		bool see_all=false) const
+		const terrain_filter* remove_destinations=nullptr,
+		bool see_all=false) const override
 	{
 		target_->calculate_moves(units, possible_moves, srcdst, dstsrc, enemy, assume_full_movement, remove_destinations, see_all);
 	}
 
-	virtual const game_info& get_info() const
+	virtual const game_info& get_info() const override
 	{
 		return target_->get_info();
 	}
 
-	virtual void raise_user_interact() const
+	virtual void raise_user_interact() const override
 	{
 		target_->raise_user_interact();
 	}
 
 
-	virtual int get_recursion_count() const
+	virtual int get_recursion_count() const override
 	{
 		return target_->get_recursion_count();
 	}
 
 	//@note: following part is in alphabetic order
-	defensive_position const& best_defensive_position(const map_location& unit,
-			const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const
+	const defensive_position& best_defensive_position(const map_location& unit,
+			const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const override
 	{
 		return target_->best_defensive_position(unit,dstsrc,srcdst,enemy_dstsrc);
 	}
 
 
-	virtual std::map<map_location,defensive_position>& defensive_position_cache() const
+	virtual std::map<map_location,defensive_position>& defensive_position_cache() const override
 	{
 		return target_->defensive_position_cache();
 	}
 
 
-	virtual const unit_advancements_aspect& get_advancements() const
+	virtual const unit_advancements_aspect& get_advancements() const override
 	{
 		return target_->get_advancements();
 	}
 
 
-	virtual double get_aggression() const
+	virtual double get_aggression() const override
 	{
 		return target_->get_aggression();
 	}
 
 
-	virtual int get_attack_depth() const
-	{
-		return target_->get_attack_depth();
-	}
-
-
-	virtual const aspect_map& get_aspects() const
+	virtual const aspect_map& get_aspects() const override
 	{
 		return target_->get_aspects();
 	}
 
 
-	virtual aspect_map& get_aspects()
+	virtual aspect_map& get_aspects() override
 	{
 		return target_->get_aspects();
 	}
 
 
-	virtual void add_aspects(std::vector< aspect_ptr > &aspects )
+	virtual void add_aspects(std::vector< aspect_ptr > &aspects ) override
 	{
 		return target_->add_aspects(aspects);
 	}
 
 
-	virtual void add_facet(const std::string &id, const config &cfg) const
+	virtual void add_facet(const std::string &id, const config &cfg) const override
 	{
 		target_->add_facet(id,cfg);
 	}
 
 
 
-	virtual const attacks_vector& get_attacks() const
+	virtual const attacks_vector& get_attacks() const override
 	{
 		return target_->get_attacks();
 	}
 
 
 
-	virtual const variant& get_attacks_as_variant() const
+	virtual const wfl::variant& get_attacks_as_variant() const override
 	{
 		return target_->get_attacks_as_variant();
 	}
 
 
-	virtual const terrain_filter& get_avoid() const
+	virtual const terrain_filter& get_avoid() const override
 	{
 		return target_->get_avoid();
 	}
 
 
-	virtual double get_caution() const
+	virtual double get_caution() const override
 	{
 		return target_->get_caution();
 	}
 
 
-	virtual const move_map& get_dstsrc() const
+	virtual const move_map& get_dstsrc() const override
 	{
 		return target_->get_dstsrc();
 	}
 
 
-	virtual const move_map& get_enemy_dstsrc() const
+	virtual const move_map& get_enemy_dstsrc() const override
 	{
 		return target_->get_enemy_dstsrc();
 	}
 
 
-	virtual const moves_map& get_enemy_possible_moves() const
+	virtual const moves_map& get_enemy_possible_moves() const override
 	{
 		return target_->get_enemy_possible_moves();
 	}
 
 
-	virtual const move_map& get_enemy_srcdst() const
+	virtual const move_map& get_enemy_srcdst() const override
 	{
 		return target_->get_enemy_srcdst();
 	}
 
 
-	virtual engine_ptr get_engine_by_cfg(const config &cfg)
+	virtual engine_ptr get_engine_by_cfg(const config &cfg) override
 	{
 		return target_->get_engine_by_cfg(cfg);
 	}
 
 
-	virtual const std::vector<engine_ptr>& get_engines() const
+	virtual const std::vector<engine_ptr>& get_engines() const override
 	{
 		return target_->get_engines();
 	}
 
 
-	virtual std::vector<engine_ptr>& get_engines()
+	virtual std::vector<engine_ptr>& get_engines() override
 	{
 		return target_->get_engines();
 	}
 
 
-	virtual std::string get_grouping() const
+	virtual std::string get_grouping() const override
 	{
 		return target_->get_grouping();
 	}
 
 
-	virtual const std::vector<goal_ptr>& get_goals() const
+	virtual const std::vector<goal_ptr>& get_goals() const override
 	{
 		return target_->get_goals();
 	}
 
 
-	virtual std::vector<goal_ptr>& get_goals()
+	virtual std::vector<goal_ptr>& get_goals() override
 	{
 		return target_->get_goals();
 	}
 
 
-	virtual double get_leader_aggression() const
+	virtual double get_leader_aggression() const override
 	{
 		return target_->get_leader_aggression();
 	}
 
 
 
-	virtual config get_leader_goal() const
+	virtual config get_leader_goal() const override
 	{
 		return target_->get_leader_goal();
 	}
 
 
-	virtual bool get_leader_ignores_keep() const
+	virtual bool get_leader_ignores_keep() const override
 	{
 		return target_->get_leader_ignores_keep();
 	}
 
 
-	virtual double get_leader_value() const
+	virtual double get_leader_value() const override
 	{
 		return target_->get_leader_value();
 	}
 
 
-	virtual double get_number_of_possible_recruits_to_force_recruit() const
-	{
-		return target_->get_number_of_possible_recruits_to_force_recruit();
-	}
-
-
-	virtual bool get_passive_leader() const
+	virtual bool get_passive_leader() const override
 	{
 		return target_->get_passive_leader();
 	}
 
 
-	virtual bool get_passive_leader_shares_keep() const
+	virtual bool get_passive_leader_shares_keep() const override
 	{
 		return target_->get_passive_leader_shares_keep();
 	}
 
 
-	virtual const moves_map& get_possible_moves() const
+	virtual const moves_map& get_possible_moves() const override
 	{
 		return target_->get_possible_moves();
 	}
 
 
-	virtual double power_projection(const map_location& loc, const move_map& dstsrc) const
+	virtual double power_projection(const map_location& loc, const move_map& dstsrc) const override
 	{
 		return target_->power_projection(loc,dstsrc);
 	}
 
 
-	virtual const std::vector<unit_ptr>& get_recall_list() const
-	{
-		return target_->get_recall_list();
-	}
-
-
-	virtual stage_ptr get_recruitment(ai_context &context) const
-	{
-		return target_->get_recruitment(context);
-	}
-
-
-	virtual double get_recruitment_diversity() const
+	virtual double get_recruitment_diversity() const override
 	{
 		return target_->get_recruitment_diversity();
 	}
 
 
-	virtual bool get_recruitment_ignore_bad_combat() const
-	{
-		return target_->get_recruitment_ignore_bad_combat();
-	}
-
-
-	virtual bool get_recruitment_ignore_bad_movement() const
-	{
-		return target_->get_recruitment_ignore_bad_movement();
-	}
-
-
-	virtual const config get_recruitment_instructions() const
+	virtual const config get_recruitment_instructions() const override
 	{
 		return target_->get_recruitment_instructions();
 	}
 
 
-	virtual const std::vector<std::string> get_recruitment_more() const
+	virtual const std::vector<std::string> get_recruitment_more() const override
 	{
 		return target_->get_recruitment_more();
 	}
 
 
-	virtual const std::vector<std::string> get_recruitment_pattern() const
+	virtual const std::vector<std::string> get_recruitment_pattern() const override
 	{
 		return target_->get_recruitment_pattern();
 	}
 
 
-	virtual int get_recruitment_randomness() const
+	virtual int get_recruitment_randomness() const override
 	{
 		return target_->get_recruitment_randomness();
 	}
 
 
-	virtual const config get_recruitment_save_gold() const
+	virtual const config get_recruitment_save_gold() const override
 	{
 		return target_->get_recruitment_save_gold();
 	}
 
 
-	virtual const move_map& get_srcdst() const
+	virtual const move_map& get_srcdst() const override
 	{
 		return target_->get_srcdst();
 	}
 
 
-	virtual double get_scout_village_targeting() const
+	virtual double get_scout_village_targeting() const override
 	{
 		return target_->get_scout_village_targeting();
 	}
 
 
-	virtual bool get_simple_targeting() const
+	virtual bool get_simple_targeting() const override
 	{
 		return target_->get_simple_targeting();
 	}
 
 
-	virtual bool get_support_villages() const
+	virtual bool get_support_villages() const override
 	{
 		return target_->get_support_villages();
 	}
 
 
-	virtual double get_village_value() const
+	virtual double get_village_value() const override
 	{
 		return target_->get_village_value();
 	}
 
 
-	virtual int get_villages_per_scout() const
+	virtual int get_villages_per_scout() const override
 	{
 		return target_->get_villages_per_scout();
 	}
 
 
 
-	virtual bool is_active(const std::string &time_of_day, const std::string &turns) const
+	virtual bool is_active(const std::string &time_of_day, const std::string &turns) const override
 	{
 		return target_->is_active(time_of_day, turns);
 	}
 
-	virtual bool is_dst_src_valid_lua() const
+	virtual bool is_dst_src_valid_lua() const override
 	{
 		return target_->is_dst_src_valid_lua();
 	}
 
-	virtual bool is_dst_src_enemy_valid_lua() const
+	virtual bool is_dst_src_enemy_valid_lua() const override
 	{
 		return target_->is_dst_src_enemy_valid_lua();
 	}
 
-	virtual bool is_src_dst_valid_lua() const
+	virtual bool is_src_dst_valid_lua() const override
 	{
 		return target_->is_src_dst_valid_lua();
 	}
 
-	virtual bool is_src_dst_enemy_valid_lua() const
+	virtual bool is_src_dst_enemy_valid_lua() const override
 	{
 		return target_->is_src_dst_enemy_valid_lua();
 	}
 
-	virtual void invalidate_defensive_position_cache() const
+	virtual void invalidate_defensive_position_cache() const override
 	{
 		return target_->invalidate_defensive_position_cache();
 	}
 
 
-	virtual void invalidate_move_maps() const
+	virtual void invalidate_move_maps() const override
 	{
 		target_->invalidate_move_maps();
 	}
 
 
-	virtual void invalidate_keeps_cache() const
+	virtual void invalidate_keeps_cache() const override
 	{
 		return target_->invalidate_keeps_cache();
 	}
 
 
-	virtual const std::set<map_location>& keeps() const
+	virtual const std::set<map_location>& keeps() const override
 	{
 		return target_->keeps();
 	}
 
 
-	virtual bool leader_can_reach_keep() const
+	virtual bool leader_can_reach_keep() const override
 	{
 		return target_->leader_can_reach_keep();
 	}
 
 
-	virtual const map_location& nearest_keep( const map_location& loc ) const
+	virtual const map_location& nearest_keep( const map_location& loc ) const override
 	{
 		return target_->nearest_keep(loc);
 	}
 
 
-	virtual void recalculate_move_maps() const
+	virtual void recalculate_move_maps() const override
 	{
 		target_->recalculate_move_maps();
 	}
 
 
-	virtual void recalculate_move_maps_enemy() const
+	virtual void recalculate_move_maps_enemy() const override
 	{
 		target_->recalculate_move_maps_enemy();
 	}
 
-	virtual void set_dst_src_valid_lua()
+	virtual void set_dst_src_valid_lua() override
 	{
 		target_->set_dst_src_valid_lua();
 	}
 
-	virtual void set_dst_src_enemy_valid_lua()
+	virtual void set_dst_src_enemy_valid_lua() override
 	{
 		target_->set_dst_src_enemy_valid_lua();
 	}
 
-	virtual void set_src_dst_valid_lua()
+	virtual void set_src_dst_valid_lua() override
 	{
 		target_->set_src_dst_valid_lua();
 	}
 
-	virtual void set_src_dst_enemy_valid_lua()
+	virtual void set_src_dst_enemy_valid_lua() override
 	{
 		target_->set_src_dst_enemy_valid_lua();
 	}
 
-	virtual const map_location& suitable_keep( const map_location& leader_location, const pathfind::paths& leader_paths )
+	virtual const map_location& suitable_keep( const map_location& leader_location, const pathfind::paths& leader_paths ) const override
 	{
 		return target_->suitable_keep(leader_location, leader_paths);
 	}
 
 
-	virtual config to_readonly_context_config() const
+	virtual config to_readonly_context_config() const override
 	{
 		return target_->to_readonly_context_config();
 	}
 
 
-	virtual unit_stats_cache_t & unit_stats_cache() const
+	virtual unit_stats_cache_t & unit_stats_cache() const override
 	{
 		return target_->unit_stats_cache();
 	}
@@ -1043,7 +979,7 @@ private:
 class readwrite_context_proxy : public virtual readwrite_context, public virtual readonly_context_proxy {
 public:
 	readwrite_context_proxy()
-		: target_(NULL)
+		: target_(nullptr)
 	{
 	}
 
@@ -1055,73 +991,73 @@ public:
 	}
 
 
-	virtual readwrite_context& get_readwrite_context()
+	virtual readwrite_context& get_readwrite_context() override
 	{
 		return target_->get_readwrite_context();
 	}
 
 
-	virtual attack_result_ptr execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon)
+	virtual attack_result_ptr execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon) override
 	{
 		return target_->execute_attack_action(attacker_loc,defender_loc,attacker_weapon);
 	}
 
 
-	virtual move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true, bool unreach_is_ok=false)
+	virtual move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true, bool unreach_is_ok=false) override
 	{
 		return target_->execute_move_action(from, to, remove_movement, unreach_is_ok);
 	}
 
 
-	virtual recall_result_ptr execute_recall_action(const std::string& id, const map_location &where = map_location::null_location(), const map_location &from = map_location::null_location())
+	virtual recall_result_ptr execute_recall_action(const std::string& id, const map_location &where = map_location::null_location(), const map_location &from = map_location::null_location()) override
 	{
 		return target_->execute_recall_action(id,where,from);
 	}
 
 
-	virtual recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location(), const map_location &from = map_location::null_location())
+	virtual recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location(), const map_location &from = map_location::null_location()) override
 	{
 		return target_->execute_recruit_action(unit_name,where,from);
 	}
 
 
-	virtual stopunit_result_ptr execute_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false)
+	virtual stopunit_result_ptr execute_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false) override
 	{
 		return target_->execute_stopunit_action(unit_location,remove_movement,remove_attacks);
 	}
 
 
-	virtual synced_command_result_ptr execute_synced_command_action(const std::string& lua_code, const map_location& location = map_location::null_location())
+	virtual synced_command_result_ptr execute_synced_command_action(const std::string& lua_code, const map_location& location = map_location::null_location()) override
 	{
 		return target_->execute_synced_command_action(lua_code,location);
 	}
 
 
-	virtual team& current_team_w()
+	virtual team& current_team_w() override
 	{
 		return target_->current_team_w();
 	}
 
 
-	virtual void raise_gamestate_changed() const
+	virtual void raise_gamestate_changed() const override
 	{
 		target_->raise_gamestate_changed();
 	}
 
 
-	virtual game_info& get_info_w()
+	virtual game_info& get_info_w() override
 	{
 		return target_->get_info_w();
 	}
 
 
-	virtual int get_recursion_count() const
+	virtual int get_recursion_count() const override
 	{
 		return target_->get_recursion_count();
 	}
 
 
-	virtual config to_readwrite_context_config() const
+	virtual config to_readwrite_context_config() const override
 	{
 		return target_->to_readwrite_context_config();
 	}
@@ -1141,27 +1077,27 @@ public:
 
 	virtual ~side_context_impl(){}
 
-	virtual side_number get_side() const
+	virtual side_number get_side() const override
 	{
 		return side_;
 	}
 
-	virtual void set_side(side_number side)
+	virtual void set_side(side_number side) override
 	{
 		side_ = side;
 	}
 
 
-	virtual side_context& get_side_context()
+	virtual side_context& get_side_context() override
 	{
 		return *this;
 	}
 
 
-	virtual int get_recursion_count() const;
+	virtual int get_recursion_count() const override;
 
 
-	virtual config to_side_context_config() const;
+	virtual config to_side_context_config() const override;
 
 private:
 	side_number side_;
@@ -1188,29 +1124,29 @@ public:
 	 * Unwrap - this class is not a proxy, so return *this
 :w
 	 */
-	virtual readonly_context& get_readonly_context()
+	virtual readonly_context& get_readonly_context() override
 	{
 		return *this;
 	}
 
 
-	virtual void on_readonly_context_create();
+	virtual void on_readonly_context_create() override;
 
 
 	/** Handle generic event */
-	virtual void handle_generic_event(const std::string& event_name);
+	virtual void handle_generic_event(const std::string& event_name) override;
 
 
 	/** Return a reference to the 'team' object for the AI. */
-	const team& current_team() const;
+	const team& current_team() const override;
 
 
 	/** Show a diagnostic message on the screen. */
-	void diagnostic(const std::string& msg);
+	void diagnostic(const std::string& msg) override;
 
 
 	/** Display a debug message as a chat message. */
-	void log_message(const std::string& msg);
+	void log_message(const std::string& msg) override;
 
 
 	/**
@@ -1224,7 +1160,7 @@ public:
 	 * @retval possible result: attacker and/or defender are invalid
 	 * @retval possible result: attacker doesn't have the specified weapon
 	 */
-	attack_result_ptr check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon);
+	attack_result_ptr check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon) override;
 
 
 	/**
@@ -1237,7 +1173,7 @@ public:
 	 * @retval possible result: move is interrupted
 	 * @retval possible result: move is impossible
 	 */
-	move_result_ptr check_move_action(const map_location& from, const map_location& to, bool remove_movement=true, bool unreach_is_ok=false);
+	move_result_ptr check_move_action(const map_location& from, const map_location& to, bool remove_movement=true, bool unreach_is_ok=false) override;
 
 
 
@@ -1251,7 +1187,7 @@ public:
 	 * @retval possible_result: no free space on keep
 	 * @retval possible_result: not enough gold
 	 */
-	recall_result_ptr check_recall_action(const std::string& id, const map_location &where = map_location::null_location(), const map_location &from = map_location::null_location());
+	recall_result_ptr check_recall_action(const std::string& id, const map_location &where = map_location::null_location(), const map_location &from = map_location::null_location()) override;
 
 
 	/**
@@ -1264,7 +1200,7 @@ public:
 	 * @retval possible_result: no free space on keep
 	 * @retval possible_result: not enough gold
 	 */
-	recruit_result_ptr check_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location(), const map_location &from = map_location::null_location());
+	recruit_result_ptr check_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location(), const map_location &from = map_location::null_location()) override;
 
 
 	/**
@@ -1276,7 +1212,7 @@ public:
 	 * @retval possible_result: something wrong
 	 * @retval possible_result: nothing to do
 	 */
-	stopunit_result_ptr check_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false);
+	stopunit_result_ptr check_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false) override;
 
 
 	/**
@@ -1287,7 +1223,7 @@ public:
 	 * @retval possible_result: something wrong
 	 * @retval possible_result: nothing to do
 	 */
-	synced_command_result_ptr check_synced_command_action(const std::string& lua_code, const map_location& location = map_location::null_location());
+	synced_command_result_ptr check_synced_command_action(const std::string& lua_code, const map_location& location = map_location::null_location()) override;
 
 
 	/**
@@ -1317,23 +1253,23 @@ public:
 	void calculate_possible_moves(std::map<map_location,pathfind::paths>& possible_moves,
 		move_map& srcdst, move_map& dstsrc, bool enemy,
 		bool assume_full_movement=false,
-		const terrain_filter* remove_destinations=NULL) const;
+		const terrain_filter* remove_destinations=nullptr) const override;
 
- 	/**
+	/**
 	 * A more fundamental version of calculate_possible_moves which allows the
 	 * use of a speculative unit map.
 	 * NOTE: Support for a speculative map is broken (not used when pathfinding)
 	 *       and has not been used since (probably) r38610 (September 2009).
-	 *       (See the todo in the implementation.)
+	 *       (See the TODO in the implementation.)
 	 */
 	void calculate_moves(const unit_map& units,
 		std::map<map_location,pathfind::paths>& possible_moves, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement=false,
-		const terrain_filter* remove_destinations=NULL,
-		bool see_all=false) const;
+		const terrain_filter* remove_destinations=nullptr,
+		bool see_all=false) const override;
 
 
-	virtual const game_info& get_info() const;
+	virtual const game_info& get_info() const override;
 
 	/**
 	 * Function which should be called frequently to allow the user to interact
@@ -1341,213 +1277,195 @@ public:
 	 * doesn't occur too often, so there is no problem with calling it very
 	 * regularly.
 	 */
-	void raise_user_interact() const;
+	void raise_user_interact() const override;
 
 
-	virtual int get_recursion_count() const;
+	virtual int get_recursion_count() const override;
 
 
 	//@note: following functions are in alphabetic order
-	defensive_position const& best_defensive_position(const map_location& unit,
-			const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const;
+	const defensive_position& best_defensive_position(const map_location& unit,
+			const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const override;
 
 
-	virtual std::map<map_location,defensive_position>& defensive_position_cache() const;
+	virtual std::map<map_location,defensive_position>& defensive_position_cache() const override;
 
 
-	virtual const unit_advancements_aspect& get_advancements() const;
+	virtual const unit_advancements_aspect& get_advancements() const override;
 
 
-	virtual double get_aggression() const;
+	virtual double get_aggression() const override;
 
 
-	virtual int get_attack_depth() const;
+	virtual const aspect_map& get_aspects() const override;
 
 
-	virtual const aspect_map& get_aspects() const;
+	virtual aspect_map& get_aspects() override;
 
 
-	virtual aspect_map& get_aspects();
+	virtual const attacks_vector& get_attacks() const override;
 
 
-	virtual const attacks_vector& get_attacks() const;
+	virtual const wfl::variant& get_attacks_as_variant() const override;
 
 
-	virtual const variant& get_attacks_as_variant() const;
+	virtual const terrain_filter& get_avoid() const override;
 
 
-	virtual const terrain_filter& get_avoid() const;
+	virtual double get_caution() const override;
 
 
-	virtual double get_caution() const;
+	virtual const move_map& get_dstsrc() const override;
 
 
-	virtual const move_map& get_dstsrc() const;
+	virtual const move_map& get_enemy_dstsrc() const override;
 
 
-	virtual const move_map& get_enemy_dstsrc() const;
+	virtual const moves_map& get_enemy_possible_moves() const override;
 
 
-	virtual const moves_map& get_enemy_possible_moves() const;
+	virtual const move_map& get_enemy_srcdst() const override;
 
 
-	virtual const move_map& get_enemy_srcdst() const;
+	virtual engine_ptr get_engine_by_cfg(const config& cfg) override;
 
 
-	virtual engine_ptr get_engine_by_cfg(const config& cfg);
+	virtual const std::vector<engine_ptr>& get_engines() const override;
 
 
-	virtual const std::vector<engine_ptr>& get_engines() const;
+	virtual std::vector<engine_ptr>& get_engines() override;
 
 
-	virtual std::vector<engine_ptr>& get_engines();
+	virtual std::string get_grouping() const override;
 
 
-	virtual std::string get_grouping() const;
+	virtual const std::vector<goal_ptr>& get_goals() const override;
 
 
-	virtual const std::vector<goal_ptr>& get_goals() const;
+	virtual std::vector<goal_ptr>& get_goals() override;
 
 
-	virtual std::vector<goal_ptr>& get_goals();
+	virtual double get_leader_aggression() const override;
 
 
-	virtual double get_number_of_possible_recruits_to_force_recruit() const;
+	virtual config get_leader_goal() const override;
 
 
-	virtual double get_leader_aggression() const;
+	virtual bool get_leader_ignores_keep() const override;
 
 
-	virtual config get_leader_goal() const;
+	virtual double get_leader_value() const override;
 
 
-	virtual bool get_leader_ignores_keep() const;
+	virtual bool get_passive_leader() const override;
 
 
-	virtual double get_leader_value() const;
+	virtual bool get_passive_leader_shares_keep() const override;
 
 
-	virtual bool get_passive_leader() const;
+	virtual const moves_map& get_possible_moves() const override;
 
 
-	virtual bool get_passive_leader_shares_keep() const;
+	virtual double get_recruitment_diversity() const override;
 
 
-	virtual const moves_map& get_possible_moves() const;
+	virtual const config get_recruitment_instructions() const override;
 
 
-	virtual const std::vector<unit_ptr>& get_recall_list() const;
+	virtual const std::vector<std::string> get_recruitment_more() const override;
 
 
-	virtual stage_ptr get_recruitment(ai_context &context) const;
+	virtual const std::vector<std::string> get_recruitment_pattern() const override;
 
 
-	virtual double get_recruitment_diversity() const;
+	virtual int get_recruitment_randomness() const override;
 
 
-	virtual bool get_recruitment_ignore_bad_combat() const;
+	virtual const config get_recruitment_save_gold() const override;
 
 
-	virtual bool get_recruitment_ignore_bad_movement() const;
+	virtual double get_scout_village_targeting() const override;
 
 
-	virtual const config get_recruitment_instructions() const;
+	virtual bool get_simple_targeting() const override;
 
 
-	virtual const std::vector<std::string> get_recruitment_more() const;
+	virtual const move_map& get_srcdst() const override;
 
 
-	virtual const std::vector<std::string> get_recruitment_pattern() const;
+	virtual bool get_support_villages() const override;
 
 
-	virtual int get_recruitment_randomness() const;
+	virtual double get_village_value() const override;
 
 
-	virtual const config get_recruitment_save_gold() const;
+	virtual int get_villages_per_scout() const override;
 
 
-	virtual double get_scout_village_targeting() const;
+	virtual bool is_active(const std::string &time_of_day, const std::string &turns) const override;
 
+	virtual bool is_dst_src_valid_lua() const override;
 
-	virtual bool get_simple_targeting() const;
+	virtual bool is_dst_src_enemy_valid_lua() const override;
 
+	virtual bool is_src_dst_valid_lua() const override;
 
-	virtual const move_map& get_srcdst() const;
+	virtual bool is_src_dst_enemy_valid_lua() const override;
 
+	virtual void invalidate_defensive_position_cache() const override;
 
-	virtual bool get_support_villages() const;
 
+	virtual void invalidate_move_maps() const override;
 
-	virtual double get_village_value() const;
 
+	virtual void invalidate_keeps_cache() const override;
 
-	virtual int get_villages_per_scout() const;
 
+	virtual const std::set<map_location>& keeps() const override;
 
-	virtual bool is_active(const std::string &time_of_day, const std::string &turns) const;
 
-	virtual bool is_dst_src_valid_lua() const;
+	virtual bool leader_can_reach_keep() const override;
 
-	virtual bool is_dst_src_enemy_valid_lua() const;
 
-	virtual bool is_src_dst_valid_lua() const;
+	virtual const map_location& nearest_keep(const map_location& loc) const override;
 
-	virtual bool is_src_dst_enemy_valid_lua() const;
 
-	virtual void invalidate_defensive_position_cache() const;
+	virtual double power_projection(const map_location& loc, const move_map& dstsrc) const override;
 
 
-	virtual void invalidate_move_maps() const;
+	virtual void recalculate_move_maps() const override;
 
 
-	virtual void invalidate_keeps_cache() const;
+	virtual void recalculate_move_maps_enemy() const override;
 
 
-	virtual const std::set<map_location>& keeps() const;
+	virtual void add_aspects(std::vector< aspect_ptr > &aspects) override;
 
 
-	virtual bool leader_can_reach_keep() const;
-
-
-	virtual const map_location& nearest_keep(const map_location& loc) const;
-
-
-	virtual double power_projection(const map_location& loc, const move_map& dstsrc) const;
-
-
-	virtual void recalculate_move_maps() const;
-
-
-	virtual void recalculate_move_maps_enemy() const;
-
-
-	virtual void add_aspects(std::vector< aspect_ptr > &aspects);
-
-
-	virtual void add_facet(const std::string &id, const config &cfg) const;
+	virtual void add_facet(const std::string &id, const config &cfg) const override;
 
 
 	void on_create();
 
-	virtual void set_dst_src_valid_lua();
+	virtual void set_dst_src_valid_lua() override;
 
-	virtual void set_dst_src_enemy_valid_lua();
+	virtual void set_dst_src_enemy_valid_lua() override;
 
-	virtual void set_src_dst_valid_lua();
+	virtual void set_src_dst_valid_lua() override;
 
-	virtual void set_src_dst_enemy_valid_lua();
+	virtual void set_src_dst_enemy_valid_lua() override;
 
-	virtual const map_location& suitable_keep( const map_location& leader_location, const pathfind::paths& leader_paths );
-
-
-	virtual config to_readonly_context_config() const;
+	virtual const map_location& suitable_keep( const map_location& leader_location, const pathfind::paths& leader_paths ) const override;
 
 
-	virtual unit_stats_cache_t & unit_stats_cache() const;
+	virtual config to_readonly_context_config() const override;
+
+
+	virtual unit_stats_cache_t & unit_stats_cache() const override;
 
 private:
 	template<typename T>
-	void add_known_aspect(const std::string &name, boost::shared_ptr< typesafe_aspect <T> >& where);
+	void add_known_aspect(const std::string &name, typesafe_aspect_ptr<T>& where);
 
 	const config cfg_;
 
@@ -1558,54 +1476,47 @@ private:
 
 	known_aspect_map known_aspects_;
 
-	aspect_type< unit_advancements_aspect >::typesafe_ptr advancements_;
-	aspect_type<double>::typesafe_ptr aggression_;
-	aspect_type<int>::typesafe_ptr attack_depth_;
+	typesafe_aspect_ptr<unit_advancements_aspect> advancements_;
+	typesafe_aspect_ptr<double> aggression_;
 	aspect_map aspects_;
-	aspect_type< attacks_vector >::typesafe_ptr attacks_;
-	mutable aspect_type<terrain_filter>::typesafe_ptr avoid_;
-	aspect_type<double>::typesafe_ptr caution_;
+	typesafe_aspect_ptr<attacks_vector> attacks_;
+	mutable typesafe_aspect_ptr<terrain_filter> avoid_;
+	typesafe_aspect_ptr<double> caution_;
 	mutable std::map<map_location,defensive_position> defensive_position_cache_;
 	mutable move_map dstsrc_;
 	mutable move_map enemy_dstsrc_;
 	mutable moves_map enemy_possible_moves_;
 	mutable move_map enemy_srcdst_;
-	aspect_type< std::string >::typesafe_ptr grouping_;
+	typesafe_aspect_ptr<std::string> grouping_;
 	std::vector< goal_ptr > goals_;
 	mutable keeps_cache keeps_;
-	aspect_type<double>::typesafe_ptr leader_aggression_;
-	aspect_type< config >::typesafe_ptr leader_goal_;
-	aspect_type<bool>::typesafe_ptr leader_ignores_keep_;
-	aspect_type< double >::typesafe_ptr leader_value_;
+	typesafe_aspect_ptr<double> leader_aggression_;
+	typesafe_aspect_ptr<config> leader_goal_;
+	typesafe_aspect_ptr<bool> leader_ignores_keep_;
+	typesafe_aspect_ptr<double> leader_value_;
 	mutable bool move_maps_enemy_valid_;
 	mutable bool move_maps_valid_;
 	mutable bool dst_src_valid_lua_;
 	mutable bool dst_src_enemy_valid_lua_;
 	mutable bool src_dst_valid_lua_;
 	mutable bool src_dst_enemy_valid_lua_;
-	aspect_type<double>::typesafe_ptr number_of_possible_recruits_to_force_recruit_;
-	aspect_type<bool>::typesafe_ptr passive_leader_;
-	aspect_type<bool>::typesafe_ptr passive_leader_shares_keep_;
+	typesafe_aspect_ptr<bool> passive_leader_;
+	typesafe_aspect_ptr<bool> passive_leader_shares_keep_;
 	mutable moves_map possible_moves_;
-	aspect_type< ministage >::typesafe_ptr recruitment_;
-	aspect_type< double >::typesafe_ptr recruitment_diversity_;
-	aspect_type< bool >::typesafe_ptr recruitment_ignore_bad_combat_;
-	aspect_type< bool >::typesafe_ptr recruitment_ignore_bad_movement_;
-	aspect_type< config >::typesafe_ptr recruitment_instructions_;
-	aspect_type< std::vector<std::string> >::typesafe_ptr recruitment_more_;
-	aspect_type< std::vector<std::string> >::typesafe_ptr recruitment_pattern_;
-	aspect_type< int >::typesafe_ptr recruitment_randomness_;
-	aspect_type< config >::typesafe_ptr recruitment_save_gold_;
+	typesafe_aspect_ptr<double> recruitment_diversity_;
+	typesafe_aspect_ptr<config> recruitment_instructions_;
+	typesafe_aspect_ptr<std::vector<std::string>> recruitment_more_;
+	typesafe_aspect_ptr<std::vector<std::string>> recruitment_pattern_;
+	typesafe_aspect_ptr<int> recruitment_randomness_;
+	typesafe_aspect_ptr<config> recruitment_save_gold_;
 	recursion_counter recursion_counter_;
-	aspect_type< double >::typesafe_ptr scout_village_targeting_;
-	aspect_type< bool >::typesafe_ptr simple_targeting_;
+	typesafe_aspect_ptr<double> scout_village_targeting_;
+	typesafe_aspect_ptr<bool> simple_targeting_;
 	mutable move_map srcdst_;
-	aspect_type< bool >::typesafe_ptr support_villages_;
+	typesafe_aspect_ptr<bool> support_villages_;
 	mutable unit_stats_cache_t unit_stats_cache_;
-	aspect_type< double >::typesafe_ptr village_value_;
-	aspect_type< int >::typesafe_ptr villages_per_scout_;
-
-
+	typesafe_aspect_ptr<double> village_value_;
+	typesafe_aspect_ptr<int> villages_per_scout_;
 };
 
 class readwrite_context_impl : public virtual readonly_context_proxy, public readwrite_context {
@@ -1613,7 +1524,7 @@ public:
 	/**
 	 * Unwrap - this class is not a proxy, so return *this
 	 */
-	virtual readwrite_context& get_readwrite_context()
+	virtual readwrite_context& get_readwrite_context() override
 	{
 		return *this;
 	}
@@ -1630,7 +1541,7 @@ public:
 	 * @retval possible result: attacker and/or defender are invalid
 	 * @retval possible result: attacker doesn't have the specified weapon
 	 */
-	virtual attack_result_ptr execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon);
+	virtual attack_result_ptr execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon) override;
 
 
 	/**
@@ -1643,7 +1554,7 @@ public:
 	 * @retval possible result: move is interrupted
 	 * @retval possible result: move is impossible
 	 */
-	virtual move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true, bool unreach_is_ok=false);
+	virtual move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true, bool unreach_is_ok=false) override;
 
 
 	/**
@@ -1656,7 +1567,7 @@ public:
 	 * @retval possible_result: no free space on keep
 	 * @retval possible_result: not enough gold
 	 */
-	virtual recall_result_ptr execute_recall_action(const std::string& id, const map_location &where = map_location::null_location(), const map_location &from = map_location::null_location());
+	virtual recall_result_ptr execute_recall_action(const std::string& id, const map_location &where = map_location::null_location(), const map_location &from = map_location::null_location()) override;
 
 
 	/**
@@ -1669,7 +1580,7 @@ public:
 	 * @retval possible_result: no free space on keep
 	 * @retval possible_result: not enough gold
 	 */
-	virtual recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location(), const map_location &from = map_location::null_location());
+	virtual recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location(), const map_location &from = map_location::null_location()) override;
 
 
 	/**
@@ -1681,7 +1592,7 @@ public:
 	 * @retval possible_result: something wrong
 	 * @retval possible_result: nothing to do
 	 */
-	virtual stopunit_result_ptr execute_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false);
+	virtual stopunit_result_ptr execute_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false) override;
 
 
 	/**
@@ -1692,15 +1603,15 @@ public:
 	 * @retval possible_result: something wrong
 	 * @retval possible_result: nothing to do
 	 */
-	virtual synced_command_result_ptr execute_synced_command_action(const std::string& lua_code, const map_location& location = map_location::null_location());
+	virtual synced_command_result_ptr execute_synced_command_action(const std::string& lua_code, const map_location& location = map_location::null_location()) override;
 
 
 	/** Return a reference to the 'team' object for the AI. */
-	virtual team& current_team_w();
+	virtual team& current_team_w() override;
 
 
 	/** Notifies all interested observers of the event respectively. */
-	void raise_gamestate_changed() const;
+	void raise_gamestate_changed() const override;
 
 
 	/**
@@ -1721,13 +1632,13 @@ public:
 	 * Functions to retrieve the 'info' object.
 	 * Used by derived classes to discover all necessary game information.
 	 */
-	virtual game_info& get_info_w();
+	virtual game_info& get_info_w() override;
 
 
-	virtual int get_recursion_count() const;
+	virtual int get_recursion_count() const override;
 
 
-	virtual config to_readwrite_context_config() const;
+	virtual config to_readwrite_context_config() const override;
 
 private:
 	recursion_counter recursion_counter_;
@@ -1735,9 +1646,3 @@ private:
 
 
 } //end of namespace ai
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
-#endif

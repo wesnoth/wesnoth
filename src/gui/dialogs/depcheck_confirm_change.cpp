@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2012 - 2014 by Boldizsár Lipka <lipkab@zoho.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2012 - 2018 by Boldizsár Lipka <lipkab@zoho.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,10 +18,12 @@
 
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "gettext.hpp"
 
 namespace gui2
+{
+namespace dialogs
 {
 
 /*WIKI
@@ -52,7 +54,7 @@ namespace gui2
 
 REGISTER_DIALOG(depcheck_confirm_change)
 
-tdepcheck_confirm_change::tdepcheck_confirm_change(
+depcheck_confirm_change::depcheck_confirm_change(
 		bool action,
 		const std::vector<std::string>& mods,
 		const std::string& requester)
@@ -61,11 +63,11 @@ tdepcheck_confirm_change::tdepcheck_confirm_change(
 	symbols["requester"] = requester;
 	std::string message;
 	if(action) {
-		message = vgettext("$requester requires the following modifications to "
+		message = VGETTEXT("$requester requires the following modifications to "
 						   "be enabled:",
 						   symbols);
 	} else {
-		message = vgettext("$requester requires the following modifications to "
+		message = VGETTEXT("$requester requires the following modifications to "
 						   "be disabled:",
 						   symbols);
 	}
@@ -77,4 +79,5 @@ tdepcheck_confirm_change::tdepcheck_confirm_change(
 
 	register_label("itemlist", false, list);
 }
-}
+} // namespace dialogs
+} // namespace gui2

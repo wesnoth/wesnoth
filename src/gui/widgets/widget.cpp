@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2007 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2007 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,10 +14,12 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "gui/widgets/grid.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "gui/auxiliary/event/message.hpp"
-#include "gui/auxiliary/log.hpp"
+#include "gui/core/event/message.hpp"
+#include "gui/core/log.hpp"
+#include "gui/core/window_builder/helper.hpp"
 #include "sdl/rect.hpp"
 
 namespace gui2
@@ -25,68 +27,64 @@ namespace gui2
 
 /***** ***** ***** Constructor and destructor. ***** ***** *****/
 
-twidget::twidget()
+widget::widget()
 	: id_("")
-	, parent_(NULL)
+	, parent_(nullptr)
 	, x_(-1)
 	, y_(-1)
 	, width_(0)
 	, height_(0)
-	, layout_size_(tpoint(0, 0))
+	, layout_size_()
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	, last_best_size_(tpoint(0, 0))
+	, last_best_size_()
 #endif
 	, linked_group_()
 	, is_dirty_(true)
-	, visible_(tvisible::visible)
-	, redraw_action_(tredraw_action::full)
+	, visible_(visibility::visible)
+	, redraw_action_(redraw_action::full)
 	, clipping_rectangle_()
-#ifndef LOW_MEM
 	, debug_border_mode_(0)
-	, debug_border_colour_(0)
-#endif
+	, debug_border_color_(0,0,0,0)
 {
 	DBG_GUI_LF << "widget create: " << static_cast<void*>(this) << "\n";
 }
 
-twidget::twidget(const tbuilder_widget& builder)
+widget::widget(const builder_widget& builder)
 	: id_(builder.id)
-	, parent_(NULL)
+	, parent_(nullptr)
 	, x_(-1)
 	, y_(-1)
 	, width_(0)
 	, height_(0)
-	, layout_size_(tpoint(0, 0))
+	, layout_size_()
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	, last_best_size_(tpoint(0, 0))
+	, last_best_size_()
 #endif
 	, linked_group_(builder.linked_group)
 	, is_dirty_(true)
-	, visible_(tvisible::visible)
-	, redraw_action_(tredraw_action::full)
+	, visible_(visibility::visible)
+	, redraw_action_(redraw_action::full)
 	, clipping_rectangle_()
-#ifndef LOW_MEM
 	, debug_border_mode_(builder.debug_border_mode)
-	, debug_border_colour_(builder.debug_border_color)
-#endif
+	, debug_border_color_(builder.debug_border_color)
 {
 	DBG_GUI_LF << "widget create: " << static_cast<void*>(this) << "\n";
 }
 
-twidget::~twidget()
+widget::~widget()
 {
 	DBG_GUI_LF
 	<< "widget destroy: " << static_cast<void*>(this) << " (id: " << id_
 	<< ")\n";
 
-	twidget* p = parent();
+	widget* p = parent();
 	while(p) {
-		fire(event::NOTIFY_REMOVAL, *p, NULL);
+		fire(event::NOTIFY_REMOVAL, *p, nullptr);
 		p = p->parent();
 	}
 
 	if(!linked_group_.empty()) {
-		if(twindow* window = get_window()) {
+		if(window* window = get_window()) {
 			window->remove_linked_widget(linked_group_, this);
 		}
 	}
@@ -94,104 +92,115 @@ twidget::~twidget()
 
 /***** ***** ***** ***** ID functions. ***** ***** ***** *****/
 
-void twidget::set_id(const std::string& id)
+void widget::set_id(const std::string& id)
 {
+	styled_widget* this_ctrl = dynamic_cast<styled_widget*>(this);
+
 	DBG_GUI_LF
 	<< "set id of " << static_cast<void*>(this) << " to '" << id << "' "
 	<< "(was '" << id_ << "'). Widget type: "
-	<< (dynamic_cast<tcontrol*>(this)
-				? dynamic_cast<tcontrol*>(this)->get_control_type()
-				: typeid(twidget).name()) << "\n";
+	<< (this_ctrl ? this_ctrl->get_control_type() : typeid(widget).name()) << "\n";
 
 	id_ = id;
 }
 
-const std::string& twidget::id() const
+const std::string& widget::id() const
 {
 	return id_;
 }
 
 /***** ***** ***** ***** Parent functions ***** ***** ***** *****/
 
-twindow* twidget::get_window()
+window* widget::get_window()
 {
 	// Go up into the parent tree until we find the top level
 	// parent, we can also be the toplevel so start with
 	// ourselves instead of our parent.
-	twidget* result = this;
+	widget* result = this;
 	while(result->parent_) {
 		result = result->parent_;
 	}
 
-	// on error dynamic_cast returns NULL which is what we want.
-	return dynamic_cast<twindow*>(result);
+	// on error dynamic_cast returns nullptr which is what we want.
+	return dynamic_cast<window*>(result);
 }
 
-const twindow* twidget::get_window() const
+const window* widget::get_window() const
 {
 	// Go up into the parent tree until we find the top level
 	// parent, we can also be the toplevel so start with
 	// ourselves instead of our parent.
-	const twidget* result = this;
+	const widget* result = this;
 	while(result->parent_) {
 		result = result->parent_;
 	}
 
-	// on error dynamic_cast returns NULL which is what we want.
-	return dynamic_cast<const twindow*>(result);
+	// on error dynamic_cast returns nullptr which is what we want.
+	return dynamic_cast<const window*>(result);
 }
 
-tdialog* twidget::dialog()
+grid* widget::get_parent_grid()
 {
-	twindow* window = get_window();
-	return window ? window->dialog() : NULL;
+	widget* result = parent_;
+	while(result && dynamic_cast<grid*>(result) == nullptr) {
+		result = result->parent_;
+	}
+
+	return result ? dynamic_cast<grid*>(result) : nullptr;
 }
 
-void twidget::set_parent(twidget* parent)
+void widget::set_parent(widget* parent)
 {
 	parent_ = parent;
 }
 
-twidget* twidget::parent()
+widget* widget::parent()
 {
 	return parent_;
 }
 
 /***** ***** ***** ***** Size and layout functions. ***** ***** ***** *****/
 
-void twidget::layout_initialise(const bool /*full_initialisation*/)
+void widget::layout_initialize(const bool /*full_initialization*/)
 {
-	assert(visible_ != tvisible::invisible);
+	assert(visible_ != visibility::invisible);
 	assert(get_window());
 
-	layout_size_ = tpoint(0, 0);
+	layout_size_ = point();
 	if(!linked_group_.empty()) {
 		get_window()->add_linked_widget(linked_group_, this);
 	}
 }
 
-void twidget::demand_reduce_width(const unsigned /*maximum_width*/)
+void widget::demand_reduce_width(const unsigned /*maximum_width*/)
 {
 	/* DO NOTHING */
 }
 
-void twidget::request_reduce_height(const unsigned /*maximum_height*/)
+void widget::request_reduce_height(const unsigned /*maximum_height*/)
 {
 	/* DO NOTHING */
 }
 
-void twidget::demand_reduce_height(const unsigned /*maximum_height*/)
+void widget::demand_reduce_height(const unsigned /*maximum_height*/)
 {
 	/* DO NOTHING */
 }
 
-tpoint twidget::get_best_size() const
+point widget::get_best_size() const
 {
-	assert(visible_ != tvisible::invisible);
+	assert(visible_ != visibility::invisible);
 
-	tpoint result = layout_size_;
-	if(result == tpoint(0, 0)) {
+	point result = layout_size_;
+	if(result == point()) {
 		result = calculate_best_size();
+		//Adjust to linked widget size if linked widget size was already calculated.
+		if(!get_window()->get_need_layout() && !linked_group_.empty())
+		{
+			point linked_size = get_window()->get_linked_size(linked_group_);
+			result.x = std::max(result.x, linked_size.x);
+			result.y = std::max(result.y, linked_size.y);
+		}
 	}
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
@@ -201,18 +210,18 @@ tpoint twidget::get_best_size() const
 	return result;
 }
 
-bool twidget::can_wrap() const
+bool widget::can_wrap() const
 {
 	return false;
 }
 
-void twidget::set_origin(const tpoint& origin)
+void widget::set_origin(const point& origin)
 {
 	x_ = origin.x;
 	y_ = origin.y;
 }
 
-void twidget::set_size(const tpoint& size)
+void widget::set_size(const point& size)
 {
 	assert(size.x >= 0);
 	assert(size.y >= 0);
@@ -223,7 +232,7 @@ void twidget::set_size(const tpoint& size)
 	set_is_dirty(true);
 }
 
-void twidget::place(const tpoint& origin, const tpoint& size)
+void widget::place(const point& origin, const point& size)
 {
 	assert(size.x >= 0);
 	assert(size.y >= 0);
@@ -248,70 +257,96 @@ void twidget::place(const tpoint& origin, const tpoint& size)
 	set_is_dirty(true);
 }
 
-void twidget::move(const int x_offset, const int y_offset)
+void widget::move(const int x_offset, const int y_offset)
 {
 	x_ += x_offset;
 	y_ += y_offset;
 }
 
-void twidget::layout_children()
+void widget::set_horizontal_alignment(const std::string& alignment)
+{
+	grid* parent_grid = get_parent_grid();
+	if(!parent_grid) {
+		return;
+	}
+
+	parent_grid->set_child_alignment(this, implementation::get_h_align(alignment), grid::HORIZONTAL_MASK);
+
+	// TODO: evaluate necessity
+	//get_window()->invalidate_layout();
+}
+
+void widget::set_vertical_alignment(const std::string& alignment)
+{
+	grid* parent_grid = get_parent_grid();
+	if(!parent_grid) {
+		return;
+	}
+
+	parent_grid->set_child_alignment(this, implementation::get_v_align(alignment), grid::VERTICAL_MASK);
+
+	// TODO: evaluate necessity
+	//get_window()->invalidate_layout();
+}
+
+void widget::layout_children()
 {
 	/* DO NOTHING */
 }
 
-tpoint twidget::get_origin() const
+point widget::get_origin() const
 {
-	return tpoint(x_, y_);
+	return point(x_, y_);
 }
 
-tpoint twidget::get_size() const
+point widget::get_size() const
 {
-	return tpoint(width_, height_);
+	return point(width_, height_);
 }
 
-SDL_Rect twidget::get_rectangle() const
+SDL_Rect widget::get_rectangle() const
 {
 	return create_rect(get_origin(), get_size());
 }
 
-int twidget::get_x() const
+int widget::get_x() const
 {
 	return x_;
 }
 
-int twidget::get_y() const
+int widget::get_y() const
 {
 	return y_;
 }
 
-unsigned twidget::get_width() const
+unsigned widget::get_width() const
 {
 	return width_;
 }
 
-unsigned twidget::get_height() const
+unsigned widget::get_height() const
 {
 	return height_;
 }
 
-void twidget::set_layout_size(const tpoint& size)
+void widget::set_layout_size(const point& size)
 {
 	layout_size_ = size;
 }
 
-const tpoint& twidget::layout_size() const
+const point& widget::layout_size() const
 {
 	return layout_size_;
 }
 
-void twidget::set_linked_group(const std::string& linked_group)
+void widget::set_linked_group(const std::string& linked_group)
 {
 	linked_group_ = linked_group;
 }
 
 /***** ***** ***** ***** Drawing functions. ***** ***** ***** *****/
 
-SDL_Rect twidget::calculate_blitting_rectangle(const int x_offset,
+SDL_Rect widget::calculate_blitting_rectangle(const int x_offset,
 											   const int y_offset)
 {
 	SDL_Rect result = get_rectangle();
@@ -320,7 +355,7 @@ SDL_Rect twidget::calculate_blitting_rectangle(const int x_offset,
 	return result;
 }
 
-SDL_Rect twidget::calculate_clipping_rectangle(const int x_offset,
+SDL_Rect widget::calculate_clipping_rectangle(const int x_offset,
 											   const int y_offset)
 {
 	SDL_Rect result = clipping_rectangle_;
@@ -329,42 +364,28 @@ SDL_Rect twidget::calculate_clipping_rectangle(const int x_offset,
 	return result;
 }
 
-void twidget::draw_background(surface& frame_buffer, int x_offset, int y_offset)
+void widget::draw_background(surface& frame_buffer, int x_offset, int y_offset)
 {
-	assert(visible_ == tvisible::visible);
+	assert(visible_ == visibility::visible);
 
-	if(redraw_action_ == tredraw_action::partly) {
+	if(redraw_action_ == redraw_action::partly) {
 		const SDL_Rect clipping_rectangle
 				= calculate_clipping_rectangle(x_offset, y_offset);
 
 		clip_rect_setter clip(frame_buffer, &clipping_rectangle);
-		draw_debug_border(frame_buffer, x_offset, y_offset);
+		draw_debug_border(x_offset, y_offset);
 		impl_draw_background(frame_buffer, x_offset, y_offset);
 	} else {
-		draw_debug_border(frame_buffer, x_offset, y_offset);
+		draw_debug_border(x_offset, y_offset);
 		impl_draw_background(frame_buffer, x_offset, y_offset);
 	}
 }
 
-void twidget::draw_background(surface& frame_buffer)
+void widget::draw_children(surface& frame_buffer, int x_offset, int y_offset)
 {
-	assert(visible_ == tvisible::visible);
+	assert(visible_ == visibility::visible);
 
-	if(redraw_action_ == tredraw_action::partly) {
-		clip_rect_setter clip(frame_buffer, &clipping_rectangle_);
-		draw_debug_border(frame_buffer);
-		impl_draw_background(frame_buffer);
-	} else {
-		draw_debug_border(frame_buffer);
-		impl_draw_background(frame_buffer);
-	}
-}
-
-void twidget::draw_children(surface& frame_buffer, int x_offset, int y_offset)
-{
-	assert(visible_ == tvisible::visible);
-
-	if(redraw_action_ == tredraw_action::partly) {
+	if(redraw_action_ == redraw_action::partly) {
 		const SDL_Rect clipping_rectangle
 				= calculate_clipping_rectangle(x_offset, y_offset);
 
@@ -375,23 +396,11 @@ void twidget::draw_children(surface& frame_buffer, int x_offset, int y_offset)
 	}
 }
 
-void twidget::draw_children(surface& frame_buffer)
+void widget::draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
 {
-	assert(visible_ == tvisible::visible);
+	assert(visible_ == visibility::visible);
 
-	if(redraw_action_ == tredraw_action::partly) {
-		clip_rect_setter clip(frame_buffer, &clipping_rectangle_);
-		impl_draw_children(frame_buffer);
-	} else {
-		impl_draw_children(frame_buffer);
-	}
-}
-
-void twidget::draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
-{
-	assert(visible_ == tvisible::visible);
-
-	if(redraw_action_ == tredraw_action::partly) {
+	if(redraw_action_ == redraw_action::partly) {
 		const SDL_Rect clipping_rectangle
 				= calculate_clipping_rectangle(x_offset, y_offset);
 
@@ -402,28 +411,16 @@ void twidget::draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
 	}
 }
 
-void twidget::draw_foreground(surface& frame_buffer)
-{
-	assert(visible_ == tvisible::visible);
-
-	if(redraw_action_ == tredraw_action::partly) {
-		clip_rect_setter clip(frame_buffer, &clipping_rectangle_);
-		impl_draw_foreground(frame_buffer);
-	} else {
-		impl_draw_foreground(frame_buffer);
-	}
-}
-
-void twidget::populate_dirty_list(twindow& caller,
-								  std::vector<twidget*>& call_stack)
+void widget::populate_dirty_list(window& caller,
+								  std::vector<widget*>& call_stack)
 {
 	assert(call_stack.empty() || call_stack.back() != this);
 
-	if(visible_ != tvisible::visible) {
+	if(visible_ != visibility::visible) {
 		return;
 	}
 
-	if(get_drawing_action() == tredraw_action::none) {
+	if(get_drawing_action() == redraw_action::none) {
 		return;
 	}
 
@@ -437,59 +434,60 @@ void twidget::populate_dirty_list(twindow& caller,
 }
 
 void
-twidget::child_populate_dirty_list(twindow& /*caller*/
+widget::child_populate_dirty_list(window& /*caller*/
 								   ,
-								   const std::vector<twidget*>& /*call_stack*/)
+								   const std::vector<widget*>& /*call_stack*/)
 {
 	/* DO NOTHING */
 }
 
-SDL_Rect twidget::get_dirty_rectangle() const
+SDL_Rect widget::get_dirty_rectangle() const
 {
-	return redraw_action_ == tredraw_action::full ? get_rectangle()
+	return redraw_action_ == redraw_action::full ? get_rectangle()
 												  : clipping_rectangle_;
 }
 
-void twidget::set_visible_rectangle(const SDL_Rect& rectangle)
+void widget::set_visible_rectangle(const SDL_Rect& rectangle)
 {
 	clipping_rectangle_ = sdl::intersect_rects(rectangle, get_rectangle());
 
 	if(clipping_rectangle_ == get_rectangle()) {
-		redraw_action_ = tredraw_action::full;
+		redraw_action_ = redraw_action::full;
 	} else if(clipping_rectangle_ == sdl::empty_rect) {
-		redraw_action_ = tredraw_action::none;
+		redraw_action_ = redraw_action::none;
 	} else {
-		redraw_action_ = tredraw_action::partly;
+		redraw_action_ = redraw_action::partly;
 	}
 }
 
-void twidget::set_is_dirty(const bool is_dirty)
+void widget::set_is_dirty(const bool is_dirty)
 {
 	is_dirty_ = is_dirty;
 }
 
-bool twidget::get_is_dirty() const
+bool widget::get_is_dirty() const
 {
 	return is_dirty_;
 }
 
-void twidget::set_visible(const tvisible::scoped_enum visible)
+void widget::set_visible(const visibility visible)
 {
 	if(visible == visible_) {
 		return;
 	}
 
-	// Switching to or from invisible should invalidate the layout.
-	const bool need_resize = visible_ == tvisible::invisible
-							 || visible == tvisible::invisible;
+	// Switching to or from invisible should invalidate the layout
+	// if the widget has already been laid out.
+	const bool need_resize = visible_ == visibility::invisible
+		|| (visible == visibility::invisible && get_size() != point());
 	visible_ = visible;
 
 	if(need_resize) {
-		if(new_widgets) {
-			event::tmessage message;
+		if(visible == visibility::visible && new_widgets) {
+			event::message message;
 			fire(event::REQUEST_PLACEMENT, *this, message);
 		} else {
-			twindow* window = get_window();
+			window* window = get_window();
 			if(window) {
 				window->invalidate_layout();
 			}
@@ -499,32 +497,30 @@ void twidget::set_visible(const tvisible::scoped_enum visible)
 	}
 }
 
-twidget::tvisible::scoped_enum twidget::get_visible() const
+widget::visibility widget::get_visible() const
 {
 	return visible_;
 }
 
-twidget::tredraw_action::scoped_enum twidget::get_drawing_action() const
+widget::redraw_action widget::get_drawing_action() const
 {
-	return (width_ == 0 || height_ == 0) ? tredraw_action::none
+	return (width_ == 0 || height_ == 0) ? redraw_action::none
 										 : redraw_action_;
 }
 
-#ifndef LOW_MEM
-
-void twidget::set_debug_border_mode(const unsigned debug_border_mode)
+void widget::set_debug_border_mode(const unsigned debug_border_mode)
 {
 	debug_border_mode_ = debug_border_mode;
 }
 
-void twidget::set_debug_border_colour(const unsigned debug_border_colour)
+void widget::set_debug_border_color(const color_t debug_border_color)
 {
-	debug_border_colour_ = debug_border_colour;
+	debug_border_color_ = debug_border_color;
 }
 
-void twidget::draw_debug_border(surface& frame_buffer)
+void widget::draw_debug_border()
 {
-	SDL_Rect r = redraw_action_ == tredraw_action::partly ? clipping_rectangle_
+	SDL_Rect r = redraw_action_ == redraw_action::partly ? clipping_rectangle_
 														  : get_rectangle();
 
 	switch(debug_border_mode_) {
@@ -532,12 +528,11 @@ void twidget::draw_debug_border(surface& frame_buffer)
 			/* DO NOTHING */
 			break;
 		case 1:
-			sdl::draw_rectangle(
-					r.x, r.y, r.w, r.h, debug_border_colour_, frame_buffer);
+			sdl::draw_rectangle(r, debug_border_color_);
 			break;
 
 		case 2:
-			sdl::fill_rect(frame_buffer, &r, debug_border_colour_);
+			sdl::fill_rectangle(r, debug_border_color_);
 			break;
 
 		default:
@@ -546,9 +541,9 @@ void twidget::draw_debug_border(surface& frame_buffer)
 }
 
 void
-twidget::draw_debug_border(surface& frame_buffer, int x_offset, int y_offset)
+widget::draw_debug_border(int x_offset, int y_offset)
 {
-	SDL_Rect r = redraw_action_ == tredraw_action::partly
+	SDL_Rect r = redraw_action_ == redraw_action::partly
 						 ? calculate_clipping_rectangle(x_offset, y_offset)
 						 : calculate_blitting_rectangle(x_offset, y_offset);
 
@@ -558,12 +553,11 @@ twidget::draw_debug_border(surface& frame_buffer, int x_offset, int y_offset)
 			break;
 
 		case 1:
-			sdl::draw_rectangle(
-					r.x, r.y, r.w, r.h, debug_border_colour_, frame_buffer);
+			sdl::draw_rectangle(r, debug_border_color_);
 			break;
 
 		case 2:
-			sdl::fill_rect(frame_buffer, &r, debug_border_colour_);
+			sdl::fill_rectangle(r, debug_border_color_);
 			break;
 
 		default:
@@ -571,52 +565,61 @@ twidget::draw_debug_border(surface& frame_buffer, int x_offset, int y_offset)
 	}
 }
 
-#endif
-
 /***** ***** ***** ***** Query functions ***** ***** ***** *****/
 
-twidget* twidget::find_at(const tpoint& coordinate, const bool must_be_active)
+widget* widget::find_at(const point& coordinate, const bool must_be_active)
 {
-	return is_at(coordinate, must_be_active) ? this : NULL;
+	return is_at(coordinate, must_be_active) ? this : nullptr;
 }
 
-const twidget* twidget::find_at(const tpoint& coordinate,
+const widget* widget::find_at(const point& coordinate,
 								const bool must_be_active) const
 {
-	return is_at(coordinate, must_be_active) ? this : NULL;
+	return is_at(coordinate, must_be_active) ? this : nullptr;
 }
 
-twidget* twidget::find(const std::string& id, const bool /*must_be_active*/)
+widget* widget::find(const std::string& id, const bool /*must_be_active*/)
 {
-	return id_ == id ? this : NULL;
+	return id_ == id ? this : nullptr;
 }
 
-const twidget* twidget::find(const std::string& id,
+const widget* widget::find(const std::string& id,
 							 const bool /*must_be_active*/) const
 {
-	return id_ == id ? this : NULL;
+	return id_ == id ? this : nullptr;
 }
 
-bool twidget::has_widget(const twidget& widget) const
+bool widget::has_widget(const widget& widget) const
 {
 	return &widget == this;
 }
 
-bool twidget::is_at(const tpoint& coordinate) const
+bool widget::is_at(const point& coordinate) const
 {
 	return is_at(coordinate, true);
 }
 
-bool twidget::is_at(const tpoint& coordinate, const bool must_be_active) const
+bool widget::recursive_is_visible(const widget* widget, const bool must_be_active) const
 {
-	if(visible_ == tvisible::invisible
-	   || (visible_ == tvisible::hidden && must_be_active)) {
+	while(widget) {
+		if(widget->visible_ == visibility::invisible
+		   || (widget->visible_ == visibility::hidden && must_be_active)) {
+			return false;
+		}
+
+		widget = widget->parent_;
+	}
+
+	return true;
+}
+
+bool widget::is_at(const point& coordinate, const bool must_be_active) const
+{
+	if(!recursive_is_visible(this, must_be_active)) {
 		return false;
 	}
 
-	return coordinate.x >= x_ && coordinate.x < (x_ + static_cast<int>(width_))
-		   && coordinate.y >= y_
-		   && coordinate.y < (y_ + static_cast<int>(height_));
+	return sdl::point_in_rect(coordinate, get_rectangle());
 }
 
 } // namespace gui2

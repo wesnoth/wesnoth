@@ -40,10 +40,12 @@ case $SERVER in
        THREADS=16 ;;
 1.7*)  PORT=14997
        THREADS=16 ;;
-1.9*)  PORT=14997
-       THREADS=16 ;;
-1.10)
+1.9*|1.10*)
+       PORT=14997
        THREADS=30 ;;
+1.12*)
+       # TODO: increase after 1.12.0 is announced
+       THREADS=16 ;;
 esac
 
 ulimit -Ss 2048
@@ -53,7 +55,7 @@ ulimit -c unlimited
 #trap "$HOME/bin/send_server_message $SERVER; sleep 2; echo -n 'terminated: '; date; exit 0" INT
 trap "echo -n 'terminated: '; date; exit 0" INT
 
-while [ true ] 
+while [ true ]
 do
 	cd "$SERVERBASE"/build || exit 1
 	[ -x bin/wesnothd-$SERVER ] || die "Executable 'bin/wesnothd-$SERVER' not found."

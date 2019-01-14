@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef INCL_FAKE_UNIT_MGR_HPP_
-#define INCL_FAKE_UNIT_MGR_HPP_
+#pragma once
 
 #include <deque>
 
@@ -42,7 +41,7 @@ public:
 
 	const_iterator begin() const { return fake_units_.begin(); }
 	const_iterator end() const { return fake_units_.end(); }
-
+	bool empty() const { return fake_units_.empty(); }
 private:
 	/** Register a unit with this manager. private, should only be called by fake_unit_ptr. */
 	void place_temporary_unit(internal_ptr_type);
@@ -54,7 +53,5 @@ private:
 
 	/// collection of units destined to be drawn but not put into the unit map
 	std::deque<internal_ptr_type> fake_units_;
-	display & my_display_; //!< Reference to my display. The display owns me in a scoped_ptr, so this should never be a dangling reference.
+	display & my_display_; //!< Reference to my display
 };
-
-#endif

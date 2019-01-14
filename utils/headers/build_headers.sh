@@ -82,7 +82,7 @@ do
       dir_pattern+="$bin_pattern"
       ;;
     m )
-      echo "Matching against pattern:" 
+      echo "Matching against pattern:"
       dir_pattern="$OPTARG"
       echo "$dir_pattern"
       ;;

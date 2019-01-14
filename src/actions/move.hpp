@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,14 +17,14 @@
  * Various functions related to moving units.
  */
 
-#ifndef ACTIONS_MOVE_H_INCLUDED
-#define ACTIONS_MOVE_H_INCLUDED
+#pragma once
 
 struct map_location;
 class  replay;
 class  unit;
 
-#include "../unit_map.hpp"
+#include "units/map.hpp"
+#include "game_events/fwd.hpp"
 
 #include <vector>
 
@@ -95,26 +95,24 @@ private:
 /**
  * Makes it so the village at the given location is owned by the given side.
  * Returns true if getting the village triggered a mutating event.
+ * side can be 0 to make the village uncaptured.
  */
-bool get_village(const map_location& loc, int side, int *time_bonus = NULL);
+game_events::pump_result_t get_village(const map_location& loc, int side, bool *time_bonus = nullptr, bool fire_event = true);
 
 /// Moves a unit across the board.
 /// And enters the synced context.
-size_t move_unit_and_record(const std::vector<map_location> &steps,
+std::size_t move_unit_and_record(const std::vector<map_location> &steps,
                  undo_list* undo_stack,
                  bool continued_move = false,
 				 bool show_move = true,
-                 bool* interrupted = NULL,
-                 move_unit_spectator* move_spectator = NULL);
+                 bool* interrupted = nullptr,
+                 move_unit_spectator* move_spectator = nullptr);
 
 /// Moves a unit across the board.
 /// to be called from replay when we are already in the synced context.
-size_t move_unit_from_replay(const std::vector<map_location> &steps,
+std::size_t move_unit_from_replay(const std::vector<map_location> &steps,
                  undo_list* undo_stack,
                  bool continued_move, bool skip_ally_sighted,
 				 bool show_move = true);
 
 }//namespace actions
-
-
-#endif

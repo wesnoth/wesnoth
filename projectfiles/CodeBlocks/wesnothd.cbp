@@ -7,8 +7,8 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Release">
-				<Option output="..\..\wesnothd" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="..\..\" />
+				<Option output="../../wesnothd" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../../" />
 				<Option object_output=".objs-release" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -17,8 +17,8 @@
 				</Compiler>
 			</Target>
 			<Target title="Debug">
-				<Option output="..\..\wesnothd-debug" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="..\..\" />
+				<Option output="../../wesnothd-debug" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../../" />
 				<Option object_output=".objs-debug" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -29,102 +29,131 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-std=c++17" />
 			<Add option="-mthreads" />
 			<Add option="-fexceptions" />
 			<Add option="-fdiagnostics-show-option" />
 			<Add option="-fopenmp" />
+			<Add option="-Wunused" />
+			<Add option="-Wunused-parameter" />
 			<Add option="-DHAVE_PYTHON" />
 			<Add option="-DUSE_GZIP" />
-			<Add directory="..\..\src" />
-			<Add directory="..\..\src\server" />
-			<Add directory="..\..\src\serialization" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-D_WIN32_IE=0x0501" />
+			<Add directory="../../src" />
 		</Compiler>
 		<Linker>
 			<Add option="-mthreads" />
 			<Add option="-fopenmp" />
 			<Add library="mingw32" />
 			<Add library="mingwthrd" />
-			<Add library="SDLmain" />
-			<Add library="SDL" />
-			<Add library="intl" />
-			<Add library="SDL_net" />
+			<Add library="SDL2main" />
+			<Add library="SDL2" />
 			<Add library="ws2_32" />
-			<Add library="z" />
-			<Add library="libboost_iostreams-mgw45-mt-1_46_1" />
-			<Add library="libz.dll" />
-			<Add library="libbz2" />
-		</Linker>
-		<Unit filename="..\..\src\about.hpp" />
-		<Unit filename="..\..\src\color_range.cpp" />
-		<Unit filename="..\..\src\config.cpp" />
-		<Unit filename="..\..\src\config.hpp" />
-		<Unit filename="..\..\src\filesystem.cpp" />
-		<Unit filename="..\..\src\filesystem.hpp" />
-		<Unit filename="..\..\src\filesystem_win32.ii" />
-		<Unit filename="..\..\src\game_config.cpp" />
-		<Unit filename="..\..\src\game_config.hpp" />
-		<Unit filename="..\..\src\gettext.cpp" />
-		<Unit filename="..\..\src\gettext.hpp" />
-		<Unit filename="..\..\src\global.hpp" />
-		<Unit filename="..\..\src\loadscreen.hpp" />
-		<Unit filename="..\..\src\loadscreen_empty.cpp" />
-		<Unit filename="..\..\src\log.cpp" />
-		<Unit filename="..\..\src\log.hpp" />
-		<Unit filename="..\..\src\map.hpp" />
-		<Unit filename="..\..\src\network.cpp" />
-		<Unit filename="..\..\src\network.hpp" />
-		<Unit filename="..\..\src\network_worker.cpp" />
-		<Unit filename="..\..\src\network_worker.hpp" />
-		<Unit filename="..\..\src\scoped_resource.hpp" />
-		<Unit filename="..\..\src\serialization\binary_or_text.cpp" />
-		<Unit filename="..\..\src\serialization\binary_or_text.hpp" />
-		<Unit filename="..\..\src\serialization\compression.hpp" />
-		<Unit filename="..\..\src\serialization\parser.cpp" />
-		<Unit filename="..\..\src\serialization\parser.hpp" />
-		<Unit filename="..\..\src\serialization\preprocessor.cpp" />
-		<Unit filename="..\..\src\serialization\preprocessor.hpp" />
-		<Unit filename="..\..\src\serialization\string_utils.cpp" />
-		<Unit filename="..\..\src\serialization\string_utils.hpp" />
-		<Unit filename="..\..\src\serialization\tokenizer.cpp" />
-		<Unit filename="..\..\src\serialization\unicode.cpp" />
-		<Unit filename="..\..\src\serialization\unicode.hpp" />
-		<Unit filename="..\..\src\server\ban.cpp" />
-		<Unit filename="..\..\src\server\ban.hpp" />
-		<Unit filename="..\..\src\server\forum_user_handler.cpp" />
-		<Unit filename="..\..\src\server\forum_user_handler.hpp" />
-		<Unit filename="..\..\src\server\game.cpp" />
-		<Unit filename="..\..\src\server\game.hpp" />
-		<Unit filename="..\..\src\server\input_stream.cpp" />
-		<Unit filename="..\..\src\server\input_stream.hpp" />
-		<Unit filename="..\..\src\server\metrics.cpp" />
-		<Unit filename="..\..\src\server\metrics.hpp" />
-		<Unit filename="..\..\src\server\player.cpp" />
-		<Unit filename="..\..\src\server\player.hpp" />
-		<Unit filename="..\..\src\server\player_network.cpp" />
-		<Unit filename="..\..\src\server\player_network.hpp" />
-		<Unit filename="..\..\src\server\proxy.cpp" />
-		<Unit filename="..\..\src\server\proxy.hpp" />
-		<Unit filename="..\..\src\server\room.cpp" />
-		<Unit filename="..\..\src\server\room.hpp" />
-		<Unit filename="..\..\src\server\room_manager.cpp" />
-		<Unit filename="..\..\src\server\room_manager.hpp" />
-		<Unit filename="..\..\src\server\sample_user_handler.cpp" />
-		<Unit filename="..\..\src\server\sample_user_handler.hpp" />
-		<Unit filename="..\..\src\server\server.cpp" />
-		<Unit filename="..\..\src\server\server.hpp" />
-		<Unit filename="..\..\src\server\simple_wml.cpp" />
-		<Unit filename="..\..\src\server\simple_wml.hpp" />
-		<Unit filename="..\..\src\server\user_handler.cpp" />
-		<Unit filename="..\..\src\server\user_handler.hpp" />
-		<Unit filename="..\..\src\thread.cpp" />
-		<Unit filename="..\..\src\thread.hpp" />
-		<Unit filename="..\..\src\tstring.cpp" />
-		<Unit filename="..\..\src\tstring.hpp" />
-		<Unit filename="..\..\src\util.cpp" />
-		<Unit filename="..\..\src\util.hpp" />
-		<Unit filename="..\..\src\version.cpp" />
-		<Unit filename="..\..\src\version.hpp" />
-		<Unit filename="..\..\src\wesconfig.h" />
+			<Add library="wsock32" />
+			<Add library="shlwapi" />
+			<Add library="libboost_iostreams"/>
+			<Add library="libboost_bzip2"/>
+			<Add library="libboost_filesystem"/>
+			<Add library="libboost_locale"/>
+			<Add library="libboost_program_options"/>
+			<Add library="libboost_random"/>
+			<Add library="libboost_regex"/>
+			<Add library="libboost_system"/>
+			<Add library="libboost_thread"/>
+			<Add library="libboost_timer"/>
+			<Add library="libboost_zlib"/>
+			<Add library="libole32" />
+			<Add library="libuuid" />
+			<Add library="libcrypto-1_1"/>
+			</Linker>
+		<Unit filename="../../packaging/windows/wesnothd.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="../../src/about.hpp" />
+		<Unit filename="../../src/color.cpp" />
+		<Unit filename="../../src/color.hpp" />
+		<Unit filename="../../src/color_range.cpp" />
+		<Unit filename="../../src/config.cpp" />
+		<Unit filename="../../src/config.hpp" />
+		<Unit filename="../../src/config_attribute_value.cpp" />
+		<Unit filename="../../src/config_attribute_value.hpp" />
+		<Unit filename="../../src/filesystem.hpp" />
+		<Unit filename="../../src/filesystem.cpp" />
+		<Unit filename="../../src/filesystem_common.cpp" />
+		<Unit filename="../../src/filesystem_sdl.cpp" />
+		<Unit filename="../../src/filesystem_win32.ii" />
+		<Unit filename="../../src/font/constants.cpp" />
+		<Unit filename="../../src/font/constants.hpp" />
+		<Unit filename="../../src/game_config.cpp" />
+		<Unit filename="../../src/game_config.hpp" />
+		<Unit filename="../../src/gettext.hpp" />
+		<Unit filename="../../src/gettext.cpp" />
+		<Unit filename="../../src/global.hpp" />
+		<Unit filename="../../src/libc_error.hpp" />
+		<Unit filename="../../src/log.cpp" />
+		<Unit filename="../../src/log.hpp" />
+		<Unit filename="../../src/log_windows.cpp" />
+		<Unit filename="../../src/log_windows.hpp" />
+		<Unit filename="../../src/mt_rng.cpp" />
+		<Unit filename="../../src/mt_rng.hpp" />
+		<Unit filename="../../src/random.cpp" />
+		<Unit filename="../../src/random.hpp" />
+		<Unit filename="../../src/seed_rng.cpp" />
+		<Unit filename="../../src/seed_rng.hpp" />
+		<Unit filename="../../src/serialization/base64.cpp" />
+		<Unit filename="../../src/serialization/base64.hpp" />
+		<Unit filename="../../src/serialization/binary_or_text.cpp" />
+		<Unit filename="../../src/serialization/binary_or_text.hpp" />
+		<Unit filename="../../src/serialization/compression.hpp" />
+		<Unit filename="../../src/serialization/parser.cpp" />
+		<Unit filename="../../src/serialization/parser.hpp" />
+		<Unit filename="../../src/serialization/preprocessor.cpp" />
+		<Unit filename="../../src/serialization/preprocessor.hpp" />
+		<Unit filename="../../src/serialization/schema/key.cpp" />
+		<Unit filename="../../src/serialization/schema/key.hpp" />
+		<Unit filename="../../src/serialization/schema/tag.cpp" />
+		<Unit filename="../../src/serialization/schema/tag.hpp" />
+		<Unit filename="../../src/serialization/schema/type.cpp" />
+		<Unit filename="../../src/serialization/schema/type.hpp" />
+		<Unit filename="../../src/serialization/string_utils.cpp" />
+		<Unit filename="../../src/serialization/string_utils.hpp" />
+		<Unit filename="../../src/serialization/string_view.hpp" />
+		<Unit filename="../../src/serialization/tokenizer.cpp" />
+		<Unit filename="../../src/serialization/tokenizer.hpp" />
+		<Unit filename="../../src/serialization/unicode.cpp" />
+		<Unit filename="../../src/serialization/unicode.hpp" />
+		<Unit filename="../../src/server/ban.cpp" />
+		<Unit filename="../../src/server/ban.hpp" />
+		<Unit filename="../../src/server/forum_user_handler.cpp" />
+		<Unit filename="../../src/server/forum_user_handler.hpp" />
+		<Unit filename="../../src/server/game.cpp" />
+		<Unit filename="../../src/server/game.hpp" />
+		<Unit filename="../../src/server/metrics.cpp" />
+		<Unit filename="../../src/server/metrics.hpp" />
+		<Unit filename="../../src/server/player.cpp" />
+		<Unit filename="../../src/server/player.hpp" />
+		<Unit filename="../../src/server/player_connection.cpp" />
+		<Unit filename="../../src/server/player_connection.hpp" />
+		<Unit filename="../../src/server/player_network.cpp" />
+		<Unit filename="../../src/server/player_network.hpp" />
+		<Unit filename="../../src/server/room.hpp" />
+		<Unit filename="../../src/server/sample_user_handler.cpp" />
+		<Unit filename="../../src/server/sample_user_handler.hpp" />
+		<Unit filename="../../src/server/server.cpp" />
+		<Unit filename="../../src/server/server.hpp" />
+		<Unit filename="../../src/server/server_base.cpp" />
+		<Unit filename="../../src/server/server_base.hpp" />
+		<Unit filename="../../src/server/simple_wml.cpp" />
+		<Unit filename="../../src/server/simple_wml.hpp" />
+		<Unit filename="../../src/server/user_handler.cpp" />
+		<Unit filename="../../src/server/user_handler.hpp" />
+		<Unit filename="../../src/tstring.cpp" />
+		<Unit filename="../../src/tstring.hpp" />
+		<Unit filename="../../src/util.hpp" />
+		<Unit filename="../../src/game_version.cpp" />
+		<Unit filename="../../src/game_version.hpp" />
+		<Unit filename="../../src/wesconfig.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

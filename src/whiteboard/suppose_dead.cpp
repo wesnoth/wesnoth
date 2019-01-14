@@ -1,6 +1,6 @@
 /*
- Copyright (C) 2011 - 2014 by Tommy Schmitz
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Copyright (C) 2011 - 2018 by Tommy Schmitz
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -16,25 +16,24 @@
  * @file
  */
 
-#include "suppose_dead.hpp"
+#include "whiteboard/suppose_dead.hpp"
 
-#include "visitor.hpp"
-#include "manager.hpp"
-#include "side_actions.hpp"
-#include "utility.hpp"
+#include "whiteboard/visitor.hpp"
+#include "whiteboard/manager.hpp"
+#include "whiteboard/side_actions.hpp"
+#include "whiteboard/utility.hpp"
 
 #include "arrow.hpp"
 #include "config.hpp"
-#include "game_display.hpp"
+#include "display.hpp"
 #include "game_end_exceptions.hpp"
 #include "mouse_events.hpp"
 #include "play_controller.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
-#include "team.hpp"
-#include "unit.hpp"
-#include "unit_display.hpp"
-#include "unit_map.hpp"
+#include "units/unit.hpp"
+#include "units/udisplay.hpp"
+#include "units/map.hpp"
 
 namespace wb
 {
@@ -58,7 +57,7 @@ std::ostream& suppose_dead::print(std::ostream &s) const
 	return s;
 }
 
-suppose_dead::suppose_dead(size_t team_index, bool hidden, unit& curr_unit, map_location const& loc)
+suppose_dead::suppose_dead(std::size_t team_index, bool hidden, unit& curr_unit, const map_location& loc)
 	: action(team_index,hidden)
 	, unit_underlying_id_(curr_unit.underlying_id())
 	, unit_id_(curr_unit.id())
@@ -67,15 +66,15 @@ suppose_dead::suppose_dead(size_t team_index, bool hidden, unit& curr_unit, map_
 	this->init();
 }
 
-suppose_dead::suppose_dead(config const& cfg, bool hidden)
+suppose_dead::suppose_dead(const config& cfg, bool hidden)
 	: action(cfg,hidden)
 	, unit_underlying_id_(0)
 	, unit_id_()
-	, loc_(cfg.child("loc_")["x"],cfg.child("loc_")["y"])
+	, loc_(cfg.child("loc_")["x"],cfg.child("loc_")["y"], wml_loc())
 {
 	// Construct and validate unit_
-	unit_map::iterator unit_itor = resources::units->find(cfg["unit_"]);
-	if(unit_itor == resources::units->end())
+	unit_map::iterator unit_itor = resources::gameboard->units().find(cfg["unit_"]);
+	if(unit_itor == resources::gameboard->units().end())
 		throw action::ctor_err("suppose_dead: Invalid underlying_id");
 
 	unit_underlying_id_ = unit_itor->underlying_id();
@@ -86,19 +85,19 @@ suppose_dead::suppose_dead(config const& cfg, bool hidden)
 
 void suppose_dead::init()
 {
-	resources::screen->invalidate(loc_);
+	display::get_singleton()->invalidate(loc_);
 }
 
 suppose_dead::~suppose_dead()
 {
 	//invalidate hex so that skull indicator is properly cleared
-	if(resources::screen)
-		resources::screen->invalidate(loc_);
+	if(display::get_singleton())
+		display::get_singleton()->invalidate(loc_);
 }
 
 unit_ptr suppose_dead::get_unit() const
 {
-	unit_map::iterator itor = resources::units->find(unit_underlying_id_);
+	unit_map::iterator itor = resources::gameboard->units().find(unit_underlying_id_);
 	if (itor.valid())
 		return itor.get_shared_ptr();
 	else
@@ -127,8 +126,8 @@ void suppose_dead::apply_temp_modifier(unit_map& unit_map)
 void suppose_dead::remove_temp_modifier(unit_map& unit_map)
 {
 	// Just check to make sure the hex is empty
-	unit_map::iterator unit_it = resources::units->find(loc_);
-	assert(unit_it == resources::units->end());
+	unit_map::iterator unit_it = resources::gameboard->units().find(loc_);
+	assert(unit_it == resources::gameboard->units().end());
 
 	// Restore the unit
 	unit_map.insert(get_unit());
@@ -139,23 +138,18 @@ void suppose_dead::draw_hex(const map_location& hex)
 	if(hex == loc_) //add symbol to hex
 	{
 		//@todo: Possibly use a different layer
-		const display::tdrawing_layer layer = display::LAYER_ARROWS;
+		const display::drawing_layer layer = display::LAYER_ARROWS;
 
-		int xpos = resources::screen->get_location_x(loc_);
-		int ypos = resources::screen->get_location_y(loc_);
-#ifdef SDL_GPU
-		resources::screen->drawing_buffer_add(layer, loc_, xpos, ypos,
-				image::get_texture("whiteboard/suppose_dead.png", image::SCALED_TO_HEX));
-#else
-		resources::screen->drawing_buffer_add(layer, loc_, xpos, ypos,
+		int xpos = display::get_singleton()->get_location_x(loc_);
+		int ypos = display::get_singleton()->get_location_y(loc_);
+		display::get_singleton()->drawing_buffer_add(layer, loc_, xpos, ypos,
 				image::get_image("whiteboard/suppose_dead.png", image::SCALED_TO_HEX));
-#endif
 	}
 }
 
 void suppose_dead::redraw()
 {
-	resources::screen->invalidate(loc_);
+	display::get_singleton()->invalidate(loc_);
 }
 
 action::error suppose_dead::check_validity() const
@@ -164,8 +158,8 @@ action::error suppose_dead::check_validity() const
 		return INVALID_LOCATION;
 	}
 	//Check that the unit still exists in the source hex
-	unit_map::const_iterator unit_it = resources::units->find(get_source_hex());
-	if(unit_it == resources::units->end()) {
+	unit_map::const_iterator unit_it = resources::gameboard->units().find(get_source_hex());
+	if(unit_it == resources::gameboard->units().end()) {
 		return NO_UNIT;
 	}
 	//check if the unit in the source hex has the same unit id as before,
@@ -186,9 +180,9 @@ config suppose_dead::to_config() const
 	final_cfg["unit_id_"]=unit_id_;
 
 	config loc_cfg;
-	loc_cfg["x"]=loc_.x;
-	loc_cfg["y"]=loc_.y;
-	final_cfg.add_child("loc_",loc_cfg);
+	loc_cfg["x"]=loc_.wml_x();
+	loc_cfg["y"]=loc_.wml_y();
+	final_cfg.add_child("loc_", std::move(loc_cfg));
 
 	return final_cfg;
 }

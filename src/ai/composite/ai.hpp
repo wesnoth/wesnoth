@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,23 +17,15 @@
  * Composite AI with turn sequence which is a vector of stages
  */
 
-#ifndef AI_COMPOSITE_AI_HPP_INCLUDED
-#define AI_COMPOSITE_AI_HPP_INCLUDED
+#pragma once
 
-#include "contexts.hpp"
-#include "../interface.hpp"
-#include "component.hpp"
-
-#ifdef _MSC_VER
-#pragma warning(push)
-//silence "inherits via dominance" warnings
-#pragma warning(disable:4250)
-#endif
+#include "ai/composite/contexts.hpp"
+#include "ai/composite/component.hpp"
 
 //============================================================================
 namespace ai {
 
-class ai_composite : public ai_context, public virtual default_ai_context_proxy, public interface, public component {
+class ai_composite : public ai_context, public virtual default_ai_context_proxy, public component {
 public:
 
 
@@ -58,7 +50,7 @@ public:
 	/**
 	 * Evaluate command (using fai)
 	 */
-        virtual std::string evaluate(const std::string& str);
+	virtual std::string evaluate(const std::string& str);
 
 	/**
 	 * On new turn
@@ -95,6 +87,9 @@ public:
 	void create_engine(std::vector<engine_ptr> &engines, const config &cfg);
 
 
+	void replace_aspect(std::map<std::string,aspect_ptr> &aspects, const config &cfg, std::string id);
+
+
 	void on_create();
 
 	/**
@@ -106,6 +101,8 @@ public:
 	virtual std::string get_id() const;
 	virtual std::string get_name() const;
 	virtual std::string get_engine() const;
+
+	static config preparse_cfg(ai_context& ctx, const config& cfg);
 
 protected:
 
@@ -128,9 +125,3 @@ protected:
 };
 
 } //end of namespace ai
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
-#endif

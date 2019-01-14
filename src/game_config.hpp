@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -11,19 +11,18 @@
 
    See the COPYING file for more details.
 */
-#ifndef GAME_CONFIG_H_INCLUDED
-#define GAME_CONFIG_H_INCLUDED
+
+#pragma once
 
 class config;
-class version_info;
 class color_range;
 
+#include "color.hpp"
 #include "tstring.hpp"
-
-#include <SDL_types.h>
 
 #include <vector>
 #include <map>
+#include <cstdint>
 
 //basic game configuration information is here.
 namespace game_config
@@ -35,16 +34,23 @@ namespace game_config
 	extern int rest_heal_amount;
 	extern int recall_cost;
 	extern int kill_experience;
-	extern int tile_size;
+	extern int combat_experience;
+	extern unsigned int tile_size;
 	extern unsigned lobby_network_timer;
 	extern unsigned lobby_refresh;
-	extern const std::string version;
-	extern const std::string revision;
+	extern const std::string default_title_string;
 	extern std::string default_terrain;
+
+	extern std::vector<unsigned int> zoom_levels;
 
 	inline int kill_xp(int level)
 	{
 		return level ? kill_experience * level : kill_experience / 2;
+	}
+
+	inline int combat_xp(int level)
+	{
+		return combat_experience * level;
 	}
 
 	extern std::string wesnoth_program_dir;
@@ -52,8 +58,11 @@ namespace game_config
 	/** Default percentage gold carried over to the next scenario. */
 	extern const int gold_carryover_percentage;
 
-	extern bool debug, debug_lua, editor, ignore_replay_errors, mp_debug,
-		exit_at_end, no_delay, disable_autosave;
+	extern bool debug_lua, editor, ignore_replay_errors, mp_debug,
+		exit_at_end, no_delay, disable_autosave, no_addons;
+
+	extern const bool& debug;
+	void set_debug(bool new_debug);
 
 	extern int cache_compression_level;
 
@@ -68,26 +77,36 @@ namespace game_config
 	extern std::vector<server_info> server_list;
 
 	extern std::string title_music,
-			lobby_music,
-			default_victory_music,
-			default_defeat_music;
+		lobby_music;
+
+	extern std::vector<std::string> default_defeat_music;
+	extern std::vector<std::string> default_victory_music;
 
 	namespace colors {
 	extern std::string unmoved_orb_color,
 			partial_orb_color,
 			enemy_orb_color,
 			ally_orb_color,
-			moved_orb_color;
+			moved_orb_color,
+			default_color_list;
 	} // colors
 
 	extern bool show_ally_orb, show_enemy_orb, show_moved_orb, show_partial_orb, show_unmoved_orb;
 
 	namespace images {
 	extern std::string game_title,
-            game_title_background,
+			game_title_background,
+			game_logo,
+			game_logo_background,
+			victory_laurel,
+			victory_laurel_hardest,
+			victory_laurel_easy,
 			// orbs and hp/xp bar
-            orb,
+			orb,
 			energy,
+			// top bar icons
+			battery_icon,
+			time_icon,
 			// flags
 			flag,
 			flag_icon,
@@ -123,16 +142,18 @@ namespace game_config
 	extern double hex_brightening;
 	extern double hex_semi_brightening;
 
-	extern std::string flag_rgb;
-	extern std::vector<Uint32> red_green_scale;
-	extern std::vector<Uint32> red_green_scale_text;
+	extern std::string flag_rgb, unit_rgb;
+	extern std::vector<color_t> red_green_scale;
+	extern std::vector<color_t> red_green_scale_text;
 
 	extern std::vector<std::string> foot_speed_prefix;
 	extern std::string foot_teleport_enter, foot_teleport_exit;
 
 	extern std::map<std::string, color_range> team_rgb_range;
 	extern std::map<std::string, t_string> team_rgb_name;
-	extern std::map<std::string, std::vector<Uint32> > team_rgb_colors;
+	extern std::map<std::string, std::vector<color_t>> team_rgb_colors;
+
+	extern std::vector<std::string> default_colors;
 
 	/** observer team name used for observer team chat */
 	extern const std::string observer_team_name;
@@ -142,22 +163,26 @@ namespace game_config
 	 * as maximum in wml loops.
 	 * WARNING : This should not be set to less than the max map area
 	 */
-	extern const size_t max_loop;
+	extern const std::size_t max_loop;
 
 	namespace sounds {
-		extern const std::string turn_bell, timer_bell, receive_message,
-				receive_message_highlight, receive_message_friend,
-				receive_message_server, user_arrive, user_leave,
-				game_user_arrive, game_user_leave, party_full_bell,
-				mp_game_begins;
+		extern std::string turn_bell, timer_bell, public_message,
+				private_message, friend_message,
+				server_message, player_joins, player_leaves,
+				game_user_arrive, game_user_leave, ready_for_start,
+				game_has_begun;
 		extern const std::string button_press, checkbox_release, slider_adjust,
 				menu_expand, menu_contract, menu_select;
+		namespace status {
+			extern std::string poisoned, slowed, petrified;
+		}
 	}
 
 	void load_config(const config &cfg);
 
 	void add_color_info(const config& v);
-	const std::vector<Uint32>& tc_info(const std::string& name);
+	void reset_color_info();
+	const std::vector<color_t>& tc_info(const std::string& name);
 	const color_range& color_info(const std::string& name);
 
 	/**
@@ -167,12 +192,8 @@ namespace game_config
 	 * red_green_scale and red_green_scale_text
 	 */
 
-	Uint32 red_to_green(int val, bool for_text = true);
-	Uint32 blue_to_white(int val, bool for_text = true);
+	color_t red_to_green(int val, bool for_text = true);
+	color_t blue_to_white(int val, bool for_text = true);
 
-	extern const version_info wesnoth_version;
-	extern const version_info min_savegame_version;
-	extern const version_info test_version;
+	std::string get_default_title_string();
 }
-
-#endif

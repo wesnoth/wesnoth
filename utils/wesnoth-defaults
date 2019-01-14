@@ -22,7 +22,7 @@ do_error()
 	echo "$SELF: $*" 1>&2
 }
 
-if [ -z $1 ]; then
+if [ -z "$1" ]; then
 	do_error "You must specify a command line to run!"
 	exit 1
 fi
@@ -30,18 +30,18 @@ fi
 WESNOTH_BIN_PATH=$1
 TEMP_CONFIG_DIR=`mktemp -qd`
 
-if [ -z $TEMP_CONFIG_DIR ]; then
+if [ -z "$TEMP_CONFIG_DIR" ]; then
 	do_error "Could not create temporary dir before launch!"
 	exit 2
 fi
 
 do_cleanup()
 {
-	rm -rf $TEMP_CONFIG_DIR || do_error "Could not remove temporary config dir"
+	rm -rf "$TEMP_CONFIG_DIR" || do_error "Could not remove temporary config dir"
 }
 
 trap do_cleanup INT QUIT HUP TERM EXIT
 
 shift
 
-$WESNOTH_BIN_PATH --nocache --userdata-dir $TEMP_CONFIG_DIR --userconfig-dir $TEMP_CONFIG_DIR $@
+"$WESNOTH_BIN_PATH" --nocache --userdata-dir "$TEMP_CONFIG_DIR" --userconfig-dir "$TEMP_CONFIG_DIR" "$@"

@@ -1,22 +1,22 @@
-fai 'poisoner_eval.fai'
+wfl 'poisoner_eval.fai'
 
 {AI_CA_COMBAT_SCORE} + 100 +
 #rate units with regeneration as worse targets #
 if( find( villages, self = target.loc ), -10, 0 ) +
 # units next to healers/curers are also bad targets #
-min(	map(	
-		filter( 
-			map( adjacent_locs(target.loc), 
-				unit_at(self) 
-			), 
+min(	map(
+		filter(
+			map( adjacent_locs(target.loc),
+				unit_at(self)
+			),
 			'unit', index_of(unit.side, enemies) != -1 and unit.abilities
 		), 'unit_with_sp',
 		if( index_of('healing',unit_with_sp.abilities) != -1, -5, 0 ) +
 		if( index_of('curing',unit_with_sp.abilities) != -1, -5, 0 )
-	)
+	) .. [0]
 ) +
 #leader is always a good target! #
-if( target.leader, 50, 0 ) +
+if( target.canrecruit, 50, 0 ) +
 # consider target abilities if needed #
 if( target.abilities,
 	if( index_of('regenerates', target.abilities) != -1, -10, 0 ) +
@@ -26,5 +26,4 @@ if( target.abilities,
 	0
 )
 
-faiend
-
+wflend

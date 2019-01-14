@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -25,128 +25,135 @@
  * See events.hpp for how they are handled.
  */
 
-#ifndef GAME_EVENTS_PUMP_H_INCLUDED
-#define GAME_EVENTS_PUMP_H_INCLUDED
+#pragma once
 
-#include "entity_location.hpp"
-#include "../config.hpp"
+#include "game_events/fwd.hpp"
+#include "game_events/entity_location.hpp"
+#include "game_events/manager.hpp"
 
-class vconfig;
+#include "config.hpp"
 
+#include <sstream>
+#include <string>
+
+namespace lg
+{
+class logger;
+}
 
 namespace game_events
 {
-	struct queued_event {
-		queued_event(const std::string& name, const entity_location& loc1,
-		             const entity_location& loc2, const config& data)
-			: name(name), loc1(loc1), loc2(loc2), data(data)
-		{}
+struct queued_event
+{
+	queued_event(const std::string& name,
+			const std::string& id,
+			const entity_location& loc1,
+			const entity_location& loc2,
+			const config& data)
+		: name(name)
+		, id(id)
+		, loc1(loc1)
+		, loc2(loc2)
+		, data(data)
+	{
+		std::replace(this->name.begin(), this->name.end(), ' ', '_');
+	}
 
-		std::string name;
-		entity_location loc1;
-		entity_location loc2;
-		config data;
-	};
+	std::string name;
+	std::string id;
+	entity_location loc1;
+	entity_location loc2;
+	config data;
+};
 
-	/// The general environment within which events are processed.
-	class context {
-		/// State when processing a particular flight of events or commands.
-		struct event_context {
-			bool mutated;
-			bool skip_messages;
+struct pump_impl;
+class manager;
 
-			explicit event_context(bool s) : mutated(true), skip_messages(s) {}
-		};
+class wml_event_pump
+{
+	const std::unique_ptr<pump_impl> impl_;
 
-	public:
-		/// Context state with automatic lifetime handling.
-		class scoped {
-		public:
-			scoped();
-			~scoped();
+public:
+	wml_event_pump(manager&);
+	~wml_event_pump();
 
-		private:
-			context::event_context *old_context_;
-			context::event_context new_context_;
-		};
-		friend class scoped;
+	/**
+	 * Context: The general environment within which events are processed.
+	 * Returns whether or not audoing is impossible due to wml.
+	 */
+	bool undo_disabled();
 
-	public:
-		// No constructor needed since this is a static-only class for now.
+	/** [allow_undo] implementation */
+	void set_undo_disabled(bool mutated);
 
-		/// Returns whether or not we believe WML might have changed something.
-		static bool mutated()	{ return current_context_->mutated; }
-		/// Sets whether or not we believe WML might have changed something.
-		static void mutated(bool mutated)	{ current_context_->mutated = mutated; }
-		/// Returns whether or not the screen (map visuals) needs to be rebuilt.
-		static bool screen_needs_rebuild()	{ return rebuild_screen_; }
-		/// Sets whether or not the screen (map visuals) needs to be rebuilt.
-		static void screen_needs_rebuild(bool rebuild)	{ rebuild_screen_ = rebuild; }
-		/// Returns whether or not we are skipping messages.
-		static bool skip_messages()	{ return current_context_->skip_messages; }
-		/// Sets whether or not we are skipping messages.
-		static void skip_messages(bool skip)	{ current_context_->skip_messages = skip; }
+	/**
+	 * Returns whether or not wml wants to abort the currently executed user action.
+	 */
+	bool action_canceled();
 
-	private:
-		static event_context * current_context_;
-		static bool rebuild_screen_;
-		/// A default value used to avoid NULL pointers.
-		static event_context default_context_;
-	};
+	/** Sets whether or not wml wants to abort the currently executed user action. */
+	void set_action_canceled();
 
+	/** Returns whether or not we are skipping messages. */
+	bool context_skip_messages();
 
-	/// Helper function which determines whether a wml_message text can
-	/// really be pushed into the wml_messages_stream, and does it.
+	/** Sets whether or not we are skipping messages. */
+	void context_skip_messages(bool skip);
+
+	/*
+	 * Helper function which determines whether a wml_message text can
+	 * really be pushed into the wml_messages_stream, and does it.
+	 */
 	void put_wml_message(const std::string& logger, const std::string& message, bool in_chat);
-
-	/**
-	 * Directly runs the lua command(s) @a lua_code
-	 */
-	void run_lua_commands(char const *lua_code);
-
-	/**
-	 * Runs the action handler associated to the command sequence @a cfg.
-	 */
-	void handle_event_commands(const queued_event &event_info, const vconfig &cfg);
-
-	/**
-	 * Runs the action handler associated to @a cmd with parameters @a cfg.
-	 */
-	void handle_event_command(const std::string &cmd,
-	                          const queued_event &event_info, const vconfig &cfg);
-
 
 	/**
 	 * Function to fire an event.
 	 *
 	 * Events may have up to two arguments, both of which must be locations.
 	 */
-	bool fire(const std::string& event,
-	          const entity_location& loc1=entity_location::null_entity,
-	          const entity_location& loc2=entity_location::null_entity,
-	          const config& data=config());
+	pump_result_t fire(const std::string& event,
+			const entity_location& loc1 = entity_location::null_entity,
+			const entity_location& loc2 = entity_location::null_entity,
+			const config& data = config());
+
+	pump_result_t fire(const std::string& event,
+			const std::string& id,
+			const entity_location& loc1 = entity_location::null_entity,
+			const entity_location& loc2 = entity_location::null_entity,
+			const config& data = config());
 
 	void raise(const std::string& event,
-	           const entity_location& loc1=entity_location::null_entity,
-	           const entity_location& loc2=entity_location::null_entity,
-	           const config& data=config());
+			const std::string& id,
+			const entity_location& loc1 = entity_location::null_entity,
+			const entity_location& loc2 = entity_location::null_entity,
+			const config& data = config());
 
-	bool pump();
+	inline void raise(const std::string& event,
+			const entity_location& loc1 = entity_location::null_entity,
+			const entity_location& loc2 = entity_location::null_entity,
+			const config& data = config())
+	{
+		raise(event, "", loc1, loc2, data);
+	}
 
-	/// Clears all events tha have been raised (and not pumped).
-	void clear_events();
+	pump_result_t operator()();
 
-	/**
-	 * Flushes WML messages and errors.
-	 */
+	/** Flushes WML messages and errors. */
 	void flush_messages();
 
-	/**
-	 * This function can be used to detect when no WML/Lua has been executed.
-	 */
-	size_t wml_tracking();
+private:
+	bool filter_event(const event_handler& handler, const queued_event& ev);
 
+	void process_event(handler_ptr& handler_p, const queued_event& ev);
+
+	void fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stringstream& source);
+
+	void show_wml_messages(std::stringstream& source, const std::string& caption, bool to_cerr);
+
+	void show_wml_errors();
+
+	void show_wml_messages();
+
+	void put_wml_message(lg::logger& logger, const std::string& prefix, const std::string& message, bool in_chat);
+};
 }
-
-#endif // GAME_EVENTS_PUMP_H_INCLUDED
-

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,11 +15,9 @@
 #define GETTEXT_DOMAIN "wesnoth-test"
 
 #include <boost/test/unit_test.hpp>
-#include <boost/foreach.hpp>
 #include <cmath>
 
 #include "config.hpp"
-#include "config_assign.hpp"
 #include "variable_info.hpp"
 
 BOOST_AUTO_TEST_SUITE ( test_config )
@@ -151,8 +149,8 @@ BOOST_AUTO_TEST_CASE ( test_config_attribute_value )
 	x_str = c["x"].str();
 		BOOST_CHECK_EQUAL(x_str, "123456789123");
 
-		// blank != "" test.
-	c = config();
+	// blank != "" test.
+	c.clear();
 	BOOST_CHECK(cc["x"] != "");
 	BOOST_CHECK(cc["x"].empty());
 	BOOST_CHECK(cc["x"].blank());
@@ -164,11 +162,11 @@ BOOST_AUTO_TEST_CASE ( test_config_attribute_value )
 	BOOST_CHECK_EQUAL(cc["x"], c["x"]);
 
 	c["x"] = "";
-	BOOST_CHECK(cc["x"] == "");
+	BOOST_CHECK(cc["x"].empty());
 	BOOST_CHECK(cc["x"].empty());
 	BOOST_CHECK(!cc["x"].blank());
 
-	BOOST_CHECK(c["x"] == "");
+	BOOST_CHECK(c["x"].empty());
 	BOOST_CHECK(c["x"].empty());
 	BOOST_CHECK(!c["x"].blank());
 
@@ -218,7 +216,7 @@ BOOST_AUTO_TEST_CASE ( test_variable_info )
 		BOOST_CHECK_EQUAL (variable_access_const("a.b.length", c2).as_scalar(), 1);
 		BOOST_CHECK_EQUAL (variable_access_const("a.b.c.length", c2).as_scalar(), 2);
 		BOOST_CHECK_EQUAL (variable_access_const("a.b.c[1].d.e.f.length", c2).as_scalar(), 3);
-		// we setted g as a scalar
+		// we set g as a scalar
 		BOOST_CHECK_EQUAL (variable_access_const("a.b.c[1].d.e.f[2].g.length", c2).as_scalar(), 0);
 		BOOST_CHECK_EQUAL (variable_access_const("a.b.c[1].d.e.f[2].g", c2).as_scalar(), 84);
 	}
@@ -228,44 +226,60 @@ BOOST_AUTO_TEST_CASE ( test_variable_info )
 		BOOST_CHECK_THROW(access.as_scalar(), invalid_variablename_exception);
 	}
 	{
-		const config nonempty = config_of
-			("tag1", config())
-			("tag1", config(config_of
-				("tag2",config())
-				("tag2",config())
-				("tag2",config(config_of
-					("atribute1", 88)
-					("atribute2", "value")
-				))
-			))
-			("tag1", config());
-
+		const config nonempty {
+			"tag1", config(),
+			"tag1", config {
+				"tag2", config(),
+				"tag2", config(),
+				"tag2", config {
+					"atribute1", 88,
+					"atribute2", "value",
+				},
+			},
+			"tag1", config(),
+		};
+		/** This is the config:
+		[tag1]
+		[/tag1]
+		[tag1]
+			[tag2]
+			[/tag2]
+			[tag2]
+			[/tag2]
+			[tag2]
+				atribute1 = 88
+				atribute2 = "value"
+			[/tag2]
+		[/tag1]
+		[tag1]
+		[/tag1]
+		*/
 		BOOST_CHECK_EQUAL (variable_access_const("tag1.length", nonempty).as_scalar(), 3);
 		BOOST_CHECK_EQUAL (variable_access_const("tag1.tag2.length", nonempty).as_scalar(), 0);
 		BOOST_CHECK_EQUAL (variable_access_const("tag1[1].tag2.length", nonempty).as_scalar(), 3);
 		BOOST_CHECK_EQUAL (variable_access_const("tag1[1].tag2[2].atribute1", nonempty).as_scalar().to_int(), 88);
 		int count = 0;
-		BOOST_FOREACH(const config& child, variable_access_const("tag1", nonempty).as_array())
+		for(const config& child : variable_access_const("tag1", nonempty).as_array())
 		{
 			//silences unused variable warning.
-			(void)(child);
+			UNUSED(child);
 			++count;
 		}
 		BOOST_CHECK_EQUAL (count, 3);
 		count = 0;
-		BOOST_FOREACH(const config& child, variable_access_const("tag1.tag2", nonempty).as_array())
+		for(const config& child : variable_access_const("tag1.tag2", nonempty).as_array())
 		{
 			//silences unused variable warning.
-			(void)(child);
+			UNUSED(child);
 			++count;
 		}
 		BOOST_CHECK_EQUAL (count, 0);
 		count = 0;
 		// explicit indexes as range always return a one element range, whether they exist or not.
-		BOOST_FOREACH(const config& child, variable_access_const("tag1.tag2[5]", nonempty).as_array())
+		for(const config& child : variable_access_const("tag1.tag2[5]", nonempty).as_array())
 		{
 			//silences unused variable warning.
-			(void)(child);
+			UNUSED(child);
 			++count;
 		}
 		BOOST_CHECK_EQUAL (count, 1);

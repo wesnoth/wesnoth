@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 
 #include <string>
 #include <cassert>
-#include "map_location.hpp"
+#include "map/location.hpp"
 #include "time_of_day.hpp"
 #include "resources.hpp"
 #include "play_controller.hpp"
@@ -86,15 +86,15 @@ config replay_helper::get_movement(const std::vector<map_location>& steps, bool 
 config replay_helper::get_attack(const map_location& a, const map_location& b,
 	int att_weapon, int def_weapon, const std::string& attacker_type_id,
 	const std::string& defender_type_id, int attacker_lvl,
-	int defender_lvl, const size_t turn, const time_of_day &t)
+	int defender_lvl, const std::size_t turn, const time_of_day &t)
 {
 
 	config move, src, dst;
 	a.write(src);
 	b.write(dst);
 
-	move.add_child("source",src);
-	move.add_child("destination",dst);
+	move.add_child("source", std::move(src));
+	move.add_child("destination", std::move(dst));
 
 
 	move["weapon"] = att_weapon;
@@ -103,7 +103,7 @@ config replay_helper::get_attack(const map_location& a, const map_location& b,
 	move["defender_type"] = defender_type_id;
 	move["attacker_lvl"] = attacker_lvl;
 	move["defender_lvl"] = defender_lvl;
-	move["turn"] = int(turn);
+	move["turn"] = static_cast<int>(turn);
 	move["tod"] = t.id;
 	/*
 	add_unit_checksum(a,current_);
@@ -146,7 +146,7 @@ config replay_helper::get_event(const std::string& name, const map_location& loc
 		config& source = ev.add_child("source");
 		loc.write(source);
 	}
-	if(last_select_loc != NULL && last_select_loc->valid())
+	if(last_select_loc != nullptr && last_select_loc->valid())
 	{
 		config& source = ev.add_child("last_select");
 		last_select_loc->write(source);

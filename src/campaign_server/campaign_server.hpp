@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,34 +12,31 @@
    See the COPYING file for more details.
 */
 
-#ifndef CAMPAIGN_SERVER_HPP_INCLUDED
-#define CAMPAIGN_SERVER_HPP_INCLUDED
+#pragma once
 
 #include "campaign_server/blacklist.hpp"
-#include "network.hpp"
-#include "server/input_stream.hpp"
+#include "server/server_base.hpp"
+#include "server/simple_wml.hpp"
 
-#include "utils/boost_function_guarded.hpp"
-#include <boost/scoped_ptr.hpp>
+#include "utils/functional.hpp"
 #include <boost/unordered_map.hpp>
+#include <boost/asio/steady_timer.hpp>
+
+#include <chrono>
 
 namespace campaignd {
 
 /**
  * Legacy add-ons server.
  */
-class server : private boost::noncopyable
+class server : public server_base
 {
 public:
-	explicit server(const std::string& cfg_file,
-					size_t min_threads = 10,
-					size_t max_threads = 0);
+	explicit server(const std::string& cfg_file);
+	server(const config& server) = delete;
 	~server();
 
-	/**
-	 * Runs the server request processing loop.
-	 */
-	void run();
+	server& operator=(const config& server) = delete;
 
 private:
 	/**
@@ -54,7 +51,7 @@ private:
 		const std::string& cmd;
 		const config& cfg;
 
-		const network::connection sock;
+		const socket_ptr sock;
 		const std::string addr;
 
 		/**
@@ -70,15 +67,15 @@ private:
 		 */
 		request(const std::string& reqcmd,
 				const config& reqcfg,
-				network::connection reqsock)
+				socket_ptr reqsock)
 			: cmd(reqcmd)
 			, cfg(reqcfg)
 			, sock(reqsock)
-			, addr(network::ip_address(sock))
+			, addr(client_address(sock))
 		{}
 	};
 
-	typedef boost::function<void (const request& req)> request_handler;
+	typedef std::function<void (server*, const request& req)> request_handler;
 	typedef std::map<std::string, request_handler> request_handlers_table;
 
 	config cfg_;
@@ -87,7 +84,8 @@ private:
 	bool read_only_;
 	int compress_level_; /**< Used for add-on archives. */
 
-	boost::scoped_ptr<input_stream> input_; /**< Server control socket. */
+	/** Default upload size limit in bytes. */
+	static const std::size_t default_document_size_limit = 100 * 1024 * 1024;
 
 	std::map<std::string, std::string> hooks_;
 	request_handlers_table handlers_;
@@ -97,15 +95,29 @@ private:
 	blacklist blacklist_;
 	std::string blacklist_file_;
 
-	const network::manager net_manager_;
-	const network::server_manager server_manager_;
+	std::vector<std::string> stats_exempt_ips_;
+
+	boost::asio::basic_waitable_timer<std::chrono::steady_clock> flush_timer_;
+
+	void handle_new_client(socket_ptr socket);
+	void handle_request(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
+
+#ifndef _WIN32
+	void handle_read_from_fifo(const boost::system::error_code& error, std::size_t bytes_transferred);
+
+	void handle_sighup(const boost::system::error_code& error, int signal_number);
+#endif
+
+	/**
+	 * Starts timer to write config to disk every ten minutes.
+	 */
+	void flush_cfg();
+	void handle_flush(const boost::system::error_code& error);
 
 	/**
 	 * Reads the server configuration from WML.
-	 *
-	 * @return The configured listening port number.
 	 */
-	int load_config();
+	void load_config();
 
 	/**
 	 * Writes the server configuration WML back to disk.
@@ -128,11 +140,19 @@ private:
 	/** Retrieves the contents of the [campaigns] WML node. */
 	config& campaigns() { return cfg_.child("campaigns"); }
 
+	/** Retrieves a campaign by id if found, or a null config otherwise. */
+	config& get_campaign(const std::string& id) { return campaigns().find_child("campaign", "name", id); }
+
+	void delete_campaign(const std::string& id);
+
 	/** Retrieves the contents of the [server_info] WML node. */
 	const config& server_info() const { return cfg_.child("server_info"); }
 
 	/** Retrieves the contents of the [server_info] WML node. */
 	config& server_info() { return cfg_.child("server_info"); }
+
+	/** Checks if the specified address should never bump download counts. */
+	bool ignore_address_stats(const std::string& addr) const;
 
 	//
 	// Request handling.
@@ -150,17 +170,6 @@ private:
 	 */
 	void register_handlers();
 
-	/**
-	 * Registers a single request handler.
-	 *
-	 * @param cmd  The request command, corresponding to the name of the [tag}
-	 *             with the request body (e.g. "handle_request_terms").
-	 * @param func The request function. This should be a class method passed
-	 *             as a @a boost::bind function object that takes a single
-	 *             parameter of type @a request.
-	 */
-	void register_handler(const std::string& cmd, const request_handler& func);
-
 	void handle_request_campaign_list(const request&);
 	void handle_request_campaign(const request&);
 	void handle_request_terms(const request&);
@@ -168,17 +177,13 @@ private:
 	void handle_delete(const request&);
 	void handle_change_passphrase(const request&);
 
-	//
-	// Generic responses.
-	//
-
 	/**
 	 * Send a client an informational message.
 	 *
 	 * The WML sent consists of a document containing a single @p [message]
 	 * child with a @a message attribute holding the value of @a msg.
 	 */
-	void send_message(const std::string& msg, network::connection sock);
+	void send_message(const std::string& msg, socket_ptr sock);
 
 	/**
 	 * Send a client an error message.
@@ -188,9 +193,18 @@ private:
 	 * sending the error to the client, a line with the client IP and message
 	 * is recorded to the server log.
 	 */
-	void send_error(const std::string& msg, network::connection sock);
+	void send_error(const std::string& msg, socket_ptr sock);
+
+	/**
+	 * Send a client an error message.
+	 *
+	 * The WML sent consists of a document containing a single @p [error] child
+	 * with a @a message attribute holding the value of @a msg, and an
+	 * @a extra_data attribute holding the value of @a extra_data. In addition
+	 * to sending the error to the client, a line with the client IP and
+	 * message is recorded to the server log.
+	 */
+	void send_error(const std::string& msg, const std::string& extra_data, socket_ptr sock);
 };
 
 } // end namespace campaignd
-
-#endif

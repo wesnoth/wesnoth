@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2012 - 2014 by Boldizsár Lipka <lipkab@zoho.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2012 - 2018 by Boldizsár Lipka <lipkab@zoho.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,13 +16,15 @@
 
 #include "gui/dialogs/depcheck_select_new.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gettext.hpp"
 
 namespace gui2
+{
+namespace dialogs
 {
 
 /*WIKI
@@ -54,7 +56,7 @@ namespace gui2
 
 REGISTER_DIALOG(depcheck_select_new)
 
-tdepcheck_select_new::tdepcheck_select_new(
+depcheck_select_new::depcheck_select_new(
 		ng::depcheck::component_type name,
 		const std::vector<std::string>& items)
 	: items_(items), result_(-1)
@@ -83,26 +85,27 @@ tdepcheck_select_new::tdepcheck_select_new(
 	register_label("message", false, message);
 }
 
-void tdepcheck_select_new::pre_show(CVideo& /*video*/, twindow& window)
+void depcheck_select_new::pre_show(window& window)
 {
-	tlistbox& listbox = find_widget<tlistbox>(&window, "itemlist", false);
+	listbox& items = find_widget<listbox>(&window, "itemlist", false);
 
-	FOREACH(const AUTO & item, items_)
+	for(const auto & item : items_)
 	{
-		string_map current;
-		current.insert(std::make_pair("label", item));
+		std::map<std::string, string_map> data;
+		data["option"]["label"] = item;
 
-		listbox.add_row(current);
+		items.add_row(data);
 	}
 
-	listbox.select_row(0);
+	items.select_row(0);
 }
 
-void tdepcheck_select_new::post_show(twindow& window)
+void depcheck_select_new::post_show(window& window)
 {
-	if(get_retval() == twindow::OK) {
-		tlistbox& listbox = find_widget<tlistbox>(&window, "itemlist", false);
-		result_ = listbox.get_selected_row();
+	if(get_retval() == retval::OK) {
+		listbox& items = find_widget<listbox>(&window, "itemlist", false);
+		result_ = items.get_selected_row();
 	}
 }
-}
+} // namespace dialogs
+} // namespace gui2

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Ignacio R. Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,24 +12,27 @@
    See the COPYING file for more details.
 */
 
-/** @file */
+#pragma once
 
-#ifndef IMAGE_MODIFICATIONS_HPP_INCLUDED
-#define IMAGE_MODIFICATIONS_HPP_INCLUDED
-
+#include "color_range.hpp"
 #include "lua_jailbreak_exception.hpp"
+#include "sdl/surface.hpp"
 #include "sdl/utils.hpp"
+
+#include <functional>
+#include <map>
+#include <memory>
 #include <queue>
 
 namespace image {
 
 class modification;
 
-
 /// A modified priority queue used to order image modifications.
 /// The priorities for this queue are to order modifications by priority(),
 /// then by the order they are added to the queue.
-class modification_queue {
+class modification_queue
+{
 	// Invariant for this class:
 	// At the beginning and end of each member function call, there
 	// are no empty vectors in priorities_.
@@ -39,21 +42,18 @@ public:
 	{
 	}
 
-	~modification_queue() {}
-
 	bool empty() const  { return priorities_.empty(); }
 	void push(modification * mod);
 	void pop();
-	size_t size() const;
+	std::size_t size() const;
 	modification * top() const;
 
-private: // data
+private:
 	/// Map from a mod's priority() to the mods having that priority.
-	typedef std::map<int, std::vector<modification *>, std::greater<int> > map_type;
+	typedef std::map<int, std::vector<std::shared_ptr<modification>>, std::greater<int>> map_type;
 	/// Map from a mod's priority() to the mods having that priority.
 	map_type priorities_;
 };
-
 
 /// Base abstract class for an image-path modification
 class modification
@@ -61,8 +61,8 @@ class modification
 public:
 
 	/** Exception thrown by the operator() when an error occurs. */
-	struct texception
-		: public tlua_jailbreak_exception
+	struct imod_exception
+		: public lua_jailbreak_exception
 	{
 		/**
 		 * Constructor.
@@ -72,7 +72,7 @@ public:
 		 * @param message_stream  Stream with the error message regarding
 		 *                        the failed operation.
 		 */
-		texception(const std::stringstream& message_stream);
+		imod_exception(const std::stringstream& message_stream);
 
 		/**
 		 * Constructor.
@@ -82,16 +82,16 @@ public:
 		 * @param message         String with the error message regarding
 		 *                        the failed operation.
 		 */
-		texception(const std::string& message);
+		imod_exception(const std::string& message);
 
-		~texception() throw() {}
+		~imod_exception() noexcept {}
 
 		/** The error message regarding the failed operation. */
 		const std::string message;
 
 	private:
 
-		IMPLEMENT_LUA_JAILBREAK_EXCEPTION(texception)
+		IMPLEMENT_LUA_JAILBREAK_EXCEPTION(imod_exception)
 	};
 
 	/// Decodes modifications from a modification string
@@ -125,7 +125,7 @@ public:
 	 * RC-map based constructor.
 	 * @param recolor_map The palette switch map.
 	 */
-	rc_modification(const std::map<Uint32, Uint32>& recolor_map)
+	rc_modification(const color_range_map& recolor_map)
 		: rc_map_(recolor_map)
 	{}
 	virtual surface operator()(const surface& src) const;
@@ -135,11 +135,11 @@ public:
 
 	bool no_op() const { return rc_map_.empty(); }
 
-	const std::map<Uint32, Uint32>& map() const { return rc_map_;}
-	std::map<Uint32, Uint32>& map() { return rc_map_;}
+	const color_range_map& map() const { return rc_map_;}
+	color_range_map& map() { return rc_map_;}
 
 private:
-	std::map<Uint32, Uint32> rc_map_;
+	color_range_map rc_map_;
 };
 
 /**
@@ -185,19 +185,20 @@ class rotate_modification : public modification
 public:
 	/**
 	 * Constructor.
-	 * @pre @zoom >= @offset   Otherwise the result will have empty pixels.
-     * @pre @offset > 0        Otherwise the procedure will not return.
+	 *
+	 * @pre zoom >= offset   Otherwise the result will have empty pixels.
+     * @pre offset > 0       Otherwise the procedure will not return.
 	 *
 	 * @param degrees Amount of rotation (in degrees).
 	 *                Positive values are clockwise; negative are counter-clockwise.
 	 * @param zoom    The zoom level to calculate the rotation from.
 	 *                Greater values result in better results and increased runtime.
-	 *                This parameter will be ignored if @degrees is a multiple of 90.
+	 *                This parameter will be ignored if @a degrees is a multiple of 90.
 	 * @param offset  Determines the step size of the scanning of the zoomed source.
 	 *                Different offsets can produce better results, try them out.
 	 *                Greater values result in decreased runtime.
-	 *                This parameter will be ignored if @degrees is a multiple of 90.
-	 *                If @offset is greater than @zoom the result will have empty pixels.
+	 *                This parameter will be ignored if @a degrees is a multiple of 90.
+	 *                If @a offset is greater than @a zoom the result will have empty pixels.
 	 */
 	rotate_modification(int degrees = 90, int zoom = 16, int offset = 8)
 		: degrees_(degrees), zoom_(zoom), offset_(offset)
@@ -222,6 +223,101 @@ public:
 };
 
 /**
+ * Black and white (BW) modification.
+ */
+class bw_modification : public modification
+{
+public:
+	bw_modification(int threshold): threshold_(threshold) {}
+	virtual surface operator()(const surface& src) const;
+private:
+	int threshold_;
+};
+
+/**
+ * Give to the image a sepia tint (SEPIA)
+ */
+struct sepia_modification : modification
+{
+	virtual surface operator()(const surface &src) const;
+};
+
+/**
+ * Make an image negative (NEG)
+ */
+class negative_modification : public modification
+{
+public:
+	negative_modification(int r, int g, int b): red_(r), green_(g), blue_(b) {}
+	virtual surface operator()(const surface &src) const;
+private:
+	int red_, green_, blue_;
+};
+
+/**
+ * Plot Alpha (Alpha) modification
+ */
+class plot_alpha_modification : public modification
+{
+public:
+	virtual surface operator()(const surface& src) const;
+};
+
+/**
+ * Wipe Alpha (Wipe_Alpha) modification
+ */
+class wipe_alpha_modification : public modification
+{
+public:
+	virtual surface operator()(const surface& src) const;
+};
+
+/**
+ * Adjust Alpha (ADJUST_ALPHA) modification
+ */
+class adjust_alpha_modification : public modification
+{
+public:
+	adjust_alpha_modification(const std::string& formula)
+		: formula_(formula)
+	{}
+
+	virtual surface operator()(const surface& src) const;
+
+private:
+	std::string formula_;
+};
+
+/**
+ * Adjust Channels (CHAN) modification
+ */
+class adjust_channels_modification : public modification
+{
+public:
+	adjust_channels_modification(const std::vector<std::string>& formulas)
+		: formulas_(formulas)
+	{
+		if(formulas_.empty()) {
+			formulas_.push_back("red");
+		}
+		if(formulas_.size() == 1) {
+			formulas_.push_back("green");
+		}
+		if(formulas_.size() == 2) {
+			formulas_.push_back("blue");
+		}
+		if(formulas_.size() == 3) {
+			formulas_.push_back("alpha");
+		}
+	}
+
+	virtual surface operator()(const surface& src) const;
+
+private:
+	std::vector<std::string> formulas_;
+};
+
+/**
  * Crop (CROP) modification.
  */
 class crop_modification : public modification
@@ -232,7 +328,10 @@ public:
 	{}
 	virtual surface operator()(const surface& src) const;
 
-	const SDL_Rect& get_slice() const;
+	const SDL_Rect& get_slice() const
+	{
+		return slice_;
+	}
 
 private:
 	SDL_Rect slice_;
@@ -250,9 +349,20 @@ public:
 	{}
 	virtual surface operator()(const surface& src) const;
 
-	const surface& get_surface() const;
-	int get_x() const;
-	int get_y() const;
+	const surface& get_surface() const
+	{
+		return surf_;
+	}
+
+	int get_x() const
+	{
+		return x_;
+	}
+
+	int get_y() const
+	{
+		return y_;
+	}
 
 private:
 	surface surf_;
@@ -272,9 +382,20 @@ public:
 	{}
 	virtual surface operator()(const surface& src) const;
 
-	const surface& get_mask() const;
-	int get_x() const;
-	int get_y() const;
+	const surface& get_mask() const
+	{
+		return mask_;
+	}
+
+	int get_x() const
+	{
+		return x_;
+	}
+
+	int get_y() const
+	{
+		return y_;
+	}
 
 private:
 	surface mask_;
@@ -294,27 +415,84 @@ public:
 	{}
 	virtual surface operator()(const surface& src) const;
 
-	const surface& get_surface() const;
+	const surface& get_surface() const
+	{
+		return surf_;
+	}
 
 private:
 	surface surf_;
 };
 
 /**
- * Scale (SCALE) modification.
+ * Scaling modifications base class.
  */
 class scale_modification : public modification
 {
 public:
-	scale_modification(int width, int height)
-		: w_(width), h_(height)
+	scale_modification(int width, int height, const std::string& fn, bool use_nn)
+		: w_(width), h_(height), nn_(use_nn), fn_(fn)
 	{}
 	virtual surface operator()(const surface& src) const;
-	int get_w() const;
-	int get_h() const;
+	virtual std::pair<int,int> calculate_size(const surface& src) const = 0;
+
+	int get_w() const
+	{
+		return w_;
+	}
+
+	int get_h() const
+	{
+		return h_;
+	}
 
 private:
 	int w_, h_;
+	bool nn_;
+
+protected:
+	const std::string fn_;
+};
+
+/**
+ * Scale exact modification. (SCALE, SCALE_SHARP)
+ */
+class scale_exact_modification : public scale_modification
+{
+public:
+	scale_exact_modification(int width, int height, const std::string& fn, bool use_nn)
+		: scale_modification(width, height, fn, use_nn)
+	{}
+	virtual std::pair<int,int> calculate_size(const surface& src) const;
+};
+
+/**
+ * Scale into (SCALE_INTO) modification. (SCALE_INTO, SCALE_INTO_SHARP)
+ * Preserves aspect ratio.
+ */
+class scale_into_modification : public scale_modification
+{
+public:
+	scale_into_modification(int width, int height, const std::string& fn, bool use_nn)
+		: scale_modification(width, height, fn, use_nn)
+	{}
+	virtual std::pair<int,int> calculate_size(const surface& src) const;
+};
+
+/**
+ * xBRZ scale (xBRZ) modification
+ */
+class xbrz_modification : public modification
+{
+public:
+	xbrz_modification(int z)
+		: z_(z)
+	{}
+
+	virtual surface operator()(const surface& src) const;
+
+private:
+	int z_;
 };
 
 /**
@@ -327,7 +505,11 @@ public:
 		: opacity_(opacity)
 	{}
 	virtual surface operator()(const surface& src) const;
-	float get_opacity() const;
+
+	float get_opacity() const
+	{
+		return opacity_;
+	}
 
 private:
 	float opacity_;
@@ -343,9 +525,10 @@ public:
 		: r_(r), g_(g), b_(b)
 	{}
 	virtual surface operator()(const surface& src) const;
-	int get_r() const;
-	int get_g() const;
-	int get_b() const;
+
+	int get_r() const { return r_; }
+	int get_g() const { return g_; }
+	int get_b() const { return b_; }
 
 private:
 	int r_, g_, b_;
@@ -361,10 +544,11 @@ public:
 		: r_(r), g_(g), b_(b), a_(a)
 	{}
 	virtual surface operator()(const surface& src) const;
-	int get_r() const;
-	int get_g() const;
-	int get_b() const;
-	float get_a() const;
+
+	int   get_r() const { return r_; }
+	int   get_g() const { return g_; }
+	int   get_b() const { return b_; }
+	float get_a() const { return a_; }
 
 private:
 	int r_, g_, b_;
@@ -381,26 +565,14 @@ public:
 		: depth_(depth)
 	{}
 	virtual surface operator()(const surface& src) const;
-	int get_depth() const;
+
+	int get_depth() const
+	{
+		return depth_;
+	}
 
 private:
 	int depth_;
-};
-
-/**
- * Overlay with ToD brightening (BRIGHTEN).
- */
-struct brighten_modification : modification
-{
-	virtual surface operator()(const surface &src) const;
-};
-
-/**
- * Overlay with ToD darkening (DARKEN).
- */
-struct darken_modification : modification
-{
-	virtual surface operator()(const surface &src) const;
 };
 
 /**
@@ -408,14 +580,31 @@ struct darken_modification : modification
  */
 struct background_modification : modification
 {
-	background_modification(SDL_Color const &c): color_(c) {}
+	background_modification(const color_t& c): color_(c) {}
 	virtual surface operator()(const surface &src) const;
-	const SDL_Color& get_color() const;
+
+	const color_t& get_color() const
+	{
+		return color_;
+	}
 
 private:
-	SDL_Color color_;
+	color_t color_;
+};
+
+/**
+ * Channel swap (SWAP).
+ */
+class swap_modification : public modification
+{
+public:
+	swap_modification(channel r, channel g, channel b, channel a): red_(r), green_(g), blue_(b), alpha_(a) {}
+	virtual surface operator()(const surface& src) const;
+private:
+	channel red_;
+	channel green_;
+	channel blue_;
+	channel alpha_;
 };
 
 } /* end namespace image */
-
-#endif /* !defined(IMAGE_MODIFICATIONS_HPP_INCLUDED) */

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,19 +12,16 @@
    See the COPYING file for more details.
 */
 
-#include "../global.hpp"
-
-#include "player.hpp"
-#include "serialization/string_utils.hpp"
-#include "util.hpp"
+#include "server/player.hpp"
+#include "lexical_cast.hpp"
 
 wesnothd::player::player(const std::string& n, simple_wml::node& cfg,
-                         bool registered, const size_t max_messages,
-                         const size_t time_period, const bool sp,
+                         bool registered, const std::string& version, const std::size_t max_messages,
+                         const std::size_t time_period,
                          const bool moderator)
   : name_(n)
+  , version_(version)
   , cfg_(cfg)
-  , selective_ping_(sp)
   , registered_(registered)
   , flood_start_(0)
   , messages_since_flood_start_(0)
@@ -80,7 +77,7 @@ void wesnothd::player::mark_registered(bool registered)
 
 bool wesnothd::player::is_message_flooding()
 {
-	const time_t now = time(NULL);
+	const std::time_t now = std::time(nullptr);
 	if (flood_start_ == 0) {
 		flood_start_ = now;
 		return false;

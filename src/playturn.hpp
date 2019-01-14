@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef PLAYTURN_HPP_INCLUDED
-#define PLAYTURN_HPP_INCLUDED
+#pragma once
 
 #include <string>                       // for string
 #include "generic_event.hpp"            // for generic_event
@@ -38,15 +37,15 @@ public:
 	{
 		PROCESS_CONTINUE,
 		PROCESS_RESTART_TURN,
-		/** we wanted to reassign the currently active side to a side, and wait for the server to do so.*/
-		PROCESS_RESTART_TURN_TEMPORARY_LOCAL,
-		/** we wanted to reassign a non currently active side to a side, and wait for the server to do so.*/
-		PROCESS_SIDE_TEMPORARY_LOCAL,
 		PROCESS_END_TURN,
 		/** When the host uploaded the next scenario this is returned. */
 		PROCESS_END_LINGER,
 		/** When we couldn't process the network data because we found a dependent command, this should only happen if we were called playmp_controller::from handle_generic_event -> sync_network*/
-		PROCESS_FOUND_DEPENDENT
+		PROCESS_FOUND_DEPENDENT,
+		/** when we couldn't handle the given action currently. */
+		PROCESS_CANNOT_HANDLE,
+		/** We found a player action in the replay that caused the game to end*/
+		PROCESS_END_LEVEL
 	};
 
 	PROCESS_DATA_RESULT sync_network();
@@ -54,23 +53,17 @@ public:
 	void send_data();
 
 	//function which will process incoming network data received with playturn_network_adapter, and act on it.
-	PROCESS_DATA_RESULT process_network_data(const config& cfg, bool skip_replay);
+	PROCESS_DATA_RESULT process_network_data(const config& cfg, bool chat_only = false);
 
 	//reads as much data from network_reader_ as possible and processed it.
-	PROCESS_DATA_RESULT process_network_data_from_reader(bool skip_replay);
+	PROCESS_DATA_RESULT process_network_data_from_reader();
 
 	events::generic_event& host_transfer() { return host_transfer_; }
 
-
-	bool is_host() const { return is_host_; }
-	void set_host(bool val) { is_host_ = val; }
-private:
-	static void change_controller(int side, const std::string& controller);
-	static void change_side_controller(int side, const std::string& player);
 	static PROCESS_DATA_RESULT replay_to_process_data_result(REPLAY_RETURN replayreturn);
-	PROCESS_DATA_RESULT handle_turn(
-		const config& t,
-		const bool skip_replay);
+private:
+	static void change_side_controller(int side, const std::string& player);
+	PROCESS_DATA_RESULT handle_turn(const config& t, bool chat_only = false);
 
 	void do_save();
 
@@ -79,48 +72,4 @@ private:
 	events::generic_event host_transfer_;
 
 	playturn_network_adapter& network_reader_;
-
-	bool is_host_;
 };
-
-/**
-	class that sends data on destruction
-	to make sure data is sended in any case.
-*/
-class turn_info_send
-{
-public:
-	turn_info_send(turn_info& sender)
-		: sender_(sender)
-	{
-
-	}
-	~turn_info_send()
-	{
-		sender_.send_data();
-	}
-private:
-	turn_info& sender_;
-};
-
-/**
-	class that syncs data on destruction
-	to make sure data is synced in any case.
-*/
-class turn_info_sync
-{
-public:
-	turn_info_sync(turn_info& sender)
-		: sender_(sender)
-	{
-
-	}
-	~turn_info_sync()
-	{
-		sender_.sync_network();
-	}
-private:
-	turn_info& sender_;
-};
-
-#endif

@@ -42,7 +42,7 @@ public interface WmlPackage extends EPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  String eNS_URI = "http://www.wesnoth.org/WML";
+  String eNS_URI = "https://www.wesnoth.org/WML";
 
   /**
    * The package namespace name.

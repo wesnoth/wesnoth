@@ -1,6 +1,6 @@
 /*
- Copyright (C) 2010 - 2014 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -16,27 +16,27 @@
  * @file
  */
 
-#include "recall.hpp"
+#include "whiteboard/recall.hpp"
 
-#include "manager.hpp"
-#include "side_actions.hpp"
-#include "utility.hpp"
-#include "visitor.hpp"
+#include "whiteboard/manager.hpp"
+#include "whiteboard/side_actions.hpp"
+#include "whiteboard/utility.hpp"
+#include "whiteboard/visitor.hpp"
 
 #include "actions/create.hpp"
+#include "display.hpp"
 #include "fake_unit_manager.hpp"
 #include "fake_unit_ptr.hpp"
-#include "game_display.hpp"
+#include "game_board.hpp"
 #include "recall_list_manager.hpp"
 #include "resources.hpp"
 #include "replay_helper.hpp"
 #include "statistics.hpp"
 #include "synced_context.hpp"
 #include "team.hpp"
-#include "unit.hpp"
-#include "unit_animation_component.hpp"
-
-#include <boost/foreach.hpp>
+#include "units/filter.hpp"
+#include "units/unit.hpp"
+#include "units/animation_component.hpp"
 
 namespace wb
 {
@@ -58,28 +58,34 @@ std::ostream& recall::print(std::ostream &s) const
 	return s;
 }
 
-recall::recall(size_t team_index, bool hidden, const unit& unit, const map_location& recall_hex):
-		action(team_index,hidden),
-		temp_unit_(new class unit(unit)),
-		recall_hex_(recall_hex),
-		fake_unit_(unit_ptr( new class unit(unit) ) )
+recall::recall(std::size_t team_index, bool hidden, const unit& u, const map_location& recall_hex)
+	: action(team_index,hidden)
+	, temp_unit_(u.clone())
+	, recall_hex_(recall_hex)
+	, fake_unit_(u.clone())
+	, original_mp_(0)
+	, original_ap_(0)
+	, original_recall_pos_(0)
 {
 	this->init();
 }
 
-recall::recall(config const& cfg, bool hidden)
+recall::recall(const config& cfg, bool hidden)
 	: action(cfg,hidden)
 	, temp_unit_()
-	, recall_hex_(cfg.child("recall_hex_")["x"],cfg.child("recall_hex_")["y"])
+	, recall_hex_(cfg.child("recall_hex_")["x"],cfg.child("recall_hex_")["y"], wml_loc())
 	, fake_unit_()
+	, original_mp_(0)
+	, original_ap_(0)
+	, original_recall_pos_(0)
 {
 	// Construct and validate temp_unit_
-	size_t underlying_id = cfg["temp_unit_"];
-	BOOST_FOREACH(const unit_const_ptr & recall_unit, resources::teams->at(team_index()).recall_list())
+	std::size_t underlying_id = cfg["temp_unit_"];
+	for(const unit_ptr & recall_unit : resources::gameboard->teams().at(team_index()).recall_list())
 	{
 		if(recall_unit->underlying_id()==underlying_id)
 		{
-			temp_unit_.reset(new class unit(*recall_unit)); //TODO: is it necessary to make a copy?
+			temp_unit_ = recall_unit;
 			break;
 		}
 	}
@@ -87,16 +93,13 @@ recall::recall(config const& cfg, bool hidden)
 		throw action::ctor_err("recall: Invalid underlying_id");
 	}
 
-	fake_unit_.reset(unit_ptr(new class unit(*temp_unit_))); //makes copy of temp_unit_
+	fake_unit_.reset(temp_unit_->clone()); //makes copy of temp_unit_
 
 	this->init();
 }
 
 void recall::init()
 {
-	temp_unit_->set_movement(0, true);
-	temp_unit_->set_attacks(0);
-
 	fake_unit_->set_location(recall_hex_);
 	fake_unit_->set_movement(0, true);
 	fake_unit_->set_attacks(0);
@@ -115,7 +118,7 @@ void recall::accept(visitor& v)
 
 void recall::execute(bool& success, bool& complete)
 {
-	team & current_team = resources::teams->at(team_index());
+	team & current_team = resources::gameboard->teams().at(team_index());
 
 	assert(valid());
 	assert(temp_unit_.get());
@@ -126,9 +129,8 @@ void recall::execute(bool& success, bool& complete)
 		cost=temp_unit_->recall_cost();
 	}
 	current_team.get_side_actions()->change_gold_spent_by(-cost);
-	bool const result = synced_context::run_in_synced_context("recall",
+	bool const result = synced_context::run_and_throw("recall",
 		replay_helper::get_recall(temp_unit_->id(), recall_hex_, map_location::null_location()),
-		true,
 		true,
 		true,
 		synced_context::ignore_error_function);
@@ -142,17 +144,26 @@ void recall::execute(bool& success, bool& complete)
 void recall::apply_temp_modifier(unit_map& unit_map)
 {
 	assert(valid());
-	temp_unit_->set_location(recall_hex_);
+
 
 	DBG_WB << "Inserting future recall " << temp_unit_->name() << " [" << temp_unit_->id()
 			<< "] at position " << temp_unit_->get_location() << ".\n";
 
 	//temporarily remove unit from recall list
-	unit_ptr it = resources::teams->at(team_index()).recall_list().extract_if_matches_id(temp_unit_->id());
+	unit_ptr it = resources::gameboard->teams().at(team_index()).recall_list().extract_if_matches_id(temp_unit_->id(), &original_recall_pos_);
 	assert(it);
 
+	//Usually (temp_unit_ == it) is true here, but wml might have changed the original unit in which case not doing 'temp_unit_ = it' would result in a gamestate change.
+	temp_unit_ = it;
+	original_mp_ = temp_unit_->movement_left(true);
+	original_ap_ = temp_unit_->attacks_left(true);
+
+	temp_unit_->set_movement(0, true);
+	temp_unit_->set_attacks(0);
+	temp_unit_->set_location(recall_hex_);
+
 	//Add cost to money spent on recruits.
-	int cost = resources::teams->at(team_index()).recall_cost();
+	int cost = resources::gameboard->teams().at(team_index()).recall_cost();
 	if (it->recall_cost() > -1) {
 		cost = it->recall_cost();
 	}
@@ -161,9 +172,9 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 	//unit map takes ownership of temp_unit
 	unit_map.insert(temp_unit_);
 
-	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(cost);
+	resources::gameboard->teams().at(team_index()).get_side_actions()->change_gold_spent_by(cost);
 	// Update gold in top bar
-	resources::screen->invalidate_game_status();
+	display::get_singleton()->invalidate_game_status();
 }
 
 void recall::remove_temp_modifier(unit_map& unit_map)
@@ -171,11 +182,16 @@ void recall::remove_temp_modifier(unit_map& unit_map)
 	temp_unit_ = unit_map.extract(recall_hex_);
 	assert(temp_unit_.get());
 
+	temp_unit_->set_movement(original_mp_, true);
+	temp_unit_->set_attacks(original_ap_);
+
+	original_mp_ = 0;
+	original_ap_ = 0;
 	//Put unit back into recall list
-	resources::teams->at(team_index()).recall_list().add(temp_unit_);
+	resources::gameboard->teams().at(team_index()).recall_list().add(temp_unit_, original_recall_pos_);
 }
 
-void recall::draw_hex(map_location const& hex)
+void recall::draw_hex(const map_location& hex)
 {
 	if (hex == recall_hex_)
 	{
@@ -186,39 +202,44 @@ void recall::draw_hex(map_location const& hex)
 		unit &it = *get_unit();
 		int cost = statistics::un_recall_unit_cost(it);
 		if (cost < 0) {
-			number_text << utils::unicode_minus << resources::teams->at(team_index()).recall_cost();
+			number_text << font::unicode_minus << resources::gameboard->teams().at(team_index()).recall_cost();
 		}
 		else {
-			number_text << utils::unicode_minus << cost;
+			number_text << font::unicode_minus << cost;
 		}
-		size_t font_size = 16;
-		SDL_Color color; color.r = 255; color.g = 0; color.b = 0; //red
-		resources::screen->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
+		std::size_t font_size = 16;
+		color_t color {255, 0, 0}; //red
+		display::get_singleton()->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
 						number_text.str(), font_size, color, x_offset, y_offset);
 	}
 }
 
 void recall::redraw()
 {
-	resources::screen->invalidate(recall_hex_);
+	display::get_singleton()->invalidate(recall_hex_);
 }
 
 action::error recall::check_validity() const
 {
 	//Check that destination hex is still free
-	if(resources::units->find(recall_hex_) != resources::units->end()) {
+	if(resources::gameboard->units().find(recall_hex_) != resources::gameboard->units().end()) {
 		return LOCATION_OCCUPIED;
 	}
 	//Check that unit to recall is still in side's recall list
-	if( !(*resources::teams)[team_index()].recall_list().find_if_matches_id(temp_unit_->id()) ) {
+	if( !resources::gameboard->teams()[team_index()].recall_list().find_if_matches_id(temp_unit_->id()) ) {
 		return UNIT_UNAVAILABLE;
 	}
 	//Check that there is still enough gold to recall this unit
-	if((*resources::teams)[team_index()].recall_cost() > (*resources::teams)[team_index()].gold()) {
+	if(resources::gameboard->teams()[team_index()].recall_cost() > resources::gameboard->teams()[team_index()].gold()) {
 		return NOT_ENOUGH_GOLD;
 	}
 	//Check that there is a leader available to recall this unit
-	if(!find_recruiter(team_index(),get_recall_hex())) {
+	bool has_recruiter = any_recruiter(team_index() + 1, get_recall_hex(), [&](unit& leader) {
+		const unit_filter ufilt(vconfig(leader.recall_filter()));
+		return ufilt(*temp_unit_, map_location::null_location());
+	});
+
+	if(!has_recruiter) {
 		return NO_LEADER;
 	}
 
@@ -235,9 +256,9 @@ config recall::to_config() const
 //	final_cfg["temp_cost_"] = temp_cost_; //Unnecessary
 
 	config loc_cfg;
-	loc_cfg["x"]=recall_hex_.x;
-	loc_cfg["y"]=recall_hex_.y;
-	final_cfg.add_child("recall_hex_",loc_cfg);
+	loc_cfg["x"]=recall_hex_.wml_x();
+	loc_cfg["y"]=recall_hex_.wml_y();
+	final_cfg.add_child("recall_hex_", std::move(loc_cfg));
 
 	return final_cfg;
 }

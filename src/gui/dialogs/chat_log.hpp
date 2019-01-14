@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2011 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2011 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,41 +12,36 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_CHAT_LOG_HPP_INCLUDED
-#define GUI_DIALOGS_CHAT_LOG_HPP_INCLUDED
+#pragma once
 
-#include "gui/dialogs/dialog.hpp"
-#include "../../variable.hpp"
-
-#include <boost/shared_ptr.hpp>
+#include "gui/dialogs/modal_dialog.hpp"
+#include "variable.hpp"
 
 class replay;
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tchat_log : public tdialog
+class chat_log : public modal_dialog
 {
 public:
 	class model;
 	class view;
 	class controller;
-	tchat_log(const vconfig& cfg, replay* replay);
+	chat_log(const vconfig& cfg, const replay& replay);
 
-	/** Inherited from tdialog. */
-	twindow* build_window(CVideo& video);
+	/** Inherited from modal_dialog. */
+	virtual void pre_show(window& window) override;
 
-	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
-
-	boost::shared_ptr<view> get_view();
+	std::shared_ptr<view> get_view();
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
+	virtual const std::string& window_id() const override;
 
-	boost::shared_ptr<view> view_;
+	std::shared_ptr<view> view_;
 };
-}
-
-#endif /* ! GUI_DIALOGS_CHAT_LOG_HPP_INCLUDED */
+} // namespace dialogs
+} // namespace gui2

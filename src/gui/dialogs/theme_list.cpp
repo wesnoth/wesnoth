@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,18 +14,15 @@
 
 #include "gui/dialogs/theme_list.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/listbox.hpp"
-#endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "theme.hpp"
-#include "utils/foreach.tpp"
 
 namespace gui2
+{
+namespace dialogs
 {
 
 /*WIKI
@@ -41,10 +38,10 @@ namespace gui2
  * themes & & listbox & m &
  *         Listbox displaying user choices. $
  *
- * -name & & control & m &
+ * -name & & styled_widget & m &
  *         Widget which shows a theme item name. $
  *
- * -description & & control & m &
+ * -description & & styled_widget & m &
  *         Widget which shows a theme item description. $
  *
  * @end{table}
@@ -52,17 +49,17 @@ namespace gui2
 
 REGISTER_DIALOG(theme_list)
 
-ttheme_list::ttheme_list(const std::vector<theme_info>& themes, int selection)
+theme_list::theme_list(const std::vector<theme_info>& themes, int selection)
 	: index_(selection), themes_(themes)
 {
 }
 
-void ttheme_list::pre_show(CVideo& /*video*/, twindow& window)
+void theme_list::pre_show(window& window)
 {
-	tlistbox& list = find_widget<tlistbox>(&window, "themes", false);
+	listbox& list = find_widget<listbox>(&window, "themes", false);
 	window.keyboard_capture(&list);
 
-	FOREACH(const AUTO & t, themes_)
+	for(const auto & t : themes_)
 	{
 		std::map<std::string, string_map> data;
 		string_map column;
@@ -73,9 +70,9 @@ void ttheme_list::pre_show(CVideo& /*video*/, twindow& window)
 		}
 
 		column["label"] = theme_name;
-		data.insert(std::make_pair("name", column));
+		data.emplace("name", column);
 		column["label"] = t.description;
-		data.insert(std::make_pair("description", column));
+		data.emplace("description", column);
 
 		list.add_row(data);
 	}
@@ -87,13 +84,14 @@ void ttheme_list::pre_show(CVideo& /*video*/, twindow& window)
 	index_ = -1;
 }
 
-void ttheme_list::post_show(twindow& window)
+void theme_list::post_show(window& window)
 {
-	if(get_retval() != twindow::OK) {
+	if(get_retval() != retval::OK) {
 		return;
 	}
 
-	tlistbox& list = find_widget<tlistbox>(&window, "themes", false);
+	listbox& list = find_widget<listbox>(&window, "themes", false);
 	index_ = list.get_selected_row();
 }
-}
+} // namespace dialogs
+} // namespace gui2

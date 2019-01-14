@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2014 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,19 +15,29 @@
 #include "fake_unit_ptr.hpp"
 
 #include "fake_unit_manager.hpp"
-#include "unit.hpp"
-#include "unit_ptr.hpp"
-#include "unit_types.hpp"
+#include "resources.hpp"
+#include "units/unit.hpp"
+#include "units/ptr.hpp"
 
 #include <boost/swap.hpp>
 
-fake_unit_ptr::fake_unit_ptr() : unit_(), my_manager_(NULL) {}
-fake_unit_ptr::fake_unit_ptr(const internal_ptr & u) : unit_(u), my_manager_(NULL) {}
-fake_unit_ptr::fake_unit_ptr(const internal_ptr & u, fake_unit_manager * mgr) : unit_(u), my_manager_(NULL)
+fake_unit_ptr::fake_unit_ptr() : unit_(), my_manager_(nullptr) {}
+fake_unit_ptr::fake_unit_ptr(const internal_ptr & u) : unit_(u), my_manager_(nullptr) {}
+fake_unit_ptr::fake_unit_ptr(const internal_ptr & u, fake_unit_manager * mgr) : unit_(u), my_manager_(nullptr)
 {
 	place_on_fake_unit_manager(mgr);
 }
-fake_unit_ptr::fake_unit_ptr(const fake_unit_ptr & ptr) : unit_(ptr.unit_), my_manager_(NULL) {}
+fake_unit_ptr::fake_unit_ptr(const fake_unit_ptr & ptr)
+	: unit_(ptr.unit_)
+	, my_manager_(nullptr)
+{}
+
+fake_unit_ptr::fake_unit_ptr(fake_unit_ptr && ptr)
+	: unit_(std::move(ptr.unit_))
+	, my_manager_(ptr.my_manager_)
+{
+	ptr.my_manager_ = nullptr;
+}
 
 void fake_unit_ptr::swap (fake_unit_ptr & o) {
 	boost::swap(unit_, o.unit_);
@@ -51,7 +61,7 @@ fake_unit_ptr & fake_unit_ptr::operator=(fake_unit_ptr other) {
  * The overriding function can be almost the same, except "new (this)" should
  * be followed by the derived class instead of "fake_unit(a)".
  */
-/*fake_unit & fake_unit::operator=(unit const & a)
+/*fake_unit & fake_unit::operator=(const unit& a)
 {
 	if ( this != &a ) {
 		fake_unit_manager * mgr = my_manager_;
@@ -61,7 +71,7 @@ fake_unit_ptr & fake_unit_ptr::operator=(fake_unit_ptr other) {
 		this->~fake_unit();
 		new (this) fake_unit(a);
 		// Restore our old manager.
-		if ( mgr != NULL )
+		if ( mgr != nullptr )
 			place_on_fake_unit_manager(mgr);
 	}
 	return *this;
@@ -103,7 +113,12 @@ fake_unit_ptr::~fake_unit_ptr()
 	// The fake_unit class exists for this one line, which removes the
 	// fake_unit from the managers's fake_units_ dequeue in the event of an
 	// exception.
-	if(my_manager_){remove_from_fake_unit_manager();}
+	if(my_manager_) {
+		//my_manager_ points to resources::fake_units, the next line fixes a bug whre this code would attempt to access a freed fake_unit_manager object, see https://github.com/wesnoth/wesnoth/issues/3008 
+		if(resources::fake_units != nullptr) {
+			remove_from_fake_unit_manager();
+		}
+	}
 
 	} catch (...) {}
 }
@@ -114,7 +129,7 @@ fake_unit_ptr::~fake_unit_ptr()
  * Duplicate additions are not allowed.
  */
 void fake_unit_ptr::place_on_fake_unit_manager(fake_unit_manager * manager){
-	assert(my_manager_ == NULL); //Can only be placed on 1 fake_unit_manager
+	assert(my_manager_ == nullptr); //Can only be placed on 1 fake_unit_manager
 	my_manager_=manager;
 	my_manager_->place_temporary_unit(unit_.get());
 }
@@ -126,10 +141,9 @@ void fake_unit_ptr::place_on_fake_unit_manager(fake_unit_manager * manager){
  */
 int fake_unit_ptr::remove_from_fake_unit_manager(){
 	int ret(0);
-	if(my_manager_ != NULL){
+	if(my_manager_ != nullptr){
 		ret = my_manager_->remove_temporary_unit(unit_.get());
-		my_manager_=NULL;
+		my_manager_=nullptr;
 	}
 	return ret;
 }
-

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,16 +18,16 @@
  * */
 
 
-#include "stage_unit_formulas.hpp"
-#include "ai.hpp"
+#include "ai/formula/stage_unit_formulas.hpp"
+#include "ai/formula/ai.hpp"
 
-#include "../../formula.hpp"
-#include "../../formula_function.hpp"
-#include "../../log.hpp"
-#include "../../resources.hpp"
-#include "../../unit.hpp"
-#include "../../unit_formula_manager.hpp"
-#include <boost/lexical_cast.hpp>
+#include "formula/formula.hpp"
+#include "formula/function.hpp"
+#include "game_board.hpp"
+#include "log.hpp"
+#include "resources.hpp"
+#include "units/unit.hpp"
+#include "units/formula_manager.hpp"
 
 static lg::log_domain log_formula_ai("ai/stage/unit_formulas");
 #define LOG_AI LOG_STREAM(info, log_formula_ai)
@@ -53,9 +53,9 @@ stage_unit_formulas::~stage_unit_formulas()
 bool stage_unit_formulas::do_play_stage()
 {
 	//execute units formulas first
-	game_logic::unit_formula_set units_with_formulas;
+	wfl::unit_formula_set units_with_formulas;
 
-	unit_map &units_ = *resources::units;
+	unit_map &units_ = resources::gameboard->units();
 
 	for(unit_map::unit_iterator i = units_.begin() ; i != units_.end() ; ++i)
 	{
@@ -64,33 +64,32 @@ bool stage_unit_formulas::do_play_stage()
 				int priority = 0;
 				if (i->formula_manager().has_priority_formula()) {
 					try {
-						game_logic::const_formula_ptr priority_formula(fai_.create_optional_formula(i->formula_manager().get_priority_formula()));
+						wfl::const_formula_ptr priority_formula(fai_.create_optional_formula(i->formula_manager().get_priority_formula()));
 						if (priority_formula) {
-							game_logic::map_formula_callable callable(&fai_);
-							callable.add_ref();
-							callable.add("me", variant(new unit_callable(*i)));
-							priority = (game_logic::formula::evaluate(priority_formula, callable)).as_int();
+							wfl::map_formula_callable callable(fai_.fake_ptr());
+							callable.add("me", wfl::variant(std::make_shared<wfl::unit_callable>(*i)));
+							priority = (wfl::formula::evaluate(priority_formula, callable)).as_int();
 						} else {
 							WRN_AI << "priority formula skipped, maybe it's empty or incorrect"<< std::endl;
 						}
-					} catch(game_logic::formula_error& e) {
+					} catch(wfl::formula_error& e) {
 						if(e.filename == "formula")
 							e.line = 0;
-						fai_.handle_exception( e, "Unit priority formula error for unit: '" + i->type_id() + "' standing at (" + str_cast(i->get_location().x + 1) + "," + str_cast(i->get_location().y + 1) + ")");
+						fai_.handle_exception( e, "Unit priority formula error for unit: '" + i->type_id() + "' standing at (" + std::to_string(i->get_location().wml_x()) + "," + std::to_string(i->get_location().wml_y()) + ")");
 
 						priority = 0;
-					} catch(type_error& e) {
+					} catch(const wfl::type_error& e) {
 						priority = 0;
 						ERR_AI << "formula type error while evaluating unit priority formula  " << e.message << std::endl;
 					}
 				}
 
-				units_with_formulas.insert( game_logic::unit_formula_pair( i, priority ) );
+				units_with_formulas.insert( wfl::unit_formula_pair( i, priority ) );
 			}
 		}
         }
 
-	for(game_logic::unit_formula_set::iterator pair_it = units_with_formulas.begin() ; pair_it != units_with_formulas.end() ; ++pair_it)
+	for(wfl::unit_formula_set::iterator pair_it = units_with_formulas.begin() ; pair_it != units_with_formulas.end() ; ++pair_it)
 	{
 		unit_map::iterator i = pair_it->first;
 
@@ -98,21 +97,20 @@ bool stage_unit_formulas::do_play_stage()
 
 			if (i->formula_manager().has_formula()) {
 				try {
-					game_logic::const_formula_ptr formula(fai_.create_optional_formula(i->formula_manager().get_formula()));
+					wfl::const_formula_ptr formula(fai_.create_optional_formula(i->formula_manager().get_formula()));
 					if (formula) {
-						game_logic::map_formula_callable callable(&fai_);
-						callable.add_ref();
-						callable.add("me", variant(new unit_callable(*i)));
+						wfl::map_formula_callable callable(fai_.fake_ptr());
+						callable.add("me", wfl::variant(std::make_shared<wfl::unit_callable>(*i)));
 						fai_.make_action(formula, callable);
 					} else {
 						WRN_AI << "unit formula skipped, maybe it's empty or incorrect" << std::endl;
 					}
 				}
-				catch(game_logic::formula_error& e) {
+				catch(wfl::formula_error& e) {
 					if(e.filename == "formula") {
 						e.line = 0;
 					}
-					fai_.handle_exception( e, "Unit formula error for unit: '" + i->type_id() + "' standing at (" + str_cast(i->get_location().x + 1) + "," + str_cast(i->get_location().y + 1) + ")");
+					fai_.handle_exception( e, "Unit formula error for unit: '" + i->type_id() + "' standing at (" + std::to_string(i->get_location().wml_x()) + "," + std::to_string(i->get_location().wml_y()) + ")");
 				}
 			}
 		}
@@ -121,22 +119,21 @@ bool stage_unit_formulas::do_play_stage()
 			if (i->formula_manager().has_loop_formula())
 			{
 				try {
-					game_logic::const_formula_ptr loop_formula(fai_.create_optional_formula(i->formula_manager().get_loop_formula()));
+					wfl::const_formula_ptr loop_formula(fai_.create_optional_formula(i->formula_manager().get_loop_formula()));
 					if (loop_formula) {
-						game_logic::map_formula_callable callable(&fai_);
-						callable.add_ref();
-						callable.add("me", variant(new unit_callable(*i)));
+						wfl::map_formula_callable callable(fai_.fake_ptr());
+						callable.add("me", wfl::variant(std::make_shared<wfl::unit_callable>(*i)));
 						while ( !fai_.make_action(loop_formula, callable).is_empty() && i.valid() )
 						{
 						}
 					} else {
 						WRN_AI << "Loop formula skipped, maybe it's empty or incorrect" << std::endl;
 					}
-				} catch(game_logic::formula_error& e) {
+				} catch(wfl::formula_error& e) {
 					if (e.filename == "formula") {
 						e.line = 0;
 					}
-					fai_.handle_exception( e, "Unit loop formula error for unit: '" + i->type_id() + "' standing at (" + str_cast(i->get_location().x + 1) + "," + str_cast(i->get_location().y + 1) + ")");
+					fai_.handle_exception( e, "Unit loop formula error for unit: '" + i->type_id() + "' standing at (" + std::to_string(i->get_location().wml_x()) + "," + std::to_string(i->get_location().wml_y()) + ")");
 				}
 			}
 		}

@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2010 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2010 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,58 +17,57 @@
 #include "gui/auxiliary/tips.hpp"
 
 #include "config.hpp"
-#include "game_preferences.hpp"
-#include "utils/foreach.tpp"
+#include "preferences/game.hpp"
+#include "random.hpp"
 #include "serialization/string_utils.hpp"
 
 namespace gui2
 {
-
-ttip::ttip(const t_string& text,
-		   const t_string& source,
-		   const std::string& unit_filter)
-	: text_(text), source_(source), unit_filter_(utils::split(unit_filter))
+game_tip::game_tip(const t_string& text, const t_string& source, const std::string& unit_filter)
+	: text_(text)
+	, source_(source)
+	, unit_filter_(utils::split(unit_filter))
 {
 }
 
-namespace tips
+namespace tip_of_the_day
 {
-
-std::vector<ttip> load(const config& cfg)
+std::vector<game_tip> load(const config& cfg)
 {
-	std::vector<ttip> result;
+	std::vector<game_tip> result;
 
-	FOREACH(const AUTO & tip, cfg.child_range("tip"))
-	{
-		result.push_back(
-				ttip(tip["text"], tip["source"], tip["encountered_units"]));
+	for(const auto& tip : cfg.child_range("tip")) {
+		result.emplace_back(tip["text"], tip["source"], tip["encountered_units"]);
 	}
 
 	return result;
 }
 
-std::vector<ttip> shuffle(const std::vector<ttip>& tips)
+std::vector<game_tip> shuffle(const std::vector<game_tip>& tips)
 {
-	std::vector<ttip> result;
-
+	std::vector<game_tip> result = tips;
 	const std::set<std::string>& units = preferences::encountered_units();
 
-	FOREACH(const AUTO & tip, tips)
-	{
-		if(tip.unit_filter_.empty()) {
-			result.push_back(tip);
-		} else {
-			FOREACH(const AUTO & unit, tip.unit_filter_)
-			{
-				if(units.find(unit) != units.end()) {
-					result.push_back(tip);
-					break;
-				}
-			}
-		}
-	}
+	// Remove entries whose filters do not match from the tips list.
+	const auto iter = std::remove_if(result.begin(), result.end(), [&units](const game_tip& tip) {
+		const auto& filters = tip.unit_filter_;
 
-	std::random_shuffle(result.begin(), result.end());
+		// Filter passes there's no filter at all or if every unit specified has already been
+		// encountered in-game.
+		const bool passes_filter = filters.empty()
+			? true
+			: std::any_of(filters.begin(), filters.end(), [&units](const std::string& u) {
+				return units.find(u) != units.end();
+			});
+
+		return !passes_filter;
+	});
+
+	// Prune invalid entries.
+	result.erase(iter, result.end());
+
+	// Shuffle the list.
+	std::shuffle(result.begin(), result.end(), randomness::rng::default_instance());
 	return result;
 }
 

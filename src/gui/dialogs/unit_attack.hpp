@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2010 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2010 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,22 +12,23 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_UNIT_ATTACK_HPP_INCLUDED
-#define GUI_DIALOGS_UNIT_ATTACK_HPP_INCLUDED
+#pragma once
 
 #include "actions/attack.hpp"
-#include "gui/dialogs/dialog.hpp"
-#include "unit_map.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
+#include "units/map.hpp"
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tunit_attack : public tdialog
+class unit_attack : public modal_dialog
 {
 public:
-	tunit_attack(const unit_map::iterator& attacker_itor,
+	unit_attack(const unit_map::iterator& attacker_itor,
 				 const unit_map::iterator& defender_itor,
-				 const std::vector<battle_context>& weapons,
+				 std::vector<battle_context>&& weapons,
 				 const int best_weapon);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
@@ -38,14 +39,16 @@ public:
 	}
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
+	virtual const std::string& window_id() const override;
 
-	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
+	/** Inherited from modal_dialog. */
+	virtual void pre_show(window& window) override;
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	virtual void post_show(window& window) override;
+
+	void damage_calc_callback(window& window);
 
 	/** The index of the selected weapon. */
 	int selected_weapon_;
@@ -63,6 +66,5 @@ private:
 	int best_weapon_;
 };
 
+} // namespace dialogs
 } // namespace gui2
-
-#endif

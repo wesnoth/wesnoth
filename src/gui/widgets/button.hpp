@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,42 +12,50 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_BUTTON_HPP_INCLUDED
-#define GUI_WIDGETS_BUTTON_HPP_INCLUDED
+#pragma once
 
-#include "gui/widgets/control.hpp"
-#include "gui/widgets/clickable.hpp"
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
+
+#include "gui/widgets/styled_widget.hpp"
+#include "gui/widgets/clickable_item.hpp"
 
 namespace gui2
 {
+namespace implementation
+{
+	struct builder_button;
+}
+
+// ------------ WIDGET -----------{
 
 /**
  * Simple push button.
  */
-class tbutton : public tcontrol, public tclickable_
+class button : public styled_widget, public clickable_item
 {
 public:
-	tbutton();
+	explicit button(const implementation::builder_button& builder);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref tcontrol::set_active. */
-	virtual void set_active(const bool active) OVERRIDE;
+	/** See @ref styled_widget::set_active. */
+	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
-	virtual bool get_active() const OVERRIDE;
+	/** See @ref styled_widget::get_active. */
+	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
-	virtual unsigned get_state() const OVERRIDE;
+	/** See @ref styled_widget::get_state. */
+	virtual unsigned get_state() const override;
 
-	/** Inherited from tclickable. */
-	void connect_click_handler(const event::tsignal_function& signal)
+	/** Inherited from clickable_item. */
+	virtual void connect_click_handler(const event::signal_function& signal) override
 	{
 		connect_signal_mouse_left_click(*this, signal);
 	}
 
-	/** Inherited from tclickable. */
-	void disconnect_click_handler(const event::tsignal_function& signal)
+	/** Inherited from clickable_item. */
+	virtual void disconnect_click_handler(const event::signal_function& signal) override
 	{
 		disconnect_signal_mouse_left_click(*this, signal);
 	}
@@ -65,22 +73,21 @@ private:
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum tstate {
+	enum state_t {
 		ENABLED,
 		DISABLED,
 		PRESSED,
-		FOCUSSED,
-		COUNT
+		FOCUSED,
 	};
 
-	void set_state(const tstate state);
+	void set_state(const state_t state);
 	/**
 	 * Current state of the widget.
 	 *
 	 * The state of the widget determines what to render and how the widget
 	 * reacts to certain 'events'.
 	 */
-	tstate state_;
+	state_t state_;
 
 	/**
 	 * The return value of the button.
@@ -90,26 +97,65 @@ private:
 	 */
 	int retval_;
 
-	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
+	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
+	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_mouse_enter(const event::tevent event, bool& handled);
+	void signal_handler_mouse_enter(const event::ui_event event, bool& handled);
 
-	void signal_handler_mouse_leave(const event::tevent event, bool& handled);
+	void signal_handler_mouse_leave(const event::ui_event event, bool& handled);
 
-	void signal_handler_left_button_down(const event::tevent event,
+	void signal_handler_left_button_down(const event::ui_event event,
 										 bool& handled);
 
-	void signal_handler_left_button_up(const event::tevent event,
+	void signal_handler_left_button_up(const event::ui_event event,
 									   bool& handled);
 
-	void signal_handler_left_button_click(const event::tevent event,
+	void signal_handler_left_button_click(const event::ui_event event,
 										  bool& handled);
 };
 
+// }---------- DEFINITION ---------{
+
+struct button_definition : public styled_widget_definition
+{
+	explicit button_definition(const config& cfg);
+
+	struct resolution : public resolution_definition
+	{
+		explicit resolution(const config& cfg);
+	};
+};
+
+// }---------- BUILDER -----------{
+
+class styled_widget;
+
+namespace implementation
+{
+
+struct builder_button : public builder_styled_widget
+{
+public:
+	explicit builder_button(const config& cfg);
+
+	using builder_styled_widget::build;
+
+	widget* build() const;
+
+private:
+	std::string retval_id_;
+	int retval_;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
-
-#endif

@@ -11,13 +11,18 @@ usage()
   echo -e "\t-h\tShows this help."
   echo -e "\t-v\tVerbose mode."
   echo -e "\t-w\tVery verbose mode. (Debug script.)"
+  echo -e "\t-c\tClean mode. (Don't load any add-ons. Used for mainline tests.)"
   echo -e "\t-a arg\tAdditional arguments to go to wesnoth."
   echo -e "\t-t arg\tNew timer value to use, instead of 10s as default."
+  echo -e "\t  \t0s means no timer, and also skips tests that expect timeout."
   echo -e "\t-s\tDisable strict mode. By default, we run wesnoth with option"
   echo -e "\t  \t'--log-strict=warning' to ensure errors result in a failed test."
   echo -e "\t-d\tRun wesnoth-debug binary instead of wesnoth."
   echo -e "\t-g\tIf we encounter a crash, generate a backtrace using gdb. Must have gdb installed for this option."
   echo -e "\t-p arg\tPath to wesnoth binary. By default assume it is with this script."
+  if [ $(uname) = "Darwin" ]; then
+    echo -e "\t  \tThe special value xcode searches in XCode's DerivedProducts directory."
+  fi
   echo -e "\t-l arg\tLoads list of tests from the given file."
   echo -e "\t  \tBy default, the file is wml_test_schedule."
   echo
@@ -40,7 +45,7 @@ get_code_string()
   0)
     CodeString="PASS"
     ;;
-  1) 
+  1)
     CodeString="FAIL"
     ;;
   2)
@@ -73,7 +78,7 @@ get_code_string()
 check_errs()
 {
   # Argument 1 is the name of the test.
-  # Argument 2 is the wesnoth error code for the test. 
+  # Argument 2 is the wesnoth error code for the test.
   # Argument 3 is the expected error code.
   if [ "${2}" -eq 124 -a "${3}" -eq 2 ]; then
     if [ "$Verbose" -ge 2 ]; then
@@ -90,7 +95,7 @@ check_errs()
     fi
     return 0
   elif [ "${2}" -ne "${3}" ]; then
-    echo "${1}" ":" 
+    echo "${1}" ":"
     get_code_string ${2}
     printf '%-55s %3d - %s\n' "  Observed result :" "${2}" "$CodeString"
     get_code_string ${3}
@@ -125,10 +130,11 @@ run_test()
 {
   # Argument 1 is the expected error code
   # Argument 2 is the name of the test scenario
+  # Argument 3 (optional) overrides strict mode (0 to disable, 1 to enable)
 
   preopts=""
   binary="$BinPath"
-  opts="-u $2 "
+  opts="-u$2 "
 
   timer=$basetimer
 
@@ -137,7 +143,7 @@ run_test()
   else
     binary+="wesnoth "
   fi
-  
+
   # Use validcache on tests that aren't the first test.
   if [ "$FirstTest" -eq 1 ]; then
     ((timer *= 2))
@@ -146,12 +152,34 @@ run_test()
   fi
 
   # Add a timeout using unix timeout utility
-  timer1=$((timer+1))
-  preopts+="timeout --kill-after=$timer1 $timer "
+  if [ $timer -gt 0 ]; then
+    # Some versions might not support the --kill-after option
+    timeout --kill-after=5 1 true
+    # Exit code of timeout is 125 if the command itself fails, like if we passed a bad argument
+    if [ $? -ne 125 ]; then
+      timer1=$((timer+1))
+      preopts+="timeout --kill-after=$timer1 $timer "
+    else
+      preopts+="timeout $timer "
+    fi
+  elif [ $1 -eq 2 ]; then
+    # If timeout is disabled, skip tests that expect it
+    return 100
+  fi
+
+  strict_mode=$3
+  if [ -z "$strict_mode" ]; then
+    strict_mode=$StrictMode
+  fi
 
   # If running strict, then set strict level to "warning"
-  if [ "$StrictMode" -eq 1 ]; then
+  if [ "$strict_mode" -eq 1 ]; then
     opts+="--log-strict=warning "
+  fi
+
+  # If running clean mode, then pass "--noaddons"
+  if [ "$CleanMode" -eq 1 ]; then
+    opts+="--noaddons "
   fi
 
   # Assemble command
@@ -166,6 +194,12 @@ run_test()
   fi
   $command 2> error.log
   error_code="$?"
+  # workaround to fix issue in travis+18.04
+  while grep -q 'Could not initialize SDL_video' error.log; do
+    echo "Could not initialize SDL_video error, retrying..."
+    $command 2> error.log
+    error_code="$?"
+  done
   if check_errs $2 $error_code $1; then
     FirstTest=0 #Only start using validcache flag when at least one test has passed without error
     handle_error_log 0
@@ -187,6 +221,7 @@ run_test()
 
 Verbose=0
 UnixTimeout=0
+CleanMode=0
 LoadFile="wml_test_schedule"
 BinPath="./"
 StrictMode=1
@@ -194,23 +229,27 @@ DebugMode=0
 GdbBacktraceMode=0
 extra_opts=""
 basetimer=10
+export OMP_WAIT_POLICY=PASSIVE
 
-while getopts ":hvwusdgp:l:a:t:" Option
+while getopts ":hvwcusdgp:l:a:t:" Option
 do
   case $Option in
     h )
       usage
       exit 0;
       ;;
-    v ) 
-      if [ "$Verbose" -lt 1 ]; then 
+    v )
+      if [ "$Verbose" -lt 1 ]; then
         Verbose=1
       fi
       ;;
     w )
-      if [ "$Verbose" -lt 2 ]; then 
+      if [ "$Verbose" -lt 2 ]; then
         Verbose=2
       fi
+      ;;
+    c )
+      CleanMode=1
       ;;
     u )
       UnixTimeout=1
@@ -225,13 +264,19 @@ do
       GdbBacktraceMode=1
       ;;
     p )
-      BinPath="$OPTARG"
+      if [ "$OPTARG" = "XCode" -o "$OPTARG" = "xcode" -o "$OPTARG" = "Xcode" ]; then
+        # Find it in XCode's build dir
+        path_list=( ~/Library/Developer/XCode/DerivedData/Wesnoth*/Build/Products/{Debug,Release}/Wesnoth.app/Contents/MacOS/ )
+        BinPath="${path_list[0]}"
+      else
+        BinPath="$OPTARG"
+      fi
       ;;
     l )
       LoadFile="$OPTARG"
       ;;
     a )
-      extra_opts+="$OPTARG"
+      extra_opts+=" $OPTARG"
       ;;
     t )
       echo "Replacing default timer of 10 with" "$OPTARG" "seconds."
@@ -243,13 +288,32 @@ shift $(($OPTIND - 1))
 
 extra_opts+="$*"
 
+# Make sure the binary exists
+if [ "$DebugMode" -eq 1 ]; then
+  if [ ! -x "$BinPath/wesnoth-debug" ]; then
+    echo "Wesnoth binary not found at $BinPath/wesnoth-debug"
+    exit 1
+  fi
+else
+  if [ ! -x "$BinPath/wesnoth" ]; then
+    echo "Wesnoth binary not found at $BinPath/wesnoth"
+    exit 1
+  fi
+fi
+
 if [ "$Verbose" -ge 2 ]; then
   if [ "${#extra_opts}" -ge 0 ]; then
-    echo "Found additional arguments to wesnoth: " "$extra_opts" 
+    echo "Found additional arguments to wesnoth: " "$extra_opts"
   fi
   if [ "$UnixTimeout" -eq 1 ]; then
     echo "Wesnoth built-in timeout was disabled. This script was updated, and -u is now unnecessary and has no effect."
   fi
+fi
+
+# Disable timeouts if the timeout utility is missing
+if [ ! $(which timeout) ]; then
+  echo 'timeout not found; skipping timeout tests'
+  basetimer=0
 fi
 
 echo "Getting tests from" "$LoadFile" "..."
@@ -288,16 +352,28 @@ do
         echo "comment:" $line
       fi
     else
+      if [ "$Verbose" -eq 0 ]; then
+        echo -n "."
+      fi
       if run_test $line; then #note: don't put run_test inside a pipe implicitly by using ! or something, this will cause the FirstTest variable not to work properly
         if [ "$Verbose" -ge 2 ]; then
           echo "good"
+        elif [ "$Verbose" -eq 0 ]; then
+          echo -ne '\b:'
         fi
         TotalPassed=$((TotalPassed+1))
-      else
+      elif [ $? -ne 100 ]; then
+        if [ "$Verbose" -eq 0 ]; then
+          echo -ne '\b!'
+        fi
         AllPassed=0
       fi
     fi
 done
+
+if [ "$Verbose" -eq 0 ]; then
+  echo ''
+fi
 
 if [ "$AllPassed" -eq 0 ]; then
   if [ "$StrictMode" -eq 1 ]; then
@@ -312,3 +388,4 @@ else
   echo "All tests gave the correct result."
   exit 0
 fi
+

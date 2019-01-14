@@ -1,11 +1,12 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 local WMPF = wesnoth.require "ai/micro_ais/cas/ca_wolves_multipacks_functions.lua"
+local M = wesnoth.map
 
 local ca_wolves_multipacks_attack = {}
 
-function ca_wolves_multipacks_attack:evaluation(ai, cfg)
+function ca_wolves_multipacks_attack:evaluation(cfg)
     -- If wolves have attacks left, call this CA
     -- It will be disabled by being black-listed, so as to avoid
     -- having to do the full attack evaluation for every single move evaluation
@@ -19,8 +20,10 @@ function ca_wolves_multipacks_attack:evaluation(ai, cfg)
     return 0
 end
 
-function ca_wolves_multipacks_attack:execution(ai, cfg)
+function ca_wolves_multipacks_attack:execution(cfg)
     local packs = WMPF.assign_packs(cfg)
+
+    local avoid_map = AH.get_avoid_map(ai, wml.get_child(cfg, "avoid"), true)
 
     -- Attacks are dealt with on a pack by pack basis
     -- and we want all wolves in a pack to move first, before going on to the next pack
@@ -40,20 +43,23 @@ function ca_wolves_multipacks_attack:execution(ai, cfg)
             local all_attacks = {}
             if wolves[1] then all_attacks = AH.get_attacks(wolves, { simulate_combat = true }) end
 
-            -- Eliminate targets that would split up the wolves by more than 3 hexes
+            -- Eliminate targets that would split up the wolves by more than 3 hexes.
+            -- Also eliminate attacks in areas specified by [avoid] tags.
             local attacks = {}
             for _,attack in ipairs(all_attacks) do
-                local attack_splits_pack = false
-                for _,wolf in ipairs(wolves) do
-                    local nh = AH.next_hop(wolf, attack.dst.x, attack.dst.y)
-                    local dist = H.distance_between(nh[1], nh[2], attack.dst.x, attack.dst.y)
-                    if (dist > 3) then
-                        attack_splits_pack = true
-                        break
+                if (not avoid_map:get(attack.dst.x, attack.dst.y)) then
+                    local attack_splits_pack = false
+                    for _,wolf in ipairs(wolves) do
+                        local nh = AH.next_hop(wolf, attack.dst.x, attack.dst.y)
+                        local dist = M.distance_between(nh[1], nh[2], attack.dst.x, attack.dst.y)
+                        if (dist > 3) then
+                            attack_splits_pack = true
+                            break
+                        end
                     end
-                end
-                if (not attack_splits_pack) then
-                    table.insert(attacks, attack)
+                    if (not attack_splits_pack) then
+                        table.insert(attacks, attack)
+                    end
                 end
             end
 
@@ -75,7 +81,7 @@ function ca_wolves_multipacks_attack:execution(ai, cfg)
                 end
 
                 -- Find which target can be attacked by the most units, from the most hexes; and rate by fewest HP if equal
-                local max_rating, best_target = -9e99
+                local max_rating, best_target = - math.huge
                 for attack_ind,attack in pairs(attack_map_wolves) do
                     local number_wolves, number_hexes = 0, 0
                     for _,w in pairs(attack) do number_wolves = number_wolves + 1 end
@@ -109,7 +115,7 @@ function ca_wolves_multipacks_attack:execution(ai, cfg)
                 -- Now we know the best target and need to attack
                 -- This is done on a wolf-by-wolf basis, the outside while loop taking care of
                 -- the next wolf in the pack on subsequent iterations
-                local max_rating, best_attack = -9e99
+                local max_rating, best_attack = - math.huge
                 for _,attack in ipairs(attacks) do
                     if (attack.target.x == best_target.x) and (attack.target.y == best_target.y) then
                         local rating = attack.att_stats.average_hp / 2. - attack.def_stats.average_hp
@@ -119,27 +125,21 @@ function ca_wolves_multipacks_attack:execution(ai, cfg)
                     end
                 end
 
+                if cfg.show_pack_number then
+                    WMPF.clear_label(best_attack.src.x, best_attack.src.y)
+                end
+
                 local attacker = wesnoth.get_unit(best_attack.src.x, best_attack.src.y)
                 local defender = wesnoth.get_unit(best_attack.target.x, best_attack.target.y)
 
-                if cfg.show_pack_number then WMPF.clear_label(attacker.x, attacker.y) end
+                AH.robust_move_and_attack(ai, attacker, best_attack.dst, defender)
 
-                AH.movefull_stopunit(ai, attacker, best_attack.dst.x, best_attack.dst.y)
-
-                if attacker and attacker.valid then
-                    if cfg.show_pack_number then WMPF.put_label(attacker.x, attacker.y, pack_number) end
-                end
-
-                if attacker and attacker.valid and defender and defender.valid then
-                    -- In case one of the units dies in the attack or is removed in an event, we need these:
-                    local ax, ay, dx, dy = attacker.x, attacker.y, defender.x, defender.y
-
-                    AH.checked_attack(ai, attacker, defender)
-
-                    -- Remove the labels, if one of the units isgone
-                    if cfg.show_pack_number then
-                        if (not attacker) or (not attacker.valid) then WMPF.clear_label(ax, ay) end
-                        if (not defender) or (not defender.valid) then WMPF.clear_label(dx, dy) end
+                if cfg.show_pack_number then
+                    if attacker and attacker.valid then
+                        if cfg.show_pack_number then WMPF.put_label(attacker.x, attacker.y, pack_number) end
+                    end
+                    if (not defender) or (not defender.valid) then
+                        WMPF.clear_label(best_attack.target.x, best_attack.target.y)
                     end
                 end
 
@@ -150,7 +150,7 @@ function ca_wolves_multipacks_attack:execution(ai, cfg)
         end
 
         -- Finally, if any of the wolves in this pack did attack, move the rest of the pack in close
-       if pack_has_attacked then
+        if pack_has_attacked then
             local wolves_moves, wolves_no_moves = {}, {}
             for _,pack_wolf in ipairs(pack) do
                 -- Wolf might have moved in previous attack -> use id to identify it
@@ -171,16 +171,16 @@ function ca_wolves_multipacks_attack:execution(ai, cfg)
                     local best_hex = AH.find_best_move(wolf_moves, function(x, y)
                         local rating = 0
                         for _,wolf_no_moves in ipairs(wolves_no_moves) do
-                            rating = rating - H.distance_between(x, y, wolf_no_moves.x, wolf_no_moves.y)
+                            rating = rating - M.distance_between(x, y, wolf_no_moves.x, wolf_no_moves.y)
                         end
                         return rating
-                    end)
+                    end, { avoid_map = avoid_map })
 
                     if cfg.show_pack_number then
                         WMPF.clear_label(wolf_moves.x, wolf_moves.y)
                     end
 
-                    AH.movefull_stopunit(ai, wolf_moves, best_hex)
+                    AH.movefull_stopunit(ai, wolf_moves, best_hex or { wolf_moves.x, wolf_moves.y })
 
                     if cfg.show_pack_number and wolf_moves and wolf_moves.valid then
                         WMPF.put_label(wolf_moves.x, wolf_moves.y, pack_number)

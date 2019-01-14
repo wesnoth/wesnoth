@@ -49,4 +49,3 @@ twidget* tbuilder_progress_bar::build() const /*@ \label{window_builder.cpp:buil
  *
  * A progress bar has no extra fields.
  */
-

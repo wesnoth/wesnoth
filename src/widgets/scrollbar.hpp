@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-                 2004 - 2014 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+                 2004 - 2015 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,8 +15,7 @@
 
 /** @file */
 
-#ifndef SCROLLBAR_HPP_INCLUDED
-#define SCROLLBAR_HPP_INCLUDED
+#pragma once
 
 #include "button.hpp"
 
@@ -78,8 +77,8 @@ public:
 	void scroll_up();
 
 protected:
-	virtual handler_vector handler_members();
-	virtual void update_location(SDL_Rect const &rect);
+	virtual sdl_handler_vector handler_members();
+	virtual void update_location(const SDL_Rect& rect);
 	virtual void handle_event(const SDL_Event& event);
 	virtual void process_event();
 	virtual void draw_contents();
@@ -102,5 +101,3 @@ private:
 };
 
 } // end namespace gui
-
-#endif

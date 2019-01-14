@@ -1,0 +1,2 @@
+The Ship:
+If you want to use the ship in your own content, take a look at the terrain codes in Becalmed.map to see how to put one together. Other than the deck, there are only a few tiles--really big tiles. Flying units will have to be customized to be drawn in a lower z-layer so they fly behind the rigging or it will look awkward. (This is why there are SotA bats in the units folder.) There is a right-click option to hide the sails and rigging of the ship. The code for that is in 04_Becalmed.cfg and utils.cfg.

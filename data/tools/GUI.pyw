@@ -1,5 +1,5 @@
-#!/usr/bin/env python2
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python3
+# encoding: utf-8
 
 # By Elvish_Hunter, April 2014
 
@@ -10,35 +10,24 @@
 
 # threading and subprocess are needed to run wmllint without freezing the window
 # codecs is used to save files as UTF8
-# Queue (queue in Python3) is needed to exchange informations between threads
+# queue is needed to exchange informations between threads
 # if we use the run_tool thread to do GUI stuff we obtain weird crashes
 # This happens because Tk is a single-thread GUI
 import sys,os,threading,subprocess,codecs
 
-# sys.version_info checks the interpreter version
-# this is used to have a script that can run on both Python2 and Python3
-# not that useful until the mainline tools are updated, but still...
-if sys.version_info.major >= 3:
-    import queue
-    # tkinter modules
-    from tkinter import *
-    from tkinter.messagebox import *
-    from tkinter.filedialog import *
-    # ttk must be called last
-    from tkinter.ttk import *
-else: # we are on Python 2
-    import Queue
-    # tkinter modules
-    from Tkinter import *
-    from tkMessageBox import *
-    from tkFileDialog import *
-    # ttk must be called last
-    from ttk import *
+import queue
+# tkinter modules
+from tkinter import *
+from tkinter.messagebox import *
+from tkinter.filedialog import *
+import tkinter.font as font
+# ttk must be called last
+from tkinter.ttk import *
 
 # we need to know in what series we are
 # so set it in a constant and change it for every new series
 # it must be a string
-WESNOTH_SERIES="1.13"
+WESNOTH_SERIES="1.15"
 
 # get the location where the script is placed
 # we'll check later if this is a Wesnoth directory
@@ -46,11 +35,11 @@ WESNOTH_SERIES="1.13"
 # os.path.realpath gets the full path of this script,
 # while removing any symlink
 # This allows users to create a link to the app on their desktop
+# os.path.normpath allows Windows users to see their standard path separators
 APP_DIR,APP_NAME=os.path.split(os.path.realpath(sys.argv[0]))
-upper_dir=APP_DIR.split(os.sep)
-upper_dir.pop()
-WESNOTH_DATA_DIR=os.sep.join(upper_dir)
-WESNOTH_CORE_DIR=os.path.join(WESNOTH_DATA_DIR,"core")
+WESNOTH_ROOT_DIR=os.sep.join(APP_DIR.split(os.sep)[:-2])  # pop out "data" and "tools"
+WESNOTH_DATA_DIR=os.path.join(WESNOTH_ROOT_DIR,"data")
+WESNOTH_CORE_DIR=os.path.normpath(os.path.join(WESNOTH_DATA_DIR,"core"))
 
 def wrap_elem(line):
     """If the supplied line contains spaces, return it wrapped between double quotes"""
@@ -58,32 +47,57 @@ def wrap_elem(line):
         return "\"{0}\"".format(line)
     return line
 
-def run_tool(tool,queue,command):
-    """Runs a maintenance tool with the desired arguments and pushes the output in the supplied queue"""
-    if sys.platform=="win32":
-        # Windows wants a string, Linux wants a list and Polly wants a cracker
-        # Windows wants also strings flavoured with double quotes
-        # since maps return iterators, we must cast them as lists, otherwise join won't work
-        # not doing this causes an OSError: [WinError 87]
-        # this doesn't happen on Python 2.7, because here map() returns a list
-        wrapped_line=list(map(wrap_elem,command))
-        queue.put_nowait(' '.join(wrapped_line)+"\n")
-        si=subprocess.STARTUPINFO()
-        si.dwFlags=subprocess.STARTF_USESHOWWINDOW|subprocess.SW_HIDE # to avoid showing a DOS prompt
-        try:
-            output=subprocess.check_output(' '.join(wrapped_line),stderr=subprocess.STDOUT,startupinfo=si)
-            queue.put_nowait(output)
-        except subprocess.CalledProcessError as error:
-            # post the precise message and the remaining output as a tuple
-            queue.put_nowait((tool,error.returncode,error.output))
-    else: # STARTUPINFO is not available, nor needed, outside of Windows
-        queue.put_nowait(' '.join(command)+"\n")
-        try:
-            output=subprocess.check_output(command,stderr=subprocess.STDOUT)
-            queue.put_nowait(output)
-        except subprocess.CalledProcessError as error:
-            # post the precise message and the remaining output as a tuple
-            queue.put_nowait((tool,error.returncode,error.output))
+class ToolThread(threading.Thread):
+    def __init__(self,tool,queue,command):
+        super().__init__()
+        self.tool=tool
+        self.command=command
+        self.queue=queue
+        self.subproc=None
+    def run(self):
+        # we can't use check_output, because it doesn't support
+        # performing operations on the subprocess
+        # so we'll have to use subprocess.Popen() instead
+
+        # set the encoding for the subprocess
+        # otherwise, with the new Unicode literals used by the wml tools,
+        # we may get UnicodeDecodeErros
+        env=os.environ
+        env['PYTHONIOENCODING']="utf8"
+        if sys.platform=="win32":
+            # Windows wants a string, Linux wants a list and Polly wants a cracker
+            # Windows wants also strings flavoured with double quotes
+            # since maps return iterators, we must cast them as lists, otherwise join won't work
+            # not doing this causes an OSError: [WinError 87]
+            # this doesn't happen on Python 2.7, because here map() returns a list
+            wrapped_line=list(map(wrap_elem,self.command))
+            self.queue.put_nowait(' '.join(wrapped_line)+"\n")
+            si=subprocess.STARTUPINFO()
+            si.dwFlags=subprocess.STARTF_USESHOWWINDOW|subprocess.SW_HIDE # to avoid showing a DOS prompt
+            self.subproc=subprocess.Popen(' '.join(wrapped_line),
+                                          stdout=subprocess.PIPE,
+                                          stderr=subprocess.PIPE,
+                                          startupinfo=si,
+                                          env=env)
+        else: # STARTUPINFO is not available, nor needed, outside of Windows
+            self.queue.put_nowait(' '.join(self.command)+"\n")
+            self.subproc=subprocess.Popen(self.command,
+                                          stdout=subprocess.PIPE,
+                                          stderr=subprocess.PIPE,
+                                          env=env)
+        out,err=self.subproc.communicate() # waits for the subprocess to finish and gets the output
+        self.queue.put_nowait(str(out, "utf8"))
+        self.queue.put_nowait(str(err, "utf8"))
+        # unlike check_output, Popen never raises if a subprocess terminates abnormally
+        # the documentation writes about the chance of OSError being raised
+        # but I tested by deleting wmllint and it doesn't happen
+        # perhaps because it's a Python script and the Python interpreter
+        # certainly exists
+        if self.subproc.returncode!=0:
+            # post a tuple into the queue to allow showing the error
+            self.queue.put_nowait((self.tool,self.subproc.returncode))
+    def terminate(self):
+        self.subproc.kill()
 
 def is_wesnoth_tools_path(path):
     """Checks if the supplied path may be a wesnoth/data/tools directory"""
@@ -94,15 +108,155 @@ def is_wesnoth_tools_path(path):
         return True
     return False
 
+def get_addons_directory():
+    """Returns a string containing the path of the add-ons directory"""
+    # os.path.expanduser gets the current user's home directory on every platform
+    if sys.platform=="win32":
+        # get userdata directory on Windows
+        # it assumes that you choose to store userdata in the My Games directory
+        # while installing Wesnoth
+        userdata=os.path.join(os.path.expanduser("~"),
+                              "Documents",
+                              "My Games",
+                              "Wesnoth"+WESNOTH_SERIES,
+                              "data",
+                              "add-ons")
+    elif sys.platform.startswith("linux") or "bsd" in sys.platform:
+        # we're on Linux or on a BSD system like FreeBSD
+        userdata=os.path.join(os.path.expanduser("~"),
+                              ".local",
+                              "share",
+                              "wesnoth",
+                              WESNOTH_SERIES,
+                              "data",
+                              "add-ons")
+    elif sys.platform=="darwin": # we're on MacOS
+        # bear in mind that I don't have a Mac, so this point may be bugged
+        userdata=os.path.join(os.path.expanduser("~"),
+                              "Library",
+                              "Application Support",
+                              "Wesnoth_"+WESNOTH_SERIES,
+                              "data",
+                              "add-ons")
+    else: # unknown system; if someone else wants to add other rules, be my guest
+        userdata="."
+
+    return userdata if os.path.exists(userdata) else "." # fallback in case the directory doesn't exist
+
+def attach_context_menu(widget,function):
+    # on Mac the right button fires a Button-2 event, or so I'm told
+    # some mice don't even have two buttons, so the user is forced
+    # to use Command + the only button
+    # bear in mind that I don't have a Mac, so this point may be bugged
+    # bind also the context menu key, for those keyboards that have it
+    # that is, most of the Windows and Linux ones (however, in Win it's
+    # called App, while on Linux is called Menu)
+    # Mac doesn't have a context menu key on its keyboards, so no binding
+    # bind also the Shift+F10 shortcut (same as Menu/App key)
+    # the call to tk windowingsystem is justified by the fact
+    # that it is possible to install X11 over Darwin
+    windowingsystem = widget.tk.call('tk', 'windowingsystem')
+    if windowingsystem == "win32": # Windows, both 32 and 64 bit
+        widget.bind("<Button-3>", function)
+        widget.bind("<KeyPress-App>", function)
+        widget.bind("<Shift-KeyPress-F10>", function)
+    elif windowingsystem == "aqua": # MacOS with Aqua
+        widget.bind("<Button-2>", function)
+        widget.bind("<Control-Button-1>", function)
+    elif windowingsystem == "x11": # Linux, FreeBSD, Darwin with X11
+        widget.bind("<Button-3>", function)
+        widget.bind("<KeyPress-Menu>", function)
+        widget.bind("<Shift-KeyPress-F10>", function)
+
+def attach_select_all(widget,function):
+    # bind the "select all" key shortcut
+    # again, Mac uses Command instead of Control
+    windowingsystem = widget.tk.call('tk', 'windowingsystem')
+    if windowingsystem == "win32":
+        widget.bind("<Control-KeyRelease-a>", function)
+    elif windowingsystem == "aqua":
+        widget.bind("<Command-KeyRelease-a>", function)
+    elif windowingsystem == "x11":
+        widget.bind("<Control-KeyRelease-a>", function)
+
+class Tooltip(Toplevel):
+    def __init__(self,widget,text,tag=None):
+        """A tooltip, or balloon. Displays the specified help text when the
+mouse pointer stays on the widget for more than 500 ms."""
+        # the master attribute retrieves the window where our "parent" widget is
+        super().__init__(widget.master)
+        self.widget=widget
+        self.preshow_id=None
+        self.show_id=None
+        self.label=Label(self,
+                         text=text,
+                         background="#ffffe1", # background color used on Windows
+                         borderwidth=1,
+                         relief=SOLID,
+                         padding=1,
+                         # Tk has a bunch of predefined fonts
+                         # use the one specific for tooltips
+                         font=font.nametofont("TkTooltipFont"))
+        self.label.pack()
+        self.overrideredirect(True)
+        # allow binding the tooltips to tagged elements of a widget
+        # only Text, Canvas and Treeview support tags
+        # and as such, they have a tag_bind method
+        # if the widget doesn't support tags, bind directly to it
+        if tag and hasattr(widget, "tag_bind") and callable(widget.tag_bind):
+            self.widget.tag_bind(tag,"<Enter>",self.preshow)
+            self.widget.tag_bind(tag,"<Leave>",self.hide)
+        else:
+            self.widget.bind("<Enter>",self.preshow)
+            self.widget.bind("<Leave>",self.hide)
+        self.widget.bind("<ButtonPress>",self.hide)
+        self.widget.bind("<ButtonRelease>",self.hide)
+        self.withdraw()
+    def preshow(self,event=None):
+        self.after_cleanup()
+        # 500 ms and 5000 ms are the default values used on Windows
+        self.preshow_id=self.after(500,self.show)
+    def show(self):
+        self.after_cleanup()
+        # check if the tooltip will end up out of the screen
+        # and handle this case if so
+        screen_width = self.winfo_screenwidth()
+        tooltip_width = self.winfo_reqwidth()
+        if tooltip_width + self.winfo_pointerx() > screen_width:
+            # unfortunately, it seems like Tkinter doesn't have a way to check the pointer's size
+            # so I'm using a value of 20px, which is enough for the usual 16px pointers
+            self.geometry("+%d+%d" % (screen_width-tooltip_width,self.winfo_pointery()+20))
+        else:
+            self.geometry("+%d+%d" % (self.winfo_pointerx(),self.winfo_pointery()+20))
+        # update_idletasks forces a geometry update
+        self.update_idletasks()
+        self.state("normal")
+        self.lift()
+        self.show_id=self.after(5000, self.hide)
+    def hide(self,event=None):
+        self.after_cleanup()
+        self.withdraw()
+    def after_cleanup(self):
+        # each event should cleanup after itself,
+        # to avoid having two .after() calls conflicting
+        # for example, one previously scheduled .after() may
+        # try to hide the tooltip before five seconds are passed
+        if self.show_id:
+            self.after_cancel(self.show_id)
+            self.show_id=None
+        if self.preshow_id:
+            self.after_cancel(self.preshow_id)
+            self.preshow_id=None
+    def set_text(self,text):
+        self.label.configure(text=text)
+        self.update_idletasks()
+
 class Popup(Toplevel):
     def __init__(self,parent,tool,thread):
         """Creates a popup that informs the user that the desired tool is running.
 Self destroys when the tool thread is over"""
         self.thread=thread
-        if sys.version_info.major>=3:
-            super().__init__(parent)
-        else:
-            Toplevel.__init__(self,parent)
+        super().__init__(parent)
         self.transient(parent)
         self.grab_set()
         self.protocol("WM_DELETE_WINDOW",
@@ -125,13 +279,22 @@ Self destroys when the tool thread is over"""
                            sticky=E+W,
                            padx=5,
                            pady=5)
+        terminate_button=Button(frame,
+                                text="Terminate script",
+                                image=ICONS["process-stop"],
+                                compound=LEFT,
+                                command=self.terminate)
+        terminate_button.grid(row=2,
+                              column=0,
+                              padx=5,
+                              pady=5)
         frame.columnconfigure(0,weight=1)
         # place the popup in the middle of the main window
         # get the main window position and dimension
         self.geometry("{0}x{1}+{2}+{3}".format(400,
-                                               80,
+                                               140,
                                                int(root.winfo_rootx()+(root.winfo_width()-400)/2),
-                                               int(root.winfo_rooty()+(root.winfo_height()-80)/2)))
+                                               int(root.winfo_rooty()+(root.winfo_height()-140)/2)))
         wait_progress.start(10)
         self.check_thread_alive()
     def check_thread_alive(self):
@@ -143,39 +306,44 @@ Self destroys when the tool thread is over"""
             self.after(100,self.check_thread_alive)
         else:
             self.after(1,self.destroy)
+    def terminate(self):
+        self.thread.terminate()
 
 class ContextMenu(Menu):
     def __init__(self,x,y,widget):
         """A subclass of Menu, used to display a context menu in Text and Entry widgets
 If the widget isn't active, some options do not appear"""
-        if sys.version_info.major>=3:
-            super().__init__(None,tearoff=0) # otherwise Tk allows splitting it in a new window
-        else:
-            Menu.__init__(self,None,tearoff=0)
+        super().__init__(None,tearoff=0) # otherwise Tk allows splitting it in a new window
         self.widget=widget
+        # MacOS uses a key called Command, instead of the usual Control used by Windows and Linux
+        # so prepare the accelerator strings accordingly
+        # For future reference, Mac also uses Option instead of Alt
+        # also, a little known fact about Python is that it *does* support using the ternary operator
+        # like in this case
+        control_key = "Command" if self.tk.call('tk', 'windowingsystem') == "aqua" else "Ctrl"
         # str is necessary because in some instances a Tcl_Obj is returned instead of a string
         if str(widget.cget('state')) in (ACTIVE,NORMAL): # do not add if state is readonly or disabled
             self.add_command(label="Cut",
                              image=ICONS['cut'],
                              compound=LEFT,
-                             accelerator='Ctrl+X',
+                             accelerator='%s+X' % (control_key),
                              command=lambda: self.widget.event_generate("<<Cut>>"))
         self.add_command(label="Copy",
                          image=ICONS['copy'],
                          compound=LEFT,
-                         accelerator='Ctrl+C',
+                         accelerator='%s+C' % (control_key),
                          command=lambda: self.widget.event_generate("<<Copy>>"))
         if str(widget.cget('state')) in (ACTIVE,NORMAL):
             self.add_command(label="Paste",
                              image=ICONS['paste'],
                              compound=LEFT,
-                             accelerator='Ctrl+V',
+                             accelerator='%s+V' % (control_key),
                              command=lambda: self.widget.event_generate("<<Paste>>"))
         self.add_separator()
         self.add_command(label="Select all",
                          image=ICONS['select_all'],
                          compound=LEFT,
-                         accelerator='Ctrl+A',
+                         accelerator='%s+A' % (control_key),
                          command=self.on_select_all)
         self.tk_popup(x,y) # self.post does not destroy the menu when clicking out of it
     def on_select_all(self):
@@ -184,105 +352,57 @@ If the widget isn't active, some options do not appear"""
             # adding a SEL tag to a chunk of text causes it to be selected
             self.widget.tag_add(SEL,"1.0",END)
         elif isinstance(self.widget,Entry) or \
-             isinstance(self.widget,Spinbox) or \
              isinstance(self.widget,Combobox):
-            # if the widget is active or readonly, just fire the correct event
-            self.widget.event_generate("<<SelectAll>>")
+            # apparently, the <<SelectAll>> event doesn't fire correctly if the widget is readonly
+            self.widget.select_range(0,END)
+        elif isinstance(self.widget,Spinbox):
+            self.widget.selection("range",0,END)
 
 class EntryContext(Entry):
     def __init__(self,parent,**kwargs):
         """An enhanced Entry widget that has a right-click menu
 Use like any other Entry widget"""
-        if sys.version_info.major>=3:
-            super().__init__(parent,**kwargs)
-        else:
-            Entry.__init__(self,parent,**kwargs)
-        # on Mac the right button fires a Button-2 event, or so I'm told
-        # some mice don't even have two buttons, so the user is forced
-        # to use Control + the only button
-        # bear in mind that I don't have a Mac, so this point may be bugged
-        # bind also the context menu key, for those keyboards that have it
-        # that is, most of the Windows and Linux ones (however, in Win it's
-        # called App, while on Linux is called Menu)
-        # Mac doesn't have a context menu key on its keyboards, so no binding
-        # finally, bind also the Shift+F10 shortcut (same as Menu/App key)
-        # the call to tk windowingsystem is justified by the fact
-        # that it is possible to install X11 over Darwin
-        windowingsystem = self.tk.call('tk', 'windowingsystem')
-        if windowingsystem == "win32": # Windows, both 32 and 64 bit
-            self.bind("<Button-3>",self.on_context_menu)
-            self.bind("<KeyPress-App>",self.on_context_menu)
-            self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
-        elif windowingsystem == "aqua": # MacOS with Aqua
-            self.bind("<Button-2>",self.on_context_menu)
-            self.bind("<Control-Button-1>",self.on_context_menu)
-        elif windowingsystem == "x11": # Linux, FreeBSD, Darwin with X11
-            self.bind("<Button-3>",self.on_context_menu)
-            self.bind("<KeyPress-Menu>",self.on_context_menu)
-            self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+        super().__init__(parent,**kwargs)
+        attach_context_menu(self,self.on_context_menu)
+        attach_select_all(self,self.on_select_all)
     def on_context_menu(self,event):
         if str(self.cget('state')) != DISABLED:
             ContextMenu(event.x_root,event.y_root,event.widget)
+    def on_select_all(self,event):
+        self.select_range(0,END)
 
 class SpinboxContext(Spinbox):
     def __init__(self,parent,**kwargs):
         """An enhanced Spinbox widget that has a right-click menu
 Use like any other Spinbox widget"""
-        if sys.version_info.major>=3:
-            super().__init__(parent,**kwargs)
-        else:
-            Spinbox.__init__(self,parent,**kwargs)
-        # see the above widget for an explanation of this block
-        windowingsystem = self.tk.call('tk', 'windowingsystem')
-        if windowingsystem == "win32":
-            self.bind("<Button-3>",self.on_context_menu)
-            self.bind("<KeyPress-App>",self.on_context_menu)
-            self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
-        elif windowingsystem == "aqua":
-            self.bind("<Button-2>",self.on_context_menu)
-            self.bind("<Control-Button-1>",self.on_context_menu)
-        elif windowingsystem == "x11":
-            self.bind("<Button-3>",self.on_context_menu)
-            self.bind("<KeyPress-Menu>",self.on_context_menu)
-            self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+        super().__init__(parent,**kwargs)
+        attach_context_menu(self,self.on_context_menu)
+        attach_select_all(self,self.on_select_all)
     def on_context_menu(self,event):
         if str(self.cget('state')) != DISABLED:
             ContextMenu(event.x_root,event.y_root,event.widget)
+    def on_select_all(self,event):
+        self.selection("range",0,END)
 
 class EnhancedText(Text):
     def __init__(self,*args,**kwargs):
         """A subclass of Text with a context menu
 Use it like any other Text widget"""
-        if sys.version_info.major>=3:
-            super().__init__(*args,**kwargs)
-        else:
-            Text.__init__(self,*args,**kwargs)
-        # see descriptions of above widgets
-        windowingsystem = self.tk.call('tk', 'windowingsystem')
-        if windowingsystem == "win32": # Windows, both 32 and 64 bit
-            self.bind("<Button-3>",self.on_context_menu)
-            self.bind("<KeyPress-App>",self.on_context_menu)
-            self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
-        elif windowingsystem == "aqua": # MacOS with Aqua
-            self.bind("<Button-2>",self.on_context_menu)
-            self.bind("<Control-Button-1>",self.on_context_menu)
-        elif windowingsystem == "x11": # Linux, FreeBSD, Darwin with X11
-            self.bind("<Button-3>",self.on_context_menu)
-            self.bind("<KeyPress-Menu>",self.on_context_menu)
-            self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+        super().__init__(*args,**kwargs)
+        attach_context_menu(self,self.on_context_menu)
+        attach_select_all(self,self.on_select_all)
     def on_context_menu(self,event):
         # the disabled state in a Text widget is pretty much
         # like the readonly state in Entry, hence no state check
         ContextMenu(event.x_root,event.y_root,event.widget)
+    def on_select_all(self,event):
+        self.tag_add(SEL,"1.0",END)
 
 class SelectDirectory(LabelFrame):
     def __init__(self,parent,textvariable=None,**kwargs):
         """A subclass of LabelFrame sporting a readonly Entry and a Button with a folder icon.
 It comes complete with a context menu and a directory selection screen"""
-        if sys.version_info.major>=3:
-            super().__init__(parent,text="Directory",**kwargs)
-        else:
-            LabelFrame.__init__(self,parent,text="Directory",**kwargs)
+        super().__init__(parent,text="Directory",**kwargs)
         self.textvariable=textvariable
         self.dir_entry=EntryContext(self,
                                     width=40,
@@ -297,53 +417,75 @@ It comes complete with a context menu and a directory selection screen"""
                                text="Browse...",
                                command=self.on_browse)
         self.dir_button.pack(side=LEFT)
+        self.clear_button=Button(self,
+                                 image=ICONS['clear16'],
+                                 compound=LEFT,
+                                 text="Clear",
+                                 command=self.on_clear)
+        self.clear_button.pack(side=LEFT)
     def on_browse(self):
-        # os.path.expanduser gets the current user's home directory on every platform
-        if sys.platform=="win32":
-            # get userdata directory on Windows
-            # it assumes that you choose to store userdata in the My Games directory
-            # while installing Wesnoth
-            userdata=os.path.join(os.path.expanduser("~"),
-                                  "Documents",
-                                  "My Games",
-                                  "Wesnoth"+WESNOTH_SERIES,
-                                  "data",
-                                  "add-ons")
-        elif sys.platform.startswith("linux"): # we're on Linux; usually this string is 'linux2'
-            userdata=os.path.join(os.path.expanduser("~"),
-                                  ".local",
-                                  "share",
-                                  "wesnoth",
-                                  WESNOTH_SERIES,
-                                  "data",
-                                  "add-ons")
-        elif sys.platform=="darwin": # we're on MacOS
-            # bear in mind that I don't have a Mac, so this point may be bugged
-            userdata=os.path.join(os.path.expanduser("~"),
-                                  "Library",
-                                  "Application Support",
-                                  "Wesnoth_"+WESNOTH_SERIES,
-                                  "data",
-                                  "add-ons")
-        else: # unknown system; if someone else wants to add other rules, be my guest
-            userdata="."
-        
-        if os.path.exists(userdata): # we may have gotten it wrong
-            directory=askdirectory(initialdir=userdata)
+        # if the user already selected a directory, try to use it
+        current_dir=self.textvariable.get()
+        if os.path.exists(current_dir):
+            directory=askdirectory(initialdir=current_dir)
+        # otherwise attempt to detect the user's userdata folder
         else:
-            directory=askdirectory(initialdir=".")
-        
+            directory=askdirectory(initialdir=get_addons_directory())
         if directory:
-            self.textvariable.set(directory)
+            # use os.path.normpath, so on Windows the usual backwards slashes are correctly shown
+            self.textvariable.set(os.path.normpath(directory))
+    def on_clear(self):
+        self.textvariable.set("")
+
+class SelectSaveFile(Frame):
+    def __init__(self, parent, textvariable, **kwargs):
+        """A subclass of Frame with a readonly Entry and a Button with a browse icon.
+It has a context menu and a save file selection dialog."""
+        super().__init__(parent,**kwargs)
+        self.textvariable=textvariable
+        self.file_entry=EntryContext(self,
+                                     width=40,
+                                     textvariable=self.textvariable,
+                                     state="readonly")
+        self.file_entry.pack(side=LEFT,
+                             fill=BOTH,
+                             expand=YES)
+        self.file_button=Button(self,
+                                image=ICONS['browse'],
+                                compound=LEFT,
+                                text="Browse...",
+                                command=self.on_browse)
+        self.file_button.pack(side=LEFT)
+        self.clear_button=Button(self,
+                                 image=ICONS['clear16'],
+                                 compound=LEFT,
+                                 text="Clear",
+                                 command=self.on_clear)
+        self.clear_button.pack(side=LEFT)
+    def on_browse(self):
+        # if the user already selected a file, try to use its directory
+        current_dir,current_file=os.path.split(self.textvariable.get())
+        if os.path.exists(current_dir):
+            directory=asksaveasfilename(filetypes=[("POT File", "*.pot"),("All Files", "*")],
+                                        initialdir=current_dir,
+                                        initialfile=current_file,
+                                        confirmoverwrite=False) # the GUI will ask later if the file should be overwritten, so disable it for now
+        # otherwise attempt to detect the user's userdata folder
+        else:
+            directory=asksaveasfilename(filetypes=[("POT File", "*.pot"),("All Files", "*")],
+                                        initialdir=get_addons_directory(),
+                                        confirmoverwrite=False)
+        if directory:
+            # use os.path.normpath, so on Windows the usual backwards slashes are correctly shown
+            self.textvariable.set(os.path.normpath(directory))
+    def on_clear(self):
+        self.textvariable.set("")
 
 class WmllintTab(Frame):
     def __init__(self,parent):
         # it means super(WmllintTab,self), that in turn means
         # Frame.__init__(self,parent)
-        if sys.version_info.major>=3:
-            super().__init__(parent)
-        else:
-            Frame.__init__(self,parent)
+        super().__init__(parent)
         self.mode_variable=IntVar()
         self.mode_frame=LabelFrame(self,
                                    text="wmllint mode")
@@ -358,38 +500,48 @@ class WmllintTab(Frame):
                                column=0,
                                sticky=W,
                                padx=10)
+        self.tooltip_normal=Tooltip(self.radio_normal,
+                                    "Perform file conversion")
         self.radio_dryrun=Radiobutton(self.mode_frame,
-                                      text="Dry run\nDo not perform changes",
+                                      text="Dry run",
                                       variable=self.mode_variable,
                                       value=1)
         self.radio_dryrun.grid(row=1,
                                column=0,
                                sticky=W,
                                padx=10)
+        self.tooltip_dryrun=Tooltip(self.radio_dryrun,
+                                    "Do not perform changes")
         self.radio_clean=Radiobutton(self.mode_frame,
-                                     text="Clean\nDelete *.bak files",
+                                     text="Clean",
                                      variable=self.mode_variable,
                                      value=2)
         self.radio_clean.grid(row=2,
                               column=0,
                               sticky=W,
                               padx=10)
+        self.tooltip_clean=Tooltip(self.radio_clean,
+                                   "Delete *.bak files")
         self.radio_diff=Radiobutton(self.mode_frame,
-                                    text="Diff\nShow differences in converted files",
+                                    text="Diff",
                                     variable=self.mode_variable,
                                     value=3)
         self.radio_diff.grid(row=3,
                              column=0,
                              sticky=W,
                              padx=10)
+        self.tooltip_diff=Tooltip(self.radio_diff,
+                                  "Show differences in converted files")
         self.radio_revert=Radiobutton(self.mode_frame,
-                                      text="Revert\nRevert conversions using *.bak files",
+                                      text="Revert",
                                       variable=self.mode_variable,
                                       value=4)
         self.radio_revert.grid(row=4,
                                column=0,
                                sticky=W,
                                padx=10)
+        self.tooltip_revert=Tooltip(self.radio_revert,
+                                    "Revert conversions using *.bak files")
         self.verbosity_frame=LabelFrame(self,
                                         text="Verbosity level")
         self.verbosity_frame.grid(row=0,
@@ -413,7 +565,7 @@ class WmllintTab(Frame):
                            sticky=W,
                            padx=10)
         self.radio_v2=Radiobutton(self.verbosity_frame,
-                                  text="Name files\nbefore processing",
+                                  text="Name files before processing",
                                   variable=self.verbosity_variable,
                                   value=2)
         self.radio_v2.grid(row=2,
@@ -473,16 +625,31 @@ class WmllintTab(Frame):
                                column=0,
                                sticky=W,
                                padx=10)
+        self.skip_variable=BooleanVar()
+        self.skip_core=Checkbutton(self.options_frame,
+                                   text="Skip core directory",
+                                   variable=self.skip_variable,
+                                   command=self.skip_core_dir_callback)
+        self.skip_core.grid(row=5,
+                               column=0,
+                               sticky=W,
+                               padx=10)
         self.columnconfigure(0,weight=1)
         self.columnconfigure(1,weight=1)
         self.columnconfigure(2,weight=1)
+    def skip_core_dir_callback(self):
+        # if Skip core directory is enabled
+        # avoid checking for unknown unit types
+        if self.skip_variable.get():
+            self.known_variable.set(True)
+            self.known_check.configure(state=DISABLED)
+        else:
+            self.known_variable.set(False)
+            self.known_check.configure(state=NORMAL)
 
 class WmlscopeTab(Frame):
     def __init__(self,parent):
-        if sys.version_info.major>=3:
-            super().__init__(parent)
-        else:
-            Frame.__init__(self,parent)
+        super().__init__(parent)
         self.options_frame=LabelFrame(self,
                                       text="wmlscope options")
         self.options_frame.grid(row=0,
@@ -689,10 +856,7 @@ class WmlscopeTab(Frame):
 
 class WmlindentTab(Frame):
     def __init__(self,parent):
-        if sys.version_info.major>=3:
-            super().__init__(parent)
-        else:
-            Frame.__init__(self,parent)
+        super().__init__(parent)
         self.mode_variable=IntVar()
         self.mode_frame=LabelFrame(self,
                                    text="wmlindent mode")
@@ -707,30 +871,56 @@ class WmlindentTab(Frame):
                                column=0,
                                sticky=W,
                                padx=10)
+        self.tooltip_normal=Tooltip(self.radio_normal,
+                                    "Perform file conversion")
         self.radio_dryrun=Radiobutton(self.mode_frame,
-                                      text="Dry run\nDo not perform changes",
+                                      text="Dry run",
                                       variable=self.mode_variable,
                                       value=1)
         self.radio_dryrun.grid(row=1,
                                column=0,
                                sticky=W,
                                padx=10)
+        self.tooltip_dryrun=Tooltip(self.radio_dryrun,
+                                    "Do not perform changes")
+        self.verbosity_frame=LabelFrame(self,
+                                        text="Verbosity level")
+        self.verbosity_frame.grid(row=0,
+                                  column=1,
+                                  sticky=N+E+S+W)
+        self.verbosity_variable=IntVar()
+        self.radio_v0=Radiobutton(self.verbosity_frame,
+                                  text="Terse",
+                                  variable=self.verbosity_variable,
+                                  value=0)
+        self.radio_v0.grid(row=0,
+                           column=0,
+                           sticky=W,
+                           padx=10)
+        self.radio_v1=Radiobutton(self.verbosity_frame,
+                                  text="Verbose",
+                                  variable=self.verbosity_variable,
+                                  value=1)
+        self.radio_v1.grid(row=1,
+                           column=0,
+                           sticky=W,
+                           padx=10)
+        self.radio_v2=Radiobutton(self.verbosity_frame,
+                                  text="Report unchanged files",
+                                  variable=self.verbosity_variable,
+                                  value=2)
+        self.radio_v2.grid(row=2,
+                           column=0,
+                           sticky=W,
+                           padx=10)
         self.options_frame=LabelFrame(self,
                                       text="wmlindent options")
         self.options_frame.grid(row=0,
-                                column=1,
+                                column=2,
                                 sticky=N+E+S+W)
-        self.verbose_variable=BooleanVar()
-        self.verbose_check=Checkbutton(self.options_frame,
-                                       text="Report also unchanged files",
-                                       variable=self.verbose_variable)
-        self.verbose_check.grid(row=0,
-                                column=0,
-                                sticky=W,
-                                padx=10)
         self.exclude_variable=BooleanVar()
         self.exclude_check=Checkbutton(self.options_frame,
-                                       text="Exclude files matching regexp:",
+                                       text="Exclude files\nmatching regexp:",
                                        variable=self.exclude_variable,
                                        command=self.exclude_callback)
         self.exclude_check.grid(row=1,
@@ -756,6 +946,7 @@ class WmlindentTab(Frame):
                               padx=10)
         self.columnconfigure(0,weight=1)
         self.columnconfigure(1,weight=1)
+        self.columnconfigure(2,weight=1)
         self.options_frame.columnconfigure(1,weight=1)
     def exclude_callback(self):
         if self.exclude_variable.get():
@@ -763,61 +954,120 @@ class WmlindentTab(Frame):
         else:
             self.regexp_entry.configure(state=DISABLED)
 
+class WmlxgettextTab(Frame):
+    def __init__(self,parent):
+        super().__init__(parent)
+        self.domain_and_output_frame=Frame(self)
+        self.domain_and_output_frame.grid(row=0,column=0,columnspan=2,sticky=N+E+S+W)
+        self.domain_label=Label(self.domain_and_output_frame,
+                                text="Textdomain:")
+        self.domain_label.grid(row=0,column=0,sticky=W)
+        self.domain_variable=StringVar()
+        self.domain_entry=Entry(self.domain_and_output_frame,
+                                textvariable=self.domain_variable)
+        self.domain_entry.grid(row=0,column=1,sticky=N+E+S+W)
+        self.output_label=Label(self.domain_and_output_frame,
+                                text="Output file:")
+        self.output_label.grid(row=1,column=0,sticky=W)
+        self.output_variable=StringVar()
+        self.output_frame=SelectSaveFile(self.domain_and_output_frame,self.output_variable)
+        self.output_frame.grid(row=1,column=1,sticky=N+E+S+W)
+        self.options_labelframe=LabelFrame(self,
+                                           text="Options")
+        self.options_labelframe.grid(row=2,column=0,sticky=N+E+S+W)
+        self.recursive_variable=BooleanVar()
+        self.recursive_variable.set(True)
+        self.recursive_check=Checkbutton(self.options_labelframe,
+                                         text="Scan subdirectories",
+                                         variable=self.recursive_variable)
+        self.recursive_check.grid(row=0,column=0,sticky=W)
+        self.warnall_variable=BooleanVar()
+        self.warnall_check=Checkbutton(self.options_labelframe,
+                                       text="Show optional warnings",
+                                       variable=self.warnall_variable)
+        self.warnall_check.grid(row=1,column=0,sticky=W)
+        self.fuzzy_variable=BooleanVar()
+        self.fuzzy_check=Checkbutton(self.options_labelframe,
+                                     text="Mark all strings as fuzzy",
+                                     variable=self.fuzzy_variable)
+        self.fuzzy_check.grid(row=2,column=0,sticky=W)
+        self.advanced_labelframe=LabelFrame(self,
+                                            text="Advanced options")
+        self.advanced_labelframe.grid(row=2,column=1,sticky=N+E+S+W)
+        self.package_version_variable=BooleanVar()
+        self.package_version_check=Checkbutton(self.advanced_labelframe,
+                                               text="Package version",
+                                               variable=self.package_version_variable)
+        self.package_version_check.grid(row=0,column=0,sticky=W)
+        self.initialdomain_variable=BooleanVar()
+        self.initialdomain_check=Checkbutton(self.advanced_labelframe,
+                                             text="Initial textdomain",
+                                             variable=self.initialdomain_variable,
+                                             command=self.initialdomain_callback)
+        self.initialdomain_check.grid(row=1,column=0,sticky=W)
+        self.initialdomain_name=StringVar()
+        self.initialdomain_entry=Entry(self.advanced_labelframe,
+                                       state=DISABLED,
+                                       width=0,
+                                       textvariable=self.initialdomain_name)
+        self.initialdomain_entry.grid(row=1,column=1,sticky=E+W)
+        self.domain_and_output_frame.columnconfigure(1,weight=1)
+        self.domain_and_output_frame.rowconfigure(0,uniform="group")
+        self.domain_and_output_frame.rowconfigure(1,uniform="group")
+        self.advanced_labelframe.columnconfigure(1,weight=1)
+        self.columnconfigure(0,weight=2)
+        self.columnconfigure(1,weight=1)
+    def initialdomain_callback(self, event=None):
+        if self.initialdomain_variable.get():
+            self.initialdomain_entry.configure(state=NORMAL)
+        else:
+            self.initialdomain_entry.configure(state=DISABLED)
+
 class MainFrame(Frame):
     def __init__(self,parent):
         self.parent=parent
-        if sys.version_info.major>=3:
-            self.queue=queue.Queue()
-            super().__init__(parent)
-        else:
-            self.queue=Queue.Queue()
-            Frame.__init__(self,parent)
+        self.queue=queue.Queue()
+        super().__init__(parent)
         self.grid(sticky=N+E+S+W)
         self.buttonbox=Frame(self)
         self.buttonbox.grid(row=0,
                             column=0,
                             sticky=E+W)
         self.run_button=Button(self.buttonbox,
-                               text="Run wmllint",
                                image=ICONS['run'],
-                               compound=LEFT,
-                               width=15, # to avoid changing size when callback is called
                                command=self.on_run_wmllint)
         self.run_button.pack(side=LEFT,
                              padx=5,
                              pady=5)
+        self.run_tooltip=Tooltip(self.run_button,"Run wmllint")
         self.save_button=Button(self.buttonbox,
-                                text="Save as text...",
                                 image=ICONS['save'],
-                                compound=LEFT,
                                 command=self.on_save)
         self.save_button.pack(side=LEFT,
                               padx=5,
                               pady=5)
+        self.save_tooltip=Tooltip(self.save_button,"Save as text...")
         self.clear_button=Button(self.buttonbox,
-                                 text="Clear output",
                                  image=ICONS['clear'],
-                                 compound=LEFT,
                                  command=self.on_clear)
         self.clear_button.pack(side=LEFT,
                                padx=5,
                                pady=5)
+        self.clear_tooltip=Tooltip(self.clear_button,"Clear output")
         self.about_button=Button(self.buttonbox,
-                                 text="About...",
                                  image=ICONS['about'],
-                                 compound=LEFT,
                                  command=self.on_about)
         self.about_button.pack(side=LEFT,
                                padx=5,
                                pady=5)
+        self.about_tooltip=Tooltip(self.about_button,"About...")
         self.exit_button=Button(self.buttonbox,
-                                text="Exit",
                                 image=ICONS['exit'],
-                                compound=LEFT,
-                                command=parent.destroy)
+                                command=self.on_quit)
         self.exit_button.pack(side=RIGHT,
                               padx=5,
                               pady=5)
+        self.exit_tooltip=Tooltip(self.exit_button,"Exit")
         self.dir_variable=StringVar()
         self.dir_frame=SelectDirectory(self,
                                        textvariable=self.dir_variable)
@@ -843,15 +1093,25 @@ class MainFrame(Frame):
         self.notebook.add(self.wmlindent_tab,
                           text="wmlindent",
                           sticky=N+E+S+W)
+        self.wmlxgettext_tab=WmlxgettextTab(None)
+        self.notebook.add(self.wmlxgettext_tab,
+                          text="wmlxgettext",
+                          sticky=N+E+S+W)
         self.output_frame=LabelFrame(self,
                                      text="Output")
         self.output_frame.grid(row=3,
                                column=0,
                                sticky=N+E+S+W)
+        # in former versions of this script, I disabled the text widget at its creation
+        # it turned out that doing so on Aqua (Mac OS) causes the widget to ignore
+        # any additional binding set after its disabling
+        # the subclass EnhancedText first calls the constructor of the original Text widget
+        # and only later it creates its own bindings
+        # so first create the widget, and disable it later
         self.text=EnhancedText(self.output_frame,
                                wrap=WORD,
-                               state=DISABLED,
                                takefocus=True)
+        self.text.configure(state=DISABLED)
         self.text.grid(row=0,
                        column=0,
                        sticky=N+E+S+W)
@@ -876,22 +1136,36 @@ class MainFrame(Frame):
         self.columnconfigure(0,weight=1)
         self.rowconfigure(3,weight=1)
         self.notebook.bind("<<NotebookTabChanged>>",self.tab_callback)
-        # this allows using the mouse wheel even on the disabled Text widget
-        # without the need to clic on said widget
-        self.tk_focusFollowsMouse()
+
+        parent.protocol("WM_DELETE_WINDOW",
+                        self.on_quit)
 
     def tab_callback(self,event):
         # we check the ID of the active tab and ask its position
         # the order of the tabs is pretty obvious
         active_tab=self.notebook.index(self.notebook.select())
         if active_tab==0:
-            self.run_button.configure(text="Run wmllint",command=self.on_run_wmllint)
+            self.run_tooltip.set_text("Run wmllint")
+            self.run_button.configure(command=self.on_run_wmllint)
         elif active_tab==1:
-            self.run_button.configure(text="Run wmlscope",command=self.on_run_wmlscope)
+            self.run_tooltip.set_text("Run wmlscope")
+            self.run_button.configure(command=self.on_run_wmlscope)
         elif active_tab==2:
-            self.run_button.configure(text="Run wmlindent",command=self.on_run_wmlindent)
+            self.run_tooltip.set_text("Run wmlindent")
+            self.run_button.configure(command=self.on_run_wmlindent)
+        elif active_tab==3:
+            self.run_tooltip.set_text("Run wmlxgettext")
+            self.run_button.configure(command=self.on_run_wmlxgettext)
 
     def on_run_wmllint(self):
+        # first of all, check if we have something to run wmllint on it
+        # if not, stop here
+        umc_dir=self.dir_variable.get()
+        if not umc_dir and self.wmllint_tab.skip_variable.get():
+            showerror("Error","""wmllint cannot run because there is no directory selected.
+
+Please select a directory or disable the "Skip core directory" option""")
+            return
         # build the command line
         wmllint_command_string=[]
         # get the path of the Python interpreter
@@ -922,10 +1196,17 @@ class MainFrame(Frame):
             wmllint_command_string.append("--nospellcheck")
         if self.wmllint_tab.freeze_variable.get():
             wmllint_command_string.append("--stringfreeze")
-        wmllint_command_string.append(WESNOTH_CORE_DIR)
-        umc_dir=self.dir_variable.get()
+        if not self.wmllint_tab.skip_variable.get():
+            wmllint_command_string.append(WESNOTH_CORE_DIR)
         if os.path.exists(umc_dir): # add-on exists
-            wmllint_command_string.append(umc_dir)
+            # the realpaths are here just in case that the user
+            # attempts to fool the script by feeding it a symlink
+            if os.path.realpath(WESNOTH_CORE_DIR) in os.path.realpath(umc_dir):
+                showwarning("Warning","""You selected the core directory or one of its subdirectories in the add-on selection box.
+
+wmllint will be run only on the Wesnoth core directory""")
+            else:
+                wmllint_command_string.append(umc_dir)
         elif not umc_dir: # path does not exists because the box was left empty
             showwarning("Warning","""You didn't select a directory.
 
@@ -934,7 +1215,7 @@ wmllint will be run only on the Wesnoth core directory""")
             showerror("Error","""The selected directory does not exists""")
             return # stop here
         # start thread and wmllint subprocess
-        wmllint_thread=threading.Thread(target=run_tool,args=("wmllint",self.queue,wmllint_command_string))
+        wmllint_thread=ToolThread("wmllint",self.queue,wmllint_command_string)
         wmllint_thread.start()
         # build popup
         dialog=Popup(self.parent,"wmllint",wmllint_thread)
@@ -961,25 +1242,37 @@ wmllint will be run only on the Wesnoth core directory""")
         if self.wmlscope_tab.progress_variable.get():
             wmlscope_command_string.append("--progress")
         if self.wmlscope_tab.exclude_variable.get():
-            wmlscope_command_string.append('--exclude="{0}"'.format(self.wmlscope_tab.exclude_regexp.get()))
+            wmlscope_command_string.append("--exclude")
+            wmlscope_command_string.append(self.wmlscope_tab.exclude_regexp.get())
         if self.wmlscope_tab.from_variable.get():
-            wmlscope_command_string.append('--from="{0}"'.format(self.wmlscope_tab.from_regexp.get()))
+            wmlscope_command_string.append("--from")
+            wmlscope_command_string.append(self.wmlscope_tab.from_regexp.get())
         if self.wmlscope_tab.refcount_variable.get():
             try:
-                wmlscope_command_string.append("--refcount=" + str(self.wmlscope_tab.refcount_number.get()))
+                wmlscope_command_string.append("--refcount")
+                wmlscope_command_string.append(str(self.wmlscope_tab.refcount_number.get()))
             except ValueError as error:
                 # normally it should be impossible to raise this exception
                 # due to the fact that the Spinbox is read-only
                 showerror("Error","""You typed an invalid value. Value must be an integer in the range 0-999""")
                 return
         if self.wmlscope_tab.typelist_variable.get():
-            wmlscope_command_string.append('--typelist="{0}"'.format(self.wmlscope_tab.typelist_string.get()))
+            wmlscope_command_string.append("--typelist")
+            wmlscope_command_string.append(self.wmlscope_tab.typelist_string.get())
         if self.wmlscope_tab.force_variable.get():
-            wmlscope_command_string.append('--force-used="{0}"'.format(self.wmlscope_tab.force_regexp.get()))
+            wmlscope_command_string.append("--force-used")
+            wmlscope_command_string.append(self.wmlscope_tab.force_regexp.get())
         wmlscope_command_string.append(WESNOTH_CORE_DIR)
         umc_dir=self.dir_variable.get()
         if os.path.exists(umc_dir): # add-on exists
-            wmlscope_command_string.append(umc_dir)
+            # the realpaths are here just in case that the user
+            # attempts to fool the script by feeding it a symlink
+            if os.path.realpath(WESNOTH_CORE_DIR) in os.path.realpath(umc_dir):
+                showwarning("Warning","""You selected the core directory or one of its subdirectories in the add-on selection box.
+
+wmlscope will be run only on the Wesnoth core directory""")
+            else:
+                wmlscope_command_string.append(umc_dir)
         elif not umc_dir: # path does not exists because the box was left empty
             showwarning("Warning","""You didn't select a directory.
 
@@ -988,7 +1281,7 @@ wmlscope will be run only on the Wesnoth core directory""")
             showerror("Error","""The selected directory does not exists""")
             return # stop here
         # start thread and wmlscope subprocess
-        wmlscope_thread=threading.Thread(target=run_tool,args=("wmlscope",self.queue,wmlscope_command_string))
+        wmlscope_thread=ToolThread("wmlscope",self.queue,wmlscope_command_string)
         wmlscope_thread.start()
         # build popup
         dialog=Popup(self.parent,"wmlscope",wmlscope_thread)
@@ -1003,10 +1296,12 @@ wmlscope will be run only on the Wesnoth core directory""")
             pass
         elif mode==1:
             wmlindent_command_string.append("--dryrun")
-        if self.wmlindent_tab.verbose_variable.get():
-            wmlindent_command_string.append("-v -v")
+        verbosity=self.wmlindent_tab.verbosity_variable.get()
+        for n in range(verbosity):
+            wmlindent_command_string.append("-v")
         if self.wmlindent_tab.exclude_variable.get():
-            wmlindent_command_string.append('--exclude="{0}"'.format(self.wmlindent_tab.regexp_variable.get()))
+            wmlindent_command_string.append("--exclude")
+            wmlindent_command_string.append(self.wmlindent_tab.regexp_variable.get())
         if self.wmlindent_tab.quiet_variable.get():
             wmlindent_command_string.append("--quiet")
         umc_dir=self.dir_variable.get()
@@ -1021,10 +1316,63 @@ wmlindent will be run on the Wesnoth core directory""")
             showerror("Error","""The selected directory does not exists""")
             return # stop here
         # start thread and wmllint subprocess
-        wmlindent_thread=threading.Thread(target=run_tool,args=("wmlindent",self.queue,wmlindent_command_string))
+        wmlindent_thread=ToolThread("wmlindent",self.queue,wmlindent_command_string)
         wmlindent_thread.start()
         # build popup
         dialog=Popup(self.parent,"wmlindent",wmlindent_thread)
+
+    def on_run_wmlxgettext(self):
+        # build the command line and add the path of the Python interpreter
+        wmlxgettext_command_string=[sys.executable]
+        wmlxgettext_command_string.append(os.path.join(APP_DIR,"wmlxgettext"))
+        textdomain=self.wmlxgettext_tab.domain_variable.get()
+        if textdomain:
+            wmlxgettext_command_string.extend(["--domain",textdomain])
+        else:
+            showerror("Error","""No textdomain specified""")
+            return
+        wmlxgettext_command_string.append("--directory")
+        umc_dir=self.dir_variable.get()
+        if os.path.exists(umc_dir): # add-on exists
+            wmlxgettext_command_string.append(umc_dir)
+        elif not umc_dir: # path does not exists because the box was left empty
+            showwarning("Warning","""You didn't select a directory.
+
+wmlxgettext won't be run""")
+            return
+        else: # path doesn't exist and isn't empty
+            showerror("Error","""The selected directory does not exists""")
+            return
+        if self.wmlxgettext_tab.recursive_variable.get():
+            wmlxgettext_command_string.append("--recursive")
+        output_file=self.wmlxgettext_tab.output_variable.get()
+        if os.path.exists(output_file):
+            answer=askyesno(title="Overwrite confirmation",
+                            message="""File {} already exists.
+Do you want to overwrite it?""".format(output_file))
+            if not answer:
+                return
+        elif not output_file:
+            showwarning("Warning","""You didn't select an output file.
+
+wmlxgettext won't be run""")
+            return
+        wmlxgettext_command_string.extend(["-o",self.wmlxgettext_tab.output_variable.get()])
+        if self.wmlxgettext_tab.warnall_variable.get():
+            wmlxgettext_command_string.append("--warnall")
+        if self.wmlxgettext_tab.fuzzy_variable.get():
+            wmlxgettext_command_string.append("--fuzzy")
+        if self.wmlxgettext_tab.package_version_variable.get():
+            wmlxgettext_command_string.append("--package-version")
+        wmlxgettext_command_string.append("--no-text-colors")
+        initialdomain=self.wmlxgettext_tab.initialdomain_variable.get()
+        if initialdomain:
+            wmlxgettext_command_string.extend(["--initialdomain",initialdomain])
+        # start thread and wmlxgettext subprocess
+        wmlxgettext_thread=ToolThread("wmlxgettext",self.queue,wmlxgettext_command_string)
+        wmlxgettext_thread.start()
+        # build popup
+        dialog=Popup(self.parent,"wmlxgettext",wmlxgettext_thread)
 
     def update_text(self):
         """Checks periodically if the queue is empty.
@@ -1032,28 +1380,27 @@ If it contains a string, pushes it into the Text widget.
 If it contains an error in form of a tuple, displays a message and pushes the remaining output in the Text widget"""
         if not self.queue.empty():
             queue_item=self.queue.get_nowait()
-            # I tried posting directly the error in the queue, but for some reason
-            # isinstance(queue_item,subprocess.CalledProcessError) is ignored
+            # if there's a tuple in the queue, it's because a tool exited with
+            # non-zero status
             if isinstance(queue_item,tuple):
                 showerror("Error","""There was an error while executing {0}.
 
 Error code: {1}""".format(queue_item[0],queue_item[1]))
-                self.text.configure(state=NORMAL)
-                self.text.insert(END,queue_item[2])
-                self.text.configure(state=DISABLED)
+            # otherwise it's just the output
             elif isinstance(queue_item,str):
                 self.text.configure(state=NORMAL)
                 self.text.insert(END,queue_item)
                 self.text.configure(state=DISABLED)
         self.after(100,self.update_text)
-        
+
     def on_save(self):
         fn=asksaveasfilename(defaultextension=".txt",filetypes=[("Text file","*.txt")],initialdir=".")
         if fn:
             try:
-                out=codecs.open(fn,"w","utf-8")
-                out.write(self.text.get(1.0,END))
-                out.close()
+                with codecs.open(fn,"w","utf-8") as out:
+                    out.write(self.text.get(1.0,END)[:-1]) # exclude the double endline at the end
+                # the output is saved, if we close we don't lose anything
+                self.text.edit_modified(False)
             except IOError as error: # in case that we attempt to write without permissions
                 showerror("Error","""Error while writing to:
 {0}
@@ -1066,13 +1413,31 @@ Error code: {1}
         self.text.configure(state=NORMAL)
         self.text.delete(1.0,END)
         self.text.configure(state=DISABLED)
+        # the edit_modified flag is set to True every time that the content
+        # of the text widget is altered
+        # since there's nothing useful inside of it, set it to False
+        self.text.edit_modified(False)
 
     def on_about(self):
-        showinfo("About Maintenance tools GUI","""(C) Elvish_Hunter, 2014
+        showinfo("About Maintenance tools GUI","""© Elvish_Hunter, 2014-2016
 
 Part of The Battle for Wesnoth project and released under the GNU GPL v2 license
 
 Icons are taken from the Tango Desktop Project (http://tango.freedesktop.org), and are released in the Public Domain""")
+
+    def on_quit(self):
+        # check if the text widget contains something
+        # and ask for a confirmation if so
+        if self.text.edit_modified():
+            answer = askyesno("Exit confirmation",
+                              "Do you really want to quit?",
+                              icon = WARNING)
+            if answer:
+                ICONS.clear()
+                self.parent.destroy()
+        else:
+            ICONS.clear()
+            self.parent.destroy()
 
 root=Tk()
 
@@ -1220,6 +1585,25 @@ BAEKAH8ALAAAAAAQABAAAAfOgH+Cg4SFf0QoiYkrhoMmcGxqaGhcMI1/I2pVUUxLSycaGBcXFox/
 IWdPS0dCP0pjam5yZhOCH2VKRD06OTg4OTo9PQmCHGG6OTY1NDM0NTc3A4IWXj0ZDtjZ2QgQIhRT
 OQtvdHR1c+foawQPSjcNd1lWV1n0WVpfbQcGQTUSeF0AA3aRgiSOggA6aFTIA6Zhwy1NkkCxwwAA
 jRcg0mCh4sQIjx0ggZCJMEBGCRdimgDxwbLlkCIdBJBw0IKFips4cXqIkaKAz59Af274EwgAOw=='''),
+           "clear16":PhotoImage(data=b'''
+R0lGODlhEAAQAOeIAKsbDbg4HX9QCaxDFKxDJYRUCoJUEKhJGYpYDIlZDIZaGLtKKIdbGothIoxi
+IqZpCqlrCqttC7FsHbJyDLJ2C8htM7x6D5uHAKGIAcF9EJyLAKCQCKGRC6KRDaGSEKOSD6SSEKOT
+EaOTEqOTE6SUEaWUFKWWF6aWF6qOY6eXG6qZLqydIa2eKK2fKrChJLOjJ7CjNrynL72tMbqodrum
+h7mtULmuUbuwVsGyNryyW72yWsS0NMa1M8W1OMW2NdexYs29QcS7dcy+R9rCA9vDBM7ASNzEB9zF
+ENHCT9zGENzGFcnBgNXHVc7Brd/KJtjIT+PLEdDFltDDsOXNFNDJlufQGNzNWNPIuNLMm93PXuTS
+SeTTTOHTW+XUTu7XI+LUZ+bWVufXW9jUsOfYX/PbKu3aRtrVs+fZbdrWtOjabNvXtvbYYfbeL+zc
+aOrccuvdd+ved/vkN/PjZfzlPPvlRP3mPOPgzOTh0OTi0v3pUubk1v3qX/3qY/3rYf3rbPjqiPvq
+hP3sa+jn3P3sbfvti/3uff3vhP3vivDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw
+8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw
+8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw
+8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw
+8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw
+8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw
+8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8CH5BAEKAP8ALAAAAAAQABAA
+AAjBAK84YNDkn8GDCA0qeBBBgJSEEA1MyAChwb8gEA/SQGAhQwIVGjIeRFGAAgYZL9SINDjjAhA4
+Eg60WCIIIpYNT9pUAPDDjRAQOvQgpCIixoIAa/j4KfRHCIcbZhASGAAokKFBeejIeVPExYiDUXAc
+2tMnTx0yVZJo+VIC4QlCc+Kw8TKFyBAwPmwgZJGlTBUoRoYM2WKlQ0IxK9IcEawkDBMSaCDC6DHG
+SZczO0zYEZkCCRceH2qs/IfHQ4gcdxIGBAA7'''),
            "cut":PhotoImage(data=b'''
 R0lGODlhEAAQAMZ5AKYBAaYCAqcDA6YFBacFBagFBKYGBqgHB6gKCqkLC6sREbYPDqsUFK0ZGa4a
 Gq8bG6wcHK4dHcAZF60fH8AaGccaGckaGrAiIrAjI7AkJMwdHM0dHbAlJcofH8wgIM4gINAgINEg
@@ -1259,7 +1643,47 @@ R0lGODlhEAAQAKUZAAAAAIeJhIiKhYqMh4uNiIGXr4KYsLS1s7W2s7W2tKi+1qm/16rA2KvB2azC
 8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8CH5BAEKAD8ALAAAAAAQABAAAAaWwN9B
 QCwaiYjfL0AqlUik0UgkCoVAA6WApFgsGIyGWPwhaEuLgrrgWDvKWhJjXXjY7fDfdr5+QP4WeQIj
 DXQQahEXgiMODn4RERKSGIuOEJCSExMZgiJtdGoUGh5meiKPkgAUABUbpFohqBOrHB0dr3ogDwa8
-BqseHx64ArqXErMAHiDBpQEfz9AAH9LPWT8IR9kCCT9BADs=''')
+BqseHx64ArqXErMAHiDBpQEfz9AAH9LPWT8IR9kCCT9BADs='''),
+           "window_icon":PhotoImage(data=b'''
+R0lGODlhEAAQAMZqAAogQA0lRA4nQBMmQBAoQRUoQRYoQRYpQhcpQxcqQhgqQRgrRBYtQhctQh8w
+SSEwRSMxQiIyRSAyTTE9RTlCSjtDSjRFYDVFYDdFXUBFSjVGYzdGZDpJYkRKWFZKQ1dKQ1ROSlRO
+S1FQSVZQQFNSTlZST1tSQWpTRVdYVUxZcWxURmVZRVNcbWdbSndgQlhkfXVjVYVjOY5jNIxjPY9l
+NGdrcIZnPY9lPoBpSI5oO4RuPJBrP3pwWIZxQYpvT4RxT5RxRaJ2KJ55SYt9apx8UYSCgaSAUpmC
+Y62BNaCCVpmEbaGEWYmJiKOResqQL56XfaKWgc2XOKSfm6yghdidIqyoj92lK6yurq6vsN6xW7m5
+turIeO7MeevMhu3Nfe7SjevWn+zZq+3aou7aofjdj/bfmfLgo/zim/fkmfzurP//////////////
+/////////////////////////////////////////////////////////////////////////yH5
+BAEKAH8ALAAAAAAQABAAAAeOgH+Cg4SFgx+GhB6EIVqDQzCDWiCEVypHNSkcDggZPidYhUYWL0xV
+TygGDDKGSxtTaWJjZz8EO4ZCGlBmYWBlPAI0hkAXRWhfXWQkDTmGNh0sXF5bWRATMYklGEhRTkEK
+Iol/LRImVFYjAyviTRUBOj0AFEqJUn9JEQcFD0R/9uI4EixwIa7QjRkFExIKBAA7='''),
+           "process-stop":PhotoImage(data=b'''
+R0lGODlhIAAgAOf/AIgAAZAID7gAALkAAL8AAMEAAMIAALsCAZwKD8MAAMQAAMMABsYBAMwAArwF
+AsYCCMcEAI4UD6AREsgHAL4LBKIUFKEUGZEZGJoXFsoLAZsYHLURF8kMFJUdIJ0bHrgVGaYaHcIT
+EJ8dGp4dH5AiJM0TDqAfILoZGpMkIM0UFqkeJIwnKcQYGc4WHr4eHcccG9EaGacmJZIsLckfHdMe
+G9UgHMsjJdcjJMcqKtglK9knJsotLNspJ80wLdUuLN4tKc0xNNYwMs8yNdgxM9A0NtE1N9kzNNI2
+N9o0NdQ3ONU5OdY6OuY2Nd04Pdc7O9g8POA6Oeg4N+k5N9o9PZlPT9s/Pto/Q+s7PtxAP9xARN1B
+QJhUUd1BRd9CQN5CRqBVVdlGRelDQOFFSNtHRtxIR+tGR+VIRd5KSPVFRuZJS+5ISa1aXKhcW+FN
+S+lLSOBNUP5GSv9HRapeXeJPUqtfXuRQU+tPUK1hYPtNUfBSU/dRUKtmaPlSUa5oau1ZWudbXvdZ
+WfZZXuteW+RgXrBwcOZiYPpdYe5hY7JyculkYuhkaLR0dPdiYvJlZu1nZbd2dvpkZO9pZ/BqaO9q
+bbV7d/5nZ/dpa7V9f/lrbPJtb+5wb7iAgvZxc/5vcLWDg/Fzcvlyb/Z3du95evl5ePN8ffZ/gPOD
+gPqCg/OEh/WFgvyEhfaGg/iIi/KKiqCin/+Iiaahn/qKjfWMjPCOjPaNjaKkofiPj/GRlP+OjPmQ
+kKWnpKaopfaUkamrqPmWk6qsqfyZlrKtq/uZnK6wrfednbCyrrK0sbO1ssqzsO6qqLe5trm7uLy+
+u8i7u72/vO+ytMu+v8DCvsHDwO23t/O2uM/Cw/C6uve6vMbIxfK9vMfKxvW/v8vNyvLDwM3PzPLF
+yM/RzvbHxNLU0dPV0vnMz/XQ0PfR0ufa2urd3ebh3/vc2+3g4ePl4eTm4/Dj5Ovl5OXn5Obo5e3n
+5ufq5u/p6Ors6Ovu6u3v7PPu7PXv7u/x7vDy7/Hz8PL08fP18tbW1iH5BAEKAP8ALAAAAAAgACAA
+AAj+AP8JHDjQE4CDCBMeZEOwoUOBmzC04kWRYi5btmixWhXjzsOPlzSYSlSlZJUnKFE6mUNKxZ6P
+DSl5MKXIik0rJlM+WSkKRB+YAmWiSmSTC5ebJXWu/ASCEMxHI4YaBUMVzFGcJ1U6eaNJxKKHi6IW
+4lK17NWsKpe8mSTiUUNEJlAVskIWTBo8Z6raLBkGzZMlSo68cWTh0kBCcQcVtcsomR4yVPeWwTQL
+DeAjR84kwuBJIABaf0rSNWPoHLtnerxcnZyO3S00gY8QOeMIgOdcKKvYhJOMXbx4qLVYUcPp3e9z
+cZocKUIEiCTb/wDgfiJai55p87JTA2Qn1Lvs6CD+aVlOpHkk6NJTmuQCyFr2etZGycu+DpMYzMyB
+ADl/Wyf1Klgwso099xRYoDugnIFfc/o1gl4uTjjh3xNYYLLNPfpkKM8oCpK3ww444CAIerYsEeGE
+fqiyDz8smtPJETZwsMACCSRQgANXkIiEiRGe6Ecu+LDYTz/8bKMHBDXWeOMAUqBHCxJQLiGlE4L4
+kg8//uCjDpH7bBMIjTYOIGYU6MlihBFQQimIMEH6k88plYTjDz/7dNPIAgWIOYAATKDHShBnnnkI
+MW3mU8oNE2BCzpz6fMMJBWIKwCd6qbQRxKVBnJLNiviccoMCCSwQijn97LPOKyHsKcAAfQrERgz0
+oliKKSnX0BNLDqDWuEAp5rhjywuqDqBDC9D9s0YMmUABQwkTTJAJLj7kmuQCsgADrKQD8DBDAMgQ
+xIYFedDQAATkpiCtkg5QkCq2PLwQQTMO0VGBHTRAwAAD59rogJ7ssnABNB/dIQG9+CaJLr8COMCD
+Cx1UA5QcErhBg8H6IuzADyegADBM3ETzhQRlwJDkkpEm/MMHJATDDDbjPDSONs4cQwUCaqhRRhlh
+hHHFFVJEwQQTG6wASzHLsPyRONgwY8wWCjUNgAxDF90yUOJwI40yxfyySy2udO2KLr0Mo4w03EwN
+VEPjiOPN2tys7Y04Zj8UEAA7''')
            }
     ROOT_W,ROOT_H=800,480
     # the following string may be confusing, so here there's an explanation
@@ -1273,9 +1697,13 @@ BqseHx64ArqXErMAHiDBpQEfz9AAH9LPWT8IR9kCCT9BADs=''')
     root.title("Maintenance tools GUI")
     root.rowconfigure(0,weight=1)
     root.columnconfigure(0,weight=1)
-    # use a better style on Linux instead of the Motif-like one
+    # set the window icon
+    # for now, it's just a grayscale Wesnoth icon
+    # also, this line shouldn't have effect on Mac OS
+    root.tk.call("wm", "iconphoto", root, "-default", ICONS["window_icon"])
+    # use a better style on X11 systems instead of the Motif-like one
     style=Style()
-    if sys.platform.startswith("linux") and "clam" in style.theme_names():
+    if root.tk.call('tk', 'windowingsystem') == "x11" and "clam" in style.theme_names():
         style.theme_use("clam")
     app=MainFrame(root)
     root.mainloop()

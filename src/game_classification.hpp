@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,18 +12,19 @@
    See the COPYING file for more details.
 */
 
-#ifndef GAME_CLASSIFICATION_HPP_INCLUDED
-#define GAME_CLASSIFICATION_HPP_INCLUDED
+#pragma once
 
-#include "config.hpp"
-#include "make_enum.hpp"
-#include "savegame_config.hpp"
+#include "utils/make_enum.hpp"
+
+#include <vector>
+
+class config;
 
 /// The default difficulty setting for campaigns.
 extern const std::string DEFAULT_DIFFICULTY;
 
 //meta information of the game
-class game_classification : public savegame::savegame_config
+class game_classification
 {
 public:
 	game_classification();
@@ -31,6 +32,8 @@ public:
 	game_classification(const game_classification& gc);
 
 	config to_config() const;
+	std::string get_tagname() const;
+	bool is_normal_mp_game() const;
 
 	std::string label;                               /**< Name of the game (e.g. name of save file). */
 	std::string version;                             /**< Version game was created with. */
@@ -47,18 +50,14 @@ public:
 	std::string era_define;                          /**< If there is a define the era uses to customize data */
 	std::vector<std::string> mod_defines;            /**< If there are defines the modifications use to customize data */
 
-	std::string campaign;                            /**< the campaign being played */
+	std::string campaign;                            /**< The id of the campaign being played */
+	std::string campaign_name;                       /**< The name of the campaign being played. */
 
 	std::string abbrev;                              /**< the campaign abbreviation */
-//	std::string scenario;                            /**< the scenario being played */
-//	std::string next_scenario;                       /**< the scenario coming next (for campaigns) */
-	std::string completion;                          /**< running. victory, or defeat */
 	bool end_credits;                                /**< whether to show the standard credits at the end */
 	std::string end_text;                            /**< end-of-campaign text */
 	unsigned int end_text_duration;                  /**< for how long the end-of-campaign text is shown */
 	std::string difficulty; /**< The difficulty level the game is being played on. */
 	std::string random_mode;
+	bool oos_debug;
 };
-MAKE_ENUM_STREAM_OPS2(game_classification, CAMPAIGN_TYPE)
-
-#endif

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 """
 wmlflip -- coordinate transformation for .cfg macro calls.
 
@@ -238,7 +238,7 @@ if __name__ == '__main__':
     mapfile = None
     translate = False
     (options, arguments) = getopt.getopt(sys.argv[1:], "m:txyv")
- 
+
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             sys.stderr.write(__doc__)

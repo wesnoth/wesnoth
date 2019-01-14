@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-                 2005 - 2014 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+                 2005 - 2015 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -13,10 +13,8 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "pathfind/pathfind.hpp"
 #include "pathfind/teleport.hpp"
 
@@ -124,17 +122,17 @@ class comp {
 
 public:
 	comp(const std::vector<node>& n) : nodes_(n) { }
-	bool operator()(int a, int b) {
+	bool operator()(int a, int b) const {
 		return nodes_[b] < nodes_[a];
 	}
 };
 
 class indexer {
-	size_t w_;
+	std::size_t w_;
 
 public:
-	indexer(size_t w) : w_(w) { }
-	size_t operator()(const map_location& loc) {
+	indexer(std::size_t w) : w_(w) { }
+	std::size_t operator()(const map_location& loc) const {
 		return loc.y * w_ + loc.x;
 	}
 };
@@ -142,22 +140,21 @@ public:
 
 
 plain_route a_star_search(const map_location& src, const map_location& dst,
-                          double stop_at, const cost_calculator *calc,
-                          const size_t width, const size_t height,
-                          const teleport_map *teleports) {
+                          double stop_at, const cost_calculator& calc,
+                          const std::size_t width, const std::size_t height,
+                          const teleport_map *teleports, bool border) {
 	//----------------- PRE_CONDITIONS ------------------
-	assert(src.valid(width, height));
-	assert(dst.valid(width, height));
-	assert(calc != NULL);
-	assert(stop_at <= calc->getNoPathValue());
+	assert(src.valid(width, height, border));
+	assert(dst.valid(width, height, border));
+	assert(stop_at <= calc.getNoPathValue());
 	//---------------------------------------------------
 
 	DBG_PF << "A* search: " << src << " -> " << dst << '\n';
 
-	if (calc->cost(dst, 0) >= stop_at) {
+	if (calc.cost(dst, 0) >= stop_at) {
 		LOG_PF << "aborted A* search because Start or Dest is invalid\n";
 		plain_route locRoute;
-		locRoute.move_cost = int(calc->getNoPathValue());
+		locRoute.move_cost = static_cast<int>(calc.getNoPathValue());
 		return locRoute;
 	}
 
@@ -199,17 +196,17 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 
 		int i = locs.size();
 
-		get_adjacent_tiles(n.curr, &locs[0]);
+		get_adjacent_tiles(n.curr, locs.data());
 
 		for (; i-- > 0;) {
-			if (!locs[i].valid(width, height)) continue;
+			if (!locs[i].valid(width, height, border)) continue;
 			if (locs[i] == n.curr) continue;
 			node& next = nodes[index(locs[i])];
 
 			double thresh = (next.in - search_counter <= 1u) ? next.g : stop_at + 1;
 			// cost() is always >= 1  (assumed and needed by the heuristic)
 			if (n.g + 1 >= thresh) continue;
-			double cost = n.g + calc->cost(locs[i], n.g);
+			double cost = n.g + calc.cost(locs[i], n.g);
 			if (cost >= thresh) continue;
 
 			bool in_list = next.in == search_counter + 1;
@@ -236,7 +233,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 		std::reverse(route.steps.begin(), route.steps.end());
 	} else {
 		LOG_PF << "aborted a* search  " << "\n";
-		route.move_cost = static_cast<int>(calc->getNoPathValue());
+		route.move_cost = static_cast<int>(calc.getNoPathValue());
 	}
 
 	return route;

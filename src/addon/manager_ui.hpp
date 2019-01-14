@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
-                 2008 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+                 2008 - 2015 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -13,21 +13,25 @@
    See the COPYING file for more details.
 */
 
-#ifndef ADDON_MANAGER_UI_HPP_INCLUDED
-#define ADDON_MANAGER_UI_HPP_INCLUDED
+#pragma once
 
 #include <string>
-
-class display;
+#include <vector>
 
 /**
  * Shows the add-ons server connection dialog, for access to the various management front-ends.
  *
- * @param disp Display object on which to render UI elements.
- *
  * @return @a true when one or more add-ons have been successfully installed or
  *         removed, thus requiring a local WML cache refresh. @a false otherwise.
  */
-bool manage_addons(display& disp);
+bool manage_addons();
 
-#endif
+/**
+ * Conducts an ad-hoc add-ons server connection to download an add-on with a particular id and all
+ * it's dependencies. Launches gui dialogs when issues arise.
+ *
+ * @param addon_ids The ids of the target add-on.
+ *
+ * @return @a true when we successfully installed the target (possibly the user chose to ignore failures)
+ */
+bool ad_hoc_addon_fetch_session(const std::vector<std::string>& addon_ids);

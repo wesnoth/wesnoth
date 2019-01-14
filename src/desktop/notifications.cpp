@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,37 +12,30 @@
    See the COPYING file for more details.
 */
 
-#include "notifications.hpp"
-#include "global.hpp"
+#include "desktop/notifications.hpp"
 
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
 
-#include "sdl/compat.hpp"
-
-#if SDL_VERSION_ATLEAST(2,0,0)
-#include "video.hpp"
-#else
-#include "SDL_active.h"
-#endif
+#include "video.hpp" //CVideo::get_singleton().window_state()
 
 #ifdef HAVE_LIBDBUS
-#include "dbus_notification.hpp"
+#include "desktop/dbus_features.hpp"
 #endif
 
-#ifdef HAVE_GROWL
-#include "growl_notification.hpp"
+#ifdef __APPLE__
+#include "desktop/apple_notification.hpp"
 #endif
 
 #ifdef _WIN32
-#include "windows_tray_notification.hpp"
+#include "desktop/windows_tray_notification.hpp"
 #endif
 
 namespace desktop {
 
 namespace notifications {
 
-#if !(defined(HAVE_LIBDBUS) || defined(HAVE_GROWL) || defined(_WIN32))
+#if !(defined(HAVE_LIBDBUS) || defined(__APPLE__) || defined(_WIN32))
 
 bool available() { return false; }
 
@@ -51,19 +44,23 @@ void send(const std::string& /*owner*/, const std::string& /*message*/, type /*t
 
 #else
 
-bool available() { return true; }
+bool available()
+{
+#ifdef __APPLE__
+	return apple_notifications::available();
+#else
+	return true;
+#endif
+}
 
 void send(const std::string& owner, const std::string& message, type t)
 {
-	if (!preferences::get("desktop_notifications", true)) { return; }
-
-	Uint8 app_state = SDL_GetAppState();
+	CVideo& video = CVideo::get_singleton();
 
 	// Do not show notifications when the window is visible...
-	if ((app_state & SDL_APPACTIVE) != 0)
-	{
+	if(video.window_has_flags(SDL_WINDOW_SHOWN)) {
 		// ... and it has a focus.
-		if ((app_state & (SDL_APPMOUSEFOCUS | SDL_APPINPUTFOCUS)) != 0) {
+		if(video.window_has_flags(SDL_WINDOW_MOUSE_FOCUS | SDL_WINDOW_INPUT_FOCUS)) {
 			return;
 		}
 	}
@@ -72,21 +69,8 @@ void send(const std::string& owner, const std::string& message, type t)
 	dbus::send_notification(owner, message, t == CHAT);
 #endif
 
-#ifdef HAVE_GROWL
-	std::string note_name = "";
-	switch (t) {
-		case CHAT:
-			note_name = _("Chat Message");
-			break;
-		case TURN_CHANGED:
-			note_name = _("Turn Changed");
-			break;
-		case OTHER:
-			note_name = _("Wesnoth");
-			break;
-	}
-
-	growl::send_notification(owner, message, note_name);
+#ifdef __APPLE__
+	apple_notifications::send_notification(owner, message, t);
 #endif
 
 #ifdef _WIN32
@@ -108,7 +92,7 @@ void send(const std::string& owner, const std::string& message, type t)
 	windows_tray_notification::show(notification_title, notification_message);
 #endif
 }
-#endif //end #else (defined(HAVE_LIBDBUS) || defined(HAVE_GROWL) || defined(_WIN32))
+#endif //end #else (defined(HAVE_LIBDBUS) || defined(_WIN32))
 
 } //end namespace notifications
 

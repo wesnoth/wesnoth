@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
-                 2008 - 2014 by Ignacio R. Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+                 2008 - 2015 by Iris Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef ADDON_VALIDATION_HPP_INCLUDED
-#define ADDON_VALIDATION_HPP_INCLUDED
+#pragma once
 
 #include <vector>
 #include <string>
@@ -50,7 +49,7 @@ enum ADDON_TYPE {
 	ADDON_MP_ERA,		/**< Multiplayer era. */
 	ADDON_MP_FACTION,	/**< Multiplayer faction. */
 	// NOTE: following two still require proper engine support
-	ADDON_MP_MOD,		/**< Modification of the game for MP. */
+	ADDON_MOD,		/**< Modification of the game. */
 	//ADDON_GUI,			// GUI add-ons/themes.
 	ADDON_MEDIA,		/**< Miscellaneous content/media (unit packs, terrain packs, music packs, etc.). */
 	ADDON_OTHER,		/**< an add-on that fits in no other category */
@@ -64,11 +63,36 @@ std::string get_addon_type_string(ADDON_TYPE type);
 bool addon_name_legal(const std::string& name);
 /** Checks whether an add-on file name is legal or not. */
 bool addon_filename_legal(const std::string& name);
-/** Probes an add-on archive for illegal names. */
-bool check_names_legal(const config& dir);
+
+/**
+ * Scans an add-on archive for illegal names.
+ *
+ * @param dir     The WML container for the root [dir] node where the search
+ *                should begin.
+ * @param badlist If provided and not null, any illegal names encountered will
+ *                be added to this list. This also makes the archive scan more
+ *                thorough instead of returning on the first illegal name
+ *                encountered.
+ *
+ * @returns True if no illegal names were found.
+ */
+bool check_names_legal(const config& dir, std::vector<std::string>* badlist = nullptr);
+/**
+ * Scans an add-on archive for case-conflicts.
+ *
+ * Case conflicts may cause trouble on case-insensitive filesystems.
+ *
+ * @param dir     The WML container for the root [dir] node where the search
+ *                should begin.
+ * @param badlist If provided and not null, any case conflicts encountered will
+ *                be added to this list. This also makes the archive scan more
+ *                thorough instead of returning on the first conflict
+ *                encountered.
+ *
+ * @returns True if no conflicts were found.
+ */
+bool check_case_insensitive_duplicates(const config& dir, std::vector<std::string>* badlist = nullptr);
 
 std::string encode_binary(const std::string& str);
 std::string unencode_binary(const std::string& str);
 bool needs_escaping(char c);
-
-#endif /* !ADDON_CHECKS_HPP_INCLUDED */

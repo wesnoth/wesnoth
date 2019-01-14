@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2010 - 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2010 - 2018 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,108 +12,138 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_TREE_VIEW_HPP_INCLUDED
-#define GUI_WIDGETS_TREE_VIEW_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/scrollbar_container.hpp"
-#include "gui/auxiliary/window_builder/tree_view.hpp"
+#include "gui/widgets/tree_view_node.hpp"
 
 namespace gui2
 {
 
-class ttree_view_node;
+namespace implementation {
+	struct builder_tree_view;
+	struct tree_node
+	{
+		explicit tree_node(const config& cfg);
 
-class ttree_view : public tscrollbar_container
+		std::string id;
+		bool unfolded;
+		builder_grid_ptr builder;
+	};
+}
+
+// ------------ WIDGET -----------{
+
+class tree_view_node;
+
+class tree_view : public scrollbar_container
 {
-	friend struct implementation::tbuilder_tree_view;
-	friend class ttree_view_node;
+	friend struct implementation::builder_tree_view;
+	friend class tree_view_node;
 
 public:
-	typedef implementation::tbuilder_tree_view::tnode tnode_definition;
+	typedef implementation::tree_node node_definition;
 
-	explicit ttree_view(const std::vector<tnode_definition>& node_definitions);
+	explicit tree_view(const implementation::builder_tree_view& builder);
 
-	using tscrollbar_container::finalize_setup;
+	~tree_view();
 
-	ttree_view_node& get_root_node()
+	using scrollbar_container::finalize_setup;
+
+	tree_view_node& get_root_node()
 	{
 		return *root_node_;
 	}
 
-	ttree_view_node&
+	tree_view_node&
 	add_node(const std::string& id,
-			 const std::map<std::string /* widget id */, string_map>& data);
+			 const std::map<std::string /* widget id */, string_map>& data,
+			 const int index = -1);
 
-	void remove_node(ttree_view_node* tree_view_node);
+	/**
+	 * Removes the given node as a child of its parent node.
+	 *
+	 * @param node      A pointer to the node to remove.
+	 *
+	 * @returns         A pair consisting of a smart pointer managing the removed
+	 *                  node, and its position before removal.
+	 */
+	std::pair<tree_view_node::ptr_t, int> remove_node(tree_view_node* node);
 
-	/** See @ref twidget::child_populate_dirty_list. */
+	void clear();
+
+	/** See @ref widget::child_populate_dirty_list. */
 	virtual void
-	child_populate_dirty_list(twindow& caller,
-							  const std::vector<twidget*>& call_stack) OVERRIDE;
+	child_populate_dirty_list(window& caller,
+							  const std::vector<widget*>& call_stack) override;
 
-	/** See @ref tcontainer_::set_self_active. */
-	virtual void set_self_active(const bool active) OVERRIDE;
+	/** See @ref container_base::set_self_active. */
+	virtual void set_self_active(const bool active) override;
 
 	bool empty() const;
 
-	/** See @ref twidget::layout_children. */
-	virtual void layout_children() OVERRIDE;
+	/** See @ref widget::layout_children. */
+	virtual void layout_children() override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_indention_step_size(const unsigned indention_step_size)
+	void set_indentation_step_size(const unsigned indentation_step_size)
 	{
-		indention_step_size_ = indention_step_size;
+		indentation_step_size_ = indentation_step_size;
 	}
 
-	ttree_view_node* selected_item()
-	{
-		return selected_item_;
-	}
-
-	const ttree_view_node* selected_item() const
+	tree_view_node* selected_item()
 	{
 		return selected_item_;
 	}
 
-	void set_selection_change_callback(boost::function<void()> callback)
+	const tree_view_node* selected_item() const
+	{
+		return selected_item_;
+	}
+
+	void set_selection_change_callback(std::function<void(widget&)> callback)
 	{
 		selection_change_callback_ = callback;
 	}
 
+	const std::vector<node_definition>& get_node_definitions() const
+	{
+		return node_definitions_;
+	}
+
 protected:
-/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
-#if 0
-	/** Inherited from tscrollbar_container. */
-	void handle_key_up_arrow(SDLMod modifier, bool& handled);
+	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
-	/** Inherited from tscrollbar_container. */
-	void handle_key_down_arrow(SDLMod modifier, bool& handled);
+	/** Inherited from scrollbar_container. */
+	void handle_key_up_arrow(SDL_Keymod modifier, bool& handled) override;
 
-	/** Inherited from tscrollbar_container. */
-	void handle_key_left_arrow(SDLMod modifier, bool& handled);
+	/** Inherited from scrollbar_container. */
+	void handle_key_down_arrow(SDL_Keymod modifier, bool& handled) override;
 
-	/** Inherited from tscrollbar_container. */
-	void handle_key_right_arrow(SDLMod modifier, bool& handled);
-#endif
+	/** Inherited from scrollbar_container. */
+	void handle_key_left_arrow(SDL_Keymod modifier, bool& handled) override;
+
+	/** Inherited from scrollbar_container. */
+	void handle_key_right_arrow(SDL_Keymod modifier, bool& handled) override;
 private:
 	/**
-	 * @todo evaluate which way the dependancy should go.
+	 * @todo evaluate which way the dependency should go.
 	 *
 	 * We no depend on the implementation, maybe the implementation should
 	 * depend on us instead.
 	 */
-	const std::vector<tnode_definition> node_definitions_;
+	const std::vector<node_definition> node_definitions_;
 
-	unsigned indention_step_size_;
+	unsigned indentation_step_size_;
 
 	bool need_layout_;
 
-	ttree_view_node* root_node_;
+	tree_view_node* root_node_;
 
-	ttree_view_node* selected_item_;
+	tree_view_node* selected_item_;
 
-	boost::function<void()> selection_change_callback_;
+	std::function<void(widget&)> selection_change_callback_;
 
 	/**
 	 * Resizes the content.
@@ -131,22 +161,86 @@ private:
 	 *                            * positive values increase height.
 	 */
 	void resize_content(const int width_modification,
-						const int height_modification);
+						const int height_modification,
+						const int width__modification_pos = -1,
+						const int height_modification_pos = -1);
 
 	/** Layouts the children if needed. */
 	void layout_children(const bool force);
 
-	/** Inherited from tcontainer_. */
+	/** Inherited from container_base. */
 	virtual void finalize_setup();
 
-	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+public:
+	/** Static type getter that does not rely on the widget being constructed. */
+	static const std::string& type();
+
+private:
+	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
+	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_left_button_down(const event::tevent event);
+	void signal_handler_left_button_down(const event::ui_event event);
+
+	template<tree_view_node* (tree_view_node::*func) ()>
+	tree_view_node* get_next_node();
+
+	template<tree_view_node* (tree_view_node::*func) ()>
+	bool handle_up_down_arrow();
 };
 
-} // namespace gui2
+// }---------- DEFINITION ---------{
 
-#endif
+struct tree_view_definition : public styled_widget_definition
+{
+
+	explicit tree_view_definition(const config& cfg);
+
+	struct resolution : public resolution_definition
+	{
+		explicit resolution(const config& cfg);
+
+		builder_grid_ptr grid;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct builder_tree_view : public builder_styled_widget
+{
+	explicit builder_tree_view(const config& cfg);
+
+	using builder_styled_widget::build;
+
+	widget* build() const;
+
+	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
+
+	unsigned indentation_step_size;
+
+	/**
+	 * The types of nodes in the tree view.
+	 *
+	 * Since we expect the amount of nodes to remain low it's stored in a
+	 * vector and not in a map.
+	 */
+	std::vector<tree_node> nodes;
+
+	/*
+	 * NOTE this class doesn't have a data section, so it can only be filled
+	 * with data by the engine. I think this poses no limit on the usage since
+	 * I don't foresee that somebody wants to pre-fill a tree view. If the need
+	 * arises the data part can be added.
+	 */
+};
+
+} // namespace implementation
+
+// }------------ END --------------
+
+} // namespace gui2

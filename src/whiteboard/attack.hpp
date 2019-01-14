@@ -1,6 +1,6 @@
 /*
- Copyright (C) 2010 - 2014 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project http://www.wesnoth.org
+ Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -16,8 +16,7 @@
  * @file
  */
 
-#ifndef ATTACK_HPP_
-#define ATTACK_HPP_
+#pragma once
 
 #include "move.hpp"
 
@@ -27,9 +26,9 @@ namespace wb
 class attack: public move
 {
 public:
-	attack(size_t team_index, bool hidden, unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
+	attack(std::size_t team_index, bool hidden, unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
-	attack(config const&, bool hidden); // For deserialization
+	attack(const config&, bool hidden); // For deserialization
 	virtual ~attack();
 
 	virtual std::ostream& print(std::ostream& s) const;
@@ -56,14 +55,14 @@ public:
 	/** Redrawing function, called each time the action situation might have changed. */
 	virtual void redraw();
 
-	map_location const& get_target_hex() const {return target_hex_; }
+	const map_location& get_target_hex() const {return target_hex_; }
 
 	virtual config to_config() const;
 
 protected:
 
-	boost::shared_ptr<attack> shared_from_this() {
-		return boost::static_pointer_cast<attack>(move::shared_from_this());
+	std::shared_ptr<attack> shared_from_this() {
+		return std::static_pointer_cast<attack>(move::shared_from_this());
 	}
 
 private:
@@ -89,5 +88,3 @@ std::ostream& operator<<(std::ostream &s, attack_ptr attack);
 std::ostream& operator<<(std::ostream &s, attack_const_ptr attack);
 
 } // end namespace wb
-
-#endif /* ATTACK_HPP_ */

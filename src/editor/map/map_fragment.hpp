@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,10 +12,9 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_MAP_FRAGMENT_HPP_INCLUDED
-#define EDITOR_MAP_FRAGMENT_HPP_INCLUDED
+#pragma once
 
-#include "editor_map.hpp"
+#include "editor/map/editor_map.hpp"
 
 namespace editor {
 
@@ -35,7 +34,7 @@ struct tile_info
 	}
 
 	map_location offset;
-	t_translation::t_terrain terrain;
+	t_translation::terrain_code terrain;
 };
 
 /**
@@ -138,5 +137,3 @@ class map_fragment
 };
 
 } //end namespace editor
-
-#endif

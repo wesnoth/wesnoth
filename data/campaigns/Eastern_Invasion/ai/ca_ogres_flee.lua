@@ -1,26 +1,21 @@
-local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
---local LS = wesnoth.require "lua/location_set.lua"
+local M = wesnoth.map
 
 local ca_ogres_flee = {}
 
-function ca_ogres_flee:evaluation(ai, cfg, self)
-    local units = wesnoth.get_units { side = wesnoth.current.side,
-        formula = '$this_unit.moves > 0'
-    }
+function ca_ogres_flee:evaluation()
+    local units = AH.get_units_with_moves { side = wesnoth.current.side }
 
     if (not units[1]) then return 0 end
     return 110000
 end
 
-function ca_ogres_flee:execution(ai, cfg, self)
-    local units = wesnoth.get_units { side = wesnoth.current.side,
-        formula = '$this_unit.moves > 0'
-    }
+function ca_ogres_flee:execution()
+    local units = AH.get_units_with_moves { side = wesnoth.current.side }
 
     local units_noMP = wesnoth.get_units { side = wesnoth.current.side,
-        formula = '$this_unit.moves = 0'
+        formula = 'movement_left = 0'
     }
 
     local width, height = wesnoth.get_map_size()
@@ -29,12 +24,9 @@ function ca_ogres_flee:execution(ai, cfg, self)
     local enemies = wesnoth.get_units {  { "filter_side", { {"enemy_of", {side = wesnoth.current.side} } } } }
     local enemy_attack_map = BC.get_attack_map(enemies)
 
-    local best_hex, best_unit, max_rating = {}, nil, -9e99
+    local max_rating, best_hex, best_unit = - math.huge
     for i,u in ipairs(units) do
         local reach = wesnoth.find_reach(u)
-
-        --local rating_map = LS.create()
-
         for j,r in ipairs(reach) do
             local unit_in_way = wesnoth.get_unit(r[1], r[2])
 
@@ -43,8 +35,8 @@ function ca_ogres_flee:execution(ai, cfg, self)
                 -- First rating is distance from a map edge
                 local dist_left = r[1] - 1
                 local dist_right = width - r[1]
-                local dist_top_left = H.distance_between(r[1], r[2], 4, 1)
-                local dist_top_right = H.distance_between(r[1], r[2], 40, 1)
+                local dist_top_left = M.distance_between(r[1], r[2], 4, 1)
+                local dist_top_right = M.distance_between(r[1], r[2], 40, 1)
                 local dist_bottom = height - r[2]
                 local dist = math.min(dist_left, dist_right, dist_top_left, dist_top_right, dist_bottom)
 
@@ -58,7 +50,7 @@ function ca_ogres_flee:execution(ai, cfg, self)
 
                 local enemy_rating = 0
                 for k,e in ipairs(enemies) do
-                    local dist = H.distance_between(r[1], r[2], e.x, e.y)
+                    local dist = M.distance_between(r[1], r[2], e.x, e.y)
                     enemy_rating = enemy_rating + math.sqrt(dist)
                 end
 
@@ -68,13 +60,11 @@ function ca_ogres_flee:execution(ai, cfg, self)
                 local own_unit_weight = 0.5
                 local own_unit_rating = 0
                 for k,u_noMP in ipairs(units_noMP) do
-                    local dist = H.distance_between(r[1], r[2], u_noMP.x, u_noMP.y)
+                    local dist = M.distance_between(r[1], r[2], u_noMP.x, u_noMP.y)
                     own_unit_rating = own_unit_rating + math.sqrt(dist)
                 end
 
                 rating = rating + own_unit_rating * own_unit_weight
-
-                --rating_map:insert(r[1], r[2], rating)
 
                 if (rating > max_rating) then
                     best_hex = { r[1], r[2] }
@@ -83,10 +73,7 @@ function ca_ogres_flee:execution(ai, cfg, self)
                 end
             end
         end
-
-        --AH.put_labels(rating_map)
     end
-    --print(best_unit.id, best_unit.x, best_unit.y, best_hex[1], best_hex[2], max_rating)
 
     if best_hex then
         AH.movefull_outofway_stopunit(ai, best_unit, best_hex[1], best_hex[2])

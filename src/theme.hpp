@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,15 +17,16 @@
  *  Definitions related to theme-support.
  */
 
-#ifndef THEME_HPP_INCLUDED
-#define THEME_HPP_INCLUDED
+#pragma once
 
+#include "color.hpp"
 #include "config.hpp"
 #include "generic_event.hpp"
 
-#include <SDL_video.h>
+#include <memory>
+#include <SDL_rect.h>
 
-typedef struct { size_t x1,y1,x2,y2; } _rect;
+struct _rect { std::size_t x1,y1,x2,y2; };
 
 struct theme_info
 {
@@ -44,7 +45,7 @@ class theme
 		object(const config& cfg);
 		virtual ~object() { }
 
-		SDL_Rect& location(const SDL_Rect& screen) const;
+		virtual SDL_Rect& location(const SDL_Rect& screen) const;
 		const SDL_Rect& get_location() const { return loc_; }
 		const std::string& get_id() const { return id_; }
 
@@ -75,35 +76,18 @@ class theme
 		static ANCHORING read_anchor(const std::string& str);
 	};
 
-	struct tborder
+	struct border_t
 	{
 
-		tborder();
-		tborder(const config& cfg);
+		border_t();
+		border_t(const config& cfg);
 
 		double size;
 
 		std::string background_image;
 		std::string tile_image;
 
-		std::string corner_image_top_left;
-		std::string corner_image_bottom_left;
-
-		std::string corner_image_top_right_odd;
-		std::string corner_image_top_right_even;
-
-		std::string corner_image_bottom_right_odd;
-		std::string corner_image_bottom_right_even;
-
-		std::string border_image_left;
-		std::string border_image_right;
-
-		std::string border_image_top_odd;
-		std::string border_image_top_even;
-
-		std::string border_image_bottom_odd;
-		std::string border_image_bottom_even;
-
+		bool show_border;
 	};
 
 public:
@@ -122,14 +106,14 @@ public:
 
 		bool empty() const { return text_.empty() && icon_.empty(); }
 
-		size_t font_size() const { return font_; }
-		Uint32 font_rgb() const { return font_rgb_; }
+		std::size_t font_size() const { return font_; }
+		color_t font_rgb() const { return font_rgb_; }
 		bool font_rgb_set() const { return font_rgb_set_; }
 	private:
 		std::string text_, icon_;
-		size_t font_;
+		std::size_t font_;
 		bool font_rgb_set_;
-		Uint32 font_rgb_;
+		color_t font_rgb_;
 	};
 
 	class status_item : public object
@@ -144,18 +128,18 @@ public:
 		const std::string& postfix() const { return postfix_; }
 
 		// If the item has a label associated with it, Show where the label is
-		const label* get_label() const { return label_.empty() ? NULL : &label_; }
+		const label* get_label() const { return label_.empty() ? nullptr : &label_; }
 
-		size_t font_size() const { return font_; }
-		Uint32 font_rgb() const { return font_rgb_; }
+		std::size_t font_size() const { return font_; }
+		color_t font_rgb() const { return font_rgb_; }
 		bool font_rgb_set() const { return font_rgb_set_; }
 
 	private:
 		std::string prefix_, postfix_;
 		label label_;
-		size_t font_;
+		std::size_t font_;
 		bool font_rgb_set_;
-		Uint32 font_rgb_;
+		color_t font_rgb_;
 	};
 
 	class panel : public object
@@ -183,7 +167,7 @@ public:
 
 		const std::string& title() const { return title_; }
 
-		const std::string tooltip(size_t index) const;
+		const std::string tooltip(std::size_t index) const;
 
 		const std::string& type() const { return type_; }
 
@@ -244,17 +228,21 @@ public:
 
 		const std::string& overlay() const { return overlay_; }
 
-		const std::vector<std::string>& items() const { return items_; }
+		const std::vector<config>& items() const { return items_; }
 
 		void set_title(const std::string& new_title) { title_ = new_title; }
 	private:
 		bool button_;
 		bool context_;
 		std::string title_, tooltip_, image_, overlay_;
-		std::vector<std::string> items_;
+		std::vector<config> items_;
 	};
 
 	explicit theme(const config& cfg, const SDL_Rect& screen);
+	theme(const theme&) = delete;
+	theme& operator=(const theme&) = delete;
+	theme& operator=(theme&&);
+
 	bool set_resolution(const SDL_Rect& screen);
 	void modify(const config &cfg);
 
@@ -265,7 +253,7 @@ public:
 	const std::vector<action>& actions() const { return actions_; }
 
 	const menu* context_menu() const
-		{ return context_.is_context() ? &context_ : NULL; }
+		{ return context_.is_context() ? &context_ : nullptr; }
 
 	//refresh_title2 changes the title of a menu entry, identified by id.
 	//If no menu entry is found, an empty menu object is returned.
@@ -289,14 +277,14 @@ public:
     static void set_known_themes(const config* cfg);
     static std::vector<theme_info> get_known_themes();
 
-	const tborder& border() const { return border_; }
+	const border_t& border() const { return border_; }
 
 	events::generic_event& theme_reset_event() { return theme_reset_event_; }
 
 private:
-	theme::object& find_element(std::string id);
+	theme::object& find_element(const std::string& id);
 	void add_object(const config& cfg);
-	void remove_object(std::string id);
+	void remove_object(const std::string& id);
 	void set_object_location(theme::object& element, std::string rect_str, std::string ref_id);
 
 	//notify observers that the theme has been rebuilt completely
@@ -315,11 +303,11 @@ private:
 	menu context_;
 	action action_context_;
 
-	std::map<std::string,status_item> status_;
+	std::map<std::string, std::unique_ptr<status_item>> status_;
 
 	object main_map_, mini_map_, unit_image_, palette_;
 
-	tborder border_;
-};
+	border_t border_;
 
-#endif
+	SDL_Rect screen_dimensions_;
+};

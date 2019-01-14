@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,23 +12,19 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_EDITOR_DISPLAY_HPP_INCLUDED
-#define EDITOR_EDITOR_DISPLAY_HPP_INCLUDED
+#pragma once
 
 #include "map/editor_map.hpp"
-#include "../display.hpp"
+#include "display.hpp"
 
 namespace editor {
-
-const display_context * get_dummy_display_context();
 
 class editor_display : public display
 {
 public:
-	editor_display(const display_context * dc, CVideo& video,
-			const config& theme_cfg, const config& level);
+	editor_display(editor_controller& controller, reports& reports_object, const config& theme_cfg);
 
-	bool in_editor() const { return true; }
+	bool in_editor() const override { return true; }
 
 	void add_brush_loc(const map_location& hex);
 	void set_brush_locs(const std::set<map_location>& hexes);
@@ -37,25 +33,33 @@ public:
 	const editor_map& map() const { return static_cast<const editor_map&>(get_map()); }
 	void rebuild_terrain(const map_location &loc);
 
-	void set_palette_report(const config& palette_report) {palette_report_ = palette_report;}
+	/** Inherited from display. */
+	virtual const time_of_day& get_time_of_day(const map_location& loc = map_location::null_location()) const override;
+
+	editor_controller& get_controller()
+	{
+		return controller_;
+	}
 
 protected:
-	void pre_draw();
+	void pre_draw() override;
 	/**
 	* The editor uses different rules for terrain highlighting (e.g. selections)
 	*/
-	image::TYPE get_image_type(const map_location& loc);
+	image::TYPE get_image_type(const map_location& loc) override;
 
-	void draw_hex(const map_location& loc);
+	void draw_hex(const map_location& loc) override;
 
-	const SDL_Rect& get_clip_rect();
-	void draw_sidebar();
+	/** Inherited from display. */
+	virtual overlay_map& get_overlays() override;
+
+	const SDL_Rect& get_clip_rect() override;
+	void draw_sidebar() override;
 
 	std::set<map_location> brush_locations_;
 
-private:
-	config palette_report_;
+	/* The controller that owns this display. */
+	editor_controller& controller_;
 };
 
 } //end namespace editor
-#endif

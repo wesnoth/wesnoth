@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2004 - 2014 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2004 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,10 +16,9 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
-
 #include "widgets/scrollarea.hpp"
 #include "sdl/rect.hpp"
+#include "video.hpp"
 
 
 namespace gui {
@@ -27,7 +26,7 @@ namespace gui {
 scrollarea::scrollarea(CVideo &video, const bool auto_join)
 	: widget(video, auto_join), scrollbar_(video),
 	  old_position_(0), recursive_(false), shown_scrollbar_(false),
-	  shown_size_(0), full_size_(0)
+	  shown_size_(0), full_size_(0), swipe_dy_(0)
 {
 	scrollbar_.hide(true);
 }
@@ -37,14 +36,14 @@ bool scrollarea::has_scrollbar() const
 	return shown_size_ < full_size_ && scrollbar_.is_valid_height(location().h);
 }
 
-handler_vector scrollarea::handler_members()
+sdl_handler_vector scrollarea::handler_members()
 {
-	handler_vector h;
+	sdl_handler_vector h;
 	h.push_back(&scrollbar_);
 	return h;
 }
 
-void scrollarea::update_location(SDL_Rect const &rect)
+void scrollarea::update_location(const SDL_Rect& rect)
 {
 	SDL_Rect r = rect;
 	shown_scrollbar_ = has_scrollbar();
@@ -150,37 +149,64 @@ unsigned scrollarea::scrollbar_width() const
 
 void scrollarea::handle_event(const SDL_Event& event)
 {
+	gui::widget::handle_event(event);
+
 	if (mouse_locked() || hidden())
 		return;
 
-#if !SDL_VERSION_ATLEAST(2,0,0)
-	if (event.type != SDL_MOUSEBUTTONDOWN)
-		return;
-
-	SDL_MouseButtonEvent const &e = event.button;
-	if (sdl::point_in_rect(e.x, e.y, inner_location())) {
-		if (e.button == SDL_BUTTON_WHEELDOWN) {
-			scrollbar_.scroll_down();
-		} else if (e.button == SDL_BUTTON_WHEELUP) {
-			scrollbar_.scroll_up();
+	if (event.type == SDL_MOUSEWHEEL) {
+		const SDL_MouseWheelEvent &ev = event.wheel;
+		int x, y;
+		SDL_GetMouseState(&x, &y);
+		if (sdl::point_in_rect(x, y, inner_location())) {
+			if (ev.y > 0) {
+				scrollbar_.scroll_up();
+			} else if (ev.y < 0) {
+				scrollbar_.scroll_down();
+			}
 		}
 	}
-#else
-	if (event.type != SDL_MOUSEWHEEL)
-		return;
+	
+	if (event.type == SDL_FINGERUP) {
+		swipe_dy_ = 0;
+	}
+	
+	if (event.type == SDL_FINGERDOWN || event.type == SDL_FINGERMOTION) {
+		SDL_Rect r = video().screen_area();
+		auto tx = static_cast<int>(event.tfinger.x * r.w);
+		auto ty = static_cast<int>(event.tfinger.y * r.h);
+		auto dy = static_cast<int>(event.tfinger.dy * r.h);
+		
+		if (event.type == SDL_FINGERDOWN) {
+			swipe_dy_ = 0;
+			swipe_origin_.x = tx;
+			swipe_origin_.y = ty;
+		}
 
-	const SDL_MouseWheelEvent &ev = event.wheel;
-	int x, y;
-	SDL_GetMouseState(&x, &y);
-	if (sdl::point_in_rect(x, y, inner_location())) {
-		if (ev.y > 0) {
-			scrollbar_.scroll_up();
-		} else if (ev.y < 0) {
-			scrollbar_.scroll_down();
+		if (event.type == SDL_FINGERMOTION) {
+			
+			swipe_dy_ += dy;
+			if (scrollbar_.get_max_position() == 0) {
+				return;
+			}
+
+			int scrollbar_step = scrollbar_.height() / scrollbar_.get_max_position();
+			if (scrollbar_step <= 0) {
+				return;
+			}
+			
+			if (sdl::point_in_rect(swipe_origin_.x, swipe_origin_.y, inner_location())
+				&& abs(swipe_dy_) >= scrollbar_step)
+			{
+				unsigned int pos = std::max(
+						static_cast<int>(scrollbar_.get_position() - swipe_dy_ / scrollbar_step),
+						0);
+				scrollbar_.set_position(pos);
+				swipe_dy_ %= scrollbar_step;
+			}
 		}
 	}
-#endif
+	
 }
 
 } // end namespace gui
-

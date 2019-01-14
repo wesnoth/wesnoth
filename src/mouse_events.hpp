@@ -1,7 +1,7 @@
 /*
-   Copyright (C) 2006 - 2014 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -13,21 +13,21 @@
    See the COPYING file for more details.
 */
 
-#ifndef MOUSE_EVENTS_H_INCLUDED
-#define MOUSE_EVENTS_H_INCLUDED
+#pragma once
 
-#include "game_display.hpp"             // for game_display
-#include "map_location.hpp"             // for map_location
+#include "game_display.hpp"             // for game_display -> display conversion.
+#include "map/location.hpp"             // for map_location
 #include "mouse_handler_base.hpp"       // for mouse_handler_base
 #include "pathfind/pathfind.hpp"        // for marked_route, paths
-#include "unit_map.hpp"                 // for unit_map, etc
+#include "units/map.hpp"                 // for unit_map, etc
 
 #include <set>                          // for set
 #include <vector>                       // for vector
-#include "SDL_events.h"                 // for SDL_MouseButtonEvent
+#include <SDL_events.h>                 // for SDL_MouseButtonEvent
 
+class game_display;
 class battle_context;  // lines 23-23
-class game_board;
+class play_controller;
 class team;
 class unit;
 
@@ -35,7 +35,7 @@ namespace events{
 
 class mouse_handler : public mouse_handler_base {
 public:
-	mouse_handler(game_display* gui, game_board & board);
+	mouse_handler(game_display* gui, play_controller & pc);
 	~mouse_handler();
 	static mouse_handler* get_singleton() { return singleton_ ;}
 	void set_side(int side_number);
@@ -77,21 +77,42 @@ public:
 	void attack_enemy(const map_location& attacker_loc, const map_location& defender_loc, int choice);
 
 	/// Moves a unit across the board for a player.
-	size_t move_unit_along_route(const std::vector<map_location> & steps, bool & interrupted);
+	std::size_t move_unit_along_route(const std::vector<map_location> & steps, bool & interrupted);
 
 	void select_hex(const map_location& hex, const bool browse,
 		const bool highlight = true,
 		const bool fire_event = true);
 
 	void move_action(bool browse);
+	
+	void touch_action(const map_location hex, bool browse);
 
 	void select_or_action(bool browse);
 
-	void left_mouse_up(int x, int y, const bool /*browse*/);
-	void mouse_wheel_up(int x, int y, const bool /*browse*/);
-	void mouse_wheel_down(int x, int y, const bool /*browse*/);
-	void mouse_wheel_left(int x, int y, const bool /*browse*/);
-	void mouse_wheel_right(int x, int y, const bool /*browse*/);
+	/**
+	 * Uses SDL and @ref game_display::hex_clicked_on
+	 * to fetch the hex the mouse is hovering, if applicable.
+	 */
+	const map_location hovered_hex() const;
+
+	/** Unit exists on the hex, no matter if friend or foe. */
+	bool hex_hosts_unit(const map_location& hex) const;
+
+	/**
+	 * Use this to disable hovering an unit from highlighting its movement
+	 * range.
+	 *
+	 * @see enable_units_highlight()
+	 */
+	void disable_units_highlight();
+
+	/**
+	 * When unit highlighting is disabled, call this when the mouse no
+	 * longer hovers any unit to enable highlighting again.
+	 *
+	 * @see disable_units_highlight()
+	 */
+	void enable_units_highlight();
 
 protected:
 	/**
@@ -111,6 +132,8 @@ protected:
 //	bool left_click(int x, int y, const bool browse);
 	bool move_unit_along_current_route();
 
+	void touch_motion(int x, int y, const bool browse, bool update=false, map_location loc = map_location::null_location());
+
 	void save_whiteboard_attack(const map_location& attacker_loc, const map_location& defender_loc, int weapon_choice);
 
 	// fill weapon choices into bc_vector
@@ -125,6 +148,12 @@ protected:
 	void show_attack_options(const unit_map::const_iterator &u);
 	unit_map::const_iterator find_unit(const map_location& hex) const;
 	unit_map::iterator find_unit(const map_location& hex);
+	/*
+	 * These return raw pointers instead of smart pointers.
+	 * Useful if you don't want to increase the unit reference count.
+	 */
+	unit* find_unit_nonowning(const map_location& hex);
+	const unit* find_unit_nonowning(const map_location& hex) const;
 	bool unit_in_cycle(unit_map::const_iterator it);
 private:
 	team& viewing_team();
@@ -132,7 +161,7 @@ private:
 	team &current_team();
 
 	game_display* gui_;
-	game_board & board_;
+	play_controller & pc_;
 
 	// previous highlighted hexes
 	// the hex of the selected unit and empty hex are "free"
@@ -143,6 +172,7 @@ private:
 	pathfind::marked_route current_route_;
 	pathfind::paths current_paths_;
 	bool unselected_paths_;
+	bool unselected_reach_;
 	int path_turns_;
 	int side_num_;
 
@@ -151,8 +181,8 @@ private:
 	bool show_partial_move_;
 
 	static mouse_handler * singleton_;
+
+	bool preventing_units_highlight_;
 };
 
 }
-
-#endif

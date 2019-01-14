@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Fabian Mueller <fabianmueller5@gmx.de>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Fabian Mueller <fabianmueller5@gmx.de>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,10 +12,10 @@
    See the COPYING file for more details.
 */
 
-#include "mouse_action_select.hpp"
-#include "../action_select.hpp"
+#include "editor/action/mouse/mouse_action_select.hpp"
+#include "editor/action/action_select.hpp"
 
-#include "../../editor_display.hpp"
+#include "editor/editor_display.hpp"
 
 namespace editor {
 
@@ -49,12 +49,12 @@ editor_action* mouse_action_select::click_perform_left(
 editor_action* mouse_action_select::click_perform_right(
 		editor_display& /*disp*/, const std::set<map_location>& /*hexes*/)
 {
-	return NULL;
+	return nullptr;
 }
 
 editor_action* mouse_action_select::click_right(editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
-	return NULL;
+	return nullptr;
 }
 
 void mouse_action_select::set_mouse_overlay(editor_display& disp)
@@ -65,12 +65,13 @@ void mouse_action_select::set_mouse_overlay(editor_display& disp)
 	} else {
 		image = image::get_image("editor/tool-overlay-select-brush.png");
 	}
-	Uint8 alpha = 196;
+	uint8_t alpha = 196;
 	int size = image->w;
 	int zoom = static_cast<int>(size * disp.get_zoom_factor());
 
 	// Add the alpha factor and scale the image
-	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
+	adjust_surface_alpha(image, alpha);
+	image = scale_surface(image, zoom, zoom);
 	disp.set_mouseover_hex_overlay(image);
 }
 

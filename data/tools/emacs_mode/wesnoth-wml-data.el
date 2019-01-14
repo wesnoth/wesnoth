@@ -4098,7 +4098,6 @@
  ("COLOR_WHITE" nil)
  ("COLOR_HARM" nil)
  ("COLOR_HEAL" nil)
- ("MAGENTA_IS_THE_TEAM_COLOR" nil)
  ("CAPTION"
   ("TEXT"))
  ("ASIDE"

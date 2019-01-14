@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,17 +12,15 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_MOUSE_ACTION_HPP
-#define EDITOR_MOUSE_ACTION_HPP
+#pragma once
 
 #include "editor/action/action_base.hpp"
 #include "editor/map/editor_map.hpp"
 #include "theme.hpp"
 #include "editor/palette/editor_palettes.hpp"
 #include "editor/palette/terrain_palettes.hpp"
+#include "editor/palette/location_palette.hpp"
 #include "editor/palette/empty_palette.hpp"
-
-#include <SDL_video.h>
 
 class CKey;
 
@@ -41,7 +39,7 @@ public:
 	mouse_action(common_palette& palette, const CKey& key)
 		: previous_move_hex_()
 		, key_(key)
-		, toolbar_button_(NULL)
+		, toolbar_button_(nullptr)
 		, palette_(palette)
 	{
 	}
@@ -105,12 +103,12 @@ public:
 
 	/**
 	 * Helper variable setter - pointer to a toolbar menu/button used for highlighting
-	 * the current action. Should always be NULL or point to a valid menu.
+	 * the current action. Should always be nullptr or point to a valid menu.
 	 */
 	void set_toolbar_button(const theme::menu* value) { toolbar_button_ = value; }
 
 	/**
-	 * Getter for the (possibly NULL) associated menu/button.
+	 * Getter for the (possibly nullptr) associated menu/button.
 	 */
 	const theme::menu* toolbar_button() const { return toolbar_button_; }
 
@@ -120,7 +118,7 @@ public:
 	common_palette& get_palette() { return palette_; }
 
 	/** Whether we need the brush bar, is used to grey it out.*/
-	virtual bool supports_brushes() { return false; }
+	virtual bool supports_brushes() const { return false; }
 
 	/**
 	 * Set the mouse overlay for this action. Defaults to an empty overlay.
@@ -136,8 +134,8 @@ protected:
 	/**
 	 * Helper function for derived classes that need a active-terrain mouse overlay
 	 */
-	void set_terrain_mouse_overlay(editor_display& disp, const t_translation::t_terrain & fg,
-		const t_translation::t_terrain & bg);
+	void set_terrain_mouse_overlay(editor_display& disp, const t_translation::terrain_code & fg,
+		const t_translation::terrain_code & bg);
 
 	/**
 	 * The hex previously used in move operations
@@ -261,26 +259,26 @@ public:
 	/**
 	 * Handle terrain sampling before calling generic handler
 	 */
-	editor_action* click_left(editor_display& disp, int x, int y);
+	editor_action* click_left(editor_display& disp, int x, int y) override;
 
 	/**
 	 * Handle terrain sampling before calling generic handler
 	 */
-	editor_action* click_right(editor_display& disp, int x, int y);
+	editor_action* click_right(editor_display& disp, int x, int y) override;
 
 	/**
 	 * Create an appropriate editor_action and return it
 	 */
-	editor_action* click_perform_left(editor_display& disp, const std::set<map_location>& hexes);
+	editor_action* click_perform_left(editor_display& disp, const std::set<map_location>& hexes) override;
 
 	/**
 	 * Create an appropriate editor_action and return it
 	 */
-	editor_action* click_perform_right(editor_display& disp, const std::set<map_location>& hexes);
+	editor_action* click_perform_right(editor_display& disp, const std::set<map_location>& hexes) override;
 
-	void set_mouse_overlay(editor_display& disp);
+	void set_mouse_overlay(editor_display& disp) override;
 
-	bool supports_brushes() { return true; }
+	virtual bool supports_brushes() const override { return true; }
 
 protected:
 
@@ -301,24 +299,24 @@ public:
 	{
 	}
 
-	bool has_context_menu() const;
+	virtual bool has_context_menu() const override;
 
 	/**
 	 * Show an outline of where the paste will go
 	 */
-	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
+	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex) override;
 
 	/**
 	 * Return a paste with offset action
 	 */
-	editor_action* click_left(editor_display& disp, int x, int y);
+	editor_action* click_left(editor_display& disp, int x, int y) override;
 
 	/**
 	 * Right click does nothing for now
 	 */
-	editor_action* click_right(editor_display& disp, int x, int y);
+	editor_action* click_right(editor_display& disp, int x, int y) override;
 
-	virtual void set_mouse_overlay(editor_display& disp);
+	virtual void set_mouse_overlay(editor_display& disp) override;
 
 protected:
 	/**
@@ -367,14 +365,14 @@ protected:
 class mouse_action_starting_position : public mouse_action
 {
 public:
-	mouse_action_starting_position(const CKey& key, empty_palette& palette)
-	: mouse_action(palette, key), click_(false)
+	mouse_action_starting_position(const CKey& key, location_palette& palette)
+	: mouse_action(palette, key), click_(false), location_palette_(palette)
 	{
 	}
 
 	/**
 	 * Left click displays a player-number-selector dialog and then creates an action
-	 * or returns NULL if cancel was pressed or there would be no change.
+	 * or returns nullptr if cancel was pressed or there would be no change.
 	 * Do this on mouse up to avoid drag issue.
 	 */
 	editor_action* up_left(editor_display& disp, int x, int y);
@@ -392,10 +390,9 @@ public:
 
 private:
 	bool click_;
+	location_palette& location_palette_;
 };
 
 
 
 } //end namespace editor
-
-#endif

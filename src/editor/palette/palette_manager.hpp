@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2012 - 2014 by Fabian Mueller <fabianmueller5@gmx.de>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2012 - 2018 by Fabian Mueller <fabianmueller5@gmx.de>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,17 +16,19 @@
  * Manages all the palettes in the editor.
  */
 
-#ifndef PALETTE_MANAGER_H_INCLUDED
-#define PALETTE_MANAGER_H_INCLUDED
+#pragma once
 
-#include "common_palette.hpp"
+#include "editor/palette/common_palette.hpp"
 
-#include "empty_palette.hpp"
-#include "terrain_palettes.hpp"
-#include "unit_palette.hpp"
-#include "item_palette.hpp"
+#include "editor/palette/empty_palette.hpp"
+#include "editor/palette/terrain_palettes.hpp"
+#include "editor/palette/unit_palette.hpp"
+#include "editor/palette/item_palette.hpp"
+#include "editor/palette/location_palette.hpp"
 
 namespace editor {
+
+class editor_toolkit;
 
 /** Empty palette */
 class palette_manager : public gui::widget {
@@ -34,9 +36,9 @@ class palette_manager : public gui::widget {
 public:
 
 	palette_manager(editor_display &gui, const config& cfg
-				, mouse_action** active_mouse_action);
+	              , editor_toolkit &toolkit);
 
-	void set_group(size_t index);
+	void set_group(std::size_t index);
 
 	/** Scroll the editor-palette up one step if possible. */
 	void scroll_up();
@@ -47,6 +49,7 @@ public:
 	bool can_scroll_down();
 
 	void scroll_top();
+	void restore_palette_bg(bool scroll_top);
 	void scroll_bottom();
 
 //TODO
@@ -54,7 +57,7 @@ public:
 
 	void adjust_size();
 
-	handler_vector handler_members();
+	sdl_handler_vector handler_members();
 	virtual void handle_event(const SDL_Event& event);
 
 	/**
@@ -74,16 +77,15 @@ private:
 
 	editor_display& gui_;
 	int palette_start_;
-	mouse_action** mouse_action_;
+	editor_toolkit& toolkit_;
 
 public:
 
-	boost::scoped_ptr<terrain_palette> terrain_palette_;
-	boost::scoped_ptr<unit_palette>    unit_palette_;
-	boost::scoped_ptr<empty_palette>   empty_palette_;
-	boost::scoped_ptr<item_palette>    item_palette_;
+	const std::unique_ptr<terrain_palette> terrain_palette_;
+	const std::unique_ptr<unit_palette> unit_palette_;
+	const std::unique_ptr<empty_palette> empty_palette_;
+	const std::unique_ptr<item_palette> item_palette_;
+	const std::unique_ptr<location_palette> location_palette_;
 };
 
 }
-
-#endif

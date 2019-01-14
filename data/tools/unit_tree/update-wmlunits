@@ -3,49 +3,59 @@
 set -e -u
 
 # set them in the environment
-# VERSION=1.10
-# PORT=1.10.x
+# VERSION=1.12
+# PORT=1.12.x
 
 # must run from the correct directory
-DIR="$(dirname $0)"
+dir="$(dirname "$0")"
 
-SOURCES=/usr/src/wesnoth
-ADDONS=$DIR/addons
-EXE=$DIR/build/wesnoth
-CONFIG=$DIR/config
-SRC=$SOURCES/$VERSION
-DATA=$SRC
-LOG=$DIR/logs
-TMPOUT=$DIR/output
-OUT="elias@192.168.1.2:/srv/www/html/units/$VERSION"
-TRANS=$DIR/translations
-BUILD=$DIR/build
+EXTRA_ADDON_OPTIONS=${EXTRA_ADDON_OPTIONS:-}
+EXTRA_WMLUNITS_OPTIONS=${EXTRA_WMLUNITS_OPTIONS:-}
+TIMEOUT=${TIMEOUT:-20}
+SOURCES=${SOURCES:-/usr/src/wesnoth}
+addons=$dir/addons
+exe=$dir/wesnoth
+config=$dir/config
+src=$SOURCES/$VERSION
+data=$src
+log=$dir/logs
+tmpout=$dir/output
+OUT=${OUT:-"/srv/www/html/units/$VERSION"}
+trans=$dir/translations
+build=$dir/build
 # always using the master version
-TOOLS=$SOURCES/master/data/tools
-export TEMP=$DIR/temp
+TOOLS=${TOOLS:-$SOURCES/master/data/tools}
+export TEMP=$dir/temp
 
-mkdir -p $CONFIG/data/add-ons
-mkdir -p $ADDONS
-mkdir -p $LOG
-mkdir -p $TMPOUT
-mkdir -p $TEMP
-mkdir -p translations
+# in case there's leftovers from a previous run
+rm -rf "$config/data/add-ons"
+rm -rf "$tmpout"
+rm -rf "$TEMP"
 
-rm -rf $TEMP/*
+mkdir -p "$config/data/add-ons"
+mkdir -p "$addons"
+mkdir -p "$log"
+mkdir -p "$tmpout"
+mkdir -p "$TEMP"
+mkdir -p "$trans"
 
 # we only need the parser, but have to build the game executable for that
 echo BUILDING
-make -C $BUILD wesnoth > /dev/null 2>&1 || true
-make -C $BUILD mo-update > /dev/null 2>&1
+cd "$dir" || exit # the scons build places the wesnoth executable in the current directory
+# continue on failure if there is an executable from a previous build
+TRAVIS=1 TRAVIS_OS_NAME=Linux scons -Y "$src" --option-cache="$build/.scons-option-cache" || [ -x wesnoth ]
 
 # later can just rebuild updated campaigns, but for now rebuild everything
-rm -f $DIR/overview.txt
+rm -f "$dir/overview.txt"
 
 echo DOWNLOADING
-$TOOLS/wesnoth_addon_manager -p $PORT -d '.*' -c $ADDONS > $LOG/wesnoth_addon_manager.txt 2>&1 &&
+"$TOOLS/wesnoth_addon_manager" -p "$PORT" -d '.*' -c "$addons" $EXTRA_ADDON_OPTIONS > "$log/wesnoth_addon_manager.txt" 2>&1
 echo WORKING
-python -u $TOOLS/wmlunits -t $TRANS -D $DATA -o $TMPOUT -w $EXE -C $CONFIG -a $ADDONS -L $DIR/overview.txt -B $DIR/overview.txt > $LOG/wmlunits.txt 2>&1 &&
-rsync -vaz --delete $TMPOUT/ $OUT > $LOG/rsync.txt 2>&1 &&
-rm -rf $TEMP/* &&
-rm -rf $TMPOUT
-
+python3 -u "$TOOLS/wmlunits" -t "$trans" -D "$data" -o "$tmpout" -w "$exe" \
+    -C "$config" -a "$addons" -L "$dir/overview.txt" -B "$dir/overview.txt" \
+    -T "$TIMEOUT" $EXTRA_WMLUNITS_OPTIONS > "$log/wmlunits.txt" 2>&1
+test -f "$tmpout"/mainline/en_US/mainline.html
+test -f "$tmpout"/'pics/core$images$units$woses$wose.png'
+rsync -vaz --delete "$tmpout/" "$OUT" > "$log/rsync.txt" 2>&1
+rm -rf "$TEMP"
+rm -rf "$tmpout"

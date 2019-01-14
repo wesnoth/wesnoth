@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2014
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org
+   Copyright (C) 2008 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License 2
@@ -15,22 +15,22 @@
 #include <iostream>
 #include <sstream>
 
-#include "global.hpp"
-
 #include <boost/iostreams/copy.hpp>
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/iostreams/filter/bzip2.hpp>
 #include <boost/iostreams/filter/counter.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
-#include "simple_wml.hpp"
+#include "server/simple_wml.hpp"
 
-#include "../log.hpp"
+#include "log.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_SWML LOG_STREAM(err, log_config)
 
 namespace simple_wml {
+
+std::size_t document::document_size_limit = 40000000;
 
 namespace {
 
@@ -55,15 +55,15 @@ char* uncompress_buffer(const string_span& input, string_span* span)
 		filter.push(stream);
 		state = 3;
 
-		const size_t chunk_size = input.size() * 10;
+		const std::size_t chunk_size = input.size() * 10;
 		nalloc = chunk_size;
 		std::vector<char> buf(chunk_size);
 		state = 4;
-		size_t len = 0;
-		size_t pos = 0;
+		std::size_t len = 0;
+		std::size_t pos = 0;
 		while(filter.good() && (len = filter.read(&buf[pos], chunk_size).gcount()) == chunk_size) {
-			if(pos + chunk_size > 40000000) {
-				throw error("WML document exceeds 40MB limit");
+			if(pos + chunk_size > document::document_size_limit) {
+				throw error("WML document exceeded size limit during decompression");
 			}
 
 			pos += len;
@@ -91,7 +91,7 @@ char* uncompress_buffer(const string_span& input, string_span* span)
 		*span = string_span(small_out, pos);
 		state = 8;
 		return small_out;
-	} catch (std::bad_alloc& e) {
+	} catch (const std::bad_alloc& e) {
 		ERR_SWML << "ERROR: bad_alloc caught in uncompress_buffer() state "
 		<< state << " alloc bytes " << nalloc << " with input: '"
 		<< input << "' " << e.what() << std::endl;
@@ -144,7 +144,7 @@ char* compress_buffer(const char* input, string_span* span, bool bzip2)
 		assert(*small_out == (bzip2 ? 'B' : 31));
 		state = 9;
 		return small_out;
-	} catch (std::bad_alloc& e) {
+	} catch (const std::bad_alloc& e) {
 		ERR_SWML << "ERROR: bad_alloc caught in compress_buffer() state "
 		<< state << " alloc bytes " << nalloc << " with input: '"
 		<< input << "' " << e.what() << std::endl;
@@ -238,7 +238,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			if(s[1] == '/') {
 				output_cache_ = string_span(begin, s - begin);
 				s = strchr(s, ']');
-				if(s == NULL) {
+				if(s == nullptr) {
 					throw error("end element unterminated");
 				}
 
@@ -248,7 +248,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 
 			++s;
 			const char* end = strchr(s, ']');
-			if(end == NULL) {
+			if(end == nullptr) {
 				throw error("unterminated element");
 			}
 
@@ -258,7 +258,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			s = end + 1;
 
 			children_[list_index].second.push_back(new node(doc, this, str, depth+1));
-			ordered_children_.push_back(node_pos(list_index, children_[list_index].second.size() - 1));
+			ordered_children_.emplace_back(list_index, children_[list_index].second.size() - 1);
 			check_ordered_children();
 
 			break;
@@ -270,13 +270,13 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			break;
 		case '#':
 			s = strchr(s, '\n');
-			if(s == NULL) {
+			if(s == nullptr) {
 				throw error("did not find newline after '#'");
 			}
 			break;
 		default: {
 			const char* end = strchr(s, '=');
-			if(end == NULL) {
+			if(end == nullptr) {
 				ERR_SWML << "attribute: " << s << std::endl;
 				throw error("did not find '=' after attribute");
 			}
@@ -285,7 +285,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			s = end + 1;
 			if(*s == '_') {
 				s = strchr(s, '"');
-				if(s == NULL) {
+				if(s == nullptr) {
 					throw error("did not find '\"' after '_'");
 				}
 			}
@@ -310,7 +310,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 #endif
 					++end;
 				}
-				if(end == NULL)
+				if(end == nullptr)
 					throw error("did not find end of attribute");
 
 				// Stop if newline.
@@ -344,14 +344,14 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 
 			read_attribute:
 			string_span value(s, end - s);
-			if(attr_.empty() == false && !(attr_.back().first < name)) {
-				ERR_SWML << "attributes: '" << attr_.back().first << "' < '" << name << "'" << std::endl;
+			if(attr_.empty() == false && !(attr_.back().key < name)) {
+				ERR_SWML << "attributes: '" << attr_.back().key << "' < '" << name << "'" << std::endl;
 				throw error("attributes not in order");
 			}
 
 			s = end + 1;
 
-			attr_.push_back(attribute(name, value));
+			attr_.emplace_back(name, value);
 		}
 		}
 	}
@@ -373,16 +373,16 @@ namespace {
 struct string_span_pair_comparer
 {
 	bool operator()(const string_span& a, const node::attribute& b) const {
-		return a < b.first;
+		return a < b.key;
 	}
 
 	bool operator()(const node::attribute& a, const string_span& b) const {
-		return a.first < b;
+		return a.key < b;
 	}
 
 	bool operator()(const node::attribute& a,
 	                const node::attribute& b) const {
-		return a.first < b.first;
+		return a.key < b.key;
 	}
 };
 }
@@ -394,7 +394,7 @@ const string_span& node::operator[](const char* key) const
 	std::pair<attribute_list::const_iterator,
 	          attribute_list::const_iterator> range = std::equal_range(attr_.begin(), attr_.end(), span, string_span_pair_comparer());
 	if(range.first != range.second) {
-		return range.first->second;
+		return range.first->value;
 	}
 
 	return empty;
@@ -416,7 +416,7 @@ node& node::set_attr(const char* key, const char* value)
 	std::pair<attribute_list::iterator,
 	          attribute_list::iterator> range = std::equal_range(attr_.begin(), attr_.end(), span, string_span_pair_comparer());
 	if(range.first != range.second) {
-		range.first->second = string_span(value);
+		range.first->value = string_span(value);
 	} else {
 		attr_.insert(range.first, attribute(span, string_span(value)));
 	}
@@ -438,12 +438,11 @@ node& node::set_attr_dup(const char* key, const string_span& value)
 
 node& node::set_attr_int(const char* key, int value)
 {
-	char buf[64];
-	sprintf(buf, "%d", value);
-	return set_attr_dup(key, buf);
+	std::string temp = std::to_string(value);
+	return set_attr_dup(key, temp.c_str());
 }
 
-node& node::add_child_at(const char* name, size_t index)
+node& node::add_child_at(const char* name, std::size_t index)
 {
 	set_dirty();
 
@@ -470,12 +469,12 @@ node& node::add_child(const char* name)
 	check_ordered_children();
 	child_list& list = children_[list_index].second;
 	list.push_back(new node(*doc_, this));
-	ordered_children_.push_back(node_pos(list_index, list.size() - 1));
+	ordered_children_.emplace_back(list_index, list.size() - 1);
 	check_ordered_children();
 	return *list.back();
 }
 
-void node::remove_child(const string_span& name, size_t index)
+void node::remove_child(const string_span& name, std::size_t index)
 {
 	set_dirty();
 
@@ -490,13 +489,13 @@ void node::remove_child(const string_span& name, size_t index)
 		return;
 	}
 
-	remove_ordered_child(itor - children_.begin(), index);
+	remove_ordered_child(std::distance(children_.begin(), itor), index);
 
 	debug_delete(list[index]);
 	list.erase(list.begin() + index);
 
 	if(list.empty()) {
-		remove_ordered_child_list(itor - children_.begin());
+		remove_ordered_child_list(std::distance(children_.begin(), itor));
 		children_.erase(itor);
 	}
 }
@@ -519,7 +518,7 @@ void node::insert_ordered_child(int child_map_index, int child_list_index)
 	}
 
 	if(!inserted) {
-		ordered_children_.push_back(node_pos(child_map_index, child_list_index));
+		ordered_children_.emplace_back(child_map_index, child_list_index);
 	}
 }
 
@@ -599,7 +598,7 @@ void node::check_ordered_children() const
 #endif // CHECK_ORDERED_CHILDREN
 }
 
-void node::remove_child(const char* name, size_t index)
+void node::remove_child(const char* name, std::size_t index)
 {
 	remove_child(string_span(name), index);
 }
@@ -613,7 +612,7 @@ node* node::child(const char* name)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 const node* node::child(const char* name) const
@@ -621,14 +620,14 @@ const node* node::child(const char* name) const
 	for(child_map::const_iterator i = children_.begin(); i != children_.end(); ++i) {
 		if(i->first == name) {
 			if(i->second.empty()) {
-				return NULL;
+				return nullptr;
 			} else {
 				return i->second.front();
 			}
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 const node::child_list& node::children(const char* name) const
@@ -652,11 +651,11 @@ int node::get_children(const string_span& name)
 {
 	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
 		if(i->first == name) {
-			return i - children_.begin();
+			return std::distance(children_.begin(), i);
 		}
 	}
 
-	children_.push_back(child_pair(string_span(name), child_list()));
+	children_.emplace_back(string_span(name), child_list());
 	return children_.size() - 1;
 }
 
@@ -703,10 +702,10 @@ int node::output_size() const
 
 	int res = 0;
 	for(attribute_list::const_iterator i = attr_.begin(); i != attr_.end(); ++i) {
-		res += i->first.size() + i->second.size() + 4;
+		res += i->key.size() + i->value.size() + 4;
 	}
 
-	size_t count_children = 0;
+	std::size_t count_children = 0;
 	for(child_map::const_iterator i = children_.begin(); i != children_.end(); ++i) {
 		for(child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
 			res += i->first.size()*2 + 7;
@@ -727,8 +726,8 @@ void node::shift_buffers(ptrdiff_t offset)
 	}
 
 	for(std::vector<attribute>::iterator i = attr_.begin(); i != attr_.end(); ++i) {
-		i->first = string_span(i->first.begin() + offset, i->first.size());
-		i->second = string_span(i->second.begin() + offset, i->second.size());
+		i->key = string_span(i->key.begin() + offset, i->key.size());
+		i->value = string_span(i->value.begin() + offset, i->value.size());
 	}
 
 	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
@@ -754,14 +753,14 @@ void node::output(char*& buf, CACHE_STATUS cache_status)
 	char* begin = buf;
 
 	for(std::vector<attribute>::iterator i = attr_.begin(); i != attr_.end(); ++i) {
-		memcpy(buf, i->first.begin(), i->first.size());
-		i->first = string_span(buf, i->first.size());
-		buf += i->first.size();
+		memcpy(buf, i->key.begin(), i->key.size());
+		i->key = string_span(buf, i->key.size());
+		buf += i->key.size();
 		*buf++ = '=';
 		*buf++ = '"';
-		memcpy(buf, i->second.begin(), i->second.size());
-		i->second = string_span(buf, i->second.size());
-		buf += i->second.size();
+		memcpy(buf, i->value.begin(), i->value.size());
+		i->value = string_span(buf, i->value.size());
+		buf += i->value.size();
 		*buf++ = '"';
 		*buf++ = '\n';
 	}
@@ -807,8 +806,8 @@ void node::copy_into(node& n) const
 {
 	n.set_dirty();
 	for(attribute_list::const_iterator i = attr_.begin(); i != attr_.end(); ++i) {
-		char* key = i->first.duplicate();
-		char* value = i->second.duplicate();
+		char* key = i->key.duplicate();
+		char* value = i->value.duplicate();
 		n.doc_->take_ownership_of_buffer(key);
 		n.doc_->take_ownership_of_buffer(value);
 		n.set_attr(key, value);
@@ -828,10 +827,10 @@ void node::apply_diff(const node& diff)
 {
 	set_dirty();
 	const node* inserts = diff.child("insert");
-	if(inserts != NULL) {
+	if(inserts != nullptr) {
 		for(attribute_list::const_iterator i = inserts->attr_.begin(); i != inserts->attr_.end(); ++i) {
-			char* name = i->first.duplicate();
-			char* value = i->second.duplicate();
+			char* name = i->key.duplicate();
+			char* value = i->value.duplicate();
 			set_attr(name, value);
 			doc_->take_ownership_of_buffer(name);
 			doc_->take_ownership_of_buffer(value);
@@ -839,10 +838,10 @@ void node::apply_diff(const node& diff)
 	}
 
 	const node* deletes = diff.child("delete");
-	if(deletes != NULL) {
+	if(deletes != nullptr) {
 		for(attribute_list::const_iterator i = deletes->attr_.begin(); i != deletes->attr_.end(); ++i) {
 			std::pair<attribute_list::iterator,
-	                  attribute_list::iterator> range = std::equal_range(attr_.begin(), attr_.end(), i->first, string_span_pair_comparer());
+	                  attribute_list::iterator> range = std::equal_range(attr_.begin(), attr_.end(), i->key, string_span_pair_comparer());
 			if(range.first != range.second) {
 				attr_.erase(range.first);
 			}
@@ -851,7 +850,7 @@ void node::apply_diff(const node& diff)
 
 	const child_list& child_changes = diff.children("change_child");
 	for(child_list::const_iterator i = child_changes.begin(); i != child_changes.end(); ++i) {
-		const size_t index = (**i)["index"].to_int();
+		const std::size_t index = (**i)["index"].to_int();
 		for(child_map::const_iterator j = (*i)->children_.begin(); j != (*i)->children_.end(); ++j) {
 			const string_span& name = j->first;
 			for(child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
@@ -867,7 +866,7 @@ void node::apply_diff(const node& diff)
 
 	const child_list& child_inserts = diff.children("insert_child");
 	for(child_list::const_iterator i = child_inserts.begin(); i != child_inserts.end(); ++i) {
-		const size_t index = (**i)["index"].to_int();
+		const std::size_t index = (**i)["index"].to_int();
 		for(child_map::const_iterator j = (*i)->children_.begin(); j != (*i)->children_.end(); ++j) {
 			const string_span& name = j->first;
 			for(child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
@@ -880,7 +879,7 @@ void node::apply_diff(const node& diff)
 
 	const child_list& child_deletes = diff.children("delete_child");
 	for(child_list::const_iterator i = child_deletes.begin(); i != child_deletes.end(); ++i) {
-		const size_t index = (**i)["index"].to_int();
+		const std::size_t index = (**i)["index"].to_int();
 		for(child_map::const_iterator j = (*i)->children_.begin(); j != (*i)->children_.end(); ++j) {
 			if(j->second.empty()) {
 				continue;
@@ -930,18 +929,18 @@ int node::nattributes_recursive() const
 
 void node::set_dirty()
 {
-	for(node* n = this; n != NULL && n->output_cache_.is_null() == false; n = n->parent_) {
+	for(node* n = this; n != nullptr && n->output_cache_.is_null() == false; n = n->parent_) {
 		n->output_cache_ = string_span();
 	}
 }
 
 document::document() :
 	compressed_buf_(),
-	output_(NULL),
+	output_(nullptr),
 	buffers_(),
-	root_(new node(*this, NULL)),
-	prev_(NULL),
-	next_(NULL)
+	root_(new node(*this, nullptr)),
+	prev_(nullptr),
+	next_(nullptr)
 {
 	attach_list();
 }
@@ -950,15 +949,15 @@ document::document(char* buf, INIT_BUFFER_CONTROL control) :
 	compressed_buf_(),
 	output_(buf),
 	buffers_(),
-	root_(NULL),
-	prev_(NULL),
-	next_(NULL)
+	root_(nullptr),
+	prev_(nullptr),
+	next_(nullptr)
 {
 	if(control == INIT_TAKE_OWNERSHIP) {
 		buffers_.push_back(buf);
 	}
 	const char* cbuf = buf;
-	root_ = new node(*this, NULL, &cbuf);
+	root_ = new node(*this, nullptr, &cbuf);
 
 	attach_list();
 }
@@ -967,15 +966,15 @@ document::document(const char* buf, INIT_STATE state) :
 	compressed_buf_(),
 	output_(buf),
 	buffers_(),
-	root_(NULL),
-	prev_(NULL),
-	next_(NULL)
+	root_(nullptr),
+	prev_(nullptr),
+	next_(nullptr)
 {
 	if(state == INIT_COMPRESSED) {
 		output_compressed();
-		output_ = NULL;
+		output_ = nullptr;
 	} else {
-		root_ = new node(*this, NULL, &buf);
+		root_ = new node(*this, nullptr, &buf);
 	}
 
 	attach_list();
@@ -983,18 +982,18 @@ document::document(const char* buf, INIT_STATE state) :
 
 document::document(string_span compressed_buf) :
 	compressed_buf_(compressed_buf),
-	output_(NULL),
+	output_(nullptr),
 	buffers_(),
-	root_(NULL),
-	prev_(NULL),
-	next_(NULL)
+	root_(nullptr),
+	prev_(nullptr),
+	next_(nullptr)
 {
 	string_span uncompressed_buf;
 	buffers_.push_back(uncompress_buffer(compressed_buf, &uncompressed_buf));
 	output_ = uncompressed_buf.begin();
 	const char* cbuf = output_;
 	try {
-		root_ = new node(*this, NULL, &cbuf);
+		root_ = new node(*this, nullptr, &cbuf);
 	} catch(...) {
 		delete [] buffers_.front();
 		buffers_.clear();
@@ -1048,7 +1047,7 @@ const char* document::output()
 	char* buf;
 	try {
 		buf = new char[buf_size];
-	} catch (std::bad_alloc& e) {
+	} catch (const std::bad_alloc& e) {
 		ERR_SWML << "ERROR: Trying to allocate " << buf_size << " bytes. "
 		<< e.what() << std::endl;
 		throw error("Bad allocation request in output().");
@@ -1072,7 +1071,7 @@ const char* document::output()
 string_span document::output_compressed(bool bzip2)
 {
 	if(compressed_buf_.empty() == false &&
-	   (root_ == NULL || root_->is_dirty() == false)) {
+	   (root_ == nullptr || root_->is_dirty() == false)) {
 		assert(*compressed_buf_.begin() == (bzip2 ? 'B' : 31));
 		return compressed_buf_;
 	}
@@ -1087,8 +1086,8 @@ void document::compress()
 {
 	output_compressed();
 	debug_delete(root_);
-	root_ = NULL;
-	output_ = NULL;
+	root_ = nullptr;
+	output_ = nullptr;
 	std::vector<char*> new_buffers;
 	for(std::vector<char*>::iterator i = buffers_.begin(); i != buffers_.end(); ++i) {
 		if(*i != compressed_buf_.begin()) {
@@ -1104,16 +1103,16 @@ void document::compress()
 
 void document::generate_root()
 {
-	if(output_ == NULL) {
+	if(output_ == nullptr) {
 		assert(compressed_buf_.empty() == false);
 		string_span uncompressed_buf;
 		buffers_.push_back(uncompress_buffer(compressed_buf_, &uncompressed_buf));
 		output_ = uncompressed_buf.begin();
 	}
 
-	assert(root_ == NULL);
+	assert(root_ == nullptr);
 	const char* cbuf = output_;
-	root_ = new node(*this, NULL, &cbuf);
+	root_ = new node(*this, nullptr, &cbuf);
 }
 
 document* document::clone()
@@ -1137,9 +1136,9 @@ void document::swap(document& o)
 void document::clear()
 {
 	compressed_buf_ = string_span();
-	output_ = NULL;
+	output_ = nullptr;
 	debug_delete(root_);
-	root_ = new node(*this, NULL);
+	root_ = new node(*this, nullptr);
 	for(std::vector<char*>::iterator i = buffers_.begin(); i != buffers_.end(); ++i) {
 		delete [] *i;
 	}
@@ -1148,12 +1147,12 @@ void document::clear()
 }
 
 namespace {
-document* head_doc = NULL;
+document* head_doc = nullptr;
 }
 
 void document::attach_list()
 {
-	prev_ = NULL;
+	prev_ = nullptr;
 	next_ = head_doc;
 
 	if(next_) {
@@ -1175,7 +1174,7 @@ void document::detach_list()
 	if(prev_) {
 		prev_->next_ = next_;
 	}
-	next_ = prev_ = NULL;
+	next_ = prev_ = nullptr;
 }
 
 std::string document::stats()
@@ -1190,7 +1189,7 @@ std::string document::stats()
 	int nnodes = 0;
 	int ndirty = 0;
 	int nattributes = 0;
-	for(document* d = head_doc; d != NULL; d = d->next_) {
+	for(document* d = head_doc; d != nullptr; d = d->next_) {
 		ndocs++;
 		nbuffers += d->buffers_.size();
 
@@ -1230,6 +1229,11 @@ std::string document::stats()
 	  << "Total allocation: " << total_alloc << " bytes\n";
 
 	return s.str();
+}
+
+void swap(document& lhs, document& rhs)
+{
+	lhs.swap(rhs);
 }
 
 }

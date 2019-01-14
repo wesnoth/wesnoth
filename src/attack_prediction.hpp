@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2007 - 2014
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2007 - 2018 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,13 +14,10 @@
 
 /** @file */
 
-#ifndef ATTACK_PREDICTION_H_INCLUDED
-#define ATTACK_PREDICTION_H_INCLUDED
-
-#include "global.hpp"
+#pragma once
 
 #include <vector>
-
+#include <array>
 #include <cstring>
 
 struct battle_context_unit_stats;
@@ -30,10 +27,13 @@ struct battle_context_unit_stats;
 struct combatant
 {
 	/** Construct a combatant. */
-	combatant(const battle_context_unit_stats &u, const combatant *prev = NULL);
+	combatant(const battle_context_unit_stats &u, const combatant *prev = nullptr);
 
 	/** Copy constructor */
 	combatant(const combatant &that, const battle_context_unit_stats &u);
+
+	combatant(const combatant &that) = delete;
+	combatant& operator=(const combatant &) = delete;
 
 	/** Simulate a fight!  Can be called multiple times for cumulative calculations. */
 	void fight(combatant &opponent, bool levelup_considered=true);
@@ -60,18 +60,11 @@ struct combatant
 #endif
 
 private:
-	combatant(const combatant &that);
-	combatant& operator=(const combatant &);
-
-	struct combat_slice;
-	/** Split the combat by number of attacks per combatant (for swarm). */
-	std::vector<combat_slice> split_summary() const;
+	static const unsigned int MONTE_CARLO_SIMULATION_THRESHOLD = 50000u;
 
 	const battle_context_unit_stats &u_;
 
 	/** Summary of matrix used to calculate last battle (unslowed & slowed).
 	 *  Invariant: summary[1].size() == summary[0].size() or summary[1].empty() */
-	std::vector<double> summary[2];
+	std::array<std::vector<double>, 2> summary;
 };
-
-#endif
