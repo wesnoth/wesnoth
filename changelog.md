@@ -50,6 +50,7 @@
    * Fix stale temporary bans continuing to have an effect on players until cleared by
      phpBB on the next ban/unban operation.
  ### Packaging
+   * new scons option, intended to be used when building releases inside a git repo: autorevision=False
    * Fix build with Boost 1.69. (issue #3646)
    * Fix build with Pango 1.43. (issue #3840)
  ### User interface
