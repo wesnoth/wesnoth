@@ -119,6 +119,11 @@
    * Descent Into Darkness:
      * Allow converting L3 necromancers to liches from S12 onwards (issue #3165).
      * Added an alternative method of completing the campaign (issue #3167).
+     * S8, S9 (A Small Favor II & III): Clarify objectives. (PR #3711)
+     * S8 (A Small Favor II): Fixed units created via the plague ability not available in S9. (PR #3711)
+   * Sceptre of Fire:
+     * S1&2: increased difficulty
+     * S6: additional guards for the elves
    * Secrets of the Ancients:
      * S01 Slipping Away: It is now obvious that the wild animals cannot cross the fences.
      * S02 Dark Business: Simplify scenario by removing the temporary invisible starting keep.
@@ -130,27 +135,43 @@
        this turn and haven't moved yet.
    * The Hammer of Thursagan
      * S12 'The Underlevels': redesigned with completely new map and scenario
+   * Northern Rebirth:
+     * Fix loyal units obtained in S7 costing upkeep (introduced in 1.14.5)
+     * S13: Improvement to the AIs
    * The South Guard:
      * Revised scenario and story dialogue.
      * Reworked and rebalanced all scenario and map designs.
      * Removed S6a 'Tidings Good and Ill'.
+   * Tutorial:
+     * S2: Wolf riders are not initially recruited, to not hinder the player
+       from reaching the island in time
  ### Language and i18n
-   * Updated translations: Chinese (Traditional), French, Italian, Spanish.
+   * Updated translations: Chinese (Traditional), French, German, Italian,
+     Russian, Spanish, Ukrainian.
  ### Lua API
+   * Fix wesnoth.set_dialog_callback calling the function immediately when used in the previous callback. (issue #3794)
    * Fix wesnoth.set_dialog_value not triggering re-layout. (issue #3572)
  ### Miscellaneous and bug fixes
    * Fix crash with custom themes on desktop PCs. (issue #3599)
    * Add --campaign-skip-story command line switch for skipping directly to turn 1. (issue #3472)
+   * Remove --data option, --data-path has the same functionality.
    * Fix documentation of --render-image command line switch. (issue #3568)
+   * Update manpage with options previously only documented by wesnoth --help.
    * Fix wrong ordering for BW / BF years, for example in Play a Campaign when sorted by date. (issue #3187)
    * GUI.pyw can now terminate a running maintenance script
+   * Fix SDL_DestroyRenderer assertion failure under XMonad. (part of issue #3716)
  ### Multiplayer server
    * Fix stale temporary bans continuing to have an effect on players until cleared by
      phpBB on the next ban/unban operation.
+ ### Packaging
+   * new scons option, intended to be used when building releases inside a git repo: autorevision=False
+   * Fix build with Boost 1.69. (issue #3646)
+   * Fix build with Pango 1.43. (issue #3840)
  ### User interface
    * Fix regression: Game Load screen would not select 1.12 savegames. (issue #3561)
    * Fix regression: the in-game "Observers" icon (an eye) was covered by the minimap. (issue #3543)
    * Increase step size when clicking sliders in the MP Create Game dialog. (issue #3552)
+   * Fix overlapping top bar elements with small screen resolutions. (issue #3714)
    * Don't scroll to an invisible unit that recruits another invisible unit. (issue #3559)
    * When a recruited unit is fogged, scroll to the recruiting unit and play recruit
      animation. (issue #3577)
@@ -160,7 +181,15 @@
    * Game Load screen gracefully handles savefiles that can't be parsed. (issue #3652)
    * The sidebar now shows alignment and damages as they would be on the hex under
      the mouse, rather than at the unit's current location. (PR #3642)
+   * When a unit has multiple statuses (slowed/poisoned/invisible/etc), the
+     sidebar shows all of them, not just the first. (issue #3197)
    * Fixed being able to dismiss a game lobby by pressing Esc.
+   * Fixed multiple severe issues in the classic theme.
+   * The "Attack Enemy" dialog now shows inactive weapon specials in gray. (PR #3686)
+   * Taking screenshots in title screen is possible again (issue #3235)
+   * The "Recruit Unit" dialog is searchable by unit type name. (PR #3787)
+   * Add text filter to hotkeys preferences. (PR #3759)
+   * Hide leader in status table if it's unfogged but invisible. (PR #3854)
 
 ## Version 1.14.5
  ### AI
