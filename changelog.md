@@ -19,6 +19,15 @@
    * Sceptre of Fire:
      * S1&2: increased difficulty
      * S6: additional guards for the elves
+   * Secrets of the Ancients:
+     * S01 Slipping Away: It is now obvious that the wild animals cannot cross the fences.
+     * S02 Dark Business: Simplify scenario by removing the temporary invisible starting keep.
+     * S05 Blackwater: Additional dialog from Ardonna at the start.
+     * S11 Battleground: Ghosts are now able to be recruited after the scenario is complete.
+     * S21 Against the World: Leader of the elves is now same elf from S12.
+     * Proper animation for finding the bird bones.
+     * Newly made liches will now receive a move point upon transformation if they weren't recalled.
+       this turn and haven't moved yet.
    * The Hammer of Thursagan
      * S12 'The Underlevels': redesigned with completely new map and scenario
    * Northern Rebirth:
