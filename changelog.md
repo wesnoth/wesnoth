@@ -31,6 +31,9 @@
  ### Campaigns
    * A Tale of Two Brothers
      * S2 'Chase': improved behavior of undead side leader with custom AI
+   * Secrets of the Ancients:
+     * Added ability to recruit different kinds of walking corpses during the campaign.
+     * Unit type naming convention cleanup.
    * Deprecate AI Controller and remove it from mainline campaign scenarios
  ### Engine
    * Windows 7 is now the minimum supported Windows version.
@@ -116,6 +119,15 @@
    * Descent Into Darkness:
      * Allow converting L3 necromancers to liches from S12 onwards (issue #3165).
      * Added an alternative method of completing the campaign (issue #3167).
+   * Secrets of the Ancients:
+     * S01 Slipping Away: It is now obvious that the wild animals cannot cross the fences.
+     * S02 Dark Business: Simplify scenario by removing the temporary invisible starting keep.
+     * S05 Blackwater: Additional dialog from Ardonna at the start.
+     * S11 Battleground: Ghosts are now able to be recruited after the scenario is complete.
+     * S21 Against the World: Leader of the elves is now same elf from S12.
+     * Proper animation for finding the bird bones.
+     * Newly made liches will now receive a move point upon transformation if they weren't recalled.
+       this turn and haven't moved yet.
    * The Hammer of Thursagan
      * S12 'The Underlevels': redesigned with completely new map and scenario
    * The South Guard:
