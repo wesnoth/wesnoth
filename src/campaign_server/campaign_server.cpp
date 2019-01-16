@@ -586,17 +586,17 @@ void server::handle_request_campaign_list(const server::request& req)
 
 	bool before_flag = false;
 	std::time_t before = epoch;
-	try {
+	if(!req.cfg["before"].empty()) {
 		before += req.cfg["before"].to_time_t();
 		before_flag = true;
-	} catch(const bad_lexical_cast&) {}
+	}
 
 	bool after_flag = false;
 	std::time_t after = epoch;
-	try {
+	if(!req.cfg["after"].empty()) {
 		after += req.cfg["after"].to_time_t();
 		after_flag = true;
-	} catch(const bad_lexical_cast&) {}
+	}
 
 	const std::string& name = req.cfg["name"];
 	const std::string& lang = req.cfg["language"];
