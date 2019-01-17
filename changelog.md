@@ -24,7 +24,9 @@
      * S02 Dark Business: Simplify scenario by removing the temporary invisible starting keep.
      * S05 Blackwater: Additional dialog from Ardonna at the start.
      * S11 Battleground: Ghosts are now able to be recruited after the scenario is complete.
+     * S15 Mountain Pass: Bird bones moves so bird is easier to keep alive when discovered.
      * S21 Against the World: Leader of the elves is now same elf from S12.
+     * S21 Against the World: Adjustment so player doesn't have to chase down some leaders at the end.
      * Proper animation for finding the bird bones.
      * Newly made liches will now receive a move point upon transformation if they weren't recalled.
        this turn and haven't moved yet.
