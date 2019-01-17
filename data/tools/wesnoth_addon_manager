@@ -14,6 +14,15 @@ from subprocess import Popen
 import wesnoth.wmlparser3 as wmlparser
 from wesnoth.campaignserver_client import CampaignClient
 
+# This is the validation code for the -u arguments. It checks if the input path is valid
+def valid_file_path(path):
+    if os.path.isdir(path) or os.path.isfile(path):
+        return path
+    else:
+        sys.stderr.write("No such file or directory: %s\n" % path)
+        sys.exit(1)
+    return None
+
 if __name__ == "__main__":
     import argparse
 
@@ -65,7 +74,7 @@ if __name__ == "__main__":
         "UPLOAD should be either the name of an add-on subdirectory," +
         "(in which case the client looks for _server.pbl beneath it) " +
         "or a path to the .pbl file (in which case the name of the " +
-        "add-on subdirectory is the name of the path with .pbl removed)")
+        "add-on subdirectory is the name of the path with .pbl removed)", type=valid_file_path)
     argumentparser.add_argument("-s", "--status",
         help="Display the status of addons installed in the given " +
         "directory.")
