@@ -745,7 +745,7 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg)
 		if (!lua_istable(L, -1)) return_misformed();
 		lua_rawgeti(L, -1, 1);
 		char const *m = lua_tostring(L, -1);
-		if (!m || !config::valid_tag(m)) return_misformed();
+		if (!m || !config::valid_tag(m) || m[0] == '_') return_misformed();
 		lua_rawgeti(L, -2, 2);
 		if (!luaW_toconfig(L, -1, cfg.add_child(m)))
 			return_misformed();

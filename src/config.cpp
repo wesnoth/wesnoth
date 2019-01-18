@@ -186,8 +186,8 @@ bool config::valid_tag(config_key_type name)
 	if(name == "") {
 		// Empty strings not allowed
 		return false;
-	} else if(name[0] == '_') {
-		// Underscore can't be the first character
+	} else if(name == "_") {
+		// A lone underscore isn't a valid tag name
 		return false;
 	} else {
 		return std::all_of(name.begin(), name.end(), [](const char& c)
