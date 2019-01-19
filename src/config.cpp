@@ -201,17 +201,7 @@ bool config::valid_tag(config_key_type name)
 
 bool config::valid_attribute(config_key_type name)
 {
-	if(name.empty()) {
-		return false;
-	}
-
-	for(char c : name) {
-		if(!std::isalnum(c, std::locale::classic()) && c != '_') {
-			return false;
-		}
-	}
-
-	return true;
+	return valid_tag(name);
 }
 
 bool config::has_attribute(config_key_type key) const
@@ -1394,11 +1384,15 @@ void swap(config& lhs, config& rhs)
 
 bool config::validate_wml() const
 {
-	return std::all_of(children_.begin(), children_.end(), [](const child_map::value_type& pair)
+	return std::all_of(children_.begin(), children_.end(), [](const auto& pair)
 	{
 		return valid_tag(pair.first) &&
 			std::all_of(pair.second.begin(), pair.second.end(),
-			[](const std::unique_ptr<config>& c) { return c->validate_wml(); });
+			[](const auto& c) { return c->validate_wml(); });
+	}) &&
+		std::all_of(values_.begin(), values_.end(), [](const auto& pair)
+	{
+		return valid_attribute(pair.first);
 	});
 }
 
