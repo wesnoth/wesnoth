@@ -41,11 +41,6 @@ public:
 	static const config& get_child_at(const config& cfg, const std::string& key, int index)
 	{
 		assert(index >= 0);
-
-		if(!config::valid_tag(key)) {
-			throw invalid_variablename_exception();
-		}
-
 		// cfg.child_or_empty does not support index parameter
 		if(const config& child = cfg.child(key, index)) {
 			return child;
@@ -68,11 +63,6 @@ public:
 	static config& get_child_at(config& cfg, const std::string& key, int index)
 	{
 		assert(index >= 0);
-
-		if (!config::valid_tag(key)) {
-			throw invalid_variablename_exception();
-		}
-
 		// the 'create_if_not_existent' logic.
 		while(static_cast<int>(cfg.child_count(key)) <= index) {
 			cfg.add_child(key);
