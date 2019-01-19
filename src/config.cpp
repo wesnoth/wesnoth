@@ -193,8 +193,14 @@ bool config::valid_tag(config_key_type name)
 	} else {
 		return std::all_of(name.begin(), name.end(), [](const char& c)
 		{
-			// Only alphanumeric ASCII characters and underscores are allowed
-			return std::isalnum(c, std::locale::classic()) || c == '_';
+			/* Only alphanumeric ASCII characters and underscores are allowed.
+
+			We're using a manual check mainly for performance. @gfgtdf measured
+			that a manual check can be up to 30 times faster than std::isalnum().
+
+			- Jyrki, 2019-01-19 */
+			return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') ||
+				(c >= '0' && c <= '9') || (c == '_');
 		});
 	}
 }
