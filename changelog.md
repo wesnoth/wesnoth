@@ -50,6 +50,7 @@
    * wml.tostring() now outputs a string that can be parsed back to WML without loss of data.
    * Add wml.clone() function that performs a deep copy of a config or vconfig.
    * Organize API functions into several new (sub)modules: gui, wesnoth.units, wesnoth.interface
+   * Allow WML tag names injected with wml.tag to start with underscores.
  ### User Interface
    * Don't show in the sidebar the time of day schedule of a shrouded hex. (issue #3638)
  ### Packaging
