@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fi\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-09-09 08:37 UTC\n"
+"POT-Creation-Date: 2019-01-21 18:29 UTC\n"
 "PO-Revision-Date: 2012-05-15 03:20+0300\n"
 "Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
 "Language-Team: Finnish <wiki.wesnoth.org/FinnishTranslation>\n"
@@ -39,7 +39,9 @@ msgstr ""
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:20
-msgid "(Novice level, 7 scenarios.)"
+#, fuzzy
+#| msgid "(Novice level, 7 scenarios.)"
+msgid "(Rookie level, 7 scenarios.)"
 msgstr "(aloittelijatasoa, 7 skenaariota)"
 
 #. [campaign]: id=An_Orcish_Incursion
@@ -184,11 +186,11 @@ msgstr "Haltiat"
 msgid "Lomarfel"
 msgstr "Lomarfel"
 
-#. [side]: type=Orcish Warrior, id=Urugha
 #. [side]: type=Orcish Warlord, id=Krughnar
 #. [side]: type=Orcish Sovereign, id=Rualsha
 #. [side]: type=Orcish Slayer, id=Gharlsa
 #. [side]: type=Orcish Warlord, id=Gnargha
+#. [side]: type=Orcish Warrior, id=Urugha
 #: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:88
 #: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:59
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:66
@@ -285,7 +287,7 @@ msgid "Yes, my lord!"
 msgstr "Tapahtuu, herrani!"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:178
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:180
 msgid ""
 "Look at them. Big, slow, clumsy and hardly a bow in hand. Keep to the trees, "
 "use your arrows and the day will be ours."
@@ -294,14 +296,50 @@ msgstr ""
 "Pysytelkää metsässä, käyttäkää nuolianne, ja päivä on meidän."
 
 #. [message]: race=elf
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:187
+#. the player hasn't recruited any Shamans. This message isn't shown if they have a Shaman, even if she has 0 xp.
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:213
+msgid ""
+"My lord, none of our healers have experience on the battlefield. It pleases "
+"me that they are safe, but if we should embark on a campaign then we will "
+"surely need them alongside us in the battles ahead."
+msgstr ""
+
+#. [message]: race=elf
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:214
+msgid ""
+"female^My lord, none of our healers have experience on the battlefield. It "
+"pleases me that they are safe, but if we should embark on a campaign then we "
+"will surely need them alongside us in the battles ahead."
+msgstr ""
+
+#. [message]: race=elf
+#. the player has recruited some Shamans but has lost all them (or managed to level a Sorceress)
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:228
+msgid ""
+"My lord, none of our surviving healers have experience on the battlefield. "
+"It pains me to suggest that we should risk another, but if we should embark "
+"on a campaign then we will surely need them alongside us in the battles "
+"ahead."
+msgstr ""
+
+#. [message]: race=elf
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:229
+msgid ""
+"female^My lord, none of our surviving healers have experience on the "
+"battlefield. It pains me to suggest that we should risk another, but if we "
+"should embark on a campaign then we will surely need them alongside us in "
+"the battles ahead."
+msgstr ""
+
+#. [message]: race=elf
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:244
 msgid "It’s hopeless; we’ve tried everything, and they’re still coming back."
 msgstr ""
 "Tämä on toivotonta; olemme yrittäneet kaikkea, ja he vieläkin tulevat "
 "takaisin."
 
 #. [message]: speaker=Urugha
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:192
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:249
 msgid ""
 "Forward, you worthless worms! Look at them, they’re tired and afraid! You "
 "killed their will to fight, now go and finish the job!"
@@ -311,7 +349,7 @@ msgstr ""
 "viimeistelkää työ!"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:197
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:254
 msgid ""
 "That cloud of dust on the horizon... flee! There’s more of the abominations "
 "heading this way! Fall back before we’re outnumbered and crushed."
@@ -321,7 +359,7 @@ msgstr ""
 "murskataan."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:203
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:260
 msgid ""
 "Lord Erlornas didn’t drive the orcs back, although he and his warriors tried "
 "their absolute best. When another war band arrived, elvish resistance "
@@ -332,7 +370,7 @@ msgstr ""
 "mureni."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:209
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:266
 msgid ""
 "Of the ensuing events little is known, since much was lost in the chaos and "
 "confusion, but one thing is painfully sure. Elves lost the campaign."
@@ -342,27 +380,27 @@ msgstr ""
 "taistelun."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:221
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:278
 msgid "Ugh..."
 msgstr "Uhh..."
 
 #. [message]: speaker=Urugha
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:226
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:283
 msgid "Finally! Got him!"
 msgstr "Viimeinkin! Nalkissa on!"
 
 #. [message]: race=elf
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:234
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:291
 msgid "Lord!"
 msgstr "Lordi!"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:239
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:296
 msgid "Take... command... Drive them... away."
 msgstr "Ota... komento... Aja heidät... pois."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:245
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:302
 msgid ""
 "Lord Erlornas died the day he first fought the orcs and never saw the end of "
 "the war. Given its final outcome, this was perhaps for the best."
@@ -372,7 +410,7 @@ msgstr ""
 "mitä oli, se oli ehkä parhaaksi."
 
 #. [message]: speaker=unit
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:257
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:314
 msgid ""
 "I’ve been bested, but the combat wasn’t fair... A thousand curses on you, "
 "withered coward! May you suffer... and when my master, Rualsha, finds you "
@@ -383,7 +421,7 @@ msgstr ""
 "pyyhkiköön hän sinut ja kansasi tämän maan päältä!"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:269
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:326
 msgid ""
 "Rualsha? Hmm... What if... Assemble a war-party, we need to scout north!"
 msgstr ""

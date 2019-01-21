@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-09-09 08:38 UTC\n"
+"POT-Creation-Date: 2019-01-21 18:30 UTC\n"
 "PO-Revision-Date: 2018-12-02 02:44+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -70,7 +70,9 @@ msgstr ""
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:28
-msgid "(Intermediate level, 8 scenarios.)"
+#, fuzzy
+#| msgid "(Intermediate level, 8 scenarios.)"
+msgid "(Novice level, 8 scenarios.)"
 msgstr "（普通難度，8個章節。）"
 
 #. [about]
@@ -181,11 +183,11 @@ msgstr "地精抵達島本村"
 
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:115
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:74
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:75
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:138
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:99
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:118
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:144
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:154
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:93
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:219
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:298
@@ -195,11 +197,11 @@ msgstr "博岞斯死亡"
 
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:119
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:78
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:79
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:142
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:103
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:122
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:148
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:158
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:97
 msgid "Death of Harper"
 msgstr "哈魄死亡"
@@ -451,20 +453,20 @@ msgstr "公民反抗軍"
 #. [side]: type=General, id=Lord Maddock
 #. [side]: type=Rogue, id=Hans
 #. [side]: type=Highwayman, id=Baldras
-#. [side]: type=Bandit_Peasant, id=Baldras
-#. [side]
 #. [side]: type=Highwayman_Peasant, id=Relana
 #. [side]: type=Shadow Lord, id=Helicrom
+#. [side]
+#. [side]: type=Bandit_Peasant, id=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:26
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:61
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:62
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:38
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:70
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:37
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:59
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:35
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:91
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:42
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:65
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:52
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:75
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:43
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:49
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:169
@@ -482,9 +484,9 @@ msgstr "韃爾彎恩"
 #. [side]
 #. [side]: type=Royal Guard, id=Archarel
 #. [side]: type=Iron Mauler, id=Linneus
-#. [side]: type=Cavalier, id=Tarwen
 #. [side]: type=General, id=Dommel
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:40
+#. [side]: type=Cavalier, id=Tarwen
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:41
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:80
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:48
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:64
@@ -495,34 +497,34 @@ msgid "Asheviere"
 msgstr "艾絲維爾"
 
 #. [objective]: condition=win
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:70
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:71
 msgid "Kill the Wesnoth army captain, Tarwen"
 msgstr "擊殺韋諾指揮官，韃爾彎恩"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:120
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:121
 msgid "Look, riders approach."
 msgstr "看，騎兵來了。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:124
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:125
 msgid "Stand fast, nephew."
 msgstr "堅守位置，侄子。"
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:137
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:138
 msgid ""
 "By order of the Queen, the magistrate of this town is ordered to travel with "
 "us to Elensefar for vetting."
 msgstr "奉女王之命，該村村長得跟我們到艾倫索法接受審查。"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:141
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:142
 msgid "Garard is the King of Wesnoth. We are ruled by no queen."
 msgstr "葛瑞德才是韋諾之王。我們不受王后統治。"
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:145
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:146
 #, fuzzy
 #| msgid ""
 #| "Insolent peasants, you will kneel before your betters! Asheviere is the "
@@ -539,17 +541,17 @@ msgstr ""
 "茲駕崩了。少跟我頂嘴。無論活人還是屍體，這裡的村長都得跟我們走。"
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:179
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:180
 msgid "Guard the gate."
 msgstr "封住大門。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:190
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:193
 msgid "Harper, get out of here. This is no battle for you."
 msgstr "哈魄，離開這。你不該參與這場戰鬥。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:195
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:198
 msgid ""
 "I am the magistrate of Dallben, and it is <i>you</i> who will be leaving "
 "Dallben, be it dead or alive."
@@ -557,36 +559,36 @@ msgstr ""
 "我就是島本的村長，該離開島本的是<i>你</i>才對，你想活著離開還是躺著出去。"
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:210
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:213
 msgid "Get back, you cur!"
 msgstr "滾開，你這狗雜種！"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:224
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:227
 msgid "Get out of my village!"
 msgstr "滾出我的村子！"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:237
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:240
 msgid ""
 "Our lives were hard enough when we were beneath the attention of the Crown. "
 "But now I fear things will be worse."
 msgstr "在王權的統治下我們生活已經夠辛苦了。但現在恐怕更糟。"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:242
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:245
 msgid "We must tell the people of Delwyn about this."
 msgstr "我們必須告訴戴爾因的人這些事。"
 
 #. [message]: role=Advisor
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:255
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:258
 msgid ""
 "That is true. We have always flown to their aid, and they to ours. This is "
 "something we should face together."
 msgstr "沒錯。我們總是在互相幫助。這是我們該一同面對的問題。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:260
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:263
 msgid ""
 "Very well. We will go to Delwyn and share counsel with them. I never thought "
 "Wesnoth would fall into darkness. Now, not only do the orcs threaten our "
@@ -597,7 +599,7 @@ msgstr ""
 "半獸人威脅我們的土地，還有王后攀上王位後的不祥之兆。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:265
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:268
 msgid ""
 "Today we may no longer be citizens of Wesnoth. I wish it could be otherwise, "
 "but we are now outlaws."
@@ -606,13 +608,13 @@ msgstr ""
 "了。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:337
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:340
 msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
 msgstr "喔！不！他們的援軍到了，我們沒有時間了..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:350
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:353
 #, fuzzy
 #| msgid ""
 #| "They would be remembered only traitors rightly put down by the Queen’s "
@@ -662,9 +664,9 @@ msgstr "烏克‧迪樂克"
 #. [side]: type=Lich, id=Sel-Mana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:100
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:122
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:95
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:111
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:128
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:105
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:121
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:138
 msgid "Evil"
 msgstr "邪惡"
 
@@ -1243,7 +1245,7 @@ msgstr "領路吧。"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:628
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:423
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:433
 msgid ""
 "We have spent too much time here. Surely the Queen’s forces have returned to "
 "Dallben. Our mission is unfinished, but we must return to fight a suicide "
@@ -1258,38 +1260,38 @@ msgid "The Grey Woods"
 msgstr "灰森林"
 
 #. [side]: type=Shadow Lord, id=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:50
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:60
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:146
 msgid "Helicrom"
 msgstr "黑勒洛"
 
 #. [side]: type=Necromancer, id=Mal-Jarrof
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:86
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:96
 msgid "Mal-Jarrof"
 msgstr "末-傑洛夫"
 
 #. [side]: type=Necromancer, id=Mal-Jerod
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:102
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:112
 msgid "Mal-Jerod"
 msgstr "末-傑羅德"
 
 #. [side]: type=Lich, id=Sel-Mana
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:118
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:128
 msgid "Sel-Mana"
 msgstr "撒爾-瑪納"
 
 #. [objective]: condition=win
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:140
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:150
 msgid "Defeat the lich and its minions"
 msgstr "擊敗巫妖和它的奴僕們"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:211
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:221
 msgid "The leader, I presume."
 msgstr "我想你就是老大。"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:215
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:225
 msgid ""
 "I am Helicrom, and you should not be so glib. I control dangerous men. My "
 "henchmen can slip unseen through any city, rob a man while he sleeps, or "
@@ -1301,12 +1303,12 @@ msgstr ""
 "求的東西需要大把黃金。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:219
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:229
 msgid "Your pursuits?"
 msgstr "你們的的追求？"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:223
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:233
 msgid ""
 "The former King’s magic ministry kept a tight control on the training and "
 "employment of mages in Wesnoth. Those of us who dared to... depart from the "
@@ -1318,12 +1320,12 @@ msgstr ""
 "秘密和安全，我們付出不小的代價。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:227
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:237
 msgid "I have heard of you. Necromancers. Barely-human scum, I say."
 msgstr "我聽說過，就是死靈法師。他們是人渣。"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:231
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:241
 msgid ""
 "Wrong. Necromancers become slaves to their lich masters and eventually lose "
 "their humanity. We have proven that practicing the dark arts need not lead "
@@ -1336,12 +1338,12 @@ msgstr ""
 "們在這兩條道路上游走，卻又不受制於他們。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:235
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:245
 msgid "I... see, I think. Why do you want to help us?"
 msgstr "我想，我...明白了。你們為什麼想幫我們？"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:239
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:249
 msgid ""
 "We don’t. You have sought us out. But, I do know of your situation and am "
 "willing to help. Any weakening of the Throne of Wesnoth, whether it be "
@@ -1351,7 +1353,7 @@ msgstr ""
 "衰弱，無論是國王或是女王都對我們有助益。"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:243
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:253
 #, fuzzy
 #| msgid ""
 #| "Carcyn is always foggy as of late because these woods have recently "
@@ -1367,7 +1369,7 @@ msgstr ""
 "我們最近的實驗把它從沉睡中喚醒...不過真正的原因不太確定。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:247
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:257
 msgid ""
 "So now you need to defend your rear as well as your front... I see your "
 "predicament. My men will wipe this land clean if you can help us defend our "
@@ -1377,17 +1379,17 @@ msgstr ""
 "理這塊土地。"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:272
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:282
 msgid "Finally, that creature is dead, yet its foolish minions resist."
 msgstr "這生物終於死了，不過它愚蠢的奴僕們還在抵抗。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:279
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:289
 msgid "The lich is destroyed and its minions dead."
 msgstr "巫妖被打爛了，而它的奴僕也死光了。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:296
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:306
 msgid ""
 "The defeat of the evil lich infesting the Grey Woods was a bittersweet "
 "victory. With Helicrom dead, the guild of shadow magic was thrown into "
@@ -1397,7 +1399,7 @@ msgstr ""
 "龍無首的狀態。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:301
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:311
 msgid ""
 "The remaining members were very grateful and offered Baldras a sizable sum "
 "of gold for his help. It was not the help he was hoping for, but he knew it "
@@ -1407,7 +1409,7 @@ msgstr ""
 "的幫助，不過對於接下來的衝突戰也已經足夠了。"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:320
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:330
 msgid ""
 "With the undead driven out, we may live here in relative peace and pursue "
 "our studies. For this, Baldras, I am grateful."
@@ -1416,14 +1418,14 @@ msgstr ""
 "點我非常感激你。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:324
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:334
 msgid ""
 "Studies? Peace? You mean to continue feeding on the lawful citizens of "
 "Wesnoth. There will be no peace for them."
 msgstr "研究？安心？你的意思是繼續剝削韋諾的民脂民膏。他們可不會安心。"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:328
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:338
 msgid ""
 "No one here is in a position to be dispensing moral judgments. Regardless, "
 "you have done great service to us today, and we owe you a debt. I will help "
@@ -1433,7 +1435,7 @@ msgstr ""
 "我會盡可能的幫助你。"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:332
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:342
 msgid ""
 "I was planning on giving you gold. Any good army is well financed, and with "
 "the lich gone we can now spare it."
@@ -1442,7 +1444,7 @@ msgstr ""
 "以給你。"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:336
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:346
 msgid ""
 "But, I think it would help you more if I lent you some of my men to join you "
 "on your adventures. The Queen has been sending mages out here, and my men "
@@ -1452,7 +1454,7 @@ msgstr ""
 "的人渴望回報。"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:340
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:350
 msgid ""
 "On the other hand, if I keep the full force of my organization here, we "
 "might be able to regroup and join you on the battlefield when the time comes."
@@ -1460,39 +1462,39 @@ msgstr ""
 "另一方面，如果我保留組織所有的軍力，我們可以重整軍力並在適當的時機加入戰場。"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:344
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:354
 msgid "I leave it to you to decide."
 msgstr "你就從這幾個選項中選一個吧。"
 
 #. [option]
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:346
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:356
 msgid "I will take the gold. How does 500 sound?"
 msgstr "我拿金幣。500如何？"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:350
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:360
 msgid "Agreed. Good luck and farewell to you, Master Baldras."
 msgstr "可以。祝你好運，再會，博岞斯大人。"
 
 #. [option]
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:371
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:381
 msgid ""
 "Send your men with us. They will be valuable help as we prepare for the "
 "assault from the Wesnoth army garrison."
 msgstr "讓你的人跟著我們。他們在我們準備突襲韋諾守備軍的時候會有很大的作用。"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:375
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:385
 msgid "Done. My finest mages and thieves are at your disposal. Use them well."
 msgstr "好。我最出色的法師和盜賊任你差遣。好好運用他們。"
 
 #. [option]
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:390
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:400
 msgid "I wish you to join us in battle against the Queen’s forces."
 msgstr "我希望你能加入我們對抗王后軍隊。"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:394
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:404
 msgid ""
 "All right. I need time to clean up this forest and recall my men from the "
 "countryside. We will be ready to march in seven days. All now hinges on you! "
@@ -1502,7 +1504,7 @@ msgstr ""
 "主！直到那一刻..."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:444
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:454
 msgid "My men... have failed to protect me! I perish..."
 msgstr "我的人...無法保護我！我死了..."
 

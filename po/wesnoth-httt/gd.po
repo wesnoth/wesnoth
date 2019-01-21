@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-09-16 07:03 UTC\n"
+"POT-Creation-Date: 2019-01-21 18:30 UTC\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: GunChleoc, 2017\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -2025,22 +2025,22 @@ msgstr ""
 
 #. [unit]: id=Reglok, type=Rogue
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:247
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:397
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:508
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:405
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:527
 msgid "Reglok"
 msgstr "Reaglok"
 
 #. [unit]: id=Gelgar, type=Thief
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:263
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:413
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:524
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:421
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:543
 msgid "Gelgar"
 msgstr "Gealgar"
 
 #. [unit]: id=Gamlel, type=Thief
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:277
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:427
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:539
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:435
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:558
 msgid "Gamlel"
 msgstr "Gamlail"
 
@@ -2132,13 +2132,21 @@ msgstr ""
 "Glè mhath. Tadhailibh oirnn dà uair an dèidh meadhan-oidhche taobh an iar na "
 "h&#8209;aibhne, taobh thall port Eleansafair."
 
+#. [label]
+#. The party and an ally have agreed to meet at the location identified by this label.
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:353
+#, fuzzy
+#| msgid "Sleeping Gryphon"
+msgid "Meeting point"
+msgstr "’Na shuain"
+
 #. [option]
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:352
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:360
 msgid "I want you to reinforce us once we break through their line."
 msgstr "Thoiribh taic dhuinn nuair a bhios sinn air briseadh tron loidhne aca."
 
 #. [message]: speaker=Reglok
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:356
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:364
 msgid ""
 "Very well. When you raise your red banner over any building in the city "
 "proper, we will see the sign and attack from the city’s northern gate."
@@ -2148,13 +2156,13 @@ msgstr ""
 "a tuath a’ bhaile."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:360
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:368
 msgid "Agreed. But, will you be able to see our flag if it’s dark?"
 msgstr ""
 "Seo na nì sinn. Ach am faic sibh ar bratach ann an dorch na h&#8209;oidhche?"
 
 #. [message]: speaker=Reglok
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:364
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:372
 msgid ""
 "Yes, we will see it. In fact, we prefer to fight at night. I pray you do not "
 "lead us into slaughter."
@@ -2163,7 +2171,7 @@ msgstr ""
 "Na stiùiribh dhan bhàs sinn."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:368
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:376
 msgid ""
 "Do not fear, friends. There will be a slaughter here, but it will be orcish "
 "blood staining the streets."
@@ -2172,7 +2180,7 @@ msgstr ""
 "bhios a’ ruith sna rathaidean."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:390
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:398
 msgid ""
 "As the banner was raised, sounds of fighting could be heard from across the "
 "city."
@@ -2180,30 +2188,30 @@ msgstr ""
 "Nuair a chaidh a’ bhratach a thogail, chualas sabaid bho air feadh a’ bhaile."
 
 #. [unit]: id=Darglen, type=Thief
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:441
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:449
 msgid "Darglen"
 msgstr "Darglan"
 
 #. [message]: speaker=Reglok
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:455
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:463
 msgid "Let’s expel these invaders! Today, the city is ours again!"
 msgstr ""
 "Fuadaichidh sinn na h&#8209;ionnsaighich a tha seo! Gabhaidh sinn ar baile a-"
 "rithist an-diugh!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:477
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:485
 msgid "You can now recruit Thieves!"
 msgstr "’S urrainn dhut mèirlich a thrusadh a-nis!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:497
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:516
 msgid ""
 "On the banks of Elensefar’s port district, three shadowy figures appeared."
 msgstr "Nochd trì cruthan air bruach ceàrn port Eleansafair."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:502
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:521
 msgid ""
 "To Konrad’s surprise, they quickly made their way across the river’s mouth. "
 "The turbulent waters hid a nearly invisible ford, wide enough for two "
@@ -2214,7 +2222,7 @@ msgstr ""
 "a bha leathann gu leòr ach an coisicheadh dà shaighdear taobh ri taobh."
 
 #. [message]: speaker=Reglok
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:560
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:579
 msgid ""
 "Very few people know that the river can be forded here. The orcs have yet to "
 "discover this place. Bring your forces into the city, quickly now, and you "
@@ -2225,24 +2233,24 @@ msgstr ""
 "dhan bhaile gu luath a-nis ach an toir sinn ionnsaigh bho dhà thaobh."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:571
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:590
 msgid "Finally, we have retaken the city! Let us rest here, friends."
 msgstr ""
 "Mu dheireadh thall, fhuair sinn am baile air ais! Gabhamaid fois an-seo, a "
 "chàirdean."
 
 #. [message]: role=Thief
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:579
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:598
 msgid "Victory! The thieves of Elensefar will be in your service, my lord."
 msgstr "Buaidh! Bidh mèirlich Eleansafair ur frithealadh, mo thighearna."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:584
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:603
 msgid "The party rested for three days, after which an old friend returned."
 msgstr "Ghabh am buidheann fois fad trì latha gus an do thill seann charaid."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:611
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:630
 msgid ""
 "Greetings, friends. I see that you have rescued the city! I knew that you "
 "could do it."
@@ -2251,12 +2259,12 @@ msgstr ""
 "gun dèanadh sibh a’ chùis air."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:617
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:636
 msgid "Delfador! So good to see you! Where have you been?"
 msgstr "A Dheilfeadair! Nach math ur faicinn! Càite an robh sibh?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:622
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:641
 msgid ""
 "I have been meeting with the Ka’lian, the Great Council of the Elves. This "
 "is Kalenz, a great lord of the Northern Elves who came to the Council to "
@@ -2267,12 +2275,12 @@ msgstr ""
 "taic a chuideachd a thabhann dhuinn."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:631
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:650
 msgid "Greetings, friend."
 msgstr "Sin sibh, a charaid."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:636
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:655
 msgid ""
 "Delfador, we have captured this city, but surely Asheviere’s men will come "
 "and attack us! What should we do?"
@@ -2281,18 +2289,18 @@ msgstr ""
 "ionnsaigh a thoirt oirnn gun teagamh! Dè nì sinn?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:641
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:660
 msgid "The Ka’lian has met and decided: we must capture the Sceptre of Fire."
 msgstr ""
 "Seo co-dhùnadh a’ Cha’liain: feumaidh sinn slat-rìoghail an teine a chosnadh."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:646
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:665
 msgid "The Sceptre of Fire? What’s that?"
 msgstr "Slat-rìoghail an teine? Dè th’ ann?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:652
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:671
 msgid ""
 "The Sceptre of Fire is the most ancient artifact of the realm of Wesnoth. It "
 "was forged by the dwarves of Knalga at the request of King Haldric II. It "
@@ -2312,12 +2320,12 @@ msgstr ""
 "deach an slat-rìoghail a lorg a-riamh."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:657
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:676
 msgid "But what has this to do with me?"
 msgstr "Ach dè an gnothach a th’ agam leis?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:662
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:681
 msgid ""
 "When Garard II, your uncle, was deciding upon a successor, he issued an "
 "edict that whichever member of the royal family could retrieve the Sceptre "
@@ -2328,17 +2336,17 @@ msgstr ""
 "dh’ath-bhuidhneadh slat-rìoghail an teine.  "
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:667
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:686
 msgid "Oh, and you want me to get this Sceptre?"
 msgstr "Ò, is tha sibhse ag iarraidh bhuam gum faighinn an slat-rìoghail sin?"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:672
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:691
 msgid "We will help you retrieve it, my lord."
 msgstr "Bheir sinn cuideachadh dhuibh gus ath-bhuidhinn, mo thighearna."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:677
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:696
 msgid ""
 "Time is short. We think that Asheviere is also searching for the Sceptre, to "
 "help seal her place as ruler. But if you find the Sceptre first, the people "
@@ -2350,19 +2358,19 @@ msgstr ""
 "taic dhut mar rìgh."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:682
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:701
 msgid "Me? King?"
 msgstr "Mar rìgh? Mise?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:687
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:706
 msgid "Yes, Konrad. I believe you will be king one day. Now let us make haste!"
 msgstr ""
 "Seadh, a Chonaill. Cha chreid mi nach bi thu ’nad rìgh nuair a thig an "
 "latha. Greasamaid oirnn ma-thà!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:692
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:711
 msgid ""
 "We cannot go to Wesmere, for Asheviere’s orcs have the approaches ringed "
 "about with steel; Kalenz and I barely escaped, and Chantal cannot get out. "
@@ -2374,7 +2382,7 @@ msgstr ""
 "bheil na deamhain a sheachnadh mus fàs sinn nas treasa."
 
 #. [message]: speaker=Muff Jaanal
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:714
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:733
 msgid "So you endeavor to fight me in my home. Foolish."
 msgstr ""
 "’Eil sibh a’ feuchainn ri ionnsaigh a thoirt orm san taigh agam fhìn? Abair "

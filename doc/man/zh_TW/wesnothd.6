@@ -20,7 +20,7 @@
 .\"*******************************************************************
 .TH WESNOTHD 6 2018 wesnothd 韋諾之戰多人遊戲伺服器
 .
-.SH 命名
+.SH 名稱
 .
 wesnothd \- 韋諾之戰 \fBWesnoth\fP 多人游戲伺服器
 .
@@ -33,9 +33,8 @@ wesnothd \- 韋諾之戰 \fBWesnoth\fP 多人游戲伺服器
 .
 .SH 描述
 .
-Manages Battle for Wesnoth multiplayer games. See
-https://www.wesnoth.org/wiki/ServerAdministration on what commands the
-server accepts via the wesnoth client (/query ...) or the fifo.
+管理韋諾之戰多人對戰遊戲。參閱 http://www.wesnoth.org/wiki/ServerAdministration 來查看韋諾客戶端或
+fifo 的伺服器指令。
 .
 .SH 選項
 .
@@ -59,17 +58,17 @@ server accepts via the wesnoth client (/query ...) or the fifo.
 設定網路I/O的最大等待工作流程數為 n (預設值為\fB5\fP，\ 最大值為\ \fB30\fP)。
 .TP 
 \fB\-T\ \fP\fInumber\fP\fB,\ \-\-max\-threads\fP\fI\ number\fP
-允許創造最大等待工作流程數。如果設定為\fB0\fP則不限制流程數（預設值：\fB0\fP）
+允許創造最大等待工作流程數。如果設定為 \fB0\fP 則不限制流程數（預設值：\fB0\fP）
 .TP 
 \fB\-V, \-\-version\fP
-顯示版本並退出。
+顯示版本號碼並退出。
 .TP 
 \fB\-v, \-\-verbose\fP
 開啟偵測日誌記錄。
 .
 .SH 伺服器設定
 .
-.SS 常用語法是:
+.SS 常用語法是：
 .
 .P
 [\fItag\fP]
@@ -80,7 +79,7 @@ server accepts via the wesnoth client (/query ...) or the fifo.
 .P
 [/\fItag\fP]
 .
-.SS 全球關鍵字:
+.SS "Global keys："
 .
 .TP 
 \fBallow_remote_shutdown\fP
@@ -97,13 +96,12 @@ server accepts via the wesnoth client (/query ...) or the fifo.
 同一IP允許的連接數。(預設值：\fB5\fP)
 .TP 
 \fBdisallow_names\fP
-伺服器不允許使用的使用者名稱／暱稱。支援使用 \fB*\fP和\fB?\fP這兩個萬用字元。更多資料請查看 \fBglob\fP(7)
-。預設值(如果使用者沒有指定則自動使用)是：\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.。
+伺服器不允許使用的使用者名稱/暱稱。支援使用 \fB*\fP 和 \fB?\fP 這兩個萬用字元。更多資料請查看 \fBglob\fP(7)
+。預設值（如果使用者沒有指定則自動使用）是：\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP。
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time path
-(default: \fB/var/run/wesnothd/socket\fP).
+伺服器所使用的 fifo 檔案的路徑（與在wesnoth中使用 /query
+功能相同），您可以從該檔案內呼叫伺服器命令。如果不指定，則預設為編譯時指定的路徑（預設：\fB/var/run/wesnothd/socket\fP）。
 .TP 
 \fBmax_messages\fP
 \fBmessages_time_period\fP中允許存在的訊息數。 (默認值: \fB4\fP)
@@ -152,7 +150,7 @@ The path to the fifo you can echo server commands into (same as /query
 重定向到的伺服器地址。
 .TP 
 \fBport\fP
-連接埠口
+連接埠口。
 .TP 
 \fBversion\fP
 重定向用逗號分隔列表的版本。顯示同樣的模式包括\fBversions_accepted\fP在符號模式。
@@ -207,16 +205,16 @@ UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
 .RS
 .TP 
 \fBserver\fP
-郵件伺服器的主機名。
+郵件伺服器的主機名
 .TP 
 \fBusername\fP
-登錄到郵件伺服器的用戶名。
+登錄到郵件伺服器的使用者名稱。
 .TP 
 \fBpassword\fP
 使用者密碼。
 .TP 
 \fBfrom_address\fP
-您的電子信箱的回覆地址。
+您電子信箱的回覆地址。
 .TP 
 \fBmail_port\fP
 郵件伺服器的埠口。預設值為25。
@@ -232,11 +230,11 @@ UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
 <soliton.de@gmail.com>修改。這個說明頁最早由Cyril Bouthors
 <cyril@bouthors.org>編寫。
 .br
-Visit the official homepage: https://www.wesnoth.org/
+參閱官方網站：http://www.wesnoth.org/
 .
 .SH 版權
 .
-Copyright \(co 2003\-2018 David White <davidnwhite@verizon.net>
+版權 \(co 2003\-2018 David White <davidnwhite@verizon.net>
 .br
 這是一個免費遊戲；使用由FSF發布的GPL v2協議授權。原文如下：This is Free Software; this software is
 licensed under the GPL version 2, as published by the Free Software
@@ -246,4 +244,4 @@ or FITNESS FOR A PARTICULAR PURPOSE.
 .
 .SH 參見
 .
-\fBwesnoth\fP(6).
+\fBwesnoth\fP(6)

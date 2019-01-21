@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-09-16 07:03 UTC\n"
+"POT-Creation-Date: 2019-01-21 18:30 UTC\n"
 "PO-Revision-Date: 2007-12-21 11:00+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -2006,22 +2006,22 @@ msgstr ""
 
 #. [unit]: id=Reglok, type=Rogue
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:247
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:397
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:508
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:405
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:527
 msgid "Reglok"
 msgstr "Reglok"
 
 #. [unit]: id=Gelgar, type=Thief
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:263
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:413
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:524
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:421
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:543
 msgid "Gelgar"
 msgstr "Gelgar"
 
 #. [unit]: id=Gamlel, type=Thief
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:277
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:427
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:539
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:435
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:558
 msgid "Gamlel"
 msgstr "Gamlel"
 
@@ -2107,15 +2107,22 @@ msgstr ""
 "Excelent. Mos vorem en el costat est del riu, creuant els molls d'Elensefar, "
 "dos hores després de mijanit."
 
+#. [label]
+#. The party and an ally have agreed to meet at the location identified by this label.
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:353
+#, fuzzy
+msgid "Meeting point"
+msgstr "Mare grifo"
+
 #. [option]
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:352
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:360
 msgid "I want you to reinforce us once we break through their line."
 msgstr ""
 "Vullc que mos servixques de reforç una volta trenquem la seua llínea "
 "defensiva."
 
 #. [message]: speaker=Reglok
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:356
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:364
 msgid ""
 "Very well. When you raise your red banner over any building in the city "
 "proper, we will see the sign and attack from the city’s northern gate."
@@ -2125,12 +2132,12 @@ msgstr ""
 "ciutat."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:360
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:368
 msgid "Agreed. But, will you be able to see our flag if it’s dark?"
 msgstr "D'acort, pero, ¿si és de nit podreu vore la nostra senyera?"
 
 #. [message]: speaker=Reglok
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:364
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:372
 msgid ""
 "Yes, we will see it. In fact, we prefer to fight at night. I pray you do not "
 "lead us into slaughter."
@@ -2139,7 +2146,7 @@ msgstr ""
 "resaré per a que no mos porteu a una massacre."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:368
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:376
 msgid ""
 "Do not fear, friends. There will be a slaughter here, but it will be orcish "
 "blood staining the streets."
@@ -2148,7 +2155,7 @@ msgstr ""
 "carrers serà la dels orcs."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:390
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:398
 msgid ""
 "As the banner was raised, sounds of fighting could be heard from across the "
 "city."
@@ -2157,25 +2164,25 @@ msgstr ""
 "per tota la ciutat."
 
 #. [unit]: id=Darglen, type=Thief
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:441
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:449
 msgid "Darglen"
 msgstr "Darglen"
 
 #. [message]: speaker=Reglok
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:455
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:463
 msgid "Let’s expel these invaders! Today, the city is ours again!"
 msgstr ""
 "¡Expulsem ad estos invasors! ¡Hui la ciutat tornarà a ser nostra de nou!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:477
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:485
 #, fuzzy
 #| msgid "You can now recruit magi!"
 msgid "You can now recruit Thieves!"
 msgstr "Ara pots reclutar macs."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:497
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:516
 msgid ""
 "On the banks of Elensefar’s port district, three shadowy figures appeared."
 msgstr ""
@@ -2183,7 +2190,7 @@ msgstr ""
 "entre les ombres."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:502
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:521
 msgid ""
 "To Konrad’s surprise, they quickly made their way across the river’s mouth. "
 "The turbulent waters hid a nearly invisible ford, wide enough for two "
@@ -2194,7 +2201,7 @@ msgstr ""
 "passen dos soldats muscle contra muscle."
 
 #. [message]: speaker=Reglok
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:560
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:579
 msgid ""
 "Very few people know that the river can be forded here. The orcs have yet to "
 "discover this place. Bring your forces into the city, quickly now, and you "
@@ -2205,24 +2212,24 @@ msgstr ""
 "atacar-los per este flanc."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:571
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:590
 msgid "Finally, we have retaken the city! Let us rest here, friends."
 msgstr "¡Finalment hem reconquistat la ciutat! Descansem ací, amics."
 
 #. [message]: role=Thief
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:579
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:598
 #, fuzzy
 msgid "Victory! The thieves of Elensefar will be in your service, my lord."
 msgstr "¡Victòria! Els lladres d'Elensefar estaran al teu servici, senyor."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:584
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:603
 msgid "The party rested for three days, after which an old friend returned."
 msgstr ""
 "El grup va descansar durant tres dies, després dels quals un vell amic tornà."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:611
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:630
 msgid ""
 "Greetings, friends. I see that you have rescued the city! I knew that you "
 "could do it."
@@ -2231,12 +2238,12 @@ msgstr ""
 "conseguirieu, Konrad."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:617
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:636
 msgid "Delfador! So good to see you! Where have you been?"
 msgstr "¡Delfador! ¡Que content estic de vore't! ¿On estaveu?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:622
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:641
 #, fuzzy
 msgid ""
 "I have been meeting with the Ka’lian, the Great Council of the Elves. This "
@@ -2247,12 +2254,12 @@ msgstr ""
 "qui ve a oferir-mos la seua ajuda de part dels elfs del nort."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:631
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:650
 msgid "Greetings, friend."
 msgstr "Salutacions, amic."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:636
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:655
 msgid ""
 "Delfador, we have captured this city, but surely Asheviere’s men will come "
 "and attack us! What should we do?"
@@ -2261,20 +2268,20 @@ msgstr ""
 "atacaran! ¿Qué podem de fer?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:641
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:660
 #, fuzzy
 msgid "The Ka’lian has met and decided: we must capture the Sceptre of Fire."
 msgstr ""
 "El Consell s'ha reunit, i hem decidit que s'ha de conseguir el Ceptre de Fòc."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:646
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:665
 #, fuzzy
 msgid "The Sceptre of Fire? What’s that?"
 msgstr "¿El Ceptre de Fòc? ¿Qué és això?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:652
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:671
 msgid ""
 "The Sceptre of Fire is the most ancient artifact of the realm of Wesnoth. It "
 "was forged by the dwarves of Knalga at the request of King Haldric II. It "
@@ -2286,12 +2293,12 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:657
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:676
 msgid "But what has this to do with me?"
 msgstr "Oh... ¿i això que té que vore en mi?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:662
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:681
 #, fuzzy
 msgid ""
 "When Garard II, your uncle, was deciding upon a successor, he issued an "
@@ -2303,19 +2310,19 @@ msgstr ""
 "de Fòc, governaria les terres."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:667
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:686
 #, fuzzy
 #| msgid "Oh, and you want me to get this scepter?"
 msgid "Oh, and you want me to get this Sceptre?"
 msgstr "Oh, ¿i vols que conseguixca eixe ceptre?"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:672
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:691
 msgid "We will help you retrieve it, my lord."
 msgstr "Mosatros vos ajudarem, senyor."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:677
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:696
 #, fuzzy
 msgid ""
 "Time is short. We think that Asheviere is also searching for the Sceptre, to "
@@ -2327,17 +2334,17 @@ msgstr ""
 "et recolzaria com a rei."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:682
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:701
 msgid "Me? King?"
 msgstr "¿Yo? ¿El rei?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:687
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:706
 msgid "Yes, Konrad. I believe you will be king one day. Now let us make haste!"
 msgstr "Si, Konrad. Crec que algun dia seràs rei. ¡Ara, afanyem-mos!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:692
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:711
 msgid ""
 "We cannot go to Wesmere, for Asheviere’s orcs have the approaches ringed "
 "about with steel; Kalenz and I barely escaped, and Chantal cannot get out. "
@@ -2345,7 +2352,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Muff Jaanal
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:714
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:733
 msgid "So you endeavor to fight me in my home. Foolish."
 msgstr "Aixina que vos empenyeu en atacar-me en el meu terreny. Estúpit."
 

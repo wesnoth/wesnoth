@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.7+svn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-09-09 08:38 UTC\n"
+"POT-Creation-Date: 2019-01-21 18:30 UTC\n"
 "PO-Revision-Date: 2013-08-22 20:28+0800\n"
 "Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -82,7 +82,9 @@ msgstr ""
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:28
-msgid "(Intermediate level, 8 scenarios.)"
+#, fuzzy
+#| msgid "(Intermediate level, 8 scenarios.)"
+msgid "(Novice level, 8 scenarios.)"
 msgstr "(Mức độ trung bình, 8 màn chơi)"
 
 #. [about]
@@ -201,11 +203,11 @@ msgstr "Yêu tinh đến được làng Dallben"
 
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:115
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:74
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:75
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:138
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:99
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:118
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:144
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:154
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:93
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:219
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:298
@@ -215,11 +217,11 @@ msgstr "Baldras chết"
 
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:119
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:78
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:79
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:142
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:103
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:122
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:148
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:158
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:97
 msgid "Death of Harper"
 msgstr "Harper chết"
@@ -491,20 +493,20 @@ msgstr "Bất tuân luật pháp"
 #. [side]: type=General, id=Lord Maddock
 #. [side]: type=Rogue, id=Hans
 #. [side]: type=Highwayman, id=Baldras
-#. [side]: type=Bandit_Peasant, id=Baldras
-#. [side]
 #. [side]: type=Highwayman_Peasant, id=Relana
 #. [side]: type=Shadow Lord, id=Helicrom
+#. [side]
+#. [side]: type=Bandit_Peasant, id=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:26
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:61
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:62
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:38
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:70
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:37
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:59
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:35
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:91
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:42
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:65
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:52
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:75
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:43
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:49
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:169
@@ -522,9 +524,9 @@ msgstr "Tarwen"
 #. [side]
 #. [side]: type=Royal Guard, id=Archarel
 #. [side]: type=Iron Mauler, id=Linneus
-#. [side]: type=Cavalier, id=Tarwen
 #. [side]: type=General, id=Dommel
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:40
+#. [side]: type=Cavalier, id=Tarwen
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:41
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:80
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:48
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:64
@@ -535,22 +537,22 @@ msgid "Asheviere"
 msgstr "Asheviere"
 
 #. [objective]: condition=win
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:70
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:71
 msgid "Kill the Wesnoth army captain, Tarwen"
 msgstr "Giết thủ lĩnh quân đội Wesnoth, Tarwen"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:120
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:121
 msgid "Look, riders approach."
 msgstr "Nhìn kìa, kỵ binh đang đến."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:124
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:125
 msgid "Stand fast, nephew."
 msgstr "Đừng vội mừng, cháu trai."
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:137
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:138
 msgid ""
 "By order of the Queen, the magistrate of this town is ordered to travel with "
 "us to Elensefar for vetting."
@@ -559,13 +561,13 @@ msgstr ""
 "chúng ta đến Elensefar để xét duyệt."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:141
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:142
 msgid "Garard is the King of Wesnoth. We are ruled by no queen."
 msgstr ""
 "Garard là vua của Wesnoth. Chúng tôi không bị cai trị bởi nữ hoàng nào cả."
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:145
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:146
 #, fuzzy
 #| msgid ""
 #| "Insolent peasants, you will kneel before your betters! Asheviere is the "
@@ -584,17 +586,17 @@ msgstr ""
 "ta không quan tâm hắn sống hay chết."
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:179
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:180
 msgid "Guard the gate."
 msgstr "Bảo vệ cánh cổng."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:190
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:193
 msgid "Harper, get out of here. This is no battle for you."
 msgstr "Harper, ra khỏi đây. Đây không phải cuộc chiến cho cháu."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:195
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:198
 msgid ""
 "I am the magistrate of Dallben, and it is <i>you</i> who will be leaving "
 "Dallben, be it dead or alive."
@@ -603,17 +605,17 @@ msgstr ""
 "Dallben, dù sống hay chết."
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:210
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:213
 msgid "Get back, you cur!"
 msgstr "Lùi lại, tên vô lại!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:224
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:227
 msgid "Get out of my village!"
 msgstr "Cút khỏi làng của ta!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:237
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:240
 msgid ""
 "Our lives were hard enough when we were beneath the attention of the Crown. "
 "But now I fear things will be worse."
@@ -622,12 +624,12 @@ msgstr ""
 "giờ ta sợ mọi thứ sẽ còn tệ hơn."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:242
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:245
 msgid "We must tell the people of Delwyn about this."
 msgstr "Chúng ta phải cho người dân Delwyn biết về chuyện này."
 
 #. [message]: role=Advisor
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:255
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:258
 msgid ""
 "That is true. We have always flown to their aid, and they to ours. This is "
 "something we should face together."
@@ -636,7 +638,7 @@ msgstr ""
 "mà chúng ta phải cùng nhau đối mặt."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:260
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:263
 msgid ""
 "Very well. We will go to Delwyn and share counsel with them. I never thought "
 "Wesnoth would fall into darkness. Now, not only do the orcs threaten our "
@@ -648,7 +650,7 @@ msgstr ""
 "chúng ta, mà cả điềm gở cũng đang diễn ra với sự lên ngôi của hoàng hậu."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:265
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:268
 msgid ""
 "Today we may no longer be citizens of Wesnoth. I wish it could be otherwise, "
 "but we are now outlaws."
@@ -657,7 +659,7 @@ msgstr ""
 "đừng xảy ra, nhưng giờ chúng ta là những kẻ ngoài vòng pháp luật."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:337
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:340
 msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
 msgstr ""
@@ -665,7 +667,7 @@ msgstr ""
 "viện..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:350
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:353
 #, fuzzy
 #| msgid ""
 #| "They would be remembered only traitors rightly put down by the Queen’s "
@@ -716,9 +718,9 @@ msgstr "Urk Delek"
 #. [side]: type=Lich, id=Sel-Mana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:100
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:122
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:95
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:111
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:128
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:105
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:121
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:138
 msgid "Evil"
 msgstr "Kẻ xấu"
 
@@ -1375,7 +1377,7 @@ msgstr "Dẫn đường đi."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:628
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:423
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:433
 msgid ""
 "We have spent too much time here. Surely the Queen’s forces have returned to "
 "Dallben. Our mission is unfinished, but we must return to fight a suicide "
@@ -1391,38 +1393,38 @@ msgid "The Grey Woods"
 msgstr "Khu rừng Xám"
 
 #. [side]: type=Shadow Lord, id=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:50
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:60
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:146
 msgid "Helicrom"
 msgstr "Helicrom"
 
 #. [side]: type=Necromancer, id=Mal-Jarrof
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:86
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:96
 msgid "Mal-Jarrof"
 msgstr "Mal-Jarrof"
 
 #. [side]: type=Necromancer, id=Mal-Jerod
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:102
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:112
 msgid "Mal-Jerod"
 msgstr "Mal-Jerod"
 
 #. [side]: type=Lich, id=Sel-Mana
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:118
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:128
 msgid "Sel-Mana"
 msgstr "Sel-Mana"
 
 #. [objective]: condition=win
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:140
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:150
 msgid "Defeat the lich and its minions"
 msgstr "Đánh bại thây ma và các thuộc hạ của hắn"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:211
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:221
 msgid "The leader, I presume."
 msgstr "Anh là chỉ huy, tôi đoán thế."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:215
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:225
 msgid ""
 "I am Helicrom, and you should not be so glib. I control dangerous men. My "
 "henchmen can slip unseen through any city, rob a man while he sleeps, or "
@@ -1436,12 +1438,12 @@ msgstr ""
 "nghiệp chúng tôi theo đuổi cần rất nhiều vàng."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:219
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:229
 msgid "Your pursuits?"
 msgstr "Nghề nghiệp các anh theo đuổi?"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:223
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:233
 msgid ""
 "The former King’s magic ministry kept a tight control on the training and "
 "employment of mages in Wesnoth. Those of us who dared to... depart from the "
@@ -1455,12 +1457,12 @@ msgstr ""
 "và an toàn của chúng tôi không hề rẻ."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:227
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:237
 msgid "I have heard of you. Necromancers. Barely-human scum, I say."
 msgstr "Ta đã nghe về các ngươi rồi. Pháp sư gọi hồn. Hạng người cặn bã."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:231
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:241
 msgid ""
 "Wrong. Necromancers become slaves to their lich masters and eventually lose "
 "their humanity. We have proven that practicing the dark arts need not lead "
@@ -1476,12 +1478,12 @@ msgstr ""
 "chặt vào con đường nào cả."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:235
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:245
 msgid "I... see, I think. Why do you want to help us?"
 msgstr "Tôi... hiểu rồi. Tại sao các anh lại muốn giúp chúng tôi?"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:239
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:249
 msgid ""
 "We don’t. You have sought us out. But, I do know of your situation and am "
 "willing to help. Any weakening of the Throne of Wesnoth, whether it be "
@@ -1493,7 +1495,7 @@ msgstr ""
 "tôi."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:243
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:253
 #, fuzzy
 #| msgid ""
 #| "Carcyn is always foggy as of late because these woods have recently "
@@ -1510,7 +1512,7 @@ msgstr ""
 "chúng tôi có thể đã đánh thức hắn... Chúng tôi không chắc lắm."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:247
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:257
 msgid ""
 "So now you need to defend your rear as well as your front... I see your "
 "predicament. My men will wipe this land clean if you can help us defend our "
@@ -1521,19 +1523,19 @@ msgstr ""
 "thể giúp chúng tôi bảo vệ quê hương."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:272
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:282
 msgid "Finally, that creature is dead, yet its foolish minions resist."
 msgstr ""
 "Cuối cùng thì sinh vật đó cũng chết, vậy mà bọn thuộc hạ ngu xuẩn của hắn "
 "vẫn còn chống cự."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:279
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:289
 msgid "The lich is destroyed and its minions dead."
 msgstr "Thây ma đã bị tiêu diệt và bọn thuộc hạ của hắn cũng đã chết."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:296
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:306
 msgid ""
 "The defeat of the evil lich infesting the Grey Woods was a bittersweet "
 "victory. With Helicrom dead, the guild of shadow magic was thrown into "
@@ -1544,7 +1546,7 @@ msgstr ""
 "hỗn loạn."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:301
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:311
 msgid ""
 "The remaining members were very grateful and offered Baldras a sizable sum "
 "of gold for his help. It was not the help he was hoping for, but he knew it "
@@ -1555,7 +1557,7 @@ msgstr ""
 "ông biết rằng thế là đủ cho cuộc xung đột sắp tới."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:320
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:330
 msgid ""
 "With the undead driven out, we may live here in relative peace and pursue "
 "our studies. For this, Baldras, I am grateful."
@@ -1565,7 +1567,7 @@ msgstr ""
 "này."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:324
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:334
 msgid ""
 "Studies? Peace? You mean to continue feeding on the lawful citizens of "
 "Wesnoth. There will be no peace for them."
@@ -1574,7 +1576,7 @@ msgstr ""
 "thống của Wesnoth ư? Sẽ không có hòa bình cho họ đâu."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:328
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:338
 msgid ""
 "No one here is in a position to be dispensing moral judgments. Regardless, "
 "you have done great service to us today, and we owe you a debt. I will help "
@@ -1585,7 +1587,7 @@ msgstr ""
 "sẽ giúp các anh đến hết mức có thể."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:332
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:342
 msgid ""
 "I was planning on giving you gold. Any good army is well financed, and with "
 "the lich gone we can now spare it."
@@ -1594,7 +1596,7 @@ msgstr ""
 "và với việc tên thây ma đã bị tiêu diệt, giờ chúng tôi có thể cho anh."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:336
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:346
 msgid ""
 "But, I think it would help you more if I lent you some of my men to join you "
 "on your adventures. The Queen has been sending mages out here, and my men "
@@ -1605,7 +1607,7 @@ msgstr ""
 "ra đây, và người của tôi thì đang rất nóng lòng muốn được trả đũa."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:340
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:350
 msgid ""
 "On the other hand, if I keep the full force of my organization here, we "
 "might be able to regroup and join you on the battlefield when the time comes."
@@ -1614,22 +1616,22 @@ msgstr ""
 "tập hợp lại và tham gia cùng anh trên chiến trường khi thời cơ đến."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:344
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:354
 msgid "I leave it to you to decide."
 msgstr "Tôi sẽ để cho anh quyết định."
 
 #. [option]
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:346
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:356
 msgid "I will take the gold. How does 500 sound?"
 msgstr "Tôi sẽ lấy vàng. 500 đồng vàng có được không?"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:350
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:360
 msgid "Agreed. Good luck and farewell to you, Master Baldras."
 msgstr "Đồng ý. Chúc may mắn và tạm biệt anh, ngài Baldras."
 
 #. [option]
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:371
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:381
 msgid ""
 "Send your men with us. They will be valuable help as we prepare for the "
 "assault from the Wesnoth army garrison."
@@ -1638,21 +1640,21 @@ msgstr ""
 "tôi chuẩn bị cho cuộc đột kích đồn quân đội Wesnoth."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:375
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:385
 msgid "Done. My finest mages and thieves are at your disposal. Use them well."
 msgstr ""
 "Xong. Các pháp sư và kẻ trộm tài giỏi nhất của tôi do anh tùy ý sử dụng. Hãy "
 "sử dụng họ hợp lý."
 
 #. [option]
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:390
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:400
 msgid "I wish you to join us in battle against the Queen’s forces."
 msgstr ""
 "Tôi muốn anh tham gia cùng chúng tôi trong trận chiến chống lại lực lượng "
 "của nữ hoàng."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:394
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:404
 msgid ""
 "All right. I need time to clean up this forest and recall my men from the "
 "countryside. We will be ready to march in seven days. All now hinges on you! "
@@ -1663,7 +1665,7 @@ msgstr ""
 "đều tùy thuộc vào anh! Cho đến lúc đó..."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:444
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:454
 msgid "My men... have failed to protect me! I perish..."
 msgstr "Người của tôi... đã không thể bảo vệ được tôi! Tôi bỏ mạng..."
 

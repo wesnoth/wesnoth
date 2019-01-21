@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-09-16 10:03+0300\n"
+"POT-Creation-Date: 2019-01-21 21:30+0300\n"
 "PO-Revision-Date: 2013-10-25 16:23+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -245,7 +245,7 @@ msgstr "사막 모래톱"
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
-"identical. See <ref>dst='terrain_sand' text='sand'</ref>."
+"identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgstr ""
 
 #. [terrain_type]: id=sand_beach
@@ -1896,7 +1896,7 @@ msgstr ""
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:247
-#: src/gui/dialogs/addon/manager.cpp:807
+#: src/gui/dialogs/addon/manager.cpp:803
 #, fuzzy
 #| msgid "Uninstall Add-ons"
 msgid "Uninstall add-on"
@@ -2011,7 +2011,7 @@ msgstr "연결"
 #: data/gui/window/sp_options_configure.cfg:117
 #: data/gui/window/surrender_quit.cfg:114 data/gui/window/theme_list.cfg:155
 #: data/gui/window/unit_attack.cfg:233 data/gui/window/unit_create.cfg:280
-#: data/gui/window/unit_recall.cfg:454 data/gui/window/unit_recruit.cfg:231
+#: data/gui/window/unit_recall.cfg:454 data/gui/window/unit_recruit.cfg:243
 #: src/hotkey/hotkey_command.cpp:73
 msgid "Cancel"
 msgstr "취소"
@@ -2029,7 +2029,7 @@ msgstr "버전:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:160
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:597
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:588
 msgid "No description available."
 msgstr "설명이 없습니다."
 
@@ -2081,7 +2081,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:892
+#: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:888
 msgid "addon_dependencies^None"
 msgstr ""
 
@@ -2092,7 +2092,7 @@ msgstr "가능 번역:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:906
+#: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:902
 msgid "translations^None"
 msgstr "없음"
 
@@ -2156,8 +2156,8 @@ msgstr "추가 기능"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:459
-#: src/gui/dialogs/addon/manager.cpp:646
+#: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:455
+#: src/gui/dialogs/addon/manager.cpp:642
 msgid "Addon Details"
 msgstr ""
 
@@ -2372,7 +2372,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:276
-#: src/gui/dialogs/multiplayer/lobby.cpp:457
+#: src/gui/dialogs/multiplayer/lobby.cpp:451
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Modifications"
@@ -2401,7 +2401,9 @@ msgstr "난이도"
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:73
-msgid "Select difficulty level:"
+#, fuzzy
+#| msgid "Select difficulty level:"
+msgid "Select difficulty:"
 msgstr "난이도를 선택하세요:"
 
 #. [label]
@@ -2423,8 +2425,8 @@ msgstr "내용:"
 msgid "Last"
 msgstr ""
 
-#. [button]: id=previous_page
 #. [button]: id=previous_tip
+#. [button]: id=previous_page
 #: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
 msgid "Previous"
 msgstr "이전"
@@ -2436,8 +2438,8 @@ msgstr "이전"
 msgid "Previous page"
 msgstr "이전"
 
-#. [button]: id=next_page
 #. [button]: id=next_tip
+#. [button]: id=next_page
 #: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
 msgid "Next"
 msgstr "다음"
@@ -2510,7 +2512,7 @@ msgstr ""
 #: data/gui/window/game_save_message.cfg:92
 #: data/gui/window/game_save_oos.cfg:90
 #: data/gui/window/screenshot_notification.cfg:120
-#: src/gui/dialogs/unit_recall.cpp:264
+#: src/gui/dialogs/unit_recall.cpp:260
 msgid "Name:"
 msgstr ""
 
@@ -2571,8 +2573,8 @@ msgstr "세이브 파일 삭제"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:780 src/gui/dialogs/file_dialog.cpp:307
-#: src/gui/dialogs/file_dialog.cpp:733
+#: src/gui/dialogs/addon/manager.cpp:776 src/gui/dialogs/file_dialog.cpp:303
+#: src/gui/dialogs/file_dialog.cpp:729
 msgid "Confirm"
 msgstr ""
 
@@ -2684,7 +2686,7 @@ msgstr "설명:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:479
+#: src/gui/dialogs/multiplayer/lobby.cpp:473
 #, fuzzy
 #| msgid "Experience modifier"
 msgid "Experience modifier:"
@@ -2758,7 +2760,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#: src/gui/dialogs/multiplayer/lobby.cpp:480
+#: src/gui/dialogs/multiplayer/lobby.cpp:474
 #, fuzzy
 #| msgid "Gold per village"
 msgid "Gold per village:"
@@ -2783,7 +2785,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
-#: data/gui/window/editor_edit_side.cfg:373 src/gui/dialogs/game_stats.cpp:78
+#: data/gui/window/editor_edit_side.cfg:373 src/gui/dialogs/game_stats.cpp:74
 msgid "controller^Human"
 msgstr ""
 
@@ -2841,7 +2843,7 @@ msgstr "맵 생성기"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
-#: src/gui/dialogs/multiplayer/lobby.cpp:478
+#: src/gui/dialogs/multiplayer/lobby.cpp:472
 msgid "Settings"
 msgstr ""
 
@@ -3114,8 +3116,8 @@ msgid "Date"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=load_game
 #. [label]: id=lblTitle
+#. [button]: id=load_game
 #: data/gui/window/game_load.cfg:286 data/gui/window/mp_create_game.cfg:898
 #: src/hotkey/hotkey_command.cpp:102
 msgid "Load Game"
@@ -3204,7 +3206,7 @@ msgstr "팀 1 시야로 보기"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:432
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:427
 msgid "Gold"
 msgstr ""
 
@@ -3233,7 +3235,7 @@ msgstr ""
 #. [label]: id=side_income
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:438
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:433
 msgid "Income"
 msgstr ""
 
@@ -3281,7 +3283,7 @@ msgstr "마을당 금"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:255
+#: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:251
 #, fuzzy
 #| msgid "Current room"
 msgid "Current Status"
@@ -3296,7 +3298,7 @@ msgstr "동굴 통로"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
-#: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:255
+#: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:251
 #, fuzzy
 #| msgid "Random Generator Settings"
 msgid "Scenario Settings"
@@ -3578,8 +3580,8 @@ msgstr "방 만들기"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#. [button]: id=show_preferences
 #. [label]: id=title
+#. [button]: id=show_preferences
 #: data/gui/window/lobby_main.cfg:417 data/gui/window/lobby_main.cfg:561
 #: data/gui/window/preferences.cfg:212 data/gui/window/title_screen.cfg:259
 #: src/hotkey/hotkey_command.cpp:118
@@ -3884,7 +3886,7 @@ msgstr ""
 #. [button]: id=btn_reset_hotkeys
 #. [button]: id=orb_defaults
 #: data/gui/window/mp_alerts_options.cfg:234
-#: data/gui/window/preferences/02_hotkeys.cfg:263
+#: data/gui/window/preferences/02_hotkeys.cfg:293
 #: data/gui/window/select_orb_colors.cfg:102
 #, fuzzy
 #| msgid "Save Replay"
@@ -4191,7 +4193,7 @@ msgstr "당신이 원하는 사람만이 플레이어로 들어올 수 있게 �
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:481
+#: src/gui/dialogs/multiplayer/lobby.cpp:475
 #, fuzzy
 #| msgid "Max hill size:"
 msgid "Map size:"
@@ -4213,19 +4215,19 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
 #: data/gui/window/mp_faction_select.cfg:176
-#: src/gui/dialogs/multiplayer/faction_select.cpp:162
+#: src/gui/dialogs/multiplayer/faction_select.cpp:158
 msgid "Random"
 msgstr ""
 
-#. [toggle_button]: id=male_toggle
 #. [row]
+#. [toggle_button]: id=male_toggle
 #: data/gui/window/mp_faction_select.cfg:178
 #: data/gui/window/unit_create.cfg:217
 msgid "Male"
 msgstr ""
 
-#. [toggle_button]: id=female_toggle
 #. [row]
+#. [toggle_button]: id=female_toggle
 #: data/gui/window/mp_faction_select.cfg:180
 #: data/gui/window/unit_create.cfg:229
 msgid "Female"
@@ -4299,7 +4301,7 @@ msgstr "로비"
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:491 data/gui/window/mp_staging.cfg:614
 #: data/gui/window/mp_staging.cfg:806
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:468
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:481
 msgid "Waiting for players to join..."
 msgstr ""
 
@@ -4342,7 +4344,7 @@ msgstr "설정 파일에 암호 저장 (암호화 안됨)"
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:253
-#: src/gui/dialogs/game_load.cpp:357
+#: src/gui/dialogs/game_load.cpp:389
 msgid "Multiplayer"
 msgstr "멀티플레이"
 
@@ -4605,57 +4607,67 @@ msgstr "샘플 주파수를 변경합니다"
 msgid "Categories:"
 msgstr ""
 
+#. [label]
+#: data/gui/window/preferences/02_hotkeys.cfg:53
+msgid "Filter:"
+msgstr "검색어:"
+
+#. [text_box]: id=filter
+#: data/gui/window/preferences/02_hotkeys.cfg:67
+msgid "Filters on hotkey description."
+msgstr ""
+
 #. [toggle_button]: id=sort_0
-#: data/gui/window/preferences/02_hotkeys.cfg:81
+#: data/gui/window/preferences/02_hotkeys.cfg:111
 msgid "Action"
 msgstr "행동"
 
 #. [toggle_button]: id=sort_1
-#: data/gui/window/preferences/02_hotkeys.cfg:93
+#: data/gui/window/preferences/02_hotkeys.cfg:123
 #, fuzzy
 #| msgid "Hotkeys"
 msgid "Hotkey"
 msgstr "단축키"
 
 #. [toggle_button]: id=sort_2
-#: data/gui/window/preferences/02_hotkeys.cfg:104
+#: data/gui/window/preferences/02_hotkeys.cfg:134
 msgid "game_hotkeys^G"
 msgstr ""
 
 #. [toggle_button]: id=sort_2
-#: data/gui/window/preferences/02_hotkeys.cfg:105
+#: data/gui/window/preferences/02_hotkeys.cfg:135
 msgid "Available in game"
 msgstr ""
 
 #. [toggle_button]: id=sort_3
-#: data/gui/window/preferences/02_hotkeys.cfg:116
+#: data/gui/window/preferences/02_hotkeys.cfg:146
 msgid "editor_hotkeys^E"
 msgstr ""
 
 #. [toggle_button]: id=sort_3
-#: data/gui/window/preferences/02_hotkeys.cfg:117
+#: data/gui/window/preferences/02_hotkeys.cfg:147
 msgid "Available in editor"
 msgstr ""
 
 #. [toggle_button]: id=sort_4
-#: data/gui/window/preferences/02_hotkeys.cfg:128
+#: data/gui/window/preferences/02_hotkeys.cfg:158
 msgid "titlescreen_hotkeys^T"
 msgstr ""
 
 #. [toggle_button]: id=sort_4
-#: data/gui/window/preferences/02_hotkeys.cfg:129
+#: data/gui/window/preferences/02_hotkeys.cfg:159
 msgid "Available at main menu"
 msgstr ""
 
 #. [button]: id=btn_add_hotkey
-#: data/gui/window/preferences/02_hotkeys.cfg:241
+#: data/gui/window/preferences/02_hotkeys.cfg:271
 #, fuzzy
 #| msgid "Hotkeys"
 msgid "Add Hotkey"
 msgstr "단축키"
 
 #. [button]: id=btn_clear_hotkey
-#: data/gui/window/preferences/02_hotkeys.cfg:252
+#: data/gui/window/preferences/02_hotkeys.cfg:282
 msgid "Clear Hotkey"
 msgstr "단축키 제거"
 
@@ -5026,7 +5038,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=save
 #: data/gui/window/screenshot_notification.cfg:203
-#: src/gui/dialogs/file_dialog.cpp:185
+#: src/gui/dialogs/file_dialog.cpp:181
 #, fuzzy
 #| msgid "Save As"
 msgid "Save"
@@ -5223,7 +5235,7 @@ msgstr "게임에 익숙해지기 위한 연습 게임을 시작합니다"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/window/title_screen.cfg:251 src/gui/dialogs/game_load.cpp:360
+#: data/gui/window/title_screen.cfg:251 src/gui/dialogs/game_load.cpp:392
 msgid "Tutorial"
 msgstr "연습 게임"
 
@@ -5422,7 +5434,7 @@ msgid "Recall"
 msgstr "재소집"
 
 #. [label]
-#: data/gui/window/unit_recruit.cfg:146
+#: data/gui/window/unit_recruit.cfg:155
 #, fuzzy
 #| msgid "Recruit"
 msgid "Recruit Unit"
@@ -5430,50 +5442,50 @@ msgstr "소집"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/unit_recruit.cfg:219 src/hotkey/hotkey_command.cpp:103
+#: data/gui/window/unit_recruit.cfg:231 src/hotkey/hotkey_command.cpp:103
 msgid "Recruit"
 msgstr "소집"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:210
-#: src/gui/dialogs/preferences_dialog.cpp:263
+#: src/gui/dialogs/preferences_dialog.cpp:264
 #: src/gui/dialogs/transient_message.cpp:78
 msgid "Error"
 msgstr "에러"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:217
-#: src/gui/dialogs/multiplayer/lobby.cpp:233 src/gui/dialogs/wml_error.cpp:197
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:213
+#: src/gui/dialogs/multiplayer/lobby.cpp:229 src/gui/dialogs/wml_error.cpp:197
 msgid "Details:"
 msgstr ""
 
-#: src/build_info.cpp:260
+#: src/build_info.cpp:268
 msgid "feature^Experimental OpenMP support"
 msgstr ""
 
-#: src/build_info.cpp:265
+#: src/build_info.cpp:273
 msgid "feature^JPG screenshots"
 msgstr ""
 
-#: src/build_info.cpp:272
+#: src/build_info.cpp:280
 msgid "feature^Lua console completion"
 msgstr ""
 
-#: src/build_info.cpp:277
+#: src/build_info.cpp:285
 msgid "feature^Legacy bidirectional rendering"
 msgstr ""
 
-#: src/build_info.cpp:284
+#: src/build_info.cpp:292
 msgid "feature^D-Bus notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:293
+#: src/build_info.cpp:301
 msgid "feature^Win32 notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:299
+#: src/build_info.cpp:307
 msgid "feature^Cocoa notifications back end"
 msgstr ""
 
@@ -5599,7 +5611,7 @@ msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
 #: src/gui/core/window_builder.cpp:314 src/gui/widgets/addon_list.cpp:429
-#: src/gui/widgets/chatbox.cpp:804 src/gui/widgets/listbox.cpp:808
+#: src/gui/widgets/chatbox.cpp:804 src/gui/widgets/listbox.cpp:806
 #: src/gui/widgets/multi_page.cpp:196 src/gui/widgets/panel.cpp:194
 #: src/gui/widgets/scroll_label.cpp:220 src/gui/widgets/scrollbar_panel.cpp:98
 #: src/gui/widgets/size_lock.cpp:125 src/gui/widgets/stacked_widget.cpp:241
@@ -5616,195 +5628,195 @@ msgstr ""
 msgid "Number of columns differ."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:189
+#: src/gui/dialogs/addon/manager.cpp:185
 #, fuzzy
 #| msgid "Uninstall Add-ons"
 msgid "addons_view^All Add-ons"
 msgstr "추가 기능 삭제"
 
-#: src/gui/dialogs/addon/manager.cpp:190
+#: src/gui/dialogs/addon/manager.cpp:186
 msgid "addons_view^Installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:191
+#: src/gui/dialogs/addon/manager.cpp:187
 msgid "addons_view^Upgradable"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:192
+#: src/gui/dialogs/addon/manager.cpp:188
 #, fuzzy
 #| msgid "Uninstall Add-ons"
 msgid "addons_view^Publishable"
 msgstr "추가 기능 삭제"
 
-#: src/gui/dialogs/addon/manager.cpp:193
+#: src/gui/dialogs/addon/manager.cpp:189
 msgid "addons_view^Not Installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:197
+#: src/gui/dialogs/addon/manager.cpp:193
 msgid "addons_of_type^Campaigns"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:198
+#: src/gui/dialogs/addon/manager.cpp:194
 msgid "addons_of_type^Scenarios"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:199
+#: src/gui/dialogs/addon/manager.cpp:195
 msgid "addons_of_type^SP/MP campaigns"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:200
+#: src/gui/dialogs/addon/manager.cpp:196
 msgid "addons_of_type^MP campaigns"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:201
+#: src/gui/dialogs/addon/manager.cpp:197
 msgid "addons_of_type^MP scenarios"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:202
+#: src/gui/dialogs/addon/manager.cpp:198
 msgid "addons_of_type^MP map-packs"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:203
+#: src/gui/dialogs/addon/manager.cpp:199
 msgid "addons_of_type^MP eras"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:204
+#: src/gui/dialogs/addon/manager.cpp:200
 msgid "addons_of_type^MP factions"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:205
+#: src/gui/dialogs/addon/manager.cpp:201
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "addons_of_type^Modifications"
 msgstr "해상도를 선택하십시오"
 
-#: src/gui/dialogs/addon/manager.cpp:206
+#: src/gui/dialogs/addon/manager.cpp:202
 msgid "addons_of_type^Cores"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:207
+#: src/gui/dialogs/addon/manager.cpp:203
 msgid "addons_of_type^Resources"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:209
+#: src/gui/dialogs/addon/manager.cpp:205
 msgid "addons_of_type^Other"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:210
+#: src/gui/dialogs/addon/manager.cpp:206
 msgid "addons_of_type^Unknown"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:214
+#: src/gui/dialogs/addon/manager.cpp:210
 msgid "addons_order^Name ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:217
+#: src/gui/dialogs/addon/manager.cpp:213
 msgid "addons_order^Author ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:220
+#: src/gui/dialogs/addon/manager.cpp:216
 msgid "addons_order^Size ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:223
+#: src/gui/dialogs/addon/manager.cpp:219
 msgid "addons_order^Downloads ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:226
+#: src/gui/dialogs/addon/manager.cpp:222
 msgid "addons_order^Type ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:229
+#: src/gui/dialogs/addon/manager.cpp:225
 msgid "addons_order^Last updated ($datelike_order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:232
+#: src/gui/dialogs/addon/manager.cpp:228
 msgid "addons_order^First uploaded ($datelike_order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:261 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:257 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:258 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:266 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:267 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:263 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:271
+#: src/gui/dialogs/addon/manager.cpp:267
 msgid "addon_state^Installed, not tracking local version"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:274
+#: src/gui/dialogs/addon/manager.cpp:270
 msgid "addon_state^Published, not tracking local version"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:278
+#: src/gui/dialogs/addon/manager.cpp:274
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:279
+#: src/gui/dialogs/addon/manager.cpp:275
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:285
+#: src/gui/dialogs/addon/manager.cpp:281
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:286
+#: src/gui/dialogs/addon/manager.cpp:282
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:292 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:288 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:293 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:289 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:297 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:293 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:298 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:294 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:130
+#: src/gui/dialogs/addon/manager.cpp:297 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:363
+#: src/gui/dialogs/addon/manager.cpp:359
 #, fuzzy
 #| msgid "Binding"
 msgid "ascending"
 msgstr "단축키"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:365
+#: src/gui/dialogs/addon/manager.cpp:361
 msgid "oldest to newest"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:368
+#: src/gui/dialogs/addon/manager.cpp:364
 msgid "descending"
 msgstr ""
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:370
+#: src/gui/dialogs/addon/manager.cpp:366
 msgid "newest to oldest"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:388 src/gui/dialogs/chat_log.cpp:420
+#: src/gui/dialogs/addon/manager.cpp:384 src/gui/dialogs/chat_log.cpp:416
 #: src/gui/dialogs/game_cache_options.cpp:105
-#: src/gui/dialogs/game_version_dialog.cpp:186
+#: src/gui/dialogs/game_version_dialog.cpp:182
 #: src/gui/dialogs/gamestate_inspector.cpp:428
 #: src/gui/dialogs/lua_interpreter.cpp:491
 #: src/gui/dialogs/screenshot_notification.cpp:102
@@ -5812,69 +5824,69 @@ msgstr ""
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:456
+#: src/gui/dialogs/addon/manager.cpp:452
 msgid "addons^Back to List"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:468
+#: src/gui/dialogs/addon/manager.cpp:464
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:504
+#: src/gui/dialogs/addon/manager.cpp:500
 #, fuzzy
 #| msgid "No description available."
 msgid "No Add-ons Available"
 msgstr "설명이 없습니다."
 
-#: src/gui/dialogs/addon/manager.cpp:504
+#: src/gui/dialogs/addon/manager.cpp:500
 msgid "There are no add-ons available for download from this server."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:679
+#: src/gui/dialogs/addon/manager.cpp:675
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:687
+#: src/gui/dialogs/addon/manager.cpp:683
 msgid "The following add-on could not be deleted properly:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:733
+#: src/gui/dialogs/addon/manager.cpp:729
 msgid "Warning"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:734
+#: src/gui/dialogs/addon/manager.cpp:730
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:743
+#: src/gui/dialogs/addon/manager.cpp:739
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:746 src/gui/dialogs/addon/manager.cpp:749
-#: src/gui/dialogs/addon/manager.cpp:788
+#: src/gui/dialogs/addon/manager.cpp:742 src/gui/dialogs/addon/manager.cpp:745
+#: src/gui/dialogs/addon/manager.cpp:784
 msgid "The server responded with an error:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:747
+#: src/gui/dialogs/addon/manager.cpp:743
 msgid "Terms"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:764 src/gui/dialogs/addon/manager.cpp:791
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:507
+#: src/gui/dialogs/addon/manager.cpp:760 src/gui/dialogs/addon/manager.cpp:787
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:502
 msgid "Response"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:776
+#: src/gui/dialogs/addon/manager.cpp:772
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:808
+#: src/gui/dialogs/addon/manager.cpp:804
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you want to uninstall '$addon|'?"
@@ -5898,8 +5910,8 @@ msgstr ""
 msgid "Attacker vulnerability vs"
 msgstr ""
 
-#: src/gui/dialogs/campaign_selection.cpp:274
-#: src/gui/dialogs/multiplayer/lobby.cpp:462
+#: src/gui/dialogs/campaign_selection.cpp:270
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "active_modifications^None"
@@ -5913,19 +5925,19 @@ msgstr ""
 msgid "$requester requires the following modifications to be disabled:"
 msgstr ""
 
-#: src/gui/dialogs/depcheck_select_new.cpp:73
+#: src/gui/dialogs/depcheck_select_new.cpp:69
 msgid ""
 "The currently chosen scenario is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
 
-#: src/gui/dialogs/depcheck_select_new.cpp:78
+#: src/gui/dialogs/depcheck_select_new.cpp:74
 msgid ""
 "The currently chosen era is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
 
-#: src/gui/dialogs/depcheck_select_new.cpp:84
+#: src/gui/dialogs/depcheck_select_new.cpp:80
 msgid ""
 "The currently chosen modification is not compatible with your setup.\n"
 "Please select a compatible one."
@@ -5947,47 +5959,47 @@ msgstr "내륙"
 msgid "Island"
 msgstr "섬"
 
-#: src/gui/dialogs/file_dialog.cpp:109
+#: src/gui/dialogs/file_dialog.cpp:105
 msgid "Find File"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:185
+#: src/gui/dialogs/file_dialog.cpp:181
 msgid "Open"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:306
+#: src/gui/dialogs/file_dialog.cpp:302
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:330
+#: src/gui/dialogs/file_dialog.cpp:326
 msgid "The file or folder $path cannot be created."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:336
+#: src/gui/dialogs/file_dialog.cpp:332
 msgid "The file or folder $path does not exist."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:711
+#: src/gui/dialogs/file_dialog.cpp:707
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:729
+#: src/gui/dialogs/file_dialog.cpp:725
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:730
+#: src/gui/dialogs/file_dialog.cpp:726
 msgid "The following file will be permanently deleted:"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:731
+#: src/gui/dialogs/file_dialog.cpp:727
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you wish to continue?"
 msgstr "정말 이 파일을 삭제하시겠습니까?"
 
-#: src/gui/dialogs/file_dialog.cpp:743
+#: src/gui/dialogs/file_dialog.cpp:739
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
@@ -6034,94 +6046,98 @@ msgstr ""
 msgid "The game data cache could not be purged."
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:311
+#: src/gui/dialogs/game_load.cpp:264
+msgid "The selected file is corrupt: "
+msgstr ""
+
+#: src/gui/dialogs/game_load.cpp:343
 msgid "(Invalid)"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:348
+#: src/gui/dialogs/game_load.cpp:380
 msgid "Campaign: $campaign_name"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:363
+#: src/gui/dialogs/game_load.cpp:395
 msgid "Test scenario"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:373
+#: src/gui/dialogs/game_load.cpp:405
 #, fuzzy
 #| msgid "Save Replay"
 msgid "Replay"
 msgstr "리플레이 저장"
 
-#: src/gui/dialogs/game_load.cpp:375
+#: src/gui/dialogs/game_load.cpp:407
 msgid "Turn"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:377
+#: src/gui/dialogs/game_load.cpp:409
 #, fuzzy
 #| msgid "Scenario Objectives"
 msgid "Scenario start"
 msgstr "시나리오 목표"
 
-#: src/gui/dialogs/game_load.cpp:380
+#: src/gui/dialogs/game_load.cpp:412
 msgid "Difficulty: "
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:384
+#: src/gui/dialogs/game_load.cpp:416
 msgid "Version: "
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:389
+#: src/gui/dialogs/game_load.cpp:421
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Modifications: "
 msgstr "해상도를 선택하십시오"
 
-#: src/gui/dialogs/game_stats.cpp:78
+#: src/gui/dialogs/game_stats.cpp:74
 msgid "controller^AI"
 msgstr ""
 
-#: src/gui/dialogs/game_stats.cpp:78
+#: src/gui/dialogs/game_stats.cpp:74
 msgid "controller^Idle"
 msgstr ""
 
-#: src/gui/dialogs/game_stats.cpp:114 src/gui/dialogs/label_settings.cpp:71
+#: src/gui/dialogs/game_stats.cpp:110 src/gui/dialogs/label_settings.cpp:67
 #, fuzzy
 #| msgid "Unknown era"
 msgid "Unknown"
 msgstr "알수없는 시대"
 
-#: src/gui/dialogs/game_stats.cpp:200 src/gui/dialogs/game_stats.cpp:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:476
+#: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
+#: src/gui/dialogs/multiplayer/lobby.cpp:470
 msgid "no"
 msgstr "아니오"
 
-#: src/gui/dialogs/game_stats.cpp:200 src/gui/dialogs/game_stats.cpp:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:476
+#: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
+#: src/gui/dialogs/multiplayer/lobby.cpp:470
 msgid "yes"
 msgstr "예"
 
-#: src/gui/dialogs/game_version_dialog.cpp:137
-#: src/gui/dialogs/title_screen.cpp:241
+#: src/gui/dialogs/game_version_dialog.cpp:133
+#: src/gui/dialogs/title_screen.cpp:258
 msgid "Version $version"
 msgstr ""
 
-#: src/gui/dialogs/game_version_dialog.cpp:141
+#: src/gui/dialogs/game_version_dialog.cpp:137
 msgid "Running on $os"
 msgstr ""
 
-#: src/gui/dialogs/game_version_dialog.cpp:226
+#: src/gui/dialogs/game_version_dialog.cpp:222
 #, fuzzy
 #| msgid "Version:"
 msgid "version^N/A"
 msgstr "버전:"
 
-#: src/gui/dialogs/label_settings.cpp:53
+#: src/gui/dialogs/label_settings.cpp:49
 #, fuzzy
 #| msgid "Set Team Label"
 msgid "Team Labels"
 msgstr "팀 딱지 붙이기"
 
-#: src/gui/dialogs/label_settings.cpp:76
+#: src/gui/dialogs/label_settings.cpp:72
 msgid "Side $side_number ($name)"
 msgstr ""
 
@@ -6239,119 +6255,119 @@ msgstr ""
 msgid "lua console"
 msgstr "깨끗한 회색 자갈"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:106
+#: src/gui/dialogs/multiplayer/lobby.cpp:102
 #, fuzzy
 #| msgid "Selected game"
 msgid "Selected Game"
 msgstr "선택된 방"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:107
+#: src/gui/dialogs/multiplayer/lobby.cpp:103
 msgid "Lobby"
 msgstr "로비"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:109
+#: src/gui/dialogs/multiplayer/lobby.cpp:105
 #, fuzzy
 #| msgid "Current room"
 msgid "Current Room"
 msgstr "현재 방"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:111
+#: src/gui/dialogs/multiplayer/lobby.cpp:107
 #, fuzzy
 #| msgid "Other games"
 msgid "Other Games"
 msgstr "다른 방"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:118
+#: src/gui/dialogs/multiplayer/lobby.cpp:114
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid "Do you really want to log out?"
 msgstr "정말로 종료하시겠습니까?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:213
+#: src/gui/dialogs/multiplayer/lobby.cpp:209
 msgid "Incompatible User-made Content."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:214
+#: src/gui/dialogs/multiplayer/lobby.cpp:210
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
 "add-ons be updated."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:229
+#: src/gui/dialogs/multiplayer/lobby.cpp:225
 msgid "Missing User-made Content."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:230
+#: src/gui/dialogs/multiplayer/lobby.cpp:226
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
 "Do you want to try to install them?"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:396
+#: src/gui/dialogs/multiplayer/lobby.cpp:391
 msgid "Games: showing $num_shown out of $num_total"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:417
+#: src/gui/dialogs/multiplayer/lobby.cpp:411
 msgid "$game_name (Era: $era_name)"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:447
+#: src/gui/dialogs/multiplayer/lobby.cpp:441
 msgid "era_or_mod^not installed"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:450
+#: src/gui/dialogs/multiplayer/lobby.cpp:444
 msgid "Era"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:482
+#: src/gui/dialogs/multiplayer/lobby.cpp:476
 #, fuzzy
 #| msgid "Reloaded game"
 msgid "Reloaded:"
 msgstr "리로드 게임"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:483
+#: src/gui/dialogs/multiplayer/lobby.cpp:477
 msgid "Shared vision:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:484
+#: src/gui/dialogs/multiplayer/lobby.cpp:478
 msgid "Shuffle sides:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:485
+#: src/gui/dialogs/multiplayer/lobby.cpp:479
 #, fuzzy
 #| msgid "Time limit"
 msgid "Time limit:"
 msgstr "시간 제한"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:486
+#: src/gui/dialogs/multiplayer/lobby.cpp:480
 #, fuzzy
 #| msgid "Use map settings"
 msgid "Use map settings:"
 msgstr "맵 설정 사용"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:494
+#: src/gui/dialogs/multiplayer/lobby.cpp:488
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:519
+#: src/gui/dialogs/multiplayer/lobby.cpp:513
 msgid "Observers allowed"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:522
+#: src/gui/dialogs/multiplayer/lobby.cpp:516
 msgid "Observers not allowed"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:797
+#: src/gui/dialogs/multiplayer/lobby.cpp:791
 #, fuzzy
 #| msgid "Lobby"
 msgid "lobby"
 msgstr "로비"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:957
+#: src/gui/dialogs/multiplayer/lobby.cpp:951
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -6363,132 +6379,132 @@ msgid ""
 "contact your package manager"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_change_control.cpp:108
+#: src/gui/dialogs/multiplayer/mp_change_control.cpp:104
 msgid "Side $side"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:109
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:100
 #, fuzzy
 #| msgid "Scenario Objectives"
 msgid "Scenarios"
 msgstr "시나리오 목표"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:110
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:101
 #, fuzzy
 #| msgid "Multiplayer Options"
 msgid "Multiplayer Campaigns"
 msgstr "멀티플레이 설정"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:111
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:102
 #, fuzzy
 #| msgid "Start a new single player campaign"
 msgid "Singleplayer Campaigns"
 msgstr "새로운 1인용 캠페인을 시작합니다"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:112
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:103
 #, fuzzy
 #| msgid "Multiplayer Options"
 msgid "Custom Maps"
 msgstr "멀티플레이 설정"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:113
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:104
 #, fuzzy
 #| msgid "Scenario Objectives"
 msgid "Custom Scenarios"
 msgstr "시나리오 목표"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:114
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:105
 #, fuzzy
 #| msgid "Generate Random Map"
 msgid "Random Maps"
 msgstr "랜덤 맵 생성"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:188
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:189
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:179
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:180
 msgid "No games found."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:256
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:247
 msgid "No eras found."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:257
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:248
 msgid "No eras found"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:285
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:276
 msgid "Independent: Random factions assigned independently"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:286
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:277
 msgid "No Mirror: No two players will get the same faction"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:287
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:278
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:543
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:534
 msgid "No eras available for this game."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:741
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:732
 msgid "number of players^$min to $max"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:838
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:829
 msgid "The selected game has no sides!"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:904
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:895
 msgid "Choose Starting Scenario"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:904
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:895
 msgid "Select at which point to begin this campaign."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:216
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:210
 #, fuzzy
 #| msgid "Choose Player"
 msgid "Computer Player"
 msgstr "플레이어 선택"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:218
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:212
 #, fuzzy
 #| msgid "(empty list)"
 msgid "Empty slot"
 msgstr "(목록이 비었음)"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:220
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:214
 msgid "Reserved for $playername"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:222
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:216
 #, fuzzy
 #| msgid "Vacant slots"
 msgid "Vacant slot"
 msgstr "빈 자리 있는 방"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:226
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:220
 msgid "empty"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:253
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:109
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:248
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:106
 #, fuzzy
 #| msgid "Quit Game"
 msgid "this game"
 msgstr "게임 종료"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:365
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:168
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:360
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:165
 #, fuzzy
 #| msgid "Team 1"
 msgid "Team:"
 msgstr "팀 1 시야로 보기"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:469
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:482
 msgid "Waiting for players to choose factions..."
 msgstr ""
 
@@ -6496,56 +6512,56 @@ msgstr ""
 msgid "The End"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:186
+#: src/gui/dialogs/preferences_dialog.cpp:187
 msgid "friend"
 msgstr "친구"
 
-#: src/gui/dialogs/preferences_dialog.cpp:191
+#: src/gui/dialogs/preferences_dialog.cpp:192
 msgid "ignored"
 msgstr "무시자"
 
-#: src/gui/dialogs/preferences_dialog.cpp:245
-#: src/gui/dialogs/preferences_dialog.cpp:305
+#: src/gui/dialogs/preferences_dialog.cpp:246
+#: src/gui/dialogs/preferences_dialog.cpp:306
 msgid "No username specified"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:263
+#: src/gui/dialogs/preferences_dialog.cpp:264
 msgid "Invalid username"
 msgstr "유효하지 않은 이름입니다"
 
-#: src/gui/dialogs/preferences_dialog.cpp:310
+#: src/gui/dialogs/preferences_dialog.cpp:311
 #, fuzzy
 #| msgid "Friends/Ignored List"
 msgid "Not on friends or ignore lists"
 msgstr "친구/무시 목록"
 
-#: src/gui/dialogs/preferences_dialog.cpp:812
+#: src/gui/dialogs/preferences_dialog.cpp:816
 msgid "&#9679;"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:872
+#: src/gui/dialogs/preferences_dialog.cpp:876
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:878
+#: src/gui/dialogs/preferences_dialog.cpp:882
 #, fuzzy
 #| msgid "Save Hotkeys"
 msgid "Reassign Hotkey"
 msgstr "단축키 저장"
 
-#: src/gui/dialogs/preferences_dialog.cpp:895
+#: src/gui/dialogs/preferences_dialog.cpp:899
 msgid "All hotkeys have been reset to their default values."
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:895
+#: src/gui/dialogs/preferences_dialog.cpp:899
 #, fuzzy
 #| msgid "Hotkeys"
 msgid "Hotkeys Reset"
 msgstr "단축키"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1008
+#: src/gui/dialogs/preferences_dialog.cpp:1032
 msgid "∞"
 msgstr ""
 
@@ -6556,88 +6572,92 @@ msgid ""
 "Try to save the screenshot as PNG instead."
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:68
+#: src/gui/dialogs/statistics_dialog.cpp:64
 #, fuzzy
 #| msgid "Scenario Objectives"
 msgid "All Scenarios"
 msgstr "시나리오 목표"
 
-#: src/gui/dialogs/statistics_dialog.cpp:181
+#: src/gui/dialogs/statistics_dialog.cpp:177
 #, fuzzy
 #| msgid "Recruit"
 msgid "Recruits"
 msgstr "소집"
 
-#: src/gui/dialogs/statistics_dialog.cpp:182
+#: src/gui/dialogs/statistics_dialog.cpp:178
 #, fuzzy
 #| msgid "Recall"
 msgid "Recalls"
 msgstr "재소집"
 
-#: src/gui/dialogs/statistics_dialog.cpp:183
+#: src/gui/dialogs/statistics_dialog.cpp:179
 #, fuzzy
 msgid "Advancements"
 msgstr "고급"
 
-#: src/gui/dialogs/statistics_dialog.cpp:184
+#: src/gui/dialogs/statistics_dialog.cpp:180
 msgid "Losses"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:185
+#: src/gui/dialogs/statistics_dialog.cpp:181
 #, fuzzy
 #| msgid "Hills"
 msgid "Kills"
 msgstr "언덕"
 
-#: src/gui/dialogs/statistics_dialog.cpp:204
+#: src/gui/dialogs/statistics_dialog.cpp:200
 msgid "Inflicted"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:212
+#: src/gui/dialogs/statistics_dialog.cpp:208
 msgid "Taken"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:255
+#: src/gui/dialogs/statistics_dialog.cpp:251
 msgid "$count|× $name"
 msgstr ""
 
-#: src/gui/dialogs/title_screen.cpp:467
+#: src/gui/dialogs/title_screen.cpp:174 src/hotkey/hotkey_command.cpp:91
+msgid "Screenshot"
+msgstr "스크린 샷"
+
+#: src/gui/dialogs/title_screen.cpp:484
 #, fuzzy
 #| msgid "Choose Theme"
 msgid "Choose Test"
 msgstr "테마 선택"
 
-#: src/gui/dialogs/unit_recall.cpp:263 src/hotkey/hotkey_command.cpp:96
+#: src/gui/dialogs/unit_recall.cpp:259 src/hotkey/hotkey_command.cpp:96
 msgid "Rename Unit"
 msgstr "이름 붙이기"
 
-#: src/gui/dialogs/unit_recall.cpp:296
+#: src/gui/dialogs/unit_recall.cpp:292
 msgid "This unit is loyal and requires no upkeep."
 msgstr ""
 
-#: src/gui/dialogs/unit_recall.cpp:297 src/gui/dialogs/unit_recall.cpp:302
-#: src/gui/dialogs/unit_recall.cpp:307
+#: src/gui/dialogs/unit_recall.cpp:293 src/gui/dialogs/unit_recall.cpp:298
+#: src/gui/dialogs/unit_recall.cpp:303
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid "Do you really want to dismiss him?"
 msgstr "정말로 종료하시겠습니까?"
 
-#: src/gui/dialogs/unit_recall.cpp:298 src/gui/dialogs/unit_recall.cpp:303
-#: src/gui/dialogs/unit_recall.cpp:308
+#: src/gui/dialogs/unit_recall.cpp:294 src/gui/dialogs/unit_recall.cpp:299
+#: src/gui/dialogs/unit_recall.cpp:304
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid "Do you really want to dismiss her?"
 msgstr "정말로 종료하시겠습니까?"
 
-#: src/gui/dialogs/unit_recall.cpp:301
+#: src/gui/dialogs/unit_recall.cpp:297
 msgid "This unit is an experienced one, having advanced levels."
 msgstr ""
 
-#: src/gui/dialogs/unit_recall.cpp:306
+#: src/gui/dialogs/unit_recall.cpp:302
 msgid "This unit is close to advancing a level."
 msgstr ""
 
-#: src/gui/dialogs/unit_recall.cpp:312
+#: src/gui/dialogs/unit_recall.cpp:308
 msgid "Dismiss Unit"
 msgstr ""
 
@@ -6705,18 +6725,18 @@ msgstr "정말 이 파일을 삭제하시겠습니까?"
 msgid "Copied link!"
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:918 src/gui/widgets/multi_page.cpp:282
+#: src/gui/widgets/listbox.cpp:916 src/gui/widgets/multi_page.cpp:282
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:962 src/gui/widgets/listbox.cpp:1079
-#: src/gui/widgets/listbox.cpp:1196 src/gui/widgets/scrollbar_panel.cpp:147
+#: src/gui/widgets/listbox.cpp:960 src/gui/widgets/listbox.cpp:1066
+#: src/gui/widgets/listbox.cpp:1172 src/gui/widgets/scrollbar_panel.cpp:147
 msgid "No list defined."
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:967 src/gui/widgets/listbox.cpp:1084
-#: src/gui/widgets/listbox.cpp:1201
+#: src/gui/widgets/listbox.cpp:965 src/gui/widgets/listbox.cpp:1071
+#: src/gui/widgets/listbox.cpp:1177
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
@@ -7004,10 +7024,6 @@ msgstr "기본 화면"
 #: src/hotkey/hotkey_command.cpp:90
 msgid "Toggle Full Screen"
 msgstr "전체 화면 전환"
-
-#: src/hotkey/hotkey_command.cpp:91
-msgid "Screenshot"
-msgstr "스크린 샷"
 
 #: src/hotkey/hotkey_command.cpp:92
 msgid "Map Screenshot"
@@ -8085,9 +8101,6 @@ msgstr ""
 #~| msgid "Toggle Ellipses"
 #~ msgid "Toggle All"
 #~ msgstr "토글 키 무시"
-
-#~ msgid "Filter:"
-#~ msgstr "검색어:"
 
 #, fuzzy
 #~| msgid "Speed: "

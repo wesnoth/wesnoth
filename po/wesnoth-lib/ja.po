@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-09-16 10:03+0300\n"
+"POT-Creation-Date: 2019-01-21 21:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -247,10 +247,15 @@ msgstr "砂漠の砂地"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:298
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Deserts'</italic> have a somewhat different composition "
+#| "than small sand pits or beaches, however for gameplay purposes they are "
+#| "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
-"identical. See <ref>dst='terrain_sand' text='sand'</ref>."
+"identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgstr ""
 "<italic>text='砂漠'</italic>は砂地やビーチとはいくらか異なる成分で構成されて"
 "います。しかし、ゲーム中での特性は全く同じです。<ref>dst='terrain_sand' "
@@ -1978,7 +1983,7 @@ msgstr "アドオンの公開"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:247
-#: src/gui/dialogs/addon/manager.cpp:807
+#: src/gui/dialogs/addon/manager.cpp:803
 msgid "Uninstall add-on"
 msgstr "アドオンのアンインストール"
 
@@ -2091,7 +2096,7 @@ msgstr "接続"
 #: data/gui/window/sp_options_configure.cfg:117
 #: data/gui/window/surrender_quit.cfg:114 data/gui/window/theme_list.cfg:155
 #: data/gui/window/unit_attack.cfg:233 data/gui/window/unit_create.cfg:280
-#: data/gui/window/unit_recall.cfg:454 data/gui/window/unit_recruit.cfg:231
+#: data/gui/window/unit_recall.cfg:454 data/gui/window/unit_recruit.cfg:243
 #: src/hotkey/hotkey_command.cpp:73
 msgid "Cancel"
 msgstr "キャンセル"
@@ -2109,7 +2114,7 @@ msgstr "バージョン："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:160
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:597
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:588
 msgid "No description available."
 msgstr "解説はありません。"
 
@@ -2157,7 +2162,7 @@ msgstr "必要なもの："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:892
+#: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:888
 msgid "addon_dependencies^None"
 msgstr "なし"
 
@@ -2168,7 +2173,7 @@ msgstr "翻訳："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:906
+#: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:902
 msgid "translations^None"
 msgstr "なし"
 
@@ -2224,8 +2229,8 @@ msgstr "アドオンマネージャー"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:459
-#: src/gui/dialogs/addon/manager.cpp:646
+#: data/gui/window/addon_manager.cfg:946 src/gui/dialogs/addon/manager.cpp:455
+#: src/gui/dialogs/addon/manager.cpp:642
 msgid "Addon Details"
 msgstr "アドオンの詳細"
 
@@ -2426,7 +2431,7 @@ msgstr "概ねストーリー上のイベントの順"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:276
-#: src/gui/dialogs/multiplayer/lobby.cpp:457
+#: src/gui/dialogs/multiplayer/lobby.cpp:451
 msgid "Modifications"
 msgstr "Mod"
 
@@ -2451,7 +2456,9 @@ msgstr "難易度 "
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:73
-msgid "Select difficulty level:"
+#, fuzzy
+#| msgid "Select difficulty level:"
+msgid "Select difficulty:"
 msgstr "難易度選択："
 
 #. [label]
@@ -2469,8 +2476,8 @@ msgstr "ページ："
 msgid "Last"
 msgstr "最後"
 
-#. [button]: id=previous_page
 #. [button]: id=previous_tip
+#. [button]: id=previous_page
 #: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
 msgid "Previous"
 msgstr "前"
@@ -2480,8 +2487,8 @@ msgstr "前"
 msgid "Previous page"
 msgstr "前のページへ"
 
-#. [button]: id=next_page
 #. [button]: id=next_tip
+#. [button]: id=next_page
 #: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
 msgid "Next"
 msgstr "次"
@@ -2550,7 +2557,7 @@ msgstr "タイムスケジュールの編集"
 #: data/gui/window/game_save_message.cfg:92
 #: data/gui/window/game_save_oos.cfg:90
 #: data/gui/window/screenshot_notification.cfg:120
-#: src/gui/dialogs/unit_recall.cpp:264
+#: src/gui/dialogs/unit_recall.cpp:260
 msgid "Name:"
 msgstr "名前："
 
@@ -2607,8 +2614,8 @@ msgstr "時刻の削除"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:780 src/gui/dialogs/file_dialog.cpp:307
-#: src/gui/dialogs/file_dialog.cpp:733
+#: src/gui/dialogs/addon/manager.cpp:776 src/gui/dialogs/file_dialog.cpp:303
+#: src/gui/dialogs/file_dialog.cpp:729
 msgid "Confirm"
 msgstr "確認"
 
@@ -2712,7 +2719,7 @@ msgstr "解説："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:479
+#: src/gui/dialogs/multiplayer/lobby.cpp:473
 msgid "Experience modifier:"
 msgstr "必要経験値の変更（％）："
 
@@ -2774,7 +2781,7 @@ msgstr "ゴールド："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#: src/gui/dialogs/multiplayer/lobby.cpp:480
+#: src/gui/dialogs/multiplayer/lobby.cpp:474
 msgid "Gold per village:"
 msgstr "村あたりのゴールド："
 
@@ -2795,7 +2802,7 @@ msgstr "コントローラー："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
-#: data/gui/window/editor_edit_side.cfg:373 src/gui/dialogs/game_stats.cpp:78
+#: data/gui/window/editor_edit_side.cfg:373 src/gui/dialogs/game_stats.cpp:74
 msgid "controller^Human"
 msgstr "人間"
 
@@ -2845,7 +2852,7 @@ msgstr "マップジェネレーターの選択："
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
-#: src/gui/dialogs/multiplayer/lobby.cpp:478
+#: src/gui/dialogs/multiplayer/lobby.cpp:472
 msgid "Settings"
 msgstr "設定"
 
@@ -3113,8 +3120,8 @@ msgid "Date"
 msgstr "日付"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=load_game
 #. [label]: id=lblTitle
+#. [button]: id=load_game
 #: data/gui/window/game_load.cfg:286 data/gui/window/mp_create_game.cfg:898
 #: src/hotkey/hotkey_command.cpp:102
 msgid "Load Game"
@@ -3197,7 +3204,7 @@ msgstr "チーム"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:432
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:427
 msgid "Gold"
 msgstr "ゴールド"
 
@@ -3222,7 +3229,7 @@ msgstr "維持費"
 #. [label]: id=side_income
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:438
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:433
 msgid "Income"
 msgstr "収入"
 
@@ -3270,7 +3277,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:255
+#: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:251
 msgid "Current Status"
 msgstr "現在の状況"
 
@@ -3281,7 +3288,7 @@ msgstr "ゲームの状況"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
-#: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:255
+#: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:251
 msgid "Scenario Settings"
 msgstr "シナリオ設定"
 
@@ -3533,8 +3540,8 @@ msgstr "ゲームを作成"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#. [button]: id=show_preferences
 #. [label]: id=title
+#. [button]: id=show_preferences
 #: data/gui/window/lobby_main.cfg:417 data/gui/window/lobby_main.cfg:561
 #: data/gui/window/preferences.cfg:212 data/gui/window/title_screen.cfg:259
 #: src/hotkey/hotkey_command.cpp:118
@@ -3812,7 +3819,7 @@ msgstr "新しいターンが始まった時"
 #. [button]: id=btn_reset_hotkeys
 #. [button]: id=orb_defaults
 #: data/gui/window/mp_alerts_options.cfg:234
-#: data/gui/window/preferences/02_hotkeys.cfg:263
+#: data/gui/window/preferences/02_hotkeys.cfg:293
 #: data/gui/window/select_orb_colors.cfg:102
 msgid "Defaults"
 msgstr "デフォルト"
@@ -4082,7 +4089,7 @@ msgstr "このゲームの参加時に必要となるパスワードを設定し
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:481
+#: src/gui/dialogs/multiplayer/lobby.cpp:475
 msgid "Map size:"
 msgstr "マップサイズ："
 
@@ -4100,19 +4107,19 @@ msgstr "性別:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
 #: data/gui/window/mp_faction_select.cfg:176
-#: src/gui/dialogs/multiplayer/faction_select.cpp:162
+#: src/gui/dialogs/multiplayer/faction_select.cpp:158
 msgid "Random"
 msgstr "ランダム"
 
-#. [toggle_button]: id=male_toggle
 #. [row]
+#. [toggle_button]: id=male_toggle
 #: data/gui/window/mp_faction_select.cfg:178
 #: data/gui/window/unit_create.cfg:217
 msgid "Male"
 msgstr "男性"
 
-#. [toggle_button]: id=female_toggle
 #. [row]
+#. [toggle_button]: id=female_toggle
 #: data/gui/window/mp_faction_select.cfg:180
 #: data/gui/window/unit_create.cfg:229
 msgid "Female"
@@ -4181,7 +4188,7 @@ msgstr "ゲームロビー"
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:491 data/gui/window/mp_staging.cfg:614
 #: data/gui/window/mp_staging.cfg:806
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:468
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:481
 msgid "Waiting for players to join..."
 msgstr "プレイヤーの参加を待っています..."
 
@@ -4222,7 +4229,7 @@ msgstr "パスワードを暗号化して保存する"
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:253
-#: src/gui/dialogs/game_load.cpp:357
+#: src/gui/dialogs/game_load.cpp:389
 msgid "Multiplayer"
 msgstr "マルチプレイヤー"
 
@@ -4472,53 +4479,63 @@ msgstr "WMLキャッシュを管理します"
 msgid "Categories:"
 msgstr "カテゴリ："
 
+#. [label]
+#: data/gui/window/preferences/02_hotkeys.cfg:53
+msgid "Filter:"
+msgstr ""
+
+#. [text_box]: id=filter
+#: data/gui/window/preferences/02_hotkeys.cfg:67
+msgid "Filters on hotkey description."
+msgstr ""
+
 #. [toggle_button]: id=sort_0
-#: data/gui/window/preferences/02_hotkeys.cfg:81
+#: data/gui/window/preferences/02_hotkeys.cfg:111
 msgid "Action"
 msgstr "動作"
 
 #. [toggle_button]: id=sort_1
-#: data/gui/window/preferences/02_hotkeys.cfg:93
+#: data/gui/window/preferences/02_hotkeys.cfg:123
 msgid "Hotkey"
 msgstr "ホットキー"
 
 #. [toggle_button]: id=sort_2
-#: data/gui/window/preferences/02_hotkeys.cfg:104
+#: data/gui/window/preferences/02_hotkeys.cfg:134
 msgid "game_hotkeys^G"
 msgstr "ゲ"
 
 #. [toggle_button]: id=sort_2
-#: data/gui/window/preferences/02_hotkeys.cfg:105
+#: data/gui/window/preferences/02_hotkeys.cfg:135
 msgid "Available in game"
 msgstr "ゲーム中"
 
 #. [toggle_button]: id=sort_3
-#: data/gui/window/preferences/02_hotkeys.cfg:116
+#: data/gui/window/preferences/02_hotkeys.cfg:146
 msgid "editor_hotkeys^E"
 msgstr "エ"
 
 #. [toggle_button]: id=sort_3
-#: data/gui/window/preferences/02_hotkeys.cfg:117
+#: data/gui/window/preferences/02_hotkeys.cfg:147
 msgid "Available in editor"
 msgstr "エディタ"
 
 #. [toggle_button]: id=sort_4
-#: data/gui/window/preferences/02_hotkeys.cfg:128
+#: data/gui/window/preferences/02_hotkeys.cfg:158
 msgid "titlescreen_hotkeys^T"
 msgstr "タ"
 
 #. [toggle_button]: id=sort_4
-#: data/gui/window/preferences/02_hotkeys.cfg:129
+#: data/gui/window/preferences/02_hotkeys.cfg:159
 msgid "Available at main menu"
 msgstr "メインメニュー"
 
 #. [button]: id=btn_add_hotkey
-#: data/gui/window/preferences/02_hotkeys.cfg:241
+#: data/gui/window/preferences/02_hotkeys.cfg:271
 msgid "Add Hotkey"
 msgstr "ホットキーの追加"
 
 #. [button]: id=btn_clear_hotkey
-#: data/gui/window/preferences/02_hotkeys.cfg:252
+#: data/gui/window/preferences/02_hotkeys.cfg:282
 msgid "Clear Hotkey"
 msgstr "ホットキーの消去"
 
@@ -4874,7 +4891,7 @@ msgstr "ファイルマネージャでスクリーンショットフォルダを
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=save
 #: data/gui/window/screenshot_notification.cfg:203
-#: src/gui/dialogs/file_dialog.cpp:185
+#: src/gui/dialogs/file_dialog.cpp:181
 msgid "Save"
 msgstr "保存"
 
@@ -5047,7 +5064,7 @@ msgstr "チュートリアルを開始し、ゲームの基本を学びます"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/window/title_screen.cfg:251 src/gui/dialogs/game_load.cpp:360
+#: data/gui/window/title_screen.cfg:251 src/gui/dialogs/game_load.cpp:392
 msgid "Tutorial"
 msgstr "チュートリアル"
 
@@ -5234,56 +5251,56 @@ msgid "Recall"
 msgstr "召還"
 
 #. [label]
-#: data/gui/window/unit_recruit.cfg:146
+#: data/gui/window/unit_recruit.cfg:155
 msgid "Recruit Unit"
 msgstr "ユニットの雇用"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/unit_recruit.cfg:219 src/hotkey/hotkey_command.cpp:103
+#: data/gui/window/unit_recruit.cfg:231 src/hotkey/hotkey_command.cpp:103
 msgid "Recruit"
 msgstr "雇用"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:210
-#: src/gui/dialogs/preferences_dialog.cpp:263
+#: src/gui/dialogs/preferences_dialog.cpp:264
 #: src/gui/dialogs/transient_message.cpp:78
 msgid "Error"
 msgstr "エラー"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:217
-#: src/gui/dialogs/multiplayer/lobby.cpp:233 src/gui/dialogs/wml_error.cpp:197
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:213
+#: src/gui/dialogs/multiplayer/lobby.cpp:229 src/gui/dialogs/wml_error.cpp:197
 msgid "Details:"
 msgstr "情報："
 
-#: src/build_info.cpp:260
+#: src/build_info.cpp:268
 msgid "feature^Experimental OpenMP support"
 msgstr "実験的なOpenMPのサポート"
 
-#: src/build_info.cpp:265
+#: src/build_info.cpp:273
 msgid "feature^JPG screenshots"
 msgstr "JPG スクリーンショット"
 
-#: src/build_info.cpp:272
+#: src/build_info.cpp:280
 msgid "feature^Lua console completion"
 msgstr "Luaコンソールでの補完機能"
 
-#: src/build_info.cpp:277
+#: src/build_info.cpp:285
 msgid "feature^Legacy bidirectional rendering"
 msgstr "レガシーな双方向レンダリング"
 
-#: src/build_info.cpp:284
+#: src/build_info.cpp:292
 msgid "feature^D-Bus notifications back end"
 msgstr "D-Bus通知バックエンド"
 
-#: src/build_info.cpp:293
+#: src/build_info.cpp:301
 msgid "feature^Win32 notifications back end"
 msgstr "Win32通知バックエンド"
 
-#: src/build_info.cpp:299
+#: src/build_info.cpp:307
 msgid "feature^Cocoa notifications back end"
 msgstr "Cocoa通知バックエンド"
 
@@ -5409,7 +5426,7 @@ msgid "Linked '$id' group has multiple definitions."
 msgstr "「 $id 」に結び付けられたグループに重複する定義があります。"
 
 #: src/gui/core/window_builder.cpp:314 src/gui/widgets/addon_list.cpp:429
-#: src/gui/widgets/chatbox.cpp:804 src/gui/widgets/listbox.cpp:808
+#: src/gui/widgets/chatbox.cpp:804 src/gui/widgets/listbox.cpp:806
 #: src/gui/widgets/multi_page.cpp:196 src/gui/widgets/panel.cpp:194
 #: src/gui/widgets/scroll_label.cpp:220 src/gui/widgets/scrollbar_panel.cpp:98
 #: src/gui/widgets/size_lock.cpp:125 src/gui/widgets/stacked_widget.cpp:241
@@ -5426,188 +5443,188 @@ msgstr "一つの行（row）には一つの列（column）がなければなり
 msgid "Number of columns differ."
 msgstr "列（column）の数が違います。"
 
-#: src/gui/dialogs/addon/manager.cpp:189
+#: src/gui/dialogs/addon/manager.cpp:185
 msgid "addons_view^All Add-ons"
 msgstr "全てのアドオン"
 
-#: src/gui/dialogs/addon/manager.cpp:190
+#: src/gui/dialogs/addon/manager.cpp:186
 msgid "addons_view^Installed"
 msgstr "インストール済み"
 
-#: src/gui/dialogs/addon/manager.cpp:191
+#: src/gui/dialogs/addon/manager.cpp:187
 msgid "addons_view^Upgradable"
 msgstr "アップデート有り"
 
-#: src/gui/dialogs/addon/manager.cpp:192
+#: src/gui/dialogs/addon/manager.cpp:188
 msgid "addons_view^Publishable"
 msgstr "公開済み"
 
-#: src/gui/dialogs/addon/manager.cpp:193
+#: src/gui/dialogs/addon/manager.cpp:189
 msgid "addons_view^Not Installed"
 msgstr "未インストール"
 
-#: src/gui/dialogs/addon/manager.cpp:197
+#: src/gui/dialogs/addon/manager.cpp:193
 msgid "addons_of_type^Campaigns"
 msgstr "キャンペーン"
 
-#: src/gui/dialogs/addon/manager.cpp:198
+#: src/gui/dialogs/addon/manager.cpp:194
 msgid "addons_of_type^Scenarios"
 msgstr "シナリオ"
 
-#: src/gui/dialogs/addon/manager.cpp:199
+#: src/gui/dialogs/addon/manager.cpp:195
 msgid "addons_of_type^SP/MP campaigns"
 msgstr "SP/MP キャンペーン"
 
-#: src/gui/dialogs/addon/manager.cpp:200
+#: src/gui/dialogs/addon/manager.cpp:196
 msgid "addons_of_type^MP campaigns"
 msgstr "MP キャンペーン"
 
-#: src/gui/dialogs/addon/manager.cpp:201
+#: src/gui/dialogs/addon/manager.cpp:197
 msgid "addons_of_type^MP scenarios"
 msgstr "MP シナリオ"
 
-#: src/gui/dialogs/addon/manager.cpp:202
+#: src/gui/dialogs/addon/manager.cpp:198
 msgid "addons_of_type^MP map-packs"
 msgstr "MP マップパック"
 
-#: src/gui/dialogs/addon/manager.cpp:203
+#: src/gui/dialogs/addon/manager.cpp:199
 msgid "addons_of_type^MP eras"
 msgstr "MP 時代"
 
-#: src/gui/dialogs/addon/manager.cpp:204
+#: src/gui/dialogs/addon/manager.cpp:200
 msgid "addons_of_type^MP factions"
 msgstr "MP 党派"
 
-#: src/gui/dialogs/addon/manager.cpp:205
+#: src/gui/dialogs/addon/manager.cpp:201
 msgid "addons_of_type^Modifications"
 msgstr "Mod"
 
-#: src/gui/dialogs/addon/manager.cpp:206
+#: src/gui/dialogs/addon/manager.cpp:202
 msgid "addons_of_type^Cores"
 msgstr "コア"
 
-#: src/gui/dialogs/addon/manager.cpp:207
+#: src/gui/dialogs/addon/manager.cpp:203
 msgid "addons_of_type^Resources"
 msgstr "素材集"
 
-#: src/gui/dialogs/addon/manager.cpp:209
+#: src/gui/dialogs/addon/manager.cpp:205
 msgid "addons_of_type^Other"
 msgstr "その他"
 
-#: src/gui/dialogs/addon/manager.cpp:210
+#: src/gui/dialogs/addon/manager.cpp:206
 msgid "addons_of_type^Unknown"
 msgstr "不明"
 
-#: src/gui/dialogs/addon/manager.cpp:214
+#: src/gui/dialogs/addon/manager.cpp:210
 msgid "addons_order^Name ($order)"
 msgstr "名前（$order）"
 
-#: src/gui/dialogs/addon/manager.cpp:217
+#: src/gui/dialogs/addon/manager.cpp:213
 msgid "addons_order^Author ($order)"
 msgstr "作者（$order）"
 
-#: src/gui/dialogs/addon/manager.cpp:220
+#: src/gui/dialogs/addon/manager.cpp:216
 msgid "addons_order^Size ($order)"
 msgstr "サイズ（$order）"
 
-#: src/gui/dialogs/addon/manager.cpp:223
+#: src/gui/dialogs/addon/manager.cpp:219
 msgid "addons_order^Downloads ($order)"
 msgstr "ダウンロード数（$order）"
 
-#: src/gui/dialogs/addon/manager.cpp:226
+#: src/gui/dialogs/addon/manager.cpp:222
 msgid "addons_order^Type ($order)"
 msgstr "タイプ（$order）"
 
-#: src/gui/dialogs/addon/manager.cpp:229
+#: src/gui/dialogs/addon/manager.cpp:225
 msgid "addons_order^Last updated ($datelike_order)"
 msgstr "最終更新（$datelike_order）"
 
-#: src/gui/dialogs/addon/manager.cpp:232
+#: src/gui/dialogs/addon/manager.cpp:228
 msgid "addons_order^First uploaded ($datelike_order)"
 msgstr "初アップロード（$datelike_order）"
 
-#: src/gui/dialogs/addon/manager.cpp:261 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:257 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr "未インストール"
 
-#: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:258 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr "公開済み、未インストール"
 
-#: src/gui/dialogs/addon/manager.cpp:266 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr "インストール済み"
 
-#: src/gui/dialogs/addon/manager.cpp:267 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:263 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr "公開済み"
 
-#: src/gui/dialogs/addon/manager.cpp:271
+#: src/gui/dialogs/addon/manager.cpp:267
 msgid "addon_state^Installed, not tracking local version"
 msgstr "インストール済み、トラッキングされていないローカルバージョン"
 
-#: src/gui/dialogs/addon/manager.cpp:274
+#: src/gui/dialogs/addon/manager.cpp:270
 msgid "addon_state^Published, not tracking local version"
 msgstr "公開済み、トラッキングされていないローカルバージョン"
 
-#: src/gui/dialogs/addon/manager.cpp:278
+#: src/gui/dialogs/addon/manager.cpp:274
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "インストール済み（ $local_version| ）、アップデート有り"
 
-#: src/gui/dialogs/addon/manager.cpp:279
+#: src/gui/dialogs/addon/manager.cpp:275
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "公開済み（ $local_version| インストール済み）、アップデート有り"
 
-#: src/gui/dialogs/addon/manager.cpp:285
+#: src/gui/dialogs/addon/manager.cpp:281
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "インストール済み（ $local_version| ）、サーバー上に旧バージョン有り"
 
-#: src/gui/dialogs/addon/manager.cpp:286
+#: src/gui/dialogs/addon/manager.cpp:282
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr ""
 "公開済み（$local_version| インストール済み）、サーバー上に旧バージョン有り"
 
-#: src/gui/dialogs/addon/manager.cpp:292 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:288 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr "インストール済み、公開準備未了"
 
-#: src/gui/dialogs/addon/manager.cpp:293 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:289 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr "公開準備完了"
 
-#: src/gui/dialogs/addon/manager.cpp:297 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:293 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr "インストール済み、破損"
 
-#: src/gui/dialogs/addon/manager.cpp:298 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:294 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr "公開済み、破損"
 
-#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:130
+#: src/gui/dialogs/addon/manager.cpp:297 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "不明"
 
-#: src/gui/dialogs/addon/manager.cpp:363
+#: src/gui/dialogs/addon/manager.cpp:359
 msgid "ascending"
 msgstr "昇順"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:365
+#: src/gui/dialogs/addon/manager.cpp:361
 msgid "oldest to newest"
 msgstr "古い順"
 
-#: src/gui/dialogs/addon/manager.cpp:368
+#: src/gui/dialogs/addon/manager.cpp:364
 msgid "descending"
 msgstr "降順"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:370
+#: src/gui/dialogs/addon/manager.cpp:366
 msgid "newest to oldest"
 msgstr "新しい順"
 
-#: src/gui/dialogs/addon/manager.cpp:388 src/gui/dialogs/chat_log.cpp:420
+#: src/gui/dialogs/addon/manager.cpp:384 src/gui/dialogs/chat_log.cpp:416
 #: src/gui/dialogs/game_cache_options.cpp:105
-#: src/gui/dialogs/game_version_dialog.cpp:186
+#: src/gui/dialogs/game_version_dialog.cpp:182
 #: src/gui/dialogs/gamestate_inspector.cpp:428
 #: src/gui/dialogs/lua_interpreter.cpp:491
 #: src/gui/dialogs/screenshot_notification.cpp:102
@@ -5617,24 +5634,24 @@ msgstr ""
 "クリップボードサポートが無効となっています。パッケージャーに連絡してくださ"
 "い。"
 
-#: src/gui/dialogs/addon/manager.cpp:456
+#: src/gui/dialogs/addon/manager.cpp:452
 msgid "addons^Back to List"
 msgstr "リストに"
 
-#: src/gui/dialogs/addon/manager.cpp:468
+#: src/gui/dialogs/addon/manager.cpp:464
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 "サーバーからアドオン一覧をダウンロードしている間にエラーが発生しました。"
 
-#: src/gui/dialogs/addon/manager.cpp:504
+#: src/gui/dialogs/addon/manager.cpp:500
 msgid "No Add-ons Available"
 msgstr "アドオンはありません"
 
-#: src/gui/dialogs/addon/manager.cpp:504
+#: src/gui/dialogs/addon/manager.cpp:500
 msgid "There are no add-ons available for download from this server."
 msgstr "このサーバーからダウンロード可能なアドオンはありません。"
 
-#: src/gui/dialogs/addon/manager.cpp:679
+#: src/gui/dialogs/addon/manager.cpp:675
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -5642,15 +5659,15 @@ msgstr ""
 "以下のアドオンは、アドオンの公開情報やバージョン情報をローカルに保存していま"
 "す。これらのアドオンはアンインストールされません。"
 
-#: src/gui/dialogs/addon/manager.cpp:687
+#: src/gui/dialogs/addon/manager.cpp:683
 msgid "The following add-on could not be deleted properly:"
 msgstr "以下のアドオンを正常に削除できませんでした。"
 
-#: src/gui/dialogs/addon/manager.cpp:733
+#: src/gui/dialogs/addon/manager.cpp:729
 msgid "Warning"
 msgstr "警告"
 
-#: src/gui/dialogs/addon/manager.cpp:734
+#: src/gui/dialogs/addon/manager.cpp:730
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -5658,26 +5675,26 @@ msgstr ""
 "アップロードされるアドオンのバージョンは、リモートにあるアドオンのバージョン"
 "以下の値となっています。 それでも続けますか？"
 
-#: src/gui/dialogs/addon/manager.cpp:743
+#: src/gui/dialogs/addon/manager.cpp:739
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "アイコンのパスが無効です。 有効な画像が存在するパスを指定してください。"
 
-#: src/gui/dialogs/addon/manager.cpp:746 src/gui/dialogs/addon/manager.cpp:749
-#: src/gui/dialogs/addon/manager.cpp:788
+#: src/gui/dialogs/addon/manager.cpp:742 src/gui/dialogs/addon/manager.cpp:745
+#: src/gui/dialogs/addon/manager.cpp:784
 msgid "The server responded with an error:"
 msgstr "サーバーが返したエラー："
 
-#: src/gui/dialogs/addon/manager.cpp:747
+#: src/gui/dialogs/addon/manager.cpp:743
 msgid "Terms"
 msgstr "条項"
 
-#: src/gui/dialogs/addon/manager.cpp:764 src/gui/dialogs/addon/manager.cpp:791
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:507
+#: src/gui/dialogs/addon/manager.cpp:760 src/gui/dialogs/addon/manager.cpp:787
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:502
 msgid "Response"
 msgstr "応答"
 
-#: src/gui/dialogs/addon/manager.cpp:776
+#: src/gui/dialogs/addon/manager.cpp:772
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -5685,7 +5702,7 @@ msgstr ""
 "「$addon|」 を削除するとアドオンサーバー上のダウンロード・アップロード回数も"
 "完全に消去されます。 続行しますか？"
 
-#: src/gui/dialogs/addon/manager.cpp:808
+#: src/gui/dialogs/addon/manager.cpp:804
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "「$addon|」をアンインストールしますか？"
 
@@ -5705,8 +5722,8 @@ msgstr "防御側の耐性："
 msgid "Attacker vulnerability vs"
 msgstr "攻撃側の弱点："
 
-#: src/gui/dialogs/campaign_selection.cpp:274
-#: src/gui/dialogs/multiplayer/lobby.cpp:462
+#: src/gui/dialogs/campaign_selection.cpp:270
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
 msgid "active_modifications^None"
 msgstr "なし"
 
@@ -5718,7 +5735,7 @@ msgstr "$requester は以下のModの有効化を要求しています："
 msgid "$requester requires the following modifications to be disabled:"
 msgstr "$requester は以下のModの無効化を要求しています："
 
-#: src/gui/dialogs/depcheck_select_new.cpp:73
+#: src/gui/dialogs/depcheck_select_new.cpp:69
 msgid ""
 "The currently chosen scenario is not compatible with your setup.\n"
 "Please select a compatible one."
@@ -5726,7 +5743,7 @@ msgstr ""
 "現在選択されているシナリオはあなたの設定と両立できません。\n"
 "矛盾の無いものを選んで下さい。"
 
-#: src/gui/dialogs/depcheck_select_new.cpp:78
+#: src/gui/dialogs/depcheck_select_new.cpp:74
 msgid ""
 "The currently chosen era is not compatible with your setup.\n"
 "Please select a compatible one."
@@ -5734,7 +5751,7 @@ msgstr ""
 "現在選択されている時代はあなたの設定と両立できません。\n"
 "矛盾の無いものを選んで下さい。"
 
-#: src/gui/dialogs/depcheck_select_new.cpp:84
+#: src/gui/dialogs/depcheck_select_new.cpp:80
 msgid ""
 "The currently chosen modification is not compatible with your setup.\n"
 "Please select a compatible one."
@@ -5758,27 +5775,27 @@ msgstr "内陸"
 msgid "Island"
 msgstr "島"
 
-#: src/gui/dialogs/file_dialog.cpp:109
+#: src/gui/dialogs/file_dialog.cpp:105
 msgid "Find File"
 msgstr "ファイル探索"
 
-#: src/gui/dialogs/file_dialog.cpp:185
+#: src/gui/dialogs/file_dialog.cpp:181
 msgid "Open"
 msgstr "開く"
 
-#: src/gui/dialogs/file_dialog.cpp:306
+#: src/gui/dialogs/file_dialog.cpp:302
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr "ファイルがすでに存在しています。上書きしますか？"
 
-#: src/gui/dialogs/file_dialog.cpp:330
+#: src/gui/dialogs/file_dialog.cpp:326
 msgid "The file or folder $path cannot be created."
 msgstr "ファイル/フォルダ「 $path 」を作成できません。"
 
-#: src/gui/dialogs/file_dialog.cpp:336
+#: src/gui/dialogs/file_dialog.cpp:332
 msgid "The file or folder $path does not exist."
 msgstr "「 $path 」というファイル/フォルダは存在しません。"
 
-#: src/gui/dialogs/file_dialog.cpp:711
+#: src/gui/dialogs/file_dialog.cpp:707
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
@@ -5786,19 +5803,19 @@ msgstr ""
 "フォルダ「$path|」を作成できません。その場所への書き込み権限があるか確認して"
 "ください。"
 
-#: src/gui/dialogs/file_dialog.cpp:729
+#: src/gui/dialogs/file_dialog.cpp:725
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr "以下のフォルダとその中身は完全に削除されます。"
 
-#: src/gui/dialogs/file_dialog.cpp:730
+#: src/gui/dialogs/file_dialog.cpp:726
 msgid "The following file will be permanently deleted:"
 msgstr "以下のファイルは完全に削除されます。"
 
-#: src/gui/dialogs/file_dialog.cpp:731
+#: src/gui/dialogs/file_dialog.cpp:727
 msgid "Do you wish to continue?"
 msgstr "削除しますか？"
 
-#: src/gui/dialogs/file_dialog.cpp:743
+#: src/gui/dialogs/file_dialog.cpp:739
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
@@ -5845,82 +5862,88 @@ msgstr "ゲームデータのキャッシュを削除しました。"
 msgid "The game data cache could not be purged."
 msgstr "ゲームデータのキャッシュを削除できませんでした。"
 
-#: src/gui/dialogs/game_load.cpp:311
+#: src/gui/dialogs/game_load.cpp:264
+#, fuzzy
+#| msgid "The selected game has no sides!"
+msgid "The selected file is corrupt: "
+msgstr "選択したゲームには陣営がありません！"
+
+#: src/gui/dialogs/game_load.cpp:343
 msgid "(Invalid)"
 msgstr "（無効）"
 
-#: src/gui/dialogs/game_load.cpp:348
+#: src/gui/dialogs/game_load.cpp:380
 msgid "Campaign: $campaign_name"
 msgstr "キャンペーン：$campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:363
+#: src/gui/dialogs/game_load.cpp:395
 msgid "Test scenario"
 msgstr "テストシナリオ"
 
-#: src/gui/dialogs/game_load.cpp:373
+#: src/gui/dialogs/game_load.cpp:405
 msgid "Replay"
 msgstr "リプレイ"
 
-#: src/gui/dialogs/game_load.cpp:375
+#: src/gui/dialogs/game_load.cpp:407
 msgid "Turn"
 msgstr "ターン"
 
-#: src/gui/dialogs/game_load.cpp:377
+#: src/gui/dialogs/game_load.cpp:409
 msgid "Scenario start"
 msgstr "シナリオの開始"
 
-#: src/gui/dialogs/game_load.cpp:380
+#: src/gui/dialogs/game_load.cpp:412
 msgid "Difficulty: "
 msgstr "難易度："
 
-#: src/gui/dialogs/game_load.cpp:384
+#: src/gui/dialogs/game_load.cpp:416
 msgid "Version: "
 msgstr "バージョン："
 
-#: src/gui/dialogs/game_load.cpp:389
+#: src/gui/dialogs/game_load.cpp:421
 msgid "Modifications: "
 msgstr "Mod："
 
-#: src/gui/dialogs/game_stats.cpp:78
+#: src/gui/dialogs/game_stats.cpp:74
 msgid "controller^AI"
 msgstr "AI"
 
-#: src/gui/dialogs/game_stats.cpp:78
+#: src/gui/dialogs/game_stats.cpp:74
 msgid "controller^Idle"
 msgstr "待機"
 
-#: src/gui/dialogs/game_stats.cpp:114 src/gui/dialogs/label_settings.cpp:71
+#: src/gui/dialogs/game_stats.cpp:110 src/gui/dialogs/label_settings.cpp:67
 msgid "Unknown"
 msgstr "不明"
 
-#: src/gui/dialogs/game_stats.cpp:200 src/gui/dialogs/game_stats.cpp:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:476
+#: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
+#: src/gui/dialogs/multiplayer/lobby.cpp:470
 msgid "no"
 msgstr "いいえ"
 
-#: src/gui/dialogs/game_stats.cpp:200 src/gui/dialogs/game_stats.cpp:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:476
+#: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
+#: src/gui/dialogs/multiplayer/lobby.cpp:470
 msgid "yes"
 msgstr "はい"
 
-#: src/gui/dialogs/game_version_dialog.cpp:137
-#: src/gui/dialogs/title_screen.cpp:241
+#: src/gui/dialogs/game_version_dialog.cpp:133
+#: src/gui/dialogs/title_screen.cpp:258
 msgid "Version $version"
 msgstr "バージョン $version"
 
-#: src/gui/dialogs/game_version_dialog.cpp:141
+#: src/gui/dialogs/game_version_dialog.cpp:137
 msgid "Running on $os"
 msgstr "$os 上で動作中"
 
-#: src/gui/dialogs/game_version_dialog.cpp:226
+#: src/gui/dialogs/game_version_dialog.cpp:222
 msgid "version^N/A"
 msgstr "N/A"
 
-#: src/gui/dialogs/label_settings.cpp:53
+#: src/gui/dialogs/label_settings.cpp:49
 msgid "Team Labels"
 msgstr "チームラベル"
 
-#: src/gui/dialogs/label_settings.cpp:76
+#: src/gui/dialogs/label_settings.cpp:72
 msgid "Side $side_number ($name)"
 msgstr "陣営 $side_number （ $name ）"
 
@@ -6022,31 +6045,31 @@ msgstr ""
 msgid "lua console"
 msgstr "Luaコンソール"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:106
+#: src/gui/dialogs/multiplayer/lobby.cpp:102
 msgid "Selected Game"
 msgstr "選択中のゲーム"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:107
+#: src/gui/dialogs/multiplayer/lobby.cpp:103
 msgid "Lobby"
 msgstr "ロビー"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:109
+#: src/gui/dialogs/multiplayer/lobby.cpp:105
 msgid "Current Room"
 msgstr "現在の部屋"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:111
+#: src/gui/dialogs/multiplayer/lobby.cpp:107
 msgid "Other Games"
 msgstr "他のゲーム"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:118
+#: src/gui/dialogs/multiplayer/lobby.cpp:114
 msgid "Do you really want to log out?"
 msgstr "ログアウトしますか？"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:213
+#: src/gui/dialogs/multiplayer/lobby.cpp:209
 msgid "Incompatible User-made Content."
 msgstr "非互換のユーザーメイドコンテンツ（UMC）があります。"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:214
+#: src/gui/dialogs/multiplayer/lobby.cpp:210
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
@@ -6056,11 +6079,11 @@ msgstr ""
 "することはできません。ホストにアドオンをアップデートするよう促した方が良いか"
 "もしれません。"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:229
+#: src/gui/dialogs/multiplayer/lobby.cpp:225
 msgid "Missing User-made Content."
 msgstr "未所持のユーザーメイドコンテンツ（UMC）があります。"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:230
+#: src/gui/dialogs/multiplayer/lobby.cpp:226
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
@@ -6069,43 +6092,43 @@ msgstr ""
 "このゲームをプレイするには、いくつかのアドオンをインストールまたはアップデー"
 "トする必要があります。それらのアドオンをインストールしますか？"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:396
+#: src/gui/dialogs/multiplayer/lobby.cpp:391
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "ゲーム： $num_total 中の $num_shown を表示"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:417
+#: src/gui/dialogs/multiplayer/lobby.cpp:411
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name（時代： $era_name）"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:447
+#: src/gui/dialogs/multiplayer/lobby.cpp:441
 msgid "era_or_mod^not installed"
 msgstr "未インストール"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:450
+#: src/gui/dialogs/multiplayer/lobby.cpp:444
 msgid "Era"
 msgstr "時代"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:482
+#: src/gui/dialogs/multiplayer/lobby.cpp:476
 msgid "Reloaded:"
 msgstr "再開："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:483
+#: src/gui/dialogs/multiplayer/lobby.cpp:477
 msgid "Shared vision:"
 msgstr "共有された視界："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:484
+#: src/gui/dialogs/multiplayer/lobby.cpp:478
 msgid "Shuffle sides:"
 msgstr "陣営をシャッフル："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:485
+#: src/gui/dialogs/multiplayer/lobby.cpp:479
 msgid "Time limit:"
 msgstr "制限時間："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:486
+#: src/gui/dialogs/multiplayer/lobby.cpp:480
 msgid "Use map settings:"
 msgstr "マップ設定を使用："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:494
+#: src/gui/dialogs/multiplayer/lobby.cpp:488
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -6113,19 +6136,19 @@ msgstr ""
 "このゲームに参加するには、１つあるいは複数のアドオンをインストールする必要が"
 "あります。"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:519
+#: src/gui/dialogs/multiplayer/lobby.cpp:513
 msgid "Observers allowed"
 msgstr "観戦可"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:522
+#: src/gui/dialogs/multiplayer/lobby.cpp:516
 msgid "Observers not allowed"
 msgstr "観戦不可"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:797
+#: src/gui/dialogs/multiplayer/lobby.cpp:791
 msgid "lobby"
 msgstr "ロビー"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:957
+#: src/gui/dialogs/multiplayer/lobby.cpp:951
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -6141,114 +6164,114 @@ msgstr ""
 "このwesnothのビルドにはデスクトップ通知機能が含まれていません。パッケージャー"
 "に連絡してください。"
 
-#: src/gui/dialogs/multiplayer/mp_change_control.cpp:108
+#: src/gui/dialogs/multiplayer/mp_change_control.cpp:104
 msgid "Side $side"
 msgstr "陣営 $side"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:109
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:100
 msgid "Scenarios"
 msgstr "シナリオ"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:110
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:101
 msgid "Multiplayer Campaigns"
 msgstr "マルチプレイヤーキャンペーン"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:111
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:102
 msgid "Singleplayer Campaigns"
 msgstr "１人用キャンペーン"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:112
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:103
 msgid "Custom Maps"
 msgstr "カスタムマップ"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:113
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:104
 msgid "Custom Scenarios"
 msgstr "カスタムシナリオ"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:114
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:105
 msgid "Random Maps"
 msgstr "ランダムマップ"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:188
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:189
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:179
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:180
 msgid "No games found."
 msgstr "ゲームが存在しません。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:256
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:247
 msgid "No eras found."
 msgstr "時代が存在しません。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:257
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:248
 msgid "No eras found"
 msgstr "時代が存在しません"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:285
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:276
 msgid "Independent: Random factions assigned independently"
 msgstr ""
 "完全ランダム：陣営の党派をランダムに決定します。ミラーマッチが起こる可能性も"
 "あります。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:286
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:277
 msgid "No Mirror: No two players will get the same faction"
 msgstr ""
 "ミラーマッチ防止：ミラーマッチ（2人以上のプレイヤーが同じ党派）にならないよう"
 "にします。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:287
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:278
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr "同名ミラー防止：同盟関係にある陣営の党派が被らないようにします。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:543
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:534
 msgid "No eras available for this game."
 msgstr "このゲームには時代を適用できません。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:741
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:732
 msgid "number of players^$min to $max"
 msgstr "$min ～ $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:838
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:829
 msgid "The selected game has no sides!"
 msgstr "選択したゲームには陣営がありません！"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:904
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:895
 msgid "Choose Starting Scenario"
 msgstr "開始シナリオの選択"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:904
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:895
 msgid "Select at which point to begin this campaign."
 msgstr "どこからキャンペーンを開始しますか？"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:216
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:210
 msgid "Computer Player"
 msgstr "コンピュータープレイヤー"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:218
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:212
 msgid "Empty slot"
 msgstr "空席"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:220
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:214
 msgid "Reserved for $playername"
 msgstr "（ $playername が予約済み）"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:222
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:216
 msgid "Vacant slot"
 msgstr "空席"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:226
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:220
 msgid "empty"
 msgstr "空"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:253
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:109
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:248
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:106
 msgid "this game"
 msgstr "このゲーム"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:365
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:168
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:360
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:165
 msgid "Team:"
 msgstr "チーム："
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:469
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:482
 msgid "Waiting for players to choose factions..."
 msgstr "プレイヤーが党派を選択中..."
 
@@ -6256,32 +6279,32 @@ msgstr "プレイヤーが党派を選択中..."
 msgid "The End"
 msgstr "The End"
 
-#: src/gui/dialogs/preferences_dialog.cpp:186
+#: src/gui/dialogs/preferences_dialog.cpp:187
 msgid "friend"
 msgstr "友人"
 
-#: src/gui/dialogs/preferences_dialog.cpp:191
+#: src/gui/dialogs/preferences_dialog.cpp:192
 msgid "ignored"
 msgstr "無視"
 
-#: src/gui/dialogs/preferences_dialog.cpp:245
-#: src/gui/dialogs/preferences_dialog.cpp:305
+#: src/gui/dialogs/preferences_dialog.cpp:246
+#: src/gui/dialogs/preferences_dialog.cpp:306
 msgid "No username specified"
 msgstr "ユーザー名が指定されていません"
 
-#: src/gui/dialogs/preferences_dialog.cpp:263
+#: src/gui/dialogs/preferences_dialog.cpp:264
 msgid "Invalid username"
 msgstr "無効なユーザ名です。"
 
-#: src/gui/dialogs/preferences_dialog.cpp:310
+#: src/gui/dialogs/preferences_dialog.cpp:311
 msgid "Not on friends or ignore lists"
 msgstr "友人・無視リストに含まれていません"
 
-#: src/gui/dialogs/preferences_dialog.cpp:812
+#: src/gui/dialogs/preferences_dialog.cpp:816
 msgid "&#9679;"
 msgstr "&#9679;"
 
-#: src/gui/dialogs/preferences_dialog.cpp:872
+#: src/gui/dialogs/preferences_dialog.cpp:876
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -6290,19 +6313,19 @@ msgstr ""
 "います。\n"
 "割り当てを「<b>$new_hotkey_action|</b>」に変更しますか？"
 
-#: src/gui/dialogs/preferences_dialog.cpp:878
+#: src/gui/dialogs/preferences_dialog.cpp:882
 msgid "Reassign Hotkey"
 msgstr "ホットキーの再割り当て"
 
-#: src/gui/dialogs/preferences_dialog.cpp:895
+#: src/gui/dialogs/preferences_dialog.cpp:899
 msgid "All hotkeys have been reset to their default values."
 msgstr "全てのホットキーはデフォルトの値にリセットされます。"
 
-#: src/gui/dialogs/preferences_dialog.cpp:895
+#: src/gui/dialogs/preferences_dialog.cpp:899
 msgid "Hotkeys Reset"
 msgstr "ホットキーのリセット"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1008
+#: src/gui/dialogs/preferences_dialog.cpp:1032
 msgid "∞"
 msgstr "無限"
 
@@ -6316,73 +6339,77 @@ msgstr ""
 "\n"
 "代わりに、PNG でスクリーンショットを保存します。"
 
-#: src/gui/dialogs/statistics_dialog.cpp:68
+#: src/gui/dialogs/statistics_dialog.cpp:64
 msgid "All Scenarios"
 msgstr "すべてのシナリオ"
 
-#: src/gui/dialogs/statistics_dialog.cpp:181
+#: src/gui/dialogs/statistics_dialog.cpp:177
 msgid "Recruits"
 msgstr "雇用"
 
-#: src/gui/dialogs/statistics_dialog.cpp:182
+#: src/gui/dialogs/statistics_dialog.cpp:178
 msgid "Recalls"
 msgstr "召還"
 
-#: src/gui/dialogs/statistics_dialog.cpp:183
+#: src/gui/dialogs/statistics_dialog.cpp:179
 msgid "Advancements"
 msgstr "レベルアップ"
 
-#: src/gui/dialogs/statistics_dialog.cpp:184
+#: src/gui/dialogs/statistics_dialog.cpp:180
 msgid "Losses"
 msgstr "損失"
 
-#: src/gui/dialogs/statistics_dialog.cpp:185
+#: src/gui/dialogs/statistics_dialog.cpp:181
 msgid "Kills"
 msgstr "撃破"
 
-#: src/gui/dialogs/statistics_dialog.cpp:204
+#: src/gui/dialogs/statistics_dialog.cpp:200
 msgid "Inflicted"
 msgstr "与ダメージ"
 
-#: src/gui/dialogs/statistics_dialog.cpp:212
+#: src/gui/dialogs/statistics_dialog.cpp:208
 msgid "Taken"
 msgstr "被ダメージ"
 
-#: src/gui/dialogs/statistics_dialog.cpp:255
+#: src/gui/dialogs/statistics_dialog.cpp:251
 msgid "$count|× $name"
 msgstr "$count|× $name"
 
-#: src/gui/dialogs/title_screen.cpp:467
+#: src/gui/dialogs/title_screen.cpp:174 src/hotkey/hotkey_command.cpp:91
+msgid "Screenshot"
+msgstr "スクリーンショット"
+
+#: src/gui/dialogs/title_screen.cpp:484
 msgid "Choose Test"
 msgstr "テストの選択"
 
-#: src/gui/dialogs/unit_recall.cpp:263 src/hotkey/hotkey_command.cpp:96
+#: src/gui/dialogs/unit_recall.cpp:259 src/hotkey/hotkey_command.cpp:96
 msgid "Rename Unit"
 msgstr "ユニット名を変更"
 
-#: src/gui/dialogs/unit_recall.cpp:296
+#: src/gui/dialogs/unit_recall.cpp:292
 msgid "This unit is loyal and requires no upkeep."
 msgstr "忠義ユニットには維持費が必要ありません。"
 
-#: src/gui/dialogs/unit_recall.cpp:297 src/gui/dialogs/unit_recall.cpp:302
-#: src/gui/dialogs/unit_recall.cpp:307
+#: src/gui/dialogs/unit_recall.cpp:293 src/gui/dialogs/unit_recall.cpp:298
+#: src/gui/dialogs/unit_recall.cpp:303
 msgid "Do you really want to dismiss him?"
 msgstr "本当に彼を解雇しますか？"
 
-#: src/gui/dialogs/unit_recall.cpp:298 src/gui/dialogs/unit_recall.cpp:303
-#: src/gui/dialogs/unit_recall.cpp:308
+#: src/gui/dialogs/unit_recall.cpp:294 src/gui/dialogs/unit_recall.cpp:299
+#: src/gui/dialogs/unit_recall.cpp:304
 msgid "Do you really want to dismiss her?"
 msgstr "本当に彼女を解雇しますか？"
 
-#: src/gui/dialogs/unit_recall.cpp:301
+#: src/gui/dialogs/unit_recall.cpp:297
 msgid "This unit is an experienced one, having advanced levels."
 msgstr "このユニットは熟練しており、高レベルです。"
 
-#: src/gui/dialogs/unit_recall.cpp:306
+#: src/gui/dialogs/unit_recall.cpp:302
 msgid "This unit is close to advancing a level."
 msgstr "レベルアップが近いユニットです。"
 
-#: src/gui/dialogs/unit_recall.cpp:312
+#: src/gui/dialogs/unit_recall.cpp:308
 msgid "Dismiss Unit"
 msgstr "ユニットの解雇"
 
@@ -6451,20 +6478,20 @@ msgstr "このリンクを開きますか？"
 msgid "Copied link!"
 msgstr "リンクをコピーしました！"
 
-#: src/gui/widgets/listbox.cpp:918 src/gui/widgets/multi_page.cpp:282
+#: src/gui/widgets/listbox.cpp:916 src/gui/widgets/multi_page.cpp:282
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "「 list_data 」には「 list_definition 」と同じ数のcolumnがなければなりませ"
 "ん。"
 
-#: src/gui/widgets/listbox.cpp:962 src/gui/widgets/listbox.cpp:1079
-#: src/gui/widgets/listbox.cpp:1196 src/gui/widgets/scrollbar_panel.cpp:147
+#: src/gui/widgets/listbox.cpp:960 src/gui/widgets/listbox.cpp:1066
+#: src/gui/widgets/listbox.cpp:1172 src/gui/widgets/scrollbar_panel.cpp:147
 msgid "No list defined."
 msgstr "listが定義されていません。"
 
-#: src/gui/widgets/listbox.cpp:967 src/gui/widgets/listbox.cpp:1084
-#: src/gui/widgets/listbox.cpp:1201
+#: src/gui/widgets/listbox.cpp:965 src/gui/widgets/listbox.cpp:1071
+#: src/gui/widgets/listbox.cpp:1177
 msgid "A 'list_definition' should contain one row."
 msgstr "「 list_definition 」には単一のrowを含む必要があります。"
 
@@ -6718,10 +6745,6 @@ msgstr "ズームを初期値に戻す"
 #: src/hotkey/hotkey_command.cpp:90
 msgid "Toggle Full Screen"
 msgstr "フルスクリーンの切り替え"
-
-#: src/hotkey/hotkey_command.cpp:91
-msgid "Screenshot"
-msgstr "スクリーンショット"
 
 #: src/hotkey/hotkey_command.cpp:92
 msgid "Map Screenshot"

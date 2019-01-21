@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-09-09 08:38 UTC\n"
+"POT-Creation-Date: 2019-01-21 18:30 UTC\n"
 "PO-Revision-Date: 2014-06-03 21:37+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -78,7 +78,9 @@ msgstr ""
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:26
-msgid "(Expert level, 24 scenarios.)"
+#, fuzzy
+#| msgid "(Expert level, 24 scenarios.)"
+msgid "(Hard level, 24 scenarios.)"
 msgstr "(Mức độ chuyên gia, 24 màn chơi)"
 
 #. [about]
@@ -228,8 +230,8 @@ msgid "For this is the story of Haldric the First and the Rise of Wesnoth..."
 msgstr "Đây là câu chuyện về Haldric đệ nhất và sự tích Wesnoth..."
 
 #. [side]: type=Noble Commander, id=Prince Haldric
-#. [side]: id=Prince Haldric, type=Noble Commander
 #. [side]: type=Noble Youth, type=Noble Fighter, id=Prince Haldric
+#. [side]: id=Prince Haldric, type=Noble Commander
 #. [side]: type=Noble Fighter, id=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:77
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:27
@@ -238,7 +240,7 @@ msgstr "Đây là câu chuyện về Haldric đệ nhất và sự tích Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:34
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:21
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_in_the_Deep.cfg:29
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:20
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:21
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:25
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:22
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer_of_Southbay.cfg:24
@@ -297,21 +299,18 @@ msgstr "Đánh bại lãnh tụ Wesfolk"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:151
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:180
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_in_the_Deep.cfg:111
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:246
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:186
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:262
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:202
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer_of_Southbay.cfg:130
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:263
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:412
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:167
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:290
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:177
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:164
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:248
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:223
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:233
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_Lizard_Beach.cfg:113
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:240
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:179
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:310
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:462
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:174
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:309
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:193
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:180
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:271
 msgid "Death of Prince Haldric"
@@ -548,29 +547,29 @@ msgstr "Thung lũng bão tố"
 msgid "Tan-Rarbag"
 msgstr "Tan-Rarbag"
 
-#. [side]: type=Orcish Warlord, id=Tan-Schmog
-#. [side]: type=Orcish Warlord, id=Tan-NauVong
-#. [side]: type=Orcish Warlord, id=Tan-Vragar
-#. [side]: type=Orcish Warlord, id=Tan-Burg
-#. [side]: type=Orcish Warlord, id=Ut'Tan-Vrork
-#. [side]: type=Orcish Warlord, id=Tan-Rarbag
-#. [side]: type=Orcish Warrior, id=Tan-Erang
 #. [side]: type=Orcish Warlord, id=Tan-Vrodis
 #. [side]: type=Orcish Warlord, id=Tan-Bok
 #. [side]: type=Orcish Warlord, id=Tan-Hogar
-#. [side]: type=Orcish Warlord, id=Tan-Gralg
-#. [side]: type=Orcish Warlord, id=Tan-Rugar
-#. [side]: type=Orcish Warlord, id=Tan-Harak
-#. [side]: type=Orcish Warlord, id=Tan-Hork
-#. [side]: type=Orcish Warlord, id=Tan-Gulo
-#. [side]: type=Orcish Warlord, id=Tan-Erirt
-#. [side]: type=Orcish Warlord, id=Tan-Gagar
-#. [side]: type=Troll Warrior, id=Thruf
 #. [side]: type=Draug, id=General Heravan
 #. [side]: type=Orcish Warlord, id=Tan-Halg
 #. [side]: type=Orcish Warlord, id=Tan-Rinak
+#. [side]: type=Orcish Warlord, id=Tan-Schmog
+#. [side]: type=Orcish Warlord, id=Tan-NauVong
+#. [side]: type=Orcish Warlord, id=Tan-Erirt
+#. [side]: type=Orcish Warlord, id=Tan-Gagar
+#. [side]: type=Troll Warrior, id=Thruf
+#. [side]: type=Orcish Warlord, id=Tan-Rarbag
+#. [side]: type=Orcish Warrior, id=Tan-Erang
+#. [side]: type=Orcish Warlord, id=Tan-Gralg
+#. [side]: type=Orcish Warlord, id=Tan-Rugar
+#. [side]: type=Orcish Warlord, id=Tan-Vragar
+#. [side]: type=Orcish Warlord, id=Tan-Burg
+#. [side]: type=Orcish Warlord, id=Ut'Tan-Vrork
 #. [side]: type=Orcish Warlord, id=Ut'Tan-Grilg
 #. [side]: type=Orcish Warlord, id=Tan-Pulk
+#. [side]: type=Orcish Warlord, id=Tan-Harak
+#. [side]: type=Orcish Warlord, id=Tan-Hork
+#. [side]: type=Orcish Warlord, id=Tan-Gulo
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:76
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:99
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:41
@@ -580,9 +579,9 @@ msgstr "Tan-Rarbag"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:128
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:62
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:93
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:87
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:122
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:159
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:85
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:120
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:157
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:53
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:90
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:79
@@ -706,7 +705,7 @@ msgstr "Haldric, con nói sao về vấn đề này?"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:290
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:355
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:371
 msgid "Hmm... after some thought..."
 msgstr "Hừm... sau một lúc suy nghĩ..."
 
@@ -734,9 +733,9 @@ msgid "The Lady Outlaw will do."
 msgstr "Cứ gọi là nữ tướng cướp."
 
 #. [unit]: id=Lady Outlaw, type=$wesfolk_leader_store.type
-#. [command]
+#. [then]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:323
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:365
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:476
 msgid "Lady Outlaw"
 msgstr "Nữ tướng cướp"
 
@@ -751,12 +750,12 @@ msgid "Arrogant fools! (<i>Reaches into pocket</i>) <i>Poof</i>!"
 msgstr "Bọn ngốc ngạo mạn! (<i>Đút tay vào túi</i>) <i>Hấp</i>!"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:376
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:367
 msgid "Argh, she’s gone. Next time, more sword, less chat."
 msgstr "Á, cô ta đi rồi. Lần sau, kiếm nhiều hơn, lời ít hơn."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:381
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:372
 msgid ""
 "She’s clever! Maybe I made the wrong choice. Well, at least she left some of "
 "her gold behind..."
@@ -765,7 +764,7 @@ msgstr ""
 "lại một ít vàng..."
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:400
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:391
 msgid ""
 "Son, you must lead our people through the south pass. I will remain behind "
 "to hold off these vile monsters for as long as I can."
@@ -774,36 +773,36 @@ msgstr ""
 "lại để cầm chân bọn quái vật hèn hạ này lâu đến mức có thể."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:404
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:395
 msgid "But, Father!"
 msgstr "Nhưng, cha!"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:408
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:399
 msgid "It’s the only way. Go now, and don’t look back! Luck be with you!"
 msgstr "Đó là cách duy nhất. Đi đi, và đừng nhìn lại! Chúc con may mắn!"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:430
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:421
 msgid "We’re surrounded! The orcs have taken the southern pass! All is lost!"
 msgstr ""
 "Chúng ta bị bao vây! Bọn người thú đã chiếm con đèo phía nam! Tất cả thế là "
 "hết!"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:442
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:433
 msgid "We’re surrounded! I can see their reinforcements! All is lost!"
 msgstr ""
 "Chúng ta bị bao vây! Ta có thể nhìn thấy quân tiếp viện của chúng! Tất cả "
 "thế là hết!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:455
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:446
 msgid "Our home! Where shall we go!"
 msgstr "Nhà của chúng ta! Chúng ta sẽ đi đâu?"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:459
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:450
 msgid "There can be no looking back! We must go south."
 msgstr "Không phải lúc nhìn lại đằng sau nữa! Chúng ta phải đi về phía nam."
 
@@ -821,7 +820,7 @@ msgstr "Cuộc chạy trốn đau lòng"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:28
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:108
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_in_the_Deep.cfg:36
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:27
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:28
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:29
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer_of_Southbay.cfg:32
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:39
@@ -880,16 +879,15 @@ msgstr "Gruumogth"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:158
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:147
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:176
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:242
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:184
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:259
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:408
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:163
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:258
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:200
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:286
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:173
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:160
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_Lizard_Beach.cfg:109
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:236
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:306
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:170
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:286
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:189
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:176
 msgid "Defeat all enemy leaders"
 msgstr "Đánh bại tất cả các chỉ huy của kẻ thù"
@@ -1179,7 +1177,7 @@ msgstr "Clurka"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:143
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:144
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:145
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:365
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:329
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer_of_Southbay.cfg:98
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer_of_Southbay.cfg:99
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer_of_Southbay.cfg:100
@@ -1248,17 +1246,17 @@ msgid "Wait, I think I hear something... To arms!"
 msgstr "Chờ đã, tôi nghĩ đã nghe thấy thứ gì đó... Vào vị trí!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:392
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:359
 msgid "Careful, you don’t know what’s lurking in there!"
 msgstr "Cẩn thận, không biết có gì đang ẩn nấp ở đó!"
 
 #. [unit]: type=White Mage, id=Minister Edren
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:398
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:365
 msgid "Minister Edren"
 msgstr "Mục sư Edren"
 
 #. [message]: speaker=Minister Edren
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:410
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:377
 msgid ""
 "Back you vile— Oh, sorry I thought you were undead. When are those goofs in "
 "Clearwater Port going to clear the swamp again?"
@@ -1267,22 +1265,22 @@ msgstr ""
 "thì những kẻ ngu ngốc ở cảng Nước Trong mới dọn dẹp đầm lầy lần nữa?"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:414
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:381
 msgid "Maybe they’ll clear it some time after the APOCALYPSE is OVER!"
 msgstr "Có lẽ họ sẽ dọn dẹp vào lúc nào đó SAU KHI TẬN THẾ KẾT THÚC!"
 
 #. [message]: speaker=Minister Edren
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:419
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:386
 msgid "Oooh! I take it you wouldn’t mind if I helped out?"
 msgstr "Ồ, hóa ra, cậu không phiền nếu tôi giúp một tay chứ?"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:434
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:401
 msgid "Hey, there’s somebody hidden in the temple. Ack! Hold there!"
 msgstr "Ơ, có ai đó nấp trong ngôi đền. Này! Đứng yên đó!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:518
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:485
 msgid ""
 "SW — The Oldwood Forest.\n"
 "Enter at Your Own Risk!"
@@ -1291,27 +1289,27 @@ msgstr ""
 "Cứ liều mạng mà vào!"
 
 #. [message]: speaker=Lollyra
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:535
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:502
 msgid "May I live forever in Un-death!"
 msgstr "Ta sẽ sống mãi ở cõi vĩnh hằng!"
 
 #. [message]: speaker=Clurka
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:546
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:513
 msgid "Ohh! To be risen again!"
 msgstr "Ối! Ta sẽ sống lại!"
 
 #. [message]: speaker=Cleon
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:557
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:524
 msgid "A prayer for life immortal!"
 msgstr "Cầu xin cuộc sống bất tử!"
 
 #. [unit]: type=Knight, id=Sir Ruddry
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:572
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:539
 msgid "Sir Ruddry"
 msgstr "Ngài Ruddry"
 
 #. [message]: speaker=Sir Ruddry
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:591
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:558
 msgid ""
 "I don’t know who you are, but you can’t continue down this road! There is a "
 "horde of those orcs bigger than any army I’ve ever seen just down the road!"
@@ -1321,7 +1319,7 @@ msgstr ""
 "ở ngay cuối con đường!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:596
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:563
 msgid ""
 "I’m Haldric; my father was King Eldaric IV in the lands northwest of here. "
 "Soldier, have you deserted your post?"
@@ -1330,7 +1328,7 @@ msgstr ""
 "Chiến sĩ, anh đã bỏ vị trí sao?"
 
 #. [message]: speaker=Sir Ruddry
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:601
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:568
 msgid ""
 "No, Sir! I’m the sole survivor of the Clearwater Port expeditionary force. "
 "Trust me, you can’t continue down this road, Sir. Especially with the "
@@ -1341,13 +1339,13 @@ msgstr ""
 "thưa ngài. Đặc biệt với những người tị nạn, các bạn sẽ bị tàn sát."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:606
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:573
 msgid "Tell me, does Clearwater Port still stand? Is the port free?"
 msgstr ""
 "Hãy nói cho tôi biết, cảng Nước Trong vẫn cầm cự chứ? Cảng có thông không?"
 
 #. [message]: speaker=Sir Ruddry
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:611
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:578
 msgid ""
 "As far as I know, Sir. We have a large army, and they were pressing all able "
 "bodied men and boys into service when I left. That orcish army is huge, but "
@@ -1358,7 +1356,7 @@ msgstr ""
 "rất đông, nhưng chúng chưa gặp lực lượng chính của chúng tôi."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:616
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:583
 msgid ""
 "Well, we can’t go back, and the road ahead is blocked. I guess we’ll have to "
 "risk it and go through the Oldwood forest, then make a break for Clearwater "
@@ -1369,7 +1367,7 @@ msgstr ""
 "cảng Nước Trong hay vịnh Phương Nam."
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:621
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:588
 #, fuzzy
 #| msgid ""
 #| "Oh great, now a forest... I should have stayed at home and took my "
@@ -1381,21 +1379,21 @@ msgstr ""
 "Ôi tuyệt, giờ lại là rừng... Lẽ ra tôi nên ở nhà và phó mặc số phận với bọn "
 "người thú!"
 
-#. [message]: speaker=Sir Ruddry
 #. [message]: speaker=Sir Ladoc
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:627
+#. [message]: speaker=Sir Ruddry
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:594
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:416
 msgid "Sir, if you don’t mind, I’ll go with you."
 msgstr "Thưa ngài, nếu ngài không phiền, tôi sẽ đi cùng ngài."
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:632
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:599
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:421
 msgid "On we go..."
 msgstr "Chúng ta lên đường..."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:653
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:620
 msgid ""
 "We have run out of time... We’ll be trapped in this swamp when winter "
 "arrives!"
@@ -1631,7 +1629,7 @@ msgstr "Tan-Rugar"
 
 #. [side]: type=Ancient Wose, id=Elilmaldur-Rithrandil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:101
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:55
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:56
 msgid "Elilmaldur-Rithrandil"
 msgstr "Elilmaldur-Rithrandil"
 
@@ -1652,7 +1650,7 @@ msgstr "Landunwonbam"
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:157
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:165
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:88
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:89
 msgid "Bolwuldelman"
 msgstr "Bolwuldelman"
 
@@ -1745,7 +1743,9 @@ msgstr ""
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:239
-msgid "We will help. "
+#, fuzzy
+#| msgid "We will help. "
+msgid "We will help."
 msgstr "Chúng tôi sẽ giúp đỡ. "
 
 #. [message]: speaker=Prince Haldric
@@ -1799,7 +1799,7 @@ msgid "We’ve defeated the orcs!"
 msgstr "Chúng ta đã đánh bại bọn người thú!"
 
 #. [message]: speaker=Elilmaldur-Rithrandil
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:324
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:320
 msgid ""
 "On this day you have proved yourself to be a tree-friend. For so long your "
 "kind has only come with sharp blades to harm my kind. You come to build "
@@ -1812,7 +1812,7 @@ msgstr ""
 "Chúng tôi rốt cuộc cũng sẽ đòi lại tất cả những tảng đá này cho trái đất."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:328
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:324
 msgid ""
 "Well, I suspect you won’t have to worry about my kind for much longer. The "
 "orcs have come, and they are taking this Isle!"
@@ -1821,7 +1821,7 @@ msgstr ""
 "thú đã đến, và chúng đang chiếm hòn đảo này!"
 
 #. [message]: speaker=Elilmaldur-Rithrandil
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:332
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:328
 msgid ""
 "Hmmmm— my kind were here before your kind, and we will be here after the "
 "orcs are gone as well. We were here before all others, and I suspect that we "
@@ -1832,12 +1832,12 @@ msgstr ""
 "khác, và tôi nghĩ rằng cuối cùng thì chúng tôi sẽ ở đây."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:336
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:332
 msgid "Can you help us fight the orcs?"
 msgstr "Các ông có thể giúp chúng tôi đánh bọn người thú không?"
 
 #. [message]: speaker=Elilmaldur-Rithrandil
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:340
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:336
 msgid ""
 "My kind are bound to the forest, we would be of little help to you beyond "
 "our borders. Maybe we could still be of some aid to you. In a war of your "
@@ -1851,7 +1851,7 @@ msgstr ""
 "trong hầm mộ của ngôi đền ở giữa rừng. Chúng tôi đã ở đó, chúng tôi theo dõi."
 
 #. [message]: speaker=Elilmaldur-Rithrandil
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:344
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:340
 msgid ""
 "After we drove your kind off we figured out how to break the spell that "
 "holds the Evil in the catacombs, and keeps others from entering them."
@@ -1860,12 +1860,12 @@ msgstr ""
 "phá phép thuật giữ kẻ xấu xa trong hầm mộ, và ngăn không cho người khác vào."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:348
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:344
 msgid "This helps us how?"
 msgstr "Điều này sẽ giúp chúng tôi thế nào?"
 
 #. [message]: speaker=Elilmaldur-Rithrandil
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:352
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:348
 msgid ""
 "The lich was carrying a powerful artifact. We know, we can feel it. This "
 "artifact may aid you in your quest."
@@ -1874,7 +1874,7 @@ msgstr ""
 "thể cảm nhận được nó. Bảo bối này có thể giúp đỡ các bạn."
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:357
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:353
 msgid ""
 "He must mean the Ruby of Fire. It was our most powerful artifact. We brought "
 "it with us from the Old Continent, long ago. We thought it was lost in the "
@@ -1886,17 +1886,17 @@ msgstr ""
 "Lenvan thất thủ!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:361
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:357
 msgid "At this point we need all of the help we can get!"
 msgstr "Lúc này chúng tôi cần tất cả mọi trợ giúp chúng tôi có thể nhận được!"
 
 #. [message]: speaker=Elilmaldur-Rithrandil
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:365
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:361
 msgid "Then I will open the catacombs for you..."
 msgstr "Thế thì tôi sẽ mở hầm mộ cho các bạn..."
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:375
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:371
 msgid ""
 "Young Prince, while the lich-lords have betrayed us by allying themselves "
 "with that orcish scum, I can’t bring myself to fight against one of the "
@@ -1907,15 +1907,15 @@ msgstr ""
 "chống lại một trong những người chỉ huy vĩ đại nhất của chúng tôi."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:379
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:375
 msgid "Lady, why would you let those monsters lead your people?"
 msgstr ""
 "Nữ tướng cướp, tại sao bọn cô lại để cho những con quái vật đó dẫn dắt người "
 "của mình?"
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:383
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:222
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:379
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:223
 msgid ""
 "Haldric, we are an ancient people who lived in a land filled with all manner "
 "of man and beast. We needed vision that extended beyond the meager span of "
@@ -1928,7 +1928,7 @@ msgstr ""
 "và những người kém nhất phải phục vụ như những nô lệ ngu đần."
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:387
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:383
 msgid ""
 "Other than losing our war in the far West, then our refugee war to your "
 "people, and this orc thing, it wasn’t such a bad deal. Lich-Lord Lenvan was "
@@ -1943,7 +1943,7 @@ msgstr ""
 "vẻ."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:391
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:387
 msgid ""
 "Uh-huh. Have you considered the possibility that the unholy act of turning "
 "your best and brightest into undead is what causes them to fall into "
@@ -1953,7 +1953,7 @@ msgstr ""
 "giỏi nhất của mình thành ma quái là điều khiến họ rơi vào bóng tối không?"
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:395
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:391
 msgid ""
 "We should save the debate for later. I can still be of use to you. I shall "
 "scout the road ahead. We need to know if we can make it to Southbay. I’ll "
@@ -1964,7 +1964,7 @@ msgstr ""
 "hay không. Tôi sẽ trở về sau vài ngày nữa."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:418
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:407
 msgid ""
 "We have run out of time... We’ll be trapped in these woods until we die!"
 msgstr ""
@@ -2089,12 +2089,12 @@ msgstr ""
 "ba lô."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_in_the_Deep.cfg:265
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_in_the_Deep.cfg:278
 msgid "Maybe you should move somebody else to the chest."
 msgstr "Có lẽ bạn nên di chuyển ai đó khác đến chiếc hòm."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_in_the_Deep.cfg:280
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_in_the_Deep.cfg:293
 msgid ""
 "I’m glad that’s over! We have the Ruby of Fire, and that Lich-Lord is now a "
 "pile of dust, let’s get out of these catacombs!"
@@ -2103,7 +2103,7 @@ msgstr ""
 "thây ma giờ chỉ là một đống bụi, chúng ta hãy ra khỏi hầm mộ này!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_in_the_Deep.cfg:301
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_in_the_Deep.cfg:314
 msgid "He’s raising our dead!"
 msgstr "Hắn ta đang hồi sinh người chết của chúng ta!"
 
@@ -2113,41 +2113,41 @@ msgid "Return to Oldwood"
 msgstr "Trở về rừng Cổ Thụ"
 
 #. [side]: type=Wose, id=Talodulborentan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:34
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:35
 msgid "Talodulborentan"
 msgstr "Talodulborentan"
 
 #. [side]: type=Wose, id=Talodulborentan
 #. [side]: type=Wose, id=Gullatendronnorbum
 #. [side]: type=Ancient Wose, id=Elilmaldur-Rithrandil
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:38
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:48
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:59
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:39
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:49
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:60
 msgid "Treefolk"
 msgstr "Người cây"
 
 #. [side]: type=Wose, id=Gullatendronnorbum
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:44
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:45
 msgid "Gullatendronnorbum"
 msgstr "Gullatendronnorbum"
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:87
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:88
 msgid "Orofarnië"
 msgstr "Orofarnië"
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:89
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:90
 msgid "Bregalad"
 msgstr "Bregalad"
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:90
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:91
 msgid "Dolmannumbil"
 msgstr "Dolmannumbil"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:110
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:111
 msgid ""
 "Prince Haldric has emerged from the Lich-Lord’s tomb, with the Ruby of Fire. "
 "The forest seems particularly bright this day, but there is a cold breeze. "
@@ -2160,7 +2160,7 @@ msgstr ""
 "đài trong rừng của mình, cân nhắc về điều tiếp theo cần làm..."
 
 #. [message]: speaker=Elilmaldur-Rithrandil
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:115
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:116
 msgid ""
 "So, you have defeated the lich and returned with his jewel of power. The "
 "earth feels happy beneath my toes."
@@ -2169,7 +2169,7 @@ msgstr ""
 "hắn. Trái đất cảm thấy sung sướng dưới chân tôi."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:119
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:120
 msgid ""
 "Yes, it was a tough battle, but we prevailed. Now, I’m having a problem. I "
 "know not what I should do next."
@@ -2178,7 +2178,7 @@ msgstr ""
 "đang gặp một rắc rối. Tôi không biết nên làm gì tiếp."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:123
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:124
 msgid ""
 "I have the jewel, but I have no idea what it does. To make matters worse, I "
 "have no idea what’s going on outside this forest. The number of refugees is "
@@ -2191,7 +2191,7 @@ msgstr ""
 "vùng đồng bằng và liều mạng với một cuộc tàn sát."
 
 #. [message]: speaker=Elilmaldur-Rithrandil
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:127
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:128
 msgid ""
 "My eyes do not extend beyond the forest. You have indeed shown yourself a "
 "tree-friend, I would there were more I could do to help you."
@@ -2200,7 +2200,7 @@ msgstr ""
 "mình là một người bạn của cây, ước gì tôi có thể giúp các bạn được nhiều hơn."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:131
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:132
 msgid ""
 "We can’t all stay here for the winter; we would starve, or freeze. Your "
 "hospitality, though generously meant, has barely sufficed. Hold — I see "
@@ -2211,27 +2211,27 @@ msgstr ""
 "đủ. Chờ đã - tôi nhìn thấy ai đó!"
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:159
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:160
 msgid "You thought that I ran away, didn’t you?"
 msgstr "Anh nghĩ rằng tôi đã bỏ chạy, đúng không?"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:163
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:164
 msgid "The thought had crossed my mind."
 msgstr "Ý nghĩ đó vừa nảy ra trong đầu tôi."
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:167
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:168
 msgid "Well, I come bearing news of the road to Southbay!"
 msgstr "Ừm, tôi đến mang theo tin tức về con đường đến vịnh Phương Nam!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:171
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:172
 msgid "Really!"
 msgstr "Thật sao?"
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:175
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:176
 msgid ""
 "The news is not good. The main host of orcs is between the forest and "
 "Southbay. We clearly can’t go that way. However, the road to Clearwater Port "
@@ -2243,7 +2243,7 @@ msgstr ""
 "lầy Esten."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:179
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:180
 msgid ""
 "Well, I certainly don’t mind the thought of the orcs floundering around that "
 "infernal swamp. But, one question remains."
@@ -2252,34 +2252,34 @@ msgstr ""
 "quái quỷ đó. Nhưng vẫn còn một câu hỏi."
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:183
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:184
 msgid "What?"
 msgstr "Câu hỏi gì?"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:187
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:188
 msgid "Can I trust you, and your information? I don’t even know your name."
 msgstr ""
 "Tôi có thể tin cô, và thông tin của cô không? Tôi thậm chí còn không biết "
 "tên cô."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:193
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:194
 msgid "You again!"
 msgstr "Lại là ngươi!"
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:197
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:198
 msgid "I come bearing news of the road to Southbay!"
 msgstr "Ta đến mang theo tin tức về con đường đến vịnh Phương Nam!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:201
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:202
 msgid "Humph! Your words mean very little to me."
 msgstr "Hừ! Những lời của ngươi chẳng có ý nghĩa gì với ta."
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:206
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:207
 msgid ""
 "It is important, and not good. The main host of orcs is between the forest "
 "and Southbay. You clearly can’t go that way. However, the road to Clearwater "
@@ -2291,13 +2291,13 @@ msgstr ""
 "đang bị sa lầy ở đầm lầy Esten."
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:210
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:211
 msgid "I propose we join forces, and make a break for Clearwater Port."
 msgstr ""
 "Ta đề nghị chúng ta hợp nhất lực lượng, và tìm cách đến cảng Nước Trong."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:214
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:215
 msgid ""
 "Well, I certainly don’t mind the thought of the orcs floundering around that "
 "infernal swamp. But, some questions remain."
@@ -2306,14 +2306,14 @@ msgstr ""
 "quỷ đó. Nhưng vẫn còn một số câu hỏi."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:218
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:219
 msgid "Lady, why would you let those undead monsters lead your people?"
 msgstr ""
 "Nữ quái, tại sao bọn cô lại để cho những con quái vật ma quái đó dẫn dắt "
 "người của mình?"
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:226
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:227
 msgid ""
 "Other than losing our war back west, then our refugee war to your people, "
 "and this orc thing, it wasn’t such a bad deal."
@@ -2323,7 +2323,7 @@ msgstr ""
 "điều quá tệ."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:230
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:231
 msgid ""
 "Uh-huh. Have you considered the possibility that the unholy act of turning "
 "your best and brightest into undead is what caused them to fall into "
@@ -2333,12 +2333,12 @@ msgstr ""
 "giỏi nhất của mình thành ma quái là điều khiến họ rơi vào bóng tối không?"
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:234
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:235
 msgid "We should save this pointless debate for later. Anything else?"
 msgstr "Chúng ta hãy gác lại cuộc tranh luận vô nghĩa này. Còn gì nữa không?"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:238
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:239
 msgid ""
 "Why should I trust you, or your information? I don’t even know your name, "
 "and you have this nasty habit of mysteriously vanishing!"
@@ -2347,17 +2347,17 @@ msgstr ""
 "tên cô, và cô có thói quen kinh tởm khi biến mất một cách bí ẩn!"
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:248
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:249
 msgid "Bah, have it your way!"
 msgstr "Thôi được rồi!"
 
 #. [unit]: id=Lady Jessene, type=$lady_store.type
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:262
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:263
 msgid "Lady Jessene"
 msgstr "Nàng Jessene"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:294
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:295
 msgid ""
 "I am the Lady Jessene, a noble, a princess of the Wesfolk! I was betrayed by "
 "the Lich-Lords’ dark pact with the orcs, in no small part because your fool "
@@ -2369,7 +2369,7 @@ msgstr ""
 "làm họ tin rằng sự sống bất tử đã chấm hết!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:298
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:299
 msgid ""
 "And now, I’m as much a refugee as you. In truth, I don’t know if the Lich-"
 "Lords are working with the orcs or not. The orcs may have gotten rid of the "
@@ -2383,14 +2383,14 @@ msgstr ""
 "hay nồi thịt đâu!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:302
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:303
 msgid "Young prince, it is time to go! We must flee before the winter snow!"
 msgstr ""
 "Hoàng tử trẻ, đã đến lúc đi! Chúng ta phải chạy trốn trước khi tuyết mùa "
 "đông đến!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:306
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:307
 msgid ""
 "Fair enough. We will head for Clearwater Port. Thank you, Elilmaldur-"
 "Rithrandil, I will remember your hospitality!"
@@ -2399,7 +2399,7 @@ msgstr ""
 "Elilmaldur-Rithrandil, tôi sẽ nhớ đến lòng mến khách của ông!"
 
 #. [message]: speaker=Elilmaldur-Rithrandil
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:310
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:311
 msgid ""
 "Always happy to help a tree-friend. May the Powers of Light guide you on "
 "your way!"
@@ -2408,23 +2408,23 @@ msgstr ""
 "sáng chỉ đường cho các bạn!"
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:314
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:315
 msgid "Finally, we’re getting out of this forest!"
 msgstr "Cuối cùng, chúng ta cũng ra khỏi khu rừng này!"
 
 #. [message]: speaker=narrator
 #. [scenario]: id=08_Clearwater_Port
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:4
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:481
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:497
 msgid "Clearwater Port"
 msgstr "Cảng Nước Trong"
 
 #. [side]: type=Noble Commander, id=Prince Haldric
-#. [side]: type=Lieutenant, id=Commander Aethyr
 #. [side]: type=Grand Knight, id=King Addroran IX
+#. [side]: type=Lieutenant, id=Commander Aethyr
 #. [side]: id=Prince Haldric, type=Noble Commander
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:31
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:59
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:57
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:27
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:40
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:30
@@ -2432,99 +2432,96 @@ msgstr "Cảng Nước Trong"
 msgid "Humans"
 msgstr "Con người"
 
-#. [side]: type=Lieutenant, id=Commander Aethyr
 #. [case]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:41
+#. [side]: type=Lieutenant, id=Commander Aethyr
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:39
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:535
 msgid "Commander Aethyr"
 msgstr "Chỉ huy Aethyr"
 
 #. [side]: type=Orcish Warlord, id=Tan-Vragar
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:70
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:68
 msgid "Tan-Vragar"
 msgstr "Tan-Vragar"
 
 #. [side]: type=Orcish Warlord, id=Tan-Burg
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:105
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:103
 msgid "Tan-Burg"
 msgstr "Tan-Burg"
 
 #. [side]: type=Orcish Warlord, id=Ut'Tan-Vrork
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:141
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:139
 msgid "Ut’Tan-Vrork"
 msgstr "Ut’Tan-Vrork"
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:219
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:220
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:221
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:235
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:236
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:237
 msgid "Angry Farmer"
 msgstr "Nông dân tức giận"
 
 #. [objective]: condition=win
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:226
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:242
 msgid "Cowardly:"
 msgstr "Hèn nhát:"
 
 #. [objective]: condition=win
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:227
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:243
 msgid "Flee on the First Ship"
 msgstr "Chạy trốn trên con tàu đầu tiên"
 
 #. [objective]: condition=win
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:231
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:247
 msgid "Normal:"
 msgstr "Bình thường:"
 
 #. [objective]: condition=win
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:232
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:248
 msgid "Flee on the Second Ship"
 msgstr "Chạy trốn trên con tàu thứ hai"
 
 #. [objective]: condition=win
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:236
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:241
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:252
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:257
 msgid "Heroic:"
 msgstr "Anh hùng:"
 
 #. [objective]: condition=win
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:237
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:253
 msgid "Flee on the Third Ship"
 msgstr "Chạy trốn trên con tàu thứ ba"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:250
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:190
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:266
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:206
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer_of_Southbay.cfg:134
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:267
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:416
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:171
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:294
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:181
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:168
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:252
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:227
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:237
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_Lizard_Beach.cfg:117
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:244
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:183
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:314
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:466
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:313
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:184
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:275
 msgid "Death of Lady Jessene"
 msgstr "Nàng Jessene chết"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:254
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:178
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:270
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:197
 msgid "Death of Commander Aethyr"
 msgstr "Chỉ huy Aethyr chết"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:258
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:274
 msgid "Miss the Last Ship"
 msgstr "Lỡ con tàu cuối cùng"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:275
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:291
 msgid ""
 "Our Prince has arrived at Clearwater Port, with the orcs on his heels. While "
 "the orcs haven’t caught up with him yet, the winter snow has, and the ships "
@@ -2535,12 +2532,12 @@ msgstr ""
 "những con tàu có vẻ không có mặt ở bến cảng."
 
 #. [message]: speaker=Sir Ruddry
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:281
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:297
 msgid "Ha! Clearwater Port still stands!"
 msgstr "A! Cảng Nước Trong vẫn đứng vững!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:286
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:302
 msgid ""
 "Lieutenant, who is in command here? And where are the ships? We risk being "
 "trapped in this city for the winter if the port freezes over."
@@ -2549,7 +2546,7 @@ msgstr ""
 "bị mắc kẹt ở thành phố này trong mùa đông nếu bến cảng đóng băng."
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:291
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:307
 msgid ""
 "I am, my Lord, I command the local garrison. Our whole fishing fleet is "
 "evacuating people to Southbay as we speak. The ships should be back in a few "
@@ -2563,7 +2560,7 @@ msgstr ""
 "lui chúng vào đầm lầy!"
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:296
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:312
 msgid ""
 "But our victory did not hold; orc reinforcements quickly overran our "
 "positions. We lost most of our forces, my lord, including the King of "
@@ -2575,12 +2572,12 @@ msgstr ""
 "đầu một cuộc tấn công."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:301
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:317
 msgid "That’s horrible!"
 msgstr "Thật là khủng khiếp!"
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:307
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:323
 msgid ""
 "The blood of many good soldiers stained the frozen field that day. And still "
 "the orcs press on. The king left no heir, but the other nobles have fled to "
@@ -2597,7 +2594,7 @@ msgstr ""
 "người tị nạn từ khắp nơi."
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:312
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:328
 msgid ""
 "We’re only holding the city until the last of the refugees are gone. You, my "
 "lord, are free to retreat to safety when the next ship comes. But, if I may "
@@ -2613,7 +2610,7 @@ msgstr ""
 "cùng có thể được sơ tán."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:317
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:333
 msgid ""
 "Well, we are the last of the refugees from our lands, for the orcs are right "
 "on our heels! We have Wesfolk with us. They have been of service. They are "
@@ -2627,7 +2624,7 @@ msgstr ""
 "thể."
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:322
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:338
 msgid ""
 "I thank you, my lord. But we are to bring these Wesfolk too? It would be... "
 "highly irregular. Are you sure, my lord?"
@@ -2636,24 +2633,24 @@ msgstr ""
 "này theo sao? Điều đó thật... bất thường. Ngài có chắc không, thưa ngài?"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:327
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:343
 msgid ""
 "Yes. Be sure that it is understood that these are our allies and friends."
 msgstr "Chắc. Hãy hiểu rằng đây là những đồng minh và bạn bè của chúng ta."
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:332
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:348
 msgid "Yes, sir!"
 msgstr "Vâng, thưa ngài!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:337
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:353
 msgid "Yes sir, indeed! You need us to help hold out until the ships arrive."
 msgstr ""
 "Đúng vậy, thưa ngài! Ngài cần chúng tôi giúp đỡ cầm cự khi những con tàu đến."
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:342
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:358
 msgid ""
 "Ships! Nobody said anything about ships. Will this torture ever end! Ahh, "
 "the orcs will help take my mind off things."
@@ -2662,7 +2659,7 @@ msgstr ""
 "bọn người thú sẽ giúp ta bớt căng thẳng."
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:348
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:364
 msgid ""
 "To your posts, men! We should be able to evacuate everyone in three more "
 "boatloads. Until then, let us make those orcs pay dearly for every inch of "
@@ -2674,12 +2671,12 @@ msgstr ""
 "của chúng ta!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:359
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:375
 msgid "You killed my family! Die!"
 msgstr "Các ngươi đã sát hại gia đình ta! Chết đi!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:370
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:386
 msgid ""
 "<i>“Bring these Wesfolk too? It would be... highly irregular.”</i> Bah! I’ll "
 "show you irregular..."
@@ -2688,7 +2685,7 @@ msgstr ""
 "thường.”</i> Hừ! Tôi sẽ cho ông thấy bất thường..."
 
 #. [message]: speaker=Ut'Tan-Vrork
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:378
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:394
 msgid ""
 "Push ’em into the sea! They’re in our winter homes! Heh... Tan-Vragar, I’m "
 "sure they will enjoy your little surprise!"
@@ -2697,22 +2694,22 @@ msgstr ""
 "tau! Ê... Tan-Vragar, tau chắc chắn chúng sẽ thích bất ngờ nhỏ của mày đấy!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:418
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:434
 msgid "An ode to ye, on yer way, I hope you have a brighter day!"
 msgstr "Hãy hát ca, hãy bước đi, tôi hy vọng bạn có một ngày tươi sáng hơn!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:439
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:455
 msgid "Dead-Man’s Ford"
 msgstr "Khúc cạn của người chết"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:460
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:476
 msgid "The River Road — To the Swamp of Esten."
 msgstr "Đường sông - Đến đầm lầy Esten."
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:558
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:574
 msgid ""
 "My lord, the first ship has arrived! Prince Haldric, if you and your men "
 "must leave for Southbay just go to the pier to board the ship."
@@ -2721,7 +2718,7 @@ msgstr ""
 "ngài phải rời đến vịnh Phương Nam, chỉ cần đi ra bến để lên tàu."
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:576
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:592
 msgid ""
 "My lord, the first ship is departing. But the second ship should arrive "
 "shortly."
@@ -2730,7 +2727,7 @@ msgstr ""
 "nữa sẽ đến."
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:617
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:633
 msgid ""
 "My lord, the second ship has arrived! Prince Haldric, if you and your men "
 "want to leave for Southbay just go to the pier to board the ship."
@@ -2739,7 +2736,7 @@ msgstr ""
 "ngài phải rời đến vịnh Phương Nam, chỉ cần đi ra bến để lên tàu."
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:635
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:651
 msgid ""
 "My lord, the second ship is departing. But the last ship will be here before "
 "long. With your help we can hold on just a while longer."
@@ -2749,7 +2746,7 @@ msgstr ""
 "chút."
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:676
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:692
 msgid ""
 "My lord, the last ship has arrived! Finally the last of our people can flee "
 "to safety. Prince Haldric, you and your men must go now! Go to the pier to "
@@ -2760,14 +2757,14 @@ msgstr ""
 "đi ngay bây giờ! Hãy đi ra bến để lên tàu đến vịnh Phương Nam."
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:694
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:710
 msgid "My lord, the last ship is departing. We’re trapped!"
 msgstr "Thưa ngài, con tàu cuối cùng đã khởi hành. Chúng ta đã bị mắc kẹt!"
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:753
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:807
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:862
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:769
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:823
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:878
 msgid "My lord, the ship isn’t here yet. Come help us defend against the orcs."
 msgstr ""
 "Thưa ngài, con tàu chưa ở đây. Hãy đến giúp chúng tôi phòng thủ chống lại "
@@ -2775,9 +2772,9 @@ msgstr ""
 
 #. [message]: speaker=Commander Aethyr
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:765
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:819
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:874
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:781
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:835
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:890
 msgid ""
 "Shirk not your duty, soldier. When the boat arrives, this is where Prince "
 "Haldric must go to lead you to the ship. Until then, help us defend against "
@@ -2788,17 +2785,17 @@ msgstr ""
 "tôi phòng thủ chống lại bọn người thú."
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:892
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:908
 msgid "Let me have peace in Death! My love, I’ll be there soon—"
 msgstr "Hãy để ta được yên nghỉ! Tình yêu của ta, ta sẽ sớm ở đó..."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:897
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:913
 msgid "We needed him to get out of here. We’re trapped!"
 msgstr "Chúng ta cần ông ta để ra khỏi đây. Chúng ta đã bị mắc kẹt!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:910
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:926
 msgid ""
 "We’ve escaped from the orcs before we were trapped by the ice! Now, on to "
 "Southbay."
@@ -2807,22 +2804,22 @@ msgstr ""
 "lên đường đến vịnh Phương Nam."
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:915
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:931
 msgid "I know I mentioned I can’t float."
 msgstr "Tôi biết tôi đã nói tôi không thể nổi mà."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:921
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:937
 msgid "Might I suggest a bit of a detour?"
 msgstr "Tôi có thể đề nghị vòng vèo một chút được không?"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:926
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:942
 msgid "Why?"
 msgstr "Sao?"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:931
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:947
 msgid ""
 "You have the Ruby of Fire, but you have no idea what it does, correct? You "
 "know that lich you have petrified just outside of Southbay—"
@@ -2831,7 +2828,7 @@ msgstr ""
 "thây ma ở ngay ngoài vịnh Phương Nam mà bọn anh đã hóa đá đó..."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:936
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:952
 msgid ""
 "Yes, Lich Point! Where we first used our magi in battle, and turned the tide "
 "of war against your people."
@@ -2840,7 +2837,7 @@ msgstr ""
 "chiến đấu, và đảo chiều cuộc chiến tranh chống lại người của cô."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:942
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:958
 msgid ""
 "Erm, yes... He was Caror, the arch rival of our dearly departed Lich-Lord "
 "Lenvan. He coveted the ruby, and was studying it. The only copy of his "
@@ -2851,7 +2848,7 @@ msgstr ""
 "duy nhất của hắn, cuốn sách về lửa và bóng tối, đã bị hóa đá cùng với hắn."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:947
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:963
 msgid ""
 "If we make landfall outside of Southbay, we’ll be trapped. Of that I am sure!"
 msgstr ""
@@ -2859,7 +2856,7 @@ msgstr ""
 "chắn về điều đó!"
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:952
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:968
 msgid ""
 "My family was from Southbay. My father was a soldier there. The city’s sewer "
 "entrance is near that fossil of a lich."
@@ -2868,7 +2865,7 @@ msgstr ""
 "cống ngầm của thành phố nằm gần hóa thạch của thây ma đó."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:957
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:973
 msgid ""
 "Wow, this is beginning to sound dangerously like a plan. Commander Aethyr, "
 "will you join us?"
@@ -2877,7 +2874,7 @@ msgstr ""
 "cùng chúng tôi chứ?"
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:962
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:978
 msgid ""
 "No. These monsters killed my family. My wife, my daughters. There is nothing "
 "left for me. I’ll stay. By the time the orcs wrestle Clearwater Port away "
@@ -2888,7 +2885,7 @@ msgstr ""
 "cướp được cảng Nước Trong của tôi, sẽ chẳng còn lại gì ngoài gạch vụn!"
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:967
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:983
 msgid ""
 "The peasant farmers seem to like you. Who knows, maybe they’ll be of some "
 "help."
@@ -2897,7 +2894,7 @@ msgstr ""
 "nào đó."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:972
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:988
 msgid ""
 "Resources are scarce, we need all of the help we can get. Be brave and fight "
 "hard, my friend!"
@@ -2925,18 +2922,23 @@ msgstr "Tan-Pulk"
 msgid "Lich-Lord Caror"
 msgstr "Chúa tể thây ma Caror"
 
+#. [side]
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:137
+msgid "Yetis"
+msgstr ""
+
 #. [objective]: condition=win
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:177
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:193
 msgid "Kill the lich to get his book"
 msgstr "Giết tên thây ma để lấy cuốn sách của hắn"
 
 #. [objective]: condition=win
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:181
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:197
 msgid "Haldric enters Southbay’s sewer"
 msgstr "Haldric vào cống ngầm của vịnh Phương Nam"
 
 #. [message]: speaker=Tan-Pulk
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:207
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:223
 msgid ""
 "Da big bosses said we’d be in da city by winter. Bosses wrong, human-worms "
 "still there, and I’m a tinkin—"
@@ -2945,12 +2947,12 @@ msgstr ""
 "chủ sai, lũ sâu bọ con người vẫn ở đó, và tau đang..."
 
 #. [message]: speaker=Ut'Tan-Grilg
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:211
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:227
 msgid "Wait! I see a ship! Humans is coming! Smash ’em good!"
 msgstr "Chờ đã! Tau nhìn thấy một con tàu. Bọn con người đang đến! Đập chúng!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:234
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:250
 msgid ""
 "Prince Haldric has arrived at Fallen Lich Point, to retrieve the Lich-Lord "
 "Caror’s Book of Fire and Darkness, and flee into the sewers of Southbay."
@@ -2960,7 +2962,7 @@ msgstr ""
 "Phương Nam."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:259
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:275
 msgid ""
 "Well, let’s un-petrify that lich and take his book, then get into the "
 "sewers. Umm, what language would that book be in?"
@@ -2969,32 +2971,32 @@ msgstr ""
 "đó vào các cống ngầm. Ừm, cuốn sách đó viết bằng ngôn ngữ gì nhỉ?"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:263
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:279
 msgid "Some pep talk. The book will probably be in the Old Wesfolk tongue."
 msgstr "Nói hùng hồn thật. Cuốn sách có lẽ viết bằng tiếng Wesfolk cổ."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:267
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:283
 msgid "Ohh."
 msgstr "Ồ."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:271
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:287
 msgid "Just get the book, I think I should be able to translate it."
 msgstr "Chỉ cần lấy cuốn sách, tôi nghĩ tôi có thể dịch nó."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:275
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:291
 msgid "Then, into Southbay’s sewer."
 msgstr "Sau đó, vào cống ngầm của vịnh Phương Nam."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:279
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:295
 msgid "Right."
 msgstr "Đúng vậy."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:303
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:319
 msgid ""
 "There’s an odd monolith standing near here. Maybe it has something to do "
 "with the Lich-Lord... I should investigate more closely."
@@ -3003,12 +3005,12 @@ msgstr ""
 "tể thây ma... Tôi sẽ điều tra kỹ lưỡng hơn."
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:310
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:326
 msgid "There’s an odd monolith standing near here."
 msgstr "Có một trụ đá kỳ cục đứng gần đây."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:315
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:331
 msgid ""
 "Haldric, this looks like a job for you, probably something to do with the "
 "lich. Maybe you should get yourself over here."
@@ -3017,7 +3019,7 @@ msgstr ""
 "thây ma. Có lẽ anh nên tự mình đến đây."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:334
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:350
 msgid ""
 "This monolith was erected by me, ― (<i>chipped away</i>), first Mage of the "
 "good people of the Green Isle. By its power the Lich-Lord is bound in stone. "
@@ -3029,12 +3031,12 @@ msgstr ""
 "thốt ra lời sau đây..."
 
 #. [option]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:359
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:375
 msgid "I think I’ll say that magic phrase."
 msgstr "Tôi nghĩ tôi sẽ nói câu thần chú đó."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:378
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:394
 msgid ""
 "The lich is free! Let’s bash him and grab that book. That sounds like a job "
 "for you, Lady Jessene!"
@@ -3043,118 +3045,118 @@ msgstr ""
 "là một công việc cho cô đấy, nàng Jessene!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:382
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:398
 msgid "Hmph! You’re just happy because that monolith proves your paternity!"
 msgstr "Hừm! Anh chỉ vui mừng vì trụ đá đó chứng minh được dòng dõi của mình!"
 
 #. [message]: speaker=Lich-Lord Caror
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:386
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:402
 msgid "Free, I’m free, and I feel the Ruby of Fire! It will be mine."
 msgstr "Tự do, ta đã được tự do, ta cảm thấy viên đá lửa! Nó sẽ là của ta."
 
 #. [message]: speaker=Minister Edren
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:390
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:406
 msgid "No you won’t, you soldier of darkness!"
 msgstr "Không, ngươi sẽ không có đâu, con quỷ của bóng tối!"
 
 #. [option]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:396
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:412
 msgid "I think I’ll wait a while before uttering any magic phrases."
 msgstr "Tôi nghĩ tôi sẽ chờ một chút trước khi đọc câu thần chú."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:401
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:417
 msgid "We have more pressing matters to deal with before we free that lich."
 msgstr ""
 "Chúng ta có nhiều vấn đề thúc bách hơn cần xử lý trước khi giải phóng thây "
 "ma đó."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:406
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:422
 msgid "Afraid you’ll find out you’re not of the line of Kings?"
 msgstr "Anh sợ sẽ nhận ra mình không thuộc dòng dõi hoàng gia chứ gì?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:416
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:432
 msgid "This sounds like a job for Prince Haldric, hopefully."
 msgstr "Đây có vẻ là một công việc cho hoàng tử Haldric, hy vọng thế."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:429
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:445
 msgid "The Lich-Lord is already free."
 msgstr "Tên chúa tể thây ma đã được giải phóng rồi."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:452
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:468
 msgid "NW — Southbay."
 msgstr "TB - Vịnh Phương Nam"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:457
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:473
 msgid "More like ‘NW — Every orc on the Isle’. Hmph!"
 msgstr "Đúng hơn phải là ‘TB - Mọi người thú trên hòn đảo’. Hừm!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:488
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:504
 msgid "We have the book! Let’s get out of here!"
 msgstr "Chúng ta đã có cuốn sách! Hãy ra khỏi đây!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:493
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:509
 msgid "Sounds good to me."
 msgstr "Nghe có vẻ tốt."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:506
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:522
 msgid "I feel like I’m forgetting something. Ohh, the book!"
 msgstr "Tôi cảm thấy mình đã quên điều gì đó. Ôi, cuốn sách!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:516
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:532
 msgid "Prince Haldric must be the first into the sewers of Southbay."
 msgstr "Hoàng tử Haldric phải là người đầu tiên vào cống ngầm vịnh Phương Nam."
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:540
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:561
 msgid "Rarlg"
 msgstr "Rarlg"
 
 #. [message]: speaker=Rarlg
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:544
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:565
 msgid "Rarlg — argh, a raul-rarlg!"
 msgstr "Rarlg, raul-rarlg!"
 
 #. [message]: speaker=Prince Haldric
 #. [message]: speaker=Ut'Tan-Grilg
 #. [message]: speaker=Tan-Pulk
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:548
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:553
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:557
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:569
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:574
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:578
 msgid "Oh my!"
 msgstr "Ôi chúa!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:561
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:582
 msgid "And he brought a friend."
 msgstr "Nó còn mang theo bạn."
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:568
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:589
 msgid "Raul-Rarlg"
 msgstr "Raul-Rarlg"
 
 #. [message]: speaker=Lich-Lord Caror
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:579
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:600
 msgid "So close. So close."
 msgstr "Hết rồi. Hết rồi."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:584
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:605
 msgid "I found the book in what was left of his robes! Let’s get out of here!"
 msgstr "Tôi tìm thấy cuốn sách trong áo choàng hắn bỏ lại! Hãy ra khỏi đây!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:598
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:619
 msgid ""
 "We have the book and the orcs are out of our way. Let’s get out of here!"
 msgstr ""
@@ -3162,14 +3164,14 @@ msgstr ""
 "Hãy ra khỏi đây!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:620
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:641
 msgid "I can hear their reinforcements coming! We’re trapped! All is lost!"
 msgstr ""
 "Tôi có thể nghe thấy quân tiếp viện của chúng đang đến! Chúng ta đã bị mắc "
 "kẹt! Tất cả thế là hết!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:638
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:659
 msgid "Sewer — Danger Keep Out!"
 msgstr "Cống ngầm - Nguy hiểm. Tránh xa!"
 
@@ -3641,15 +3643,15 @@ msgid "Tan-Gulo"
 msgstr "Tan-Gulo"
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:212
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:213
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:214
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:215
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:239
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:240
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:241
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:242
 msgid "Southbay Guard"
 msgstr "Đội bảo vệ vịnh Phương Nam"
 
 #. [object]: id=ruby_of_fire
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:220
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:247
 msgid ""
 "The Ruby of Fire was imbued with magic in the distant west, and can be used "
 "to scorch enemies into submission."
@@ -3658,18 +3660,25 @@ msgstr ""
 "để thiêu đốt kẻ thù."
 
 #. [effect]: type=fire
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:229
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:256
 msgid "ruby of fire"
 msgstr "viên đá lửa"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:271
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:420
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:298
 msgid "Death of King Addroran IX"
 msgstr "Vua Addroran IX chết"
 
+#. [objective]: condition=lose
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:302
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:185
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:172
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:256
+msgid "Death of Lord Typhon"
+msgstr "Chủ tướng Typhon chết"
+
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:290
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:326
 msgid ""
 "Several months pass. Jessene has translated Lich-Lord Caror’s Book of Fire "
 "and Darkness. Prince Haldric is busy probing the secrets of the Ruby of Fire."
@@ -3678,12 +3687,12 @@ msgstr ""
 "thây ma Caror. Hoàng tử Haldric bận thăm dò những bí mật của viên đá lửa."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:295
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:331
 msgid "I think I’ve figured something out. Look."
 msgstr "Tôi nghĩ tôi đã tìm ra thứ gì đó. Nhìn này."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:319
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:355
 msgid ""
 "Ouch! Hot, hot, hot! Gee, somebody should really attach this thing to a "
 "scepter or something! I think I’ll save it for closer-ranged combat for now."
@@ -3692,12 +3701,12 @@ msgstr ""
 "hay cái gì đó! Tôi nghĩ giờ tôi sẽ để dành nó để chiến đấu."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:324
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:360
 msgid "Watch it! Well, at least you’re improving."
 msgstr "Cẩn thận! Chà, ít ra anh cũng tiến bộ đấy."
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:328
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:364
 msgid ""
 "Humph. Fool of a boy’s just gonna burn us all up. Humans, always playing at "
 "being wizards."
@@ -3706,19 +3715,19 @@ msgstr ""
 "chơi đùa với những trò phù thủy."
 
 #. [message]: speaker=Southbay Guard 1
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:333
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:369
 msgid "Orcs sighted! They’ve seized the frontier! To arms! To arms!"
 msgstr "Bọn người thú! Chúng đã chiếm biên giới! Vào vị trí! Vào vị trí!"
 
 #. [message]: speaker=Sir Ladoc
 #. [message]: speaker=King Addroran IX
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:337
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:765
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:373
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:773
 msgid "For the glory of Southbay!"
 msgstr "Vì vinh quang của vịnh Phương Nam!"
 
 #. [message]: speaker=King Addroran IX
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:341
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:377
 msgid ""
 "Prince Haldric, I’ll concentrate on holding Southbay. You must defeat the "
 "orcs. The ships aren’t ready yet. We must defeat this army of orcs to buy us "
@@ -3730,27 +3739,27 @@ msgstr ""
 "đá đó!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:345
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:381
 msgid "Very well. I’ll do my best."
 msgstr "Tốt lắm. Tôi sẽ làm hết sức mình."
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:358
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:394
 msgid "Lord Typhon"
 msgstr "Chủ tướng Typhon"
 
 #. [message]: speaker=Lord Typhon
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:364
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:400
 msgid "I come seeking the Crown Prince!"
 msgstr "Tôi đến tìm thái tử!"
 
 #. [message]: speaker=King Addroran IX
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:368
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:404
 msgid "Who is this fish man?"
 msgstr "Người cá này là ai thế?"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:372
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:408
 msgid ""
 "He’s a large part of the reason your son made it to the lands of the east. "
 "Lord Typhon provided us with pearls and an escort for our voyages in "
@@ -3763,17 +3772,17 @@ msgstr ""
 "thợ rèn khi sống ở dưới nước."
 
 #. [message]: speaker=Lord Typhon
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:376
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:412
 msgid "Indeed it is. But where is the Prince?"
 msgstr "Đúng vậy. Nhưng hoàng tử đâu?"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:380
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:416
 msgid "The Crown Prince is dead. But we have need of your services again—"
 msgstr "Thái tử đã chết. Nhưng chúng tôi cần ông giúp đỡ lần nữa..."
 
 #. [message]: speaker=Lord Typhon
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:384
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:420
 msgid "Under the same terms?"
 msgstr "Điều kiện vẫn thế chứ?"
 
@@ -3782,7 +3791,7 @@ msgstr "Điều kiện vẫn thế chứ?"
 #. [message]: speaker=Lady Dionli
 #. [message]: speaker=Lord Aryad
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:388
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:424
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:429
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:433
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:141
@@ -3791,7 +3800,7 @@ msgid "Agreed."
 msgstr "Đồng ý."
 
 #. [message]: speaker=Lord Typhon
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:392
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:428
 msgid ""
 "Good. We need the steel for our own war in the deep. I formally place the "
 "might of the Merfolk at your disposal!"
@@ -3800,28 +3809,20 @@ msgstr ""
 "chính thức trao sức mạnh của người cá để các bạn tùy ý sử dụng!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:397
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:433
 msgid "You can now recruit merfolk!"
 msgstr "Bây giờ bạn có thể tuyển người cá!"
 
-#. [objective]: condition=lose
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:424
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:175
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:172
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:256
-msgid "Death of Lord Typhon"
-msgstr "Chủ tướng Typhon chết"
-
 #. [message]: speaker=King Addroran IX
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:441
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:449
 msgid "Make haste. We must secure the frontier or it’s all over!"
 msgstr "Mau lên. Chúng ta phải củng cố biên giới nếu không tất cả sẽ kết thúc!"
 
 #. [event]
 #. [unit_type]: id=Familiar, race=undead
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:456
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:296
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:368
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:464
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:294
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:369
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:480
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:260
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:253
@@ -3829,16 +3830,16 @@ msgstr "Mau lên. Chúng ta phải củng cố biên giới nếu không tất c
 msgid "Familiar"
 msgstr "Người hầu"
 
-#. [side]: type=Ancient Lich, id=Lich-Lord Jevyan
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:469
+#. [side]: type=Ancient Lich, id=Lich-Lord Jevyan
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:477
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:269
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:45
 msgid "Lich-Lord Jevyan"
 msgstr "Chúa tể thây ma Jevyan"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:476
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:484
 msgid ""
 "King Addroran, your day is done. Prepare to be ground to dust. If you’re "
 "lucky I may raise you from death for my own amusement. Oh, and what’s this? "
@@ -3849,7 +3850,7 @@ msgstr ""
 "gì thế này? Ta cảm nhận, ta cảm nhận được viên đá lửa."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:480
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:488
 msgid ""
 "You monster! You’ve betrayed our people — to ally yourself with these orcs?!"
 msgstr ""
@@ -3857,12 +3858,12 @@ msgstr ""
 "này?!"
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:483
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:491
 msgid "Fool Prince"
 msgstr "Hoàng tử ngốc"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:487
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:495
 msgid ""
 "Fool girl! My ambition is boundless; I will survive to rule the orcs and all "
 "else. That is more than can be said for you. King Addroran, meet your son — "
@@ -3874,22 +3875,22 @@ msgstr ""
 "hắn thôi."
 
 #. [message]: speaker=King Addroran IX
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:491
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:499
 msgid "NO!"
 msgstr "KHÔNG!"
 
 #. [message]: speaker=Fool Prince
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:495
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:503
 msgid "Fath-er! Join... us..."
 msgstr "Ch-a! Tham gia... cùng... chúng con..."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:499
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:507
 msgid "His older brother was more attractive..."
 msgstr "Anh trai của hắn hấp dẫn hơn..."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:542
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:550
 msgid ""
 "Their reserves are arriving, and we haven’t secured the frontier! We’re dead!"
 msgstr ""
@@ -3897,57 +3898,57 @@ msgstr ""
 "Chúng ta sẽ chết!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:559
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:567
 msgid "Southbay"
 msgstr "Vịnh Phương Nam"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:579
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:587
 msgid "To Clearwater Port"
 msgstr "Đến cảng Nước Trong"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:599
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:607
 msgid "To the Midlands &amp; Oldwood"
 msgstr "Đến vùng trung du &amp; rừng Cổ Thụ"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:619
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:627
 msgid "To the Northrun"
 msgstr "Đến suối Phương Bắc"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:639
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:647
 msgid "To the Midlands"
 msgstr "Đến vùng trung du"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:659
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:667
 msgid "New Southbay"
 msgstr "Vịnh Phương Nam mới"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:679
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:687
 msgid "They sealed it, there is no escape for you!"
 msgstr "Đã bị niêm phong, không có lối thoát cho ngươi!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:693
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:701
 msgid "I am finished."
 msgstr "Thế là hết."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:697
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:705
 msgid "We needed him to hold Southbay. We’re done for!"
 msgstr "Chúng ta cần ông ấy để trấn giữ vịnh Phương Nam. Thế là hết!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:710
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:718
 msgid "We’ve defeated the orcs. Let’s rig the ships and get out of here."
 msgstr "Chúng ta đã đánh bại bọn người thú. Hãy chuẩn bị tàu và ra khỏi đây."
 
 #. [message]: speaker=King Addroran IX
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:714
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:722
 msgid ""
 "Oh, for my sons... — As we agreed. I will hold Southbay until my last breath."
 msgstr ""
@@ -3955,7 +3956,7 @@ msgstr ""
 "Nam đến hơi thở cuối cùng."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:718
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:726
 msgid ""
 "With the help of the Merfolk, and my knowledge of an island that will make a "
 "good re-provisioning point, we should be able to embark for the great lands "
@@ -3966,7 +3967,7 @@ msgstr ""
 "đông."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:722
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:730
 msgid ""
 "What I don’t like is the fact that Lich-Lord Jevyan, after whom our very "
 "capital is named, betrayed my people. To make matters worse, he knows that "
@@ -3977,7 +3978,7 @@ msgstr ""
 "rằng anh có viên đá đó."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:726
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:734
 msgid ""
 "There’s not much we can do about that now. I dub this fine ship the Eldaric, "
 "in honor of my father. About that island..."
@@ -3986,12 +3987,12 @@ msgstr ""
 "Eldaric, để tưởng nhớ đến cha tôi. Và hòn đảo đó..."
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:730
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:738
 msgid "Great, more boats, and now an ocean!"
 msgstr "Tuyệt, lại tàu, và giờ là một đại dương!"
 
 #. [message]: speaker=King Addroran IX
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:734
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:742
 msgid ""
 "After you make it to this new land, send some of the ships back, for there "
 "may still be survivors in Southbay."
@@ -4000,7 +4001,7 @@ msgstr ""
 "có thể vẫn còn người sống sót ở vịnh Phương Nam."
 
 #. [message]: speaker=King Addroran IX
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:752
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:760
 msgid "My son!"
 msgstr "Con trai của ta!"
 
@@ -4061,7 +4062,7 @@ msgid "Merkush"
 msgstr "Merkush"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:204
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:202
 msgid ""
 "After some time at sea an island is spotted. The Eldaric docks at a crude "
 "port that appears to be deserted."
@@ -4070,12 +4071,12 @@ msgstr ""
 "một bến cảng thô sơ có vẻ bị bỏ hoang."
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:209
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:207
 msgid "Land! Land! Bless the Lords of Light!"
 msgstr "Đất liền! Đất liền! Phù hộ các vị thần ánh sáng!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:213
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:211
 msgid ""
 "This is the Elder Prince’s island all right. We had a heck of a time "
 "pacifying the Drakes who live here. Oh my, it looks like they’ve rearmed!"
@@ -4084,18 +4085,18 @@ msgstr ""
 "bình định bọn người rồng sống ở đây. Ôi trời, hình như chúng đã tái vũ trang!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:217
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:215
 msgid "We come in peace. We only seek to re-provision our ships."
 msgstr ""
 "Chúng tôi đến vì hòa bình. Chúng tôi chỉ tìm cách tái tiếp tế các con tàu."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:221
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:219
 msgid "I don’t think diplomacy is going to work."
 msgstr "Tôi không nghĩ ngoại giao sẽ có tác dụng."
 
 #. [message]: speaker=Gerrick
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:226
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:224
 msgid ""
 "Ssso humansss, you’ve come to trouble usss again. Prepare to die! For the "
 "glory of the Lords of Morogor!"
@@ -4104,23 +4105,23 @@ msgstr ""
 "đi! Vì vinh quang của các vị thần Morogor!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:230
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:228
 msgid "Do I need to say, <i>“I told you so”</i>?"
 msgstr "Tôi có cần phải nói, <i>“Tôi đã nói với anh rồi”</i> không?"
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:248
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:246
 msgid "Bitey the Serpent"
 msgstr "Bitey Thuồng Luồng"
 
 #. [message]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:256
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:335
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:254
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:336
 msgid "Look out, a serpent has emerged from the deep."
 msgstr "Nhìn kìa, một con thuồng luồng nổi lên từ đáy sâu."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:271
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:269
 msgid ""
 "Well, it looks like their warriors have given up the fight. We should be "
 "able to re-provision the ships now."
@@ -4129,7 +4130,7 @@ msgstr ""
 "tái tiếp tế các con tàu."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:275
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:273
 msgid ""
 "The nice thing is, they’ll go back to guarding this island after we’re gone "
 "for a while. It’ll make a good way of preventing others from following us."
@@ -4138,7 +4139,7 @@ msgstr ""
 "đi. Đó sẽ là một cách tốt để ngăn ngừa những kẻ khác theo sau chúng ta."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:279
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:277
 msgid ""
 "This island is slowly sinking. Hmm, I wonder what they’ll do when it gets "
 "too small for them?"
@@ -4147,7 +4148,7 @@ msgstr ""
 "quá nhỏ cho chúng?"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:283
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:281
 msgid ""
 "They seem rather intelligent. They’re certainly belligerent and numerous. "
 "I’m sure they’ll eventually evacuate. Just like us right now."
@@ -4156,13 +4157,13 @@ msgstr ""
 "chắn rốt cuộc chúng sẽ sơ tán. Giống như chúng ta ngay bây giờ thôi."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:287
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:285
 msgid "I don’t find that thought very comforting."
 msgstr "Tôi thấy ý nghĩ đó không hay cho lắm."
 
 #. [message]: speaker=Familiar
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:300
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:372
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:298
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:373
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:312
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:368
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:475
@@ -4170,7 +4171,7 @@ msgid "<i>Clack</i>! <i>Clack!</i>"
 msgstr "<i>Phành phạch!</i> <i>Phành phạch!</i>"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:325
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:323
 msgid ""
 "The fleet is starving, we’ll never pacify this island before we all die!"
 msgstr ""
@@ -4193,10 +4194,10 @@ msgstr ""
 "và phần lớn hạm đội bị phân tán. Chủ tướng Typhon đề nghị dừng ở một nhóm "
 "đảo nhỏ lộng gió để tập hợp lại."
 
-#. [event]
 #. [side]: type=Naga Warrior, id=Abraxas
+#. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:41
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1302
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1314
 msgid "Abraxas"
 msgstr "Abraxas"
 
@@ -4280,18 +4281,18 @@ msgid "Hissssss!"
 msgstr "Grrrrrrrào!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:348
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:349
 msgid "We’ve defeated the nagas. The fleet should be able to regroup here."
 msgstr "Chúng ta đã đánh bại bọn người rắn. Hạm đội có thể tập hợp lại ở đây."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:353
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:354
 msgid ""
 "The next time we see land, it should be the great continent to the east."
 msgstr "Lần sau chúng ta nhìn thấy đất liền, đó sẽ là lục địa lớn ở phía đông."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:358
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:359
 msgid ""
 "I’ll be glad when this voyage is over. We’re almost there. Almost there."
 msgstr ""
@@ -4299,12 +4300,12 @@ msgstr ""
 "nơi rồi."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:388
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:389
 msgid "I think we’re being followed..."
 msgstr "Tôi nghĩ chúng ta đang bị theo đuổi..."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:404
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:405
 msgid ""
 "We were too slow... The fleet will be scattered to the four corners of the "
 "world!"
@@ -5088,17 +5089,17 @@ msgid "Satras"
 msgstr "Satras"
 
 #. [objective]: condition=win
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:214
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:224
 msgid "Slay the Dragon"
 msgstr "Giết con rồng"
 
 #. [objective]: condition=win
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:219
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:229
 msgid "Slay the Dragon and defeat all enemy leaders"
 msgstr "Giết con rồng và đánh bại tất cả các chỉ huy của kẻ thù"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:243
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:253
 msgid ""
 "After some days of travel Haldric finds himself confronted by a vast expanse "
 "of swamp. A small island with a mountain dominates the view. That can only "
@@ -5109,22 +5110,22 @@ msgstr ""
 "của con rồng."
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:257
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:267
 msgid "Flies, flies, everywhere! Ack!"
 msgstr "Ruồi, ruồi, khắp nơi! Oái!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:264
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:274
 msgid "‘Prince Haldric the Dragonbane’ sounds rather nice."
 msgstr "‘Hoàng tử Haldric dũng sĩ diệt rồng’ nghe cũng hay đấy."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:269
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:279
 msgid "We’ll see..."
 msgstr "Để xem..."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:277
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:287
 msgid ""
 "I’m glad that’s over. The elves certainly aren’t taking it easy on us. It’s "
 "a miracle any of us are alive at all."
@@ -5134,74 +5135,74 @@ msgstr ""
 "còn sống."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:282
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:292
 msgid "I’m still not calling you ‘the Dragonbane’."
 msgstr "Tôi vẫn không gọi anh là ‘dũng sĩ diệt rồng’."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:321
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:331
 msgid "Watch for the big mudcrawlers. They divide when you kill them."
 msgstr "Nhìn những con bò sát bùn to kìa. Chúng phân chia khi bị giết."
 
 #. [then]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:360
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:395
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:370
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:405
 msgid "Shek’kahan"
 msgstr "Shek’kahan"
 
 #. [message]: speaker=Shek'kahan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:371
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:381
 msgid "It is unwise to trifle with dragons, boy!"
 msgstr "Thật là khờ khi đùa giỡn với rồng đấy, thằng nhóc!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:375
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:385
 msgid "We shall see."
 msgstr "Để xem."
 
 #. [message]: speaker=Shek'kahan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:403
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:416
 msgid "Who dares disturb Shek’kahan the Terrible?"
 msgstr "Ai dám quấy rầy Shek’kahan Khủng Khiếp thế? "
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:407
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:420
 msgid "I do, you fiend!"
 msgstr "Ta đây, ác ôn!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:441
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:454
 msgid "We still have to slay the dragon!"
 msgstr "Chúng ta vẫn phải giết con rồng!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:453
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:521
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:466
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:534
 msgid "The dragon’s cave has yielded some treasure!"
 msgstr "Hang của con rồng có một ít châu báu!"
 
 #. [message]: speaker=Shek'kahan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:478
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:491
 msgid "No!"
 msgstr "Không!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:492
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:505
 msgid "We’ve slain the dragon: "
 msgstr "Chúng ta đã giết được con rồng: "
 
 #. [option]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:496
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:509
 msgid "Let’s get out of here!"
 msgstr "Hãy ra khỏi đây!"
 
 #. [option]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:508
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:521
 msgid "Let’s finish off the rest of these monsters!"
 msgstr "Hãy kết liễu đám quái vật còn lại này!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:540
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:553
 msgid "More saurians are arriving. They’ve surrounded us! We’re doomed."
 msgstr ""
 "Nhiều thằn lằn hơn đang đến. Chúng đã bao vây chúng ta! Chúng ta tận số rồi."
@@ -5440,19 +5441,18 @@ msgstr "Haldric, nghĩ bằng óc đi!"
 msgid "Get her before she ensorcels us all!"
 msgstr "Thanh toán cô ta trước khi cô ta bỏ bùa mê tất cả chúng ta!"
 
-#. [objective]: condition=win
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:175
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:458
-msgid "Defeat the Vampire Queen"
-msgstr "Đánh bại Nữ hoàng Ma cà rồng"
-
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:212
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:192
 msgid "The temple is quite empty."
 msgstr "Ngôi đền trống rỗng."
 
+#. [objective]: condition=win
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:300
+msgid "Defeat the Vampire Queen"
+msgstr "Đánh bại Nữ hoàng Ma cà rồng"
+
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:331
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:330
 msgid ""
 "After a short trip by sea, Haldric arrives on the elves’ cursed Isle of "
 "Tears. A fog hangs in the air."
@@ -5461,7 +5461,7 @@ msgstr ""
 "rủa của các thần tiên. Một màn sương mù treo trong không khí."
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:337
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:336
 msgid ""
 "I said no more ships. Double-crossing humans! Ahh, I’ve been with you this "
 "far. Who’d have thought, a nautical dwarf."
@@ -5470,12 +5470,12 @@ msgstr ""
 "lâu đến mức này. Không biết có ai nghĩ được, một người lùn hàng hải."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:343
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:342
 msgid "I expect we’ll be facing more undead. Be careful."
 msgstr "Tôi cho rằng chúng ta lại đối mặt với ma quái. Hãy cẩn thận."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:348
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:347
 msgid ""
 "These will be the long dead. Not like the undead that my people used, and "
 "they are elf-dead. Be careful indeed."
@@ -5484,12 +5484,12 @@ msgstr ""
 "dụng, đây là các thần-tiên-đã-chết. Hãy cẩn thận."
 
 #. [message]: speaker=Minister Edren
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:353
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:352
 msgid "All soldiers of darkness will meet the same fate by my hand."
 msgstr "Tất cả những con quỷ của bóng tối sẽ chết dưới tay ta."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:361
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:360
 msgid ""
 "Those elves are finally at rest. I hope that the curses they laid upon us "
 "hold no weight."
@@ -5498,47 +5498,47 @@ msgstr ""
 "chúng giáng lên chúng ta không có trọng lượng."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:366
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:365
 msgid "Haldric, you’re too paranoid."
 msgstr "Haldric, anh quá là hoang tưởng."
 
 #. [message]: speaker=Isorfilad
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:389
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:388
 msgid "A curse upon all of your kin that visit this isle."
 msgstr ""
 "Ta nguyền rủa tất cả dòng họ các ngươi những kẻ đã đặt chân lên hòn đảo này."
 
 #. [message]: speaker=Tinoldor
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:400
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:399
 msgid "I wish a blight upon you and yours. May you never see peace."
 msgstr ""
 "Ta nguyền một tai họa sẽ giáng xuống các ngươi. Các ngươi sẽ không bao giờ "
 "nhìn thấy hòa bình."
 
 #. [message]: speaker=Midnight Queen
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:411
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:410
 msgid "My soul will haunt this place until the end of time! A curse upon you!"
 msgstr ""
 "Linh hồn của ta sẽ ám ảnh nơi này đến giây phút cuối của thời gian! Ta "
 "nguyền rủa các ngươi!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:419
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:418
 msgid "Without their queen the undead are simply fading away!"
 msgstr "Không có nữ hoàng của chúng bọn ma quái đang tan biến!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:439
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:442
 msgid "Back, back to the grave with you!"
 msgstr "Cút, cút về mồ mả của nhà ngươi!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:453
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:456
 msgid "We still have to defeat that vampire queen!"
 msgstr "Chúng ta vẫn phải đánh bại nữ hoàng ma cà rồng!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:493
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:476
 msgid ""
 "No! The ship that was supposed to pick us up sees that there’s still "
 "fighting. It’s not stopping. We’re trapped."
@@ -5645,7 +5645,7 @@ msgid "Thruf"
 msgstr "Thruf"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:195
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:214
 msgid ""
 "Haldric and his companions race across the plains to confront the resurgent "
 "orcish threat. On the eve of battle, Lady Jessene catches up with Haldric on "
@@ -5656,17 +5656,17 @@ msgstr ""
 "Haldric trên một vùng đồng bằng phủ sương mù."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:200
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:219
 msgid "Haldric, the elves, we can’t trust them!"
 msgstr "Haldric, các thần tiên, chúng ta không thể tin họ!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:205
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:224
 msgid "I could have told you that."
 msgstr "Tôi cũng định nói với cô điều đó."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:209
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:228
 msgid ""
 "Haldric, it’s bad. The elves are having second thoughts. They think we might "
 "be more trouble than we’re worth. We have to defeat these orcs decisively."
@@ -5676,12 +5676,12 @@ msgstr ""
 "này."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:213
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:232
 msgid "That does not sound unreasonable."
 msgstr "Điều đó không có vẻ vô lý."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:217
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:236
 msgid ""
 "More orcs will follow after these. That ruby guarantees it. If more orcs "
 "follow us here, the elves seem content to let us fight it out. Then they "
@@ -5692,7 +5692,7 @@ msgstr ""
 "chiến đấu một mình. Sau đó họ đã nói họ sẽ ‘xử lý những kẻ sống sót’."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:221
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:240
 msgid ""
 "Jevyan is here... His familiar, that skull. He won’t let such a lucrative "
 "prize as the Ruby of Fire just slip away. Especially when he sees that he "
@@ -5703,7 +5703,7 @@ msgstr ""
 "lợi thế."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:225
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:244
 msgid ""
 "I have a plan. Jessene, remember that troll-hole? Here, take the Ruby of "
 "Fire, hide it in the hole."
@@ -5712,17 +5712,17 @@ msgstr ""
 "viên đá lửa, giấu nó vào trong hang."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:229
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:248
 msgid "Haldric! What! Why?"
 msgstr "Haldric! Cái gì! Tại sao?"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:233
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:252
 msgid "Just do it."
 msgstr "Cứ làm đi."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:237
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:256
 msgid ""
 "Commander Aethyr, did these orcs come on our ships? Did they capture the "
 "fleet we sent out?"
@@ -5731,7 +5731,7 @@ msgstr ""
 "giữ hạm đội chúng ta phái đi sao?"
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:241
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:260
 msgid ""
 "No, sir! They must have seized all remaining boats on the Green Isle. Our "
 "fleet should be returning any day now."
@@ -5740,7 +5740,7 @@ msgstr ""
 "đảo Xanh. Hạm đội của chúng ta sẽ trở về trong những ngày tới."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:245
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:264
 msgid ""
 "We are a refugee people. We must push back their vanguard, and secure our "
 "beachhead. If they capture our ships all is lost. We will be crushed under a "
@@ -5751,12 +5751,12 @@ msgstr ""
 "chúng ta sẽ mất tất cả. Chúng ta sẽ bị đè bẹp dưới trận thủy triều người thú."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:272
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:291
 msgid "Lady Jessene soon departs. In the distance a voice booms:"
 msgstr "Nàng Jessene nhanh chóng rời đi. Từ xa một giọng nói oang oang:"
 
 #. [message]: speaker=Tan-Gagar
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:278
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:297
 msgid ""
 "Drop the gold where it is! We’ve paid our friends enough. There are humans "
 "about, I can smell ’em!"
@@ -5765,49 +5765,49 @@ msgstr ""
 "người ở đây, tau có thể ngửi thấy chúng!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:286
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:305
 msgid "We have run out of time... We’ll never beat the orcs to the beach."
 msgstr ""
 "Chúng ta đã hết thời gian... Chúng ta sẽ chẳng bao giờ đánh bại được bọn "
 "người thú đến bãi biển."
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:305
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:324
 msgid "I’ve found the orcs’ chest! It’s filled with gold."
 msgstr "Tôi vừa tìm thấy chiếc hòm của bọn người thú. Nó đầy vàng."
 
 #. [case]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:484
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:503
 msgid "Norte"
 msgstr "Norte"
 
 #. [message]: speaker=Norte
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:495
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:514
 msgid "You will be felled by my hand, useless fleshbags!"
 msgstr "Các ngươi sẽ bị hạ gục dưới tay ta, bọn bị thịt vô dụng!"
 
 #. [case]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:502
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:521
 msgid "Rabbin"
 msgstr "Rabbin"
 
 #. [message]: speaker=Rabbin
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:514
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:533
 msgid "Embrace your end, mortals!"
 msgstr "Chuẩn bị tận số đi, bọn con người!"
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:519
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:538
 msgid "These monsters seem like they want to be embraced by my hammer!"
 msgstr "Có vẻ những con quái vật đó muốn nếm cây búa của ta!"
 
 #. [case]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:526
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:545
 msgid "General Kafka"
 msgstr "Tướng Kafka"
 
 #. [message]: speaker=General Kafka
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:539
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:558
 msgid ""
 "Never trust the living to do the job of the undead. Prepare to meet the "
 "inevitable!"
@@ -5816,7 +5816,7 @@ msgstr ""
 "gỡ định mệnh đi!"
 
 #. [message]: speaker=Minister Edren
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:544
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:563
 msgid ""
 "The only job of the dead is to remain dead. Prepare to be reunited with the "
 "ground."
@@ -5824,17 +5824,17 @@ msgstr ""
 "Công việc duy nhất của người chết là vẫn chết. Hãy chuẩn bị gặp lại mặt đất."
 
 #. [message]: speaker=Tan-Gagar
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:585
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:604
 msgid "We must block the human advance!"
 msgstr "Chúng ta phải chặn bước tiến của con người!"
 
 #. [message]: speaker=Tan-Erirt
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:606
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:625
 msgid "Reserves! We can’t let them get to their landing site."
 msgstr "Tiếp viện! Chúng ta không thể để chúng đến địa điểm đổ bộ."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:620
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:639
 msgid ""
 "We’ve defeated their vanguard. We have to meet the fleet before Jevyan "
 "destroys them and captures the ships. I hope Jessene makes it back soon."
@@ -5844,13 +5844,13 @@ msgstr ""
 "Jessene sớm trở lại."
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:640
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:660
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:529
 msgid "Oh, to join my family again! Do not mourn my passing."
 msgstr "Ôi, lại được gặp gia đình! Đừng khóc vì sự ra đi của tôi."
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:656
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:676
 msgid ""
 "Ahh, it’s great to be home! I’m not much for the politics, but it’s great to "
 "be home!"
@@ -6562,55 +6562,55 @@ msgstr ""
 "thuyết phục rằng các thần tiên có viên đá."
 
 #. [message]: speaker=Tan-Vragish
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:546
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:551
 msgid "Da old bag o’ bones is gone, but you haven’t beat us yet!"
 msgstr ""
 "Cái bị xương già đó đã ra đi, nhưng các ngươi vẫn chưa đánh được bọn tau!"
 
 #. [message]: speaker=Ut'Tan-Grorag
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:550
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:555
 msgid "We took yer home, now we’ll take yer lives!"
 msgstr "Bọn tau đã lấy nhà các ngươi, giờ bọn tau sẽ lấy mạng các ngươi!"
 
 #. [message]: speaker=Tan-Erinak
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:554
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:559
 msgid "The elfses have da fire ruby, and you have nothing!"
 msgstr "Bọn thầu tiêu có viên đá lửa đó, còn các ngươi chẳng có gì!"
 
 #. [message]: speaker=Tan-Prodash
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:558
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:563
 msgid "We will suck the marrow from your bones human!"
 msgstr "Con người, bọn ta sẽ hút tủy từ xương của các ngươi!"
 
 #. [message]: speaker=Tan-Vragish
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:593
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:598
 msgid "The battle is going against us!"
 msgstr "Trận chiến đang chống lại chúng ta!"
 
 #. [message]: speaker=Ut'Tan-Grorag
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:597
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:602
 msgid "Our forces are being routed! We should flee back to the Green Isle!"
 msgstr ""
 "Lực lượng của chúng ta đang bị đánh tơi tả! Chúng ta phải chạy trốn trở về "
 "đảo Xanh!"
 
 #. [message]: speaker=Tan-Erinak
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:601
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:606
 msgid "It goes poorly for us!"
 msgstr "Thật tệ hại cho bọn ta!"
 
 #. [message]: speaker=Tan-Prodash
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:605
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:610
 msgid "Defeated, by humans?"
 msgstr "Bị đánh bại, dưới tay con người sao?"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:609
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:614
 msgid "Fight on, you cowardly orcish worms!"
 msgstr "Tiếp tục chiến đấu, lũ sâu bọ người thú hèn nhát các ngươi!"
 
 #. [message]: speaker=Tan-Vragish
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:658
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:671
 msgid ""
 "Da old bag of bones has been crushed, and our cause is lost. We know da "
 "elfses have da fire ruby. Retreat!"
@@ -6619,19 +6619,19 @@ msgstr ""
 "biết các thầu tiêu có viên đá lửa đó. Rút lui!"
 
 #. [message]: speaker=Ut'Tan-Grorag
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:676
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:689
 msgid "Da elfses have the fire ruby, we must flee. To da ships!"
 msgstr "Các thầu tiêu có viên đá lửa, chúng tau phải chạy trốn. Lên tàu!"
 
 #. [message]: speaker=Tan-Erinak
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:694
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:707
 msgid ""
 "We have many kinsmen on the Green Isle— we will return for the Ruby of Fire!"
 msgstr ""
 "Bọn ta có nhiều họ hàng trên đảo Xanh - bọn ta sẽ trở lại để lấy viên đá lửa!"
 
 #. [message]: speaker=Tan-Prodash
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:712
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:725
 msgid ""
 "We must get back to the Green Isle. The elfses have the Ruby of Fire and our "
 "assault has been stopped."
@@ -6640,7 +6640,7 @@ msgstr ""
 "công của chúng ta đã bị ngăn chặn."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:786
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:798
 msgid ""
 "The plan revolved around some orcs making it back to the Green Isle to tell "
 "their kin that the elves have the Ruby of Fire so we wouldn’t have to bear "
@@ -6651,17 +6651,17 @@ msgstr ""
 "không phải chịu mũi nhọn của cuộc xâm lược kế tiếp."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:791
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:803
 msgid "What have we done?"
 msgstr "Chúng ta đã làm gì?"
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:827
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:839
 msgid "My love, my family, I’ll be there soo—"
 msgstr "Tình yêu của ta, gia đình của ta, ta sẽ sớm ở đ..."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:832
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:844
 msgid ""
 "Aethyr! No! He was critical for convincing Jevyan that the elves have the "
 "Ruby of Fire."
@@ -6670,7 +6670,7 @@ msgstr ""
 "tiên có viên đá lửa."
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:854
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:866
 msgid ""
 "Jevyan— I spit upon thee. Your end awaits. My love, my family, I’ll be there "
 "soo—"
@@ -6679,7 +6679,7 @@ msgstr ""
 "đình của ta, ta sẽ sớm ở đ..."
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:871
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:883
 msgid ""
 "Fool. You are no match for my power. What! What’s this? A treaty. That’s elf "
 "script."
@@ -6688,7 +6688,7 @@ msgstr ""
 "Một hiệp ước. Đó là văn bản của thần tiên."
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:876
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:888
 msgid ""
 "No. Why? You fools, you gave the Ruby of Fire to the elves. But that won’t "
 "save you from me. I will destroy you, then I will deal with the elves."
@@ -6698,12 +6698,12 @@ msgstr ""
 "sau đó xử lý bọn thần tiên."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:881
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:893
 msgid "We’ll see about that. For the honor of Commander Aethyr, forward!"
 msgstr "Để xem. Vì danh dự của chỉ huy Aethyr, tiến lên!"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:893
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:905
 msgid ""
 "I am fallen before my plans have reached fruition. A curse upon you Haldric, "
 "may you and your descendants know nothing but strife!"
@@ -6712,37 +6712,37 @@ msgstr ""
 "Haldric, ngươi và con cháu của ngươi sẽ chẳng biết gì ngoài xung đột!"
 
 #. [unit]: id=Squiddy, type=Cuttle Fish
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:950
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:962
 msgid "Squiddy"
 msgstr "Squiddy"
 
 #. [message]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:968
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:980
 msgid "Ack. One of those monsters is destroying the bridge."
 msgstr "Á. Một con quái vật đang phá hủy cây cầu."
 
 #. [unit]: id=Inky, type=Cuttle Fish
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1079
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1091
 msgid "Inky"
 msgstr "Inky"
 
 #. [message]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1097
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1109
 msgid "The bridge!"
 msgstr "Cây cầu!"
 
 #. [unit]: id=Beaky, type=Cuttle Fish
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1208
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1220
 msgid "Beaky"
 msgstr "Beaky"
 
 #. [message]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1283
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1295
 msgid "Our advance is thwarted, that monster has destroyed the bridge!"
 msgstr "Bước tiến của chúng ta bị cản trở, con quái vật đó đã phá hủy cây cầu!"
 
 #. [message]: speaker=Abraxas
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1310
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1322
 msgid ""
 "It’s the Prince Haldric! Jevyan, you never said you came to destroy this "
 "monster. We will help you."
@@ -6751,42 +6751,42 @@ msgstr ""
 "diệt con quái vật này. Chúng tôi sẽ giúp ông."
 
 #. [message]: speaker=Familiar
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1341
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1353
 msgid "<i>Clack</i>! <i>Splat</i>!"
 msgstr "<i>Phành phạch!</i> <i>Chít chít!</i>"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1354
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1366
 msgid "Ahh... That almost makes it all worth while!"
 msgstr "À... Đáng đời!"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1365
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1377
 msgid "You’ll pay for that!"
 msgstr "Các ngươi sẽ phải trả giá vì điều đó!"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1379
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1391
 msgid "Strike down these fools."
 msgstr "Hạ gục bọn ngu xuẩn đó."
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1392
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1404
 msgid "Rise, rise from the ground!"
 msgstr "Đứng lên, từ mặt đất hãy đứng lên!"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1433
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1445
 msgid "Come in from the deep my loyal soldiers!"
 msgstr "Chui ra đi các binh sĩ trung thành của ta!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1617
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1629
 msgid "We did it! We won!"
 msgstr "Chúng ta đã làm được! Chúng ta đã thắng!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1621
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1633
 msgid ""
 "Jevyan is destroyed, but at a terrible price. Let’s put Commander Aethyr to "
 "rest and discuss what is to come in the following days."
@@ -6796,7 +6796,7 @@ msgstr ""
 "tới."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1629
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1641
 msgid ""
 "Our strength is waning, and our foes grow stronger by the hour. The battle "
 "is lost!"

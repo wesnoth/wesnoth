@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-09-09 08:38 UTC\n"
+"POT-Creation-Date: 2019-01-21 18:29 UTC\n"
 "PO-Revision-Date: 2014-06-24 23:03+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -79,7 +79,9 @@ msgstr ""
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:24
-msgid "(Intermediate level, 16 scenarios.)"
+#, fuzzy
+#| msgid "(Intermediate level, 16 scenarios.)"
+msgid "(Novice level, 16 scenarios.)"
 msgstr "(Mức độ trung bình, 16 màn chơi)"
 
 #. [about]
@@ -227,16 +229,16 @@ msgstr ""
 "thét bất ngờ của những người gác đêm..."
 
 #. [side]
-#. [side]: type=Dwarvish Steelclad, id=Knutan
 #. [side]: type=Lieutenant, id=Gweddry
 #. [side]: type=General, id=Konrad II
 #. [side]: type=Great Mage, id=Kaldor
 #. [side]: type=General, id=Halrad
 #. [side]: type=General, id=Halric
 #. [side]: type=General, id=Halrod
+#. [side]: type=Dwarvish Steelclad, id=Knutan
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:67
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:25
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:63
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:64
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:24
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:26
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:33
@@ -272,12 +274,12 @@ msgstr "Người Wesnoth"
 #. [side]: type=Dark Sorcerer, id=Mal-Sakkat
 #. [side]: type=Dark Sorcerer, id=Mal-Talar
 #. [side]: type=Lich, id=Mal-Uldhar
-#. [side]
 #. [side]: type=Dark Sorcerer, id=Mal-Skraat
 #. [side]: type=Lich, id=Mal-Telnarad
 #. [side]: type=Dark Sorcerer, id=Mal-Marak
 #. [side]: type=Dark Sorcerer, id=Mal-Galkar
 #. [side]: type=Death Knight, id=Ravanal-Guard
+#. [side]
 #. [side]: type=Revenant, id=Lanar-Skal
 #. [side]: type=Necromancer, id=Mal-un-Darak
 #. [side]: type=Necromancer, id=Mal-un-Zanrad
@@ -300,7 +302,7 @@ msgstr "Người Wesnoth"
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:95
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:123
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:158
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:99
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:103
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:38
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:74
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:96
@@ -353,8 +355,8 @@ msgstr "Bảo vệ tiền đồn"
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:213
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:440
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:151
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:362
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:155
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:463
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:158
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:118
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:107
@@ -379,8 +381,8 @@ msgstr "Gweddry chết"
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:217
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:444
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:155
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:366
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:159
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:467
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:162
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:122
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:111
@@ -515,12 +517,12 @@ msgstr "Theo tôi, mọi người! Qua cửa chui!"
 msgid "The Escape Tunnel"
 msgstr "Đường hầm trốn thoát"
 
-#. [side]: type=Troll, id=Kabak
 #. [side]: type=Troll Warrior, id=Darg
 #. [side]: type=Gryphon, id=Kraagak
 #. [side]: type=Ogre, id=Grug
 #. [side]
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:42
+#. [side]: type=Troll, id=Kabak
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:43
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:83
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:68
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:49
@@ -529,49 +531,60 @@ msgid "Monsters"
 msgstr "Quái vật"
 
 #. [side]: type=Troll, id=Kabak
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:46
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:47
 msgid "Kabak"
 msgstr "Kabak"
 
 #. [side]: type=Dwarvish Steelclad, id=Knutan
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:68
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:69
 msgid "Knutan"
 msgstr "Knutan"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:147
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:358
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:151
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:459
 msgid "Move Gweddry to the tunnel exit"
 msgstr "Di chuyển Gweddry đến lối ra của đường hầm"
 
 #. [note]
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:168
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:172
 msgid "Get moving quickly."
 msgstr ""
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:183
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:187
 msgid "Where are we? I can’t see where we are going."
 msgstr "Chúng ta đang ở đâu đây? Tôi không nhìn thấy gì cả."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:188
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:192
+#, fuzzy
+#| msgid ""
+#| "This is an old escape tunnel for the outpost; unfortunately these caves "
+#| "are currently inhabited by trolls. Now hurry, we have to move quickly; "
+#| "the undead will surely follow us down here."
 msgid ""
-"This is an old escape tunnel for the outpost; unfortunately these caves are "
-"currently inhabited by trolls. Now hurry, we have to move quickly; the "
-"undead will surely follow us down here."
+"This is an old escape route for the outpost. Unfortunately these caves are "
+"currently inhabited by trolls, who are blocking our path through the tunnel."
 msgstr ""
 "Đây là một đường hầm trốn thoát cũ cho tiền đồn. Tiếc là những hang động này "
 "hiện đang bị bọn quỷ núi chiếm cứ. Giờ mau lên, chúng ta phải di chuyển "
 "nhanh chóng. Lũ ma quái chắc chắn sẽ theo chúng ta xuống đây."
 
+#. [message]: speaker=Dacyn
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:245
+#, fuzzy
+#| msgid "Hurry up. We must get across before these undead slaughter us!"
+msgid "We must make haste to escape before the undead catch up."
+msgstr "Mau lên. Chúng ta phải băng qua trước khi lũ ma quái tàn sát chúng ta!"
+
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:193
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:250
 msgid "Wait, before we go anywhere — who were those undead?"
 msgstr "Khoan đã, trước khi chúng ta đi bất cứ đâu - lũ ma quái đó là ai vậy?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:198
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:255
 msgid ""
 "I will explain later. For now, suffice to say they are much too powerful for "
 "us; our only hope is to head north."
@@ -580,17 +593,17 @@ msgstr ""
 "ta. Hy vọng duy nhất của chúng ta là đi về phía bắc."
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:212
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:269
 msgid "TROL TREZZUR HOLE: KEEP OWT"
 msgstr "HAN KHO BÁU CỦ QUỶ MÚI: CẤM DÀO"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:230
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:304
 msgid "Who goes there?"
 msgstr "Ai đó?"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:235
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:309
 msgid ""
 "We are soldiers of the king of Wesnoth. Will you help us fight these trolls?"
 msgstr ""
@@ -598,7 +611,7 @@ msgstr ""
 "với bọn quỷ núi đó chứ?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:240
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:314
 msgid ""
 "Aye, we’ll help ye, for we have nae love for the trolls. Anyone attacked by "
 "them deserves some help, I think."
@@ -607,7 +620,7 @@ msgstr ""
 "nghĩ bất kỳ ai bị chúng tấn công đều xứng đáng được giúp đỡ."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:248
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:322
 msgid ""
 "Thank you. Now, I invite you to join us. Undead have followed us into these "
 "caves, and they will kill you if you stay behind."
@@ -617,7 +630,7 @@ msgstr ""
 "anh ở lại."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:254
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:328
 msgid ""
 "Thank you. Now, I invite you to join us. Undead are in these lands, and they "
 "will find these caves."
@@ -626,7 +639,7 @@ msgstr ""
 "đang ở trong vùng đất, chúng sẽ tìm thấy hang động này."
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:261
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:335
 msgid ""
 "My clan ha’ lived in these caves for centuries. We’ll no’ be scattered now "
 "by a few undead."
@@ -635,29 +648,31 @@ msgstr ""
 "rời đi chỉ vì một ít ma quái."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:266
-msgid "Very well. The best of luck in your battle."
-msgstr "Thôi được. Chúc các anh may mắn khi chiến đấu."
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:340
+msgid ""
+"Very well. The best of luck in your battle. Gweddry, we may be able to avoid "
+"the bulk of the trolls by going through the dwarves’ tunnel."
+msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:285
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:378
 msgid ""
 "It seems these trolls were hiding some gold. I think I can count fifty gold "
 "pieces!"
 msgstr ""
 
 #. [unit]: type=Necromancer, id=Mal-Bakral
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:336
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:437
 msgid "Mal-Bakral"
 msgstr "Mal-Bakral"
 
 #. [message]: speaker=Mal-Bakral
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:346
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:447
 msgid "We have found you, fleshbag! Prepare to die!"
 msgstr "Bọn ta tìm thấy các ngươi rồi, bị thịt! Chuẩn bị chết đi!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:351
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:452
 msgid ""
 "They follow us... we must get out of this tunnel. It looks like it is "
 "leading east. That is unfortunate, for it will take us beyond the borders of "
@@ -668,7 +683,7 @@ msgstr ""
 "giới Wesnoth. Nhưng đó là lựa chọn duy nhất."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:388
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:489
 msgid "We have reached the end of the tunnel. I see daylight above us!"
 msgstr ""
 "Chúng ta đã đến được đoạn cuối của đường hầm. Tôi thấy ánh sáng ban ngày "
@@ -4115,6 +4130,9 @@ msgstr "Tôi không thích hợp để sử dụng thứ này! Để người kh
 #: data/campaigns/Eastern_Invasion/utils/macros.cfg:67
 msgid "Holy Amulet"
 msgstr "Bùa thánh"
+
+#~ msgid "Very well. The best of luck in your battle."
+#~ msgstr "Thôi được. Chúc các anh may mắn khi chiến đấu."
 
 #~ msgid "greatsword"
 #~ msgstr "đại kiếm"

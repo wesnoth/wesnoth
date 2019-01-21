@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-09-09 08:38 UTC\n"
+"POT-Creation-Date: 2019-01-21 18:30 UTC\n"
 "PO-Revision-Date: 2018-07-08 21:23+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -62,11 +62,17 @@ msgstr "困难"
 
 #. [campaign]: id=Secrets of the Ancients
 #: data/campaigns/Secrets_of_the_Ancients/_main.cfg:21
+#, fuzzy
+#| msgid ""
+#| "Rediscover the secrets known by the lich lords of the Green Isle. They "
+#| "knew how to live forever, so why can't you?\n"
+#| "\n"
+#| "(Intermediate level, 21 scenarios.)\n"
 msgid ""
 "Rediscover the secrets known by the lich lords of the Green Isle. They knew "
 "how to live forever, so why can't you?\n"
 "\n"
-"(Intermediate level, 21 scenarios.)\n"
+"(Hard level, 21 scenarios.)\n"
 msgstr ""
 "重新发现绿岛的巫妖领主们所知道的秘密。他们能知道如何永生，那你凭什么不能"
 "呢？\n"
@@ -89,17 +95,17 @@ msgid "Additional Artwork"
 msgstr "额外美工"
 
 #. [scenario]: id=01_Slipping_Away
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:23
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:22
 msgid "Slipping Away"
 msgstr "溜之大吉"
 
 #. [part]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:41
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:40
 msgid "<i>Chapter One:</i> Unlawful Research"
 msgstr "<b>第一章：</b>不法研究"
 
 #. [part]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:44
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:43
 msgid ""
 "<i>From the Journal of Ardonna of Tarrynth</i>\n"
 "\n"
@@ -126,7 +132,7 @@ msgstr ""
 "的。"
 
 #. [part]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:55
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:54
 msgid ""
 "26 II, 23 YW:\n"
 "\n"
@@ -150,7 +156,7 @@ msgstr ""
 "不在乎自己显得古怪。我已经被大家认为与众不同了，我的头发稀少，还没有嗅觉。"
 
 #. [part]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:64
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:63
 msgid ""
 "4 III, 23 YW:\n"
 "\n"
@@ -174,7 +180,7 @@ msgstr ""
 "一些，不能让不该出现的想法显现在我的脸上。"
 
 #. [part]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:73
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:72
 msgid ""
 "15 III, 23 YW:\n"
 "\n"
@@ -206,7 +212,7 @@ msgstr ""
 "师，不过或许我也可以找到某个能和我订立条约的人。"
 
 #. [part]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:82
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:81
 msgid ""
 "Later:\n"
 "\n"
@@ -235,28 +241,35 @@ msgstr ""
 "密。或许我会宽宏大量。或许我不会。"
 
 #. [objective]: condition=win
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:172
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:171
 msgid "Move Ardonna to the signpost"
 msgstr "移动阿冬娜至路标处"
 
 #. [note]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:184
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:183
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:252
 msgid "This scenario takes place entirely at night."
 msgstr "此场景完全发生在夜间。"
 
+#. [note]
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:186
+msgid ""
+"Ardonna can climb over a fence for 2 movement points, but wild animals "
+"cannot."
+msgstr ""
+
 #. [label]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:190
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:192
 msgid "Llorvin"
 msgstr "洛温"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:294
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:295
 msgid "I suspected some of the rats would show themselves."
 msgstr "我怀就知道有些老鼠会出现。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:304
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:305
 msgid ""
 "I should get off the island in case the ethics committee is concerned about "
 "a rogue mage. I shall not be dragged back in disgrace! I should be able to "
@@ -269,7 +282,7 @@ msgstr ""
 "为此我需要一些旅行资金，所以去吧，我的蝙蝠朋友们，帮我找点儿金币回来！"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:308
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:309
 msgid ""
 "It would be good to have even more bats as well. There was a colony in that "
 "ruined castle where we practiced conjuring fire, so I will try to find that. "
@@ -282,17 +295,21 @@ msgstr ""
 "它们。但我只能用冰，我可从来没学会熟练用火。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:323
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:321
+#, fuzzy
+#| msgid ""
+#| "Wolves! This journey may be more dangerous than I thought. Well, we can "
+#| "find safety inside the sturdy fences built by farmers and woodcutters. "
+#| "The wild animals surely won't be able to enter."
 msgid ""
-"Wolves! This journey may be more dangerous than I thought. Well, we can find "
-"safety inside the sturdy fences built by farmers and woodcutters. The wild "
-"animals surely won't be able to enter."
+"A wolf! This journey may be more dangerous than I thought. If we need to, I "
+"suppose we could rest inside a farmer's or woodcutter's fence."
 msgstr ""
 "狼群！这旅程比我所想的更为危险。好吧，我们可以在农民和樵夫搭建的牢固篱笆后面"
 "找到安全之所。野生动物们显然不能进去。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:346
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:344
 msgid ""
 "The morning has come, and I am still in the open. I will be caught for sure!"
 msgstr "早晨来临了，而我却还在开阔地里。我肯定会被抓住的！"
@@ -406,72 +423,111 @@ msgstr "温"
 msgid "Caradoc"
 msgstr "卡拉多克"
 
+#. [message]: speaker=Ardonna
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:392
+msgid "Oh, hello friend! I didn't know you were hiding in there."
+msgstr ""
+
+#. [message]: speaker=Ardonna
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:398
+msgid "Oh, hello! You're a handsome one."
+msgstr ""
+
+#. [message]: speaker=Ardonna
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:415
+msgid "Hey, come back! I didn't mean to frighten you."
+msgstr ""
+
+#. [message]: speaker=Ardonna
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:419
+msgid "Maybe I could attract it if I jingled some coins."
+msgstr ""
+
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:357
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:442
+#, fuzzy
+#| msgid "Right-click on a grave adjacent to your leader to raise a unit."
+msgid "Right click adjacent to your leader to summon the bat."
+msgstr "在你的首领身边的坟墓上右击以复苏一个单位。"
+
+#. [set_menu_item]: id=summon_bat
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:450
+msgid "Summon the Bat (20 gold)"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:490
+#, fuzzy
+#| msgid "You don't have enough gold to raise that unit."
+msgid "You don't have enough gold to summon the bat."
+msgstr "你的金币不足，不能复苏该单位。"
+
+#. [message]: speaker=narrator
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:572
 msgid "You can now recruit skeletons and skeleton archers!"
 msgstr "你现在可以征募骷髅战士和骷髅弓箭手了！"
 
 #. [event]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:409
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:624
 msgid "Blollyn"
 msgstr "布洛林"
 
 #. [event]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:410
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:625
 msgid "Ceoran"
 msgstr "希欧兰"
 
 #. [event]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:412
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:627
 msgid "Vindry"
 msgstr "温德里"
 
 #. [event]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:413
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:628
 msgid "Aethacyn"
 msgstr "艾萨辛"
 
 #. [event]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:414
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:629
 msgid "Elomyr"
 msgstr "埃洛米尔"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:444
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:659
 msgid "You can no longer recruit skeletons and skeleton archers."
 msgstr "你不能再征募骷髅战士和骷髅弓箭手了。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:511
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:726
 msgid ""
 "Wait, that guard said there were twelve of them, so where are the other five?"
 msgstr "等一下，那卫兵说他们有十二个人，所以剩下那五个在哪儿？"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:513
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:728
 msgid ""
 "Wait, that guard said there were seven of them, so where are the other two?"
 msgstr "等一下，那卫兵说他们有七个人，所以剩下那两个在哪儿？"
 
 #. [message]: speaker=Syrillin
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:532
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:747
 msgid "Why are we stuck guarding a cemetery all night?"
 msgstr "我们为什么只能整夜守着一片坟地？"
 
 #. [message]: speaker=Veomyr
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:538
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:753
 msgid ""
 "And why <i>twelve</i> of us? Who wants to break into a cemetery that badly?"
 msgstr "还有，为什么要<b>十二</b>个人？谁会这么想闯进坟地里啊？"
 
 #. [message]: speaker=Veomyr
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:540
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:755
 msgid ""
 "And why <i>seven</i> of us? Who wants to break into a cemetery that badly?"
 msgstr "还有，为什么要<b>七</b>个人？谁会这么想闯进坟地里啊？"
 
 #. [message]: speaker=Glant
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:545
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:760
 msgid ""
 "I don’t know, but this evening a mage from the academy was here talking to "
 "the mayor, my brother says."
@@ -479,12 +535,12 @@ msgstr ""
 "我不知道，但今晚学院里的一位法师正在这里，和市长交谈，我兄弟是这么说的。"
 
 #. [message]: speaker=Caradoc
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:549
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:764
 msgid "Well <i>I</i> say you shouldn’t question orders, so pipe down."
 msgstr "好啦，要<b>我</b>说你们不该怀疑命令，所以安静点儿。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:588
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:803
 msgid ""
 "They must be guarding the cemetery from <i>me</i>! Maybe Aimucasur really "
 "was suspicious. It’s a good thing I’m here already, but how am I going to "
@@ -498,59 +554,59 @@ msgstr ""
 "好吧，我不如就先做试验，等会儿再担心该怎么离开好了。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:613
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:828
 msgid "Hello?"
 msgstr "你好？"
 
 #. [message]: speaker=first_zombie
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:618
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:833
 msgid "Uhngh."
 msgstr "啊啊。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:622
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:837
 msgid "Do you remember anything?"
 msgstr "你还记得什么吗？"
 
 #. [message]: speaker=first_zombie
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:627
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:842
 msgid "Uhrrr."
 msgstr "啊啊啊。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:631
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:846
 msgid ""
 "It seems that my first guess was correct. The poor creature is mindless."
 msgstr "看起来我的第一个猜想是正确的。这可怜的东西没有心智。"
 
 #. [message]: speaker=Veomyr
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:645
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:860
 msgid "I heard something over there!"
 msgstr "我听到那边有什么动静！"
 
 #. [message]: speaker=Glant
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:655
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:870
 msgid "Who’s there?"
 msgstr "谁在那儿？"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:676
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:891
 msgid "It’s only me. Is the cemetery closed then? I was about to leave."
 msgstr "只是我。墓地是不是已经关门了？我就要走了。"
 
 #. [message]: speaker=Syrillin
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:680
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:895
 msgid "You and that... other person. Who is that?"
 msgstr "你还有那个……另一个人。那是谁？"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:684
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:899
 msgid ""
 "Oh, him. See here, I don't want any trouble, but he is a little... ah..."
 msgstr "哦，他啊。你看，我可不想惹麻烦，不过他有点儿……啊……"
 
 #. [message]: speaker=Caradoc
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:688
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:903
 msgid ""
 "He's <i>dead</i>! This is dark sorcery like in my granddad’s time in the old "
 "country! The penalty is death. Attack and destroy them both!"
@@ -559,12 +615,12 @@ msgstr ""
 "刑。攻击，把他们都干掉！"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:692
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:907
 msgid "Hey! Don't do that, or I will need more of them."
 msgstr "嘿！别这样，不然我就需要更多的骷髅了。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:696
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:911
 msgid ""
 "I would do better if I had weapons, and I bet I can find some in the "
 "guardhouse. Go take it, my companions."
@@ -573,21 +629,12 @@ msgstr ""
 "伙伴们。"
 
 #. [message]: speaker=Caradoc
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:700
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:915
 msgid "Gwyllin, don’t move from that guardhouse."
 msgstr "格威林，不要离开卫兵室。"
 
-#. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:705
-msgid ""
-"You can recruit or recall from your starting position on the first turn "
-"only. To get more units, raise them from their graves."
-msgstr ""
-"只有在第一回合时，你才可以在起始位置进行征募或召回。将死者从坟墓里苏生以获得"
-"更多单位。"
-
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:714
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:924
 msgid ""
 "The morning has come, and we have not escaped the city. We will be caught "
 "for sure!"
@@ -1004,8 +1051,13 @@ msgstr "今天不想多说话？发生什么了？"
 msgid "Happened? Dead."
 msgstr "发生？死了。"
 
-#. [message]: speaker=Gweddyn
+#. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:328
+msgid "Keep quiet about that."
+msgstr ""
+
+#. [message]: speaker=Gweddyn
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:332
 msgid ""
 "Ha! Well, actually, you do look terrible. Very... gray, and your face is... "
 "But we’re speaking! You can’t actually be dead!"
@@ -1014,44 +1066,44 @@ msgstr ""
 "你不可能真是死了吧！"
 
 #. [message]: speaker=Bone Captain
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:332
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:336
 msgid "Yes. Dead."
 msgstr "是。死了。"
 
 #. [message]: speaker=Gweddyn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:336
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:340
 msgid "What madness is this?"
 msgstr "这都是什么疯狂之事？"
 
 #. [message]: speaker=Bremen
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:340
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:344
 msgid "It’s sorcery my lord. Dark sorcery."
 msgstr "是巫术，阁下。黑暗巫术。"
 
 #. [message]: speaker=Gweddyn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:344
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:348
 msgid ""
 "Necromancy! The penalty for that is death. Rudic, who is responsible for "
 "this?"
 msgstr "死灵术！使用死灵术的惩罚是死刑。鲁迪克，这是谁干的？"
 
 #. [message]: speaker=Bone Captain
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:348
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:352
 msgid "She."
 msgstr "她。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:352
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:356
 msgid "Ah, well. I should have known this wouldn’t be easy."
 msgstr "啊，好吧。我早该知道不会这么简单的。"
 
 #. [message]: speaker=Gweddyn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:356
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:360
 msgid "Kill her!"
 msgstr "杀掉她！"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:360
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:364
 msgid ""
 "We must leave no one alive to report us, or the entire country will become "
 "unsafe. We have no choice. We must kill them all."
@@ -1060,32 +1112,32 @@ msgstr ""
 "选择了，必须把他们全杀掉。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:368
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:372
 msgid "We are finished."
 msgstr "我们完了。"
 
 #. [message]: speaker=Shadow
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:385
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:389
 msgid "Girl. You will follow."
 msgstr "姑娘。你将会跟我走。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:389
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:393
 msgid "What in the world are <i>you</i>?"
 msgstr "<b>你</b>究竟是什么人？"
 
 #. [message]: speaker=Shadow
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:393
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:397
 msgid "Spirit and shadow. You will follow."
 msgstr "灵魂与暗影。你将会跟我走。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:397
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:401
 msgid "You’re a ghost... a real ghost! I will indeed follow you. Lead on."
 msgstr "你是个鬼魂……一个真正的鬼魂！我确实会跟你走。带路吧。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:423
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:427
 msgid ""
 "Blackwater Port is defeated, but we must let none escape. Finish them all."
 msgstr "我们击败了黑水港卫队，但不能让任何人逃走。把他们都解决掉。"
@@ -1269,7 +1321,7 @@ msgstr "哦，还是个会开玩笑的法师啊！上吧。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:604
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:592
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:573
 msgid "You have no more time."
 msgstr "你没有时间了。"
 
@@ -1740,7 +1792,7 @@ msgstr "所有五名黑暗狂徒死亡"
 
 #. [objective]: condition=lose
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:145
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:499
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:530
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:108
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:120
 msgid "Death of Ras-Tabahn"
@@ -1828,7 +1880,7 @@ msgstr ""
 #. [side]: type=Merman Triton, id=Okean
 #. [side]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:45
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:129
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:130
 msgid "Merfolk"
 msgstr "人鱼"
 
@@ -1877,68 +1929,68 @@ msgstr "我想知道这些骨架是谁的。也许是一只大型的不能飞的
 
 #. [message]: speaker=$other_human
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:261
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:242
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:241
 msgid "Oh, you were right!"
 msgstr "哦，你说对了！"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:266
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:247
 msgid "I wonder if it could carry someone light. A skeleton maybe."
 msgstr "我想知道它能不能载上一个体重轻的人。或许一个骷髅可以。"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:324
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:305
 msgid "Splendid! These birds could be quite useful."
 msgstr "太棒了！这些鸟会很有用的。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:333
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:314
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:338
 msgid "You can now recruit chocobones!"
 msgstr "你现在可以征募骷髅鸟骑手了！"
 
 #. [set_variable]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:410
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:391
 msgid "Hopefully this will be enough gold."
 msgstr "但愿这些金币足够了。"
 
 #. [set_variable]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:421
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:402
 msgid "We have won, but I am afraid this may not be enough gold."
 msgstr "我们赢了，但我担心这些金币并不够。"
 
 #. [set_variable]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:434
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:415
 msgid "Good. We ended with a fair amount of gold."
 msgstr "很好。结果我们有了不少金币。"
 
 #. [message]: speaker=Okean
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:487
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:468
 msgid "You! You have destroyed the town of Carcyn!"
 msgstr "你！你摧毁了卡辛镇！"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:491
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:472
 msgid "The town is hardly destroyed. I just encouraged a change of leadership."
 msgstr "那镇子可不能说是被摧毁了。我不过是鼓励他们更换了领导层罢了。"
 
 #. [message]: speaker=Okean
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:495
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:476
 msgid ""
 "Your words mock us. Those humans were valuable trading partners of ours. We "
 "will have justice!"
 msgstr "你嘲弄我们。那些人类是我们宝贵的贸易伙伴。我们将制裁你们！"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:499
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:480
 msgid ""
 "Actually, I expect you will follow them into the ground if you try to harm "
 "us."
 msgstr "实际上，如果你们要伤害我们，那我只能期望你们和他们一样下地狱去了。"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:507
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:488
 msgid ""
 "addressed_plural^This is going to cost us, but I want to keep some gold "
 "around for emergencies — I think 50 is about right. You help me collect "
@@ -1948,49 +2000,49 @@ msgstr ""
 "帮我收集些金币吧。（<b>咳</b>）"
 
 #. [message]: speaker=Carcyn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:511
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:492
 msgid "Right away sir."
 msgstr "马上就干，老师。"
 
 #. [message]: speaker=Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:515
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:496
 msgid "Are you feeling well?"
 msgstr "您觉得还好吗？"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:519
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:553
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:500
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:534
 msgid "Yes, yes. I’m quite all right."
 msgstr "是，是。我觉得很不错。"
 
 #. [message]: speaker=Shynal
 #. [message]: id=Carcyn,Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:523
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:557
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:504
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:538
 msgid "I don’t fancy wading in the water to fight these things."
 msgstr "我可不想到水里去和这些东西作战。"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:527
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:562
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:508
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:543
 msgid "No problem. We can lure them onto land."
 msgstr "没问题。我们可以把他们引诱到陆地上来。"
 
 #. [message]: speaker=Shynal
 #. [message]: id=Carcyn,Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:531
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:566
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:512
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:547
 msgid "How?"
 msgstr "怎么做？"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:535
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:516
 msgid ""
 "addressed_plural^Have you never been fishing before? With bait of course."
 msgstr "你们从来都没有钓过鱼吗？当然是用鱼饵了。"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:545
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:526
 msgid ""
 "This is going to cost us, but I want to keep some gold around for "
 "emergencies — I think 50 is about right. Help me collect some. (<i>Cough, "
@@ -2000,22 +2052,22 @@ msgstr ""
 "收集些金币吧。（<b>咳</b>）"
 
 #. [message]: id=Carcyn,Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:549
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:530
 msgid "Right away sir. Are you feeling well?"
 msgstr "马上就干，老师。您觉得还好吗？"
 
 #. [message]: id=Carcyn,Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:558
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:539
 msgid "self_female^I don’t fancy wading in the water to fight these things."
 msgstr "我可不想到水里去和这些东西作战。"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:570
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:551
 msgid "Have you never been fishing before? With bait of course."
 msgstr "你从来都没有钓过鱼吗？当然是用鱼饵了。"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:580
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:561
 msgid ""
 "This is going to cost me, but I want to keep some gold around for "
 "emergencies — I think 50 is about right. I’d better send someone to collect "
@@ -2109,7 +2161,7 @@ msgstr "克里萨兹"
 #. [side]: type=Naga Myrmidon, id=Blianxkep
 #. [side]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:79
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:153
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:154
 msgid "Nagas"
 msgstr "娜迦"
 
@@ -2122,34 +2174,29 @@ msgstr "连克斯克普"
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:105
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/14_Entering_the_Northlands.cfg:112
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/19_Lava_and_Stone.cfg:98
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:491
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:522
 msgid "Defeat all enemy leaders"
 msgstr "击败所有敌方首领"
 
-#. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:127
-msgid "You can now recruit ghosts!"
-msgstr "你现在可以征募鬼魂了！"
-
 #. [message]: speaker=Blianxkep
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:137
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:126
 msgid ""
 "The fish people gave good value for the last load. More metal of that type "
 "is desired."
 msgstr "最后那一票我们从鱼人身上赚了不少。我还想要那种金属，更多。"
 
 #. [message]: speaker=Krissaz
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:141
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:130
 msgid "Firssst, pay us our ssshare."
 msgstr "嘶嘶，首先，把分成付给我们。"
 
 #. [message]: speaker=Blianxkep
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:145
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:134
 msgid "Wait, who approaches?"
 msgstr "等等，是谁来了？"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:149
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:138
 msgid ""
 "I am a mage and not a threat to you gentle... reptiles. I wish only to "
 "animate some spirits, so I won’t disturb your salvage operation."
@@ -2158,7 +2205,7 @@ msgstr ""
 "扰你们的抢收行动。"
 
 #. [message]: speaker=Krissaz
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:153
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:142
 msgid ""
 "No! You can’t make thisss place more haunted than it isss! The femalesss "
 "already won’t come here, and we are forced to rely on these ssserpents for "
@@ -2168,14 +2215,14 @@ msgstr ""
 "些蛇来保护自己。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:157
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:146
 msgid ""
 "I was only informing you out of courtesy. In truth, I don’t require your "
 "permission."
 msgstr "我只是出于礼貌才告诉你们这些的，我可不需要你们的允许。"
 
 #. [message]: speaker=Blianxkep
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:161
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:150
 msgid ""
 "We will help you drive off this foe if you will consider your share paid in "
 "full."
@@ -2183,36 +2230,52 @@ msgstr ""
 "我们会帮你们赶走这个敌人，如果你愿意认为我们已经全部支付了你们的分成的话。"
 
 #. [message]: speaker=Krissaz
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:165
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:154
+#, fuzzy
+#| msgid ""
+#| "When the mage isss dead and her sssouls put to ressst, we agree. We will "
+#| "have been compensssated adequately."
 msgid ""
-"When the mage isss dead and her sssouls put to ressst, we agree. We will "
+"When the mage isss dead and her dead horde put to ressst, we agree. We will "
 "have been compensssated adequately."
 msgstr ""
 "等这个法师死嘶嘶掉，而她的灵魂停息的时候，我们就会同意。到那时我们就已经拿到"
 "适当的补偿了。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:169
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:158
 msgid "Every time..."
 msgstr "每次都是……"
 
+#. [message]: speaker=Ardonna
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:167
+#, fuzzy
+#| msgid "You can now recruit ghosts!"
+msgid "Good. Now I can practice recruiting ghosts."
+msgstr "你现在可以征募鬼魂了！"
+
+#. [message]: speaker=narrator
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:173
+msgid "You can now recruit ghosts!"
+msgstr "你现在可以征募鬼魂了！"
+
 #. [unit]: id=Vendraxis, type=Saurian Soothsayer
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:192
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:197
 msgid "Vendraxis"
 msgstr "文德拉克西斯"
 
 #. [message]: speaker=Vendraxis
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:211
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:216
 msgid "Human, take me with you!"
 msgstr "人类，带我一起走吧！"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:215
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:220
 msgid "Why should I allow that? Your people attacked me!"
 msgstr "我为什么要让你跟着我呢？你们的人攻击了我！"
 
 #. [message]: speaker=Vendraxis
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:219
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:224
 msgid ""
 "I tried to ssstop them! For myself, I wissshed not to attack. I wissshed to "
 "learn. My race livesss but a short time compared to yoursss. I would learn "
@@ -2222,43 +2285,50 @@ msgstr ""
 "们种族的寿命很短。我想要学会延寿之法，而星相告诉我，你知道这一秘密。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:223
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:228
 msgid ""
 "Actually, I am searching for that secret now. But could you follow the "
 "orders of a woman?"
 msgstr "实际上，我正在搜寻这一秘密。但你能服从一个女人的命令吗？"
 
 #. [message]: speaker=Vendraxis
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:227
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:232
+#, fuzzy
+#| msgid ""
+#| "I have ssstared into the darknesss between the starsss and not been "
+#| "intimidated by the void, but your mind holdsss a darknesss of another "
+#| "kind, frightening and forbidden by my clan. I sssubmit to your power. Now "
+#| "that I know you are female, I will find it easier as it is the way of my "
+#| "kind."
 msgid ""
 "I have ssstared into the darknesss between the starsss and not been "
-"intimidated by the void, but your mind holdsss a darknesss of another kind, "
+"intimidated by the void, but your mind holds a darknesss of another kind, "
 "frightening and forbidden by my clan. I sssubmit to your power. Now that I "
-"know you are female, I will find it easier as it is the way of my kind."
+"know you are female, I will find it easier as it isss the way of my kind."
 msgstr ""
 "我注目过繁星之间的黑暗，而并没有被那虚无所吓，但你的心中却有另一种黑暗，我的"
 "部族害怕这黑暗，也禁止我们接触它。我服从于你的力量。现在我知道你是雌性了，我"
 "觉得服从于你更加容易，因为这就是我们一族的做法。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:231
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:236
 msgid "Very well, come along. I am Ardonna."
 msgstr "很好，一起来吧。我是阿冬娜。"
 
 #. [message]: speaker=Vendraxis
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:235
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:240
 msgid ""
 "Yesss, but the planetsss tell me your name isss now untrue. I do not "
 "underssstand thisss."
 msgstr "是嘶嘶，但星相告诉我你的名字现在不再真实了。我不理解。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:239
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:244
 msgid "Nor do I. Your planets are quite cryptic."
 msgstr "我也不理解。你的星相很神秘。"
 
 #. [message]: speaker=Vendraxis
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:243
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:248
 msgid "They reveal what they will."
 msgstr "它们只揭示它们将揭示之物。"
 
@@ -2295,16 +2365,17 @@ msgstr "森林"
 
 #. [unit]: type=Elvish Enchantress, id=Isthiniel
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:50
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:742
 msgid "Isthiniel"
 msgstr "伊丝忒馨妮尔"
 
 #. [objective]: condition=win
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:97
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:101
 msgid "Move Ardonna to the northeast corner of the map"
 msgstr "移动阿冬娜至地图东北角"
 
 #. [message]: speaker=Isthiniel
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:311
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:315
 msgid ""
 "I felt our dead stirring and corruption descending on the forest. When I "
 "left to investigate, I expected to find grim, veiled forces at work. Instead "
@@ -2318,7 +2389,7 @@ msgstr ""
 "放你奴役的亡魂们。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:315
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:319
 msgid ""
 "Well, that I won’t do. However, if you do not attack, you will be rid of me "
 "soon, as I only wish to leave these woods."
@@ -2327,7 +2398,7 @@ msgstr ""
 "开这丛林而已。"
 
 #. [message]: speaker=Isthiniel
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:319
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:323
 msgid ""
 "Attack? No, I cannot. Most of my people won’t come here; it is only duty "
 "that drives me. However, the woods themselves are disturbed, and they will "
@@ -2338,22 +2409,22 @@ msgstr ""
 "了。"
 
 #. [unit]: type=Ancient Wose, id=Dolmathengalin
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:336
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:340
 msgid "Dolmathengalin"
 msgstr "多尔玛森伽林"
 
 #. [message]: speaker=Dolmathengalin
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:343
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:347
 msgid "You are greeted daughter of elves. Why does the forest moan in despair?"
 msgstr "致安，精灵之女。森林缘何绝望地悲叹？"
 
 #. [message]: speaker=Vendraxis
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:347
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:351
 msgid "That tree can talk!"
 msgstr "那棵树会说话！"
 
 #. [message]: speaker=Isthiniel
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:351
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:355
 msgid ""
 "That dark mage has woken our dead and stifles the air with her very "
 "presence. Please wake your people, Elder, and destroy her."
@@ -2362,12 +2433,12 @@ msgstr ""
 "唤醒你的族人，长者，并摧毁她。"
 
 #. [message]: speaker=Dolmathengalin
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:355
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:359
 msgid "This shall be done."
 msgstr "理应如此。"
 
 #. [message]: speaker=Isthiniel
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:359
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:363
 msgid "I shall leave you. I have no wish to witness this violence."
 msgstr "我现在要离开了。我并不想目击这样的暴力。"
 
@@ -3491,29 +3562,29 @@ msgid "Cavalry"
 msgstr "骑兵"
 
 #. [side]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:103
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:104
 msgid "Magi"
 msgstr "法师"
 
 #. [side]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:116
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:117
 msgid "Elves"
 msgstr "精灵"
 
 #. [message]: speaker=Thrigalurd
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:326
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:327
 msgid ""
 "The enemy already attempts to breach our castle walls! Up arms lads, look "
 "lively!"
 msgstr "敌人已经在试图突破我们的城墙了！武装起来小子们，打起精神来！"
 
 #. [message]: speaker=Thrigalurd
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:332
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:333
 msgid "Now we avenge the fallen of Knalga!"
 msgstr "现在我们要为纳尔迦的牺牲者们复仇！"
 
 #. [message]: speaker=Carmyna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:355
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:356
 msgid ""
 "The enemy is already poised to attack! They must have anticipated our "
 "arrival. No rest my friends; we go to work immediately."
@@ -3522,7 +3593,7 @@ msgstr ""
 "得马上开始干活。"
 
 #. [message]: speaker=Carmyna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:361
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:362
 msgid ""
 "The battle is already underway. So many of our comrades have fallen! We must "
 "incinerate these undead and rid the world of this evil."
@@ -3530,8 +3601,8 @@ msgstr ""
 "战斗已经在进行中了。我们的同志已经牺牲了如此之多！我们必须把这些亡灵烧成灰，"
 "把这邪恶从世上驱除出去。"
 
-#. [message]: speaker=Galoïndrath
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:384
+#. [message]: speaker=Isthiniel
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:385
 msgid ""
 "What is this? The enemy lurking in wait in our forests? To arms! Let us "
 "immediately rid our land of this foulness!"
@@ -3539,26 +3610,26 @@ msgstr ""
 "这是什么？敌人在我们的森林之中潜伏待动？武装起来！让我们把这些邪恶之物从我们"
 "的领地之上驱除出去吧！"
 
-#. [message]: speaker=Galoïndrath
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:390
+#. [message]: speaker=Isthiniel
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:391
 msgid ""
 "Never again will these monsters use the spirits of our ancestors against us. "
 "We will burn them down!"
 msgstr "这些怪物将会再也不能用我们祖先的灵魂来对付我们。我们将把他们烧尽！"
 
 #. [objective]: condition=lose
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:495
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:526
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:116
 msgid "Death of Ardryn-Na"
 msgstr "阿德琳-娜死亡"
 
 #. [unit]: type=Saurian Flanker, id=Fizztsars
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:533
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:564
 msgid "Fizztsars"
 msgstr "菲兹萨斯"
 
 #. [message]: speaker=Fizztsars
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:540
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:571
 #, fuzzy
 #| msgid "We have arrived, Taxsstrimon. We will fight bessside you."
 msgid ""
@@ -3567,115 +3638,110 @@ msgid ""
 msgstr "我们到了，塔克斯崔蒙。我们将和你并肩作战。"
 
 #. [message]: speaker=Taxtrimon
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:544
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:575
 msgid "Well met Fizztsars. Now these creatures will certainly fall."
 msgstr "幸会，菲兹萨斯。现在这些造物必将死亡。"
 
 #. [unit]: type=Dwarvish Dragonguard, id=Thrigalurd
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:569
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:600
 msgid "Thrigalurd"
 msgstr "崔伽拉德"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:583
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:615
 msgid "Look! The dwarves circled around in front of us."
 msgstr "看！矮人在我们前方折回来了。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:587
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:619
 msgid "That’s why getting through Knalga was so easy."
 msgstr "这就是通过纳尔迦时那么容易的原因啊。"
 
 #. [unit]: type=Great Mage, id=Carmyna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:645
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:677
 msgid "Carmyna"
 msgstr "卡麦那"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:663
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:696
 msgid "They just keep coming! Has nobody even considered what we offer?"
 msgstr "他们源源不断！难道就没人考虑过我们的提议吗？"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:673
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:706
 msgid "Well. That was intense."
 msgstr "好吧。那还真是激烈啊。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:677
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:710
 msgid "At last we are victorious!"
 msgstr "我们终于胜利了！"
 
-#. [unit]: type=Elvish High Lord, id=Galoïndrath
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:709
-msgid "Galoïndrath"
-msgstr "伽洛因德拉斯"
-
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:727
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:761
 msgid "The whole world is against us."
 msgstr "全世界都和我们为敌。"
 
 #. [unit]: type=Paladin, id=Gwendir
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:765
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:799
 msgid "Gwendir"
 msgstr "格温迪尔"
 
 #. [message]: speaker=adviser
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:789
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:823
 msgid ""
 "This is the place Crelanu’s gryphon told us to come, and yon party has an "
 "ill-favored look."
 msgstr "这是克雷拉努的狮鹫告诉我们该来的地方，你们这群人看上去真让人不快啊。"
 
 #. [message]: speaker=Gwendir
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:793
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:827
 msgid "Yes, I believe that is our quarry."
 msgstr "是了，我相信那些就是我们的猎物。"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:797
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:831
 msgid "Crelanu! Still he haunts us. Remind me again why we didn’t kill him."
 msgstr "克雷拉努！他还是缠着我们不放。再提醒我一下，我们是为什么没有杀掉他。"
 
 #. [message]: speaker=Gwendir
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:801
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:835
 msgid ""
 "Ardonna of Tarrynth and Rassin Tabin, you stand convicted of necromancy, and "
 "sentenced to death!"
 msgstr "塔林斯的阿冬娜以及拉辛·塔宾，你们的死灵术罪名成立，判决是死刑！"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:805
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:839
 msgid ""
 "Is that all? Death holds no terror for us as we have died already. You will "
 "follow shortly."
 msgstr "就这样？死亡可吓不到我们，因为我们已经死了。你很快也会死的。"
 
 #. [message]: speaker=Gwendir
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:809
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:843
 msgid "The blessed swords of our order will soon give you cause to fear again."
 msgstr "我们骑士团受过祝福的剑，将会很快让你们有再一次恐惧死亡的理由的。"
 
 #. [message]: speaker=adviser
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:813
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:847
 msgid "Sir, the magi have not yet arrived."
 msgstr "长官，法师们还没有到。"
 
 #. [message]: speaker=Gwendir
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:817
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:851
 msgid ""
 "No matter. We need not fear this darkness, and we need not wait on the "
 "schoolteachers."
 msgstr "没关系。我们不需要害怕这黑暗，我们也不需要等那些学校老师。"
 
 #. [unit]: type=Naga Myrmidon, id=Taxtrimon
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:830
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:864
 msgid "Taxtrimon"
 msgstr "塔克斯崔蒙"
 
 #. [message]: speaker=Taxtrimon
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:847
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:881
 #, fuzzy
 #| msgid ""
 #| "We have found them! These magi destroyed a profitable business venture, "
@@ -3689,17 +3755,17 @@ msgstr ""
 "复仇。你们这些骑马的人类可以协助我们。"
 
 #. [unit]: type=Merman Hoplite, id=Mauapan
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:860
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:894
 msgid "Mauapan"
 msgstr "矛阿潘"
 
 #. [message]: speaker=Mauapan
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:866
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:900
 msgid "I will also assist. Too many innocents have died. This ends today."
 msgstr "我也会帮忙的。已经有太多无辜者死去了。今天必须做个了结。"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:870
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:904
 msgid "We are surrounded. We must defeat this horde."
 msgstr "我们被包围了。我们必须击败这一大群敌人。"
 
@@ -4018,17 +4084,17 @@ msgid "Very well. Having more adepts might be a good idea after all."
 msgstr "好吧。拥有更多的狂徒或许终究是个好主意吧。"
 
 #. [unstore_unit]
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:909
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:925
 msgid "Lich"
 msgstr "巫妖"
 
 #. [set_menu_item]: id=hide-sails
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:952
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:968
 msgid "Hide Sails and Rigging"
 msgstr "隐藏船帆和船索"
 
 #. [set_menu_item]: id=show-sails
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:991
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:1007
 msgid "Show Sails and Rigging"
 msgstr "显示船帆和船索"
 
@@ -4157,3 +4223,13 @@ msgstr "虚空覆盖层"
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:344
 msgid "Half Void"
 msgstr "半虚空"
+
+#~ msgid ""
+#~ "You can recruit or recall from your starting position on the first turn "
+#~ "only. To get more units, raise them from their graves."
+#~ msgstr ""
+#~ "只有在第一回合时，你才可以在起始位置进行征募或召回。将死者从坟墓里苏生以获"
+#~ "得更多单位。"
+
+#~ msgid "Galoïndrath"
+#~ msgstr "伽洛因德拉斯"
