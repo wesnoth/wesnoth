@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-21 18:30 UTC\n"
+"POT-Creation-Date: 2019-01-22 00:46 UTC\n"
 "PO-Revision-Date: 2018-07-08 21:24+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -153,7 +153,7 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:26
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:42
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:31
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:105
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:98
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:26
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:32
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:47
@@ -208,8 +208,8 @@ msgstr "击败巴什纳克"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:181
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:122
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:120
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:118
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:319
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:111
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:312
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:141
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:223
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:143
@@ -524,8 +524,8 @@ msgstr "帮助马斯-塔克击败戈斯拉斯"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:185
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:126
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:124
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:122
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:323
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:115
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:316
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:145
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:227
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:147
@@ -1127,21 +1127,34 @@ msgstr "我想我们会为佩林的逝世而感到遗憾。他本来可以告诉
 msgid "Fear"
 msgstr "恐惧"
 
-#. [unit]: type=Dwarvish Ulfserker, id={ID_STRING}
-#. [unit]: type=Dwarvish Masked Steelclad
 #. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
+#. [side]
+#. [side]: type=Dwarvish Masked Lord, id=Dufon
+#. [side]: type=Dwarvish Masked Lord, id=Aragoth
+#. [side]: type=Dwarvish Masked Lord, id=Dranath
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:51
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:58
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:102
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:135
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:164
+msgid "Masked Dwarves"
+msgstr "面具矮人"
+
 #. [unit]: type=Dwarvish Masked Steelclad, id=Gog
 #. [unit]: type=Dwarvish Masked Steelclad, id=Magog
 #. [unit]: type=Dwarvish Ulfserker, id=Hekyll
 #. [unit]: type=Dwarvish Ulfserker, id=Jekyll
+#. [unit]: type=Dwarvish Masked Steelclad
+#. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
 #. [unit]: type={TYPE}
 #. [side]: type=Dwarvish Masked Lord, id=Dufon
 #. [side]: type=Dwarvish Masked Lord, id=Aragoth
 #. [side]: type=Dwarvish Masked Lord, id=Dranath
 #. [event]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:47
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:64
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:87
+#. This is shown in the sidebar, it should be short.
+#. You could call them only Masked, to keep the term short.
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:58
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:80
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:63
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:71
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:79
@@ -1154,38 +1167,25 @@ msgstr "恐惧"
 msgid "Masked Dwarf"
 msgstr "面具矮人"
 
-#. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
-#. [side]
-#. [side]: type=Dwarvish Masked Lord, id=Dufon
-#. [side]: type=Dwarvish Masked Lord, id=Aragoth
-#. [side]: type=Dwarvish Masked Lord, id=Dranath
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:59
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:58
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:102
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:135
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:164
-msgid "Masked Dwarves"
-msgstr "面具矮人"
-
 #. [objective]: condition=win
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:114
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:107
 msgid "Find the inhabitants"
 msgstr "寻找居民"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:160
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:153
 msgid ""
 "We should be on the outskirts of the settled country around Kal Kartha, but "
 "something doesn’t feel right here."
 msgstr "我们应该是在卡尔·卡萨周围有人居住的郊区了，但这里感觉不大对劲。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:165
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:158
 msgid "It’s too quiet... and I think I smell traces of smoke on the wind."
 msgstr "太安静了……我想我闻到风中有烟味。"
 
 #. [message]: speaker=Ratheln
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:170
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:163
 msgid ""
 "I do not sense hostile magic in the vicinity. But there has been fire near "
 "here recently, and not a clean one."
@@ -1193,44 +1193,44 @@ msgstr ""
 "我没感觉到附近有敌对的魔法痕迹。 但这里附近才起过火，而且还不是干净的火。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:175
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:168
 msgid ""
 "Look sharp for the inhabitants here. They might have something to tell us."
 msgstr "仔细寻找这里的居民。他们可能会告诉我们点什么。"
 
 #. [unit]: type=Peasant, id=Ollin
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:192
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:215
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:185
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:208
 msgid "Ollin"
 msgstr "奥林"
 
 #. [message]: speaker=Ollin
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:238
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:231
 msgid "Don’t kill me, masters! Please don’t kill me!"
 msgstr "别杀我，主人们！求你们别杀我！"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:243
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:236
 msgid "You’re in no danger from us. What lies to the east of here?"
 msgstr "我们不会伤害你。这儿东边有什么吗？"
 
 #. [message]: speaker=Ollin
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:248
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:241
 msgid "You wear no mask. You... you’re not with them?"
 msgstr "你们没戴面具。你们……你们不是和他们一伙的？"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:253
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:246
 msgid "What are you talking about?"
 msgstr "你在说些什么？"
 
 #. [message]: speaker=Ollin
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:258
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:251
 msgid "The masked dwarves. Killing, burning, kidnapping. Look..."
 msgstr "是面具矮人。杀戮，焚烧，绑架。看……"
 
 #. [message]: speaker=Masked Dwarf Leader
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:268
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:261
 msgid ""
 "Fellow dwarves, hail! We’re looking for a human refugee, one named Ollin. "
 "Have you seen him? Our master demands his life."
@@ -1239,33 +1239,33 @@ msgstr ""
 "的命。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:273
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:266
 msgid "He is here. How has he wronged your master, that you seek his death?"
 msgstr "他在这里。他对你们的主人犯了什么错，让你们要他死？"
 
 #. [message]: speaker=Masked Dwarf Leader
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:278
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:271
 msgid ""
 "Does it matter? He is only a dirtgrubbing human, not fit to polish the boots "
 "of the true people."
 msgstr "这重要吗？他不过是个在土里刨食的人类，给真正的人擦鞋都不配。"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:283
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:276
 msgid ""
 "What is your name, masked one? Will you stand behind your deed? I am a "
 "witness."
 msgstr "你的名字是什么，戴面具的？你为自己所做之事负责吗？我是见证者。"
 
 #. [message]: speaker=Masked Dwarf Leader
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:288
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:281
 msgid ""
 "A witness? My name is... my name is not important. My deed will speak its "
 "own truth."
 msgstr "见证者？我的名字是……我的名字并不重要。我的行为自会说明它自身的正确性。"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:293
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:286
 msgid ""
 "You speak without honor. Mine is the power of our ancient Law; speak your "
 "name and give up your murder, or the Law will cast you forth. I am a witness!"
@@ -1274,7 +1274,7 @@ msgstr ""
 "杀，不然法典将放逐你。我是见证者！"
 
 #. [message]: speaker=Masked Dwarf Leader
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:298
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:291
 msgid ""
 "If you were a witness of the true people, you would not let a dirtgrubber "
 "hide behind your robes. I deny you!"
@@ -1283,37 +1283,37 @@ msgstr ""
 "绝！"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:304
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:297
 msgid "The Law speaks: you are cast out. You are un-dwarf. I AM A WITNESS!"
 msgstr "如法典所言：你被放逐了。你不再是矮人了。<b>我是见证者！</b>"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:309
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:302
 msgid "Up axes!"
 msgstr "举起斧头！"
 
 #. [objective]: condition=win
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:315
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:308
 msgid "Defeat the Masked Dwarf"
 msgstr "击败面具矮人"
 
 #. [message]: speaker=Ollin
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:345
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:338
 msgid "Take that for my family’s memory, you murderer!"
 msgstr "这一下是为了我的家人，接招，你这个凶手！"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:354
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:347
 msgid "They are defeated!"
 msgstr "他们被击败了！"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:359
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:352
 msgid "You have acted in honor. I am a witness."
 msgstr "你为荣誉而战。我是见证者。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:364
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:357
 msgid ""
 "I have never seen the formal banishment before. One reads of it in the old "
 "tales, of course, but to hear it with one’s own ears? It was... unsettling."
@@ -1322,7 +1322,7 @@ msgstr ""
 "个？那真令人……不安。"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:369
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:362
 msgid ""
 "It is not something we do often. The last such was in my grandsire’s time. "
 "But look at what these filth were carrying if you have any doubt it was "
@@ -1332,14 +1332,14 @@ msgstr ""
 "否是罪有应得，那就看看这些肮脏之徒身上都有些什么。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:374
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:367
 msgid ""
 "Whips. Shackles. No, Angarthing, I would not doubt you, even if it were my "
 "place to doubt a loremaster."
 msgstr "鞭子。手铐。不，安伽辛，就算我应该怀疑一位博学者，我也不会怀疑你。"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:379
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:372
 msgid ""
 "They were seeking captives. To what purpose, I cannot say. But I doubt it "
 "was any good one."
@@ -1817,7 +1817,7 @@ msgstr "卡拉格<b>在哪</b>？我们本来只在他后面不足几秒钟的�
 #| "followers. He could be within a spear-cast of us now and we wouldn’t know "
 #| "it in this gloom."
 msgid ""
-"Mostly likely he has cloaked himself, thinking to run ahead to gather his "
+"Most likely he has cloaked himself, thinking to run ahead to gather his "
 "followers. He could be within a spear-cast of us now and we wouldn’t know it "
 "in this gloom."
 msgstr ""
