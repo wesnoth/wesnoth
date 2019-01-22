@@ -80,7 +80,11 @@
 			<Add library="libcrypto-1_1" />
 			<Add library="winmm" />
 			<Add library="libole32" />
+			<Add library="libogg" />
 			<Add library="libuuid" />
+			<Add library="libvorbis" />
+			<Add library="libvorbisenc" />
+			<Add library="libvorbisfile" />
 			<Add directory="./" />
 		</Linker>
 		<Unit filename="../../packaging/windows/wesnoth.rc">
