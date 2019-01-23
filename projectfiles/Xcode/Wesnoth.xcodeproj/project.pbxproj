@@ -109,6 +109,9 @@
 		469BDB56205C357500DBF748 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
 		469EC8EC20287C4A008A0CAD /* surrender_quit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469EC8EA20287C49008A0CAD /* surrender_quit.cpp */; };
 		46B2A7C12028DDA2006C2323 /* libpng16.16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C243118EF07B4001FA499 /* libpng16.16.dylib */; };
+		46B2D3FF21F86FB900E7471A /* Vorbis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46B2D3FE21F86FB900E7471A /* Vorbis.framework */; };
+		46B2D40021F873EF00E7471A /* Vorbis.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 46B2D3FE21F86FB900E7471A /* Vorbis.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		46B2D40121F8799A00E7471A /* Vorbis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46B2D3FE21F86FB900E7471A /* Vorbis.framework */; };
 		46BAF785206672250004711F /* libboost_chrono-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BAF784206672240004711F /* libboost_chrono-mt.dylib */; };
 		46BAF787206672300004711F /* libboost_timer-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BAF786206672300004711F /* libboost_timer-mt.dylib */; };
 		46BCC905211A1E68003BDB8C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BCC904211A1E68003BDB8C /* IOKit.framework */; };
@@ -1386,6 +1389,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				46B2D40021F873EF00E7471A /* Vorbis.framework in Copy Frameworks */,
 				91B622011B76C0A600B00E0F /* libboost_filesystem-mt.dylib in Copy Frameworks */,
 				91B622021B76C0A600B00E0F /* libboost_iostreams-mt.dylib in Copy Frameworks */,
 				91B622031B76C0A600B00E0F /* libboost_locale-mt.dylib in Copy Frameworks */,
@@ -1452,6 +1456,7 @@
 		469BDB54205C357500DBF748 /* base64.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = base64.hpp; sourceTree = "<group>"; };
 		469EC8EA20287C49008A0CAD /* surrender_quit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surrender_quit.cpp; sourceTree = "<group>"; };
 		469EC8EB20287C49008A0CAD /* surrender_quit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = surrender_quit.hpp; sourceTree = "<group>"; };
+		46B2D3FE21F86FB900E7471A /* Vorbis.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vorbis.framework; path = "temp/MacCompileStuff-1.14/lib/Vorbis.framework"; sourceTree = "<group>"; };
 		46BAF784206672240004711F /* libboost_chrono-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_chrono-mt.dylib"; path = "lib/libboost_chrono-mt.dylib"; sourceTree = "<group>"; };
 		46BAF786206672300004711F /* libboost_timer-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_timer-mt.dylib"; path = "lib/libboost_timer-mt.dylib"; sourceTree = "<group>"; };
 		46BCC904211A1E68003BDB8C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -2806,6 +2811,7 @@
 				B5599E9C0EC68BF2008DD061 /* SDL2_ttf.framework in Frameworks */,
 				B55998F80EC61EA5008DD061 /* SDL2.framework in Frameworks */,
 				915C68F41DF1F78600594B07 /* libintl.8.dylib in Frameworks */,
+				46B2D3FF21F86FB900E7471A /* Vorbis.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2847,6 +2853,7 @@
 				91A215DB1CAD970800927AEA /* libboost_program_options-mt.dylib in Frameworks */,
 				91A215DC1CAD970800927AEA /* libboost_regex-mt.dylib in Frameworks */,
 				91A215DD1CAD971800927AEA /* libboost_locale-mt.dylib in Frameworks */,
+				46B2D40121F8799A00E7471A /* Vorbis.framework in Frameworks */,
 				91A215DE1CAD99E000927AEA /* libboost_filesystem-mt.dylib in Frameworks */,
 				46BAF785206672250004711F /* libboost_chrono-mt.dylib in Frameworks */,
 				91A215DF1CAD99E000927AEA /* libboost_iostreams-mt.dylib in Frameworks */,
@@ -3235,6 +3242,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				46B2D3FE21F86FB900E7471A /* Vorbis.framework */,
 				1C38BEAF217F92FD007326D9 /* Security.framework */,
 				46BCC904211A1E68003BDB8C /* IOKit.framework */,
 				1058C7A2FEA54F0111CA2CBB /* Included Frameworks */,
@@ -5141,7 +5149,6 @@
 				B5A9BD380ECA805A002BE442 /* language_selection.cpp in Sources */,
 				B5599B330EC62181008DD061 /* language.cpp in Sources */,
 				EC67F7F01DB3144A0038337E /* constants.cpp in Sources */,
-				B52EE89D1213590500CFBDAB /* list.cpp in Sources */,
 				B5A9BD650ECA805A002BE442 /* listbox.cpp in Sources */,
 				B55BE04B11234B1A00154E6C /* lobby_data.cpp in Sources */,
 				B55BE04C11234B1A00154E6C /* lobby_info.cpp in Sources */,
@@ -5971,7 +5978,6 @@
 				91A215FB1CAD9D4300927AEA /* horizontal_scrollbar.cpp in Sources */,
 				91A215FD1CAD9D4300927AEA /* image.cpp in Sources */,
 				91A216001CAD9D4300927AEA /* label.cpp in Sources */,
-				91A216021CAD9D4300927AEA /* list.cpp in Sources */,
 				91A216041CAD9D4300927AEA /* listbox.cpp in Sources */,
 				91A216061CAD9D4300927AEA /* matrix.cpp in Sources */,
 				91A216081CAD9D4300927AEA /* minimap.cpp in Sources */,
