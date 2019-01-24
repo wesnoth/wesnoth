@@ -659,6 +659,9 @@
     <ClCompile Include="..\..\src\gui\dialogs\story_viewer.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\surrender_quit.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\terrain_layers.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
@@ -779,6 +782,9 @@
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\player_info.cpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\player_list_helper.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\synced_choice_wait.cpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClCompile>
@@ -800,7 +806,13 @@
     <ClCompile Include="..\..\src\gui\auxiliary\iterator\walker_widget.cpp">
       <Filter>Gui\Auxiliary\Iterator</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\gui.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\core\canvas.cpp">
+      <Filter>Gui\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\gui_definition.cpp">
       <Filter>Gui\Core</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\core\linked_group_definition.cpp">
@@ -810,6 +822,9 @@
       <Filter>Gui\Core</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\core\placer.cpp">
+      <Filter>Gui\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\static_registry.cpp">
       <Filter>Gui\Core</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\core\timer.cpp">
@@ -1259,6 +1274,9 @@
     <ClCompile Include="..\..\src\xBRZ\xbrz.cpp">
       <Filter>Xbrz</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\desktop\battery_info.cpp">
+      <Filter>Desktop</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\desktop\clipboard.cpp">
       <Filter>Desktop</Filter>
     </ClCompile>
@@ -1272,6 +1290,9 @@
       <Filter>Desktop</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\desktop\version.cpp">
+      <Filter>Desktop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\desktop\windows_battery_info.cpp">
       <Filter>Desktop</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\desktop\windows_tray_notification.cpp">
@@ -1403,11 +1424,13 @@
     <ClCompile Include="..\..\src\carryover.cpp" />
     <ClCompile Include="..\..\src\chat_command_handler.cpp" />
     <ClCompile Include="..\..\src\chat_events.cpp" />
+    <ClCompile Include="..\..\src\chat_log.cpp" />
     <ClCompile Include="..\..\src\commandline_options.cpp" />
     <ClCompile Include="..\..\src\config_cache.cpp" />
     <ClCompile Include="..\..\src\controller_base.cpp" />
     <ClCompile Include="..\..\src\countdown_clock.cpp" />
     <ClCompile Include="..\..\src\cursor.cpp" />
+    <ClCompile Include="..\..\src\deprecation.cpp" />
     <ClCompile Include="..\..\src\display.cpp" />
     <ClCompile Include="..\..\src\display_chat_manager.cpp" />
     <ClCompile Include="..\..\src\display_context.cpp" />
@@ -1429,12 +1452,12 @@
     <ClCompile Include="..\..\src\generic_event.cpp" />
     <ClCompile Include="..\..\src\halo.cpp" />
     <ClCompile Include="..\..\src\hash.cpp" />
-    <ClCompile Include="..\..\src\picture.cpp" />
     <ClCompile Include="..\..\src\image_modifications.cpp" />
     <ClCompile Include="..\..\src\joystick.cpp" />
     <ClCompile Include="..\..\src\key.cpp" />
     <ClCompile Include="..\..\src\language.cpp" />
     <ClCompile Include="..\..\src\lua_jailbreak_exception.cpp" />
+    <ClCompile Include="..\..\src\map_settings.cpp" />
     <ClCompile Include="..\..\src\menu_events.cpp" />
     <ClCompile Include="..\..\src\minimap.cpp" />
     <ClCompile Include="..\..\src\mouse_events.cpp" />
@@ -1448,6 +1471,7 @@
     <ClCompile Include="..\..\src\persist_context.cpp" />
     <ClCompile Include="..\..\src\persist_manager.cpp" />
     <ClCompile Include="..\..\src\persist_var.cpp" />
+    <ClCompile Include="..\..\src\picture.cpp" />
     <ClCompile Include="..\..\src\play_controller.cpp" />
     <ClCompile Include="..\..\src\playmp_controller.cpp" />
     <ClCompile Include="..\..\src\playsingle_controller.cpp" />
@@ -1468,7 +1492,6 @@
     <ClCompile Include="..\..\src\saved_game.cpp" />
     <ClCompile Include="..\..\src\savegame.cpp" />
     <ClCompile Include="..\..\src\seed_rng.cpp" />
-    <ClCompile Include="..\..\src\map_settings.cpp" />
     <ClCompile Include="..\..\src\show_dialog.cpp" />
     <ClCompile Include="..\..\src\side_filter.cpp" />
     <ClCompile Include="..\..\src\sound.cpp" />
@@ -1533,29 +1556,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\preferences\lobby.cpp">
       <Filter>Preferences</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\gui.cpp">
-      <Filter>Gui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\core\gui_definition.cpp">
-      <Filter>Gui\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\core\static_registry.cpp">
-      <Filter>Gui\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\player_list_helper.cpp">
-      <Filter>Gui\Dialogs\Multiplayer</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\surrender_quit.cpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\deprecation.cpp" />
-    <ClCompile Include="..\..\src\chat_log.cpp" />
-    <ClCompile Include="..\..\src\desktop\battery_info.cpp">
-      <Filter>Desktop</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\desktop\windows_battery_info.cpp">
-      <Filter>Desktop</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1868,6 +1868,9 @@
     <ClInclude Include="..\..\src\gui\widgets\repeating_button.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\retval.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\widgets\scroll_label.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
@@ -2075,6 +2078,9 @@
     <ClInclude Include="..\..\src\gui\dialogs\story_viewer.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\surrender_quit.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\terrain_layers.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
@@ -2195,6 +2201,9 @@
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\player_info.hpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\player_list_helper.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\plugin_executor.hpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClInclude>
@@ -2246,10 +2255,16 @@
     <ClInclude Include="..\..\src\gui\auxiliary\iterator\walker_widget.hpp">
       <Filter>Gui\Auxiliary\Iterator</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\gui.hpp">
+      <Filter>Gui</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\core\canvas.hpp">
       <Filter>Gui\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\core\canvas_private.hpp">
+      <Filter>Gui\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\gui_definition.hpp">
       <Filter>Gui\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\core\layout_exception.hpp">
@@ -2271,6 +2286,9 @@
       <Filter>Gui\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\core\register_widget.hpp">
+      <Filter>Gui\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\static_registry.hpp">
       <Filter>Gui\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\core\timer.hpp">
@@ -2489,6 +2507,9 @@
     <ClInclude Include="..\..\src\utils\reference_counter.hpp">
       <Filter>utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\utils\scope_exit.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\serialization\tag.hpp">
       <Filter>serialization</Filter>
     </ClInclude>
@@ -2666,6 +2687,9 @@
     <ClInclude Include="..\..\src\xBRZ\xbrz.hpp">
       <Filter>Xbrz</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\desktop\battery_info.hpp">
+      <Filter>Desktop</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\desktop\clipboard.hpp">
       <Filter>Desktop</Filter>
     </ClInclude>
@@ -2679,6 +2703,9 @@
       <Filter>Desktop</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\desktop\version.hpp">
+      <Filter>Desktop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\desktop\windows_battery_info.hpp">
       <Filter>Desktop</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\desktop\windows_tray_notification.hpp">
@@ -2742,6 +2769,9 @@
       <Filter>Terrain</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\terrain\filter.hpp">
+      <Filter>Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\terrain\movement.hpp">
       <Filter>Terrain</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\terrain\terrain.hpp">
@@ -2828,12 +2858,14 @@
     <ClInclude Include="..\..\src\carryover.hpp" />
     <ClInclude Include="..\..\src\chat_command_handler.hpp" />
     <ClInclude Include="..\..\src\chat_events.hpp" />
+    <ClInclude Include="..\..\src\chat_log.hpp" />
     <ClInclude Include="..\..\src\commandline_options.hpp" />
     <ClInclude Include="..\..\src\config.hpp" />
     <ClInclude Include="..\..\src\config_cache.hpp" />
     <ClInclude Include="..\..\src\controller_base.hpp" />
     <ClInclude Include="..\..\src\countdown_clock.hpp" />
     <ClInclude Include="..\..\src\cursor.hpp" />
+    <ClInclude Include="..\..\src\deprecation.hpp" />
     <ClInclude Include="..\..\src\display.hpp" />
     <ClInclude Include="..\..\src\display_chat_manager.hpp" />
     <ClInclude Include="..\..\src\display_context.hpp" />
@@ -2855,17 +2887,18 @@
     <ClInclude Include="..\..\src\game_errors.hpp" />
     <ClInclude Include="..\..\src\game_launcher.hpp" />
     <ClInclude Include="..\..\src\game_state.hpp" />
+    <ClInclude Include="..\..\src\game_version.hpp" />
     <ClInclude Include="..\..\src\generic_event.hpp" />
     <ClInclude Include="..\..\src\global.hpp" />
     <ClInclude Include="..\..\src\halo.hpp" />
     <ClInclude Include="..\..\src\hash.hpp" />
-    <ClInclude Include="..\..\src\picture.hpp" />
     <ClInclude Include="..\..\src\image_modifications.hpp" />
     <ClInclude Include="..\..\src\joystick.hpp" />
     <ClInclude Include="..\..\src\key.hpp" />
     <ClInclude Include="..\..\src\language.hpp" />
     <ClInclude Include="..\..\src\lua_jailbreak_exception.hpp" />
     <ClInclude Include="..\..\src\map_command_handler.hpp" />
+    <ClInclude Include="..\..\src\map_settings.hpp" />
     <ClInclude Include="..\..\src\menu_events.hpp" />
     <ClInclude Include="..\..\src\minimap.hpp" />
     <ClInclude Include="..\..\src\mouse_events.hpp" />
@@ -2881,6 +2914,7 @@
     <ClInclude Include="..\..\src\persist_context.hpp" />
     <ClInclude Include="..\..\src\persist_manager.hpp" />
     <ClInclude Include="..\..\src\persist_var.hpp" />
+    <ClInclude Include="..\..\src\picture.hpp" />
     <ClInclude Include="..\..\src\play_controller.hpp" />
     <ClInclude Include="..\..\src\playmp_controller.hpp" />
     <ClInclude Include="..\..\src\playsingle_controller.hpp" />
@@ -2902,7 +2936,6 @@
     <ClInclude Include="..\..\src\savegame.hpp" />
     <ClInclude Include="..\..\src\savegame_config.hpp" />
     <ClInclude Include="..\..\src\seed_rng.hpp" />
-    <ClInclude Include="..\..\src\map_settings.hpp" />
     <ClInclude Include="..\..\src\show_dialog.hpp" />
     <ClInclude Include="..\..\src\side_filter.hpp" />
     <ClInclude Include="..\..\src\sound.hpp" />
@@ -2924,7 +2957,6 @@
     <ClInclude Include="..\..\src\variable_info.hpp" />
     <ClInclude Include="..\..\src\variable_info_detail.hpp" />
     <ClInclude Include="..\..\src\variable_info_private.hpp" />
-    <ClInclude Include="..\..\src\game_version.hpp" />
     <ClInclude Include="..\..\src\video.hpp" />
     <ClInclude Include="..\..\src\wesconfig.h" />
     <ClInclude Include="..\..\src\wesnothd_connection.hpp" />
@@ -2997,36 +3029,6 @@
     <ClInclude Include="..\..\src\preferences\lobby.hpp">
       <Filter>Preferences</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\gui.hpp">
-      <Filter>Gui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\core\gui_definition.hpp">
-      <Filter>Gui\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\core\static_registry.hpp">
-      <Filter>Gui\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\player_list_helper.hpp">
-      <Filter>Gui\Dialogs\Multiplayer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\surrender_quit.hpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\deprecation.hpp" />
-    <ClInclude Include="..\..\src\gui\widgets\retval.hpp">
-      <Filter>Gui\Widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\chat_log.hpp" />
-    <ClInclude Include="..\..\src\terrain\movement.hpp">
-      <Filter>Terrain</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\desktop\battery_info.hpp">
-      <Filter>Desktop</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\desktop\windows_battery_info.hpp">
-      <Filter>Desktop</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\utils\scope_exit.hpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\src\tests\test_sdl_utils.hpp">
