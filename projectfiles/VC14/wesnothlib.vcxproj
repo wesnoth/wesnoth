@@ -152,14 +152,28 @@
     <ClCompile Include="..\..\src\log.cpp" />
     <ClCompile Include="..\..\src\log_windows.cpp" />
     <ClCompile Include="..\..\src\random.cpp" />
-    <ClCompile Include="..\..\src\serialization\base64.cpp" />
+    <ClCompile Include="..\..\src\serialization\base64.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Serialization\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Serialization\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Serialization\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\serialization\binary_or_text.cpp">
       <DisableSpecificWarnings>4706;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Serialization\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Serialization\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Serialization\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\serialization\parser.cpp">
       <DisableSpecificWarnings>4706;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Serialization\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Serialization\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Serialization\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\serialization\preprocessor.cpp" />
+    <ClCompile Include="..\..\src\serialization\preprocessor.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Serialization\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Serialization\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Serialization\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\serialization\schema\key.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Serialization\Schema\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Serialization\Schema\</ObjectFileName>
@@ -175,11 +189,31 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Serialization\Schema\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Serialization\Schema\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\serialization\schema_validator.cpp" />
-    <ClCompile Include="..\..\src\serialization\string_utils.cpp" />
-    <ClCompile Include="..\..\src\serialization\tokenizer.cpp" />
-    <ClCompile Include="..\..\src\serialization\unicode.cpp" />
-    <ClCompile Include="..\..\src\serialization\validator.cpp" />
+    <ClCompile Include="..\..\src\serialization\schema_validator.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Serialization\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Serialization\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Serialization\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\serialization\string_utils.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Serialization\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Serialization\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Serialization\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\serialization\tokenizer.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Serialization\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Serialization\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Serialization\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\serialization\unicode.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Serialization\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Serialization\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Serialization\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\serialization\validator.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Serialization\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Serialization\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Serialization\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\tstring.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -55,6 +55,15 @@
     <ClCompile Include="..\..\src\serialization\validator.cpp">
       <Filter>Serialization</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\serialization\schema\key.cpp">
+      <Filter>Serialization\Schema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\serialization\schema\tag.cpp">
+      <Filter>Serialization\Schema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\serialization\schema\type.cpp">
+      <Filter>Serialization\Schema</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\color.cpp" />
     <ClCompile Include="..\..\src\color_range.cpp" />
     <ClCompile Include="..\..\src\config.cpp" />
@@ -76,15 +85,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\formula\string_utils.cpp">
       <Filter>Formula</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\serialization\schema\key.cpp">
-      <Filter>Serialization\Schema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\serialization\schema\tag.cpp">
-      <Filter>Serialization\Schema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\serialization\schema\type.cpp">
-      <Filter>Serialization\Schema</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +117,15 @@
     </ClInclude>
     <ClInclude Include="..\..\src\serialization\validator.hpp">
       <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\serialization\schema\key.hpp">
+      <Filter>Serialization\Schema</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\serialization\schema\tag.hpp">
+      <Filter>Serialization\Schema</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\serialization\schema\type.hpp">
+      <Filter>Serialization\Schema</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\color.hpp" />
     <ClInclude Include="..\..\src\color_range.hpp" />
@@ -175,15 +184,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\utils\type_trait_aliases.hpp">
       <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\serialization\schema\key.hpp">
-      <Filter>Serialization\Schema</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\serialization\schema\tag.hpp">
-      <Filter>Serialization\Schema</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\serialization\schema\type.hpp">
-      <Filter>Serialization\Schema</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
