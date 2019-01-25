@@ -1007,6 +1007,9 @@
     <ClCompile Include="..\..\src\utils\name_generator_factory.cpp">
       <Filter>utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\utils\parse_network_address.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\tests\main.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
@@ -1271,6 +1274,9 @@
     <ClCompile Include="..\..\src\xBRZ\xbrz.cpp">
       <Filter>Xbrz</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\desktop\battery_info.cpp">
+      <Filter>Desktop</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\desktop\clipboard.cpp">
       <Filter>Desktop</Filter>
     </ClCompile>
@@ -1284,6 +1290,9 @@
       <Filter>Desktop</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\desktop\version.cpp">
+      <Filter>Desktop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\desktop\windows_battery_info.cpp">
       <Filter>Desktop</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\desktop\windows_tray_notification.cpp">
@@ -1547,15 +1556,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\preferences\lobby.cpp">
       <Filter>Preferences</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\desktop\battery_info.cpp">
-      <Filter>Desktop</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\desktop\windows_battery_info.cpp">
-      <Filter>Desktop</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\utils\parse_network_address.cpp">
-      <Filter>utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2510,6 +2510,9 @@
     <ClInclude Include="..\..\src\utils\name_generator_factory.hpp">
       <Filter>utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\utils\parse_network_address.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\utils\reference_counter.hpp">
       <Filter>utils</Filter>
     </ClInclude>
@@ -2693,6 +2696,9 @@
     <ClInclude Include="..\..\src\xBRZ\xbrz.hpp">
       <Filter>Xbrz</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\desktop\battery_info.hpp">
+      <Filter>Desktop</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\desktop\clipboard.hpp">
       <Filter>Desktop</Filter>
     </ClInclude>
@@ -2706,6 +2712,9 @@
       <Filter>Desktop</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\desktop\version.hpp">
+      <Filter>Desktop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\desktop\windows_battery_info.hpp">
       <Filter>Desktop</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\desktop\windows_tray_notification.hpp">
@@ -3029,15 +3038,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\preferences\lobby.hpp">
       <Filter>Preferences</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\desktop\battery_info.hpp">
-      <Filter>Desktop</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\desktop\windows_battery_info.hpp">
-      <Filter>Desktop</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\utils\parse_network_address.hpp">
-      <Filter>utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

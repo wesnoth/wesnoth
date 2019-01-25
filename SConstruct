@@ -388,7 +388,7 @@ if env["prereqs"]:
     client_env = env.Clone()
     conf = client_env.Configure(**configure_args)
     have_client_prereqs = have_server_prereqs & have_sdl_other()
-    have_client_prereqs = have_client_prereqs & (('TRAVIS' in os.environ and os.environ["TRAVIS_OS_NAME"] == "osx") or (conf.CheckLib("vorbisfile") & conf.CheckOgg()))
+    have_client_prereqs = have_client_prereqs & conf.CheckLib("vorbisfile") & conf.CheckOgg()
     have_client_prereqs = have_client_prereqs & conf.CheckPNG()
     have_client_prereqs = have_client_prereqs & conf.CheckJPG()
 #    have_client_prereqs = have_client_prereqs & conf.CheckOpenGL()
@@ -420,10 +420,21 @@ if env["prereqs"]:
             client_env.Append(CPPDEFINES = ["HAVE_HISTORY"])
 
     if env["forum_user_handler"]:
-        mysql_config = check_output(["mysql_config", "--libs", "--cflags"]).replace("\n", " ").replace("-DNDEBUG", "")
-        mysql_flags = env.ParseFlags(mysql_config)
-        env.Append(CPPDEFINES = ["HAVE_MYSQLPP"])
-        env.MergeFlags(mysql_flags)
+        found_connector = False
+        for sql_config in ["mariadb_config", "mysql_config"]:
+            try:
+                mysql_config = check_output([sql_config, "--libs", "--cflags"]).replace("\n", " ").replace("-DNDEBUG", "")
+                mysql_flags = env.ParseFlags(mysql_config)
+                env.Append(CPPDEFINES = ["HAVE_MYSQLPP"])
+                env.MergeFlags(mysql_flags)
+                found_connector = True
+                break
+            except OSError:
+                print("Failed to run script '%s'" % sql_config)
+
+        if not found_connector:
+            Exit("Failed to find sql connector library but forum user handler support is requested.")
+            have_server_prereqs = False
 
     client_env = conf.Finish()
 

@@ -187,31 +187,27 @@ bool config::valid_tag(config_key_type name)
 	if(name == "") {
 		// Empty strings not allowed
 		return false;
-	} else if(name[0] == '_') {
-		// Underscore can't be the first character
+	} else if(name == "_") {
+		// A lone underscore isn't a valid tag name
 		return false;
 	} else {
 		return std::all_of(name.begin(), name.end(), [](const char& c)
 		{
-			// Only alphanumeric ASCII characters and underscores are allowed
-			return std::isalnum(c, std::locale::classic()) || c == '_';
+			/* Only alphanumeric ASCII characters and underscores are allowed.
+
+			We're using a manual check mainly for performance. @gfgtdf measured
+			that a manual check can be up to 30 times faster than std::isalnum().
+
+			- Jyrki, 2019-01-19 */
+			return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') ||
+				(c >= '0' && c <= '9') || (c == '_');
 		});
 	}
 }
 
 bool config::valid_attribute(config_key_type name)
 {
-	if(name.empty()) {
-		return false;
-	}
-
-	for(char c : name) {
-		if(!std::isalnum(c, std::locale::classic()) && c != '_') {
-			return false;
-		}
-	}
-
-	return true;
+	return valid_tag(name);
 }
 
 bool config::has_attribute(config_key_type key) const
@@ -1394,11 +1390,15 @@ void swap(config& lhs, config& rhs)
 
 bool config::validate_wml() const
 {
-	return std::all_of(children_.begin(), children_.end(), [](const child_map::value_type& pair)
+	return std::all_of(children_.begin(), children_.end(), [](const auto& pair)
 	{
 		return valid_tag(pair.first) &&
 			std::all_of(pair.second.begin(), pair.second.end(),
-			[](const std::unique_ptr<config>& c) { return c->validate_wml(); });
+			[](const auto& c) { return c->validate_wml(); });
+	}) &&
+		std::all_of(values_.begin(), values_.end(), [](const auto& pair)
+	{
+		return valid_attribute(pair.first);
 	});
 }
 

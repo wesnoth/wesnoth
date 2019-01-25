@@ -78,6 +78,9 @@
 		468C1B971F09245F002DF652 /* function_gamestate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468C1B951F09245E002DF652 /* function_gamestate.cpp */; };
 		469BDB55205C357500DBF748 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
 		469BDB56205C357500DBF748 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
+		469DD17F21F89888008ECF5F /* Vorbis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469DD17E21F89888008ECF5F /* Vorbis.framework */; };
+		469DD18021F89891008ECF5F /* Vorbis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469DD17E21F89888008ECF5F /* Vorbis.framework */; };
+		469DD18121F898C6008ECF5F /* Vorbis.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 469DD17E21F89888008ECF5F /* Vorbis.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		46B2A7C12028DDA2006C2323 /* libpng16.16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C243118EF07B4001FA499 /* libpng16.16.dylib */; };
 		46B58F4321E097900070BB8E /* parse_network_address.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46B58F4121E097900070BB8E /* parse_network_address.cpp */; };
 		46B58F4421E097A80070BB8E /* parse_network_address.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46B58F4121E097900070BB8E /* parse_network_address.cpp */; };
@@ -1407,6 +1410,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				469DD18121F898C6008ECF5F /* Vorbis.framework in Copy Frameworks */,
 				91B622011B76C0A600B00E0F /* libboost_filesystem-mt.dylib in Copy Frameworks */,
 				91B622021B76C0A600B00E0F /* libboost_iostreams-mt.dylib in Copy Frameworks */,
 				91B622031B76C0A600B00E0F /* libboost_locale-mt.dylib in Copy Frameworks */,
@@ -1501,6 +1505,7 @@
 		468C1B951F09245E002DF652 /* function_gamestate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = function_gamestate.cpp; sourceTree = "<group>"; };
 		468C1B961F09245E002DF652 /* function_gamestate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = function_gamestate.hpp; sourceTree = "<group>"; };
 		469BDB53205C357400DBF748 /* base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = base64.cpp; sourceTree = "<group>"; };
+		469DD17E21F89888008ECF5F /* Vorbis.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vorbis.framework; path = "lib/Vorbis.framework"; sourceTree = "<group>"; };
 		46B58F4121E097900070BB8E /* parse_network_address.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = parse_network_address.cpp; sourceTree = "<group>"; };
 		46B58F4221E097900070BB8E /* parse_network_address.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = parse_network_address.hpp; sourceTree = "<group>"; };
 		46BAF784206672240004711F /* libboost_chrono-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_chrono-mt.dylib"; path = "lib/libboost_chrono-mt.dylib"; sourceTree = "<group>"; };
@@ -2844,6 +2849,7 @@
 				EC5C244A18EF07B4001FA499 /* libpng16.16.dylib in Frameworks */,
 				EC5C245318EF07B4001FA499 /* libz.1.dylib in Frameworks */,
 				915C68F41DF1F78600594B07 /* libintl.8.dylib in Frameworks */,
+				469DD17F21F89888008ECF5F /* Vorbis.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2884,6 +2890,7 @@
 				91A215DC1CAD970800927AEA /* libboost_regex-mt.dylib in Frameworks */,
 				46F92EC02174F9AF00602C1C /* SDL2_mixer.framework in Frameworks */,
 				91A215DD1CAD971800927AEA /* libboost_locale-mt.dylib in Frameworks */,
+				469DD18021F89891008ECF5F /* Vorbis.framework in Frameworks */,
 				91A215DE1CAD99E000927AEA /* libboost_filesystem-mt.dylib in Frameworks */,
 				46BAF785206672250004711F /* libboost_chrono-mt.dylib in Frameworks */,
 				46F92F242174FF6700602C1C /* libboost_thread-mt.dylib in Frameworks */,
@@ -3279,6 +3286,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				469DD17E21F89888008ECF5F /* Vorbis.framework */,
 				46BCC904211A1E68003BDB8C /* IOKit.framework */,
 				1058C7A2FEA54F0111CA2CBB /* Included Frameworks */,
 				46BAF784206672240004711F /* libboost_chrono-mt.dylib */,
