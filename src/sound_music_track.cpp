@@ -19,9 +19,7 @@
 #include "filesystem.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
-#if !defined(_WIN32) && !defined(__APPLE__)
 #include "vorbis/vorbisfile.h"
-#endif
 
 static lg::log_domain log_audio("audio");
 #define ERR_AUDIO LOG_STREAM(err, log_audio)
@@ -83,21 +81,10 @@ void music_track::resolve()
 		return;
 	}
 
-
-#if !defined(_WIN32) && !defined(__APPLE__)
 	if (title_.empty()) {
-		FILE* f;
-		f = fopen(file_path_.c_str(), "r");
-		if (f == nullptr) {
-			LOG_AUDIO << "Error opening file '" << file_path_
-					<< "' for track identification\n";
-			return;
-		}
-
 		OggVorbis_File vf;
-		if(ov_open(f, &vf, nullptr, 0) < 0) {
-			LOG_AUDIO << "track does not appear to be an Ogg file '"
-					<< id_ << "', cannot be identified\n";
+		if(ov_fopen(file_path_.c_str(), &vf) < 0) {
+			LOG_AUDIO << "Error opening file '" << file_path_ << "' for track identification\n";
 			ov_clear(&vf);
 			return;
 		}
@@ -121,7 +108,6 @@ void music_track::resolve()
 
 	ov_clear(&vf);
 	}
-#endif
 
 	LOG_AUDIO << "resolved music track '" << id_ << "' into '" << file_path_ << "'\n";
 }
