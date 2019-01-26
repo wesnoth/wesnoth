@@ -11,6 +11,8 @@
    * Forest Animals Micro AI: fix AI crash when using custom rabbit hole image
    * Fix Lua AIs using the ai.stopunit_*() functions potentially creating infinite candidate action loops
  ### Campaigns
+   * Dead Water:
+     * S12: Slightly rebalanced enemy reinforcements and ai gold
    * Descent Into Darkness:
      * Allow converting L3 necromancers to liches from S12 onwards (issue #3165).
      * Added an alternative method of completing the campaign (issue #3167).
