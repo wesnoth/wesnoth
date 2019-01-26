@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B597C4970FACD3CD00CE81F5"
-               BuildableName = "unit_tests"
-               BlueprintName = "unit_tests"
+               BlueprintIdentifier = "9107AE131DB32862001927B0"
+               BuildableName = "liblua.a"
+               BlueprintName = "liblua"
                ReferencedContainer = "container:Wesnoth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B597C4970FACD3CD00CE81F5"
-            BuildableName = "unit_tests"
-            BlueprintName = "unit_tests"
-            ReferencedContainer = "container:Wesnoth.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -46,39 +37,20 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
-      useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "$BUILT_PRODUCTS_DIR/Wesnoth.app/Contents/Resources"
+      useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
-      debugDocumentVersioning = "NO"
+      debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B597C4970FACD3CD00CE81F5"
-            BuildableName = "unit_tests"
-            BlueprintName = "unit_tests"
+            BlueprintIdentifier = "9107AE131DB32862001927B0"
+            BuildableName = "liblua.a"
+            BlueprintName = "liblua"
             ReferencedContainer = "container:Wesnoth.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "DYLD_FALLBACK_FRAMEWORK_PATH"
-            value = "../../../TestFrameworks:../Frameworks"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "DYLD_FALLBACK_LIBRARY_PATH"
-            value = "../../../TestFrameworks:../Frameworks"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "DYLD_IMAGE_SUFFIX"
-            value = "-mt"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -88,16 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B597C4970FACD3CD00CE81F5"
-            BuildableName = "unit_tests"
-            BlueprintName = "unit_tests"
+            BlueprintIdentifier = "9107AE131DB32862001927B0"
+            BuildableName = "liblua.a"
+            BlueprintName = "liblua"
             ReferencedContainer = "container:Wesnoth.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
