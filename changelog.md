@@ -163,6 +163,7 @@
    * Fix wrong ordering for BW / BF years, for example in Play a Campaign when sorted by date. (issue #3187)
    * GUI.pyw can now terminate a running maintenance script
    * Fix SDL_DestroyRenderer assertion failure under XMonad. (part of issue #3716)
+   * Fix map item names not being translated in the scenario editor.
  ### Multiplayer server
    * Fix stale temporary bans continuing to have an effect on players until cleared by
      phpBB on the next ban/unban operation.
