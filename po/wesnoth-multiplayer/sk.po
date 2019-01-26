@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
-"PO-Revision-Date: 2018-04-17 23:58+0200\n"
+"PO-Revision-Date: 2019-01-23 22:37+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "Language: sk_SK\n"
@@ -877,7 +877,7 @@ msgid ""
 "Marshal Aethec Corryn, but the two men never found one another."
 msgstr ""
 "Generál Talael Ryndoc prišiel na toto miesto vybojovať súboj s Veľkým "
-"maršalom Aethecom Corrynom, ale títo dvaja muži sa nikdy nenašli. "
+"maršalom Aethecom Corrynom, ale títo dvaja muži sa nikdy nestretli."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:207
@@ -899,7 +899,7 @@ msgstr ""
 "informujem súd, že si bol príliš zbabelý na to, aby si sa zúčastnil nášho "
 "súboja! Tvoja hanba bude mučivejšia ako smrť, ktorú by som ti dal tu!''\n"
 "\n"
-"Možno nemal kričať až tak hlasno.... "
+"Možno nemal kričať až tak hlasno..."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:216
@@ -1691,8 +1691,10 @@ msgstr "(2) — Pevnosť tisícich žihadiel"
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
+#, fuzzy
+#| msgid "A strange place. Designed by Doc Paterson."
 msgid "A strange place. Designed by Doc Paterson"
-msgstr "Podivné miesto. Navrhol Doc Paterson"
+msgstr "Podivné miesto. Navrhol Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:93
@@ -2012,6 +2014,12 @@ msgstr "(4) — Isarov kríž"
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A very small 2 vs. 2 map. Close quarters fighting means the successful "
+#| "rotation of units and planning of moves is important. Teams set for "
+#| "players 1 &amp; 4 vs. 2 &amp; 3 (northeast vs. southwest). Designed for "
+#| "75 starting gold, 20 villages."
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
@@ -2019,8 +2027,9 @@ msgid ""
 "villages."
 msgstr ""
 "Maličká mapa 2 proti 2. Blízkosť hráčov znamená, že je dôležité striedať "
-"jednotky a plánovať ťahy. Tímy sú nastavené 1+4 proti 2+3 (severovýchod "
-"proti juhozápadu). Odporúča sa 75 zlata na začiatok, na mape je 20 dedín."
+"jednotky a plánovať ťahy. Tímy sú nastavené 1 &amp; 4 proti 2 &amp; 3 "
+"(severovýchod proti juhozápadu). Odporúča sa 75 zlata na začiatok, na mape "
+"je 20 dedín."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:20
@@ -2100,12 +2109,16 @@ msgstr "(4) — Rieka Loris"
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
+#, fuzzy
+#| msgid ""
+#| "2 vs. 2 map centered around a river with keeps in opposite corners. "
+#| "Designed for players 1 &amp; 4 vs. 2 &amp; 3. There are 28 villages."
 msgid ""
 "2 vs. 2 map centered around a river with keeps in opposite corners. Designed "
 "for players 1+4 vs. 2+3. There are 28 villages."
 msgstr ""
 "Mapa pre 2 proti 2 má v strede rieku a pevnosti sú v protiľahlých rohoch. "
-"Tímy 1+4 proti 2+3. 28 dedín."
+"Tímy 1 &amp; 4 proti 2 &amp; 3. 28 dedín."
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
@@ -2129,13 +2142,18 @@ msgstr " Odporúča sa nastaviť 2 zlatky za dedinu, na mape je 28 dedín."
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
+#| "east vs. west (1 &amp; 4 vs. 2 &amp; 3), but works well with any teams or "
+#| "FFA."
 msgid ""
 "A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
 "east vs. west (1+4 vs. 2+3), but works well with any teams or FFA."
 msgstr ""
 "Mapa pre 2 proti 2 prepojená 5 rozličnými cestami. Odporúčajú sa tímy východ "
-"proti západu (1+4 proti 2+3), ale možno hrať aj iné tímy alebo každý proti "
-"každému."
+"proti západu (1 &amp; 4 proti 2 &amp; 3), ale možno hrať aj iné tímy alebo "
+"každý proti každému."
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:6
@@ -2578,6 +2596,9 @@ msgid ""
 msgstr ""
 "Testovanie výkonu, použi --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid "Sides %s and %d are tied."
+#~ msgstr "Strany %s a %d sú v remíze."
 
 #~ msgid "Default + Khalifate"
 #~ msgstr "Štandardná + Kalifát"
