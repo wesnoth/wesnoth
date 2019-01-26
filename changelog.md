@@ -35,6 +35,10 @@
    * Northern Rebirth:
      * Fix loyal units obtained in S7 costing upkeep (introduced in 1.14.5)
      * S13: Improvement to the AIs
+   * The Rise of Wesnoth:
+     * S15: victory text is not used upon hero death
+     * S17d: enemy units are killed upon victory except for bats
+     * S22: cuttlefish now have the loyal icon
    * The South Guard:
      * Revised scenario and story dialogue.
      * Reworked and rebalanced all scenario and map designs.
