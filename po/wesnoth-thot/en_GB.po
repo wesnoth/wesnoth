@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.12+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 17:02 UTC\n"
-"PO-Revision-Date: 2018-09-12 16:47+1000\n"
+"PO-Revision-Date: 2019-01-23 22:57+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:10
@@ -1878,26 +1878,38 @@ msgstr "Lannex"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:411
+#, fuzzy
+#| msgid "This place reeks of death."
 msgid "This place smells of death."
-msgstr "This place smells of death."
+msgstr "This place reeks of death."
 
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:416
+#, fuzzy
+#| msgid ""
+#| "It has been... so many years since I’ve been down here. Only Karrag and "
+#| "his personal followers used this level. I can't believe I never wondered "
+#| "about that before."
 msgid ""
 "It’s been... it’s been years since I’ve been down here. Only Karrag and his "
 "personal followers used this level. Why did I never wonder about that before?"
 msgstr ""
-"It’s been... it’s been years since I’ve been down here. Only Karrag and his "
-"personal followers used this level. Why did I never wonder about that before?"
+"It has been... so many years since I’ve been down here. Only Karrag and his "
+"personal followers used this level. I can't believe I never wondered about "
+"that before."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:422
+#, fuzzy
+#| msgid ""
+#| "It is Karrag's doing—his will, and his dark magic. I think he has been "
+#| "casting glamours on all of you ever since he passed over."
 msgid ""
 "Karrag’s will, and his dark magic. I think he has been casting glamours on "
 "all of you ever since he passed over."
 msgstr ""
-"Karrag’s will, and his dark magic. I think he has been casting glamours on "
-"all of you ever since he passed over."
+"It is Karrag's doing—his will, and his dark magic. I think he has been "
+"casting glamours on all of you ever since he passed over."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:427
@@ -1917,12 +1929,17 @@ msgstr ""
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:437
+#, fuzzy
+#| msgid ""
+#| "Most likely he has cloaked himself, thinking to run ahead to gather his "
+#| "followers. He could be within a spear-cast of us now and we wouldn’t know "
+#| "it in this gloom."
 msgid ""
 "More likely he has cloaked himself, thinking to run ahead to gather his "
 "followers. He could be within a spear-cast of us now and we wouldn’t know it "
 "in this gloom."
 msgstr ""
-"More likely he has cloaked himself, thinking to run ahead to gather his "
+"Most likely he has cloaked himself, thinking to run ahead to gather his "
 "followers. He could be within a spear-cast of us now and we wouldn’t know it "
 "in this gloom."
 
@@ -1942,12 +1959,16 @@ msgstr ""
 
 #. [message]: speaker=Dranath
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:496
+#, fuzzy
+#| msgid ""
+#| "You shall never pass through here! The doors I guard are sealed by the "
+#| "power of the Hammer itself."
 msgid ""
 "You cannot pass, fools. The doors I guard are sealed by the power of the "
 "Hammer itself."
 msgstr ""
-"You cannot pass, fools. The doors I guard are sealed by the power of the "
-"Hammer itself."
+"You shall never pass through here! The doors I guard are sealed by the power "
+"of the Hammer itself."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:501
@@ -1961,12 +1982,14 @@ msgstr "I sense wrongness. Some greater evil awakens before us."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:537
+#, fuzzy
+#| msgid ""
+#| "It seems that the guard spoke the truth. These doors will not open to us!"
 msgid ""
 "It seems that guard spoke truth. These doors cannot be forced open by any "
 "means we have!"
 msgstr ""
-"It seems that guard spoke truth. These doors cannot be forced open by any "
-"means we have!"
+"It seems that the guard spoke the truth. These doors will not open to us!"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:542
@@ -1981,8 +2004,10 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:557
+#, fuzzy
+#| msgid "The keys have been found. The door should open..."
 msgid "The key has been uttered, these doors should open..."
-msgstr "The key has been uttered, these doors should open..."
+msgstr "The keys have been found. The door should open..."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:576
@@ -2155,8 +2180,10 @@ msgstr ""
 
 #. [message]: speaker=Aragoth
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1112
+#, fuzzy
+#| msgid "The master's ritual... must not be... interrupted..."
 msgid "Our master’s ritual must not be interrupted. Stop them!"
-msgstr "Our master’s ritual must not be interrupted. Stop them!"
+msgstr "The master's ritual... must not be... interrupted..."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1126
@@ -2635,6 +2662,12 @@ msgstr ""
 "Aaarrgh! Though I die, the flame of righteousness shall send you down to "
 "darkness!"
 
+#~ msgid "Villagers"
+#~ msgstr "Villagers"
+
+#~ msgid "Defeat the orcish leaders"
+#~ msgstr "Defeat the orcish leaders"
+
 #~ msgid ""
 #~ "There’s a scent of scorched gryphon meat in the air, emanating from that "
 #~ "hut yonder. We should investigate."
@@ -2642,9 +2675,225 @@ msgstr ""
 #~ "There’s a scent of scorched gryphon meat in the air, emanating from that "
 #~ "hut yonder. We should investigate."
 
-#~| msgid "Defeat the Masked Dwarf"
-#~ msgid "Defeat the orcish leaders"
-#~ msgstr "Defeat the orcish leaders"
+#~| msgid "Defeat Karrag"
+#~ msgid "Find and defeat Karrag"
+#~ msgstr "Find and defeat Karrag"
+
+#~ msgid "Someone died here."
+#~ msgstr "Someone died here."
+
+#~ msgid "Poor guy didn't make it."
+#~ msgstr "Poor guy didn't make it."
+
+#~ msgid "There's some gold in here!"
+#~ msgstr "There's some gold in here!"
+
+#~ msgid "I found some gold!"
+#~ msgstr "I found some gold!"
+
+#~ msgid "The gates are locked. I will have to break them open by force!"
+#~ msgstr "The gates are locked. I will have to break them open by force!"
+
+#~ msgid "The gates are locked!"
+#~ msgstr "The gates are locked!"
+
+#~ msgid "Force them open!"
+#~ msgstr "Force them open!"
+
+#~ msgid "Yes, sir!"
+#~ msgstr "Yes, sir!"
+
+#~ msgid "Let us proceed onward."
+#~ msgstr "Let us proceed onwards."
+
+#~ msgid "There's something behind this door. I shall break it down!"
+#~ msgstr "There's something behind this door. I shall break it down!"
+
+#~ msgid "There's something behind this door."
+#~ msgstr "There's something behind this door."
+
+#~ msgid "Break it down!"
+#~ msgstr "Break it down!"
+
+#~ msgid "It looks like there is a rune behind this gate!"
+#~ msgstr "It looks like there is a rune behind this gate!"
+
+#~ msgid "The dirtgrubber-friends have come! Slay them all!"
+#~ msgstr "The dirtgrubber-friends have come! Slay them all!"
+
+#~ msgid "You could not stop us before and you won't be stopping us now!"
+#~ msgstr "You could not stop us before and you won't be stopping us now!"
+
+#~ msgid "You won't stop us!"
+#~ msgstr "You won't stop us!"
+
+#~ msgid ""
+#~ "Fools! Even should you defeat me, the master's ritual will soon be "
+#~ "complete and you shall all become his slaves!"
+#~ msgstr ""
+#~ "Fools! Even should you defeat me, the master's ritual will soon be "
+#~ "complete and you shall all become his slaves!"
+
+#~ msgid ""
+#~ "Your path forward ends here! Once the lord's spell is complete, your "
+#~ "souls will soon be chained to his will!"
+#~ msgstr ""
+#~ "Your path forwards ends here! Once the lord's spell is complete, your "
+#~ "souls will soon be chained to his will!"
+
+#~ msgid "The dirtgrubbers have come! Stop their advance!"
+#~ msgstr "The dirtgrubbers have come! Stop their advance!"
+
+#~ msgid "This must be one of the runic keys!"
+#~ msgstr "This must be one of the runic keys!"
+
+#~ msgid "We still need to find the other one!"
+#~ msgstr "We still need to find the other one!"
+
+#~ msgid "Find and activate the runic keys (one remaining)"
+#~ msgstr "Find and activate the runic keys (one remaining)"
+
+#~ msgid ""
+#~ "You may teleport units between matching runes (the destination must be "
+#~ "clear)"
+#~ msgstr ""
+#~ "You may teleport units between matching runes (the destination must be "
+#~ "clear)"
+
+#~ msgid "We've found a runic key!"
+#~ msgstr "We've found a runic key!"
+
+#~ msgid "The lich surely awaits us within. We must be on guard."
+#~ msgstr "The lich surely awaits us within. We must be on guard."
+
+#~ msgid ""
+#~ "They are sealed by the ancient runelore of the Hammer. No amount of force "
+#~ "can open these doors - we will need to find the keys to the seals here."
+#~ msgstr ""
+#~ "They are sealed by the ancient runelore of the Hammer. No amount of force "
+#~ "can open these doors - we will need to find the keys to the seals here."
+
+#~ msgid "Find and activate the runic keys to the sealed door"
+#~ msgstr "Find and activate the runic keys to the sealed door"
+
+#~ msgid "My lord, the dirtgrubbers have entered our sanctuary!"
+#~ msgstr "My lord, the dirtgrubbers have entered our sanctuary!"
+
+#~ msgid "Excellent! Their blood will provide plenty of fuel for my ritual!"
+#~ msgstr "Excellent! Their blood will provide plenty of fuel for my ritual!"
+
+#~ msgid "So, the usurpers have arrived at last."
+#~ msgstr "So, the usurpers have arrived at last."
+
+#~ msgid ""
+#~ "We are not the usurpers but the liberators of Kal Kartha! We are here to "
+#~ "free our kin from your dark sorcery!"
+#~ msgstr ""
+#~ "We are not the usurpers but the liberators of Kal Kartha! We are here to "
+#~ "free our kin from your dark sorcery!"
+
+#~ msgid ""
+#~ "You insolent fool! It is I who have led Kal Kartha to glory and I who "
+#~ "have cleansed the lands of the true people from all unworthy scum! Kal "
+#~ "Kartha owes me everything!"
+#~ msgstr ""
+#~ "You insolent fool! It is I who have led Kal Kartha to glory and I who "
+#~ "have cleansed the lands of the true people from all unworthy scum! Kal "
+#~ "Kartha owes me everything!"
+
+#~ msgid ""
+#~ "No! You are the one who owes our brethren their freedom! You have "
+#~ "ensnared their minds with your foul magic and now we are here to put an "
+#~ "end to your tyrannical rule!"
+#~ msgstr ""
+#~ "No! You are the one who owes our brethren their freedom! You have "
+#~ "ensnared their minds with your foul magic and now we are here to put an "
+#~ "end to your tyrannical rule!"
+
+#~ msgid ""
+#~ "Any enemy of my rule is no better than the filthiest of dirtgrubbers. You "
+#~ "no longer belong to the true people. You will become my slaves!"
+#~ msgstr ""
+#~ "Any enemy of my rule is no better than the filthiest of dirtgrubbers. You "
+#~ "no longer belong to the true people. You will become my slaves!"
+
+#~ msgid "Not if we stop you here. AXES UP!"
+#~ msgstr "Not if we stop you here. AXES UP!"
+
+#~ msgid "Nooo! My power... it wanes..."
+#~ msgstr "Nooo! My power... it wanes..."
+
+#~ msgid ""
+#~ "And your rule is at an end, Karrag, once the brave lord of Kal Kartha."
+#~ msgstr ""
+#~ "And your rule is at an end, Karrag, once the brave lord of Kal Kartha."
+
+#~ msgid ""
+#~ "Do not mourn his passing, Dulcatulos. The Karrag you knew died many years "
+#~ "ago when his lust for power consumed him. It is now time to put the past "
+#~ "behind and right the wrongs that have been wrought here."
+#~ msgstr ""
+#~ "Do not mourn his passing, Dulcatulos. The Karrag you knew died many years "
+#~ "ago when his lust for power consumed him. It is now time to put the past "
+#~ "behind and right the wrongs that have been wrought here."
+
+#~ msgid ""
+#~ "Aiglondur speaks the truth. The deed is done. Though the heart of the "
+#~ "darkness is gone, there is still much to do. Much will have to be done to "
+#~ "amend the desecration of the Hammer and the evil that has been done here."
+#~ msgstr ""
+#~ "Aiglondur speaks the truth. The deed is done. Though the heart of the "
+#~ "darkness is gone, there is still much to do. Much will have to be done to "
+#~ "amend the desecration of the Hammer and the evil that has been done here."
+
+#~ msgid ""
+#~ "But first, we must bring this news to the rest of Kal Kartha. A new Lord "
+#~ "must be chosen."
+#~ msgstr ""
+#~ "But first, we must bring this news to the rest of Kal Kartha. A new Lord "
+#~ "must be chosen."
+
+#~ msgid "Aye, let us go."
+#~ msgstr "Aye, let us go."
+
+#~ msgid ""
+#~ "Imbeciles! Once the master's dark rite is complete, I will return to slay "
+#~ "you myself!"
+#~ msgstr ""
+#~ "Imbeciles! Once the master's dark rite is complete, I will return to slay "
+#~ "you myself!"
+
+#~ msgid "The heathens... have slain me-"
+#~ msgstr "The heathens... have slain me-"
+
+#~ msgid "The air is cold with the stench of death."
+#~ msgstr "The air is cold with the stench of death."
+
+#~ msgid ""
+#~ "No doubt it is this ritual that the masked ones spoke of. We must hurry "
+#~ "and stop Karrag!"
+#~ msgstr ""
+#~ "No doubt it is this ritual that the masked ones spoke of. We must hurry "
+#~ "and stop Karrag!"
+
+#~ msgid "I feel as if the life is being sapped out of my body!"
+#~ msgstr "I feel as if the life is being sapped out of my body!"
+
+#~ msgid ""
+#~ "Karrag's spell grows more powerful with every passing moment. If we do "
+#~ "not defeat him now, we will all turn into his thralls!"
+#~ msgstr ""
+#~ "Karrag's spell grows more powerful with every passing moment. If we do "
+#~ "not defeat him now, we will all turn into his thralls!"
+
+#~ msgid ""
+#~ "HAHAHAHA! Yes, yes, YES! The rite of death is complete at last! Die, you "
+#~ "filthy dirtgrubbers, die so that I may raise you again as my mindless "
+#~ "slaves!"
+#~ msgstr ""
+#~ "HAHAHAHA! Yes, yes, YES! The rite of death is complete at last! Die, you "
+#~ "filthy dirtgrubbers, die so that I may raise you again as my mindless "
+#~ "slaves!"
 
 #~ msgid "morningstar"
 #~ msgstr "morning star"

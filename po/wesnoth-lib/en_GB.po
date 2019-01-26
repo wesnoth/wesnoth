@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-09-12 16:34+1000\n"
+"PO-Revision-Date: 2019-01-23 18:14+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -249,14 +249,19 @@ msgstr "Desert Sands"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:298
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Deserts'</italic> have a somewhat different composition "
+#| "than small sand pits or beaches, however for gameplay purposes they are "
+#| "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgstr ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
-"small sand pits or beaches, however for gameplay purposes they are "
-"identical. See <ref>dst='terrain_sand' text='sand'</ref>."
+"small sand pits or beaches, however for game-play purposes they are "
+"identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -2565,8 +2570,10 @@ msgstr "Difficulty"
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:83
+#, fuzzy
+#| msgid "Select difficulty:"
 msgid "Select difficulty level:"
-msgstr "Select difficulty level:"
+msgstr "Select difficulty:"
 
 #. [label]
 #: data/gui/window/chat_log.cfg:36
@@ -2694,7 +2701,7 @@ msgstr "Lawful Bonus:"
 #. [grid]
 #: data/gui/window/custom_tod.cfg:339
 msgid "Red:"
-msgstr "Red"
+msgstr "Red:"
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:340
@@ -7594,6 +7601,12 @@ msgstr ""
 #~ "Speed at which unit moves and animations play when ‘Accelerated speed’ is "
 #~ "enabled or when Shift is held down in-game"
 
+#~ msgid "Filter:"
+#~ msgstr "Filter:"
+
+#~ msgid "Filters on hotkey description."
+#~ msgstr "Filters on hot-key description."
+
 #~ msgid "Available at main menu"
 #~ msgstr "Available at main menu"
 
@@ -7607,21 +7620,18 @@ msgstr ""
 #~ "Disabling this increases CPU usage to 100% but may slightly improve "
 #~ "performance at high resolutions"
 
-#~| msgid "Rename Unit"
 #~ msgid "Rename"
 #~ msgstr "Rename"
 
 #~ msgid "The maximum text width is less than 1."
 #~ msgstr "The maximum text width is less than 1."
 
-#~| msgid "sort^Ascending"
 #~ msgid "ascending"
 #~ msgstr "ascending"
 
 #~ msgid "oldest to newest"
 #~ msgstr "oldest to newest"
 
-#~| msgid "sort^Descending"
 #~ msgid "descending"
 #~ msgstr "descending"
 
@@ -7631,7 +7641,10 @@ msgstr ""
 #~ msgid "active_modifications^None"
 #~ msgstr "None"
 
-#~| msgid "Modifications:"
+#~| msgid "The selected game has no sides!"
+#~ msgid "The selected file is corrupt: "
+#~ msgstr "The selected file is corrupt: "
+
 #~ msgid "Modifications: "
 #~ msgstr "Modifications: "
 
@@ -7639,7 +7652,6 @@ msgstr ""
 #~ msgstr ""
 #~ "The lua console can only be used in debug mode! (Run ':debug' first)"
 
-#~| msgid "Lua Console"
 #~ msgid "lua console"
 #~ msgstr "lua console"
 
@@ -7652,14 +7664,12 @@ msgstr ""
 #~ msgid "Era"
 #~ msgstr "Era"
 
-#~| msgid "Lobby"
 #~ msgid "lobby"
 #~ msgstr "lobby"
 
 #~ msgid "number of players^$min to $max"
 #~ msgstr "$min to $max"
 
-#~| msgid "Quit game"
 #~ msgid "this game"
 #~ msgstr "this game"
 
@@ -7867,9 +7877,6 @@ msgstr ""
 
 #~ msgid "sort^By first upload"
 #~ msgstr "By first upload"
-
-#~ msgid "Filter:"
-#~ msgstr "Filter:"
 
 #~ msgid "Seed:"
 #~ msgstr "Seed:"
