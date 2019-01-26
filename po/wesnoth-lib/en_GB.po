@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-21 21:30+0300\n"
-"PO-Revision-Date: 2018-09-12 16:34+1000\n"
+"PO-Revision-Date: 2019-01-23 18:14+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -249,19 +249,14 @@ msgstr "Desert Sands"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:298
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Deserts'</italic> have a somewhat different composition "
-#| "than small sand pits or beaches, however for gameplay purposes they are "
-#| "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgstr ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
-"small sand pits or beaches, however for gameplay purposes they are "
-"identical. See <ref>dst='terrain_sand' text='sand'</ref>."
+"small sand pits or beaches, however for game-play purposes they are "
+"identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -2493,10 +2488,8 @@ msgstr "Difficulty"
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:73
-#, fuzzy
-#| msgid "Select difficulty level:"
 msgid "Select difficulty:"
-msgstr "Select difficulty level:"
+msgstr "Select difficulty:"
 
 #. [label]
 #: data/gui/window/chat_log.cfg:36
@@ -2626,7 +2619,7 @@ msgstr "Lawful Bonus:"
 #. [grid]
 #: data/gui/window/custom_tod.cfg:339
 msgid "Red:"
-msgstr "Red"
+msgstr "Red:"
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:340
@@ -4521,7 +4514,7 @@ msgstr "Filter:"
 #. [text_box]: id=filter
 #: data/gui/window/preferences/02_hotkeys.cfg:67
 msgid "Filters on hotkey description."
-msgstr ""
+msgstr "Filters on hot-key description."
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:111
@@ -5890,10 +5883,8 @@ msgid "The game data cache could not be purged."
 msgstr "The game data cache could not be purged."
 
 #: src/gui/dialogs/game_load.cpp:264
-#, fuzzy
-#| msgid "The selected game has no sides!"
 msgid "The selected file is corrupt: "
-msgstr "The selected game has no sides!"
+msgstr "The selected file is corrupt: "
 
 #: src/gui/dialogs/game_load.cpp:343
 msgid "(Invalid)"

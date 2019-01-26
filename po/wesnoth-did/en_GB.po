@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-21 18:29 UTC\n"
-"PO-Revision-Date: 2018-02-10 01:53+1100\n"
+"PO-Revision-Date: 2019-01-23 17:57+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [scenario]: id=11_Descent_into_Darkness
 #. [campaign]: id=Descent_into_Darkness
@@ -431,19 +431,17 @@ msgid ""
 "We should all be glad to see you gone, necromancer. I detest having fought "
 "by your side."
 msgstr ""
+"We should all be glad to see you gone, necromancer. I detest having fought "
+"by your side."
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:389
-#, fuzzy
-#| msgid ""
-#| "Begone, now. I’ve no wish to be forced to send the soldiers after you. "
-#| "Your father would be ashamed to see the end to which you’ve come."
 msgid ""
 "Begone, now. I’ve no wish to be forced to send the soldiers after you. Your "
 "father would turn in his grave did he see the end to which you’ve come."
 msgstr ""
 "Begone, now. I’ve no wish to be forced to send the soldiers after you. Your "
-"father would be ashamed to see the end to which you’ve come."
+"father would turn in his grave did he see the end to which you’ve come."
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:395
@@ -1708,14 +1706,12 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:325
-#, fuzzy
-#| msgid ""
-#| "Move through the passageway in the northwest leading to the great hall"
 msgid ""
 "Move Malin Keshar or Darken Volk through the passageway in the northwest "
 "leading to the great hall"
 msgstr ""
-"Move through the passageway in the north-west leading to the great hall"
+"Move Malin Keshar or Darken Volk through the passageway in the north-west "
+"leading to the great hall"
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:349
@@ -1743,7 +1739,7 @@ msgstr "Guardian"
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:111
 msgid "Retrieve the book and escape"
-msgstr ""
+msgstr "Retrieve the book and escape"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:262
@@ -1753,18 +1749,18 @@ msgstr "I feel the book is very close, somewhere to the north-west."
 #. [message]
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:358
 msgid "I have found the book, master! It is here."
-msgstr ""
+msgstr "I have found the book, master! It is here."
 
 #. [message]: id=Malin Keshar
 #. The speaker addresses an undead minion.
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:370
 msgid "Good! Guard it with your unlife while I come to fetch it."
-msgstr ""
+msgstr "Good! Guard it with your unlife while I come to fetch it."
 
 #. [message]: id=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:377
 msgid "Good! Guard it with your life while I come to fetch it."
-msgstr ""
+msgstr "Good! Guard it with your life while I come to fetch it."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:405
@@ -2083,12 +2079,12 @@ msgstr "I am sorry, master, but that is too heavy for me."
 #. [unit]: type=Paladin, id=Telemon
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:720
 msgid "Telemon the Slayer"
-msgstr ""
+msgstr "Telemon the Slayer"
 
 #. [message]: speaker=Telemon
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:734
 msgid "Foul necromancer! Your time has come!"
-msgstr ""
+msgstr "Foul necromancer! Your time has come!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:738
@@ -2096,6 +2092,8 @@ msgid ""
 "Reinforcements! I took too long to retrieve that book and now I have no way "
 "to win this battle..."
 msgstr ""
+"Reinforcements! I took too long to retrieve that book and now I have no way "
+"to win this battle..."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:766
@@ -2373,11 +2371,13 @@ msgid ""
 "Mal Keshar has had time to study the book, learning how his apprentices can "
 "become liches with less reliance on luck than Malin’s own transformation."
 msgstr ""
+"Mal Keshar has had time to study the book, learning how his apprentices can "
+"become liches with less reliance on luck than Malin’s own transformation."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:41
 msgid "Mal Keshar continues to study the book, and re-reads the final entry."
-msgstr ""
+msgstr "Mal Keshar continues to study the book, and re-reads the final entry."
 
 #. [part]
 #. This text comes from the epilogue of Secrets of the Ancients, edited to avoid revealing the name of the campaign or the names of the protagonists
@@ -2391,6 +2391,11 @@ msgid ""
 "attitudes will dominate, and I can certainly afford to wait. In the "
 "meantime, we are doing what we can to hasten that day.”</i>"
 msgstr ""
+"<i>“I realize now... the world is not ready for our knowledge. I give up on "
+"all of them. I am going to live in the old troll city and learn the "
+"applications of mountain fire. In some future time, less conservative "
+"attitudes will dominate, and I can certainly afford to wait. In the "
+"meantime, we are doing what we can to hasten that day.”</i>"
 
 #. [part]
 #. More text from the epilogue of Secrets of the Ancients
@@ -2403,6 +2408,10 @@ msgid ""
 "will eventually make its way into the hands of someone in Tath who is "
 "willing to learn.”</i>"
 msgstr ""
+"<i>“As for me, I have placed some spells on my journal to help keep it from "
+"harm, and I will make it conspicuous on this battlefield. I hope that it "
+"will eventually make its way into the hands of someone in Tath who is "
+"willing to learn.”</i>"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:70
@@ -2411,6 +2420,9 @@ msgid ""
 "Darken Volk as a pawn, both of them were being using as pawns by the author "
 "of the book itself."
 msgstr ""
+"That final entry in the book gnaws at Mal Keshar. While he was being used by "
+"Darken Volk as a pawn, both of them were being using as pawns by the author "
+"of the book itself."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:74
@@ -2422,6 +2434,12 @@ msgid ""
 "student eventually follow in his footsteps? Could the author’s plan work? "
 "Might liches eventually be accepted in society, if he simply waited?"
 msgstr ""
+"The book’s author had left it for a foolish hero to pick up, and the spells "
+"protecting it had been strong enough to resist the mages of Tath. Mal Keshar "
+"had already made several copies of the book and had no further need of the "
+"original; if he allowed another foolish hero to take it, would another "
+"student eventually follow in his footsteps? Could the author’s plan work? "
+"Might liches eventually be accepted in society, if he simply waited?"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:124
@@ -2441,7 +2459,7 @@ msgstr "Defeat yet another foolish hero"
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:157
 msgid "Allow an enemy unit to take the book"
-msgstr ""
+msgstr "Allow an enemy unit to take the book"
 
 #. [note]: description=<b>
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:177
@@ -2454,16 +2472,17 @@ msgstr "Endless Night $timesForever"
 msgid ""
 "To turn a necromancer into a lich, right-click on it while it is in a castle."
 msgstr ""
+"To turn a necromancer into a lich, right-click on it while it is in a castle."
 
 #. [set_menu_item]: id=lichify
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:195
 msgid "Make Into a Lich"
-msgstr ""
+msgstr "Make Into a Lich"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:225
 msgid "You can only do this in a castle."
-msgstr ""
+msgstr "You can only do this in a castle."
 
 #. [unit]: type=Royal Guard, id=Foolish Hero
 #. [unit]: type=Assassin, id=Foolish Hero
@@ -2639,13 +2658,13 @@ msgstr "Is this going to keep happening?"
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:631
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:659
 msgid "That’s an evil grimoire!"
-msgstr ""
+msgstr "That’s an evil grimoire!"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:608
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:636
 msgid "Burn it."
-msgstr ""
+msgstr "Burn it."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:613
@@ -2653,12 +2672,12 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:683
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:714
 msgid "<small>(faking pain)</small> Aaargh!"
-msgstr ""
+msgstr "<small>(faking pain)</small> Aaargh!"
 
 #. [message]: role=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:618
 msgid "It’s not catching fire, sir."
-msgstr ""
+msgstr "It’s not catching fire, sir."
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:623
@@ -2666,11 +2685,13 @@ msgid ""
 "But it seems to be hurting the lich. Bring it with us, retreat and let the "
 "mages destroy this."
 msgstr ""
+"But it seems to be hurting the lich. Bring it with us, retreat and let the "
+"mages destroy this."
 
 #. [message]: role=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:646
 msgid "It’s paper, but it won’t burn."
-msgstr ""
+msgstr "It’s paper, but it won’t burn."
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:651
@@ -2678,6 +2699,8 @@ msgid ""
 "But it seems to be hurting the lich. Grab it, retreat and throw it on a "
 "bigger fire. Once we’ve burnt it, maybe the lich will be weaker."
 msgstr ""
+"But it seems to be hurting the lich. Grab it, retreat and throw it on a "
+"bigger fire. Once we’ve burnt it, maybe the lich will be weaker."
 
 #. [message]: speaker=Foolish Hero
 #. "faerie fire" as in the elvish sylph's attack
@@ -2686,22 +2709,24 @@ msgid ""
 "Bring it with us, and let’s retreat. Once it’s burned with faerie fire, "
 "maybe the lich will be weakened."
 msgstr ""
+"Bring it with us, and let’s retreat. Once it’s burned with faerie fire, "
+"maybe the lich will be weakened."
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:673
 msgid "That’s an evil grimoire, bound in iron."
-msgstr ""
+msgstr "That’s an evil grimoire, bound in iron."
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:678
 msgid "Destroy it."
-msgstr ""
+msgstr "Destroy it."
 
 #. [message]: speaker=unit
 #. the speaker is a dwarf
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:689
 msgid "My hammer can’t dent it and my axe can’t cut the paper."
-msgstr ""
+msgstr "My hammer can’t dent it and my axe can’t cut the paper."
 
 #. [message]: speaker=Foolish Hero
 #. the speaker is a dwarf
@@ -2710,17 +2735,19 @@ msgid ""
 "But it seems to be hurting the lich. Bring it with us, retreat and let the "
 "forge destroy it."
 msgstr ""
+"But it seems to be hurting the lich. Bring it with us, retreat and let the "
+"forge destroy it."
 
 #. [message]: speaker=unit
 #. the speaker is an orc
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:704
 msgid "The skull on that book looks good."
-msgstr ""
+msgstr "The skull on that book looks good."
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:709
 msgid "Idiot."
-msgstr ""
+msgstr "Idiot."
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:719
@@ -2728,21 +2755,23 @@ msgid ""
 "Uuuuuh, I can’t pull the skull off the book, but that lich screams when I "
 "try."
 msgstr ""
+"Uuuuuh, I can’t pull the skull off the book, but that lich screams when I "
+"try."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:724
 msgid "Defend me, my minions! Get the book! Aaargh!"
-msgstr ""
+msgstr "Defend me, my minions! Get the book! Aaargh!"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:729
 msgid "Bring it with you and retreat, let’s take our time smashing that book."
-msgstr ""
+msgstr "Bring it with you and retreat, let’s take our time smashing that book."
 
 #. [story]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:735
 msgid "Epilogue"
-msgstr ""
+msgstr "Epilogue"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:737
@@ -2750,6 +2779,8 @@ msgid ""
 "The foolish hero was tricked, and left believing both that the book could be "
 "destroyed, and that the lich might be weakened by doing so."
 msgstr ""
+"The foolish hero was tricked, and left believing both that the book could be "
+"destroyed, and that the lich might be weakened by doing so."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:741
@@ -2759,6 +2790,10 @@ msgid ""
 "scream to echo from the cave mouth. Finally the cave entrance collapsed, and "
 "everything was still."
 msgstr ""
+"Safely outside the cave, the foolish hero tried to destroy the book. None of "
+"the attempts left so much as a dent or char, yet each attempt caused another "
+"scream to echo from the cave mouth. Finally the cave entrance collapsed, and "
+"everything was still."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:745
@@ -2768,6 +2803,10 @@ msgid ""
 "the patrols, and memories of the lich fade to become just background in the "
 "tale of the brave hero’s victory."
 msgstr ""
+"Years pass. Every summer when the mountain passes become clear, humans, "
+"elves and dwarves patrol to repel orcish raiders. Undead no longer trouble "
+"the patrols, and memories of the lich fade to become just background in the "
+"tale of the brave hero’s victory."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:749
@@ -2776,6 +2815,9 @@ msgid ""
 "orcs at night, it sometimes seems that more blades than just the patrol’s "
 "own are fighting the orcs."
 msgstr ""
+"Rumours circulate that fortune smiles on those patrols. That when attacked "
+"by orcs at night, it sometimes seems that more blades than just the patrol’s "
+"own are fighting the orcs."
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:797
@@ -2874,10 +2916,8 @@ msgstr ""
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:881
-#, fuzzy
-#| msgid "I guess we'll never know for sure."
 msgid "I guess we’ll never know for sure."
-msgstr "I suppose we'll never know for sure."
+msgstr "I suppose we’ll never know for sure."
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:889
@@ -3018,7 +3058,7 @@ msgstr ""
 #. [unstore_unit]
 #: data/campaigns/Descent_Into_Darkness/utils/macros.cfg:239
 msgid "Lich"
-msgstr ""
+msgstr "Lich"
 
 #~ msgid "Find the book"
 #~ msgstr "Find the book"
