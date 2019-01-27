@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1C38BEB0217F92FD007326D9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C38BEAF217F92FD007326D9 /* Security.framework */; };
 		1EF6CE8214D9846D00ECBE58 /* mp_host_game_prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EF6CE8014D9846D00ECBE58 /* mp_host_game_prompt.cpp */; };
+		4607FAF221FDB4D6005023CF /* container-migration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4607FAF121FDB4D6005023CF /* container-migration.plist */; };
 		46181DCF2119F73A00908BC2 /* apple_battery_info.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46181DCE2119F73A00908BC2 /* apple_battery_info.mm */; };
 		46181DD22119F74D00908BC2 /* battery_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46181DD12119F74C00908BC2 /* battery_info.cpp */; };
 		461CE967205C3A8700E6E98F /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
@@ -1441,6 +1442,8 @@
 		1C38BEAF217F92FD007326D9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1EF6CE8014D9846D00ECBE58 /* mp_host_game_prompt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_host_game_prompt.cpp; sourceTree = "<group>"; };
 		1EF6CE8114D9846D00ECBE58 /* mp_host_game_prompt.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_host_game_prompt.hpp; sourceTree = "<group>"; };
+		4607FAF021FDA9F3005023CF /* Wesnoth.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Wesnoth.entitlements; path = Resources/Wesnoth.entitlements; sourceTree = "<group>"; };
+		4607FAF121FDB4D6005023CF /* container-migration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "container-migration.plist"; path = "Resources/container-migration.plist"; sourceTree = "<group>"; };
 		46181DCD2119F73A00908BC2 /* apple_battery_info.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = apple_battery_info.hpp; path = ../../src/desktop/apple_battery_info.hpp; sourceTree = "<group>"; };
 		46181DCE2119F73A00908BC2 /* apple_battery_info.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = apple_battery_info.mm; path = ../../src/desktop/apple_battery_info.mm; sourceTree = "<group>"; };
 		46181DD02119F74C00908BC2 /* battery_info.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = battery_info.hpp; sourceTree = "<group>"; };
@@ -3223,6 +3226,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4607FAF121FDB4D6005023CF /* container-migration.plist */,
 				91273E541C7BF141005E7F81 /* data */,
 				B5A9914A0ECA4064002BE442 /* fonts */,
 				B5A9BE290ECE927C002BE442 /* icon.icns */,
@@ -3231,6 +3235,7 @@
 				4654109E2078BC02002BCD13 /* l10n-track */,
 				B5BB6EFD0F93B83500444FBF /* SDLMain.nib */,
 				B5A9B2140ECA4074002BE442 /* sounds */,
+				4607FAF021FDA9F3005023CF /* Wesnoth.entitlements */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -4859,6 +4864,28 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1010;
+				TargetAttributes = {
+					8D1107260486CEB800E47090 = {
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+					91C548A01D8866ED00FE6A7B = {
+						DevelopmentTeam = N5CYW96P9T;
+						ProvisioningStyle = Automatic;
+					};
+					B597C4970FACD3CD00CE81F5 = {
+						DevelopmentTeam = N5CYW96P9T;
+						ProvisioningStyle = Automatic;
+					};
+					B5BB6B4A0F890FBA00444FBF = {
+						DevelopmentTeam = N5CYW96P9T;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Wesnoth" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -4891,6 +4918,7 @@
 				B5A9B22B0ECA4074002BE442 /* images in Resources */,
 				B5BB6EFE0F93B83500444FBF /* SDLMain.nib in Resources */,
 				B5A9B22C0ECA4074002BE442 /* sounds in Resources */,
+				4607FAF221FDB4D6005023CF /* container-migration.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4909,7 +4937,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$SOURCE_ROOT/../..\"\n./utils/autorevision.sh -t h > src/revision.h";
+			shellScript = "cd \"$SOURCE_ROOT/../..\"\n./utils/autorevision.sh -t h > src/revision.h\n";
 		};
 		91C2A6EB1B843AA900346948 /* Copy Translations (if present) */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -6285,6 +6313,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = Resources/Wesnoth.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -6318,7 +6347,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = Resources/Wesnoth.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = N5CYW96P9T;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
@@ -6328,6 +6360,7 @@
 				);
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				INFOPLIST_FILE = Info.plist;
+				OTHER_CODE_SIGN_FLAGS = "--force --deep";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-include",
