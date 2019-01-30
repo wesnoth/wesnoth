@@ -723,16 +723,19 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 	}
 
 	const bool is_moderator = user_handler_ && user_handler_->user_is_moderator(username);
-	const user_handler::BAN_TYPE auth_ban = user_handler_
-		? user_handler_->user_is_banned(username, client_address(socket))
-		: user_handler::BAN_NONE;
+	user_handler::ban_info auth_ban;
 
-	if(auth_ban) {
+	if(user_handler_) {
+		auth_ban = user_handler_->user_is_banned(username, client_address(socket));
+	}
+
+	if(auth_ban.type) {
 		std::string ban_type_desc;
 		std::string ban_reason;
 		const char* msg_numeric;
+		std::string ban_duration = std::to_string(auth_ban.duration);
 
-		switch(auth_ban) {
+		switch(auth_ban.type) {
 		case user_handler::BAN_USER:
 			ban_type_desc = "account";
 			msg_numeric = MP_NAME_AUTH_BAN_USER_ERROR;
@@ -754,10 +757,18 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 			ban_reason = ban_type_desc;
 		}
 
+		ban_reason += " (" + ban_duration + ")";
+
 		if(!is_moderator) {
 			LOG_SERVER << client_address(socket) << "\t" << username << "\tis banned by user_handler (" << ban_type_desc
 					   << ")\n";
-			async_send_error(socket, "You are banned from this server: " + ban_reason, msg_numeric);
+			if(auth_ban.duration) {
+				// Temporary ban
+				async_send_error(socket, "You are banned from this server: " + ban_reason, msg_numeric, {{"duration", ban_duration}});
+			} else {
+				// Permanent ban
+				async_send_error(socket, "You are banned from this server: " + ban_reason, msg_numeric);
+			}
 			return false;
 		} else {
 			LOG_SERVER << client_address(socket) << "\t" << username << "\tis banned by user_handler (" << ban_type_desc
@@ -802,7 +813,7 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 			"If you no longer want to be automatically authenticated use '/query signout'.");
 	}
 
-	if(auth_ban) {
+	if(auth_ban.type) {
 		send_server_message(socket, "You are currently banned by the forum administration.");
 	}
 
@@ -851,7 +862,7 @@ bool server::authenticate(
 			// This name is registered and no password provided
 			if(password.empty()) {
 				if(!name_taken) {
-					send_password_request(socket, "The nickname '" + username + "' is registered on this server.",  
+					send_password_request(socket, "The nickname '" + username + "' is registered on this server.",
 						username, version, MP_PASSWORD_REQUEST);
 				} else {
 					send_password_request(socket,
@@ -909,7 +920,7 @@ bool server::authenticate(
 						"You have made too many failed login attempts.", MP_TOO_MANY_ATTEMPTS_ERROR);
 				} else {
 					send_password_request(socket,
-						"The password you provided for the nickname '" + username + "' was incorrect.", username,version, 
+						"The password you provided for the nickname '" + username + "' was incorrect.", username,version,
 						MP_INCORRECT_PASSWORD_ERROR);
 				}
 
