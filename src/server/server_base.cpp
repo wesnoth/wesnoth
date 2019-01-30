@@ -81,9 +81,9 @@ void server_base::accept_connection(const boost::system::error_code& error, sock
 #ifndef _WIN32
 	if(keep_alive_) {
 		int timeout = 30;
+#ifdef __linux__
 		int cnt = 10;
 		int interval = 30;
-#ifdef __linux__
 		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPIDLE, &timeout, sizeof(timeout));
 		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPCNT, &cnt, sizeof(cnt));
 		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPINTVL, &interval, sizeof(interval));
