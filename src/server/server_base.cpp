@@ -78,6 +78,17 @@ void server_base::accept_connection(const boost::system::error_code& error, sock
 		return;
 	}
 
+#ifndef _WIN32
+	if(keep_alive_) {
+		int timeout = 30;
+		int cnt = 10;
+		int interval = 30;
+		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPIDLE, &timeout, sizeof(timeout));
+		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPCNT, &cnt, sizeof(cnt));
+		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPINTVL, &interval, sizeof(interval));
+	}
+#endif
+
 	DBG_SERVER << client_address(socket) << "\tnew connection tentatively accepted\n";
 	serverside_handshake(socket);
 }
