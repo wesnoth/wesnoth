@@ -97,9 +97,14 @@ void server_base::accept_connection(boost::asio::ip::tcp::acceptor& acceptor, co
 		int timeout = 30;
 		int cnt = 10;
 		int interval = 30;
+#ifdef __linux__
 		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPIDLE, &timeout, sizeof(timeout));
 		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPCNT, &cnt, sizeof(cnt));
 		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPINTVL, &interval, sizeof(interval));
+#endif
+#if defined(__APPLE__) && defined(__MACH__)
+		setsockopt(socket->native_handle(), IPPROTO_TCP, TCP_KEEPALIVE, &timeout, sizeof(timeout));
+#endif
 	}
 #endif
 
