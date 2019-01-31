@@ -61,6 +61,7 @@
  ### Multiplayer server
    * Fix stale temporary bans continuing to have an effect on players until cleared by
      phpBB on the next ban/unban operation.
+   * Forum user handler ban durations are now reported back to banned players.
  ### Packaging
    * new scons option, intended to be used when building releases inside a git repo: autorevision=False
    * Fix build with Boost 1.69. (issue #3646)
