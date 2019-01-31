@@ -5,18 +5,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:30 UTC\n"
-"PO-Revision-Date: 2014-03-03 20:38+0100\n"
+"PO-Revision-Date: 2019-01-24 00:04+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
-"Language: \n"
+"Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural= (n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Poedit-Language: Slovak\n"
-"X-Poedit-Country: SLOVAKIA\n"
+"X-Generator: Poedit 2.0.4\n"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:9
@@ -45,10 +44,8 @@ msgstr "(Pre začiatočníkov, 23 scén.)"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:23
-#, fuzzy
-#| msgid "(Beginner)"
 msgid "Beginner"
-msgstr "(Ľahká)"
+msgstr "Začiatočník"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:23
@@ -63,17 +60,13 @@ msgstr "Hrdina"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:24
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(Normálna)"
+msgstr "Normálna"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:25
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(Náročná)"
+msgstr "Náročná"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:25
@@ -1350,16 +1343,12 @@ msgstr "Ach nie! Čo budeme robiť?"
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:724
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:851
-#, fuzzy
-#| msgid ""
-#| "You must lead our men to the city, and help defend it. Or recapture it if "
-#| "it falls before you arrive."
 msgid ""
 "You must lead your men to the city. Help defend it, or recapture it if it "
 "falls before you arrive!"
 msgstr ""
-"Musíš viesť našich mužov do mesta a pomôcť ho brániť. Ak padne skôr ako "
-"prídeš, musíš ho opäť dobyť."
+"Musíš viesť svojich mužov do mesta a pomôcť ho brániť. Ak padne skôr ako "
+"prídeš, musíš ho opäť dobyť!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:729
@@ -2126,10 +2115,8 @@ msgstr "Vyžeňme týchto votrelcov! Dnes bude mesto opäť naše!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:474
-#, fuzzy
-#| msgid "You can now recruit magi!"
 msgid "You can now recruit Thieves!"
-msgstr "Teraz môžeš verbovať mágov!"
+msgstr "Teraz môžeš verbovať Zlodejov!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:494
@@ -2256,10 +2243,8 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:664
-#, fuzzy
-#| msgid "Oh, and you want me to get this scepter?"
 msgid "Oh, and you want me to get this Sceptre?"
-msgstr "Ó, a vy chcete, aby som získal to žezlo?"
+msgstr "Ó, a vy chcete, aby som získal to Žezlo?"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:669
@@ -2457,17 +2442,13 @@ msgstr "Princezná Wesnothu"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:23
-#, fuzzy
-#| msgid "Force Li’sar’s surrender (reduce her hitpoints to 0 or lower)"
 msgid "(reduce her hitpoints to 0 or lower)"
-msgstr "Prinútiš Li'sar vzdať sa (znížiš jej životy na 0)"
+msgstr "(zníž jej životy na 0)"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:23
-#, fuzzy
-#| msgid "Force Li’sar’s surrender (reduce her hitpoints to 0 or lower)"
 msgid "Force Li’sar’s surrender"
-msgstr "Prinútiš Li'sar vzdať sa (znížiš jej životy na 0)"
+msgstr "Prinúť Li'sar vzdať sa"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:50
@@ -2601,8 +2582,8 @@ msgid ""
 msgstr ""
 "Tvoja matka ťa oklamala, dieťa. Odporúčam ti, aby si si to rozmyslela. Buď "
 "sa k nám pridaj, alebo odíď preč. Čoskoro nadíde veľká bitka, a ak v nej "
-"budeš na nesprávnej strane, možno nebudeme mať na možnosť ušetriť tvoj život "
-"po druhýkrát."
+"budeš na nesprávnej strane, možno nebudeme mať možnosť ušetriť tvoj život po "
+"druhýkrát."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:399
@@ -2849,10 +2830,8 @@ msgstr "Gryfia hora"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:35
-#, fuzzy
-#| msgid "Defeat the mother gryphon and the enemy commander"
 msgid "Defeat the mother gryphon before the enemy does"
-msgstr "Porazíš gryfiu matku a nepriateľského veliteľa"
+msgstr "Porazíš gryfiu matku skôr ako to urobí nepriateľ"
 
 #. [side]: type=General, id=Robryn
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:89
@@ -2866,10 +2845,8 @@ msgstr "Gryfia matka"
 
 #. [side]: type=Gryphon, id=Mother Gryphon
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:111
-#, fuzzy
-#| msgid "Mother Gryphon"
 msgid "Gryphons"
-msgstr "Gryfia matka"
+msgstr "Gryfovia"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:128
@@ -3272,14 +3249,12 @@ msgstr "Stoj! Tadiaľto neprejdeš! Rýchlo, posily, chráňte princeznú!"
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:387
 msgid "Quick, reinforcements!"
-msgstr ""
+msgstr "Rýchlo, posily!"
 
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:407
-#, fuzzy
-#| msgid "female^Battle Princess"
 msgid "Protect the Princess!"
-msgstr "Bojovná princezná"
+msgstr "Ochráňte princeznú!"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:428
@@ -4008,10 +3983,6 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:346
-#, fuzzy
-#| msgid ""
-#| "Peace, friends! Peace! The evil orcs roam the lands above us, we must not "
-#| "fight among ourselves."
 msgid ""
 "Peace, friends! Peace! We must not fight among ourselves, for the evil orcs "
 "roam the lands above us."
@@ -4294,7 +4265,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:154
 msgid "The sign says ‘Guest quarters’."
-msgstr "Značka hovorí 'Izby pre hostí'"
+msgstr "Značka hovorí 'Izby pre hostí'."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:167
@@ -4872,7 +4843,7 @@ msgstr "Konrád alebo Li'sar získa Ohnivé žezlo"
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:584
 msgid ""
 "If Delfador rests, he can concentrate on the location of the Sceptre of Fire."
-msgstr "Ak Delfador oddychuje, môže sa sústrediť na polohu Ohnivého žezla"
+msgstr "Ak Delfador oddychuje, môže sa sústrediť na polohu Ohnivého žezla."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:496
@@ -6131,7 +6102,7 @@ msgstr ""
 #. [message]: speaker=Keh Ohn
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:395
 msgid "You will regret challenging us. Drakes, to arms!"
-msgstr "Budeš ľutovať, že si nás vyzval. Jašteri, do zbrane! "
+msgstr "Budeš ľutovať, že si nás vyzval. Jašteri, do zbrane!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:530
@@ -6619,7 +6590,7 @@ msgstr ""
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:482
 msgid "I feared you would say that."
-msgstr ""
+msgstr "Bál som sa, že to povieš."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:486
@@ -6886,7 +6857,7 @@ msgstr "Szerkz"
 #. [side]: type=Saurian Oracle, id=Szerkz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:97
 msgid "Saurians"
-msgstr ""
+msgstr "Sauri"
 
 #. [side]: type=Ancient Lich, id=Muff Argulak
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:111
@@ -7109,7 +7080,7 @@ msgstr ""
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:527
 msgid "My head?"
-msgstr ""
+msgstr "Moja hlava?"
 
 #. [message]: speaker=Haralamdum
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:535
@@ -7138,7 +7109,7 @@ msgstr ""
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:558
 msgid "Book?"
-msgstr ""
+msgstr "Kniha?"
 
 #. [message]: speaker=Haralamdum
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:563
@@ -7168,10 +7139,8 @@ msgstr ""
 
 #. [message]: speaker=Haralamdum
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:583
-#, fuzzy
-#| msgid "Haralamdum"
 msgid "So hasty. Har alam dum."
-msgstr "Haralamdum"
+msgstr "Tak narýchlo. Har alam dum."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:589
@@ -7898,10 +7867,8 @@ msgstr[2] "Ešte zostáva poraziť $units_to_slay členov klanu!"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:70
-#, fuzzy
-#| msgid "Defeat all enemy leaders"
 msgid "Defeat enemy leaders"
-msgstr "Porazíš všetkých nepriateľských veliteľov"
+msgstr "Poraz všetkých nepriateľských veliteľov"
 
 #. [side]: type=Grand Knight, id=Sir Alric
 #. [side]: type=Grand Knight, id=Sir Ruga
@@ -8646,7 +8613,7 @@ msgid ""
 "A noble by birth, the Princess has learnt swordplay with the greatest "
 "generals, and battle tactics with the greatest sages, making her both a "
 "great combatant and a leader. Now battle-hardened and strong of will, she "
-"can aid those around her in the art of combat."
+"can now aid those around her in the art of combat."
 msgstr ""
 "Princezná s urodzeným pôvodom sa vycvičila v boji s mečom u najlepších "
 "generálov a v taktike boja u najväčších mudrcov. To ju urobilo výbornou "
@@ -8818,15 +8785,11 @@ msgstr ""
 "keď sa bránia."
 
 #: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:15
-#, fuzzy
-#| msgid ""
-#| "This unit's grasp of melee tactics allows adjacent allies to strike the "
-#| "first blow even when defending."
 msgid ""
 " This unit's grasp of melee tactics allows adjacent allies to strike the "
 "first blow even when defending."
 msgstr ""
-"Táto jednotka ovláda taktiku boja zblízka a tým umožňuje susedným spojencom "
+" Táto jednotka ovláda taktiku boja zblízka a tým umožňuje susedným spojencom "
 "zasadiť prvý úder aj pri obrane."
 
 #. [message]: speaker=unit
@@ -8995,7 +8958,7 @@ msgstr ""
 #. [trait]: id=void_armor
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:237
 msgid "void armor"
-msgstr "Brnenie prázdnoty"
+msgstr "prázdne brnenie"
 
 #. [trait]: id=void_armor
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:238
@@ -9100,7 +9063,7 @@ msgstr "Kalenz"
 #. [unit]: id=Li'sar, type=Princess
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:720
 msgid "Li'sar"
-msgstr ""
+msgstr "Li'sar"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:5
@@ -9231,6 +9194,43 @@ msgstr ""
 "Delfador odniesol dieťa do lesov Aethenwoodu na juhozápade Wesnothu a "
 "vychoval ho pod ochranou elfov, zatiaľ čo s trpkosťou sledoval, ako v "
 "krajine začala Aševierina hrôzovláda..."
+
+#~ msgid "Meeting point"
+#~ msgstr "Miesto stretnutia"
+
+#, fuzzy
+#~| msgid ""
+#~| "A noble by birth, the Princess has learnt swordplay with the greatest "
+#~| "generals, and battle tactics with the greatest sages, making her both a "
+#~| "great combatant and leader. Now battle-hardened and strong of will, she "
+#~| "can now aid those around her in the art of combat."
+#~ msgid ""
+#~ "A noble by birth, the Princess has learnt swordplay with the greatest "
+#~ "generals and battle tactics with the greatest sages, making her both a "
+#~ "great combatant and a leader. Now battle-hardened and strong of will, she "
+#~ "can aid those around her in the art of combat."
+#~ msgstr ""
+#~ "Princezná s urodzeným pôvodom sa vycvičila v boji s mečom u najlepších "
+#~ "generálov a v taktike boja u najväčších mudrcov. To ju urobilo výbornou "
+#~ "bojovníčkou a vodkyňou. So skúsenosťami z bitiek a pevnou vôľou môže "
+#~ "teraz pomáhať ostatným okolo nej naučiť sa umeniu boja."
+
+#, fuzzy
+#~| msgid ""
+#~| "A noble by birth, the Princess has learnt swordplay with the greatest "
+#~| "generals, and battle tactics with the greatest sages, making her both a "
+#~| "great combatant and leader. Now battle-hardened and strong of will, she "
+#~| "can now aid those around her in the art of combat."
+#~ msgid ""
+#~ "A noble by birth, the Princess has learnt swordplay with the greatest "
+#~ "generals, and battle tactics with the greatest sages, making her both a "
+#~ "great combatant and a leader. Now battle-hardened and strong of will, she "
+#~ "can aid those around her in the art of combat."
+#~ msgstr ""
+#~ "Princezná s urodzeným pôvodom sa vycvičila v boji s mečom u najlepších "
+#~ "generálov a v taktike boja u najväčších mudrcov. To ju urobilo výbornou "
+#~ "bojovníčkou a vodkyňou. So skúsenosťami z bitiek a pevnou vôľou môže "
+#~ "teraz pomáhať ostatným okolo nej naučiť sa umeniu boja."
 
 #~ msgid "I was afraid that’s what you were going to say."
 #~ msgstr "Obával som sa, že chceš povedať toto."

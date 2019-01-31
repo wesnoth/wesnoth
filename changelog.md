@@ -117,6 +117,8 @@
    * Forest Animals Micro AI: fix AI crash when using custom rabbit hole image
    * Fix Lua AIs using the ai.stopunit_*() functions potentially creating infinite candidate action loops
  ### Campaigns
+   * Dead Water:
+     * S12: Slightly rebalanced enemy reinforcements and ai gold
    * Descent Into Darkness:
      * Allow converting L3 necromancers to liches from S12 onwards (issue #3165).
      * Added an alternative method of completing the campaign (issue #3167).
@@ -141,6 +143,10 @@
    * Northern Rebirth:
      * Fix loyal units obtained in S7 costing upkeep (introduced in 1.14.5)
      * S13: Improvement to the AIs
+   * The Rise of Wesnoth:
+     * S15: victory text is not used upon hero death
+     * S17d: enemy units are killed upon victory except for bats
+     * S22: cuttlefish now have the loyal icon
    * The South Guard:
      * Revised scenario and story dialogue.
      * Reworked and rebalanced all scenario and map designs.
@@ -163,6 +169,7 @@
    * Fix wrong ordering for BW / BF years, for example in Play a Campaign when sorted by date. (issue #3187)
    * GUI.pyw can now terminate a running maintenance script
    * Fix SDL_DestroyRenderer assertion failure under XMonad. (part of issue #3716)
+   * Fix map item names not being translated in the scenario editor.
  ### Multiplayer server
    * Fix stale temporary bans continuing to have an effect on players until cleared by
      phpBB on the next ban/unban operation.

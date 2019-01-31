@@ -17,16 +17,16 @@
                BlueprintIdentifier = "B597C4970FACD3CD00CE81F5"
                BuildableName = "unit_tests"
                BlueprintName = "unit_tests"
-               ReferencedContainer = "container:Wesnoth.xcodeproj">
+               ReferencedContainer = "container:The Battle for Wesnoth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
       <MacroExpansion>
@@ -35,27 +35,31 @@
             BlueprintIdentifier = "B597C4970FACD3CD00CE81F5"
             BuildableName = "unit_tests"
             BlueprintName = "unit_tests"
-            ReferencedContainer = "container:Wesnoth.xcodeproj">
+            ReferencedContainer = "container:The Battle for Wesnoth.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
       customWorkingDirectory = "$BUILT_PRODUCTS_DIR/Wesnoth.app/Contents/Resources"
-      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "NO"
+      debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B597C4970FACD3CD00CE81F5"
             BuildableName = "unit_tests"
             BlueprintName = "unit_tests"
-            ReferencedContainer = "container:Wesnoth.xcodeproj">
+            ReferencedContainer = "container:The Battle for Wesnoth.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -79,17 +83,19 @@
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release">
-      <BuildableProductRunnable>
+      debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B597C4970FACD3CD00CE81F5"
             BuildableName = "unit_tests"
             BlueprintName = "unit_tests"
-            ReferencedContainer = "container:Wesnoth.xcodeproj">
+            ReferencedContainer = "container:The Battle for Wesnoth.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

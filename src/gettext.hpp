@@ -83,6 +83,8 @@ namespace translation
 	int icompare(const std::string& s1,const std::string& s2);
 
 	std::string strftime(const std::string& format, const std::tm* time);
+
+	bool ci_search(const std::string& s1, const std::string& s2);
 }
 
 //#define _(String) translation::dsgettext(GETTEXT_DOMAIN,String)

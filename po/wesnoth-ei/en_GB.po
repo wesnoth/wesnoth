@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 01:26 UTC\n"
-"PO-Revision-Date: 2017-03-20 07:24+1100\n"
+"PO-Revision-Date: 2019-01-23 17:58+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:13
@@ -74,8 +74,10 @@ msgstr ""
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:24
+#, fuzzy
+#| msgid "(Novice level, 16 scenarios.)"
 msgid "(Intermediate level, 16 scenarios.)"
-msgstr "(Intermediate level, 16 scenarios.)"
+msgstr "(Novice level, 16 scenarios.)"
 
 #. [about]
 #: data/campaigns/Eastern_Invasion/_main.cfg:28
@@ -544,14 +546,18 @@ msgstr "Where are we? I can’t see where we are going."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:188
+#, fuzzy
+#| msgid ""
+#| "This is an old escape route for the outpost. Unfortunately these caves "
+#| "are currently inhabited by trolls, who are blocking our path through the "
+#| "tunnel."
 msgid ""
 "This is an old escape tunnel for the outpost; unfortunately these caves are "
 "currently inhabited by trolls. Now hurry, we have to move quickly; the "
 "undead will surely follow us down here."
 msgstr ""
-"This is an old escape tunnel for the outpost; unfortunately these caves are "
-"currently inhabited by trolls. Now hurry, we have to move quickly; the "
-"undead will surely follow us down here."
+"This is an old escape route for the outpost. Unfortunately these caves are "
+"currently inhabited by trolls, who are blocking our path through the tunnel."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:193
@@ -4023,6 +4029,17 @@ msgstr "I am not suited to using this item! Let another take it."
 #: data/campaigns/Eastern_Invasion/utils/macros.cfg:67
 msgid "Holy Amulet"
 msgstr "Holy Amulet"
+
+#~| msgid "Hurry up. We must get across before these undead slaughter us!"
+#~ msgid "We must make haste to escape before the undead catch up."
+#~ msgstr "We must make haste to escape before the undead catch up."
+
+#~ msgid ""
+#~ "Very well. The best of luck in your battle. Gweddry, we may be able to "
+#~ "avoid the bulk of the trolls by going through the dwarves’ tunnel."
+#~ msgstr ""
+#~ "Very well. The best of luck in your battle. Gweddry, we may be able to "
+#~ "avoid the bulk of the trolls by going through the dwarves’ tunnel."
 
 #~ msgid "axe"
 #~ msgstr "axe"

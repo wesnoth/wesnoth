@@ -227,7 +227,7 @@ namespace
 			}
 
 			generator_.use_ansi_encoding(false);
-			generator_.categories(bl::message_facet | bl::information_facet | bl::collation_facet | bl::formatting_facet);
+			generator_.categories(bl::message_facet | bl::information_facet | bl::collation_facet | bl::formatting_facet | bl::convert_facet);
 			generator_.characters(bl::char_facet);
 			// We cannot have current_locale_ be a non boost-generated locale since it might not supply
 			// the bl::info facet. As soon as we add message paths, update_locale_internal might fail,
@@ -513,6 +513,18 @@ std::string strftime(const std::string& format, const std::tm* time)
 	dummy << std::put_time(time, format.c_str());
 
 	return dummy.str();
+}
+
+bool ci_search(const std::string& s1, const std::string& s2)
+{
+	std::lock_guard<std::mutex> lock(get_mutex());
+	const std::locale& locale = get_manager().get_locale();
+
+	std::string ls1 = bl::to_lower(s1, locale);
+	std::string ls2 = bl::to_lower(s2, locale);
+
+	return std::search(ls1.begin(), ls1.end(),
+	                   ls2.begin(), ls2.end()) != ls1.end();
 }
 
 }

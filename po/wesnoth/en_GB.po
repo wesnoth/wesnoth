@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-09-12 16:14+1000\n"
+"PO-Revision-Date: 2019-01-23 17:32+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -6638,27 +6638,37 @@ msgstr "Ability Upgrades: "
 
 #: src/help/help_topic_generators.cpp:482
 msgid "HP: "
-msgstr "HP: "
+msgstr ""
 
 #: src/help/help_topic_generators.cpp:483
+#, fuzzy
+#| msgid "Moves:"
 msgid "Moves: "
-msgstr "Moves: "
+msgstr "Moves:"
 
 #: src/help/help_topic_generators.cpp:485
+#, fuzzy
+#| msgid "Vision:"
 msgid "Vision: "
-msgstr "Vision: "
+msgstr "Vision:"
 
 #: src/help/help_topic_generators.cpp:488
+#, fuzzy
+#| msgid "Jamming:"
 msgid "Jamming: "
-msgstr "Jamming: "
+msgstr "Jamming:"
 
 #: src/help/help_topic_generators.cpp:490
+#, fuzzy
+#| msgid "Cost:"
 msgid "Cost: "
-msgstr "Cost: "
+msgstr "Cost:"
 
 #: src/help/help_topic_generators.cpp:495
+#, fuzzy
+#| msgid "Required XP:"
 msgid "Required XP: "
-msgstr "Required XP: "
+msgstr "Required XP:"
 
 #: src/help/help_topic_generators.cpp:504
 msgid "unit help^Attacks"
@@ -8293,8 +8303,21 @@ msgstr "Whiteboard Options"
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
-#~ msgid "battery"
-#~ msgstr "battery"
+#~ msgid "Using lower-level units can be very cost-effective."
+#~ msgstr "Using lower-level units can be very cost-effective."
+
+#~ msgid ""
+#~ "Some higher-level units have inimitable abilities such as <i>Leadership</"
+#~ "i>, <i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can "
+#~ "make a big difference in a campaign."
+#~ msgstr ""
+#~ "Some higher-level units have inimitable abilities such as <i>Leadership</"
+#~ "i>, <i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can "
+#~ "make a big difference in a campaign."
+
+#~| msgid "<i>― Memoirs of Gweddry, 627YW</i>"
+#~ msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
+#~ msgstr "<i>― Sir Gerrick of Westin, 607YW</i>"
 
 #~ msgid "an advancement choice"
 #~ msgstr "an advancement choice"
@@ -8333,7 +8356,14 @@ msgstr "Whiteboard Options"
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "Reference to unknown topic: "
 
-#~| msgid "cost to recall"
+#~| msgid "HP: "
+#~ msgid "HP:"
+#~ msgstr "HP:"
+
+#~| msgid "Alignment: "
+#~ msgid "Alignment:"
+#~ msgstr "Alignment:"
+
 #~ msgid "No unit recalled"
 #~ msgstr "No unit recalled"
 
@@ -8345,6 +8375,10 @@ msgstr "Whiteboard Options"
 
 #~ msgid "Side '$side' controller is now controlled by: human."
 #~ msgstr "Side '$side' controller is now controlled by: human."
+
+#~| msgid "Advancements"
+#~ msgid "Advancements:"
+#~ msgstr "Advancements:"
 
 #~ msgid "weapon^None"
 #~ msgstr "None"
@@ -8363,6 +8397,9 @@ msgstr "Whiteboard Options"
 
 #~ msgid "Disconnected from server."
 #~ msgstr "Disconnected from server."
+
+#~ msgid "battery"
+#~ msgstr "battery"
 
 #~ msgid "Unit with negative HP found"
 #~ msgstr "Unit with negative HP found"
@@ -9112,9 +9149,6 @@ msgstr "Whiteboard Options"
 
 #~ msgid "Recalls"
 #~ msgstr "Recalls"
-
-#~ msgid "Advancements"
-#~ msgstr "Advancements"
 
 #~ msgid "Losses"
 #~ msgstr "Losses"

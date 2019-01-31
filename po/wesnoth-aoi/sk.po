@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-04 16:39 UTC\n"
-"PO-Revision-Date: 2018-04-18 01:12+0200\n"
+"PO-Revision-Date: 2019-01-23 22:44+0100\n"
 "Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sk\n"
@@ -36,8 +36,10 @@ msgstr ""
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:20
+#, fuzzy
+#| msgid "(Rookie level, 7 scenarios.)"
 msgid "(Novice level, 7 scenarios.)"
-msgstr "(Vhodné pre začiatočníkov, 7 máp)"
+msgstr "(Vhodné pre začiatočníkov, 7 máp.)"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:22
@@ -631,10 +633,16 @@ msgstr "(<i>Odkašľanie</i>) Počkám si... spolu s mŕtvymi..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:222
+#, fuzzy
+#| msgid ""
+#| "The orcish chieftain finally fell, overcome by his wounds. The elves "
+#| "found themselves in a half-ruined camp littered with the bodies of both "
+#| "sides. There was no hale orc in sight, nor did any of the wounded beg "
+#| "mercy. The elves took no prisoners."
 msgid ""
 "The orcish chieftain finally fell, overcome by his wounds. The elves found "
-"themselves in a half-ruined camp littered with the bodies of both sides. "
-"There was no hale orc in sight, nor did any of the wounded beg mercy. The "
+"themselves in a half-ruined camp littered with the bodies of both sides, "
+"there was no hale orc in sight, nor did any of the wounded beg mercy. The "
 "elves took no prisoners."
 msgstr ""
 "Vodca orkov konečne padol, zranený na celom tele. Elfovia sa ocitli v "
@@ -678,11 +686,15 @@ msgstr ""
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:265
+#, fuzzy
+#| msgid ""
+#| "What about the loot, lord? We found supplies worth over a hundred gold in "
+#| "the camp."
 msgid ""
 "What about the loot lord? We found supplies worth over a hundred gold in the "
 "camp."
 msgstr ""
-"Čo urobíme s korisťou? Našli sme zásoby po celom tábore aj so stovkou "
+"Čo urobíme s korisťou pane? Našli sme zásoby po celom tábore aj so stovkou "
 "zlatých mincí."
 
 #. [message]: speaker=Erlornas
@@ -714,8 +726,11 @@ msgstr ""
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:320
+#, fuzzy
+#| msgid ""
+#| "We can’t carry on, lord, the men are too tired. We have to fall back."
 msgid "We can’t carry on Lord, the men are too tired. We have to fall back."
-msgstr "Nemôžeme pokračovať, muži sú unavení. Musíme sa stiahnuť."
+msgstr "Nemôžeme pokračovať pane, muži sú unavení. Musíme sa stiahnuť."
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:325
@@ -1470,6 +1485,44 @@ msgstr ""
 #: data/campaigns/An_Orcish_Incursion/utils/macros.cfg:4
 msgid "Hint:"
 msgstr "Tip:"
+
+#~ msgid ""
+#~ "My lord, none of our healers have experience on the battlefield. It "
+#~ "pleases me that they are safe, but if we should embark on a campaign then "
+#~ "we will surely need them alongside us in the battles ahead."
+#~ msgstr ""
+#~ "Môj pane, žiadny z našich liečiteľov nemá skúsenosti z boja. Teší ma, že "
+#~ "sú v bezpečí, ale ak sa rozhodneme pre výpravu, určite ich budeme "
+#~ "potrebovať mať po boku v budúcich bitkách."
+
+#~ msgid ""
+#~ "female^My lord, none of our healers have experience on the battlefield. "
+#~ "It pleases me that they are safe, but if we should embark on a campaign "
+#~ "then we will surely need them alongside us in the battles ahead."
+#~ msgstr ""
+#~ "Môj pane, žiadna z našich liečiteliek nemá skúsenosti z boja. Teší ma, že "
+#~ "sú v bezpečí, ale ak sa rozhodneme pre výpravu, určite ich budeme "
+#~ "potrebovať mať po boku v budúcich bitkách."
+
+#~ msgid ""
+#~ "My lord, none of our surviving healers have experience on the "
+#~ "battlefield. It pains me to suggest that we should risk another, but if "
+#~ "we should embark on a campaign then we will surely need them alongside us "
+#~ "in the battles ahead."
+#~ msgstr ""
+#~ "Môj pane, žiadny z našich preživších liečiteľov nemá skúsenosti z boja. "
+#~ "Bolí ma navrhnúť, že by sme mali ohroziť ďalšieho, ale ak sa rozhodneme "
+#~ "pre výpravu, určite ich budeme potrebovať mať po boku v budúcich bitkách."
+
+#~ msgid ""
+#~ "female^My lord, none of our surviving healers have experience on the "
+#~ "battlefield. It pains me to suggest that we should risk another, but if "
+#~ "we should embark on a campaign then we will surely need them alongside us "
+#~ "in the battles ahead."
+#~ msgstr ""
+#~ "Môj pane, žiadna z našich preživších liečiteliek nemá skúsenosti z boja. "
+#~ "Bolí ma navrhnúť, že by sme mali ohroziť ďalšiu, ale ak sa rozhodneme pre "
+#~ "výpravu, určite ich budeme potrebovať mať po boku v budúcich bitkách."
 
 #~ msgid "Wizards"
 #~ msgstr "Kúzelníci"
