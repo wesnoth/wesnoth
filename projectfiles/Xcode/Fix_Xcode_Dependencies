@@ -50,7 +50,7 @@ if [ -z "$MY_PATH" ] ; then
 fi
 cd "$MY_PATH"
 
-if ! [ -d "Wesnoth.xcodeproj" ]; then
+if ! [ -d "The Battle for Wesnoth.xcodeproj" ]; then
         echo "Error: I am in bad directory! I must be in wesnoth/projectfiles/Xcode !" >&2
         exit 1
 fi
