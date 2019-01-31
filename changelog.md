@@ -123,6 +123,8 @@
      * S17c: Modified Burin's description of trolls
    * The South Guard:
      * Fixed various typos
+ ### Multiplayer server
+   * Forum user handler ban durations are now reported back to banned players.
 
 ## Version 1.14.5+dev
  ### AI
