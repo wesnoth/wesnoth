@@ -15,7 +15,8 @@
      * Fixed various typos
  ### Language and i18n
    * Updated translations: Italian.
-
+ ### Multiplayer server
+   * Forum user handler ban durations are now reported back to banned players.
  ### User interface
    * Add jamming to the vision tooltip in the sidebar. (PR #3327)
    * Fix undoing a recall not un-drawing parts of the sprite that go beyond the unit's hex (issue #3325)
