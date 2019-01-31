@@ -538,7 +538,7 @@
 		91A216381CAD9D4400927AEA /* viewport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6216A91B1551CCF700E13C2D /* viewport.cpp */; };
 		91A2163A1CAD9D4400927AEA /* widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BD1F0ECA805A002BE442 /* widget.cpp */; };
 		91A2163C1CAD9D4400927AEA /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BD210ECA805A002BE442 /* window.cpp */; };
-		91A41F901CA22A98008B10D5 /* libreadline.7.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = ECA9E7461CA20AA800A947D6 /* libreadline.7.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		91A41F901CA22A98008B10D5 /* libreadline.8.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = ECA9E7461CA20AA800A947D6 /* libreadline.8.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		91B6217C1B74E6D200B00E0F /* label_settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91B6217A1B74E6D100B00E0F /* label_settings.cpp */; };
 		91B621A21B76A3CC00B00E0F /* build_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91B621A11B76A3CC00B00E0F /* build_info.cpp */; };
 		91B621BA1B76B2C900B00E0F /* version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91B621B91B76B2C900B00E0F /* version.cpp */; };
@@ -1224,7 +1224,7 @@
 		ECA563871A47BA36006278A5 /* hotkey_handler_mp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA563831A47BA36006278A5 /* hotkey_handler_mp.cpp */; };
 		ECA563891A47BA36006278A5 /* hotkey_handler_sp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA563851A47BA36006278A5 /* hotkey_handler_sp.cpp */; };
 		ECA5638A1A47BA36006278A5 /* hotkey_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA563861A47BA36006278A5 /* hotkey_handler.cpp */; };
-		ECA9E7471CA20AA800A947D6 /* libreadline.7.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA9E7461CA20AA800A947D6 /* libreadline.7.0.dylib */; };
+		ECA9E7471CA20AA800A947D6 /* libreadline.8.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA9E7461CA20AA800A947D6 /* libreadline.8.0.dylib */; };
 		ECAA3FE718E0E4EF002E8998 /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAA3FE518E0E4EF002E8998 /* unicode.cpp */; };
 		ECAA3FE818E0E4EF002E8998 /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAA3FE518E0E4EF002E8998 /* unicode.cpp */; };
 		ECAB84551B0C1934001A3EB7 /* shroud_clearing_action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAB844E1B0C1933001A3EB7 /* shroud_clearing_action.cpp */; };
@@ -1415,7 +1415,7 @@
 				EC6C6B8B1D77CB0800807ED1 /* libpcre.1.dylib in Copy Frameworks */,
 				91B6221A1B76C0A600B00E0F /* libpixman-1.0.dylib in Copy Frameworks */,
 				91B6221B1B76C0A600B00E0F /* libpng16.16.dylib in Copy Frameworks */,
-				91A41F901CA22A98008B10D5 /* libreadline.7.0.dylib in Copy Frameworks */,
+				91A41F901CA22A98008B10D5 /* libreadline.8.0.dylib in Copy Frameworks */,
 				B5599E8C0EC64CF2008DD061 /* SDL2_image.framework in Copy Frameworks */,
 				B5599E8E0EC64CF2008DD061 /* SDL2_mixer.framework in Copy Frameworks */,
 				B513B2790ED372210006E551 /* SDL2_ttf.framework in Copy Frameworks */,
@@ -2627,7 +2627,7 @@
 		ECA563831A47BA36006278A5 /* hotkey_handler_mp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hotkey_handler_mp.cpp; sourceTree = "<group>"; };
 		ECA563851A47BA36006278A5 /* hotkey_handler_sp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hotkey_handler_sp.cpp; sourceTree = "<group>"; };
 		ECA563861A47BA36006278A5 /* hotkey_handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hotkey_handler.cpp; sourceTree = "<group>"; };
-		ECA9E7461CA20AA800A947D6 /* libreadline.7.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libreadline.7.0.dylib; path = lib/libreadline.7.0.dylib; sourceTree = "<group>"; };
+		ECA9E7461CA20AA800A947D6 /* libreadline.8.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libreadline.8.0.dylib; path = lib/libreadline.8.0.dylib; sourceTree = "<group>"; };
 		ECAA3FE518E0E4EF002E8998 /* unicode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unicode.cpp; sourceTree = "<group>"; };
 		ECAA3FE618E0E4EF002E8998 /* unicode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unicode.hpp; sourceTree = "<group>"; };
 		ECAB844E1B0C1933001A3EB7 /* shroud_clearing_action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shroud_clearing_action.cpp; sourceTree = "<group>"; };
@@ -2776,7 +2776,7 @@
 			files = (
 				1C38BEB0217F92FD007326D9 /* Security.framework in Frameworks */,
 				46BCC905211A1E68003BDB8C /* IOKit.framework in Frameworks */,
-				ECA9E7471CA20AA800A947D6 /* libreadline.7.0.dylib in Frameworks */,
+				ECA9E7471CA20AA800A947D6 /* libreadline.8.0.dylib in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				F4D2A99614DAED0E00CAFF31 /* CoreFoundation.framework in Frameworks */,
 				91B6221D1B76C0F400B00E0F /* libboost_filesystem-mt.dylib in Frameworks */,
@@ -3276,7 +3276,7 @@
 				91C554661D77A545002DB0C8 /* libpcre.1.dylib */,
 				B513B2280ED36BFB0006E551 /* libpixman-1.0.dylib */,
 				EC5C243118EF07B4001FA499 /* libpng16.16.dylib */,
-				ECA9E7461CA20AA800A947D6 /* libreadline.7.0.dylib */,
+				ECA9E7461CA20AA800A947D6 /* libreadline.8.0.dylib */,
 				EC5C243A18EF07B4001FA499 /* libz.1.dylib */,
 				1058C7A0FEA54F0111CA2CBB /* Linked System Frameworks */,
 				B5A5E3AD12132C790047782D /* lua */,
