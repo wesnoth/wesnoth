@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-11-07 10:48+0200\n"
-"Last-Translator: AncientGeneral <greatgeneral12@gmail.com>\n"
+"PO-Revision-Date: 2019-01-29 14:17+0200\n"
+"Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail.com>\n"
 "Language-Team: \n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr ""
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
 msgid "Custom"
-msgstr ""
+msgstr "Інша"
 
 #. [advanced_preference]: type=combo
 #: data/advanced_preferences.cfg:4
@@ -132,7 +132,7 @@ msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable"
 msgstr ""
-"Час очікування до очистки ігрового чату в хвилинах. 0 — відключити очищення."
+"Час очікування до очистки ігрового чату в хвилинах. 0 — відключити очищення"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:114
@@ -923,7 +923,7 @@ msgstr "Орчий прапор"
 #. [item]: id=ornate2
 #: data/core/editor/items.cfg:304 data/core/editor/items.cfg:310
 msgid "Ornate"
-msgstr ""
+msgstr "Глечик"
 
 #. [item]: id=potion-blue
 #: data/core/editor/items.cfg:316
@@ -1408,7 +1408,7 @@ msgstr "Обороняй це місце"
 #. [command]
 #: data/core/macros/ai_controller.cfg:503
 msgid "focusing on defending the area around $x1|,$y1|."
-msgstr "Зосередитись на обороні області навколо $x1|,$y1|."
+msgstr "зосередитись на обороні області навколо $x1|,$y1|."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:545
@@ -1503,7 +1503,7 @@ msgstr ""
 #. [else]
 #: data/core/macros/deprecated-utils.cfg:43
 msgid "This unit has been renamed to: "
-msgstr "Цього бійця перейменована на:"
+msgstr "Цього бійця перейменовано на: "
 
 #: data/core/macros/deprecated-utils.cfg:95
 msgid "<small>(early finish bonus)</small>"
@@ -1617,8 +1617,8 @@ msgid ""
 "Sprinkling this water on melee weapons grants them the <i>arcane</i> damage "
 "type until the end of the current scenario. Should $unit.name use it?"
 msgstr ""
-"Окропивши зброю ближнього бою цією водою, бієць буде завдавати <i>містичні</"
-"i> пошкодження до кінця поточного сценарію. Нехай $unit.name це зробить? "
+"Окропивши зброю ближнього бою цією водою, боєць буде завдавати <i>містичні</"
+"i> пошкодження до кінця поточного сценарію. Нехай $unit.name це зробить?"
 
 #: data/core/macros/items.cfg:274
 msgid "holy water^Take it"
@@ -3316,7 +3316,7 @@ msgstr "Мешканці Півночі"
 #. [music]
 #: data/core/macros/sound-utils.cfg:384
 msgid "Nunc Dimittis"
-msgstr ""
+msgstr "Нині відпускаєш"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:390
@@ -3557,7 +3557,7 @@ msgstr "Замок"
 #. [color_range]: id=keep
 #: data/core/team-colors.cfg:200
 msgid "Keep"
-msgstr "Цитидель"
+msgstr "Цитадель"
 
 #. [color_range]: id=rails
 #: data/core/team-colors.cfg:206
@@ -5882,7 +5882,7 @@ msgstr "Цей ID вже використаний."
 
 #: src/game_config_manager.cpp:221
 msgid "Core Path: "
-msgstr "Шлях до ядра:"
+msgstr "Шлях до ядра: "
 
 #: src/game_config_manager.cpp:222
 msgid "File not found."
@@ -5913,12 +5913,16 @@ msgid ""
 "Error loading custom game configuration files. The game will try without "
 "loading add-ons."
 msgstr ""
+"Помилка завантаження додаткових файлів з налаштуваннями гри. Гра спробує "
+"завантажитися без аддонів."
 
 #: src/game_config_manager.cpp:323
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
 "default core files."
 msgstr ""
+"Помилка завантаження додаткових файлів з налаштуваннями гри. Гра "
+"завантажитися з типовим ядром."
 
 #: src/game_config_manager.cpp:332
 msgid ""
@@ -6415,7 +6419,7 @@ msgstr ""
 
 #: src/gui/core/linked_group_definition.cpp:39
 msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
-msgstr ""
+msgstr "Зв'язана група '$id' потребує ключ 'fixed_width' або 'fixed_height'."
 
 #: src/gui/dialogs/addon/install_dependencies.cpp:38
 msgid ""
@@ -6631,28 +6635,36 @@ msgstr "Покращення здібностей: "
 
 #: src/help/help_topic_generators.cpp:482
 msgid "HP: "
-msgstr "ЗД: "
+msgstr ""
 
 #: src/help/help_topic_generators.cpp:483
+#, fuzzy
+#| msgid "Moves:"
 msgid "Moves: "
 msgstr "Ходів:"
 
 #: src/help/help_topic_generators.cpp:485
+#, fuzzy
+#| msgid "Vision:"
 msgid "Vision: "
-msgstr "Бачення: "
+msgstr "Бачення:"
 
 #: src/help/help_topic_generators.cpp:488
 #, fuzzy
 msgid "Jamming: "
-msgstr "Попередження: "
+msgstr "Заглушення/Перешкоди:"
 
 #: src/help/help_topic_generators.cpp:490
+#, fuzzy
+#| msgid "Cost:"
 msgid "Cost: "
-msgstr "Вартість: "
+msgstr "Вартість:"
 
 #: src/help/help_topic_generators.cpp:495
+#, fuzzy
+#| msgid "Required XP:"
 msgid "Required XP: "
-msgstr "Необхідно ОД: "
+msgstr "Необхідно ДВ:"
 
 #: src/help/help_topic_generators.cpp:504
 msgid "unit help^Attacks"
@@ -6712,11 +6724,11 @@ msgstr "Максимум захисту"
 
 #: src/help/help_topic_generators.cpp:626
 msgid "Vision Cost"
-msgstr "Ціна бачення: "
+msgstr "Ціна бачення"
 
 #: src/help/help_topic_generators.cpp:630
 msgid "Jamming Cost"
-msgstr ""
+msgstr "Ціна перешкод"
 
 #: src/hotkey/command_executor.cpp:386
 msgid "Do you really want to surrender the game?"
@@ -6974,7 +6986,7 @@ msgstr "[<сторона> [on/off]]"
 
 #: src/menu_events.cpp:1179
 msgid "Switch a side to/from idle state."
-msgstr "Перемкнути сторону у/зі сплячого стану"
+msgstr "Перемкнути сторону у/зі сплячого стану."
 
 #: src/menu_events.cpp:1183
 msgid "<side> <nickname>"
@@ -6986,7 +6998,7 @@ msgstr "Віддати контроль над стороною іншому г�
 
 #: src/menu_events.cpp:1184
 msgid "Query the controller status of a side."
-msgstr " Запитати статус оператора сторони."
+msgstr "Запитати статус оператора сторони."
 
 #: src/menu_events.cpp:1185
 msgid "<side>"
@@ -7038,7 +7050,7 @@ msgstr "Перейти до наступного сценарію, або сце
 
 #: src/menu_events.cpp:1204
 msgid "Choose next scenario"
-msgstr "Вибрати наступний сценарій."
+msgstr "Вибрати наступний сценарій"
 
 #: src/menu_events.cpp:1207
 msgid ""
@@ -7086,7 +7098,7 @@ msgstr "Дати скриптам на Lua високий пріоритет."
 
 #: src/menu_events.cpp:1218
 msgid "Set the command used by the custom command hotkey"
-msgstr "Змінити команду на гарячій клавіші."
+msgstr "Змінити команду на гарячій клавіші"
 
 #: src/menu_events.cpp:1221
 msgid "Invoke a dialog allowing changing control of MP sides."
@@ -7244,6 +7256,10 @@ msgid ""
 "\n"
 "Do not continue unless you really know what you are doing."
 msgstr ""
+"Виконання коду Lua у такий спосіб робить ваш комп'ютер вразливим до будь-"
+"яких шкідливих додатків або інших програм, які ви встановлювали.\n"
+"\n"
+"Продовжуйте лише за умови, що ви дійсно знаєте що робите."
 
 #: src/menu_events.cpp:1745
 msgid "Unsafe mode enabled!"
@@ -7288,7 +7304,7 @@ msgstr ""
 
 #: src/mouse_events.cpp:987
 msgid "This unit has no usable weapons."
-msgstr "У цього бійця немає відповідної зброї"
+msgstr "У цього бійця немає відповідної зброї."
 
 #: src/mp_game_settings.hpp:70
 msgid "Independent"
@@ -7490,7 +7506,7 @@ msgstr "Цей боєць невидимий. Противник не може �
 
 #: src/reports.cpp:305
 msgid "slowed: "
-msgstr "уповільнений:"
+msgstr "уповільнений: "
 
 #: src/reports.cpp:306
 msgid ""
@@ -7596,7 +7612,7 @@ msgstr "Лідерство: "
 
 #: src/reports.cpp:712
 msgid "Slowed: "
-msgstr "Уповільнений:"
+msgstr "Уповільнений: "
 
 #: src/reports.cpp:716
 msgid "Attacks: "
@@ -8178,8 +8194,9 @@ msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> огляд"
 
 #: src/units/unit.cpp:1811
+#, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
-msgstr ""
+msgstr "<span color=\"$color\">$number_or_percent</span> заглушення"
 
 #: src/units/unit.cpp:1816
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
@@ -8288,8 +8305,21 @@ msgstr "Параметри планувальника"
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
-#~ msgid "battery"
-#~ msgstr "акумулятор"
+#~ msgid "Using lower-level units can be very cost-effective."
+#~ msgstr ""
+#~ "Використання бійців низького рівня може бути дуже економічно вигідним."
+
+#~ msgid ""
+#~ "Some higher-level units have inimitable abilities such as <i>Leadership</"
+#~ "i>, <i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can "
+#~ "make a big difference in a campaign."
+#~ msgstr ""
+#~ "Деякі бійці високого рівня мають такі чудові здібності, як <i>лідерство</"
+#~ "i>, <i>лікує</i>, або <i>нишпорка</i>. Ви отримаєте велику перевагу у "
+#~ "кампанії, якщо раніше отримаєте таких бійців."
+
+#~ msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
+#~ msgstr "<i>― Сер Геррік Вестінський, 607 рік Е.В.</i>"
 
 #~ msgid "an advancement choice"
 #~ msgstr "вибір підвищення"
@@ -8326,6 +8356,12 @@ msgstr "Параметри планувальника"
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "Посилання на невідому тему: "
 
+#~ msgid "HP:"
+#~ msgstr "ЗД:"
+
+#~ msgid "Alignment:"
+#~ msgstr "Тип:"
+
 #~ msgid "No unit recalled"
 #~ msgstr "Немає бійців для заклику"
 
@@ -8337,6 +8373,9 @@ msgstr "Параметри планувальника"
 
 #~ msgid "Side '$side' controller is now controlled by: human."
 #~ msgstr "Сторона '$side' тепер контролюється: людиною."
+
+#~ msgid "Advancements:"
+#~ msgstr "Підвищення:"
 
 #~ msgid "weapon^None"
 #~ msgstr "Немає"
@@ -8356,6 +8395,9 @@ msgstr "Параметри планувальника"
 
 #~ msgid "Disconnected from server."
 #~ msgstr "Від'єднуюсь від сервера..."
+
+#~ msgid "battery"
+#~ msgstr "акумулятор"
 
 #~ msgid "Size:"
 #~ msgstr "Розмір:"
@@ -8993,9 +9035,6 @@ msgstr "Параметри планувальника"
 
 #~ msgid "Recalls"
 #~ msgstr "Закликів"
-
-#~ msgid "Advancements"
-#~ msgstr "Просунулись"
 
 #~ msgid "Losses"
 #~ msgstr "Втрати"

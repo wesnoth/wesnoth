@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
-"PO-Revision-Date: 2018-09-29 03:51+0300\n"
+"PO-Revision-Date: 2019-01-21 15:19+0200\n"
 "Last-Translator: AncientGeneral <greatgeneral12@gmail.com>\n"
 "Language-Team: \n"
 "Language: uk\n"
@@ -32,7 +32,7 @@ msgstr "Випадкова"
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:53
 msgid "Default"
-msgstr "Типово"
+msgstr "Типова"
 
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:54
@@ -40,6 +40,8 @@ msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
 msgstr ""
+"Типова ера для мультиплеєру Веснота. Складається з шести збалансованих "
+"фракцій."
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:75
@@ -53,6 +55,8 @@ msgid ""
 "units available for recruit. Consists of six factions. Not considered "
 "balanced."
 msgstr ""
+"Ера для бійців вищого рівня: лідери третього рівня, які можуть вербувати "
+"бійців першого та другого. Складається з шести фракцій, незбалансована."
 
 #. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:83
@@ -72,10 +76,8 @@ msgstr ""
 
 #. [era]: id=era_dunefolk_heroes
 #: data/multiplayer/eras.cfg:94
-#, fuzzy
-#| msgid "Age of Heroes"
 msgid "Age of Heroes + Dunefolk"
-msgstr "Вік героїв"
+msgstr ""
 
 #. [era]: id=era_dunefolk_heroes
 #: data/multiplayer/eras.cfg:95
@@ -131,6 +133,12 @@ msgid ""
 "mobility but low defense, leading to unusual tactics for a "
 "<ref>text='Default Era' dst='..era_era_default'</ref> faction."
 msgstr ""
+"<bold>text='Дрейки'</bold> — це фракція драконоподібних <ref>text='дрейків' "
+"dst='..race_drake'</ref> та їх союзників <ref>text='ящірів' dst='.."
+"race_lizard'</ref>. Дрейки — нащадки драконів, хоч і менші за розміром. "
+"Ящіри значно менші за дрейків, і мають інше походження. Разом вони мають "
+"високу мобільність, але низький захист, та використовують незвичну тактику у "
+"<ref>text='Типовій ері' dst='..era_era_default'</ref>."
 
 #. [multiplayer_side]: id=Dunefolk, type=random
 #: data/multiplayer/factions/dunefolk-aoh.cfg:4
@@ -170,6 +178,13 @@ msgid ""
 "dwarves who are only good on certain terrain and humans who can cover ground "
 "that dwarves are not good at fighting in."
 msgstr ""
+"<bold>text='Союз Кланги'</bold> — це фракція <ref>text='гномів' dst='.."
+"race_dwarf'</ref> та їх союзників з <ref>text='людей' dst='..race_human'</"
+"ref>. Гноми — це стара підземна раса, а їхні воїни дебелі, хоч і короткі. "
+"Бандити — люди, які стали вигнанцями серед своєї раси, але через спільних "
+"ворогів стали союзниками гномів. Усе це призводить до комбінації сильний і "
+"стійких гномів, які добрі тільки на певній місцевості, та людей, які можуть "
+"прикривати місцевість, де гноми бʼються не дуже."
 
 #. [multiplayer_side]: id=Loyalists, type=random
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
@@ -187,6 +202,11 @@ msgid ""
 "Loyalist faction is a very versatile melee-oriented faction with important "
 "ranged support from bowmen and mages."
 msgstr ""
+"<bold>text='Вірнопіддані'</bold> — це фракція лояльних трону Веснота "
+"<ref>text='людей' dst='..race_human'</ref>. Люди — гнучка раса, і можуть "
+"спеціалізуватися у різних сферах діяльності. Так само, вірнопіддані дуже "
+"багатостороння фракція: вони орієнтуються на ближній бій, але їх маги та "
+"лучники можуть показати себе і в дальньому бою."
 
 #. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.png~BG()' align='middle'</img>
 #: data/multiplayer/factions/northerners-aoh.cfg:4
@@ -207,6 +227,13 @@ msgid ""
 "Northerners play best by taking advantage of having many low-cost and high "
 "HP soldiers."
 msgstr ""
+"<bold>text='Мешканці півночі'</bold> — фракція <ref>text='орків' dst='.."
+"race_orc'</ref> та їх союзників, які живуть на півночі Великого континенту "
+"(звідки й імʼя фракції). До їх складу входять воїни оркської раси, "
+"поневолені ними <ref>text='гобліни' dst='..race_goblin'</ref>, змієподібні "
+"<ref>text='наги' dst='..race_naga'</ref>, а також <ref>text='тролі' dst='.."
+"race_troll'</ref>, яких орки хитрістю втягнули в свої бійки. Незаперечною "
+"силою та перевагою Мешканців півночі є дешеві та живучі бійці."
 
 #. [multiplayer_side]: id=Rebels, type=random
 #: data/multiplayer/factions/rebels-aoh.cfg:4
@@ -230,6 +257,17 @@ msgid ""
 "advantage of their high forest defense, mastery of ranged attacks, and the "
 "elves’ neutral alignment."
 msgstr ""
+"<bold>text='Повстанці'</bold> — це фракція <ref>text='ельфів' dst='.."
+"race_elf'</ref> та чисельних жителів лісу. Люди називають їх називають "
+"повстанцями через те, що під час подій Спадкоємця престолу вони почали "
+"повстання проти злої королеви Ашевір. Ельфи — магічна раса, вони майстри "
+"стрільби з луку та живуть набагато довше за людей. У гармонії з природою, "
+"ельфи знайшли собі союзників з числа <ref>text='людських' dst='.."
+"race_human'</ref> магів, деяких <ref>text='водяних' dst='..race_merman'</"
+"ref>, а також деревоподібних істот, що їх називають <ref>text='лісовиками' "
+"dst='..race_wose'</ref>. Незаперечною силою та перевагою Повстанців є "
+"високий захист у лісах, смертельні дальні атаки і незалежність ельфів від "
+"часу доби."
 
 #. [multiplayer_side]: id=Undead, type=random
 #: data/multiplayer/factions/undead-aoh.cfg:4
@@ -250,6 +288,14 @@ msgid ""
 "Undead are a very aggressive faction and the most powerful "
 "<ref>text='Default Era' dst='..era_era_default'</ref> faction at nighttime."
 msgstr ""
+"<bold>text='Нежить'</bold> — це фракція <ref>text='мерців' dst='.."
+"race_undead'</ref> та <ref>text='людських' dst='..race_human'</ref> "
+"практиків темних мистецтв, які зазвичай їх супроводжують. Часто, ці так "
+"звані “Темні адепти” наносять найбільше шкоди серед усіх бійців своєї "
+"фракції, але вони мають одну вразливість. Заборонена магія поглинає всю їхню "
+"енергію, тож в адептів зовсім немає ближньої атаки. Нежить — дуже агресивна "
+"фракція, і в нічній час найсильніша серед усієї <ref>text='Типової ери' "
+"dst='..era_era_default'</ref>."
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:4
@@ -360,10 +406,8 @@ msgstr "Південь"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:289
-#, fuzzy
-#| msgid "Death of your team leaders"
 msgid "Defeat enemy leader(s)"
-msgstr "Загибель лідерів вашої команди"
+msgstr "Вбийте лідера(ів) противника"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:293
@@ -371,6 +415,8 @@ msgid ""
 "The Great Mage Sulla has transported your armies to this bizarre nexus, and "
 "demands that you amuse her by doing battle."
 msgstr ""
+"Велика Мага Сулла перемістила ваші армії до цієї дивної кулі і вимагає "
+"розважити її веселою битвою."
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:296
@@ -378,6 +424,8 @@ msgid ""
 "Units may not move into a hex with a rock cairn. They may, however, be "
 "recruited to, and move from, such hexes."
 msgstr ""
+"Бійці не можуть стати на клітинку з камʼяною пірамідою. Тим не менш, вони "
+"можуть бути завербовані на такій клітинці, а поті вільно з неї піти."
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:299
@@ -385,6 +433,8 @@ msgid ""
 "Beginning on turn 4, the Great Mage Sulla will begin to unite the two halves "
 "of the battlefield. The process will be complete by the end of turn 6."
 msgstr ""
+"Починаючи з 4-го ходу, Велика Мага Сулла почне обʼєднувати дві половини поля "
+"бою. Вона закінчить наприкінці 6-го ходу."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:312
@@ -525,10 +575,8 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:89
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:95
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:91
-#, fuzzy
-#| msgid "teamname^Southwest"
 msgid "teamname^Statues"
-msgstr "Південний захід"
+msgstr "Статуї"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:94
@@ -950,10 +998,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Clearing_Gushes
 #: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:7
-#, fuzzy
-#| msgid "4p — Clash"
 msgid "2p — Clearing Gushes"
-msgstr "4г — Зіткнення"
+msgstr "2г — Стрімкий потік"
 
 #. [multiplayer]: id=multiplayer_Clearing_Gushes
 #: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:8
@@ -966,6 +1012,13 @@ msgid ""
 "rigorous discipline and organization of Wesnoth's armies are in no small "
 "part driven by a constant need to patrol and defend these prosperous lands."
 msgstr ""
+"На берегах Великої річки — найбільш родюча земля серед усього відомого "
+"світу. Навесні та влітку її затоплює вздовж всієї річки, збагачуючи ґрунт та "
+"забезпечуючи щедрий врожай кожної осені. Королівство Веснот перетворило ці "
+"землі на рушійну силу свого багатства і процвітання, а тому сюди завжди "
+"спрямовані численні набіги та атаки. Сувора дисципліна і організованість "
+"армій Весноту в основному продиктовані постійною потребою патрулювати та "
+"захищати ці багаті землі."
 
 #. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:6
@@ -1109,7 +1162,7 @@ msgid ""
 "our claim is not going to be unopposed. We must be prepared for the "
 "surprises of this land."
 msgstr ""
-"Говорять, місцеві жителі - це дивний союз людей і чудовиськ, і наші "
+"Говорять, місцеві жителі — це дивний союз людей і чудовиськ, і наші "
 "претензії зустрінуть відсіч. У цьому місці потрібно бути готовим до "
 "несподіванок."
 
@@ -1135,8 +1188,8 @@ msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
 msgstr ""
-"Останнє, що ви чуєте, зісковзуючи в забуття смерті - радісні крики ворогів..."
-"їх радість наповнює останні хвилини вашого життя сліпою ненавистю."
+"Останнє, що ви чуєте, зісковзуючи в забуття смерті — радісні крики "
+"ворогів... їх радість наповнює останні хвилини вашого життя сліпою ненавистю."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:241
@@ -1153,6 +1206,7 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:252
 msgid "Changes the gold worth of the enemy spawns by a certain percentage"
 msgstr ""
+"Змінює на певний відсоток суму золота, на яку можуть генеруватися вороги."
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:310
@@ -1271,10 +1325,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Hellhole
 #: data/multiplayer/scenarios/2p_Hellhole.cfg:7
-#, fuzzy
-#| msgid "2p — Hamlets"
 msgid "2p — Hellhole"
-msgstr "2г — Хутори"
+msgstr "2г — Пекло"
 
 #. [multiplayer]: id=multiplayer_Hellhole
 #: data/multiplayer/scenarios/2p_Hellhole.cfg:8
@@ -1287,6 +1339,13 @@ msgid ""
 "eternal scar on the land that to this day summons forth legions of wandering "
 "undead."
 msgstr ""
+"Колись, містечко Мурілель було спокійним селищем, яке, до того ж, було "
+"найсхіднішим поселенням людей на всьому континенті. Але це все назавжди "
+"змінилося за часів лорда-ліча Мал Раванала. Збираючи свою армію мерців, він "
+"відкрив портал невимовно темного чаклунства прямо в центрі містечка. Мал "
+"Раванал був переможеним, та Мурілель залишилося зруйнованим та покинутим. "
+"Портал залишив вічний шрам на лику землі, і донині там піднімаються легіони "
+"неупокоєних мерців."
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:26
@@ -1431,11 +1490,19 @@ msgid ""
 "molten brimstone lies land kept pristine and untouched — yet mysteriously "
 "abandoned nonetheless."
 msgstr ""
+"Далекий захід, перед тим як бути зруйнованим потоком катастроф, довго "
+"фігурував у міфах як батьківщина усіх живих створінь. Легенди розповідають "
+"про винахідливість древніх у їхні останні години, розповідають, як вони "
+"щосили намагалися боротися проти жорстоких штормів з попелу та вогню. Тільки "
+"недавно секретні експедиції до цих земель показали правдивість цих історій — "
+"і найбільш вражаючим був канал з величезними зачарованими стінами. Між "
+"діючими вулканічними островами та безмежними морями розплавленої сірки, "
+"лежить чиста та недоторкана земля — яку, тим не менш, таємничо покинули."
 
 #. [multiplayer]: id=multiplayer_Ruphus_Isle
 #: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:7
 msgid "2p — Ruphus Isle"
-msgstr ""
+msgstr "2г — Острів Руфус"
 
 #. [multiplayer]: id=multiplayer_Ruphus_Isle
 #: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:8
@@ -1443,6 +1510,8 @@ msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island."
 msgstr ""
+"Гравці повинні переміщатися по складній місцевості цього маленького, але "
+"географічно різноманітного острова."
 
 #. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
@@ -1474,15 +1543,13 @@ msgstr ""
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:38
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Shapeshifter"
-msgstr "Центр"
+msgstr "Перевертні"
 
 #. [unit]: type=Tentacle of the Deep
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:52
 msgid "Nani the Shapeshifter"
-msgstr ""
+msgstr "Нані Перевертень"
 
 #. [effect]: type=arcane
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:82
@@ -1571,10 +1638,8 @@ msgstr "Кам'яна статуя Ло-бзанга, Слуги Сулли."
 
 #. [multiplayer]: id=multiplayer_Swamp_of_Dread
 #: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:7
-#, fuzzy
-#| msgid "2p — Sablestone Delta"
 msgid "2p — Swamp of Dread"
-msgstr "2p — Дельта чорних каменів"
+msgstr "2г — Болото жаху"
 
 #. [multiplayer]: id=multiplayer_Swamp_of_Dread
 #: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:8
@@ -1590,6 +1655,17 @@ msgid ""
 "great strategic value means it is fiercely contested by all with military "
 "aims in the Great Continent's heart."
 msgstr ""
+"На північ від Великої річки лежить Болото жаху, негостинна та безмежна "
+"трясовина, проклята огидною магією. Тут існує лише декілька доріг, але "
+"навіть вони ніяким чином не гарантують, що ви доберетесь до пункту "
+"призначення вчасно та живими. Тим не менше, ці болотні дороги — звʼязуюча "
+"ланка між південними рівнинами та суворою північчю, тож відважних "
+"дослідників, які бажають прокласти торгові маршрути і отримати вигоду, "
+"завжди вистачало. Найстаріший з таких маршрутів, Аретів Шлях, — спірний "
+"перехід, відомий ще з часів перших стародавніх війн між ельфами та гномами. "
+"Незважаючи на бідні землі та вкрай обмежені ресурси, перехід у самому серці "
+"Великого континенту має величезне стратегічне значення — що робить його "
+"постійною військовою ціллю."
 
 #. [multiplayer]: id=multiplayer_The_Freelands
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:6
@@ -1614,10 +1690,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_The_Walls_of_Pyrennis
 #: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:7
-#, fuzzy
-#| msgid "2p — Den of Onis"
 msgid "2p — The Walls of Pyrennis"
-msgstr "2г — Лігво Оніса"
+msgstr "2г — Стіни Пуренніса"
 
 #. [multiplayer]: id=multiplayer_The_Walls_of_Pyrennis
 #: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:8
@@ -1633,6 +1707,15 @@ msgid ""
 "Pyrennis have proved astoundingly indestructible both to time and war — that "
 "is, what scattered segments of it were actually completed."
 msgstr ""
+"Коли орські орди вперше почали прибувати на Великий континент, один "
+"відважний правитель на імʼя Залізний Король Олгор почав обʼєднувати "
+"розрізнені оркські племена. Він прагнув завоювати весь Великий контитент під "
+"владу орків, і почав будівництво величезної фортеці Пуренніс, як монумент "
+"своїй силі. Але ця цитадель його й згубила — його васали не бажали "
+"закінчувати будівництво, доки все не завоюють, а тому повстали проти Олгора "
+"та й вбили його. Це відкинуло панування орків на століття назад. Стіни "
+"Пуренніса не змогли зруйнувати ні війни, ні час — принаймні ті, які все ж "
+"таки встигли побудувати."
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:37
@@ -1642,9 +1725,9 @@ msgstr "2г — Гарнізон тисячі жал"
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
 #, fuzzy
-#| msgid "A strange place. Designed by Doc Paterson"
+#| msgid "A strange place. Designed by Doc Paterson."
 msgid "A strange place. Designed by Doc Paterson"
-msgstr "Дивне місце. Дизайн - Doc Paterson."
+msgstr "Дивне місце. Дизайн — Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:93
@@ -1718,10 +1801,8 @@ msgstr "Статуя"
 
 #. [multiplayer]: id=multiplayer_Tombs_of_Kesorak
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:7
-#, fuzzy
-#| msgid "5p — Forest of Fear"
 msgid "2p — Tombs of Kesorak"
-msgstr "5г — Ліс страху"
+msgstr "5г — Склеп Кезорака"
 
 #. [multiplayer]: id=multiplayer_Tombs_of_Kesorak
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:8
@@ -1732,6 +1813,11 @@ msgid ""
 "whispering amongst the withered trees of this barren landscape. Unconcerned "
 "by their gloomy surroundings, your leaders have chosen this place to clash."
 msgstr ""
+"Сотні років тому, тут був похований переможений Чарівник Кезорак, разом з "
+"чисельними прихильниками. На цій неродючій землі нечестивий холод обвиває "
+"гробницю, а чутки кажуть, що серед посохлих дерев досі можна почути шепотом "
+"голос Кезорака. Незважаючи на цю похмуру передісторію, ваші лідери вибрали "
+"це місце для поєдинку."
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:118
@@ -1739,6 +1825,8 @@ msgid ""
 "The map contains mausoleums and campfires that shift the time of the day by "
 "one step toward night and day, respectively."
 msgstr ""
+"На карті стоять мавзолеї та вогнища, які зсувають час доби на один крок до "
+"ночі та дня відповідно."
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:121
@@ -1746,6 +1834,8 @@ msgid ""
 "The tile in the centre, which contains the casket of the titular "
 "necromancer, is always covered in pitch black fog."
 msgstr ""
+"Клітинка в цендрі, де міститься скринька великого некроманта, завжди вкрита "
+"густим чорним туманом."
 
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
@@ -1807,16 +1897,12 @@ msgstr "3г — Острів Хоратії"
 
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
-#, fuzzy
-#| msgid ""
-#| "Controlling the central island is often the key to victory in this "
-#| "21x21hex 3 player free for all map."
 msgid ""
 "Controlling the central island is often the key to victory in this 3 player "
 "free for all map."
 msgstr ""
 "Контроль над центральним островом часто є ключем до перемоги в цій карті для "
-"трьох гравців (\"кожен за себе\") розміром 21х21."
+"трьох гравців (\"кожен за себе\")."
 
 #. [multiplayer]: id=multiplayer_3p_Morituri
 #: data/multiplayer/scenarios/3p_Morituri.cfg:5
@@ -1849,6 +1935,14 @@ msgid ""
 "wealthy nobles can turn into veritable battlegrounds — but even this has "
 "become a form of entertainment woven into the allure of the Bath."
 msgstr ""
+"Далеке, легендарне місто Малісат славиться багатьма великими витворами — а "
+"серед них найбільш відомий величезний комплекс, знаний як Купальня слави. Це "
+"— вражаючий оазис, буквально збудованим посеред пісків. Купальня слугувала "
+"як розслабляючий рай для солдатів, що повертаються додому. Через деякий час, "
+"вона сама по собі стала містом, з мистецтвом та музикою, процвітаючим на "
+"дикій культурі навколо Купалень. Обширність комплексу означає перепалки між "
+"багатими дворянами, які можуть перетворитися на справжні поля бою, але "
+"навіть це стало своєрідною формою розваги, вплетеної в чарівність Купалень."
 
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:5
@@ -1916,10 +2010,8 @@ msgstr "Мала карта для 2 пр. 2."
 
 #. [multiplayer]: id=multiplayer_Geothermal
 #: data/multiplayer/scenarios/4p_Geothermal.cfg:7
-#, fuzzy
-#| msgid "2p — Aethermaw"
 msgid "4p — Geothermal"
-msgstr "2г — Ефірна куля"
+msgstr "4г — Підземне тепло"
 
 #. [multiplayer]: id=multiplayer_Geothermal
 #: data/multiplayer/scenarios/4p_Geothermal.cfg:9
@@ -1930,6 +2022,11 @@ msgid ""
 "perilous and unstable, is nonetheless rich thanks to numerous foundries "
 "using the heat of volcanoes and hot springs to fuel their forges."
 msgstr ""
+"Західні схили Гір Серця — це край вражаючих контрастів: киплячі вулканічні "
+"котли перетинають глибокі сині річки, між суворими засніженими горами лежать "
+"зелені поля. Ця земля, хоча іноді й небезпечна і нестабільна, багата завдяки "
+"численним плавильням. Бо саме тут можна гаряче нагрівати кузні, "
+"використовуючи тепло вулканів і гарячих джерел."
 
 #. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
@@ -1956,8 +2053,8 @@ msgstr "4г — Перехрестя Ісара"
 #| msgid ""
 #| "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 #| "rotation of units and planning of moves is important. Teams set for "
-#| "players 1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting "
-#| "gold, 20 villages."
+#| "players 1 &amp; 4 vs. 2 &amp; 3 (northeast vs. southwest). Designed for "
+#| "75 starting gold, 20 villages."
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
@@ -2012,17 +2109,12 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
-#, fuzzy
-#| msgid ""
-#| "Controlling the area around the central keep is very lucrative in this "
-#| "36X36 4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 4 "
 "player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgstr ""
-"На цій карті розміром 36х36 для чотирьох гравців (кожен за себе) контроль "
-"території навколо центральної фортеці дуже вигідний. Підходить і для 2 на 2. "
-"Є 36 сіл."
+"На цій карті для чотирьох гравців (кожен за себе) контроль території навколо "
+"центральної фортеці дуже вигідний. Підходить і для 2 на 2. Є 36 сіл."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:32
@@ -2055,14 +2147,14 @@ msgstr "4г — Річка Лоріс"
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
 #, fuzzy
 #| msgid ""
-#| "A 25x25 2 vs. 2 map centered around a river with keeps in opposite "
-#| "corners. Designed for players 1&4 vs. 2&3. There are 28 villages."
+#| "2 vs. 2 map centered around a river with keeps in opposite corners. "
+#| "Designed for players 1 &amp; 4 vs. 2 &amp; 3. There are 28 villages."
 msgid ""
 "2 vs. 2 map centered around a river with keeps in opposite corners. Designed "
 "for players 1+4 vs. 2+3. There are 28 villages."
 msgstr ""
-"Карта 2 на 2 розміром 25х25 з річкою посередині і фортецями в протилежних "
-"кутах. Створена для 1&4 на 2&3. Є 28 сіл."
+"Карта 2 на 2 з річкою посередині і фортецями в протилежних кутах. Створена "
+"для 1&4 на 2&3. Є 28 сіл."
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
@@ -2088,15 +2180,16 @@ msgstr " Рекомендовані налаштування - 2 золотих 
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
 #, fuzzy
 #| msgid ""
-#| "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
-#| "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
+#| "A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
+#| "east vs. west (1 &amp; 4 vs. 2 &amp; 3), but works well with any teams or "
+#| "FFA."
 msgid ""
 "A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
 "east vs. west (1+4 vs. 2+3), but works well with any teams or FFA."
 msgstr ""
-"Карта 2 на 2 розміром 35х27 з п'ятьма різними шляхами наступу. Розроблена "
-"для гри заходу проти сходу (1&4 на 2&3), але також підходить і для інших "
-"варіантів, або для гри \"кожен за себе\"."
+"Карта 2 на 2 з п'ятьма різними шляхами наступу. Розроблена для гри заходу "
+"проти сходу (1&4 на 2&3), але також підходить і для інших варіантів, або для "
+"гри \"кожен за себе\"."
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:6
@@ -2105,16 +2198,12 @@ msgstr "4г — Руїни Терра-Двельва"
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:7
-#, fuzzy
-#| msgid ""
-#| "Battle over the legendary treasures of the ancient ruins of Terra-Dwelve. "
-#| "Large multi-fronted 2vs2 set in a vast underground complex."
 msgid ""
 "Battle over the legendary treasures of the ancient ruins of Terra-Dwelve. "
 "Large multi-fronted 2 vs. 2 set in a vast underground complex."
 msgstr ""
 "Бій за легендарні скарби древніх руїн Терра-Двелва. Велика, на декілька "
-"фронтів, 2x2 карта, у величезному підземному місті."
+"фронтів, 2x2 карта, у величезному підземному комплексі."
 
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:7
@@ -2123,18 +2212,13 @@ msgstr "4г — Фортеці"
 
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
-#, fuzzy
-#| msgid ""
-#| "36X36 4 player map where 4 mighty castles face off at the convergence of "
-#| "two rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 "
-#| "villages."
 msgid ""
 "A 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
 msgstr ""
-"Карта розміром 36х36 для 4 гравців, на якій 4 могутні замки стоять один "
-"напроти одного на злитті двох річок. Підходить для 2 на 2 і \"кожен за себе"
-"\". Тут є приблизно 45 сіл."
+"Карта для 4 гравців, на якій 4 могутні замки стоять один напроти одного на "
+"злитті двох річок. Підходить для 2 на 2 і \"кожен за себе\". Тут є приблизно "
+"45 сіл."
 
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:5
@@ -2153,16 +2237,11 @@ msgstr "4г — Хаос Ксанте"
 
 #. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:9
-#, fuzzy
-#| msgid ""
-#| "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
-#| "center common."
 msgid ""
 "A 2 vs. 2 map with auxiliary keeps, and a large messy battle in the center "
 "common."
 msgstr ""
-"Карта розміром 24x28 для 2 на 2, з допоміжними фортецями і великою битвою в "
-"спільному центрі."
+"Карта 2 на 2, з допоміжними фортецями і великою битвою в спільному центрі."
 
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:5
@@ -2171,20 +2250,13 @@ msgstr "5г — Аукціон-X"
 
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:7
-#, fuzzy
-#| msgid ""
-#| "4 players surround a central keep, play vs the AI survival style, or as a "
-#| "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or "
-#| "FFA, and the best way to determine how much is an auction, LOWEST bid "
-#| "wins. It is a very small map so 75 gold is recommended for the other "
-#| "players."
 msgid ""
 "4 players surround a central keep, play vs. the AI survival style, or as a "
 "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or FFA, "
 "and the best way to determine how much is an auction, LOWEST bid wins. It is "
 "a very small map so 75 gold is recommended for the other players."
 msgstr ""
-"4 гравці оточують центральний замок, грають або в стилі виживання проти "
+"4 гравці оточують центральний замок і грають або в стилі виживання проти "
 "комп'ютера, або кожен за себе, або 4 на 1. У двох останніх випадках "
 "центральний гравець потребує більшої кількості золота, і кращий спосіб "
 "визначити, наскільки більше - це аукціон. Перемагає МЕНША ставка. Це дуже "
@@ -2337,6 +2409,7 @@ msgid ""
 "Congratulations for surviving the map that so many people claim is "
 "impossible!"
 msgstr ""
+"Вітаємо з виживанням на цій карті. Багато людей переконані що це неможливо!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:538
@@ -2359,21 +2432,15 @@ msgstr "6г — Пастки Манзівана"
 
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:10
-#, fuzzy
-#| msgid ""
-#| "A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult "
-#| "and confusing area of terrain where it is easy to end up out of position "
-#| "or over extended. Teams set for players 145 vs. 236 (east vs west). "
-#| "Designed for 100 starting gold, has 33 villages."
 msgid ""
 "A 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
 "confusing area of terrain where it is easy to end up out of position or over "
 "extended. Teams set for players 145 vs. 236 (east vs. west). Designed for "
 "100 starting gold, has 33 villages."
 msgstr ""
-"Карта розміром 40х20 для 3 на 3. Пастки Манзівана широко відомі як складна і "
-"заплутана територія, де можна запросто загубитися. Команди розділені як 145 "
-"на 236 (схід проти заходу). Надається 100 золотих на початку, є 33 села."
+"Карта 3 на 3. Пастки Манзівана широко відомі як складна і заплутана "
+"територія, де можна запросто загубитися. Команди розділені як 145 на 236 "
+"(схід проти заходу). Розроблена для 100 золотих на початку, є 33 села."
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:7
@@ -2382,10 +2449,6 @@ msgstr "6г — Вулкан"
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:9
-#, fuzzy
-#| msgid ""
-#| "A 3vs3 battle to control the ashes of a kingdom long ago collapsed from a "
-#| "volcanic eruption. It has 36 villages."
 msgid ""
 "A 3 vs. 3 battle to control the ashes of a kingdom long ago collapsed from a "
 "volcanic eruption. It has 36 villages."
@@ -2400,22 +2463,16 @@ msgstr "6г — Світанок Ватерлоо"
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:9
-#, fuzzy
-#| msgid ""
-#| "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required "
-#| "to avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
-#| "south), but having players 146 or 136 as a team is also interesting. "
-#| "Designed for 150 starting gold, has 44 villages."
 msgid ""
 "A 3 vs. 3 map. Flexible coordination of your alliance is required to avoid "
 "being outnumbered. Teams set for players 145 vs. 236 (north vs. south), but "
 "having players 146 or 136 as a team is also interesting. Designed for 150 "
 "starting gold, has 44 villages."
 msgstr ""
-"Карта розміром 40х30 для 3 на 3. Знадобиться гнучка координація сил ваших "
-"союзників, щоб вас не перевершили числом. Команди розділені як 145 на 236 "
-"(північ проти півдня), але варіанти 146 або 136 також цікаві. Розроблена для "
-"150 золотих на початку, є 44 села."
+"Карта 3 на 3. Знадобиться гнучка координація сил ваших союзників, щоб вас не "
+"перевершили числом. Команди розділені як 145 на 236 (північ проти півдня), "
+"але варіанти 146 або 136 також цікаві. Розроблена для 150 золотих на "
+"початку, є 44 села."
 
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:5
@@ -2573,6 +2630,9 @@ msgid ""
 msgstr ""
 "Тестування Весноту, використовує --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid "Sides %s and %d are tied."
+#~ msgstr "Сторони %s та %d зв'язані."
 
 #, fuzzy
 #~| msgid "Age of Heroes"
