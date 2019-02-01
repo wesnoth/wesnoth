@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-04-24 01:06+0200\n"
+"PO-Revision-Date: 2019-01-26 17:40+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "Language: sk_SK\n"
@@ -218,7 +218,7 @@ msgstr "Zobraziť grafické efekty špeciálnych jednotiek"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:189
 msgid "Show deprecation messages in-game"
-msgstr ""
+msgstr "Zobrazovať v hre hlásenia o zastaralých funkciách"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:190
@@ -227,6 +227,10 @@ msgid ""
 "will still be shown in the log, even if this is disabled. In addition, the "
 "deprecation log-domain controls how many messages are printed."
 msgstr ""
+"Zobrazovať hlásenia o zastaralých rozhraniach (API) v oblasti rozhovoru. "
+"Tieto hlásenia sa budú zobrazovať v zázname aj keď je toto vypnuté. "
+"Nastavenie oblasti záznamu o zastaralých funkciách kontroluje koľko hlásení "
+"bude zobrazených."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:198
@@ -1710,10 +1714,13 @@ msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:521
+#, fuzzy
+#| msgid ""
+#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
-"Tento trojzubec umožňuje morskému mužovi strieľať na svojich nepriateľov "
-"elektrické výboje!"
+"Tento trojzubec umožňuje morským ľuďom strieľať na svojich nepriateľov "
+"blesky."
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:525
@@ -3775,7 +3782,7 @@ msgstr "Oldania ADF Std"
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:187
 msgid "(Note: You should use $replacement instead in new code)"
-msgstr ""
+msgstr "(Poznámka: Pri novom vývoji by ste mali použiť $replacement)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecate_api
@@ -6087,7 +6094,7 @@ msgstr "Nepodarilo sa načítať mapu hry: "
 #: src/game_initialization/playcampaign.cpp:312 src/game_launcher.cpp:866
 #: src/game_launcher.cpp:981
 msgid "Map generator error: "
-msgstr ""
+msgstr "Chyba vytvárania mapy: "
 
 #: src/game_initialization/playcampaign.cpp:314
 msgid "Error while reading the WML: "
@@ -6362,27 +6369,37 @@ msgstr "Zvýšenie schopností: "
 
 #: src/help/help_topic_generators.cpp:482
 msgid "HP: "
-msgstr "Životy: "
+msgstr ""
 
 #: src/help/help_topic_generators.cpp:483
+#, fuzzy
+#| msgid "Moves:"
 msgid "Moves: "
-msgstr "Kroky: "
+msgstr "Kroky:"
 
 #: src/help/help_topic_generators.cpp:485
+#, fuzzy
+#| msgid "Vision:"
 msgid "Vision: "
-msgstr "Dohľadnosť: "
+msgstr "Dohľadnosť:"
 
 #: src/help/help_topic_generators.cpp:488
+#, fuzzy
+#| msgid "Jamming:"
 msgid "Jamming: "
-msgstr "Blokovanie: "
+msgstr "Blokovanie:"
 
 #: src/help/help_topic_generators.cpp:490
+#, fuzzy
+#| msgid "Cost:"
 msgid "Cost: "
-msgstr "Cena: "
+msgstr "Cena:"
 
 #: src/help/help_topic_generators.cpp:495
+#, fuzzy
+#| msgid "Required XP:"
 msgid "Required XP: "
-msgstr "Potrebné skúsenosti: "
+msgstr "Potrebné skúsenosti:"
 
 #: src/help/help_topic_generators.cpp:504
 msgid "unit help^Attacks"
@@ -7170,9 +7187,11 @@ msgstr "Uložiť a zrušiť hru"
 
 #: src/playturn.cpp:283
 #, fuzzy
-#| msgid "$player has left the game. What do you want to do?"
+#| msgid ""
+#| "$player who controlled side $side_drop has left the game. What do you "
+#| "want to do?"
 msgid "$player has left the game. What do you want to do?"
-msgstr "$player opustil hru. Čo chceš urobiť?"
+msgstr "$player, ktorý ovládal stranu $side_drop opustil hru. Čo chceš urobiť?"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -7743,7 +7762,8 @@ msgstr "V režime ladenia bola vytvorená jednotka počas ťahu hráča $player"
 
 #: src/synced_user_choice.cpp:326
 #, fuzzy
-#| msgid "waiting for $desc from side(s) $sides"
+#| msgid "waiting for $desc from side $sides"
+#| msgid_plural "waiting for $desc from sides $sides"
 msgid "waiting for $desc from side(s) $sides"
 msgstr "čaká sa na $desc od strán: $sides"
 
@@ -7958,15 +7978,33 @@ msgstr "Skryť plán pre $player"
 msgid "Whiteboard Options"
 msgstr "Nastavenia tabule"
 
-#, fuzzy
-#~| msgid "Traits"
-#~ msgid "Trailers"
-#~ msgstr "Vlastnosti"
+#~ msgid "Use experimental PRNG combat"
+#~ msgstr "Použiť experimentálny súboj PRNG"
 
-#, fuzzy
-#~| msgid "The Battle for Wesnoth Help"
+#~ msgid ""
+#~ "Enables more determinstic chance-to-hit calculations. This is an "
+#~ "experimental feature designed to bring the observed hit/miss rate more in "
+#~ "line with the displayed percentages.\n"
+#~ "\n"
+#~ "Note: this option only affects singleplayer, and the ‘Save random seed’ "
+#~ "option must also be enabled when creating a game for this to work."
+#~ msgstr ""
+#~ "Zapne deterministické výpočty pravdepodobnosti zásahu. Toto je "
+#~ "experimentálna funkcia, ktorá zosúladí pozorovaný pomer zásahov a "
+#~ "netrafení so zobrazenými percentami.\n"
+#~ "\n"
+#~ "Poznámka: táto voľba ovplyvňuje len hru jedného hráča, pretože pre "
+#~ "správnu funkciu musí byť pri vytváraní hry zapnutá voľba ‘Uložiť východzí "
+#~ "stav náhodných čísel’."
+
+#~ msgid "Trailers"
+#~ msgstr "Trailery"
+
+#~ msgid "color^Gold"
+#~ msgstr "Zlatá"
+
 #~ msgid "The standard Wesnoth core."
-#~ msgstr "Návod k Bitke o Wesnoth"
+#~ msgstr "Štandardné jadro Wesnothu."
 
 #~ msgid "Defaults"
 #~ msgstr "Predvolené hodnoty"
@@ -7981,53 +8019,72 @@ msgstr "Nastavenia tabule"
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
-#, fuzzy
-#~| msgid "vision: "
+#~ msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
+#~ msgstr "<i>― Sir Gerrick z Westinu, 607 R.W.</i>"
+
+#~ msgid "an advancement choice"
+#~ msgstr "voľba povýšenia"
+
+#~ msgid "scenario_abbreviation^S"
+#~ msgstr "S"
+
+#~ msgid "campaign_abbreviation^C"
+#~ msgstr "V"
+
+#~ msgid "mp_game_available_slots^Full"
+#~ msgstr "Plné"
+
 #~ msgid "vision^none"
-#~ msgstr "dohľadnosť: "
+#~ msgstr "žiadna"
 
-#, fuzzy
-#~| msgid "Time limit"
 #~ msgid "time limit^none"
-#~ msgstr "Časový limit"
+#~ msgstr "žiadny"
 
-#, fuzzy
-#~| msgid "The nickname ‘$nick’ is registered on this server."
 #~ msgid "The nickname ‘$nick’ is banned on this server’s forums."
-#~ msgstr "Prezývka ‘$nick’ je na tomto serveri registrovaná."
+#~ msgstr "Prezývka ‘$nick’ zakázaná na fóre na tomto serveri."
 
-#, fuzzy
-#~| msgid "The nickname ‘$nick’ is registered on this server."
 #~ msgid ""
 #~ "The email address for the nickname ‘$nick’ is banned on this server’s "
 #~ "forums."
-#~ msgstr "Prezývka ‘$nick’ je na tomto serveri registrovaná."
+#~ msgstr ""
+#~ "Emailová adresa pre prezývku ‘$nick’ zakázaná na fóre na tomto serveri."
 
-#, fuzzy
-#~| msgid "Connection timed out"
 #~ msgid "Connection failed: "
-#~ msgstr "Čas na pripojenie vypršal"
+#~ msgstr "Spojenie zlyhalo: "
 
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "Odkaz na neexistujúcu záložku: "
 
+#~ msgid "HP:"
+#~ msgstr "Životy:"
+
+#~ msgid "Alignment:"
+#~ msgstr "Príslušnosť:"
+
+#~ msgid "No unit recalled"
+#~ msgstr "Žiadna jednotka nebola privolaná"
+
+#~ msgid "Advancements:"
+#~ msgstr "Povýšenia:"
+
+#~ msgid "weapon^None"
+#~ msgstr "Žiadna"
+
+#~ msgid "Battery"
+#~ msgstr "Batéria"
+
 #~ msgid "(unknown player)"
 #~ msgstr "(neznámy hráč)"
 
-#, fuzzy
-#~| msgid "<span color=\"$color\">$number_or_percent</span> move"
-#~| msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 #~ msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 #~ msgid_plural ""
 #~ "<span color=\"$color\">$number_or_percent</span> movement points"
-#~ msgstr[0] "<span color=\"$color\">$number_or_percent</span> ťahov"
-#~ msgstr[1] "<span color=\"$color\">$number_or_percent</span> ťah"
-#~ msgstr[2] "<span color=\"$color\">$number_or_percent</span> ťahy"
+#~ msgstr[0] "<span color=\"$color\">$number_or_percent</span> krokov"
+#~ msgstr[1] "<span color=\"$color\">$number_or_percent</span> krok"
+#~ msgstr[2] "<span color=\"$color\">$number_or_percent</span> krokov"
 
-#, fuzzy
-#~| msgid "Connect to Server"
 #~ msgid "Disconnected from server."
-#~ msgstr "Pripoj sa na server"
+#~ msgstr "Odpojený od serveru."
 
 #, fuzzy
 #~| msgid "Size: "
@@ -8697,9 +8754,6 @@ msgstr "Nastavenia tabule"
 #~ msgid "Recalls"
 #~ msgstr "Privolaných"
 
-#~ msgid "Advancements"
-#~ msgstr "Povýšených"
-
 #~ msgid "Losses"
 #~ msgstr "Padlých"
 
@@ -9092,9 +9146,6 @@ msgstr "Nastavenia tabule"
 
 #~ msgid "scenario settings^Leader"
 #~ msgstr "Veliteľ"
-
-#~ msgid "scenario settings^Side"
-#~ msgstr "Strana"
 
 #~ msgid ""
 #~ "scenario settings^Start\n"
