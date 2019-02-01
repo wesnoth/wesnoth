@@ -6322,8 +6322,8 @@ msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
-"“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
-"Do you wish to re-assign it to “<b>$new_hotkey_action|</b>”?"
+"‘<b>$hotkey_sequence|</b>’ is in use by ‘<b>$old_hotkey_action|</b>’.\n"
+"Do you wish to re-assign it to ‘<b>$new_hotkey_action|</b>’?"
 
 #: src/gui/dialogs/preferences_dialog.cpp:882
 msgid "Reassign Hotkey"
@@ -6455,14 +6455,14 @@ msgstr "whisper to $receiver"
 
 #: src/gui/widgets/chatbox.cpp:386
 msgid "Room <i>“$name”</i> joined"
-msgstr "Room <i>“$name”</i> joined"
+msgstr "Room <i>‘$name’</i> joined"
 
 #: src/gui/widgets/chatbox.cpp:392
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>"
 msgstr ""
-"Whisper session with <i>“$name”</i> started. If you do not want to receive "
+"Whisper session with <i>‘$name’</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>"
 
 #: src/gui/widgets/chatbox.cpp:631
