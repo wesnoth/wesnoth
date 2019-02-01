@@ -8,20 +8,18 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-21 18:29 UTC\n"
-"PO-Revision-Date: 2015-11-07 11:09+0100\n"
-"Last-Translator: Svistwarrior273 <romanbeno273@gmail.com>\n"
+"PO-Revision-Date: 2019-01-27 20:27+0100\n"
+"Last-Translator: PaulP <paulp@hotmail.sk>\n"
 "Language-Team: none\n"
 "Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural= (n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 2.0.4\n"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:13
-#, fuzzy
-#| msgid "The Eastern Invasion"
 msgid "Eastern Invasion"
 msgstr "Invázia z východu"
 
@@ -32,10 +30,8 @@ msgstr "IzV"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:18
-#, fuzzy
-#| msgid "(Easy)"
 msgid "Easy"
-msgstr "(Jednoduchá)"
+msgstr "Jednoduchá"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:18
@@ -44,10 +40,8 @@ msgstr "Kopijník"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:19
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(Normálna)"
+msgstr "Normálna"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:19
@@ -56,10 +50,8 @@ msgstr "Bojovník"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:20
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(Náročná)"
+msgstr "Náročná"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:20
@@ -84,7 +76,7 @@ msgstr ""
 #, fuzzy
 #| msgid "(Intermediate level, 16 scenarios.)"
 msgid "(Novice level, 16 scenarios.)"
-msgstr "(Stredná náročnosť, 16 scenárov.)"
+msgstr "(Stredná náročnosť, 16 scén.)"
 
 #. [about]
 #: data/campaigns/Eastern_Invasion/_main.cfg:28
@@ -113,8 +105,6 @@ msgstr "Grafický a umelecký dizajn"
 
 #. [lua]: wml_actions.bandit_village_capture
 #: data/campaigns/Eastern_Invasion/lua/bandits.lua:83
-#, fuzzy
-#| msgid "They’re here!"
 msgid "They're here!"
 msgstr "Tu sú!"
 
@@ -542,7 +532,7 @@ msgstr "Dostaneš Gweddryho k východu z tunela"
 #. [note]
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:172
 msgid "Get moving quickly."
-msgstr ""
+msgstr "Pohnite sa, rýchlo."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:187
@@ -561,7 +551,7 @@ msgid ""
 "currently inhabited by trolls, who are blocking our path through the tunnel."
 msgstr ""
 "Toto je starý únikový tunel zo základne; nanešťastie, tieto jaskyne sú teraz "
-"obývané trollmi. Teraz poďte, musíme ísť rýchlo; nemŕtvi nás určite budú "
+"obývané trolmi. Teraz poďte, musíme ísť rýchlo; nemŕtvi nás určite budú "
 "prenasledovať aj sem dole."
 
 #. [message]: speaker=Dacyn
@@ -599,7 +589,7 @@ msgstr "Kto je tam?"
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:309
 msgid ""
 "We are soldiers of the king of Wesnoth. Will you help us fight these trolls?"
-msgstr "My sme vojaci kráľa z Wesnothu. Pomôžete nám bojovať s týmito trollmi?"
+msgstr "My sme vojaci kráľa z Wesnothu. Pomôžete nám bojovať s týmito trolmi?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:314
@@ -607,7 +597,7 @@ msgid ""
 "Aye, we’ll help ye, for we have nae love for the trolls. Anyone attacked by "
 "them deserves some help, I think."
 msgstr ""
-"Áno, pomôžeme vám, bo nemáme radi trollov. Každý, koho napadnú, si podľa mňa "
+"Áno, pomôžeme vám, bo nemáme radi trolov. Každý, koho napadnú, si podľa mňa "
 "zaslúži pomoc."
 
 #. [message]: speaker=Dacyn
@@ -650,6 +640,7 @@ msgid ""
 "It seems these trolls were hiding some gold. I think I can count fifty gold "
 "pieces!"
 msgstr ""
+"Zdá sa, že trolovia skrývali nejaké zlato. Myslím, že som narátal 50 zlatých."
 
 #. [unit]: type=Necromancer, id=Mal-Bakral
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:437
@@ -853,7 +844,7 @@ msgid ""
 msgstr ""
 "Dobre. Ale musím vás varovať; tento vládca nemŕtvych je veľmi mocný. Ak sa s "
 "ním rozhodnete bojovať, tak aj keby ste zvíťazili, prežijú to len máloktorí. "
-"Odporúčam vám pridať sa k nám a zamieriť na sever. "
+"Odporúčam vám pridať sa k nám a zamieriť na sever."
 
 #. [message]: speaker=Volas
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:174
@@ -1078,7 +1069,7 @@ msgstr "Neviem povedať, či je to dobré rozhodnutie, ale pôjdem s tebou."
 #. [message]: speaker=Mal-Skraat
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:209
 msgid "Noo!! I can’t be promoted if they run away!"
-msgstr "Nie!!! Ak mi ujdú, moji páni ma nepovýšia!"
+msgstr "Nie!! Ak mi ujdú, moji páni ma nepovýšia!"
 
 #. [option]
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:223
@@ -1153,7 +1144,7 @@ msgid ""
 "The Bitter Swamp’s ill reputation is, it seems, well merited. Mal-Ravanal’s "
 "capital lies before us!"
 msgstr ""
-"Zdá sa, že Horké Bažiny si svoju zlú povesť získali oprávnene. Pred nami "
+"Zdá sa, že Horké močiare si svoju zlú povesť získali oprávnene. Pred nami "
 "leží hlavné mesto Mal-Ravanala!"
 
 #. [message]: speaker=Dacyn
@@ -1225,7 +1216,7 @@ msgid ""
 "in appreciation for our freedom."
 msgstr ""
 "Piati z mojich druhov sú stále uväznení. Radi vstúpime do vašich služieb ako "
-"vďaka za našu slobodu."
+"vďaku za našu slobodu."
 
 #. [message]: speaker=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:486
@@ -1243,7 +1234,7 @@ msgid ""
 "ago. Stop this madness and I will release you from your torment."
 msgstr ""
 "Ak ľutujem jednu vec, tak to, že mi milosť zastavila ruku pred 33 rokmi. "
-"Zastav toto šialenstvo a oslobodím ťa z tvojho trápenia. "
+"Zastav toto šialenstvo a oslobodím ťa z tvojho trápenia."
 
 #. [message]: speaker=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:496
@@ -1277,7 +1268,7 @@ msgstr "Ach, takže ste sa rozhodli so mnou bojovať."
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:527
 msgid "I will atone for my failure thirty three years ago."
-msgstr "Odčiním svoje zlyhanie pred 33 rokmi."
+msgstr "Odčiním svoje zlyhanie spred 33 rokov."
 
 #. [message]: speaker=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:540
@@ -1306,14 +1297,14 @@ msgid ""
 "Estmarks, they were greatly relieved to see the valley of the Weldyn open "
 "before them on the other side."
 msgstr ""
-"Gweddryho muži rýchlo ustúpili z Horkých Bažín, a prchali na sever a západ. "
-"Oddýchli si až keď našli priesmyk cez severný Estmark, a na druhej strane sa "
-"pred nimi otvorilo údolie Weldynu."
+"Gweddryho muži rýchlo ustúpili z Horkých močiarov, a prchali na sever a "
+"západ. Oddýchli si až keď našli priesmyk cez severný Estmark, a na druhej "
+"strane sa pred nimi otvorilo údolie Weldynu."
 
 #. [scenario]: id=05_Northern_Outpost
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:5
 msgid "Northern Outpost"
-msgstr "Severná Základňa"
+msgstr "Severná základňa"
 
 #. [side]: type=Revenant, id=Lanar-Skal
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:72
@@ -1322,17 +1313,13 @@ msgstr "Lanar-Skal"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:110
-#, fuzzy
-#| msgid "Find the outlaw leader and defeat him"
 msgid "Find the outlaw leader"
-msgstr "Nájdi veliteľa zbojníkov a poraz ho"
+msgstr "Nájdi veliteľa zbojníkov"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:117
-#, fuzzy
-#| msgid "Shodrano"
 msgid "Kill Shodrano"
-msgstr "Shodrano"
+msgstr "Zabi Shodrana"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:128
@@ -1438,7 +1425,7 @@ msgid ""
 "I believe there is a leader behind these outlaws; kill him and we will face "
 "no further resistance. I will place my clansmen at your service."
 msgstr ""
-"Verím, že tí zbojníci majú svojho veliteľa; zabi ho a a už nebudeme čeliť "
+"Verím, že tí zbojníci majú svojho veliteľa; zabi ho a už nebudeme čeliť "
 "žiadnemu odporu. Potom pošlem mojich druhov do tvojich služieb."
 
 #. [message]: speaker=narrator
@@ -1539,7 +1526,7 @@ msgstr "Dve cesty"
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:37
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:45
 msgid "Evil"
-msgstr "Zlí"
+msgstr "Zlo"
 
 #. [side]: type=Orcish Warlord, id=Wak-Rano
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:43
@@ -1613,7 +1600,7 @@ msgid ""
 "Hmm... I know. We will make a pact to destroy these men, and continue our "
 "fight later. "
 msgstr ""
-"Hm... jasné. Spojme sa proti týmto ľuďom a potom pokračujme v našom boji."
+"Hm... jasné. Spojme sa proti týmto ľuďom a potom pokračujme v našom boji. "
 
 #. [message]: speaker=Wak-Rano
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:175
@@ -1675,11 +1662,6 @@ msgstr ""
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:149
-#, fuzzy
-#| msgid ""
-#| "We must cross here. The undead are chasing us, and their hordes are much "
-#| "too great for us to defeat. Reinforcements for the undead will arrive "
-#| "soon. We must be across the river before that happens."
 msgid ""
 "We must cross here. The undead are chasing us, and their hordes are much too "
 "great for us to defeat. We've haven't faced even a small part of their force "
@@ -1730,12 +1712,12 @@ msgstr ""
 #. [message]: speaker=Garnad
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:204
 msgid "We have you now, mortals!"
-msgstr ""
+msgstr "Teraz vás máme, smrteľníci!"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:208
 msgid "They're closing in on us! We must get moving quickly."
-msgstr ""
+msgstr "Zbiehajú sa na nás! Musíme sa pohnúť."
 
 #. [unit]: type=Lich, id=Mal-Hakralan
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:223
@@ -1748,6 +1730,8 @@ msgid ""
 "I see, this is where the scared dogs ran to. Don't think you can get away "
 "<b>this</b> easily."
 msgstr ""
+"Vidím, že tu je to, kde sa zbiehajú vystrašené psy. Nemyslite si, že sa sa "
+"dostanene <b>tade</b> ľahko."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:245
@@ -1842,7 +1826,7 @@ msgstr ""
 #. [message]: speaker=Mal-un-Karad
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:134
 msgid "Creatures from the deep, I summon thee to destroy this foe!"
-msgstr ""
+msgstr "Obludy z hlbín, povolávam vás, aby ste zničili tohto nepriateľa!"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:219
@@ -1856,17 +1840,17 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:260
 msgid "I failed my Master..."
-msgstr ""
+msgstr "Sklamal som svojho pána..."
 
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:279
 msgid "<i>HISS!</i>"
-msgstr ""
+msgstr "<i>HISS!</i>"
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:289
 msgid "The sea creatures are gone!"
-msgstr ""
+msgstr "Vodné potvory sú preč!"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:298
@@ -1874,6 +1858,7 @@ msgid ""
 "We have no time to lose! Let's get moving quickly before the rest of their "
 "army catches up with us."
 msgstr ""
+"Nemáme času nazvyš! Rýchlo sa pohnime, kým nás dostihne zvyšok ich armády."
 
 #. [scenario]: id=08_Training_the_Ogres
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:4
@@ -2011,12 +1996,12 @@ msgstr "Pelathsil"
 #. [side]: type=Dwarvish Lord, id=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:43
 msgid "Dwarves"
-msgstr ""
+msgstr "Trpaslíci"
 
 #. [side]: type=Orcish Nightblade, id=Bagork
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:75
 msgid "Bagork"
-msgstr ""
+msgstr "Bagork"
 
 #. [side]: type=Elvish Avenger, id=Elandin
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:97
@@ -2026,7 +2011,7 @@ msgstr "Elandin"
 #. [side]: type=Elvish Avenger, id=Elandin
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:102
 msgid "Elves"
-msgstr ""
+msgstr "Elfovia"
 
 #. [side]: type=Orcish Warlord, id=Prok-Bak
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:129
@@ -2050,7 +2035,7 @@ msgstr ""
 #. [message]: speaker=Prok-Bak
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:214
 msgid "You human! Call us foul, will you?!"
-msgstr "Ty, človek! Opovažuješ sa nás nazvať hnusnými?!?!"
+msgstr "Ty, človek! Opovažuješ sa nás nazvať hnusnými?!"
 
 #. [message]: speaker=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:218
@@ -2131,12 +2116,12 @@ msgstr ""
 #. [message]: speaker=Bagork
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:270
 msgid "I will kill all of you!"
-msgstr ""
+msgstr "Zabijem vás všetkých!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:285
 msgid "Not very likely."
-msgstr ""
+msgstr "Nepravdepodobné."
 
 #. [message]: speaker=Prok-Bak
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:296
@@ -2275,7 +2260,7 @@ msgstr ""
 msgid ""
 "Very well. Let us rally there after the trolls and gryphons are defeated."
 msgstr ""
-"Výborne. Teraz, keď sú trollovia a gryfovia porazení, zhromaždime sa tam."
+"Výborne. Teraz, keď sú trolovia a gryfovia porazení, zhromaždime sa tam."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:237
@@ -2367,8 +2352,7 @@ msgstr "Som si istý, že veliteľ príde a zachráni nás!"
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:430
 msgid "What? Didn't you see those huge trolls drag them away? It's hopeless!"
 msgstr ""
-"Čože? Nevidel si, ako ich tí obrovskí trollovia ťahali preč? Je to "
-"beznádejné!"
+"Čože? Nevidel si, ako ich tí obrovskí trolovia ťahali preč? Je to beznádejné!"
 
 #. [message]: role=escapee leader
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:435
@@ -2441,7 +2425,7 @@ msgid ""
 "past those trolls we could free our comrades."
 msgstr ""
 "Zvyšné väzenské cely by mali byť severne od tejto komnaty. Ak sa dostaneme "
-"cez týchto trollov, mohli by sme oslobodiť našich druhov."
+"cez týchto trolov, mohli by sme oslobodiť našich druhov."
 
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:635
@@ -2466,7 +2450,7 @@ msgstr "Tak, ako vyzerám?"
 #. [message]: id=$unit.id
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:691
 msgid "I'll try to slip past the trolls. You wait here."
-msgstr "Pokúsim sa prešmyknúť poza trollov. Počkajte tu."
+msgstr "Pokúsim sa prešmyknúť poza trolov. Počkajte tu."
 
 #. [message]: speaker=King Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:728
@@ -2479,7 +2463,7 @@ msgid ""
 "Opening the cells should confuse the guards for a moment. But I better not "
 "get too close to them..."
 msgstr ""
-"Otváranie ciel by malo na chvíľu zmiasť stráže.  Ale aj tak je lepšie sa k "
+"Otváranie ciel by malo na chvíľu zmiasť stráže. Ale aj tak je lepšie sa k "
 "ním príliš nepribližovať..."
 
 #. [message]
@@ -2605,8 +2589,8 @@ msgid ""
 "Gweddry and his men had escaped from the orcish prisons, but after returning "
 "to the daylight they soon found themselves surrounded by a host of orcs."
 msgstr ""
-"Gweddry a jeho muži unikli z väzenia , ale po návrate na denné svetlo sa "
-"zase čoskoro našli obkľúčení radami orkov."
+"Gweddry a jeho muži unikli z väzenia, ale po návrate na denné svetlo sa zase "
+"čoskoro našli obkľúčení radami orkov."
 
 #. [side]: type=Orcish Warlord, id=Varrak-Klar
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:40
@@ -2630,16 +2614,12 @@ msgstr "Zničíš most ALEBO porazíš všetkých nepriateľov"
 
 #. [note]
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:174
-#, fuzzy
-#| msgid ""
-#| "Note: every unit not south of the bridge when it is destroyed will be "
-#| "lost (including non-recalled units)"
 msgid ""
 "Every unit not south of the bridge when it is destroyed will be lost "
 "(including non-recalled units)"
 msgstr ""
-"Poznámka: každá jednotka, ktorá v okamihu zničenia mosta nebude na južnej "
-"strane rieky, bude stratená (vrátane neprivolaných jednotiek) "
+"Každá jednotka, ktorá v okamihu zničenia mosta nebude na južnej strane "
+"rieky, bude stratená (vrátane neprivolaných jednotiek)"
 
 #. [unit]: id=Engineer, type=Red Mage
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:184
@@ -2668,7 +2648,7 @@ msgstr ""
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:206
 msgid "Why would we want to do that?!"
-msgstr "Prečo by sme to robili?!?"
+msgstr "Prečo by sme to robili?!"
 
 #. [message]: speaker=Engineer
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:210
@@ -2761,7 +2741,7 @@ msgid ""
 "Well, we didn’t have to blow up the bridge after all. Now we must return to "
 "save Wesnoth."
 msgstr ""
-"Nuž, nebolo treba  nakoniec vyhodiť do vzduchu ten most. Teraz sa ale musíme "
+"Nuž, nebolo treba nakoniec vyhodiť do vzduchu ten most. Teraz sa ale musíme "
 "vrátiť zachrániť Wesnoth."
 
 #. [message]: speaker=Owaec
@@ -2809,7 +2789,7 @@ msgstr "Zaplavené nížiny"
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:136
 msgid "Defeat Khrakrahs"
-msgstr "porazíš Karakasa"
+msgstr "Porazíš Karakasa"
 
 #. [unit]: type=Skeletal Dragon, id=Khrakrahs
 #. [message]
@@ -2831,7 +2811,7 @@ msgid ""
 "may be able to help us find—"
 msgstr ""
 "Teraz sme dorazili do Konských Plání, domoviny môjho ľudu. Možno nám budú "
-"vedieť pomôcť nájsť---"
+"vedieť pomôcť nájsť—"
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:371
@@ -2877,7 +2857,7 @@ msgid ""
 "must find him, and pray that he still has the Null Stone."
 msgstr ""
 "Bol to drak Karakas - veru mocný tvor, v Haldrikových časoch žil v Severných "
-"horách.  Ale tieto dni z neho vyžaruje akási temná sila, a neviem, prečo sa "
+"horách. Ale tieto dni z neho vyžaruje akási temná sila, a neviem, prečo sa "
 "usadil takto ďaleko na juhu. Musíme ho nájsť a modliť sa, že má stále pri "
 "sebe Nulový kameň."
 
@@ -3420,7 +3400,7 @@ msgstr "?"
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:176
 msgid "Kill $liches_to_kill liches to reveal Mal-Ravanal"
-msgstr ""
+msgstr "Zabi $liches_to_kill kostejov, aby si odhalil Mal-Ravanala"
 
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:196
@@ -3446,7 +3426,7 @@ msgstr ""
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:260
 msgid "But how? We don't know which one of them he is."
-msgstr ""
+msgstr "Ale ako? Nevieme, ktorý z nich je on."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:265
@@ -3454,6 +3434,8 @@ msgid ""
 "They are channeling some dark magic to hide themselves. We have to kill some "
 "of them to break the spell."
 msgstr ""
+"Spája ich nejaká temná sila, ktorá ich zároveň zahaľuje. Musíme pár z nich "
+"zabiť, aby sme preruešili kúzlo."
 
 #. [value]
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:272
@@ -3523,7 +3505,7 @@ msgstr "Sám ťa zničím!"
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:523
 msgid "Their spell is broken! There he is!"
-msgstr ""
+msgstr "Ich kúzlo je prerušené! Tam je!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:678
@@ -3561,7 +3543,7 @@ msgid ""
 "Men let weapons fall from nerveless fingers and horses reared in terror as "
 "that great dark pall obscured the sun..."
 msgstr ""
-"Keď padol Mal-Ravanal,  nemŕtvi jednoducho spadli ako bábky, ktorým niekto "
+"Keď padol Mal-Ravanal, nemŕtvi jednoducho spadli ako bábky, ktorým niekto "
 "prestrihne povrázky. Ako sa kostejov smrteľný výkrik niesol vzduchom, z jeho "
 "mŕtvoly vyrástol vysoký stĺp tieňa ako dym z nečistého ohňa; vo výške sa "
 "rozdelil na pätoro a siahol na nebesá ako chmátajúca ruka.\n"
@@ -3575,7 +3557,7 @@ msgid ""
 "... and then it thinned, and paled, and a breeze from the west dissolved it "
 "in tatters, and the light of day shone once again undiminished on Weldyn."
 msgstr ""
-"...ale potom sa zmenšila, vybledla, a vietor zo západu ju roztrhal na kúsky. "
+"...ale potom sa zmenšil, vybledol, a vietor zo západu ju roztrhal na kúsky. "
 "Denné svetlo opäť bez prekážok svietilo na Weldyn."
 
 #. [message]: speaker=Konrad II
@@ -3659,7 +3641,7 @@ msgid ""
 "Grug, Gweddry has told me of the help you and your tribe provided his men. "
 "We wish to offer you a new home in the Estmark Hills along with Our thanks."
 msgstr ""
-"Grug, Gweddry mi povedal o pomoci, ktorú ste ty a tvoj kmeň poskytli  jeho "
+"Grug, Gweddry mi povedal o pomoci, ktorú ste ty a tvoj kmeň poskytli jeho "
 "mužom. Radi by sme vám ponúkli nový domov v kopcoch Estmarku spolu s našou "
 "vďakou."
 
@@ -3752,14 +3734,12 @@ msgid ""
 "And so began the Silver Age of Wesnoth, that time known to historians as the "
 "Reconstruction..."
 msgstr ""
-"A tak začal Strieborný Vek Wesnothu, historikmi známy ako Rekonštrukcia..."
+"A tak začal Strieborný vek Wesnothu, historikmi známy ako Rekonštrukcia..."
 
 #. [unit_type]: id=Bone Knight, race=undead
 #: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:5
-#, fuzzy
-#| msgid "Mounted Fighter"
 msgid "Bone Knight"
-msgstr "Vojak jazdy"
+msgstr "Rytier kostlivec"
 
 #. [unit_type]: id=Bone Knight, race=undead
 #: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:26
@@ -3768,11 +3748,13 @@ msgid ""
 "skeletal horses were raised from the ground by unholy magic to spread fear "
 "and destruction."
 msgstr ""
+"Kedysi veľkí bojovníci z rovín, títo jazdci na koňoch z kostí boli "
+"vytiahnutí zo zeme nečistou mágiou, aby šírili strach a zkazu."
 
 #. [attack]: type=impact
 #: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:41
 msgid "trample"
-msgstr ""
+msgstr "dupot"
 
 #. [unit_type]: id=Horse Lord, race=human
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:4
@@ -3832,7 +3814,7 @@ msgstr ""
 #. [unit_type]: id=Skeleton Rider, race=undead
 #: data/campaigns/Eastern_Invasion/units/Skeleton_Rider.cfg:5
 msgid "Skeleton Rider"
-msgstr ""
+msgstr "Jazdec kostlivec"
 
 #. [unit_type]: id=Skeleton Rider, race=undead
 #: data/campaigns/Eastern_Invasion/units/Skeleton_Rider.cfg:33
@@ -3841,6 +3823,8 @@ msgid ""
 "their skeletal horses were raised from the grave by unholy magic to spread "
 "fear and destruction."
 msgstr ""
+"Kedysi veľkí bojovníci z rovín, títo jazdci na koňoch z kostí boli "
+"vytiahnutí zo zeme nečistou mágiou, aby šírili strach a zkazu."
 
 #. [attacks]: id=shock
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:8
