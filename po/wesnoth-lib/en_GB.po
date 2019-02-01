@@ -6390,8 +6390,8 @@ msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
-"“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
-"Do you wish to re-assign it to “<b>$new_hotkey_action|</b>”?"
+"‘<b>$hotkey_sequence|</b>’ is in use by ‘<b>$old_hotkey_action|</b>’.\n"
+"Do you wish to re-assign it to ‘<b>$new_hotkey_action|</b>’?"
 
 #: src/gui/dialogs/preferences_dialog.cpp:880
 msgid "Reassign Hotkey"
@@ -6504,12 +6504,12 @@ msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>\n"
 msgstr ""
-"Whisper session with <i>“$name”</i> started. If you do not want to receive "
+"Whisper session with <i>‘$name’</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>"
 
 #: src/gui/widgets/chatbox.cpp:400
 msgid "Room <i>“$name”</i> joined"
-msgstr "Room <i>“$name”</i> joined"
+msgstr "Room <i>‘$name’</i> joined"
 
 #: src/gui/widgets/chatbox.cpp:597
 msgid "$player has entered the room"
@@ -7641,7 +7641,6 @@ msgstr ""
 #~ msgid "active_modifications^None"
 #~ msgstr "None"
 
-#~| msgid "The selected game has no sides!"
 #~ msgid "The selected file is corrupt: "
 #~ msgstr "The selected file is corrupt: "
 
