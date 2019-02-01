@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-21 21:30+0300\n"
-"PO-Revision-Date: 2018-11-03 22:28+0200\n"
-"Last-Translator: AncientGeneral <greatgeneral12@gmail.com>\n"
+"PO-Revision-Date: 2019-01-29 15:03+0200\n"
+"Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail.com>\n"
 "Language-Team: \n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -249,19 +249,14 @@ msgstr "Пустельні піски"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:298
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Deserts'</italic> have a somewhat different composition "
-#| "than small sand pits or beaches, however for gameplay purposes they are "
-#| "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgstr ""
 "<italic>text='Пустелі'</italic> мають трохи різний склад ніж маленька куча "
-"піску чи пляж. Одначе з точки зору гри вони однакові. Дивіться "
-"<ref>dst='terrain_sand' text='пісок'</ref>."
+"піску чи пляж. Одначе з точки зору гри вони однакові. Дивіться <ref>dst='.."
+"terrain_sand' text='пісок'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -2478,10 +2473,8 @@ msgstr "Складність"
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:73
-#, fuzzy
-#| msgid "Select difficulty level:"
 msgid "Select difficulty:"
-msgstr "Вкажіть рівень складності:"
+msgstr "Виберіть рівень складності:"
 
 #. [label]
 #: data/gui/window/chat_log.cfg:36
@@ -2625,15 +2618,13 @@ msgstr "Синій:"
 
 #. [button]: id=new
 #: data/gui/window/custom_tod.cfg:405
-#, fuzzy
 msgid "New ToD"
-msgstr "Новий ToD"
+msgstr "Новий ЧД"
 
 #. [button]: id=delete
 #: data/gui/window/custom_tod.cfg:418
-#, fuzzy
 msgid "Delete ToD"
-msgstr "Видалити ToD"
+msgstr "Видалити ЧД"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -3001,7 +2992,7 @@ msgstr "Нова Тека"
 #. [label]
 #: data/gui/window/file_dialog.cfg:391
 msgid "File:"
-msgstr "Файл: "
+msgstr "Файл:"
 
 #. [label]
 #: data/gui/window/formula_debugger.cfg:36
@@ -3016,7 +3007,7 @@ msgstr "Вітаємо"
 #. [label]: id=state
 #: data/gui/window/formula_debugger.cfg:71
 msgid "state"
-msgstr "Стан"
+msgstr "стан"
 
 #. [label]
 #: data/gui/window/formula_debugger.cfg:85
@@ -3382,7 +3373,7 @@ msgstr "Версія виконання"
 #: data/gui/window/game_version.cfg:293
 msgid ""
 "The following features were selected when building this version of Wesnoth:"
-msgstr ""
+msgstr "Під час побудови цієї версії Весноту були вибрані наступні опції:"
 
 #. [label]
 #: data/gui/window/game_version.cfg:447
@@ -3681,22 +3672,22 @@ msgstr "Параметри логування"
 #. [row]
 #: data/gui/window/logging.cfg:136
 msgid "Debug level logging: maximum information"
-msgstr ""
+msgstr "Рівень логування для налагодження: максимум інформації"
 
 #. [row]
 #: data/gui/window/logging.cfg:137
 msgid "Info level logging: more information"
-msgstr ""
+msgstr "Рівень логування для інформації: більше інформації"
 
 #. [row]
 #: data/gui/window/logging.cfg:138
 msgid "Warning level logging: less information"
-msgstr ""
+msgstr "Рівень логування для попереджень: менше інформації"
 
 #. [row]
 #: data/gui/window/logging.cfg:139
 msgid "Error level logging: minimum information"
-msgstr ""
+msgstr "Рівень логування для помилок: мінімум інформації"
 
 #. [row]
 #: data/gui/window/logging.cfg:140
@@ -4511,7 +4502,7 @@ msgstr "Фільтр:"
 #. [text_box]: id=filter
 #: data/gui/window/preferences/02_hotkeys.cfg:67
 msgid "Filters on hotkey description."
-msgstr ""
+msgstr "Фільтр за описом гарячої клавіші."
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:111
@@ -4779,7 +4770,7 @@ msgstr "Змінити гучність звуку при натисненні �
 #. [label]
 #: data/gui/window/preferences/05_multiplayer.cfg:20
 msgid "Chat lines:"
-msgstr "Рядки чату: "
+msgstr "Рядки чату:"
 
 #. [slider]: id=chat_lines
 #: data/gui/window/preferences/05_multiplayer.cfg:36
@@ -4865,12 +4856,11 @@ msgstr ""
 
 #. [button]: id=add_friend
 #: data/gui/window/preferences/05_multiplayer.cfg:264
-#, fuzzy
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "'player_name notes on friend')"
 msgstr ""
-"Додати це ім'я користувача до вашого списку друзів (додайте необов'язкові "
+"Додати ім'я користувача до вашого списку друзів (додайте необов'язкові "
 "замітки, наприклад  'player_name notes on friend')"
 
 #. [button]: id=add_ignored
@@ -4890,7 +4880,7 @@ msgstr "Видалити цього гравця із списку"
 #. [label]: id=no_friends_notice
 #: data/gui/window/preferences/05_multiplayer.cfg:311
 msgid "You have not befriended or ignored any other players."
-msgstr "Ви не позначели як друга або ігнорованого жодного гравця"
+msgstr "Ви не позначили як друга або ігнорованого жодного гравця."
 
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:49
@@ -5658,9 +5648,8 @@ msgstr "від новішого до старішого"
 #: src/gui/dialogs/lua_interpreter.cpp:491
 #: src/gui/dialogs/screenshot_notification.cpp:102
 #: src/gui/dialogs/wml_error.cpp:229
-#, fuzzy
 msgid "Clipboard support not found, contact your packager"
-msgstr "Підтримка буферу обміну не знайдена, зв'яжіться з вашим packager"
+msgstr "Підтримка буферу обміну не знайдена, зв'яжіться з менеджером пакету"
 
 #: src/gui/dialogs/addon/manager.cpp:452
 msgid "addons^Back to List"
@@ -5683,6 +5672,8 @@ msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr ""
+"Наступні аддони, схоже, містять інформацію для публікації або про версію, "
+"яких немає на сервері, і тому не видалені:"
 
 #: src/gui/dialogs/addon/manager.cpp:683
 msgid "The following add-on could not be deleted properly:"
@@ -5888,10 +5879,8 @@ msgid "The game data cache could not be purged."
 msgstr "Кеш даних гри не може бути повністю видаленим."
 
 #: src/gui/dialogs/game_load.cpp:264
-#, fuzzy
-#| msgid "The selected game has no sides!"
 msgid "The selected file is corrupt: "
-msgstr "Вибрана гра не має сторін!"
+msgstr "Вибраний файл пошкоджений: "
 
 #: src/gui/dialogs/game_load.cpp:343
 msgid "(Invalid)"
@@ -6063,6 +6052,8 @@ msgstr "Завантаження даних фойє"
 #: src/gui/dialogs/lua_interpreter.cpp:690
 msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
 msgstr ""
+"Консоль Lua можна використовувати лише у режимі налагодження! (Спрочатку "
+"виконайте ':debug')"
 
 #: src/gui/dialogs/lua_interpreter.cpp:691
 msgid "lua console"
@@ -6098,6 +6089,8 @@ msgid ""
 "incompatible with your version. You might wish to suggest that the host's "
 "add-ons be updated."
 msgstr ""
+"До гри неможливо приєднатися, оскільки у хоста стара версія аддону і вона "
+"несумісна з вашою. Ви можете запропонувати хосту оновити його аддони."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:225
 msgid "Missing User-made Content."
@@ -6353,6 +6346,9 @@ msgid ""
 "\n"
 "Try to save the screenshot as PNG instead."
 msgstr ""
+"Формат зображення не підтримується.\n"
+"\n"
+"Спробуйте зберегти знімок екрану у PNG."
 
 #: src/gui/dialogs/statistics_dialog.cpp:64
 msgid "All Scenarios"
@@ -6481,9 +6477,8 @@ msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Обов'язковий віджет '$id' не визначений."
 
 #: src/gui/widgets/label.cpp:153
-#, fuzzy
 msgid "Opening links is not supported, contact your packager"
-msgstr "Відкриття посилань не підтримується, зв'яжіться з вашим packager"
+msgstr "Відкриття посилань не підтримується, зв'яжіться з менеджером пакету"
 
 #: src/gui/widgets/label.cpp:172
 msgid "Do you want to open this link?"
@@ -6539,7 +6534,7 @@ msgstr "Невірний розмір."
 
 #: src/gui/widgets/size_lock.cpp:162
 msgid "No widget defined."
-msgstr "Віджети не визначені"
+msgstr "Віджети не визначені."
 
 #: src/gui/widgets/slider.cpp:466
 msgid "The number of value_labels and values don't match."
@@ -6680,7 +6675,7 @@ msgstr "Користувацькі WML команди"
 
 #: src/hotkey/hotkey_command.cpp:68
 msgid "Scroll Up"
-msgstr "Прокрутити вгору:"
+msgstr "Прокрутити вгору"
 
 #: src/hotkey/hotkey_command.cpp:69
 msgid "Scroll Down"
@@ -7119,10 +7114,12 @@ msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
 msgstr ""
+"Ліва клавіша миші встановлює або перетягую джерело звуків, права видаляє. Ще "
+"не реалізавано."
 
 #: src/hotkey/hotkey_command.cpp:199
 msgid "Sound Source Tool"
-msgstr ""
+msgstr "Інструмент Джерело звуку"
 
 #: src/hotkey/hotkey_command.cpp:200
 msgid ""
@@ -7170,11 +7167,11 @@ msgstr "Вірний"
 
 #: src/hotkey/hotkey_command.cpp:210
 msgid "Toggle Minimap Unit Coding"
-msgstr ""
+msgstr "Перемкнути кодування бійців на мінікарті"
 
 #: src/hotkey/hotkey_command.cpp:211
 msgid "Toggle Minimap Terrain Coding"
-msgstr ""
+msgstr "Перемкнути кодування місцевості на мінікарті"
 
 #: src/hotkey/hotkey_command.cpp:213
 msgid "Toggle Minimap Unit Drawing"
@@ -7228,6 +7225,7 @@ msgstr "Копіювати"
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
+"Ліва клавіша миші вставляє з буферу обміну, права викликає контекстне меню."
 
 #: src/hotkey/hotkey_command.cpp:227
 msgid "Paste"
@@ -7335,7 +7333,7 @@ msgstr "Малювати коди місцевостей"
 
 #: src/hotkey/hotkey_command.cpp:260
 msgid "Draw Number of Bitmaps"
-msgstr ""
+msgstr "Малювати кількість зображень"
 
 #: src/hotkey/hotkey_command.cpp:262
 msgid "Save Selection to Area"
