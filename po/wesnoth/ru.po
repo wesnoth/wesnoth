@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2019-01-06 05:28+0400\n"
+"PO-Revision-Date: 2019-01-27 23:07+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -6690,25 +6690,35 @@ msgstr "Возможность обновления: "
 
 #: src/help/help_topic_generators.cpp:482
 msgid "HP: "
-msgstr "ЗД: "
+msgstr ""
 
 #: src/help/help_topic_generators.cpp:483
+#, fuzzy
+#| msgid "Moves:"
 msgid "Moves: "
 msgstr "Ходов: "
 
 #: src/help/help_topic_generators.cpp:485
+#, fuzzy
+#| msgid "Vision:"
 msgid "Vision: "
 msgstr "Видение: "
 
 #: src/help/help_topic_generators.cpp:488
+#, fuzzy
+#| msgid "Jamming:"
 msgid "Jamming: "
 msgstr "Помехи: "
 
 #: src/help/help_topic_generators.cpp:490
+#, fuzzy
+#| msgid "Cost:"
 msgid "Cost: "
 msgstr "Цена: "
 
 #: src/help/help_topic_generators.cpp:495
+#, fuzzy
+#| msgid "Required XP:"
 msgid "Required XP: "
 msgstr "Требуемый опыт: "
 
@@ -8361,8 +8371,22 @@ msgstr "Настройки планировщика"
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
-#~ msgid "battery"
-#~ msgstr "батарея"
+#~ msgid "Using lower-level units can be very cost-effective."
+#~ msgstr ""
+#~ "Использование бойцов более низкого уровня может быть очень выгодным с "
+#~ "точки зрения затрат."
+
+#~ msgid ""
+#~ "Some higher-level units have inimitable abilities such as <i>Leadership</"
+#~ "i>, <i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can "
+#~ "make a big difference in a campaign."
+#~ msgstr ""
+#~ "Некоторые бойцы более высокого уровня имеют уникальные способности, такие "
+#~ "как <i>лидерство</i>, <i>исцеление</i>, or <i>невидимка</i>. Раннее "
+#~ "получение таких бойцов может иметь большое значение в кампании."
+
+#~ msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
+#~ msgstr "<i>— Сир Гаррик из Вестина, 607 ГВ</i>"
 
 #~ msgid "an advancement choice"
 #~ msgstr "выбор продвижения"
@@ -8401,6 +8425,12 @@ msgstr "Настройки планировщика"
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "Ссылка на неизвестную тему:"
 
+#~ msgid "HP:"
+#~ msgstr "ЗД: "
+
+#~ msgid "Alignment:"
+#~ msgstr "Тип: "
+
 #~ msgid "No unit recalled"
 #~ msgstr "Ни один боец не призван"
 
@@ -8412,6 +8442,9 @@ msgstr "Настройки планировщика"
 
 #~ msgid "Side '$side' controller is now controlled by: human."
 #~ msgstr "Сторону '$side' теперь контролирует: человек."
+
+#~ msgid "Advancements:"
+#~ msgstr "Продвижения:"
 
 #~ msgid "weapon^None"
 #~ msgstr "Нет оружия"
@@ -8431,6 +8464,9 @@ msgstr "Настройки планировщика"
 
 #~ msgid "Disconnected from server."
 #~ msgstr "Отключен от сервера."
+
+#~ msgid "battery"
+#~ msgstr "батарея"
 
 #, fuzzy
 #~| msgid "Size: "
@@ -9084,9 +9120,6 @@ msgstr "Настройки планировщика"
 
 #~ msgid "Recalls"
 #~ msgstr "Призвано"
-
-#~ msgid "Advancements"
-#~ msgstr "Продвинулись"
 
 #~ msgid "Losses"
 #~ msgstr "Потеряли"
