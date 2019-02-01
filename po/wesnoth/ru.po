@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-27 12:23+0300\n"
-"PO-Revision-Date: 2019-01-06 05:28+0400\n"
+"PO-Revision-Date: 2019-01-27 23:07+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -5207,6 +5207,8 @@ msgstr "<i>— Королева Ашевир, 503 ЭВ</i>"
 #: data/tips.cfg:257
 msgid "Using lower-level units can be very cost-effective."
 msgstr ""
+"Использование бойцов более низкого уровня может быть очень выгодным с точки "
+"зрения затрат."
 
 #. [tip]
 #: data/tips.cfg:261
@@ -5215,13 +5217,14 @@ msgid ""
 "<i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can make a "
 "big difference in a campaign."
 msgstr ""
+"Некоторые бойцы более высокого уровня имеют уникальные способности, такие "
+"как <i>лидерство</i>, <i>исцеление</i>, or <i>невидимка</i>. Раннее "
+"получение таких бойцов может иметь большое значение в кампании."
 
 #. [tip]
 #: data/tips.cfg:262
-#, fuzzy
-#| msgid "<i>― Memoirs of Gweddry, 627YW</i>"
 msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
-msgstr "<i>— Мемуары Гведдри, 627 ГВ</i>"
+msgstr "<i>— Сир Гаррик из Вестина, 607 ГВ</i>"
 
 #. [tip]
 #: data/tips.cfg:266
@@ -6736,8 +6739,6 @@ msgstr "Возможность обновления: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:512
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
 msgstr "ЗД: "
 
@@ -6745,8 +6746,6 @@ msgstr "ЗД: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves: "
 msgid "Moves:"
 msgstr "Ходов: "
 
@@ -6754,8 +6753,6 @@ msgstr "Ходов: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "Vision: "
 msgid "Vision:"
 msgstr "Видение: "
 
@@ -6763,8 +6760,6 @@ msgstr "Видение: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
-#, fuzzy
-#| msgid "Jamming: "
 msgid "Jamming:"
 msgstr "Помехи: "
 
@@ -6772,8 +6767,6 @@ msgstr "Помехи: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost: "
 msgid "Cost:"
 msgstr "Цена: "
 
@@ -6781,8 +6774,6 @@ msgstr "Цена: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:536
-#, fuzzy
-#| msgid "Alignment: "
 msgid "Alignment:"
 msgstr "Тип: "
 
@@ -6790,8 +6781,6 @@ msgstr "Тип: "
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Required XP: "
 msgid "Required XP:"
 msgstr "Требуемый опыт: "
 
@@ -7634,10 +7623,8 @@ msgid "Level: "
 msgstr "Уровень: "
 
 #: src/reports.cpp:258
-#, fuzzy
-#| msgid "Advancements"
 msgid "Advancements:"
-msgstr "Продвинулись"
+msgstr "Продвижения:"
 
 #: src/reports.cpp:271
 msgid "No advancement"

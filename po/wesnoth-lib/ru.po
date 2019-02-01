@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-21 21:30+0300\n"
-"PO-Revision-Date: 2019-01-18 00:57+0400\n"
+"PO-Revision-Date: 2019-01-27 23:32+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -257,11 +257,6 @@ msgstr "Пустынный песок"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:298
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Deserts'</italic> have a somewhat different composition "
-#| "than small sand pits or beaches, however for gameplay purposes they are "
-#| "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
@@ -269,7 +264,7 @@ msgid ""
 msgstr ""
 "<italic>text='Пустыни'</italic> устроены слегка по-другому, нежели маленькие "
 "песочные ямы или пляжи, однако для игровых целей они одинаковы. См. "
-"<ref>dst='terrain_sand' text='песок'</ref>."
+"<ref>dst='..terrain_sand' text='песок'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -2508,8 +2503,6 @@ msgstr "Сложность"
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:73
-#, fuzzy
-#| msgid "Select difficulty level:"
 msgid "Select difficulty:"
 msgstr "Выберите уровень сложности:"
 
@@ -2572,7 +2565,7 @@ msgstr "Загрузить ядро"
 #: data/gui/window/game_version.cfg:46
 #: data/gui/window/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
-msgstr "filesystem^Копировать"
+msgstr "Копировать"
 
 #. [button]: id=copy_
 #. [button]: id=copy
@@ -2856,17 +2849,17 @@ msgstr "Управление:"
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:373 src/gui/dialogs/game_stats.cpp:74
 msgid "controller^Human"
-msgstr "controller^Человек"
+msgstr "Играет: человек"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:375
 msgid "controller^AI only"
-msgstr "controller^Только ИИ"
+msgstr "Играет: только бот"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:377
 msgid "controller^None"
-msgstr "controller^Никто"
+msgstr "Играет: никто"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:396
@@ -2876,17 +2869,17 @@ msgstr "Совместный просмотр"
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:406
 msgid "vision^All"
-msgstr "vision^Все"
+msgstr "Все"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:408
 msgid "vision^Shroud"
-msgstr "vision^Пелена"
+msgstr "Пелена"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:410
 msgid "vision^None"
-msgstr "vision^Нет"
+msgstr "Нет"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -3118,7 +3111,7 @@ msgstr "Пути:"
 #. [button]: id=clean
 #: data/gui/window/game_cache_options.cfg:194
 msgid "cache^Clean"
-msgstr "cache^Очистить"
+msgstr "Очистить"
 
 #. [button]: id=clean
 #: data/gui/window/game_cache_options.cfg:195
@@ -3128,7 +3121,7 @@ msgstr "Удалить устаревшие или неиспользуемые 
 #. [button]: id=purge
 #: data/gui/window/game_cache_options.cfg:207
 msgid "cache^Purge"
-msgstr "cache^Удаление"
+msgstr "Удаление"
 
 #. [button]: id=purge
 #: data/gui/window/game_cache_options.cfg:208
@@ -3395,17 +3388,17 @@ msgstr ""
 #. [label]
 #: data/gui/window/game_version.cfg:195
 msgid "library^Name"
-msgstr "library^Имя"
+msgstr "Имя"
 
 #. [label]
 #: data/gui/window/game_version.cfg:205
 msgid "library^Build version"
-msgstr "library^Версия сборки"
+msgstr "Версия сборки"
 
 #. [label]
 #: data/gui/window/game_version.cfg:215
 msgid "library^Runtime version"
-msgstr "library^Версия среды"
+msgstr "Версия среды"
 
 #. [label]
 #: data/gui/window/game_version.cfg:293
@@ -3436,7 +3429,7 @@ msgstr "Функции"
 #. [button]: id=copy_all
 #: data/gui/window/game_version.cfg:629
 msgid "page^Copy"
-msgstr "page^Копировать"
+msgstr "Копировать"
 
 #. [button]: id=copy_all
 #: data/gui/window/game_version.cfg:630
@@ -4542,7 +4535,7 @@ msgstr "Фильтр:"
 #. [text_box]: id=filter
 #: data/gui/window/preferences/02_hotkeys.cfg:67
 msgid "Filters on hotkey description."
-msgstr ""
+msgstr "Фильтры по описанию горячих клавиш."
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:111
@@ -4557,7 +4550,7 @@ msgstr "Горячие клавиши"
 #. [toggle_button]: id=sort_2
 #: data/gui/window/preferences/02_hotkeys.cfg:134
 msgid "game_hotkeys^G"
-msgstr "game_hotkeys^G"
+msgstr "G"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/window/preferences/02_hotkeys.cfg:135
@@ -4567,7 +4560,7 @@ msgstr "Доступно в игре"
 #. [toggle_button]: id=sort_3
 #: data/gui/window/preferences/02_hotkeys.cfg:146
 msgid "editor_hotkeys^E"
-msgstr "editor_hotkeys^E"
+msgstr "E"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/preferences/02_hotkeys.cfg:147
@@ -4577,7 +4570,7 @@ msgstr "Доступно в редакторе"
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:158
 msgid "titlescreen_hotkeys^T"
-msgstr "titlescreen_hotkeys^T"
+msgstr "T"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:159
@@ -5334,63 +5327,63 @@ msgstr "Детали:"
 
 #: src/build_info.cpp:268
 msgid "feature^Experimental OpenMP support"
-msgstr "feature^Экспериментальная поддержка открытого мультиплеера"
+msgstr "Экспериментальная поддержка открытого мультиплеера"
 
 #: src/build_info.cpp:273
 msgid "feature^JPG screenshots"
-msgstr "feature^Скриншоты в JPG"
+msgstr "Скриншоты в JPG"
 
 #: src/build_info.cpp:280
 msgid "feature^Lua console completion"
-msgstr "feature^Lua консоль завершена"
+msgstr "Lua консоль завершена"
 
 #: src/build_info.cpp:285
 msgid "feature^Legacy bidirectional rendering"
-msgstr "feature^Устаревший двунаправленный рендеринг"
+msgstr "Устаревший двунаправленный рендеринг"
 
 #: src/build_info.cpp:292
 msgid "feature^D-Bus notifications back end"
-msgstr "feature^D-Bus уведомления сервера"
+msgstr "D-Bus уведомления сервера"
 
 #: src/build_info.cpp:301
 msgid "feature^Win32 notifications back end"
-msgstr "feature^Win32 уведомления сервера"
+msgstr "Win32 уведомления сервера"
 
 #: src/build_info.cpp:307
 msgid "feature^Cocoa notifications back end"
-msgstr "feature^Cocoa уведомления сервера"
+msgstr "Cocoa уведомления сервера"
 
 #: src/desktop/paths.cpp:96
 msgid "filesystem_path_system^Volumes"
-msgstr "filesystem_path_system^Объемы"
+msgstr "Объемы"
 
 #: src/desktop/paths.cpp:200
 msgid "filesystem_path_game^Game executables"
-msgstr "filesystem_path_game^Переменные игры"
+msgstr "Переменные игры"
 
 #: src/desktop/paths.cpp:204
 msgid "filesystem_path_game^Game data"
-msgstr "filesystem_path_game^Данные игры"
+msgstr "Данные игры"
 
 #: src/desktop/paths.cpp:208
 msgid "filesystem_path_game^User data"
-msgstr "filesystem_path_game^Данные пользователя"
+msgstr "Данные пользователя"
 
 #: src/desktop/paths.cpp:212
 msgid "filesystem_path_game^User preferences"
-msgstr "filesystem_path_game^Предпочтения пользователя"
+msgstr "Предпочтения пользователя"
 
 #: src/desktop/paths.cpp:225
 msgid "filesystem_path_system^Home"
-msgstr "filesystem_path_system^Домашний путь"
+msgstr "Домашний путь"
 
 #: src/desktop/paths.cpp:234
 msgid "filesystem_path_system^Root"
-msgstr "filesystem_path_system^Корневой путь"
+msgstr "Корневой путь"
 
 #: src/desktop/version.cpp:274
 msgid "operating_system^<unknown>"
-msgstr "operating_system^<неизвестна>"
+msgstr "<неизвестна>"
 
 #: src/font/marked-up_text.cpp:402
 msgid "The maximum text width is less than 1."
@@ -5403,42 +5396,42 @@ msgstr "Текст содержит недопустимую Pango размет�
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
 msgid "conjunct pair^$first and $second"
-msgstr "conjunct pair^$first and $second"
+msgstr "$first и $second"
 
 #. TRANSLATORS: Formats the first two elements of a conjunctive list.
 #: src/formula/string_utils.cpp:254
 msgid "conjunct start^$first, $second"
-msgstr "conjunct start^$first, $second"
+msgstr "$first, $second"
 
 #. TRANSLATORS: Formats successive elements of a conjunctive list.
 #: src/formula/string_utils.cpp:258
 msgid "conjunct mid^$prefix, $next"
-msgstr "conjunct mid^$prefix, $next"
+msgstr "$prefix, $next"
 
 #. TRANSLATORS: Formats the final element of a conjunctive list.
 #: src/formula/string_utils.cpp:261
 msgid "conjunct end^$prefix, and $last"
-msgstr "conjunct end^$prefix, and $last"
+msgstr "$prefix, и $last"
 
 #. TRANSLATORS: Formats a two-element disjunctive list.
 #: src/formula/string_utils.cpp:269
 msgid "disjunct pair^$first or $second"
-msgstr "disjunct pair^$first or $second"
+msgstr "$first или $second"
 
 #. TRANSLATORS: Formats the first two elements of a disjunctive list.
 #: src/formula/string_utils.cpp:272
 msgid "disjunct start^$first, $second"
-msgstr "disjunct start^$first, $second"
+msgstr "$first, $second"
 
 #. TRANSLATORS: Formats successive elements of a disjunctive list.
 #: src/formula/string_utils.cpp:276
 msgid "disjunct mid^$prefix, $next"
-msgstr "disjunct mid^$prefix, $next"
+msgstr "$prefix, $next"
 
 #. TRANSLATORS: Formats the final element of a disjunctive list.
 #: src/formula/string_utils.cpp:279
 msgid "disjunct end^$prefix, or $last"
-msgstr "disjunct end^$prefix, or $last"
+msgstr "$prefix, или $last"
 
 #: src/gui/core/canvas.cpp:612
 msgid "Line doesn't fit on canvas."
@@ -5573,31 +5566,31 @@ msgstr "Неизвестно"
 
 #: src/gui/dialogs/addon/manager.cpp:210
 msgid "addons_order^Name ($order)"
-msgstr "addons_order^Имя ($order)"
+msgstr "Имя ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:213
 msgid "addons_order^Author ($order)"
-msgstr "addons_order^Автор ($order)"
+msgstr "Автор ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:216
 msgid "addons_order^Size ($order)"
-msgstr "addons_order^Размер ($order)"
+msgstr "Размер ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:219
 msgid "addons_order^Downloads ($order)"
-msgstr "addons_order^Загрузки ($order)"
+msgstr "Загрузки ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:222
 msgid "addons_order^Type ($order)"
-msgstr "addons_order^Тип ($order)"
+msgstr "Тип ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:225
 msgid "addons_order^Last updated ($datelike_order)"
-msgstr "addons_order^Последнее обновление ($datelike_order)"
+msgstr "Последнее обновление ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:228
 msgid "addons_order^First uploaded ($datelike_order)"
-msgstr "addons_order^Первая загрузка ($datelike_order)"
+msgstr "Первая загрузка ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:257 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -5689,7 +5682,7 @@ msgstr "Поддержка буфера обмена не найдена, обр
 
 #: src/gui/dialogs/addon/manager.cpp:452
 msgid "addons^Back to List"
-msgstr "addons^Обратно к списку"
+msgstr "Обратно к списку"
 
 #: src/gui/dialogs/addon/manager.cpp:464
 msgid "An error occurred while downloading the add-ons list from the server."
@@ -5882,14 +5875,14 @@ msgstr "Новая закладка"
 
 #: src/gui/dialogs/game_cache_options.cpp:137
 msgid "dir_size^Unknown"
-msgstr "dir_size^Неизвестно"
+msgstr "Неизвестно"
 
 #: src/gui/dialogs/game_cache_options.cpp:139
 #: src/gui/dialogs/network_transmission.cpp:53
 #: src/gui/dialogs/network_transmission.cpp:54
 #: src/gui/dialogs/screenshot_notification.cpp:148
 msgid "unit_byte^B"
-msgstr "unit_byte^B"
+msgstr "B"
 
 #: src/gui/dialogs/game_cache_options.cpp:162
 msgid "Cache Cleaned"
@@ -5916,10 +5909,8 @@ msgid "The game data cache could not be purged."
 msgstr "Данные кэша не могут быть полностью удалены."
 
 #: src/gui/dialogs/game_load.cpp:264
-#, fuzzy
-#| msgid "The selected game has no sides!"
 msgid "The selected file is corrupt: "
-msgstr "Выбранная игра не имеет сторон!"
+msgstr "Выбранный файл поврежден: "
 
 #: src/gui/dialogs/game_load.cpp:343
 msgid "(Invalid)"
@@ -5959,11 +5950,11 @@ msgstr "Модификации:"
 
 #: src/gui/dialogs/game_stats.cpp:74
 msgid "controller^AI"
-msgstr "controller^Никто"
+msgstr "Играет: бот"
 
 #: src/gui/dialogs/game_stats.cpp:74
 msgid "controller^Idle"
-msgstr "controller^Никто"
+msgstr "Играет: не занято"
 
 #: src/gui/dialogs/game_stats.cpp:110 src/gui/dialogs/label_settings.cpp:67
 msgid "Unknown"
@@ -5990,7 +5981,7 @@ msgstr "Работает на $os"
 
 #: src/gui/dialogs/game_version_dialog.cpp:222
 msgid "version^N/A"
-msgstr "version^Недоступно"
+msgstr "Недоступно"
 
 #: src/gui/dialogs/label_settings.cpp:49
 msgid "Team Labels"
@@ -6551,7 +6542,7 @@ msgstr "Страница не определена."
 
 #: src/gui/widgets/multimenu_button.cpp:167
 msgid "multimenu^All Selected"
-msgstr "multimenu^Все выбрано"
+msgstr "Все выбрано"
 
 #: src/gui/widgets/multimenu_button.cpp:172
 msgid "multimenu^$excess other"
@@ -6563,7 +6554,7 @@ msgstr[2] "других"
 #: src/gui/widgets/multimenu_button.cpp:174
 #: src/gui/widgets/multimenu_button.cpp:231
 msgid "multimenu^None Selected"
-msgstr "multimenu^Ничего не выбрано"
+msgstr "Ничего не выбрано"
 
 #: src/gui/widgets/pane.cpp:429
 msgid "Need at least 1 parallel item."
@@ -7519,7 +7510,7 @@ msgstr "Непонятная команда"
 #. translate this message as "sv,da", while Danish as "da,sv".
 #: src/picture.cpp:538
 msgid "language code for localized resources^en_US"
-msgstr "language code for localized resources^ru,ua"
+msgstr "ru,ua"
 
 #: src/preferences/display.cpp:122
 msgid "No known themes. Try changing from within an existing game."
