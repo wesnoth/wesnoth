@@ -536,7 +536,7 @@ std::string unit_topic_generator::operator()() const {
 		<< _("Alignment:") << font::nbsp
 		<< make_link(type_.alignment_description(type_.alignment(), type_.genders().front()), "time_of_day")
 		<< jump(30);
-	if (type_.can_advance()) {
+	if (type_.can_advance() || type_.modification_advancements()) {
 		// TRANSLATORS: This string is used in the help page of a single unit.  It uses
 		// non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 		// translation use non-breaking spaces as appropriate for the target language.
