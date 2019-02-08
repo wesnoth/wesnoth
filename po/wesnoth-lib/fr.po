@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-09-12 18:03+0200\n"
+"PO-Revision-Date: 2019-02-02 18:44+0100\n"
 "Last-Translator: Gérard Bodin <gbodin.qc@gmail.com>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -250,6 +250,11 @@ msgstr "Sables du désert"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:298
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Deserts'</italic> have a somewhat different composition "
+#| "than small sand pits or beaches, however for gameplay purposes they are "
+#| "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
@@ -257,7 +262,7 @@ msgid ""
 msgstr ""
 "Les <italic>text='déserts'</italic> sont en réalité assez différents des "
 "plages et des petites étendues de sables, mais pour le jeu il n'y a aucune "
-"différence. Voir <ref>dst='terrain_sand' text='sable'</ref>."
+"différence. Voir <ref>dst='..terrain_sand' text='sable'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -2605,8 +2610,10 @@ msgstr "Difficulté"
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:83
+#, fuzzy
+#| msgid "Select difficulty:"
 msgid "Select difficulty level:"
-msgstr "Sélectionnez un niveau de difficulté :"
+msgstr "Sélectionnez la difficulté :"
 
 #. [label]
 #: data/gui/window/chat_log.cfg:36
@@ -5141,7 +5148,6 @@ msgstr "Loc"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:69
-#, fuzzy
 msgid "Layer"
 msgstr "Couche"
 
@@ -5162,7 +5168,6 @@ msgstr "Centre"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:339
-#, fuzzy
 msgid "Terrain Layers"
 msgstr "Couches de terrain"
 
@@ -6673,7 +6678,6 @@ msgstr ""
 "identique."
 
 #: src/gui/widgets/stacked_widget.cpp:278
-#, fuzzy
 msgid "No stack layers defined."
 msgstr "Aucune pile de couches définie."
 
@@ -7705,6 +7709,12 @@ msgstr ""
 #~ "lorsque « Facteur d'accélération » est activé ou lorsque la touche Shift "
 #~ "est pressée en jeu"
 
+#~ msgid "Filter:"
+#~ msgstr "Filtre : "
+
+#~ msgid "Filters on hotkey description."
+#~ msgstr "Filtre sur la description des raccourcis clavier."
+
 #~ msgid "Available at main menu"
 #~ msgstr "Disponible dans le menu principal"
 
@@ -7738,6 +7748,9 @@ msgstr ""
 
 #~ msgid "active_modifications^None"
 #~ msgstr "Aucune"
+
+#~ msgid "The selected file is corrupt: "
+#~ msgstr "Le fichier sélectionné est corrompu :"
 
 #~ msgid "Modifications: "
 #~ msgstr "Modifications :"
@@ -7968,9 +7981,6 @@ msgstr ""
 
 #~ msgid "sort^By first upload"
 #~ msgstr "Par ancienneté"
-
-#~ msgid "Filter:"
-#~ msgstr "Filtre : "
 
 #, fuzzy
 #~| msgid "Speed: "

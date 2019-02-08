@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-09-12 14:05+0200\n"
+"PO-Revision-Date: 2019-02-02 18:41+0100\n"
 "Last-Translator: Syll <syll-dev@laposte.net>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -6793,27 +6793,37 @@ msgstr "Amélioration des capacités : "
 
 #: src/help/help_topic_generators.cpp:482
 msgid "HP: "
-msgstr "PV : "
+msgstr ""
 
 #: src/help/help_topic_generators.cpp:483
+#, fuzzy
+#| msgid "Moves:"
 msgid "Moves: "
-msgstr "Déplacements : "
+msgstr "Déplacements : "
 
 #: src/help/help_topic_generators.cpp:485
+#, fuzzy
+#| msgid "Vision:"
 msgid "Vision: "
-msgstr "Vision : "
+msgstr "Vision : "
 
 #: src/help/help_topic_generators.cpp:488
+#, fuzzy
+#| msgid "Jamming:"
 msgid "Jamming: "
-msgstr "Brouillage : "
+msgstr "Brouillage : "
 
 #: src/help/help_topic_generators.cpp:490
+#, fuzzy
+#| msgid "Cost:"
 msgid "Cost: "
-msgstr "Coût : "
+msgstr "Coût : "
 
 #: src/help/help_topic_generators.cpp:495
+#, fuzzy
+#| msgid "Required XP:"
 msgid "Required XP: "
-msgstr "Expérience requise : "
+msgstr "Expérience requise : "
 
 #: src/help/help_topic_generators.cpp:504
 msgid "unit help^Attacks"
@@ -8498,8 +8508,20 @@ msgstr "Options de planification"
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
-#~ msgid "battery"
-#~ msgstr "batterie"
+#~ msgid "Using lower-level units can be very cost-effective."
+#~ msgstr "L'utilisation d'unités de niveau inférieur peut être très rentable"
+
+#~ msgid ""
+#~ "Some higher-level units have inimitable abilities such as <i>Leadership</"
+#~ "i>, <i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can "
+#~ "make a big difference in a campaign."
+#~ msgstr ""
+#~ "Quelques unités de haut niveau ont des capacités sans pareil, comme "
+#~ "<i>Commandement</i>, <i>Guérison</i> ou <i>Chasseur nocturne</i>. Obtenir "
+#~ "ces unités rapidement peut donner un grand avantage dans une campagne."
+
+#~ msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
+#~ msgstr "<i>― Sir Gweddry de Westin, 627 ap. W.</i>"
 
 #~ msgid "an advancement choice"
 #~ msgstr "un choix d'avancement"
@@ -8540,6 +8562,12 @@ msgstr "Options de planification"
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "Référence à un sujet inconnu : "
 
+#~ msgid "HP:"
+#~ msgstr "PV : "
+
+#~ msgid "Alignment:"
+#~ msgstr "Alignement : "
+
 #~ msgid "No unit recalled"
 #~ msgstr "Aucune unité rappelée"
 
@@ -8551,6 +8579,9 @@ msgstr "Options de planification"
 
 #~ msgid "Side '$side' controller is now controlled by: human."
 #~ msgstr "Le camp '$side' est dorénavant contrôlé par un humain."
+
+#~ msgid "Advancements:"
+#~ msgstr "Avancements :"
 
 #~ msgid "weapon^None"
 #~ msgstr "Aucune"
@@ -8571,6 +8602,9 @@ msgstr "Options de planification"
 
 #~ msgid "Disconnected from server."
 #~ msgstr "Déconnecté du serveur."
+
+#~ msgid "battery"
+#~ msgstr "batterie"
 
 #~ msgid ""
 #~ "$elem has been deprecated and will be removed in the next version "
@@ -9255,9 +9289,6 @@ msgstr "Options de planification"
 
 #~ msgid "Recalls"
 #~ msgstr "Vétérans rappelés"
-
-#~ msgid "Advancements"
-#~ msgstr "Avancements"
 
 #~ msgid "Losses"
 #~ msgstr "Pertes"
