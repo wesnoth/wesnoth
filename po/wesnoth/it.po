@@ -9,13 +9,13 @@
 # Alessio D'Ascanio <otaku@fastwebnet.it>, 2004, 2005.
 # Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2008, 2009, 2010, 2011.
 # Luciano Montanaro <mikelima@gmail.com>, 2012.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2018.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-27 12:23+0300\n"
-"PO-Revision-Date: 2018-09-09 16:54+0200\n"
+"PO-Revision-Date: 2019-01-28 22:37+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -1744,13 +1744,11 @@ msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:521
-#, fuzzy
-#| msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr ""
 "Questo tridente conferisce ad un nereide il potere di lanciare saette contro "
-"i suoi nemici!"
+"i suoi nemici."
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:525
@@ -3531,7 +3529,7 @@ msgstr "Turchese"
 #. [color_range]: id=gold
 #: data/core/team-colors.cfg:107
 msgid "color^Gold"
-msgstr ""
+msgstr "Oro"
 
 #. [color_range]: id=reef
 #: data/core/team-colors.cfg:116
@@ -4368,7 +4366,7 @@ msgstr "mosse"
 #. [unit_defense]: id=unit-defense
 #: data/themes/classic.cfg:468
 msgid "statuspanel^terrain def."
-msgstr "dif. terreno"
+msgstr "terreno def."
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:32
@@ -5247,6 +5245,7 @@ msgstr "<i>― Regina Asheviere, 503AW</i>"
 #: data/tips.cfg:257
 msgid "Using lower-level units can be very cost-effective."
 msgstr ""
+"Utilizzare unità di basso livello può essere economicamente vantaggioso."
 
 #. [tip]
 #: data/tips.cfg:261
@@ -5255,13 +5254,14 @@ msgid ""
 "<i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can make a "
 "big difference in a campaign."
 msgstr ""
+"Alcune unità di alto livello hanno abilità inimitabili, quali <i>Comando</"
+"i>, <i>Cura</i>, o <i>Agguato Notturno</i>. Ottenere queste unità "
+"rapidamente può fare una grossa differenza in una campagna."
 
 #. [tip]
 #: data/tips.cfg:262
-#, fuzzy
-#| msgid "<i>― Memoirs of Gweddry, 627YW</i>"
 msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
-msgstr "<i>― Memorie di Gweddry, 627AW </i>"
+msgstr "<i>― Ser Gerrick di Westin, 607AW</i>"
 
 #. [tip]
 #: data/tips.cfg:266
@@ -6805,65 +6805,51 @@ msgstr "Potenziamenti delle abilità: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:512
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "PF: "
+msgstr "PF:"
 
 # mi tocca metterlo così, altrimenti il testo nella finestra va a capo [Nd Bonta-kun]
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves: "
 msgid "Moves:"
-msgstr "Mosse: "
+msgstr "Mosse:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "Vision: "
 msgid "Vision:"
-msgstr "Visione: "
+msgstr "Visione:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
-#, fuzzy
-#| msgid "Jamming: "
 msgid "Jamming:"
-msgstr "Disturbo: "
+msgstr "Disturbo:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost: "
 msgid "Cost:"
-msgstr "Costo: "
+msgstr "Costo:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:536
-#, fuzzy
-#| msgid "Alignment: "
 msgid "Alignment:"
-msgstr "Allineamento: "
+msgstr "Allineamento:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Required XP: "
 msgid "Required XP:"
-msgstr "PE richiesti: "
+msgstr "PE richiesti:"
 
 #: src/help/help_topic_generators.cpp:552
 msgid "unit help^Attacks"
@@ -7114,7 +7100,7 @@ msgstr "Al momento non puoi richiamare unità nella casella evidenziata"
 
 #: src/menu_events.cpp:380
 msgid "No unit recalled"
-msgstr ""
+msgstr "Nessuna unità richiamata"
 
 #: src/menu_events.cpp:397
 msgid "You must have at least 1 gold piece to recall a unit"
@@ -7416,15 +7402,15 @@ msgstr "Impossibile automatizzare la squadra in rete: «$side»."
 
 #: src/menu_events.cpp:1427
 msgid "Side '$side' is already droided."
-msgstr ""
+msgstr "La squadra '$side' è già automatizzata."
 
 #: src/menu_events.cpp:1437
 msgid "Side '$side' controller is now controlled by: AI."
-msgstr ""
+msgstr "Il nuovo conduttore della squadra '$side' ora è: AI."
 
 #: src/menu_events.cpp:1439
 msgid "Side '$side' controller is now controlled by: human."
-msgstr ""
+msgstr "Il nuovo conduttore della squadra '$side' ora è: umano."
 
 #: src/menu_events.cpp:1447
 msgid "Can't droid a local ai side: '$side'."
@@ -7699,12 +7685,12 @@ msgid "Save and abort game"
 msgstr "Abbandona il gioco"
 
 #: src/playturn.cpp:297
-#, fuzzy
-#| msgid "$player has left the game. What do you want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
-msgstr "$player ha abbandonato la partita. Che cosa vuoi fare?"
+msgstr ""
+"$player che controllava la squadra $side_drop ha abbandonato la partita. Che "
+"cosa vuoi fare?"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -7727,10 +7713,8 @@ msgid "Level: "
 msgstr "Livello: "
 
 #: src/reports.cpp:258
-#, fuzzy
-#| msgid "No advancement"
 msgid "Advancements:"
-msgstr "Nessun avanzamento"
+msgstr "Avanzamenti:"
 
 #: src/reports.cpp:271
 msgid "No advancement"
@@ -8020,7 +8004,7 @@ msgstr "Orologio"
 
 #: src/reports.cpp:1583
 msgid "Battery"
-msgstr ""
+msgstr "Batteria"
 
 #: src/reports.cpp:1611
 msgid "Countdown until your turn automatically ends."
@@ -8319,12 +8303,10 @@ msgstr ""
 "debug"
 
 #: src/synced_user_choice.cpp:327
-#, fuzzy
-#| msgid "waiting for $desc from side(s) $sides"
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
-msgstr[0] "in attesa di $desc dalla squadra(e) $sides"
-msgstr[1] "in attesa di $desc dalla squadra(e) $sides"
+msgstr[0] "in attesa di $desc dalla squadra $sides"
+msgstr[1] "in attesa di $desc dalle squadrae $sides"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"

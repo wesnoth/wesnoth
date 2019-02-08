@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-27 09:23 UTC\n"
-"PO-Revision-Date: 2018-05-18 03:34-0700\n"
+"PO-Revision-Date: 2019-01-28 21:20+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:9
@@ -40,7 +40,7 @@ msgstr ""
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:21
 msgid "(Novice level, 23 scenarios.)"
-msgstr "(Livello per principianti, 23 scenari)"
+msgstr "(Livello per principianti, 23 scenari.)"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:23
@@ -2116,10 +2116,8 @@ msgstr ""
 #. [label]
 #. The party and an ally have agreed to meet at the location identified by this label.
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:353
-#, fuzzy
-#| msgid "Sleeping Gryphon"
 msgid "Meeting point"
-msgstr "Grifone addormentato"
+msgstr "Punto di incotro"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:360
@@ -5107,6 +5105,8 @@ msgid ""
 "That noise was made by no troll! What manner of beast makes its den in these "
 "forsaken caves?"
 msgstr ""
+"Questo non è un rimore prodotto da un troll! Quale bestia fa di queste "
+"caverne abbandonate la propria tana?"
 
 #. [message]: race=merman
 #. Comic relief
@@ -5116,6 +5116,9 @@ msgid ""
 "places are anathema to my kind. Whatever monsters may abide in these depths, "
 "are known not to my kin."
 msgstr ""
+"Non saprei, milord. Senza un fiume che li attraversi, luoghi così caldi e "
+"asciutti sono una nemesi per quelli della mia specie. Qualsia mostro possa "
+"dimorare in questi abissi, non è di un tipo conosciuto dai miei simili."
 
 #. [message]: race=merman
 #. Comic relief
@@ -5126,6 +5129,11 @@ msgid ""
 "gladly die for you, milord, but I would that you didn't spend my life for "
 "nothing, looking for another dwarf to rescue when there is none."
 msgstr ""
+"Né so, mio più eccentrico signore, cosa stia ia facendo in una caverna. "
+"Nessun nereide è ancora entrato nelle caverne sotto la montagna per poi "
+"sopravvivere e raccontarlo. Sarei felice di morire per te, milord, ma mi "
+"piacerebbe che non sprecassi la mia vita inutilmente, cercando un altro nano "
+"da salvare quando non ce ne sono."
 
 #. [message]: race=dwarf
 #. "sowl" is a rare word synonymous with "sully", meaning "contaminate".
@@ -5138,6 +5146,12 @@ msgid ""
 "sowling the air? I beseech that we not tarry ’ere any more than we ha’ to, "
 "lest the forming abysses claim us."
 msgstr ""
+"Lord Konrad, il tuo rombo rombo non è stato prodotto da una creature "
+"vivente. Sono gli echi delle stesse rocce che collassano e si sgretolano "
+"sotto di noi quello che abbiamo sentito. Non senti che il calore raddoppia? "
+"Non fai fativa a respirare per tutta questa cenere dispersa nell’aria? Ti "
+"supplico di non fermarci qui più a lungo, temo che gli abissi che si stanno "
+"formando possano inghiottirci."
 
 #. [message]: type=Arch Mage,Great Mage,Silver Mage
 #. "din" means "loud noise". It refers to an ambient sound of collapsing cave walls.
@@ -5148,6 +5162,11 @@ msgid ""
 "this cave even now. We must tread with caution, for the very ground we stand "
 "on may turn against us."
 msgstr ""
+"Principe Konrad, quel baccano non è stao prodotto da un essere vivente. Era "
+"il suono della stessa terra che ribolle intorno a noi, del fuoco e della "
+"lava che stanno squarciando la grotta in questo momento. Dobbiamo procedere "
+"con cautela, perchè il terreno stesso su cui stiamo camminando ci si può "
+"rivolgere contro."
 
 #. [message]: id=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:681
@@ -5157,6 +5176,10 @@ msgid ""
 "the Sceptre and return to the surface with haste, before the lava under our "
 "feet consumes us."
 msgstr ""
+"Konrad, deve essere stato il pavimento che collassa. Sono stato avvertito di "
+"tali pericoli quando mi sono preparato per viaggiare in queste grotte. "
+"Cerchiamo di prendere lo Scettro e tornare in superficie prima possibile, "
+"prima che la lava sotto i nostri piedi ci consumi."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:697
@@ -7205,10 +7228,6 @@ msgstr "Fermi!"
 
 #. [message]: speaker=Bona-Melodia
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:251
-#, fuzzy
-#| msgid ""
-#| "Milord Kalenz! My apologies. I mistook him for one of those foul "
-#| "lizardmen. How came you to be traveling such paths?"
 msgid ""
 "Milord Kalenz! My apologies. I mistook you for one of those foul lizardmen. "
 "How came you to be traveling such paths?"
@@ -7273,8 +7292,6 @@ msgstr ""
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:296
-#, fuzzy
-#| msgid "Then we must hurry. Stand fast, we will send reinforcements."
 msgid "Then we must hurry. Stand fast! We will send reinforcements."
 msgstr ""
 "Allora dobbiamo affrettarci. In piedi, velocemente, vi manderemo dei "
@@ -8988,19 +9005,13 @@ msgstr "Principessa guerriera"
 
 #. [unit_type]: id=Battle Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:28
-#, fuzzy
-#| msgid ""
-#| "A noble by birth, the Princess has learnt swordplay with the greatest "
-#| "generals, and battle tactics with the greatest sages, making her both a "
-#| "great combatant and a leader. Now battle-hardened and strong of will, she "
-#| "can aid those around her in the art of combat."
 msgid ""
 "A noble by birth, the Princess has learnt swordplay with the greatest "
 "generals and battle tactics with the greatest sages, making her both a great "
 "combatant and a leader. Now battle-hardened and strong of will, she can aid "
 "those around her in the art of combat."
 msgstr ""
-"Nobile di nascita, la principessa ha imparato a tirare di scherma con i "
+"Nobile di nascita, la Principessa ha imparato a tirare di scherma con i "
 "migliori generali e ha affinato le tattiche di battaglia con i più grandi "
 "saggi: ciò l’ha resa una grande combattente e un’abile condottiera. Ormai "
 "temprata dalle battaglie e con una volontà ferrea, è ora in grado di aiutare "
