@@ -1,13 +1,13 @@
 # translation of it.po to Italian
 # Luciano Montanaro <mikelima@cirulla.net>, 2007.
 # Brivido <brivido(at)gmail.com>, 2007.
-# Antonio Rosella <arosella@yahoo.com>, 2011-2018
+# Antonio Rosella <arosella@yahoo.com>, 2011-2019
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-04 16:39 UTC\n"
-"PO-Revision-Date: 2018-04-11 12:27+0200\n"
+"PO-Revision-Date: 2019-01-28 21:18+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [scenario]: id=11_Descent_into_Darkness
 #. [campaign]: id=Descent_into_Darkness
@@ -73,7 +73,7 @@ msgstr ""
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:25
 msgid "(Intermediate level, 12 scenarios.)"
-msgstr "(Livello intermedio, 12 scenari)"
+msgstr "(Livello intermedio, 12 scenari.)"
 
 #. [about]
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:28
@@ -438,6 +438,11 @@ msgstr ""
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:379
+#, fuzzy
+#| msgid ""
+#| "Begone, now. I’ve no wish to be forced to send the soldiers after you. "
+#| "Your father would turn in his grave did he see the end to which you’ve "
+#| "come."
 msgid ""
 "Begone, now. I’ve no wish to be forced to send the soldiers after you. Your "
 "father would be ashamed to see the end to which you’ve come."
@@ -600,6 +605,13 @@ msgstr "Morte di Darken Volk"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:121
+#, fuzzy
+#| msgid ""
+#| "In truth, I share your hatred for the orcs. The Northlands have been "
+#| "my... home... for many years, and the orcs have been a growing "
+#| "infestation in them. They despoil the beauty of the land wherever they "
+#| "go. If you are interested, I would be happy to take you on as my "
+#| "apprentice so that you can... aid me in the fight against them."
 msgid ""
 "In truth, I share your hatred for the orcs. The northlands have been my... "
 "home... for many years, and the orcs have been a growing infestation in "
@@ -831,7 +843,7 @@ msgstr ""
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:207
 msgid "I... I will try."
-msgstr "Ci... ci proverò"
+msgstr "Ci... ci proverò."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:222
@@ -901,7 +913,7 @@ msgstr ""
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:286
 msgid "But why are they attacking me? And what should I do?!"
-msgstr "Ma perché mi attaccano? Che cosa devo fare?!?"
+msgstr "Ma perché mi attaccano? Che cosa devo fare?!"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:291
@@ -1364,7 +1376,7 @@ msgid ""
 "that I thank you. But you cannot return to Parthyn, Malin."
 msgstr ""
 "Ci hai risparmiato il fastidio di eliminare questi insulsi orchi da soli: "
-"per questo te ne rendiamo grazie. Ma non puoi fare ritorno a Parthyn, Malin. "
+"per questo te ne rendiamo grazie. Ma non puoi fare ritorno a Parthyn, Malin."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:347
@@ -1421,7 +1433,7 @@ msgid ""
 "I must flee to the west to find Darken Volk!"
 msgstr ""
 "Anche con i miei nuovi poteri, non posso combattere un’intera città e al "
-"tempo stesso gli orchi. Devo fuggire a ovest e cercare Darken Volk."
+"tempo stesso gli orchi. Devo fuggire a ovest e cercare Darken Volk!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:446
@@ -1722,8 +1734,14 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:314
+#, fuzzy
+#| msgid ""
+#| "Move Malin Keshar or Darken Volk through the passageway in the northwest "
+#| "leading to the great hall"
 msgid "Move through the passageway in the northwest leading to the great hall"
-msgstr "Segui il corridoio a nord-ovest che conduce alla sala principale."
+msgstr ""
+"Sposta Malin Keshar o Darken Volk lungo il corridoio a nord-ovest che "
+"conduce alla sala principale"
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:338
@@ -2334,8 +2352,8 @@ msgid ""
 "damage before being repelled and retreating to the caves."
 msgstr ""
 "Trascorrono anni. Ogni estate quando i passi tornano praticabili, il lich "
-"manda i soldati ad attaccare gli orchi, eliminando tutte le pattuglie di "
-"uomini, elfi o nani che li ostacolano. Ogni anno il lich infligge qualche "
+"manda i suoi soldati ad attaccare gli orchi, eliminando tutte le pattuglie "
+"di uomini, elfi o nani che li ostacolano. Ogni anno il lich infligge qualche "
 "perdita prima di essere respinto e di ritirarsi nelle caverne."
 
 #. [part]
@@ -2350,17 +2368,17 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:72
 msgid "Defeat the foolish hero"
-msgstr "Sconfiggi l’eroe stolto"
+msgstr "Sconfiggi l’eroe sciocco"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:80
 msgid "Defeat another foolish hero"
-msgstr "Sconfiggi un altro l’eroe stolto"
+msgstr "Sconfiggi un altro l’eroe sciocco"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:88
 msgid "Defeat yet another foolish hero"
-msgstr "Sconfiggi ancora un altro l’eroe stolto"
+msgstr "Sconfiggi ancora un altro l’eroe sciocco"
 
 #. [note]: description=<b>
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:116
@@ -2378,7 +2396,7 @@ msgstr "Notte senza fine $timesForever"
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:240
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:267
 msgid "Foolish Hero"
-msgstr "Eroe stolto"
+msgstr "Eroe sciocco"
 
 #. [modify_side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:172
@@ -2495,7 +2513,7 @@ msgstr ""
 "tu che hai posto fine alla mia vita mortale e mi hai permesso di "
 "trasformarmi in un Lich. Ti ringrazio per essere venuto qui, sciocco eroe. "
 "Il mio odio nei confronti della tu razza mi rende più forte e mi da una "
-"nuova opportunità di uccidere altri orchi! "
+"nuova opportunità di uccidere altri orchi!"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:395
@@ -2525,8 +2543,8 @@ msgid ""
 "Is there an endless supply of foolish heroes with death wishes? Honestly, "
 "where do you all come from?"
 msgstr ""
-"Ma c’è una fila senza fine di eroi con desideri di morte? Insomma, da dove "
-"venite?"
+"Ma c’è una fila senza fine di sciocchi eroi con desideri di morte? Insomma, "
+"da dove venite?"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:437
@@ -2563,7 +2581,7 @@ msgstr ""
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:510
 msgid "Yes, sir."
-msgstr "Sì, padrone."
+msgstr "Sì, signore."
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:518
@@ -2640,6 +2658,8 @@ msgstr ""
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:579
+#, fuzzy
+#| msgid "I guess we’ll never know for sure."
 msgid "I guess we'll never know for sure."
 msgstr "Penso che non lo sapremo mai con certezza."
 
@@ -2676,7 +2696,7 @@ msgstr ""
 #. [attack]: type=impact
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:33
 msgid "magic blast"
-msgstr "Esplosione magica"
+msgstr "esplosione magica"
 
 #. [unit_type]: id=Apprentice Necromancer, race=human
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:4
@@ -2782,6 +2802,245 @@ msgid ""
 msgstr ""
 "All’alba, le guardie della città si fanno strada nel maniero e catturano i "
 "due negromanti."
+
+#~ msgid ""
+#~ "We should all be glad to see you gone, necromancer. I detest having "
+#~ "fought by your side."
+#~ msgstr ""
+#~ "Negromante, dovremmo essere contenti vederti andartene. Detesto aver "
+#~ "combattuto al tuo fianco."
+
+#~ msgid "Retrieve the book and escape"
+#~ msgstr "Recupera il libro e fuggi"
+
+#~ msgid "I have found the book, master! It is here."
+#~ msgstr "Padrone, ho trovato il libro! È qui."
+
+#~ msgid "Good! Guard it with your unlife while I come to fetch it."
+#~ msgstr ""
+#~ "Buono! Proteggilo a costo della tua no-vita mentre vengo a recuperarlo."
+
+#~ msgid "Good! Guard it with your life while I come to fetch it."
+#~ msgstr ""
+#~ "Buono! Proteggilo a costo della tua vita mentre vengo a recuperarlo."
+
+#~ msgid "Telemon the Slayer"
+#~ msgstr "Telemon il Massacratore"
+
+#~ msgid "Foul necromancer! Your time has come!"
+#~ msgstr "Pazzo di un necromante! Il tuo tempo è finito!"
+
+#~ msgid ""
+#~ "Reinforcements! I took too long to retrieve that book and now I have no "
+#~ "way to win this battle..."
+#~ msgstr ""
+#~ "Rinforzi! Ci ho messo troppo tempo a recuperare il libro e ora non ho più "
+#~ "modo di vincere questa battaglia..."
+
+#~ msgid ""
+#~ "Mal Keshar has had time to study the book, learning how his apprentices "
+#~ "can become liches with less reliance on luck than Malin’s own "
+#~ "transformation."
+#~ msgstr ""
+#~ "Mal Kesha ha avuto il tempo di di studiare il libro, imparando come i "
+#~ "suoi apprendisti possano diventare dei lich con meno dipendenza dalla "
+#~ "fortuna della stessa trasformazione di Malin."
+
+#~ msgid ""
+#~ "Mal Keshar continues to study the book, and re-reads the final entry."
+#~ msgstr ""
+#~ "Mal Keshar continua a studiare il libro, e rilegge il passaggio finale."
+
+#~ msgid ""
+#~ "<i>“I realize now... the world is not ready for our knowledge. I give up "
+#~ "on all of them. I am going to live in the old troll city and learn the "
+#~ "applications of mountain fire. In some future time, less conservative "
+#~ "attitudes will dominate, and I can certainly afford to wait. In the "
+#~ "meantime, we are doing what we can to hasten that day.”</i>"
+#~ msgstr ""
+#~ "<i>“Me ne rendo conto ora... il mondo non è pronto per la nostra "
+#~ "conoscenza. Mi arrendo di fronte a tutto ciò. Andrò nella vecchia città "
+#~ "dei troll ed imparerò ad utilizzare il fuoco della montagna. In tempi "
+#~ "futuri, domineranno atteggiamenti meno conservativi, e posso certamente "
+#~ "permettermi di aspettare. Nel frattempo, stiamo facendo il possibilie per "
+#~ "avvicinare quel giorno.”</i>"
+
+#~ msgid ""
+#~ "<i>“As for me, I have placed some spells on my journal to help keep it "
+#~ "from harm, and I will make it conspicuous on this battlefield. I hope "
+#~ "that it will eventually make its way into the hands of someone in Tath "
+#~ "who is willing to learn.”</i>"
+#~ msgstr ""
+#~ "<i>“Per quello che mi riguarda, ho piazzato un paio di incantesimi sul "
+#~ "mio diario per evitare danni e lo renderò evidente su questo campo di "
+#~ "battaglia. Spero che vada a finire nelle mani di qualcuno a Tath che "
+#~ "abbia voglia di imparare.”</i>"
+
+#~ msgid ""
+#~ "That final entry in the book gnaws at Mal Keshar. While he was being used "
+#~ "by Darken Volk as a pawn, both of them were being using as pawns by the "
+#~ "author of the book itself."
+#~ msgstr ""
+#~ "Quella voce finale nel libro rode a Mal Keshar. Mentre veniva usato da "
+#~ "Darken Volk come pedina, entrambi erano usanti come pedine l'autore del "
+#~ "libro stesso."
+
+#~ msgid ""
+#~ "The book’s author had left it for a foolish hero to pick up, and the "
+#~ "spells protecting it had been strong enough to resist the mages of Tath. "
+#~ "Mal Keshar had already made several copies of the book and had no further "
+#~ "need of the original; if he allowed another foolish hero to take it, "
+#~ "would another student eventually follow in his footsteps? Could the "
+#~ "author’s plan work? Might liches eventually be accepted in society, if he "
+#~ "simply waited?"
+#~ msgstr ""
+#~ "L’autore del libro lo aveva lasciato perchè un eroe sciocco lo "
+#~ "raccogliesse, e gli incantesimi di protezione erano stati stati "
+#~ "abbastanza forti da resistere al maghi di Tath.Mal Keshar aveva già "
+#~ "realizzato diverse copie del libro e non aveva più bisogno "
+#~ "dell’originale: se avesse lasciato che un altro eroe sciocco lo "
+#~ "prendesse, un altro studente avrebbe seguito le sue orme? Avrebbe potuto "
+#~ "funzionare il piano dell’autore? Forse i lich avrebbero potutto essere "
+#~ "accettati nella società, se avesse semplicemente aspettato?"
+
+#~ msgid "Allow an enemy unit to take the book"
+#~ msgstr "Permetti ad una unità nemica di prendere il libro"
+
+#~ msgid ""
+#~ "To turn a necromancer into a lich, right-click on it while it is in a "
+#~ "castle."
+#~ msgstr ""
+#~ "Per trasformare un negromante in lich, fai clic col tasto destro "
+#~ "sull’unità mentre si trova in un castello."
+
+#~ msgid "Make Into a Lich"
+#~ msgstr "Trasforma in lich"
+
+#~ msgid "You can only do this in a castle."
+#~ msgstr "Puoi compiere tale operazione solamente in un castello."
+
+#~ msgid "That’s an evil grimoire!"
+#~ msgstr "Quello è un grimorio maligno!"
+
+#~ msgid "Burn it."
+#~ msgstr "Brucialo."
+
+#~ msgid "<small>(faking pain)</small> Aaargh!"
+#~ msgstr "<small>(falso dolore)</small> Aaargh!"
+
+#~ msgid "It’s not catching fire, sir."
+#~ msgstr "Signore, non prende fuoco."
+
+#~ msgid ""
+#~ "But it seems to be hurting the lich. Bring it with us, retreat and let "
+#~ "the mages destroy this."
+#~ msgstr ""
+#~ "Ma sembra danneggiare in qualche modo il lich. Prendiamo e ritiriamoci, "
+#~ "ci penseranno i maghi a distruggerlo."
+
+#~ msgid "It’s paper, but it won’t burn."
+#~ msgstr "È carta, ma non brucerà."
+
+#~ msgid ""
+#~ "But it seems to be hurting the lich. Grab it, retreat and throw it on a "
+#~ "bigger fire. Once we’ve burnt it, maybe the lich will be weaker."
+#~ msgstr ""
+#~ "Ma sembra danneggiare in qualche modo il lich. Afferralo, ritiriamoci e "
+#~ "buttalo il un falò più grande. Una volta che lo avremo bruciato, forse il "
+#~ "lich si indebolirà."
+
+#~ msgid ""
+#~ "Bring it with us, and let’s retreat. Once it’s burned with faerie fire, "
+#~ "maybe the lich will be weakened."
+#~ msgstr ""
+#~ "Portiamolo con noi e ritiriamoci. Una volta che lo avremo bruciato col "
+#~ "fuoco fatato, forse il lich si indebolirà."
+
+#~ msgid "That’s an evil grimoire, bound in iron."
+#~ msgstr "Quello è un grimorio maligno,rilegato in ferro."
+
+#~ msgid "Destroy it."
+#~ msgstr "Distruggilo."
+
+#~ msgid "My hammer can’t dent it and my axe can’t cut the paper."
+#~ msgstr ""
+#~ "Il mio martello non lo intacca e la mia ascia non riesce a tagliare la "
+#~ "carta."
+
+#~ msgid ""
+#~ "But it seems to be hurting the lich. Bring it with us, retreat and let "
+#~ "the forge destroy it."
+#~ msgstr ""
+#~ "Ma sembra danneggiare in qualche modo il lich. Portiamolo con noi, "
+#~ "ritiriamoci e lasciamo che la forgia lo distrugga."
+
+#~ msgid "The skull on that book looks good."
+#~ msgstr "Il teschio sulla copertina è gradevole."
+
+#~ msgid "Idiot."
+#~ msgstr "Idiota."
+
+#~ msgid ""
+#~ "Uuuuuh, I can’t pull the skull off the book, but that lich screams when I "
+#~ "try."
+#~ msgstr ""
+#~ "Uuuuuh, non riesco a strappare il teschio dal libro, ma il lich urla "
+#~ "quando ci provo."
+
+#~ msgid "Defend me, my minions! Get the book! Aaargh!"
+#~ msgstr "Difendetemi, servi miei! Prendete il libro! Aaargh!"
+
+#~ msgid ""
+#~ "Bring it with you and retreat, let’s take our time smashing that book."
+#~ msgstr ""
+#~ "Prendilo con te e ritirati, prendiamoci il nostro tempo per distruggere "
+#~ "il libro."
+
+#~ msgid "Epilogue"
+#~ msgstr "Epilogo"
+
+#~ msgid ""
+#~ "The foolish hero was tricked, and left believing both that the book could "
+#~ "be destroyed, and that the lich might be weakened by doing so."
+#~ msgstr ""
+#~ "L’eroe sciocco è stato ingannato, lasciandogli credere sia che il libro "
+#~ "possa essere distrutto, sia che il lich possa essere indebolito facendolo."
+
+#~ msgid ""
+#~ "Safely outside the cave, the foolish hero tried to destroy the book. None "
+#~ "of the attempts left so much as a dent or char, yet each attempt caused "
+#~ "another scream to echo from the cave mouth. Finally the cave entrance "
+#~ "collapsed, and everything was still."
+#~ msgstr ""
+#~ "In salvo fuori dalla caverna, lo sciocco eroe prova a distruggere il "
+#~ "libro. Nessuno dei tentativi lasciò più di una ammaccatura o scalfittura, "
+#~ "ma ad ogni tentativo si sentiva un nuovo ulro provenire dalla bocca della "
+#~ "caverna. Finalmente l’entrata della caverna collassò, e tutto rimase "
+#~ "immobile."
+
+#~ msgid ""
+#~ "Years pass. Every summer when the mountain passes become clear, humans, "
+#~ "elves and dwarves patrol to repel orcish raiders. Undead no longer "
+#~ "trouble the patrols, and memories of the lich fade to become just "
+#~ "background in the tale of the brave hero’s victory."
+#~ msgstr ""
+#~ "Passano gli anni. Ogni estate, quando i passi montati si liberano, umani, "
+#~ "elfi e nani pattugliano per respingere gli incursori degli orchi. I non "
+#~ "morti non sono più un problema per le pattuglie, e i ricordi del lich "
+#~ "sbiadiscono per diventare dei semplici contorni nei racconti delle "
+#~ "vittorie dell’eroe coraggioso."
+
+#~ msgid ""
+#~ "Rumors circulate that fortune smiles on those patrols. That when attacked "
+#~ "by orcs at night, it sometimes seems that more blades than just the "
+#~ "patrol’s own are fighting the orcs."
+#~ msgstr ""
+#~ "Circolano delle voci che la fortuna arrida a quelle pattuglie. Che quando "
+#~ "vengono attaccate di notte dagli orchi, a combatterli ci siano più lame "
+#~ "che soltanto quelle della pattuglia."
+
+#~ msgid "Lich"
+#~ msgstr "Lich"
 
 #~ msgid "short sword"
 #~ msgstr "spada corta"

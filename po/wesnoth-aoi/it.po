@@ -1,11 +1,11 @@
 # translation of it.po to Italian
-# Antonio Rosella <arosella@yahoo.com>, 2011-2017
+# Antonio Rosella <arosella@yahoo.com>, 2011-2019
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-04 16:39 UTC\n"
-"PO-Revision-Date: 2017-05-19 18:39+0300\n"
+"PO-Revision-Date: 2019-01-28 21:19+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:11
@@ -38,8 +38,10 @@ msgstr ""
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:20
+#, fuzzy
+#| msgid "(Rookie level, 7 scenarios.)"
 msgid "(Novice level, 7 scenarios.)"
-msgstr "(Livello per principianti, 7 scenari)"
+msgstr "(Livello per principianti, 7 scenari.)"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:22
@@ -664,7 +666,7 @@ msgid ""
 msgstr ""
 "Il comandante degli orchi finalmente cadde, sopraffatto dalle sue ferite. "
 "Gli elfi si ritrovarono in un accampamento semidistrutto, disseminato dei "
-"corpi di entrambe le fazioni; non c’erano orchi vegeti in vista, e nessuno "
+"corpi di entrambe le fazioni. Non c’erano orchi vegeti in vista, e nessuno "
 "dei feriti implorò pietà. Gli elfi non fecero prigionieri."
 
 #. [message]: role=advisor
@@ -709,12 +711,16 @@ msgstr ""
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:265
+#, fuzzy
+#| msgid ""
+#| "What about the loot, lord? We found supplies worth over a hundred gold in "
+#| "the camp."
 msgid ""
 "What about the loot lord? We found supplies worth over a hundred gold in the "
 "camp."
 msgstr ""
-"Cosa dobbiamo farne del bottino di guerra? Nell’accampamento abbiamo trovato "
-"viveri per più di cento monete d’oro."
+"Signore, cosa dobbiamo farne del bottino di guerra? Nell’accampamento "
+"abbiamo trovato viveri per più di cento monete d’oro."
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:270
@@ -746,6 +752,9 @@ msgstr ""
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:320
+#, fuzzy
+#| msgid ""
+#| "We can’t carry on, lord, the men are too tired. We have to fall back."
 msgid "We can’t carry on Lord, the men are too tired. We have to fall back."
 msgstr ""
 "Non riusciamo ad andare avanti, Signore, la truppa è troppo stanca. Dobbiamo "
@@ -1313,7 +1322,7 @@ msgstr ""
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:289
 msgid "We are of one mind, then. Let us go to it."
-msgstr "La pensiamo allo stesso modo, quindi. Facciamolo!"
+msgstr "La pensiamo allo stesso modo, quindi. Facciamolo."
 
 #. [scenario]: id=06_A_Detour_through_the_Swamp
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:10
@@ -1534,3 +1543,45 @@ msgstr ""
 #: data/campaigns/An_Orcish_Incursion/utils/macros.cfg:4
 msgid "Hint:"
 msgstr "Suggerimento:"
+
+#~ msgid ""
+#~ "My lord, none of our healers have experience on the battlefield. It "
+#~ "pleases me that they are safe, but if we should embark on a campaign then "
+#~ "we will surely need them alongside us in the battles ahead."
+#~ msgstr ""
+#~ "Mio Signore, nessuna delle nostre guarittrici ha esperienza sul campo di "
+#~ "battaglia. Mi rassicura il fatto che siano in salvo, ma se dobbiamo "
+#~ "imbarcarci in una campagna allora avremo sicuramente bisogno di averle al "
+#~ "nostro fianco nelle prossime battaglie."
+
+#~ msgid ""
+#~ "female^My lord, none of our healers have experience on the battlefield. "
+#~ "It pleases me that they are safe, but if we should embark on a campaign "
+#~ "then we will surely need them alongside us in the battles ahead."
+#~ msgstr ""
+#~ "Mio Signore, nessuna delle nostre guarittrici ha esperienza sul campo di "
+#~ "battaglia. Mi rassicura il fatto che siano in salvo, ma se dobbiamo "
+#~ "imbarcarci in una campagna allora avremo sicuramente bisogno di averle al "
+#~ "nostro fianco nelle prossime battaglie."
+
+#~ msgid ""
+#~ "My lord, none of our surviving healers have experience on the "
+#~ "battlefield. It pains me to suggest that we should risk another, but if "
+#~ "we should embark on a campaign then we will surely need them alongside us "
+#~ "in the battles ahead."
+#~ msgstr ""
+#~ "Mio Signore, nessuna delle nostre guaritrici sopravvissute ha esperienza "
+#~ "sul campo di battaglia. Mi addolora suggerire di rischiarne delle altre, "
+#~ "ma se dobbiamo imbarcarci in una campagna allora avremo sicuramente "
+#~ "bisogno di averle al nostro fianco nelle prossime battaglie."
+
+#~ msgid ""
+#~ "female^My lord, none of our surviving healers have experience on the "
+#~ "battlefield. It pains me to suggest that we should risk another, but if "
+#~ "we should embark on a campaign then we will surely need them alongside us "
+#~ "in the battles ahead."
+#~ msgstr ""
+#~ "Mio Signore, nessuna delle nostre guaritrici sopravvissute ha esperienza "
+#~ "sul campo di battaglia. Mi addolora suggerire di rischiarne delle altre, "
+#~ "ma se dobbiamo imbarcarci in una campagna allora avremo sicuramente "
+#~ "bisogno di averle al nostro fianco nelle prossime battaglie."

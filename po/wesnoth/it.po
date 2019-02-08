@@ -9,13 +9,13 @@
 # Alessio D'Ascanio <otaku@fastwebnet.it>, 2004, 2005.
 # Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2008, 2009, 2010, 2011.
 # Luciano Montanaro <mikelima@gmail.com>, 2012.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2018.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-09-09 16:54+0200\n"
+"PO-Revision-Date: 2019-01-28 22:37+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -1744,10 +1744,13 @@ msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:521
+#, fuzzy
+#| msgid ""
+#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
 "Questo tridente conferisce ad un nereide il potere di lanciare saette contro "
-"i suoi nemici!"
+"i suoi nemici."
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:525
@@ -4363,7 +4366,7 @@ msgstr "mosse"
 #. [unit_defense]: id=unit-defense
 #: data/themes/classic.cfg:451
 msgid "statuspanel^terrain def."
-msgstr "dif. terreno"
+msgstr "terreno def."
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:32
@@ -6768,28 +6771,38 @@ msgstr "Potenziamenti delle abilità: "
 
 #: src/help/help_topic_generators.cpp:482
 msgid "HP: "
-msgstr "PF: "
+msgstr ""
 
 # mi tocca metterlo così, altrimenti il testo nella finestra va a capo [Nd Bonta-kun]
 #: src/help/help_topic_generators.cpp:483
+#, fuzzy
+#| msgid "Moves:"
 msgid "Moves: "
-msgstr "Mosse: "
+msgstr "Mosse:"
 
 #: src/help/help_topic_generators.cpp:485
+#, fuzzy
+#| msgid "Vision:"
 msgid "Vision: "
-msgstr "Visione: "
+msgstr "Visione:"
 
 #: src/help/help_topic_generators.cpp:488
+#, fuzzy
+#| msgid "Jamming:"
 msgid "Jamming: "
-msgstr "Disturbo: "
+msgstr "Disturbo:"
 
 #: src/help/help_topic_generators.cpp:490
+#, fuzzy
+#| msgid "Cost:"
 msgid "Cost: "
-msgstr "Costo: "
+msgstr "Costo:"
 
 #: src/help/help_topic_generators.cpp:495
+#, fuzzy
+#| msgid "Required XP:"
 msgid "Required XP: "
-msgstr "PE richiesti: "
+msgstr "PE richiesti:"
 
 #: src/help/help_topic_generators.cpp:504
 msgid "unit help^Attacks"
@@ -7609,8 +7622,14 @@ msgid "Save and abort game"
 msgstr "Abbandona il gioco"
 
 #: src/playturn.cpp:283
+#, fuzzy
+#| msgid ""
+#| "$player who controlled side $side_drop has left the game. What do you "
+#| "want to do?"
 msgid "$player has left the game. What do you want to do?"
-msgstr "$player ha abbandonato la partita. Che cosa vuoi fare?"
+msgstr ""
+"$player che controllava la squadra $side_drop ha abbandonato la partita. Che "
+"cosa vuoi fare?"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -8206,8 +8225,11 @@ msgstr ""
 "debug"
 
 #: src/synced_user_choice.cpp:326
+#, fuzzy
+#| msgid "waiting for $desc from side $sides"
+#| msgid_plural "waiting for $desc from sides $sides"
 msgid "waiting for $desc from side(s) $sides"
-msgstr "in attesa di $desc dalla squadra(e) $sides"
+msgstr "in attesa di $desc dalla squadra $sides"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8435,6 +8457,9 @@ msgstr "Opzioni della lavagna"
 #~ msgid "Trailers"
 #~ msgstr "Anteprime"
 
+#~ msgid "color^Gold"
+#~ msgstr "Oro"
+
 #~ msgid "The standard Wesnoth core."
 #~ msgstr "Il nucleo standar di Wesnoth."
 
@@ -8457,6 +8482,23 @@ msgstr "Opzioni della lavagna"
 #~ msgstr ""
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
+
+#~ msgid "Using lower-level units can be very cost-effective."
+#~ msgstr ""
+#~ "Utilizzare unità di basso livello può essere economicamente vantaggioso."
+
+#~ msgid ""
+#~ "Some higher-level units have inimitable abilities such as <i>Leadership</"
+#~ "i>, <i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can "
+#~ "make a big difference in a campaign."
+#~ msgstr ""
+#~ "Alcune unità di alto livello hanno abilità inimitabili, quali <i>Comando</"
+#~ "i>, <i>Cura</i>, o <i>Agguato Notturno</i>. Ottenere queste unità "
+#~ "rapidamente può fare una grossa differenza in una campagna."
+
+#~| msgid "<i>― Memoirs of Gweddry, 627YW</i>"
+#~ msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
+#~ msgstr "<i>― Ser Gerrick di Westin, 607AW</i>"
 
 #~ msgid "an advancement choice"
 #~ msgstr "una scelta di avanzamento"
@@ -8495,8 +8537,32 @@ msgstr "Opzioni della lavagna"
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "Riferimento a un argomento sconosciuto: "
 
+#~ msgid "HP:"
+#~ msgstr "PF:"
+
+#~ msgid "Alignment:"
+#~ msgstr "Allineamento:"
+
+#~ msgid "No unit recalled"
+#~ msgstr "Nessuna unità richiamata"
+
+#~ msgid "Side '$side' is already droided."
+#~ msgstr "La squadra '$side' è già automatizzata."
+
+#~ msgid "Side '$side' controller is now controlled by: AI."
+#~ msgstr "Il nuovo conduttore della squadra '$side' ora è: AI."
+
+#~ msgid "Side '$side' controller is now controlled by: human."
+#~ msgstr "Il nuovo conduttore della squadra '$side' ora è: umano."
+
+#~ msgid "Advancements:"
+#~ msgstr "Avanzamenti:"
+
 #~ msgid "weapon^None"
 #~ msgstr "nessuna"
+
+#~ msgid "Battery"
+#~ msgstr "Batteria"
 
 #~ msgid "(unknown player)"
 #~ msgstr "(giocatore sconosciuto)"
