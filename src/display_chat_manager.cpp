@@ -182,16 +182,26 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 	prune_chat_messages();
 }
 
+static unsigned int safe_subtract(unsigned int a, unsigned int b)
+{
+	return (a > b) ? a - b : 0;
+}
+
 void display_chat_manager::prune_chat_messages(bool remove_all)
 {
+	//NOTE: prune_chat_messages(false) seems to be only called when a new message is added, which in
+	//      particular means the aging feature won't work unless new messages are addded regularly
 	const unsigned message_aging = preferences::chat_message_aging();
-	const unsigned message_ttl = remove_all ? 0 : message_aging * 60 * 1000;
 	const unsigned max_chat_messages = preferences::chat_lines();
+	const bool enable_aging = message_aging != 0;
+	
+	const unsigned remove_before = enable_aging ? safe_subtract(SDL_GetTicks(), message_aging * 60 * 1000) : 0;
 	int movement = 0;
 
-	if(message_aging != 0 || remove_all || chat_messages_.size() > max_chat_messages) {
+	if(enable_aging || remove_all || chat_messages_.size() > max_chat_messages) {
 		while (!chat_messages_.empty() &&
-		       (chat_messages_.front().created_at + message_ttl < SDL_GetTicks() ||
+		       (remove_all ||
+			chat_messages_.front().created_at < remove_before ||
 		        chat_messages_.size() > max_chat_messages))
 		{
 			const chat_message &old = chat_messages_.front();
