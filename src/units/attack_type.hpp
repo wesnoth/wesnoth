@@ -101,7 +101,7 @@ private:
 
 	// Configured as a bit field, in case that is useful.
 	enum AFFECTS { AFFECT_SELF=1, AFFECT_OTHER=2, AFFECT_EITHER=3 };
-	bool special_active(const config& special, AFFECTS whom,
+	bool special_active(const config& special, AFFECTS whom, const std::string& tag_name,
 	                    bool include_backstab=true) const;
 
 	// Used via specials_context() to control which specials are

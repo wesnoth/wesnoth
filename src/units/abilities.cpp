@@ -563,27 +563,41 @@ template std::pair<int, map_location> unit_ability_list::get_extremum<std::great
 
 namespace {
 
+	struct special_match
+	{
+		std::string tag_name;
+		const config* cfg;
+	};
+
 	/**
 	 * Gets the children of @parent (which should be the specials for an
 	 * attack_type) and places the ones whose tag or id= matches @a id into
-	 * @a result.
-	 * If @a just_peeking is set to true, then @a result is not touched;
-	 * instead the return value is used to indicate if any matching children
-	 * were found.
+	 * @a tag_result and @a id_result.
+	 *
+	 * If @a just_peeking is set to true, then @a tag_result and @a id_result
+	 * are not touched; instead the return value is used to indicate if any
+	 * matching children were found.
 	 *
 	 * @returns  true if @a just_peeking is true and a match was found;
 	 *           false otherwise.
 	 */
-	bool get_special_children(std::vector<const config*>& result, const config& parent,
-	                           const std::string& id, bool just_peeking=false) {
+	bool get_special_children(std::vector<special_match>& tag_result,
+	                           std::vector<special_match>& id_result,
+	                           const config& parent, const std::string& id,
+	                           bool just_peeking=false) {
 		for (const config::any_child &sp : parent.all_children_range())
 		{
-			if (sp.key == id || sp.cfg["id"] == id) {
-				if(just_peeking) {
-					return true; // peek succeeded; done
-				} else {
-					result.push_back(&sp.cfg);
-				}
+			if (just_peeking && (sp.key == id || sp.cfg["id"] == id)) {
+				return true; // peek succeeded; done
+			}
+
+			if(sp.key == id) {
+				special_match special = { sp.key, &sp.cfg };
+				tag_result.push_back(special);
+			}
+			if(sp.cfg["id"] == id) {
+				special_match special = { sp.key, &sp.cfg };
+				id_result.push_back(special);
 			}
 		}
 		return false;
@@ -600,28 +614,41 @@ namespace {
 bool attack_type::get_special_bool(const std::string& special, bool simple_check) const
 {
 	{
-		std::vector<const config*> list;
-		if ( get_special_children(list, specials_, special, simple_check) ) {
+		std::vector<special_match> special_tag_matches;
+		std::vector<special_match> special_id_matches;
+		if ( get_special_children(special_tag_matches, special_id_matches, specials_, special, simple_check) ) {
 			return true;
 		}
 		// If we make it to here, then either list.empty() or !simple_check.
 		// So if the list is not empty, then this is not a simple check and
 		// we need to check each special in the list to see if any are active.
-		for(const config* entry : list) {
-			if ( special_active(*entry, AFFECT_SELF) ) {
+		for(const special_match& entry : special_tag_matches) {
+			if ( special_active(*entry.cfg, AFFECT_SELF, entry.tag_name) ) {
+				return true;
+			}
+		}
+		for(const special_match& entry : special_id_matches) {
+			if ( special_active(*entry.cfg, AFFECT_SELF, entry.tag_name) ) {
 				return true;
 			}
 		}
 	}
+
 	// Skip checking the opponent's attack?
 	if ( simple_check || !other_attack_ ) {
 		return false;
 	}
 
-	std::vector<const config*> list;
-	get_special_children(list, other_attack_->specials_, special);
-	for(const config* entry : list) {
-		if ( other_attack_->special_active(*entry, AFFECT_OTHER) ) {
+	std::vector<special_match> special_tag_matches;
+	std::vector<special_match> special_id_matches;
+	get_special_children(special_tag_matches, special_id_matches, other_attack_->specials_, special);
+	for(const special_match& entry : special_tag_matches) {
+		if ( other_attack_->special_active(*entry.cfg, AFFECT_OTHER, entry.tag_name) ) {
+			return true;
+		}
+	}
+	for(const special_match& entry : special_id_matches) {
+		if ( other_attack_->special_active(*entry.cfg, AFFECT_OTHER, entry.tag_name) ) {
 			return true;
 		}
 	}
@@ -638,7 +665,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 	unit_ability_list res(self_loc_);
 
 	for(const config& i : specials_.child_range(special)) {
-		if(special_active(i, AFFECT_SELF)) {
+		if(special_active(i, AFFECT_SELF, special)) {
 			res.emplace_back(&i, self_loc_);
 		}
 	}
@@ -648,7 +675,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 	}
 
 	for(const config& i : other_attack_->specials_.child_range(special)) {
-		if(other_attack_->special_active(i, AFFECT_OTHER)) {
+		if(other_attack_->special_active(i, AFFECT_OTHER, special)) {
 			res.emplace_back(&i, other_loc_);
 		}
 	}
@@ -674,7 +701,7 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 
 	for (const config::any_child &sp : specials_.all_children_range())
 	{
-		if ( !active_list || special_active(sp.cfg, AFFECT_EITHER) ) {
+		if ( !active_list || special_active(sp.cfg, AFFECT_EITHER, sp.key) ) {
 			const t_string &name = sp.cfg["name"];
 			if (!name.empty()) {
 				res.emplace_back(name, sp.cfg["description"].t_str() );
@@ -706,7 +733,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 	std::string res;
 	for (const config::any_child &sp : specials_.all_children_range())
 	{
-		const bool active = special_active(sp.cfg, AFFECT_EITHER, is_backstab);
+		const bool active = special_active(sp.cfg, AFFECT_EITHER, sp.key, is_backstab);
 
 		const std::string& name = sp.cfg["name"].str();
 		if (!name.empty()) {
@@ -973,11 +1000,12 @@ namespace { // Helpers for attack_type::special_active()
  * based on the current context (see set_specials_context).
  * @param[in] special           a weapon special WML structure
  * @param[in] whom              specifies which combatant we care about
+ * @param[in] tag_name          tag name of the special config
  * @param[in] include_backstab  false if backstab specials should not be active
  *                              (usually true since backstab is usually accounted
  *                              for elsewhere)
  */
-bool attack_type::special_active(const config& special, AFFECTS whom,
+bool attack_type::special_active(const config& special, AFFECTS whom, const std::string& tag_name,
                                  bool include_backstab) const
 {
 	//log_scope("special_active");
@@ -1030,17 +1058,21 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	temporary_facing self_facing(self, self_loc_.get_relative_dir(other_loc_));
 	temporary_facing other_facing(other, other_loc_.get_relative_dir(self_loc_));
 
-	// Filter poison, plague, drain
-	if (special["id"] == "drains" && other && other->get_state("undrainable")) {
+	// Filter poison, plague, drain, first strike
+	if (tag_name == "drains" && other && other->get_state("undrainable")) {
 		return false;
 	}
-	if (special["id"] == "plague" && other &&
+	if (tag_name == "plague" && other &&
 		(other->get_state("unplagueable") ||
 		 resources::gameboard->map().is_village(other_loc_))) {
 		return false;
 	}
-	if (special["id"] == "poison" && other &&
+	if (tag_name == "poison" && other &&
 		(other->get_state("unpoisonable") || other->get_state(unit::STATE_POISONED))) {
+		return false;
+	}
+	if (tag_name == "firststrike" && !is_attacker_ && other_attack_ &&
+		other_attack_->get_special_bool("firststrike", false)) {
 		return false;
 	}
 
