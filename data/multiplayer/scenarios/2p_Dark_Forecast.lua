@@ -239,6 +239,7 @@ local function place_units(unittypes, x, y)
 		})
 		local dst_x, dst_y = wesnoth.find_vacant_tile(x, y, u)
 		u:to_map(dst_x, dst_y)
+		wesnoth.set_village_owner(dst_x, dst_y, 1)
 	end
 end
 
