@@ -186,9 +186,6 @@ def CheckBoostIostreamsBZip2(context):
     return False
 
 def CheckBoostLocaleBackends(context, backends):
-    env = context.env
-    backup = env.Clone().Dictionary()
-
     context.Message("Checking for available Boost Locale backends... ")
     test_program = """
         #include <boost/locale/localization_backend.hpp>
@@ -206,9 +203,6 @@ def CheckBoostLocaleBackends(context, backends):
         }
         \n"""
 
-    if(env["PLATFORM"] != "win32"):
-        env.Append(LIBS = ["icudata", "icui18n", "icuuc"])
-
     res, output = context.TryRun(test_program, ".cpp")
     result = False
     found_backends = "no"
@@ -221,8 +215,6 @@ def CheckBoostLocaleBackends(context, backends):
     if result:
         return True
     else:
-        env.Replace(**backup)
-
-    return False
+        return False
 
 config_checks = { "CheckBoost" : CheckBoost, "CheckBoostIostreamsGZip" : CheckBoostIostreamsGZip, "CheckBoostIostreamsBZip2" : CheckBoostIostreamsBZip2, "CheckBoostLocaleBackends" : CheckBoostLocaleBackends }
