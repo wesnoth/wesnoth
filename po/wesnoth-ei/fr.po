@@ -6,13 +6,14 @@
 # Guillaume Pascal <guillaume.pascal43@laposte.net>, 2011, 2013.
 # Guigou Guillaume <guillaume.guigou@orange.fr>, 2013.
 # Rémi BERTHO <remi.bertho@openmailbox.org>, 2015.
-#  Syll <syll-dev@laposte.net>, 2018.
+# Syll <syll-dev@laposte.net>, 2018, 2019.
+#  Mathieu Guilbaud <mathie@guim.info>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: Eastern_Invasion-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 01:26 UTC\n"
-"PO-Revision-Date: 2018-05-16 15:32+0200\n"
+"PO-Revision-Date: 2019-02-09 14:00+0100\n"
 "Last-Translator: Syll <syll-dev@laposte.net>\n"
 "Language-Team: français <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -78,8 +79,10 @@ msgstr ""
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:24
+#, fuzzy
+#| msgid "(Novice level, 16 scenarios.)"
 msgid "(Intermediate level, 16 scenarios.)"
-msgstr "(Niveau intermédiaire, 16 scénarios.)"
+msgstr "(Niveau novice, 16 scénarios.)"
 
 #. [about]
 #: data/campaigns/Eastern_Invasion/_main.cfg:28
@@ -560,15 +563,19 @@ msgstr "Où sommes-nous ? Je ne vois pas où nous allons."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:188
+#, fuzzy
+#| msgid ""
+#| "This is an old escape route for the outpost. Unfortunately these caves "
+#| "are currently inhabited by trolls, who are blocking our path through the "
+#| "tunnel."
 msgid ""
 "This is an old escape tunnel for the outpost; unfortunately these caves are "
 "currently inhabited by trolls. Now hurry, we have to move quickly; the "
 "undead will surely follow us down here."
 msgstr ""
-"Il s'agit d'un vieux tunnel d'évasion pour le poste avancé, mais "
-"malheureusement ces grottes sont actuellement habitées par des trolls. "
-"Maintenant, dépêchez-vous, nous devons agir rapidement ; les morts-vivants "
-"vont sûrement nous suivre ici-bas."
+"Il s'agit d'un vieux tunnel d'évasion pour l'avant-poste. Mais "
+"malheureusement ces grottes sont actuellement habitées par des trolls, "
+"lesquels nous bloquent le passage à travers le tunnel."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:193
@@ -4159,6 +4166,18 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/utils/macros.cfg:67
 msgid "Holy Amulet"
 msgstr "Amulette sacrée"
+
+#~ msgid "We must make haste to escape before the undead catch up."
+#~ msgstr ""
+#~ "Nous devons nous hâter de traverser avant que ces morts-vivants ne nous "
+#~ "rattrapent !"
+
+#~ msgid ""
+#~ "Very well. The best of luck in your battle. Gweddry, we may be able to "
+#~ "avoid the bulk of the trolls by going through the dwarves’ tunnel."
+#~ msgstr ""
+#~ "Très bien. Que la chance soit avec vous. Gweddry, nous pourrions éviter "
+#~ "le gros des trolls en prenant à travers les tunnels des nains."
 
 #~ msgid "greatsword"
 #~ msgstr "grande épée"
