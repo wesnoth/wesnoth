@@ -143,7 +143,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, resources::gameboard->teams());
 	rounds = weapon->get_specials("berserk").highest("value", 1).first;
 	if(weapon->combat_ability("berserk", 1).second) {
-		rounds = weapon->combat_ability("berserk", 1).first;
+		rounds = std::max(1, weapon->combat_ability("berserk", 1).first);
 	}
 	firststrike = weapon->bool_ability("firststrike");
 
