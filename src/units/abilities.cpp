@@ -602,6 +602,36 @@ namespace {
 		}
 		return false;
 	}
+
+	bool get_special_children_id(std::vector<const config*>& result, const config& parent,
+	                           const std::string& id, bool just_peeking=false) {
+		for (const config::any_child &sp : parent.all_children_range())
+		{
+			if (sp.cfg["id"] == id) {
+				if(just_peeking) {
+					return true; // peek succeeded; done
+				} else {
+					result.push_back(&sp.cfg);
+				}
+			}
+		}
+		return false;
+	}
+
+	bool get_special_children_tags(std::vector<const config*>& result, const config& parent,
+	                           const std::string& id, bool just_peeking=false) {
+		for (const config::any_child &sp : parent.all_children_range())
+		{
+			if (sp.key == id) {
+				if(just_peeking) {
+					return true; // peek succeeded; done
+				} else {
+					result.push_back(&sp.cfg);
+				}
+			}
+		}
+		return false;
+	}
 }
 
 /**
@@ -649,6 +679,68 @@ bool attack_type::get_special_bool(const std::string& special, bool simple_check
 	}
 	for(const special_match& entry : special_id_matches) {
 		if ( other_attack_->special_active(*entry.cfg, AFFECT_OTHER, entry.tag_name) ) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool attack_type::get_special_bool_id(const std::string& special, bool simple_check) const
+{
+	{
+		std::vector<const config*> list;
+		if ( get_special_children_id(list, specials_, special, simple_check) ) {
+			return true;
+		}
+		// If we make it to here, then either list.empty() or !simple_check.
+		// So if the list is not empty, then this is not a simple check and
+		// we need to check each special in the list to see if any are active.
+		for(const config* entry : list) {
+			if ( special_active(*entry, AFFECT_SELF) ) {
+				return true;
+			}
+		}
+	}
+	// Skip checking the opponent's attack?
+	if ( simple_check || !other_attack_ ) {
+		return false;
+	}
+
+	std::vector<const config*> list;
+	get_special_children_id(list, other_attack_->specials_, special);
+	for(const config* entry : list) {
+		if ( other_attack_->special_active(*entry, AFFECT_OTHER) ) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool attack_type::get_special_bool_tags(const std::string& special, bool simple_check) const
+{
+	{
+		std::vector<const config*> list;
+		if ( get_special_children_tags(list, specials_, special, simple_check) ) {
+			return true;
+		}
+		// If we make it to here, then either list.empty() or !simple_check.
+		// So if the list is not empty, then this is not a simple check and
+		// we need to check each special in the list to see if any are active.
+		for(const config* entry : list) {
+			if ( special_active(*entry, AFFECT_SELF) ) {
+				return true;
+			}
+		}
+	}
+	// Skip checking the opponent's attack?
+	if ( simple_check || !other_attack_ ) {
+		return false;
+	}
+
+	std::vector<const config*> list;
+	get_special_children_tags(list, other_attack_->specials_, special);
+	for(const config* entry : list) {
+		if ( other_attack_->special_active(*entry, AFFECT_OTHER) ) {
 			return true;
 		}
 	}
