@@ -1573,7 +1573,7 @@ void unit::write(config& cfg, bool write_all) const
 
 void unit::set_facing(map_location::DIRECTION dir) const
 {
-	if(dir != map_location::NDIRECTIONS) {
+	if(dir != map_location::NDIRECTIONS && dir != facing_) {
 		appearance_changed_ = true;
 		facing_ = dir;
 	}
