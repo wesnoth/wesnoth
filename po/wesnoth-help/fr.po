@@ -9,14 +9,15 @@
 # Guillaume Pascal <guillaume.pascal43@laposte.net>, 2011, 2012, 2013.
 # Guigou Guillaume <guillaume.guigou@orange.fr>, 2013.
 # Rémi BERTHO <remi.bertho@gmail.com>, 2014.
-# Mathieu GUILBAUD < mathieu@guim.info>, 2018.
+# Mathieu GUILBAUD < mathieu@guim.info>, 2018, 2019.
+# Syll <syll-dev@laposte.net>, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Help-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-22 03:45+0300\n"
-"PO-Revision-Date: 2018-09-12 18:09+0200\n"
+"PO-Revision-Date: 2019-02-09 14:07+0100\n"
 "Last-Translator: Syll <syll-dev@laposte.net>\n"
 "Language-Team: français <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -35,15 +36,10 @@ msgstr "Sous terre"
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:696
 msgid "righteous rage"
-msgstr ""
+msgstr "fureur berserk"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:698
-#, fuzzy
-#| msgid ""
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the champions is slain, or 30 rounds of attacks have occurred."
@@ -53,17 +49,11 @@ msgstr ""
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:707
-#, fuzzy
-#| msgid "first strike"
 msgid "true strike"
 msgstr "initiative"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:709
-#, fuzzy
-#| msgid ""
-#| "This attack always has a 70% chance to hit regardless of the defensive "
-#| "ability of the unit being attacked."
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the champion being attacked."
@@ -739,27 +729,21 @@ msgstr ""
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:32
-#, fuzzy
-#| msgid "Great Ocean"
 msgid "Great River"
-msgstr "Grand Océan"
+msgstr "Grand Fleuve"
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:33
-#, fuzzy
-#| msgid ""
-#| "The continent on which the <ref>dst='kingdom_wesnoth' text='Kingdom of "
-#| "Wesnoth'</ref> lies. Its west coast is surrounded by the "
-#| "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgid ""
 "The Great River forms the boundary between the <ref>dst='kingdom_wesnoth' "
 "text='Kingdom of Wesnoth'</ref> and the <ref>dst='northlands' "
 "text='Northlands'</ref>. It empties to the <ref>dst='great_ocean' "
 "text='Great Ocean'</ref> at <ref>dst='elensefar' text='Elensefar'</ref>."
 msgstr ""
-"Le continent où se trouve le <ref>dst='kingdom_wesnoth' text='royaume de "
-"Wesnoth'</ref>. Sa côté ouest borde le <ref>dst='great_ocean' text='Grand "
-"Océan'</ref>."
+"Le Grand Fleuve forme la frontière entre le <ref>dst='kingdom_wesnoth' "
+"text='royaume de Wesnoth'</ref> et les <ref>dst='northlands' text='Terres du "
+"Nord'</ref>. Il se jette dans le <ref>dst='great_ocean' text='Grand Océan'</"
+"ref> à <ref>dst='elensefar' text='Elensefar'</ref>."
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:38
@@ -1469,26 +1453,6 @@ msgstr ""
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:172
-#, fuzzy
-#| msgid ""
-#| "Wesnoth is comprised of a series of battles, called "
-#| "<italic>text='scenarios'</italic>, that pit your troops against the "
-#| "troops of one or more adversaries. Multiple scenarios that follow on from "
-#| "each other, telling a story, make up <italic>text='campaigns'</italic>. "
-#| "In a campaign, you often need to play more carefully, preserving your "
-#| "best troops for use again in later scenarios.\n"
-#| "\n"
-#| "The interactive <bold>text='Tutorial'</bold> introduces the basics of "
-#| "Wesnoth gameplay in the context of a scenario. Most material covered in "
-#| "the tutorial is explained more in-depth in these pages, so you can always "
-#| "refer back here if you forget something.\n"
-#| "\n"
-#| "After you master the basics, try out a beginner campaign, such as "
-#| "<italic>text='Heir to the Throne'</italic> or <italic>text='The South "
-#| "Guard'</italic>. A full list of installed campaigns can be found via the "
-#| "<bold>text='Campaign'</bold> option on the main menu. As Wesnoth can be "
-#| "quite challenging, you may wish to start on easy before progressing to "
-#| "higher difficulties."
 msgid ""
 "Wesnoth is comprised of a series of battles, called "
 "<italic>text='scenarios'</italic>, that pit your troops against the troops "
@@ -1536,7 +1500,18 @@ msgstr ""
 "du Sud'</italic>. La liste complète des campagnes installées se trouve dans "
 "le menu principal <bold>text='Campagnes'</bold>. Wesnoth peut être assez "
 "difficile, vous devriez commencer par une campagne facile, avant de "
-"progresser vers les plus ardues."
+"progresser vers les plus ardues.\n"
+"\n"
+"Les campagnes sont groupées par <italic>text='niveau'</italic> et "
+"<italic>text='difficulté'</italic>. Par exemple, <italic>text='L'Héritier du "
+"trône'</italic> est au niveau « Novice » et jouable en trois difficultés : "
+"débutant, normal, difficile. Le niveau d'une campagne indique le degrés  de "
+"connaissance des mécaniques de jeu nécessaire (comme les <ref>dst='movement' "
+"text='zones de contrôle'</ref> ou <ref>dst='time_of_day' text='le moment de "
+"la journée'</ref>). La difficulté mesure le défi que sera le scénario pour "
+"un joueur vétéran : pour des difficultés les plus hautes, les obstacles à la "
+"victoire seront plus hauts et les surmonter nécessitera un jeu des plus "
+"habile. "
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:181
@@ -1631,19 +1606,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:204
-#, fuzzy
-#| msgid ""
-#| "Each side begins with one leader in their keep. At the start of any "
-#| "battle, and at times during it, you will need to recruit <ref>dst='.."
-#| "units' text='units'</ref> into your army. To recruit, you must have your "
-#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
-#| "italic> campaign) on the keep hex of a <ref>dst='terrain_castle' "
-#| "text='castle'</ref>. Then you may recruit by either choosing "
-#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
-#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
-#| "which lists units available for recruitment, along with their gold cost. "
-#| "Click on a unit to see its statistics, then press the "
-#| "<bold>text='Recruit'</bold> button to recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1660,7 +1622,7 @@ msgstr ""
 "bataille, et parfois au cours de celle-ci, vous aurez besoin d'enrôler des "
 "<ref>dst='..units' text='unités'</ref> dans votre armée. Pour recruter, vous "
 "devez avoir votre chef (par exemple, Konrad dans la campagne « L'Héritier du "
-"trône ») sur une case de donjon dans un <ref>dst='terrain_castle' "
+"trône ») sur une case de donjon dans un <ref>dst='..terrain_castle' "
 "text='château'</ref>. Vous pourrez alors recruter soit en choisissant "
 "<bold>text='Recruter'</bold> dans le menu soit par un clic-droit sur un "
 "hexagone pour sélectionner <bold>text='Recruter'</bold>. Cela affichera le "
@@ -1977,17 +1939,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:264
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Another thing to keep in mind while moving is <italic>text='zones of "
-#| "control'</italic>. Each unit — except for level 0 units — generates a "
-#| "zone of control in the hexes immediately surrounding it, and any enemy "
-#| "unit entering those hexes immediately ends its movement. Learning how to "
-#| "use zones of control to your advantage is an important part of Wesnoth, "
-#| "as only <ref>dst='ability_skirmisher' text='skirmishers'</ref> can ignore "
-#| "zones of control."
 msgid ""
 "\n"
 "\n"
@@ -2006,8 +1957,8 @@ msgstr ""
 "unités de niveau 0, contrôle les hexagones qui l'entourent, et empêche toute "
 "unité ennemie qui y pénètre de continuer son mouvement. Apprendre à utiliser "
 "des zones de contrôle à votre avantage constitue un élément important de "
-"Wesnoth, puisque seuls les <ref>dst='ability_skirmisher' text='tirailleurs'</"
-"ref> peuvent les ignorer."
+"Wesnoth, puisque seuls les <ref>dst='ability_skirmisherskirmisher' "
+"text='tirailleurs'</ref> peuvent les ignorer."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:266
@@ -2473,16 +2424,12 @@ msgstr ""
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:356
-#, fuzzy
-#| msgid ""
-#| "Some role-playing scenarios take place indoors — these regions are "
-#| "similarly intermediate."
 msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate.\n"
 msgstr ""
 "Quelques scénarios ont lieu à l'intérieur — ces lieux sont également entre "
-"le jour et la nuit."
+"le jour et la nuit.\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:358
@@ -2492,6 +2439,10 @@ msgid ""
 "<ref>dst='terrain_lava' text='lava'</ref> change the time of day bonus "
 "around them."
 msgstr ""
+"Enfin, les unités avec la capacité "
+"<ref>dst='ability_illuminationilluminates' text='illumination'</ref> ainsi "
+"que les terrains tels que la <ref>dst='terrain_lava' text='lave'</ref> "
+"changent le bonus du moment de la journée autour d'eux."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:365
@@ -2524,12 +2475,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:368
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• <bold>text='Villages'</bold>: A unit which starts a turn in a village "
-#| "or oasis will heal 8HP. If the unit is poisoned, the poison will be cured "
-#| "instead."
 msgid ""
 "\n"
 "• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
@@ -2538,17 +2483,11 @@ msgid ""
 msgstr ""
 "\n"
 "• <bold>text='Villages'</bold> : une unité qui commence un tour dans un "
-"village se soignera de 8 PV. Si cette unité est empoisonnée, elle sera "
-"guérie à la place."
+"village ou un <ref>dst='terrain_oasis' text='oasis'</ref> se soignera de 8 "
+"PV. Si cette unité est empoisonnée, elle sera guérie à la place."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:369
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• <ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
-#| "(such as trolls) will automatically heal 8HP every turn. If the unit is "
-#| "poisoned, the poison will be cured instead."
 msgid ""
 "\n"
 "• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
@@ -2556,20 +2495,12 @@ msgid ""
 "the unit is poisoned, the poison will be cured instead."
 msgstr ""
 "\n"
-"• <ref>dst='ability_regenerates' text='Régénération'</ref> : certaines "
-"unités (comme les trolls) se soigneront automatiquement de 8 PV à chaque "
-"tour. Si cette unité est empoisonnée, elle sera guérie à la place."
+"• <ref>dst='ability_regeneratesregenerates' text='Régénération'</ref> : "
+"certaines unités (comme les trolls) se soigneront automatiquement de 8 PV à "
+"chaque tour. Si cette unité est empoisonnée, elle sera guérie à la place."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:370
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• <bold>text='Healing units'</bold>: Units with the "
-#| "<ref>dst='ability_heals +4' text='Heals'</ref> ability will heal each "
-#| "allied adjacent unit, usually <ref>dst='ability_heals +4' text='4HP'</"
-#| "ref> or <ref>dst='ability_heals +8' text='8HP'</ref> per turn, or prevent "
-#| "Poison from causing that unit damage."
 msgid ""
 "\n"
 "• <bold>text='Healing units'</bold>: Units with the "
@@ -2580,20 +2511,13 @@ msgid ""
 msgstr ""
 "\n"
 "• <bold>text='Unités soignantes'</bold> : les unités avec la capacité de "
-"<ref>dst='ability_heals +4' text='soins'</ref> soigneront les unités alliées "
-"adjacentes, habituellement de <ref>dst='ability_heals +4' text='4 PV'</ref> "
-"ou de <ref>dst='ability_heals +8' text='8 PV'</ref> par tour, ou empêcheront "
-"le poison de leur faire des dégâts."
+"<ref>dst='ability_healingheals +4'' text='soins'</ref> soigneront les unités "
+"alliées adjacentes, habituellement de <ref>dst='ability_healingheals +4' "
+"text='4 PV'</ref> ou de <ref>dst='ability_healingheals +8' text='8 PV'</ref> "
+"par tour, ou empêcheront le poison de leur faire des dégâts."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:371
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• <bold>text='Curing units'</bold>: Units with the "
-#| "<ref>dst='ability_cures' text='cures'</ref> ability will cure Poison in "
-#| "all allied adjacent units (in preference to healing, if it has that "
-#| "ability as well)."
 msgid ""
 "\n"
 "• <bold>text='Curing units'</bold>: Units with the "
@@ -2603,9 +2527,9 @@ msgid ""
 msgstr ""
 "\n"
 "• <bold>text='Unités guérisseuses'</bold> : les unités avec la capacité de "
-"<ref>dst='ability_cures' text='guérison'</ref> guériront de l'empoisonnement "
-"toutes les unités adjacentes (au lieu de les soigner, si l'unité est aussi "
-"soignante)."
+"<ref>dst='ability_curingcures' text='guérison'</ref> guériront de "
+"l'empoisonnement toutes les unités adjacentes (au lieu de les soigner, si "
+"l'unité est aussi soignante)."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:372
@@ -6087,6 +6011,76 @@ msgid ""
 "eating carrion and even committing cannibalism, which are both regular "
 "occurrences."
 msgstr ""
+"Les Sauriens sont des créatures ayant l'apparence de lézards. Plus petits et "
+"plus minces que les humains, ils sont rarement plus grands qu'un enfant de "
+"dix ans, mais du bout du museau au bout de la queue un Saurien peut être "
+"plus long qu'un homme moyen est grand. Légers et habiles, les guerriers "
+"préfèrent se battre comme ils chassent — glissant à travers les lignes "
+"ennemies pour viser les plus faibles et les blessés tout en esquivant les "
+"attaques.\n"
+"\n"
+"<header>text='Societé'</header>\n"
+"Les mystères entourant les Sauriens sont dus à leur tendance à vivre dans "
+"des lieux inhospitaliers, comme les marais. Fatalistes à l’extrême, les "
+"Sauriens croient que les évènements de la vie peuvent être prédits par "
+"l'utilisation d'une forme complexe d'astrologie.\n"
+"\n"
+"La culture saurienne est très nettement scindée en deux genres. Au sein de "
+"chaque genre la compétition fait rage, à travers la compétence, la "
+"détermination et la réputation pour établir une hiérarchie claire, "
+"comportant un chef au sommet. Au cours des rencontres entre les deux genres, "
+"il n'y a pas de compétition pour la domination ; c'est la situation qui "
+"détermine le genre dominant. Le chef des mâles est l'alpha au sein du "
+"campement ou du village du clan, tandis que la chef des femelles est "
+"dominante partout ailleurs. Cette règle s'applique à tous les rangs de la "
+"hiérarchie, chaque mâle ou femelle étant le dominant sur tous les membres du "
+"genre opposé de rang inférieur et se soumettant aux membres du genre opposé "
+"d'un rang supérieur.\n"
+"\n"
+"La ségrégation et l'alternance du genre dominant de la société saurienne est "
+"une conséquence du rôle bien déterminé de chaque genre. Il est de la "
+"responsabilité de la femelle de chasser et de trouver de la nourriture, "
+"compétence qui les entraîne à devenir guerrières : les fameux tirailleurs, "
+"embusqueurs et flanqueurs que les autres races craignent tant. Les mâles, "
+"cependant, sont responsables du nid — les œufs laissés par les femelles. "
+"Bien que cela laisse le temps aux mâles de développer et d'aiguiser l'art de "
+"l'astrologie, du soin et de la magie, cela les expose également à de grands "
+"dangers, car ils représentent des cibles stationnaires pour leur ennemi "
+"numéro un — les autres clans sauriens.\n"
+"\n"
+"Les nouveaux clans sauriens sont créés lorsque les bons signes astrologiques "
+"font leur apparition dans le ciel. Au cours de cet évènement appelé « "
+"éclosion », chaque femelle désignée par la conjonction sélectionne un groupe "
+"d'individus de rang inférieur et quitte son clan d'origine. Il arrive "
+"fréquemment que toutes les femelles possédant une capacité particulière "
+"soient désignées, causant « l'éclosion » de plusieurs clans simultanément. "
+"La sélection est simple : aucun groupe nouvellement créé ne peut être plus "
+"gros qu'un autre, tous les groupes réunis ne peuvent être plus gros que le "
+"groupe d'origine et un rang supérieur permet à une femelle d'avoir priorité "
+"sur une autre femelle quand au choix d'un membre de son nouveau clan.\n"
+"\n"
+"À cause de leur forte natalité, des fréquentes scissions dans les clans et "
+"du cannibalisme qui n'est pas un tabou, la violence est un trait commun la "
+"vie saurienne. La culture saurienne ne se répand ainsi que par à-coups, car "
+"l'essentiel de leur connaissance est transmise par la tradition orale et "
+"leurs possessions doivent être facilement transportables.\n"
+"\n"
+"<header>text='Géographie'</header>\n"
+"Les Sauriens peuvent vivre dans de nombreux endroits, cependant les marais "
+"sont leur habitat le plus commun.\n"
+"\n"
+"<header>text='Biologie'</header>\n"
+"Les Sauriens ont une espérance de vie particulièrement courte en comparaison "
+"des autres races de Wesnoth, ils atteignent l'âge adulte en trois ans et "
+"mourent entre 10 et 15 ans. La cause la plus courante de décès est de loin "
+"la violence. Les femelles sauriennes produisent des portées d'une vingtaine "
+"d'œufs environ une fois par an, ce qui crée une pression constante sur la "
+"population et mettrait à mal la plupart des chaînes alimentaires carnivores. "
+"Chasseurs et charognards, les Sauriens ont de fortes mâchoires et un "
+"puissant système digestif doté de fluides très acides, les rendant capables "
+"de manger et digérer leurs proies en entier, peau, dents, cornes et os. De "
+"plus, ils n'ont pas d'aversion pour la charogne et le cannibalisme, ce qui "
+"se produit assez fréquemment."
 
 #. [race]: id=mechanical
 #: data/core/units.cfg:276
