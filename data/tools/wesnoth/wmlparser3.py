@@ -519,7 +519,7 @@ class Parser:
                 self.handle_attribute(line)
         else:
             for i, segment in enumerate(line.split(b"+")):
-                segment = segment.lstrip(b" ")
+                segment = segment.lstrip(b" \t")
 
                 if i > 0:
                     # If the last segment is empty (there was a plus sign
