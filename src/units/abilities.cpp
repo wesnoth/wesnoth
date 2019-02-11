@@ -603,8 +603,7 @@ namespace {
 		return false;
 	}
 
-	bool get_special_children_id(std::vector<special_match>& tag_result,
-	                           std::vector<special_match>& id_result,
+	bool get_special_children_id(std::vector<special_match>& id_result,
 	                           const config& parent, const std::string& id,
 	                           bool just_peeking=false) {
 		for (const config::any_child &sp : parent.all_children_range())
@@ -622,7 +621,6 @@ namespace {
 	}
 
 	bool get_special_children_tags(std::vector<special_match>& tag_result,
-	                           std::vector<special_match>& id_result,
 	                           const config& parent, const std::string& id,
 	                           bool just_peeking=false) {
 		for (const config::any_child &sp : parent.all_children_range())
@@ -694,19 +692,13 @@ bool attack_type::get_special_bool(const std::string& special, bool simple_check
 bool attack_type::get_special_bool_id(const std::string& special, bool simple_check) const
 {
 	{
-		std::vector<special_match> special_tag_matches;
 		std::vector<special_match> special_id_matches;
-		if ( get_special_children_id(special_tag_matches, special_id_matches, specials_, special, simple_check) ) {
+		if ( get_special_children_id(special_id_matches, specials_, special, simple_check) ) {
 			return true;
 		}
 		// If we make it to here, then either list.empty() or !simple_check.
 		// So if the list is not empty, then this is not a simple check and
 		// we need to check each special in the list to see if any are active.
-		for(const special_match& entry : special_tag_matches) {
-			if ( special_active(*entry.cfg, AFFECT_SELF, entry.tag_name) ) {
-				return true;
-			}
-		}
 		for(const special_match& entry : special_id_matches) {
 			if ( special_active(*entry.cfg, AFFECT_SELF, entry.tag_name) ) {
 				return true;
@@ -719,14 +711,8 @@ bool attack_type::get_special_bool_id(const std::string& special, bool simple_ch
 		return false;
 	}
 
-	std::vector<special_match> special_tag_matches;
 	std::vector<special_match> special_id_matches;
-	get_special_children_id(special_tag_matches, special_id_matches, other_attack_->specials_, special);
-	for(const special_match& entry : special_tag_matches) {
-		if ( other_attack_->special_active(*entry.cfg, AFFECT_OTHER, entry.tag_name) ) {
-			return true;
-		}
-	}
+	get_special_children_id(special_id_matches, other_attack_->specials_, special);
 	for(const special_match& entry : special_id_matches) {
 		if ( other_attack_->special_active(*entry.cfg, AFFECT_OTHER, entry.tag_name) ) {
 			return true;
@@ -739,19 +725,13 @@ bool attack_type::get_special_bool_tags(const std::string& special, bool simple_
 {
 	{
 		std::vector<special_match> special_tag_matches;
-		std::vector<special_match> special_id_matches;
-		if ( get_special_children_tags(special_tag_matches, special_id_matches, specials_, special, simple_check) ) {
+		if ( get_special_children_tags(special_tag_matches, specials_, special, simple_check) ) {
 			return true;
 		}
 		// If we make it to here, then either list.empty() or !simple_check.
 		// So if the list is not empty, then this is not a simple check and
 		// we need to check each special in the list to see if any are active.
 		for(const special_match& entry : special_tag_matches) {
-			if ( special_active(*entry.cfg, AFFECT_SELF, entry.tag_name) ) {
-				return true;
-			}
-		}
-		for(const special_match& entry : special_id_matches) {
 			if ( special_active(*entry.cfg, AFFECT_SELF, entry.tag_name) ) {
 				return true;
 			}
@@ -764,14 +744,8 @@ bool attack_type::get_special_bool_tags(const std::string& special, bool simple_
 	}
 
 	std::vector<special_match> special_tag_matches;
-	std::vector<special_match> special_id_matches;
-	get_special_children_tags(special_tag_matches, special_id_matches, other_attack_->specials_, special);
+	get_special_children_tags(special_tag_matches, other_attack_->specials_, special);
 	for(const special_match& entry : special_tag_matches) {
-		if ( other_attack_->special_active(*entry.cfg, AFFECT_OTHER, entry.tag_name) ) {
-			return true;
-		}
-	}
-	for(const special_match& entry : special_id_matches) {
 		if ( other_attack_->special_active(*entry.cfg, AFFECT_OTHER, entry.tag_name) ) {
 			return true;
 		}
