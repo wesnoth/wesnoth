@@ -6,6 +6,7 @@ Contents
   3. SCons Build
   4. CMake Build
   5. Build Options
+  6. Essential Build Options for Windows (MYSYS2 + MinGW-w64)
 
 
 ## 1. Prerequisites
@@ -249,3 +250,17 @@ Some of the most important options follow.
    only if you wish to be able to communicate with a local wesnothd instance
    through a named pipe. You must run wesnothd with the same UID specified at
    build time for this to work.
+
+## 6. Essential Build Options for Windows (MYSYS2 + MinGW-w64)
+   
+Building Wesnoth in Windows is not as strict forward as that in Linux. Using 
+MYSYS2 and MinGW-w64 is one of the most convenient ways to compile Wesnoth in
+Windows. First, you should install MinGW-w64 by MYSYS2 installer. Then, 
+install all the dependencies listed above from the MinGW-w64 repository. 
+Now, in the MinGW-w64 shell, you can run the Scons command with the following
+options to build Wesnoth:
+
+    $ scons arch=native sdldir=/mingw64/include/SDL2 \
+            boostdir=/mingw64/include/boost boostlibdir=/mingw64/bin \
+            boost_suffix=-mt notifications=false
+
