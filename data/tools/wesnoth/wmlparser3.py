@@ -503,13 +503,12 @@ class Parser:
         Parse a WML fragment outside of strings.
         """
         if not line: return
+        if line.startswith(b"#textdomain "):
+            self.textdomain = line[12:].strip().decode("utf8")
+            return
         if not self.temp_key_nodes:
             line = line.lstrip()
             if not line: return
-
-            if line.startswith(b"#textdomain "):
-                self.textdomain = line[12:].strip().decode("utf8")
-                return
 
             # Is it a tag?
             if line.startswith(b"["):
