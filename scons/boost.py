@@ -102,6 +102,7 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
         test_program += """
         boost::unit_test::test_suite* init_unit_test_suite ( int, char**)
         {
+            return nullptr;
         }
         \n"""
 
@@ -112,6 +113,7 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
         #endif
         int main()
         {
+            return 0;
         }
         \n"""
     if context.TryLink(test_program, ".cpp"):
@@ -135,6 +137,7 @@ def CheckBoostIostreamsGZip(context):
         {
             boost::iostreams::filtering_stream<boost::iostreams::output> filter;
             filter.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params()));
+            return 0;
         }
         \n"""
 
@@ -165,6 +168,7 @@ def CheckBoostIostreamsBZip2(context):
         {
             boost::iostreams::filtering_stream<boost::iostreams::output> filter;
             filter.push(boost::iostreams::bzip2_compressor(boost::iostreams::bzip2_params()));
+            return 0;
         }
         \n"""
 
@@ -203,6 +207,7 @@ def CheckBoostLocaleBackends(context, backends):
             for(auto backend : backends) {
                 std::cout << backend << std::endl;
             }
+            return 0;
         }
         \n"""
 
