@@ -22,6 +22,7 @@
 #include "random.hpp"
 #include "seed_rng.hpp"
 #include "deprecation.hpp"
+#include "language.hpp"                 // for get_language
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"
@@ -387,6 +388,12 @@ static int intf_format_list(lua_State* L)
 	return 1;
 }
 
+static int intf_get_language(lua_State* L)
+{
+	lua_push(L, get_language().localename);
+	return 1;
+}
+
 /**
 * Dumps a wml table or userdata wml object into a pretty string.
 * - Arg 1: wml table or vconfig userdata
@@ -625,6 +632,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "format",                   &intf_format                   },
 		{ "format_conjunct_list",     &intf_format_list<true>        },
 		{ "format_disjunct_list",     &intf_format_list<false>       },
+		{ "get_language",             &intf_get_language             },
 		{ nullptr, nullptr }
 	};
 

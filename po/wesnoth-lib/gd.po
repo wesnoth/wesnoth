@@ -4,14 +4,17 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
+# GunChleoc, 2018
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: GunChleoc, 2017\n"
+"PO-Revision-Date: 2017-05-31 13:43+0000\n"
+"Last-Translator: GunChleoc, 2018\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
 "teams/12769/gd/)\n"
 "Language: gd\n"
@@ -251,6 +254,11 @@ msgstr "Gaineamh fhàsaich"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:298
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Deserts'</italic> have a somewhat different composition "
+#| "than small sand pits or beaches, however for gameplay purposes they are "
+#| "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
@@ -258,7 +266,7 @@ msgid ""
 msgstr ""
 "Tha <italic>text='fàsaichean'</italic> eadar-dhealaichte bho àrainnean beaga "
 "de ghaineamh no tràighean, ach a thaobh cluiche a’ gheama tha iad co-"
-"ionnann. Thoir sùil air <ref>dst='terrain_sand' text='gaineamh'</ref>."
+"ionnann. Thoir sùil air <ref>dst='..terrain_sand' text='gaineamh'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -713,7 +721,7 @@ msgstr ""
 "creagach on a tha iad beag.\n"
 "\n"
 "Aig amannan, bidh uamhan <ref>dst='terrain_illuminated_cave' "
-"text=’soillseach'</ref>."
+"text='soillseach'</ref>."
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -2586,8 +2594,10 @@ msgstr "Duilgheas"
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:83
+#, fuzzy
+#| msgid "Select difficulty:"
 msgid "Select difficulty level:"
-msgstr "Tagh ìre an duilgheis:"
+msgstr "Tagh an duilgheas:"
 
 #. [label]
 #: data/gui/window/chat_log.cfg:36
@@ -7709,6 +7719,12 @@ msgstr ""
 #~ "chluich nuair a bhios “Astar luathaichte” an comas no nuair a bhios Shift "
 #~ "’ga chumail sìos sa gheama"
 
+#~ msgid "Filter:"
+#~ msgstr "Criathrag:"
+
+#~ msgid "Filters on hotkey description."
+#~ msgstr "Criathraich seo air tuairisgeulan nan grad-iuchraichean."
+
 #~ msgid "Limit FPS"
 #~ msgstr "Cuingich na FPS"
 
@@ -7740,6 +7756,9 @@ msgstr ""
 
 #~ msgid "active_modifications^None"
 #~ msgstr "Chan eil gin"
+
+#~ msgid "The selected file is corrupt: "
+#~ msgstr "Tha am faidhle a thagh thu coirbte: "
 
 #~ msgid "Modifications: "
 #~ msgstr "Atharraichean: "

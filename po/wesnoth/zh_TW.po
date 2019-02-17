@@ -1,23 +1,24 @@
+# The Battle for Wesnoth - Traditional Chinese Translations
+# Copyright (C) 2005-2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2005.
 # 楊綮銘 <steven2880@gmail.com>, 2008.
-# Li, Kwunron <likwueron>2018.
+# 李昆融 <likwueron@gmail.com>, 2018.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth 1.12.1\n"
+"Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-06-17 21:49+0800\n"
+"PO-Revision-Date: 2019-02-16 23:24+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
-"Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
+"Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -94,7 +95,7 @@ msgstr "連線逾時"
 msgid ""
 "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
 "disable"
-msgstr "等待幾秒後默認逾時。設定為0則取消此功能。"
+msgstr "等待幾秒後默認逾時。設定為0則取消此功能"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:72
@@ -4011,27 +4012,27 @@ msgstr "螢幕截圖"
 #. [fonts]
 #: data/hardwired/fonts.cfg:28
 msgid "Lato"
-msgstr "Lato"
+msgstr "Lato,DejaVu Sans,Andagii,Droid Sans Fallback"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:29
 msgid "DejaVu Sans Mono"
-msgstr "DejaVu Sans Mono"
+msgstr "DejaVu Sans Mono,Droid Sans Fallback"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:30
 msgid "Lato Light"
-msgstr "Lato Light"
+msgstr "Lato Light,Droid Sans Fallback"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:31
 msgid "Oldania ADF Std"
-msgstr "Oldania ADF Std"
+msgstr "Oldania ADF Std,Droid Sans Fallback"
 
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:187
 msgid "(Note: You should use $replacement instead in new code)"
-msgstr "(備註：你應該使用 $replacement 而不是新的程式碼)"
+msgstr "（備註：你應該使用 $replacement 而不是新的程式碼）"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecate_api
@@ -5720,7 +5721,7 @@ msgstr "%A, %H:%M"
 
 #: src/format_time_summary.cpp:57
 msgid "%A, %I:%M %p"
-msgstr "%A, %H:%M"
+msgstr "%A, %I:%M %p"
 
 #: src/format_time_summary.cpp:61
 msgid "%b %d"
@@ -6348,7 +6349,7 @@ msgstr "<header>text='擁有此效果的單位'</header>"
 
 #: src/help/help_impl.cpp:537
 msgid "<header>text='Units with this ability'</header>"
-msgstr "<header>text='擁有這個技能的單位：'</header>"
+msgstr "<header>text='擁有這個技能的單位'</header>"
 
 #: src/help/help_impl.cpp:567
 msgid "Era:"
@@ -6360,7 +6361,7 @@ msgstr "陣營"
 
 #: src/help/help_impl.cpp:624
 msgid "Races: "
-msgstr "種族"
+msgstr "種族："
 
 #: src/help/help_impl.cpp:633 src/help/help_impl.cpp:983
 msgid "Alignments: "
@@ -6380,7 +6381,7 @@ msgstr "沒有資料。"
 
 #: src/help/help_impl.cpp:714 src/help/help_impl.cpp:716
 msgid "Availability: "
-msgstr "可用性"
+msgstr "可用性："
 
 #: src/help/help_impl.cpp:714
 msgid "Must-have"
@@ -6454,7 +6455,7 @@ msgstr "變種："
 
 #: src/help/help_topic_generators.cpp:387 src/reports.cpp:183
 msgid "Race: "
-msgstr "種族"
+msgstr "種族："
 
 #: src/help/help_topic_generators.cpp:413
 #: src/help/help_topic_generators.cpp:436
@@ -6463,7 +6464,7 @@ msgstr "特質"
 
 #: src/help/help_topic_generators.cpp:446
 msgid "Abilities: "
-msgstr "技能"
+msgstr "技能："
 
 #: src/help/help_topic_generators.cpp:464
 msgid "Ability Upgrades: "
@@ -7009,15 +7010,15 @@ msgstr "無法找到含有‘$search’字串的標籤或單位。"
 
 #: src/menu_events.cpp:1415
 msgid "Can't droid invalid side: '$side'."
-msgstr "無法關閉/啟用無效陣營：'$side'的AI。"
+msgstr "無法關閉/啟用無效陣營：'$side'。"
 
 #: src/menu_events.cpp:1420
 msgid "Can't droid networked side: '$side'."
-msgstr "無法關閉/啟用網絡陣營：'$side' 的AI。"
+msgstr "無法關閉/啟用網絡陣營：'$side'。"
 
 #: src/menu_events.cpp:1438
 msgid "Can't droid a local ai side: '$side'."
-msgstr "無法關閉/啟用本地AI陣營：'$side' 的AI。"
+msgstr "無法關閉/啟用本地AI陣營：'$side'。"
 
 #: src/menu_events.cpp:1453
 msgid "Can't idle invalid side: '$side'."
@@ -7350,7 +7351,7 @@ msgstr "能力： "
 
 #: src/reports.cpp:389 src/reports.cpp:832
 msgid " (inactive)"
-msgstr " (遲緩)"
+msgstr " （遲緩）"
 
 #: src/reports.cpp:441
 msgid "Resistances: "
@@ -7568,7 +7569,7 @@ msgstr "回合倒數"
 
 #: src/save_index.cpp:218
 msgid "%a %b %d %I:%M %p %Y"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%a %b %d %I:%M %p %Y"
 
 #: src/save_index.cpp:219
 msgid "%a %b %d %H:%M %Y"
