@@ -50,7 +50,7 @@
        from reaching the island in time
  ### Language and i18n
    * Updated translations: British English, Chinese (Traditional), French,
-     German, Italian, Russian, Slovak, Spanish, Ukrainian.
+     German, Italian, Russian, Scottish Gaelic, Slovak, Spanish, Ukrainian.
  ### Lua API
    * Fix wesnoth.set_dialog_callback calling the function immediately when used in the previous callback. (issue #3794)
    * Fix wesnoth.set_dialog_value not triggering re-layout. (issue #3572)

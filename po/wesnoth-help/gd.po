@@ -4,14 +4,17 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
+# GunChleoc, 2018
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-22 03:45+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: GunChleoc, 2017\n"
+"PO-Revision-Date: 2017-05-31 13:43+0000\n"
+"Last-Translator: GunChleoc, 2018\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
 "teams/12769/gd/)\n"
 "Language: gd\n"
@@ -30,42 +33,31 @@ msgstr "Fon talamh"
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:696
 msgid "righteous rage"
-msgstr ""
+msgstr "boile ionraic"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:698
-#, fuzzy
-#| msgid ""
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the champions is slain, or 30 rounds of attacks have occurred."
 msgstr ""
 "Cò dhiubh an cleachd thu seo airson ionnsaighe no dìona, cha sguir an sabaid "
-"mus fhaigh aon de na cathaich bàs no gus an deach 30 cuairtean de "
+"mus fhaigh aon de na laoich bàs no gus an deach 30 cuairtean de "
 "dh’ionnsaighean seachad."
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:707
-#, fuzzy
-#| msgid "first strike"
 msgid "true strike"
-msgstr "ciad bhuille"
+msgstr "fìor-bhuille"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:709
-#, fuzzy
-#| msgid ""
-#| "This attack always has a 70% chance to hit regardless of the defensive "
-#| "ability of the unit being attacked."
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the champion being attacked."
 msgstr ""
 "Tha seans bualaidh de 70% aig an ionnsaigh seo an-còmhnaidh ge b’ e dè an "
-"comas dìona a tha aig an aonad air an toir thu ionnsaigh."
+"comas dìona a tha aig an laoch air an doir thu ionnsaigh."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -733,27 +725,21 @@ msgstr ""
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:32
-#, fuzzy
-#| msgid "Great Ocean"
 msgid "Great River"
-msgstr "An Cuan Mòr"
+msgstr "An Abhainn Mhòr"
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:33
-#, fuzzy
-#| msgid ""
-#| "The continent on which the <ref>dst='kingdom_wesnoth' text='Kingdom of "
-#| "Wesnoth'</ref> lies. Its west coast is surrounded by the "
-#| "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgid ""
 "The Great River forms the boundary between the <ref>dst='kingdom_wesnoth' "
 "text='Kingdom of Wesnoth'</ref> and the <ref>dst='northlands' "
 "text='Northlands'</ref>. It empties to the <ref>dst='great_ocean' "
 "text='Great Ocean'</ref> at <ref>dst='elensefar' text='Elensefar'</ref>."
 msgstr ""
-"Seo a’ mhòr-thìr air a bheil an <ref>dst='kingdom_wesnoth' text='Rìoghachd "
-"Bheasnaid'</ref>. Tha oirthir siar ’ga chuairteachadh leis a’ "
-"<ref>dst='great_ocean' text='Chuan Mhòr'</ref>."
+"Tha An Abhainn Mhòr ’na chrìoch eadar <ref>dst='kingdom_wesnoth' "
+"text='Rìoghachd Bheasnaid'</ref> agus <ref>dst='northlands' text='An Taobh "
+"Tuath'</ref>. Tha bun na h-aibhne sa <ref>dst='great_ocean' text='Chuan "
+"Mhòr'</ref> aig <ref>dst='elensefar' text='Eleansafar'</ref>."
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:38
@@ -1478,26 +1464,6 @@ msgstr ""
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:172
-#, fuzzy
-#| msgid ""
-#| "Wesnoth is comprised of a series of battles, called "
-#| "<italic>text='scenarios'</italic>, that pit your troops against the "
-#| "troops of one or more adversaries. Multiple scenarios that follow on from "
-#| "each other, telling a story, make up <italic>text='campaigns'</italic>. "
-#| "In a campaign, you often need to play more carefully, preserving your "
-#| "best troops for use again in later scenarios.\n"
-#| "\n"
-#| "The interactive <bold>text='Tutorial'</bold> introduces the basics of "
-#| "Wesnoth gameplay in the context of a scenario. Most material covered in "
-#| "the tutorial is explained more in-depth in these pages, so you can always "
-#| "refer back here if you forget something.\n"
-#| "\n"
-#| "After you master the basics, try out a beginner campaign, such as "
-#| "<italic>text='Heir to the Throne'</italic> or <italic>text='The South "
-#| "Guard'</italic>. A full list of installed campaigns can be found via the "
-#| "<bold>text='Campaign'</bold> option on the main menu. As Wesnoth can be "
-#| "quite challenging, you may wish to start on easy before progressing to "
-#| "higher difficulties."
 msgid ""
 "Wesnoth is comprised of a series of battles, called "
 "<italic>text='scenarios'</italic>, that pit your troops against the troops "
@@ -1549,7 +1515,19 @@ msgstr ""
 "iomairtean a chaidh a stàladh leis an roghainn <bold>text='Iomairt'</bold> "
 "sa phrìomh chlàr-taice. On a dh’fhaodas Beasnad a bhith caran dùbhlanach aig "
 "amannan, mholamaid gun tòisich thu air duilgheas furasta mus lean thu air "
-"adhart le roghainnean nas duilghe."
+"adhart le roghainnean nas duilghe.\n"
+"\n"
+"Tha iomairtean ’gam buidhneachadh a-rèir an <italic>text='ìre'</italic> ’s "
+"<italic>text='duilgheas'</italic>. Mar eisimpleir, tha <italic>text='Oighre "
+"na cathrach'</italic> air ìre “foghlamaiche” agus gabhaidh a cluich air trì "
+"duilgheasan: “Neach-tòiseachaidh”, “Àbhaisteach” no “Dùbhlanach”. Innsidh "
+"ìre na h-iomairte dhut dè cho sgileil a dh’fheumas tu a bhith le dòighean a’ "
+"gheama (can <ref>dst='movement' text='raointean-smachd'</ref> agus "
+"<ref>dst='time_of_day' text='àm dhen latha'</ref>) ’nar beachd. Innsidh an "
+"duilgheas dhut dè cho dùbhlanach ’s a bhios na cnàmh-sgeulan do "
+"chluicheadairean seann-eòlach: mar as àirde an duilgheas ’s ann as duilghe a "
+"bhios na cnapan-starra a bhios romhad mus fhaigh thu buaidh agus ’s ann as "
+"sgileile a dh’fheumas tu a’ cluiche."
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:181
@@ -1646,19 +1624,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:204
-#, fuzzy
-#| msgid ""
-#| "Each side begins with one leader in their keep. At the start of any "
-#| "battle, and at times during it, you will need to recruit <ref>dst='.."
-#| "units' text='units'</ref> into your army. To recruit, you must have your "
-#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
-#| "italic> campaign) on the keep hex of a <ref>dst='terrain_castle' "
-#| "text='castle'</ref>. Then you may recruit by either choosing "
-#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
-#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
-#| "which lists units available for recruitment, along with their gold cost. "
-#| "Click on a unit to see its statistics, then press the "
-#| "<bold>text='Recruit'</bold> button to recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1675,13 +1640,13 @@ msgstr ""
 "catha agus aig amannan rè a’ chatha fhèin, feumaidh tu <ref>dst='..units' "
 "text='aonadan'</ref> a thrusadh don fheachd agad. Gus trusadh, feumaidh an "
 "ceannard agad (mar eisimpleir, Conall san iomairt <italic>text='Oighre na "
-"cathrach'</italic>) a bhith air sia-cheàrnach an daingein aig "
-"<ref>dst='terrain_castle' text='caisteal'</ref>. Faodaidh tu aonadan a "
-"thrusadh an-siud ma thaghas tu <bold>text='Trus'</bold> air a’ chlàr-taice "
-"no ma nì thu briogadh deas air sia-cheàrnach, a taghadh <bold>text='Trus'</"
-"bold> an uair sin. Gheibh thu an clàr-taice trusaidh le seo, a sheallas a h-"
-"uile aonad a tha ri fhaighinn dhut le cosgaisean òir ’na lùib. Briog air "
-"aonad gus a stadastaireachd fhaicinn is an uair sin briog air a’ phutain "
+"cathrach'</italic>) a bhith air sia-cheàrnach an daingein aig <ref>dst='.."
+"terrain_castle' text='caisteal'</ref>. Faodaidh tu aonadan a thrusadh an-"
+"siud ma thaghas tu <bold>text='Trus'</bold> air a’ chlàr-taice no ma nì thu "
+"briogadh deas air sia-cheàrnach, a taghadh <bold>text='Trus'</bold> an uair "
+"sin. Gheibh thu an clàr-taice trusaidh le seo, a sheallas a h-uile aonad a "
+"tha ri fhaighinn dhut le cosgaisean òir ’na lùib. Briog air aonad gus a "
+"stadastaireachd fhaicinn is an uair sin briog air a’ phutain "
 "<bold>text='Trus'</bold> gus a thrusadh."
 
 #. [topic]: id=recruit_and_recall
@@ -2010,17 +1975,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:264
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Another thing to keep in mind while moving is <italic>text='zones of "
-#| "control'</italic>. Each unit — except for level 0 units — generates a "
-#| "zone of control in the hexes immediately surrounding it, and any enemy "
-#| "unit entering those hexes immediately ends its movement. Learning how to "
-#| "use zones of control to your advantage is an important part of Wesnoth, "
-#| "as only <ref>dst='ability_skirmisher' text='skirmishers'</ref> can ignore "
-#| "zones of control."
 msgid ""
 "\n"
 "\n"
@@ -2040,8 +1994,8 @@ msgstr ""
 "is thèid crìoch a chur air gluasad aonadan nàmhad sa bhad nuair a thig iad a-"
 "steach dha na sia-cheàrnaich seo. ’S e pàirt chudromach de Bheasnad a th’ "
 "ann gun ionnsaich thu mar a chleachdas tu raointean-smachd oir chan fhaod "
-"ach <ref>dst='ability_skirmisher' text='streupairean'</ref> na raointean-"
-"smachd fhàgail dhan dàrna taobh."
+"ach <ref>dst='ability_skirmisherskirmisher' text='streupairean'</ref> na "
+"raointean-smachd fhàgail dhan dàrna taobh."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:266
@@ -2517,16 +2471,12 @@ msgstr ""
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:356
-#, fuzzy
-#| msgid ""
-#| "Some role-playing scenarios take place indoors — these regions are "
-#| "similarly intermediate."
 msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate.\n"
 msgstr ""
 "Gabhaidh cuid a chnàmh-sgeulan riochd-chluiche àite taobh a-staigh – tha na "
-"sgìrean seo eadar latha is oidhche cuideachd."
+"sgìrean seo eadar latha is oidhche cuideachd.\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:358
@@ -2536,6 +2486,10 @@ msgid ""
 "<ref>dst='terrain_lava' text='lava'</ref> change the time of day bonus "
 "around them."
 msgstr ""
+"Mu dheireadh thall, atharraichidh aonadan air a bheil comas "
+"<ref>dst='ability_illuminationilluminates' text='soillseachadh'</ref> agus "
+"feartan crutha-tìre mar <ref>dst='terrain_lava' text='làbha'</ref> buaidh àm "
+"dhen latha mu an timcheall."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:365
@@ -2568,12 +2522,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:368
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• <bold>text='Villages'</bold>: A unit which starts a turn in a village "
-#| "or oasis will heal 8HP. If the unit is poisoned, the poison will be cured "
-#| "instead."
 msgid ""
 "\n"
 "• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
@@ -2581,18 +2529,13 @@ msgid ""
 "poisoned, the poison will be cured instead."
 msgstr ""
 "\n"
-"• <bold>text='Bailtean'</bold>: slànaichidh aonad a bhios ann am baile aig "
-"toiseach cuairte 8 PB. Ma chaidh an t-aonad a phuinnseanachadh, thèid am "
-"puinnsean a leigheas ’na àite."
+"• <bold>text='Bailtean'</bold>: slànaichidh aonad a bhios ann am baile no "
+"<ref>dst='terrain_oasis' text='innis-fhàsaich'</ref> 8 PB aig toiseach "
+"cuairte. Ma chaidh an t-aonad a phuinnseanachadh, thèid am puinnsean a "
+"leigheas ’na àite."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:369
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• <ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
-#| "(such as trolls) will automatically heal 8HP every turn. If the unit is "
-#| "poisoned, the poison will be cured instead."
 msgid ""
 "\n"
 "• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
@@ -2600,21 +2543,13 @@ msgid ""
 "the unit is poisoned, the poison will be cured instead."
 msgstr ""
 "\n"
-"• <ref>dst='ability_regenerates' text='Ath-ghintinn'</ref>: slànaichidh cuid "
-"a dh’aonadan (a leithid athaich) 8 PB aig toiseach gach cuairte gu fèin-"
-"obrachail. Ma chaidh an t-aonad a phuinnseanachadh, thèid am puinnsean a "
-"leigheas ’na àite."
+"• <ref>dst='ability_regeneratesregenerates' text='Ath-ghintinn'</ref>: "
+"slànaichidh cuid a dh’aonadan (a leithid athaich) 8 PB aig toiseach gach "
+"cuairte gu fèin-obrachail. Ma chaidh an t-aonad a phuinnseanachadh, thèid am "
+"puinnsean a leigheas ’na àite."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:370
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• <bold>text='Healing units'</bold>: Units with the "
-#| "<ref>dst='ability_heals +4' text='Heals'</ref> ability will heal each "
-#| "allied adjacent unit, usually <ref>dst='ability_heals +4' text='4HP'</"
-#| "ref> or <ref>dst='ability_heals +8' text='8HP'</ref> per turn, or prevent "
-#| "Poison from causing that unit damage."
 msgid ""
 "\n"
 "• <bold>text='Healing units'</bold>: Units with the "
@@ -2625,20 +2560,13 @@ msgid ""
 msgstr ""
 "\n"
 "• <bold>text='Aonadan slànaigheir'</bold>: Slànaichidh aonadan aig a bheil "
-"comas <ref>dst='ability_heals +4' text='slànachaidh'</ref> gach aonad "
-"caidreabhach ri an taobh le <ref>dst='ability_heals +4' text='4 PB'</ref> no "
-"<ref>dst='ability_heals +8' text='8 PB'</ref> sa chuairt no cuiridh iad "
-"bacadh air dochann bho phuinsean air an aonad seo."
+"comas <ref>dst='ability_healingheals +4' text='slànachaidh'</ref> gach aonad "
+"caidreabhach ri an taobh le <ref>dst='ability_healingheals +4' text='4 PB'</"
+"ref> no <ref>dst='ability_healingheals +8' text='8 PB'</ref> sa chuairt no "
+"cuiridh iad bacadh air dochann bho phuinsean air an aonad seo."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:371
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• <bold>text='Curing units'</bold>: Units with the "
-#| "<ref>dst='ability_cures' text='cures'</ref> ability will cure Poison in "
-#| "all allied adjacent units (in preference to healing, if it has that "
-#| "ability as well)."
 msgid ""
 "\n"
 "• <bold>text='Curing units'</bold>: Units with the "
@@ -2648,9 +2576,9 @@ msgid ""
 msgstr ""
 "\n"
 "• <bold>text='Aonadan lighiche'</bold>: Nì aonad aig a bheil comas "
-"<ref>dst='ability_cures' text='leigheis'</ref> leigheas air puinsean airson "
-"a h-uile aonad caidreabhach ri thaobh (seach slànachadh ma tha an comas seo "
-"aige cuideachd)."
+"<ref>dst='ability_curingcures' text='leigheis'</ref> leigheas air puinsean "
+"airson a h-uile aonad caidreabhach ri thaobh (seach slànachadh ma tha an "
+"comas seo aige cuideachd)."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:372
@@ -3218,7 +3146,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=’Tuilleadain'</header>"
+"<header>text='Tuilleadain'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:496
@@ -3245,7 +3173,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=’Eiteanan'</header>"
+"<header>text='Eiteanan'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:500

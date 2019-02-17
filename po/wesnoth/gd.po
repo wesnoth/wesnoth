@@ -4,14 +4,17 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
+# GunChleoc, 2018
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-27 12:23+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: GunChleoc, 2017\n"
+"PO-Revision-Date: 2017-05-31 12:13+0000\n"
+"Last-Translator: GunChleoc, 2018\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
 "teams/12769/gd/)\n"
 "Language: gd\n"
@@ -5365,6 +5368,8 @@ msgstr "<i>– A’ Bhànrigh Aisebheir, 503BB</i>"
 #: data/tips.cfg:257
 msgid "Using lower-level units can be very cost-effective."
 msgstr ""
+"Dh’fhaoidte gun caomhnaich e cosgaisean dhut ma chleachdas tu aonadan le "
+"rang ìosal."
 
 #. [tip]
 #: data/tips.cfg:261
@@ -5373,13 +5378,14 @@ msgid ""
 "<i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can make a "
 "big difference in a campaign."
 msgstr ""
+"Bidh comasan luachmhor aig ciod a dh’aonadan le rang àrd, can <i>ceannardas</"
+"i>, <i>leigheas</i> no <i>stalc-oidhche</i>. Faodaidh iad diofar mòr a "
+"dhèanamh dhut ma gheibh thu iad tràth san iomairt."
 
 #. [tip]
 #: data/tips.cfg:262
-#, fuzzy
-#| msgid "<i>― Memoirs of Gweddry, 627YW</i>"
 msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
-msgstr "<i>– Tràchdas Cheadraidh, 627BB</i>"
+msgstr "<i>– Ridire Gearaig Bheasdain, 607BB</i>"
 
 #. [tip]
 #: data/tips.cfg:266
@@ -7000,64 +7006,50 @@ msgstr "Àrdachadh chomasan: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:512
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "PB: "
+msgstr "PB:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves: "
 msgid "Moves:"
-msgstr "Gluasadan: "
+msgstr "Gluasadan:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "Vision: "
 msgid "Vision:"
-msgstr "Lèirsinn: "
+msgstr "Lèirsinn:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
-#, fuzzy
-#| msgid "Jamming: "
 msgid "Jamming:"
-msgstr "Casg: "
+msgstr "Casg:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost: "
 msgid "Cost:"
-msgstr "Cosgais: "
+msgstr "Cosgais:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:536
-#, fuzzy
-#| msgid "Alignment: "
 msgid "Alignment:"
-msgstr "Co-thaobhadh: "
+msgstr "Co-thaobhadh:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Required XP: "
 msgid "Required XP:"
-msgstr "Feum air PE: "
+msgstr "Feum air PE:"
 
 #: src/help/help_topic_generators.cpp:552
 msgid "unit help^Attacks"
@@ -7932,10 +7924,8 @@ msgid "Level: "
 msgstr "Rang: "
 
 #: src/reports.cpp:258
-#, fuzzy
-#| msgid "No advancement"
 msgid "Advancements:"
-msgstr "Gun àrdachadh"
+msgstr "Àrdachaidhean:"
 
 #: src/reports.cpp:271
 msgid "No advancement"
@@ -8757,30 +8747,3 @@ msgstr "Falaich na planaichean aig $player"
 #: src/whiteboard/manager.cpp:1143
 msgid "Whiteboard Options"
 msgstr "Roghainnean a’ bhùird-ghil"
-
-#~ msgid "Alternate Wesnoth Server"
-#~ msgstr "Frithealaiche Bheasnaid eile"
-
-#~ msgid "battery"
-#~ msgstr "bataraidh"
-
-#~ msgid ""
-#~ "In many campaign scenarios, you may issue simple instructions for your "
-#~ "computer-controlled allies using the right-click context menu."
-#~ msgstr ""
-#~ "Ann an mòran chnàmh-sgeulan, ’s urrainn dhut iarrtasan simplidh a thoirt "
-#~ "dha chaidreabhaich choimpiutair leis a’ chlàr-taice co-theacsa a gheibh "
-#~ "thu le briogadh deas na luchaige."
-
-#~ msgid "An invalid defender weapon got selected."
-#~ msgstr "Chaidh airm dìonadair mì-dhligheach a thaghadh."
-
-#~ msgid "Advances to:"
-#~ msgstr "Àrdaichidh e gu:"
-
-#~ msgid "(this turn left)"
-#~ msgid_plural "(%d turns left)"
-#~ msgstr[0] "(%d chuairt air fhàgail)"
-#~ msgstr[1] "(%d chuairt air fhàgail)"
-#~ msgstr[2] "(%d cuairtean air am fàgail)"
-#~ msgstr[3] "(%d cuairt air fhàgail)"

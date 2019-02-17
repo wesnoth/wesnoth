@@ -4,14 +4,17 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
+# GunChleoc, 2018
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-21 21:30+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: GunChleoc, 2017\n"
+"PO-Revision-Date: 2017-05-31 13:43+0000\n"
+"Last-Translator: GunChleoc, 2018\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
 "teams/12769/gd/)\n"
 "Language: gd\n"
@@ -251,11 +254,6 @@ msgstr "Gaineamh fhàsaich"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:298
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Deserts'</italic> have a somewhat different composition "
-#| "than small sand pits or beaches, however for gameplay purposes they are "
-#| "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
@@ -263,7 +261,7 @@ msgid ""
 msgstr ""
 "Tha <italic>text='fàsaichean'</italic> eadar-dhealaichte bho àrainnean beaga "
 "de ghaineamh no tràighean, ach a thaobh cluiche a’ gheama tha iad co-"
-"ionnann. Thoir sùil air <ref>dst='terrain_sand' text='gaineamh'</ref>."
+"ionnann. Thoir sùil air <ref>dst='..terrain_sand' text='gaineamh'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -718,7 +716,7 @@ msgstr ""
 "creagach on a tha iad beag.\n"
 "\n"
 "Aig amannan, bidh uamhan <ref>dst='terrain_illuminated_cave' "
-"text=’soillseach'</ref>."
+"text='soillseach'</ref>."
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -2508,10 +2506,8 @@ msgstr "Duilgheas"
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:73
-#, fuzzy
-#| msgid "Select difficulty level:"
 msgid "Select difficulty:"
-msgstr "Tagh ìre an duilgheis:"
+msgstr "Tagh an duilgheas:"
 
 #. [label]
 #: data/gui/window/chat_log.cfg:36
@@ -4553,12 +4549,12 @@ msgstr "Roinnean-seòrsa:"
 #. [label]
 #: data/gui/window/preferences/02_hotkeys.cfg:53
 msgid "Filter:"
-msgstr ""
+msgstr "Criathrag:"
 
 #. [text_box]: id=filter
 #: data/gui/window/preferences/02_hotkeys.cfg:67
 msgid "Filters on hotkey description."
-msgstr ""
+msgstr "Criathraich seo air tuairisgeulan nan grad-iuchraichean."
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:111
@@ -5955,10 +5951,8 @@ msgid "The game data cache could not be purged."
 msgstr "Cha b’ urrainn dhuinn tasgadan dàta a’ gheama a phurgaidicheadh."
 
 #: src/gui/dialogs/game_load.cpp:264
-#, fuzzy
-#| msgid "The selected game has no sides!"
 msgid "The selected file is corrupt: "
-msgstr "Chan eil taobhan aig a’ gheama a thagh thu!"
+msgstr "Tha am faidhle a thagh thu coirbte: "
 
 #: src/gui/dialogs/game_load.cpp:343
 msgid "(Invalid)"
