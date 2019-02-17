@@ -395,14 +395,13 @@ REPORT_GENERATOR(selected_unit_alignment, rc)
 	return unit_alignment(rc, u, hex_to_show_alignment_at);
 }
 
-
-static config unit_abilities(const unit* u)
+static config unit_abilities(const unit* u, const map_location& loc)
 {
 	if (!u) return config();
 	config res;
 
 	boost::dynamic_bitset<> active;
-	const std::vector<std::tuple<std::string, t_string,t_string,t_string>> &abilities = u->ability_tooltips(&active);
+	const std::vector<std::tuple<std::string, t_string,t_string,t_string>> &abilities = u->ability_tooltips(active, loc);
 	const std::size_t abilities_size = abilities.size();
 	for ( std::size_t i = 0; i != abilities_size; ++i )
 	{
@@ -433,12 +432,20 @@ static config unit_abilities(const unit* u)
 REPORT_GENERATOR(unit_abilities, rc)
 {
 	const unit *u = get_visible_unit(rc);
-	return unit_abilities(u);
+	const map_location& mouseover_hex = rc.screen().mouseover_hex();
+
+	return unit_abilities(u, mouseover_hex);
 }
 REPORT_GENERATOR(selected_unit_abilities, rc)
 {
 	const unit *u = get_selected_unit(rc);
-	return unit_abilities(u);
+
+	const map_location& mouseover_hex = rc.screen().mouseover_hex();
+	const unit *visible_unit = get_visible_unit(rc);
+	if(visible_unit && u && visible_unit->id() != u->id() && mouseover_hex.valid())
+		return unit_abilities(u, mouseover_hex);
+	else
+		return unit_abilities(u, u->get_location());
 }
 
 
