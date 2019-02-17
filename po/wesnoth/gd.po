@@ -4,14 +4,17 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
+# GunChleoc, 2018
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: GunChleoc, 2017\n"
+"PO-Revision-Date: 2017-05-31 12:13+0000\n"
+"Last-Translator: GunChleoc, 2018\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
 "teams/12769/gd/)\n"
 "Language: gd\n"
@@ -4147,8 +4150,10 @@ msgstr "Frithealaiche Bheasnaid oifigeil"
 
 #. [server]
 #: data/game_config.cfg:8 data/game_config.cfg:12
+#, fuzzy
+#| msgid "Official Wesnoth Server"
 msgid "Alternate Wesnoth Server"
-msgstr "Frithealaiche Bheasnaid eile"
+msgstr "Frithealaiche Bheasnaid oifigeil"
 
 #. [label]: id=title
 #: data/gui/window/install_dependencies.cfg:37
@@ -4274,10 +4279,10 @@ msgstr "Ruaig:"
 #: data/lua/wml/objectives.lua:57
 msgid "(this turn left)"
 msgid_plural "(%d turns left)"
-msgstr[0] "(%d chuairt air fhàgail)"
-msgstr[1] "(%d chuairt air fhàgail)"
-msgstr[2] "(%d cuairtean air am fàgail)"
-msgstr[3] "(%d cuairt air fhàgail)"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
@@ -5213,13 +5218,16 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:217
+#, fuzzy
+#| msgid ""
+#| "In this scenario, you may issue instructions to an allied side by right-"
+#| "clicking on a unit that belongs to it."
 msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
 msgstr ""
-"Ann an mòran chnàmh-sgeulan, ’s urrainn dhut iarrtasan simplidh a thoirt dha "
-"chaidreabhaich choimpiutair leis a’ chlàr-taice co-theacsa a gheibh thu le "
-"briogadh deas na luchaige."
+"Sa chnàmh-sgeul seo, faodaidh tu iarrtasan a thoirt dha thaobh caidreabhach "
+"le briogadh deas air aonad a bheil aigesan."
 
 #. [tip]
 #: data/tips.cfg:221
@@ -5379,8 +5387,10 @@ msgid "An invalid attacker weapon got selected."
 msgstr "Chaidh airm ionnsaighe mì-dhligheach a thaghadh."
 
 #: src/actions/attack.cpp:401
+#, fuzzy
+#| msgid "An invalid attacker weapon got selected."
 msgid "An invalid defender weapon got selected."
-msgstr "Chaidh airm dìonadair mì-dhligheach a thaghadh."
+msgstr "Chaidh airm ionnsaighe mì-dhligheach a thaghadh."
 
 #: src/actions/create.cpp:338
 msgid "You do not have a leader to recall with."
@@ -6961,27 +6971,37 @@ msgstr "Àrdachadh chomasan: "
 
 #: src/help/help_topic_generators.cpp:482
 msgid "HP: "
-msgstr "PB: "
+msgstr ""
 
 #: src/help/help_topic_generators.cpp:483
+#, fuzzy
+#| msgid "Moves:"
 msgid "Moves: "
-msgstr "Gluasadan: "
+msgstr "Gluasadan:"
 
 #: src/help/help_topic_generators.cpp:485
+#, fuzzy
+#| msgid "Vision:"
 msgid "Vision: "
-msgstr "Lèirsinn: "
+msgstr "Lèirsinn:"
 
 #: src/help/help_topic_generators.cpp:488
+#, fuzzy
+#| msgid "Jamming:"
 msgid "Jamming: "
-msgstr "Casg: "
+msgstr "Casg:"
 
 #: src/help/help_topic_generators.cpp:490
+#, fuzzy
+#| msgid "Cost:"
 msgid "Cost: "
-msgstr "Cosgais: "
+msgstr "Cosgais:"
 
 #: src/help/help_topic_generators.cpp:495
+#, fuzzy
+#| msgid "Required XP:"
 msgid "Required XP: "
-msgstr "Feum air PE: "
+msgstr "Feum air PE:"
 
 #: src/help/help_topic_generators.cpp:504
 msgid "unit help^Attacks"
@@ -7846,8 +7866,10 @@ msgid "No advancement"
 msgstr "Gun àrdachadh"
 
 #: src/reports.cpp:238
+#, fuzzy
+#| msgid "Advances to: "
 msgid "Advances to:"
-msgstr "Àrdaichidh e gu:"
+msgstr "Àrdaichidh e gu: "
 
 #: src/reports.cpp:278
 msgid "Trait: "
@@ -8697,8 +8719,22 @@ msgstr "Roghainnean a’ bhùird-ghil"
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
-#~ msgid "battery"
-#~ msgstr "bataraidh"
+#~ msgid "Using lower-level units can be very cost-effective."
+#~ msgstr ""
+#~ "Dh’fhaoidte gun caomhnaich e cosgaisean dhut ma chleachdas tu aonadan le "
+#~ "rang ìosal."
+
+#~ msgid ""
+#~ "Some higher-level units have inimitable abilities such as <i>Leadership</"
+#~ "i>, <i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can "
+#~ "make a big difference in a campaign."
+#~ msgstr ""
+#~ "Bidh comasan luachmhor aig ciod a dh’aonadan le rang àrd, can "
+#~ "<i>ceannardas</i>, <i>leigheas</i> no <i>stalc-oidhche</i>. Faodaidh iad "
+#~ "diofar mòr a dhèanamh dhut ma gheibh thu iad tràth san iomairt."
+
+#~ msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
+#~ msgstr "<i>– Ridire Gearaig Bheasdain, 607BB</i>"
 
 #~ msgid "an advancement choice"
 #~ msgstr "taghadh àrdachaidh"
@@ -8741,6 +8777,12 @@ msgstr "Roghainnean a’ bhùird-ghil"
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "Iomradh dha chuspair nach aithne dhuinn: "
 
+#~ msgid "HP:"
+#~ msgstr "PB:"
+
+#~ msgid "Alignment:"
+#~ msgstr "Co-thaobhadh:"
+
 #~ msgid "No unit recalled"
 #~ msgstr "Cha deach aonad ais-ghairm"
 
@@ -8752,6 +8794,9 @@ msgstr "Roghainnean a’ bhùird-ghil"
 
 #~ msgid "Side '$side' controller is now controlled by: human."
 #~ msgstr "Tha “$side” fo smachd daonna a-nis."
+
+#~ msgid "Advancements:"
+#~ msgstr "Àrdachaidhean:"
 
 #~ msgid "weapon^None"
 #~ msgstr "Chan eil gin"
