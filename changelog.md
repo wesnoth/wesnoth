@@ -65,6 +65,7 @@
    * Fix SDL_DestroyRenderer assertion failure under XMonad. (part of issue #3716)
    * Fix map item names not being translated in the scenario editor.
    * Usernames specified in the MP UI and command line are now stripped of leading and trailing whitespace, including newlines.
+   * Show ability of a selected unit as active/inactive with respect to mouseover hex. (issue #3912)
  ### Multiplayer server
    * Fix stale temporary bans continuing to have an effect on players until cleared by
      phpBB on the next ban/unban operation.
