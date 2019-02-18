@@ -103,6 +103,7 @@
    * Re-added the Font Scaling preference.
    * Enabled wesnothd and campaignd to accept IPv6 connections too
    * Added support for directly supplying IPv6 address of the server to multiplayer client and addon client. It must be done like this: ```[ipv6_address]``` or ```[ipv6_address]:port```
+   * Show ability of a selected unit as active/inactive with respect to mouseover hex. (issue #3912)
 
 ## Version 1.14.5+dev
  ### AI
