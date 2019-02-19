@@ -47,12 +47,14 @@ import os, glob, sys, re, subprocess, argparse, tempfile, shutil
 import atexit
 
 tempdirs_to_clean = []
-
+tmpfiles_to_clean = []
 
 @atexit.register
 def cleaner():
     for temp_dir in tempdirs_to_clean:
         shutil.rmtree(temp_dir, ignore_errors=True)
+    for temp_file in tmpfiles_to_clean:
+        os.remove(temp_file)
 
 
 class WMLError(Exception):
@@ -371,11 +373,13 @@ class Parser:
         """
         Parse a chunk of binary WML.
         """
-        temp = tempfile.NamedTemporaryFile(prefix="wmlparser_",
-                                           suffix=".cfg")
-        temp.write(binary)
-        temp.flush()
-        self.path = temp.name
+        td, tmpfilePath = tempfile.mkstemp(prefix="wmlparser_",
+                                            suffix=".cfg")
+        with open(tmpfilePath, 'wb') as temp:
+            temp.write(binary)
+        os.close(td)
+        self.path = tmpfilePath
+        tmpfiles_to_clean.append(tmpfilePath)
         if not self.no_preprocess:
             self.preprocess(defines)
         return self.parse()
