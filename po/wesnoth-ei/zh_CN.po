@@ -1,14 +1,14 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # CloudiDust <cloudidust@gmail.com>, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 01:26 UTC\n"
-"PO-Revision-Date: 2018-07-08 20:41+0800\n"
+"PO-Revision-Date: 2019-02-07 14:43+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:13
@@ -72,8 +72,10 @@ msgstr ""
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:24
+#, fuzzy
+#| msgid "(Novice level, 16 scenarios.)"
 msgid "(Intermediate level, 16 scenarios.)"
-msgstr "（中等级别，16幕场景。）"
+msgstr "（新手级别，16幕场景。）"
 
 #. [about]
 #: data/campaigns/Eastern_Invasion/_main.cfg:28
@@ -527,13 +529,18 @@ msgstr "我们在哪儿？我不知道我们在往哪里走。"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:188
+#, fuzzy
+#| msgid ""
+#| "This is an old escape route for the outpost. Unfortunately these caves "
+#| "are currently inhabited by trolls, who are blocking our path through the "
+#| "tunnel."
 msgid ""
 "This is an old escape tunnel for the outpost; unfortunately these caves are "
 "currently inhabited by trolls. Now hurry, we have to move quickly; the "
 "undead will surely follow us down here."
 msgstr ""
-"这是哨所的一条旧逃生隧道。不幸的是，这些洞穴里现在居住着巨魔。快，我们得赶快"
-"行动。亡灵们肯定会跟着我们来这儿的。"
+"这是哨所的一条旧逃生通道。不幸的是，这些洞穴里现在居住着巨魔，他们现在挡住了"
+"我们通过隧道的路。"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:193
@@ -600,8 +607,10 @@ msgstr "俺的部落在这个洞穴里过了好几百年了，俺们不会为了
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:266
+#, fuzzy
+#| msgid "Very well. I will send guides to lead you north to your allies."
 msgid "Very well. The best of luck in your battle."
-msgstr "那也好，祝你们在战斗中好运。"
+msgstr "好吧，我将派向导带你们向北走，到你们的同盟那里去。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:285
@@ -3791,3 +3800,13 @@ msgstr "我不适合用这个装备！给其他人试试。"
 #: data/campaigns/Eastern_Invasion/utils/macros.cfg:67
 msgid "Holy Amulet"
 msgstr "神圣护身符"
+
+#~ msgid "We must make haste to escape before the undead catch up."
+#~ msgstr "在亡灵追上来之前我们必须赶快走。"
+
+#~ msgid ""
+#~ "Very well. The best of luck in your battle. Gweddry, we may be able to "
+#~ "avoid the bulk of the trolls by going through the dwarves’ tunnel."
+#~ msgstr ""
+#~ "好吧，祝你们在战斗中好运。格温德利，要是从矮人的隧道走，我们或许能躲开大部"
+#~ "分巨魔。"

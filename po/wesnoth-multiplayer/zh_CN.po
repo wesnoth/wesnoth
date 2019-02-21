@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # jan2xue <75jan@163.com>, 2005.
 # Huang huan <unicon221@gmail.com>, 2005.
@@ -10,9 +10,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
-"PO-Revision-Date: 2018-07-08 21:18+0800\n"
+"PO-Revision-Date: 2019-02-07 17:03+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -1026,7 +1026,7 @@ msgstr ""
 "“黑暗预想”是生存场景，供自残或双人组队娱乐，对抗随机生成的AI单位。获胜的方法"
 "是挺过对手的所有进攻波次。在游戏过程中，地形会随着随机的天气效果而变化。\n"
 "\n"
-"注意：你需要使用地图设置，以便让这个场景能够正确运行。"
+"注意：你需要使用地图设置，以便让这幕场景能够正确运行。"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:22
@@ -1962,6 +1962,12 @@ msgstr "4p — 伊萨尔交叉口"
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A very small 2 vs. 2 map. Close quarters fighting means the successful "
+#| "rotation of units and planning of moves is important. Teams set for "
+#| "players 1 &amp; 4 vs. 2 &amp; 3 (northeast vs. southwest). Designed for "
+#| "75 starting gold, 20 villages."
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
@@ -1969,8 +1975,8 @@ msgid ""
 "villages."
 msgstr ""
 "一幅非常小的2v2地图。近距离对战意味着成功地轮换单位并计划好行动将非常重要。团"
-"队设定为玩家1+4对阵玩家2+3（东北对阵西南）。为75枚金币的起始资金而设计，图上"
-"有20个村庄。"
+"队设定为玩家1和4对阵玩家2和3（东北对阵西南）。为75枚金币的起始资金而设计，图"
+"上有20座村庄。"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:20
@@ -2050,12 +2056,16 @@ msgstr "4p — 洛里斯河"
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
+#, fuzzy
+#| msgid ""
+#| "2 vs. 2 map centered around a river with keeps in opposite corners. "
+#| "Designed for players 1 &amp; 4 vs. 2 &amp; 3. There are 28 villages."
 msgid ""
 "2 vs. 2 map centered around a river with keeps in opposite corners. Designed "
 "for players 1+4 vs. 2+3. There are 28 villages."
 msgstr ""
-"2v2地图，以河流为中心，双方的城堡处于相对的角落。为玩家1和4对阵玩家2和3而设"
-"计。图上有28座村庄。"
+"2v2地图，以河流为中心，而城堡处于相对的角落。为玩家1和4对阵玩家2和3而设计。图"
+"上有28座村庄。"
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
@@ -2079,6 +2089,11 @@ msgstr " 建议设置每座村庄供给2枚金币，图上有28座村庄。"
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
+#| "east vs. west (1 &amp; 4 vs. 2 &amp; 3), but works well with any teams or "
+#| "FFA."
 msgid ""
 "A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
 "east vs. west (1+4 vs. 2+3), but works well with any teams or FFA."
@@ -2516,3 +2531,6 @@ msgid ""
 msgstr ""
 "一幅韦诺基准测试图，命令行参数为：--no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end。"
+
+#~ msgid "Sides %s and %d are tied."
+#~ msgstr "阵营%s和%d势均力敌。"

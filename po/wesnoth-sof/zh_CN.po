@@ -1,13 +1,13 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
-"PO-Revision-Date: 2018-07-08 21:21+0800\n"
+"PO-Revision-Date: 2019-02-08 14:55+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:11
@@ -80,8 +80,10 @@ msgstr ""
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:34
+#, fuzzy
+#| msgid "(Hard level, 9 scenarios.)"
 msgid "(Expert level, 9 scenarios.)"
-msgstr "（专家级别，9幕场景。）"
+msgstr "（困难级别，9幕场景。）"
 
 #. [about]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:39
@@ -1153,6 +1155,12 @@ msgstr "怪物"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:40
+#, fuzzy
+#| msgid ""
+#| "The journey to the far northern wastelands was long and perilous. For the "
+#| "tunnels were winding and treacherous, and the paths were not safe from "
+#| "orcs, or worse. Nevertheless, they did reach the Northlands, and began to "
+#| "search for the runesmith named Thursagan — the sage of fire."
 msgid ""
 "The journey to the far northern wastelands was long and perilous. For the "
 "tunnels were winding and treacherous, and the paths were not safe from orcs, "
@@ -1201,11 +1209,15 @@ msgstr ""
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:176
+#, fuzzy
+#| msgid ""
+#| "Except for trolls and ogres, right? They live in the far Northlands. "
+#| "They’re probably lurking around here somewhere."
 msgid ""
 "Except for trolls and ogres, right? They live in the far northlands. They’re "
 "probably lurking around here somewhere."
 msgstr ""
-"除了巨魔和食人魔，对吗？他们住在遥远的北陆。他们八成就潜伏这里周围的什么地"
+"除了巨魔和食人魔，对吗？他们住在遥远的北陆。他们八成就潜伏在这周围的什么地"
 "方。"
 
 #. [message]: speaker=Baglur
@@ -1297,7 +1309,7 @@ msgstr "克拉格死亡"
 #. [unit]: id=Kawn # wmllint: ignore, type=Gryphon Rider
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:383
 msgid "Kawn"
-msgstr "卡文"
+msgstr ""
 
 #. [message]: speaker=Krawg
 #. "I see a house in the distance!"
@@ -1471,6 +1483,8 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:155
+#, fuzzy
+#| msgid "Yes, we did. And that is Krawg, who helped us in the Northlands."
 msgid "Yes, we did. And that is Krawg, who helped us in the northlands."
 msgstr "是的，我们成功了。这位是克拉格，在北陆曾经帮助过我们。"
 
@@ -2052,7 +2066,7 @@ msgstr "达司拓恩死亡"
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:235
 msgid ""
 "Here we are; the hills of the Shorbear clan. What are we here for, anyway?"
-msgstr "我们到了绍比尔族之山。总之，我们来这干什么？"
+msgstr "我们到了绍比尔部落之山。总之，我们来这干什么？"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:239
@@ -2295,8 +2309,10 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:416
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:522
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:586
+#, fuzzy
+#| msgid "Have all heroes, and no enemies, in the Shorbear caves"
 msgid "Have all heroes in the Shorbear caves while no enemies are in the caves"
-msgstr "当绍比尔族的洞穴内没有敌人时，让所有英雄进入洞穴内"
+msgstr "当绍比尔洞穴内没有敌人时，让所有英雄进入洞穴内"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:470
@@ -2823,13 +2839,18 @@ msgstr "什么人？"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:300
+#, fuzzy
+#| msgid ""
+#| "I’m a dragoon, with Haldric II’s personal bodyguard. I was sent on a "
+#| "mission in the Northlands, and now elvish horsemen are chasing me. I "
+#| "barely evaded them."
 msgid ""
 "I’m a dragoon, with Haldric II’s personal bodyguard. I was sent on a mission "
 "in the northlands, and now elvish horsemen are chasing me. I barely evaded "
 "them."
 msgstr ""
-"我是龙骑兵，哈德里克二世的御前侍卫。我被派到北陆履行使命，现在精灵骑兵正在抓"
-"我。我好不容易才逃脱。"
+"我是一名龙骑兵，哈德里克二世的御前侍卫。我被派到北陆履行使命，现在精灵骑兵正"
+"在追击我。我好不容易才逃脱。"
 
 #. [message]: speaker=Hadlin  # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:304
@@ -3015,12 +3036,16 @@ msgstr "保护瑟萨冈直到权杖打造完成"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:394
+#, fuzzy
+#| msgid ""
+#| "This forge will work perfectly. Give me a day or two here, and I can "
+#| "reforge the Sceptre of Fire to fulfill its purpose."
 msgid ""
 "This forge will work perfectly. Give me a few days here, and I can reforge "
 "the Sceptre of Fire to fulfill its purpose."
 msgstr ""
-"这个熔炉会工作得非常好的。给我在几天时间，我就可以重铸圣火权杖来达到它原本的"
-"目标。"
+"这熔炉会工作得非常好的。给我一两天时间，我就可以重铸圣火权杖，来实现它原本的"
+"目的。"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:404
@@ -3074,20 +3099,25 @@ msgstr "兽人"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:160
+#, fuzzy
+#| msgid ""
+#| "There was no exit for the dwarves. They had reached the realms of the "
+#| "orcs, with the elves hot on their trail. There was truly no exit from "
+#| "these caves."
 msgid ""
 "There was no exit from the caverns of Knalga. They had reached the realms of "
 "the orcs, with the elves hot on their trail. And there was no exit from "
 "those caves."
 msgstr ""
-"纳尔迦的洞窟没有出口。他们已踏上了兽人的领地，精灵紧跟在他们后面。这里的洞窟"
-"也没有出口。"
+"对矮人们而言这里没有出口。他们已踏上了兽人的领地，精灵紧跟在他们后面。这里的"
+"洞窟确实没有出口。"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:163
 msgid ""
 "So the dwarves had no way out. They could not leave the caverns that they "
 "had entered."
-msgstr "所以矮人们没办法出去。他们无法离开已经进入的山洞。"
+msgstr "所以矮人们没办法出去。他们没办法离开已经进入的洞窟。"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:183
@@ -3328,10 +3358,14 @@ msgstr "站住！你来韦诺首都维尔帝有何贵干？"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:100
+#, fuzzy
+#| msgid ""
+#| "Stand aside. I am Alanin, of Haldric’s royal guard, and I bring news from "
+#| "the Northlands."
 msgid ""
 "Stand aside. I am Alanin, of Haldric’s royal guard, and I bring news from "
 "the northlands."
-msgstr "让开。我是阿拉宁，哈德里克的皇家侍卫，我带来了北陆的消息。"
+msgstr "让开。我是阿拉宁，哈德里克的皇家侍卫，我从北陆带来了消息。"
 
 #. [message]: speaker=Gatekeeper
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:104
@@ -3360,6 +3394,10 @@ msgstr "请进，阿拉宁，向吾王汇报你的消息。"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:123
+#, fuzzy
+#| msgid ""
+#| "My King, fifteen years ago you sent me on a mission into the Northlands. "
+#| "I have returned. What do you wish to know of my mission?"
 msgid ""
 "My King, fifteen years ago you sent me on a mission into the northlands. I "
 "have returned. What do you wish to know of my mission?"
@@ -3375,7 +3413,7 @@ msgstr "好，权杖完工了？你带来了吗？交给我！"
 msgid ""
 "I believe it was completed, but, I do not have it. It is buried deep in the "
 "mountains of the Northlands."
-msgstr "我相信完工了，但，我没有带来。它深埋在北陆的群山之中。"
+msgstr "我相信它完工了，但，它不在我手上。它深埋在北陆的群山之中。"
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:135
@@ -3595,3 +3633,41 @@ msgstr "啊……"
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:71
 msgid "Kraa..."
 msgstr "嘎啊……"
+
+#~ msgid "Shorbear caves"
+#~ msgstr "绍比尔洞穴"
+
+#~ msgid "Great, now there is no need to worry about those elves anymore!"
+#~ msgstr "棒极了，我们再也不用担心那些精灵了！"
+
+#~ msgid ""
+#~ "Did you really think that you could escape us? Don’t underestimate us, "
+#~ "inferior humans!"
+#~ msgstr "你真以为能从我们手里逃出去吗？别小看我们，低等的人类！"
+
+#~ msgid ""
+#~ "Even though my chances have grown worse, I have to fulfil my duty. I do "
+#~ "not owe them any less!"
+#~ msgstr "虽然我成功的机会越来越小，但我必须旅行我的职责。这是我欠他们的！"
+
+#~ msgid "Oh no, more of them? And there I thought I could catch my breath…"
+#~ msgstr "哦不，他们来了更多人？我还以为我能喘口气了……"
+
+#~ msgid "Don’t worry sir, we’ll make it through this!"
+#~ msgstr "别担心长官，我们能撑过去的！"
+
+#~ msgid "Is there no end to their numbers?"
+#~ msgstr "他们是无穷无尽的吗？"
+
+#~ msgid ""
+#~ "You slow humans took too long, our detachment has already caught up with "
+#~ "you!"
+#~ msgstr "你们这些行动缓慢的人类浪费太多时间了，我们的分队已经追上你们了！"
+
+#~ msgid ""
+#~ "I’m a cavalier, with Haldric II’s personal bodyguard. I was sent on a "
+#~ "mission in the Northlands, and now elvish horsemen are chasing me. I "
+#~ "barely evaded them."
+#~ msgstr ""
+#~ "我是一名近卫骑兵，哈德里克二世的御前侍卫。我被派到北陆履行使命，现在精灵骑"
+#~ "兵正在追击我。我好不容易才逃脱。"

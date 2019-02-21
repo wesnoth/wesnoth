@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Dionysus(unicon) <huang.wei.bhu@gmail.com>, 2007.
 # sylecn <sylecn@yahoo.com.cn>, 2009.
@@ -9,9 +9,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-07-08 20:47+0800\n"
+"PO-Revision-Date: 2019-02-07 15:12+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -247,6 +247,11 @@ msgstr "沙漠沙砾"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:298
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Deserts'</italic> have a somewhat different composition "
+#| "than small sand pits or beaches, however for gameplay purposes they are "
+#| "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
@@ -277,11 +282,11 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in sand."
 msgstr ""
-"<bold>text='沙地'</bold>的不稳定性令绝大多数单位在其上行走艰难，并且令他们完"
-"全暴露在攻击之下。相比之下，拥有宽足的种族，或者拥有蛇形身体的类爬行动物种族"
-"在沙地之上游走就容易多了。\n"
+"<bold>text='沙地'</bold>的不稳定性令大多数单位在其上行走艰难，并且令他们完全"
+"暴露在攻击之下。相比之下，拥有宽足的种族，或者拥有蛇形身体的类爬行动物种族在"
+"沙地之上游走就容易多了。\n"
 "\n"
-"绝大多数单位在沙地上的防御率是20%到40%。"
+"大多数单位在沙地上的防御率是20%到40%。"
 
 #. [terrain_type]: id=oasis
 #: data/core/terrain.cfg:317
@@ -694,11 +699,11 @@ msgid ""
 "text='illuminated'</ref>."
 msgstr ""
 "<bold>text='岩石洞穴'</bold>地形因携带有侵蚀性微粒的水和风的作用而形成。它形"
-"如散乱的地下洞窟，有助于防御，但绝大多数单位都难以在其中行动。只有洞穴的住"
-"民，例如矮人和巨魔，才能在此种地势上不受阻碍地行动。\n"
+"如散乱的地下洞窟，有助于防御，但大多数单位都难以在其中行动。只有洞穴的住民，"
+"例如矮人和巨魔，才能在此种地势上不受阻碍地行动。\n"
 "\n"
-"绝大多数单位在岩石洞穴中有50%的防御率，而骑兵被限制在40%。由于矮人身材矮小，"
-"因此他们在岩石洞穴中享有60%的防御率。\n"
+"大多数单位在岩石洞穴中有50%的防御率，而骑兵被限制在40%。由于矮人身材矮小，因"
+"此他们在岩石洞穴中享有60%的防御率。\n"
 "\n"
 "有时洞穴会被<ref>dst='terrain_illuminated_cave' text='照亮'</ref>。"
 
@@ -1585,11 +1590,11 @@ msgid ""
 "receive only 20%."
 msgstr ""
 "<bold>text='蘑菇林'</bold>是由在潮湿黑暗环境中繁荣生长的巨大蘑菇所组成的地下"
-"森林。绝大多数的单位都难以在布满小真菌的坑坑洼洼的路面上穿行，但是大蘑菇的巨"
-"大株干提供了很好的掩护。不过，骑行单位在这种地形上如同深陷泥沼，交战时也没法"
-"施展开。亡灵单位对于腐朽的环境拥有天然的亲和力，在蘑菇林中游刃有余。\n"
+"森林。大多数的单位都难以在布满小真菌的坑坑洼洼的路面上穿行，但是大蘑菇的巨大"
+"株干提供了很好的掩护。不过，骑行单位在这种地形上如同深陷泥沼，交战时也没法施"
+"展开。亡灵单位对于腐朽的环境拥有天然的亲和力，在蘑菇林中游刃有余。\n"
 "\n"
-"绝大多数单位在蘑菇林中获得50%到60%的防御率，而骑兵只能获得20%。"
+"大多数单位在蘑菇林中获得50%到60%的防御率，而骑兵只能获得20%。"
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2794
@@ -1612,15 +1617,15 @@ msgid ""
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
 "<bold>text='洞穴'</bold> 地形代表了所有具有足够的空间供单位穿行的地下洞窟。\n"
-"绝大多数单位对这种地形完全不熟悉，因此他们的移动和防御都会受到阻碍。矮人和巨"
-"魔以洞穴为家，他们在此地形中的移动会相对轻松一些。特别是矮人，受益于他们低矮"
-"的身材，可以穿过许多其他种族无法穿越的障碍。有时洞穴会被"
+"大多数单位对这种地形完全不熟悉，因此他们的移动和防御都会受到阻碍。矮人和巨魔"
+"以洞穴为家，他们在此地形中的移动会相对轻松一些。特别是矮人，受益于他们低矮的"
+"身材，可以穿过许多其他种族无法穿越的障碍。有时洞穴会被"
 "<ref>dst='terrain_illuminated_cave' text='照亮'</ref>。\n"
 "\n"
 " 一小部分的地下世界会被从地表射下来的光线照亮。这为守序单位提供攻击加成，并且"
 "移除混沌单位的攻击加成。在其它所有方面，此地形的效果都与普通洞穴地形相同。\n"
 "\n"
-"绝大多数单位在洞穴中可获得20%到40%的防御率，而矮人则拥有50%。"
+"大多数单位在洞穴中可获得20%到40%的防御率，而矮人则拥有50%。"
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:2807
@@ -1648,8 +1653,8 @@ msgid ""
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
 "<bold>text='礁石'</bold>是沙石和珊瑚构成的浅滩。\n"
-"此地形为绝大多数陆上单位提供了比通常在浅水中跋涉时更稳固的落脚点和防御点，也"
-"为绝大多数水栖种族提供了极高的防御。\n"
+"此地形为大多数陆上单位提供了比通常在浅水中跋涉时更稳固的落脚点和防御点，也为"
+"大多数水栖种族提供了极高的防御。\n"
 "\n"
 "人鱼和娜迦在礁石上都能获得70%的防御率。"
 
@@ -1668,12 +1673,12 @@ msgid ""
 msgstr ""
 "<bold>text='丘陵'</bold> 代表了所有崎岖但还不是特别崎岖的地形，其上有足够的凹"
 "凸，可以提供掩护。\n"
-"对绝大多数单位而言，在丘陵上移动不是一件易事。矮人，巨魔和兽人对于这种地形足"
-"够熟悉，所以他们能够在其上全速通行。骑兵们在此地形上游走很困难，所以地形掩护"
-"带来的防御加成并没有用。\n"
+"对大多数单位而言，在丘陵上移动不是一件易事。矮人，巨魔和兽人对于这种地形足够"
+"熟悉，所以他们能够在其上全速通行。骑兵们在此地形上游走很困难，所以地形掩护带"
+"来的防御加成并没有用。\n"
 "\n"
-"绝大多数单位在丘陵上拥有50%的防御率，但是骑兵只有40%。矮人在丘陵上则享受到60%"
-"的防御率。"
+"大多数单位在丘陵上拥有50%的防御率，但是骑兵只有40%。矮人在丘陵上则享受到60%的"
+"防御率。"
 
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:2853
@@ -1704,8 +1709,8 @@ msgstr ""
 "种擅长在水中移动的种族；他们在沼泽中能够全速移动，并且享受防御加成。那些在湿"
 "地中栖息谋生的生灵们也知道如何利用地形掩护自己。\n"
 "\n"
-"绝大多数单位在沼泽中只拥有30%的防御率。而人鱼、娜迦和蜥蜴人通常都享有60%的防"
-"御率。"
+"大多数单位在沼泽中只拥有30%的防御率。而人鱼、娜迦和蜥蜴人通常都享有60%的防御"
+"率。"
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:2866
@@ -1739,7 +1744,7 @@ msgstr ""
 "合游泳的种族是个例外，他们能够在此地形中全速移动，并且会获得可观的防御加"
 "成。\n"
 "\n"
-"绝大多数单位在浅水中只拥有20%到30%的防御率，而人鱼和娜迦都可以享有60%。"
+"大多数单位在浅水中只拥有20%到30%的防御率，而人鱼和娜迦都可以享有60%。"
 
 #. [terrain_type]: id=castle
 #: data/core/terrain.cfg:2881
@@ -1754,11 +1759,11 @@ msgid ""
 "Most units have about 60% defense in a castle."
 msgstr ""
 "<bold>text='城堡'</bold>代表了所有永久性的防御工事。\n"
-"几乎所有的单位驻守在城堡中时都能获得防御加成，而且绝大多数单位在城堡中都能全"
-"速移动。城堡的防御能力通过其中驻扎的守军来体现，如果城堡上的格子中并不是个个"
-"都有单位驻扎，那么敌人可以轻松溜进来，享受和城堡中所有单位同样的防御加成。\n"
+"几乎所有的单位驻守在城堡中时都能获得防御加成，而且大多数单位在城堡中都能全速"
+"移动。城堡的防御能力通过其中驻扎的守军来体现，如果城堡上的格子中并不是个个都"
+"有单位驻扎，那么敌人可以轻松溜进来，享受和城堡中所有单位同样的防御加成。\n"
 "\n"
-"绝大多数单位在城堡中拥有大约60%的防御率。"
+"大多数单位在城堡中拥有大约60%的防御率。"
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:2895
@@ -1775,11 +1780,11 @@ msgid ""
 msgstr ""
 "<bold>text='山岭'</bold>非常陡峭，单位们常常得翻越重重的障碍才能在其上移"
 "动。\n"
-"正因为如此，山岭为绝大多数部队提供了可观的防御加成，但也严重阻碍了一切行军。"
-"绝大多数骑兵干脆不能进入山岭地形。但是，精灵骑兵和地精狼骑手是例外。矮人和巨"
-"魔生活在山岭地形中，因而在此如鱼得水。\n"
+"正因为如此，山岭为大多数部队提供了可观的防御加成，但也严重阻碍了一切行军。大"
+"多数骑兵干脆不能进入山岭地形。但是，精灵骑兵和地精狼骑手是例外。矮人和巨魔生"
+"活在山岭地形中，因而在此如鱼得水。\n"
 "\n"
-"绝大多数单位在山岭中拥有60%的防御率，而矮人则享受到70%。"
+"大多数单位在山岭中拥有60%的防御率，而矮人则享受到70%。"
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:2907
@@ -1801,8 +1806,7 @@ msgid ""
 "Mermen and naga both receive 50% defense in deep water, with full movement."
 msgstr ""
 "<bold>text='深水'</bold>代表了任何足以淹没人类头顶的水体。\n"
-"绝大多数单位无法进入深水：这是能够飞行的单位，以及特别强的游泳者的专属领"
-"域。\n"
+"大多数单位无法进入深水：这是能够飞行的单位，以及特别强的游泳者的专属领域。\n"
 "\n"
 "人鱼和娜迦在深水中都能获得50%的防御率，并且能够全速移动。"
 
@@ -1828,7 +1832,7 @@ msgstr ""
 "草地是开阔的平原，单位在其中穿行自如，但也不易进行防御。通常来说，骑兵或是非"
 "常灵活的单位最适应草原，他们能够在开放的空间中施展出自己的优势。\n"
 "\n"
-"绝大多数单位在草原上拥有30%到40%的防御率。"
+"大多数单位在草原上拥有30%到40%的防御率。"
 
 #. [terrain_type]: id=forest
 #: data/core/terrain.cfg:2933
@@ -1849,15 +1853,15 @@ msgid ""
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
 "<bold>text='森林'</bold>代表了任何下层枝干足够茂密，足以影响通行的林地。尽管"
-"森林几乎延缓了所有人的行动，但相比开放的地面，森林确实能为绝大多数单位提供更"
-"好的防御。但是，骑兵在森林中的游走太受阻碍，因此匿踪带来的好处都被抵消了。对"
-"于森林的这条法则，精灵是个例外。他们不仅能在其中全速移动，而且还能获得可观的"
-"防御加成。矮人则是另一个例外，虽然他们可以犁过森林，而不减缓多少速度，但他们"
-"太不熟悉地形了，所以不能在其中获得防御加成。\n"
+"森林几乎延缓了所有人的行动，但相比开放的地面，森林确实能为大多数单位提供更好"
+"的防御。但是，骑兵在森林中的游走太受阻碍，因此匿踪带来的好处都被抵消了。对于"
+"森林的这条法则，精灵是个例外。他们不仅能在其中全速移动，而且还能获得可观的防"
+"御加成。矮人则是另一个例外，虽然他们可以犁过森林，而不减缓多少速度，但他们太"
+"不熟悉地形了，所以不能在其中获得防御加成。\n"
 "\n"
-"绝大多数单位在森林中拥有50%的防御率，而骑兵却只有30%。另一方面，精灵能够享受"
-"到60%到70%的防御率，即使是他们的骑兵也不例外。矮人通常在森林中只能够获得30%的"
-"防御率。"
+"大多数单位在森林中拥有50%的防御率，而骑兵却只有30%。另一方面，精灵能够享受到"
+"60%到70%的防御率，即使是他们的骑兵也不例外。矮人通常在森林中只能够获得30%的防"
+"御率。"
 
 #. [terrain_type]: id=frozen
 #: data/core/terrain.cfg:2943 data/core/terrain.cfg:2944
@@ -1876,10 +1880,10 @@ msgid ""
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
 "<bold>text='冻原'</bold>地形代表了任何由雪或冰覆盖的平坦区域。\n"
-"绝大多数单位在冻原上的移动会变慢，并且更难保护自己。注意，即使是可以在水下呼"
-"吸的游泳单位，也不能在冰下游泳。\n"
+"大多数单位在冻原上的移动会变慢，并且更难保护自己。注意，即使是可以在水下呼吸"
+"的游泳单位，也不能在冰下游泳。\n"
 "\n"
-"绝大多数单位在冻原上拥有20%到40%的防御率。"
+"大多数单位在冻原上拥有20%到40%的防御率。"
 
 #. [terrain_type]: id=village
 #: data/core/terrain.cfg:2959
@@ -1896,11 +1900,11 @@ msgid ""
 "40%."
 msgstr ""
 "<bold>text='村庄'</bold>代表了任意的建筑群，不管是人类的还是其他种族的。\n"
-"几乎所有单位，即使是骑兵，都能在村庄中轻松游走。而且绝大多数单位驻守在村庄里"
-"时都可以获得防御加成。村庄允许单位利用其资源来清晰并治疗自己的伤口，因此驻扎"
-"在村庄里的任何单位每回合都能够恢复8点生命值，或者能够被解毒。\n"
+"几乎所有单位，即使是骑兵，都能在村庄中轻松游走。而且大多数单位驻守在村庄里时"
+"都可以获得防御加成。村庄允许单位利用其资源来清晰并治疗自己的伤口，因此驻扎在"
+"村庄里的任何单位每回合都能够恢复8点生命值，或者能够被解毒。\n"
 "\n"
-"绝大多数单位在村庄里拥有50%或者60%的防御率，但是骑兵只能获得40%。"
+"大多数单位在村庄里拥有50%或者60%的防御率，但是骑兵只能获得40%。"
 
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:2969 data/core/terrain.cfg:2970
@@ -1946,7 +1950,7 @@ msgstr "轨道"
 #: data/core/terrain.cfg:2992
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore, mostly by dwarves."
-msgstr "<bold>text='轨道'</bold> 用于运输矿石，绝大多数时候是矮人在使用。"
+msgstr "<bold>text='轨道'</bold> 用于运输矿石，大多数时候是矮人在使用。"
 
 #. [settings]
 #: data/gui/default.cfg:23
@@ -2514,6 +2518,8 @@ msgstr "难度"
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:83
+#, fuzzy
+#| msgid "Select difficulty:"
 msgid "Select difficulty level:"
 msgstr "选择难度："
 
@@ -5093,7 +5099,7 @@ msgstr "开始新的单人战役"
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
-msgstr "玩多人游戏（热座、局域网或因特网游戏），或者玩与AI对战的单个场景"
+msgstr "玩多人游戏（热座、局域网或因特网游戏），或者玩与AI对战的单幕场景"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:254
@@ -5346,8 +5352,10 @@ msgid "operating_system^<unknown>"
 msgstr "<未知>"
 
 #: src/font/text.cpp:789
+#, fuzzy
+#| msgid "The text contains invalid Pango markup: "
 msgid "The text contains invalid markup: "
-msgstr "此文本中有非法的标记："
+msgstr "此文本中包含非法的Pango标记："
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
@@ -5541,12 +5549,16 @@ msgid "addons_order^Type ($order)"
 msgstr "类型（$order）"
 
 #: src/gui/dialogs/addon/manager.cpp:228
+#, fuzzy
+#| msgid "addons_order^Last updated ($datelike_order)"
 msgid "addons_order^Last updated ($order)"
-msgstr "最近更新时间（$order）"
+msgstr "最近更新时间（$datelike_order）"
 
 #: src/gui/dialogs/addon/manager.cpp:231
+#, fuzzy
+#| msgid "addons_order^First uploaded ($datelike_order)"
 msgid "addons_order^First uploaded ($order)"
-msgstr "首次上传时间（$order）"
+msgstr "首次上传时间（$datelike_order）"
 
 #: src/gui/dialogs/addon/manager.cpp:260 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -5611,12 +5623,12 @@ msgstr "未知"
 #. TRANSLATORS: ascending
 #: src/gui/dialogs/addon/manager.cpp:360
 msgid "asc"
-msgstr "升序"
+msgstr ""
 
 #. TRANSLATORS: descending
 #: src/gui/dialogs/addon/manager.cpp:364
 msgid "desc"
-msgstr "降序"
+msgstr ""
 
 #: src/gui/dialogs/addon/manager.cpp:380 src/gui/dialogs/chat_log.cpp:420
 #: src/gui/dialogs/game_cache_options.cpp:105
@@ -6001,7 +6013,7 @@ msgstr "正在连接到重定向目标服务器"
 
 #: src/gui/dialogs/loading_screen.cpp:70
 msgid "Waiting for next scenario"
-msgstr "正在等待下个场景"
+msgstr "正在等待下幕场景"
 
 #: src/gui/dialogs/loading_screen.cpp:71
 msgid "Getting game data"
@@ -6120,10 +6132,10 @@ msgstr "不允许观察"
 #: src/gui/dialogs/multiplayer/lobby.cpp:957
 msgid ""
 "Something is wrong with the addon version check database supporting the "
-"multiplayer lobby. Please report this at http://bugs.wesnoth.org."
+"multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
-"支持多人游戏大厅的附加组件检查数据库出现了问题。请在http://bugs.wesnoth.org报"
-"告此问题。"
+"用于支持多人游戏大厅的附加组件版本检查数据库出现了问题。请在http://bugs."
+"wesnoth.org报告此问题。"
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:131
 msgid ""
@@ -7513,6 +7525,12 @@ msgstr ""
 #~ "enabled or when Shift is held down in-game"
 #~ msgstr "当启用“加快速度”或在游戏中按住Shift时，单位行动和动画的播放速度"
 
+#~ msgid "Filter:"
+#~ msgstr "筛选："
+
+#~ msgid "Filters on hotkey description."
+#~ msgstr "按照热键描述来筛选。"
+
 #~ msgid "Limit FPS"
 #~ msgstr "限制FPS"
 
@@ -7522,11 +7540,38 @@ msgstr ""
 #~ msgstr ""
 #~ "禁用此项将使得CPU使用率达到100%，但或许能够稍稍提升在高分辨率下的性能"
 
+#~ msgid "Rename"
+#~ msgstr "重命名"
+
 #~ msgid "The maximum text width is less than 1."
 #~ msgstr "最大文字宽度小于1。"
 
+#~ msgid "ascending"
+#~ msgstr "升序"
+
+#~ msgid "oldest to newest"
+#~ msgstr "从最旧到最新"
+
+#~ msgid "descending"
+#~ msgstr "降序"
+
+#~ msgid "newest to oldest"
+#~ msgstr "从最新到最旧"
+
 #~ msgid "active_modifications^None"
 #~ msgstr "无"
+
+#~ msgid "The selected file is corrupt: "
+#~ msgstr "选定的文件是损坏的："
+
+#~ msgid "Modifications: "
+#~ msgstr "模组："
+
+#~ msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
+#~ msgstr "Lua控制台只能用于调试模式中！（请先运行“:debug”）"
+
+#~ msgid "lua console"
+#~ msgstr "Lua控制台"
 
 #~ msgid "$game_name (Era: $era_name)"
 #~ msgstr "$game_name|（时代：$era_name|）"
@@ -7537,8 +7582,14 @@ msgstr ""
 #~ msgid "Era"
 #~ msgstr "时代"
 
+#~ msgid "lobby"
+#~ msgstr "大厅"
+
 #~ msgid "number of players^$min to $max"
 #~ msgstr "$min|至$max"
+
+#~ msgid "this game"
+#~ msgstr "此游戏"
 
 #~ msgid ""
 #~ "Unsupported image format.\n"
@@ -7554,3 +7605,6 @@ msgstr ""
 
 #~ msgid "$count|× $name"
 #~ msgstr "$count|× $name"
+
+#~ msgid "Touch"
+#~ msgstr "触击"

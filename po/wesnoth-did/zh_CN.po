@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # wind <everywherewind@gmail.com>, 2010.
 # CloudiDust <cloudidust@gmail.com>, 2011.
@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-04 16:39 UTC\n"
-"PO-Revision-Date: 2018-07-08 20:30+0800\n"
+"PO-Revision-Date: 2019-02-08 13:31+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [scenario]: id=11_Descent_into_Darkness
 #. [campaign]: id=Descent_into_Darkness
@@ -410,11 +410,17 @@ msgstr "法师们教给我的已经够多了。你不会真的驱逐我吧，不
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:379
+#, fuzzy
+#| msgid ""
+#| "Begone, now. I’ve no wish to be forced to send the soldiers after you. "
+#| "Your father would turn in his grave did he see the end to which you’ve "
+#| "come."
 msgid ""
 "Begone, now. I’ve no wish to be forced to send the soldiers after you. Your "
 "father would be ashamed to see the end to which you’ve come."
 msgstr ""
-"离开，现在。我不想被迫派出士兵追杀你。你的父亲会为你这样的结局而感到羞耻的。"
+"现在就离开。我可不想被迫派出士兵追杀你。要是看到你落到如此地步，你的父亲在天"
+"之灵也无法安息。"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:385
@@ -562,6 +568,13 @@ msgstr "达肯·沃克死亡"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:121
+#, fuzzy
+#| msgid ""
+#| "In truth, I share your hatred for the orcs. The Northlands have been "
+#| "my... home... for many years, and the orcs have been a growing "
+#| "infestation in them. They despoil the beauty of the land wherever they "
+#| "go. If you are interested, I would be happy to take you on as my "
+#| "apprentice so that you can... aid me in the fight against them."
 msgid ""
 "In truth, I share your hatred for the orcs. The northlands have been my... "
 "home... for many years, and the orcs have been a growing infestation in "
@@ -570,13 +583,13 @@ msgid ""
 "can... aid me in the fight against them."
 msgstr ""
 "实际上，我和你对兽人的憎恨是一样的。北方大陆许多年来一直都是我的……家，但兽人"
-"越来越在那里横行霸道。无论他们走到哪里，都会把土地上一切美好的东西夺走。如果"
-"你有兴趣，我很乐意收你为我的学徒，让你可以……协助我与兽人作战。"
+"在那里横行霸道，愈为猖獗。无论他们走到哪里，都会把土地上一切美好的东西夺走。"
+"如果你有兴趣，我很乐意收你为我的学徒，让你可以……协助我与兽人作战。"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:126
 msgid "Yes! I thirst for revenge on those creatures!"
-msgstr "同意！我渴望对那些生物复仇！"
+msgstr "我愿意！我渴望对那些生物复仇！"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:131
@@ -1592,8 +1605,12 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:314
+#, fuzzy
+#| msgid ""
+#| "Move Malin Keshar or Darken Volk through the passageway in the northwest "
+#| "leading to the great hall"
 msgid "Move through the passageway in the northwest leading to the great hall"
-msgstr "通过西北方的通往大礼堂的通道"
+msgstr "移动马林·凯沙或达肯·沃克，通过西北方通往大礼堂的通道"
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:338
@@ -1616,12 +1633,14 @@ msgstr "小小请求 — 第三部分"
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:57
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:58
 msgid "Guardian"
-msgstr "看守者"
+msgstr "守卫"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:112
+#, fuzzy
+#| msgid "I have the book!"
 msgid "Find the book"
-msgstr "找到书"
+msgstr "我拿到书了！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:252
@@ -2456,8 +2475,10 @@ msgstr ""
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:579
+#, fuzzy
+#| msgid "I guess we’ll never know for sure."
 msgid "I guess we'll never know for sure."
-msgstr "我猜我们永远都无法确定了。"
+msgstr "我想我们永远都无法确定了。"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:587
@@ -2587,3 +2608,206 @@ msgid ""
 "As dawn breaks, the city guards force their way into the manor and capture "
 "the two necromancers."
 msgstr "天刚破晓，城市卫队便强行冲入了庄园并俘获了两名死灵法师。"
+
+#~ msgid ""
+#~ "We should all be glad to see you gone, necromancer. I detest having "
+#~ "fought by your side."
+#~ msgstr "我们都很乐意看到你滚蛋，死灵法师。曾和你并肩作战让我很厌恶。"
+
+#~ msgid "Retrieve the book and escape"
+#~ msgstr "拿到书并逃脱"
+
+#~ msgid "I have found the book, master! It is here."
+#~ msgstr "我找到书了，主人！就在这儿。"
+
+#~ msgid "Good! Guard it with your unlife while I come to fetch it."
+#~ msgstr "很好！用你不存在的命保护好它，我就来取。"
+
+#~ msgid "Good! Guard it with your life while I come to fetch it."
+#~ msgstr "很好！用你的命保护好它，我就来取。"
+
+#~ msgid "Telemon the Slayer"
+#~ msgstr "斩杀者泰勒蒙"
+
+#~ msgid "Foul necromancer! Your time has come!"
+#~ msgstr "邪恶的死灵法师！你的死期到了！"
+
+#~ msgid ""
+#~ "Reinforcements! I took too long to retrieve that book and now I have no "
+#~ "way to win this battle..."
+#~ msgstr "他们的增援到了！我花了太多时间来拿书，现在我赢不了这场战斗了……"
+
+#~ msgid ""
+#~ "Mal Keshar has had time to study the book, learning how his apprentices "
+#~ "can become liches with less reliance on luck than Malin’s own "
+#~ "transformation."
+#~ msgstr ""
+#~ "玛尔·凯沙花了些时间来研读这本书并获知，相比他自己的转变，他的学徒们要成为"
+#~ "巫妖，可以更不依赖运气。"
+
+#~ msgid ""
+#~ "Mal Keshar continues to study the book, and re-reads the final entry."
+#~ msgstr "玛尔·凯沙继续研读这本书，并重读了最后一节。"
+
+#~ msgid ""
+#~ "<i>“I realize now... the world is not ready for our knowledge. I give up "
+#~ "on all of them. I am going to live in the old troll city and learn the "
+#~ "applications of mountain fire. In some future time, less conservative "
+#~ "attitudes will dominate, and I can certainly afford to wait. In the "
+#~ "meantime, we are doing what we can to hasten that day.”</i>"
+#~ msgstr ""
+#~ "<b>“现在我认识到了……这世界还没有做好接受我们的知识的准备。我决定放弃他们所"
+#~ "有人。我将居于这座古老的巨魔城市，并学会山火的用法。在未来某天，不那么保守"
+#~ "的观念将会占有统治地位，而我当然有资本来等待。与此同时，我们将尽我们所能，"
+#~ "让那一天更快到来。”</b>"
+
+#~ msgid ""
+#~ "<i>“As for me, I have placed some spells on my journal to help keep it "
+#~ "from harm, and I will make it conspicuous on this battlefield. I hope "
+#~ "that it will eventually make its way into the hands of someone in Tath "
+#~ "who is willing to learn.”</i>"
+#~ msgstr ""
+#~ "<b>“至于我，我在日记上施放了一些魔咒，以免它遭到损伤。同时，我会让它在战场"
+#~ "上引人注目。我希望它最后会落入某个来自塔斯的愿意研习的人手中。”</b>"
+
+#~ msgid ""
+#~ "That final entry in the book gnaws at Mal Keshar. While he was being used "
+#~ "by Darken Volk as a pawn, both of them were being using as pawns by the "
+#~ "author of the book itself."
+#~ msgstr ""
+#~ "书上这最后一节折磨着玛尔·凯沙。他被达肯·沃克当卒子使唤，而他们两个都被书的"
+#~ "作者当卒子使唤。"
+
+#~ msgid ""
+#~ "The book’s author had left it for a foolish hero to pick up, and the "
+#~ "spells protecting it had been strong enough to resist the mages of Tath. "
+#~ "Mal Keshar had already made several copies of the book and had no further "
+#~ "need of the original; if he allowed another foolish hero to take it, "
+#~ "would another student eventually follow in his footsteps? Could the "
+#~ "author’s plan work? Might liches eventually be accepted in society, if he "
+#~ "simply waited?"
+#~ msgstr ""
+#~ "书的作者故意把书留下，希望一个愚蠢的英雄捡到，而保护着书的魔咒又足以抵抗塔"
+#~ "斯法师的力量。玛尔·凯沙已经为这本书制作了好几本副本，也不再需要原本了；如"
+#~ "果他让另一个愚蠢的英雄捡到书，那么会有另一个学生最终跟随他的脚步吗？作者计"
+#~ "划行得通吗？如果他只是等下去，巫妖最终会被社会接受吗？"
+
+#~ msgid "Allow an enemy unit to take the book"
+#~ msgstr "允许一名敌方单位拿走书"
+
+#~ msgid ""
+#~ "To turn a necromancer into a lich, right-click on it while it is in a "
+#~ "castle."
+#~ msgstr "当死灵法师在城堡里时，右击以将他转化为巫妖。"
+
+#~ msgid "Make Into a Lich"
+#~ msgstr "转化为巫妖"
+
+#~ msgid "You can only do this in a castle."
+#~ msgstr "只有在城堡里才能这样做。"
+
+#~ msgid "That’s an evil grimoire!"
+#~ msgstr "是一本邪恶的魔典！"
+
+#~ msgid "Burn it."
+#~ msgstr "烧了它。"
+
+#~ msgid "<small>(faking pain)</small> Aaargh!"
+#~ msgstr "<small>（假装痛苦）</small>啊啊啊啊！"
+
+#~ msgid "It’s not catching fire, sir."
+#~ msgstr "它没着火，长官。"
+
+#~ msgid ""
+#~ "But it seems to be hurting the lich. Bring it with us, retreat and let "
+#~ "the mages destroy this."
+#~ msgstr "但看起来它能伤到那巫妖。带走它，我们该撤了，让法师们销毁它吧。"
+
+#~ msgid "It’s paper, but it won’t burn."
+#~ msgstr "它是纸做的，但却烧不起来。"
+
+#~ msgid ""
+#~ "But it seems to be hurting the lich. Grab it, retreat and throw it on a "
+#~ "bigger fire. Once we’ve burnt it, maybe the lich will be weaker."
+#~ msgstr ""
+#~ "但看起来它能伤到那巫妖。把它捡起来，我们得撤回去，把它扔进更大的火里。一旦"
+#~ "我们把它烧了，也许那巫妖就会变弱。"
+
+#~ msgid ""
+#~ "Bring it with us, and let’s retreat. Once it’s burned with faerie fire, "
+#~ "maybe the lich will be weakened."
+#~ msgstr "带走它，我们撤退吧。一旦我们用仙境之火烧掉它，也许那巫妖就会变弱。"
+
+#~ msgid "That’s an evil grimoire, bound in iron."
+#~ msgstr "是一本用铁装订的邪恶的魔典。"
+
+#~ msgid "Destroy it."
+#~ msgstr "摧毁它。"
+
+#~ msgid "My hammer can’t dent it and my axe can’t cut the paper."
+#~ msgstr "我的铁锤没法砸凹它，我的斧头也切不开纸头。"
+
+#~ msgid ""
+#~ "But it seems to be hurting the lich. Bring it with us, retreat and let "
+#~ "the forge destroy it."
+#~ msgstr "但看起来它能伤到那巫妖。我们带走它，撤回去，用熔炉摧毁它。"
+
+#~ msgid "The skull on that book looks good."
+#~ msgstr "书上的骷髅头看起来不错。"
+
+#~ msgid "Idiot."
+#~ msgstr "蠢货。"
+
+#~ msgid ""
+#~ "Uuuuuh, I can’t pull the skull off the book, but that lich screams when I "
+#~ "try."
+#~ msgstr ""
+#~ "啊啊啊，我没法把那骷髅头从书上拔出来，但我拔的时候那巫妖就鬼哭狼嚎的。"
+
+#~ msgid "Defend me, my minions! Get the book! Aaargh!"
+#~ msgstr "保护我，我的仆从们！把书抢回来！啊啊啊啊！"
+
+#~ msgid ""
+#~ "Bring it with you and retreat, let’s take our time smashing that book."
+#~ msgstr "带上它，我们撤。我们有的是时间来砸烂这书。"
+
+#~ msgid "Epilogue"
+#~ msgstr "尾声"
+
+#~ msgid ""
+#~ "The foolish hero was tricked, and left believing both that the book could "
+#~ "be destroyed, and that the lich might be weakened by doing so."
+#~ msgstr ""
+#~ "愚蠢的英雄中计了，他离开时误以为那本书是可以摧毁的，而且摧毁它可以削弱那巫"
+#~ "妖。"
+
+#~ msgid ""
+#~ "Safely outside the cave, the foolish hero tried to destroy the book. None "
+#~ "of the attempts left so much as a dent or char, yet each attempt caused "
+#~ "another scream to echo from the cave mouth. Finally the cave entrance "
+#~ "collapsed, and everything was still."
+#~ msgstr ""
+#~ "在洞穴外的安全之地，那愚蠢的英雄试图摧毁那本书。不管他做什么，书上都没有留"
+#~ "下一点凹痕或是燃迹，但每次尝试都让洞中传来哀嚎声。终于，洞穴入口坍塌了，而"
+#~ "万物归于寂静。"
+
+#~ msgid ""
+#~ "Years pass. Every summer when the mountain passes become clear, humans, "
+#~ "elves and dwarves patrol to repel orcish raiders. Undead no longer "
+#~ "trouble the patrols, and memories of the lich fade to become just "
+#~ "background in the tale of the brave hero’s victory."
+#~ msgstr ""
+#~ "很多年过去了。每年夏天，当山道清朗之时，人类、精灵和矮人四处巡逻，击退兽人"
+#~ "劫掠者。亡灵再也不找巡逻队的麻烦了，而有关那巫妖的记忆，也褪色成了勇敢英雄"
+#~ "的胜利传说的背景。"
+
+#~ msgid ""
+#~ "Rumors circulate that fortune smiles on those patrols. That when attacked "
+#~ "by orcs at night, it sometimes seems that more blades than just the "
+#~ "patrol’s own are fighting the orcs."
+#~ msgstr ""
+#~ "传言说，幸运眷顾着巡逻队。在夜间遭到兽人袭击时，有时似乎有巡逻队自身所有之"
+#~ "外的兵刃，与兽人作战。"
+
+#~ msgid "Lich"
+#~ msgstr "巫妖"

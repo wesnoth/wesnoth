@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # sylecn <sylecn@gmail.com>, 2009.
 # CloudiDust <cloudidust@gmail.com>, 2010.
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "POT-Creation-Date: 2018-02-12 20:02+0300\n"
-"PO-Revision-Date: 2018-07-08 21:16+0800\n"
+"PO-Revision-Date: 2019-02-07 18:27+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -101,9 +101,10 @@ msgstr "选项"
 
 #. type: TP
 #: doc/man/wesnoth.6:45
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--bunzip2>I<\\ infile.bz2>"
 msgid "B<--bunzip>I<\\ infile.bz2>"
-msgstr "B<--bunzip>I<\\ infile.bz2>"
+msgstr "B<--bunzip2>I<\\ infile.bz2>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:51
@@ -115,9 +116,10 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:51
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--bzip2>I<\\ infile>"
 msgid "B<--bzip>I<\\ infile>"
-msgstr "B<--bzip>I<\\ infile>"
+msgstr "B<--bzip2>I<\\ infile>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:57
@@ -167,7 +169,7 @@ msgstr "B<--campaign-scenario>I<\\ id_scenario>"
 msgid ""
 "The id of the scenario from the specified campaign. The default is the first "
 "scenario."
-msgstr "指定战役中的场景ID。默认为第一个场景。"
+msgstr "指定战役中的场景ID。默认为第一幕场景。"
 
 #. type: TP
 #: doc/man/wesnoth.6:69
@@ -226,10 +228,15 @@ msgstr "B<-e[>I<file>B<],\\ --editor[>I<=file>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:89
+#, fuzzy
+#| msgid ""
+#| "start the in-game map editor directly. If I<file> is specified, "
+#| "equivalent to B<-l> B<--load>."
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-l --load>"
-msgstr "直接启动游戏内置的地图编辑器。如果指定了I<file>，则和B<-e --load>等价"
+msgstr ""
+"直接启动游戏内置的地图编辑器。如果指定了I<file>，则和 B<-l> B<--load>.等价。"
 
 #. type: TP
 #: doc/man/wesnoth.6:89
@@ -400,12 +407,15 @@ msgstr "B<--max-fps>I<\\ fps>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:159
+#, fuzzy
+#| msgid ""
+#| "the number of frames per second the game can show, the value should be "
+#| "between B<1> and B<1000>, the default is the monitor's refresh rate."
 msgid ""
 "the number of frames per second the game can show, the value should be "
 "between I<1> and I<1000>, the default is the monitor's refresh rate."
 msgstr ""
-"游戏每秒能显示的帧数，这个值应该在  I<1> 和  I<1000> 之间，默认为显示器的刷新"
-"率。"
+"游戏每秒能显示的帧数，这个值应该在B<1>和B<1000>之间，默认为显示器的刷新率。"
 
 #. type: TP
 #: doc/man/wesnoth.6:159
@@ -434,9 +444,10 @@ msgstr "读取测试用多人游戏场景。"
 
 #. type: TP
 #: doc/man/wesnoth.6:168
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--nodelay>"
 msgid "B<--no-delay>"
-msgstr "B<--no-delay>"
+msgstr "B<--nodelay>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:172
@@ -533,14 +544,17 @@ msgstr "在连接服务器时使用 I<password> ，忽略其他首选项。不�
 
 #. type: TP
 #: doc/man/wesnoth.6:201
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--data-path>"
 msgid "B<--path>"
-msgstr "B<--path>"
+msgstr "B<--data-path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:204
+#, fuzzy
+#| msgid "prints the path of the data directory and exits."
 msgid "prints the name of the game data directory and exits."
-msgstr "显示游戏数据目录的名称并退出。"
+msgstr "打印数据目录的路径并退出。"
 
 #. type: TP
 #: doc/man/wesnoth.6:204
@@ -550,6 +564,16 @@ msgstr "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:214
+#, fuzzy
+#| msgid ""
+#| "preprocesses a specified file/folder. For each file(s) a plain .cfg file "
+#| "and a processed .cfg file will be written in specified target directory. "
+#| "If a folder is specified, it will be preprocessed recursively based on "
+#| "the known preprocessor rules. The common macros from the \"data/core/"
+#| "macros\" directory will be preprocessed before the specified resources.  "
+#| "Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/result.> For details "
+#| "regarding the preprocessor visit: https://wiki.wesnoth.org/"
+#| "PreprocessorRef#Command-line_preprocessor."
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "
@@ -564,7 +588,7 @@ msgstr ""
 "文件会被写入指定的目标目录中。如果指定的是个文件夹，那么将根据已知的预处理器"
 "规则递归地预处理之。“data/core/macros”目录中的常用宏会在指定的资源之前被预处"
 "理。例如： B<-p ~/wesnoth/data/campaigns/tutorial ~/result.> 有关预处理器的详"
-"情请见：http://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor"
+"情请见：http://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor。"
 
 #. type: TP
 #: doc/man/wesnoth.6:214
@@ -625,8 +649,10 @@ msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:243
+#, fuzzy
+#| msgid "sets the screen resolution. Example: B<-r> B<800x600>."
 msgid "sets the screen resolution. Example: B<-r 800x600>"
-msgstr "设定屏幕分辨率。例如：B<-r 800x600>"
+msgstr "设定屏幕分辨率。例如：B<-r> B<800x600>。"
 
 #. type: TP
 #: doc/man/wesnoth.6:243
@@ -636,6 +662,11 @@ msgstr "B<--render-image>I<\\ image>B<\\ >I<output>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:246
+#, fuzzy
+#| msgid ""
+#| "takes a valid wesnoth 'image path string' with image path functions, and "
+#| "outputs to a .png file. Image path functions are documented at https://"
+#| "wiki.wesnoth.org/ImagePathFunctionWML."
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
 "outputs to a .png file. Outputs to a windows .bmp file if the filename ends "
@@ -643,8 +674,7 @@ msgid ""
 "at https://wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 "以一个合法的包含图像路径函数的韦诺“图像路径字符串”作为传入值，并输出一个.png"
-"文件。如果文件名以.bmp结尾或libpng不可用，则输出Windows .bmp文件。图像路径函"
-"数的文档位于https://wiki.wesnoth.org/ImagePathFunctionWML。"
+"文件。图像路径函数的文档位于https://wiki.wesnoth.org/ImagePathFunctionWML。"
 
 #. type: TP
 #: doc/man/wesnoth.6:246
@@ -661,16 +691,21 @@ msgstr "初始化游戏目录，打印适用于缺陷报告的构建信息，并
 
 #. type: TP
 #: doc/man/wesnoth.6:249
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--rng-seed>I<\\ number>"
 msgid "B<--rng-seed>I<\\ seed>"
-msgstr "B<--rng-seed>I<\\ seed>"
+msgstr "B<--rng-seed>I<\\ number>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:253
+#, fuzzy
+#| msgid ""
+#| "seeds the random number generator with I<number>.  Example: B<--rng-seed> "
+#| "B<0>."
 msgid ""
 "seeds the random number generator with number E<lt>argE<gt>. Example: B<--"
 "rng-seed 0>"
-msgstr "使用 E<lt>argE<gt> 作为随机数生成器的种子。例如： B<--rng-seed 0>"
+msgstr "使用 E<lt>argE<gt> 作为随机数生成器的种子。例如：B<--rng-seed> B<0>。"
 
 #. type: TP
 #: doc/man/wesnoth.6:253
@@ -692,12 +727,16 @@ msgstr "B<-s[>I<host>B<],\\ --server[>I<=host>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:264
+#, fuzzy
+#| msgid ""
+#| "connects to the specified host if any, otherwise connect to the first "
+#| "server in preferences. Example: B<--server> B<server.wesnoth.org>."
 msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
 "如果指定了主机的话，连接到指定的主机。否则，连接到首选项中的第一个服务器。例"
-"如：B<--server server.wesnoth.org>"
+"如：B<--server> B<server.wesnoth.org>。"
 
 #. type: TP
 #: doc/man/wesnoth.6:264
@@ -890,9 +929,10 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:340
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--ai-config>I<\\ number>B<:>I<value>"
 msgid "B<--ai_config>I<\\ number>B<:>I<value>"
-msgstr "B<--ai_config>I<\\ number>B<:>I<value>"
+msgstr "B<--ai-config>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:343
@@ -1154,8 +1194,10 @@ msgstr "参见"
 #.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
 #: doc/man/wesnothd.6:15
+#, fuzzy
+#| msgid "B<wesnothd>(6)"
 msgid "B<wesnothd>(6)."
-msgstr "B<wesnothd>(6)."
+msgstr "B<wesnothd>(6)"
 
 #. type: TH
 #: doc/man/wesnothd.6:16
@@ -1909,8 +1951,10 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:286
+#, fuzzy
+#| msgid "B<wesnoth>(6)"
 msgid "B<wesnoth>(6)."
-msgstr "B<wesnoth>(6)."
+msgstr "B<wesnoth>(6)"
 
 #~ msgid "B<--all-translations>"
 #~ msgstr "B<--all-translations>"
@@ -1922,17 +1966,108 @@ msgstr "B<wesnoth>(6)."
 #~ "在游戏中的语言选择列表中显示所有翻译，哪怕这些翻译被认为不够完整，也一样显"
 #~ "示。"
 
+#~ msgid "B<--campaign-skip-story>"
+#~ msgstr "B<--campaign-skip-story>"
+
+#~ msgid ""
+#~ "Skip [story] screens and dialog through the end of the B<start> event."
+#~ msgstr "在B<start>事件最后跳过[故事]画面和对话框。"
+
+#~ msgid "B<--clock>"
+#~ msgstr "B<--clock>"
+
+#~ msgid "Adds the option to show a clock for testing the drawing timer."
+#~ msgstr "增加一个选项，显示一个时钟，用于测试画面绘制计时器。"
+
+#~ msgid "B<--config-dir>I<\\ name>"
+#~ msgstr "B<--config-dir>I<\\ name>"
+
+#~ msgid "Deprecated, use B<--userdata-dir>."
+#~ msgstr "已废弃，请使用B<--userdata-dir>。"
+
+#~ msgid "B<--config-path>"
+#~ msgstr "B<--config-path>"
+
+#~ msgid "Deprecated, use B<--userdata-path>."
+#~ msgstr "已废弃，请使用B<--userdata-path>。"
+
+#~ msgid "B<--debug-lua>"
+#~ msgstr "B<--debug-lua>"
+
+#~ msgid "enables some Lua debugging mechanisms"
+#~ msgstr "启用一些Lua调试机制"
+
 #~ msgid ""
 #~ "sets the severity level of the log domains.  B<all> can be used to match "
 #~ "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
 #~ "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
-#~ "domains, but B<deprecation> defaults to none unless combined with the B<-"
-#~ "d> option."
+#~ "domains, but B<deprecation> defaults to B<none> unless combined with the "
+#~ "B<-d> option."
 #~ msgstr ""
 #~ "设置日志域的严重度级别。B<all>可以用来匹配任意日志域。可选的级别有："
-#~ "B<error>，\\ B<warning>，\\ B<info>，\\ B<debug>, \\ B<none>。对绝大多数日"
-#~ "志域而言，默认日志级别是B<warning>，但B<deprecation>的默认级别是B<none>，"
-#~ "除非和B<-d>选项并用。"
+#~ "B<error>，\\ B<warning>，\\ B<info>，\\ B<debug>, \\ B<none>。对大多数日志"
+#~ "域而言，默认日志级别是B<warning>，但B<deprecation>的默认级别是B<none>，除"
+#~ "非和B<-d>选项并用。"
+
+#~ msgid "B<--new-widgets>"
+#~ msgstr "B<--new-widgets>"
+
+#~ msgid ""
+#~ "there is a new WIP widget toolkit, this option enables it. This is very "
+#~ "experimental, don't fill bug reports since most are known. Parts of the "
+#~ "library are deemed stable and will work without this switch."
+#~ msgstr ""
+#~ "现在有一个正在制作中的窗口部件工具库，此选项将启用此工具库。这个工具库还处"
+#~ "在很早期的试验阶段，请不要发起缺陷报告，因为大多数缺陷是已知的。库的一部分"
+#~ "被认为是稳定的，即使不使用本开关也会启用。"
+
+#~ msgid "B<--plugin>I<\\ script>"
+#~ msgstr "B<--plugin>I<\\ script>"
+
+#~ msgid ""
+#~ "(experimental) load a I<script> which defines a Wesnoth plugin. Similar "
+#~ "to B<--script>, but Lua file should return a function which will be run "
+#~ "as a coroutine and periodically woken up with updates."
+#~ msgstr ""
+#~ "（试验性）读取定义了韦诺插件的 I<script>。与B<--script>类似，但Lua文件应返"
+#~ "回一个函数，该函数将作为协程运行，并周期性地使用更新地参数唤起。"
+
+#~ msgid "B<--proxy>"
+#~ msgstr "B<--proxy>"
+
+#~ msgid "enables usage of proxy for network connections."
+#~ msgstr "启用代理服务器来进行网络连接。"
+
+#~ msgid "B<--proxy-address>I<\\ address>"
+#~ msgstr "B<--proxy-address>I<\\ address>"
+
+#~ msgid "specifies I<address> of the proxy."
+#~ msgstr "指定代理服务器的B<地址>。"
+
+#~ msgid "B<--proxy-port>I<\\ port>"
+#~ msgstr "B<--proxy-port>I<\\ port>"
+
+#~ msgid "specifies I<port> of the proxy."
+#~ msgstr "指定代理服务器的B<端口>。"
+
+#~ msgid "B<--proxy-user>I<\\ username>"
+#~ msgstr "B<--proxy-user>I<\\ username>"
+
+#~ msgid "specifies I<username> to log in to the proxy."
+#~ msgstr "指定用于登录代理服务器的B<用户名>。"
+
+#~ msgid "B<--proxy-password>I<\\ password>"
+#~ msgstr "B<--proxy-password>I<\\ password>"
+
+#~ msgid "specifies I<password> to log in to the proxy."
+#~ msgstr "指定用于登录代理服务器的B<密码>。"
+
+#~ msgid "B<--script>I<\\ file>"
+#~ msgstr "B<--script>I<\\ file>"
+
+#~ msgid ""
+#~ "(experimental)  I<file> containing a Lua script to control the client."
+#~ msgstr "（试验性）指定一个B<文件>，其中包含了用于控制客户端的Lua脚本。"
 
 #~ msgid "B<--translations-over>I<\\ percent>"
 #~ msgstr "B<--translations-over>I<\\ percent>"
@@ -1941,3 +2076,20 @@ msgstr "B<wesnoth>(6)."
 #~ "Set the standard for deeming a translation is complete enough to show in "
 #~ "the in-game language list to I<percent>.  Valid values are 0 to 100."
 #~ msgstr "将确认翻译是否足够完整的判断标准设为I<percent>，合法的值为0到100。"
+
+#~ msgid "B<--unsafe-scripts>"
+#~ msgstr "B<--unsafe-scripts>"
+
+#~ msgid ""
+#~ "makes the B<package> package available to lua scripts, so that they can "
+#~ "load arbitrary packages. Do not do this with untrusted scripts! This "
+#~ "action gives lua the same permissions as the wesnoth executable."
+#~ msgstr ""
+#~ "使得B<package>包在Lua脚本中可用，这样一来Lua脚本就可以载入任意包了。请不要"
+#~ "对不可信的脚本使用此选项！此操作将赋予Lua与韦诺可执行文件相同的权限。"
+
+#~ msgid "B<--label>I<\\ label>"
+#~ msgstr "B<--label>I<\\ label>"
+
+#~ msgid "sets the I<label> for AIs."
+#~ msgstr "设定AI的B<标签>。"
