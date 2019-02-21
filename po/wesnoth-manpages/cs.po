@@ -1,7 +1,7 @@
 # translation of wesnoth-manpages.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2006 - 2018 Wesnoth development team
+# Copyright (C) 2006 - 2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <hrubymar10@gmail.com>,
@@ -10,14 +10,14 @@
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2006, 2007, 2010.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
-# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2018.
+# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 20:02+0300\n"
-"PO-Revision-Date: 2018-09-14 22:32+0200\n"
+"PO-Revision-Date: 2019-02-15 21:06+0100\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -122,9 +122,10 @@ msgstr "VOLBY"
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:45
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--bunzip2>I<\\ infile.bz2>"
 msgid "B<--bunzip>I<\\ infile.bz2>"
-msgstr "B<—bunzip>I<\\ soubor_se_hrou.bz2>"
+msgstr "B<—bunzip2>I<\\ soubor_se_hrou.bz2>"
 
 # type: Plain text
 #. type: Plain text
@@ -139,9 +140,10 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:51
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--bzip2>I<\\ infile>"
 msgid "B<--bzip>I<\\ infile>"
-msgstr "B<—bzip>I<\\ soubor_se_hrou>"
+msgstr "B<—bzip2>I<\\ soubor_se_hrou>"
 
 # type: Plain text
 #. type: Plain text
@@ -272,6 +274,10 @@ msgstr "B<-e, --editor>I<\\ soubor>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:89
+#, fuzzy
+#| msgid ""
+#| "start the in-game map editor directly. If I<file> is specified, "
+#| "equivalent to B<-l --load>"
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-l --load>"
@@ -533,7 +539,8 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:168
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--no-delay>"
 msgid "B<--no-delay>"
 msgstr "B<--no-delay>"
 
@@ -784,6 +791,8 @@ msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:243
+#, fuzzy
+#| msgid "sets the screen resolution. Example: B<-r 800x600>"
 msgid "sets the screen resolution. Example: B<-r 800x600>"
 msgstr "nastavuje rozlišení. Příklad: B<-r 800x600>"
 
@@ -855,6 +864,10 @@ msgstr "B<-s,\\ --server\\ [hostitel]>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:264
+#, fuzzy
+#| msgid ""
+#| "connects to the specified host if any, otherwise connect to the first "
+#| "server in preferences. Example: B<--server server.wesnoth.org>"
 msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server server.wesnoth.org>"
@@ -1398,6 +1411,8 @@ msgstr "VIZ TAKÉ"
 #.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
 #: doc/man/wesnothd.6:15
+#, fuzzy
+#| msgid "B<wesnothd>(6)."
 msgid "B<wesnothd>(6)."
 msgstr "B<wesnothd>(6)."
 
@@ -2289,6 +2304,8 @@ msgstr ""
 # type: TH
 #. type: Plain text
 #: doc/man/wesnothd.6:286
+#, fuzzy
+#| msgid "B<wesnoth>(6)."
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
 
@@ -2301,6 +2318,32 @@ msgstr "B<wesnoth>(6)."
 #~ msgstr ""
 #~ "Show all translations in the in-game language selection list, even if "
 #~ "they are deemed insufficiently complete."
+
+# type: TP
+#~ msgid "B<--clock>"
+#~ msgstr "B<--clock>"
+
+# type: TP
+#, fuzzy
+#~| msgid "B<--userconfig-dir>I<\\ name>"
+#~ msgid "B<--config-dir>I<\\ name>"
+#~ msgstr "B<--userconfig-dir>I<\\ jméno>"
+
+# type: TP
+#, fuzzy
+#~| msgid "B<--userconfig-path>"
+#~ msgid "B<--config-path>"
+#~ msgstr "B<--userconfig-path>"
+
+# type: TP
+#~ msgid "Deprecated, use B<--userdata-path>."
+#~ msgstr "Zastaralé, B<--userdata-path>"
+
+# type: TP
+#, fuzzy
+#~| msgid "B<-d, --debug>"
+#~ msgid "B<--debug-lua>"
+#~ msgstr "B<-d, --debug>"
 
 # type: Plain text
 #, fuzzy
@@ -2319,6 +2362,64 @@ msgstr "B<wesnoth>(6)."
 #~ "budou vypisovány všechny kategorie. Dostupné kategorie: B<error>,\\ "
 #~ "B<warning>,\\ B<info>,\\ B<debug>. Implicitně je aktivována kategorie "
 #~ "B<error>."
+
+# type: TP
+#, fuzzy
+#~| msgid "B<--no-delay>"
+#~ msgid "B<--new-widgets>"
+#~ msgstr "B<--no-delay>"
+
+# type: TP
+#, fuzzy
+#~| msgid "B<--gzip>I<\\ infile>"
+#~ msgid "B<--plugin>I<\\ script>"
+#~ msgstr "B<--gzip>I<\\ soubor_se_hrou>"
+
+# type: TP
+#, fuzzy
+#~| msgid "B<--fps>"
+#~ msgid "B<--proxy>"
+#~ msgstr "B<--fps>"
+
+# type: TP
+#, fuzzy
+#~| msgid "B<-e,\\ --editor>I<\\ file>"
+#~ msgid "B<--proxy-address>I<\\ address>"
+#~ msgstr "B<-e, --editor>I<\\ soubor>"
+
+# type: TP
+#, fuzzy
+#~| msgid "B<-p\\ >I<port>B<,\\ --port>I<\\ port>"
+#~ msgid "B<--proxy-port>I<\\ port>"
+#~ msgstr "B<-p\\ >I<port>B<,\\ --port>I<\\ port>"
+
+#, fuzzy
+#~| msgid "B<--username>I<E<lt>usernameE<gt>>"
+#~ msgid "B<--proxy-user>I<\\ username>"
+#~ msgstr "B<--username>I<E<lt>jménoE<gt>>"
+
+#, fuzzy
+#~| msgid "B<--password>I<E<lt>passwordE<gt>>"
+#~ msgid "B<--proxy-password>I<\\ password>"
+#~ msgstr "B<--password>I<E<lt>hesloE<gt>>"
+
+# type: TP
+#, fuzzy
+#~| msgid "B<--bzip>I<\\ infile>"
+#~ msgid "B<--script>I<\\ file>"
+#~ msgstr "B<—bzip>I<\\ soubor_se_hrou>"
+
+# type: TP
+#, fuzzy
+#~| msgid "B<--userconfig-path>"
+#~ msgid "B<--unsafe-scripts>"
+#~ msgstr "B<--userconfig-path>"
+
+# type: TP
+#, fuzzy
+#~| msgid "B<--era=>I<value>"
+#~ msgid "B<--label>I<\\ label>"
+#~ msgstr "B<--era=>I<hodnota>"
 
 #~ msgid "2013"
 #~ msgstr "2013"

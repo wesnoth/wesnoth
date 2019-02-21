@@ -1,7 +1,7 @@
 # translation of wesnoth-lib.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2004 - 2018 Wesnoth development team
+# Copyright (C) 2004 - 2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <hrubymar10@gmail.com>,
@@ -11,14 +11,14 @@
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
-# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2018.
+# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-09-14 22:43+0200\n"
+"PO-Revision-Date: 2019-02-15 22:53+0100\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -255,14 +255,19 @@ msgstr "Pouštní písky"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:298
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Deserts'</italic> have a somewhat different composition "
+#| "than small sand pits or beaches, however for gameplay purposes they are "
+#| "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgstr ""
 "<italic>text='Pouště'</italic>mají poněkud odlišné složení než malé jámy s "
-"pískem nebo pláže, hru ale ovlivňují obdobně. Podívejte se na "
-"<ref>dst='terrain_sand' text='Písek'</ref>"
+"pískem nebo pláže, hru ale ovlivňují obdobně. Podívejte se na <ref>dst=‘.."
+"terrain_sand' text='Písek'</ref>"
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -304,6 +309,8 @@ msgid ""
 "A welcome sight to any traveler, an oasis allows units to heal as if "
 "stationed in a village, but provides no income or defensive advantage."
 msgstr ""
+"Oáza je uvítána každým cestovatelem, umožňuje jednotkám uzdravit se jako ve "
+"vesnici, ale neposkytuje žádný příjem ani obranou výhodu."
 
 #. [terrain_type]: id=sand_rubble
 #: data/core/terrain.cfg:332
@@ -865,7 +872,6 @@ msgstr "Přímá bílá zeď"
 
 #. [terrain_type]: id=wall_stone_clean
 #: data/core/terrain.cfg:1231
-#, fuzzy
 msgid "Clean Stone Wall"
 msgstr "Čistá kamenná zeď"
 
@@ -1197,10 +1203,8 @@ msgstr "Ležení"
 
 #. [terrain_type]: id=encampment_ruin
 #: data/core/terrain.cfg:1936
-#, fuzzy
-#| msgid "Encampment"
 msgid "Ruined Encampment"
-msgstr "Ležení"
+msgstr "Ruiny tábora"
 
 #. [terrain_type]: id=encampment_snow
 #: data/core/terrain.cfg:1948
@@ -1250,14 +1254,12 @@ msgstr "Zasněžený lidský hrad"
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:2007
 msgid "Elven Castle"
-msgstr "Elfská tvrz"
+msgstr "Elfský hrad"
 
 #. [terrain_type]: id=elven_castle_ruin
 #: data/core/terrain.cfg:2019
-#, fuzzy
-#| msgid "Elven Castle"
 msgid "Elven Castle Ruin"
-msgstr "Elfská tvrz"
+msgstr "Ruiny elfského hradu"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:2031
@@ -1300,24 +1302,18 @@ msgstr "Zřícený pouštní hrad"
 
 #. [terrain_type]: id=troll_encampment
 #: data/core/terrain.cfg:2105
-#, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Troll Encampment"
-msgstr "Vysoká tvrz ležení"
+msgstr "Trolské ležení"
 
 #. [terrain_type]: id=aquatic_camp
 #: data/core/terrain.cfg:2117
-#, fuzzy
-#| msgid "Encampment"
 msgid "Aquatic Encampment"
-msgstr "Ležení"
+msgstr "Vodní ležení"
 
 #. [terrain_type]: id=aquatic_castle
 #: data/core/terrain.cfg:2130
-#, fuzzy
-#| msgid "Human Castle"
 msgid "Aquatic Castle"
-msgstr "Lidský hrad"
+msgstr "Vodní hrad"
 
 #. [terrain_type]: id=encampment_keep
 #. [terrain_type]: id=encampment_keep_tall
@@ -1332,10 +1328,8 @@ msgstr "Tvrz ležení"
 
 #. [terrain_type]: id=encampment_ruin_keep
 #: data/core/terrain.cfg:2158
-#, fuzzy
-#| msgid "Encampment Keep"
 msgid "Ruined Encampment Keep"
-msgstr "Tvrz ležení"
+msgstr "Zřícená tvrz ležení"
 
 #. [terrain_type]: id=encampment_keep_tall
 #: data/core/terrain.cfg:2171
@@ -1378,29 +1372,27 @@ msgstr "Zasněžená skřetí tvrz"
 #. [terrain_type]: id=human_keep
 #: data/core/terrain.cfg:2223
 msgid "Human Castle Keep"
-msgstr "Lidská tvrz"
+msgstr "Lidská hradní tvrz"
 
 #. [terrain_type]: id=snow_keep
 #: data/core/terrain.cfg:2236
 msgid "Snowy Human Castle Keep"
-msgstr "Zasněžená lidská tvrz"
+msgstr "Zasněžená lidská hradní tvrz"
 
 #. [terrain_type]: id=elven_keep
 #: data/core/terrain.cfg:2249
 msgid "Elven Castle Keep"
-msgstr "Elfská tvrz"
+msgstr "Elfská hradní tvrz"
 
 #. [terrain_type]: id=elven_keep_ruin
 #: data/core/terrain.cfg:2262
-#, fuzzy
-#| msgid "Elven Castle Keep"
 msgid "Elven Keep Ruin"
-msgstr "Elfská tvrz"
+msgstr "Zřícená elfská tvrz"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:2275
 msgid "Dwarven Castle Keep"
-msgstr "Trpasličí tvrz"
+msgstr "Trpasličí hradní tvrz"
 
 #. [terrain_type]: id=ruined_keep
 #. [terrain_type]: id=sunken_keep
@@ -1419,12 +1411,12 @@ msgstr "Tvrz zříceného lidského hradu"
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:2301
 msgid "Sunken Human Castle Keep"
-msgstr "Potopená lidská tvrz"
+msgstr "Potopená lidská hradní tvrz"
 
 #. [terrain_type]: id=swamp_keep
 #: data/core/terrain.cfg:2314
 msgid "Swamp Human Castle Keep"
-msgstr "Mokřinná lidská tvrz"
+msgstr "Bažinná lidská hradní tvrz"
 
 #. [terrain_type]: id=desert_keep
 #: data/core/terrain.cfg:2327
@@ -1438,17 +1430,13 @@ msgstr "Zřícená pouštní tvrz"
 
 #. [terrain_type]: id=merman_campkeep
 #: data/core/terrain.cfg:2353
-#, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Aquatic Encampment Keep"
-msgstr "Vysoká tvrz ležení"
+msgstr "Tvrz vodního ležení"
 
 #. [terrain_type]: id=troll_campkeep
 #: data/core/terrain.cfg:2366
-#, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Troll Encampment Keep"
-msgstr "Vysoká tvrz ležení"
+msgstr "Tvrz trolského ležení"
 
 #. [terrain_type]: id=merman_castlekeep
 #: data/core/terrain.cfg:2379
@@ -2597,6 +2585,8 @@ msgstr "Obtížnost"
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:83
+#, fuzzy
+#| msgid "Select difficulty:"
 msgid "Select difficulty level:"
 msgstr "Vyber si obtížnost:"
 
@@ -5334,7 +5324,7 @@ msgstr "HP"
 #. [toggle_button]: id=sort_2
 #: data/gui/window/unit_list.cfg:149 data/gui/window/unit_recall.cfg:61
 msgid "Lvl"
-msgstr ""
+msgstr "Úr"
 
 #. [toggle_button]: id=sort_5
 #. [toggle_button]: id=sort_3
@@ -5461,9 +5451,9 @@ msgstr "<neznámý>"
 
 #: src/font/text.cpp:789
 #, fuzzy
-#| msgid "The text contains invalid markup: "
+#| msgid "The text contains invalid Pango markup: "
 msgid "The text contains invalid markup: "
-msgstr "Text obsahuje neplatné značky: "
+msgstr "Text obsahuje neplatné Pango značky: "
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
@@ -5755,7 +5745,7 @@ msgstr "Zpět na seznam"
 
 #: src/gui/dialogs/addon/manager.cpp:460
 msgid "An error occurred while downloading the add-ons list from the server."
-msgstr ""
+msgstr "Při stahování seznamu rozšíření ze serveru došlo k chybě."
 
 #: src/gui/dialogs/addon/manager.cpp:496
 msgid "No Add-ons Available"
@@ -5770,10 +5760,12 @@ msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr ""
+"Následující rozšíření má zřejmě informace pro publikaci nebo správu verzí a "
+"nebude proto odstraněno:"
 
 #: src/gui/dialogs/addon/manager.cpp:679
 msgid "The following add-on could not be deleted properly:"
-msgstr ""
+msgstr "Následující rozšíření nebylo možno správně odstranit:"
 
 #: src/gui/dialogs/addon/manager.cpp:725
 msgid "Warning"
@@ -6654,7 +6646,7 @@ msgstr "Neznámé id pro uzel stromového seznamu."
 
 #: src/gui/widgets/unit_preview_pane.cpp:134
 msgid "Resistances: "
-msgstr ""
+msgstr "Odolnosti: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:136
 msgid "(Att / Def)"
@@ -7622,6 +7614,9 @@ msgstr ""
 #~ msgid "Acceleration factor:"
 #~ msgstr "Faktor akcelerace:"
 
+#~ msgid "Filter:"
+#~ msgstr "Filtr:"
+
 #~ msgid "Available at main menu"
 #~ msgstr "Dostupné v hlavní nabídce"
 
@@ -7637,11 +7632,20 @@ msgstr ""
 #~ msgid "ascending"
 #~ msgstr "vzestupně"
 
+#~ msgid "oldest to newest"
+#~ msgstr "nejstarší po nejnovější"
+
 #~ msgid "descending"
 #~ msgstr "sestupně"
 
+#~ msgid "newest to oldest"
+#~ msgstr "nejnovější po nejstarší"
+
 #~ msgid "active_modifications^None"
 #~ msgstr "Žádné"
+
+#~ msgid "The selected file is corrupt: "
+#~ msgstr "Vybraný soubor je poškozen: "
 
 #~ msgid "Modifications: "
 #~ msgstr "Rozšíření: "
@@ -7664,11 +7668,23 @@ msgstr ""
 #~ msgid "this game"
 #~ msgstr "tato hra"
 
+#~ msgid ""
+#~ "Unsupported image format.\n"
+#~ "\n"
+#~ "Try to save the screenshot as PNG instead."
+#~ msgstr ""
+#~ "Nepodporovaný formát obrázku.\n"
+#~ "\n"
+#~ "Zkus místo toho uložit snímek obrazovky jako PNG."
+
 #~ msgid "All Scenarios"
 #~ msgstr "Všechny scénáře"
 
 #~ msgid "$count|× $name"
 #~ msgstr "$count|× $name"
+
+#~ msgid "Touch"
+#~ msgstr "Dotek"
 
 #~ msgid "Quit to Main Menu"
 #~ msgstr "Vrátit se do hlavního menu"
@@ -7862,9 +7878,6 @@ msgstr ""
 
 #~ msgid "sort^By first upload"
 #~ msgstr "Poprvé nahráno"
-
-#~ msgid "Filter:"
-#~ msgstr "Filtr:"
 
 #~ msgid "Seed:"
 #~ msgstr "Základ:"

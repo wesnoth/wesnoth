@@ -1,7 +1,7 @@
 # translation of wesnoth-low.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2008 - 2018 Wesnoth development team
+# Copyright (C) 2008 - 2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <hrubymar10@gmail.com>,
@@ -10,14 +10,14 @@
 # Petr Šlejhar <septim@centrum.cz>, 2008 - 2011.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Honza <Honza-mistic@seznam.cz>, 2014.
-# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2018.
+# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 01:26 UTC\n"
-"PO-Revision-Date: 2018-04-05 14:26+0200\n"
+"PO-Revision-Date: 2019-02-15 23:11+0100\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:49
@@ -52,8 +52,10 @@ msgstr ""
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:53
+#, fuzzy
+#| msgid "(Hard level, 18 scenarios.)"
 msgid "(Intermediate level, 18 scenarios.)"
-msgstr "(Obtížnost: pokročilý hráč, 18 scénářů)"
+msgstr "(Obtížnost: těžká, 18 scénářů)"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:55
@@ -150,7 +152,6 @@ msgstr "Valkatra"
 msgid "River Telfar"
 msgstr "Řeka Telfar"
 
-# není to les? kdyžtak opravím
 #. [label]
 #: data/campaigns/Legend_of_Wesmere/maps/Kalian_map.cfg:42
 msgid "Telfar Green"
@@ -171,7 +172,6 @@ msgstr "Severní mělčiny"
 msgid "Arthen"
 msgstr "Arthen"
 
-# není to les? kdyžtak opravím
 #. [label]
 #: data/campaigns/Legend_of_Wesmere/maps/Kalian_map.cfg:78
 msgid "Dancer’s Green"
@@ -257,13 +257,11 @@ msgstr "Karmarthské kopce"
 msgid "Arryn"
 msgstr "Arryn"
 
-# a hajný Robátko
 #. [label]
 #: data/campaigns/Legend_of_Wesmere/maps/Kalian_map.cfg:231
 msgid "Westwind Wood"
 msgstr "Les Západovětrník"
 
-# a hajný Robátko
 #. [label]
 #: data/campaigns/Legend_of_Wesmere/maps/Kalian_map.cfg:240
 msgid "Southwind Wood"
@@ -1378,9 +1376,8 @@ msgstr "Spahr"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:205
-#, fuzzy
 msgid "Enter the Saurian Treasury with a horse and leave with the gold"
-msgstr "Dostaň se k pokladu ještěráků a vynes zlato pryč"
+msgstr "Dostaň se koněm k pokladu ještěráků a vyvez zlato pryč"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:272
@@ -1438,7 +1435,6 @@ msgstr "Získali jsme poklad. Kryjte mě, než donesu lup domů."
 msgid "New Objective: Transport the treasure with a rider to the signpost"
 msgstr "Nový úkol: Doprav jezdce s pokladem k ukazateli"
 
-# trochu rozpoetizováno
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:403
 msgid "Aargh! I shall never see the bright moon’s face again!"
@@ -1552,7 +1548,7 @@ msgstr "Traur"
 #. [note]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:251
 msgid "Try to save leveled dwarf units"
-msgstr ""
+msgstr "Zkus ušetřit zkušené trpasličí jednotky"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:261
@@ -1714,10 +1710,6 @@ msgstr "Truugl"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:294
-#, fuzzy
-#| msgid ""
-#| "You must own the field and be capable of overwhelming your opponents. "
-#| "(Player(s) own more than 25 units while the foes’ numbers fell below 15)"
 msgid ""
 "You must own the field and be capable of overwhelming your opponents. "
 "(Player(s) own more than 25 units while the foes’ numbers fall below 15.)"
@@ -1748,10 +1740,6 @@ msgstr ""
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:384
-#, fuzzy
-#| msgid ""
-#| "She is right. Don’t let them lure you away from the Ka’lian, preparations "
-#| "for when more of them arrive return must be made."
 msgid ""
 "She is right. Don’t let them lure you away from the Ka’lian, preparations "
 "for when more of them arrive must be made."
@@ -1759,7 +1747,6 @@ msgstr ""
 "Má pravdu. Nenechte se odlákat z Kalianu. Musíme se připravit na to, až jich "
 "dorazí větší počet."
 
-# originál není nejlepší...
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:397
 msgid ""
@@ -1916,23 +1903,17 @@ msgstr "A máme s sebou i zbytek elfího pokladu!"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:567
-#, fuzzy
-#| msgid "Perhaps the gold will our word weight with the council."
 msgid "Perhaps the gold will give our words more weight with the council."
 msgstr "Možná to zlato dodá váhu našim slovům v Radě."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:573
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:579
-#, fuzzy
-#| msgid ""
-#| " has left the recovered gold into the elvish treasury. You will start the "
-#| "next scenario with a preset amount."
 msgid ""
 " has returned any remaining gold into the elvish treasury. You will start "
 "the next scenario with a preset amount."
 msgstr ""
-" odevzdal znovuzískané zlato do elfího pokladu. Příští scénář začne s předem "
+" odevzdal všechno zbývající zlato do elfské truhly. Další scénář začneš s "
 "definovaným množstvím zlata."
 
 #. [message]: speaker=narrator
@@ -2421,11 +2402,6 @@ msgstr ""
 
 #. [message]: id=Cleodil
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:391
-#, fuzzy
-#| msgid ""
-#| "Indeed, this river is, I believe, Arkan-Thoria. There are fell legends "
-#| "about it. May be they are but children’s tales... Still, be very careful "
-#| "when you cross it."
 msgid ""
 "Indeed, this river is, I believe, Arkan-Thoria. There are fell legends about "
 "it. Maybe they are but children’s tales... Still, be very careful when you "
@@ -3673,14 +3649,6 @@ msgstr "Buď zticha! Jak se opovažuješ takhle mluvit s králem!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/15_The_Treaty.cfg:42
-#, fuzzy
-#| msgid ""
-#| "Calm down, Aldar! The elf is right to reproach us. My father did not help "
-#| "when the orcs attacked you. But my father is dead. There are a lot of "
-#| "things my father did that I can not understand; he grew suspicious and "
-#| "strange in his last days. But <i>I</i> am the King of Wesnoth now, not my "
-#| "father! And it is my intention to renew our alliance by signing a new "
-#| "treaty here, with you."
 msgid ""
 "Calm down, Aldar! The elf is right to reproach us. My father did not help "
 "when the orcs attacked you. But my father is dead. There are a lot of things "
@@ -3715,7 +3683,6 @@ msgstr "Váš otec měl nějaký kámen, Ohnivý rubín. Pořád ho máte?"
 msgid "How is it that you know about the Ruby of Fire?"
 msgstr "Jak to že víš o Ohnivém rubínu?"
 
-# hm... ó králi...
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/15_The_Treaty.cfg:68
 msgid ""
@@ -4424,10 +4391,6 @@ msgstr "Poraz všechny nepřátelské jednotky a znič všechny vesnice"
 
 #. [message]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:243
-#, fuzzy
-#| msgid ""
-#| "We have finally reached Saurgrath, their capitol. Remember whose side "
-#| "they have taken in the war against us."
 msgid ""
 "We have finally reached Saurgrath, their capital. Remember whose side they "
 "have taken in the war against us."
@@ -4521,8 +4484,6 @@ msgstr "Jejich mssta je sstraššná! Mám sstrach o náššš druh."
 
 #. [message]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:388
-#, fuzzy
-#| msgid "Don’t flee. We cannot abandon our capitol."
 msgid "Don’t flee. We cannot abandon our capital."
 msgstr "Nezzdrhej. Nemůžšeme opusstit našše hlavní sssídlo."
 
@@ -4858,6 +4819,7 @@ msgstr "Kalenz přežije šest dní"
 msgid ""
 "If you lose you still have a chance to defeat Kalenz in the next scenario."
 msgstr ""
+"Když prohraješ, tak stále budeš mít šanci porazit Kalenze v dalším scénáři."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:339
@@ -5109,6 +5071,10 @@ msgid ""
 "can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
+"Velcí obři jsou obrovské bytosti, které obvykle žijí sami v divočině a "
+"nápadně se podobají lidem, navzdory tomu, že jsou velcí a znetvoření. I když "
+"je můžete lehce předběhnout, nebo oklamat, tak jejich síla by se neměla "
+"podceňovat."
 
 #. [leadership]: id=elates_kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:10

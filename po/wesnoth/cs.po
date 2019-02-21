@@ -1,7 +1,7 @@
 # translation of wesnoth.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2004 - 2018 Wesnoth development team
+# Copyright (C) 2004 - 2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <hrubymar10@gmail.com>,
@@ -11,14 +11,14 @@
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007, 2010.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
-# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2018.
+# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-09-14 22:35+0200\n"
+"PO-Revision-Date: 2019-02-15 21:56+0100\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -6390,13 +6390,6 @@ msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 
 #: src/gui/dialogs/addon/install_dependencies.cpp:38
-#, fuzzy
-#| msgid ""
-#| "The selected add-on has the following dependency, which is not currently "
-#| "installed. Do you wish to install it before continuing?"
-#| msgid_plural ""
-#| "The selected add-on has the following dependencies, which are not "
-#| "currently installed. Do you wish to install them before continuing?"
 msgid ""
 "The selected add-on has the following dependency, which is outdated or not "
 "currently installed. Do you wish to install it before continuing?"
@@ -6404,14 +6397,16 @@ msgid_plural ""
 "The selected add-on has the following dependencies, which are outdated or "
 "not currently installed. Do you wish to install them before continuing?"
 msgstr[0] ""
-"Vybrané rozšíření závisí na dalším rozšíření, které není momentálně "
-"nainstalováno. Přejete si pokračovat?"
+"Vybrané rozšíření závisí na dalším rozšíření, které je zastaralé, nebo není "
+"momentálně nainstalováno. Přejete si ho před pokračováním nainstalovat?"
 msgstr[1] ""
-"Vybraná rozšíření závisí na dalším rozšíření, které není momentálně "
-"nainstalováno. Přejete si pokračovat?"
+"Vybrané rozšíření závisí na dalších rozšířeních, která jsou zastaralá, nebo "
+"nejsou momentálně nainstalována. Přejete si je před pokračováním "
+"nainstalovat?"
 msgstr[2] ""
-"Vybraná rozšíření závisí na dalším rozšíření, které není momentálně "
-"nainstalováno. Přejete si pokračovat?"
+"Vybrané rozšíření závisí na dalších rozšířeních, která jsou zastaralá, nebo "
+"nejsou momentálně nainstalována. Přejete si je před pokračováním "
+"nainstalovat?"
 
 #: src/gui/dialogs/game_load.hpp:40
 msgid "No Saved Games"
@@ -6611,27 +6606,37 @@ msgstr "Vylepšení schopností: "
 
 #: src/help/help_topic_generators.cpp:482
 msgid "HP: "
-msgstr "Životů: "
+msgstr ""
 
 #: src/help/help_topic_generators.cpp:483
+#, fuzzy
+#| msgid "Moves:"
 msgid "Moves: "
-msgstr "Kroků: "
+msgstr "Kroků:"
 
 #: src/help/help_topic_generators.cpp:485
+#, fuzzy
+#| msgid "Vision:"
 msgid "Vision: "
-msgstr "Vidění: "
+msgstr "Vidění:"
 
 #: src/help/help_topic_generators.cpp:488
+#, fuzzy
+#| msgid "Jamming:"
 msgid "Jamming: "
-msgstr "Rušení: "
+msgstr "Rušení:"
 
 #: src/help/help_topic_generators.cpp:490
+#, fuzzy
+#| msgid "Cost:"
 msgid "Cost: "
-msgstr "Cena: "
+msgstr "Cena:"
 
 #: src/help/help_topic_generators.cpp:495
+#, fuzzy
+#| msgid "Required XP:"
 msgid "Required XP: "
-msgstr "Potřeba XP: "
+msgstr "Potřeba XP:"
 
 #: src/help/help_topic_generators.cpp:504
 msgid "unit help^Attacks"
@@ -8283,8 +8288,8 @@ msgstr "Nastavení plánovacího módu"
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
-#~ msgid "battery"
-#~ msgstr "baterie"
+#~ msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
+#~ msgstr "<i>― Sir Gerrick z Westinu, 607 YW</i>"
 
 # text místo klikacího seznamu povýšení v nápovědě
 #~ msgid "an advancement choice"
@@ -8324,8 +8329,17 @@ msgstr "Nastavení plánovacího módu"
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "Odkaz na neznámé téma: "
 
+#~ msgid "HP:"
+#~ msgstr "Životů:"
+
+#~ msgid "Alignment:"
+#~ msgstr "Příslušnost:"
+
 #~ msgid "No unit recalled"
 #~ msgstr "Žádná jednotka nebyla přivolána"
+
+#~ msgid "Advancements:"
+#~ msgstr "Povýšení:"
 
 #~ msgid "weapon^None"
 #~ msgstr "Žádná"
@@ -8347,6 +8361,9 @@ msgstr "Nastavení plánovacího módu"
 
 #~ msgid "Disconnected from server."
 #~ msgstr "Odpojen od serveru."
+
+#~ msgid "battery"
+#~ msgstr "baterie"
 
 #~ msgid "Size:"
 #~ msgstr "Velikost:"
@@ -9103,9 +9120,6 @@ msgstr "Nastavení plánovacího módu"
 
 #~ msgid "Recalls"
 #~ msgstr "Přivoláno"
-
-#~ msgid "Advancements"
-#~ msgstr "Povýšení"
 
 #~ msgid "Losses"
 #~ msgstr "Ztráty"

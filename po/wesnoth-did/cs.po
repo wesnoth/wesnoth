@@ -1,7 +1,7 @@
 # translation of wesnoth-did.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2008 - 2018 Wesnoth development team
+# Copyright (C) 2008 - 2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <hrubymar10@gmail.com>,
@@ -11,14 +11,14 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2008 - 2011.
 # Anežka Bubeníčková <masozravapalma@gmail.com>, 2011.
 # Honza <Honza-mistic@seznam.cz>, 2014.
-# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2018.
+# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-04 16:39 UTC\n"
-"PO-Revision-Date: 2018-04-03 14:04+0200\n"
+"PO-Revision-Date: 2019-02-15 11:28+0100\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [scenario]: id=11_Descent_into_Darkness
 #. [campaign]: id=Descent_into_Darkness
@@ -434,12 +434,17 @@ msgstr "Mágové mne naučili dost. Nechceš mě skutečně vyhnat, že ne, Drog
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:379
+#, fuzzy
+#| msgid ""
+#| "Begone, now. I’ve no wish to be forced to send the soldiers after you. "
+#| "Your father would turn in his grave did he see the end to which you’ve "
+#| "come."
 msgid ""
 "Begone, now. I’ve no wish to be forced to send the soldiers after you. Your "
 "father would be ashamed to see the end to which you’ve come."
 msgstr ""
-"Kliď se hned. Nechci, abych na tebe musel poslat vojáky. Tvůj otec by se za "
-"tebe styděl, kdyby viděl, jak jsi dopadl."
+"Kliď se hned. Nechci, abych na tebe musel poslat vojáky. Tvůj otec by se "
+"obracel v hrobě, kdyby viděl tvůj bídný konec, ke kterému jsi došel."
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:385
@@ -592,6 +597,13 @@ msgstr "Darken Volk zemře"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:121
+#, fuzzy
+#| msgid ""
+#| "In truth, I share your hatred for the orcs. The Northlands have been "
+#| "my... home... for many years, and the orcs have been a growing "
+#| "infestation in them. They despoil the beauty of the land wherever they "
+#| "go. If you are interested, I would be happy to take you on as my "
+#| "apprentice so that you can... aid me in the fight against them."
 msgid ""
 "In truth, I share your hatred for the orcs. The northlands have been my... "
 "home... for many years, and the orcs have been a growing infestation in "
@@ -1681,8 +1693,14 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:314
+#, fuzzy
+#| msgid ""
+#| "Move Malin Keshar or Darken Volk through the passageway in the northwest "
+#| "leading to the great hall"
 msgid "Move through the passageway in the northwest leading to the great hall"
-msgstr "Dostaň se k průchodu na severozápadě, vedoucímu do velké haly"
+msgstr ""
+"Dostaň Malin Keshara nebo Darken Volka se k průchodu na severozápadě, "
+"vedoucímu do velké haly"
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:338
@@ -2580,6 +2598,8 @@ msgstr ""
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:579
+#, fuzzy
+#| msgid "I guess we’ll never know for sure."
 msgid "I guess we'll never know for sure."
 msgstr "Myslím, že se to nikdy nedozvíme."
 
@@ -2715,6 +2735,94 @@ msgid ""
 "the two necromancers."
 msgstr ""
 "Když se rozednilo, městská stráž se dostala do sídla a zajala oba nekromanty."
+
+#~ msgid "Retrieve the book and escape"
+#~ msgstr "Najdi knihu a uteč"
+
+#~ msgid "I have found the book, master! It is here."
+#~ msgstr "Našel jsem knihu, pane! Je tady."
+
+#~ msgid "Good! Guard it with your unlife while I come to fetch it."
+#~ msgstr "Výborně! Střež ji svým neživotem, zatímco si pro ni půjdu."
+
+#~ msgid "Good! Guard it with your life while I come to fetch it."
+#~ msgstr "Výborně! Střež ji svým životem, zatímco si pro ni půjdu."
+
+#~ msgid "Foul necromancer! Your time has come!"
+#~ msgstr "Odporný nekromante! Tvůj čas nadešel!"
+
+#~ msgid ""
+#~ "Reinforcements! I took too long to retrieve that book and now I have no "
+#~ "way to win this battle..."
+#~ msgstr ""
+#~ "Posily! Trval mi příliš dlouho, získat tuto knihu a teď nemám žádnou "
+#~ "šanci vyhrát tuto bitvu…"
+
+#~ msgid ""
+#~ "<i>“I realize now... the world is not ready for our knowledge. I give up "
+#~ "on all of them. I am going to live in the old troll city and learn the "
+#~ "applications of mountain fire. In some future time, less conservative "
+#~ "attitudes will dominate, and I can certainly afford to wait. In the "
+#~ "meantime, we are doing what we can to hasten that day.”</i>"
+#~ msgstr ""
+#~ "<i>“Nyní jsem si to uvědomil… Svět ještě není připravený na naší "
+#~ "moudrost. Vzdala jsem se všeho a všech. Jdu žít do starého města trolů a "
+#~ "naučím se využít horský oheň. Někdy v budoucnu převládne méně "
+#~ "konzervativní myšlení a mně se a to určitě vyplatí počkat. Zatím se "
+#~ "vynasnažíme udělat vše pro to, aby se ten den přiblížil.”</i>"
+
+#~ msgid "Allow an enemy unit to take the book"
+#~ msgstr "Nechte nepřátelskou jednotku vzít knihu"
+
+#~ msgid ""
+#~ "To turn a necromancer into a lich, right-click on it while it is in a "
+#~ "castle."
+#~ msgstr ""
+#~ "Chcete-li přeměnit temného učedníka na licha, tak na něj klepněte pravým "
+#~ "tlačítkem když je v tvrzi."
+
+#~ msgid "Make Into a Lich"
+#~ msgstr "Přeměnit na licha"
+
+#~ msgid "You can only do this in a castle."
+#~ msgstr "Toto můžeš udělat pouze v hradu."
+
+#~ msgid "That’s an evil grimoire!"
+#~ msgstr "To je grimoár zla!"
+
+#~ msgid "Burn it."
+#~ msgstr "Spalte to."
+
+#~ msgid "<small>(faking pain)</small> Aaargh!"
+#~ msgstr "<small>(předstírá bolest)</small> Aaargh!"
+
+#~ msgid "It’s not catching fire, sir."
+#~ msgstr "Nechytá to oheň, pane."
+
+#~ msgid ""
+#~ "But it seems to be hurting the lich. Bring it with us, retreat and let "
+#~ "the mages destroy this."
+#~ msgstr ""
+#~ "Ale zdá se, že to ubližuje lichovi. Přineste to sebou, vzdalte se a "
+#~ "nechte to mágy zničit."
+
+#~ msgid "It’s paper, but it won’t burn."
+#~ msgstr "Je to papír, ale nespálí se."
+
+#~ msgid "Destroy it."
+#~ msgstr "Zničte to."
+
+#~ msgid "The skull on that book looks good."
+#~ msgstr "Lebka na této knize vypadá dobře."
+
+#~ msgid "Idiot."
+#~ msgstr "Idiote."
+
+#~ msgid "Epilogue"
+#~ msgstr "Epilog"
+
+#~ msgid "Lich"
+#~ msgstr "Lich"
 
 #~ msgid "short sword"
 #~ msgstr "krátký meč"
