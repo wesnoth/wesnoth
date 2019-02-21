@@ -1,7 +1,7 @@
 # translation of wesnoth-sotbe.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2004 - 2018 Wesnoth development team
+# Copyright (C) 2004 - 2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <hrubymar10@gmail.com>,
@@ -14,14 +14,14 @@
 # Čestmír "CZestmyr" Houska <czestmyr@gmail.com>, 2008.
 # Anežka Bubeníčková <masozravapalma@gmail.cz>, 2011.
 # Honza <Honza-mistic@seznam.cz>, 2014.
-# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2018.
+# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-27 09:23 UTC\n"
-"PO-Revision-Date: 2018-04-05 17:32+0200\n"
+"PO-Revision-Date: 2019-02-15 21:29+0100\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:9
@@ -203,19 +203,13 @@ msgstr "Lidé"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:98
-#, fuzzy
-#| msgid ""
-#| "Rahul I, Lord Protector of the Northern Alliance, concluded peace with "
-#| "enemy orcs during the fourth year of his leadership. He ended a 15-year "
-#| "war with Black-Eye Karun, ruler of the enemy orcs. A peace treaty between "
-#| "the Alliance and the orcs settled their territorial disputes."
 msgid ""
 "Rahul I, Lord Protector of the Northern Alliance, concluded peace with enemy "
 "orcs during the fourteenth year of his leadership. He ended a 15-year war "
 "with Black-Eye Karun, ruler of the enemy orcs. A peace treaty between the "
 "Alliance and the orcs settled their territorial disputes."
 msgstr ""
-"Rahul I., vůdce Severní Aliance, uzavřel mír se skřety během čtvrtého roku "
+"Rahul I., vůdce Severní Aliance, uzavřel mír se skřety během čtrnáctého roku "
 "své vlády. Ukončil tak patnáct let trvající válku s Karunem Černým Okem, "
 "vládcem skřetů. Mírová dohoda mezi místními lidmi a skřety stanovila, která "
 "země náleží skřetům a která lidem."
@@ -472,36 +466,26 @@ msgstr "Poraz Lanbec'ha"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:31
-#, fuzzy
-#| msgid "Resist until your people are ready to go (Turn 12)"
 msgid "Resist until your people are ready to go (turn 12)"
 msgstr "Odolávej, dokud nebudou tví lidé připraveni odejít (12 kol)"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:34
-#, fuzzy
-#| msgid "Resist until your people are ready to go (Turn 13)"
 msgid "Resist until your people are ready to go (turn 13)"
 msgstr "Odolávej, dokud nebudou tví lidé připraveni odejít (13 kol)"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:37
-#, fuzzy
-#| msgid "Resist until your people are ready to go (Turn 14)"
 msgid "Resist until your people are ready to go (turn 14)"
 msgstr "Odolávej, dokud nebudou tví lidé připraveni odejít (14 kol)"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:45
-#, fuzzy
-#| msgid "Then move Kapou’e to the signpost in the Northeast"
 msgid "Then move Kapou’e to the signpost in the northeast"
 msgstr "Pak přesuň Kapou'eho k ukazateli na severovýchodě."
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:52
-#, fuzzy
-#| msgid "Move Kapou’e to the signpost in the Northeast"
 msgid "Move Kapou’e to the signpost in the northeast"
 msgstr "Přesuň Kapou'eho k ukazateli na severovýchodě."
 
@@ -3957,8 +3941,6 @@ msgstr "Dobré ráno, Šan Taume!"
 
 #. [message]: speaker=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:204
-#, fuzzy
-#| msgid "What... Kapou’e! What in the frozen northlands are you doing here?!"
 msgid "What... Kapou’e! What in the frozen Northlands are you doing here?!"
 msgstr "Co... Kapou'e! Co děláš v těchto zmrzlých severních zemích?"
 
@@ -4208,22 +4190,15 @@ msgstr ""
 
 #. [message]: speaker=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:459
-#, fuzzy
-#| msgid ""
-#| "The hell I don’t, Earl Lanbec’h, the Northern Alliance was witness to a "
-#| "treaty some twenty seven years ago between your people and the orcs, "
-#| "which both of you are no doubt violating. It is our duty as the "
-#| "orchestrator and witness of this treaty to see that it is honored."
 msgid ""
 "The hell I don’t, Earl Lanbec’h, the Northern Alliance was witness to a "
 "treaty some seventeen years ago between your people and the orcs, which both "
 "of you are no doubt violating. It is our duty as the orchestrator and "
 "witness of this treaty to see that it is honored."
 msgstr ""
-"Sakra mám! Hrabě Lanbec'hu, Severní Aliance byla před dvaceti sedmi lety "
-"svědkem dohody mezi vašimi lidmi a skřety, kterou oba bez pochybnosti "
-"porušujete. Jako organizátor a svědek té smlouvy mám povinnost poznat, kdy "
-"je to vážné."
+"Sakra mám! Hrabě Lanbec'hu, Severní Aliance byla před sedmnácti lety svědkem "
+"dohody mezi vašimi lidmi a skřety, kterou oba bez pochybnosti porušujete. "
+"Jako organizátor a svědek té smlouvy mám povinnost poznat, kdy je to vážné."
 
 #. [message]: speaker=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:465
@@ -4263,16 +4238,11 @@ msgstr "O čem to mluvíš?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:486
-#, fuzzy
-#| msgid ""
-#| "I am Kapou’e, son of the Black-Eye Karun. Twenty-seven years ago you "
-#| "people assassinated my father after inviting him to join the Northern "
-#| "Alliance."
 msgid ""
 "I am Kapou’e, son of the Black-Eye Karun. Seventeen years ago you people "
 "assassinated my father after inviting him to join the Northern Alliance."
 msgstr ""
-"Jsem Kapou'e, syn Karuna Černého Oka. Před dvaceti sedmi lety jste vy lidé "
+"Jsem Kapou'e, syn Karuna Černého Oka. Před sedmnácti lety jste vy lidé "
 "zabili mého otce poté, co jste ho pozvali, aby se přidal k Severní Alianci."
 
 #. [message]: speaker=Howgarth III

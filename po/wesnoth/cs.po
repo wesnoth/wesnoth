@@ -1,7 +1,7 @@
 # translation of wesnoth.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2004 - 2018 Wesnoth development team
+# Copyright (C) 2004 - 2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <hrubymar10@gmail.com>,
@@ -11,14 +11,14 @@
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007, 2010.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
-# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2018.
+# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-27 12:23+0300\n"
-"PO-Revision-Date: 2018-09-14 22:35+0200\n"
+"PO-Revision-Date: 2019-02-15 21:56+0100\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -5101,10 +5101,8 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:262
-#, fuzzy
-#| msgid "<i>― Memoirs of Gweddry, 627YW</i>"
 msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
-msgstr "<i>― Gweddryho záznamy, 627 YW</i>"
+msgstr "<i>― Sir Gerrick z Westinu, 607 YW</i>"
 
 #. [tip]
 #: data/tips.cfg:266
@@ -6413,13 +6411,6 @@ msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 
 #: src/gui/dialogs/addon/install_dependencies.cpp:38
-#, fuzzy
-#| msgid ""
-#| "The selected add-on has the following dependency, which is not currently "
-#| "installed. Do you wish to install it before continuing?"
-#| msgid_plural ""
-#| "The selected add-on has the following dependencies, which are not "
-#| "currently installed. Do you wish to install them before continuing?"
 msgid ""
 "The selected add-on has the following dependency, which is outdated or not "
 "currently installed. Do you wish to install it before continuing?"
@@ -6427,14 +6418,16 @@ msgid_plural ""
 "The selected add-on has the following dependencies, which are outdated or "
 "not currently installed. Do you wish to install them before continuing?"
 msgstr[0] ""
-"Vybrané rozšíření závisí na dalším rozšíření, které není momentálně "
-"nainstalováno. Přejete si pokračovat?"
+"Vybrané rozšíření závisí na dalším rozšíření, které je zastaralé, nebo není "
+"momentálně nainstalováno. Přejete si ho před pokračováním nainstalovat?"
 msgstr[1] ""
-"Vybraná rozšíření závisí na dalším rozšíření, které není momentálně "
-"nainstalováno. Přejete si pokračovat?"
+"Vybrané rozšíření závisí na dalších rozšířeních, která jsou zastaralá, nebo "
+"nejsou momentálně nainstalována. Přejete si je před pokračováním "
+"nainstalovat?"
 msgstr[2] ""
-"Vybraná rozšíření závisí na dalším rozšíření, které není momentálně "
-"nainstalováno. Přejete si pokračovat?"
+"Vybrané rozšíření závisí na dalších rozšířeních, která jsou zastaralá, nebo "
+"nejsou momentálně nainstalována. Přejete si je před pokračováním "
+"nainstalovat?"
 
 #: src/gui/dialogs/game_load.hpp:40
 msgid "No Saved Games"
@@ -6639,64 +6632,50 @@ msgstr "Vylepšení schopností: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:512
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "Životů: "
+msgstr "Životů:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves: "
 msgid "Moves:"
-msgstr "Kroků: "
+msgstr "Kroků:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "Vision: "
 msgid "Vision:"
-msgstr "Vidění: "
+msgstr "Vidění:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
-#, fuzzy
-#| msgid "Jamming: "
 msgid "Jamming:"
-msgstr "Rušení: "
+msgstr "Rušení:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost: "
 msgid "Cost:"
-msgstr "Cena: "
+msgstr "Cena:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:536
-#, fuzzy
-#| msgid "Alignment: "
 msgid "Alignment:"
-msgstr "Příslušnost: "
+msgstr "Příslušnost:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Required XP: "
 msgid "Required XP:"
-msgstr "Potřeba XP: "
+msgstr "Potřeba XP:"
 
 #: src/help/help_topic_generators.cpp:552
 msgid "unit help^Attacks"
@@ -7533,10 +7512,8 @@ msgid "Level: "
 msgstr "Úroveň: "
 
 #: src/reports.cpp:258
-#, fuzzy
-#| msgid "Advancements"
 msgid "Advancements:"
-msgstr "Povýšení"
+msgstr "Povýšení:"
 
 # text místo klikacího seznamu povýšení v nápovědě
 #: src/reports.cpp:271

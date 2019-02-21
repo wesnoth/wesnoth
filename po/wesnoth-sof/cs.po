@@ -1,7 +1,7 @@
 # translation of wesnoth-sof.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2007 - 2018 Wesnoth development team
+# Copyright (C) 2007 - 2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <hrubymar10@gmail.com>,
@@ -12,14 +12,14 @@
 # Anežka Bubeníčková <masozravapalma@gmail.com>, 2007, 2008.
 # Karel Doleček <KDolecek@seznam.cz>, 2008.
 # Honza <Honza-mistic@seznam.cz>, 2014.
-# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2018.
+# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-27 09:23 UTC\n"
-"PO-Revision-Date: 2018-09-14 22:44+0200\n"
+"PO-Revision-Date: 2019-02-15 21:20+0100\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:11
@@ -94,10 +94,8 @@ msgstr ""
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:34
-#, fuzzy
-#| msgid "(Expert level, 9 scenarios.)"
 msgid "(Hard level, 9 scenarios.)"
-msgstr "(Obtížnost: expert, 9 scénářů)"
+msgstr "(Obtížnost: těžká, 9 scénářů)"
 
 #. [about]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:39
@@ -1231,12 +1229,6 @@ msgstr "Monstra"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:40
-#, fuzzy
-#| msgid ""
-#| "The journey to the far northern wastelands was long and perilous. For the "
-#| "tunnels were winding and treacherous, and the paths were not safe from "
-#| "orcs, or worse. Nevertheless, they did reach the northlands, and began to "
-#| "search for the runesmith named Thursagan — the sage of fire."
 msgid ""
 "The journey to the far northern wastelands was long and perilous. For the "
 "tunnels were winding and treacherous, and the paths were not safe from orcs, "
@@ -1326,10 +1318,6 @@ msgstr ""
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:224
-#, fuzzy
-#| msgid ""
-#| "Except for trolls and ogres, right? They live in the far northlands. "
-#| "They’re probably lurking around here somewhere."
 msgid ""
 "Except for trolls and ogres, right? They live in the far Northlands. They’re "
 "probably lurking around here somewhere."
@@ -1563,8 +1551,6 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:135
-#, fuzzy
-#| msgid "Yes, we did. And that is Krawg, who helped us in the northlands."
 msgid "Yes, we did. And that is Krawg, who helped us in the Northlands."
 msgstr "Ano, našli. A toto je Krawg, který nám pomohl v severních zemích."
 
@@ -2165,7 +2151,7 @@ msgstr ""
 #. [label]
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:138
 msgid "Shorbear caves"
-msgstr ""
+msgstr "Shorbearské jeskyně"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:146
@@ -2174,9 +2160,6 @@ msgstr "Poraz Glonoina, vůdce klanu Shorbear"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:155
-#, fuzzy
-#| msgid ""
-#| "Have all heroes in the Shorbear caves while no enemies are in the caves"
 msgid "Have all heroes, and no enemies, in the Shorbear caves"
 msgstr ""
 "Měj všechny hrdiny ve Shorbearských jeskyních, zatímco v nich nebude žádný "
@@ -3056,11 +3039,6 @@ msgstr "Kdo je tam?"
 #. [message]: speaker=Alanin
 #. dragoon = his unit type
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:565
-#, fuzzy
-#| msgid ""
-#| "I’m a dragoon, with Haldric II’s personal bodyguard. I was sent on a "
-#| "mission in the northlands, and now elvish horsemen are chasing me. I "
-#| "barely evaded them."
 msgid ""
 "I’m a dragoon, with Haldric II’s personal bodyguard. I was sent on a mission "
 "in the Northlands, and now elvish horsemen are chasing me. I barely evaded "
@@ -3072,18 +3050,13 @@ msgstr ""
 #. [message]: speaker=Alanin
 #. cavalier = his unit type
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:572
-#, fuzzy
-#| msgid ""
-#| "I’m a dragoon, with Haldric II’s personal bodyguard. I was sent on a "
-#| "mission in the northlands, and now elvish horsemen are chasing me. I "
-#| "barely evaded them."
 msgid ""
 "I’m a cavalier, with Haldric II’s personal bodyguard. I was sent on a "
 "mission in the Northlands, and now elvish horsemen are chasing me. I barely "
 "evaded them."
 msgstr ""
-"Jsem dragoun z osobní stráže Haldrika II. Byl jsem vyslán na misi v "
-"severních zemích a teď mne honí elfí jezdci. Tak tak jsem vyvázl."
+"Jsem jezdec z osobní stráže Haldrika II. Byl jsem vyslán na misi v severních "
+"zemích a teď mne honí elfí jezdci. Tak tak jsem vyvázl."
 
 #. [message]: speaker=Hadlin  # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:578
@@ -3345,17 +3318,12 @@ msgstr "Skřeti"
 #. [part]
 #. The text in 1.14.4 mentioned Knalga. Geographically, these caves are in Knalga, but the text was confusing if the reader thought of the Knalgan Alliance.
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:161
-#, fuzzy
-#| msgid ""
-#| "There was no exit from the caverns of Knalga. They had reached the realms "
-#| "of the orcs, with the elves hot on their trail. And there was no exit "
-#| "from those caves."
 msgid ""
 "There was no exit for the dwarves. They had reached the realms of the orcs, "
 "with the elves hot on their trail. There was truly no exit from these caves."
 msgstr ""
-"Z jeskyní Knalgy nebyl žádný další východ. Dosáhli teritoria skřetů a za "
-"sebou měli elfy. A žádný východ."
+"Nebyl zde žádný východ pro trpaslíky. Dosáhli teritoria skřetů a za sebou "
+"měli elfy. A vskutku žádný východ."
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:164
@@ -3608,10 +3576,6 @@ msgstr "Zastav! Co pohledáváš ve Weldynu, hlavním městě Wesnothu?"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:103
-#, fuzzy
-#| msgid ""
-#| "Stand aside. I am Alanin, of Haldric’s royal guard, and I bring news from "
-#| "the northlands."
 msgid ""
 "Stand aside. I am Alanin, of Haldric’s royal guard, and I bring news from "
 "the Northlands."
@@ -3647,10 +3611,6 @@ msgstr "Vstup, Alanine, a předej králi tvou zprávu."
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:126
-#, fuzzy
-#| msgid ""
-#| "My King, fifteen years ago you sent me on a mission into the northlands. "
-#| "I have returned. What do you wish to know of my mission?"
 msgid ""
 "My King, fifteen years ago you sent me on a mission into the Northlands. I "
 "have returned. What do you wish to know of my mission?"
