@@ -66,6 +66,7 @@
    * Fix map item names not being translated in the scenario editor.
    * Usernames specified in the MP UI and command line are now stripped of leading and trailing whitespace, including newlines.
    * Show ability of a selected unit as active/inactive with respect to mouseover hex. (issue #3912)
+   * macOS: Wesnoth now uses the app sandboxing feature, which means there is a new location for saves. All saves will be migrated during first launch automatically. For info about backwards compatibility see: https://gist.github.com/hrubymar10/eb5afd896f933a46fac344ced940e020
  ### Multiplayer server
    * Fix stale temporary bans continuing to have an effect on players until cleared by
      phpBB on the next ban/unban operation.
@@ -96,6 +97,7 @@
    * The "Recruit Unit" dialog is searchable by unit type name. (PR #3787)
    * Add text filter to hotkeys preferences. (PR #3759)
    * Hide leader in status table if it's unfogged but invisible. (PR #3854)
+   * macOS: Dark GUI on macOS Mojave and later when dark appearance is enabled.
 
 ## Version 1.14.5
  ### AI
