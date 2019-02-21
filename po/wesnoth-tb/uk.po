@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: 1.10\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
-"PO-Revision-Date: 2012-08-18 19:30+0200\n"
-"Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2019-02-21 22:43+0200\n"
+"Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail.com>\n"
+"Language-Team: \n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
@@ -30,10 +31,8 @@ msgstr "РпДБ"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:18
-#, fuzzy
-#| msgid "(Beginner)"
 msgid "Beginner"
-msgstr "(Початківець)"
+msgstr "Новачок"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:18
@@ -42,10 +41,8 @@ msgstr "Вершник"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:19
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(Складно)"
+msgstr "Складний"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:19
@@ -67,8 +64,10 @@ msgstr ""
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:23
+#, fuzzy
+#| msgid "(Rookie level, 4 scenarios.)"
 msgid "(Novice level, 4 scenarios.)"
-msgstr "(Для новачків, 4 сценарії.)"
+msgstr "(Початковий рівень, 4 сценарії.)"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:30
@@ -114,6 +113,11 @@ msgid ""
 "them not, until the day a dark mage settled in the region and began seeking "
 "sacrifices for his evil summonings."
 msgstr ""
+"Віддалене володіння Магре на західних околицях королівства Веснот колись "
+"було досить тихим місцем, а майже всі його мешканці не чули про події, що "
+"відбувалися в зовнішньому світі. Їх оминали і війни, і заворушення, аж доки "
+"не настав той день. Темний маг оселився неподалік і почав шукати жертв для "
+"своїх мерзенних чаклунств."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:54
@@ -125,6 +129,12 @@ msgid ""
 "more than a day’s ride distant, and messengers sent to seek his help did not "
 "return."
 msgstr ""
+"Скелети та зомбі нищили худобу та палили поля. <i>“Бійтесь та підкоріться "
+"Магу Мордаку!”</i> — кричали вони роблячи свої злодіяння. З поодиноких "
+"хуторів почали пропадати люди. Чоловіки та жінки почали боятися ночі, а їхні "
+"діти були налякані навіть серед світлого дня. До найближчого лорду треба "
+"було їхати вершки увесь день, до нього посилали гінців з благаннями про "
+"допомогу, але жоден з посланників не повернувся."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:58
@@ -137,6 +147,13 @@ msgid ""
 "them down and clean and oil them. He set the smiths of Maghre to making "
 "spearheads and ax-blades for the rest."
 msgstr ""
+"Там був чоловік на ім'я Бярн. У молодості він показав талант до чаклунства, "
+"тож вступив до великої Академії на острові Алдуїн, а потім повернувся в "
+"рідні краї. Люди звернулися до нього за допомогою та порадами. Він же "
+"знайшов у багатьох будинках давно забуту зброю, яку носили ще діди та "
+"прадіди. Б'ярн наказав селянам змастити її та озброїтися. Він дав завдання "
+"ковалям в Магре виплавляти наконечники списів і леза сокир для тих, кому не "
+"вистачило."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:62
@@ -348,7 +365,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:270
 msgid "Argh!"
-msgstr ""
+msgstr "Аргхр!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:275
@@ -399,12 +416,12 @@ msgstr ""
 #. [message]: speaker=second_unit
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:375
 msgid "That was not so hard!"
-msgstr ""
+msgstr "Це було нескладно!"
 
 #. [scenario]: id=02_The_Chase
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:5
 msgid "The Chase"
-msgstr ""
+msgstr "Гонитва"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:27
@@ -452,12 +469,12 @@ msgstr ""
 #. [side]: type=Elvish Rider, id=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:88
 msgid "Elves"
-msgstr ""
+msgstr "Ельфи"
 
 #. [side]: type=Elvish Rider, id=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:93
 msgid "Nil-Galion"
-msgstr ""
+msgstr "Ніл-Галіон"
 
 #. [side]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:170
@@ -710,7 +727,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:592
 msgid "You receive 70 pieces of gold!"
-msgstr ""
+msgstr "Ви отримали 70 золотих!"
 
 #. [message]: speaker=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:615
@@ -876,31 +893,23 @@ msgstr "Пароль:"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:397
-#, fuzzy
-#| msgid "Sithrak"
 msgid "Sithrak!"
-msgstr "Сітрак"
+msgstr "Сітрак!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:400
-#, fuzzy
-#| msgid "Eleben"
 msgid "Eleben!"
-msgstr "Елебен"
+msgstr "Елебен!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:403
-#, fuzzy
-#| msgid "Jarlom"
 msgid "Jarlom!"
-msgstr "Жаром"
+msgstr "Жаром!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:406
-#, fuzzy
-#| msgid "Hamik"
 msgid "Hamik!"
-msgstr "Хамік"
+msgstr "Хамік!"
 
 #. [message]: speaker=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:419
@@ -925,6 +934,7 @@ msgid ""
 "Haha! We not kill people for long time. Weapon wants blood. We now kill "
 "humans!!"
 msgstr ""
+"Ха-ха! Вже давненько ми не вбивали людей. Зброя хоче крові. Ми вб'ємо їх!!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:468
@@ -970,31 +980,23 @@ msgstr ""
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:612
-#, fuzzy
-#| msgid "Akranbral"
 msgid "Akranbral!"
-msgstr "Акранбрал"
+msgstr "Акранбрал!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:615
-#, fuzzy
-#| msgid "Drakanal"
 msgid "Drakanal!"
-msgstr "Драканал"
+msgstr "Драканал!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:618
-#, fuzzy
-#| msgid "Xaskanat"
 msgid "Xaskanat!"
-msgstr "Ксасканат"
+msgstr "Ксасканат!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:621
-#, fuzzy
-#| msgid "Katklagad"
 msgid "Katklagad!"
-msgstr "Катклагад"
+msgstr "Катклагад!"
 
 #. [message]: speaker=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:634
@@ -1137,7 +1139,7 @@ msgstr ""
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:965
 msgid "Argh!!"
-msgstr ""
+msgstr "Аргхр!!"
 
 #. [scenario]: id=04_Return_to_the_Village
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:5
@@ -1397,7 +1399,7 @@ msgstr "Б'ярн"
 
 #: data/campaigns/Two_Brothers/utils/macros.cfg:4
 msgid "Hint:"
-msgstr ""
+msgstr "Порада:"
 
 #~ msgid "$first_password_1|!"
 #~ msgstr "$first_password_1|!"
