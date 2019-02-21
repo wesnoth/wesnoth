@@ -4,14 +4,19 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
+# 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018
+# 堀 秀幸 <Hide.HORI@gmail.com>, 2018
+# RatArmy <broadbarredfirefish@gmail.com>, 2019
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-22 03:45+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018\n"
+"PO-Revision-Date: 2018-05-06 10:20+0000\n"
+"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2019\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -29,39 +34,28 @@ msgstr "地下"
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:696
 msgid "righteous rage"
-msgstr ""
+msgstr "義憤"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:698
-#, fuzzy
-#| msgid ""
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the champions is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"攻撃時または防御時に狂戦武器が使用された場合、どちらかのユニットが倒れるまで"
-"戦い続けます。ただし、30 回分の戦いが行われた場合は終了します。"
+"攻撃時・防御時の両方において、この攻撃が戦いで使われた場合、いずれかの戦士が"
+"倒れるまで交戦をやめません。もしくは、 30 回の攻撃が行われると終了します。"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:707
-#, fuzzy
-#| msgid "first strike"
 msgid "true strike"
-msgstr "先制"
+msgstr "真の一撃"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:709
-#, fuzzy
-#| msgid ""
-#| "This attack always has a 70% chance to hit regardless of the defensive "
-#| "ability of the unit being attacked."
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the champion being attacked."
-msgstr "敵ユニットの回避率を無視して、70% の確率で命中します。"
+msgstr "敵の能力に左右されず、常に命中率が 70% となります。"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -708,26 +702,21 @@ msgstr ""
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:32
-#, fuzzy
-#| msgid "Great Ocean"
 msgid "Great River"
-msgstr "大洋（Great Ocean）"
+msgstr "大いなる川"
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:33
-#, fuzzy
-#| msgid ""
-#| "The continent on which the <ref>dst='kingdom_wesnoth' text='Kingdom of "
-#| "Wesnoth'</ref> lies. Its west coast is surrounded by the "
-#| "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgid ""
 "The Great River forms the boundary between the <ref>dst='kingdom_wesnoth' "
 "text='Kingdom of Wesnoth'</ref> and the <ref>dst='northlands' "
 "text='Northlands'</ref>. It empties to the <ref>dst='great_ocean' "
 "text='Great Ocean'</ref> at <ref>dst='elensefar' text='Elensefar'</ref>."
 msgstr ""
-"<ref>dst='kingdom_wesnoth' text='Wesnoth 王国'</ref>が存在する大陸であり、そ"
-"の西岸はすべて<ref>dst='great_ocean' text='大洋'</ref>です。"
+"大いなる川（The Great River）は<ref>dst='kingdom_wesnoth' text='Wesnoth王国' "
+"</ref>と<ref>dst='northlands' text='北の大地'</ref>の境界を成しています．最終"
+"的に，<ref>dst='elensefar' text='Elensefar'</ref>にて<ref>dst='great_ocean' "
+"text='大洋' </ref>に流れ込みます．"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:38
@@ -1424,26 +1413,6 @@ msgstr ""
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:172
-#, fuzzy
-#| msgid ""
-#| "Wesnoth is comprised of a series of battles, called "
-#| "<italic>text='scenarios'</italic>, that pit your troops against the "
-#| "troops of one or more adversaries. Multiple scenarios that follow on from "
-#| "each other, telling a story, make up <italic>text='campaigns'</italic>. "
-#| "In a campaign, you often need to play more carefully, preserving your "
-#| "best troops for use again in later scenarios.\n"
-#| "\n"
-#| "The interactive <bold>text='Tutorial'</bold> introduces the basics of "
-#| "Wesnoth gameplay in the context of a scenario. Most material covered in "
-#| "the tutorial is explained more in-depth in these pages, so you can always "
-#| "refer back here if you forget something.\n"
-#| "\n"
-#| "After you master the basics, try out a beginner campaign, such as "
-#| "<italic>text='Heir to the Throne'</italic> or <italic>text='The South "
-#| "Guard'</italic>. A full list of installed campaigns can be found via the "
-#| "<bold>text='Campaign'</bold> option on the main menu. As Wesnoth can be "
-#| "quite challenging, you may wish to start on easy before progressing to "
-#| "higher difficulties."
 msgid ""
 "Wesnoth is comprised of a series of battles, called "
 "<italic>text='scenarios'</italic>, that pit your troops against the troops "
@@ -1492,7 +1461,16 @@ msgstr ""
 "者向けのキャンペーンをプレイしてみましょう。遊ぶことができるキャンペーンの一"
 "覧は、メインメニューの<bold>text='キャンペーン'</bold>から確認できます。"
 "Wesnoth は奥深いゲームですので、高難易度に進む前に簡単なものからプレイするこ"
-"とになるでしょう。"
+"とになるでしょう。\n"
+"\n"
+"キャンペーンは<italic>text='レベル' </italic>と<italic>text='難易度' </"
+"italic>でグループ分けされています。例えば、<italic>text='王位継承者' </"
+"italic>は「初級」レベルで、「初心者」「挑戦的」「ノーマル」の 3 つの難易度で"
+"プレイできます。レベルは必要とされるテクニック（例えば <ref>dst='movement' "
+"text='支配領域（ZOC）'</ref> や <ref>dst='time_of_day' text='時刻'</ref> な"
+"ど）のレベルを示しています。難易度は、ベテランのプレイヤーからするとそのキャ"
+"ンペーンはどれほどの難しさなのかを示しています。高難易度では勝利を阻む障壁は"
+"より高くなり、それを越えるためにはより熟練したプレイが必要となります。"
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:181
@@ -1584,19 +1562,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:204
-#, fuzzy
-#| msgid ""
-#| "Each side begins with one leader in their keep. At the start of any "
-#| "battle, and at times during it, you will need to recruit <ref>dst='.."
-#| "units' text='units'</ref> into your army. To recruit, you must have your "
-#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
-#| "italic> campaign) on the keep hex of a <ref>dst='terrain_castle' "
-#| "text='castle'</ref>. Then you may recruit by either choosing "
-#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
-#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
-#| "which lists units available for recruitment, along with their gold cost. "
-#| "Click on a unit to see its statistics, then press the "
-#| "<bold>text='Recruit'</bold> button to recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1925,17 +1890,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:264
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Another thing to keep in mind while moving is <italic>text='zones of "
-#| "control'</italic>. Each unit — except for level 0 units — generates a "
-#| "zone of control in the hexes immediately surrounding it, and any enemy "
-#| "unit entering those hexes immediately ends its movement. Learning how to "
-#| "use zones of control to your advantage is an important part of Wesnoth, "
-#| "as only <ref>dst='ability_skirmisher' text='skirmishers'</ref> can ignore "
-#| "zones of control."
 msgid ""
 "\n"
 "\n"
@@ -1953,8 +1907,8 @@ msgstr ""
 "に注意する必要があるでしょう。レベル 0 以外のユニットは、周囲 1 ヘクスに ZOC "
 "を持ちます。ZOC に敵ユニットが踏み込んだ場合、敵ユニットは残りの移動力を全て"
 "消費します。ZOC を有効活用することは、Wesnothをプレイする上で非常に重要です。"
-"なお、<ref>dst='ability_skirmisher' text='散兵'</ref>能力を持つユニットは "
-"ZOC の影響を受けません。"
+"なお、<ref>dst='ability_skirmisherskirmisher' text='散兵'</ref>能力を持つユ"
+"ニットは ZOC の影響を受けません。"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:266
@@ -2402,16 +2356,12 @@ msgstr ""
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:356
-#, fuzzy
-#| msgid ""
-#| "Some role-playing scenarios take place indoors — these regions are "
-#| "similarly intermediate."
 msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate.\n"
 msgstr ""
 "一部のロールプレイングシナリオでは屋内が舞台となることがあります。その場合、"
-"夕暮れや夜明けと同じように扱われます。"
+"夕暮れや夜明けと同じように扱われます。\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:358
@@ -2421,6 +2371,9 @@ msgid ""
 "<ref>dst='terrain_lava' text='lava'</ref> change the time of day bonus "
 "around them."
 msgstr ""
+"そして、<ref>dst='ability_illuminationilluminates' text='照明' </ref>の能力を"
+"持つユニットや、<ref>dst='terrain_lava' text='溶岩'</ref>のような地形は周囲の"
+"ユニットの時刻ボーナスを変化させます。"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:365
@@ -2453,12 +2406,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:368
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• <bold>text='Villages'</bold>: A unit which starts a turn in a village "
-#| "or oasis will heal 8HP. If the unit is poisoned, the poison will be cured "
-#| "instead."
 msgid ""
 "\n"
 "• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
@@ -2466,17 +2413,12 @@ msgid ""
 "poisoned, the poison will be cured instead."
 msgstr ""
 "\n"
-"• <bold>text='村'</bold>：村かオアシスでターンを開始したユニットは、HP が 8 "
-"回復します。もしユニットが毒を受けていれば、回復の代わりに解毒されます。"
+"• <bold>text='村'</bold>：村か<ref>dst='terrain_oasis' text='オアシス'</ref>"
+"でターンを開始したユニットは、HP が 8 回復します。もしユニットが毒を受けてい"
+"れば、回復の代わりに解毒されます。"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:369
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• <ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
-#| "(such as trolls) will automatically heal 8HP every turn. If the unit is "
-#| "poisoned, the poison will be cured instead."
 msgid ""
 "\n"
 "• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
@@ -2484,20 +2426,12 @@ msgid ""
 "the unit is poisoned, the poison will be cured instead."
 msgstr ""
 "\n"
-"• <ref>dst='ability_regenerates' text='再生'</ref>：再生を持つユニット（トロ"
-"ルなど）は毎ターン 8 回復します。ユニットが毒に侵されていれば、回復する代わり"
-"に解毒します。"
+"• <ref>dst='ability_regeneratesregenerates' text='再生'</ref>：再生を持つユ"
+"ニット（トロルなど）は毎ターン 8 回復します。ユニットが毒に侵されていれば、回"
+"復する代わりに解毒します。"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:370
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• <bold>text='Healing units'</bold>: Units with the "
-#| "<ref>dst='ability_heals +4' text='Heals'</ref> ability will heal each "
-#| "allied adjacent unit, usually <ref>dst='ability_heals +4' text='4HP'</"
-#| "ref> or <ref>dst='ability_heals +8' text='8HP'</ref> per turn, or prevent "
-#| "Poison from causing that unit damage."
 msgid ""
 "\n"
 "• <bold>text='Healing units'</bold>: Units with the "
@@ -2507,21 +2441,15 @@ msgid ""
 "prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"• <bold>text='回復ユニット'</bold>：<ref>dst='ability_heals +4' text='回復'</"
-"ref>能力を持つユニットは周囲の自軍・同盟軍ユニットを回復します。通常は "
-"<ref>dst='ability_heals +4' text='4HP'</ref> か <ref>dst='ability_heals +8' "
-"text='8HP'</ref> を毎ターン回復し、ユニットが毒に侵されていれば回復するかわり"
-"に毒によるダメージを防ぎます（解毒する訳ではありません）。"
+"• <bold>text='回復ユニット'</bold>：<ref>dst='ability_healingheals +4' "
+"text='回復'</ref>能力を持つユニットは周囲の自軍・同盟軍ユニットを回復します。"
+"通常は <ref>dst='ability_healingheals +4' text='4HP'</ref> か "
+"<ref>dst='ability_healingheals +8' text='8HP'</ref> を毎ターン回復し、ユニッ"
+"トが毒に侵されていれば回復するかわりに毒によるダメージを防ぎます（解毒する訳"
+"ではありません）。"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:371
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• <bold>text='Curing units'</bold>: Units with the "
-#| "<ref>dst='ability_cures' text='cures'</ref> ability will cure Poison in "
-#| "all allied adjacent units (in preference to healing, if it has that "
-#| "ability as well)."
 msgid ""
 "\n"
 "• <bold>text='Curing units'</bold>: Units with the "
@@ -2530,9 +2458,9 @@ msgid ""
 "ability as well)."
 msgstr ""
 "\n"
-"• <bold>text='治療ユニット'</bold>：<ref>dst='ability_cures' text='治療'</"
-"ref>能力を持つユニットは周囲の自軍・同盟軍のユニットから毒を取り除きます（も"
-"し回復能力も持っていれば、回復よりも治療が優先されます）。"
+"• <bold>text='治療ユニット'</bold>：<ref>dst='ability_curingcures' text='治"
+"療'</ref>能力を持つユニットは周囲の自軍・同盟軍のユニットから毒を取り除きます"
+"（もし回復能力も持っていれば、回復よりも治療が優先されます）。"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:372
@@ -5866,6 +5794,63 @@ msgid ""
 "eating carrion and even committing cannibalism, which are both regular "
 "occurrences."
 msgstr ""
+"トカゲ族（saurians）は爬虫類（lizard）のような生物です。体高は人間族よりも小"
+"さく細身で、１０歳程度の子どもより高くなることはまれですが、鼻先から尾の先ま"
+"での長さは、平均的な人間族の男性の身長と同程度の長さになります。軽量で素早い"
+"トカゲ族の戦士は、狩りをするような戦い方を好みます。即ち、敵陣をすり抜け、迎"
+"撃を巧みにかわし、弱いものや負傷者を標的にします。\n"
+"\n"
+"<header>text='社会'</header>\n"
+"トカゲ族は、他の種族にとって生活しにくい地域、 例えば湿地などを好んで棲息する"
+"性質があるため、 その生態はほとんど明らかになっていません。 極度の運命論者で"
+"あるトカゲ族は、 天体の位置関係を観測することで、 生涯に起こり得るすべての事"
+"象が予見できると信じています。\n"
+"\n"
+"トカゲ族の文化は、性別による明確なすみ分けがあります。雌雄それぞれの性集団内"
+"部で競い合い、各々が持つスキル、決断力、周囲からの評価によって、序列が明確に"
+"決まります。両性が交流する場面においては、雌雄どちらが主導権を握るかをめぐっ"
+"て争うことはなく、その時の状況によって主導的な性が決まります。一族の村や野営"
+"地においては、雄のリーダーが権限を持ち、それ以外の場所では雌のリーダーが権限"
+"を持ちます。この階級構造は全階級に及び、それぞれ自分よりも下位の異性を支配"
+"し、上位の異性に従います。\n"
+"\n"
+"トカゲ族の社会における、このすみ分けと交替可能な優越性は、明確に定められた性"
+"役割から派生したものです。雌は狩猟と食物の確保に責任を持ち、そのスキルは、戦"
+"士、散兵、側兵、伏兵としてのスキルにもなり得るため、他の種族にとっての脅威と"
+"なります。一方、雄は雌が産み落とした卵を保護する責任を持ちます。それにより、"
+"雌は占星術、治療、魔法を洗練させる時間を持てるのですが、それは同時に、彼らが"
+"危険に曝される要因ともなります。トカゲ族にとって最大の敵である、他の血族から"
+"の攻撃において、確実に標的とされるためです。\n"
+"\n"
+"トカゲ族が新しい血族を作る時期は、占星術師がコンジャンクション（conjunction）"
+"と呼ばれる天体の重なりを読み取ることにより決定されます。その兆候が現れると"
+"「ハッチング（hatching）」と呼ばれる行動が促され、コンジャンクションによって"
+"指名された雌が、下位の者からメンバーを選んでグループを作り、出身の部族を去り"
+"ます。特別な形質を持った雌は、しばしば同時に複数の部族に対して「ハッチング」"
+"を行います。選抜は以下のような単純なプロセスで行われます。・新しいグループの"
+"中に、他のグループより大きいグループがあってはならない。・新しいグループの全"
+"体が、残されるグループより大きくなってはならない。・上位の雌は他の雌の選択を"
+"覆すことができる。\n"
+"\n"
+" 個体数の増加速度が急速であること、頻繁な部族の分裂、共食いがタブーではないこ"
+"となどにより、暴力はトカゲ族の生態を特徴づけるもののひとつです。このことによ"
+"り、トカゲ族の文化は持続的に発展することができず、知識は口頭伝承に留まり、所"
+"有財産は持ち運び可能なものに限られます。\n"
+"\n"
+"<header>text='地理'</header>\n"
+"トカゲ族の棲息地としては、湿地帯が最も一般的ですが、 その他の多様な地域におい"
+"ても、 生存できないというわけではありません。\n"
+"\n"
+"<header>text='生態'</header>\n"
+"トカゲ族は Wesnoth の他の種族と比べると、極めて寿命が短い種族です。 ３年で完"
+"全な成体となり、多くは１０歳から１５歳で死にます。 死因で最も一般的なのは、暴"
+"力です。 トカゲ族の雌はおよそ１年に１度、約２０個の卵を産ます。 それにより、"
+"常に人口圧が生じるため、 絶えず食肉の確保に追われることになります。 生きた獲"
+"物を狙うハンターでありながら、 死体をあさることもあるトカゲ族は、極めて強い顎"
+"を持ち、 強酸性の消化液による非常に強い消化力を持つため、皮、歯、角、 骨を含"
+"む全ての部位を食べ、消化することができます。さらに、 彼らは腐肉を食べることを"
+"嫌悪せず、共食いさえも厭いません。 それらはどちらも日常的に見られる光景で"
+"す。 "
 
 #. [race]: id=mechanical
 #: data/core/units.cfg:276

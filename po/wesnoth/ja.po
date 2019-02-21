@@ -4,14 +4,17 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
+# RatArmy <broadbarredfirefish@gmail.com>, 2019
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-27 12:23+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2018\n"
+"PO-Revision-Date: 2018-05-06 10:17+0000\n"
+"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2019\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -5154,7 +5157,7 @@ msgstr "<i>― Asheviere 女王, Wesnoth歴 503 年</i>"
 #. [tip]
 #: data/tips.cfg:257
 msgid "Using lower-level units can be very cost-effective."
-msgstr ""
+msgstr "低レベルのユニットは非常に費用対効果が良いです．"
 
 #. [tip]
 #: data/tips.cfg:261
@@ -5163,13 +5166,14 @@ msgid ""
 "<i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can make a "
 "big difference in a campaign."
 msgstr ""
+"一部の高レベルユニットは，<i>統率</i>や<i>治療</i>，<i>隠密</i>などの特殊な能"
+"力を持っている．それらのユニットをキャンペーンの序盤に獲得できれば，戦況は大"
+"きく変わることになるだろう．"
 
 #. [tip]
 #: data/tips.cfg:262
-#, fuzzy
-#| msgid "<i>― Memoirs of Gweddry, 627YW</i>"
 msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
-msgstr "<i>― Gweddry の自叙伝, 627YW</i>"
+msgstr "<i>― Westin の Gerrick 卿，607YW</i>"
 
 #. [tip]
 #: data/tips.cfg:266
@@ -6639,8 +6643,6 @@ msgstr "能力のアップグレード："
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:512
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
 msgstr "HP："
 
@@ -6648,8 +6650,6 @@ msgstr "HP："
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves: "
 msgid "Moves:"
 msgstr "移動力："
 
@@ -6657,8 +6657,6 @@ msgstr "移動力："
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "Vision: "
 msgid "Vision:"
 msgstr "視界："
 
@@ -6666,8 +6664,6 @@ msgstr "視界："
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
-#, fuzzy
-#| msgid "Jamming: "
 msgid "Jamming:"
 msgstr "ジャミング："
 
@@ -6675,8 +6671,6 @@ msgstr "ジャミング："
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost: "
 msgid "Cost:"
 msgstr "コスト："
 
@@ -6684,8 +6678,6 @@ msgstr "コスト："
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:536
-#, fuzzy
-#| msgid "Alignment: "
 msgid "Alignment:"
 msgstr "アラインメント："
 
@@ -6693,8 +6685,6 @@ msgstr "アラインメント："
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Required XP: "
 msgid "Required XP:"
 msgstr "必要経験値："
 
@@ -7536,10 +7526,8 @@ msgid "Level: "
 msgstr "レベル："
 
 #: src/reports.cpp:258
-#, fuzzy
-#| msgid "No advancement"
 msgid "Advancements:"
-msgstr "レベルアップなし"
+msgstr "レベルアップ先："
 
 #: src/reports.cpp:271
 msgid "No advancement"
@@ -8310,26 +8298,3 @@ msgstr "$player の計画を非表示"
 #: src/whiteboard/manager.cpp:1143
 msgid "Whiteboard Options"
 msgstr "行動予定オプション"
-
-#~ msgid "Alternate Wesnoth Server"
-#~ msgstr "他のWesnothサーバー"
-
-#~ msgid "battery"
-#~ msgstr "バッテリー"
-
-#~ msgid ""
-#~ "In many campaign scenarios, you may issue simple instructions for your "
-#~ "computer-controlled allies using the right-click context menu."
-#~ msgstr ""
-#~ "キャンペーンシナリオでは、右クリックのコンテキストメニューを使って、コン"
-#~ "ピューターが操作する同盟軍に単純な指示を送れることがあります。"
-
-#~ msgid "An invalid defender weapon got selected."
-#~ msgstr "無効な防御側武器が選択されました。"
-
-#~ msgid "Advances to:"
-#~ msgstr "レベルアップ先："
-
-#~ msgid "(this turn left)"
-#~ msgid_plural "(%d turns left)"
-#~ msgstr[0] "（残り %d ターン）"

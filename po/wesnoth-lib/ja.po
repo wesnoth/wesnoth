@@ -4,14 +4,18 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
+# 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018
+# RatArmy <broadbarredfirefish@gmail.com>, 2019
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-21 21:30+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018\n"
+"PO-Revision-Date: 2018-05-06 10:15+0000\n"
+"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2019\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -247,11 +251,6 @@ msgstr "砂漠の砂地"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:298
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Deserts'</italic> have a somewhat different composition "
-#| "than small sand pits or beaches, however for gameplay purposes they are "
-#| "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
@@ -2456,8 +2455,6 @@ msgstr "難易度 "
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:73
-#, fuzzy
-#| msgid "Select difficulty level:"
 msgid "Select difficulty:"
 msgstr "難易度選択："
 
@@ -4482,12 +4479,12 @@ msgstr "カテゴリ："
 #. [label]
 #: data/gui/window/preferences/02_hotkeys.cfg:53
 msgid "Filter:"
-msgstr ""
+msgstr "フィルター："
 
 #. [text_box]: id=filter
 #: data/gui/window/preferences/02_hotkeys.cfg:67
 msgid "Filters on hotkey description."
-msgstr ""
+msgstr "ホットキーの説明から絞り込みます．"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:111
@@ -5863,10 +5860,8 @@ msgid "The game data cache could not be purged."
 msgstr "ゲームデータのキャッシュを削除できませんでした。"
 
 #: src/gui/dialogs/game_load.cpp:264
-#, fuzzy
-#| msgid "The selected game has no sides!"
 msgid "The selected file is corrupt: "
-msgstr "選択したゲームには陣営がありません！"
+msgstr "選択したファイルは壊れています："
 
 #: src/gui/dialogs/game_load.cpp:343
 msgid "(Invalid)"
