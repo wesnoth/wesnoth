@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Huang Huan <unicon221@gmail.com>, 2005.
 # Dionysus(unicon) <huang.wei.bhu@gmail.com>, 2007.
@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-21 18:30 UTC\n"
-"PO-Revision-Date: 2018-07-08 21:44+0800\n"
+"PO-Revision-Date: 2019-02-08 16:08+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [lua]: wml_actions.select_character
 #: data/campaigns/tutorial/lua/character_selection.lua:25
@@ -146,7 +146,7 @@ msgstr "点击莉莎"
 #. [then]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:316
 msgid "To undo your last move, press <b>u</b> or use the right-click menu."
-msgstr ""
+msgstr "按<b>u</b>或使用右击菜单来撤销你的最后一手。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:357
@@ -789,7 +789,7 @@ msgid ""
 msgstr ""
 "在你的胜利提示之后，地图会变为灰色，以表示本场景已经结束；这称为<b>逗留模式</"
 "b>。但你将仍然可以查看你的部队以及所有存活的敌人的最终位置和状态。这称为<b>逗"
-"留模式</b>。当你结束查看时，点击<b>结束场景</b>按钮，以进入战役中的下一个场"
+"留模式</b>。当你结束查看时，点击<b>结束场景</b>按钮，以进入战役中的下一幕场"
 "景。"
 
 #. [tutorial]: id=2_Tutorial
@@ -1042,9 +1042,9 @@ msgid ""
 "while your leader stands on a keep and select the <i>Recall</i> option. "
 "Remember to also recruit new troops in addition to recalling old ones."
 msgstr ""
-"除了在每个场景中征募新单位以外，你也可以<b>召回</b>之前场景中的经验丰富的老"
+"除了在每幕场景中征募新单位以外，你也可以<b>召回</b>之前场景中的经验丰富的老"
 "兵，每名老兵需花费20枚金币。这样，通过召回最高级的单位，或召回拥有优秀的特质"
-"和技能组合的单位，你就能在攻略多个场景的过程中，建立起一支强大的军队。要召回"
+"和技能组合的单位，你就能在攻略多幕场景的过程中，建立起一支强大的军队。要召回"
 "单位，当你的首领站在城堡主楼上时，请右击并选择<b>召回</b>选项。除了召回旧单位"
 "外，也要记得征募新单位。"
 
@@ -1195,12 +1195,6 @@ msgstr "状态表"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:410
-#, fuzzy
-#| msgid ""
-#| "The Status Table details the sides’ current status and starting "
-#| "conditions. Fog and shroud will affect what you can see in this table, "
-#| "and occasionally a side may be hidden. It is useful to check this table "
-#| "when a scenario begins."
 msgid ""
 "The Status Table details the sides’ current status and starting conditions. "
 "Fog and shroud will affect what you can see in this table, and occasionally "
@@ -1208,7 +1202,8 @@ msgid ""
 "scenario begins. You can access it in the <b>Menu</b> menu."
 msgstr ""
 "状态表详细列出了各阵营当前的状态和起始条件。迷雾和黑幕会影响到你能从此表上看"
-"到的内容，有时有的阵营可能会被隐藏。在场景开始时检视此表，是很有用的。"
+"到的内容，有时有的阵营可能会被隐藏；然而，在场景开始时检视此表，还是很有用"
+"的。你可以在<b>菜单</b>菜单中访问它。"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:428
@@ -1579,18 +1574,13 @@ msgstr "胜利条件"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:740
-#, fuzzy
-#| msgid ""
-#| "In this scenario, you only need to defeat the orc leader to win. Victory "
-#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
-#| "<b>Menu</b>."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. Victory "
 "conditions for a scenario are given under <b>Scenario Objectives</b> in the "
 "<b>Menu</b> menu."
 msgstr ""
-"在此场景中，你只需击败兽人首领就能获胜了。场景的胜利条件在<b>菜单</b>中的<b>"
-"场景目标</b>里给出。"
+"在此场景中，你只需击败兽人首领就能获胜了。场景的胜利条件在<b>菜单</b>菜单中的"
+"<b>场景目标</b>里给出。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:749
@@ -1658,24 +1648,20 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:896
-#, fuzzy
-#| msgid ""
-#| "You are close to killing their leader! The unit who finishes him will "
-#| "gain 16 experience points because he is second level. Choose your "
-#| "attacking unit carefully!"
 msgid ""
 "You are close to killing their leader! Because he is second level, the unit "
 "who finishes him will gain 16 experience points. In a campaign, it’s "
 "important to decide which units you want to advance, and give those units "
 "the best chances to gain experience."
 msgstr ""
-"你马上就能击杀他们的首领了！击杀他的单位将获得16点经验值，因为他是二级的。谨"
-"慎选择你的进攻单位！"
+"你马上就能击杀他们的首领了！击杀他的单位将获得16点经验值，因为他是二级的。在"
+"一场战役中，决定升级哪些单位，并为这些单位提供最好的获取经验的机会，是很重要"
+"的。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:900
 msgid "You have almost finished the tutorial"
-msgstr ""
+msgstr "你几乎完成了教程"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:902
@@ -1683,6 +1669,8 @@ msgid ""
 "In a campaign you may have ten or even twenty scenarios to build your army, "
 "but this tutorial will conclude after you defeat Thrag."
 msgstr ""
+"在一场战役里，你或许会有十幕甚至二十幕场景的时间来建设你的军队，但此教程在你"
+"击败斯拉戈后就会结束。"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:928
@@ -1858,6 +1846,10 @@ msgid ""
 "Incursion</i> you have an Elvish army, similarly to this tutorial, but with "
 "seven scenarios for your units to gain experience and advance levels."
 msgstr ""
+"你击败了兽人！接下去你或许可以试试看几个菜鸟级别的战役之一，这些战役里有策略"
+"提示。<b>兄弟传说</b>是最简单的战役，也是推荐的首个战役。在<b>兽人入侵</b>中"
+"你拥有一支精灵军队，这和此教程类似，但该战役有七幕场景可供你的单位获得经验并"
+"升级。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1176
@@ -1865,6 +1857,7 @@ msgid ""
 "You can also refer to the in-game help browser if you ever need to refresh "
 "your memory on gameplay mechanics."
 msgstr ""
+"如果你需要刷新一下有关游戏机制的记忆，你也可以随时参看游戏内的帮助浏览器。"
 
 #. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
@@ -1919,15 +1912,3 @@ msgid ""
 msgstr ""
 "\n"
 "<big>点击鼠标按钮或者按空格键继续……</big>"
-
-#~ msgid ""
-#~ "You have beaten the orcs! You may want to try one of the novice-level "
-#~ "campaigns next, such as <i>A Tale of Two Brothers</i>, <i>An Orcish "
-#~ "Incursion</i>, or <i>The South Guard</i>. Konrad, Li’sar and Delfador are "
-#~ "characters from <i>Heir to the Throne</i>. You can also refer to the in-"
-#~ "game help browser if you ever need to refresh your memory on gameplay "
-#~ "mechanics."
-#~ msgstr ""
-#~ "你击败了兽人！接下来你可能会想试试看新手级别的战役，例如：<b>兄弟传说</"
-#~ "b>、<b>兽人入侵</b>或者<b>南疆卫队</b>。科纳德、莉莎和德法多是<b>王座继承"
-#~ "人</b>中的角色。如果你需要回忆游戏玩法，那也可以参见游戏中的帮助浏览器。"

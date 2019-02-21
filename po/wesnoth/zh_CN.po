@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # jan2xue <75jan@163.com>, 2005.
 # Huang Huan <unicon221@gmail.com>, 2005.
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-27 12:23+0300\n"
-"PO-Revision-Date: 2018-07-08 20:29+0800\n"
+"PO-Revision-Date: 2019-02-04 16:58+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -3542,7 +3542,7 @@ msgstr "可选目标："
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:52
 msgid "This is the last scenario."
-msgstr "这是最后一个场景。"
+msgstr "这是最后一幕场景。"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:58
@@ -3810,7 +3810,7 @@ msgstr "青"
 #. [color_range]: id=gold
 #: data/core/team-colors.cfg:107
 msgid "color^Gold"
-msgstr ""
+msgstr "金"
 
 #. [color_range]: id=reef
 #: data/core/team-colors.cfg:116
@@ -4815,7 +4815,7 @@ msgid ""
 "the <b>Help</b> screen carefully. Details become important as scenarios get "
 "harder!"
 msgstr ""
-"玩过几个场景后，请认真阅读<b>帮助</b>屏幕中的<b>游戏玩法</b>部分。随着场景变"
+"玩过几幕场景后，请认真阅读<b>帮助</b>屏幕中的<b>游戏玩法</b>部分。随着场景变"
 "得越来越难，细节也就变得越来越重要了！"
 
 #. [tip]
@@ -4825,7 +4825,7 @@ msgid ""
 "level units that are about to level up than with those same units at a "
 "higher level."
 msgstr ""
-"通常来说，在战役中最好把即将升级的低等级单位留到下一个场景开始时使用，而不是"
+"通常来说，在战役中最好把即将升级的低等级单位留到下一幕场景开始时使用，而不是"
 "在当前场景中先升级后，再到下一场景开始时使用。"
 
 #. [tip]
@@ -4930,7 +4930,7 @@ msgid ""
 "the <b>Actions</b> menu. By recalling the same units over and over, you can "
 "build up a powerful and experienced army."
 msgstr ""
-"你可以通过<b>行动</b>菜单中的<b>召回</b>来召回上一个场景中的单位。通过不断召"
+"你可以通过<b>行动</b>菜单中的<b>召回</b>来召回上一幕场景中的单位。通过不断召"
 "回相同的单位，你可以建立一支强大而经验丰富的军队。"
 
 #. [tip]
@@ -5080,9 +5080,9 @@ msgid ""
 "remaining. You will usually earn more gold this way than through capturing "
 "villages and waiting for the turns to run out."
 msgstr ""
-"在绝大多数战役中，提前完成任务目标会获得金币奖励，其数目取决于地图上村庄的数"
-"量和剩余的回合数。和占领剩下的村庄并等待回合数耗尽相比，提前完成目标通常能让"
-"你获得更多金币。"
+"在大多数战役中，提前完成任务目标会获得金币奖励，其数目取决于地图上村庄的数量"
+"和剩余的回合数。和占领剩下的村庄并等待回合数耗尽相比，提前完成目标通常能让你"
+"获得更多金币。"
 
 #. [tip]
 #: data/tips.cfg:136
@@ -5415,7 +5415,7 @@ msgstr "<b>——艾什薇尔女王，韦元503年</b>"
 #. [tip]
 #: data/tips.cfg:257
 msgid "Using lower-level units can be very cost-effective."
-msgstr ""
+msgstr "使用低等级单位的效费比很高。"
 
 #. [tip]
 #: data/tips.cfg:261
@@ -5424,13 +5424,13 @@ msgid ""
 "<i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can make a "
 "big difference in a campaign."
 msgstr ""
+"有些高等级单位拥有无可企及的能力，例如<b>领导</b>，<i>疗毒</I>，或者<i>夜遁</"
+"I>。在战役早期就获得这些单位，可以给战局带来极大变化。"
 
 #. [tip]
 #: data/tips.cfg:262
-#, fuzzy
-#| msgid "<i>― Memoirs of Gweddry, 627YW</i>"
 msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
-msgstr "<b>——格威德利的回忆录，韦元627年</b>"
+msgstr "<b>——韦斯廷的格里克爵士，韦元607年</b>"
 
 #. [tip]
 #: data/tips.cfg:266
@@ -6541,17 +6541,17 @@ msgid_plural ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
 msgstr[0] ""
-"除了指定的最小起始金币数以外，你将以$gold|枚额外金币来开始下一个场景。"
+"除了指定的最小起始金币数以外，你将以$gold|枚额外金币来开始下一幕场景。"
 msgstr[1] ""
-"除了指定的最小起始金币数以外，你将以$gold|枚额外金币来开始下一个场景。"
+"除了指定的最小起始金币数以外，你将以$gold|枚额外金币来开始下一幕场景。"
 
 #: src/game_initialization/playcampaign.cpp:99
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
 "You will start the next scenario with the defined minimum starting gold."
-msgstr[0] "你将以指定的最小起始金币数来开始下一个场景。"
-msgstr[1] "你将以指定的最小起始金币数来开始下一个场景。"
+msgstr[0] "你将以指定的最小起始金币数来开始下一幕场景。"
+msgstr[1] "你将以指定的最小起始金币数来开始下一幕场景。"
 
 #: src/game_initialization/playcampaign.cpp:107
 msgid ""
@@ -6561,9 +6561,9 @@ msgid_plural ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
 msgstr[0] ""
-"你将以$gold|枚金币或者场景指定的最小起始金币数中较高者来开始下一个场景。"
+"你将以$gold|枚金币或者场景指定的最小起始金币数中较高者来开始下一幕场景。"
 msgstr[1] ""
-"你将以$gold|枚金币或者场景指定的最小起始金币数中较高者来开始下一个场景。"
+"你将以$gold|枚金币或者场景指定的最小起始金币数中较高者来开始下一幕场景。"
 
 #: src/game_initialization/playcampaign.cpp:137
 msgid "Scenario Report"
@@ -6881,8 +6881,6 @@ msgstr "能力升级："
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:512
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
 msgstr "生命："
 
@@ -6890,8 +6888,6 @@ msgstr "生命："
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves: "
 msgid "Moves:"
 msgstr "移动："
 
@@ -6899,8 +6895,6 @@ msgstr "移动："
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "Vision: "
 msgid "Vision:"
 msgstr "视野："
 
@@ -6908,8 +6902,6 @@ msgstr "视野："
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
-#, fuzzy
-#| msgid "Jamming: "
 msgid "Jamming:"
 msgstr "干扰："
 
@@ -6917,17 +6909,13 @@ msgstr "干扰："
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost: "
 msgid "Cost:"
-msgstr "花费："
+msgstr "费用："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:536
-#, fuzzy
-#| msgid "Alignment: "
 msgid "Alignment:"
 msgstr "立场："
 
@@ -6935,8 +6923,6 @@ msgstr "立场："
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Required XP: "
 msgid "Required XP:"
 msgstr "所需经验："
 
@@ -7177,7 +7163,7 @@ msgid ""
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 "没有可供召回的部队\n"
-"（你在上一个场景中必须有生还的老兵）"
+"（你在上一幕场景中必须有生还的老兵）"
 
 #: src/menu_events.cpp:368
 msgid "You currently can't recall at the highlighted location"
@@ -7185,7 +7171,7 @@ msgstr "你目前不能在高亮位置进行召回"
 
 #: src/menu_events.cpp:380
 msgid "No unit recalled"
-msgstr ""
+msgstr "未召回任何单位"
 
 #: src/menu_events.cpp:397
 msgid "You must have at least 1 gold piece to recall a unit"
@@ -7320,11 +7306,11 @@ msgstr "<ID>"
 
 #: src/menu_events.cpp:1200
 msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr "进入下一个场景，或ID为“ID”的场景"
+msgstr "进入下一幕场景，或ID为“ID”的场景"
 
 #: src/menu_events.cpp:1202
 msgid "Choose next scenario"
-msgstr "选择下一个场景"
+msgstr "选择下一幕场景"
 
 #: src/menu_events.cpp:1205
 msgid ""
@@ -7392,7 +7378,7 @@ msgstr "<变量>=<值>"
 
 #: src/menu_events.cpp:1224
 msgid "Set a scenario variable."
-msgstr "设置一个场景变量。"
+msgstr "设置一幕场景变量。"
 
 #: src/menu_events.cpp:1225
 msgid "<var>"
@@ -7400,7 +7386,7 @@ msgstr "<变量>"
 
 #: src/menu_events.cpp:1225
 msgid "Show a scenario variable."
-msgstr "显示一个场景变量。"
+msgstr "显示一幕场景变量。"
 
 #: src/menu_events.cpp:1227
 msgid "Modify a unit variable. (Only top level keys are supported.)"
@@ -7468,15 +7454,15 @@ msgstr "无法托管联机阵营：“$side|”。"
 
 #: src/menu_events.cpp:1427
 msgid "Side '$side' is already droided."
-msgstr ""
+msgstr "阵营：“$side|”之前已被托管了。"
 
 #: src/menu_events.cpp:1437
 msgid "Side '$side' controller is now controlled by: AI."
-msgstr ""
+msgstr "阵营：“$side|”现在由AI控制。"
 
 #: src/menu_events.cpp:1439
 msgid "Side '$side' controller is now controlled by: human."
-msgstr ""
+msgstr "阵营：“$side|”现在由人类控制。"
 
 #: src/menu_events.cpp:1447
 msgid "Can't droid a local ai side: '$side'."
@@ -7758,10 +7744,8 @@ msgid "Level: "
 msgstr "等级："
 
 #: src/reports.cpp:258
-#, fuzzy
-#| msgid "No advancement"
 msgid "Advancements:"
-msgstr "不能升级"
+msgstr "可升级为："
 
 #: src/reports.cpp:271
 msgid "No advancement"
@@ -8037,7 +8021,7 @@ msgstr "时钟"
 
 #: src/reports.cpp:1583
 msgid "Battery"
-msgstr ""
+msgstr "炮位"
 
 #: src/reports.cpp:1611
 msgid "Countdown until your turn automatically ends."
@@ -8528,24 +8512,3 @@ msgstr "隐藏$player的计划"
 #: src/whiteboard/manager.cpp:1143
 msgid "Whiteboard Options"
 msgstr "白板选项"
-
-#~ msgid "Alternate Wesnoth Server"
-#~ msgstr "替代用韦诺服务器"
-
-#~ msgid ""
-#~ "In many campaign scenarios, you may issue simple instructions for your "
-#~ "computer-controlled allies using the right-click context menu."
-#~ msgstr ""
-#~ "在许多战役场景中，你都可以通过右键上下文菜单向由计算机控制的盟友下达简单的"
-#~ "指令。"
-
-#~ msgid "An invalid defender weapon got selected."
-#~ msgstr "选中了无效的防御武器。"
-
-#~ msgid "Advances to:"
-#~ msgstr "升级为："
-
-#~ msgid "(this turn left)"
-#~ msgid_plural "(%d turns left)"
-#~ msgstr[0] "（仅剩本回合）"
-#~ msgstr[1] "（剩余%d回合）"
