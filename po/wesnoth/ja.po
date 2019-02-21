@@ -4,14 +4,17 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
+# RatArmy <broadbarredfirefish@gmail.com>, 2019
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2018\n"
+"PO-Revision-Date: 2018-05-06 10:17+0000\n"
+"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2019\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -3992,8 +3995,10 @@ msgstr "公式サーバー"
 
 #. [server]
 #: data/game_config.cfg:8 data/game_config.cfg:12
+#, fuzzy
+#| msgid "Official Wesnoth Server"
 msgid "Alternate Wesnoth Server"
-msgstr "他のWesnothサーバー"
+msgstr "公式サーバー"
 
 #. [label]: id=title
 #: data/gui/window/install_dependencies.cfg:37
@@ -4115,7 +4120,7 @@ msgstr "敗北条件："
 #: data/lua/wml/objectives.lua:57
 msgid "(this turn left)"
 msgid_plural "(%d turns left)"
-msgstr[0] "（残り %d ターン）"
+msgstr[0] ""
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
@@ -5014,12 +5019,16 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:217
+#, fuzzy
+#| msgid ""
+#| "In this scenario, you may issue instructions to an allied side by right-"
+#| "clicking on a unit that belongs to it."
 msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
 msgstr ""
-"キャンペーンシナリオでは、右クリックのコンテキストメニューを使って、コン"
-"ピューターが操作する同盟軍に単純な指示を送れることがあります。"
+"このシナリオでは、右クリックのコンテキストメニューを使って同盟軍へ指示するこ"
+"とができます。"
 
 #. [tip]
 #: data/tips.cfg:221
@@ -5169,8 +5178,10 @@ msgid "An invalid attacker weapon got selected."
 msgstr "無効な攻撃側武器が選択されました。"
 
 #: src/actions/attack.cpp:401
+#, fuzzy
+#| msgid "An invalid attacker weapon got selected."
 msgid "An invalid defender weapon got selected."
-msgstr "無効な防御側武器が選択されました。"
+msgstr "無効な攻撃側武器が選択されました。"
 
 #: src/actions/create.cpp:338
 msgid "You do not have a leader to recall with."
@@ -6603,25 +6614,35 @@ msgstr "能力のアップグレード："
 
 #: src/help/help_topic_generators.cpp:482
 msgid "HP: "
-msgstr "HP："
+msgstr ""
 
 #: src/help/help_topic_generators.cpp:483
+#, fuzzy
+#| msgid "Moves:"
 msgid "Moves: "
 msgstr "移動力："
 
 #: src/help/help_topic_generators.cpp:485
+#, fuzzy
+#| msgid "Vision:"
 msgid "Vision: "
 msgstr "視界："
 
 #: src/help/help_topic_generators.cpp:488
+#, fuzzy
+#| msgid "Jamming:"
 msgid "Jamming: "
 msgstr "ジャミング："
 
 #: src/help/help_topic_generators.cpp:490
+#, fuzzy
+#| msgid "Cost:"
 msgid "Cost: "
 msgstr "コスト："
 
 #: src/help/help_topic_generators.cpp:495
+#, fuzzy
+#| msgid "Required XP:"
 msgid "Required XP: "
 msgstr "必要経験値："
 
@@ -7453,6 +7474,8 @@ msgid "No advancement"
 msgstr "レベルアップなし"
 
 #: src/reports.cpp:238
+#, fuzzy
+#| msgid "Advances to: "
 msgid "Advances to:"
 msgstr "レベルアップ先："
 
@@ -8251,8 +8274,20 @@ msgstr "行動予定オプション"
 #~ "DroidSansJapanese.ttf,Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
-#~ msgid "battery"
-#~ msgstr "バッテリー"
+#~ msgid "Using lower-level units can be very cost-effective."
+#~ msgstr "低レベルのユニットは非常に費用対効果が良いです．"
+
+#~ msgid ""
+#~ "Some higher-level units have inimitable abilities such as <i>Leadership</"
+#~ "i>, <i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can "
+#~ "make a big difference in a campaign."
+#~ msgstr ""
+#~ "一部の高レベルユニットは，<i>統率</i>や<i>治療</i>，<i>隠密</i>などの特殊"
+#~ "な能力を持っている．それらのユニットをキャンペーンの序盤に獲得できれば，戦"
+#~ "況は大きく変わることになるだろう．"
+
+#~ msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
+#~ msgstr "<i>― Westin の Gerrick 卿，607YW</i>"
 
 #~ msgid "an advancement choice"
 #~ msgstr "レベルアップ先の選択"
@@ -8290,6 +8325,12 @@ msgstr "行動予定オプション"
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "不明な項目への参照："
 
+#~ msgid "HP:"
+#~ msgstr "HP："
+
+#~ msgid "Alignment:"
+#~ msgstr "アラインメント："
+
 #~ msgid "No unit recalled"
 #~ msgstr "ユニットは召還されませんでした"
 
@@ -8301,6 +8342,9 @@ msgstr "行動予定オプション"
 
 #~ msgid "Side '$side' controller is now controlled by: human."
 #~ msgstr "陣営「$side」は人間によって操作されます．"
+
+#~ msgid "Advancements:"
+#~ msgstr "レベルアップ先："
 
 #~ msgid "weapon^None"
 #~ msgstr "なし"

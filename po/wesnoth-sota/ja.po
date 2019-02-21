@@ -1,14 +1,16 @@
 # Translators:
 # IWAI, Masaharu <iwaim.sub@gmail.com>, 2018
-# RatArmy <broadbarredfirefish@gmail.com>, 2018
+# 堀 秀幸 <Hide.HORI@gmail.com>, 2018
 # 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018
+# RatArmy <broadbarredfirefish@gmail.com>, 2019
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018\n"
+"PO-Revision-Date: 2018-05-06 10:23+0000\n"
+"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2019\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -61,6 +63,12 @@ msgstr "難しい"
 
 #. [campaign]: id=Secrets of the Ancients
 #: data/campaigns/Secrets_of_the_Ancients/_main.cfg:21
+#, fuzzy
+#| msgid ""
+#| "Rediscover the secrets known by the lich lords of the Green Isle. They "
+#| "knew how to live forever, so why can't you?\n"
+#| "\n"
+#| "(Hard level, 21 scenarios.)\n"
 msgid ""
 "Rediscover the secrets known by the lich lords of the Green Isle. They knew "
 "how to live forever, so why can't you?\n"
@@ -70,7 +78,7 @@ msgstr ""
 "緑の島のリッチ君主たちの秘密を解き明かせ。彼らは不死の秘訣を知っていたのだ。"
 "あなたにできぬはずはなかろう？\n"
 "\n"
-"（中級レベル、21シナリオ）\n"
+"（上級レベル、21シナリオ）\n"
 "\n"
 
 #. [about]
@@ -317,8 +325,6 @@ msgid ""
 "safety inside the sturdy fences built by farmers and woodcutters. The wild "
 "animals surely won't be able to enter."
 msgstr ""
-"オオカミだ！ この旅は予想以上に危険みたい。 けど、農家や木こりが丈夫な柵を築"
-"いてるはず。そこまで逃げ込めば、野生動物から身を守れるかな。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:346
@@ -617,8 +623,6 @@ msgid ""
 "You can recruit or recall from your starting position on the first turn "
 "only. To get more units, raise them from their graves."
 msgstr ""
-"最初のターンのみ、スタート地点で雇用と召喚を行うことができます。 さらにユニッ"
-"トが必要であれば、墓から蘇らせましょう。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:714
@@ -2155,7 +2159,7 @@ msgstr ""
 "私が到着した時でも戦いの痕跡は明白だった。川を挟んで向かい合っている二つの要"
 "塞はほとんど水浸し。緩やかな水が道の近くまで溜まってて、地上のいたるところに"
 "腐敗した泥があった。武器や鎧、良く分からない金属の欠片が沼地に浮かんでいた。"
-"大きな投石機によって要塞はぼろぼろに朽ちて、戦士たちの白骨が漂白物から突き出"
+"大きな投石機によって要塞はぼろぼろに朽ちて、戦士たちの白骨が漂泊物から突き出"
 "ているのだろう。"
 
 #. [part]
@@ -2264,7 +2268,7 @@ msgstr "敵を追い払うのに手を貸そう。その分の料金まで払う
 msgid ""
 "When the mage isss dead and her sssouls put to ressst, we agree. We will "
 "have been compensssated adequately."
-msgstr "あの魔術師ぃぃを始末してからならぁ、同意するぅ。適切なぁ料金を払うぅ。"
+msgstr ""
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:167
@@ -2311,10 +2315,6 @@ msgid ""
 "frightening and forbidden by my clan. I sssubmit to your power. Now that I "
 "know you are female, I will find it easier as it is the way of my kind."
 msgstr ""
-"私は星ぃ々ぃぃの間にある闇ぃを凝視している。その闇ぃは虚無によって威圧された"
-"ものではないぃぃ。しかし、お前の思考はまた別の闇ぃぃを持っている、驚くべきも"
-"のでもあり、我が一族では禁じられていぃるものだ。私はお前の力を受け入ぃぃれ"
-"る。それこそが我が種族の進むべき道ぃぃなのだ。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:229
@@ -3724,7 +3724,7 @@ msgstr "ついに勝ちましたよ！"
 #. [unit]: type=Elvish High Lord, id=Galoïndrath
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:698
 msgid "Galoïndrath"
-msgstr "Galoïndrath"
+msgstr ""
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:716
@@ -4297,6 +4297,13 @@ msgstr "空っぽのオーバーレイ"
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:344
 msgid "Half Void"
 msgstr "半分空っぽ"
+
+#~ msgid ""
+#~ "Ardonna can climb over a fence for 2 movement points, but wild animals "
+#~ "cannot."
+#~ msgstr ""
+#~ "Ardonna は移動力を 2 消費して柵を登ることができますが、オオカミは柵を越え"
+#~ "られません。"
 
 #~ msgid "Gwyllin"
 #~ msgstr "Gwyllin"

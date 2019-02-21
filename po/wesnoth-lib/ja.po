@@ -4,14 +4,18 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
+# 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018
+# RatArmy <broadbarredfirefish@gmail.com>, 2019
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018\n"
+"PO-Revision-Date: 2018-05-06 10:15+0000\n"
+"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2019\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -247,6 +251,11 @@ msgstr "砂漠の砂地"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:298
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Deserts'</italic> have a somewhat different composition "
+#| "than small sand pits or beaches, however for gameplay purposes they are "
+#| "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
@@ -2534,6 +2543,8 @@ msgstr "難易度 "
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:83
+#, fuzzy
+#| msgid "Select difficulty:"
 msgid "Select difficulty level:"
 msgstr "難易度選択："
 
@@ -7600,6 +7611,12 @@ msgstr ""
 #~ "ユニットの移動とアニメーションの速度です。「高速化」が有効になっているか、"
 #~ "ゲーム中で Shift キーを押している間に適用されます。"
 
+#~ msgid "Filter:"
+#~ msgstr "フィルター："
+
+#~ msgid "Filters on hotkey description."
+#~ msgstr "ホットキーの説明から絞り込みます．"
+
 #~ msgid "Limit FPS"
 #~ msgstr "FPS 制限"
 
@@ -7630,6 +7647,9 @@ msgstr ""
 
 #~ msgid "active_modifications^None"
 #~ msgstr "なし"
+
+#~ msgid "The selected file is corrupt: "
+#~ msgstr "選択したファイルは壊れています："
 
 #~ msgid "Modifications: "
 #~ msgstr "Mod："

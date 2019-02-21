@@ -3,13 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
+# RatArmy <broadbarredfirefish@gmail.com>, 2019
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2018-02-12 20:02+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2018\n"
+"PO-Revision-Date: 2018-05-06 10:25+0000\n"
+"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2019\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -103,9 +106,10 @@ msgstr "オプション"
 
 #. type: TP
 #: doc/man/wesnoth.6:45
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--bunzip2>I<\\ infile.bz2>"
 msgid "B<--bunzip>I<\\ infile.bz2>"
-msgstr "B<--bunzip>I<\\ infile.bz2>"
+msgstr "B<--bunzip2>I<\\ infile.bz2>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:51
@@ -118,9 +122,10 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:51
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--bzip2>I<\\ infile>"
 msgid "B<--bzip>I<\\ infile>"
-msgstr "B<--bzip>I<\\ infile>"
+msgstr "B<--bzip2>I<\\ infile>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:57
@@ -236,8 +241,6 @@ msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-l --load>"
 msgstr ""
-"ゲーム内のマップエディタを直接起動する。 もし、 I<file> が指定されていた場合"
-"は B<-l --load>と同じになる。"
 
 #. type: TP
 #: doc/man/wesnoth.6:89
@@ -416,8 +419,6 @@ msgid ""
 "the number of frames per second the game can show, the value should be "
 "between I<1> and I<1000>, the default is the monitor's refresh rate."
 msgstr ""
-"FPSを設定する。 I<1> から I<1000> の範囲。デフォルトではディスプレイのリフ"
-"レッシュレートを指定。"
 
 #. type: TP
 #: doc/man/wesnoth.6:159
@@ -447,9 +448,10 @@ msgstr "テスト用のMPシナリオを読み込む。"
 
 #. type: TP
 #: doc/man/wesnoth.6:168
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--noreplaycheck>"
 msgid "B<--no-delay>"
-msgstr "B<--no-delay>"
+msgstr "B<--noreplaycheck>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:172
@@ -549,14 +551,17 @@ msgstr "サーバーへ接続時、他の設定を無視して、 I<password> �
 
 #. type: TP
 #: doc/man/wesnoth.6:201
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--data-path>"
 msgid "B<--path>"
-msgstr "B<--path>"
+msgstr "B<--data-path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:204
+#, fuzzy
+#| msgid "prints the path of the data directory and exits."
 msgid "prints the name of the game data directory and exits."
-msgstr "ゲームデータディレクトリの名前を表示して、終了する。"
+msgstr "データディレクリへのパスを表示し終了する。"
 
 #. type: TP
 #: doc/man/wesnoth.6:204
@@ -576,13 +581,6 @@ msgid ""
 "preprocessor visit: https://wiki.wesnoth.org/PreprocessorRef#Command-"
 "line_preprocessor"
 msgstr ""
-"指定されたファイルまたはフォルダを前処理する。各ファイル（またはファイル群）"
-"ごとに、プレイン .cfg ファイルおよび処理された .cfg ファイルがターゲットとし"
-"て指定されたディレクトリに書き出される。フォルダが指定された場合、フォルダは"
-"既知の前処理ルールに基づいて再帰的に前処理される。指定されたリソースの前に、"
-"「data/core/macros」ディレクトリ内の共通マクロが前処理される。例：B<-p ~/"
-"wesnoth/data/campaigns/tutorial ~/result.> 前処理プログラムに関する詳細："
-"https://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor"
 
 #. type: TP
 #: doc/man/wesnoth.6:214
@@ -646,7 +644,7 @@ msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 #. type: Plain text
 #: doc/man/wesnoth.6:243
 msgid "sets the screen resolution. Example: B<-r 800x600>"
-msgstr "画面解像度を設定する。例: B<-r 800x600>"
+msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:243
@@ -662,10 +660,6 @@ msgid ""
 "with .bmp or if libpng is not available. Image path functions are documented "
 "at https://wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
-"画像パス関数により、wesnoth の確かな「画像パス文字列」を取得し、.png ファイル"
-"に出力する。ファイル名が .bmp で終了した場合あるいは libpng が利用可能でない"
-"場合は、 windows の .bmp ファイルに出力する。画像パス関数については、https://"
-"wiki.wesnoth.org/ImagePathFunctionWML に文書化されている。"
 
 #. type: TP
 #: doc/man/wesnoth.6:246
@@ -684,16 +678,17 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:249
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--username>I<\\ username>"
 msgid "B<--rng-seed>I<\\ seed>"
-msgstr "B<--rng-seed>I<\\ seed>"
+msgstr "B<--username>I<\\ username>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:253
 msgid ""
 "seeds the random number generator with number E<lt>argE<gt>. Example: B<--"
 "rng-seed 0>"
-msgstr "乱数のシード値を数値で指定する E<lt>argE<gt>. 例: B<--rng-seed 0>"
+msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:253
@@ -719,8 +714,6 @@ msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
-"ホストが指定されていれば、そのホストへ接続する。あるいは選択の最初のサーバー"
-"に接続する。例: B<--server server.wesnoth.org>"
 
 #. type: TP
 #: doc/man/wesnoth.6:264
@@ -917,9 +910,10 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:340
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--side>I<\\ number>B<:>I<value>"
 msgid "B<--ai_config>I<\\ number>B<:>I<value>"
-msgstr "B<--ai_config>I<\\ number>B<:>I<value>"
+msgstr "B<--side>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:343
@@ -1197,8 +1191,10 @@ msgstr "関連項目"
 #.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
 #: doc/man/wesnothd.6:15
+#, fuzzy
+#| msgid "wesnothd"
 msgid "B<wesnothd>(6)."
-msgstr "B<wesnothd>(6)."
+msgstr "wesnothd"
 
 #. type: TH
 #: doc/man/wesnothd.6:16
@@ -1975,8 +1971,10 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:286
+#, fuzzy
+#| msgid "wesnoth"
 msgid "B<wesnoth>(6)."
-msgstr "B<wesnoth>(6)."
+msgstr "wesnoth"
 
 #~ msgid "B<--all-translations>"
 #~ msgstr "B<--all-translations>"
@@ -1986,6 +1984,9 @@ msgstr "B<wesnoth>(6)."
 #~ "they are deemed insufficiently complete."
 #~ msgstr ""
 #~ "ゲーム内の言語選択リストに、翻訳率が低いものを含むすべての翻訳を表示する。"
+
+#~ msgid "B<--campaign-skip-story>"
+#~ msgstr "B<--campaign-skip-story>"
 
 #~ msgid ""
 #~ "sets the severity level of the log domains.  B<all> can be used to match "

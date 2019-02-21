@@ -1,12 +1,13 @@
 # Translators:
 # RatArmy <broadbarredfirefish@gmail.com>, 2018
 # 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2018-05-18 00:09+0000\n"
 "Last-Translator: 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
@@ -75,7 +76,7 @@ msgstr ""
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:23
 msgid "(Expert level, 13 scenarios.)"
-msgstr "（上級者レベル、13 シナリオ）"
+msgstr "（達人レベル、13 シナリオ）"
 
 #. [about]
 #: data/campaigns/Northern_Rebirth/_main.cfg:28
@@ -137,11 +138,6 @@ msgid ""
 "able to fight off any bandit gang or petty warlord that could arise in the "
 "thinly-settled northlands."
 msgstr ""
-"Knalga のドワーフ族は交易によって得られる利益を抜け目無く算定し、ドワーフの戸"
-"口の周囲に強大な要塞を建設した。それを我が家と呼ぶ住民は、ドワーフ族も人間も"
-"同様に、その都市の富が遠方の土地から見れば羨望の的となるであろうことを理解し"
-"ていた――それ故に武器は常に研ぎ澄ましており、人里少ない北の大地に現れるような"
-"山賊集団や卑しい将軍は全て自分達で撃退できると見込んでいた。"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:28
@@ -381,10 +377,10 @@ msgid ""
 "them hack at each other, we can use this as our chance to get rid of this "
 "scum once and for all. Who's with me?"
 msgstr ""
-"あの挑戦者のおかげでオークの監視が緩くなっている。なんとか忍びこんで倉庫の鍵"
-"を盗もうと思う。みんなも来いよ、武器を奪うんだ！奴らが同士討ちしている間に、"
-"このチャンスを掴んであのクソッタレどもを排除するんだ。誰か付いてくる者はいな"
-"いのか？"
+"あの挑戦者のおかげでオークの監視が緩くなっている。なんとかこっそり倉庫の鍵を"
+"盗むことができた。みんなも来いよ、武器を奪うんだ！奴らが同士討ちしている間"
+"に、このチャンスを掴んであのクソッタレどもを排除するんだ。誰か付いてくる者は"
+"いないのか？"
 
 #. [message]: speaker=Zlex
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:241
@@ -2311,9 +2307,6 @@ msgid ""
 "northlands are hardly safe these days for anyone to be traveling on their "
 "own, and we could lend valuable help to your cause."
 msgstr ""
-"もし宜しければ、Tallin さん 、私達はあなた方に加わりたいと思います。この北の"
-"大地はこのところ一人で旅をするものには安全ではありませんし、私達ならあなたの"
-"なさることに有用な手助けができるはずです。"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:749
@@ -6853,10 +6846,6 @@ msgid ""
 "will forever ensure the peace and prosperity of these northlands. Therefore, "
 "let there be no talk of debts and repayments between us."
 msgstr ""
-"王女様、俺達は取引をしようとしているわけじゃない。<i>「お前のために何々をして"
-"やるから、あんたは俺に何々をしろ。」</i>そうではなく、北の大地の永遠の平和と"
-"繁栄を保証する永続的な友好関係を築こうとしているんだ。だから、借りとかお返し"
-"だとかの話は無しにしてくれ。"
 
 #. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:245
@@ -7809,8 +7798,10 @@ msgstr "黙れ、この臆病者めが！"
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:640
+#, fuzzy
+#| msgid "Help Tallin defeat the enemy leaders"
 msgid "Help Tallin defeat the enemy leaders or"
-msgstr "Tallin が敵のリーダーを倒すのを援護する、または"
+msgstr "Tallin が敵のリーダーを倒すのを支援する"
 
 #. [unit]: id=Hidel, type=Elvish Marshal
 #. [unit]: type=Elvish Marshal, id=Hidel
