@@ -245,7 +245,7 @@ bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_add
 			try {
 				return ad_hoc_addon_fetch_session(needs_download);
 			} catch (const std::exception& ex) {
-				ERR_LB << "Catched an exception: " << ex.what() << "\n";
+				ERR_LB << "Caught an exception: " << ex.what() << "\n";
 			}
 		}
 	}
