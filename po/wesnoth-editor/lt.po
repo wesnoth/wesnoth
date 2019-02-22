@@ -1,12 +1,12 @@
-# Copyright (C) Wesnoth development team, 2007-2012.
+# Copyright (C) Wesnoth development team, 2007-2019.
 # Translators:
-#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2012.
+#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2017-04-08 15:37+0100\n"
+"PO-Revision-Date: 2019-02-09 01:45+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
 "Language: lt\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -45,7 +45,7 @@ msgstr "Laukelių atkarpa PV-ŠR"
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
 msgid "all"
-msgstr "visos"
+msgstr "visi"
 
 #. [editor_group]: id=water
 #: data/core/editor/terrain-groups.cfg:17
@@ -120,7 +120,7 @@ msgstr "specialios"
 #. [editor_times]: id=empty
 #: data/core/editor/time-of-day.cfg:5
 msgid "None"
-msgstr "Nėra"
+msgstr ""
 
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:10
@@ -190,7 +190,7 @@ msgstr "Žemėlapis"
 #. [menu]: id=menu-unit-facing
 #: data/themes/editor.cfg:98
 msgid "Unit Facing"
-msgstr "Karių kryptis"
+msgstr "Kario kryptis"
 
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:104
@@ -301,7 +301,7 @@ msgstr "Nerastas dienos-laiko redaktorius."
 
 #: src/editor/controller/editor_controller.cpp:1137
 msgid "Change Unit ID"
-msgstr "Keisti dalinio ID"
+msgstr "Keisti kario ID"
 
 #: src/editor/controller/editor_controller.cpp:1138
 msgid "ID:"
@@ -332,16 +332,12 @@ msgid "No Recent Files"
 msgstr "Nėra paskiausiai naudotų failų"
 
 #: src/editor/map/context_manager.cpp:364
-#, fuzzy
-#| msgid "(Unnamed Area)"
 msgid "Unnamed Area"
-msgstr "(Nepavadinta vietovė)"
+msgstr "Nepavadinta vietovė"
 
 #: src/editor/map/context_manager.cpp:395
-#, fuzzy
-#| msgid "(New Side)"
 msgid "New Side"
-msgstr "(Nauja pusė)"
+msgstr "Nauja pusė"
 
 #: src/editor/map/context_manager.cpp:451
 msgid "Apply Mask"
@@ -487,8 +483,6 @@ msgid "Add"
 msgstr "Pridėti"
 
 #: src/editor/palette/location_palette.cpp:239
-#, fuzzy
-#| msgid "New Location Identifer"
 msgid "New Location Identifier"
 msgstr "Naujas vietovės identifikatorius"
 
@@ -506,7 +500,7 @@ msgstr "Fonas: "
 
 #: src/gui/dialogs/editor/custom_tod.cpp:137
 msgid "Clipboard support not found, contact your packager"
-msgstr ""
+msgstr "Iškarpinės palaikymas nerastas, susisiekite su savo pakuotoju"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:201
 msgid "Choose File"
@@ -524,8 +518,11 @@ msgstr "Joks"
 msgid "Player $player_number"
 msgstr "Žaidėjas $player_number"
 
-#~ msgid "(New Map)"
-#~ msgstr "(Naujas žemėlapis)"
+#~ msgid "time of day^None"
+#~ msgstr "Nėra"
 
-#~ msgid "(New Scenario)"
-#~ msgstr "(Naujas scenarijus)"
+#~ msgid "Error"
+#~ msgstr "Klaida"
+
+#~ msgid "Invalid location id"
+#~ msgstr "Netinkamas vietovės id"

@@ -1,12 +1,12 @@
-# Copyright (C) Wesnoth development team, 2007-2011.
+# Copyright (C) Wesnoth development team, 2007-2019.
 # Translators:
-#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2011.
+#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-04 16:39 UTC\n"
-"PO-Revision-Date: 2017-03-28 23:07+0200\n"
+"PO-Revision-Date: 2019-02-21 01:01+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
 "Language: lt\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [scenario]: id=11_Descent_into_Darkness
 #. [campaign]: id=Descent_into_Darkness
@@ -235,7 +235,7 @@ msgstr "Droganas"
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:151
 msgid "Defend the river fort for two nights"
-msgstr "Apginkite upės fortą dvi naktis."
+msgstr "Apginkite upės fortą dvi naktis"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:156
@@ -428,12 +428,17 @@ msgstr ""
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:379
+#, fuzzy
+#| msgid ""
+#| "Begone, now. I’ve no wish to be forced to send the soldiers after you. "
+#| "Your father would turn in his grave did he see the end to which you’ve "
+#| "come."
 msgid ""
 "Begone, now. I’ve no wish to be forced to send the soldiers after you. Your "
 "father would be ashamed to see the end to which you’ve come."
 msgstr ""
 "Nešdinkis, tuojau pat. Neversk manęs išsiųsti kareivius tau pavymui. Tavo "
-"tėvui gėda būtų žiūrėti, kuo pavirtai."
+"tėvas apsiverstų kape, jei pamatytų, kuo pavirtai."
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:385
@@ -589,6 +594,13 @@ msgstr "Darkeno Volko mirtis"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:121
+#, fuzzy
+#| msgid ""
+#| "In truth, I share your hatred for the orcs. The Northlands have been "
+#| "my... home... for many years, and the orcs have been a growing "
+#| "infestation in them. They despoil the beauty of the land wherever they "
+#| "go. If you are interested, I would be happy to take you on as my "
+#| "apprentice so that you can... aid me in the fight against them."
 msgid ""
 "In truth, I share your hatred for the orcs. The northlands have been my... "
 "home... for many years, and the orcs have been a growing infestation in "
@@ -612,8 +624,8 @@ msgid ""
 "Who knows? Perhaps removing the threat of orc raids will persuade the people "
 "of Parthyn to... welcome you home."
 msgstr ""
-"Kas gali žinot, gal orkų pavojaus pašalinimas įtikins Partyno žmones... "
-"Priimti tave atgal?"
+"Kas gali žinot? Gal orkų pavojaus pašalinimas įtikins Partyno žmones... "
+"Priimti tave atgal."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:136
@@ -834,7 +846,7 @@ msgid ""
 "want tae be a walking pile o’ bones."
 msgstr ""
 "Olos prieigose du nekromantai! Užu kirvių, vyručiai, jei nenorit slampinėt "
-"kaulėkų kuokštu!"
+"kaulėkų kuokštu."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:236
@@ -868,7 +880,7 @@ msgid ""
 "shall pay for keeping me from my final rest!"
 msgstr ""
 "Laisvas! Tavo pikti kerai manęs jau nebekalina vergijoj, Malinai "
-"Prakeiktasis! Sumokėsi už tai, kad nepaleidai manęs į paskutinį poilsį."
+"Prakeiktasis. Sumokėsi už tai, kad nepaleidai manęs į paskutinį poilsį!"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:281
@@ -968,9 +980,6 @@ msgstr ""
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:202
 #, fuzzy
-#| msgid ""
-#| "With the might of the undead at my command, many orcs will die this day. "
-#| "They shall pay for getting me banished from Parthyn."
 msgid ""
 "With the might of the undead at my command, many orcs will die this day. "
 "They shall pay for attacking Parthyn."
@@ -1362,7 +1371,7 @@ msgstr "Dabar Partyno žmonės niekada manęs nebepriims atgal!"
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:412
 msgid "See how you die when you spurn the help of Malin Keshar!"
-msgstr "Matai, kaip mirštama, kai paniekinama Malino Kešaro siūloma pagalba?"
+msgstr "Matai, kaip mirštama, kai paniekinama Malino Kešaro siūloma pagalba!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:427
@@ -1561,7 +1570,7 @@ msgstr "Nuveskite Maliną ir Darkeną Volką į lordo mago dvarą"
 #. [note]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:287
 msgid "This scenario takes place entirely at night."
-msgstr ""
+msgstr "Šis scenarijus vyksta pilnai naktyje."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:314
@@ -1599,12 +1608,8 @@ msgstr "Vyrai, prie ginklų!"
 
 #. [message]: speaker=Taylor
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:354
-#, fuzzy
-#| msgid ""
-#| "Sir! Undead creatures are coming out of the forest! Wake the guard "
-#| "immediately!"
 msgid "Undead creatures are coming out of the forest! To arms, men!"
-msgstr "Sere! Iš miško ateina nemirėliai! Tuojau pat žadinkite sargybą!"
+msgstr "Iš miško ateina nemirėliai! Prie ginklų, vyrai!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:375
@@ -1683,8 +1688,14 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:314
+#, fuzzy
+#| msgid ""
+#| "Move Malin Keshar or Darken Volk through the passageway in the northwest "
+#| "leading to the great hall"
 msgid "Move through the passageway in the northwest leading to the great hall"
-msgstr "Patekite į didžiąją salę pro praėjimą šiaurės vakaruose"
+msgstr ""
+"Nuveskite Maliną Kešarą arba Darkeną Volką į didžiąją salę pro praėjimą "
+"šiaurės vakaruose"
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:338
@@ -1711,8 +1722,10 @@ msgstr "Sargybinis"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:112
+#, fuzzy
+#| msgid "I have the book!"
 msgid "Find the book"
-msgstr "Raskite knygą"
+msgstr "Aš turiu knygą!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:252
@@ -2308,24 +2321,18 @@ msgstr "Nugalėkite kvailą herojų"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:80
-#, fuzzy
-#| msgid "Defeat the foolish hero"
 msgid "Defeat another foolish hero"
-msgstr "Nugalėkite kvailą herojų"
+msgstr "Nugalėkite kitą kvailą herojų"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:88
-#, fuzzy
-#| msgid "Defeat the foolish hero"
 msgid "Defeat yet another foolish hero"
-msgstr "Nugalėkite kvailą herojų"
+msgstr "Nugalėkite dar kitą kvailą herojų"
 
 #. [note]: description=<b>
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:116
-#, fuzzy
-#| msgid "Endless Night"
 msgid "Endless Night $timesForever"
-msgstr "Nesibaigianti naktis"
+msgstr "Nesibaigianti naktis $timesForever"
 
 #. [unit]: type=Royal Guard, id=Foolish Hero
 #. [unit]: type=Assassin, id=Foolish Hero
@@ -2343,22 +2350,22 @@ msgstr "Kvailas Herojus"
 #. [modify_side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:172
 msgid "Humans"
-msgstr ""
+msgstr "Žmonės"
 
 #. [modify_side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:199
 msgid "Bandits"
-msgstr ""
+msgstr "Banditai"
 
 #. [modify_side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:222
 msgid "Elves"
-msgstr ""
+msgstr "Elfai"
 
 #. [modify_side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:249
 msgid "Dwarves"
-msgstr ""
+msgstr "Dvarfai"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:328
@@ -2471,12 +2478,12 @@ msgstr ""
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:411
 msgid "I will destroy you like the last foolish hero."
-msgstr ""
+msgstr "Sunaikinsiu tave kaip ir paskutinį kvailą herojų."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:418
 msgid "Another foolish hero? Seriously?"
-msgstr ""
+msgstr "Kitas kvailas herojus? Rimtai?"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:425
@@ -2505,7 +2512,7 @@ msgstr ""
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:500
 msgid "Who do you think he was before starting down the path of darkness?"
-msgstr ""
+msgstr "Kaip manai, kas jis buvo prieš eidamas tamsos keliu?"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:505
@@ -2516,32 +2523,28 @@ msgstr ""
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:510
-#, fuzzy
-#| msgid "Yes, master."
 msgid "Yes, sir."
-msgstr "Taip, valdove."
+msgstr "Taip, pone."
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:518
 msgid "It is done. He will trouble us no more."
-msgstr ""
+msgstr "Baigta. Jis daugiau mūsų nebetrukdys."
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:523
 msgid "Who do you think he was before becoming a lich?"
-msgstr ""
+msgstr "Kaip manai, kas jis buvo prieš tapdamas liču?"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:528
 msgid "Probably an outlaw like us. Does it matter?"
-msgstr ""
+msgstr "Turbūt nusikaltėlis, kaip ir mes. Ar tai svarbu?"
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:533
-#, fuzzy
-#| msgid "No, I suppose it does not."
 msgid "No, I guess not."
-msgstr "Ne, manau nesvarbu."
+msgstr "Ne, turbūt nesvarbu."
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:541
@@ -2581,6 +2584,7 @@ msgstr ""
 msgid ""
 "Who do you think he was before becoming the bones crushed by our hammers?"
 msgstr ""
+"Kaip manai, kas jis buvo prieš tapdamas mūsų kūjų sutraiškytais kaulais?"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:574
@@ -2592,23 +2596,25 @@ msgstr ""
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:579
+#, fuzzy
+#| msgid "I guess we’ll never know for sure."
 msgid "I guess we'll never know for sure."
-msgstr ""
+msgstr "Spėju, kad niekad tiksliai nežinosime."
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:587
 msgid "Finally, my father and my people are avenged!"
-msgstr ""
+msgstr "Pagaliau atkeršyta už mano tėtį ir mano žmones!"
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:592
 msgid "Who you think he was, boss?"
-msgstr ""
+msgstr "Kaip manai, kas jis buvo, vade?"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:597
 msgid "Who cares!"
-msgstr ""
+msgstr "Kam tai rūpi!"
 
 #. [unit_type]: id=Apprentice Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:4
@@ -2731,3 +2737,42 @@ msgid ""
 msgstr ""
 "Brėkštant, miesto sargyba įsilaužia į apartamentus ir sučiumpa du "
 "nekromantus."
+
+#~ msgid "Foul necromancer! Your time has come!"
+#~ msgstr "Bjaurus nekromantai! Tavo laikas atėjo!"
+
+#~ msgid "Allow an enemy unit to take the book"
+#~ msgstr "Leiskite priešo kariui paimti knygą"
+
+#~ msgid "Make Into a Lich"
+#~ msgstr "Tapkite liču"
+
+#~ msgid "You can only do this in a castle."
+#~ msgstr "Tai gali padaryti tik pilyje."
+
+#~ msgid "That’s an evil grimoire!"
+#~ msgstr "Tai blogio grimuaras!"
+
+#~ msgid "Burn it."
+#~ msgstr "Sudegink jį."
+
+#~ msgid "It’s paper, but it won’t burn."
+#~ msgstr "Tai popierius, bet jis nedega."
+
+#~ msgid "That’s an evil grimoire, bound in iron."
+#~ msgstr "Tai blogio grimuaras, surištas geležimi."
+
+#~ msgid "Destroy it."
+#~ msgstr "Sunaikink jį."
+
+#~ msgid "The skull on that book looks good."
+#~ msgstr "Kaukolė ant tos knygos atrodo gerai."
+
+#~ msgid "Idiot."
+#~ msgstr "Kvailys."
+
+#~ msgid "Epilogue"
+#~ msgstr "Epilogas"
+
+#~ msgid "Lich"
+#~ msgstr "Ličas"

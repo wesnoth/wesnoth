@@ -1,12 +1,12 @@
-# Copyright (C) Wesnoth development team, 2007-2011.
+# Copyright (C) Wesnoth development team, 2007-2019.
 # Translators:
-#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2011.
+#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-04 16:39 UTC\n"
-"PO-Revision-Date: 2017-03-28 22:46+0200\n"
+"PO-Revision-Date: 2019-02-15 00:50+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
 "Language: lt\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:11
@@ -40,8 +40,10 @@ msgstr ""
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:20
+#, fuzzy
+#| msgid "(Rookie level, 7 scenarios.)"
 msgid "(Novice level, 7 scenarios.)"
-msgstr "(Pradedantysis lygis, 7 scenarijai.)"
+msgstr "(Pradedančiojo lygis, 7 scenarijai.)"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:22
@@ -303,7 +305,7 @@ msgid ""
 "heading this way! Fall back before we’re outnumbered and crushed."
 msgstr ""
 "Dulkių debesis horizonte... Traukiamės! Tų prakeiktųjų atvyksta dar daugiau! "
-"Atsitraukiam, kol jų ne per daug ir mūsų nesutriuškino!"
+"Atsitraukiam, kol jų ne per daug ir mūsų nesutriuškino."
 
 #. [message]: speaker=narrator
 #: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:203
@@ -635,10 +637,16 @@ msgstr "(<i>Kosėja</i>) Aš lauksiu... Tarp mirusiųjų..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:222
+#, fuzzy
+#| msgid ""
+#| "The orcish chieftain finally fell, overcome by his wounds. The elves "
+#| "found themselves in a half-ruined camp littered with the bodies of both "
+#| "sides. There was no hale orc in sight, nor did any of the wounded beg "
+#| "mercy. The elves took no prisoners."
 msgid ""
 "The orcish chieftain finally fell, overcome by his wounds. The elves found "
-"themselves in a half-ruined camp littered with the bodies of both sides. "
-"There was no hale orc in sight, nor did any of the wounded beg mercy. The "
+"themselves in a half-ruined camp littered with the bodies of both sides, "
+"there was no hale orc in sight, nor did any of the wounded beg mercy. The "
 "elves took no prisoners."
 msgstr ""
 "Pagaliau orkų vadas krito, pakirstas žaizdų. Elfai apsidairė po pusiau "
@@ -684,6 +692,10 @@ msgstr ""
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:265
+#, fuzzy
+#| msgid ""
+#| "What about the loot, lord? We found supplies worth over a hundred gold in "
+#| "the camp."
 msgid ""
 "What about the loot lord? We found supplies worth over a hundred gold in the "
 "camp."
@@ -716,6 +728,9 @@ msgstr "Palaikykite žygiui į šiaurę. Šioje nusiaubtoje žemėje mažai ką 
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:320
+#, fuzzy
+#| msgid ""
+#| "We can’t carry on, lord, the men are too tired. We have to fall back."
 msgid "We can’t carry on Lord, the men are too tired. We have to fall back."
 msgstr ""
 "Negalime toliau laikytis, pone, vyrai per daug pavargę. Turime atsitraukti."
@@ -1064,7 +1079,7 @@ msgstr "Linaeros mirtis"
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:121
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:89
 msgid "Linaera is a leader and can recruit mages when standing on a keep."
-msgstr ""
+msgstr "Linaera yra vadė ir gali samdyti magus, kai stovi bokšte."
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:129
@@ -1099,7 +1114,7 @@ msgid ""
 "from its kind? Hmmm..."
 msgstr ""
 "Pagal mūsų sutartį, taip ir yra. Bet ši šalis mums per šalta ir per dyka. "
-"Įdomu, kas per žmogus galėjo pasirinkti gyventi čia, toli nuo savųjų? Hmm... "
+"Įdomu, kas per žmogus galėjo pasirinkti gyventi čia, toli nuo savųjų? Hmm..."
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:158
@@ -1478,3 +1493,41 @@ msgstr ""
 #: data/campaigns/An_Orcish_Incursion/utils/macros.cfg:4
 msgid "Hint:"
 msgstr "Patarimas:"
+
+#~ msgid ""
+#~ "My lord, none of our healers have experience on the battlefield. It "
+#~ "pleases me that they are safe, but if we should embark on a campaign then "
+#~ "we will surely need them alongside us in the battles ahead."
+#~ msgstr ""
+#~ "Valdove, mūsų gydytojai neturi mūšio patirties. Malonu, kad jie saugūs, "
+#~ "bet jei pradėsime kampaniją, tai ateities mūšiuose mums tikrai reikės jų "
+#~ "šalia mūsų."
+
+#~ msgid ""
+#~ "female^My lord, none of our healers have experience on the battlefield. "
+#~ "It pleases me that they are safe, but if we should embark on a campaign "
+#~ "then we will surely need them alongside us in the battles ahead."
+#~ msgstr ""
+#~ "Valdove, mūsų gydytojai neturi mūšio patirties. Malonu, kad jie saugūs, "
+#~ "bet jei pradėsime kampaniją, tai ateities mūšiuose mums tikrai reikės jų "
+#~ "šalia mūsų."
+
+#~ msgid ""
+#~ "My lord, none of our surviving healers have experience on the "
+#~ "battlefield. It pains me to suggest that we should risk another, but if "
+#~ "we should embark on a campaign then we will surely need them alongside us "
+#~ "in the battles ahead."
+#~ msgstr ""
+#~ "Valdove, mūsų išgyvenę gydytojai neturi mūšio patirties. Skaudu rizikuoti "
+#~ "dar vienu, bet jei pradėsime kampaniją, tai ateities mūšiuose mums tikrai "
+#~ "reikės jų šalia mūsų."
+
+#~ msgid ""
+#~ "female^My lord, none of our surviving healers have experience on the "
+#~ "battlefield. It pains me to suggest that we should risk another, but if "
+#~ "we should embark on a campaign then we will surely need them alongside us "
+#~ "in the battles ahead."
+#~ msgstr ""
+#~ "Valdove, mūsų išgyvenę gydytojai neturi mūšio patirties. Skaudu rizikuoti "
+#~ "dar vienu, bet jei pradėsime kampaniją, tai ateities mūšiuose mums tikrai "
+#~ "reikės jų šalia mūsų."

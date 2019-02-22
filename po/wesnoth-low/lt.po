@@ -1,12 +1,12 @@
-# Copyright (C) Wesnoth development team, 2008-2012.
+# Copyright (C) Wesnoth development team, 2008-2019.
 # Translators:
-#  Andrius Štikonas <andrius@stikonas.eu>, 2008-2012.
+#  Andrius Štikonas <andrius@stikonas.eu>, 2008-2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 01:26 UTC\n"
-"PO-Revision-Date: 2017-03-23 15:02+0000\n"
+"PO-Revision-Date: 2019-01-21 23:08+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
 "Language: lt\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:49
@@ -42,8 +42,10 @@ msgstr ""
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:53
+#, fuzzy
+#| msgid "(Hard level, 18 scenarios.)"
 msgid "(Intermediate level, 18 scenarios.)"
-msgstr "(Vidutinis lygis, 18 scenarijų.)"
+msgstr "(Sudėtingas lygis, 18 scenarijų.)"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:55
@@ -635,7 +637,7 @@ msgid ""
 "death. We shall return with swords to avenge him!"
 msgstr ""
 "Velonas krito. Jis patarinėjo silpnybę, bet nenusipelnė tokios bjaurios "
-"mirties. Grįšime su kardais atkeršyti už jį."
+"mirties. Grįšime su kardais atkeršyti už jį!"
 
 #. [message]: race=orc
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:511
@@ -759,7 +761,7 @@ msgid ""
 "no part of nip at yer heels. Get out and stay out!"
 msgstr ""
 "Net nesvajok, elfe. Tai dvarfų žemės, ir mums mažiausiai reikia tų rūpesčių, "
-"kurie tau mina ant kulnų. Išeik ir laikykis atokiau."
+"kurie tau mina ant kulnų. Išeik ir laikykis atokiau!"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:479
@@ -864,7 +866,7 @@ msgid ""
 "arrive there..."
 msgstr ""
 "Kalenzui ir jo būriui dar nespėjus atvykti į Ka’lianą, įvykiai ten pasisuko "
-"pragaištinga linkme... "
+"pragaištinga linkme..."
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:237
@@ -951,7 +953,7 @@ msgstr ""
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:772
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:298
 msgid "Defeat all enemy leaders."
-msgstr "Nugalėkite visus priešų vadus"
+msgstr "Nugalėkite visus priešų vadus."
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:784
@@ -1271,7 +1273,7 @@ msgid ""
 "treasury’s garrison before they can find it in them to rally and return."
 msgstr ""
 "Be savo vadų, ropliai paniškai sprunka. Išlaisvinkime iždinės įgulą prieš "
-"jiems susivienijant ir grįžtant!"
+"jiems susivienijant ir grįžtant."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:386
@@ -1525,7 +1527,7 @@ msgstr "Trauras"
 #. [note]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:251
 msgid "Try to save leveled dwarf units"
-msgstr ""
+msgstr "Pabandyk išsaugoti patobulėjusius dvarfų karius"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:261
@@ -1571,7 +1573,7 @@ msgstr ""
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:281
 msgid "For an elf, you think like a dwarf! I think I like you! "
-msgstr "Nors ir elfas, mąstai visai kaip dvarfas! Tu man patinki!"
+msgstr "Nors ir elfas, mąstai visai kaip dvarfas! Tu man patinki! "
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:281
@@ -2304,12 +2306,12 @@ msgstr "truputį patyrusių karių"
 #. [set_variable]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:302
 msgid "$left_behind_{NAME} and $l3_store_{NAME}[$i].name"
-msgstr "$left_behind_{NAME} ir $l3_store_{NAME}[$i].name"
+msgstr ""
 
 #. [set_variable]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:308
 msgid "$left_behind_{NAME}|, $l3_store_{NAME}[$i].name"
-msgstr "$left_behind_{NAME}|, $l3_store_{NAME}[$i].name"
+msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:328
@@ -2560,7 +2562,7 @@ msgid ""
 "I feel something terribly wrong is happening!"
 msgstr ""
 "Priešaky kyla riebiai atrodantys dūmai! Kalenzai... Mano valdove... Jaučiu, "
-"kad vyksta kažkas siaubingai blogo."
+"kad vyksta kažkas siaubingai blogo!"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:291
@@ -3395,7 +3397,7 @@ msgstr "Tokiu sunkiu metu negalime būti išrankūs sąjungininkams."
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:310
 msgid "Indeed not. Save your anger for our enemies, Landar."
-msgstr "Tikrai taip. Pataupyk savo pyktį mūsų priešams, Landarai"
+msgstr "Tikrai taip. Pataupyk savo pyktį mūsų priešams, Landarai."
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:314
@@ -4476,7 +4478,7 @@ msgstr ""
 "Kalenzai, tu pakviestas prieš šią tarybą, kuri reikalauja tavo atsiprašymo "
 "dėl savo veiksmų. Priėmei sprendimą padėti žmonėms Tate, taip rizikuodamas "
 "užtęsti karą su orkais; pulti orkus šiaurėje; ir pagaliau pulti Roplius. "
-"Tokius sprendimus priima taryba, o ne karo lauko vadai."
+"Tokius sprendimus priima taryba, o ne karo lauko vadai!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/20_Council_Ruling.cfg:32
@@ -4522,7 +4524,7 @@ msgstr ""
 msgid ""
 "I agree. What’s done is done. Let us concentrate on the future, not the past."
 msgstr ""
-"Sutinku. Kas padaryta – padaryta. Susitelkime į ateitį, o ne į praeitį. "
+"Sutinku. Kas padaryta – padaryta. Susitelkime į ateitį, o ne į praeitį."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/20_Council_Ruling.cfg:47
@@ -4537,7 +4539,7 @@ msgid ""
 "authority. You may now go."
 msgstr ""
 "Kalenzai, taryba nusprendė, kad iš tavęs atimamos visos karinio vadovavimo "
-"teisės. Dabar gali eiti. "
+"teisės. Dabar gali eiti."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/20_Council_Ruling.cfg:57
@@ -4784,6 +4786,7 @@ msgstr "Kalenzas išgyvena šešias dienas"
 msgid ""
 "If you lose you still have a chance to defeat Kalenz in the next scenario."
 msgstr ""
+"Jei pralaimėsi, vis dar turėsi šansą nugalėti Kalenzą kitame scenarijuje."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:339
@@ -5038,6 +5041,10 @@ msgid ""
 "can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
+"Didieji žmogėdros yra milžiniškos būtybės, kurios paprastai gyvena atskirai "
+"tyrlaukiuose, yra stebėtinai panašios formos į žmones, tačiau dideli ir "
+"deformuoti. Nors juos lengva aplenkti ir pergudrauti, jų jėga neturėtų būti "
+"nepakankamai įvertinta."
 
 #. [leadership]: id=elates_kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:10
