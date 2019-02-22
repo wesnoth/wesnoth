@@ -330,7 +330,7 @@ class GroupByFaction:
                 name = name[name.rfind("=") + 1:]
             else:
                 name = "missing"
-                error_message("Warning: %s has no faction name\n", group[1])
+                error_message("Warning: %s has no faction name\n" % group[1])
         else:
             name = "factionless"
         return name
