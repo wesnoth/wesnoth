@@ -242,7 +242,11 @@ bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_add
 
 		if(gui2::show_message(e_title, err_msg, message::yes_no_buttons, true) == gui2::retval::OK) {
 			// Begin download session
-			return ad_hoc_addon_fetch_session(needs_download);
+			try {
+				return ad_hoc_addon_fetch_session(needs_download);
+			} catch (const std::exception& ex) {
+				ERR_LB << "Catched an exception: " << ex.what() << "\n";
+			}
 		}
 	}
 
