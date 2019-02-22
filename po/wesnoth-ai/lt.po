@@ -1,12 +1,12 @@
-# Copyright (C) Wesnoth development team, 2013.
+# Copyright (C) Wesnoth development team, 2013-2019.
 # Translators:
-#  Andrius Štikonas <andrius@stikonas.eu>, 2013.
+#  Andrius Štikonas <andrius@stikonas.eu>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-09-09 08:38 UTC\n"
-"PO-Revision-Date: 2017-03-28 22:31+0200\n"
+"PO-Revision-Date: 2019-02-10 22:33+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
 "Language: lt\n"
@@ -15,17 +15,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
 msgid "Multiplayer_AI^Default AI (RCA)"
-msgstr ""
+msgstr "Numatytas DI (RCA)"
 
 #. [ai]: id=experimental_ai
 #: data/ai/ais/ai_generic_rush.cfg:10
 msgid "Multiplayer_AI^Experimental AI"
-msgstr ""
+msgstr "Eksperimentinis DI"
 
 #. [ai]: id=idle_ai
 #: data/ai/ais/idle_ai.cfg:4
@@ -54,7 +54,7 @@ msgstr ""
 #. [test]: id=The_Elves_Besieged
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:5
 msgid "The Elves Besieged"
-msgstr "Elfai apsupti"
+msgstr "Apsupti elfai"
 
 #. [side]: type=Spearman, id=Konrad
 #. [unit]: type=Spearman, id=Konrad
@@ -149,7 +149,7 @@ msgstr "Nuveskite Konradą čia"
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:242
 msgid "Very well, we have made it this far! But where do we go next?"
-msgstr ""
+msgstr "Labai gerai, mes toli nukeliavome! Bet kur dabar eisime?"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:247
@@ -171,7 +171,7 @@ msgstr "Prince... privalai toliau kovoti! Neeeeeee!"
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:280
 msgid "It is over. I am doomed..."
-msgstr ""
+msgstr "Viskas baigta. Aš pasmerktas..."
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:294
@@ -186,13 +186,13 @@ msgstr "Nemirk, Delfadorai!  Prašau, privalai likti gyvas!"
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:302
 msgid "Ugh!"
-msgstr ""
+msgstr "Uch!"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:313
 msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
-msgstr ""
+msgstr "O ne! Mums pritrūko laiko, jie atvyko su pastiprinimais..."
 
 #: data/ai/micro_ais/scenarios/animals.cfg:4
 msgid ""
@@ -265,7 +265,7 @@ msgstr "Gyvūnai"
 #. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:41
 msgid "Rutburt"
-msgstr ""
+msgstr "Rutburtas"
 
 #. [side]: id=Rutburt, type=Outlaw
 #. [side]: type=General, id=leader2
@@ -287,7 +287,7 @@ msgstr "Miško būtybės"
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:77
 msgid "Ghasts"
-msgstr ""
+msgstr "Baisūnai"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:91
@@ -311,7 +311,7 @@ msgstr "Vilkai"
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:133
 msgid "Whelps"
-msgstr ""
+msgstr "Jaunikliai"
 
 #. [set_menu_item]: id=m01_end_animals
 #. [event]
@@ -388,18 +388,18 @@ msgstr ""
 #. [option]
 #: data/ai/micro_ais/scenarios/animals.cfg:378
 msgid "<span font='16'>I'll just watch the animals.</span>"
-msgstr ""
+msgstr "<span font='16'>Tiesiog stebėsiu gyvūnus.</span>"
 
 #. [option]
 #: data/ai/micro_ais/scenarios/animals.cfg:396
 #: data/ai/micro_ais/scenarios/wolves.cfg:232
 msgid "<span font='16'>I want to have control of Side 1.</span>"
-msgstr ""
+msgstr "<span font='16'>Noriu valdyti Komandą 1.</span>"
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/animals.cfg:402
 msgid "Watch the animals do their things"
-msgstr ""
+msgstr "Stebėkite gyvūnus užsiimančius savo reikalais"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/animals.cfg:404
@@ -434,7 +434,7 @@ msgstr ""
 #. [test]: id=bottleneck_defense
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:5
 msgid "Bottleneck Defense"
-msgstr ""
+msgstr "Siauro praėjimo gynyba"
 
 #. [side]: type=Orcish Leader, id=Big Bad Orc
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:38
@@ -444,7 +444,7 @@ msgstr "Didelis blogas orkas"
 #. [message]: speaker=LuaAI
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:87
 msgid "All right, chaps. Those orcs need to be stopped."
-msgstr ""
+msgstr "Na ką, vyrukai. Tie orkai turi būti sustabdyti."
 
 #. [message]: speaker=Big Bad Orc
 #. [message]: speaker=Another Bad Orc
@@ -481,17 +481,17 @@ msgstr ""
 #. [option]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:112
 msgid "<span font='16'>I'll watch the two AIs fight it out.</span>"
-msgstr ""
+msgstr "<span font='16'>Stebėsiu dviejų DI kovą.</span>"
 
 #. [option]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:115
 msgid "<span font='16'>I'll play the orcs.</span>"
-msgstr ""
+msgstr "<span font='16'>Žaisiu už orkus.</span>"
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:126
 msgid "Take the pass"
-msgstr ""
+msgstr "Užimkite perėją"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:128
@@ -512,7 +512,7 @@ msgstr "Lieka tik vienas orkas"
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:163
 msgid ""
 "I may have fallen, but we will continue to defend the pass to the last man!"
-msgstr ""
+msgstr " Galbūt aš kritau, bet mes ginsime perėją iki paskutinio kario!"
 
 #. [event]
 #. [test]: id=dragon
@@ -524,12 +524,12 @@ msgstr "Drakonas"
 #. [side]
 #: data/ai/micro_ais/scenarios/dragon.cfg:21
 msgid "team_name^Rowck"
-msgstr "Raukas"
+msgstr "Roukas"
 
 #. [side]: type=Dread Bat, id=Dreadful Bat
 #: data/ai/micro_ais/scenarios/dragon.cfg:33
 msgid "Dreadful Bat"
-msgstr ""
+msgstr "Baisusis šikšnosparnis"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:51
@@ -582,7 +582,7 @@ msgstr "Nugalėkite Rauką"
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/dragon.cfg:110
 msgid "Move the lead bat to the signpost"
-msgstr ""
+msgstr "Nuveskite pagrindinį šikšnosparnį iki kelrodžio"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/dragon.cfg:114
@@ -592,12 +592,12 @@ msgstr "Šikšnosparnių vado mirtis"
 #. [message]: speaker=Dreadful Bat
 #: data/ai/micro_ais/scenarios/dragon.cfg:149
 msgid "I'm out of here."
-msgstr ""
+msgstr "Dingstu iš čia."
 
 #. [test]: id=fast
 #: data/ai/micro_ais/scenarios/fast.cfg:5
 msgid "Fast"
-msgstr ""
+msgstr "Greitas"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/fast.cfg:67
@@ -627,7 +627,7 @@ msgstr "Vadanas"
 #. [side]: type=Poacher, id=leader3
 #: data/ai/micro_ais/scenarios/goto.cfg:60
 msgid "Woodsmen"
-msgstr ""
+msgstr "Miško žmonės"
 
 #. [side]: type=Saurian Flanker, id=leader4
 #: data/ai/micro_ais/scenarios/goto.cfg:76
@@ -637,7 +637,7 @@ msgstr "Ropliai"
 #. [side]
 #: data/ai/micro_ais/scenarios/goto.cfg:125
 msgid "team_name^Animals"
-msgstr ""
+msgstr "Gyvūnai"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/goto.cfg:138
@@ -647,7 +647,7 @@ msgstr "Vaiduokliai"
 #. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:185
 msgid "General Minry"
-msgstr ""
+msgstr "Generolas Minris"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:186
@@ -675,7 +675,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/swarm.cfg:117
 #: data/ai/micro_ais/scenarios/wolves.cfg:157
 msgid "Kill Unit under Cursor"
-msgstr ""
+msgstr "Užmušti karį po pelės žymekliu"
 
 #. [set_menu_item]: id=m03_null_control
 #: data/ai/micro_ais/scenarios/goto.cfg:363
@@ -703,7 +703,7 @@ msgstr ""
 #. [objectives]
 #: data/ai/micro_ais/scenarios/goto.cfg:429
 msgid "Watch the AI units do their things"
-msgstr ""
+msgstr "Stebėkite, kaip elgiasi DI kariai"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/goto.cfg:435
@@ -743,12 +743,12 @@ msgstr ""
 #. [message]: speaker=ghost1
 #: data/ai/micro_ais/scenarios/goto.cfg:484
 msgid "Aaiiieeeeeee !!!"
-msgstr ""
+msgstr "Aaiiiiiiiiii !!!"
 
 #. [message]: speaker=messenger2
 #: data/ai/micro_ais/scenarios/goto.cfg:488
 msgid "O no, a ghost!"
-msgstr ""
+msgstr "O ne, vaiduoklis!"
 
 #. [message]: speaker=messenger1
 #: data/ai/micro_ais/scenarios/goto.cfg:492
@@ -810,7 +810,7 @@ msgstr ""
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:644
 msgid "Ready to fight those saurians, soldier?"
-msgstr ""
+msgstr "Kary, pasiruošęs kautis prieš tuos roplius?"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:648
@@ -827,7 +827,7 @@ msgstr ""
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:664
 msgid "Maybe if I ignore them, they'll just go away?"
-msgstr ""
+msgstr "Galbūt jei aš juos ignoruosiu, jie tiesiog pasitrauks?"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:683
@@ -878,7 +878,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/guardians.cfg:17
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:57
 msgid "Guardians"
-msgstr ""
+msgstr "Sergėtojai"
 
 #. [side]: id=Kraa, type=Gryphon
 #: data/ai/micro_ais/scenarios/guardians.cfg:31
@@ -900,17 +900,17 @@ msgstr "Kitas blogas orkas"
 #. [unit]: type=Dwarvish Guardsman, id=guardian1
 #: data/ai/micro_ais/scenarios/guardians.cfg:96
 msgid "Guardian 1"
-msgstr ""
+msgstr "Sergėtojas 1"
 
 #. [unit]: type=Dwarvish Guardsman, id=guardian2
 #: data/ai/micro_ais/scenarios/guardians.cfg:107
 msgid "Guardian 2"
-msgstr ""
+msgstr "Sergėtojas 2"
 
 #. [unit]: type=Giant Rat, id=coward1
 #: data/ai/micro_ais/scenarios/guardians.cfg:120
 msgid "Coward 1"
-msgstr "c1"
+msgstr "Bailys 1"
 
 #. [unit]: type=Giant Rat, id=coward2
 #: data/ai/micro_ais/scenarios/guardians.cfg:144
@@ -930,27 +930,27 @@ msgstr "Bailys 4"
 #. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:219
 msgid "Move gryphons here to see different coward reactions"
-msgstr ""
+msgstr "Čia atveskite grifus, kad pamatytumėte įvairių bailių reakcijas"
 
 #. [unit]: type=Troll, id=return1
 #: data/ai/micro_ais/scenarios/guardians.cfg:228
 msgid "Return Guardian 1"
-msgstr ""
+msgstr "Grįžtantis sergėtojas 1"
 
 #. [unit]: type=Troll Whelp, id=return2
 #: data/ai/micro_ais/scenarios/guardians.cfg:249
 msgid "Return Guardian 2"
-msgstr ""
+msgstr "Grįžtantis sergėtojas 2"
 
 #. [unit]: type=Troll Whelp, id=home1
 #: data/ai/micro_ais/scenarios/guardians.cfg:271
 msgid "Home Guard 1"
-msgstr ""
+msgstr "Namų sargybinis 1"
 
 #. [unit]: type=Troll, id=home 2
 #: data/ai/micro_ais/scenarios/guardians.cfg:283
 msgid "Home Guard 2"
-msgstr ""
+msgstr "Namų sargybinis 2"
 
 #. [unit]: type=Skeleton Archer, id=stationed1
 #: data/ai/micro_ais/scenarios/guardians.cfg:296
@@ -965,17 +965,17 @@ msgstr ""
 #. [unit]: type=Troll, id=zone1
 #: data/ai/micro_ais/scenarios/guardians.cfg:345
 msgid "Gate Keeper"
-msgstr ""
+msgstr "Vartų sargas"
 
 #. [unit]: type=Dwarvish Guardsman, id=zone2
 #: data/ai/micro_ais/scenarios/guardians.cfg:372
 msgid "Home Keeper"
-msgstr ""
+msgstr "Namų sargas"
 
 #. [unit]: type=Naga Fighter, id=zone3
 #: data/ai/micro_ais/scenarios/guardians.cfg:403
 msgid "Water Guardian"
-msgstr ""
+msgstr "Vandens sargas"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:424
@@ -997,7 +997,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/guardians.cfg:447
 #: data/ai/micro_ais/scenarios/guardians.cfg:456
 msgid "Standard WML Guardian"
-msgstr ""
+msgstr "Standartinis WML sergėtojas"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/guardians.cfg:457
@@ -1012,7 +1012,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/guardians.cfg:463
 #: data/ai/micro_ais/scenarios/guardians.cfg:472
 msgid "Return Guardian"
-msgstr ""
+msgstr "Grįžtantis sergėtojas"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/guardians.cfg:473
@@ -1034,7 +1034,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/guardians.cfg:484
 #: data/ai/micro_ais/scenarios/guardians.cfg:493
 msgid "Home Guard"
-msgstr ""
+msgstr "Namų sargybinis"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/guardians.cfg:494
@@ -1111,7 +1111,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/guardians.cfg:543
 #: data/ai/micro_ais/scenarios/guardians.cfg:552
 msgid "Zone Guardian"
-msgstr ""
+msgstr "Zonos sergėtojas"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/guardians.cfg:553
@@ -1129,7 +1129,7 @@ msgstr ""
 #. [message]: speaker=Kraa
 #: data/ai/micro_ais/scenarios/guardians.cfg:568
 msgid "Kraahhh!!!!"
-msgstr ""
+msgstr "Kraaaa!!!!"
 
 #. [message]: speaker=Kraa
 #: data/ai/micro_ais/scenarios/guardians.cfg:578
@@ -1161,7 +1161,7 @@ msgstr "Nugalėkite visus priešo karius"
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/guardians.cfg:594
 msgid "Move Kraa to the signpost"
-msgstr ""
+msgstr "Nuveskite Kraa iki kelrodžio"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/guardians.cfg:598
@@ -1187,15 +1187,13 @@ msgstr ""
 
 #. [side]: id=Bad Outlaw, type=Outlaw
 #: data/ai/micro_ais/scenarios/hang_out.cfg:23
-#, fuzzy
 msgid "team_name^Bad Outlaw"
-msgstr "Konradas"
+msgstr "Blogas nusikaltėlis"
 
 #. [side]: id=Good Bandit, type=Bandit
 #: data/ai/micro_ais/scenarios/hang_out.cfg:39
-#, fuzzy
 msgid "team_name^Good Bandit"
-msgstr "Konradas"
+msgstr "Geras banditas"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/hang_out.cfg:61
@@ -1227,15 +1225,13 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/hang_out.cfg:129
-#, fuzzy
 msgid "Death of Bad Outlaw"
-msgstr "Didelio blogo orko mirtis"
+msgstr "Blogo nusikaltėlio mirtis"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/hang_out.cfg:133
-#, fuzzy
 msgid "Death of Good Bandit"
-msgstr "Vadano mirtis"
+msgstr "Gerojo bandito mirtis"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/hang_out.cfg:137
@@ -1257,7 +1253,7 @@ msgstr ""
 #. [test]: id=healer_support
 #: data/ai/micro_ais/scenarios/healer_support.cfg:5
 msgid "Healer Support"
-msgstr ""
+msgstr "Gydytojų parama"
 
 #. [side]: id=Rebels1, type=Elvish Ranger
 #: data/ai/micro_ais/scenarios/healer_support.cfg:21
@@ -1302,12 +1298,12 @@ msgstr ""
 #. [side]: id=Pekzs, type=Saurian Soothsayer
 #: data/ai/micro_ais/scenarios/lurkers.cfg:198
 msgid "Pekzs"
-msgstr ""
+msgstr "Pekzsas"
 
 #. [side]: id=Pekzs, type=Saurian Soothsayer
 #: data/ai/micro_ais/scenarios/lurkers.cfg:204
 msgid "team_name^Pekzs"
-msgstr ""
+msgstr "Pekzsas"
 
 #. [side]: type=Saurian Oracle
 #: data/ai/micro_ais/scenarios/lurkers.cfg:220
@@ -1397,7 +1393,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/patrols.cfg:238
 #: data/ai/micro_ais/scenarios/recruiting.cfg:100
 msgid "Notes"
-msgstr ""
+msgstr "Pastabos"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/lurkers.cfg:475
@@ -1426,12 +1422,12 @@ msgstr ""
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/lurkers.cfg:491
 msgid "Move Pekzs to the signpost"
-msgstr ""
+msgstr "Nuveskite Pekzsą iki kelrodžio"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/lurkers.cfg:495
 msgid "Death of Pekzs"
-msgstr ""
+msgstr "Pekzso mirtis"
 
 #. [note]
 #: data/ai/micro_ais/scenarios/lurkers.cfg:499
@@ -1462,27 +1458,27 @@ msgstr "Vanakas"
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:73
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:72
 msgid "Messenger"
-msgstr ""
+msgstr "Pasiuntinys"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:123
 msgid "Messenger Waypoint 1"
-msgstr ""
+msgstr "Pasiuntinio kelio taškas 1"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:125
 msgid "Messenger Waypoint 2"
-msgstr ""
+msgstr "Pasiuntinio kelio taškas 2"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:127
 msgid "Messenger Waypoint 3"
-msgstr ""
+msgstr "Pasiuntinio kelio taškas 3"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:130
 msgid "AI moves Messenger here"
-msgstr ""
+msgstr "DI veda pasiuntinį čia"
 
 #. [message]: speaker=messenger
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:145
@@ -1515,12 +1511,12 @@ msgstr ""
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:165
 msgid "Defeat the messenger"
-msgstr ""
+msgstr "Nugalėkite pasiuntinį"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:169
 msgid "Messenger gets to the signpost"
-msgstr ""
+msgstr "Pasiuntinys pasiekia kelrodį"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:173
@@ -1535,19 +1531,19 @@ msgstr ""
 #. [message]: speaker=messenger
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:204
 msgid "Nooo!  All is lost. We will never stop the orcs now!"
-msgstr ""
+msgstr "Neee! Viskas prarasta. Dabar niekad nesustabdysime orkų!"
 
 #. [event]
 #. [test]: id=patrols
 #: data/ai/micro_ais/scenarios/patrols.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:75
 msgid "Patrols"
-msgstr ""
+msgstr "Patruliai"
 
 #. [side]: id=Gertburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/patrols.cfg:19
 msgid "Gertburt"
-msgstr ""
+msgstr "Gertburtas"
 
 #. [side]: id=Gertburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/patrols.cfg:27
@@ -1572,42 +1568,42 @@ msgstr "Urudinas"
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:188
 msgid "Konrad Waypoint 1"
-msgstr ""
+msgstr "Konrado kelio taškas 1"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:190
 msgid "Konrad Waypoint 2"
-msgstr ""
+msgstr "Konrado kelio taškas 2"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:192
 msgid "Konrad Final Waypoint"
-msgstr ""
+msgstr "Galutinis Konrado kelio taškas"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:195
 msgid "Patrol Waypoint 1"
-msgstr ""
+msgstr "Patrulio kelio taškas 1"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:197
 msgid "Patrol Waypoint 2"
-msgstr ""
+msgstr "Patrulio kelio taškas 2"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:199
 msgid "Patrol Waypoint 3"
-msgstr ""
+msgstr "Patrulio kelio taškas 3"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:201
 msgid "Patrol Waypoint 4"
-msgstr ""
+msgstr "Patrulio kelio taškas "
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:204
 msgid "Urudin retreats here"
-msgstr ""
+msgstr "Urudinas atsitraukia čia"
 
 #. [message]: speaker=Konrad
 #: data/ai/micro_ais/scenarios/patrols.cfg:215
@@ -1704,7 +1700,7 @@ msgstr "Eima namo, vyručiai."
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:63
 msgid "Protect Unit"
-msgstr ""
+msgstr "Apsaugoti karį"
 
 #. [side]: id=Langzhar, type=Lieutenant
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:18
@@ -1750,7 +1746,7 @@ msgstr ""
 #. [message]: speaker=Rossauba
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:138
 msgid "That's very kind of you, but ..."
-msgstr ""
+msgstr "Tai labai malonu iš tavo pusės, bet..."
 
 #. [message]: speaker=Langzhar
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:142
@@ -1804,12 +1800,12 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:181
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:201
 msgid "Rossauba makes it to the signpost"
-msgstr ""
+msgstr "Rossauba nukeliauja iki kelrodžio"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:185
 msgid "Death of Rossauba"
-msgstr ""
+msgstr "Rossaubos mirtis"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:189
@@ -1824,7 +1820,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:197
 msgid "Defeat Rossauba"
-msgstr ""
+msgstr "Nugalėkite Rossaubą"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:205
@@ -1834,12 +1830,12 @@ msgstr ""
 #. [message]: speaker=Rossauba
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:230
 msgid "I held out for as long as I could."
-msgstr ""
+msgstr "Atsilaikiau tiek, kiek galėjau."
 
 #. [message]: speaker=Rossauba
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:248
 msgid "I made it"
-msgstr ""
+msgstr "Man pavyko"
 
 #. [event]
 #. [test]: id=recruiting
@@ -1884,7 +1880,7 @@ msgstr ""
 #. [test]: id=micro_ai_test
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:5
 msgid "Micro AI Tests"
-msgstr ""
+msgstr "Mikro DI testai"
 
 #. [side]: id=Grnk, type=Goblin Spearman
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:19
@@ -1916,7 +1912,7 @@ msgstr "SĮ: Elfai apsiausti"
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:69
 msgid "Bottleneck"
-msgstr ""
+msgstr "Siauras praėjimas"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:81
@@ -1933,22 +1929,22 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:90
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:5
 msgid "Simple Attack"
-msgstr ""
+msgstr "Paprastas puolimas"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:93
 msgid "Fast AI"
-msgstr ""
+msgstr "Greitas DI"
 
 #. [set_menu_item]: id=m01_menu_bottleneck_defense
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:100
 msgid "Bottleneck Defense Micro AI demo"
-msgstr ""
+msgstr "Siauro praėjimo gynybos DI demonstracija"
 
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:111
 msgid "Bottleneck Defense Micro AI Demo"
-msgstr ""
+msgstr "Siauro praėjimo gynybos DI demonstracija"
 
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:112
@@ -1980,7 +1976,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:138
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:149
 msgid "Guardian Micro AI demo"
-msgstr ""
+msgstr "Sergėtojo mikro DI demonstracija"
 
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:150
@@ -1995,7 +1991,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:157
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:168
 msgid "Patrol Micro AI demo"
-msgstr ""
+msgstr "Patrulių mikro DI demonstracija"
 
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:169
@@ -2007,7 +2003,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:176
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:187
 msgid "Recruiting Tests Micro AI demo"
-msgstr ""
+msgstr "Samdymo testų mikro DI demonstracija"
 
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:188
@@ -2019,12 +2015,12 @@ msgstr ""
 #. [set_menu_item]: id=m06_protect
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:195
 msgid "Protect Unit Micro AI demo"
-msgstr ""
+msgstr "Kario apsaugos mikro DI demonstracija"
 
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:206
 msgid "Protect Unit Micro AI Demo"
-msgstr ""
+msgstr "Kario apsaugos mikro DI demonstracija"
 
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:207
@@ -2041,7 +2037,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:215
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:226
 msgid "HttT: The Elves Besieged Micro AI demo"
-msgstr ""
+msgstr "HttT: Apsuptų elfų mikro DI demonstracija"
 
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:227
@@ -2071,7 +2067,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:253
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:264
 msgid "Animals Micro AI demo"
-msgstr ""
+msgstr "Gyvūnų mikro DI demonstracija"
 
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:265
@@ -2113,7 +2109,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:310
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:321
 msgid "Dragon Micro AI demo"
-msgstr ""
+msgstr "Drakono mikro DI demonstracija"
 
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:322
@@ -2124,12 +2120,12 @@ msgstr ""
 #. [set_menu_item]: id=m12_healer_support
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:329
 msgid "Healer support Micro AI demo"
-msgstr ""
+msgstr "Gydytojų paramos mikro DI demonstracija"
 
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:340
 msgid "Healer Support Micro AI demo"
-msgstr ""
+msgstr "Gydytojų paramos mikro DI demonstracija"
 
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:341
@@ -2197,9 +2193,8 @@ msgstr ""
 #. [set_menu_item]: id=m16_fast
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:405
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:416
-#, fuzzy
 msgid "Fast Micro AI demo"
-msgstr "Vilkų Mikro DI demonstracija"
+msgstr "Greito mikro DI demonstracija"
 
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:417
@@ -2439,37 +2434,37 @@ msgstr ""
 #. [option]
 #: data/ai/micro_ais/scenarios/wolves.cfg:214
 msgid "<span font='16'>I'll just watch the two wolf sides.</span>"
-msgstr ""
+msgstr "<span font='16'>Tiesiog stebėsiu dvi vilkų komandas.</span>"
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/wolves.cfg:238
 msgid "Watch the wolves move around and fight each other"
-msgstr ""
+msgstr "Stebėk judančius ir besikaunančius vilkus"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/wolves.cfg:240
 msgid "No wolves left on one side"
-msgstr ""
+msgstr "Vilkų nelieka vienoje pusėje"
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/ai_arena_small/0001-healing.cfg:17
 msgid "This situation should test the ability of AI to heal efficiently..."
-msgstr ""
+msgstr "Ši situacija turėtų testuoti DI gebėjimą efektyviai gydytis..."
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:17
 msgid "This situation should test the ability of AI to spread poison around..."
-msgstr ""
+msgstr "Ši situacija turėtų testuoti DI gebėjimą skleisti nuodus..."
 
 #. [label]
 #: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:112
 msgid "Undead target test"
-msgstr ""
+msgstr "Nemirėlių taikinio testas"
 
 #. [label]
 #: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:119
 msgid "Target choose test"
-msgstr ""
+msgstr "Taikinio pasirinkimo testas"
 
 #. [label]
 #: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:126
@@ -2479,12 +2474,12 @@ msgstr ""
 #. [label]
 #: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:133
 msgid "Weapon test with low hp target"
-msgstr ""
+msgstr "Ginklų bandymas su mažai gt turinčiu taikiniu"
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/ai_arena_small/0003-simple_combat.cfg:17
 msgid "This situation should test the ability of AI to make an attack..."
-msgstr ""
+msgstr "Ši situacija turėtų testuoti DI gebėjimą pulti..."
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/ai_arena_small/0004-filtered_combat.cfg:17
@@ -2497,27 +2492,27 @@ msgstr ""
 #. [test]: id=ai_arena_small
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:6
 msgid "AI Arena - small"
-msgstr ""
+msgstr "DI arena – maža"
 
 #. [test]: id=ai_arena_small
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:7
 msgid "Small ai arena"
-msgstr ""
+msgstr "Maža di arena"
 
 #. [set_menu_item]: id=repeat_test
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:61
 msgid "Repeat last test"
-msgstr ""
+msgstr "Pakartoti paskutinį testą"
 
 #. [set_menu_item]: id=select_another_ai
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:77
 msgid "Select another ai"
-msgstr ""
+msgstr "Pasirinkite kitą di"
 
 #. [set_menu_item]: id=select_test
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:87
 msgid "Select another test"
-msgstr ""
+msgstr "Pasirinkite kitą testą"
 
 #. [side]: type=Nightgaunt
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:100
@@ -2532,7 +2527,7 @@ msgstr "DI programuotojas"
 #. [side]: id=chall-ai, type=White Mage
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:117
 msgid "Challenger AI"
-msgstr ""
+msgstr "Pretendentas DI"
 
 #. [side]: id=chall-ai, type=White Mage
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:122
@@ -2542,7 +2537,7 @@ msgstr "Šiaurė"
 #. [side]: id=champ-ai, type=Dark Adept
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:129
 msgid "Champion AI"
-msgstr ""
+msgstr "Čempionas DI"
 
 #. [side]: id=champ-ai, type=Dark Adept
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:134
@@ -2552,7 +2547,7 @@ msgstr "Pietūs"
 #. [message]: speaker=narrator
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:173
 msgid "Which AI do you wish to use, O Mighty AI Developer?"
-msgstr ""
+msgstr "Kurį DI norite naudoti, O Galingasai DI Programuotojau?"
 
 #. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:175
@@ -2562,7 +2557,7 @@ msgstr ""
 #. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:178
 msgid "My AI is the RCA AI (the current default)."
-msgstr ""
+msgstr "Mano DI yra RCA DI (dabartinis standartas)."
 
 #. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:187
@@ -2570,6 +2565,8 @@ msgid ""
 "I am the king of FORMULA AI, and I will use its vast powers for world "
 "domination."
 msgstr ""
+"Aš esu FORMULĖS DI karalius, ir naudosiu jos begalines galias pasaulio "
+"dominavimui."
 
 #. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:196
@@ -2589,7 +2586,7 @@ msgstr ""
 #. [text_input]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:212
 msgid "AI Location:"
-msgstr ""
+msgstr "Kelias iki DI:"
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:313
@@ -2599,12 +2596,12 @@ msgstr ""
 #. [test]: id=lua_ai
 #: data/ai/scenarios/scenario-lua_ai.cfg:4
 msgid "Lua AI Test scenario"
-msgstr ""
+msgstr "Lua DI bandomasis scenarijus"
 
 #. [test]: id=lua_ai_old_syntax
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:5
 msgid "Lua AI Test scenario (old syntax)"
-msgstr ""
+msgstr "Lua DI bandomasis scenarijus (sena sintaksė)"
 
 #. [unit]: type=Skeletal Dragon, id=Kiressh
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:87

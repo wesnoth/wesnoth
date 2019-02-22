@@ -1,12 +1,12 @@
-# Copyright (C) Wesnoth development team, 2007-2012.
+# Copyright (C) Wesnoth development team, 2007-2019.
 # Translators:
-#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2012.
+#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-22 03:45+0300\n"
-"PO-Revision-Date: 2017-04-08 14:50+0100\n"
+"PO-Revision-Date: 2019-02-10 19:24+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
 "Language: lt\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
@@ -26,36 +26,30 @@ msgstr "Požemis"
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:696
 msgid "righteous rage"
-msgstr ""
+msgstr "teisus įniršis"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:698
-#, fuzzy
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the champions is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Berserkas:\n"
 "Ar naudojama puolant, ar ginantis, ši ataka išlaiko priešininką kovoje iki "
-"pat vieno iš besikaunančiųjų mirties, arba trisdešimt atakos raundų."
+"pat vieno iš čempionų mirties, arba trisdešimt atakos raundų."
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:707
-#, fuzzy
-#| msgid "first strike"
 msgid "true strike"
-msgstr "pirmas smūgis"
+msgstr "teisingas smūgis"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:709
-#, fuzzy
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the champion being attacked."
 msgstr ""
-"Magiška:\n"
 "Ši ataka visada turi 70% tikimybę pataikyti, nepriklausomai nuo puolamo "
-"dalinio gynybinių gebėjimų."
+"čempiono gebėjimų."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -79,12 +73,12 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Leidžia daliniui pagydyti gretimus draugiškus karius mūsų ėjimo pradžioje.\n"
+"Leidžia kariui pagydyti gretimus draugiškus karius mūsų ėjimo pradžioje.\n"
 "\n"
-"Gydomasis dalinys gali pagyti ne daugiau, nei 4 GT per ėjimą, arba tą ėjimą "
+"Gydomasis karys gali pagyti ne daugiau, nei 4 GT per ėjimą, arba tą ėjimą "
 "išvengti nuodų poveikio.\n"
-"Šis gydytojas negali išgydyti nuo nuodų. Apnuodytasis dalinys turi ieškoti "
-"pagalbos kaime arba pas dalinį, kuris gali atnuodyti."
+"Šis gydytojas negali išgydyti nuo nuodų. Apnuodytasis karys turi ieškoti "
+"pagalbos kaime arba pas karį, kuris gali atnuodyti."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:39
@@ -100,7 +94,6 @@ msgstr "gydo +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
-#, fuzzy
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -110,24 +103,23 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Gydo +8:\n"
-"Šis dalinys apjungia vaistažoles su magija ir gydo dalinius greičiau, nei "
+"Šis karys apjungia vaistažoles su magija ir gydo karius greičiau, nei "
 "įprasta mūšio lauke.\n"
 "\n"
-"Gydomasis dalinys gali pagyti ne daugiau, nei 8 GT per ėjimą, arba tą ėjimą "
+"Gydomasis karys gali pagyti ne daugiau, nei 8 GT per ėjimą, arba tą ėjimą "
 "išvengti nuodų poveikio.\n"
-"Šis gydytojas negali išgydyti nuo nuodų. Apnuodytasis dalinys turi ieškoti "
-"pagalbos kaime arba pas dalinį, kuris gali atnuodyti."
+"Šis gydytojas negali išgydyti nuo nuodų. Apnuodytasis karys turi ieškoti "
+"pagalbos kaime arba pas karį, kuris gali atnuodyti."
 
 #. [section]: id=editor
 #: data/core/editor/help.cfg:5
 msgid "Map and Scenario Editor"
-msgstr ""
+msgstr "Žemėlapių ir scenarijų redaktorius"
 
 #. [topic]: id=editor_brush
 #: data/core/editor/help.cfg:13
 msgid "Editor Brush"
-msgstr ""
+msgstr "Redaktoriaus teptukas"
 
 #. [topic]: id=editor_brush
 #. [topic]: id=editor_clipboard
@@ -142,17 +134,17 @@ msgstr ""
 #: data/core/editor/help.cfg:104 data/core/editor/help.cfg:112
 #: data/core/editor/help.cfg:251 data/core/editor/help.cfg:289
 msgid "TODO"
-msgstr ""
+msgstr "Užduočių sąrašas"
 
 #. [topic]: id=editor_clipboard
 #: data/core/editor/help.cfg:21
 msgid "Terrain Clipboard"
-msgstr ""
+msgstr "Reljefo iškarpinė"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:29
 msgid "Paint Tool"
-msgstr ""
+msgstr "Piešimo įrankis"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:30
@@ -165,7 +157,7 @@ msgstr ""
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:39
 msgid "Fill Tool"
-msgstr ""
+msgstr "Užpildymo įrankis"
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:40
@@ -178,7 +170,7 @@ msgstr ""
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:49
 msgid "Select Tool"
-msgstr ""
+msgstr "Žymėjimo įrankis"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:50
@@ -191,17 +183,17 @@ msgstr ""
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:59
 msgid "Paste Tool"
-msgstr ""
+msgstr "Įklijavimo įrankis"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:60
 msgid "Paste the terrain in the clipboard"
-msgstr ""
+msgstr "Įklijuoja reljefą iš iškarpinės"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:67
 msgid "Starting Tool"
-msgstr ""
+msgstr "Pradžios įrankis"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:68
@@ -215,17 +207,17 @@ msgstr ""
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:77
 msgid "Label Tool"
-msgstr ""
+msgstr "Žymių įrankis"
 
 #. [topic]: id=editor_tool_item
 #: data/core/editor/help.cfg:85
 msgid "Item Tool"
-msgstr ""
+msgstr "Daiktų įrankis"
 
 #. [topic]: id=editor_tool_soundsource
 #: data/core/editor/help.cfg:93
 msgid "Soundsource Tool"
-msgstr ""
+msgstr "Garso šaltinių įrankis"
 
 #. [topic]: id=editor_tool_soundsource
 #: data/core/editor/help.cfg:94
@@ -234,21 +226,24 @@ msgid ""
 "\n"
 "This tool has not been implemented yet."
 msgstr ""
+"Padeda garso šaltinius jūsų žemėlapiuose!\n"
+"\n"
+"Šis įrankis dar nesukurtas."
 
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:103
 msgid "Village Ownership Tool"
-msgstr ""
+msgstr "Kaimų nuosavybės įrankis"
 
 #. [topic]: id=editor_tool_unit
 #: data/core/editor/help.cfg:111
 msgid "Unit Tool"
-msgstr ""
+msgstr "Karių įrankis"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:119
 msgid "Named Areas"
-msgstr ""
+msgstr "Pavadintos vietovės"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:120
@@ -265,7 +260,7 @@ msgstr ""
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:130
 msgid "Playlist Manager"
-msgstr ""
+msgstr "Grojaraščių tvarkyklė"
 
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:131
@@ -278,7 +273,7 @@ msgstr ""
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:140
 msgid "Map/Scenario Editor"
-msgstr ""
+msgstr "Žemėlapių/Scenarijų redaktorius"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:142
@@ -289,18 +284,23 @@ msgid ""
 "\n"
 "The editor can be launched from the <italic>text='Map Editor'</italic>"
 msgstr ""
+"Vesnoto žemėlapių ir scenarijų redaktorius leidžia naudotojams kurti ir "
+"keisti žemėlapius, kuriuose vyksta kiekvienas Vesnoto scenarijus. Jis taip "
+"pat turi ribotas galimybes kurti paprastus scenarijus.\n"
+"\n"
+"Redaktorius gali būti paleistas nuspaudus <italic>text='Žemėlapių "
+"redaktoriaus'</italic>"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:144
-#, fuzzy
 msgid ""
 " option at the title screen.\n"
 "\n"
 "<header>text='What you get'</header>"
 msgstr ""
+" mygtuką pagrindiniame meniu.\n"
 "\n"
-"\n"
-"<header>text='Tikimybė pataikyti'</header>"
+"<header>text='Ką gaunate'</header>"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:146
@@ -362,11 +362,10 @@ msgstr ""
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:184
 msgid "Editing Modes"
-msgstr ""
+msgstr "Redagavimo režimai"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -374,12 +373,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Kūrėjo resursai'</header>"
+"<header>text='Gryno žemėlapio režimas'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
 msgid "The editor features two separate modes of operation:"
-msgstr ""
+msgstr "Redaktorius turi du skirtinus veikimo būdus:"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:187
@@ -389,6 +388,9 @@ msgid ""
 "Allows only the composing of the terrain map itself and the definition of "
 "leader starting positions."
 msgstr ""
+"\n"
+"\n"
+"Leidžia kurti tik reljefo žemėlapį ir apibrėžti vadų pradžios pozicijas."
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:189
@@ -423,7 +425,6 @@ msgstr ""
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:198
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -431,7 +432,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Kūrėjo resursai'</header>"
+"<header>text='Scenarijaus režimas'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:200
@@ -445,11 +446,19 @@ msgid ""
 "In this mode, terrain data is stored in the map_data attribute and saved "
 "into a file with any applicable WML."
 msgstr ""
+"\n"
+"\n"
+"Scenarijaus režimas leidžia naudoti kelis papildomus įrankius, pavyzdžiui "
+"karių įrankį. Tačiau tam, kad būtų galima naudoti šiuos įrankius, turi būti "
+"apibrėžta bent viena pusė.\n"
+"\n"
+"Šiame režime, reljefo duomenys yra išsaugojami map_data atribute ir įrašomi "
+"į failą kartu su reikiamu WML kodu."
 
 #. [topic]: id=editor_toolkit
 #: data/core/editor/help.cfg:211
 msgid "Editor Tools"
-msgstr ""
+msgstr "Redaktoriaus įrankiai"
 
 #. [topic]: id=editor_toolkit
 #: data/core/editor/help.cfg:212
@@ -472,12 +481,28 @@ msgid ""
 "• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>\n"
 "\n"
 msgstr ""
+"Redaktorius turi keletą įrankių žemėlapiams ir scenarijams redaguoti. Bet "
+"kurie metu, vienas iš redaktoriaus įrankių yra aktyvus. Aktyvus įrankis "
+"nustato redaktoriaus paletės ir kontekstinio meniu turinį.\n"
+"\n"
+"Pateikiami šie įrankiai:\n"
+"\n"
+"• <ref>dst='editor_tool_paint' text='Piešimo įrankis'</ref>\n"
+"• <ref>dst='editor_tool_fill' text='Užpildymo įrankis'</ref>\n"
+"• <ref>dst='editor_tool_select' text='Žymėjimo įrankis'</ref>\n"
+"• <ref>dst='editor_tool_paste' text='Įklijavimo įrankis'</ref>\n"
+"• <ref>dst='editor_tool_starting' text='Pradžios pozicijų įrankis'</ref>\n"
+"• <ref>dst='editor_tool_label' text='Žymių įrankis'</ref>\n"
+"• <ref>dst='editor_tool_item' text='Objektų įrankis'</ref>\n"
+"• <ref>dst='editor_tool_soundsource' text='Garso šaltinio įrankis'</ref>\n"
+"• <ref>dst='editor_tool_village' text='Kaimų įrankis'</ref>\n"
+"• <ref>dst='editor_tool_unit' text='Karių įrankis'</ref>\n"
+"\n"
 
 #. [topic]: id=editor_terrain
 #: data/core/editor/help.cfg:234
-#, fuzzy
 msgid "Terrain Editor"
-msgstr "Vietovių modifikatoriai"
+msgstr "Reljefo redaktorius"
 
 #. [topic]: id=editor_terrain
 #: data/core/editor/help.cfg:235
@@ -490,7 +515,7 @@ msgstr ""
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:242
 msgid "Editor Mask Usage"
-msgstr ""
+msgstr "Redaktoriaus kaukių naudojimas"
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:243
@@ -502,12 +527,12 @@ msgstr ""
 #. [topic]: id=editor_time_schedule
 #: data/core/editor/help.cfg:250
 msgid "Time Schedule Editor"
-msgstr ""
+msgstr "Laiko režimo redaktorius"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:258
 msgid "Editor Palette"
-msgstr ""
+msgstr "Redaktoriaus paletė"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:259
@@ -521,7 +546,7 @@ msgstr ""
 #. [topic]: id=map_format
 #: data/core/editor/help.cfg:266
 msgid "Wesnoth Map Format"
-msgstr ""
+msgstr "Vesnoto žemėlapių formatas"
 
 #. [topic]: id=map_format
 #: data/core/editor/help.cfg:267
@@ -541,12 +566,12 @@ msgstr ""
 #. [topic]: id=scenario_format
 #: data/core/editor/help.cfg:280
 msgid "Scenario Format"
-msgstr ""
+msgstr "Scenarijaus formatas"
 
 #. [topic]: id=editor_starting_positions_in_general
 #: data/core/editor/help.cfg:288
 msgid "Starting Positions Howto"
-msgstr ""
+msgstr "Pradinių pozicijų aprašymas"
 
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
@@ -573,18 +598,17 @@ msgstr "Arkan-torija"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:27
-#, fuzzy
 msgid ""
 "A river rising in the <ref>dst='heart_mountains' text='Heart Mountains'</"
 "ref> and running east to the Listra."
-msgstr "<ref>dst='heart_mountains' text='Šerdies kalnai'</ref>"
+msgstr ""
+"Upė ištekanti iš <ref>dst='heart_mountains' text='Šerdies kalnų'</ref> ir "
+"tekanti į rytus Listros link."
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:32
-#, fuzzy
-#| msgid "Great Ocean"
 msgid "Great River"
-msgstr "Didysis vandenynas"
+msgstr "Didžioji upė"
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:33
@@ -594,6 +618,10 @@ msgid ""
 "text='Northlands'</ref>. It empties to the <ref>dst='great_ocean' "
 "text='Great Ocean'</ref> at <ref>dst='elensefar' text='Elensefar'</ref>."
 msgstr ""
+"Didžioji upė yra riba tarp <ref>dst='kingdom_wesnoth' text='Vesnoto "
+"karalystės'</ref> ir <ref>dst='northlands' text='Šiaurinių žemių'</ref>. Ji "
+"įteka į <ref>dst='great_ocean' text='Didijį vandenyną'</ref> prie "
+"<ref>dst='elensefar' text='Elensefaro'</ref>."
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:38
@@ -622,6 +650,12 @@ msgid ""
 "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
 "The central island of the archipelago is also called ‘Morogor’."
 msgstr ""
+"Archipelagas, kuris yra kažkur <ref>dst='great_ocean' text='Didžiajame "
+"vandenyne'</ref>, į rytus nuo <ref>dst='green_isle' text='Žaliosios salos'</"
+"ref> ir į vakaruos nuo <ref>dst=great_continent text='Didžiojo žemyno'</"
+"ref>.\n"
+"Daugiausia apgyvendintas <ref>dst='..race_drake' text='slibinų'</ref>.\n"
+"Centrinė archipelago sala taip pat vadinama „Morogoru“."
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:52
@@ -630,10 +664,10 @@ msgstr "Žalioji sala"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:53
-#, fuzzy
 msgid ""
 "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
-msgstr "<ref>dst='heart_mountains' text='Šerdies kalnai'</ref>"
+msgstr ""
+"Didesnė sala esanti <ref>dst='great_ocean' text='Didžiajame vandenyne'</ref>."
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:58
@@ -646,6 +680,8 @@ msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Yra <ref>dst='great_ocean' text='Didžiajame vandenyne'</ref> į vakarus nuo "
+"<ref>dst='morogor' text='Morogoro'</ref>."
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:64
@@ -659,11 +695,14 @@ msgid ""
 "Wesnoth'</ref> lies. Its west coast is surrounded by the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Žemynas, kuriam priklauso <ref>dst='kingdom_wesnoth' text='Vesnoto "
+"karalystė'</ref>. Jo vakarinį krantą supa <ref>dst='great_ocean' "
+"text='Didysis vandenynas'</ref>."
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:70
 msgid "Irdya"
-msgstr ""
+msgstr "Irdija"
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:71
@@ -673,6 +712,10 @@ msgid ""
 "rarely used in the era depicted by the main map. People normally just say "
 "“the world” or, poetically, “the wide green world”."
 msgstr ""
+"Pasaulio, kuriame yra įsikūrusi <ref>dst='kingdom_wesnoth' text='Vesnoto'</"
+"ref> karalystė, pavadinimas yra „Irdija“. Tačiau pagrindiniame žemėlapyje "
+"atvaizduotoje eroje šis pavadinimas naudojamas retai. Paprastsai žmonės "
+"tiesiog sako „pasaulis“, arba poetiškai – „platus žalias pasaulis“."
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:76
@@ -732,6 +775,54 @@ msgid ""
 "    • Gray Woods: Large forest in the heart of the wilds of Wesnoth, located "
 "between Carcyn and Aldril and generally considered to be haunted."
 msgstr ""
+"Vesnoto karalystė yra <ref>dst='great_continent' text='Didžiojo žemyno'</"
+"ref> šiaurės centrinėje dalyje. Joje vyksta veiksmas daugumoje pagrindinių "
+"kampanijų. Šiaurėje ji ribojasi su Didžiąja upe, vakaruose – su Didžiojo "
+"vandenyno krantu, Ėtenvudu – <ref>dst='southwest_elven_lands' "
+"text='pietvakariuose'</ref> ir Karčiąja pelke – pietryčiuose (apatiniame "
+"kairiajame žemėlapio kampe).\n"
+"\n"
+"Už Ėteno upės, į pietus nuo Tano forto, yra Vesnoto pasienio regionas. "
+"Pietuose jis apribotas (už žemėlapio ribų) tankių miškų, Ėtenvudas gali būti "
+"laikomas šiauriausia jų dalimi.\n"
+"\n"
+"<header>text='Žymūs miestai:'</header>\n"
+"    • Veldynas: Vesnoto sostinė.\n"
+"    • Aldrilas: mestas šalia Perlų įlankos.\n"
+"    • Juodųjų vandenų uostas: miestas esantis į pietus nuo Perlų įlankos.\n"
+"    • Karsynas: įsikūręs tarp Pilkosios girios ir Didžiosios upės.\n"
+"    • Dan’Tonkas: Didžiausias Vesnoto miestas, įsikūręs šalies viduryje, "
+"kiek vakariau ir šiauriau Veldyno.\n"
+"    • Soradokas: šiauriausias pasienio gyvenvietė, kontroliuoja Veldyno ir "
+"Didžiosios upių santaką.\n"
+"    • Tano fortas: piečiausia pasienio gyvenvietė, kontroliuoja šiaurės–"
+"pietų kelią per Ėteno upę.\n"
+"    • Tatas: svarbus įtvirtintas miestas į šiaurę nuo Dan’Tonko, "
+"kontroliuoja dykynes aplink rytinę Rudųjų kalvų dalį ir į šiaurę Abezo "
+"brastos link.\n"
+"\n"
+"<header>text='Žymūs gamtiniai objektai:'</header>\n"
+"    • Grifų kalnas: legendinių grifų namai.\n"
+"    • Abezo brasta: sekli Didžiosios upės dalis, paprastai kontroliuojama "
+"Vesnoto pajėgų.\n"
+"    • Veldyno upė: atsiskiria nuo didžiosios upės ir eina į pietus.\n"
+"    • Didžioji centrinė lyguma: vietovė apribota Veldyno, Dan’Tonko ir Tano "
+"forto, šį lyguma yra Vesnoto duonos krepšys ir daugumos gyventojų namai.\n"
+"    • Dulato kalvos: kalvos besiribojamčios su Didžiąja centrine lyguma ir "
+"tiekiančios didžiąją dalį Vesnoto gyvulininkystės ir žemės ūkio.\n"
+"    • Rudosios kalvos: dykynė supanti Grifų kalną, kuri nėra labai "
+"apgyvendinta ir kartais labai pavojinga.\n"
+"    • Žirgų lygumos: lygumos į pietus nuo Didžiosios upės, besiribojančios "
+"su Glyno mišku vakaruose ir Veldyno upe rytuose; pietuose įsilieja į "
+"centrinę lygumą. Galingų klanų namai; čia veisiami geriausi Vesnoto žirgai.\n"
+"    • Estmarko kalvos: didoka virtinė į pietus nuo Didžiosios upės ir į "
+"rytus nuo Veldyno upės. Šiauriausia dalis, esanti arčiausiai Veldyno upės, "
+"įvairiais laikais buvo apgyvendinta Vesnotiečių, bet karalystės valdžia "
+"geriausiu atveju yra netvirta, o plėšikavimas yra dažnas reiškinys.\n"
+"    • Glyno miškas: kartais žinomas kaip Karališkasis miškas, pavadintas "
+"vieno iš Haldriko II sūnų garbei.\n"
+"    • Pilkoji giria: didelis miškas tarp laukinių Vesnoto žemių, išsidėstęs "
+"tarp Karsyno ir Aldrilo, dažnai sakoma, kad ten vaidenasi."
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:106
@@ -844,6 +935,8 @@ msgid ""
 "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
 "Plains'</ref>."
 msgstr ""
+"Praktiškai nepraeinamas barjeras tarp <ref>dst='arkan_thoria' text='upės'</"
+"ref> šalies ir <ref>dst='far_north' text='Šiaurinių lygumų'</ref>."
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:160
@@ -888,9 +981,8 @@ msgstr ""
 
 #. [section]: id=schedule
 #: data/core/help.cfg:14
-#, fuzzy
 msgid "Time of Day Schedule"
-msgstr "Dienos laikas"
+msgstr "Paros laiko planas"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
@@ -914,7 +1006,7 @@ msgstr "Bruožai"
 #. [topic]: id=..units
 #: data/core/help.cfg:41 data/core/help.cfg:122
 msgid "Units"
-msgstr "Daliniai"
+msgstr "Kariai"
 
 #. [section]: id=abilities_section
 #. [topic]: id=..abilities_section
@@ -932,13 +1024,13 @@ msgstr "Ginklų ypatybės"
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:66 data/core/help.cfg:131
 msgid "Eras"
-msgstr ""
+msgstr "Eros"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:74 data/core/help.cfg:413
 msgid "Terrains"
-msgstr "Vietovės"
+msgstr "Reljefai"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
@@ -954,7 +1046,6 @@ msgstr "Komandos"
 
 #. [topic]: id=..introduction
 #: data/core/help.cfg:100
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -975,9 +1066,15 @@ msgstr ""
 "<italic>text='Mūšis dėl Vesnoto'</italic> yra ėjimais pagrįstas fantastinis "
 "strateginis žaidimas, iš dalies neįprastas tarp šiuolaikinių strateginių "
 "žaidimų. Kol kiti žaidimai siekia sudėtingumo, <italic>text='Mūšis dėl "
-"Vesnoto'</italic> siekia paprastumo, tačiau iš šių paprastų taisyklių "
-"atsiranda strategijų gausumas, darantis žaidimą lengvai išmokstamą, bet "
-"sunkų puikiai įvaldyti."
+"Vesnoto'</italic> siekia taisyklių ir žaidimo paprastumo. Tačiau tai "
+"nereiškia, kad žaidimas lengvas – iš šių paprastų taisyklių atsiranda "
+"strategijų gausumas, darantis žaidimą lengvai išmokstamą, bet sunkų puikiai "
+"įvaldyti.\n"
+"\n"
+"Šiuose puslapiuose aprašyta viskas, ką jums reikia žinoti, kad galėtumėte "
+"žaisti Vesnotą. Bežaidžiant, kai sutiksite naujus žaidimo aspektus, nauja "
+"informacija bus pridėta į įvairias kategorijas. Išsamesnę informaciją apie "
+"ypatingas situacijas ir išimtis rasite sekdami tekste įterptas nuorodas."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:110
@@ -1025,6 +1122,9 @@ msgid ""
 "sides in multiplayer games.\n"
 "\n"
 msgstr ""
+"Frakcija yra karių ir vadų rinkinys. Frakcijos yra priskirtos žaidžiančioms "
+"pusėms daugelio žaidėjų žaidimuose.\n"
+"\n"
 
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:134
@@ -1037,7 +1137,6 @@ msgstr ""
 
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:143
-#, fuzzy
 msgid ""
 "Certain units have abilities that either directly affect other units or have "
 "an impact on how the unit interacts with other units. These abilities will "
@@ -1046,9 +1145,10 @@ msgid ""
 "have it.\n"
 "\n"
 msgstr ""
-"Kai kurie daliniai turi gebėjimų, kurie arba tiesiogiai veikia kitus "
-"dalinius, arba turi įtakos dalinio sąveikavimui su kitais daliniais. Šie "
-"gebėjimai, kai jūs juos sutiksite, bus vardinami šioje temoje.\n"
+"Kai kurie kariai turi gebėjimų, kurie arba tiesiogiai veikia kitus karius, "
+"arba turi įtakos kario sąveikavimui su kitais kariais. Šie gebėjimai, kai "
+"jūs juos sutiksite, bus vardinami šiame skyriuje.Kiekvienas puslapis turės "
+"gebėjimo aprašymą ir kurie (šiuo metu atrasti) kariai jį turi.\n"
 "\n"
 
 #. [topic]: id=..weapon_specials
@@ -1065,7 +1165,7 @@ msgstr ""
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:161
 msgid "Unknown Unit"
-msgstr "Nežinomas dalinys"
+msgstr "Nežinomas karys"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:162
@@ -1077,7 +1177,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Šis dalinys šiuo metu nežinomas. Jūs privalote atrasti jį žaidime, kad "
+"Šis karys šiuo metu nežinomas. Jūs privalote atrasti jį žaidime, kad "
 "galėtumėte pamatyti jo aprašymą."
 
 #. [topic]: id=..gameplay
@@ -1116,13 +1216,16 @@ msgstr ""
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:181
-#, fuzzy
 msgid ""
 "\n"
 "\n"
 "<header>text='Fundamentals of Gameplay'</header>\n"
 "\n"
-msgstr "<header>text='Šios rasės daliniai'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Žaidimo pagrindai'</header>\n"
+"\n"
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:181
@@ -1134,10 +1237,10 @@ msgid ""
 "encounter new elements, such as <ref>dst='..abilities_section' "
 "text='abilities'</ref>, for the first time."
 msgstr ""
-"Turėkite omenyje, kad jeigu bežaidžiant jūs užvesite pelės žymeklį ant "
-"objektų, tokių kaip informaciniai langeliai, bus parodytas trumpas "
-"paaiškinimas apie kiekvieną objektą. Tai ypač naudinga pirmą kartą sutikus "
-"naują <ref>dst='..abilities_section' text='gebėjimą'</ref>. "
+"Turėkite omenyje, kad žaidžiant galite užvesite pelės žymeklį ant objektų, "
+"tokių kaip informaciniai langeliai, kad pamatytumėte trumpą paaiškinimą apie "
+"kiekvieną objektą. Tai ypač naudinga pirmą kartą sutikus naują <ref>dst='.."
+"abilities_section' text='gebėjimą'</ref>."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:193
@@ -1157,14 +1260,13 @@ msgstr ""
 "\n"
 "\n"
 "Kai laimite scenarijų, žemėlapis papilkėja ir mygtukas <bold>text='Baigti "
-"ėjimą'</bold> pasikeis į <bold>text='Baigti scenarijų'</bold>. Pieš "
-"nuspausdami šį mygtuką, kad tęstumėte, dabar galite atlikti tokius veiksmus "
-"kaip keisti išsaugojimų nustatymus arba (jei esate daugelio žaidėjų žaidime) "
-"kalbėtis su kitais žaidėjais."
+"ėjimą'</bold> pasikeis į <bold>text='Baigti scenarijų'</bold>. Tada, prieš "
+"nuspausdami mygtuką, galite atlikti tokius veiksmus kaip keisti išsaugojimų "
+"nustatymus arba (jei esate daugelio žaidėjų žaidime) kalbėtis su kitais "
+"žaidėjais."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:194
-#, fuzzy
 msgid ""
 "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
 "the beginning of each scenario. In most scenarios, you will achieve victory "
@@ -1175,11 +1277,12 @@ msgid ""
 "number of turns have elapsed."
 msgstr ""
 "Ypatingai atkreipkite dėmesį į kiekvienos užduoties pradžioje iššokančiame "
-"langelyje pateiktą <bold>text='tikslo'</bold> aprašymą. Paprastai pergalė "
-"pasiekiama sunaikinus visus priešo vadus, o pralaimima jūsų vado sunaikinimo "
-"atveju. Tačiau gali būti keliami kiti pergalės pasiekimo tikslai – tarkim "
-"atvesti savo vadą į nustatytą vietą arba ką nors išgelbėti, ar išspręsti "
-"galvosūkį, ar išsilaikyti apsiaustyje tam tikrą ėjimų skaičių."
+"langelyje pateiktą <bold>text='tikslo'</bold> aprašymą. Daugumoje scenarijų "
+"pergalė pasiekiama sunaikinus visus priešo vadus; taip pat jūsų vado mirties "
+"atveju paprastai pralaimima. Tačiau kai kuriuose scenarijuose gali būti "
+"keliami kiti pergalės pasiekimo tikslai, pavyzdžiui nuvesti savo vadą į "
+"nustatytą vietą, išgelbėti sąjungininką, išspręsti galvosūkį ar išsilaikyti "
+"apsiaustyje tam tikrą ėjimų skaičių."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:203
@@ -1199,13 +1302,12 @@ msgstr ""
 "\n"
 "\n"
 "Paspaudus dešinį pelės klavišą ant pilies laukelio ir pasirinkus samdyti, "
-"naujas dalinys atsiras tame laukelyje. Kitu atveju, dalinys atsiras laisvame "
-"laukelyje šalia bokšto. Galite samdyti tik tiek dalinių, kiek turite laisvų "
+"naujas karys atsiras tame laukelyje. Kitu atveju, karys atsiras laisvame "
+"laukelyje šalia bokšto. Galite samdyti tik tiek karių, kiek turite laisvų "
 "langelių savo pilyje ir negalite išleisti daugiau aukso negu turite samdymui."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:204
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1222,12 +1324,13 @@ msgstr ""
 "mūšio pradžioje, o kartais ir eigoje, jums reikės pasamdyti <ref>dst='.."
 "units' text='karių'</ref> savo kariuomenei. Tam tikslui, jūsų vadas "
 "(pavyzdžiui, Konradas <italic>text='Sosto įpėdinio'</italic> kampanijoje) "
-"turi būti <ref>dst='terrain_castle' text='pilies'</ref> bokšto laukelyje. "
+"turi būti <ref>dst='...terrain_castle' text='pilies'</ref> bokšto laukelyje. "
 "Tuomet galite samdyti arba išrinkdami <bold>text='Samdyti'</bold> iš meniu "
 "sąrašo arba iš sąrašo, atsidariusio paspaudus dešinį pelės klavišą ant "
 "langelio <bold>text='Samdyti'</bold>. Samdymo meniu sąraše matysite laisvus "
 "karius ir jų samdymo kainą auksu. Kario statistinius duomenis matysite "
-"paspaudę ant kario, o jį nusamdyti paspaudę samdymo klavišą. "
+"paspaudę ant kario, o jį nusamdysite paspaudę mygtuką <bold>text='Samdyti'</"
+"bold>."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:206
@@ -1239,7 +1342,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Pasamdyti daliniai turi du atsitiktinius <ref>dst='..traits_section' "
+"Pasamdyti kariai turi du atsitiktinius <ref>dst='..traits_section' "
 "text='bruožus'</ref>, kurie keičia jų statistikas."
 
 #. [topic]: id=recruit_and_recall
@@ -1254,8 +1357,8 @@ msgstr ""
 "\n"
 "\n"
 "Vėlesnėse scenarijuose jūs taip pat galėsite susigrąžinti ankstesniuose "
-"mūšiuose išlikusius dalinius. Sugrąžinant dalinį už standartinę 20 auksinių "
-"kainą, bus parodomas visų, ankstesnėse užduotyse išlikusių dalinių sąrašas."
+"mūšiuose išlikusius karius. Sugrąžinant karį už standartinę 20 auksinių "
+"kainą, bus parodomas visų, ankstesnėse užduotyse išlikusių karių sąrašas."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:210
@@ -1268,9 +1371,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Ne tik dalinių samdymas ir sugrąžinimas, bet ir jų išlaikymas sekina jūsų "
+"Ne tik karių samdymas ir sugrąžinimas, bet ir jų išlaikymas sekina jūsų "
 "aukso atsargas. Daugiau informacijos rasite skyrelyje "
-"<ref>dst='income_and_upkeep' text='pajamos ir išlaikymas'</ref>. "
+"<ref>dst='income_and_upkeep' text='pajamos ir išlaikymas'</ref>."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:219
@@ -1306,9 +1409,9 @@ msgid ""
 "gold over from one scenario to the next. There are two aspects to this; "
 "<italic>text='income'</italic> and <italic>text='upkeep'</italic>."
 msgstr ""
-"Vesnote nepakanka tiesiog samdyti dalinius ir kautis. Jūs taip pat privalote "
+"Vesnote nepakanka tiesiog samdyti karius ir kautis. Taip pat privalote "
 "stebėti savo auksą, ypač kampanijose, kur galite persinešti papildomą auksą "
-"iš vieno scenarijaus į kitą. Yra du šito aspektai; <italic>text='pajamos'</"
+"iš vieno scenarijaus į kitą. Yra du šito aspektai: <italic>text='pajamos'</"
 "italic> ir <italic>text='išlaikymas'</italic>."
 
 #. [topic]: id=income_and_upkeep
@@ -1325,12 +1428,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Išlaikymas taip pat yra pakankamai paprastas. Kiekvieno dalinio išlaikymo "
+"Išlaikymas taip pat yra pakankamai paprastas. Kiekvieno kario išlaikymo "
 "kaina lygi jo lygiui. Nemokėdami išlaikymo išlaidų jūs galite išlaikyti tiek "
-"lygių text=vertų dalinių, kiek turite kaimų. Tačiau už kiekvieną dalinio "
-"lygį, viršijantį kaimų skaičių, turite mokėti po vieną auksinį per ėjimą. "
-"Pavyzdžiui, jeigu turite dvylika pirmo lygio dalinių ir dešimt kaimų, "
-"turėsite mokėti po du auksinius išlaikymo išlaidų kiekvieno ėjimo metu."
+"lygių vertų karių, kiek turite kaimų. Tačiau už kiekvieną kario lygį, "
+"viršijantį kaimų skaičių, turite mokėti po vieną auksinį per ėjimą. "
+"Pavyzdžiui, jeigu turite dvylika pirmo lygio karių ir dešimt kaimų, turėsite "
+"mokėti po du auksinius išlaikymo išlaidų kiekvieno ėjimo metu."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:224
@@ -1343,7 +1446,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Išlaikymo kaštai atimami iš jūsų pajamų, taigi dvylikos dalinių lygių ir "
+"Išlaikymo kaštai atimami iš jūsų pajamų, taigi dvylikos karių lygių ir "
 "dešimties kaimų atveju jūsų pajamos bus 10 aukso per ėjimą."
 
 #. [topic]: id=income_and_upkeep
@@ -1360,13 +1463,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Išlaikymo išlaidoms yra numatytos dvi svarbios išimtys: ištikimi daliniai ir "
-"vadai nereikalauja Išlaikymo. Scenarijaus pradžioje turimi daliniai "
-"(pavyzdžiui, Delfadoras), arba daliniai, prisijungiantys scenarijaus metu "
+"Išlaikymo išlaidoms yra numatytos dvi svarbios išimtys: ištikimi kariai ir "
+"vadai nereikalauja Išlaikymo. Scenarijaus pradžioje turimi kariai "
+"(pavyzdžiui, Delfadoras), arba kariai, prisijungiantys scenarijaus metu "
 "(pavyzdžiui, raiteliai antrajame <italic>text='Sosto įpėdinio'</italic> "
-"scenarijuje), paprastai turi <italic>text='ištikimo'</italic> dalinio "
-"bruožą. Daliniai, kuriais jūs žaidžiate (pavyzdžiui, Konradas), beveik "
-"visada būna vadai."
+"scenarijuje), paprastai turi <italic>text='ištikimo'</italic> kario bruožą. "
+"Kariai, kuriais jūs žaidžiate (pavyzdžiui, Konradas), beveik visada būna "
+"vadai."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:235
@@ -1382,11 +1485,11 @@ msgid ""
 "recruited unit starts with no experience points, and gains experience by "
 "fighting enemies."
 msgstr ""
-"Kiekvienas dalinys turi tam tikrą kiekį <italic>text='gyvybės taškų'</"
-"italic> (GT). Jei dalinio gyvybės taškai nukrenta žemiau 1, jis miršta. "
-"Kiekvienas dalinys taip pat turi tam tikrą skaičių <italic>text='patirties "
-"taškų'</italic> (PT). Naujai pasamdytas dalinys neturi patirties taškų ir "
-"įgauna patirties kovodamas su priešais."
+"Kiekvienas karys turi tam tikrą kiekį <italic>text='gyvybės taškų'</italic> "
+"(GT). Jei kario gyvybės taškai nukrenta žemiau 1, jis miršta. Kiekvienas "
+"karys taip pat turi tam tikrą skaičių <italic>text='patirties taškų'</"
+"italic> (PT). Naujai pasamdytas karys neturi patirties taškų ir įgauna "
+"patirties kovodamas su priešais."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:240
@@ -1396,22 +1499,21 @@ msgid ""
 "have)."
 msgstr ""
 "Gyvybės ir patirties taškai pateikiami dviem skaičiais būsenos langelyje "
-"(dabartinės ir didžiausios galimos reikšmės). "
+"(dabartinės ir didžiausios galimos reikšmės)."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:242
-#, fuzzy
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
 "experience bar, which turns white as the unit is about to "
 "<ref>dst='advancement' text='advance'</ref>."
 msgstr ""
-"Gyvybės taškai taip pat rodomi dalinio energijos indikatoriuje, kuris "
-"šviečia žalia, geltona arba raudona šviesa. Dalinys, turintis bent 1 "
-"patirties tašką, turi mėlynos spalvos patirties indikatorių, kuris augant "
-"patirčiai pasikeičia į baltą spalvą, kai dalinys beveik pasiruošęs "
-"<ref>dst='experience_and_advancement' text='patobulėti'</ref>."
+"Gyvybės taškai taip pat rodomi kario energijos indikatoriuje, kuris yra "
+"žalios, geltonos arba raudonos spalvos. Karys, turintis bent 1 patirties "
+"tašką, turi mėlynos spalvos patirties indikatorių, kuris augant patirčiai "
+"pasikeičia į baltą spalvą, kai karys beveik pasiruošęs "
+"<ref>dst='advancement' text='patobulėti'</ref>."
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:249
@@ -1430,8 +1532,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Tam, kad patobulėtų, daliniai turi gauti tam tikrą kiekį patirties "
-"(protingiems daliniams reikia 20% mažiau patirties). Kai tik pasiekiamas "
+"Tam, kad patobulėtų, kariai turi gauti tam tikrą kiekį patirties "
+"(protingiems kariams reikia 20% mažiau patirties). Kai tik pasiekiamas "
 "atitinkamas kiekis, jie tuoj pat pasikelia lygį ir pilnai pasveiksta. Tam "
 "tikrais atvejais jūs galėsite pasirinkti vieną iš kelių paaukštinimo "
 "galimybių."
@@ -1444,10 +1546,10 @@ msgid ""
 "combat, however, it gains much more experience — 4 for a level 0 unit, 8 for "
 "level 1, 16 for level 2, 24 for level 3, and so forth."
 msgstr ""
-"Jeigu abu daliniai išgyvena kovą, jie gauna patirties taškų skaičių lygų "
-"dalinio, su kuriuo jie kaunasi, lygiui. Tačiau jei dalinys kovoje užmuša "
-"kitą, jis gauna kur kas daugiau patirties – 4 už 0 lygio dalinį, 8 – už 1 "
-"lygio, 16 – už 2 lygio, 24 – už 3 lygio ir t.t."
+"Jeigu abu kariai išgyvena kovą, jie gauna patirties taškų skaičių lygų "
+"kario, su kuriuo jie kaunasi, lygiui. Tačiau jei karys kovoje užmuša kitą, "
+"jis gauna kur kas daugiau patirties – 4 už 0 lygio karį, 8 – už 1 lygio, 16 "
+"– už 2 lygio, 24 – už 3 lygio ir t.t."
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:252
@@ -1467,16 +1569,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Dauguma dalinių turi tris lygius, bet ne visi. Kai kurie daliniai (tokie "
-"kaip <ref>dst='unit_Mage' text='magai'</ref>) gali turėti keturis. Kai "
-"dalinys pasiekia aukščiausią lygį, jis gali įgyti <italic>text='virš "
-"aukščiausio lygio paaukštinimą'</italic> (VALP). Kiekvieną kartą, kai "
-"dalinys surenka pakankamai patirties, VALP pakeičia dalinį, tačiau jo lygis "
-"išlieka nepakitęs. VALP pagrindinis poveikis yra maksimalaus GT kiekio "
-"pakėlimas 3 punktais ir pilnas pagydymas. Pirmą kartą VALP paprastai "
-"pasiekiamas surinkus 150 PT (120 PT protingiems daliniams). Tačiau vėliau "
-"tampa vis sunkiau pasiekti VALP, todėl naudingiau bandyti patobulinti "
-"žemesnio lygio dalinius."
+"Dauguma karių turi tris lygius, bet ne visi. Kai kurie kariai (tokie kaip "
+"<ref>dst='unit_Mage' text='magai'</ref>) gali turėti keturis. Kai karys "
+"pasiekia aukščiausią lygį, jis gali įgyti <italic>text='virš aukščiausio "
+"lygio paaukštinimą'</italic> (VALP). Kiekvieną kartą, kai karys surenka "
+"pakankamai patirties, VALP pakeičia karį, tačiau jo lygis išlieka nepakitęs. "
+"Paprastai VALP poveikis yra maksimalaus GT kiekio pakėlimas 3 punktais ir "
+"pilnas pagydymas. Pirmą kartą VALP paprastai pasiekiamas surinkus 150 PT "
+"(120 PT protingiems kariams). Tačiau vėliau tampa vis sunkiau pasiekti VALP, "
+"todėl labiau verta bandyti patobulinti žemesnio lygio karius."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:261
@@ -1500,15 +1601,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Kiekvienas dalinys turi tam tikrą ėjimų skaičių, kurie išnaudojami pereinant "
-"į naują langelį priklausomai nuo vietovės, kurioje yra konkretus langelis. "
+"Kiekvienas karys turi tam tikrą ėjimų skaičių, kurie išnaudojami pereinant į "
+"naują langelį priklausomai nuo reljefo, kuriame yra konkretus laukelis. "
 "Pavyzdžiui, judant pievoje beveik visuomet išnaudosite vieną ėjimą. Kiek "
-"ėjimų bus išnaudota patenkant ant langelio priklauso ir nuo dalinio tipo – "
-"miške tik elfai išnaudoja 1 ėjimą, dauguma žmonių ir orkų dalinių išnaudoja "
-"2 ėjimus, o raiteliai – 3. Sužinoti, kiek ėjimų reikia daliniui pereinant į "
-"tam tikros rūšies teritoriją, galite užvedę pelės žymeklį ant dalinio ir "
-"paspaudę dešinį pelės klavišą ir pažymėję <bold>text='Dalinio aprašymą'</"
-"bold>, kuriame rasite <italic>text='Vietovių modifikatorius'</italic>."
+"ėjimų bus išnaudota patenkant ant langelio priklauso ir nuo kario tipo – "
+"miške tik elfai išnaudoja 1 ėjimą, dauguma žmonių ir orkų karių išnaudoja 2 "
+"ėjimus, o raiteliai – 3. Sužinoti, kiek ėjimų reikia kariui pereinant į tam "
+"tikros rūšies teritoriją, galite užvedę pelės žymeklį ant kario ir paspaudę "
+"dešinį pelės klavišą ir pasirinkę <bold>text='Kario aprašymą'</bold>, "
+"kuriame rasite <bold>text='Reljefo modifikatorius'</bold>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:262
@@ -1526,33 +1627,22 @@ msgid ""
 "up its movement. Ending a move in a village you don’t already own will also "
 "use up a unit’s movement, but will still allow it to attack."
 msgstr ""
-"Judėjimas <italic>text='Mūšyje dėl Vesnoto'</italic>  yra paprastas. Pelės "
-"paspaudimu pažymėkite dalinį, kuriuo norite atlikti ėjimą. Tada spauskite "
-"ant langelio, į kurį norite pereiti. Kai dalinys pažymėtas, visos vietos, į "
-"kurias galima pereiti bus paryškintos, o visi kiti langeliai žemėlapyje "
-"išblanks. Užslinkus pelės žymekliu ant užtamsinto langelio pamatysite "
-"gynybos lygį, kurį dalinys įgis, jeigu jį ten perkelsite. Pelės žymeklį "
-"užvedę ant išblankusio langelio, pamatysite ėjimų skaičių, reikalingą "
-"langeliui pasiekti ir bandant spausti pelės klavišą ant to langelio, dalinys "
-"paeis greičiausiu maršrutu į nurodyto langelio pusę šiuo ir kitais ėjimais. "
-"Jeigu neišnaudojote visų dalinio ėjimų pirmu kartu, galite paeiti dar kartą. "
-"Tokia galimybė padeda sukeisti dalinius vietomis. Dalinys išnaudoja savo "
-"ėjimą puldamas. Pereidamas į svetimą kaimą, dalinys taip pat išnaudos ėjimą, "
-"tačiau išsaugos galimybę pulti."
+"Judėjimas <italic>text='Mūšyje dėl Vesnoto'</italic> yra paprastas. Pelės "
+"paspaudimu pažymėkite karį, kuriuo norite atlikti ėjimą. Tada spauskite ant "
+"langelio, į kurį norite pereiti. Kai karys pažymėtas, visos vietos, į kurias "
+"galima pereiti bus paryškintos, o visi kiti langeliai žemėlapyje išblanks. "
+"Užslinkus pelės žymekliu ant užtamsinto langelio pamatysite gynybos lygį, "
+"kurį karys įgis, jeigu jį ten perkelsite. Pelės žymeklį užvedę ant "
+"išblankusio langelio, pamatysite ėjimų skaičių, reikalingą langeliui "
+"pasiekti ir bandant spausti pelės klavišą ant to langelio, karys paeis "
+"greičiausiu maršrutu į nurodyto langelio pusę šiuo ir kitais ėjimais. Jeigu "
+"neišnaudojote visų kario ėjimų pirmu kartu, galite paeiti dar kartą. Tokia "
+"galimybė padeda sukeisti karius vietomis. Karys išnaudoja savo ėjimą "
+"puldamas. Pereidamas į svetimą kaimą, karys taip pat išnaudos ėjimą, tačiau "
+"išsaugos galimybę pulti."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:264
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Another thing to keep in mind while moving is <italic>text='zones of "
-#| "control'</italic>. Each unit — except for level 0 units — generates a "
-#| "zone of control in the hexes immediately surrounding it, and any enemy "
-#| "unit entering those hexes immediately ends its movement. Learning how to "
-#| "use zones of control to your advantage is an important part of Wesnoth, "
-#| "as only <ref>dst='ability_skirmisher' text='skirmishers'</ref> can ignore "
-#| "zones of control."
 msgid ""
 "\n"
 "\n"
@@ -1569,7 +1659,7 @@ msgstr ""
 "Dar vienas dalykas, į kurį turėtumėte atkreipti dėmesį atlikdami ėjimą – "
 "<italic>text='kontroliuojamos zonos'</italic>. Kiekvienas karys — išskyrus 0 "
 "lygio karius — turi kontroliuojamą zoną aplinkiniuose langeliuose ir priešų "
-"dalinys įėjęs į tokį langelį užbaigia savo ėjimą. Kontroliuojamų zonų "
+"karys įėjęs į tokį langelį užbaigia savo ėjimą. Kontroliuojamų zonų "
 "panaudojimas savo privalumui yra svarbi Vesnoto dalis, nes tik "
 "<ref>dst='ability_skirmisher' text='peštukai'</ref> gali nepaisyti valdymo "
 "zonų."
@@ -1587,7 +1677,7 @@ msgstr ""
 "\n"
 "Kad pamatytumėte, kur priešas gali judėti pre kitą savo ėjimą, nuspauskite "
 "Ctrl-v arba Cmd-v. Ctrl-b arba Cmd-b parodo, kur priešas gali judėti, jei "
-"jūsų dalinių nebūtų žemėlapyje ir jie netrukdytų judėti."
+"jūsų karių nebūtų žemėlapyje ir jie netrukdytų judėti."
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:275
@@ -1620,24 +1710,24 @@ msgid ""
 msgstr ""
 "Kai kuriose užduotyse dalis žemėlapio bus paslėpta nuo jūsų. Yra du "
 "paslėpimo būdai, kurie gali būti naudojami atskirai arba kartu. "
-"<italic>text='Uždanga'</italic> paslepia ir vietovę, ir dalinius. Tačiau "
+"<italic>text='Uždanga'</italic> paslepia ir reljefą, ir karius. Tačiau "
 "praskleidus uždangą, jūs visuomet galite matyti tą vietovę. "
-"<italic>text='Karo rūkas'</italic> paslepia tik dalinius ir kaimo "
-"priklausomybę (tik priešų). Karo rūkas laikinai prasisklaido, jei netoliese "
-"turite savo dalinių, tačiau jiems nuėjus vėl apgaubia vietovę. Tiek uždanga, "
-"tiek ir karo rūkas išsklaidomi dalinių pagalba. Kiekvienas dalinys išsklaido "
-"teritoriją pasiekiamą vienu ėjimu (neskaitant kontroliuojamų zonų ir priešo "
-"dalinių).\n"
+"<italic>text='Karo rūkas'</italic> paslepia tik karius ir kaimo "
+"priklausomybę (išskyrus jūsų ir jūsų sąjungininkų). Karo rūkas laikinai "
+"prasisklaido, jei netoliese turite savo karių, tačiau jiems nuėjus vėl "
+"apgaubia vietovę. Tiek uždanga, tiek ir karo rūkas išsklaidomi karių "
+"pagalba. Kiekvienas karys išsklaido teritoriją pasiekiamą vienu ėjimu "
+"(neskaitant kontroliuojamų zonų ir priešo karių).\n"
 "\n"
-"Paprastai dalinio ėjimą galima atšaukti, jeigu nebuvo atliktas veiksmas, "
+"Paprastai kario ėjimą galima atšaukti, jeigu nebuvo atliktas veiksmas, "
 "priklausantis nuo atsitiktinumų, pavyzdžiui, grumtynių ar samdymo (nes "
 "dauguma samdomų karių įgauna atsitiktinius bruožus). Žvalgantis paslėptose "
 "teritorijose uždangos atskleidimas arba karo rūko prasklaidymas riboja "
 "atstatymus į pradinę būseną. Tokiu atveju galima aktyvuoti "
 "<bold>text='uždangos atsinaujinimo vėlinimą'</bold>, kuris yra veiksmų "
-"meniu. Atlikus tokį veiksmą, daliniai neišsklaidys uždangos ar karo rūko iki "
+"meniu. Atlikus tokį veiksmą, kariai neišsklaidys uždangos ar karo rūko iki "
 "kito atsitiktinio įvykio arba rankinio atnaujinimo per "
-"<bold>text='Atnaujinti uždangą'</bold> (arba tavo ėjimo pabaigos) ir dėl to "
+"<bold>text='Atnaujinti uždangą'</bold> (arba jūsų ėjimo pabaigos) ir dėl to "
 "bus užtikrinta galimybė atšaukti ėjimą."
 
 #. [topic]: id=combat
@@ -1670,19 +1760,18 @@ msgid ""
 "as swords, axes or fangs; and <italic>text='ranged'</italic>, which usually "
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
-"Grumtynės tarp dalinių <italic>text='Mūšyje dėl Vesnoto'</italic> visuomet "
-"vyksta gretimuose laukeliuose. Paspauskite ant savo dalinio ir priešo, kurį "
-"norite pulti: jūsų dalinys paeis link priešo ir kai jie stovės greta, "
-"prasidės grumtynės. Atakuojanti ir besiginanti figūros pasikeisdamos "
-"smūgiuos tol, kol išnaudos leidžiamą savo smūgių skaičių. Puolantysis atakai "
-"pasirenka vieną iš savo ginklų o ginantysis atsako su tokios pat rūšies "
-"ginklu. Yra dviejų rūšių puolimai: <italic>text='fechtavimasis'</italic>, "
-"kur naudojami kalvijai, kirviai ar iltys arba <italic>text='šaudymas'</"
-"italic>, kur naudojami tokie ginklai, kaip lankai, ietys ir ugnies kamuoliai."
+"Grumtynės tarp karių <italic>text='Mūšyje dėl Vesnoto'</italic> visuomet "
+"vyksta gretimuose laukeliuose. Paspauskite ant savo kario ir priešo, kurį "
+"norite pulti: jūsų karys paeis link priešo ir kai jie stovės greta, prasidės "
+"grumtynės. Puolėjas ir gynėjas pasikeisdami smūgiuos tol, kol išnaudos "
+"leidžiamą savo smūgių skaičių. Puolantysis atakai pasirenka vieną iš savo "
+"ginklų o ginantysis atsako tokios pat rūšies ginklu. Yra dviejų rūšių "
+"puolimai: <italic>text='fechtavimasis'</italic>, kur naudojami kalvijai, "
+"kirviai ar iltys arba <italic>text='šaudymas'</italic>, kur naudojami tokie "
+"ginklai, kaip lankai, ietys ir ugnies kamuoliai."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:288
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1698,11 +1787,12 @@ msgstr ""
 "\n"
 "Puolantysis smūgiuoja pirmas, tuomet atsako besiginantis. Kiekvienas smūgis "
 "kuris pasiekia tikslą padaro atitinkamą žalą priešininkui, jeigu nepataikoma "
-"– žala nepadaroma. Smūgiuojama pakaitomis kol išnaudojami visi dalinio "
-"smūgiai. Smūgių skaičius priklauso nuo dalinio; pavyzdžiui, elfas "
-"atakuodamas 5–4 stiprumu gali smūgiuoti 4 kartus, ir kiekvieną kartą sėkmės "
-"atveju padaroma 5 taškų žala, kai tuo tarpu orkų pėstininkas atakuodamas 9–2 "
-"stiprumu tegali smūgiuoti 2 kartus (tačiau žala siekia 9 taškus)."
+"– žala nepadaroma. Smūgiuojama pakaitomis kol išnaudojami visi kario "
+"smūgiai. Smūgių skaičius priklauso nuo kario; pavyzdžiui, elfas atakuodamas "
+"5×4 stiprumu gali smūgiuoti 4 kartus, ir kiekvieną kartą sėkmės atveju "
+"padaroma 5 taškų žala, kai tuo tarpu orkų pėstininkas atakuodamas 9×2 "
+"stiprumu tegali smūgiuoti 2 kartus (tačiau kiekvieno smūgio žala siekia 9 "
+"taškus)."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:290
@@ -1713,7 +1803,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Tikimybė pataikyti'</header>"
+"<header>text='Šansas pataikyti'</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:292
@@ -1730,13 +1820,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Kiekvienas dalinys gali būti sužeistas priklausomai nuo to, kokioje "
-"<italic>text='vietovėje'</italic> jis stovi. Tai parodyta būsenos lange ir "
-"taip pat randama <italic>text='Vietovių modifikatoriuose'</italic>, ant "
-"dalinio paspaudus dešinį pelės klavišą ir išrinkus <bold>text='Dalinio "
-"aprašymas'</bold>. Pavyzdžiui, dauguma elfų turi 70% atsparumą miške, taigi "
-"užpuolikas turi tik 30% tikimybę pataikyti. Atitinkamai, tikimybė elfui "
-"pataikyti į užpuoliką priklauso nuo vietovės, kurioje stovi užpuolikas."
+"Kiekvienas karys gali būti sužeistas priklausomai nuo to, kokiame "
+"<italic>text='reljefe'</italic> jis stovi. Tai parodyta būsenos lange ir "
+"taip pat randama <italic>text='Reljefo modifikatoriuose'</italic>, ant kario "
+"paspaudus dešinį pelės klavišą ir išrinkus <bold>text='Kario aprašymas'</"
+"bold>. Pavyzdžiui, dauguma elfų turi 70% atsparumą miške, taigi užpuolikas "
+"turi tik 30% tikimybę pataikyti. Atitinkamai, tikimybė elfui pataikyti į "
+"užpuoliką priklauso nuo reljefo, kuriame stovi užpuolikas."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:294
@@ -1754,8 +1844,8 @@ msgstr ""
 "Yra dvi šios taisyklės išimtys: <ref>dst='weaponspecial_magical' "
 "text='magiškos atakos'</ref> ir <ref>dst='weaponspecial_marksman' "
 "text='snaiperiai'</ref>. Magiškos atakos visada turi 70% tikimybę pataikyti, "
-"nepriklausomai nuo vietovės, snaiperiai puldami turi bent 60% tikimybę "
-"pataikyti, nepriklausomai nuo vietovės."
+"nepriklausomai nuo reljefo, snaiperiai puldami turi bent 60% tikimybę "
+"pataikyti, nepriklausomai nuo reljefo."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:296
@@ -1770,7 +1860,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:298
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1786,10 +1875,10 @@ msgstr ""
 "\n"
 "Kiekvienas sėkmingas smūgis padaro priskirto dydžio bazinę žalą, "
 "priklausomai nuo puolimo rūšies. Pavyzdžiui, elfų kovotojo padaroma bazinė "
-"žala, naudojant 5–4 ataką, yra 5 taškai. Ji paprastai yra keičiama dviem "
+"žala, naudojant 5×4 ataką, yra 5 taškai. Ji paprastai yra keičiama dviem "
 "parametrais: <ref>dst='damage_types_and_resistance' text='atsparumu'</ref> "
-"ir <ref>dst='time_of_day' text='dienos laiku'</ref>. Tam, kad pamatyti, kaip "
-"aplinkybės keičia žalos dydį, puolimo išrinkimo meniu pasirinkite "
+"ir <ref>dst='time_of_day' text='dienos laiku'</ref>. Tam, kad pamatytumėte, "
+"kaip aplinkybės keičia žalos dydį, puolimo pasirinkimo meniu pasirinkite "
 "<bold>text='Žalos skaičiavimai'</bold>."
 
 #. [topic]: id=combat
@@ -1805,11 +1894,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Keletas dalinių turi ypatingų <ref>dst='..abilities_section' "
-"text='gebėjimų'</ref>, kurie turi įtakos kovoje daromai žalai. Dažniausiai "
-"sutinkamas iš tokių gebėjimų yra <ref>dst='weaponspecial_charge' "
-"text='įkrova'</ref>, kai naudojant įkrovą tiek puolančiojo, tiek "
-"besiginančio padaroma žala padvigubėja."
+"Keletas karių turi ypatingų <ref>dst='..abilities_section' text='gebėjimų'</"
+"ref>, kurie įtakoja kovoje daromą žalą. Dažniausiai sutinkamas iš tokių "
+"gebėjimų yra <ref>dst='weaponspecial_charge' text='įkrova'</ref>, kuris "
+"padvigubina tiek puolančiojo, tiek besiginančio padaromą žalą."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:308
@@ -1829,11 +1917,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Atsparumai veikia labai paprastai: jei dalinys turi 40% atsparumą prieš tam "
+"Atsparumai veikia labai paprastai: jei karys turi 40% atsparumą prieš tam "
 "tikrą žalos rūšį, jis nukentės 40% mažiau kai patirs tos rūšies žalą. Taip "
-"pat yra galimybė, kad dalinys yra pažeidžiamas tam tikriems žalų tipams. "
-"Jeigu dalinio atsparumas yra  −100% tam tikrai žalos rūšiai, jis nukentės "
-"dvigubai (100% labiau), kai patirs tos rūšies žalą."
+"pat yra galimybė, kad karys yra pažeidžiamas tam tikriems žalų tipams. Jeigu "
+"kario atsparumas yra −100% tam tikrai žalos rūšiai, jis nukentės dvigubai "
+"(100% labiau), kai patirs tos rūšies žalą."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:309
@@ -1845,11 +1933,11 @@ msgid ""
 "italic>. Different units may have resistances which alter the damage which "
 "they take from certain damage types."
 msgstr ""
-"Vesnote naudojami trys fizinės žalos rūšys: <italic>text='kirtimo, dūrio ir "
-"smūgio'</italic>. Apart to yra trys žalų, paprastai siejamų su magiškomis "
-"atakomis, rūšys: <italic>text='ugnies, šalčio ir paslaptingos'</italic>. "
-"Įvairūs daliniai gali turėti atsparumus, keičiančius patiriamą atitinkamos "
-"rūšies žalą."
+"Vesnote paprastai naudojamos trys fizinės žalos rūšys: "
+"<italic>text='kirtimo, dūrio ir smūgio'</italic>. Apart to yra trys žalų, "
+"paprastai siejamų su magiškomis atakomis, rūšys: <italic>text='ugnies, "
+"šalčio ir paslaptingos'</italic>. Įvairūs kariai gali turėti atsparumus, "
+"keičiančius patiriamą atitinkamos rūšies žalą."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:311
@@ -1890,7 +1978,7 @@ msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
 msgstr ""
-"Virš energijos juostos, rodomos šalia jūsų dalinių, yra rutulys. Daliniams, "
+"Virš energijos juostos, rodomos šalia jūsų karių, yra rutulys. Kariams, "
 "kuriuos jūs kontroliuojate, šis rutulys yra:"
 
 #. [topic]: id=orbs
@@ -1908,26 +1996,26 @@ msgstr " geltonas, jei judėjo, bet dar gali toliau judėti ar pulti arba"
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
+" raudonas, jei jis daugiau negali nei judėti, nei pulti, arba žaidėjas baigė "
+"kario ėjimą."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:327
 msgid " blue if the unit is an ally you do not control."
-msgstr " mėlynas, jei dalinys yra draugas, kurio jūs nevaldote."
+msgstr " mėlynas, jei karys yra draugas, kurio jūs nevaldote."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:328
-#, fuzzy
 msgid " Enemy units have no orb on top of their energy bar."
-msgstr " Priešo kariai turi raudoną rutulį virš jų energijos juostos."
+msgstr " Priešo kariai neturi rutulio virš jų energijos juostos."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:335
 msgid "Time of Day"
-msgstr "Dienos laikas"
+msgstr "Paros laikas"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:336
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 "\n"
@@ -1939,17 +2027,19 @@ msgid ""
 "• <bold>text='Liminal'</bold> units get −25% damage during both night and "
 "daytime."
 msgstr ""
-"Dienos laikas turi įtakos tam tikrų dalinių žalos dydžiui:\n"
-"Šviesos daliniai dienos metu daro +25% daugiau žalos, o nakties metu daro "
-"−25% mažiau žalos.\n"
-"Chaotiški daliniai nakties metu daro +25% daugiau žalos, o dienos metu daro "
-"−25% mažiau žalos.\n"
-"Prieblandos daliniai prieblandos metu daro +25% daugiau žalos.\n"
-"Neutralių dalinių daroma žala nepriklauso nuo dienos laiko."
+"Paros laikas turi įtakos tam tikrų karių žalos dydžiui:\n"
+"\n"
+"• <bold>text='Šviesos'</bold> kariai dienos metu daro +25% daugiau žalos, o "
+"nakties metu daro −25% mažiau žalos.\n"
+"• <bold>text='Chaotiški'</bold> kariai nakties metu daro +25% daugiau žalos, "
+"o dienos metu daro −25% mažiau žalos.\n"
+"• <bold>text='Neutralių'</bold> karių daroma žala nepriklauso nuo paros "
+"laiko.\n"
+"• <bold>text='Prieblandos'</bold> kariai dienos ir nakties metu daro −25% "
+"mažiau žalos."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:341
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1960,9 +2050,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Dabartinis dienos laikas matomas po mažu žemėlapiu esančiame būsenos "
+"Dabartinis paros laikas matomas po mažu žemėlapiu esančiame būsenos "
 "langelyje. Įprastame dienos/nakties cikle, rytas ir popietė yra diena, "
 "pirmoji ir antroji sargyba – naktis:\n"
+"\n"
 
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
@@ -2010,13 +2101,12 @@ msgstr "Antroji sargyba"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:352
-#, fuzzy
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!\n"
 msgstr ""
 "Turėkite omeny, kad kai kurie scenarijai vyksta požemyje, kur nuolat yra "
-"naktis!"
+"naktis!\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:354
@@ -2024,6 +2114,8 @@ msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night.\n"
 msgstr ""
+"Kai kurios požeminės vietovės yra apšviestos. Jos visada yra tarpinės tarp "
+"dienos ir nakties.\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:356
@@ -2031,6 +2123,8 @@ msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate.\n"
 msgstr ""
+"Kai kurie vaidmenų žaidimo scenarijai vyksta patalpose – šios vietovės taip "
+"pat tarpinės.\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:358
@@ -2048,7 +2142,6 @@ msgstr "Gydymas"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:366
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2057,7 +2150,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<italic>text='Poilsis'</italic>: dalinys, kuris nei juda, nei puola, nei yra "
+"• <bold>text='Poilsis'</bold>: karys, kuris nejuda, nepuola ir nėra "
 "puolamas, kitą ėjimą pagis 2 GT."
 
 #. [topic]: id=healing
@@ -2070,7 +2163,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:368
-#, fuzzy
 msgid ""
 "\n"
 "• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
@@ -2078,11 +2170,12 @@ msgid ""
 "poisoned, the poison will be cured instead."
 msgstr ""
 "\n"
-"<italic>text='Kaimai'</italic>: dalinys, pradedantis ėjimą kaime, pagis 8 GT."
+"<bold>text='Kaimai'</bold>: karys, pradedantis ėjimą kaime arba "
+"<ref>dst='terrain_oasis' text='oazėje'</ref>, pagis 8 GT. Jei karys "
+"apnuodytas, vietoj to nuodai bus pašalinti."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:369
-#, fuzzy
 msgid ""
 "\n"
 "• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
@@ -2090,12 +2183,12 @@ msgid ""
 "the unit is poisoned, the poison will be cured instead."
 msgstr ""
 "\n"
-"<ref>dst='ability_regenerates' text='Regeneruoja'</ref>: Kai kurie daliniai "
-"(pavyzdžiui, troliai) kiekvieną ėjimą savaime pasigydys 8 GT."
+"<ref>dst='ability_regeneratesregenerates' text='Regeneruoja'</ref>: Kai "
+"kurie kariai (pavyzdžiui, troliai) kiekvieną ėjimą savaime pasigydys 8 GT. "
+"Jei karys apnuodytas, vietoj to nuodai bus pašalinti."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:370
-#, fuzzy
 msgid ""
 "\n"
 "• <bold>text='Healing units'</bold>: Units with the "
@@ -2105,15 +2198,14 @@ msgid ""
 "prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"<italic>text='Gydantys daliniai'</italic>: daliniai, turintys gebėjimą "
-"<ref>dst='ability_heals +4' text='Gydo'</ref>, gydys kiekvieną greta esantį "
-"draugišką dalinį, paprastai <ref>dst='ability_heals +4' text='4 GT'</ref> "
-"arba  <ref>dst='ability_heals +8' text='8 GT'</ref> per ėjimą, arba "
-"neutralizuoja nuodų poveikį daliniui."
+"• <bold>text='Gydantys kariai'</bold>: kariai, turintys gebėjimą "
+"<ref>dst='ability_healingheals +4' text='Gydo'</ref>, gydys kiekvieną greta "
+"esantį draugišką karį, paprastai <ref>dst='ability_healingheals +4' text='4 "
+"GT'</ref> arba  <ref>dst='ability_healingheals +8' text='8 GT'</ref> per "
+"ėjimą, arba neutralizuoja nuodų poveikį kariui."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:371
-#, fuzzy
 msgid ""
 "\n"
 "• <bold>text='Curing units'</bold>: Units with the "
@@ -2122,9 +2214,10 @@ msgid ""
 "ability as well)."
 msgstr ""
 "\n"
-"<italic>text='Atnuodijantys daliniai'</italic>: daliniai, turintys "
-"<ref>dst='ability_cures' text='atnuodijimo'</ref> galių, atnuodys greta "
-"esančius apnuodytus dalinius (vietoj gydymo, jei jis turi ir tą gebėjimą)."
+"• <bold>text='Atnuodijantys kariai'</bold>: kariai, turintys "
+"<ref>dst='ability_curingcures' text='atnuodijimo'</ref> galių, atnuodys "
+"greta esančius apnuodytus karius (vietoj gydymo, jei jis turi ir tą "
+"gebėjimą)."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:372
@@ -2134,6 +2227,10 @@ msgid ""
 "text='advances'</ref>, it will heal fully. This can happen as soon as your "
 "unit gains enough experience, whether it is your turn or not."
 msgstr ""
+"\n"
+"• <bold>text='Tobulėjimas'</bold>: karys <ref>dst='advancement' "
+"text='patobulėdamas'</ref> pilnai pagyja. Tai atsitinka tuoj pat, kai karys "
+"gauna pakankamai patirties, nesvarbu ar tai jūsų ėjimas ar ne."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:373
@@ -2146,9 +2243,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Poilsis gali būti detinamas su kitomis gydymo formomis, tačiau kaimai, "
+"Poilsis gali būti derinamas su kitomis gydymo formomis, tačiau kaimai, "
 "regeneravimas ir gydymas negali būti naudojami tuo pačiu metu: bus "
-"naudojamas tik tuo metu geriausias variantas. Galiausiai, daliniai pilnai "
+"naudojamas tik tuo metu geriausias variantas. Galiausiai, kariai pilnai "
 "pasveiksta pereidami iš vieno scenarijaus į kitą."
 
 #. [topic]: id=healing
@@ -2158,6 +2255,9 @@ msgid ""
 "\n"
 "<bold>text='Advanced'</bold>"
 msgstr ""
+"\n"
+"\n"
+"<bold>text='Pažengusiems'</bold>"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:377
@@ -2170,6 +2270,13 @@ msgid ""
 "from one healer per turn, a unit surrounded by healers from several allied "
 "sides will be healed once on each of said allied sides’ turns."
 msgstr ""
+"\n"
+"\n"
+"Priešingai, nei kitos gydymo formos, gydymo gebėjimas veiks ne per gydomo "
+"kario ėjimą, bet per gydytojo ėjimą. Tai reiškia, kad karys apsuptas vienos "
+"pusės gydytojų bus gydomas vieno gydytojo per ėjimą, bet karys apsuptas "
+"kelių skirtingų sąjungininkų gydytojų bus pagydytas per kiekvieno iš "
+"sąjungininkų ėjimą."
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:385
@@ -2198,7 +2305,6 @@ msgstr "Licencija"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:400
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2207,11 +2313,12 @@ msgid ""
 "and in some cases <italic>text='fearless'</italic>, and woses do not receive "
 "any traits. "
 msgstr ""
-"Dauguma dalinių turi du bruožus. Tačiau nemirėlių daliniams priskirtas "
-"vienintelis bruožas <italic>text='nemirėlis'</italic>, o miškiniai neturi "
-"jokių bruožų. Bruožai yra pakeitimai, kurie šiek tiek pakeičia dalinio "
-"atributus. Jie paprastai atsitiktinai priskiriami daliniui, kai jis yra "
-"pasamdomas."
+"\n"
+"\n"
+"Dauguma karių turi du bruožus. Tačiau goblinai turi tik vieną bruožą, "
+"nemirėlių kariams priskirtas vienintelis bruožas <italic>text='nemirėlis'</"
+"italic>, ir kai kuriais atvejais<italic>text='bebaimis'</italic>, o "
+"miškiniai neturi jokių bruožų. "
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:400
@@ -2224,7 +2331,6 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:402
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2235,10 +2341,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Bruožai galimi visiems ne-nemirėliams daliniams yra "
-"<ref>dst='traits_intelligent' text='protingas'</ref>, "
-"<ref>dst='traits_quick' text='greitas'</ref>, <ref>dst='traits_resilient' "
-"text='gyvybingas'</ref> ir <ref>dst='traits_strong' text='stiprus'</ref>."
+"Bruožai galimi daugumai ne-nemirėlių karių yra <ref>dst='traits_intelligent' "
+"text='protingas'</ref>, <ref>dst='traits_quick' text='greitas'</ref>, "
+"<ref>dst='traits_resilient' text='gyvybingas'</ref> ir "
+"<ref>dst='traits_strong' text='stiprus'</ref>."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:404
@@ -2262,21 +2368,22 @@ msgid ""
 "Terrains come in two types: <italic>text='basic'</italic> and "
 "<italic>text='mixed'</italic>."
 msgstr ""
+"\n"
+"\n"
+"Yra dviejų tipų reljefai: <italic>text='baziniai'</italic> ir "
+"<italic>text='maišyti'</italic>."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:414
-#, fuzzy
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
 msgstr ""
-"Žaidimo žemėlapiuose yra įvairių vietovių, kuriuos veikia ir dalinių "
-"judėjimą, ir dalinių gynybinius sugebėjimus mūšyje.\n"
-"\n"
+"Žaidimo žemėlapiuose yra įvairių reljefų, kurie veikia ir karių judėjimą, ir "
+"karių gynybinius sugebėjimus mūšyje."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:416
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2284,7 +2391,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Kūrėjo resursai'</header>"
+"<header>text='Pagrindiniai reljefo tipai'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:418
@@ -2309,7 +2416,6 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:424
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2317,7 +2423,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Kūrėjo resursai'</header>"
+"<header>text='Mišrūs reljefo tipai'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:426
@@ -2393,7 +2499,6 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:446
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2401,7 +2506,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Kūrėjo resursai'</header>"
+"<header>text='Gynybos lubos'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:448
@@ -2435,7 +2540,6 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:454
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2444,7 +2548,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Kūrėjo resursai'</header>"
+"<header>text='Pagrindiniai reljefų tipai'</header>\n"
+"\n"
 
 #. [topic]: id=..addons
 #: data/core/help.cfg:467
@@ -2491,12 +2596,15 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:482
-#, fuzzy
 msgid ""
 "\n"
 "\n"
 "<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
-msgstr "<header>text='Daliniai turintys šią specialią ataką'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Daugelio žaidėjų kampanijos, scenarijai ir žemėlapių "
+"rinkiniai'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:484
@@ -2510,7 +2618,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:486
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2518,7 +2625,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Smūgių tvarka ir skaičius'</header>"
+"<header>text='Daug žaidėjų žaidimo eros ir frakcijos'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:488
@@ -2546,7 +2653,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:494
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2554,7 +2660,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Smūgių tvarka ir skaičius'</header>"
+"<header>text='Pakeitimai'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:496
@@ -2568,11 +2674,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:498
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -2580,7 +2681,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Kūrėjo resursai'</header>"
+"<header>text='Branduoliai'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:500
@@ -2811,7 +2912,7 @@ msgstr ""
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:589
 msgid "Multiplayer Commands"
-msgstr "Daugelio žaidėjų žaidimo komandos"
+msgstr "Daug žaidėjų žaidimo komandos"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:592
@@ -2942,7 +3043,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Sukuria nurodyto tipo dalinį nurodytame laukelyje.\n"
+"Sukuria nurodyto tipo karį nurodytame laukelyje.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3020,8 +3121,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Pakeičia nurodytą pasirinkto dalinio ypatybę. Pavyzdžiui: :unit "
-"hitpoints=100\n"
+"Pakeičia nurodytą pasirinkto kario ypatybę. Pavyzdžiui: :unit hitpoints=100\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3031,11 +3131,10 @@ msgid ""
 "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
 "\n"
-"Pažymėtą dalinį paaukština N kartų. Pavyzdžiui: :unit advances=2"
+"Pažymėtą karį paaukština N kartų. Pavyzdžiui: :unit advances=2"
 
 #. [heals]: id=healing
 #: data/core/macros/abilities.cfg:12
-#, fuzzy
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -3044,16 +3143,14 @@ msgid ""
 "This ability will not cure an affected unit of poison, however, only delay "
 "its effect."
 msgstr ""
-"Leidžia daliniui pagydyti gretimus draugiškus karius mūsų ėjimo pradžioje.\n"
+"Leidžia kariui pagydyti gretimus draugiškus karius mūsų ėjimo pradžioje.\n"
 "\n"
-"Gydomasis dalinys gali pagyti ne daugiau, nei 4 GT per ėjimą, arba tą ėjimą "
+"Gydomasis karys gali pagyti ne daugiau, nei 4 GT per ėjimą, arba tą ėjimą "
 "išvengti nuodų poveikio.\n"
-"Šis gydytojas negali išgydyti nuo nuodų. Apnuodytasis dalinys turi ieškoti "
-"pagalbos kaime arba pas dalinį, kuris gali atnuodyti."
+"Šis gebėjimas negali išgydyti kario nuo nuodų – tik nutolinti jų poveikį."
 
 #. [heals]: id=healing
 #: data/core/macros/abilities.cfg:30
-#, fuzzy
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -3063,14 +3160,12 @@ msgid ""
 "This ability will not cure an affected unit of poison, however, only delay "
 "its effect."
 msgstr ""
-"Gydo +8:\n"
-"Šis dalinys apjungia vaistažoles su magija ir gydo dalinius greičiau, nei "
+"Šis karys apjungia vaistažoles su magija ir gydo karius greičiau, nei "
 "įprasta mūšio lauke.\n"
 "\n"
-"Gydomasis dalinys gali pagyti ne daugiau, nei 8 GT per ėjimą, arba tą ėjimą "
+"Gydomasis karys gali pagyti ne daugiau, nei 8 GT per ėjimą, arba tą ėjimą "
 "išvengti nuodų poveikio.\n"
-"Šis gydytojas negali išgydyti nuo nuodų. Apnuodytasis dalinys turi ieškoti "
-"pagalbos kaime arba pas dalinį, kuris gali atnuodyti."
+"Šis gebėjimas negali išgydyti kario nuo nuodų – tik nutolinti jų poveikį."
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:47
@@ -3084,14 +3179,12 @@ msgstr "atnuodija"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:49
-#, fuzzy
 msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
-"Atnuodija:\n"
-"Atnuodytojas gali iš dalinio pašalinti nuodus, tačiau tas dalinys nebegaus "
-"jokio papildomo gydymo tą ėjimą, kai jis buvo atnuodytas."
+"Atnuodytojas gali karį pagydyti nuo nuodų, tačiau tas karys nebegaus jokio "
+"papildomo gydymo tą ėjimą, kai jis buvo atnuodytas."
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:70
@@ -3105,13 +3198,11 @@ msgstr "regeneruoja"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:72
-#, fuzzy
 msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"Regeneruoja:\n"
-"Dalinys gydysis 8 GT per ėjimą. Jei jis yra apnuodytas, tai vietoj gydymosi "
+"Karys gydysis 8 GT per ėjimą. Jei jis yra apnuodytas, tai vietoj gydymosi "
 "pasišalins nuodus."
 
 #. [resistance]: id=steadfast
@@ -3126,13 +3217,11 @@ msgstr "atspari"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:93
-#, fuzzy
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
-"Atsparus:\n"
-"Šio dalinio atsparumai yra padvigubinami, iki didžiausių įmanomų 50%, kai "
+"Šio kario atsparumai yra padvigubinami, iki didžiausių įmanomų 50%, kai "
 "ginamasi. Pažeidžiamumai nepaveikiami."
 
 #. [leadership]: id=leadership
@@ -3173,7 +3262,7 @@ msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
-"Šis dalinys gali greitai judėti tarp priešų ir nepaiso visų priešo "
+"Šis karys gali greitai judėti tarp priešų ir nepaiso visų priešo "
 "kontroliuojamų zonų."
 
 #. [illuminates]: id=illumination
@@ -3208,13 +3297,11 @@ msgstr "teleportavimas"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:156
-#, fuzzy
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
-"Teleportavimas:\n"
-"Šis dalinys gali teleportuotis tarp bet kokių dviejų jo pusės kaimų, "
+"Šis karys gali teleportuotis tarp bet kokių dviejų jo pusės kaimų, "
 "naudodamas vieną iš savo judėjimų."
 
 #. [hides]: id=ambush
@@ -3229,7 +3316,6 @@ msgstr "pasalūnė"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:187
-#, fuzzy
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -3237,13 +3323,11 @@ msgid ""
 "units next to it. Any enemy unit that first discovers this unit immediately "
 "loses all its remaining movement."
 msgstr ""
-"Slėpimasis:\n"
-"Šis dalinys gali slėptis kaimuose (išskyrus vandens kaimuose), ir likti "
-"neaptiktu savo priešų, išskyrus tų, kurie stovi greta jo.\n"
+"Šis karys gali slėptis miške, ir likti neaptiktu savo priešų.\n"
 "\n"
-"Priešo daliniai negali matyti šio dalinio, kol jis yra kaime, išskyrus tik "
-"jei jie turi dalinių šalia jo. Bet kuris priešo dalinys, kuris pirmas "
-"aptinka šį dalinį iš karto praranda likusį judėjimą."
+"Priešo kariai negali matyti šio kario, kol jis yra miške, išskyrus tik jei "
+"jie turi karių šalia jo. Bet kuris priešo karys, kuris pirmas aptinka šį "
+"karį iš karto praranda likusį judėjimą."
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:204 data/core/macros/abilities.cfg:205
@@ -3252,7 +3336,6 @@ msgstr "naktinis seklys"
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:206
-#, fuzzy
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -3260,12 +3343,11 @@ msgid ""
 "it. Any enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
-"Naktinis seklys:\n"
-"Naktimis dalinys pasidaro nematomas.\n"
+"Naktimis karys pasidaro nematomas.\n"
 "\n"
-"Priešo daliniai negali matyti šio dalinio naktimis, nebent jeigu jie turi "
-"dalinių prie jūsų dalinių. Kai jūsų dalinį pamato priešo dalinys, tas "
-"dalinys iš karto praranda visą likusį savo judėjimą."
+"Priešo kariai negali matyti šio kario naktimis, nebent jeigu jie turi karių "
+"prie šio kario. Bet kuris priešo karys, kuris pirmasis aptinka šį karį, iš "
+"karto praranda visą likusį savo judėjimą."
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:223
@@ -3279,7 +3361,6 @@ msgstr "slėpimasis"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:225
-#, fuzzy
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it.\n"
@@ -3288,13 +3369,12 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Slėpimasis:\n"
-"Šis dalinys gali slėptis kaimuose (išskyrus vandens kaimuose), ir likti "
+"Šis karys gali slėptis kaimuose (išskyrus vandens kaimuose), ir likti "
 "neaptiktu savo priešų, išskyrus tų, kurie stovi greta jo.\n"
 "\n"
-"Priešo daliniai negali matyti šio dalinio, kol jis yra kaime, išskyrus tik "
-"jei jie turi dalinių šalia jo. Bet kuris priešo dalinys, kuris pirmas "
-"aptinka šį dalinį iš karto praranda likusį judėjimą."
+"Priešo kariai negali matyti šio kario, kol jis yra kaime, išskyrus tik jei "
+"jie turi karių šalia jo. Bet kuris priešo karys, kuris pirmasis aptinka šį "
+"karį, iš karto praranda visą likusį savo judėjimą."
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:242
@@ -3308,7 +3388,6 @@ msgstr "nardymas"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:244
-#, fuzzy
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -3316,13 +3395,11 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Slėpimasis:\n"
-"Šis dalinys gali slėptis kaimuose (išskyrus vandens kaimuose), ir likti "
-"neaptiktu savo priešų, išskyrus tų, kurie stovi greta jo.\n"
+"Šis karys gali slėptis giliame vandenyje, ir likti neaptiktu savo priešų.\n"
 "\n"
-"Priešo daliniai negali matyti šio dalinio, kol jis yra kaime, išskyrus tik "
-"jei jie turi dalinių šalia jo. Bet kuris priešo dalinys, kuris pirmas "
-"aptinka šį dalinį iš karto praranda likusį judėjimą."
+"Priešo kariai negali matyti šio kario, kol jis yra giliame vandenyje, "
+"išskyrus tik jei jie turi karių šalia jo. Bet kuris priešo karys, kuris "
+"pirmas aptinka šį karį iš karto praranda likusį judėjimą."
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:261
@@ -3336,13 +3413,12 @@ msgstr "maitinasi"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:263
-#, fuzzy
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
 msgstr ""
-"Šis dalinys gauna 1 gyvybės tašką pridėtą prie jo maksimalaus, kai jis "
-"nužudo gyvą dalinį."
+"Šis karys 1 gyvybės tašku pasididina maksimalų gyvybės taškų skaičių, kai "
+"jis nužudo karį, išskyrus tuos, kurie yra atsparūs marui."
 
 #. [berserk]: id=berserk
 #: data/core/macros/abilities.cfg:274
@@ -3351,12 +3427,10 @@ msgstr "berserkas"
 
 #. [berserk]: id=berserk
 #: data/core/macros/abilities.cfg:275
-#, fuzzy
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Berserkas:\n"
 "Ar naudojama puolant, ar ginantis, ši ataka išlaiko priešininką kovoje iki "
 "pat vieno iš besikaunančiųjų mirties, arba trisdešimt atakos raundų."
 
@@ -3381,29 +3455,25 @@ msgstr "maras"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/abilities.cfg:305
-#, fuzzy
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "on the same side as the unit with the Plague attack. This doesn’t work on "
 "Undead or units in villages."
 msgstr ""
-"Maras:\n"
-"Kai dalinys nužudomas maro ataka, tas dalinys pakeičiamas vaikščiojančiu "
-"lavonu toje pačioje pusėje kaip ir dalinys su maro ataka. Tai neveikia su "
-"nemirėliais arba kaime esančiais daliniais."
+"Kai karys nužudomas maro ataka, tas karys pakeičiamas kariu toje pačioje "
+"pusėje kaip ir karys su maro ataka. Tai neveikia su nemirėliais arba kaime "
+"esančiais kariais."
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:316
-#, fuzzy
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
-"Maras:\n"
-"Kai dalinys nužudomas maro ataka, tas dalinys pakeičiamas vaikščiojančiu "
-"lavonu toje pačioje pusėje kaip ir dalinys su maro ataka. Tai neveikia su "
-"nemirėliais arba kaime esančiais daliniais."
+"Kai karys nužudomas maro ataka, tas karys pakeičiamas vaikščiojančiu lavonu "
+"toje pačioje pusėje kaip ir karys su maro ataka. Tai neveikia su nemirėliais "
+"arba kaime esančiais kariais."
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:326
@@ -3412,17 +3482,15 @@ msgstr "sulėtina"
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:327
-#, fuzzy
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
 "that is slowed will feature a snail icon in its sidebar information when it "
 "is selected."
 msgstr ""
-"Sulėtina:\n"
 "Ši ataka sulėtina taikinį iki jo ėjimo pabaigos. Sulėtinimas perpus sumažina "
-"atakų daromą žalą ir sulėtinto dalinio judėjimo kaina yra padvigubinta. "
-"Dalinys, kuris yra sulėtintas turi sraigės ženkliuką savo šoninės juostos "
+"atakų daromą žalą ir sulėtinto kario judėjimo kaina yra padvigubinta. Karys, "
+"kuris yra sulėtintas, turi sraigės ženkliuką savo šoninės juostos "
 "informacijoje, kai jis yra pažymėtas."
 
 #. [petrifies]: id=petrifies
@@ -3432,13 +3500,11 @@ msgstr "paverčia akmeniu"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:337
-#, fuzzy
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
-"Sustingdymas:\n"
-"Ši ataka taikinį paverčia akmeniu. Daliniai, kurie buvo paversti į akmenį, "
+"Ši ataka taikinį paverčia akmeniu. Kariai, kurie buvo paversti akmeniu, "
 "negali judėti ar pulti."
 
 #. [chance_to_hit]: id=marksman
@@ -3448,11 +3514,9 @@ msgstr "snaiperis"
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:347
-#, fuzzy
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
-"Snaiperis:\n"
 "Kai naudojama puolant, ši ataka visada turi bent 60% tikimybę pataikyti."
 
 #. [chance_to_hit]: id=magical
@@ -3462,14 +3526,12 @@ msgstr "magiška"
 
 #. [chance_to_hit]: id=magical
 #: data/core/macros/abilities.cfg:360
-#, fuzzy
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
-"Magiška:\n"
 "Ši ataka visada turi 70% tikimybę pataikyti, nepriklausomai nuo puolamo "
-"dalinio gynybinių gebėjimų."
+"kario gynybinių gebėjimų."
 
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:371
@@ -3506,14 +3568,12 @@ msgstr "išsiurbia"
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:395
-#, fuzzy
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
-"Išsiurbia:\n"
-"Šis dalinys išsiurbia jėgas iš gyvų dalinių, gydydamasis pusė padarytos "
-"žalos kiekio (suapvalintos žemyn)."
+"Šis karys išsiurbia jėgas iš gyvų karių, pasigydydamas pusė padarytos žalos "
+"kiekio (suapvalintos žemyn)."
 
 #. [firststrike]: id=firststrike
 #: data/core/macros/abilities.cfg:404
@@ -3533,16 +3593,14 @@ msgstr "nuodai"
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:415
-#, fuzzy
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
 "a unit."
 msgstr ""
-"Nuodai:\n"
-"Ši atakos rūšis apnuodija gyvuosius taikinius. Apnuodyti daliniai kiekvieno "
-"ėjimo metu iki išgydymo, netenka 8 GT arba jų GT sumažėja iki 1. Patys "
-"nuodai dalinio nenužudo."
+"Ši ataka apnuodija gyvuosius taikinius. Apnuodyti kariai kiekvieno ėjimo "
+"metu iki atnuodijimo netenka 8 GT arba jų GT sumažėja iki 1. Patys nuodai "
+"kario nenužudo."
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -3761,7 +3819,7 @@ msgid ""
 " Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr ""
-" Dvasios turi labai neįprastus atsparumus žalai ir pakankamai lėtai juda "
+" dvasios turi labai neįprastus atsparumus žalai ir pakankamai lėtai juda "
 "virš atviro vandens."
 
 #: data/core/macros/special-notes.cfg:11
@@ -3769,37 +3827,35 @@ msgid ""
 " This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-" Šio dalinio paslaptinga ataka daro milžinišką žalą magiškoms būtybėms ir "
+" šio kario paslaptinga ataka daro milžinišką žalą magiškoms būtybėms ir "
 "netgi kai kurioms paprastoms būtybėms."
 
 #: data/core/macros/special-notes.cfg:14
 msgid " This unit is capable of basic healing."
-msgstr " Šis dalinys truputį sugeba gydyti."
+msgstr " šis karys žino gydymo pagrindus."
 
 #: data/core/macros/special-notes.cfg:17
 msgid " This unit is capable of rapid healing."
-msgstr " Šis dalinys sugeba greitai gydyti."
+msgstr " šis karys sugeba greitai gydyti."
 
 #: data/core/macros/special-notes.cfg:20
 msgid ""
 " This unit is capable of healing those around it, and curing them of poison."
-msgstr ""
-" Šis dalinys sugeba gydyti aplink jį esančius dalinius ir juos atnuodyti."
+msgstr " šis karys sugeba gydyti aplink jį esančius karius ir juos atnuodyti."
 
 #: data/core/macros/special-notes.cfg:23
 msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr ""
-" Šis dalinys sugeba neutralizuoti nuodų veikimą, aplink jį esančiuose "
-"daliniuose."
+" šis karys sugeba neutralizuoti nuodų veikimą, aplink jį esančiuose kariuose."
 
 #: data/core/macros/special-notes.cfg:26
 msgid ""
 " This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
 msgstr ""
-" Šis dalinys regeneruoja, kas leidžia jam gydytis taip, lyg jis visada būtų "
+" šis karys regeneruoja, kas leidžia jam gydytis taip, lyg jis visada būtų "
 "apsistojęs kaime."
 
 #: data/core/macros/special-notes.cfg:29
@@ -3807,16 +3863,15 @@ msgid ""
 " The steadiness of this unit reduces damage from some attacks, but only "
 "while defending."
 msgstr ""
-" Šio dalinio atsparumas mažina kai kurių atakų žalą, tačiau tik besiginant."
+" šio kario atsparumas mažina kai kurių atakų žalą, tačiau tik besiginant."
 
 #: data/core/macros/special-notes.cfg:32
 msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
-" Šio dalinio vadovavimas leidžia greta esantiems tos pačios pusės daliniams "
-"padaryti daugiau žalos mūšyje, tačiau tai galioja tik žemesnio lygio "
-"daliniams."
+" šio kario vadovavimas leidžia greta esantiems tos pačios pusės kariams "
+"padaryti daugiau žalos mūšyje, tačiau tai galioja tik žemesnio lygio kariams."
 
 #: data/core/macros/special-notes.cfg:35
 msgid ""
@@ -3826,14 +3881,14 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:38
 msgid " Illumination increases the lighting level in adjacent areas."
-msgstr " Apšvietimas padidina šviesos lygį gretimuose laukeliuose."
+msgstr " apšvietimas padidina šviesos lygį gretimuose laukeliuose."
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-" Šis dalinys gali per vieną ėjimą teleportuotis tarp bet kurių dviejų tuščių "
+" šis karys gali per vieną ėjimą teleportuotis tarp bet kurių dviejų tuščių "
 "jo pusei priklausančių kaimų."
 
 #: data/core/macros/special-notes.cfg:44
@@ -3844,7 +3899,7 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:47
 msgid " This unit is able to hide at night, leaving no trace of its presence."
-msgstr " Šis dalinys naktį gali pasislėpti, nepalikdamas jokio savo pėdsako."
+msgstr " šis karys naktį gali pasislėpti, nepalikdamas jokio savo pėdsako."
 
 #: data/core/macros/special-notes.cfg:50
 msgid ""
@@ -3856,7 +3911,7 @@ msgstr ""
 msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
-" Šis dalinys gali nematomas judėti giliame vandenyje, nereikalaudamas oro iš "
+" šis karys gali nematomas judėti giliame vandenyje, nereikalaudamas oro iš "
 "paviršiaus."
 
 #: data/core/macros/special-notes.cfg:56
@@ -3864,8 +3919,8 @@ msgid ""
 " This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-"Šis dalinys gauna 1 gyvybės tašką pridėtą prie jo maksimalaus, kai jis "
-"nužudo gyvą dalinį."
+" šis karys gauna 1 gyvybės tašką pridėtą prie jo maksimalaus, kai jis nužudo "
+"gyvą karį."
 
 #: data/core/macros/special-notes.cfg:59
 msgid ""
@@ -3891,27 +3946,28 @@ msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
-" Šis dalinys sugeba sulėtinti savo priešus, dalydamas pusiau jų judėjimo "
+" šis karys sugeba sulėtinti savo priešus, dalydamas pusiau jų judėjimo "
 "greitį ir puolimo žalą, iki jų ėjimo pabaigos."
 
 #: data/core/macros/special-notes.cfg:71
 msgid ""
 " The ability to turn the living to stone makes this unit extremely dangerous."
-msgstr " Gebėjimas paversti gyvąjį akmeniu daro šį dalinį ypač pavojingu."
+msgstr " gebėjimas paversti gyvąjį akmeniu daro šį karį ypač pavojingu."
 
 #: data/core/macros/special-notes.cfg:74
 msgid ""
 " This unit’s marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
 msgstr ""
+" šio kario taiklumas suteikia gerus šansus pataikyti į priešus, tačiau tik "
+"puolant."
 
 #: data/core/macros/special-notes.cfg:77
-#, fuzzy
 msgid ""
 " This unit has magical attacks, which always have a high chance of hitting "
 "an opponent."
 msgstr ""
-" Šis dalinys turi magiškas atakas, kurios visada turi dideles galimybes "
+" šis karys turi magiškas atakas, kurios visada turi dideles galimybes "
 "pataikyti į priešininką."
 
 #: data/core/macros/special-notes.cfg:80
@@ -3931,7 +3987,7 @@ msgid ""
 " During battle, this unit can drain life from victims to renew its own "
 "health."
 msgstr ""
-" Mūšio metu šis dalinys gali išsiurbti gyvybę iš savo aukų, kad atnaujintų "
+" mūšio metu šis karys gali išsiurbti gyvybę iš savo aukų, kad atnaujintų "
 "savo jėgas."
 
 #: data/core/macros/special-notes.cfg:89
@@ -3939,12 +3995,16 @@ msgid ""
 " The length of this unit’s weapon allows it to strike first in melee, even "
 "in defense."
 msgstr ""
+" šio kario ginklo ilgis leidžia artimoje kovoje smogti pirmiau, netgi "
+"ginantis."
 
 #: data/core/macros/special-notes.cfg:92
 msgid ""
 " The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
+" šio kario nuodų aukos patirs žalą iki tol, kol būs pagydytos miesteliuose "
+"arba karių, kurie atnuodija."
 
 #: data/core/macros/special-notes.cfg:95
 msgid ""
@@ -3981,13 +4041,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Užduoties vykdymo metu kai kurie daliniai gali savanoriškai prisijungti prie "
-"žaidėjo pajėgų. Tokie daliniai pažymimi ištikimumo bruožu. Nors tokių "
-"dalinių susigrąžinimas gali kainuoti, jų išlaikymas visuomet bus nemokamas. "
-"Ilgų užduočių atveju, kai aukso atsargos ribotos, tokie daliniai tampa "
+"Užduoties vykdymo metu kai kurie kariai gali savanoriškai prisijungti prie "
+"žaidėjo pajėgų. Tokie kariai pažymimi ištikimumo bruožu. Nors tokių karių "
+"susigrąžinimas gali kainuoti, jų išlaikymas visuomet bus nemokamas. Ilgų "
+"užduočių atveju, kai aukso atsargos ribotos, tokie kariai tampa "
 "neįkainuojama parama. Ištikimumo bruožas niekada nepriskiriamas samdant "
-"dalinius ir būtų neprotinga tokį bruožą turinčius dalinius atleisti arba "
-"kvailai paaukoti."
+"karius ir būtų neprotinga tokį bruožą turinčius karius atleisti arba kvailai "
+"paaukoti."
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:11
@@ -3996,9 +4056,9 @@ msgid ""
 "upkeep cost at the end of every turn, which is equal to their level. Loyal "
 "units do not incur this cost."
 msgstr ""
-"<italic>text='Ištikimi'</italic> daliniai nereikalauja užmokesčio. Dauguma "
-"dalinių ėjimo pabaigoje paima užmokestį, tiek auksinių, koks yra jų lygis. "
-"Ištikimiems daliniams šio užmokesčio nereikia."
+"<italic>text='Ištikimi'</italic> kariai nereikalauja užmokesčio. Dauguma "
+"karių ėjimo pabaigoje paima užmokestį, tiek auksinių, koks yra jų lygis. "
+"Ištikimiems kariams šio užmokesčio nereikia."
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:25
@@ -4030,7 +4090,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Nemirėliai daliniai paprastai turi tik nemirėliškumo bruožą. Kadangi "
+"Nemirėliai kariai paprastai turi tik nemirėliškumo bruožą. Kadangi "
 "nemirėliai yra mirusiųjų kūnai, prisikėlę naujoms kovoms, nuodai jų "
 "neveikia. Tai tampa neįkainuojamu pranašumu prieš oponentus, savo atakoms "
 "naudojančius nuodus."
@@ -4040,7 +4100,7 @@ msgstr ""
 msgid ""
 "<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
 msgstr ""
-"<italic>text='Nemirėlių'</italic> daliniai yra atsparūs nuodams, išsiurbimui "
+"<italic>text='Nemirėlių'</italic> kariai yra atsparūs nuodams, išsiurbimui "
 "ir marui."
 
 #. [trait]: id=mechanical
@@ -4064,8 +4124,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Mechaniniai daliniai paprastai turi vienintelį bruožą mechaninis. Kadangi "
-"mechaniniai daliniai iš tikrųjų neturi gyvybės, išsiurbimas, nuodai ir maras "
+"Mechaniniai kariai paprastai turi vienintelį bruožą mechaninis. Kadangi "
+"mechaniniai kariai iš tikrųjų neturi gyvybės, išsiurbimas, nuodai ir maras "
 "jų neveikia."
 
 #. [trait]: id=mechanical
@@ -4074,8 +4134,8 @@ msgid ""
 "<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
 "plague."
 msgstr ""
-"<italic>text='Mechaniniai'</italic> daliniai yra atsparūs nuodams, "
-"išsiurbimui ir marui."
+"<italic>text='Mechaniniai'</italic> kariai yra atsparūs nuodams, išsiurbimui "
+"ir marui."
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:77
@@ -4089,7 +4149,6 @@ msgstr "stichiška"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:80
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -4099,19 +4158,18 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Mechaniniai daliniai paprastai turi vienintelį bruožą mechaninis. Kadangi "
-"mechaniniai daliniai iš tikrųjų neturi gyvybės, išsiurbimas, nuodai ir maras "
-"jų neveikia."
+"Stichiški kariai paprastai turi vienintelį bruožą stichiškas. Kadangi "
+"stichiški kariai iš tikrųjų neturi gyvybės, išsiurbimas, nuodai ir maras jų "
+"neveikia."
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:80
-#, fuzzy
 msgid ""
 "<italic>text='Elemental'</italic> units are immune to poison, drain, and "
 "plague."
 msgstr ""
-"<italic>text='Mechaniniai'</italic> daliniai yra atsparūs nuodams, be to "
-"išsiurbimas ir maras neveikia jų."
+"<italic>text='Stichiški'</italic> kariai yra atsparūs nuodams, be to "
+"išsiurbimas ir maras jų neveikia."
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:102
@@ -4135,20 +4193,19 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Jėga yra naudinga visiems artimose kovose dalyvaujantiems daliniams, bet "
-"efektingiausia daliniams turintiems didelį kirčių skaičių, pavyzdžiui, elfų "
-"kovotojams. Stiprūs daliniai gali būti labai naudingi, kai reikalinga "
-"truputį didesnė žala paversti žalojantį smūgį į mirtiną."
+"Jėga yra naudinga visiems artimose kovose dalyvaujantiems kariams, bet "
+"efektingiausia kariams turintiems didelį kirčių skaičių, pavyzdžiui, elfų "
+"kovotojams. Stiprūs kariai gali būti labai naudingi, kai reikalinga truputį "
+"didesnė žala paversti žalojantį smūgį į mirtiną."
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:104
-#, fuzzy
 msgid ""
 "<italic>text='Strong'</italic> units do 1 more damage for every successful "
 "strike in melee combat, and have 1 additional hitpoint."
 msgstr ""
-"<italic>text='Stiprūs'</italic> daliniai padaro 1 tašku daugiau žalos per "
-"kiekvieną pavykusį smūgį artimoje kovoje ir turi 1 GT daugiau."
+"<italic>text='Stiprūs'</italic> kariai padaro 1 tašku daugiau žalos per "
+"kiekvieną pavykusį smūgį artimoje kovoje ir turi 1 papildomą gyvybės tašką."
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:123
@@ -4183,7 +4240,7 @@ msgid ""
 "<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
 "strike in ranged combat."
 msgstr ""
-"<italic>text='Vikrūs'</italic> daliniai padaro 1 tašku didesnę žalą po "
+"<italic>text='Vikrūs'</italic> kariai padaro 1 tašku didesnę žalą po "
 "kiekvieno sėkmingo smūgio nuotoliniame mūšyje."
 
 #. [trait]: id=quick
@@ -4211,21 +4268,20 @@ msgstr ""
 "\n"
 "\n"
 "Greitis yra viena iš labiausiai pastebimų savybių, ypač lėtesniuose "
-"daliniuose, pavyzdžiui, troliuose arba sunkiuosiuose pėstininkuose. Greiti "
-"daliniai turi žymiai didesnį judrumą nelygiose vietovėse, į ką svarbu "
-"atkreipti dėmesį dėstant savo pajėgas. Taip pat žinotina, kad greiti "
-"daliniai nėra tokie stiprūs, kaip neturintys didelio greičio ir žymiai "
-"prasčiau atlaiko ginčijamas pozicijas."
+"kariuose, pavyzdžiui, troliuose arba sunkiuosiuose pėstininkuose. Greiti "
+"kariai turi žymiai didesnį judrumą nelygiose reljefuose, į ką svarbu "
+"atkreipti dėmesį dėstant savo pajėgas. Taip pat žinotina, kad greiti kariai "
+"nėra tokie stiprūs, kaip neturintys didelio greičio ir žymiai prasčiau "
+"atlaiko ginčijamas pozicijas."
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:142
-#, fuzzy
 msgid ""
 "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
 "hitpoints than usual."
 msgstr ""
-"<italic>text='Greiti'</italic> daliniai turi 1 papildomą judėjimo tašką, bet "
-"5% mažiau GT nei įprasta."
+"<italic>text='Greiti'</italic> kariai turi 1 papildomą judėjimo tašką, bet "
+"5% mažiau gyvybės taškų nei įprasta."
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:160
@@ -4251,18 +4307,18 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<italic>text='Protingi'</italic> daliniai yra labai naudingi kampanijos "
+"<italic>text='Protingi'</italic> kariai yra labai naudingi kampanijos "
 "pradžioje, nes gali greitai pasiekti aukštą lygį. Vėliau protas nebėra toks "
 "svarbus, nes pasiekus <italic>text='virš aukščiausio lygio paaukštinimą'</"
 "italic> (VALP), tobulėjimas nebėra toks staigus. Jeigu turite daug "
-"aukščiausio lygio dalinių, galbūt norėsite susigrąžinti dalinius, turinčius "
+"aukščiausio lygio karių, galbūt norėsite susigrąžinti karius, turinčius "
 "norimų savybių."
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:162
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
-"Protingiems daliniams reikia 20% mažiau patirties nei įprasta, kad būtų "
+"Protingiems kariams reikia 20% mažiau patirties nei įprasta, kad būtų "
 "paaukštinti."
 
 #. [trait]: id=resilient
@@ -4288,21 +4344,19 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Gyvybingi daliniai būna naudingi visose kampanijos stadijose ir tai yra "
-"visiems daliniams naudingas bruožas. Gyvybingumas yra naudingiausias bruožas "
-"daliniams, turintiems mažai gyvybės taškų, gerą gynybą arba didelį "
-"atsparumą. Gyvybingi daliniai yra ypač naudingi strateginių pozicijų "
-"išlaikymui."
+"Gyvybingi kariai būna naudingi visose kampanijos stadijose ir tai yra "
+"visiems kariams naudingas bruožas. Gyvybingumas yra naudingiausias bruožas "
+"kariams, turintiems mažai gyvybės taškų, gerą gynybą arba didelį atsparumą. "
+"Gyvybingi kariai yra ypač naudingi strateginių pozicijų išlaikymui."
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:178
-#, fuzzy
 msgid ""
 "<italic>text='Resilient'</italic> units have an additional 4 hitpoints, and "
 "gain 1 more per level."
 msgstr ""
-"<italic>text='Gyvybingi'</italic> daliniai turi 4 GT plius 1 GT lygiui "
-"daugiau negu įprasta."
+"<italic>text='Gyvybingi'</italic> kairia turi papildomus 4 gyvybės taškus, "
+"ir gauna 1 GT daugiau už kiekvieną lygį."
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:197
@@ -4328,16 +4382,20 @@ msgid ""
 "more per level. They will also heal 2 hitpoints each turn, regardless of "
 "whether they engaged in combat the turn before."
 msgstr ""
+"\n"
+"\n"
+"<italic>text='Sveiki'</italic> kariai turi 1 papildomą gyvybės tašką, ir "
+"gauna dar po 1 už kiekvieną lygį. Jie taip pat kas ėjimą pagis 2 gyvybės "
+"taškais, nepriklausomai nuo to, ar jie kovėsi praeitą ėjimą."
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:200
-#, fuzzy
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when traveling."
 msgstr ""
-"Pagarsėję savo gyvybingumu, kai kurie dvarfai ištvermingesni negu kiti ir "
-"gali ilsėtis net keliaudami."
+"Pagarsėję savo gyvybingumu, kai kurie dvarfai yra ištvermingesni negu kiti "
+"ir gali ilsėtis net keliaudami."
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:222 data/core/macros/traits.cfg:239
@@ -4376,7 +4434,6 @@ msgstr "Gauna tik 50% gynybą sausumos kaimuose"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:258
-#, fuzzy
 msgid ""
 "Dwellings of sentient beings are not easily used for cover by feral "
 "creatures of low intelligence. As a result, <italic>text='feral'</italic> "
@@ -4384,8 +4441,9 @@ msgid ""
 "of base terrain."
 msgstr ""
 "Protingų būtybių namai nėra pritaikyti žemo intelekto laukiniams padarams. "
-"Dėl to <italic>text='laukiniai'</italic> turi ne daugiau, kaip 40% gynybą "
-"bet kuriame ant žemės esančiame kaime, nepriklausomai nuo bazinės vietovės."
+"Dėl to <italic>text='laukiniai'</italic> padarai turi ne daugiau, kaip 50% "
+"gynybą bet kuriame ant žemės esančiame kaime, nepriklausomai nuo bazinio "
+"reljefo."
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:274
@@ -4399,13 +4457,12 @@ msgstr "silpna"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:276
-#, fuzzy
 msgid ""
 "Units with the <italic>text='weak'</italic> trait receive a 1 point decrease "
 "in hitpoints and melee damage."
 msgstr ""
-"<italic>text='Silpni'</italic> daliniai turi 1 GT mažiau ir artimoje kovoje "
-"patiria 1 tašku didesnę žalą."
+"<italic>text='Silpni'</italic> kariai turi 1 mažiau gyvybės taškų ir "
+"artimoje kovoje daro 1 tašku mažesnę žalą."
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:293
@@ -4433,12 +4490,11 @@ msgstr ""
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:295
-#, fuzzy
 msgid ""
 "<italic>text='Slow'</italic> units have 1 less movement point but 5% more "
 "hitpoints."
 msgstr ""
-"<italic>text='Lėti'</italic> daliniai turi 1 judėjimo tašku mažiau, bet 5% "
+"<italic>text='Lėti'</italic> kariai turi 1 judėjimo tašku mažiau, bet 5% "
 "daugiau gyvybės taškų."
 
 #. [trait]: id=dim
@@ -4470,8 +4526,8 @@ msgid ""
 "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
 "experience required to advance."
 msgstr ""
-"Daliniams su bruožu <italic>text='bukas'</italic> reikia 20% daugiau "
-"patirties tam, kad patobulėtų."
+"Kariams su bruožu <italic>text='bukas'</italic> reikia 20% daugiau patirties "
+"tam, kad patobulėtų."
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:329
@@ -4485,13 +4541,12 @@ msgstr "pagyvęnusi"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:331
-#, fuzzy
 msgid ""
 "Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
 "suffer from a 1 point decrease in movement and melee damage."
 msgstr ""
-"<italic>text='Silpni'</italic> daliniai turi 1 GT mažiau ir artimoje kovoje "
-"patiria 1 tašku didesnę žalą."
+"Kariai su bruožu <italic>text='pagyvenęs'</italic> turi 8 gyvybės taškais "
+"mažiau, turi vienu judėjimo ir artimoje kovoje daromos žalos tašku mažiau."
 
 #: data/core/units.cfg:11
 msgid ""
@@ -4555,7 +4610,6 @@ msgstr "Slibinai"
 
 #. [race]: id=drake
 #: data/core/units.cfg:61
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -4638,20 +4692,20 @@ msgstr ""
 "iš jų žūsta mūšyje, vidinė ugnis išsilaisvina iš kūno, pilnai sudegindama "
 "palaikus. Jų vidinė ugnis yra ir jų pagrindinė silpnybė, daranti slibinus "
 "ypač pažeidžiamus šalčio atakoms. Nežiūrint į savo stebuklingą būvį, "
-"slibinai negali kontroliuoti savo magiškų galių. Kai slibino kūnas "
-"stebuklingai paruošia spjaudomąją ugnį, jie negali kontroliuoti šių burtų "
-"veikimo.\n"
+"slibinai negali kontroliuoti savo magiškų galių. Nors slibino kūnas "
+"stebuklingai paruošia spjaudomąją ugnį, jie negali sąmoningai kontroliuoti "
+"šių burtų veikimo.\n"
 "\n"
 "<header>text='Visuomenė'</header>\n"
-"Slibinai yra karinga rūšis ir jų visuomenė gali būti apibūdinama kaip kovos "
-"menų visuomenė. Genties stuburą sudaro nedidelė senbuvių karių grupė, lydima "
-"bendru sutarimu gerbiamo arba tiesiog labiausiai bijomo <ref>dst='dominant' "
-"text='vado'</ref>, kuris visuomenei vadovauja su geležiniu kumščiu. "
-"Kiekvienas slibinas turi užsitarnauti savo vietą bandoje pagal griežtus "
-"hierarchijos principus, klausyti vyresniųjų ir vadovauti jaunesniesiems. Į "
-"valdančiųjų ratą galima patekti tiktai dvikovoje nukovus vyresnį, tokiu "
-"pačiu principu hierarchija sudaroma ir valdančiųjų rate. Bet kokios "
-"apgavystės tarp slibinų yra, be išimčių, visiškai nepriimtinos.\n"
+"Slibinai yra gana karinga rūšis ir jų visuomenė gali būti apibūdinama kaip "
+"kovos menų visuomenė. Genties stuburą sudaro nedidelė senbuvių karių grupė, "
+"lydima bendru sutarimu gerbiamo arba tiesiog labiausiai bijomo "
+"<ref>dst='dominant' text='vado'</ref>, kuris visuomenei vadovauja su "
+"geležiniu kumščiu. Kiekvienas slibinas turi užsitarnauti savo vietą bandoje "
+"pagal griežtus hierarchijos principus, klausyti vyresniųjų ir vadovauti "
+"jaunesniesiems. Į valdančiųjų ratą galima patekti tiktai dvikovoje nukovus "
+"vyresnį, tokiu pačiu principu hierarchija sudaroma ir valdančiųjų rate. Bet "
+"kokios apgavystės tarp slibinų yra, be išimčių, visiškai nepriimtinos.\n"
 "\n"
 "Nors jų karingumas ir savų teritorijų suvokimas verčia juos tas teritorijas "
 "įnirtingai ginti, slibinai retai įsiveržia į kitų rasių užimtas teritorijas. "
@@ -4663,7 +4717,7 @@ msgstr ""
 "jie daro, yra beveik neprilygstami savo kokybe ir tik geriausi dvarfų kalvių "
 "gaminiai jiems prilygsta.\n"
 "\n"
-"Slibinai išsirita iš kiaušinių ir gyvena tarp 20 ir 30 metų. Žūti mūšyje yra "
+"Slibinai išsirita iš kiaušinių ir gyvena nuo 20 iki 30 metų. Žūti mūšyje yra "
 "priimtiniausia mirties forma. Skirtingai negu kitų rūšių vyresnieji, "
 "slibinai į gyvenimo galą darosi agresyvesni ir narsesni, galbūt norėdami "
 "užtikrinti savo vietą slibinų legendose apie didvyrius.\n"
@@ -4915,26 +4969,6 @@ msgstr "Goblinai"
 
 #. [race]: id=goblin
 #: data/core/units.cfg:151
-#, fuzzy
-#| msgid ""
-#| "Goblins are, despite their appearance, born as siblings to the orcs and "
-#| "members of the same race. While other races usually bear children singly "
-#| "or in pairs, orcs will have large litters of children all at once, "
-#| "causing their populations to explode rather quickly. Within any litter, "
-#| "there will only be one or two true orcs, who will grow to the full size "
-#| "and strength of their race. A few more will be half-orcs, notably weaker "
-#| "than their big brothers, and relegated to supporting roles in combat, "
-#| "such as archery. The rest, often a full half of more of any litter, will "
-#| "be goblins. Goblins are puny and quite frail, rarely growing past the "
-#| "size and stature of a human child. Goblins are born into a lifetime of "
-#| "near-slavery to their larger kin, and used as sword-fodder in battle. "
-#| "They thrive in spite of their tragic fate; in part because they are so "
-#| "very numerous, and also because their brother orcs are well aware how "
-#| "dependent they are on the goblins.\n"
-#| "\n"
-#| "Goblins perform the bulk of manual labor needed by the orcs, with the "
-#| "sole exception of jobs that require the brute strength of true orcs. "
-#| "Those the orcs revel in as proof of their prowess."
 msgid ""
 "\n"
 "\n"
@@ -4949,22 +4983,17 @@ msgid ""
 "that require the brute strength of true orcs. Those the orcs revel in as "
 "proof of their prowess."
 msgstr ""
-"Nepaisant išvaizdos, goblinai broliuojasi su orkais ir yra tos pačios rūšies "
-"atstovai. Kai kitos rūšys dažniausiai veda vaikus poromis ar po vieną, orkai "
-"iš karto atsiveda didelę vaikų vadą, leidžiančią daugintis sprogstamu "
-"greičiu. Tačiau tik vienas ar du iš vados išaugs į tikrus didelius ir "
-"stiprius orkus. Dar keletas išaugs į pusiau orkus, pastebimai silpnesnius "
-"negu didieji broliai ir mūšyje atstovaus palaikymo pajėgose, tokiose, kaip "
-"šauliai. Likusieji arba didžioji vados dalis pataps goblinais. Goblinai būna "
-"gležni ir žemi, gan lepūs ir dydžiu retai praauga žmonių vaikus. Visą savo "
-"gyvenimą Goblinai beveik vergauja didesniems savo gentainiams ir mūšyje "
-"naudojami kaip pašaras kardui. Nepaisant savo tragiško likimo, goblinai "
-"klesti; iš dalies tai yra dėl jų skaitlingumo, ir dar jų broliai orkai gerai "
-"žino, kaip goblinai jiems yra gyvybiškai reikalingi.\n"
 "\n"
-"Goblinai atlieka didžiąją dalį orkams reikalingų darbų, išskyrus vienetinius "
-"darbus, kuriems atlikti reikalinga milžiniška tikrųjų orkų jėga. Tokių darbų "
-"orkai mielai imasi, nes gali įrodyti savo šaunumą ir jėgą."
+"\n"
+"Goblinai yra gležni ir žemi, retai praauga žmonių vaikus.\n"
+"\n"
+"Visą savo gyvenimą goblinai beveik vergauja didesniems savo gentainiams ir "
+"mūšyje naudojami kaip pašaras kardui. Nepaisant savo tragiško likimo, "
+"goblinai klesti; iš dalies tai yra dėl jų skaitlingumo, ir dar jų broliai "
+"orkai gerai žino, kaip goblinai jiems yra gyvybiškai reikalingi. Jie atlieka "
+"didžiąją dalį orkams reikalingų darbų, išskyrus vienetinius darbus, kuriems "
+"atlikti reikalinga milžiniška tikrųjų orkų jėga. Tokių darbų orkai mielai "
+"imasi, nes gali įrodyti savo šaunumą ir jėgą."
 
 #. [race]: id=gryphon
 #: data/core/units.cfg:168
@@ -4993,6 +5022,12 @@ msgid ""
 "been a source of debate for centuries, but it remains as mysterious as their "
 "origins."
 msgstr ""
+"Grifai yra platūs, galingi žvėrys, turintys ir sausumos plėšrūnų, ir plėšrių "
+"paukščių bruožų. Nors kartais būna drąsuolių raitelių prijaukinami, grifai "
+"yra labai teritoriniai ir agresyvūs, ypač kai kalba eina apie jų lizdus.\n"
+"\n"
+"Kaip grifai sugeba skristi, nepaisant jų didelio svorio, buvo diskutuojama "
+"šimtmečiais, bet tai lieka tokia pat paslaptimi, kaip ir jų kilmė."
 
 #. [race]: id=human
 #: data/core/units.cfg:189
@@ -5011,47 +5046,6 @@ msgstr "Žmonės"
 
 #. [race]: id=human
 #: data/core/units.cfg:192
-#, fuzzy
-#| msgid ""
-#| "The race of men is an extremely diverse one. Although they originally "
-#| "came from the Old Continent, men have spread all over the world and split "
-#| "into many different cultures and races. Although they are not imbued with "
-#| "magic like other creatures, humans can learn to wield it and able to "
-#| "learn more types than most others. They have no extra special abilities "
-#| "or aptitudes except their versatility and drive. While often at odds with "
-#| "other races, they can occasionally form alliances with the less "
-#| "aggressive races such as elves and dwarves. The less scrupulous among "
-#| "them do not shrink back from hiring orcish mercenaries, either. They have "
-#| "no natural enemies, although the majority of men, like most people of all "
-#| "races, have an instinctive dislike of the undead. Men are shorter than "
-#| "the elves, but taller still than dwarves. Their skin color can vary, from "
-#| "almost white to dark brown.\n"
-#| "\n"
-#| "<header>text='Subjects of the Crown'</header>\n"
-#| "Many different groups of men exist, but the majority of them on the Great "
-#| "Continent live under the rule of the Crown of Wesnoth. The humans first "
-#| "appeared on the Great Continent from a land far across the ocean to the "
-#| "West, the Green Isle, and soon established their capital at the inland "
-#| "city of Weldyn. Over the following centuries they have built up a number "
-#| "cities across the continent. The soldiers from the Crown of Wesnoth "
-#| "protect the country, forming the most organized military force in the "
-#| "known world. Its warriors come from the main provinces, where all men are "
-#| "conscripted at an early age.\n"
-#| "\n"
-#| "<header>text='The Clansmen'</header>\n"
-#| "The eastern provinces of Wesnoth, known as the Clan Homelands, have a "
-#| "geography consisting of more open plains and rolling hills than the "
-#| "western, more civilized provinces. They are home to the Horse Clans, who "
-#| "are allied with the Crown of Wesnoth but operate independently and "
-#| "maintain their own identity. Some consider them to be a tributary state, "
-#| "which sends food and soldiers to Crown in exchange for protection. Others "
-#| "say they are on equal footing with the western half of Wesnoth. In any "
-#| "case, the eastern provinces do not have a conscript army the way Western "
-#| "Wesnoth does. Training for fighting is part of the way of life of the "
-#| "Clans; the parents teach the children to ride horses, fight and shoot a "
-#| "bow from an early age. In general, the Clan warriors are less organized "
-#| "than the civilized fighters, and the strengths and weaknesses of these "
-#| "groups complement each other."
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -5129,26 +5123,20 @@ msgstr ""
 #. [race]: id=dunefolk
 #. [race]: id=khalifate # wmllint: noconvert
 #: data/core/units.cfg:208 data/core/units.cfg:233
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Dunefolk Human"
-msgstr "Žmogus"
+msgstr "Kopų žmogus"
 
 #. [race]: id=dunefolk
 #. [race]: id=khalifate # wmllint: noconvert
 #: data/core/units.cfg:209 data/core/units.cfg:234
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Dunefolk Human"
-msgstr "Žmogus"
+msgstr "Kopų žmogus"
 
 #. [race]: id=dunefolk
 #. [race]: id=khalifate # wmllint: noconvert
 #: data/core/units.cfg:210 data/core/units.cfg:235
-#, fuzzy
-#| msgid "race+plural^Undead"
 msgid "race+plural^Dunefolk"
-msgstr "Nemirėliai"
+msgstr "Kopų žmonės"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:211
@@ -5211,7 +5199,7 @@ msgstr ""
 #. [race]: id=khalifate # wmllint: noconvert
 #: data/core/units.cfg:236
 msgid "This race does not have a description yet."
-msgstr ""
+msgstr "Ši rasė dar neturi aprašymo."
 
 #. [race]: id=lizard
 #: data/core/units.cfg:247
@@ -5310,16 +5298,15 @@ msgstr "Mechanizmai"
 
 #. [race]: id=mechanical
 #: data/core/units.cfg:278
-#, fuzzy
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
 "intelligent being. Most mechanical things neither move nor think on their "
 "own, but some do so as a result of magical enchantment."
 msgstr ""
-"Neturėdami nei gyvos, nei mirusios dvasios, „mechanizmai“ yra dirbtinai "
-"protingų būtybių sukurti daiktai. Dauguma mechanizmų patys negali nei "
-"judėti, nei galvoti, tačiau kai kurie, paveikti burtų, gali. "
+"Neturėdami nei gyvos, nei mirusios dvasios, <italic>text='mechanizmai'</"
+"italic> yra dirbtinai protingų būtybių sukurti daiktai. Dauguma mechanizmų "
+"patys negali nei judėti, nei galvoti, tačiau kai kurie, paveikti burtų, gali."
 
 #. [race]: id=merman
 #: data/core/units.cfg:287
@@ -5333,10 +5320,8 @@ msgstr "Vandenė"
 
 #. [race]: id=merman
 #: data/core/units.cfg:289
-#, fuzzy
-#| msgid "race^Troll"
 msgid "race^Merfolk"
-msgstr "Trolis"
+msgstr "Vandeniai"
 
 #. [race]: id=merman
 #: data/core/units.cfg:291
@@ -5358,7 +5343,7 @@ msgstr ""
 "laisvai kvėpuoti ir po vandeniu, ir ore. Nors jie gali išgyventi ant žemės, "
 "vandeniai yra žymiai greitesni ir tikslesni vandenyje, todėl juos retai "
 "sutiksi toli nuo vandenyno. Paprastai jie prisisaugo sausų žemių, kur būna "
-"nerangūs ir sunkiai juda grubiose ir miškingose vietovėse. "
+"nerangūs ir sunkiai juda grubiose ir miškinguose reljefuose."
 
 #. [race]: id=monster
 #: data/core/units.cfg:299
@@ -5382,7 +5367,7 @@ msgid ""
 "wilderness, ocean depths, and other climes of the world. They figure largely "
 "in the tales and nightmares of its denizens, as well."
 msgstr ""
-"„Siaubūnas“ apima daug bjaurių žvėrių tūnančių urvuose, laukuose, vandenyno "
+"„Pabaisa“ apima daug bjaurių žvėrių tūnančių urvuose, laukuose, vandenyno "
 "dugne ir kitose pasaulio vietose. Jie taip pat dažnai aptinkami čiabuvių "
 "padavimuose ir košmaruose."
 
@@ -5447,7 +5432,6 @@ msgstr "Žmogėdros"
 
 #. [race]: id=ogre
 #: data/core/units.cfg:323
-#, fuzzy
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -5565,6 +5549,10 @@ msgid ""
 "Orcs who were not the strongest of their litter tend to specialize in other "
 "skills, like archery or assassination."
 msgstr ""
+"\n"
+"\n"
+"Orkai, kurie nėra stipriausi yra linkę specializuotis kituose įgūdžiuose, "
+"pavyzdžiui šaudyme iš lanko ar nužudyme."
 
 #. [race]: id=troll
 #: data/core/units.cfg:354
@@ -5637,7 +5625,6 @@ msgstr "Nemirėliai"
 
 #. [race]: id=undead
 #: data/core/units.cfg:380
-#, fuzzy
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -5782,22 +5769,4 @@ msgstr "Mūšio dėl Vesnoto pagalba"
 
 #: src/help/help.cpp:241
 msgid "Parse error when parsing help text: "
-msgstr "Nagrinėjimo klaida nagrinėjant pagalbos tekstą: "
-
-#~ msgid "race^Mermen"
-#~ msgstr "Vandeniai"
-
-#~ msgid "ingame_help_item^Contributors"
-#~ msgstr "Autoriai"
-
-#~ msgid "race^Khalifate Human"
-#~ msgstr "Kalifato vyras"
-
-#~ msgid "race+female^Khalifate Human"
-#~ msgstr "Kalifato moteris"
-
-#~ msgid "race+plural^Khalifate"
-#~ msgstr "Kalifatas"
-
-#~ msgid "female^nightstalk"
-#~ msgstr "naktinė seklė"
+msgstr "Įvyko nagrinėjimo klaida, nagrinėjant pagalbos tekstą: "
