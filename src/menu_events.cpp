@@ -1401,6 +1401,7 @@ std::vector<std::string> menu_handler::get_commands_list()
 void console_handler::do_refresh()
 {
 	image::flush_cache();
+	sound::flush_cache();
 
 	menu_handler_.gui_->create_buttons();
 	menu_handler_.gui_->redraw_everything();

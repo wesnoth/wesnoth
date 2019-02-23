@@ -113,4 +113,6 @@ unsigned int get_num_tracks();
 void remove_track(unsigned int i);
 void play_track(unsigned int i);
 
+void flush_cache();
+
 }
