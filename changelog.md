@@ -1,4 +1,4 @@
-## Version 1.14.5+dev
+## Version 1.14.6
  ### AI
    * Fixed crash when the AI simulates a fight between two units which can slow but aren't yet slowed, then
      simulates another fight for one of them in Monte Carlo mode (issue #3650).
