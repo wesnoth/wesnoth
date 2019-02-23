@@ -245,14 +245,8 @@ bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_add
 			// Begin download session
 			try {
 				return ad_hoc_addon_fetch_session(needs_download);
-			} catch (const addons_client::invalid_server_address& ex) {
-				ERR_LB << "Caught an exception: " << ex.what() << "\n";
-			} catch (const addons_client::not_connected_to_server& ex) {
-				ERR_LB << "Caught an exception: " << ex.what() << "\n";
-			} catch (const addons_client::user_exit& ex) {
-				ERR_LB << "Caught an exception: " << ex.what() << "\n";
-			} catch (const addons_client::user_disconnect& ex) {
-				ERR_LB << "Caught an exception: " << ex.what() << "\n";
+			} catch (const addons_client::user_exit&) {
+			} catch (const addons_client::user_disconnect&) {
 			}
 		}
 	}
