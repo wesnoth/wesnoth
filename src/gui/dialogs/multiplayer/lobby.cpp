@@ -36,6 +36,7 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 
+#include "addon/client.hpp"
 #include "addon/manager_ui.hpp"
 #include "chat_log.hpp"
 #include "font/text_formatting.hpp"
@@ -242,7 +243,11 @@ bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_add
 
 		if(gui2::show_message(e_title, err_msg, message::yes_no_buttons, true) == gui2::retval::OK) {
 			// Begin download session
-			return ad_hoc_addon_fetch_session(needs_download);
+			try {
+				return ad_hoc_addon_fetch_session(needs_download);
+			} catch (const addons_client::user_exit&) {
+			} catch (const addons_client::user_disconnect&) {
+			}
 		}
 	}
 
