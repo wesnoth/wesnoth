@@ -36,6 +36,7 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 
+#include "addon/client.hpp"
 #include "addon/manager_ui.hpp"
 #include "chat_log.hpp"
 #include "font/text_formatting.hpp"
@@ -244,7 +245,13 @@ bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_add
 			// Begin download session
 			try {
 				return ad_hoc_addon_fetch_session(needs_download);
-			} catch (const std::exception& ex) {
+			} catch (const addons_client::invalid_server_address& ex) {
+				ERR_LB << "Caught an exception: " << ex.what() << "\n";
+			} catch (const addons_client::not_connected_to_server& ex) {
+				ERR_LB << "Caught an exception: " << ex.what() << "\n";
+			} catch (const addons_client::user_exit& ex) {
+				ERR_LB << "Caught an exception: " << ex.what() << "\n";
+			} catch (const addons_client::user_disconnect& ex) {
 				ERR_LB << "Caught an exception: " << ex.what() << "\n";
 			}
 		}
