@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-22 03:45+0300\n"
-"PO-Revision-Date: 2018-09-15 23:14+0200\n"
+"PO-Revision-Date: 2019-02-23 22:31+0100\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
@@ -31,45 +31,32 @@ msgstr "Unter Tage"
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:696
 msgid "righteous rage"
-msgstr ""
+msgstr "Gerechter Zorn"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:698
-#, fuzzy
-#| msgid ""
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the champions is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Wut und Rachedurst dieser Einheit sind unbändig. Ob als Angreifer oder "
-"Verteidiger, sie ruht nicht eher, als bis der Tod die Entscheidung fällt "
-"oder im Kampfrausch 30 Runden verstrichen sind."
+"Ob als Angreifer oder Verteidiger, sie ruht nicht eher, als bis der Tod die "
+"Entscheidung fällt oder im Kampfrausch 30 Runden verstrichen sind."
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:707
-#, fuzzy
-#| msgid "first strike"
 msgid "true strike"
-msgstr "Erstschlag"
+msgstr "Wahrhaftig"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:709
-#, fuzzy
-#| msgid ""
-#| "This attack always has a 70% chance to hit regardless of the defensive "
-#| "ability of the unit being attacked."
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the champion being attacked."
 msgstr ""
-"Angriffe, die auf Magie beruhen, haben grundsätzlich eine "
-"Trefferwahrscheinlichkeit von 70%, unabhängig von der Verteidigungsstärke "
-"des Gegners."
+"Dieser Angriff hat immer eine Trefferwahrscheinlichkeit von 70%, egal welche "
+"defensiven Fertigkeiten der verteidigende Champion hat."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -734,27 +721,21 @@ msgstr ""
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:32
-#, fuzzy
-#| msgid "Great Ocean"
 msgid "Great River"
-msgstr "Der Große Ozean"
+msgstr "Der Große Fluss"
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:33
-#, fuzzy
-#| msgid ""
-#| "The continent on which the <ref>dst='kingdom_wesnoth' text='Kingdom of "
-#| "Wesnoth'</ref> lies. Its west coast is surrounded by the "
-#| "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgid ""
 "The Great River forms the boundary between the <ref>dst='kingdom_wesnoth' "
 "text='Kingdom of Wesnoth'</ref> and the <ref>dst='northlands' "
 "text='Northlands'</ref>. It empties to the <ref>dst='great_ocean' "
 "text='Great Ocean'</ref> at <ref>dst='elensefar' text='Elensefar'</ref>."
 msgstr ""
-"Weltteil, in dem das <ref>dst='kingdom_wesnoth' text='Königreich Wesnoth'</"
-"ref> liegt, dessen westliche Grenzen die vom <ref>dst='great_ocean' "
-"text='Großen Ozean'</ref> umspülten Küsten sind."
+"Der große Fluss grenzt das <ref>dst='kingdom_wesnoth' text='Königreich "
+"Wesnoth'</ref> und die <ref>dst='northlands' text='Nordlanden'</ref> "
+"voneinander ab. Er mündet bei <ref>dst='elensefar' text='Elensefar'</ref> in "
+"den <ref>dst='great_ocean' text='Großen Ozean'</ref>."
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:38
@@ -1480,26 +1461,6 @@ msgstr ""
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:172
-#, fuzzy
-#| msgid ""
-#| "Wesnoth is comprised of a series of battles, called "
-#| "<italic>text='scenarios'</italic>, that pit your troops against the "
-#| "troops of one or more adversaries. Multiple scenarios that follow on from "
-#| "each other, telling a story, make up <italic>text='campaigns'</italic>. "
-#| "In a campaign, you often need to play more carefully, preserving your "
-#| "best troops for use again in later scenarios.\n"
-#| "\n"
-#| "The interactive <bold>text='Tutorial'</bold> introduces the basics of "
-#| "Wesnoth gameplay in the context of a scenario. Most material covered in "
-#| "the tutorial is explained more in-depth in these pages, so you can always "
-#| "refer back here if you forget something.\n"
-#| "\n"
-#| "After you master the basics, try out a beginner campaign, such as "
-#| "<italic>text='Heir to the Throne'</italic> or <italic>text='The South "
-#| "Guard'</italic>. A full list of installed campaigns can be found via the "
-#| "<bold>text='Campaign'</bold> option on the main menu. As Wesnoth can be "
-#| "quite challenging, you may wish to start on easy before progressing to "
-#| "higher difficulties."
 msgid ""
 "Wesnoth is comprised of a series of battles, called "
 "<italic>text='scenarios'</italic>, that pit your troops against the troops "
@@ -1531,15 +1492,15 @@ msgid ""
 "difficulties, the obstacles to victory will be higher and overcoming them "
 "will require more skillful play."
 msgstr ""
-"Wesnoth binhaltet eine Reihe von Schlachten, die <italic>text='Szenarien'</"
-"italic> genannt werden. In diesen führst du deine Truppen gegen einen oder "
+"Wesnoth beinhaltet eine Reihe von Schlachten, die <italic>text='Szenarien'</"
+"italic> genannt werden. In diesen führt Ihr Eure Truppen gegen einen oder "
 "mehrere Gegenspieler in den Kampf. <italic>text='Kampagnen'</italic> sind "
 "eine Reihe von Szenarien, welche eine zusammenhängende Geschichte erzählen. "
 "In diesen muss man oft bedachter spielen, da der Schwierigkeitsgrad von "
 "Szenario zu Szenario ansteigt und später auch höherstufige Einheiten "
 "benötigt werden, um siegreich zu sein.\n"
 "\n"
-"Das interaktive <bold>text='Einführung'</bold> führt euch in einem Szenario "
+"Das interaktive <bold>text='Einführung'</bold> führt Euch in einem Szenario "
 "in die Grundlagen der Spielmechaniken von Wesnoth ein. Das meiste aus der "
 "Einführung wird auch etwas tiefergehend auf diesen Seiten erklärt. Falls "
 "euch also mal etwas entfallen sollte, könnt Ihr es hier noch einmal "
@@ -1550,8 +1511,19 @@ msgstr ""
 "<italic>text='Die Südwacht'</italic> versuchen. Eine Liste aller "
 "installierten Kampagnen könnt ihr under <bold>text='Kampagnen'</bold> im "
 "Menü finden. Da Wesnoth sehr herausfordernd sein kann, empfehlen wir Euch, "
-"erst einen einfachen Schwierigkeitsgrad zu wählen, bevor sie sich den "
-"höheren Schwierigkeitsgraden widmen."
+"erst einen einfachen Schwierigkeitsgrad zu wählen, bevor Ihr Euch den "
+"höheren Schwierigkeitsgraden widmet.\n"
+"\n"
+"Kampangen haben eine Einstufungen und Schwierigkeitsgrade. "
+"<italic>text='Invasion der Finsternis'</italic> ist beispielsweise als "
+"»Einfach« eingestuft und ist den den Schwieigkeitsgraden »Einfach«, »Normal« "
+"und »Herrausfordernd« spielbar. Die Einstufung gibt Ausschluss darüber, was "
+"an Kenntnissen über Spielmechanismen (wie z.B. <ref>dst='movement' "
+"text='Kontrollzonen'</ref> oder dem <ref>dst='time_of_day' text='Tag-/"
+"Nachtrythmus'</ref>) erwartet wird. Der Schwierigkeitsgrad sagt, aus wie "
+"herausfordernd Kampagnen für einen erfahrenen Spieler sind; bei höheren "
+"Schwierigkeitsgraden sind die Ziele schwieriger zu erriechen, was einer "
+"strategischeren Spielweise bedarf."
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:181
@@ -1649,19 +1621,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:204
-#, fuzzy
-#| msgid ""
-#| "Each side begins with one leader in their keep. At the start of any "
-#| "battle, and at times during it, you will need to recruit <ref>dst='.."
-#| "units' text='units'</ref> into your army. To recruit, you must have your "
-#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
-#| "italic> campaign) on the keep hex of a <ref>dst='terrain_castle' "
-#| "text='castle'</ref>. Then you may recruit by either choosing "
-#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
-#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
-#| "which lists units available for recruitment, along with their gold cost. "
-#| "Click on a unit to see its statistics, then press the "
-#| "<bold>text='Recruit'</bold> button to recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1677,7 +1636,7 @@ msgstr ""
 "Jede Partei startet mit einem Anführer und einer Burg. Am Anfang oder "
 "während einer Schlacht sind <ref>dst='..units' text='Truppen'</ref> für Eure "
 "Armee auszubilden. Dazu muss der Anführer (bspw. Konrad in <italic>text='Der "
-"Thronerbe'</italic>) in einer <ref>dst='terrain_castle' text='Burg'</ref> "
+"Thronerbe'</italic>) in einer <ref>dst='..terrain_castle' text='Burg'</ref> "
 "auf dem erhöhten Burgfried stehen. Ihr könnt nun entweder im Menü »Aktionen« "
 "oder nach Rechtsklick auf ein freies Hexfeld <bold>text=Ausbilden</bold> "
 "wählen. Das Ausbildungsmenü wird geöffnet, wo alle verfügbaren Einheiten "
@@ -2004,17 +1963,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:264
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Another thing to keep in mind while moving is <italic>text='zones of "
-#| "control'</italic>. Each unit — except for level 0 units — generates a "
-#| "zone of control in the hexes immediately surrounding it, and any enemy "
-#| "unit entering those hexes immediately ends its movement. Learning how to "
-#| "use zones of control to your advantage is an important part of Wesnoth, "
-#| "as only <ref>dst='ability_skirmisher' text='skirmishers'</ref> can ignore "
-#| "zones of control."
 msgid ""
 "\n"
 "\n"
@@ -2034,8 +1982,8 @@ msgstr ""
 "besteht. Geraten Gegner in diese Zone, verlieren sie sofort alle BP und "
 "müssen ihren Zug beenden. Zu lernen, wie man Kontrollzonen zum eigenen "
 "Vorteil nutzt, gehört zu den wichtigsten Taktiken in Wesnoth, zumal nur "
-"<ref>dst='ability_skirmisher' text='Plänkler'</ref> die Kontrollzonen "
-"ignorieren können."
+"<ref>dst='ability_skirmisherskirmisher' text='Plänkler'</ref> die "
+"Kontrollzonen ignorieren können."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:266
@@ -2501,7 +2449,7 @@ msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!\n"
 msgstr ""
-"Bedenke dass unter Tage die ewige Dunkelheit herrscht, wie des Nachts!\n"
+"Bedenke, dass unter Tage die ewige Dunkelheit herrscht, wie des Nachts!\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:354
@@ -2514,15 +2462,11 @@ msgstr ""
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:356
-#, fuzzy
-#| msgid ""
-#| "Some role-playing scenarios take place indoors — these regions are "
-#| "similarly intermediate."
 msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate.\n"
 msgstr ""
-"Einige Rollenspiel Szenarien spielen in Räumen. Diese sind ähnlich neutral."
+"Einige Rollenspiel Szenarien spielen in Räumen. Diese sind ähnlich neutral.\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:358
@@ -2532,6 +2476,10 @@ msgid ""
 "<ref>dst='terrain_lava' text='lava'</ref> change the time of day bonus "
 "around them."
 msgstr ""
+"Zu guter letzt, Einheiten mit der Fertigkeit "
+"<ref>dst='ability_illuminationilluminates' text='Lichtaura'</ref> und auch "
+"manch anderes Gelände wie beispielsweise <ref>dst='terrain_lava' "
+"text='Lava'</ref> ändern die Lichtverhältnisse."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:365
@@ -2565,12 +2513,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:368
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• <bold>text='Villages'</bold>: A unit which starts a turn in a village "
-#| "or oasis will heal 8HP. If the unit is poisoned, the poison will be cured "
-#| "instead."
 msgid ""
 "\n"
 "• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
@@ -2579,17 +2521,11 @@ msgid ""
 msgstr ""
 "\n"
 "• <bold>text='Dörfer'</bold>: befindet sich eine Einheit zu Beginn ihres "
-"Zuges in einem Dorf, erhält sie 8 LP zurück. Falls sie vergiftet ist wird "
-"dies stattdessen kuriert."
+"Zuges in einem Dorf oder einer <ref>dst='terrain_oasis' text='Oase'</ref> "
+"erhält sie 8 LP zurück. Falls sie vergiftet ist wird dies stattdessen kurier"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:369
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• <ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
-#| "(such as trolls) will automatically heal 8HP every turn. If the unit is "
-#| "poisoned, the poison will be cured instead."
 msgid ""
 "\n"
 "• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
@@ -2597,19 +2533,12 @@ msgid ""
 "the unit is poisoned, the poison will be cured instead."
 msgstr ""
 "\n"
-"• <ref>dst='ability_regenerates' text='Regeneration'</ref>: Manche Einheiten "
-"(z.B. Trolle) erholen sich in jeder Runde von selbst um 8 LP."
+"• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
+"Manche Einheiten (z.B. Trolle) erholen sich in jeder Runde von selbst um 8 "
+"LP."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:370
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• <bold>text='Healing units'</bold>: Units with the "
-#| "<ref>dst='ability_heals +4' text='Heals'</ref> ability will heal each "
-#| "allied adjacent unit, usually <ref>dst='ability_heals +4' text='4HP'</"
-#| "ref> or <ref>dst='ability_heals +8' text='8HP'</ref> per turn, or prevent "
-#| "Poison from causing that unit damage."
 msgid ""
 "\n"
 "• <bold>text='Healing units'</bold>: Units with the "
@@ -2620,20 +2549,13 @@ msgid ""
 msgstr ""
 "\n"
 "• <bold>text='Heilende Einheiten'</bold>: Einheiten mit der Fähigkeit "
-"<ref>dst='ability_heals +4' text='Heilen'</ref> werden umstehende Einheiten "
-"heilen, üblicherweise <ref>dst='ability_heals +4' text='4LP'</ref> oder "
-"<ref>dst='ability_heals +8' text='8LP'</ref> pro Zug, oder verhindern, dass "
+"<ref>dst='healingheals +4' text='Heilen'</ref> werden umstehende Einheiten "
+"heilen, üblicherweise <ref>dst='healingheals +4' text='4LP'</ref> oder "
+"<ref>dst='healingheals +8' text='8LP'</ref> pro Zug, oder verhindern, dass "
 "vergiftete Einheiten Schaden erleiden."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:371
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• <bold>text='Curing units'</bold>: Units with the "
-#| "<ref>dst='ability_cures' text='cures'</ref> ability will cure Poison in "
-#| "all allied adjacent units (in preference to healing, if it has that "
-#| "ability as well)."
 msgid ""
 "\n"
 "• <bold>text='Curing units'</bold>: Units with the "
@@ -2643,8 +2565,8 @@ msgid ""
 msgstr ""
 "\n"
 "• <bold>text='Kurieren'</bold>: Einheiten mit der Fähigkeit "
-"<ref>dst='ability_cures' text='Kurieren'</ref> heilen die Vergiftung aller "
-"umstehenden verbündeten Einheiten."
+"<ref>dst='ability_curingcures' text='Kurieren'</ref> heilen die Vergiftung "
+"aller umstehenden verbündeten Einheiten."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:372
