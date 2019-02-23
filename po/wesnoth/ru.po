@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-27 12:23+0300\n"
+"POT-Creation-Date: 2019-02-24 00:45+0300\n"
 "PO-Revision-Date: 2019-01-27 23:07+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: \n"
@@ -424,7 +424,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Прочие участники"
 
 #. [about]
-#: data/core/about.cfg:1729
+#: data/core/about.cfg:1736
 msgid "Bots"
 msgstr "Боты"
 
@@ -4023,6 +4023,11 @@ msgstr ""
 #: data/game_config.cfg:4
 msgid "Official Wesnoth Server"
 msgstr "Официальный сервер Wesnoth"
+
+#. [server]
+#: data/game_config.cfg:8
+msgid "Alternate Wesnoth Server"
+msgstr "Альтернативный сервер Wesnoth"
 
 #. [label]: id=no_options_notice
 #: data/gui/macros/custom_options_tree.cfg:25
@@ -7680,162 +7685,162 @@ msgstr "окаменел: "
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "Этот боец окаменел. Он не может двигаться или атаковать."
 
-#: src/reports.cpp:426
+#: src/reports.cpp:425
 msgid "Ability: "
 msgstr "Способность: "
 
-#: src/reports.cpp:428 src/reports.cpp:873
+#: src/reports.cpp:427 src/reports.cpp:880
 msgid " (inactive)"
 msgstr " (неактивно)"
 
-#: src/reports.cpp:480
+#: src/reports.cpp:487
 msgid "Resistances: "
 msgstr "Сопротивляемость: "
 
-#: src/reports.cpp:482
+#: src/reports.cpp:489
 msgid "(Att / Def)"
 msgstr "(Атака / Защ)"
 
-#: src/reports.cpp:513
+#: src/reports.cpp:520
 msgid "Experience Modifier: "
 msgstr "Модификатор опыта: "
 
-#: src/reports.cpp:564
+#: src/reports.cpp:571
 msgid "Terrain: "
 msgstr "Местность: "
 
-#: src/reports.cpp:581
+#: src/reports.cpp:588
 msgid "maximum^max."
 msgstr "макс."
 
-#: src/reports.cpp:581
+#: src/reports.cpp:588
 msgid "minimum^min."
 msgstr "мин."
 
-#: src/reports.cpp:586
+#: src/reports.cpp:593
 msgid "Defense: "
 msgstr "Защита: "
 
-#: src/reports.cpp:609
+#: src/reports.cpp:616
 msgid "vision: "
 msgstr "видение: "
 
-#: src/reports.cpp:637
+#: src/reports.cpp:644
 msgid "Movement Costs:"
 msgstr "Цена ходов:"
 
-#: src/reports.cpp:735 src/reports.cpp:951 src/reports.cpp:963
+#: src/reports.cpp:742 src/reports.cpp:958 src/reports.cpp:970
 msgid "Weapon: "
 msgstr "Оружие: "
 
-#: src/reports.cpp:736 src/reports.cpp:952
+#: src/reports.cpp:743 src/reports.cpp:959
 msgid "Damage: "
 msgstr "Ущерб: "
 
-#: src/reports.cpp:740
+#: src/reports.cpp:747
 msgid "Base damage: "
 msgstr "Базовый урон: "
 
-#: src/reports.cpp:742 src/reports.cpp:776 src/reports.cpp:786
+#: src/reports.cpp:749 src/reports.cpp:783 src/reports.cpp:793
 msgid "With specials: "
 msgstr "С особенностями: "
 
-#: src/reports.cpp:745
+#: src/reports.cpp:752
 msgid "Time of day: "
 msgstr "Время суток: "
 
-#: src/reports.cpp:749
+#: src/reports.cpp:756
 msgid "Leadership: "
 msgstr "Лидерство: "
 
-#: src/reports.cpp:753
+#: src/reports.cpp:760
 msgid "Slowed: "
 msgstr "Замедлен: "
 
-#: src/reports.cpp:757
+#: src/reports.cpp:764
 msgid "Attacks: "
 msgstr "Виды атак: "
 
-#: src/reports.cpp:761
+#: src/reports.cpp:768
 msgid "Max swarm bonus: "
 msgstr "Максимальный бонус роя: "
 
-#: src/reports.cpp:762 src/reports.cpp:781
+#: src/reports.cpp:769 src/reports.cpp:788
 msgid "Swarm: "
 msgstr "Рой: "
 
-#: src/reports.cpp:763 src/reports.cpp:774 src/reports.cpp:785
+#: src/reports.cpp:770 src/reports.cpp:781 src/reports.cpp:792
 msgid "Base attacks: "
 msgstr "Базовые атаки: "
 
-#: src/reports.cpp:769
+#: src/reports.cpp:776
 msgid "Specials: "
 msgstr "Особенности: "
 
-#: src/reports.cpp:779
+#: src/reports.cpp:786
 msgid "Subject to swarm: "
 msgstr "Действует рой: "
 
-#: src/reports.cpp:798
+#: src/reports.cpp:805
 msgid "Weapon range: "
 msgstr "Дальность оружия: "
 
-#: src/reports.cpp:799
+#: src/reports.cpp:806
 msgid "Damage type: "
 msgstr "Тип повреждений: "
 
-#: src/reports.cpp:800
+#: src/reports.cpp:807
 msgid "Damage versus: "
 msgstr "Тип повреждений: "
 
-#: src/reports.cpp:844
+#: src/reports.cpp:851
 msgid "Accuracy:"
 msgstr "Точность:"
 
-#: src/reports.cpp:849
+#: src/reports.cpp:856
 msgid "Parry:"
 msgstr "Защита:"
 
-#: src/reports.cpp:871
+#: src/reports.cpp:878
 msgid "Weapon special: "
 msgstr "Особенность оружия: "
 
-#: src/reports.cpp:935
+#: src/reports.cpp:942
 msgid "weapon^None"
 msgstr "Нет оружия"
 
-#: src/reports.cpp:964
+#: src/reports.cpp:971
 msgid "Total damage"
 msgstr "Всего повреждений"
 
-#: src/reports.cpp:1028
+#: src/reports.cpp:1035
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "Атака"
 msgstr[1] "Атаки"
 msgstr[2] "Атаки"
 
-#: src/reports.cpp:1158 src/reports.cpp:1200
+#: src/reports.cpp:1165 src/reports.cpp:1207
 msgid "Lawful units: "
 msgstr "Порядочные бойцы: "
 
-#: src/reports.cpp:1160 src/reports.cpp:1202
+#: src/reports.cpp:1167 src/reports.cpp:1209
 msgid "Neutral units: "
 msgstr "Нейтральные бойцы: "
 
-#: src/reports.cpp:1161 src/reports.cpp:1203
+#: src/reports.cpp:1168 src/reports.cpp:1210
 msgid "Chaotic units: "
 msgstr "Хаотичные бойцы: "
 
-#: src/reports.cpp:1163 src/reports.cpp:1205
+#: src/reports.cpp:1170 src/reports.cpp:1212
 msgid "Liminal units: "
 msgstr "Теневые бойцы: "
 
-#: src/reports.cpp:1264
+#: src/reports.cpp:1271
 msgid "Turn Number"
 msgstr "Номер хода"
 
-#: src/reports.cpp:1266
+#: src/reports.cpp:1273
 msgid ""
 "When the game reaches the number of turns indicated by the second number, it "
 "will end."
@@ -7843,34 +7848,34 @@ msgstr ""
 "Когда игра достигнет количества ходов, указанного вторым номером, она "
 "закончится."
 
-#: src/reports.cpp:1291
+#: src/reports.cpp:1298
 msgid "Gold"
 msgstr "Золото"
 
-#: src/reports.cpp:1291
+#: src/reports.cpp:1298
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 "Количество золота в настоящее время доступное для найма и содержания вашей "
 "армии."
 
-#: src/reports.cpp:1310
+#: src/reports.cpp:1317
 msgid "The fraction of known villages that your side has captured."
 msgstr "Доля от известных деревень, захваченных вашей стороной."
 
-#: src/reports.cpp:1310
+#: src/reports.cpp:1317
 msgid "Villages"
 msgstr "Деревни"
 
-#: src/reports.cpp:1315
+#: src/reports.cpp:1322
 msgid "The total number of units on your side."
 msgstr "Общее количество бойцов на вашей стороне."
 
-#: src/reports.cpp:1315
+#: src/reports.cpp:1322
 msgid "Units"
 msgstr "Бойцы"
 
-#: src/reports.cpp:1325
+#: src/reports.cpp:1332
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. The second is the "
@@ -7882,15 +7887,15 @@ msgstr ""
 "стоимость содержания, в том числе покрытая деревнями - другими словами, "
 "количество золота, которое будет вычтено, если вы потеряете все деревни."
 
-#: src/reports.cpp:1325
+#: src/reports.cpp:1332
 msgid "Upkeep"
 msgstr "Содержание"
 
-#: src/reports.cpp:1362
+#: src/reports.cpp:1369
 msgid "Income"
 msgstr "Доход"
 
-#: src/reports.cpp:1362
+#: src/reports.cpp:1369
 msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
@@ -7899,23 +7904,23 @@ msgstr ""
 "деревени, или количество золота, которое вы теряете каждый ход на содержание "
 "армии."
 
-#: src/reports.cpp:1530
+#: src/reports.cpp:1537
 msgid "Observers:"
 msgstr "Наблюдатели: "
 
-#: src/reports.cpp:1572
+#: src/reports.cpp:1579
 msgid "Clock"
 msgstr "Часы"
 
-#: src/reports.cpp:1583
+#: src/reports.cpp:1590
 msgid "Battery"
 msgstr "Батарея"
 
-#: src/reports.cpp:1611
+#: src/reports.cpp:1618
 msgid "Countdown until your turn automatically ends."
 msgstr "Обратный отсчет до момента пока ваш ход автоматически не закончится."
 
-#: src/reports.cpp:1611
+#: src/reports.cpp:1618
 msgid "Turn Countdown"
 msgstr "Обратный отсчет"
 
@@ -8416,9 +8421,6 @@ msgstr "Скрыть план $player"
 #: src/whiteboard/manager.cpp:1143
 msgid "Whiteboard Options"
 msgstr "Настройки планировщика"
-
-#~ msgid "Alternate Wesnoth Server"
-#~ msgstr "Альтернативный сервер Wesnoth"
 
 #~ msgid "battery"
 #~ msgstr "батарея"

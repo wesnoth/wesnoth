@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-27 12:23+0300\n"
+"POT-Creation-Date: 2019-02-24 00:45+0300\n"
 "PO-Revision-Date: 2019-02-04 16:58+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -413,7 +413,7 @@ msgid "Miscellaneous Contributors"
 msgstr "其他贡献者"
 
 #. [about]
-#: data/core/about.cfg:1729
+#: data/core/about.cfg:1736
 msgid "Bots"
 msgstr "机器人"
 
@@ -4303,6 +4303,13 @@ msgstr ""
 msgid "Official Wesnoth Server"
 msgstr "官方韦诺服务器"
 
+#. [server]
+#: data/game_config.cfg:8
+#, fuzzy
+#| msgid "Official Wesnoth Server"
+msgid "Alternate Wesnoth Server"
+msgstr "官方韦诺服务器"
+
 #. [label]: id=no_options_notice
 #: data/gui/macros/custom_options_tree.cfg:25
 msgid ""
@@ -7799,192 +7806,192 @@ msgstr "石化："
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "此单位石化了，它不能移动或者攻击。"
 
-#: src/reports.cpp:426
+#: src/reports.cpp:425
 msgid "Ability: "
 msgstr "能力："
 
-#: src/reports.cpp:428 src/reports.cpp:873
+#: src/reports.cpp:427 src/reports.cpp:880
 msgid " (inactive)"
 msgstr "（未激活）"
 
-#: src/reports.cpp:480
+#: src/reports.cpp:487
 msgid "Resistances: "
 msgstr "抗性："
 
-#: src/reports.cpp:482
+#: src/reports.cpp:489
 msgid "(Att / Def)"
 msgstr "（攻击/防御）"
 
-#: src/reports.cpp:513
+#: src/reports.cpp:520
 msgid "Experience Modifier: "
 msgstr "经验修正： "
 
-#: src/reports.cpp:564
+#: src/reports.cpp:571
 msgid "Terrain: "
 msgstr "地形："
 
-#: src/reports.cpp:581
+#: src/reports.cpp:588
 msgid "maximum^max."
 msgstr "最大值。"
 
-#: src/reports.cpp:581
+#: src/reports.cpp:588
 msgid "minimum^min."
 msgstr "最小值。"
 
-#: src/reports.cpp:586
+#: src/reports.cpp:593
 msgid "Defense: "
 msgstr "防御："
 
-#: src/reports.cpp:609
+#: src/reports.cpp:616
 msgid "vision: "
 msgstr "视野："
 
-#: src/reports.cpp:637
+#: src/reports.cpp:644
 msgid "Movement Costs:"
 msgstr "移动消耗："
 
-#: src/reports.cpp:735 src/reports.cpp:951 src/reports.cpp:963
+#: src/reports.cpp:742 src/reports.cpp:958 src/reports.cpp:970
 msgid "Weapon: "
 msgstr "武器："
 
-#: src/reports.cpp:736 src/reports.cpp:952
+#: src/reports.cpp:743 src/reports.cpp:959
 msgid "Damage: "
 msgstr "伤害："
 
-#: src/reports.cpp:740
+#: src/reports.cpp:747
 msgid "Base damage: "
 msgstr "基本伤害："
 
-#: src/reports.cpp:742 src/reports.cpp:776 src/reports.cpp:786
+#: src/reports.cpp:749 src/reports.cpp:783 src/reports.cpp:793
 msgid "With specials: "
 msgstr "特攻："
 
-#: src/reports.cpp:745
+#: src/reports.cpp:752
 msgid "Time of day: "
 msgstr "时段："
 
-#: src/reports.cpp:749
+#: src/reports.cpp:756
 msgid "Leadership: "
 msgstr "领导："
 
-#: src/reports.cpp:753
+#: src/reports.cpp:760
 msgid "Slowed: "
 msgstr "减速： "
 
-#: src/reports.cpp:757
+#: src/reports.cpp:764
 msgid "Attacks: "
 msgstr "攻击数："
 
-#: src/reports.cpp:761
+#: src/reports.cpp:768
 msgid "Max swarm bonus: "
 msgstr "最高群击加成："
 
-#: src/reports.cpp:762 src/reports.cpp:781
+#: src/reports.cpp:769 src/reports.cpp:788
 msgid "Swarm: "
 msgstr "群击："
 
-#: src/reports.cpp:763 src/reports.cpp:774 src/reports.cpp:785
+#: src/reports.cpp:770 src/reports.cpp:781 src/reports.cpp:792
 msgid "Base attacks: "
 msgstr "基本攻击："
 
-#: src/reports.cpp:769
+#: src/reports.cpp:776
 msgid "Specials: "
 msgstr "特攻："
 
-#: src/reports.cpp:779
+#: src/reports.cpp:786
 msgid "Subject to swarm: "
 msgstr "群击有效："
 
-#: src/reports.cpp:798
+#: src/reports.cpp:805
 msgid "Weapon range: "
 msgstr "武器射程："
 
-#: src/reports.cpp:799
+#: src/reports.cpp:806
 msgid "Damage type: "
 msgstr "伤害类型："
 
-#: src/reports.cpp:800
+#: src/reports.cpp:807
 msgid "Damage versus: "
 msgstr "伤害目标："
 
-#: src/reports.cpp:844
+#: src/reports.cpp:851
 msgid "Accuracy:"
 msgstr "命中："
 
-#: src/reports.cpp:849
+#: src/reports.cpp:856
 msgid "Parry:"
 msgstr "格挡："
 
-#: src/reports.cpp:871
+#: src/reports.cpp:878
 msgid "Weapon special: "
 msgstr "武器特攻："
 
-#: src/reports.cpp:935
+#: src/reports.cpp:942
 msgid "weapon^None"
 msgstr "无"
 
-#: src/reports.cpp:964
+#: src/reports.cpp:971
 msgid "Total damage"
 msgstr "总伤害输出"
 
-#: src/reports.cpp:1028
+#: src/reports.cpp:1035
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "攻击手段"
 msgstr[1] "攻击手段"
 
-#: src/reports.cpp:1158 src/reports.cpp:1200
+#: src/reports.cpp:1165 src/reports.cpp:1207
 msgid "Lawful units: "
 msgstr "守序单位："
 
-#: src/reports.cpp:1160 src/reports.cpp:1202
+#: src/reports.cpp:1167 src/reports.cpp:1209
 msgid "Neutral units: "
 msgstr "中立单位："
 
-#: src/reports.cpp:1161 src/reports.cpp:1203
+#: src/reports.cpp:1168 src/reports.cpp:1210
 msgid "Chaotic units: "
 msgstr "混沌单位："
 
-#: src/reports.cpp:1163 src/reports.cpp:1205
+#: src/reports.cpp:1170 src/reports.cpp:1212
 msgid "Liminal units: "
 msgstr "边缘单位："
 
-#: src/reports.cpp:1264
+#: src/reports.cpp:1271
 msgid "Turn Number"
 msgstr "回合数"
 
-#: src/reports.cpp:1266
+#: src/reports.cpp:1273
 msgid ""
 "When the game reaches the number of turns indicated by the second number, it "
 "will end."
 msgstr "当到达第二个数字所表示的回合数时，游戏将结束。"
 
-#: src/reports.cpp:1291
+#: src/reports.cpp:1298
 msgid "Gold"
 msgstr "金币"
 
-#: src/reports.cpp:1291
+#: src/reports.cpp:1298
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr "当前可用于征募与维护你的军队的金币数量。"
 
-#: src/reports.cpp:1310
+#: src/reports.cpp:1317
 msgid "The fraction of known villages that your side has captured."
 msgstr "已知的村庄中，你的阵营所占领的比例。"
 
-#: src/reports.cpp:1310
+#: src/reports.cpp:1317
 msgid "Villages"
 msgstr "村庄"
 
-#: src/reports.cpp:1315
+#: src/reports.cpp:1322
 msgid "The total number of units on your side."
 msgstr "你的阵营所拥有的单位总数。"
 
-#: src/reports.cpp:1315
+#: src/reports.cpp:1322
 msgid "Units"
 msgstr "单位"
 
-#: src/reports.cpp:1325
+#: src/reports.cpp:1332
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. The second is the "
@@ -7995,15 +8002,15 @@ msgstr ""
 "量。第二个是总维护费用，包括由村庄支付的费用——换句话说，是当你失去所有村庄"
 "时，将会被减去的金币数量。"
 
-#: src/reports.cpp:1325
+#: src/reports.cpp:1332
 msgid "Upkeep"
 msgstr "维护费用"
 
-#: src/reports.cpp:1362
+#: src/reports.cpp:1369
 msgid "Income"
 msgstr "收入"
 
-#: src/reports.cpp:1362
+#: src/reports.cpp:1369
 msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
@@ -8011,23 +8018,23 @@ msgstr ""
 "每回合从你所控制的村庄中获得的金币总数，或每回合由于单位维护而会损失的金币总"
 "数。"
 
-#: src/reports.cpp:1530
+#: src/reports.cpp:1537
 msgid "Observers:"
 msgstr "观察者："
 
-#: src/reports.cpp:1572
+#: src/reports.cpp:1579
 msgid "Clock"
 msgstr "时钟"
 
-#: src/reports.cpp:1583
+#: src/reports.cpp:1590
 msgid "Battery"
 msgstr "炮位"
 
-#: src/reports.cpp:1611
+#: src/reports.cpp:1618
 msgid "Countdown until your turn automatically ends."
 msgstr "直到你的回合自动结束的倒计时"
 
-#: src/reports.cpp:1611
+#: src/reports.cpp:1618
 msgid "Turn Countdown"
 msgstr "回合倒计时"
 

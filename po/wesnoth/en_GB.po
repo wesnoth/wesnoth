@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-27 12:23+0300\n"
+"POT-Creation-Date: 2019-02-24 00:45+0300\n"
 "PO-Revision-Date: 2019-01-23 17:32+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -419,7 +419,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Miscellaneous Contributors"
 
 #. [about]
-#: data/core/about.cfg:1729
+#: data/core/about.cfg:1736
 msgid "Bots"
 msgstr "Bots"
 
@@ -3995,6 +3995,11 @@ msgstr ""
 #: data/game_config.cfg:4
 msgid "Official Wesnoth Server"
 msgstr "Official Wesnoth Server"
+
+#. [server]
+#: data/game_config.cfg:8
+msgid "Alternate Wesnoth Server"
+msgstr "Alternate Wesnoth Server"
 
 #. [label]: id=no_options_notice
 #: data/gui/macros/custom_options_tree.cfg:25
@@ -7612,161 +7617,161 @@ msgstr "petrified: "
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "This unit has been petrified. It may not move or attack."
 
-#: src/reports.cpp:426
+#: src/reports.cpp:425
 msgid "Ability: "
 msgstr "Ability: "
 
-#: src/reports.cpp:428 src/reports.cpp:873
+#: src/reports.cpp:427 src/reports.cpp:880
 msgid " (inactive)"
 msgstr " (inactive)"
 
-#: src/reports.cpp:480
+#: src/reports.cpp:487
 msgid "Resistances: "
 msgstr "Resistances: "
 
-#: src/reports.cpp:482
+#: src/reports.cpp:489
 msgid "(Att / Def)"
 msgstr "(Att / Def)"
 
-#: src/reports.cpp:513
+#: src/reports.cpp:520
 msgid "Experience Modifier: "
 msgstr "Experience Modifier: "
 
-#: src/reports.cpp:564
+#: src/reports.cpp:571
 msgid "Terrain: "
 msgstr "Terrain: "
 
-#: src/reports.cpp:581
+#: src/reports.cpp:588
 msgid "maximum^max."
 msgstr "max."
 
-#: src/reports.cpp:581
+#: src/reports.cpp:588
 msgid "minimum^min."
 msgstr "min."
 
-#: src/reports.cpp:586
+#: src/reports.cpp:593
 msgid "Defense: "
 msgstr "Defence: "
 
-#: src/reports.cpp:609
+#: src/reports.cpp:616
 msgid "vision: "
 msgstr "vision: "
 
-#: src/reports.cpp:637
+#: src/reports.cpp:644
 msgid "Movement Costs:"
 msgstr "Movement Costs:"
 
-#: src/reports.cpp:735 src/reports.cpp:951 src/reports.cpp:963
+#: src/reports.cpp:742 src/reports.cpp:958 src/reports.cpp:970
 msgid "Weapon: "
 msgstr "Weapon: "
 
-#: src/reports.cpp:736 src/reports.cpp:952
+#: src/reports.cpp:743 src/reports.cpp:959
 msgid "Damage: "
 msgstr "Damage: "
 
-#: src/reports.cpp:740
+#: src/reports.cpp:747
 msgid "Base damage: "
 msgstr "Base damage: "
 
-#: src/reports.cpp:742 src/reports.cpp:776 src/reports.cpp:786
+#: src/reports.cpp:749 src/reports.cpp:783 src/reports.cpp:793
 msgid "With specials: "
 msgstr "With specials: "
 
-#: src/reports.cpp:745
+#: src/reports.cpp:752
 msgid "Time of day: "
 msgstr "Time of day: "
 
-#: src/reports.cpp:749
+#: src/reports.cpp:756
 msgid "Leadership: "
 msgstr "Leadership: "
 
-#: src/reports.cpp:753
+#: src/reports.cpp:760
 msgid "Slowed: "
 msgstr "Slowed: "
 
-#: src/reports.cpp:757
+#: src/reports.cpp:764
 msgid "Attacks: "
 msgstr "Attacks: "
 
-#: src/reports.cpp:761
+#: src/reports.cpp:768
 msgid "Max swarm bonus: "
 msgstr "Max swarm bonus: "
 
-#: src/reports.cpp:762 src/reports.cpp:781
+#: src/reports.cpp:769 src/reports.cpp:788
 msgid "Swarm: "
 msgstr "Swarm: "
 
-#: src/reports.cpp:763 src/reports.cpp:774 src/reports.cpp:785
+#: src/reports.cpp:770 src/reports.cpp:781 src/reports.cpp:792
 msgid "Base attacks: "
 msgstr "Base attacks: "
 
-#: src/reports.cpp:769
+#: src/reports.cpp:776
 msgid "Specials: "
 msgstr "Specials: "
 
-#: src/reports.cpp:779
+#: src/reports.cpp:786
 msgid "Subject to swarm: "
 msgstr "Subject to swarm: "
 
-#: src/reports.cpp:798
+#: src/reports.cpp:805
 msgid "Weapon range: "
 msgstr "Weapon range: "
 
-#: src/reports.cpp:799
+#: src/reports.cpp:806
 msgid "Damage type: "
 msgstr "Damage type: "
 
-#: src/reports.cpp:800
+#: src/reports.cpp:807
 msgid "Damage versus: "
 msgstr "Damage versus: "
 
-#: src/reports.cpp:844
+#: src/reports.cpp:851
 msgid "Accuracy:"
 msgstr "Accuracy:"
 
-#: src/reports.cpp:849
+#: src/reports.cpp:856
 msgid "Parry:"
 msgstr "Parry:"
 
-#: src/reports.cpp:871
+#: src/reports.cpp:878
 msgid "Weapon special: "
 msgstr "Weapon special: "
 
-#: src/reports.cpp:935
+#: src/reports.cpp:942
 msgid "weapon^None"
 msgstr "None"
 
-#: src/reports.cpp:964
+#: src/reports.cpp:971
 msgid "Total damage"
 msgstr "Total damage"
 
-#: src/reports.cpp:1028
+#: src/reports.cpp:1035
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "Attack"
 msgstr[1] "Attacks"
 
-#: src/reports.cpp:1158 src/reports.cpp:1200
+#: src/reports.cpp:1165 src/reports.cpp:1207
 msgid "Lawful units: "
 msgstr "Lawful units: "
 
-#: src/reports.cpp:1160 src/reports.cpp:1202
+#: src/reports.cpp:1167 src/reports.cpp:1209
 msgid "Neutral units: "
 msgstr "Neutral units: "
 
-#: src/reports.cpp:1161 src/reports.cpp:1203
+#: src/reports.cpp:1168 src/reports.cpp:1210
 msgid "Chaotic units: "
 msgstr "Chaotic units: "
 
-#: src/reports.cpp:1163 src/reports.cpp:1205
+#: src/reports.cpp:1170 src/reports.cpp:1212
 msgid "Liminal units: "
 msgstr "Liminal units: "
 
-#: src/reports.cpp:1264
+#: src/reports.cpp:1271
 msgid "Turn Number"
 msgstr "Turn Number"
 
-#: src/reports.cpp:1266
+#: src/reports.cpp:1273
 msgid ""
 "When the game reaches the number of turns indicated by the second number, it "
 "will end."
@@ -7774,33 +7779,33 @@ msgstr ""
 "When the game reaches the number of turns indicated by the second number, it "
 "will end."
 
-#: src/reports.cpp:1291
+#: src/reports.cpp:1298
 msgid "Gold"
 msgstr "Gold"
 
-#: src/reports.cpp:1291
+#: src/reports.cpp:1298
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 "The amount of gold currently available to recruit and maintain your army."
 
-#: src/reports.cpp:1310
+#: src/reports.cpp:1317
 msgid "The fraction of known villages that your side has captured."
 msgstr "The fraction of known villages that your side has captured."
 
-#: src/reports.cpp:1310
+#: src/reports.cpp:1317
 msgid "Villages"
 msgstr "Villages"
 
-#: src/reports.cpp:1315
+#: src/reports.cpp:1322
 msgid "The total number of units on your side."
 msgstr "The total number of units on your side."
 
-#: src/reports.cpp:1315
+#: src/reports.cpp:1322
 msgid "Units"
 msgstr "Units"
 
-#: src/reports.cpp:1325
+#: src/reports.cpp:1332
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. The second is the "
@@ -7812,15 +7817,15 @@ msgstr ""
 "total cost of upkeep, including that covered by villages — in other words, "
 "the amount of gold that would be deducted if you lost all villages."
 
-#: src/reports.cpp:1325
+#: src/reports.cpp:1332
 msgid "Upkeep"
 msgstr "Upkeep"
 
-#: src/reports.cpp:1362
+#: src/reports.cpp:1369
 msgid "Income"
 msgstr "Income"
 
-#: src/reports.cpp:1362
+#: src/reports.cpp:1369
 msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
@@ -7828,23 +7833,23 @@ msgstr ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
 
-#: src/reports.cpp:1530
+#: src/reports.cpp:1537
 msgid "Observers:"
 msgstr "Observers:"
 
-#: src/reports.cpp:1572
+#: src/reports.cpp:1579
 msgid "Clock"
 msgstr "Clock"
 
-#: src/reports.cpp:1583
+#: src/reports.cpp:1590
 msgid "Battery"
 msgstr "Battery"
 
-#: src/reports.cpp:1611
+#: src/reports.cpp:1618
 msgid "Countdown until your turn automatically ends."
 msgstr "Countdown until your turn automatically ends."
 
-#: src/reports.cpp:1611
+#: src/reports.cpp:1618
 msgid "Turn Countdown"
 msgstr "Turn Countdown"
 
@@ -8335,9 +8340,6 @@ msgstr "Hide plans for $player"
 #: src/whiteboard/manager.cpp:1143
 msgid "Whiteboard Options"
 msgstr "Whiteboard Options"
-
-#~ msgid "Alternate Wesnoth Server"
-#~ msgstr "Alternate Wesnoth Server"
 
 #~ msgid "battery"
 #~ msgstr "battery"

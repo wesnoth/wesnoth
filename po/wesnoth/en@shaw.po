@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-27 12:23+0300\n"
+"POT-Creation-Date: 2019-02-24 00:45+0300\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -423,7 +423,7 @@ msgid "Miscellaneous Contributors"
 msgstr "𐑥𐑦𐑕𐑩𐑤𐑱𐑯𐑰𐑩𐑕 𐑒𐑩𐑯𐑑𐑮𐑦𐑚𐑘𐑩𐑑𐑻𐑟"
 
 #. [about]
-#: data/core/about.cfg:1729
+#: data/core/about.cfg:1736
 msgid "Bots"
 msgstr "𐑚𐑭𐑑𐑕"
 
@@ -3741,6 +3741,11 @@ msgstr ""
 #: data/game_config.cfg:4
 msgid "Official Wesnoth Server"
 msgstr "𐑪𐑓𐑦𐑖𐑩𐑤 ·𐑢𐑧𐑕𐑯𐑷𐑔 𐑕𐑻𐑝𐑻"
+
+#. [server]
+#: data/game_config.cfg:8
+msgid "Alternate Wesnoth Server"
+msgstr "𐑪𐑤𐑑𐑼𐑯𐑱𐑑 ·𐑢𐑧𐑕𐑯𐑷𐑔 𐑕𐑻𐑝𐑻"
 
 #. [label]: id=no_options_notice
 #: data/gui/macros/custom_options_tree.cfg:25
@@ -7576,163 +7581,163 @@ msgstr "𐑐𐑧𐑑𐑮𐑩𐑓𐑲𐑛: "
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑣𐑨𐑟 𐑚𐑰𐑯 𐑐𐑧𐑑𐑮𐑩𐑓𐑲𐑛. 𐑦𐑑 𐑥𐑱 𐑯𐑪𐑑 𐑥𐑵𐑝 𐑹 𐑩𐑑𐑨𐑒."
 
-#: src/reports.cpp:426
+#: src/reports.cpp:425
 #, fuzzy
 msgid "Ability: "
 msgstr "𐑩𐑚𐑦𐑤𐑦𐑑𐑦𐑟: "
 
-#: src/reports.cpp:428 src/reports.cpp:873
+#: src/reports.cpp:427 src/reports.cpp:880
 msgid " (inactive)"
 msgstr ""
 
-#: src/reports.cpp:480
+#: src/reports.cpp:487
 msgid "Resistances: "
 msgstr "𐑮𐑦𐑟𐑦𐑕𐑑𐑩𐑯𐑕𐑩𐑟: "
 
-#: src/reports.cpp:482
+#: src/reports.cpp:489
 msgid "(Att / Def)"
 msgstr "(𐑩𐑑𐑨𐑒 / 𐑛𐑧𐑓𐑧𐑯𐑛)"
 
-#: src/reports.cpp:513
+#: src/reports.cpp:520
 #, fuzzy
 #| msgid "Experience modifier: "
 msgid "Experience Modifier: "
 msgstr "𐑦𐑒𐑕𐑐𐑽𐑦𐑩𐑯𐑕 𐑥𐑪𐑛𐑦𐑓𐑲𐑼: "
 
-#: src/reports.cpp:564
+#: src/reports.cpp:571
 #, fuzzy
 msgid "Terrain: "
 msgstr "𐑑𐑻𐑱𐑯"
 
-#: src/reports.cpp:581
+#: src/reports.cpp:588
 msgid "maximum^max."
 msgstr ""
 
-#: src/reports.cpp:581
+#: src/reports.cpp:588
 msgid "minimum^min."
 msgstr ""
 
-#: src/reports.cpp:586
+#: src/reports.cpp:593
 #, fuzzy
 msgid "Defense: "
 msgstr "𐑛𐑦𐑓𐑧𐑯𐑕"
 
-#: src/reports.cpp:609
+#: src/reports.cpp:616
 #, fuzzy
 #| msgid "Version: "
 msgid "vision: "
 msgstr "𐑝𐑻𐑠𐑩𐑯: "
 
-#: src/reports.cpp:637
+#: src/reports.cpp:644
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement Costs:"
 msgstr "𐑥𐑵𐑝𐑥𐑩𐑯𐑑 𐑒𐑪𐑕𐑑"
 
-#: src/reports.cpp:735 src/reports.cpp:951 src/reports.cpp:963
+#: src/reports.cpp:742 src/reports.cpp:958 src/reports.cpp:970
 #, fuzzy
 msgid "Weapon: "
 msgstr "𐑢𐑧𐑐𐑩𐑯 𐑮𐑱𐑯𐑡: "
 
-#: src/reports.cpp:736 src/reports.cpp:952
+#: src/reports.cpp:743 src/reports.cpp:959
 #, fuzzy
 msgid "Damage: "
 msgstr "𐑛𐑨𐑥𐑦𐑡"
 
-#: src/reports.cpp:740
+#: src/reports.cpp:747
 #, fuzzy
 msgid "Base damage: "
 msgstr "𐑑𐑴𐑑𐑩𐑤 𐑛𐑨𐑥𐑦𐑡"
 
-#: src/reports.cpp:742 src/reports.cpp:776 src/reports.cpp:786
+#: src/reports.cpp:749 src/reports.cpp:783 src/reports.cpp:793
 #, fuzzy
 msgid "With specials: "
 msgstr "𐑢𐑧𐑐𐑩𐑯 𐑕𐑐𐑧𐑖𐑩𐑤𐑟"
 
-#: src/reports.cpp:745
+#: src/reports.cpp:752
 #, fuzzy
 msgid "Time of day: "
 msgstr "𐑑𐑲𐑥 𐑝 𐑛𐑱"
 
-#: src/reports.cpp:749
+#: src/reports.cpp:756
 #, fuzzy
 msgid "Leadership: "
 msgstr "𐑤𐑰𐑛𐑼𐑖𐑦𐑐"
 
-#: src/reports.cpp:753
+#: src/reports.cpp:760
 #, fuzzy
 msgid "Slowed: "
 msgstr "𐑕𐑤𐑴𐑛: "
 
-#: src/reports.cpp:757
+#: src/reports.cpp:764
 #, fuzzy
 msgid "Attacks: "
 msgstr "𐑩𐑑𐑨𐑒𐑻"
 
-#: src/reports.cpp:761
+#: src/reports.cpp:768
 #, fuzzy
 #| msgid "Max HP bonus +"
 msgid "Max swarm bonus: "
 msgstr "𐑥𐑨𐑒𐑕 HP 𐑚𐑴𐑯𐑩𐑕 +"
 
-#: src/reports.cpp:762 src/reports.cpp:781
+#: src/reports.cpp:769 src/reports.cpp:788
 #, fuzzy
 msgid "Swarm: "
 msgstr "𐑕𐑢𐑹𐑥"
 
-#: src/reports.cpp:763 src/reports.cpp:774 src/reports.cpp:785
+#: src/reports.cpp:770 src/reports.cpp:781 src/reports.cpp:792
 msgid "Base attacks: "
 msgstr ""
 
-#: src/reports.cpp:769
+#: src/reports.cpp:776
 #, fuzzy
 #| msgid "Special"
 msgid "Specials: "
 msgstr "𐑕𐑐𐑧𐑖𐑩𐑤"
 
-#: src/reports.cpp:779
+#: src/reports.cpp:786
 msgid "Subject to swarm: "
 msgstr ""
 
-#: src/reports.cpp:798
+#: src/reports.cpp:805
 #, fuzzy
 msgid "Weapon range: "
 msgstr "𐑢𐑧𐑐𐑩𐑯 𐑮𐑱𐑯𐑡: "
 
-#: src/reports.cpp:799
+#: src/reports.cpp:806
 #, fuzzy
 msgid "Damage type: "
 msgstr "𐑛𐑨𐑥𐑦𐑡 𐑑𐑲𐑐: "
 
-#: src/reports.cpp:800
+#: src/reports.cpp:807
 #, fuzzy
 msgid "Damage versus: "
 msgstr "𐑛𐑨𐑥𐑦𐑡 𐑑𐑲𐑐: "
 
-#: src/reports.cpp:844
+#: src/reports.cpp:851
 #, fuzzy
 msgid "Accuracy:"
 msgstr "% 𐑨𐑒𐑘𐑻𐑩𐑕𐑰"
 
-#: src/reports.cpp:849
+#: src/reports.cpp:856
 #, fuzzy
 msgid "Parry:"
 msgstr "% 𐑐𐑺𐑰"
 
-#: src/reports.cpp:871
+#: src/reports.cpp:878
 #, fuzzy
 msgid "Weapon special: "
 msgstr "𐑢𐑧𐑐𐑩𐑯 𐑕𐑐𐑧𐑖𐑩𐑤𐑟"
 
-#: src/reports.cpp:935
+#: src/reports.cpp:942
 msgid "weapon^None"
 msgstr ""
 
-#: src/reports.cpp:964
+#: src/reports.cpp:971
 msgid "Total damage"
 msgstr "𐑑𐑴𐑑𐑩𐑤 𐑛𐑨𐑥𐑦𐑡"
 
-#: src/reports.cpp:1028
+#: src/reports.cpp:1035
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack"
@@ -7740,63 +7745,63 @@ msgid_plural "Attacks"
 msgstr[0] "𐑩𐑑𐑨𐑒𐑻"
 msgstr[1] "𐑩𐑑𐑨𐑒𐑻"
 
-#: src/reports.cpp:1158 src/reports.cpp:1200
+#: src/reports.cpp:1165 src/reports.cpp:1207
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful units: "
 msgstr "𐑤𐑷𐑓𐑫𐑤 𐑿𐑯𐑦𐑑𐑕: "
 
-#: src/reports.cpp:1160 src/reports.cpp:1202
+#: src/reports.cpp:1167 src/reports.cpp:1209
 msgid "Neutral units: "
 msgstr "𐑯𐑵𐑑𐑮𐑩𐑤 𐑿𐑯𐑦𐑑𐑕: "
 
-#: src/reports.cpp:1161 src/reports.cpp:1203
+#: src/reports.cpp:1168 src/reports.cpp:1210
 msgid "Chaotic units: "
 msgstr "𐑒𐑱𐑭𐑑𐑦𐑒 𐑿𐑯𐑦𐑑𐑕: "
 
-#: src/reports.cpp:1163 src/reports.cpp:1205
+#: src/reports.cpp:1170 src/reports.cpp:1212
 #, fuzzy
 msgid "Liminal units: "
 msgstr "𐑤𐑷𐑓𐑫𐑤 𐑿𐑯𐑦𐑑𐑕: "
 
-#: src/reports.cpp:1264
+#: src/reports.cpp:1271
 #, fuzzy
 #| msgid "Turn "
 msgid "Turn Number"
 msgstr "𐑑𐑻𐑯 "
 
-#: src/reports.cpp:1266
+#: src/reports.cpp:1273
 msgid ""
 "When the game reaches the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 
-#: src/reports.cpp:1291
+#: src/reports.cpp:1298
 msgid "Gold"
 msgstr "𐑜𐑴𐑤𐑛"
 
-#: src/reports.cpp:1291
+#: src/reports.cpp:1298
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 
-#: src/reports.cpp:1310
+#: src/reports.cpp:1317
 msgid "The fraction of known villages that your side has captured."
 msgstr ""
 
-#: src/reports.cpp:1310
+#: src/reports.cpp:1317
 msgid "Villages"
 msgstr "𐑝𐑦𐑤𐑦𐑡𐑦𐑟"
 
-#: src/reports.cpp:1315
+#: src/reports.cpp:1322
 msgid "The total number of units on your side."
 msgstr ""
 
-#: src/reports.cpp:1315
+#: src/reports.cpp:1322
 msgid "Units"
 msgstr "𐑿𐑯𐑦𐑑𐑕"
 
-#: src/reports.cpp:1325
+#: src/reports.cpp:1332
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. The second is the "
@@ -7804,37 +7809,37 @@ msgid ""
 "the amount of gold that would be deducted if you lost all villages."
 msgstr ""
 
-#: src/reports.cpp:1325
+#: src/reports.cpp:1332
 msgid "Upkeep"
 msgstr "𐑳𐑐𐑒𐑰𐑐"
 
-#: src/reports.cpp:1362
+#: src/reports.cpp:1369
 msgid "Income"
 msgstr "𐑦𐑯𐑒𐑳𐑥"
 
-#: src/reports.cpp:1362
+#: src/reports.cpp:1369
 msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
 msgstr ""
 
-#: src/reports.cpp:1530
+#: src/reports.cpp:1537
 msgid "Observers:"
 msgstr "𐑩𐑚𐑟𐑻𐑝𐑼𐑟:"
 
-#: src/reports.cpp:1572
+#: src/reports.cpp:1579
 msgid "Clock"
 msgstr ""
 
-#: src/reports.cpp:1583
+#: src/reports.cpp:1590
 msgid "Battery"
 msgstr ""
 
-#: src/reports.cpp:1611
+#: src/reports.cpp:1618
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1611
+#: src/reports.cpp:1618
 msgid "Turn Countdown"
 msgstr ""
 
@@ -8394,9 +8399,6 @@ msgstr "𐑮𐑦𐑐𐑤𐑱𐑕 𐑢𐑦𐑞 $player"
 #: src/whiteboard/manager.cpp:1143
 msgid "Whiteboard Options"
 msgstr ""
-
-#~ msgid "Alternate Wesnoth Server"
-#~ msgstr "𐑪𐑤𐑑𐑼𐑯𐑱𐑑 ·𐑢𐑧𐑕𐑯𐑷𐑔 𐑕𐑻𐑝𐑻"
 
 #~ msgid ""
 #~ "In many campaign scenarios, you may issue simple instructions for your "

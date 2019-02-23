@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-27 12:23+0300\n"
+"POT-Creation-Date: 2019-02-24 00:45+0300\n"
 "PO-Revision-Date: 2011-12-28 23:31+0100\n"
 "Last-Translator: Bjørn Håvard Stokke <bjoennungen@yahoo.no>\n"
 "Language-Team: None\n"
@@ -415,7 +415,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Diverse bidragsytere"
 
 #. [about]
-#: data/core/about.cfg:1729
+#: data/core/about.cfg:1736
 msgid "Bots"
 msgstr "'Bots'"
 
@@ -3718,6 +3718,12 @@ msgstr ""
 #: data/game_config.cfg:4
 #, fuzzy
 msgid "Official Wesnoth Server"
+msgstr "Koble til offisiell server"
+
+#. [server]
+#: data/game_config.cfg:8
+#, fuzzy
+msgid "Alternate Wesnoth Server"
 msgstr "Koble til offisiell server"
 
 #. [label]: id=no_options_notice
@@ -7486,178 +7492,178 @@ msgid "This unit has been petrified. It may not move or attack."
 msgstr ""
 "Denne enheten er blitt forsteinet. Den kan ikke bevege seg eller kjempe."
 
-#: src/reports.cpp:426
+#: src/reports.cpp:425
 #, fuzzy
 #| msgid "Abilities: "
 msgid "Ability: "
 msgstr "Egenskaper: "
 
-#: src/reports.cpp:428 src/reports.cpp:873
+#: src/reports.cpp:427 src/reports.cpp:880
 msgid " (inactive)"
 msgstr ""
 
-#: src/reports.cpp:480
+#: src/reports.cpp:487
 #, fuzzy
 msgid "Resistances: "
 msgstr "Motstander"
 
-#: src/reports.cpp:482
+#: src/reports.cpp:489
 msgid "(Att / Def)"
 msgstr ""
 
-#: src/reports.cpp:513
+#: src/reports.cpp:520
 msgid "Experience Modifier: "
 msgstr "Erfaringsskalering: "
 
-#: src/reports.cpp:564
+#: src/reports.cpp:571
 #, fuzzy
 #| msgid "Terrain"
 msgid "Terrain: "
 msgstr "Terreng"
 
-#: src/reports.cpp:581
+#: src/reports.cpp:588
 msgid "maximum^max."
 msgstr ""
 
-#: src/reports.cpp:581
+#: src/reports.cpp:588
 msgid "minimum^min."
 msgstr ""
 
-#: src/reports.cpp:586
+#: src/reports.cpp:593
 #, fuzzy
 #| msgid "Defense"
 msgid "Defense: "
 msgstr "Forsvar"
 
-#: src/reports.cpp:609
+#: src/reports.cpp:616
 #, fuzzy
 #| msgid "Version: "
 msgid "vision: "
 msgstr "Versjon: "
 
-#: src/reports.cpp:637
+#: src/reports.cpp:644
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement Costs:"
 msgstr "Forflytningskostnad"
 
-#: src/reports.cpp:735 src/reports.cpp:951 src/reports.cpp:963
+#: src/reports.cpp:742 src/reports.cpp:958 src/reports.cpp:970
 #, fuzzy
 #| msgid "weapon range: "
 msgid "Weapon: "
 msgstr "våpenrekkevidde: "
 
-#: src/reports.cpp:736 src/reports.cpp:952
+#: src/reports.cpp:743 src/reports.cpp:959
 #, fuzzy
 #| msgid "Damage"
 msgid "Damage: "
 msgstr "Skade"
 
-#: src/reports.cpp:740
+#: src/reports.cpp:747
 #, fuzzy
 #| msgid "Total damage"
 msgid "Base damage: "
 msgstr "Totalskade"
 
-#: src/reports.cpp:742 src/reports.cpp:776 src/reports.cpp:786
+#: src/reports.cpp:749 src/reports.cpp:783 src/reports.cpp:793
 #, fuzzy
 #| msgid "Weapon Specials"
 msgid "With specials: "
 msgstr "Spesielle våpen"
 
-#: src/reports.cpp:745
+#: src/reports.cpp:752
 #, fuzzy
 #| msgid "Time of day"
 msgid "Time of day: "
 msgstr "Tid på døgnet"
 
-#: src/reports.cpp:749
+#: src/reports.cpp:756
 #, fuzzy
 #| msgid "Leadership"
 msgid "Leadership: "
 msgstr "Lederbonus"
 
-#: src/reports.cpp:753
+#: src/reports.cpp:760
 #, fuzzy
 #| msgid "slowed: "
 msgid "Slowed: "
 msgstr "forsinket: "
 
-#: src/reports.cpp:757
+#: src/reports.cpp:764
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attacks: "
 msgstr "Angriper"
 
-#: src/reports.cpp:761
+#: src/reports.cpp:768
 #, fuzzy
 #| msgid "Max HP bonus +"
 msgid "Max swarm bonus: "
 msgstr "Maks HP bonus +"
 
-#: src/reports.cpp:762 src/reports.cpp:781
+#: src/reports.cpp:769 src/reports.cpp:788
 #, fuzzy
 #| msgid "swarm"
 msgid "Swarm: "
 msgstr "sverm"
 
-#: src/reports.cpp:763 src/reports.cpp:774 src/reports.cpp:785
+#: src/reports.cpp:770 src/reports.cpp:781 src/reports.cpp:792
 msgid "Base attacks: "
 msgstr ""
 
-#: src/reports.cpp:769
+#: src/reports.cpp:776
 #, fuzzy
 #| msgid "Special"
 msgid "Specials: "
 msgstr "Spesial"
 
-#: src/reports.cpp:779
+#: src/reports.cpp:786
 msgid "Subject to swarm: "
 msgstr ""
 
-#: src/reports.cpp:798
+#: src/reports.cpp:805
 #, fuzzy
 #| msgid "weapon range: "
 msgid "Weapon range: "
 msgstr "våpenrekkevidde: "
 
-#: src/reports.cpp:799
+#: src/reports.cpp:806
 #, fuzzy
 #| msgid "damage type: "
 msgid "Damage type: "
 msgstr "skadetype: "
 
-#: src/reports.cpp:800
+#: src/reports.cpp:807
 #, fuzzy
 #| msgid "damage type: "
 msgid "Damage versus: "
 msgstr "skadetype: "
 
-#: src/reports.cpp:844
+#: src/reports.cpp:851
 #, fuzzy
 #| msgid "% accuracy"
 msgid "Accuracy:"
 msgstr "% nøyaktighet"
 
-#: src/reports.cpp:849
+#: src/reports.cpp:856
 msgid "Parry:"
 msgstr ""
 
-#: src/reports.cpp:871
+#: src/reports.cpp:878
 #, fuzzy
 #| msgid "Weapon Specials"
 msgid "Weapon special: "
 msgstr "Spesielle våpen"
 
-#: src/reports.cpp:935
+#: src/reports.cpp:942
 msgid "weapon^None"
 msgstr ""
 
-#: src/reports.cpp:964
+#: src/reports.cpp:971
 msgid "Total damage"
 msgstr "Totalskade"
 
-#: src/reports.cpp:1028
+#: src/reports.cpp:1035
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack"
@@ -7665,64 +7671,64 @@ msgid_plural "Attacks"
 msgstr[0] "Angriper"
 msgstr[1] "Angriper"
 
-#: src/reports.cpp:1158 src/reports.cpp:1200
+#: src/reports.cpp:1165 src/reports.cpp:1207
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful units: "
 msgstr "Hederlige enheter: "
 
-#: src/reports.cpp:1160 src/reports.cpp:1202
+#: src/reports.cpp:1167 src/reports.cpp:1209
 msgid "Neutral units: "
 msgstr "Nøytrale enheter: "
 
-#: src/reports.cpp:1161 src/reports.cpp:1203
+#: src/reports.cpp:1168 src/reports.cpp:1210
 msgid "Chaotic units: "
 msgstr "Lyssky enheter: "
 
-#: src/reports.cpp:1163 src/reports.cpp:1205
+#: src/reports.cpp:1170 src/reports.cpp:1212
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Liminal units: "
 msgstr "Hederlige enheter: "
 
-#: src/reports.cpp:1264
+#: src/reports.cpp:1271
 #, fuzzy
 #| msgid "Turn "
 msgid "Turn Number"
 msgstr "Runde "
 
-#: src/reports.cpp:1266
+#: src/reports.cpp:1273
 msgid ""
 "When the game reaches the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 
-#: src/reports.cpp:1291
+#: src/reports.cpp:1298
 msgid "Gold"
 msgstr "Gull"
 
-#: src/reports.cpp:1291
+#: src/reports.cpp:1298
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 
-#: src/reports.cpp:1310
+#: src/reports.cpp:1317
 msgid "The fraction of known villages that your side has captured."
 msgstr ""
 
-#: src/reports.cpp:1310
+#: src/reports.cpp:1317
 msgid "Villages"
 msgstr "Landsbyer"
 
-#: src/reports.cpp:1315
+#: src/reports.cpp:1322
 msgid "The total number of units on your side."
 msgstr ""
 
-#: src/reports.cpp:1315
+#: src/reports.cpp:1322
 msgid "Units"
 msgstr "Enheter"
 
-#: src/reports.cpp:1325
+#: src/reports.cpp:1332
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. The second is the "
@@ -7730,37 +7736,37 @@ msgid ""
 "the amount of gold that would be deducted if you lost all villages."
 msgstr ""
 
-#: src/reports.cpp:1325
+#: src/reports.cpp:1332
 msgid "Upkeep"
 msgstr "Utgifter"
 
-#: src/reports.cpp:1362
+#: src/reports.cpp:1369
 msgid "Income"
 msgstr "Inntekt"
 
-#: src/reports.cpp:1362
+#: src/reports.cpp:1369
 msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
 msgstr ""
 
-#: src/reports.cpp:1530
+#: src/reports.cpp:1537
 msgid "Observers:"
 msgstr "Observatører:"
 
-#: src/reports.cpp:1572
+#: src/reports.cpp:1579
 msgid "Clock"
 msgstr ""
 
-#: src/reports.cpp:1583
+#: src/reports.cpp:1590
 msgid "Battery"
 msgstr ""
 
-#: src/reports.cpp:1611
+#: src/reports.cpp:1618
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1611
+#: src/reports.cpp:1618
 msgid "Turn Countdown"
 msgstr ""
 
