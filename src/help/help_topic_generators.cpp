@@ -557,8 +557,10 @@ std::string unit_topic_generator::operator()() const {
 		// Dummy element, icons are below.
 		first_row.push_back(item("", 0));
 		push_header(first_row, _("unit help^Name"));
+		first_row.push_back(item("", 0)); // dummy item for type icon
 		push_header(first_row, _("Type"));
 		push_header(first_row, _("Strikes"));
+		first_row.push_back(item("", 0)); // dummy item for range icon
 		push_header(first_row, _("Range"));
 		push_header(first_row, _("Special"));
 		table.push_back(first_row);
@@ -568,21 +570,44 @@ std::string unit_topic_generator::operator()() const {
 			std::string lang_type = string_table["type_" + attack.type()];
 			std::vector<item> row;
 			std::stringstream attack_ss;
+
+			// Attack icon
 			attack_ss << "<img>src='" << attack.icon() << "'</img>";
 			row.emplace_back(attack_ss.str(),image_width(attack.icon()));
-			push_tab_pair(row, lang_weapon);
-			push_tab_pair(row, lang_type);
 			attack_ss.str(clear_stringstream);
+
+			// Attack name
+			push_tab_pair(row, lang_weapon);
+
+			// Damage type icon
+			const std::string type_icon = "icons/profiles/" + attack.type() + ".png";
+			attack_ss << "<img>src='" << type_icon << "'</img>";
+			row.emplace_back(attack_ss.str(), image_width(type_icon));
+			attack_ss.str(clear_stringstream);
+
+			// Damage type
+			push_tab_pair(row, lang_type);
+
+			// damage x strikes
 			attack_ss << attack.damage() << font::weapon_numbers_sep << attack.num_attacks()
 				<< " " << attack.accuracy_parry_description();
 			push_tab_pair(row, attack_ss.str());
 			attack_ss.str(clear_stringstream);
+
+			// Range icon
+			const std::string range_icon = "icons/profiles/" + attack.range() + "_attack.png";
+			attack_ss << "<img>src='" << range_icon << "'</img>";
+			row.emplace_back(attack_ss.str(), image_width(range_icon));
+			attack_ss.str(clear_stringstream);
+
+			// Range
 			if (attack.min_range() > 1 || attack.max_range() > 1) {
 				attack_ss << attack.min_range() << "-" << attack.max_range() << ' ';
 			}
 			attack_ss << string_table["range_" + attack.range()];
 			push_tab_pair(row, attack_ss.str());
 			attack_ss.str(clear_stringstream);
+
 			// Show this attack's special, if it has any. Cross
 			// reference it to the section describing the special.
 			std::vector<std::pair<t_string, t_string>> specials = attack.special_tooltips();
