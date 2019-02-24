@@ -714,6 +714,7 @@ bool attack_type::get_special_bool(const std::string& special, bool simple_check
 	}
 	return false;
 }
+
 /**
  * Returns the currently active specials as an ability list, given the current
  * context (see set_specials_context).
