@@ -922,6 +922,15 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 
 			add_text(res, flush(str), flush(tooltip), help_page);
 		}
+		if(!specials.empty()) {
+			// Add some padding so the end of the specials list
+			// isn't too close vertically to the attack icons of
+			// the next attack. Also for symmetry with the padding
+			// above the list of specials (below the attack icon line).
+			const std::string spacer = "misc/blank.png~CROP(0, 0, 1, 5)";
+			add_image(res, spacer, "");
+			add_text(res, "\n", "");
+		}
 	}
 	return damage;
 }
