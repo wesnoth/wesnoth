@@ -165,7 +165,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if(!filter_special_id.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_id) {
-			if(attack.get_special_bool_id(special, true)) {
+			if(attack.get_special_bool(special, true, true, false)) {
 				found = true;
 				break;
 			}
@@ -178,7 +178,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if(!filter_special_active_id.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_active_id) {
-			if(attack.get_special_bool_id(special, false)) {
+			if(attack.get_special_bool(special, false, true, false)) {
 				found = true;
 				break;
 			}
@@ -191,7 +191,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if(!filter_special_tags.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_tags) {
-			if(attack.get_special_bool_tags(special, true)) {
+			if(attack.get_special_bool(special, true, false)) {
 				found = true;
 				break;
 			}
@@ -204,7 +204,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if(!filter_special_active_tags.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_active_tags) {
-			if(attack.get_special_bool_tags(special, false)) {
+			if(attack.get_special_bool(special, false, false)) {
 				found = true;
 				break;
 			}
