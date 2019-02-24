@@ -1,4 +1,6 @@
 ## Version 1.14.6+dev
+ ### User interface
+   * Add jamming to the vision tooltip in the sidebar. (PR #3327)
 
 ## Version 1.14.6
  ### AI
