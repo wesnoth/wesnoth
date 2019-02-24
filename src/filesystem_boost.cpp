@@ -542,9 +542,44 @@ static const std::string& get_version_path_suffix()
 
 	return suffix;
 }
+	
+#if defined(__APPLE__) && !defined(__IPHONEOS__)
+// Starting from Wesnoth 1.14.6, we have to use sandboxing function on macOS
+// The problem is, that only signed builds can use sandbox. Unsigned builds
+// would use other config directory then signed ones. So if we don't want
+// to have two separate config dirs, we have to create symlink to new config
+// location if exists. This part of code is only required on macOS.
+static void migrate_apple_config_directory_for_unsandboxed_builds()
+{
+	const char* home_str = getenv("HOME");
+	bfs::path home = home_str ? home_str : ".";
+	
+	// We don't know which of the two is in PREFERENCES_DIR now.
+	boost::filesystem::path old_saves_dir = home / "Library/Application Support/Wesnoth_";
+	old_saves_dir += get_version_path_suffix();
+	boost::filesystem::path new_saves_dir = home / "Library/Containers/org.wesnoth.Wesnoth/Data/Library/Application Support/Wesnoth_";
+	new_saves_dir += get_version_path_suffix();
+	
+	if(bfs::is_directory(new_saves_dir)) {
+		if(!bfs::exists(old_saves_dir)) {
+			std::cout << "Apple developer's userdata migration: ";
+			std::cout << "symlinking " << old_saves_dir << " to " << new_saves_dir << "\n";
+			bfs::create_symlink(new_saves_dir, old_saves_dir);
+		} else if(!bfs::symbolic_link_exists(old_saves_dir)) {
+			std::cout << "Apple developer's userdata migration: ";
+			std::cout << "Problem! Old (non-containerized) directory " << old_saves_dir << " is not a symlink. Your savegames are scattered around 2 locations.\n";
+		}
+		return;
+	}
+}
+#endif
 
 static void setup_user_data_dir()
 {
+#if defined(__APPLE__) && !defined(__IPHONEOS__)
+	migrate_apple_config_directory_for_unsandboxed_builds();
+#endif
+	
 	if(!create_directory_if_missing_recursive(user_data_dir)) {
 		ERR_FS << "could not open or create user data directory at " << user_data_dir.string() << '\n';
 		return;

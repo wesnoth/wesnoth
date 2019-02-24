@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Lim Choon Kiat <lim@singindustry.com>, 2005.
 # sylecn <sylecn@yahoo.com.cn>, 2009.
@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-21 18:30 UTC\n"
-"PO-Revision-Date: 2018-07-08 20:43+0800\n"
+"POT-Creation-Date: 2019-01-27 09:23 UTC\n"
+"PO-Revision-Date: 2019-02-07 16:58+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:9
@@ -1973,10 +1973,8 @@ msgstr "很好。凌晨两点，我们在河的西岸碰头，从埃仁撒伐的
 #. [label]
 #. The party and an ally have agreed to meet at the location identified by this label.
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:353
-#, fuzzy
-#| msgid "Sleeping Gryphon"
 msgid "Meeting point"
-msgstr "沉睡狮鹫"
+msgstr "会面地点"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:360
@@ -4683,7 +4681,7 @@ msgstr "正在集中注意力"
 msgid ""
 "That noise was made by no troll! What manner of beast makes its den in these "
 "forsaken caves?"
-msgstr ""
+msgstr "这可不是巨魔发出来的声音！什么野兽会在这废弃的洞穴里做窝？"
 
 #. [message]: race=merman
 #. Comic relief
@@ -4693,6 +4691,8 @@ msgid ""
 "places are anathema to my kind. Whatever monsters may abide in these depths, "
 "are known not to my kin."
 msgstr ""
+"我不知道，阁下。由于没有河流穿过，这样又热又干燥的敌方对我的族人而言是禁地。"
+"不论在这深处有何种怪物，我的族人们都毫无所知。"
 
 #. [message]: race=merman
 #. Comic relief
@@ -4703,9 +4703,12 @@ msgid ""
 "gladly die for you, milord, but I would that you didn't spend my life for "
 "nothing, looking for another dwarf to rescue when there is none."
 msgstr ""
+"古怪的阁下，我也不知道我在洞穴里干什么。至今都没有一位人鱼进入山下的洞穴之后"
+"还能活下来讲述这段经历的。我甘愿为您赴死，阁下，但我希望您不会浪费我的生命，"
+"在根本没有矮人可救时到处去找这个需要救援的矮人。"
 
 #. [message]: race=dwarf
-#. "sowl" is a rare word synonymous with "sully", meaning "contaminate". 
+#. "sowl" is a rare word synonymous with "sully", meaning "contaminate".
 #. "toiled" means "difficult, requires effort".
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:650
 msgid ""
@@ -4715,6 +4718,9 @@ msgid ""
 "sowling the air? I beseech that we not tarry ’ere any more than we ha’ to, "
 "lest the forming abysses claim us."
 msgstr ""
+"科纳德阁下，这隆隆声不是活物造成的。俺们听到的是俺们脚下那石头干碎崩坏的响"
+"儿。您没觉得这儿越来越热了吗？没觉得这烟儿搞得呼吸越来越困难了吗？俺求求了，"
+"能快走就快走吧，要不俺们就得给正出现的深渊吞没喽。"
 
 #. [message]: type=Arch Mage,Great Mage,Silver Mage
 #. "din" means "loud noise". It refers to an ambient sound of collapsing cave walls.
@@ -4725,6 +4731,9 @@ msgid ""
 "this cave even now. We must tread with caution, for the very ground we stand "
 "on may turn against us."
 msgstr ""
+"科纳德王子，那声响不是由活物发出的。那是我们四周沸腾起来的泥土的声响，那是此"
+"刻正在侵入这个洞穴的火焰和岩浆的声响。我们正站立的土地都可能突然阻碍我们，我"
+"们必须小心前行。"
 
 #. [message]: id=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:681
@@ -4734,6 +4743,9 @@ msgid ""
 "the Sceptre and return to the surface with haste, before the lava under our "
 "feet consumes us."
 msgstr ""
+"科纳德，那肯定是地板崩陷的声响。我在准备前来此处时，就被警告过会有这样的危"
+"险。我们绝对不能在此久留。在脚下的岩浆吞没我们之前，赶快拿到权杖并回到地表"
+"吧。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:697
@@ -6548,15 +6560,11 @@ msgstr "停下！"
 
 #. [message]: speaker=Bona-Melodia
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:251
-#, fuzzy
-#| msgid ""
-#| "Milord Kalenz! My apologies. I mistook him for one of those foul "
-#| "lizardmen. How came you to be traveling such paths?"
 msgid ""
 "Milord Kalenz! My apologies. I mistook you for one of those foul lizardmen. "
 "How came you to be traveling such paths?"
 msgstr ""
-"卡雷兹阁下！万分抱歉。我误以为他是那些邪恶蜥蜴人中的一员。您为何会在这样的道"
+"卡雷兹阁下！万分抱歉。我误以为您是那些邪恶蜥蜴人中的一员。您为何会在这样的道"
 "路上前行？"
 
 #. [message]: speaker=Kalenz
@@ -6608,10 +6616,8 @@ msgstr "尤拉德雷利亚领主已经召集了林塔尼尔评议会。传闻说
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:296
-#, fuzzy
-#| msgid "Then we must hurry. Stand fast, we will send reinforcements."
 msgid "Then we must hurry. Stand fast! We will send reinforcements."
-msgstr "这么说我们必须赶快。坚守阵地，我们会派来援军的。"
+msgstr "这么说我们必须赶快了。坚守阵地！我们会派来援军的。"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:303
@@ -8151,12 +8157,6 @@ msgstr "武士公主"
 
 #. [unit_type]: id=Battle Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:28
-#, fuzzy
-#| msgid ""
-#| "A noble by birth, the Princess has learnt swordplay with the greatest "
-#| "generals, and battle tactics with the greatest sages, making her both a "
-#| "great combatant and a leader. Now battle-hardened and strong of will, she "
-#| "can aid those around her in the art of combat."
 msgid ""
 "A noble by birth, the Princess has learnt swordplay with the greatest "
 "generals and battle tactics with the greatest sages, making her both a great "
@@ -8695,23 +8695,3 @@ msgid ""
 msgstr ""
 "德法多逃到了艾森丛林，远在韦诺的西南边境之外。在精灵们的保护下，他将科纳德抚"
 "养长大。而与此同时，他只能悲哀地看着艾什薇尔的恐怖统治开始在这片土地上蔓延……"
-
-#~ msgid "Defeat one more enemy unit"
-#~ msgid_plural "Defeat $units_to_slay enemy units"
-#~ msgstr[0] "再击败一个敌方单位"
-#~ msgstr[1] "再击败$units_to_slay|个敌方单位"
-
-#~ msgid "Still $units_to_slay clan member to defeat!"
-#~ msgid_plural "Still $units_to_slay clan members to defeat!"
-#~ msgstr[0] "还需要打败$units_to_slay|个氏族成员！"
-#~ msgstr[1] "还需要打败$units_to_slay|个氏族成员！"
-
-#~ msgid ""
-#~ "A noble by birth, the Princess has learnt swordplay with the greatest "
-#~ "generals and battle tactics with the greatest sages, making her both a "
-#~ "great combatant and a leader. Now battle-hardened and strong of will, she "
-#~ "can now aid those around her in the art of combat."
-#~ msgstr ""
-#~ "公主是天生的贵族。她师从于最伟大的将军们，学会了剑术，又从最伟大的贤者那"
-#~ "里，学会了战术。这让她成为了一位伟大的战士和领袖。现在，她历经无数战斗，磨"
-#~ "练出了坚强的意志，可以在作战中协助她身边的战友。"

@@ -1,12 +1,12 @@
-# Copyright (C) Wesnoth development team, 2007-2011.
+# Copyright (C) Wesnoth development team, 2007-2019.
 # Translators:
-#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2011.
+#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-21 18:30 UTC\n"
-"PO-Revision-Date: 2017-04-08 15:59+0100\n"
+"POT-Creation-Date: 2019-02-23 21:45 UTC\n"
+"PO-Revision-Date: 2019-02-09 00:07+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
 "Language: lt\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:9
@@ -137,13 +137,13 @@ msgid ""
 "and human alike, knew that the wealth of their city might arouse envy from "
 "afar — hence they kept their weapons sharp, and reckoned themselves well "
 "able to fight off any bandit gang or petty warlord that could arise in the "
-"thinly-settled northlands."
+"thinly-settled Northlands."
 msgstr ""
 "Knalgos dvarfai, vertindami prekybos nešamą pelną, pastatė stiprius "
 "įtvirtinimus aplink Dvarfų Duris. Dvarfai ir žmonės, šią vietą vadinantys "
 "savo namais, žinojo, kad miesto gėrybės iš tolo kelia pavydą, tad ginklus "
 "laikė išgaląstus ir buvo pasiruošę atmušti bet kokią plėšikų gaują ar karo "
-"vaduką, galintį iškilti menkai apgyvendintose šiaurinėse žemėse."
+"vaduką, galintį iškilti menkai apgyvendintose Šiaurinėse žemėse."
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:28
@@ -405,13 +405,12 @@ msgstr ""
 
 #. [message]: speaker=Zlex
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:251
-#, fuzzy
 msgid ""
 "But their wolves run faster than we can walk, and their swords are sharper "
 "than these farm tools."
 msgstr ""
 "Bet jų vilkai bėga greičiau nei mes vaikštome, ir jų kalavijai yra aštresni "
-"už mūsų fermų įrankius."
+"už šiuos ūkininkavimo įrankius."
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:256
@@ -790,7 +789,6 @@ msgstr "Raskite dvarfus"
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:239
 #, fuzzy
-#| msgid "Move Tallin to the Signpost in the north"
 msgid "Move Tallin to the dwarvish area to meet with Lord Hamel"
 msgstr "Nuveskite Taliną iki kelrodžio šiaurėje"
 
@@ -801,10 +799,8 @@ msgstr "Išvalykite urvus"
 
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:254
-#, fuzzy
-#| msgid "Phew, they are defeated at last."
 msgid "The dwarves are defeated"
-msgstr "Fiu, pagaliau jie nugalėti."
+msgstr "Dvarfai nugalėti"
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:280
@@ -1150,11 +1146,12 @@ msgstr ""
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:925
-#, fuzzy
 msgid ""
 "Thank you and well-met indeed, Lord Hamel. I must say, this place is "
 "interesting."
-msgstr "Ačiū, lorde Hameli, išties gera susitikti."
+msgstr ""
+"Ačiū, lorde Hameli, išties gera susitikti. Turiu pasakyti, kad ši vieta "
+"įdomi."
 
 #. [message]: speaker=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:930
@@ -1281,9 +1278,8 @@ msgstr ""
 
 #. [scenario]: id=02_02_Meeting_With_Dwarves
 #: data/campaigns/Northern_Rebirth/scenarios/02_02_Meeting_With_Dwarves.cfg:5
-#, fuzzy
 msgid "Meeting With Dwarves"
-msgstr "Raskite dvarfus"
+msgstr "Susitikimas su dvarfais"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/02_02_Meeting_With_Dwarves.cfg:18
@@ -1819,7 +1815,6 @@ msgstr "Bet – Vaje, vaje, ką gi mes čia turime? – Talinas."
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:334
-#, fuzzy
 msgid "He knows your name, Tallin. I don’t like the sound of this."
 msgstr "Jis žino tavo vardą, Talinai. Man visa tai nepatinka."
 
@@ -1891,7 +1886,6 @@ msgstr "Aha, kurgi ne, drauguži."
 
 #. [message]: speaker=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:499
-#, fuzzy
 msgid ""
 "These little vermin are making progress! This is unacceptable. Rise, my "
 "minions — gorge on the flesh of these scurrying little rats!"
@@ -2177,12 +2171,12 @@ msgstr ""
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:489
 msgid "We won’t leave them in Malifor’s chains!"
-msgstr ""
+msgstr "Nepaliksime jų Maliforo grandinėse!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:508
 msgid "Intruders! Stop them before they free the prisoners!"
-msgstr ""
+msgstr "Įsibrovėliai! Sustabdykite juos iki kol jie išlaisvins kalinius!"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:513
@@ -2310,9 +2304,8 @@ msgstr "Ačiū tau, Talinai."
 
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:663
-#, fuzzy
 msgid "Freedom at last! Thank you, Lord Tallin."
-msgstr "Pagaliau laisvė. Ačiū jums, valdove Talinai."
+msgstr "Pagaliau laisvė! Ačiū jums, valdove Talinai."
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:668
@@ -2360,11 +2353,11 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:736
 msgid ""
 "If you have no objection, Tallin, we would like to join you. These "
-"northlands are hardly safe these days for anyone to be traveling on their "
+"Northlands are hardly safe these days for anyone to be traveling on their "
 "own, and we could lend valuable help to your cause."
 msgstr ""
 "Jei tu nieko prieš, Talinai, mes norėtume prisidėti prie tavęs. Šios "
-"šiaurinės žemės dabar nesaugios keliauti pavieniui, o mes tau galėtume "
+"Šiaurinės žemės dabar nesaugios keliauti pavieniui, o mes tau galėtume "
 "suteikti vertingos pagalbos."
 
 #. [message]: speaker=Tallin
@@ -2428,7 +2421,7 @@ msgstr "Leiskite man ją apžiūrėti."
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:876
 msgid "This should help."
-msgstr ""
+msgstr "Tai turėtų padėti."
 
 #. [message]: speaker=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:897
@@ -2481,11 +2474,10 @@ msgstr "Ir jaučiuosi daug geriau. Nagi grįžkime pas tą pasibaisėtiną skele
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:933
-#, fuzzy
 msgid "I wish we had some healers with us; I’ll try to help her as best I can."
 msgstr ""
-"Kaip aš norėčiau, kad su savimi turėtume bent kelis gydytojus. Pasistenkite "
-"jai padėti kiek galėdami."
+"Kaip aš norėčiau, kad su savimi turėtume bent kelis gydytojus. Pasistengsiu "
+"jai padėti kiek galiu."
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:947
@@ -2967,9 +2959,8 @@ msgstr "Tai čia ir yra ta Didžioji salė? Nepanašu, kad čia yra į ką žiū
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1719
-#, fuzzy
 msgid "The ground shakes."
-msgstr "Ei, požeminis ežeras."
+msgstr "Žemė dreba."
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1724
@@ -3026,13 +3017,12 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1896
-#, fuzzy
 msgid ""
 "Caution! Tunnel flooded and infested with aquatic monsters. Enter at the "
 "risk of your unlife."
 msgstr ""
-"Dėmesio! Tunelis apsemtas ir pilnas vandens pabaisų. Eidami rizikuojate "
-"gyvybe."
+"Dėmesio! Tunelis apsemtas ir pilnas vandens pabaisų. Eidami rizikuojate savo "
+"negyvybe."
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1901
@@ -3160,9 +3150,8 @@ msgstr "Koks jūsų atėjimo čia tikslas?"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2101
-#, fuzzy
 msgid "We seek the destruction of the lich Malifor."
-msgstr "Ieškome ličo Maliforo."
+msgstr "Norime sunaikinti ličą Maliforą."
 
 #. [message]: speaker=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2106
@@ -3233,13 +3222,12 @@ msgstr "Ar prisijungtum prie mūsų, kad nugalėtume šią piktą būtybę?"
 
 #. [message]: speaker=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2147
-#, fuzzy
 msgid ""
 "Wouldn’t miss it. Maybe after he is destroyed my kind and I can live... "
 "er... be dead peacefully."
 msgstr ""
-"Aš to nepraleisčiau. Galbūt po to, kai jis bus sunaikintas, aš ir mano rūšis "
-"galės gyventi... ghm... mirti ramiai."
+"Aš to nepraleisčiau. Galbūt po to, kai jis bus sunaikintas, mano rūšis ir aš "
+"galėsime gyventi... ėė... mirti ramiai."
 
 #. [message]: speaker=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2152
@@ -3253,7 +3241,7 @@ msgstr ""
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2157
 msgid "Great. Forward, men!"
-msgstr "Puiku! Vyrai, pirmyn!"
+msgstr "Puiku. Vyrai, pirmyn!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2176
@@ -3262,7 +3250,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2189
-#, fuzzy
 msgid ""
 "Gee, what’s with these bodies floating around? Is this river some sort of "
 "body disposal?"
@@ -3460,7 +3447,6 @@ msgstr ""
 
 #. [message]: speaker=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2753
-#, fuzzy
 msgid "AAAAAAHHHHHH!"
 msgstr "AAAAAAHHHHHH!"
 
@@ -3793,6 +3779,7 @@ msgstr "Man būtų garbė, valdove Hameli."
 
 #. [message]: speaker=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:219
+#, fuzzy
 msgid ""
 "Ahhhh, quit with the formality, me lad. Now, first things first. One of the "
 "most important things about being a leader is..."
@@ -3802,13 +3789,11 @@ msgstr ""
 
 #. [scenario]: id=05b_Compelled
 #: data/campaigns/Northern_Rebirth/scenarios/05b_Compelled.cfg:4
-#, fuzzy
 msgid "Compelled"
 msgstr "Svetimoje valioje"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/05b_Compelled.cfg:9
-#, fuzzy
 msgid "Note: The work on this branch of the campaign is in progress."
 msgstr "Pastaba: Ši kampanijos atšaka yra darbinėje būsenoje."
 
@@ -4079,7 +4064,6 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:261
-#, fuzzy
 msgid "Resist until the end of turns"
 msgstr "Atsilaikykite iki ėjimų pabaigos"
 
@@ -4818,8 +4802,8 @@ msgid "Liches"
 msgstr "Ličai"
 
 #. [unit]: type=Ancient Lich, id=Ro'Arthian
-#. [side]: type=Ancient Lich, id=Ro'Arthian
 #. [modify_side]
+#. [side]: type=Ancient Lich, id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:222
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:256
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:426
@@ -4836,24 +4820,18 @@ msgstr "Ro’Sotianas"
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:327
-#, fuzzy
-#| msgid "Save Stalrag from Ro’Sothian."
 msgid "Save Stalrag from Ro’Sothian"
-msgstr "Išgelbėkite Stalragą nuo Ro’Sotiano."
+msgstr "Išgelbėkite Stalragą nuo Ro’Sotiano"
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:336
-#, fuzzy
-#| msgid "Capture Ro’Arthian."
 msgid "Capture Ro’Arthian"
-msgstr "Sučiupkite Ro’Artianą."
+msgstr "Sučiupkite Ro’Artianą"
 
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:347
-#, fuzzy
-#| msgid "Death of Stalrag."
 msgid "Death of Stalrag"
-msgstr "Starlago mirtis."
+msgstr "Starlago mirtis"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:368
@@ -5308,10 +5286,10 @@ msgstr ""
 "Minutėlę, Talinai. Tu nori pasakyti, kad mes turim užleisti savo tėvynę "
 "tiems bjauriems magams?!"
 
-#. [message]: speaker=Ro'Arthian
 #. [message]: speaker=Ro'Sothian
 #. [message]: speaker=Eryssa
 #. [message]: id=Ro'Sothian
+#. [message]: speaker=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:877
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1010
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:507
@@ -7011,12 +6989,12 @@ msgstr ""
 msgid ""
 "Princess, we are not seeking to do business here: <i>“I do this for you and "
 "you do this for me.”</i> No, we seek to build everlasting friendships which "
-"will forever ensure the peace and prosperity of these northlands. Therefore, "
+"will forever ensure the peace and prosperity of these Northlands. Therefore, "
 "let there be no talk of debts and repayments between us."
 msgstr ""
 "Princese, mes čia ne verslu užsiimame: <i>„Aš padarau tai tau, o tu padarai "
 "tai man.“</i> Ne, mes siekiame sukurti ilgalaikę draugystę, kuri visam "
-"laikui užtikrins taiką ir klestėjimą šiose šiaurinėse žemėse. Tad, tenebūnie "
+"laikui užtikrins taiką ir klestėjimą šiose Šiaurinėse žemėse. Tad, tenebūnie "
 "kalbų apie skolas ir atlygius tarp mūsų."
 
 #. [message]: speaker=Eryssa
@@ -7889,7 +7867,7 @@ msgstr "Atsilaikykite taip ilgai, kiek tik galite"
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:435
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:699
 msgid "Turns run out"
-msgstr ""
+msgstr "Pasibaigia ėjimai"
 
 #. [message]: speaker=Krash
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:460
@@ -10193,16 +10171,3 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/utils/utils.cfg:114
 msgid "Arthian"
 msgstr "Artianas"
-
-#~ msgid "Help Tallin defeat the enemy leaders or"
-#~ msgstr "Padėkite Talinui nugalėti priešų vadus arba"
-
-#~ msgid "Death of Tallin."
-#~ msgstr "Talino mirtis."
-
-#~ msgid "Clear the mines"
-#~ msgstr "Išvalykite kasyklas"
-
-#, fuzzy
-#~ msgid "Speak with Hamel"
-#~ msgstr "Hamelio mirtis"

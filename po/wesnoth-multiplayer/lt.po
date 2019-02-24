@@ -1,21 +1,21 @@
-# Copyright (C) Wesnoth development team, 2007-2011.
+# Copyright (C) Wesnoth development team, 2007-2019.
 # Translators:
-#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2011.
+#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-09-16 07:03 UTC\n"
-"PO-Revision-Date: 2010-01-01 00:00+0300\n"
+"PO-Revision-Date: 2019-01-17 01:24+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
-"Language: Lithuanian\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -55,7 +55,7 @@ msgstr ""
 #. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:83
 msgid "Default + Dunefolk"
-msgstr ""
+msgstr "Numatyta + Kopų žmonės"
 
 #. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:84
@@ -70,10 +70,8 @@ msgstr ""
 
 #. [era]: id=era_dunefolk_heroes
 #: data/multiplayer/eras.cfg:94
-#, fuzzy
-#| msgid "Age of Heroes"
 msgid "Age of Heroes + Dunefolk"
-msgstr "Herojų amžius"
+msgstr "Herojų amžius + Kopų žmonės"
 
 #. [era]: id=era_dunefolk_heroes
 #: data/multiplayer/eras.cfg:95
@@ -101,7 +99,7 @@ msgstr ""
 #. [lua]: f
 #: data/multiplayer/eras.lua:76
 msgid "Grand total: <b>%d</b>"
-msgstr ""
+msgstr "Iš viso: <b>%d</b>"
 
 #. [lua]: f
 #: data/multiplayer/eras.lua:93
@@ -111,7 +109,7 @@ msgstr ""
 #. [lua]: f
 #: data/multiplayer/eras.lua:95
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
-msgstr ""
+msgstr "<span foreground='%s'>Pusė %d</span> turi pranašumą."
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -136,7 +134,7 @@ msgstr ""
 #: data/multiplayer/factions/dunefolk-aoh.cfg:4
 #: data/multiplayer/factions/dunefolk-default.cfg:4
 msgid "Dunefolk"
-msgstr ""
+msgstr "Kopų žmonės"
 
 #. [multiplayer_side]: id=Dunefolk, type=random
 #: data/multiplayer/factions/dunefolk-aoh.cfg:14
@@ -349,9 +347,8 @@ msgstr "Pietų"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:289
-#, fuzzy
 msgid "Defeat enemy leader(s)"
-msgstr "Jūsų komandos vadų mirtis"
+msgstr "Nugalėkite priešų vadus"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:293
@@ -495,7 +492,6 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:95
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:91
 #, fuzzy
-#| msgid "teamname^Southwest"
 msgid "teamname^Statues"
 msgstr "Pietvakarių"
 
@@ -556,7 +552,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:125
 msgid "Oxsrrsk"
-msgstr ""
+msgstr "Oksxsrrskas"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:128
@@ -708,6 +704,7 @@ msgstr "Talaelis Ryndokas"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:204
+#, fuzzy
 msgid ""
 "General Talael Ryndoc came to this place to fight a duel with the Grand "
 "Marshal Aethec Corryn, but the two men never found one another."
@@ -842,6 +839,8 @@ msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
 msgstr ""
+"Kadangi jūsų komanda turi vieną vadą, priešų bangos atkeliaus nevisu "
+"pajėgumu."
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:110
@@ -853,6 +852,7 @@ msgstr "Abiejų jūsų komandos vadų mirtis"
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr ""
+"Kadangi jūsų komanda turi du vadus, priešų bangos atkeliaus visu pajėgumu."
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:132
@@ -1038,9 +1038,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Hellhole
 #: data/multiplayer/scenarios/2p_Hellhole.cfg:7
-#, fuzzy
 msgid "2p — Hellhole"
-msgstr "2ž — Hamletai"
+msgstr "2ž — Pragaro skylė"
 
 #. [multiplayer]: id=multiplayer_Hellhole
 #: data/multiplayer/scenarios/2p_Hellhole.cfg:8
@@ -1233,7 +1232,6 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:38
 #, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Shapeshifter"
 msgstr "Centro"
 
@@ -1324,9 +1322,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Swamp_of_Dread
 #: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:7
-#, fuzzy
 msgid "2p — Swamp of Dread"
-msgstr "2ž — Sabalo akmens delta"
+msgstr "2ž — Baimės pelkė"
 
 #. [multiplayer]: id=multiplayer_Swamp_of_Dread
 #: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:8
@@ -1387,10 +1384,8 @@ msgstr "2ž — Tūkstančio geluonių įgula"
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
-#, fuzzy
-#| msgid "A strange place. Designed by Doc Paterson"
 msgid "A strange place. Designed by Doc Paterson."
-msgstr "Keista vieta. Sukūrė Doc Paterson"
+msgstr "Keista vieta. Sukūrė Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:93
@@ -1464,9 +1459,8 @@ msgstr "Statula"
 
 #. [multiplayer]: id=multiplayer_Tombs_of_Kesorak
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:7
-#, fuzzy
 msgid "2p — Tombs of Kesorak"
-msgstr "5ž — Baimės miškas"
+msgstr "2ž — Kesorako antkapiai"
 
 #. [multiplayer]: id=multiplayer_Tombs_of_Kesorak
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:8
@@ -1554,6 +1548,8 @@ msgid ""
 "Controlling the central island is often the key to victory in this 3 player "
 "free for all map."
 msgstr ""
+"Vidurinės salos kontrolė dažnai yra raktas į pergalę šiame 3 žaidėjų "
+"peštynių žemėlapyje."
 
 #. [multiplayer]: id=multiplayer_3p_Morituri
 #: data/multiplayer/scenarios/3p_Morituri.cfg:5
@@ -1652,9 +1648,8 @@ msgstr "Mažas žemėlapis 2 prieš 2."
 
 #. [multiplayer]: id=multiplayer_Geothermal
 #: data/multiplayer/scenarios/4p_Geothermal.cfg:7
-#, fuzzy
 msgid "4p — Geothermal"
-msgstr "2ž — Eterio nasrai"
+msgstr "4ž — Geoterminis"
 
 #. [multiplayer]: id=multiplayer_Geothermal
 #: data/multiplayer/scenarios/4p_Geothermal.cfg:9
@@ -1957,6 +1952,8 @@ msgstr "Jūsų komandos vadų mirtis"
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:380
 msgid "Hint: Learning the enemy spawn points and types helps a lot."
 msgstr ""
+"Patarimas: atkreipkite dėmesį, kuriuose taškuose atsiranda priešai – tai "
+"smarkiai padės."
 
 #. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:386
@@ -2003,7 +2000,7 @@ msgstr "Fėja"
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
 "impossible!"
-msgstr ""
+msgstr "Sveikinimai išgyvenus žemėlapį, kurį daugelis žmonių laiko neįmanomu!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:538
@@ -2200,12 +2197,3 @@ msgid ""
 msgstr ""
 "Vesnoto išbandymas, naudokite --nogui --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid "Default + Khalifate"
-#~ msgstr "Numatyta + Kalifatas"
-
-#~ msgid "Age of Heroes + Khalifate"
-#~ msgstr "Herojų amžius + Kalifatas"
-
-#~ msgid "Khalifate"
-#~ msgstr "Kalifatas"

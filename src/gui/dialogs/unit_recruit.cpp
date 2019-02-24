@@ -57,18 +57,6 @@ static std::string can_afford_unit(const std::string& text, const bool can_affor
 	return can_afford ? text : "<span color='#ff0000'>" + text + "</span>";
 }
 
-namespace
-{
-
-bool ci_search(const std::string& a, const std::string& b)
-{
-	return std::search(a.begin(), a.end(),
-	                   b.begin(), b.end(),
-	                   chars_equal_insensitive) != a.end();
-}
-
-} // end unnamed namespace
-
 // Compare unit_create::filter_text_change
 void unit_recruit::filter_text_changed(text_box_base* textbox, const std::string& text)
 {
@@ -96,9 +84,8 @@ void unit_recruit::filter_text_changed(text_box_base* textbox, const std::string
 			{
 				// Search for the name in the local language.
 				// In debug mode, also search for the type id.
-				found =
-				        (game_config::debug && ci_search(type->id(), word)) ||
-					ci_search(type->type_name(), word);
+				found = (game_config::debug && translation::ci_search(type->id(), word)) ||
+				        translation::ci_search(type->type_name(), word);
 
 				if(!found) {
 					// one word doesn't match, we don't reach words.end()

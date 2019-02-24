@@ -1,7 +1,7 @@
 # translation of wesnoth-lib.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2004 - 2018 Wesnoth development team
+# Copyright (C) 2004 - 2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <hrubymar10@gmail.com>,
@@ -11,14 +11,14 @@
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
-# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2018.
+# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-21 21:30+0300\n"
-"PO-Revision-Date: 2018-09-14 22:43+0200\n"
+"POT-Creation-Date: 2019-02-24 00:45+0300\n"
+"PO-Revision-Date: 2019-02-15 22:53+0100\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -255,19 +255,14 @@ msgstr "Pouštní písky"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:298
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Deserts'</italic> have a somewhat different composition "
-#| "than small sand pits or beaches, however for gameplay purposes they are "
-#| "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgstr ""
 "<italic>text='Pouště'</italic>mají poněkud odlišné složení než malé jámy s "
-"pískem nebo pláže, hru ale ovlivňují obdobně. Podívejte se na "
-"<ref>dst='terrain_sand' text='Písek'</ref>"
+"pískem nebo pláže, hru ale ovlivňují obdobně. Podívejte se na <ref>dst=‘.."
+"terrain_sand' text='Písek'</ref>"
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -309,6 +304,8 @@ msgid ""
 "A welcome sight to any traveler, an oasis allows units to heal as if "
 "stationed in a village, but provides no income or defensive advantage."
 msgstr ""
+"Oáza je uvítána každým cestovatelem, umožňuje jednotkám uzdravit se jako ve "
+"vesnici, ale neposkytuje žádný příjem ani obranou výhodu."
 
 #. [terrain_type]: id=sand_rubble
 #: data/core/terrain.cfg:332
@@ -870,7 +867,6 @@ msgstr "Přímá bílá zeď"
 
 #. [terrain_type]: id=wall_stone_clean
 #: data/core/terrain.cfg:1232
-#, fuzzy
 msgid "Clean Stone Wall"
 msgstr "Čistá kamenná zeď"
 
@@ -1182,10 +1178,8 @@ msgstr "Ležení"
 
 #. [terrain_type]: id=encampment_ruin
 #: data/core/terrain.cfg:1874
-#, fuzzy
-#| msgid "Encampment"
 msgid "Ruined Encampment"
-msgstr "Ležení"
+msgstr "Ruiny tábora"
 
 #. [terrain_type]: id=encampment_snow
 #: data/core/terrain.cfg:1886
@@ -1235,14 +1229,12 @@ msgstr "Zasněžený lidský hrad"
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:1945
 msgid "Elven Castle"
-msgstr "Elfská tvrz"
+msgstr "Elfský hrad"
 
 #. [terrain_type]: id=elven_castle_ruin
 #: data/core/terrain.cfg:1957
-#, fuzzy
-#| msgid "Elven Castle"
 msgid "Elven Castle Ruin"
-msgstr "Elfská tvrz"
+msgstr "Ruiny elfského hradu"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:1969
@@ -1285,24 +1277,18 @@ msgstr "Zřícený pouštní hrad"
 
 #. [terrain_type]: id=troll_encampment
 #: data/core/terrain.cfg:2043
-#, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Troll Encampment"
-msgstr "Vysoká tvrz ležení"
+msgstr "Trolské ležení"
 
 #. [terrain_type]: id=aquatic_camp
 #: data/core/terrain.cfg:2055
-#, fuzzy
-#| msgid "Encampment"
 msgid "Aquatic Encampment"
-msgstr "Ležení"
+msgstr "Vodní ležení"
 
 #. [terrain_type]: id=aquatic_castle
 #: data/core/terrain.cfg:2068
-#, fuzzy
-#| msgid "Human Castle"
 msgid "Aquatic Castle"
-msgstr "Lidský hrad"
+msgstr "Vodní hrad"
 
 #. [terrain_type]: id=encampment_keep
 #. [terrain_type]: id=encampment_keep_tall
@@ -1317,10 +1303,8 @@ msgstr "Tvrz ležení"
 
 #. [terrain_type]: id=encampment_ruin_keep
 #: data/core/terrain.cfg:2096
-#, fuzzy
-#| msgid "Encampment Keep"
 msgid "Ruined Encampment Keep"
-msgstr "Tvrz ležení"
+msgstr "Zřícená tvrz ležení"
 
 #. [terrain_type]: id=encampment_keep_tall
 #: data/core/terrain.cfg:2109
@@ -1363,29 +1347,27 @@ msgstr "Zasněžená skřetí tvrz"
 #. [terrain_type]: id=human_keep
 #: data/core/terrain.cfg:2161
 msgid "Human Castle Keep"
-msgstr "Lidská tvrz"
+msgstr "Lidská hradní tvrz"
 
 #. [terrain_type]: id=snow_keep
 #: data/core/terrain.cfg:2174
 msgid "Snowy Human Castle Keep"
-msgstr "Zasněžená lidská tvrz"
+msgstr "Zasněžená lidská hradní tvrz"
 
 #. [terrain_type]: id=elven_keep
 #: data/core/terrain.cfg:2187
 msgid "Elven Castle Keep"
-msgstr "Elfská tvrz"
+msgstr "Elfská hradní tvrz"
 
 #. [terrain_type]: id=elven_keep_ruin
 #: data/core/terrain.cfg:2200
-#, fuzzy
-#| msgid "Elven Castle Keep"
 msgid "Elven Keep Ruin"
-msgstr "Elfská tvrz"
+msgstr "Zřícená elfská tvrz"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:2213
 msgid "Dwarven Castle Keep"
-msgstr "Trpasličí tvrz"
+msgstr "Trpasličí hradní tvrz"
 
 #. [terrain_type]: id=ruined_keep
 #. [terrain_type]: id=sunken_keep
@@ -1404,12 +1386,12 @@ msgstr "Tvrz zříceného lidského hradu"
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:2239
 msgid "Sunken Human Castle Keep"
-msgstr "Potopená lidská tvrz"
+msgstr "Potopená lidská hradní tvrz"
 
 #. [terrain_type]: id=swamp_keep
 #: data/core/terrain.cfg:2252
 msgid "Swamp Human Castle Keep"
-msgstr "Mokřinná lidská tvrz"
+msgstr "Bažinná lidská hradní tvrz"
 
 #. [terrain_type]: id=desert_keep
 #: data/core/terrain.cfg:2265
@@ -1423,17 +1405,13 @@ msgstr "Zřícená pouštní tvrz"
 
 #. [terrain_type]: id=merman_campkeep
 #: data/core/terrain.cfg:2291
-#, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Aquatic Encampment Keep"
-msgstr "Vysoká tvrz ležení"
+msgstr "Tvrz vodního ležení"
 
 #. [terrain_type]: id=troll_campkeep
 #: data/core/terrain.cfg:2304
-#, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Troll Encampment Keep"
-msgstr "Vysoká tvrz ležení"
+msgstr "Tvrz trolského ležení"
 
 #. [terrain_type]: id=merman_castlekeep
 #: data/core/terrain.cfg:2317
@@ -2027,7 +2005,7 @@ msgstr "Vyhledat"
 #. [label]
 #. [toggle_button]: id=sort_1
 #. [toggle_button]: id=sort_name
-#: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:226
+#: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:243
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_server_list.cfg:107
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
 #: data/gui/window/unit_recall.cfg:47
@@ -2168,7 +2146,7 @@ msgstr "Připojit"
 #: data/gui/window/addon_connect.cfg:212
 #: data/gui/window/addon_uninstall_list.cfg:174
 #: data/gui/window/advanced_graphics_options.cfg:178
-#: data/gui/window/campaign_dialog.cfg:440
+#: data/gui/window/campaign_dialog.cfg:457
 #: data/gui/window/campaign_difficulty.cfg:234
 #: data/gui/window/core_dialog.cfg:240 data/gui/window/custom_tod.cfg:444
 #: data/gui/window/depcheck_select_new.cfg:165
@@ -2425,7 +2403,7 @@ msgstr "Škálované na šestiúhelník"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/advanced_graphics_options.cfg:165
-#: data/gui/window/campaign_dialog.cfg:426
+#: data/gui/window/campaign_dialog.cfg:443
 #: data/gui/window/campaign_difficulty.cfg:221
 #: data/gui/window/core_dialog.cfg:227 data/gui/window/custom_tod.cfg:431
 #: data/gui/window/depcheck_select_new.cfg:151
@@ -2515,39 +2493,39 @@ msgid "Play a Campaign"
 msgstr "Hraj tažení"
 
 #. [label]
-#: data/gui/window/campaign_dialog.cfg:214
+#: data/gui/window/campaign_dialog.cfg:231
 msgid "Sort by:"
 msgstr "Řadit podle:"
 
 #. [toggle_button]: id=sort_name
-#: data/gui/window/campaign_dialog.cfg:227
+#: data/gui/window/campaign_dialog.cfg:244
 msgid "Sort by full campaign name in alphabetical order"
 msgstr ""
 
 #. [toggle_button]: id=sort_time
-#: data/gui/window/campaign_dialog.cfg:239
+#: data/gui/window/campaign_dialog.cfg:256
 msgid "Dates"
 msgstr "Data"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/window/campaign_dialog.cfg:240
+#: data/gui/window/campaign_dialog.cfg:257
 msgid "Sort in approximate chronological order of story events"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/campaign_dialog.cfg:276
-#: src/gui/dialogs/multiplayer/lobby.cpp:451
+#: data/gui/window/campaign_dialog.cfg:293
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
 msgid "Modifications"
 msgstr "Rozšíření"
 
 #. [toggle_button]: id=checkbox_deterministic
-#: data/gui/window/campaign_dialog.cfg:409
+#: data/gui/window/campaign_dialog.cfg:426
 msgid "Save random seed"
 msgstr "Ulož náhodný seed"
 
 #. [toggle_button]: id=checkbox_deterministic
-#: data/gui/window/campaign_dialog.cfg:411
+#: data/gui/window/campaign_dialog.cfg:428
 msgid ""
 "Makes the random number generator yield the same results even after "
 "reloading a game"
@@ -2564,8 +2542,6 @@ msgstr "Obtížnost"
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:73
-#, fuzzy
-#| msgid "Select difficulty level:"
 msgid "Select difficulty:"
 msgstr "Vyber si obtížnost:"
 
@@ -2827,7 +2803,7 @@ msgstr "Popis:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:473
+#: src/gui/dialogs/multiplayer/lobby.cpp:478
 msgid "Experience modifier:"
 msgstr "Modifikátor zkušenostních bodů:"
 
@@ -2889,7 +2865,7 @@ msgstr "Zlato:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#: src/gui/dialogs/multiplayer/lobby.cpp:474
+#: src/gui/dialogs/multiplayer/lobby.cpp:479
 msgid "Gold per village:"
 msgstr "Příjem za vesnici:"
 
@@ -2960,7 +2936,7 @@ msgstr "Vyber generátor map:"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
-#: src/gui/dialogs/multiplayer/lobby.cpp:472
+#: src/gui/dialogs/multiplayer/lobby.cpp:477
 msgid "Settings"
 msgstr "Nastavení"
 
@@ -4208,7 +4184,7 @@ msgstr "Nastav heslo, které musí hráči znát pro přidání se ke hře."
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/multiplayer/lobby.cpp:480
 msgid "Map size:"
 msgstr "Velikost mapy:"
 
@@ -5323,7 +5299,7 @@ msgstr "HP"
 #. [toggle_button]: id=sort_2
 #: data/gui/window/unit_list.cfg:149 data/gui/window/unit_recall.cfg:61
 msgid "Lvl"
-msgstr ""
+msgstr "Úr"
 
 #. [toggle_button]: id=sort_5
 #. [toggle_button]: id=sort_3
@@ -5388,8 +5364,8 @@ msgstr "Chyba"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:213
-#: src/gui/dialogs/multiplayer/lobby.cpp:229 src/gui/dialogs/wml_error.cpp:197
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:214
+#: src/gui/dialogs/multiplayer/lobby.cpp:230 src/gui/dialogs/wml_error.cpp:197
 msgid "Details:"
 msgstr "Podrobnosti:"
 
@@ -5458,10 +5434,8 @@ msgid "The maximum text width is less than 1."
 msgstr "Maximální šířka textu je menší než 1."
 
 #: src/font/text.cpp:761
-#, fuzzy
-#| msgid "The text contains invalid markup: "
 msgid "The text contains invalid Pango markup: "
-msgstr "Text obsahuje neplatné značky: "
+msgstr "Text obsahuje neplatné Pango značky: "
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
@@ -5729,7 +5703,7 @@ msgstr "vzestupně"
 #. TRANSLATORS: Sorting order of dates, oldest first
 #: src/gui/dialogs/addon/manager.cpp:361
 msgid "oldest to newest"
-msgstr ""
+msgstr "nejstarší po nejnovější"
 
 #: src/gui/dialogs/addon/manager.cpp:364
 msgid "descending"
@@ -5738,7 +5712,7 @@ msgstr "sestupně"
 #. TRANSLATORS: Sorting order of dates, newest first
 #: src/gui/dialogs/addon/manager.cpp:366
 msgid "newest to oldest"
-msgstr ""
+msgstr "nejnovější po nejstarší"
 
 #: src/gui/dialogs/addon/manager.cpp:384 src/gui/dialogs/chat_log.cpp:416
 #: src/gui/dialogs/game_cache_options.cpp:105
@@ -5757,7 +5731,7 @@ msgstr "Zpět na seznam"
 
 #: src/gui/dialogs/addon/manager.cpp:464
 msgid "An error occurred while downloading the add-ons list from the server."
-msgstr ""
+msgstr "Při stahování seznamu rozšíření ze serveru došlo k chybě."
 
 #: src/gui/dialogs/addon/manager.cpp:500
 msgid "No Add-ons Available"
@@ -5772,10 +5746,12 @@ msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr ""
+"Následující rozšíření má zřejmě informace pro publikaci nebo správu verzí a "
+"nebude proto odstraněno:"
 
 #: src/gui/dialogs/addon/manager.cpp:683
 msgid "The following add-on could not be deleted properly:"
-msgstr ""
+msgstr "Následující rozšíření nebylo možno správně odstranit:"
 
 #: src/gui/dialogs/addon/manager.cpp:729
 msgid "Warning"
@@ -5831,8 +5807,8 @@ msgstr ""
 msgid "Attacker vulnerability vs"
 msgstr ""
 
-#: src/gui/dialogs/campaign_selection.cpp:270
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/campaign_selection.cpp:318
+#: src/gui/dialogs/multiplayer/lobby.cpp:461
 msgid "active_modifications^None"
 msgstr "Žádné"
 
@@ -5968,10 +5944,8 @@ msgid "The game data cache could not be purged."
 msgstr "Herní cache nemohla být vyčištěna."
 
 #: src/gui/dialogs/game_load.cpp:264
-#, fuzzy
-#| msgid "The selected game has no sides!"
 msgid "The selected file is corrupt: "
-msgstr "Vybraná hra nemá žádné strany!"
+msgstr "Vybraný soubor je poškozen: "
 
 #: src/gui/dialogs/game_load.cpp:343
 msgid "(Invalid)"
@@ -6022,12 +5996,12 @@ msgid "Unknown"
 msgstr "Neznámý"
 
 #: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
-#: src/gui/dialogs/multiplayer/lobby.cpp:470
+#: src/gui/dialogs/multiplayer/lobby.cpp:475
 msgid "no"
 msgstr "ne"
 
 #: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
-#: src/gui/dialogs/multiplayer/lobby.cpp:470
+#: src/gui/dialogs/multiplayer/lobby.cpp:475
 msgid "yes"
 msgstr "ano"
 
@@ -6148,42 +6122,42 @@ msgstr ""
 msgid "lua console"
 msgstr "konzole lua"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:102
+#: src/gui/dialogs/multiplayer/lobby.cpp:103
 msgid "Selected Game"
 msgstr "Vybraná hra"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:103
+#: src/gui/dialogs/multiplayer/lobby.cpp:104
 msgid "Lobby"
 msgstr "Čekárna"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:105
+#: src/gui/dialogs/multiplayer/lobby.cpp:106
 msgid "Current Room"
 msgstr "Současná místnost"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:107
+#: src/gui/dialogs/multiplayer/lobby.cpp:108
 msgid "Other Games"
 msgstr "Ostatní hry"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:114
+#: src/gui/dialogs/multiplayer/lobby.cpp:115
 msgid "Do you really want to log out?"
 msgstr "Opravdu se chceš odhlásit?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:209
+#: src/gui/dialogs/multiplayer/lobby.cpp:210
 msgid "Incompatible User-made Content."
 msgstr "Nekompatibilní uživatelský obsah."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:210
+#: src/gui/dialogs/multiplayer/lobby.cpp:211
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
 "add-ons be updated."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:225
+#: src/gui/dialogs/multiplayer/lobby.cpp:226
 msgid "Missing User-made Content."
 msgstr "Chybějící uživatelský obsah."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:226
+#: src/gui/dialogs/multiplayer/lobby.cpp:227
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
@@ -6193,43 +6167,43 @@ msgstr ""
 "uživatelských rožšířeních.\n"
 "Chcete je nainstalovat nyní?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:391
+#: src/gui/dialogs/multiplayer/lobby.cpp:396
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Hry: zobrazeno $num_shown ze $num_total"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:411
+#: src/gui/dialogs/multiplayer/lobby.cpp:416
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Éra: $era_name)"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:441
+#: src/gui/dialogs/multiplayer/lobby.cpp:446
 msgid "era_or_mod^not installed"
 msgstr "Nenainstalováno"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:444
+#: src/gui/dialogs/multiplayer/lobby.cpp:449
 msgid "Era"
 msgstr "Éra"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:476
+#: src/gui/dialogs/multiplayer/lobby.cpp:481
 msgid "Reloaded:"
 msgstr "Načteno:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:477
+#: src/gui/dialogs/multiplayer/lobby.cpp:482
 msgid "Shared vision:"
 msgstr "Sdílený pohled:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:478
+#: src/gui/dialogs/multiplayer/lobby.cpp:483
 msgid "Shuffle sides:"
 msgstr "Zamíchat strany:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:479
+#: src/gui/dialogs/multiplayer/lobby.cpp:484
 msgid "Time limit:"
 msgstr "Časový limit:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:480
+#: src/gui/dialogs/multiplayer/lobby.cpp:485
 msgid "Use map settings:"
 msgstr "Použij nastavení z mapy:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:488
+#: src/gui/dialogs/multiplayer/lobby.cpp:493
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -6237,19 +6211,19 @@ msgstr ""
 "Jedno nebo více rozšíření musí být nainstalováno,\n"
 "aby se dalo připojit k této hře."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:513
+#: src/gui/dialogs/multiplayer/lobby.cpp:518
 msgid "Observers allowed"
 msgstr "Pozorovatelé povoleni"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:516
+#: src/gui/dialogs/multiplayer/lobby.cpp:521
 msgid "Observers not allowed"
 msgstr "Pozorovatelé zakázáni"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:791
+#: src/gui/dialogs/multiplayer/lobby.cpp:796
 msgid "lobby"
 msgstr "čekárna"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:951
+#: src/gui/dialogs/multiplayer/lobby.cpp:956
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -6421,7 +6395,7 @@ msgstr "Všechny zkratky byly nastaveny na své výchozí hodnoty"
 msgid "Hotkeys Reset"
 msgstr "Reset klávesových zkratek"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1032
+#: src/gui/dialogs/preferences_dialog.cpp:1030
 msgid "∞"
 msgstr "∞"
 
@@ -6431,6 +6405,9 @@ msgid ""
 "\n"
 "Try to save the screenshot as PNG instead."
 msgstr ""
+"Nepodporovaný formát obrázku.\n"
+"\n"
+"Zkus místo toho uložit snímek obrazovky jako PNG."
 
 #: src/gui/dialogs/statistics_dialog.cpp:64
 msgid "All Scenarios"
@@ -6650,7 +6627,7 @@ msgstr "Neznámé id pro uzel stromového seznamu."
 
 #: src/gui/widgets/unit_preview_pane.cpp:135
 msgid "Resistances: "
-msgstr ""
+msgstr "Odolnosti: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:137
 msgid "(Att / Def)"
@@ -6797,7 +6774,7 @@ msgstr "Vybrat/Pohnout/Zaútočit"
 
 #: src/hotkey/hotkey_command.cpp:78
 msgid "Touch"
-msgstr ""
+msgstr "Dotek"
 
 #: src/hotkey/hotkey_command.cpp:79
 msgid "Animate Map"

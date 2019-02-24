@@ -1,20 +1,21 @@
-# Copyright (C) Wesnoth development team, 2007-2011.
+# Copyright (C) Wesnoth development team, 2007-2019.
 # Translators:
-#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2011.
+#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-21 18:30 UTC\n"
-"PO-Revision-Date: 2010-01-01 00:00+0300\n"
+"POT-Creation-Date: 2019-02-23 21:45 UTC\n"
+"PO-Revision-Date: 2019-02-21 00:58+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
-"Language: Lithuanian\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [scenario]: id=22_The_Rise_of_Wesnoth
 #. [campaign]: id=The_Rise_of_Wesnoth
@@ -30,9 +31,8 @@ msgstr "VI"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:20
-#, fuzzy
 msgid "Easy"
-msgstr "(Lengvas)"
+msgstr "Lengvas"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:20
@@ -46,15 +46,13 @@ msgstr "Vadas"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:21
-#, fuzzy
 msgid "Normal"
-msgstr "Normalu:"
+msgstr "Normalus"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
-#, fuzzy
 msgid "Challenging"
-msgstr "(Iššaukiantis)"
+msgstr "Iššaukiantis"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
@@ -76,10 +74,8 @@ msgstr ""
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:26
-#, fuzzy
-#| msgid "(Expert level, 24 scenarios.)"
 msgid "(Hard level, 24 scenarios.)"
-msgstr "(Eksperto lygis, 24 scenarijai.)"
+msgstr "(Sudėtingas lygis, 24 scenarijai.)"
 
 #. [about]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:29
@@ -99,7 +95,7 @@ msgstr "Grafikos kūrimas"
 #. [about]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:73
 msgid "WML Contributors"
-msgstr ""
+msgstr "WML talkininkai"
 
 #. [scenario]: id=01_A_Summer_of_Storms
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:4
@@ -1512,8 +1508,6 @@ msgstr ""
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:239
-#, fuzzy
-#| msgid "We will help. "
 msgid "We will help."
 msgstr "Mes padėsime."
 
@@ -1709,9 +1703,9 @@ msgid "Lich-Lord Lenvan"
 msgstr "Ličų valdovas Lenvanas"
 
 #. [side]: type=Lich, id=Lich-Lord Lenvan
+#. [side]: type=Lich, id=Lich-Lord Caror
 #. [side]: type=Spectre, id=Isorfilad
 #. [side]: type=Spectre, id=Tinoldor
-#. [side]: type=Lich, id=Lich-Lord Caror
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_in_the_Deep.cfg:50
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:121
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:44
@@ -3264,7 +3258,7 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:464
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:294
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:369
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:480
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:485
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:260
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:253
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:4
@@ -3587,7 +3581,7 @@ msgstr ""
 #. [side]: type=Naga Warrior, id=Abraxas
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:41
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1314
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1308
 msgid "Abraxas"
 msgstr "Abraksas"
 
@@ -3854,19 +3848,19 @@ msgstr "Lažinuosi, kad tai nebuvo susitikimas, kokio tikėjaisi."
 
 #. [side]: type=Autumn Shyde, id=Lady Dionli
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:430
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:435
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:35
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:35
 msgid "Lady Dionli"
 msgstr "Ledi Dionli"
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:437
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:442
 msgid "What? What’s going on here? Dwarves? Humans? Ships? Glimir, tell me."
 msgstr ""
 
 #. [message]: speaker=Glimir
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:441
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:446
 msgid ""
 "The stories are true. There must be dwarven colonists in the Brown Hills. We "
 "caught this band chopping wood near the bay. Then we saw lots of ships. Not "
@@ -3875,14 +3869,14 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Glimir
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:446
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:451
 msgid ""
 "We thought we were being invaded. We, erm, put our differences aside with "
 "the dwarves, for the moment, and decided to deal with this first."
 msgstr ""
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:450
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:455
 msgid ""
 "These are disturbing trends. Human, it is by luck alone that I am here to "
 "spare you. For on this day the Council of Lords is meeting in a forest not "
@@ -3890,43 +3884,43 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:454
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:459
 msgid "I am Prince Haldric. We come in peace. May our peoples—"
 msgstr "Aš Princas Haldrikas. Atvykstame su taika. Tegul mūsų tautos—"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:458
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:463
 msgid "Haldric."
 msgstr "Haldrikas."
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:462
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:467
 msgid ""
 "As for you, dwarf, return to the Brown Hills. Then tell your people to "
 "prepare to return to the north."
 msgstr ""
 
 #. [message]: speaker=Dursil
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:466
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:471
 msgid ""
 "I’ll return to the hills, but I can’t promise that my people will go. Hmph!"
 msgstr ""
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:470
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:475
 msgid ""
 "Haldric, is it? You are their leader? You and your advisers are to come with "
 "me. It will be safe for your passengers to disembark here."
 msgstr ""
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:495
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:500
 msgid ""
 "Maybe it’d be best if you didn’t mention our little friend following us..."
 msgstr ""
 
 #. [message]: speaker=Lord Typhon
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:501
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:506
 msgid ""
 "I must return to my people. You have kept your word, you may avail of my "
 "services in the future. The services of my people will remain at your "
@@ -3934,7 +3928,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Lord Typhon
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:511
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:516
 msgid ""
 "I must return to my people. My warriors that fought by your side wish to "
 "remain with you. You have kept your word, and you may avail of my services "
@@ -3942,7 +3936,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:521
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:526
 msgid ""
 "Jessene, send word that a third of the fleet is to return to the Green Isle, "
 "to look for more survivors. If they return tell them to keep returning until "
@@ -3950,12 +3944,12 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:521
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:526
 msgid "May the currents carry you swiftly, my friend. "
 msgstr ""
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:525
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:530
 msgid ""
 "Man the ships with skeleton crews, and give them the remaining supplies. "
 "Pass the word to Lord Typhon. Make sure that no more than a third of the "
@@ -3965,7 +3959,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:529
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:534
 msgid ""
 "This is the second Eldaric I get to say goodbye to. At least this time it is "
 "easier than the first."
@@ -4739,17 +4733,17 @@ msgid "Without their queen the undead are simply fading away!"
 msgstr ""
 
 #. [message]: speaker=second_unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:442
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:443
 msgid "Back, back to the grave with you!"
 msgstr ""
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:456
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:457
 msgid "We still have to defeat that vampire queen!"
 msgstr "Vis dar turime nugalėti tą vampyrų karalienę!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:476
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:477
 msgid ""
 "No! The ship that was supposed to pick us up sees that there’s still "
 "fighting. It’s not stopping. We’re trapped."
@@ -5747,76 +5741,76 @@ msgid "Ack. One of those monsters is destroying the bridge."
 msgstr "Ak. Viena iš šių pabaisų naikina tiltą."
 
 #. [unit]: id=Inky, type=Cuttle Fish
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1091
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1101
 msgid "Inky"
 msgstr "Inky"
 
 #. [message]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1109
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1119
 msgid "The bridge!"
 msgstr "Tiltas!"
 
 #. [unit]: id=Beaky, type=Cuttle Fish
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1220
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1222
 msgid "Beaky"
 msgstr "Beaky"
 
 #. [message]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1295
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1289
 msgid "Our advance is thwarted, that monster has destroyed the bridge!"
 msgstr ""
 
 #. [message]: speaker=Abraxas
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1322
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1316
 msgid ""
 "It’s the Prince Haldric! Jevyan, you never said you came to destroy this "
 "monster. We will help you."
 msgstr ""
 
 #. [message]: speaker=Familiar
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1353
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1347
 msgid "<i>Clack</i>! <i>Splat</i>!"
 msgstr ""
 
 #. [message]: speaker=second_unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1366
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1360
 msgid "Ahh... That almost makes it all worth while!"
 msgstr ""
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1377
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1371
 msgid "You’ll pay for that!"
 msgstr "Tu už tai sumokėsi!"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1391
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1385
 msgid "Strike down these fools."
 msgstr ""
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1404
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1398
 msgid "Rise, rise from the ground!"
 msgstr "Kelkitės, kelkitės iš žemės!"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1445
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1439
 msgid "Come in from the deep my loyal soldiers!"
 msgstr ""
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1629
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1623
 msgid "We did it! We won!"
 msgstr "Padarėme tai! Laimėjome!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1633
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1627
 msgid ""
 "Jevyan is destroyed, but at a terrible price. Let’s put Commander Aethyr to "
 "rest and discuss what is to come in the following days."
 msgstr ""
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1641
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1635
 msgid ""
 "Our strength is waning, and our foes grow stronger by the hour. The battle "
 "is lost!"

@@ -1,13 +1,13 @@
-# Copyright (C) Wesnoth development team, 2007-2011.
+# Copyright (C) Wesnoth development team, 2007-2019.
 # Translators:
-#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2011.
+#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2019.
 #  Jurgis Sūdžius <saveid@gmail.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-22 00:46 UTC\n"
-"PO-Revision-Date: 2017-04-08 15:47+0100\n"
+"POT-Creation-Date: 2019-01-27 09:23 UTC\n"
+"PO-Revision-Date: 2019-02-21 00:57+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
 "Language: lt\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:10
@@ -216,10 +216,10 @@ msgstr "Nugalėkite Bašnarką"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:223
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:143
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:216
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:759
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:920
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1083
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1136
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:758
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:919
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1082
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1135
 msgid "Death of Aiglondur"
 msgstr "Aiglonduro mirtis"
 
@@ -487,7 +487,6 @@ msgstr "Jo, mano valdove Hameli."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:220
-#, fuzzy
 msgid "The Order thanks you, Lord Hamel."
 msgstr "Ordinas dėkoja tau, valdove Hameli."
 
@@ -551,10 +550,10 @@ msgstr "Padėkite Mart-Takui nugalėti Gotrą"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:227
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:147
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:220
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:763
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:924
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1087
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1140
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:762
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:923
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1086
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1139
 msgid "Death of Angarthing"
 msgstr "Angartingo mirtis"
 
@@ -752,7 +751,7 @@ msgstr "Tan-Utkaras"
 #. [side]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:155
 msgid "Villagers"
-msgstr ""
+msgstr "Kaimiečiai"
 
 #. [label]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:168
@@ -762,10 +761,8 @@ msgstr "Sugriuvusi pilis"
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:177
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:219
-#, fuzzy
-#| msgid "Defeat the Masked Dwarf"
 msgid "Defeat the orcish leaders"
-msgstr "Nugalėkite kaukėtą dvarfą"
+msgstr "Nugalėkite orkų vadus"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:226
@@ -875,14 +872,14 @@ msgstr ""
 "tokiuose aukščiuose būtų visai nejuokinga."
 
 #. [message]: role=keen nose
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:278
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:277
 msgid ""
 "There’s a scent of scorched gryphon meat in the air, emanating from that hut "
 "yonder. We should investigate."
 msgstr ""
 
 #. [message]: speaker=Ratheln
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:345
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:344
 msgid ""
 "Hail, I am Ratheln. If you’re traveling down the pass, please take me with "
 "you. I am near freezing and starving to death up here."
@@ -891,13 +888,13 @@ msgstr ""
 "mane drauge. Tuoj numirsiu iš bado ir šalčio šičia."
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:350
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:349
 msgid "Pardon my curiosity, but what is a fire-mage doing freezing to death?"
 msgstr ""
 "Atleiskite mano smalsumą, tačiau ką ugnies magas veikia mirtinai šaldamas?"
 
 #. [message]: speaker=Ratheln
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:355
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:354
 msgid ""
 "In case you haven’t noticed, there is a serious shortage of both firewood "
 "and food in this gods-forsaken slot. And the damned gryphons descend on me "
@@ -910,12 +907,12 @@ msgstr ""
 "čirškintų grifų aš daugiau neturėjau ko valgyt."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:360
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:359
 msgid "Where were you bound when you got stuck here?"
 msgstr "Kur tu vykai, kai užstrigai čia?"
 
 #. [message]: speaker=Ratheln
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:365
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:364
 msgid ""
 "There is a school of mages near the east end of the pass. They’ve an opening "
 "for an instructor, and they’re expecting me."
@@ -924,7 +921,7 @@ msgstr ""
 "instruktoriaus vieta ir jie laukia manęs."
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:370
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:369
 msgid ""
 "Let’s take him with us, Aiglondur. We know little about the country beyond "
 "to the east; we’ve had few reports on it since before the orcs took Knalga. "
@@ -935,7 +932,7 @@ msgstr ""
 "Knalgą. Tie magai turėtų žinot bent gandus."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:375
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:374
 msgid ""
 "Aye. And I’d not leave anyone who had done my kin no harm stranded to starve."
 msgstr ""
@@ -943,12 +940,12 @@ msgstr ""
 "badu."
 
 #. [message]: speaker=Ratheln
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:392
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:391
 msgid "This is no fit death for a mage of fire!"
 msgstr "Tai netinkama mirtis ugnies magui!"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:397
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:396
 msgid ""
 "The snow has redoubled its fury, as if his presence had been holding it "
 "back. I do not see a way forward for us."
@@ -957,25 +954,25 @@ msgstr ""
 "kelio priešaky."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:410
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:409
 msgid ""
 "It has begun to snow. Move, everyone! To be trapped here would be death."
 msgstr "Pradėjo snigti. Pasijudinkit visi! Būti įkalintiems čia reikštų mirtį."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:419
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:418
 msgid ""
 "We’re snowed in. Our mission has failed, even if we live until the spring."
 msgstr ""
 "Mes užsnigti. Mūsų užduotis žlugo, net jei ir išgyventume iki pavasario."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:433
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:432
 msgid "We’re through the pass!"
 msgstr "Mes įveikėm perėją!"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:438
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:437
 msgid ""
 "That may not be a blessing. Something frightened those orcs we fought among "
 "the bandit villages, enough to make them push west into Alliance territory. "
@@ -986,7 +983,7 @@ msgstr ""
 "teritoriją. Kaži kas tai galėjo būti?"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:443
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:442
 msgid ""
 "Aye. But I’ve a grim feeling we might be going to discover that in person."
 msgstr ""
@@ -1560,10 +1557,10 @@ msgstr "Vakariniai vartai"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:231
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:151
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:224
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:767
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:928
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1091
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1144
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:766
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:927
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1090
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1143
 msgid "Death of Dulcatulos"
 msgstr "Dulkatuloso mirtis"
 
@@ -1690,7 +1687,7 @@ msgstr "Kal Kartiečiai"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:139
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1079
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1078
 msgid "Defeat Karrag"
 msgstr "Nugalėkite Karagą"
 
@@ -1881,46 +1878,33 @@ msgstr "Požemiai"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:212
-#, fuzzy
-#| msgid "Defeat Karrag"
 msgid "Find and defeat Karrag"
-msgstr "Nugalėkite Karagą"
+msgstr "Raskite ir nugalėkite Karagą"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:280
-#, fuzzy
-#| msgid "This place smells of death."
 msgid "This place reeks of death."
 msgstr "Ši vieta atsiduoda mirtimi."
 
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:285
-#, fuzzy
-#| msgid ""
-#| "It’s been... it’s been years since I’ve been down here. Only Karrag and "
-#| "his personal followers used this level. Why did I never wonder about that "
-#| "before?"
 msgid ""
 "It has been... so many years since I’ve been down here. Only Karrag and his "
 "personal followers used this level. I can't believe I never wondered about "
 "that before."
 msgstr ""
-"Jau... Jau ne vieni metai nepraėjo nuo to, kai aš buvau čia. Tik Karagas ir "
-"jo asmeniniai pasekėjai naudojosi šiais lygiais. Kodėl manęs tai nestebino "
-"anksčiau?"
+"Jau... Jau ne vieni metai praėjo nuo to, kai aš buvau čia. Tik Karagas ir jo "
+"asmeniniai pasekėjai naudojosi šiais lygiais. Negaliu patikėti, kad niekad "
+"apie tai nesusimąsčiau."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:291
-#, fuzzy
-#| msgid ""
-#| "Karrag’s will, and his dark magic. I think he has been casting glamours "
-#| "on all of you ever since he passed over."
 msgid ""
 "It is Karrag's doing—his will, and his dark magic. I think he has been "
 "casting glamours on all of you ever since he passed over."
 msgstr ""
-"Karago valia ir jo tamsioji magija. Manau, kad jis skleidė kerus ant jūsų "
-"visų nuo tada, kai pasikeitė."
+"Tai Karago darbas – jo valia ir tamsioji magija. Manau, kad jis skleidė "
+"kerus ant jūsų visų nuo tada, kai pasikeitė."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:296
@@ -1931,11 +1915,6 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:301
-#, fuzzy
-#| msgid ""
-#| "More likely he has cloaked himself, thinking to run ahead to gather his "
-#| "followers. He could be within a spear-cast of us now and we wouldn’t know "
-#| "it in this gloom."
 msgid ""
 "Most likely he has cloaked himself, thinking to run ahead to gather his "
 "followers. He could be within a spear-cast of us now and we wouldn’t know it "
@@ -1960,207 +1939,195 @@ msgstr ""
 "išperas ličas iššauks. UŽ KIRVIŲ! "
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:339
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:338
 msgid "Someone died here."
-msgstr ""
+msgstr "Kažkas čia mirė."
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:368
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:367
 msgid "Poor guy didn't make it."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:399
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:398
 msgid "There's some gold in here!"
-msgstr ""
+msgstr "Čia yra aukso!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:419
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:418
 msgid "I found some gold!"
-msgstr ""
+msgstr "Radau šiek tiek aukso!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:453
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:452
 msgid "The gates are locked. I will have to break them open by force!"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:459
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:458
 msgid "The gates are locked!"
-msgstr ""
+msgstr "Vartai užrakinti!"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:464
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:463
 msgid "Force them open!"
-msgstr ""
+msgstr "Išlaužkit juos!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:469
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:468
 msgid "Yes, sir!"
-msgstr ""
+msgstr "Taip, pone!"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:499
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:498
 msgid "Let us proceed onward."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:525
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:524
 msgid "There's something behind this door. I shall break it down!"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:531
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:530
 msgid "There's something behind this door."
 msgstr ""
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:536
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:535
 msgid "Break it down!"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:570
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:569
 msgid "It looks like there is a rune behind this gate!"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:605
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:604
 msgid "The dirtgrubber-friends have come! Slay them all!"
 msgstr ""
 
 #. [message]: speaker=second_unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:610
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:609
 msgid "You could not stop us before and you won't be stopping us now!"
 msgstr ""
 
 #. [message]: speaker=Dufon
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:631
-#, fuzzy
-#| msgid ""
-#| "You cannot pass, fools. The doors I guard are sealed by the power of the "
-#| "Hammer itself."
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:630
 msgid ""
 "You shall never pass through here! The doors I guard are sealed by the power "
 "of the Hammer itself."
 msgstr ""
-"Jūs nepraeisit, kvailiai. Durys, kurias aš saugau, yra užantspauduotos "
+"Niekad per čia nepraeisit! Durys, kurias aš saugau, yra užantspauduotos "
 "paties Kūjo galia."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:636
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:635
 msgid "You won't stop us!"
 msgstr ""
 
 #. [message]: speaker=Dufon
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:641
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:640
 msgid ""
 "Fools! Even should you defeat me, the master's ritual will soon be complete "
 "and you shall all become his slaves!"
 msgstr ""
 
 #. [message]: speaker=Aragoth
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:661
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:660
 msgid ""
 "Your path forward ends here! Once the lord's spell is complete, your souls "
 "will soon be chained to his will!"
 msgstr ""
 
 #. [message]: speaker=Dranath
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:682
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:681
 msgid "The dirtgrubbers have come! Stop their advance!"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:709
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:708
 msgid "This must be one of the runic keys!"
-msgstr ""
+msgstr "Tai turbūt vienas iš runų raktų!"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:749
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:910
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:748
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:909
 msgid "We still need to find the other one!"
-msgstr ""
+msgstr "Mums vis dar reikia rasti kitą!"
 
 #. [objective]: condition=win
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:755
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:916
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:754
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:915
 msgid "Find and activate the runic keys (one remaining)"
 msgstr ""
 
 #. [note]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:771
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:932
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1095
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:770
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:931
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1094
 msgid ""
 "You may teleport units between matching runes (the destination must be clear)"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:870
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:869
 msgid "We've found a runic key!"
-msgstr ""
+msgstr "Suradome runų raktą!"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1021
-#, fuzzy
-#| msgid "The key has been uttered, these doors should open..."
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1020
 msgid "The keys have been found. The door should open..."
-msgstr "Raktas ištartas, tos durys turėtų atsidaryti..."
+msgstr "Raktai rasti. Durys turėtų atsidaryti..."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1073
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1072
 msgid "The lich surely awaits us within. We must be on guard."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1121
-#, fuzzy
-#| msgid ""
-#| "It seems that guard spoke truth. These doors cannot be forced open by any "
-#| "means we have!"
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1120
 msgid ""
 "It seems that the guard spoke the truth. These doors will not open to us!"
-msgstr ""
-"Panašu, kad sargybinis sakė tiesą. Šių durų nepavyksta išlaužti jokiomis "
-"mūsų turimomis priemonėmis!"
+msgstr "Panašu, kad sargybinis sakė tiesą. Šios durys mums neatsivers!"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1126
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1125
 msgid ""
 "They are sealed by the ancient runelore of the Hammer. No amount of force "
 "can open these doors - we will need to find the keys to the seals here."
 msgstr ""
 
 #. [objective]: condition=win
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1132
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1131
 msgid "Find and activate the runic keys to the sealed door"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1164
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1163
 msgid "My lord, the dirtgrubbers have entered our sanctuary!"
 msgstr ""
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1169
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1168
 msgid "Excellent! Their blood will provide plenty of fuel for my ritual!"
 msgstr ""
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1190
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1189
 msgid "So, the usurpers have arrived at last."
 msgstr ""
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1195
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1194
 msgid ""
 "We are not the usurpers but the liberators of Kal Kartha! We are here to "
 "free our kin from your dark sorcery!"
 msgstr ""
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1200
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1199
 msgid ""
 "You insolent fool! It is I who have led Kal Kartha to glory and I who have "
 "cleansed the lands of the true people from all unworthy scum! Kal Kartha "
@@ -2168,7 +2135,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1205
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1204
 msgid ""
 "No! You are the one who owes our brethren their freedom! You have ensnared "
 "their minds with your foul magic and now we are here to put an end to your "
@@ -2176,40 +2143,40 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1210
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1209
 msgid ""
 "Any enemy of my rule is no better than the filthiest of dirtgrubbers. You no "
 "longer belong to the true people. You will become my slaves!"
 msgstr ""
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1215
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1214
 msgid "Not if we stop you here. AXES UP!"
 msgstr ""
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1233
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1232
 msgid "No! No! No! Dirtgrubbers must die! The true people must rule all!"
 msgstr ""
 "Ne! Ne! Ne! Purvarausiai turi mirti! Išrinktoji tauta turi valdyti visus!"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1238
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1237
 msgid "The ‘true people’ speak through our axes. Die, foul lich."
 msgstr "„Išrinktoji tauta“ kalba mūsų kirviais. Mirk, bjaurus liče."
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1243
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1242
 msgid "Nooo! My power... it wanes..."
 msgstr ""
 
 #. [message]: speaker=Dulcatulos
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1253
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1252
 msgid "And your rule is at an end, Karrag, once the brave lord of Kal Kartha."
 msgstr ""
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1258
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1257
 msgid ""
 "Do not mourn his passing, Dulcatulos. The Karrag you knew died many years "
 "ago when his lust for power consumed him. It is now time to put the past "
@@ -2217,7 +2184,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1263
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1262
 msgid ""
 "Aiglondur speaks the truth. The deed is done. Though the heart of the "
 "darkness is gone, there is still much to do. Much will have to be done to "
@@ -2225,62 +2192,61 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1268
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1267
 msgid ""
 "But first, we must bring this news to the rest of Kal Kartha. A new Lord "
 "must be chosen."
 msgstr ""
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1273
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1272
 msgid "Aye, let us go."
 msgstr ""
 
 #. [message]: speaker=Dufon
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1295
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1294
 #, fuzzy
-#| msgid "Our master’s ritual must not be interrupted. Stop them!"
 msgid "The master's ritual... must not be... interrupted..."
 msgstr "Mūsų šeimininko ritualas negali būti nutrauktas. Sulaikykite juos!"
 
 #. [message]: speaker=Dranath
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1307
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1306
 msgid ""
 "Imbeciles! Once the master's dark rite is complete, I will return to slay "
 "you myself!"
 msgstr ""
 
 #. [message]: speaker=Aragoth
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1319
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1318
 msgid "The heathens... have slain me-"
 msgstr ""
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1330
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1329
 msgid "The air is cold with the stench of death."
 msgstr ""
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1335
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1334
 msgid ""
 "No doubt it is this ritual that the masked ones spoke of. We must hurry and "
 "stop Karrag!"
 msgstr ""
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1354
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1353
 msgid "I feel as if the life is being sapped out of my body!"
 msgstr ""
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1359
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1358
 msgid ""
 "Karrag's spell grows more powerful with every passing moment. If we do not "
 "defeat him now, we will all turn into his thralls!"
 msgstr ""
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1368
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1367
 msgid ""
 "HAHAHAHA! Yes, yes, YES! The rite of death is complete at last! Die, you "
 "filthy dirtgrubbers, die so that I may raise you again as my mindless slaves!"
@@ -2523,14 +2489,6 @@ msgstr "Kaukėtas dvarfų valdovas"
 #. [unit_type]: id=Dwarvish Masked Lord, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:17
 #, fuzzy
-#| msgid ""
-#| "Feared in dwarven legend is the Dwarf Lord who masks his face, using the "
-#| "formidable fighting powers of his kind without accounting to his peers "
-#| "and the loremasters of Dwarven-kind for the dark and bloody uses to which "
-#| "he puts his weapons. Like his barefaced kin, the Dwarf Lord wields axe "
-#| "and hammer with masterful skill, and can hit a target with a thrown hand "
-#| "axe at several paces. Though slow on their feet, these dwarves are a "
-#| "testament to the prowess of their kind."
 msgid ""
 "Feared in dwarven legend is the Dwarf Lord who masks his face, using the "
 "formidable fighting powers of his kind without accounting to his peers and "
@@ -2723,189 +2681,3 @@ msgid ""
 "Aaarrgh! Though I die, the flame of righteousness shall send you down to "
 "darkness!"
 msgstr "Aaarrgh! Nors aš mirštu, teisingumo liepsna pasiųs jus visus į tamsą!"
-
-#~ msgid "Defeat all enemies"
-#~ msgstr "Nugalėkite visus priešus"
-
-#~ msgid "Undead"
-#~ msgstr "Nemirėliai"
-
-#~ msgid "Fleleen"
-#~ msgstr "Flelynas"
-
-#~ msgid "Lannex"
-#~ msgstr "Laneksas"
-
-#~ msgid ""
-#~ "This is the Grand Gallery. There are rows of small chambers along its "
-#~ "sides; he could have slipped into any of them."
-#~ msgstr ""
-#~ "Tai didžioji galerija. Jos pakraščiuose yra mažų kambarėlių eilės; jis "
-#~ "galėjo įsmukti į bet kurį iš jų."
-
-#~ msgid "We’ll see about that!"
-#~ msgstr "Mes dar pažiūrėsim!"
-
-#~ msgid "I sense wrongness. Some greater evil awakens before us."
-#~ msgstr "Jaučiu negerus dalykus. Kažkoks didesnis blogis kyla prieš mus."
-
-#, fuzzy
-#~ msgid ""
-#~ "I sense these bindings to be the work of common sorcery, not the power of "
-#~ "the Hammer. Usually to each such locking spell there is some sort of key. "
-#~ "If we can but find the key, we will be able to open these doors."
-#~ msgstr ""
-#~ "Jaučiu šiuos saitus esant įprastų kerų darbo, ne sukurtus Kūjo galia. "
-#~ "Paprastai kiekvienas toks rakinantis burtas turi kokį nors raktą. Jei tą "
-#~ "raktą rasime, galėsime atidaryti šias duris."
-
-#~ msgid "There we go... faugh, what is that smell!"
-#~ msgstr "Na štai... Fui, kas čia per tvaikas!"
-
-#~ msgid "I think I hear noises, ahead of us..."
-#~ msgstr "Manau, kad girdžiu triukšmą priešaky..."
-
-#~ msgid "Fresh blood! Exactly what I need to complete the rite."
-#~ msgstr "Šviežias kraujas! Kaip tik tai, ko man reikia užbaigti ritualą."
-
-#~ msgid "It’s locked, but nothing that our hammers can’t manage."
-#~ msgstr ""
-#~ "Užrakinta, tačiau nieko tokio su kuo negalėtų susidoroti mūsų kūjai."
-
-#~ msgid "A scroll with some strange writing on it..."
-#~ msgstr "Pergamentas su kažkokiais keistais rašmenimis..."
-
-#~ msgid "I believe that will be the key-spell for that sealed door."
-#~ msgstr "Manau, kad tai ir bus raktinis burtas užantspauduotoms durims."
-
-#~ msgid "(<i>Reads</i>) <i>Kannin a’kana du’masi a’forigln de’amp.</i>"
-#~ msgstr "(<i>Skaito</i>) <i>Kannin a’kana du’masi a’forigln de’amp.</i>"
-
-#~ msgid "Now try the door again. It should open."
-#~ msgstr "Dabar vėl išmėginkite duris. Jos turėtų atsidaryti."
-
-#~ msgid "A door. Perhaps Karrag is hiding in here..."
-#~ msgstr "Durys. Galbūt čia slepiasi Karagas..."
-
-#~ msgid "150 gold pieces. This should help."
-#~ msgstr "150 auksinių. Tai turėtų padėti."
-
-#~ msgid ""
-#~ "150 gold pieces. I wonder why Karrag would choose to store his gold here."
-#~ msgstr "150 auksinių. Įdomu, kodėl Karagas pasirinko čia juos laikyti."
-
-#~ msgid ""
-#~ "An old caved-in passageway. Perhaps if we clear away some of this rubble "
-#~ "we may be able to get through..."
-#~ msgstr ""
-#~ "Senas įgriuvęs praėjimas. Jei pravalytume jį nuo nuolaužų, gal galėtume "
-#~ "prasibrauti pirmyn..."
-
-#~ msgid "Another old caved-in passageway..."
-#~ msgstr "Dar vienas įgriuvęs praėjimas..."
-
-#~ msgid ""
-#~ "Finally! I see someone managed to see through the web of deception thrown "
-#~ "up by that vile Karrag!"
-#~ msgstr ""
-#~ "Pagaliau! Kaip matau, kažkas sugebėjo peržvelgti apgaulės tinklą, užmestą "
-#~ "to niekšo Karago!"
-
-#~ msgid ""
-#~ "I thought Karrag’s fight was against the so called ‘dirtgrubbers’. Why "
-#~ "would he keep you, a dwarf captive?"
-#~ msgstr ""
-#~ "Maniau, kad Karago kova buvo prieš taip vadinamus „purvarausius“. Kam jam "
-#~ "laikyti tave, dvarfą, belaisviu?"
-
-#~ msgid ""
-#~ "I guess Karrag thought I knew too much. When his masked henchmen started "
-#~ "raiding, plundering and taking all sorts of prisoners — which were sent "
-#~ "to these underlevels and never seen again — I began to inquire. I "
-#~ "discovered many unsettling things indeed, but before I could act on them "
-#~ "I was arrested and thrown down here."
-#~ msgstr ""
-#~ "Spėju, Karagas manė, jog aš žinau per daug. Kai jo kaukėtieji pakalikai "
-#~ "pradėjo puldinėti, plėšdami ir imdami belaisvius, kurie buvo siunčiami į "
-#~ "šiuos požemius ir niekas jų daugiau nebematydavo, ėmiau klausinėtis. "
-#~ "Aptikau daug išties negerų dalykų, tačiau buvau suimtas ir įmestas čia "
-#~ "anksčiau, nei spėjau ko nors imtis."
-
-#~ msgid ""
-#~ "I gather that he is involved in some sick ritual which requires the blood "
-#~ "of living creatures. These cells seem to be the holding place where he "
-#~ "keeps his victims. The ‘dirtgrubbers’ he seems to prefer sacrificing have "
-#~ "long since been taken away. Now it is just us few dwarves that remain..."
-#~ msgstr ""
-#~ "Aš išsiaiškinau, kad jis įsivėlęs į kažkokį nesveiką ritualą, kuriam "
-#~ "reikalingas gyvų padarų kraujas. Panašu, kad šios kameros yra vieta, kur "
-#~ "jis laiko savo aukas. „Purvarausiai“, kuriuos jis linkęs aukoti pirmus, "
-#~ "išvesti jau seniai. Dabar čia belikom tik keletas mūsų, dvarfų..."
-
-#, fuzzy
-#~ msgid ""
-#~ "Freeing these prisoners is more of a blow to Karrag than we thought, for "
-#~ "now he is unable to continue his foul sorcery."
-#~ msgstr ""
-#~ "Šių kalinių išlaisvinimas yra stipresnis smūgis Karagui, nei mes manėm, "
-#~ "nes dabar jis nebegali tęsti savo bjaurių kerų."
-
-#~ msgid "Trisi"
-#~ msgstr "Trisis"
-
-#~ msgid "Malifen"
-#~ msgstr "Malifenas"
-
-#~ msgid "Borras"
-#~ msgstr "Borras"
-
-#~ msgid "Zamak"
-#~ msgstr "Zamakas"
-
-#~ msgid ""
-#~ "When I step on this rune, I feel strange indeed. I feel like I am being "
-#~ "pulled somewhere else, but at the same time being held back by an equally "
-#~ "powerful force."
-#~ msgstr ""
-#~ "Kai aš atsistoju ant šios runos, jaučiuosi išties keistai. Tarsi būčiau "
-#~ "stumiamas kažkur kitur ir tuo pat metu sulaikomas lygiai tokios pat "
-#~ "stiprios jėgos."
-
-#~ msgid ""
-#~ "It seems to be some sort of a teleportation device. What’s more, the "
-#~ "bindings that are preventing it from working seem to be the same ones "
-#~ "that bar those sealed gates."
-#~ msgstr ""
-#~ "Tai turėtų būti kažkoks teleportavimosi įtaisas. Maža to, saitai "
-#~ "neleidžiantys jam veikti, atrodo, yra tokie patys kaip ir laikantys anuos "
-#~ "užantspauduotus vartus."
-
-#~ msgid ""
-#~ "Yon doors are big, tightly locked — and, I would imagine, well "
-#~ "barricaded. This may take a while."
-#~ msgstr ""
-#~ "Anos durys yra didelės, tvirtai užrakintos ir, susidaro įspūdis, gerai "
-#~ "užbarikaduotos. Tai gali užtrukti."
-
-#~ msgid ""
-#~ "Go through that rubble yonder; see if you can dig up some sort of "
-#~ "battering ram."
-#~ msgstr ""
-#~ "Pasirausk po nuolaužas anaten; pažiūrėk, gal atkasi ką nors panašaus į "
-#~ "taraną."
-
-#~ msgid "One hour later"
-#~ msgstr "Po valandos"
-
-#~ msgid "The door is about to give. Brace yourselves, everyone."
-#~ msgstr "Durys tuoj neatlaikys. Visi pasiruoškit."
-
-#~ msgid ""
-#~ "That hut near the top of the pass... Something is glowing inside it. We "
-#~ "should investigate."
-#~ msgstr ""
-#~ "Ta trobelė šalia perėjos viršūnės... Kažkas mirga jos viduje. Derėtų tai "
-#~ "ištirt."
-
-#~ msgid "morningstar"
-#~ msgstr "ryto žvaigždė"

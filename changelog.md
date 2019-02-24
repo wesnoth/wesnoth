@@ -1,4 +1,6 @@
-## Version 1.14.5+dev
+## Version 1.14.6+dev
+
+## Version 1.14.6
  ### AI
    * Fixed crash when the AI simulates a fight between two units which can slow but aren't yet slowed, then
      simulates another fight for one of them in Monte Carlo mode (issue #3650).
@@ -11,6 +13,8 @@
    * Forest Animals Micro AI: fix AI crash when using custom rabbit hole image
    * Fix Lua AIs using the ai.stopunit_*() functions potentially creating infinite candidate action loops
  ### Campaigns
+   * Dead Water:
+     * S12: Slightly rebalanced enemy reinforcements and ai gold
    * Descent Into Darkness:
      * Allow converting L3 necromancers to liches from S12 onwards (issue #3165).
      * Added an alternative method of completing the campaign (issue #3167).
@@ -47,11 +51,13 @@
      * S2: Wolf riders are not initially recruited, to not hinder the player
        from reaching the island in time
  ### Language and i18n
-   * Updated translations: British English, Chinese (Traditional), French,
-     German, Italian, Russian, Slovak, Spanish, Ukrainian.
+   * Updated translations: British English, Chinese (Simplified),
+     Chinese (Traditional), Czech, French, German, Italian, Japanese,
+     Lithuanian, Russian, Scottish Gaelic, Slovak, Spanish, Ukrainian.
  ### Lua API
    * Fix wesnoth.set_dialog_callback calling the function immediately when used in the previous callback. (issue #3794)
    * Fix wesnoth.set_dialog_value not triggering re-layout. (issue #3572)
+   * wml.tostring() now outputs a string that can be parsed back to WML without loss of data.
  ### Miscellaneous and bug fixes
    * Fix crash with custom themes on desktop PCs. (issue #3599)
    * Add --campaign-skip-story command line switch for skipping directly to turn 1. (issue #3472)
@@ -61,8 +67,11 @@
    * Fix wrong ordering for BW / BF years, for example in Play a Campaign when sorted by date. (issue #3187)
    * GUI.pyw can now terminate a running maintenance script
    * Fix SDL_DestroyRenderer assertion failure under XMonad. (part of issue #3716)
-   * Fix map item names not being translated in the scenario editor.
-   * Many units lacking animations now have at least a defense animation.
+   * Fix map item names not being translated in the scenario editor.   
+   * Usernames specified in the MP UI and command line are now stripped of leading and trailing whitespace, including newlines.
+   * Show ability of a selected unit as active/inactive with respect to mouseover hex. (issue #3912)
+   * macOS: Wesnoth now uses the app sandboxing feature, which means there is a new location for saves. All saves will be migrated during first launch automatically. For info about backwards compatibility see: https://gist.github.com/hrubymar10/eb5afd896f933a46fac344ced940e020
+   * Many units lacking animations now have at least a defense animations
  ### Multiplayer server
    * Fix stale temporary bans continuing to have an effect on players until cleared by
      phpBB on the next ban/unban operation.
@@ -93,6 +102,7 @@
    * The "Recruit Unit" dialog is searchable by unit type name. (PR #3787)
    * Add text filter to hotkeys preferences. (PR #3759)
    * Hide leader in status table if it's unfogged but invisible. (PR #3854)
+   * macOS: Dark GUI on macOS Mojave and later when dark appearance is enabled.
 
 ## Version 1.14.5
  ### AI

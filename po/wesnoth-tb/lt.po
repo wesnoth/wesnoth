@@ -1,13 +1,13 @@
-# Copyright (C) Wesnoth development team, 2007-2011.
+# Copyright (C) Wesnoth development team, 2007-2019.
 # Translators:
-#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2011.
+#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2019.
 #  Marius Tauba, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-21 18:30 UTC\n"
-"PO-Revision-Date: 2017-04-08 15:52+0100\n"
+"POT-Creation-Date: 2019-01-27 09:23 UTC\n"
+"PO-Revision-Date: 2019-02-09 00:09+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
 "Language: lt\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
@@ -63,10 +63,8 @@ msgstr ""
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:23
-#, fuzzy
-#| msgid "(Novice level, 4 scenarios.)"
 msgid "(Rookie level, 4 scenarios.)"
-msgstr "(Pradedantysis lygis, 4 scenarijai.)"
+msgstr "(Pradedančiojo lygis, 4 scenarijai.)"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:30
@@ -216,10 +214,10 @@ msgstr ""
 msgid "Humans"
 msgstr "Žmonės"
 
-#. [side]: type=Dark Sorcerer, id=Rotharik
-#. [side]
 #. [side]: type=Orcish Warlord, id=Tairach
 #. [side]: type=Dark Sorcerer, id=Mordak
+#. [side]: type=Dark Sorcerer, id=Rotharik
+#. [side]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:114
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:81
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:131
@@ -297,6 +295,9 @@ msgid ""
 "Use footpads as fodder to protect your loyal units and attack during the day "
 "to minimize the damage your forces take."
 msgstr ""
+"Naudokite plėšikus, kaip patrankų mėsą, kad apsaugotumėte savo ištikimus "
+"karius ir pulkite dienos metu, kad sumažintumėte žalą, kurią patirs jūsų "
+"pajėgos."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:186
@@ -320,12 +321,6 @@ msgstr "Tu pakvietei, aš atėjau, pasitenkinkim tuo. Kas ištiko Magrę?"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:206
-#, fuzzy
-#| msgid ""
-#| "A dark mage has come upon us; his creatures call him Mordak. They have "
-#| "been terrorizing outlying farms, and we fear they may soon attack the "
-#| "village itself! The villagers of Maghre have taken up weapons but they "
-#| "are not trained fighters; but we need your men, and you to lead them."
 msgid ""
 "A dark mage has come upon us; his creatures call him Mordak. They have been "
 "terrorizing outlying farms, and we fear they may soon attack the village "
@@ -333,8 +328,8 @@ msgid ""
 "trained fighters; we need your men, and you to lead them."
 msgstr ""
 "Tamsusis magas užpuolė mus; jo sutvėrimai vadina jį Mordaku. Jie terorizuoja "
-"tolimesnes fermas, ir mes bijome, kad jie tuoj gali užpulti patį kaimą! "
-"Magrės gyventojai pakėlė ginklus, bet jie nėra treniruoti kariai; todėl mums "
+"tolimesnius ūkius, ir mes bijome, kad jie tuoj gali užpulti patį kaimą! "
+"Magrės gyventojai pakėlė ginklus, bet jie nėra treniruoti kariai; mums "
 "reikia tavo vyrų ir tavęs, kad juos vestum."
 
 #. [message]: speaker=Baran
@@ -561,7 +556,7 @@ msgstr "Muff Toras"
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:261
 msgid "Fight your way through the woods before the kidnappers escape"
-msgstr "Prasiskinkite kelią per miškus kol pagrobėjai nepaspruko."
+msgstr "Prasiskinkite kelią per miškus kol pagrobėjai nepaspruko"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:278
@@ -579,6 +574,8 @@ msgid ""
 "The Elvish forces are spread out. Seek to fight them one at a time with "
 "several of your units."
 msgstr ""
+"Elfų pajėgos yra išsisklaidžiusios. Stenkis vienu metu kovoti su keliais "
+"savo kariais prieš vieną jų karį."
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:317
@@ -586,12 +583,16 @@ msgid ""
 "Use horsemen or footpads to quickly explore the shrouded woods to locate the "
 "kidnappers."
 msgstr ""
+"Greitai ištyrinėk miškus naudoda raitelius ar plėšikus, kad rastumėte "
+"pagrobėjus."
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:332
 msgid ""
 "Separate the Dark Adept from his guards and attack in force for an easy kill."
 msgstr ""
+"Atskirkite tamsos žinovą nuo jo sargybinių ir pulkite visa jėga, jei norite "
+"lengvai nugalėti."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:375
@@ -900,7 +901,7 @@ msgstr ""
 "pradėjo. Vis dar negaliu patikėti tuo, kas įvyko; iki šiol vis sugebėdavom "
 "kažkaip išsisukti.\n"
 "\n"
-"Tikėjomės pristatyti magą Tairachui, mainais į mūsų gyvybes. Nežinau kodėl "
+"Tikėjomės pristatyti magą Tairačui, mainais į mūsų gyvybes. Nežinau kodėl "
 "karžygiui prireikė šito vyro, bet aprašymą jis atitinka. Manau, Mordako "
 "planas būtų puikiai pavykęs, jeigu ne tų raitelių pasirodymas. Dabar jie "
 "atjoja čia, vedami vyro, kuris, pasak gandų, yra šito mago brolis. Jeigu tai "
@@ -997,6 +998,8 @@ msgid ""
 "When facing an unknown situation, take into account details from story and "
 "dialog to inform your strategy."
 msgstr ""
+"Kai susiduriate su nežinoma situacija, atkreipkite dėmesį į pasakojimo "
+"detales ir dialogą, kad tinkamai pasirinktumėte strategiją."
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:337
@@ -1004,6 +1007,8 @@ msgid ""
 "The dark sorcerer is a strong unit; attack him with multiple units at once "
 "and try to force him off his keep."
 msgstr ""
+"Tamsos žinovas yra stiprus karys; pulkite jį su keliais kariais vienu metu "
+"ir pabandykite jį išstumti iš jo bokšto."
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:347
@@ -1011,6 +1016,8 @@ msgid ""
 "Markings or decorations on hexes may indicate something to be found. If you "
 "can, it is usually a good idea to investigate."
 msgstr ""
+"Paženklinimai ar dekoracijos laukeliuose gali reikšti, kad ten kažkas gali "
+"būti rasta. Jei gali, paprastai yra verta ištirti."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:384
@@ -1185,6 +1192,11 @@ msgstr ""
 "Visai gali būti, kad tai raktas nuo vienutės, kurioje jie laiko Bareną! "
 "Paimsiu jį."
 
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:717
+msgid "It may be important, I best take it."
+msgstr "Jis gali būti svarbus, geriau jį paimsiu."
+
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:737
 msgid "Look what I have found in here! I can count a hundred pieces of gold."
@@ -1233,7 +1245,7 @@ msgstr ""
 msgid ""
 "I have already met, and killed, the sorcerer. Is this the key to which you "
 "referred?"
-msgstr ""
+msgstr "Jau sutikau ir užmušiau magą.  Ar tai raktas, kurį paminėjai?"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:835
@@ -1241,6 +1253,8 @@ msgid ""
 "Yes, it is. Come, unlock this cell door, and let us depart this place, "
 "brother!"
 msgstr ""
+"Taip. Ateik, atrakink vienutės duris, ir tada kartu išvyksime iš šios "
+"vietos, broli!"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:889
@@ -1287,7 +1301,7 @@ msgstr "Ačiū, kad atėjai į pagalbą. Grįžkime į kaimą."
 #. [unit]: id=Rotharik, type=Orcish Assassin
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:948
 msgid "Minion of Tairach"
-msgstr ""
+msgstr "Tairačo pakalikas"
 
 #. [message]: speaker=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:960
@@ -1332,8 +1346,8 @@ msgstr ""
 "baimės mirti, ar dar blogiau... Bet pasitraukus šitiems vargams, susidūriau "
 "su ne ką lengvesniu uždaviniu — kaip atsidėkosiu broliui.\n"
 "\n"
-"Kai Arvitas išlaisvino mane iš celės, jis jau buvo beveik viską atleidęs. Ir "
-"visgi, užtrukom visą praeitą savaitę, kol atgaivinom ankstesnį tarpusavio "
+"Kai Arvitas išlaisvino mane iš vienutės, jis jau buvo beveik viską atleidęs. "
+"Ir visgi, užtrukom visą praeitą savaitę, kol atgaivinom ankstesnį tarpusavio "
 "pasitikėjimą. Mums pasisekė, kad turėjom daug laiko pakeliui atgal — Pilkąją "
 "girią aplenkėm dideliu lanku, o kelias aplinkui ėjo per labai gražias "
 "apylinkes. Tai suteikė mums daugybę laiko pokalbiams."
@@ -1398,6 +1412,8 @@ msgid ""
 "Recruit or Recall some high-move units to be able to see as far as possible "
 "through the fog for approaching units."
 msgstr ""
+"Pasamdykite ar grąžinkit toli judančius karius, kad rūke matytumėte "
+"besiartinančius karius iš kaip galima toliau."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:171
@@ -1504,6 +1520,8 @@ msgstr "Užmuškite orkų karžygį ir išlaisvinkite kaimą"
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:300
 msgid "You can use Reeve Hoban’s keep to recruit or recall additional units."
 msgstr ""
+"Galite naudoti Ryvo Hobano bokštą, kad pasamdytumėte ar grąžintumėte "
+"papildomų karių."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:310
@@ -1621,4 +1639,4 @@ msgstr "Barenas"
 
 #: data/campaigns/Two_Brothers/utils/macros.cfg:4
 msgid "Hint:"
-msgstr ""
+msgstr "Patarimas:"

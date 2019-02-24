@@ -4,14 +4,18 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
+# 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018
+# RatArmy <broadbarredfirefish@gmail.com>, 2019
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-21 21:30+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018\n"
+"POT-Creation-Date: 2019-02-24 00:45+0300\n"
+"PO-Revision-Date: 2018-05-06 10:15+0000\n"
+"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2019\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -247,11 +251,6 @@ msgstr "砂漠の砂地"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:298
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Deserts'</italic> have a somewhat different composition "
-#| "than small sand pits or beaches, however for gameplay purposes they are "
-#| "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
@@ -1924,7 +1923,7 @@ msgstr "検索"
 #. [label]
 #. [toggle_button]: id=sort_1
 #. [toggle_button]: id=sort_name
-#: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:226
+#: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:243
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_server_list.cfg:107
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
 #: data/gui/window/unit_recall.cfg:47
@@ -2065,7 +2064,7 @@ msgstr "接続"
 #: data/gui/window/addon_connect.cfg:212
 #: data/gui/window/addon_uninstall_list.cfg:174
 #: data/gui/window/advanced_graphics_options.cfg:178
-#: data/gui/window/campaign_dialog.cfg:440
+#: data/gui/window/campaign_dialog.cfg:457
 #: data/gui/window/campaign_difficulty.cfg:234
 #: data/gui/window/core_dialog.cfg:240 data/gui/window/custom_tod.cfg:444
 #: data/gui/window/depcheck_select_new.cfg:165
@@ -2321,7 +2320,7 @@ msgstr "ヘクスの拡大・縮小"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/advanced_graphics_options.cfg:165
-#: data/gui/window/campaign_dialog.cfg:426
+#: data/gui/window/campaign_dialog.cfg:443
 #: data/gui/window/campaign_difficulty.cfg:221
 #: data/gui/window/core_dialog.cfg:227 data/gui/window/custom_tod.cfg:431
 #: data/gui/window/depcheck_select_new.cfg:151
@@ -2409,39 +2408,39 @@ msgid "Play a Campaign"
 msgstr "キャンペーンをプレイ"
 
 #. [label]
-#: data/gui/window/campaign_dialog.cfg:214
+#: data/gui/window/campaign_dialog.cfg:231
 msgid "Sort by:"
 msgstr "並び順："
 
 #. [toggle_button]: id=sort_name
-#: data/gui/window/campaign_dialog.cfg:227
+#: data/gui/window/campaign_dialog.cfg:244
 msgid "Sort by full campaign name in alphabetical order"
 msgstr "キャンペーン正式名のアルファベット順"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/window/campaign_dialog.cfg:239
+#: data/gui/window/campaign_dialog.cfg:256
 msgid "Dates"
 msgstr "日付"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/window/campaign_dialog.cfg:240
+#: data/gui/window/campaign_dialog.cfg:257
 msgid "Sort in approximate chronological order of story events"
 msgstr "概ねストーリー上のイベントの順"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/campaign_dialog.cfg:276
-#: src/gui/dialogs/multiplayer/lobby.cpp:451
+#: data/gui/window/campaign_dialog.cfg:293
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
 msgid "Modifications"
 msgstr "Mod"
 
 #. [toggle_button]: id=checkbox_deterministic
-#: data/gui/window/campaign_dialog.cfg:409
+#: data/gui/window/campaign_dialog.cfg:426
 msgid "Save random seed"
 msgstr "乱数のシードを保存"
 
 #. [toggle_button]: id=checkbox_deterministic
-#: data/gui/window/campaign_dialog.cfg:411
+#: data/gui/window/campaign_dialog.cfg:428
 msgid ""
 "Makes the random number generator yield the same results even after "
 "reloading a game"
@@ -2456,8 +2455,6 @@ msgstr "難易度 "
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:73
-#, fuzzy
-#| msgid "Select difficulty level:"
 msgid "Select difficulty:"
 msgstr "難易度選択："
 
@@ -2719,7 +2716,7 @@ msgstr "解説："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:473
+#: src/gui/dialogs/multiplayer/lobby.cpp:478
 msgid "Experience modifier:"
 msgstr "必要経験値の変更（％）："
 
@@ -2781,7 +2778,7 @@ msgstr "ゴールド："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#: src/gui/dialogs/multiplayer/lobby.cpp:474
+#: src/gui/dialogs/multiplayer/lobby.cpp:479
 msgid "Gold per village:"
 msgstr "村あたりのゴールド："
 
@@ -2852,7 +2849,7 @@ msgstr "マップジェネレーターの選択："
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
-#: src/gui/dialogs/multiplayer/lobby.cpp:472
+#: src/gui/dialogs/multiplayer/lobby.cpp:477
 msgid "Settings"
 msgstr "設定"
 
@@ -4089,7 +4086,7 @@ msgstr "このゲームの参加時に必要となるパスワードを設定し
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/multiplayer/lobby.cpp:480
 msgid "Map size:"
 msgstr "マップサイズ："
 
@@ -4482,12 +4479,12 @@ msgstr "カテゴリ："
 #. [label]
 #: data/gui/window/preferences/02_hotkeys.cfg:53
 msgid "Filter:"
-msgstr ""
+msgstr "フィルター："
 
 #. [text_box]: id=filter
 #: data/gui/window/preferences/02_hotkeys.cfg:67
 msgid "Filters on hotkey description."
-msgstr ""
+msgstr "ホットキーの説明から絞り込みます．"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:111
@@ -5271,8 +5268,8 @@ msgstr "エラー"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:213
-#: src/gui/dialogs/multiplayer/lobby.cpp:229 src/gui/dialogs/wml_error.cpp:197
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:214
+#: src/gui/dialogs/multiplayer/lobby.cpp:230 src/gui/dialogs/wml_error.cpp:197
 msgid "Details:"
 msgstr "情報："
 
@@ -5722,8 +5719,8 @@ msgstr "防御側の耐性："
 msgid "Attacker vulnerability vs"
 msgstr "攻撃側の弱点："
 
-#: src/gui/dialogs/campaign_selection.cpp:270
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/campaign_selection.cpp:318
+#: src/gui/dialogs/multiplayer/lobby.cpp:461
 msgid "active_modifications^None"
 msgstr "なし"
 
@@ -5863,10 +5860,8 @@ msgid "The game data cache could not be purged."
 msgstr "ゲームデータのキャッシュを削除できませんでした。"
 
 #: src/gui/dialogs/game_load.cpp:264
-#, fuzzy
-#| msgid "The selected game has no sides!"
 msgid "The selected file is corrupt: "
-msgstr "選択したゲームには陣営がありません！"
+msgstr "選択したファイルは壊れています："
 
 #: src/gui/dialogs/game_load.cpp:343
 msgid "(Invalid)"
@@ -5917,12 +5912,12 @@ msgid "Unknown"
 msgstr "不明"
 
 #: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
-#: src/gui/dialogs/multiplayer/lobby.cpp:470
+#: src/gui/dialogs/multiplayer/lobby.cpp:475
 msgid "no"
 msgstr "いいえ"
 
 #: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
-#: src/gui/dialogs/multiplayer/lobby.cpp:470
+#: src/gui/dialogs/multiplayer/lobby.cpp:475
 msgid "yes"
 msgstr "はい"
 
@@ -6045,31 +6040,31 @@ msgstr ""
 msgid "lua console"
 msgstr "Luaコンソール"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:102
+#: src/gui/dialogs/multiplayer/lobby.cpp:103
 msgid "Selected Game"
 msgstr "選択中のゲーム"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:103
+#: src/gui/dialogs/multiplayer/lobby.cpp:104
 msgid "Lobby"
 msgstr "ロビー"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:105
+#: src/gui/dialogs/multiplayer/lobby.cpp:106
 msgid "Current Room"
 msgstr "現在の部屋"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:107
+#: src/gui/dialogs/multiplayer/lobby.cpp:108
 msgid "Other Games"
 msgstr "他のゲーム"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:114
+#: src/gui/dialogs/multiplayer/lobby.cpp:115
 msgid "Do you really want to log out?"
 msgstr "ログアウトしますか？"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:209
+#: src/gui/dialogs/multiplayer/lobby.cpp:210
 msgid "Incompatible User-made Content."
 msgstr "非互換のユーザーメイドコンテンツ（UMC）があります。"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:210
+#: src/gui/dialogs/multiplayer/lobby.cpp:211
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
@@ -6079,11 +6074,11 @@ msgstr ""
 "することはできません。ホストにアドオンをアップデートするよう促した方が良いか"
 "もしれません。"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:225
+#: src/gui/dialogs/multiplayer/lobby.cpp:226
 msgid "Missing User-made Content."
 msgstr "未所持のユーザーメイドコンテンツ（UMC）があります。"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:226
+#: src/gui/dialogs/multiplayer/lobby.cpp:227
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
@@ -6092,43 +6087,43 @@ msgstr ""
 "このゲームをプレイするには、いくつかのアドオンをインストールまたはアップデー"
 "トする必要があります。それらのアドオンをインストールしますか？"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:391
+#: src/gui/dialogs/multiplayer/lobby.cpp:396
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "ゲーム： $num_total 中の $num_shown を表示"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:411
+#: src/gui/dialogs/multiplayer/lobby.cpp:416
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name（時代： $era_name）"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:441
+#: src/gui/dialogs/multiplayer/lobby.cpp:446
 msgid "era_or_mod^not installed"
 msgstr "未インストール"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:444
+#: src/gui/dialogs/multiplayer/lobby.cpp:449
 msgid "Era"
 msgstr "時代"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:476
+#: src/gui/dialogs/multiplayer/lobby.cpp:481
 msgid "Reloaded:"
 msgstr "再開："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:477
+#: src/gui/dialogs/multiplayer/lobby.cpp:482
 msgid "Shared vision:"
 msgstr "共有された視界："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:478
+#: src/gui/dialogs/multiplayer/lobby.cpp:483
 msgid "Shuffle sides:"
 msgstr "陣営をシャッフル："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:479
+#: src/gui/dialogs/multiplayer/lobby.cpp:484
 msgid "Time limit:"
 msgstr "制限時間："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:480
+#: src/gui/dialogs/multiplayer/lobby.cpp:485
 msgid "Use map settings:"
 msgstr "マップ設定を使用："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:488
+#: src/gui/dialogs/multiplayer/lobby.cpp:493
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -6136,19 +6131,19 @@ msgstr ""
 "このゲームに参加するには、１つあるいは複数のアドオンをインストールする必要が"
 "あります。"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:513
+#: src/gui/dialogs/multiplayer/lobby.cpp:518
 msgid "Observers allowed"
 msgstr "観戦可"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:516
+#: src/gui/dialogs/multiplayer/lobby.cpp:521
 msgid "Observers not allowed"
 msgstr "観戦不可"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:791
+#: src/gui/dialogs/multiplayer/lobby.cpp:796
 msgid "lobby"
 msgstr "ロビー"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:951
+#: src/gui/dialogs/multiplayer/lobby.cpp:956
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -6325,7 +6320,7 @@ msgstr "全てのホットキーはデフォルトの値にリセットされま
 msgid "Hotkeys Reset"
 msgstr "ホットキーのリセット"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1032
+#: src/gui/dialogs/preferences_dialog.cpp:1030
 msgid "∞"
 msgstr "無限"
 

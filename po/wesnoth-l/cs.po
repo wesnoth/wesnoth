@@ -1,7 +1,7 @@
 # translation of wesnoth-l.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2007 - 2018 Wesnoth development team
+# Copyright (C) 2007 - 2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <hrubymar10@gmail.com>,
@@ -10,14 +10,14 @@
 # Alexander Slávik <slavik.alexander@seznam.cz>, 2007.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Honza <Honza-mistic@seznam.cz>, 2014.
-# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2018.
+# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-21 18:30 UTC\n"
-"PO-Revision-Date: 2018-09-14 22:42+0200\n"
+"POT-Creation-Date: 2019-02-23 21:45 UTC\n"
+"PO-Revision-Date: 2019-02-15 22:42+0100\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:10 data/campaigns/Liberty/_main.cfg:11
@@ -81,10 +81,8 @@ msgstr ""
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:28
-#, fuzzy
-#| msgid "(Intermediate level, 8 scenarios.)"
 msgid "(Novice level, 8 scenarios.)"
-msgstr "(Obtížnost: pokročilý hráč, 8 scénářů)"
+msgstr "(Obtížnost: nováček, 8 scénářů)"
 
 #. [about]
 #: data/campaigns/Liberty/_main.cfg:31
@@ -483,10 +481,10 @@ msgstr "Občanská neposlušnost"
 #. [side]: type=General, id=Lord Maddock
 #. [side]: type=Rogue, id=Hans
 #. [side]: type=Highwayman, id=Baldras
-#. [side]: type=Highwayman_Peasant, id=Relana
 #. [side]: type=Shadow Lord, id=Helicrom
 #. [side]
 #. [side]: type=Bandit_Peasant, id=Baldras
+#. [side]: type=Highwayman_Peasant, id=Relana
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:26
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:62
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:38
@@ -669,13 +667,17 @@ msgid ""
 "sent ahead for the magistrate, Relana, to meet them in a secluded strath in "
 "the swamps."
 msgstr ""
+"Baldras a jeho muži utekli z Dallbenu, protože se obávali, že se královnina "
+"armáda vrátí s posilami kvůli poražené hlídce. Pochodovali do Delwynu a "
+"uprostřed poslali zprávu představené, Relaně, aby se s nimi sešla v odlehlém "
+"údolí v bažinách."
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:22
 msgid ""
 "As morning dawned over the day after next, they found Relana already waiting "
 "for them."
-msgstr ""
+msgstr "Když se ráno objevilo ve dne po dni, našli Relanu, jak už na ně čeká."
 
 #. [side]: type=Highwayman_Peasant, id=Relana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:49
@@ -687,11 +689,11 @@ msgstr "Relana"
 msgid "Urk Delek"
 msgstr "Urk Delek"
 
-#. [side]: type=Orcish Warrior, id=Urk Delek
-#. [side]: type=Saurian Oracle, id=Thhsthss
 #. [side]: type=Necromancer, id=Mal-Jarrof
 #. [side]: type=Necromancer, id=Mal-Jerod
 #. [side]: type=Lich, id=Sel-Mana
+#. [side]: type=Orcish Warrior, id=Urk Delek
+#. [side]: type=Saurian Oracle, id=Thhsthss
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:100
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:122
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:105
@@ -727,16 +729,12 @@ msgstr ""
 
 #. [message]: speaker=Relana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:184
-#, fuzzy
-#| msgid ""
-#| "It has been a long time, old friend. Your news worries us. Yet, there is "
-#| "no problem we have not worked out here at our secret meeting place."
 msgid ""
 "It has been a long time, old friend. Your news worries us. Yet, there is no "
 "problem we have not worked out together."
 msgstr ""
 "Už je to dlouho, starý příteli. Vaše zprávy nás znepokojily, ale ještě se "
-"nestalo, abychom něco nevyřešili na našem tajném místě."
+"nestalo, abychom něco společně nevyřešili."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:188
@@ -1920,13 +1918,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:35
-#, fuzzy
-#| msgid ""
-#| "This sentinel of the western plains stood watch as Wesnoth prospered for "
-#| "many centuries under the protection it provided. No war has overcome it, "
-#| "and its walls have never been overrun. The blood of invaders stains its "
-#| "parapets and the bones of the defeated crumble at the base of Halstead’s "
-#| "frozen waves of stone."
 msgid ""
 "This sentinel of the western plains stood watch as Wesnoth prospered for "
 "many centuries under its protection. No war has overcome it, and its walls "
@@ -2456,7 +2447,7 @@ msgid "Bone Knight"
 msgstr "Kostlivý rytíř"
 
 #. [unit_type]: id=Bone Knight, race=undead
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:26
+#: data/campaigns/Liberty/units/Bone_Knight.cfg:27
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
 "skeletal horses were raised from the ground by unholy magic to spread fear "
@@ -2468,7 +2459,7 @@ msgstr ""
 
 # hmmm... :-/
 #. [attack]: type=impact
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:41
+#: data/campaigns/Liberty/units/Bone_Knight.cfg:42
 msgid "trample"
 msgstr "dupot"
 

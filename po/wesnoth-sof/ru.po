@@ -1,20 +1,19 @@
-# Translation of wesnoth-sof to Russian
 # (C) Fedor Khod'kov <fkhokdov@gmail.com> 2009-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-21 18:30 UTC\n"
-"PO-Revision-Date: 2014-11-11 12:06+0300\n"
+"POT-Creation-Date: 2019-01-27 09:23 UTC\n"
+"PO-Revision-Date: 2019-02-02 06:46+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language-Team: \n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Emacs 24.3.1, po-mode 2.22+0.4\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:11
@@ -29,53 +28,36 @@ msgstr "ОС"
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:20
 msgid "Fighter"
-msgstr "Ополченец"
+msgstr "Ратник"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:20
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(Нормальный)"
+msgstr "Нормальный"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:21
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(Сложный)"
+msgstr "Сложный"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:21
 msgid "Steelclad"
-msgstr "Латник"
+msgstr "Дружинник"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:22
-#, fuzzy
-#| msgid "(Difficult)"
 msgid "Difficult"
-msgstr "(Очень сложный)"
+msgstr "Очень сложный"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:22
 msgid "Lord"
-msgstr "Богатырь"
+msgstr "Конунг"
 
 # Стихи, перевод получился без рифмы :(
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:25
-#, fuzzy
-#| msgid ""
-#| "The land of Wesnoth’s banner bold\n"
-#| "Comes not from its own land;\n"
-#| "It comes from Dwarfdom, grim and old\n"
-#| "Made by a runesmith’s hand.\n"
-#| "So now I tell from whence it came —\n"
-#| "The Fire-sceptre great —\n"
-#| "And of the makers of the same,\n"
-#| "Their tale I now relate...\n"
-#| "\n"
 msgid ""
 "<i>The land of Wesnoth’s banner bold\n"
 "Comes not from its own land;\n"
@@ -87,14 +69,20 @@ msgid ""
 "Their tale I now relate...</i>\n"
 "\n"
 msgstr ""
-"Земли Веснота гордый стяг\n"
-"Рождён в краю ином:\n"
-"В пещерах гномов рунный маг\n"
-"Был славным кузнецом.\n"
+"<i>Веснота символ золотой\n"
+"Что смотрит со знамён\n"
+"В горах рождён страны чужой\n"
+"И гномом сотворён.\n"
+"\n"
+"Не во своей земле — в иной,\n"
+"В век мрака и мытарств,\n"
+"Владыки рун рождён рукой\n"
+"В глубинах гномьих царств...\n"
+"\n"
 "Когда и как он сотворил\n"
 "Великий Жезл Огня,\n"
 "И кто к сему причастен был,\n"
-"Поведаю вам я...\n"
+"Поведаю вам я...</i>\n"
 "\n"
 
 #. [campaign]: id=Sceptre_of_Fire
@@ -168,11 +156,11 @@ msgstr "Глилдур"
 
 #. [side]: type=Elvish Marshal, id=Crintil
 #. [side]
-#. [side]: type=Elvish Captain, id=Glildur
 #. [side]: type=Elvish Captain, id=Glindur
 #. [side]: type=Elvish Marshal, id=Gaenlar
 #. [side]: type=Elvish Marshal, id=Glinan
 #. [side]: type=Elvish Captain, id=Kalnar
+#. [side]: type=Elvish Captain, id=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:91
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:43
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:41
@@ -224,27 +212,27 @@ msgstr ""
 "за собой свою армию."
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:137
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:136
 msgid "Transport 5 caravans full of silver back to the dwarvish castle"
 msgstr "Приведите 5 повозок с серебром в цитадель гномов"
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:139
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:138
 msgid "Transport 4 caravans full of silver back to the dwarvish castle"
 msgstr "Приведите 4 повозки с серебром в цитадель гномов"
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:147
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:146
 msgid "Bring Alanin, who has the Ruby of Fire, to the dwarvish castle"
 msgstr "Приведите Аланина, который везёт Рубин Огня, в цитадель гномов"
 
 #. [objectives]
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:153
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:152
 msgid "Defeat Glildur"
 msgstr "Победите Глилдура"
 
 #. [objective]: condition=lose
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:155
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:154
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:97
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:132
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:533
@@ -258,12 +246,12 @@ msgid "Death of Rugnur"
 msgstr "Смерть Ругнура"
 
 #. [objective]: condition=lose
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:159
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:158
 msgid "Death of Haldric II"
 msgstr "Смерть Хальдрика II"
 
 #. [objective]: condition=lose
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:163
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:162
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:136
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:166
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:198
@@ -272,22 +260,22 @@ msgid "Death of Alanin"
 msgstr "Смерть Аланина"
 
 #. [objective]: condition=lose
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:167
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:166
 msgid "Loss of a caravan"
 msgstr "Потеря повозки"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:208
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:207
 msgid "Humans, halt! Who dares bring an army into the dwarvish hills?"
 msgstr "Стой, человек! Кто посмел привести армию в гномьи холмы?"
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:212
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:211
 msgid "We come to make a bargain with you."
 msgstr "Мы пришли заключить с вами сделку."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:216
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:215
 msgid ""
 "Well, state your business and be done with it. And if we don’t like what you "
 "say, you leave!"
@@ -296,27 +284,27 @@ msgstr ""
 "скажешь, ты уйдёшь!"
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:220
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:219
 msgid "Have you heard of the Ruby of Fire?"
 msgstr "Ты слышал об Огненном Рубине?"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:224
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:223
 msgid "Yes... your first king brought it from over the sea, right? You own it."
 msgstr "Да... Ваш первый король привёз его из-за моря, так? Теперь он у тебя."
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:229
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:228
 msgid "Correct. However, we have a problem with it."
 msgstr "Верно. Но с этим камнем есть одна неприятность."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:233
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:232
 msgid "What sort of problem?"
 msgstr "Что за неприятность?"
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:238
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:237
 msgid ""
 "Some form of magical aura makes those around the stone act... strangely. I "
 "noticed it with my father. The longer he stayed near the stone, the more "
@@ -327,14 +315,14 @@ msgstr ""
 "с камнем, тем более высокомерным, почти что злобным, он становился."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:242
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:241
 msgid ""
 "So, what do you want me to do? I don’t see how this relates to us dwarves."
 msgstr ""
 "Так что же ты хочешь от меня? Что-то я не пойму, причём здесь мы гномы."
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:254
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:253
 msgid ""
 "When the elves came to Weldyn, about ten years ago, they spoke of a mage "
 "named Crelanu, and of his advice about the ruby. He said that the radiance "
@@ -346,7 +334,7 @@ msgstr ""
 "так можно остановить его действие."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:258
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:257
 msgid ""
 "And what... you want us to do this, contain the radiance of the stone? By "
 "making an artifact of some kind?"
@@ -355,7 +343,7 @@ msgstr ""
 "Артефакт какой-нибудь сделали?"
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:263
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:262
 msgid ""
 "Exactly. I want you to craft it into a mighty artifact, that will leverage "
 "the stone’s power, but contain it also."
@@ -364,7 +352,7 @@ msgstr ""
 "мощь камня, но при этом позволял бы её удерживать."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:267
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:266
 msgid ""
 "Well... I think we can make a deal, but I’m not sure. I’ll have to ask the "
 "tribal leaders."
@@ -373,7 +361,7 @@ msgstr ""
 "спросить вождей племени."
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:271
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:270
 msgid ""
 "If you are not authorized to make a deal, send out someone who is, and I "
 "will bargain with him."
@@ -382,16 +370,16 @@ msgstr ""
 "сделать. Я буду торговаться с ним."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:276
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:275
 msgid ""
 "They would refuse to come. You must come into the caves, and go to the city "
 "in person, or send a representative."
 msgstr ""
-"Они не пойдут. Ты должен спуститься в пещеры и лично придти в город, либо "
+"Они не пойдут. Ты должен спуститься в пещеры и лично прийти в город, либо "
 "выслать своего представителя."
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:280
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:279
 msgid ""
 "I can always take my offer to another tribe more friendly to its potential "
 "patrons. You are not the only smiths in the Northlands!"
@@ -400,23 +388,19 @@ msgstr ""
 "дружелюбному к возможным покупателям. Вы ведь не единственные кузнецы Севера!"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:285
-#, fuzzy
-#| msgid ""
-#| "Uh, no, wait! Lets talk business — how much will you pay us to do this "
-#| "for you?"
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:284
 msgid ""
 "Uh, no, wait! Let’s talk business — how much will you pay us to do this for "
 "you?"
 msgstr "Эй, нет, да подожди ты! Давай к делу — сколько платишь за работу?"
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:289
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:288
 msgid "Five thousand pieces of silver."
 msgstr "Пять тысяч серебром."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:294
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:293
 msgid ""
 "You said you wanted a powerful magical artifact, not a child’s playtoy! "
 "So... twenty thousand, minimum. The crafting of this will take us many "
@@ -427,17 +411,17 @@ msgstr ""
 "придётся раскошелиться."
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:298
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:297
 msgid "Ten thousand."
 msgstr "Десять тысяч."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:302
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:301
 msgid "Nothing below fifteen!"
 msgstr "Не меньше пятнадцати!"
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:306
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:305
 msgid ""
 "Then no deal. I’ll gather my things and go to another dwarvish clan now."
 msgstr ""
@@ -445,7 +429,7 @@ msgstr ""
 "племени."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:311
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:310
 msgid ""
 "Fine then — ten thousand... now, what exactly do you want us to make the "
 "stone into?"
@@ -453,12 +437,12 @@ msgstr ""
 "Ладно, ладно — десять так десять... итак, во что именно заковать камень?"
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:315
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:314
 msgid "I want you to make it into a sceptre, a sceptre of fire."
 msgstr "Я хочу, чтобы вы сделали скипетр, Огненный Скипетр."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:320
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:319
 msgid ""
 "I’ll see what I can do. But I will need five thousand silver in advance, to "
 "pay for the materials."
@@ -467,7 +451,7 @@ msgstr ""
 "чтобы заплатить за материалы."
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:324
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:323
 msgid ""
 "Very well. I have the silver here, ready to ship, and I will send someone "
 "over with the stone itself. He will stay with you as you make the sceptre, "
@@ -479,10 +463,10 @@ msgstr ""
 "скипетр, и проследит, чтобы вы выполнили работу в срок. Я жду, что скипетр "
 "будет готов прежде, чем истечёт срок моего правления."
 
+#. [unit]: type=Dragoon, id=Alanin
 #. [side]: id=Alanin, type=Dragoon
 #. [side]: type=Haldric II, id=Haldric II
-#. [unit]: type=Dragoon, id=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:373
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:372
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:29
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:20
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:31
@@ -490,12 +474,12 @@ msgid "Alanin"
 msgstr "Аланин"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:385
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:384
 msgid "That’s right. I’ll be coming over along with the silver."
 msgstr "Так точно. Я буду сопровождать серебро."
 
 #. [message]: speaker=Glildur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:389
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:388
 msgid ""
 "Hey! You can’t do that — this road is an elvish road. We’re not letting you "
 "transport gold and jewels on it without paying a toll."
@@ -504,22 +488,22 @@ msgstr ""
 "перевозить серебро и драгоценные камни без уплаты пошлины."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:393
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:392
 msgid "What are you talking about?! This road has always been open to all."
 msgstr "О чём ты говоришь?! Это дорога всегда была открыта для всех."
 
 #. [message]: speaker=Glildur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:398
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:397
 msgid "Yes, we have allowed people to use it, but it is our road."
 msgstr "Да, мы разрешали всем желающим пользоваться ей, но это наша дорога."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:402
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:401
 msgid "Not true! This is dwarvish land; if anything, it’s our road!"
 msgstr "Неправда! Это земля гномов, и если уж на то пошло, дорога наша!"
 
 #. [message]: speaker=Glildur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:407
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:406
 msgid ""
 "Nevertheless, if you try to move your caravans here you have to pay the "
 "toll, or face our wrath!"
@@ -528,7 +512,7 @@ msgstr ""
 "а иначе познаете наш гнев!"
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:411
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:410
 msgid ""
 "We Wesnothians and you elves have a treaty! Do you really mean to break it "
 "in defense of a road that is not even yours?!"
@@ -537,7 +521,7 @@ msgstr ""
 "готовы нарушить его ради защиты дороги, которая даже не ваша?!"
 
 #. [message]: speaker=Glildur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:415
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:414
 msgid ""
 "I was never among those who agreed to that treaty. Not all of us elves are "
 "as low as Kalenz, or make deals with those who betrayed us."
@@ -546,7 +530,7 @@ msgstr ""
 "Каленз, и не все заключают договоры с теми, кто нас предал."
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:420
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:419
 msgid ""
 "Ah, I see — you are one of the rebels. Our treaty with the elves does not "
 "apply to you, so I have no problem with slaying you if you stand in our way. "
@@ -557,7 +541,7 @@ msgstr ""
 "колебаний. Ругнур, мы отправляем караван."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:424
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:423
 msgid ""
 "Very well. Glildur, if the high elvish council has made an alliance with the "
 "men, I would advise you to follow it, but not doing so is your choice."
@@ -566,7 +550,7 @@ msgstr ""
 "посоветовал тебе его придерживаться, но не хочешь — как хочешь."
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:472
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:471
 msgid ""
 "Here’s the stone, for you dwarves! Now, if you’ll excuse me, I think I’ll be "
 "taking refuge in this castle here... I don’t much like fighting."
@@ -575,22 +559,22 @@ msgstr ""
 "очень-то я люблю битвы."
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:493
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:492
 msgid "All the silver is there too. Proceed with the task, Rugnur!"
 msgstr "Всё серебро уже месте. За работу, Ругнур!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:535
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:534
 msgid "Cargo unloaded."
 msgstr "Груз доставлен."
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:545
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:544
 msgid "You only need $incominggold more, then you can begin work."
 msgstr "Вам нужно ещё $incominggold серебром, и можно приступать к работе."
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:551
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:550
 msgid ""
 "You only need $incominggold more, and the stone, then you can begin work."
 msgstr ""
@@ -598,17 +582,17 @@ msgstr ""
 "работе."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:565
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:564
 msgid "That’s the last caravan! We will commence work immediately."
 msgstr "Это последняя телега с серебром! Немедленно приступим к работе."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:580
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:579
 msgid "We have all of the silver, now all we need is the stone."
 msgstr "Мы получили серебро, теперь осталось получить камень."
 
 #. [message]: speaker=Glildur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:595
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:594
 msgid ""
 "Ha! Our reinforcements have arrived. There is no way you can withstand our "
 "combined strength!"
@@ -617,7 +601,7 @@ msgstr ""
 "объединённой силе!"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:599
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:598
 msgid ""
 "We cannot match you above ground, but in the caves we may still defeat you."
 msgstr ""
@@ -625,7 +609,7 @@ msgstr ""
 "проиграете."
 
 #. [message]: speaker=Glildur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:603
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:602
 msgid ""
 "We will see about that — if you ever get underground, which I doubt. Ha!"
 msgstr ""
@@ -633,7 +617,7 @@ msgstr ""
 "сомневаюсь. Ха!"
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:611
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:610
 msgid ""
 "Elvish reinforcements! Where did these come from? I thought the elvish "
 "resistance to the treaty was smaller than this. Hurry up and move those "
@@ -643,32 +627,32 @@ msgstr ""
 "договором намного меньше. Поторопись с доставкой груза!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:631
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:630
 msgid "Die, humans, in the name of Landar!"
 msgstr "Умрите, человечишки, именем Ландара!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:635
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:634
 msgid "Landar? Who is this ‘Landar’ you speak of?"
 msgstr "Ландар? Что ещё за «Ландар»?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:652
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:651
 msgid "Die, dwarvish scum, in the name of Landar!"
 msgstr "Умрите, гномьи отбросы, именем Ландара! "
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:656
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:655
 msgid "Yer precious Landar can kiss my axe."
 msgstr "Скажи своему драгоценному Ландару — пусть поцелует мой... топор!"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:679
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:678
 msgid "Good, the road is secured. Let’s move those caravans!"
-msgstr ""
+msgstr "Хорошо, путь открыт. Давайте двигать эти фургоны!"
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:703
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:702
 msgid ""
 "You just let a caravan, with <i>my</i> money loaded in it, get captured! If "
 "I can’t trust you to keep my property secure, the deal’s off."
@@ -1241,7 +1225,7 @@ msgstr "Звери"
 msgid ""
 "The journey to the far northern wastelands was long and perilous. For the "
 "tunnels were winding and treacherous, and the paths were not safe from orcs, "
-"or worse. Nevertheless, they did reach the northlands, and began to search "
+"or worse. Nevertheless, they did reach the Northlands, and began to search "
 "for the runesmith named Thursagan — the sage of fire."
 msgstr ""
 "Их путешествие на дальний север было долгим и опасным. Туннели были запутаны "
@@ -1326,7 +1310,7 @@ msgstr ""
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:224
 msgid ""
-"Except for trolls and ogres, right? They live in the far northlands. They’re "
+"Except for trolls and ogres, right? They live in the far Northlands. They’re "
 "probably lurking around here somewhere."
 msgstr ""
 "Ну разве что тролли с ограми, да? Они ведь живут далеко на севере. Наверняка "
@@ -1564,7 +1548,7 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:135
-msgid "Yes, we did. And that is Krawg, who helped us in the northlands."
+msgid "Yes, we did. And that is Krawg, who helped us in the Northlands."
 msgstr "Да, нам это удалось. А это Кравг, он помогал нам в северных землях."
 
 #. [message]: speaker=Krawg
@@ -2177,7 +2161,7 @@ msgstr ""
 #. [label]
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:138
 msgid "Shorbear caves"
-msgstr ""
+msgstr "Пещеры Шорбера"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:146
@@ -2186,9 +2170,6 @@ msgstr "Убейте Глонойна, вождя клана Шорбир"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:155
-#, fuzzy
-#| msgid ""
-#| "Have all heroes in the Shorbear caves while no enemies are in the caves"
 msgid "Have all heroes, and no enemies, in the Shorbear caves"
 msgstr "Расположите всех героев в пещерах Шорбир, и чтобы в них не было врагов"
 
@@ -2680,12 +2661,6 @@ msgstr ""
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:309
-#, fuzzy
-#| msgid ""
-#| "You don’t have authority over me, Durstorn. And I wouldn’t give the "
-#| "Sceptre to them even if you did. It’s not yours to give, its mine, and "
-#| "Rugnur’s, and Baglur’s. Krawg’s done more for its existence than you "
-#| "have! And yet, you still get the profits from selling it to Haldric."
 msgid ""
 "You don’t have authority over me, Durstorn. And I wouldn’t give the Sceptre "
 "to them even if you did. It’s not yours to give, it’s mine, and Rugnur’s, "
@@ -2830,11 +2805,6 @@ msgstr "... а потом скакать на юг, пока не достигн
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:464
-#, fuzzy
-#| msgid ""
-#| "I’m not going to do that, its suicide! And in any case, I’ve been with "
-#| "you for ten years, almost as long as I was in the Wesnothian army; I’d "
-#| "prefer to fight with you."
 msgid ""
 "I’m not going to do that, it’s suicide! And in any case, I’ve been with you "
 "for ten years, almost as long as I was in the Wesnothian army; I’d prefer to "
@@ -2867,11 +2837,6 @@ msgstr "Выходите, гномы, и сдавайтесь! Или помри
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:510
-#, fuzzy
-#| msgid ""
-#| "Alanin, ride as fast as you can south. Tell Haldric we are heading "
-#| "northeast, towards the old eastern mines, and if he wants his precious "
-#| "sceptre he should send forces to meet us there as soon as he can!"
 msgid ""
 "Alanin, ride south as fast as you can. Tell Haldric we are heading "
 "northeast, towards the old eastern mines, and if he wants his precious "
@@ -3008,7 +2973,7 @@ msgstr "Раэзил"
 #. [message]: speaker=second_unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:217
 msgid "Great, now there is no need to worry about those elves anymore!"
-msgstr ""
+msgstr "Отлично, теперь не нужно больше беспокоиться об этих эльфах!"
 
 #. [message]: role=newcomer
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:226
@@ -3016,6 +2981,8 @@ msgid ""
 "Did you really think that you could escape us? Don’t underestimate us, "
 "inferior humans!"
 msgstr ""
+"Ты действительно думал, что сможешь сбежать от нас? Не недооценивайте нас, "
+"низкие людишки!"
 
 #. [message]: id=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:238
@@ -3023,21 +2990,23 @@ msgid ""
 "Even though my chances have grown worse, I have to fulfil my duty. I do not "
 "owe them any less!"
 msgstr ""
+"Хотя мои шансы ухудшились, я должен выполнить свой долг. Я не стал должен им "
+"меньше!"
 
 #. [message]: id=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:263
 msgid "Oh no, more of them? And there I thought I could catch my breath…"
-msgstr ""
+msgstr "О, нет, их еще больше? А я думал, что смогу там отдышаться.…"
 
 #. [message]: role=fighter
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:268
 msgid "Don’t worry sir, we’ll make it through this!"
-msgstr ""
+msgstr "Не волнуйтесь, сир, мы справимся!"
 
 #. [message]: id=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:293
 msgid "Is there no end to their numbers?"
-msgstr ""
+msgstr "Неужели нет конца их числу?"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:358
@@ -3062,6 +3031,7 @@ msgstr "Мы поможем любому воину Веснота, которы
 msgid ""
 "You slow humans took too long, our detachment has already caught up with you!"
 msgstr ""
+"Вы, медлительные людишки, ползли слишком долго, наш отряд уже догнал вас!"
 
 #. [unit]: type=Lieutenant, id=Hadlin   # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:543
@@ -3078,7 +3048,7 @@ msgstr "Стой, кто идёт?"
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:565
 msgid ""
 "I’m a dragoon, with Haldric II’s personal bodyguard. I was sent on a mission "
-"in the northlands, and now elvish horsemen are chasing me. I barely evaded "
+"in the Northlands, and now elvish horsemen are chasing me. I barely evaded "
 "them."
 msgstr ""
 "Я драгун, из личной охраны Хальдрика II. Меня отправили на север с особым "
@@ -3088,17 +3058,12 @@ msgstr ""
 #. [message]: speaker=Alanin
 #. cavalier = his unit type
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:572
-#, fuzzy
-#| msgid ""
-#| "I’m a dragoon, with Haldric II’s personal bodyguard. I was sent on a "
-#| "mission in the northlands, and now elvish horsemen are chasing me. I "
-#| "barely evaded them."
 msgid ""
 "I’m a cavalier, with Haldric II’s personal bodyguard. I was sent on a "
-"mission in the northlands, and now elvish horsemen are chasing me. I barely "
+"mission in the Northlands, and now elvish horsemen are chasing me. I barely "
 "evaded them."
 msgstr ""
-"Я драгун, из личной охраны Хальдрика II. Меня отправили на север с особым "
+"Я кирасир, из личной охраны Хальдрика II. Меня отправили на север с особым "
 "поручением, а теперь меня преследуют эльфийские всадники. Я еле-еле от них "
 "оторвался."
 
@@ -3108,8 +3073,8 @@ msgid ""
 "I see. Well, come on in. I doubt they would be able to capture this fort, "
 "even if they did want to start a war, which I doubt."
 msgstr ""
-"Понятненько. Ну что, заходи. Не думаю, что они смогут захватить наш форт, "
-"даже если захотят начать войну. В чём я также очень сомневаюсь."
+"Ясно. Ну что ж, заходи. Не думаю, что они смогут захватить наш форт, даже "
+"если захотят начать войну. В чём я также очень сомневаюсь."
 
 #. [scenario]: id=8_The_Dragon
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:3
@@ -3309,10 +3274,6 @@ msgstr "Моя прелестная металлическая скала! Не 
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:422
-#, fuzzy
-#| msgid ""
-#| "This forge will work perfectly. Give me a few days here, and I can "
-#| "reforge the Sceptre of Fire to fulfill its purpose."
 msgid ""
 "This forge will work perfectly. Give me a day or two here, and I can reforge "
 "the Sceptre of Fire to fulfill its purpose."
@@ -3367,11 +3328,6 @@ msgstr "Орки"
 #. [part]
 #. The text in 1.14.4 mentioned Knalga. Geographically, these caves are in Knalga, but the text was confusing if the reader thought of the Knalgan Alliance.
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:161
-#, fuzzy
-#| msgid ""
-#| "There was no exit from the caverns of Knalga. They had reached the realms "
-#| "of the orcs, with the elves hot on their trail. And there was no exit "
-#| "from those caves."
 msgid ""
 "There was no exit for the dwarves. They had reached the realms of the orcs, "
 "with the elves hot on their trail. There was truly no exit from these caves."
@@ -3639,7 +3595,7 @@ msgstr "Стой! Что тебе надо в Велдине, столице В�
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:103
 msgid ""
 "Stand aside. I am Alanin, of Haldric’s royal guard, and I bring news from "
-"the northlands."
+"the Northlands."
 msgstr ""
 "Посторонись! Я Аланин из королевской стражи Хальдрика II, и я принёс новости "
 "с севера."
@@ -3674,7 +3630,7 @@ msgstr "Войди, Аланин, и передай своё сообщение 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:126
 msgid ""
-"My King, fifteen years ago you sent me on a mission into the northlands. I "
+"My King, fifteen years ago you sent me on a mission into the Northlands. I "
 "have returned. What do you wish to know of my mission?"
 msgstr ""
 "Мой Король, пятнадцать лет назад вы послали меня на север с особым заданием. "
@@ -3758,8 +3714,8 @@ msgid ""
 "My lord, a gryphon has just flown over our walls! It may be a sign of an "
 "attack!"
 msgstr ""
-"Мой Король, через наши стены только что перелетел грифон! Это может знак "
-"нападения!"
+"Мой Король, через наши стены только что перелетел грифон! Это может "
+"предвещать нападение!"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:190

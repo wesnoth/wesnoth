@@ -1,10 +1,11 @@
 # Gérard Bodin <gbodin.qc@gmail.com>, 2018
+# Mathieu Guilbaud <mathieu@guim.info>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Two_Brothers-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-21 18:30 UTC\n"
-"PO-Revision-Date: 2018-05-31 21:55-0400\n"
+"POT-Creation-Date: 2019-01-27 09:23 UTC\n"
+"PO-Revision-Date: 2019-02-22 13:47+0100\n"
 "Last-Translator: Gérard Bodin <gbodin.qc@gmail.com>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -12,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
@@ -60,8 +61,6 @@ msgstr ""
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:23
-#, fuzzy
-#| msgid "(Novice level, 4 scenarios.)"
 msgid "(Rookie level, 4 scenarios.)"
 msgstr "(Niveau débutant, 4 scénarios.)"
 
@@ -221,10 +220,10 @@ msgstr ""
 msgid "Humans"
 msgstr "Humains"
 
-#. [side]: type=Dark Sorcerer, id=Rotharik
-#. [side]
 #. [side]: type=Orcish Warlord, id=Tairach
 #. [side]: type=Dark Sorcerer, id=Mordak
+#. [side]: type=Dark Sorcerer, id=Rotharik
+#. [side]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:114
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:81
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:131
@@ -1229,6 +1228,11 @@ msgid ""
 msgstr ""
 "Ça doit être la clé de la cellule de Baran ! Je la prends. Je suis impatient "
 "de voir mon frère. Allons le libérer !"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:717
+msgid "It may be important, I best take it."
+msgstr "C'est peut-être important, je ferais mieux de la prendre."
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:737

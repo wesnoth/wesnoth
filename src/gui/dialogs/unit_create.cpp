@@ -206,18 +206,6 @@ void unit_create::list_item_clicked(window& window)
 	});
 }
 
-namespace
-{
-
-bool ci_search(const std::string& a, const std::string& b)
-{
-	return std::search(a.begin(), a.end(),
-	                   b.begin(), b.end(),
-	                   chars_equal_insensitive) != a.end();
-}
-
-} // end unnamed namespace
-
 void unit_create::filter_text_changed(text_box_base* textbox, const std::string& text)
 {
 	window& window = *textbox->get_window();
@@ -249,9 +237,9 @@ void unit_create::filter_text_changed(text_box_base* textbox, const std::string&
 			bool found = false;
 			for(const auto & word : words)
 			{
-				found = ci_search(type_label.get_label().str(), word) ||
-				        ci_search(race_label.get_label().str(), word) ||
-				        ci_search(unit_type_id, word);
+				found = translation::ci_search(type_label.get_label().str(), word) ||
+				        translation::ci_search(race_label.get_label().str(), word) ||
+				        translation::ci_search(unit_type_id, word);
 
 				if(!found) {
 					// one word doesn't match, we don't reach words.end()

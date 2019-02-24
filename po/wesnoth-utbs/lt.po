@@ -1,12 +1,12 @@
-# Copyright (C) Wesnoth development team, 2007-2011.
+# Copyright (C) Wesnoth development team, 2007-2019.
 # Translators:
-#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2011.
+#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-21 18:30 UTC\n"
-"PO-Revision-Date: 2017-04-08 16:10+0100\n"
+"POT-Creation-Date: 2019-01-27 09:23 UTC\n"
+"PO-Revision-Date: 2019-02-21 01:07+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
 "Language: lt\n"
@@ -15,12 +15,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:11
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:289
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:248
 msgid "Under the Burning Suns"
 msgstr "Po deginančiomis saulėmis"
 
@@ -475,7 +475,6 @@ msgstr "Eloši"
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:436
 #, fuzzy
-#| msgid "Illuvia"
 msgid "Illuvin"
 msgstr "Illuvija"
 
@@ -498,7 +497,6 @@ msgstr "Džorazanas"
 #. [event]: role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:548
 #, fuzzy
-#| msgid "Zyara"
 msgid "Zyar"
 msgstr "Zyara"
 
@@ -647,7 +645,6 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:804
 #, fuzzy
-#| msgid "These fields seem strangely vacant. Where are the horses?"
 msgid "These fields seem strangely vacant. Where are the dustboks?"
 msgstr "Šie laukai įtartinai tušti. Kur žirgai?"
 
@@ -669,7 +666,6 @@ msgstr "Ar jau saugu išeiti? Buvau labai išsigandusi."
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:856
 #, fuzzy
-#| msgid "Where are all the other horses?"
 msgid "Where are all the other dustboks?"
 msgstr "Kur visi kiti žirgai?"
 
@@ -699,7 +695,6 @@ msgstr "Belieka tikėtis, kad medžiotojai greitai sugrįš."
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:881
 #, fuzzy
-#| msgid "Hey, Nisa, the rocks have stopped falling. You can come out now!"
 msgid "Hey, Nisen, the rocks have stopped falling. You can come out now!"
 msgstr "Ei, Nisa, jau nustojo lyti akmenimis. Gali išlįsti!"
 
@@ -1532,7 +1527,7 @@ msgstr "Nee... (<i>Pranyksta</i>)"
 #. [message]: speaker=$speaking_unit.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1293
 msgid "Searching his castle, we found a chest filled with gold."
-msgstr ""
+msgstr "Apieškodami jo pilį, radome skrynią su auksu."
 
 #. [else]: role=Ogre Nomad
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1317
@@ -1828,10 +1823,8 @@ msgstr ""
 #. Use the same translation as for the string in the wesnoth-help textdomain.
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:19
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:319
-#, fuzzy
-#| msgid "The Morning After"
 msgid "The Long Dark"
-msgstr "Rytas po"
+msgstr "Ilgoji tamsa"
 
 #. [side]: id=Azkotep, type=Lich
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:51
@@ -3136,7 +3129,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:92
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1406
 msgid "team_name^Trolls"
-msgstr ""
+msgstr "Troliai"
 
 #. [side]
 #. [modify_side]
@@ -3144,7 +3137,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:183
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1339
 msgid "team_name^Dwarves"
-msgstr ""
+msgstr "Dvarfai"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:310
@@ -3680,7 +3673,6 @@ msgstr ""
 #. [message]: speaker=first_dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1270
 #, fuzzy
-#| msgid "Wait a minute... Blond hair, pointy ears — they must be elves."
 msgid "Wait a minute... Vacuous eyes, pointy ears — they must be elves."
 msgstr "Minutėlę... Šviesūs plaukai, pailgos ausys — jie tikriausiai elfai."
 
@@ -5807,7 +5799,6 @@ msgstr "Žmonės sąjungininkai"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:392
-#, fuzzy
 msgid "Escape the caves"
 msgstr "Pabėkite iš urvų"
 
@@ -7849,7 +7840,6 @@ msgstr ""
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3980
-#, fuzzy
 msgid "He killed himself rather than surrender to us!"
 msgstr "Jis nusižudė vietoj to, kad pasiduotų mums!"
 
@@ -8059,7 +8049,7 @@ msgstr "Jis atrodo kaip pusiau žmogus, pusiau žuvis."
 #. [message]: speaker=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4457
 msgid "Indeed. I come from the ocean, and long have I been looking for you."
-msgstr "iš tiesų. Atėjau iš vandenyno ir ilgai jūsų ieškojau."
+msgstr "Iš tiesų. Atėjau iš vandenyno ir ilgai jūsų ieškojau."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4462
@@ -12054,7 +12044,7 @@ msgstr "Centrinis kūnas"
 msgid ""
 "This thing is impossible to describe, no one has seen anything like it "
 "before."
-msgstr "Šio daikto neįmanoma aprašyti, niekas anksčiau nieko panašaus nematė"
+msgstr "Šio daikto neįmanoma aprašyti, niekas anksčiau nieko panašaus nematė."
 
 #. [attack]: type=cold
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Body.cfg:45
@@ -12072,7 +12062,6 @@ msgstr ""
 #. [regenerate]: id=regenerates_yec
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Body.cfg:100
 #, fuzzy
-#| msgid "female^Desert Ranger"
 msgid "female^alien regenerates"
 msgstr "Dykumos bastūnė"
 
@@ -12492,7 +12481,6 @@ msgstr "rutuliai"
 #. [unit_type]: id=Quenoth Pathfinder, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Pathfinder.cfg:5
 #, fuzzy
-#| msgid "Quenoth Ranger"
 msgid "Quenoth Pathfinder"
 msgstr "Kvenoto bastūnas"
 
@@ -12880,14 +12868,12 @@ msgstr ""
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:75
 msgid "teaching"
-msgstr ""
+msgstr "mokymas"
 
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:76
-#, fuzzy
-#| msgid "female^Desert Ranger"
 msgid "female^teaching"
-msgstr "Dykumos bastūnė"
+msgstr "mokymas"
 
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:77
@@ -12917,7 +12903,6 @@ msgstr ""
 #. [dummy]: id=formation
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:101
 #, fuzzy
-#| msgid "female^Desert Shaman"
 msgid "female^formation"
 msgstr "Dykumos šamanė"
 
@@ -12937,7 +12922,6 @@ msgstr ""
 #. [dummy]: id=disengage
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:110
 #, fuzzy
-#| msgid "female^Desert Ranger"
 msgid "female^disengage"
 msgstr "Dykumos bastūnė"
 
@@ -12968,7 +12952,6 @@ msgstr ""
 #. [skirmisher]: id=distract
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:127
 #, fuzzy
-#| msgid "female^Desert Archer"
 msgid "female^distract"
 msgstr "Dykumos lankininkė"
 
@@ -12987,7 +12970,6 @@ msgstr ""
 #. [dummy]: id=support
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:140
 #, fuzzy
-#| msgid "female^Desert Star"
 msgid "female^support"
 msgstr "Dykumos žvaigždė"
 
@@ -13755,155 +13737,3 @@ msgstr "Vaiduokliška pilis"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:50
 msgid "Phantom Keep"
 msgstr "Vaiduokliškas bokštas"
-
-#~ msgid "Lrea"
-#~ msgstr "Lrėja"
-
-#~ msgid "Frea"
-#~ msgstr "Frėja"
-
-#~ msgid "Seela"
-#~ msgstr "Seela"
-
-#~ msgid "Nisa"
-#~ msgstr "Nisa"
-
-#~ msgid "Lyia"
-#~ msgstr "Lija"
-
-#, fuzzy
-#~ msgid "chill gale"
-#~ msgstr "šalčio banga"
-
-#, fuzzy
-#~ msgid "female^Quenoth Moon Singer"
-#~ msgstr "Dykumos bastūnė"
-
-#~ msgid "Rescue Surviving Elves"
-#~ msgstr "Išgelbėkite išgyvenusius elfus"
-
-#~ msgid "Kaleh Must Reach the Northern Edge of the Desert"
-#~ msgstr "Kalehas privalo pasiekti šiaurinį dykumos kraštą"
-
-#~ msgid "Survive Until Dawn (or)"
-#~ msgstr "Išgyvenkite iki aušros (arba)"
-
-#~ msgid "Defeat all Undead Leaders"
-#~ msgstr "Nugalėkite visus nemirėlių vadus"
-
-#~ msgid "Defeat Possessed Garak (or)"
-#~ msgstr "Nugalėkite apsėstą Garaką (arba)"
-
-#~ msgid "Explore Underground"
-#~ msgstr "Ištyrinėkite požemį"
-
-#~ msgid "Defeat all Enemies"
-#~ msgstr "Nugalėkite visus priešus"
-
-#~ msgid "Kill Troll Leader"
-#~ msgstr "Nužudykite trolių vadą"
-
-#~ msgid "Kill Dwarf Chieftain"
-#~ msgstr "Užmuškite dvarfą seržantą"
-
-#~ msgid "Escape the Caves"
-#~ msgstr "Pabėkite iš urvų"
-
-#~ msgid "Explore Outside"
-#~ msgstr "Ištyrinėkite išorę"
-
-#~ msgid "If a human messenger escapes the valley"
-#~ msgstr "Jei žmonių pasiuntinys pasprunka iš slėnio"
-
-#~ msgid "Desert Archer"
-#~ msgstr "Dykumos lankininkas"
-
-#~ msgid "Desert Avenger"
-#~ msgstr "Dykumos keršytojas"
-
-#~ msgid "female^Desert Avenger"
-#~ msgstr "Dykumos keršytoja"
-
-#~ msgid "Desert Captain"
-#~ msgstr "Dykumos kapitonas"
-
-#~ msgid "Desert Champion"
-#~ msgstr "Dykumos čempionas"
-
-#~ msgid "female^Desert Druid"
-#~ msgstr "Dykumos druidė"
-
-#~ msgid "Desert Fighter"
-#~ msgstr "Dykumos kovotojas"
-
-#~ msgid "Desert Hero"
-#~ msgstr "Dykumos herojus"
-
-#~ msgid "Desert Horseman"
-#~ msgstr "Dykumos raitelis"
-
-#~ msgid "Desert Hunter"
-#~ msgstr "Dykumos medžiotojas"
-
-#~ msgid "female^Desert Hunter"
-#~ msgstr "Dykumos medžiotoja"
-
-#~ msgid "Desert Marksman"
-#~ msgstr "Dykumos šaulys"
-
-#~ msgid "female^Desert Marksman"
-#~ msgstr "Dykumos šaulė"
-
-#~ msgid "Desert Marshal"
-#~ msgstr "Dykumos maršalas"
-
-#~ msgid "Desert Prowler"
-#~ msgstr "Dykumos sėlintojas"
-
-#~ msgid "female^Desert Prowler"
-#~ msgstr "Dykumos sėlintoja"
-
-#~ msgid "Desert Ranger"
-#~ msgstr "Dykumos bastūnas"
-
-#~ msgid "Desert Rider"
-#~ msgstr "Dykumos raitelis"
-
-#~ msgid "Desert Scout"
-#~ msgstr "Dykumos žvalgas"
-
-#~ msgid "Desert Sentinel"
-#~ msgstr "Dykumos sergėtojas"
-
-#~ msgid "female^Desert Sentinel"
-#~ msgstr "Dykumos sergėtoja"
-
-#~ msgid "Desert Sharpshooter"
-#~ msgstr "Dykumos snaiperis"
-
-#~ msgid "female^Desert Sharpshooter"
-#~ msgstr "Dykumos snaiperė"
-
-#~ msgid ""
-#~ "SPECIAL_NOTE^ This unit can fly across any terrain except deep water."
-#~ msgstr ""
-#~ " Šis dalinys gali skristi virš bet kokios vietovės, išskyrus gilų vandenį."
-
-#~ msgid ""
-#~ "SPECIAL_NOTE^ It also gains a 10% bonus to resistance from all attacks."
-#~ msgstr " Ji taip pat gauna papildomą 10% atsparumą nuo visų atakų."
-
-#~ msgid "a leader in battle"
-#~ msgstr "vadas mūšyje"
-
-#~ msgid "trained by Nym in using the bolas"
-#~ msgstr "išmokytas Nym naudoti rutulius"
-
-#~ msgid "a better swordsman"
-#~ msgstr "geresnis kardininkas"
-
-#~ msgid "a better archer"
-#~ msgstr "geresnis lankininkas"
-
-#~ msgid "Quenoth Horseman"
-#~ msgstr "Kvenoto raitelis"

@@ -391,12 +391,7 @@ void unit_recall::filter_text_changed(text_box_base* textbox, const std::string&
 			bool found = false;
 
 			for(const auto & word : words) {
-				found = std::search(filter_options_[i].begin(),
-							filter_options_[i].end(),
-							word.begin(),
-							word.end(),
-							chars_equal_insensitive)
-						!= filter_options_[i].end();
+				found = translation::ci_search(filter_options_[i], word);
 
 				if(!found) {
 					// one word doesn't match, we don't reach words.end()

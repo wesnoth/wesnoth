@@ -37,10 +37,10 @@ public:
 		bool wml_changed;
 	};
 
-	struct invalid_server_address {};
-	struct not_connected_to_server {};
-	struct user_exit {};
-	struct user_disconnect {};
+	struct invalid_server_address : public std::exception {};
+	struct not_connected_to_server : public std::exception {};
+	struct user_exit : public std::exception {};
+	struct user_disconnect : public std::exception {};
 
 	addons_client(const addons_client&) = delete;
 	addons_client& operator=(const addons_client&) = delete;

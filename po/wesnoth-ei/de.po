@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-21 18:29 UTC\n"
-"PO-Revision-Date: 2019-01-06 17:53+0100\n"
+"POT-Creation-Date: 2019-02-23 21:45 UTC\n"
+"PO-Revision-Date: 2019-02-23 21:31+0100\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:13
@@ -74,10 +74,8 @@ msgstr ""
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:24
-#, fuzzy
-#| msgid "(Intermediate level, 16 scenarios.)"
 msgid "(Novice level, 16 scenarios.)"
-msgstr "(Einstufung: Mittel, 16 Szenarien)"
+msgstr "(Einstufung: Einfach, 16 Szenarien)"
 
 #. [about]
 #: data/campaigns/Eastern_Invasion/_main.cfg:28
@@ -574,25 +572,17 @@ msgstr ""
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:192
-#, fuzzy
-#| msgid ""
-#| "This is an old escape tunnel for the outpost; unfortunately these caves "
-#| "are currently inhabited by trolls. Now hurry, we have to move quickly; "
-#| "the undead will surely follow us down here."
 msgid ""
 "This is an old escape route for the outpost. Unfortunately these caves are "
 "currently inhabited by trolls, who are blocking our path through the tunnel."
 msgstr ""
-"Ein alter Fluchttunnel des Außenpostens; nur hausen in diesen Höhlen leider "
-"mittlerweile Trolle. Die Untoten werden uns sicher folgen. Wir müssen rasch "
-"voran!"
+"Ein alter Fluchttunnel des Außenpostens. Unglücklicherweise hausen in diesen "
+"Höhlen Trolle die uns den Weg versperren."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:245
-#, fuzzy
-#| msgid "Hurry up. We must get across before these undead slaughter us!"
 msgid "We must make haste to escape before the undead catch up."
-msgstr "Beeilung! Wir müssen rüber, bevor die uns abschlachten!"
+msgstr "Wir müssen die Flucht ergreifen, bevor uns die Untoten einholen!"
 
 # Wartet. Bevor wir weitergehen habe ich eine Frage: Wer waren diese Untoten?
 #. [message]: speaker=Gweddry
@@ -671,6 +661,8 @@ msgid ""
 "Very well. The best of luck in your battle. Gweddry, we may be able to avoid "
 "the bulk of the trolls by going through the dwarves’ tunnel."
 msgstr ""
+"Nun den, viel Erfolg im Kampf. Gweddry, wir können die Orks umgehen indem "
+"wir den Tunnel der Zwerge benutzen."
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:378
@@ -4144,7 +4136,7 @@ msgid "Bone Knight"
 msgstr "Knochenritter"
 
 #. [unit_type]: id=Bone Knight, race=undead
-#: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:26
+#: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:27
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
 "skeletal horses were raised from the ground by unholy magic to spread fear "
@@ -4155,7 +4147,7 @@ msgstr ""
 "und Zerstörung zu verbreiten."
 
 #. [attack]: type=impact
-#: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:41
+#: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:42
 msgid "trample"
 msgstr "trampeln"
 

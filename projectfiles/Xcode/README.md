@@ -35,7 +35,7 @@ Builds for maximum compiling speed, and uses the current OS as the SDK. If you j
 2. Use `Finder` to navigate into `wesnoth/projectfiles/Xcode` . And now, there will be 2 options.
 3. Double click on `Fix_Xcode_Dependencies` script and wait until it will be done.
 5. (Optional) Compile translations as it is described in **Translations** section.
-6. Now you can open `Wesnoth.xcodeproj` file in Xcode.
+6. Now you can open `The Battle for Wesnoth.xcodeproj` file in Xcode.
 
 ## Translations
 To compile translations you need `gettext-tools` and `scons`. You can obtain these tools using `brew install gettext scons`. In the Terminal, `cd` to the Wesnoth root directory, and run `scons translations`. This will compile all the translations into a translations directory.

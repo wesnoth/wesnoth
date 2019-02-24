@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-21 18:30 UTC\n"
-"PO-Revision-Date: 2018-09-11 12:46+0200\n"
+"PO-Revision-Date: 2019-02-23 19:04+0100\n"
 "Last-Translator: Rhonda D'Vine <rhonda@deb.at>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [lua]: wml_actions.select_character
 #: data/campaigns/tutorial/lua/character_selection.lua:25
@@ -149,6 +149,8 @@ msgstr "Klickt auf Li’sar"
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:316
 msgid "To undo your last move, press <b>u</b> or use the right-click menu."
 msgstr ""
+"Um Euren letzten Zug rückgängig zu machen, drückt <b>u</b> oder benutzt das "
+"Kontextmenü"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:357
@@ -1825,11 +1827,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:896
-#, fuzzy
-#| msgid ""
-#| "You are close to killing their leader! The unit who finishes him will "
-#| "gain 16 experience points because he is second level. Choose your "
-#| "attacking unit carefully!"
 msgid ""
 "You are close to killing their leader! Because he is second level, the unit "
 "who finishes him will gain 16 experience points. In a campaign, it’s "
@@ -1843,7 +1840,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:900
 msgid "You have almost finished the tutorial"
-msgstr ""
+msgstr "Ihr habt die Einführung fast abgeschlossen"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:902
@@ -1851,6 +1848,8 @@ msgid ""
 "In a campaign you may have ten or even twenty scenarios to build your army, "
 "but this tutorial will conclude after you defeat Thrag."
 msgstr ""
+"In Kampagnen habt Ihr zehn oder gar zwanzig Szenarien um Eure Armee "
+"aufzubauen, aber die Einführung endet wenn Ihr Thrag besiegt."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:928
@@ -2054,6 +2053,12 @@ msgid ""
 "Incursion</i> you have an Elvish army, similarly to this tutorial, but with "
 "seven scenarios for your units to gain experience and advance levels."
 msgstr ""
+"Ihr wart siegreich! Vielleicht mögt Ihr Euch nun an einer der "
+"Einsteigerkampagnen versuchen, diese enthalten Strategietipps. <i>Die "
+"Geschichte zweier Brüder</i> ist die einfachste und als erste Kampagne "
+"empfohlen. In <i>Einmarsch der Orks</i> habt Ihr wie hier eine Armee von "
+"Elfen, mit vier Einheitentypen, welche Ihr über sieben Szenarien hinweg "
+"aufsteigen lassen könnt."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1176
@@ -2061,6 +2066,8 @@ msgid ""
 "You can also refer to the in-game help browser if you ever need to refresh "
 "your memory on gameplay mechanics."
 msgstr ""
+"Was Ihr in der Einführung gelernt habt, könnt Ihr auch in der Hilfe "
+"nachlesen."
 
 #. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4

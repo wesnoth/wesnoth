@@ -19,6 +19,8 @@ See the COPYING file for more details.
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 
+#include <boost/algorithm/string.hpp>
+
 #include <algorithm>
 #include <memory>
 
@@ -127,7 +129,10 @@ namespace preferences
 
 	void set_login(const std::string& login)
 	{
-		preferences::set("login", '@' + login + '@');
+		auto login_clean = login;
+		boost::trim(login_clean);
+
+		preferences::set("login", '@' + login_clean + '@');
 	}
 
 	bool remember_password()
@@ -148,40 +153,46 @@ namespace preferences
 
 	std::string password(const std::string& server, const std::string& login)
 	{
+		auto login_clean = login;
+		boost::trim(login_clean);
+
 		if(!remember_password()) {
-			if(!credentials.empty() && credentials[0].username == login && credentials[0].server == server) {
-				auto temp = decrypt(credentials[0].key, build_key(server, login));
+			if(!credentials.empty() && credentials[0].username == login_clean && credentials[0].server == server) {
+				auto temp = decrypt(credentials[0].key, build_key(server, login_clean));
 				return std::string(temp.begin(), temp.end());
 			} else {
 				return "";
 			}
 		}
 		auto cred = std::find_if(credentials.begin(), credentials.end(), [&](const login_info& cred) {
-			return cred.server == server && cred.username == login;
+			return cred.server == server && cred.username == login_clean;
 		});
 		if(cred == credentials.end()) {
 			return "";
 		}
-		auto temp = decrypt(cred->key, build_key(server, login));
+		auto temp = decrypt(cred->key, build_key(server, login_clean));
 		return std::string(temp.begin(), temp.end());
 	}
 
 	void set_password(const std::string& server, const std::string& login, const std::string& key)
 	{
+		auto login_clean = login;
+		boost::trim(login_clean);
+
 		secure_buffer temp(key.begin(), key.end());
 		if(!remember_password()) {
 			clear_credentials();
-			credentials.emplace_back(login, server, encrypt(temp, build_key(server, login)));
+			credentials.emplace_back(login_clean, server, encrypt(temp, build_key(server, login_clean)));
 			return;
 		}
 		auto cred = std::find_if(credentials.begin(), credentials.end(), [&](const login_info& cred) {
-			return cred.server == server && cred.username == login;
+			return cred.server == server && cred.username == login_clean;
 		});
 		if(cred == credentials.end()) {
 			// This is equivalent to emplace_back, but also returns the iterator to the new element
-			cred = credentials.emplace(credentials.end(), login, server);
+			cred = credentials.emplace(credentials.end(), login_clean, server);
 		}
-		cred->key = encrypt(temp, build_key(server, login));
+		cred->key = encrypt(temp, build_key(server, login_clean));
 	}
 
 	void load_credentials()
