@@ -326,7 +326,11 @@ class GroupByFaction:
         if group[1]:
             faction = era.faction_lookup[group[1]]
             name = T(faction, "name")
-            name = name[name.rfind("=") + 1:]
+            if name:
+                name = name[name.rfind("=") + 1:]
+            else:
+                name = "missing"
+                error_message("Warning: %s has no faction name\n" % group[1])
         else:
             name = "factionless"
         return name
