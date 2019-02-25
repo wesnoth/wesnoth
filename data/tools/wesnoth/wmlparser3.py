@@ -493,6 +493,8 @@ class Parser:
         else:
             if self.in_string:
                 self.temp_string += line
+            elif self.temp_key_nodes and line.strip(b" \t\n") == b"":
+                return b""
             else:
                 self.parse_outside_strings(line)
 
