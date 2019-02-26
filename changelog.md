@@ -117,7 +117,10 @@
    * Eastern Invasion:
      * S1: Removed early finish bonus for fleeing
    * The Rise of Wesnoth:
+     * Fixed various typos
      * S17c: Modified Burin's description of trolls
+   * The South Guard:
+     * Fixed various typos
 
 ## Version 1.14.5+dev
  ### AI
