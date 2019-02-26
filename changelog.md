@@ -116,6 +116,8 @@
      * S3: Added event to make Storm Trident more obvious
    * Eastern Invasion:
      * S1: Removed early finish bonus for fleeing
+   * The Rise of Wesnoth:
+     * S17c: Modified Burin's description of trolls
 
 ## Version 1.14.5+dev
  ### AI
