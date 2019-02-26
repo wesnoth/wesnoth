@@ -2,6 +2,8 @@
  ### Campaigns
    * A Tale of Two Brothers:
      * S3: Changed castle to permanent chaotic ToD and rebalanced scenario accordingly
+   * Dead Water:
+     * S3: Added event to make Storm Trident more obvious
  ### User interface
    * Add jamming to the vision tooltip in the sidebar. (PR #3327)
 
