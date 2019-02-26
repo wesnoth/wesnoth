@@ -4,6 +4,8 @@
      * S3: Changed castle to permanent chaotic ToD and rebalanced scenario accordingly
    * Dead Water:
      * S3: Added event to make Storm Trident more obvious
+   * Eastern Invasion:
+     * S1: Removed early finish bonus for fleeing
  ### User interface
    * Add jamming to the vision tooltip in the sidebar. (PR #3327)
 
