@@ -108,6 +108,11 @@
    * Show ability of a selected unit as active/inactive with respect to mouseover hex. (issue #3912)
    * macOS: Wesnoth now uses the app sandboxing feature, which means there is a new location for saves. All saves will be migrated during first launch automatically. For info about backwards compatibility see: https://gist.github.com/hrubymar10/eb5afd896f933a46fac344ced940e020
 
+## Version 1.14.6+dev
+ ### Campaigns
+   * A Tale of Two Brothers:
+     * S3: Changed castle to permanent chaotic ToD and rebalanced scenario accordingly
+
 ## Version 1.14.5+dev
  ### AI
    * Fixed crash when the AI simulates a fight between two units which can slow but aren't yet slowed, then
