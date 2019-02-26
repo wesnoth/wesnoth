@@ -1,4 +1,7 @@
 ## Version 1.14.6+dev
+ ### Campaigns
+   * A Tale of Two Brothers:
+     * S3: Changed castle to permanent chaotic ToD and rebalanced scenario accordingly
  ### User interface
    * Add jamming to the vision tooltip in the sidebar. (PR #3327)
 
