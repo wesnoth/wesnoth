@@ -6,6 +6,7 @@
      * S3: Added event to make Storm Trident more obvious
    * Eastern Invasion:
      * S1: Removed early finish bonus for fleeing
+     * S7a: Require Dacyn to cross the river
    * The Rise of Wesnoth:
      * Fixed various typos
      * S17c: Modified Burin's description of trolls
