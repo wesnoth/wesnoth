@@ -6,6 +6,8 @@
      * S3: Added event to make Storm Trident more obvious
    * Eastern Invasion:
      * S1: Removed early finish bonus for fleeing
+   * The Rise of Wesnoth:
+     * S17c: Modified Burin's description of trolls
  ### User interface
    * Add jamming to the vision tooltip in the sidebar. (PR #3327)
 
