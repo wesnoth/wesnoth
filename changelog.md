@@ -13,6 +13,8 @@
      * S17c: Modified Burin's description of trolls
    * The South Guard:
      * Fixed various typos
+ ### Language and i18n
+   * Updated translations: Italian.
 
  ### User interface
    * Add jamming to the vision tooltip in the sidebar. (PR #3327)
