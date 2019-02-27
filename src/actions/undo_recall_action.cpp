@@ -94,9 +94,10 @@ bool recall_action::undo(int side)
 	}
 
 	current_team.recall_list().add(un);
-	// invalidate before erasing allow us
-	// to also do the overlapped hexes
-	gui.invalidate(recall_loc);
+	// Invalidate everything, not just recall_loc, in case the sprite
+	// extends into adjacent hexes (Horseman) or even farther away (Fire
+	// Dragon)
+	gui.invalidate_all();
 	units.erase(recall_loc);
 	resources::whiteboard->on_kill_unit();
 	un->anim_comp().clear_haloes();
