@@ -116,6 +116,7 @@
      * S3: Added event to make Storm Trident more obvious
    * Eastern Invasion:
      * S1: Removed early finish bonus for fleeing
+     * S2: Modified Dacyn's dialogue upon undead arrival
      * S7a: Require Dacyn to cross the river
    * The Rise of Wesnoth:
      * Fixed various typos
