@@ -15,6 +15,7 @@
 
  ### User interface
    * Add jamming to the vision tooltip in the sidebar. (PR #3327)
+   * Fix undoing a recall not un-drawing parts of the sprite that go beyond the unit's hex (issue #3325)
 
 ## Version 1.14.6
  ### AI
