@@ -507,8 +507,8 @@ class Parser:
         Parse a WML fragment outside of strings.
         """
         if not line: return
-        if line.startswith(b"#textdomain "):
-            self.textdomain = line[12:].strip().decode("utf8")
+        if line.lstrip(b" \t").startswith(b"#textdomain "):
+            self.textdomain = line.lstrip(b" \t")[12:].strip().decode("utf8")
             return
         if not self.temp_key_nodes:
             line = line.lstrip()
