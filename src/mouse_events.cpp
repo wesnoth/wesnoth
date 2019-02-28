@@ -676,12 +676,6 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 			return map_location();
 		}
 
-		// The selected unit must at least belong to the player currently controlling this client.
-		source_eligible &= source_unit->side() == gui_->viewing_side();
-		if(!source_eligible) {
-			return map_location();
-		}
-
 		// In addition:
 		// - If whiteboard is enabled, we allow planning attacks outside of player's turn
 		// - If whiteboard is disabled, it must be the turn of the player controlling this client
@@ -700,8 +694,6 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 
 		// Check the unit TARGET of the attack
 
-		const team& viewer = viewing_team();
-
 		// Check that there's a unit at the target location
 		const unit_map::const_iterator target_unit = find_unit(loc);
 
@@ -710,8 +702,8 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 			return map_location();
 		}
 
-		// The player controlling this client must be an enemy of the target unit's side
-		target_eligible &= viewer.is_enemy(target_unit->side());
+		// The target must be an enemy of the source
+		target_eligible &= pc_.gamestate().board_.get_team(source_unit->side()).is_enemy(target_unit->side());
 		if(!target_eligible) {
 			return map_location();
 		}

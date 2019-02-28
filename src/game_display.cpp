@@ -317,12 +317,18 @@ void game_display::draw_hex(const map_location& loc)
 		}
 	}
 	// Draw the attack direction indicator
-	if(on_map && loc == attack_indicator_src_) {
+	if(on_map && (loc == attack_indicator_src_ || loc == attack_indicator_dst_)) {
+		// Recolor the arrow from red to blue if the dst unit is of the viewing team or an ally of it
+		wb::future_map_if_active raii;
+		const auto viewer = dc_->teams()[viewing_team()];
+		const unit *u = resources::gameboard->get_visible_unit(attack_indicator_dst_, viewer);
+		const std::string recolor = viewer.is_enemy(u->side()) ? "" : "~CHAN(blue, green, red)";
+
+		const std::string image = "misc/attack-indicator-" +
+			std::string(loc == attack_indicator_src_ ? "src-" : "dst-") +
+			attack_indicator_direction() + ".png" + recolor;
 		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc, xpos, ypos,
-			image::get_image("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::SCALED_TO_HEX));
-	} else if (on_map && loc == attack_indicator_dst_) {
-		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc, xpos, ypos,
-			image::get_image("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::SCALED_TO_HEX));
+			image::get_image(image, image::SCALED_TO_HEX));
 	}
 
 	// Linger overlay unconditionally otherwise it might give glitches
@@ -430,8 +436,16 @@ void game_display::draw_movement_info(const map_location& loc)
 			}
 
 			if (w->second.zoc) {
+				std::string recolor;
+				{
+					wb::future_map_if_active raii;
+					const auto viewer = dc_->teams()[viewing_team()];
+					// Recolor red to blue if the the moving unit isn't ours (is ally or enemy)
+					recolor = (un->side() == viewing_side()) ? "" : "~CHAN(blue, green, red)";
+				}
+
 				drawing_buffer_add(LAYER_MOVE_INFO, loc, xpos, ypos,
-					image::get_image("misc/zoc.png", image::SCALED_TO_HEX));
+					image::get_image("misc/zoc.png" + recolor, image::SCALED_TO_HEX));
 			}
 
 			if (w->second.capture) {
