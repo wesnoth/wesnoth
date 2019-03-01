@@ -285,14 +285,16 @@ std::string format_timespan(std::time_t time)
 		return _("timespan^expired");
 	}
 
-	static const std::vector<std::tuple<std::time_t, const char*, const char*>> TIME_FACTORS{
-		{ 31104000, N_("timespan^$num year"),   N_("timespan^$num years")   }, // 12 months
-		{ 2592000,  N_("timespan^$num month"),  N_("timespan^$num months")  }, // 30 days
-		{ 604800,   N_("timespan^$num week"),   N_("timespan^$num weeks")   },
-		{ 86400,    N_("timespan^$num day"),    N_("timespan^$num days")    },
-		{ 3600,     N_("timespan^$num hour"),   N_("timespan^$num hours")   },
-		{ 60,       N_("timespan^$num minute"), N_("timespan^$num minutes") },
-		{ 1,        N_("timespan^$num second"), N_("timespan^$num seconds") },
+	typedef std::tuple<std::time_t, const char*, const char*> time_factor;
+
+	static const std::vector<time_factor> TIME_FACTORS{
+		time_factor{ 31104000, N_("timespan^$num year"),   N_("timespan^$num years")   }, // 12 months
+		time_factor{ 2592000,  N_("timespan^$num month"),  N_("timespan^$num months")  }, // 30 days
+		time_factor{ 604800,   N_("timespan^$num week"),   N_("timespan^$num weeks")   },
+		time_factor{ 86400,    N_("timespan^$num day"),    N_("timespan^$num days")    },
+		time_factor{ 3600,     N_("timespan^$num hour"),   N_("timespan^$num hours")   },
+		time_factor{ 60,       N_("timespan^$num minute"), N_("timespan^$num minutes") },
+		time_factor{ 1,        N_("timespan^$num second"), N_("timespan^$num seconds") },
 	};
 
 	std::vector<t_string> display_text;
