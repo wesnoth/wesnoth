@@ -33,6 +33,7 @@
 #include "gui/dialogs/loading_screen.hpp"
 
 #include <boost/regex.hpp>
+#include <boost/range/algorithm_ext/erase.hpp>
 
 #include <locale>
 
@@ -1421,6 +1422,59 @@ const unit_race* unit_type_data::find_race(const std::string& key) const
 {
 	race_map::const_iterator i = races_.find(key);
 	return i != races_.end() ? &i->second : nullptr;
+}
+
+void unit_type::apply_scenario_fix(const config& cfg)
+{
+	if(auto p_setxp = cfg.get("set_experience")) {
+		experience_needed_ = p_setxp->to_int();
+	}
+	if(auto attr = cfg.get("set_advances_to")) {
+		advances_to_ = utils::split(attr->str());
+	}
+	if(auto attr = cfg.get("set_cost")) {
+		cost_ = attr->to_int(1);
+	}
+	if(auto attr = cfg.get("add_advancement")) {
+		for(const auto& str : utils::split(attr->str())) {
+			advances_to_.push_back(str);			
+		}
+	}
+	if(auto attr = cfg.get("remove_advancement")) {
+		for(const auto& str : utils::split(attr->str())) {
+			boost::remove_erase(advances_to_, str);
+		}
+	}
+}
+
+void unit_type_data::apply_scenario_fix(const config& cfg)
+{
+	unit_type_map::iterator itor = types_.find(cfg["type"].str());
+	// This might happen if units of another era are requested (for example for savegames)
+	if(itor != types_.end()) {
+		itor->second.apply_scenario_fix(cfg);
+	}
+	else {
+		// should we give an error message?
+	}
+}
+
+void unit_type::remove_scenario_fixes()
+{
+	advances_to_.clear();
+	const std::string& advances_to_val = cfg_["advances_to"];
+	if(advances_to_val != "null" && !advances_to_val.empty()) {
+		advances_to_ = utils::split(advances_to_val);
+	}
+	experience_needed_ = cfg_["experience"].to_int(500);
+	cost_ = cfg_["cost"].to_int(1);
+}
+
+void unit_type_data::remove_scenario_fixes()
+{
+	for(auto& pair : types_) {
+		pair.second.remove_scenario_fixes();
+	}
 }
 
 void unit_type::check_id(std::string& id)
