@@ -72,21 +72,14 @@ bool notspace(const char c)
 std::vector<std::string> split(const std::string& val, const char c, const int flags)
 {
 	std::vector<std::string> res;
-
-	std::stringstream ss;
-	ss.str(val);
-
-	std::string item;
-	while(std::getline(ss, item, c)) {
+	split_foreach(val, c, [&](string_view item) {
 		if(flags & STRIP_SPACES) {
-			boost::trim(item);
+			trim_view(item);
 		}
-
 		if(!(flags & REMOVE_EMPTY) || !item.empty()) {
-			res.push_back(std::move(item));
+			res.push_back(std::string(item));
 		}
-	}
-
+	});
 	return res;
 }
 

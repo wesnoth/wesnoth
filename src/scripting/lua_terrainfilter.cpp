@@ -67,38 +67,6 @@ namespace utils {
 }
 //helper functions for parsing
 namespace {
-	bool iswhitespace(char c)
-	{
-		return c == ' ' || c == '\t' || c == '\n' || c == '\r';
-	}
-
-	void trim(string_view& s)
-	{
-		while(!s.empty() && iswhitespace(s.front())) {
-			s.remove_prefix(1);
-		}
-		while(!s.empty() && iswhitespace(s.back())) {
-			s.remove_suffix(1);
-		}
-	}
-
-	template<typename F>
-	void split_foreach(string_view s, char sep, const F& f)
-	{
-		if(s.empty()) {
-			return;
-		}
-		while(true)
-		{
-			int partend = s.find(sep);
-			if(partend == int(string_view::npos)) {
-				break;
-			}
-			f(s.substr(0, partend));
-			s.remove_prefix(partend + 1);
-		}
-		f(s);
-	}
 	
 	int atoi(string_view s)
 	{
@@ -128,8 +96,8 @@ namespace {
 	dynamic_bitset parse_range(string_view s)
 	{
 		dynamic_bitset res;
-		split_foreach(s, ',', [&](string_view part){
-			trim(part);
+		utils::split_foreach(s, ',', [&](string_view part){
+			utils::trim_view(part);
 			auto pair = parse_single_range(part);
 			int m = std::max(pair.first, pair.second);
 			if(m >= int(res.size())) {
@@ -188,8 +156,8 @@ namespace {
 	
 	void parse_rel_sequence(string_view s, offset_list_t& even, offset_list_t& odd)
 	{
-		split_foreach(s, ',', [&](string_view part){
-			trim(part);
+		utils::split_foreach(s, ',', [&](string_view part){
+			utils::trim_view(part);
 			parse_rel(part, even, odd);
 		});
 	}

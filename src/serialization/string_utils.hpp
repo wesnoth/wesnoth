@@ -37,6 +37,40 @@ bool isnewline(const char c);
 bool portable_isspace(const char c);
 bool notspace(char c);
 
+template<typename F>
+void trim_view(string_view& s, const F& cond)
+{
+	while(!s.empty() && cond(s.front())) {
+		s.remove_prefix(1);
+	}
+	while(!s.empty() && cond(s.back())) {
+		s.remove_suffix(1);
+	}
+}
+
+inline void trim_view(string_view& s)
+{
+	trim_view(s, [](char r){ return portable_isspace(r); });
+}
+
+template<typename F>
+void split_foreach(string_view s, char sep, const F& f)
+{
+	if(s.empty()) {
+		return;
+	}
+	while(true)
+	{
+		int partend = s.find(sep);
+		if(partend == int(string_view::npos)) {
+			break;
+		}
+		f(s.substr(0, partend));
+		s.remove_prefix(partend + 1);
+	}
+	f(s);
+}
+	
 enum {
 	REMOVE_EMPTY = 0x01, /** REMOVE_EMPTY: remove empty elements. */
 	STRIP_SPACES = 0x02  /** STRIP_SPACES: strips leading and trailing blank spaces. */
