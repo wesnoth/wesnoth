@@ -89,65 +89,65 @@ BOOST_AUTO_TEST_CASE( test_formula_timespan )
 {
 	time_detailed t;
 
-	t = { 1, 0, 0, 0, 0, 0, 0 };
+	t = time_detailed{ 1, 0, 0, 0, 0, 0, 0 };
 	BOOST_CHECK_EQUAL("1 second", utils::format_timespan(gen_as_time_t(t)));
 
-	t = { 2, 0, 0, 0, 0, 0, 0 };
+	t = time_detailed{ 2, 0, 0, 0, 0, 0, 0 };
 	BOOST_CHECK_EQUAL("2 seconds", utils::format_timespan(gen_as_time_t(t)));
 
-	t = { 0, 1, 0, 0, 0, 0, 0 };
+	t = time_detailed{ 0, 1, 0, 0, 0, 0, 0 };
 	BOOST_CHECK_EQUAL("1 minute", utils::format_timespan(gen_as_time_t(t)));
 
-	t = { 0, 2, 0, 0, 0, 0, 0 };
+	t = time_detailed{ 0, 2, 0, 0, 0, 0, 0 };
 	BOOST_CHECK_EQUAL("2 minutes", utils::format_timespan(gen_as_time_t(t)));
 
-	t = { 0, 0, 1, 0, 0, 0, 0 };
+	t = time_detailed{ 0, 0, 1, 0, 0, 0, 0 };
 	BOOST_CHECK_EQUAL("1 hour", utils::format_timespan(gen_as_time_t(t)));
 
-	t = { 0, 0, 2, 0, 0, 0, 0 };
+	t = time_detailed{ 0, 0, 2, 0, 0, 0, 0 };
 	BOOST_CHECK_EQUAL("2 hours", utils::format_timespan(gen_as_time_t(t)));
 
-	t = { 0, 0, 0, 1, 0, 0, 0 };
+	t = time_detailed{ 0, 0, 0, 1, 0, 0, 0 };
 	BOOST_CHECK_EQUAL("1 day", utils::format_timespan(gen_as_time_t(t)));
 
-	t = { 0, 0, 0, 2, 0, 0, 0 };
+	t = time_detailed{ 0, 0, 0, 2, 0, 0, 0 };
 	BOOST_CHECK_EQUAL("2 days", utils::format_timespan(gen_as_time_t(t)));
 
-	t = { 0, 0, 0, 0, 1, 0, 0 };
+	t = time_detailed{ 0, 0, 0, 0, 1, 0, 0 };
 	BOOST_CHECK_EQUAL("1 week", utils::format_timespan(gen_as_time_t(t)));
 
-	t = { 0, 0, 0, 0, 2, 0, 0 };
+	t = time_detailed{ 0, 0, 0, 0, 2, 0, 0 };
 	BOOST_CHECK_EQUAL("2 weeks", utils::format_timespan(gen_as_time_t(t)));
 
-	t = { 0, 0, 0, 0, 0, 1, 0 };
+	t = time_detailed{ 0, 0, 0, 0, 0, 1, 0 };
 	BOOST_CHECK_EQUAL("1 month", utils::format_timespan(gen_as_time_t(t)));
 
-	t = { 0, 0, 0, 0, 0, 2, 0 };
+	t = time_detailed{ 0, 0, 0, 0, 0, 2, 0 };
 	BOOST_CHECK_EQUAL("2 months", utils::format_timespan(gen_as_time_t(t)));
 
-	t = { 0, 0, 0, 0, 0, 0, 1 };
+	t = time_detailed{ 0, 0, 0, 0, 0, 0, 1 };
 	BOOST_CHECK_EQUAL("1 year", utils::format_timespan(gen_as_time_t(t)));
 
-	t = { 0, 0, 0, 0, 0, 0, 2 };
+	t = time_detailed{ 0, 0, 0, 0, 0, 0, 2 };
 	BOOST_CHECK_EQUAL("2 years", utils::format_timespan(gen_as_time_t(t)));
 
-	t = { 12, 1, 23, 3, 2, 5, 2 };
+	t = time_detailed{ 12, 1, 23, 3, 2, 5, 2 };
 	BOOST_CHECK_EQUAL(gen_as_str(t), utils::format_timespan(gen_as_time_t(t)));
 
-	t = { 0, 0, 0, 0, 0, 0, 0 };
+	t = time_detailed{ 0, 0, 0, 0, 0, 0, 0 };
 	BOOST_CHECK_EQUAL(utils::format_timespan(gen_as_time_t(t)), utils::format_timespan(0));
 	BOOST_CHECK_EQUAL(utils::format_timespan(gen_as_time_t(t)), utils::format_timespan(-10000));
 
-	t = { 4, 0, 49, 0, 0, 0, 0 };
+	t = time_detailed{ 4, 0, 49, 0, 0, 0, 0 };
 	BOOST_CHECK_EQUAL("2 days, 1 hour, and 4 seconds", utils::format_timespan(gen_as_time_t(t)));
 
-	t = { 0, 40, 0, 11, 1, 0, 4 };
+	t = time_detailed{ 0, 40, 0, 11, 1, 0, 4 };
 	BOOST_CHECK_EQUAL("4 years, 2 weeks, 4 days, and 40 minutes", utils::format_timespan(gen_as_time_t(t)));
 
-	t = { 0, 0, 1, 0, 0, 3, 4 };
+	t = time_detailed{ 0, 0, 1, 0, 0, 3, 4 };
 	BOOST_CHECK_EQUAL("4 years, 3 months, and 1 hour", utils::format_timespan(gen_as_time_t(t)));
 
-	t = { 10, 0, 0, 0, 0, 2, 0 };
+	t = time_detailed{ 10, 0, 0, 0, 0, 2, 0 };
 	BOOST_CHECK_EQUAL("2 months and 10 seconds", utils::format_timespan(gen_as_time_t(t)));
 }
 
