@@ -118,6 +118,8 @@
      * S1: Removed early finish bonus for fleeing
      * S2: Modified Dacyn's dialogue upon undead arrival
      * S7a: Require Dacyn to cross the river
+   * Northern Rebirth:
+     * S12a: Update objectives to make it clear that gold is not received if Sisal dies
    * The Rise of Wesnoth:
      * Fixed various typos
      * S17c: Modified Burin's description of trolls
