@@ -1026,7 +1026,6 @@ protected:
 	reach_map reach_map_old_;
 	bool reach_map_changed_;
 	void process_reachmap_changes();
-	std::set<map_location> units_that_can_reach_goal_;
 
 	typedef std::map<map_location, std::vector<overlay>> overlay_map;
 

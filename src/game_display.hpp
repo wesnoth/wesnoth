@@ -95,13 +95,13 @@ public:
 
 	/**
 	 * Add more paths to highlight.  Print numbers where they overlap.
-	 * Used by Show Enemy Moves.  If goal is not null_location, highlight
-	 * enemy units that can reach goal.
+	 * Used by Show Enemy Moves.  If @a goal is not @c null_location, highlight
+	 * enemy units that can reach @a goal.
 	 */
 	void highlight_another_reach(const pathfind::paths &paths_list,
 			const map_location& goal = map_location::null_location());
 	/**
-	 * Return the locations of units that can reach @a goal (see highlight_another_reach()).
+	 * Return the locations of units that can reach @a goal (@see highlight_another_reach()).
 	 */
 	const std::set<map_location>& units_that_can_reach_goal() const { return units_that_can_reach_goal_; }
 
@@ -150,6 +150,8 @@ protected:
 
 	/** Inherited from display. */
 	virtual overlay_map& get_overlays() override;
+
+	std::set<map_location> units_that_can_reach_goal_;
 
 public:
 	/** Set the attack direction indicator. */

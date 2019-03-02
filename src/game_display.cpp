@@ -565,16 +565,16 @@ void game_display::highlight_another_reach(const pathfind::paths &paths_list,
 	}
 	reach_map_changed_ = true;
 
-	if(goal != map_location::null_location() && paths_list.destinations.contains(goal))
-	{
-		const map_location enemy_unit_location = paths_list.destinations.get_path(paths_list.destinations.find(goal))[0];
-		units_that_can_reach_goal_.emplace(enemy_unit_location);
+	if(goal != map_location::null_location() && paths_list.destinations.contains(goal)) {
+		const auto& path_to_goal = paths_list.destinations.get_path(paths_list.destinations.find(goal));
+		const map_location enemy_unit_location = path_to_goal[0];
+		units_that_can_reach_goal_.insert(enemy_unit_location);
 	}
 }
 
 bool game_display::unhighlight_reach()
 {
-	units_that_can_reach_goal_.erase(units_that_can_reach_goal_.begin(), units_that_can_reach_goal_.end());
+	units_that_can_reach_goal_.clear();
 	if(!reach_map_.empty()) {
 		reach_map_.clear();
 		reach_map_changed_ = true;

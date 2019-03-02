@@ -51,8 +51,7 @@ unit_drawer::unit_drawer(display & thedisp) :
 	hex_size(disp.hex_size()),
 	hex_size_by_2(disp.hex_size()/2)
 {
-	if(const game_display *game_display = dynamic_cast<class game_display*>(&disp))
-	{
+	if(const game_display* game_display = dynamic_cast<class game_display*>(&disp)) {
 		units_that_can_reach_goal = game_display->units_that_can_reach_goal();
 	}
 }
