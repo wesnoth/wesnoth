@@ -95,9 +95,15 @@ public:
 
 	/**
 	 * Add more paths to highlight.  Print numbers where they overlap.
-	 * Used only by Show Enemy Moves.
+	 * Used by Show Enemy Moves.  If goal is not null_location, highlight
+	 * enemy units that can reach goal.
 	 */
-	void highlight_another_reach(const pathfind::paths &paths_list);
+	void highlight_another_reach(const pathfind::paths &paths_list,
+			const map_location& goal = map_location::null_location());
+	/**
+	 * Return the locations of units that can reach @a goal (see highlight_another_reach()).
+	 */
+	const std::set<map_location>& units_that_can_reach_goal() const { return units_that_can_reach_goal_; }
 
 	/** Reset highlighting of paths. */
 	bool unhighlight_reach();
