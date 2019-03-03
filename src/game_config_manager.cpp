@@ -36,7 +36,7 @@
 #include "game_version.hpp"
 #include "theme.hpp"
 #include "picture.hpp"
-#include "sounds.hpp"
+#include "sound.hpp"
 #include "serialization/schema_validator.hpp"
 
 static lg::log_domain log_config("config");
