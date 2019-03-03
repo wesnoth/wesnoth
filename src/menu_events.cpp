@@ -81,6 +81,7 @@
 #include "units/udisplay.hpp"
 #include "units/unit.hpp"
 #include "whiteboard/manager.hpp"
+#include "sound.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
