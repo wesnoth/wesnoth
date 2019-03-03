@@ -225,7 +225,10 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 		auto& subsection = add_name_tree_node(
 			header_node,
 			"item",
-			(formatter() << font::span_color(font::unit_type_color) << a.damage() << font::weapon_numbers_sep << a.num_attacks() << " " << a.name() << "</span>").str()
+			(formatter()
+			 << font::span_color(font::unit_type_color)
+			 << a.damage() << font::weapon_numbers_sep << a.num_attacks()
+			 << " " << a.name() << "</span>").str()
 		);
 
 		subsection.add_child("item_image",
@@ -239,7 +242,11 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 			add_name_tree_node(
 				subsection,
 				"item",
-				(formatter() << font::span_color(font::weapon_details_color) << string_table["range_" + a.range()] << font::weapon_details_sep << string_table["type_" + a.type()] << "</span>").str()
+				(formatter()
+				 << font::span_color(font::weapon_details_color)
+				 << string_table["range_" + a.range()] << font::weapon_details_sep
+				 << string_table["type_" + a.type()] << "</span>"
+				 ).str()
 			);
 		}
 
