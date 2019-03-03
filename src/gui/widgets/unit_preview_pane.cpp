@@ -224,16 +224,16 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 		const bool range_png_exists = ::image::locator(range_png).file_exists();
 		const bool type_png_exists = ::image::locator(type_png).file_exists();
 
-		auto& subsection = add_name_tree_node(
-			header_node,
-			"item",
-			(formatter() << font::span_color(font::unit_type_color) << a.damage() << font::weapon_numbers_sep << a.num_attacks() << " " << a.name() << "</span>").str()
-		);
-
-		subsection.add_child("item_image",
+		const std::string label = (formatter()
+			 << font::span_color(font::unit_type_color)
+			 << a.damage() << font::weapon_numbers_sep << a.num_attacks()
+			 << " " << a.name() << "</span>").str();
+		auto& subsection = header_node.add_child(
+			"item_image",
 			{
-				{ "image_range", { { "label", range_png }, { "use_markup", "true" } } },
-				{ "image_type", { { "label", type_png }, { "use_markup", "true" } } },
+				{ "image_range", { { "label", range_png } } },
+				{ "image_type", { { "label", type_png } } },
+				{ "name", { { "label", label }, { "use_markup", "true" } } },
 			}
 		);
 
