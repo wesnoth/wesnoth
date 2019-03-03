@@ -16,7 +16,7 @@
    * The South Guard:
      * Fixed various typos
  ### Language and i18n
-   * Updated translations: Italian.
+   * Updated translations: Chinese (Traditional), Italian.
  ### Multiplayer server
    * Forum user handler ban durations are now reported back to banned players.
  ### User interface
