@@ -222,10 +222,14 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 		const bool range_png_exists = ::image::locator(range_png).file_exists();
 		const bool type_png_exists = ::image::locator(type_png).file_exists();
 
+		const t_string& range = string_table["range_" + a.range()];
+		const t_string& type = string_table["type_" + a.type()];
+
 		const std::string label = (formatter()
 			 << font::span_color(font::unit_type_color)
 			 << a.damage() << font::weapon_numbers_sep << a.num_attacks()
 			 << " " << a.name() << "</span>").str();
+
 		auto& subsection = header_node.add_child(
 			"item_image",
 			{
@@ -235,14 +239,17 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 			}
 		);
 
+		find_widget<styled_widget>(&subsection, "image_range", true).set_tooltip(range);
+		find_widget<styled_widget>(&subsection, "image_type", true).set_tooltip(type);
+
 		if(!range_png_exists || !type_png_exists) {
 			add_name_tree_node(
 				subsection,
 				"item",
 				(formatter()
 				 << font::span_color(font::weapon_details_color)
-				 << string_table["range_" + a.range()] << font::weapon_details_sep
-				 << string_table["type_" + a.type()] << "</span>"
+				 << range << font::weapon_details_sep
+				 << type << "</span>"
 				 ).str()
 			);
 		}
