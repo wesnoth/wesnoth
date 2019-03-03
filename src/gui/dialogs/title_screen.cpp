@@ -386,6 +386,7 @@ void title_screen::pre_show(window& win)
 			if(game_.change_language()) {
 				t_string::reset_translations();
 				::image::flush_cache();
+				sound::flush_cache();
 				on_resize(win);
 			}
 		} catch(const std::runtime_error& e) {

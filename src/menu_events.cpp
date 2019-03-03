@@ -81,6 +81,7 @@
 #include "units/udisplay.hpp"
 #include "units/unit.hpp"
 #include "whiteboard/manager.hpp"
+#include "sound.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -1401,6 +1402,7 @@ std::vector<std::string> menu_handler::get_commands_list()
 void console_handler::do_refresh()
 {
 	image::flush_cache();
+	sound::flush_cache();
 
 	menu_handler_.gui_->create_buttons();
 	menu_handler_.gui_->redraw_everything();

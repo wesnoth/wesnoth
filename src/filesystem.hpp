@@ -424,5 +424,9 @@ std::string get_independent_image_path(const std::string &filename);
  */
 std::string get_program_invocation(const std::string &program_name);
 
+/**
+ * Returns the localized version of the given filename, if it exists.
+ */
+std::string get_localized_path(const std::string& file, const std::string& suff = "");
 
 }

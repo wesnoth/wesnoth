@@ -36,6 +36,7 @@
 #include "game_version.hpp"
 #include "theme.hpp"
 #include "picture.hpp"
+#include "sound.hpp"
 #include "serialization/schema_validator.hpp"
 
 static lg::log_domain log_config("config");
@@ -525,6 +526,7 @@ void game_config_manager::reload_changed_game_config()
 	init_game_config(FORCE_RELOAD);
 
 	image::flush_cache();
+	sound::flush_cache();
 }
 
 void game_config_manager::load_game_config_for_editor()
