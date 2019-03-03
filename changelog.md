@@ -17,6 +17,8 @@
      * Fixed various typos
  ### Language and i18n
    * Updated translations: Chinese (Traditional), Italian.
+ ### Multiplayer
+   * Dark Forecast: AI units are "discovered" (added to the help if not already known)
  ### Multiplayer server
    * Forum user handler ban durations are now reported back to banned players.
  ### User interface
