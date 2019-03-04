@@ -9,6 +9,7 @@
      * S2: Modified Dacyn's dialogue upon undead arrival
      * S7a: Require Dacyn to cross the river
    * Northern Rebirth:
+     * Eryssa now must survive if she joins the player
      * S12a: Update objectives to make it clear that gold is not received if Sisal dies
    * The Rise of Wesnoth:
      * Fixed various typos
