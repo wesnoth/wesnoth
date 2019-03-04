@@ -15,6 +15,11 @@
      * S17c: Modified Burin's description of trolls
    * The South Guard:
      * Fixed various typos
+   * Tutorial:
+     * Remove swamp from map for part 2
+     * Warn player about water when stepping on any shallow water hex
+     * Change quintain to level 0
+     * Allow Konrad and Li'sar to level up and add corresponding dialogue for part 2
  ### Language and i18n
    * Updated translations: Chinese (Traditional), Italian.
  ### Multiplayer
