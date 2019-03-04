@@ -631,7 +631,7 @@ static config unit_vision(const unit* u)
 		tooltip << _("vision:") << ' ' << u->vision() << '\n';
 	}
 	if (u->jamming() != 0) {
-		if (str.tellp() == 0)
+		if (static_cast<std::streamoff>(str.tellp()) == 0)
 			str << _("jamming:") << ' ' << u->jamming();
 		tooltip << _("jamming:") << ' ' << u->jamming() << '\n';
 	}
