@@ -116,7 +116,7 @@ else
     fi
 
     if [ "$WML_TESTS" = "true" ]; then
-        eexecute "WML tests" ./run_wml_tests -g -v -c -t "$WML_TEST_TIME"
+        execute "WML tests" ./run_wml_tests -g -v -c -t "$WML_TEST_TIME"
     fi
 
     if [ "$PLAY_TEST" = "true" ]; then
@@ -124,7 +124,7 @@ else
     fi
 
     if [ "$MP_TEST" = "true" ]; then
-        executing "MP tests" ./utils/travis/mp_test_executor.sh
+        execute "MP tests" ./utils/travis/mp_test_executor.sh
     fi
 
     if [ "$BOOST_TEST" = "true" ]; then
