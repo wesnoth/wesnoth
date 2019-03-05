@@ -33,6 +33,7 @@
    * Add jamming to the vision tooltip in the sidebar. (PR #3327)
    * Fix undoing a recall not un-drawing parts of the sprite that go beyond the unit's hex (issue #3325)
    * Fix crash when the recruit filter matched nothing. (PR #3969)
+   * "Show Enemy Moves" now highlights enemy units that can reach the highlighted hex. (issue #1989, PR #3961)
 
 ## Version 1.14.6
  ### AI
