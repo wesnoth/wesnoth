@@ -112,6 +112,7 @@
  ### Campaigns
    * A Tale of Two Brothers:
      * S3: Changed castle to permanent chaotic ToD and rebalanced scenario accordingly
+     * S4: Added dialogue between Baran and Tairach when they engage in combat
    * Dead Water:
      * S3: Added event to make Storm Trident more obvious
    * Eastern Invasion:
