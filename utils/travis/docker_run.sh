@@ -5,7 +5,7 @@ reset=$(tput sgr0)
 # print given message in red
 error() { printf '%s%s%s\n' "$red" "$*" "$reset"; }
 # print given message and exit
-die() { errror "$*"; exit 1; }
+die() { error "$*"; exit 1; }
 
 # set the fake display for unit tests
 export DISPLAY=:99.0
