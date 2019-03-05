@@ -3,7 +3,7 @@
 red=$(tput setaf 1)
 reset=$(tput sgr0)
 # print given message in red
-error() { printf '%s%s%s\n' "red" "$*" "$reset"; }
+error() { printf '%s%s%s\n' "$red" "$*" "$reset"; }
 # print given message and exit
 die() { errror "$*"; exit 1; }
 
