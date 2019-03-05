@@ -1,7 +1,7 @@
 #!/bin/bash
 
-red=$'\e[31m' # $(tput setaf 1)
-reset=$'\e[m\x0F' # $(tput sgr0)
+red=$(tput setaf 1)
+reset=$(tput sgr0)
 # print given message in red
 error() { printf '%s%s%s\n' "$red" "$*" "$reset"; }
 # print given message and exit
@@ -92,8 +92,7 @@ else
         exit $BUILD_RET
     fi
 
-#    if (( SECONDS > 60*build_timeout )); then
-    if true; then
+    if (( SECONDS > 60*build_timeout )); then
         die "Insufficient time remaining to execute unit tests. Exiting now to allow caching to occur. Please restart the job."
     fi
 
