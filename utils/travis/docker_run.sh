@@ -92,9 +92,10 @@ else
         exit $BUILD_RET
     fi
 
-     if (( SECONDS > 60*build_timeout )); then
-         die "Insufficient time remaining to execute unit tests. Exiting now to allow caching to occur. Please restart the job."
-     fi
+#    if (( SECONDS > 60*build_timeout )); then
+    if true; then
+        die "Insufficient time remaining to execute unit tests. Exiting now to allow caching to occur. Please restart the job."
+    fi
 
 # needed since bash returns the exit code of the final command executed, so a failure needs to be returned if any unit tests fail
     EXIT_VAL=0
