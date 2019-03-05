@@ -1,6 +1,11 @@
 language: cpp
 sudo:     required
 
+addons:
+  apt:
+    packages:
+      - expect # for unbuffer
+      
 services:
     - docker
 
@@ -41,7 +46,8 @@ install:
     - . ./utils/travis/steps/install.sh
 
 script:
-    - ./utils/travis/steps/script.sh
+    - unbuffer bash -c 'tput setaf 1; echo red; tput sgr0; echo normal'
+    - unbuffer ./utils/travis/steps/script.sh
 
 notifications:
     email: false
