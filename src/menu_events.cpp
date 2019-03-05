@@ -456,6 +456,9 @@ void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 
 			gui_->highlight_another_reach(path, hex_under_mouse);
 		}
+
+		// Need to recompute ellipses for highlighted enemy units
+		gui_->invalidate(u.get_location());
 	}
 
 	// Find possible unit (no matter whether friend or foe) under the
@@ -957,7 +960,7 @@ void menu_handler::execute_gotos(mouse_handler& mousehandler, int side)
 void menu_handler::toggle_ellipses()
 {
 	preferences::set_ellipses(!preferences::ellipses());
-	gui_->invalidate_all();
+	gui_->invalidate_all(); // TODO can fewer tiles be invalidated?
 }
 
 void menu_handler::toggle_grid()
