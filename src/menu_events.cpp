@@ -277,7 +277,12 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 
 	if(dlg.show()) {
 		map_location recruit_hex = last_hex;
-		do_recruit(sample_units[dlg.get_selected_index()]->id(), side_num, recruit_hex);
+		int index = dlg.get_selected_index();
+		if (index < 0) {
+			gui2::show_transient_message("", _("No unit recruited"));
+			return;
+		}
+		do_recruit(sample_units[index]->id(), side_num, recruit_hex);
 	}
 }
 
