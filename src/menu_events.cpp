@@ -439,6 +439,9 @@ void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 {
 	wb::future_map future; // use unit positions as if all planned actions were executed
 
+	mouse_handler& mh = pc_.get_mouse_handler_base();
+	const map_location& hex_under_mouse = mh.hovered_hex();
+
 	gui_->unhighlight_reach();
 
 	// Compute enemy movement positions
@@ -451,14 +454,12 @@ void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 			const pathfind::paths& path
 					= pathfind::paths(u, false, true, teams()[gui_->viewing_team()], 0, false, ignore_units);
 
-			gui_->highlight_another_reach(path);
+			gui_->highlight_another_reach(path, hex_under_mouse);
 		}
 	}
 
 	// Find possible unit (no matter whether friend or foe) under the
 	// mouse cursor.
-	mouse_handler& mh = pc_.get_mouse_handler_base();
-	const map_location& hex_under_mouse = mh.hovered_hex();
 	const bool selected_hex_has_unit = mh.hex_hosts_unit(hex_under_mouse);
 
 	if(selected_hex_has_unit) {
