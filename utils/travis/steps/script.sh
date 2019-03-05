@@ -41,7 +41,6 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
 else
     docker run --volume "$HOME"/build-cache:/home/wesnoth-travis/build \
                --volume "$HOME"/.ccache:/root/.ccache \
-               wesnoth-repo:"$LTS"-"$BRANCH" \
-               bash -c './utils/travis/docker_run.sh "$@"' \
-               bash "$NLS" "$TOOL" "$CC" "$CXX" "$CXXSTD" "$OPT" "$WML_TESTS" "$WML_TEST_TIME" "$PLAY_TEST" "$MP_TEST" "$BOOST_TEST" "$LTO" "$SAN" "$VALIDATE"
+               --tty wesnoth-repo:"$LTS"-"$BRANCH" \
+               ./utils/travis/docker_run.sh "$NLS" "$TOOL" "$CC" "$CXX" "$CXXSTD" "$OPT" "$WML_TESTS" "$WML_TEST_TIME" "$PLAY_TEST" "$MP_TEST" "$BOOST_TEST" "$LTO" "$SAN" "$VALIDATE"
 fi
