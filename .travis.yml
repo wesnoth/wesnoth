@@ -46,8 +46,8 @@ install:
     - . ./utils/travis/steps/install.sh
 
 script:
-    - unbuffer bash -c 'tput setaf 1; echo red; tput sgr0; echo normal'
-    - unbuffer ./utils/travis/steps/script.sh
+    - bash -c 'tput setaf 1; echo red; tput sgr0; echo normal'
+#    - unbuffer ./utils/travis/steps/script.sh
 
 notifications:
     email: false
