@@ -4,7 +4,7 @@ sudo:     required
 addons:
   apt:
     packages:
-      - expect # for unbuffer
+      - expect-dev # for unbuffer
       
 services:
     - docker
@@ -46,15 +46,15 @@ install:
     - . ./utils/travis/steps/install.sh
 
 script:
-    - bash -c 'tput setaf 1; echo red; tput sgr0; echo normal'
-#    - unbuffer ./utils/travis/steps/script.sh
+    - bash -c 'echo "$TERM"; tput setaf 1; echo red; tput sgr0; echo normal'
+    - unbuffer ./utils/travis/steps/script.sh
 
 notifications:
     email: false
     irc:
         channels:
 # "chat.freenode.net#wesnoth-dev"
-#            - secure: "HwCgH1VmpYbfv4giKIGkATkWc6o1+HXH827JXwxDnwFGZrLyf+1t4mHC6OaTMOFkZvT7qhSfIe80GeiRkg2x14ZpUE9XYewUUOSq7dRJlk2KLWlGRf5fZFHZVEdDOPdTdJjCLGqddY+4sMjqMlrtgIOxbPSXKLPTJLBhEEr8ZqE="
+            - secure: "HwCgH1VmpYbfv4giKIGkATkWc6o1+HXH827JXwxDnwFGZrLyf+1t4mHC6OaTMOFkZvT7qhSfIe80GeiRkg2x14ZpUE9XYewUUOSq7dRJlk2KLWlGRf5fZFHZVEdDOPdTdJjCLGqddY+4sMjqMlrtgIOxbPSXKLPTJLBhEEr8ZqE="
         template:
             - "\x02%{repository}\x0f#\x0312%{build_number}\x0f (\x0307%{branch}\x0f - \x02%{commit}\x0f : \x0303%{author}\x0f): \x02%{message}\x0f"
             - "Build details : \x0302%{build_url}\x0f"
