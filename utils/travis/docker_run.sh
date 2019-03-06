@@ -1,5 +1,12 @@
 #!/bin/bash
 
+red=$(tput setaf 1)
+reset=$(tput sgr0)
+# print given message in red
+error() { printf '%s%s%s\n' "$red" "$*" "$reset"; }
+# print given message and exit
+die() { error "$*"; exit 1; }
+
 # set the fake display for unit tests
 export DISPLAY=:99.0
 /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24
@@ -59,7 +66,7 @@ if [ "$NLS" == "true" ]; then
 
     scons translations build=release --debug=time nls=true jobs=2
 else
-    build_start=$(date +%s)
+    SECONDS=0
 
     if [ "$TOOL" == "cmake" ]; then
         echo "max_size = 200M" > $HOME/.ccache/ccache.conf
@@ -85,77 +92,47 @@ else
         exit $BUILD_RET
     fi
 
-     build_end=$(date +%s)
-     if (( build_end-build_start > 60*build_timeout )); then
-         echo "Insufficient time remaining to execute unit tests. Exiting now to allow caching to occur. Please restart the job."
-         exit 1
-     fi
+    if (( SECONDS > 60*build_timeout )); then
+        die "Insufficient time remaining to execute unit tests. Exiting now to allow caching to occur. Please restart the job."
+    fi
 
-# needed since docker returns the exit code of the final command executed, so a failure needs to be returned if any unit tests fail
+# needed since bash returns the exit code of the final command executed, so a failure needs to be returned if any unit tests fail
     EXIT_VAL=0
-    
-    if [ "$VALIDATE" == "true" ]; then
-        echo "Executing schema_validation.sh"
-        
-        ./utils/travis/schema_validation.sh
-        RET=$?
-        
-        if [ $RET != 0 ]; then
-            echo "WML validation failed!"
-            EXIT_VAL=$RET
+
+    # print given message ($1) and execute given command; sets EXIT_VAL on failure
+    execute() {
+        local message=$1; shift
+        printf 'Executing %s\n' "$message"
+        if "$@"; then
+            : # success
+        else
+            EXIT_VAL=$?
+            error "$message failed! ($*)"
         fi
+    }
+
+    if [ "$VALIDATE" = "true" ]; then
+        execute "WML validation" ./utils/travis/schema_validation.sh
     fi
 
-    if [ "$WML_TESTS" == "true" ]; then
-        echo "Executing run_wml_tests"
-
-        ./run_wml_tests -g -v -c -t "$WML_TEST_TIME"
-        RET=$?
-
-        if [ $RET != 0 ]; then
-            echo "WML tests failed!"
-            EXIT_VAL=$RET
-        fi
+    if [ "$WML_TESTS" = "true" ]; then
+        execute "WML tests" ./run_wml_tests -g -v -c -t "$WML_TEST_TIME"
     fi
 
-    if [ "$PLAY_TEST" == "true" ]; then
-        echo "Executing play_test_executor.sh"
-
-        ./utils/travis/play_test_executor.sh
-        RET=$?
-
-        if [ $RET != 0 ]; then
-            echo "Play tests failed!"
-            EXIT_VAL=$RET
-        fi
+    if [ "$PLAY_TEST" = "true" ]; then
+        execute "Play tests" ./utils/travis/play_test_executor.sh
     fi
 
-    if [ "$MP_TEST" == "true" ]; then
-        echo "Executing mp_test_executor.sh"
-
-        ./utils/travis/mp_test_executor.sh
-        RET=$?
-
-        if [ $RET != 0 ]; then
-            echo "MP tests failed!"
-            EXIT_VAL=$RET
-        fi
+    if [ "$MP_TEST" = "true" ]; then
+        execute "MP tests" ./utils/travis/mp_test_executor.sh
     fi
 
-    if [ "$BOOST_TEST" == "true" ]; then
-        echo "Executing boost unit tests"
-
-        ./utils/travis/test_executor.sh
-        RET=$?
-
-        if [ $RET != 0 ]; then
-            echo "Boost tests failed!"
-            EXIT_VAL=$RET
-        fi
+    if [ "$BOOST_TEST" = "true" ]; then
+        execute "Boost unit tests" ./utils/travis/test_executor.sh
     fi
 
     if [ -f "errors.log" ]; then
-        echo -e "\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n"
+        error $'\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n'
         cat errors.log
     fi
 
