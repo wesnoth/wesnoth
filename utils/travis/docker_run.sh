@@ -106,8 +106,8 @@ else
         if "$@"; then
             : # success
         else
-            error "$message failed! ($*)"
             EXIT_VAL=$?
+            error "$message failed! ($*)"
         fi
     }
 
