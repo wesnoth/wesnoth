@@ -24,7 +24,7 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
         ./utils/travis/utf8_bom_dog.sh || exit 1
 
         "$CXX" --version
-        if [ "$TOOL" == "scons" ]; then
+        if [ "$TOOL" = "scons" ]; then
             ln -s $HOME/build-cache/ build
 
             scons wesnoth wesnothd campaignd boost_unit_tests build=release \
@@ -42,5 +42,5 @@ else
     docker run --volume "$HOME"/build-cache:/home/wesnoth-travis/build \
                --volume "$HOME"/.ccache:/root/.ccache \
                --tty wesnoth-repo:"$LTS"-"$BRANCH" \
-               ./utils/travis/docker_run.sh "$NLS" "$TOOL" "$CC" "$CXX" "$CXXSTD" "$OPT" "$WML_TESTS" "$WML_TEST_TIME" "$PLAY_TEST" "$MP_TEST" "$BOOST_TEST" "$LTO" "$SAN" "$VALIDATE"
+               unbuffer ./utils/travis/docker_run.sh "$NLS" "$TOOL" "$CC" "$CXX" "$CXXSTD" "$OPT" "$WML_TESTS" "$WML_TEST_TIME" "$PLAY_TEST" "$MP_TEST" "$BOOST_TEST" "$LTO" "$SAN" "$VALIDATE"
 fi
