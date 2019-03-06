@@ -758,6 +758,11 @@ if __name__ == "__main__":
         def test(input, expected, note):
             test2(input, expected, note, lambda p: p.root.debug())
 
+        def test_with_preprocessor(input, expected, note):
+            if not args.wesnoth:
+                print("SKIPPED WITHOUT PREPROCESSOR " + note)
+                return
+            test(input, expected, note)
 
         test(
 """
@@ -868,7 +873,7 @@ a, b, c = 1, 2
 [/test]
 """, "multi assign 3")
 
-        test(
+        test_with_preprocessor(
 """
 #textdomain A
 #define X
@@ -938,7 +943,7 @@ foo="bar"+
 foo='bar' .. 'baz'
 """, "multi line string")
 
-        test(
+        test_with_preprocessor(
 """
 #define baz
 
@@ -950,7 +955,7 @@ foo="bar"+{baz}
 foo='bar' .. 'baz'
 """, "defined multi line string")
 
-        test(
+        test_with_preprocessor(
 """
 foo="bar" + "baz" # blah
 """,
@@ -958,7 +963,7 @@ foo="bar" + "baz" # blah
 foo='bar' .. 'baz'
 """, "comment after +")
 
-        test(
+        test_with_preprocessor(
 """
 #define baz
 "baz"
@@ -969,7 +974,7 @@ foo="bar" {baz}
 foo='bar' .. 'baz'
 """, "defined string concatenation")
 
-        test(
+        test_with_preprocessor(
 """
 #define A BLOCK
 [{BLOCK}]
