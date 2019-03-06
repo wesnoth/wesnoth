@@ -595,6 +595,8 @@ class HTMLOutput:
                 rname = race.get_text_val("id") if race else "none"
                 if not rname:
                     rname = "none"
+                if not racename:
+                    racename = rname
                 r[m][racename] = rname
             racenames = sorted(r[0].items())
             if list(r[1].items()):
