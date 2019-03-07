@@ -141,7 +141,9 @@
      * Allow Konrad and Li'sar to level up and add corresponding dialogue for part 2
  ### Multiplayer server
    * Forum user handler ban durations are now reported back to banned players.
-
+ ### Units
+   * Updated descriptions for Goblin Knight and Wolf Rider
+   
 ## Version 1.14.5+dev
  ### AI
    * Fixed crash when the AI simulates a fight between two units which can slow but aren't yet slowed, then
