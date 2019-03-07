@@ -5,6 +5,10 @@
      * S4: Added dialogue between Baran and Tairach when they engage in combat
    * Dead Water:
      * S3: Added event to make Storm Trident more obvious
+   * Descent into Darkness:
+     * Complete revision of all dialogue and story text
+     * Revised and rebalanced gameplay in all scenarios
+     * S3 and S11: New scenarios completely rewritten from scratch
    * Eastern Invasion:
      * S1: Removed early finish bonus for fleeing
      * S2: Modified Dacyn's dialogue upon undead arrival
