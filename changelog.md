@@ -15,6 +15,8 @@
      * S7a: Require Dacyn to cross the river
    * Northern Rebirth:
      * Eryssa now must survive if she joins the player
+     * S4: Have Hamel describe Ghouls if Camerin is dead
+     * S5: Add gates to map instead of images and overlays
      * S8: add text and updated objectives when rescuing Eryssa
      * S12a: Update objectives to make it clear that gold is not received if Sisal dies
    * The Rise of Wesnoth:
