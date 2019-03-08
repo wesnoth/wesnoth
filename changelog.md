@@ -143,6 +143,7 @@
    * Forum user handler ban durations are now reported back to banned players.
  ### Units
    * Updated descriptions for Goblin Knight and Wolf Rider
+   * Add new descriptions for Quenoth faction
    
 ## Version 1.14.5+dev
  ### AI
