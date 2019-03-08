@@ -107,6 +107,8 @@
    * Added support for directly supplying IPv6 address of the server to multiplayer client and addon client. It must be done like this: ```[ipv6_address]``` or ```[ipv6_address]:port```
    * Show ability of a selected unit as active/inactive with respect to mouseover hex. (issue #3912)
    * macOS: Wesnoth now uses the app sandboxing feature, which means there is a new location for saves. All saves will be migrated during first launch automatically. For info about backwards compatibility see: https://gist.github.com/hrubymar10/eb5afd896f933a46fac344ced940e020
+   * The sidebar, recall dialog, etc now show attack's range (melee/ranged) and
+     damage type (arcane/blade/cold/...) using icons. (PR #3732, #3740)
 
 ## Version 1.14.6+dev
  ### Campaigns
