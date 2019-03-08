@@ -37,6 +37,7 @@
    * Forum user handler ban durations are now reported back to banned players.
  ### Units
    * Updated descriptions for Goblin Knight and Wolf Rider
+   * Add new descriptions for Quenoth faction
  ### User interface
    * Add jamming to the vision tooltip in the sidebar. (PR #3327)
    * Fix undoing a recall not un-drawing parts of the sprite that go beyond the unit's hex (issue #3325)
