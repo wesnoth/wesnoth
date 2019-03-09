@@ -40,6 +40,10 @@
 #include <boost/format.hpp>
 #include <boost/lexical_cast.hpp>
 
+// Forward declarations
+static const unit *get_visible_unit(reports::context & rc);
+static const unit *get_selected_unit(reports::context & rc);
+
 static void add_text(config &report, const std::string &text,
 	const std::string &tooltip, const std::string &help = "")
 {
@@ -94,14 +98,19 @@ static std::string flush(std::ostringstream &s)
 static const time_of_day get_visible_time_of_day_at(reports::context & rc, const map_location & hex)
 {
 	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
+
+	const unit *u = get_selected_unit(rc);
+	const unit *sec_u = get_visible_unit(rc);
+	const int for_turn = (u && sec_u && u->side() != viewing_team.side() && u->side() < sec_u->side()) ? rc.tod().turn() + 1 : 0;
+
 	if (viewing_team.shrouded(hex)) {
 		// Don't show time on shrouded tiles.
-		return rc.tod().get_time_of_day();
+		return rc.tod().get_time_of_day(for_turn);
 	} else if (viewing_team.fogged(hex)) {
 		// Don't show illuminated time on fogged tiles.
-		return rc.tod().get_time_of_day(hex);
+		return rc.tod().get_time_of_day(hex, for_turn);
 	} else {
-		return rc.tod().get_illuminated_time_of_day(rc.units(), rc.map(), hex);
+		return rc.tod().get_illuminated_time_of_day(rc.units(), rc.map(), hex, for_turn);
 	}
 }
 
