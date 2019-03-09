@@ -7,6 +7,8 @@ local wml_actions = wesnoth.wml_actions
 local T = wml.tag
 local vars = wml.variables
 
+helper = wesnoth.require "lua/helper.lua"
+
 function wesnoth.wml_actions.shift_labels(cfg)
 	for k, v in ipairs(labels) do
 		wml_label { x = v.x, y = v.y }
@@ -56,6 +58,32 @@ function wesnoth.wml_actions.replace_map_section(cfg)
 	wesnoth.wml_actions.replace_map { map = new_map, expand = true, shrink = true }
 end
 
+function wesnoth.wml_actions.unstore_left_behind_units(cfg)
+	if wesnoth.get_variable("l3_store_kalenz") ~= nil then
+		l3_store_kalenz = helper.get_variable_array("l3_store_kalenz")
+		for i,_ in ipairs(l3_store_kalenz) do
+			var_name = "l3_store_kalenz[" .. tostring(i-1) .. "]"
+			wml_actions.unstore_unit {
+				variable = var_name,
+				x = "recall",
+				y = "recall"
+			}
+		end
+		wesnoth.set_variable("l3_store_kalenz",nil)
+	end
+	if wesnoth.get_variable("l3_store_landar") ~= nil then
+		l3_store_landar = helper.get_variable_array("l3_store_landar")
+		for i,_ in ipairs(l3_store_landar) do
+			var_name = "l3_store_landar[" .. tostring(i-1) .. "]"
+			wml_actions.unstore_unit {
+				variable = var_name,
+				x = "recall",
+				y = "recall"
+			}
+		end
+		wesnoth.set_variable("l3_store_landar",nil)
+	end
+end
 
 function wesnoth.wml_actions.persistent_carryover_store(cfg)
 	for num, side in ipairs(wesnoth.sides) do
