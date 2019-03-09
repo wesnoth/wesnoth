@@ -13,6 +13,9 @@
      * S1: Removed early finish bonus for fleeing
      * S2: Modified Dacyn's dialogue upon undead arrival
      * S7a: Require Dacyn to cross the river
+   * Legend of Wesmere:
+     * Disabled side shuffling in MP (checking the box does nothing)
+     * Fixed missing persistent data at the end of chapter 3
    * Northern Rebirth:
      * Eryssa now must survive if she joins the player
      * S4: Have Hamel describe Ghouls if Camerin is dead
