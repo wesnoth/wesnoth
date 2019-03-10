@@ -1477,9 +1477,18 @@ unsigned image_width(const std::string &filename)
 	return 0;
 }
 
-void push_tab_pair(std::vector<help::item> &v, const std::string &s)
+void push_tab_pair(std::vector<help::item> &v, const std::string &s, const boost::optional<std::string> &image, unsigned padding)
 {
-	v.emplace_back(s, font::line_width(s, normal_font_size));
+	help::item item(s, font::line_width(s, normal_font_size));
+	if (image) {
+		// If the image doesn't exist, don't add padding.
+		auto width = image_width(image.get());
+		padding = (width ? padding : 0);
+
+		item.first = "<img>src='" + image.get() + "'</img>" + (padding ? jump(padding) : "") + s;
+		item.second += width + padding;
+	}
+	v.emplace_back(item);
 }
 
 std::string generate_table(const table_spec &tab, const unsigned int spacing)

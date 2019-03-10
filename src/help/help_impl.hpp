@@ -43,6 +43,7 @@
 #include <vector>                       // for vector, etc
 #include <SDL.h>                  // for SDL_Surface
 #include <boost/logic/tribool.hpp>
+#include <boost/optional.hpp>
 
 class config;
 class unit_type;
@@ -396,7 +397,7 @@ std::string generate_table(const table_spec &tab, const unsigned int spacing=fon
 // Return the width for the image with filename.
 unsigned image_width(const std::string &filename);
 
-// Add to the vector v an help::item for the string s.
-void push_tab_pair(std::vector<help::item> &v, const std::string &s);
+// Add to the vector v an help::item for the string s, preceded by the given image if any.
+void push_tab_pair(std::vector<help::item> &v, const std::string &s, const boost::optional<std::string> &image = {}, unsigned padding = 0);
 
 } // end namespace help
