@@ -107,7 +107,8 @@ enables some Lua debugging mechanisms
 .BI -D,--diff \ left-file \  right-file
 diffs the two WML files; does not preprocess them first (to do that, run them through
 .B -p
-first). Outputs the diff as DiffWML on standard output.
+first). Outputs the diff as DiffWML on standard output or to the file indicated by
+.IR --output .
 .TP
 .BI -e[ file ],\ --editor[ =file ]
 start the in-game map editor directly. If
@@ -232,6 +233,9 @@ don't try to validate replay of unit test. Only relevant when used with
 .B --nosound
 runs the game without sounds and music.
 .TP
+.BI --output \ file
+output to the specified file. Applicable to diffing operations.
+.TP
 .BI --password \ password
 uses
 .I password
@@ -246,7 +250,8 @@ but Lua file should return a function which will be run as a coroutine and perio
 .TP
 .BI -P,--patch \ base-file \  patch-file
 applies a DiffWML patch to a WML file; does not preprocess either of the files.
-Outputs the patched WML to standard output.
+Outputs the patched WML to standard output or to the file indicated by
+.IR --output .
 .TP
 .BI -p,\ --preprocess \ source-file/folder \  target-directory
 preprocesses a specified file/folder. For each file(s) a plain .cfg file and a processed .cfg

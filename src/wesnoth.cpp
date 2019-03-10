@@ -510,8 +510,13 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		std::ifstream in_right(cmdline_opts.diff_right);
 		read(left, in_left);
 		read(right, in_right);
-		config_writer out(std::cout, compression::format::NONE);
+		std::ostream* os = &std::cout;
+		if(cmdline_opts.output_file) {
+			os = new std::ofstream(*cmdline_opts.output_file);
+		}
+		config_writer out(*os, compression::format::NONE);
 		out.write(right.get_diff(left));
+		if(os != &std::cout) delete os;
 		return 0;
 	}
 	
@@ -522,8 +527,13 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		read(base, in_base);
 		read(diff, in_diff);
 		base.apply_diff(diff);
-		config_writer out(std::cout, compression::format::NONE);
+		std::ostream* os = &std::cout;
+		if(cmdline_opts.output_file) {
+			os = new std::ofstream(*cmdline_opts.output_file);
+		}
+		config_writer out(*os, compression::format::NONE);
 		out.write(base);
+		if(os != &std::cout) delete os;
 		return 0;
 	}
 
