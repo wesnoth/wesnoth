@@ -557,9 +557,9 @@ std::string unit_topic_generator::operator()() const {
 		// Dummy element, icons are below.
 		first_row.push_back(item("", 0));
 		push_header(first_row, _("unit help^Name"));
-		push_header(first_row, _("Type"));
 		push_header(first_row, _("Strikes"));
 		push_header(first_row, _("Range"));
+		push_header(first_row, _("Type"));
 		push_header(first_row, _("Special"));
 		table.push_back(first_row);
 		// Print information about every attack.
@@ -577,16 +577,14 @@ std::string unit_topic_generator::operator()() const {
 			// Attack name
 			push_tab_pair(row, lang_weapon);
 
-			// Damage type, with icon
-			const auto padding = 5; // TODO amount of padding?
-			const std::string type_icon = "icons/profiles/" + attack.type() + ".png";
-			push_tab_pair(row, lang_type, type_icon, padding);
-
 			// damage x strikes
 			attack_ss << attack.damage() << font::weapon_numbers_sep << attack.num_attacks()
 				<< " " << attack.accuracy_parry_description();
 			push_tab_pair(row, attack_ss.str());
 			attack_ss.str(clear_stringstream);
+
+			// Padding for range and damage type icons
+			const auto padding = 5; // TODO amount of padding?
 
 			// Range, with icon
 			const std::string range_icon = "icons/profiles/" + attack.range() + "_attack.png";
@@ -596,6 +594,10 @@ std::string unit_topic_generator::operator()() const {
 			attack_ss << string_table["range_" + attack.range()];
 			push_tab_pair(row, attack_ss.str(), range_icon, padding);
 			attack_ss.str(clear_stringstream);
+
+			// Damage type, with icon
+			const std::string type_icon = "icons/profiles/" + attack.type() + ".png";
+			push_tab_pair(row, lang_type, type_icon, padding);
 
 			// Show this attack's special, if it has any. Cross
 			// reference it to the section describing the special.
