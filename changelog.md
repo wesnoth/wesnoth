@@ -22,8 +22,6 @@
      * S5: Add gates to map instead of images and overlays
      * S8: add text and updated objectives when rescuing Eryssa
      * S12a: Update objectives to make it clear that gold is not received if Sisal dies
-   * The Hammer of Thursagan
-     * Add new Ulfserker and Berserker sprites
    * The Rise of Wesnoth:
      * Fixed various typos
      * S17c: Modified Burin's description of trolls
