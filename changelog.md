@@ -16,6 +16,7 @@
    * Legend of Wesmere:
      * Disabled side shuffling in MP (checking the box does nothing)
      * Fixed missing persistent data at the end of chapter 3
+     * Rebalanced gold values in all scenarios
    * Northern Rebirth:
      * Eryssa now must survive if she joins the player
      * S4: Have Hamel describe Ghouls if Camerin is dead
