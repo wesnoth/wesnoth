@@ -557,10 +557,8 @@ std::string unit_topic_generator::operator()() const {
 		// Dummy element, icons are below.
 		first_row.push_back(item("", 0));
 		push_header(first_row, _("unit help^Name"));
-		first_row.push_back(item("", 0)); // dummy item for type icon
 		push_header(first_row, _("Type"));
 		push_header(first_row, _("Strikes"));
-		first_row.push_back(item("", 0)); // dummy item for range icon
 		push_header(first_row, _("Range"));
 		push_header(first_row, _("Special"));
 		table.push_back(first_row);
@@ -579,14 +577,10 @@ std::string unit_topic_generator::operator()() const {
 			// Attack name
 			push_tab_pair(row, lang_weapon);
 
-			// Damage type icon
+			// Damage type, with icon
+			const auto padding = 5; // TODO amount of padding?
 			const std::string type_icon = "icons/profiles/" + attack.type() + ".png";
-			attack_ss << "<img>src='" << type_icon << "'</img>";
-			row.emplace_back(attack_ss.str(), image_width(type_icon));
-			attack_ss.str(clear_stringstream);
-
-			// Damage type
-			push_tab_pair(row, lang_type);
+			push_tab_pair(row, lang_type, type_icon, padding);
 
 			// damage x strikes
 			attack_ss << attack.damage() << font::weapon_numbers_sep << attack.num_attacks()
@@ -594,18 +588,13 @@ std::string unit_topic_generator::operator()() const {
 			push_tab_pair(row, attack_ss.str());
 			attack_ss.str(clear_stringstream);
 
-			// Range icon
+			// Range, with icon
 			const std::string range_icon = "icons/profiles/" + attack.range() + "_attack.png";
-			attack_ss << "<img>src='" << range_icon << "'</img>";
-			row.emplace_back(attack_ss.str(), image_width(range_icon));
-			attack_ss.str(clear_stringstream);
-
-			// Range
 			if (attack.min_range() > 1 || attack.max_range() > 1) {
 				attack_ss << attack.min_range() << "-" << attack.max_range() << ' ';
 			}
 			attack_ss << string_table["range_" + attack.range()];
-			push_tab_pair(row, attack_ss.str());
+			push_tab_pair(row, attack_ss.str(), range_icon, padding);
 			attack_ss.str(clear_stringstream);
 
 			// Show this attack's special, if it has any. Cross
