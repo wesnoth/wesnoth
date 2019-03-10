@@ -1477,7 +1477,7 @@ unsigned image_width(const std::string &filename)
 	return 0;
 }
 
-void push_tab_pair(std::vector<std::pair<std::string, unsigned int>> &v, const std::string &s)
+void push_tab_pair(std::vector<help::item> &v, const std::string &s)
 {
 	v.emplace_back(s, font::line_width(s, normal_font_size));
 }
