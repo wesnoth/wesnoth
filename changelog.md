@@ -20,6 +20,7 @@
    * Northern Rebirth:
      * Eryssa now must survive if she joins the player
      * Father Morvin and Sister Thera will now respawn at Tallin's location if they die to prevent illogical gameplay
+     * Gold in S10-13 is adjusted if Krash is dead
      * S4: Have Hamel describe Ghouls if Camerin is dead
      * S5: Add gates to map instead of images and overlays
      * S8: add text and updated objectives when rescuing Eryssa
