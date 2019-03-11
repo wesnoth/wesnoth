@@ -13,6 +13,7 @@
 */
 
 #include "game_data.hpp"
+#include "gettext.hpp"
 #include "log.hpp"
 #include "persist_context.hpp"
 #include "persist_manager.hpp"
