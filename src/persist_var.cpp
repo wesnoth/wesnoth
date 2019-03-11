@@ -51,7 +51,7 @@ struct persist_choice: mp_sync::user_choice {
 
 	virtual std::string description() const
 	{
-		return "a global variable";
+		return _("waiting for^a global variable");
 	}
 	virtual bool is_visible() const { return false; }
 };

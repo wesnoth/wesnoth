@@ -35,7 +35,7 @@ struct user_choice
 	///whether the choice is visible for the user like an advancement choice
 	///a non-visible choice is for example get_global_variable
 	virtual bool is_visible() const { return true; }
-	virtual std::string description() const { return "input"; }
+	virtual std::string description() const { return _("waiting for^input"); }
 };
 
 /**
