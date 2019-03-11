@@ -51,6 +51,9 @@ struct persist_choice: mp_sync::user_choice {
 
 	virtual std::string description() const
 	{
+		// TRANSLATORS:  In networked games, this text is shown for other
+		// clients, while they wait to receive the content of a global variable
+		// from another player. This text will be embedded into a sentence.
 		return _("waiting for^a global variable");
 	}
 	virtual bool is_visible() const { return false; }

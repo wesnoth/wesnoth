@@ -323,6 +323,9 @@ void user_choice_manager::update_local_choice()
 		}
 	}
 
+	// TRANSLATORS: In networked games, this text is shown on the map while
+	// waiting for $desc from another player.
+	// Don't end the text with a punctuation sign.
 	wait_message_ = VNGETTEXT(
 		"waiting for $desc from side $sides",
 		"waiting for $desc from sides $sides",

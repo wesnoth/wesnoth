@@ -35,6 +35,9 @@ struct user_choice
 	///whether the choice is visible for the user like an advancement choice
 	///a non-visible choice is for example get_global_variable
 	virtual bool is_visible() const { return true; }
+	// TRANSLATORS: In networked games, this text is shown for other clients,
+	// while they wait for an action from another player.
+	// This text will be embedded into a sentence.
 	virtual std::string description() const { return _("waiting for^input"); }
 };
 
