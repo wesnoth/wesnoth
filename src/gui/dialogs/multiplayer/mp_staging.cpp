@@ -93,7 +93,7 @@ void mp_staging::pre_show(window& window)
 		std::map<std::string, string_map> tree_data;
 		string_map tree_item;
 
-		tree_item["label"] = (formatter() << _("Team:") << " " << team.user_team_name).str();
+		tree_item["label"] = (formatter() << _("Team:") << " " << t_string::from_serialized(team.user_team_name)).str();
 		tree_data.emplace("tree_view_node_label", tree_item);
 
 		tree_view_node& team_node = tree.add_node("team_header", tree_data);
