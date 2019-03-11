@@ -219,7 +219,7 @@ namespace
 		}
 		virtual std::string description() const
 		{
-			return _("an advancement choice");
+			return _("waiting for^an advancement choice");
 		}
 	private:
 		const map_location loc_;
