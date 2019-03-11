@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-02-23 21:45 UTC\n"
+"POT-Creation-Date: 2019-03-11 13:09 UTC\n"
 "PO-Revision-Date: 2019-01-23 17:58+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -262,9 +262,6 @@ msgstr ""
 msgid "Wesnothians"
 msgstr "Wesnothians"
 
-#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
-#. [side]: type=Dark Sorcerer, id=Mal-Talar
-#. [side]: type=Lich, id=Mal-Uldhar
 #. [side]: type=Dark Sorcerer, id=Mal-Skraat
 #. [side]: type=Lich, id=Mal-Telnarad
 #. [side]: type=Dark Sorcerer, id=Mal-Marak
@@ -280,7 +277,6 @@ msgstr "Wesnothians"
 #. [side]: type=Lich, id=Mal-Uknalu
 #. [side]: type=Dark Adept, id=Mal-Tar
 #. [side]: type=Dark Sorcerer, id=Mal-Kallat
-#. [side]: type=Bone Knight, id=Garnad
 #. [side]: type=Necromancer, id=Mal-un-Karad
 #. [side]: type=Lich Lord, id=Mal-Ravanal
 #. [side]: type=Lich, id=Lich2
@@ -290,6 +286,10 @@ msgstr "Wesnothians"
 #. [side]: type=Lich, id=Lich6
 #. [side]: type=Lich, id=Lich7
 #. [side]: type=Lich, id=Lich8
+#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
+#. [side]: type=Dark Sorcerer, id=Mal-Talar
+#. [side]: type=Lich, id=Mal-Uldhar
+#. [side]: type=Bone Knight, id=Garnad
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:95
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:123
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:158
@@ -345,7 +345,7 @@ msgstr "Defend the outpost"
 
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:213
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:440
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:445
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:155
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:463
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:158
@@ -371,7 +371,7 @@ msgstr "Death of Gweddry"
 
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:217
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:444
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:449
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:159
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:467
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:162
@@ -488,13 +488,19 @@ msgstr ""
 msgid "Move Gweddry to the trapdoor"
 msgstr "Move Gweddry to the trapdoor"
 
+#. [objective]: condition=win
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:442
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:169
+msgid "Defeat all enemy leaders"
+msgstr "Defeat all enemy leaders"
+
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:480
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:495
 msgid "Hurry! We cannot defeat this evil today! We must escape!"
 msgstr "Hurry! We cannot defeat this evil today! We must escape!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:489
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:504
 msgid "Follow me, men! Through the trapdoor!"
 msgstr "Follow me, men! Through the trapdoor!"
 
@@ -505,9 +511,9 @@ msgstr "The Escape Tunnel"
 
 #. [side]: type=Troll Warrior, id=Darg
 #. [side]: type=Gryphon, id=Kraagak
-#. [side]: type=Ogre, id=Grug
 #. [side]
 #. [side]: type=Troll, id=Kabak
+#. [side]: type=Ogre, id=Grug
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:43
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:83
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:68
@@ -653,10 +659,15 @@ msgstr "We have found you, fleshbag! Prepare to die!"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:452
+#, fuzzy
+#| msgid ""
+#| "They follow us... we must get out of this tunnel. It looks like it is "
+#| "leading east. That is unfortunate, for it will take us beyond the borders "
+#| "of Wesnoth. But it is our only option."
 msgid ""
-"They follow us... we must get out of this tunnel. It looks like it is "
-"leading east. That is unfortunate, for it will take us beyond the borders of "
-"Wesnoth. But it is our only option."
+"They follow us... we must escape through this tunnel. That is unfortunate, "
+"for it will take us into the Estmark hills, beyond the borders of Wesnoth. "
+"But it is our only option."
 msgstr ""
 "They follow us... we must get out of this tunnel. It looks like it is "
 "leading east. That is unfortunate, for it will take us beyond the borders of "
@@ -1656,7 +1667,9 @@ msgstr "Grug"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:104
-msgid "Move Gweddry and Owaec across the river"
+#, fuzzy
+#| msgid "Move Gweddry and Owaec across the river"
+msgid "Move Gweddry, Owaec, and Dacyn across the river"
 msgstr "Move Gweddry and Owaec across the river"
 
 #. [message]: speaker=Gweddry
@@ -1748,12 +1761,12 @@ msgstr ""
 "The undead reinforcements have arrived! We must cross the river immediately!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:294
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:297
 msgid "Hurry up. We must get across before these undead slaughter us!"
 msgstr "Hurry up. We must get across before these undead slaughter us!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:341
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:356
 msgid ""
 "Good! We have crossed. Now let’s see if we can get the ogres to join us. "
 "They have been convinced to work for the Crown in the past; maybe it can be "
@@ -1764,17 +1777,17 @@ msgstr ""
 "done again."
 
 #. [message]: speaker=Grug
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:350
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:365
 msgid "Grug say join you will he."
 msgstr "Grug say join you will he."
 
 #. [unit]: type=Ogre
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:369
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:384
 msgid "Gork"
 msgstr "Gork"
 
 #. [unit]: type=Ogre
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:376
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:391
 msgid "Drog"
 msgstr "Drog"
 
@@ -2029,11 +2042,6 @@ msgstr "Elves"
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:129
 msgid "Prok-Bak"
 msgstr "Prok-Bak"
-
-#. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:169
-msgid "Defeat all enemy leaders"
-msgstr "Defeat all enemy leaders"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:210

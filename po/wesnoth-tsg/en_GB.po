@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-27 09:23 UTC\n"
+"POT-Creation-Date: 2019-03-11 13:10 UTC\n"
 "PO-Revision-Date: 2019-01-27 23:41+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -1558,13 +1558,13 @@ msgstr "Vale of Tears"
 msgid "Mal A’kai"
 msgstr "Mal A’kai"
 
-#. [side]: type=Ancient Lich, id=Mal M'Brin
-#. [side]: type=Lich, id=Mal Tera
 #. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
+#. [side]
+#. [side]: type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Soulless, id=Groth
+#. [side]: type=Lich, id=Mal Tera
 #. [side]: type=Soulless, id=Gruth
 #. [side]: type=Lich, id=Mal M'Brin
-#. [side]
-#. [side]: type=Soulless, id=Groth
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:66
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:96
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:141
@@ -2124,7 +2124,9 @@ msgstr "These were merely servants of a far more powerful master."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:530
-msgid "One less evil in this forest."
+#, fuzzy
+#| msgid "One less evil in this forest."
+msgid "One fewer evil in this forest."
 msgstr "One less evil in this forest."
 
 #. [message]: speaker=second_unit
@@ -3827,8 +3829,12 @@ msgstr ""
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:237
+#, fuzzy
+#| msgid ""
+#| "These forts and ill-equipped for holding back so many undead. I am "
+#| "certain we will be slaughtered if we try to fight them here!"
 msgid ""
-"These forts and ill-equipped for holding back so many undead. I am certain "
+"These forts are ill-equipped for holding back so many undead. I am certain "
 "we will be slaughtered if we try to fight them here!"
 msgstr ""
 "These forts and ill-equipped for holding back so many undead. I am certain "
@@ -3899,12 +3905,19 @@ msgstr "Those are brave words that I would not have expected from you, Afalas."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:269
+#, fuzzy
+#| msgid ""
+#| "All things end one way or another. Alas, I would have liked to see my "
+#| "home in Westin one more time, but I am too tired. Tired of running, and "
+#| "tired of fleeing from these undead, who corrupted and consumed my "
+#| "brothers. You may think us criminals and outlaws, but we are still human "
+#| "and we still know loyalty and gratitude, sir knights."
 msgid ""
 "All things end one way or another. Alas, I would have liked to see my home "
 "in Westin one more time, but I am too tired. Tired of running, and tired of "
 "fleeing from these undead, who corrupted and consumed my brothers. You may "
 "think us criminals and outlaws, but we are still human and we still know "
-"loyalty and gratitude, sir knights."
+"loyalty and gratitude."
 msgstr ""
 "All things end one way or another. Alas, I would have liked to see my home "
 "in Westin one more time, but I am too tired. Tired of running, and tired of "

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-27 09:23 UTC\n"
+"POT-Creation-Date: 2019-03-11 13:09 UTC\n"
 "PO-Revision-Date: 2019-02-07 14:39+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -208,8 +208,8 @@ msgstr ""
 msgid "Undead Forces"
 msgstr "亡灵军团"
 
-#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #. [side]: type=Lich, id=Mal-Kevek
+#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:126
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -356,7 +356,9 @@ msgstr "嘿，我成功了！"
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:626
-msgid "Good work Kai, if I may say so."
+#, fuzzy
+#| msgid "Good work Kai, if I may say so."
+msgid "Good work, Kai, if I may say so."
 msgstr "好样的，凯王，我忍不住要夸您一下。"
 
 #. [scenario]: id=02_Flight
@@ -626,8 +628,8 @@ msgstr "等一下！你觉得会不会，它的主人一死，它就会渴求新
 msgid "If it does not attack, do not kill it. Let us see if it follows us."
 msgstr "如果它不攻击，那就不要杀它。让我们看看它是不是会跟着我们。"
 
-#. [message]: speaker=unit
 #. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:508
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:635
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:748
@@ -888,41 +890,48 @@ msgstr "大家小心！"
 msgid "Someone go find out what is exciting the bat."
 msgstr "谁去看看蝙蝠怎么这么激动。"
 
+#. [message]: speaker=Kai Krellis
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:277
+msgid ""
+"I wonder why such a strangely colored wolf emerged from the forest over "
+"there."
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:287
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:306
 msgid "There is something sticking out of the mud here. Ah! I got it."
 msgstr "这边土里好像有什么东西戳出来了。啊！我拿到了。"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:294
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:313
 msgid ""
 "I know what that is. It’s a storm trident. It is supposed to let you control "
 "the lightning."
 msgstr "我知道这是什么。这是风暴三叉戟。它应该能让你操控闪电。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:299
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:318
 msgid "The trident is 14×2, magical, ranged, with <i>fire</i> damage."
 msgstr "此三叉戟的输出是14×2，魔法，远程，同时具有<b>火焰</b>伤害。"
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:306
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:325
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:927
 msgid "That sounds great! I’ll take it."
 msgstr "听起来很不错！我来用吧。"
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:315
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:334
 msgid "That sounds frightening. Let someone else have it."
 msgstr "听起来很可怕。给别人用吧。"
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:353
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:372
 msgid "Let me have that trident. I want to control lightning!"
 msgstr "让我来用那把三叉戟吧。我想操控闪电！"
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:362
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:381
 msgid "I’ll just leave that trident where it is."
 msgstr "我还是把那把三叉戟放回原处吧。"
 

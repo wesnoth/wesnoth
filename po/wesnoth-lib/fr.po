@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-02-24 00:45+0300\n"
+"POT-Creation-Date: 2019-03-11 16:09+0300\n"
 "PO-Revision-Date: 2019-02-02 18:44+0100\n"
 "Last-Translator: Gérard Bodin <gbodin.qc@gmail.com>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
@@ -4272,7 +4272,7 @@ msgstr "Vestibule"
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:491 data/gui/window/mp_staging.cfg:614
 #: data/gui/window/mp_staging.cfg:806
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:481
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:483
 msgid "Waiting for players to join..."
 msgstr "En attente de joueurs..."
 
@@ -5474,6 +5474,66 @@ msgstr "$prefix, $next"
 msgid "disjunct end^$prefix, or $last"
 msgstr "$prefix ou $last"
 
+#: src/formula/string_utils.cpp:285 src/formula/string_utils.cpp:314
+msgid "timespan^expired"
+msgstr ""
+
+#: src/formula/string_utils.cpp:291
+msgid "timespan^$num year"
+msgstr ""
+
+#: src/formula/string_utils.cpp:291
+msgid "timespan^$num years"
+msgstr ""
+
+#: src/formula/string_utils.cpp:292
+msgid "timespan^$num month"
+msgstr ""
+
+#: src/formula/string_utils.cpp:292
+msgid "timespan^$num months"
+msgstr ""
+
+#: src/formula/string_utils.cpp:293
+msgid "timespan^$num week"
+msgstr ""
+
+#: src/formula/string_utils.cpp:293
+msgid "timespan^$num weeks"
+msgstr ""
+
+#: src/formula/string_utils.cpp:294
+msgid "timespan^$num day"
+msgstr ""
+
+#: src/formula/string_utils.cpp:294
+msgid "timespan^$num days"
+msgstr ""
+
+#: src/formula/string_utils.cpp:295
+msgid "timespan^$num hour"
+msgstr ""
+
+#: src/formula/string_utils.cpp:295
+msgid "timespan^$num hours"
+msgstr ""
+
+#: src/formula/string_utils.cpp:296
+msgid "timespan^$num minute"
+msgstr ""
+
+#: src/formula/string_utils.cpp:296
+msgid "timespan^$num minutes"
+msgstr ""
+
+#: src/formula/string_utils.cpp:297
+msgid "timespan^$num second"
+msgstr ""
+
+#: src/formula/string_utils.cpp:297
+msgid "timespan^$num seconds"
+msgstr ""
+
 #: src/gui/core/canvas.cpp:612
 msgid "Line doesn't fit on canvas."
 msgstr "La ligne ne tient pas dans le cadre."
@@ -6358,16 +6418,16 @@ msgid "empty"
 msgstr "vide"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:248
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:106
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:126
 msgid "this game"
 msgstr "cette partie"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:360
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:165
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:96
 msgid "Team:"
 msgstr "Équipe :"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:482
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:484
 msgid "Waiting for players to choose factions..."
 msgstr "En attente du choix de faction des joueurs..."
 

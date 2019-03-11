@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-trow\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-02-23 21:45 UTC\n"
+"POT-Creation-Date: 2019-03-11 13:10 UTC\n"
 "PO-Revision-Date: 2018-08-02 13:58+0100\n"
 "Last-Translator: Krutki Tamás <krtamas-wesnoth@0x64.org>\n"
 "Language-Team: Hungarian <>\n"
@@ -233,8 +233,8 @@ msgid "For this is the story of Haldric the First and the Rise of Wesnoth..."
 msgstr "Mert ez Első Haldricnak és Wesnoth felemelkedésének története..."
 
 #. [side]: type=Noble Commander, id=Prince Haldric
-#. [side]: type=Noble Youth, type=Noble Fighter, id=Prince Haldric
 #. [side]: id=Prince Haldric, type=Noble Commander
+#. [side]: type=Noble Youth, type=Noble Fighter, id=Prince Haldric
 #. [side]: type=Noble Fighter, id=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:77
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:27
@@ -335,8 +335,12 @@ msgstr ""
 
 #. [message]: speaker=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:153
+#, fuzzy
+#| msgid ""
+#| "It looks like a Wesfolk rabble have seized the Northern Keep! Prepare for "
+#| "battle, Haldric!"
 msgid ""
-"It looks like a Wesfolk rabble have seized the Northern Keep! Prepare for "
+"It looks like some Wesfolk rabble have seized the Northern Keep! Prepare for "
 "battle, Haldric!"
 msgstr ""
 "A wesfolk csőcselék elfoglalta az északi várat! Készülj a harcra Haldric!"
@@ -487,7 +491,10 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:254
-msgid "My forces are defeated, under your customs of surrender I will go now."
+#, fuzzy
+#| msgid ""
+#| "My forces are defeated, under your customs of surrender I will go now."
+msgid "My forces are defeated. Under your customs of surrender, I will go now."
 msgstr ""
 "A csapataim legyőzettek, távozom az általad megszabott fegyverletételi "
 "feltételek mellett."
@@ -549,13 +556,9 @@ msgstr "Tan-Rarbag"
 #. [side]: type=Draug, id=General Heravan
 #. [side]: type=Orcish Warlord, id=Tan-Halg
 #. [side]: type=Orcish Warlord, id=Tan-Rinak
-#. [side]: type=Orcish Warlord, id=Tan-Schmog
-#. [side]: type=Orcish Warlord, id=Tan-NauVong
 #. [side]: type=Orcish Warlord, id=Tan-Erirt
 #. [side]: type=Orcish Warlord, id=Tan-Gagar
 #. [side]: type=Troll Warrior, id=Thruf
-#. [side]: type=Orcish Warlord, id=Tan-Rarbag
-#. [side]: type=Orcish Warrior, id=Tan-Erang
 #. [side]: type=Orcish Warlord, id=Tan-Gralg
 #. [side]: type=Orcish Warlord, id=Tan-Rugar
 #. [side]: type=Orcish Warlord, id=Tan-Vragar
@@ -566,6 +569,10 @@ msgstr "Tan-Rarbag"
 #. [side]: type=Orcish Warlord, id=Tan-Harak
 #. [side]: type=Orcish Warlord, id=Tan-Hork
 #. [side]: type=Orcish Warlord, id=Tan-Gulo
+#. [side]: type=Orcish Warlord, id=Tan-Rarbag
+#. [side]: type=Orcish Warrior, id=Tan-Erang
+#. [side]: type=Orcish Warlord, id=Tan-Schmog
+#. [side]: type=Orcish Warlord, id=Tan-NauVong
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:76
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:99
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:41
@@ -713,7 +720,9 @@ msgstr "Úgy gondolom hasznosak lennétek. Csatlakozhattok."
 
 #. [message]: speaker=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:298
-msgid "Let there be peace between us, our survival depends on it."
+#, fuzzy
+#| msgid "Let there be peace between us, our survival depends on it."
+msgid "Let there be peace between us. Our survival depends on it."
 msgstr "Legyen köztünk béke, a túlélésünk múlik rajta."
 
 #. [message]: speaker=Prince Haldric
@@ -915,7 +924,9 @@ msgstr ""
 
 #. [message]: speaker=Tan-Schmog
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:147
-msgid "You won’t get much further boy. Grrrr!"
+#, fuzzy
+#| msgid "You won’t get much further boy. Grrrr!"
+msgid "You won’t get much further, boy. Grrrr!"
 msgstr "Nem fogsz sokáig jutni, fiú. Grrrr!"
 
 #. [message]: speaker=unit
@@ -5292,8 +5303,12 @@ msgstr "Szóval, van itt valaki, aki bármit is tud a trollokról?"
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:272
+#, fuzzy
+#| msgid ""
+#| "I indeed do. They are green, and mean, and will try to crush you like a "
+#| "bug. They heal very quickly."
 msgid ""
-"I indeed do. They are green, and mean, and will try to crush you like a bug. "
+"I indeed do. They are ugly and mean, and will try to crush you like a bug. "
 "They heal very quickly."
 msgstr ""
 "Én igenis tudok. Zöldek, aljasak és meg fognak próbálni eltaposni téged, "
@@ -7082,9 +7097,14 @@ msgstr "Nemes harcos"
 
 #. [unit_type]: id=Noble Fighter, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:18
+#, fuzzy
+#| msgid ""
+#| "Young and brash, Fighters fight with a sword, and are vulnerable to "
+#| "ranged attacks from enemies. However they have the potential to become "
+#| "great Commanders one day."
 msgid ""
 "Young and brash, Fighters fight with a sword, and are vulnerable to ranged "
-"attacks from enemies. However they have the potential to become great "
+"attacks from enemies. However, they have the potential to become great "
 "Commanders one day."
 msgstr ""
 "A fiatal és vakmerő harcos karddal küzd, így sebezhetővé válik a távolsági "

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-27 09:23 UTC\n"
+"POT-Creation-Date: 2019-03-11 13:09 UTC\n"
 "PO-Revision-Date: 2018-07-09 14:40+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
@@ -236,8 +236,8 @@ msgstr ""
 msgid "Undead Forces"
 msgstr "Nemrtvá vojska"
 
-#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #. [side]: type=Lich, id=Mal-Kevek
+#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:126
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -390,7 +390,9 @@ msgstr "Hej, já to zvládnul!"
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:626
-msgid "Good work Kai, if I may say so."
+#, fuzzy
+#| msgid "Good work Kai, if I may say so."
+msgid "Good work, Kai, if I may say so."
 msgstr "Dobrá práce Kai, pokud ti tak můžu říct."
 
 #. [scenario]: id=02_Flight
@@ -677,8 +679,8 @@ msgstr "Počkej! Myslíte, že když jeho pán padl, tak si chce najít nového?
 msgid "If it does not attack, do not kill it. Let us see if it follows us."
 msgstr "Pokud neútočí, nezabíjej ho. Zkusíme, jestli půjde s námi."
 
-#. [message]: speaker=unit
 #. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:508
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:635
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:748
@@ -947,41 +949,48 @@ msgstr "Pozor lidi!"
 msgid "Someone go find out what is exciting the bat."
 msgstr "Ať jde někdo zjistit, co toho netopýra vzrušuje."
 
+#. [message]: speaker=Kai Krellis
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:277
+msgid ""
+"I wonder why such a strangely colored wolf emerged from the forest over "
+"there."
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:287
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:306
 msgid "There is something sticking out of the mud here. Ah! I got it."
 msgstr "Něco tu trčí z bahna. Uh! Mám to."
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:294
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:313
 msgid ""
 "I know what that is. It’s a storm trident. It is supposed to let you control "
 "the lightning."
 msgstr "Vím, co to je. Je to trojzubec bouře. Zřejmě umožnuje sesílat blesky."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:299
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:318
 msgid "The trident is 14×2, magical, ranged, with <i>fire</i> damage."
 msgstr "Trojzubec - útok na dálku 14x2, magický, <i>ohnivé</i> poškození."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:306
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:325
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:927
 msgid "That sounds great! I’ll take it."
 msgstr "To zní skvěle! Vezmu si ho."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:315
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:334
 msgid "That sounds frightening. Let someone else have it."
 msgstr "To zní děsivě. Ať si ho vezme někdo jiný."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:353
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:372
 msgid "Let me have that trident. I want to control lightning!"
 msgstr "Dovol mi vzít ten trojzubec. Chci sesílat blesky!"
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:362
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:381
 msgid "I’ll just leave that trident where it is."
 msgstr "Prostě nechám ten trojzubec tam, kde je."
 

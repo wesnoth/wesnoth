@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-27 09:23 UTC\n"
+"POT-Creation-Date: 2019-03-11 13:10 UTC\n"
 "PO-Revision-Date: 2019-02-18 19:25+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -1465,13 +1465,13 @@ msgstr "泪滴山谷"
 msgid "Mal A’kai"
 msgstr "玛尔·阿凯"
 
-#. [side]: type=Ancient Lich, id=Mal M'Brin
-#. [side]: type=Lich, id=Mal Tera
 #. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
+#. [side]
+#. [side]: type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Soulless, id=Groth
+#. [side]: type=Lich, id=Mal Tera
 #. [side]: type=Soulless, id=Gruth
 #. [side]: type=Lich, id=Mal M'Brin
-#. [side]
-#. [side]: type=Soulless, id=Groth
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:66
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:96
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:141
@@ -1991,7 +1991,9 @@ msgstr "这些仅仅是一名远为强大的主君的仆从而已。"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:530
-msgid "One less evil in this forest."
+#, fuzzy
+#| msgid "One less evil in this forest."
+msgid "One fewer evil in this forest."
 msgstr "在这片森林里少了一个邪恶之存在。"
 
 #. [message]: speaker=second_unit
@@ -3551,8 +3553,12 @@ msgstr "我们终于回到了克拉斯，但快看！亡灵几乎要追上我们
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:237
+#, fuzzy
+#| msgid ""
+#| "These forts and ill-equipped for holding back so many undead. I am "
+#| "certain we will be slaughtered if we try to fight them here!"
 msgid ""
-"These forts and ill-equipped for holding back so many undead. I am certain "
+"These forts are ill-equipped for holding back so many undead. I am certain "
 "we will be slaughtered if we try to fight them here!"
 msgstr ""
 "这些要塞装备不足，不能抵挡这么多亡灵。我确信，要是我们试图在这里与它们作战, "
@@ -3618,12 +3624,19 @@ msgstr "这样勇敢的话语，我可没想到能从你口里说出来，阿法
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:269
+#, fuzzy
+#| msgid ""
+#| "All things end one way or another. Alas, I would have liked to see my "
+#| "home in Westin one more time, but I am too tired. Tired of running, and "
+#| "tired of fleeing from these undead, who corrupted and consumed my "
+#| "brothers. You may think us criminals and outlaws, but we are still human "
+#| "and we still know loyalty and gratitude, sir knights."
 msgid ""
 "All things end one way or another. Alas, I would have liked to see my home "
 "in Westin one more time, but I am too tired. Tired of running, and tired of "
 "fleeing from these undead, who corrupted and consumed my brothers. You may "
 "think us criminals and outlaws, but we are still human and we still know "
-"loyalty and gratitude, sir knights."
+"loyalty and gratitude."
 msgstr ""
 "所有的事情都会以这样或那样的方式结束。唉，我本来想再看一次我在韦斯廷的家，但"
 "我已经厌倦了。厌倦了逃跑，厌倦了在亡灵的追击下逃离。他们腐蚀了我的兄弟们，吞"

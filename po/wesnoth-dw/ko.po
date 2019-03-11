@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-27 09:23 UTC\n"
+"POT-Creation-Date: 2019-03-11 13:09 UTC\n"
 "PO-Revision-Date: 2013-10-25 15:48+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -219,8 +219,8 @@ msgstr ""
 msgid "Undead Forces"
 msgstr "언데드 군세"
 
-#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #. [side]: type=Lich, id=Mal-Kevek
+#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:126
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -373,7 +373,9 @@ msgstr "이봐, 내가 해냈어!"
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:626
-msgid "Good work Kai, if I may say so."
+#, fuzzy
+#| msgid "Good work Kai, if I may say so."
+msgid "Good work, Kai, if I may say so."
 msgstr "잘하셨습니다 Kai."
 
 #. [scenario]: id=02_Flight
@@ -658,8 +660,8 @@ msgid "If it does not attack, do not kill it. Let us see if it follows us."
 msgstr ""
 "녀석이 공격해오지 않는다면 죽일 것은 없지. 녀석이 따라오나 보도록 하자."
 
-#. [message]: speaker=unit
 #. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:508
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:635
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:748
@@ -943,13 +945,20 @@ msgstr "조심해라, 백성들아!"
 msgid "Someone go find out what is exciting the bat."
 msgstr "누가 가서 박쥐를 자극하는게 뭔지 살펴봐라."
 
+#. [message]: speaker=Kai Krellis
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:277
+msgid ""
+"I wonder why such a strangely colored wolf emerged from the forest over "
+"there."
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:287
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:306
 msgid "There is something sticking out of the mud here. Ah! I got it."
 msgstr "이쪽 진흙뻘에서 뭔가 보이는데. 아! 찾았다."
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:294
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:313
 msgid ""
 "I know what that is. It’s a storm trident. It is supposed to let you control "
 "the lightning."
@@ -958,30 +967,30 @@ msgstr ""
 "게 되지요."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:299
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:318
 #, fuzzy
 #| msgid "The trident is 14-2, magical, ranged, with <i>fire</i> damage."
 msgid "The trident is 14×2, magical, ranged, with <i>fire</i> damage."
 msgstr "이 삼지창은 14-2의 마법, 원격이며 <b>불</b> 피해를 줍니다."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:306
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:325
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:927
 msgid "That sounds great! I’ll take it."
 msgstr "괜찮은데! 내가 가지겠어."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:315
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:334
 msgid "That sounds frightening. Let someone else have it."
 msgstr "좀 무서운걸. 다른 사람에게 줘야겠어."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:353
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:372
 msgid "Let me have that trident. I want to control lightning!"
 msgstr "내가 이 삼지창을 가지겠어. 번개를 다뤄보고 싶어!"
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:362
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:381
 msgid "I’ll just leave that trident where it is."
 msgstr "그냥 이 삼지창을 그 자리에 놔둬야겠어."
 

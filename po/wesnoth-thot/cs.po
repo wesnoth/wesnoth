@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-27 09:23 UTC\n"
+"POT-Creation-Date: 2019-03-11 13:10 UTC\n"
 "PO-Revision-Date: 2019-02-15 21:34+0100\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
@@ -187,12 +187,12 @@ msgid "Pelmathidrol"
 msgstr "Pelmathidrol"
 
 #. [side]: type=Orcish Warrior, id=Bashnark
-#. [side]: type=Orcish Warlord, id=Tan-Morgh
-#. [side]: type=Orcish Warlord, id=Tan-Garukh
-#. [side]: type=Orcish Warlord, id=Tan-Wagran
 #. [side]: type=Orcish Warlord, id=Tan-Malgar
 #. [side]: type=Orcish Warlord, id=Tan-Grolak
 #. [side]: type=Orcish Warlord, id=Tan-Uthkar
+#. [side]: type=Orcish Warlord, id=Tan-Morgh
+#. [side]: type=Orcish Warlord, id=Tan-Garukh
+#. [side]: type=Orcish Warlord, id=Tan-Wagran
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:71
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:54
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:92
@@ -1160,9 +1160,15 @@ msgstr ""
 
 #. [message]: speaker=Master Perrin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:198
+#, fuzzy
+#| msgid ""
+#| "We’re grateful for your assistance. And I’d like to send a couple of our "
+#| "senior apprentices with you to the east. It has come time for them to be "
+#| "journeymen... and I sense something being born to the east that I do not "
+#| "like the feel of."
 msgid ""
-"We’re grateful for your assistance. And I’d like to send a couple of our "
-"senior apprentices with you to the east. It has come time for them to be "
+"We’re grateful for your assistance. Moreover, I’d like to send a couple of "
+"our senior apprentices with you to the east. It has come time for them to be "
 "journeymen... and I sense something being born to the east that I do not "
 "like the feel of."
 msgstr ""
@@ -1172,9 +1178,15 @@ msgstr ""
 
 #. [message]: speaker=Master Perrin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:203
+#, fuzzy
+#| msgid ""
+#| "We’re grateful for your assistance. And I’d like to send one of our "
+#| "senior apprentices with you to the east. It has come time for him to be a "
+#| "journeyman... and I sense something being born to the east that I do not "
+#| "like the feel of."
 msgid ""
-"We’re grateful for your assistance. And I’d like to send one of our senior "
-"apprentices with you to the east. It has come time for him to be a "
+"We’re grateful for your assistance. Moreover, I’d like to send one of our "
+"senior apprentices with you to the east. It has come time for him to be a "
 "journeyman... and I sense something being born to the east that I do not "
 "like the feel of."
 msgstr ""
@@ -1275,11 +1287,11 @@ msgid "Fear"
 msgstr "Strach"
 
 # Název scénáře
-#. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
 #. [side]
 #. [side]: type=Dwarvish Masked Lord, id=Dufon
 #. [side]: type=Dwarvish Masked Lord, id=Aragoth
 #. [side]: type=Dwarvish Masked Lord, id=Dranath
+#. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:51
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:58
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:102
@@ -1293,12 +1305,12 @@ msgstr "Maskovaní trpaslíci"
 #. [unit]: type=Dwarvish Masked Steelclad, id=Magog
 #. [unit]: type=Dwarvish Ulfserker, id=Hekyll
 #. [unit]: type=Dwarvish Ulfserker, id=Jekyll
-#. [unit]: type=Dwarvish Masked Steelclad
-#. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
 #. [unit]: type={TYPE}
 #. [side]: type=Dwarvish Masked Lord, id=Dufon
 #. [side]: type=Dwarvish Masked Lord, id=Aragoth
 #. [side]: type=Dwarvish Masked Lord, id=Dranath
+#. [unit]: type=Dwarvish Masked Steelclad
+#. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
 #. [event]
 #. This is shown in the sidebar, it should be short.
 #. You could call them only Masked, to keep the term short.
@@ -1517,8 +1529,12 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:372
+#, fuzzy
+#| msgid ""
+#| "They were seeking captives. To what purpose, I cannot say. But I doubt it "
+#| "was any good one."
 msgid ""
-"They were seeking captives. To what purpose, I cannot say. But I doubt it "
+"They were seeking captives. To what purpose, I cannot say, but I doubt it "
 "was any good one."
 msgstr ""
 "Chytali zajatce. Proč, to nevím, ale pochybuji, že to bylo k něčemu dobrému."
@@ -1714,9 +1730,13 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:330
+#, fuzzy
+#| msgid ""
+#| "A runemaster? There had been none such since Thursagan’s day. And for one "
+#| "to lead a holding was unheard-of; they tended towards the solitary life."
 msgid ""
-"A runemaster? There had been none such since Thursagan’s day. And for one to "
-"lead a holding was unheard-of; they tended towards the solitary life."
+"A runemaster? There have been none such since Thursagan’s day. And for one "
+"to lead a holding was unheard-of; they tended towards the solitary life."
 msgstr ""
 "Runový mistr? Od Thursaganových časů nikdo takový nebyl. A aby byl vůdcem, "
 "to je neslýchané. Vždy dávali přednost osamělému životu."
@@ -1763,9 +1783,14 @@ msgstr ""
 
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:355
+#, fuzzy
+#| msgid ""
+#| "That’s for lords and loremasters to worry about, not the likes of me. I "
+#| "must see to my troop’s care. Food will be brought to you; rest well, we "
+#| "will speak again."
 msgid ""
 "That’s for lords and loremasters to worry about, not the likes of me. I must "
-"see to my troop’s care. Food will be brought to you; rest well, we will "
+"see to my troop’s care. Food will be brought to you; rest well. We will "
 "speak again."
 msgstr ""
 "To je starost vůdců a obřadníků, ne moje. Musím se postarat o mé vojáky. "

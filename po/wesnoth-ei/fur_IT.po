@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.0-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-02-23 21:45 UTC\n"
+"POT-Creation-Date: 2019-03-11 13:09 UTC\n"
 "PO-Revision-Date: 2008-04-20 12:41+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -219,9 +219,6 @@ msgstr ""
 msgid "Wesnothians"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
-#. [side]: type=Dark Sorcerer, id=Mal-Talar
-#. [side]: type=Lich, id=Mal-Uldhar
 #. [side]: type=Dark Sorcerer, id=Mal-Skraat
 #. [side]: type=Lich, id=Mal-Telnarad
 #. [side]: type=Dark Sorcerer, id=Mal-Marak
@@ -237,7 +234,6 @@ msgstr ""
 #. [side]: type=Lich, id=Mal-Uknalu
 #. [side]: type=Dark Adept, id=Mal-Tar
 #. [side]: type=Dark Sorcerer, id=Mal-Kallat
-#. [side]: type=Bone Knight, id=Garnad
 #. [side]: type=Necromancer, id=Mal-un-Karad
 #. [side]: type=Lich Lord, id=Mal-Ravanal
 #. [side]: type=Lich, id=Lich2
@@ -247,6 +243,10 @@ msgstr ""
 #. [side]: type=Lich, id=Lich6
 #. [side]: type=Lich, id=Lich7
 #. [side]: type=Lich, id=Lich8
+#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
+#. [side]: type=Dark Sorcerer, id=Mal-Talar
+#. [side]: type=Lich, id=Mal-Uldhar
+#. [side]: type=Bone Knight, id=Garnad
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:95
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:123
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:158
@@ -302,7 +302,7 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:213
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:440
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:445
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:155
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:463
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:158
@@ -328,7 +328,7 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:217
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:444
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:449
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:159
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:467
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:162
@@ -436,13 +436,19 @@ msgstr ""
 msgid "Move Gweddry to the trapdoor"
 msgstr ""
 
+#. [objective]: condition=win
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:442
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:169
+msgid "Defeat all enemy leaders"
+msgstr ""
+
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:480
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:495
 msgid "Hurry! We cannot defeat this evil today! We must escape!"
 msgstr ""
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:489
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:504
 msgid "Follow me, men! Through the trapdoor!"
 msgstr ""
 
@@ -453,9 +459,9 @@ msgstr ""
 
 #. [side]: type=Troll Warrior, id=Darg
 #. [side]: type=Gryphon, id=Kraagak
-#. [side]: type=Ogre, id=Grug
 #. [side]
 #. [side]: type=Troll, id=Kabak
+#. [side]: type=Ogre, id=Grug
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:43
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:83
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:68
@@ -585,9 +591,9 @@ msgstr ""
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:452
 msgid ""
-"They follow us... we must get out of this tunnel. It looks like it is "
-"leading east. That is unfortunate, for it will take us beyond the borders of "
-"Wesnoth. But it is our only option."
+"They follow us... we must escape through this tunnel. That is unfortunate, "
+"for it will take us into the Estmark hills, beyond the borders of Wesnoth. "
+"But it is our only option."
 msgstr ""
 
 #. [message]: speaker=Gweddry
@@ -1454,7 +1460,7 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:104
-msgid "Move Gweddry and Owaec across the river"
+msgid "Move Gweddry, Owaec, and Dacyn across the river"
 msgstr ""
 
 #. [message]: speaker=Gweddry
@@ -1532,12 +1538,12 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:294
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:297
 msgid "Hurry up. We must get across before these undead slaughter us!"
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:341
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:356
 msgid ""
 "Good! We have crossed. Now let’s see if we can get the ogres to join us. "
 "They have been convinced to work for the Crown in the past; maybe it can be "
@@ -1545,17 +1551,17 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Grug
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:350
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:365
 msgid "Grug say join you will he."
 msgstr ""
 
 #. [unit]: type=Ogre
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:369
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:384
 msgid "Gork"
 msgstr ""
 
 #. [unit]: type=Ogre
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:376
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:391
 msgid "Drog"
 msgstr ""
 
@@ -1788,11 +1794,6 @@ msgstr ""
 #. [side]: type=Orcish Warlord, id=Prok-Bak
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:129
 msgid "Prok-Bak"
-msgstr ""
-
-#. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:169
-msgid "Defeat all enemy leaders"
 msgstr ""
 
 #. [message]: speaker=Dacyn

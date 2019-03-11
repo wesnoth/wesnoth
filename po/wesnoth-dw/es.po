@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-27 09:23 UTC\n"
+"POT-Creation-Date: 2019-03-11 13:09 UTC\n"
 "PO-Revision-Date: 2018-07-10 13:49+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -223,8 +223,8 @@ msgstr ""
 msgid "Undead Forces"
 msgstr "Fuerzas no muertas"
 
-#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #. [side]: type=Lich, id=Mal-Kevek
+#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:126
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -376,7 +376,9 @@ msgstr "¡Hey, lo conseguí!"
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:626
-msgid "Good work Kai, if I may say so."
+#, fuzzy
+#| msgid "Good work Kai, if I may say so."
+msgid "Good work, Kai, if I may say so."
 msgstr "Buen trabajo kai, si se me permite decirlo."
 
 #. [scenario]: id=02_Flight
@@ -666,8 +668,8 @@ msgstr "¡Espera un momento! ¿Crees que, sin su amo, podría desear uno nuevo?"
 msgid "If it does not attack, do not kill it. Let us see if it follows us."
 msgstr "Si no ataca, no lo matéis. Veamos si nos sigue."
 
-#. [message]: speaker=unit
 #. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:508
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:635
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:748
@@ -940,13 +942,20 @@ msgstr "¡Tened cuidado gente!"
 msgid "Someone go find out what is exciting the bat."
 msgstr "Que alguien vaya a buscar lo que está excitando al murciélago."
 
+#. [message]: speaker=Kai Krellis
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:277
+msgid ""
+"I wonder why such a strangely colored wolf emerged from the forest over "
+"there."
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:287
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:306
 msgid "There is something sticking out of the mud here. Ah! I got it."
 msgstr "Hay algo que sobresale del lodo aquí. ¡Ah! Ya lo tengo."
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:294
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:313
 msgid ""
 "I know what that is. It’s a storm trident. It is supposed to let you control "
 "the lightning."
@@ -955,28 +964,28 @@ msgstr ""
 "controlar el rayo."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:299
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:318
 msgid "The trident is 14×2, magical, ranged, with <i>fire</i> damage."
 msgstr "El tridente es mágico, a distancia y con 14x2 de daño de <i>fuego</i>."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:306
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:325
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:927
 msgid "That sounds great! I’ll take it."
 msgstr "¡Eso suena muy bien! Lo cogeré."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:315
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:334
 msgid "That sounds frightening. Let someone else have it."
 msgstr "Eso suena aterrador. Dejemos que otro lo tenga."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:353
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:372
 msgid "Let me have that trident. I want to control lightning!"
 msgstr "Déjame tener el tridente ¡Quiero controlar el relámpago!"
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:362
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:381
 msgid "I’ll just leave that trident where it is."
 msgstr "Dejaré el tridente justo donde está."
 

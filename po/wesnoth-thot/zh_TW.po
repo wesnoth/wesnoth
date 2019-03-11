@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.12+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-27 09:23 UTC\n"
+"POT-Creation-Date: 2019-03-11 13:10 UTC\n"
 "PO-Revision-Date: 2018-11-03 18:04+0800\n"
 "Last-Translator: Li, Kwunron <likwueron>\n"
 "Language-Team: Chinese Traditional <steven2880@gmail.com>\n"
@@ -162,12 +162,12 @@ msgid "Pelmathidrol"
 msgstr "保羅瑪西卓"
 
 #. [side]: type=Orcish Warrior, id=Bashnark
-#. [side]: type=Orcish Warlord, id=Tan-Morgh
-#. [side]: type=Orcish Warlord, id=Tan-Garukh
-#. [side]: type=Orcish Warlord, id=Tan-Wagran
 #. [side]: type=Orcish Warlord, id=Tan-Malgar
 #. [side]: type=Orcish Warlord, id=Tan-Grolak
 #. [side]: type=Orcish Warlord, id=Tan-Uthkar
+#. [side]: type=Orcish Warlord, id=Tan-Morgh
+#. [side]: type=Orcish Warlord, id=Tan-Garukh
+#. [side]: type=Orcish Warlord, id=Tan-Wagran
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:71
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:54
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:92
@@ -1005,9 +1005,15 @@ msgstr "這群拿斧頭的傢伙別想接近我們的幼龍。攻擊！"
 
 #. [message]: speaker=Master Perrin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:198
+#, fuzzy
+#| msgid ""
+#| "We’re grateful for your assistance. And I’d like to send a couple of our "
+#| "senior apprentices with you to the east. It has come time for them to be "
+#| "journeymen... and I sense something being born to the east that I do not "
+#| "like the feel of."
 msgid ""
-"We’re grateful for your assistance. And I’d like to send a couple of our "
-"senior apprentices with you to the east. It has come time for them to be "
+"We’re grateful for your assistance. Moreover, I’d like to send a couple of "
+"our senior apprentices with you to the east. It has come time for them to be "
 "journeymen... and I sense something being born to the east that I do not "
 "like the feel of."
 msgstr ""
@@ -1016,9 +1022,15 @@ msgstr ""
 
 #. [message]: speaker=Master Perrin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:203
+#, fuzzy
+#| msgid ""
+#| "We’re grateful for your assistance. And I’d like to send one of our "
+#| "senior apprentices with you to the east. It has come time for him to be a "
+#| "journeyman... and I sense something being born to the east that I do not "
+#| "like the feel of."
 msgid ""
-"We’re grateful for your assistance. And I’d like to send one of our senior "
-"apprentices with you to the east. It has come time for him to be a "
+"We’re grateful for your assistance. Moreover, I’d like to send one of our "
+"senior apprentices with you to the east. It has come time for him to be a "
 "journeyman... and I sense something being born to the east that I do not "
 "like the feel of."
 msgstr ""
@@ -1105,11 +1117,11 @@ msgstr "我們對珀藍的逝世感到難過。我們會紀念他的。"
 msgid "Fear"
 msgstr "恐懼"
 
-#. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
 #. [side]
 #. [side]: type=Dwarvish Masked Lord, id=Dufon
 #. [side]: type=Dwarvish Masked Lord, id=Aragoth
 #. [side]: type=Dwarvish Masked Lord, id=Dranath
+#. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:51
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:58
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:102
@@ -1122,12 +1134,12 @@ msgstr "蒙面矮人"
 #. [unit]: type=Dwarvish Masked Steelclad, id=Magog
 #. [unit]: type=Dwarvish Ulfserker, id=Hekyll
 #. [unit]: type=Dwarvish Ulfserker, id=Jekyll
-#. [unit]: type=Dwarvish Masked Steelclad
-#. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
 #. [unit]: type={TYPE}
 #. [side]: type=Dwarvish Masked Lord, id=Dufon
 #. [side]: type=Dwarvish Masked Lord, id=Aragoth
 #. [side]: type=Dwarvish Masked Lord, id=Dranath
+#. [unit]: type=Dwarvish Masked Steelclad
+#. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
 #. [event]
 #. This is shown in the sidebar, it should be short.
 #. You could call them only Masked, to keep the term short.
@@ -1317,8 +1329,12 @@ msgstr "鞭子。手銬。不，阿根廷，即使我會懷疑一位智慧大師
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:372
+#, fuzzy
+#| msgid ""
+#| "They were seeking captives. To what purpose, I cannot say. But I doubt it "
+#| "was any good one."
 msgid ""
-"They were seeking captives. To what purpose, I cannot say. But I doubt it "
+"They were seeking captives. To what purpose, I cannot say, but I doubt it "
 "was any good one."
 msgstr "他們正在尋找俘虜。我不知道他們在打什麼主意。但我不認為是好事。"
 
@@ -1502,9 +1518,13 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:330
+#, fuzzy
+#| msgid ""
+#| "A runemaster? There had been none such since Thursagan’s day. And for one "
+#| "to lead a holding was unheard-of; they tended towards the solitary life."
 msgid ""
-"A runemaster? There had been none such since Thursagan’s day. And for one to "
-"lead a holding was unheard-of; they tended towards the solitary life."
+"A runemaster? There have been none such since Thursagan’s day. And for one "
+"to lead a holding was unheard-of; they tended towards the solitary life."
 msgstr ""
 "符石法師？自從失去了瑟薩岡的領導後，就一直給一個從沒聽說過的國王統治；他們大"
 "概過者離群索居的生活吧。"
@@ -1546,9 +1566,14 @@ msgstr "真奇怪。鐵鎚不是武器，而是是用來製作器物的。為什
 
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:355
+#, fuzzy
+#| msgid ""
+#| "That’s for lords and loremasters to worry about, not the likes of me. I "
+#| "must see to my troop’s care. Food will be brought to you; rest well, we "
+#| "will speak again."
 msgid ""
 "That’s for lords and loremasters to worry about, not the likes of me. I must "
-"see to my troop’s care. Food will be brought to you; rest well, we will "
+"see to my troop’s care. Food will be brought to you; rest well. We will "
 "speak again."
 msgstr ""
 "這是我們的王和智慧大師該擔心的。而我則讓我的部隊受到良好的照顧。食物等等會給"

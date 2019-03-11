@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-27 09:23 UTC\n"
+"POT-Creation-Date: 2019-03-11 13:09 UTC\n"
 "PO-Revision-Date: 2019-02-07 16:58+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -263,22 +263,22 @@ msgstr "乌鲁戈-特尔法"
 #. [side]: type=Orcish Warrior, id=Usadar Q'kai
 #. [side]: type=Orcish Warrior, id=Dwaba-Kukai
 #. [side]: type=Orcish Warrior, id=Managa'Gwin
-#. [side]: type=Orcish Warlord, id=Kojun Herolm
-#. [side]: type=Orcish Warrior, id=Mokho Kimer
 #. [side]: type=Orcish Warlord, id=Gaga-Breuk
 #. [side]: type=Orcish Warrior, id=Halgar Du'nar
 #. [side]: type=Orcish Warrior, id=Gorlak
-#. [side]: type=Orcish Slurbow, id=Knafa-Telfar
-#. [side]: type=Orcish Warlord, id=Urug-Tan
-#. [side]: type=Orcish Sovereign, id=Shuuga-Mool
 #. [side]: type=Orcish Warlord, id=Urag-Tifer
-#. [side]: type=Orcish Warlord, id=Kior-Dal
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
 #. [side]: type=Goblin Rouser
 #. [side]: type=Orcish Warlord
 #. [side]: type=Troll Warrior
+#. [side]: type=Orcish Warlord, id=Kojun Herolm
+#. [side]: type=Orcish Warrior, id=Mokho Kimer
+#. [side]: type=Orcish Slurbow, id=Knafa-Telfar
+#. [side]: type=Orcish Warlord, id=Urug-Tan
+#. [side]: type=Orcish Sovereign, id=Shuuga-Mool
+#. [side]: type=Orcish Warlord, id=Kior-Dal
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:181
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:194
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:215
@@ -1477,14 +1477,14 @@ msgstr "玛夫·玛拉尔"
 #. [side]: type=Dark Sorcerer, id=Muff Malal
 #. [side]: id=Haf-Mal, type=Lich
 #. [side]: id=Jarmal-Gorg, type=Lich
+#. [side]: type=Lich, id=Galga
+#. [side]: type=Lich, id=Na-alga
+#. [side]: type=Lich, id=Selda-Mana
 #. [side]: type=Death Knight, id=Clarustus
 #. [side]: type=Death Knight, id=Merlunius
 #. [side]: type=Lich, id=Aimucasur
 #. [side]: type=Death Knight, id=Secadius
 #. [side]: type=Death Knight, id=Dafeis
-#. [side]: type=Lich, id=Galga
-#. [side]: type=Lich, id=Na-alga
-#. [side]: type=Lich, id=Selda-Mana
 #. [side]: type=Ancient Lich, id=Muff Argulak
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:79
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:131
@@ -1812,12 +1812,12 @@ msgid "Agadla"
 msgstr "阿伽德拉"
 
 #. [side]: type=Troll Warrior, id=Haaf-Garga
-#. [side]: type=Orcish Warlord, id=Urug-Telfar
-#. [side]: type=Death Knight, id=Unan-Ka'tall
 #. [side]: id=Brugg, type=Troll Warrior
 #. [side]: id=Lionel, type=Death Knight
 #. [side]: type=Orcish Warlord, id=Agadla
 #. [side]: type=Dark Sorcerer, id=Muff Jaanal
+#. [side]: type=Orcish Warlord, id=Urug-Telfar
+#. [side]: type=Death Knight, id=Unan-Ka'tall
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:74
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:116
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:91
@@ -2241,8 +2241,12 @@ msgstr "科纳德，德法多和卡雷兹骑马在韦诺的荒原上向东疾行
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:53
+#, fuzzy
+#| msgid ""
+#| "The queen’s agents were still scouring the coastal regions, for news of "
+#| "Elensefar’s rescue had not yet reached her."
 msgid ""
-"The queen’s agents were still scouring the coastal regions, for news of "
+"The Queen’s agents were still scouring the coastal regions, for news of "
 "Elensefar’s rescue had not yet reached her."
 msgstr ""
 "女王的代理人们仍然在洗劫海岸区域，因为埃仁撒伐光复的消息还没有传到她的耳朵"
@@ -2382,14 +2386,13 @@ msgstr "艾尔桥"
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:87
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:68
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:751
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:754
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:93
 msgid "Li’sar"
 msgstr "莉莎"
 
 #. [side]: type=General, id=Robryn
 #. [side]: type=Princess, id=Li'sar
-#. [side]: type=General, id=Honber
 #. [side]: type=Orcish Warlord, id=Haliel-Maga
 #. [side]: type=General, id=Heford
 #. [side]: type=Cavalier, id=Sir Kalm
@@ -2397,6 +2400,7 @@ msgstr "莉莎"
 #. [side]: type=General, id=Josephus
 #. [side]: type=Orcish Warlord, id=Dwar-Ni
 #. [side]: type=General, id=Malatus
+#. [side]: type=General, id=Honber
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:161
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:99
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:84
@@ -2631,9 +2635,15 @@ msgstr "多谢你回来帮助我们，莫密尔姆。"
 
 #. [message]: speaker=Moremirmu
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:390
+#, fuzzy
+#| msgid ""
+#| "It is both my duty and pleasure, my lord! We were dining with some royal "
+#| "guards of the princess, taking a rest from our pilgrimage, when they "
+#| "spoke of how you were tricked into traveling these dangerous lands. We "
+#| "could do nothing but help you!"
 msgid ""
 "It is both my duty and pleasure, my lord! We were dining with some royal "
-"guards of the princess, taking a rest from our pilgrimage, when they spoke "
+"guards of the Princess, taking a rest from our pilgrimage, when they spoke "
 "of how you were tricked into traveling these dangerous lands. We could do "
 "nothing but help you!"
 msgstr ""
@@ -3134,7 +3144,7 @@ msgstr "巨型水蛇"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:442
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:706
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:709
 msgid "Cuttle Fish"
 msgstr "乌贼怪"
 
@@ -3532,22 +3542,24 @@ msgid "Who... who’s here?"
 msgstr "谁……谁在这儿？"
 
 #. [message]: speaker=Uncle Somf
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:422
+#. The addressed person is the speaker's niece or nephew.
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:423
 msgid "$outlaw_name|! How have you been? I haven’t seen you in years."
 msgstr "$outlaw_name|！哈哈，你最近过得怎么样？我有好多年没见过你了。"
 
 #. [message]: speaker=Uncle Somf
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:429
+#. The mentioned person, $outlaw_name, is the speaker's niece or nephew.
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:431
 msgid "Haw! Any friend of $outlaw_name is a friend of mine too."
 msgstr "哈哇！$outlaw_name的朋友就是我的朋友。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:436
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:438
 msgid "We need to make it into the caves of the dwarves."
 msgstr "我们需要想办法到矮人的洞穴里去。"
 
 #. [message]: speaker=Uncle Somf
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:450
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:452
 msgid ""
 "The mine entrances were all collapsed intentionally during the fighting. The "
 "doors, while heavily defended, remain accessible. The orcish hordes that "
@@ -3557,7 +3569,7 @@ msgstr ""
 "突击这些门的兽人大军被击退了，但你们也许可以偷偷地潜进去而不被发现。"
 
 #. [message]: speaker=Uncle Somf
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:456
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:458
 msgid ""
 "The best way is through the mine tunnels. The orcs have never found all the "
 "mine entrances, and many still lead deep underground."
@@ -3566,74 +3578,75 @@ msgstr ""
 "深的地方。"
 
 #. [message]: speaker=Uncle Somf
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:489
+#. The addressed person is the speaker's niece or nephew.
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:492
 msgid "How are we doing, $outlaw_name|?"
 msgstr "情况怎么样，$outlaw_name|？"
 
 #. [message]: speaker=$outlaw_advisor_store.id
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:493
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:496
 msgid "The same as always, Uncle!"
 msgstr "和以前一模一样，叔叔！"
 
 #. [message]: speaker=Uncle Somf
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:497
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:500
 msgid "That bad, huh?"
 msgstr "一样糟糕，哈？"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:528
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:531
 msgid "The doors... they can be moved!"
 msgstr "这些门……它们可以打开！"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:532
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:535
 msgid "Quickly, now, let us slip inside and hope the dwarves do not object..."
 msgstr "快点，现在我们从这里溜进去，但愿矮人们不会反对……"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:536
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:539
 msgid "... and that the orcs do not follow."
 msgstr "......而兽人们也不会跟上来。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:542
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:545
 msgid "The doors are closed and barred from the inside!"
 msgstr "这些门被关上了，还从里面堵住了！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:547
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:550
 msgid "We can’t get in! What should we do now?"
 msgstr "我们没办法进去！现在该怎么办？"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:551
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:554
 msgid ""
 "It is said that the orcs used old mine tunnels to surprise the dwarves. "
 "There appears to be one nearby, to the north-east."
 msgstr "传说兽人用废旧的矿区坑道来奇袭矮人。附近似乎就有这么一条，在东北面。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:555
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:558
 msgid "Then we must make it to that tunnel!"
 msgstr "那么我们必须想办法到达那条坑道！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:579
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:582
 msgid "This old mine seems to be connected to the main tunnels."
 msgstr "这个废矿似乎和主坑道连接在一起。"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:583
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:586
 msgid "I am hesitant to enter. It will be so difficult in the darkness!"
 msgstr "我可不怎么想进去。在黑暗里行进太困难了！"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:588
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:591
 msgid "There is no time for idle chatter or delay of any kind. Onward!"
 msgstr "没时间闲聊，也没时间以任何理由拖延了。前进！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:594
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:597
 msgid ""
 "I have reached the mine entrance, but there is no tunnel here. Rock and "
 "rubble completely block the way."
@@ -3641,23 +3654,23 @@ msgstr ""
 "我已经走到矿区入口了，但是这里根本没有坑道。岩石和残砖碎瓦完全把路挡住了。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:598
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:601
 msgid "I hope we can make it through the main doors, then."
 msgstr "这样的话，但愿我们可以从大门通过。"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:602
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:605
 msgid "It is our only choice now. Hurry!"
 msgstr "现在这是我们唯一的选择了。快！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:629
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:658
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:632
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:661
 msgid "Pray that we live to see sunlight again."
 msgstr "祈祷我们还能再次看到阳光吧。"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:676
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:679
 msgid ""
 "We have defeated the foul orcs guarding this land, but we must continue "
 "without rest. More will surely come!"
@@ -3666,43 +3679,43 @@ msgstr ""
 "会来的！"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:686
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:689
 msgid ""
 "Indeed we must not delay. Let us breach the great doors to the dwarven "
 "kingdom."
 msgstr "我们确实不能耽搁。让我们打破这些大门进入矮人王国吧。"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:692
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:695
 msgid ""
 "Indeed we must not delay. The mines in the northeast are the best way to "
 "enter."
 msgstr "我们确实不能耽搁。东北面的矿区是最佳的入口。"
 
 #. [message]: speaker=Cuttle Fish
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:710
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:713
 msgid "Ruarrrrr!!!"
 msgstr "呜啊啊啊啊啊啊啊！！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:714
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:717
 msgid "A monster was hiding in that lake!"
 msgstr "湖里藏着怪物！"
 
 #. [message]: role=whiner
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:738
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:741
 msgid ""
 "The legend was true! There are always tentacled creatures hiding in the "
 "lakes near the dwarven tunnels."
 msgstr "看来传说是真的！在矮人坑道旁边的湖里总是有长触手的生物。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:748
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:751
 msgid "But Konrad’s party was not alone in entering the caves..."
 msgstr "但是进入洞穴的并不是只有科纳德一行……"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:763
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:766
 msgid ""
 "Whew! We make our way through the dangerous fog of the mountains, and now "
 "there is all this chaos before us! Come on, men! We must make it to the "
@@ -5087,8 +5100,12 @@ msgstr "他当然不知道，小崽子，否则他会选择一条更安全的路
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:339
+#, fuzzy
+#| msgid ""
+#| "Hold your tongue, Kalenz. The princess is our ally and of royal blood. "
+#| "She deserves not your disrespect."
 msgid ""
-"Hold your tongue, Kalenz. The princess is our ally and of royal blood. She "
+"Hold your tongue, Kalenz. The Princess is our ally and of royal blood. She "
 "deserves not your disrespect."
 msgstr ""
 "请注意您的言辞，卡雷兹！公主是我们的盟友，还有着王族血统。她不应受到您的不"
@@ -5501,8 +5518,12 @@ msgstr "艾姆卡苏尔对这片被诅咒之地的统治结束了。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:342
+#, fuzzy
+#| msgid ""
+#| "Aimucasur? So you know of this Lich-Lord? Did you know him? He was a "
+#| "powerful mage?"
 msgid ""
-"Aimucasur? So you know of this Lich-Lord? Did you know him? He was a "
+"Aimucasur? So you know of this Lich-Lord? Did you know him? Was he a "
 "powerful mage?"
 msgstr ""
 "艾姆卡苏尔？所以您听说过这巫妖王？您以前认识他吗？他曾经是一位强大的法师吗？"
@@ -6088,9 +6109,9 @@ msgid "Your encampment will be dismantled after the first turn."
 msgstr "你的营地在第一回合后会被拆除。"
 
 #. [side]: type=Commander, id=Konrad
-#. [side]: type=Elvish Marshal, id=El'rien
 #. [side]: type=Elvish Lord, id=Uradredia
 #. [side]: type=Elvish Lady, id=Parandra
+#. [side]: type=Elvish Marshal, id=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:61
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:225
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:30
@@ -6290,8 +6311,14 @@ msgstr "所以说，科纳德，你是不是认为我们可以简单地从战场
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:521
+#, fuzzy
+#| msgid ""
+#| "Stop for a moment, princess. Look — you can barely see them in the "
+#| "distance there, but the advance scouts have found each other. The Queen’s "
+#| "troops are marching full speed for the orcs’ camp, and vice-versa. These "
+#| "armies are out for blood."
 msgid ""
-"Stop for a moment, princess. Look — you can barely see them in the distance "
+"Stop for a moment, Princess. Look — you can barely see them in the distance "
 "there, but the advance scouts have found each other. The Queen’s troops are "
 "marching full speed for the orcs’ camp, and vice-versa. These armies are out "
 "for blood."
@@ -6309,9 +6336,14 @@ msgstr "但他们可不会因此忽视了我们的存在！我们正一头扑进
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:529
+#, fuzzy
+#| msgid ""
+#| "(hushed) Our soldiers will defend us as we rush across the field. Sorry "
+#| "to be blunt, princess, but you and I are the only ones who need to make "
+#| "it across alive."
 msgid ""
 "(hushed) Our soldiers will defend us as we rush across the field. Sorry to "
-"be blunt, princess, but you and I are the only ones who need to make it "
+"be blunt, Princess, but you and I are the only ones who need to make it "
 "across alive."
 msgstr ""
 "（突然静默）我们冲过战场的时候，士兵们会保护我们的。请原谅我的直率，公主，但"
@@ -6616,7 +6648,9 @@ msgstr "尤拉德雷利亚领主已经召集了林塔尼尔评议会。传闻说
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:296
-msgid "Then we must hurry. Stand fast! We will send reinforcements."
+#, fuzzy
+#| msgid "Then we must hurry. Stand fast! We will send reinforcements."
+msgid "Then we must hurry. Stand fast! We shall send reinforcements."
 msgstr "这么说我们必须赶快了。坚守阵地！我们会派来援军的。"
 
 #. [message]: speaker=Kalenz
@@ -7493,29 +7527,29 @@ msgstr "击败所有敌方首领"
 msgid "Plainsmen"
 msgstr "平原居民"
 
-#. [side]: type=Grand Knight, id=Sir Alric
 #. [then]
+#. [side]: type=Grand Knight, id=Sir Alric
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:121
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:214
 msgid "Sir Alric"
 msgstr "埃里克爵士"
 
-#. [side]: type=Grand Knight, id=Sir Ruga
 #. [then]
+#. [side]: type=Grand Knight, id=Sir Ruga
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:150
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:205
 msgid "Sir Ruga"
 msgstr "鲁加爵士"
 
-#. [side]: type=Grand Knight, id=Sir Daryn
 #. [then]
+#. [side]: type=Grand Knight, id=Sir Daryn
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:179
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:196
 msgid "Sir Daryn"
 msgstr "达林爵士"
 
-#. [side]: type=Grand Knight, id=Bayar
 #. [then]
+#. [side]: type=Grand Knight, id=Bayar
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:208
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:543
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:187
@@ -7704,9 +7738,13 @@ msgstr "究竟谁才是你们的领袖？我们要向谁尽忠？"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:472
+#, fuzzy
+#| msgid ""
+#| "You will serve us. You will protect our flanks while we make way straight "
+#| "for the queen. With you on either flank, we can surely overcome her."
 msgid ""
 "You will serve us. You will protect our flanks while we make way straight "
-"for the queen. With you on either flank, we can surely overcome her."
+"for the Queen. With you on either flank, we can surely overcome her."
 msgstr ""
 "你们将向我们尽忠。你们将保护我们的侧翼，而我们将直取女王。只要你们能够做好防"
 "守，我们就一定能战胜她。"
@@ -8236,9 +8274,14 @@ msgstr "狂怒暴雪"
 #. [unit_type]: id=Fighter
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:54
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:60
+#, fuzzy
+#| msgid ""
+#| "Young and brash, Fighters attack with a sword, and are vulnerable to more "
+#| "seasoned enemies. However they have the potential to become great "
+#| "warriors one day."
 msgid ""
 "Young and brash, Fighters attack with a sword, and are vulnerable to more "
-"seasoned enemies. However they have the potential to become great warriors "
+"seasoned enemies. However, they have the potential to become great warriors "
 "one day."
 msgstr ""
 "战士年轻而又性急，他们使用剑来攻击，很容易受到更有经验的敌人的伤害。尽管如"
@@ -8585,8 +8628,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:12
+#, fuzzy
+#| msgid ""
+#| "The Northern host encamped at Galcadar, by the ford of Abez, and the king "
+#| "led his forces to meet them. Splitting his army in two, he led one half "
+#| "while his son, the crown prince Eldred, led the other."
 msgid ""
-"The Northern host encamped at Galcadar, by the ford of Abez, and the king "
+"The Northern host encamped at Galcadar, by the Ford of Abez, and the king "
 "led his forces to meet them. Splitting his army in two, he led one half "
 "while his son, the crown prince Eldred, led the other."
 msgstr ""

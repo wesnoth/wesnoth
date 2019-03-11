@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-27 09:23 UTC\n"
+"POT-Creation-Date: 2019-03-11 13:09 UTC\n"
 "PO-Revision-Date: 2012-07-12 13:10+0100\n"
 "Last-Translator: nikos\n"
 "Language-Team: none\n"
@@ -224,8 +224,8 @@ msgstr ""
 msgid "Undead Forces"
 msgstr "Απέθαντοι"
 
-#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #. [side]: type=Lich, id=Mal-Kevek
+#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:126
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -380,7 +380,9 @@ msgstr "Τα κατάφερα!"
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:626
-msgid "Good work Kai, if I may say so."
+#, fuzzy
+#| msgid "Good work Kai, if I may say so."
+msgid "Good work, Kai, if I may say so."
 msgstr "Καλή δουλειά, Κάι, αν μου επιτρέπεται."
 
 #. [scenario]: id=02_Flight
@@ -673,8 +675,8 @@ msgstr ""
 msgid "If it does not attack, do not kill it. Let us see if it follows us."
 msgstr ""
 
-#. [message]: speaker=unit
 #. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:508
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:635
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:748
@@ -966,13 +968,20 @@ msgstr "Φυλαχτείτε!"
 msgid "Someone go find out what is exciting the bat."
 msgstr "Κάποιος να πάει να δει τι τρόμαξε την νυχτερίδα."
 
+#. [message]: speaker=Kai Krellis
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:277
+msgid ""
+"I wonder why such a strangely colored wolf emerged from the forest over "
+"there."
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:287
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:306
 msgid "There is something sticking out of the mud here. Ah! I got it."
 msgstr "Κάτι προεξέχει από τη λάσπη. Α! Το έφτασα."
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:294
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:313
 msgid ""
 "I know what that is. It’s a storm trident. It is supposed to let you control "
 "the lightning."
@@ -981,30 +990,30 @@ msgstr ""
 "μπορείς να ελέγξεις τον κεραυνό!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:299
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:318
 #, fuzzy
 #| msgid "The trident is 14-2, magical, ranged, with <i>fire</i> damage."
 msgid "The trident is 14×2, magical, ranged, with <i>fire</i> damage."
 msgstr "Η τρίαινα είναι 14-2, μαγικό, εξ αποστάσεως και με τύπο <i>φωτιά</i>."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:306
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:325
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:927
 msgid "That sounds great! I’ll take it."
 msgstr "Ακούγεται υπέροχο! Θα το κρατήσω!"
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:315
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:334
 msgid "That sounds frightening. Let someone else have it."
 msgstr "Ακούγεται τρομερό. Ας το πάρει κάποιος άλλος."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:353
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:372
 msgid "Let me have that trident. I want to control lightning!"
 msgstr "Αφήστε εμένα να πάρω την τρίαινα. Θέλω να ελέγχω τους κεραυνούς!"
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:362
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:381
 msgid "I’ll just leave that trident where it is."
 msgstr "Καλύτερα να το αφήσω εκεί που το βρήκα..."
 

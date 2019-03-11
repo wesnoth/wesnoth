@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-02-23 21:45 UTC\n"
+"POT-Creation-Date: 2019-03-11 13:09 UTC\n"
 "PO-Revision-Date: 2012-03-10 16:06+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -271,9 +271,6 @@ msgstr ""
 msgid "Wesnothians"
 msgstr "Wesnoth인"
 
-#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
-#. [side]: type=Dark Sorcerer, id=Mal-Talar
-#. [side]: type=Lich, id=Mal-Uldhar
 #. [side]: type=Dark Sorcerer, id=Mal-Skraat
 #. [side]: type=Lich, id=Mal-Telnarad
 #. [side]: type=Dark Sorcerer, id=Mal-Marak
@@ -289,7 +286,6 @@ msgstr "Wesnoth인"
 #. [side]: type=Lich, id=Mal-Uknalu
 #. [side]: type=Dark Adept, id=Mal-Tar
 #. [side]: type=Dark Sorcerer, id=Mal-Kallat
-#. [side]: type=Bone Knight, id=Garnad
 #. [side]: type=Necromancer, id=Mal-un-Karad
 #. [side]: type=Lich Lord, id=Mal-Ravanal
 #. [side]: type=Lich, id=Lich2
@@ -299,6 +295,10 @@ msgstr "Wesnoth인"
 #. [side]: type=Lich, id=Lich6
 #. [side]: type=Lich, id=Lich7
 #. [side]: type=Lich, id=Lich8
+#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
+#. [side]: type=Dark Sorcerer, id=Mal-Talar
+#. [side]: type=Lich, id=Mal-Uldhar
+#. [side]: type=Bone Knight, id=Garnad
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:95
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:123
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:158
@@ -356,7 +356,7 @@ msgstr "전초 기지"
 
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:213
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:440
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:445
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:155
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:463
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:158
@@ -382,7 +382,7 @@ msgstr "Gweddry의 사망"
 
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:217
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:444
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:449
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:159
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:467
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:162
@@ -498,13 +498,19 @@ msgstr "여길 지키려 드는 건 무의미해. 자, 어서 가세, 더는 지
 msgid "Move Gweddry to the trapdoor"
 msgstr "Gweddry를 낙하문으로 이동시킬 것"
 
+#. [objective]: condition=win
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:442
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:169
+msgid "Defeat all enemy leaders"
+msgstr "모든 적 지도자를 격파하라"
+
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:480
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:495
 msgid "Hurry! We cannot defeat this evil today! We must escape!"
 msgstr ""
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:489
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:504
 msgid "Follow me, men! Through the trapdoor!"
 msgstr "나를 따르라, 제군들! "
 
@@ -515,9 +521,9 @@ msgstr "탈출 통로"
 
 #. [side]: type=Troll Warrior, id=Darg
 #. [side]: type=Gryphon, id=Kraagak
-#. [side]: type=Ogre, id=Grug
 #. [side]
 #. [side]: type=Troll, id=Kabak
+#. [side]: type=Ogre, id=Grug
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:43
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:83
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:68
@@ -667,9 +673,9 @@ msgstr "찾았다, 살덩어리! 죽어라!"
 #| "leading east. That is unfortunate, for it will take us further from "
 #| "Weldyn. But it is our only option."
 msgid ""
-"They follow us... we must get out of this tunnel. It looks like it is "
-"leading east. That is unfortunate, for it will take us beyond the borders of "
-"Wesnoth. But it is our only option."
+"They follow us... we must escape through this tunnel. That is unfortunate, "
+"for it will take us into the Estmark hills, beyond the borders of Wesnoth. "
+"But it is our only option."
 msgstr ""
 "놈들이 따라붙었다... 우린 반드시 이 터널에서 나가야 한다. 아무래도 동쪽으로 "
 "향하는 것 같군. 불행히도 Weldyn에서 멀어지게 되겠어. 하지만 이게 유일한 길이"
@@ -1788,7 +1794,7 @@ msgstr "Grug"
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:104
 #, fuzzy
 #| msgid "Get Gweddry and Owaec across the river"
-msgid "Move Gweddry and Owaec across the river"
+msgid "Move Gweddry, Owaec, and Dacyn across the river"
 msgstr "Gweddry와 Owaec을 강 건너로 보낼 것"
 
 #. [message]: speaker=Gweddry
@@ -1889,12 +1895,12 @@ msgid ""
 msgstr "언데드 지원군이 도착했네! 빨리 강을 건너야 해!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:294
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:297
 msgid "Hurry up. We must get across before these undead slaughter us!"
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:341
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:356
 msgid ""
 "Good! We have crossed. Now let’s see if we can get the ogres to join us. "
 "They have been convinced to work for the Crown in the past; maybe it can be "
@@ -1905,17 +1911,17 @@ msgstr ""
 "낼 수 있을 지 모르네."
 
 #. [message]: speaker=Grug
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:350
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:365
 msgid "Grug say join you will he."
 msgstr "Grug는 너희에게 할 함께하는 그가 하고 말해."
 
 #. [unit]: type=Ogre
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:369
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:384
 msgid "Gork"
 msgstr "고크"
 
 #. [unit]: type=Ogre
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:376
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:391
 msgid "Drog"
 msgstr "드로그"
 
@@ -2151,11 +2157,6 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:129
 msgid "Prok-Bak"
 msgstr "Prok-Bak"
-
-#. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:169
-msgid "Defeat all enemy leaders"
-msgstr "모든 적 지도자를 격파하라"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:210

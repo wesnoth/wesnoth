@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-02-23 21:45 UTC\n"
+"POT-Creation-Date: 2019-03-11 13:10 UTC\n"
 "PO-Revision-Date: 2011-11-22 15:47+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -222,8 +222,8 @@ msgstr ""
 "왜냐하면 이것은 Haldric 1세와 Wesnoth의 성립에 관한 이야기이기 때문이다..."
 
 #. [side]: type=Noble Commander, id=Prince Haldric
-#. [side]: type=Noble Youth, type=Noble Fighter, id=Prince Haldric
 #. [side]: id=Prince Haldric, type=Noble Commander
+#. [side]: type=Noble Youth, type=Noble Fighter, id=Prince Haldric
 #. [side]: type=Noble Fighter, id=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:77
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:27
@@ -323,8 +323,12 @@ msgstr ""
 
 #. [message]: speaker=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:153
+#, fuzzy
+#| msgid ""
+#| "It looks like a Wesfolk rabble have seized the Northern Keep! Prepare for "
+#| "battle, Haldric!"
 msgid ""
-"It looks like a Wesfolk rabble have seized the Northern Keep! Prepare for "
+"It looks like some Wesfolk rabble have seized the Northern Keep! Prepare for "
 "battle, Haldric!"
 msgstr ""
 "서부인 폭도들이 북쪽 기지를 점거한 모양이다! 전투 준비를 하거라, Haldric!"
@@ -468,7 +472,10 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:254
-msgid "My forces are defeated, under your customs of surrender I will go now."
+#, fuzzy
+#| msgid ""
+#| "My forces are defeated, under your customs of surrender I will go now."
+msgid "My forces are defeated. Under your customs of surrender, I will go now."
 msgstr "내 군대는 패배했으니, 당신들의 항복 관습에 따라 떠나겠소."
 
 #. [message]: speaker=King Eldaric IV
@@ -527,13 +534,9 @@ msgstr "Tan-Rarbag"
 #. [side]: type=Draug, id=General Heravan
 #. [side]: type=Orcish Warlord, id=Tan-Halg
 #. [side]: type=Orcish Warlord, id=Tan-Rinak
-#. [side]: type=Orcish Warlord, id=Tan-Schmog
-#. [side]: type=Orcish Warlord, id=Tan-NauVong
 #. [side]: type=Orcish Warlord, id=Tan-Erirt
 #. [side]: type=Orcish Warlord, id=Tan-Gagar
 #. [side]: type=Troll Warrior, id=Thruf
-#. [side]: type=Orcish Warlord, id=Tan-Rarbag
-#. [side]: type=Orcish Warrior, id=Tan-Erang
 #. [side]: type=Orcish Warlord, id=Tan-Gralg
 #. [side]: type=Orcish Warlord, id=Tan-Rugar
 #. [side]: type=Orcish Warlord, id=Tan-Vragar
@@ -544,6 +547,10 @@ msgstr "Tan-Rarbag"
 #. [side]: type=Orcish Warlord, id=Tan-Harak
 #. [side]: type=Orcish Warlord, id=Tan-Hork
 #. [side]: type=Orcish Warlord, id=Tan-Gulo
+#. [side]: type=Orcish Warlord, id=Tan-Rarbag
+#. [side]: type=Orcish Warrior, id=Tan-Erang
+#. [side]: type=Orcish Warlord, id=Tan-Schmog
+#. [side]: type=Orcish Warlord, id=Tan-NauVong
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:76
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:99
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:41
@@ -689,7 +696,9 @@ msgstr "너희 능력은 유용할 것 같군. 우리와 함께 가자."
 
 #. [message]: speaker=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:298
-msgid "Let there be peace between us, our survival depends on it."
+#, fuzzy
+#| msgid "Let there be peace between us, our survival depends on it."
+msgid "Let there be peace between us. Our survival depends on it."
 msgstr "서로간에 평화롭게 지내자구. 우리 생존은 거기에 달렸어."
 
 #. [message]: speaker=Prince Haldric
@@ -884,7 +893,9 @@ msgstr "감상은 떨어버리고 칼을 들어요. 우리 앞엔 수없이 많�
 
 #. [message]: speaker=Tan-Schmog
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:147
-msgid "You won’t get much further boy. Grrrr!"
+#, fuzzy
+#| msgid "You won’t get much further boy. Grrrr!"
+msgid "You won’t get much further, boy. Grrrr!"
 msgstr "더 멀리는 못갈거다 꼬마. 크르르르!"
 
 #. [message]: speaker=unit
@@ -5193,8 +5204,12 @@ msgstr "누가 트롤이 뭔지 확실히 아는 사람?"
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:272
+#, fuzzy
+#| msgid ""
+#| "I indeed do. They are green, and mean, and will try to crush you like a "
+#| "bug. They heal very quickly."
 msgid ""
-"I indeed do. They are green, and mean, and will try to crush you like a bug. "
+"I indeed do. They are ugly and mean, and will try to crush you like a bug. "
 "They heal very quickly."
 msgstr ""
 "내가 알지. 놈들은 녹색이고, 비열하고, 너희를 벌레처럼 뭉개버리려 들거야. 놈들"
@@ -6966,9 +6981,14 @@ msgstr "귀족 투사"
 
 #. [unit_type]: id=Noble Fighter, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:18
+#, fuzzy
+#| msgid ""
+#| "Young and brash, Fighters fight with a sword, and are vulnerable to "
+#| "ranged attacks from enemies. However they have the potential to become "
+#| "great Commanders one day."
 msgid ""
 "Young and brash, Fighters fight with a sword, and are vulnerable to ranged "
-"attacks from enemies. However they have the potential to become great "
+"attacks from enemies. However, they have the potential to become great "
 "Commanders one day."
 msgstr ""
 "젊고 자신만만한 전사들은 검을 들고 싸우며, 적들의 원거리 공격에 취약하다. 하"

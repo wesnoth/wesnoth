@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-01-27 09:23 UTC\n"
+"POT-Creation-Date: 2019-03-11 13:09 UTC\n"
 "PO-Revision-Date: 2012-05-15 03:23+0300\n"
 "Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
 "Language-Team: Finnish <wiki.wesnoth.org/FinnishTranslation>\n"
@@ -226,8 +226,8 @@ msgstr ""
 msgid "Undead Forces"
 msgstr "Epäkuolleet"
 
-#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #. [side]: type=Lich, id=Mal-Kevek
+#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:126
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -381,7 +381,9 @@ msgstr "Hei, minä tein sen!"
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:626
-msgid "Good work Kai, if I may say so."
+#, fuzzy
+#| msgid "Good work Kai, if I may say so."
+msgid "Good work, Kai, if I may say so."
 msgstr "Hyvää työtä Kai."
 
 #. [scenario]: id=02_Flight
@@ -666,8 +668,8 @@ msgstr "Odota!  Ehkä nyt, kun sen mestari on poissa, se kaipaa uutta."
 msgid "If it does not attack, do not kill it. Let us see if it follows us."
 msgstr "Jos se ei hyökkää, älä tapa sitä. Katsotaan, seuraako hän meitä."
 
-#. [message]: speaker=unit
 #. [message]: speaker=second_unit
+#. [message]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:508
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:635
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:748
@@ -946,43 +948,50 @@ msgstr "Merenmiehet, huomio!"
 msgid "Someone go find out what is exciting the bat."
 msgstr "Lepakkoa kiinnostaa jokin. Käykää tarkistamassa."
 
+#. [message]: speaker=Kai Krellis
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:277
+msgid ""
+"I wonder why such a strangely colored wolf emerged from the forest over "
+"there."
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:287
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:306
 msgid "There is something sticking out of the mud here. Ah! I got it."
 msgstr "Täältä mudasta pilkistää jotain. Sain sen."
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:294
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:313
 msgid ""
 "I know what that is. It’s a storm trident. It is supposed to let you control "
 "the lightning."
 msgstr "Tämähän on - myrskyatrain! Sillä voi hallita ukkosta."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:299
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:318
 #, fuzzy
 #| msgid "The trident is 14-2, magical, ranged, with <i>fire</i> damage."
 msgid "The trident is 14×2, magical, ranged, with <i>fire</i> damage."
 msgstr "Atrain tekee 14-2 maagista, pitkänmatkan tulivahinkoa."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:306
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:325
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:927
 msgid "That sounds great! I’ll take it."
 msgstr "Kuulostaa hyvältä! Minä otan sen."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:315
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:334
 msgid "That sounds frightening. Let someone else have it."
 msgstr "Kuulostaa pelottavalta. Joku toinen saa sen."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:353
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:372
 msgid "Let me have that trident. I want to control lightning!"
 msgstr "Antakaa se minulle. Tahdon hallita ukkosta!"
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:362
+#: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:381
 msgid "I’ll just leave that trident where it is."
 msgstr "Jätän sen vain tähän."
 
