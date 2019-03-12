@@ -7,60 +7,55 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-03-11 16:10+0300\n"
-"PO-Revision-Date: 2013-12-03 18:18+0100\n"
-"Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
-"Language-Team: Dutch <AI0867@gmail.com>\n"
+"PO-Revision-Date: 2019-03-08 10:16+0100\n"
+"Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
+"Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Bookmarks: 841,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
-#, fuzzy
-#| msgid "Commands"
 msgid "Custom"
 msgstr "Commando's"
 
 #. [advanced_preference]: type=combo
 #: data/advanced_preferences.cfg:4
-#, fuzzy
-#| msgid "Compressed saves"
 msgid "Compress saved games"
 msgstr "Gecomprimeerde opgeslagen bestanden"
 
 #. [option]: id=gzip
 #: data/advanced_preferences.cfg:9
 msgid "save_compression^Gzip"
-msgstr ""
+msgstr "Gzip"
 
 #. [option]: id=gzip
 #: data/advanced_preferences.cfg:10
 msgid "save_compression_desc^Default compression, faster"
-msgstr ""
+msgstr "Normale compressie, sneller"
 
 #. [option]: id=bzip2
 #: data/advanced_preferences.cfg:14
 msgid "save_compression^Bzip2"
-msgstr ""
+msgstr "Bzip2"
 
 #. [option]: id=bzip2
 #: data/advanced_preferences.cfg:15
 msgid "save_compression_desc^Best compression, slower"
-msgstr ""
+msgstr "Beste compressie, langzamer"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:19
 msgid "save_compression^No"
-msgstr ""
+msgstr "Nee"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:20
 msgid "save_compression_desc^Large plain text files"
-msgstr ""
+msgstr "Grote platte tekstbestanden"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
@@ -70,17 +65,17 @@ msgstr "Bevestig het verwijderen van opgeslagen bestanden"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:33
 msgid "Mouse scrolling"
-msgstr "Schuiven met de muis"
+msgstr "Scrollen met de muis"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:40
 msgid "Middle-click scrolling"
-msgstr "Schuiven met de middelste muisknop"
+msgstr "Scrollen met de middelste muisknop"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
 msgid "Keep scrolling when mouse leaves window"
-msgstr "Blijf schuiven wanneer de muis het venster verlaat"
+msgstr "Blijf scrollen wanneer de muis het venster verlaat"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:54
@@ -108,11 +103,13 @@ msgid ""
 "Choose whether the map view should scroll to a unit when an action or move "
 "is animated"
 msgstr ""
+"Kies of de kaartweergave naar een eenheid moet schuiven wanneer een actie of "
+"beweging wordt geanimeerd"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:92
 msgid "Chat message aging"
-msgstr ""
+msgstr "Chatbericht veroudering"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:93
@@ -120,8 +117,8 @@ msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable"
 msgstr ""
-"Aantal minuten te wachten op een ping antwoord voordat we een time-out "
-"genereren. Schakel uit met 0"
+"Aantal minuten wachten voordat een chatbericht verwijderd wordt. Schakel uit "
+"met 0"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:103
@@ -131,12 +128,12 @@ msgstr "Gebruik 12-uurs klokformaat"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:110
 msgid "Confirm loading saves from a different version"
-msgstr ""
+msgstr "Bevestig het laden van bestanden van een andere versie"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:117
 msgid "Show all unit types in help"
-msgstr "Toon alle types eenheden in help"
+msgstr "Toon alle type eenheden in help"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:118
@@ -144,49 +141,51 @@ msgid ""
 "Show all unit types in the help (requires restart). This does not alter the "
 "list of encountered units"
 msgstr ""
-"Toon alle types eenheden in help (vereist herstart). Dit verandert de lijst "
-"van eenheden die ontmoet hebt niet"
+"Toon alle type eenheden in help (vereist herstart). Dit verandert de lijst "
+"van eenheden die je ontmoet hebt niet"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:125
 msgid "Editor recent files limit"
-msgstr ""
+msgstr "Editor recente bestanden limiet"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:126
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
 msgstr ""
+"Het maximum aantal bestanden dat wordt weergegeven in het menu Recente "
+"Bestanden in de editor"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:136
 msgid "Show color cursors"
-msgstr ""
+msgstr "Toon kleurenaanwijzers"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:137
 msgid "Use colored mouse cursors"
-msgstr ""
+msgstr "Gebruik gekleurde muisaanwijzers"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:144
 msgid "Graphics scaling options"
-msgstr ""
+msgstr "Grafische schaalopties"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:150
 msgid "Customize orb colors"
-msgstr ""
+msgstr "Pas bol-kleuren aan"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:156
 msgid "Logging"
-msgstr ""
+msgstr "Loggen"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:162
 msgid "Allow damage calculation with Monte Carlo simulation"
-msgstr ""
+msgstr "Berekening van schade toestaan met Monte Carlo-simulatie"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:163
@@ -194,23 +193,23 @@ msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
 msgstr ""
+"Laat het schadeberekeningsvenster gevechten simuleren in plaats van exacte "
+"kansberekeningen te gebruiken"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:170
-#, fuzzy
-#| msgid "Sound Effects"
 msgid "Show haloing effects"
-msgstr "Geluidseffecten"
+msgstr "Toon halo-effecten"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:171
 msgid "Show special unit graphical effects"
-msgstr ""
+msgstr "Toon grafische effecten voor speciale eenheden"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:178
 msgid "Show deprecation messages in-game"
-msgstr ""
+msgstr "Toon afgekeurde berichten"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:179
@@ -219,11 +218,15 @@ msgid ""
 "will still be shown in the log, even if this is disabled. In addition, the "
 "deprecation log-domain controls how many messages are printed."
 msgstr ""
+"Toon waarschuwingen over verouderde API in het berichtenvenster. Deze "
+"berichten worden nog steeds weergegeven in het logboek, zelfs als dit is "
+"uitgeschakeld. Bovendien bepaalt het domein van de verouderde logboeken "
+"hoeveel berichten getoond worden."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:186
 msgid "Use experimental PRNG combat"
-msgstr ""
+msgstr "Gebruik experimentele PRNG-gevechten"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:187
@@ -235,6 +238,13 @@ msgid ""
 "Note: this option only affects singleplayer, and the ‘Save random seed’ "
 "option must also be enabled when creating a game for this to work."
 msgstr ""
+"Maakt meer geavanceerdere kans-tot-hitberekeningen mogelijk. Dit is een "
+"experimentele functie die is ontworpen om de geobserveerde hit/missratio "
+"meer in overeenstemming te brengen met de weergegeven percentages.\n"
+"\n"
+"Opmerking: deze optie is alleen van invloed op singleplayer en de optie 'Sla "
+"willekeurig op' moet ook worden ingeschakeld bij het starten van een spel om "
+"dit te laten werken."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:197
@@ -244,92 +254,92 @@ msgstr "Ondersteuning voor joystick"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:204
 msgid "Joystick: number of the scroll X-axis joystick"
-msgstr ""
+msgstr "Joystick: nummer van joystick voor het scrollen van X-as"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:214
 msgid "Joystick: number of the scroll X-axis"
-msgstr ""
+msgstr "Joystick: nummer voor het scrollen van X-as"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:224
 msgid "Joystick: number of the scroll Y-axis joystick"
-msgstr ""
+msgstr "Joystick: nummer van joystick voor het scrollen van Y-as"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:234
 msgid "Joystick: number of the scroll Y-axis"
-msgstr ""
+msgstr "Joystick: nummer voor het scrollen van X-as"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:244
 msgid "Joystick: deadzone of the scrolling stick"
-msgstr ""
+msgstr "Joystick: Doodgebied van de scrollstick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:254
 msgid "Joystick: number of the cursor X-axis joystick"
-msgstr ""
+msgstr "Joystick: nummer van joystick voor muisaanwijzer van X-as"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:264
 msgid "Joystick: number of the cursor X-axis"
-msgstr ""
+msgstr "Joystick: nummer voor muisaanwijzer van X-as"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:274
 msgid "Joystick: number of the cursor Y-axis joystick"
-msgstr ""
+msgstr "Joystick: nummer van joystick voor muisaanwijzer van Y-as"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:284
 msgid "Joystick: number of the cursor Y-axis"
-msgstr ""
+msgstr "Joystick: nummer voor muisaanwijzer van Y-as"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:294
 msgid "Joystick: deadzone of the cursor stick"
-msgstr ""
+msgstr "Joystick: Doodgebied van de muisaanwijzerstick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:304
 msgid "Joystick: number of the mouse X-axis joystick"
-msgstr ""
+msgstr "Joystick: nummer van joystick voor muis van X-as"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:314
 msgid "Joystick: number of the mouse X-axis"
-msgstr ""
+msgstr "Joystick: nummer voor muis van X-as"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:324
 msgid "Joystick: number of the mouse Y-axis joystick"
-msgstr ""
+msgstr "Joystick: nummer van joystick voor muis van Y-as"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:334
 msgid "Joystick: number of the mouse Y-axis"
-msgstr ""
+msgstr "Joystick: nummer voor muis van Y-as"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:344
 msgid "Joystick: deadzone of the mouse stick"
-msgstr ""
+msgstr "Joystick: Doodgebied van de muisstick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:354
 msgid "Joystick: number of the thrust axis joystick"
-msgstr ""
+msgstr "Joystick: Nummer van het duwen van de joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:364
 msgid "Joystick: number of the thrust axis"
-msgstr ""
+msgstr "Joystick: Nummer van het duwen"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:374
 msgid "Joystick: deadzone of the thruster"
-msgstr ""
+msgstr "Joystick: Doodgebied van het duwen"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -370,8 +380,6 @@ msgstr "Internationaliseringsmanagers"
 
 #. [about]
 #: data/core/about.cfg:323
-#, fuzzy
-#| msgid "Traits"
 msgid "Trailers"
 msgstr "Kenmerken"
 
@@ -427,10 +435,8 @@ msgstr "Arabische Vertaling"
 
 #. [about]
 #: data/core/about_i18n.cfg:31
-#, fuzzy
-#| msgid "Estonian Translation"
 msgid "Asturian Translation"
-msgstr "Estse Vertaling"
+msgstr "Asturische Vertaling"
 
 #. [about]
 #: data/core/about_i18n.cfg:37
@@ -634,8 +640,6 @@ msgstr "Russische Vertaling"
 
 #. [about]
 #: data/core/about_i18n.cfg:1470
-#, fuzzy
-#| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
 msgstr "Galicische Vertaling"
 
@@ -671,10 +675,8 @@ msgstr "Turkse Vertaling"
 
 #. [about]
 #: data/core/about_i18n.cfg:1688
-#, fuzzy
-#| msgid "Romanian Translation"
 msgid "Ukrainian Translation"
-msgstr "Roemeense Vertaling"
+msgstr "Oekraïnse Vertaling"
 
 #. [about]
 #: data/core/about_i18n.cfg:1704
@@ -700,7 +702,7 @@ msgstr "Voorwerpen"
 #. [item]: id=altar_evil
 #: data/core/editor/items.cfg:12
 msgid "Evil Altar"
-msgstr ""
+msgstr "Kwaadaardig Altaar"
 
 #. [item]: id=altar
 #: data/core/editor/items.cfg:18
@@ -710,7 +712,7 @@ msgstr "Altaar"
 #. [item]: id=ankh-necklace
 #: data/core/editor/items.cfg:24
 msgid "Ankh Necklace"
-msgstr ""
+msgstr "Ankh Ketting"
 
 #. [item]: id=anvil
 #: data/core/editor/items.cfg:30
@@ -719,20 +721,18 @@ msgstr "Aambeeld"
 
 #. [item]: id=archery-target
 #: data/core/editor/items.cfg:36
-#, fuzzy
-#| msgid "charge"
 msgid "Archery Target"
-msgstr "stormloop"
+msgstr "Boogschietdoel"
 
 #. [item]: id=armor-golden
 #: data/core/editor/items.cfg:42
 msgid "Golden Armor"
-msgstr ""
+msgstr "Gouden Harnas"
 
 #. [item]: id=armor
 #: data/core/editor/items.cfg:48
 msgid "Armor"
-msgstr ""
+msgstr "Harnas"
 
 #. [item]: id=axe
 #: data/core/editor/items.cfg:54
@@ -741,27 +741,23 @@ msgstr "Bijl"
 
 #. [item]: id=ball-blue
 #: data/core/editor/items.cfg:60
-#, fuzzy
-#| msgid "Blue"
 msgid "Blue Ball"
-msgstr "Blauw"
+msgstr "Blauwe Bal"
 
 #. [item]: id=ball-green
 #: data/core/editor/items.cfg:66
-#, fuzzy
-#| msgid "Green"
 msgid "Green Ball"
-msgstr "Groen"
+msgstr "Groen Bal"
 
 #. [item]: id=ball-magenta
 #: data/core/editor/items.cfg:72
 msgid "Magenta Ball"
-msgstr ""
+msgstr "Roze Ball"
 
 #. [item]: id=barrel
 #: data/core/editor/items.cfg:78
 msgid "Barrel"
-msgstr ""
+msgstr "Vat"
 
 #. [item]: id=bomb
 #: data/core/editor/items.cfg:84
@@ -775,10 +771,8 @@ msgstr "Botten"
 
 #. [item]: id=bonestack
 #: data/core/editor/items.cfg:96
-#, fuzzy
-#| msgid "Bones"
 msgid "Bonestack"
-msgstr "Botten"
+msgstr "Bottenhoop"
 
 #. [item]: id=book1
 #. [item]: id=book2
@@ -789,7 +783,7 @@ msgstr "Botten"
 #: data/core/editor/items.cfg:114 data/core/editor/items.cfg:120
 #: data/core/editor/items.cfg:126
 msgid "Book"
-msgstr ""
+msgstr "Boek"
 
 #. [item]: id=bow-crystal
 #: data/core/editor/items.cfg:132
@@ -814,7 +808,7 @@ msgstr "Doos"
 #. [item]: id=brazier
 #: data/core/editor/items.cfg:156
 msgid "Brazier"
-msgstr ""
+msgstr "Koperen Bak"
 
 #. [item]: id=buckler
 #: data/core/editor/items.cfg:162
@@ -823,10 +817,8 @@ msgstr "Schild"
 
 #. [item]: id=burial
 #: data/core/editor/items.cfg:168
-#, fuzzy
-#| msgid "Tutorial"
 msgid "Burial"
-msgstr "Oefenen"
+msgstr "Graf"
 
 #. [item]: id=cage
 #: data/core/editor/items.cfg:174
@@ -836,12 +828,12 @@ msgstr "Kooi"
 #. [item]: id=chest-plain-closed
 #: data/core/editor/items.cfg:180
 msgid "Closed Plain Chest"
-msgstr ""
+msgstr "Gesloten Normale Kist"
 
 #. [item]: id=chest-plain-open
 #: data/core/editor/items.cfg:186
 msgid "Open Plain Chest"
-msgstr ""
+msgstr "Open Normale Kist"
 
 #. [item]: id=chest
 #: data/core/editor/items.cfg:192
@@ -850,25 +842,23 @@ msgstr "Kist"
 
 #. [item]: id=cloak-green
 #: data/core/editor/items.cfg:198
-#, fuzzy
-#| msgid "Green"
 msgid "Green Cloak"
-msgstr "Groen"
+msgstr "Groene Mantel"
 
 #. [item]: id=coffin-closed
 #: data/core/editor/items.cfg:204
 msgid "Closed Coffin"
-msgstr ""
+msgstr "Gesloten Kist"
 
 #. [item]: id=dragonstatue
 #: data/core/editor/items.cfg:210
 msgid "Dragon Statue"
-msgstr ""
+msgstr "Drakenstandbeeld"
 
 #. [item]: id=flame-sword
 #: data/core/editor/items.cfg:216
 msgid "Flaming Sword"
-msgstr ""
+msgstr "Brandend Zwaard"
 
 #. [item]: id=flower1
 #. [item]: id=flower2
@@ -876,40 +866,38 @@ msgstr ""
 #. [item]: id=flower4
 #: data/core/editor/items.cfg:222 data/core/editor/items.cfg:228
 #: data/core/editor/items.cfg:234 data/core/editor/items.cfg:240
-#, fuzzy
-#| msgid "slowed"
 msgid "Flower"
-msgstr "vertraagd"
+msgstr "Bloem"
 
 #. [item]: id=gohere
 #: data/core/editor/items.cfg:246
 msgid "Go Here Overlay"
-msgstr ""
+msgstr "Ga Hier Overlay"
 
 #. [item]: id=gold-coins-large
 #: data/core/editor/items.cfg:252
 msgid "Large Pile of Gold Coins"
-msgstr ""
+msgstr "Grote Stapel van Gouden Munten"
 
 #. [item]: id=gold-coins-medium
 #: data/core/editor/items.cfg:258
 msgid "Pile of Gold Coins"
-msgstr ""
+msgstr "Stapel van Gouden Munten"
 
 #. [item]: id=gold-coins-small
 #: data/core/editor/items.cfg:264
 msgid "Small Pile of Gold Coins"
-msgstr ""
+msgstr "Kleine Stapel van Gouden Munten"
 
 #. [item]: id=grain-sheaf
 #: data/core/editor/items.cfg:270
 msgid "Grain Sheaf"
-msgstr ""
+msgstr "Graanbundel"
 
 #. [item]: id=hammer-runic
 #: data/core/editor/items.cfg:276
 msgid "Runic Hammer"
-msgstr ""
+msgstr "Runen Hamer"
 
 #. [item]: id=holly-water
 #. [object]
@@ -925,35 +913,33 @@ msgstr "Sleutel"
 #. [item]: id=leather-pack
 #: data/core/editor/items.cfg:294
 msgid "Leather Pack"
-msgstr ""
+msgstr "Leren Tas"
 
 #. [item]: id=orcish-flag
 #: data/core/editor/items.cfg:300
 msgid "Orcish Flag"
-msgstr ""
+msgstr "Orkse Vlag"
 
 #. [item]: id=ornate1
 #. [item]: id=ornate2
 #: data/core/editor/items.cfg:306 data/core/editor/items.cfg:312
 msgid "Ornate"
-msgstr ""
+msgstr "Versiering"
 
 #. [item]: id=potion-blue
 #: data/core/editor/items.cfg:318
 msgid "Blue Potion"
-msgstr ""
+msgstr "Blauw Drankje"
 
 #. [item]: id=potion-green
 #: data/core/editor/items.cfg:324
-#, fuzzy
-#| msgid "Guarded Location"
 msgid "Green Potion"
-msgstr "Ongeldige locatie"
+msgstr "Groen Drankje"
 
 #. [item]: id=potion-gray
 #: data/core/editor/items.cfg:330
 msgid "Gray Potion"
-msgstr ""
+msgstr "Grijs Drankje"
 
 #. [item]: id=potion-poison
 #. [object]: id={ID}
@@ -963,88 +949,80 @@ msgstr "Vergif"
 
 #. [item]: id=potion-red
 #: data/core/editor/items.cfg:342
-#, fuzzy
-#| msgid "Guarded Location"
 msgid "Red Potion"
-msgstr "Ongeldige locatie"
+msgstr "Rood Drankje"
 
 #. [item]: id=potion-yellow
 #: data/core/editor/items.cfg:348
 msgid "Yellow Potion"
-msgstr ""
+msgstr "Geel Drankje"
 
 #. [item]: id=ring-brown
 #: data/core/editor/items.cfg:354
-#, fuzzy
-#| msgid "Brown"
 msgid "Brown Ring"
-msgstr "Bruin"
+msgstr "Bruine Ring"
 
 #. [item]: id=ring-gold
 #: data/core/editor/items.cfg:360
 msgid "Golden Ring"
-msgstr ""
+msgstr "Gouden Ring"
 
 #. [item]: id=ring-red
 #: data/core/editor/items.cfg:366
 msgid "Red Ring"
-msgstr ""
+msgstr "Rode Ring"
 
 #. [item]: id=ring-silver
 #: data/core/editor/items.cfg:372
 msgid "Silver Ring"
-msgstr ""
+msgstr "Zilveren Ring"
 
 #. [item]: id=ring-white
 #: data/core/editor/items.cfg:378
-#, fuzzy
-#| msgid "White"
 msgid "White Ring"
-msgstr "Wit"
+msgstr "Witte Ring"
 
 #. [item]: id=scarecrow
 #: data/core/editor/items.cfg:384
 msgid "Scarecrow"
-msgstr ""
+msgstr "Vogelverschrikker"
 
 #. [item]: id=sceptre-of-fire
 #: data/core/editor/items.cfg:390
-#, fuzzy
-#| msgid "ruby of fire"
 msgid "Sceptre of Fire"
-msgstr "vuurrobijn"
+msgstr "Scepter des Vuur"
 
 #. [item]: id=spear-fancy
 #: data/core/editor/items.cfg:396
 msgid "Fancy Spear"
-msgstr ""
+msgstr "Mooie Speer"
 
 #. [item]: id=staff-magic
 #: data/core/editor/items.cfg:402
 msgid "Magic Staff"
-msgstr ""
+msgstr "Magische Staf"
 
 #. [item]: id=staff
 #: data/core/editor/items.cfg:408
 msgid "Staff"
-msgstr ""
+msgstr "Staf"
 
 #. [item]: id=stone-tablet
 #: data/core/editor/items.cfg:414
 msgid "Stone Tablet"
-msgstr ""
+msgstr "Steen"
 
 #. [item]: id=storm-trident
 #. [object]
 #: data/core/editor/items.cfg:420 data/core/macros/items.cfg:518
 msgid "Storm Trident"
-msgstr "Stormdrietand"
+msgstr "Storm Drietand"
 
 #. [item]: id=straw-bale1
 #. [item]: id=straw-bale2
 #: data/core/editor/items.cfg:426 data/core/editor/items.cfg:432
 msgid "Bale of Straw"
-msgstr ""
+msgstr "Hooibaal"
 
 #. [item]: id=sword
 #: data/core/editor/items.cfg:438
@@ -1054,61 +1032,57 @@ msgstr "Zwaard"
 #. [item_group]: id=scenery
 #: data/core/editor/items.cfg:444
 msgid "Scenery"
-msgstr ""
+msgstr "Omgeving"
 
 #. [item]: id=castle-ruins
 #: data/core/editor/items.cfg:451
-#, fuzzy
-#| msgid "Castle"
 msgid "Castle Ruins"
-msgstr "Kasteel"
+msgstr "Kasteelruïne"
 
 #. [item]: id=circle-magic-glow
 #: data/core/editor/items.cfg:457
 msgid "Glowing Magic Circle"
-msgstr ""
+msgstr "Gloeiende Magische Cirkel"
 
 #. [item]: id=circle-magic
 #: data/core/editor/items.cfg:463
 msgid "Magic Circle"
-msgstr ""
+msgstr "Magische Cirkel"
 
 #. [item]: id=dwarven-doors-closed
 #: data/core/editor/items.cfg:469
 msgid "Closed Dwarven Doors"
-msgstr ""
+msgstr "Gesloten Dwergendeuren"
 
 #. [item]: id=fire
 #: data/core/editor/items.cfg:476
-#, fuzzy
-#| msgid "fire"
 msgid "Campfire"
-msgstr "vuur"
+msgstr "Kampvuur"
 
 #. [item]: id=flames
 #: data/core/editor/items.cfg:483
 msgid "Flames"
-msgstr ""
+msgstr "Vlammen"
 
 #. [item]: id=gate-rusty-se
 #: data/core/editor/items.cfg:489
 msgid "Rusty Gate South East"
-msgstr ""
+msgstr "Roestige Poort Zuid Oost"
 
 #. [item]: id=gate-rusty-sw
 #: data/core/editor/items.cfg:495
 msgid "Rusty Gate South West"
-msgstr ""
+msgstr "Roestige Poort Zuid West"
 
 #. [item]: id=icepack1
 #: data/core/editor/items.cfg:501
 msgid "Ice Pack"
-msgstr ""
+msgstr "IJs Verpakking"
 
 #. [item]: id=leanto
 #: data/core/editor/items.cfg:507
 msgid "Lean-to"
-msgstr ""
+msgstr "Afdak"
 
 #. [item]: id=lighthouse
 #: data/core/editor/items.cfg:512
@@ -1118,12 +1092,12 @@ msgstr "Vuurtoren"
 #. [item]: id=mausoleum
 #: data/core/editor/items.cfg:520
 msgid "Mausoleum"
-msgstr ""
+msgstr "Mausoleum"
 
 #. [item]: id=mine-abandoned
 #: data/core/editor/items.cfg:526
 msgid "Abandoned Mine"
-msgstr ""
+msgstr "Verlaten Mijn"
 
 #. [item]: id=monolith1
 #. [item]: id=monolith2
@@ -1132,37 +1106,33 @@ msgstr ""
 #: data/core/editor/items.cfg:532 data/core/editor/items.cfg:538
 #: data/core/editor/items.cfg:544 data/core/editor/items.cfg:550
 msgid "Monolith"
-msgstr ""
+msgstr "Grafheuvel"
 
 #. [item]: id=nest-empty
 #: data/core/editor/items.cfg:556
-#, fuzzy
-#| msgid "(Empty slot)"
 msgid "Empty Nest"
-msgstr "(Vacante plaats)"
+msgstr "Leeg Nest"
 
 #. [item]: id=nest-full
 #: data/core/editor/items.cfg:562
 msgid "Full Nest"
-msgstr ""
+msgstr "Vol Nest"
 
 #. [item]: id=oak-leaning
 #: data/core/editor/items.cfg:568
-#, fuzzy
-#| msgid "Warning: "
 msgid "Leaning Oak"
-msgstr "Waarschuwing:"
+msgstr "Hangende Eik"
 
 #. [item]: id=pine1
 #. [item]: id=pine2
 #: data/core/editor/items.cfg:574 data/core/editor/items.cfg:580
 msgid "Pine Tree"
-msgstr ""
+msgstr "Den"
 
 #. [item]: id=rock-cairn
 #: data/core/editor/items.cfg:586
 msgid "Rock Cairn"
-msgstr ""
+msgstr "Steengraf"
 
 #. [item]: id=rock1
 #. [item]: id=rock2
@@ -1171,12 +1141,12 @@ msgstr ""
 #: data/core/editor/items.cfg:592 data/core/editor/items.cfg:598
 #: data/core/editor/items.cfg:604 data/core/editor/items.cfg:610
 msgid "Rock"
-msgstr ""
+msgstr "Rots"
 
 #. [item]: id=rubble
 #: data/core/editor/items.cfg:616
 msgid "Rubble"
-msgstr ""
+msgstr "Puin"
 
 #. [item]: id=rune1
 #. [item]: id=rune2
@@ -1188,7 +1158,7 @@ msgstr ""
 #: data/core/editor/items.cfg:634 data/core/editor/items.cfg:640
 #: data/core/editor/items.cfg:646 data/core/editor/items.cfg:652
 msgid "Rune"
-msgstr ""
+msgstr "Runen"
 
 #. [item]: id=rune1-glow
 #. [item]: id=rune2-glow
@@ -1200,13 +1170,13 @@ msgstr ""
 #: data/core/editor/items.cfg:670 data/core/editor/items.cfg:676
 #: data/core/editor/items.cfg:682 data/core/editor/items.cfg:688
 msgid "Glowing Rune"
-msgstr ""
+msgstr "Gloeiende Runen"
 
 #. [item]: id=shipwreck
 #. [item]: id=wreck
 #: data/core/editor/items.cfg:694 data/core/editor/items.cfg:845
 msgid "Shipwreck"
-msgstr ""
+msgstr "Scheepswrak"
 
 #. [item]: id=signpost
 #: data/core/editor/items.cfg:699
@@ -1216,17 +1186,17 @@ msgstr "Wegwijzer"
 #. [item]: id=slab1
 #: data/core/editor/items.cfg:705
 msgid "Slab"
-msgstr ""
+msgstr "Plaat"
 
 #. [item]: id=snowbits
 #: data/core/editor/items.cfg:711
 msgid "Piles of Snow"
-msgstr ""
+msgstr "Bergen Sneeuw"
 
 #. [item]: id=summoning-center
 #: data/core/editor/items.cfg:718
 msgid "Summoning Center"
-msgstr ""
+msgstr "Oproep Centrum"
 
 #. [item]: id=summoning-circle1
 #. [item]: id=summoning-circle2
@@ -1238,44 +1208,42 @@ msgstr ""
 #: data/core/editor/items.cfg:736 data/core/editor/items.cfg:742
 #: data/core/editor/items.cfg:748 data/core/editor/items.cfg:754
 msgid "Summoning Circle"
-msgstr ""
+msgstr "Oproep Cirkel"
 
 #. [item]: id=temple1
 #: data/core/editor/items.cfg:760
 msgid "Temple"
-msgstr ""
+msgstr "Tempel"
 
 #. [item]: id=tent-fancy-red
 #: data/core/editor/items.cfg:766
 msgid "Fancy Red Tent"
-msgstr ""
+msgstr "Luxe Rode Tent"
 
 #. [item]: id=tent-ruin-1
 #: data/core/editor/items.cfg:772
 msgid "Ruined Tent"
-msgstr ""
+msgstr "Vernielde Tent"
 
 #. [item]: id=tent-shop-weapons
 #: data/core/editor/items.cfg:777
-#, fuzzy
-#| msgid "Weapon Specials"
 msgid "Weapons Shop Tent"
-msgstr "Wapenbijzonderheden"
+msgstr "Wapenwinkel Tent"
 
 #. [item]: id=trapdoor-closed
 #: data/core/editor/items.cfg:784
 msgid "Closed Trapdoor"
-msgstr ""
+msgstr "Gesloten Valluik"
 
 #. [item]: id=trapdoor-open
 #: data/core/editor/items.cfg:790
 msgid "Open Trapdoor"
-msgstr ""
+msgstr "Open Valluik"
 
 #. [item]: id=trash
 #: data/core/editor/items.cfg:796
 msgid "Trash Pile"
-msgstr ""
+msgstr "Afvalberg"
 
 #. [item]: id=village-human-burned1
 #. [item]: id=village-human-burned2
@@ -1283,15 +1251,13 @@ msgstr ""
 #. [item]: id=village-human-burned4
 #: data/core/editor/items.cfg:802 data/core/editor/items.cfg:808
 #: data/core/editor/items.cfg:814 data/core/editor/items.cfg:820
-#, fuzzy
-#| msgid "Submerged Village"
 msgid "Burned Human Village"
-msgstr "Gezonken dorp"
+msgstr "Verbrand Mensendorp"
 
 #. [item]: id=well
 #: data/core/editor/items.cfg:825
 msgid "Well"
-msgstr "Waterput"
+msgstr "Put"
 
 #. [item]: id=whirlpool
 #: data/core/editor/items.cfg:831
@@ -1301,12 +1267,12 @@ msgstr "Draaikolk"
 #. [item]: id=windmill
 #: data/core/editor/items.cfg:839
 msgid "Windmill"
-msgstr ""
+msgstr "Windmolen"
 
 #. [set_menu_item]: id=ai_controller_unit_control_{UNIT_ID}
 #: data/core/macros/ai_controller.cfg:22
 msgid "Ask $ai_controller_unit.name to move here"
-msgstr ""
+msgstr "Vraag $ai_controller_unit.name om hierheen te bewegen"
 
 #. [set_menu_item]: id=ai_controller_leader_control_{CONTROLLED_SIDE}
 #: data/core/macros/ai_controller.cfg:75
@@ -1322,7 +1288,7 @@ msgid ""
 "clicking on a unit that belongs to it."
 msgstr ""
 "In dit scenario kun je instructies geven aan een geallieerde zijde door op "
-"één van zijn eenheden te rechtsklikken."
+"één van zijn eenheden te klikken met rechtermuisknop."
 
 #. [overview_message_has_instructions]: speaker=narrator
 #. [overview_message_no_instructions]: speaker=narrator
@@ -1389,10 +1355,8 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:249
 #: data/core/macros/ai_controller.cfg:384
 #: data/core/macros/ai_controller.cfg:390
-#, fuzzy
-#| msgid "side $temp_i"
 msgid "Side $temp_i"
-msgstr "zijde $temp_i"
+msgstr "Zijde $temp_i"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:251
@@ -1403,10 +1367,8 @@ msgstr "zijde $temp_i"
 #. [command]
 #: data/core/macros/ai_controller.cfg:266
 #: data/core/macros/ai_controller.cfg:407
-#, fuzzy
-#| msgid "$side_i_leader.name (side $temp_i|)"
 msgid "side $temp_i ($side_i_leader.name|)"
-msgstr "$side_i_leader.name (zijde $temp_i|)"
+msgstr "zijde $temp_i ($side_i_leader.name|)"
 
 #. [value]
 #: data/core/macros/ai_controller.cfg:292
@@ -1419,7 +1381,7 @@ msgstr "Terug"
 #. [protect]
 #: data/core/macros/ai_controller.cfg:311
 msgid "Focus on protecting..."
-msgstr "Concentreer op verdedigen..."
+msgstr "Concentreer op beschermen..."
 
 #. [protect]
 #: data/core/macros/ai_controller.cfg:312
@@ -1506,7 +1468,7 @@ msgstr "Gedrag instellen..."
 #. [literal]
 #: data/core/macros/ai_controller.cfg:975
 msgid "Exit"
-msgstr "Sluit af"
+msgstr "Verlaat"
 
 #: data/core/macros/ai_controller.cfg:1108
 msgid "Set special orders..."
@@ -1543,10 +1505,8 @@ msgstr ""
 
 #. [else]
 #: data/core/macros/deprecated-utils.cfg:43
-#, fuzzy
-#| msgid "No usable weapon"
 msgid "This unit has been renamed to: "
-msgstr "Geen bruikbaar wapen"
+msgstr "Deze eenheid is hernoemd naar: "
 
 #: data/core/macros/deprecated-utils.cfg:95
 msgid "<small>(early finish bonus)</small>"
@@ -1628,8 +1588,7 @@ msgstr "Vrede in Wesnoth."
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:60
 msgid "The only thing worth wishing for is peace throughout the land."
-msgstr ""
-"Het enige dat een wens rechtvaardigt is vrede over het Rijk van Wesnoth."
+msgstr "Het enige dat een wens rechtvaardigt is vrede in Wesnoth."
 
 #. [option]
 #: data/core/macros/items.cfg:66
@@ -1662,24 +1621,20 @@ msgid ""
 "type until the end of the current scenario. Should $unit.name use it?"
 msgstr ""
 "Het besproeien van wapens voor dichtbij met dit water zal hen het schadetype "
-"<i>mysterieus</i> geven tot het einde van het huidige scenario. Moet $unit."
+"<i>witte magie</i> geven tot het einde van het huidige scenario. Moet $unit."
 "name het gebruiken?"
 
 #: data/core/macros/items.cfg:274
 msgid "holy water^Take it"
-msgstr "Pik het op"
+msgstr "Pak het"
 
 #: data/core/macros/items.cfg:275
 msgid "holy water^Leave it"
 msgstr "Laat het liggen"
 
 #: data/core/macros/items.cfg:276
-#, fuzzy
-#| msgid "I am not suited to the use of this item! Let another take it."
 msgid "$unit.name has no need for this Holy Water! Let another take it."
-msgstr ""
-"Ik ben niet geschikt om dit item te hanteren! Laat iemand anders het "
-"oppikken."
+msgstr "Ik heb dit niet nodig! Laat iemand anders het oppikken."
 
 #. [object]
 #: data/core/macros/items.cfg:281
@@ -1687,13 +1642,13 @@ msgid ""
 "This water will make melee weapons have the <i>arcane</i> damage type until "
 "the end of the current scenario."
 msgstr ""
-"Dit water zal wapens voor dichtbij het schadetype <i>mysterieus</i> geven "
+"Dit water zal wapens voor dichtbij het schadetype <i>witte magie</i> geven "
 "tot het einde van dit scenario."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:310
 msgid "Potion of Strength"
-msgstr "Drank van Sterkte"
+msgstr "Drank van Kracht"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:313
@@ -1723,7 +1678,7 @@ msgstr "Deze ring geneest de drager een klein beetje elke beurt."
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:429
 msgid "Ring of Slowness"
-msgstr "Ring van de Traagheid"
+msgstr "Ring van Traagheid"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:432
@@ -1733,17 +1688,17 @@ msgstr "De drager van deze ring is vertraagd."
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:466
 msgid "Staff of Swiftness"
-msgstr "Staf van Gemak"
+msgstr "Staf van Snelheid"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:469
 msgid "This staff will grant the bearer swift movement."
-msgstr "Deze staf verleent de drager een gemakkelijk bewegen."
+msgstr "Deze staf verleent de drager snellere beweging."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:470
 msgid "Only magical beings can wield such an object."
-msgstr "Alleen magische schepsels kunnen zo'n object hanteren."
+msgstr "Alleen magische wezens kunnen zo'n object hanteren."
 
 #: data/core/macros/items.cfg:513
 msgid "Should $unit.name pick up the trident?"
@@ -1751,7 +1706,7 @@ msgstr "Moet $unit.name de drietand oppakken?"
 
 #: data/core/macros/items.cfg:514
 msgid "storm trident^Take it"
-msgstr "Pik het op"
+msgstr "Pak het"
 
 #: data/core/macros/items.cfg:515
 msgid "storm trident^Leave it"
@@ -1762,11 +1717,11 @@ msgid ""
 "$unit.name cannot use this Storm Trident! Let one of the merfolk who can "
 "wield it have it."
 msgstr ""
+"$unit.name kan de Storm Drietand niet hanteren! Laat iemand van het "
+"Watervolk die het kan hanteren het oppakken."
 
 #. [object]
 #: data/core/macros/items.cfg:521
-#, fuzzy
-#| msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr ""
@@ -1775,14 +1730,12 @@ msgstr ""
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:525
 msgid "storm trident"
-msgstr "stormdrietand"
+msgstr "storm drietand"
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:548
-#, fuzzy
-#| msgid "ruby of fire"
 msgid "sceptre of fire"
-msgstr "vuurrobijn"
+msgstr "scepter des vuur"
 
 #: data/core/macros/names.cfg:18
 msgid ""
@@ -1827,6 +1780,13 @@ msgid ""
 "suffix=ash|kré|lsh|lin|rutin|shinar|rushi|ka|ash|ag|all|ash|slar|li|dian|"
 "ritos|rusté|shitt|nick|rath|ditt|kon|mad|tick|nir\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}’{suffix}|{prefix}{suffix} {short_name}\n"
+"short_name=Ohm|Ihn|Ohn|Ka|Murr|Kon|Elch|Ko|Græt|Egar\n"
+"prefix=Ga|Ge|Gel|Gi|Go|Gra|Gri|Ka|Ko|Kla|Mar|Di|Mer|Mor|Oma|Re|Vel|Vash|Ver|"
+"Vla\n"
+"suffix=ash|kré|lsh|lin|rutin|shinar|rushi|ka|ash|ag|all|ash|slar|li|dian|"
+"ritos|rusté|shitt|nick|rath|ditt|kon|mad|tick|nir\n"
 
 #. Generator for female drake names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:28
@@ -1837,6 +1797,11 @@ msgid ""
 "suffix=en|nash|irt|glann|ll|ge|lin|nitt|tin|tar|lisk|rida|grra|sill|la|mell\n"
 "short_name=Mal|Ka|Emth|Dar|Eshi\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{suffix} {short_name}\n"
+"prefix=Al|Ali|Ash|Aug|Auug|Da|De|Dem|Din|Ol|Oma|Orri|Oshi|Val|Ver|Vel|Vush\n"
+"suffix=en|nash|irt|glann|ll|ge|lin|nitt|tin|tar|lisk|rida|grra|sill|la|mell\n"
+"short_name=Mal|Ka|Emth|Dar|Eshi\n"
 
 #: data/core/macros/names.cfg:37
 msgid ""
@@ -1941,6 +1906,15 @@ msgid ""
 "til|til|tol|los|rol|sol|ril|sil|as|us|lil|fur|mur|fur\n"
 "centre=lal|mal|ra|dur|thal|thas|ma|gal|thau|ga|ith|ma|cat|la|ral|dur|bur\n"
 msgstr ""
+"\n"
+"main={long_name}\n"
+"long_name={prefix}{centre}{suffix}|{prefix}{centre}{centre}{suffix}\n"
+"short_name={prefix}{suffix}\n"
+"prefix=Ai|Al|A|Du|Glam|Dul|Gom|Nar|Pel|Tri|Dun|Do|Bar|Er|Tim|Al|Du|Bu|Bur|"
+"Nor|Der|Ur|Gar\n"
+"suffix=sil|fur|bor|bus|bur|bor|gos|dor|rin|dur|ing|ras|this|tis|rol|sol|las|"
+"til|til|tol|los|rol|sol|ril|sil|as|us|lil|fur|mur|fur\n"
+"centre=lal|mal|ra|dur|thal|thas|ma|gal|thau|ga|ith|ma|cat|la|ral|dur|bur\n"
 
 #: data/core/macros/names.cfg:50
 msgid ""
@@ -2210,6 +2184,20 @@ msgid ""
 "short_centre=lol|febr|tom|lith|nal|lor|wón|rad|rien|mar|reb|riel|mal|ram|nil|"
 "nim|nol|bris|lad|rier|ra|fil|thran|man\n"
 msgstr ""
+"\n"
+"main={generated_prefix}{consonnant}{suffix}|{prefix}{centre}{suffix}\n"
+"generated_prefix={starting_consonnant}{vowel}\n"
+"starting_consonnant=C|D|F|L|M|N|P|Qu|R|S|T|V\n"
+"vowel=a|e|i|o|ae|é|ë\n"
+"consonnant=n|l|r|m|s|v|th|nn\n"
+"prefix={prefix_vc}{vowel}|{prefix_cv}\n"
+"prefix_vc=Lon|Eon|Ad|Sar|Al|Tal|Tin|El|Leg|Or|Tir|Ol|Cál|Cán|Elv|Fan|Fad|"
+"Fith|Fil|Gal|Glad|Leg|Glar|Gli|Hár|Tad|Sór|Pyr\n"
+"prefix_cv=Ama|Ami|Be|Ca|Ga|Isi|Ha|He|Le|Ló|Ny|Ni|Ma|Thu|Thri|Ti|Unu|Ve|Va\n"
+"suffix=or|im|ian|in|ar|iel|as|eon|as|or|ion|al|and|ér|as|ir|el|al|ad|ael\n"
+"centre={short_centre}|{short_centre}|-{short_centre}|{short_centre}-\n"
+"short_centre=lol|febr|tom|lith|nal|lor|wón|rad|rien|mar|reb|riel|mal|ram|nil|"
+"nim|nol|bris|lad|rier|ra|fil|thran|man\n"
 
 #. Generator for female elf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:67
@@ -2235,6 +2223,26 @@ msgid ""
 "short_centre_c=enn|all|an|ith|el|il|am|ol|arth|ól|ár|ir|if|im|ion|iw|én|un|"
 "iw\n"
 msgstr ""
+"\n"
+"main={generated_prefix_v}{centre_v}{suffix_v}|{generated_prefix_c}{centre_c}"
+"{suffix_c}\n"
+"generated_prefix_v={starting_consonnant}{vowel}\n"
+"generated_prefix_c={starting_consonnant}{vowel}{consonnant}\n"
+"starting_consonnant=C|D|F|L|M|N|P|Qu|R|S|T|V\n"
+"vowel=a|e|i|o|ae|é|ë\n"
+"consonnant=n|l|r|m|s|v|th|p|d|f|t\n"
+"prefix_c=Val|Ol|Am|An|El|Fa|El|Glo|Hu|Le|Mil|Nil|Pin|Por|Mot|Mor|Thral|Leg|"
+"Nam|Nym|Sim|Len|Is|Thal\n"
+"prefix_v=La|Va|Tha|Ne|Ay|Ce|Fa|Phe|Ja|Que|Ma|Mi|Pa|Ri|Siu|Ga|Ca|De|Eä|Eo|No|"
+"Pó|Le|Ló|Isá|Pa|Sa|Ni|Ti|Uno|Uni|Vó|Gio\n"
+"suffix_v=thea|nia|lia|kea|ni|ith|niel|wiel|ra|dë|lya|thiel|nna|nne\n"
+"suffix_c=iel|ien|ya|a|ë|i|ia|ea\n"
+"centre_v=|{short_centre_v}\n"
+"short_centre_v=nna|lla|na|thi|saie|li|ma|lo|thra|ló|rá|bri|fi|mi|nio|wi|né|"
+"nu|wi\n"
+"centre_c=|{short_centre_c}\n"
+"short_centre_c=enn|all|an|ith|el|il|am|ol|arth|ól|ár|ir|if|im|ion|iw|én|un|"
+"iw\n"
 
 #: data/core/macros/names.cfg:87
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
@@ -2253,6 +2261,11 @@ msgid ""
 "suffix=aa|eaa|ee|aaa|ssshh|rro|uu|uuu\n"
 "centre=arr|aash|eez|ozz\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=Gr|Ka|Ke|Ko|Kr|Kz\n"
+"suffix=aa|eaa|ee|aaa|ssshh|rro|uu|uuu\n"
+"centre=arr|aash|eez|ozz\n"
 
 #. Generator for female gryphon names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:97
@@ -2263,6 +2276,11 @@ msgid ""
 "suffix=sa|yya|ra|rra\n"
 "centre=err|aash|eez|azz\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=Kaa|Ka|Ke|Kuu|Ko\n"
+"suffix=sa|yya|ra|rra\n"
+"centre=err|aash|eez|azz\n"
 
 #: data/core/macros/names.cfg:106
 msgid ""
@@ -2477,6 +2495,23 @@ msgid ""
 "centre_c=redd|reor|og|thyn\n"
 "centre_v=rae|ra|thar|gwy\n"
 msgstr ""
+"\n"
+"main={generated_prefix_c}{suffix_c}|{generated_prefix_v}{suffix_v}|{prefix_c}"
+"{centre_c}{suffix_c}|{prefix_v}{centre_v}{suffix_v}\n"
+"generated_prefix_c={starting_consonnant}{vowel}{consonnant}|{starting_vowel}"
+"{consonnant}\n"
+"generated_prefix_v={starting_consonnant}{vowel}|{starting_vowel}\n"
+"starting_consonnant=B|C|D|G|H|L|M|R|Rh|S|T|V\n"
+"starting_vowel=A|E|I|Y|Ae\n"
+"vowel=a|e|i|o|u|y|eo|ae\n"
+"consonnant=w|l|d|n|r|rc|ll|nn|dd|th\n"
+"prefix_c=Add|Den|Derr|Gum|Mad|Mar|Ow|Tedd|T{vowel}n|Var|Vin|Vob|Vug|Yr|Rhyr\n"
+"prefix_v=Ae|Bl{vowel}|C{vowel}|D{vowel}|Gl{vowel}|G{vowel}|Gw{vowel}|Ha|"
+"L{vowel}|M{vowel}|R{vowel}|Rh{vowel}|S{vowel}|S{vowel}|T{vowel}|V{vowel}\n"
+"suffix_c=yn|er|yc|ec|oc|yr|in|aent\n"
+"suffix_v=ry|ryn|ran|lyn|van|nyc\n"
+"centre_c=redd|reor|og|thyn\n"
+"centre_v=rae|ra|thar|gwy\n"
 
 #. Generator for female Wesnothian human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:125
@@ -2499,6 +2534,23 @@ msgid ""
 "centre_c=il|ing|ol|ur|ung|ean|eal|ong|al|iv\n"
 "centre_v=na|lla|na|ry|li|ni|ri|rae|bry\n"
 msgstr ""
+"\n"
+"main={generated_prefix_c}{suffix_c}|{generated_prefix_v}{suffix_v}|{prefix_c}"
+"{centre_c}{suffix_c}|{prefix_v}{centre_v}{suffix_v}\n"
+"generated_prefix_c={starting_consonnant}{vowel}{consonnant}|{starting_vowel}"
+"{consonnant}\n"
+"generated_prefix_v={starting_consonnant}{vowel}|{starting_vowel}\n"
+"starting_consonnant=B|C|D|G|H|L|M|R|Rh|S|T|V\n"
+"starting_vowel=A|E|I|Y|Ae\n"
+"vowel=a|e|i|o|u|y|eo|ae\n"
+"consonnant=w|l|d|n|r|rc|ll|nn|dd|th\n"
+"prefix_c=Al|El|Mer|Mil|Rer|Ys|M{vowel}r|M{vowel}l\n"
+"prefix_v=A|Br{vowel}|Cl{vowel}|C{vowel}|D{vowel}|Gw{vowel}|He|J{vowel}|"
+"L{vowel}|M{vowel}|N{vowel}|R{vowel}|S{vowel}\n"
+"suffix_c=yan|oic|ell|yll\n"
+"suffix_v=wyn|nna|lla|ra|la|wyan|ssa|ka|ven\n"
+"centre_c=il|ing|ol|ur|ung|ean|eal|ong|al|iv\n"
+"centre_v=na|lla|na|ry|li|ni|ri|rae|bry\n"
 
 #: data/core/macros/names.cfg:143
 msgid ""
@@ -2669,6 +2721,19 @@ msgid ""
 "connector= al-| bin | ibn\n"
 "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 msgstr ""
+"\n"
+"main={name_long}|{prefix}{suffix}|{name_mid}{connector}{name_mid}\n"
+"name_mid={prefix}{suffix}|{name_short}\n"
+"name_long={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"name_short=Din|Sif|Din|Taj|Sud|Ali|Lut|Nuh|Qays|Nimr|Jad|Bushr|Lut|Maʿd|Nur|"
+"Fadl\n"
+"prefix=Ab|Bas|Fat|Gha|Al|Ba|Ja|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|Du|Im|"
+"Ju|Mun|Ma|Ni|Ji|Mu|Lab|Luf|Mih|Mi|Qu|Tal|Ta|Tha|Za|Zi|Yas|Wa|Su|Qa|ʿIkri|Lu|"
+"Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
+"suffix=af|al|lih|bair|sur|bi|lah|at|sim|ma|ih|yl|iq|raj|mam|man|ya|zid|riya|"
+"ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|kib\n"
+"connector= al-| bin | ibn\n"
+"centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 
 #. Generator for female dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:156
@@ -2700,6 +2765,32 @@ msgid ""
 "riya|ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|"
 "kib\n"
 msgstr ""
+"\n"
+"main={name_long}|{prefix}{suffix}|{name_mid}{connector}{surname}\n"
+"name_mid={prefix}{suffix}|{name_short}\n"
+"surname={name_mid_male}|{name_mid}|{name_mid_male}\n"
+"name_long={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"name_short=Afaf|Aida|Alya|Arij|Arwa|Asma|Asra|Azra|Dua|Fajr|Hala|Hana|Hiba|"
+"Inas|Isra|Lina|Mona|Muna|Nida|Nima|Nur|Rana|Rim|Ruba|Ruya|Ruwa|Sana|Sara|"
+"Suha|Tuba|Uzma|Zara\n"
+"prefix=Ab|Bas|Fat|Gha|Al|Ba|Ja|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|Du|Im|"
+"Ju|Mun|Ma|Ni|Ji|Mu|Lab|Luf|Mih|Mi|Qu|Tal|Ta|Tha|Za|Zi|Yas|Wa|Su|Qa|ʿIkri|Lu|"
+"Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
+"suffix=a|ab|ad|ah|af|aj|al|am|an|ar|as|at|ay|az|da|een|ia|ij|in|ir|la|ma|mas|"
+"n|na|nab|ni|r|ra|raa|ran|rat|ul|ur|uz|wa|ya|yah|yam|za|zi\n"
+"connector= al-| ibna | bint\n"
+"centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
+"\n"
+"These nonterminals are literally copied from the male names.\n"
+"name_mid_male={prefix_male}{suffix_male}|{name_short_male}\n"
+"name_short_male=Din|Sif|Din|Taj|Sud|Ali|Lut|Nuh|Qays|Nimr|Jad|Bushr|Lut|Maʿd|"
+"Nur|Fadl\n"
+"prefix_male=Ab|Bas|Fat|Gha|Al|Ba|Ja|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|Du|"
+"Im|Ju|Mun|Ma|Ni|Ji|Mu|Lab|Luf|Mih|Mi|Qu|Tal|Ta|Tha|Za|Zi|Yas|Wa|Su|Qa|ʿIkri|"
+"Lu|Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
+"suffix_male=af|al|lih|bair|sur|bi|lah|at|sim|ma|ih|yl|iq|raj|mam|man|ya|zid|"
+"riya|ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|"
+"kib\n"
 
 #: data/core/macros/names.cfg:176
 msgid ""
@@ -2736,6 +2827,13 @@ msgid ""
 "suffix=ta|ir|az|ix|za|trax|il|le|esz|izs|ezz|irr|asch|ez|is|iss|azz\n"
 "centre=ix|’Kza|tra|na|an|ex|ssa|zzi|’Usz\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=Am|An|Ar|Bzz|Cha|Clee|Fa|Fi|Fli|Fri|Ha|He|In|Ir|In|Ka|Ke|Jezz|Ji|Ka|"
+"Ke|Lo|Ma|Ox|Po|Sa|Se|Li|Me|Na|Pre|Ska|Sse|Ssi|Sto|Ste|Szi|Sza|Ti|Ve|Vri|Xa|"
+"Xe|Xi|Zan|Zil|Zzu\n"
+"suffix=ta|ir|az|ix|za|trax|il|le|esz|izs|ezz|irr|asch|ez|is|iss|azz\n"
+"centre=ix|’Kza|tra|na|an|ex|ssa|zzi|’Usz\n"
 
 #: data/core/macros/names.cfg:187
 msgid ""
@@ -2778,6 +2876,13 @@ msgid ""
 "lau|nik|sa|loa|roa\n"
 "centre=la|ma|ri|sei|te|ka|li|cer|tu|ni|ki|na|ga|si\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=A|Ai|Apa|Bar|Atla|Dha|El|Fa|Ja|La|Ku|Li|Ma|Me|Mi|Na|Ne|Njo|Nua|Nu|Oce|"
+"Okre|Phor|Po|Pro|Ra|Ro|Ryu|Scy|Si|Ta|Thau|Ti|Vi|Tri|Vo|Vou\n"
+"suffix=su|ion|la|ta|ua|mar|re|lau|lu|na|yr|ra|tes|nus|teus|tes|tan|mas|ki|ni|"
+"lau|nik|sa|loa|roa\n"
+"centre=la|ma|ri|sei|te|ka|li|cer|tu|ni|ki|na|ga|si\n"
 
 #. Generator for mermaid names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:197
@@ -2789,6 +2894,12 @@ msgid ""
 "suffix=me|pe|gia|noe|dna|la|ris|ta|tea|va|mo|pe|riam|riel|na|ra|tea\n"
 "centre=ophe|phri|tri|phro|di|si|xie|ce|ty|la|me|ro|co|mar|ran|then|la|ga\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=Agla|Amphi|A|Ca|Del|Der|Di|El|Ga|Je|Leu|Li|Lo|Ma|Wa|Ma|Mi|Mo|Par|Pel|"
+"Pi|Se|Ste|Ma|The|Ti|Va|Ve\n"
+"suffix=me|pe|gia|noe|dna|la|ris|ta|tea|va|mo|pe|riam|riel|na|ra|tea\n"
+"centre=ophe|phri|tri|phro|di|si|xie|ce|ty|la|me|ro|co|mar|ran|then|la|ga\n"
 
 #: data/core/macros/names.cfg:206
 msgid ""
@@ -2835,6 +2946,13 @@ msgid ""
 "suffix=iss|ail|nal|eii|mol|loss|noss|xos|sal|zel|kps|pek|ness|or|sol|peii|"
 "iaz|on|sal|ol|kil|oz|ail|al|nis|rak|lel|nas|kon|ekp\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}\n"
+"prefix=Abra|Ale|Ama|Ax|Bla|Ble|Bre|Bri|Gri|Hai|Har|Hu|Ine|Kle|Krez|Lam|Lin|"
+"Lob|Mai|Lal|Nild|Pon|Pse|Pza|Sa|Se|Sle|So|Sor|Tri|Vi|Vla|Xa|Xi|Xna|Za|Zle|"
+"Zse\n"
+"suffix=iss|ail|nal|eii|mol|loss|noss|xos|sal|zel|kps|pek|ness|or|sol|peii|"
+"iaz|on|sal|ol|kil|oz|ail|al|nis|rak|lel|nas|kon|ekp\n"
 
 #. Generator for female naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:215
@@ -2847,6 +2965,13 @@ msgid ""
 "suffix=asse|mailia|ilis|ana|ama|ssa|ssilai|zi|xias|lai|maissa|bra|lin|lina|"
 "na|bra|aa|lia|lai|laila|na|pkne|alsp|ekp\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}\n"
+"prefix=Ali|Ama|Ax|Bla|Bli|Bra|Bri|Gax|Gri|Hai|Har|Hu|Ina|Iss|Krez|Kzap|Lam|"
+"Lex|Li|Lin|Mai|Mu|Nil|Ox|Pon|Pza|Ri|Sal|Sax|Sek|Snel|Sra|Trix|Vil|Vis|Blan|"
+"Xab|Xam|Xi|Xnam|Xop|Zal|Zle|Zse\n"
+"suffix=asse|mailia|ilis|ana|ama|ssa|ssilai|zi|xias|lai|maissa|bra|lin|lina|"
+"na|bra|aa|lia|lai|laila|na|pkne|alsp|ekp\n"
 
 #: data/core/macros/names.cfg:223
 msgid ""
@@ -2873,6 +2998,11 @@ msgid ""
 "Ker|Kil|King|Kor|Kru|Kur|Mar|Mer|Nal|Trak|Urk\n"
 "suffix=ark|ort|alk|arm|kuk|kak|ukk|nak|ta|k|rok|rar|kon|gak|nik\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}\n"
+"prefix=Ak|Ar|Bar|Blok|Bor|Bul|Cork|Del|Gar|Gnu|Gra|Gru|Gu|Kal|Kar|Kay|Kel|"
+"Ker|Kil|King|Kor|Kru|Kur|Mar|Mer|Nal|Trak|Urk\n"
+"suffix=ark|ort|alk|arm|kuk|kak|ukk|nak|ta|k|rok|rar|kon|gak|nik\n"
 
 #: data/core/macros/names.cfg:233
 msgid ""
@@ -2958,6 +3088,18 @@ msgid ""
 "ending_consonnant=b|g|r|sh|k\n"
 "ending_vowel=o|u\n"
 msgstr ""
+"\n"
+"main={starting_consonnant}{vowel}{consonnant}{vowel}{ending_consonnant}|"
+"{starting_consonnant}{vowel}{consonnant}{ending_vowel}|{starting_vowel}"
+"{consonnant}{vowel}{ending_consonnant}|{starting_consonnant}{vowel}"
+"{ending_consonnant}|{starting_vowel}{consonnant}{ending_vowel}\n"
+"starting_consonnant=B|Br|D|Dr|G|Gr|Gh|H|Kh|M|N|P|Pr|R|S|Sh|T|V\n"
+"starting_vowel=A|I|O|U\n"
+"consonnant=b|br|d|dr|g|gr|gh|kh|m|n|p|pr|r|s|sh|t|v|gz|zg|rb|br|dr|vr|khr|gd|"
+"shn\n"
+"vowel=a|i|o|u\n"
+"ending_consonnant=b|g|r|sh|k\n"
+"ending_vowel=o|u\n"
 
 #: data/core/macros/names.cfg:247
 msgid ""
@@ -2983,6 +3125,14 @@ msgid ""
 "beginning=Ä|Ü|A|U\n"
 "suffix=rb|g|gh|k|rf|kk|r|g|th|h|rg\n"
 msgstr ""
+"\n"
+"main={short_name}|{short_name}|{short_name}|{short_name} {short_name}\n"
+"short_name={prefix}{middle}{suffix}|{prefix}{middle}{suffix}|{prefix}{middle}"
+"{suffix}|{beginning}{suffix}\n"
+"prefix=B|Br|D|G|Gn|H|K|Kr|L|N|K|P|R|S|Sh|St|Th|Ts|T|V|Z\n"
+"middle=a|o|u|uu|ä|ü\n"
+"beginning=Ä|Ü|A|U\n"
+"suffix=rb|g|gh|k|rf|kk|r|g|th|h|rg\n"
 
 #: data/core/macros/names.cfg:260
 msgid ""
@@ -3027,6 +3177,17 @@ msgid ""
 "suffix=men|drum|tor|num|lad|de|ak|lol|dum|tam|nur|dium|deum|bil|rook|relm|"
 "dium|numm|dan|doom|tum|din\n"
 msgstr ""
+"\n"
+"main={prefix}{centre}{centre}{suffix}|{prefix}{centre}{centre}{centre}"
+"{suffix}\n"
+"prefix=Blu|Bo|Bre|Bro|Bru|Bu|Car|Da|Da|De|Dib|Dol|Dro|Dul|Dum|El|Gre|Gul|Gum|"
+"Laf|Lan|Las|Lef|Lib|Lol|Mon|Mul|Mun|Nan|Nun|Or|Pam|Pom|Rith|Tan|Tem|Ton|"
+"Troom|Tun|Tum|Won|Wun\n"
+"centre=de|bal|drum|wul|del|bem|pom|gon|tan|bom|ken|tan|ton|man|ten|dron|dub|"
+"na|da|ni|mi|lul|mon|duel|lem|num|nob|mand|room|lad|roam|be|lom|sem|nub|di|"
+"wim|din|blem|nand|dul|dil|of|tam|kon|ton|tun|kon|ten|run|mal|do\n"
+"suffix=men|drum|tor|num|lad|de|ak|lol|dum|tam|nur|dium|deum|bil|rook|relm|"
+"dium|numm|dan|doom|tum|din\n"
 
 #: data/core/macros/names.cfg:271
 msgid ""
@@ -3045,6 +3206,11 @@ msgid ""
 "middle=a|e|o|u|i\n"
 "suffix=l|m|rn|x|w|ld|ck|k|rk\n"
 msgstr ""
+"\n"
+"main={prefix}{middle}{suffix}\n"
+"prefix=B|C|D|E|F|Fr|Wat|G|H|K|N|O|R|S|T|W|Y|Ro\n"
+"middle=a|e|o|u|i\n"
+"suffix=l|m|rn|x|w|ld|ck|k|rk\n"
 
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:6
@@ -3064,10 +3230,8 @@ msgid "Bonus objective:"
 msgstr "Bonusdoel:"
 
 #: data/core/macros/objective-utils.cfg:30
-#, fuzzy
-#| msgid "Bonus objective:"
 msgid "Optional objective:"
-msgstr "Bonusdoel:"
+msgstr "Optioneel doel:"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:52
@@ -3077,7 +3241,7 @@ msgstr "Dit is het laatste scenario."
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:58
 msgid "No turn limit"
-msgstr ""
+msgstr "Geen beurtlimiet"
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:58
@@ -3092,157 +3256,147 @@ msgstr ""
 #. [music]
 #: data/core/macros/sound-utils.cfg:157
 msgid "Battle Epic"
-msgstr ""
+msgstr "Episch Gevecht"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:163
 msgid "Battle Music"
-msgstr ""
+msgstr "Gevechtsmuziek"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:169
 msgid "Breaking the Chains"
-msgstr ""
+msgstr "Verbreek de Kettingen"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:175
 msgid "Casualties of War"
-msgstr ""
+msgstr "Gewonden van de Oorlog"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:181
 msgid "Elf Land"
-msgstr ""
+msgstr "Elfenland"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:187
 msgid "Elvish theme"
-msgstr ""
+msgstr "Elf thema"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:193
 msgid "Frantic"
-msgstr ""
+msgstr "Hectisch"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:199
 msgid "Heroes Rite"
-msgstr ""
+msgstr "Heldenritueel"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:205
 msgid "Into the Shadows"
-msgstr ""
+msgstr "Richting de Schaduw"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:211
 msgid "Journey’s End"
-msgstr ""
+msgstr "Einde van de Reis"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:217
 msgid "Knalgan Theme"
-msgstr ""
+msgstr "Knalgan Thema"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:223
 msgid "The Knolls of Doldesh"
-msgstr ""
+msgstr "De Knollen van Doldesh"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:229
 msgid "Legends of the North"
-msgstr ""
+msgstr "Legendes van het Noorden"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:235
 msgid "Love Theme"
-msgstr ""
+msgstr "Liefdesthema"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:241
-#, fuzzy
-#| msgid "Loyal"
 msgid "Loyalists"
-msgstr "Loyaal"
+msgstr "Loyalisten"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:247
 msgid "Over the Northern Mountains"
-msgstr ""
+msgstr "Over de Noordse Gebergten"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:253
 msgid "Northerners"
-msgstr ""
+msgstr "Noorderlingen"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:259
 msgid "Nunc Dimittis"
-msgstr ""
+msgstr "Nunc Dimittis"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:265
-#, fuzzy
-#| msgid "Guarded Location"
 msgid "Revelation"
-msgstr "Ongeldige locatie"
+msgstr "Openbaring"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:271
-#, fuzzy
-#| msgid "Sand"
 msgid "Sad"
-msgstr "Zand"
+msgstr "Zielig"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:277
 msgid "Siege of Laurelmor"
-msgstr ""
+msgstr "Aanval op Laurelmor"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:283
 msgid "Silvan Sanctuary"
-msgstr ""
+msgstr "Silvaanse Heiligdom"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:289
 msgid "Suspense"
-msgstr ""
+msgstr "Onzekerheid"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:295
 msgid "The City Falls"
-msgstr ""
+msgstr "De Stad Valt"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:301
 msgid "The Dangerous Symphony"
-msgstr ""
+msgstr "Een Gevaarlijk Orkest"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:307
-#, fuzzy
-#| msgid "Deep water"
 msgid "The Deep Path"
-msgstr "Diep water"
+msgstr "De Diepe Route"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:313
-#, fuzzy
-#| msgid "The game is over."
 msgid "The King is Dead"
-msgstr "Het spel is gedaan."
+msgstr "De Koning is Dood"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:319
 msgid "Transience"
-msgstr ""
+msgstr "Vergankelijkheid"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:325
 msgid "Traveling Minstrels"
-msgstr ""
+msgstr "Reizende Dichters"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:331
@@ -3252,23 +3406,22 @@ msgstr "Ondergronds"
 #. [music]
 #: data/core/macros/sound-utils.cfg:337
 msgid "Vengeful Pursuit"
-msgstr ""
+msgstr "Wraakzuchtige Achtervolging"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:343
 msgid "Still Another Wanderer"
-msgstr ""
+msgstr "Weer een Andere Zwerver"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:349
-#, fuzzy
 msgid "Weight of Revenge"
-msgstr "Fel oranje"
+msgstr "Zwaarte van Wraak"
 
 #. [message]: speaker=narrator
 #: data/core/macros/utils.cfg:697
 msgid "You retrieve $amount_gold pieces of gold."
-msgstr ""
+msgstr "Je ontvangt $amount_gold goudstukken."
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -3334,7 +3487,6 @@ msgstr "Oranje"
 
 #. [color_range]: id=brightorange
 #: data/core/team-colors.cfg:87
-#, fuzzy
 msgid "Bright orange"
 msgstr "Fel oranje"
 
@@ -3348,12 +3500,12 @@ msgstr "Wit"
 #. [color_range]: id=9
 #: data/core/team-colors.cfg:100 data/core/team-colors.cfg:287
 msgid "Teal"
-msgstr "Lichtblauw"
+msgstr "Blauwgroen"
 
 #. [color_range]: id=gold
 #: data/core/team-colors.cfg:107
 msgid "color^Gold"
-msgstr ""
+msgstr "Goud"
 
 #. [color_range]: id=reef
 #: data/core/team-colors.cfg:116
@@ -3444,7 +3596,7 @@ msgstr "Onbegaanbaar"
 #. [color_range]: id=impassable
 #: data/core/team-colors.cfg:218
 msgid "Impassable"
-msgstr "Onbegaanbaar"
+msgstr "Onbereikbaar"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
@@ -3462,14 +3614,12 @@ msgstr "Sluier"
 #. [core]: id=default
 #: data/cores.cfg:5
 msgid "Wesnoth (Default)"
-msgstr ""
+msgstr "Wesnoth (Normaal)"
 
 #. [core]: id=default
 #: data/cores.cfg:8
-#, fuzzy
-#| msgid "The Battle for Wesnoth Help"
 msgid "The standard Wesnoth core."
-msgstr "Strijd om Wesnoth Help"
+msgstr "De Standaard Wesnoth bron."
 
 #. [language]
 #: data/english.cfg:3
@@ -3501,8 +3651,8 @@ msgid ""
 msgstr ""
 "Gezagsgetrouwe eenheden vechten overdag sterker, maar 's nachts zwakker.\n"
 "\n"
-"Dag: +25% verwondingen\n"
-"Nacht: −25% verwondingen"
+"Dag: +25% Schade\n"
+"Nacht: −25% Schade"
 
 #. [language]
 #: data/english.cfg:12
@@ -3523,8 +3673,8 @@ msgid ""
 msgstr ""
 "Wetteloze eenheden zijn 's nachts sterker en overdag zwakker.\n"
 "\n"
-"Dag: −25% verwondingen\n"
-"Nacht: +25% verwondingen"
+"Dag: −25% Schade\n"
+"Nacht: +25% Schade"
 
 #. [language]
 #: data/english.cfg:17
@@ -3534,11 +3684,11 @@ msgid ""
 "Day: −25% Damage\n"
 "Night: −25% Damage"
 msgstr ""
-"Schemeringseenheden bereiken hun volledige sterkte enkel tijdens de "
+"Mysterieuze eenheden bereiken hun volledige sterkte enkel tijdens de "
 "schemering.\n"
 "\n"
-"Dag: -25% verwondingen\n"
-"Nacht: −25% verwondingen"
+"Dag: −25% Schade\n"
+"Nacht: −25% Schade"
 
 #. [language]
 #: data/english.cfg:23
@@ -3578,7 +3728,7 @@ msgstr "koud"
 #. [language]
 #: data/english.cfg:32
 msgid "arcane"
-msgstr "mysterieus"
+msgstr "witte magie"
 
 #. [naming]
 #. Generator for bridge labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3589,6 +3739,10 @@ msgid ""
 "\t\tmain=$base {bridge_type}|$base{!}’s {bridge_type}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tbridge_type=Bridge|Crossing\n"
+"\t\tmain=$base {bridge_type}|$base{!}’s {bridge_type}\n"
+"\t"
 
 #. [naming]
 #. Generator for road labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3599,6 +3753,10 @@ msgid ""
 "\t\tmain=$base{!}’s {road_type}|{road_type} of $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\troad_type=Highway|Pass|Path|Road|Way|Trail\n"
+"\t\tmain=$base{!}’s {road_type}|{road_type} of $base\n"
+"\t"
 
 #. [naming]
 #. Generator for river labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3609,6 +3767,10 @@ msgid ""
 "\t\tmain=$base {river_type}|{river_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\triver_type=River|River|River|Creek|Creek|Stream|Canal\n"
+"\t\tmain=$base {river_type}|{river_type} $base\n"
+"\t"
 
 #. [naming]
 #. Generator for forest labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3619,6 +3781,10 @@ msgid ""
 "\t\tmain=$base {forest_type}|$base{!}’s {forest_type}|{forest_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tforest_type=Forest|Forest|Wood\n"
+"\t\tmain=$base {forest_type}|$base{!}’s {forest_type}|{forest_type} $base\n"
+"\t"
 
 #. [naming]
 #. Generator for lake labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3629,17 +3795,22 @@ msgid ""
 "\t\tmain=$base {lake_type}|{lake_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tlake_type=Lake|Lake|Lake|Loch|Sea\n"
+"\t\tmain=$base {lake_type}|{lake_type} $base\n"
+"\t"
 
 #. [naming]
 #. Generator for mountain labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
 #: data/english.cfg:63
-#, fuzzy
-#| msgid "$name|’s Peak,Mount $name"
 msgid ""
 "\n"
 "\t\tmain=$base{!}’s Peak|$base Peak|Mount $base|Mount $base\n"
 "\t"
-msgstr "$name|top,Berg $name"
+msgstr ""
+"\n"
+"\t\tmain=$base{!}’s Peak|$base Peak|Mount $base|Mount $base\n"
+"\t"
 
 #. [naming]
 #. Generator for swamp labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3650,6 +3821,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=’s Swamp|marsh|fen\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for generic village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3660,6 +3835,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=bury|bury|ham|ton|ville\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for lakeside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3671,6 +3850,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$lake{!}\n"
+"\t\tsuffix=harbor|port\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for riverside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3683,6 +3867,12 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$river{!}\n"
+"\t\triver=$river{!}|River\n"
+"\t\tsuffix=ham|ford|cross| on {river}\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for bridge village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3694,6 +3884,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$river{!}|$bridge{!}\n"
+"\t\tsuffix=bridge|bridge|ham|ton\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for grassland village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3704,6 +3899,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=ham|ton|field\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for forest village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3715,6 +3914,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$forest{!}\n"
+"\t\tsuffix=ham|ton|wood| Forest\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for hill village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3725,6 +3929,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=ham|bury|ton|hill|crest\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for mountain village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3736,6 +3944,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$mountain{!}\n"
+"\t\tsuffix=mont|cliff|bury|ham\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for mountain labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3746,6 +3959,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=ham|bury|ton|mont|mont|cliff|cliff\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for roadside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3757,6 +3974,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$road{!}|$road{!}|$base{!}\n"
+"\t\tsuffix=’s Rest|’s Waypoint|bury|bury|ham|ham\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #. Generator for swamp village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3768,6 +3990,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$swamp{!}\n"
+"\t\tsuffix=bury|ham|ton\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [server]
 #: data/game_config.cfg:4
@@ -3785,96 +4012,86 @@ msgid ""
 "There are no custom options available for the selected era, game, or "
 "modification."
 msgstr ""
+"Er zijn geen specifieke opties beschikbaar voor het geselecteerde tijdperk, "
+"spel of aanpassing."
 
 #. [button]: id=reset_option_values
 #: data/gui/macros/custom_options_tree.cfg:249
-#, fuzzy
 msgid "Defaults"
-msgstr "Standaard AI"
+msgstr "Standaard"
 
 #. [label]
 #: data/gui/macros/player_list_panel.cfg:29
-#, fuzzy
-#| msgid "Computer Player"
 msgid "Connected Players"
-msgstr "Computerspeler"
+msgstr "Verbonden Spelers"
 
 #. [label]: id=title
 #: data/gui/window/install_dependencies.cfg:37
-#, fuzzy
-#| msgid "Install dependencies"
 msgid "Install Dependencies"
 msgstr "Afhankelijkheden installeren"
 
 #. [button]: id=ok
 #: data/gui/window/install_dependencies.cfg:85
-#, fuzzy
-#| msgid "yes"
 msgid "Yes"
-msgstr "ja"
+msgstr "Ja"
 
 #. [button]: id=cancel
 #: data/gui/window/install_dependencies.cfg:96
-#, fuzzy
-#| msgid "Nov"
 msgid "No"
-msgstr "nov"
+msgstr "Nee"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
 #: src/hotkey/command_executor.cpp:627
 msgid "Screenshot"
-msgstr "Schermafdruk"
+msgstr "Schermafbeelding"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:28
 msgid "Lato"
-msgstr ""
+msgstr "Lato"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:29
 msgid "DejaVu Sans Mono"
-msgstr ""
+msgstr "DejaVu Sans Mono"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:30
 msgid "Lato Light"
-msgstr ""
+msgstr "Lato Light"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:31
 msgid "Oldania ADF Std"
-msgstr ""
+msgstr "Oldania ADF Std"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:36
-#, fuzzy
-#| msgid ""
-#| "DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull."
-#| "ttf,Junicode-Regular.ttf"
 msgid ""
 "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 msgstr ""
-"DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull.ttf,"
-"Junicode-Regular.ttf"
+"Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
+"DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:187
 msgid "(Note: You should use $replacement instead in new code)"
 msgstr ""
+"(Let op: Je zou $replacement moeten gebruiken in plaats van de nieuwe code)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:194 src/deprecation.cpp:69
 msgid "Invalid deprecation level $level (should be 1-4)"
-msgstr ""
+msgstr "Ongeldig onafhankelijk niveau $level (zou 1-4 moeten zijn)"
 
 #. [lua]: wml_actions.deprecated_message
 #: data/lua/wml-tags.lua:889
 msgid "Invalid deprecation level (should be 1-4)"
-msgstr ""
+msgstr "Ongeldig onafhankelijk niveau (zou 1-4 moeten zijn)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
@@ -3975,22 +4192,22 @@ msgstr "Stop"
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:442
 msgid "pause after current move"
-msgstr ""
+msgstr "pauzeer na huidige zet"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:457 data/themes/_initial.cfg:614
 msgid "Reset"
-msgstr "Reset"
+msgstr "Herstellen"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:458 data/themes/_initial.cfg:615
 msgid "reset to beginning"
-msgstr "reset tot begin"
+msgstr "herstel tot begin"
 
 #. [action]: id=button-nextturn, type=image
 #: data/themes/_initial.cfg:473 data/themes/_initial.cfg:628
 msgid "Next Turn"
-msgstr "Volgende beurt"
+msgstr "Volgende Beurt"
 
 #. [action]: id=button-nextturn, type=image
 #: data/themes/_initial.cfg:474 data/themes/_initial.cfg:629
@@ -4000,26 +4217,22 @@ msgstr "beurt spelen"
 #. [action]: id=button-nextside, type=image
 #: data/themes/_initial.cfg:489 data/themes/_initial.cfg:642
 msgid "Next Side"
-msgstr "Volgende speler"
+msgstr "Volgende Speler"
 
 #. [action]: id=button-nextside, type=image
 #: data/themes/_initial.cfg:490 data/themes/_initial.cfg:643
 msgid "play side turn"
-msgstr "beurt van partij spelen"
+msgstr "speel beurt van partij"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:504 data/themes/_initial.cfg:656
-#, fuzzy
-#| msgid "Next Side"
 msgid "Next Move"
-msgstr "Volgende speler"
+msgstr "Volgende Zet"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:505 data/themes/_initial.cfg:657
-#, fuzzy
-#| msgid "play side turn"
 msgid "play single move"
-msgstr "beurt van partij spelen"
+msgstr "speel enkele zet"
 
 #. [menu]: id=show-what
 #: data/themes/_initial.cfg:517 data/themes/_initial.cfg:669
@@ -4028,15 +4241,13 @@ msgstr "Gezichtspunt"
 
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:528
-#, fuzzy
-#| msgid "continuous replay"
 msgid "Continue Play"
-msgstr "doorlopende herhaling"
+msgstr "Blijf Spelen"
 
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:529
 msgid "Exit the replay mode and continue playing normally."
-msgstr ""
+msgstr "Verlaat de afspeelmodus en ga door met normaal spelen."
 
 #. [action]: id=skip-animation, type=checkbox
 #: data/themes/_initial.cfg:541 data/themes/_initial.cfg:681
@@ -4051,17 +4262,17 @@ msgstr "Herhaling"
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:601
 msgid "pause"
-msgstr ""
+msgstr "pauze"
 
 #. [theme]: id=Classic
 #: data/themes/classic.cfg:11
 msgid "theme^Classic"
-msgstr ""
+msgstr "Klassiek"
 
 #. [theme]: id=Classic
 #: data/themes/classic.cfg:13
 msgid "The classic, pre-1.12 theme"
-msgstr ""
+msgstr "De klassieke, voor-1.12 theme"
 
 #. [menu]: id=menu-main
 #: data/themes/classic.cfg:86 data/themes/cutscene.cfg:37
@@ -4109,7 +4320,7 @@ msgstr "dorpen"
 #. [label]: id=units-icon
 #: data/themes/classic.cfg:239 data/themes/default.cfg:196
 msgid "units"
-msgstr "troepen"
+msgstr "eenheden"
 
 #. [label]: id=upkeep-icon
 #: data/themes/classic.cfg:248 data/themes/default.cfg:205
@@ -4139,21 +4350,17 @@ msgstr "terrein verd."
 #. [theme]: id=Default
 #: data/themes/default.cfg:32
 msgid "theme^Default"
-msgstr ""
+msgstr "Normaal"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:33
-#, fuzzy
-#| msgid "Default AI"
 msgid "The default theme"
-msgstr "Standaard AI"
+msgstr "Het normale thema"
 
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:90
-#, fuzzy
-#| msgid "Back to Turn "
 msgid "Back to..."
-msgstr "Terug naar beurt "
+msgstr "Terug naar..."
 
 #. [label]: id=label-mp
 #: data/themes/default.cfg:161
@@ -4163,12 +4370,10 @@ msgstr "MP"
 #. [label]: id=label-def
 #: data/themes/default.cfg:169
 msgid "def"
-msgstr ""
+msgstr "verd"
 
 #. [unit_level]: id=unit-level
 #: data/themes/default.cfg:406
-#, fuzzy
-#| msgid "statuspanel^level"
 msgid "statuspanel^lvl"
 msgstr "rang"
 
@@ -4178,13 +4383,13 @@ msgid ""
 "Use the map editor's <i>Areas</i> menu to define regions later addressed by "
 "event or ai coding."
 msgstr ""
+"Gebruik de kaart editor <i>Gebieden</i> menu om regio's te definiëren die "
+"later wordt aangesproken bij gebeurtenis of ai codering."
 
 #. [tip]
 #: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
-#, fuzzy
-#| msgid "<i>― The Wesnoth Tactical Guide</i>"
 msgid "<i>― The Wesnoth Design Guide</i>"
-msgstr "<i>― De Wesnoth Tactische Gids</i>"
+msgstr "<i>― De Wesnoth Ontwerp Gids</i>"
 
 #. [tip]
 #: data/tips.cfg:8
@@ -4192,6 +4397,8 @@ msgid ""
 "Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use of "
 "advanced features."
 msgstr ""
+"Creëer een <i>Nieuw Scenario</i> in het <i>Bestand</i> menu van de editor om "
+"gebruik te maken van geavanceerde mogelijkheden."
 
 #. [tip]
 #: data/tips.cfg:12
@@ -4199,6 +4406,8 @@ msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the mp create screen's <i>User Scenarios</i> section."
 msgstr ""
+"Scenario's opgeslagen vanuit de editor in de standaard map kunnen worden "
+"geselecteerd in het mp creatie scherm <i>Gebruiker Scenarios</i> gedeelte."
 
 #. [tip]
 #: data/tips.cfg:16
@@ -4213,7 +4422,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:17 data/tips.cfg:149
 msgid "<i>― Great Mage Delfador, 516YW</i>"
-msgstr "<i>― Groot Magiër Delfador, 516YW</i>"
+msgstr "<i>― Meester Magiër Delfador, 516YW</i>"
 
 #. [tip]
 #: data/tips.cfg:20
@@ -4268,7 +4477,7 @@ msgid ""
 msgstr ""
 "De omsingeltactiek is erg krachtig, vooral tegen snelle tegenstanders. Door "
 "twee eenheden aan beide zijden van een vijand te zetten zal deze "
-"tegenstander door hun controlezone maar één vak per beurt kunnen "
+"tegenstander door hun controlegebied maar één vak per beurt kunnen "
 "verplaatsen. Warzaaiers moeten volledig omsingeld zijn om geïmmobiliseerd te "
 "worden."
 
@@ -4285,10 +4494,10 @@ msgid ""
 "a unit in. Placing units wisely can sometimes let you reach a village a turn "
 "earlier."
 msgstr ""
-"Je kunt de <b>Recruteer</b> en <b>Oproep</b> commando's bereiken door met de "
-"rechtermuisknop op een kasteelvak te klikken. Zo kun je kiezen op welk vak "
-"een nieuwe eenheid geplaatst wordt. Het slim plaatsen van eenheden kan er "
-"soms voor zorgen dat je een dorp een beurt eerder bereikt."
+"Je kunt de <b>Rekruteer</b> en <b>Oproep</b> commando's bereiken door met de "
+"rechtermuisknop op een kasteel te klikken. Zo kun je kiezen op welk vak een "
+"nieuwe eenheid geplaatst wordt. Het slim plaatsen van eenheden kan er soms "
+"voor zorgen dat je een dorp een beurt eerder bereikt."
 
 #. [tip]
 #: data/tips.cfg:36
@@ -4316,7 +4525,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:41 data/tips.cfg:117 data/tips.cfg:226 data/tips.cfg:238
 msgid "<i>― High Lord Kalenz, 470YW</i>"
-msgstr "<i>― Hoge heer Kalenz, 470YW</i>"
+msgstr "<i>― Hoge Heer Kalenz, 470YW</i>"
 
 #. [tip]
 #: data/tips.cfg:44
@@ -4325,9 +4534,9 @@ msgid ""
 "the <b>Help</b> screen carefully. Details become important as scenarios get "
 "harder!"
 msgstr ""
-"Lees de sectie <b>Gameplay</b> aandachtig door, nadat je een aantal "
-"scenario's gespeeld hebt. Details worden belangrijker wanneer de scenario's "
-"moeilijker worden!"
+"Lees de sectie <b>Gameplay</b> in het <b>Help</b> scherm aandachtig door, "
+"nadat je een aantal scenario's gespeeld hebt. Details worden belangrijker "
+"wanneer de scenario's moeilijker worden!"
 
 #. [tip]
 #: data/tips.cfg:48
@@ -4363,7 +4572,7 @@ msgid ""
 msgstr ""
 "<i>Gezagsgetrouwe</i> eenheden vechten overdag beter en <i>wetteloze</i> "
 "eenheden vechten 's nachts beter. <i>Neutrale</i> eenheden worden niet door "
-"de tijd van de dag beïnvloed. De zeldzame <i>Schemerings</i>eenheden vechten "
+"de tijd van de dag beïnvloed. De zeldzame <i>Mysterieuze</i>eenheden vechten "
 "het best tijdens de schemering."
 
 #. [tip]
@@ -4386,7 +4595,7 @@ msgstr ""
 #: data/tips.cfg:61 data/tips.cfg:85 data/tips.cfg:137 data/tips.cfg:145
 #: data/tips.cfg:230
 msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
-msgstr "<i>― Tactische Analyse, Handboek: Deel I - Haldric II, 42YW</i>"
+msgstr "<i>― Haldric II, 42YW - Handboek Tactische Analyse: Deel I</i>"
 
 #. [tip]
 #: data/tips.cfg:64
@@ -4396,7 +4605,7 @@ msgid ""
 "their cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units can only see as far as they can move in one turn."
 msgstr ""
-"Als je speelt met <b>Sluier</b> of <b>Oorlogsmist</b> aan, zul je niet weten "
+"Als je speelt met <b>Sluier</b> of <b>Oorlogsmist</b> aan, zal je niet weten "
 "wat er aan komt. In dit geval zijn verkenners met een lang bereik hun kosten "
 "waard. Probeer verkenners te kiezen die makkelijk door het omliggend terrein "
 "kunnen reizen, omdat eenheden slechts zover kunnen zien als ze kunnen "
@@ -4412,10 +4621,10 @@ msgid ""
 "affect it the most."
 msgstr ""
 "Er zijn zes aanvalstypes: <i>puntig</i>, <i>scherp</i>, <i>stomp</i>, "
-"<i>vuur</i>, <i>koud</i> en <i>mysterieus</i>. Verschillende eenheden zijn "
+"<i>vuur</i>, <i>koud</i> en <i>witte magie</i>. Verschillende eenheden zijn "
 "in verschillende mate kwetsbaar voor verschillende aanvalstypen. Om de "
 "kwetsbaarheden en verdediging van een eenheid tegen een bepaald aanvalstype "
-"te zien, klik je er rechts op en kies je <b>Profiel eenheid</b>."
+"te zien, klik je er rechts op en kies je <b>Eenheid Beschrijving</b>."
 
 #. [tip]
 #: data/tips.cfg:72
@@ -4466,12 +4675,12 @@ msgid ""
 "between them and still create a barrier to the enemy. Beware, though: "
 "skirmishers can pass through these gaps."
 msgstr ""
-"Elke eenheid van rang één of hoger heeft een <i>Beheersingszone</i> die "
-"bestaat uit de zes velden direct naast hem. Wanneer een eenheid de "
-"<i>Beheersingszone</i> van een vijand betreedt, kan hij die beurt niet "
-"verder bewegen. Dit betekent dat eenheden een barrière kunnen opwerpen met "
-"twee lege vakken tussen hen. Let op: Warzaaiers kunnen echter wel door deze "
-"gaten heen."
+"Elke eenheid van rang één of hoger heeft een <i>Controlegebied</i> die "
+"bestaat uit de zes velden direct naast hem. Wanneer een eenheid het "
+"controlegebied van een vijand betreedt, kan hij die beurt niet verder "
+"bewegen. Dit betekent dat eenheden een barrière kunnen opwerpen met twee "
+"lege vakken tussen hen. Let op: Warzaaiers kunnen echter wel door deze gaten "
+"heen."
 
 #. [tip]
 #: data/tips.cfg:88
@@ -4484,14 +4693,14 @@ msgid ""
 msgstr ""
 "De kans om een eenheid te raken hangt normaal gezien af van het terrein "
 "waarop de vijandelijke eenheid zich bevindt, maar magische aanvallen hebben "
-"altijd 70% kans om te raken en eenheden met het <i>Scherpschutter</i> "
+"altijd 70% kans om te raken en eenheden met het <i>Precisieschutter</i> "
 "vaardigheid zullen altijd tenminste 60% kans hebben om iemand te raken in "
 "hun beurt."
 
 #. [tip]
 #: data/tips.cfg:89
 msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
-msgstr "<i>― Tactische Analyse Handboek: Deel II - Haldric II, 43YW</i>"
+msgstr "<i>― Haldric II, 42YW - Handboek Tactische Analyse: Deel II</i>"
 
 #. [tip]
 #: data/tips.cfg:92
@@ -4509,7 +4718,7 @@ msgid ""
 "does not move or attack, it will recover two hitpoints at the beginning of "
 "its next turn."
 msgstr ""
-"Beweeg gewonde eenheden niet als dat niet nodig is ―  laat hen rusten. "
+"Beweeg gewonde eenheden niet als dat niet nodig is ― laat hen rusten. "
 "Eenheden die niet bewegen of aanvallen tijdens hun beurt genezen door de "
 "rust twee hitpoints aan het begin van hun volgende beurt."
 
@@ -4679,13 +4888,16 @@ msgid ""
 "villages unoccupied, but keep in mind that an enemy unit becomes much harder "
 "to dislodge from a village! Plan your movements accordingly."
 msgstr ""
+"Voor elke speler, is het vaak van groot belang om dorpen in te nemen en te "
+"behouden gedurende een scenario. Je zou dit in je voordeel kunnen gebruiken "
+"door sommige dorpen onbezet te laten om hierdoor de vijand in een val te "
+"lokken, let er wel op dat een vijandige eenheid vaak een hoge verdediging "
+"heeft in een dorp! Pas je bewegingen hierop aan."
 
 #. [tip]
 #: data/tips.cfg:153
-#, fuzzy
-#| msgid "<i>― King Konrad, 536YW</i>"
 msgid "<i>― Kai Laudiss, 623YW</i>"
-msgstr "<i>― Koning Konrad, 536YW</i>"
+msgstr "<i>― Kai Laudiss, 623YW</i>"
 
 #. [tip]
 #: data/tips.cfg:156
@@ -4750,12 +4962,12 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:180
 msgid "<i>Arcane</i> attacks are very powerful against undead."
-msgstr "<i>Mysterieuze</i> aanvallen zijn zeer krachtig tegen ondoden."
+msgstr "<i>Witte magie</i> aanvallen zijn zeer krachtig tegen ondoden."
 
 #. [tip]
 #: data/tips.cfg:181
 msgid "<i>― Great Sage Dacyn, 626YW</i>"
-msgstr "<i>― Grote sage Dacyn, 626YW</i>"
+msgstr "<i>― Grote Sage Dacyn, 626YW</i>"
 
 #. [tip]
 #: data/tips.cfg:184
@@ -4827,7 +5039,7 @@ msgid ""
 "retaining the ability to undo, or use the new Whiteboard planning tool."
 msgstr ""
 "Je kunt geen zet ongedaan maken die mist of sluier optrok. Het aanzetten van "
-"de 'Stel sluier bijwerking uit' optie of het gebruik van de nieuwe "
+"de <b>Stel sluier bijwerking uit</b> optie of het gebruik van de nieuwe "
 "planningsmodus maakt het mogelijk zetten van eenheden ongedaan te maken."
 
 #. [tip]
@@ -4863,8 +5075,8 @@ msgid ""
 msgstr ""
 "De vaardigheid <i>Vertragen</i> is erg sterk omdat het een zeer breed effect "
 "heeft. Vijandelijke Ondoden beschikken slechts over de helft van hun normale "
-"voordeel van hun vaardigheid <i>Bloedzuigen</i>, de schadebonus van een "
-"<i>Stormloop</i> of <i>Aanval in de rug</i> wordt uitgeschakeld en de "
+"voordeel van hun vaardigheid <i>Aftappen</i>, de schadebonus van een "
+"<i>Stormloop</i> of <i>Ruggensteek</i> wordt uitgeschakeld en de "
 "<i>Razernij</i>vaardigheid wordt verzwakt. Snelle vijanden hebben problemen "
 "bij het ontsnappen; trage vijanden worden bijna altijd immobiel en je eigen "
 "eenheden hebben minder last van tegenaanvallen; op deze manier kun je hen "
@@ -4878,8 +5090,8 @@ msgid ""
 "This gives you another try whenever your first devastating attack misses — "
 "as inevitably happens from time to time."
 msgstr ""
-"Probeer eenheden met een klein aantal sterke aanvallen — zoals Zwarte "
-"Adepten, Ruiters, Orkgrunten of Donderdwergen — per drie te laten opereren. "
+"Probeer eenheden met een klein aantal sterke aanvallen — zoals Duistere "
+"Magiërs, Ruiters, Orkgrommers of Donderdwergen — per drie te laten opereren. "
 "Dit geeft je een extra kans wanneer je eerste verwoestende aanval mist — "
 "zoals onvermijdelijk af en toe gebeurt."
 
@@ -4918,7 +5130,7 @@ msgid ""
 msgstr ""
 "Wanneer een taaie eenheid hevig gewond is, zend je hem het best naar een "
 "dorp enkele beurten verplaatsing van het gevecht verwijderd om er te "
-"genezen. Op die manier kan hij zich in vrede herstellen (aan 10 hitpoints "
+"genezen. Op die manier kan hij zich in vrede herstellen (aan 10 levenspunten "
 "per beurt) zonder dorpen aan de frontlinie te bezetten."
 
 #. [tip]
@@ -4934,9 +5146,9 @@ msgid ""
 "<i>Charge</i> against a slowed opponent, the results can be impressive."
 msgstr ""
 "Het combineren van meerdere speciale vaardigheden kan dodelijk zijn. "
-"Alhoewel het wat werk kost om, bijvoorbeeld <i>Leiderschap</i>, "
-"<i>Verlichting</i> en <i>Stormloop</i> te combineren tegen een vertraagde "
-"tegenstander, kunnen de resultaten ontzagwekkend zijn."
+"Alhoewel het wat werk kost om, bijvoorbeeld <i>Leiderschap</i>, <i>Verlicht</"
+"i> en <i>Stormloop</i> te combineren tegen een vertraagde tegenstander, "
+"kunnen de resultaten ontzagwekkend zijn."
 
 #. [tip]
 #: data/tips.cfg:241
@@ -4974,6 +5186,10 @@ msgid ""
 "of 20 gold. In a campaign, always check if recalling a unit of the same type "
 "may be cheaper."
 msgstr ""
+"De rekruteerkosten van sommige eenheden kunnen meer zijn dan de oproepkosten "
+"van 20 goudstukken. In een veldtocht is het verstandig om altijd te "
+"controleren of het goedkoper is om een eenheid van hetzelfde type op te "
+"roepen."
 
 #. [tip]
 #: data/tips.cfg:253
@@ -4981,18 +5197,20 @@ msgid ""
 "You must accept some losses in battle. It is not uncommon for beginners to "
 "lose sight of victory as they attempt to keep every unit alive."
 msgstr ""
+"Je moet soms een aantal verliezen accepteren in een gevecht. Het is niet "
+"ongewoon voor beginners om de overwinning uit het oog te verliezen wanneer "
+"ze proberen iedere eenheid levend te houden."
 
 #. [tip]
 #: data/tips.cfg:254
-#, fuzzy
-#| msgid "<i>― Queen Li’sar, 528YW</i>"
 msgid "<i>― Queen Asheviere, 503YW</i>"
-msgstr "<i>― Koningin Li'sar, 528YW</i>"
+msgstr "<i>― Koningin Asheviere, 503YW</i>"
 
 #. [tip]
 #: data/tips.cfg:257
 msgid "Using lower-level units can be very cost-effective."
 msgstr ""
+"Het gebruik van eenheden van een lage rank kan erg kostenbesparend werken."
 
 #. [tip]
 #: data/tips.cfg:261
@@ -5001,13 +5219,15 @@ msgid ""
 "<i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can make a "
 "big difference in a campaign."
 msgstr ""
+"Sommige eenheden met een hogere rank hebben belangrijke vaardigheden zoals "
+"<i>Leiderschap</i>, <i>Geneest</i>, of <i>Nachtzicht</i>. Wanneer deze "
+"eenheden vroeg in de veldtocht beschikbaar worden kan dit voor een groot "
+"verschil zorgen."
 
 #. [tip]
 #: data/tips.cfg:262
-#, fuzzy
-#| msgid "<i>― Memoirs of Gweddry, 627YW</i>"
 msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
-msgstr "<i>― Memoires van Gweddry, 627YW</i>"
+msgstr "<i>― Heer Gerrick van Westin, 607YW</i>"
 
 #. [tip]
 #: data/tips.cfg:266
@@ -5026,9 +5246,9 @@ msgstr ""
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:225
 #, fuzzy
-#| msgid "No advancement"
+#| msgid "an advancement choice"
 msgid "waiting for^an advancement choice"
-msgstr "Geen promotie"
+msgstr "een promotie keuze"
 
 #: src/actions/attack.cpp:602 src/actions/attack.cpp:1349
 msgid "An invalid attacker weapon got selected."
@@ -5039,8 +5259,6 @@ msgid "You do not have a leader to recall with."
 msgstr "Je hebt geen leider om eenheden mee op te roepen."
 
 #: src/actions/create.cpp:342
-#, fuzzy
-#| msgid "None of your leaders is able to recall that unit."
 msgid "None of your leaders are able to recall that unit."
 msgstr "Geen enkele van je leiders kan deze eenheid oproepen."
 
@@ -5055,17 +5273,15 @@ msgstr "Er zijn geen lege kasteelvakken waarop je de eenheid kan oproepen."
 
 #: src/actions/create.cpp:360 src/actions/create.cpp:496
 msgid "An unrecognized error has occurred."
-msgstr ""
+msgstr "Een onbekende fout heeft plaatsgevonden."
 
 #: src/actions/create.cpp:474
 msgid "You do not have a leader to recruit with."
 msgstr "Je hebt geen leider om mee te rekruteren."
 
 #: src/actions/create.cpp:478
-#, fuzzy
-#| msgid "None of your leaders is able to recall that unit."
 msgid "None of your leaders are able to recruit that unit."
-msgstr "Geen enkele van je leiders kan deze eenheid oproepen."
+msgstr "Geen enkele van je leiders kan deze eenheid rekruteren."
 
 #: src/actions/create.cpp:482
 msgid "You must have a leader on a keep who is able to recruit the unit."
@@ -5106,7 +5322,7 @@ msgstr[1] "$enemies vijandelijke"
 
 #: src/actions/move.cpp:1148
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
-msgstr "Troepen gesignaleerd! ($friendphrase, $enemyphrase)"
+msgstr "Eenheden gesignaleerd! ($friendphrase, $enemyphrase)"
 
 #: src/actions/move.cpp:1152
 msgid "Enemy unit sighted!"
@@ -5129,38 +5345,28 @@ msgid "Connecting to $server_address|..."
 msgstr "Bezig met verbinden met $server_address|..."
 
 #: src/addon/client.cpp:89
-#, fuzzy
-#| msgid "Requesting list of add-ons"
 msgid "Downloading list of add-ons..."
-msgstr "Bezig met het opvragen van de lijst met add-ons"
+msgstr "Downloaden van de lijst met add-ons..."
 
 #: src/addon/client.cpp:103
-#, fuzzy
-#| msgid "Requesting list of add-ons"
 msgid "Requesting distribution terms..."
-msgstr "Bezig met het opvragen van een lijst met add-ons"
+msgstr "Opvragen distributievoorwaarden..."
 
 #: src/addon/client.cpp:127
-#, fuzzy
-#| msgid ""
-#| "The add-on has an invalid file or directory name and cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
 msgstr ""
-"De add-on heeft een ongeldige bestands- of mapnaam en kan niet worden "
-"geïnstalleerd."
+"De add-on <i>$addon_title</i> heeft een ongeldige id '$addon_id' en kan niet "
+"worden geïnstalleerd."
 
 #: src/addon/client.cpp:153
-#, fuzzy
-#| msgid ""
-#| "The add-on has an invalid file or directory name and cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
 msgstr ""
-"De add-on heeft een ongeldige bestands- of mapnaam en kan niet worden "
-"geïnstalleerd."
+"De add-on <i>$addon_title</i> heeft een ongeldige bestands- of mapnaam en "
+"kan niet worden gepubliceerd."
 
 #: src/addon/client.cpp:161
 msgid ""
@@ -5171,64 +5377,55 @@ msgid ""
 "\n"
 "&quot; * / : &lt; &gt; ? \\ | ~"
 msgstr ""
+"De add-on <i>$addon_title</i> heeft een ongeldige bestands- of mapnaam en "
+"kan niet worden gepubliceerd. Bestands- of mapnamen mogen geen '..' bevatten "
+"of eindigen met '.', ook mogen ze niet langer zijn dan 255 karakters. Ook "
+"mag een naam geen spaties, control-karakters of een van de volgende "
+"karakters bevatten:\n"
+"\n"
+"&quot; * / : &lt; &gt; ? \\ | ~"
 
 #: src/addon/client.cpp:172
-#, fuzzy
-#| msgid ""
-#| "The add-on has an invalid file or directory name and cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
 "the same string."
 msgstr ""
-"De add-on heeft een ongeldige bestands- of mapnaam en kan niet worden "
-"geïnstalleerd."
+"De add-on <i>$addon_title</i> bevat bestanden of mappen met "
+"bestemmingsconflicten. Bestands- of mapnamen mogen geen andere bestemming "
+"hebben dan dezelfde string."
 
 #: src/addon/client.cpp:184
-#, fuzzy
-#| msgid "Downloading add-on: $addon_title|..."
 msgid "Sending add-on <i>$addon_title</i>..."
-msgstr "Bezig met add-on downloaden: $addon_title|..."
+msgstr "Verzenden van add-on <i>$addon_title</i>..."
 
 #: src/addon/client.cpp:217
-#, fuzzy
-#| msgid "Downloading add-on: $addon_title|..."
 msgid "Removing add-on <i>$addon_title</i> from the server..."
-msgstr "Bezig met add-on downloaden: $addon_title|..."
+msgstr "Verwijderen van add-on <i>$addon_title</i> van de server..."
 
 #: src/addon/client.cpp:244
-#, fuzzy
-#| msgid "Downloading add-on: $addon_title|..."
 msgid "Downloading add-on <i>$addon_title</i>..."
-msgstr "Bezig met add-on downloaden: $addon_title|..."
+msgstr "Downloaden van add-on <i>$addon_title</i>..."
 
 #: src/addon/client.cpp:258
-#, fuzzy
-#| msgid ""
-#| "The add-on has an invalid file or directory name and cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
 msgstr ""
-"De add-on heeft een ongeldige bestands- of mapnaam en kan niet worden "
-"geïnstalleerd."
+"De add-on <i>$addon_title</i> heeft een ongeldige bestands- of mapnaam en "
+"kan niet worden geïnstalleerd."
 
 #: src/addon/client.cpp:264
-#, fuzzy
-#| msgid ""
-#| "The add-on has an invalid file or directory name and cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
 msgstr ""
-"De add-on heeft een ongeldige bestands- of mapnaam en kan niet worden "
-"geïnstalleerd."
+"De add-on <i>$addon_title</i> heeft een bestands- of mapnaam met "
+"bestemmingsconflicten. Dit kan voor problemen zorgen."
 
 #: src/addon/client.cpp:321
-#, fuzzy
-#| msgid "The server responded with an error: \""
 msgid "The server responded with an error:"
-msgstr "De server antwoordde met een fout: \""
+msgstr "De server antwoordde met een fout:"
 
 #: src/addon/client.cpp:371
 msgid ""
@@ -5241,13 +5438,13 @@ msgstr[0] ""
 "De geselecteerde add-on heeft de volgende afhankelijkheid, die momenteel "
 "niet geïnstalleerd is of beschikbaar is op de server. Wilt u toch doorgaan?"
 msgstr[1] ""
-"De geselecteerde add-on heeft de volgende afhankelijkheden, die momenteel "
-"niet geïnstalleerd is of beschikbaar zijn op de server. Wilt u toch doorgaan?"
+"De geselecteerde add-ons hebben de volgende afhankelijkheden, die momenteel "
+"niet geïnstalleerd zijn of beschikbaar zijn op de server. Wilt u toch "
+"doorgaan?"
 
 #: src/addon/client.cpp:380
-#, fuzzy
 msgid "Broken Dependencies"
-msgstr "Afhankelijkheden"
+msgstr "Gebroken Afhankelijkheden"
 
 #: src/addon/client.cpp:422
 msgid ""
@@ -5257,33 +5454,35 @@ msgid_plural ""
 "The following dependencies could not be installed. Do you still wish to "
 "continue?"
 msgstr[0] ""
+"De volgende afhankelijkheid kon niet worden geïnstalleerd. Wil je nog steeds "
+"doorgaan?"
 msgstr[1] ""
+"De volgende afhankelijkheden konden niet worden geïnstalleerd. Wil je nog "
+"steeds doorgaan?"
 
 #: src/addon/client.cpp:426
-#, fuzzy
-#| msgid "Installation failed"
 msgid "Dependencies Installation Failed"
-msgstr "Installatie mislukt"
+msgstr "Installatie van Afhankelijkheden Mislukt"
 
 #: src/addon/client.cpp:449
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
+"De add-on '$addon|' is al geïnstalleerd en bevat extra informatie die "
+"verloren gaat als je doorgaat:"
 
 #: src/addon/client.cpp:453
 msgid "Publishing information file (.pbl)"
-msgstr ""
+msgstr "Publiceer informatie bestand (.pbl)"
 
 #: src/addon/client.cpp:457
 msgid "Version control system (VCS) information"
-msgstr ""
+msgstr "Versie controle systeem (VCS) informatie"
 
 #: src/addon/client.cpp:461
-#, fuzzy
-#| msgid "Do you want to continue?"
 msgid "Do you really wish to continue?"
-msgstr "Wil je verdergaan?"
+msgstr "Weet je zeker dat je wilt verdergaan?"
 
 #: src/addon/client.cpp:463 src/addon/manager_ui.cpp:174
 #: src/game_initialization/multiplayer.cpp:236
@@ -5291,10 +5490,8 @@ msgid "Confirm"
 msgstr "Bevestigen"
 
 #: src/addon/client.cpp:583
-#, fuzzy
-#| msgid "Add-on Installed"
 msgid "Add-ons Manager"
-msgstr "Add-on geïnstalleerd"
+msgstr "Add-ons Beheerder"
 
 #: src/addon/info.cpp:157
 msgid "addon_type^Campaign"
@@ -5305,10 +5502,8 @@ msgid "addon_type^Scenario"
 msgstr "Scenario"
 
 #: src/addon/info.cpp:161
-#, fuzzy
-#| msgid "addon_type^MP campaign"
 msgid "addon_type^SP/MP Campaign"
-msgstr "MP veldtocht"
+msgstr "SP/MP veldtocht"
 
 #: src/addon/info.cpp:163
 msgid "addon_type^MP era"
@@ -5331,16 +5526,12 @@ msgid "addon_type^MP campaign"
 msgstr "MP veldtocht"
 
 #: src/addon/info.cpp:173
-#, fuzzy
-#| msgid "addon_type^MP modification"
 msgid "addon_type^Modification"
-msgstr "MP modificatie"
+msgstr "MP aanpassing"
 
 #: src/addon/info.cpp:175
-#, fuzzy
-#| msgid "addon_type^Resources"
 msgid "addon_type^Core"
-msgstr "Middelen"
+msgstr "Bron"
 
 #: src/addon/info.cpp:177
 msgid "addon_type^Resources"
@@ -5356,7 +5547,7 @@ msgstr "(onbekend)"
 
 #: src/addon/info.cpp:221
 msgid "unit_byte^B"
-msgstr ""
+msgstr "B"
 
 #: src/addon/manager_ui.cpp:82 src/addon/manager_ui.cpp:293
 msgid "Network communication error."
@@ -5381,10 +5572,14 @@ msgid ""
 "File: $path\n"
 "Error message: $msg"
 msgstr ""
+"Een lokaal bestand met add-on publiceer informatie kon niet worden gelezen\n"
+"\n"
+"Bestand: $path\n"
+"Foutmelding: $msg"
 
 #: src/addon/manager_ui.cpp:105 src/addon/manager_ui.cpp:314
 msgid "The add-ons server address specified is not valid."
-msgstr ""
+msgstr "Het gespecificeerde server adres voor add-ons is ongeldig."
 
 #: src/addon/manager_ui.cpp:118
 msgid "You have no add-ons installed."
@@ -5404,13 +5599,17 @@ msgid_plural ""
 "The following add-ons appear to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr[0] ""
+"De volgende add-on lijkt versie controle of informatie lokaal opgeslagen te "
+"hebben, en zal niet worden verwijderd:"
 msgstr[1] ""
+"De volgende add-ons lijken versie controle of informatie lokaal opgeslagen "
+"te hebben, en zllen niet worden verwijderd:"
 
 #: src/addon/manager_ui.cpp:205
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
 msgstr[0] "De volgende add-on kon niet verwijderd worden:"
-msgstr[1] "De volgende add-ons kon niet verwijderd worden:"
+msgstr[1] "De volgende add-ons konden niet verwijderd worden:"
 
 #: src/addon/manager_ui.cpp:212
 msgid "Add-on Deleted"
@@ -5425,16 +5624,14 @@ msgstr[0] "De volgende add-on werd succesvol verwijderd:"
 msgstr[1] "De volgende add-ons werden succesvol verwijderd:"
 
 #: src/addon/manager_ui.cpp:270
-#, fuzzy
-#| msgid "An error occurred while communicating with the server."
 msgid "An error occurred while downloading the add-ons list from the server."
-msgstr "Er is een fout opgetreden bij het communiceren met de server."
+msgstr ""
+"Er is een fout opgetreden bij het downloaden van de add-ons lijst van de "
+"server."
 
 #: src/addon/manager_ui.cpp:284
-#, fuzzy
-#| msgid "Could not find any updated add-ons on this server."
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
-msgstr "Kon geen vernieuwde add-ons vinden op deze server."
+msgstr "Kon geen add-on vinden met de id $addon_id op de add-on server."
 
 #: src/chat_command_handler.cpp:111
 msgid "Added to ignore list: $nick"
@@ -5442,7 +5639,7 @@ msgstr "Toegevoegd aan negeerlijst: $nick"
 
 #: src/chat_command_handler.cpp:111
 msgid "ignores list"
-msgstr "Negeerlijst: "
+msgstr "negeerlijst"
 
 #: src/chat_command_handler.cpp:115 src/chat_command_handler.cpp:134
 msgid "Invalid username: $nick"
@@ -5454,7 +5651,7 @@ msgstr "Toegevoegd aan vriendenlijst: $nick"
 
 #: src/chat_command_handler.cpp:130
 msgid "friends list"
-msgstr "vriendenlijst: "
+msgstr "vriendenlijst"
 
 #: src/chat_command_handler.cpp:146
 msgid "Removed from list: $nick"
@@ -5462,7 +5659,7 @@ msgstr "Verwijderd van lijst: $nick"
 
 #: src/chat_command_handler.cpp:146
 msgid "friends and ignores list"
-msgstr "Vrienden- en negeerlijst"
+msgstr "vrienden- en negeerlijst"
 
 #: src/chat_command_handler.cpp:158
 msgid "version"
@@ -5491,7 +5688,7 @@ msgstr "$var de waarde $value geven"
 
 #: src/chat_command_handler.cpp:225
 msgid "requesting information for user $nick"
-msgstr "Informatie opvragen van gebruiker $nick"
+msgstr "informatie opvragen van gebruiker $nick"
 
 #: src/chat_command_handler.hpp:66
 msgid "(A) — admin command"
@@ -5547,13 +5744,15 @@ msgstr ""
 
 #: src/chat_command_handler.hpp:104
 msgid "Mute/Unmute all observers. (toggles)"
-msgstr "Demp/Ontdemp alle toeschouwers."
+msgstr "Demp/Hef demp op bij alle toeschouwers. (schakelen)"
 
 #: src/chat_command_handler.hpp:108
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
 msgstr ""
+"Meldt misbruik, overtredingen, enz. bij de server beheerders. Zorg dat je "
+"relevante bijnamen enz. noemt."
 
 #: src/chat_command_handler.hpp:112
 msgid "<message>"
@@ -5604,10 +5803,8 @@ msgid "<password> <email (optional)>"
 msgstr "<wachtwoord> <email (optioneel)>"
 
 #: src/chat_command_handler.hpp:131
-#, fuzzy
-#| msgid "Drop your nickname."
 msgid "Register your nickname"
-msgstr "Verwerp je bijnaam."
+msgstr "Registreer je bijnaam"
 
 #: src/chat_command_handler.hpp:133
 msgid "Drop your nickname."
@@ -5647,7 +5844,7 @@ msgstr "Verlaat een kamer."
 
 #: src/chat_command_handler.hpp:147
 msgid "List room members."
-msgstr "Lijst van kamergebruikers"
+msgstr "Lijst van kamergebruikers."
 
 #: src/chat_command_handler.hpp:149
 msgid "List available rooms."
@@ -5695,35 +5892,27 @@ msgstr "fluister: $sender"
 
 #: src/deprecation.cpp:40
 msgid "$elem has been deprecated indefinitely."
-msgstr ""
+msgstr "$elem is voor eeuwig verouderd."
 
 #: src/deprecation.cpp:47
 msgid "$elem has been deprecated and may be removed in version $version."
-msgstr ""
+msgstr "$elem is verouderd en kan worden verwijderd in versie $version."
 
 #: src/deprecation.cpp:49
 msgid "$elem has been deprecated and may be removed at any time."
-msgstr ""
+msgstr "$elem is verouderd en zal elk moment worden verwijderd."
 
 #: src/deprecation.cpp:56
 msgid "$elem has been deprecated and will be removed in version $version."
-msgstr ""
+msgstr "$elem is verouderd en zal worden verwijderd in versie $version."
 
 #: src/deprecation.cpp:61
 msgid "$elem has been deprecated and removed."
-msgstr ""
+msgstr "$elem is verouderd en is verwijderd."
 
 #: src/desktop/notifications.cpp:82
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Clear chat messages.\n"
-#| "\n"
 msgid "Chat message"
-msgstr ""
-"\n"
-"Chatberichten opschonen.\n"
-"\n"
+msgstr "Chatbericht"
 
 #: src/desktop/windows_tray_notification.cpp:125 src/game_config.cpp:588
 msgid "The Battle for Wesnoth"
@@ -5754,96 +5943,85 @@ msgid "%b %d"
 msgstr "%d %b"
 
 #: src/format_time_summary.cpp:65
-#, fuzzy
-#| msgid "%b %d %y"
 msgid "%b %d %Y"
 msgstr "%d %b %y"
 
 #: src/game_config.cpp:536
-#, fuzzy
-#| msgid "Invalid color range: "
 msgid "Invalid color in range: "
-msgstr "Ongeldig kleurbereik:"
+msgstr "Ongeldig kleurbereik: "
 
 #: src/game_config_manager.cpp:199 src/game_config_manager.cpp:208
 #: src/game_config_manager.cpp:220
 msgid "Error validating data core."
-msgstr ""
+msgstr "Fout validatie data bron."
 
 #: src/game_config_manager.cpp:200
 msgid "Found a core without id attribute."
-msgstr ""
+msgstr "Bron gevonden zonder id attribuut."
 
 #: src/game_config_manager.cpp:201 src/game_config_manager.cpp:211
 #: src/game_config_manager.cpp:224
 msgid "Skipping the core."
-msgstr ""
+msgstr "Sla de bron over."
 
 #: src/game_config_manager.cpp:209 src/game_config_manager.cpp:221
 #: src/game_config_manager.cpp:244
 msgid "Core ID: "
-msgstr ""
+msgstr "Bron ID: "
 
 #: src/game_config_manager.cpp:210
-#, fuzzy
-#| msgid "This map is already open."
 msgid "The ID is already in use."
-msgstr "Het kaart is ongeldig."
+msgstr "Deze ID is al in gebruik."
 
 #: src/game_config_manager.cpp:222
 msgid "Core Path: "
-msgstr ""
+msgstr "Bron Pad: "
 
 #: src/game_config_manager.cpp:223
-#, fuzzy
-#| msgid "Variable not found"
 msgid "File not found."
-msgstr "Variabele niet gevonden"
+msgstr "Bestand niet gevonden."
 
 #: src/game_config_manager.cpp:243 src/game_config_manager.cpp:255
 msgid "Error loading core data."
-msgstr ""
+msgstr "Fout bij laden van bron data."
 
 #: src/game_config_manager.cpp:245
 msgid "Error loading the core with named id."
-msgstr ""
+msgstr "Fout bij laden van bron met genoemd id."
 
 #: src/game_config_manager.cpp:246
 msgid "Falling back to the default core."
-msgstr ""
+msgstr "Terugvallen naar de standaard bron."
 
 #: src/game_config_manager.cpp:256
 msgid "Can't locate the default core."
-msgstr ""
+msgstr "Kan standaard bron niet vinden."
 
 #: src/game_config_manager.cpp:257
-#, fuzzy
-#| msgid "' (The game will now exit)"
 msgid "The game will now exit."
-msgstr "' (Het spel wordt nu gesloten)"
+msgstr "(Het spel wordt nu gesloten)"
 
 #: src/game_config_manager.cpp:313
-#, fuzzy
-#| msgid "Error loading game configuration files: '"
 msgid ""
 "Error loading custom game configuration files. The game will try without "
 "loading add-ons."
-msgstr "Fout bij het inlezen van de configuratiebestanden: '"
+msgstr ""
+"Fout bij het inlezen van de configuratiebestanden. Het spel probeert opnieuw "
+"te laden zonder add-ons."
 
 #: src/game_config_manager.cpp:320
-#, fuzzy
-#| msgid "Error loading game configuration files: '"
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
 "default core files."
-msgstr "Fout bij het inlezen van de configuratiebestanden: '"
+msgstr ""
+"Fout bij het inlezen van de configuratiebestanden. Het spel valt terug naar "
+"de standaard bron bestanden."
 
 #: src/game_config_manager.cpp:329
-#, fuzzy
-#| msgid "Error loading game configuration files: '"
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
-msgstr "Fout bij het inlezen van de configuratiebestanden: '"
+msgstr ""
+"Fout bij het inlezen van de configuratiebestanden. Het spel wordt afgesloten."
 
 #: src/game_config_manager.cpp:473
 msgid "The following add-on had errors and could not be loaded:"
@@ -5855,24 +6033,25 @@ msgstr[1] "De volgende add-ons bevatten fouten en konden niet worden geladen:"
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
-msgstr[0] ""
+msgstr[0] "Meldt dit alstublieft bij de auteur of beheerder van deze add-on."
 msgstr[1] ""
+"Meldt dit alstublieft bij de auteurs of beheerders van deze add-ons."
 
 #: src/game_events/pump.cpp:476 src/game_launcher.cpp:915
 msgid "Error: "
-msgstr "Error:"
+msgstr "Fout: "
 
 #: src/game_events/pump.cpp:478
 msgid "Warning: "
-msgstr "Waarschuwing:"
+msgstr "Waarschuwing: "
 
 #: src/game_events/pump.cpp:480
 msgid "Debug: "
-msgstr "Debug:"
+msgstr "Debug: "
 
 #: src/game_events/pump.cpp:482
 msgid "Info: "
-msgstr "Info:"
+msgstr "Info: "
 
 #: src/game_initialization/configure_engine.cpp:65
 msgid "$login|’s game"
@@ -5883,10 +6062,8 @@ msgid "Team"
 msgstr "Team"
 
 #: src/game_initialization/connect_engine.cpp:1008
-#, fuzzy
-#| msgid "Anonymous local player"
 msgid "Anonymous player"
-msgstr "Anonieme lokale speler"
+msgstr "Anonieme speler"
 
 #: src/game_initialization/connect_engine.cpp:1013
 #: src/game_initialization/connect_engine.cpp:1316
@@ -5907,7 +6084,7 @@ msgstr "Lokale speler"
 
 #: src/game_initialization/connect_engine.cpp:1317
 msgid "Empty"
-msgstr "Niemand"
+msgstr "Leeg"
 
 #: src/game_initialization/connect_engine.cpp:1320
 msgid "Reserved"
@@ -5915,64 +6092,57 @@ msgstr "Gereserveerd"
 
 #: src/game_initialization/create_engine.cpp:73
 #: src/game_initialization/create_engine.cpp:666
-#, fuzzy
-#| msgid "The game could not be loaded: "
 msgid "Map could not be loaded: "
 msgstr "Het spel kon niet worden geladen: "
 
 #: src/game_initialization/create_engine.cpp:77
-#, fuzzy
-#| msgid "The game could not be loaded: "
 msgid "Map could not be loaded."
-msgstr "Het spel kon niet worden geladen: "
+msgstr "Kaart kan niet worden geladen."
 
 #: src/game_initialization/create_engine.cpp:94
 msgid "not available."
 msgstr "niet beschikbaar."
 
 #: src/game_initialization/create_engine.cpp:149
-#, fuzzy
-#| msgid "Commands"
 msgid "Custom map."
-msgstr "Commando's"
+msgstr "Aangepaste kaart."
 
 #: src/game_initialization/depcheck.cpp:491
-#, fuzzy
 msgid "Failed to resolve dependencies"
-msgstr "Afhankelijkheden"
+msgstr "Niet gelukt om afhankelijkheden op te lossen"
 
 #: src/game_initialization/depcheck.cpp:516
 msgid "Scenario can't be activated. Some dependencies are missing: "
 msgstr ""
+"Scenario kan niet worden geactiveerd. Sommige afhankelijkheden missen: "
 
 #: src/game_initialization/depcheck.cpp:570
 #: src/game_initialization/depcheck.cpp:693
-#, fuzzy
-#| msgid "No eras found."
 msgid "No compatible eras found."
-msgstr "Geen tijdperken gevonden."
+msgstr "Geen geschikte tijdperken gevonden."
 
 #: src/game_initialization/depcheck.cpp:585
 msgid "Era can't be activated. Some dependencies are missing: "
 msgstr ""
+"Tijdperk kan niet worden geactiveerd. Sommige afhankelijkheden missen: "
 
 #: src/game_initialization/depcheck.cpp:638
 #: src/game_initialization/depcheck.cpp:730
-#, fuzzy
-#| msgid "No multiplayer sides found"
 msgid "No compatible scenarios found."
-msgstr "Er werden geen multiplayerzijdes gevonden"
+msgstr "Geen geschikte scenario's gevonden."
 
 #: src/game_initialization/depcheck.cpp:667
 msgid ""
 "Not all of the chosen modifications are compatible. Some of them will be "
 "disabled."
 msgstr ""
+"Niet alle gekozen aanpassingen zijn geschikt. Sommige zullen uitgeschakeld "
+"worden."
 
 #: src/game_initialization/depcheck.hpp:312
 #: src/game_initialization/depcheck.hpp:324
 msgid "A component"
-msgstr ""
+msgstr "Een onderdeel"
 
 #: src/game_initialization/flg_manager.cpp:211
 msgid "Only random sides in the current era."
@@ -5984,47 +6154,41 @@ msgstr "Geen leider gevonden voor de factie $faction"
 
 #: src/game_initialization/flg_manager.cpp:256
 msgid "Cannot obtain genders for invalid leader $leader"
-msgstr ""
+msgstr "Kan geslacht niet ophalen voor ongeldige leider $leader"
 
 #: src/game_initialization/lobby_data.cpp:246
-#, fuzzy
-#| msgid "Missing argument $arg_id"
 msgid "Missing addon: $name"
-msgstr "Ontbrekend argument $arg_id"
+msgstr "Ontbrekende add-on: $name"
 
 #: src/game_initialization/lobby_data.cpp:248
-#, fuzzy
-#| msgid "Missing argument $arg_id"
 msgid "Missing addon: $id"
-msgstr "Ontbrekend argument $arg_id"
+msgstr "Ontbrekende add-on: $id"
 
 #: src/game_initialization/lobby_data.cpp:285
 msgid "Unknown era"
-msgstr "Tijdperk niet gevonden"
+msgstr "Onbekend tijdperk"
 
 #: src/game_initialization/lobby_data.cpp:353
 #: src/game_initialization/lobby_data.cpp:386
-#, fuzzy
-#| msgid "scenario settings^Side"
 msgid "scenario_abbreviation^S"
-msgstr "Zijde"
+msgstr "S"
 
 #: src/game_initialization/lobby_data.cpp:372
 msgid "Remote scenario"
-msgstr "Remote scenario"
+msgstr "Op zichzelf staand scenario"
 
 #: src/game_initialization/lobby_data.cpp:394
 #: src/game_initialization/lobby_data.cpp:417
 msgid "campaign_abbreviation^C"
-msgstr ""
+msgstr "C"
 
 #: src/game_initialization/lobby_data.cpp:422
 msgid "Unknown scenario"
-msgstr "Scenario niet gevonden"
+msgstr "Onbekend scenario"
 
 #: src/game_initialization/lobby_data.cpp:432
 msgid "Reloaded game"
-msgstr "Geladen opgeslagen spel"
+msgstr "Spel herladen"
 
 #: src/game_initialization/lobby_data.cpp:447
 msgid "Vacant Slot:"
@@ -6034,7 +6198,7 @@ msgstr[1] "Vrije plaatsen:"
 
 #: src/game_initialization/lobby_data.cpp:449
 msgid "mp_game_available_slots^Full"
-msgstr ""
+msgstr "Vol"
 
 #: src/game_initialization/lobby_data.cpp:460
 #: src/game_initialization/lobby_data.cpp:462 src/savegame.cpp:631
@@ -6042,28 +6206,28 @@ msgid "Turn"
 msgstr "Beurt"
 
 #: src/game_initialization/lobby_data.cpp:475
-#, fuzzy
-#| msgid "vision: "
 msgid "vision^none"
-msgstr "zicht:"
+msgstr "geen"
 
 #: src/game_initialization/lobby_data.cpp:484
-#, fuzzy
-#| msgid "Time limit"
 msgid "time limit^none"
-msgstr "Tijdslimiet"
+msgstr "geen"
 
 #: src/game_initialization/lobby_data.cpp:524
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
+"De versie van de gastheer van <i>$addon</i> is niet verenigbaar. Zij hebben "
+"versie <b>$host_ver</b> terwijl jij versie <b>$local_ver</b> hebt."
 
 #: src/game_initialization/lobby_data.cpp:538
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
+"Je versie van <i>$addon</i> is niet verenigbaar. Jij hebt versie <b>"
+"$local_ver</b> terwijl de gastheer versie <b>$host_ver</b> heeft."
 
 #: src/game_initialization/mp_game_utils.cpp:101
 msgid "Cannot find era $era"
@@ -6074,10 +6238,6 @@ msgid "Connection timed out"
 msgstr "Verbinding time-out"
 
 #: src/game_initialization/multiplayer.cpp:124
-#, fuzzy
-#| msgid ""
-#| "The server requires version '$version1' while you are using version "
-#| "'$version2'"
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
@@ -6094,7 +6254,7 @@ msgid ""
 "to do it for you."
 msgstr ""
 "De bijnaam '$nick' is inactief. Je kunt deze bijnaam niet claimen totdat je "
-"je account  hebt geactiveerd via e-mail of een administrator hebt gevraagd "
+"je account hebt geactiveerd via e-mail of een administrator hebt gevraagd "
 "did voor je te doen."
 
 #: src/game_initialization/multiplayer.cpp:218
@@ -6120,16 +6280,12 @@ msgid "The nickname ‘$nick’ is already taken."
 msgstr "De bijnaam '$nick' is al in gebruik."
 
 #: src/game_initialization/multiplayer.cpp:319
-#, fuzzy
-#| msgid ""
-#| "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
-#| "characters, underscores and hyphens are allowed."
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
 msgstr ""
-"De bijnaam '$nick' bevat ongeldige tekens. Alleen alfanumerieke tekens, "
-"underscores ('_') en koppeltekens ('-') zijn toegestaan."
+"De bijnaam '$nick' bevat ongeldige tekens. Alleen alfanumerieke tekens "
+"(minimaal één), underscores ('_') en koppeltekens ('-') zijn toegestaan."
 
 #: src/game_initialization/multiplayer.cpp:323
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
@@ -6147,44 +6303,44 @@ msgstr "De bijnaam '$nick' is niet geregistreerd op deze server."
 
 #: src/game_initialization/multiplayer.cpp:329
 msgid " This server disallows unregistered nicknames."
-msgstr "Deze server staat geen ongeregistreerde bijnamen toe."
+msgstr " Deze server staat geen ongeregistreerde bijnamen toe."
 
 #: src/game_initialization/multiplayer.cpp:332
 #, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
+#| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
-msgstr "De bijnaam '$nick' is geregistreerd op deze server."
+msgstr "De bijnaam '$nick' is verbannen van deze server forums."
 
 #: src/game_initialization/multiplayer.cpp:334
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
-msgstr "De bijnaam '$nick' is geregistreerd op deze server."
+msgstr "De bijnaam '$nick' is verbannen van deze server forums."
 
 #: src/game_initialization/multiplayer.cpp:338
 #, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
+#| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums for $duration|."
-msgstr "De bijnaam '$nick' is geregistreerd op deze server."
+msgstr "Je IP-adres is verbannen van deze server forums."
 
 #: src/game_initialization/multiplayer.cpp:340
 msgid "Your IP address is banned on this server’s forums."
-msgstr ""
+msgstr "Je IP-adres is verbannen van deze server forums."
 
 #: src/game_initialization/multiplayer.cpp:344
 #, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
+#| msgid ""
+#| "The email address for the nickname ‘$nick’ is banned on this server’s "
+#| "forums."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
-msgstr "De bijnaam '$nick' is geregistreerd op deze server."
+msgstr ""
+"Het e-mailadres voor de bijnaam '$nick' is verbannen van de server forums."
 
 #: src/game_initialization/multiplayer.cpp:346
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
-msgstr "De bijnaam '$nick' is geregistreerd op deze server."
+msgstr ""
+"Het e-mailadres voor de bijnaam '$nick' is verbannen van de server forums."
 
 #: src/game_initialization/multiplayer.cpp:349
 #: src/game_initialization/multiplayer.cpp:351
@@ -6222,42 +6378,30 @@ msgid "Turns finished early: "
 msgstr "Resterend aantal beurten: "
 
 #: src/game_initialization/playcampaign.cpp:67
-#, fuzzy
-#| msgid "per turn"
 msgid " per turn"
-msgstr "goudstukken"
+msgstr " per beurt"
 
 #: src/game_initialization/playcampaign.cpp:67
 msgid "Early finish bonus: "
-msgstr "Bonus per beurt: "
+msgstr "Vroeg behaald bonus: "
 
 #: src/game_initialization/playcampaign.cpp:68
-#, fuzzy
-#| msgid "Turn bonus: "
 msgid "Total bonus: "
-msgstr "Beurtbonus: "
+msgstr "Totale bonus: "
 
 #: src/game_initialization/playcampaign.cpp:70
-#, fuzzy
-#| msgid "Village gold: "
 msgid "Total gold: "
-msgstr "Goud per dorp: "
+msgstr "Totaal goud: "
 
 #: src/game_initialization/playcampaign.cpp:73
-#, fuzzy
-#| msgid "Carry over percentage: "
 msgid "Carryover percentage: "
 msgstr "Overdrachtspercentage: "
 
 #: src/game_initialization/playcampaign.cpp:76
-#, fuzzy
-#| msgid "Bonus Gold: "
 msgid "Bonus gold: "
 msgstr "Bonusgoud: "
 
 #: src/game_initialization/playcampaign.cpp:78
-#, fuzzy
-#| msgid "Retained Gold: "
 msgid "Retained gold: "
 msgstr "Resterend goud: "
 
@@ -6281,10 +6425,10 @@ msgid ""
 msgid_plural ""
 "You will start the next scenario with the defined minimum starting gold."
 msgstr[0] ""
-"Je zult het volgende scenario beginnen met het voorgedefinieerde minimale "
+"Je zult het volgende scenario beginnen met het vooraf gedefinieerde minimale "
 "startgoud."
 msgstr[1] ""
-"Je zult het volgende scenario beginnen met het voorgedefinieerde minimale "
+"Je zult het volgende scenario beginnen met het vooraf gedefinieerde minimale "
 "startgoud."
 
 #: src/game_initialization/playcampaign.cpp:107
@@ -6295,11 +6439,11 @@ msgid_plural ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
 msgstr[0] ""
-"Je zult het volgende scenario beginnen met $gold of met het gedefinieerde "
-"minimale startgoud, welke van de twee het hoogst is."
+"Je zult het volgende scenario beginnen met $gold of met het vooraf "
+"gedefinieerde minimale startgoud, welke van de twee het hoogst is."
 msgstr[1] ""
-"Je zult het volgende scenario beginnen met $gold of met het gedefinieerde "
-"minimale startgoud, welke van de twee het hoogst is."
+"Je zult het volgende scenario beginnen met $gold of met het vooraf "
+"gedefinieerde minimale startgoud, welke van de twee het hoogst is."
 
 #: src/game_initialization/playcampaign.cpp:137
 msgid "Scenario Report"
@@ -6336,7 +6480,7 @@ msgstr "De kaart kon niet worden geladen: "
 #: src/game_initialization/playcampaign.cpp:305 src/game_launcher.cpp:872
 #: src/game_launcher.cpp:1006
 msgid "Map generator error: "
-msgstr ""
+msgstr "Kaart maker fout: "
 
 #: src/game_initialization/playcampaign.cpp:307
 msgid "Error while reading the WML: "
@@ -6356,10 +6500,8 @@ msgid "Unknown scenario: '$scenario|'"
 msgstr "Onbekend scenario: '$scenario|'"
 
 #: src/game_initialization/singleplayer.cpp:42
-#, fuzzy
-#| msgid "No campaigns are available.\n"
 msgid "No campaigns are available."
-msgstr "Geen veldtochten beschikbaar.\n"
+msgstr "Geen veldtochten beschikbaar."
 
 #: src/game_launcher.cpp:649 src/game_launcher.cpp:667
 msgid "The file you have tried to load is corrupt"
@@ -6384,37 +6526,27 @@ msgid "Error while starting server: "
 msgstr "Fout tijdens het starten van de server: "
 
 #: src/game_launcher.cpp:888
-#, fuzzy
-#| msgid "Connection timed out"
 msgid "Connection failed: "
-msgstr "Verbinding time-out"
+msgstr "Verbinding mislukt: "
 
 #: src/generators/default_map_generator_job.cpp:711
-#, fuzzy
-#| msgid "Random maps with an odd width aren't supported."
 msgid "Random maps with an odd width aren't supported."
-msgstr "Willekeurige kaart met een vreemde breedte wordt niet ondersteund."
+msgstr "Willekeurige kaarten met een oneven breedte worden niet ondersteund."
 
 #: src/generators/default_map_generator_job.cpp:974
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
 msgstr ""
-"Geen geldige kasteellocatie gevonden. Te veel of te weinig bergvakjes? "
-"(gelieve de 'maximum heuvelgrootte'-parameter te controleren)"
+"Geen geldige kasteel locatie gevonden. Te veel of te weinig bergen? (gelieve "
+"de 'maximum heuvelgrootte'-parameter te controleren)"
 
 #: src/gui/core/linked_group_definition.cpp:39
 msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
+"Gelinkte groep '$id' heeft een 'fixed_width' or 'fixed_height' key nodig."
 
 #: src/gui/dialogs/addon/install_dependencies.cpp:38
-#, fuzzy
-#| msgid ""
-#| "The selected add-on has the following dependency. Do you want to install "
-#| "it?"
-#| msgid_plural ""
-#| "The selected add-on has the following dependencies. Do you want to "
-#| "install them?"
 msgid ""
 "The selected add-on has the following dependency, which is outdated or not "
 "currently installed. Do you wish to install it before continuing?"
@@ -6422,27 +6554,24 @@ msgid_plural ""
 "The selected add-on has the following dependencies, which are outdated or "
 "not currently installed. Do you wish to install them before continuing?"
 msgstr[0] ""
-"De geselecteerde add-on heeft de volgende afhankelijkheid. Wilt u deze "
-"installeren?"
+"De geselecteerde add-on heeft de volgende afhankelijkheid, deze is verouderd "
+"of momenteel niet geïnstalleerd. Wilt u deze installeren voordat u doorgaat?"
 msgstr[1] ""
-"De geselecteerde add-on heeft de volgende afhankelijkheden. Wilt u deze "
-"installeren?"
+"De geselecteerde add-on heeft de volgende afhankelijkheden, deze zijn "
+"verouderd of momenteel niet geïnstalleerd. Wilt u deze installeren voordat u "
+"doorgaat?"
 
 #: src/gui/dialogs/game_load.hpp:40
 msgid "No Saved Games"
 msgstr "Geen opgeslagen spellen"
 
 #: src/gui/dialogs/game_load.hpp:40
-#, fuzzy
-#| msgid "The file you have tried to load is corrupt"
 msgid "There are no save files to load"
-msgstr "Het bestand dat je hebt proberen te laden is ongeldig"
+msgstr "Er zijn geen opgeslagen bestanden om te laden"
 
 #: src/gui/dialogs/game_stats.hpp:43
-#, fuzzy
-#| msgid "No multiplayer sides found"
 msgid "No visible sides found."
-msgstr "Er werden geen multiplayerzijdes gevonden"
+msgstr "Geen zichtbare kanten gevonden."
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:104
 msgid "In game:"
@@ -6466,7 +6595,7 @@ msgstr "In vriendenlijst"
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:145
 msgid "On ignores list"
-msgstr "In negeerlijst:"
+msgstr "In negeerlijst"
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:150
 msgid "Neither a friend nor ignored"
@@ -6481,10 +6610,8 @@ msgid "Error"
 msgstr "Fout"
 
 #: src/gui/dialogs/unit_list.hpp:45
-#, fuzzy
-#| msgid "No eras found."
 msgid "No units found."
-msgstr "Geen tijdperken gevonden."
+msgstr "Geen eenheden gevonden."
 
 #: src/gui/widgets/status_label_helper.hpp:34
 msgid "no"
@@ -6500,23 +6627,19 @@ msgstr "Verwijzing naar onbekend onderwerp: "
 
 #: src/help/help_impl.cpp:374
 msgid "Only available during a scenario."
-msgstr ""
+msgstr "Alleen beschikbaar gedurende een scenario."
 
 #: src/help/help_impl.cpp:399
 msgid "Schedule"
-msgstr ""
+msgstr "Rooster"
 
 #: src/help/help_impl.cpp:491
-#, fuzzy
-#| msgid "<header>text='Units having this special attack'</header>"
 msgid "<header>text='Units with this special attack'</header>"
 msgstr "<header>text='Eenheden met deze specifieke aanval'</header>"
 
 #: src/help/help_impl.cpp:555
-#, fuzzy
-#| msgid "<header>text='Units having this ability'</header>"
 msgid "<header>text='Units with this ability'</header>"
-msgstr "<header>text='Eenheden met dit vermogen'</header>"
+msgstr "<header>text='Eenheden met deze vaardigheid'</header>"
 
 #: src/help/help_impl.cpp:585
 msgid "Era:"
@@ -6527,22 +6650,16 @@ msgid "Factions"
 msgstr "Facties"
 
 #: src/help/help_impl.cpp:642
-#, fuzzy
-#| msgid "Race: "
 msgid "Races: "
-msgstr "Ras: "
+msgstr "Rassen: "
 
 #: src/help/help_impl.cpp:651 src/help/help_impl.cpp:1001
-#, fuzzy
-#| msgid "Alignment: "
 msgid "Alignments: "
-msgstr "Alliantie: "
+msgstr "Allianties: "
 
 #: src/help/help_impl.cpp:658
-#, fuzzy
-#| msgid "Leaders:"
 msgid "Leaders"
-msgstr "Leiders:"
+msgstr "Leiders"
 
 #: src/help/help_impl.cpp:667
 msgid "Recruits"
@@ -6553,20 +6670,16 @@ msgid "No description available."
 msgstr "Geen beschrijving beschikbaar."
 
 #: src/help/help_impl.cpp:732 src/help/help_impl.cpp:734
-#, fuzzy
-#| msgid "Ability: "
 msgid "Availability: "
-msgstr "Vaardigheid:"
+msgstr "Beschikbaarheid: "
 
 #: src/help/help_impl.cpp:732
 msgid "Must-have"
-msgstr ""
+msgstr "Verplicht te hebben"
 
 #: src/help/help_impl.cpp:734
-#, fuzzy
-#| msgid "not available."
 msgid "Unavailable"
-msgstr "niet beschikbaar."
+msgstr "Niet beschikbaar"
 
 #: src/help/help_impl.cpp:814 src/help/help_impl.cpp:989
 #: src/help/help_topic_generators.cpp:400
@@ -6583,39 +6696,31 @@ msgstr "<header>text='Eenheden van dit ras'</header>"
 
 #: src/help/help_impl.cpp:1351
 msgid "corrupted original file"
-msgstr "gebroken origineel bestand"
+msgstr "beschadigd origineel bestand"
 
 #: src/help/help_topic_generators.cpp:62
 msgid "Best of"
-msgstr ""
+msgstr "Beste van"
 
 #: src/help/help_topic_generators.cpp:62
 msgid "Worst of"
-msgstr ""
+msgstr "Slechtste van"
 
 #: src/help/help_topic_generators.cpp:158
-#, fuzzy
-#| msgid "Terrain: "
 msgid "Base Terrain: "
-msgstr "Terrein:"
+msgstr "Basis Terrein: "
 
 #: src/help/help_topic_generators.cpp:177
-#, fuzzy
-#| msgid "Movement Cost"
 msgid "Movement properties: "
-msgstr "Zetten"
+msgstr "Beweging eigenschappen: "
 
 #: src/help/help_topic_generators.cpp:181
-#, fuzzy
-#| msgid "Defense: "
 msgid "Defense properties: "
-msgstr "Verdediging:"
+msgstr "Verdediging eigenschappen: "
 
 #: src/help/help_topic_generators.cpp:261
-#, fuzzy
-#| msgid "Level: "
 msgid "Level"
-msgstr "Rang:"
+msgstr "Rang"
 
 #: src/help/help_topic_generators.cpp:322
 msgid "Advances from: "
@@ -6626,22 +6731,16 @@ msgid "Advances to: "
 msgstr "Promoveert tot: "
 
 #: src/help/help_topic_generators.cpp:353
-#, fuzzy
-#| msgid "Base attacks: "
 msgid "Base unit: "
-msgstr "Basisaanvallen: "
+msgstr "Basis eenheid: "
 
 #: src/help/help_topic_generators.cpp:358
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Base units: "
-msgstr "Gezagsgetrouwe eenheden: "
+msgstr "Basis eenheden: "
 
 #: src/help/help_topic_generators.cpp:376
-#, fuzzy
-#| msgid "Factions:"
 msgid "Variations: "
-msgstr "Facties:"
+msgstr "Variaties: "
 
 #: src/help/help_topic_generators.cpp:402 src/reports.cpp:203
 msgid "Race: "
@@ -6650,78 +6749,64 @@ msgstr "Ras: "
 #: src/help/help_topic_generators.cpp:439
 #: src/help/help_topic_generators.cpp:462
 msgid "Traits"
-msgstr "Kenmerken"
+msgstr "Karaktereigenschappen"
 
 #: src/help/help_topic_generators.cpp:472
 msgid "Abilities: "
-msgstr "Vermogens: "
+msgstr "Vaardigheden: "
 
 #: src/help/help_topic_generators.cpp:490
 msgid "Ability Upgrades: "
-msgstr "Vermogen verbeteringen: "
+msgstr "Vaardigheid verbeteringen: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:512
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "HP: "
+msgstr "HP:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves: "
 msgid "Moves:"
-msgstr "Zetten: "
+msgstr "Zetten:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "vision: "
 msgid "Vision:"
-msgstr "zicht:"
+msgstr "Zicht:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
-#, fuzzy
-#| msgid "Warning: "
 msgid "Jamming:"
-msgstr "Waarschuwing:"
+msgstr "Waarschuwingszicht:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost: "
 msgid "Cost:"
-msgstr "Prijs: "
+msgstr "Prijs:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:536
-#, fuzzy
-#| msgid "Alignment: "
 msgid "Alignment:"
-msgstr "Alliantie: "
+msgstr "Alliantie:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Required XP: "
 msgid "Required XP:"
-msgstr "Benodigde XP: "
+msgstr "Benodigde XP:"
 
 #: src/help/help_topic_generators.cpp:552
 msgid "unit help^Attacks"
@@ -6737,21 +6822,19 @@ msgstr "Type"
 
 #: src/help/help_topic_generators.cpp:561
 msgid "Strikes"
-msgstr "Aanvallen"
+msgstr "Kansen"
 
 #: src/help/help_topic_generators.cpp:562
 msgid "Range"
 msgstr "Bereik"
 
 #: src/help/help_topic_generators.cpp:563
-#, fuzzy
-#| msgid "Specials: "
 msgid "Special"
-msgstr "Bijzonderheden:"
+msgstr "Specialiteit"
 
 #: src/help/help_topic_generators.cpp:625
 msgid "Resistances"
-msgstr "Weerstand"
+msgstr "Weerstanden"
 
 #: src/help/help_topic_generators.cpp:629
 msgid "Attack Type"
@@ -6762,8 +6845,6 @@ msgid "Resistance"
 msgstr "Weerstand"
 
 #: src/help/help_topic_generators.cpp:659
-#, fuzzy
-#| msgid "Terrain Modifiers"
 msgid "Terrain Modifiers"
 msgstr "Terreinspecificaties"
 
@@ -6776,41 +6857,32 @@ msgid "Defense"
 msgstr "Verdediging"
 
 #: src/help/help_topic_generators.cpp:665
-#, fuzzy
-#| msgid "Movement Cost"
 msgid "Movement Cost"
-msgstr "Zetten"
+msgstr "Bewegingskosten"
 
 #: src/help/help_topic_generators.cpp:669
-#, fuzzy
-#| msgid "Defense: "
 msgid "Defense Cap"
-msgstr "Verdediging:"
+msgstr "Verdediging maximum"
 
 #: src/help/help_topic_generators.cpp:674
-#, fuzzy
-#| msgid "Vision Test"
 msgid "Vision Cost"
-msgstr "Versie:"
+msgstr "Zicht Kosten"
 
 #: src/help/help_topic_generators.cpp:678
 msgid "Jamming Cost"
-msgstr ""
+msgstr "Waarschuwingszicht Kosten"
 
 #: src/hotkey/command_executor.cpp:391
-#, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you really want to surrender the game?"
-msgstr "Weet je zeker dat je dit spel wilt verwijderen?"
+msgstr "Weet je zeker dat je dit spel wilt opgeven?"
 
 #: src/hotkey/command_executor.cpp:391
 msgid "Surrender"
-msgstr ""
+msgstr "Opgeven"
 
 #: src/hotkey/command_executor.cpp:803
-#, fuzzy
 msgid "Map-Screenshot"
-msgstr "Schermafdruk"
+msgstr "Kaart-Schermafdruk"
 
 #: src/hotkey/hotkey_handler.cpp:217
 msgid "(press $hk to disable)"
@@ -6818,15 +6890,15 @@ msgstr "(druk $hk om uit te schakelen)"
 
 #: src/hotkey/hotkey_handler.cpp:217
 msgid "Accelerated speed enabled!"
-msgstr ""
+msgstr "Versnelling ingeschakeld!"
 
 #: src/hotkey/hotkey_handler.cpp:221
 msgid "Accelerated speed disabled!"
-msgstr ""
+msgstr "Versnelling uitgeschakeld!"
 
 #: src/hotkey/hotkey_handler.cpp:413
 msgid "Back to Turn "
-msgstr "Terug naar beurt "
+msgstr "Terug naar Beurt "
 
 #: src/hotkey/hotkey_handler.cpp:419
 msgid "Back to Start"
@@ -6846,31 +6918,31 @@ msgstr "Planningsmodus gedeactiveerd!"
 
 #: src/language.cpp:103
 msgid "System default language"
-msgstr "Standaardtaal Systeem"
+msgstr "Systeem standaard taak"
 
 #: src/map/location.cpp:164
 msgid "North"
-msgstr ""
+msgstr "Noord"
 
 #: src/map/location.cpp:166
 msgid "North East"
-msgstr ""
+msgstr "Noord Oost"
 
 #: src/map/location.cpp:168
 msgid "North West"
-msgstr ""
+msgstr "Noord West"
 
 #: src/map/location.cpp:170
 msgid "South"
-msgstr ""
+msgstr "Zuid"
 
 #: src/map/location.cpp:172
 msgid "South East"
-msgstr ""
+msgstr "Zuid Oost"
 
 #: src/map/location.cpp:174
 msgid "South West"
-msgstr ""
+msgstr "Zuid West"
 
 #: src/map_command_handler.hpp:187
 msgid "This command is currently unavailable."
@@ -6893,12 +6965,12 @@ msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
-"Beschikbare commandolijst en commandospecifieke hulp. Gebruik \"help all\" "
+"Beschikbare commandolijst en commando-specifieke hulp. Gebruik \"help all\" "
 "om de commando's die nu niet beschikbaar zijn ook te laten zien."
 
 #: src/map_command_handler.hpp:218
 msgid "do not translate the 'all'^[all|<command>]"
-msgstr "[all|<command>]"
+msgstr "vertaal de 'all'^[all|<command>] niet"
 
 #: src/map_command_handler.hpp:263
 msgid "Missing argument $arg_id"
@@ -6934,10 +7006,8 @@ msgid "aliases:"
 msgstr "aliassen:"
 
 #: src/menu_events.cpp:176
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save Map As"
-msgstr "Kaart opslaan als"
+msgstr "Kaart Opslaan Als"
 
 #: src/menu_events.cpp:187
 msgid "Map saved."
@@ -6965,9 +7035,9 @@ msgstr "Er zijn geen eenheden beschikbaar om te rekruteren."
 
 #: src/menu_events.cpp:282
 #, fuzzy
-#| msgid "No eras found."
+#| msgid "No unit recalled"
 msgid "No unit recruited"
-msgstr "Geen tijdperken gevonden."
+msgstr "Geen eenheid opgeroepen"
 
 #: src/menu_events.cpp:314
 msgid "You do not have enough gold to recruit that unit"
@@ -6975,34 +7045,30 @@ msgstr "Je hebt niet genoeg goud om die eenheid te rekruteren"
 
 #: src/menu_events.cpp:350
 msgid "You are separated from your soldiers and may not recall them"
-msgstr "Je bent van je troepen gescheiden en dus kun je hen niet oproepen."
+msgstr "Je bent van je troepen gescheiden en dus kun je hen niet oproepen"
 
 #: src/menu_events.cpp:369
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
-"Je kunt geen troepen oproepen\n"
+"Er zijn geen troepen beschikbaar om op te roepen\n"
 "(Daarvoor moeten er overlevende troepen uit een vorig scenario zijn)"
 
 #: src/menu_events.cpp:373
 msgid "You currently can't recall at the highlighted location"
-msgstr ""
-"Je kunt op dit moment geen eenheden oproepen op de gemarkeerde locatie."
+msgstr "Je kunt op dit moment geen eenheden oproepen op de gemarkeerde locatie"
 
 #: src/menu_events.cpp:385
 msgid "No unit recalled"
-msgstr ""
+msgstr "Geen eenheid opgeroepen"
 
 #: src/menu_events.cpp:402
-#, fuzzy
-#| msgid "You must have at least 1 gold piece to recall a unit"
-#| msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgstr[0] "Je moet tenminste 1 goudstuk hebben om een eenheid op te roepen"
 msgstr[1] ""
-"Je moet tenminste $cost goudstukken hebben om een eenheid op te roepen"
+"Je moet tenminste $cost goudstukken hebben om deze eenheid op te roepen"
 
 #: src/menu_events.cpp:546
 msgid "You cannot end your turn yet!"
@@ -7020,32 +7086,25 @@ msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Sommige eenheden kunnen nog bewegen. Wil je echt je beurt beëindigen?"
 
 #: src/menu_events.cpp:577
-#, fuzzy
-#| msgid "Some units have movement left. Do you really want to end your turn?"
 msgid "Some units have not moved. Do you really want to end your turn?"
-msgstr "Sommige eenheden kunnen nog bewegen. Wil je echt je beurt beëindigen?"
+msgstr ""
+"Sommige eenheden hebben nog niet bewogen. Wil je echt je beurt beëindigen?"
 
 #: src/menu_events.cpp:634
 msgid "Rename Unit"
-msgstr "Eenheid hernoemen"
+msgstr "Eenheid Hernoemen"
 
 #: src/menu_events.cpp:635
 msgid "Name:"
 msgstr "Naam:"
 
 #: src/menu_events.cpp:809
-#, fuzzy
-#| msgid "Place Label"
 msgid "Clear Labels"
-msgstr "Label plaatsen"
+msgstr "Labels Verwijderen"
 
 #: src/menu_events.cpp:810
-#, fuzzy
-#| msgid "Are you sure you want to remove the following installed add-on?"
-#| msgid_plural ""
-#| "Are you sure you want to remove the following installed add-ons?"
 msgid "Are you sure you want to clear map labels?"
-msgstr "Weet je zeker dat je de volgende add-on wilt verwijderen?"
+msgstr "Weet je zeker dat je de labels op de kaart wilt verwijderen?"
 
 #: src/menu_events.cpp:1005
 msgid "Search"
@@ -7065,7 +7124,7 @@ msgstr "(enkel netwerk)"
 
 #: src/menu_events.cpp:1154
 msgid "(not during other events)"
-msgstr ""
+msgstr "(niet tijdens andere gebeurtenissen)"
 
 #: src/menu_events.cpp:1183
 msgid "Refresh gui."
@@ -7077,13 +7136,11 @@ msgstr "Schakel een kant naar/van AI controle."
 
 #: src/menu_events.cpp:1185 src/menu_events.cpp:1187
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr "[<zijde>[on/off]]"
+msgstr "vertaal de on/off^[<zijde>[on/off]] niet"
 
 #: src/menu_events.cpp:1186
-#, fuzzy
-#| msgid "Switch a side to/from AI control."
 msgid "Switch a side to/from idle state."
-msgstr "Schakel een kant naar/van AI controle."
+msgstr "Schakel een kant naar/van wachtstand."
 
 #: src/menu_events.cpp:1190
 msgid "<side> <nickname>"
@@ -7095,19 +7152,19 @@ msgstr "Wijs controle over een zijde aan een andere speler of toeschouwer toe."
 
 #: src/menu_events.cpp:1191
 msgid "Query the controller status of a side."
-msgstr ""
+msgstr "Vraag om de controle van een zijde."
 
 #: src/menu_events.cpp:1192
 msgid "<side>"
-msgstr ""
+msgstr "<zijde>"
 
 #: src/menu_events.cpp:1193
 msgid "Clear chat history."
-msgstr "Chatgeschiedenis opschonen."
+msgstr "Chatgeschiedenis verwijderen."
 
 #: src/menu_events.cpp:1194
 msgid "Debug foreground terrain."
-msgstr "Debug voorgrondterrein"
+msgstr "Debug voorgrondterrein."
 
 #: src/menu_events.cpp:1196
 msgid "Debug layers from terrain under the mouse."
@@ -7180,7 +7237,7 @@ msgstr "Zet de debugmodus aan."
 
 #: src/menu_events.cpp:1220
 msgid "Turn debug mode off."
-msgstr "Zet debugmodus uit."
+msgstr "Zet de debugmodus uit."
 
 #: src/menu_events.cpp:1222 src/menu_events.cpp:1226
 msgid "<command>[;<command>...]"
@@ -7200,11 +7257,11 @@ msgstr "Bepaal het commando gebruikt door de aangepaste commando sneltoets"
 
 #: src/menu_events.cpp:1228
 msgid "Invoke a dialog allowing changing control of MP sides."
-msgstr ""
+msgstr "Begin een gesprek over het toelaten van het verwisselen van MP-zijdes."
 
 #: src/menu_events.cpp:1229
 msgid "Launch the gamestate inspector"
-msgstr "Start de spelstatusinspecteur."
+msgstr "Start de spelstatusinspecteur"
 
 #: src/menu_events.cpp:1231
 msgid "<name>[=<command>]"
@@ -7273,24 +7330,18 @@ msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Schakel het bedekken van hexes met terreincodes aan/uit."
 
 #: src/menu_events.cpp:1257
-#, fuzzy
-#| msgid "Toggle overlaying of terrain codes on hexes."
 msgid "Toggle overlaying of number of bitmaps on hexes."
 msgstr "Schakel het bedekken van hexes met terreincodes aan/uit."
 
 #: src/menu_events.cpp:1259
-#, fuzzy
-#| msgid "Toggle Planning Mode."
 msgid "Toggle planning mode."
 msgstr "Zet planmodus aan/uit."
 
 #: src/menu_events.cpp:1262
 msgid "Access whiteboard options dialog."
-msgstr ""
+msgstr "Krijg toegang tot opties-gesprek."
 
 #: src/menu_events.cpp:1382
-#, fuzzy
-#| msgid "Couldn't find label or unit containing the string '$search'."
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "Kon geen label of eenheid vinden met '$search'."
 
@@ -7304,37 +7355,29 @@ msgstr "Kan de netwerkzijde '$side' niet door de computer laten besturen."
 
 #: src/menu_events.cpp:1436
 msgid "Side '$side' is already droided."
-msgstr ""
+msgstr "Zijde '$side' wordt al bestuurd."
 
 #: src/menu_events.cpp:1446
 msgid "Side '$side' controller is now controlled by: AI."
-msgstr ""
+msgstr "Zijde '$side' wordt nu bestuurd door: AI."
 
 #: src/menu_events.cpp:1448
 msgid "Side '$side' controller is now controlled by: human."
-msgstr ""
+msgstr "Zijde '$side' wordt nu bestuurd door: mens."
 
 #: src/menu_events.cpp:1456
-#, fuzzy
-#| msgid "Can't droid invalid side: '$side'."
 msgid "Can't droid a local ai side: '$side'."
 msgstr "Kan de ongeldige zijde '$side' niet door de computer laten besturen."
 
 #: src/menu_events.cpp:1472
-#, fuzzy
-#| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle invalid side: '$side'."
 msgstr "Kan de ongeldige zijde '$side' niet door de computer laten besturen."
 
 #: src/menu_events.cpp:1477
-#, fuzzy
-#| msgid "Can't droid networked side: '$side'."
 msgid "Can't idle networked side: '$side'."
 msgstr "Kan de netwerkzijde '$side' niet door de computer laten besturen."
 
 #: src/menu_events.cpp:1482
-#, fuzzy
-#| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle local ai side: '$side'."
 msgstr "Kan de ongeldige zijde '$side' niet door de computer laten besturen."
 
@@ -7347,14 +7390,10 @@ msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Kan besturing niet veranderen van buiten bereik zijnde zijde: '$side'."
 
 #: src/menu_events.cpp:1569
-#, fuzzy
-#| msgid "Can't change control of invalid side: '$side'."
 msgid "Can't query control of invalid side: '$side'."
 msgstr "Kan de besturing niet veranderen van ongeldige zijde: '$side'."
 
 #: src/menu_events.cpp:1576
-#, fuzzy
-#| msgid "Can't change control of out-of-bounds side: '$side'."
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr "Kan besturing niet veranderen van buiten bereik zijnde zijde: '$side'."
 
@@ -7376,7 +7415,7 @@ msgstr "Debugmodus gedeactiveerd!"
 
 #: src/menu_events.cpp:1763
 msgid "WARNING! Unsafe Lua Mode"
-msgstr ""
+msgstr "WAARSCHUWING! Onveilige Lua-modus"
 
 #: src/menu_events.cpp:1764
 msgid ""
@@ -7386,6 +7425,11 @@ msgid ""
 "\n"
 "Do not continue unless you really know what you are doing."
 msgstr ""
+"Lua-code op deze manier uitvoeren opent je computer voor potentiele "
+"beveiligingslekken van bijvoorbeeld verdachte add-ons of andere programma's "
+"die je geïnstalleerd kunt hebben.\n"
+"\n"
+"Ga alleen verder als je goed weet wat je aan het doen bent."
 
 #: src/menu_events.cpp:1769
 msgid "Unsafe mode enabled!"
@@ -7401,8 +7445,7 @@ msgid ""
 "chaotic, or liminal."
 msgstr ""
 "Ongeldige alliantie: '$alignment' moet ofwel gezagsgetrouw (lawful), "
-"neutraal (neutral), wetteloos (chaotic) of een schemeringseenheid (liminal) "
-"zijn."
+"neutraal (neutral), wetteloos (chaotic) of mysterieus (liminal) zijn."
 
 #: src/menu_events.cpp:1892
 msgid "Do you wish to clear all of your discovered units from help?"
@@ -7421,59 +7464,49 @@ msgid "prompt^Command:"
 msgstr "Commando:"
 
 #: src/mouse_events.cpp:1196
-#, fuzzy
-#| msgid ""
-#| "You cannot move your leader away from the keep with some planned recruits "
-#| "left."
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
 msgstr ""
-"Je kunt je leider niet van het donjon verwijderen als er "
-"rekruteringsopdrachten op de wachtrij staan."
+"Je kunt je leider niet van het donjon verwijderen als er rekruterings- of "
+"oproepopdrachten in de wachtrij staan."
 
 #: src/mouse_events.cpp:1291
-#, fuzzy
-#| msgid "No usable weapon"
 msgid "This unit has no usable weapons."
-msgstr "Geen bruikbaar wapen"
+msgstr "Deze eenheid heeft geen bruikbare wapens."
 
 #: src/mp_game_settings.hpp:70
 msgid "Independent"
-msgstr ""
+msgstr "Onafhankelijk"
 
 #: src/mp_game_settings.hpp:71
 msgid "No Mirror"
-msgstr ""
+msgstr "Geen spiegel"
 
 #: src/mp_game_settings.hpp:72
 msgid "No Ally Mirror"
-msgstr ""
+msgstr "Geen bevriende spiegel"
 
 #: src/mp_ui_alerts.cpp:66
 msgid "A player has joined"
-msgstr ""
+msgstr "Een speler heeft zich aangesloten"
 
 #: src/mp_ui_alerts.cpp:66 src/mp_ui_alerts.cpp:80 src/mp_ui_alerts.cpp:149
 #: src/mp_ui_alerts.cpp:160
-#, fuzzy
-#| msgid "Help Wesnoth"
 msgid "Wesnoth"
-msgstr "Help Wesnoth"
+msgstr "Wesnoth"
 
 #: src/mp_ui_alerts.cpp:80
 msgid "A player has left"
-msgstr ""
+msgstr "Een speler is vertrokken"
 
 #: src/mp_ui_alerts.cpp:149
-#, fuzzy
-#| msgid "Back to Start"
 msgid "Ready to start!"
-msgstr "Terug naar het begin"
+msgstr "Klaar om te beginnen!"
 
 #: src/mp_ui_alerts.cpp:160
 msgid "Game has begun!"
-msgstr ""
+msgstr "Spel is begonnen!"
 
 #: src/mp_ui_alerts.cpp:170
 msgid "$name has taken control"
@@ -7507,7 +7540,7 @@ msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
-"Het spel is niet meer gesynchronizeerd. Het is mogelijk dat het niet veel "
+"Het spel is niet meer gesynchroniseerd. Het is mogelijk dat het niet veel "
 "zin meer heeft om verder te gaan. Wil je je spel opslaan?"
 
 #: src/play_controller.cpp:995
@@ -7516,7 +7549,7 @@ msgstr "Foutdetails:"
 
 #: src/play_controller.cpp:1283
 msgid "No objectives available"
-msgstr "Geen doel beschikbaar"
+msgstr "Geen doelen beschikbaar"
 
 #: src/playmp_controller.cpp:149
 msgid "Undoing moves not yet transmitted to the server."
@@ -7547,12 +7580,13 @@ msgid ""
 "to another controller. You may use :droid, :control or :give_control for "
 "example."
 msgstr ""
+"Deze zijde is in afwachtende staat. Om verder te gaan met het spel, moet het "
+"toegewezen worden aan een andere beheerder. Je kunt bijvoorbeeld :droid, :"
+"control of :give_control gebruiken."
 
 #: src/playsingle_controller.cpp:153
-#, fuzzy
-#| msgid "Error"
 msgid "Game Error"
-msgstr "Fout"
+msgstr "Spel Fout"
 
 #: src/playsingle_controller.cpp:154
 msgid ""
@@ -7560,10 +7594,13 @@ msgid ""
 "what this message means, then most likely someone is cheating or someone "
 "reloaded a corrupt game."
 msgstr ""
+"Dit multiplayer spel gebruikt een alternatieve willekeurige modus, wanneer "
+"je niet weet wat dit betekend is er waarschijnlijk iemand vals aan het "
+"spelen of heeft iemand een beschadigd bestand geladen."
 
 #: src/playsingle_controller.cpp:305
 msgid "The game is over."
-msgstr "Het spel is gedaan."
+msgstr "Het spel is afgelopen."
 
 #: src/playsingle_controller.cpp:340
 msgid ""
@@ -7578,16 +7615,12 @@ msgid "It is now $name|’s turn"
 msgstr "Het is nu $name|s beurt"
 
 #: src/playturn.cpp:276
-#, fuzzy
-#| msgid "Give gold to the current player."
 msgid "Give control to their ally $player"
-msgstr "Geef goud aan de huidige speler."
+msgstr "Geef de controle aan je bondgenoot $player"
 
 #: src/playturn.cpp:285
-#, fuzzy
-#| msgid "Give gold to the current player."
 msgid "Give control to observer $player"
-msgstr "Geef goud aan de huidige speler."
+msgstr "Geef de controle aan waarnemer $player"
 
 #: src/playturn.cpp:290
 msgid "Replace with AI"
@@ -7599,39 +7632,35 @@ msgstr "Vervang door lokale speler"
 
 #: src/playturn.cpp:292
 msgid "Set side to idle"
-msgstr ""
+msgstr "Zet zijde naar afwachtend"
 
 #: src/playturn.cpp:293
-#, fuzzy
-#| msgid "Abort game"
 msgid "Save and abort game"
-msgstr "Spel afbreken"
+msgstr "Spel opslaan en afbreken"
 
 #: src/playturn.cpp:297
-#, fuzzy
-#| msgid "$player has left the game. What do you want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
-msgstr "$player heeft het spel verlaten. Wat wil je doen?"
+msgstr ""
+"$player die zijde $side_drop beheerde heeft het spel verlaten. Wat wil je "
+"doen?"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
 msgstr "Afsluiten"
 
 #: src/quit_confirmation.cpp:94
-#, fuzzy
-#| msgid "Do you really want to dismiss him?"
 msgid "Do you really want to quit?"
-msgstr "Wil je hem werkelijk ontslaan?"
+msgstr "Wil je werkelijk afsluiten?"
 
 #: src/reports.cpp:162 src/savegame.cpp:399
 msgid "Name: "
-msgstr "Naam:"
+msgstr "Naam: "
 
 #: src/reports.cpp:183
 msgid "Type: "
-msgstr "Type:"
+msgstr "Type: "
 
 #: src/reports.cpp:235
 msgid "Side:"
@@ -7639,13 +7668,11 @@ msgstr ""
 
 #: src/reports.cpp:257
 msgid "Level: "
-msgstr "Rang:"
+msgstr "Rang: "
 
 #: src/reports.cpp:262
-#, fuzzy
-#| msgid "Advancements"
 msgid "Advancements:"
-msgstr "Promoties"
+msgstr "Promoties:"
 
 #: src/reports.cpp:275
 msgid "No advancement"
@@ -7653,7 +7680,7 @@ msgstr "Geen promotie"
 
 #: src/reports.cpp:315
 msgid "Trait: "
-msgstr "Kenmerk:"
+msgstr "Karaktereigenschap: "
 
 #: src/reports.cpp:338
 msgid "invisible: "
@@ -7690,7 +7717,7 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
-"Deze eenheid is vergiftigd. Hij zal elke beurt 8HP verliezen, totdat hij "
+"Deze eenheid is vergiftigd. Hij zal elke beurt 8 HP verliezen, totdat hij "
 "genezing vindt in een dorp of bij een bevriende eenheid met het vermogen "
 "'geneest'.\n"
 "\n"
@@ -7699,37 +7726,35 @@ msgstr ""
 
 #: src/reports.cpp:350
 msgid "petrified: "
-msgstr "versteend:"
+msgstr "versteend: "
 
 #: src/reports.cpp:351
 msgid "This unit has been petrified. It may not move or attack."
-msgstr "Deze eenheid is versteend. Hij kan bewegen noch aanvallen."
+msgstr "Deze eenheid is versteend. Hij kan niet bewegen noch aanvallen."
 
 #: src/reports.cpp:429
 msgid "Ability: "
-msgstr "Vaardigheid:"
+msgstr "Vaardigheid: "
 
 #: src/reports.cpp:431 src/reports.cpp:891
 msgid " (inactive)"
-msgstr "(inactief)"
+msgstr " (inactief)"
 
 #: src/reports.cpp:491
 msgid "Resistances: "
-msgstr "Weerstanden:"
+msgstr "Weerstanden: "
 
 #: src/reports.cpp:493
 msgid "(Att / Def)"
 msgstr "(Aan / Ver)"
 
 #: src/reports.cpp:524
-#, fuzzy
-#| msgid "Experience modifier: "
 msgid "Experience Modifier: "
 msgstr "Ervaringsfactor: "
 
 #: src/reports.cpp:575
 msgid "Terrain: "
-msgstr "Terrein:"
+msgstr "Terrein: "
 
 #: src/reports.cpp:592
 msgid "maximum^max."
@@ -7741,13 +7766,13 @@ msgstr "min."
 
 #: src/reports.cpp:597
 msgid "Defense: "
-msgstr "Verdediging:"
+msgstr "Verdediging: "
 
 #: src/reports.cpp:620 src/reports.cpp:621
 #, fuzzy
 #| msgid "vision: "
 msgid "vision:"
-msgstr "zicht:"
+msgstr "zicht: "
 
 #: src/reports.cpp:625 src/reports.cpp:626
 #, fuzzy
@@ -7756,10 +7781,8 @@ msgid "jamming:"
 msgstr "Waarschuwing:"
 
 #: src/reports.cpp:655
-#, fuzzy
-#| msgid "Movement Cost"
 msgid "Movement Costs:"
-msgstr "Zetten"
+msgstr "Zetten:"
 
 #: src/reports.cpp:753 src/reports.cpp:969 src/reports.cpp:981
 msgid "Weapon: "
@@ -7767,23 +7790,23 @@ msgstr "Wapen: "
 
 #: src/reports.cpp:754 src/reports.cpp:970
 msgid "Damage: "
-msgstr "Schade:"
+msgstr "Schade: "
 
 #: src/reports.cpp:758
 msgid "Base damage: "
-msgstr "Basisverwondingen:"
+msgstr "Basisschade: "
 
 #: src/reports.cpp:760 src/reports.cpp:794 src/reports.cpp:804
 msgid "With specials: "
-msgstr "Met bijzonderheden:"
+msgstr "Met bijzonderheden: "
 
 #: src/reports.cpp:763
 msgid "Time of day: "
-msgstr "Tijd van de dag:"
+msgstr "Tijd van de dag: "
 
 #: src/reports.cpp:767
 msgid "Leadership: "
-msgstr "Leiderschap:"
+msgstr "Leiderschap: "
 
 #: src/reports.cpp:771
 msgid "Slowed: "
@@ -7791,17 +7814,15 @@ msgstr "Vertraagd: "
 
 #: src/reports.cpp:775
 msgid "Attacks: "
-msgstr "Aanvallen:"
+msgstr "Aanvallen: "
 
 #: src/reports.cpp:779
-#, fuzzy
-#| msgid "Max HP bonus +"
 msgid "Max swarm bonus: "
-msgstr "Max HP bonus +"
+msgstr "Max zwerm bonus: "
 
 #: src/reports.cpp:780 src/reports.cpp:799
 msgid "Swarm: "
-msgstr "Zwerm:"
+msgstr "Zwerm: "
 
 #: src/reports.cpp:781 src/reports.cpp:792 src/reports.cpp:803
 msgid "Base attacks: "
@@ -7809,11 +7830,11 @@ msgstr "Basisaanvallen: "
 
 #: src/reports.cpp:787
 msgid "Specials: "
-msgstr "Bijzonderheden:"
+msgstr "Bijzonderheden: "
 
 #: src/reports.cpp:797
 msgid "Subject to swarm: "
-msgstr ""
+msgstr "Onderdeel van zwerm: "
 
 #: src/reports.cpp:816
 msgid "Weapon range: "
@@ -7821,11 +7842,11 @@ msgstr "Wapenbereik: "
 
 #: src/reports.cpp:817
 msgid "Damage type: "
-msgstr "Schadetype:"
+msgstr "Aanvalssoort: "
 
 #: src/reports.cpp:818
 msgid "Damage versus: "
-msgstr "Tegenverwondingen:"
+msgstr "Tegenverwondingen: "
 
 #: src/reports.cpp:862
 msgid "Accuracy:"
@@ -7833,43 +7854,39 @@ msgstr "Nauwkeurigheid:"
 
 #: src/reports.cpp:867
 msgid "Parry:"
-msgstr "Pareren :"
+msgstr "Pareren:"
 
 #: src/reports.cpp:889
 msgid "Weapon special: "
-msgstr "Wapenbijzonderheden:"
+msgstr "Wapenspecialiteit: "
 
 #: src/reports.cpp:953
 msgid "weapon^None"
-msgstr ""
+msgstr "Geen"
 
 #: src/reports.cpp:982
 msgid "Total damage"
-msgstr "Totale verwondingen"
+msgstr "Totale schade"
 
 #: src/reports.cpp:1046
-#, fuzzy
-#| msgid "Attacker"
 msgid "Attack"
 msgid_plural "Attacks"
-msgstr[0] "Aanvaller"
-msgstr[1] "Aanvaller"
+msgstr[0] "Aanval"
+msgstr[1] "Aanvallen"
 
 #: src/reports.cpp:1144
 #, fuzzy
 #| msgid "Time of day: "
 msgid "Time of day schedule:"
-msgstr "Tijd van de dag:"
+msgstr "Tijd van de dag: "
 
 #: src/reports.cpp:1176
 #, fuzzy
 #| msgid "Time of day: "
 msgid "Time of day:"
-msgstr "Tijd van de dag:"
+msgstr "Tijd van de dag: "
 
 #: src/reports.cpp:1177 src/reports.cpp:1219
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful units: "
 msgstr "Gezagsgetrouwe eenheden: "
 
@@ -7883,19 +7900,19 @@ msgstr "Wetteloze eenheden: "
 
 #: src/reports.cpp:1182 src/reports.cpp:1224
 msgid "Liminal units: "
-msgstr "Schemeringseenheden: "
+msgstr "Mysterieuze eenheden: "
 
 #: src/reports.cpp:1283
-#, fuzzy
-#| msgid "Turn "
 msgid "Turn Number"
-msgstr "Beurt "
+msgstr "Beurt Nummer"
 
 #: src/reports.cpp:1285
 msgid ""
 "When the game reaches the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
+"Wanneer het spel het aantal beurten bereikt aangegeven door het tweede "
+"getal, zal het eindigen."
 
 #: src/reports.cpp:1310
 msgid "Gold"
@@ -7905,10 +7922,12 @@ msgstr "Goud"
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
+"Het aantal goud momenteel beschikbaar om te rekruteren en je strijdkracht te "
+"onderhouden."
 
 #: src/reports.cpp:1329
 msgid "The fraction of known villages that your side has captured."
-msgstr ""
+msgstr "Het aantal dorpen dat je strijdkracht heeft ingenomen."
 
 #: src/reports.cpp:1329
 msgid "Villages"
@@ -7916,7 +7935,7 @@ msgstr "Dorpen"
 
 #: src/reports.cpp:1334
 msgid "The total number of units on your side."
-msgstr ""
+msgstr "Het totaal aantal eenheden in je strijdkracht."
 
 #: src/reports.cpp:1334
 msgid "Units"
@@ -7929,6 +7948,12 @@ msgid ""
 "total cost of upkeep, including that covered by villages — in other words, "
 "the amount of gold that would be deducted if you lost all villages."
 msgstr ""
+"De uitgaven die worden gemaakt aan het einde van iedere beurt om je "
+"strijdkracht te onderhouden. Het eerste nummer is het aantal goudstukken dat "
+"zal worden afgetrokken. Het tweede nummer zijn de totale kosten aan "
+"onderhoud, inclusief het geld dat verdient is door het in bezit hebben van "
+"dorpen - oftewel, het aantal goud dat zal worden afgetrokken wanneer je alle "
+"dorpen zult verliezen."
 
 #: src/reports.cpp:1344
 msgid "Upkeep"
@@ -7943,6 +7968,9 @@ msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
 msgstr ""
+"Het aantal goudstukken dat je iedere beurt ontvangt voor het in bezit hebben "
+"van dorpen, of het aantal goudstukken dat je iedere beurt verliest voor het "
+"onderhouden van je eenheden."
 
 #: src/reports.cpp:1549
 msgid "Observers:"
@@ -7950,19 +7978,19 @@ msgstr "Toeschouwers:"
 
 #: src/reports.cpp:1591
 msgid "Clock"
-msgstr ""
+msgstr "Klok"
 
 #: src/reports.cpp:1602
 msgid "Battery"
-msgstr ""
+msgstr "Accu"
 
 #: src/reports.cpp:1630
 msgid "Countdown until your turn automatically ends."
-msgstr ""
+msgstr "Tijd waarna je beurt automatisch zal worden beëindigd."
 
 #: src/reports.cpp:1630
 msgid "Turn Countdown"
-msgstr ""
+msgstr "Tijd voor Beurt"
 
 #: src/save_index.cpp:218
 msgid "%a %b %d %I:%M %p %Y"
@@ -7979,7 +8007,7 @@ msgstr " herhaling"
 #: src/save_index.cpp:313 src/savegame.cpp:69 src/savegame.cpp:594
 #: src/savegame.cpp:596
 msgid "Auto-Save"
-msgstr "Automatisch opslaan"
+msgstr "Automatisch Opslaan"
 
 #: src/savegame.cpp:191 src/savegame.cpp:195
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
@@ -7988,38 +8016,30 @@ msgstr ""
 "toch geladen.\n"
 
 #: src/savegame.cpp:242
-#, fuzzy
-#| msgid "This save is from a version too old to be loaded."
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
-msgstr "Dit opgeslagen spel is van een te oude versie om te laden."
+msgstr ""
+"Dit opgeslagen spel is van een oude, niet-ondersteunde versie "
+"($version_number|) en kan niet worden geladen."
 
 #: src/savegame.cpp:250
-#, fuzzy
-#| msgid ""
-#| "This save is from a different version of the game. Do you want to try to "
-#| "load it?"
 msgid ""
 "This save is from a different version of the game ($version_number|). Do you "
 "wish to try to load it?"
 msgstr ""
-"Dit opgeslagen spel is van een andere versie van Strijd om Wesnoth. Wil je "
-"proberen het te laden?"
+"Dit opgeslagen spel is van een andere versie van het spel "
+"($version_number|). Wil je proberen het te laden?"
 
 #: src/savegame.cpp:253 src/savegame.cpp:297
 msgid "Load Game"
 msgstr "Spel laden"
 
 #: src/savegame.cpp:297
-#, fuzzy
-#| msgid "Factions are only used in multiplayer"
 msgid "Replays are not supported in multiplayer mode."
-msgstr "Facties worden alleen gebruikt in multiplayer"
+msgstr "Herhalingen worden niet ondersteund in multiplayer."
 
 #: src/savegame.cpp:304
-#, fuzzy
-#| msgid "This is not a multiplayer save"
 msgid "This is not a multiplayer save."
 msgstr "Dit is geen multiplayer opgeslagen spel."
 
@@ -8036,21 +8056,19 @@ msgid "Overwrite?"
 msgstr "Overschrijven?"
 
 #: src/savegame.cpp:408
-#, fuzzy
-#| msgid "Save names should not end on '.gz'. Please choose a different name."
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
-msgstr "Opslagnamen mogen niet eindigen op '.gz'. Kies een andere naam."
+msgstr ""
+"Opslagnamen mogen niet eindigen op '.gz' of '.bz2'. Verwijder de extensie "
+"alstublieft."
 
 #: src/savegame.cpp:469
 msgid "Saved"
 msgstr "Opgeslagen"
 
 #: src/savegame.cpp:469
-#, fuzzy
-#| msgid "The game has been saved"
 msgid "The game has been saved."
-msgstr "Het spel is opgeslagen"
+msgstr "Het spel is opgeslagen."
 
 #: src/savegame.cpp:499 src/savegame.cpp:519
 msgid "Could not write to file"
@@ -8076,30 +8094,28 @@ msgstr "Spel opslaan"
 
 #: src/savegame.cpp:638
 msgid "Game state is corrupted"
-msgstr ""
+msgstr "Spelstatus is beschadigd"
 
 #: src/scripting/game_lua_kernel.cpp:2787
 #: src/scripting/game_lua_kernel.cpp:2822
 msgid "input"
-msgstr ""
+msgstr "input"
 
 #: src/serialization/parser.cpp:153
 msgid "Unexpected characters at line start"
-msgstr "Onverwachte karakters aan het begin van de lijn"
+msgstr "Onverwachte karakters aan het begin van de regel"
 
 #: src/serialization/parser.cpp:174
-#, fuzzy
-#| msgid "Missing closing tag for tag $tag at $pos"
 msgid "Missing closing tag for tag [$tag]"
-msgstr "Ontbrekende eindtag voor tag $tag op $pos"
+msgstr "Ontbrekende eindtag voor tag [$tag]"
 
 #: src/serialization/parser.cpp:175
 msgid "expected at $pos"
-msgstr ""
+msgstr "verwacht op $pos"
 
 #: src/serialization/parser.cpp:176 src/serialization/parser.cpp:260
 msgid "opened at $pos"
-msgstr ""
+msgstr "geopend op $pos"
 
 #: src/serialization/parser.cpp:193
 msgid "Unterminated [element] tag"
@@ -8126,16 +8142,12 @@ msgid "Unexpected closing tag"
 msgstr "Onverwachte eindtag"
 
 #: src/serialization/parser.cpp:259
-#, fuzzy
-#| msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgid "Found invalid closing tag [/$tag2] for tag [$tag1]"
-msgstr "Vond ongeldige eindtag $tag2 voor tag $tag1 (geopend op $pos)"
+msgstr "Ongeldige eindtag [/$tag2] voor tag [$tag1] gevonden"
 
 #: src/serialization/parser.cpp:261
-#, fuzzy
-#| msgid "Close"
 msgid "closed at $pos"
-msgstr "Sluiten"
+msgstr "gesloten op $pos"
 
 #: src/serialization/parser.cpp:297 src/serialization/parser.cpp:313
 msgid "Empty variable name"
@@ -8151,13 +8163,11 @@ msgstr "Niet-gesloten string"
 
 #: src/serialization/parser.cpp:459
 msgid "at $pos"
-msgstr ""
+msgstr "op $pos"
 
 #: src/serialization/parser.cpp:472
-#, fuzzy
-#| msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgid "Value: '$value' Previous: '$previous_value'"
-msgstr "$error, waarde '$value', vorige waarde '$previous_value' op $pos"
+msgstr "Waarde: '$value' Vorige: '$previous_value'"
 
 #: src/serialization/string_utils.cpp:547
 msgid "prefix_milli^m"
@@ -8232,45 +8242,44 @@ msgid "infix_binary^i"
 msgstr "i"
 
 #: src/synced_commands.cpp:410
-#, fuzzy
 msgid "(unknown player)"
-msgstr "Onbekend commando."
+msgstr "(onbekende speler)"
 
 #: src/synced_commands.cpp:415
 msgid "The :$command debug command was used during $player’s turn"
-msgstr ""
+msgstr "Het :$command debug commando is gebruikt tijdens $players beurt"
 
 #: src/synced_commands.cpp:423
 msgid ""
 "A player used a debug command during the game. If this is unexpected, it is "
 "possible the player in question is cheating."
 msgstr ""
+"Een speler gebruikte een debug commando tijdens het spel. Als dit "
+"onverwachts is, is het mogelijk dat de betreffende speler vals speelt."
 
 #: src/synced_commands.cpp:425
-#, fuzzy
-#| msgid "Details"
 msgid "Details:"
-msgstr "Details"
+msgstr "Details:"
 
 #: src/synced_commands.cpp:428
 msgid "Do you wish to save the game before continuing?"
-msgstr ""
+msgstr "Wil je het spel opslaan voordat je verder gaat?"
 
 #: src/synced_commands.cpp:430
-#, fuzzy
-#| msgid "Debug mode commands"
 msgid "Debug Command Used"
-msgstr "Debug modus commando's"
+msgstr "Debug Commando Gebruikt"
 
 #: src/synced_commands.cpp:516
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
+"Een eenheid is gecreëerd met behulp van een debug commando tijdens $players "
+"beurt"
 
 #: src/synced_user_choice.cpp:330
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "wachten op $desc van $sides kant"
+msgstr[1] "wachten op $desc van $sides kanten"
 
 #. TRANSLATORS: In networked games, this text is shown for other clients,
 #. while they wait for an action from another player.
@@ -8297,114 +8306,88 @@ msgstr "border_size dient tussen de 0.0 en 0.5 in te zitten."
 
 #: src/theme.cpp:557 src/theme.cpp:562
 msgid "Hotkey(s): "
-msgstr "Sneltoets(en):"
+msgstr "Sneltoets(en): "
 
 #: src/time_of_day.cpp:45
-#, fuzzy
-#| msgid "Time of Day"
 msgid "Stub Time of Day"
-msgstr "Tijd van de Dag"
+msgstr "Stub Tijd van de Dag"
 
 #: src/time_of_day.cpp:46
 msgid "This Time of Day is only a Stub!"
-msgstr ""
+msgstr "Deze Tijd van de Dag is enkel een Stub!"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:356
-#, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
-msgstr[0] "goudstukken"
-msgstr[1] "goudstukken"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> schade"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> schade"
 
 #: src/units/attack_type.cpp:365
-#, fuzzy
-#| msgid "damage"
-#| msgid_plural "damage"
 msgid "$number damage"
 msgid_plural "$number damage"
-msgstr[0] "schade"
-msgstr[1] "schade"
+msgstr[0] "$number damage schade"
+msgstr[1] "$number damage schade"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:374
-#, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
-msgstr[0] "goudstukken"
-msgstr[1] "goudstukken"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> kans"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> kansen"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:383
-#, fuzzy
-#| msgid "strike"
-#| msgid_plural "strikes"
 msgid "$number strike"
 msgid_plural "$number strikes"
-msgstr[0] "aanval"
-msgstr[1] "aanvallen"
+msgstr[0] "$number kans"
+msgstr[1] "$number kansen"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:392
-#, fuzzy
-#| msgid "% parry"
 msgid "$number| accuracy"
-msgstr "% pareer"
+msgstr "$number| nauwkeurigheid"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:399
-#, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
-msgstr "goudstukken"
+msgstr "<span color=\"$color\">$number_or_percent|%</span> nauwkeurigheid"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:406
-#, fuzzy
-#| msgid "% parry"
 msgid "$number parry"
-msgstr "% pareer"
+msgstr "$number pareer"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:413
-#, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
-msgstr "goudstukken"
+msgstr "<span color=\"$color\">$number_or_percent</span> pareer"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:420
-#, fuzzy
-#| msgid "Movement Cost"
 msgid "$number movement point"
 msgid_plural "$number movement points"
-msgstr[0] "Zetten"
-msgstr[1] "Zetten"
+msgstr[0] "$number bewegingspunt"
+msgstr[1] "$number bewegingspunten"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:429
-#, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
-msgstr[0] "goudstukken"
-msgstr[1] "goudstukken"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> bewegingspunt"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> bewegingspunten"
 
 #: src/units/types.cpp:545 src/units/types.hpp:181
 msgid "chaotic"
 msgstr "wetteloos"
 
 #: src/units/types.cpp:545 src/units/types.hpp:179
-#, fuzzy
-#| msgid "female^lawful"
 msgid "lawful"
 msgstr "gezagsgetrouw"
 
 #: src/units/types.cpp:545 src/units/types.hpp:182
 msgid "liminal"
-msgstr "schemeringseenheid"
+msgstr "mysterieus"
 
 #: src/units/types.cpp:545 src/units/types.hpp:180
 msgid "neutral"
@@ -8412,7 +8395,7 @@ msgstr "neutraal"
 
 #: src/units/types.cpp:546 src/units/types.cpp:912
 msgid "female^chaotic"
-msgstr "chaotisch"
+msgstr "wetteloos"
 
 #: src/units/types.cpp:546 src/units/types.cpp:910
 msgid "female^lawful"
@@ -8424,88 +8407,74 @@ msgstr "neutraal"
 
 #: src/units/types.cpp:547 src/units/types.cpp:913
 msgid "female^liminal"
-msgstr "schemeringseenheid"
+msgstr "mysterieus"
 
 #: src/units/unit.cpp:1775
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
 #: src/units/unit.cpp:1781
-#, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
-msgstr "goudstukken"
+msgstr "<span color=\"$color\">$number_or_percent</span> HP"
 
 #: src/units/unit.cpp:1791
-#, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
-msgstr[0] "goudstukken"
-msgstr[1] "goudstukken"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> zet"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> zetten"
 
 #: src/units/unit.cpp:1797
-#, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
-msgstr "goudstukken"
+msgstr "<span color=\"$color\">$number_or_percent</span> zicht"
 
 #: src/units/unit.cpp:1801
-#, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
-msgstr "goudstukken"
+msgstr "<span color=\"$color\">$number_or_percent</span> waarschuwingszicht"
 
 #: src/units/unit.cpp:1806
-#, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
-msgstr "goudstukken"
+msgstr "<span color=\"$color\">$number_or_percent</span> XP om te promoveren"
 
 #: src/units/unit.cpp:1810
-#, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
-msgstr[0] "goudstukken"
-msgstr[1] "goudstukken"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> aanval per beurt"
+msgstr[1] ""
+"<span color=\"$color\">$number_or_percent</span> aanvallen per beurt"
 
 #: src/units/unit.cpp:1817
-#, fuzzy
-#| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
-msgstr "goudstukken"
+msgstr ""
+"<span color=\"$color\">$number_or_percent</span> kosten om op te roepen"
 
 #: src/units/unit.cpp:2222
 msgid "$effect_description per level"
-msgstr "$effect_description per niveau"
+msgstr "$effect_description per rang"
 
 #. TRANSLATORS: "Before Wesnoth"   - format for years prior to the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:59
 msgid "$year BW"
-msgstr ""
+msgstr "$year VW"
 
 #. TRANSLATORS: "Year of Wesnoth"  - format for years after the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:62
 msgid "$year YW"
-msgstr ""
+msgstr "$year NW"
 
 #. TRANSLATORS: "Before the Fall" -  format for years prior to the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:65
 msgid "$year BF"
-msgstr ""
+msgstr "$year VV"
 
 #. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:68
 msgid "$year AF"
-msgstr ""
+msgstr "$year NV"
 
 #: src/wesnothd_connection.cpp:402
-#, fuzzy
-#| msgid "Connect to Server"
 msgid "Disconnected from server."
-msgstr "Met server verbinden"
+msgstr "Verbinding met server verbroken."
 
 #: src/whiteboard/manager.cpp:1123
 msgid "SHOW ALL allies’ plans"
