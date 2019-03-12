@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-03-11 16:10+0300\n"
-"PO-Revision-Date: 2019-01-23 17:32+1100\n"
+"PO-Revision-Date: 2019-03-12 11:18+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -1318,7 +1318,7 @@ msgstr ""
 #. [aggression]
 #: data/core/macros/ai_controller.cfg:145
 msgid "Be more aggressive"
-msgstr "Be more aggressive."
+msgstr "Be more aggressive"
 
 #. [aggression]
 #: data/core/macros/ai_controller.cfg:146
@@ -5206,8 +5206,6 @@ msgstr ""
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:225
-#, fuzzy
-#| msgid "an advancement choice"
 msgid "waiting for^an advancement choice"
 msgstr "an advancement choice"
 
@@ -5622,11 +5620,11 @@ msgstr "version"
 
 #: src/chat_command_handler.cpp:174
 msgid "registering with password *** and no email address"
-msgstr "registering with password *** and no email address"
+msgstr "registering with password *** and no e-mail address"
 
 #: src/chat_command_handler.cpp:179
 msgid "registering with password *** and email address $email"
-msgstr "registering with password *** and email address $email"
+msgstr "registering with password *** and e-mail address $email"
 
 #: src/chat_command_handler.cpp:182 src/chat_command_handler.cpp:193
 #: src/chat_command_handler.cpp:211 src/chat_command_handler.cpp:225
@@ -5751,7 +5749,7 @@ msgstr "Display version information."
 
 #: src/chat_command_handler.hpp:131
 msgid "<password> <email (optional)>"
-msgstr "<password> <email (optional)>"
+msgstr "<password> <e-mail (optional)>"
 
 #: src/chat_command_handler.hpp:131
 msgid "Register your nickname"
@@ -6202,7 +6200,7 @@ msgid ""
 "to do it for you."
 msgstr ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
-"nickname until you activate your account via email or ask an administrator "
+"nickname until you activate your account via e-mail or ask an administrator "
 "to do it for you."
 
 #: src/game_initialization/multiplayer.cpp:218
@@ -6252,41 +6250,35 @@ msgid " This server disallows unregistered nicknames."
 msgstr " This server disallows unregistered nicknames."
 
 #: src/game_initialization/multiplayer.cpp:332
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
-msgstr "The nickname ‘$nick’ is banned on this server’s forums."
+msgstr "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 
 #: src/game_initialization/multiplayer.cpp:334
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "The nickname ‘$nick’ is banned on this server’s forums."
 
 #: src/game_initialization/multiplayer.cpp:338
-#, fuzzy
-#| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums for $duration|."
-msgstr "Your IP address is banned on this server’s forums."
+msgstr "Your IP address is banned on this server’s forums for $duration|."
 
 #: src/game_initialization/multiplayer.cpp:340
 msgid "Your IP address is banned on this server’s forums."
 msgstr "Your IP address is banned on this server’s forums."
 
 #: src/game_initialization/multiplayer.cpp:344
-#, fuzzy
-#| msgid ""
-#| "The email address for the nickname ‘$nick’ is banned on this server’s "
-#| "forums."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
 msgstr ""
-"The email address for the nickname ‘$nick’ is banned on this server’s forums."
+"The e-mail address for the nickname ‘$nick’ is banned on this server’s "
+"forums for $duration|."
 
 #: src/game_initialization/multiplayer.cpp:346
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
-"The email address for the nickname ‘$nick’ is banned on this server’s forums."
+"The e-mail address for the nickname ‘$nick’ is banned on this server’s "
+"forums."
 
 #: src/game_initialization/multiplayer.cpp:349
 #: src/game_initialization/multiplayer.cpp:351
@@ -6609,7 +6601,7 @@ msgstr "Recruits"
 
 #: src/help/help_impl.cpp:728 src/units/types.cpp:479
 msgid "No description available."
-msgstr "No description available"
+msgstr "No description available."
 
 #: src/help/help_impl.cpp:732 src/help/help_impl.cpp:734
 msgid "Availability: "
@@ -6976,10 +6968,8 @@ msgid "You have no units available to recruit."
 msgstr "You have no units available to recruit."
 
 #: src/menu_events.cpp:282
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recruited"
-msgstr "No unit recalled"
+msgstr "No unit recruited"
 
 #: src/menu_events.cpp:314
 msgid "You do not have enough gold to recruit that unit"
@@ -7119,7 +7109,7 @@ msgstr "Save game."
 
 #: src/menu_events.cpp:1201
 msgid "Quit game."
-msgstr "Quit game"
+msgstr "Quit game."
 
 #: src/menu_events.cpp:1204
 msgid "Save and quit."
@@ -7239,7 +7229,7 @@ msgstr "'Undiscover' all units in help."
 
 #: src/menu_events.cpp:1244
 msgid "Create a unit."
-msgstr "Create a unit"
+msgstr "Create a unit."
 
 #: src/menu_events.cpp:1245
 msgid "Toggle fog for the current player."
@@ -7461,7 +7451,7 @@ msgstr "Terrain with a movement cost less than 1 encountered."
 #. from another player. This text will be embedded into a sentence.
 #: src/persist_var.cpp:58
 msgid "waiting for^a global variable"
-msgstr ""
+msgstr "a global variable"
 
 #: src/play_controller.cpp:242
 msgid "time left for current turn"
@@ -7597,7 +7587,7 @@ msgstr "Type: "
 
 #: src/reports.cpp:235
 msgid "Side:"
-msgstr ""
+msgstr "Side:"
 
 #: src/reports.cpp:257
 msgid "Level: "
@@ -7700,16 +7690,12 @@ msgid "Defense: "
 msgstr "Defence: "
 
 #: src/reports.cpp:620 src/reports.cpp:621
-#, fuzzy
-#| msgid "vision: "
 msgid "vision:"
-msgstr "vision: "
+msgstr "vision:"
 
 #: src/reports.cpp:625 src/reports.cpp:626
-#, fuzzy
-#| msgid "jamming"
 msgid "jamming:"
-msgstr "jamming"
+msgstr "jamming:"
 
 #: src/reports.cpp:655
 msgid "Movement Costs:"
@@ -7806,16 +7792,12 @@ msgstr[0] "Attack"
 msgstr[1] "Attacks"
 
 #: src/reports.cpp:1144
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day schedule:"
-msgstr "Time of day: "
+msgstr "Time of day schedule:"
 
 #: src/reports.cpp:1176
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day:"
-msgstr "Time of day: "
+msgstr "Time of day:"
 
 #: src/reports.cpp:1177 src/reports.cpp:1219
 msgid "Lawful units: "
@@ -8206,7 +8188,7 @@ msgstr[1] "waiting for $desc from sides $sides"
 #. This text will be embedded into a sentence.
 #: src/synced_user_choice.hpp:42
 msgid "waiting for^input"
-msgstr ""
+msgstr "input"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"

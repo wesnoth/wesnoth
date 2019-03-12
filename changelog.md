@@ -38,7 +38,8 @@
      * Change quintain to level 0
      * Allow Konrad and Li'sar to level up and add corresponding dialogue for part 2
  ### Language and i18n
-   * Updated translations: Chinese (Traditional), Dutch, Italian.
+   * Updated translations: British English, Chinese (Traditional), Dutch,
+     Italian.
  ### Multiplayer
    * Dark Forecast: AI units are "discovered" (added to the help if not already known)
  ### Multiplayer server
