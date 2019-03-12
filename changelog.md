@@ -125,6 +125,7 @@
      * S1: Removed early finish bonus for fleeing
      * S2: Modified Dacyn's dialogue upon undead arrival
      * S7a: Require Dacyn to cross the river
+     * S9: add snow to map
    * Legend of Wesmere:
      * Disabled side shuffling in MP (checking the box does nothing)
      * Fixed missing persistent data at the end of chapter 3
