@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2019-01-23 17:32+1100\n"
+"PO-Revision-Date: 2019-03-12 11:18+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -1319,7 +1319,7 @@ msgstr ""
 #. [aggression]
 #: data/core/macros/ai_controller.cfg:139
 msgid "Be more aggressive"
-msgstr "Be more aggressive."
+msgstr "Be more aggressive"
 
 #. [aggression]
 #: data/core/macros/ai_controller.cfg:140
@@ -5600,11 +5600,11 @@ msgstr "version"
 
 #: src/chat_command_handler.cpp:174
 msgid "registering with password *** and no email address"
-msgstr "registering with password *** and no email address"
+msgstr "registering with password *** and no e-mail address"
 
 #: src/chat_command_handler.cpp:179
 msgid "registering with password *** and email address $email"
-msgstr "registering with password *** and email address $email"
+msgstr "registering with password *** and e-mail address $email"
 
 #: src/chat_command_handler.cpp:182 src/chat_command_handler.cpp:193
 #: src/chat_command_handler.cpp:211 src/chat_command_handler.cpp:225
@@ -5729,7 +5729,7 @@ msgstr "Display version information."
 
 #: src/chat_command_handler.hpp:131
 msgid "<password> <email (optional)>"
-msgstr "<password> <email (optional)>"
+msgstr "<password> <e-mail (optional)>"
 
 #: src/chat_command_handler.hpp:131
 msgid "Register your nickname"
@@ -6181,7 +6181,7 @@ msgid ""
 "to do it for you."
 msgstr ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
-"nickname until you activate your account via email or ask an administrator "
+"nickname until you activate your account via e-mail or ask an administrator "
 "to do it for you."
 
 #: src/game_initialization/multiplayer.cpp:225
@@ -6543,7 +6543,7 @@ msgstr "Recruits"
 
 #: src/help/help_impl.cpp:710 src/units/types.cpp:479
 msgid "No description available."
-msgstr "No description available"
+msgstr "No description available."
 
 #: src/help/help_impl.cpp:714 src/help/help_impl.cpp:716
 msgid "Availability: "
@@ -7029,7 +7029,7 @@ msgstr "Save game."
 
 #: src/menu_events.cpp:1194
 msgid "Quit game."
-msgstr "Quit game"
+msgstr "Quit game."
 
 #: src/menu_events.cpp:1197
 msgid "Save and quit."
@@ -7149,7 +7149,7 @@ msgstr "'Undiscover' all units in help."
 
 #: src/menu_events.cpp:1237
 msgid "Create a unit."
-msgstr "Create a unit"
+msgstr "Create a unit."
 
 #: src/menu_events.cpp:1238
 msgid "Toggle fog for the current player."
@@ -7589,8 +7589,10 @@ msgid "Defense: "
 msgstr "Defence: "
 
 #: src/reports.cpp:565
+#, fuzzy
+#| msgid "vision:"
 msgid "vision: "
-msgstr "vision: "
+msgstr "vision:"
 
 #: src/reports.cpp:593
 msgid "Movement Costs:"
@@ -8315,11 +8317,10 @@ msgstr "Whiteboard Options"
 #~ "i>, <i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can "
 #~ "make a big difference in a campaign."
 
-#~| msgid "<i>― Memoirs of Gweddry, 627YW</i>"
 #~ msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
 #~ msgstr "<i>― Sir Gerrick of Westin, 607YW</i>"
 
-#~ msgid "an advancement choice"
+#~ msgid "waiting for^an advancement choice"
 #~ msgstr "an advancement choice"
 
 #~ msgid "scenario_abbreviation^S"
@@ -8337,17 +8338,37 @@ msgstr "Whiteboard Options"
 #~ msgid "time limit^none"
 #~ msgstr "none"
 
+#~| msgid "The nickname ‘$nick’ is banned on this server’s forums."
+#~ msgid ""
+#~ "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
+#~ msgstr ""
+#~ "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
+
 #~ msgid "The nickname ‘$nick’ is banned on this server’s forums."
 #~ msgstr "The nickname ‘$nick’ is banned on this server’s forums."
 
+#~| msgid "Your IP address is banned on this server’s forums."
+#~ msgid "Your IP address is banned on this server’s forums for $duration|."
+#~ msgstr "Your IP address is banned on this server’s forums for $duration|."
+
 #~ msgid "Your IP address is banned on this server’s forums."
 #~ msgstr "Your IP address is banned on this server’s forums."
+
+#~| msgid ""
+#~| "The email address for the nickname ‘$nick’ is banned on this server’s "
+#~| "forums."
+#~ msgid ""
+#~ "The email address for the nickname ‘$nick’ is banned on this server’s "
+#~ "forums for $duration|."
+#~ msgstr ""
+#~ "The e-mail address for the nickname ‘$nick’ is banned on this server’s "
+#~ "forums for $duration|."
 
 #~ msgid ""
 #~ "The email address for the nickname ‘$nick’ is banned on this server’s "
 #~ "forums."
 #~ msgstr ""
-#~ "The email address for the nickname ‘$nick’ is banned on this server’s "
+#~ "The e-mail address for the nickname ‘$nick’ is banned on this server’s "
 #~ "forums."
 
 #~ msgid "Connection failed: "
@@ -8356,13 +8377,15 @@ msgstr "Whiteboard Options"
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "Reference to unknown topic: "
 
-#~| msgid "HP: "
 #~ msgid "HP:"
 #~ msgstr "HP:"
 
-#~| msgid "Alignment: "
 #~ msgid "Alignment:"
 #~ msgstr "Alignment:"
+
+#~| msgid "No unit recalled"
+#~ msgid "No unit recruited"
+#~ msgstr "No unit recruited"
 
 #~ msgid "No unit recalled"
 #~ msgstr "No unit recalled"
@@ -8376,18 +8399,38 @@ msgstr "Whiteboard Options"
 #~ msgid "Side '$side' controller is now controlled by: human."
 #~ msgstr "Side '$side' controller is now controlled by: human."
 
-#~| msgid "Advancements"
+#~ msgid "waiting for^a global variable"
+#~ msgstr "a global variable"
+
+#~ msgid "Side:"
+#~ msgstr "Side:"
+
 #~ msgid "Advancements:"
 #~ msgstr "Advancements:"
 
+#~| msgid "jamming"
+#~ msgid "jamming:"
+#~ msgstr "jamming:"
+
 #~ msgid "weapon^None"
 #~ msgstr "None"
+
+#~| msgid "Time of day: "
+#~ msgid "Time of day schedule:"
+#~ msgstr "Time of day schedule:"
+
+#~| msgid "Time of day: "
+#~ msgid "Time of day:"
+#~ msgstr "Time of day:"
 
 #~ msgid "Battery"
 #~ msgstr "Battery"
 
 #~ msgid "(unknown player)"
 #~ msgstr "(unknown player)"
+
+#~ msgid "waiting for^input"
+#~ msgstr "input"
 
 #~ msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 #~ msgid_plural ""
@@ -9324,9 +9367,6 @@ msgstr "Whiteboard Options"
 #~ msgid_plural "moves"
 #~ msgstr[0] "move"
 #~ msgstr[1] "moves"
-
-#~ msgid "jamming"
-#~ msgstr "jamming"
 
 #~ msgid "XP to advance"
 #~ msgstr "XP to advance"
