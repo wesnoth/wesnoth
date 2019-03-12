@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-03-11 13:10 UTC\n"
-"PO-Revision-Date: 2019-02-23 16:31+0800\n"
+"PO-Revision-Date: 2019-03-09 17:29+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -113,11 +113,15 @@ msgid ""
 "\n"
 "Units cannot be killed or deal no damage as a result of dehydration."
 msgstr ""
+"脫水：當單位進入脫水狀態，該單位在白天將會失去4點生命值且每回合減攻擊力1點，"
+"在醫療單位旁及綠洲除外。\n"
+"\n"
+"脫水狀態不會讓單位陣亡或是不具攻擊傷害。"
 
 #. [lua]: wesnoth.theme_items.unit_status
 #: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:20
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
+msgstr "昏迷：當單位進入昏迷狀態，該單位將失去控制區域。"
 
 #. [lua]: wesnoth.theme_items.unit_status
 #: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:26
@@ -125,6 +129,7 @@ msgid ""
 "dazed: This unit is dazed. It suffers a -10% penalty to both its defense and "
 "chance to hit (except for magical attacks)."
 msgstr ""
+"暈眩：當單位進入暈眩狀態，該單位的防禦及命中率將會減少10%（魔法攻擊除外）。"
 
 #. [scenario]: id=01_The_Morning_After
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:5
@@ -149,7 +154,7 @@ msgstr "劫後餘生"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:44
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:31
 msgid "team_name^Quenoth Elves"
-msgstr ""
+msgstr "奎諾精靈族"
 
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:72
@@ -1411,13 +1416,13 @@ msgstr "嘿，看那兒，他們掉了個…石瓶子，上面有封印。不知
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:708
 msgid "Nym! No! Don’t open—"
-msgstr "寧姆！不！別打開~"
+msgstr "寧姆！不！別打開—"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:718
 msgid ""
 "Too late. And it’s just sand inside. Not worth... Whoa! What’s happening?!"
-msgstr "已經開了。裡面只有沙子，沒什麼…哇啊！怎麼回事！"
+msgstr "已經開了。這裡面只有沙子，沒什麼...哇啊！怎麼回事？！"
 
 #. [unit]: type=Dust Devil, id=Dust Devil
 #. [unit_type]: id=Dust Devil, race=monster
@@ -1621,7 +1626,7 @@ msgstr "老調重彈。我們擊敗過你一次，再來一次也不困難！"
 #. [message]: speaker=Vengeful Lord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1283
 msgid "Noo... (<i>Fades</i>)"
-msgstr "不...(<i>消失</i>)"
+msgstr "不...（<i>消失</i>）"
 
 #. [message]: speaker=$speaking_unit.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1293
@@ -1927,7 +1932,7 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2034
 msgid "Flee, you craven spirits, and leave us in peace!"
-msgstr "膽怯的魂魅，退散吧！讓我們安寧。"
+msgstr "膽怯的魂魅，退散吧！離我們遠一點！"
 
 #. [scenario]: id=03_Stirring_in_the_Night
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:14
@@ -1957,7 +1962,7 @@ msgstr "異塔蠟"
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:187
 msgid "You lose control (even temporarily) of more than 6 villages"
-msgstr "你失去超過 6 座村莊的控制權。(即時只是暫時失去)"
+msgstr "你失去超過 6 座村莊的控制權（即使是暫時的控制）"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:193
@@ -2041,7 +2046,7 @@ msgstr "你嘲弄我，我要你付出代價！衝啊，手下們！化為我的
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:396
 msgid "... think so. You really know how to pick a campsite, Kaleh."
-msgstr "… 定如此。你確實找了個好營地，卡雷伊。"
+msgstr "我想也...。你確實找了個好營地，卡雷伊。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:400
@@ -2522,7 +2527,7 @@ msgstr "你打敗了我，精靈…不過對上山丘一族時，你就不會那
 #. [message]: speaker=Ganthos
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1708
 msgid "I deeply regret... I won’t be able to see that..."
-msgstr "我真後悔… 沒有先料到… "
+msgstr "我真後悔...，沒有先料到..."
 
 #. [message]: speaker=Ganthos
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1714
@@ -2613,7 +2618,7 @@ msgstr "他… 他還有呼吸！"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1990
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2065
 msgid "Protect the boy for me Zhul, (<i>cough</i>) I go to a better place."
-msgstr "替我，守護這孩子，祖爾，(<i>咳</i>)，我要去更美好的地方了。"
+msgstr "祖爾，替我守護這孩子（<i>咳</i>），我要去更美好的地方了。"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1889
@@ -2623,7 +2628,7 @@ msgstr "葛拉克呢？"
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1899
 msgid "I’ve asked and looked around, there is no sign of him or his body"
-msgstr "我找遍四處，都看不到他的遺體。"
+msgstr "我找遍四處，都看不到他的遺體"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1903
@@ -2780,7 +2785,7 @@ msgstr "奇蹟似的，我們的營地都保住了。"
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2132
 msgid "Well, only $elven_camps encampments remain, but we will survive."
-msgstr "雖然只保住了$elven_camps 個營地，不過我們還是會繼續生存的。"
+msgstr "雖然只保住了 $elven_camps 個營地，不過我們還是會繼續生存的。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2136
@@ -2965,7 +2970,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:395
 msgid ""
 "Strike hard and fast and also be careful—right, this is going to be fun."
-msgstr "猛力快速衝入--好，就這麼辦。"
+msgstr "猛力快速衝入—好，就這麼辦。"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:424
@@ -3324,7 +3329,9 @@ msgid ""
 "coming across the foothills from the east and west and flanking us. There’s "
 "no way we can kill all these orcs and goblins. We’ll never make it to safety "
 "now."
-msgstr "我們花了太多時間，半獸人的增援抵達了！我們被包圍了！"
+msgstr ""
+"我們花了太多時間讓我們的人民進入這些隧道！更多的半獸人從東西邊穿過丘陵過來包"
+"圍我們了。我們沒辦法把這些半獸人及地精全殺死。現在我們無法守護大家的安全了。"
 
 #. [scenario]: id=05_A_Subterranean_Struggle
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:7
@@ -3337,7 +3344,7 @@ msgstr "地底求生"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:92
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1406
 msgid "team_name^Trolls"
-msgstr ""
+msgstr "巨魔"
 
 #. [side]
 #. [modify_side]
@@ -3345,36 +3352,32 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:183
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1339
 msgid "team_name^Dwarves"
-msgstr ""
+msgstr "矮人"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:310
-#, fuzzy
-#| msgid "Explore Underground"
 msgid "Explore underground"
 msgstr "探索地底世界"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:314
-#, fuzzy
-#| msgid "Defeat all Undead Leaders"
 msgid "Defeat enemy leaders"
-msgstr "擊敗所有不死族領袖"
+msgstr "擊敗敵方指揮官"
 
 #. [unit]: type=Quenoth Fighter
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:365
 msgid "Nantheos"
-msgstr ""
+msgstr "南思艾斯"
 
 #. [unit]: type=Quenoth Fighter
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:377
 msgid "Sylestria"
-msgstr ""
+msgstr "塞拉斯翠亞"
 
 #. [unit]: type=Quenoth Flanker
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:398
 msgid "Rygar"
-msgstr ""
+msgstr "瑞嘉"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:427
@@ -3382,6 +3385,8 @@ msgid ""
 "You mentioned that dwarves and trolls often lived underground, Elyssa. I’ve "
 "only heard myths, have you ever met a dwarf or a troll?"
 msgstr ""
+"伊萊莎，你曾說過矮人跟巨魔常居住在地底下。我只有聽說傳說，你曾親眼見過矮人或"
+"巨魔嗎？"
 
 #. [message]: speaker=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:432
@@ -3391,11 +3396,13 @@ msgid ""
 "read a bit about them, and have even met a few people who had dealings with "
 "dwarves."
 msgstr ""
+"我不曾見過，非必要通常我不會在地底探險。太陽光照不到的地方藏著很多骯髒的東"
+"西。但我曾在書裡讀到過他們的事，也遇過一些跟矮人交涉過的人們。"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:437
 msgid "What are dwarves like?"
-msgstr ""
+msgstr "矮人是個什麼樣子？"
 
 #. [message]: speaker=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:442
@@ -3405,11 +3412,13 @@ msgid ""
 "little liking for elves. There was some betrayal many years ago, though I "
 "don’t know what happened."
 msgstr ""
+"他們很傲慢，也有些人說他們貪婪。他們喜歡黃金及礦石，還有打造精美的東西。我得"
+"提醒你們，他們不喜歡精靈。很久以前他們被背叛過，但發生什麼是我也不清楚。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:447
 msgid "And what about trolls? I’m not sure I’d want to meet one face to face."
-msgstr ""
+msgstr "那巨魔呢？我也不確定我敢不敢面對他們。"
 
 #. [message]: speaker=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:452
@@ -3420,6 +3429,9 @@ msgid ""
 "knew one man long ago who traded with a group of trolls and said they were "
 "quite honorable, as long as you didn’t try to cheat them."
 msgstr ""
+"巨魔及矮人天生處不來，但生存空間又很相近。很多人說巨魔很野蠻及殘暴。巨魔很巨"
+"大且非常強壯，有著像石頭一樣硬的皮膚，是個很可怕的對手。但我知道曾有一個跟巨"
+"魔交易過的人說，只要你不要欺騙巨魔就會覺得巨魔很好相處。"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:457
@@ -3428,12 +3440,14 @@ msgid ""
 "happy if our biggest problem is not getting lost. I have little wish to meet "
 "either dwarves or trolls. But Eloh will watch over us."
 msgstr ""
+"好吧，在伊洛的帶領下，我希望我們只找到被廢棄的坑道。希望迷路不會成為我們的問"
+"題，還有個小願望是不會遇到矮人或巨魔。伊洛將在我們身旁庇佑我們。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:462
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:514
 msgid "Will she? I got the impression she was powerless underground."
-msgstr ""
+msgstr "她會嗎？我印象中她在地底下力量比較弱。"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:467
@@ -3448,6 +3462,11 @@ msgid ""
 "do to unduly worry our people. Eloh will always protect us, if we follow her "
 "path."
 msgstr ""
+"你哪裡聽說的？的確當有陽光照耀我們的時候，伊洛的力量是最強的。但據說即使是在"
+"夜晚她也會保護她的信眾。在過去黃金時代的時期，神聖的精靈勇士就是在伊洛的幫助"
+"下，戰勝了半獸人與其他藏在地底下的髒東西。信仰是我們的盾牌，卡雷伊。我想你應"
+"該藏好你自己的疑慮，你的疑慮不會幫助我們的人民。我們只要追隨伊洛的腳步，伊洛"
+"將會永遠保護我們。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:472
@@ -3455,14 +3474,14 @@ msgstr ""
 msgid ""
 "Then let us hope the rest of our journey may be as uneventful as it has been "
 "this far."
-msgstr ""
+msgstr "讓我們祈禱之後的旅程都能像先前的那樣順利吧。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:479
 msgid ""
 "I’ve heard of dwarves, but do you have any idea, Zhul, what kinds of "
 "creatures we might encounter underground?"
-msgstr ""
+msgstr "祖爾，對於矮人你有什麼想法嗎？你想我們在地底下會遇到什麼？"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:484
@@ -3644,7 +3663,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:328
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1426
 msgid "Zurg"
-msgstr ""
+msgstr "澤格"
 
 #. [message]: speaker=Zurg
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:858
@@ -3728,7 +3747,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:270
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1668
 msgid "Grimnir"
-msgstr ""
+msgstr "格雷米爾"
 
 #. [message]: speaker=Grimnir
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:966
@@ -3809,7 +3828,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1150
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1153
 msgid "Dwarf Defender"
-msgstr ""
+msgstr "矮人守衛"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1094
@@ -3825,17 +3844,17 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1161
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1162
 msgid "Troll Defender"
-msgstr ""
+msgstr "巨魔守衛"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1102
 msgid "Dwarf Leader"
-msgstr ""
+msgstr "矮人指揮官"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1122
 msgid "Troll Leader"
-msgstr ""
+msgstr "巨魔指揮官"
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1184
@@ -3968,17 +3987,17 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1362
 msgid "Defeat troll leaders"
-msgstr ""
+msgstr "擊敗巨魔指揮官"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1378
 msgid "Death of Fundin"
-msgstr ""
+msgstr "方丁陣亡"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1382
 msgid "Death of Nori"
-msgstr ""
+msgstr "諾里陣亡"
 
 #. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1395
@@ -3995,17 +4014,17 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1428
 msgid "Defeat dwarf leaders"
-msgstr ""
+msgstr "擊敗矮人指揮官"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1444
 msgid "Death of Thungar"
-msgstr ""
+msgstr "桑格陣亡"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1448
 msgid "Death of Gnarl"
-msgstr ""
+msgstr "諾爾陣亡"
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1470
@@ -4043,22 +4062,22 @@ msgstr ""
 #. [unit]: type=Dwarvish Explorer, id=Fundin
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1620
 msgid "Fundin"
-msgstr ""
+msgstr "方丁"
 
 #. [unit]: type=Dwarvish Explorer, id=Nori
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1633
 msgid "Nori"
-msgstr ""
+msgstr "諾里"
 
 #. [unit]: type=Troll Warrior, id=Thungar
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1648
 msgid "Thungar"
-msgstr ""
+msgstr "桑格"
 
 #. [unit]: type=Troll Warrior, id=Gnarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1661
 msgid "Gnarl"
-msgstr ""
+msgstr "諾爾"
 
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1776
@@ -4162,27 +4181,27 @@ msgstr ""
 #. [unit]: type=Troll Shaman, id=Thu'lok, role=ally
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2150
 msgid "Thu’lok"
-msgstr ""
+msgstr "蘇拉克"
 
 #. [unit]: type=Troll Whelp, id=Harpo, role=ally
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2166
 msgid "Harpo"
-msgstr ""
+msgstr "哈爾波"
 
 #. [unit]: type=Troll Whelp, id=Groucho, role=ally
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2182
 msgid "Groucho"
-msgstr ""
+msgstr "哥丘"
 
 #. [unit]: type=Troll Whelp, id=Chico, role=ally
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2198
 msgid "Chico"
-msgstr ""
+msgstr "奇哥"
 
 #. [unit]: type=Troll Rocklobber, id=Groo, role=ally
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2215
 msgid "Groo"
-msgstr ""
+msgstr "格魯"
 
 #. [message]: speaker=Thu'lok
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2231
@@ -4201,27 +4220,27 @@ msgstr ""
 #. [unit]: type=Dwarvish Fighter, id=Dwalim, role=ally
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2265
 msgid "Dwalim"
-msgstr ""
+msgstr "朵林"
 
 #. [unit]: type=Dwarvish Pathfinder, id=Moin, role=ally
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2283
 msgid "Moin"
-msgstr ""
+msgstr "摩伊"
 
 #. [unit]: type=Dwarvish Thunderer, id=Nordi, role=ally
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2301
 msgid "Nordi"
-msgstr ""
+msgstr "諾迪"
 
 #. [unit]: type=Dwarvish Berserker, id=Byorn, role=ally
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2319
 msgid "Byorn"
-msgstr ""
+msgstr "比翁"
 
 #. [unit]: type=Dwarvish Fighter, id=Runin, role=ally
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2339
 msgid "Runin"
-msgstr ""
+msgstr "壯因"
 
 #. [message]: speaker=Dwalim
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2357
@@ -4317,12 +4336,12 @@ msgstr ""
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:52
 msgid "Dwarf Ally"
-msgstr ""
+msgstr "矮人同盟"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:187
 msgid "Kill troll leader"
-msgstr ""
+msgstr "擊殺巨魔指揮官"
 
 #. [unit]: type=Troll, id=Troll Interrogator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:287
@@ -4339,7 +4358,7 @@ msgstr ""
 #. [unit]: type=Troll Whelp, id=Ulg
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:317
 msgid "Ulg"
-msgstr ""
+msgstr "阿爾戈"
 
 #. [unit]: type=Troll Shaman, role=Troll High Shaman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:349
@@ -4450,7 +4469,7 @@ msgstr ""
 #. [unit]: type=Dwarvish Fighter, id=Wounded Dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:625
 msgid "Wounded Dwarf"
-msgstr ""
+msgstr "受傷的矮人"
 
 #. [message]: speaker=Troll Interrogator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:634
@@ -4496,7 +4515,7 @@ msgstr ""
 #. [unit]: type=Dwarvish Stalwart, id=Rogrimir
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:714
 msgid "Rogrimir"
-msgstr ""
+msgstr "諾格米爾"
 
 #. [message]: speaker=Ulg
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:736
@@ -4584,7 +4603,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1179
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1186
 msgid "Guardian Phoenix"
-msgstr ""
+msgstr "鳳凰守衛"
 
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1124
@@ -4614,7 +4633,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1362
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1364
 msgid "Fire Guardian"
-msgstr ""
+msgstr "火焰守衛"
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1288
@@ -4883,7 +4902,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:136
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:179
 msgid "Enemies"
-msgstr ""
+msgstr "敵方"
 
 #. [side]: id=King Thurongar, type=Dwarvish Lord
 #. [side]: id=Great Leader Darmog, type=Great Troll
@@ -4894,7 +4913,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:53
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:50
 msgid "Allies"
-msgstr ""
+msgstr "友方"
 
 #. [side]: type=Dwarvish Lord, id=Dwarf Chieftain
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:161
@@ -4998,7 +5017,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:301
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:316
 msgid "Dwarf Guard"
-msgstr ""
+msgstr "矮人守衛"
 
 #. [message]: speaker=Zurg
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:487
@@ -5108,7 +5127,7 @@ msgstr ""
 #. [unit]: type=Troll, id=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:748
 msgid "Grog"
-msgstr ""
+msgstr "革諾格"
 
 #. [message]: speaker=Vengeful Dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:764
@@ -5155,7 +5174,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:966
 msgid "Jorgi"
-msgstr ""
+msgstr "喬吉"
 
 #. [message]: speaker=Jorgi
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:989
@@ -5438,12 +5457,12 @@ msgstr ""
 #. [scenario]: id=07a_Dealing_with_Dwarves
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:5
 msgid "Dealing with Dwarves"
-msgstr ""
+msgstr "面對矮人"
 
 #. [side]: id=King Thurongar, type=Dwarvish Lord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:37
 msgid "King Thurongar"
-msgstr ""
+msgstr "瑟隆革國王"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:71
@@ -5454,7 +5473,7 @@ msgstr ""
 #. [unit]: type=Dwarvish Stalwart, id=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:162
 msgid "Jarl"
-msgstr ""
+msgstr "嘉爾"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:336
@@ -5771,7 +5790,7 @@ msgstr ""
 #. [unit]: type=Troll, id=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:160
 msgid "Nog"
-msgstr ""
+msgstr "納格"
 
 #. [unit]: type=Troll Shaman, id=Spiritual Advisor
 #. [unit]: type=Troll Shaman
@@ -5982,10 +6001,8 @@ msgstr ""
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:46
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:190
-#, fuzzy
-#| msgid "Human Ship"
 msgid "Humans"
-msgstr "人造船"
+msgstr "人類"
 
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:79
@@ -5995,7 +6012,7 @@ msgstr ""
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:116
 msgid "Human Ally"
-msgstr ""
+msgstr "人類同盟"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:392
@@ -6005,22 +6022,22 @@ msgstr ""
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:408
 msgid "Death of Grog"
-msgstr ""
+msgstr "革諾格陣亡"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:418
 msgid "Death of Nog"
-msgstr ""
+msgstr "納格陣亡"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:428
 msgid "Death of Rogrimir"
-msgstr ""
+msgstr "諾格米爾陣亡"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:438
 msgid "Death of Jarl"
-msgstr ""
+msgstr "嘉爾陣亡"
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:462
@@ -6173,17 +6190,17 @@ msgstr ""
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:869
 msgid "Bellerin"
-msgstr ""
+msgstr "貝烈寧"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:879
 msgid "Durth"
-msgstr ""
+msgstr "得斯"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:889
 msgid "Othgar"
-msgstr ""
+msgstr "歐斯卡"
 
 #. [message]: speaker=Durth
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:894
@@ -6433,7 +6450,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1322
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1323
 msgid "Gate Guard"
-msgstr ""
+msgstr "大門守衛"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1355
@@ -7248,10 +7265,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2688
-#, fuzzy
-#| msgid "Explore Underground"
 msgid "Explore outside"
-msgstr "探索地底世界"
+msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2746
