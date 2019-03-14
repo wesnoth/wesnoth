@@ -42,6 +42,7 @@
      Italian.
  ### Multiplayer
    * Dark Forecast: AI units are "discovered" (added to the help if not already known)
+   * Dark Forecast: fixed bug where additional boss spawns would not occur after the initial wave
  ### Multiplayer server
    * Forum user handler ban durations are now reported back to banned players.
  ### Units
