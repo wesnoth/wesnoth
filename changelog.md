@@ -151,6 +151,8 @@
      * Warn player about water when stepping on any shallow water hex
      * Change quintain to level 0
      * Allow Konrad and Li'sar to level up and add corresponding dialogue for part 2
+ ### Multiplayer
+     * Dark Forecast: fixed bug where additional boss spawns would not occur after the initial wave
  ### Multiplayer server
    * Forum user handler ban durations are now reported back to banned players.
  ### Units
