@@ -24,6 +24,8 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
         ./utils/travis/check_utf8.sh
         ./utils/travis/utf8_bom_dog.sh
         "$CXX" --version
+        export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+        
         scons wesnoth wesnothd campaignd boost_unit_tests build=release \
               ctool="$CC" cxxtool="$CXX" cxx_std="$CXXSTD" \
               extra_flags_config="-pipe" extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=true \
