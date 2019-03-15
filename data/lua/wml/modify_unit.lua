@@ -52,6 +52,7 @@ local known_tags = make_set {
 	"advancement",
 	"trait",
 	"filter",
+	"set_variable",
 }
 
 local function is_simple(cfg)
@@ -134,6 +135,9 @@ local function simple_modify_unit(cfg)
 					tagcontent = wml.parsed(tagcontent)
 				end
 				u:add_modification(tagname, tagcontent);
+			end
+			if tagname == "set_variable" then
+				wesnoth.set_variable_impl(tagcontent, unit.variables)
 			end
 		end
 
@@ -225,6 +229,12 @@ function wml_actions.modify_unit(cfg)
 				else
 					helper.wml_error("[modify_unit] had invalid [effect]apply_to value")
 				end
+			elseif current_tag == "set_variable" then
+				local unit = wml.variables[unit_path]
+				unit = wesnoth.create_unit(unit)
+				wesnoth.set_variable_impl(tagcontent, unit.variables)
+				unit = unit.__cfg;
+				wml.variables[unit_path] = unit
 			else
 				if replace_mode then
 					wml.variables[string.format("%s.%s", unit_path, current_tag)] = {}
