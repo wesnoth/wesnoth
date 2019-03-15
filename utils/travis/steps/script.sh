@@ -26,6 +26,7 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
         "$CXX" --version
         if [ "$TOOL" = "scons" ]; then
             ln -s $HOME/build-cache/ build
+            export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
 
             scons wesnoth wesnothd campaignd boost_unit_tests build=release \
                   ctool="$CC" cxxtool="$CXX" cxx_std="$CXXSTD" \
