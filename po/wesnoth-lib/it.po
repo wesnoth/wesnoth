@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-03-11 16:09+0300\n"
-"PO-Revision-Date: 2019-01-23 20:50+0100\n"
+"PO-Revision-Date: 2019-03-15 21:40+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -2348,7 +2348,7 @@ msgstr "xBRZ seguito da Nearest Neighbor (raccomandato)"
 
 #: data/gui/window/advanced_graphics_options.cfg:45
 msgid "Bilinear interpolation scaling"
-msgstr "interpolazione Bilineare scaling"
+msgstr "Ridimensionamento con Interpolazione Bilineare"
 
 #: data/gui/window/advanced_graphics_options.cfg:45
 msgid "Linear"
@@ -2812,7 +2812,7 @@ msgstr "Configurazione Squadra"
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:83
 msgid "Number:"
-msgstr "Numero: "
+msgstr "Numero:"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:111
@@ -2875,7 +2875,7 @@ msgstr "Umano"
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:375
 msgid "controller^AI only"
-msgstr "solo AI "
+msgstr "solo AI"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:377
@@ -3137,7 +3137,7 @@ msgstr "Pulisci"
 #. [button]: id=clean
 #: data/gui/window/game_cache_options.cfg:195
 msgid "Clear stale and unused cache files"
-msgstr "rimuove file "
+msgstr "Rimuove i files vecchi e inutilizzati della cache"
 
 #. [button]: id=purge
 #: data/gui/window/game_cache_options.cfg:207
@@ -4536,7 +4536,7 @@ msgstr ""
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:197
 msgid "Maximum auto-saves:"
-msgstr "Auto-salvataggi massimi: "
+msgstr "Auto-salvataggi massimi:"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:201
@@ -4566,7 +4566,7 @@ msgstr "Filtro:"
 #. [text_box]: id=filter
 #: data/gui/window/preferences/02_hotkeys.cfg:67
 msgid "Filters on hotkey description."
-msgstr "Filtra sulla descrizione dei tasti-scorciatoia"
+msgstr "Filtra sulla descrizione dei tasti-scorciatoia."
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:111
@@ -4927,7 +4927,7 @@ msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "'player_name notes on friend')"
 msgstr ""
-"Aggiungi questo nome alla lista dei tuoi amici (aggiung opzionalmente delle "
+"Aggiungi questo nome alla lista dei tuoi amici (aggiunge opzionalmente delle "
 "note, tipo «nome_giocatore inserito tra gli amici»)"
 
 #. [button]: id=add_ignored
@@ -5468,63 +5468,63 @@ msgstr "$prefix, o $last"
 
 #: src/formula/string_utils.cpp:285 src/formula/string_utils.cpp:314
 msgid "timespan^expired"
-msgstr ""
+msgstr "scaduto"
 
 #: src/formula/string_utils.cpp:291
 msgid "timespan^$num year"
-msgstr ""
+msgstr "$num anno"
 
 #: src/formula/string_utils.cpp:291
 msgid "timespan^$num years"
-msgstr ""
+msgstr "$num anni"
 
 #: src/formula/string_utils.cpp:292
 msgid "timespan^$num month"
-msgstr ""
+msgstr "$num mese"
 
 #: src/formula/string_utils.cpp:292
 msgid "timespan^$num months"
-msgstr ""
+msgstr "$num mesi"
 
 #: src/formula/string_utils.cpp:293
 msgid "timespan^$num week"
-msgstr ""
+msgstr "$num settimana"
 
 #: src/formula/string_utils.cpp:293
 msgid "timespan^$num weeks"
-msgstr ""
+msgstr "$num settimane"
 
 #: src/formula/string_utils.cpp:294
 msgid "timespan^$num day"
-msgstr ""
+msgstr "$num giorno"
 
 #: src/formula/string_utils.cpp:294
 msgid "timespan^$num days"
-msgstr ""
+msgstr "$num giorni"
 
 #: src/formula/string_utils.cpp:295
 msgid "timespan^$num hour"
-msgstr ""
+msgstr "$num ora"
 
 #: src/formula/string_utils.cpp:295
 msgid "timespan^$num hours"
-msgstr ""
+msgstr "$num ore"
 
 #: src/formula/string_utils.cpp:296
 msgid "timespan^$num minute"
-msgstr ""
+msgstr "$num minuto"
 
 #: src/formula/string_utils.cpp:296
 msgid "timespan^$num minutes"
-msgstr ""
+msgstr "$num minuti"
 
 #: src/formula/string_utils.cpp:297
 msgid "timespan^$num second"
-msgstr ""
+msgstr "$num secondo"
 
 #: src/formula/string_utils.cpp:297
 msgid "timespan^$num seconds"
-msgstr ""
+msgstr "$num secondi"
 
 #: src/gui/core/canvas.cpp:612
 msgid "Line doesn't fit on canvas."
@@ -6584,7 +6584,7 @@ msgstr "Elimina estensione dal server"
 
 #: src/gui/widgets/chatbox.cpp:286
 msgid "whisper to $receiver"
-msgstr "Bisbiglia a $receiver"
+msgstr "bisbiglia a $receiver"
 
 #: src/gui/widgets/chatbox.cpp:386
 msgid "Room <i>“$name”</i> joined"
@@ -7704,7 +7704,7 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
-"La chiave «$deprecated_key» è stata rinonimata in «$key». Il supporto per "
+"La chiave «$deprecated_key» è stata rinominata in «$key». Il supporto per "
 "«$deprecated_key» verrà rimosso nella versione $removal_version."
 
 #~ msgid "Rusty Open Gate"

@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-03-11 16:10+0300\n"
-"PO-Revision-Date: 2019-01-28 22:37+0100\n"
+"PO-Revision-Date: 2019-03-11 22:01+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -5285,8 +5285,6 @@ msgstr ""
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:225
-#, fuzzy
-#| msgid "an advancement choice"
 msgid "waiting for^an advancement choice"
 msgstr "una scelta di avanzamento"
 
@@ -6378,36 +6376,32 @@ msgid " This server disallows unregistered nicknames."
 msgstr " Questo server non permette l’uso di nickname non registrati."
 
 #: src/game_initialization/multiplayer.cpp:332
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
-msgstr "Il nickname «$nick» è stato bandito dai forum di questo server."
+msgstr ""
+"Il nickname «$nick» è stato bandito dai forum di questo server per "
+"$duration|."
 
 #: src/game_initialization/multiplayer.cpp:334
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Il nickname «$nick» è stato bandito dai forum di questo server."
 
 #: src/game_initialization/multiplayer.cpp:338
-#, fuzzy
-#| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums for $duration|."
-msgstr "Il tuo indirizzo IP è stato bandito dai forum di questo server."
+msgstr ""
+"Il tuo indirizzo IP è stato bandito dai forum di questo server per "
+"$duration|."
 
 #: src/game_initialization/multiplayer.cpp:340
 msgid "Your IP address is banned on this server’s forums."
 msgstr "Il tuo indirizzo IP è stato bandito dai forum di questo server."
 
 #: src/game_initialization/multiplayer.cpp:344
-#, fuzzy
-#| msgid ""
-#| "The email address for the nickname ‘$nick’ is banned on this server’s "
-#| "forums."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
 msgstr ""
 "L’indirizzo email del nickname «$nick» è stato bandito dai forum di questo "
-"server."
+"server per $duration|."
 
 #: src/game_initialization/multiplayer.cpp:346
 msgid ""
@@ -7114,10 +7108,8 @@ msgid "You have no units available to recruit."
 msgstr "Non hai unità disponibili per il reclutamento."
 
 #: src/menu_events.cpp:282
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recruited"
-msgstr "Nessuna unità richiamata"
+msgstr "Nessuna unità reclutata"
 
 #: src/menu_events.cpp:314
 msgid "You do not have enough gold to recruit that unit"
@@ -7621,7 +7613,7 @@ msgstr "Riscontrato un terreno con costo di movimento inferiore a 1."
 #. from another player. This text will be embedded into a sentence.
 #: src/persist_var.cpp:58
 msgid "waiting for^a global variable"
-msgstr ""
+msgstr "una variabile globale"
 
 #: src/play_controller.cpp:242
 msgid "time left for current turn"
@@ -7758,7 +7750,7 @@ msgstr "Tipo: "
 
 #: src/reports.cpp:235
 msgid "Side:"
-msgstr ""
+msgstr "Squadra:"
 
 #: src/reports.cpp:257
 msgid "Level: "
@@ -7863,16 +7855,12 @@ msgid "Defense: "
 msgstr "Difesa: "
 
 #: src/reports.cpp:620 src/reports.cpp:621
-#, fuzzy
-#| msgid "vision: "
 msgid "vision:"
-msgstr "visione: "
+msgstr "visione:"
 
 #: src/reports.cpp:625 src/reports.cpp:626
-#, fuzzy
-#| msgid "Jamming:"
 msgid "jamming:"
-msgstr "Disturbo:"
+msgstr "disturbo:"
 
 #: src/reports.cpp:655
 msgid "Movement Costs:"
@@ -7970,16 +7958,12 @@ msgstr[0] "Attacco"
 msgstr[1] "Attacchi"
 
 #: src/reports.cpp:1144
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day schedule:"
-msgstr "Periodo della giornata: "
+msgstr "Programma del Periodo della giornata:"
 
 #: src/reports.cpp:1176
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day:"
-msgstr "Periodo della giornata: "
+msgstr "Periodo della giornata:"
 
 #: src/reports.cpp:1177 src/reports.cpp:1219
 msgid "Lawful units: "
@@ -8385,7 +8369,7 @@ msgstr[1] "in attesa di $desc dalle squadrae $sides"
 #. This text will be embedded into a sentence.
 #: src/synced_user_choice.hpp:42
 msgid "waiting for^input"
-msgstr ""
+msgstr "input"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
