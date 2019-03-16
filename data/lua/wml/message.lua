@@ -156,7 +156,7 @@ local function add_formatting(cfg, text)
 				if rise > 1000 then
 					wesnoth.deprecated_message("rise units", 3, '1.16', "Specifying [message]rise= in 1/10,000ths of an em is deprecated. Specify it as ems instead.")
 				else
-					-- Pango expects 1/1024ths of a point here
+					-- Pango expects 1/10000ths of an em here
 					rise = rise * 10000
 				end
 			end
