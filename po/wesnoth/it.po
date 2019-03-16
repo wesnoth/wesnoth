@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2019-01-28 22:37+0100\n"
+"PO-Revision-Date: 2019-03-11 22:01+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -7750,8 +7750,10 @@ msgid "Defense: "
 msgstr "Difesa: "
 
 #: src/reports.cpp:565
+#, fuzzy
+#| msgid "vision:"
 msgid "vision: "
-msgstr "visione: "
+msgstr "visione:"
 
 #: src/reports.cpp:593
 msgid "Movement Costs:"
@@ -8496,11 +8498,10 @@ msgstr "Opzioni della lavagna"
 #~ "i>, <i>Cura</i>, o <i>Agguato Notturno</i>. Ottenere queste unità "
 #~ "rapidamente può fare una grossa differenza in una campagna."
 
-#~| msgid "<i>― Memoirs of Gweddry, 627YW</i>"
 #~ msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
 #~ msgstr "<i>― Ser Gerrick di Westin, 607AW</i>"
 
-#~ msgid "an advancement choice"
+#~ msgid "waiting for^an advancement choice"
 #~ msgstr "una scelta di avanzamento"
 
 #~ msgid "scenario_abbreviation^S"
@@ -8518,11 +8519,29 @@ msgstr "Opzioni della lavagna"
 #~ msgid "time limit^none"
 #~ msgstr "nessuno"
 
+#~ msgid ""
+#~ "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
+#~ msgstr ""
+#~ "Il nickname «$nick» è stato bandito dai forum di questo server per "
+#~ "$duration|."
+
 #~ msgid "The nickname ‘$nick’ is banned on this server’s forums."
 #~ msgstr "Il nickname «$nick» è stato bandito dai forum di questo server."
 
+#~ msgid "Your IP address is banned on this server’s forums for $duration|."
+#~ msgstr ""
+#~ "Il tuo indirizzo IP è stato bandito dai forum di questo server per "
+#~ "$duration|."
+
 #~ msgid "Your IP address is banned on this server’s forums."
 #~ msgstr "Il tuo indirizzo IP è stato bandito dai forum di questo server."
+
+#~ msgid ""
+#~ "The email address for the nickname ‘$nick’ is banned on this server’s "
+#~ "forums for $duration|."
+#~ msgstr ""
+#~ "L’indirizzo email del nickname «$nick» è stato bandito dai forum di "
+#~ "questo server per $duration|."
 
 #~ msgid ""
 #~ "The email address for the nickname ‘$nick’ is banned on this server’s "
@@ -8543,6 +8562,9 @@ msgstr "Opzioni della lavagna"
 #~ msgid "Alignment:"
 #~ msgstr "Allineamento:"
 
+#~ msgid "No unit recruited"
+#~ msgstr "Nessuna unità reclutata"
+
 #~ msgid "No unit recalled"
 #~ msgstr "Nessuna unità richiamata"
 
@@ -8555,17 +8577,35 @@ msgstr "Opzioni della lavagna"
 #~ msgid "Side '$side' controller is now controlled by: human."
 #~ msgstr "Il nuovo conduttore della squadra '$side' ora è: umano."
 
+#~ msgid "waiting for^a global variable"
+#~ msgstr "una variabile globale"
+
+#~ msgid "Side:"
+#~ msgstr "Squadra:"
+
 #~ msgid "Advancements:"
 #~ msgstr "Avanzamenti:"
 
+#~ msgid "jamming:"
+#~ msgstr "disturbo:"
+
 #~ msgid "weapon^None"
 #~ msgstr "nessuna"
+
+#~ msgid "Time of day schedule:"
+#~ msgstr "Programma del Periodo della giornata:"
+
+#~ msgid "Time of day:"
+#~ msgstr "Periodo della giornata:"
 
 #~ msgid "Battery"
 #~ msgstr "Batteria"
 
 #~ msgid "(unknown player)"
 #~ msgstr "(giocatore sconosciuto)"
+
+#~ msgid "waiting for^input"
+#~ msgstr "input"
 
 #~ msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 #~ msgid_plural ""

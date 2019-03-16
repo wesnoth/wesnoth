@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2019-01-23 20:50+0100\n"
+"PO-Revision-Date: 2019-03-15 21:40+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -2434,7 +2434,7 @@ msgstr "xBRZ seguito da Nearest Neighbor (raccomandato)"
 
 #: data/gui/window/advanced_graphics_options.cfg:45
 msgid "Bilinear interpolation scaling"
-msgstr "interpolazione Bilineare scaling"
+msgstr "Ridimensionamento con Interpolazione Bilineare"
 
 #: data/gui/window/advanced_graphics_options.cfg:45
 msgid "Linear"
@@ -2894,7 +2894,7 @@ msgstr "Configurazione Squadra"
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:83
 msgid "Number:"
-msgstr "Numero: "
+msgstr "Numero:"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:111
@@ -2957,7 +2957,7 @@ msgstr "Umano"
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:375
 msgid "controller^AI only"
-msgstr "solo AI "
+msgstr "solo AI"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:377
@@ -3217,7 +3217,7 @@ msgstr "Pulisci"
 #. [button]: id=clean
 #: data/gui/window/game_cache_options.cfg:195
 msgid "Clear stale and unused cache files"
-msgstr "rimuove file "
+msgstr "Rimuove i files vecchi e inutilizzati della cache"
 
 #. [button]: id=purge
 #: data/gui/window/game_cache_options.cfg:207
@@ -4596,7 +4596,7 @@ msgstr ""
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:201
 msgid "Maximum auto-saves:"
-msgstr "Auto-salvataggi massimi: "
+msgstr "Auto-salvataggi massimi:"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:205
@@ -4963,7 +4963,7 @@ msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "'player_name notes on friend')"
 msgstr ""
-"Aggiungi questo nome alla lista dei tuoi amici (aggiung opzionalmente delle "
+"Aggiungi questo nome alla lista dei tuoi amici (aggiunge opzionalmente delle "
 "note, tipo «nome_giocatore inserito tra gli amici»)"
 
 #. [button]: id=add_ignored
@@ -6563,7 +6563,7 @@ msgstr "Elimina estensione dal server"
 
 #: src/gui/widgets/chatbox.cpp:263
 msgid "whisper to $receiver"
-msgstr "Bisbiglia a $receiver"
+msgstr "bisbiglia a $receiver"
 
 #: src/gui/widgets/chatbox.cpp:396
 #, fuzzy
@@ -7643,7 +7643,7 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
-"La chiave «$deprecated_key» è stata rinonimata in «$key». Il supporto per "
+"La chiave «$deprecated_key» è stata rinominata in «$key». Il supporto per "
 "«$deprecated_key» verrà rimosso nella versione $removal_version."
 
 #~ msgid "Save random seed"
@@ -7692,7 +7692,7 @@ msgstr ""
 #~ msgstr "Filtro:"
 
 #~ msgid "Filters on hotkey description."
-#~ msgstr "Filtra sulla descrizione dei tasti-scorciatoia"
+#~ msgstr "Filtra sulla descrizione dei tasti-scorciatoia."
 
 #~ msgid "Available at main menu"
 #~ msgstr "Disponibile nella schermata principale"
@@ -7712,6 +7712,51 @@ msgstr ""
 
 #~ msgid "The maximum text width is less than 1."
 #~ msgstr "L’ampiezza massima del testo è meno di 1."
+
+#~ msgid "timespan^expired"
+#~ msgstr "scaduto"
+
+#~ msgid "timespan^$num year"
+#~ msgstr "$num anno"
+
+#~ msgid "timespan^$num years"
+#~ msgstr "$num anni"
+
+#~ msgid "timespan^$num month"
+#~ msgstr "$num mese"
+
+#~ msgid "timespan^$num months"
+#~ msgstr "$num mesi"
+
+#~ msgid "timespan^$num week"
+#~ msgstr "$num settimana"
+
+#~ msgid "timespan^$num weeks"
+#~ msgstr "$num settimane"
+
+#~ msgid "timespan^$num day"
+#~ msgstr "$num giorno"
+
+#~ msgid "timespan^$num days"
+#~ msgstr "$num giorni"
+
+#~ msgid "timespan^$num hour"
+#~ msgstr "$num ora"
+
+#~ msgid "timespan^$num hours"
+#~ msgstr "$num ore"
+
+#~ msgid "timespan^$num minute"
+#~ msgstr "$num minuto"
+
+#~ msgid "timespan^$num minutes"
+#~ msgstr "$num minuti"
+
+#~ msgid "timespan^$num second"
+#~ msgstr "$num secondo"
+
+#~ msgid "timespan^$num seconds"
+#~ msgstr "$num secondi"
 
 #~ msgid "ascending"
 #~ msgstr "ascendente"
