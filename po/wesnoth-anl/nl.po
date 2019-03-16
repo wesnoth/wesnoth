@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 17:01 UTC\n"
-"PO-Revision-Date: 2010-12-27 18:00+0100\n"
+"PO-Revision-Date: 2019-03-13 08:14+0100\n"
 "Last-Translator: ai0867 <ai0867@gmail.com>\n"
 "Language-Team: Dutch translation <ai0867@gmail.com>\n"
 "Language: nl\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
@@ -25,10 +25,6 @@ msgstr "4s - Een nieuw land"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
-#, fuzzy
-#| msgid ""
-#| "This 4p survival scenario allows you to construct buildings and terraform "
-#| "the land. Use map settings. Recommended starting gold=100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. Use map settings. The recommended starting gold is 100."
@@ -65,10 +61,8 @@ msgstr "Je moet overleven tot beurt 25"
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:71
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:85
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:99
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Settlers"
-msgstr "Middenlanders"
+msgstr "Kolonisten"
 
 #. [side]: type=Death Knight
 #. [side]: type=Orcish Sovereign
@@ -76,37 +70,33 @@ msgstr "Middenlanders"
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:148
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:179
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:210
-#, fuzzy
-#| msgid "teamname^East"
 msgid "teamname^Enemies"
-msgstr "Oosten"
+msgstr "Vijanden"
 
 #. [side]: type=Death Knight
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:126
 msgid "Mal Sevu"
-msgstr ""
+msgstr "Mal Sevu"
 
 #. [side]: type=Orcish Sovereign
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:157
 msgid "Gol Goroth"
-msgstr ""
+msgstr "Gol Goroth"
 
 #. [side]: type=Orcish Sovereign
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:188
 msgid "Greg"
-msgstr ""
+msgstr "Greg"
 
 #. [side]: type=Death Knight
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:219
 msgid "Mal Shiki"
-msgstr ""
+msgstr "Mal Shiki"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:245
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Prisoners"
-msgstr "Middenlanders"
+msgstr "Gevangenen"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:426
@@ -151,16 +141,12 @@ msgstr ""
 
 #. [message]: type=Peasant
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:610
-#, fuzzy
-#| msgid ""
-#| "I swear I saw somebody trapped in the spider’s web. Maybe we should "
-#| "rescue them?"
 msgid ""
 "I swear I saw somebody trapped in the spider’s web. Maybe we should rescue "
 "him?"
 msgstr ""
 "Ik zweer dat ik iemand gevangen zag zitten in het spinnenweb. Misschien "
-"moeten we hem redden."
+"moeten we hem redden?"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:632
@@ -430,42 +416,30 @@ msgstr ""
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:248
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of agriculture"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of agriculture"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Deel kennis van landbouw"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:255
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of mining"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of mining"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Deel kennis van mijnbouw"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:262
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of warfare"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of warfare"
 msgstr ""
-"$player_name\n"
-"Deel kennis van oorlogvoering"
+"<span color='green'>$player_name</span>\n"
+"Deel kennis van oorlogsvoering"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:292
@@ -622,20 +596,14 @@ msgstr "Ga verder zoals voorheen"
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:154
-#, fuzzy
-#| msgid ""
-#| "Agriculture\n"
-#| "Farmers produce +1 gold\n"
-#| "Study Progress: $player_$side_number|.farming.progress|/$player_"
-#| "$side_number|.farming.target"
 msgid ""
 "<span color='green'>Agriculture</span>\n"
 "Farmers produce +1 gold\n"
 "Study Progress: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 msgstr ""
-"Landbouw\n"
-"Landbouwers produceren +1 goud\n"
+"<span color='green'>Landbouw</span>\n"
+"Boeren produceren +1 goud\n"
 "Onderzoeksproces: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 
@@ -878,14 +846,14 @@ msgstr "Kosten: 7g"
 msgid "Clear the Ground"
 msgstr "Maak de grond schoon"
 
+#~ msgid "Convert to Grassland"
+#~ msgstr "Verander in grasland"
+
 #~ msgid "teamname^Team 1"
 #~ msgstr "Ploeg 1"
 
 #~ msgid "teamname^Team 2"
 #~ msgstr "Ploeg 2"
-
-#~ msgid "Convert to Grassland"
-#~ msgstr "Verander in grasland"
 
 #~ msgid "User Map"
 #~ msgstr "Eigen Map"

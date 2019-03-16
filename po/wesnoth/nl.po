@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2019-03-08 10:16+0100\n"
+"PO-Revision-Date: 2019-03-13 10:07+0100\n"
 "Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
@@ -7645,8 +7645,10 @@ msgid "Defense: "
 msgstr "Verdediging: "
 
 #: src/reports.cpp:565
+#, fuzzy
+#| msgid "vision:"
 msgid "vision: "
-msgstr "zicht: "
+msgstr "zicht:"
 
 #: src/reports.cpp:593
 msgid "Movement Costs:"
@@ -8377,14 +8379,14 @@ msgstr "Whiteboard Opties"
 
 #~ msgid "Using lower-level units can be very cost-effective."
 #~ msgstr ""
-#~ "Het gebruik van eenheden van een lage rank kan erg kostenbesparend werken."
+#~ "Het gebruik van eenheden van een lage rang kan erg kostenbesparend werken."
 
 #~ msgid ""
 #~ "Some higher-level units have inimitable abilities such as <i>Leadership</"
 #~ "i>, <i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can "
 #~ "make a big difference in a campaign."
 #~ msgstr ""
-#~ "Sommige eenheden met een hogere rank hebben belangrijke vaardigheden "
+#~ "Sommige eenheden met een hogere rang hebben belangrijke vaardigheden "
 #~ "zoals <i>Leiderschap</i>, <i>Geneest</i>, of <i>Nachtzicht</i>. Wanneer "
 #~ "deze eenheden vroeg in de veldtocht beschikbaar worden kan dit voor een "
 #~ "groot verschil zorgen."
@@ -8392,8 +8394,8 @@ msgstr "Whiteboard Opties"
 #~ msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
 #~ msgstr "<i>― Heer Gerrick van Westin, 607YW</i>"
 
-#~ msgid "an advancement choice"
-#~ msgstr "een promotie keuze"
+#~ msgid "waiting for^an advancement choice"
+#~ msgstr "het kiezen van een promotie"
 
 #~ msgid "scenario_abbreviation^S"
 #~ msgstr "S"
@@ -8410,11 +8412,26 @@ msgstr "Whiteboard Opties"
 #~ msgid "time limit^none"
 #~ msgstr "geen"
 
+#~ msgid ""
+#~ "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
+#~ msgstr ""
+#~ "De bijnaam '$nick' is verbannen van deze server forums voor $duration|."
+
 #~ msgid "The nickname ‘$nick’ is banned on this server’s forums."
 #~ msgstr "De bijnaam '$nick' is verbannen van deze server forums."
 
+#~ msgid "Your IP address is banned on this server’s forums for $duration|."
+#~ msgstr "Je IP-adres is verbannen van deze server forums voor duration."
+
 #~ msgid "Your IP address is banned on this server’s forums."
 #~ msgstr "Je IP-adres is verbannen van deze server forums."
+
+#~ msgid ""
+#~ "The email address for the nickname ‘$nick’ is banned on this server’s "
+#~ "forums for $duration|."
+#~ msgstr ""
+#~ "Het e-mailadres voor de bijnaam '$nick' is verbannen van de server forums "
+#~ "voor $duration|."
 
 #~ msgid ""
 #~ "The email address for the nickname ‘$nick’ is banned on this server’s "
@@ -8434,6 +8451,9 @@ msgstr "Whiteboard Opties"
 #~ msgid "Alignment:"
 #~ msgstr "Alliantie:"
 
+#~ msgid "No unit recruited"
+#~ msgstr "Geen eenheid gerekruteerd"
+
 #~ msgid "No unit recalled"
 #~ msgstr "Geen eenheid opgeroepen"
 
@@ -8446,17 +8466,35 @@ msgstr "Whiteboard Opties"
 #~ msgid "Side '$side' controller is now controlled by: human."
 #~ msgstr "Zijde '$side' wordt nu bestuurd door: mens."
 
+#~ msgid "waiting for^a global variable"
+#~ msgstr "een wereldwijde variabele"
+
+#~ msgid "Side:"
+#~ msgstr "Kant:"
+
 #~ msgid "Advancements:"
 #~ msgstr "Promoties:"
 
+#~ msgid "jamming:"
+#~ msgstr "storing:"
+
 #~ msgid "weapon^None"
 #~ msgstr "Geen"
+
+#~ msgid "Time of day schedule:"
+#~ msgstr "Tijd van de dag schema:"
+
+#~ msgid "Time of day:"
+#~ msgstr "Tijd van de dag:"
 
 #~ msgid "Battery"
 #~ msgstr "Accu"
 
 #~ msgid "(unknown player)"
 #~ msgstr "(onbekende speler)"
+
+#~ msgid "waiting for^input"
+#~ msgstr "input"
 
 #~ msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 #~ msgid_plural ""
@@ -9294,11 +9332,6 @@ msgstr "Whiteboard Opties"
 #~ msgid_plural "moves"
 #~ msgstr[0] "zetten"
 #~ msgstr[1] "zetten"
-
-#, fuzzy
-#~| msgid "Warning: "
-#~ msgid "jamming"
-#~ msgstr "Waarschuwing:"
 
 #~ msgid "XP to advance"
 #~ msgstr "XP om te promoveren"
