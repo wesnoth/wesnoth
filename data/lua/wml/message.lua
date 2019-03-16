@@ -300,7 +300,7 @@ function wesnoth.wml_actions.message(cfg)
 		if wesnoth.eval_conditional(condition) then
 			if option.message and not option.image and not option.label then
 				local message = tostring(option.message)
-				wesnoth.deprecated_message("[option]message=", 2, "1.15.0", "Use label= instead.");
+				wesnoth.deprecated_message("[option]message=", 3, "1.15.0", "Use label= instead.");
 				-- Legacy format
 				table.insert(options, option.message)
 			else
@@ -312,7 +312,7 @@ function wesnoth.wml_actions.message(cfg)
 					value = option.value
 				}
 				if option.message then
-					wesnoth.deprecated_message("[option]message=", 2, "1.15.0", "Use label= instead.");
+					wesnoth.deprecated_message("[option]message=", 3, "1.15.0", "Use label= instead.");
 					if not option.label then
 						-- Support either message or description
 						opt.label = option.message
