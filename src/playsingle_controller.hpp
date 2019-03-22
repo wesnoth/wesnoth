@@ -28,8 +28,9 @@
 
 struct reset_gamestate_exception : public std::exception
 {
-	reset_gamestate_exception(std::shared_ptr<config> l, bool s = true) : level(l), start_replay(s) {}
+	reset_gamestate_exception(std::shared_ptr<config> l, std::shared_ptr<config> stats, bool s = true) : level(l), stats_(stats), start_replay(s) {}
 	std::shared_ptr<config> level;
+	std::shared_ptr<config> stats_;
 	bool start_replay;
 };
 
