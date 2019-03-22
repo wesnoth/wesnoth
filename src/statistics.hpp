@@ -106,7 +106,10 @@ namespace statistics
 	void write_stats(config_writer &out);
 	void read_stats(const config& cfg);
 	void fresh_stats();
+	/// Delete the current scenario from the stats.
 	void clear_current_scenario();
+	/// Reset the stats of the current scenario to the beginning.
+	void reset_current_scenario();
 
 	void reset_turn_stats(const std::string & save_id);
 	stats calculate_stats(const std::string & save_id);
