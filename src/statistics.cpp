@@ -651,6 +651,13 @@ void clear_current_scenario()
 	}
 }
 
+void reset_current_scenario()
+{
+	assert(!master_stats.empty());
+	master_stats.back().team_stats = {};
+	mid_scenario = false;
+}
+
 int sum_str_int_map(const stats::str_int_map& m)
 {
 	int res = 0;
