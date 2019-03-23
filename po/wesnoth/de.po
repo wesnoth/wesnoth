@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-03-11 16:10+0300\n"
-"PO-Revision-Date: 2019-01-22 18:30+0100\n"
+"PO-Revision-Date: 2019-03-21 00:43+0100\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -346,7 +346,6 @@ msgstr "Joystick: Achsen-Nummer des Schubhebels"
 msgid "Joystick: deadzone of the thruster"
 msgstr "Joystick: Totbereich des Schubhebels"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
@@ -3604,7 +3603,6 @@ msgstr "Höhle"
 msgid "Fungus"
 msgstr "Pilzhain"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
 #: data/core/team-colors.cfg:188 src/terrain/terrain.cpp:176
 msgid "Village"
@@ -3635,13 +3633,11 @@ msgstr "Unbegehbar"
 msgid "Impassable"
 msgstr "Unpassierbar"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
 #: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:467
 msgid "Fog"
 msgstr "Nebel"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
 #: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:470
 #: src/game_initialization/lobby_data.cpp:473
@@ -4090,7 +4086,6 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nein"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
 #: src/hotkey/command_executor.cpp:627
@@ -4131,7 +4126,6 @@ msgstr ""
 msgid "(Note: You should use $replacement instead in new code)"
 msgstr "(Anmerkung: Sie sollten stattdessen $replacement in Ihrem Code nutzen)"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:194 src/deprecation.cpp:69
 msgid "Invalid deprecation level $level (should be 1-4)"
@@ -4142,31 +4136,26 @@ msgstr "Ungültige Deprekationsstufe $level (nur 1-4 erlaubt)"
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Ungültige Deprekationsstufe (nur 1-4 erlaubt)"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1061
 msgid "female^poisoned"
 msgstr "vergiftet"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1068
 msgid "female^slowed"
 msgstr "verlangsamt"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1068
 msgid "slowed"
 msgstr "verlangsamt"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1074
 msgid "female^petrified"
 msgstr "versteinert"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1074
 msgid "petrified"
@@ -4182,7 +4171,6 @@ msgstr "unheilbar"
 msgid "unhealable"
 msgstr "unheilbar"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:74
 msgid "Victory:"
@@ -4198,7 +4186,6 @@ msgstr "Niederlage:"
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% Goldstücke werden ins nächste Szenario übernommen."
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:156
 #: src/game_initialization/mp_game_utils.cpp:76
@@ -5295,7 +5282,7 @@ msgid ""
 msgstr ""
 "Die Rekrutierungskosten von manchen Einheiten überschreiten die üblichen 20 "
 "Gold durch Einberufung. Überprüfe in Kampagnen immer, ob die Einberufung "
-"einer Einheit möglicherweise günstiger als die Ausbildung. "
+"einer Einheit möglicherweise günstiger als die Ausbildung."
 
 #. [tip]
 #: data/tips.cfg:253
@@ -5349,8 +5336,6 @@ msgstr ""
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:225
-#, fuzzy
-#| msgid "an advancement choice"
 msgid "waiting for^an advancement choice"
 msgstr "eine Aufstiegsentscheidung"
 
@@ -5418,13 +5403,13 @@ msgstr "Teleportation fehlgeschlagen! Ziel ist besetzt."
 #: src/actions/move.cpp:1146
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
-msgstr[0] "eine verbündete"
+msgstr[0] "Verbündete"
 msgstr[1] "$friends verbündete"
 
 #: src/actions/move.cpp:1147
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
-msgstr[0] "eine feindliche"
+msgstr[0] "Feindliche"
 msgstr[1] "$enemies feindliche"
 
 #: src/actions/move.cpp:1148
@@ -5453,11 +5438,11 @@ msgstr "Verbinden mit $server_address|..."
 
 #: src/addon/client.cpp:89
 msgid "Downloading list of add-ons..."
-msgstr "Add-on Liste wird heruntergeladen..."
+msgstr "Add-on Liste wird heruntergeladen…"
 
 #: src/addon/client.cpp:103
 msgid "Requesting distribution terms..."
-msgstr "Nutzungsbedingungen werden angefordert..."
+msgstr "Nutzungsbedingungen werden angefordert…"
 
 #: src/addon/client.cpp:127
 msgid ""
@@ -5504,7 +5489,7 @@ msgstr ""
 
 #: src/addon/client.cpp:184
 msgid "Sending add-on <i>$addon_title</i>..."
-msgstr "Erweiterung <i>$addon_title</i> wird gesendet..."
+msgstr "Erweiterung <i>$addon_title</i> wird gesendet…"
 
 #: src/addon/client.cpp:217
 msgid "Removing add-on <i>$addon_title</i> from the server..."
@@ -6215,7 +6200,7 @@ msgstr "Lokaler Spieler"
 
 #: src/game_initialization/connect_engine.cpp:1317
 msgid "Empty"
-msgstr "Leer"
+msgstr "Niemand"
 
 #: src/game_initialization/connect_engine.cpp:1320
 msgid "Reserved"
@@ -6441,42 +6426,37 @@ msgid " This server disallows unregistered nicknames."
 msgstr " Der Server erlaubt keine unregistrierten Benutzernamen."
 
 #: src/game_initialization/multiplayer.cpp:332
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
-msgstr "Der Benutzername »$nick« ist von den Foren dieses Servers verbannt."
+msgstr ""
+"Der Benutzername »$nick« ist von den Foren dieses Servers verbannt für "
+"$duration|."
 
 #: src/game_initialization/multiplayer.cpp:334
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Der Benutzername »$nick« ist von den Foren dieses Servers verbannt."
 
 #: src/game_initialization/multiplayer.cpp:338
-#, fuzzy
-#| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums for $duration|."
-msgstr "Eure IP Adresse ist von den Foren dieses Servers verbannt."
+msgstr ""
+"Eure IP Adresse ist von den Foren dieses Servers verbannt für $duration|."
 
 #: src/game_initialization/multiplayer.cpp:340
 msgid "Your IP address is banned on this server’s forums."
 msgstr "Eure IP Adresse ist von den Foren dieses Servers verbannt."
 
 #: src/game_initialization/multiplayer.cpp:344
-#, fuzzy
-#| msgid ""
-#| "The email address for the nickname ‘$nick’ is banned on this server’s "
-#| "forums."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
 msgstr ""
-"Der E-Mail Adresse für den Benutzernamen »$nick« ist von den Foren dieses "
-"Servers verbannt."
+"Die E-Mail Adresse für den Benutzernamen »$nick« ist von den Foren dieses "
+"Servers verbannt für $duration|."
 
 #: src/game_initialization/multiplayer.cpp:346
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
-"Der E-Mail Adresse für den Benutzernamen »$nick« ist von den Foren dieses "
+"Die E-Mail Adresse für den Benutzernamen »$nick« ist von den Foren dieses "
 "Servers verbannt."
 
 #: src/game_initialization/multiplayer.cpp:349
@@ -6903,49 +6883,50 @@ msgstr "Fähigkeitenverbesserungen: "
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:512
 msgid "HP:"
-msgstr "LP: "
+msgstr "LP:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:516
 msgid "Moves:"
-msgstr "BP: "
+msgstr "BP:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
 msgid "Vision:"
-msgstr "Sichtweite: "
+msgstr "Sichtweite:"
 
+# Diesen String gibt es zwei mal.
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
 msgid "Jamming:"
-msgstr "Störung: "
+msgstr "Sichtblockade:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
 msgid "Cost:"
-msgstr "Kosten: "
+msgstr "Kosten:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:536
 msgid "Alignment:"
-msgstr "Tag-/Nachteinfluss: "
+msgstr "Tag-/Nachteinfluss:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:543
 msgid "Required XP:"
-msgstr "Benötigte EP: "
+msgstr "Benötigte EP:"
 
 #: src/help/help_topic_generators.cpp:552
 msgid "unit help^Attacks"
@@ -7151,7 +7132,7 @@ msgstr "Pseudonyme:"
 
 #: src/menu_events.cpp:176
 msgid "Save Map As"
-msgstr "Karte speichern unter…"
+msgstr "Karte speichern unter"
 
 #: src/menu_events.cpp:187
 msgid "Map saved."
@@ -7178,10 +7159,8 @@ msgid "You have no units available to recruit."
 msgstr "Es gibt keine Einheiten, die Ihr ausbilden könntet."
 
 #: src/menu_events.cpp:282
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recruited"
-msgstr "Keine Einheit einberufen"
+msgstr "Keine Einheit ausgebildet"
 
 #: src/menu_events.cpp:314
 msgid "You do not have enough gold to recruit that unit"
@@ -7715,12 +7694,13 @@ msgstr "Nächster Spieler"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Gelände mit Bewegungskosten niedriger als 1 gefunden."
 
+# weniger technische Übersetzung
 #. TRANSLATORS:  In networked games, this text is shown for other
 #. clients, while they wait to receive the content of a global variable
 #. from another player. This text will be embedded into a sentence.
 #: src/persist_var.cpp:58
 msgid "waiting for^a global variable"
-msgstr ""
+msgstr "Daten"
 
 #: src/play_controller.cpp:242
 msgid "time left for current turn"
@@ -7860,7 +7840,7 @@ msgstr "Typ: "
 
 #: src/reports.cpp:235
 msgid "Side:"
-msgstr ""
+msgstr "Partei:"
 
 #: src/reports.cpp:257
 msgid "Level: "
@@ -7970,16 +7950,15 @@ msgstr "min."
 msgid "Defense: "
 msgstr "Verteidigung: "
 
+# Oder auch nur Sicht
 #: src/reports.cpp:620 src/reports.cpp:621
-#, fuzzy
-#| msgid "vision: "
 msgid "vision:"
-msgstr "Sichtbarkeit: "
+msgstr "Sichtweite:"
 
+# Diesen String gibt es zwei mal.
 #: src/reports.cpp:625 src/reports.cpp:626
-#, fuzzy
 msgid "jamming:"
-msgstr "Programmierung"
+msgstr "Sichtblockade:"
 
 #: src/reports.cpp:655
 msgid "Movement Costs:"
@@ -8095,16 +8074,12 @@ msgstr[0] "Angriff"
 msgstr[1] "Angriffe"
 
 #: src/reports.cpp:1144
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day schedule:"
-msgstr "Tageszeit: "
+msgstr "Tagesablauf:"
 
 #: src/reports.cpp:1176
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day:"
-msgstr "Tageszeit: "
+msgstr "Tageszeit:"
 
 #: src/reports.cpp:1177 src/reports.cpp:1219
 msgid "Lawful units: "
@@ -8504,7 +8479,7 @@ msgstr[1] "warte auf $desc von Parteien $sides"
 #. This text will be embedded into a sentence.
 #: src/synced_user_choice.hpp:42
 msgid "waiting for^input"
-msgstr ""
+msgstr "eine Eingabe"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
