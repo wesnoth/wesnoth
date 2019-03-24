@@ -53,6 +53,8 @@
    * Fix undoing a recall not un-drawing parts of the sprite that go beyond the unit's hex (issue #3325)
    * Fix crash when the recruit filter matched nothing. (PR #3969)
    * "Show Enemy Moves" now highlights enemy units that can reach the highlighted hex. (PR #3961)
+   * The time of day graphics for midday and midnight have been updated to match the rest of the
+     summer/winter time of day schedules. (issue #2677)
  ### Miscellaneous and bug fixes
    * Fix auxiliary attack end event handlers defined by FORCE_CHANCE_TO_HIT breaking if one or more of the
      affected units are removed by another attack end event handler (issue #3982).
