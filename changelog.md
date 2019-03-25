@@ -58,6 +58,8 @@
  ### Miscellaneous and bug fixes
    * Fix auxiliary attack end event handlers defined by FORCE_CHANCE_TO_HIT breaking if one or more of the
      affected units are removed by another attack end event handler (issue #3982).
+   * The statistics dialog no longer forgets to reset stats when using "Reset Replay" ("Stop") in replay
+     mode or "Back to turn" in networked MP games (issue #2852).
 
 ## Version 1.14.6
  ### AI
