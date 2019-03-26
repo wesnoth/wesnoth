@@ -127,6 +127,8 @@
      * S2: Modified Dacyn's dialogue upon undead arrival
      * S7a: Require Dacyn to cross the river
      * S9: add snow to map
+     * S10: show objectives after defeating enemy leaders
+     * S11: show objectives after finding gold and releasing prisoners
    * Legend of Wesmere:
      * Disabled side shuffling in MP (checking the box does nothing)
      * Fixed missing persistent data at the end of chapter 3
