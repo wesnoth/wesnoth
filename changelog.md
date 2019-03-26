@@ -131,6 +131,7 @@
      * Disabled side shuffling in MP (checking the box does nothing)
      * Fixed missing persistent data at the end of chapter 3
      * Rebalanced gold values in all scenarios
+     * S4: (MP only) free Cleodil at scenario start
    * Northern Rebirth:
      * Eryssa now must survive if she joins the player
      * Father Morvin and Sister Thera will now respawn at Tallin's location if they die to prevent illogical gameplay
