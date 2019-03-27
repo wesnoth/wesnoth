@@ -746,6 +746,7 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 	unit_map::const_iterator leader = disp->get_units().find(leader_loc); // may be null_location
 	const bool leader_visible = (leader != disp->get_units().end()) && leader->is_visible_to_team(viewing_team, false);
 
+	// TODO: Use a RAII object such as wb::temporary_unit_hider
 	u->set_hidden(true);
 
 	unit_animator animator;
@@ -757,6 +758,7 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 	} else if (unit_visible) {
 		disp->scroll_to_tile(loc,game_display::ONSCREEN,true,false);
 	} else {
+		u->set_hidden(false);
 		return;
 	}
 	if (leader != disp->get_units().end()) {
