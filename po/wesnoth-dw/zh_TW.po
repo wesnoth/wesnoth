@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Traditional Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # 李信融 <magiclen0810@gmail.com>, 2010.
 # 楊綮銘 <steven2880@gmail.com>, 2018.
@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 17:01 UTC\n"
-"PO-Revision-Date: 2018-08-04 22:48+0800\n"
+"PO-Revision-Date: 2019-03-12 18:11+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:13
@@ -357,8 +357,10 @@ msgstr "嘿，我做到了！"
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:627
+#, fuzzy
+#| msgid "Good work, Kai, if I may say so."
 msgid "Good work Kai, if I may say so."
-msgstr "忍不住想誇獎你一下。凱，你做得好啊！"
+msgstr "凱，你做得好啊！忍不住想誇獎你一下。"
 
 #. [scenario]: id=02_Flight
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:27
@@ -388,7 +390,7 @@ msgid ""
 "soldiers of different races. It seemed that he also lusted for merfolk "
 "slaves. Krellis’ scouts reported that more dark armies were heading north."
 msgstr ""
-"傳言說，莫．瑞文諾似乎是一位將自己轉為巫妖的偉大人類巫師，他襲擊了韋諾王國的"
+"傳言說，麥爾-諾曼鈉似乎是一位將自己轉為巫妖的偉大人類巫師，他襲擊了韋諾王國的"
 "邊境，建立起可怕的不死族的軍隊。他還派出死靈法師們攻擊半獸人和精靈，甚至是不"
 "同種族的亡靈。也有人說他特別喜歡拿人魚作為奴隸。根據克萊利斯的偵查兵回報，有"
 "更多黑暗的軍隊正朝向北方前進。"
@@ -435,7 +437,7 @@ msgstr "擊敗所有敵人的領袖"
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:90
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:105
 msgid "Mal-Ravanal’s Forces"
-msgstr "莫．瑞文諾的軍隊"
+msgstr "麥爾-諾曼鈉的軍隊"
 
 #. [side]: type=Necromancer, id=Mel Daveth
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:140
@@ -880,7 +882,7 @@ msgid ""
 "Hold on...It looks like a better feast is coming our way! Fresh fish, boys! "
 "Go get it."
 msgstr ""
-"聞起來真的好香啊......不行，我得hold住！看來等一下就可以享用到美味大餐了，兄"
+"聞起來真的好香啊......不行，我得撐得住！看來等一下就可以享用到美味大餐了，兄"
 "弟們，一起去吧！"
 
 #. [message]: speaker=Kai Krellis
@@ -1656,6 +1658,8 @@ msgstr "麥可諾"
 
 #. [message]: speaker=Vlagnor
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:124
+#, fuzzy
+#| msgid "What are you merfolk doing here?"
 msgid "What are you mermen doing here?"
 msgstr "你們這些人魚在這裡幹嘛？"
 
@@ -1681,12 +1685,16 @@ msgstr "女巫？"
 
 #. [message]: speaker=Vlagnor
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:144
+#, fuzzy
+#| msgid ""
+#| "She kill drakes. If you are her friend, we will kill you. We do not want "
+#| "MORE merfolk blasting and stabbing."
 msgid ""
 "She kill drakes. If you are her friend, we will kill you. We do not want "
 "MORE mermen blasting and stabbing."
 msgstr ""
-"她殺了我的族人們。如果你們是她的朋友，那我們就要殺了你們。我們可不希望又更多"
-"的人魚拿著長矛來這裡搞破壞。"
+"她殺了我的族人們。如果你們是她的朋友，那我們就要殺了你們。我們可不希望又\"更"
+"多\"的人魚拿著長矛來這裡搞破壞。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:148
@@ -2394,6 +2402,10 @@ msgstr "我也要加入你們！殺死那些基因突變的怪物。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:570
+#, fuzzy
+#| msgid ""
+#| "The merfolk clapped their hands over their ears as a terrible wail echoed "
+#| "off the castle walls."
 msgid ""
 "The mermen clapped their hands over their ears as a terrible wail echoed off "
 "the castle walls."
@@ -2607,6 +2619,14 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:17
+#, fuzzy
+#| msgid ""
+#| "The tribe that had fled Jotha unable to fight returned as an army "
+#| "stiffened by veteran fighters and led by a warrior king. Though they were "
+#| "tired from their journey, weariness fell from them as they neared home. "
+#| "The merfolk arrived during the night, and found the mouth of their bay "
+#| "guarded, so they headed south along the coast to some outlying villages "
+#| "to gather news of the invaders."
 msgid ""
 "The tribe that had fled Jotha unable to fight returned as an army stiffened "
 "by veteran fighters and led by a warrior king. Though they were tired from "
@@ -2654,7 +2674,7 @@ msgid ""
 "and make yours safe as well. Mal-Ravanal will pay this day."
 msgstr ""
 "我們替這場戰鬥做好萬全準備了。我們將會奪回我們的家園，你們將會跟以前一樣安"
-"全。莫．瑞文諾在這天將會付出代價！"
+"全。麥爾-諾曼鈉在這天將會付出代價。"
 
 #. [message]: speaker=Nebthun
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:455
@@ -2670,8 +2690,10 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:491
+#, fuzzy
+#| msgid "At dawn, the merfolk got a good look at their opponents."
 msgid "At dawn, the mermen got a good look at their opponents."
-msgstr "黎民來臨，人魚們可以看清敵人的狀況了。"
+msgstr "黎明來臨，人魚們可以看清敵人的狀況了。"
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:497
@@ -2743,7 +2765,7 @@ msgstr "我們成功奪回家園了！"
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:760
 msgid "Cylanna! I will miss you."
-msgstr "希蘭娜！我會失去妳！"
+msgstr "希蘭娜！我會失去妳。"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:771
@@ -2801,6 +2823,15 @@ msgstr "尾聲"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:33
+#, fuzzy
+#| msgid ""
+#| "After destroying Mal-Ravanal’s henchmen, Kai Krellis awaited another "
+#| "attack. But it never came. Krellis sent some messengers south to discover "
+#| "what they could. The news that came back was better than good. Mal-"
+#| "Ravanal was dead! Soldiers of Wesnoth had defeated him at about the same "
+#| "time the merfolk had defeated the undead at Jotha. With the evil wizard "
+#| "gone, the merfolk relaxed and began rebuilding in earnest, and soon Jotha "
+#| "was restored."
 msgid ""
 "After destroying Mal-Ravanal’s henchmen, Kai Krellis awaited another attack. "
 "But it never came. Krellis sent some messengers south to discover what they "
@@ -2809,9 +2840,9 @@ msgid ""
 "defeated the undead at Jotha. With the evil wizard gone, the mermen relaxed "
 "and began rebuilding in earnest, and soon Jotha was restored."
 msgstr ""
-"解決掉莫．瑞文諾的不死軍隊後，凱．克萊利斯做好了迎接敵人反擊的準備，但他們始"
+"解決掉麥爾-諾曼鈉的不死軍隊後，凱．克萊利斯做好了迎接敵人反擊的準備，但他們始"
 "終沒有到來。克萊利斯派遣信使到南方調查原因。信使帶回來一個非常好的消息：在他"
-"們對抗礁沙城的不死族時，莫．瑞文諾已經被韋諾的士兵殺死了。邪惡的巫師死了，人"
+"們對抗礁沙城的不死族時，麥爾-諾曼鈉已經被韋諾的士兵殺死了。邪惡的巫妖死了，人"
 "魚們終於鬆了一口氣，他們開始努力重建家園。很快地，礁沙城再次在這塊土地上取回"
 "舉足輕重的地位。"
 
@@ -2850,7 +2881,7 @@ msgid ""
 msgstr ""
 "希蘭娜在此之後就沒有去過其他遙遠的地方，一直留在礁沙城作一位受人尊敬的長者。"
 "她仍然是個國家顧問，但她現在的主要工作則是治療病人和主持典禮和婚禮。大家現在"
-"都比不死族出現以前還要更能信賴她了！"
+"都比不死族出現以前還要更能信賴她了。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:70
@@ -2974,11 +3005,15 @@ msgstr "人魚平民"
 
 #. [unit_type]: id=Merman Citizen, race=merman
 #: data/campaigns/Dead_Water/units/Citizen.cfg:17
+#, fuzzy
+#| msgid ""
+#| "Merfolk are mostly peaceful, but will fight to defend their homes. In "
+#| "this situation, even merfolk with no weapons or training can be dangerous."
 msgid ""
 "Mermen are mostly peaceful, but will fight to defend their homes. In this "
 "situation, even mermen with no weapons or training can be dangerous."
 msgstr ""
-"人魚通常很和平，但一旦他們的家園受到威脅，即使是手無寸鐵未經鍛鍊的人魚也會變"
+"人魚通常很和平，但一旦他們的家園受到威脅，即使是手無寸鐵未經訓練的人魚也會變"
 "得很危險。"
 
 #. [unit_type]: id=Kraken, race=monster
@@ -3009,9 +3044,9 @@ msgid ""
 "soldiers. His strength allows him to wield powerful weapons and move "
 "quickly, even with heavy armor. His leadership abilities inspire his troops."
 msgstr ""
-"一位戰鬥技能出色而受到尊敬(特別是在戰士之中)的國王，他的力量很強大，可以輕鬆"
-"揮舞重型武器，即使身披重甲，它們也能快速移動。他的「領導」能力，更能鼓舞周圍"
-"的軍隊！"
+"一位戰鬥技能出色而受到尊敬的國王（特別是在戰士之中），他的力量很強大，可以輕"
+"鬆揮舞重型武器，即使身披重甲，它們也能快速移動。他的領導能力更能鼓舞周圍的軍"
+"隊。"
 
 #. [unit_type]: id=Merman Warrior King, race=merman
 #: data/campaigns/Dead_Water/units/Warrior_King.cfg:4
@@ -3059,13 +3094,18 @@ msgstr "風暴三叉戟"
 
 #. [object]: id={ID}
 #: data/campaigns/Dead_Water/utils/items.cfg:11
+#, fuzzy
+#| msgid ""
+#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid "This weapon shoots powerful lightning bolts at your enemies."
-msgstr "這個武器會向敵人發出強力的閃電。"
+msgstr "這個武器給予人魚能向敵人發出強力的閃電。"
 
 #. [object]: id={ID}
 #: data/campaigns/Dead_Water/utils/items.cfg:13
+#, fuzzy
+#| msgid "Only the merfolk can use this item."
 msgid "Only a merman can use this item."
-msgstr "只有人魚可以使用這個道具。"
+msgstr "只有人魚可以使用這個物品。"
 
 #. [effect]: type=fire
 #: data/campaigns/Dead_Water/utils/items.cfg:33
@@ -3188,6 +3228,17 @@ msgid ""
 msgstr ""
 "這個技能可以透過重擊使敵人陷入暈眩的狀態，因此對方將無法堅守他的控制區域，換"
 "句話說就是敵人移動的時候無法擋住敵人。而暈眩的效果將在敵人的下個回合解除。"
+
+#~ msgid ""
+#~ "I wonder why such a strangely colored wolf emerged from the forest over "
+#~ "there."
+#~ msgstr "我想知道那個奇怪的狼為什麼從那邊的森林過來。"
+
+#~ msgid "Now we must defeat the undead."
+#~ msgstr "現在我們必須擊敗不死族。"
+
+#~ msgid "user_team_name^Merfolk"
+#~ msgstr "人魚"
 
 #~ msgid "fist"
 #~ msgstr "拳頭"

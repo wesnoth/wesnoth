@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Traditional Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # 楊綮銘 <steven2880@gmail.com>, 2008.
 #
@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-07-31 00:11+0800\n"
+"PO-Revision-Date: 2019-03-12 15:53+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -416,7 +416,7 @@ msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
-"已讀取地圖引用檔案:\n"
+"已讀取地圖引用檔案：\n"
 "$new"
 
 #: src/editor/map/editor_map.cpp:148
@@ -444,7 +444,7 @@ msgstr "這份地圖檔案像是一個章節，但是地圖資料連結一個不
 
 #: src/editor/map/map_context.cpp:600
 msgid "Could not save the scenario: $msg"
-msgstr "無法儲存章節： $msg"
+msgstr "無法儲存章節：$msg"
 
 #: src/editor/map/map_context.cpp:632
 msgid "Could not save into scenario"
@@ -452,7 +452,7 @@ msgstr "無法儲存地圖"
 
 #: src/editor/map/map_context.cpp:642
 msgid "Could not save the map: $msg"
-msgstr "無法儲存地圖： $msg"
+msgstr "無法儲存地圖：$msg"
 
 #: src/editor/palette/editor_palettes.cpp:51
 msgid "(Unknown Group)"
@@ -509,6 +509,15 @@ msgstr "無"
 #: src/gui/dialogs/editor/set_starting_position.cpp:101
 msgid "Player $player_number"
 msgstr "玩家 $player_number"
+
+#~ msgid "time of day^None"
+#~ msgstr "無"
+
+#~ msgid "Error"
+#~ msgstr "錯誤"
+
+#~ msgid "Invalid location id"
+#~ msgstr "無效的位置 ID"
 
 #~ msgid "(New Map)"
 #~ msgstr "（新地圖）"
@@ -615,9 +624,6 @@ msgstr "玩家 $player_number"
 
 #~ msgid "Error creating action object"
 #~ msgstr "新增事件時錯誤"
-
-#~ msgid "Error"
-#~ msgstr "錯誤"
 
 #~ msgid "Settings"
 #~ msgstr "設置"

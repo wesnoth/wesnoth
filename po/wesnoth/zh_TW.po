@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2019-03-03 16:51+0800\n"
+"PO-Revision-Date: 2019-03-16 21:11+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -4547,7 +4547,7 @@ msgid ""
 "their cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units can only see as far as they can move in one turn."
 msgstr ""
-"如果遊戲時開啟<b>戰爭黑幕</b>或<b>戰爭迷霧</b>，您就無法知道將要面對什麽。這"
+"如果遊戲時開啟<b>戰場黑幕</b>或<b>戰爭迷霧</b>，您就無法知道將要面對什麽。這"
 "種情况下，遠距離偵察單位就突顯出他們的重要性。嘗試去選擇一些可以很容易穿過周"
 "圍地形的偵察單位，因為單位視野與他們的移動力息息相關。"
 
@@ -4653,7 +4653,7 @@ msgid ""
 "valuable but slow units, keep at least one fast unit with them so that you "
 "are not caught out by a surprise attack."
 msgstr ""
-"開啟<i>戰爭黑幕</i>或<i>戰爭迷霧</i>時，在地圖上每個單位的視野由他的最大移動"
+"開啟<i>戰場黑幕</i>或<i>戰爭迷霧</i>時，在地圖上每個單位的視野由他的最大移動"
 "步數决定。在考慮使用什麽兵種進行地形偵查時，請牢記這點。"
 
 #. [tip]
@@ -4915,8 +4915,8 @@ msgid ""
 "the <b>Delay Shroud Updates</b> option when you need to move units while "
 "retaining the ability to undo, or use the new Whiteboard planning tool."
 msgstr ""
-"如果一個單位的移動打開了戰場迷霧或者黑幕，那麽這次移動就不能被撤銷。如果您想"
-"確保單位的移動隨時可以撤銷，可以將<b>暫緩刷新戰爭迷霧</b>選項打勾。"
+"如果一個單位的移動打開了戰場迷霧或者戰場黑幕，那麽這次移動就不能被撤銷。如果"
+"您想確保單位的移動隨時可以撤銷，可以將<b>暫緩刷新戰場黑幕</b>選項打勾。"
 
 #. [tip]
 #: data/tips.cfg:209
@@ -5117,7 +5117,7 @@ msgstr "您的首領必須在主堡裏才能招募單位。"
 
 #: src/actions/create.cpp:486
 msgid "There are no vacant castle tiles in which to recruit the unit."
-msgstr "城堡內没有空位，無法招募單位。"
+msgstr "城堡內沒有空位，無法招募單位。"
 
 #: src/actions/heal.cpp:274
 msgid "cured"
@@ -5391,7 +5391,7 @@ msgstr "模組伺服器位址格式錯誤。"
 
 #: src/addon/manager_ui.cpp:118
 msgid "You have no add-ons installed."
-msgstr "您没有安裝任何模組。"
+msgstr "您沒有安裝任何模組。"
 
 #: src/addon/manager_ui.cpp:169
 msgid "Are you sure you want to remove the following installed add-on?"
@@ -5902,7 +5902,7 @@ msgstr "章節無法啟用。有些資訊遺失："
 #: src/game_initialization/depcheck.cpp:568
 #: src/game_initialization/depcheck.cpp:691
 msgid "No compatible eras found."
-msgstr "没有找到相容的時代。"
+msgstr "沒有找到相容的時代。"
 
 #: src/game_initialization/depcheck.cpp:583
 msgid "Era can't be activated. Some dependencies are missing: "
@@ -6022,7 +6022,7 @@ msgstr "連線愈時"
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
-msgstr "本伺服器需要版本'$required_version'，但您的版本是'$your_version'"
+msgstr "本伺服器需要版本 '$required_version'，但您的版本是 '$your_version'"
 
 #: src/game_initialization/multiplayer.cpp:134
 msgid "Server-side redirect loop"
@@ -6034,8 +6034,8 @@ msgid ""
 "nickname until you activate your account via email or ask an administrator "
 "to do it for you."
 msgstr ""
-"這個暱稱 ‘$nick’ 尚未啟用。你必須使用電子郵件或直接請管理員來幫你啟用，否則無"
-"法取得此暱稱的使用權。"
+"此帳號 ‘$nick’ 尚未啟用。你必須使用電子郵件或直接請管理員來幫你啟用，否則無法"
+"取得此帳號的使用權。"
 
 #: src/game_initialization/multiplayer.cpp:225
 msgid "Do you want to continue?"
@@ -6057,40 +6057,42 @@ msgstr "您必須先登入。"
 
 #: src/game_initialization/multiplayer.cpp:319
 msgid "The nickname ‘$nick’ is already taken."
-msgstr "此帳號名稱'$nick'已被註冊。"
+msgstr "此帳號 '$nick' 已被使用。"
 
 #: src/game_initialization/multiplayer.cpp:321
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
-msgstr "暱稱'$nick'包含無效字元，只能與用數字與英文字母、底線和連字號(-)。"
+msgstr ""
+"此帳號 '$nick' 包含無效字元，只能與用數字與英文字母（最少一個數字或字母）、底"
+"線和連字號(-)。"
 
 #: src/game_initialization/multiplayer.cpp:325
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
-msgstr "此帳號名稱'$nick'太長，帳號名稱必須小於20個字元。"
+msgstr "此帳號 '$nick' 太長，匿稱必須小於20個字元。"
 
 #: src/game_initialization/multiplayer.cpp:328
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
-msgstr "此帳號名稱 '$nick'已被保留，無法被玩家使用。"
+msgstr "此帳號 '$nick' 已被保留，無法被玩家使用。"
 
 #: src/game_initialization/multiplayer.cpp:330
 msgid "The nickname ‘$nick’ is not registered on this server."
-msgstr "此帳號名稱'$nick'尚未在本伺服器註冊。"
+msgstr "此帳號 '$nick' 尚未在本伺服器註冊。"
 
 #: src/game_initialization/multiplayer.cpp:331
 msgid " This server disallows unregistered nicknames."
-msgstr "本伺服器無法註冊這個帳號名稱。"
+msgstr "本伺服器不允許使用沒有註冊的帳號"
 
 #: src/game_initialization/multiplayer.cpp:333
 #: src/game_initialization/multiplayer.cpp:335
 msgid "The nickname ‘$nick’ is registered on this server."
-msgstr "這個帳號'$nick'已經在這個伺服器上註冊。"
+msgstr "這個帳號 '$nick' 已經在本伺服器註冊。"
 
 #: src/game_initialization/multiplayer.cpp:336
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
-msgstr "警告：已經有一個玩家使用這個帳戶登入。如果繼續登入將擠掉先前使用者！"
+msgstr "警告：已經有玩家使用這個帳戶登入。如果繼續登入將擠掉先前使用者！"
 
 #: src/game_initialization/multiplayer.cpp:339
 msgid ""
@@ -6385,11 +6387,11 @@ msgstr "沒有資料。"
 
 #: src/help/help_impl.cpp:714 src/help/help_impl.cpp:716
 msgid "Availability: "
-msgstr "可用性："
+msgstr "可得性："
 
 #: src/help/help_impl.cpp:714
 msgid "Must-have"
-msgstr "必備"
+msgstr "被動"
 
 #: src/help/help_impl.cpp:716
 msgid "Unavailable"
@@ -6729,11 +6731,11 @@ msgstr "訊息："
 
 #: src/menu_events.cpp:281
 msgid "You have no units available to recruit."
-msgstr "没有可供招募的單位。"
+msgstr "您沒有可供招募的單位。"
 
 #: src/menu_events.cpp:318
 msgid "You do not have enough gold to recruit that unit"
-msgstr "您没有足夠的金幣招募該單位"
+msgstr "您沒有足夠的金幣招募該單位"
 
 #: src/menu_events.cpp:355
 msgid "You are separated from your soldiers and may not recall them"
@@ -6744,7 +6746,7 @@ msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
-"没有可以招回的單位\n"
+"沒有可以招回的單位\n"
 "（只能招回上一章節存活下來的單位）"
 
 #: src/menu_events.cpp:378
@@ -6988,7 +6990,7 @@ msgstr "為當前玩家設置戰爭迷霧。"
 
 #: src/menu_events.cpp:1239
 msgid "Toggle shroud for the current player."
-msgstr "為當前玩家設置戰爭黑幕。"
+msgstr "為目前玩家設定戰場黑幕。"
 
 #: src/menu_events.cpp:1240
 msgid "Give gold to the current player."
@@ -7369,7 +7371,7 @@ msgstr "能力："
 
 #: src/reports.cpp:389 src/reports.cpp:832
 msgid " (inactive)"
-msgstr " （遲緩）"
+msgstr "（遲緩）"
 
 #: src/reports.cpp:441
 msgid "Resistances: "
@@ -7400,6 +7402,8 @@ msgid "Defense: "
 msgstr "防禦："
 
 #: src/reports.cpp:565
+#, fuzzy
+#| msgid "vision:"
 msgid "vision: "
 msgstr "視野："
 
@@ -7481,7 +7485,7 @@ msgstr "格檔："
 
 #: src/reports.cpp:830
 msgid "Weapon special: "
-msgstr "武器效果： "
+msgstr "武器效果："
 
 #: src/reports.cpp:892
 msgid "None"
@@ -7499,19 +7503,19 @@ msgstr[1] "攻撃"
 
 #: src/reports.cpp:1119 src/reports.cpp:1171
 msgid "Lawful units: "
-msgstr "守序單位： "
+msgstr "守序單位："
 
 #: src/reports.cpp:1121 src/reports.cpp:1173
 msgid "Neutral units: "
-msgstr "中立單位： "
+msgstr "中立單位："
 
 #: src/reports.cpp:1122 src/reports.cpp:1174
 msgid "Chaotic units: "
-msgstr "渾沌單位： "
+msgstr "渾沌單位："
 
 #: src/reports.cpp:1124 src/reports.cpp:1176
 msgid "Liminal units: "
-msgstr "邊緣單位： "
+msgstr "閾界單位："
 
 #: src/reports.cpp:1235
 msgid "Turn Number"
@@ -7874,14 +7878,13 @@ msgstr "border_size 應設為0.0到0.5之間的數值。"
 msgid "Hotkey(s): "
 msgstr "快捷鍵："
 
-# 還是不太清楚，所以我抄了簡中的
 #: src/time_of_day.cpp:45
 msgid "Stub Time of Day"
-msgstr "佔位時刻"
+msgstr "佔位時段"
 
 #: src/time_of_day.cpp:46
 msgid "This Time of Day is only a Stub!"
-msgstr "此時段僅是佔位時刻！"
+msgstr "此時段僅是佔位時段！"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:356
@@ -7954,7 +7957,7 @@ msgstr "守序"
 
 #: src/units/types.cpp:545 src/units/types.hpp:182
 msgid "liminal"
-msgstr "邊緣"
+msgstr "閾界"
 
 #: src/units/types.cpp:545 src/units/types.hpp:180
 msgid "neutral"
@@ -7974,7 +7977,7 @@ msgstr "中立"
 
 #: src/units/types.cpp:547 src/units/types.cpp:913
 msgid "female^liminal"
-msgstr "邊緣"
+msgstr "閾界"
 
 #: src/units/unit.cpp:1785
 msgid "$attack_list|: $effect_description"
@@ -8112,7 +8115,7 @@ msgstr "白板選項"
 #~ msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
 #~ msgstr "<i>― 韋斯廷的格里克爵士，607YW</i>"
 
-#~ msgid "an advancement choice"
+#~ msgid "waiting for^an advancement choice"
 #~ msgstr "升級選擇"
 
 #~ msgid "scenario_abbreviation^S"
@@ -8130,16 +8133,29 @@ msgstr "白板選項"
 #~ msgid "time limit^none"
 #~ msgstr "無"
 
+#~ msgid ""
+#~ "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
+#~ msgstr "這個帳號 '$nick' 已經被伺服器的論壇封鎖：$duration|。"
+
 #~ msgid "The nickname ‘$nick’ is banned on this server’s forums."
-#~ msgstr "這個名稱 '$nick' 在這個伺服器上被黑名單了。"
+#~ msgstr "這個帳號 '$nick' 已經被伺服器的論壇封鎖。"
+
+#~ msgid "Your IP address is banned on this server’s forums for $duration|."
+#~ msgstr "您的 IP 位址已經被伺服器的論壇封鎖：$duration|。"
 
 #~ msgid "Your IP address is banned on this server’s forums."
-#~ msgstr "您的 IP 位址在這個伺服器上被黑名單了。"
+#~ msgstr "您的 IP 位址已經被伺服器的論壇封鎖。"
+
+#~ msgid ""
+#~ "The email address for the nickname ‘$nick’ is banned on this server’s "
+#~ "forums for $duration|."
+#~ msgstr ""
+#~ "這個帳號 '$nick' 所使用的 e-mail 已經被伺服器的論壇封鎖：$duration|。"
 
 #~ msgid ""
 #~ "The email address for the nickname ‘$nick’ is banned on this server’s "
 #~ "forums."
-#~ msgstr "這個名稱 ‘$nick’ 對應的 E-Mail 在這個伺服器上被黑名單了。"
+#~ msgstr "這個帳號 '$nick' 所使用的 e-mail 已經被伺服器的論壇封鎖。"
 
 #~ msgid "Connection failed: "
 #~ msgstr "連線失敗："
@@ -8153,6 +8169,9 @@ msgstr "白板選項"
 #~ msgid "Alignment:"
 #~ msgstr "立場："
 
+#~ msgid "No unit recruited"
+#~ msgstr "沒有招募單位"
+
 #~ msgid "No unit recalled"
 #~ msgstr "未招回單位"
 
@@ -8165,17 +8184,35 @@ msgstr "白板選項"
 #~ msgid "Side '$side' controller is now controlled by: human."
 #~ msgstr "陣營 '$side' 現在由人類控制。"
 
+#~ msgid "waiting for^a global variable"
+#~ msgstr "等待連線數據"
+
+#~ msgid "Side:"
+#~ msgstr "陣營："
+
 #~ msgid "Advancements:"
 #~ msgstr "可升級為："
 
+#~ msgid "jamming:"
+#~ msgstr "干擾："
+
 #~ msgid "weapon^None"
 #~ msgstr "無"
+
+#~ msgid "Time of day schedule:"
+#~ msgstr "時段排程："
+
+#~ msgid "Time of day:"
+#~ msgstr "時段："
 
 #~ msgid "Battery"
 #~ msgstr "電池"
 
 #~ msgid "(unknown player)"
 #~ msgstr "（未知玩家）"
+
+#~ msgid "waiting for^input"
+#~ msgstr "輸入"
 
 #~ msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 #~ msgid_plural ""
@@ -9001,11 +9038,6 @@ msgstr "白板選項"
 #~ msgid_plural "moves"
 #~ msgstr[0] "移動點數"
 #~ msgstr[1] "移動點數"
-
-#, fuzzy
-#~| msgid "Warning: "
-#~ msgid "jamming"
-#~ msgstr "警告:"
 
 #~ msgid "XP to advance"
 #~ msgstr "升級所需經驗值"

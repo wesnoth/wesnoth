@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Traditional Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # 楊綮銘 <steven2880@gmail.com>, 2018.
 #
@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:29 UTC\n"
-"PO-Revision-Date: 2018-10-29 17:08+0800\n"
+"PO-Revision-Date: 2019-03-12 17:53+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -619,6 +619,26 @@ msgstr "小心且離那頭龍遠一點。他很卑鄙的。"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:84
+#, fuzzy
+#| msgid ""
+#| "Hi there. I am Rowck and here is what I do:\n"
+#| "When hungry, I move around part of the map in a random wander until I get "
+#| "into range of an enemy. If enemies are within range, I attack and devour "
+#| "the weakest of them. After that, I retreat to my rest location, where I "
+#| "stay for a certain number of turns or until fully healed.\n"
+#| "A few details (features, not bugs, but can be changed if desired):\n"
+#| "- If my way home is blocked on the return, the normal RCA AI takes over "
+#| "my behavior.\n"
+#| "- I will, however, attack any enemy occupying my rest hex, if I can get "
+#| "there.\n"
+#| "- A kill only makes me go home when I am the attacker, not as defender.\n"
+#| "- Occasionally I will not move at all while wandering (a dragon has to "
+#| "rest sometimes!)\n"
+#| "\n"
+#| "Note: The Hunter AI is coded as a Micro AI. A Micro AI can be added and "
+#| "adapted to the need of a scenario easily using only WML and the "
+#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+#| "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "Hi there. I am Rowck and here is what I do:\n"
 "When hungry, I move around part of the map in a random wander until I get "
@@ -643,16 +663,16 @@ msgstr ""
 "當我飢餓時，我會在地圖的一部分區域內四處遊蕩，直到我的攻擊範圍內出現敵人。當"
 "敵人在攻擊範圍之內時，我會攻擊併吞食其中最弱的一員。而後，我將退回到潛伏處，"
 "我將在那兒待幾個回合或直到完全康復。\n"
-"一些細節（算特性，非BUG，但若是需要時可更改）：\n"
+"一些細節（算特性，非 BUG，但若是需要時可更改）：\n"
 "- 如果回家路被堵了，那麼普通的RCA AI會接管我的行動。\n"
 "- 然而，如果我能回到潛伏地，那麼我將攻擊佔據潛伏地的任何敵人。\n"
 "- 當我是進攻方而非防禦方時，擊殺我僅僅只能送我回老家而已。\n"
 "- 在遊蕩時，偶爾我也會完全不移動（有時龍必須休息！）\n"
 "\n"
-"附註：獵手 AI 是作為小型 AI 來編寫的。僅使用WML和[micro_ai]標籤即可很容易地將"
-"小型 AI 加入章節中，並根據章節的需要進行調整。請參閱 https://wiki.wesnoth."
-"org/Micro_AIs 處的<span color='#00A000'>小型 AI 維基頁面</span>以獲得更多資"
-"訊。"
+"附註：獵手 AI 是作為小型 AI 來編寫的。僅使用 WML 和 [micro_ai] 標籤即可很容易"
+"地將小型 AI 加入章節中，並根據章節的需要進行調整。請參閱 https://wiki."
+"wesnoth.org/Micro_AIs 處的<span color='#00A000'>小型 AI 維基頁面</span>以獲得"
+"更多資訊。"
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/dragon.cfg:96
@@ -774,6 +794,22 @@ msgstr "關閉陣營1的控制"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:413
+#, fuzzy
+#| msgid ""
+#| "This scenario demonstrates a variety of different uses of the Goto Micro "
+#| "AI. All AI sides are controlled by this MAI in one way or another (except "
+#| "for the saurians, which are run by the Lurkers Micro AI). Messages will "
+#| "be displayed throughout the scenario to point out what the units are "
+#| "doing.\n"
+#| "\n"
+#| "The player controls Side 1. There are right-click context menu options "
+#| "for adding Side 1 units to the map and for taking them off again. This is "
+#| "useful mostly for testing how the Side 3 guardians react.\n"
+#| "\n"
+#| "Note: The Goto AI is coded as a Micro AI. A Micro AI can be added and "
+#| "adapted to the need of a scenario easily using only WML and the "
+#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+#| "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "This scenario demonstrates a variety of different uses of the Goto Micro AI. "
 "All AI sides are controlled by this MAI in one way or another (except for "
@@ -796,8 +832,8 @@ msgstr ""
 "玩家控制陣營1。右鍵點選選單中提供了在地圖上添加及移除陣營1單位的選項。這主要"
 "用於測試陣營3守衛的反應模式。\n"
 "\n"
-"附註：Goto AI 是作為小型 AI 來編寫的。小型 AI 可以只使用WML和[micro_ai]標籤來"
-"加入到章節中，並根據章節的需要進行調整。請參閱 https://wiki.wesnoth.org/"
+"附註：Goto AI 是作為小型 AI 來編寫的。小型 AI 可以只使用 WML 和 [micro_ai] 標"
+"籤來加入到章節中，並根據章節的需要進行調整。請參閱 https://wiki.wesnoth.org/"
 "Micro_AIs 處的<span color='#00A000'>小型 AI 維基頁面</span>以獲得更多資訊。"
 
 #. [objectives]
@@ -1610,6 +1646,17 @@ msgstr "附註"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/lurkers.cfg:465
+#, fuzzy
+#| msgid ""
+#| "You can use the right-click context menu to add additional lurkers.\n"
+#| "\n"
+#| "Any unit not adjacent to swamp (and water, for the nagas) is safe from "
+#| "the lurkers, thus it is easy to keep Pekzs from being attacked.\n"
+#| "\n"
+#| "The Lua Lurker AI is coded as a Micro AI. A Micro AI can be added and "
+#| "adapted to the need of a scenario easily using only WML and the "
+#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+#| "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "You can use the right-click context menu to add additional lurkers.\n"
 "\n"
@@ -1626,8 +1673,8 @@ msgstr ""
 "所有不與沼澤（對娜迦而言是水面）緊鄰的單位都不會被潛伏者攻擊，所以要防止佩克"
 "茲被攻擊是很容易的。\n"
 "\n"
-"Lua潛伏 AI 是使用小型 AI 來編寫的。小型 AI 可以只使用WML和[micro_ai]標籤來加"
-"入到章節中，並根據章節的需要進行調整。請參閱 https://wiki.wesnoth.org/"
+"Lua 潛伏 AI 是使用小型 AI 來編寫的。小型 AI 可以只使用 WML 和 [micro_ai] 標籤"
+"來加入到章節中，並根據章節的需要進行調整。請參閱 https://wiki.wesnoth.org/"
 "Micro_AIs 處的<span color='#00A000'>小型 AI 維基頁面</span>以獲得更多資訊。"
 
 #. [objectives]
@@ -1710,6 +1757,24 @@ msgstr "大夥，我需要前往北邊的標示處，把信息送給我們的長
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:139
+#, fuzzy
+#| msgid ""
+#| "The Messenger Escort AI will try to move the dragoon messenger to the "
+#| "signpost in the north, while protecting him as well as possible with the "
+#| "other units. Vanak's orcs need to stop him.\n"
+#| "\n"
+#| "Note that the messenger route is set up through a series of waypoints "
+#| "here simply to demonstrate how to use waypoints. On this map, using only "
+#| "a single waypoint at the end of the route would work just as well (or "
+#| "probably even better).\n"
+#| "\n"
+#| "Also note that the messenger does not have to get exactly to each "
+#| "signpost (except for the last one), getting close is good enough.\n"
+#| "\n"
+#| "The Messenger Escort AI is coded as a Micro AI. A Micro AI can be added "
+#| "and adapted to the need of a scenario easily using only WML and the "
+#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+#| "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "The Messenger Escort AI will try to move the dragoon messenger to the "
 "signpost in the north, while protecting him as well as possible with the "
@@ -1736,8 +1801,8 @@ msgstr ""
 "\n"
 "也注意信使並不需要準確到達每一個路標（除了最後一個），只要接近就足夠了。\n"
 "\n"
-"信使護送 AI 是使用小型 AI 來編寫的。小型 AI 可以只使用WML和[micro_ai]標籤來加"
-"入到章節中，並根據章節的需要進行調整。請參閱 https://wiki.wesnoth.org/"
+"信使護送 AI 是使用小型 AI 來編寫的。小型 AI 可以只使用 WML 和 [micro_ai] 標籤"
+"來加入到章節中，並根據章節的需要進行調整。請參閱 https://wiki.wesnoth.org/"
 "Micro_AIs 處的<span color='#00A000'>小型 AI 維基頁面</span>以獲得更多資訊。"
 
 #. [objective]: condition=win
@@ -2591,7 +2656,7 @@ msgstr "最後一個葛思博的單位死亡"
 #. [note]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:139
 msgid "When your leader dies, side leadership passes on to another unit"
-msgstr "當您的指揮官陣亡，陣營指揮權會轉移給另一個單位。"
+msgstr "當您的指揮官陣亡，陣營指揮權會轉移給另一個單位"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:164
@@ -2602,6 +2667,21 @@ msgstr "什麼...？！？他們不該攻擊我的。這在韋諾中是不可能
 
 #. [event]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:165
+#, fuzzy
+#| msgid ""
+#| "Hahahahaha!! I have given special instruction to my Soulless to attack "
+#| "all your almost-advanced units first. Also watch how those same Soulless "
+#| "will throw themselves mercilessly at your pitiful soldiers after that, "
+#| "saving my more valuable skeleton minions for later. I have taken the term "
+#| "'disposable units' to a whole new level. Watch in awe!!\n"
+#| "\n"
+#| "<i>Translation: The undead side includes two instances of the Simple "
+#| "Attack Micro AI.  The first makes the Soulless attack all units 1 XP from "
+#| "leveling up, such that they can be eliminated afterward.  The second "
+#| "executes all remaining attacks possible by Soulless (and Walking "
+#| "Corpses), without regard for their own safety.  Only after that does the "
+#| "default Wesnoth attack mechanism kick in to attack with the remaining "
+#| "units (skeletons).</i>"
 msgid ""
 "Hahahahaha !! I have given special instruction to my Soulless to attack all "
 "you almost-advanced units first. Also watch how those same Soulless will "
@@ -2652,6 +2732,27 @@ msgstr "放置陣營2的蝙蝠"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/swarm.cfg:137
+#, fuzzy
+#| msgid ""
+#| "This scenario features bats moving around in a swarm. Without adjacent "
+#| "enemies, they simply try to stay together and at a certain distance from "
+#| "enemies. However, if an enemy unit is close to any bat, the swarm "
+#| "scatters. This is particular fun to watch when one places an enemy unit "
+#| "in the middle of the swarm. After being scattered, the swarm members "
+#| "slowly rejoin, but not in a very organized way. Sub-swarms or individual "
+#| "bats might roam around for quite some time before they find their way "
+#| "back. It is also possible that individual bats (or small groups) split "
+#| "off from the larger swarm at times.\n"
+#| "\n"
+#| "The player controls a side of gryphons, each of which is given 99 moves "
+#| "so that the reaction of the swarm to enemies can be tested easily. There "
+#| "are also several right-click options, for example for adding bats or "
+#| "gryphons or for taking units off the map.\n"
+#| "\n"
+#| "Note: The Swarm AI is coded as a Micro AI. A Micro AI can be added and "
+#| "adapted to the need of a scenario easily using only WML and the "
+#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+#| "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "This scenario features bats moving around in a swarm. Without adjacent "
 "enemies, they simply try to stay together and at a certain distance from "
@@ -2683,8 +2784,8 @@ msgstr ""
 "對敵反應。還有右鍵點選選項，例如增加蝙蝠或獅鷲的選項，以及把單位從地圖上移走"
 "的選項。\n"
 "\n"
-"附註：群集 AI 是使用小型 AI 來編寫的。小型 AI 可以只使用WML和[micro_ai]標籤來"
-"加入到章節中，並根據章節的需要進行調整。請參閱 https://wiki.wesnoth.org/"
+"附註：群集 AI 是使用小型 AI 來編寫的。小型 AI 可以只使用 WML 和 [micro_ai] 標"
+"籤來加入到章節中，並根據章節的需要進行調整。請參閱 https://wiki.wesnoth.org/"
 "Micro_AIs 處的<span color='#00A000'>小型 AI 維基頁面</span>以獲得更多資訊。"
 
 #. [objectives]
