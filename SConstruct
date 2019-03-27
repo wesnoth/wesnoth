@@ -742,9 +742,9 @@ if env["nls"]:
 InstallManpages(env, "wesnoth")
 if have_client_prereqs and have_X and env["desktop_entry"]:
      env.InstallData("icondir", "wesnoth", "packaging/icons")
-     env.InstallData("desktopdir", "wesnoth", "packaging/wesnoth.desktop")
+     env.InstallData("desktopdir", "wesnoth", "packaging/org.wesnoth.Wesnoth.desktop")
 if have_client_prereqs and "linux" in sys.platform and env["appdata_file"]:
-     env.InstallData("appdatadir", "wesnoth", "packaging/wesnoth.appdata.xml")
+     env.InstallData("appdatadir", "wesnoth", "packaging/org.wesnoth.Wesnoth.appdata.xml")
 
 # Python tools
 env.InstallData("bindir", "pytools", [os.path.join("data", "tools", tool) for tool in pythontools])

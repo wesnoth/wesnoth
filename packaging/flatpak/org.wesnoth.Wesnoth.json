@@ -11,8 +11,6 @@
         "--socket=pulseaudio"
     ],
     "command": "wesnoth",
-    "rename-appdata-file": "wesnoth.appdata.xml",
-    "rename-desktop-file": "wesnoth.desktop",
     "rename-icon": "wesnoth-icon",
     "cleanup": [
         "/include",
@@ -108,7 +106,7 @@
             "sources": [
                 {
                     "type": "git",
-                    "path": "/usr/src/wesnoth/master",
+                    "path": "/home/sergey/vcs-checkouts/wesnoth",
                     "branch": "master"
                 }
             ]
