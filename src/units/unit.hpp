@@ -664,7 +664,9 @@ public:
 
 	/**
 	 * Gets whether this unit is currently hidden on the map.
-	 * @todo document hiddenness
+	 *
+	 * Hidden units are not drawn on the main map or the minimap. They are
+	 * an implementation detail. For the [hides] ability, see invisible().
 	 */
 	bool get_hidden() const
 	{
