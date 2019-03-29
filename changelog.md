@@ -133,6 +133,7 @@
      * Disabled side shuffling in MP (checking the box does nothing)
      * Fixed missing persistent data at the end of chapter 3
      * Rebalanced gold values in all scenarios
+     * S3: remove shroud from enemy sides upon Kalenz's arrival
      * S4: (MP only) free Cleodil at scenario start
    * Northern Rebirth:
      * Eryssa now must survive if she joins the player
