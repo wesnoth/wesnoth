@@ -722,6 +722,10 @@ def CopyFilter(fn):
 
 env["copy_filter"] = CopyFilter
 
+def MoFileFilter(fn):
+    "Don't install .mo files for manual and manpages. They're built only to catch broken po files"
+    return not "wesnoth-manual.mo" in str(fn) and not "wesnoth-manpages.mo" in str(fn)
+
 linguas = Split(File("po/LINGUAS").get_contents().decode("utf-8"))
 
 def InstallManpages(env, component):
@@ -737,7 +741,7 @@ env.InstallBinary(wesnoth)
 env.InstallData("datadir", "wesnoth", [Dir(sub) for sub in installable_subs])
 env.InstallData("docdir",  "wesnoth", [Glob("doc/manual/*.html"), Dir("doc/manual/styles"), Dir("doc/manual/images")])
 if env["nls"]:
-    env.InstallData("localedir", "wesnoth", Dir("translations"))
+    env.InstallData("localedir", "wesnoth", Dir("translations"), copy_filter = MoFileFilter)
     env.InstallData("datadir", "wesnoth", "l10n-track")
 InstallManpages(env, "wesnoth")
 if have_client_prereqs and have_X and env["desktop_entry"]:
