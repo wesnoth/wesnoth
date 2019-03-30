@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-03-11 13:09 UTC\n"
-"PO-Revision-Date: 2019-03-11 19:56+0800\n"
+"PO-Revision-Date: 2019-03-28 16:14+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -71,10 +71,8 @@ msgstr ""
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:24
-#, fuzzy
-#| msgid "(Intermediate level, 16 scenarios.)"
 msgid "(Novice level, 16 scenarios.)"
-msgstr "（普通等級，18個章節。）"
+msgstr "（新手等級，16個章節。）"
 
 #. [about]
 #: data/campaigns/Eastern_Invasion/_main.cfg:28
@@ -531,24 +529,17 @@ msgstr "我們在哪？我不知道我們到哪了。"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:192
-#, fuzzy
-#| msgid ""
-#| "This is an old escape tunnel for the outpost; unfortunately these caves "
-#| "are currently inhabited by trolls. Now hurry, we have to move quickly; "
-#| "the undead will surely follow us down here."
 msgid ""
 "This is an old escape route for the outpost. Unfortunately these caves are "
 "currently inhabited by trolls, who are blocking our path through the tunnel."
 msgstr ""
-"這個老舊的逃生隧道曾是個哨站，不幸現在洞穴被巨魔佔據。趕快，我們得快點行動。"
-"不死族一定會追上我們的。"
+"這是哨站舊的逃生路線。不幸的是現在洞穴被巨魔佔據，他們一定會阻擋我們通過隧"
+"道。"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:245
-#, fuzzy
-#| msgid "Hurry up. We must get across before these undead slaughter us!"
 msgid "We must make haste to escape before the undead catch up."
-msgstr "快點。我們必須在不死族屠殺我們前通過！"
+msgstr "我們必須在不死族追上我們前脫逃出去。"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:250
@@ -618,6 +609,7 @@ msgid ""
 "Very well. The best of luck in your battle. Gweddry, we may be able to avoid "
 "the bulk of the trolls by going through the dwarves’ tunnel."
 msgstr ""
+"很好。祝你戰鬥好運。柯維卓，我們可以透過走矮人的隧道來避開大部分的巨魔。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:378
@@ -638,18 +630,13 @@ msgstr "我們找到你了，人類！受死吧！"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:452
-#, fuzzy
-#| msgid ""
-#| "They follow us... we must get out of this tunnel. It looks like it is "
-#| "leading east. That is unfortunate, for it will take us beyond the borders "
-#| "of Wesnoth. But it is our only option."
 msgid ""
 "They follow us... we must escape through this tunnel. That is unfortunate, "
 "for it will take us into the Estmark hills, beyond the borders of Wesnoth. "
 "But it is our only option."
 msgstr ""
-"它們跟著我們...我們一定要從這個隧道中逃脫。看樣子隧道通往東部。遺憾的是，這將"
-"會使我們離維丁更遠，可是我們沒有別的選擇."
+"它們跟著我們...我們一定要從這個隧道中逃脫。不幸的是，隧道通往艾斯馬可丘陵，會"
+"超過韋諾的國界。但這是我們唯一的選擇."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:489
@@ -1581,10 +1568,8 @@ msgstr "郭格"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:104
-#, fuzzy
-#| msgid "Move Gweddry and Owaec across the river"
 msgid "Move Gweddry, Owaec, and Dacyn across the river"
-msgstr "移動柯維卓和歐維克穿過這條河"
+msgstr "移動柯維卓、歐維克及戴森穿過這條河"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:145

@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Traditional Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # 李信融 <magiclen0810@gmail.com>, 2012.
 # 王敏 <kekecharry@gmail.com>, 2013.
@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-01-27 09:23 UTC\n"
-"PO-Revision-Date: 2018-08-05 22:29+0800\n"
+"PO-Revision-Date: 2019-03-28 19:10+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:9
@@ -79,7 +79,7 @@ msgstr ""
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:24
 msgid "(Expert level, 18 scenarios.)"
-msgstr "（專家難度，18個章節。）"
+msgstr "（專家等級，18個章節。）"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:29
@@ -94,7 +94,7 @@ msgstr "戰役維護"
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:50
 msgid "Prose, Grammatical and WML Assistance"
-msgstr "劇情，語法和 WML協助"
+msgstr "劇情，語法和 WML 協助"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:56
@@ -190,21 +190,15 @@ msgstr "人類"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:98
-#, fuzzy
-#| msgid ""
-#| "Rahul I, Lord Protector of the Northern Alliance, concluded peace with "
-#| "enemy orcs during the fourth year of his leadership. He ended a 15-year "
-#| "war with Black-Eye Karun, ruler of the enemy orcs. A peace treaty between "
-#| "the Alliance and the orcs settled their territorial disputes."
 msgid ""
 "Rahul I, Lord Protector of the Northern Alliance, concluded peace with enemy "
 "orcs during the fourteenth year of his leadership. He ended a 15-year war "
 "with Black-Eye Karun, ruler of the enemy orcs. A peace treaty between the "
 "Alliance and the orcs settled their territorial disputes."
 msgstr ""
-"拉胡爾一世是北方聯盟的盟主，他在位的第四年宣告了人類和半獸人之間的和平。他終"
-"結了與半獸人領袖黑眼卡倫持續十五年的戰爭。一個和平協議解決了聯盟和半獸人之間"
-"的土地糾紛。"
+"拉胡爾一世是北方聯盟的盟主，他在位的第十四年宣告了人類和半獸人之間的和平。他"
+"終結了與半獸人領袖黑眼卡倫持續十五年的戰爭。一個和平協議解決了聯盟和半獸人之"
+"間的土地糾紛。"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:103
@@ -433,38 +427,28 @@ msgstr "擊敗藍貝克"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:31
-#, fuzzy
-#| msgid "Resist until your people are ready to go (Turn 12)"
 msgid "Resist until your people are ready to go (turn 12)"
 msgstr "抵抗他們直到你的人準備好要走（12回合）"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:34
-#, fuzzy
-#| msgid "Resist until your people are ready to go (Turn 13)"
 msgid "Resist until your people are ready to go (turn 13)"
 msgstr "抵抗他們直到你的人準備好要走（13回合）"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:37
-#, fuzzy
-#| msgid "Resist until your people are ready to go (Turn 14)"
 msgid "Resist until your people are ready to go (turn 14)"
 msgstr "抵抗他們直到你的人準備好要走（14回合）"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:45
-#, fuzzy
-#| msgid "Then move Kapou’e to the signpost in the Northeast"
 msgid "Then move Kapou’e to the signpost in the northeast"
-msgstr "移動卡叵尹到東北邊的路標"
+msgstr "然後移動卡叵尹到東北方的路標"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:52
-#, fuzzy
-#| msgid "Move Kapou’e to the signpost in the Northeast"
 msgid "Move Kapou’e to the signpost in the northeast"
-msgstr "移動卡叵尹到東北邊的路標"
+msgstr "移動卡叵尹到東北方的路標"
 
 #. [side]: type=General, id=Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:87
@@ -553,7 +537,7 @@ msgstr ""
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:208
 msgid "$stored_helper.name|!"
-msgstr "$stored_helper.name|!"
+msgstr "$stored_helper.name|！"
 
 #. [message]: role=Helper
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:213
@@ -3323,17 +3307,17 @@ msgstr "可憐的小精靈，我們有些問題想\"請教\"你！"
 #. [message]: speaker=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:619
 msgid "Ugh!"
-msgstr "呃～！"
+msgstr "呃！"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:624
 msgid "SPEAK!"
-msgstr "說！！"
+msgstr "說！"
 
 #. [message]: speaker=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:629
 msgid "... Well, what do you want to know?"
-msgstr "好吧，你們想知道什麼？"
+msgstr "好吧...你們想知道什麼？"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:634
@@ -3742,10 +3726,8 @@ msgstr "早啊，尚陶！"
 
 #. [message]: speaker=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:204
-#, fuzzy
-#| msgid "What... Kapou’e! What in the frozen northlands are you doing here?!"
 msgid "What... Kapou’e! What in the frozen Northlands are you doing here?!"
-msgstr "見鬼...卡叵尹！！你沒事跑來這天寒地凍的北地做啥？！"
+msgstr "什麼...卡叵尹！你沒事跑來這天寒地凍的北方做什麼？！"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:209
@@ -3981,19 +3963,13 @@ msgstr "嚴格來說，這只是領土爭議，豪加斯。北方聯盟無權進
 
 #. [message]: speaker=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:459
-#, fuzzy
-#| msgid ""
-#| "The hell I don’t, Earl Lanbec’h, the Northern Alliance was witness to a "
-#| "treaty some twenty seven years ago between your people and the orcs, "
-#| "which both of you are no doubt violating. It is our duty as the "
-#| "orchestrator and witness of this treaty to see that it is honored."
 msgid ""
 "The hell I don’t, Earl Lanbec’h, the Northern Alliance was witness to a "
 "treaty some seventeen years ago between your people and the orcs, which both "
 "of you are no doubt violating. It is our duty as the orchestrator and "
 "witness of this treaty to see that it is honored."
 msgstr ""
-"你以為我想啊，藍貝契伯爵。二十七年前，北方聯盟見證了你的人民和半獸人一族的協"
+"你以為我想啊，藍貝契伯爵。十七年前，北方聯盟見證了你的人民和半獸人一族的協"
 "議，而毫無疑問地，現在你們雙方都背棄了它。作為調停者以及見證人，我們有責任來"
 "確保這個協議被遵守。"
 
@@ -4034,16 +4010,11 @@ msgstr "你在說什麼啊？"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:486
-#, fuzzy
-#| msgid ""
-#| "I am Kapou’e, son of the Black-Eye Karun. Twenty-seven years ago you "
-#| "people assassinated my father after inviting him to join the Northern "
-#| "Alliance."
 msgid ""
 "I am Kapou’e, son of the Black-Eye Karun. Seventeen years ago you people "
 "assassinated my father after inviting him to join the Northern Alliance."
 msgstr ""
-"我是卡叵尹，黑眼卡倫之子。二十七年前，你的人在邀請我父親加入北方聯盟後暗殺了"
+"我是卡叵尹，黑眼卡倫之子。十七年前，你的人在邀請我父親加入北方聯盟後暗殺了"
 "他。"
 
 #. [message]: speaker=Howgarth III
