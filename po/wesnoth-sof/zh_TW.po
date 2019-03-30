@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
-"PO-Revision-Date: 2019-03-12 12:14+0800\n"
+"PO-Revision-Date: 2019-03-28 19:43+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -79,8 +79,10 @@ msgstr ""
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:34
+#, fuzzy
+#| msgid "(Hard level, 9 scenarios.)"
 msgid "(Expert level, 9 scenarios.)"
-msgstr "（專家難度，9個章節。）"
+msgstr "（專家等級，9個章節。）"
 
 #. [about]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:39
@@ -301,7 +303,7 @@ msgstr "沒錯。不過現在它帶給我們一些麻煩。"
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:227
 msgid "What sort of problem?"
-msgstr "怎樣的麻煩？ "
+msgstr "怎樣的麻煩？"
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:232
@@ -495,7 +497,7 @@ msgstr "不管怎樣，想要讓你的蓬車通過，你就得付錢，否則就
 msgid ""
 "We Wesnothians and you elves have a treaty! Do you really mean to break it "
 "in defense of a road that is not even yours?!"
-msgstr "我們韋諾和你們精靈可是有和約的！你們真想要藉攔路打劫來破壞和約嗎？"
+msgstr "我們韋諾和你們精靈可是有和約的！你們真想要藉攔路打劫來破壞合約嗎？！"
 
 #. [message]: speaker=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:405
@@ -541,7 +543,7 @@ msgstr "黃金全運過來了。洛葛勒，開始動工吧！"
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:530
 msgid "Cargo unloaded."
-msgstr "卸貨"
+msgstr "卸貨。"
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:540
@@ -557,7 +559,7 @@ msgstr "你還需$incominggold枚銀幣，以及寶石，才能開始動工。"
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:560
 msgid "That’s the last caravan! We will commence work immediately."
-msgstr "那是最後一輛蓬車了！我們很快就可以開工了！"
+msgstr "那是最後一輛蓬車了！我們很快就可以開工了。"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:575
@@ -595,7 +597,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:626
 msgid "Die, humans, in the name of Landar!"
-msgstr "以蘭德爾之名，死吧！人類。"
+msgstr "以蘭德爾之名，死吧！人類！"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:630
@@ -605,7 +607,7 @@ msgstr "蘭德爾？蘭德爾是哪根蔥呀？"
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:647
 msgid "Die, dwarvish scum, in the name of Landar!"
-msgstr "以蘭德爾之名，受死吧！矮人雜碎。"
+msgstr "以蘭德爾之名，受死吧！矮人雜碎！"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:651
@@ -704,7 +706,7 @@ msgstr ""
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:185
 msgid "(<i>Gulp</i>)"
-msgstr "(<i>咕</i>)"
+msgstr "（<i>咕</i>）"
 
 #. [message]: speaker=Glindur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:189
@@ -1102,7 +1104,7 @@ msgstr ""
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:217
 msgid "You mean the insane dwarf who lives in the far north?!"
-msgstr "你是說那個在北方離群索居瘋子？"
+msgstr "你是說那個在北方離群索居瘋子？！"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:221
@@ -1151,6 +1153,12 @@ msgstr "怪物"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:40
+#, fuzzy
+#| msgid ""
+#| "The journey to the far northern wastelands was long and perilous. For the "
+#| "tunnels were winding and treacherous, and the paths were not safe from "
+#| "orcs, or worse. Nevertheless, they did reach the Northlands, and began to "
+#| "search for the runesmith named Thursagan — the sage of fire."
 msgid ""
 "The journey to the far northern wastelands was long and perilous. For the "
 "tunnels were winding and treacherous, and the paths were not safe from orcs, "
@@ -1198,6 +1206,10 @@ msgstr ""
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:176
+#, fuzzy
+#| msgid ""
+#| "Except for trolls and ogres, right? They live in the far Northlands. "
+#| "They’re probably lurking around here somewhere."
 msgid ""
 "Except for trolls and ogres, right? They live in the far northlands. They’re "
 "probably lurking around here somewhere."
@@ -1225,7 +1237,7 @@ msgstr "擬門在和窩門縮畫嬤？！"
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:308
 msgid "Aah! What is that?!"
-msgstr "啊哈！那是什麼？"
+msgstr "啊哈！那是什麼？！"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:312
@@ -1241,7 +1253,7 @@ msgstr "嘶！擬野匯唆嬤？"
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:321
 msgid "It’s talking to us! What do you want, gryphon?"
-msgstr "牠在和我們說話耶！你有什麼需要嗎？獅鷲。"
+msgstr "牠在和我們說話耶！你有什麼需要嗎？獅鷲？"
 
 #. [message]: speaker=Krawg
 #. "My name is Krawg. You is looking for a runemaster?"
@@ -1270,7 +1282,7 @@ msgstr "當然，我們會幫你打巨魔和食人魔的。"
 msgid ""
 "Find Thursagan and convince him to come back to the dwarvish city, then "
 "bring him back to the caves"
-msgstr "找到瑟薩岡並說服他回到矮人城市，之後帶他回洞穴。"
+msgstr "找到瑟薩岡並說服他回到矮人城市，之後帶他回洞穴"
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:364
@@ -1467,8 +1479,10 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:155
+#, fuzzy
+#| msgid "Yes, we did. And that is Krawg, who helped us in the Northlands."
 msgid "Yes, we did. And that is Krawg, who helped us in the northlands."
-msgstr "是的，我們做到了。這是哇咯，他在北地幫了我們不少。"
+msgstr "是的，我們做到了。這是哇咯，他在北方幫了我們不少。"
 
 #. [message]: speaker=Krawg
 #. "Yeah! Me Krawg!"
@@ -1581,7 +1595,7 @@ msgid ""
 "eastern mines, north of the Arkan-thoria. Trolls ha’ overrun them, but "
 "earlier they were the source of the finest smithing materials."
 msgstr ""
-"等等，黃金和煤礦嘛...我想我們可以在已廢棄的東礦找找，它在阿坎-索理亞的北邊。"
+"等等，黃金和煤礦嘛...我想我們可以在已廢棄的東礦找找，它在阿肯-索里亞的北邊。"
 "雖然那邊到處都是巨魔，但只有那裡才有品質最好的冶煉材料。"
 
 #. [message]: speaker=Rugnur
@@ -1800,7 +1814,8 @@ msgid ""
 "need to annoy me for?"
 msgstr ""
 "哦，你們回來了啊？我想你們把一切所需的材料都帶回來了？我的珠寶匠， 瑟蓋勒最近"
-"兩年花了不少時間到北方各部族收購不少珠寶。所以現在就到你的冶煉場開工吧！"
+"兩年花了不少時間到北方各部族收購不少珠寶。所以現在給我去鑄造你的權杖吧。你還"
+"有什麼需要的？"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:151
@@ -1908,7 +1923,7 @@ msgstr ""
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:230
 msgid "Well, do you have anything yet?!"
-msgstr "嘿，進度如何？"
+msgstr "嘿，進度如何？！"
 
 #. [message]: speaker=Theganli
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:234
@@ -2064,7 +2079,7 @@ msgid ""
 "And I’ll be doing the talking; I remember what happened last time you "
 "negotiated a deal! We lost five thousand pieces of silver."
 msgstr ""
-"而我，來主導這次生意。我可還記得你上談生意時的慘劇！我們損失了五千銀幣！"
+"而我，來主導這次生意。我可還記得你上談生意時的慘劇！我們損失了五千銀幣。"
 
 #. [message]: speaker=Glonoin
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:251
@@ -2086,7 +2101,7 @@ msgstr ""
 msgid ""
 "You’re a king?! Must be a pretty small kingdom for you to come yourself to "
 "bargain with us!"
-msgstr "你是國王？八成是個小國，不然怎麼會親自過來？"
+msgstr "你是國王？八成是個小國，不然怎麼會親自過來！"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:263
@@ -2284,6 +2299,8 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:416
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:522
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:586
+#, fuzzy
+#| msgid "Have all heroes, and no enemies, in the Shorbear caves"
 msgid "Have all heroes in the Shorbear caves while no enemies are in the caves"
 msgstr "讓所有的英雄進入肖爾熊的洞穴，並驅離所有敵人"
 
@@ -2478,7 +2495,7 @@ msgstr ""
 msgid ""
 "Yes, of course, let’s just all be cowards! What happened to your honor, "
 "Durstorn?!"
-msgstr "是是是，讓我們都作懦夫吧！德斯銅！你的榮譽感呢？"
+msgstr "是是是，讓我們都作懦夫吧！德斯銅！你的榮譽感呢？！"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:267
@@ -2599,7 +2616,7 @@ msgid ""
 "gathered our gold and coal. At least there Alanin will have some hope of "
 "finding us."
 msgstr ""
-"這裡和柯內革間有著大量的精靈，我們最好能回到阿坎-索理亞北方已廢棄的礦場，我們"
+"這裡和柯內革間有著大量的精靈，我們最好能回到阿肯-索里亞北方已廢棄的礦場，我們"
 "之前去挖礦的地方。至少阿蘭尼有希望找到我們。"
 
 #. [message]: speaker=Alanin
@@ -2703,7 +2720,7 @@ msgid ""
 "Rugnur had fled across the Arkan-thoria, but Alanin could not do that. He "
 "went south — back to the Wesnoth border."
 msgstr ""
-"洛葛勒逃離了阿坎-索理亞，但阿蘭尼無法追到那裡。所以他往南回帶韋諾邊界。 "
+"洛葛勒逃離了阿肯-索里亞，但阿蘭尼無法追到那裡。所以他往南回帶韋諾邊界。"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:70
@@ -2773,7 +2790,7 @@ msgstr ""
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:188
 msgid "We shall see about that!"
-msgstr "我們走著瞧"
+msgstr "我們走著瞧！"
 
 #. [unit]: type=Elvish Outrider, id=Raesil
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:197
@@ -2809,13 +2826,18 @@ msgstr "誰在那邊？"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:300
+#, fuzzy
+#| msgid ""
+#| "I’m a dragoon, with Haldric II’s personal bodyguard. I was sent on a "
+#| "mission in the Northlands, and now elvish horsemen are chasing me. I "
+#| "barely evaded them."
 msgid ""
 "I’m a dragoon, with Haldric II’s personal bodyguard. I was sent on a mission "
 "in the northlands, and now elvish horsemen are chasing me. I barely evaded "
 "them."
 msgstr ""
-"我是龍騎士，海德洛克二世的貼身護衛。我先前被派往北國執行一個任務，現在精靈騎"
-"手追趕在後，我得逃離他們。"
+"我是龍騎士，海德洛克二世的貼身護衛。我先前被派往北方大陸執行一個任務，現在精"
+"靈騎兵追趕在後，我得逃離他們。"
 
 #. [message]: speaker=Hadlin  # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:304
@@ -2834,7 +2856,7 @@ msgstr "巨龍"
 #. [side]: type=Elvish Marshal, id=Crintil
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:39
 msgid "Crintil"
-msgstr " 克利提爾"
+msgstr "克利提爾"
 
 #. [side]: type=Fire Dragon, id=Khrakrahs
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:71
@@ -2996,6 +3018,10 @@ msgstr "保護瑟薩岡直到火焰權杖完成"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:394
+#, fuzzy
+#| msgid ""
+#| "This forge will work perfectly. Give me a day or two here, and I can "
+#| "reforge the Sceptre of Fire to fulfill its purpose."
 msgid ""
 "This forge will work perfectly. Give me a few days here, and I can reforge "
 "the Sceptre of Fire to fulfill its purpose."
@@ -3053,13 +3079,18 @@ msgstr "半獸人"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:160
+#, fuzzy
+#| msgid ""
+#| "There was no exit for the dwarves. They had reached the realms of the "
+#| "orcs, with the elves hot on their trail. There was truly no exit from "
+#| "these caves."
 msgid ""
 "There was no exit from the caverns of Knalga. They had reached the realms of "
 "the orcs, with the elves hot on their trail. And there was no exit from "
 "those caves."
 msgstr ""
-"這地區沒有通往 柯內革的道路。而他們已來到了半獸人的地盤，精靈則仍緊跟在後。洞"
-"穴群中毫無離開的道路。"
+"這裡沒有任何出口。而他們已來到了半獸人的地盤，精靈則仍緊跟在後。洞穴群中毫無"
+"離開的道路。"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:163
@@ -3193,7 +3224,7 @@ msgstr "看！有些牆被震倒了。半獸人將會傾巢而出！"
 msgid ""
 "Well, we’ve succeeded in stopping the elves from getting the Sceptre, I "
 "would say. But what do we do now?!"
-msgstr "好了，我得說我們總算成功阻止精靈拿到權杖。不過現在我們要怎麼辦？"
+msgstr "好了，我得說我們總算成功阻止精靈拿到權杖。不過現在我們要怎麼辦？！"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:556
@@ -3308,6 +3339,10 @@ msgstr "站住！你到韋諾首都，維丁，是有什麼重要的事情嗎？
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:100
+#, fuzzy
+#| msgid ""
+#| "Stand aside. I am Alanin, of Haldric’s royal guard, and I bring news from "
+#| "the Northlands."
 msgid ""
 "Stand aside. I am Alanin, of Haldric’s royal guard, and I bring news from "
 "the northlands."
@@ -3340,12 +3375,16 @@ msgstr "進來，阿蘭尼，向國王報告你的消息。"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:123
+#, fuzzy
+#| msgid ""
+#| "My King, fifteen years ago you sent me on a mission into the Northlands. "
+#| "I have returned. What do you wish to know of my mission?"
 msgid ""
 "My King, fifteen years ago you sent me on a mission into the northlands. I "
 "have returned. What do you wish to know of my mission?"
 msgstr ""
-"國王陛下，十五年前你派我到北國執行一項任務，現在我回來了。你想知道任務的哪個"
-"部分？"
+"國王陛下，十五年前你派我到北方大陸執行一項任務，現在我回來了。你想知道任務的"
+"哪個部分？"
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:127
@@ -3555,7 +3594,7 @@ msgstr "國王"
 #. [unit_type]: id=Haldric II, race=human
 #: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:21
 msgid "King of Wesnoth."
-msgstr "韋諾國王"
+msgstr "韋諾國王。"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:22
@@ -3576,6 +3615,44 @@ msgstr "啊..."
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:71
 msgid "Kraa..."
 msgstr "呃..."
+
+#~ msgid "Shorbear caves"
+#~ msgstr "肖爾熊族洞穴"
+
+#~ msgid "Great, now there is no need to worry about those elves anymore!"
+#~ msgstr "太好了，現在再也不需要擔心那些精靈了！"
+
+#~ msgid ""
+#~ "Did you really think that you could escape us? Don’t underestimate us, "
+#~ "inferior humans!"
+#~ msgstr "你真的認為你可以逃過我們嗎？不要低估我們，低等的人類！"
+
+#~ msgid ""
+#~ "Even though my chances have grown worse, I have to fulfil my duty. I do "
+#~ "not owe them any less!"
+#~ msgstr "即使我的機會變小了，我還是要履行我的職責。這是我應該做的！"
+
+#~ msgid "Oh no, more of them? And there I thought I could catch my breath…"
+#~ msgstr "喔不，來更多？我以為我可以喘息一下..."
+
+#~ msgid "Don’t worry sir, we’ll make it through this!"
+#~ msgstr "別擔心，我們會撐過去的！"
+
+#~ msgid "Is there no end to their numbers?"
+#~ msgstr "他們是沒有極限的嗎？"
+
+#~ msgid ""
+#~ "You slow humans took too long, our detachment has already caught up with "
+#~ "you!"
+#~ msgstr "你們這些行動緩慢的人類，我們的小隊已經追上你們了！"
+
+#~ msgid ""
+#~ "I’m a cavalier, with Haldric II’s personal bodyguard. I was sent on a "
+#~ "mission in the Northlands, and now elvish horsemen are chasing me. I "
+#~ "barely evaded them."
+#~ msgstr ""
+#~ "我是騎士，海德洛克二世的貼身護衛。我先前被派往北方大陸執行一個任務，現在精"
+#~ "靈騎兵追趕在後，我得逃離他們。"
 
 #~ msgid "sword"
 #~ msgstr "劍刃"
