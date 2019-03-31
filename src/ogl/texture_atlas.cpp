@@ -233,6 +233,11 @@ void texture_atlas::init(const std::vector<std::string>& images, thread_pool& th
 
 	// Pack sprites.
 	pack_sprites_wrapper(sprites);
+
+	// Create sprite objects.
+	std::for_each(sprites.begin(), sprites.end(),
+		std::bind(&texture_atlas::create_sprite,
+			this, texture_.get_size(), std::placeholders::_1));
 }
 
 bool texture_atlas::sprite_data::operator<(const sprite_data& other) const
@@ -303,7 +308,7 @@ void texture_atlas::pack_sprites_wrapper(std::vector<sprite_data>& sprites)
 		" texture, efficiency << " << 100.0 * efficiency << " %, packing took " <<
 		duration_cast<milliseconds>(time).count() << " ms";
 
-	// TODO: construct the texture atlas
+	build(sprites);
 }
 
 void texture_atlas::pack_sprites(std::vector<sprite_data>& sprites)
@@ -350,6 +355,40 @@ void texture_atlas::place_sprite(sprite_data& sprite)
 
 	// Merge adjacent rectangles.
 	rectangle_merge(free_rectangles_);
+}
+
+void texture_atlas::build(const std::vector<sprite_data>& sprites)
+{
+	std::pair<int, int> texture_size = texture_.get_size();
+
+	surface pixels(SDL_CreateRGBSurfaceWithFormat(
+		0u, texture_size.first, texture_size.second, 32, SDL_PIXELFORMAT_RGBA32));
+	SDL_FillRect(pixels, nullptr, 0u);
+
+	for(const sprite_data& s : sprites) {
+		SDL_Rect rect;
+		rect.x = s.x_min;
+		rect.y = texture_size.second - s.y_max;
+		rect.w = s.x_max - s.x_min;
+		rect.h = s.y_max - s.y_min;
+
+		sdl_blit(s.surf, nullptr, pixels, &rect);
+	}
+
+	texture_.set_pixels(pixels);
+}
+
+sprite& texture_atlas::create_sprite(const std::pair<int, int>& texture_size, const sprite_data& data)
+{
+	sprite spriteObj(texture_);
+	spriteObj.x_min_px = data.x_min;
+	spriteObj.x_max_px = data.x_max;
+	spriteObj.y_min_px = data.y_min;
+	spriteObj.y_max_px = data.y_max;
+	spriteObj.normalize_coordinates(texture_size);
+	sprites_.push_back(spriteObj);
+	sprites_by_name_.emplace(data.name, &sprites_.back());
+	return sprites_.back();
 }
 
 void texture_atlas::load_image(sprite_data& sprite)

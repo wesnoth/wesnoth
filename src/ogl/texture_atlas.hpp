@@ -85,6 +85,8 @@ private:
 	void pack_sprites_wrapper(std::vector<sprite_data>& sprites);
 	void pack_sprites(std::vector<sprite_data>& sprites);
 	void place_sprite(sprite_data& sprite);
+	void build(const std::vector<sprite_data>& sprites);
+	sprite& create_sprite(const std::pair<int, int>& texture_size, const sprite_data& data);
 	static void load_image(sprite_data& sprite);
 	static void apply_IPFs(sprite_data& sprite);
 	/// @return true if it would be better to place the @param sprite to @param rect_a than @param rect_b.
