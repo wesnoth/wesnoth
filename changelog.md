@@ -34,6 +34,8 @@
    * Secrets of the Ancients:
      * Added ability to recruit different kinds of walking corpses during the campaign.
      * Unit type naming convention cleanup.
+   * Under the Burning Suns:
+     * Refactor code in various scenarios to be more readable
    * Deprecate AI Controller and remove it from mainline campaign scenarios
  ### Engine
    * Windows 7 is now the minimum supported Windows version.
