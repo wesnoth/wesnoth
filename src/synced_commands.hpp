@@ -16,6 +16,7 @@
 
 #include <map>
 #include <exception>
+#include <string>
 
 #include "utils/functional.hpp"
 
