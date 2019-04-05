@@ -1713,14 +1713,10 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		update_game_in_lobby(g);
 		return;
 	} else if(data.child("leave_game")) {
-		// May be better to just let remove_player() figure out when a game ends.
-		if((g.is_player(socket) && g.nplayers() == 1) || (g.is_owner(socket) && (!g.started() || g.nplayers() == 0))) {
-			// Remove the player in delete_game() with all other remaining
-			// ones so he gets the updated gamelist.
+		if(g.remove_player(socket)) {
 			delete_game(g.id());
 		} else {
 			auto description = g.description();
-			g.remove_player(socket);
 
 			player_connections_.modify(player_connections_.find(socket), player_record::enter_lobby);
 			if(!g_ptr.expired()) {
@@ -1921,8 +1917,9 @@ void server::remove_player(socket_ptr socket)
 	}
 
 	const std::shared_ptr<game> g = iter->get_game();
+	bool game_ended = false;
 	if(g) {
-		g->remove_player(socket, true, false);
+		game_ended = g->remove_player(socket, true, false);
 	}
 
 	const simple_wml::node::child_list& users = games_and_users_list_.root().children("user");
@@ -1956,6 +1953,8 @@ void server::remove_player(socket_ptr socket)
 
 	if(lan_server_ && player_connections_.size() == 0)
 		start_lan_server_timer();
+
+	if(game_ended) delete_game(g->id());
 }
 
 void server::send_to_lobby(simple_wml::document& data, socket_ptr exclude) const
