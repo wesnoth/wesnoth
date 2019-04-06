@@ -917,7 +917,7 @@ class HTMLOutput:
                                 if not first_attack:
                                     write('<br />')
                                 first_attack = False
-                                
+
                                 r = T(attack, "range")
                                 t = T(attack, "type")
                                 range_icon = image_collector.add_image_check(self.addon, 'icons/profiles/%s_attack.png' % r, no_tc=True)
@@ -928,12 +928,12 @@ class HTMLOutput:
                                 type_alt_text = 'attack type %s' % cleantext(_(t), quote=False)
                                 x = '<img src="%s" alt="(%s)"/> <img src="%s" alt="(%s)"/> ' % (range_icon, range_alt_text, type_icon, type_alt_text)
                                 write (x)
-                                
+
                                 n = T(attack, "number")
                                 x = T(attack, "damage")
                                 x = "%s %s %s " % (cleantext(x, quote=False), HTML_ENTITY_MULTIPLICATION_SIGN, cleantext(n, quote=False))
                                 write(x)
-                                
+
                                 x = '<br/>%s-%s' % (_(r), _(t))
                                 write(x)
 
@@ -1198,12 +1198,12 @@ class HTMLOutput:
                 type_alt_text = cleantext('%s attack' % t, quote=False)
                 x = '<td><img src="%s" alt="(%s)"/> %s</td>' % (type_icon, type_alt_text, cleantext(_(t), quote=False))
                 write(x)
-                
+
                 n = attack.get_text_val("number")
                 x = attack.get_text_val("damage")
                 x = '%s %s %s' % (cleantext(x, quote=False), HTML_ENTITY_MULTIPLICATION_SIGN, cleantext(n, quote=False))
                 write('<td><i>%s</i></td>' % x)
-                
+
                 r = T(attack, "range")
                 range_icon = image_collector.add_image_check(self.addon, 'icons/profiles/%s_attack.png' % r, no_tc=True)
                 range_icon = cleanurl(os.path.join(PICS_LOCATION, range_icon.id_name))
