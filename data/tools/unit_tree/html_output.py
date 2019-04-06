@@ -1222,7 +1222,7 @@ class HTMLOutput:
                             error_message("Warning: Weapon special %s has no name for %s.\n" %
                                           (special.name.decode("utf8"), uid))
                 if s:
-                    write('<td>(%s)</td>' % '<br/>'.join(s))
+                    write('<td>(%s)</td>' % ', '.join(s))
                 write('</tr>')
             write('</table>\n')
 
