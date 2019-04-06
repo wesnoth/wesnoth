@@ -56,7 +56,7 @@ class ImageCollector:
         tilde = name.find("~")
         if tilde >= 0:
             name = name[:tilde]
-        bases = [os.path.join(self.datadir, "data/core/images")]
+        bases = [os.path.join(self.datadir, "data/core/images"), os.path.join(self.datadir, "images")]
         binpaths = self.binary_paths_per_addon.get(addon, [])[:]
         binpaths.reverse()
         for path in binpaths:
