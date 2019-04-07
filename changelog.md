@@ -41,6 +41,8 @@
      * Warn player about water when stepping on any shallow water hex
      * Change quintain to level 0
      * Allow Konrad and Li'sar to level up and add corresponding dialogue for part 2
+   * Under the Burning Suns:
+     * Added embellishments to various maps
  ### Language and i18n
    * Updated translations: British English, Chinese (Traditional), Dutch,
      Italian.
