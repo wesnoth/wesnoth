@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-03-11 13:09 UTC\n"
-"PO-Revision-Date: 2018-04-17 21:53+0200\n"
+"PO-Revision-Date: 2019-03-26 11:54+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:13
@@ -77,10 +77,8 @@ msgstr ""
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:24
-#, fuzzy
-#| msgid "(Intermediate level, 16 scenarios.)"
 msgid "(Novice level, 16 scenarios.)"
-msgstr "(Nivel intermedio, 16 escenarios)"
+msgstr "(Nivel principiante, 16 escenarios)"
 
 #. [about]
 #: data/campaigns/Eastern_Invasion/_main.cfg:28
@@ -559,25 +557,18 @@ msgstr "¿Dónde estamos? No puedo ver a dónde vamos."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:192
-#, fuzzy
-#| msgid ""
-#| "This is an old escape tunnel for the outpost; unfortunately these caves "
-#| "are currently inhabited by trolls. Now hurry, we have to move quickly; "
-#| "the undead will surely follow us down here."
 msgid ""
 "This is an old escape route for the outpost. Unfortunately these caves are "
 "currently inhabited by trolls, who are blocking our path through the tunnel."
 msgstr ""
-"Este es un antiguo túnel para poder escapar de este reducto. Por desgracia, "
-"en estas cavernas ahora viven troles. Rápido, no podemos demorarnos; seguro "
-"que los no muertos nos seguirán hasta aquí abajo."
+"Este es un antiguo túnel de evacuación para este reducto. Por desgracia, en "
+"estas cavernas ahora viven troles que bloquean nuestra ruta a su través."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:245
-#, fuzzy
-#| msgid "Hurry up. We must get across before these undead slaughter us!"
 msgid "We must make haste to escape before the undead catch up."
-msgstr "De prisa. ¡Debemos cruzar antes de que esos no muertos nos masacren!"
+msgstr ""
+"Hemos de apresurarnos en escapar antes de que los no muertos nos alcancen."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:250
@@ -654,6 +645,8 @@ msgid ""
 "Very well. The best of luck in your battle. Gweddry, we may be able to avoid "
 "the bulk of the trolls by going through the dwarves’ tunnel."
 msgstr ""
+"Muy bien. Os deseo lo mejor en la batalla. Gweddry, podríamos evitar a la "
+"mayor parte de los troles cruzando a través del túnel de los enanos."
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:378
@@ -676,18 +669,13 @@ msgstr "¡Te hemos encontrado, saco de carne! ¡Prepárate para morir!"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:452
-#, fuzzy
-#| msgid ""
-#| "They follow us... we must get out of this tunnel. It looks like it is "
-#| "leading east. That is unfortunate, for it will take us beyond the borders "
-#| "of Wesnoth. But it is our only option."
 msgid ""
 "They follow us... we must escape through this tunnel. That is unfortunate, "
 "for it will take us into the Estmark hills, beyond the borders of Wesnoth. "
 "But it is our only option."
 msgstr ""
-"Nos siguen... debemos salir de este túnel. Parece que lleva hacia el este. "
-"Esto es desafortunado, porque nos llevará más allá de las fronteras de "
+"Nos siguen... hemos de escapar por este túnel. Esto es desafortunado, porque "
+"nos llevará a las Colinas de la Marca Oriental, más allá de las fronteras de "
 "Wesnoth. Pero es nuestra única opción."
 
 #. [message]: speaker=Gweddry
@@ -1701,10 +1689,8 @@ msgstr "Grug"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:104
-#, fuzzy
-#| msgid "Move Gweddry and Owaec across the river"
 msgid "Move Gweddry, Owaec, and Dacyn across the river"
-msgstr "Conseguir que Gweddry y Owaec crucen el río"
+msgstr "Conseguir que Gweddry, Owaec y Dacyn crucen el río"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:145

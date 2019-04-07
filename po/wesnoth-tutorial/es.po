@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-03-11 13:10 UTC\n"
-"PO-Revision-Date: 2018-09-16 18:39+0200\n"
+"PO-Revision-Date: 2019-03-26 10:08+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -159,6 +159,8 @@ msgstr "Haz clic en Li’sar"
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:316
 msgid "To undo your last move, press <b>u</b> or use the right-click menu."
 msgstr ""
+"Para deshacer tu anterior movimiento, pulsa <b>u</b> o usa el menú "
+"contextual haciendo clic derecho."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:357
@@ -1818,11 +1820,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:897
-#, fuzzy
-#| msgid ""
-#| "You are close to killing their leader! The unit who finishes him will "
-#| "gain 16 experience points because he is second level. Choose your "
-#| "attacking unit carefully!"
 msgid ""
 "You are close to killing their leader! Because he is second level, the unit "
 "who finishes him will gain 16 experience points. In a campaign, it’s "
@@ -1830,13 +1827,14 @@ msgid ""
 "the best chances to gain experience."
 msgstr ""
 "¡Estás cerca de matar a su líder! La unidad que acabe con él ganará 16 "
-"puntos de experiencia porque él es de nivel 2. ¡Elige a tu unidad "
-"cuidadosamente!"
+"puntos de experiencia ya que es de nivel 2. En una campaña, es importante "
+"decidir cuales son las unidades que deseas promocionar y dar a esas unidades "
+"las mejores oportunidades de ganar experiencia."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:901
 msgid "You have almost finished the tutorial"
-msgstr ""
+msgstr "Ya casi has terminado el tutorial"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:903
@@ -1844,6 +1842,9 @@ msgid ""
 "In a campaign you may have ten or even twenty scenarios to build your army, "
 "but this tutorial will conclude after you defeat Thrag."
 msgstr ""
+"En una campaña dispondrás de unos diez o de incluso veinte escenarios para "
+"crear tu ejército, pero este tutorial terminará después de que derrotes a "
+"Thrag."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:929
@@ -2017,41 +2018,29 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1110
-#, fuzzy
-#| msgid ""
-#| "Advancing a level has fully healed me! I am particularly good with the "
-#| "sword, dealing 8 damage in 4 attacks. While I don’t have the Leadership "
-#| "abilities of the Elvish Captain, my superior fighting skills allow my "
-#| "attacks to do more damage!"
 msgid ""
 "Advancing a level has fully healed me! I have become better at using the "
 "sword, dealing 9 damage in 4 attacks. Although I do not have any special "
 "abilities, my fighting skills will allow me to beat the orcs by dealing more "
 "damage!"
 msgstr ""
-"¡Subir un nivel me ha sanado por completo! Soy especialmente bueno con la "
-"espada, hago 8 puntos de daño por cada uno de los 4 ataques. Aunque no tengo "
-"las habilidades de liderazgo del Capitán elfo, ¡mis talentos superiores "
-"luchando permiten que mis ataques hagan más daño!"
+"¡Subir un nivel me ha sanado por completo! Me he vuelto mejor en el uso de "
+"la espada, hago 9 puntos de daño por cada uno de los 4 ataques. Aunque no "
+"tengo ninguna habilidad especial, ¡mis talentos en la lucha me van a "
+"permitir vencer a los orcos haciéndoles más daño!"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1111
-#, fuzzy
-#| msgid ""
-#| "Advancing a level has fully healed me! I am particularly good with the "
-#| "sword, dealing 8 damage in 4 attacks. While I don’t have the Leadership "
-#| "abilities of the Elvish Captain, my superior fighting skills allow my "
-#| "attacks to do more damage!"
 msgid ""
 "female^Advancing a level has fully healed me! I have become better at using "
 "the sword, dealing 9 damage in 4 attacks. Although I do not have any special "
 "abilities, my fighting skills will allow me to beat the orcs by dealing more "
 "damage!"
 msgstr ""
-"¡Subir un nivel me ha sanado por completo! Soy especialmente bueno con la "
-"espada, hago 8 puntos de daño por cada uno de los 4 ataques. Aunque no tengo "
-"las habilidades de liderazgo del Capitán elfo, ¡mis talentos superiores "
-"luchando permiten que mis ataques hagan más daño!"
+"¡Subir un nivel me ha sanado por completo! Me he vuelto mejor en el uso de "
+"la espada, hago 9 puntos de daño por cada uno de los 4 ataques. Aunque no "
+"tengo ninguna habilidad especial, ¡mis talentos en la lucha me van a "
+"permitir vencer a los orcos haciéndoles más daño!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1120
@@ -2082,6 +2071,12 @@ msgid ""
 "Incursion</i> you have an Elvish army, similarly to this tutorial, but with "
 "seven scenarios for your units to gain experience and advance levels."
 msgstr ""
+"¡Has vencido a los orcos! Puede que a continuación desees probar con una de "
+"las campañas de nivel principiante, que incluyen consejos estratégicos. "
+"<i>Un cuento sobre dos hermanos</i> es la más fácil y la primera que "
+"recomendamos. En <i>Una incursión orca</i> dispondrás de un ejército elfo, a "
+"semejanza de este tutorial, pero con siete escenarios para que tus unidades "
+"puedan ganar experiencia y aumentar de nivel."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1191
@@ -2089,6 +2084,8 @@ msgid ""
 "You can also refer to the in-game help browser if you ever need to refresh "
 "your memory on gameplay mechanics."
 msgstr ""
+"También puedes probar a navegar por la ayuda del juego si es que necesitas "
+"refrescar tu memoria en cuanto a las mecánicas del juego."
 
 #. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
@@ -2130,7 +2127,7 @@ msgstr ""
 #. [unit_type]: id=Warrior, race=human
 #: data/campaigns/tutorial/units/Warrior.cfg:4
 msgid "Warrior"
-msgstr ""
+msgstr "Guerrero"
 
 #. [unit_type]: id=Warrior, race=human
 #. [unit_type]: id=Warrioress, race=human
@@ -2140,13 +2137,13 @@ msgid ""
 "With more experience, Fighters have honed their skills with the sword and "
 "become powerful Warriors."
 msgstr ""
+"Con más experiencia, los luchadores han refinado sus habilidades con la "
+"espada y se han transformado en poderosos guerreros."
 
 #. [unit_type]: id=Warrioress, race=human
 #: data/campaigns/tutorial/units/Warrioress.cfg:4
-#, fuzzy
-#| msgid "female^Fighter"
 msgid "female^Warrior"
-msgstr "Luchadora"
+msgstr "Guerrera"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/utils/utils.cfg:57

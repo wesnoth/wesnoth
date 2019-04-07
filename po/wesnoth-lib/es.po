@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-03-11 16:09+0300\n"
-"PO-Revision-Date: 2018-09-16 19:50+0200\n"
+"PO-Revision-Date: 2019-03-21 12:23+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -255,11 +255,6 @@ msgstr "Arena de desierto"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:298
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Deserts'</italic> have a somewhat different composition "
-#| "than small sand pits or beaches, however for gameplay purposes they are "
-#| "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
@@ -267,7 +262,7 @@ msgid ""
 msgstr ""
 "Los <italic>text='Desiertos'</italic> tienen de hecho muy diferentes tipos "
 "de terreno además de dunas de arena o playas, de todos modos, en lo "
-"concerniente al juego, todos son iguales. Véase <ref>dst='terrain_sand' "
+"concerniente al juego, todos son iguales. Véase <ref>dst='...terrain_sand' "
 "text='arena'</ref>."
 
 #. [terrain_type]: id=sand_beach
@@ -2428,7 +2423,7 @@ msgstr "Daño base"
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:84
 msgid "Time of day modifier"
-msgstr "Modificador de hora del día"
+msgstr "Modificador de franja horaria"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:85
@@ -2530,8 +2525,6 @@ msgstr "Dificultad"
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:73
-#, fuzzy
-#| msgid "Select difficulty level:"
 msgid "Select difficulty:"
 msgstr "Seleccione el nivel de dificultad:"
 
@@ -4580,7 +4573,7 @@ msgstr "Filtro:"
 #. [text_box]: id=filter
 #: data/gui/window/preferences/02_hotkeys.cfg:67
 msgid "Filters on hotkey description."
-msgstr ""
+msgstr "Filtros para la descripción de los atajos de teclado."
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:111
@@ -5489,63 +5482,63 @@ msgstr "$prefix, o $last"
 
 #: src/formula/string_utils.cpp:285 src/formula/string_utils.cpp:314
 msgid "timespan^expired"
-msgstr ""
+msgstr "caducado"
 
 #: src/formula/string_utils.cpp:291
 msgid "timespan^$num year"
-msgstr ""
+msgstr "año número"
 
 #: src/formula/string_utils.cpp:291
 msgid "timespan^$num years"
-msgstr ""
+msgstr "número de años"
 
 #: src/formula/string_utils.cpp:292
 msgid "timespan^$num month"
-msgstr ""
+msgstr "mes número"
 
 #: src/formula/string_utils.cpp:292
 msgid "timespan^$num months"
-msgstr ""
+msgstr "número de meses"
 
 #: src/formula/string_utils.cpp:293
 msgid "timespan^$num week"
-msgstr ""
+msgstr "semana número"
 
 #: src/formula/string_utils.cpp:293
 msgid "timespan^$num weeks"
-msgstr ""
+msgstr "número de semanas"
 
 #: src/formula/string_utils.cpp:294
 msgid "timespan^$num day"
-msgstr ""
+msgstr "día número"
 
 #: src/formula/string_utils.cpp:294
 msgid "timespan^$num days"
-msgstr ""
+msgstr "número de días"
 
 #: src/formula/string_utils.cpp:295
 msgid "timespan^$num hour"
-msgstr ""
+msgstr "hora número"
 
 #: src/formula/string_utils.cpp:295
 msgid "timespan^$num hours"
-msgstr ""
+msgstr "número de horas"
 
 #: src/formula/string_utils.cpp:296
 msgid "timespan^$num minute"
-msgstr ""
+msgstr "minuto número"
 
 #: src/formula/string_utils.cpp:296
 msgid "timespan^$num minutes"
-msgstr ""
+msgstr "número de minutos"
 
 #: src/formula/string_utils.cpp:297
 msgid "timespan^$num second"
-msgstr ""
+msgstr "segundo número"
 
 #: src/formula/string_utils.cpp:297
 msgid "timespan^$num seconds"
-msgstr ""
+msgstr "número de segundos"
 
 #: src/gui/core/canvas.cpp:612
 msgid "Line doesn't fit on canvas."
@@ -6026,10 +6019,8 @@ msgid "The game data cache could not be purged."
 msgstr "La caché de datos del juego no ha podido ser eliminada."
 
 #: src/gui/dialogs/game_load.cpp:264
-#, fuzzy
-#| msgid "The selected game has no sides!"
 msgid "The selected file is corrupt: "
-msgstr "¡No quedan bandos para la partida seleccionada!"
+msgstr "El archivo seleccionado está dañado: "
 
 #: src/gui/dialogs/game_load.cpp:343
 msgid "(Invalid)"
@@ -7110,7 +7101,7 @@ msgstr "Cerrar mapa"
 
 #: src/hotkey/hotkey_command.cpp:164
 msgid "Switch Time of Day"
-msgstr "Conmutar la hora del día"
+msgstr "Conmutar la franja horaria"
 
 #: src/hotkey/hotkey_command.cpp:166
 msgid "Switch Map"

@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-03-11 13:10 UTC\n"
-"PO-Revision-Date: 2018-07-12 10:15+0200\n"
+"PO-Revision-Date: 2019-03-28 14:04+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -2405,7 +2405,7 @@ msgstr ""
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:695
 msgid "righteous rage"
-msgstr ""
+msgstr "rabia justa"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:697
@@ -2413,11 +2413,14 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the champions is slain, or 30 rounds of attacks have occurred."
 msgstr ""
+"Tanto si se usa de modo ofensivo como defensivo, este ataque mantiene el "
+"enfrentamiento hasta que uno de los campeones muere o hasta que transcurren "
+"30 rondas de ataques."
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:706
 msgid "true strike"
-msgstr ""
+msgstr "golpe certero"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:708
@@ -2425,6 +2428,8 @@ msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the champion being attacked."
 msgstr ""
+"Este ataque siempre tiene un 70% de probabilidad de golpear sin importar la "
+"habilidad defensiva del campeón que está siendo atacado."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:772
@@ -15449,14 +15454,6 @@ msgstr "Arquero Quenoth"
 
 #. [unit_type]: id=Quenoth Archer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:21
-#, fuzzy
-#| msgid ""
-#| "With the open sands providing much less protection than their old forests "
-#| "did, the wide ranks of elvish archers that could once have stopped an "
-#| "advancing orcish horde in its tracks have all but disappeared. Instead, "
-#| "the few who still choose to dedicate themselves to the traditional weapon "
-#| "of their ancestors practise the art from the saddle, easily avoiding the "
-#| "perils of melee combat."
 msgid ""
 "With the open sands providing much less protection than the old forests did, "
 "the wide ranks of elvish archers that once formed the core of the elvish "
@@ -15466,8 +15463,8 @@ msgid ""
 "combat."
 msgstr ""
 "Con las abiertas arenas proporcionando mucha menos protección que sus "
-"antiguos bosques, las amplias filas de elfos arqueros que una vez pudieron "
-"detener el avance de una horda orca en seco casi han desaparecido. En "
+"antiguos bosques, las amplias filas de arqueros elfos que una vez formaron "
+"la columna vertebral de los ejércitos élficos casi han desaparecido. En "
 "cambio, los pocos que aún eligen dedicarse al arma tradicional de sus "
 "ancestros practican el arte desde una montura, eludiendo con facilidad los "
 "peligros del combate cuerpo a cuerpo."
@@ -15486,6 +15483,11 @@ msgid ""
 "with raw power and can force their way through all but the most secure of "
 "defenses."
 msgstr ""
+"De pie al frente de la mayoría de las filas de lanceros Quenoth, los "
+"campeones son aquellos que han perfeccionado el uso del archa casi hasta la "
+"perfección. Quizás solo con una ligera falta de sutileza estratégica, estos "
+"elfos lo compensan de sobra con la fuerza bruta y pueden forzar su avance a "
+"través de casi cualquier defensa."
 
 # archeros. también guja. Como la naginata japonesa
 #. [attack]: type=pierce
@@ -15567,6 +15569,12 @@ msgid ""
 "for combat and survival, these elves are the few who remain as healers and "
 "caretakers."
 msgstr ""
+"Seguidoras de la Diosa de la Luz, Eloh, las druidas se consideran "
+"misteriosas incluso entre los otros elfos de la misma orden. En parte esto "
+"se basa en la excepcional conexión de las druidas con la naturaleza, algo "
+"casi ausente por completo en un mundo invadido por la ardiente arena. En un "
+"mundo brutal en donde los demás se entrenan para el combate y la "
+"supervivencia, estas elfas son las pocas sanadoras y cuidadoras que quedan."
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:38
@@ -15600,6 +15608,14 @@ msgid ""
 "weaponry by forming robust spear ranks capable of repelling nearly any "
 "frontal assault."
 msgstr ""
+"Hace tiempo, durante tiempos más prósperos, los guerreros elfos preferían el "
+"uso de la espada como un arma más elegante y versátil comparada con otras "
+"armas cuerpo a cuerpo. Sin embargo, en tiempos más recientes, la escasez de "
+"suministros para la forja ha reducido las posibilidades de fabricar espadas, "
+"obligando a la creación de armas más baratas y fáciles de reparar. Los "
+"luchadores quenoth son muy habilidosos en grupos coordinados, donde pueden "
+"contrarrestar la falta de armamento más sofisticado formando sólidas filas "
+"de lanceros capaces de rechazar casi cualquier asalto frontal."
 
 #. [unit_type]: id=Tauroch Flagbearer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flagbearer.cfg:5
@@ -15618,6 +15634,9 @@ msgid ""
 "times of need, when the elves are threatened by something more than mere "
 "scavengers or wild beasts."
 msgstr ""
+"Los respetados abanderados pasan años en el desierto abierto liderando a sus "
+"camaradas en patrullas y caza, donde recolectan suministros a la vez que "
+"defienden sus aldeas de los forajidos."
 
 #. [unit_type]: id=Quenoth Flanker, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:5
@@ -15626,12 +15645,6 @@ msgstr "Flanqueador Quenoth"
 
 #. [unit_type]: id=Quenoth Flanker, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:23
-#, fuzzy
-#| msgid ""
-#| "Some fighters find that their true talents lie not within rigid spear "
-#| "ranks, but out in the sands, striking at the flanks and rear of enemy "
-#| "forces. Fast and nimble, these elves can take advantage of the smallest "
-#| "weaknesses in enemy formations."
 msgid ""
 "Some fighters find that their true talents lie not within rigid spear ranks, "
 "but out in the sands, striking at the flanks and rear of enemy forces. Fast "
@@ -15644,8 +15657,11 @@ msgstr ""
 "Algunos luchadores descubren que su verdadero talento no se encuentra entre "
 "las rígidas filas de lanceros, sino en las arenas, golpeando los flancos y "
 "la retaguardia de las fuerzas del enemigo. Rápidos y ágiles, estos elfos "
-"pueden tomar ventaja de las más pequeñas debilidades en las formaciones del "
-"enemigo."
+"pueden tomar ventaja de las debilidades en las formaciones del enemigo para "
+"desordenar sus filas y crear caos en el campo de batalla. En conflictos más "
+"despiadados, los flanqueadores pueden hacer uso del veneno — una herramienta "
+"que desaprobaban sus antepasados — para debilitar a sus enemigos antes de "
+"cargar para dar el golpe final."
 
 #. [attack]: type=pierce
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:41
@@ -15672,6 +15688,19 @@ msgid ""
 "ancestors, these master archers can achieve the same speed and precision as "
 "the Sharpshooters of old, all while in full gallop on horseback."
 msgstr ""
+"En tiempos pasados, la supremacía de los elfos como arqueros no era "
+"cuestionada por las otra razas del Gran Continente. Siendo el tiro con arco "
+"menos viable en unas tierras con escasa cobertura, sin embargo, las "
+"habilidades de los pocos elfos arqueros que quedan resultan cuestionables, "
+"hasta el punto de que incluso entre sus hermanos se empieza a creer que el "
+"tiro con arco es más una antigua reliquia que una herramienta práctica en la "
+"batalla.\n"
+"\n"
+"Un solo vistazo a un tirador quenoth en acción será suficiente para disipar "
+"esta absurda línea de pensamiento. Capaz de los mismos hechos legendarios "
+"que sus antepasados, estos maestros arqueros pueden conseguir la misma "
+"velocidad y precisión que los tiradores de la antigüedad, al mismo tiempo "
+"que galopan sobre un corcel."
 
 #. [unit_type]: id=Quenoth Mystic, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:5
@@ -15688,6 +15717,12 @@ msgid ""
 "sun are the source of the elves’ new powers, which they employ to great "
 "effect in their homes in the deserts."
 msgstr ""
+"Como sus antepasadas, las místicas quenoth son aquellas que se consagran a "
+"las energías naturales que fluyen a través del cuerpo de Irdya. En los "
+"ásperos, estériles páramos, sin embargo, estas elfas ya no pueden contar con "
+"los una vez vastos bosques de los que sus ancestros extraían la mayor parte "
+"de su poder. En cambio, la arena y el sol son la fuente del nuevo poder de "
+"los elfos, que ellos emplean con un gran efecto en sus hogares del desierto."
 
 #. [unit_type]: id=Quenoth Outrider, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Outrider.cfg:5
@@ -15704,6 +15739,13 @@ msgid ""
 "riders is especially dangerous, for against them, both retreat and attrition "
 "are futile, a prospect that is only ruinous in the inhospitable desert."
 msgstr ""
+"Descritos como jinetes que «se mueven como el viento», los batidores cruzan "
+"las arenas a velocidades inigualables. A diferencia de sus camaradas menos "
+"dotados, los batidores se entrenan para el combate directo, blandiendo "
+"espadas y boleadoras para golpear a las unidades heridas y los flancos "
+"expuestos en donde los enemigos son más débiles. Un grupo de estos jinetes "
+"es especialmente peligroso ya que, contra ellos, es inútil retirarse o "
+"desertar, una perspectiva que resulta ruinosa en el inhóspito desierto."
 
 #. [attack]: type=impact
 #. [effect]: type=impact
@@ -15730,6 +15772,17 @@ msgid ""
 "tries the patience of their enemies, who are provoked into recklessly giving "
 "chase — inevitably into many a deadly trap."
 msgstr ""
+"En tiempos pasados, volverse y huir de un enfrentamiento era una táctica "
+"arriesgada, ya que no había forma de evitar o bloquear a los arqueros "
+"enemigos disparando por la espalda. En el desierto, sin embargo, la "
+"inestabilidad del terreno y la falta de cobertura hacen mucho más difícil "
+"para la mayoría de los luchadores golpear a distancia. Los evasivos "
+"rastreadores se aprovechan de esto montando a los excepcionalmente ágiles "
+"duboc, que están muy bien adaptados para atravesar las dunas y pueden eludir "
+"la mayoría de los ataques con sus ligeros movimientos. La dificultad para "
+"derribar a estos jinetes acaba muchas veces con la paciencia de sus "
+"enemigos, que son arrastrados a una imprudente persecución que termina "
+"inevitablemente en muchas trampas mortales."
 
 #. [unit_type]: id=Tauroch Protector, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Protector.cfg:5
@@ -15765,6 +15818,31 @@ msgid ""
 "Goddess herself. I think I will call her Nala, meaning ‘Protector’ in our "
 "tongue. I am sure we will have many more adventures together."
 msgstr ""
+"Del diario de Syniel, conductor de las arenas:\n"
+"\n"
+"Los orcos me emboscaron cerca del oasis en el ocaso. Tuve que adentrarme "
+"huyendo en el desierto, pero incluso allí, los lobos casi eran lo bastante "
+"rápidos como para alcanzarme. Corrí y corrí durante horas hasta que ya no "
+"sentía mis piernas y aún así, me seguían acechando bajo la brillante luz de "
+"la luna. Pensé que ya podía darme por muerto, pero como si fuera cosa de "
+"Eloh, me crucé con una joven Tauro que se había separado de su manada. Debió "
+"de sentir mi angustia, puesto que vino hacia mi raudamente y luchó a mi lado "
+"durante toda la noche; más allá del agotamiento, nos las arreglamos para "
+"deshacernos de docenas de orcos y de lobos. En el amanecer, estábamos solos, "
+"pero heridos y exhaustos sin nada más que arena a la vista. Usé lo poco que "
+"quedaba de mis suministros para atender a las heridas de la tauro, entonces "
+"sucumbí a la fatiga y no recuerdo mucho más.\n"
+"\n"
+"-----------------------\n"
+"\n"
+"Hoy me he despertado en la aldea, cansado, pero vivo. Mis amigos me contaron "
+"que la tauro cargó conmigo a través del desierto durante muchas horas con un "
+"gran coste para ella, ya que se encontraba en peores condiciones que yo "
+"cuando llegamos. Solo puedo estar agradecido de haber podido sobrevivir a "
+"esa espantosa noche, ya que es solo por la gracia de Eloh que me crucé con "
+"una compañera tan leal. Es mi salvadora, mi atenta vigilante, una bendición "
+"de la misma diosa. Creo que la llamaré Nala, que significa «protectora» en "
+"nuestra lengua. Estoy seguro de que correremos juntos muchas más aventuras."
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Protector.cfg:50
@@ -15792,6 +15870,17 @@ msgid ""
 "deadly in the harsh desert terrain, where fewer options to retreat are "
 "available."
 msgstr ""
+"El título de «guardabosques» es un poco confuso, puesto que estos ágiles "
+"elfos tienen poco en común con los pacíficos exploradores de la naturaleza "
+"que una vez llevaron el mismo título. Estos, sin embargo, son luchadores "
+"expertos que buscan activamente el combate para poder pulir sus habilidades "
+"en las escaramuzas. Aunque no poseen la fuerza bruta de sus colegas "
+"guerreros, los guardabosques quenoth son más eficientes infiltrándose en las "
+"luchas caóticas y son capaces de fintar dentro y fuera de las líneas "
+"enemigas para asesinar objetivos heridos. Su maestría con el uso del veneno "
+"y su formidable manejo de la espada hacen a estos elfos especialmente "
+"mortíferos en el hostil terreno del desierto, donde hay pocas opciones de "
+"retirada."
 
 #. [unit_type]: id=Tauroch Rider, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Rider.cfg:5
@@ -15830,6 +15919,10 @@ msgid ""
 "useful abilities to harry enemies and allows them to act as effective "
 "hunters and patrolmen."
 msgstr ""
+"Montando a los elegantes, ágiles duboc, los exploradores quenoth se mueven a "
+"velocidad inigualable a través de la arena. Sus entrenadas habilidades con "
+"la espada y con la honda son útiles para hostigar al enemigo y les permite "
+"actuar como eficientes cazadores y patrulleros."
 
 #. [unit_type]: id=Quenoth Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:5
@@ -15847,6 +15940,15 @@ msgid ""
 "inhospitable environment is a sign of hope as well, a chance that nature "
 "might one day rise from its sandy grave and bloom again."
 msgstr ""
+"Como los elfos de la antigüedad, muchos quenoth prefieren el estudio del "
+"arte de la medicina y de la sanación antes que pulir sus habilidades en la "
+"batalla. Las chamanes son grandes conocedoras de las escasas plantas "
+"dispersas a lo ancho del desierto e incluso poseen cierta destreza para "
+"ayudar al crecimiento de los cultivos, una habilidad muy valiosa en una "
+"tierra con escasos recursos. La capacidad de cultivar plantas en un entorno "
+"tan inhóspito es también un signo de esperanza, una posibilidad de que la "
+"naturaleza pueda algún día elevarse desde su tumba de arena y volver a "
+"florecer."
 
 #. [unit_type]: id=Quenoth Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shyde.cfg:5
@@ -15869,6 +15971,19 @@ msgid ""
 "we be, for the power of faerie is that to transmute the flesh of our world, "
 "from sand to earth, from scorched wasteland to life.”"
 msgstr ""
+"De las enseñanzas de Analia, la sanadora de la Floresta Esmeralda:\n"
+"\n"
+"“... adoptando la senda de la magia mística, hemos de traspasar la frontera "
+"entre la magia y la carne para convertirnos en un ser compuesto de ambas. "
+"Tan seguro como que la forma física se vincula a la sangre que nos da la "
+"vida, ha de vincularse a la energía que gobierna nuestro mundo, el fluir del "
+"viento, el ciclo del día y la noche, el infinito paso del tiempo... Somos "
+"nuestra forma física, pero también somos espíritus intemporales, seres que "
+"han sido influidos por la magia mística. Ese reino es uno que perdura a lo "
+"largo de los eones, tanto si toma la forma de la naturaleza, del fuego, o de "
+"la arena, siempre está ahí. Puesto que es cambiante, nosotros también hemos "
+"de serlo, puesto que el poder de la magia mística es el que transmuta la "
+"esencia de nuestro mundo, de arena a tierra, de un erial ardiente a la vida.”"
 
 #. [unit_type]: id=Tauroch Stalwart, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Stalwart.cfg:5
@@ -15886,6 +16001,15 @@ msgid ""
 "Stalwart would undoubtedly be wise to seek another path, for trying to "
 "displace the beast would be akin to trying to fight a stone wall."
 msgstr ""
+"Cuando se encuentran con tauros salvajes, los cazadores quenoth observan a "
+"menudo la curiosa conducta de unas bestias especialmente tercas, las cuales "
+"afianzan sus robustos cuerpos y se niegan por completo a moverse cuando son "
+"provocadas. A pesar de la dificultad para ser apaciguados, estos tauros a "
+"veces son elegidos por jinetes habilidosos por su resistencia excepcional. "
+"Cualquier guerrero que vea su avance bloqueado por un fiel tauro debería sin "
+"duda ser lo bastante listo como para buscarse otra ruta, puesto que intentar "
+"apartar a la bestia sería lo más parecido a luchar contra una pared de "
+"piedra."
 
 #. [unit_type]: id=Quenoth Sun Singer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:5
@@ -15904,6 +16028,15 @@ msgid ""
 "this new form of magic sing of the dual nature of these embodiments of fire: "
 "flames that are both life and life’s demise."
 msgstr ""
+"La magia mística de los elfos a menudo a sido asociada aparentemente con la "
+"vida, de la que extraían la mayoría de su poder. Sin embargo, con la muerte "
+"de casi toda la vida salvaje de Irdya, los elfos quenoth se vieron obligados "
+"a buscar otra fuente para su magia. Con el tiempo, aprendieron como "
+"aprovechar el poder de los soles gemelos, Sela y Naia, que redujeron a "
+"cenizas los otrora extensos bosques de Irdya, pero que aún brindan la "
+"energía que despierta toda clase de vida. Aquellos que dominan esta nueva "
+"forma de magia cantan a naturaleza dual de estas encarnaciones del fuego: "
+"llamas que significan tanto la vida como su extinción."
 
 #. [unit_type]: id=Quenoth Sun Sylph, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:5
@@ -15923,6 +16056,16 @@ msgid ""
 "These Sun Sylphs very much embody the power that they wield: light that "
 "heals and protects, and flames that smolder with destruction."
 msgstr ""
+"En tiempos pasados, aquellas que se adentraban más allá de los límites de "
+"los mundos de los elfos y de la magia mística fueron llamadas sílfides, "
+"místicas con un conocimiento inigualable de los secretos del ámbito natural. "
+"Sin embargo, en el árido mundo nuevo, el camino por el reino de la magia "
+"mística dejo de ser un viaje al corazón de la naturaleza y se transformó en "
+"un sendero tortuoso entre la luz y la oscuridad. Esas elfas que adoptan a "
+"los soles ardientes como el sostén de la vida y de la muerte también "
+"aprovechan su poder, transformándose en seres imbuidos de resplandeciente "
+"fuego. Estas sílfides solares son la personificación del poder que ejercen: "
+"luz que sana y protege y llamas de ardiente destrucción."
 
 #. [unit_type]: id=Tauroch Vanguard, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Vanguard.cfg:5
@@ -15941,6 +16084,16 @@ msgid ""
 "presence of these riders is a heartening one for most elves and a deterrent "
 "for the many pillagers that rove the deserts."
 msgstr ""
+"Los enormes y temerarios tauros se emplean a menudo no solo para cargar y "
+"romper las formaciones enemigas, sino para animar e inspirar a la infantería "
+"a resistir en sus puestos. Los tauros de avanzada son jinetes endurecidos, "
+"versados en la supervivencia en el corazón de la batalla liderando a sus "
+"camaradas desde las filas del frente. Encumbrados a las onduladas dunas, los "
+"tauros de avanzada portan enormes banderas que ondean vistosas en los cielos "
+"del desierto, una señal visible desde muy lejos entre las dunas. La "
+"presencia de estos jinetes tiene un efecto esperanzador para la mayoría de "
+"los elfos y disuasorio para los muchos forajidos que deambulan por el "
+"desierto."
 
 #. [unit_type]: id=Quenoth Warrior, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:5
@@ -15957,6 +16110,13 @@ msgid ""
 "these somewhat unorthodox weapons to both strike with great power and to "
 "support their nearby brethren."
 msgstr ""
+"Comparada con una lanza, un archa es a menudo un arma más corta y de menor "
+"alcance, pero con un uso mucho más versátil. Un luchador experimentado puede "
+"usar la cuchilla para enganchar o sujetar las armas del enemigo y para "
+"golpear desde diferentes ángulos, permitiendoles pillar a un oponente "
+"confiado por sorpresa. En formación, los guerreros quenoth portan estas "
+"armas hasta cierto punto inusuales tanto para golpear con fuerza como para "
+"asistir a sus compañeros más cercanos."
 
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:4
 msgid ""
@@ -16030,14 +16190,14 @@ msgstr "Líder (elija solo uno): se especializa en distraer a los enemigos"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:495
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:552
 msgid "Quenoth Youth"
-msgstr "Joven Quenoth"
+msgstr "Chico Quenoth"
 
 #. [female]: description={NYM_DESCRIPTION}
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:480
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:537
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:594
 msgid "female^Quenoth Youth"
-msgstr "Joven Quenoth"
+msgstr "Chica Quenoth"
 
 #. [unit_type]: id=EGhost
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Ghost.cfg:7
@@ -16338,6 +16498,15 @@ msgid ""
 "Magical attacks will still have a 70% chance to hit.\n"
 "Marksman attacks are only affected if the chance to hit is greater than 60%."
 msgstr ""
+"Cuando es alcanzado por este ataque, un enemigo sufre una penalización del "
+"10% tanto en su defensa como en la probabilidad de golpear durante un turno. "
+"Otras propiedades especiales de armas que afectan a la probabilidad de "
+"golpear (por ejemplo mágico y tirador) tienen preferencia sobre esta "
+"propiedad especial.\n"
+"\n"
+"Los ataques mágicos aún tendrán un 70% de probabilidades de golpear.\n"
+"Los ataques de tirador solo serán afectados si la probabilidad de golpear es "
+"mayor del 60%."
 
 #. [skirmisher]: id=distract
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:129

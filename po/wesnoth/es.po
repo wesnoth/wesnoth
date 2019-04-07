@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-03-11 16:10+0300\n"
-"PO-Revision-Date: 2018-09-17 10:04+0200\n"
+"PO-Revision-Date: 2019-03-21 12:09+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth Spanish translation\n"
 "Language: es\n"
@@ -4632,7 +4632,7 @@ msgid ""
 msgstr ""
 "Las unidades <i>legales</i> luchan mejor durante el día y las <i>caóticas</"
 "i> durante la noche, mientras que las <i>neutrales</i> no se ven afectadas "
-"por la hora del día. Las poco comunes unidades <i>crepusculares</i> luchan "
+"por la franja horaria. Las poco comunes unidades <i>crepusculares</i> luchan "
 "mejor durante el crepúsculo."
 
 #. [tip]
@@ -4648,8 +4648,8 @@ msgstr ""
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
 msgstr ""
-"Lo que en otras condiciones sería un buen plan puede fallarle si ataca a una "
-"hora del día inadecuada."
+"Lo que en otras condiciones sería un buen plan puede fallarle si ataca en "
+"una franja horaria inadecuada."
 
 #. [tip]
 #: data/tips.cfg:61 data/tips.cfg:85 data/tips.cfg:137 data/tips.cfg:145
@@ -5276,7 +5276,7 @@ msgstr "<i>― Reina Asheviere, 503 AñW</i>"
 #. [tip]
 #: data/tips.cfg:257
 msgid "Using lower-level units can be very cost-effective."
-msgstr ""
+msgstr "Usar unidades de nivel más bajo puede ser muy rentable."
 
 #. [tip]
 #: data/tips.cfg:261
@@ -5285,13 +5285,15 @@ msgid ""
 "<i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can make a "
 "big difference in a campaign."
 msgstr ""
+"Algunas de las unidades de niveles más altos tienen habilidades inigualables "
+"tales como <i>Liderazgo</i>, <i>Sanar</i>, o <i>Nocturnidad</i>. La "
+"obtención de esas unidades prontamente puede marcar la diferencia en una "
+"campaña."
 
 #. [tip]
 #: data/tips.cfg:262
-#, fuzzy
-#| msgid "<i>― Memoirs of Gweddry, 627YW</i>"
 msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
-msgstr "<i>― Memorias de Gweddry, 627 AñW</i>"
+msgstr "<i>― Señor Gerrick de Westin, 607AñW</i>"
 
 # No encontré referencia alguna a unidades FERAL en el idioma español en Wesnoth, así que escogí la palabra que mejor describiera su significada en el idioma inglés, FIERAS
 #
@@ -5313,10 +5315,8 @@ msgstr ""
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:225
-#, fuzzy
-#| msgid "an advancement choice"
 msgid "waiting for^an advancement choice"
-msgstr "una opción de promoción"
+msgstr "una selección de promoción"
 
 #: src/actions/attack.cpp:602 src/actions/attack.cpp:1349
 msgid "An invalid attacker weapon got selected."
@@ -6329,9 +6329,9 @@ msgid ""
 "nickname until you activate your account via email or ask an administrator "
 "to do it for you."
 msgstr ""
-"El nombre de usuario «$nick|» está inactivo. Usted no es propietario de "
-"dicho nombre de usuario hasta que active la cuenta por medio de un correo "
-"electrónico, o le pida a un administrador que lo haga por usted."
+"El usuario con el nombre «$nick|» está inactivo. Usted no es propietario de "
+"dicho nombre hasta que active la cuenta por medio de un correo electrónico, "
+"o le pida a un administrador que lo haga por usted."
 
 #: src/game_initialization/multiplayer.cpp:218
 msgid "Do you want to continue?"
@@ -6385,45 +6385,41 @@ msgid " This server disallows unregistered nicknames."
 msgstr " Este servidor no permite nombres de usuario no registrados."
 
 #: src/game_initialization/multiplayer.cpp:332
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr ""
-"El nombre de usuario «$nick|» ha sido expulsado del foro de este servidor."
+"El usuario con el nombre «$nick|» ha sido expulsado de los foros de este "
+"servidor por un tiempo de $duration|."
 
 #: src/game_initialization/multiplayer.cpp:334
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
-"El nombre de usuario «$nick|» ha sido expulsado del foro de este servidor."
+"El usuario con el nombre «$nick|» ha sido expulsado del foro de este "
+"servidor."
 
 #: src/game_initialization/multiplayer.cpp:338
-#, fuzzy
-#| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums for $duration|."
-msgstr "Su dirección IP ha sido expulsada del foro de este servidor."
+msgstr ""
+"Su dirección IP ha sido expulsada de los foros de este servidor por un "
+"tiempo de $duration|."
 
 #: src/game_initialization/multiplayer.cpp:340
 msgid "Your IP address is banned on this server’s forums."
 msgstr "Su dirección IP ha sido expulsada del foro de este servidor."
 
 #: src/game_initialization/multiplayer.cpp:344
-#, fuzzy
-#| msgid ""
-#| "The email address for the nickname ‘$nick’ is banned on this server’s "
-#| "forums."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
 msgstr ""
-"La dirección de correo para el nombre de usuario «$nick|» ha sido expulsada "
-"del foro de este servidor."
+"La dirección de correo para el usuario con el nombre «$nick|» ha sido "
+"expulsada de los foros de este servidor por un tiempo de $duration|."
 
 #: src/game_initialization/multiplayer.cpp:346
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
-"La dirección de correo para el nombre de usuario «$nick|» ha sido expulsada "
-"del foro de este servidor."
+"La dirección de correo para el usuario con el nombre «$nick|» ha sido "
+"expulsada del foro de este servidor."
 
 #: src/game_initialization/multiplayer.cpp:349
 #: src/game_initialization/multiplayer.cpp:351
@@ -6849,64 +6845,52 @@ msgstr "Mejoras de habilidad: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:512
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "PV: "
+msgstr "PV:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves: "
 msgid "Moves:"
-msgstr "Movimientos: "
+msgstr "Movimientos:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "Vision: "
 msgid "Vision:"
-msgstr "Visión: "
+msgstr "Visión:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
-#, fuzzy
-#| msgid "Jamming: "
 msgid "Jamming:"
-msgstr "Interferencia: "
+msgstr "Interferencia:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost: "
 msgid "Cost:"
-msgstr "Coste: "
+msgstr "Coste:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:536
-#, fuzzy
-#| msgid "Alignment: "
 msgid "Alignment:"
-msgstr "Alineamiento: "
+msgstr "Alineamiento:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:543
 #, fuzzy
-#| msgid "Required XP: "
+#| msgid "Required XP:"
 msgid "Required XP:"
-msgstr "PX requeridos: "
+msgstr "PX requeridos:"
 
 #: src/help/help_topic_generators.cpp:552
 msgid "unit help^Attacks"
@@ -7134,10 +7118,8 @@ msgid "You have no units available to recruit."
 msgstr "No tiene unidades disponibles para reclutar."
 
 #: src/menu_events.cpp:282
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recruited"
-msgstr "No se ha reincorporado ninguna unidad"
+msgstr "No se ha reclutado ninguna unidad"
 
 #: src/menu_events.cpp:314
 msgid "You do not have enough gold to recruit that unit"
@@ -7315,8 +7297,8 @@ msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
-"Cambia el número de turno (y la hora del día), o lo aumenta en uno si no hay "
-"ningún número especificado."
+"Cambia el número de turno (y la franja horaria), o lo aumenta en uno si no "
+"hay ningún número especificado."
 
 #: src/menu_events.cpp:1214
 msgid "[turn]"
@@ -7637,7 +7619,7 @@ msgstr "Se ha encontrado un terreno con un coste de movimiento menor que 1."
 #. from another player. This text will be embedded into a sentence.
 #: src/persist_var.cpp:58
 msgid "waiting for^a global variable"
-msgstr ""
+msgstr "una variable global"
 
 #: src/play_controller.cpp:242
 msgid "time left for current turn"
@@ -7775,21 +7757,19 @@ msgstr "Tipo: "
 
 #: src/reports.cpp:235
 msgid "Side:"
-msgstr ""
+msgstr "Bando:"
 
 #: src/reports.cpp:257
 msgid "Level: "
 msgstr "Nivel: "
 
 #: src/reports.cpp:262
-#, fuzzy
-#| msgid "Advancements"
 msgid "Advancements:"
-msgstr "Avances"
+msgstr "Promociones:"
 
 #: src/reports.cpp:275
 msgid "No advancement"
-msgstr "Ningún avance"
+msgstr "Ninguna promoción"
 
 #: src/reports.cpp:315
 msgid "Trait: "
@@ -7884,16 +7864,12 @@ msgid "Defense: "
 msgstr "Defensa: "
 
 #: src/reports.cpp:620 src/reports.cpp:621
-#, fuzzy
-#| msgid "vision: "
 msgid "vision:"
-msgstr "visión: "
+msgstr "visión:"
 
 #: src/reports.cpp:625 src/reports.cpp:626
-#, fuzzy
-#| msgid "jamming"
 msgid "jamming:"
-msgstr "interferencia"
+msgstr "interferencia:"
 
 #: src/reports.cpp:655
 msgid "Movement Costs:"
@@ -7917,7 +7893,7 @@ msgstr "Con especiales: "
 
 #: src/reports.cpp:763
 msgid "Time of day: "
-msgstr "Hora del día: "
+msgstr "Franja horaria: "
 
 #: src/reports.cpp:767
 msgid "Leadership: "
@@ -7991,16 +7967,12 @@ msgstr[0] "Ataque"
 msgstr[1] "Ataques"
 
 #: src/reports.cpp:1144
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day schedule:"
-msgstr "Hora del día: "
+msgstr "Plantilla de franjas horarias:"
 
 #: src/reports.cpp:1176
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day:"
-msgstr "Hora del día: "
+msgstr "Franja horaria:"
 
 #: src/reports.cpp:1177 src/reports.cpp:1219
 msgid "Lawful units: "
@@ -8406,7 +8378,7 @@ msgstr[1] "esperando a $desc de los bandos $sides"
 #. This text will be embedded into a sentence.
 #: src/synced_user_choice.hpp:42
 msgid "waiting for^input"
-msgstr ""
+msgstr "entrada"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8431,11 +8403,11 @@ msgstr "Atajo(s) de teclado: "
 # Mínima?
 #: src/time_of_day.cpp:45
 msgid "Stub Time of Day"
-msgstr "Hora del día mínima"
+msgstr "Franja horaria mínima"
 
 #: src/time_of_day.cpp:46
 msgid "This Time of Day is only a Stub!"
-msgstr "¡Esta hora del día es solo mínima!"
+msgstr "¡Esta franja horaria es solo mínima!"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:356
