@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "POT-Creation-Date: 2018-02-12 20:02+0300\n"
-"PO-Revision-Date: 2018-09-16 15:46+0200\n"
+"PO-Revision-Date: 2019-03-26 11:23+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -112,9 +112,10 @@ msgstr "OPCIONES"
 
 #. type: TP
 #: doc/man/wesnoth.6:45
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--bunzip2>I<\\ infile.bz2>"
 msgid "B<--bunzip>I<\\ infile.bz2>"
-msgstr "B<--bunzip>I<\\ archivo_de_entrada.bz2>"
+msgstr "B<--bunzip2>I<\\ archivo_de_entrada.bz2>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:51
@@ -127,9 +128,10 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:51
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--bzip2>I<\\ infile>"
 msgid "B<--bzip>I<\\ infile>"
-msgstr "B<--bzip>I<\\ archivo_de_entrada>"
+msgstr "B<--bzip2>I<\\ archivo_de_entrada>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:57
@@ -243,12 +245,16 @@ msgstr "B<-e[>I<file>B<],\\ --editor[>I<=file>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:89
+#, fuzzy
+#| msgid ""
+#| "start the in-game map editor directly. If I<file> is specified, "
+#| "equivalent to B<-l> B<--load>."
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-l --load>"
 msgstr ""
-"inicia directamente con el editor de mapas del juego. Si I<archivo> es "
-"especificado, equivale a B<-l --load>"
+"inicia directamente el editor de mapas del juego. Si I<archivo> es "
+"especificado, equivale a B<-l> B<--load>."
 
 #. type: TP
 #: doc/man/wesnoth.6:89
@@ -430,12 +436,16 @@ msgstr "B<--max-fps>I<\\ fps>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:159
+#, fuzzy
+#| msgid ""
+#| "the number of frames per second the game can show, the value should be "
+#| "between B<1> and B<1000>, the default is the monitor's refresh rate."
 msgid ""
 "the number of frames per second the game can show, the value should be "
 "between I<1> and I<1000>, the default is the monitor's refresh rate."
 msgstr ""
 "el número de fotogramas por segundo que el juego puede mostrar, el valor "
-"debería estar entre I<1> y I<1000>, por omisión es índice de refresco del "
+"debería estar entre B<1> y B<1000>, por omisión es índice de refresco del "
 "monitor."
 
 #. type: TP
@@ -466,9 +476,10 @@ msgstr "carga los escenarios de prueba multijugador."
 
 #. type: TP
 #: doc/man/wesnoth.6:168
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--nodelay>"
 msgid "B<--no-delay>"
-msgstr "B<--no-delay>"
+msgstr "B<--nodelay>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:172
@@ -588,6 +599,16 @@ msgstr "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
 # El preprocesador que lo preprocese, buen preprocesador será.
 #. type: Plain text
 #: doc/man/wesnoth.6:214
+#, fuzzy
+#| msgid ""
+#| "preprocesses a specified file/folder. For each file(s) a plain .cfg file "
+#| "and a processed .cfg file will be written in specified target directory. "
+#| "If a folder is specified, it will be preprocessed recursively based on "
+#| "the known preprocessor rules. The common macros from the \"data/core/"
+#| "macros\" directory will be preprocessed before the specified resources.  "
+#| "Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/result.> For details "
+#| "regarding the preprocessor visit: https://wiki.wesnoth.org/"
+#| "PreprocessorRef#Command-line_preprocessor."
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "
@@ -605,7 +626,7 @@ msgstr ""
 "macros comunes del directorio «data/core/macros» serán preprocesadas antes "
 "que los recursos especificados. Ejemplo:  B<-p ~/wesnoth/data/campaigns/"
 "tutorial ~/result.> Para más detalles en relación con el preprocesador "
-"visite: https://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor"
+"visite: https://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor."
 
 #. type: TP
 #: doc/man/wesnoth.6:214
@@ -668,8 +689,10 @@ msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:243
+#, fuzzy
+#| msgid "sets the screen resolution. Example: B<-r> B<800x600>."
 msgid "sets the screen resolution. Example: B<-r 800x600>"
-msgstr "establece la resolución de la pantalla. Por ejemplo: B<-r 800x600>"
+msgstr "establece la resolución de la pantalla. Por ejemplo: B<-r> B<800x600>."
 
 #. type: TP
 #: doc/man/wesnoth.6:243
@@ -679,17 +702,21 @@ msgstr "B<--render-image>I<\\ image>B<\\ >I<output>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:246
+#, fuzzy
+#| msgid ""
+#| "takes a valid wesnoth 'image path string' with image path functions, and "
+#| "outputs to a .png file. Image path functions are documented at https://"
+#| "wiki.wesnoth.org/ImagePathFunctionWML."
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
 "outputs to a .png file. Outputs to a windows .bmp file if the filename ends "
 "with .bmp or if libpng is not available. Image path functions are documented "
 "at https://wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
-"toma una 'cadena de dirección de imágen' válida de wesnoth  con funciones de "
-"direccionado de imágen, y genera un archivo .png. Genera un archivo .bmp de "
-"windows si el nombre de archivo termina con .bmp o si libpng no está "
-"disponible. Las funciones de direccionado de imágenes están documentadas en "
-"https://wiki.wesnoth.org/ImagePathFunctionWML."
+"toma una 'cadena de dirección de imágen' válida de wesnoth con funciones de "
+"direccionado de imágen, y genera un archivo .png. Las funciones de "
+"direccionado de imágenes están documentadas en https://wiki.wesnoth.org/"
+"ImagePathFunctionWML."
 
 #. type: TP
 #: doc/man/wesnoth.6:246
@@ -708,18 +735,23 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:249
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--rng-seed>I<\\ number>"
 msgid "B<--rng-seed>I<\\ seed>"
-msgstr "B<--rng-seed>I<\\ seed>"
+msgstr "B<--rng-seed>I<\\ number>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:253
+#, fuzzy
+#| msgid ""
+#| "seeds the random number generator with I<number>.  Example: B<--rng-seed> "
+#| "B<0>."
 msgid ""
 "seeds the random number generator with number E<lt>argE<gt>. Example: B<--"
 "rng-seed 0>"
 msgstr ""
-"inicializa el generador de números aleatorios con el número E<lt>argE<gt>.  "
-"Ejemplo: B<--rng-seed 0>"
+"inicializa el generador de números aleatorios con I<number>.  Ejemplo: B<--"
+"rng-seed> B<0>."
 
 #. type: TP
 #: doc/man/wesnoth.6:253
@@ -743,13 +775,17 @@ msgstr "B<-s[>I<host>B<],\\ --server[>I<=host>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:264
+#, fuzzy
+#| msgid ""
+#| "connects to the specified host if any, otherwise connect to the first "
+#| "server in preferences. Example: B<--server> B<server.wesnoth.org>."
 msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
-"se conecta a la máquina especificada si la hay, de otro modo se conecta al "
-"primer servidor seleccionado en las preferencias. Ejemplo: B<--server server."
-"wesnoth.org>"
+"se conecta al servidor especificado si lo hay, de otro modo se conecta al "
+"primer servidor seleccionado en las preferencias. Ejemplo: B<--server> "
+"B<server.wesnoth.org>."
 
 #. type: TP
 #: doc/man/wesnoth.6:264
@@ -956,9 +992,10 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:340
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--ai-config>I<\\ number>B<:>I<value>"
 msgid "B<--ai_config>I<\\ number>B<:>I<value>"
-msgstr "B<--ai_config>I<\\ number>B<:>I<value>"
+msgstr "B<--ai-config>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:343
@@ -1247,8 +1284,10 @@ msgstr "VÉASE TAMBIÉN"
 #.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
 #: doc/man/wesnothd.6:15
+#, fuzzy
+#| msgid "B<wesnothd>(6)"
 msgid "B<wesnothd>(6)."
-msgstr "B<wesnothd>(6)."
+msgstr "B<wesnothd>(6)"
 
 #. type: TH
 #: doc/man/wesnothd.6:16
@@ -2050,8 +2089,10 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:286
+#, fuzzy
+#| msgid "B<wesnoth>(6)"
 msgid "B<wesnoth>(6)."
-msgstr "B<wesnoth>(6)."
+msgstr "B<wesnoth>(6)"
 
 #~ msgid "B<--all-translations>"
 #~ msgstr "B<--all-translations>"
@@ -2062,6 +2103,40 @@ msgstr "B<wesnoth>(6)."
 #~ msgstr ""
 #~ "Muestra todas las traducciones en la lista de selección de idioma del "
 #~ "juego, incluso si se considera que no están lo bastante completas."
+
+#~ msgid "B<--campaign-skip-story>"
+#~ msgstr "B<--campaign-skip-story>"
+
+#~ msgid ""
+#~ "Skip [story] screens and dialog through the end of the B<start> event."
+#~ msgstr ""
+#~ "Omite las pantallas de [story] y los diálogos hasta el final del evento "
+#~ "B<start>."
+
+#~ msgid "B<--clock>"
+#~ msgstr "B<--clock>"
+
+#~ msgid "Adds the option to show a clock for testing the drawing timer."
+#~ msgstr ""
+#~ "Añade la opción de mostrar un reloj para probar el tiempo de trazado."
+
+#~ msgid "B<--config-dir>I<\\ name>"
+#~ msgstr "B<--config-dir>I<\\ nombre>"
+
+#~ msgid "Deprecated, use B<--userdata-dir>."
+#~ msgstr "Obsoleto, utilice B<--userdata-dir>."
+
+#~ msgid "B<--config-path>"
+#~ msgstr "B<--config-path>"
+
+#~ msgid "Deprecated, use B<--userdata-path>."
+#~ msgstr "Obsoleto, utilice B<--userdata-path>."
+
+#~ msgid "B<--debug-lua>"
+#~ msgstr "B<--debug-lua>"
+
+#~ msgid "enables some Lua debugging mechanisms"
+#~ msgstr "habilita algunos mecanismos de depuración de Lua"
 
 #~ msgid ""
 #~ "sets the severity level of the log domains.  B<all> can be used to match "
@@ -2077,6 +2152,70 @@ msgstr "B<wesnoth>(6)."
 #~ "los dominios, pero B<deprecation> equivale por omisión a B<none> a no ser "
 #~ "que se combine con la opción B<-d>."
 
+#~ msgid "B<--new-widgets>"
+#~ msgstr "B<--new-widgets>"
+
+#~ msgid ""
+#~ "there is a new WIP widget toolkit, this option enables it. This is very "
+#~ "experimental, don't fill bug reports since most are known. Parts of the "
+#~ "library are deemed stable and will work without this switch."
+#~ msgstr ""
+#~ "hay una nueva extensión de herramientas WIP, esta opción la habilita. "
+#~ "Esto es muy experimental, no haga informes de errores hasta que se "
+#~ "conozca la mayoría de ellos. Partes de la biblioteca se consideran "
+#~ "estables y funcionarán sin este conmutador."
+
+#~ msgid "B<--plugin>I<\\ script>"
+#~ msgstr "B<--plugin>I<\\ script>"
+
+#~ msgid ""
+#~ "(experimental) load a I<script> which defines a Wesnoth plugin. Similar "
+#~ "to B<--script>, but Lua file should return a function which will be run "
+#~ "as a coroutine and periodically woken up with updates."
+#~ msgstr ""
+#~ "(experimental) carga un I<script> que define una extensión para Wesnoth. "
+#~ "Similar a B<--script>, pero el fichero Lua debería devolver una función "
+#~ "que se ejecutará como una corutina que se activará periódicamente con "
+#~ "actualizaciones."
+
+#~ msgid "B<--proxy>"
+#~ msgstr "B<--proxy>"
+
+#~ msgid "enables usage of proxy for network connections."
+#~ msgstr "habilita el uso de proxy para conexiones de red."
+
+#~ msgid "B<--proxy-address>I<\\ address>"
+#~ msgstr "B<--proxy-address>I<\\ address>"
+
+#~ msgid "specifies I<address> of the proxy."
+#~ msgstr "especifica la  I<address> para el proxy."
+
+#~ msgid "B<--proxy-port>I<\\ port>"
+#~ msgstr "B<--proxy-port>I<\\ port>"
+
+#~ msgid "specifies I<port> of the proxy."
+#~ msgstr "especifica el  I<port> para el proxy."
+
+#~ msgid "B<--proxy-user>I<\\ username>"
+#~ msgstr "B<--proxy-user>I<\\ username>"
+
+#~ msgid "specifies I<username> to log in to the proxy."
+#~ msgstr "especifica el I<username> para iniciar sesión en el proxy."
+
+#~ msgid "B<--proxy-password>I<\\ password>"
+#~ msgstr "B<--proxy-password>I<\\ password>"
+
+#~ msgid "specifies I<password> to log in to the proxy."
+#~ msgstr "especifica la I<password> para iniciar sesión en el proxy."
+
+#~ msgid "B<--script>I<\\ file>"
+#~ msgstr "B<--script>I<\\ file>"
+
+#~ msgid ""
+#~ "(experimental)  I<file> containing a Lua script to control the client."
+#~ msgstr ""
+#~ "(experimental)  I<file> contiene un script Lua para controlar el cliente."
+
 #~ msgid "B<--translations-over>I<\\ percent>"
 #~ msgstr "B<--translations-over>I<\\ percent>"
 
@@ -2087,6 +2226,25 @@ msgstr "B<wesnoth>(6)."
 #~ "Establece a I<percent> el estándar para considerar que una traducción "
 #~ "está lo bastante completa como para mostrarse en la lista de idiomas del "
 #~ "juego.  Los valores válidos van desde 0 hasta 100."
+
+#~ msgid "B<--unsafe-scripts>"
+#~ msgstr "B<--unsafe-scripts>"
+
+#~ msgid ""
+#~ "makes the B<package> package available to lua scripts, so that they can "
+#~ "load arbitrary packages. Do not do this with untrusted scripts! This "
+#~ "action gives lua the same permissions as the wesnoth executable."
+#~ msgstr ""
+#~ "pone al paquete B<package> como disponible para los scripts de lua, de "
+#~ "este modo podrán cargar paquetes arbitrarios. ¡No lo haga con scripts no "
+#~ "confiables! Esta acción da a los lua los mismos permisos que el "
+#~ "ejecutable de wesnoth."
+
+#~ msgid "B<--label>I<\\ label>"
+#~ msgstr "B<--label>I<\\ label>"
+
+#~ msgid "sets the I<label> for AIs."
+#~ msgstr "configura la I<label> para IAs."
 
 #~ msgid "2017"
 #~ msgstr "2017"

@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2018-09-16 19:50+0200\n"
+"PO-Revision-Date: 2019-03-21 12:23+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -255,6 +255,11 @@ msgstr "Arena de desierto"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:298
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Deserts'</italic> have a somewhat different composition "
+#| "than small sand pits or beaches, however for gameplay purposes they are "
+#| "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
@@ -262,7 +267,7 @@ msgid ""
 msgstr ""
 "Los <italic>text='Desiertos'</italic> tienen de hecho muy diferentes tipos "
 "de terreno además de dunas de arena o playas, de todos modos, en lo "
-"concerniente al juego, todos son iguales. Véase <ref>dst='terrain_sand' "
+"concerniente al juego, todos son iguales. Véase <ref>dst='...terrain_sand' "
 "text='arena'</ref>."
 
 #. [terrain_type]: id=sand_beach
@@ -2505,7 +2510,7 @@ msgstr "Daño base"
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:84
 msgid "Time of day modifier"
-msgstr "Modificador de hora del día"
+msgstr "Modificador de franja horaria"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:85
@@ -2603,6 +2608,8 @@ msgstr "Dificultad"
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:83
+#, fuzzy
+#| msgid "Select difficulty:"
 msgid "Select difficulty level:"
 msgstr "Seleccione el nivel de dificultad:"
 
@@ -7039,7 +7046,7 @@ msgstr "Cerrar mapa"
 
 #: src/hotkey/hotkey_command.cpp:145
 msgid "Switch Time of Day"
-msgstr "Conmutar la hora del día"
+msgstr "Conmutar la franja horaria"
 
 #: src/hotkey/hotkey_command.cpp:147
 msgid "Switch Map"
@@ -7697,6 +7704,12 @@ msgstr ""
 #~ "animaciones cuando ‘Velocidad acelerada’ está activada o cuando se "
 #~ "mantiene presionada la tecla Mayúsculas durante la partida"
 
+#~ msgid "Filter:"
+#~ msgstr "Filtro:"
+
+#~ msgid "Filters on hotkey description."
+#~ msgstr "Filtros para la descripción de los atajos de teclado."
+
 #~ msgid "Available at main menu"
 #~ msgstr "Disponible en la pantalla de título"
 
@@ -7716,6 +7729,51 @@ msgstr ""
 #~ msgid "The maximum text width is less than 1."
 #~ msgstr "La anchura máxima del texto es menos de 1."
 
+#~ msgid "timespan^expired"
+#~ msgstr "caducado"
+
+#~ msgid "timespan^$num year"
+#~ msgstr "año número"
+
+#~ msgid "timespan^$num years"
+#~ msgstr "número de años"
+
+#~ msgid "timespan^$num month"
+#~ msgstr "mes número"
+
+#~ msgid "timespan^$num months"
+#~ msgstr "número de meses"
+
+#~ msgid "timespan^$num week"
+#~ msgstr "semana número"
+
+#~ msgid "timespan^$num weeks"
+#~ msgstr "número de semanas"
+
+#~ msgid "timespan^$num day"
+#~ msgstr "día número"
+
+#~ msgid "timespan^$num days"
+#~ msgstr "número de días"
+
+#~ msgid "timespan^$num hour"
+#~ msgstr "hora número"
+
+#~ msgid "timespan^$num hours"
+#~ msgstr "número de horas"
+
+#~ msgid "timespan^$num minute"
+#~ msgstr "minuto número"
+
+#~ msgid "timespan^$num minutes"
+#~ msgstr "número de minutos"
+
+#~ msgid "timespan^$num second"
+#~ msgstr "segundo número"
+
+#~ msgid "timespan^$num seconds"
+#~ msgstr "número de segundos"
+
 #~ msgid "ascending"
 #~ msgstr "ascendente"
 
@@ -7730,6 +7788,9 @@ msgstr ""
 
 #~ msgid "active_modifications^None"
 #~ msgstr "Ninguna"
+
+#~ msgid "The selected file is corrupt: "
+#~ msgstr "El archivo seleccionado está dañado: "
 
 #~ msgid "Modifications: "
 #~ msgstr "Modificaciones: "
@@ -7970,9 +8031,6 @@ msgstr ""
 
 #~ msgid "sort^By first upload"
 #~ msgstr "Por fecha de primera subida al repositorio"
-
-#~ msgid "Filter:"
-#~ msgstr "Filtro:"
 
 #~ msgid "Seed:"
 #~ msgstr "Semilla:"

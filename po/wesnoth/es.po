@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2018-09-17 10:04+0200\n"
+"PO-Revision-Date: 2019-03-21 12:09+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth Spanish translation\n"
 "Language: es\n"
@@ -4624,7 +4624,7 @@ msgid ""
 msgstr ""
 "Las unidades <i>legales</i> luchan mejor durante el día y las <i>caóticas</"
 "i> durante la noche, mientras que las <i>neutrales</i> no se ven afectadas "
-"por la hora del día. Las poco comunes unidades <i>crepusculares</i> luchan "
+"por la franja horaria. Las poco comunes unidades <i>crepusculares</i> luchan "
 "mejor durante el crepúsculo."
 
 #. [tip]
@@ -4640,8 +4640,8 @@ msgstr ""
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
 msgstr ""
-"Lo que en otras condiciones sería un buen plan puede fallarle si ataca a una "
-"hora del día inadecuada."
+"Lo que en otras condiciones sería un buen plan puede fallarle si ataca en "
+"una franja horaria inadecuada."
 
 #. [tip]
 #: data/tips.cfg:61 data/tips.cfg:85 data/tips.cfg:137 data/tips.cfg:145
@@ -6310,9 +6310,9 @@ msgid ""
 "nickname until you activate your account via email or ask an administrator "
 "to do it for you."
 msgstr ""
-"El nombre de usuario «$nick|» está inactivo. Usted no es propietario de "
-"dicho nombre de usuario hasta que active la cuenta por medio de un correo "
-"electrónico, o le pida a un administrador que lo haga por usted."
+"El usuario con el nombre «$nick|» está inactivo. Usted no es propietario de "
+"dicho nombre hasta que active la cuenta por medio de un correo electrónico, "
+"o le pida a un administrador que lo haga por usted."
 
 #: src/game_initialization/multiplayer.cpp:225
 msgid "Do you want to continue?"
@@ -6777,30 +6777,39 @@ msgstr "Habilidades: "
 msgid "Ability Upgrades: "
 msgstr "Mejoras de habilidad: "
 
-# Aquí queda muy mal poner pv en minúscula.
 #: src/help/help_topic_generators.cpp:482
 msgid "HP: "
-msgstr "PV: "
+msgstr ""
 
 #: src/help/help_topic_generators.cpp:483
+#, fuzzy
+#| msgid "Moves:"
 msgid "Moves: "
-msgstr "Movimientos: "
+msgstr "Movimientos:"
 
 #: src/help/help_topic_generators.cpp:485
+#, fuzzy
+#| msgid "Vision:"
 msgid "Vision: "
-msgstr "Visión: "
+msgstr "Visión:"
 
 #: src/help/help_topic_generators.cpp:488
+#, fuzzy
+#| msgid "Jamming:"
 msgid "Jamming: "
-msgstr "Interferencia: "
+msgstr "Interferencia:"
 
 #: src/help/help_topic_generators.cpp:490
+#, fuzzy
+#| msgid "Cost:"
 msgid "Cost: "
-msgstr "Coste: "
+msgstr "Coste:"
 
 #: src/help/help_topic_generators.cpp:495
+#, fuzzy
+#| msgid "Required XP:"
 msgid "Required XP: "
-msgstr "PX requeridos: "
+msgstr "PX requeridos:"
 
 #: src/help/help_topic_generators.cpp:504
 msgid "unit help^Attacks"
@@ -7199,8 +7208,8 @@ msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
-"Cambia el número de turno (y la hora del día), o lo aumenta en uno si no hay "
-"ningún número especificado."
+"Cambia el número de turno (y la franja horaria), o lo aumenta en uno si no "
+"hay ningún número especificado."
 
 #: src/menu_events.cpp:1207
 msgid "[turn]"
@@ -7646,7 +7655,7 @@ msgstr "Nivel: "
 
 #: src/reports.cpp:236
 msgid "No advancement"
-msgstr "Ningún avance"
+msgstr "Ninguna promoción"
 
 #: src/reports.cpp:238
 msgid "Advances to:"
@@ -7745,8 +7754,10 @@ msgid "Defense: "
 msgstr "Defensa: "
 
 #: src/reports.cpp:565
+#, fuzzy
+#| msgid "vision:"
 msgid "vision: "
-msgstr "visión: "
+msgstr "visión:"
 
 #: src/reports.cpp:593
 msgid "Movement Costs:"
@@ -7770,7 +7781,7 @@ msgstr "Con especiales: "
 
 #: src/reports.cpp:704
 msgid "Time of day: "
-msgstr "Hora del día: "
+msgstr "Franja horaria: "
 
 #: src/reports.cpp:708
 msgid "Leadership: "
@@ -8249,11 +8260,11 @@ msgstr "Atajo(s) de teclado: "
 # Mínima?
 #: src/time_of_day.cpp:45
 msgid "Stub Time of Day"
-msgstr "Hora del día mínima"
+msgstr "Franja horaria mínima"
 
 #: src/time_of_day.cpp:46
 msgid "This Time of Day is only a Stub!"
-msgstr "¡Esta hora del día es solo mínima!"
+msgstr "¡Esta franja horaria es solo mínima!"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:356
@@ -8481,11 +8492,24 @@ msgstr "Opciones del modo pizarra"
 #~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
 #~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 
-#~ msgid "battery"
-#~ msgstr "batería"
+#~ msgid "Using lower-level units can be very cost-effective."
+#~ msgstr "Usar unidades de nivel más bajo puede ser muy rentable."
 
-#~ msgid "an advancement choice"
-#~ msgstr "una opción de promoción"
+#~ msgid ""
+#~ "Some higher-level units have inimitable abilities such as <i>Leadership</"
+#~ "i>, <i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can "
+#~ "make a big difference in a campaign."
+#~ msgstr ""
+#~ "Algunas de las unidades de niveles más altos tienen habilidades "
+#~ "inigualables tales como <i>Liderazgo</i>, <i>Sanar</i>, o <i>Nocturnidad</"
+#~ "i>. La obtención de esas unidades prontamente puede marcar la diferencia "
+#~ "en una campaña."
+
+#~ msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
+#~ msgstr "<i>― Señor Gerrick de Westin, 607AñW</i>"
+
+#~ msgid "waiting for^an advancement choice"
+#~ msgstr "una selección de promoción"
 
 #~ msgid "scenario_abbreviation^S"
 #~ msgstr "E"
@@ -8502,18 +8526,37 @@ msgstr "Opciones del modo pizarra"
 #~ msgid "time limit^none"
 #~ msgstr "ninguno"
 
+#~ msgid ""
+#~ "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
+#~ msgstr ""
+#~ "El usuario con el nombre «$nick|» ha sido expulsado de los foros de este "
+#~ "servidor por un tiempo de $duration|."
+
 #~ msgid "The nickname ‘$nick’ is banned on this server’s forums."
 #~ msgstr ""
-#~ "El nombre de usuario «$nick|» ha sido expulsado del foro de este servidor."
+#~ "El usuario con el nombre «$nick|» ha sido expulsado del foro de este "
+#~ "servidor."
+
+#~ msgid "Your IP address is banned on this server’s forums for $duration|."
+#~ msgstr ""
+#~ "Su dirección IP ha sido expulsada de los foros de este servidor por un "
+#~ "tiempo de $duration|."
 
 #~ msgid "Your IP address is banned on this server’s forums."
 #~ msgstr "Su dirección IP ha sido expulsada del foro de este servidor."
 
 #~ msgid ""
 #~ "The email address for the nickname ‘$nick’ is banned on this server’s "
+#~ "forums for $duration|."
+#~ msgstr ""
+#~ "La dirección de correo para el usuario con el nombre «$nick|» ha sido "
+#~ "expulsada de los foros de este servidor por un tiempo de $duration|."
+
+#~ msgid ""
+#~ "The email address for the nickname ‘$nick’ is banned on this server’s "
 #~ "forums."
 #~ msgstr ""
-#~ "La dirección de correo para el nombre de usuario «$nick|» ha sido "
+#~ "La dirección de correo para el usuario con el nombre «$nick|» ha sido "
 #~ "expulsada del foro de este servidor."
 
 #~ msgid "Connection failed: "
@@ -8521,6 +8564,16 @@ msgstr "Opciones del modo pizarra"
 
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "Referencia a tema desconocido: "
+
+# Aquí queda muy mal poner pv en minúscula.
+#~ msgid "HP:"
+#~ msgstr "PV:"
+
+#~ msgid "Alignment:"
+#~ msgstr "Alineamiento:"
+
+#~ msgid "No unit recruited"
+#~ msgstr "No se ha reclutado ninguna unidad"
 
 #~ msgid "No unit recalled"
 #~ msgstr "No se ha reincorporado ninguna unidad"
@@ -8534,14 +8587,35 @@ msgstr "Opciones del modo pizarra"
 #~ msgid "Side '$side' controller is now controlled by: human."
 #~ msgstr "El manejo del lado '$side' está controlado por: humano."
 
+#~ msgid "waiting for^a global variable"
+#~ msgstr "una variable global"
+
+#~ msgid "Side:"
+#~ msgstr "Bando:"
+
+#~ msgid "Advancements:"
+#~ msgstr "Promociones:"
+
+#~ msgid "jamming:"
+#~ msgstr "interferencia:"
+
 #~ msgid "weapon^None"
 #~ msgstr "Ninguna"
+
+#~ msgid "Time of day schedule:"
+#~ msgstr "Plantilla de franjas horarias:"
+
+#~ msgid "Time of day:"
+#~ msgstr "Franja horaria:"
 
 #~ msgid "Battery"
 #~ msgstr "Batería"
 
 #~ msgid "(unknown player)"
 #~ msgstr "(jugador desconocido)"
+
+#~ msgid "waiting for^input"
+#~ msgstr "entrada"
 
 #~ msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 #~ msgid_plural ""
@@ -8551,6 +8625,9 @@ msgstr "Opciones del modo pizarra"
 
 #~ msgid "Disconnected from server."
 #~ msgstr "Desconectado del servidor."
+
+#~ msgid "battery"
+#~ msgstr "batería"
 
 #~ msgid "Unit with negative HP found"
 #~ msgstr "Se ha encontrado una unidad con PV negativos"
@@ -9234,9 +9311,6 @@ msgstr "Opciones del modo pizarra"
 #~ msgid "Recalls"
 #~ msgstr "Veteranos"
 
-#~ msgid "Advancements"
-#~ msgstr "Avances"
-
 #~ msgid "Losses"
 #~ msgstr "Pérdidas"
 
@@ -9407,9 +9481,6 @@ msgstr "Opciones del modo pizarra"
 #~ msgid_plural "moves"
 #~ msgstr[0] "movimiento"
 #~ msgstr[1] "movimientos"
-
-#~ msgid "jamming"
-#~ msgstr "interferencia"
 
 #~ msgid "XP to advance"
 #~ msgstr "PX para subir de nivel"

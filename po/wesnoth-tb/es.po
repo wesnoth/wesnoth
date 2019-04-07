@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
-"PO-Revision-Date: 2018-04-07 14:49+0200\n"
+"PO-Revision-Date: 2019-03-27 09:36+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
@@ -70,6 +70,8 @@ msgstr ""
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:23
+#, fuzzy
+#| msgid "(Rookie level, 4 scenarios.)"
 msgid "(Novice level, 4 scenarios.)"
 msgstr "(Nivel principiante, 4 escenarios.)"
 
@@ -696,12 +698,16 @@ msgstr "¡Los veo! ¡Ahí están!"
 
 #. [message]: speaker=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:442
+#, fuzzy
+#| msgid ""
+#| "Curses! If they had been an hour slower, our master’s reinforcements "
+#| "would already be here to meet us."
 msgid ""
 "Curses! If they had been an hour slower our master’s reinforcements would "
 "already be here to meet us."
 msgstr ""
 "¡Maldición! Si se hubieran demorado tan solo una hora más, los refuerzos de "
-"nuestro amo ya estarían aquí."
+"nuestro amo ya estarían aquí para unirse a nosotros."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:454
@@ -1127,15 +1133,23 @@ msgstr "¡Incorrecto! ¡Muere!"
 
 #. [message]: speaker=Knago-Brek
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:463
+#, fuzzy
+#| msgid ""
+#| "Haha! We not kill people for long time. Weapon wants blood. We now kill "
+#| "humans!"
 msgid ""
 "Haha! We not kill people for long time. Weapon wants blood. We now kill "
 "humans!!"
 msgstr ""
 "¡Jaja! Nosotros no matar gente en mucho tiempo. Armas quieren sangre. "
-"¡¡Nosotros ahora matar humanos!!"
+"¡Nosotros ahora matar humanos!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:468
+#, fuzzy
+#| msgid ""
+#| "My sword-arm shall have a say in who will do the dying. Come on, men, "
+#| "let’s kill some orcs."
 msgid ""
 "My sword-arm has a say in who will do the dying. Come on, men, let’s kill "
 "some orcs."
@@ -1709,6 +1723,38 @@ msgstr "Baran"
 #: data/campaigns/Two_Brothers/utils/macros.cfg:4
 msgid "Hint:"
 msgstr "Pista:"
+
+#~ msgid "Indoors (dark castle)"
+#~ msgstr "Interior (castillo oscuro)"
+
+#~ msgid "Indoors (lit)"
+#~ msgstr "Interior (luz)"
+
+#~ msgid "It may be important, I best take it."
+#~ msgstr "Puede ser importante, lo cogeré."
+
+#~ msgid "This castle seems as dark as a cave!"
+#~ msgstr "¡Este castillo parece tan oscuro como una caverna!"
+
+#~ msgid ""
+#~ "This castle is under a constant, <i>chaotic</i> time of day (equivalent "
+#~ "to permanent night). Place your units carefully, as your troops will be "
+#~ "weaker and enemy units stronger."
+#~ msgstr ""
+#~ "Este castillo está continuamente bajo una franja horaria del tipo "
+#~ "<i>caótico</i> (equivalente a una noche continua). Posicione con cuidado "
+#~ "sus unidades puesto que serán más débiles mientras que las del enemigo "
+#~ "serán más fuertes."
+
+#~ msgid "Today, you shall pay for disfiguring my face, mage!"
+#~ msgstr "¡Hoy vas a pagar por destrozarme la cara, mago!"
+
+#~ msgid ""
+#~ "I have already paid with the lives of my men at Toen Caric. It is time I "
+#~ "righted that mistake and finished this once and for all."
+#~ msgstr ""
+#~ "Ya lo pagué con las vidas de mis hombres en Toen Caric. Ya va siendo hora "
+#~ "de que corrija ese error y de que termine con esto de una vez por todas."
 
 #~ msgid ""
 #~ "Undead units have a variety of resistances. Keep this in mind when "
