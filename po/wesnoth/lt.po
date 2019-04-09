@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-03-11 16:10+0300\n"
-"PO-Revision-Date: 2019-02-21 00:54+0000\n"
+"PO-Revision-Date: 2019-03-28 22:12+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
 "Language: lt\n"
@@ -3713,10 +3713,8 @@ msgstr "Oficialus Vesnoto serveris"
 
 #. [server]
 #: data/game_config.cfg:8
-#, fuzzy
-#| msgid "Official Wesnoth Server"
 msgid "Alternate Wesnoth Server"
-msgstr "Oficialus Vesnoto serveris"
+msgstr "Atsarginis Vesnoto serveris"
 
 #. [label]: id=no_options_notice
 #: data/gui/macros/custom_options_tree.cfg:25
@@ -4858,10 +4856,8 @@ msgstr ""
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:225
-#, fuzzy
-#| msgid "an advancement choice"
 msgid "waiting for^an advancement choice"
-msgstr "tobulėjimo pasirinkimas"
+msgstr "tobulėjimo pasirinkimo"
 
 #: src/actions/attack.cpp:602 src/actions/attack.cpp:1349
 msgid "An invalid attacker weapon got selected."
@@ -5305,6 +5301,8 @@ msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
+"Siųsti užklausą serveriui. Be argumentų, serveris turėtų išvardinti "
+"prieinamas komandas."
 
 #: src/chat_command_handler.hpp:92
 msgid ""
@@ -5352,7 +5350,7 @@ msgstr "<pranešimas>"
 
 #: src/chat_command_handler.hpp:112
 msgid "Send an emotion or personal action in chat."
-msgstr ""
+msgstr "Pokalbyje siųsti emociją arba asmeninį veiksmą."
 
 #: src/chat_command_handler.hpp:115
 msgid ""
@@ -5911,7 +5909,6 @@ msgstr "Slapyvardis „$nick“ prisiregistravęs šiame serveryje."
 
 #: src/game_initialization/multiplayer.cpp:338
 #, fuzzy
-#| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "Jūsų IP adresas uždraustas šio serverio forumuose."
 
@@ -6603,7 +6600,7 @@ msgstr "Naudojimas:"
 
 #: src/map_command_handler.hpp:334
 msgid "aliases:"
-msgstr ""
+msgstr "sinonimai:"
 
 #: src/menu_events.cpp:176
 msgid "Save Map As"
@@ -6634,10 +6631,8 @@ msgid "You have no units available to recruit."
 msgstr "Nėra karių, kuriuos galite samdyti."
 
 #: src/menu_events.cpp:282
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recruited"
-msgstr "Joks karys negrąžintas"
+msgstr "Joks karys nepasamdytas"
 
 #: src/menu_events.cpp:314
 msgid "You do not have enough gold to recruit that unit"
@@ -7123,7 +7118,7 @@ msgstr "Rastas reljefas su judėjimo kaina mažesne nei 1."
 #. from another player. This text will be embedded into a sentence.
 #: src/persist_var.cpp:58
 msgid "waiting for^a global variable"
-msgstr ""
+msgstr "globalaus kintamojo"
 
 #: src/play_controller.cpp:242
 msgid "time left for current turn"
@@ -7255,7 +7250,7 @@ msgstr "Tipas: "
 
 #: src/reports.cpp:235
 msgid "Side:"
-msgstr ""
+msgstr "Pusė:"
 
 #: src/reports.cpp:257
 msgid "Level: "
@@ -7359,7 +7354,6 @@ msgstr "Gynyba: "
 
 #: src/reports.cpp:620 src/reports.cpp:621
 #, fuzzy
-#| msgid "vision: "
 msgid "vision:"
 msgstr "matymas: "
 
@@ -7469,16 +7463,12 @@ msgstr[2] "Atakų"
 msgstr[3] "Ataka"
 
 #: src/reports.cpp:1144
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day schedule:"
-msgstr "Paros laikas: "
+msgstr "Paros laiko tvarkaraštis:"
 
 #: src/reports.cpp:1176
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day:"
-msgstr "Paros laikas: "
+msgstr "Paros laikas:"
 
 #: src/reports.cpp:1177 src/reports.cpp:1219
 msgid "Lawful units: "
@@ -7858,17 +7848,17 @@ msgstr ""
 #: src/synced_user_choice.cpp:330
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "laukiama $desc iš žaidėjo $sides"
+msgstr[1] "laukiama $desc iš žaidėjų $sides"
+msgstr[2] "laukiama $desc iš žaidėjų $sides"
+msgstr[3] "laukiama $desc iš žaidėjų $sides"
 
 #. TRANSLATORS: In networked games, this text is shown for other clients,
 #. while they wait for an action from another player.
 #. This text will be embedded into a sentence.
 #: src/synced_user_choice.hpp:42
 msgid "waiting for^input"
-msgstr ""
+msgstr "įvesties"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"

@@ -45,7 +45,7 @@
      * Added embellishments to various maps
  ### Language and i18n
    * Updated translations: British English, Chinese (Traditional), Dutch,
-     Italian, Spanish.
+     Italian, Lithuanian, Spanish.
  ### Multiplayer
    * Dark Forecast: AI units are "discovered" (added to the help if not already known)
    * Dark Forecast: fixed bug where additional boss spawns would not occur after the initial wave
