@@ -5,6 +5,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
+# tamanegi, 2019
 # RatArmy <broadbarredfirefish@gmail.com>, 2019
 #
 #, fuzzy
@@ -3995,10 +3996,8 @@ msgstr "公式サーバー"
 
 #. [server]
 #: data/game_config.cfg:8 data/game_config.cfg:12
-#, fuzzy
-#| msgid "Official Wesnoth Server"
 msgid "Alternate Wesnoth Server"
-msgstr "公式サーバー"
+msgstr "他のWesnothサーバー"
 
 #. [label]: id=title
 #: data/gui/window/install_dependencies.cfg:37
@@ -7568,6 +7567,8 @@ msgid "Defense: "
 msgstr "回避："
 
 #: src/reports.cpp:565
+#, fuzzy
+#| msgid "vision:"
 msgid "vision: "
 msgstr "視界："
 
@@ -8289,7 +8290,7 @@ msgstr "行動予定オプション"
 #~ msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
 #~ msgstr "<i>― Westin の Gerrick 卿，607YW</i>"
 
-#~ msgid "an advancement choice"
+#~ msgid "waiting for^an advancement choice"
 #~ msgstr "レベルアップ先の選択"
 
 #~ msgid "scenario_abbreviation^S"
@@ -8307,11 +8308,27 @@ msgstr "行動予定オプション"
 #~ msgid "time limit^none"
 #~ msgstr "なし"
 
+#~ msgid ""
+#~ "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
+#~ msgstr ""
+#~ "ニックネーム「 $nick 」は、フォーラム上で $duration の間バンされています。"
+
 #~ msgid "The nickname ‘$nick’ is banned on this server’s forums."
 #~ msgstr "ニックネーム「$nick」は、フォーラム上でバンされています。"
 
+#~ msgid "Your IP address is banned on this server’s forums for $duration|."
+#~ msgstr ""
+#~ "あなたの IP アドレスはフォーラム上で $duration の間バンされています。"
+
 #~ msgid "Your IP address is banned on this server’s forums."
 #~ msgstr "あなたの IP アドレスはフォーラム上でバンされています。"
+
+#~ msgid ""
+#~ "The email address for the nickname ‘$nick’ is banned on this server’s "
+#~ "forums for $duration|."
+#~ msgstr ""
+#~ "ニックネーム「$nick」のメールアドレスは、フォーラム上で $duration の間バン"
+#~ "されています。"
 
 #~ msgid ""
 #~ "The email address for the nickname ‘$nick’ is banned on this server’s "
@@ -8331,6 +8348,9 @@ msgstr "行動予定オプション"
 #~ msgid "Alignment:"
 #~ msgstr "アラインメント："
 
+#~ msgid "No unit recruited"
+#~ msgstr "ユニットは雇用されませんでした"
+
 #~ msgid "No unit recalled"
 #~ msgstr "ユニットは召還されませんでした"
 
@@ -8343,17 +8363,35 @@ msgstr "行動予定オプション"
 #~ msgid "Side '$side' controller is now controlled by: human."
 #~ msgstr "陣営「$side」は人間によって操作されます．"
 
+#~ msgid "waiting for^a global variable"
+#~ msgstr "グローバル変数"
+
+#~ msgid "Side:"
+#~ msgstr "陣営："
+
 #~ msgid "Advancements:"
 #~ msgstr "レベルアップ先："
 
+#~ msgid "jamming:"
+#~ msgstr "ジャミング："
+
 #~ msgid "weapon^None"
 #~ msgstr "なし"
+
+#~ msgid "Time of day schedule:"
+#~ msgstr "時刻スケジュール"
+
+#~ msgid "Time of day:"
+#~ msgstr "時刻補正："
 
 #~ msgid "Battery"
 #~ msgstr "バッテリー"
 
 #~ msgid "(unknown player)"
 #~ msgstr "（不明なプレイヤー）"
+
+#~ msgid "waiting for^input"
+#~ msgstr "入力"
 
 #~ msgid "Disconnected from server."
 #~ msgstr "サーバから切断されました。"

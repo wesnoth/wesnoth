@@ -1,5 +1,6 @@
 # Translators:
 # RatArmy <broadbarredfirefish@gmail.com>, 2019
+# tamanegi, 2019
 #
 msgid ""
 msgstr ""
@@ -7,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
 "PO-Revision-Date: 2018-09-12 07:30+0000\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2019\n"
+"Last-Translator: tamanegi, 2019\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -1227,12 +1228,22 @@ msgstr "モンスター"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:40
+#, fuzzy
+#| msgid ""
+#| "The journey to the far northern wastelands was long and perilous. For the "
+#| "tunnels were winding and treacherous, and the paths were not safe from "
+#| "orcs, or worse. Nevertheless, they did reach the Northlands, and began to "
+#| "search for the runesmith named Thursagan — the sage of fire."
 msgid ""
 "The journey to the far northern wastelands was long and perilous. For the "
 "tunnels were winding and treacherous, and the paths were not safe from orcs, "
 "or worse. Nevertheless, they did reach the northlands, and began to search "
 "for the runesmith named Thursagan — the sage of fire."
 msgstr ""
+"彼らが北の荒れ地に着くまでの旅は、長くて危険でした。その間のトンネルは曲がり"
+"くねり、足場は不安定でした。そして、道程はオーク達や、もっと悪いものによって"
+"安全ではありませんでした。それでもなんとか、彼らは北の大地に到着し、ルーンの"
+"鍛冶職人にして炎の賢者、Thursaganを探し始めました。"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:98
@@ -1273,10 +1284,16 @@ msgstr ""
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:176
+#, fuzzy
+#| msgid ""
+#| "Except for trolls and ogres, right? They live in the far Northlands. "
+#| "They’re probably lurking around here somewhere."
 msgid ""
 "Except for trolls and ogres, right? They live in the far northlands. They’re "
 "probably lurking around here somewhere."
 msgstr ""
+"トロルやオーガ達を除いて、ですね？ 彼らは北の果ての地に住みます。そこらに潜ん"
+"でいるかもしれません。"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:180
@@ -1557,8 +1574,11 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:155
+#, fuzzy
+#| msgid "Yes, we did. And that is Krawg, who helped us in the Northlands."
 msgid "Yes, we did. And that is Krawg, who helped us in the northlands."
 msgstr ""
+"そうです、やり遂げました。そして彼はKrawg、北の大地で助けてくれました。"
 
 #. [message]: speaker=Krawg
 #. "Yeah! Me Krawg!"
@@ -2424,8 +2444,10 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:416
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:522
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:586
+#, fuzzy
+#| msgid "Have all heroes, and no enemies, in the Shorbear caves"
 msgid "Have all heroes in the Shorbear caves while no enemies are in the caves"
-msgstr ""
+msgstr "ヒーロー全員を Shorbear の洞窟に入れ、全ての敵を締め出す"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:470
@@ -2991,11 +3013,18 @@ msgstr "そこを行くのは誰です？"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:300
+#, fuzzy
+#| msgid ""
+#| "I’m a dragoon, with Haldric II’s personal bodyguard. I was sent on a "
+#| "mission in the Northlands, and now elvish horsemen are chasing me. I "
+#| "barely evaded them."
 msgid ""
 "I’m a dragoon, with Haldric II’s personal bodyguard. I was sent on a mission "
 "in the northlands, and now elvish horsemen are chasing me. I barely evaded "
 "them."
 msgstr ""
+"私は熟練竜騎士で、Haldric II世のボディーガードです。北の大地での任務に送ら"
+"れ、今やエルフの騎兵が私を追ってきます。彼らから逃れられそうもありません。"
 
 #. [message]: speaker=Hadlin  # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:304
@@ -3528,10 +3557,16 @@ msgstr "止まれ！ Wesnothの首都、Weldynへ何の用だ？"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:100
+#, fuzzy
+#| msgid ""
+#| "Stand aside. I am Alanin, of Haldric’s royal guard, and I bring news from "
+#| "the Northlands."
 msgid ""
 "Stand aside. I am Alanin, of Haldric’s royal guard, and I bring news from "
 "the northlands."
 msgstr ""
+"どいてください。私はAlanin、Haldric王の近衛兵です。そして私は北の大地からの知"
+"らせを持っています。"
 
 #. [message]: speaker=Gatekeeper
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:104
@@ -3560,10 +3595,16 @@ msgstr "入れ、Alanin。そして王に申し上げるが良い。"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:123
+#, fuzzy
+#| msgid ""
+#| "My King, fifteen years ago you sent me on a mission into the Northlands. "
+#| "I have returned. What do you wish to know of my mission?"
 msgid ""
 "My King, fifteen years ago you sent me on a mission into the northlands. I "
 "have returned. What do you wish to know of my mission?"
 msgstr ""
+"国王様、15年前、上様は私を北の大地の任務へ送られました。そして只今戻って参り"
+"ました。まず何をお知りになりたいでしょうか？"
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:127
@@ -3808,3 +3849,42 @@ msgstr "アァァ……。"
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:71
 msgid "Kraa..."
 msgstr "クァァ……。"
+
+#~ msgid "Shorbear caves"
+#~ msgstr "Shorbear の洞窟"
+
+#~ msgid "Great, now there is no need to worry about those elves anymore!"
+#~ msgstr "良し、これでもうあのエルフ共のことを気にかける必要は無いな！"
+
+#~ msgid ""
+#~ "Did you really think that you could escape us? Don’t underestimate us, "
+#~ "inferior humans!"
+#~ msgstr "逃げられると思っているのか？見くびるな、下等な人間風情が！"
+
+#~ msgid ""
+#~ "Even though my chances have grown worse, I have to fulfil my duty. I do "
+#~ "not owe them any less!"
+#~ msgstr ""
+#~ "どれだけ望みが薄かろうと、私はやらねばならん。これ以上借りは作るわけには！"
+
+#~ msgid "Oh no, more of them? And there I thought I could catch my breath…"
+#~ msgstr "うっ、まだいるのか？やっと一息つけると思ったのだが……"
+
+#~ msgid "Don’t worry sir, we’ll make it through this!"
+#~ msgstr "ご心配無く。我々がやってみせます！"
+
+#~ msgid "Is there no end to their numbers?"
+#~ msgstr "連中、どれだけ数を揃えてるんだ？"
+
+#~ msgid ""
+#~ "You slow humans took too long, our detachment has already caught up with "
+#~ "you!"
+#~ msgstr "やはり人間はウスノロだ。我々の別働隊が既にお前を捕捉している！"
+
+#~ msgid ""
+#~ "I’m a cavalier, with Haldric II’s personal bodyguard. I was sent on a "
+#~ "mission in the Northlands, and now elvish horsemen are chasing me. I "
+#~ "barely evaded them."
+#~ msgstr ""
+#~ "私は精鋭竜騎士で、Haldric II世のボディーガードです。北の大地での任務に送ら"
+#~ "れ、今やエルフの騎兵が私を追ってきます。彼らから逃れられそうもありません。"

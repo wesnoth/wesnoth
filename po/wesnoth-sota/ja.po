@@ -1,8 +1,9 @@
 # Translators:
 # IWAI, Masaharu <iwaim.sub@gmail.com>, 2018
-# 堀 秀幸 <Hide.HORI@gmail.com>, 2018
 # 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018
+# 堀 秀幸 <Hide.HORI@gmail.com>, 2018
 # RatArmy <broadbarredfirefish@gmail.com>, 2019
+# tamanegi, 2019
 #
 msgid ""
 msgstr ""
@@ -10,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:31 UTC\n"
 "PO-Revision-Date: 2018-05-06 10:23+0000\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2019\n"
+"Last-Translator: tamanegi, 2019\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -320,11 +321,17 @@ msgstr ""
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:323
+#, fuzzy
+#| msgid ""
+#| "A wolf! This journey may be more dangerous than I thought. If we need to, "
+#| "I suppose we could rest inside a farmer's or woodcutter's fence."
 msgid ""
 "Wolves! This journey may be more dangerous than I thought. Well, we can find "
 "safety inside the sturdy fences built by farmers and woodcutters. The wild "
 "animals surely won't be able to enter."
 msgstr ""
+"オオカミだ！ この旅は思ったよりも危険みたい。 けど、農家や木こりが丈夫な柵を"
+"築いてるはず。そこまで逃げ込めば、野生動物から身を守れるかな。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:346
@@ -2265,10 +2272,16 @@ msgstr "敵を追い払うのに手を貸そう。その分の料金まで払う
 
 #. [message]: speaker=Krissaz
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:163
+#, fuzzy
+#| msgid ""
+#| "When the mage isss dead and her dead horde put to ressst, we agree. We "
+#| "will have been compensssated adequately."
 msgid ""
 "When the mage isss dead and her sssouls put to ressst, we agree. We will "
 "have been compensssated adequately."
 msgstr ""
+"あの魔術師ぃぃを始末しぃ、死体ぃの軍勢ぃぃを眠らせてぇからならぁ、同意す"
+"るぅ。適切なぁ料金を払うぅ。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:167
@@ -2309,12 +2322,23 @@ msgstr "確かに、私は秘密を探してる。でも、女性に従っても
 
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:225
+#, fuzzy
+#| msgid ""
+#| "I have ssstared into the darknesss between the starsss and not been "
+#| "intimidated by the void, but your mind holds a darknesss of another kind, "
+#| "frightening and forbidden by my clan. I sssubmit to your power. Now that "
+#| "I know you are female, I will find it easier as it isss the way of my "
+#| "kind."
 msgid ""
 "I have ssstared into the darknesss between the starsss and not been "
 "intimidated by the void, but your mind holdsss a darknesss of another kind, "
 "frightening and forbidden by my clan. I sssubmit to your power. Now that I "
 "know you are female, I will find it easier as it is the way of my kind."
 msgstr ""
+"私は星ぃ々ぃぃの間にある闇ぃを凝視している。その闇ぃは虚無によって威圧された"
+"ものではないぃぃ。しかし、お前の思考はまた別の闇ぃぃを持っている、驚くべきも"
+"のでもあり、我が一族では禁じられていぃるものだ。私はお前の力を受け入ぃぃれ"
+"る。それこそが我が種族の進むべき道ぃぃなのだ。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:229
@@ -3830,6 +3854,21 @@ msgstr "エピローグ"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/22_Epilogue.cfg:16
+#, fuzzy
+#| msgid ""
+#| "10 VII, 23 YW — Final Entry\n"
+#| "\n"
+#| "We prevailed today on the field, but our victory was somewhat bitter. "
+#| "<i>Everyone</i> was afraid or angry and immediately attacked us instead "
+#| "of listening to our news. I realize now... the world is not ready for our "
+#| "knowledge. They cannot understand that we have conquered that primordial "
+#| "fear: death. Instead, as they look upon us, judgment of our appearance "
+#| "drives them to ignorant terror. I give up on all of them. For now, I "
+#| "shall just withdraw — perhaps live in the old troll city and learn the "
+#| "applications of mountain fire. In some future time, less conservative "
+#| "attitudes may dominate, and our knowledge can be put to good use. I can "
+#| "certainly afford to wait. In the meantime, we are doing what we can to "
+#| "hasten that day."
 msgid ""
 "10 VII, 23 YW — Final Entry\n"
 "\n"
@@ -3845,13 +3884,26 @@ msgstr ""
 "\n"
 "私たちは今日の戦いを切り抜けたけど、私たちの勝利は苦しいものだった。 <i>みん"
 "な</i>が私たちを恐れ、怒り、私たちの話を聞かずに攻撃してきた。 今になって気付"
-"いたけど...この世界には私たちの知識は早すぎたみたい。 彼らを説得するのはあき"
-"らめちゃった。 私はあの古いトロルの町に住み着いて山の炎の応用について学ぶつも"
-"り。 いつかは保守的な人も減るだろうから、それまで私は待っとくよ。 早くその日"
-"が来てほしいな。"
+"いたけど...この世界には私たちの知識は早すぎたみたい。 死。 根源的な恐怖である"
+"それを克服するってことをみんな理解できないみたい。 それで私たちの姿を見ると本"
+"能的な恐怖にかられちゃう。 だから彼らを説得するのはあきらめちゃった。 私はあ"
+"の古いトロルの町に住み着いて山の炎の応用について学ぶつもり。 いつかは保守的な"
+"人も減るだろうから、それまで私は待っとくよ。 早くその日が来てほしいな。"
 
 #. [then]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/22_Epilogue.cfg:31
+#, fuzzy
+#| msgid ""
+#| "Ras-Tabahn is going to rebuild his strength and continue to Elensefar. "
+#| "Most of the others are going with him. I wish them success. Vendraxis now "
+#| "knows what he must learn to replicate our metamorphosis. He will use the "
+#| "years left to him in study and practice while he attempts to change the "
+#| "attitudes of his people. As for me, I will make my journal conspicuous on "
+#| "this battlefield. I suspect that most will fear it enough to try to "
+#| "destroy it, but I have placed several wards on my journal to protect it. "
+#| "This way, it should survive long enough to make its way into the hands of "
+#| "someone more open-minded. Tath, in particular, is home to many mages. It "
+#| "only takes one who is willing to learn the secrets of the ancients."
 msgid ""
 "Ras-Tabahn is going to rebuild his strength and continue to Elensefar. Most "
 "of the others are going with him. I wish them success. Vendraxis now knows "
@@ -3864,12 +3916,24 @@ msgid ""
 msgstr ""
 "Ras-Tabahnは再び力を付けて、Elensefarに向かうらしい。多くの者たちは彼に付いて"
 "いった。Vendraxisは私たちの変身を真似するために何をするべきかを理解した。今、"
-"彼は仲間たちの考えを変えようとしているらしい。私は、この日誌が傷つかないよう"
-"に呪文を掛けておいた。日誌をこの戦場の目立つところに置いておこう。いつかは日"
-"誌がTathの誰かに渡り、その人が古代の秘密を学んでくれるといいな。"
+"彼は仲間たちの考えを変えようとしているらしい。私は、日誌をこの戦場の目立つと"
+"ころに置いておくことにした。大抵の人は怖がって破棄しようとするだろうから、日"
+"誌が傷つかないように呪文を掛けておいた。こうしておけばいつかは日誌が先進的な"
+"人の手に渡るだろう。Tath には魔術師がたくさん住んでいるし、早く古代の秘密を学"
+"びたい人の手に渡ってくれるといいな。"
 
 #. [else]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/22_Epilogue.cfg:34
+#, fuzzy
+#| msgid ""
+#| "Ras-Tabahn is going to rebuild his strength and continue to Elensefar. "
+#| "Most of the others are going with him. I wish them success. As for me, I "
+#| "will make my journal conspicuous on this battlefield. I suspect that most "
+#| "will fear it enough to try to destroy it, but I have placed several wards "
+#| "on my journal to protect it. This way, it should survive long enough to "
+#| "make its way into the hands of someone more open-minded. Tath, in "
+#| "particular, is home to many mages. It only takes one who is willing to "
+#| "learn the secrets of the ancients."
 msgid ""
 "Ras-Tabahn is going to rebuild his strength and continue to Elensefar. Most "
 "of the others are going with him. I wish them success. As for me, I have "
@@ -3879,9 +3943,10 @@ msgid ""
 "the ancients."
 msgstr ""
 "Ras-Tabahnは再び力を付けて、Elensefarに向かうらしい。多くの者たちは彼に付いて"
-"いった。彼らが成功するといいな。私は、この日誌が傷つかないように呪文を掛けて"
-"置いた。日誌をこの戦場の目立つところに置いておこう。いつかは日誌がTathの誰か"
-"に渡り、その人が古代の秘密を学んでくれるといいな。"
+"いった。私は、日誌をこの戦場の目立つところに置いておくことにした。大抵の人は"
+"怖がって破棄しようとするだろうから、日誌が傷つかないように呪文を掛けておい"
+"た。こうしておけばいつかは日誌が先進的な人の手に渡るだろう。Tath には魔術師が"
+"たくさん住んでいるし、早く古代の秘密を学びたい人の手に渡ってくれるといいな。"
 
 #. [unit_type]: id=Bone Bird, race=undead, description=
 #: data/campaigns/Secrets_of_the_Ancients/units/Bone_Bird.cfg:4
@@ -4308,6 +4373,30 @@ msgstr "半分空っぽ"
 #~ msgid "Gwyllin"
 #~ msgstr "Gwyllin"
 
+#~ msgid "Oh, hello friend! I didn't know you were hiding in there."
+#~ msgstr "あ、こんにちは！ここはあなたのお家だったの？"
+
+#~ msgid "Oh, hello! You're a handsome one."
+#~ msgstr "あ、こんにちは！あなたなかなかカッコいいね。"
+
+#~ msgid "Hey, come back! I didn't mean to frighten you."
+#~ msgstr "ねえ、戻ってきて！あなたを怖がらせるつもりはないから。"
+
+#~ msgid "Maybe I could attract it if I jingled some coins."
+#~ msgstr "コインで音を鳴らしたら気をひけるかも。"
+
+#~ msgid "Right-click adjacent to your leader to summon the bat."
+#~ msgstr "リーダーの隣のヘクスで右クリックするとコウモリを召喚できます。"
+
+#~ msgid "Summon the Bat (20 gold)"
+#~ msgstr "コウモリを呼び出す（20 ゴールド）"
+
+#~ msgid "You don't have enough gold to summon the bat."
+#~ msgstr "コウモリを呼び出すにはゴールドが足りません。"
+
+#~ msgid "Keep quiet about that."
+#~ msgstr "それは言わないで。"
+
 #~ msgid "plural^You may watch."
 #~ msgstr "君たちは監視されておるぞ。"
 
@@ -4332,6 +4421,9 @@ msgstr "半分空っぽ"
 
 #~ msgid "self_female^I don’t fancy wading in the water to fight these things."
 #~ msgstr "水辺でこのような生物と戦うことになるとは思いもしなかった。"
+
+#~ msgid "Good. Now I can practice recruiting ghosts."
+#~ msgstr "やったね。これでゴースト使役の練習ができるかな。"
 
 #~ msgid ""
 #~ "I have a sssense of dark foreboding regarding the sssnowy peaksss ahead. "

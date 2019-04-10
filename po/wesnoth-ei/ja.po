@@ -1,5 +1,6 @@
 # Translators:
 # RatArmy <broadbarredfirefish@gmail.com>, 2019
+# tamanegi, 2019
 #
 msgid ""
 msgstr ""
@@ -7,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 01:26 UTC\n"
 "PO-Revision-Date: 2018-09-12 07:30+0000\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2019\n"
+"Last-Translator: tamanegi, 2019\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -542,11 +543,18 @@ msgstr "我々はどこに居るのだ？ 周りが全く見えないぞ。"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:188
+#, fuzzy
+#| msgid ""
+#| "This is an old escape route for the outpost. Unfortunately these caves "
+#| "are currently inhabited by trolls, who are blocking our path through the "
+#| "tunnel."
 msgid ""
 "This is an old escape tunnel for the outpost; unfortunately these caves are "
 "currently inhabited by trolls. Now hurry, we have to move quickly; the "
 "undead will surely follow us down here."
 msgstr ""
+"これは前哨基地の古い脱出ルートです。不幸なことにこの洞窟には現在トロルが住み"
+"着いており、彼らは私たちを邪魔するでしょう。"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:193
@@ -642,14 +650,19 @@ msgstr "ついに見つけたぞ、肉袋ども！ 覚悟しろ！"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:351
+#, fuzzy
+#| msgid ""
+#| "They follow us... we must escape through this tunnel. That is "
+#| "unfortunate, for it will take us into the Estmark hills, beyond the "
+#| "borders of Wesnoth. But it is our only option."
 msgid ""
 "They follow us... we must get out of this tunnel. It looks like it is "
 "leading east. That is unfortunate, for it will take us beyond the borders of "
 "Wesnoth. But it is our only option."
 msgstr ""
-"奴らが私たちを追ってきます……私たちはこのトンネルから出なければなりません。こ"
-"れは東に通じているようです。 Wesnoth 国境の向こうに行ってしまうのはついていま"
-"せん。しかし、私たちに他の選択は残されていません。"
+"奴らが私たちを追ってきます……私たちはこのトンネルを逃げねばなりません。ついて"
+"いないことに、これは Estmark 丘陵に通じているようです。 Wesnoth の国境を越え"
+"てしまうことになるでしょう。しかし、私たちに他の選択は残されていません。"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:388
@@ -1639,8 +1652,10 @@ msgstr "Grug"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:104
+#, fuzzy
+#| msgid "Move Gweddry, Owaec, and Dacyn across the river"
 msgid "Move Gweddry and Owaec across the river"
-msgstr "GweddryとOwaecの川越え"
+msgstr "Gweddry、Owaec、Dacyn が川を渡る"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:145
@@ -3988,3 +4003,13 @@ msgstr "このアイテムは私には適しません。他の人にあげてく
 #: data/campaigns/Eastern_Invasion/utils/macros.cfg:67
 msgid "Holy Amulet"
 msgstr "聖なるお守り"
+
+#~ msgid "We must make haste to escape before the undead catch up."
+#~ msgstr "アンデッドに捕まらぬよう急がなければなりません。"
+
+#~ msgid ""
+#~ "Very well. The best of luck in your battle. Gweddry, we may be able to "
+#~ "avoid the bulk of the trolls by going through the dwarves’ tunnel."
+#~ msgstr ""
+#~ "心強い。あなた方の戦いに幸運があらんことを。Gweddry、ドワーフのトンネルを"
+#~ "通ればトロルを避けられるかもしれません。"
