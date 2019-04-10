@@ -5,6 +5,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
+# tamanegi, 2019
 # RatArmy <broadbarredfirefish@gmail.com>, 2019
 #
 #, fuzzy
@@ -3996,10 +3997,8 @@ msgstr "公式サーバー"
 
 #. [server]
 #: data/game_config.cfg:8
-#, fuzzy
-#| msgid "Official Wesnoth Server"
 msgid "Alternate Wesnoth Server"
-msgstr "公式サーバー"
+msgstr "他のWesnothサーバー"
 
 #. [label]: id=no_options_notice
 #: data/gui/macros/custom_options_tree.cfg:25
@@ -5198,8 +5197,6 @@ msgstr ""
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:225
-#, fuzzy
-#| msgid "an advancement choice"
 msgid "waiting for^an advancement choice"
 msgstr "レベルアップ先の選択"
 
@@ -6235,35 +6232,29 @@ msgid " This server disallows unregistered nicknames."
 msgstr " このサーバーは登録されていないニックネームを受け入れません。"
 
 #: src/game_initialization/multiplayer.cpp:332
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
-msgstr "ニックネーム「$nick」は、フォーラム上でバンされています。"
+msgstr ""
+"ニックネーム「 $nick 」は、フォーラム上で $duration の間バンされています。"
 
 #: src/game_initialization/multiplayer.cpp:334
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "ニックネーム「$nick」は、フォーラム上でバンされています。"
 
 #: src/game_initialization/multiplayer.cpp:338
-#, fuzzy
-#| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums for $duration|."
-msgstr "あなたの IP アドレスはフォーラム上でバンされています。"
+msgstr "あなたの IP アドレスはフォーラム上で $duration の間バンされています。"
 
 #: src/game_initialization/multiplayer.cpp:340
 msgid "Your IP address is banned on this server’s forums."
 msgstr "あなたの IP アドレスはフォーラム上でバンされています。"
 
 #: src/game_initialization/multiplayer.cpp:344
-#, fuzzy
-#| msgid ""
-#| "The email address for the nickname ‘$nick’ is banned on this server’s "
-#| "forums."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
 msgstr ""
-"ニックネーム「$nick」のメールアドレスは、フォーラム上でバンされています。"
+"ニックネーム「$nick」のメールアドレスは、フォーラム上で $duration の間バンさ"
+"れています。"
 
 #: src/game_initialization/multiplayer.cpp:346
 msgid ""
@@ -6950,10 +6941,8 @@ msgid "You have no units available to recruit."
 msgstr "雇用できるユニットがいません。"
 
 #: src/menu_events.cpp:282
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recruited"
-msgstr "ユニットは召還されませんでした"
+msgstr "ユニットは雇用されませんでした"
 
 #: src/menu_events.cpp:314
 msgid "You do not have enough gold to recruit that unit"
@@ -7437,7 +7426,7 @@ msgstr "移動コストが 1 未満の土地が見つかりました。"
 #. from another player. This text will be embedded into a sentence.
 #: src/persist_var.cpp:58
 msgid "waiting for^a global variable"
-msgstr ""
+msgstr "グローバル変数"
 
 #: src/play_controller.cpp:242
 msgid "time left for current turn"
@@ -7572,7 +7561,7 @@ msgstr "種類："
 
 #: src/reports.cpp:235
 msgid "Side:"
-msgstr ""
+msgstr "陣営："
 
 #: src/reports.cpp:257
 msgid "Level: "
@@ -7675,14 +7664,10 @@ msgid "Defense: "
 msgstr "回避："
 
 #: src/reports.cpp:620 src/reports.cpp:621
-#, fuzzy
-#| msgid "vision: "
 msgid "vision:"
 msgstr "視界："
 
 #: src/reports.cpp:625 src/reports.cpp:626
-#, fuzzy
-#| msgid "Jamming:"
 msgid "jamming:"
 msgstr "ジャミング："
 
@@ -7780,14 +7765,10 @@ msgid_plural "Attacks"
 msgstr[0] "攻撃"
 
 #: src/reports.cpp:1144
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day schedule:"
-msgstr "時刻補正："
+msgstr "時刻スケジュール"
 
 #: src/reports.cpp:1176
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day:"
 msgstr "時刻補正："
 
@@ -8178,7 +8159,7 @@ msgstr[0] "$desc のため、陣営 $sides を待機中"
 #. This text will be embedded into a sentence.
 #: src/synced_user_choice.hpp:42
 msgid "waiting for^input"
-msgstr ""
+msgstr "入力"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"

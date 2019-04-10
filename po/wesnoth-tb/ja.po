@@ -1,6 +1,7 @@
 # Translators:
 # RatArmy <broadbarredfirefish@gmail.com>, 2019
 # 堀 秀幸 <Hide.HORI@gmail.com>, 2019
+# tamanegi, 2019
 #
 msgid ""
 msgstr ""
@@ -8,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-03-11 13:10 UTC\n"
 "PO-Revision-Date: 2018-08-18 04:59+0000\n"
-"Last-Translator: 堀 秀幸 <Hide.HORI@gmail.com>, 2019\n"
+"Last-Translator: tamanegi, 2019\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -143,11 +144,13 @@ msgid ""
 "them down and clean and oil them. He set the smiths of Maghre to making "
 "spearheads and ax-blades for the rest."
 msgstr ""
-"Baran  という名の、若くして魔術の才能を示して Alduin 島の偉大な魔法学校に行"
-"き、魔法の研究をするため、生まれ故郷に戻った男がいた。人々は、彼の助力と指導"
-"力を当てにした。彼は多くの家で、父や祖父の代から半ば忘れられていた武器が吊る"
-"されているのを発見し、村人に、それらを下ろして掃除し、油を差すよう命じた。彼"
-"は、Maghre の鍛冶屋に、残りの人のために鏃と斧の刃を作るよう命じた。"
+"Baran という名の男がいた。若くして魔術の才能を認められた彼は、Alduin のアカデ"
+"ミーで魔術を修めた後、故郷の Maghre に戻って、魔術師を生業としていた。人々は"
+"彼に助けを求め、指導を仰いだ。彼はまず、多くの家に飾られていた古い武器に目を"
+"つけた。それらが必要だった父祖の時代からは時が過ぎ、半ば存在を忘れられていた"
+"骨董品だったが、彼はそれらを磨き直して油を差すように村人に命じた。さらに彼"
+"は、他の村人にも武器が行き渡るように、村の鍛冶屋に命じて、槍の穂先や斧の刃を"
+"作らせた。"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:62
@@ -658,10 +661,6 @@ msgstr "奴らが見える！ あそこに奴らがいるぞ！"
 
 #. [message]: speaker=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:440
-#, fuzzy
-#| msgid ""
-#| "Curses! If they had been an hour slower our master’s reinforcements would "
-#| "already be here to meet us."
 msgid ""
 "Curses! If they had been an hour slower, our master’s reinforcements would "
 "already be here to meet us."
@@ -979,12 +978,12 @@ msgstr "城の見張り"
 #. [time]: id=indoors_dark_castle
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:235
 msgid "Indoors (dark castle)"
-msgstr ""
+msgstr "屋内（闇の城）"
 
 #. [time]: id=indoors_dark_castle_lit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:250
 msgid "Indoors (lit)"
-msgstr ""
+msgstr "屋内（灯り）"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:306
@@ -1096,10 +1095,6 @@ msgstr "間違いだ！死ね！"
 
 #. [message]: speaker=Knago-Brek
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:492
-#, fuzzy
-#| msgid ""
-#| "Haha! We not kill people for long time. Weapon wants blood. We now kill "
-#| "humans!!"
 msgid ""
 "Haha! We not kill people for long time. Weapon wants blood. We now kill "
 "humans!"
@@ -1109,10 +1104,6 @@ msgstr ""
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:497
-#, fuzzy
-#| msgid ""
-#| "My sword-arm has a say in who will do the dying. Come on, men, let’s kill "
-#| "some orcs."
 msgid ""
 "My sword-arm shall have a say in who will do the dying. Come on, men, let’s "
 "kill some orcs."
@@ -1226,7 +1217,7 @@ msgstr "重要な鍵かも知れん。俺が持っておこう。"
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:764
 msgid "This castle seems as dark as a cave!"
-msgstr ""
+msgstr "この城は洞窟のように暗いぞ！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:770
@@ -1235,6 +1226,9 @@ msgid ""
 "permanent night). Place your units carefully, as your troops will be weaker "
 "and enemy units stronger."
 msgstr ""
+"城の中は常に<i>混沌</i>に有利な時刻となっています（常に夜であることと同義で"
+"す）。ユニットの移動場所には注意しましょう。敵が強化され、味方は弱体化するの"
+"ですから。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:790
@@ -1577,7 +1571,7 @@ msgstr ""
 #. [message]: speaker=Tairach
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:341
 msgid "Today, you shall pay for disfiguring my face, mage!"
-msgstr ""
+msgstr "魔術師、今日こそ俺の顔を傷つけたツケを返してもらうぞ！"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:346
@@ -1585,6 +1579,8 @@ msgid ""
 "I have already paid with the lives of my men at Toen Caric. It is time I "
 "righted that mistake and finished this once and for all."
 msgstr ""
+"そのために Toen Caric の仲間達の命が犠牲になった。ここでその過ちを正し、全て"
+"を終わらせてみせる。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:355
