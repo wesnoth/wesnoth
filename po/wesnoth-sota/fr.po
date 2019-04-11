@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-03-11 13:10 UTC\n"
-"PO-Revision-Date: 2018-07-29 17:52+0200\n"
-"Last-Translator: Gérard Bodin <gbodin.qc@gmail.com>\n"
+"PO-Revision-Date: 2019-04-10 20:50+0200\n"
+"Last-Translator: Syll <syll-dev@laposte.net>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -65,12 +65,6 @@ msgstr "Difficile"
 
 #. [campaign]: id=Secrets of the Ancients
 #: data/campaigns/Secrets_of_the_Ancients/_main.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Rediscover the secrets known by the lich lords of the Green Isle. They "
-#| "knew how to live forever, so why can't you?\n"
-#| "\n"
-#| "(Intermediate level, 21 scenarios.)\n"
 msgid ""
 "Rediscover the secrets known by the lich lords of the Green Isle. They knew "
 "how to live forever, so why can't you?\n"
@@ -81,7 +75,7 @@ msgstr ""
 "savaient comment vivre éternellement, pourquoi ne le pourriez-vous pas "
 "également ?\n"
 "\n"
-"(Niveau Intermédiaire, 21 scénarios.)\n"
+"(Niveau Difficile, 21 scénarios.)\n"
 
 #. [about]
 #: data/campaigns/Secrets_of_the_Ancients/_main.cfg:28
@@ -253,11 +247,11 @@ msgid ""
 "breathing their last, they will have to beg me for the secret. Perhaps I "
 "will be generous. Perhaps not."
 msgstr ""
-"Plus tard :\n"
+"Plus tard :\n"
 "\n"
 "Après plus ample observation, j'ai déterminé que ceci n'était probablement "
 "pas la façon d'éviter la mort. La chauve-souris réanimée n'a aucune "
-"volonté ! Elle ne fait rien à moins que je ne l'agite par la pensée. Peut-"
+"volonté ! Elle ne fait rien à moins que je ne l'agite par la pensée. Peut-"
 "être la volonté d'un humain est-elle plus forte, et un jour prochain j'aurai "
 "l'occasion de le découvrir... parce que je quitte l'Académie. Je serai dans "
 "ma chambre quand le vieux Morvihn contrôlera le dortoir pour la nuit, mais "
@@ -311,7 +305,7 @@ msgstr ""
 "être capable d'atteindre le village de Llorvin avant l'aurore. Je peux m'y "
 "cacher jusqu'à ce que je puisse me rendre sur le quai. J'aurai besoin de "
 "quelque argent pour le transport, donc allez, mes amies chauves-souris, et "
-"rapportez-moi de l'or !"
+"rapportez-moi de l'or !"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:309
@@ -331,19 +325,13 @@ msgstr ""
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:321
-#, fuzzy
-#| msgid ""
-#| "Wolves! This journey may be more dangerous than I thought. Well, we can "
-#| "find safety inside the sturdy fences built by farmers and woodcutters. "
-#| "The wild animals surely won't be able to enter."
 msgid ""
 "A wolf! This journey may be more dangerous than I thought. If we need to, I "
 "suppose we could rest inside a farmer's or woodcutter's fence."
 msgstr ""
-"Des loups ! Ce voyage pourrait être plus dangereux que je ne pensais. Hé "
-"bien, nous pouvons trouver refuge entre les solides barrières construites "
-"par les fermiers et bûcherons. Les animaux sauvages ne pourront certainement "
-"pas entrer."
+"Un loup ! Ce voyage pourrait être plus dangereux que je ne pensais. Au "
+"besoin, je suppose que nous pourrons nous reposer entre les barrières "
+"construites par les fermiers et bûcherons."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:344
@@ -351,7 +339,7 @@ msgid ""
 "The morning has come, and I am still in the open. I will be caught for sure!"
 msgstr ""
 "Le jour se lève, et je suis toujours à découvert. C'est sûr, je vais me "
-"faire prendre !"
+"faire prendre !"
 
 #. [scenario]: id=02_Dark_Business
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:11
@@ -487,11 +475,10 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:442
-#, fuzzy
-#| msgid "Right-click on a grave adjacent to your leader to raise a unit."
 msgid "Right-click adjacent to your leader to summon the bat."
 msgstr ""
-"Clic-droit sur une tombe adjacente à votre chef pour relever une unité."
+"Clic-droit sur une case adjacente à votre commandant pour invoquer la chauve-"
+"souris."
 
 #. [set_menu_item]: id=summon_bat
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:450
@@ -500,10 +487,8 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:490
-#, fuzzy
-#| msgid "You don't have enough gold to raise that unit."
 msgid "You don't have enough gold to summon the bat."
-msgstr "Vous n'avez pas assez d'or pour relever cette unité."
+msgstr "Vous n'avez pas assez d'or pour invoquer la chauve-souris."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:572
@@ -567,7 +552,7 @@ msgid ""
 "And why <i>twelve</i> of us? Who wants to break into a cemetery that badly?"
 msgstr ""
 "Et pourquoi <i>douze</i> d'entre nous ? Qui voudrait à ce point entrer par "
-"effraction dans un cimetière ?"
+"effraction dans un cimetière ?"
 
 #. [message]: speaker=Veomyr
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:755
@@ -575,7 +560,7 @@ msgid ""
 "And why <i>seven</i> of us? Who wants to break into a cemetery that badly?"
 msgstr ""
 "Et pourquoi <i>sept</i> d'entre nous ? Qui voudrait à ce point entrer par "
-"effraction dans un cimetière ?"
+"effraction dans un cimetière ?"
 
 #. [message]: speaker=Glant
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:760
@@ -622,7 +607,7 @@ msgstr "Hhnnn."
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:837
 msgid "Do you remember anything?"
-msgstr "Te souviens-tu de quoi que ce soit ?"
+msgstr "Te souviens-tu de quoi que ce soit ?"
 
 #. [message]: speaker=first_zombie
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:842
@@ -758,8 +743,8 @@ msgstr "Vaincre le chef ennemi"
 msgid ""
 "They are not underfed, they’re dead! How can they be dead? They’re horrible!"
 msgstr ""
-"Ils ne sont pas sous-alimentés, ils sont morts ! Comment peuvent-ils être "
-"morts ? Ils sont horribles !"
+"Ils ne sont pas sous-alimentés, ils sont morts ! Comment peuvent-ils être "
+"morts ? Ils sont horribles !"
 
 #. [message]: speaker=Garcyn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/03_Bandits.cfg:104
@@ -963,7 +948,7 @@ msgstr "Clic-droit pour simplifier les graphismes du navire."
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:456
 msgid "You can now recruit ghouls!"
-msgstr "Vous pouvez maintenant recruter des goules !"
+msgstr "Vous pouvez maintenant recruter des goules !"
 
 #. [unit]: type=Sailor, id=Joc
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:490
@@ -988,7 +973,7 @@ msgid ""
 "crew and get them up here. We’re going hunting. All passengers are confined "
 "to quarters immediately."
 msgstr ""
-"Des clandestins meurtriers sur mon navire ? Pas de ça chez moi ! Trouve le "
+"Des clandestins meurtriers sur mon navire ? Pas de ça chez moi ! Trouve le "
 "reste de l'équipage et rassemble-les ici. On part à la chasse. Tous les "
 "passagers sont consignés dans leurs quartiers immédiatement."
 
@@ -1066,7 +1051,7 @@ msgstr "Voguer. Oui. Besoin vent."
 msgid ""
 "Oh! It worked! Take us to port, Captain, as soon as you do have the wind."
 msgstr ""
-"Ho ! Ça a marché ! Menez-nous à bon port, Capitaine, aussitôt que vous aurez "
+"Ho ! Ça a marché ! Menez-nous à bon port, Capitaine, aussitôt que vous aurez "
 "du vent."
 
 #. [scenario]: id=05_Blackwater
@@ -1089,7 +1074,7 @@ msgstr ""
 "Quand le capitaine a conservé ses souvenirs, j'ai conclu que cela devait "
 "être parce qu'il avait été relevé aussi vite après sa mort. Des expériences "
 "ultérieures sur les autres passagers ont confirmé cette hypothèse. Pensez-"
-"donc : ils pourraient bien être les premières personnes sur ce continent à "
+"donc : ils pourraient bien être les premières personnes sur ce continent à "
 "vivre pour toujours !"
 
 #. [part]
@@ -1346,7 +1331,7 @@ msgstr ""
 #. [message]: speaker=Bone Captain
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:227
 msgid "Ghost?"
-msgstr "Fantôme ?"
+msgstr "Fantôme ?"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:231
@@ -1459,7 +1444,7 @@ msgid ""
 "Patches of fungus on the wall gave off a feeble glow that kept me from "
 "stumbling too badly. Finally I saw a brighter light up ahead."
 msgstr ""
-"09/04/23 YW :\n"
+"09/04/23 YW :\n"
 "\n"
 "Le tunnel au fond de la grotte devint exigu et se prolongeait un bon moment. "
 "Des plaques fongiques sur le mur renvoyaient une faible lueur m'empêchant de "
@@ -1485,12 +1470,12 @@ msgstr "Ho, woaw."
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:166
 msgid "I am Ras-Tabahn. Welcome to my laboratory, Ardonna of Tarrynth!"
 msgstr ""
-"Je suis Ras-Tabahn. Bienvenue dans mon laboratoire, Ardonna de Tarrynth !"
+"Je suis Ras-Tabahn. Bienvenue dans mon laboratoire, Ardonna de Tarrynth !"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:170
 msgid "How do you know my name?"
-msgstr "Comment connaissez-vous mon nom ?"
+msgstr "Comment connaissez-vous mon nom ?"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:174
@@ -1770,7 +1755,7 @@ msgstr ""
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:292
 msgid "You are Carcyn the Third I presume?"
-msgstr "Tu es Carcyn le Troisième, je présume ?"
+msgstr "Tu es Carcyn le Troisième, je présume ?"
 
 #. [message]: speaker=Carcyn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:301
@@ -1992,7 +1977,7 @@ msgstr "Vous pouvez observer."
 #. [message]: speaker=Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:366
 msgid "Can we help?"
-msgstr "Pouvons-nous aider ?"
+msgstr "Pouvons-nous aider ?"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:370
@@ -2007,7 +1992,7 @@ msgstr "Tu peux observer."
 #. [message]: id=Carcyn,Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:384
 msgid "Can I help?"
-msgstr "Puis-je aider ?"
+msgstr "Puis-je aider ?"
 
 #. [message]: id=Carcyn,Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:385
@@ -2140,7 +2125,7 @@ msgstr "Bien. Nous avons terminé avec une quantité d'or décente."
 #. [message]: speaker=Okean
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:468
 msgid "You! You have destroyed the town of Carcyn!"
-msgstr "Vous ! Vous avez détruit le village de Carcyn !"
+msgstr "Vous ! Vous avez détruit le village de Carcyn !"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:472
@@ -2233,7 +2218,7 @@ msgstr ""
 #. [message]: id=Carcyn,Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:530
 msgid "Right away sir. Are you feeling well?"
-msgstr "Tout de suite, monsieur. Vous allez bien ?"
+msgstr "Tout de suite, monsieur. Vous allez bien ?"
 
 #. [message]: id=Carcyn,Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:539
@@ -2428,16 +2413,12 @@ msgstr ""
 
 #. [message]: speaker=Krissaz
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:154
-#, fuzzy
-#| msgid ""
-#| "When the mage isss dead and her sssouls put to ressst, we agree. We will "
-#| "have been compensssated adequately."
 msgid ""
 "When the mage isss dead and her dead horde put to ressst, we agree. We will "
 "have been compensssated adequately."
 msgstr ""
-"Une fois la mage morte et ssses esssprits apaisés, nous ssserons d'accord. "
-"Nous ssserons alors adéquatement compensssés."
+"Une fois la mage morte et sssa horde apaisssée, nous ssserons d'accord. Nous "
+"ssserons alors adéquatement compensssés."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:158
@@ -2446,15 +2427,13 @@ msgstr "Chaque fois..."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:167
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "Good. Now I can practice recruiting ghosts."
-msgstr "Vous pouvez désormais recruter des fantômes !"
+msgstr "Vous pouvez désormais recruter des fantômes."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:173
 msgid "You can now recruit ghosts!"
-msgstr "Vous pouvez désormais recruter des fantômes !"
+msgstr "Vous pouvez désormais recruter des fantômes !"
 
 #. [unit]: id=Vendraxis, type=Saurian Soothsayer
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:197
@@ -2464,7 +2443,7 @@ msgstr "Vendraxis"
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:216
 msgid "Human, take me with you!"
-msgstr "Humaine, laissssez-moi vous rejoindre !"
+msgstr "Humaine, laissssez-moi vous rejoindre !"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:220
@@ -2628,7 +2607,7 @@ msgstr "Dolmathengalin"
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:347
 msgid "You are greeted daughter of elves. Why does the forest moan in despair?"
 msgstr ""
-"Mes salutations, fille des elfes. Pourquoi la forêt gémit-elle de désespoir ?"
+"Mes salutations, fille des elfes. Pourquoi la forêt gémit-elle de désespoir ?"
 
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:351
@@ -2925,7 +2904,7 @@ msgstr ""
 #. [message]: speaker=Rod-Ishnak
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/14_Entering_the_Northlands.cfg:215
 msgid "I arrived first, Hroog. It’s mine!"
-msgstr "Je suis arrivé premier, Hroog. Il est à moi !"
+msgstr "Je suis arrivé premier, Hroog. Il est à moi !"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/14_Entering_the_Northlands.cfg:219
@@ -2944,7 +2923,7 @@ msgstr ""
 #. [message]: speaker=Vok-Hroog
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/14_Entering_the_Northlands.cfg:227
 msgid "Wait who’s that?"
-msgstr "Un instant, c'est qui ça ?"
+msgstr "Un instant, c'est qui ça ?"
 
 #. [message]: speaker=Rod-Ishnak
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/14_Entering_the_Northlands.cfg:231
@@ -2953,7 +2932,7 @@ msgid ""
 "a contest. Whoever kills the most wizards and skeletons and stuff takes this "
 "territory and all the human slaves."
 msgstr ""
-"Des sorciers et des morts comme au pays ! Je <i>hais</i> ces types ! Je "
+"Des sorciers et des morts comme au pays ! Je <i>hais</i> ces types ! Je "
 "suggère un concours. Celui qui bute le plus de mages et de squelettes et de "
 "machins garde le territoire et tous les esclaves humains."
 
@@ -3028,7 +3007,7 @@ msgstr "Il y a de... gros ossements ici. Des griffes et des ailes... Je crois."
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:174
 msgid "I wonder what are they from. A gryphon perhaps?"
-msgstr "Je me demande quelle est leur provenance. Un griffon, peut-être ?"
+msgstr "Je me demande quelle est leur provenance. Un griffon, peut-être ?"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:178
@@ -3070,7 +3049,7 @@ msgstr "C'est fantastique ! Ces oiseaux pourraient être très utiles."
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:348
 msgid "What dangers may lurk in this fog?"
-msgstr "Quels dangers se tapissent dans ce brouillard ?"
+msgstr "Quels dangers se tapissent dans ce brouillard ?"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:352
@@ -3171,7 +3150,7 @@ msgstr ""
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:330
 msgid "Crelanu! (<i>Cough, cough</i>) We have come... for your book."
-msgstr "Crelanu ! (<i>Kof, kof</i>) Nous sommes venus... pour ton livre."
+msgstr "Crelanu ! (<i>Kof, kof</i>) Nous sommes venus... pour ton livre."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:334
@@ -3230,7 +3209,7 @@ msgstr ""
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:391
 msgid "Now, you will tell us the secret of immortality or die!"
-msgstr "Maintenant, dites-nous le secret de l'immortalité ou mourez !"
+msgstr "Maintenant, dites-nous le secret de l'immortalité ou mourez !"
 
 #. [message]: speaker=Crelanu
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:395
@@ -3286,7 +3265,7 @@ msgstr ""
 "06/06/23 ap. W:\n"
 "\n"
 "Non loin dans la grotte se trouvait un château en ruine construit dans un "
-"style que je ne reconnaissais pas. Ras-Tabahn dit : \"Des nains.\" Il était "
+"style que je ne reconnaissais pas. Ras-Tabahn dit : \"Des nains.\" Il était "
 "infesté de rats, et clairement, aucun nain n'avait vécu ici depuis longtemps."
 
 #. [side]
@@ -3679,7 +3658,7 @@ msgstr ""
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/19_Lava_and_Stone.cfg:129
 msgid "Trolls! Do you think we shall encounter any?"
-msgstr "Des trolls ! Pensez-vous que nous pourrions en croiser ?"
+msgstr "Des trolls ! Pensez-vous que nous pourrions en croiser ?"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/19_Lava_and_Stone.cfg:133
@@ -3786,7 +3765,7 @@ msgid ""
 "Human invaders be comin’ through the Hall o’ Heroes! I’m closin’ th’ Troll "
 "Gate!"
 msgstr ""
-"Des zintrus humains s'pointent par le Hall des Héros ! J'ferme la Porte "
+"Des zintrus humains s'pointent par le Hall des Héros ! J'ferme la Porte "
 "Trolle!"
 
 #. [message]: speaker=Ardonna
@@ -3800,7 +3779,7 @@ msgid ""
 "But look. There is a large crack in the wall to our left! I’m certain we "
 "could squeeze through."
 msgstr ""
-"Mais regarde. Il y a une large fissure dans le mur sur notre gauche ! Je "
+"Mais regarde. Il y a une large fissure dans le mur sur notre gauche ! Je "
 "suis certain que nous pourrions nous y faufiler."
 
 #. [message]: speaker=Ras-Tabahn
@@ -4076,18 +4055,13 @@ msgstr "Taxtrimon"
 
 #. [message]: speaker=Taxtrimon
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:881
-#, fuzzy
-#| msgid ""
-#| "We have found them! These magi destroyed a profitable business venture, "
-#| "and killed our males. We will take vengeance. You horse humans can assist "
-#| "us."
 msgid ""
 "We have found them! These magi destroyed a profitable business venture. We "
 "will take vengeance. You horse humans can assist us."
 msgstr ""
-"Nous les avons trouvés ! Ces mages ont détruit une affaire entreprenariale "
-"juteuse, et tué nos mâles. Nous prendrons notre revanche. Vous autres "
-"humains montés pouvez nous aider."
+"Nous les avons trouvés ! Ces mages ont détruit une affaire entrepreneuriale "
+"juteuse. Nous prendrons notre revanche. Vous autres humains montés pouvez "
+"nous aider."
 
 #. [unit]: type=Merman Hoplite, id=Mauapan
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:894
@@ -4462,7 +4436,7 @@ msgstr "J'ai changé d'avis. Peut-être seras-tu très puissant un jour."
 #. [message]: speaker=$unit.id
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:493
 msgid "Thanks!"
-msgstr "Merci !"
+msgstr "Merci !"
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:508

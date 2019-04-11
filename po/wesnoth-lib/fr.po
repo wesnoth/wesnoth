@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-03-11 16:09+0300\n"
-"PO-Revision-Date: 2019-02-02 18:44+0100\n"
-"Last-Translator: Gérard Bodin <gbodin.qc@gmail.com>\n"
+"PO-Revision-Date: 2019-04-10 20:44+0200\n"
+"Last-Translator: Syll <syll-dev@laposte.net>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -250,6 +250,11 @@ msgstr "Sables du désert"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:298
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Deserts'</italic> have a somewhat different composition "
+#| "than small sand pits or beaches, however for gameplay purposes they are "
+#| "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
@@ -257,7 +262,7 @@ msgid ""
 msgstr ""
 "Les <italic>text='déserts'</italic> sont en réalité assez différents des "
 "plages et des petites étendues de sables, mais pour le jeu il n'y a aucune "
-"différence. Voir <ref>dst='..terrain_sand' text='sable'</ref>."
+"différence. Voir <ref>dst='terrain_sand' text='sable'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -1662,6 +1667,15 @@ msgstr "Sable"
 
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:2762
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
+#| "and sand.\n"
+#| "This provides most land units with a more steady footing and defensive "
+#| "positions than wading in shallow water normally would and also grants "
+#| "most water-dwelling races an exceptionally high defense.\n"
+#| "\n"
+#| "Mermen and Naga both receive 70% defense on coastal reefs."
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
 "and sand.\n"
@@ -1704,6 +1718,17 @@ msgstr ""
 
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:2791
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Swamps'</italic> represent any sort of wetlands.\n"
+#| "Swamps slow down nearly everyone, and inhibit their ability to defend "
+#| "themselves. An exception to this is any race bodily skilled in navigating "
+#| "water; these receive both full movement and a defensive bonus. Those that "
+#| "make their living in the wetlands are also adept at using this terrain "
+#| "for cover.\n"
+#| "\n"
+#| "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
+#| "all generally enjoy 60%."
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands.\n"
 "Swamps slow down nearly everyone, and inhibit their ability to defend "
@@ -1728,6 +1753,18 @@ msgstr ""
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:2804
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Shallow water'</italic> represents any body of water deep "
+#| "enough to come up to roughly a man’s waist. This is enough to slow down "
+#| "nearly anyone and leave them wide open to attack. Dwarves, given that the "
+#| "water reaches up almost to their heads, have an extremely hard time of "
+#| "this. The exception is any race whose bodies naturally lend themselves to "
+#| "swimming, for which they receive a considerable defensive bonus and full "
+#| "movement.\n"
+#| "\n"
+#| "Most units make do with 20 to 30% defense in shallow water, whereas both "
+#| "naga and mermen enjoy 60%."
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -1798,6 +1835,15 @@ msgstr ""
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:2845
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Deep water'</italic> represents any body of water deep "
+#| "enough to cover a man’s head.\n"
+#| "Most units cannot enter deep water: it is the domain of units which can "
+#| "either fly, or are exceptionally strong swimmers.\n"
+#| "\n"
+#| "Mermen and naga both receive 50% defense in deep water, with full "
+#| "movement."
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
 "to cover a man’s head.\n"
@@ -2524,8 +2570,10 @@ msgstr "Difficulté"
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:73
+#, fuzzy
+#| msgid "Select difficulty level:"
 msgid "Select difficulty:"
-msgstr "Sélectionnez la difficulté :"
+msgstr "Sélectionnez le niveau de difficulté :"
 
 #. [label]
 #: data/gui/window/chat_log.cfg:36
@@ -5431,8 +5479,10 @@ msgid "The maximum text width is less than 1."
 msgstr "La largeur maximum du texte est inférieure à 1."
 
 #: src/font/text.cpp:761
+#, fuzzy
+#| msgid "The text contains invalid markup: "
 msgid "The text contains invalid Pango markup: "
-msgstr "Le texte contient une balise Pango invalide : "
+msgstr "Le texte contient une balise invalide : "
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:251
@@ -5686,12 +5736,16 @@ msgid "addons_order^Type ($order)"
 msgstr "Type ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:225
+#, fuzzy
+#| msgid "addons_order^Last updated ($order)"
 msgid "addons_order^Last updated ($datelike_order)"
-msgstr "Dernière mise à jour ($datelike_order)"
+msgstr "Dernière mise à jour ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:228
+#, fuzzy
+#| msgid "addons_order^First uploaded ($order)"
 msgid "addons_order^First uploaded ($datelike_order)"
-msgstr "Date d'envoi initiale ($datelike_order)"
+msgstr "Date d'envoi initiale ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:257 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -6285,6 +6339,10 @@ msgid "Use map settings:"
 msgstr "Utiliser les paramètres de la carte :"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:493
+#, fuzzy
+#| msgid ""
+#| "One or more items need to be installed\n"
+#| "in order to join this game."
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -6603,12 +6661,16 @@ msgid "Room <i>“$name”</i> joined"
 msgstr "Salle <i>$name</i> rejointe"
 
 #: src/gui/widgets/chatbox.cpp:392
+#, fuzzy
+#| msgid ""
+#| "Whisper session with <i>“$name”</i> started. If you do not want to "
+#| "receive messages from this user, type <i>/ignore $name</i>\n"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>"
 msgstr ""
 "Une conversation privée avec <i>\"$name\"</i> a débuté. Si vous ne voulez "
-"pas recevoir les messages de cet utilisateur, tapez <i>/ignore $name</i>"
+"pas recevoir les messages de cet utilisateur, tapez <i>/ignore $name</i>\n"
 
 #: src/gui/widgets/chatbox.cpp:631
 msgid "$player has entered the room"
@@ -6992,7 +7054,7 @@ msgstr "Reprendre le jeu en réseau"
 
 #: src/hotkey/hotkey_command.cpp:125
 msgid "Quit to Main Menu"
-msgstr "Quitter pour l'écran d'acceuil"
+msgstr "Quitter pour l'écran d'accueil"
 
 #: src/hotkey/hotkey_command.cpp:126
 msgid "Set Team Label"
@@ -7720,35 +7782,24 @@ msgstr ""
 "La clef « $deprecated_key » a été remplacée par « $key ». « $deprecated_key "
 "» ne sera plus maintenue à partir de la version $removal_version."
 
-#~ msgid "asc"
-#~ msgstr "asc"
-
-#~ msgid "desc"
-#~ msgstr "desc"
-
-#~ msgid "Speed:"
-#~ msgstr "Vitesse :"
-
-#~ msgid "Units move and fight speed"
-#~ msgstr "Vitesse des déplacements et des combats"
-
-#~ msgid "Scenario"
-#~ msgstr "Scénario"
-
-#~ msgid "Campaign"
-#~ msgstr "Campagne"
-
-#~ msgid "No era information found."
-#~ msgstr "Aucune information sur l'ère."
-
-#~ msgid "Deterministic mode"
-#~ msgstr "Mode déterministe"
-
 #~ msgid "Rusty Open Gate"
 #~ msgstr "Porte rouillée ouverte"
 
 #~ msgid "Wooden Open Door"
 #~ msgstr "Porte en bois ouverte"
+
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr ""
+#~ "Il n'existe pas d'options personnalisées pour cette ère, partie ou "
+#~ "modification."
+
+#~ msgid "Connected Players"
+#~ msgstr "Joueurs connectés"
+
+#~ msgid "Deterministic mode"
+#~ msgstr "Mode déterministe"
 
 #~ msgid "Sort players:"
 #~ msgstr "Trier les joueurs :"
@@ -7758,16 +7809,6 @@ msgstr ""
 
 #~ msgid "Alphabetically"
 #~ msgstr "Alphabétiquement"
-
-# Un accord à faire peut-être ?
-# Qu'est-ce qui est illimité ?
-#, fuzzy
-#~| msgid "unlimited"
-#~ msgid "FPS limiter"
-#~ msgstr "illimité"
-
-#~ msgid "Registered users only:"
-#~ msgstr "Utilisateurs enregistrés seulement :"
 
 #~ msgid "Refresh"
 #~ msgstr "Rafraîchir"
@@ -7789,14 +7830,51 @@ msgstr ""
 #~ "Le forum de Bataille pour Wesnoth se trouve à cette adresse : https://"
 #~ "forums.wesnoth.org/"
 
+#~ msgid "Speed:"
+#~ msgstr "Vitesse :"
+
+#~ msgid "Units move and fight speed"
+#~ msgstr "Vitesse des déplacements et des combats"
+
 #~ msgid "Available at titlescreen"
-#~ msgstr "Disponible dans l'écran d’accueil"
+#~ msgstr "Disponible dans l'écran d'accueil"
+
+#~ msgid "Scenario"
+#~ msgstr "Scénario"
+
+#~ msgid "Campaign"
+#~ msgstr "Campagne"
+
+#~ msgid "asc"
+#~ msgstr "asc"
+
+#~ msgid "desc"
+#~ msgstr "desc"
 
 #~ msgid "None"
 #~ msgstr "Aucune"
 
+#~ msgid "Era:"
+#~ msgstr "Ère :"
+
 #~ msgid "Settings:"
 #~ msgstr "Paramètres :"
+
+#~ msgid "Registered users only:"
+#~ msgstr "Utilisateurs enregistrés seulement :"
+
+#~ msgid "No era information found."
+#~ msgstr "Aucune information sur l'ère."
+
+#~ msgid "Quit to Titlescreen"
+#~ msgstr "Quitter pour l'écran d’accueil"
+
+# Un accord à faire peut-être ?
+# Qu'est-ce qui est illimité ?
+#, fuzzy
+#~| msgid "unlimited"
+#~ msgid "FPS limiter"
+#~ msgstr "illimité"
 
 #~ msgid "Rooms"
 #~ msgstr "Salles de discussions"
@@ -7868,11 +7946,6 @@ msgstr ""
 
 #~ msgid "Ban"
 #~ msgstr "Exclure"
-
-#, fuzzy
-#~| msgid "Choose Player"
-#~ msgid "Connected Players"
-#~ msgstr "Choisir un joueur"
 
 #~ msgid "Sort lobby list"
 #~ msgstr "Trier les connectés au vestibule"
