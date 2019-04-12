@@ -48,14 +48,14 @@ struct invalid_pbl_exception : public std::exception
 	/** Destructor.
 	 * Virtual to allow for subclassing.
 	 */
-	virtual ~invalid_pbl_exception() BOOST_NOEXCEPT (){}
+	virtual ~invalid_pbl_exception() BOOST_NOEXCEPT {}
 
 	/** Returns a pointer to the (constant) error description.
 	 *  @return A pointer to a const char*. The underlying memory
 	 *          is in posession of the Exception object. Callers must
 	 *          not attempt to free the memory.
 	 */
-	virtual const char* what() const BOOST_NOEXCEPT (){
+	virtual const char* what() const BOOST_NOEXCEPT {
 		return message.c_str();
 	}
 };
