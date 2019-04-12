@@ -23,6 +23,7 @@ class version_info;
 #include <string>
 #include <vector>
 #include <utility>
+#include <boost/throw_exception.hpp>
 
 /**
  * Exception thrown when the WML parser fails to read a .pbl file.
