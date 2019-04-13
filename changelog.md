@@ -119,6 +119,8 @@
  ### Campaigns
    * Eastern Invasion:
      * S9: add dialogue on victory
+   * Son of the Black Eye:
+     * S10: add dialogue on victory
 
 ## Version 1.14.6+dev
  ### Campaigns
