@@ -115,6 +115,11 @@
    * The sidebar, recall dialog, etc now show attack's range (melee/ranged) and
      damage type (arcane/blade/cold/...) using icons. (PR #3732, #3740)
 
+## Version 1.14.7+dev
+ ### Campaigns
+   * Eastern Invasion:
+     * S9: add dialogue on victory
+
 ## Version 1.14.6+dev
  ### Campaigns
    * A Tale of Two Brothers:
