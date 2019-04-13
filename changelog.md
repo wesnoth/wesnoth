@@ -1,4 +1,7 @@
 ## Version 1.14.7+dev
+ ### Campaigns
+   * Eastern Invasion:
+     * S9: add dialogue on victory
 
 ## Version 1.14.7
  ### Campaigns
