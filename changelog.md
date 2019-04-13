@@ -2,6 +2,8 @@
  ### Campaigns
    * Eastern Invasion:
      * S9: add dialogue on victory
+   * Sceptre of Fire:
+     * S9: objectives changed to be more accurate upon moving to the volcano
    * Son of the Black Eye:
      * S10: add dialogue on victory
    * The Rise of Wesnoth:
