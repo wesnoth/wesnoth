@@ -117,6 +117,8 @@
 
 ## Version 1.14.7+dev
  ### Campaigns
+   * Descent into Darkness:
+     * Update maps for S1 and S6
    * Eastern Invasion:
      * S9: add dialogue on victory
    * Sceptre of Fire:
