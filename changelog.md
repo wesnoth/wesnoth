@@ -4,6 +4,8 @@
      * S9: add dialogue on victory
    * Son of the Black Eye:
      * S10: add dialogue on victory
+   * The Rise of Wesnoth:
+     * S17a: prevent time over defeat if player chooses to defeat remaining saurians
 
 ## Version 1.14.7
  ### Campaigns
