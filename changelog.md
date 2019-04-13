@@ -61,6 +61,8 @@
    * OpenMP support has been removed. It is no longer an optional build-time dependency.
  ### Units
    * Saurian warriors are now female. (issue #3392)
+   * Giant Scorpion now has 20% resistance to arcane and 0% to all other resists
+   * Added Sand Scuttler variation to the Giant Scorpion with same resists as original unit
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a special location ID
