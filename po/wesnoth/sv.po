@@ -1,19 +1,21 @@
 # Swedish translations for Battle for Wesnoth
 # translation of sv.po to
+# Mattias Münster <mattiasmun@gmail.com>, 2019.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2016-01-10 14:11+0100\n"
-"Last-Translator: Susanna Björverud <susanna.bjorverud@gmail.com>\n"
-"Language-Team: Swedish\n"
-"Language: sv_SE\n"
+"PO-Revision-Date: 2019-04-14 22:08+0200\n"
+"Last-Translator: Mattias Münster <mattiasmun@gmail.com>\n"
+"Language-Team: Svenska <mattiasmun@gmail.com>\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.6\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 3.30.1\n"
 "X-Poedit-Basepath: /home/niklas/Documents/wesnoth/source/wesnoth-1.9\n"
 
 #. [multiplayer_side]: id=Custom
@@ -180,30 +182,29 @@ msgstr "Visa färgpekare"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:148
-#, fuzzy
 #| msgid "Show color cursors"
 msgid "Use colored mouse cursors"
-msgstr "Visa färgpekare"
+msgstr "Använd färgpekare"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:155
 msgid "Graphics scaling options"
-msgstr ""
+msgstr "Alternativ för grafik skalning"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:161
 msgid "Customize orb colors"
-msgstr ""
+msgstr "Anpassa Orb färger"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:167
 msgid "Logging"
-msgstr ""
+msgstr "Loggning"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:173
 msgid "Allow damage calculation with Monte Carlo simulation"
-msgstr ""
+msgstr "Tillåt skadeberäkning med Monte Carlo-simulering"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:174
@@ -211,23 +212,24 @@ msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
 msgstr ""
+"Tillåt fönstret för skadeberäkning att simulera slagsmål i stället för att "
+"använda exakta sannolikhetsberäkningar"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:181
-#, fuzzy
 #| msgid "Sound Effects"
 msgid "Show haloing effects"
-msgstr "Ljudeffekter"
+msgstr "Visa cirklande effekter"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:182
 msgid "Show special unit graphical effects"
-msgstr ""
+msgstr "Visa grafiska effekter för specialenheter"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:189
 msgid "Show deprecation messages in-game"
-msgstr ""
+msgstr "Visa utfasnings meddelanden i spelet"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:190
@@ -236,6 +238,10 @@ msgid ""
 "will still be shown in the log, even if this is disabled. In addition, the "
 "deprecation log-domain controls how many messages are printed."
 msgstr ""
+"Visa varningar om föråldrad API i chattområdet i spelet. Dessa meddelanden "
+"kommer fortfarande att visas i loggen, även om detta är inaktiverat. "
+"Dessutom kontrollerar utfasnings logg domänen hur många meddelanden som "
+"skrivs ut."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:198
@@ -265,72 +271,72 @@ msgstr "Joystick: antal för joystickens Y-axelsrullning"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:245
 msgid "Joystick: deadzone of the scrolling stick"
-msgstr ""
+msgstr "Joystick: dödzon av rullningspinnen"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:255
 msgid "Joystick: number of the cursor X-axis joystick"
-msgstr ""
+msgstr "Joystick: nummer på markören X-axelns joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:265
 msgid "Joystick: number of the cursor X-axis"
-msgstr ""
+msgstr "Joystick: nummer på markören X-axeln"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:275
 msgid "Joystick: number of the cursor Y-axis joystick"
-msgstr ""
+msgstr "Joystick: nummer på markören Y-axelspak"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:285
 msgid "Joystick: number of the cursor Y-axis"
-msgstr ""
+msgstr "Joystick: nummer på markören Y-axeln"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:295
 msgid "Joystick: deadzone of the cursor stick"
-msgstr ""
+msgstr "Joystick: deadzone av markören pinne"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:305
 msgid "Joystick: number of the mouse X-axis joystick"
-msgstr ""
+msgstr "Joystick: nummer för musens X-axelspak"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:315
 msgid "Joystick: number of the mouse X-axis"
-msgstr ""
+msgstr "Joystick: musens nummer X-axel"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:325
 msgid "Joystick: number of the mouse Y-axis joystick"
-msgstr ""
+msgstr "Joystick: nummer för musens Y-axelspak"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:335
 msgid "Joystick: number of the mouse Y-axis"
-msgstr ""
+msgstr "Joystick: musens nummer Y-axel"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:345
 msgid "Joystick: deadzone of the mouse stick"
-msgstr ""
+msgstr "Joystick: dödzon av musens pinne"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:355
 msgid "Joystick: number of the thrust axis joystick"
-msgstr ""
+msgstr "Joystick: antal drag kraft axelns joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:365
 msgid "Joystick: number of the thrust axis"
-msgstr ""
+msgstr "Joystick: antal drag kraft axel"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:375
 msgid "Joystick: deadzone of the thruster"
-msgstr ""
+msgstr "Joystick: dödzon av bogpropeller"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -436,10 +442,9 @@ msgstr "Arabisk översättning"
 
 #. [about]
 #: data/core/about_i18n.cfg:31
-#, fuzzy
 #| msgid "Estonian Translation"
 msgid "Asturian Translation"
-msgstr "Estnisk översättning"
+msgstr "Asturisk översättning"
 
 #. [about]
 #: data/core/about_i18n.cfg:37
@@ -1507,10 +1512,9 @@ msgstr ""
 
 #. [else]
 #: data/core/macros/deprecated-utils.cfg:43
-#, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has been renamed to: "
-msgstr "Inget användbart vapen"
+msgstr "Den här enheten har bytt namn till: "
 
 #: data/core/macros/deprecated-utils.cfg:95
 msgid "<small>(early finish bonus)</small>"
@@ -1637,10 +1641,11 @@ msgid "holy water^Leave it"
 msgstr "Lämna kvar det"
 
 #: data/core/macros/items.cfg:276
-#, fuzzy
 #| msgid "I am not suited to the use of this item! Let another take it."
 msgid "$unit.name has no need for this Holy Water! Let another take it."
-msgstr "Jag är inte lämpad att använda denna sak! Låt någon annan ta den."
+msgstr ""
+"$unit.name är inte lämpad att använda detta heliga vatten! Låt någon annan "
+"ta den."
 
 #. [object]
 #: data/core/macros/items.cfg:281
@@ -1723,6 +1728,8 @@ msgid ""
 "$unit.name cannot use this Storm Trident! Let one of the merfolk who can "
 "wield it have it."
 msgstr ""
+"$unit.name kan inte använda denna stormtrident! Låt en av de merfolk som kan "
+"svinga det ha den."
 
 #. [object]
 #: data/core/macros/items.cfg:521
@@ -1782,6 +1789,13 @@ msgid ""
 "suffix=ash|kré|lsh|lin|rutin|shinar|rushi|ka|ash|ag|all|ash|slar|li|dian|"
 "ritos|rusté|shitt|nick|rath|ditt|kon|mad|tick|nir\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}’{suffix}|{prefix}{suffix} {short_name}\n"
+"short_name=Ohm|Ihn|Ohn|Ka|Murr|Kon|Elch|Ko|Græt|Egar\n"
+"prefix=Ga|Ge|Gel|Gi|Go|Gra|Gri|Ka|Ko|Kla|Mar|Di|Mer|Mor|Oma|Re|Vel|Vash|Ver|"
+"Vla\n"
+"suffix=ash|kré|lsh|lin|rutin|shinar|rushi|ka|ash|ag|all|ash|slar|li|dian|"
+"ritos|rusté|shitt|nick|rath|ditt|kon|mad|tick|nir\n"
 
 #. Generator for female drake names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:28
@@ -1792,6 +1806,11 @@ msgid ""
 "suffix=en|nash|irt|glann|ll|ge|lin|nitt|tin|tar|lisk|rida|grra|sill|la|mell\n"
 "short_name=Mal|Ka|Emth|Dar|Eshi\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{suffix} {short_name}\n"
+"prefix=Al|Ali|Ash|Aug|Auug|Da|De|Dem|Din|Ol|Oma|Orri|Oshi|Val|Ver|Vel|Vush\n"
+"suffix=en|nash|irt|glann|ll|ge|lin|nitt|tin|tar|lisk|rida|grra|sill|la|mell\n"
+"short_name=Mal|Ka|Emth|Dar|Eshi\n"
 
 #: data/core/macros/names.cfg:37
 msgid ""
@@ -1896,6 +1915,15 @@ msgid ""
 "til|til|tol|los|rol|sol|ril|sil|as|us|lil|fur|mur|fur\n"
 "centre=lal|mal|ra|dur|thal|thas|ma|gal|thau|ga|ith|ma|cat|la|ral|dur|bur\n"
 msgstr ""
+"\n"
+"main={long_name}\n"
+"long_name={prefix}{centre}{suffix}|{prefix}{centre}{centre}{suffix}\n"
+"short_name={prefix}{suffix}\n"
+"prefix=Ai|Al|A|Du|Glam|Dul|Gom|Nar|Pel|Tri|Dun|Do|Bar|Er|Tim|Al|Du|Bu|Bur|"
+"Nor|Der|Ur|Gar\n"
+"suffix=sil|fur|bor|bus|bur|bor|gos|dor|rin|dur|ing|ras|this|tis|rol|sol|las|"
+"til|til|tol|los|rol|sol|ril|sil|as|us|lil|fur|mur|fur\n"
+"centre=lal|mal|ra|dur|thal|thas|ma|gal|thau|ga|ith|ma|cat|la|ral|dur|bur\n"
 
 #: data/core/macros/names.cfg:50
 msgid ""
@@ -2165,6 +2193,20 @@ msgid ""
 "short_centre=lol|febr|tom|lith|nal|lor|wón|rad|rien|mar|reb|riel|mal|ram|nil|"
 "nim|nol|bris|lad|rier|ra|fil|thran|man\n"
 msgstr ""
+"\n"
+"main={generated_prefix}{consonnant}{suffix}|{prefix}{centre}{suffix}\n"
+"generated_prefix={starting_consonnant}{vowel}\n"
+"starting_consonnant=C|D|F|L|M|N|P|Qu|R|S|T|V\n"
+"vowel=a|e|i|o|ae|é|ë\n"
+"consonnant=n|l|r|m|s|v|th|nn\n"
+"prefix={prefix_vc}{vowel}|{prefix_cv}\n"
+"prefix_vc=Lon|Eon|Ad|Sar|Al|Tal|Tin|El|Leg|Or|Tir|Ol|Cál|Cán|Elv|Fan|Fad|"
+"Fith|Fil|Gal|Glad|Leg|Glar|Gli|Hár|Tad|Sór|Pyr\n"
+"prefix_cv=Ama|Ami|Be|Ca|Ga|Isi|Ha|He|Le|Ló|Ny|Ni|Ma|Thu|Thri|Ti|Unu|Ve|Va\n"
+"suffix=or|im|ian|in|ar|iel|as|eon|as|or|ion|al|and|ér|as|ir|el|al|ad|ael\n"
+"centre={short_centre}|{short_centre}|-{short_centre}|{short_centre}-\n"
+"short_centre=lol|febr|tom|lith|nal|lor|wón|rad|rien|mar|reb|riel|mal|ram|nil|"
+"nim|nol|bris|lad|rier|ra|fil|thran|man\n"
 
 #. Generator for female elf names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:67
@@ -2190,6 +2232,26 @@ msgid ""
 "short_centre_c=enn|all|an|ith|el|il|am|ol|arth|ól|ár|ir|if|im|ion|iw|én|un|"
 "iw\n"
 msgstr ""
+"\n"
+"main={generated_prefix_v}{centre_v}{suffix_v}|{generated_prefix_c}{centre_c}"
+"{suffix_c}\n"
+"generated_prefix_v={starting_consonnant}{vowel}\n"
+"generated_prefix_c={starting_consonnant}{vowel}{consonnant}\n"
+"starting_consonnant=C|D|F|L|M|N|P|Qu|R|S|T|V\n"
+"vowel=a|e|i|o|ae|é|ë\n"
+"consonnant=n|l|r|m|s|v|th|p|d|f|t\n"
+"prefix_c=Val|Ol|Am|An|El|Fa|El|Glo|Hu|Le|Mil|Nil|Pin|Por|Mot|Mor|Thral|Leg|"
+"Nam|Nym|Sim|Len|Is|Thal\n"
+"prefix_v=La|Va|Tha|Ne|Ay|Ce|Fa|Phe|Ja|Que|Ma|Mi|Pa|Ri|Siu|Ga|Ca|De|Eä|Eo|No|"
+"Pó|Le|Ló|Isá|Pa|Sa|Ni|Ti|Uno|Uni|Vó|Gio\n"
+"suffix_v=thea|nia|lia|kea|ni|ith|niel|wiel|ra|dë|lya|thiel|nna|nne\n"
+"suffix_c=iel|ien|ya|a|ë|i|ia|ea\n"
+"centre_v=|{short_centre_v}\n"
+"short_centre_v=nna|lla|na|thi|saie|li|ma|lo|thra|ló|rá|bri|fi|mi|nio|wi|né|"
+"nu|wi\n"
+"centre_c=|{short_centre_c}\n"
+"short_centre_c=enn|all|an|ith|el|il|am|ol|arth|ól|ár|ir|if|im|ion|iw|én|un|"
+"iw\n"
 
 #: data/core/macros/names.cfg:87
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
@@ -2208,6 +2270,11 @@ msgid ""
 "suffix=aa|eaa|ee|aaa|ssshh|rro|uu|uuu\n"
 "centre=arr|aash|eez|ozz\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=Gr|Ka|Ke|Ko|Kr|Kz\n"
+"suffix=aa|eaa|ee|aaa|ssshh|rro|uu|uuu\n"
+"centre=arr|aash|eez|ozz\n"
 
 #. Generator for female gryphon names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:97
@@ -2218,6 +2285,11 @@ msgid ""
 "suffix=sa|yya|ra|rra\n"
 "centre=err|aash|eez|azz\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=Kaa|Ka|Ke|Kuu|Ko\n"
+"suffix=sa|yya|ra|rra\n"
+"centre=err|aash|eez|azz\n"
 
 #: data/core/macros/names.cfg:106
 msgid ""
@@ -2432,6 +2504,23 @@ msgid ""
 "centre_c=redd|reor|og|thyn\n"
 "centre_v=rae|ra|thar|gwy\n"
 msgstr ""
+"\n"
+"main={generated_prefix_c}{suffix_c}|{generated_prefix_v}{suffix_v}|{prefix_c}"
+"{centre_c}{suffix_c}|{prefix_v}{centre_v}{suffix_v}\n"
+"generated_prefix_c={starting_consonnant}{vowel}{consonnant}|{starting_vowel}"
+"{consonnant}\n"
+"generated_prefix_v={starting_consonnant}{vowel}|{starting_vowel}\n"
+"starting_consonnant=B|C|D|G|H|L|M|R|Rh|S|T|V\n"
+"starting_vowel=A|E|I|Y|Ae\n"
+"vowel=a|e|i|o|u|y|eo|ae\n"
+"consonnant=w|l|d|n|r|rc|ll|nn|dd|th\n"
+"prefix_c=Add|Den|Derr|Gum|Mad|Mar|Ow|Tedd|T{vowel}n|Var|Vin|Vob|Vug|Yr|Rhyr\n"
+"prefix_v=Ae|Bl{vowel}|C{vowel}|D{vowel}|Gl{vowel}|G{vowel}|Gw{vowel}|Ha|"
+"L{vowel}|M{vowel}|R{vowel}|Rh{vowel}|S{vowel}|S{vowel}|T{vowel}|V{vowel}\n"
+"suffix_c=yn|er|yc|ec|oc|yr|in|aent\n"
+"suffix_v=ry|ryn|ran|lyn|van|nyc\n"
+"centre_c=redd|reor|og|thyn\n"
+"centre_v=rae|ra|thar|gwy\n"
 
 #. Generator for female Wesnothian human names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:125
@@ -2454,6 +2543,23 @@ msgid ""
 "centre_c=il|ing|ol|ur|ung|ean|eal|ong|al|iv\n"
 "centre_v=na|lla|na|ry|li|ni|ri|rae|bry\n"
 msgstr ""
+"\n"
+"main={generated_prefix_c}{suffix_c}|{generated_prefix_v}{suffix_v}|{prefix_c}"
+"{centre_c}{suffix_c}|{prefix_v}{centre_v}{suffix_v}\n"
+"generated_prefix_c={starting_consonnant}{vowel}{consonnant}|{starting_vowel}"
+"{consonnant}\n"
+"generated_prefix_v={starting_consonnant}{vowel}|{starting_vowel}\n"
+"starting_consonnant=B|C|D|G|H|L|M|R|Rh|S|T|V\n"
+"starting_vowel=A|E|I|Y|Ae\n"
+"vowel=a|e|i|o|u|y|eo|ae\n"
+"consonnant=w|l|d|n|r|rc|ll|nn|dd|th\n"
+"prefix_c=Al|El|Mer|Mil|Rer|Ys|M{vowel}r|M{vowel}l\n"
+"prefix_v=A|Br{vowel}|Cl{vowel}|C{vowel}|D{vowel}|Gw{vowel}|He|J{vowel}|"
+"L{vowel}|M{vowel}|N{vowel}|R{vowel}|S{vowel}\n"
+"suffix_c=yan|oic|ell|yll\n"
+"suffix_v=wyn|nna|lla|ra|la|wyan|ssa|ka|ven\n"
+"centre_c=il|ing|ol|ur|ung|ean|eal|ong|al|iv\n"
+"centre_v=na|lla|na|ry|li|ni|ri|rae|bry\n"
 
 #: data/core/macros/names.cfg:143
 msgid ""
@@ -2624,6 +2730,19 @@ msgid ""
 "connector= al-| bin | ibn\n"
 "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 msgstr ""
+"\n"
+"main={name_long}|{prefix}{suffix}|{name_mid}{connector}{name_mid}\n"
+"name_mid={prefix}{suffix}|{name_short}\n"
+"name_long={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"name_short=Din|Sif|Din|Taj|Sud|Ali|Lut|Nuh|Qays|Nimr|Jad|Bushr|Lut|Maʿd|Nur|"
+"Fadl\n"
+"prefix=Ab|Bas|Fat|Gha|Al|Ba|Ja|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|Du|Im|"
+"Ju|Mun|Ma|Ni|Ji|Mu|Lab|Luf|Mih|Mi|Qu|Tal|Ta|Tha|Za|Zi|Yas|Wa|Su|Qa|ʿIkri|Lu|"
+"Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
+"suffix=af|al|lih|bair|sur|bi|lah|at|sim|ma|ih|yl|iq|raj|mam|man|ya|zid|riya|"
+"ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|kib\n"
+"connector= al-| bin | ibn\n"
+"centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 
 #. Generator for female dunefolk human names
 #: data/core/macros/names.cfg:156
@@ -2655,6 +2774,32 @@ msgid ""
 "riya|ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|"
 "kib\n"
 msgstr ""
+"\n"
+"main={name_long}|{prefix}{suffix}|{name_mid}{connector}{surname}\n"
+"name_mid={prefix}{suffix}|{name_short}\n"
+"surname={name_mid_male}|{name_mid}|{name_mid_male}\n"
+"name_long={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"name_short=Afaf|Aida|Alya|Arij|Arwa|Asma|Asra|Azra|Dua|Fajr|Hala|Hana|Hiba|"
+"Inas|Isra|Lina|Mona|Muna|Nida|Nima|Nur|Rana|Rim|Ruba|Ruya|Ruwa|Sana|Sara|"
+"Suha|Tuba|Uzma|Zara\n"
+"prefix=Ab|Bas|Fat|Gha|Al|Ba|Ja|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|Du|Im|"
+"Ju|Mun|Ma|Ni|Ji|Mu|Lab|Luf|Mih|Mi|Qu|Tal|Ta|Tha|Za|Zi|Yas|Wa|Su|Qa|ʿIkri|Lu|"
+"Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
+"suffix=a|ab|ad|ah|af|aj|al|am|an|ar|as|at|ay|az|da|een|ia|ij|in|ir|la|ma|mas|"
+"n|na|nab|ni|r|ra|raa|ran|rat|ul|ur|uz|wa|ya|yah|yam|za|zi\n"
+"connector= al-| ibna | bint\n"
+"centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
+"\n"
+"These nonterminals are literally copied from the male names.\n"
+"name_mid_male={prefix_male}{suffix_male}|{name_short_male}\n"
+"name_short_male=Din|Sif|Din|Taj|Sud|Ali|Lut|Nuh|Qays|Nimr|Jad|Bushr|Lut|Maʿd|"
+"Nur|Fadl\n"
+"prefix_male=Ab|Bas|Fat|Gha|Al|Ba|Ja|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|Du|"
+"Im|Ju|Mun|Ma|Ni|Ji|Mu|Lab|Luf|Mih|Mi|Qu|Tal|Ta|Tha|Za|Zi|Yas|Wa|Su|Qa|ʿIkri|"
+"Lu|Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
+"suffix_male=af|al|lih|bair|sur|bi|lah|at|sim|ma|ih|yl|iq|raj|mam|man|ya|zid|"
+"riya|ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|"
+"kib\n"
 
 #: data/core/macros/names.cfg:176
 msgid ""
@@ -2691,6 +2836,13 @@ msgid ""
 "suffix=ta|ir|az|ix|za|trax|il|le|esz|izs|ezz|irr|asch|ez|is|iss|azz\n"
 "centre=ix|’Kza|tra|na|an|ex|ssa|zzi|’Usz\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=Am|An|Ar|Bzz|Cha|Clee|Fa|Fi|Fli|Fri|Ha|He|In|Ir|In|Ka|Ke|Jezz|Ji|Ka|"
+"Ke|Lo|Ma|Ox|Po|Sa|Se|Li|Me|Na|Pre|Ska|Sse|Ssi|Sto|Ste|Szi|Sza|Ti|Ve|Vri|Xa|"
+"Xe|Xi|Zan|Zil|Zzu\n"
+"suffix=ta|ir|az|ix|za|trax|il|le|esz|izs|ezz|irr|asch|ez|is|iss|azz\n"
+"centre=ix|’Kza|tra|na|an|ex|ssa|zzi|’Usz\n"
 
 #: data/core/macros/names.cfg:187
 msgid ""
@@ -2733,6 +2885,13 @@ msgid ""
 "lau|nik|sa|loa|roa\n"
 "centre=la|ma|ri|sei|te|ka|li|cer|tu|ni|ki|na|ga|si\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=A|Ai|Apa|Bar|Atla|Dha|El|Fa|Ja|La|Ku|Li|Ma|Me|Mi|Na|Ne|Njo|Nua|Nu|Oce|"
+"Okre|Phor|Po|Pro|Ra|Ro|Ryu|Scy|Si|Ta|Thau|Ti|Vi|Tri|Vo|Vou\n"
+"suffix=su|ion|la|ta|ua|mar|re|lau|lu|na|yr|ra|tes|nus|teus|tes|tan|mas|ki|ni|"
+"lau|nik|sa|loa|roa\n"
+"centre=la|ma|ri|sei|te|ka|li|cer|tu|ni|ki|na|ga|si\n"
 
 #. Generator for mermaid names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:197
@@ -2744,6 +2903,12 @@ msgid ""
 "suffix=me|pe|gia|noe|dna|la|ris|ta|tea|va|mo|pe|riam|riel|na|ra|tea\n"
 "centre=ophe|phri|tri|phro|di|si|xie|ce|ty|la|me|ro|co|mar|ran|then|la|ga\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"prefix=Agla|Amphi|A|Ca|Del|Der|Di|El|Ga|Je|Leu|Li|Lo|Ma|Wa|Ma|Mi|Mo|Par|Pel|"
+"Pi|Se|Ste|Ma|The|Ti|Va|Ve\n"
+"suffix=me|pe|gia|noe|dna|la|ris|ta|tea|va|mo|pe|riam|riel|na|ra|tea\n"
+"centre=ophe|phri|tri|phro|di|si|xie|ce|ty|la|me|ro|co|mar|ran|then|la|ga\n"
 
 #: data/core/macros/names.cfg:206
 msgid ""
@@ -2790,6 +2955,13 @@ msgid ""
 "suffix=iss|ail|nal|eii|mol|loss|noss|xos|sal|zel|kps|pek|ness|or|sol|peii|"
 "iaz|on|sal|ol|kil|oz|ail|al|nis|rak|lel|nas|kon|ekp\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}\n"
+"prefix=Abra|Ale|Ama|Ax|Bla|Ble|Bre|Bri|Gri|Hai|Har|Hu|Ine|Kle|Krez|Lam|Lin|"
+"Lob|Mai|Lal|Nild|Pon|Pse|Pza|Sa|Se|Sle|So|Sor|Tri|Vi|Vla|Xa|Xi|Xna|Za|Zle|"
+"Zse\n"
+"suffix=iss|ail|nal|eii|mol|loss|noss|xos|sal|zel|kps|pek|ness|or|sol|peii|"
+"iaz|on|sal|ol|kil|oz|ail|al|nis|rak|lel|nas|kon|ekp\n"
 
 #. Generator for female naga names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:215
@@ -2802,6 +2974,13 @@ msgid ""
 "suffix=asse|mailia|ilis|ana|ama|ssa|ssilai|zi|xias|lai|maissa|bra|lin|lina|"
 "na|bra|aa|lia|lai|laila|na|pkne|alsp|ekp\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}\n"
+"prefix=Ali|Ama|Ax|Bla|Bli|Bra|Bri|Gax|Gri|Hai|Har|Hu|Ina|Iss|Krez|Kzap|Lam|"
+"Lex|Li|Lin|Mai|Mu|Nil|Ox|Pon|Pza|Ri|Sal|Sax|Sek|Snel|Sra|Trix|Vil|Vis|Blan|"
+"Xab|Xam|Xi|Xnam|Xop|Zal|Zle|Zse\n"
+"suffix=asse|mailia|ilis|ana|ama|ssa|ssilai|zi|xias|lai|maissa|bra|lin|lina|"
+"na|bra|aa|lia|lai|laila|na|pkne|alsp|ekp\n"
 
 #: data/core/macros/names.cfg:223
 msgid ""
@@ -2828,6 +3007,11 @@ msgid ""
 "Ker|Kil|King|Kor|Kru|Kur|Mar|Mer|Nal|Trak|Urk\n"
 "suffix=ark|ort|alk|arm|kuk|kak|ukk|nak|ta|k|rok|rar|kon|gak|nik\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}\n"
+"prefix=Ak|Ar|Bar|Blok|Bor|Bul|Cork|Del|Gar|Gnu|Gra|Gru|Gu|Kal|Kar|Kay|Kel|"
+"Ker|Kil|King|Kor|Kru|Kur|Mar|Mer|Nal|Trak|Urk\n"
+"suffix=ark|ort|alk|arm|kuk|kak|ukk|nak|ta|k|rok|rar|kon|gak|nik\n"
 
 #: data/core/macros/names.cfg:233
 msgid ""
@@ -2913,6 +3097,18 @@ msgid ""
 "ending_consonnant=b|g|r|sh|k\n"
 "ending_vowel=o|u\n"
 msgstr ""
+"\n"
+"main={starting_consonnant}{vowel}{consonnant}{vowel}{ending_consonnant}|"
+"{starting_consonnant}{vowel}{consonnant}{ending_vowel}|{starting_vowel}"
+"{consonnant}{vowel}{ending_consonnant}|{starting_consonnant}{vowel}"
+"{ending_consonnant}|{starting_vowel}{consonnant}{ending_vowel}\n"
+"starting_consonnant=B|Br|D|Dr|G|Gr|Gh|H|Kh|M|N|P|Pr|R|S|Sh|T|V\n"
+"starting_vowel=A|I|O|U\n"
+"consonnant=b|br|d|dr|g|gr|gh|kh|m|n|p|pr|r|s|sh|t|v|gz|zg|rb|br|dr|vr|khr|gd|"
+"shn\n"
+"vowel=a|i|o|u\n"
+"ending_consonnant=b|g|r|sh|k\n"
+"ending_vowel=o|u\n"
 
 #: data/core/macros/names.cfg:247
 msgid ""
@@ -2938,6 +3134,14 @@ msgid ""
 "beginning=Ä|Ü|A|U\n"
 "suffix=rb|g|gh|k|rf|kk|r|g|th|h|rg\n"
 msgstr ""
+"\n"
+"main={short_name}|{short_name}|{short_name}|{short_name} {short_name}\n"
+"short_name={prefix}{middle}{suffix}|{prefix}{middle}{suffix}|{prefix}{middle}"
+"{suffix}|{beginning}{suffix}\n"
+"prefix=B|Br|D|G|Gn|H|K|Kr|L|N|K|P|R|S|Sh|St|Th|Ts|T|V|Z\n"
+"middle=a|o|u|uu|ä|ü\n"
+"beginning=Ä|Ü|A|U\n"
+"suffix=rb|g|gh|k|rf|kk|r|g|th|h|rg\n"
 
 #: data/core/macros/names.cfg:260
 msgid ""
@@ -2982,6 +3186,17 @@ msgid ""
 "suffix=men|drum|tor|num|lad|de|ak|lol|dum|tam|nur|dium|deum|bil|rook|relm|"
 "dium|numm|dan|doom|tum|din\n"
 msgstr ""
+"\n"
+"main={prefix}{centre}{centre}{suffix}|{prefix}{centre}{centre}{centre}"
+"{suffix}\n"
+"prefix=Blu|Bo|Bre|Bro|Bru|Bu|Car|Da|Da|De|Dib|Dol|Dro|Dul|Dum|El|Gre|Gul|Gum|"
+"Laf|Lan|Las|Lef|Lib|Lol|Mon|Mul|Mun|Nan|Nun|Or|Pam|Pom|Rith|Tan|Tem|Ton|"
+"Troom|Tun|Tum|Won|Wun\n"
+"centre=de|bal|drum|wul|del|bem|pom|gon|tan|bom|ken|tan|ton|man|ten|dron|dub|"
+"na|da|ni|mi|lul|mon|duel|lem|num|nob|mand|room|lad|roam|be|lom|sem|nub|di|"
+"wim|din|blem|nand|dul|dil|of|tam|kon|ton|tun|kon|ten|run|mal|do\n"
+"suffix=men|drum|tor|num|lad|de|ak|lol|dum|tam|nur|dium|deum|bil|rook|relm|"
+"dium|numm|dan|doom|tum|din\n"
 
 #: data/core/macros/names.cfg:271
 msgid ""
@@ -3000,6 +3215,11 @@ msgid ""
 "middle=a|e|o|u|i\n"
 "suffix=l|m|rn|x|w|ld|ck|k|rk\n"
 msgstr ""
+"\n"
+"main={prefix}{middle}{suffix}\n"
+"prefix=B|C|D|E|F|Fr|Wat|G|H|K|N|O|R|S|T|W|Y|Ro\n"
+"middle=a|e|o|u|i\n"
+"suffix=l|m|rn|x|w|ld|ck|k|rk\n"
 
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:6
@@ -3019,10 +3239,9 @@ msgid "Bonus objective:"
 msgstr "Bonusmål:"
 
 #: data/core/macros/objective-utils.cfg:30
-#, fuzzy
 #| msgid "Bonus objective:"
 msgid "Optional objective:"
-msgstr "Bonusmål:"
+msgstr "Valfritt mål:"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:52
@@ -3032,7 +3251,7 @@ msgstr "Detta är det sista scenariot."
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:58
 msgid "No turn limit"
-msgstr ""
+msgstr "Ingen draggräns"
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:58
@@ -3046,159 +3265,153 @@ msgstr ""
 #. [music]
 #: data/core/macros/sound-utils.cfg:282
 msgid "Battle Epic"
-msgstr ""
+msgstr "Slaget Epic"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:288
 msgid "Battle Music"
-msgstr ""
+msgstr "Slagets musik"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:294
 msgid "Breaking the Chains"
-msgstr ""
+msgstr "Bryta kedjor"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:300
 msgid "Casualties of War"
-msgstr ""
+msgstr "Döds offer i kriget"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:306
 msgid "Elf Land"
-msgstr ""
+msgstr "Elf land"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:312
 msgid "Elvish theme"
-msgstr ""
+msgstr "Temat Elvish"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:318
 msgid "Frantic"
-msgstr ""
+msgstr "Desperata"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:324
 msgid "Heroes Rite"
-msgstr ""
+msgstr "Hjältar Rite"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:330
 msgid "Into the Shadows"
-msgstr ""
+msgstr "In i skuggorna"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:336
 msgid "Journey’s End"
-msgstr ""
+msgstr "Resans slut"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:342
 msgid "Knalgan Theme"
-msgstr ""
+msgstr "Knalgan tema"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:348
 msgid "The Knolls of Doldesh"
-msgstr ""
+msgstr "Knollsen av Doldesh"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:354
 msgid "Legends of the North"
-msgstr ""
+msgstr "Legenderna av norden"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:360
 msgid "Love Theme"
-msgstr ""
+msgstr "Kärlekstema"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:366
-#, fuzzy
 #| msgid "Loyal"
 msgid "Loyalists"
-msgstr "Lojal"
+msgstr "Lojalister"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:372
 msgid "Over the Northern Mountains"
-msgstr ""
+msgstr "Över de nordliga bergen"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:378
-#, fuzzy
 #| msgid "North West"
 msgid "Northerners"
-msgstr "Nordväst"
+msgstr "Nordbor"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:384
 msgid "Nunc Dimittis"
-msgstr ""
+msgstr "Nunc Dimittis"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:390
-#, fuzzy
 #| msgid "Red Potion"
 msgid "Revelation"
-msgstr "Röd trolldryck"
+msgstr "Uppenbarelse"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:396
-#, fuzzy
 #| msgid "Sand"
 msgid "Sad"
-msgstr "Sand"
+msgstr "Ledsen"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:402
 msgid "Siege of Laurelmor"
-msgstr ""
+msgstr "Belägringen av Laurelmor"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:408
 msgid "Silvan Sanctuary"
-msgstr ""
+msgstr "Silvan Sanctuary"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:414
 msgid "Suspense"
-msgstr ""
+msgstr "Spänning"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:420
 msgid "The City Falls"
-msgstr ""
+msgstr "Staden Falls"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:426
 msgid "The Dangerous Symphony"
-msgstr ""
+msgstr "Den farliga symfonin"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:432
-#, fuzzy
 #| msgid "Deep water"
 msgid "The Deep Path"
-msgstr "Djupt vatten"
+msgstr "Den djupa stigen"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:438
-#, fuzzy
 #| msgid "The game is over."
 msgid "The King is Dead"
-msgstr "Spelet är slut"
+msgstr "Kungen är död"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:444
 msgid "Transience"
-msgstr ""
+msgstr "Förgänglighet"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:450
 msgid "Traveling Minstrels"
-msgstr ""
+msgstr "Resor minstrels"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:456
@@ -3208,19 +3421,18 @@ msgstr "Underjorden"
 #. [music]
 #: data/core/macros/sound-utils.cfg:462
 msgid "Vengeful Pursuit"
-msgstr ""
+msgstr "Hämndlysten Pursuit"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:468
 msgid "Still Another Wanderer"
-msgstr ""
+msgstr "Fortfarande en annan vandrare"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:474
-#, fuzzy
 #| msgid "Bright orange"
 msgid "Weight of Revenge"
-msgstr "Klarorange"
+msgstr "Tyngden av hämnd"
 
 #. [message]: speaker=narrator
 #: data/core/macros/utils.cfg:697
@@ -3562,6 +3774,10 @@ msgid ""
 "\t\tmain=$base {bridge_type}|$base{!}’s {bridge_type}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tbridge_type=Bridge|Crossing\n"
+"\t\tmain=$base {bridge_type}|$base{!}’s {bridge_type}\n"
+"\t"
 
 #. [naming]
 #: data/english.cfg:41
@@ -3571,6 +3787,10 @@ msgid ""
 "\t\tmain=$base{!}’s {road_type}|{road_type} of $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\troad_type=Highway|Pass|Path|Road|Way|Trail\n"
+"\t\tmain=$base{!}’s {road_type}|{road_type} of $base\n"
+"\t"
 
 #. [naming]
 #: data/english.cfg:45
@@ -3580,6 +3800,10 @@ msgid ""
 "\t\tmain=$base {river_type}|{river_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\triver_type=River|River|River|Creek|Creek|Stream|Canal\n"
+"\t\tmain=$base {river_type}|{river_type} $base\n"
+"\t"
 
 #. [naming]
 #: data/english.cfg:49
@@ -3589,6 +3813,10 @@ msgid ""
 "\t\tmain=$base {forest_type}|$base{!}’s {forest_type}|{forest_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tforest_type=Forest|Forest|Wood\n"
+"\t\tmain=$base {forest_type}|$base{!}’s {forest_type}|{forest_type} $base\n"
+"\t"
 
 #. [naming]
 #: data/english.cfg:53
@@ -3598,16 +3826,22 @@ msgid ""
 "\t\tmain=$base {lake_type}|{lake_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tlake_type=Lake|Lake|Lake|Loch|Sea\n"
+"\t\tmain=$base {lake_type}|{lake_type} $base\n"
+"\t"
 
 #. [naming]
 #: data/english.cfg:57
-#, fuzzy
 #| msgid "$name|’s Peak,Mount $name"
 msgid ""
 "\n"
 "\t\tmain=$base{!}’s Peak|$base Peak|Mount $base|Mount $base\n"
 "\t"
-msgstr "$name|s topp,$name"
+msgstr ""
+"\n"
+"\t\tmain=$base{!}’s Peak|$base Peak|Mount $base|Mount $base\n"
+"\t"
 
 #. [naming]
 #: data/english.cfg:60
@@ -3617,6 +3851,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=’s Swamp|marsh|fen\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #: data/english.cfg:67
@@ -3626,6 +3864,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=bury|bury|ham|ton|ville\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #: data/english.cfg:71
@@ -3636,6 +3878,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$lake{!}\n"
+"\t\tsuffix=harbor|port\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #: data/english.cfg:76
@@ -3647,6 +3894,12 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$river{!}\n"
+"\t\triver=$river{!}|River\n"
+"\t\tsuffix=ham|ford|cross| on {river}\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #: data/english.cfg:82
@@ -3657,6 +3910,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$river{!}|$bridge{!}\n"
+"\t\tsuffix=bridge|bridge|ham|ton\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #: data/english.cfg:87
@@ -3666,6 +3924,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=ham|ton|field\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #: data/english.cfg:91
@@ -3676,6 +3938,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$forest{!}\n"
+"\t\tsuffix=ham|ton|wood| Forest\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #: data/english.cfg:96
@@ -3685,6 +3952,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=ham|bury|ton|hill|crest\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #: data/english.cfg:100
@@ -3695,6 +3966,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$mountain{!}\n"
+"\t\tsuffix=mont|cliff|bury|ham\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #: data/english.cfg:105
@@ -3704,6 +3980,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=ham|bury|ton|mont|mont|cliff|cliff\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #: data/english.cfg:109
@@ -3714,6 +3994,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$road{!}|$road{!}|$base{!}\n"
+"\t\tsuffix=’s Rest|’s Waypoint|bury|bury|ham|ham\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #: data/english.cfg:114
@@ -3724,6 +4009,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$swamp{!}\n"
+"\t\tsuffix=bury|ham|ton\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [server]
 #: data/game_config.cfg:4
@@ -3742,17 +4032,15 @@ msgstr "Installera behövda moduler"
 
 #. [button]: id=ok
 #: data/gui/window/install_dependencies.cfg:85
-#, fuzzy
 #| msgid "yes"
 msgid "Yes"
-msgstr "ja"
+msgstr "Ja"
 
 #. [button]: id=cancel
 #: data/gui/window/install_dependencies.cfg:96
-#, fuzzy
 #| msgid "Nov"
 msgid "No"
-msgstr "Nov"
+msgstr "Nej"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -3764,7 +4052,7 @@ msgstr "Skärmdump"
 #. [fonts]
 #: data/hardwired/fonts.cfg:28
 msgid "Lato"
-msgstr ""
+msgstr "Lato"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:29
@@ -3774,28 +4062,28 @@ msgstr "DejaVu Sans Mono"
 #. [fonts]
 #: data/hardwired/fonts.cfg:30
 msgid "Lato Light"
-msgstr ""
+msgstr "Lato Light"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:31
 msgid "Oldania ADF Std"
-msgstr ""
+msgstr "Oldania ADF STD"
 
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:187
 msgid "(Note: You should use $replacement instead in new code)"
-msgstr ""
+msgstr "(Obs: du bör använda $replacement i stället i ny kod)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:194 src/deprecation.cpp:69
 msgid "Invalid deprecation level $level (should be 1-4)"
-msgstr ""
+msgstr "Ogiltig utfasnings nivå $level (ska vara 1-4)"
 
 #. [lua]: wml_actions.deprecated_message
 #: data/lua/wml-tags.lua:883
 msgid "Invalid deprecation level (should be 1-4)"
-msgstr ""
+msgstr "Ogiltig utfasnings nivå (ska vara 1-4)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
@@ -3857,12 +4145,11 @@ msgstr "Nederlag:"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:57
-#, fuzzy
 #| msgid "(this turn left)"
 msgid "(this turn left)"
 msgid_plural "(%d turns left)"
-msgstr[0] "(sista draget)"
-msgstr[1] "(sista draget)"
+msgstr[0] "(detta drag kvar)"
+msgstr[1] "(%d drag kvar)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
@@ -3912,7 +4199,7 @@ msgstr "Stopp"
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:463
 msgid "pause after current move"
-msgstr ""
+msgstr "pausa efter aktuell förflyttning"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:478 data/themes/_initial.cfg:635
@@ -3982,7 +4269,7 @@ msgstr "Repris"
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:622
 msgid "pause"
-msgstr ""
+msgstr "pausa"
 
 #. [theme]: id=Classic
 #: data/themes/classic.cfg:11
@@ -4597,13 +4884,17 @@ msgid ""
 "villages unoccupied, but keep in mind that an enemy unit becomes much harder "
 "to dislodge from a village! Plan your movements accordingly."
 msgstr ""
+"För alla spelare är kontrollerande byar ofta nyckeln till att vinna ett "
+"scenario. Du kan använda denna kunskap för att lura dina motståndare i en "
+"fälla genom att lämna några byar obesatta, men kom ihåg att en fientlig "
+"enhet blir mycket svårare att få bort från en by! Planera dina rörelser i "
+"enlighet med detta."
 
 #. [tip]
 #: data/tips.cfg:153
-#, fuzzy
 #| msgid "<i>― King Konrad, 536YW</i>"
 msgid "<i>― Kai Laudiss, 623YW</i>"
-msgstr "<i>― Kung Konrad, 536 eW</i>"
+msgstr "<i>― Kai Laudiss, 623 eW</i>"
 
 #. [tip]
 #: data/tips.cfg:156
@@ -4894,6 +5185,9 @@ msgid ""
 "of 20 gold. In a campaign, always check if recalling a unit of the same type "
 "may be cheaper."
 msgstr ""
+"Rekryterings kostnaden för vissa enheter kan överstiga de vanliga "
+"återkallnings utgifterna på 20 guld. I en kampanj ska du alltid kontrol lera "
+"om det kan vara billigare att återkalla en enhet av samma typ."
 
 #. [tip]
 #: data/tips.cfg:257
@@ -4901,13 +5195,14 @@ msgid ""
 "You must accept some losses in battle. It is not uncommon for beginners to "
 "lose sight of victory as they attempt to keep every unit alive."
 msgstr ""
+"Du måste acceptera några förluster i striden. Det är inte ovanligt att "
+"nybörjare glömmer segern när de försöker hålla varje enhet vid liv."
 
 #. [tip]
 #: data/tips.cfg:258
-#, fuzzy
 #| msgid "<i>― Queen Li’sar, 528YW</i>"
 msgid "<i>― Queen Asheviere, 503YW</i>"
-msgstr "<i>― Drottning Li'sar, 528 eW</i>"
+msgstr "<i>― Drottning Asheviere, 503 eW</i>"
 
 #. [tip]
 #: data/tips.cfg:262
@@ -5026,7 +5321,6 @@ msgid "Requesting distribution terms..."
 msgstr "Begär distributionsvillkor…"
 
 #: src/addon/client.cpp:127
-#, fuzzy
 #| msgid ""
 #| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 #| "cannot be installed."
@@ -5034,11 +5328,10 @@ msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
 msgstr ""
-"Extramaterialet <i>$addon_title</i> har ett ogiltigt fil- eller katalognamn "
-"och kan inte installeras."
+"Extramaterialet <i>$addon_title</i> har ett ogiltigt id '$addon_id' och kan "
+"inte publiceras."
 
 #: src/addon/client.cpp:153
-#, fuzzy
 #| msgid ""
 #| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 #| "cannot be installed."
@@ -5047,7 +5340,7 @@ msgid ""
 "characters and cannot be published."
 msgstr ""
 "Extramaterialet <i>$addon_title</i> har ett ogiltigt fil- eller katalognamn "
-"och kan inte installeras."
+"och kan inte publiceras."
 
 #: src/addon/client.cpp:161
 msgid ""
@@ -5058,9 +5351,14 @@ msgid ""
 "\n"
 "&quot; * / : &lt; &gt; ? \\ | ~"
 msgstr ""
+"Extramaterialet <i>$addon_title</i> har ett ogiltigt fil- eller katalognamn "
+"och kan inte publiceras. Fil- eller katalognamn får inte innehålla '..' "
+"eller sluta med '.' eller vara längre än 255 tecken. Det får heller inte "
+"innehålla blank steg, kontroll tecken eller något av följande tecken:\n"
+"\n"
+"&quot; * / : &lt; &gt; ? \\ | ~"
 
 #: src/addon/client.cpp:172
-#, fuzzy
 #| msgid ""
 #| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 #| "cannot be installed."
@@ -5069,8 +5367,9 @@ msgid ""
 "conflicts. File or directory names may not be differently-cased versions of "
 "the same string."
 msgstr ""
-"Extramaterialet <i>$addon_title</i> har ett ogiltigt fil- eller katalognamn "
-"och kan inte installeras."
+"Tillägget <i>$addon_title</i> innehåller filer eller kataloger med kapslade "
+"konflikter. Fil- eller katalog namn får inte vara annorlunda-kapslade "
+"versioner av samma sträng."
 
 #: src/addon/client.cpp:184
 msgid "Sending add-on <i>$addon_title</i>..."
@@ -5093,7 +5392,6 @@ msgstr ""
 "och kan inte installeras."
 
 #: src/addon/client.cpp:264
-#, fuzzy
 #| msgid ""
 #| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 #| "cannot be installed."
@@ -5101,8 +5399,8 @@ msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
 msgstr ""
-"Extramaterialet <i>$addon_title</i> har ett ogiltigt fil- eller katalognamn "
-"och kan inte installeras."
+"Extramaterialet <i>$addon_title</i> har fil- eller katalognamn med kapslade "
+"konflikter. Det kan orsaka problem."
 
 #: src/addon/client.cpp:321
 msgid "The server responded with an error:"
@@ -5181,7 +5479,7 @@ msgstr "Scenario"
 
 #: src/addon/info.cpp:161
 msgid "addon_type^SP/MP Campaign"
-msgstr "Gruppspelskampanj"
+msgstr "Enspelar/Gruppspelskampanj"
 
 #: src/addon/info.cpp:163
 msgid "addon_type^MP era"
@@ -5204,10 +5502,9 @@ msgid "addon_type^MP campaign"
 msgstr "Gruppspelskampanj"
 
 #: src/addon/info.cpp:173
-#, fuzzy
 #| msgid "addon_type^MP modification"
 msgid "addon_type^Modification"
-msgstr "Gruppspelsjustering"
+msgstr "Modifikation"
 
 #: src/addon/info.cpp:175
 msgid "addon_type^Core"
@@ -5486,10 +5783,9 @@ msgid "<password> <email (optional)>"
 msgstr "<lösenord> <epost (valfritt)>"
 
 #: src/chat_command_handler.hpp:131
-#, fuzzy
 #| msgid "Drop your nickname."
 msgid "Register your nickname"
-msgstr "Slopa ditt användarnamn."
+msgstr "Registrera ditt användarnamn."
 
 #: src/chat_command_handler.hpp:133
 msgid "Drop your nickname."
@@ -5576,23 +5872,23 @@ msgstr "viskning: $sender"
 
 #: src/deprecation.cpp:40
 msgid "$elem has been deprecated indefinitely."
-msgstr ""
+msgstr "$elem har ersatts på obestämd tid."
 
 #: src/deprecation.cpp:47
 msgid "$elem has been deprecated and may be removed in version $version."
-msgstr ""
+msgstr "$elem har ersatts och kan tas bort i version $version."
 
 #: src/deprecation.cpp:49
 msgid "$elem has been deprecated and may be removed at any time."
-msgstr ""
+msgstr "$elem har ersatts och kan tas bort när som helst."
 
 #: src/deprecation.cpp:56
 msgid "$elem has been deprecated and will be removed in version $version."
-msgstr ""
+msgstr "$elem har ersatts och kommer att tas bort i version $version."
 
 #: src/deprecation.cpp:61
 msgid "$elem has been deprecated and removed."
-msgstr ""
+msgstr "$elem har ersatts och tagits bort."
 
 # översatt
 #: src/desktop/notifications.cpp:82
@@ -5634,10 +5930,9 @@ msgid "%b %d %Y"
 msgstr "%F"
 
 #: src/game_config.cpp:530
-#, fuzzy
 #| msgid "Invalid color range: "
 msgid "Invalid color in range: "
-msgstr "Ogiltig färgskala: "
+msgstr "Ogiltig färg i omfång: "
 
 #: src/game_config_manager.cpp:198 src/game_config_manager.cpp:207
 #: src/game_config_manager.cpp:219
@@ -5795,10 +6090,9 @@ msgid "not available."
 msgstr "ej tillgänglig"
 
 #: src/game_initialization/create_engine.cpp:149
-#, fuzzy
 #| msgid "Custom"
 msgid "Custom map."
-msgstr "Specialinställningar"
+msgstr "Anpassad karta."
 
 #: src/game_initialization/depcheck.cpp:489
 msgid "Failed to resolve dependencies"
@@ -5833,7 +6127,7 @@ msgstr ""
 #: src/game_initialization/depcheck.hpp:312
 #: src/game_initialization/depcheck.hpp:324
 msgid "A component"
-msgstr ""
+msgstr "En komponent"
 
 #: src/game_initialization/flg_manager.cpp:195
 msgid "Only random sides in the current era."
@@ -5848,27 +6142,24 @@ msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "Kan inte utläsa kön för ogiltig ledare $leader"
 
 #: src/game_initialization/lobby_data.cpp:237
-#, fuzzy
 #| msgid "Missing addon: $id"
 msgid "Missing addon: $name"
-msgstr "Saknar extramaterial: $id"
+msgstr "Saknar extramaterial: $name"
 
 #: src/game_initialization/lobby_data.cpp:239
 msgid "Missing addon: $id"
 msgstr "Saknar extramaterial: $id"
 
 #: src/game_initialization/lobby_data.cpp:264
-#, fuzzy
 #| msgid " (missing)"
 msgid "$era_name (missing)"
-msgstr "(saknas)"
+msgstr "$era_name (saknas)"
 
 #: src/game_initialization/lobby_data.cpp:271
 msgid "Unknown era"
 msgstr "Okänd era"
 
 #: src/game_initialization/lobby_data.cpp:288
-#, fuzzy
 #| msgid " (missing)"
 msgid "(missing)"
 msgstr "(saknas)"
@@ -5876,7 +6167,7 @@ msgstr "(saknas)"
 #: src/game_initialization/lobby_data.cpp:334
 #: src/game_initialization/lobby_data.cpp:364
 msgid "S"
-msgstr ""
+msgstr "S"
 
 #: src/game_initialization/lobby_data.cpp:353
 msgid "Remote scenario"
@@ -5885,7 +6176,7 @@ msgstr "Nätverksscenario"
 #: src/game_initialization/lobby_data.cpp:372
 #: src/game_initialization/lobby_data.cpp:395
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #: src/game_initialization/lobby_data.cpp:400
 msgid "Unknown scenario"
@@ -5912,7 +6203,6 @@ msgid "none"
 msgstr "inget"
 
 #: src/game_initialization/lobby_data.cpp:495
-#, fuzzy
 #| msgid ""
 #| "Host's version of $addon is too old: host's version $host_ver < your "
 #| "version $local_ver."
@@ -5920,11 +6210,10 @@ msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
-"Värdens version av $addon är för gammal: värdens version $host_ver < din "
-"version $local_ver."
+"Värdens version av <i>$addon</i> är inkompatibel. De har version <b>"
+"$host_ver</b> medan du har version <b>$local_ver</b>."
 
 #: src/game_initialization/lobby_data.cpp:509
-#, fuzzy
 #| msgid ""
 #| "Your version of $addon is out of date: host's version $host_ver > your "
 #| "version $local_ver."
@@ -5932,8 +6221,8 @@ msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
-"Din version av $addon är utdaterad: värdens version $host_ver > din version "
-"$local_ver."
+"Din version av <i>$addon</i> är inkompatibel. Du har version <b>$local_ver</"
+"b> medan värden har version <b>$host_ver</b>."
 
 #: src/game_initialization/mp_game_utils.cpp:101
 msgid "Cannot find era $era"
@@ -5944,7 +6233,6 @@ msgid "Connection timed out"
 msgstr "Anslutningstiden tog slut"
 
 #: src/game_initialization/multiplayer.cpp:124
-#, fuzzy
 #| msgid ""
 #| "The server accepts versions '$version1' while you are using version "
 #| "'$version2'"
@@ -5952,8 +6240,8 @@ msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
 msgstr ""
-"Servern kräver version ’$version1’ av spelet, medan du använder version "
-"’$version2’."
+"Servern kräver versionerna '$required_version' av spelet, men du använder "
+"version '$your_version'"
 
 #: src/game_initialization/multiplayer.cpp:134
 msgid "Server-side redirect loop"
@@ -5992,7 +6280,6 @@ msgid "The nickname ‘$nick’ is already taken."
 msgstr "Användarnamnet ’$nick’ är upptaget."
 
 #: src/game_initialization/multiplayer.cpp:321
-#, fuzzy
 #| msgid ""
 #| "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 #| "characters, underscores and hyphens are allowed."
@@ -6000,8 +6287,8 @@ msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
 msgstr ""
-"Användarnamnet '$nick' innehåller otillåtna tecken. Enbart bokstäver, "
-"siffror, understreck och bindestreck är tillåtna."
+"Användarnamnet '$nick' innehåller otillåtna tecken. Enbart alfanumeriska "
+"karaktärer (åtminstone en), understreck och bindestreck är tillåtna."
 
 #: src/game_initialization/multiplayer.cpp:325
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
@@ -6173,10 +6460,9 @@ msgid "Unknown scenario: '$scenario|'"
 msgstr "Okänt scenario: '$scenario|'"
 
 #: src/game_initialization/singleplayer.cpp:42
-#, fuzzy
 #| msgid "No campaigns are available.\n"
 msgid "No campaigns are available."
-msgstr "Inga kampanjer är tillgängliga.\n"
+msgstr "Inga kampanjer är tillgängliga."
 
 #: src/game_launcher.cpp:644 src/game_launcher.cpp:662
 msgid "The file you have tried to load is corrupt"
@@ -6201,10 +6487,9 @@ msgid "Error while starting server: "
 msgstr "Fel under serverstart: "
 
 #: src/generators/default_map_generator_job.cpp:691
-#, fuzzy
 #| msgid "Random maps with an odd width aren't supported."
 msgid "Random maps with an odd width aren't supported."
-msgstr "Slumpkartor med udda bredd stöds inte."
+msgstr "Slumpkartor med en ojämn bredd stöds inte."
 
 #: src/generators/default_map_generator_job.cpp:954
 msgid ""
@@ -6217,9 +6502,9 @@ msgstr ""
 #: src/gui/core/linked_group_definition.cpp:39
 msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
+"Länkad grupp ' $id ' behöver en 'fixed_width' eller 'fixed_height' nyckel."
 
 #: src/gui/dialogs/addon/install_dependencies.cpp:38
-#, fuzzy
 #| msgid ""
 #| "The selected add-on has the following dependency, which is not currently "
 #| "installed. Do you wish to install it before continuing?"
@@ -6233,27 +6518,27 @@ msgid_plural ""
 "The selected add-on has the following dependencies, which are outdated or "
 "not currently installed. Do you wish to install them before continuing?"
 msgstr[0] ""
-"Det valda extramaterialet kräver det nedan angivna, vilket för närvarande "
-"inte är installerat. Vill du installera detta innan du fortsätter?"
+"Det valda extramaterialet kräver följande beroende, vilken är utdaterad "
+"eller för närvarande inte installerad. Vill du installera den innan du "
+"fortsätter?"
 msgstr[1] ""
-"Det valda extramaterialet kräver det nedan angivna, vilket för närvarande "
-"inte är installerat. Vill du installera detta innan du fortsätter?"
+"Det valda extramaterialet kräver följande beroenden, vilka är utdaterade "
+"eller för närvarande inte installerade. Vill du installera dem innan du "
+"fortsätter?"
 
 #: src/gui/dialogs/game_load.hpp:40
 msgid "No Saved Games"
 msgstr "Inga sparade spel"
 
 #: src/gui/dialogs/game_load.hpp:40
-#, fuzzy
 #| msgid "The file you have tried to load is corrupt"
 msgid "There are no save files to load"
-msgstr "Filen du försöker öppna är felaktig"
+msgstr "Det finns inga sparade filer att ladda"
 
 #: src/gui/dialogs/game_stats.hpp:43
-#, fuzzy
 #| msgid "No multiplayer sides found"
 msgid "No visible sides found."
-msgstr "Inga sidor för gruppspel funna"
+msgstr "Inga synliga sidor hittades."
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:104
 msgid "In game:"
@@ -6292,10 +6577,9 @@ msgid "Error"
 msgstr "Fel"
 
 #: src/gui/dialogs/unit_list.hpp:45
-#, fuzzy
 #| msgid "No eras found."
 msgid "No units found."
-msgstr "Inga eror funna."
+msgstr "Inga enheter funna."
 
 #: src/gui/widgets/status_label_helper.hpp:33
 msgid "no"
@@ -6350,20 +6634,18 @@ msgid "No description available."
 msgstr "Inga beskrivning tillgänglig."
 
 #: src/help/help_impl.cpp:714 src/help/help_impl.cpp:716
-#, fuzzy
 #| msgid "Ability: "
 msgid "Availability: "
-msgstr "Förmågor: "
+msgstr "Tillgänglighet: "
 
 #: src/help/help_impl.cpp:714
 msgid "Must-have"
-msgstr ""
+msgstr "Måste ha"
 
 #: src/help/help_impl.cpp:716
-#, fuzzy
 #| msgid "not available."
 msgid "Unavailable"
-msgstr "ej tillgänglig"
+msgstr "Otillgänglig"
 
 #: src/help/help_impl.cpp:796 src/help/help_impl.cpp:971
 #: src/help/help_topic_generators.cpp:385
@@ -6404,10 +6686,9 @@ msgid "Defense properties: "
 msgstr "Försvarsegenskaper: "
 
 #: src/help/help_topic_generators.cpp:246
-#, fuzzy
 #| msgid "Level: "
 msgid "Level"
-msgstr "Nivå:"
+msgstr "Nivå"
 
 #: src/help/help_topic_generators.cpp:307
 msgid "Advances from: "
@@ -6532,17 +6813,16 @@ msgstr "Version: "
 
 #: src/help/help_topic_generators.cpp:630
 msgid "Jamming Cost"
-msgstr ""
+msgstr "Störningskostnad"
 
 #: src/hotkey/command_executor.cpp:386
-#, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you really want to surrender the game?"
-msgstr "Vill du verkligen radera detta spel?"
+msgstr "Vill du verkligen avstå från spelet?"
 
 #: src/hotkey/command_executor.cpp:386
 msgid "Surrender"
-msgstr ""
+msgstr "Kapitulation"
 
 #: src/hotkey/command_executor.cpp:675
 msgid "Map-Screenshot"
@@ -6670,7 +6950,6 @@ msgid "aliases:"
 msgstr "alias:"
 
 #: src/menu_events.cpp:174
-#, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Spara kartan som"
@@ -6756,18 +7035,16 @@ msgid "Name:"
 msgstr "Namn:"
 
 #: src/menu_events.cpp:806
-#, fuzzy
 #| msgid "Place Label"
 msgid "Clear Labels"
-msgstr "Sätt ut etikett"
+msgstr "Rensa etiketter"
 
 #: src/menu_events.cpp:807
-#, fuzzy
 #| msgid "Are you sure you want to remove the following installed add-on?"
 #| msgid_plural ""
 #| "Are you sure you want to remove the following installed add-ons?"
 msgid "Are you sure you want to clear map labels?"
-msgstr "Är du säker på att du vill ta bort följande installerat extramaterial?"
+msgstr "Är du säker på att du vill rensa kartetiketter?"
 
 #: src/menu_events.cpp:996
 msgid "Search"
@@ -6991,10 +7268,9 @@ msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Växa visning av terrängkoder på hexagoner."
 
 #: src/menu_events.cpp:1250
-#, fuzzy
 #| msgid "Toggle overlaying of terrain codes on hexes."
 msgid "Toggle overlaying of number of bitmaps on hexes."
-msgstr "Växa visning av terrängkoder på hexagoner."
+msgstr "Växa visning av antalet bitmappar på hexagoner."
 
 #: src/menu_events.cpp:1252
 msgid "Toggle planning mode."
@@ -7067,7 +7343,7 @@ msgstr "Debugläge avaktiverat!"
 
 #: src/menu_events.cpp:1739
 msgid "WARNING! Unsafe Lua Mode"
-msgstr ""
+msgstr "Varning! Osäkert lua-läge"
 
 #: src/menu_events.cpp:1740
 msgid ""
@@ -7077,6 +7353,11 @@ msgid ""
 "\n"
 "Do not continue unless you really know what you are doing."
 msgstr ""
+"Om du kör lua-koden på det här sättet öppnas datorn för potentiella "
+"säkerhetsintrång från skadliga tillägg eller andra program som du har "
+"installerat.\n"
+"\n"
+"Fortsätt inte om du inte verkligen vet vad du gör."
 
 #: src/menu_events.cpp:1745
 msgid "Unsafe mode enabled!"
@@ -7119,22 +7400,21 @@ msgstr ""
 "rekryteringar eller återkallelser planerade."
 
 #: src/mouse_events.cpp:987
-#, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has no usable weapons."
-msgstr "Inget användbart vapen"
+msgstr "Denna enhet har inga användbara vapen."
 
 #: src/mp_game_settings.hpp:70
 msgid "Independent"
-msgstr ""
+msgstr "Oberoende"
 
 #: src/mp_game_settings.hpp:71
 msgid "No Mirror"
-msgstr ""
+msgstr "Ingen spegel"
 
 #: src/mp_game_settings.hpp:72
 msgid "No Ally Mirror"
-msgstr ""
+msgstr "Ingen allierad spegel"
 
 #: src/mp_ui_alerts.cpp:66
 msgid "A player has joined"
@@ -7254,16 +7534,14 @@ msgid "It is now $name|’s turn"
 msgstr "Nu är det $name|s drag"
 
 #: src/playturn.cpp:263
-#, fuzzy
 #| msgid "Give gold to the current player."
 msgid "Give control to their ally $player"
-msgstr "Ge guld till aktuell spelare."
+msgstr "Ge kontroll till deras allierade $player"
 
 #: src/playturn.cpp:272
-#, fuzzy
 #| msgid "Give gold to the current player."
 msgid "Give control to observer $player"
-msgstr "Ge guld till aktuell spelare."
+msgstr "Ge kontroll till observatör $player"
 
 #: src/playturn.cpp:277
 msgid "Replace with AI"
@@ -7497,12 +7775,11 @@ msgid "Total damage"
 msgstr "Total skada"
 
 #: src/reports.cpp:983
-#, fuzzy
 #| msgid "Attacker"
 msgid "Attack"
 msgid_plural "Attacks"
-msgstr[0] "Anfallare"
-msgstr[1] "Anfallare"
+msgstr[0] "Attackera"
+msgstr[1] "Attackerar"
 
 #: src/reports.cpp:1119 src/reports.cpp:1171
 msgid "Lawful units: "
@@ -7521,25 +7798,27 @@ msgid "Liminal units: "
 msgstr "Perifera trupper: "
 
 #: src/reports.cpp:1235
-#, fuzzy
 #| msgid "Turn "
 msgid "Turn Number"
-msgstr "Drag "
+msgstr "Dragnummer"
 
 #: src/reports.cpp:1237
 msgid ""
 "When the game reaches the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
+"När spelet når det antal drag som anges av det andra numret, kommer det att "
+"avslutas."
 
 #: src/reports.cpp:1262
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
+"Mängden guld som för närvarande finns att rekrytera och underhålla din armé."
 
 #: src/reports.cpp:1281
 msgid "The fraction of known villages that your side has captured."
-msgstr ""
+msgstr "Den del av kända byar som din sida har fångat."
 
 #: src/reports.cpp:1281
 msgid "Villages"
@@ -7547,7 +7826,7 @@ msgstr "Byar"
 
 #: src/reports.cpp:1286
 msgid "The total number of units on your side."
-msgstr ""
+msgstr "Det totala antalet enheter på din sida."
 
 #: src/reports.cpp:1286
 msgid "Units"
@@ -7560,6 +7839,10 @@ msgid ""
 "total cost of upkeep, including that covered by villages — in other words, "
 "the amount of gold that would be deducted if you lost all villages."
 msgstr ""
+"De kostnader som uppkommer i slutet av varje tur att behålla din armé. Den "
+"första siffran är den mängd guld som kommer att dras av. Den andra är den "
+"totala kostnaden för underhåll, inklusive den som täcks av byar-med andra "
+"ord, den mängd guld som skulle dras om du förlorat alla byar."
 
 #: src/reports.cpp:1296
 msgid "Upkeep"
@@ -7574,6 +7857,8 @@ msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
 msgstr ""
+"Mängden guld du får varje sväng från din kontrollerade byar, eller mängden "
+"guld du kommer att förlora varje sväng för enheten underhåll."
 
 #: src/reports.cpp:1501
 msgid "Observers:"
@@ -7581,15 +7866,15 @@ msgstr "Åskådare: "
 
 #: src/reports.cpp:1541
 msgid "Clock"
-msgstr ""
+msgstr "Klocka"
 
 #: src/reports.cpp:1567
 msgid "Countdown until your turn automatically ends."
-msgstr ""
+msgstr "Nedräkningen tills din tur avslutas automatiskt."
 
 #: src/reports.cpp:1567
 msgid "Turn Countdown"
-msgstr ""
+msgstr "Dragnedräkningen"
 
 # Timeformat for 12-hour clock:
 # %a == abbr. weekday name
@@ -7652,7 +7937,7 @@ msgstr "Sparade spel"
 
 #: src/savegame.cpp:297
 msgid "Replays are not supported in multiplayer mode."
-msgstr ""
+msgstr "Repriser stöds inte i fler spelar läget."
 
 #: src/savegame.cpp:304
 msgid "This is not a multiplayer save."
@@ -7707,7 +7992,7 @@ msgstr "Spara spelet"
 
 #: src/savegame.cpp:638
 msgid "Game state is corrupted"
-msgstr ""
+msgstr "Spel tillståndet är skadat"
 
 #: src/serialization/parser.cpp:153
 msgid "Unexpected characters at line start"
@@ -7851,13 +8136,15 @@ msgstr "i"
 
 #: src/synced_commands.cpp:404
 msgid "The :$command debug command was used during $player’s turn"
-msgstr ""
+msgstr "Den :$command debug-kommandot användes under $player tur"
 
 #: src/synced_commands.cpp:412
 msgid ""
 "A player used a debug command during the game. If this is unexpected, it is "
 "possible the player in question is cheating."
 msgstr ""
+"En spelare använde ett fel söknings kommando under spelet. Om detta är "
+"oväntat, är det möjligt att spelaren i fråga är otrogen."
 
 #: src/synced_commands.cpp:414
 msgid "Details:"
@@ -7865,23 +8152,21 @@ msgstr "Detaljer:"
 
 #: src/synced_commands.cpp:417
 msgid "Do you wish to save the game before continuing?"
-msgstr ""
+msgstr "Vill du spara spelet innan du fortsätter?"
 
 #: src/synced_commands.cpp:419
-#, fuzzy
 #| msgid "Debug mode commands"
 msgid "Debug Command Used"
-msgstr "Debugkommandon"
+msgstr "Använda debugkommandon"
 
 #: src/synced_commands.cpp:503
 msgid "A unit was created using debug mode during $player’s turn"
-msgstr ""
+msgstr "En enhet skapades med debug-läge under $player tur"
 
 #: src/synced_user_choice.cpp:326
-#, fuzzy
 #| msgid "waiting for $desc from side(s)$sides"
 msgid "waiting for $desc from side(s) $sides"
-msgstr "väntar på $desc från sidan/sidorna$sides"
+msgstr "väntar på $desc från sidan/sidorna $sides"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -7913,94 +8198,85 @@ msgstr "Denna tid på dygnet är endast ett utkast!"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:356
-#, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
-msgstr[0] "attack per drag"
-msgstr[1] "attack per drag"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> skada"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> skador"
 
 #: src/units/attack_type.cpp:365
-#, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
 msgid "$number damage"
 msgid_plural "$number damage"
-msgstr[0] "skada"
-msgstr[1] "skada"
+msgstr[0] "$number skada"
+msgstr[1] "$number skador"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:374
-#, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
-msgstr[0] "attack per drag"
-msgstr[1] "attack per drag"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> träff"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> träffar"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:383
-#, fuzzy
 #| msgid "strike"
 #| msgid_plural "strikes"
 msgid "$number strike"
 msgid_plural "$number strikes"
-msgstr[0] "slag"
-msgstr[1] "slag"
+msgstr[0] "$number slag"
+msgstr[1] "$number slag"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:392
-#, fuzzy
 #| msgid " parry"
 msgid "$number| accuracy"
-msgstr "parera"
+msgstr "$number| träffsäkerhet"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:399
-#, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
-msgstr "attack per drag"
+msgstr "<span color=\"$color\">$number_or_percent|%</span> träffsäkerhet"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:406
-#, fuzzy
 #| msgid " parry"
 msgid "$number parry"
-msgstr "parera"
+msgstr "$number parera"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:413
-#, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
-msgstr "attack per drag"
+msgstr "<span color=\"$color\">$number_or_percent</span> parera"
 
 #. TRANSLATORS: Current value for WML code set_movement, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:420
-#, fuzzy
 #| msgid "movement point"
 #| msgid_plural "movement points"
 msgid "$number movement point"
 msgid_plural "$number movement points"
-msgstr[0] "förflyttningspoäng"
-msgstr[1] "förflyttningspoäng"
+msgstr[0] "$number förflyttningspoäng"
+msgstr[1] "$number förflyttningspoäng"
 
 #. TRANSLATORS: Current value for WML code increase_movement, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:429
-#, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent movement</span> point"
 msgid_plural "<span color=\"$color\">$number_or_percent movement</span> points"
-msgstr[0] "attack per drag"
-msgstr[1] "attack per drag"
+msgstr[0] ""
+"<span color=\"$color\">$number_or_percent förflyttnings</span> poäng"
+msgstr[1] ""
+"<span color=\"$color\">$number_or_percent förflyttnings</span> poäng"
 
 #: src/units/types.cpp:545 src/units/types.hpp:181
 msgid "chaotic"
 msgstr "ljusskygg"
 
 #: src/units/types.cpp:545 src/units/types.hpp:179
-#, fuzzy
 #| msgid "female^lawful"
 msgid "lawful"
 msgstr "redbar"
@@ -8034,51 +8310,45 @@ msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
 #: src/units/unit.cpp:1791
-#, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
-msgstr "attack per drag"
+msgstr "<span color=\"$color\">$number_or_percent</span> HP"
 
 #: src/units/unit.cpp:1801
-#, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
-msgstr[0] "attack per drag"
-msgstr[1] "attack per drag"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> steg"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> steg"
 
 #: src/units/unit.cpp:1807
-#, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
-msgstr "attack per drag"
+msgstr "<span color=\"$color\">$number_or_percent</span> synhåll"
 
 #: src/units/unit.cpp:1811
-#, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
-msgstr "attack per drag"
+msgstr "<span color=\"$color\">$number_or_percent</span> störning"
 
 #: src/units/unit.cpp:1816
-#, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
-msgstr "attack per drag"
+msgstr "<span color=\"$color\">$number_or_percent</span> XP för att avancera"
 
 #: src/units/unit.cpp:1820
-#, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
-msgstr[0] "attack per drag"
-msgstr[1] "attack per drag"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> attack per drag"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> attacker per drag"
 
 #: src/units/unit.cpp:1827
-#, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
-msgstr "attack per drag"
+msgstr ""
+"<span color=\"$color\">$number_or_percent</span> kostnad för att återkalla"
 
 #: src/units/unit.cpp:2232
 msgid "$effect_description per level"
@@ -8087,22 +8357,22 @@ msgstr "$effect_description per nivå"
 #. TRANSLATORS: "Before Wesnoth"   - format for years prior to the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:59
 msgid "$year BW"
-msgstr ""
+msgstr "$year BW"
 
 #. TRANSLATORS: "Year of Wesnoth"  - format for years after the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:62
 msgid "$year YW"
-msgstr ""
+msgstr "$year YW"
 
 #. TRANSLATORS: "Before the Fall" -  format for years prior to the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:65
 msgid "$year BF"
-msgstr ""
+msgstr "$year BF"
 
 #. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesonth
 #: src/utils/irdya_datetime.cpp:68
 msgid "$year AF"
-msgstr ""
+msgstr "$year AF"
 
 #: src/whiteboard/manager.cpp:1083
 msgid "SHOW ALL allies’ plans"
