@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-03-11 16:09+0300\n"
-"PO-Revision-Date: 2019-03-25 20:14+0100\n"
+"PO-Revision-Date: 2019-04-12 13:13+0200\n"
 "Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
@@ -314,6 +314,15 @@ msgid ""
 "\n"
 "• <ref>dst='editor_playlist' text='Playlist Manager'</ref>"
 msgstr ""
+"\n"
+"\n"
+"• <ref>dst='editor_terrain' text='Terrein Editor'</ref>\n"
+"Een makkelijk te gebruiken kaart editor, vergelijkbaar met eenvoudige paint "
+"programma's.\n"
+"\n"
+"• Scenario Editor\n"
+"\n"
+"• <ref>dst='editor_playlist' text='Afspeellijst Beheer'</ref>"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:153
@@ -324,6 +333,11 @@ msgid ""
 "• Time Schedule Editor\n"
 "\n"
 msgstr ""
+"\n"
+"Stel de muziek afspeellijst van het scenario in.\n"
+"\n"
+"• Tijdschema Editor\n"
+"\n"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:158
@@ -346,6 +360,21 @@ msgid ""
 "TODO is that true?\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"• Wat-je-ziet-is-wat-je-krijgt (WYSIWYG)\n"
+"De editor is geen WYSIWYG programma.\n"
+"\n"
+"Omdat iedere tegel een terreinsoort vertegenwoordigd afhankelijk van de "
+"terreinregels die geladen zijn (welke anders zijn tussen de editor en iedere "
+"ander gebruik) zal de kaart niet precies hetzelfde eruit zien.\n"
+"\n"
+"• Gebeurtenis handlers en coderen\n"
+"De editor is geen gebruikersvoorwerp om gebeurtenissen te coderen.\n"
+"\n"
+"• Oneindige Terugwaardse Compatibiliteit\n"
+"De editor kan geen kaarten laden van versies voor 1.10\n"
+"\n"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:172
@@ -358,11 +387,18 @@ msgid ""
 "needs a topic on its own\n"
 "• <ref>dst='editor_clipboard' text='Editor Clipboard'</ref>"
 msgstr ""
+"\n"
+"• <ref>dst='editor_modes' text='Aanpassingmodus'</ref>\n"
+"• <ref>dst='editor_toolkit' text='Editor Gereedschapskist'</ref>\n"
+"• <ref>dst='editor_palette' text='Editor Kleuren'</ref>\n"
+"• <ref>dst='editor_brush' text='Editor Kwasten'</ref> TODO: niet zeker of "
+"het een onderwerp op zich vereist\n"
+"• <ref>dst='editor_clipboard' text='Editor Klembord'</ref>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:184
 msgid "Editing Modes"
-msgstr ""
+msgstr "Aanpassingmodus"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
@@ -371,11 +407,14 @@ msgid ""
 "\n"
 "<header>text='Pure Map Mode'</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text='Enkel Kaart Modus'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
 msgid "The editor features two separate modes of operation:"
-msgstr ""
+msgstr "De editor bevat twee losstaande manieren van besturing:"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:187
@@ -385,6 +424,10 @@ msgid ""
 "Allows only the composing of the terrain map itself and the definition of "
 "leader starting positions."
 msgstr ""
+"\n"
+"\n"
+"Staat enkel het samenstellen van de terreinkaart zelf en de startposities "
+"van de leiders."
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:189
@@ -394,6 +437,10 @@ msgid ""
 "\n"
 "<bold>text='Native'</bold>"
 msgstr ""
+"\n"
+"Hoe de informatie opgeslagen wordt hangt af van het geladen bestand\n"
+"\n"
+"<bold>text='Lokaal'</bold>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:192
@@ -406,6 +453,15 @@ msgid ""
 "\n"
 "<bold>text='Embedded'</bold>"
 msgstr ""
+"\n"
+"Een nieuwe kaart of nieuw bestand bevat enkel argumenten over het map_data "
+"attribuut.\n"
+"\n"
+"De geproduceerde kaart kan afgespeeld worden in de \"Gebruikers mappen\" "
+"speltype wanneer een multiplayer speldialoog opgeslagen wordt in een lokale "
+"map.\n"
+"\n"
+"<bold>text='Ingebouwd'</bold>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:197
@@ -416,6 +472,11 @@ msgid ""
 "map_data and leaves everything else in the scenario untouched. Maps opened "
 "this way are marked [e] in the Maps menu."
 msgstr ""
+"\n"
+"Scenario bestanden die een geldig map_data attribuut bevatten (zonder "
+"bestand toegevoegd) worden geopend in deze submodus. De editor vervangt "
+"enkel de inhoud van map_data en laat al het andere zoals het was. Kaarten "
+"die op deze manier geopend worden zijn gemarkeerd met [e] in het Kaart menu."
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:198
@@ -424,6 +485,9 @@ msgid ""
 "\n"
 "<header>text='Scenario Mode'</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text='Scenario Modus'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:200
@@ -437,11 +501,19 @@ msgid ""
 "In this mode, terrain data is stored in the map_data attribute and saved "
 "into a file with any applicable WML."
 msgstr ""
+"\n"
+"\n"
+"De Scenario modus staat toe dat een aantal extra hulpmiddelen gebruikt "
+"kunnen worden, zoals het Eenheid hulpmiddel. Ten minste een kant moet "
+"gedefinieerd worden om deze hulpmiddelen te kunnen gebruiken.\n"
+"\n"
+"In deze modus, terrein data is opgeslagen in het map_data attribuut en "
+"opgeslagen in een bestand met een toepasselijk WML."
 
 #. [topic]: id=editor_toolkit
 #: data/core/editor/help.cfg:211
 msgid "Editor Tools"
-msgstr ""
+msgstr "Editor Hulpmiddelen"
 
 #. [topic]: id=editor_toolkit
 #: data/core/editor/help.cfg:212
@@ -464,11 +536,28 @@ msgid ""
 "• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>\n"
 "\n"
 msgstr ""
+"De editor heeft verschillende gereedschappen voor het aanpassen van je "
+"kaarten en scenarios. Er is altijd één gereedschap actief. Het actieve "
+"gereedschap bepaalt de inhoud van het editor palette en het contextmenu.\n"
+"\n"
+"De volgende gereedschappen zijn beschikbaar:\n"
+"\n"
+"• <ref>dst='editor_tool_paint' text='Verf Gereedschap'</ref>\n"
+"• <ref>dst='editor_tool_fill'  text='Opvul Gereedschap'</ref>\n"
+"• <ref>dst='editor_tool_select' text='Selecteer Gereedschap'</ref>\n"
+"• <ref>dst='editor_tool_paste' text='Plak Gereedschap'</ref>\n"
+"• <ref>dst='editor_tool_starting' text='Start Gereedschap'</ref>\n"
+"• <ref>dst='editor_tool_label' text='Label Gereedschap'</ref>\n"
+"• <ref>dst='editor_tool_item' text='Voorwerp Gereedschap'</ref>\n"
+"• <ref>dst='editor_tool_soundsource' text='Geluidsbron Gereedschap'</ref>\n"
+"• <ref>dst='editor_tool_village' text='Dorpen Gereedschap'</ref>\n"
+"• <ref>dst='editor_tool_unit' text='Eenheid Gereedschap'</ref>\n"
+"\n"
 
 #. [topic]: id=editor_terrain
 #: data/core/editor/help.cfg:234
 msgid "Terrain Editor"
-msgstr ""
+msgstr "Terrein Editor"
 
 #. [topic]: id=editor_terrain
 #: data/core/editor/help.cfg:235
@@ -477,11 +566,14 @@ msgid ""
 "<ref>dst='editor_tool_paint' text='Paint'</ref> and "
 "<ref>dst='editor_tool_fill' text='Fill Tool'</ref>."
 msgstr ""
+"De functionaliteit van de terrein editor valt onder het "
+"<ref>dst='editor_tool_paint' text='Verf'</ref> en "
+"<ref>dst='editor_tool_fill' text='Opvul gereedschap'</ref>."
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:242
 msgid "Editor Mask Usage"
-msgstr ""
+msgstr "Editor Laag Gebruik"
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:243
@@ -489,16 +581,18 @@ msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
 msgstr ""
+"Lagen kunnen toegepast worden op een standaard kaart voor hergebruik in "
+"scenarios die zich op dezelfde locatie afspelen."
 
 #. [topic]: id=editor_time_schedule
 #: data/core/editor/help.cfg:250
 msgid "Time Schedule Editor"
-msgstr ""
+msgstr "Tijdschema Editor"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:258
 msgid "Editor Palette"
-msgstr ""
+msgstr "Editor Kleur"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:259
@@ -508,11 +602,15 @@ msgid ""
 "list of all available terrains, and the unit tool will provide a list of "
 "available units."
 msgstr ""
+"De editor kleur bevat alle toepasbare onderdelen die je kan gebruiken in "
+"samenwerken met het geselecteerde gereedschap. Bijvoorbeeld, het Verf "
+"gereedschap zal een lijst weergeven van alle beschikbare terreinen, en het "
+"Eenheid gereedschap zal een lijst weergeven van alle beschikbare eenheden."
 
 #. [topic]: id=map_format
 #: data/core/editor/help.cfg:266
 msgid "Wesnoth Map Format"
-msgstr ""
+msgstr "Wesnoth Kaart Format"
 
 #. [topic]: id=map_format
 #: data/core/editor/help.cfg:267
@@ -528,16 +626,27 @@ msgid ""
 "Additional information, such as teams, custom events, and complex side "
 "setups still need to be manually coded in WML."
 msgstr ""
+"Wesnoth slaat de kaarten op in bestanden die door mensen te lezen zijn.\n"
+"\n"
+"Een kaart bestand bevat rijen met terreincodes door komma's gescheiden. De "
+"bestanden kunnen aangepast worden met een standaard tekstverwerker zoals "
+"notepad.\n"
+"\n"
+"De enige extra informatie die de kaartcode geeft zijn de startposities van "
+"de leiders.\n"
+"\n"
+"Verdere informatie zoals teams, gebeurtenissen, en ingewikkelde instellingen "
+"moeten nog steeds handmatig gecodeerd worden in WML."
 
 #. [topic]: id=scenario_format
 #: data/core/editor/help.cfg:280
 msgid "Scenario Format"
-msgstr ""
+msgstr "Scenario Format"
 
 #. [topic]: id=editor_starting_positions_in_general
 #: data/core/editor/help.cfg:288
 msgid "Starting Positions Howto"
-msgstr ""
+msgstr "Start Posities Hoe"
 
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
@@ -1337,6 +1446,30 @@ msgid ""
 "difficulties, the obstacles to victory will be higher and overcoming them "
 "will require more skillful play."
 msgstr ""
+"Wesnoth bestaat uit een aantal gevechten, genaamd <italic>text='scenario's'</"
+"italic>, waarin je troepen tegenover één of meerdere tegenstanders geplaatst "
+"worden. Meerdere opeenvolgende scenario's, die een verhaal vertellen, vormen "
+"een <italic>text='veldtocht'</italic>. In een veldtocht moet je vaak "
+"voorzichtig spelen, je beste eenheden kun je nodig hebben in latere "
+"scenario's.\n"
+"\n"
+"Nadat je de basis onder de knie hebt, kun je een beginnersveldtocht proberen "
+"zoals <italic>text='De Kroonprins'</italic> of <italic>text='De Zuidelijke "
+"Wacht'</italic>. Een volledige lijst met veldtochten is te vinden via de "
+"<bold>text='Veldtocht'</bold> optie in het hoofdmenu. Omdat Wesnoth redelijk "
+"lastig kan zijn is het misschien slim om op een makkelijk niveau te beginnen "
+"voordat je een moeilijker niveau probeert.\n"
+"\n"
+"Veldtochten zijn gegroepeerd per <italic>text='niveau'</italic> en "
+"<italic>text='moeilijkheidsgraad'</italic>. Bijvoorbeeld <italic>text='De "
+"Kroonprins'</italic> is 'Beginners' niveau en is te spelen in drie "
+"moeilijkheidsgraden: 'Beginner', 'Normaal' en 'Uitdagend'. Het niveau van "
+"een veldtocht geeft aan in hoeverre je bekend moet zijn met spelmechanismen "
+"(zoals <ref>dst='movement' text='Controlegebied'</ref> en "
+"<ref>dst='time_of_day' text='tijd van de dag'</ref>). De moeilijkheidsgraad "
+"geeft aan hoe uitdagend de scenario's zullen zijn voor een ervaren speler: "
+"bij een hogere moeilijkheidsgraad, zullen de overwinningen moeilijker te "
+"behalen zijn en meer inzichten vereisen."
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:181
@@ -1444,6 +1577,18 @@ msgid ""
 "recruitment, along with their gold cost. Click on a unit to see its "
 "statistics, then press the <bold>text='Recruit'</bold> button to recruit it."
 msgstr ""
+"Elke kant begint met een leider in het kasteel. Aan het begin van iedere "
+"strijd, en soms in het verloop ervan, zal je <ref>dst='..units' "
+"text='eenheden'</ref> moeten rekruteren voor je leger. Om te rekruteren moet "
+"je je leider (bijvoorbeeld Konrad in <italic>text='De Kroonprins'</italic> "
+"veldtocht) op de donjon van je <ref>dst='..terrain_castle' text='kasteel'</"
+"ref>plaatsen. Vervolgens kun je rekruteren door <bold>text='Rekruteer'</"
+"bold> te kiezen in het menu of met rechter muisknop op een leeg kasteelvak "
+"te klikken en hier <bold>text='Rekruteer'</bold> te selecteren. Vervolgens "
+"krijg je een rekruten menu te zien, waarin alle eenheden te zien zijn die je "
+"kan rekruteren, samen met het aantal goudstukken dat ze kosten. Klik op een "
+"eenheid om de statistieken te bekijken en druk op <bold>text='Rekruteer'</"
+"bold> om de eenheid te rekruteren."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:206
@@ -1468,6 +1613,11 @@ msgid ""
 "Recalling costs a standard 20 gold and presents you with a list of all "
 "surviving units from previous scenarios."
 msgstr ""
+"\n"
+"\n"
+"In latere scenario's kun je overlevende eenheden Oproepen van eerdere "
+"gevechten. Oproepen kost standaard 20 goudstukken en laat een lijst zien van "
+"alle eenheden uit voorgaande scenario's."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:210
@@ -1478,6 +1628,11 @@ msgid ""
 "support. See <ref>dst='income_and_upkeep' text='income and upkeep'</ref> for "
 "more information."
 msgstr ""
+"\n"
+"\n"
+"Eenheden kosten niet alleen geld om te Rekruteren of Op te roepen, maar ook "
+"op te onderhouden. Zie <ref>dst='income_and_upkeep' text='inkomen en "
+"onderhoud'</ref> voor meer informatie."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:219
@@ -2143,6 +2298,17 @@ msgid ""
 "• <bold>text='Liminal'</bold> units get −25% damage during both night and "
 "daytime."
 msgstr ""
+"De tijd van de dag beïnvloedt de toegebrachte schade van eenheden als "
+"volgend:\n"
+"\n"
+"• <bold>text='Gezagsgetrouwe'</bold> eenheden doen +25% schade overdag, en "
+"−25% schade 's nachts.\n"
+"• <bold>text='Wetteloze'</bold> eenheden doen +25% schade 's nachts, en −25% "
+"schade overdag..\n"
+"• <bold>text='Neutrale'</bold> eenheden worden niet beïnvloed door de tijd "
+"van de dag\n"
+"• <bold>text='Mysterieuze'</bold> eenheden doen −25% schade gedurende zowel "
+"overdag als 's nachts."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:341
@@ -2220,6 +2386,8 @@ msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night.\n"
 msgstr ""
+"Sommige ondergrondse locaties zijn verlicht. Zij zijn voortdurend geen dag "
+"en geen nacht.\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:356
@@ -2227,6 +2395,8 @@ msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate.\n"
 msgstr ""
+"Sommige rollenspel scenarios vinden binnen plaats — deze regio's zijn ook "
+"voortdurend tussen dag en nacht in.\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:358
@@ -2236,6 +2406,10 @@ msgid ""
 "<ref>dst='terrain_lava' text='lava'</ref> change the time of day bonus "
 "around them."
 msgstr ""
+"Als laatste, eenheden met de vaardigheid "
+"<ref>dst='ability_illuminationilluminates' text='verlicht'</ref> en "
+"terreineigenschappen zoals <ref>dst='terrain_lava' text='lava'</ref> "
+"veranderen de tijd van de dag-bonus om hen heen."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:365
@@ -2244,7 +2418,6 @@ msgstr "Genezing"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:366
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2263,10 +2436,13 @@ msgid ""
 "heal your units. However, with the exception of resting, these do not stack; "
 "only one can occur per turn."
 msgstr ""
+"In het gevecht zullen je eenheden ongetwijfeld gewond raken. Er zijn "
+"verschillende manieren om je eenheden te genezen. Alleen, met de "
+"uitzondering van rusten, stapelen deze zich niet op; enkel één per beurt kan "
+"plaatsvinden."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:368
-#, fuzzy
 msgid ""
 "\n"
 "• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
@@ -2278,7 +2454,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:369
-#, fuzzy
 msgid ""
 "\n"
 "• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
@@ -2286,13 +2461,13 @@ msgid ""
 "the unit is poisoned, the poison will be cured instead."
 msgstr ""
 "\n"
-"<ref>dst='ability_regenerates' text='Regeneratie'</ref>: Een eenheid met de "
-"Regenereert-eigenschap (trollen bijvoorbeeld) geneest aan het begin van elke "
-"beurt 8HP."
+"• <ref>dst='ability_regeneratesregenerates' text='Herstellend'</ref>: "
+"Sommige eenheden (zoals Trollen) zullen automatisch 8HP per beurt genezen. "
+"Wanneer de eenheid vergiftigd is, zal in plaats daarvan de vergiftiging "
+"genezen worden."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:370
-#, fuzzy
 msgid ""
 "\n"
 "• <bold>text='Healing units'</bold>: Units with the "
@@ -2302,12 +2477,12 @@ msgid ""
 "prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"Verplegende eenheden: Eenheden met het vermogen <ref>dst='ability_heals +4' "
-"text='Verpleegt'</ref> kunnen elke bevriende eenheid die in een aangrenzend "
-"vakje staat verplegen. De verpleegde eenheid verkrijgt zo "
-"<ref>dst='ability_heals +4' text='4HP'</ref> of <ref>dst='ability_heals +8' "
-"text='8HP'</ref> per beurt of wordt behoed voor de effecten van een "
-"vergiftiging."
+"• <bold>text='Genezende eenheden'</bold>: Eenheden met de "
+"vaardigheid<ref>dst='ability_healingheals +4' text='Geneest'</ref> zullen "
+"iedere aangrenzende eenheid normaal gesproken genezen met "
+"<ref>dst='ability_healingheals +4' text='4HP'</ref> of "
+"<ref>dst='ability_healingheals +8' text='8HP'</ref> per beurt, of voorkomt "
+"dat een vergiftiging de eenheid verwondt."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:371
@@ -2318,6 +2493,11 @@ msgid ""
 "in all allied adjacent units (in preference to healing, if it has that "
 "ability as well)."
 msgstr ""
+"\n"
+"• <bold>text='Gisgenezende eenheden'</bold>: Eenheden met de vaardigheid "
+"<ref>dst='ability_curingcures' text='Geneest Gif'</ref> zullen Vergif in "
+"alle aangrenzende bevriende eenheden genezen (dit heeft de voorkeur boven "
+"het genezen van HP, als het deze vaardigheid ook heeft)."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:372
@@ -2327,10 +2507,14 @@ msgid ""
 "text='advances'</ref>, it will heal fully. This can happen as soon as your "
 "unit gains enough experience, whether it is your turn or not."
 msgstr ""
+"\n"
+"• <bold>text='Promotie'</bold>: Wanneer een eenheid <ref>dst='advancement' "
+"text='promoveert'</ref>, zal het volledig genezen. Dit gebeurt wanneer een "
+"eenheid genoeg ervaringspunten heeft ontvangen, hierbij maakt het niet uit "
+"wiens beurt het is."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:373
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2342,8 +2526,8 @@ msgstr ""
 "\n"
 "Rust kan worden gecombineerd met andere vormen van genezing, maar dorpen, "
 "regeneratie, verpleging en genezing kunnen niet worden gecombineerd: de "
-"voordeligste mogelijkheid wordt gebruikt. Tussen twee scenario's in krijgen "
-"de eenheden al hun hitpoints terug."
+"beste mogelijkheid wordt gebruikt. Ten slotte, tussen twee scenario's in "
+"worden eenheden volledig genezen."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:375
@@ -2367,6 +2551,14 @@ msgid ""
 "from one healer per turn, a unit surrounded by healers from several allied "
 "sides will be healed once on each of said allied sides’ turns."
 msgstr ""
+"\n"
+"\n"
+"In tegenstelling tot andere vormen van genezing vindt de geneest vaardigheid "
+"niet plaats tijdens de beurt van de genezen eenheid maar tijdens de beurt "
+"van de genezende eenheid. Dit betekend dat wanneer een eenheid is omgeven "
+"door meerdere genezers van dezelfde kant de eenheid maar eenmaal wordt "
+"genezen. Een eenheid omgeven door genezers van meerdere kanten zal tijdens "
+"meerdere beurten genezen worden."
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:385
@@ -2375,7 +2567,6 @@ msgstr "Afronding"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:386
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -2383,11 +2574,12 @@ msgid ""
 "ref>, but you now know everything you need to know to play the "
 "<italic>text='Heir to the Throne'</italic> campaign. Have fun, and good luck!"
 msgstr ""
-"Hiermee zijn we aan het eind gekomen van de beginselen van Wesnoth. Je kunt "
-"nu verder lezen over basisstrategie of je verdiepen in <ref>dst='.."
-"traits_section' text='karaktertrekken'</ref> en <ref>dst='.."
-"abilities_section' text='vermogens'</ref>, maar in principe weet je nu "
-"genoeg om De Kroonprins te spelen. Succes en veel plezier!"
+"Hiermee zijn we aan het einde gekomen van de basisregels van Wesnoth. Je wil "
+"misschien nog wat doorlezen over basis strategie, of jezelf de <ref>dst='.."
+"traits_section' text='karaktereigenschappen'</ref> en <ref>dst='.."
+"abilities_section' text='vaardigheden'</ref> eigen maken, maar je weet nu "
+"alles om de veldtocht <italic>text='De Kroonprins'</italic> te spelen. Veel "
+"plezier en succes!"
 
 #. [topic]: id=license
 #: data/core/help.cfg:391
@@ -2396,7 +2588,6 @@ msgstr "Licentie"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:400
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2405,11 +2596,13 @@ msgid ""
 "and in some cases <italic>text='fearless'</italic>, and woses do not receive "
 "any traits. "
 msgstr ""
-"De meeste eenheden hebben twee kenmerken, met uitzondering van de ondode "
-"eenheden die alleen het kenmerk <italic>text='Ondood'</italic> krijgen, en "
-"Enten die helemaal geen kenmerk krijgen. Kenmerken veranderen de "
-"eigenschappen van een eenheid lichtelijk. Over het algemeen worden ze "
-"willekeurig toegewezen aan een gerekruteerde eenheid."
+"\n"
+"\n"
+"De meeste eenheden hebben twee karaktereigenschappen. Kobolds hebben maar "
+"één speciale karaktereigenschap, ondode eenheden krijgen altijd de "
+"karaktereigenschap <italic>text='ondood'</italic>toegewezen en in sommige "
+"gevallen <italic>text='dapper'</italic>. Enten hebben geen "
+"karaktereigenschappen. "
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:400
@@ -2419,10 +2612,14 @@ msgid ""
 "available to a unit are largely determined by its <italic>text='race'</"
 "italic>."
 msgstr ""
+"Karaktereigenschappen zijn aanpassingen die de eigenschappen van een eenheid "
+"voor een klein deel veranderen. Ze worden meestal willekeurig toegewezen "
+"wanneer een eenheid wordt gerekruteerd. De karaktereigenschappen die "
+"beschikbaar zijn voor een eenheid worden bepaald door zijn of haar "
+"<italic>text='ras'</italic>."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:402
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2433,14 +2630,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"De kenmerken die alle niet-ondode eenheden kunnen krijgen zijn: "
+"De kenmerken die de meeste niet-ondode eenheden kunnen krijgen zijn: "
 "<ref>dst='traits_intelligent' text='Intelligent'</ref>, "
 "<ref>dst='traits_quick' text='Snel'</ref>, <ref>dst='traits_resilient' "
-"text='Robuust'</ref>, en <ref>dst='traits_strong' text='Sterk'</ref>."
+"text='Flexibel'</ref>, en <ref>dst='traits_strong' text='Sterk'</ref>."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:404
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2454,9 +2650,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Andere kenmerken zijn: <ref>dst='traits_dextrous' text='Behendig'</ref>, "
-"<ref>dst='traits_loyal' text='Loyaal'</ref> en <ref>dst='traits_undead' "
-"text='Ondood'</ref>.\n"
+"Elfen kunnen ook <ref>dst='traits_dextrous' text='Behendig'</ref> krijgen, "
+"en Dwergen <ref>dst='traits_healthy' text='Gezond'</ref>. Trollen en een "
+"aantal Mensen zouden <ref>dst='traits_fearless' text='dapper'</ref> kunnen "
+"krijgen. Andere karaktereigenschappen die toegewezen kunnen worden zijn "
+"<ref>dst='traits_loyal' text='loyaal'</ref>, <ref>dst='traits_feral' "
+"text='wild'</ref> en <ref>dst='traits_undead' text='ondood'</ref>.\n"
 "\n"
 
 #. [topic]: id=..terrains_section
@@ -2467,17 +2666,19 @@ msgid ""
 "Terrains come in two types: <italic>text='basic'</italic> and "
 "<italic>text='mixed'</italic>."
 msgstr ""
+"\n"
+"\n"
+"Er zijn twee typen terreinen: <italic>text='basis'</italic> en "
+"<italic>text='gemengd'</italic>."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:414
-#, fuzzy
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
 msgstr ""
-"Spelkaarten herbergen een variatie aan terreinen die zowel "
-"eenheidsbewegingen en verdedig mogelijkheden beïnvloeden.\n"
-"\n"
+"Spelkaarten herbergen een variatie aan terreinen die zowel eenheid "
+"verplaatsingen en verdedigingsmogelijkheden beïnvloeden."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:416
@@ -2500,6 +2701,13 @@ msgid ""
 "discovered can be found at the end of this page.\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Tot de basis terreinsoorten behoren Vlak, Heuvels, Bergen, Zand, Water en "
+"Moerassen. Er zijn nog veel meer terreinsoorten — een lijst van de "
+"terreinsoorten die je tegen bent gekomen is te vinden aan het einde van deze "
+"pagina.\n"
+"\n"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:422
@@ -2510,6 +2718,11 @@ msgid ""
 "terrain types, and these values are listed in the unit’s help page. Basic "
 "terrain types may have unique properties like illumination effects as well."
 msgstr ""
+"\n"
+"\n"
+"Iedere eenheid heeft verdediging en bewegingskosten voor ieder type basis "
+"terrein, deze waarden worden genoemd in de helppagina van de eenheid. Basis "
+"terreinsoorten kunnen ook unieke eigenschappen hebben zoals verlicht."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:424
@@ -2535,6 +2748,16 @@ msgid ""
 "and <italic>text='cave hills'</italic>.\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Gemengde terreinsoorten delen de eigenschappen van meerdere basis "
+"terreinsoorten — normaal gesproken krijgen eenheden de <italic>text='beste "
+"verdediging'</italic> en <italic>text='slechtste bewegingskosten'</italic> "
+"van beide terreinen wanneer ze zich op gemengd terrein bevinden. Voorbeelden "
+"van gemengde terreinen zijn: <italic>text='beboste heuvels'</italic>, "
+"<italic>text='zand heuvels'</italic> en <italic>text='grot heuvels'</"
+"italic>.\n"
+"\n"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:430
@@ -2550,6 +2773,17 @@ msgid ""
 "nonfliers (unsurprisingly).\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Een opmerkelijke uitzondering hierop zijn bruggen, zoals "
+"<italic>text='bruggen over ondiep water'</italic>, "
+"<italic>text='doorwaadbare plaatsen'</italic>, and <italic>text='bruggen "
+"over afgronden'</italic>. Doorwaadbare plaatsen zijn handig voor zowel het "
+"Watervolk als de Mensen — alle eenheden op een doorwaadbare plaats krijgen "
+"de beste verdediging en beste bewegingskosten van vlak en ondiep water, in "
+"plaats van de slechtste van een van de twee. Daarnaast zijn bruggen over "
+"afgronden toegankelijk voor (niet verassend) niet vliegende eenheden.\n"
+"\n"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:434
@@ -2561,6 +2795,12 @@ msgid ""
 "together with hill, swamp, and cave, respectively.\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Dorpen op het land geven ook vaak de beste verdediging en bewegingskosten. "
+"Deze dorpen zijn wel gemengd terrein, namelijk dat van het dorp gecombineerd "
+"met heuvels, moeras en grotten.\n"
+"\n"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:438
@@ -2572,6 +2812,12 @@ msgid ""
 "Instead, they count only as water tiles.\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Als laatste, waterdorpen zijn vaak niet toegankelijk voor landeenheden, en "
+"geven geen extra verdediging voor alle eenheden. In plaats daarvan tellen ze "
+"gewoon als waterterrein.\n"
+"\n"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:442
@@ -2582,6 +2828,11 @@ msgid ""
 "its hex and checking the terrain type icons displayed in the upper right "
 "(under the default theme)."
 msgstr ""
+"\n"
+"\n"
+"Je kan zien uit welke basistypen een gemengd terrein bestaat door er met je "
+"muis overheen te bewegen en in rechterbovenhoek de terreinsoort iconen te "
+"bekijken (bij gebruik van standaard thema)."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:444
@@ -2593,6 +2844,11 @@ msgid ""
 "either pressing the hotkey, or right clicking and selecting from the context "
 "menu."
 msgstr ""
+"\n"
+"\n"
+"Je kan zien welk gedrag gemengd terrein vertoond door er met je muis "
+"overheen te bewegen en de <italic>text='terrein beschrijving'</italic> te "
+"bekijken door het indrukken van de sneltoets of via rechter muisknop."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:446
@@ -2614,6 +2870,12 @@ msgid ""
 "terrain type. These units suffer a penalty on mixed terrains with that type "
 "— their defense cannot exceed the cap."
 msgstr ""
+"\n"
+"\n"
+"Enkele eenheden hebben een <italic>text='maximum verdediging'</italic> voor "
+"een bepaalde terreinsoort. Deze eenheden hebben hier ook last van wanneer ze "
+"zich op gemengd terrein bevinden — hun verdediging kan niet hoger zijn dan "
+"het maximum."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:450
@@ -2625,6 +2887,13 @@ msgid ""
 "on forested hills, he has a defense rating of 30% rather than 40%, because "
 "the mixed rating cannot exceed the cap."
 msgstr ""
+"\n"
+"\n"
+"De <ref>text='Cavalerist' dst='unit_Cavalryman'</ref> bijvoorbeeld, heeft "
+"een verdediging van 30% in het bos en hier ook een maximum verdediging. "
+"Hierdoor zal de Cavalerist in beboste heuvels een verdediging van 30% hebben "
+"in plaats van 40%, omdat de verdediging op gemengd terrein niet hoger kan "
+"zijn dan het maximum."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:452
@@ -2634,6 +2903,11 @@ msgid ""
 "If a unit has a defense cap for some terrain, it is always the same as its "
 "defense rating on that terrain (it cannot be larger)."
 msgstr ""
+"\n"
+"\n"
+"Wanneer een eenheid een maximum verdediging voor een bepaald terrein heeft, "
+"is dit altijd hetzelfde als de verdedigingswaarde op dat terrein (het kan "
+"niet hoger zijn)."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:454
@@ -2656,6 +2930,11 @@ msgid ""
 "more beyond what is offered in the official content bundled with the game.\n"
 "\n"
 msgstr ""
+"De mate van aanpassingsvermogen dat gecreëerd wordt door de Wesnoth code "
+"geeft spelers de mogelijkheid om zelf inhoud te creëren, inclusief nieuwe "
+"scenario's, veldtochten en veel meer dan dat normaal gesproken inbegrepen "
+"zit in het spel.\n"
+"\n"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:477
@@ -2679,6 +2958,8 @@ msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
 msgstr ""
+"Het spel ondersteund verschillende soorten add-on inhoud, ze zijn niet "
+"allemaal even beschikbaar in iedere spelmodus."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:480
@@ -2690,6 +2971,12 @@ msgid ""
 "and regular campaigns are available from the <italic>text='Campaigns'</"
 "italic> menu at the title screen."
 msgstr ""
+"\n"
+"\n"
+"Single-player veldtochten zijn verzamelingen van scenario's die samen een "
+"verhaal vertellen. Zowel op zichzelf staande scenario's—wanneer de bedenker "
+"dit zo heeft bedacht—en normale veldtochten zijn beschikbaar via het "
+"<italic>text='Veldtochten'</italic> menu op het hoofdscherm."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:482
@@ -2712,6 +2999,12 @@ msgid ""
 "scripted scenarios or even specially designed campaigns. There are also "
 "packs providing sets of individual multiplayer scenarios."
 msgstr ""
+"\n"
+"\n"
+"<italic>text='Multiplayer'</italic> spellen kunnen gespeeld worden in een "
+"volledig aanpasbaar geschreven scenario of zelfs in speciale aangepaste "
+"veldtochten. Er zijn zelfs verschillende add-ons die een individueel "
+"multiplayer scenario bieden."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:486
@@ -2738,6 +3031,16 @@ msgid ""
 "creating a new game, and players can pick from the available factions for "
 "that era when setting up their sides and teams."
 msgstr ""
+"\n"
+"\n"
+"Om het spel overzichtelijker te maken werken verschillende rassen samen in "
+"een factie. Facties zijn groepen van een gebalanceerde hoeveelheid eenheden "
+"met een overkoepelend thema. De hoofdfacties van Wesnoth kunnen bijvoorbeeld "
+"gevonden worden in het Standaard Tijdperk.\n"
+"\n"
+"In <italic>text='Multiplayer'</italic> modus kun je een tijdperk kiezen bij "
+"het aanmaken van een nieuw spel. Spelers kiezen vervolgens een factie die "
+"bij dit tijdperk hoort om mee te spelen."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:492
@@ -2747,6 +3050,10 @@ msgid ""
 "You can see what eras you have loaded in the <ref>text='eras' dst='.."
 "eras_section'</ref> of the help."
 msgstr ""
+"\n"
+"\n"
+"Je kan zien welke tijdperken je allemaal geladen hebt in "
+"<ref>text='tijdperken' dst='..eras_section'</ref> van help."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:494
@@ -2768,6 +3075,11 @@ msgid ""
 "alter the default ruleset in various ways. You can choose and configure "
 "modifications when creating a new game."
 msgstr ""
+"\n"
+"\n"
+"Aanpassingen zijn optionele scenario- en tijdperk-onafhankelijke scripts die "
+"de regels op verschillende manieren aan kunnen passen. Je kan de "
+"aanpassingen kiezen en aanpassen wanneer je een nieuw spel maakt."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:498
@@ -2793,6 +3105,16 @@ msgid ""
 "War II campaign, or even a different game altogether, as long as it can be "
 "represented as a hexagonal map with ’units’ in some way."
 msgstr ""
+"\n"
+"\n"
+"Bronnen zorgen voor een totale omzetting van Strijd om Wesnoth. Een bron "
+"vervangt alle inhoud van Wesnoth: wanneer een andere bron wordt geladen, "
+"zullen de standaard eenheden, terreinen enzovoorts niet meer bestaan.\n"
+"\n"
+"Bronnen zorgen voor een geheel andere spelbeleving: zoals bijvoorbeeld een "
+"Tweede Wereldoorlog veldtocht, of zelfs een geheel ander spel op zich, "
+"zolang het maar plaatsvind in een map met zeshoekige tegels en 'eenheden' in "
+"een of andere manier."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:504
@@ -2816,11 +3138,19 @@ msgid ""
 "other playable add-ons may depend on them and suggest or require their "
 "installation during download."
 msgstr ""
+"\n"
+"\n"
+"Makers van inhoud kunnen eigen hulpbron pakketen beschikbaar maken op de add-"
+"ons server om eigen inhoud uit te breiden met bijvoorbeeld afbeeldingen, "
+"muziek en code. Deze pakketen worden meestal niet direct in het spel "
+"gebruikt maar zijn eerder ondersteunend. Sommige add-ons vereisen wel "
+"bepaalde hulpbron pakketen tijdens de installatie om gebruikt te kunnen "
+"worden."
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:515
 msgid "Installing Add-ons"
-msgstr ""
+msgstr "Installeren Add-ons"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:516
@@ -2847,11 +3177,34 @@ msgid ""
 "provides you with additional details about the add-on, such as its full "
 "description, installation status, and available translations."
 msgstr ""
+"Add-ons door gebruikers gemaakt kunnen gevonden en geüpdatet worden via de "
+"<italic>text='Add-ons'</italic> optie in het hoofdmenu. Na het verbinden met "
+"de add-ons server (standaard <italic>text='add-ons.wesnoth.org'</italic>), "
+"krijg je een lijst met alle beschikbare add-ons van die server om te "
+"downloaden.\n"
+"\n"
+"De installatiestatus for iedere add-on wordt getoond onder de naam. Voor add-"
+"ons kunnen dit <italic>text='klaar voor upgrade'</italic> of "
+"<italic>text='verouderd'</italic> zijn, de geïnstalleerde en gepubliceerde "
+"versies worden getoond in de <italic>text='Versie'</italic> kolom.\n"
+"\n"
+"Om te zoeken voor add-ons op kernwoorden, typ je de relevante termen in het "
+"zoekvak, gescheiden door spaties. Je kunt de add-ons ook sorteren door op de "
+"kolomkoppen te klikken. Het is ook mogelijk om enkel add-ons te tonen van "
+"een specifieke categorie door middel van de selectie in het "
+"<bold>text='Soort'</bold> menu.\n"
+"\n"
+"Om een add-on te installeren selecteer je deze in de lijst en klik je op het "
+"<bold>text='+'</bold> symbool, je kan ook dubbelklikken op de titel van de "
+"add-on. Wanneer het scherm te klein is om alles te laten zien, kun je via de "
+"<bold>text='Addon Details'</bold> knop alle informatie over de ad-on "
+"bekijken zoals de volledige beschrijving, installatiestatus en beschikbare "
+"vertalingen."
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:529
 msgid "Removing Add-ons"
-msgstr ""
+msgstr "Verwijderen Add-ons"
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:530
@@ -2866,6 +3219,15 @@ msgid ""
 "information files or the add-ons themselves using a file manager provided by "
 "your platform."
 msgstr ""
+"Om add-ons te verwijderen kies je <bold>text='Verwijder Add-ons'</bold> in "
+"de add-ons server verbindingsdialoog. Je zal opties te zien krijgen waarin "
+"je de add-ons kunt selecteren die je graag wil verwijderen.\n"
+"\n"
+"Het is niet mogelijk om add-ons te verwijderen waar uitgevers informatie "
+"(<italic>text='.pbl'</italic> bestanden) aan gehecht is, om te voorkomen dat "
+"er per ongeluk iets verloren gaat. Wanneer nodig, zal je deze informatie "
+"handmatig moeten verwijderen met gebruik van het bestandsbeheer op je "
+"systeem."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:545
@@ -2882,6 +3244,11 @@ msgid ""
 "'m' first to open the chat line).\n"
 "\n"
 msgstr ""
+"Deze opdrachten kunnen uitgevoerd worden door middel van de opdrachtlijn "
+"door ze te voorzien van een ':' (zoals hier te zien is) aan het begin van de "
+"regel of via de chat door ze te voorzien van '/' (druk op 'm' om chatregel "
+"te openen) voorafgaand aan een regel.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:549
@@ -2935,6 +3302,9 @@ msgid ""
 "Display the controller status of a side.\n"
 "\n"
 msgstr ""
+"\n"
+"Toon de controller status van een kant.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:562
@@ -3061,6 +3431,10 @@ msgid ""
 "sides.\n"
 "\n"
 msgstr ""
+"\n"
+"Start een gesprek om de host te ondersteunen in het veranderen van "
+"menselijke controllers van kanten.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:601
@@ -3070,6 +3444,10 @@ msgid ""
 "network disconnection.\n"
 "\n"
 msgstr ""
+"\n"
+"Verander de ruststatus van een kant. De host kan een kant laten rusten "
+"wanneer er geen verbinding met het netwerk is.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:604
@@ -4206,6 +4584,9 @@ msgid ""
 " This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
 msgstr ""
+" Deze eenheid heeft een maximale verdediging op bepaalde terreinsoorten — "
+"het kan geen hogere verdediging krijgen op gemixte terreinen met deze "
+"terreinsoorten."
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:8
@@ -4224,7 +4605,6 @@ msgstr "Geen onderhoudskosten"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:11
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -4247,15 +4627,15 @@ msgstr ""
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:11
-#, fuzzy
 msgid ""
 "<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
 "upkeep cost at the end of every turn, which is equal to their level. Loyal "
 "units do not incur this cost."
 msgstr ""
-"Voor loyale eenheden betaal je geen onderhoudskosten. Voor de meeste "
-"eenheden betaal je aan het eind van elke beurt een hoeveelheid goudstukken "
-"gelijk aan hun rang, maar niet voor loyale eenheden."
+"Voor <italic>text='loyale'</italic> eenheden betaal je geen "
+"onderhoudskosten. Voor de meeste eenheden betaal je aan het eind van elke "
+"beurt een hoeveelheid goudstukken gelijk aan hun rang, maar niet voor loyale "
+"eenheden."
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:25
@@ -4272,13 +4652,11 @@ msgstr "ondood"
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:27 data/core/macros/traits.cfg:53
 #: data/core/macros/traits.cfg:79
-#, fuzzy
 msgid "Immune to drain, poison, and plague"
-msgstr "Immuun voor bloedzuigen, vergif en pest"
+msgstr "Immuun voor aftappen, vergif en ziekte"
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:28
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -4289,20 +4667,19 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Ondode eenheden hebben over het algemeen alleen <italic>text='Ondood'</"
-"italic> als karaktertrek. Omdat ondode eenheden de lichamen van dode mensen "
-"zijn, tot leven gewekt om weer te vechten, heeft vergif tegen hen geen "
-"effect. Dat kan hen waardevol maken in het gevecht tegen vijanden die vergif "
-"gebruiken bij hun aanvallen."
+"Ondode eenheden hebben over het algemeen alleen ondood als "
+"karaktereigenschap. Omdat ondode eenheden de lichamen van dode mensen zijn, "
+"tot leven gewekt om weer te vechten, heeft vergif tegen hen geen effect. Dat "
+"kan hen waardevol maken in het gevecht tegen vijanden die vergif gebruiken "
+"bij hun aanvallen."
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:28
-#, fuzzy
 msgid ""
 "<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
 msgstr ""
-"Ondode eenheden zijn immuun voor vergif, ook bloedzuigen en pest heeft geen "
-"invloed op ze."
+"<italic>text='Ondode'</italic> eenheden zijn immuun voor vergif, ook "
+"aftappen en ziekte heeft geen invloed op ze."
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:51
@@ -4316,7 +4693,6 @@ msgstr "mechanisch"
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:54
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -4326,19 +4702,18 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Mechanische eenheden hebben meestal enkel <italic>text='Mechanisch'</italic> "
-"als karaktertrek. Omdat mechanische eenheden niet leven hebben gif, "
-"bloedzuigen en pest geen effect op ze."
+"Mechanische eenheden hebben meestal enkel mechanisch als karaktertrek. Omdat "
+"mechanische eenheden niet leven hebben vergif, aftappen en ziekte geen "
+"effect op ze."
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:54
-#, fuzzy
 msgid ""
 "<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
 "plague."
 msgstr ""
-"Mechanisch eenheden zijn immuun voor vergif, ook bloedzuigen en pest hebben "
-"geen invloed op ze."
+"<italic>text='Mechanische'</italic> eenheden zijn immuun voor vergif, ook "
+"aftappen en pest hebben geen invloed op ze."
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:77
@@ -4352,7 +4727,6 @@ msgstr "elementair"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:80
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -4362,19 +4736,18 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Mechanische eenheden hebben meestal enkel <italic>text='Mechanisch'</italic> "
-"als karaktertrek. Omdat mechanische eenheden niet leven hebben gif, "
-"bloedzuigen en pest geen effect op ze."
+"Elementaire eenheden hebben dit normaal gesproken als hun enigste "
+"karaktereigenschap. Omdat elementaire eenheden gebaseerd zijn op "
+"energiestromen hebben aftappen, vergif en ziekte geen effect op ze."
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:80
-#, fuzzy
 msgid ""
 "<italic>text='Elemental'</italic> units are immune to poison, drain, and "
 "plague."
 msgstr ""
-"Mechanisch eenheden zijn immuun voor vergif, ook bloedzuigen en pest hebben "
-"geen invloed op ze."
+"<italic>text='Elementaire'</italic> eenheden zijn immuun voor vergif, "
+"aftappen en ziekte."
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:102
@@ -4388,7 +4761,6 @@ msgstr "sterk"
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:104
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -4406,13 +4778,13 @@ msgstr ""
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:104
-#, fuzzy
 msgid ""
 "<italic>text='Strong'</italic> units do 1 more damage for every successful "
 "strike in melee combat, and have 1 additional hitpoint."
 msgstr ""
-"Sterke eenheden verwonden de tegenstander met een extra hitpoint voor elke "
-"rake klap van dichtbij en hebben 1 HP meer."
+"<italic>text='Sterke'</italic> eenheden verwonden de tegenstander met een "
+"extra levenspunt voor elke rake klap van dichtbij en hebben 1 levenspunt "
+"meer."
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:123
@@ -4426,7 +4798,6 @@ msgstr "behendig"
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:125
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -4437,19 +4808,19 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Alleen Elfen kunnen het kenmerk 'Behendig' krijgen. Het Elfenvolk staat "
-"bekend om zijn sierlijkheid en zijn grote behendigheid met de boog. Enkelen "
-"echter zijn begiftigd met een talent dat dat van hun broeders overtreft. "
-"Deze Elfen brengen met elke pijl een extra punt schade toe."
+"Alleen Elfen kunnen het kenmerk behendig krijgen. Het Elfenvolk staat bekend "
+"om zijn sierlijkheid en zijn grote behendigheid met de boog. Enkelen echter "
+"zijn begiftigd met een talent dat dat van hun broeders overtreft. Deze Elfen "
+"brengen met elke pijl een extra punt schade toe."
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:125
-#, fuzzy
 msgid ""
 "<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
 "strike in ranged combat."
 msgstr ""
-"Behendige eenheden brengen 1 punt meer schade toe met elke aanval van veraf."
+"<italic>text='Behendige'</italic> eenheden brengen 1 punt meer schade toe "
+"met elke aanval van veraf."
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:140
@@ -4463,7 +4834,6 @@ msgstr "snel"
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:142
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -4484,13 +4854,12 @@ msgstr ""
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:142
-#, fuzzy
 msgid ""
 "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
 "hitpoints than usual."
 msgstr ""
-"Snelle eenheden kunnen elke beurt een extra zet doen, maar hebben 5% minder "
-"hitpoints."
+"<italic>text='Snelle'</italic> eenheden kunnen elke beurt een extra zet "
+"doen, maar hebben 5% minder hitpoints."
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:160
@@ -4504,7 +4873,6 @@ msgstr "intelligent"
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:162
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -4517,15 +4885,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Intelligente eenheden zijn voornamelijk nuttig aan het begin van een "
-"veldtocht, omdat ze snel tot een hogere rang promoveren. Later in de "
-"veldtocht zijn ze minder bruikbaar en als je genoeg eenheden van hogere rang "
-"hebt dan doe je er waarschijnlijk verstandig aan eenheden op te roepen met "
-"bruikbaardere kenmerken."
+"<italic>text='Intelligente'</italic> eenheden zijn voornamelijk nuttig aan "
+"het begin van een veldtocht, omdat ze snel tot een hogere rang promoveren. "
+"Later in de veldtocht zijn ze minder bruikbaar en als je genoeg eenheden van "
+"hogere rang hebt dan doe je er waarschijnlijk verstandig aan eenheden op te "
+"roepen met bruikbaardere kenmerken."
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:162
-#, fuzzy
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Intelligente eenheden hebben 20% minder ervaring nodig om te promoveren."
@@ -4542,7 +4909,6 @@ msgstr "flexibel"
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:178
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -4561,11 +4927,12 @@ msgstr ""
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:178
-#, fuzzy
 msgid ""
 "<italic>text='Resilient'</italic> units have an additional 4 hitpoints, and "
 "gain 1 more per level."
-msgstr "Robuuste eenheden hebben 4 HP plus 1 HP per level meer dan normaal."
+msgstr ""
+"<italic>text='Robuuste'</italic> eenheden hebben 4 HP plus 1 HP per level "
+"meer dan normaal."
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:197
@@ -4579,9 +4946,8 @@ msgstr "gezond"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:199
-#, fuzzy
 msgid "Always rest heals"
-msgstr "Rust altijd"
+msgstr "Rust en geneest altijd"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:200
@@ -4592,10 +4958,14 @@ msgid ""
 "more per level. They will also heal 2 hitpoints each turn, regardless of "
 "whether they engaged in combat the turn before."
 msgstr ""
+"\n"
+"\n"
+"<italic>text='Gezonde'</italic> eenheden hebben 1 extra levenspunt en "
+"krijgen er een extra bij per rang. Ze genezen ook 2 HP iedere beurt, "
+"ongeacht of ze in een gevecht zijn beland de vorige beurt."
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:200
-#, fuzzy
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when traveling."
@@ -4615,16 +4985,14 @@ msgstr "dapper"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:224 data/core/macros/traits.cfg:241
-#, fuzzy
 msgid "Fights normally during unfavorable times of day/night"
 msgstr "Vecht normaal gesproken tijdens ongunstige tijden van de dag/nacht"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:225 data/core/macros/traits.cfg:242
-#, fuzzy
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
-"Aversie tegen licht en donker heeft geen invloed op deze brave individuen."
+"Afkeer tegen licht en donker heeft geen invloed op deze brave individuen."
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:255
@@ -4638,13 +5006,11 @@ msgstr "wild"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:257
-#, fuzzy
 msgid "Receives only 50% defense in land-based villages"
-msgstr "Krijg slechts 40% verdediging in dorpen op het land."
+msgstr "Krijg slechts 50% verdediging in dorpen op het land"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:258
-#, fuzzy
 msgid ""
 "Dwellings of sentient beings are not easily used for cover by feral "
 "creatures of low intelligence. As a result, <italic>text='feral'</italic> "
@@ -4653,8 +5019,8 @@ msgid ""
 msgstr ""
 "Huizen van intelligente wezens worden niet gemakkelijk gebruikt om wilde "
 "eenheden of eenheden met lage intelligentie te verdedigen. Bijgevolg "
-"ontvangen wilde eenheden maximaal 40% verdediging in een dorp op het land, "
-"onafhankelijk van de aard van het terrein."
+"ontvangen <italic>text='wilde'</italic> eenheden maximaal 50% verdediging in "
+"een dorp op het land, onafhankelijk van de aard van het terrein."
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:274
@@ -4668,13 +5034,12 @@ msgstr "zwak"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:276
-#, fuzzy
 msgid ""
 "Units with the <italic>text='weak'</italic> trait receive a 1 point decrease "
 "in hitpoints and melee damage."
 msgstr ""
-"Eenheden met het kenmerk Zwak krijgen 1 hitpoint minder en doen op korte "
-"afstand 1 minder schade per aanval."
+"Eenheden met het kenmerk <italic>text='zwak'</italic> krijgen 1 hitpoint "
+"minder en doen op korte afstand 1 minder schade per aanval."
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:293
@@ -4688,7 +5053,6 @@ msgstr "langzaam"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:295
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -4704,11 +5068,12 @@ msgstr ""
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:295
-#, fuzzy
 msgid ""
 "<italic>text='Slow'</italic> units have 1 less movement point but 5% more "
 "hitpoints."
-msgstr "Trage eenheden hebben een zet minder, maar krijgen 5% meer hitpoints."
+msgstr ""
+"<italic>text='Trage'</italic> eenheden hebben een zet minder, maar krijgen "
+"5% meer hitpoints."
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:313
@@ -4722,7 +5087,6 @@ msgstr "dom"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:315
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -4731,17 +5095,17 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Dom is een kenmerk dat weidverspreid is onder de kobolds en andere lagere "
+"Dom is een kenmerk dat wijdverspreid is onder de kobolds en andere lagere "
 "soorten. Er zijn redenen dat deze soorten minder zijn en dit is er een van."
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:315
-#, fuzzy
 msgid ""
 "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
 "experience required to advance."
 msgstr ""
-"Eenheden met het kenmerk Dom hebben 20% meer ervaring nodig om te promoveren."
+"Eenheden met het kenmerk <italic>text='dom'</italic> hebben 20% meer "
+"ervaring nodig om te promoveren."
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:329
@@ -4755,13 +5119,12 @@ msgstr "oud"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:331
-#, fuzzy
 msgid ""
 "Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
 "suffer from a 1 point decrease in movement and melee damage."
 msgstr ""
-"Eenheden met het kenmerk Zwak krijgen 1 hitpoint minder en doen op korte "
-"afstand 1 minder schade per aanval."
+"Eenheden met het kenmerk <italic>text='oud'</italic> krijgen 1 levenspunt "
+"minder en doen op korte afstand 1 minder schade per aanval."
 
 #: data/core/units.cfg:11
 msgid ""
@@ -4777,6 +5140,18 @@ msgid ""
 "by their stronger siblings. The stronger ones will routinely grab most of "
 "the food and thus grow stronger still, while their weaker siblings do not."
 msgstr ""
+"Ondanks de afhankelijkheid van ruwe kracht van de Orks, zijn maar een paar "
+"van hun kinderen voorbestemd om het te bezitten. Kobolds worden, ondanks hun "
+"uiterlijk, geboren als broers en zussen van de Orks en als lid van hetzelfde "
+"ras. Terwijl andere rassen vaak alleen of in paren geboren worden, hebben "
+"Orks grote nesten kinderen tegelijk, waardoor hun populatie kan exploderen. "
+"Binnen elk nest zullen er slechts één of twee zijn die groeien naar de "
+"sterkte van een \"echte Ork\", dan zijn er nog een aantal iets zwakkere, en "
+"de rest, vaak een volle helft van het nest, zijn veel te zwak en voorbestemd "
+"om Kobolds te worden. Als nieuwgeborenen zijn ze bijna onzichtbaar in de Ork-"
+"maatschappij, op hun plaats gezet door hun broers en zussen. De sterkere "
+"zullen routinematig het grootste deel van het voedsel grijpen en daardoor "
+"nog sterker worden, terwijl hun zwakkere broers en zussen dit niet doen."
 
 #. [race]: id=bats
 #: data/core/units.cfg:46
@@ -4802,6 +5177,12 @@ msgid ""
 "especially when encountered in groups. Typically nocturnal, they are often "
 "kept (and occasionally tamed) by those who share their love of the night."
 msgstr ""
+"Vleermuizen zijn er in vele soorten en maten, en de meeste zijn vrij "
+"onschadelijk en voeden zich met insecten en andere dieren. Het is bekend dat "
+"de grotere en meer vicieuze rassen een bedreiging vormen voor mensen en "
+"andere rassen, evenals hun vee, vooral wanneer ze in groepen worden "
+"aangetroffen. Meestal worden vaak gehouden (en af en toe getemd) door "
+"degenen die hun liefde voor de nacht delen."
 
 #. [race]: id=drake
 #: data/core/units.cfg:58
@@ -4886,6 +5267,77 @@ msgid ""
 "a relatively cold climate, a feature which has allowed them to populate even "
 "some of the mountains of the far north of the Great Continent."
 msgstr ""
+"Draken zijn grote, gevleugelde en vuurspuwende wezens, die doen denken aan "
+"de echte Draken van oudsher. Gemiddeld is een volwassen mannetjesdraak "
+"ongeveer drie meter lang en weegt meer dan een man en een paard samen. Hun "
+"huid bestaat uit harde schubben, bestand tegen de meeste fysieke slagen "
+"behalve van puntige of koude wapens. De meeste mannetjes kunnen vliegen en "
+"kunnen lange afstanden snel afleggen. Echter, hun enorme gewicht en omvang "
+"beperkt hun vliegvermogen enigszins, waardoor ze onhandelbaar in de lucht "
+"worden. Waar mogelijk maken ze gebruik van lanceerpunten zoals heuvels, "
+"bergen en bomen om meer hoogte en snelheid te bereiken. Gelukkig voor hun "
+"vijanden zijn ze nog steeds vrij lompe en onhandige wezens die traag in de "
+"strijd zijn. Dit, in combinatie met hun grote omvang, maakt hen gemakkelijke "
+"doelen voor degenen die hen durven aan te vallen.\n"
+"\n"
+"Draken zijn van nature magische wezens, met een mysterieus intern vuur dat "
+"hun hele leven van brandstof wordt voorzien. Dit kan gemakkelijk worden "
+"waargenomen wanneer een van hun soort in de strijd ten onder gaat; zijn "
+"interne vuur wordt vrijgegeven, hun resten worden verbrand in de as. Hun "
+"interne vuur is ook hun grootste zwakte; het maakt ze extreem kwetsbaar voor "
+"koude aanvallen. Ondanks hun magische aard zijn draken niet in staat om "
+"magie op een gecontroleerde manier te kanaliseren. Terwijl het, met magie "
+"doordrenkt, lichaam van een draak het mogelijk maakt om vuur te spuwen en "
+"het leven te geven, hebben ze geen eigenzinnige controle over de functies "
+"van deze magie.\n"
+"\n"
+"<header>text='Samenleving'</header>\n"
+"Draken zijn een relatief oorlogszuchtig ras en hun samenlevingen kunnen het "
+"beste worden omschreven als gecultiveerde krijgshaftige maatschappijen. De "
+"kern van een drakenstam is een kleine groep ervaren krijgers onder leiding "
+"van een wederzijds gerespecteerde — of eenvoudigweg gevreesde — dominante "
+"draak die de maatschappij regeert met een ijzeren vuist. Van elke "
+"mannetjesdraak wordt verwacht dat ze hun plaats ind e strikte hiërarchie "
+"moeten verdienen, hun superieuren gehoorzamen en hun minderen bevelen. "
+"Toegang tot de heersende elite is alleen mogelijk door een superieur uit te "
+"dagen en te verslaan in een enkel gevecht, wat de manier is waarop de "
+"hiërarchie binnen de elite zelf is gevestigd. Het gebruik van misleiding van "
+"welke aard dan ook tegen elke mededraak wordt, zonder uitzondering, gezien "
+"als laf en onaanvaardbaar.\n"
+"\n"
+"Terwijl hun oorlogszuchtige aard en gevoel voor territorium hen ertoe "
+"aanzetten hun territorium wreed te verdedigen, vallen Draken zelfde gebieden "
+"aan die al bezet zijn door de andere grote rassen. In plaats daarvan "
+"vestigen ze zich in onbewoonde gebieden om daar hun eigen territorium te "
+"vestigen. Ze voeden zich voornamelijk met groot wild dat ze jagen in de "
+"laaglanden rond hun woningen, maar het is bekend dat de jonge draken zich "
+"voeden met bepaalde soorten mos en schimmels die ze diep in hun grotten "
+"vinden. Draken waarderen het bepantseren van wapens en harnassen, maar ze "
+"hebben niet de kennis, noch de cultuur, om dit zelf uit te kunnen voeren. "
+"Desalniettemin zijn de weinige gebruikersvoorwerpen die ze dragen "
+"ongeëvenaard in kwaliteit, ze doen alleen onder voor de spullen die gemaakt "
+"worden in de beste Dwergen smederijen.\n"
+"\n"
+"Draken komen uit eieren en leven meestal 20 tot 30 jaar. Dood in de strijd "
+"is de meest voorkomende manier voor een draak om deze wereld te verlaten. "
+"Anders dan de oudere leden van andere rassen, worden draken van nature "
+"agressiever en roekelozer naar het einde van hun natuurlijke leven, "
+"misschien om hun plaats in de heroïsche legendes in hun soort te helpen "
+"verzekeren.\n"
+"\n"
+"<header>text='Geografie'</header>\n"
+"Draken zijn ontstaan in een vulkanische eilandengroep genaamd "
+"<ref>dst='morogor' text='Morogor'</ref> in de <ref>dst='great_ocean' "
+"text='Grote Oceaan'</ref>. Een combinatie van bevolkingsdruk en de "
+"verzakking van veel van hun thuiseilanden heeft ertoe geleid dat kolonies "
+"draken zich hebben verspreid naar het <ref>dst='great_continent' text='Grote "
+"Continent'</ref>. Draken hebben de neiging om hun huizen in berggrotten in "
+"de buurt van vulkanen te maken om hun eieren, jongen en smederijen te "
+"beschermen. Hoewel draken van nature de voorkeur geven aan warmte, is hun "
+"innerlijke vuur meer dan in staat om ze te ondersteunen, zelfs in een "
+"relatief koud klimaat, een eigenschap die het hen mogelijk heeft gemaakt om "
+"zelfs in enkele bergen in het uiterste noorden van het Grote Continent te "
+"bevolken."
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:94
@@ -4904,7 +5356,6 @@ msgstr "Dwergen"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:97
-#, fuzzy
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -4957,7 +5408,7 @@ msgstr ""
 "Elfen en Trollen, hun vroegste historie is gehuld in mysteries. Legendes "
 "vertellen van lang vergeten tijden toen hun volk naar boven kwam uit hun "
 "ondergrondse wereld door grotten. Niets is bekend van hun leven voordat ze "
-"aankwamen of hun reden om bovengronde te gaan, maar ze hebben daarna een "
+"aankwamen of hun reden om bovengronds te gaan, maar ze hebben daarna een "
 "grote rol gehad op de geschiedenis van het continent. Vlak na hun komst uit "
 "de ondergrond kwamen de Dwergen in conflict met de originele bewoners van "
 "het land, de Elfen. De werkelijke reden is in de geschiedenis verloren "
@@ -4965,8 +5416,9 @@ msgstr ""
 "met tussenpozen van enkele decennia vrede. Tijdens deze oorlogen konden de "
 "Dwergen de Elfen niet uit het bos in het zuiden krijgen, maar consolideerden "
 "ze hun positie in de heuvels en bergen in het noorden van het continent, "
-"beter bekend als de noordlanden. Sindsdien hebben ze fantastisch forten en "
-"nederzettingen gebouwd diep in de bergen en hellingen van hun territorium.\n"
+"beter bekend als de Noordelijke Landen. Sindsdien hebben ze fantastisch "
+"forten en nederzettingen gebouwd diep in de bergen en hellingen van hun "
+"territorium.\n"
 "\n"
 "Mogelijk door hun isolatie, zijn dwergen in het algemeen wantrouwen of "
 "vijandig tegen de meeste andere rassen, voornamelijk de elfen. De enige "
@@ -4974,7 +5426,7 @@ msgstr ""
 "tot de tijden van Haldric I en de aankomst van mensen en orks op het "
 "continent. Op dit punt begonnen dwergen sommige mensen, vooral afvalligen en "
 "voortvluchtigen van het Koninkrijk van Wesnoth, toe te staan om in bepaalde "
-"gebieden van de Noordlanden te leven. Hun motivatie was niet "
+"gebieden van de Noordelijke Landen te leven. Hun motivatie was niet "
 "verbazingwekkend. De situatie van deze individuen herinnerde de dwergen aan "
 "hun eigen geschiedenis vervolging, wat een gevoel van solidariteit ontlokte. "
 "De dwergen hadden ook veel te winnen met een verbintenis met deze "
@@ -4988,17 +5440,17 @@ msgstr ""
 "zijn dwergen bekend voor hun calculerend intellect en uitmuntend "
 "vakmanschap. Dwergse smeden zijn beroemd om hun dodelijke wapens en zware "
 "pantsers. Deze uitrustingen zijn ongeëvenaard in kwaliteit, hun enige "
-"mogelijke concurrent zijn de wapensmeden van de draaklingen. Hun "
-"intelligentie en natuurlijke nieuwsgierigheid maakt ze ook tot het meest "
-"technologisch geavanceerd ras op het continent. Een van hun meest beroemde "
-"en gevreesde uitvindingen is een mysterieus poeder dat een enorme explosie "
-"produceert wanneer het wordt blootgesteld aan vuur of vonken. Sommige "
-"dwergenstrijders gebruiken dit poeder om kleine objecten weg te schieten op "
-"enorme snelheden. Door hun technologische genegenheid wantrouwen de meeste "
-"dwergen de gebruikers van magie. Hoewel sommigen een vorm van magie "
-"gebruiken die gebaseerd is op het kerven van runen. Runesmeden genaamd, "
-"gebruiken ze de kervingen om objecten te betoveren om zo een zeker aspect "
-"ervan te versterken."
+"mogelijke concurrent zijn de wapensmeden van de draken. Hun intelligentie en "
+"natuurlijke nieuwsgierigheid maakt ze ook tot het meest technologisch "
+"geavanceerd ras op het continent. Een van hun meest beroemde en gevreesde "
+"uitvindingen is een mysterieus poeder dat een enorme explosie produceert "
+"wanneer het wordt blootgesteld aan vuur of vonken. Sommige dwergenstrijders "
+"gebruiken dit poeder om kleine objecten weg te schieten op enorme snelheden. "
+"Door hun technologische genegenheid wantrouwen de meeste dwergen de "
+"gebruikers van magie. Hoewel sommigen een vorm van magie gebruiken die "
+"gebaseerd is op het kerven van runen. Runenleerlingen genaamd, gebruiken ze "
+"de kervingen om objecten te betoveren om zo een zeker aspect ervan te "
+"versterken."
 
 #. [race]: id=elf
 #: data/core/units.cfg:114
@@ -5054,6 +5506,45 @@ msgid ""
 "trolls. Many of their settlements cannot be reliably dated, undoubtedly "
 "having existed for over a millennium."
 msgstr ""
+"In vergelijking met mensen zijn elfen iets langer, wendbaarder maar minder "
+"stevig. Ze hebben licht puntige oren, bleke huid en meestal blond haar. "
+"Weinig verschillen tussen mensen en elfen zijn meer uitgesproken dan de "
+"ongewoon lange levensduur van de elfen — de meesten, tenzij ze worden "
+"opgeëist door ziekte, ongeluk of oorlog, leven een volledige twee en een "
+"halve eeuw. Hoewel van sommige elfen met een hoge magische aanleg bekend is "
+"dat ze een extra volle eeuw leven, beginnen de meeste elfen fysiek kwetsbaar "
+"te worden op een bepaald moment tussen de 250 en 300 jaar oud en gaan ze "
+"daarna snel (meestal binnen een jaar of twee) dood.\n"
+"\n"
+"Elfen zijn van nature doordrenkt met magie. Hoewel de meesten het niet "
+"direct kunnen kanaliseren, geeft het hen de aanwezigheid van scherpe "
+"zintuigen en een lange levensduur. Veel elfen hebben door magie aangedraven "
+"talenten zoals scherpschutterschap of sluipen, waardoor ze taken kunnen "
+"uitvoeren die de meeste normale wezens verbazingwekkend zouden vinden. De "
+"elfen die leren om deze kracht op meer algemene manieren te gebruiken, "
+"kunnen formidabel worden in het gebruik ervan. Velen kiezen ervoor om hun "
+"geschenk te gebruiken om anderen te genezen.\n"
+"\n"
+"Een paar elfen, die zich ver op de paden van magie en mystiek begeven, "
+"worden gevoelig voor de aanwezigheid van koud ijzer en kunnen er zelfs door "
+"worden verbrand. De elfse legende geeft aan dat dit in het verre verleden "
+"vaker voorkwam.\n"
+"\n"
+"Elfen spenderen veel van hun tijd aan het verbeteren van hun talenten en "
+"vaardigheden. Degenen die niet bedreven zijn in de magische kunsten, "
+"besteden meestal hun tijd aan het verbeteren van hun fysieke vaardigheden. "
+"Als gevolg daarvan blinken elfen uit in boogschieten, at misschien wel hun "
+"belangrijkste manier van oorlogsvoering is. De meeste elfen dragen een boog "
+"en geen ander ras kan hun boogschutters in snelheid en nauwkeurigheid "
+"evenaren. Alle elven delen ook een intense genegenheid voor de ongerepte "
+"natuur. Ze voelen zich vaak ongemakkelijk in open, niet begroeide ruimtes. "
+"Ze leven voornamelijk in de bossen van het Grote Continent; het Aethenwoud "
+"in het zuidwesten, Wesmere in het noordwesten, en de grote noordelijke "
+"bossen waarvan het Lintanir Woud de zuidelijkste rand is.\n"
+"\n"
+"Elfen zijn het oudste ras van het continent, met de mogelijke uitzondering "
+"van trollen. Veel van hun nederzettingen kunnen niet betrouwbaar worden "
+"gedateerd, sommigen zullen ongetwijfeld al meer dan een millennium bestaan."
 
 #. [race]: id=falcon
 #: data/core/units.cfg:135
@@ -5082,6 +5573,16 @@ msgid ""
 "well, with certain falconers training their birds to distinguish between "
 "friend and foe, making them a useful asset to aid in an army’s charge."
 msgstr ""
+"Valken zijn roofvogels, bekend om hun uitzonderlijke snelheid en "
+"behendigheid. Lichter en met minder krachtige klauwen dan andere roofvogels, "
+"verkiezen valken in plaats daarvan het gebruik van hun snavel om hun prooien "
+"te doden. Hun scherpe oog en hun vermogen om getemd te worden maken ze tot "
+"een wijdverspreid en bekend schepsel, zowel gebruikt door de adel in de "
+"sport, als door nomaden of stammen die ze nuttig vinden bij het jagen op "
+"voedsel. Valken vinden soms ook een rol op het gebied van oorlog, met "
+"bepaalde valkeniers die hun vogels trainen om onderscheid te maken tussen "
+"vriend en vijand, waardoor ze een nuttig goed zijn om te helpen als "
+"ondersteuning van een leger."
 
 #. [race]: id=goblin
 #: data/core/units.cfg:148
@@ -5114,6 +5615,18 @@ msgid ""
 "that require the brute strength of true orcs. Those the orcs revel in as "
 "proof of their prowess."
 msgstr ""
+"\n"
+"\n"
+"Kobolds zijn nietig en tamelijk kwetsbaar, en groeien zelden voorbij de "
+"grootte en gestalte van een menselijk kind.\n"
+"\n"
+"Kobolds worden geboren in een leven van bijna-slavernij voor hun grotere "
+"verwanten, en worden gebruikt als zwaardvoer in de strijd. Ze gedijen "
+"ondanks hun tragisch lot; deels omdat ze zo talrijk zijn, en ook omdat hun "
+"heersers goed weten hoe afhankelijk ze zijn van de kobold. Ze leveren het "
+"grootste deel van de fysieke arbeid die de orks nodig hebben, met "
+"uitzondering van banen die de brute kracht van echte orks bewijzen. Zij "
+"vertonen het beeld van het bewijs van hun kunnen voor de orks."
 
 #. [race]: id=gryphon
 #: data/core/units.cfg:168
@@ -5142,6 +5655,14 @@ msgid ""
 "been a source of debate for centuries, but it remains as mysterious as their "
 "origins."
 msgstr ""
+"Griffioenen zijn brede, krachtige beesten met eigenschappen gedeeld door "
+"zowel roofdieren als roofvogels. Hoewel af en toe getemd en bereden door de "
+"meest gedurfde, zijn de griffioenen erg territoriaal en agressief, vooral "
+"met betrekking tot hun nesten.\n"
+"\n"
+"De middelen waarmee griffioenen ondanks hun grote gewicht kunnen vliegen, "
+"zijn al eeuwenlang een bron van discussie, maar het blijft even mysterieus "
+"als hun oorsprong."
 
 #. [race]: id=human
 #: data/core/units.cfg:189
@@ -5200,6 +5721,47 @@ msgid ""
 "general, the Clan warriors are less organized than the civilized fighters, "
 "and the strengths and weaknesses of these groups complement each other."
 msgstr ""
+"Het ras der mensen is zeer divers. Hoewel ze oorspronkelijk van het Oude "
+"Continent kwamen, hebben mensen zich over de hele wereld verspreid en "
+"opgesplitst in veel verschillende culturen en rassen. Hoewel ze niet zijn "
+"doordrenkt met magie zoals andere wezens, kunnen mensen leren om het te "
+"hanteren en kunnen ze meer leren dan de meeste andere rassen. Ze hebben geen "
+"extra speciale vaardigheden of kenmerken, behalve hun veelzijdigheid en "
+"doorzettingsvermogen. Hoewel ze vaak op gespannen voet staan met andere "
+"rassen, kunnen ze af en toe allianties sluiten met minder agressieve rassen "
+"zoals elfen en dwergen. De minder scrupuleuze onder hen deinzen ook niet "
+"terug voor het inhuren van heldhaftige huursoldaten. Ze hebben geen "
+"natuurlijke vijanden, hoewel de meerderheid van de mensen, zoals de meeste "
+"van alle rassen, een instinctieve afkeer hebben tegen de ondoden. Mensen "
+"zijn korter dan elven, maar groter dan dwergen. Hun huidskleur kan variëren, "
+"van bijna wit tot donkerbruin.\n"
+"\n"
+"<header>text='Onderdanen van de Kroon'</header>\n"
+"Er bestaan veel verschillende groepen mensen, maar de meerderheid van hen op "
+"het Grote Continent leeft onder de heerschappij van de Kroon van Wesnoth. De "
+"mensen verschenen voor het eerst op het Grote Continent van een land aan de "
+"andere kaant van de oceaan in het Westen, het Groene Eiland, en vestigden al "
+"snel hun hoofdstad in de inlandse stad Weldyn. In de loop van de volgende "
+"eeuwen hebben ze een aantal steden over het hele continent opgebouwd. De "
+"soldaten van de Kroon van Wesnoth beschermen het land en vormen de meest "
+"georganiseerde militaire macht in de bekende wereld. De krijgers komen uit "
+"de hoofdprovincies, waar alle mensen op jonge leeftijd dienstplichtig zijn.\n"
+"\n"
+"<header>text='De Clanleden'</header>\n"
+"De oostelijke provincies van Wesnoth, die bekend staan onder de Clan "
+"Thuislanden, hebben een geografie die bestaat uit meer open vlakten en "
+"glooiende heuvels dan de westelijke, meer verstedelijkte provincies. Ze zijn "
+"de thuishaven van de Paardenclans, die verbonden zijn met de Kroon van "
+"Wesnoth maar onafhankelijk opereren en hun eigen identiteit behouden. "
+"Sommigen beschouwen ze als een afzonderlijke staat, die voedsel en soldaten "
+"naar de Kroon stuurt in ruil voor bescherming. Anderen zeggen dat ze op "
+"gelijke voet staan met de westelijke helft van Wesnoth. in ieder geval "
+"hebben de oostelijke provincies geen dienstplichtig leger zoals Westelijk "
+"Wesnoth dat doet. Trainen voor gevechten maakt deel uit van de manier van "
+"leven binnen de clans; de ouderen leren de kinderen paardrijden, vechten en "
+"boogschieten vanaf een jonge leeftijd. Over het algemeen zijn de clan-"
+"krijgers minder georganiseerd dan de geciviliseerde vechters, en de sterke "
+"en zwakke punten van deze groepen vullen elkaar aan."
 
 #. [race]: id=dunefolk
 #. [race]: id=khalifate # wmllint: noconvert
@@ -5276,11 +5838,70 @@ msgid ""
 "The origins of this tradition likely lie in the heritage of the Dunefolk’s "
 "distant past in the exotic far corners of Irdya."
 msgstr ""
+"Een afstamming van een vergeten nomadische beschaving, het Duinvolk leeft "
+"vooral in de riviervalleien van de Zanderige Wildernis. Hoe zij in deze "
+"uithoek van het Grote Continent kwamen, is onbekend. Hun legendes vertellen "
+"over vele lange en gevaarlijke reizen door verafgelegen landen, maar de ware "
+"oorsprong van hun volk is een onderwerp van eindeloos en verhit debat tussen "
+"zelfs de meest geleerden van de samenleving.\n"
+"\n"
+"Wat hun oorsprong ook is, het Duinvolk heeft het overleeft. Bruisende steden "
+"staan trots in de grootste vruchtbare regio's. Ervaren ambachtslieden, goede "
+"smeden en rijke kooplieden vormen de ruggengraat van de stedelijke economie. "
+"Elk van deze steden geniet ook een mate van onafhankelijkheid die minder "
+"gebruikelijk is in de meer gecentraliseerde naties in het noorden, waarvan "
+"vele zelfs hun eigen blijvende legers handhaven. In tijden van nood, komt "
+"alles en iedereen samen om de elite te overtuigen van de hogere belangen die "
+"de natie na zou moeten streven.\n"
+"\n"
+"Degenen die zich nog niet in deze stedelijke centra hebben gevestigd, houden "
+"zich nog steeds vast aan de levensstijl van hun voorouders, zwervend door de "
+"duinen en het leiden van kuddes van de ene waterput naar de andere. Ze zijn "
+"het meest actief tijdens de vroege ochtenduren en het begin van de "
+"schemering, wanneer de braakliggende terreinen niet te warm of te koud zijn. "
+"Hun vaardigheid om door het zand te bewegen is uitstekend, zelfs volgens de "
+"normen van het Duinvolk. Hoewel ze soms met minachting worden gezien door "
+"hun tegenhangers in de stad, bieden ze een onschatbare dienst als mobiele, "
+"lichte troepen in oorlog, of als begeleiders voor het ruilen van karavanen "
+"in tijden van vrede.\n"
+"\n"
+"De neiging van het Duinvolk om zich te specialiseren in handel en verkenning "
+"heeft ervoor gezorgd dat hun steden immense fortuinen hebben vergaard, een "
+"feit dat beide bewonderenswaardig en jaloers wordt geacht door andere "
+"rassen. Wederzijdse interesses hebben hartelijke relaties met naburige Naga-"
+"stammen bevorderd, maar meer geheimzinnige rassen zoals Draken en Elfen "
+"hebben altijd gedacht dat Duinvolk expedities als opdringerig bedoeld zijn, "
+"vooral wanneer ze zich dicht bij territoriale grenzen begeven. het is niet "
+"ongebruikelijk dat karavanen ten prooi vallen aan Trol-hinderlagen in de "
+"bergen, iets dat aanleiding heeft gegeven tot talloze verhalen over "
+"onvoorstelbare schatten die zijn verzameld in verborgen grotten.\n"
+"\n"
+"Als gevolg van het eeuwenlang leven in vijandige omgevingen heeft het "
+"Duinvolk rationele onderzoeksmethoden ontwikkeld waardoor ze hun begrip van "
+"de wereld blijven verbeteren. Hun studie van kruidengeneeskunde houdt hun "
+"strijders en arbeiders fris en gezond. Door hun kennis van alchemie kunnen "
+"ze het vuur temmen en hanteren als een dodelijk wapen in de strijd. "
+"Tegelijkertijd heeft deze analytische gedachtegang gezorgd voor meer afstand "
+"van de magische kunsten; voor de rationele geest is magie oncontroleerbaar, "
+"onvoorspelbaar en daarom onbetrouwbaar. Om deze reden heeft het Duinvolk "
+"vooral een hekel aan de perversies van dodenbezwering en zwarte magie, zelfs "
+"meer dan andere rassen al hebben.\n"
+"\n"
+"De nieuwsgierige en verkennende aard van het Duinvolk sluit militaire "
+"sterkte niet uit. Ze hebben niet alleen lichte troepen tot hun beschikking, "
+"katafrakten en zwaar gepantserde infanterie, maar hun scherpe kennis van "
+"technologie verleent hen een beslissende voorsprong op hun tegenstanders. "
+"Wanneer je echter in de strijd tegenover het Duinvolk staat, is de meest "
+"angstaanjagende aanblik hun inzet van woeste en bizarre beesten. Van de "
+"majestueuze Roc tot de imposante Wyvern, hun synergie met deze wezens zorgt "
+"voor grote veelzijdigheid in de strijd. De oorsprong van deze traditie ligt "
+"waarschijnlijk in de erfenis van het verre verleden van het Duinvolk in de "
+"exotische uithoeken van Irdya."
 
 #. [race]: id=khalifate # wmllint: noconvert
 #: data/core/units.cfg:236
 msgid "This race does not have a description yet."
-msgstr ""
+msgstr "Dit ras heeft nog geen beschrijving."
 
 #. [race]: id=lizard
 #: data/core/units.cfg:247
@@ -5366,6 +5987,75 @@ msgid ""
 "eating carrion and even committing cannibalism, which are both regular "
 "occurrences."
 msgstr ""
+"Saurianen zijn hagedisachtige wezens. Kleiner en slanker dan mensen, ze zijn "
+"zelden langer dean een tien jaar oud kind, maar van snuit tot staarteinde "
+"kan een Sauriaan zo lang zijn als dat de gemiddelde man is. Licht en "
+"wendbaar, vechten de krijgers tijdens hun jacht liever door vijandelijke "
+"linies om de zwakken en gewonden te raken terwijl ze hun aanvallers "
+"ontwijken.\n"
+"\n"
+"<header>text='Samenleving'</header>\n"
+"Saurianen zijn zeer mysterieuze wezens vanwege hun neiging om te leven in "
+"gebieden die onherbergzaam zijn voor anderen, zoals moerassen. Fatalistisch "
+"in het extreme, Saurianen geloven dat alle gebeurtenissen in een leven "
+"voorspeld kunnen worden door het gebruik van een complexe vorm van "
+"astrologie.\n"
+"\n"
+"De Sauriaanse cultuur is sterk gescheiden tussen de geslachten. Binnen elk "
+"geslahct concurreren de leden, en door vaardigheid, vastberadenheid en "
+"reputatie vestigen zij een duidelijke pikorde, met een leider aan de top. Op "
+"die momenten dat de twee geslachten elkaar ontmoeten, vechten ze niet om "
+"dominantie; in plaats daarvan bepaald de situatie het dominante geslacht. "
+"Het hoofd van de mannetjes is alfa in het dorp of kamp van de clan, terwijl "
+"het hoofd van de vrouwen elders dominant is. Dit gaat verder in de rangorde "
+"waarbij elk mannelijke of vrouwelijke Sauriaan dominant is over elk lid van "
+"het andere geslacht met een lagere rang en zich aanbiedt aan leden van het "
+"andere geslacht met hogere rang.\n"
+"\n"
+"De segregatie en aparte manier van geslachtsdominantie binnen de Sauriaanse "
+"samenleving is een uitvloeisel van hun duidelijk gedefinieerde "
+"geslachtsrollen. Het is de verantwoordelijkheid van het vrouwtje om te jagen "
+"en voedsel te vinden, vaardigheden die hen uiteindelijk trainen om krijgers "
+"te zijn: de warzaaiers, sluipers en sluipmoordenaars zijn angst verwekkend. "
+"De mannelijke Saurianen zijn verantwoordelijk voor het bewaken van het nest "
+"— de eieren die door de vrouwtjes zijn achtergelaten. Terwijl dit tijd laat "
+"voor de mannetjes om zich te ontwikkelen in de kunsten van astrologie, "
+"genezing en magie, stelt het hen ook bloot aan aanzienlijk gevaar, omdat het "
+"stationaire doelen zijn voor de nummer één vijand van een Sauriaanse clan — "
+"andere Sauriaanse clans.\n"
+"\n"
+"Nieuwe Sauriaanse clans worden gestart wanneer de juiste astrologische "
+"tekens worden gelezen. Een \"arcering\" genoemd, waarbij elke vrouw die door "
+"de leiders wordt aangeduid, een groep individuen met een lagere rang "
+"selecteert en hun thuisclan verlaat. Vaak zullen alle vrouwtjes met een "
+"specifiek kenmerk worden uitgekozen, waardoor meerdere clans tegelijkertijd "
+"\"uitkomen\". Selectie is een eenvoudig proces: geen enkele groep kan groter "
+"zijn dan de groep die wordt verlaten, en een hogere rangorde stelt een vrouw "
+"in staat om de keuze van een andere vrouw over te nemen over wie ze kiezen.\n"
+"\n"
+"Vanwege hun snelle bevolkingsgroei, frequente splitsingen in clans en het "
+"feit dat kannibalisme geen taboe is, is geweld een van de bepalende "
+"kenmerken van het Sauriaanse leven. Dit beperkt de groei van de Sauriaanse "
+"cultuur tot horten en stoten, aangezien veel van hun kennis wordt "
+"doorgegeven door mondelinge tradities en hun bezittingen makkelijk te "
+"verplaatsen moeten zijn.\n"
+"\n"
+"<header>text='Geografie'</header>\n"
+"Saurianen kunnen in veel verschillende gebieden leven, hoewel moerassen "
+"veruit het meest voorkomende habitat zijn.\n"
+"\n"
+"<header>text='Biologie'</header>\n"
+"Saurianen leven spectaculair korte levens in vergelijking met de meeste "
+"andere rassen van Wesnoth, ze bereiken de volledige volwassenheid binnen "
+"drie jaar en sterven vaak tegen de tijd dat ze 10 tot 15 jaar oud zijn. "
+"Verreweg de meest voorkomende doodsoorzaak is geweld. Sauriaanse vrouwtjes "
+"produceren ongeveer een keer per jaar nesten van zo'n 20 eieren, wat zorgt "
+"voor een constante bevolkingsdruk en die de voedselvoorziening van de meeste "
+"carnivoren zal onderhouden. Jagers en aaseters, Saurianen hebben extreem "
+"krachtige kaken en hebben een zeer krachtig spijsverteringssysteem met zeer "
+"zure vloeistoffen, waardoor ze in staat zijn om al hun prooien te eten en te "
+"verteren. Verder hebben ze geen afkeer van het eten van aas en begaan ze "
+"zelfs kannibalisme, wat beide regelmatig voorkomt."
 
 #. [race]: id=mechanical
 #: data/core/units.cfg:276
@@ -5385,6 +6075,10 @@ msgid ""
 "intelligent being. Most mechanical things neither move nor think on their "
 "own, but some do so as a result of magical enchantment."
 msgstr ""
+"Levend, noch door het natuurlijke leven, noch door dodenbezwering, "
+"beschrijft de term <italic>text='mechanisch'</italic> een gecreëerd voorwerp "
+"van een intelligent wezen. De meeste mechanische dingen bewegen noch denken "
+"alleen, maar anderen doen dat als een gevolg van een magische betovering.."
 
 #. [race]: id=merman
 #: data/core/units.cfg:287
@@ -5414,6 +6108,16 @@ msgid ""
 "ocean. They are typically wary of dry land, as they are awkward and clumsy "
 "there and they struggle greatly to move over rough or forested terrain."
 msgstr ""
+"Iets als een fusie tussen mens en vis, het watervolk is een raadselachtig "
+"ras met zowel visachtige als humanoïde eigenschappen. Ze hebben sterke "
+"staarten die zich lenen voor snelle bewegingen in elke waterige omgeving, "
+"terwijl hun handige handen en intelligente geesten fijn vakmanschap en "
+"gereedschap maken. Van nature semi-aquatisch kan het watervolk zonder "
+"problemen water en lucht ademen. Ondanks dat ze aan land kunnen overleven, "
+"zijn ze veel sneller en behendiger in het water en zullen ze zelden ver van "
+"de oceaan te vinden zijn. Ze zijn meestal op hun hoede voor droog land, "
+"omdat ze daar ongemakkelijk en onhandig zijn en ze moeite hebben om zich "
+"over ruw of bebost terrein te bewegen."
 
 #. [race]: id=monster
 #: data/core/units.cfg:299
@@ -5437,6 +6141,9 @@ msgid ""
 "wilderness, ocean depths, and other climes of the world. They figure largely "
 "in the tales and nightmares of its denizens, as well."
 msgstr ""
+"De term \"monster\" bevat veel afgrijslijke beesten die ronddolen in de "
+"grotten, de wildernis, oceaandiepten en andere streken van de wereld. Ze "
+"komen ook grotendeels voor in de verhalen en nachtmerries van zijn bewoners."
 
 #. [race]: id=naga
 #: data/core/units.cfg:309
@@ -5470,6 +6177,21 @@ msgid ""
 "themselves at odds with merfolk when their territories overlap, but overall "
 "nagas tend to favor swamps and rivers as much as open water."
 msgstr ""
+"De slangachtige naga's zijn een van de minst begrepen rassen van het Grote "
+"Continent. Een deel hiervan is te wijten aan hun haat voor vreemden en een "
+"deel is te wijten aan hun buitenaardse leefgebied. Nagas zijn een van de "
+"weinig rassen die in staat zijn tot enige zinvolle mobiliteit in water, "
+"waardoor ze toegang krijgen tot een hele wereld die effectief verboden is "
+"voor landbewoners en ze verder scheidt van de aardse wezens die ze mijden. "
+"Toch zijn ze geen ware wezens van de zee, en hun onvermogen om in het water "
+"adem te halen laat achter zonder leefgebied. Wonen in kustgebieden geeft hen "
+"een ontsnappingsroute op het land tegen de bewoners van de diepe zeeën, "
+"terwijl ze buiten het bereik blijven van degenen die te voet, vleugel of "
+"hoef reizen. Hoewel naga's enigszins niet stevig van vorm zijn, zijn ze vaak "
+"sneller en wendbaarder dan hun tegenstanders. Ze komen soms op gespannen "
+"voet te staan met het Watervolk wanneer hun territoria elkaar overlappen, "
+"maar over het algemeen hebben naga's de voorkeur voor moerassen en rivieren, "
+"net als voor open water."
 
 #. [race]: id=ogre
 #: data/core/units.cfg:320
@@ -5504,6 +6226,21 @@ msgid ""
 "is a sign of cooperation, domestication, or simply mutual opportunism is not "
 "known."
 msgstr ""
+"Boemannen zijn een wild en onbeschaafd ras dat voornamelijk in de wildernis "
+"van het Grote Continent verblijft. Fysiek lijken ze op mensen en orks, maar "
+"ze zijn groter en sterker. Zelfs hun jongvolwassenen zijn meer dan "
+"gelijkwaardig tegenover de meeste mensen. Boemannen worden in veel bevolkte "
+"gebieden gewantrouwd en meestal worden ze vermeden of met geweld verdreven. "
+"In plaats daarvan leven ze in de bergachtige gebieden aan de randen van de "
+"beschaving, waar hongerige boemannen een constante bedreiging vormen voor "
+"reizigers en karavanen. Hoewel boemannen niet bijzonder intelligent of snel "
+"zijn, maken hun taaiheid en fysieke kracht ze tot een waardevol bezit in de "
+"legers van andere rassen. Ze worden vooral gewaardeerd door meedogenloze "
+"commandanten die de brutaliteit van de boemannen geen probleem vinden. Er is "
+"weinig bekend over hun biologie of samenleving, als er al gezegd kan worden "
+"dat ze er een hebben, maar er wordt beweerd dat ze aanvallen met wolven en "
+"andere beesten. Of dit een teken van samenwerking, domesticatie of gewoon "
+"wederzijds opportunisme is, is niet bekend."
 
 #. [race]: id=orc
 #: data/core/units.cfg:331
@@ -5573,6 +6310,57 @@ msgid ""
 "withered and frail in comparison and lack skill in battle.\n"
 "\n"
 msgstr ""
+"Qua uiterlijk lijken orks op mensen met enkele dierlijke kenmerken. Ze zijn "
+"groter, steviger en sterker dan mensen. Ze zijn van nature oorlogszuchtig, "
+"primitief en wreed. Hun bloed is donkerder en dikker dan dat van mensen en "
+"ze hebben weinig aandacht voor persoonlijke hygiëne of hun persoonlijke "
+"uiterlijk. Hoewel orks zelfs onderling gewelddadig zijn, zijn ze gericht op "
+"een roedel; een ork reist nooit alleen of woont in groepen kleiner dan 6.\n"
+"\n"
+"<header>text='Samenleving'</header>\n"
+"Bijna elke ork is lid van een stam of een clan. Relaties tussen naburige "
+"stammen zijn meestal gewelddadig, behalve in het geval dat een wederzijdse "
+"vijand hun bestaan bedreigt of de mogelijkheden tot plunderen de wederzijdse "
+"vijandigheid overschrijven. Af en toe kan een enkele sterke leider naar "
+"voren komen om van tijd tot tijd meerdere stammen te leiden, meestal door "
+"intimidatie van volgelingen. Een ork-stam in tijden van vrede heeft de "
+"neiging zich bijna uitsluitend te richten op het versterken van zichzelf ter "
+"voorbereiding op het volgende gewapende conflict. Van orks is bekend dat ze "
+"een grof schrijfsysteem hebben — meestal in bloed — hoewel het meestal wordt "
+"gebruikt om beledigingen of bedreigingen van stamleiders te verhandelen.\n"
+"\n"
+"Ork samenlevingen zijn gebaseerd op niet veel meer dan sterkte; kracht is "
+"macht, en een leider leidt en overleeft alleen zolang niemand erin slaagt de "
+"titel van hem af te dwingen. Een constante strijd voor de macht tussen "
+"stamhoofden is gaande. Een orkleider houdt zelfden dezelfde positie voor "
+"meer dan een handvol jaren — hoewel de geschiedenis enkele opmerkelijke "
+"uitzonderingen kent. Orks hebben geen specifieke erecode en hoewel "
+"onbetwistbare ruwe kracht meestal de geprefereerde methode is om macht te "
+"tonen, zijn moord, vergiftiging en ruggensteken volstrekt haalbare middelen "
+"om eigen doelen te bereiken.\n"
+"\n"
+"Orks leven meestal op landelijke gebieden, vaak in heuvels of bergachtig "
+"gebied en soms in grotten. Ze verbouwen geen gewassen en houden geen vee, "
+"maar zijn competente jagers als gevolg van hun fysieke gestalte en "
+"wreedheid. Vanwege hun grote aantal kunnen ze in relatief korte tijd een "
+"gebied uitjagen dat vrijwel niets meer heeft dan knaagdieren. Vanwege dit en "
+"hun onstabiele leiderschap hebben ork stammen de neiging om een semi-"
+"nomadische levensstijl te leiden, nooit te lang in een regio gevestigd. De "
+"grotere stammen kunnen zich jarenlang of zelfs decennialang stevig vestigen "
+"in een gebied waar grote kampen opgebouwd worden die bijna op steden lijken, "
+"maar zelfs deze kunnen gemakkelijk worden ontmanteld en verlaten als het "
+"nodig is om de clan te verplaatsen.\n"
+"\n"
+"De oudst bekende orks zijn rond de leeftijd van 50 tot 60 jaar oud geworden, "
+"maar heel weinig leven lang genoeg om hun dertigste levensjaar te bereiken, "
+"hetzij door oorlog of door de hand van een van hun verwanten. De oudste orks "
+"zijn vaak sjamanen, die misschien de enige zijn die de meesten van hun soort "
+"als neutraal en betrouwbaar beschouwen. De oorsprong van deze gewoonte is "
+"niet bekend, omdat de sjamanen niet direct veel bijdragen aan de samenleving "
+"van de orks, maar slechts dienst doen als adviseurs — niet iets dat "
+"doorgaans getolereerd wordt door andere orks. Sjamanen zijn in veel "
+"opzichten het tegenovergestelde van de meeste andere orks: ze zijn vaak "
+"fysiek verdord en broos en missen veel vaardigheid in de strijd.\n"
 
 #. [race]: id=orc
 #: data/core/units.cfg:345
@@ -5582,6 +6370,10 @@ msgid ""
 "Orcs who were not the strongest of their litter tend to specialize in other "
 "skills, like archery or assassination."
 msgstr ""
+"\n"
+"\n"
+"Orks die niet het sterkst van het nest waren, specialiseren zichzelf vaak in "
+"andere talenten zoals boogschutters of huurmoordenaars."
 
 #. [race]: id=troll
 #: data/core/units.cfg:354
@@ -5600,7 +6392,6 @@ msgstr "Trollen"
 
 #. [race]: id=troll
 #: data/core/units.cfg:357
-#, fuzzy
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -5665,10 +6456,10 @@ msgstr ""
 "vijand van trollen zijn dwergen, de vijandigheid tussen deze twee rassen is "
 "eeuwenoud.\n"
 "\n"
-"<header>text='Geographie'</header>\n"
+"<header>text='Geografie'</header>\n"
 "Trollen hebben de bergen van het Grote Continent langer bewoond dan de "
 "dwergen, die erheen migreerden. Trollen zijn een bekende bezienswaardigheid "
-"in de bergketens ten noorden en oosten van Wesnoth, en waar de orkse hordes "
+"in de bergketens ten noorden en oosten van Wesnoth, en waar de Orkse hordes "
 "heenreizen."
 
 #. [race]: id=undead
@@ -5688,7 +6479,6 @@ msgstr "Ondoden"
 
 #. [race]: id=undead
 #: data/core/units.cfg:380
-#, fuzzy
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -5728,19 +6518,19 @@ msgstr ""
 "creatie te onderhouden.\n"
 "\n"
 "Dodenbezwering is bijna volledig gelimiteerd tot mensen. Zelfs de legenden "
-"van de magisch bekwame rassen zoals elven en meermannen vertellen van "
+"van de magisch bekwame rassen zoals elfen en meermannen vertellen van "
 "weinigen die zich ooit in de zwarte kunsten hebben verdiept. Er wordt "
-"vermoed dat dodenbezwerende magie een groot aanpassingsvermogen en een "
-"flexibele geest vereisen, de extremen waarvan vooral in mensen worden "
-"gevonden. Het uiteindelijke doel van de meeste dodenbezweerders is om deze "
-"zelfde kunst van het behouden en geven van leven op zichzelf te gebruiken, "
-"om zich te veranderen tegen elke prijs, om uiteindelijk de dood te "
-"ontsnappen door hun geest en ziel te bewaren.\n"
+"vermoed dat de zwarte magie een groot aanpassingsvermogen en een flexibele "
+"geest vereisen, de extremen waarvan vooral in mensen worden gevonden. Het "
+"uiteindelijke doel van de meeste dodenbezweerders is om deze zelfde kunst "
+"van het behouden en geven van leven op zichzelf te gebruiken, om zich te "
+"veranderen tegen elke prijs, om uiteindelijk de dood te ontsnappen door hun "
+"geest en ziel te bewaren.\n"
 "\n"
-"<header>text='Geographie'</header>\n"
+"<header>text='Geografie'</header>\n"
 "Hoewel de ondode heren pas in grote aantallen op het Grote Continent "
 "arriveerden in de kielzog van Haldric I, waren ze daarvoor niet volledig "
-"onbekend bij elven en dwergen."
+"onbekend bij elfen en dwergen."
 
 #. [race]: id=wolf
 #: data/core/units.cfg:393
@@ -5768,6 +6558,13 @@ msgid ""
 "civilization, though, only occasionally venturing close to prey upon "
 "livestock."
 msgstr ""
+"Wolven zijn jagende hondachtigen die vaak in de wildernis worden "
+"aangetroffen. Snel, taai en een groot uithoudingsvermogen, een eenzame wolf "
+"is voldoende om burgers en ongeschoolde soldaten gemakkelijk te verminken of "
+"te doden, maar het is hun neiging om in roedels te reizen en op een "
+"organiserende manier aan te vallen, wat heb bijzonder angstwekkend maakt "
+"voor reizigers. Ze hebben de neiging om weg te blijven van de beschaving, "
+"echter, slechts af en toe wordt er een poging gewaagd om vee aan te vallen."
 
 #. [race]: id=wose
 #: data/core/units.cfg:405
@@ -5820,6 +6617,45 @@ msgid ""
 "only to march to the defense of the natural world and the forests it calls "
 "home."
 msgstr ""
+"De machtige ent bevindt zich in de diepste wouden van de bekende wereld. "
+"Voor he ongetrainde oog lijkt de ent niets meer dan een vreemd gevormde, "
+"maar nobele, boom te zijn. Als bewakers van het bos delen de enten een "
+"verbinding met het woud die dieper gaat dan die van de elfen. Terwijl de "
+"enten een vreedzaam ras zijn, zal de verstoring van de oerbossen, die ze "
+"uitstralen, de woede van de natuur zelf aanwakkeren. Enten zijn langzaam "
+"bewegende wezens die eeuwen kunnen doorbrengen op één locatie, ongestoord "
+"door het reilen en zeilen van de tijd.\n"
+"\n"
+"Hoewel ze zelf geen magie beoefenen, delen de enten een diepe connectie met "
+"feeën. Van het weinige dat er bekend is van dit oude ras komt van geleerde "
+"elfen die geloven in een mysterieuze kracht, die de krachtigste elfen hebben "
+"geprobeerd te begrijpen, die af te leiden is van de eeuwenoude enten. Hoewel "
+"enten erop lijken, delen ze geen voorouders met bomen. Van enten wordt "
+"aangenomen dat ze enkele van de oudste wezens in de wereld zijn, misschien "
+"zelfs nog ouder dan de bossen waarin ze wonen, en men denkt dat de kracht "
+"van magie deze wezens de eeuwige taak heeft gegeven om als bewakers van het "
+"bos te dienen.\n"
+"\n"
+"Enten zijn op z'n zachts gezegd niet oorlogszuchtig en zijn niet gewend om "
+"rassen uit te roeien. Ze zullen wel altijd reageren met gepast geweld ter "
+"bescherming van het beboste gebied. Enten verplaatsen zich langzaam en zijn "
+"kwetsbaar buiten de bossen. Door hun nauwe band met magie zijn de enten "
+"bijzonder gevoelig voor het geheimzinnige. Het hardhout dat de ent maakt is "
+"bijna ongevoelig voor een fysieke aanval, de verschrikkelijke kwetsbaarheid "
+"van vlammen daargelaten. Hun dikke schors en het vermogen om de kracht van "
+"de magie te benutten om snel te herstellen wanneer ze gewond raken, stelt de "
+"ent in staat om een vijandelijke aanval lang genoeg te overleven om te "
+"reageren met een verpletterende kracht die kan worden opgeheven door zijn "
+"vredige, plooiende karakter. Binnen zijn woongebied kan de waas tussen de "
+"bomen verdwijnen en zelfs de best opgeleide elfenverkenner overvallen.\n"
+"\n"
+"De levensduur van de ent is onbekend, hoewel de oudste leden van dit ras al "
+"vele honderden jaren hebben geleefd en tot enorme hoogten zijn gegroeid. Er "
+"wordt gedacht dat, tenzij een ent in de strijd sneuvelt, het geen "
+"natuurlijke dood zal sterven. Tevreden met het eeuwen lang staan als een "
+"schildwacht, ongeïnteresseerd in het reilen en zeilen van de beschaafde "
+"wereld, de ent zal alleen maar bewegen om de natuurlijke wereld en bossen "
+"die het thuis noemt te beschermen."
 
 #: data/lua/feeding.lua:31 data/lua/feeding.lua:44
 msgid "+1 max HP"

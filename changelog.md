@@ -11,6 +11,8 @@
      * S10: add dialogue on victory
    * The Rise of Wesnoth:
      * S17a: prevent time over defeat if player chooses to defeat remaining saurians
+ ### Language and i18n
+   * Updated translations: Dutch
 
 ## Version 1.14.7
  ### Campaigns
