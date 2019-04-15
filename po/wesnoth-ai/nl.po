@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-17 18:29 UTC\n"
-"PO-Revision-Date: 2019-03-25 20:36+0100\n"
+"PO-Revision-Date: 2019-04-11 15:57+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -235,6 +235,30 @@ msgid ""
 "Wolves Multipack AI (used in a different scenario), this Wolves AI combines "
 "all wolves of the side in the same pack."
 msgstr ""
+"<u>Algemeen</u>: Deze AIs zijn ingesteld om (tot op zekere hoogte) te "
+"simuleren hoe deze dieren zich in het echte leven gedragen. Dit houdt in dat "
+"het dieren zijn, wat betekend dat ze niet super slim zijn. Bijvoorbeeld, de "
+"wolven jagen meestal in een roedel, maar worden gemakkelijk afgeleid door "
+"een prooi die binnen bereik komt. Ze zijn ook behoorlijk, maar niet "
+"geweldig, in het omsingelen van herten. Voor het grootste deel is dit "
+"opzettelijk.\n"
+"\n"
+"<u>Beren (vervangen door Mensenverslinders), Spinnen en Yetis</u> lopen "
+"meestal alleen rond in hun respectievelijke delen van de kaart. Ze blijven "
+"uit elkaars buurt (en uit de buurt van honden), maar vallen elkaar wel aan "
+"wanneer ze in het nauw gedreven worden. Ze vallen andere, zwakkere dieren "
+"(herten enz.) aan als deze binnen bereik zijn.\n"
+"\n"
+"<u>Wolven</u> jagen in een roedel. Ze gaan actief op zoek naar het "
+"dichtstbijzijnde hert (zolang het in het bos blijft) en proberen het in de "
+"hoek te houden (niet altijd super succesvol), maar worden snel afgeleid door "
+"andere prooien die binnen bereik komen. De wolven proberen te voorkomen dat "
+"ze in het bereik komen van beren, spinnen, honden en de yeti, behalve "
+"wanneer ze in de aanval gaan. Als je ze lang genoeg laat bewegen, zullen ze "
+"ook leren dat het niet gezond is om slagtanden aan te vallen. Als er geen "
+"herten meer zijn, dwalen ze willekeurig af. Merk op dat, in tegenstelling "
+"tot de Wolven Multiroedel AI (gebruikt in een ander scenario), deze Wolven "
+"AI alle wolven van een kant in een roedel combineert."
 
 #: data/ai/micro_ais/scenarios/animals.cfg:12
 msgid ""
@@ -271,6 +295,39 @@ msgid ""
 "threat to each other and leave each other alone, demonstrating the enormous "
 "self control of a well trained sheep dog."
 msgstr ""
+"Elk <u>hert (vervangen door Vampiervleermuizen)</u> dwaalt willekeurig door "
+"het bos, behalve wanneer vijanden in het bereik van het hert komen, in dat "
+"geval gaat het zo ver mogelijk van de vijand weg.\n"
+"\n"
+"<u>Olifanten (vervangen door Boemannen)</u> vertonen hetzelfde gedrag als "
+"herten, behalve wanneer een vijand naast één van de slagtanden staat. Deze "
+"vijand zal dan de volledige woede van een woedend everzwijn ervaren.\n"
+"\n"
+"<u>Jonge olifanten (vervangen door Jonge Boeman)</u> volgen blindelings de "
+"dichtstbijzijnde volwassen olifant, behalve als er geen olifant meer is, in "
+"dat geval gedragen ze zich als herten.\n"
+"\n"
+"<u>Konijnen (vervangen door Ratten)</u> lopen ook willekeurig rond, maar "
+"verdwijnen daarnaast in hun gaten (vervangen door strobalen, als ze al "
+"binnen bereik zijn) wanneer vijanden dichtbij zijn. Ze verschijnen aan het "
+"begin van de beurt uit hun gaten, als het veilig is.\n"
+"\n"
+"<u>Schapenhonden (vervangen door Voetverkenners)</u> proberen hun schapen "
+"veilig te houden. Dit houdt in dat ze binnen het gebied blijven dat wordt "
+"aangegeven door het pad dat de honden in de wei hebben gesleten, zich "
+"positioneren tussen de schapen en naderende vijanden, en de vijanden "
+"aanvallen als ze te dichtbij komen. Misschien moet je het scenario een "
+"tijdje laten spelen voordat je een interessante interactie tussen hond en "
+"wolf te zien krijgt. Als er geen actieve hoedende of beschermende beweging "
+"nodig is, gaan de honden naar een willekeurige locatie op het pad.\n"
+"\n"
+"<u>Schapen (vervangen door Trolwelpen)</u> dwalen doelloos rond, behalve "
+"wanneer er een schaapshond naast staat, in welk geval ze weglopen van de "
+"hond. De honden benutten dit door zich zo mogelijk langs de buitenkant van "
+"de schapen te plaatsen. Schapen rennen ook weg van naderende vijanden. De "
+"schapen, honden en boswezens (herten, olifanten en konijnen) hebben geleerd "
+"dat ze geen bedreiging voor elkaar zijn en elkaar met rust laten, wat de "
+"enorme zelfbeheersing van een goed opgeleide herdershond aantoont."
 
 #. [test]: id=animals
 #. [event]
@@ -367,6 +424,10 @@ msgid ""
 "Wesnoth mainline, such as bears, sheep and sheep dogs, or deer. In this test "
 "scenario, these units have been replaced by mainline units."
 msgstr ""
+"<span color='#A00000'>Belangrijk:</span> De beesten Micro AIs in dit "
+"scenario zijn geschreven voor een aantal beest eenheden die niet bestaan in "
+"de hoofdlijn van Wesnoth, zoals beren, schapen, honden of herten. In dit "
+"testscenario zijn deze eenheden vervangen door eenheden uit de hoofdlijn."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/animals.cfg:341
@@ -405,6 +466,22 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Het is mogelijk om een door mensen bestuurde Kant 1 op te nemen, zodat je "
+"eenmaal per beurt de tijd hebt om rond te kijken (of dingen aan te passen "
+"via de debug-modus).\n"
+"\n"
+"Let erop dat er geen einde komt aan dit scenario. Voor "
+"demonstratiedoeleinden wordt elke gedode eenheid aan het begin van de "
+"volgende beurt vervangen door een eenheid van dezelfde soort. Om het "
+"scenario te beëindigen kun je gebruik maken van de rechter muisknop - maar "
+"dit werkt alleen in de mensgestuurde modus. In AI-modus moet je op 'Esc' "
+"klikken of een vorig bestand opnieuw laden.\n"
+"\n"
+"Let er ook op dat de Dieren AIs zijn gecodeerd als Micro AIs. Een Micro AI "
+"kan eenvoudig toegevoegd worden en aangepast aan de behoefte van een "
+"scenario met enkel WML en de [micro_ai]-tag. Bekijk de <span "
+"color='#00A000'>Micro AI wiki pagina</span> op https://wiki.wesnoth.org/"
+"Micro_AIs voor meer informatie."
 
 #. [option]
 #: data/ai/micro_ais/scenarios/animals.cfg:361
@@ -490,6 +567,16 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"We moeten de bergpas zo lang mogelijk verdedigen. Laten we onze sterkste "
+"vechters in de frontlinie plaatsen en gewonde eenheden naar de achtergrond "
+"brengen voor genezing. Als we voorzichtig genoeg zijn, kunnen we zelfs deze "
+"strijd winnen. Ik zal met je meedoen zodra ik klaar ben met rekruteren.\n"
+"\n"
+"Let er op dat de Knelpunten Verdediging AI is gecodeerd als Micro AIs. Een "
+"Micro AI kan eenvoudig toegevoegd worden en aangepast aan de behoefte van "
+"een scenario met enkel WML en de [micro_ai]-tag. Bekijk de <span "
+"color='#00A000'>Micro AI wiki pagina</span> op https://wiki.wesnoth.org/"
+"Micro_AIs voor meer informatie."
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:100
@@ -577,6 +664,26 @@ msgstr "Zorg dat je niet in de weg staat voor die draak. Dit is een gemene."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:84
+#, fuzzy
+#| msgid ""
+#| "Hi there. I am Rowck and here is what I do:\n"
+#| "When hungry, I move around part of the map in a random wander until I get "
+#| "into range of an enemy. If enemies are within range, I attack and devour "
+#| "the weakest of them. After that, I retreat to my rest location, where I "
+#| "stay for a certain number of turns or until fully healed.\n"
+#| "A few details (features, not bugs, but can be changed if desired):\n"
+#| "- If my way home is blocked on the return, the normal RCA AI takes over "
+#| "my behavior.\n"
+#| "- I will, however, attack any enemy occupying my rest hex, if I can get "
+#| "there.\n"
+#| "- A kill only makes me go home when I am the attacker, not as defender.\n"
+#| "- Occasionally I will not move at all while wandering (a dragon has to "
+#| "rest sometimes!)\n"
+#| "\n"
+#| "Note: The Hunter AI is coded as a Micro AI. A Micro AI can be added and "
+#| "adapted to the need of a scenario easily using only WML and the "
+#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+#| "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "Hi there. I am Rowck and here is what I do:\n"
 "When hungry, I move around part of the map in a random wander until I get "
@@ -597,6 +704,28 @@ msgid ""
 "tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at http://"
 "wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Hallo daar. Ik ben Rowck en hier is wat ik doe:\n"
+"Als ik hongerig ben, beweeg ik over een deel van de kaart in een "
+"willekeurige zwervende beweging totdat ik in de buurt van een vijand kom. "
+"Als vijanden binnen bereik zijn, val ik ze aan en verslind ik de zwaksten. "
+"Daarna trek ik me terug naar mijn rustlocatie, waar ik een bepaald aantal "
+"beurten blijf of totdat ik volledig genezen ben.\n"
+"Een paar details (kenmerken, geen fouten, maar kunnen worden gewijzigd "
+"wanneer dit nodig is):\n"
+"- Als mijn weg naar huis wordt geblokkeerd voor mijn terugkeer, neemt de "
+"standaard RCA AI mijn gedrag over.\n"
+"- Ik zal elke vijand aanvallen die mijn rustheuvel bezet, als ik er kan "
+"komen.\n"
+"- Ik ga alleen naar huis na een moord wanneer ik de aanvaller ben, niet als "
+"verdediger.\n"
+"- Af en toe zal ik helemaal niet bewegen tijdens het rondzwerven (een draak "
+"moet soms rusten!)\n"
+"\n"
+"Let er op dat de Jager AI is gecodeerd als Micro AIs. Een Micro AI kan "
+"eenvoudig toegevoegd worden en aangepast aan de behoefte van een scenario "
+"met enkel WML en de [micro_ai]-tag. Bekijk de <span color='#00A000'>Micro AI "
+"wiki pagina</span> op https://wiki.wesnoth.org/Micro_AIs voor meer "
+"informatie."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/dragon.cfg:96
@@ -640,6 +769,14 @@ msgid ""
 "There is nothing to do here, just watch or use this scenario as a template "
 "or for your own tests."
 msgstr ""
+"Dit scenario presenteert een situatie met zoveel eenheden op de kaart dat er "
+"een merkbare vertraging is (enkele seconden) vóór elke beweging door de "
+"standaard AI. Daarentegen heeft de Snelle Micro AI een veel kortere "
+"vertraging. Om het verschil te demonstreren, wordt zijde 1 gespeeld door de "
+"Snelle Micro AI en zijde 2 door de standaard (RCA) AI.\n"
+"\n"
+"Er is hier niets te doen, bekijk of gebruik dit scenario gewoon als een "
+"sjabloon of voor uw eigen tests."
 
 #. [test]: id=goto
 #. [event]
@@ -715,14 +852,18 @@ msgstr "Zet menselijke controle van Zijde 1 uit"
 #: data/ai/micro_ais/scenarios/goto.cfg:413
 #, fuzzy
 #| msgid ""
-#| "This is a reenactment of scenario The Elves Besieged of the mainline "
-#| "campaign Heir to the Throne, just that the AI is playing Konrad's side "
-#| "here. The goal is to move Konrad to the signpost in the northwest, while "
-#| "keeping both Konrad and Delfador alive. The same AI as in scenario "
-#| "Protect Unit is used.\n"
+#| "This scenario demonstrates a variety of different uses of the Goto Micro "
+#| "AI. All AI sides are controlled by this MAI in one way or another (except "
+#| "for the saurians, which are run by the Lurkers Micro AI). Messages will "
+#| "be displayed throughout the scenario to point out what the units are "
+#| "doing.\n"
 #| "\n"
-#| "Note: The Protect Unit AI is coded as a Micro AI. A Micro AI can be added "
-#| "and adapted to the need of a scenario easily using only WML and the "
+#| "The player controls Side 1. There are right-click context menu options "
+#| "for adding Side 1 units to the map and for taking them off again. This is "
+#| "useful mostly for testing how the Side 3 guardians react.\n"
+#| "\n"
+#| "Note: The Goto AI is coded as a Micro AI. A Micro AI can be added and "
+#| "adapted to the need of a scenario easily using only WML and the "
 #| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 #| "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
@@ -740,17 +881,22 @@ msgid ""
 "tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at http://"
 "wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
-"Dit is een imitatie van het scenario De Elven Belegerd van de veldtocht De "
-"Kroonprins, met het verschil dat de AI nu de kant van Konrad speelt. Het "
-"doel is om Konrad naar de wegwijzer in het noordwesten te sturen en daarbij "
-"Konrad en Delfador levend te houden. Dezelfde AI als in Bescherm Eenheid is "
-"gebruikt.\n"
+"Dit scenario demonstreert verschillende gebruikersmogelijkheden van de "
+"Ganaar Micro AI. Alle AI-kanten worden op de een of andere manier bestuurd "
+"door deze MAI (behalve de Saurianen, die worden beheerd door de Gluurders "
+"Micro AI). Berichten worden gedurende het hele scenario weergegeven om te "
+"laten zien wat de eenheden aan het doen zijn.\n"
 "\n"
-"Opmerking: De Bescherm Eenheid AI is gecodeerd zoals de Micro AI. Een Micro "
-"AI can makkelijk toegevoegd of aangepast worden aan het scenario met gebruik "
-"van enkel WML en het [micro_ai] attribuut. Kijk op de <span "
-"color='#00A000'>Micro AI wiki pagina</span> op https://wiki.wesnoth.org/"
-"Micro_AIs voor meer informatie."
+"De speler bestuurd Kant 1. Er zijn menu opties (beschikbaar via rechter "
+"muisknop) om Kant 1-eenheden aan de kaart toe te voegen en om ze weer eraf "
+"te halen. Dit is vooral nuttig om te testen hoe de beschermers van Kant 3 "
+"reageren.\n"
+"\n"
+"Let er op dat de Ganaar AI is gecodeerd als Micro AIs. Een Micro AI kan "
+"eenvoudig toegevoegd worden en aangepast aan de behoefte van een scenario "
+"met enkel WML en de [micro_ai]-tag. Bekijk de <span color='#00A000'>Micro AI "
+"wiki pagina</span> op https://wiki.wesnoth.org/Micro_AIs voor meer "
+"informatie."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/goto.cfg:422
@@ -784,6 +930,12 @@ msgid ""
 "guardian units, although one of the dedicated Guardian Micro AIs will often "
 "be better suited for that purpose."
 msgstr ""
+"Vrienden, negeer iedereen behalve die oplichter Vaddan en zijn mannen. Blijf "
+"op je plek tot een van zijn eenheden 8 tegels van je af staat.\n"
+"\n"
+"Opmerking: Dit is een demonstratie over hoe de Ganaar Micro AI "
+"geprogrammeerd kan worden om eenheden te beschermen, hoewel een van de "
+"speciaal ontworpen Beschermer Micro AIs hier beter voor geschikt zal zijn."
 
 #. [message]: type=Vampire Bat
 #: data/ai/micro_ais/scenarios/goto.cfg:467
@@ -793,11 +945,15 @@ msgid ""
 "behavior is set up with a single [micro_ai] tag, one with "
 "'unique_goals=yes', the other without."
 msgstr ""
+"Wij vleermuizen wisselen tussen het verplaatsen naar een van de hoeken "
+"(ieder naar een andere hoek) en het verplaatsen naar het midden om weer een "
+"groep te vormen. Beide verplaatsingen maken gebruik van een enkele "
+"[micro_ai] code, een met een 'unique_goals=yes', de andere zonder."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:475
 msgid "Aaiiieeeeeee !!!"
-msgstr "Aayeeeeeee !!"
+msgstr "Aayeeeeeee !!!"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:476
@@ -814,6 +970,13 @@ msgid ""
 "which they seem to get along just fine for some reason.  So as long as we "
 "don't corner them, they'll leave us alone."
 msgstr ""
+"Maak je niet druk, het zijn erg verlegen geesten.  Niemand weet waarom maar "
+"ze verschijnen rond deze tijd van het jaar in het noorden om vervolgens naar "
+"het zuiden te verplaatsen.  Ook, erg ongebruikelijk voor geesten, is dat ze "
+"bang lijken te zijn voor iedereen en andere eenheden zo veel mogelijk "
+"vermijden -- met uitzondering van Vleermuizen en Saurianen, waarmee ze goed "
+"om kunnen gaan om een of andere rede.  Zo lang wij ze met rusten laten, "
+"zullen zij ons ook ons ding laten doen."
 
 #. [message]: speaker=messenger2
 #: data/ai/micro_ais/scenarios/goto.cfg:536
@@ -821,6 +984,8 @@ msgid ""
 "I'll take the route straight through the mountains. It's much shorter than "
 "following the trail all the way around in the south."
 msgstr ""
+"Ik zal de route door de bergen nemen, Het is veel korter dan het pad door "
+"het zuiden te volgen."
 
 #. [message]: speaker=messenger1
 #: data/ai/micro_ais/scenarios/goto.cfg:540
@@ -831,6 +996,11 @@ msgid ""
 "Note: The messengers are controlled by Goto Micro AI definitions that differ "
 "by a single line, 'use_straight_line=yes/no'."
 msgstr ""
+"Je bent gestoord. Het mag dan misschien wel korter zijn, maar het duurt "
+"eeuwen om door de bergen te bewegen.\n"
+"\n"
+"Opmerking: De boodschappers worden bestuurd door de Ganaar Micro AI "
+"definities die verschillen in een enkele lijn, 'use_straight_line=yes/no'."
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:574
@@ -844,6 +1014,10 @@ msgid ""
 "I want each and every one of you to report to him before going east to fight "
 "those saurians."
 msgstr ""
+"Mannen, verplaats je naar het Rivierfort en wacht nieuwe bevelen af van "
+"Sergeant Aethubry. Ik wil jullie allemaal bij hem zien om verslag uit te "
+"brengen voordat je verder naar het oosten gaat om te vechten tegen de "
+"Saurianen."
 
 #. [message]: speaker=leader6
 #: data/ai/micro_ais/scenarios/goto.cfg:593
@@ -853,6 +1027,10 @@ msgid ""
 "Sergeant Aethubry. Once that has happened, the rest of you can head into "
 "battle directly."
 msgstr ""
+"Hah, dat is de pennenlikker Gadoc voor jou! Mannen, Ik wil dat jullie je ook "
+"verplaatsen naar het Rivierfort, maar het is genoeg om één van jullie "
+"verslag uit te laten brengen bij Sergeant Authubry. Wanneer dit gedaan is, "
+"kan de rest meteen het gevecht ingaan."
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:611
@@ -860,6 +1038,8 @@ msgid ""
 "$unit.language_name $unit.name from Lieutenant Gadoc's squadron reporting "
 "for duty, sir."
 msgstr ""
+"$unit.language_name $unit.name van het eskader van Luitenant Gadoc meldt "
+"zich, meneer."
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:627
@@ -869,7 +1049,7 @@ msgstr "Klaar om te vechten met deze Saurianen, soldaat?"
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:631
 msgid "Yes, sir."
-msgstr "Ja, sir"
+msgstr "Ja, sir."
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:639
@@ -877,6 +1057,8 @@ msgid ""
 "Very good, $unit.language_name. Now go help your comrade get rid of that "
 "saurian infestation in the swamps."
 msgstr ""
+"Erg goed, $unit.language_name. Ga nu je kameraden helpen om van die "
+"Saurianen in het moeras af te komen."
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:647
@@ -893,7 +1075,7 @@ msgstr "Luitenant Senvans mannen melding zich voor hun plicht, commandant."
 msgid ""
 "Ah, Lieutenant Senvan... Is every single one of you going to bother me "
 "individually as well?"
-msgstr ""
+msgstr "Ah, Luitenant Senvan… Gaan jullie mij nou één voor één lastigvallen?"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:674
@@ -901,6 +1083,8 @@ msgid ""
 "No, sir. Lieutenant Senvan ordered us to head into battle as soon as I have "
 "reported to you."
 msgstr ""
+"Nee, meneer. Luitenant Senvan heeft ons beveelt om meteen het gevecht aan te "
+"gaan na het uitbrengen van verslag."
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:678
@@ -909,6 +1093,9 @@ msgid ""
 "off you go then.\n"
 "\n"
 msgstr ""
+"Zo, dat is een opluchting. Iemand weet hoe dit gebruikt moet worden … Ik "
+"bedoel, goed, ga maar.\n"
+"\n"
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:680
@@ -916,11 +1103,15 @@ msgid ""
 "I wouldn't say anything negative about one of my superior officers now, "
 "would I?"
 msgstr ""
+"Ik zou nooit iets negatiefs over een van mijn leidinggevende officieren "
+"zeggen toch?"
 
 #. [message]: type=Vampire Bat
 #: data/ai/micro_ais/scenarios/goto.cfg:718
 msgid "We've all made it to the corners, let's get back together again."
 msgstr ""
+"We hebben het gehaald om tot in de hoeken te komen, laten we weer samen "
+"komen."
 
 #. [message]: type=Vampire Bat
 #: data/ai/micro_ais/scenarios/goto.cfg:759
@@ -986,7 +1177,7 @@ msgstr "Lafaard 4"
 msgid "Move gryphons here to see different coward reactions"
 msgstr ""
 "Verplaats Griffioenen naar hier om verschillende reacties te zien van de "
-"lafaards."
+"lafaards"
 
 #. [unit]: type=Troll, id=return1
 #: data/ai/micro_ais/scenarios/guardians.cfg:220
@@ -1062,6 +1253,10 @@ msgid ""
 "guardians attack if there is an enemy within their movement range, otherwise "
 "they do nothing (except maybe retreating to a village for healing)."
 msgstr ""
+"Dit is de ingebouwde WML beschermers code 'ai_special=guardian'. Deze "
+"beschermers vallen aan wanneer er een vijand binnen het bewegingsbereik is, "
+"verder doen ze niets (behalve misschien terugtrekken naar een dorp om te "
+"genezen)."
 
 #. [command]
 #. [set_menu_item]: id=m02_return
@@ -1084,6 +1279,17 @@ msgid ""
 "- If enemies are blocking your way back, do your best to get there anyway.\n"
 "- If you end up next to an enemy on the way back, attack after the move."
 msgstr ""
+"Een 'teruggekeerde bewaker' is een variatie op de standaard Wesnoth-bewaker. "
+"Het heeft een toegewezen wachtpositie (GP) waarnaar het terugkeert na "
+"aanvallen op naderende vijanden:\n"
+"- Wanneer op GP zonder vijand in de buurt, doe niets.\n"
+"- Wanneer op GP met vijand in de buurt, laat de aanval over aan de standaard "
+"AI (let op dat het ook voorkomt dat er niet aangevallen wordt als de vijand "
+"te sterk wordt geacht).\n"
+"- Wanneer niet op GP, keer terug, ongeacht of er een vijand in de buurt is "
+"of niet.\n"
+"- Wanneer vijanden de weg blokkeren, doe dan je best om er toch te komen.\n"
+"- Als je op de terugweg naast een vijand eindigt, val dan na de zet aan."
 
 #. [command]
 #. [set_menu_item]: id=m03_home
@@ -1109,6 +1315,19 @@ msgid ""
 "return and stationed guardians and the cowards are written in Lua AI. In "
 "addition the non-guardian units of the side follow the default AI behavior."
 msgstr ""
+"Een 'huiswacht' is een variant op de 'bewaker' AI. Met deze variant heeft de "
+"eenheid een toegewezen 'thuis'-locatie en zal daar terugkeren wanneer niet "
+"betrokken bij een gevecht of onderweg naar een dorp om in te nemen of te "
+"genezen. (Daarentegen zorgt de standaard bewaker AI ervoor dat het apparaat "
+"blijft waar het het laatst is aangevallen.) Dit verschilt van de "
+"'teruggekeerde bewaker' in dei zin dat een bewaker de aanval aangaat en op "
+"die manier vrij ver van 'huis' kan komen in plaats van terug te trekken na "
+"iedere aanval. (Het kan ook worden weggelokt door een reeks dicht bij elkaar "
+"gelegen dorpen, maar dat is iets wat de kaartenbouwer kan controleren.)\n"
+"Dit laat ook zien hoe acties van de Formule AI en de Lua AI gecombineerd "
+"kunnen worden. De huiswacht is geschreven in Formule AI, terwijl het "
+"terugkeren, gestationeerde wachters en lafaarden zijn geschreven in Lua AI. "
+"Daarnaast volgen de niet-bewakingseenheden het gedrag van de standaard AI."
 
 #. [command]
 #. [set_menu_item]: id=m04_stationed
@@ -1135,6 +1354,21 @@ msgid ""
 "rating and attack from there.\n"
 "  - If not in reach, move toward this unit."
 msgstr ""
+"Een 'gestationeerde bewaker' is een andere variant van de standaard Wesnoth-"
+"bewakers met een iets complexer gedrag dan dat van de 'teruggekeerde "
+"bewaker'. Er zijn twee posities gedefinieerd, een 'station' en een 'bewaakte "
+"locatie', evenals een 'afstand'. Het gedrag is als volgt:\n"
+"- Als er zich geen vijand binnen de 'afstand' van de huidige positie van de "
+"bewaker bevindt, doe dan niets.\n"
+"- Anders: als een vijand zich binnen 'afstand' van de bewaker bevindt, maar "
+"niet ook binnen dezelfde afstand van de bewaakte locatie en het station (dit "
+"alles tegelijkertijd), verplaats dan de bewaker in de richting van het "
+"station.\n"
+"- Anders:\n"
+"  - Kies de vijand die zich het dichtst bij de bewaakte locatie bevindt.\n"
+"  - Als we het kunnen bereiken, kies dan de aangrenzende tegel met de "
+"hoogste verdediging en val vanaf daar aan.\n"
+"  - Als je niet binnen handbereik bent, ga dan naar de eenheid."
 
 #. [command]
 #. [set_menu_item]: id=m05_coward
@@ -1161,6 +1395,22 @@ msgid ""
 "- Both 'seek' and 'avoid' may consist of only one coordinate ('x' or 'y'), "
 "in which case not a single hex, but a line of hexes is sought or avoided."
 msgstr ""
+"Lafaards zijn eenheden die, net als bewakers, rond blijven hangen tot er een "
+"vijand binnen bereik komt. In tegenstelling tot bewakers lopen ze echter weg "
+"zodra er vijanden naderen. Toepassingen hiervoor kunnen wilde dieren zijn, "
+"ongewapende burgers die in de weg staan van een gevecht, enz. De "
+"lafaardmacro kan worden opgeroepen met twee optionele locaties, 'zoek' en "
+"'ontwijk':\n"
+"- Als geen van beide wordt opgegeven, trekt de lafaard zich terug naar de "
+"positie die het verst is verwijderd van de naderende vijanden.\n"
+"- Als 'seek' wordt opgegeven, gaat het bij voorkeur naar die locatie (maar "
+"het ontwijken van vijanden heeft voorrang).\n"
+"- Als 'ontwijk' wordt opgegeven, probeert het ook die locatie te vermijden "
+"(waarbij zowel de afstand tot de vijand wordt gemaximaliseerd als het punt "
+"'seek' voorrang krijgt).\n"
+"- Zowel 'seek' als 'avoid' kan bestaan uit slechts één coördinaat ('x'of "
+"'y'), in welk geval geen enkele tegel maar een rij tegels wordt gezocht of "
+"vermeden."
 
 #. [command]
 #. [set_menu_item]: id=m06_zone
@@ -1181,6 +1431,17 @@ msgid ""
 "- Otherwise, it attacks any enemy entering the enemy zone and once there are "
 "no more enemies, it goes back to patrol in its basic zone."
 msgstr ""
+"Een gebied bewaker is een eenheid die, zoals de naam al zegt, een gebied "
+"bewaakt. Het beweegt zich willekeurig in dit gebied totdat een vijand het "
+"binnengaat (of afzonderlijk gedefinieerde vijandelijke gebieden, zie "
+"hieronder). Toepassingen kunnen zijn  het verdedigen van een kasteel of een "
+"broedgebied. het gebiedsmacro kan worden aangeroepen met een optionele "
+"vijandzone:\n"
+"- Indien niet gespecifieerd, valt de gebied bewaker elke vijand aan die "
+"binnen zijn bewakingsgebied komt.\n"
+"- Anders valt het elke vijand aan die de vijandige zone binnenkomt en zodra "
+"er geen vijanden meer zijn, gaat het terug om te patrouilleren in zijn "
+"basiszone."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:513
@@ -1202,6 +1463,18 @@ msgid ""
 "the [micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Griffioenen van de Hoge Vlakten, kijk naar al deze vijanden. Ze gedragen "
+"zich niet normaal. De meesten van hen bewegen helemaal niet tenzij we "
+"dichtbij komen. Laten we eens kijken hoe ze op ons reageren.\n"
+"\n"
+"Opmerking voor de speler: het contextmenu met de rechter muisknop geeft "
+"informatie over het gedrag van iedere eenheid.\n"
+"\n"
+"Let er op dat het grootste deel van de Beschermer AI is gecodeerd als Micro "
+"AIs. Een Micro AI kan eenvoudig toegevoegd worden en aangepast aan de "
+"behoefte van een scenario met enkel WML en de [micro_ai]-tag. Bekijk de "
+"<span color='#00A000'>Micro AI wiki pagina</span> op https://wiki.wesnoth."
+"org/Micro_AIs voor meer informatie."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/guardians.cfg:525
@@ -1229,12 +1502,16 @@ msgstr "Dood van Kraa"
 msgid ""
 "Check out the right-click menu options for information on each guardian type"
 msgstr ""
+"Bekijk de rechter muisknop menu opties voor informatie over ieder "
+"beschermerstypen"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:594
 msgid ""
 "Gryphons of the High Plains, it is time to return to said plains. Follow me."
 msgstr ""
+"Griffioenen van de Hoge Vlakten, het is tijd om terug te keren naar deze "
+"vlakten. Volg mij."
 
 #. [test]: id=hang_out
 #: data/ai/micro_ais/scenarios/hang_out.cfg:5
@@ -1254,7 +1531,7 @@ msgstr "Goede Bandiet"
 #. [event]
 #: data/ai/micro_ais/scenarios/hang_out.cfg:61
 msgid "Outlaw moves here"
-msgstr ""
+msgstr "Brigant verplaatst zich hierheen"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/hang_out.cfg:116
@@ -1272,12 +1549,26 @@ msgid ""
 "the <span color='#00A000'>Micro AI wiki page</span> at https://wiki.wesnoth."
 "org/Micro_AIs for more information."
 msgstr ""
+"Die brigant daar zal rennen richting de donjon in het zuidoosten.  Hij gaat "
+"maar voor drie ronden rekruteren voordat hij weer begint te bewegen en zijn "
+"voetverkenners zijn veel sneller dan wij.  Laten we ons haasten, anders "
+"zullen we hem nooit vangen.\n"
+"\n"
+"Let op: Dit scenario gebruikt een combinatie van twee Micro AIs, de "
+"Rondhangen Micro AI, die ervoor zorgt dat de eenheden van Kant 2 in de buurt "
+"van de donjon blijven voor twee beurten (en uit het kasteel gaan om plek "
+"vrij te maken voor meer rekruten) en de Boodschapper Begeleider AI die het "
+"hierna overneemt.  Een Micro AI kan eenvoudig toegevoegd worden en aangepast "
+"aan de behoefte van een scenario met enkel WML en de [micro_ai]-tag. Bekijk "
+"de <span color='#00A000'>Micro AI wiki pagina</span> op https://wiki.wesnoth."
+"org/Micro_AIs voor meer informatie."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/hang_out.cfg:122
 msgid ""
 "Get into the outlaw's way before he can make it to the south-eastern keep"
 msgstr ""
+"Kruis het pad van de brigant voordat hij bij het zuidwestelijke kasteel is"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/hang_out.cfg:124
@@ -1305,6 +1596,7 @@ msgid ""
 "I made it! Now we can keep fighting for whatever it is that we are fighting "
 "for."
 msgstr ""
+"Ik heb het gehaald! Nu kan ik blijven vechten, waar dat dan ook voor is."
 
 #. [test]: id=healer_support
 #: data/ai/micro_ais/scenarios/healer_support.cfg:5
@@ -1340,6 +1632,23 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"In dit scenario demonstreren we het gebruik van de Genezer Ondersteuning "
+"Micro AI. Deze AI configureert de genezers van een kant om achter de "
+"gevechtslinies te blijven en gewonden en/of bedreigde eenheden te genezen in "
+"plaats van deel te nemen aan de aanval. Het bevat verschillende aanpasbare "
+"opties (die in dit scenario anders zijn ingesteld voor beide partijen) die "
+"bepalen hoe agressief/voorzichtig de genezers zijn, hoe ze aanvallen, "
+"hoeveel risico ze bereid zijn te nemen, enz.\n"
+"\n"
+"Voor de duidelijkheid kondigt elke genezer haar aankomende ondersteunende "
+"beurt aan. Als je dat niet elke keer wilt zien, druk dan op 'esc' wanneer "
+"het de eerste keer gebeurt.\n"
+"\n"
+"Let er op dat de Genezer Ondersteuning AI is gecodeerd als Micro AIs. Een "
+"Micro AI kan eenvoudig toegevoegd worden en aangepast aan de behoefte van "
+"een scenario met enkel WML en de [micro_ai]-tag. Bekijk de <span "
+"color='#00A000'>Micro AI wiki pagina</span> op https://wiki.wesnoth.org/"
+"Micro_AIs voor meer informatie."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/healer_support.cfg:95
@@ -1423,6 +1732,16 @@ msgid ""
 "enemy within their reach. If no enemy is in reach, the lurker does a random "
 "move instead - or it just sits and waits (lurks)."
 msgstr ""
+"In dit scenario demonstreren we de Gluurder Micro AI. Een gluurder is een "
+"eenheid die in staat is om over de meeste terreinen te bewegen, maar die "
+"alleen stopt en aanvalt vanaf specifiek terrein. Het kan ook de mogelijkheid "
+"hebben om zich te verbergen op dit terrein (wat de reden is dat dit de "
+"Gluurder AI wordt genoemd).\n"
+"\n"
+"Gluurders verplaatsen zich individueel zonder enige strategie en vallen "
+"altijd de zwakste vijand binnen hun bereik aan. Als er geen vijand binnen "
+"handbereik is, doet de gluurder in plaats daarvan een willekeurige zet - of "
+"hij zit gewoon en wacht (gluurt)."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/lurkers.cfg:455
@@ -1442,6 +1761,20 @@ msgid ""
 "We also added two other sides, which demonstrate lurker behavior coded in "
 "WML (Side 5, gray) and Formula AI (Side 6, brown)."
 msgstr ""
+"Drie verschillende gluurder-gedragingen worden hier ingesteld met behulp van "
+"de [micro_ai]-tag met verschillende parameters:\n"
+"\n"
+"Kant 2 (blauw): Saurianen vallen enkel aan vanuit het moeras. Als er geen "
+"vijand binnen bereik is, bewegen ze niet.\n"
+"\n"
+"Kant 3 (groen): Saurianen vallen enkel aan vanuit het moeras. Als er geen "
+"vijand binnen bereik is, zwerven ze willekeurig rond (alleen op moeras).\n"
+"\n"
+"Kant 4 (paars): Nagas die alleen op waterig terrein ronddwalen, maar "
+"aanvallen vanuit zowel water als moeras.\n"
+"\n"
+"We hebben ook twee andere kanten toegevoegd, die gluurder gedrag laten zien "
+"dat gecodeerd is in WML (Kant 5, grijs) en Formula AI (Kant 6, bruin)."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/lurkers.cfg:465
@@ -1454,14 +1787,13 @@ msgstr "Notities"
 #: data/ai/micro_ais/scenarios/lurkers.cfg:465
 #, fuzzy
 #| msgid ""
-#| "This is a reenactment of scenario The Elves Besieged of the mainline "
-#| "campaign Heir to the Throne, just that the AI is playing Konrad's side "
-#| "here. The goal is to move Konrad to the signpost in the northwest, while "
-#| "keeping both Konrad and Delfador alive. The same AI as in scenario "
-#| "Protect Unit is used.\n"
+#| "You can use the right-click context menu to add additional lurkers.\n"
 #| "\n"
-#| "Note: The Protect Unit AI is coded as a Micro AI. A Micro AI can be added "
-#| "and adapted to the need of a scenario easily using only WML and the "
+#| "Any unit not adjacent to swamp (and water, for the nagas) is safe from "
+#| "the lurkers, thus it is easy to keep Pekzs from being attacked.\n"
+#| "\n"
+#| "The Lua Lurker AI is coded as a Micro AI. A Micro AI can be added and "
+#| "adapted to the need of a scenario easily using only WML and the "
 #| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 #| "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
@@ -1475,22 +1807,21 @@ msgid ""
 "tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at http://"
 "wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
-"Dit is een imitatie van het scenario De Elven Belegerd van de veldtocht De "
-"Kroonprins, met het verschil dat de AI nu de kant van Konrad speelt. Het "
-"doel is om Konrad naar de wegwijzer in het noordwesten te sturen en daarbij "
-"Konrad en Delfador levend te houden. Dezelfde AI als in Bescherm Eenheid is "
-"gebruikt.\n"
+"Je kunt het contextmenu met de rechter muisknop gebruiken om extra gluurders "
+"toe te voegen.\n"
 "\n"
-"Opmerking: De Bescherm Eenheid AI is gecodeerd zoals de Micro AI. Een Micro "
-"AI can makkelijk toegevoegd of aangepast worden aan het scenario met gebruik "
-"van enkel WML en het [micro_ai] attribuut. Kijk op de <span "
-"color='#00A000'>Micro AI wiki pagina</span> op https://wiki.wesnoth.org/"
-"Micro_AIs voor meer informatie."
+"Elke eenheid die niet grenst aan het moeras (en water, voor de Naga's) is "
+"veilig voor gluurders. Het is dus gemakkelijk om Pekzs te laten aanvallen.\n"
+"\n"
+"De Lua Gluurder AI is gecodeerd als Micro AIs. Een Micro AI kan eenvoudig "
+"toegevoegd worden en aangepast aan de behoefte van een scenario met enkel "
+"WML en de [micro_ai]-tag. Bekijk de <span color='#00A000'>Micro AI wiki "
+"pagina</span> op https://wiki.wesnoth.org/Micro_AIs voor meer informatie."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/lurkers.cfg:474
 msgid "Watch the lurkers move around and fight them if you want"
-msgstr ""
+msgstr "Bekijk hoe de gluurders zich verplaatsen en vecht met ze als je wil"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/lurkers.cfg:476
@@ -1511,6 +1842,7 @@ msgstr "Dood van Pekzs"
 #: data/ai/micro_ais/scenarios/lurkers.cfg:488
 msgid "Right-click on unoccupied swamp hexes to add more lurkers"
 msgstr ""
+"Klik met rechter muisknop op onbezet moeras om meer gluurders toe te voegen"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/lurkers.cfg:533
@@ -1518,6 +1850,8 @@ msgid ""
 "Zzanksss for helping me wizz zzossse lurkerss. Hope to sssee you again "
 "ssometime."
 msgstr ""
+"Bedankt dat je me hebt geholpen met deze gluurderzzz. Ik hoop je nog eenzzz "
+"te zzzzien."
 
 #. [test]: id=messenger_escort
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:5
@@ -1564,18 +1898,26 @@ msgid ""
 "Men, I need to get to that signpost in the north, to get the message to our "
 "leader. Let's head up there as quickly as we can."
 msgstr ""
+"Mannen, ik moet naar de wegwijzer in het noorden, om het bericht bij onze "
+"leider te krijgen. Laten we er o snel mogelijk heengaan."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:139
 #, fuzzy
 #| msgid ""
-#| "This is a reenactment of scenario The Elves Besieged of the mainline "
-#| "campaign Heir to the Throne, just that the AI is playing Konrad's side "
-#| "here. The goal is to move Konrad to the signpost in the northwest, while "
-#| "keeping both Konrad and Delfador alive. The same AI as in scenario "
-#| "Protect Unit is used.\n"
+#| "The Messenger Escort AI will try to move the dragoon messenger to the "
+#| "signpost in the north, while protecting him as well as possible with the "
+#| "other units. Vanak's orcs need to stop him.\n"
 #| "\n"
-#| "Note: The Protect Unit AI is coded as a Micro AI. A Micro AI can be added "
+#| "Note that the messenger route is set up through a series of waypoints "
+#| "here simply to demonstrate how to use waypoints. On this map, using only "
+#| "a single waypoint at the end of the route would work just as well (or "
+#| "probably even better).\n"
+#| "\n"
+#| "Also note that the messenger does not have to get exactly to each "
+#| "signpost (except for the last one), getting close is good enough.\n"
+#| "\n"
+#| "The Messenger Escort AI is coded as a Micro AI. A Micro AI can be added "
 #| "and adapted to the need of a scenario easily using only WML and the "
 #| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 #| "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
@@ -1597,15 +1939,21 @@ msgid ""
 "tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at http://"
 "wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
-"Dit is een imitatie van het scenario De Elven Belegerd van de veldtocht De "
-"Kroonprins, met het verschil dat de AI nu de kant van Konrad speelt. Het "
-"doel is om Konrad naar de wegwijzer in het noordwesten te sturen en daarbij "
-"Konrad en Delfador levend te houden. Dezelfde AI als in Bescherm Eenheid is "
-"gebruikt.\n"
+"De Boodschapper Begeleider AI zal proberen de Dragonder-boodschapper naar de "
+"wegwijzer in het noorden te verplaatsen en hem zo goed mogelijk te "
+"beschermen met de andere eenheden. Vanak's Orks moeten hem stoppen.\n"
 "\n"
-"Opmerking: De Bescherm Eenheid AI is gecodeerd zoals de Micro AI. Een Micro "
-"AI can makkelijk toegevoegd of aangepast worden aan het scenario met gebruik "
-"van enkel WML en het [micro_ai] attribuut. Kijk op de <span "
+"Merk op dat de boodschapper-route hier via een reeks wegpunten wordt opgezet "
+"om eenvoudigweg aan te geven hoe wegpunten worden gebruikt. Op deze kaart "
+"zou het gebruik van slechts één waypoint aan het einde van de route net zo "
+"goed (of warschijnlijk zelfs beter) werken.\n"
+"\n"
+"Merk ook op dat de boodschapper niet precies naar elke wegwijzer hoeft te "
+"gaan (behalve de laatste), dichtbij komen is goed genoeg.\n"
+"\n"
+"Let er ook op dat de Boodschapper Begeleider AI is gecodeerd als Micro AIs. "
+"Een Micro AI kan eenvoudig toegevoegd worden en aangepast aan de behoefte "
+"van een scenario met enkel WML en de [micro_ai]-tag. Bekijk de <span "
 "color='#00A000'>Micro AI wiki pagina</span> op https://wiki.wesnoth.org/"
 "Micro_AIs voor meer informatie."
 
@@ -1627,12 +1975,13 @@ msgstr "Dood van Vanak"
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:173
 msgid "I made it!  Now our people will be safe."
-msgstr ""
+msgstr "Ik heb het gehaald!  Nu zullen onze mensen veilig zijn."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:185
 msgid "Nooo!  All is lost. We will never stop the orcs now!"
 msgstr ""
+"Neee!  We hebben verloren. We zullen de Orks nooit meer kunnen stoppen!"
 
 #. [test]: id=patrols
 #. [event]
@@ -1720,6 +2069,17 @@ msgid ""
 "\n"
 "All of this is implemented by use of the Patrol [micro_ai] tag."
 msgstr ""
+"Hallo!  Ik ben een Konrad bedrieger. Wij gaan de Patrouille AI demonstreren "
+"voor jou in dit scenario.\n"
+"\n"
+"Ik ben onderweg naar het kasteel ten oosten van de centrale berg via een "
+"aantal punten in het zuiden. Ik zal daar blijven wanneer ik er aankom. Ter "
+"vergelijking, deze twee kameraden in het midden lopen rondjes om de berg, "
+"een constant in dezelfde richting, de andere veranderd na ieder rondje van "
+"richting.\n"
+"\n"
+"Dit alles wordt geïmplementeerd door het gebruik van de Patrouille "
+"[micro_ai] tag."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:211
@@ -1730,6 +2090,12 @@ msgid ""
 "same side.  For more details on different types of guardian AIs, there is a "
 "separate test scenario specializing on those."
 msgstr ""
+"Daarentegen, ik ben een gebiedsbewaker, op een of andere manier, op het "
+"zuidelijkste deel van de kaart.  Deze AI wordt geïmplementeerd door het "
+"gebruik van [micro_ai] tag.  De reden is voornamelijk het demonstreren van "
+"hoe verschillende Micro AIs gebruikt kunnen worden voor één kant.  Voor meer "
+"details over verschillende soorten beschermer AIs is er een apart "
+"gespecialiseerd test-scenario hiervoor."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:212
@@ -1740,6 +2106,12 @@ msgid ""
 "\n"
 "This is an AI separate from the Patrols of Side 2."
 msgstr ""
+"En ik ben Uradin. Ik val mijn vijanden aan voor een aantal beurten, maar zal "
+"mezelf terugtrekken naar het rechterdeel van de kaart als mijn levenspunten "
+"onder de helft van het maximum komen, of vanaf beurt 5, welke van de twee "
+"het eerst is.\n"
+"\n"
+"Dit is een op zichzelf staande AI van de Patrouilles van Kant 2."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:217
@@ -1768,6 +2140,31 @@ msgid ""
 "and the [micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki "
 "page</span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Jij, als speler, hebt de leiding over Gertburt's bandieten in dit scenario. "
+"Je kunt gewoon kijken hoe de patrouilles zich verplaatsen of je kunt "
+"eenheden op pad sturen. De drie patrouille-eenheden krijgen de opdracht om "
+"zich anders te gedragen als ze tegenover vijandelijke eenheden staan:\n"
+"\n"
+"Konrad valt alleen Gertburt aan, of een vijandelijke eenheid die zijn "
+"laatste wegpunt blokkeert.\n"
+"\n"
+"De zwaardvechter valt nooit aan.\n"
+"\n"
+"De langboogschutter valt alle vijandelijke eenheden aan die hij aan het "
+"einde van zijn beurt tegenkomt.\n"
+"\n"
+"Ze hebben echter allemaal gemeen dat het bereiken van hun volgende wegpunt "
+"voorrang heeft op aanvallen. Ze zullen dus liever rond vijanden bewegen dan "
+"recht op hen af. Als een wegpunt wordt bezet door een eenheid, worden ze "
+"niet geïnstrueerd om aan te vallen, maar zullen ze (uiteindelijk) dat "
+"wegpunt verlaten zodra ze dichtbij genoeg zijn en doorgaan naar de "
+"volgende.\n"
+"\n"
+"De Patrouille AI die alle eenheden van Kant 2 beheert is gecodeerd als Micro "
+"AIs. Een Micro AI kan eenvoudig toegevoegd worden en aangepast aan de "
+"behoefte van een scenario met enkel WML en de [micro_ai]-tag. Bekijk de "
+"<span color='#00A000'>Micro AI wiki pagina</span> op https://wiki.wesnoth."
+"org/Micro_AIs voor meer informatie."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/patrols.cfg:231
@@ -1790,6 +2187,8 @@ msgid ""
 "Well, that was fun!  I'll just hang out here now and watch those two guys "
 "walk and walk and ..."
 msgstr ""
+"Nou, dat was leuk!  Ik zal hier blijven wachten om deze twee mannen te zien "
+"lopen en lopen en ..."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:297
@@ -1835,7 +2234,7 @@ msgstr "Verplaats Rossauba hierheen"
 #. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:127
 msgid "There's that traitor wizard. Let's get him."
-msgstr ""
+msgstr "Daar is die verrader tovenaar. Laten we hem grijpen."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:129
@@ -1843,11 +2242,13 @@ msgid ""
 "Men, you know the deal. We must protect Rossauba under all circumstances. "
 "Even my survival is not as important."
 msgstr ""
+"Mannen, jullie weten de afspraak. We moeten Rossauba beschermen onder alle "
+"omstandigheden. Mijn eigen overleving is niet zo belangrijk."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:130
 msgid "That's very kind of you, but ..."
-msgstr ""
+msgstr "Dat is erg aardig van je, maar..."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:131
@@ -1856,6 +2257,9 @@ msgid ""
 "is no risk to your life, is that understood?  And get to that signpost in "
 "the northwest if it is safe."
 msgstr ""
+"Geen gemaar!  Jij blijft achter de linies en mengt je niet in het gevecht, "
+"tenzij er geen enkel risico bestaat, is dat begrepen?  En ga naar die "
+"wegwijzer in het noordwesten wanneer het veilig is."
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:138
@@ -1871,11 +2275,24 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"In dit scenario krijgt de AI die de mensen in het oosten (Langzhar) speelt "
+"de taak om de tovenaar Rossauba te beschermen, terwijl hij hem veilig naar "
+"de wegwijzer verplaatst. Aan de andere kant zullen de eenheden van Koorzhar "
+"(in het westen) vooral Rossauba aanvallen, zelfs als er een beter doelwit "
+"beschikbaar is. Wil je een van beide partijen spelen of laat je de AI het "
+"liever alleen oplossen?\n"
+"\n"
+"\n"
+"Let op: De Bescherm Eenheid AI is gecodeerd als Micro AIs. Een Micro AI kan "
+"eenvoudig toegevoegd worden en aangepast aan de behoefte van een scenario "
+"met enkel WML en de [micro_ai]-tag. Bekijk de <span color='#00A000'>Micro AI "
+"wiki pagina</span> op https://wiki.wesnoth.org/Micro_AIs voor meer "
+"informatie."
 
 #. [option]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:143
 msgid "<span font='16'>I'll watch the two AIs fight it out</span>"
-msgstr ""
+msgstr "<span font='16'>Ik zal de twee AIs het uit zien vechten</span>"
 
 #. [option]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:146
@@ -1883,6 +2300,8 @@ msgid ""
 "<span font='16'>I'll play Langzhar's side (to see how Koorzhar's units "
 "target Rossauba)</span>"
 msgstr ""
+"<span font='16'>Ik zal Langzhars kant besturen (om te zien hoe Koorzhars "
+"eenheden die van Rossauba als doelwit gebruiken)</span>"
 
 #. [option]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:155
@@ -1890,18 +2309,20 @@ msgid ""
 "<span font='16'>I'll play Koorzhar's side (to see how Langzhar's units "
 "protect Rossauba)</span>"
 msgstr ""
+"<span font='16'>Ik zal Koorzhars kant besturen (om te zien hoe Langzhars "
+"eenheden die van Rossauba beschermen)</span>"
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:167
 msgid "Protect Rossauba while moving him to the signpost"
-msgstr ""
+msgstr "Bescherm Rossauba terwijl je beweegt richting de wegwijzer"
 
 #. [objective]: condition=win
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:169
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:189
 msgid "Rossauba makes it to the signpost"
-msgstr ""
+msgstr "Rossauba haalt het tot de wegwijzer"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:173
@@ -1916,7 +2337,7 @@ msgstr "Dood van Langzhar"
 #. [objectives]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:183
 msgid "Get rid of that traitor wizard Rossauba"
-msgstr ""
+msgstr "Versla die verrader tovenaar Rossauba"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:185
@@ -1931,7 +2352,7 @@ msgstr "Dood van Koorzhar"
 #. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:216
 msgid "I held out for as long as I could."
-msgstr ""
+msgstr "Ik heb het zo lang mogelijk uit gehouden."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:230
@@ -1951,6 +2372,8 @@ msgid ""
 "This is a very simple scenario that can be used to test out different "
 "recruiting patterns."
 msgstr ""
+"Dit is een erg simpel scenario dat gebruikt kan worden om verschillende "
+"rekruteerpatronen te testen."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:88
@@ -1959,6 +2382,9 @@ msgid ""
 "expect. The recruitment lists cover level 0 to level 2 units, in order to "
 "make differences more obvious."
 msgstr ""
+"Bekijk hoe beide kanten rekruteren en of het is wat je verwacht. De "
+"rekrutenlijst bevat eenheden van rang 0 tot rang 2, dit om de verschillen "
+"duidelijker te maken."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:90
@@ -1977,6 +2403,20 @@ msgid ""
 "AI wiki page</span> at https://wiki.wesnoth.org/Micro_AIs for more "
 "information."
 msgstr ""
+"Als je niets hebt veranderd in de scenariocode, gebruikt Kant 1 de "
+"Willekeurige Rekruteren Micro AI, waarbij zwaardvechters en boeren een "
+"hogere kans hebben gekregen dan andere eenheden, en een gemiddelde "
+"waarschijnlijkheid beschrijft. Dit is niet bedoeld als een goed "
+"rekruteringspatroon, het dient gewoon als een demonstratie van hoe de AI te "
+"gebruiken.\n"
+"\n"
+"Kant 2 gebruikt de Snelle Rekruteren Micro AI (die ook wordt gebruikt in de "
+"experimentele AI).\n"
+"\n"
+"Een Micro AI kan eenvoudig toegevoegd worden en aangepast aan de behoefte "
+"van een scenario met enkel WML en de [micro_ai]-tag. Bekijk de <span "
+"color='#00A000'>Micro AI wiki pagina</span> op https://wiki.wesnoth.org/"
+"Micro_AIs voor meer informatie."
 
 #. [test]: id=micro_ai_test
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:5
@@ -2023,7 +2463,7 @@ msgstr "Genezers"
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:87
 msgid "Hang Out and Messenger"
-msgstr ""
+msgstr "Rondhangen en Boodschapper"
 
 #. [event]
 #. [test]: id=simple_attack
@@ -2055,6 +2495,10 @@ msgid ""
 "watch them fight it out against the standard RCA AI or take over the orc "
 "side."
 msgstr ""
+"In de Knelpunten Verdediging Micri AI scenario, een kleine groep van "
+"menselijke soldaten is geïnstrueerd om een bergpas te beschermen tegen een "
+"grote horde Orks. Je kan het ze uit laten vechten door de standaard RCA AI "
+"of de Orken besturen."
 
 #. [command]
 #. [set_menu_item]: id=m02_swamp_lurkers
@@ -2071,6 +2515,11 @@ msgid ""
 "and always attack the weakest enemy within their reach. If no enemy is in "
 "reach, the lurker does a random move instead."
 msgstr ""
+"Moeras gluurders zijn dom, impuls-gedreven wezens die over veel verschillend "
+"terrein kunnen bewegen maar enkel stil kunnen staan in een moeras. Ze "
+"bewegen individueel zonder enkele strategie en vallen altijd de zwakste "
+"vijand aan binnen hun bereik. Als een vijand in bereik is, doet de gluurder "
+"een willekeurige aanval."
 
 #. [command]
 #. [set_menu_item]: id=m03_guardians
@@ -2086,6 +2535,9 @@ msgid ""
 "shown, including a \"coward\" unit that runs away from any approaching unit "
 "(an \"inverse guardian\", in a way)."
 msgstr ""
+"In 'Beschermers', worden verschillende variaties van de standaard Wesnoth "
+"beschermer getoond, inclusief een \"lafaard\" eenheid die wegrent van elke "
+"naderende eenheid (een \"omgekeerde beschermer\", op een bepaalde manier)."
 
 #. [command]
 #. [set_menu_item]: id=m04_patrol
@@ -2135,6 +2587,12 @@ msgid ""
 "is available. You can watch the two AIs fight it out, or take control of "
 "either side to explore how the opposing AI behaves."
 msgstr ""
+"Dit scenario demonstreert een kant die een tovenaar beschermt terwijl hij "
+"richting een doellocatie verplaatst. In dezelfde tijd is de andere kant "
+"ingesteld om aanvallen uit te voeren op de tovenaar, zelfs wanneer er een "
+"beter doelwit beschikbaar is (zelfs volgens de standaard AI criteria). Je "
+"kan de twee AIs het uit zien vechten of de controle van een kant overnemen "
+"om te onderzoeken hoe de andere AI zich gedraagt."
 
 #. [command]
 #. [set_menu_item]: id=m06a_protect
@@ -2150,6 +2608,9 @@ msgid ""
 "campaign \"Heir to the Throne\", just that the AI is playing Konrad's side "
 "here. The same algorithm as for scenario \"Protect Unit\" is used."
 msgstr ""
+"Dit is een imitatie van het scenario \"De Elven Belegerd\" van de hoofdlijn "
+"veldtocht \"De Kroonprins\", alleen dat de AI de kant van Konrad speelt. "
+"Hetzelfde algoritme als in het scenario \"Bescherm Eenheid\" wordt gebruikt."
 
 #. [command]
 #. [set_menu_item]: id=m07_messenger
@@ -2165,6 +2626,10 @@ msgid ""
 "his way to the edge of the map. The escort will also try to open the path "
 "for the messenger if there are enemies in the way."
 msgstr ""
+"'Boodschapper Begeleider' zorgt ervoor dat de AI een boodschapper beschermt "
+"terwijl die zich verplaatst naar de rand van de kaart. De begeleiding zal "
+"ook proberen een pad voor de boodschapper vrij te maken wanneer er vijanden "
+"in de weg staan."
 
 #. [command]
 #. [set_menu_item]: id=m08_animals
@@ -2181,6 +2646,10 @@ msgid ""
 "sheep; bears, spiders, yetis, boar and rabbits wandering and hunting/"
 "avoiding each other."
 msgstr ""
+"Dit scenario demonstreert een aantal verschillende dieren die vooraf bepaald "
+"AI gedrag vertonen, inclusief wolven die in groepen op herten jagen; honden "
+"die schapen hoeden; beren, spinnen, yetis, zwijnen en konijnen die "
+"rondlopen, jagen of elkaar vermijden."
 
 #. [command]
 #. [set_menu_item]: id=m09_wolves
@@ -2195,6 +2664,8 @@ msgid ""
 "Another demonstration of wolves wandering and attacking in packs, with a "
 "different behavior from that in 'Animals'."
 msgstr ""
+"Een andere demonstratie van wolven die rondlopen en aanvallen in groepen, "
+"met een ander gedrag dan dat in 'Dieren'."
 
 #. [command]
 #. [set_menu_item]: id=m10_swarm
@@ -2207,6 +2678,8 @@ msgstr "Zwerm Micro AI demo"
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:260
 msgid "This scenario features bats moving around semi-randomly in a swarm."
 msgstr ""
+"Dit scenario bevat vleermuizen die semi-willekeurig rondbewegen als een "
+"zwerm."
 
 #. [command]
 #. [set_menu_item]: id=m11_dragon
@@ -2220,6 +2693,7 @@ msgstr "Draak Micro AI demo"
 msgid ""
 "This scenario features a fire dragon displaying a hunt-and-rest behavior."
 msgstr ""
+"Dit scenario bevat een draak des vuur die een jaag-en-rust gedrag vertoond."
 
 #. [set_menu_item]: id=m12_healer_support
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:281
@@ -2239,6 +2713,10 @@ msgid ""
 "threatened units rather than having them participate in combat under all "
 "circumstances."
 msgstr ""
+"Dit scenario bevat een simpele demonstratie van het instellen van de Genezer "
+"Ondersteuning Micro AI, die gebruikt wordt om de genezers van een kant de "
+"gewonden of bedreigde eenheden te ondersteunen in plaats van het meedoen aan "
+"een gevecht onder alle omstandigheden."
 
 #. [command]
 #. [set_menu_item]: id=m13_goto
@@ -2255,6 +2733,11 @@ msgid ""
 "set of locations. The units to be moved are defined using a Standard Unit "
 "Filter, while the goto locations are given in a Standard Location Filter."
 msgstr ""
+"Dit scenario bevat verschillende voorbeelden van het gebruik van de Ganaar "
+"Micro AI, die een goed aanpasbare methode is om een eenheid (of eenheden) "
+"naar een locatie of verzameling locaties te sturen. De eenheden die "
+"verplaatst moeten worden, worden gedefinieerd door de Standaard Eenheid "
+"Filter, terwijl de locaties worden ingevuld in de Standaard Locatie Filter."
 
 #. [set_menu_item]: id=m14_hangout
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:311
@@ -2264,7 +2747,7 @@ msgstr "Rondhangen Micro AI demo"
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:320
 msgid "Combined Hang Out and Messenger Escort Micro AI demo"
-msgstr ""
+msgstr "Combinatie van de Rondhangen en Boodschapper Begeleiding Micro AI demo"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:320
@@ -2275,6 +2758,12 @@ msgid ""
 "also shows how to combine two Micro AIs on the same side by having the "
 "Messenger Escort Micro AI take over at that point."
 msgstr ""
+"Dit scenario is een demonstratie van de Rondhangen Micro AI die eenheden "
+"rond een (aanpasbare) locatie houdt tot aan bepaalde (aanpasbare) "
+"voorwaarden is voldaan.  Daarna zijn de eenheden vrij om ander AJ gedrag te "
+"vertonen.  Het scenario laat ook zien hoe je twee Micro AIs kan combineren "
+"om dezelfde kant te besturen en de Boodschapper Begeleider Micro AI het over "
+"te laten nemen."
 
 #. [command]
 #. [set_menu_item]: id=m15_simple_attack
@@ -2290,6 +2779,10 @@ msgid ""
 "priority than the standard Wesnoth attacks and how the AI can be forced to "
 "do attacks that it would otherwise avoid."
 msgstr ""
+"Dit scenario demonstreert hoe bepaalde aanvallen uitgevoerd kunnen worden "
+"met een hogere prioriteit dan de standaard  Wesnoth aanvallen en hoe de AI "
+"geforceerd kan worden om aanvallen te doen die anders uit de weg gegaan "
+"worden."
 
 #. [command]
 #. [set_menu_item]: id=m16_fast
@@ -2304,6 +2797,8 @@ msgid ""
 "A simple demonstration of the calculation time advantage of the Fast Micro "
 "AI over the default AI in scenarios with many units."
 msgstr ""
+"Een simpele demonstratie van het berekend tijdsvoordeel van de Snelle Micro "
+"AI ten opzichte van de standaard AI in scenarios met veel eenheden."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:360
@@ -2313,6 +2808,11 @@ msgid ""
 "Information about each demonstration can be accessed by right-clicking on "
 "the respective signpost."
 msgstr ""
+"Verplaats me naar een van de wegwijzers om naar een Micro AI demonstratie te "
+"gaan.\n"
+"\n"
+"Informatie over iedere demonstratie van geopend worden door middel van een "
+"rechter muisklik op de respectievelijke wegwijzer."
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:366
@@ -2323,6 +2823,8 @@ msgstr "Verplaats Gmk naar een van de wegwijzers"
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:370
 msgid "Right-click on a signpost to get information about the scenario"
 msgstr ""
+"Klik met rechter muisknop op een wegwijzer om informatie over een scenario "
+"te krijgen"
 
 #. [side]: id=Grospur, type=General
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:18
@@ -2353,6 +2855,16 @@ msgid ""
 "Attack Micro AI in this scenario. General Grospur might be in for a surprise."
 "</i>"
 msgstr ""
+"Wees niet zo'n mietje, Sergeant!  Ik heb eenheden geplaatst met veel "
+"ervaring rond de perimeter. De ondoden zullen ze niet durven aanvallen. En "
+"die weinigen die naar binnen sluipen … we kunnen ze eenvoudig afweren zodra "
+"ze binnen zijn.\n"
+"\n"
+"<i>Met andere woorden, de Wesnoth AI valt over het algemeen geen eenheden "
+"aan die 1 XP van promoveren verwijderd zijn behalve wanneer de kans er is om "
+"de eenheid met één slag te doden. Sommige van de aanvallen door de ondoden "
+"worden echter in dit scenario afgehandeld door de Simpele Aanval Micro AI. "
+"Er kan een verrassing staan te wachten voor Generaal Grospur.</i>"
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:129
@@ -2367,7 +2879,7 @@ msgstr "Probeer het niet. Je kan de Dodenbezweerder niet bereiken."
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:135
 msgid "Death of the last of Grospur's units"
-msgstr "Dood van de laatste van Grospurs eenheden."
+msgstr "Dood van de laatste van Grospurs eenheden"
 
 #. [note]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:139
@@ -2400,6 +2912,20 @@ msgid ""
 "for their own safety.  Only after that does the default Wesnoth attack "
 "mechanism kick in to attack with the remaining units (skeletons).</i>"
 msgstr ""
+"Hahahahaha !! Ik heb speciale instructies aan mijn Ziellozen gegeven om "
+"eerst ale bijna-gepromoveerde eenheden aan te vallen. Let erop hoe diezelfde "
+"Ziellozen zich daarna genadeloos zullen storten op je meelijwekkende "
+"soldaten, en de skeletten bewaren om voor mij te kunnen vechten later.  Ik "
+"heb de term 'wegwerpeenheden' naar een geheel nieuw niveau gebracht. Kijk en "
+"leer !!\n"
+"\n"
+"<i>Vertaling: De ondode kant bevat twee exemplaren van de Simpele Aanval "
+"Micro AI. De eerste zorgt ervoor dat de Ziellozen alle eenheden die 1 XP "
+"verwijderd zijn van promotie aanvallen, zodat ze daarna kunnen worden "
+"geëlimineerd. De tweede voert alle resterende aanvallen uit die mogelijk "
+"zijn door een Ziellove (en Wandelend Lijk), ongeacht hun eigen veiligheid. "
+"Pas daarna begint het standaard Wesnoth-aanvalsmechanisme om aan te vallen "
+"met de resterende eenheden (skeletten).</i>"
 
 #. [then]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:181
@@ -2428,6 +2954,27 @@ msgstr "Plaats Kant 2 Vleermuis"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/swarm.cfg:137
+#, fuzzy
+#| msgid ""
+#| "This scenario features bats moving around in a swarm. Without adjacent "
+#| "enemies, they simply try to stay together and at a certain distance from "
+#| "enemies. However, if an enemy unit is close to any bat, the swarm "
+#| "scatters. This is particular fun to watch when one places an enemy unit "
+#| "in the middle of the swarm. After being scattered, the swarm members "
+#| "slowly rejoin, but not in a very organized way. Sub-swarms or individual "
+#| "bats might roam around for quite some time before they find their way "
+#| "back. It is also possible that individual bats (or small groups) split "
+#| "off from the larger swarm at times.\n"
+#| "\n"
+#| "The player controls a side of gryphons, each of which is given 99 moves "
+#| "so that the reaction of the swarm to enemies can be tested easily. There "
+#| "are also several right-click options, for example for adding bats or "
+#| "gryphons or for taking units off the map.\n"
+#| "\n"
+#| "Note: The Swarm AI is coded as a Micro AI. A Micro AI can be added and "
+#| "adapted to the need of a scenario easily using only WML and the "
+#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+#| "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
 "This scenario features bats moving around in a swarm. Without adjacent "
 "enemies, they simply try to stay together and at a certain distance from "
@@ -2449,11 +2996,32 @@ msgid ""
 "tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at http://"
 "wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Dit scenario bevat vleermuizen die rondzwerven in een zwerm. Zonder "
+"aangrenzende vijanden proberen ze gewoon bij elkaar te blijven en op een "
+"bepaalde afstand van vijanden. Als een vijandelijke eenheid echter dicht bij "
+"een vleermuis staat, verspreidt de zwerm zich. Dit is vooral leuk om te zien "
+"wanneer je een vijandige eenheid in het midden van de zwerm plaatst. Nadat "
+"ze zijn verspreid, komen de zwermleden langzaam weer samen, maar niet op een "
+"zeer georganiseerde manier. Subzwermen of individuele vleermuizen kunnen nog "
+"geruime tijd rondzwerven voordat ze de weg terug vinden. Het is ook mogelijk "
+"dat individuele vleermuizen (of kleine groepen) zich af en toe afsplitsen "
+"van de grotere zwerm.\n"
+"\n"
+"De speler bestuurt een kant van de griffioenen, die elk 99 zetten krijgen, "
+"zodat de reactie van de zwerm op de vijanden gemakkelijk kan worden getest. "
+"Er zijn ook verschillende opties met de rechter muisknop, bijvoorbeeld voor "
+"het toevoegen van vleermuizen of griffioenen of om eenheden van de kaart te "
+"halen.\n"
+"\n"
+"Let op: De Zwerm AI is gecodeerd als Micro AI. Een Micro AI kan eenvoudig "
+"toegevoegd worden en aangepast aan de behoefte van een scenario met enkel "
+"WML en de [micro_ai]-tag. Bekijk de <span color='#00A000'>Micro AI wiki "
+"pagina</span> op https://wiki.wesnoth.org/Micro_AIs voor meer informatie."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/swarm.cfg:146
 msgid "Watch the bats move around and fight them if you want"
-msgstr ""
+msgstr "Bekijk hoe de vleermuizen zich verplaatsen en vecht met ze als je wil"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/swarm.cfg:148
@@ -2514,6 +3082,28 @@ msgid ""
 "displayed below each wolf in this scenario once the AI takes control of a "
 "side the first time."
 msgstr ""
+"Dit scenario vertoont een ander soort wolvengedrag van 'Dieren'. Ten eerste "
+"kan er een willekeurig aantal wolvenroedels zijn en de roedelgrootte aan "
+"elke kant is een vrije parameter (in dit scenario 3 voor zijde 2 en 4 voor "
+"zijde 3). Aan het begin van het scenario worden dichte wolven op een semi-"
+"methodische manier gegroepeerd in roedels. Wolven van dezelfde roedel "
+"beginnen met elkaar op de kaart te verenigen. Daarna blijven ze bij elkaar "
+"tot er nog maar één wolf overblijft, die dan probeert zich aan te sluiten "
+"bij een incomplete roedel of bij andere alleenstaande wolven. Individuele "
+"wolven die tijdens het scenario de kaart betreden, gedragen zich ook op die "
+"manier.\n"
+"\n"
+"Ten tweede, wolven jagen hier niet actief op een prooi. Voor het grootste "
+"deel zwerven ze gewoon (vaak over lange afstand) rond. De roedel valt echter "
+"woest (en zonder rekening te houden met hun gezondheid) vijandige eenheden "
+"aan die binnen bereik komen, zolang dat niet betekend dat de roedel door "
+"meer dan een paar tegels wordt gescheiden. Samenblijven, of lid worden van "
+"een nieuwe roedel is, is het enige dat prioriteit heeft boven het bevredigen "
+"van de dorst van de wolven naar bloed.\n"
+"\n"
+"Om te benadrukken welke wolf bij welke roedel hoort, wordt in dit scenario "
+"het roedelnummer onder elke wolf weergegeven zodra de AI de eerste keer de "
+"controle over een roedel neemt."
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/wolves.cfg:199
@@ -2535,6 +3125,24 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Het is mogelijk om een door de mens bestuurde Kant 1 te maken, zodat de "
+"actie eenmaal per beurt stop om rond te kijken (of om aanpassingen te maken "
+"in de debug modus). In de mensgestuurde modus zijn er verschillende opties "
+"beschikbaar via de rechter muisknop, zoals het toevoegen van extra wolven "
+"aan beide zijden, het weghalen van wolven van de kaart, het toevoegen van "
+"boeren aan de door de mens gecontroleerde kant of het beëindigen van het "
+"scenario. Dit maakt het eenvoudig om het gedrag van de wolven AI onder "
+"verschillende omstandigheden te bestuderen.\n"
+"\n"
+"Let erop dat de leider van de door de mens gecontroleerde kant, Rutburt, 99 "
+"vakken per beurt kan verplaatsen, zodat het altijd mogelijk is om hem uit de "
+"buurt van de wolven te houden.\n"
+"\n"
+"Let er ook op dat de Wolven AI is gecodeerd als Micro AI. Een Micro AI kan "
+"eenvoudig toegevoegd worden en aangepast aan de behoefte van een scenario "
+"met enkel WML en de [micro_ai]-tag. Bekijk de <span color='#00A000'>Micro AI "
+"wiki pagina</span> op https://wiki.wesnoth.org/Micro_AIs voor meer "
+"informatie."
 
 #. [option]
 #: data/ai/micro_ais/scenarios/wolves.cfg:206
@@ -2555,11 +3163,13 @@ msgstr "Geen wolven over aan een kant"
 #: data/ai/scenarios/ai_arena_small/0001-healing.cfg:17
 msgid "This situation should test the ability of AI to heal efficiently..."
 msgstr ""
+"Deze situatie zou de vaardigheden testen van de AI om efficiënt te genezen..."
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:17
 msgid "This situation should test the ability of AI to spread poison around..."
 msgstr ""
+"Deze situatie zou de vaardigheden testen van de AI om gif te verspreiden..."
 
 #. [label]
 #: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:112
@@ -2595,6 +3205,10 @@ msgid ""
 "filters while making attacks. Only dwarves should attack. Dark Adepts are "
 "not to be attacked."
 msgstr ""
+"Deze situatie zou de vaardigheden testen van de AI om eigen eenheden te "
+"laten gehoorzamen en vijandelijke eenheden te filteren tijdens het "
+"aanvallen. Enkel Dwergen horen aan te vallen. Duistere Magiërs moeten niet "
+"aangevallen worden."
 
 #. [test]: id=ai_arena_small
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:6
