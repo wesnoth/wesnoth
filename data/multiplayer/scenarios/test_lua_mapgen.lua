@@ -322,7 +322,7 @@ local d_mapgen_data_village = {
 		rating=2,
 		adjacent_liked="Gg, Ww, Ww, Ww, Ww^Bsb|, Ww^Bsb/, Ww^Bsb\\, Rr, Rr, Re, Re, Gg^Ve, Gg^Vh, Hh, Gs^Fp",
 	},
-	-- mermen villages - give them low chance of appearing
+	-- merfolk villages - give them low chance of appearing
 	{
 		terrain="Wwg",
 		convert_to="Wwg^Vm",
