@@ -4,6 +4,10 @@
      * Update maps for S1 and S6
    * Eastern Invasion:
      * S9: add dialogue on victory
+   * Heir to the Throne:
+     * Remove 'Princess' as a direct address
+   * Northern Rebirth:
+     * Remove 'Princess' as a direct address
    * Sceptre of Fire:
      * S5: tell player that gryphon riders can now be recruited
      * S9: objectives changed to be more accurate upon moving to the volcano
@@ -13,6 +17,8 @@
      * S17a: prevent time over defeat if player chooses to defeat remaining saurians
  ### Language and i18n
    * Updated translations: Dutch
+ ### Miscellaneous and bug fixes
+     * Update various references of mermen to merfolk or mer
 
 ## Version 1.14.7
  ### Campaigns
