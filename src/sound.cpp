@@ -585,7 +585,7 @@ void play_music()
 	music_start_time = 1; // immediate (same as effect as SDL_GetTicks())
 	want_new_music = true;
 	no_fading = false;
-	fadingout_time = current_track->ms_after();
+	fadingout_time = previous_track != nullptr ? previous_track->ms_after() : 0;
 }
 
 void play_track(unsigned int i)
