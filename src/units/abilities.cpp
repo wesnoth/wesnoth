@@ -269,10 +269,9 @@ namespace {
 	 */
 	bool add_ability_tooltip(const config::any_child &ab, unit_race::GENDER gender, std::vector<std::tuple<std::string, t_string,t_string,t_string>>& res, bool active)
 	{
-		const t_string& name =
-			gender_value(ab.cfg, gender, "name", "female_name", "name").t_str();
-
 		if (active) {
+			const t_string& name = gender_value(ab.cfg, gender, "name", "female_name", "name").t_str();
+
 			if (!name.empty()) {
 				res.emplace_back(
 						ab.cfg["id"],
