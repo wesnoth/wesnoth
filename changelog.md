@@ -17,8 +17,10 @@
      * S17a: prevent time over defeat if player chooses to defeat remaining saurians
  ### Language and i18n
    * Updated translations: Dutch
+ ### WML engine
+   * Fixed [music] ms_after= affecting the previous track instead of the intended one
  ### Miscellaneous and bug fixes
-     * Update various references of mermen to merfolk or mer
+   * Update various references of mermen to merfolk or mer
 
 ## Version 1.14.7
  ### Campaigns
