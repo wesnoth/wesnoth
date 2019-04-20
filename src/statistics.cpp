@@ -654,7 +654,7 @@ void clear_current_scenario()
 void reset_current_scenario()
 {
 	assert(!master_stats.empty());
-	master_stats.back().team_stats = {};
+	master_stats.back().team_stats = team_stats_t{};
 	mid_scenario = false;
 }
 
