@@ -134,6 +134,9 @@
      * S10: add dialogue on victory
    * The Rise of Wesnoth:
      * S17a: prevent time over defeat if player chooses to defeat remaining saurians
+   * Under the Burning Suns:
+     * Various bugfixes (objectives, allied vision, unit spawns, event firing)
+     * Add additional animations to cutscenes and events
  ### Miscellaneous and bug fixes
      * Update various references of mermen to merfolk or mer
 
