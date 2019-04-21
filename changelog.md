@@ -17,6 +17,7 @@
      * S17a: prevent time over defeat if player chooses to defeat remaining saurians
    * Under the Burning Suns:
      * Various bugfixes (objectives, allied vision, unit spawns, event firing)
+     * Add additional animations to cutscenes and events
  ### Language and i18n
    * Updated translations: Dutch
  ### WML engine
