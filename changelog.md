@@ -18,6 +18,7 @@
    * Under the Burning Suns:
      * Various bugfixes (objectives, allied vision, unit spawns, event firing)
      * Add additional animations to cutscenes and events
+     * S2: add dehydration explanation to objectives
  ### Language and i18n
    * Updated translations: Dutch
  ### WML engine
