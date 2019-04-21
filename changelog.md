@@ -36,6 +36,8 @@
      * Unit type naming convention cleanup.
    * Under the Burning Suns:
      * Refactor code in various scenarios to be more readable
+     * Various bugfixes (objectives, allied vision, unit spawns, event firing)
+     * S8: change water to rise based on timer, not player movement
    * Deprecate AI Controller and remove it from mainline campaign scenarios
  ### Engine
    * Windows 7 is now the minimum supported Windows version.
