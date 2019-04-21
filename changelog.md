@@ -137,6 +137,7 @@
    * Under the Burning Suns:
      * Various bugfixes (objectives, allied vision, unit spawns, event firing)
      * Add additional animations to cutscenes and events
+     * S2: add dehydration explanation to objectives
  ### Miscellaneous and bug fixes
      * Update various references of mermen to merfolk or mer
 
