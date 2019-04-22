@@ -2,6 +2,7 @@
  ### Campaigns
    * Descent into Darkness:
      * Update maps for S1 and S6
+     * S11: reduce difficulty just after Malin turns into lich
    * Eastern Invasion:
      * S9: add dialogue on victory
    * Heir to the Throne:
