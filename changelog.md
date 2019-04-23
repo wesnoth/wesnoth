@@ -153,6 +153,8 @@
      * S2: add dehydration explanation to objectives
  ### Miscellaneous and bug fixes
      * Update various references of mermen to merfolk or mer
+ ### Units
+   * Add new Water Serpent portrait
 
 ## Version 1.14.6+dev
  ### Campaigns
