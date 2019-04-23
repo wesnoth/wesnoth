@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2019-01-29 14:17+0200\n"
+"PO-Revision-Date: 2019-04-18 00:31+0300\n"
 "Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail.com>\n"
 "Language-Team: \n"
 "Language: uk\n"
@@ -7579,6 +7579,8 @@ msgid "Defense: "
 msgstr "Захист: "
 
 #: src/reports.cpp:565
+#, fuzzy
+#| msgid "vision: "
 msgid "vision: "
 msgstr "бачення: "
 
@@ -8168,7 +8170,7 @@ msgstr "порядна"
 
 #: src/units/types.cpp:546 src/units/types.cpp:911
 msgid "female^neutral"
-msgstr "найтральна"
+msgstr "нейтральна"
 
 #: src/units/types.cpp:547 src/units/types.cpp:913
 msgid "female^liminal"
@@ -8321,7 +8323,9 @@ msgstr "Параметри планувальника"
 #~ msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
 #~ msgstr "<i>― Сер Геррік Вестінський, 607 рік Е.В.</i>"
 
-#~ msgid "an advancement choice"
+#, fuzzy
+#~| msgid "an advancement choice"
+#~ msgid "waiting for^an advancement choice"
 #~ msgstr "вибір підвищення"
 
 #~ msgid "scenario_abbreviation^S"
@@ -8339,11 +8343,31 @@ msgstr "Параметри планувальника"
 #~ msgid "time limit^none"
 #~ msgstr "немає"
 
+#, fuzzy
+#~| msgid "The nickname ‘$nick’ is banned on this server’s forums."
+#~ msgid ""
+#~ "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
+#~ msgstr "Нік '$nick' заблокований на форумі цього серверу."
+
 #~ msgid "The nickname ‘$nick’ is banned on this server’s forums."
 #~ msgstr "Нік '$nick' заблокований на форумі цього серверу."
 
+#, fuzzy
+#~| msgid "Your IP address is banned on this server’s forums."
+#~ msgid "Your IP address is banned on this server’s forums for $duration|."
+#~ msgstr "Ваша IP адреса заблокована на форумі цього серверу."
+
 #~ msgid "Your IP address is banned on this server’s forums."
 #~ msgstr "Ваша IP адреса заблокована на форумі цього серверу."
+
+#, fuzzy
+#~| msgid ""
+#~| "The email address for the nickname ‘$nick’ is banned on this server’s "
+#~| "forums."
+#~ msgid ""
+#~ "The email address for the nickname ‘$nick’ is banned on this server’s "
+#~ "forums for $duration|."
+#~ msgstr "E-mail адреса для ніку '$nick' заблокована на форумі цього серверу."
 
 #~ msgid ""
 #~ "The email address for the nickname ‘$nick’ is banned on this server’s "
@@ -8362,6 +8386,11 @@ msgstr "Параметри планувальника"
 #~ msgid "Alignment:"
 #~ msgstr "Тип:"
 
+#, fuzzy
+#~| msgid "No unit recalled"
+#~ msgid "No unit recruited"
+#~ msgstr "Немає бійців для заклику"
+
 #~ msgid "No unit recalled"
 #~ msgstr "Немає бійців для заклику"
 
@@ -8374,11 +8403,25 @@ msgstr "Параметри планувальника"
 #~ msgid "Side '$side' controller is now controlled by: human."
 #~ msgstr "Сторона '$side' тепер контролюється: людиною."
 
+#~ msgid "Side:"
+#~ msgstr "Сторона:"
+
 #~ msgid "Advancements:"
 #~ msgstr "Підвищення:"
 
+#, fuzzy
+#~| msgid "Warning: "
+#~ msgid "jamming:"
+#~ msgstr "Попередження: "
+
 #~ msgid "weapon^None"
 #~ msgstr "Немає"
+
+#~ msgid "Time of day schedule:"
+#~ msgstr "Розклад часу доби:"
+
+#~ msgid "Time of day:"
+#~ msgstr "Час доби:"
 
 #~ msgid "Battery"
 #~ msgstr "Акумулятор"
@@ -9109,11 +9152,6 @@ msgstr "Параметри планувальника"
 #~ msgstr[0] "ходи"
 #~ msgstr[1] "ходи"
 #~ msgstr[2] "ходи"
-
-#, fuzzy
-#~| msgid "Warning: "
-#~ msgid "jamming"
-#~ msgstr "Попередження: "
 
 #~ msgid "XP to advance"
 #~ msgstr "ДВ для поліпшення"
