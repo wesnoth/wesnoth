@@ -69,6 +69,7 @@
    * Saurian warriors are now female. (issue #3392)
    * Giant Scorpion now has 20% resistance to arcane and 0% to all other resists
    * Added Sand Scuttler variation to the Giant Scorpion with same resists as original unit
+   * Move Fire Dragon portrait from TRoW and SoF to core
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a special location ID
