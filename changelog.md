@@ -126,6 +126,8 @@
      * S9: add dialogue on victory
    * Heir to the Throne:
      * Remove 'Princess' as a direct address
+   * Legend of Wesmere:
+     * S23: Landar's normal death dialogue now (properly) not used
    * Northern Rebirth:
      * Remove 'Princess' as a direct address
    * Sceptre of Fire:
