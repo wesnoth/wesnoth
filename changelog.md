@@ -23,7 +23,7 @@
      * Add additional animations to cutscenes and events
      * S2: add dehydration explanation to objectives
  ### Language and i18n
-   * Updated translations: Dutch
+   * Updated translations: Dutch, Ukrainian
  ### WML engine
    * Fixed [music] ms_after= affecting the previous track instead of the intended one
  ### Miscellaneous and bug fixes
