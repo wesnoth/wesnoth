@@ -137,6 +137,8 @@
      * S10: add dialogue on victory
    * The Rise of Wesnoth:
      * S17a: prevent time over defeat if player chooses to defeat remaining saurians
+   * The South Guard:
+     * S8b: fixed bug with shifted ToD schedules near campfires
    * Under the Burning Suns:
      * Various bugfixes (objectives, allied vision, unit spawns, event firing)
      * Add additional animations to cutscenes and events
