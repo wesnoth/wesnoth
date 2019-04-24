@@ -1,4 +1,4 @@
-## Version 1.14.7+dev
+## Version 1.14.8+dev
  ### Campaigns
    * Descent into Darkness:
      * Update maps for S1 and S6
@@ -30,6 +30,9 @@
    * Fixed [music] ms_after= affecting the previous track instead of the intended one
  ### Miscellaneous and bug fixes
    * Update various references of mermen to merfolk or mer
+
+## Version 1.14.8
+ * Skipped due to needed to reupload the a broken 1.14.7 macOS App Store package as 1.14.8
 
 ## Version 1.14.7
  ### Campaigns
