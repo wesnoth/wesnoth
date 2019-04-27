@@ -34,6 +34,10 @@
    * Secrets of the Ancients:
      * Added ability to recruit different kinds of walking corpses during the campaign.
      * Unit type naming convention cleanup.
+   * The Hammer of Thursagan:
+     * Removed scenarios 4 (Troll Bridge), 5 (Invaders), and 7 (Mages and Drakes)
+     * Reworked scenario 8 (Fear) and rebalanced other scenarios
+     * Added new character and updated some dialogue
    * Under the Burning Suns:
      * Refactor code in various scenarios to be more readable
      * Various bugfixes (objectives, allied vision, unit spawns, event firing)
