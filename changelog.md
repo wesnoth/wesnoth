@@ -19,6 +19,8 @@
    * The Rise of Wesnoth:
      * S17a: prevent time over defeat if player chooses to defeat remaining saurians
    * The South Guard:
+     * S1: create Sir Gerrick if player skips scenario with debug
+     * S6b: create Urza Afalas if player skips S5 with debug     
      * S8b: fixed bug with shifted ToD schedules near campfires
    * Under the Burning Suns:
      * Various bugfixes (objectives, allied vision, unit spawns, event firing)
