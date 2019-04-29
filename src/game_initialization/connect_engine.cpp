@@ -1291,7 +1291,7 @@ void side_engine::update_controller_options()
 
 	add_controller_option(CNTR_LOCAL, _("Local Player"), "human");
 	add_controller_option(CNTR_COMPUTER, _("Computer Player"), "ai");
-	add_controller_option(CNTR_EMPTY, _("Empty"), "null");
+	add_controller_option(CNTR_EMPTY, _("Nobody"), "null");
 
 	if(!reserved_for_.empty()) {
 		add_controller_option(CNTR_RESERVED, _("Reserved"), "human");
