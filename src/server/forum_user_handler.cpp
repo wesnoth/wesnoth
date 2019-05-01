@@ -363,7 +363,9 @@ inline T fuh::prepared_statement(const std::string& sql, Args&&... args)
 		WRN_UH << "caught sql error: " << e.message << std::endl;
 		WRN_UH << "trying to reconnect and retry..." << std::endl;
 		//Try to reconnect and execute query again
-		if(!mysql_real_connect(conn, db_host_.c_str(),  db_user_.c_str(), db_password_.c_str(), db_name_.c_str(), 0, nullptr, 0)) {
+		mysql_close(conn);
+		conn = mysql_init(nullptr);
+		if(!conn || !mysql_real_connect(conn, db_host_.c_str(),  db_user_.c_str(), db_password_.c_str(), db_name_.c_str(), 0, nullptr, 0)) {
 			ERR_UH << "Could not connect to database: " << mysql_errno(conn) << ": " << mysql_error(conn) << std::endl;
 			throw sql_error("Error querying database.");
 		}
