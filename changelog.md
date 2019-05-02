@@ -33,6 +33,8 @@
    * Fixed [music] ms_after= affecting the previous track instead of the intended one
  ### Miscellaneous and bug fixes
    * Update various references of mermen to merfolk or mer
+ ### Units
+   * Add new Water Serpent portrait
 
 ## Version 1.14.8
  * Skipped due to needed to reupload the a broken 1.14.7 macOS App Store package as 1.14.8
