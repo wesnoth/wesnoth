@@ -69,6 +69,8 @@
    * Saurian warriors are now female. (issue #3392)
    * Giant Scorpion now has 20% resistance to arcane and 0% to all other resists
    * Added Sand Scuttler variation to the Giant Scorpion with same resists as original unit
+   * Move Fire Dragon portrait from TRoW and SoF to core
+   * Move Orcish Leader portraits to Orcish Ruler and use grunt variation portrait for Leader
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a special location ID
@@ -152,6 +154,8 @@
      * S2: add dehydration explanation to objectives
  ### Miscellaneous and bug fixes
      * Update various references of mermen to merfolk or mer
+ ### Units
+   * Add new Water Serpent portrait
 
 ## Version 1.14.6+dev
  ### Campaigns
