@@ -24,8 +24,8 @@
      * S17a: prevent time over defeat if player chooses to defeat remaining saurians
    * The South Guard:
      * S1: create Sir Gerrick if player skips scenario with debug
-     * S6b: create Urza Afalas if player skips S5 with debug     
-     * S6b: kill elves on side 1 if player got to this scenario with debug   
+     * S6b: create Urza Afalas if player skips S5 with debug
+     * S6b: kill elves on side 1 if player got to this scenario with debug
      * S8b: fixed bug with shifted ToD schedules near campfires
    * Under the Burning Suns:
      * Various bugfixes (objectives, allied vision, unit spawns, event firing)
@@ -986,8 +986,8 @@
    * Add wesnoth.format_conjunct_list and wesnoth.format_disjunct_list.
    * New global "wml" table groups together all the functions for working
      with WML tables, and its subtable "wml.variable" groups functions
-	 for working with WML variables. Most of these are functions previously
-	 found only in helper.lua; they no longer need a require to use.
+     for working with WML variables. Most of these are functions previously
+     found only in helper.lua; they no longer need a require to use.
    * Warnings for using deprecated Lua functions now only appear in debug mode.
    * wesnoth.game_config is now accessible in application and mapgen kernels,
      though some of its contents are missing.
@@ -1051,8 +1051,8 @@
    * Fix a crash when attempting to call a non-existent function
    * The following previously FormulaAI-exclusive functions are now also
      available in filter formulas (SUF, SLF, SSF, SWF):
-	 adjacent_locs, location_in_radius, get_unit_type, unit_at, defense_on,
-	 chance_to_hit, movement_cost
+     adjacent_locs, location_in_radius, get_unit_type, unit_at, defense_on,
+     chance_to_hit, movement_cost
    * New builtin functions for manipulating locations
      (available to all formulas):
      adjacent_locs, are_adjacent, relative_dir, direction_from,
@@ -1066,7 +1066,7 @@
      parameters.
    * New [credits_group] tag can be used by non-campaign addons to group several
      [about] tags under a single header. This is a toplevel tag, not a subtag
-	 of [era] or [modification].
+     of [era] or [modification].
    * An empty id key in SUF no longer matches all units;
      instead, it matches none.
    * Fix [primary_attack] and [secondary_attack] in [kill]
