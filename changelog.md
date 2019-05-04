@@ -123,9 +123,9 @@
    * The sidebar, recall dialog, etc now show attack's range (melee/ranged) and
      damage type (arcane/blade/cold/...) using icons. (PR #3732, #3740)
 
-## Version 1.14.7+dev
+## Version 1.14.8+dev
  ### Campaigns
-   * Dark Water:
+   * Dead Water:
      * S3: modify starting dialogue
    * Descent into Darkness:
      * Update maps for S1 and S6
@@ -149,8 +149,8 @@
      * S17a: prevent time over defeat if player chooses to defeat remaining saurians
    * The South Guard:
      * S1: create Sir Gerrick if player skips scenario with debug
-     * S6b: create Urza Afalas if player skips S5 with debug     
-     * S6b: kill elves on side 1 if player got to this scenario with debug   
+     * S6b: create Urza Afalas if player skips S5 with debug
+     * S6b: kill elves on side 1 if player got to this scenario with debug
      * S8b: fixed bug with shifted ToD schedules near campfires
    * Under the Burning Suns:
      * Various bugfixes (objectives, allied vision, unit spawns, event firing)
@@ -160,6 +160,9 @@
      * Update various references of mermen to merfolk or mer
  ### Units
    * Add new Water Serpent portrait
+
+## Version 1.14.8
+ * Skipped due to needed to reupload the a broken 1.14.7 macOS App Store package as 1.14.8
 
 ## Version 1.14.6+dev
  ### Campaigns
@@ -215,7 +218,7 @@
  ### Units
    * Updated descriptions for Goblin Knight and Wolf Rider
    * Add new descriptions for Quenoth faction
-   
+
 ## Version 1.14.5+dev
  ### AI
    * Fixed crash when the AI simulates a fight between two units which can slow but aren't yet slowed, then
@@ -1084,8 +1087,8 @@
    * Add wesnoth.format_conjunct_list and wesnoth.format_disjunct_list.
    * New global "wml" table groups together all the functions for working
      with WML tables, and its subtable "wml.variable" groups functions
-	 for working with WML variables. Most of these are functions previously
-	 found only in helper.lua; they no longer need a require to use.
+     for working with WML variables. Most of these are functions previously
+     found only in helper.lua; they no longer need a require to use.
    * Warnings for using deprecated Lua functions now only appear in debug mode.
    * wesnoth.game_config is now accessible in application and mapgen kernels,
      though some of its contents are missing.
@@ -1149,8 +1152,8 @@
    * Fix a crash when attempting to call a non-existent function
    * The following previously FormulaAI-exclusive functions are now also
      available in filter formulas (SUF, SLF, SSF, SWF):
-	 adjacent_locs, location_in_radius, get_unit_type, unit_at, defense_on,
-	 chance_to_hit, movement_cost
+     adjacent_locs, location_in_radius, get_unit_type, unit_at, defense_on,
+     chance_to_hit, movement_cost
    * New builtin functions for manipulating locations
      (available to all formulas):
      adjacent_locs, are_adjacent, relative_dir, direction_from,
@@ -1164,7 +1167,7 @@
      parameters.
    * New [credits_group] tag can be used by non-campaign addons to group several
      [about] tags under a single header. This is a toplevel tag, not a subtag
-	 of [era] or [modification].
+     of [era] or [modification].
    * An empty id key in SUF no longer matches all units;
      instead, it matches none.
    * Fix [primary_attack] and [secondary_attack] in [kill]
