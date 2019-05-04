@@ -1,5 +1,7 @@
 ## Version 1.14.8+dev
  ### Campaigns
+    * Dead Water:
+     * S3: modify starting dialogue
    * Descent into Darkness:
      * Update maps for S1 and S6
      * S11: reduce difficulty just after Malin turns into lich
@@ -17,6 +19,8 @@
    * Son of the Black Eye:
      * S10: add dialogue on victory
    * The Rise of Wesnoth:
+     * Tweaked dialogue in various scenarios
+     * Fixed number of scenarios in campaign listing
      * S17a: prevent time over defeat if player chooses to defeat remaining saurians
    * The South Guard:
      * S1: create Sir Gerrick if player skips scenario with debug
