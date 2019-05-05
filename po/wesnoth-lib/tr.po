@@ -3,20 +3,20 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # ihsan Haluk AKIN <ihsan_akin@yahoo.com>, 2005, 2006.
-# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, 2009.
+# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, ... 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-03-11 16:09+0300\n"
-"PO-Revision-Date: 2019-04-23 18:30+0300\n"
+"PO-Revision-Date: 2019-05-03 00:51+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
-"Language-Team: Turkish <ceviri@belgeler.gen.tr>\n"
+"Language-Team: Turkish\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 1.8.11\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
@@ -252,8 +252,8 @@ msgid ""
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgstr ""
-"<italic>text='Çöller'</italic> İçeriği küçük kum çukurları veya sahillerden "
-"biraz daha farklıdır ama oyuna göre aynıdırlar. bkz: <ref>dst='.."
+"<italic>text='Çöller'</italic> İçerik olarak küçük kum çukurları veya "
+"sahillerden biraz daha farklıdır ama oyuna göre aynıdırlar. bkz: <ref>dst='.."
 "terrain_sand' text='kum'</ref>."
 
 #. [terrain_type]: id=sand_beach
@@ -279,9 +279,9 @@ msgid ""
 "Most units receive 20 to 40% defense in sand."
 msgstr ""
 "<italic>text='kum'</italic>'un dengesizliği çoğu birimin geçmesini "
-"zorlaştırıp saldırılara açık kalmalarına sebep oluyor. Öte yandan "
-"sürüngenvari ırkların geniş ayakları veya yılan gibi vücutları kumu onlar "
-"için hareket edilmesi kolay bir arazi kılıyor..\n"
+"zorlaştırıp saldırılara açık kalmalarına sebep olur. Öte yandan sürüngenvari "
+"ırkların geniş ayakları veya yılan gibi vücutları kumu onlar için hareket "
+"edilmesi kolay bir arazi kılar..\n"
 "\n"
 "Çoğu birim kumda %20 ila %40 arası savunma alır."
 
@@ -677,7 +677,7 @@ msgstr "Aydınlık Mantar Korusu"
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:961 data/core/terrain.cfg:962
 msgid "Rockbound Cave"
-msgstr "Taşlık Mağara"
+msgstr "Kayalık Mağara"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:967
@@ -706,7 +706,7 @@ msgstr ""
 "sahiptirler.\n"
 "\n"
 "Bazen mağaralar <ref>dst='terrain_illuminated_cave' text='Aydınlatılmış'</"
-"ref>."
+"ref> olur."
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -860,7 +860,7 @@ msgstr "Temiz Taş Duvar"
 #: data/core/terrain.cfg:1275 data/core/terrain.cfg:1332
 #: data/core/terrain.cfg:1344 data/core/terrain.cfg:1357
 msgid "Gate"
-msgstr "Medhal"
+msgstr "Demir Kapı"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -868,7 +868,7 @@ msgstr "Medhal"
 #: data/core/terrain.cfg:1249 data/core/terrain.cfg:1262
 #: data/core/terrain.cfg:1276
 msgid "Rusty Gate"
-msgstr "Paslı Medhal"
+msgstr "Paslı Demir Kapı"
 
 #. [terrain_type]: id=portal_door_wooden_sw
 #. [terrain_type]: id=portal_door_wooden_se
@@ -896,7 +896,7 @@ msgstr "Tahta Kapı"
 #: data/core/terrain.cfg:1333 data/core/terrain.cfg:1345
 #: data/core/terrain.cfg:1358
 msgid "Open Rusty Gate"
-msgstr "Açık Paslı Medhal"
+msgstr "Açık Paslı Demir Kapı"
 
 #. [terrain_type]: id=portal_door_wooden_open_sw
 #. [terrain_type]: id=portal_door_wooden_open_se
@@ -1119,7 +1119,6 @@ msgstr "Deniz İnsanı Köyü"
 
 #. [terrain_type]: id=mermen-village
 #: data/core/terrain.cfg:1828
-#, fuzzy
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
 "nagas. While water-dwelling creatures are at home here, land-dwellers have a "
@@ -1136,8 +1135,8 @@ msgstr ""
 "burada hareket etmek ve savunmak pek zordur. Ancak Diğer her köy gibi bu "
 "yapıtlar yaralarını sarmak için bütün canlılara açıktır. Köyde kalan her "
 "birim her el 8 can elde eder veya zehiri tedavi olur.\n"
-"\v\n"
-"\vDeniz İnsanları var Nagaların batmış köylerde %60 savunması varken genelde "
+"\n"
+"Deniz İnsanları ve Nagaların batmış köylerde %60 savunması varken genelde "
 "kara birimlerinin savunması azdır."
 
 #. [terrain_type]: id=village_overlay
@@ -1613,8 +1612,8 @@ msgstr ""
 "<ref>dst='terrain_illuminated_cave' text='Aydınlatılmış'</ref> olur\n"
 "\n"
 "Yeraltı dünyasının bazı kısımları yeryüzünden derin karanlığa ışıldayan ışık "
-"tarafından aydınlatılır. Bu durum adil birimlere ek saldırı veriyor ve "
-"kaypak birimlerinkini alıyor. Diğer meselelerde bu arazi türü diğer mağara "
+"tarafından aydınlatılır. Bu durum adil birimlere ek saldırı verir ve kaypak "
+"birimlerinkini ise alır. Diğer meselelerde bu arazi türü diğer mağara "
 "arazileri ile aynıdır.\n"
 "\n"
 "Çoğu birim mağaralarda 20 ila %40 savunma alırken Cüceler %50 alır."
@@ -1658,12 +1657,12 @@ msgid ""
 msgstr ""
 "<italic> Text = ' Tepeler' </italic> koruma sağlayacak kadar çıkıntısı olan "
 "hafif engebeli herhangi bir araziyi temsil eder.\n"
-"Tepeler çoğu asker için geçmesi zordur. Cüce, Ork, ve Trollerin bu araziyle "
-"geçerken zorlanmayacak kadar aşikarlığı vardır. Süvariler bu arazide o kadar "
+"Tepeler çoğu asker için geçmesi zordur. Cüce, Ork, ve Trollerin bu araziden "
+"geçerken zorlanmayacak kadar aşinalığı vardır. Süvariler bu arazide o kadar "
 "zorlanır ki arazinin sağladığı savunma eki etkisiz kalır.\n"
 "\n"
 "Süvarilerin savunması %40'ta kalırken çoğu birimin tepelerde %50 savunması "
-"vardır. Cüceler tepelerde %60 savunma alırlar."
+"vardır. Cüceler tepelerde %60 savunma alır."
 
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:2791
@@ -1682,11 +1681,11 @@ msgstr ""
 "eder.\n"
 "Bataklıklar neredeyse herkesi yavaşlatıp savunma becerilerini azaltır. Buna "
 "bir istisna ise vücutları suda harekete alışmış herhangi bir ırk olabilir; "
-"bu ırklar bataklıkta tam hareket ve ek savunma alırlar. Bataklığın yerli "
+"bu ırklar bataklıkta tam hareket ve ek savunma alır. Bataklığın yerli "
 "yaratıkları da bu araziyi koruma olarak kullanmakta ustadır.\n"
 "\n"
-"Çoğu birim bataklıklarda %30 savunma alırlar. Su İnsanları, Naga ve "
-"Sürüngenler ise %60 savunma alırlar."
+"Çoğu birim bataklıklarda %30 savunma alır. Su İnsanları, Naga ve Sürüngenler "
+"ise %60 savunma alır."
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:2804
@@ -1707,9 +1706,9 @@ msgstr ""
 "neredeyse herkesi yavaşlatıp saldırılara açık bırakır. Cüceler, su "
 "kafalarına geliyor diye daha çok zorluk çekerler. Buna tek istisnalar "
 "vücutları suda hareket için şekillenmiş ırklardır. Bu ırklar fazladan "
-"savunma da alırlar.\n"
+"savunma da alır.\n"
 "\n"
-"Çoğu birim sığ suda 20-%30 savunma alırken hem Nagalar hem Su İnsanları %60 "
+"Çoğu birim sığ suda %20-%30 savunma alırken hem Nagalar hem Su İnsanları %60 "
 "alır."
 
 #. [terrain_type]: id=castle
@@ -1726,9 +1725,9 @@ msgid ""
 msgstr ""
 "<italic>text='Kaleler'</italic> herhangi bir kalıcı tahkimata denir.\n"
 "Neredeyse bütün birimler kalede dururken yüksek bir ek savunma alır ve tam "
-"hareket kabiliyetine sahiptirler. Birimleri kaleye yerleştirmek kalenin "
-"savunma kapasitesini ortaya çıkarır. Her kale altıgeninde bir birim olmazsa "
-"bir düşman kolayca kaleye sızıp içeridekilerin aldığı ek savunmaya sahip "
+"hareket kabiliyetine sahiptir. Birimleri kaleye yerleştirmek kalenin savunma "
+"kapasitesini ortaya çıkarır. Her kale altıgeninde bir birim olmazsa bir "
+"düşman kolayca kaleye sızıp içeridekilerin aldığı ek savunmaya sahip "
 "olabilir.\n"
 "\n"
 "Çoğu birimin kalede %60 savunması vardır."
@@ -1748,8 +1747,8 @@ msgid ""
 msgstr ""
 "<italic>text='Dağlar'</italic> Birimlerin hareket etmek için engelleri "
 "tırmanmasını gerektirecek kadar dik yerlerdir.\n"
-"Bu doğalarından ötürü çoğu asker için güzel bir ek savunma verirler, ancak "
-"aynı zamanda aralarından geçmeyi zorlaştırırlar. Elf süvarileri ve Goblin "
+"Bu doğalarından ötürü çoğu asker için güzel bir ek savunma verir, ancak aynı "
+"zamanda aralarından geçmeyi zorlaştırırlar. Elf süvarileri ve Goblin "
 "Binicileri istisna olmak kaydıyla, çoğu süvari dağlı araziye adım bile "
 "atamaz. Hem Cüceler hem de Troller dağların yerlisidir, onlar için bu "
 "arazide hareket pek kolaydır.\n"
@@ -1772,7 +1771,7 @@ msgstr ""
 "mekanıdır.\n"
 "\n"
 "Hem Su İnsanları hem de Nagalar derin suda %50 savunma ve tam hareket "
-"sahibidirler."
+"sahibidir."
 
 #. [terrain_type]: id=flat
 #: data/core/terrain.cfg:2856 data/core/terrain.cfg:2857
@@ -1794,10 +1793,10 @@ msgstr ""
 "<italic>text='Çayır'</italic> Gerek otlatmalık, gerek ekip biçilmiş, gerekse "
 "el değmemiş açık ovaları temsil eder.\n"
 "Açık arazi olduğu için çayırlar hareket etmesi kolay ama savunması zordur. "
-"Genelde çayırlarda iyi savaşan birimler ya süvaridir ya a açık alanı iyi "
+"Genelde çayırlarda iyi savaşan birimler ya süvaridir ya da açık alanı iyi "
 "kullanabilen çevik birimlerdir.\n"
 "\n"
-"Çoğu birim çayırda 30 ila %40 savunma alır."
+"Çoğu birim çayırda %30 ila %40 savunma alır."
 
 #. [terrain_type]: id=forest
 #: data/core/terrain.cfg:2871
@@ -1827,7 +1826,7 @@ msgstr ""
 "bile yabancılık çektikleri bu araziden savunma alamazlar.\n"
 "\n"
 "Çoğu birim ormanda %50 savunma alırken süvariler %30 ile sınırlıdır. Öte "
-"yandan Elfler, süvarileri bile, 60 ile %70 savunma alır. Cüceler genelde "
+"yandan Elfler, süvarileri bile, %60 ile %70 savunma alır. Cüceler genelde "
 "sadece %30 savunma alır."
 
 #. [terrain_type]: id=frozen
@@ -1850,9 +1849,9 @@ msgstr ""
 "temsil eder.\n"
 "Çoğu birim üzerinde daha yavaş hareket eder ve kendilerini daha zor savunur. "
 "Yüzen birimler ve hatta su altında nefes alabilen birimler bile buzun "
-"altında yüzemezler.\n"
+"altında yüzemez.\n"
 "\n"
-"Çoğu birimin donmuş arazide 20 ila %40 savunması vardır."
+"Çoğu birimin donmuş arazide %20 ila %40 savunması vardır."
 
 #. [terrain_type]: id=village
 #: data/core/terrain.cfg:2897
@@ -1876,7 +1875,7 @@ msgstr ""
 "sayede köyde konuşlanmış herhangi bir birimin canının her el 8 puan "
 "artmasını veya zehirden iyileşmesini sağlar.\n"
 "\n"
-"Çoğu birimin köyde 50 ila %60 savunması vardır, lakin süvarilerin %40 "
+"Çoğu birimin köyde %50 ila %60 savunması vardır, lakin süvarilerin %40 "
 "savunması vardır."
 
 #. [terrain_type]: id=impassable
@@ -1895,7 +1894,7 @@ msgid ""
 msgstr ""
 "En iradeli yolcuların bile geçemeyeceği engellerden bazıları taş duvarlar ve "
 "tepesi dumanlı dik dağlardır. Böylesine devasa boyutlardaki dağların "
-"tepesine uçan birimler bile geçemez ve en azgın Trol bile kalın taş "
+"tepesini uçan birimler bile geçemez ve en azgın Trol bile kalın taş "
 "duvarları kıramaz."
 
 #. [terrain_type]: id=unwalkable
@@ -1913,7 +1912,7 @@ msgid ""
 msgstr ""
 "<italic>text='Yürünmez Arazi'</italic> İsmin belirttiği gibi yürüyerek "
 "geçilemeyecek kanyon ve boğazları temsil eder. Kanyonlar yolcuların geçmesi "
-"günler alacak duvar gibi uçurumlarından dolayı bu araziye girer. Oyun göre "
+"günler alacak duvar gibi uçurumlarından dolayı bu araziye girer. Oyuna göre "
 "sadece uçabilen birimler bu araziden geçebilir."
 
 #. [terrain_type]: id=rails
@@ -2057,7 +2056,7 @@ msgstr "Eklentileri indirmek üzere sunucuya bağlanacaksınız."
 #. [label]
 #: data/gui/window/addon_connect.cfg:89 data/gui/window/mp_connect.cfg:90
 msgid "Server:"
-msgstr "Sunucu"
+msgstr "Sunucu:"
 
 #. [button]: id=remove_addons
 #. [label]
@@ -2183,7 +2182,7 @@ msgstr "Gereksinimler:"
 #. [label]: id=dependencies
 #: data/gui/window/addon_manager.cfg:523 src/gui/dialogs/addon/manager.cpp:888
 msgid "addon_dependencies^None"
-msgstr "Hiç"
+msgstr "Yok"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:543
@@ -2194,7 +2193,7 @@ msgstr "Çeviriler:"
 #. [label]: id=translations
 #: data/gui/window/addon_manager.cfg:557 src/gui/dialogs/addon/manager.cpp:902
 msgid "translations^None"
-msgstr "Hiç"
+msgstr "Yok"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:575
@@ -2224,17 +2223,17 @@ msgstr "Git"
 #. [button]: id=url_go
 #: data/gui/window/addon_manager.cfg:648
 msgid "Visit this URL with a web browser"
-msgstr "Bu URL'yi bir web tarayıcısında aç"
+msgstr "Bu URL'yi bir tarayıcıda aç"
 
 #. [text_box]: id=filter
 #: data/gui/window/addon_manager.cfg:694
 msgid "Filters on addon description, version, type or author."
-msgstr "Eklenti açıklaması, sürümü, türü veya yazarı ile ilgili filtreler."
+msgstr "Eklenti açıklaması, sürümü, türü veya yazarı ile ilgili süzgeçler."
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:707
 msgid "State:"
-msgstr "Hal:"
+msgstr "Durum:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:760
@@ -2244,7 +2243,7 @@ msgstr "Düzen:"
 #. [label]
 #: data/gui/window/addon_manager.cfg:846 data/gui/window/addon_manager.cfg:1021
 msgid "Add-ons Manager"
-msgstr "Eklentiler Yöneticisi"
+msgstr "Eklenti Yöneticisi"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
@@ -2289,7 +2288,7 @@ msgstr "xBRZ + doğrusal"
 
 #: data/gui/window/advanced_graphics_options.cfg:43
 msgid "xBRZ followed by Bilinear interpolation"
-msgstr "Önce xBRZ sonra bilineer interpolasyon"
+msgstr "Önce xBRZ sonra çift doğrusal ara değerleme"
 
 #: data/gui/window/advanced_graphics_options.cfg:44
 msgid "xBRZ + NN"
@@ -2301,7 +2300,7 @@ msgstr "Önce xBRZ sonra En Yakın Komşu (önerilen)"
 
 #: data/gui/window/advanced_graphics_options.cfg:45
 msgid "Bilinear interpolation scaling"
-msgstr "çift doğrusal ara değerleme ölçeklemesi"
+msgstr "Çift doğrusal ara değerleme ölçeklemesi"
 
 #: data/gui/window/advanced_graphics_options.cfg:45
 msgid "Linear"
@@ -2315,7 +2314,7 @@ msgstr "Gelişmiş Grafik Seçenekler"
 #. [label]
 #: data/gui/window/advanced_graphics_options.cfg:107
 msgid "Images will be scaled using the following algorithms:"
-msgstr "Resimler aşağıdaki algoritmalar ile ölçeklendirilecek:"
+msgstr "Resimler aşağıdaki algoritmalarla ölçeklendirilecek:"
 
 #. [column]
 #: data/gui/window/advanced_graphics_options.cfg:128
@@ -2335,7 +2334,7 @@ msgstr "Diğer herşey"
 #. [column]
 #: data/gui/window/advanced_graphics_options.cfg:139
 msgid "Scaled to hex"
-msgstr "altıgene ölçeklendi"
+msgstr "Altıgene ölçeklendi"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -2380,12 +2379,12 @@ msgstr "Günün vakti düzenleyicisi"
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:85
 msgid "Leadership bonus"
-msgstr "Önderlik ilavesi"
+msgstr "Liderlik ödülü"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:86
 msgid "Slowed penalty"
-msgstr "Yavaşlatıldı etkisi"
+msgstr "Yavaşlama cezası"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:90
@@ -2405,7 +2404,7 @@ msgstr "Zarar almadan çıkma ihtimali"
 #. [label]
 #: data/gui/window/attack_predictions.cfg:185
 msgid "Expected Battle Result (HP)"
-msgstr "Savaş sonucu tahmini (YP)"
+msgstr "Beklenen Çarpışma Sonucu  (YP)"
 
 #. [label]: id=title
 #: data/gui/window/attack_predictions.cfg:249
@@ -2445,19 +2444,19 @@ msgstr "Tarihler"
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:257
 msgid "Sort in approximate chronological order of story events"
-msgstr "Hikaye olaylarının ortalama zaman dizinine göre diz"
+msgstr "Hikaye olaylarının yaklaşık zamanına göre diz"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:293
 #: src/gui/dialogs/multiplayer/lobby.cpp:456
 msgid "Modifications"
-msgstr "Tadiller"
+msgstr "Değişiklikler"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:426
 msgid "Save random seed"
-msgstr "Rastgele mebdesini kaydet"
+msgstr "Rastgele dizesini kaydet"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:428
@@ -2582,7 +2581,7 @@ msgstr "Ad:"
 #. [label]
 #: data/gui/window/custom_tod.cfg:204
 msgid "ID:"
-msgstr "NO:"
+msgstr "Kimlik:"
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:285
@@ -2602,7 +2601,7 @@ msgstr "Ses:"
 #. [label]
 #: data/gui/window/custom_tod.cfg:316
 msgid "Lawful Bonus:"
-msgstr "Adil İlavesi:"
+msgstr "Adil Ödülü:"
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:339
@@ -2759,7 +2758,7 @@ msgstr "Rasgele başlama zamanı"
 #. [label]: id=title
 #: data/gui/window/editor_edit_side.cfg:60
 msgid "Side Setup"
-msgstr "Taraf Kurumu"
+msgstr "Taraf Kurulumu"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:83
@@ -2769,7 +2768,7 @@ msgstr "Sayı:"
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:111
 msgid "Team identifier:"
-msgstr "Takım Tanımlayıcısı:"
+msgstr "Takım tanımlayıcısı:"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:138
@@ -2779,7 +2778,7 @@ msgstr "Takım ismi:"
 #. [toggle_button]: id=no_leader
 #: data/gui/window/editor_edit_side.cfg:192
 msgid "No leader"
-msgstr "Öndersiz"
+msgstr "Lidersiz"
 
 #. [toggle_button]: id=fog
 #: data/gui/window/editor_edit_side.cfg:208
@@ -2863,7 +2862,7 @@ msgstr "Harita Üret"
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:58
 msgid "Choose a map generator:"
-msgstr "Harita Üreteci seçin:"
+msgstr "Harita üreteci seçin:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=settings
@@ -2877,7 +2876,7 @@ msgstr "Ayarlar"
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:161
 msgid "Numerical seed:"
-msgstr "Sayısal Mebde"
+msgstr "Sayısal dize:"
 
 #. [button]: id=ok
 #: data/gui/window/editor_generate_map.cfg:202
@@ -2973,7 +2972,7 @@ msgstr "Yerler"
 #. [button]: id=add_bookmark
 #: data/gui/window/file_dialog.cfg:299
 msgid "Bookmarks the current folder"
-msgstr "Açık klasörü işaretler"
+msgstr "Açık dizini işaretler"
 
 #. [button]: id=remove_bookmark
 #: data/gui/window/file_dialog.cfg:312
@@ -3213,7 +3212,7 @@ msgstr "Kayıt zaten var. Üstüne yazmak ister misiniz?"
 #: data/gui/window/game_stats.cfg:35 data/gui/window/game_stats.cfg:283
 #: src/hotkey/hotkey_command.cpp:84
 msgid "Leader"
-msgstr "Önder"
+msgstr "Lider"
 
 #. [toggle_button]: id=sort_1
 #: data/gui/window/game_stats.cfg:49
@@ -3375,7 +3374,7 @@ msgstr "Çalışma zamanı sürümü"
 #: data/gui/window/game_version.cfg:293
 msgid ""
 "The following features were selected when building this version of Wesnoth:"
-msgstr "Aşağıdaki özellikler Wesnoth'un şu sürümü yapılırken seçildi:"
+msgstr "Aşağıdaki özellikler Wesnoth'un şu sürümü derlenirken seçildi:"
 
 #. [label]
 #: data/gui/window/game_version.cfg:447
@@ -3410,7 +3409,7 @@ msgstr "Tam raporu panoya kopyala"
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:94
 msgid "Gamestate Inspector"
-msgstr "Oyun durumu müfettişi"
+msgstr "Oyun durum denetmeni"
 
 #. [button]: id=copy
 #: data/gui/window/gamestate_inspector.cfg:336
@@ -3515,7 +3514,7 @@ msgstr "Oyunlar"
 #. [image]: id=needs_password
 #: data/gui/window/lobby_main.cfg:146
 msgid "Requires a password to join"
-msgstr "Katılmak için şifre gerekiyor"
+msgstr "Katılmak için parola gerekiyor"
 
 #. [widget]: id=tab_label
 #. [toggle_button]: id=filter_with_friends
@@ -3527,7 +3526,7 @@ msgstr "Arkadaşlar"
 #. [toggle_button]: id=filter_without_ignored
 #: data/gui/window/lobby_main.cfg:350
 msgid "No ignored"
-msgstr "Görmezden gelinen olmayan"
+msgstr "Gözardı yok"
 
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/window/lobby_main.cfg:362
@@ -3537,7 +3536,7 @@ msgstr "Boş yerler"
 #. [toggle_button]: id=filter_invert
 #: data/gui/window/lobby_main.cfg:373
 msgid "Invert filter"
-msgstr "Filtreyi tersine çevir"
+msgstr "Süzgeci tersine çevir"
 
 #. [button]: id=quit
 #: data/gui/window/lobby_main.cfg:390 data/gui/window/lobby_main.cfg:535
@@ -3590,7 +3589,7 @@ msgstr "Çabuk Tekrarlar"
 #. [option]
 #: data/gui/window/lobby_main.cfg:464 data/gui/window/lobby_main.cfg:617
 msgid "Skip quickly to the active turn when observing"
-msgstr "Gözlemlerken çabucak aktif tura geç"
+msgstr "Gözlemlerken çabucak oynanan ele geç"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:468 data/gui/window/lobby_main.cfg:621
@@ -3644,12 +3643,12 @@ msgstr "Yönetici kontrolleri"
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:173
 msgid "Kick / ban reason:"
-msgstr "Atılma / engellenme sebebi:"
+msgstr "Atılma / yasaklanma sebebi:"
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:198
 msgid "Ban time:"
-msgstr "Engellenme zamanı:"
+msgstr "Yasaklama zamanı:"
 
 #. [button]: id=check_status
 #: data/gui/window/lobby_player_info.cfg:238
@@ -3664,7 +3663,7 @@ msgstr "At"
 #. [button]: id=kick_ban
 #: data/gui/window/lobby_player_info.cfg:262
 msgid "Kick + Ban"
-msgstr "At + Engelle"
+msgstr "At + Yasakla"
 
 #. [label]
 #: data/gui/window/logging.cfg:93
@@ -3841,12 +3840,12 @@ msgstr "Yeni bir el başlayınca"
 #: data/gui/window/preferences/02_hotkeys.cfg:293
 #: data/gui/window/select_orb_colors.cfg:102
 msgid "Defaults"
-msgstr "Varsayılanlar"
+msgstr "Öntanımlılar"
 
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:235
 msgid "Reset all options to their default values"
-msgstr "Bütün ayarları varsayılan değerlere döndür"
+msgstr "Bütün ayarları öntanımlı değerlere döndür"
 
 #. [label]: id=nick_title
 #: data/gui/window/mp_change_control.cfg:75
@@ -3856,7 +3855,7 @@ msgstr "Takma ad"
 #. [label]
 #: data/gui/window/mp_change_control.cfg:140
 msgid "Change Control"
-msgstr "Kontrolü Değiştir"
+msgstr "Denetçiyi Değiştir"
 
 #. [label]
 #: data/gui/window/mp_connect.cfg:60 data/gui/window/mp_server_list.cfg:69
@@ -3881,12 +3880,12 @@ msgstr "Rastgele taraf eşleştirmeleri:"
 #. [label]
 #: data/gui/window/mp_create_game.cfg:156
 msgid "Allow for mirror matchups when random factions are chosen."
-msgstr "Rastgele taraflar seçilince aksetmeli eşleştirme olmasına izin ver."
+msgstr "Rastgele taraflar seçilince aynı tarafların eşleşmesine izin ver."
 
 #. [label]: id=mods_header
 #: data/gui/window/mp_create_game.cfg:203
 msgid "Modifications:"
-msgstr "Tadiller:"
+msgstr "Değişiklikler:"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/window/mp_create_game.cfg:313
@@ -3926,7 +3925,7 @@ msgstr "Köy Altını"
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:336
 msgid "The number of unit levels each village can support"
-msgstr "Her köyün kaç birim seviyesi destekleyebileceği"
+msgstr "Her köyün destekleyebileceği birim seviyesi"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:336
@@ -3951,12 +3950,12 @@ msgstr "Savaş Dumanı"
 #. [toggle_button]: id=fog
 #: data/gui/window/mp_create_game.cfg:373
 msgid "Enemy units cannot be seen unless they are in range of your units"
-msgstr "Düşman birimleri birimlerinin menzilinde değilse görünmez"
+msgstr "Düşman birimleri birimlerinizin menzilinde değilse görünmez"
 
 #. [toggle_button]: id=shroud
 #: data/gui/window/mp_create_game.cfg:389
 msgid "The map is unknown until your units explore it"
-msgstr "Birimlerin keşfedene kadar harita bilinmez"
+msgstr "Birimleriniz keşfedene kadar harita bilinmez"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/window/mp_create_game.cfg:405
@@ -4101,7 +4100,7 @@ msgstr "Parola:"
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr ""
-"Oyununuza oyuncu olarak katılmak isteyenlerin girmesi gereken şifreyi "
+"Oyununuza oyuncu olarak katılmak isteyenlerin girmesi gereken parolayı "
 "belirleyin."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
@@ -4116,7 +4115,7 @@ msgstr "Harita Boyutları:"
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:116
 msgid "Leader:"
-msgstr "Önder:"
+msgstr "Lider:"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:170
@@ -4175,13 +4174,13 @@ msgid ""
 "disconnected. Do you wish to continue?"
 msgstr ""
 "Ağ oyunu sunmak için yerel bir sunucu başlatılması gerek. Sunucu bütün "
-"kullanıcılar çıkana kadar arkaplan işlemi olarak çalışacak. Devam etmek "
+"kullanıcılar çıkana kadar arkaplan süreci olarak çalışacak. Devam etmek "
 "istiyor musunuz?"
 
 #. [button]: id=select_leader
 #: data/gui/window/mp_join_game.cfg:71 data/gui/window/mp_staging.cfg:70
 msgid "Select the faction and leader for this side"
-msgstr "Bu taraf için tarafınızı ve önderini seçiniz"
+msgstr "Bu taraf için tarafınızı ve liderini seçiniz"
 
 #. [label]
 #: data/gui/window/mp_join_game.cfg:155 data/gui/window/mp_staging.cfg:157
@@ -4284,7 +4283,7 @@ msgstr "Başka bir sunucuya bağlan"
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:264
 msgid "Host a game using a dedicated server"
-msgstr "adanmış sunucu kullanarak bir oyun sun"
+msgstr "Adanmış sunucu kullanarak bir oyun sun"
 
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:283
@@ -4394,8 +4393,8 @@ msgid ""
 "Speed at which unit moves and animations play when ‘Accelerated speed’ is "
 "enabled or when Shift is held down in-game"
 msgstr ""
-"'Hızlandırılmış sürat' açık iken veya oyunda Shift'e basılı iken birimlerin "
-"hareketleri ve animasyonlarının oynatılacağı hız"
+"'Arttırılmış hız' açık iken veya oyunda Shift'e basılı iken birim "
+"hareketlerinin ve canlandırmalarının oynatılacağı hız"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:100
@@ -4430,7 +4429,7 @@ msgstr "Oyun başlangıcında planlama kipini etkinleştirir"
 #. [toggle_button]: id=whiteboard_hide_allies
 #: data/gui/window/preferences/01_general.cfg:142
 msgid "Hide allies’ plans by default"
-msgstr "varsayılan olarak müttefiklerin planlarını sakla"
+msgstr "Öntanımlı olarak müttefiklerin planlarını sakla"
 
 #. [toggle_button]: id=whiteboard_hide_allies
 #: data/gui/window/preferences/01_general.cfg:143
@@ -4501,12 +4500,12 @@ msgstr "Kategoriler:"
 #. [label]
 #: data/gui/window/preferences/02_hotkeys.cfg:53
 msgid "Filter:"
-msgstr "Filtre:"
+msgstr "Süzgeç:"
 
 #. [text_box]: id=filter
 #: data/gui/window/preferences/02_hotkeys.cfg:67
 msgid "Filters on hotkey description."
-msgstr "kısayol tuşu açıklamalarına filtreler"
+msgstr "Kısayol tuşu açıklamalarına süzer."
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:111
@@ -4576,7 +4575,7 @@ msgstr "Tam ekran"
 #. [toggle_button]: id=fullscreen
 #: data/gui/window/preferences/03_display.cfg:49
 msgid "Toggle between fullscreen and window mode"
-msgstr "Tam ekran ve pencere kipi arasında aç/kapa yapar"
+msgstr "Tam ekran ve pencere kipi arasında geçiş yapar"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:68
@@ -4630,12 +4629,12 @@ msgstr "Suyu Canlandır"
 #. [toggle_button]: id=animate_water
 #: data/gui/window/preferences/03_display.cfg:129
 msgid "Display animated water graphics (can be slow)"
-msgstr "Hareketli su grafikleri göster (yavaş olabilir)"
+msgstr "Su hareketlerini cankandır (yavaş olabilir)"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:142
 msgid "Show unit standing animations"
-msgstr "Birim durma animasyonlarını göster"
+msgstr "Bekleyen birim canlandırmalarını göster"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:143
@@ -4650,7 +4649,7 @@ msgstr "Birimlerin boştaki animasyonlarını göster"
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:162
 msgid "Play short random animations for idle units"
-msgstr "Boştaki birimler için kısa, rastgele animasyonlar oynat"
+msgstr "Boştaki birimler için kısa, rastgele canlandırma oynat"
 
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:185
@@ -4684,7 +4683,7 @@ msgid ""
 "performance at high resolutions"
 msgstr ""
 "Bunu etkisiz kılınca CPU kullanımını %100'e çıkarır ancak yüksek "
-"çözünürlüklerde performansı arttırabilir"
+"çözünürlüklerde artış daha az olabilir"
 
 #. [button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:291
@@ -4714,7 +4713,7 @@ msgstr "Başka bir pencereye geçtiğinde müziği durdur"
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:104
 msgid "Sound effects"
-msgstr "Ses efektleri"
+msgstr "Olay sesleri"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:104
@@ -4774,7 +4773,7 @@ msgstr "Düğme tıklama, vs. seslerinin düzeyini değiştirir"
 #. [label]
 #: data/gui/window/preferences/05_multiplayer.cfg:20
 msgid "Chat lines:"
-msgstr "Sohbt Satırları:"
+msgstr "Yazışma satırları:"
 
 #. [slider]: id=chat_lines
 #: data/gui/window/preferences/05_multiplayer.cfg:36
@@ -4863,7 +4862,7 @@ msgid ""
 "'player_name notes on friend')"
 msgstr ""
 "Bu kullanıcı adını arkadaşlar listesine ekle (isteğe bağlı notlar ekle, "
-"'arkadaş player_name üzerine notlar')"
+"'arkadaşlar listesinde oyuncu adında notlar')"
 
 #. [button]: id=add_ignored
 #: data/gui/window/preferences/05_multiplayer.cfg:277
@@ -4871,8 +4870,8 @@ msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
 "'player_name reason ignored')"
 msgstr ""
-"Bu kullanıcı adını engel listesine ekle (isteğe bağlı sebep ekle, "
-"'player_name şu yüzden engelli')"
+"Bu kullanıcı adını gözardı listesine ekle (isteğe bağlı sebep ekle, 'oyuncu "
+"şu yüzden yoksayıldı' gibi)"
 
 #. [button]: id=remove
 #: data/gui/window/preferences/05_multiplayer.cfg:290
@@ -4882,7 +4881,7 @@ msgstr "Bu kullanıcı adı listenizden silinir"
 #. [label]: id=no_friends_notice
 #: data/gui/window/preferences/05_multiplayer.cfg:311
 msgid "You have not befriended or ignored any other players."
-msgstr "Henüz hiç kimseyi engellemediniz veya arkadaş edinmediniz."
+msgstr "Henüz hiç kimseyi yoksaymadınız veya arkadaş edinmediniz."
 
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:49
@@ -4892,7 +4891,7 @@ msgstr "Aç"
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:50
 msgid "Open this file with an external application"
-msgstr "Bu dosyayı dışarıdan bir uygulamayla aç"
+msgstr "Bu dosyayı bir dış uygulamada aç"
 
 #. [button]: id=browse_dir
 #: data/gui/window/screenshot_notification.cfg:187
@@ -4902,7 +4901,7 @@ msgstr "Ekran görüntüleri..."
 #. [button]: id=browse_dir
 #: data/gui/window/screenshot_notification.cfg:189
 msgid "Browse the screenshots folder using a file manager"
-msgstr "Ekran görüntüsü dosyasını dosya yöneticisi kullanarak gez"
+msgstr "Ekran görüntüsü dizinini dosya yöneticisi kullanarak gez"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=save
@@ -4949,7 +4948,7 @@ msgstr "Ayarları yapılandır"
 #. [label]
 #: data/gui/window/sp_options_configure.cfg:62
 msgid "Configure settings for the selected custom modifications."
-msgstr "Seçili özel tadiller için ayarları yapılandır"
+msgstr "Seçili özel değişiklikler için ayarları yapılandır"
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:129
@@ -4981,7 +4980,7 @@ msgstr "Atla"
 #. [label]: id=lblTitle
 #: data/gui/window/surrender_quit.cfg:40 src/hotkey/hotkey_command.cpp:124
 msgid "Surrender Game"
-msgstr "Oyundan feragat et"
+msgstr "Teslim Ol"
 
 #. [label]: id=lblMessage
 #: data/gui/window/surrender_quit.cfg:60
@@ -5001,7 +5000,7 @@ msgstr "Bekleniyor..."
 #. [label]: id=lblMessage
 #: data/gui/window/synced_choice_wait.cfg:60
 msgid "Waiting for remote input"
-msgstr "kumanda girdisi bekleniyor"
+msgstr "Uzak girdi bekleniyor"
 
 #. [button]: id=btn_quit_game
 #: data/gui/window/synced_choice_wait.cfg:96
@@ -5061,7 +5060,7 @@ msgstr "Tema Seç"
 #. [button]: id=help
 #: data/gui/window/title_screen.cfg:175
 msgid "Show Battle for Wesnoth help"
-msgstr "Wesnoth Savaşı yardım kısmını göster"
+msgstr "Wesnoth Savaşı yardımını göster"
 
 #. [button]: id=previous_tip
 #: data/gui/window/title_screen.cfg:191
@@ -5076,7 +5075,7 @@ msgstr "Sonraki günlük ipucunu göster"
 #. [grid]
 #: data/gui/window/title_screen.cfg:251
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr "Oyunla aşikar olmak için öğreticiyi başlatın"
+msgstr "Oyuna alışmak için öğreticiyi başlatın"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -5259,7 +5258,7 @@ msgstr "İsmini değiştir"
 #. [button]: id=dismiss
 #: data/gui/window/unit_recall.cfg:405
 msgid "Dismiss"
-msgstr "İhraç et"
+msgstr "Kov"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -5307,7 +5306,7 @@ msgstr "Lua konsol tamlanması"
 
 #: src/build_info.cpp:285
 msgid "feature^Legacy bidirectional rendering"
-msgstr "eski çift yönlü işleme"
+msgstr "Eski çift yönlü işleme"
 
 #: src/build_info.cpp:292
 msgid "feature^D-Bus notifications back end"
@@ -5379,7 +5378,7 @@ msgstr "$prefix, $next"
 #. TRANSLATORS: Formats the final element of a conjunctive list.
 #: src/formula/string_utils.cpp:261
 msgid "conjunct end^$prefix, and $last"
-msgstr "$prefix, ve $last"
+msgstr "$prefix ve $last"
 
 #. TRANSLATORS: Formats a two-element disjunctive list.
 #: src/formula/string_utils.cpp:269
@@ -5399,67 +5398,67 @@ msgstr "$prefix, $next"
 #. TRANSLATORS: Formats the final element of a disjunctive list.
 #: src/formula/string_utils.cpp:279
 msgid "disjunct end^$prefix, or $last"
-msgstr "$prefix, veya $last"
+msgstr "$prefix veya $last"
 
 #: src/formula/string_utils.cpp:285 src/formula/string_utils.cpp:314
 msgid "timespan^expired"
-msgstr ""
+msgstr "süresi doldu"
 
 #: src/formula/string_utils.cpp:291
 msgid "timespan^$num year"
-msgstr ""
+msgstr "$num yıl"
 
 #: src/formula/string_utils.cpp:291
 msgid "timespan^$num years"
-msgstr ""
+msgstr "$num yıl"
 
 #: src/formula/string_utils.cpp:292
 msgid "timespan^$num month"
-msgstr ""
+msgstr "$num ay"
 
 #: src/formula/string_utils.cpp:292
 msgid "timespan^$num months"
-msgstr ""
+msgstr "$num ay"
 
 #: src/formula/string_utils.cpp:293
 msgid "timespan^$num week"
-msgstr ""
+msgstr "$num hafta"
 
 #: src/formula/string_utils.cpp:293
 msgid "timespan^$num weeks"
-msgstr ""
+msgstr "$num hafta"
 
 #: src/formula/string_utils.cpp:294
 msgid "timespan^$num day"
-msgstr ""
+msgstr "$num gün"
 
 #: src/formula/string_utils.cpp:294
 msgid "timespan^$num days"
-msgstr ""
+msgstr "$num gün"
 
 #: src/formula/string_utils.cpp:295
 msgid "timespan^$num hour"
-msgstr ""
+msgstr "$num saat"
 
 #: src/formula/string_utils.cpp:295
 msgid "timespan^$num hours"
-msgstr ""
+msgstr "$num saat"
 
 #: src/formula/string_utils.cpp:296
 msgid "timespan^$num minute"
-msgstr ""
+msgstr "$num dakika"
 
 #: src/formula/string_utils.cpp:296
 msgid "timespan^$num minutes"
-msgstr ""
+msgstr "$num dakika"
 
 #: src/formula/string_utils.cpp:297
 msgid "timespan^$num second"
-msgstr ""
+msgstr "$num saniye"
 
 #: src/formula/string_utils.cpp:297
 msgid "timespan^$num seconds"
-msgstr ""
+msgstr "$num saniye"
 
 #: src/gui/core/canvas.cpp:612
 msgid "Line doesn't fit on canvas."
@@ -5471,7 +5470,7 @@ msgstr "Dörtgen tuvale sığmıyor."
 
 #: src/gui/core/canvas.cpp:814
 msgid "Rounded Rectangle doesn't fit on canvas."
-msgstr " Yuvarlanmış Dörtgen tuvale sığmıyor."
+msgstr "Yuvarlanmış Dörtgen tuvale sığmıyor."
 
 #: src/gui/core/canvas.cpp:923 src/gui/core/canvas.cpp:928
 #: src/gui/core/canvas.cpp:933 src/gui/core/canvas.cpp:939
@@ -5526,7 +5525,7 @@ msgstr "Bütün Eklentiler"
 
 #: src/gui/dialogs/addon/manager.cpp:186
 msgid "addons_view^Installed"
-msgstr "Yüklenmiş"
+msgstr "Kurulu"
 
 #: src/gui/dialogs/addon/manager.cpp:187
 msgid "addons_view^Upgradable"
@@ -5538,7 +5537,7 @@ msgstr "Yayımlanabilir"
 
 #: src/gui/dialogs/addon/manager.cpp:189
 msgid "addons_view^Not Installed"
-msgstr "Yüklenmemiş"
+msgstr "Kurulmamış"
 
 #: src/gui/dialogs/addon/manager.cpp:193
 msgid "addons_of_type^Campaigns"
@@ -5574,7 +5573,7 @@ msgstr "ÇO taraflar"
 
 #: src/gui/dialogs/addon/manager.cpp:201
 msgid "addons_of_type^Modifications"
-msgstr "Tadiller"
+msgstr "Değişiklikler"
 
 #: src/gui/dialogs/addon/manager.cpp:202
 msgid "addons_of_type^Cores"
@@ -5622,15 +5621,15 @@ msgstr "İlk yayımlanma ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:257 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
-msgstr "Yüklenmemiş"
+msgstr "Kurulu değil"
 
 #: src/gui/dialogs/addon/manager.cpp:258 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
-msgstr "Yayımlanmış, yüklenmemiş"
+msgstr "Yayımlanmış, kurulmamış"
 
 #: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
-msgstr "Yüklenmiş"
+msgstr "Kurulu"
 
 #: src/gui/dialogs/addon/manager.cpp:263 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
@@ -5638,7 +5637,7 @@ msgstr "Yayımlanmış"
 
 #: src/gui/dialogs/addon/manager.cpp:267
 msgid "addon_state^Installed, not tracking local version"
-msgstr "Yüklenmiş, yerel sürüm takip edilmiyor"
+msgstr "Kurulu, yerel sürüm takip edilmiyor"
 
 #: src/gui/dialogs/addon/manager.cpp:270
 msgid "addon_state^Published, not tracking local version"
@@ -5646,23 +5645,23 @@ msgstr "Yayımlanmış, yerel sürüm takip edilmiyor"
 
 #: src/gui/dialogs/addon/manager.cpp:274
 msgid "addon_state^Installed ($local_version|), upgradable"
-msgstr "Yüklenmiş ($local_version|), geliştirilebilir"
+msgstr "Kurulu ($local_version|), yükseltilebilir"
 
 #: src/gui/dialogs/addon/manager.cpp:275
 msgid "addon_state^Published ($local_version| installed), upgradable"
-msgstr "Yayımlanmış ($local_version| yüklenmiş), geliştirilebilir"
+msgstr "Yayımlanmış ($local_version| kurulu), yükseltilebilir"
 
 #: src/gui/dialogs/addon/manager.cpp:281
 msgid "addon_state^Installed ($local_version|), outdated on server"
-msgstr "Yüklenmiş ($local_version|), sunucuda eski sürüm"
+msgstr "Kurulu ($local_version|), sunucuda eski sürüm"
 
 #: src/gui/dialogs/addon/manager.cpp:282
 msgid "addon_state^Published ($local_version| installed), outdated on server"
-msgstr "Yayımlanmış ($local_version| yüklenmiş), sunucuda eski sürüm"
+msgstr "Yayımlanmış ($local_version| kurulu), sunucuda eski sürüm"
 
 #: src/gui/dialogs/addon/manager.cpp:288 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
-msgstr "Yüklenmiş, yayımlamaya hazır değil"
+msgstr "Kurulu, yayımlamaya hazır değil"
 
 #: src/gui/dialogs/addon/manager.cpp:289 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
@@ -5670,7 +5669,7 @@ msgstr "Yayımlamaya hazır"
 
 #: src/gui/dialogs/addon/manager.cpp:293 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
-msgstr "Yüklenmiş, bozuk"
+msgstr "Kurulu, bozuk"
 
 #: src/gui/dialogs/addon/manager.cpp:294 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
@@ -5706,7 +5705,7 @@ msgstr "yeniden eskiye"
 #: src/gui/dialogs/screenshot_notification.cpp:102
 #: src/gui/dialogs/wml_error.cpp:229
 msgid "Clipboard support not found, contact your packager"
-msgstr "not panosu desteği bulunamadı, paketçiniz ile iletişime geçin"
+msgstr "Pano desteği bulunamadı, paketçiniz ile iletişime geçin"
 
 #: src/gui/dialogs/addon/manager.cpp:452
 msgid "addons^Back to List"
@@ -5765,7 +5764,7 @@ msgstr "Şartlar"
 #: src/gui/dialogs/addon/manager.cpp:760 src/gui/dialogs/addon/manager.cpp:787
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:502
 msgid "Response"
-msgstr "Cevap"
+msgstr "Yanıt"
 
 #: src/gui/dialogs/addon/manager.cpp:772
 msgid ""
@@ -5777,7 +5776,7 @@ msgstr ""
 
 #: src/gui/dialogs/addon/manager.cpp:804
 msgid "Do you want to uninstall '$addon|'?"
-msgstr "'$addon|' silmek ister misiniz?"
+msgstr "'$addon|' eklentisini silmek ister misiniz?"
 
 #: src/gui/dialogs/advanced_graphics_options.cpp:75
 msgid "No matching widget found for scaling option"
@@ -5793,7 +5792,7 @@ msgstr "Savunanın direnci vs"
 
 #: src/gui/dialogs/attack_predictions.cpp:190
 msgid "Attacker vulnerability vs"
-msgstr "Saldıranın zaafiyeti vs"
+msgstr "Saldıranın yaralanabilirliği vs"
 
 #: src/gui/dialogs/campaign_selection.cpp:318
 #: src/gui/dialogs/multiplayer/lobby.cpp:461
@@ -5806,7 +5805,7 @@ msgstr "$requester aşağıdaki değişikliklerin etkin olmasını gerektiriyor:
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:70
 msgid "$requester requires the following modifications to be disabled:"
-msgstr "$requester aşağıdaki değişikliklerin kapalı olmasını gerektiriyor:"
+msgstr "$requester aşağıdaki değişikliklerin olmamasını gerektiriyor:"
 
 #: src/gui/dialogs/depcheck_select_new.cpp:69
 msgid ""
@@ -5862,23 +5861,23 @@ msgstr "Bu dosya zaten var. Üzerine yazmak ister misiniz?"
 
 #: src/gui/dialogs/file_dialog.cpp:326
 msgid "The file or folder $path cannot be created."
-msgstr "$path dosyası oluşturulamıyor."
+msgstr "$path dizini/dosyası oluşturulamıyor."
 
 #: src/gui/dialogs/file_dialog.cpp:332
 msgid "The file or folder $path does not exist."
-msgstr "$path dosyası yok."
+msgstr "$path dizini/dosyası yok."
 
 #: src/gui/dialogs/file_dialog.cpp:707
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
 msgstr ""
-"$path| yeni dosya oluşturulamadı. Bu konuma yazmak için gerekli izinlerin "
-"olduğundan emin olun."
+"$path| üzerinde yeni dizin oluşturulamadı. Bu konuma yazmak için gerekli "
+"izinlerin olduğundan emin olun."
 
 #: src/gui/dialogs/file_dialog.cpp:725
 msgid "The following folder and its contents will be permanently deleted:"
-msgstr "Aşağıdaki dosya ve içerikleri kalıcı olarak silinecektir:"
+msgstr "Aşağıdaki dizin ve içerikleri kalıcı olarak silinecektir:"
 
 #: src/gui/dialogs/file_dialog.cpp:726
 msgid "The following file will be permanently deleted:"
@@ -5973,7 +5972,7 @@ msgstr "Sürüm: "
 
 #: src/gui/dialogs/game_load.cpp:421
 msgid "Modifications: "
-msgstr "Tadiller: "
+msgstr "Değişiklikler: "
 
 #: src/gui/dialogs/game_stats.cpp:74
 msgid "controller^AI"
@@ -6040,7 +6039,7 @@ msgstr "Takımlar başlatılıyor"
 
 #: src/gui/dialogs/loading_screen.cpp:56
 msgid "Loading game configuration"
-msgstr "Oyun kurulumu yükleniyor"
+msgstr "Oyun yapılandırması yükleniyor"
 
 #: src/gui/dialogs/loading_screen.cpp:57
 msgid "Loading data files"
@@ -6052,7 +6051,7 @@ msgstr "Seviye yükleniyor"
 
 #: src/gui/dialogs/loading_screen.cpp:59
 msgid "Initializing scripting engine"
-msgstr "metin motoru başlatılıyor"
+msgstr "Betik motoru başlatılıyor"
 
 #: src/gui/dialogs/loading_screen.cpp:60
 msgid "Initializing planning mode"
@@ -6068,7 +6067,7 @@ msgstr "Birimler yükleniyor"
 
 #: src/gui/dialogs/loading_screen.cpp:63
 msgid "Searching for installed add-ons"
-msgstr "Yüklü Eklentiler aranıyor"
+msgstr "Kurulu Eklentiler aranıyor"
 
 #: src/gui/dialogs/loading_screen.cpp:64
 msgid "Starting game"
@@ -6092,7 +6091,7 @@ msgstr "Sunucu bekleniyor"
 
 #: src/gui/dialogs/loading_screen.cpp:69
 msgid "Connecting to redirected server"
-msgstr "yönlendirilmiş sunucuya bağlanılıyor"
+msgstr "Yönlendirilmiş sunucuya bağlanılıyor"
 
 #: src/gui/dialogs/loading_screen.cpp:70
 msgid "Waiting for next scenario"
@@ -6138,7 +6137,7 @@ msgstr "Gerçekten çıkmak istiyor musunuz?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:210
 msgid "Incompatible User-made Content."
-msgstr "Uyumsuz Kullanıcı yapımı İçerik"
+msgstr "Uyumsuz kullanıcı yapımı İçerik"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:211
 msgid ""
@@ -6173,7 +6172,7 @@ msgstr "$game_name (Çağ: $era_name)"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:446
 msgid "era_or_mod^not installed"
-msgstr "indirilmemiş"
+msgstr "kurulu değil"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:449
 msgid "Era"
@@ -6233,7 +6232,7 @@ msgid ""
 "This build of wesnoth does not include support for desktop notifications, "
 "contact your package manager"
 msgstr ""
-"Wesnoth'un by sürümü masaüstü bildirimlerini desteklemiyor, lütfen paket "
+"Wesnoth'un bu sürümü masaüstü bildirimlerini desteklemiyor, lütfen paket "
 "yöneticiniz ile irtibata geçin"
 
 #: src/gui/dialogs/multiplayer/mp_change_control.cpp:104
@@ -6287,7 +6286,7 @@ msgstr "Aksetme olmasın: Hiçbir oyuncu aynı tarafı almaz"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:278
 msgid "No Ally Mirror: No two allied players will get the same faction"
-msgstr "Müttefik aksetmesi olamsın: Hiçbir müttefik oyuncu aynı tarafı almaz"
+msgstr "Müttefik aksetmesi olnasın: Hiçbir müttefik oyuncu aynı tarafı almaz"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:534
 msgid "No eras available for this game."
@@ -6387,7 +6386,7 @@ msgstr "Klavye Kısayollarını tekrar ata"
 
 #: src/gui/dialogs/preferences_dialog.cpp:899
 msgid "All hotkeys have been reset to their default values."
-msgstr "Bütün kısayollar varsayılan haline döndürüldü."
+msgstr "Bütün kısayollar ilk değerlerine sıfırlandı."
 
 #: src/gui/dialogs/preferences_dialog.cpp:899
 msgid "Hotkeys Reset"
@@ -6462,16 +6461,16 @@ msgstr "Bu birimin sadık olduğu için bakım masrafı yok."
 #: src/gui/dialogs/unit_recall.cpp:293 src/gui/dialogs/unit_recall.cpp:298
 #: src/gui/dialogs/unit_recall.cpp:303
 msgid "Do you really want to dismiss him?"
-msgstr "Ordudan çıkarmak istiyor musunuz?"
+msgstr "Gerçekten kovmak istiyor musunuz?"
 
 #: src/gui/dialogs/unit_recall.cpp:294 src/gui/dialogs/unit_recall.cpp:299
 #: src/gui/dialogs/unit_recall.cpp:304
 msgid "Do you really want to dismiss her?"
-msgstr "Ordudan çıkarmak istiyor musunuz?"
+msgstr "Gerçekten kovmak istiyor musunuz?"
 
 #: src/gui/dialogs/unit_recall.cpp:297
 msgid "This unit is an experienced one, having advanced levels."
-msgstr "Bu birimin seviyesi ileride, yani tecrübeli."
+msgstr "Bu birimin seviyesi ileride, yani deneyimli."
 
 #: src/gui/dialogs/unit_recall.cpp:302
 msgid "This unit is close to advancing a level."
@@ -6479,7 +6478,7 @@ msgstr "Bu birim seviye atlamaya yakın."
 
 #: src/gui/dialogs/unit_recall.cpp:308
 msgid "Dismiss Unit"
-msgstr "Birimi çıkar"
+msgstr "Birimi kov"
 
 #: src/gui/gui.cpp:84
 msgid "No default gui defined."
@@ -6487,15 +6486,15 @@ msgstr "Tanımlı bir varsayılan arayüz yok."
 
 #: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Installed, upgradable"
-msgstr "Yüklü, geliştirilebilir"
+msgstr "Kurulu, yükseltilebilir"
 
 #: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Published, upgradable"
-msgstr "Yayımlanmış, geliştirilebilir"
+msgstr "Yayımlanmış, yükseltilebilir"
 
 #: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Installed, outdated on server"
-msgstr "Yüklü, sunucuda güncel değil"
+msgstr "Kurulu, sunucuda güncel değil"
 
 #: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Published, outdated on server"
@@ -6535,7 +6534,7 @@ msgstr "Zorunlu pencere gereci '$id' tanımlı değil."
 
 #: src/gui/widgets/label.cpp:153
 msgid "Opening links is not supported, contact your packager"
-msgstr "Açılma bağlantıları desteklenmiyor, paketçiniz ile irtibata geçin"
+msgstr "Bağlantı açma desteklenmiyor, paketçiniz ile irtibata geçin"
 
 #: src/gui/widgets/label.cpp:172
 msgid "Do you want to open this link?"
@@ -6601,15 +6600,15 @@ msgstr "Tanımlı yığın katmanları yok."
 
 #: src/gui/widgets/styled_widget.cpp:667
 msgid "Found a widget with a helptip and without a tooltip."
-msgstr "Yardım ipucu olan ama alet ipucu olmayan bir gereç bulundu."
+msgstr "Yardım ipucu olan ama küçük ipucu olmayan bir gereç bulundu."
 
 #: src/gui/widgets/tree_view.cpp:391
 msgid "No nodes defined for a tree view."
-msgstr "Ağaç görünümü için düğüm tanımlanmadı."
+msgstr "Ağaç görünümü için tanımlı düğüm yok."
 
 #: src/gui/widgets/tree_view.cpp:427
 msgid "[node]id 'root' is reserved for the implementation."
-msgstr "[node] no'lu 'kök' uyarlama için ayrılmış."
+msgstr "[node] kimlikli 'kök' gerçekleme için ayrılmış."
 
 #: src/gui/widgets/tree_view.cpp:431
 msgid "No node defined."
@@ -6617,7 +6616,7 @@ msgstr "Tanımlı bir düğüm yok."
 
 #: src/gui/widgets/tree_view_node.cpp:112
 msgid "Unknown builder id for tree view node."
-msgstr "Ağaç görünümü düğümü için bilinmeyen oluşturucu no'su"
+msgstr "Ağaç görünümü düğümü için bilinmeyen derleyici kimliği"
 
 #: src/gui/widgets/unit_preview_pane.cpp:135
 msgid "Resistances: "
@@ -6625,11 +6624,11 @@ msgstr "Dayanıklılıklar: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:137
 msgid "(Att / Def)"
-msgstr "(Sal / Sav)"
+msgstr "(Sald / Sav)"
 
 #: src/gui/widgets/unit_preview_pane.cpp:151
 msgid "Movement Costs:"
-msgstr "Hareket Maliyetleri:"
+msgstr "Hareket Bedelleri:"
 
 #: src/gui/widgets/unit_preview_pane.cpp:218
 msgid "Attacks"
@@ -6659,7 +6658,7 @@ msgstr "TP: "
 #: src/gui/widgets/unit_preview_pane.cpp:328
 #: src/gui/widgets/unit_preview_pane.cpp:487
 msgid "Experience Modifier: "
-msgstr "Tecrübe değiştiricisi: "
+msgstr "Deneyim değiştiricisi: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:331
 #: src/gui/widgets/unit_preview_pane.cpp:490
@@ -6673,7 +6672,7 @@ msgstr "Yetenekler"
 
 #: src/gui/widgets/window.cpp:939
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
-msgstr "Tıklayarak kapatmak için 'click_dismiss' veya 'tamam' tuşu lazım."
+msgstr "Tıklayarak kapatmak için 'kapama-tıkı' veya 'tamam' tuşu lazım."
 
 #: src/gui/widgets/window.cpp:964 src/gui/widgets/window.cpp:1001
 #: src/tests/gui/test_gui2.cpp:569
@@ -6698,7 +6697,7 @@ msgstr "Oyuncu Sohbeti"
 
 #: src/hotkey/hotkey_command.cpp:43
 msgid "Replay Control"
-msgstr "Tekrar Kontrolü"
+msgstr "Tekrar Denetimi"
 
 #: src/hotkey/hotkey_command.cpp:44
 msgid "Planning Mode"
@@ -6710,7 +6709,7 @@ msgstr "Senaryo Düzenleyicisi"
 
 #: src/hotkey/hotkey_command.cpp:46
 msgid "Editor Palettes"
-msgstr "Düzenleyici paletleri"
+msgstr "Düzenleyici Paletleri"
 
 #: src/hotkey/hotkey_command.cpp:47
 msgid "Editor Tools"
@@ -6810,7 +6809,7 @@ msgstr "Normal Yakınlık"
 
 #: src/hotkey/hotkey_command.cpp:90
 msgid "Toggle Full Screen"
-msgstr "Tam Ekran"
+msgstr "Tam Ekran Aç/Kapa"
 
 #: src/hotkey/hotkey_command.cpp:92
 msgid "Map Screenshot"
@@ -6846,7 +6845,7 @@ msgstr "Aynısından Askere Al"
 
 #: src/hotkey/hotkey_command.cpp:106
 msgid "Show/Hide Labels"
-msgstr "Etiketleri göster"
+msgstr "Etiketleri göster/gizle"
 
 #: src/hotkey/hotkey_command.cpp:107
 msgid "End Turn"
@@ -6854,11 +6853,11 @@ msgstr "Eli Bitir"
 
 #: src/hotkey/hotkey_command.cpp:109
 msgid "Toggle Ellipses"
-msgstr "Elipsler"
+msgstr "Elipsleri aç/kapa"
 
 #: src/hotkey/hotkey_command.cpp:110
 msgid "Toggle Grid"
-msgstr "Karoları Göster"
+msgstr "Izgarayı aç/kapa"
 
 #: src/hotkey/hotkey_command.cpp:111
 msgid "Mouse Scrolling"
@@ -7057,11 +7056,11 @@ msgstr "Harita Bilgileri"
 
 #: src/hotkey/hotkey_command.cpp:181
 msgid "Clear Selected Item Set"
-msgstr "Seçili Eşya Grubunu Sil"
+msgstr "Seçili Öğe Grubunu Sil"
 
 #: src/hotkey/hotkey_command.cpp:182
 msgid "Swap Foreground/Background Palette Item"
-msgstr "Ön ve Arka alan arazilerini yer değiştir"
+msgstr "Ön ve Artalan arazilerini yer değiştir"
 
 #: src/hotkey/hotkey_command.cpp:183
 msgid "Change Palette Group"
@@ -7096,9 +7095,9 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
-"Sağ/sol fare tuşlarını Ön-/arkaplan arazilerini çizmek için kullan. Sadece "
-"temel katmanı boyamak için shift'e basılı tutun. Ctrl+Tıkla ile imlecin "
-"altındaki araziyi örnek alabilirsiniz."
+"Sağ/sol fare tuşlarını Ön-/artalan arazilerini çizmek için kullan. Sadece "
+"temel katmanı boyamak için shift'i basılı tutun. Ctrl+Tıkla ile imlecin "
+"altındaki araziden örnek alabilirsiniz."
 
 #: src/hotkey/hotkey_command.cpp:193
 msgid "Fill Tool"
@@ -7110,7 +7109,7 @@ msgid ""
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
 "Sol fare tuşu ctrl tuşu ile seçip bırakır, sağ tuş ise içerik menüsünü açar. "
-"Aynı arazili altıgenleri toplu seçmek için shift'e basılı tutun."
+"Aynı arazili altıgenleri toplu seçmek için shift'i basılı tutun."
 
 #: src/hotkey/hotkey_command.cpp:194
 msgid "Selection Tool"
@@ -7128,7 +7127,7 @@ msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:195
 msgid "Starting Positions Tool"
-msgstr "Başlangıç Konumları Araçları"
+msgstr "Başlangıç Konumları Aracı"
 
 #: src/hotkey/hotkey_command.cpp:196
 msgid "Label Tool"
@@ -7152,15 +7151,15 @@ msgstr "Birim Aracı"
 
 #: src/hotkey/hotkey_command.cpp:198
 msgid "Item Tool"
-msgstr "Eşya Aracı"
+msgstr "Öğe Aracı"
 
 #: src/hotkey/hotkey_command.cpp:198
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
-"Sol fare tuşu ya yeni bir eşya koyar ya da sürükleyip bırakarak hareket "
-"ettirir, sağ tuş temizler. Henüz oyuna dahil değil."
+"Sol fare tuşu ya yeni bir öğe koyar ya da sürükleyip bırakarak hareket "
+"ettirir, sağ tuş temizler. Henüz gerçeklenmedi."
 
 #: src/hotkey/hotkey_command.cpp:199
 msgid ""
@@ -7168,7 +7167,7 @@ msgid ""
 "implemented yet."
 msgstr ""
 "Sol fare tuşu ya yeni bir ses kaynağı koyar ya da sürükleyip bırakarak "
-"hareket ettirir, sağ tuş temizler. Henüz oyuna dahil değil."
+"hareket ettirir, sağ tuş temizler. Henüz gerçeklenmedi."
 
 #: src/hotkey/hotkey_command.cpp:199
 msgid "Sound Source Tool"
@@ -7208,11 +7207,11 @@ msgstr "Askere alım listesini ata"
 
 #: src/hotkey/hotkey_command.cpp:204
 msgid "Assign the selected unit set as recruit list to the unit."
-msgstr "Seçili birim kümesini birime askere alım listesi olarak ata."
+msgstr "Seçili birim kümesini askere alım listesi olarak ata."
 
 #: src/hotkey/hotkey_command.cpp:206
 msgid "Change Unit ID"
-msgstr "Birim No. değiştir"
+msgstr "Birim Kimliğini Değiştir"
 
 #: src/hotkey/hotkey_command.cpp:207
 msgid "Loyal"
@@ -7277,7 +7276,7 @@ msgstr "Kopyala"
 #: src/hotkey/hotkey_command.cpp:227
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
-msgstr "Sol fare tuşu not panosundan yapıştırır, sağ tuş içerik menüsünü açar."
+msgstr "Sol fare tuşu panodan yapıştırır, sağ tuş içerik menüsünü açar."
 
 #: src/hotkey/hotkey_command.cpp:227
 msgid "Paste"
@@ -7285,7 +7284,7 @@ msgstr "Yapıştır"
 
 #: src/hotkey/hotkey_command.cpp:228
 msgid "Export Selected Coordinates to System Clipboard"
-msgstr "Seçilen koordinatları sistemin panosuna gönderir"
+msgstr "Seçilen koordinatları sistem panosuna gönderir"
 
 #: src/hotkey/hotkey_command.cpp:229
 msgid "Select All"
@@ -7301,11 +7300,11 @@ msgstr "Hiçbir şey Seçme"
 
 #: src/hotkey/hotkey_command.cpp:232
 msgid "Rotate Clipboard Clockwise"
-msgstr "Panoyu Saat Yönünde Çevir"
+msgstr "Panoyu Saat Yönünde Döndür"
 
 #: src/hotkey/hotkey_command.cpp:233
 msgid "Rotate Clipboard Counter-Clockwise"
-msgstr "Panoyu Saat Yönünün Tersine Çevir"
+msgstr "Panoyu Saat Yönünün Tersine Döndür"
 
 #: src/hotkey/hotkey_command.cpp:234
 msgid "Flip Clipboard Horizontally"
@@ -7357,7 +7356,7 @@ msgstr "Arazi Geçişlerini Güncelle"
 
 #: src/hotkey/hotkey_command.cpp:251
 msgid "Toggle Terrain Transition Update"
-msgstr "Arazi Geçişlerini Güncelleme Aç/Kapa"
+msgstr "Arazi Geçişlerini Güncellemeyi Aç/Kapa"
 
 #: src/hotkey/hotkey_command.cpp:253
 msgid "Auto-update Terrain Transitions"
@@ -7385,7 +7384,7 @@ msgstr "Arazi Kodlarını Göster"
 
 #: src/hotkey/hotkey_command.cpp:260
 msgid "Draw Number of Bitmaps"
-msgstr "Bit eşlem Sayısını Göster"
+msgstr "Biteşlem Sayısını Göster"
 
 #: src/hotkey/hotkey_command.cpp:262
 msgid "Save Selection to Area"
@@ -7453,7 +7452,7 @@ msgstr "Kullanıcı komutu"
 
 #: src/hotkey/hotkey_command.cpp:281
 msgid "Run Formula"
-msgstr "SA formülünü çalıştır"
+msgstr "Formül çalıştır"
 
 #: src/hotkey/hotkey_command.cpp:282
 msgid "Clear Messages"
@@ -7469,23 +7468,23 @@ msgstr "WML Tazele"
 
 #: src/hotkey/hotkey_command.cpp:286
 msgid "Next Tip of the Day"
-msgstr "Sonraki Tüyo"
+msgstr "Günün Sonraki Saati"
 
 #: src/hotkey/hotkey_command.cpp:287
 msgid "Previous Tip of the Day"
-msgstr "Önceki Tüyo"
+msgstr "Günün Önceki Saati"
 
 #: src/hotkey/hotkey_command.cpp:288
 msgid "Start Tutorial"
-msgstr "Öğretici"
+msgstr "Öğreticiyi Başlat"
 
 #: src/hotkey/hotkey_command.cpp:289
 msgid "Start Campaign"
-msgstr "Seferberlik"
+msgstr "Seferberlik Başlat"
 
 #: src/hotkey/hotkey_command.cpp:290
 msgid "Start Multiplayer Game"
-msgstr "Çok Oyunculu"
+msgstr "Çok Oyunculu Oyun Başlat"
 
 #: src/hotkey/hotkey_command.cpp:291
 msgid "Manage Add-ons"
@@ -7497,11 +7496,11 @@ msgstr "Çekirdekleri Yönet"
 
 #: src/hotkey/hotkey_command.cpp:293
 msgid "Start Editor"
-msgstr "Düzenleyici"
+msgstr "Düzenleyiciyi Başlat"
 
 #: src/hotkey/hotkey_command.cpp:294
 msgid "Show Credits"
-msgstr "Teşekkür"
+msgstr "Jeneriği Göster"
 
 #: src/hotkey/hotkey_command.cpp:295
 msgid "Start Test Scenario"
@@ -7509,11 +7508,11 @@ msgstr "Deneme Senaryosunu Başlat"
 
 #: src/hotkey/hotkey_command.cpp:297
 msgid "Show Helptip"
-msgstr "Yardım tüyosu Göster"
+msgstr "Yardım İpucunu Göster"
 
 #: src/hotkey/hotkey_command.cpp:299
 msgid "Show Lua Console"
-msgstr "Lua konsolunu Göster"
+msgstr "Lua Konsolunu Göster"
 
 #: src/hotkey/hotkey_command.cpp:302
 msgid "Unrecognized Command"
@@ -7543,9 +7542,9 @@ msgid ""
 "functionality and is required for hosting local network games. It will "
 "normally be found in the same folder as the game executable."
 msgstr ""
-"<b>$filename</b> Sunucu uygulaması çok oyunculu sunucu özelliği sağlar ve "
-"yerel ağ oyunları sunmak için şarttır. Genelde oyunun exe. dosyası ile aynı "
-"klasörde bulunur."
+"<b>$filename</b> sunucu uygulaması çok oyunculu sunucu işlevselliğini sağlar "
+"ve yerel ağ oyunları sunmak için şarttır. Genelde oyunun çalıştılabilir "
+"dosyası ile aynı dizinde bulunur."
 
 #: src/preferences/display.cpp:168
 msgid "Find Server Application"
@@ -7600,8 +7599,8 @@ msgid ""
 "The key '$key' is deprecated and support will be removed in version "
 "$removal_version."
 msgstr ""
-"'$key' anahtarı kullanımdan çıkarılmış ve desteği $removal_version sürümünde "
-"çekilecektir."
+"'$key' anahtarı kullanımdan çıkarılmış ve $removal_version sürümünde "
+"kaldırılacaktır."
 
 #: src/wml_exception.cpp:132
 msgid ""
@@ -7609,7 +7608,7 @@ msgid ""
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
 "'$deprecated_key' ismi '$key' diye yeniden adlandırıldı. '$deprecated_key' "
-"için destek $removal_version sürümünde çekilecektir."
+"için destek $removal_version sürümünde kaldırılacaktır."
 
 #, fuzzy
 #~| msgid "Speed: "

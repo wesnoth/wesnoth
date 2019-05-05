@@ -4,21 +4,21 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # İhsan Haluk AKIN <ihsan_akin@yahoo.com>, 2006.
-# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, 2009.
+# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, ... 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tutorial\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-03-11 13:10 UTC\n"
-"PO-Revision-Date: 2019-04-23 18:38+0300\n"
+"PO-Revision-Date: 2019-05-04 02:18+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
-"Language-Team: Turkish <ceviri@belgeler.gen.tr>\n"
+"Language-Team: Turkish\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #. [lua]: wml_actions.select_character
 #: data/campaigns/tutorial/lua/character_selection.lua:25
@@ -52,7 +52,7 @@ msgstr "Lisar"
 #. If you have any questions, ask in the forums or in the #wesnoth-dev channel on the Freenode IRC network.
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:8
 msgid "Wesnoth Tutorial — Part I"
-msgstr "Wesnoth Öğreticisi - l. kısım"
+msgstr "Wesnoth Öğreticisi — l. kısım"
 
 #. [side]: type=Fighter, id=student
 #. [side]
@@ -60,7 +60,7 @@ msgstr "Wesnoth Öğreticisi - l. kısım"
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:26
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:99
 msgid "team_name^Student"
-msgstr "öğrenci"
+msgstr "Öğrenci"
 
 #. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:74
@@ -109,7 +109,7 @@ msgid ""
 msgstr ""
 "Bu, yeni oyunculara yönelik 2 kısımdan oluşan bir öğreticidir. İlk kısım "
 "size hareketin, saldırmanın, iyileşmenin, ve askere almanın temellerini "
-"öğretecek. İlk olarak bir kahraman seçin ( iki kahraman da aynı oynanıyor)."
+"öğretecek. Önce bir kahraman seçin ( iki kahraman da aynı oynanıyor)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:158
@@ -222,12 +222,12 @@ msgstr "Hımm, olabilir..."
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:408
 msgid "Have you found an orc for me to fight, huh? A troll?"
-msgstr "Bana dövüşmek bir ork mu buldun yoksa? ya da bir trol?"
+msgstr "Bana dövüşeceğim bir ork mu buldun? Ya da bir trol?"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:409
 msgid "female^Have you found an orc for me to fight, huh? A troll?"
-msgstr "Bana dövüşmek bir ork mu buldun yoksa? ya da bir trol?"
+msgstr "Bana dövüşeceğim bir ork mu buldun? Ya da bir trol?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:414
@@ -237,7 +237,7 @@ msgstr "Sessiz ol! Senin için bir düşman çağıracağım..."
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:486
 msgid "... this quintain!"
-msgstr "... bu korkuluğu!"
+msgstr "... bu bir korkuluk!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:491
@@ -335,8 +335,8 @@ msgid ""
 "leader. In most scenarios, you will lose if your leader is killed. Be sure "
 "to keep him safe!"
 msgstr ""
-"Önderin (Konrad) üzerindeki küçük altın taç onun bir taraf önderi olduğunu "
-"gösterir. Çoğu senaryoda önderiniz ölürse kaybedersiniz. Güvenliğini "
+"Liderin (Konrad) üzerindeki küçük altın taç onun bir taraf lideri olduğunu "
+"gösterir. Çoğu senaryoda lideriniz ölürse savaşı kaybedersiniz. Güvenliğini "
 "sağlamayı unutmayın!"
 
 #. [message]: speaker=narrator
@@ -346,8 +346,8 @@ msgid ""
 "leader. In most scenarios, you will lose if your leader is killed. Be sure "
 "to keep her safe!"
 msgstr ""
-"Önderin (Lisar) üzerindeki küçük altın taç onun bir taraf önderi olduğunu "
-"gösterir. Çoğu senaryoda önderiniz ölürse kaybedersiniz. Güvenliğini "
+"Liderin (Lisar) üzerindeki küçük altın taç onun bir taraf lideri olduğunu "
+"gösterir. Çoğu senaryoda lideriniz ölürse savaşı kaybedersiniz. Güvenliğini "
 "sağlamayı unutmayın!"
 
 #. [message]: speaker=Delfador
@@ -373,7 +373,7 @@ msgid ""
 msgstr ""
 "Evet. O sihirli bir korkuluk!\n"
 "Bu korkuluk her isabette 3 hasar verir ve bunu 5 kere dener. Eğer hepsi "
-"isabet derse $student_hp candan $($student_hp-15) cana düşeceksin. Koru "
+"isabet ederse $student_hp candan $($student_hp-15) cana düşeceksin. Koru "
 "kendini!"
 
 #. [message]: speaker=narrator
@@ -394,10 +394,10 @@ msgid ""
 msgstr ""
 "Her el, senaryodaki her taraf hamlelerini yapmak için birer fırsat alır. O "
 "el yapmak istediklerinizi bitirdikten sonra ekranın sağ altındaki <b>Eli "
-"Bitir</b> tuşuna basın. Sonra denetleyen YZ da insan da olsa, diğer takımlar "
-"da hamlelerini yapar. Bazı senaryolar belli bir el sayısı içinde "
+"Bitir</b> düğmesine basın. Sonra denetleyen YZ de insan da olsa, diğer "
+"takımlar da hamlelerini yapar. Bazı senaryolar belli bir el sayısı içinde "
 "tamamlanmalıdır. Ekranın üstünde bayrak simgesinin yanında kaçıncı el "
-"olduğunu ve el kaldığını görebilirsiniz."
+"olduğunu ve kaç el kaldığını görebilirsiniz."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:614
@@ -455,7 +455,7 @@ msgid ""
 "recruit units. Each turn, you gain 2 gold, plus 1 for every village you own."
 msgstr ""
 "Bir köy ele geçirdiniz! Kenarda kendi bayrağınızın dalgalandığını "
-"görebilirsiniz. Ayrıca bu (köy ekranın üst kenarında ev simgesi ile "
+"görebilirsiniz. Ayrıca bu köy (ekranın üst kenarında ev simgesi ile "
 "gösterilen) toplam köy sayınıza eklendi. Köyler birimleri askere almak için "
 "gereken altını sağlar. Her el 2 altın artı her köyünüz için 1 altın "
 "kazanırsınız."
@@ -485,7 +485,7 @@ msgstr "Bir kaç Elfi askere alacağım!"
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:707
 msgid "female^I’ll recruit some elves!"
-msgstr "Bir kaç elfi askere alacağım!"
+msgstr "Bir kaç Elfi askere alacağım!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:712
@@ -501,17 +501,17 @@ msgstr ""
 #. [label]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:717
 msgid "Keep"
-msgstr "İç kale"
+msgstr "İçkale"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:731
 msgid "Move Konrad to the keep"
-msgstr "Konrad’ı iç kaleye götür"
+msgstr "Konrad’ı içkaleye götür"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:733
 msgid "Move Li’sar to the keep"
-msgstr "Lisar’ı iç kaleye götür"
+msgstr "Lisar’ı içkaleye götür"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:751
@@ -530,12 +530,12 @@ msgstr ""
 "Bir <i>içkale</i>de iken kale altıgenlerine sağ tıklayarak birimleri "
 "<i>Askere al</i>abilirsiniz. Yeni alınmış askerler o el bir şey yapamazlar; "
 "bir sonraki el onları kullanabilirsiniz. Bu senaryoda seçebileceğiniz tek "
-"çeşit birim var: Elf savaşçı."
+"çeşit birim var: Elf Savaşçı"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:756
 msgid "Recruit two Elvish Fighters"
-msgstr "İki Elf savaşçıyı askere alın."
+msgstr "İki Elf Savaşçıyı askere alın."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:775
@@ -553,15 +553,17 @@ msgid ""
 msgstr ""
 "Yeni alımlarının <i>Mizaçlar</i>ına bakın. kenar çubuğunda ırkının altında "
 "listelenmişlerdir. Nitelikler askerlerini nasıl kullandığını biraz "
-"etkileyebilir."
+"etkileyebilir. Örneğin <i>hızlı</i> mizaca sahip birimler her el bir altıgen "
+"fazla ilerleyebilirken <i>zeki</i> birimlerin terfi etmek için %20 daha az "
+"deneyim kazanması yeterlidir."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:826
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgstr ""
-"Hey, korkuluk durduğu yerde 2 puanlık tedavi oldu bile! Bir an önce "
-"saldırsam iyi olacak!"
+"Hey, korkuluk durduğu yerde 2 puanlık iyileşti bile! Bir an önce saldırsam "
+"iyi olacak!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:827
@@ -569,8 +571,8 @@ msgid ""
 "female^Hey, the quintain just healed 2 hitpoints! I’d better attack it at "
 "once!"
 msgstr ""
-"Hey, korkuluk durduğu yerde 2 puanlık tedavi oldu bile! Bir an önce "
-"saldırsam iyi olacak!"
+"Hey, korkuluk durduğu yerde 2 puanlık iyileşti bile! Bir an önce saldırsam "
+"iyi olacak!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:832
@@ -603,13 +605,13 @@ msgid ""
 "attacks) or the bow (3×3; or 3 damage on each hit, with 3 attacks)? I "
 "suppose you’ll find out..."
 msgstr ""
-"Peki, bu hangisi? Kılıç (5x4; her vuruşta 5 hasar, 4 vuruş) mı yoksa yay "
-"(3x3; her vuruşta 3 hasar, 3 vuruş) mı? Yakında öğrenirsin..."
+"Peki, bu hangisi? Kılıç (5x4; 5 hasarlık 4 vuruş) mı yoksa yay (3x3; 3 "
+"hasarlık 3 vuruş) mı? Yakında öğrenirsin..."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:851
 msgid "Attack the quintain with your fighters"
-msgstr "Korkuluğa savaşçıların ile saldır"
+msgstr "Korkuluğa savaşçılarınla saldır"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:862
@@ -619,8 +621,7 @@ msgid ""
 "help."
 msgstr ""
 "Korkuluğa tekrar şahsen saldırmak gibi aptalca şeylere kalkışmayacaksın, "
-"herhalde?\n"
-" Önce askere aldığın savaşçıları kullan; onların epey yardımı olur."
+"herhalde? Önce askere aldığın savaşçıları kullan; onların epey yardımı olur."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:898
@@ -631,9 +632,9 @@ msgid ""
 "have been safer."
 msgstr ""
 "Elf Savaşçınız bir <i>yakın dövüş</i> saldırısı yaptı ve kılıç kullandı "
-"(5-4’lük, yani 5 hasarlı 4 saldırı). Korkuluk da kendini (3-5’lik) yakın "
-"dövüş silahıyla savundu. Uzaktan (Menzilli silahla) saldırsa daha güvenli "
-"olurdu."
+"(5-4’lük, yani 5 hasarlık 4 saldırı). Korkuluk da kendini (3-5’lik, yani 3 "
+"hasarlık 5 saldırı) yakın dövüş silahıyla savundu. Menzilli saldırı (yay) "
+"daha güvenli olurdu."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:910
@@ -643,7 +644,7 @@ msgid ""
 "attack, so it could not defend itself."
 msgstr ""
 "Elf Savaşçınız bir <i>menzilli</i> saldırı silahı olan yayını kullandı "
-"(3-3’lük, yani 3 hasarlı 3 saldırı). Korkuluğun menzilli saldırı silahı "
+"(3-3’lük, yani 3 hasarlık 3 saldırı). Korkuluğun menzilli saldırı silahı "
 "olmadığı için bu saldırıya karşı kendini savunamadı."
 
 #. [message]: speaker=Delfador
@@ -665,7 +666,7 @@ msgstr "Birim Tanımları"
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:952
 msgid ""
 "You can right click on a unit to see a detailed <b>Unit Description</b>."
-msgstr "Bir birime sağ tıklayıp <b>Birim Tanımı</i>nı görebilirsin."
+msgstr "Bir birime sağ tıklayıp <b>Birim Tanımı</b>nı görebilirsin."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:962
@@ -679,10 +680,10 @@ msgid ""
 "needed. Take special care of units with the highest <i>experience points "
 "(XP)</i> so they can gain levels and become more powerful."
 msgstr ""
-"Bilgi:\n"
 "Yaralanan birimleri köylere tedaviye götürmeyi ve gerekiyorsa bir kaç birimi "
-"daha askere alabileceğinizi unutmayın. Tecrübe puanı (TP) yüksek birimleri "
-"terfi edebilmeleri için daha itinalı kullanmalısınız."
+"daha askere alabileceğinizi unutmayın. <i>Tecrübe puanı (TP)</i> yüksek "
+"birimleri terfi ederek daha güçlü hale gelebilmeleri için daha itinalı "
+"kullanmalısınız."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:974
@@ -696,7 +697,7 @@ msgid ""
 "each unit costs you one gold per turn."
 msgstr ""
 "Sahip olduğunuz her köy sadece bir birimin masrafını karşılar. Köy sayısını "
-"aşan birim başına her el bir altın kaybedersiniz."
+"aşan her birim için her el bir altın kaybedersiniz."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:986
@@ -758,7 +759,7 @@ msgstr "Ah! Bu eğitim benim için çok fazla..."
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1060
 msgid "The quintain is destroyed, and I have gained more experience!"
-msgstr "Efendim, korkuluk öldü ve ben daha fazla tecrübe kazandım!"
+msgstr "Korkuluk yokedildi ve ben daha fazla tecrübe kazandım!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1065
@@ -784,7 +785,7 @@ msgid ""
 "Now, Li’sar, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
 msgstr ""
-" Lisar, şimdi seni deneyim kazanman için daha fazla kukla ile başbaşa "
+" Lisar, şimdi deneyim kazanman için seni daha fazla kukla ile başbaşa "
 "bırakacağım! Ondan sonra asıl işlere başlayacağız..."
 
 #. [message]: speaker=narrator
@@ -798,8 +799,8 @@ msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
 msgstr ""
-"Bu kuklalar sadece siz yanına giderseniz saldırırlar. Dikkatli olursanız bir "
-"bir öldürebilirsiniz."
+"Bu kuklalar sadece siz yanına giderseniz saldırırlar. Dikkatli olursanız tek "
+"tek öldürebilirsiniz."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1163
@@ -842,7 +843,7 @@ msgstr ""
 #. [tutorial]: id=2_Tutorial
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:5
 msgid "Wesnoth Tutorial — Part II"
-msgstr "Wesnoth Öğreticisi - ll. kısım"
+msgstr "Wesnoth Öğreticisi — ll. kısım"
 
 #. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:43
@@ -882,7 +883,7 @@ msgstr "Bu kadar az canla yakalanmadan önce kaçsam iyi olur!"
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:123
 msgid "female^I hope I have a chance to retreat after this!"
-msgstr "Umarım bundan sonra bir geri çekilme şansım olur!"
+msgstr "Umarım bundan sonra geri çekilmek için bir şansım olur!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:124
@@ -961,7 +962,7 @@ msgstr ""
 "Elf kırsalı ve biz Elfler ormanda hızlı hareket ederiz, dolayısıyla zor "
 "isabet alırız. Buraya girdiklerine göre aptal olmalılar. Başlarını "
 "yenmelisin. Böylece bizi bir daha asla tehdit edemezler. Ben sana "
-"danışmanlık ederim."
+"danışmanlık yaparım."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:206
@@ -975,7 +976,7 @@ msgstr ""
 "Elf kırsalı ve biz Elfler ormanda hızlı hareket ederiz, dolayısıyla zor "
 "isabet alırız. Buraya girdiklerine göre aptal olmalılar. Başlarını "
 "yenmelisin. Böylece bizi bir daha asla tehdit edemezler. Ben sana "
-"danışmanlık ederim."
+"danışmanlık yaparım."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:212
@@ -1002,7 +1003,7 @@ msgid ""
 "By then, their leader will have recruited more units to send against us and "
 "the real fight will begin."
 msgstr ""
-"O zamana kadar önderleri başka birimleri askere almış ve üzerimize göndermiş "
+"O zamana kadar başları başka birimleri askere almış ve üzerimize göndermiş "
 "olur. İşte gerçek dövüş o zaman başlayacak."
 
 #. [event]
@@ -1033,13 +1034,13 @@ msgstr ""
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:226
 msgid "Let’s go! Attack!"
-msgstr "Hadi gidelim! Saldırın!"
+msgstr "Haydi gidelim! Saldırın!"
 
 #. [message]: speaker=student
 #. The "us" in "let's" refers to Galdrad and Li'sar.
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:228
 msgid "female^Let’s go! Attack!"
-msgstr "Hadi gidelim! Saldırın!"
+msgstr "Haydi gidelim! Saldırın!"
 
 #. [message]: speaker=Galdrad
 #. Addressing Konrad
@@ -1116,7 +1117,7 @@ msgstr ""
 "kalma tecrübeli askerlerinizi tanesi 20 altına <i>çağır</i>abilirsiniz. "
 "Böylece yüksek seviyeli askerlerinizi veya iyi yetenek ve mizaçlı "
 "birimlerinizi çağırarak senaryolar boyunca hiddetli bir ordu kurabilirsiniz. "
-"Bir birimi çağırmak için önderiniz bir içkalede dururken sağ tıklayın ve "
+"Bir birimi çağırmak için lideriniz bir içkalede dururken sağ tıklayın ve "
 "<i>çağır</i> seçeneğini seçin. Eskileri çağırırken yanlarına yeni birimler "
 "de almayı unutmayın."
 
@@ -1128,7 +1129,7 @@ msgid ""
 "them. Personally, I would recommend a balanced force of two archers, two "
 "fighters, and a shaman."
 msgstr ""
-"Ayrıca bu senaryoda 2 yeni birimin var: Elf okçular ve Elf şamanlar. Onları "
+"Ayrıca bu senaryoda 2 yeni birimin var: Elf Okçular ve Elf Şamanlar. Onları "
 "askere alınca sana daha fazla bilgi veririm. Bana kalsa; 2 okçu, 2 savaşçı "
 "ve 1 şamandan oluşan dengeli bir kuvvet kurmanı önerirdim."
 
@@ -1197,7 +1198,7 @@ msgstr ""
 "Vuruş. Diğeri de her şartta o saldırıya sabit %70 vurma olasılığı veren "
 "Sihirli özelliği.\n"
 "\n"
-"Yardım kısmında yetenekler, silah özellikleri, ve mizaçların tam listesi "
+"Yardım kısmında yetenekler, silah özellikleri ve mizaçların tam listesi "
 "bulunur."
 
 #. [message]: speaker=narrator
@@ -1235,7 +1236,7 @@ msgid ""
 "more income; there are some villages near the keep you can capture."
 msgstr ""
 "Askere aldığınız birimlerin hiçbiri hareket edemez ama siz hareket "
-"edebilirsiniz. Daha fazla gelire ihtiyacınız var; ve yakınlarda ele "
+"edebilirsiniz. Daha fazla gelire ihtiyacınız var ve yakınlarda ele "
 "geçirebileceğiniz köyler bulunuyor."
 
 #. [event]
@@ -1295,7 +1296,9 @@ msgstr ""
 msgid ""
 "Now, young man, it is time to discuss strategy. Your units are ready to "
 "attack, and the orcish leader has begun gathering his own troops."
-msgstr "Şimdi biraz taktik konuşalım genç adam."
+msgstr ""
+"Şimdi biraz taktik konuşalım genç adam. Birimlerin saldırmaya hazır ve "
+"orkbaşı sürüsünü toplamaya başladı."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:433
@@ -1303,8 +1306,8 @@ msgid ""
 "Now, young lady, it is time to discuss strategy. Your units are ready to "
 "attack, and the orcish leader has begun gathering his own troops."
 msgstr ""
-"Şimdi genç hanım, Taktik hakkında konuşma zamanı geldi. Birimlerin "
-"saldırmaya hazır, ve Orkbaşı askerlerini toplamaya başladı."
+"Şimdi biraz taktik konuşalım genç hanım. Birimlerin saldırmaya hazır ve "
+"orkbaşı sürüsünü toplamaya başladı."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:439
@@ -1334,7 +1337,7 @@ msgid ""
 "there; your Fighters will only suffer a 40% chance of being hit in return, "
 "while Shamans and Archers will only incur a 30% chance."
 msgstr ""
-"Evet öyle yapabilirsin. Ancak Elflerin (ve Orkların.) suda <i>savunma</i>sı "
+"Evet öyle yapabilirsin. Ancak Elflerin (ve orkların.) suda <i>savunma</i>sı "
 "kötüdür. Sığ geçitten yavaş yavaş geçerken korumasız olursun; düşmanın sana "
 "vurma ihtimali %80 olur. Elflerin ormanda savunması iyi diye sana tavsiyem "
 "ağaçlarda kalıp Orklara oradan saldırmak; Savaşçılarının vurulma ihtimali "
@@ -1383,7 +1386,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:463
 msgid "Long-distance Movement"
-msgstr "Uzun Mesafe Harket"
+msgstr "Uzun Mesafe Hareket"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:465
@@ -1417,9 +1420,9 @@ msgid ""
 "battle can turn quickly, and you don’t want to find yourself cut off from "
 "recruiting reinforcements."
 msgstr ""
-"İyi öğrenmişsin, Konrad. Oyunun erken safhalarında önderini yakın tutmak ve "
-"korumak iyi bir fikir. Savaşın akışı hızla yön değiştirebilir, kendini "
-"destek birlik çağıramayacak bir durumda bulmak istemezsin."
+"İyi öğrenmişsin, Konrad. Oyunun erken safhalarında liderini içkaleye yakın "
+"tutmak ve korumak iyi bir fikir. Savaşın akışı hızla yön değiştirebilir, "
+"kendini destek birlik çağıramayacak bir durumda bulmak istemezsin."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:482
@@ -1429,9 +1432,9 @@ msgid ""
 "battle can turn quickly, and you don’t want to find yourself cut off from "
 "recruiting reinforcements."
 msgstr ""
-"İyi öğrenmişsin, Li'sar. Oyunun erken safhalarında önderini yakın tutmak ve "
-"korumak iyi bir fikir. Savaşın akışı hızla yön değiştirebilir, kendini "
-"destek birlik çağıramayacak bir durumda bulmak istemezsin."
+"İyi öğrenmişsin, Li'sar. Oyunun erken safhalarında liderini içkaleye yakın "
+"tutmak ve korumak iyi bir fikir. Savaşın akışı hızla yön değiştirebilir, "
+"kendini destek birlik çağıramayacak bir durumda bulmak istemezsin."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:492
@@ -1473,14 +1476,14 @@ msgid ""
 "i> and cannot move further that turn. To move your troops onto that island "
 "without wading slowly through the water, you’ll have to kill the Grunt."
 msgstr ""
-"Hayır: Bir düşmana yaklaşınca onun <i>Etki Alanı</i>na girersiniz ve o el "
+"Hayır. Bir düşmana yaklaşınca onun <i>Etki Alanı</i>na girersiniz ve o el "
 "oradan daha ileri gidemezsiniz. Askerlerinizi sudan geçirmeye kalkarsanız "
 "yavaşlarlar; işi çabuklaştırmak için onu öldürmek zorundasınız."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:521
 msgid "Zone of Control"
-msgstr "Kontrol Alanı"
+msgstr "Etki Alanı"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:523
@@ -1526,7 +1529,7 @@ msgid ""
 "gained experience from striking the killing blow!"
 msgstr ""
 "Birkaç ork daha ve köprüye kadar yolumuz temiz! Ayrıca öldürücü darbeyi "
-"vurmaktan tecrübe puanı kazandım!"
+"vurarak tecrübe puanı kazandım!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:578
@@ -1535,7 +1538,7 @@ msgid ""
 "also gained experience from striking the killing blow!"
 msgstr ""
 "Birkaç ork daha ve köprüye kadar yolumuz temiz! Ayrıca öldürücü darbeyi "
-"vurmaktan tecrübe puanı kazandım!"
+"vurarak tecrübe puanı kazandım!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:599
@@ -1543,7 +1546,9 @@ msgid ""
 "Be careful! If you stand on the bridge you are exposed to attack from "
 "multiple directions! Even though the orcs have low defense in water, they "
 "will overwhelm you with their numbers."
-msgstr "Dikkatli olun: Köprüde kalırsanız çok yönlü saldırıda telef olursunuz."
+msgstr ""
+"Dikkatli olun: Köprüde kalırsanız çok yönlü saldırıda telef olursunuz. "
+"Orkların sudaki savunması az olsa da sayıca üstünlüklerini hesaba katın."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:615
@@ -1553,7 +1558,7 @@ msgid ""
 "without wading through the water, and you will be securely on a terrain with "
 "good defense."
 msgstr ""
-"İyi iş! Adanın köyü bizim. Ağaçları ork'lara karşı barikat kurmak için "
+"İyi iş! Adadaki köy bizim. Ağaçları orklara karşı barikat kurmak için "
 "kullanabilirsin; köprüden ancak birer birer gelebilirler ve böylece iyi "
 "savunmalı bir arazide güvende olursun. "
 
@@ -1564,7 +1569,7 @@ msgid ""
 "it if they try to sneak around via the ford! It will be hard to dislodge "
 "them if they do."
 msgstr ""
-"Kanalın yanındaki son köyü unutma. Eğer unutursan ork'lar nehirin üzerinden "
+"Kanalın yanındaki son köyü unutma. Eğer unutursan orklar nehirin üzerinden "
 "gizlice ele geçirirler! Başarırlarsa onları ordan çıkarmak zor olur."
 
 #. [message]: speaker=Galdrad
@@ -1584,8 +1589,8 @@ msgid ""
 "You’re venturing away from your keep. You might need recruit more units, and "
 "I doubt the orc leader will let you use his! Careful!"
 msgstr ""
-"İçkaleden uzaklaşıyorsunuz. Başka birimleri askere alman gerekebilir ve Or "
-"başının kendi kalesini kullanmana izin vereceğini sanmam! Dikkat et!"
+"İçkaleden uzaklaşıyorsunuz. Başka birimleri askere alman gerekebilir ve "
+"Orkbaşının kendi kalesini kullanmana izin vereceğini sanmam! Dikkat et!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:687
@@ -1626,11 +1631,11 @@ msgid ""
 "You can hover over the sky image below the minimap on the right to see the "
 "current time of day and who has the advantage."
 msgstr ""
-"Senaryo sırasında, zaman tur geçerek ilerleyecek. Bir birlik <i>yönelmesi</"
-"i> dört farklı şekilde olabilir : Adil, Tarafsız, Kaypak, veya İntikali. "
-"Günün saatine bağlı olarak her yönelme farklı bir ödül yada ceza alıcak. "
-"Küçük haritanın altındaki gökyüzü simgesinin üzerine gelerek saati ve o "
-"saatte kimin avantajı var öğrenebilirsin."
+"Senaryo sırasında, zaman eller bittikçe ilerleyecek. Bir birlik "
+"<i>yönelmesi</i> dört farklı şekilde olabilir : Adil, Tarafsız, Kaypak, veya "
+"İntikali. Günün saatine bağlı olarak her yönelme farklı bir ödül yada ceza "
+"alıcak. Küçük haritanın altındaki gökyüzü simgesinin üzerine gelerek saati "
+"ve o saatte kimin avantajı var öğrenebilirsin."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:710
@@ -1655,7 +1660,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:728
 msgid "Tracking Unused Units"
-msgstr "Kullanılmamış Birlik Takibi"
+msgstr "Kullanılmamış Birim Takibi"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:730
@@ -1669,7 +1674,7 @@ msgstr ""
 "Bir elde birimlerinizin tümünü kullandığınızdan emin olmanın bir yolu var: "
 "<b>n</b> tuşuna basarak birimden birime geçebilirsiniz, eğer <b>boşluk</b> "
 "tuşuna basarsanız o birimi elini bitirmiş olarak işaretlersiniz. Böylece "
-"sonradan yanlışlıkla hareket etmesini önlersiniz. <b>n</n> tuşu artık yeni "
+"sonradan yanlışlıkla hareket etmesini önlersiniz. <b>n</b> tuşu artık yeni "
 "bir birime geçmiyorsa elinizi gönül rahatlığı ile bitirebilirsiniz."
 
 #. [message]: speaker=narrator
@@ -1684,13 +1689,13 @@ msgid ""
 "conditions for a scenario are given under <b>Scenario Objectives</b> in the "
 "<b>Menu</b> menu."
 msgstr ""
-"Bu senaryoda, kazanmak için sadece Ork Başını yenmen gerekiyor. Senaryoyu "
-"kazanma şartları <b>Menu</b> menünün altında <b> Senaryo Amaçları </b> ."
+"Bu senaryoda, kazanmak için sadece Orkbaşını yenmen gerekiyor. Senaryoyu "
+"kazanma şartları <b>Menu</b> altında <b> Senaryo Amaçları </b> ."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:750
 msgid "Recruit the Right Units"
-msgstr "Doğru Orduları Askere Al"
+msgstr "Doğru Birimleri Askere Al"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:752
@@ -1699,12 +1704,12 @@ msgid ""
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgstr ""
 "Duruma uygun askerler almayı unutmayın. Okçular özellikle İzbandutlara, Kurt "
-"Binicilere ve Ork başına karşı etkilidirler."
+"Binicilere ve Orkbaşına karşı etkilidirler."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:761
 msgid "Hurry up and defeat the orcs before they become entrenched!"
-msgstr "Acele et ve Orklar sabitlenmeden onları yok et!"
+msgstr "Acele et ve Orklar yerleşmeden önce onları yok et!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:788
@@ -1731,7 +1736,7 @@ msgid ""
 "Their leader has moved into that village! He’s not as stupid as I thought. "
 "The village heals him each turn and provides good defense."
 msgstr ""
-"Liderleri kendini köye attı! Göründüğü kadar aptal değilmiş: her el tedavi "
+"Orkbaşı kendini köye attı! Göründüğü kadar aptal değilmiş: her el tedavi "
 "olduğu gibi iyi bir savunmaya da sahip oluyor."
 
 #. [event]
@@ -1762,10 +1767,10 @@ msgid ""
 "important to decide which units you want to advance, and give those units "
 "the best chances to gain experience."
 msgstr ""
-"Önderlerini öldürmek üzeresiniz! 2. seviyeden bir birim olduğundan, onun "
-"işini bitirecek birim 16 tecrübe puanı kazanacak. Seferberliklerde terfi "
-"ettirmek istediğiniz birimleri seçmek ve onlara en iyi tecrübe kazanma "
-"fırsatı vermek çok önemlidir."
+"Orkbaşını öldürmek üzeresiniz! 2. seviyeden bir birim olduğundan, onun işini "
+"bitirecek birim 16 tecrübe puanı kazanacak. Seferberliklerde terfi ettirmek "
+"istediğiniz birimleri seçmek ve onlara en iyi tecrübe kazanma fırsatını "
+"vermek çok önemlidir."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:901
@@ -1822,7 +1827,7 @@ msgstr ""
 msgid ""
 "Higher level units are powerful, but not invulnerable. Goodbye, $unit.name|."
 msgstr ""
-"2. seviyeden birimler güçlüdür, fakat yenilmez değildirler! Elveda $unit."
+"Yüksek seviyeden birimler güçlüdür, fakat yenilmez değildirler! Elveda $unit."
 "name|."
 
 #. [message]: speaker=Galdrad
@@ -1839,8 +1844,8 @@ msgid ""
 "Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
 "with many units at once during the day."
 msgstr ""
-"Ork başına dikkat edin: Geceleyin 36 YP’ye denk hasar verebilir! Gündüz "
-"vakti bir defada çok sayıda birimle saldırıp sağ bırakmamayı deneyin."
+"Orkbaşına dikkat edin: Geceleyin 36 YP’ye denk hasar verebilir! Gündüz vakti "
+"bir defada çok sayıda birimle saldırıp sağ bırakmamayı deneyin."
 
 #. [message]: speaker=unit
 #. The speaker is female
@@ -1852,10 +1857,10 @@ msgid ""
 "always has a 70% chance to hit, but it is not as powerful as the similar "
 "attack wielded by the Elvish Sorceress."
 msgstr ""
-"Terfi edince tamamen tedavi oldum!\n"
-"Her tur birlikleri 4 puan yerine 8 puanlık iyileştirebiliyorum, üstelik köye "
-"ulaşamasalar bile zehirleri iyileştirebilirim! Vurma şansı 70% olan ancak "
-"elf büyücüleri kadar vurmayan yeni bir sihirli saldırı öğrendim."
+"Terfi edince tamamen tedavi oldum! Her el birlikleri 4 puan yerine 8 puanlık "
+"iyileştirebiliyorum, üstelik köye ulaşamasalar bile zehirleri "
+"iyileştirebilirim! Vurma şansı 70% olan ancak elf büyücüleri kadar vurmayan "
+"yeni bir <i>sihirli</i> saldırı öğrendim."
 
 #. [message]: speaker=unit
 #. The speaker is female
@@ -1866,10 +1871,9 @@ msgid ""
 "damage each for 4 strikes. It also has the <i>magical</i> weapon special, "
 "meaning it always has a 70% chance to hit."
 msgstr ""
-"Terfi edince tamamen tedavi oldum!\n"
-"artık yakın birlikleri iyileştiremiyorum, Her dört saldırıya yedi hasar "
-"veren yeni bir ateş saldırım var.  Ayrıca 70% isabet oranı olan <i>sihirli</"
-"i> saldırı özelliğim var."
+"Terfi edince tamamen tedavi oldum! Artık yakın birlikleri iyileştiremiyorum, "
+"Her dört saldırıya yedi hasar veren yeni bir ateş saldırım var.  Ayrıca 70% "
+"isabet oranı olan <i>sihirli</i> saldırı özelliğim var."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1055
@@ -1879,8 +1883,8 @@ msgid ""
 "ability, and I deal 9 damage each for 4 attacks. Use me to dislodge hard-to-"
 "hit units."
 msgstr ""
-"Terfi edince tamamen tedavi oldum!\n"
-"Okumla daima %60 isabet kaydedebilirim ve 9 puanlık 4 saldırı yapabilirim. "
+"Terfi edince tamamen tedavi oldum! <i>Nişancı</i> yeteneğim sayesinde "
+"yayımla daima %60 isabet ihtimalim var ve 9 puanlık 4 saldırı yapabilirim. "
 "Beni vurulması zor birimleri söküp atmak için kullanın."
 
 #. [message]: speaker=unit
@@ -1902,10 +1906,9 @@ msgid ""
 "and I have a special ability: <i>Ambush</i>. I can hide in forests where "
 "enemies can only see me if they are right next to me."
 msgstr ""
-"Terfi edince tamamen tedavi oldum!\n"
-"Yayda da kılıçta da iyiyim ve özel bir yeteneğe sahibim: pusu kurabilirim. "
-"Ormanda gizlendiğim takdirde düşman ancak burnumun dibine gelince beni "
-"görebilir."
+"Terfi edince tamamen tedavi oldum! Yayda da kılıçta da iyiyim ve özel bir "
+"yeteneğe sahibim: <i>Pusu</i> kurabilirim. Ormanda gizlendiğim takdirde "
+"düşman ancak burnumun dibine gelince beni görebilir."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1070
@@ -1914,9 +1917,9 @@ msgid ""
 "sword, and I have a special ability: <i>Ambush</i>. I can hide in forests "
 "where enemies can only see me if they are right next to me."
 msgstr ""
-"Terfi edince tamamen tedavi oldum! Hem kılıçta hem yayda iyiyim ve özel bir "
-"yeteneğim var: <i>Pusu</i>. Bunun sayesinde ormanlarda saklanabilirim "
-"böylece düşmanlar yalnızca tam yanımdalarsa beni görebilirler."
+"Terfi edince tamamen tedavi oldum! Yayda da kılıçta da iyiyim ve özel bir "
+"yeteneğe sahibim: <i>Pusu</i> kurabilirim. Ormanda gizlendiğim takdirde "
+"düşman ancak burnumun dibine gelince beni görebilir."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1084
@@ -1927,7 +1930,7 @@ msgid ""
 "level units around me do 25% more damage, so position me carefully!"
 msgstr ""
 "Terfi edince tamamen tedavi oldum! Hem kılıçta hem yayda iyiyim ve özel bir "
-"yeteneğim var: <i>Önderlik</i>. Elf Kahramana oranla daha az hasar "
+"yeteneğim var: <i>Liderlik</i>. Elf Kahramana oranla daha az hasar "
 "veriyorum, ancak yeteneğim sayesinde müttefiklerimin daha iyi savaşmasını "
 "sağlıyorum. Etrafımdaki 1. seviye birimler %25 daha fazla vuruyor, o yüzden "
 "yerimi iyi seçin!"
@@ -1941,47 +1944,33 @@ msgid ""
 "attacks to do more damage!"
 msgstr ""
 "Terfi edince tamamen tedavi oldum! Kılıçla fena sayılmam: her biri 8 puanlık "
-"hasar verebilen 4 saldırı yapabilirim. Elf Kaptanı gibi önderlik yeteneğim "
+"hasar verebilen 4 saldırı yapabilirim. Elf Yüzbaşı gibi liderlik yeteneğim "
 "olmasa da üstün dövüş yeteneklerim saldırılarımın daha çok hasar vermesini "
 "sağlıyor!"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1110
-#, fuzzy
-#| msgid ""
-#| "Advancing a level has fully healed me! I am particularly good with the "
-#| "sword, dealing 8 damage in 4 attacks. While I don’t have the Leadership "
-#| "abilities of the Elvish Captain, my superior fighting skills allow my "
-#| "attacks to do more damage!"
 msgid ""
 "Advancing a level has fully healed me! I have become better at using the "
 "sword, dealing 9 damage in 4 attacks. Although I do not have any special "
 "abilities, my fighting skills will allow me to beat the orcs by dealing more "
 "damage!"
 msgstr ""
-"Terfi edince tamamen tedavi oldum! Kılıçla fena sayılmam: her biri 8 puanlık "
-"hasar verebilen 4 saldırı yapabilirim. Elf Kaptanı gibi önderlik yeteneğim "
-"olmasa da üstün dövüş yeteneklerim saldırılarımın daha çok hasar vermesini "
-"sağlıyor!"
+"Terfi edince tamamen tedavi oldum! Kılıçla fena sayılmam: her biri 9 hasar "
+"verebilen 4 saldırı yapabilirim. Özel yeteneklerim olmasa da üstün dövüş "
+"yeteneklerim orklara saldırıda daha çok hasar vermemi sağlıyor!"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1111
-#, fuzzy
-#| msgid ""
-#| "Advancing a level has fully healed me! I am particularly good with the "
-#| "sword, dealing 8 damage in 4 attacks. While I don’t have the Leadership "
-#| "abilities of the Elvish Captain, my superior fighting skills allow my "
-#| "attacks to do more damage!"
 msgid ""
 "female^Advancing a level has fully healed me! I have become better at using "
 "the sword, dealing 9 damage in 4 attacks. Although I do not have any special "
 "abilities, my fighting skills will allow me to beat the orcs by dealing more "
 "damage!"
 msgstr ""
-"Terfi edince tamamen tedavi oldum! Kılıçla fena sayılmam: her biri 8 puanlık "
-"hasar verebilen 4 saldırı yapabilirim. Elf Kaptanı gibi önderlik yeteneğim "
-"olmasa da üstün dövüş yeteneklerim saldırılarımın daha çok hasar vermesini "
-"sağlıyor!"
+"Terfi edince tamamen tedavi oldum! Kılıçla fena sayılmam: her biri 9 hasar "
+"verebilen 4 saldırı yapabilirim. Özel yeteneklerim olmasa da üstün dövüş "
+"yeteneklerim orklara saldırıda daha çok hasar vermemi sağlıyor!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1120
@@ -2013,9 +2002,9 @@ msgid ""
 "seven scenarios for your units to gain experience and advance levels."
 msgstr ""
 "Orkları yendin! Strateji ipuçları içeren çaylak seviyesinde bir seferberlik "
-"denemek isteyebilirsin. <i> İki Kardeşin Hikayesi <i>en kolay ve önerilen "
-"seferberlik. <i>Ork İstilasında<i> deneyim kazanıp seviye atlayabilmen için "
-"yedi senaryolu öğreticidekine benzer bir elf ordun var."
+"denemek isteyebilirsin. <i>İki Kardeşin Hikayesi</i> en kolay ve önerilen "
+"seferberlik. <i>Bir Ork Saldırısı</i>nda ise deneyim kazanıp seviye "
+"atlayabilmen için yedi senaryolu öğreticidekine benzer bir elf ordun var."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1191
@@ -2040,7 +2029,7 @@ msgid ""
 "attack from enemies. However, they have the potential to become great "
 "warriors one day."
 msgstr ""
-"Genç ve aceleci olan savaşçılar kılıçla savaşırlar ve düşman saldırılarına "
+"Genç ve aceleci olan sSavaşçılar kılıçla savaşırlar ve düşman saldırılarına "
 "karşı savunmasızdırlar. Bununla beraber bir gün büyük bir cengaver olma "
 "ihtimalleri hep vardır."
 
@@ -2060,14 +2049,14 @@ msgid ""
 "Quintains are used to practice swordplay and jousting on. It would be "
 "extremely unusual to be attacked by one."
 msgstr ""
-"Korkuluklar kılıç oyunlarında ve aklı mızrak döğüşlerinde eğitim amacıyla "
+"Korkuluklar kılıç oyunlarında ve atlı mızrak döğüşlerinde eğitim amacıyla "
 "kullanılırlar. Onlardan birinin saldırısına uğramak oldukça olağandışı "
 "sayılır."
 
 #. [unit_type]: id=Warrior, race=human
 #: data/campaigns/tutorial/units/Warrior.cfg:4
 msgid "Warrior"
-msgstr ""
+msgstr "Savaşçı"
 
 #. [unit_type]: id=Warrior, race=human
 #. [unit_type]: id=Warrioress, race=human
@@ -2077,11 +2066,11 @@ msgid ""
 "With more experience, Fighters have honed their skills with the sword and "
 "become powerful Warriors."
 msgstr ""
+"Savaşçılar deneyim kazandıkça, yeteneklerini kılıçla geliştirip daha güçlü "
+"Savaşçılara dönüşürler."
 
 #. [unit_type]: id=Warrioress, race=human
 #: data/campaigns/tutorial/units/Warrioress.cfg:4
-#, fuzzy
-#| msgid "female^Fighter"
 msgid "female^Warrior"
 msgstr "Savaşçı"
 
@@ -2096,7 +2085,7 @@ msgid ""
 "Don’t forget, you can press <b>u</b> to undo most things if you make a "
 "mistake."
 msgstr ""
-"Unutmayın, hata yaparsanız çoğu hareketi <b>U</b> tuşuna basarak geri "
+"Unutmayın, hata yaparsanız çoğu hareketi <b>u</b> tuşuna basarak geri "
 "alabilirsiniz."
 
 #: data/campaigns/tutorial/utils/utils.cfg:95

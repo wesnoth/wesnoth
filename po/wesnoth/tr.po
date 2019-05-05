@@ -4,21 +4,21 @@
 #
 # Nils Kneuper <crazy-ivanovic@gmx.net>, 2005.
 # ihsan Haluk AKIN <ihsan_akin@yahoo.com>, 2005, 2006.
-# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, 2009.
+# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, ... 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-03-11 16:10+0300\n"
-"PO-Revision-Date: 2019-03-02 14:51+0300\n"
+"PO-Revision-Date: 2019-05-03 00:51+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
-"Language-Team: Turkish <ceviri@belgeler.gen.tr>\n"
+"Language-Team: Turkish\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -38,7 +38,7 @@ msgstr "Gzip"
 #. [option]: id=gzip
 #: data/advanced_preferences.cfg:10
 msgid "save_compression_desc^Default compression, faster"
-msgstr "Sıradan sıkıştırma, daha hızlı"
+msgstr "Öntanımlı sıkıştırma, daha hızlı"
 
 #. [option]: id=bzip2
 #: data/advanced_preferences.cfg:14
@@ -48,17 +48,17 @@ msgstr "Bzip2"
 #. [option]: id=bzip2
 #: data/advanced_preferences.cfg:15
 msgid "save_compression_desc^Best compression, slower"
-msgstr "iyi sıkıştırma, daha yavaş"
+msgstr "En iyi sıkıştırma, daha yavaş"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:19
 msgid "save_compression^No"
-msgstr "sıkıştırma"
+msgstr "Sıkıştırma yok"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:20
 msgid "save_compression_desc^Large plain text files"
-msgstr "Metin dosyası olarak kalır"
+msgstr "Düz metin dosyası olarak"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
@@ -83,22 +83,22 @@ msgstr "Fare pencereden çıkınca kaydırma sürsün"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:54
 msgid "Show combat"
-msgstr "Dövüşleri göster"
+msgstr "Dövüşü göster"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:61
 msgid "Auto-open whisper windows in lobby"
-msgstr "Lobi'de fısıltı pencerelerini doğrudan aç"
+msgstr "Salonda fısıltı pencerelerini doğrudan aç"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:68
 msgid "Group players in lobby"
-msgstr "Lobi'deki oyuncuları kümele"
+msgstr "Salondaki oyuncuları kümelere ayır"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:75
 msgid "Follow unit actions"
-msgstr "Birimlerin hareketlerini takip et"
+msgstr "Birimlerin hareketlerini izle"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:76
@@ -124,12 +124,12 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:103
 msgid "Use 12-hour clock format"
-msgstr "12-saat saat dilimini kullan"
+msgstr "12 saatlik gösterimi kullan"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:110
 msgid "Confirm loading saves from a different version"
-msgstr "Başka bir sürümden kayıtlı oyun yüklerken sor"
+msgstr " Başka bir sürümün kayıtlı oyununu yüklerken sor"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:117
@@ -148,28 +148,29 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:125
 msgid "Editor recent files limit"
-msgstr "Editörün son dosyalar sınırı"
+msgstr "Düzenleyici son dosyalar sınırı"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:126
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
-msgstr "Editördeki son dosyalar menüsünde kaç öğe gösterileceğini belirler"
+msgstr ""
+"Düzenleyicideki son dosyalar menüsünde kaç öğe gösterileceğini belirler"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:136
 msgid "Show color cursors"
-msgstr "Renkli işaretçi"
+msgstr "Renkli imleçleri göster"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:137
 msgid "Use colored mouse cursors"
-msgstr "Renkli fare işaretçisi kullan"
+msgstr "Renkli fare imleçlerini kullan"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:144
 msgid "Graphics scaling options"
-msgstr "Grafik ölçeklendirme ayarları"
+msgstr "Grafik ölçeklendirme seçenekleri"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:150
@@ -184,19 +185,19 @@ msgstr "Kayıt tutma"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:162
 msgid "Allow damage calculation with Monte Carlo simulation"
-msgstr "Hasar hesapları Monte Carlo yöntemi ile hesaplansın"
+msgstr "Hasar hesaplanırken Monte Carlo yöntemi kullanılsın"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:163
 msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
-msgstr ""
+msgstr "Hasar hesaplanırken olasılık hesapları yerine dövüş benzetimini kullan"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:170
 msgid "Show haloing effects"
-msgstr "Nur efekti"
+msgstr "Nur efekti göster"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:171
@@ -227,7 +228,6 @@ msgstr "Deneysel YRSÜ çarpışması kullan"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:187
-#, fuzzy
 msgid ""
 "Enables more determinstic chance-to-hit calculations. This is an "
 "experimental feature designed to bring the observed hit/miss rate more in "
@@ -240,104 +240,104 @@ msgstr ""
 "oyunda gösterilen oranlara yaklaştırmak için kullanılan deneysel bir "
 "özelliktir. \n"
 " \n"
-"\v\vNot: Bu ayar sadece tek oyunculu oyunları etkiler ve çalışması için oyun "
-"kurarken 'Rastgele mebdesini kaydet' seçeneğinin etkinleştirilmiş olması "
+"Not: Bu ayar sadece tek oyunculu oyunları etkiler ve çalışması için oyun "
+"kurarken 'Rastgele dizesini kaydet' seçeneğinin etkinleştirilmiş olması "
 "gerekir."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:197
 msgid "Joystick support"
-msgstr "Oyun kolu desteği"
+msgstr "Oyun çubuğu desteği"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:204
 msgid "Joystick: number of the scroll X-axis joystick"
-msgstr "Oyun kolu: Ekranı X ekseninde kaydırma çubuğunun değeri"
+msgstr "Oyun çubuğu: Çubuğun X ekseninde kaydırma değeri"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:214
 msgid "Joystick: number of the scroll X-axis"
-msgstr "Oyun kolu: Ekranı X ekseninde kaydırma değeri"
+msgstr "Oyun çubuğu: X ekseninde kaydırma değeri"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:224
 msgid "Joystick: number of the scroll Y-axis joystick"
-msgstr "Oyun kolu: Ekranı Y ekseninde kaydırma çubuğunun değeri"
+msgstr "Oyun çubuğu: Çubuğun Y ekseninde kaydırma değeri"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:234
 msgid "Joystick: number of the scroll Y-axis"
-msgstr "Oyun kolu: Ekranı Y ekseninde kaydırma değeri"
+msgstr "Oyun çubuğu: Y ekseninde kaydırma değeri"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:244
 msgid "Joystick: deadzone of the scrolling stick"
-msgstr "Oyun kolu: kaydırma çubuğunun ölü-bölgesi"
+msgstr "Oyun çubuğu: Kaydırma çubuğunun ölü-bölgesi"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:254
 msgid "Joystick: number of the cursor X-axis joystick"
-msgstr "Oyun kolu: İşaretçiyi X ekseninde hareket ettirme çubuğunun değeri"
+msgstr "Oyun çubuğu: Çubuğun X eksenindeki imleç değeri"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:264
 msgid "Joystick: number of the cursor X-axis"
-msgstr "Oyun kolu: İşaretçiyi X ekseninde hareket ettirme değeri"
+msgstr "Oyun çubuğu: X eksenindeki imleç değeri"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:274
 msgid "Joystick: number of the cursor Y-axis joystick"
-msgstr "Oyun kolu: İşaretçiyi Y ekseninde hareket ettirme çubuğunun değeri"
+msgstr "Oyun çubuğu: Çubuğun Y eksenindeki imleç değeri"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:284
 msgid "Joystick: number of the cursor Y-axis"
-msgstr "Oyun kolu: İşaretçiyi Y ekseninde hareket ettirme değeri"
+msgstr "Oyun çubuğu: Y eksenindeki imleç değeri"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:294
 msgid "Joystick: deadzone of the cursor stick"
-msgstr "Oyun kolu: İşaretçi çubuğunun ölü-bölgesi"
+msgstr "Oyun çubuğu: İmleç çubuğunun ölü-bölgesi"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:304
 msgid "Joystick: number of the mouse X-axis joystick"
-msgstr "Oyun kolu: Fareyi X ekseninde hareket ettirme çubuğunun değeri"
+msgstr "Oyun çubuğu: Çubuğun X eksenindeki fare değeri"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:314
 msgid "Joystick: number of the mouse X-axis"
-msgstr "Oyun kolu: Fareyi X ekseninde hareket ettirme değeri"
+msgstr "Oyun çubuğu: X eksenindeki fare değeri"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:324
 msgid "Joystick: number of the mouse Y-axis joystick"
-msgstr "Oyun kolu: Fareyi Y ekseninde hareket ettirme çubuğunun değeri"
+msgstr "Oyun çubuğu: Çubuğun Y eksenindeki fare değeri"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:334
 msgid "Joystick: number of the mouse Y-axis"
-msgstr "Oyun kolu: Fareyi Y ekseninde hareket ettirme değeri"
+msgstr "Oyun çubuğu: Y eksenindeki fare değeri"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:344
 msgid "Joystick: deadzone of the mouse stick"
-msgstr "Oyun kolu: Fare çubuğunun ölü-bölgesi"
+msgstr "Oyun çubuğu: Fare çubuğunun ölü-bölgesi"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:354
 msgid "Joystick: number of the thrust axis joystick"
-msgstr "Oyun kolu: Baskı ekseni çubuğunun değeri"
+msgstr "Oyun çubuğu: Çubuğun itme eksenindeki değeri"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:364
 msgid "Joystick: number of the thrust axis"
-msgstr "Oyun kolu: Baskı ekseninin değeri"
+msgstr "Oyun çubuğu: İtme eksenindeki değer"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:374
 msgid "Joystick: deadzone of the thruster"
-msgstr "Baskı çubuğunun ölü-bölgesi"
+msgstr "Oyun çubuğu: İticinin ölü-bölgesi"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -352,7 +352,7 @@ msgstr "zehirlenmiş"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:260
 #: data/lua/wml/objectives.lua:38
 msgid "Gold carryover:"
-msgstr "Altın taşınma:"
+msgstr "Aktarılan altın:"
 
 #. [note]
 #. [lua]: generate_objectives
@@ -374,7 +374,7 @@ msgstr "Genel Amaçlı Yönetim ve Eşgüdüm"
 #. [about]
 #: data/core/about.cfg:298
 msgid "Internationalization Managers"
-msgstr "Uluslararası yapma sorumluları"
+msgstr "Uluslararasılaştırma Yöneticileri"
 
 #. [about]
 #: data/core/about.cfg:323
@@ -414,7 +414,7 @@ msgstr "Paketleyiciler"
 #. [about]
 #: data/core/about.cfg:1048
 msgid "Miscellaneous Contributors"
-msgstr "Diğer katkıcılar"
+msgstr "Diğer Katkıcılar"
 
 #. [about]
 #: data/core/about.cfg:1736
@@ -720,7 +720,7 @@ msgstr "Örs"
 #. [item]: id=archery-target
 #: data/core/editor/items.cfg:36
 msgid "Archery Target"
-msgstr "Hedef tahtası"
+msgstr "Hedef Tahtası"
 
 #. [item]: id=armor-golden
 #: data/core/editor/items.cfg:42
@@ -740,17 +740,17 @@ msgstr "Balta"
 #. [item]: id=ball-blue
 #: data/core/editor/items.cfg:60
 msgid "Blue Ball"
-msgstr "Mavi top"
+msgstr "Mavi Top"
 
 #. [item]: id=ball-green
 #: data/core/editor/items.cfg:66
 msgid "Green Ball"
-msgstr "Yeşil top"
+msgstr "Yeşil Top"
 
 #. [item]: id=ball-magenta
 #: data/core/editor/items.cfg:72
 msgid "Magenta Ball"
-msgstr "Galibarda top"
+msgstr "Galibarda Top"
 
 #. [item]: id=barrel
 #: data/core/editor/items.cfg:78
@@ -786,12 +786,12 @@ msgstr "Kitap"
 #. [item]: id=bow-crystal
 #: data/core/editor/items.cfg:132
 msgid "Crystal Bow"
-msgstr "Kristal yay"
+msgstr "Kristal Yay"
 
 #. [item]: id=bow-elven
 #: data/core/editor/items.cfg:138
 msgid "Elven Bow"
-msgstr "Elf yayı"
+msgstr "Elf Yayı"
 
 #. [item]: id=bow
 #: data/core/editor/items.cfg:144
@@ -811,7 +811,7 @@ msgstr "Mangal"
 #. [item]: id=buckler
 #: data/core/editor/items.cfg:162
 msgid "Buckler"
-msgstr "Küçük kalkan"
+msgstr "Küçük Kalkan"
 
 #. [item]: id=burial
 #: data/core/editor/items.cfg:168
@@ -826,12 +826,12 @@ msgstr "Kafes"
 #. [item]: id=chest-plain-closed
 #: data/core/editor/items.cfg:180
 msgid "Closed Plain Chest"
-msgstr "Kapalı sade sandık"
+msgstr "Kapalı Sade Sandık"
 
 #. [item]: id=chest-plain-open
 #: data/core/editor/items.cfg:186
 msgid "Open Plain Chest"
-msgstr "Açık sade sandık"
+msgstr "Açık Sade Sandık"
 
 #. [item]: id=chest
 #: data/core/editor/items.cfg:192
@@ -846,17 +846,17 @@ msgstr "Yeşil Pelerin"
 #. [item]: id=coffin-closed
 #: data/core/editor/items.cfg:204
 msgid "Closed Coffin"
-msgstr "Kapalı tabut"
+msgstr "Kapalı Tabut"
 
 #. [item]: id=dragonstatue
 #: data/core/editor/items.cfg:210
 msgid "Dragon Statue"
-msgstr "Ejderha heykeli"
+msgstr "Ejderha Heykeli"
 
 #. [item]: id=flame-sword
 #: data/core/editor/items.cfg:216
 msgid "Flaming Sword"
-msgstr "Ateşli kılıç"
+msgstr "Yanan Kılıç"
 
 #. [item]: id=flower1
 #. [item]: id=flower2
@@ -870,38 +870,38 @@ msgstr "Çiçek"
 #. [item]: id=gohere
 #: data/core/editor/items.cfg:246
 msgid "Go Here Overlay"
-msgstr "Buraya git kaplaması"
+msgstr "Buraya Git Kaplaması"
 
 #. [item]: id=gold-coins-large
 #: data/core/editor/items.cfg:252
 msgid "Large Pile of Gold Coins"
-msgstr "Büyük altın sikke yığını"
+msgstr "Büyük Altın Sikke Yığını"
 
 #. [item]: id=gold-coins-medium
 #: data/core/editor/items.cfg:258
 msgid "Pile of Gold Coins"
-msgstr "Altın sikke yığını"
+msgstr "Altın Sikke Yığını"
 
 #. [item]: id=gold-coins-small
 #: data/core/editor/items.cfg:264
 msgid "Small Pile of Gold Coins"
-msgstr "Küçük altın sikke yığını"
+msgstr "Küçük Altın Sikke Yığını"
 
 #. [item]: id=grain-sheaf
 #: data/core/editor/items.cfg:270
 msgid "Grain Sheaf"
-msgstr "Buğday bağlamı"
+msgstr "Buğday Demeti"
 
 #. [item]: id=hammer-runic
 #: data/core/editor/items.cfg:276
 msgid "Runic Hammer"
-msgstr "Rünik çekiç"
+msgstr "Rünik Çekiç"
 
 #. [item]: id=holly-water
 #. [object]
 #: data/core/editor/items.cfg:282 data/core/macros/items.cfg:278
 msgid "Holy Water"
-msgstr "Kutsal su"
+msgstr "Okunmuş Su"
 
 #. [item]: id=key
 #: data/core/editor/items.cfg:288
@@ -911,12 +911,12 @@ msgstr "Anahtar"
 #. [item]: id=leather-pack
 #: data/core/editor/items.cfg:294
 msgid "Leather Pack"
-msgstr "Deri yığını"
+msgstr "Deri Yığını"
 
 #. [item]: id=orcish-flag
 #: data/core/editor/items.cfg:300
 msgid "Orcish Flag"
-msgstr "Ork bayrağı"
+msgstr "Ork Bayrağı"
 
 #. [item]: id=ornate1
 #. [item]: id=ornate2
@@ -927,17 +927,17 @@ msgstr "Süs"
 #. [item]: id=potion-blue
 #: data/core/editor/items.cfg:318
 msgid "Blue Potion"
-msgstr "Mavi iksir"
+msgstr "Mavi İksir"
 
 #. [item]: id=potion-green
 #: data/core/editor/items.cfg:324
 msgid "Green Potion"
-msgstr "Yeşil iksir"
+msgstr "Yeşil İksir"
 
 #. [item]: id=potion-gray
 #: data/core/editor/items.cfg:330
 msgid "Gray Potion"
-msgstr "Gri iksir"
+msgstr "Gri İksir"
 
 #. [item]: id=potion-poison
 #. [object]: id={ID}
@@ -948,37 +948,37 @@ msgstr "Zehir"
 #. [item]: id=potion-red
 #: data/core/editor/items.cfg:342
 msgid "Red Potion"
-msgstr "Kırmızı iksir"
+msgstr "Kırmızı İksir"
 
 #. [item]: id=potion-yellow
 #: data/core/editor/items.cfg:348
 msgid "Yellow Potion"
-msgstr "Sarı iksir"
+msgstr "Sarı İksir"
 
 #. [item]: id=ring-brown
 #: data/core/editor/items.cfg:354
 msgid "Brown Ring"
-msgstr "Kahverengi yüzük"
+msgstr "Kahverengi Yüzük"
 
 #. [item]: id=ring-gold
 #: data/core/editor/items.cfg:360
 msgid "Golden Ring"
-msgstr "Altın yüzük"
+msgstr "Altın Yüzük"
 
 #. [item]: id=ring-red
 #: data/core/editor/items.cfg:366
 msgid "Red Ring"
-msgstr "Kırmızı yüzük"
+msgstr "Kırmızı Yüzük"
 
 #. [item]: id=ring-silver
 #: data/core/editor/items.cfg:372
 msgid "Silver Ring"
-msgstr "Gümüş yüzük"
+msgstr "Gümüş Yüzük"
 
 #. [item]: id=ring-white
 #: data/core/editor/items.cfg:378
 msgid "White Ring"
-msgstr "Beyaz yüzük"
+msgstr "Beyaz Yüzük"
 
 #. [item]: id=scarecrow
 #: data/core/editor/items.cfg:384
@@ -988,17 +988,17 @@ msgstr "Korkuluk"
 #. [item]: id=sceptre-of-fire
 #: data/core/editor/items.cfg:390
 msgid "Sceptre of Fire"
-msgstr "Ateş asası"
+msgstr "Ateş Asası"
 
 #. [item]: id=spear-fancy
 #: data/core/editor/items.cfg:396
 msgid "Fancy Spear"
-msgstr "Süslü mızrak"
+msgstr "Süslü Mızrak"
 
 #. [item]: id=staff-magic
 #: data/core/editor/items.cfg:402
 msgid "Magic Staff"
-msgstr "Büyü asası"
+msgstr "Büyü Asası"
 
 #. [item]: id=staff
 #: data/core/editor/items.cfg:408
@@ -1008,7 +1008,7 @@ msgstr "Asa"
 #. [item]: id=stone-tablet
 #: data/core/editor/items.cfg:414
 msgid "Stone Tablet"
-msgstr "Taş yazıt"
+msgstr "Taş Yazıt"
 
 #. [item]: id=storm-trident
 #. [object]
@@ -1020,7 +1020,7 @@ msgstr "Yıldırım Çatalı"
 #. [item]: id=straw-bale2
 #: data/core/editor/items.cfg:426 data/core/editor/items.cfg:432
 msgid "Bale of Straw"
-msgstr "Hasır balyası"
+msgstr "Saman Balyası"
 
 #. [item]: id=sword
 #: data/core/editor/items.cfg:438
@@ -1035,27 +1035,27 @@ msgstr "Manzara"
 #. [item]: id=castle-ruins
 #: data/core/editor/items.cfg:451
 msgid "Castle Ruins"
-msgstr "Kale harabeleri"
+msgstr "Kale Harabeleri"
 
 #. [item]: id=circle-magic-glow
 #: data/core/editor/items.cfg:457
 msgid "Glowing Magic Circle"
-msgstr "Parlayan büyü çemberi"
+msgstr "Parlayan Büyü Çemberi"
 
 #. [item]: id=circle-magic
 #: data/core/editor/items.cfg:463
 msgid "Magic Circle"
-msgstr "Büyü çemberi"
+msgstr "Büyü Çemberi"
 
 #. [item]: id=dwarven-doors-closed
 #: data/core/editor/items.cfg:469
 msgid "Closed Dwarven Doors"
-msgstr "Kapalı cüce kapıları"
+msgstr "Kapalı Cüce Kapıları"
 
 #. [item]: id=fire
 #: data/core/editor/items.cfg:476
 msgid "Campfire"
-msgstr "Kamp ateşi"
+msgstr "Kamp Ateşi"
 
 #. [item]: id=flames
 #: data/core/editor/items.cfg:483
@@ -1065,17 +1065,17 @@ msgstr "Alevler"
 #. [item]: id=gate-rusty-se
 #: data/core/editor/items.cfg:489
 msgid "Rusty Gate South East"
-msgstr "Paslı kapı güneydoğu"
+msgstr "Paslı Kapı Güneydoğu"
 
 #. [item]: id=gate-rusty-sw
 #: data/core/editor/items.cfg:495
 msgid "Rusty Gate South West"
-msgstr "Paslı kapı güneybatı"
+msgstr "Paslı Kapı Güneybatı"
 
 #. [item]: id=icepack1
 #: data/core/editor/items.cfg:501
 msgid "Ice Pack"
-msgstr "Buz yığını"
+msgstr "Buz Yığını"
 
 #. [item]: id=leanto
 #: data/core/editor/items.cfg:507
@@ -1085,7 +1085,7 @@ msgstr "Müştemilat"
 #. [item]: id=lighthouse
 #: data/core/editor/items.cfg:512
 msgid "Lighthouse"
-msgstr "Deniz feneri"
+msgstr "Deniz Feneri"
 
 #. [item]: id=mausoleum
 #: data/core/editor/items.cfg:520
@@ -1095,7 +1095,7 @@ msgstr "Türbe"
 #. [item]: id=mine-abandoned
 #: data/core/editor/items.cfg:526
 msgid "Abandoned Mine"
-msgstr "Terk edilmiş maden"
+msgstr "Terkedilmiş Maden"
 
 #. [item]: id=monolith1
 #. [item]: id=monolith2
@@ -1109,28 +1109,28 @@ msgstr "Yekpare Anıt"
 #. [item]: id=nest-empty
 #: data/core/editor/items.cfg:556
 msgid "Empty Nest"
-msgstr "Boş yuva"
+msgstr "Boş Yuva"
 
 #. [item]: id=nest-full
 #: data/core/editor/items.cfg:562
 msgid "Full Nest"
-msgstr "Dolu yuva"
+msgstr "Dolu Yuva"
 
 #. [item]: id=oak-leaning
 #: data/core/editor/items.cfg:568
 msgid "Leaning Oak"
-msgstr "Yaslanmış meşe"
+msgstr "Boynubükük Meşe"
 
 #. [item]: id=pine1
 #. [item]: id=pine2
 #: data/core/editor/items.cfg:574 data/core/editor/items.cfg:580
 msgid "Pine Tree"
-msgstr "Çam ağacı"
+msgstr "Çam Ağacı"
 
 #. [item]: id=rock-cairn
 #: data/core/editor/items.cfg:586
 msgid "Rock Cairn"
-msgstr "Taş höyük"
+msgstr "Taş Höyük"
 
 #. [item]: id=rock1
 #. [item]: id=rock2
@@ -1168,18 +1168,18 @@ msgstr "Rünik yazı"
 #: data/core/editor/items.cfg:670 data/core/editor/items.cfg:676
 #: data/core/editor/items.cfg:682 data/core/editor/items.cfg:688
 msgid "Glowing Rune"
-msgstr "Parlayan rünik yazı"
+msgstr "Parlayan Rünik Yazı"
 
 #. [item]: id=shipwreck
 #. [item]: id=wreck
 #: data/core/editor/items.cfg:694 data/core/editor/items.cfg:845
 msgid "Shipwreck"
-msgstr "Gemi enkazı"
+msgstr "Gemi Enkazı"
 
 #. [item]: id=signpost
 #: data/core/editor/items.cfg:699
 msgid "Signpost"
-msgstr "İşaret direği"
+msgstr "İşaret Direği"
 
 #. [item]: id=slab1
 #: data/core/editor/items.cfg:705
@@ -1189,12 +1189,12 @@ msgstr "Levha"
 #. [item]: id=snowbits
 #: data/core/editor/items.cfg:711
 msgid "Piles of Snow"
-msgstr "Kar yığınları"
+msgstr "Kar Yığınları"
 
 #. [item]: id=summoning-center
 #: data/core/editor/items.cfg:718
 msgid "Summoning Center"
-msgstr "Çağırma merkezi"
+msgstr "Çağırma Merkezi"
 
 #. [item]: id=summoning-circle1
 #. [item]: id=summoning-circle2
@@ -1206,7 +1206,7 @@ msgstr "Çağırma merkezi"
 #: data/core/editor/items.cfg:736 data/core/editor/items.cfg:742
 #: data/core/editor/items.cfg:748 data/core/editor/items.cfg:754
 msgid "Summoning Circle"
-msgstr "Çağırma çemberi"
+msgstr "Çağırma Çemberi"
 
 #. [item]: id=temple1
 #: data/core/editor/items.cfg:760
@@ -1216,32 +1216,32 @@ msgstr "Tapınak"
 #. [item]: id=tent-fancy-red
 #: data/core/editor/items.cfg:766
 msgid "Fancy Red Tent"
-msgstr "Süslü kırmızı çadır"
+msgstr "Süslü Kırmızı Çadır"
 
 #. [item]: id=tent-ruin-1
 #: data/core/editor/items.cfg:772
 msgid "Ruined Tent"
-msgstr "Mahvolmuş çadır"
+msgstr "Mahvolmuş Çadır"
 
 #. [item]: id=tent-shop-weapons
 #: data/core/editor/items.cfg:777
 msgid "Weapons Shop Tent"
-msgstr "Silah dükkanı çadırı"
+msgstr "Silah Dükkanı Çadırı"
 
 #. [item]: id=trapdoor-closed
 #: data/core/editor/items.cfg:784
 msgid "Closed Trapdoor"
-msgstr "Kapalı kapak"
+msgstr "Kapalı Kapak"
 
 #. [item]: id=trapdoor-open
 #: data/core/editor/items.cfg:790
 msgid "Open Trapdoor"
-msgstr "Açık kapak"
+msgstr "Açık Kapak"
 
 #. [item]: id=trash
 #: data/core/editor/items.cfg:796
 msgid "Trash Pile"
-msgstr "Çöp yığını"
+msgstr "Çöp Yığını"
 
 #. [item]: id=village-human-burned1
 #. [item]: id=village-human-burned2
@@ -1250,7 +1250,7 @@ msgstr "Çöp yığını"
 #: data/core/editor/items.cfg:802 data/core/editor/items.cfg:808
 #: data/core/editor/items.cfg:814 data/core/editor/items.cfg:820
 msgid "Burned Human Village"
-msgstr "Yanık insan köyü"
+msgstr "Yanık İnsan Köyü"
 
 #. [item]: id=well
 #: data/core/editor/items.cfg:825
@@ -1265,18 +1265,17 @@ msgstr "Girdap"
 #. [item]: id=windmill
 #: data/core/editor/items.cfg:839
 msgid "Windmill"
-msgstr "Yel değirmeni"
+msgstr "Yel Değirmeni"
 
 #. [set_menu_item]: id=ai_controller_unit_control_{UNIT_ID}
 #: data/core/macros/ai_controller.cfg:22
 msgid "Ask $ai_controller_unit.name to move here"
-msgstr "buraya gelmesini iste: $ai_controller_unit.name"
+msgstr "$ai_controller_unit.name buraya gelsin"
 
 #. [set_menu_item]: id=ai_controller_leader_control_{CONTROLLED_SIDE}
 #: data/core/macros/ai_controller.cfg:75
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
-msgstr ""
-"Buraya gelmesini iste: $ally_leader.name ($ally_leader.side tarafının önderi)"
+msgstr "$ally_leader.name ($ally_leader.side tarafının lideri) buraya gelsin"
 
 #. [note]
 #: data/core/macros/ai_controller.cfg:108
@@ -1472,19 +1471,19 @@ msgstr "Özel emirler ver..."
 
 #: data/core/macros/ai_controller.cfg:1109
 msgid "Move leader to..."
-msgstr "Önderi şuraya getir..."
+msgstr "Lideri şuraya getir..."
 
 #: data/core/macros/ai_controller.cfg:1110
 msgid "Right-click to select a location to move leader to"
-msgstr "Önderi getirecek bir yer seçmek için sağ tıklayın"
+msgstr "Lideri getirecek bir yer seçmek için sağ tıklayın"
 
 #: data/core/macros/ai_controller.cfg:1111
 msgid "Move leader here"
-msgstr "Önderi buraya getir"
+msgstr "Lideri buraya getir"
 
 #: data/core/macros/ai_controller.cfg:1112
 msgid "moving leader to $x1|,$y1|."
-msgstr "Önder $x1|,$y1| altıgenine gidiyor"
+msgstr "Lider $x1|,$y1| altıgenine gidiyor"
 
 #: data/core/macros/ai_controller.cfg:1113
 msgid "Clear special orders"
@@ -1624,11 +1623,11 @@ msgstr "Al"
 
 #: data/core/macros/items.cfg:275
 msgid "holy water^Leave it"
-msgstr "Bırak"
+msgstr "Kalsın"
 
 #: data/core/macros/items.cfg:276
 msgid "$unit.name has no need for this Holy Water! Let another take it."
-msgstr "$unit.name dedikleri kutsal suya ihtiyaç duymaz. Başkası alsın."
+msgstr "$unit.name okunmuş suya ihtiyaç duymaz. Başkası alsın."
 
 #. [object]
 #: data/core/macros/items.cfg:281
@@ -1667,7 +1666,7 @@ msgstr "İyileşme Yüzüğü"
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:393
 msgid "This ring will heal the bearer a little each turn."
-msgstr "Bu yüzük taşıyanı her sırada biraz tedavi edecektir."
+msgstr "Bu yüzük taşıyanı her turda biraz tedavi edecektir."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:429
@@ -1677,7 +1676,7 @@ msgstr "Yavaşlık Yüzüğü"
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:432
 msgid "The bearer of this ring is slowed."
-msgstr "Bu yüzüğü taşıyan kişi yavaşlar."
+msgstr "Bu yüzük taşıyan kişiyi yavaşlatır."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:466
@@ -1696,7 +1695,7 @@ msgstr "Sadece büyücüler böyle bir nesneyi kullanabilir."
 
 #: data/core/macros/items.cfg:513
 msgid "Should $unit.name pick up the trident?"
-msgstr "çatalı $unit.name alsın mı?"
+msgstr "Çatalı $unit.name alsın mı?"
 
 #: data/core/macros/items.cfg:514
 msgid "storm trident^Take it"
@@ -1704,19 +1703,21 @@ msgstr "Al"
 
 #: data/core/macros/items.cfg:515
 msgid "storm trident^Leave it"
-msgstr "Bırak"
+msgstr "Kalsın"
 
 #: data/core/macros/items.cfg:516
 msgid ""
 "$unit.name cannot use this Storm Trident! Let one of the merfolk who can "
 "wield it have it."
-msgstr "$unit.name bu Fırtına Çatalını kullanamaz!"
+msgstr ""
+"$unit.name bu Fırtına Çatalını kullanamaz! Bunu taşıyabilen bir deniz "
+"insanının almasını sağla."
 
 #. [object]
 #: data/core/macros/items.cfg:521
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
-msgstr "Bu çatal deniz insanlarına düşmanlarına yıldırım atma gücü verir"
+msgstr "Bu çatal deniz insanlarına düşmanlarına yıldırım fırlatma gücü verir"
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:525
@@ -1726,7 +1727,7 @@ msgstr "fırtına çatalı"
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:548
 msgid "sceptre of fire"
-msgstr "Ateş Asası"
+msgstr "ateş asası"
 
 #: data/core/macros/names.cfg:18
 msgid ""
@@ -1740,15 +1741,15 @@ msgid ""
 "Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
 "Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 msgstr ""
-"Egar,Elıç,Gagaş,Gade An,Gakröm,Galek,Galş,Garadin,Garçin,Gark,Garlan,Garlin,"
-"Garrutin,Gartilo,Garuşi,Gaşinar,Gaşöl,Goşi,Gostun,Geyçi,Gelka Kon,Gelk Nik,"
-"Gillan,Gişarri,Goysut,Grada,Grüt An,Graşen,Gravlan,Grag,Grelnit,Gren Onk,"
-"Gretez,Gribel,Grida,Griş,Gron An,Ka,Kançih,Karigan,Karri Kon,Karron,Kasp,"
-"Kegrid,Kerat An,Kerat Kor,Klaş,Kon Garaşé,Krag,Kralbe Onk,Kran Kor,Kraş,"
+"Egar,Elıç,Gagaş,Gade An,Gakröm,Galek,Galş,Garadin,Garçin,Gark,Garlan,"
+"Garlinon,Garrutin,Gartilo,Garuşi,Gaşinar,Gaşöl, Goşi,Gostun,Geyçi,Gelka Kon,"
+"Gelk Nik,Gillan,Gişarri,Goysut,Grada,Grüt An,Graşen,Gravlan,Grag,Grelnit,"
+"Gren Onk,Gretez,Gribel,Grida,Griş,Gron An,Ka,Kançih,Karigan,Karri Kon,Karron,"
+"Kasp,Kegrid,Kerat An,Kerat Kor,Klaş,Kon Garaşi,Krag,Kralbe Onk,Kran Kor,Kraş,"
 "Krasler,Krenli,Krügen,Kun,Mah Toy,Marcisan,Marildisan,Markan,Markinor,Mar "
-"Onk,Marra Dülek,Marrito,Marritor,Merkuş,Merritos Gark,Morusto,Murr,Omatak,"
-"Reşnan,Vaştit,Velnik,Veralon,Veramo,Verat,Verdit,Verkon,Verlin,Vermay,Vertik,"
-"Viladnir"
+"Onk,Marra Dülek, Marrito,Marritor,Merkuş,Merritos Gark,Morusto,Murr,Omatak,"
+"Reşnan,Vaştit,Velnik,Veralon,Veramo,Verat,Verdit,Verkon, Verlin,Vermay,"
+"Vertik,Viladnir"
 
 #: data/core/macros/names.cfg:19
 msgid ""
@@ -1773,11 +1774,11 @@ msgid ""
 msgstr ""
 "\n"
 "main={prefix}{suffix}|{prefix}’{suffix}|{prefix}{suffix} {şort_name}\n"
-"şort_name=Ohm|İhn|Ohn|Ka|Murr|Kon|Elch|Ko|Græt|Egar\n"
-"prefix=Ga|Ge|Gel|Gi|Go|Gra|Gri|Ka|Ko|Kla|Mar|Di|Mer|Mor|Oma|Re|Vel|Vaş|Ver|"
-"Vla\n"
-"suffix=aş|kré|lş|lin|rutin|şinar|ruşi|ka|aş|ag|all|aş|slar|li|dian|ritos|"
-"rusté|şitt|nick|rath|ditt|kon|mad|tick|nir\n"
+"şort_name=Om|İn|On|Ka|Mur|Kon|Elç|Ko|Gret|Egar\n"
+"prefix=Ga|Ge|Gel|Gi|Go|Gıra|Gıri|Ka|Ko|Kıla|Mar|Di|Mer|Mor|Oma|Re|Vel|Vaş|"
+"Ver|Vıla\n"
+"suffix=aş|kıre|lş|lin|rutin|şinar|ruşi|ka|aş|ag|all|aş|slar|li|dian|ritos|"
+"ruste|şit|nik|rat|dit|kon|mad|tik|nir\n"
 
 #. Generator for female drake names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:28
@@ -1791,7 +1792,7 @@ msgstr ""
 "\n"
 "main={prefix}{suffix}|{prefix}{suffix} {şort_name}\n"
 "prefix=Al|Ala|Aş|Alug|Ayug|Da|De|Dem|Din|Ol|Oma|Orri|Oşi|Val|Ver|Vel|Vuş\n"
-"suffix=en|naş|irt|glann|ll|ge|lin|nitt|tin|tar|lisk|rida|grra|sill|la|mell\n"
+"suffix=en|naş|irt|glan|al|ge|lin|nit|tin|tar|lisk|rida|gıra|sil|la|mel\n"
 "şort_name=Mal|Ka|Emt|Dar|Eşi\n"
 
 #: data/core/macros/names.cfg:37
@@ -2189,7 +2190,7 @@ msgstr ""
 "suffix=or|im|iyan|in|ar|iyel|as|eyon|as|or|iyon|al|and|ér|as|ir|el|al|ad|"
 "ael\n"
 "centre={şort_centre}|{şort_centre}|-{şort_centre}|{şort_centre}-\n"
-"şort_centre=lol|febir|tom|lit|nal|lor|wón|rad|rien|mar|reb|riel|mal|ram|nil|"
+"şort_centre=lol|febir|tom|lit|nal|lor|von|rad|rien|mar|reb|riel|mal|ram|nil|"
 "nim|nol|biris|lad|rier|ra|fil|tran|man\n"
 
 #. Generator for female elf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
@@ -2221,8 +2222,8 @@ msgstr ""
 "{suffix_c}\n"
 "generated_prefix_v={starting_consonnant}{vowel}\n"
 "generated_prefix_c={starting_consonnant}{vowel}{consonnant}\n"
-"starting_consonnant=C|D|F|L|M|N|P|Qu|R|S|T|V\n"
-"vowel=a|e|i|o|ae|é|ë\n"
+"starting_consonnant=C|D|F|L|M|N|P|Ku|R|S|T|V\n"
+"vowel=a|e|i|o|u|ö|ü\n"
 "consonnant=n|l|r|m|s|v|th|p|d|f|t\n"
 "prefix_c=Val|Ol|Am|An|El|Fa|El|Glo|Hu|Le|Mil|Nil|Pin|Por|Mot|Mor|Tiral|Leg|"
 "Nam|Nim|Sim|Len|Is|Tal\n"
@@ -2231,15 +2232,15 @@ msgstr ""
 "suffix_v=teya|niya|liya|keya|ni|it|niyel|wiyel|ra|dë|lya|tiyel|nna|nne\n"
 "suffix_c=iyel|iyen|ya|a|ë|i|iya|eya\n"
 "centre_v=|{şort_centre_v}\n"
-"şort_centre_v=nna|lla|na|ti|saye|li|ma|lo|tira|ló|rá|bri|fi|mi|nio|wi|né|nu|"
-"wi\n"
+"şort_centre_v=nna|lla|na|ti|saye|li|ma|lo|tira|lö|ra|bri|fi|mi|nio|wi|ne|nu|"
+"vi\n"
 "centre_c=|{şort_centre_c}\n"
-"şort_centre_c=enn|all|an|it|el|il|am|ol|art|ól|ár|ir|if|im|ion|iw|én|un|iw\n"
+"şort_centre_c=enn|all|an|it|el|il|am|ol|art|öl|ar|ir|if|im|ion|iv|ün|un|üv\n"
 
 #: data/core/macros/names.cfg:87
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
 msgstr ""
-"Grara,Grere,Gruru,Karara,Kasasa,Kesese,Kororo,Krara,Kuşuşu,Kzazaza,Kzuzuzu"
+"Garara,Gerere,Gururu,Karara,Kasasa,Kesese,Kororo,Kürürü,Kuşuşu,Kazaza,Kuzuzu"
 
 #: data/core/macros/names.cfg:88
 msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
@@ -2256,9 +2257,9 @@ msgid ""
 msgstr ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
-"prefix=Gr|Ka|Ke|Ko|Kr|Kz\n"
-"suffix=aa|eaa|ee|aaa|sşş|rro|uu|uuu\n"
-"centre=arr|aaş|eez|ozz\n"
+"prefix=Ga|Ka|Ke|Ko|Kü|Kö\n"
+"suffix=ra|re|se|sa|şa|ro|ru|rü\n"
+"centre=ra|şa|ze|zo\n"
 
 #. Generator for female gryphon names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:97
@@ -2271,9 +2272,9 @@ msgid ""
 msgstr ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
-"prefix=Kaa|Ka|Ke|Kuu|Ko\n"
-"suffix=sa|yya|ra|rra\n"
-"centre=err|aaş|eez|azz\n"
+"prefix=Kaya|Ka|Ke|Kuyu|Ko\n"
+"suffix=sa|ya|ra|re\n"
+"centre=ra|şa|ze|za\n"
 
 #: data/core/macros/names.cfg:106
 msgid ""
@@ -2474,7 +2475,6 @@ msgstr ""
 
 #. Generator for male Wesnothian human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:109
-#, fuzzy
 msgid ""
 "\n"
 "main={generated_prefix_c}{suffix_c}|{generated_prefix_v}{suffix_v}|{prefix_c}"
@@ -2504,13 +2504,13 @@ msgstr ""
 "starting_vowel=A|E|I|Y|Ae\n"
 "vowel=a|e|i|o|u|y|eo|ae\n"
 "consonnant=w|l|d|n|r|rc|ll|nn|dd|th\n"
-"prefix_c=Add|Den|Derr|Gum|Mad|Mar|Ow|Tedd|T{vowel}n|Var|Vin|Vob|Vug|Yr|Rhyr\n"
-"prefix_v=Ae|Bl{vowel}|C{vowel}|D{vowel}|Gl{vowel}|G{vowel}|Gw{vowel}|Ha|"
+"prefix_c=Add|Den|Derr|Gum|Mad|Mar|Ov|Tedd|T{vowel}n|Var|Vin|Vob|Vug|Yr|Rir\n"
+"prefix_v=Ae|Bl{vowel}|C{vowel}|D{vowel}|Gl{vowel}|G{vowel}|Gv{vowel}|Ha|"
 "L{vowel}|M{vowel}|R{vowel}|Rh{vowel}|S{vowel}|S{vowel}|T{vowel}|V{vowel}\n"
-"suffix_c=yn|er|yc|ec|oc|yr|in|aent\n"
-"suffix_v=ry|ryn|ran|lyn|van|nyc\n"
-"centre_c=redd|reor|og|thyn\n"
-"centre_v=rae|ra|thar|gwy\n"
+"suffix_c=in|er|ic|ec|oc|ir|in|aent\n"
+"suffix_v=ri|rin|ran|lin|van|nic\n"
+"centre_c=redd|reor|og|tin\n"
+"centre_v=rae|ra|tar|gvi\n"
 
 #. Generator for female Wesnothian human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:125
@@ -2542,17 +2542,16 @@ msgstr ""
 "starting_consonnant=B|C|Ç|D|G|H|L|M|R|R|S|Ş|T|V\n"
 "starting_vowel=A|E|I|Y|Ae\n"
 "vowel=a|e|i|o|u|y|eo|ae\n"
-"consonnant=w|l|d|n|r|rc|ll|nn|dd|t\n"
+"consonnant=v|l|d|n|r|rc|ll|nn|dd|t\n"
 "prefix_c=Al|El|Mer|Mil|Rer|Ys|M{vowel}r|M{vowel}l\n"
-"prefix_v=A|Br{vowel}|Cl{vowel}|C{vowel}|D{vowel}|Gw{vowel}|He|J{vowel}|"
+"prefix_v=A|Br{vowel}|Cl{vowel}|C{vowel}|D{vowel}|Gv{vowel}|He|J{vowel}|"
 "L{vowel}|M{vowel}|N{vowel}|R{vowel}|S{vowel}\n"
 "suffix_c=yan|oic|ell|yll\n"
 "suffix_v=vyn|nna|lla|ra|la|vyan|ssa|ka|ven\n"
 "centre_c=il|ing|ol|ur|ung|ean|eal|ong|al|iv\n"
-"centre_v=na|lla|na|ry|li|ni|ri|rae|bry\n"
+"centre_v=na|lla|na|ri|li|ni|ri|rae|bri\n"
 
 #: data/core/macros/names.cfg:143
-#, fuzzy
 msgid ""
 "Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
 "Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
@@ -2632,74 +2631,73 @@ msgstr ""
 "Aban,Abbas,Abbud,Abdül-ʿAdil,Abdül-Ehad,Abdül-Alim,Abdül-Aliy,Abdül-Azim,"
 "Abdül-Aziz,Abdül-Badi,Abdül-Bayit,Abdül-Baki,Abdül-Bari,Abdül-Barr,Abdül-"
 "Basir,Abdül-Basit,Abdül-Fettah,Abdül-Gaffar,Abdül-Gafur,Abdül-Gani,Abdül-"
-"Hadi,Abdül-Hafız,Abdül-Hakam,Abdül-Hakim,Abdül-Halim,Abdül-Hamid,Abdül-Hakk,"
+"Hadi,Abdül-Hafız,Abdül-Hakam,Abdül-Hakim,Abdül-Halim,Abdül-Hamid,Abdül-Hak,"
 "Abdül-Hasib,Abdül-Hey,Abdül-Cabbar,Abdül-Calil,Abdül-Kerim,Abdül-Kabir,Abdül-"
 "Halik,Abdül-Latif,Abdül-Malik,Abdül-Mecid,Abdül-Metin,Abdül-Mübdiʾ,Abdül-"
 "Mugni,Abdül-Muhayimin,Abdül-Muhsi,Abdül-Muhyi,Abdül-Muʿid,Abdül-Muʿizz,Abdül-"
-"Mücib,Abdül-Mumin,Abdül-Muqaddim,Abdül-Muqtadir,Abdül-Musavir,Abdül-Mutaʿal,"
-"Abdül-Nafi,Abdül-Nasser,Abdül-Nasir,Abdül-Nur,Abdül-Qadir,Abdül-Qahhar,Abdül-"
-"Qawi,Abdül-Qayyum,Abdül-Quddus,Abdül-Rafi,Abdül-Rahim,Abdül-Rahman,Abdül-"
-"Raşid,Abdül-Raʿuf,Abdül-Razzaq,Abdül-Shakur,Abdül-Tawwab,Abdül-Wadud,Abdül-"
-"Wahhab,Abdül-Wahid,Abdül-Wajid,Abdül-Wakil,Abdül-Wali,Abdül-Waliy,Abdül-"
-"Warith,Abdül-Zahir,Abdüllah,ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,Adil,Adham,"
-"Adib,ʿAdli,ʿAdnan,ʿAfif,Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-Din,Alʿ "
-"Abbas,Aladdin,al-Bara,al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,Almahdi,"
-"al-Safi,Altaf,Altair,al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,Amir,"
-"ʿAmir,Amjad,ʿAmmar,ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,ʿArif,"
-"Esat,Asʿad,Asadel,Eşref,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ Allah,Ataʿ al-Rahman,Atil,"
-"Atir,ʿAtif,ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Eyyüb,Aza,ʿAzab,Azhar,Azim,"
-"ʿAziz,ʿAzzam,Bedi,Bedi al-Zaman,Bedir,Bedir al-Din,Bedri,Bahaʿ,Bahiyy al-Din,"
-"Behiç,Bahir,Bakr,Bakri,Baligh,Bandar,Barakah,Barir,Başşar,Basil,Basim,Bassam,"
-"Beyazıt,Bayhas,Bilal,Bişr,Bulos,Budail,Burhan,Buşr,Butrus,Dabir,Dani,Derviş,"
-"Daʿud,Zakir,Zekiy,Dhakwan,Zul Fikar,Dirar,Diya,Diya al-Din,Duqaq,Fadi,Fadil,"
-"Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,Faʿiz,Fakhir,Fakhr al-Din,Fakhri,"
-"Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,Fariq,Faris,Faruq,Fath,Fathi,"
-"Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,Fida,Fikri,Firas,Fuʿad,Fudail,"
-"Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,Ghawth,Ghazwan,Ghiyath,Habbab,Habib,"
-"Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,Hamal,Hamas,Hamdan,Hamdi,Hamid,Hamim,"
-"Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,Hannad,Haris,Harith,Harun,Haşim,Hassan,"
-"Hatim,Haydar,Haytham,Hayyan,Hazim,Hilal,Hilmi,Hişam,Hud,Hudad,Hudhafah,"
-"Hudhayfah,Humam,Hussein,Husam,Husam al-Din,Ibrahim,ʿId,Idris,Ihsan,Ihtişam,"
-"ʿIkrimah,Ilias,ʿImad,Imad al-Din,Imran,Imtiyaz,Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,"
-"Işaq,Ismaʿil,Iyad,Iyas,Izz al-Din,Jabbar,Jabr,Jabir,Jad Allah,Jaʿfar,Jal,"
-"Jalal,Jalal al-Din,Jalil,Cemal,Cemal al-Din,Cemil,Jarir,Jasim,Jaul,Jaun,"
-"Cevat,Jawdah,Cevher,Jibran,Jibril,Jubair,Jul,Cuma,Cüneyt,Cüveyn,Kadar,Kadin,"
-"Kadir,Kahil,Kaliq,Kemal,Kamil,Keram,Kardal,Karif,Kerim,Kasib,Kasim,Katib,"
-"Kazım,Khalaf,Haldun,Halit,Halil,Halil al-Allah,Khalis,Khatib,Khair al-Din,"
-"Khairi,Khoury,Khulus,Khuzaymah,Kutaiba,Labib,Lablab,Latif,Layth,LuʿayLubayd,"
-"Luqman,Lut,Lutfi,Maʿd,Madani,Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,"
-"Maimun,Majd,Majdy,Majd al-Din,Majid,Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,"
-"Mansur,Marghub,Marid,Maʿruf,Marwan,Marzuq,Maşʿal,Maşhur,Masrur,Masʿud,Masun,"
-"Maysarah,Mazhar,Mazin,Mehmed,Mihran,Mihyar,Mikaʾil,Miqdad,Misbah,Mişʿal,"
-"Miyaz,Muʾadh,Muʾawiyah,Muʾayyad,Mubarak,Mubin,Mudar,Muddaththir,Mufid,Muflih,"
-"Muhab,Muhayr,Muhammad,Muhanna,Muhannad,Muhib,Muhibb,Muhsin,Muhtadi,Muhyi al-"
-"Din,Muʿin,Muʿizz,Mujab,Mujahid,Mukarram,Mukhlis,Mukhtar,Mulham,Mulhim,"
-"Muʿmmar,Muʿmin,Mumtaz,Munahid,Mundhir,Munib,Munif,Munir,Muʿnis,Munjid,Munsif,"
-"Muntasir,Murad,Murid,Murşid,Murtada,Musa,Musʿab,Musaʿid,Muştaq,Muslih,Muslim,"
-"Mutafa,Mutaʾ,Muʿtasim,Mutawalli,Muʿtazz,Muthanna,Muti,Muwaffaq,Muyassar,"
-"Muzaffar,Mussammil,Nabhan,Nabighah,Nabih,Nabil,Nadhir,Nadim,Nadir,Nafiʾ,"
-"Nahid,Naʾil,Naʾim,Naji,Najib,Najid,Najjar,Najm al-Din,Naʿaman,Namir,Naşʿah,"
-"Naşʿat,Naşwan,Nasib,Nasih,Nasim,Nasir,Nasir al-Din,Nasr,Nasri,Nasuh,Nawaf,"
-"Nawfal,Nayif,Nazih,Nazim,Nazmi,Nibras,Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,"
-"Nuhayd,Numair,Nuʿman,Nur al-Din,Nuri,Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,"
-"Qays,Qudamah,Qusay,Qatadah,Qutaybah,Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,"
-"Rafiq,Raghib,Rahman,Raʿid,Raʿif,Rais,Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,"
-"Ramiz,Ramzi,Rani,Raşad,Raşid,Rasil,Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,"
-"Rayyan,Razin,Ridha,Ridwan,Rihab,Riyad,Rizq,Ruhi,Ruşd,Ruşdi,Ruwayd,Saad,"
-"Saʿadah,Sab,Sabih,Sabir,Sabri,Saʿd,Saʿd al-Din,Sadad,Sadid,Sadiq,Saʿdun,"
-"Saʿid,Safi,Safiy,Safiy al-Din,Safuh,Safwah,Safwat,Safwan,Sahib,Sahir,Sahl,"
-"Saʾib,Saif,Saif al-Din,Sajid,Sajjad,Sakhr,Salah,Salah al-Din,Salamah,Salih,"
-"Salim,Salman,Sami,Samih,Samir,Samman,Saqr,Sariyah,Sati,Saud,Sayyid,Shaʿban,"
-"Shadi,Shadin,Shafi,Shafiq,Shahid,Shahin,Shahir,Shakib,Shakir,Shams al-Din,"
-"Shamal,Shamil,Shamim,Sharaf,Sharif,Shawqi,Shihab,Shihab al-Din,Shihad,"
-"Shuʿayb,Shukri,Shumayl,Siddiq,Sinan,Siraj,Siraj al-Din,Sofian,Subhi,Sufyan,"
-"Suhayb,Suhayl,Suhaym,Sulaiman,Sumrah,Suraqah,Suʿud,Tahir,Tahsin,Taym Allah,"
-"Taj,Taj al-Din,Talal,Talib,Tamim,Tamir,Tamam,Tammam,Taqiy,Tarif,Tariq,Taslim,"
-"Tawfiq,Tawhid,Taymullah,Taysir,Tayyib,Thabit,Thamir,Thaqib,Thawab,Thawban,"
-"ʿUbaidah,Ubaid,Ubayy,ʿUdayl,ʿUday,ʿUmar,Umarah,Umair,ʾaUrwah,Usaym,Usama,"
-"ʿUtbah,Uthal,Uthman,Waddah,Wadi,Wadid,Wafiq,Wahab,Wahhab,Wahid,Waʾil,Wajdi,"
-"Wajid,Wajih,Wakil,Walid,Walif,Waliy Allah,Waliy al-Din,Waqar,Waqqas,Ward,"
-"Wasif,Wasil,Wasim,Wazir,Yahya,Yaman,Yaʿqub,Yasar,Yasin,Yasir,Yazan,Yazid,"
+"Mücib,Abdül-Mumin,Abdül-Mukaddim,Abdül-Müktedir,Abdül-Müsavir,Abdül-Mutaʿal,"
+"Abdül-Nafi,Abdül-Nasser,Abdül-Nasır,Abdül-Nur,Abdül-Kadir,Abdül-Kahar,Abdül-"
+"Kavi,Abdül-Kayyum,Abdül-Kuddüs,Abdül-Rafi,Abdül-Rahim,Abdül-Rahman,Abdül-"
+"Raşid,Abdül-Raʿuf,Abdül-Rezzak,Abdül-Şükür,Abdül-Tayyib,Abdül-Vadud,Abdül-"
+"Vahab,Abdül-Vahid,Abdül-Vacid,Abdül-Vekil,Abdül-Vali,Abdül-Valiy,Abdül-Varit,"
+"Abdül-Zahir,Abdüllah,ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,Adil,Adham,Adib,"
+"ʿAdli,ʿAdnan,ʿAfif,Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-Din,Alʿ Abbas,"
+"Aladdin,al-Bara,al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,Almahdi,al-Safi,"
+"Altaf,Altair,al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,Amir,ʿAmir,Amca,"
+"ʿEmir,ʿAmro,Anas,Anis,ʿAntarah,Anvar,ʿAkil,Arfan,Arif,ʿArif,Esat,Asʿad,"
+"Asadel,Eşref,Asif,ʿAsım,Esved,Ataʿ,Ataʿ Allah,Ataʿ al-Rahman,Atil,Atir,ʿAtif,"
+"ʿAvad,ʿAvf,Avs,Avvab,Ayham,Ayman,Ayser,Eyyüb,Aza,ʿAzab,Azhar,Azim,ʿAziz,"
+"ʿAzzam,Bedi,Bedi al-Zaman,Bedir,Bedrettin,Bedri,Bahaʿ,Bahiyettin,Behiç,Bahir,"
+"Bekr,Bekri,Balig,Bandar,Baraka,Barir,Başşar,Basil,Basim,Bassam,Beyazıt,"
+"Bayhas,Bilal,Beşir,Bulos,Budail,Burhan,Buşar,Butrus,Dabir,Dani,Derviş,Davʿud,"
+"Zakir,Zekiy,Dakvan,Zülfikar,Dirar,Diya,Diyaettin,Dukak,Fadi,Fadil,Fadl,Fadl "
+"Allah,Fahd,Fahad,Fehmi,Faisal,Faʿiz,Fakhir,Fahrettin,Fahri,Fakih,Falah,Falih,"
+"Faraş,Farhan,Farid,Faruk,Farik,Faris,Faruk,Fath,Fethi,Fatih,Fatin,Favaz,"
+"Fawzan,Fawzi,Fayyad,Ferran,Fida,Fikri,Firas,Fuʿat,Fudail,Cemal,Gayt,Gali,"
+"Galib,Ganim,Hassan,Gawt,Gazvan,Giyat,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,"
+"Hakim,Halim,Hamal,Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,"
+"Hani,Hanif,Hannad,Haris,Harith,Harun,Haşim,Hassan,Hatim,Haydar,Haytam,Hayyan,"
+"Hazim,Hilal,Hilmi,Hişam,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,"
+"Hüsemettin,Ibrahim,ʿId,Idris,Ihsan,Ihtişam,ʿIkrimah,Ilias,ʿImad,Imadettin,"
+"Imran,Imtiyaz,Inʿam,Ikbal,ʿIrfan,ʿIsa,ʿIsam,Işak,Ismaʿil,Iyad,Iyas,Izzetin,"
+"Cabbar,Cabr,Cabir,Cad Allah,Caʿfar,Cal,Celal,Celalettin,Celil,Cemal,"
+"Cemalettin,Cemil,Carir,Casim,Caul,Caun,Cevat,Cawdah,Cevher,Cibran,Cibril,"
+"Cubair,Cul,Cuma,Cüneyt,Cüveyn,Kadar,Kadin,Kadir,Kahil,Kaliq,Kemal,Kamil,"
+"Keram,Kardal,Karif,Kerim,Kasib,Kasim,Katib,Kazım,Kalaf,Haldun,Halit,Halil,"
+"Halil al-Allah,Halis,Hatib,Kair al-Din,Hairi,Houri,Hulus,Huzaymah,Kutaiba,"
+"Labib,Lablab,Latif,Layth,LuʿayLubayd,Lokman,Lut,Lutfi,Maʿd,Madani,Mahbub,"
+"Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,Majd,Majdi,Majd al-Din,Majid,"
+"Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,Mansur,Marhub,Marid,Maʿruf,Mervan,"
+"Marzuk,Maşʿal,Maşhur,Masrur,Masʿud,Masun,Maysarah,Mazhar,Mazin,Mehmed,Mihran,"
+"Mihyar,Mikaʾil,Mikdad,Misbah,Mişʿal,Miyaz,Muʾadih,Muʾaviye,Muʾayyad,Mubarak,"
+"Mubin,Mudar,Muddathir,Mufid,Muflih,Muhab,Muhayr,Muhammad,Muhanna,Muhannad,"
+"Muhib,Muhib,Muhsin,Muhtadi,Muhyi al-Din,Muʿin,Muʿizz,Mujab,Mujahid,Mukarram,"
+"Muhlis,Muhtar,Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,Mundhir,Munib,"
+"Munif,Munir,Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murşid,Murtada,Musa,"
+"Musʿab,Musaʿid,Muştak,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,Mutevelli,Muʿtaziz,"
+"Muthanna,Muti,Muvaffak,Muyassar,Muzaffer,Mussammil,Nabhan,Nabigah,Nabih,"
+"Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,Najid,Najjar,"
+"Necmettin,Naʿaman,Namir,Naşʿah,Naşʿat,Naşvan,Nasib,Nasih,Nasim,Nasir,"
+"Nasrettin,Nasr,Nasri,Nasuh,Navaf,Navfal,Nayif,Nazih,Nazim,Nazmi,Nibras,Nidal,"
+"Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nurettiin,Nuri,Nusra,Nusrat,"
+"Omar,Orhan,Osman,Kasım,kays,kudamah,kusay,katadah,kutaybah,kutb,kutuz,Rabah,"
+"Rabi,Radi,Rafi,Rafid,Rafik,Ragib,Rahman,Raʿid,Raʿif,Rais,Rajaa,Rajab,Raji,"
+"Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Raşad,Raşid,Rasil,Rasin,Rasmi,Rasul,"
+"Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,Ridvan,Rihab,Riyad,Rizk,Ruhi,Ruşd,"
+"Ruşdi,Ruvayd,Saad,Saʿadah,Sab,Sabih,Sabir,Sabri,Saʿd,Sadettin,Sadad,Sadid,"
+"Sadık,Saʿdun,Saʿid,Safi,Safiy,Seyfettin,Safuh,Safwah,Safvat,Safvan,Sahib,"
+"Sahir,Sahl,Saʾib,Saif,Saif al-Din,Sajid,Sajjad,Sakhr,Salah,Salahattin,"
+"Salamah,Salih,Salim,Salman,Sami,Samih,Samir,Samman,Saqr,Sariyah,Sati,Saud,"
+"Sayyid,Shaʿban,Shadi,Shadin,Şafi,Şafik,Şahid,Şahin,Şahir,Şakib,Şakir,"
+"Şemsettin,Şamal,Şamil,Şamim,Şaraf,Şarif,Şevki,Şihab,Şahabettin,Şihad,Şuʿayib,"
+"Şukri,Şumayl,Siddik,Sinan,Siraj,Siracettin,Sofian,Suphi,Sufyan,Suhayib,"
+"Suheyl,Suhaym,Suleyman,Sumrah,Surakah,Suʿud,Tahir,Tahsin,Taym Allah,Taj,"
+"Tacettin,Talal,Talib,Tamim,Tamir,Tamam,Tammam,Takiy,Tarif,Tarik,Taslim,"
+"Tevfik,Tevhid,Taymullah,Taysir,Tayyib,Tabit,Tamir,Takib,Tavab,Tavban,"
+"ʿUbaidah,Ubaid,Ubayy,ʿUdayl,ʿUday,ʿUmar,Umarah,Umair,Urvah,Usaym,Usama,"
+"ʿUtbah,Uthal,Uthman,Vaddah,Vadi,Vadid,Vafiq,Vahab,Vahhab,Vahid,Vaʾil,Vajdi,"
+"Vajid,Vajih,Vakil,Valid,Valif,Valiy Allah,Valiy al-Din,Vakar,Vakkas,Vard,"
+"Vasif,Vasil,Vasim,Vazir,Yahya,Yaman,Yaʿkub,Yasar,Yasin,Yasir,Yazan,Yazid,"
 "Yunus,Yuşua,Yusri,Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,"
 "Zekerriya,Zaki,Zakwan,Ziyad,Zubayr,Zuhayr"
 
@@ -2732,7 +2730,7 @@ msgstr ""
 "suffix=af|al|lih|bair|sur|bi|lah|at|sim|ma|ih|yl|iq|raj|mam|man|ya|zid|riya|"
 "ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|kib\n"
 "connector= al-| bin | ibn\n"
-"centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
+"centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|sav\n"
 
 #. Generator for female dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:156
@@ -2769,26 +2767,26 @@ msgstr ""
 "name_mid={prefix}{suffix}|{name_short}\n"
 "surname={name_mid_male}|{name_mid}|{name_mid_male}\n"
 "name_long={prefix}{suffix}|{prefix}{centre}{suffix}\n"
-"name_short=Afaf|Aida|Alya|Arij|Arwa|Asma|Asra|Azra|Dua|Fajr|Hala|Hana|Hiba|"
+"name_short=Afaf|Aida|Alya|Arij|Arva|Asma|Asra|Azra|Dua|Facr|Hala|Hana|Hiba|"
 "Inas|Isra|Lina|Mona|Muna|Nida|Nima|Nur|Rana|Rim|Ruba|Ruya|Ruwa|Sana|Sara|"
 "Suha|Tuba|Uzma|Zara\n"
-"prefix=Ab|Bas|Fat|Gha|Al|Ba|Ja|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|Du|Im|"
-"Ju|Mun|Ma|Ni|Ji|Mu|Lab|Luf|Mih|Mi|Qu|Tal|Ta|Tha|Za|Zi|Yas|Wa|Su|Qa|ʿIkri|Lu|"
-"Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
+"prefix=Ab|Bas|Fat|Ga|Al|Ba|Ca|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|Du|Im|Ju|"
+"Mun|Ma|Ni|Ci|Mu|Lab|Luf|Mih|Mi|Ku|Tal|Ta|Tha|Za|Zi|Yas|Va|Su|Ka|ʿIkri|Lu|Su|"
+"Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
 "suffix=a|ab|ad|ah|af|aj|al|am|an|ar|as|at|ay|az|da|een|ia|ij|in|ir|la|ma|mas|"
-"n|na|nab|ni|r|ra|raa|ran|rat|ul|ur|uz|wa|ya|yah|yam|za|zi\n"
+"n|na|nab|ni|r|ra|raa|ran|rat|ul|ur|uz|va|ya|yah|yam|za|zi\n"
 "connector= al-| ibna | bint\n"
-"centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
+"centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|sav\n"
 "\n"
 "These nonterminals are literally copied from the male names.\n"
 "name_mid_male={prefix_male}{suffix_male}|{name_short_male}\n"
-"name_short_male=Din|Sif|Din|Taj|Sud|Ali|Lut|Nuh|Qays|Nimr|Jad|Bushr|Lut|Maʿd|"
+"name_short_male=Din|Sif|Din|Taj|Sud|Ali|Lut|Nuh|Kays|Nimr|Cad|Bushr|Lut|Maʿd|"
 "Nur|Fadl\n"
-"prefix_male=Ab|Bas|Fat|Gha|Al|Ba|Ja|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|Du|"
-"Im|Ju|Mun|Ma|Ni|Ji|Mu|Lab|Luf|Mih|Mi|Qu|Tal|Ta|Tha|Za|Zi|Yas|Wa|Su|Qa|ʿIkri|"
+"prefix_male=Ab|Bas|Fat|Ga|Al|Ba|Ja|Ha|Mu|Ra|Raz|Abi|Am|La|ʿAj|Ala|ʿAk|Fa|Du|"
+"Im|Ju|Mun|Ma|Ni|Ci|Mu|Lab|Luf|Mih|Mi|Ku|Tal|Ta|Ha|Za|Zi|Yas|Va|Su|Ka|ʿIkri|"
 "Lu|Su|Osa|Rag|Saf|Da|Fay|Nib|Nash\n"
 "suffix_male=af|al|lih|bair|sur|bi|lah|at|sim|ma|ih|yl|iq|raj|mam|man|ya|zid|"
-"riya|ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|"
+"riya|ail|air|ah|en|in|ayd|ud|rah|vah|nan|as|ir|ba|ni|yad|ras|zuk|hid|mal|"
 "kib\n"
 
 #: data/core/macros/names.cfg:176
@@ -3184,7 +3182,7 @@ msgstr ""
 "{suffix}\n"
 "prefix=Blu|Bo|Bre|Bro|Bru|Bu|Car|Da|Da|De|Dib|Dol|Dro|Dul|Dum|El|Gre|Gul|Gum|"
 "Laf|Lan|Las|Lef|Lib|Lol|Mon|Mul|Mun|Nan|Nun|Or|Pam|Pom|Rith|Tan|Tem|Ton|"
-"Troom|Tun|Tum|Won|Wun\n"
+"Troom|Tun|Tum|Von|Vun\n"
 "centre=de|bal|drum|wul|del|bem|pom|gon|tan|bom|ken|tan|ton|man|ten|dron|dub|"
 "na|da|ni|mi|lul|mon|duel|lem|num|nob|mand|room|lad|roam|be|lom|sem|nub|di|"
 "wim|din|blem|nand|dul|dil|of|tam|kon|ton|tun|kon|ten|run|mal|do\n"
@@ -3283,142 +3281,142 @@ msgstr "Elf Toprağı"
 #. [music]
 #: data/core/macros/sound-utils.cfg:187
 msgid "Elvish theme"
-msgstr "Elvish theme"
+msgstr "Elf teması"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:193
 msgid "Frantic"
-msgstr "Frantic"
+msgstr "Çılgınca"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:199
 msgid "Heroes Rite"
-msgstr "Heroes Rite"
+msgstr "Kahramanlar Töreni"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:205
 msgid "Into the Shadows"
-msgstr "Into the Shadows"
+msgstr "Karanlığa Doğru"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:211
 msgid "Journey’s End"
-msgstr "Journey’s End"
+msgstr "Yolculuğun Sonu"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:217
 msgid "Knalgan Theme"
-msgstr "Knalgan Theme"
+msgstr "Knalgan Teması"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:223
 msgid "The Knolls of Doldesh"
-msgstr "The Knolls of Doldesh"
+msgstr "Doldeş Tepeleri"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:229
 msgid "Legends of the North"
-msgstr "Legends of the North"
+msgstr "Kuzey Efsaneleri"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:235
 msgid "Love Theme"
-msgstr "Love Theme"
+msgstr "Sevgi Teması"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:241
 msgid "Loyalists"
-msgstr "Loyalists"
+msgstr "Sadıklar"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:247
 msgid "Over the Northern Mountains"
-msgstr "Over the Northern Mountains"
+msgstr "Kuzey Dağlarının Tepesinde"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:253
 msgid "Northerners"
-msgstr "Northerners"
+msgstr "Kuzeyliler"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:259
 msgid "Nunc Dimittis"
-msgstr "Nunc Dimittis"
+msgstr "Şimdi Karaoke"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:265
 msgid "Revelation"
-msgstr "Revelation"
+msgstr "İlham"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:271
 msgid "Sad"
-msgstr "Sad"
+msgstr "Üzgün"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:277
 msgid "Siege of Laurelmor"
-msgstr "Siege of Laurelmor"
+msgstr "Laurelmor Kuşatması"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:283
 msgid "Silvan Sanctuary"
-msgstr "Silvan Sanctuary"
+msgstr "Silvan Barınağı"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:289
 msgid "Suspense"
-msgstr "Suspense"
+msgstr "Belirsizlik"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:295
 msgid "The City Falls"
-msgstr "The City Falls"
+msgstr "Kent Şelaleleri"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:301
 msgid "The Dangerous Symphony"
-msgstr "The Dangerous Symphony"
+msgstr "Tehlikeli Senfoni"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:307
 msgid "The Deep Path"
-msgstr "The Deep Path"
+msgstr "Derin Yol"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:313
 msgid "The King is Dead"
-msgstr "The King is Dead"
+msgstr "Kral Öldü"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:319
 msgid "Transience"
-msgstr "Transience"
+msgstr "Fanilik"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:325
 msgid "Traveling Minstrels"
-msgstr "Traveling Minstrels"
+msgstr "Seyyah Ozanlar"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:331
 msgid "Underground"
-msgstr "Underground"
+msgstr "Yeraltı"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:337
 msgid "Vengeful Pursuit"
-msgstr "Vengeful Pursuit"
+msgstr "İntikam Peşinde"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:343
 msgid "Still Another Wanderer"
-msgstr "Still Another Wanderer"
+msgstr "Başka Bir Gezici"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:349
 msgid "Weight of Revenge"
-msgstr "Weight of Revenge"
+msgstr "İntikamın Ağırlığı"
 
 #. [message]: speaker=narrator
 #: data/core/macros/utils.cfg:697
@@ -3931,7 +3929,7 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tsuffix=ham|bury|ton|tepe|zirve\n"
+"\t\tsuffix=ham|buri|ton|tepe|zirve\n"
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 
@@ -3977,7 +3975,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tprefix=$road{!}|$road{!}|$base{!}\n"
-"\t\tsuffix= Erinci| Arası| Hanı|saray|han|ham\n"
+"\t\tsuffix= Erinci| Arası| Hanı|saray|han|hamam\n"
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 
@@ -3993,7 +3991,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tprefix=$base{!}|$swamp{!}\n"
-"\t\tsuffix=bury|ham|ton\n"
+"\t\tsuffix=buri|ham|ton\n"
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 
@@ -4012,7 +4010,7 @@ msgstr "Diğer Wesnoth Sunucusu"
 msgid ""
 "There are no custom options available for the selected era, game, or "
 "modification."
-msgstr "Seçili çağ, oyun veya mod için özel ayarlar yoktur."
+msgstr "Seçili çağ, oyun veya değişiklik için özel ayarlar yoktur."
 
 #. [button]: id=reset_option_values
 #: data/gui/macros/custom_options_tree.cfg:249
@@ -4022,12 +4020,12 @@ msgstr "Fabrika ayarları"
 #. [label]
 #: data/gui/macros/player_list_panel.cfg:29
 msgid "Connected Players"
-msgstr "Bağlanmış Oyuncular"
+msgstr "Bağlı Oyuncular"
 
 #. [label]: id=title
 #: data/gui/window/install_dependencies.cfg:37
 msgid "Install Dependencies"
-msgstr "Gereksinimler"
+msgstr "Kurulum Gereksinimleri"
 
 #. [button]: id=ok
 #: data/gui/window/install_dependencies.cfg:85
@@ -4078,13 +4076,13 @@ msgstr ""
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:187
 msgid "(Note: You should use $replacement instead in new code)"
-msgstr "(Not: yeni kodda $replacement kullanmanız önerilir)"
+msgstr "(Not: Yeni kodda $replacement kullanmanız önerilir)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:194 src/deprecation.cpp:69
 msgid "Invalid deprecation level $level (should be 1-4)"
-msgstr "Geçersiz kullanım dışı bırakma seviyesi $level (1-4 arası olmalı)"
+msgstr "Kullanım dışı bırakma seviyesi $level geçersiz (1-4 arası olmalı)"
 
 #. [lua]: wml_actions.deprecated_message
 #: data/lua/wml-tags.lua:889
@@ -4145,14 +4143,14 @@ msgstr "Mağlubiyet:"
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
 msgid "%d%% of gold carried over to the next scenario."
-msgstr "%%d% Altın bir sonraki senaryoya geçecek"
+msgstr "%%%d Altın bir sonraki senaryoya geçecek"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:156
 #: src/game_initialization/mp_game_utils.cpp:76
 msgid "Defeat enemy leader(s)"
-msgstr "Düşman önder(ler)ini öldür"
+msgstr "Düşman lider(ler)ini öldür"
 
 #: data/scenario-test.cfg:1023 src/game_initialization/depcheck.cpp:491
 msgid "OK"
@@ -4170,7 +4168,7 @@ msgstr "çok uzun"
 #. [language]
 #: data/scenario-test.cfg:4073
 msgid "electrical"
-msgstr "Elektrik"
+msgstr "elektrikli"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:426 data/themes/_initial.cfg:586
@@ -4245,7 +4243,7 @@ msgstr "Devam et"
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:529
 msgid "Exit the replay mode and continue playing normally."
-msgstr "Tekrar oynatma modundan çık ve oynamaya devam et."
+msgstr "Tekrar oynatma kipinden çık ve oynamaya devam et."
 
 #. [action]: id=skip-animation, type=checkbox
 #: data/themes/_initial.cfg:541 data/themes/_initial.cfg:681
@@ -4395,8 +4393,8 @@ msgid ""
 "Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use of "
 "advanced features."
 msgstr ""
-"Gelişmiş araçları kullanmak için editörün <i>Dosya</i> menüsünden <i>Yeni "
-"Senaryo</i> yaratın."
+"Gelişmiş araçları kullanmak için düzenleyicinin <i>Dosya</i> menüsünden "
+"<i>Yeni Senaryo</i> yaratın."
 
 #. [tip]
 #: data/tips.cfg:12
@@ -4404,8 +4402,8 @@ msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the mp create screen's <i>User Scenarios</i> section."
 msgstr ""
-"Editörden varsayılan dosyalarına kaydedilen senaryolar çok oyunculu "
-"oluşturma ekranının <i> Kullanıcı Senaryoları </i> bölümünden seçilebilir."
+"Düzenleyiciden öntanımlı dizine kaydedilen senaryolar çok oyunculu oluşturma "
+"ekranında <i>Kullanıcı Senaryoları</i> bölümünden seçilebilir."
 
 #. [tip]
 #: data/tips.cfg:16
@@ -4413,7 +4411,7 @@ msgid ""
 "Don’t neglect to earn your leader experience! You need to keep him safe, but "
 "if you coddle him too much he may be too weak to survive future battles."
 msgstr ""
-"Önderinizin deneyim kazanmasını savsaklamayın! Onu sağ salim tutmanız "
+"Liderinizin deneyim kazanmasını savsaklamayın! Onu sağ salim tutmanız "
 "elbette gerekli fakat çok fazla üzerine titrerseniz seferberliğin ileri "
 "senaryolarında düşük seviyeli bir birim olarak hayatta kalması güçleşebilir."
 
@@ -4472,9 +4470,9 @@ msgid ""
 "will restrict it to one hex of movement in any direction. Unfortunately, you "
 "must completely surround skirmishers to immobilize them."
 msgstr ""
-"Çevreleme taktiği çok etkilidir, bilhassa hızlı rakiplere karşı. İki birimi "
-"düşmanın zıt taraflarına yerleştirerek rakibinizin hareket alanını her yöne "
-"bir altıgenle sınırlayabilirsiniz."
+"Sarma taktiği çok etkilidir, bilhassa hızlı rakiplere karşı. İki birimi "
+"düşman birimin zıt taraflarına yerleştirerek rakibinizin hareket alanını her "
+"yöne bir altıgenle sınırlayabilirsiniz."
 
 #. [tip]
 #: data/tips.cfg:29 data/tips.cfg:141
@@ -4565,10 +4563,9 @@ msgid ""
 "better at night. <i>Neutral</i> units are unaffected by the time of day. The "
 "rare <i>liminal</i> units fight best during twilight."
 msgstr ""
-"<i>Adil</i> birimler gündüz iyi savaşırlar ve <i>kaypak</i> birimler de gece "
-"iyi savaşırlar. <i>Tarafsız</i> birimler ise gündüz ve geceden "
-"etkilenmezler. Nadir <i>İntikalî</i> birimler ise alacakaranlıkta en iyi "
-"savaşırlar."
+"<i>Adil</i> birimler gündüz iyi savaşır ve <i>kaypak</i> birimler de gece "
+"iyi savaşır. <i>Tarafsız</i> birimler ise gündüz ve geceden etkilenmez. "
+"Nadir <i>İntikalî</i> birimler ise alacakaranlıkta en iyi savaşır."
 
 #. [tip]
 #: data/tips.cfg:57
@@ -4700,7 +4697,7 @@ msgid ""
 "beginning of their turn, or will recover from poisoning."
 msgstr ""
 "Köylerde bulunan birimler kendi ellerinin başında 8 yaşam puanına kadar "
-"iyileşirler."
+"iyileşirler, zehirlenenlerin ise sadece zehiri giderilir."
 
 #. [tip]
 #: data/tips.cfg:96
@@ -4747,9 +4744,8 @@ msgid ""
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
-"Atlı birimler genellikle bıçaklı veya darbeli saldırılara karşı "
-"dayanıklıdır, ama delici silahlara, mesela oklar ve mızraklara karşı "
-"savunmasızdırlar."
+"Atlı birimler genellikle kesici veya darbeli saldırılara karşı dayanıklıdır, "
+"ama delici silahlara, mesela oklar ve mızraklara karşı savunmasızdırlar."
 
 #. [tip]
 #: data/tips.cfg:109
@@ -4828,9 +4824,9 @@ msgid ""
 "make room for you on their keep so you can recruit from there, and you can "
 "even capture an enemy’s keep and use that."
 msgstr ""
-"<i>Önderler</i>, kendi bulunduğu iç kaleden başka iç kalelerde de asker "
-"alabilir veya çağırma yapabilir. Bir düşmanın iç kalesini ele geçirerek "
-"oradan asker alabilir veya bazı müttefiklerin kendi iç kalelerinde asker "
+"<i>Liderler</i>, kendi bulunduğu içkaleden başka içkalelerde de asker "
+"alabilir veya çağırma yapabilir. Bir düşmanın içkalesini ele geçirerek "
+"oradan asker alabilir veya bazı müttefiklerin kendi içkalelerinde asker "
 "alabilmen için yer açabilirler."
 
 #. [tip]
@@ -4849,7 +4845,7 @@ msgid ""
 "the same side fight better. You can move these units slowly along your "
 "battle lines and give bonuses to large numbers of lower-level troops."
 msgstr ""
-"<i>Önderlik</i> kabiliyetine sahip birimler, komşu altıgenlerdeki alt "
+"<i>Liderlik</i> kabiliyetine sahip birimler, komşu altıgenlerdeki alt "
 "seviyeden dost birimlerin daha iyi savaşmasını sağlarlar. Liderlik "
 "yeteneğine sahip birimleri diğer birimlerinizin daha çabuk terfi etmesi için "
 "kullanabilirsiniz."
@@ -4892,7 +4888,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:157
 msgid "<i>― Princess Li’sar, 515YW</i>"
-msgstr "<i>― Prenses Li'sar, 515WY</i>"
+msgstr "<i>― Prenses Lisar, 515WY</i>"
 
 #. [tip]
 #: data/tips.cfg:160
@@ -4965,7 +4961,7 @@ msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
 msgstr ""
-"Taaruz eden birimlerin en iyi kullanımı bir vuruşta öldürebilecekleri "
+"Yükleme yapan birimlerin en iyi kullanımı bir vuruşta öldürebilecekleri "
 "düşmanlara karşıdır."
 
 #. [tip]
@@ -4977,10 +4973,11 @@ msgid ""
 "benefits of advancing a level, so it is generally wiser to advance your "
 "lower-level units instead."
 msgstr ""
-"Birimler, genelde yaşam puanlarını 3 arttırma ve canını doldurma şeklinde "
-"olan, <i>En fazla Seviye Sonrası Terfi</i> (ESST) alabilirler. Tabii, her "
-"ESST sonrası tekrar ESST almak zorlaşır. Bu açıdan, genelde daha düşük "
-"seviyeden birimleri terfi ettirmeye çalışmak daha faydalıdır."
+"Yüksek seviyeli birimler, terfi etmek yerine genelde yaşam puanlarını 3 "
+"arttırma ve canını doldurma şeklinde olan, <i>Azami Seviye Sonrası Terfi</i> "
+"(ASST) alabilirler ve bu  bir seviye terfi etmek kadar yarar sağlamaz. Bu "
+"açıdan, genelde daha düşük seviyeden birimleri terfi ettirmeye çalışmak daha "
+"faydalıdır."
 
 #. [tip]
 #: data/tips.cfg:196
@@ -5006,7 +5003,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:201
 msgid "<i>― Queen Li’sar, 528YW</i>"
-msgstr "<i>― Kraliçe Li'sar, 528WY</i>"
+msgstr "<i>― Kraliçe Lisar, 528WY</i>"
 
 #. [tip]
 #. Whiteboard is another name for the Planning Mode
@@ -5051,12 +5048,12 @@ msgid ""
 "to escape; slow enemies are almost immobilized, and your own units suffer "
 "less retaliation damage, so it’s quicker to heal them."
 msgstr ""
-"<i>Yavaşlatma</i> yeteneği farklı yönlerden etki ettiği için çok güçlüdür. "
-"Yarı ölü bir düşman <i>Sömürme</i> yeteneğinden yarısı kadar faydalanır, "
-"<i>Taaruz</i> ve <i>Destekli</i> yetenekleri etkisiz kalır ve <i>Cinnet</i> "
-"yeteneği zayıflar. Hızlı düşmanlar kaçmakta zorlanır; yavaş düşmanlar "
-"neredeyse hareket edemez hale gelir, ve kendi birimleriniz daha az karşı "
-"hasar alır, böylece onları iyileştirmesi daha kolay olur."
+"<i>Yavaşlatma</i> yeteneği farklı şekillerde etki ettiği için çok güçlüdür. "
+"Yarı ölü bir düşmanın <i>Sömürme</i> yeteneğini yararını yarıya düşürür, "
+"<i>Yüklenme</i> ve <i>Destekli</i> yeteneklerini etkisiz kılar ve <i>Cinnet</"
+"i> yeteneğini zayıflatır. Hızlı düşmanların kaçması zorlaşır; yavaş "
+"düşmanlar neredeyse hareket edemez hale gelir ve kendi birimleriniz daha az "
+"karşı hasar alır, böylece onları iyileştirmesi daha kolay olur."
 
 #. [tip]
 #: data/tips.cfg:221
@@ -5080,8 +5077,8 @@ msgid ""
 "damage makes a one-hit kill possible."
 msgstr ""
 "3 veya daha fazla vuran birimler—özellikle sihirli vuran— az yaşam puanı "
-"kalmış düşmanları öldürmek için çok uygundur. 1 veya 2 hasar fazladan vurmak "
-"tek atmayı mümkün kılıyorsa önderlik—veya güçlü veya becerikli birimler— "
+"kalmış düşmanları öldürmek için çok uygundur. Bir vuruşta fazladan 1 veya 2 "
+"hasar öldürmeyi sağlıyorsa lideri—veya güçlü veya becerikli birimleri— "
 "kullanmayı unutmayın."
 
 #. [tip]
@@ -5102,9 +5099,9 @@ msgid ""
 "turns’ movement away from the fighting. Then it can recover in peace (at 10 "
 "hitpoints per turn) without tying up front-line villages."
 msgstr ""
-"Çetin bir birim ağır yaralanırsa savaştan birkaç elde gidilemeyecek bir köye "
-"kaçırın. Böylece cephedeki köyleri meşgul etmeden iyileşebilir (el başına 10 "
-"yaşam puanı)."
+"Çetin bir birim ağır yaralanırsa birkaç elde gidilemeyecek bir köye kaçırın. "
+"Böylece cephedeki köyleri meşgul etmeden iyileşebilir (el başına 10 yaşam "
+"puanı)."
 
 #. [tip]
 #: data/tips.cfg:234 data/tips.cfg:246
@@ -5119,8 +5116,8 @@ msgid ""
 "<i>Charge</i> against a slowed opponent, the results can be impressive."
 msgstr ""
 "Birkaç özel yeteneği birleştirmek ölümcül olabilir. Birleştirmesi zaman alsa "
-"da, mesela yavaşlatılmış bir rakibe karşı <i>Önderlik</i>, <i>Aydınlatır</i> "
-"ve <i>Taaruz</i> kullanılınca sonuçlar etkileyici olabilir."
+"da, mesela yavaşlatılmış bir rakibe karşı <i>Liderlik</i>, <i>Aydınlatır</i> "
+"ve <i>Yüklenme</i> kullanılınca sonuçlar etkileyici olabilir."
 
 #. [tip]
 #: data/tips.cfg:241
@@ -5158,7 +5155,7 @@ msgid ""
 "may be cheaper."
 msgstr ""
 "Bazı birimlerin askere alma ücreti 20 altınlık çağırma ücretini geçiyor. "
-"Seferberlikteyken her zaman bir birimi çağırması daha ucuz mu diye bakın."
+"Seferberlikteyken her zaman bir birimi çağırmak daha mı ucuz diye bir bakın."
 
 #. [tip]
 #: data/tips.cfg:253
@@ -5186,7 +5183,9 @@ msgid ""
 "<i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can make a "
 "big difference in a campaign."
 msgstr ""
-"Bazı yüksek seviye birimlerin <i>Önderlik</i>, <i>Tedavi eder</i> veya <i>"
+"Bazı yüksek seviye birimler <i>Liderlik</i>, <i>Tedavi eder</i> veya "
+"<i>Karabasan</i> gibi benzersiz yeteneklere sahiptir. Seferberliğn başında "
+"bu birimlere sahip olmak büyük fark yaratabilir."
 
 #. [tip]
 #: data/tips.cfg:262
@@ -5201,17 +5200,15 @@ msgid ""
 "the village, although they will still be healed."
 msgstr ""
 "Yarasalar ve vahşi hayvanlar gibi <i>Vahşi</i> birimler köylerden kaçınır. "
-"Bir köy altıgeninde dursalar bile köyün verdiği savunma faydasından "
-"yararlanmazlar. Ancak yine de iyileşirler."
+"Bir köy altıgeninde dursalar bile köyün verdiği savunmadan yararlanamazlar. "
+"Ancak yine de iyileşirler."
 
 #. TRANSLATORS: In networked games, when one player has the choice
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:225
-#, fuzzy
-#| msgid "an advancement choice"
 msgid "waiting for^an advancement choice"
-msgstr "Bir terfi seçeneği"
+msgstr "bir terfi seçeneği"
 
 #: src/actions/attack.cpp:602 src/actions/attack.cpp:1349
 msgid "An invalid attacker weapon got selected."
@@ -5219,35 +5216,35 @@ msgstr "Geçersiz bir saldırgan silahı seçildi."
 
 #: src/actions/create.cpp:338
 msgid "You do not have a leader to recall with."
-msgstr "Asker çağıracak bir önderin yok."
+msgstr "Asker çağıracak bir lideriniz yok."
 
 #: src/actions/create.cpp:342
 msgid "None of your leaders are able to recall that unit."
-msgstr "Hiçbir önderin asker çağıramıyor."
+msgstr "Hiçbir liderin asker çağıramıyor."
 
 #: src/actions/create.cpp:346
 msgid "You must have a leader on a keep who is able to recall that unit."
-msgstr "İç kalede o birimi çağırabilecek bir önderin olmalı."
+msgstr "İçkalede o birimi çağırabilecek bir liderin olmalı."
 
 #: src/actions/create.cpp:350
 msgid "There are no vacant castle tiles in which to recall the unit."
-msgstr "Birimi çağırabilecek boş kale bölümü yok."
+msgstr "Birimin çağrılabileceği boş kale bölümü yok."
 
 #: src/actions/create.cpp:360 src/actions/create.cpp:496
 msgid "An unrecognized error has occurred."
-msgstr "Tanımlanamayan bir hata gerçekleşti."
+msgstr "Tanımlanamayan bir hata oluştu."
 
 #: src/actions/create.cpp:474
 msgid "You do not have a leader to recruit with."
-msgstr "Asker alabilecek bir önderin yok."
+msgstr "Asker alabilecek bir liderin yok."
 
 #: src/actions/create.cpp:478
 msgid "None of your leaders are able to recruit that unit."
-msgstr "O birimi askere alacak önderin yok."
+msgstr "O birimi askere alacak liderin yok."
 
 #: src/actions/create.cpp:482
 msgid "You must have a leader on a keep who is able to recruit the unit."
-msgstr "Birimi askere almak için önderin iç kalede olmalı."
+msgstr "Birimi askere almak için liderin iç kalede olmalı."
 
 #: src/actions/create.cpp:486
 msgid "There are no vacant castle tiles in which to recruit the unit."
@@ -5307,7 +5304,7 @@ msgstr "Bağlanılıyor: $server_adress|..."
 
 #: src/addon/client.cpp:89
 msgid "Downloading list of add-ons..."
-msgstr "Eklenti listesi yükleniyor..."
+msgstr "Eklenti listesi indiriliyor..."
 
 #: src/addon/client.cpp:103
 msgid "Requesting distribution terms..."
@@ -5318,19 +5315,18 @@ msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
 msgstr ""
-"<i>$addon_title</i> eklentisinin geçersiz bir no'su '$addon_id' var bu "
-"yüzden yayımlanamaz."
+"<i>$addon_title</i> eklentisinin  '$addon_id' kimliği geçersiz. Bu yüzden "
+"yayımlanamaz."
 
 #: src/addon/client.cpp:153
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
 msgstr ""
-"<i>$addon_title</i> eklentisinin dosya adı veya dizini geçersiz bir harf "
-"veya sembol içeriyor bu yüzden yayımlanamaz."
+"<i>$addon_title</i> eklentisinin dosya adı veya dizini geçersiz karakterler "
+"içeriyor, bu yüzden yayımlanamaz."
 
 #: src/addon/client.cpp:161
-#, fuzzy
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -5340,11 +5336,11 @@ msgid ""
 "&quot; * / : &lt; &gt; ? \\ | ~"
 msgstr ""
 "<i>$addon_title</i> eklentisinin dosya veya dizin adı geçersiz bu yüzden "
-"yayımlanamaz. Dosya uzantısı '..' içeremez veya '.' ile bitemez. Veya 255 "
-"karakterden uzun olamaz. Aynı zamanda boşluk, kontrol sembolleri veya "
-"aşağıdaki sembolleri içeremez:\n"
-"\v\n"
-"\v&quot; * / : &lt; &gt; ? \\ | ~"
+"yayımlanamaz. Dosya ve dizin isimleri '..' içeremez veya '.' ile bitemez ve "
+"255 karakterden uzun olamaz. Aynı zamanda boşluk ve denetim karakterleri "
+"veya aşağıdaki karakterleri içeremez:\n"
+"\n"
+"&quot; * / : &lt; &gt; ? \\ | ~"
 
 #: src/addon/client.cpp:172
 msgid ""
@@ -5353,8 +5349,8 @@ msgid ""
 "the same string."
 msgstr ""
 "<i>$addon_title</i> eklentisini Büyük-küçük harf çelişkili dosyalar "
-"içeriyor. Dosya veya dizin adları aynı dizenin farklı büyüklükteki hali "
-"olamaz."
+"içeriyor. Dosya veya dizin adları aynı dizenin farklı büyüklükteki "
+"karakterlerini kullanarak farklılaştırılamaz."
 
 #: src/addon/client.cpp:184
 msgid "Sending add-on <i>$addon_title</i>..."
@@ -5374,16 +5370,15 @@ msgid ""
 "cannot be installed."
 msgstr ""
 "<i>$addon_title</i> eklentisinin dosya veya dizin adı geçersiz bu yüzden "
-"indirilemez."
+"kurulamaz."
 
 #: src/addon/client.cpp:264
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
 msgstr ""
-"<i>$addon_title</i> eklentisinin dosya adı veya dizini Büyük-küçük harf "
-"çelişkisi içeriyor. Dosya veya dizin adları aynı dizenin farklı büyüklükteki "
-"hali olamaz."
+"<i>$addon_title</i> eklentisinin dosya adı veya dizini büyük-küçük harf "
+"çelişkisi içeriyor. Bu durum sorun yaratabilir."
 
 #: src/addon/client.cpp:321
 msgid "The server responded with an error:"
@@ -5397,15 +5392,15 @@ msgid_plural ""
 "The selected add-on has the following dependencies, which are not currently "
 "installed or available from the server. Do you wish to continue?"
 msgstr[0] ""
-"Seçilmiş eklentinin aşağıdaki destek dosyası var. bu yüklenmemiş veya "
-"sunucudan alınamıyor. Devam etmek istiyor musunuz?"
+"Seçilmiş eklentinin destek dosyası kurulu değil ve sunucudan alınamıyor. "
+"Devam etmek istiyor musunuz?"
 msgstr[1] ""
-"Seçilmiş eklentinin aşağıdaki destek dosyaları var. bunlar yüklenmemiş veya "
-"sunucudan alınamıyorlar. Devam etmek istiyor musunuz?"
+"Seçilmiş eklentinin destek dosyaları kurulu değil ve bunlar sunucudan "
+"alınamıyor. Devam etmek istiyor musunuz?"
 
 #: src/addon/client.cpp:380
 msgid "Broken Dependencies"
-msgstr "Bozulmuş Destek dosyaları"
+msgstr "Bozuk Destek Dosyaları"
 
 #: src/addon/client.cpp:422
 msgid ""
@@ -5414,29 +5409,28 @@ msgid ""
 msgid_plural ""
 "The following dependencies could not be installed. Do you still wish to "
 "continue?"
-msgstr[0] "Aşağıdaki destek dosyası indirilemedi. Devam etmek istiyor musunuz?"
-msgstr[1] ""
-"Aşağıdaki destek dosyaları indirilemedi. Devam etmek istiyor musunuz?"
+msgstr[0] "Aşağıdaki destek dosyası kurulamadı. Devam etmek istiyor musunuz?"
+msgstr[1] "Aşağıdaki destek dosyaları kurulamadı. Devam etmek istiyor musunuz?"
 
 #: src/addon/client.cpp:426
 msgid "Dependencies Installation Failed"
-msgstr "Destek Dosyaları Yüklenemedi"
+msgstr "Destek Dosyaları Kurulamadı"
 
 #: src/addon/client.cpp:449
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
-"'$addon|' eklentisi zaten yüklü ve devam ederseniz silinecek ek bilgi "
-"içeriyor:"
+"'$addon|' eklentisi zaten yüklü ve devam ederseniz kalıcı olarak silinecek "
+"ek bilgi içeriyor:"
 
 #: src/addon/client.cpp:453
 msgid "Publishing information file (.pbl)"
-msgstr "Publishing information file (.pbl)"
+msgstr "Yayım bilgi dosyası  (.pbl)"
 
 #: src/addon/client.cpp:457
 msgid "Version control system (VCS) information"
-msgstr "Sürüm kontrol sistemi (SKS) bilgisi."
+msgstr "Sürüm denetim sistemi (SDS) bilgisi."
 
 #: src/addon/client.cpp:461
 msgid "Do you really wish to continue?"
@@ -5449,7 +5443,7 @@ msgstr "Onay"
 
 #: src/addon/client.cpp:583
 msgid "Add-ons Manager"
-msgstr "Eklentiler yöneticisi"
+msgstr "Eklentiler Yöneticisi"
 
 #: src/addon/info.cpp:157
 msgid "addon_type^Campaign"
@@ -5485,7 +5479,7 @@ msgstr "Seferberlik (ÇO)"
 
 #: src/addon/info.cpp:173
 msgid "addon_type^Modification"
-msgstr "Modifikasyon (ÇO)"
+msgstr "Değişiklik "
 
 #: src/addon/info.cpp:175
 msgid "addon_type^Core"
@@ -5557,11 +5551,11 @@ msgid_plural ""
 "The following add-ons appear to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr[0] ""
-"Aşağıdaki eklentinin yayım veya sürüm kontrol bilgisi yerel olarak kayıt "
-"edilmiş duruyor, ve kaldırılmayacaktır:"
+"Aşağıdaki eklentinin yayım veya sürüm denetim bilgileri yerel olarak kayıtlı "
+"görünüyor ve kaldırılmayacak:"
 msgstr[1] ""
-"Aşağıdaki eklentilerin yayım veya sürüm kontrol bilgileri yerel olarak kayıt "
-"edilmiş duruyor, ve kaldırılmayacaklardır:"
+"Aşağıdaki eklentilerin yayım veya sürüm denetim bilgileri yerel olarak "
+"kayıtlı görünüyor ve kaldırılmayacak:"
 
 #: src/addon/manager_ui.cpp:205
 msgid "The following add-on could not be deleted properly:"
@@ -5583,17 +5577,15 @@ msgstr[1] "Aşağıdaki eklentiler başarılı bir şekilde silindi:"
 
 #: src/addon/manager_ui.cpp:270
 msgid "An error occurred while downloading the add-ons list from the server."
-msgstr "Sunucudan eklentiler listesini indirirken bir hata oluştu."
+msgstr "Sunucudan eklentiler listesi indirilirken bir hata oluştu."
 
 #: src/addon/manager_ui.cpp:284
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
-msgstr ""
-"Eklenti sunucusunda eklenti no'su $addon_id ile uyuşan bir eklenti "
-"bulunamadı."
+msgstr "Eklenti sunucusunda $addon_id ile eşleşen bir eklenti bulunamadı."
 
 #: src/chat_command_handler.cpp:111
 msgid "Added to ignore list: $nick"
-msgstr "Gözardı listenize eklendi:$nick"
+msgstr "Gözardı listenize eklendi: $nick"
 
 #: src/chat_command_handler.cpp:111
 msgid "ignores list"
@@ -5601,11 +5593,11 @@ msgstr "gözardı listesi"
 
 #: src/chat_command_handler.cpp:115 src/chat_command_handler.cpp:134
 msgid "Invalid username: $nick"
-msgstr "Geçersiz kullanıcı ismi:$nick"
+msgstr "Geçersiz kullanıcı ismi: $nick"
 
 #: src/chat_command_handler.cpp:130
 msgid "Added to friends list: $nick"
-msgstr "Arkadaş listenize eklendi:$nick"
+msgstr "Arkadaş listenize eklendi: $nick"
 
 #: src/chat_command_handler.cpp:130
 msgid "friends list"
@@ -5625,16 +5617,16 @@ msgstr "sürüm"
 
 #: src/chat_command_handler.cpp:174
 msgid "registering with password *** and no email address"
-msgstr "şifreli *** ve e-posta adressiz kayıt ediliyor"
+msgstr "*** parolasıyla e-posta adressiz kayıt ediliyor"
 
 #: src/chat_command_handler.cpp:179
 msgid "registering with password *** and email address $email"
-msgstr "şifreli *** ve e-posta adresi ile kayıt ediliyor"
+msgstr "*** parolasıyla ve $email e-posta adresi ile kayıt ediliyor"
 
 #: src/chat_command_handler.cpp:182 src/chat_command_handler.cpp:193
 #: src/chat_command_handler.cpp:211 src/chat_command_handler.cpp:225
 msgid "nick registration"
-msgstr "Rumuz kaydı"
+msgstr "Kullanıcı ismi kaydı"
 
 #: src/chat_command_handler.cpp:193
 msgid "dropping your username"
@@ -5642,7 +5634,7 @@ msgstr "kullanıcı isminiz düşürülüyor"
 
 #: src/chat_command_handler.cpp:211
 msgid "setting $var to $value"
-msgstr "$var değeri $value yapılıyor"
+msgstr "$var için $value değeri atanıyor"
 
 #: src/chat_command_handler.cpp:225
 msgid "requesting information for user $nick"
@@ -5683,7 +5675,7 @@ msgstr "<takma ad>"
 #: src/chat_command_handler.hpp:95
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
-"Bir kullanıcının engelini kaldır. Oyunda olması gerekmez sunucuda olsun "
+"Bir kullanıcının engelini kaldırır. Oyunda olması gerekmez sunucuda olsun "
 "yeter."
 
 #: src/chat_command_handler.hpp:98
@@ -5693,13 +5685,14 @@ msgstr "Bir oyuncuyu veya seyirciyi atar."
 #: src/chat_command_handler.hpp:100
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
-"Bir gözlemciyi sustur. Bir değiştirge belirtilmezse sessizlik durumunu "
+"Bir gözlemciyi susturur. Bir değiştirge belirtilmezse sessizlik durumunu "
 "gösterir."
 
 #: src/chat_command_handler.hpp:102
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
-"Bir gözlemcinin sesini aç. Bir değiştirge belirtilmezse herkesin sesini açar."
+"Bir gözlemcinin sesini açar. Bir değiştirge belirtilmezse herkesin sesini "
+"açar."
 
 #: src/chat_command_handler.hpp:104
 msgid "Mute/Unmute all observers. (toggles)"
@@ -5711,7 +5704,7 @@ msgid ""
 "mention relevant nicknames, etc."
 msgstr ""
 "Taciz, kural ihlalleri vb. sunucu moderatörlerine ihbar edin. Alakalı takma "
-"isimlerini vb. de söylemeyi unutmayın."
+"isimler vb. den bahsetmeyi de unutmayın."
 
 #: src/chat_command_handler.hpp:112
 msgid "<message>"
@@ -5743,11 +5736,11 @@ msgstr "Bir günlük kayıt alanının günlük kayıt seviyesini değiştirir."
 
 #: src/chat_command_handler.hpp:123
 msgid "Add a nickname to your ignores list."
-msgstr "Gözardı listenize bir kullanıcı adı ekleyin."
+msgstr "Gözardı listenize bir kullanıcı adı ekler."
 
 #: src/chat_command_handler.hpp:125
 msgid "Add a nickname to your friends list."
-msgstr "Arkadaş listenize kullanıcı adı ekleyin."
+msgstr "Arkadaş listenize kullanıcı adı ekler."
 
 #: src/chat_command_handler.hpp:127
 msgid "Remove a nickname from your ignores or friends list."
@@ -5759,7 +5752,7 @@ msgstr "Sürüm bilgilerini gösterir."
 
 #: src/chat_command_handler.hpp:131
 msgid "<password> <email (optional)>"
-msgstr "<şifre> <e-posta (isteğe bağlı)>"
+msgstr "<parola> <e-posta (isteğe bağlı)>"
 
 #: src/chat_command_handler.hpp:131
 msgid "Register your nickname"
@@ -5846,7 +5839,7 @@ msgstr "şuna fısılda: $receiver"
 
 #: src/chat_events.cpp:159
 msgid "whisper: $sender"
-msgstr "fısıltı: $sender"
+msgstr "fısıldayan: $sender"
 
 #: src/deprecation.cpp:40
 msgid "$elem has been deprecated indefinitely."
@@ -5859,8 +5852,7 @@ msgstr ""
 
 #: src/deprecation.cpp:49
 msgid "$elem has been deprecated and may be removed at any time."
-msgstr ""
-"$elem kullanımdan çıkarıldı ve herhangi bir zamanda kaldırılmış olabilir."
+msgstr "$elem kullanımdan çıkarıldı ve herhangi bir zamanda kaldırılabilir."
 
 #: src/deprecation.cpp:56
 msgid "$elem has been deprecated and will be removed in version $version."
@@ -5908,7 +5900,7 @@ msgstr "%b %d %Y"
 
 #: src/game_config.cpp:536
 msgid "Invalid color in range: "
-msgstr "Geçersiz aralıkta renk:"
+msgstr "Geçersiz renk aralığı:"
 
 #: src/game_config_manager.cpp:199 src/game_config_manager.cpp:208
 #: src/game_config_manager.cpp:220
@@ -5917,7 +5909,7 @@ msgstr "Veri çekirdeğini doğrularken hata oluştu."
 
 #: src/game_config_manager.cpp:200
 msgid "Found a core without id attribute."
-msgstr "No özelliği olmayan bir çekirdek bulundu."
+msgstr "Kimliksiz bir çekirdek bulundu."
 
 #: src/game_config_manager.cpp:201 src/game_config_manager.cpp:211
 #: src/game_config_manager.cpp:224
@@ -5927,11 +5919,11 @@ msgstr "Çekirdeği atlıyor."
 #: src/game_config_manager.cpp:209 src/game_config_manager.cpp:221
 #: src/game_config_manager.cpp:244
 msgid "Core ID: "
-msgstr "Çekirdek No:"
+msgstr "Çekirdek Kimliği:"
 
 #: src/game_config_manager.cpp:210
 msgid "The ID is already in use."
-msgstr "No zaten kullanımda."
+msgstr "Kimlik zaten kullanımda."
 
 #: src/game_config_manager.cpp:222
 msgid "Core Path: "
@@ -5947,7 +5939,7 @@ msgstr "Veri çekirdeğini yüklerken hata oluştu."
 
 #: src/game_config_manager.cpp:245
 msgid "Error loading the core with named id."
-msgstr "Verilen no'ya ait çekirdeği yüklerken hata oluştu."
+msgstr "Verilen kimliğe ait çekirdeği yüklerken hata oluştu."
 
 #: src/game_config_manager.cpp:246
 msgid "Falling back to the default core."
@@ -5995,7 +5987,7 @@ msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
 msgstr[0] "Lütfen bunu bu eklentinin yazarı veya bakımcısına bildirin."
-msgstr[1] "Lütfen bunu bu eklentinin yazarları veya bakımcılarına bildirin."
+msgstr[1] "Lütfen bunu bu eklentilerin yazarları veya bakımcılarına bildirin."
 
 #: src/game_events/pump.cpp:476 src/game_launcher.cpp:915
 msgid "Error: "
@@ -6073,7 +6065,7 @@ msgstr "Bağımlılıklar çözümlenemedi"
 
 #: src/game_initialization/depcheck.cpp:516
 msgid "Scenario can't be activated. Some dependencies are missing: "
-msgstr "Senaryo aktifleştirilemiyor. Bazı bağımlılıklar eksik: "
+msgstr "Senaryo etkinleştirilemiyor. Bazı bağımlılıklar eksik: "
 
 #: src/game_initialization/depcheck.cpp:570
 #: src/game_initialization/depcheck.cpp:693
@@ -6082,7 +6074,7 @@ msgstr "Uyumlu çağ bulunamadı."
 
 #: src/game_initialization/depcheck.cpp:585
 msgid "Era can't be activated. Some dependencies are missing: "
-msgstr "Çağ aktifleştirilemedi. Bazı bağımlılıklar eksik: "
+msgstr "Çağ etkinleştirilemedi. Bazı bağımlılıklar eksik: "
 
 #: src/game_initialization/depcheck.cpp:638
 #: src/game_initialization/depcheck.cpp:730
@@ -6093,7 +6085,8 @@ msgstr "Uyumlu senaryo bulunamadı."
 msgid ""
 "Not all of the chosen modifications are compatible. Some of them will be "
 "disabled."
-msgstr "Seçilen her tadil uyumlu değil. Bazıları devre dışı bırakılacaktır."
+msgstr ""
+"Seçilen her değişiklik uyumlu değil. Bazıları devre dışı bırakılacaktır."
 
 #: src/game_initialization/depcheck.hpp:312
 #: src/game_initialization/depcheck.hpp:324
@@ -6106,11 +6099,11 @@ msgstr "Geçerli çağda sadece rastgele taraflar var."
 
 #: src/game_initialization/flg_manager.cpp:233
 msgid "Unable to find a leader type for faction $faction"
-msgstr "$faction ekibi için bir önder türü bulunamıyor"
+msgstr "$faction ekibi için bir lider türü bulunamıyor"
 
 #: src/game_initialization/flg_manager.cpp:256
 msgid "Cannot obtain genders for invalid leader $leader"
-msgstr "Geçersiz önder $leader için cinsiyet bulunamıyor"
+msgstr "Geçersiz lider $leader için cinsiyet bulunamıyor"
 
 #: src/game_initialization/lobby_data.cpp:246
 msgid "Missing addon: $name"
@@ -6144,7 +6137,7 @@ msgstr "Bilinmeyen Senaryo"
 
 #: src/game_initialization/lobby_data.cpp:432
 msgid "Reloaded game"
-msgstr "Oyunu yeniden yükler"
+msgstr "Oyun yeniden yüklendi"
 
 #: src/game_initialization/lobby_data.cpp:447
 msgid "Vacant Slot:"
@@ -6182,7 +6175,7 @@ msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
-"Sizin <i>$addon</i> sürümünüz uyumsuz. sizinki <b>$local_ver</b> iken "
+"Sizin <i>$addon</i> sürümünüz uyumsuz. Sizinki <b>$local_ver</b> iken "
 "sunucununki <b>$host_ver</b>."
 
 #: src/game_initialization/mp_game_utils.cpp:101
@@ -6209,7 +6202,7 @@ msgid ""
 "nickname until you activate your account via email or ask an administrator "
 "to do it for you."
 msgstr ""
-"'$nick' takma adı faalsizdir. Hesabınızı e-posta ile aktifleştirmeden veya "
+"'$nick' takma adı etkin değil. Hesabınızı e-posta ile etkinleştirmeden veya "
 "bir yöneticiden istemeden bu takma ada sahip olamazsınız."
 
 #: src/game_initialization/multiplayer.cpp:218
@@ -6259,39 +6252,34 @@ msgid " This server disallows unregistered nicknames."
 msgstr " Kayıtlı olmayan oyuncu adlarına bu sunucuda izin verilmemektedir."
 
 #: src/game_initialization/multiplayer.cpp:332
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
-msgstr "Bu sunucuda kayıtlı bir '$nick' zaten var."
+msgstr " ‘$nick’  bu sunucunun forumlarında  $duration| süreyle yasaklıdır."
 
 #: src/game_initialization/multiplayer.cpp:334
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
-msgstr "Bu sunucuda kayıtlı bir '$nick' zaten var."
+msgstr " ‘$nick’  bu sunucunun forumlarında yasaklıdır."
 
 #: src/game_initialization/multiplayer.cpp:338
-#, fuzzy
-#| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums for $duration|."
-msgstr "IP adresiniz bu sunucunun forumlarında engellenmiş"
+msgstr ""
+" IP adresiniz bu sunucunun forumlarında  $duration| süreyle yasaklıdır."
 
 #: src/game_initialization/multiplayer.cpp:340
 msgid "Your IP address is banned on this server’s forums."
-msgstr "IP adresiniz bu sunucunun forumlarında engellenmiş"
+msgstr " IP adresiniz bu sunucunun forumlarında yasaklıdır."
 
 #: src/game_initialization/multiplayer.cpp:344
-#, fuzzy
-#| msgid ""
-#| "The email address for the nickname ‘$nick’ is banned on this server’s "
-#| "forums."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
-msgstr "'$nick' adının e-posta adresi sunucunun forumlarında engellenmiş."
+msgstr ""
+" ‘$nick’ adının e-posta adresi bu sunucunun forumlarında  $duration| süreyle "
+"yasaklıdır."
 
 #: src/game_initialization/multiplayer.cpp:346
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
-msgstr "'$nick' adının e-posta adresi sunucunun forumlarında engellenmiş."
+msgstr " ‘$nick’ adının e-posta adresi bu sunucunun forumlarında yasaklıdır."
 
 #: src/game_initialization/multiplayer.cpp:349
 #: src/game_initialization/multiplayer.cpp:351
@@ -6333,7 +6321,7 @@ msgstr "el başına"
 
 #: src/game_initialization/playcampaign.cpp:67
 msgid "Early finish bonus: "
-msgstr "Erken bitirme ödülü (el başına): "
+msgstr "Erken bitirme ödülü: "
 
 #: src/game_initialization/playcampaign.cpp:68
 msgid "Total bonus: "
@@ -6345,7 +6333,7 @@ msgstr "Toplam altın: "
 
 #: src/game_initialization/playcampaign.cpp:73
 msgid "Carryover percentage: "
-msgstr "Payınız (%): "
+msgstr "Aktarım oranı: "
 
 #: src/game_initialization/playcampaign.cpp:76
 msgid "Bonus gold: "
@@ -6385,11 +6373,11 @@ msgid_plural ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
 msgstr[0] ""
-"Sonraki senaryoya ya $gold altınla ya da bundan daha fazlaysa sonraki "
-"senaryonun asgari başlangıç altınıyla başlayacaksınız."
+"Sonraki senaryoya ya $gold altınla ya da sonraki senaryonun asgari başlangıç "
+"altınıyla (hangisi yüksekse onunla) başlayacaksınız."
 msgstr[1] ""
-"Sonraki senaryoya ya $gold altınla ya da bundan daha fazlaysa sonraki "
-"senaryonun asgari başlangıç altınıyla başlayacaksınız."
+"Sonraki senaryoya ya $gold altınla ya da sonraki senaryonun asgari başlangıç "
+"altınıyla (hangisi yüksekse onunla) başlayacaksınız."
 
 #: src/game_initialization/playcampaign.cpp:137
 msgid "Scenario Report"
@@ -6426,7 +6414,7 @@ msgstr "Oyun haritası yüklenemedi: "
 #: src/game_initialization/playcampaign.cpp:305 src/game_launcher.cpp:872
 #: src/game_launcher.cpp:1006
 msgid "Map generator error: "
-msgstr "Harita üretici hatası: "
+msgstr "Harita üreteci hatası: "
 
 #: src/game_initialization/playcampaign.cpp:307
 msgid "Error while reading the WML: "
@@ -6485,7 +6473,7 @@ msgid ""
 "check the 'max hill size' parameter)"
 msgstr ""
 "Kale koyulacak müsait bir yer bulunamadı. Çok fazla veya çok az dağ altıgeni "
-"mi var? (Lütfen \"azami tepe boyutu' parametresini kontrol edin)"
+"mi var? (Lütfen \"azami tepe boyutu' değiştirgesine bakın)"
 
 #: src/gui/core/linked_group_definition.cpp:39
 msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
@@ -6501,11 +6489,11 @@ msgid_plural ""
 "The selected add-on has the following dependencies, which are outdated or "
 "not currently installed. Do you wish to install them before continuing?"
 msgstr[0] ""
-"Seçili eklentinin aşağıdaki bağımlılığı var ve bunlar yüklenmemiş veya eski "
-"sürüm. Devam etmeden önce yüklemek ister misiniz?"
+"Seçili eklentinin aşağıdaki bağımlılığı var ve bu kurulmamış veya eski "
+"sürüm. Devam etmeden önce kurmak ister misiniz?"
 msgstr[1] ""
-"Seçili eklentilerin Aşağıdaki bağımlılıkları var ve bunlar yüklenmemiş veya "
-"eski sürüm. Devam etmeden önce yüklemek ister misiniz?"
+"Seçili eklentinin aşağıdaki bağımlılıkları var ve bunlar kurulmamış veya "
+"eski sürüm. Devam etmeden önce bunları kurmak ister misiniz?"
 
 #: src/gui/dialogs/game_load.hpp:40
 msgid "No Saved Games"
@@ -6605,7 +6593,7 @@ msgstr "Yönelimler: "
 
 #: src/help/help_impl.cpp:658
 msgid "Leaders"
-msgstr "Önderler: "
+msgstr "Liderler:"
 
 #: src/help/help_impl.cpp:667
 msgid "Recruits"
@@ -6731,7 +6719,7 @@ msgstr "Görüş: "
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
 msgid "Jamming:"
-msgstr "Tıkanma: "
+msgstr "Sıkıştırma: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
@@ -6816,7 +6804,7 @@ msgstr "Görüş Bedeli"
 
 #: src/help/help_topic_generators.cpp:678
 msgid "Jamming Cost"
-msgstr "Tıkanma Bedeli"
+msgstr "Sıkıştırma Bedeli"
 
 #: src/hotkey/command_executor.cpp:391
 msgid "Do you really want to surrender the game?"
@@ -6844,11 +6832,11 @@ msgstr "Gazlanmış hız kapatıldı!"
 
 #: src/hotkey/hotkey_handler.cpp:413
 msgid "Back to Turn "
-msgstr "Ele geri dön: "
+msgstr "Ele Geri Dön:"
 
 #: src/hotkey/hotkey_handler.cpp:419
 msgid "Back to Start"
-msgstr "Başa dön"
+msgstr "Başa Dön"
 
 #: src/hotkey/hotkey_handler_sp.cpp:144
 msgid "(press $hotkey to deactivate)"
@@ -6856,11 +6844,11 @@ msgstr "(etkisizleştirmek için $hotkey tuşuna basınız)"
 
 #: src/hotkey/hotkey_handler_sp.cpp:144 src/menu_events.cpp:1959
 msgid "Planning mode activated!"
-msgstr "Hata ayıklama kipi etkin kılındı!"
+msgstr "Planlama kipi etkin kılındı!"
 
 #: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:1962
 msgid "Planning mode deactivated!"
-msgstr "Hata ayıklama kipinden çıkıldı!"
+msgstr "Planlama kipinden çıkıldı!"
 
 #: src/language.cpp:103
 msgid "System default language"
@@ -6921,13 +6909,12 @@ msgid "Missing argument $arg_id"
 msgstr "Kayıp değiştirge $arg_id"
 
 #: src/map_command_handler.hpp:311
-#, fuzzy
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
 "Mümkün komutlar $flags_description:\n"
-"\v$list_of_commands"
+"$list_of_commands"
 
 #: src/map_command_handler.hpp:311 src/map_command_handler.hpp:312
 #: src/map_command_handler.hpp:336
@@ -6979,10 +6966,8 @@ msgid "You have no units available to recruit."
 msgstr "Askere alabilecek birimin yok."
 
 #: src/menu_events.cpp:282
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recruited"
-msgstr "birim çağırılmadı"
+msgstr "Askere alınmış birim yok."
 
 #: src/menu_events.cpp:314
 msgid "You do not have enough gold to recruit that unit"
@@ -7002,11 +6987,11 @@ msgstr ""
 
 #: src/menu_events.cpp:373
 msgid "You currently can't recall at the highlighted location"
-msgstr "Belirtilmiş böglede çağıramazsın"
+msgstr "Belirtilmiş bölgede birim çağıramazsın"
 
 #: src/menu_events.cpp:385
 msgid "No unit recalled"
-msgstr "birim çağırılmadı"
+msgstr "Çağrılmış birim yok."
 
 #: src/menu_events.cpp:402
 msgid "You must have at least 1 gold piece to recall a unit"
@@ -7031,7 +7016,8 @@ msgstr ""
 
 #: src/menu_events.cpp:577
 msgid "Some units have not moved. Do you really want to end your turn?"
-msgstr "Bazı birimlerin hareket hakları kaldı. Eli bitirmek istiyor musunuz?"
+msgstr ""
+"Bazı birimler hiç hareket etmedi. Eli gerçekten bitirmek istiyor musunuz?"
 
 #: src/menu_events.cpp:634
 msgid "Rename Unit"
@@ -7059,7 +7045,7 @@ msgstr "(D) — sadece hata ayıklama, (N) — sadece ağ, (A) — sadece yönet
 
 #: src/menu_events.cpp:1151
 msgid "(debug command)"
-msgstr "(ata Ayıklama Kipi Komutları)"
+msgstr "(Hata Ayıklama Kipi Komutları)"
 
 #: src/menu_events.cpp:1152
 msgid "(network only)"
@@ -7083,7 +7069,7 @@ msgstr "[<taraf>[on/off]]"
 
 #: src/menu_events.cpp:1186
 msgid "Switch a side to/from idle state."
-msgstr "Bir tarafın denetimini YZ’ya verir veya ondan alır."
+msgstr "Bir tarafın denetimini boşa/geri alır"
 
 #: src/menu_events.cpp:1190
 msgid "<side> <nickname>"
@@ -7139,11 +7125,11 @@ msgstr "Otokayıtları iptal eder."
 
 #: src/menu_events.cpp:1209
 msgid "<id>"
-msgstr "<no>"
+msgstr "<kimlik>"
 
 #: src/menu_events.cpp:1209
 msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr "Sonraki senaryoya veya 'id'’si belirtilen senaryoya geçilir"
+msgstr "Sonraki senaryoya veya 'kimliği'’ belirtilen senaryoya geçilir"
 
 #: src/menu_events.cpp:1211
 msgid "Choose next scenario"
@@ -7154,7 +7140,7 @@ msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
-"El sayısını (ve günün vaktini) değiştir, veya bir sayı belirtilmemişse 1 "
+"El sayısını (ve günün vaktini) değiştir veya bir sayı belirtilmemişse 1 "
 "arttır."
 
 #: src/menu_events.cpp:1214
@@ -7166,7 +7152,8 @@ msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
-"El sınırını değiştir, veya bir sayı belirtilmemişse sınırı kapat veya -1 yap."
+"El sınırını değiştir veya bir sayı belirtilmemişse el sınırını kapat veya -1 "
+"yap."
 
 #: src/menu_events.cpp:1217
 msgid "[limit]"
@@ -7226,7 +7213,7 @@ msgstr "<değişken>"
 
 #: src/menu_events.cpp:1234
 msgid "Show a scenario variable."
-msgstr "Bir senaryo değişkeninin değerini gösterir."
+msgstr "Bir senaryo değişkenini gösterir."
 
 #: src/menu_events.cpp:1236
 msgid "Modify a unit variable. (Only top level keys are supported.)"
@@ -7284,7 +7271,7 @@ msgstr "Beyaz tahta ayar diyaloglarına eriş."
 
 #: src/menu_events.cpp:1382
 msgid "Could not find label or unit containing the string ‘$search’."
-msgstr "‘$search’ dizgesini içeren etiket veya birim bulunamadı."
+msgstr "‘$search’ dizesini içeren etiket veya birim bulunamadı."
 
 #: src/menu_events.cpp:1425
 msgid "Can't droid invalid side: '$side'."
@@ -7367,7 +7354,7 @@ msgid ""
 "Do not continue unless you really know what you are doing."
 msgstr ""
 "Lua kodunu bu şekilde çalıştırmak bilgisayarınızı yüklenmiş herhangi bir "
-"kötü niyetli eklenti veya programlardan olası güvenlik sızıntılarına açar.\n"
+"kötü niyetli eklenti veya programlardaki olası güvenlik sızıntılarına açar.\n"
 "\n"
 "Eğer ne yaptığınızı bilmiyorsanız devam etmeyin."
 
@@ -7407,12 +7394,12 @@ msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
 msgstr ""
-"Gerçekleşmemiş Askere alımlar veya çağrılar varken önderi içkaleden "
+"Gerçekleşmemiş askere alımlar veya çağrılar varken lideri içkaleden "
 "çıkaramazsınız."
 
 #: src/mouse_events.cpp:1291
 msgid "This unit has no usable weapons."
-msgstr "Kullanılabilir silah yok."
+msgstr "Birimin kullanılabilir bir silahı yok."
 
 #: src/mp_game_settings.hpp:70
 msgid "Independent"
@@ -7420,11 +7407,11 @@ msgstr "Bağımsız"
 
 #: src/mp_game_settings.hpp:71
 msgid "No Mirror"
-msgstr "Aksetme yok"
+msgstr "Yansı yok"
 
 #: src/mp_game_settings.hpp:72
 msgid "No Ally Mirror"
-msgstr "Müttefik aksetmesi yok"
+msgstr "Müttefik yansı yok"
 
 #: src/mp_ui_alerts.cpp:66
 msgid "A player has joined"
@@ -7464,7 +7451,7 @@ msgstr "Hareket bedeli 1’den küçük arazi saptandı."
 #. from another player. This text will be embedded into a sentence.
 #: src/persist_var.cpp:58
 msgid "waiting for^a global variable"
-msgstr ""
+msgstr "küresel değişken"
 
 #: src/play_controller.cpp:242
 msgid "time left for current turn"
@@ -7472,14 +7459,14 @@ msgstr "El için kalan süre"
 
 #: src/play_controller.cpp:244 src/replay_controller.cpp:114
 msgid "current local time"
-msgstr "anlık yerel saat"
+msgstr "geçerli yerel saat"
 
 #: src/play_controller.cpp:994
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
-"Oyun eşitzamanlanamadı. Devam etmenin pek bir anlamı yok. Oyunu kaydetmek "
+"Oyun eşzamanlanamadı. Devam etmenin pek bir anlamı yok. Oyunu kaydetmek "
 "ister misiniz?"
 
 #: src/play_controller.cpp:995
@@ -7492,7 +7479,7 @@ msgstr "Hiçbir Amaç yok"
 
 #: src/playmp_controller.cpp:149
 msgid "Undoing moves not yet transmitted to the server."
-msgstr "Henüz sunucuya aktarılmayan hareketler geri alınır."
+msgstr "Geri alınan hareketler henüz sunucuya aktarılmadı."
 
 #: src/playmp_controller.cpp:358
 msgid ""
@@ -7529,7 +7516,10 @@ msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
 "reloaded a corrupt game."
-msgstr "Bu çok oyunculu oyun"
+msgstr ""
+"Bu çok oyunculu oyun farklı bir rasgelelik kipi kullanıyor. Bu iletinin "
+"anlamını bilmiyorsanız, büyük olasılıkla ya birisi hile yapıyor veya birisi "
+"bozuk bir oyunu yeniden yükledi."
 
 #: src/playsingle_controller.cpp:305
 msgid "The game is over."
@@ -7549,7 +7539,7 @@ msgstr "Sıra $name|’de"
 
 #: src/playturn.cpp:276
 msgid "Give control to their ally $player"
-msgstr "Denetimi müttefikleri $player verir"
+msgstr "Denetimi müttefikleri $player'a verir"
 
 #: src/playturn.cpp:285
 msgid "Give control to observer $player"
@@ -7557,7 +7547,7 @@ msgstr "Denetimi $player gözlemcisine verir"
 
 #: src/playturn.cpp:290
 msgid "Replace with AI"
-msgstr "Saldırı Arabirimi ile yer değiş"
+msgstr "YZ ile yer değiş"
 
 #: src/playturn.cpp:291
 msgid "Replace with local player"
@@ -7569,7 +7559,7 @@ msgstr "Tarafı boşa al"
 
 #: src/playturn.cpp:293
 msgid "Save and abort game"
-msgstr "Oyunu kaydet ve boz"
+msgstr "Oyunu kaydet ve terket"
 
 #: src/playturn.cpp:297
 msgid ""
@@ -7592,11 +7582,11 @@ msgstr "İsim: "
 
 #: src/reports.cpp:183
 msgid "Type: "
-msgstr "Tip: "
+msgstr "Tür: "
 
 #: src/reports.cpp:235
 msgid "Side:"
-msgstr ""
+msgstr "Taraf:"
 
 #: src/reports.cpp:257
 msgid "Level: "
@@ -7648,7 +7638,7 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
-"Bu birim zehirlenmiş. Bir köyden veya ‘ilaç verir’ yeteneğine sahip müttefik "
+"Bu birim zehirlenmiş. Bir köyden veya ‘ilaç veme yeteneğine sahip müttefik "
 "bir birimden panzehir alana kadar her el 8 YP kaybedecek.\n"
 "\n"
 "Bir birim sadece zehir ile öldürülemez. Zehir yaşam enerjisini 1 YP’nin "
@@ -7699,16 +7689,12 @@ msgid "Defense: "
 msgstr "Savunma: "
 
 #: src/reports.cpp:620 src/reports.cpp:621
-#, fuzzy
-#| msgid "vision: "
 msgid "vision:"
-msgstr "Görüş: "
+msgstr "görüş: "
 
 #: src/reports.cpp:625 src/reports.cpp:626
-#, fuzzy
-#| msgid "Warning: "
 msgid "jamming:"
-msgstr "Uyarı: "
+msgstr "sıkıştırma: "
 
 #: src/reports.cpp:655
 msgid "Movement Costs:"
@@ -7736,7 +7722,7 @@ msgstr "Günün saati: "
 
 #: src/reports.cpp:767
 msgid "Leadership: "
-msgstr "Önderlik: "
+msgstr "Liderlik: "
 
 #: src/reports.cpp:771
 msgid "Slowed: "
@@ -7748,7 +7734,7 @@ msgstr "Saldırılar: "
 
 #: src/reports.cpp:779
 msgid "Max swarm bonus: "
-msgstr "En fazla üşüşme ödülü: "
+msgstr "Azami üşüşme ödülü: "
 
 #: src/reports.cpp:780 src/reports.cpp:799
 msgid "Swarm: "
@@ -7784,7 +7770,7 @@ msgstr "İsabetlilik:"
 
 #: src/reports.cpp:867
 msgid "Parry:"
-msgstr "Atlat:"
+msgstr "Savuştur:"
 
 #: src/reports.cpp:889
 msgid "Weapon special: "
@@ -7805,14 +7791,10 @@ msgstr[0] "Saldırı"
 msgstr[1] "Saldırılar"
 
 #: src/reports.cpp:1144
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day schedule:"
-msgstr "Günün saati: "
+msgstr "Günün saati zamanlaması: "
 
 #: src/reports.cpp:1176
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day:"
 msgstr "Günün saati: "
 
@@ -7853,7 +7835,7 @@ msgstr "Askere alım ve ordunun bakımı için mevcut altın miktarı."
 
 #: src/reports.cpp:1329
 msgid "The fraction of known villages that your side has captured."
-msgstr "Tarafının ele geçirdiği bilinen köylerin küsuratı"
+msgstr "Tarafınızın ele geçirdiği bilinen köylerin oranı"
 
 #: src/reports.cpp:1329
 msgid "Villages"
@@ -8075,7 +8057,7 @@ msgstr "Değişken adından sonra beklenmedik karakterler (beklenen , veya =)"
 
 #: src/serialization/parser.cpp:352 src/serialization/parser.cpp:392
 msgid "Unterminated quoted string"
-msgstr "Sonlandırılmamış tırnaklı dizge"
+msgstr "Sonlandırılmamış tırnaklı dize"
 
 #: src/serialization/parser.cpp:459
 msgid "at $pos"
@@ -8119,7 +8101,7 @@ msgstr "y"
 
 #: src/serialization/string_utils.cpp:566
 msgid "prefix_kibi^K"
-msgstr "K"
+msgstr "Ki"
 
 #: src/serialization/string_utils.cpp:567
 msgid "prefix_kilo^k"
@@ -8179,7 +8161,7 @@ msgstr "Ayrıntılar:"
 
 #: src/synced_commands.cpp:428
 msgid "Do you wish to save the game before continuing?"
-msgstr "Devam etmeden önce kaydetmek ister misiniz?"
+msgstr "Devam etmeden önce oyunu kaydetmek ister misiniz?"
 
 #: src/synced_commands.cpp:430
 msgid "Debug Command Used"
@@ -8188,7 +8170,7 @@ msgstr "Kullanılan Hata Ayıklama Kipi Komutu"
 #: src/synced_commands.cpp:516
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
-"Hata ayıklama kipi kullanılarak $player oyuncusunun elinde bir birim "
+"$player oyuncusunun elinde hata ayıklama kipi kullanılarak  bir birim "
 "oluşturuldu"
 
 #: src/synced_user_choice.cpp:330
@@ -8202,7 +8184,7 @@ msgstr[1] "$sides taraflarından $desc bekleniyor"
 #. This text will be embedded into a sentence.
 #: src/synced_user_choice.hpp:42
 msgid "waiting for^input"
-msgstr ""
+msgstr "girdi"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8214,7 +8196,7 @@ msgstr "Düşman köyü"
 
 #: src/terrain/terrain.cpp:191
 msgid "Owned village"
-msgstr "Sahipli köy"
+msgstr "Bizim köy"
 
 #: src/theme.cpp:314
 msgid "border_size should be between 0.0 and 0.5."
@@ -8226,11 +8208,11 @@ msgstr "kısayol tuşları: "
 
 #: src/time_of_day.cpp:45
 msgid "Stub Time of Day"
-msgstr "Kütük Günün Saati"
+msgstr "Taslak Günün Saati"
 
 #: src/time_of_day.cpp:46
 msgid "This Time of Day is only a Stub!"
-msgstr "Günün bu saati daha bir kütük!"
+msgstr "Günün bu saati daha bir taslak!"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:356
@@ -8256,8 +8238,8 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> vuruş"
 #: src/units/attack_type.cpp:383
 msgid "$number strike"
 msgid_plural "$number strikes"
-msgstr[0] "$ vuruş"
-msgstr[1] "$ vuruş"
+msgstr[0] "$number vuruş"
+msgstr[1] "$number vuruş"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:392
@@ -8272,12 +8254,12 @@ msgstr "<span color=\"$color\">$number_or_percent|%</span> isabetlilik"
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:406
 msgid "$number parry"
-msgstr "$number| atlatma"
+msgstr "$number| savuşturma"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:413
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
-msgstr "<span color=\"$color\">$number_or_percent</span> kaçıldı"
+msgstr "<span color=\"$color\">$number_or_percent</span> savuşturuldu"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:420
@@ -8337,7 +8319,7 @@ msgstr "<span color=\"$color\">$number_or_percent</span> YP"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> hareket"
-msgstr[1] "<span color=\"$color\">$number_or_percent</span> hareketler"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> hareket"
 
 #: src/units/unit.cpp:1797
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
@@ -8355,13 +8337,12 @@ msgstr "<span color=\"$color\">$number_or_percent</span> ilerleme için TP"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span> el başına saldırı"
-msgstr[1] ""
-"<span color=\"$color\">$number_or_percent</span> el başına saldırılar"
+msgstr[0] "El başına <span color=\"$color\">$number_or_percent</span> saldırı"
+msgstr[1] "El başına <span color=\"$color\">$number_or_percent</span> saldırı"
 
 #: src/units/unit.cpp:1817
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
-msgstr "<span color=\"$color\">$number_or_percent</span> çağırma ücreti"
+msgstr "<span color=\"$color\">$number_or_percent</span> çağırma bedeli"
 
 #: src/units/unit.cpp:2222
 msgid "$effect_description per level"
@@ -8397,7 +8378,7 @@ msgstr "BÜTÜN müttefiklerin planlarını göster"
 
 #: src/whiteboard/manager.cpp:1124
 msgid "HIDE ALL allies’ plans"
-msgstr "BÜTÜN müttefiklerin planlarını sakla"
+msgstr "BÜTÜN müttefiklerin planlarını gizle"
 
 #: src/whiteboard/manager.cpp:1138
 msgid "Show plans for $player"
@@ -8405,7 +8386,7 @@ msgstr "Planları $player oyuncusuna göster"
 
 #: src/whiteboard/manager.cpp:1140
 msgid "Hide plans for $player"
-msgstr "planları $player için sakla"
+msgstr "planları $player için gizle"
 
 #: src/whiteboard/manager.cpp:1143
 msgid "Whiteboard Options"
