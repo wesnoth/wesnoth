@@ -266,8 +266,8 @@ website_stringfixes = {
 ("wesnoth-1.14.6/wesnoth-1.14.6-win32.exe", "wesnoth-1.14.7/wesnoth-1.14.7-win32.exe"),
 ("408.3", "408.2"),
 # macOS
-("wesnoth-1.14.7/Wesnoth_1.14.7.dmg", "wesnoth-1.14.7/Wesnoth_1.14.7a.dmg"),
-("469.4", "466.0"),
+("wesnoth-1.14.7/Wesnoth_1.14.7a.dmg", "wesnoth-1.14.7/Wesnoth_1.14.8a.dmg"),
+("466.0", "465.6"),
 
 ("&#169; 2003&#8211;2018", "&#169; 2003&#8211;2019"),
 ("&#169; 2017&#8211;2018", "&#169; 2017&#8211;2019"),
