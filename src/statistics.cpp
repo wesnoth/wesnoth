@@ -194,6 +194,28 @@ static stats::battle_result_map read_battle_result_map(const config& cfg)
 	return m;
 }
 
+static config write_by_cth_map(const std::map<int, struct statistics::stats::by_cth_t>& m)
+{
+	config res;
+	for(const auto& i : m) {
+		const config child(
+			"key", i.first,
+			"value", i.second.write()
+		);
+		res.add_child("keyvalue", child);
+	}
+	return res;
+}
+
+static std::map<int, struct statistics::stats::by_cth_t> read_by_cth_map(const config& cfg)
+{
+	std::map<int, struct statistics::stats::by_cth_t> m;
+	for(const config &i : cfg.child_range("keyvalue")) {
+		m.emplace(i["key"], statistics::stats::by_cth_t(i.child("value")));
+	}
+	return m;
+}
+
 static void merge_str_int_map(stats::str_int_map& a, const stats::str_int_map& b)
 {
 	for(stats::str_int_map::const_iterator i = b.begin(); i != b.end(); ++i) {
@@ -208,6 +230,14 @@ static void merge_battle_result_maps(stats::battle_result_map& a, const stats::b
 	}
 }
 
+static void merge_cth_map(std::map<int, struct statistics::stats::by_cth_t>& a, const std::map<int, struct statistics::stats::by_cth_t>& b)
+{
+	for(const auto& i : b) {
+		a[i.first].hits += i.second.hits;
+		a[i.first].strikes += i.second.strikes;
+	}
+}
+
 static void merge_stats(stats& a, const stats& b)
 {
 	DBG_NG << "Merging statistics\n";
@@ -216,6 +246,9 @@ static void merge_stats(stats& a, const stats& b)
 	merge_str_int_map(a.advanced_to,b.advanced_to);
 	merge_str_int_map(a.deaths,b.deaths);
 	merge_str_int_map(a.killed,b.killed);
+
+	merge_cth_map(a.by_cth_inflicted,b.by_cth_inflicted);
+	merge_cth_map(a.by_cth_taken,b.by_cth_taken);
 
 	merge_battle_result_maps(a.attacks,b.attacks);
 	merge_battle_result_maps(a.defends,b.defends);
@@ -251,6 +284,8 @@ stats::stats() :
 	damage_taken(0),
 	turn_damage_inflicted(0),
 	turn_damage_taken(0),
+	by_cth_inflicted(),
+	by_cth_taken(),
 	expected_damage_inflicted(0),
 	expected_damage_taken(0),
 	turn_expected_damage_inflicted(0),
@@ -272,6 +307,8 @@ stats::stats(const config& cfg) :
 	damage_taken(0),
 	turn_damage_inflicted(0),
 	turn_damage_taken(0),
+	by_cth_inflicted(),
+	by_cth_taken(),
 	expected_damage_inflicted(0),
 	expected_damage_taken(0),
 	turn_expected_damage_inflicted(0),
@@ -291,6 +328,8 @@ config stats::write() const
 	res.add_child("killed",write_str_int_map(killed));
 	res.add_child("attacks",write_battle_result_map(attacks));
 	res.add_child("defends",write_battle_result_map(defends));
+	res.add_child("by_cth_inflicted", write_by_cth_map(by_cth_inflicted));
+	res.add_child("by_cth_taken", write_by_cth_map(by_cth_taken));
 
 	res["recruit_cost"] = recruit_cost;
 	res["recall_cost"] = recall_cost;
@@ -300,7 +339,6 @@ config stats::write() const
 	res["expected_damage_inflicted"] = expected_damage_inflicted;
 	res["expected_damage_taken"] = expected_damage_taken;
 
-	// TODO add by_cth_inflicted/by_cth_taken here and throughout this file
 	res["turn_damage_inflicted"] = turn_damage_inflicted;
 	res["turn_damage_taken"] = turn_damage_taken;
 	res["turn_expected_damage_inflicted"] = turn_expected_damage_inflicted;
@@ -334,6 +372,12 @@ void stats::write(config_writer &out) const
 	out.open_child("defends");
 	write_battle_result_map(out, defends);
 	out.close_child("defends");
+	out.open_child("by_cth_inflicted");
+	out.write(write_by_cth_map(by_cth_inflicted));
+	out.close_child("by_cth_inflicted");
+	out.open_child("by_cth_taken");
+	out.write(write_by_cth_map(by_cth_taken));
+	out.close_child("by_cth_taken");
 
 	out.write_key_val("recruit_cost", recruit_cost);
 	out.write_key_val("recall_cost", recall_cost);
@@ -376,6 +420,12 @@ void stats::read(const config& cfg)
 	}
 	if (const config &c = cfg.child("defends")) {
 		defends = read_battle_result_map(c);
+	}
+	if (const config &c = cfg.child("by_cth_inflicted")) {
+		by_cth_inflicted = read_by_cth_map(c);
+	}
+	if (const config &c = cfg.child("by_cth_taken")) {
+		by_cth_taken = read_by_cth_map(c);
 	}
 
 	recruit_cost = cfg["recruit_cost"].to_int();
@@ -697,6 +747,16 @@ int sum_cost_str_int_map(const stats::str_int_map &m)
 
 	return cost;
 }
+
+config stats::by_cth_t::write() const
+{
+	return config("hits", hits, "strikes", strikes);
+}
+
+stats::by_cth_t::by_cth_t(const config &cfg) :
+	strikes(cfg["strikes"]),
+	hits(cfg["hits"])
+{}
 
 std::ostream& operator<<(std::ostream& outstream, const struct statistics::stats::by_cth_t& by_cth) {
 	outstream << "[" << by_cth.hits << "/" << by_cth.strikes << "]";

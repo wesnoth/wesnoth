@@ -55,6 +55,9 @@ namespace statistics
 		struct by_cth_t {
 			int strikes; //< Number of strike attempts at the given CTH
 			int hits; //< Number of strikes that hit at the given CTH
+			by_cth_t() = default;
+			explicit by_cth_t(const config& cfg);
+			config write() const;
 			friend std::ostream& operator<<(std::ostream& outstream, const struct by_cth_t& by_cth);
 		};
 		/// Maps of chance-to-hit percentage to a 'struct by_cth_t'.
