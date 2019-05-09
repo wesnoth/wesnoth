@@ -161,6 +161,45 @@ void statistics_dialog::add_damage_row(
 	damage_list.add_row(data);
 }
 
+void statistics_dialog::add_hits_row(
+		window& window,
+		const std::string& type,
+		const std::map<int, struct statistics::stats::by_cth_t>& by_cth,
+		const bool show_this_turn)
+{
+	listbox& hits_list = find_widget<listbox>(&window, "stats_list_hits", false);
+
+	std::map<std::string, string_map> data;
+	string_map item;
+
+	std::ostringstream str;
+
+	item["label"] = type;
+	data.emplace("hits_type", item);
+
+	int overall_hits = 0;
+	double expected_hits = 0;
+
+	for(const auto& i : by_cth) {
+		int cth = i.first;
+		overall_hits += i.second.hits;
+		expected_hits += (cth * 0.01) * i.second.strikes;
+	}
+
+	str.str("");
+	str << overall_hits << " / " << expected_hits;
+
+	item["label"] = str.str();
+	data.emplace("hits_overall", item);
+
+	if(show_this_turn) {
+		item["label"] = "";
+		data.emplace("hits_this_turn", item);
+	}
+
+	hits_list.add_row(data);
+}
+
 void statistics_dialog::update_lists(window& window)
 {
 	//
@@ -197,11 +236,18 @@ void statistics_dialog::update_lists(window& window)
 
 	damage_list.clear();
 
+	listbox& hits_list = find_widget<listbox>(&window, "stats_list_hits", false);
+	hits_list.clear();
+
 	add_damage_row(window, _("Inflicted"),
 		stats.damage_inflicted,
 		stats.expected_damage_inflicted,
 		stats.turn_damage_inflicted,
 		stats.turn_expected_damage_inflicted,
+		show_this_turn
+	);
+	add_hits_row(window, _("Inflicted"),
+		stats.by_cth,
 		show_this_turn
 	);
 
@@ -212,6 +258,7 @@ void statistics_dialog::update_lists(window& window)
 		stats.turn_expected_damage_taken,
 		show_this_turn
 	);
+	// TODO add by_cth_taken/by_cth_inflicted
 }
 
 void statistics_dialog::on_scenario_select(window& window)
