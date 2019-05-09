@@ -62,6 +62,7 @@ namespace statistics
 		};
 		/// Maps of chance-to-hit percentage to a 'struct by_cth_t'.
 		std::map<int, struct by_cth_t> by_cth_inflicted, by_cth_taken;
+		std::map<int, struct by_cth_t> turn_by_cth_inflicted, turn_by_cth_taken;
 
 		static const int decimal_shift = 1000;
 

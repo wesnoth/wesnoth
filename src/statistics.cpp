@@ -265,6 +265,9 @@ static void merge_stats(stats& a, const stats& b)
 	a.turn_damage_taken = b.turn_damage_taken;
 	a.turn_expected_damage_inflicted = b.turn_expected_damage_inflicted;
 	a.turn_expected_damage_taken = b.turn_expected_damage_taken;
+	a.turn_by_cth_inflicted = b.turn_by_cth_inflicted;
+	a.turn_by_cth_taken = b.turn_by_cth_taken;
+
 }
 
 namespace statistics
@@ -286,6 +289,8 @@ stats::stats() :
 	turn_damage_taken(0),
 	by_cth_inflicted(),
 	by_cth_taken(),
+	turn_by_cth_inflicted(),
+	turn_by_cth_taken(),
 	expected_damage_inflicted(0),
 	expected_damage_taken(0),
 	turn_expected_damage_inflicted(0),
@@ -309,6 +314,8 @@ stats::stats(const config& cfg) :
 	turn_damage_taken(0),
 	by_cth_inflicted(),
 	by_cth_taken(),
+	turn_by_cth_inflicted(),
+	turn_by_cth_taken(),
 	expected_damage_inflicted(0),
 	expected_damage_taken(0),
 	turn_expected_damage_inflicted(0),
@@ -330,6 +337,8 @@ config stats::write() const
 	res.add_child("defends",write_battle_result_map(defends));
 	res.add_child("by_cth_inflicted", write_by_cth_map(by_cth_inflicted));
 	res.add_child("by_cth_taken", write_by_cth_map(by_cth_taken));
+	res.add_child("turn_by_cth_inflicted", write_by_cth_map(turn_by_cth_inflicted));
+	res.add_child("turn_by_cth_taken", write_by_cth_map(turn_by_cth_taken));
 
 	res["recruit_cost"] = recruit_cost;
 	res["recall_cost"] = recall_cost;
@@ -378,6 +387,12 @@ void stats::write(config_writer &out) const
 	out.open_child("by_cth_taken");
 	out.write(write_by_cth_map(by_cth_taken));
 	out.close_child("by_cth_taken");
+	out.open_child("turn_by_cth_inflicted");
+	out.write(write_by_cth_map(turn_by_cth_inflicted));
+	out.close_child("turn_by_cth_inflicted");
+	out.open_child("turn_by_cth_taken");
+	out.write(write_by_cth_map(turn_by_cth_taken));
+	out.close_child("turn_by_cth_taken");
 
 	out.write_key_val("recruit_cost", recruit_cost);
 	out.write_key_val("recall_cost", recall_cost);
@@ -426,6 +441,12 @@ void stats::read(const config& cfg)
 	}
 	if (const config &c = cfg.child("by_cth_taken")) {
 		by_cth_taken = read_by_cth_map(c);
+	}
+	if (const config &c = cfg.child("turn_by_cth_inflicted")) {
+		turn_by_cth_inflicted = read_by_cth_map(c);
+	}
+	if (const config &c = cfg.child("turn_by_cth_taken")) {
+		turn_by_cth_taken = read_by_cth_map(c);
 	}
 
 	recruit_cost = cfg["recruit_cost"].to_int();
@@ -513,10 +534,14 @@ void attack_context::attack_result(hit_result res, int cth, int damage, int drai
 
 	if(res != MISSES) {
 		++att_stats.by_cth_inflicted[cth].hits;
+		++att_stats.turn_by_cth_inflicted[cth].hits;
 		++def_stats.by_cth_taken[cth].hits;
+		++def_stats.turn_by_cth_taken[cth].hits;
 	}
 	++att_stats.by_cth_inflicted[cth].strikes;
+	++att_stats.turn_by_cth_inflicted[cth].strikes;
 	++def_stats.by_cth_taken[cth].strikes;
+	++def_stats.turn_by_cth_taken[cth].strikes;
 
 	if(res != MISSES) {
 		// handle drain
@@ -544,10 +569,14 @@ void attack_context::defend_result(hit_result res, int cth, int damage, int drai
 
 	if(res != MISSES) {
 		++def_stats.by_cth_inflicted[cth].hits;
+		++def_stats.turn_by_cth_inflicted[cth].hits;
 		++att_stats.by_cth_taken[cth].hits;
+		++att_stats.turn_by_cth_taken[cth].hits;
 	}
 	++def_stats.by_cth_inflicted[cth].strikes;
+	++def_stats.turn_by_cth_inflicted[cth].strikes;
 	++att_stats.by_cth_taken[cth].strikes;
+	++att_stats.turn_by_cth_taken[cth].strikes;
 
 	if(res != MISSES) {
 		//handle drain
@@ -615,6 +644,8 @@ void reset_turn_stats(const std::string & save_id)
 	s.turn_damage_taken = 0;
 	s.turn_expected_damage_inflicted = 0;
 	s.turn_expected_damage_taken = 0;
+	s.turn_by_cth_inflicted.clear();
+	s.turn_by_cth_taken.clear();
 	s.save_id = save_id;
 }
 

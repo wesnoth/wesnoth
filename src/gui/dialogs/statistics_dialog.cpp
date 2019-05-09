@@ -161,22 +161,9 @@ void statistics_dialog::add_damage_row(
 	damage_list.add_row(data);
 }
 
-void statistics_dialog::add_hits_row(
-		window& window,
-		const std::string& type,
-		const std::map<int, struct statistics::stats::by_cth_t>& by_cth,
-		const bool show_this_turn)
+// Return the string to use in the "Hits" table, showing actual and expected number of hits.
+static std::string tally(const std::map<int, struct statistics::stats::by_cth_t>& by_cth)
 {
-	listbox& hits_list = find_widget<listbox>(&window, "stats_list_hits", false);
-
-	std::map<std::string, string_map> data;
-	string_map item;
-
-	std::ostringstream str;
-
-	item["label"] = type;
-	data.emplace("hits_type", item);
-
 	int overall_hits = 0;
 	double expected_hits = 0;
 
@@ -186,14 +173,32 @@ void statistics_dialog::add_hits_row(
 		expected_hits += (cth * 0.01) * i.second.strikes;
 	}
 
-	str.str("");
-	str << overall_hits << " / " << expected_hits;
+	// TODO: show a priori probability of this actual result here. https://en.wikipedia.org/wiki/Poisson_binomial_distribution
 
-	item["label"] = str.str();
+	std::ostringstream str;
+	str << overall_hits << " / " << expected_hits;
+	return str.str();
+}
+
+void statistics_dialog::add_hits_row(
+		window& window,
+		const std::string& type,
+		const std::map<int, struct statistics::stats::by_cth_t>& by_cth,
+		const std::map<int, struct statistics::stats::by_cth_t>& turn_by_cth,
+		const bool show_this_turn)
+{
+	listbox& hits_list = find_widget<listbox>(&window, "stats_list_hits", false);
+
+	std::map<std::string, string_map> data;
+	string_map item;
+
+	item["label"] = type;
+	data.emplace("hits_type", item);
+	item["label"] = tally(by_cth);
 	data.emplace("hits_overall", item);
 
 	if(show_this_turn) {
-		item["label"] = "";
+		item["label"] = tally(turn_by_cth);
 		data.emplace("hits_this_turn", item);
 	}
 
@@ -248,6 +253,7 @@ void statistics_dialog::update_lists(window& window)
 	);
 	add_hits_row(window, _("Inflicted"),
 		stats.by_cth_inflicted,
+		stats.turn_by_cth_inflicted,
 		show_this_turn
 	);
 
@@ -260,6 +266,7 @@ void statistics_dialog::update_lists(window& window)
 	);
 	add_hits_row(window, _("Taken"),
 		stats.by_cth_taken,
+		stats.turn_by_cth_taken,
 		show_this_turn
 	);
 }
