@@ -300,7 +300,7 @@ config stats::write() const
 	res["expected_damage_inflicted"] = expected_damage_inflicted;
 	res["expected_damage_taken"] = expected_damage_taken;
 
-	// TODO add by_cth here and throughout this file
+	// TODO add by_cth_inflicted/by_cth_taken here and throughout this file
 	res["turn_damage_inflicted"] = turn_damage_inflicted;
 	res["turn_damage_taken"] = turn_damage_taken;
 	res["turn_expected_damage_inflicted"] = turn_expected_damage_inflicted;
@@ -461,9 +461,12 @@ void attack_context::attack_result(hit_result res, int cth, int damage, int drai
 	attacker_res.push_back(res == MISSES ? '0' : '1');
 	stats &att_stats = attacker_stats(), &def_stats = defender_stats();
 
-	if(res != MISSES)
-		++att_stats.by_cth[cth].hits;
-	++att_stats.by_cth[cth].strikes;
+	if(res != MISSES) {
+		++att_stats.by_cth_inflicted[cth].hits;
+		++def_stats.by_cth_taken[cth].hits;
+	}
+	++att_stats.by_cth_inflicted[cth].strikes;
+	++def_stats.by_cth_taken[cth].strikes;
 
 	if(res != MISSES) {
 		// handle drain
@@ -489,9 +492,12 @@ void attack_context::defend_result(hit_result res, int cth, int damage, int drai
 	defender_res.push_back(res == MISSES ? '0' : '1');
 	stats &att_stats = attacker_stats(), &def_stats = defender_stats();
 
-	if(res != MISSES)
-		++def_stats.by_cth[cth].hits;
-	++def_stats.by_cth[cth].strikes;
+	if(res != MISSES) {
+		++def_stats.by_cth_inflicted[cth].hits;
+		++att_stats.by_cth_taken[cth].hits;
+	}
+	++def_stats.by_cth_inflicted[cth].strikes;
+	++att_stats.by_cth_taken[cth].strikes;
 
 	if(res != MISSES) {
 		//handle drain

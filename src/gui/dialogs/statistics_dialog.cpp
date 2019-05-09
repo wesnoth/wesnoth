@@ -247,7 +247,7 @@ void statistics_dialog::update_lists(window& window)
 		show_this_turn
 	);
 	add_hits_row(window, _("Inflicted"),
-		stats.by_cth,
+		stats.by_cth_inflicted,
 		show_this_turn
 	);
 
@@ -258,7 +258,10 @@ void statistics_dialog::update_lists(window& window)
 		stats.turn_expected_damage_taken,
 		show_this_turn
 	);
-	// TODO add by_cth_taken/by_cth_inflicted
+	add_hits_row(window, _("Taken"),
+		stats.by_cth_taken,
+		show_this_turn
+	);
 }
 
 void statistics_dialog::on_scenario_select(window& window)
