@@ -52,6 +52,14 @@ namespace statistics
 		long long damage_inflicted, damage_taken;
 		long long turn_damage_inflicted, turn_damage_taken;
 
+		struct by_cth_t {
+			int strikes; //< Number of strike attempts at the given CTH
+			int hits; //< Number of strikes that hit at the given CTH
+			friend std::ostream& operator<<(std::ostream& outstream, const struct by_cth_t& by_cth);
+		};
+		/// A map of chance-to-hit percentage to a 'struct by_cth_t'.
+		std::map<int, struct by_cth_t> by_cth;
+
 		static const int decimal_shift = 1000;
 
 		// Expected value for damage inflicted/taken * 1000, based on
@@ -80,8 +88,8 @@ namespace statistics
 		enum hit_result { MISSES, HITS, KILLS };
 
 		void attack_expected_damage(double attacker_inflict, double defender_inflict);
-		void attack_result(hit_result res, int damage, int drain);
-		void defend_result(hit_result res, int damage, int drain);
+		void attack_result(hit_result res, int cth, int damage, int drain);
+		void defend_result(hit_result res, int cth, int damage, int drain);
 
 	private:
 

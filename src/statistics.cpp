@@ -300,6 +300,7 @@ config stats::write() const
 	res["expected_damage_inflicted"] = expected_damage_inflicted;
 	res["expected_damage_taken"] = expected_damage_taken;
 
+	// TODO add by_cth here and throughout this file
 	res["turn_damage_inflicted"] = turn_damage_inflicted;
 	res["turn_damage_taken"] = turn_damage_taken;
 	res["turn_expected_damage_inflicted"] = turn_expected_damage_inflicted;
@@ -455,10 +456,14 @@ void attack_context::attack_expected_damage(double attacker_inflict_, double def
 }
 
 
-void attack_context::attack_result(hit_result res, int damage, int drain)
+void attack_context::attack_result(hit_result res, int cth, int damage, int drain)
 {
 	attacker_res.push_back(res == MISSES ? '0' : '1');
 	stats &att_stats = attacker_stats(), &def_stats = defender_stats();
+
+	if(res != MISSES)
+		++att_stats.by_cth[cth].hits;
+	++att_stats.by_cth[cth].strikes;
 
 	if(res != MISSES) {
 		// handle drain
@@ -479,10 +484,14 @@ void attack_context::attack_result(hit_result res, int damage, int drain)
 	}
 }
 
-void attack_context::defend_result(hit_result res, int damage, int drain)
+void attack_context::defend_result(hit_result res, int cth, int damage, int drain)
 {
 	defender_res.push_back(res == MISSES ? '0' : '1');
 	stats &att_stats = attacker_stats(), &def_stats = defender_stats();
+
+	if(res != MISSES)
+		++def_stats.by_cth[cth].hits;
+	++def_stats.by_cth[cth].strikes;
 
 	if(res != MISSES) {
 		//handle drain
@@ -681,6 +690,11 @@ int sum_cost_str_int_map(const stats::str_int_map &m)
 	}
 
 	return cost;
+}
+
+std::ostream& operator<<(std::ostream& outstream, const struct statistics::stats::by_cth_t& by_cth) {
+	outstream << "[" << by_cth.hits << "/" << by_cth.strikes << "]";
+	return outstream;
 }
 
 } // end namespace statistics
