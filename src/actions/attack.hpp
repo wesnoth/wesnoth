@@ -90,7 +90,7 @@ struct battle_context_unit_stats
 			const_attack_ptr opp_weapon,
 			const unit_map& units);
 
-	/** Used by AI for combat analysis */
+	/** Used by AI for combat analysis, and by statistics_dialog */
 	battle_context_unit_stats(const unit_type* u_type,
 			const_attack_ptr att_weapon,
 			bool attacking,
