@@ -134,10 +134,9 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if ( !filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), attack.type()) == filter_type.end() )
 		return false;
 
-
 	if(!filter_special.empty()) {
 		bool found = false;
-		for(auto& special : filter_special_id) {
+		for(auto& special : filter_special) {
 			if(attack.get_special_bool(special, true, true, false)) {
 				found = true;
 				break;
@@ -150,7 +149,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 
 	if(!filter_special_active.empty()) {
 		bool found = false;
-		for(auto& special : filter_special_active_id) {
+		for(auto& special : filter_special_active) {
 			if(attack.get_special_bool(special, false, true, false)) {
 				found = true;
 				break;
