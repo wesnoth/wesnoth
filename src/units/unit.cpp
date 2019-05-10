@@ -915,6 +915,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	is_fearless_ = false;
 	is_healthy_ = false;
 	image_mods_.clear();
+	overlays_.clear();
 
 	// Clear modification-related caches
 	modification_descriptions_.clear();
