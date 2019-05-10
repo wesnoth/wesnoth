@@ -207,6 +207,34 @@ static config write_by_cth_map(const std::map<int, struct statistics::stats::by_
 	return res;
 }
 
+static void merge_battle_result_maps(stats::battle_result_map& a, const stats::battle_result_map& b);
+static std::map<int, struct statistics::stats::by_cth_t> read_by_cth_map_from_battle_result_maps(const statistics::stats::battle_result_map& attacks, const statistics::stats::battle_result_map& defends)
+{
+	std::map<int, struct statistics::stats::by_cth_t> m;
+
+	statistics::stats::battle_result_map merged = attacks;
+	merge_battle_result_maps(merged, defends);
+
+	for(const auto& i : merged) {
+		int cth = i.first;
+		const statistics::stats::battle_sequence_frequency_map& frequency_map = i.second;
+		for(const auto& j : frequency_map) {
+			const std::string& res = j.first; // see attack_context::~attack_context()
+			const int occurrences = j.second;
+			unsigned int misses = std::count(res.begin(), res.end(), '0');
+			unsigned int hits = std::count(res.begin(), res.end(), '1');
+			if(misses + hits == 0)
+				continue;
+			misses *= occurrences;
+			hits *= occurrences;
+			m[cth].strikes += misses + hits;
+			m[cth].hits += hits;
+		}
+	}
+
+	return m;
+}
+
 static std::map<int, struct statistics::stats::by_cth_t> read_by_cth_map(const config& cfg)
 {
 	std::map<int, struct statistics::stats::by_cth_t> m;
@@ -343,8 +371,7 @@ config stats::write() const
 	res.add_child("defends",write_battle_result_map(defends_inflicted));
 	res.add_child("attacks_taken",write_battle_result_map(attacks_taken));
 	res.add_child("defends_taken",write_battle_result_map(defends_taken));
-	res.add_child("by_cth_inflicted", write_by_cth_map(by_cth_inflicted));
-	res.add_child("by_cth_taken", write_by_cth_map(by_cth_taken));
+	// Don't serialize by_cth_inflicted / by_cth_taken; they're deserialized from attacks_inflicted/defends_inflicted.
 	res.add_child("turn_by_cth_inflicted", write_by_cth_map(turn_by_cth_inflicted));
 	res.add_child("turn_by_cth_taken", write_by_cth_map(turn_by_cth_taken));
 
@@ -395,12 +422,7 @@ void stats::write(config_writer &out) const
 	out.open_child("defends_taken");
 	write_battle_result_map(out, defends_taken);
 	out.close_child("defends_taken");
-	out.open_child("by_cth_inflicted");
-	out.write(write_by_cth_map(by_cth_inflicted));
-	out.close_child("by_cth_inflicted");
-	out.open_child("by_cth_taken");
-	out.write(write_by_cth_map(by_cth_taken));
-	out.close_child("by_cth_taken");
+	// Don't serialize by_cth_inflicted / by_cth_taken; they're deserialized from attacks_inflicted/defends.
 	out.open_child("turn_by_cth_inflicted");
 	out.write(write_by_cth_map(turn_by_cth_inflicted));
 	out.close_child("turn_by_cth_inflicted");
@@ -456,12 +478,10 @@ void stats::read(const config& cfg)
 	if (const config &c = cfg.child("defends_taken")) {
 		defends_taken = read_battle_result_map(c);
 	}
-	if (const config &c = cfg.child("by_cth_inflicted")) {
-		by_cth_inflicted = read_by_cth_map(c);
-	}
-	if (const config &c = cfg.child("by_cth_taken")) {
-		by_cth_taken = read_by_cth_map(c);
-	}
+	by_cth_inflicted = read_by_cth_map_from_battle_result_maps(attacks_inflicted, defends_inflicted);
+	// by_cth_taken will be an empty map in old (pre-#4070) savefiles that don't have
+	// [attacks_taken]/[defends_taken] tags in their [statistics] tags
+	by_cth_taken = read_by_cth_map_from_battle_result_maps(attacks_taken, defends_taken);
 	if (const config &c = cfg.child("turn_by_cth_inflicted")) {
 		turn_by_cth_inflicted = read_by_cth_map(c);
 	}
