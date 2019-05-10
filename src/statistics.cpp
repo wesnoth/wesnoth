@@ -252,6 +252,8 @@ static void merge_stats(stats& a, const stats& b)
 
 	merge_battle_result_maps(a.attacks_inflicted,b.attacks_inflicted);
 	merge_battle_result_maps(a.defends_inflicted,b.defends_inflicted);
+	merge_battle_result_maps(a.attacks_taken,b.attacks_taken);
+	merge_battle_result_maps(a.defends_taken,b.defends_taken);
 
 	a.recruit_cost += b.recruit_cost;
 	a.recall_cost += b.recall_cost;
@@ -283,6 +285,8 @@ stats::stats() :
 	recall_cost(0),
 	attacks_inflicted(),
 	defends_inflicted(),
+	attacks_taken(),
+	defends_taken(),
 	damage_inflicted(0),
 	damage_taken(0),
 	turn_damage_inflicted(0),
@@ -308,6 +312,8 @@ stats::stats(const config& cfg) :
 	recall_cost(0),
 	attacks_inflicted(),
 	defends_inflicted(),
+	attacks_taken(),
+	defends_taken(),
 	damage_inflicted(0),
 	damage_taken(0),
 	turn_damage_inflicted(0),
@@ -335,6 +341,8 @@ config stats::write() const
 	res.add_child("killed",write_str_int_map(killed));
 	res.add_child("attacks",write_battle_result_map(attacks_inflicted));
 	res.add_child("defends",write_battle_result_map(defends_inflicted));
+	res.add_child("attacks_taken",write_battle_result_map(attacks_taken));
+	res.add_child("defends_taken",write_battle_result_map(defends_taken));
 	res.add_child("by_cth_inflicted", write_by_cth_map(by_cth_inflicted));
 	res.add_child("by_cth_taken", write_by_cth_map(by_cth_taken));
 	res.add_child("turn_by_cth_inflicted", write_by_cth_map(turn_by_cth_inflicted));
@@ -381,6 +389,12 @@ void stats::write(config_writer &out) const
 	out.open_child("defends");
 	write_battle_result_map(out, defends_inflicted);
 	out.close_child("defends");
+	out.open_child("attacks_taken");
+	write_battle_result_map(out, attacks_taken);
+	out.close_child("attacks_taken");
+	out.open_child("defends_taken");
+	write_battle_result_map(out, defends_taken);
+	out.close_child("defends_taken");
 	out.open_child("by_cth_inflicted");
 	out.write(write_by_cth_map(by_cth_inflicted));
 	out.close_child("by_cth_inflicted");
@@ -435,6 +449,12 @@ void stats::read(const config& cfg)
 	}
 	if (const config &c = cfg.child("defends")) {
 		defends_inflicted = read_battle_result_map(c);
+	}
+	if (const config &c = cfg.child("attacks_taken")) {
+		attacks_taken = read_battle_result_map(c);
+	}
+	if (const config &c = cfg.child("defends_taken")) {
+		defends_taken = read_battle_result_map(c);
 	}
 	if (const config &c = cfg.child("by_cth_inflicted")) {
 		by_cth_inflicted = read_by_cth_map(c);
@@ -499,6 +519,9 @@ attack_context::~attack_context()
 
 	attacker_stats().attacks_inflicted[chance_to_hit_defender][attacker_key]++;
 	defender_stats().defends_inflicted[chance_to_hit_attacker][defender_key]++;
+
+	attacker_stats().attacks_taken[chance_to_hit_attacker][defender_key]++;
+	defender_stats().defends_taken[chance_to_hit_defender][attacker_key]++;
 }
 
 stats& attack_context::attacker_stats()

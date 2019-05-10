@@ -51,6 +51,10 @@ namespace statistics
 		battle_result_map attacks_inflicted;
 		/// Statistics of this side's attacks on enemies' turns.
 		battle_result_map defends_inflicted;
+		/// Statistics of enemies' counter attacks on this side's turns.
+		battle_result_map attacks_taken;
+		/// Statistics of enemies' attacks against this side on their turns.
+		battle_result_map defends_taken;
 
 		long long damage_inflicted, damage_taken;
 		long long turn_damage_inflicted, turn_damage_taken;
