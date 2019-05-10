@@ -47,7 +47,10 @@ namespace statistics
 		/** A type that will map different % chances to hit to different results. */
 		typedef std::map<int,battle_sequence_frequency_map> battle_result_map;
 
-		battle_result_map attacks, defends;
+		/// Statistics of this side's attacks on its own turns.
+		battle_result_map attacks_inflicted;
+		/// Statistics of this side's attacks on enemies' turns.
+		battle_result_map defends_inflicted;
 
 		long long damage_inflicted, damage_taken;
 		long long turn_damage_inflicted, turn_damage_taken;
