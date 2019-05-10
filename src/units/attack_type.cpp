@@ -105,10 +105,8 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	const std::vector<std::string> filter_name = utils::split(filter["name"]);
 	const std::vector<std::string> filter_type = utils::split(filter["type"]);
 	const std::vector<std::string> filter_special = utils::split(filter["special"]);
-	const std::vector<std::string> filter_special_id = utils::split(filter["special_id"]);
 	const std::vector<std::string> filter_special_tags = utils::split(filter["special_type"]);
 	const std::vector<std::string> filter_special_active = utils::split(filter["special_active"]);
-	const std::vector<std::string> filter_special_active_id = utils::split(filter["special_id_active"]);
 	const std::vector<std::string> filter_special_active_tags = utils::split(filter["special_type_active"]);
 	const std::string filter_formula = filter["formula"];
 
@@ -136,33 +134,8 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if ( !filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), attack.type()) == filter_type.end() )
 		return false;
 
+
 	if(!filter_special.empty()) {
-		bool found = false;
-		for(auto& special : filter_special) {
-			if(attack.get_special_bool(special, true)) {
-				found = true;
-				break;
-			}
-		}
-		if(!found) {
-			return false;
-		}
-	}
-
-	if(!filter_special_active.empty()) {
-		bool found = false;
-		for(auto& special : filter_special_active) {
-			if(attack.get_special_bool(special, false)) {
-				found = true;
-				break;
-			}
-		}
-		if(!found) {
-			return false;
-		}
-	}
-
-	if(!filter_special_id.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_id) {
 			if(attack.get_special_bool(special, true, true, false)) {
@@ -175,7 +148,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		}
 	}
 
-	if(!filter_special_active_id.empty()) {
+	if(!filter_special_active.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_active_id) {
 			if(attack.get_special_bool(special, false, true, false)) {
