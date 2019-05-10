@@ -129,7 +129,9 @@ void statistics_dialog::add_stat_row(window& window, const std::string& type, co
 	main_stat_table_.push_back(&value);
 }
 
+// TODO: This is used to adjust the horizontal spacing around the percentages column, but it's ugly. Find a better way.
 static const auto& spacer = "    ";
+
 void statistics_dialog::add_damage_row(
 		window& window,
 		const std::string& type,
@@ -154,34 +156,35 @@ void statistics_dialog::add_damage_row(
 
 	const long long shifted = ((expected * 20) + shift) / (2 * shift);
 	std::ostringstream str;
-	str << damage << " / "
-		<< static_cast<double>(shifted) * 0.1
-		<< spacer // TODO: should probably make this two columns
-		<< (((dsa < 0) ^ (expected < 0)) ? "" : "+")
-		<< (expected == 0 ? 0 : 100 * dsa / expected) << '%';
-
+	str << damage << " / " << static_cast<double>(shifted) * 0.1;
 	item["label"] = str.str();
 	data.emplace("damage_overall", item);
 
 	str.str("");
+	str << (((dsa < 0) ^ (expected < 0)) ? "" : "+")
+		<< (expected == 0 ? 0 : 100 * dsa / expected) << '%';
+	item["label"] = str.str() + spacer;
+	data.emplace("overall_percent", item);
 
 	if(show_this_turn) {
 		const long long turn_shifted = ((turn_expected * 20) + shift) / (2 * shift);
-		str << turn_damage << " / "
-			<< static_cast<double>(turn_shifted) * 0.1
-			<< spacer // TODO: should probably make this two columns
-			<< (((dst < 0) ^ (turn_expected < 0)) ? "" : "+")
-			<< (turn_expected == 0 ? 0 : 100 * dst / turn_expected) << '%';
-
+		str.str("");
+		str << turn_damage << " / " << static_cast<double>(turn_shifted) * 0.1;
 		item["label"] = str.str();
 		data.emplace("damage_this_turn", item);
+
+		str.str("");
+		str << (((dst < 0) ^ (turn_expected < 0)) ? "" : "+")
+			<< (turn_expected == 0 ? 0 : 100 * dst / turn_expected) << '%';
+		item["label"] = str.str() + spacer;
+		data.emplace("this_turn_percent", item);
 	}
 
 	damage_list.add_row(data);
 }
 
-// Return the string to use in the "Hits" table, showing actual and expected number of hits.
-static std::string tally(const std::map<int, struct statistics::stats::by_cth_t>& by_cth)
+// Return the strings to use in the "Hits" table, showing actual and expected number of hits.
+static std::pair<std::string, std::string> tally(const std::map<int, struct statistics::stats::by_cth_t>& by_cth)
 {
 	unsigned int overall_hits = 0;
 	double expected_hits = 0;
@@ -194,7 +197,7 @@ static std::string tally(const std::map<int, struct statistics::stats::by_cth_t>
 		overall_strikes += i.second.strikes;
 	}
 
-	std::ostringstream str;
+	std::ostringstream str, str2;
 	str << overall_hits << " / " << expected_hits;
 
 	// Compute the a priori probability of this actual result, by simulating many attacks against a single defender.
@@ -256,11 +259,10 @@ static std::string tally(const std::map<int, struct statistics::stats::by_cth_t>
 				probability += chance_of_exactly_N_hits(i);
 		}
 		// TODO: document for users what this value is.
-		str << spacer // TODO: should probably make this two columns
-			<< font::span_color(game_config::red_to_green(probability * 100.0, true)) << get_probability_string(probability) << "</span>";
+		str2 << font::span_color(game_config::red_to_green(probability * 100.0, true)) << get_probability_string(probability) << "</span>";
 	}
 
-	return str.str();
+	return std::make_pair(str.str(), str2.str());
 }
 
 void statistics_dialog::add_hits_row(
@@ -275,14 +277,23 @@ void statistics_dialog::add_hits_row(
 	std::map<std::string, string_map> data;
 	string_map item;
 
+	std::pair<std::string, std::string> pair;
+
 	item["label"] = type;
 	data.emplace("hits_type", item);
-	item["label"] = tally(by_cth);
+
+	pair = tally(by_cth);
+	item["label"] = pair.first;
 	data.emplace("hits_overall", item);
+	item["label"] = pair.second + spacer;
+	data.emplace("overall_percent", item);
 
 	if(show_this_turn) {
-		item["label"] = tally(turn_by_cth);
+		pair = tally(turn_by_cth);
+		item["label"] = pair.first;
 		data.emplace("hits_this_turn", item);
+		item["label"] = pair.second + spacer;
+		data.emplace("this_turn_percent", item);
 	}
 
 	hits_list.add_row(data);
