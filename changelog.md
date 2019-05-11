@@ -1,4 +1,6 @@
 ## Version 1.14.8+dev
+ ###
+    * Fixed a rare crash in attack prediction (issue #4068)
  ### Campaigns
     * Dead Water:
      * S3: modify starting dialogue
