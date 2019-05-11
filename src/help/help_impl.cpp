@@ -934,7 +934,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 			continue;
 
 		const std::string debug_suffix = (game_config::debug ? " (" + type.id() + ")" : "");
-		const std::string type_name = type.type_name() + (!strcmp(type.id().c_str(), type.type_name().c_str()) ? "" : debug_suffix);
+		const std::string type_name = type.type_name() + (type.id() == type.type_name().str() ? "" : debug_suffix);
 		const std::string real_prefix = type.show_variations_in_help() ? ".." : "";
 		const std::string ref_id = hidden_symbol(type.hide_help()) + real_prefix + unit_prefix +  type.id();
 		topic unit_topic(type_name, ref_id, "");
