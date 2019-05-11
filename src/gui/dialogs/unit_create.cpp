@@ -126,7 +126,7 @@ void unit_create::pre_show(window& window)
 		row_data.emplace("race", column);
 
 		column["label"] = units_.back()->type_name();
-		if(game_config::debug && strcmp(units_.back()->type_name().c_str(), units_.back()->id().c_str()))
+		if(strcmp(units_.back()->type_name().c_str(), units_.back()->id().c_str()))
 			column["label"] += " (" + units_.back()->id() + ")";
 		row_data.emplace("unit_type", column);
 
