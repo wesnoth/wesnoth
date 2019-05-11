@@ -3,6 +3,7 @@
     * Dead Water:
      * S3: modify starting dialogue
    * Descent into Darkness:
+     * Update campaign description
      * Update maps for S1 and S6
      * S11: reduce difficulty just after Malin turns into lich
    * Eastern Invasion:
@@ -23,6 +24,7 @@
      * Fixed number of scenarios in campaign listing
      * S17a: prevent time over defeat if player chooses to defeat remaining saurians
    * The South Guard:
+     * Update campaign description
      * S1: create Sir Gerrick if player skips scenario with debug
      * S6b: create Urza Afalas if player skips S5 with debug
      * S6b: kill elves on side 1 if player got to this scenario with debug
