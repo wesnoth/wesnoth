@@ -19,6 +19,7 @@ class config;
 class version_info;
 
 #include "addon/validation.hpp"
+#include "global.hpp"
 
 #include <string>
 #include <vector>
@@ -48,14 +49,14 @@ struct invalid_pbl_exception : public std::exception
 	/** Destructor.
 	 * Virtual to allow for subclassing.
 	 */
-	virtual ~invalid_pbl_exception() noexcept {}
+	virtual ~invalid_pbl_exception() NOEXCEPT {}
 
 	/** Returns a pointer to the (constant) error description.
 	 *  @return A pointer to a const char*. The underlying memory
 	 *          is in posession of the Exception object. Callers must
 	 *          not attempt to free the memory.
 	 */
-	virtual const char* what() const noexcept {
+	virtual const char* what() const NOEXCEPT {
 		return message.c_str();
 	}
 };
