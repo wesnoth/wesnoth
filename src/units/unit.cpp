@@ -104,6 +104,7 @@ namespace
 		"side",
 		"underlying_id",
 		"overlays",
+		"persistent_overlay",
 		"facing",
 		"race",
 		"level",
@@ -338,6 +339,7 @@ unit::unit(const unit& o)
 	, filter_recall_(o.filter_recall_)
 	, emit_zoc_(o.emit_zoc_)
 	, overlays_(o.overlays_)
+	, persistent_overlay_(copy_or_null(o.persistent_overlay_))
 	, role_(o.role_)
 	, attacks_(o.attacks_)
 	, facing_(o.facing_)
@@ -418,6 +420,7 @@ unit::unit()
 	, filter_recall_()
 	, emit_zoc_(0)
 	, overlays_()
+	, persistent_overlay_()
 	, role_()
 	, attacks_()
 	, facing_(map_location::NDIRECTIONS)
@@ -556,6 +559,10 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 
 	if(const config::attribute_value* v = cfg.get("ellipse")) {
 		set_image_ellipse(*v);
+	}
+
+	if(const config::attribute_value* v = cfg.get("persistent_overlay")) {
+		set_image_overlay(*v);
 	}
 
 	if(const config::attribute_value* v = cfg.get("halo")) {
@@ -798,6 +805,7 @@ void unit::swap(unit & o)
 	swap(filter_recall_, o.filter_recall_);
 	swap(emit_zoc_, o.emit_zoc_);
 	swap(overlays_, o.overlays_);
+	swap(persistent_overlay_, o.persistent_overlay_);
 	swap(role_, o.role_);
 	swap(attacks_, o.attacks_);
 	swap(facing_, o.facing_);
@@ -917,6 +925,8 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	image_mods_.clear();
 	overlays_.clear();
 
+
+
 	// Clear modification-related caches
 	modification_descriptions_.clear();
 
@@ -930,6 +940,10 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	set_image_halo(new_type.halo());
 	if(!new_type.ellipse().empty()) {
 		set_image_ellipse(new_type.ellipse());
+	}
+
+	if(!new_type.persistent_overlay().empty()) {
+		set_image_overlay(new_type.persistent_overlay());
 	}
 
 	generate_name_ &= new_type.generate_name();
@@ -979,7 +993,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	max_attacks_ = new_type.max_attacks();
 
 	flag_rgb_ = new_type.flag_rgb();
-	
+
 	upkeep_ = upkeep_full();
 	parse_upkeep(new_type.get_cfg()["upkeep"]);
 
@@ -1000,6 +1014,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	// since there can be filters on the modifications
 	// that may result in different effects after the advancement.
 	apply_modifications();
+
 
 	// Now that modifications are done modifying traits, check if poison should
 	// be cleared.
@@ -1410,7 +1425,7 @@ bool unit::get_attacks_changed() const
 		if(a_ptr->get_changed()) {
 			return true;
 		}
-		
+
 	}
 	return false;
 }
@@ -1447,6 +1462,10 @@ void unit::write(config& cfg, bool write_all) const
 
 	if(ellipse_.get()) {
 		cfg["ellipse"] = *ellipse_;
+	}
+
+	if(persistent_overlay_.get()) {
+		cfg["persistent_overlay"] = *persistent_overlay_;
 	}
 
 	if(usage_.get()) {
@@ -1811,7 +1830,7 @@ const std::set<std::string> unit::builtin_effects {
 	"alignment", "attack", "defense", "ellipse", "experience", "fearless",
 	"halo", "healthy", "hitpoints", "image_mod", "jamming", "jamming_costs",
 	"loyal", "max_attacks", "max_experience", "movement", "movement_costs",
-	"new_ability", "new_advancement", "new_animation", "new_attack", "overlay", "profile",
+	"new_ability", "new_advancement", "new_animation", "new_attack", "overlay", "persistent_overlay", "profile",
 	"recall_cost", "remove_ability", "remove_advancement", "remove_attacks", "resistance",
 	"status", "type", "variation", "vision", "vision_costs", "zoc"
 };
@@ -2070,7 +2089,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			movement_type_.get_resistances().merge(ap, effect["replace"].to_bool());
 		}
 	} else if(apply_to == "zoc") {
-		if(const config::attribute_value* v = effect.get("value")) {			
+		if(const config::attribute_value* v = effect.get("value")) {
 			set_attr_changed(UA_ZOC);
 			emit_zoc_ = v->to_bool();
 		}
@@ -2113,6 +2132,8 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		anim_comp_->apply_new_animation_effect(effect);
 	} else if(apply_to == "ellipse") {
 		set_image_ellipse(effect["ellipse"]);
+	} else if(apply_to == "persistent_overlay") {
+		set_image_overlay(effect["persistent_overlay"]);
 	} else if(apply_to == "halo") {
 		set_image_halo(effect["halo"]);
 	} else if(apply_to == "overlay") {
@@ -2625,7 +2646,7 @@ void unit::clear_changed_attributes()
 {
 	changed_attributes_.reset();
 	for(const auto& a_ptr : attacks_) {
-		a_ptr->set_changed(false);	
+		a_ptr->set_changed(false);
 	}
 }
 
@@ -2733,5 +2754,4 @@ void swap(unit& lhs, unit& rhs)
 {
 	lhs.swap(rhs);
 }
-
 
