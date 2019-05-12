@@ -104,7 +104,6 @@ namespace
 		"side",
 		"underlying_id",
 		"overlays",
-		"persistent_overlay",
 		"facing",
 		"race",
 		"level",
@@ -139,6 +138,7 @@ namespace
 		"description",
 		"usage",
 		"halo",
+		"persistent_overlay",
 		"ellipse",
 		"upkeep",
 		"random_traits",
@@ -339,7 +339,6 @@ unit::unit(const unit& o)
 	, filter_recall_(o.filter_recall_)
 	, emit_zoc_(o.emit_zoc_)
 	, overlays_(o.overlays_)
-	, persistent_overlay_(copy_or_null(o.persistent_overlay_))
 	, role_(o.role_)
 	, attacks_(o.attacks_)
 	, facing_(o.facing_)
@@ -361,6 +360,7 @@ unit::unit(const unit& o)
 	, description_(o.description_)
 	, usage_(copy_or_null(o.usage_))
 	, halo_(copy_or_null(o.halo_))
+	, persistent_overlay_(copy_or_null(o.persistent_overlay_))
 	, ellipse_(copy_or_null(o.ellipse_))
 	, random_traits_(o.random_traits_)
 	, generate_name_(o.generate_name_)
@@ -420,7 +420,6 @@ unit::unit()
 	, filter_recall_()
 	, emit_zoc_(0)
 	, overlays_()
-	, persistent_overlay_()
 	, role_()
 	, attacks_()
 	, facing_(map_location::NDIRECTIONS)
@@ -442,6 +441,7 @@ unit::unit()
 	, description_()
 	, usage_()
 	, halo_()
+	, persistent_overlay_()
 	, ellipse_()
 	, random_traits_(true)
 	, generate_name_(true)
@@ -805,7 +805,6 @@ void unit::swap(unit & o)
 	swap(filter_recall_, o.filter_recall_);
 	swap(emit_zoc_, o.emit_zoc_);
 	swap(overlays_, o.overlays_);
-	swap(persistent_overlay_, o.persistent_overlay_);
 	swap(role_, o.role_);
 	swap(attacks_, o.attacks_);
 	swap(facing_, o.facing_);
