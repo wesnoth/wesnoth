@@ -422,6 +422,10 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 		for(const std::string& overlay : u.overlays()) {
 			mods += "~BLIT(" + overlay + ")";
 		}
+		
+		if(!u.image_overlay().empty()) {
+			mods += "~BLIT(" + u.image_overlay() + ")";
+		}
 
 		mods += "~XBRZ(2)~SCALE_INTO_SHARP(144,144)" + image_mods_;
 
