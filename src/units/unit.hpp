@@ -1822,8 +1822,8 @@ private:
 
 	std::unique_ptr<std::string> usage_;
 	std::unique_ptr<std::string> halo_;
-	std::unique_ptr<std::string> ellipse_;
 	std::unique_ptr<std::string> persistent_overlay_;
+	std::unique_ptr<std::string> ellipse_;
 
 	bool random_traits_;
 	bool generate_name_;
