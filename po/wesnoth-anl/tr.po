@@ -1,24 +1,25 @@
 # Turkish translations for Battle for Wesnoth package.
-# Copyright (C) 2008 Wesnoth development team
+# Copyright (C) 2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Nils Kneuper <crazy-ivanovic@gmx.net>, 2005.
 # ihsan Haluk AKIN <ihsan_akin@yahoo.com>, 2005, 2006.
-# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008.
+# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, 2019.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-anl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 17:01 UTC\n"
-"PO-Revision-Date: 2009-02-24 18:21+0200\n"
+"PO-Revision-Date: 2019-05-04 22:01+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
-"Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
+"Language-Team: Türkçe <>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
@@ -27,17 +28,13 @@ msgstr "4o - Yeni Bir Ülke"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
-#, fuzzy
-#| msgid ""
-#| "This 4p survival scenario allows you to construct buildings and terraform "
-#| "the land. Use map settings. Recommended starting gold=100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. Use map settings. The recommended starting gold is 100."
 msgstr ""
 "Bu 4 oyunculu hayatta kalma senaryosunda kendi ülkenizi kurup kalkındırırken "
 "bir yandan düşmanlarla savaşacaksınız. Harita ayarlarını kullanın. Önerilen "
-"başlangıç altını=100."
+"başlangıç altını: 100."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:27
@@ -60,17 +57,15 @@ msgstr "Yardım için sıranız geldiğinde lidere sağ tıklayın."
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:37
 msgid "You must survive until turn 25."
-msgstr "25. el dayanmalısınız."
+msgstr "25 el dayanmalısınız."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:57
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:71
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:85
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:99
-#, fuzzy
-#| msgid "teamname^Team 1"
 msgid "teamname^Settlers"
-msgstr "Ekip 1"
+msgstr "Göçmenler"
 
 #. [side]: type=Death Knight
 #. [side]: type=Orcish Sovereign
@@ -78,37 +73,33 @@ msgstr "Ekip 1"
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:148
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:179
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:210
-#, fuzzy
-#| msgid "teamname^Team 1"
 msgid "teamname^Enemies"
-msgstr "Ekip 1"
+msgstr "Düşmanlar"
 
 #. [side]: type=Death Knight
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:126
 msgid "Mal Sevu"
-msgstr ""
+msgstr "Mal Sevu"
 
 #. [side]: type=Orcish Sovereign
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:157
 msgid "Gol Goroth"
-msgstr ""
+msgstr "Gol Gorot"
 
 #. [side]: type=Orcish Sovereign
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:188
 msgid "Greg"
-msgstr ""
+msgstr "Greg"
 
 #. [side]: type=Death Knight
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:219
 msgid "Mal Shiki"
-msgstr ""
+msgstr "Mal Şiki"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:245
-#, fuzzy
-#| msgid "teamname^Team 1"
 msgid "teamname^Prisoners"
-msgstr "Ekip 1"
+msgstr "Esirler"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:426
@@ -149,10 +140,6 @@ msgstr "Birer vatandaşınız kuzey ve güneydeki örümceklere tutsak düşmü�
 
 #. [message]: type=Peasant
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:610
-#, fuzzy
-#| msgid ""
-#| "I swear I saw somebody trapped in the spider’s web. Maybe we should "
-#| "rescue them?"
 msgid ""
 "I swear I saw somebody trapped in the spider’s web. Maybe we should rescue "
 "him?"
@@ -425,41 +412,29 @@ msgstr ""
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:248
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of agriculture"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of agriculture"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Tarımsal bilgini paşlaş"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:255
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of mining"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of mining"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Madencilik bilgini paylaş"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:262
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of warfare"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of warfare"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Askeri bilgini paylaş"
 
 #. [message]: speaker=unit
@@ -482,12 +457,11 @@ msgstr "Hiçbir şey"
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:314
-#, fuzzy
 msgid ""
 "<span color='green'>Donate Funds</span>\n"
 "Give 20 gold to another player"
 msgstr ""
-"Bağış yap\n"
+"<span color='green'>Bağış yap</span>\n"
 "Başka bir oyuncuya 20 altın ver"
 
 #. [message]: speaker=unit
@@ -503,12 +477,11 @@ msgstr "Geri"
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:359
-#, fuzzy
 msgid ""
 "<span color='green'>Share Knowledge</span>\n"
 "Help an ally with their research"
 msgstr ""
-"Bilgini paylaş\n"
+"<span color='green'>Bilgini paylaş</span>\n"
 "Araştırmasında bir müttefikine yardım et"
 
 #. [message]: speaker=unit
@@ -518,28 +491,26 @@ msgstr "Bilgini kiminle paylaşacaksın?"
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:417
-#, fuzzy
 msgid ""
 "<span color='green'>Negotiate with the Dwarves</span>\n"
 "Lets you recruit a Dwarvish unit\n"
 "Negotiation Progress: $player_$side_number|.leader_option_1.progress|/"
 "$player_$side_number|.leader_option_1.target"
 msgstr ""
-"Cücelerle anlaşma yapın.\n"
+"<span color='green'>Cücelerle anlaşma yapın</span>\n"
 "Bir cüce birimi askere alabilesiniz.\n"
-"Anlaşma süreci: $player_$side_number|.leader_option_1.progress|/$player_"
+"Anlaşma Süreci: $player_$side_number|.leader_option_1.progress|/$player_"
 "$side_number|.leader_option_1.target"
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:473
-#, fuzzy
 msgid ""
 "<span color='green'>Negotiate with the Elves</span>\n"
 "Lets you recruit an Elvish unit\n"
 "Negotiation Progress: $player_$side_number|.leader_option_2.progress|/"
 "$player_$side_number|.leader_option_2.target"
 msgstr ""
-"Elflerle anlaşma yapın.\n"
+"<span color='green'>Elflerle anlaşma yapın</span>\n"
 "Bir elf birimi askere alabilesiniz.\n"
 "Anlaşma süreci: $player_$side_number|.leader_option_2.progress|/$player_"
 "$side_number|.leader_option_2.target"
@@ -621,19 +592,13 @@ msgstr "Eskisi gibi devam"
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:154
-#, fuzzy
-#| msgid ""
-#| "Agriculture\n"
-#| "Farmers produce +1 gold\n"
-#| "Study Progress: $player_$side_number|.farming.progress|/$player_"
-#| "$side_number|.farming.target"
 msgid ""
 "<span color='green'>Agriculture</span>\n"
 "Farmers produce +1 gold\n"
 "Study Progress: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 msgstr ""
-"Ziraat\n"
+"<span color='green'>Ziraat</span>\n"
 "Çiftçiler 1 altın fazla gelir elde etsin\n"
 "Eğitim süreci: $player_$side_number|.farming.progress|/$player_$side_number|."
 "farming.target"
@@ -643,37 +608,35 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:158
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:102
 msgid "agriculture"
-msgstr ""
+msgstr "ziraat"
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:166
-#, fuzzy
 msgid ""
 "<span color='green'>Mining</span>\n"
 "Miners produce +1 gold\n"
 "Study Progress: $player_$side_number|.mining.progress|/$player_$side_number|."
 "mining.target"
 msgstr ""
-"Madencilik\n"
+"<span color='green'>Madencilik</span>\n"
 "Madencilerin geliri 1 altın artsın.\n"
-"Eğitim süreci:$player_$side_number|.mining.progress|/$player_$side_number|."
+"Eğitim süreci: $player_$side_number|.mining.progress|/$player_$side_number|."
 "mining.target"
 
 #. [command]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:170
 msgid "mining"
-msgstr ""
+msgstr "madencilik"
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:178
-#, fuzzy
 msgid ""
 "<span color='green'>Warfare</span>\n"
 "Allows you to recruit a new type of unit\n"
 "Study Progress: $player_$side_number|.warfare.progress|/$player_"
 "$side_number|.warfare.target"
 msgstr ""
-"Askerlik\n"
+"<span color='green'>Askerlik</span>\n"
 "Yeni bir birim askere alabilelim.\n"
 "Eğitim süreci: $player_$side_number|.warfare.progress|/$player_$side_number|."
 "warfare.target"
@@ -681,7 +644,7 @@ msgstr ""
 #. [command]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:189
 msgid "warfare"
-msgstr ""
+msgstr "Askerlik"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:238
@@ -877,8 +840,8 @@ msgstr "Bedeli: 7 altın"
 msgid "Clear the Ground"
 msgstr "Toprağı Düzelt"
 
-#~ msgid "teamname^Team 2"
-#~ msgstr "Ekip 2"
-
 #~ msgid "Convert to Grassland"
 #~ msgstr "Çayıra dönüştür"
+
+#~ msgid "teamname^Team 2"
+#~ msgstr "Ekip 2"
