@@ -572,7 +572,6 @@ public:
 		return canrecruit_;
 	}
 
-
 	/** Sets whether this unit can recruit other units. */
 	void set_can_recruit(bool canrecruit)
 	{
@@ -1513,7 +1512,6 @@ public:
 	{
 		return overlays_;
 	}
-
 
 	/**
 	 * Color for this unit's *current* hitpoints.
