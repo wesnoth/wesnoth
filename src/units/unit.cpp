@@ -925,8 +925,6 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	image_mods_.clear();
 	overlays_.clear();
 
-
-
 	// Clear modification-related caches
 	modification_descriptions_.clear();
 
@@ -1014,7 +1012,6 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	// since there can be filters on the modifications
 	// that may result in different effects after the advancement.
 	apply_modifications();
-
 
 	// Now that modifications are done modifying traits, check if poison should
 	// be cleared.
