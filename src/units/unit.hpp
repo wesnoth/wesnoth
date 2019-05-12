@@ -174,7 +174,7 @@ public:
 	{
 		return unit_ptr(new unit(*this));
 	}
-	
+
 	unit_ptr shared_from_this()
 	{
 		return unit_ptr(this);
@@ -571,6 +571,7 @@ public:
 	{
 		return canrecruit_;
 	}
+
 
 	/** Sets whether this unit can recruit other units. */
 	void set_can_recruit(bool canrecruit)
@@ -1468,11 +1469,22 @@ public:
 		return unit_detail::get_or_default(ellipse_);
 	}
 
+	std::string image_overlay() const
+	{
+		return unit_detail::get_or_default(persistent_overlay_);
+	}
+
 	/** Set the unit's ellipse image. */
 	void set_image_ellipse(const std::string& ellipse)
 	{
 		appearance_changed_ = true;
 		ellipse_.reset(new std::string(ellipse));
+	}
+
+	void set_image_overlay(const std::string& persistent_overlay)
+	{
+		appearance_changed_ = true;
+		persistent_overlay_.reset(new std::string(persistent_overlay));
 	}
 
 	/**
@@ -1501,6 +1513,7 @@ public:
 	{
 		return overlays_;
 	}
+
 
 	/**
 	 * Color for this unit's *current* hitpoints.
@@ -1812,6 +1825,7 @@ private:
 	std::unique_ptr<std::string> usage_;
 	std::unique_ptr<std::string> halo_;
 	std::unique_ptr<std::string> ellipse_;
+	std::unique_ptr<std::string> persistent_overlay_;
 
 	bool random_traits_;
 	bool generate_name_;
