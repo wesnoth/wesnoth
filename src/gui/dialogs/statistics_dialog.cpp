@@ -185,8 +185,16 @@ void statistics_dialog::add_damage_row(
 	damage_list.add_row(data);
 }
 
+// Custom type to allow tally() to return two values.
+struct hitrate_table_element {
+	// The string with <actual number of hits>/<expected number of hits>
+	std::string hitrate_str;
+	// The string with the a priori probability of that result
+	std::string percentage_str;
+};
+
 // Return the strings to use in the "Hits" table, showing actual and expected number of hits.
-static std::pair<std::string, std::string> tally(const statistics::stats::hitrate_map& by_cth)
+static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth)
 {
 	unsigned int overall_hits = 0;
 	double expected_hits = 0;
@@ -266,7 +274,7 @@ static std::pair<std::string, std::string> tally(const statistics::stats::hitrat
 			<< spacer;
 	}
 
-	return std::make_pair(str.str(), str2.str());
+	return hitrate_table_element{str.str(), str2.str()};
 }
 
 void statistics_dialog::add_hits_row(
@@ -281,22 +289,22 @@ void statistics_dialog::add_hits_row(
 	std::map<std::string, string_map> data;
 	string_map item;
 
-	std::pair<std::string, std::string> pair;
+	hitrate_table_element element;
 
 	item["label"] = type;
 	data.emplace("hits_type", item);
 
-	pair = tally(by_cth);
-	item["label"] = pair.first;
+	element = tally(by_cth);
+	item["label"] = element.hitrate_str;
 	data.emplace("hits_overall", item);
-	item["label"] = pair.second;
+	item["label"] = element.percentage_str;
 	data.emplace("overall_percent", item);
 
 	if(show_this_turn) {
-		pair = tally(turn_by_cth);
-		item["label"] = pair.first;
+		element = tally(turn_by_cth);
+		item["label"] = element.hitrate_str;
 		data.emplace("hits_this_turn", item);
-		item["label"] = pair.second;
+		item["label"] = element.percentage_str;
 		data.emplace("this_turn_percent", item);
 	}
 
