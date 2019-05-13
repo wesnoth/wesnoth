@@ -199,10 +199,10 @@ static config write_by_cth_map(const stats::hitrate_map& m)
 	config res;
 	for(const auto& i : m) {
 		const config child(
-			"key", i.first,
-			"value", i.second.write()
+			"cth", i.first,
+			"stats", i.second.write()
 		);
-		res.add_child("keyvalue", child);
+		res.add_child("hitrate_map_entry", child);
 	}
 	return res;
 }
@@ -239,8 +239,8 @@ static stats::hitrate_map read_by_cth_map_from_battle_result_maps(const statisti
 static stats::hitrate_map read_by_cth_map(const config& cfg)
 {
 	stats::hitrate_map m;
-	for(const config &i : cfg.child_range("keyvalue")) {
-		m.emplace(i["key"], statistics::stats::hitrate_t(i.child("value")));
+	for(const config &i : cfg.child_range("hitrate_map_entry")) {
+		m.emplace(i["cth"], statistics::stats::hitrate_t(i.child("stats")));
 	}
 	return m;
 }
