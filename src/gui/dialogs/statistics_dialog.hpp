@@ -59,8 +59,8 @@ private:
 	void add_hits_row(
 		window& window,
 		const std::string& type,
-		const std::map<int, struct statistics::stats::by_cth_t>& by_cth,
-		const std::map<int, struct statistics::stats::by_cth_t>& turn_by_cth,
+		const statistics::stats::hitrate_map& by_cth,
+		const statistics::stats::hitrate_map& turn_by_cth,
 		const bool show_this_turn);
 
 	void update_lists(window& window);

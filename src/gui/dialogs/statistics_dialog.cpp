@@ -184,7 +184,7 @@ void statistics_dialog::add_damage_row(
 }
 
 // Return the strings to use in the "Hits" table, showing actual and expected number of hits.
-static std::pair<std::string, std::string> tally(const std::map<int, struct statistics::stats::by_cth_t>& by_cth)
+static std::pair<std::string, std::string> tally(const statistics::stats::hitrate_map& by_cth)
 {
 	unsigned int overall_hits = 0;
 	double expected_hits = 0;
@@ -268,8 +268,8 @@ static std::pair<std::string, std::string> tally(const std::map<int, struct stat
 void statistics_dialog::add_hits_row(
 		window& window,
 		const std::string& type,
-		const std::map<int, struct statistics::stats::by_cth_t>& by_cth,
-		const std::map<int, struct statistics::stats::by_cth_t>& turn_by_cth,
+		const statistics::stats::hitrate_map& by_cth,
+		const statistics::stats::hitrate_map& turn_by_cth,
 		const bool show_this_turn)
 {
 	listbox& hits_list = find_widget<listbox>(&window, "stats_list_hits", false);

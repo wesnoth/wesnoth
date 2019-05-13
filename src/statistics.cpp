@@ -194,7 +194,7 @@ static stats::battle_result_map read_battle_result_map(const config& cfg)
 	return m;
 }
 
-static config write_by_cth_map(const std::map<int, struct statistics::stats::by_cth_t>& m)
+static config write_by_cth_map(const stats::hitrate_map& m)
 {
 	config res;
 	for(const auto& i : m) {
@@ -208,9 +208,9 @@ static config write_by_cth_map(const std::map<int, struct statistics::stats::by_
 }
 
 static void merge_battle_result_maps(stats::battle_result_map& a, const stats::battle_result_map& b);
-static std::map<int, struct statistics::stats::by_cth_t> read_by_cth_map_from_battle_result_maps(const statistics::stats::battle_result_map& attacks, const statistics::stats::battle_result_map& defends)
+static stats::hitrate_map read_by_cth_map_from_battle_result_maps(const statistics::stats::battle_result_map& attacks, const statistics::stats::battle_result_map& defends)
 {
-	std::map<int, struct statistics::stats::by_cth_t> m;
+	stats::hitrate_map m;
 
 	statistics::stats::battle_result_map merged = attacks;
 	merge_battle_result_maps(merged, defends);
@@ -235,9 +235,9 @@ static std::map<int, struct statistics::stats::by_cth_t> read_by_cth_map_from_ba
 	return m;
 }
 
-static std::map<int, struct statistics::stats::by_cth_t> read_by_cth_map(const config& cfg)
+static stats::hitrate_map read_by_cth_map(const config& cfg)
 {
-	std::map<int, struct statistics::stats::by_cth_t> m;
+	stats::hitrate_map m;
 	for(const config &i : cfg.child_range("keyvalue")) {
 		m.emplace(i["key"], statistics::stats::by_cth_t(i.child("value")));
 	}
@@ -258,7 +258,7 @@ static void merge_battle_result_maps(stats::battle_result_map& a, const stats::b
 	}
 }
 
-static void merge_cth_map(std::map<int, struct statistics::stats::by_cth_t>& a, const std::map<int, struct statistics::stats::by_cth_t>& b)
+static void merge_cth_map(stats::hitrate_map& a, const stats::hitrate_map& b)
 {
 	for(const auto& i : b) {
 		a[i.first].hits += i.second.hits;

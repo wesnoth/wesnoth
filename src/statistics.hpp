@@ -67,9 +67,10 @@ namespace statistics
 			config write() const;
 			friend std::ostream& operator<<(std::ostream& outstream, const struct by_cth_t& by_cth);
 		};
-		/// Maps of chance-to-hit percentage to a 'struct by_cth_t'.
-		std::map<int, struct by_cth_t> by_cth_inflicted, by_cth_taken;
-		std::map<int, struct by_cth_t> turn_by_cth_inflicted, turn_by_cth_taken;
+		/// A type that maps chance-to-hit percentage to number of hits and strikes at that CTH.
+		typedef std::map<int, struct by_cth_t> hitrate_map;
+		hitrate_map by_cth_inflicted, by_cth_taken;
+		hitrate_map turn_by_cth_inflicted, turn_by_cth_taken;
 
 		static const int decimal_shift = 1000;
 
