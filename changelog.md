@@ -144,6 +144,8 @@
    * Sceptre of Fire:
      * S5: tell player that gryphon riders can now be recruited
      * S9: objectives changed to be more accurate upon moving to the volcano
+   * Secrets of the Ancients:
+     * Fixed number of scenarios in campaign listing
    * Son of the Black Eye:
      * S10: add dialogue on victory
    * The Rise of Wesnoth:
