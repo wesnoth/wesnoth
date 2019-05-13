@@ -59,15 +59,15 @@ namespace statistics
 		long long damage_inflicted, damage_taken;
 		long long turn_damage_inflicted, turn_damage_taken;
 
-		struct by_cth_t {
+		struct hitrate_t {
 			int strikes; //< Number of strike attempts at the given CTH
 			int hits; //< Number of strikes that hit at the given CTH
-			by_cth_t() = default;
-			explicit by_cth_t(const config& cfg);
+			hitrate_t() = default;
+			explicit hitrate_t(const config& cfg);
 			config write() const;
 		};
 		/// A type that maps chance-to-hit percentage to number of hits and strikes at that CTH.
-		typedef std::map<int, by_cth_t> hitrate_map;
+		typedef std::map<int, hitrate_t> hitrate_map;
 		hitrate_map by_cth_inflicted, by_cth_taken;
 		hitrate_map turn_by_cth_inflicted, turn_by_cth_taken;
 
@@ -137,4 +137,4 @@ namespace statistics
 	/// Returns a list of names and stats for each scenario in the current campaign.
 	levels level_stats(const std::string & save_id);
 } // end namespace statistics
-std::ostream& operator<<(std::ostream& outstream, const statistics::stats::by_cth_t& by_cth);
+std::ostream& operator<<(std::ostream& outstream, const statistics::stats::hitrate_t& by_cth);

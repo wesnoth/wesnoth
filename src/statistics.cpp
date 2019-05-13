@@ -240,7 +240,7 @@ static stats::hitrate_map read_by_cth_map(const config& cfg)
 {
 	stats::hitrate_map m;
 	for(const config &i : cfg.child_range("keyvalue")) {
-		m.emplace(i["key"], statistics::stats::by_cth_t(i.child("value")));
+		m.emplace(i["key"], statistics::stats::hitrate_t(i.child("value")));
 	}
 	return m;
 }
@@ -823,17 +823,17 @@ int sum_cost_str_int_map(const stats::str_int_map &m)
 	return cost;
 }
 
-config stats::by_cth_t::write() const
+config stats::hitrate_t::write() const
 {
 	return config("hits", hits, "strikes", strikes);
 }
 
-stats::by_cth_t::by_cth_t(const config &cfg) :
+stats::hitrate_t::hitrate_t(const config &cfg) :
 	strikes(cfg["strikes"]),
 	hits(cfg["hits"])
 {}
 
-std::ostream& operator<<(std::ostream& outstream, const statistics::stats::by_cth_t& by_cth) {
+std::ostream& operator<<(std::ostream& outstream, const statistics::stats::hitrate_t& by_cth) {
 	outstream << "[" << by_cth.hits << "/" << by_cth.strikes << "]";
 	return outstream;
 }
