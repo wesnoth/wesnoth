@@ -846,6 +846,11 @@ listbox& preferences_dialog::setup_hotkey_list(window& window)
 void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 {
 	int row_number = hotkeys.get_selected_row();
+	if(row_number < 0) {
+		gui2::show_transient_message("", _("No hotkey selected"));
+		return;
+	}
+
 	const hotkey::hotkey_command& hotkey_item = *visible_hotkeys_[row_number];
 
 	gui2::dialogs::hotkey_bind bind_dlg(hotkey_item.command);
@@ -911,6 +916,11 @@ void preferences_dialog::default_hotkey_callback(window& window)
 void preferences_dialog::remove_hotkey_callback(listbox& hotkeys)
 {
 	int row_number = hotkeys.get_selected_row();
+	if(row_number < 0) {
+		gui2::show_transient_message("", _("No hotkey selected"));
+		return;
+	}
+
 	const hotkey::hotkey_command& hotkey_item = *visible_hotkeys_[row_number];
 	hotkey::clear_hotkeys(hotkey_item.command);
 	find_widget<label>(hotkeys.get_row_grid(row_number), "lbl_hotkey", false).set_label(hotkey::get_names(hotkey_item.command));
