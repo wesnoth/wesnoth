@@ -1470,7 +1470,7 @@ public:
 
 	std::string image_overlay() const
 	{
-		return unit_detail::get_or_default(persistent_overlay_);
+		return unit_detail::get_or_default(overlay_);
 	}
 
 	/** Set the unit's ellipse image. */
@@ -1480,10 +1480,10 @@ public:
 		ellipse_.reset(new std::string(ellipse));
 	}
 
-	void set_image_overlay(const std::string& persistent_overlay)
+	void set_image_overlay(const std::string& overlay)
 	{
 		appearance_changed_ = true;
-		persistent_overlay_.reset(new std::string(persistent_overlay));
+		overlay_.reset(new std::string(overlay));
 	}
 
 	/**
@@ -1822,7 +1822,7 @@ private:
 
 	std::unique_ptr<std::string> usage_;
 	std::unique_ptr<std::string> halo_;
-	std::unique_ptr<std::string> persistent_overlay_;
+	std::unique_ptr<std::string> overlay_;
 	std::unique_ptr<std::string> ellipse_;
 
 	bool random_traits_;
