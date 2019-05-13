@@ -42,6 +42,8 @@
      * Refactor code in various scenarios to be more readable
      * Various bugfixes (objectives, allied vision, unit spawns, event firing)
      * S8: change water to rise based on timer, not player movement
+   * Wings of Victory:
+     * New campaign added to mainline (Intermediate level, 11 scenarios).
    * Deprecate AI Controller and remove it from mainline campaign scenarios
  ### Engine
    * Windows 7 is now the minimum supported Windows version.
