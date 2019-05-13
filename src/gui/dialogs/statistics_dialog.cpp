@@ -162,8 +162,9 @@ void statistics_dialog::add_damage_row(
 
 	str.str("");
 	str << (((dsa < 0) ^ (expected < 0)) ? "" : "+")
-		<< (expected == 0 ? 0 : 100 * dsa / expected) << '%';
-	item["label"] = str.str() + spacer;
+		<< (expected == 0 ? 0 : 100 * dsa / expected) << '%'
+		<< spacer;
+	item["label"] = str.str();
 	data.emplace("overall_percent", item);
 
 	if(show_this_turn) {
@@ -175,8 +176,9 @@ void statistics_dialog::add_damage_row(
 
 		str.str("");
 		str << (((dst < 0) ^ (turn_expected < 0)) ? "" : "+")
-			<< (turn_expected == 0 ? 0 : 100 * dst / turn_expected) << '%';
-		item["label"] = str.str() + spacer;
+			<< (turn_expected == 0 ? 0 : 100 * dst / turn_expected) << '%'
+			<< spacer;
+		item["label"] = str.str();
 		data.emplace("this_turn_percent", item);
 	}
 
@@ -204,8 +206,8 @@ static std::pair<std::string, std::string> tally(const statistics::stats::hitrat
 	{
 		config defender_cfg(
 			"id", "statistics_dialog_dummy_defender",
-			"hide_help", "yes",
-			"do_not_list", "yes",
+			"hide_help", true,
+			"do_not_list", true,
 			"hitpoints", overall_strikes
 		);
 		unit_type defender_type(defender_cfg);
@@ -218,8 +220,8 @@ static std::pair<std::string, std::string> tally(const statistics::stats::hitrat
 			int cth = i.first;
 			config attacker_cfg(
 				"id", "statistics_dialog_dummy_attacker" + std::to_string(cth),
-				"hide_help", "yes",
-				"do_not_list", "yes",
+				"hide_help", true,
+				"do_not_list", true,
 				"hitpoints", 1
 			);
 			unit_type attacker_type(attacker_cfg);
@@ -237,29 +239,31 @@ static std::pair<std::string, std::string> tally(const statistics::stats::hitrat
 			defender_bc = battle_context_unit_stats(&defender_type, nullptr, false, &attacker_type, attack, 0 /* not used */);
 
 			// Update current_defender with the new defender_bc.
-			combatant attacker(attacker_bc);
 			current_defender.reset(new combatant(*current_defender, defender_bc));
 
+			combatant attacker(attacker_bc);
 			attacker.fight(*current_defender);
 		}
 
 		const std::vector<double>& final_hp_dist = current_defender->hp_dist;
-		const auto& chance_of_exactly_N_hits = [&final_hp_dist](int N) { return final_hp_dist[final_hp_dist.size() - 1 - N]; };
+		const auto& chance_of_exactly_N_hits = [&final_hp_dist](int n) { return final_hp_dist[final_hp_dist.size() - 1 - n]; };
 
 		double probability = 0.0;
 		if(overall_hits == expected_hits) {
 			probability = chance_of_exactly_N_hits(overall_hits);
-		}
-		else if (overall_hits > expected_hits) {
-			for(unsigned int i = overall_hits; i < final_hp_dist.size(); i++)
+		} else if (overall_hits > expected_hits) {
+			for(unsigned int i = overall_hits; i < final_hp_dist.size(); ++i) {
 				probability += chance_of_exactly_N_hits(i);
-		}
-		else {
-			for(unsigned int i = 0; i <= overall_hits; i++)
+			}
+		} else {
+			for(unsigned int i = 0; i <= overall_hits; ++i) {
 				probability += chance_of_exactly_N_hits(i);
+			}
 		}
 		// TODO: document for users what this value is.
-		str2 << font::span_color(game_config::red_to_green(probability * 100.0, true)) << get_probability_string(probability) << "</span>";
+		str2 << font::span_color(game_config::red_to_green(probability * 100.0, true))
+			<< get_probability_string(probability) << "</span>"
+			<< spacer;
 	}
 
 	return std::make_pair(str.str(), str2.str());
@@ -285,14 +289,14 @@ void statistics_dialog::add_hits_row(
 	pair = tally(by_cth);
 	item["label"] = pair.first;
 	data.emplace("hits_overall", item);
-	item["label"] = pair.second + spacer;
+	item["label"] = pair.second;
 	data.emplace("overall_percent", item);
 
 	if(show_this_turn) {
 		pair = tally(turn_by_cth);
 		item["label"] = pair.first;
 		data.emplace("hits_this_turn", item);
-		item["label"] = pair.second + spacer;
+		item["label"] = pair.second;
 		data.emplace("this_turn_percent", item);
 	}
 

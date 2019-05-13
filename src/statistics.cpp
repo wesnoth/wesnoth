@@ -223,8 +223,9 @@ static stats::hitrate_map read_by_cth_map_from_battle_result_maps(const statisti
 			const int occurrences = j.second;
 			unsigned int misses = std::count(res.begin(), res.end(), '0');
 			unsigned int hits = std::count(res.begin(), res.end(), '1');
-			if(misses + hits == 0)
+			if(misses + hits == 0) {
 				continue;
+			}
 			misses *= occurrences;
 			hits *= occurrences;
 			m[cth].strikes += misses + hits;
@@ -832,7 +833,7 @@ stats::by_cth_t::by_cth_t(const config &cfg) :
 	hits(cfg["hits"])
 {}
 
-std::ostream& operator<<(std::ostream& outstream, const struct statistics::stats::by_cth_t& by_cth) {
+std::ostream& operator<<(std::ostream& outstream, const statistics::stats::by_cth_t& by_cth) {
 	outstream << "[" << by_cth.hits << "/" << by_cth.strikes << "]";
 	return outstream;
 }

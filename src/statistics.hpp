@@ -65,10 +65,9 @@ namespace statistics
 			by_cth_t() = default;
 			explicit by_cth_t(const config& cfg);
 			config write() const;
-			friend std::ostream& operator<<(std::ostream& outstream, const struct by_cth_t& by_cth);
 		};
 		/// A type that maps chance-to-hit percentage to number of hits and strikes at that CTH.
-		typedef std::map<int, struct by_cth_t> hitrate_map;
+		typedef std::map<int, by_cth_t> hitrate_map;
 		hitrate_map by_cth_inflicted, by_cth_taken;
 		hitrate_map turn_by_cth_inflicted, turn_by_cth_taken;
 
@@ -138,3 +137,4 @@ namespace statistics
 	/// Returns a list of names and stats for each scenario in the current campaign.
 	levels level_stats(const std::string & save_id);
 } // end namespace statistics
+std::ostream& operator<<(std::ostream& outstream, const statistics::stats::by_cth_t& by_cth);
