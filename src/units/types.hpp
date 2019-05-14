@@ -164,8 +164,8 @@ public:
 	const std::string &small_profile() const { return small_profile_; }
 	const std::string &big_profile() const { return profile_; }
 	std::string halo() const { return cfg_["halo"]; }
-	std::string ellipse() const { return cfg_["ellipse"]; }
 	std::string overlay() const { return cfg_["overlay"]; }
+	std::string ellipse() const { return cfg_["ellipse"]; }
 	bool generate_name() const { return cfg_["generate_name"].to_bool(true); }
 	const std::vector<unit_animation>& animations() const;
 
