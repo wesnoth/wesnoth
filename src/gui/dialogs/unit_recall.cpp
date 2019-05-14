@@ -184,6 +184,10 @@ void unit_recall::pre_show(window& window)
 		for(const std::string& overlay : unit->overlays()) {
 			mods += "~BLIT(" + overlay + ")";
 		}
+		
+		if(!unit->image_overlay().empty()) {
+			mods += "~BLIT(" + unit->image_overlay() + ")";
+		}
 
 		column["use_markup"] = "true";
 
