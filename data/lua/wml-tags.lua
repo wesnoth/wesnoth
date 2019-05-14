@@ -347,7 +347,7 @@ function wml_actions.select_unit(cfg)
 	wesnoth.select_unit(u.x, u.y, cfg.highlight, cfg.fire_event)
 end
 
-function wml_actions.unit_overlays(cfg)
+function wml_actions.unit_overlay(cfg)
 	local img = cfg.image or helper.wml_error( "[unit_overlay] missing required image= attribute" )
 	for i,u in ipairs(wesnoth.get_units(cfg)) do
 		local has_already = false
@@ -366,7 +366,7 @@ function wml_actions.unit_overlays(cfg)
 	end
 end
 
-function wml_actions.remove_unit_overlays(cfg)
+function wml_actions.remove_unit_overlay(cfg)
 	local img = cfg.image or helper.wml_error( "[remove_unit_overlay] missing required image= attribute" )
 
 	-- Loop through all matching units.
@@ -383,8 +383,8 @@ function wml_actions.remove_unit_overlays(cfg)
 	end
 end
 
-function wml_actions.unit_overlay(cfg)
-	local img = cfg.image or helper.wml_error( "[unit_overlay] missing required image= attribute" )
+function wml_actions.unit_simple_overlay(cfg)
+	local img = cfg.image or helper.wml_error( "[unit_simple_overlay] missing required image= attribute" )
 	for i,u in ipairs(wesnoth.get_units(cfg)) do
 	local ucfg = u.__cfg
 		ucfg.overlay= img
@@ -392,8 +392,8 @@ function wml_actions.unit_overlay(cfg)
 	end
 end
 
-function wml_actions.remove_unit_overlay(cfg)
-	local img = cfg.image or helper.wml_error( "[remove_unit_overlay] missing required image= attribute" )
+function wml_actions.remove_unit_simple_overlay(cfg)
+	local img = cfg.image or helper.wml_error( "[remove_unit_simple_overlay] missing required image= attribute" )
 
 	-- Loop through all matching units.
 	for i,u in ipairs(wesnoth.get_units(cfg)) do
