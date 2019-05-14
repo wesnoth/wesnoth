@@ -917,14 +917,25 @@ class HTMLOutput:
                                 if not first_attack:
                                     write('<br />')
                                 first_attack = False
+
+                                r = T(attack, "range")
+                                t = T(attack, "type")
+                                range_icon = image_collector.add_image_check(self.addon, 'icons/profiles/%s_attack.png' % r, no_tc=True)
+                                range_icon = cleanurl(os.path.join(PICS_LOCATION, range_icon.id_name))
+                                range_alt_text = 'attack range %s' % cleantext(_(r), quote=False)
+                                type_icon = image_collector.add_image_check(self.addon, 'icons/profiles/%s.png' % t, no_tc=True)
+                                type_icon = cleanurl(os.path.join(PICS_LOCATION, type_icon.id_name))
+                                type_alt_text = 'attack type %s' % cleantext(_(t), quote=False)
+                                x = '<img src="%s" alt="(%s)"/> <img src="%s" alt="(%s)"/> ' % (range_icon, range_alt_text, type_icon, type_alt_text)
+                                write (x)
+
                                 n = T(attack, "number")
                                 x = T(attack, "damage")
                                 x = "%s %s %s " % (cleantext(x, quote=False), HTML_ENTITY_MULTIPLICATION_SIGN, cleantext(n, quote=False))
                                 write(x)
 
-                                r = T(attack, "range")
-                                t = T(attack, "type")
-                                write(cleantext("%s (%s)" % (_(r), _(t)), quote=False))
+                                x = '<br/>%s-%s' % (_(r), _(t))
+                                write(x)
 
                                 s = []
                                 specials = attack.get_all(tag="specials")
@@ -1179,18 +1190,26 @@ class HTMLOutput:
                     icon = os.path.join(PICS_LOCATION, image_add.id_name)
                 write('<td><img src="%s" alt="(image)"/></td>' % cleanurl(icon))
 
-                write('<td><b>%s</b>' % cleantext(aname, quote=False))
+                write('<td><b>%s</b></td>' % cleantext(aname, quote=False))
 
-                r = T(attack, "range")
-                write('<br/>%s</td>' % cleantext(_(r), quote=False))
+                t = T(attack, "type")
+                type_icon = image_collector.add_image_check(self.addon, 'icons/profiles/%s.png' % t, no_tc=True)
+                type_icon = cleanurl(os.path.join(PICS_LOCATION, type_icon.id_name))
+                type_alt_text = cleantext('%s attack' % t, quote=False)
+                x = '<td><img src="%s" alt="(%s)"/> %s</td>' % (type_icon, type_alt_text, cleantext(_(t), quote=False))
+                write(x)
 
                 n = attack.get_text_val("number")
                 x = attack.get_text_val("damage")
                 x = '%s %s %s' % (cleantext(x, quote=False), HTML_ENTITY_MULTIPLICATION_SIGN, cleantext(n, quote=False))
-                write('<td><i>%s</i>' % x)
+                write('<td><i>%s</i></td>' % x)
 
-                t = T(attack, "type")
-                write('<br/>%s</td>' % cleantext(_(t), quote=False))
+                r = T(attack, "range")
+                range_icon = image_collector.add_image_check(self.addon, 'icons/profiles/%s_attack.png' % r, no_tc=True)
+                range_icon = cleanurl(os.path.join(PICS_LOCATION, range_icon.id_name))
+                range_alt_text = cleantext('%s attack' % r, quote=False)
+                x = '<td><img src="%s" alt="(%s)"/> %s</td>' % (range_icon, range_alt_text, cleantext(_(r), quote=False))
+                write(x)
 
                 s = []
                 specials = attack.get_all(tag="specials")
@@ -1202,7 +1221,8 @@ class HTMLOutput:
                         else:
                             error_message("Warning: Weapon special %s has no name for %s.\n" %
                                           (special.name.decode("utf8"), uid))
-                write('<td>%s</td>' % '<br/>'.join(s))
+                if s:
+                    write('<td>(%s)</td>' % ', '.join(s))
                 write('</tr>')
             write('</table>\n')
 
