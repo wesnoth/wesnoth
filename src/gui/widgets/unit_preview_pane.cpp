@@ -423,6 +423,10 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 			mods += "~BLIT(" + overlay + ")";
 		}
 
+		if(!u.image_overlay().empty()) {
+			mods += "~BLIT(" + u.image_overlay() + ")";
+		}
+
 		mods += "~XBRZ(2)~SCALE_INTO_SHARP(144,144)" + image_mods_;
 
 		icon_type_->set_label(u.absolute_image() + mods);
