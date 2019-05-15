@@ -83,6 +83,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 	color_t xp_color=u.xp_color();
 
 	std::string ellipse=u.image_ellipse();
+	std::string overlay=u.image_overlay();
 
 	const bool is_highlighted_enemy = units_that_can_reach_goal.count(loc) > 0;
 	const bool is_selected_hex = (loc == sel_hex || is_highlighted_enemy);
@@ -331,6 +332,17 @@ void unit_drawer::redraw_unit (const unit & u) const
 			if(ov_img != nullptr) {
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
 					loc, xsrc+xoff, ysrc+yoff+adjusted_params.y, ov_img);
+			}
+		}
+		
+		if(!overlay.empty()) {
+			surface pov(image::get_image(u.image_overlay(),image::SCALED_TO_ZOOM));
+			if(!pov.null()) {
+				//if(bar_alpha != ftofxp(1.0)) {
+				//	crown = adjust_surface_alpha(crown, bar_alpha);
+				//}
+				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
+					loc, xsrc+xoff, ysrc+yoff+adjusted_params.y, pov);
 			}
 		}
 	}
