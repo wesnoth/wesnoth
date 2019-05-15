@@ -1822,7 +1822,7 @@ const std::set<std::string> unit::builtin_effects {
 	"alignment", "attack", "defense", "ellipse", "experience", "fearless",
 	"halo", "healthy", "hitpoints", "image_mod", "jamming", "jamming_costs",
 	"loyal", "max_attacks", "max_experience", "movement", "movement_costs",
-	"new_ability", "new_advancement", "new_animation", "new_attack", "overlay", "overlays", "profile",
+	"new_ability", "new_advancement", "new_animation", "new_attack", "sp_overlay", "overlay", "profile",
 	"recall_cost", "remove_ability", "remove_advancement", "remove_attacks", "resistance",
 	"status", "type", "variation", "vision", "vision_costs", "zoc"
 };
@@ -2124,11 +2124,11 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		anim_comp_->apply_new_animation_effect(effect);
 	} else if(apply_to == "ellipse") {
 		set_image_ellipse(effect["ellipse"]);
-	} else if(apply_to == "overlay") {
+	} else if(apply_to == "sp_overlay") {
 		set_image_overlay(effect["overlay"]);
 	} else if(apply_to == "halo") {
 		set_image_halo(effect["halo"]);
-	} else if(apply_to == "mp_overlay") {
+	} else if(apply_to == "overlay") {
 		const std::string& add = effect["add"];
 		const std::string& replace = effect["replace"];
 
