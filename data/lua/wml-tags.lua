@@ -347,11 +347,11 @@ function wml_actions.select_unit(cfg)
 	wesnoth.select_unit(u.x, u.y, cfg.highlight, cfg.fire_event)
 end
 
-function wml_actions.unit_overlay(cfg)
-	local img = cfg.image or helper.wml_error( "[unit_overlay] missing required image= attribute" )
+function wml_actions.unit_mp_overlay(cfg)
+	local img = cfg.image or helper.wml_error( "[unit_mp_overlay] missing required image= attribute" )
 	for i,u in ipairs(wesnoth.get_units(cfg)) do
 		local has_already = false
-		for i, w in ipairs(u.overlays) do
+		for i, w in ipairs(u.mp_overlays) do
 			if w == img then has_already = true end
 		end
 		if has_already == false then
@@ -363,6 +363,32 @@ function wml_actions.unit_overlay(cfg)
 				}
 			})
 		end
+	end
+end
+
+function wml_actions.remove_unit_mp_overlay(cfg)
+	local img = cfg.image or helper.wml_error( "[remove_unit_mp_overlay] missing required image= attribute" )
+
+	-- Loop through all matching units.
+	for i,u in ipairs(wesnoth.get_units(cfg)) do
+		local ucfg = u.__cfg
+		local t = utils.parenthetical_split(ucfg.mp_overlays)
+		-- Remove the specified image from the overlays.
+		for i = #t,1,-1 do
+			if t[i] == img then table.remove(t, i) end
+		end
+		-- Reassemble the list of remaining overlays.
+		ucfg.mp_overlays = table.concat(t, ',')
+		wesnoth.put_unit(ucfg)
+	end
+end
+
+function wml_actions.unit_overlay(cfg)
+	local img = cfg.image or helper.wml_error( "[unit_overlay] missing required image= attribute" )
+	for i,u in ipairs(wesnoth.get_units(cfg)) do
+	local ucfg = u.__cfg
+		ucfg.overlays= img
+		wesnoth.put_unit(ucfg)
 	end
 end
 
