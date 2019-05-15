@@ -185,6 +185,10 @@ void unit_recall::pre_show(window& window)
 			mods += "~BLIT(" + overlay + ")";
 		}
 
+		if(!unit->image_overlay().empty()) {
+			mods += "~BLIT(" + unit->image_overlay() + ")";
+		}
+
 		column["use_markup"] = "true";
 
 		column["label"] = unit->absolute_image() + mods;
