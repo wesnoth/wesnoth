@@ -103,7 +103,7 @@ namespace
 		"ai_special",
 		"side",
 		"underlying_id",
-		"overlays",
+		"mp_overlays",
 		"facing",
 		"race",
 		"level",
@@ -138,6 +138,7 @@ namespace
 		"description",
 		"usage",
 		"halo",
+		"overlays",
 		"ellipse",
 		"upkeep",
 		"random_traits",
@@ -359,6 +360,7 @@ unit::unit(const unit& o)
 	, description_(o.description_)
 	, usage_(copy_or_null(o.usage_))
 	, halo_(copy_or_null(o.halo_))
+	, overlay_(copy_or_null(o.overlay_))
 	, ellipse_(copy_or_null(o.ellipse_))
 	, random_traits_(o.random_traits_)
 	, generate_name_(o.generate_name_)
@@ -439,6 +441,7 @@ unit::unit()
 	, description_()
 	, usage_()
 	, halo_()
+	, overlay_()
 	, ellipse_()
 	, random_traits_(true)
 	, generate_name_(true)
@@ -511,7 +514,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	// Apply the unit type's data to this unit.
 	advance_to(*type_, use_traits);
 
-	if(const config::attribute_value* v = cfg.get("overlays")) {
+	if(const config::attribute_value* v = cfg.get("mp_overlays")) {
 		overlays_ = utils::parenthetical_split(v->str(), ',');
 		if(overlays_.size() == 1 && overlays_.front().empty()) {
 			overlays_.clear();
@@ -556,6 +559,10 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 
 	if(const config::attribute_value* v = cfg.get("ellipse")) {
 		set_image_ellipse(*v);
+	}
+
+	if(const config::attribute_value* v = cfg.get("overlays")) {
+		set_image_overlay(*v);
 	}
 
 	if(const config::attribute_value* v = cfg.get("halo")) {
@@ -1444,6 +1451,10 @@ void unit::write(config& cfg, bool write_all) const
 	if(halo_.get()) {
 		cfg["halo"] = *halo_;
 	}
+	
+	if(overlay_.get()) {
+		cfg["overlays"] = *overlay_;
+	}
 
 	if(ellipse_.get()) {
 		cfg["ellipse"] = *ellipse_;
@@ -1496,7 +1507,7 @@ void unit::write(config& cfg, bool write_all) const
 	cfg.clear_children("events");
 	cfg.append(events_);
 
-	cfg["overlays"] = utils::join(overlays_);
+	cfg["mp_overlays"] = utils::join(overlays_);
 
 	cfg["name"] = name_;
 	cfg["id"] = id_;
@@ -1811,7 +1822,7 @@ const std::set<std::string> unit::builtin_effects {
 	"alignment", "attack", "defense", "ellipse", "experience", "fearless",
 	"halo", "healthy", "hitpoints", "image_mod", "jamming", "jamming_costs",
 	"loyal", "max_attacks", "max_experience", "movement", "movement_costs",
-	"new_ability", "new_advancement", "new_animation", "new_attack", "overlay", "profile",
+	"new_ability", "new_advancement", "new_animation", "new_attack", "overlay", "overlays", "profile",
 	"recall_cost", "remove_ability", "remove_advancement", "remove_attacks", "resistance",
 	"status", "type", "variation", "vision", "vision_costs", "zoc"
 };
@@ -2113,9 +2124,11 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		anim_comp_->apply_new_animation_effect(effect);
 	} else if(apply_to == "ellipse") {
 		set_image_ellipse(effect["ellipse"]);
+	} else if(apply_to == "overlay") {
+		set_image_overlay(effect["overlay"]);
 	} else if(apply_to == "halo") {
 		set_image_halo(effect["halo"]);
-	} else if(apply_to == "overlay") {
+	} else if(apply_to == "mp_overlay") {
 		const std::string& add = effect["add"];
 		const std::string& replace = effect["replace"];
 
