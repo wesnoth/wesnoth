@@ -1367,6 +1367,25 @@ void attack::perform()
 		return;
 	}
 
+	bc_.reset(new battle_context(units_, a_.loc_, d_.loc_, a_.weapon_, d_.weapon_));
+
+	a_stats_ = &bc_->get_attacker_stats();
+	d_stats_ = &bc_->get_defender_stats();
+
+	if(a_stats_->weapon) {
+		a_.weap_id_ = a_stats_->weapon->id();
+	}
+
+	if(d_stats_->weapon) {
+		d_.weap_id_ = d_stats_->weapon->id();
+	}
+
+	try {
+		fire_event("pre_attack");
+	} catch(const attack_end_exception&) {
+		return;
+	}
+
 	a_.get_unit().set_facing(a_.loc_.get_relative_dir(d_.loc_));
 	d_.get_unit().set_facing(d_.loc_.get_relative_dir(a_.loc_));
 
@@ -1383,22 +1402,9 @@ void attack::perform()
 	// If the attacker was invisible, she isn't anymore!
 	a_.get_unit().set_state(unit::STATE_UNCOVERED, true);
 
-	bc_.reset(new battle_context(units_, a_.loc_, d_.loc_, a_.weapon_, d_.weapon_));
-
-	a_stats_ = &bc_->get_attacker_stats();
-	d_stats_ = &bc_->get_defender_stats();
-
 	if(a_stats_->disable) {
 		LOG_NG << "attack::perform(): tried to attack with a disabled attack.";
 		return;
-	}
-
-	if(a_stats_->weapon) {
-		a_.weap_id_ = a_stats_->weapon->id();
-	}
-
-	if(d_stats_->weapon) {
-		d_.weap_id_ = d_stats_->weapon->id();
 	}
 
 	try {
@@ -1406,8 +1412,6 @@ void attack::perform()
 	} catch(const attack_end_exception&) {
 		return;
 	}
-
-	refresh_bc();
 
 	DBG_NG << "getting attack statistics";
 	statistics::attack_context attack_stats(
