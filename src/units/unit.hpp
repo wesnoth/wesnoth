@@ -105,8 +105,9 @@ public:
 	 */
 	static void clear_status_caches();
 
-	/** The path to the leader crown overlay. */
+	/** The path to the leader crown and loyal ring overlays. */
 	static const std::string& leader_crown();
+	static const std::string& loyal_ring();
 private:
 	void init(const config& cfg, bool use_traits = false, const vconfig* vcfg = nullptr);
 

@@ -92,6 +92,7 @@ namespace
 	static std::vector<const unit*> units_with_cache;
 
 	static const std::string leader_crown_path = "misc/leader-crown.png";
+	static const std::string loyal_ring_path = "misc/loyal-icon.png";
 	static std::string internalized_attrs[] {
 		"type",
 		"id",
@@ -1045,6 +1046,11 @@ std::string unit::small_profile() const
 const std::string& unit::leader_crown()
 {
 	return leader_crown_path;
+}
+
+const std::string& unit::loyal_ring()
+{
+	return loyal_ring_path;
 }
 
 const std::string& unit::flag_rgb() const

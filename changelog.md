@@ -50,6 +50,7 @@
    * Add command-line arguments for detecting invalid WML.
    * Revise mechanics of the liminal alignment to match up with the intended meaning.
    * Healing animation is shown when the patient is invisible. (PR #3643)
+   * loyal units now always show the ring overlay
  ### Language and i18n
    * Updated translations: British English, Bulgarian, Chinese (Simplified),
      Chinese (Traditional), Czech, Dutch, French, Galician, German, Hungarian,
@@ -111,6 +112,7 @@
    * Support an optional EXTRA_WML argument to {REMOVE_LABEL}.
    * Support [disallow_end_turn]reason=
    * The {SPECIAL_NOTES_*} macros now start with a newline and a bullet point.
+   * Deprecated {IS_LOYAL} macro
  ### Miscellaneous and bug fixes
    * Rest healing now happens on turn 2. (issue #3562)
    * Normal healing now happens on turn 1 for all sides except the first. (issue #3562)

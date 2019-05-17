@@ -72,6 +72,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 	int total_movement = u.total_movement();
 
 	bool can_recruit = u.can_recruit();
+	bool is_loyal = u.loyal();
 	bool can_advance = u.can_advance();
 
 	int experience = u.experience();
@@ -323,6 +324,14 @@ void unit_drawer::redraw_unit (const unit & u) const
 				//}
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
 					loc, xsrc+xoff, ysrc+yoff+adjusted_params.y, crown);
+			}
+		}
+
+		if (is_loyal) {
+			surface ring(image::get_image(u.loyal_ring(),image::SCALED_TO_ZOOM));
+			if(!ring.null()) {
+				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
+					loc, xsrc+xoff, ysrc+yoff+adjusted_params.y, ring);
 			}
 		}
 
