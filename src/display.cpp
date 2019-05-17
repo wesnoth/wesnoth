@@ -2956,10 +2956,10 @@ void display::refresh_report(const std::string& report_name, const config * new_
 		}
 
 		skip_element:
-		t = elements.front()["tooltip"].t_str().base_str();
+		t = elements.front()["tooltip"].t_str().c_str();
 		if (!t.empty()) {
 			if (!used_ellipsis) {
-				tooltips::add_tooltip(area, t, elements.front()["help"].t_str().base_str());
+				tooltips::add_tooltip(area, t, elements.front()["help"].t_str().c_str());
 			} else {
 				// Collect all tooltips for the ellipsis.
 				// TODO: need a better separator
