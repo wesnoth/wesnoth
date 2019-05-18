@@ -328,8 +328,12 @@ static int impl_unit_get(lua_State *L)
 		lua_push(L, u.modification_advancements());
 		return 1;
 	}
-	if(strcmp(m, "overlays") == 0) {
+	if(strcmp(m, "mp_overlays") == 0) {
 		lua_push(L, u.overlays());
+		return 1;
+	}
+	if(strcmp(m, "overlays") == 0) {
+		lua_push(L, u.image_overlay());
 		return 1;
 	}
 	if(strcmp(m, "traits") == 0) {
