@@ -151,29 +151,29 @@ void statistics_dialog::add_damage_row(
 	const long long dsa = shift * damage      - expected;
 	const long long dst = shift * turn_damage - turn_expected;
 
-	const long long shifted = ((expected * 20) + shift) / (2 * shift);
-	std::ostringstream str;
-	str << damage << " / " << static_cast<double>(shifted) * 0.1;
-	item["label"] = str.str();
+	const auto& damage_str = [shift](long long damage, long long expected) {
+		const long long shifted = ((expected * 20) + shift) / (2 * shift);
+		std::ostringstream str;
+		str << damage << " / " << static_cast<double>(shifted) * 0.1;
+		return str.str();
+	};
+	item["label"] = damage_str(damage, expected);
 	data.emplace("damage_overall", item);
 
-	str.str("");
-	str << (((dsa < 0) ^ (expected < 0)) ? "" : "+")
-		<< (expected == 0 ? 0 : 100 * dsa / expected) << '%';
-	item["label"] = str.str();
+	const auto& percent_str = [](long long dsx, long long expected) {
+		std::ostringstream str;
+		str << (((dsx < 0) ^ (expected < 0)) ? "" : "+")
+			<< (expected == 0 ? 0 : 100 * dsx / expected) << '%';
+		return str.str();
+	};
+	item["label"] = percent_str(dsa, expected);
 	data.emplace("overall_percent", item);
 
 	if(show_this_turn) {
-		const long long turn_shifted = ((turn_expected * 20) + shift) / (2 * shift);
-		str.str("");
-		str << turn_damage << " / " << static_cast<double>(turn_shifted) * 0.1;
-		item["label"] = str.str();
+		item["label"] = damage_str(turn_damage, turn_expected);
 		data.emplace("damage_this_turn", item);
 
-		str.str("");
-		str << (((dst < 0) ^ (turn_expected < 0)) ? "" : "+")
-			<< (turn_expected == 0 ? 0 : 100 * dst / turn_expected) << '%';
-		item["label"] = str.str();
+		item["label"] = percent_str(dst, turn_expected);
 		data.emplace("this_turn_percent", item);
 	}
 
