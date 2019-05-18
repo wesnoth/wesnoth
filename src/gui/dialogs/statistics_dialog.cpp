@@ -251,21 +251,28 @@ static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth)
 		const std::vector<double>& final_hp_dist = current_defender->hp_dist;
 		const auto& chance_of_exactly_N_hits = [&final_hp_dist](int n) { return final_hp_dist[final_hp_dist.size() - 1 - n]; };
 
-		double probability = 0.0;
-		if(overall_hits == expected_hits) {
-			probability = chance_of_exactly_N_hits(overall_hits);
-		} else if (overall_hits > expected_hits) {
-			for(unsigned int i = overall_hits; i < final_hp_dist.size(); ++i) {
-				probability += chance_of_exactly_N_hits(i);
-			}
-		} else {
-			for(unsigned int i = 0; i <= overall_hits; ++i) {
-				probability += chance_of_exactly_N_hits(i);
-			}
+		double probability_lt = 0.0;
+		for(unsigned int i = 0; i < overall_hits; ++i) {
+			probability_lt += chance_of_exactly_N_hits(i);
 		}
-		// TODO: document for users what this value is.
-		str2 << font::span_color(game_config::red_to_green(probability * 100.0, true))
-			<< get_probability_string(probability) << "</span>";
+		double probability_eq = chance_of_exactly_N_hits(overall_hits);
+		double probability_gt = 0.0;
+		for(unsigned int i = final_hp_dist.size() - 1; i > overall_hits; --i) {
+			probability_gt += chance_of_exactly_N_hits(i);
+		}
+
+		if(overall_strikes == 0) {
+			// Start of turn
+			str2 << "0%";
+		} else {
+			// TODO: add coloring
+			// TODO: document for users what these values are.
+			str2 << get_probability_string(probability_lt);
+			str2 << ", ";
+			str2 << get_probability_string(probability_eq);
+			str2 << ", ";
+			str2 << get_probability_string(probability_gt);
+		}
 	}
 
 	return hitrate_table_element{str.str(), str2.str()};
