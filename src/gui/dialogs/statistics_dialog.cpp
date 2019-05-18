@@ -129,9 +129,6 @@ void statistics_dialog::add_stat_row(window& window, const std::string& type, co
 	main_stat_table_.push_back(&value);
 }
 
-// TODO: This is used to adjust the horizontal spacing around the percentages column, but it's ugly. Find a better way.
-static const auto& spacer = "    ";
-
 void statistics_dialog::add_damage_row(
 		window& window,
 		const std::string& type,
@@ -162,8 +159,7 @@ void statistics_dialog::add_damage_row(
 
 	str.str("");
 	str << (((dsa < 0) ^ (expected < 0)) ? "" : "+")
-		<< (expected == 0 ? 0 : 100 * dsa / expected) << '%'
-		<< spacer;
+		<< (expected == 0 ? 0 : 100 * dsa / expected) << '%';
 	item["label"] = str.str();
 	data.emplace("overall_percent", item);
 
@@ -176,8 +172,7 @@ void statistics_dialog::add_damage_row(
 
 		str.str("");
 		str << (((dst < 0) ^ (turn_expected < 0)) ? "" : "+")
-			<< (turn_expected == 0 ? 0 : 100 * dst / turn_expected) << '%'
-			<< spacer;
+			<< (turn_expected == 0 ? 0 : 100 * dst / turn_expected) << '%';
 		item["label"] = str.str();
 		data.emplace("this_turn_percent", item);
 	}
@@ -270,8 +265,7 @@ static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth)
 		}
 		// TODO: document for users what this value is.
 		str2 << font::span_color(game_config::red_to_green(probability * 100.0, true))
-			<< get_probability_string(probability) << "</span>"
-			<< spacer;
+			<< get_probability_string(probability) << "</span>";
 	}
 
 	return hitrate_table_element{str.str(), str2.str()};
