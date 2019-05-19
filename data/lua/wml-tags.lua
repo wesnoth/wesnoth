@@ -387,7 +387,7 @@ function wml_actions.unit_overlay(cfg)
 	local img = cfg.image or helper.wml_error( "[unit_overlay] missing required image= attribute" )
 	for i,u in ipairs(wesnoth.get_units(cfg)) do
 	local ucfg = u.__cfg
-		ucfg.overlays= img
+		ucfg.overlays = img
 		wesnoth.put_unit(ucfg)
 	end
 end
@@ -398,14 +398,10 @@ function wml_actions.remove_unit_overlay(cfg)
 	-- Loop through all matching units.
 	for i,u in ipairs(wesnoth.get_units(cfg)) do
 		local ucfg = u.__cfg
-		local t = utils.parenthetical_split(ucfg.overlays)
-		-- Remove the specified image from the overlays.
-		for i = #t,1,-1 do
-			if t[i] == img then table.remove(t, i) end
-		end
-		-- Reassemble the list of remaining overlays.
-		ucfg.overlays = table.concat(t, ',')
+		if ucfg.overlays == img then
+		ucfg.overlays = ""
 		wesnoth.put_unit(ucfg)
+		end
 	end
 end
 
