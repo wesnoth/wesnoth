@@ -189,7 +189,7 @@ struct hitrate_table_element {
 };
 
 // Return the strings to use in the "Hits" table, showing actual and expected number of hits.
-static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth)
+static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth, const bool more_is_better)
 {
 	unsigned int overall_hits = 0;
 	double expected_hits = 0;
@@ -265,13 +265,17 @@ static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth)
 			// Start of turn
 			str2 << "0%";
 		} else {
-			// TODO: add coloring
+			const auto& add_probability = [&str2](double probability, bool more_is_better) {
+				str2 << font::span_color(game_config::red_to_green((more_is_better ? probability : 1.0 - probability) * 100.0, true))
+					<< get_probability_string(probability) << "</span>";
+			};
+
 			// TODO: document for users what these values are.
-			str2 << get_probability_string(probability_lt);
+			add_probability(probability_lt, !more_is_better);
 			str2 << ", ";
 			str2 << get_probability_string(probability_eq);
 			str2 << ", ";
-			str2 << get_probability_string(probability_gt);
+			add_probability(probability_gt, more_is_better);
 		}
 	}
 
@@ -281,6 +285,7 @@ static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth)
 void statistics_dialog::add_hits_row(
 		window& window,
 		const std::string& type,
+		const bool more_is_better,
 		const statistics::stats::hitrate_map& by_cth,
 		const statistics::stats::hitrate_map& turn_by_cth,
 		const bool show_this_turn)
@@ -295,14 +300,14 @@ void statistics_dialog::add_hits_row(
 	item["label"] = type;
 	data.emplace("hits_type", item);
 
-	element = tally(by_cth);
+	element = tally(by_cth, more_is_better);
 	item["label"] = element.hitrate_str;
 	data.emplace("hits_overall", item);
 	item["label"] = element.percentage_str;
 	data.emplace("overall_percent", item);
 
 	if(show_this_turn) {
-		element = tally(turn_by_cth);
+		element = tally(turn_by_cth, more_is_better);
 		item["label"] = element.hitrate_str;
 		data.emplace("hits_this_turn", item);
 		item["label"] = element.percentage_str;
@@ -358,7 +363,7 @@ void statistics_dialog::update_lists(window& window)
 		stats.turn_expected_damage_inflicted,
 		show_this_turn
 	);
-	add_hits_row(window, _("Inflicted"),
+	add_hits_row(window, _("Inflicted"), true,
 		stats.by_cth_inflicted,
 		stats.turn_by_cth_inflicted,
 		show_this_turn
@@ -371,7 +376,7 @@ void statistics_dialog::update_lists(window& window)
 		stats.turn_expected_damage_taken,
 		show_this_turn
 	);
-	add_hits_row(window, _("Taken"),
+	add_hits_row(window, _("Taken"), false,
 		stats.by_cth_taken,
 		stats.turn_by_cth_taken,
 		show_this_turn

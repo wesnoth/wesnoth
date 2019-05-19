@@ -56,9 +56,12 @@ private:
 		const bool show_this_turn);
 
 	/// Add a row to the Hits table
+	///
+	/// @param more_is_better True for "Inflicted" and false for "Taken". Affects coloring.
 	void add_hits_row(
 		window& window,
 		const std::string& type,
+		const bool more_is_better,
 		const statistics::stats::hitrate_map& by_cth,
 		const statistics::stats::hitrate_map& turn_by_cth,
 		const bool show_this_turn);
