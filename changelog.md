@@ -1,6 +1,6 @@
 ## Version 1.15.0-dev
  ### AI
-   * Micro AIs
+   * Micro AIs 
      * Add [avoid] tag functionality to Multipack Wolves, Wolves, Swarm and Goto Micro AIs
      * Support named locations for [micro_ai] tag location keys
      * Goto and Assassin: fix MAIs not working with tunnels when using custom path finding cost functions
