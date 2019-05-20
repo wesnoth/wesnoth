@@ -1727,6 +1727,11 @@ bool bool_leadership(const std::string& ability,const unit_map& units, const map
 }
 
 //emulate boolean special for self/adjacent and/or opponent.
+/// the bool_ability function supports special attacks of the boolean type but also
+/// the equivalent abilities like poison or slow, if the ability returns a false value,
+/// then the final result will depend on the value of the special attack,
+/// for example, if a unit possesses the poison attack but is adjacent to a unit that has the poison leadership ability that excludes that specific unit,
+/// it will still be able to use its own special attack.
 bool attack_type::bool_ability(const std::string& ability) const
 {
 	bool abil_bool= get_special_bool(ability);
@@ -1743,6 +1748,14 @@ bool attack_type::bool_ability(const std::string& ability) const
 }
 
 //emulate numerical special for self/adjacent and/or opponent.
+///the combat_ability function manages the equivalent ability to special attacks
+/// with a numerical value like chance_to_hit and damage.
+/// The numerical part of the returned result is there for an obvious reason,
+/// to recalculate a value after calculates by the special attack.
+/// If for chance_to_hit and most others, the value returned when the ability does not exist is the base value calculated previously,
+/// for drains where the base value is 50 when it is not specified,
+/// or for berserk, it is necessary to condition the calculation to the existence of the ability,
+/// and that is what serves the Boolean part of the returned result.
 std::pair<int, bool> attack_type::combat_ability(const std::string& ability, int abil_value, bool backstab_pos) const
 {
 	const unit_map& units = display::get_singleton()->get_units();
