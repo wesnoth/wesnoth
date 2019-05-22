@@ -255,7 +255,6 @@ static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth,
 		for(unsigned int i = 0; i < overall_hits; ++i) {
 			probability_lt += chance_of_exactly_N_hits(i);
 		}
-		double probability_eq = chance_of_exactly_N_hits(overall_hits);
 		double probability_gt = 0.0;
 		for(unsigned int i = final_hp_dist.size() - 1; i > overall_hits; --i) {
 			probability_gt += chance_of_exactly_N_hits(i);
@@ -272,8 +271,6 @@ static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth,
 
 			// TODO: document for users what these values are.
 			add_probability(probability_lt, !more_is_better);
-			str2 << ", ";
-			str2 << get_probability_string(probability_eq);
 			str2 << ", ";
 			add_probability(probability_gt, more_is_better);
 		}
