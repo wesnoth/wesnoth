@@ -114,6 +114,12 @@ public:
 	 * valid after being set.
 	 */
 	void set_route(const pathfind::marked_route *route);
+	/**
+	 * Gets the route along which footsteps are drawn to show movement of a
+	 * unit. If no route is currently being shown, the array get_route().steps
+	 * will be empty.
+	 */
+	const pathfind::marked_route& get_route() { return route_; }
 
 	/** Function to float a label above a tile */
 	void float_label(const map_location& loc, const std::string& text, const color_t& color);

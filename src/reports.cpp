@@ -23,6 +23,7 @@
 #include "language.hpp"
 #include "map/map.hpp"
 #include "mouse_events.hpp"
+#include "pathfind/pathfind.hpp"
 #include "picture.hpp"
 #include "reports.hpp"
 #include "color.hpp"
@@ -648,7 +649,7 @@ REPORT_GENERATOR(selected_unit_vision, rc)
 	return unit_vision(u);
 }
 
-static config unit_moves(reports::context & rc, const unit* u)
+static config unit_moves(reports::context & rc, const unit* u, bool is_visible_unit)
 {
 	if (!u) return config();
 	std::ostringstream str, tooltip;
@@ -699,18 +700,39 @@ static config unit_moves(reports::context & rc, const unit* u)
 
 	int grey = 128 + static_cast<int>((255 - 128) * movement_frac);
 	color_t c = color_t(grey, grey, grey);
-	str << span_color(c) << u->movement_left() << '/' << u->total_movement() << naps;
+	int numerator = u->movement_left();
+	if(is_visible_unit) {
+		const pathfind::marked_route& route = game_display::get_singleton()->get_route();
+		if(route.steps.size() > 0) {
+			numerator -= route.move_cost;
+			if(numerator < 0) {
+				// Multi-turn move
+				// TODO: what to show in this case?
+				numerator = 0;
+			}
+
+			// If the route captures a village, assume that uses up all remaining MP.
+			const auto& end = route.marks.find(route.steps.back());
+			if(end != route.marks.end() && end->second.capture) {
+				numerator = 0;
+			}
+		} else {
+			// TODO: if the mouseover hex is unreachable (for example, a deep water hex
+			// and the current unit is a land unit), what to show?
+		}
+	}
+	str << span_color(c) << numerator << '/' << u->total_movement() << naps;
 	return text_report(str.str(), tooltip.str());
 }
 REPORT_GENERATOR(unit_moves, rc)
 {
 	const unit *u = get_visible_unit(rc);
-	return unit_moves(rc, u);
+	return unit_moves(rc, u, true);
 }
 REPORT_GENERATOR(selected_unit_moves, rc)
 {
 	const unit *u = get_selected_unit(rc);
-	return unit_moves(rc, u);
+	return unit_moves(rc, u, false);
 }
 
 static inline const color_t attack_info_percent_color(int resistance)
