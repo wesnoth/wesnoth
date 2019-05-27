@@ -1342,6 +1342,55 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
         if key == 'id':
             scenario_to_filename[value] = filename
 
+def global_sanity_check_events(filename, lines):
+    """Part of global_sanity_check which finds each [event] tag.
+
+    todo: handle nested events, and ignore [filter] tags that belong to a
+    non-event tag.
+    """
+
+    # Detect units that speak in their death events
+    filter_subject = None
+    die_event = False
+    deathcheck = True
+    for nav in WmllintIterator(lines, filename):
+        if "wmllint: deathcheck off" in nav.text:
+            deathcheck = False
+            continue
+        elif "wmllint: deathcheck on" in nav.text:
+            deathcheck = True
+        if "[/event]" in nav.text:
+            filter_subject = None
+            die_event = False
+        elif not nav.ancestors():
+            continue
+        elif "[event]" in nav.ancestors():
+            parent = nav.ancestors()[-1]
+            if parent == "[event]":
+                # Check if it's a death event
+                fields = parse_attribute(nav.text)
+                if fields:
+                    (key, prefix, value, comment) = fields
+                    if key == 'name' and value == 'die':
+                        die_event = True
+            elif die_event and not filter_subject and parent == "[filter]":
+                # Check to see if it has a filter subject
+                if "id" in nav.text:
+                    try:
+                        (key,prefix,value,comment) = parse_attribute(nav.text)
+                        filter_subject = value
+                    except TypeError:
+                        pass
+            elif die_event and filter_subject and parent == "[message]":
+                # Who is speaking?
+                fields = parse_attribute(nav.text)
+                if fields:
+                    (key, prefix, value, comment) = fields
+                    if key in ("id", "speaker"):
+                        if deathcheck and ((value == filter_subject) or (value == "unit")):
+                            print('"%s", line %d: %s speaks in his/her "die" event rather than "last breath"' \
+                                  % (filename, nav.lineno+1, value))
+
 def global_sanity_check(filename, lines):
     "Perform sanity and consistency checks on input files."
     # Sanity-check abilities and traits against notes macros.
@@ -1454,47 +1503,10 @@ def global_sanity_check(filename, lines):
                     traits.append(p)
                 if q in precomment:
                     notes.append(q)
-    # Detect units that speak in their death events
-    filter_subject = None
-    die_event = False
-    deathcheck = True
-    for nav in WmllintIterator(lines, filename):
-        if "wmllint: deathcheck off" in nav.text:
-            deathcheck = False
-            continue
-        elif "wmllint: deathcheck on" in nav.text:
-            deathcheck = True
-        if "[/event]" in nav.text:
-            filter_subject = None
-            die_event = False
-        elif not nav.ancestors():
-            continue
-        elif "[event]" in nav.ancestors():
-            parent = nav.ancestors()[-1]
-            if parent == "[event]":
-                # Check if it's a death event
-                fields = parse_attribute(nav.text)
-                if fields:
-                    (key, prefix, value, comment) = fields
-                    if key == 'name' and value == 'die':
-                        die_event = True
-            elif die_event and not filter_subject and parent == "[filter]":
-                # Check to see if it has a filter subject
-                if "id" in nav.text:
-                    try:
-                        (key,prefix,value,comment) = parse_attribute(nav.text)
-                        filter_subject = value
-                    except TypeError:
-                        pass
-            elif die_event and filter_subject and parent == "[message]":
-                # Who is speaking?
-                fields = parse_attribute(nav.text)
-                if fields:
-                    (key, prefix, value, comment) = fields
-                    if key in ("id", "speaker"):
-                        if deathcheck and ((value == filter_subject) or (value == "unit")):
-                            print('"%s", line %d: %s speaks in his/her "die" event rather than "last breath"' \
-                                  % (filename, nav.lineno+1, value))
+
+    # Sanity-check all the [event] tags
+    global_sanity_check_events(filename, lines)
+
     # Collect information on defined movement types and races
     for nav in WmllintIterator(lines, filename):
         above = nav.ancestors()
