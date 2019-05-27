@@ -448,7 +448,11 @@ Important Attributes:
         return isAttribute(self)
 
     def iterScope(self):
-        """Return an iterator for the current scope"""
+        """Return an iterator for the current scope.
+
+        If the iterator is currently on a line that opens a new scope,
+        this returns an iterator of the outer scope not the inner one.
+        """
         if not self.scopes:
             return WmlIterator(self.lines, self.fname)
         scopeItor = self.scopes[-1].copy()
