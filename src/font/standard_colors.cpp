@@ -36,8 +36,8 @@ const color_t
 	weapon_color           {245, 230, 193},
 	good_dmg_color         {130, 240, 50 },
 	bad_dmg_color          {250, 140, 80 },
-	weapon_details_color   {166, 146, 117},
-	inactive_details_color {146, 146, 146},
+	weapon_details_color   {196, 176, 147},
+	inactive_details_color { 86,  86,  86},
 	inactive_ability_color {146, 146, 146},
 	unit_type_color        {245, 230, 193},
 	race_color             {166, 146, 117};
