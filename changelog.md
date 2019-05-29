@@ -45,6 +45,7 @@
    * Update various references of mermen to merfolk or mer
  ### Units
    * Add new Water Serpent portrait
+   * Increased Mermaid Initiate advancement line hitpoints (Diviner 41->45, Enchantress 38->39, Priestess 31->35, Siren 49->51)
 
 ## Version 1.14.8
  * Skipped due to needed to reupload the a broken 1.14.7 macOS App Store package as 1.14.8
