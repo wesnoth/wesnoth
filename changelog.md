@@ -35,6 +35,7 @@
      * S8b: fixed bug with shifted ToD schedules near campfires
    * Under the Burning Suns:
      * Various bugfixes (objectives, allied vision, unit spawns, event firing)
+     * Updated various maps
      * Add additional animations to cutscenes and events
      * S2: add dehydration explanation to objectives
  ### Language and i18n
