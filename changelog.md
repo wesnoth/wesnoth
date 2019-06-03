@@ -125,6 +125,7 @@
    * macOS: Wesnoth now uses the app sandboxing feature, which means there is a new location for saves. All saves will be migrated during first launch automatically. For info about backwards compatibility see: https://gist.github.com/hrubymar10/eb5afd896f933a46fac344ced940e020
    * The sidebar, recall dialog, etc now show attack's range (melee/ranged) and
      damage type (arcane/blade/cold/...) using icons. (PR #3732, #3740)
+   * The cache directory is now configurable through a command-line option in the same way as data, user data and user config directories.
 
 ## Version 1.14.8+dev
  ### Campaigns
