@@ -362,6 +362,15 @@ static int process_command_args(const commandline_options& cmdline_opts)
 {
 	// Options that don't change behavior based on any others should be checked alphabetically below.
 
+	if(cmdline_opts.usercache_dir) {
+		filesystem::set_cache_dir(*cmdline_opts.usercache_dir);
+	}
+
+	if(cmdline_opts.usercache_path) {
+		std::cout << filesystem::get_cache_dir() << '\n';
+		return 0;
+	}
+
 	if(cmdline_opts.userconfig_dir) {
 		filesystem::set_user_config_dir(*cmdline_opts.userconfig_dir);
 	}
