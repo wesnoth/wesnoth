@@ -198,11 +198,10 @@ static config write_by_cth_map(const stats::hitrate_map& m)
 {
 	config res;
 	for(const auto& i : m) {
-		const config child(
+		res.add_child("hitrate_map_entry", config {
 			"cth", i.first,
 			"stats", i.second.write()
-		);
-		res.add_child("hitrate_map_entry", child);
+		});
 	}
 	return res;
 }
