@@ -151,7 +151,7 @@ void statistics_dialog::add_damage_row(
 	const long long dsa = shift * damage      - expected;
 	const long long dst = shift * turn_damage - turn_expected;
 
-	const auto& damage_str = [shift](long long damage, long long expected) {
+	const auto damage_str = [shift](long long damage, long long expected) {
 		const long long shifted = ((expected * 20) + shift) / (2 * shift);
 		std::ostringstream str;
 		str << damage << " / " << static_cast<double>(shifted) * 0.1;
@@ -160,7 +160,7 @@ void statistics_dialog::add_damage_row(
 	item["label"] = damage_str(damage, expected);
 	data.emplace("damage_overall", item);
 
-	const auto& percent_str = [](long long dsx, long long expected) {
+	const auto percent_str = [](long long dsx, long long expected) {
 		std::ostringstream str;
 		str << (((dsx < 0) ^ (expected < 0)) ? "" : "+")
 			<< (expected == 0 ? 0 : 100 * dsx / expected) << '%';
@@ -264,7 +264,7 @@ static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth,
 			// Start of turn
 			str2 << "0%";
 		} else {
-			const auto& add_probability = [&str2](double probability, bool more_is_better) {
+			const auto add_probability = [&str2](double probability, bool more_is_better) {
 				str2 << font::span_color(game_config::red_to_green((more_is_better ? probability : 1.0 - probability) * 100.0, true))
 					<< get_probability_string(probability) << "</span>";
 			};
