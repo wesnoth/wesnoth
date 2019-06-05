@@ -181,7 +181,8 @@ void statistics_dialog::add_damage_row(
 }
 
 // Custom type to allow tally() to return two values.
-struct hitrate_table_element {
+struct hitrate_table_element
+{
 	// The string with <actual number of hits>/<expected number of hits>
 	std::string hitrate_str;
 	// The string with the a priori probability of that result
@@ -230,7 +231,7 @@ static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth,
 			unit_type attacker_type(attacker_cfg);
 			unit_types.build_unit_type(attacker_type, unit_type::BUILD_STATUS::FULL);
 
-			attack_ptr attack = std::make_shared<attack_type>(config(
+			auto attack = std::make_shared<attack_type>(config(
 				"type", "blade",
 				"range", "melee",
 				"name", "dummy attack",

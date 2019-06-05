@@ -59,7 +59,8 @@ namespace statistics
 		long long damage_inflicted, damage_taken;
 		long long turn_damage_inflicted, turn_damage_taken;
 
-		struct hitrate_t {
+		struct hitrate_t
+		{
 			int strikes; //< Number of strike attempts at the given CTH
 			int hits; //< Number of strikes that hit at the given CTH
 			hitrate_t() = default;
