@@ -535,6 +535,10 @@ std::string si_string(double input, bool base2, const std::string& unit) {
 
 	typedef std::array<std::string, 9> strings9;
 
+	if(input < 0){
+		return font::unicode_minus + si_string(std::abs(input), base2, unit);
+	}
+
 	strings9 prefixes;
 	strings9::const_iterator prefix;
 	if (input == 0.0) {
