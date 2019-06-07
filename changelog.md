@@ -64,6 +64,7 @@
    * Allow WML tag names injected with wml.tag to start with underscores.
  ### User Interface
    * Don't show in the sidebar the time of day schedule of a shrouded hex. (issue #3638)
+   * Make unit_weapons report display weapon specials as active/inactive correctly. (issue #4071)
    * macOS: Dark GUI on macOS Mojave and later when dark appearance is enabled.
  ### Packaging
    * OpenMP support has been removed. It is no longer an optional build-time dependency.
