@@ -935,8 +935,9 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 
 	{
 		//If we have a second unit, do the 2-unit specials_context
-		auto ctx = (sec_u == nullptr) ? at.specials_context_for_listing(u.side() == rc.screen().playing_side()) :
-						at.specials_context(unit_const_ptr(&u), unit_const_ptr(sec_u), hex, sec_u->get_location(), u.side() == rc.screen().playing_side(), sec_u_weapon);
+		bool attacking = (u.side() == rc.screen().playing_side());
+		auto ctx = (sec_u == nullptr) ? at.specials_context_for_listing(attacking) :
+						at.specials_context(unit_const_ptr(&u), unit_const_ptr(sec_u), hex, sec_u->get_location(), attacking, sec_u_weapon);
 		
 		boost::dynamic_bitset<> active;
 		const std::vector<std::pair<t_string, t_string>> &specials = at.special_tooltips(&active);
