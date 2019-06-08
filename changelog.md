@@ -45,6 +45,11 @@
    * Update various references of mermen to merfolk or mer
  ### Units
    * Add new Water Serpent portrait
+   * Add new Cuttlefish portrait
+   * Add new Bat portraits
+   * Add new Mudcrawler portrait
+   * Add new Great Wolf portrait
+   * Add new Walking Corpse portrait for mounted variation
 
 ## Version 1.14.8
  * Skipped due to needed to reupload the a broken 1.14.7 macOS App Store package as 1.14.8
