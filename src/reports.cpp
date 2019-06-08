@@ -743,7 +743,7 @@ static inline const color_t attack_info_percent_color(int resistance)
 	return font::YELLOW_COLOR;
 }
 
-static int attack_info(reports::context & rc, const attack_type &at, config &res, const unit &u, const map_location &hex)
+static int attack_info(reports::context & rc, const attack_type &at, config &res, const unit &u, const map_location &hex, const unit* sec_u = nullptr, const_attack_ptr sec_u_weapon = nullptr)
 {
 	std::ostringstream str, tooltip;
 	int damage = 0;
@@ -934,7 +934,11 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	}
 
 	{
-		auto ctx = at.specials_context_for_listing(u.side() == rc.screen().playing_side());
+		//If we have a second unit, do the 2-unit specials_context
+		bool attacking = (u.side() == rc.screen().playing_side());
+		auto ctx = (sec_u == nullptr) ? at.specials_context_for_listing(attacking) :
+						at.specials_context(unit_const_ptr(&u), unit_const_ptr(sec_u), hex, sec_u->get_location(), attacking, sec_u_weapon);
+		
 		boost::dynamic_bitset<> active;
 		const std::vector<std::pair<t_string, t_string>> &specials = at.special_tooltips(&active);
 		const std::size_t specials_size = specials.size();
@@ -993,6 +997,7 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 	if (!attacker || !defender) return config();
 
 	const unit* u = show_attacker ? attacker : defender;
+	const unit* sec_u = !show_attacker ? attacker : defender;
 	const map_location unit_loc = show_attacker ? attacker_pos : defender->get_location();
 
 	std::ostringstream str, tooltip;
@@ -1015,6 +1020,8 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 
 		const battle_context_unit_stats& context_unit_stats =
 				show_attacker ? weapon.get_attacker_stats() : weapon.get_defender_stats();
+		const battle_context_unit_stats& other_context_unit_stats =
+				!show_attacker ? weapon.get_attacker_stats() : weapon.get_defender_stats();
 
 		int total_damage = 0;
 		int base_damage = 0;
@@ -1024,7 +1031,7 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 
 		color_t dmg_color = font::weapon_color;
 		if (context_unit_stats.weapon) {
-			base_damage = attack_info(rc, *context_unit_stats.weapon, res, *u, unit_loc);
+			base_damage = attack_info(rc, *context_unit_stats.weapon, res, *u, unit_loc, sec_u, other_context_unit_stats.weapon);
 			total_damage = context_unit_stats.damage;
 			num_blows = context_unit_stats.num_blows;
 			chance_to_hit = context_unit_stats.chance_to_hit;
