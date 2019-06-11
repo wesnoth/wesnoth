@@ -22,7 +22,7 @@ namespace utils {
 		assert(!color_scale.empty());
 
 		value = utils::clamp(value, 0, 100);
-		const int idx = (color_scale.size() - 1) * value / 100;
+		const int idx = color_scale.size() * value / 101;
 
 		return color_scale[idx];
 	}
