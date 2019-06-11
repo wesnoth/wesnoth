@@ -1096,14 +1096,16 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 			? (dies
 				? statistics::attack_context::KILLS
 				: statistics::attack_context::HITS)
-			: statistics::attack_context::MISSES, damage_done, drains_damage
+			: statistics::attack_context::MISSES,
+			attacker.cth_, damage_done, drains_damage
 		);
 	} else {
 		stats.defend_result(hits
 			? (dies
 				? statistics::attack_context::KILLS
 				: statistics::attack_context::HITS)
-			: statistics::attack_context::MISSES, damage_done, drains_damage
+			: statistics::attack_context::MISSES,
+			attacker.cth_, damage_done, drains_damage
 		);
 	}
 

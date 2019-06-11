@@ -15,7 +15,9 @@
 
 #include "gui/dialogs/statistics_dialog.hpp"
 
+#include "actions/attack.hpp" // for battle_context_unit_stats
 #include "font/constants.hpp"
+#include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
@@ -29,7 +31,23 @@
 #include "units/types.hpp"
 #include "utils/functional.hpp"
 
+#include <iomanip>
 #include <iostream>
+#include <memory>
+
+// TODO duplicated from attack_predictions.cpp
+static std::string get_probability_string(const double prob)
+{
+       std::ostringstream ss;
+
+       if(prob > 0.9995) {
+               ss << "100%";
+       } else {
+               ss << std::fixed << std::setprecision(1) << 100.0 * prob << '%';
+       }
+
+       return ss.str();
+}
 
 namespace gui2
 {
@@ -133,32 +151,168 @@ void statistics_dialog::add_damage_row(
 	const long long dsa = shift * damage      - expected;
 	const long long dst = shift * turn_damage - turn_expected;
 
-	const long long shifted = ((expected * 20) + shift) / (2 * shift);
-	std::ostringstream str;
-	str << damage << " / "
-		<< static_cast<double>(shifted) * 0.1
-		<< "    " // TODO: should probably make this two columns
-		<< (((dsa < 0) ^ (expected < 0)) ? "" : "+")
-		<< (expected == 0 ? 0 : 100 * dsa / expected) << '%';
-
-	item["label"] = str.str();
+	const auto damage_str = [shift](long long damage, long long expected) {
+		const long long shifted = ((expected * 20) + shift) / (2 * shift);
+		std::ostringstream str;
+		str << damage << " / " << static_cast<double>(shifted) * 0.1;
+		return str.str();
+	};
+	item["label"] = damage_str(damage, expected);
 	data.emplace("damage_overall", item);
 
-	str.str("");
+	const auto percent_str = [](long long dsx, long long expected) {
+		std::ostringstream str;
+		str << (((dsx < 0) ^ (expected < 0)) ? "" : "+")
+			<< (expected == 0 ? 0 : 100 * dsx / expected) << '%';
+		return str.str();
+	};
+	item["label"] = percent_str(dsa, expected);
+	data.emplace("overall_percent", item);
 
 	if(show_this_turn) {
-		const long long turn_shifted = ((turn_expected * 20) + shift) / (2 * shift);
-		str << turn_damage << " / "
-			<< static_cast<double>(turn_shifted) * 0.1
-			<< "    " // TODO: should probably make this two columns
-			<< (((dst < 0) ^ (turn_expected < 0)) ? "" : "+")
-			<< (turn_expected == 0 ? 0 : 100 * dst / turn_expected) << '%';
-
-		item["label"] = str.str();
+		item["label"] = damage_str(turn_damage, turn_expected);
 		data.emplace("damage_this_turn", item);
+
+		item["label"] = percent_str(dst, turn_expected);
+		data.emplace("this_turn_percent", item);
 	}
 
 	damage_list.add_row(data);
+}
+
+// Custom type to allow tally() to return two values.
+struct hitrate_table_element
+{
+	// The string with <actual number of hits>/<expected number of hits>
+	std::string hitrate_str;
+	// The string with the a priori probability of that result
+	std::string percentage_str;
+};
+
+// Return the strings to use in the "Hits" table, showing actual and expected number of hits.
+static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth, const bool more_is_better)
+{
+	unsigned int overall_hits = 0;
+	double expected_hits = 0;
+	unsigned int overall_strikes = 0;
+
+	for(const auto& i : by_cth) {
+		int cth = i.first;
+		overall_hits += i.second.hits;
+		expected_hits += (cth * 0.01) * i.second.strikes;
+		overall_strikes += i.second.strikes;
+	}
+
+	std::ostringstream str, str2;
+	str << overall_hits << " / " << expected_hits;
+
+	// Compute the a priori probability of this actual result, by simulating many attacks against a single defender.
+	{
+		config defender_cfg(
+			"id", "statistics_dialog_dummy_defender",
+			"hide_help", true,
+			"do_not_list", true,
+			"hitpoints", overall_strikes
+		);
+		unit_type defender_type(defender_cfg);
+		unit_types.build_unit_type(defender_type, unit_type::BUILD_STATUS::FULL);
+
+		battle_context_unit_stats defender_bc(&defender_type, nullptr, false, nullptr, nullptr, 0 /* not used */);
+		std::unique_ptr<combatant> current_defender(new combatant(defender_bc));
+
+		for(const auto& i : by_cth) {
+			int cth = i.first;
+			config attacker_cfg(
+				"id", "statistics_dialog_dummy_attacker" + std::to_string(cth),
+				"hide_help", true,
+				"do_not_list", true,
+				"hitpoints", 1
+			);
+			unit_type attacker_type(attacker_cfg);
+			unit_types.build_unit_type(attacker_type, unit_type::BUILD_STATUS::FULL);
+
+			auto attack = std::make_shared<attack_type>(config(
+				"type", "blade",
+				"range", "melee",
+				"name", "dummy attack",
+				"damage", 1,
+				"number", i.second.strikes
+			));
+
+			battle_context_unit_stats attacker_bc(&attacker_type, attack, true, &defender_type, nullptr, 100 - cth);
+			defender_bc = battle_context_unit_stats(&defender_type, nullptr, false, &attacker_type, attack, 0 /* not used */);
+
+			// Update current_defender with the new defender_bc.
+			current_defender.reset(new combatant(*current_defender, defender_bc));
+
+			combatant attacker(attacker_bc);
+			attacker.fight(*current_defender);
+		}
+
+		const std::vector<double>& final_hp_dist = current_defender->hp_dist;
+		const auto chance_of_exactly_N_hits = [&final_hp_dist](int n) { return final_hp_dist[final_hp_dist.size() - 1 - n]; };
+
+		double probability_lt = 0.0;
+		for(unsigned int i = 0; i < overall_hits; ++i) {
+			probability_lt += chance_of_exactly_N_hits(i);
+		}
+		double probability_gt = 0.0;
+		for(unsigned int i = final_hp_dist.size() - 1; i > overall_hits; --i) {
+			probability_gt += chance_of_exactly_N_hits(i);
+		}
+
+		if(overall_strikes == 0) {
+			// Start of turn
+			str2 << "0%";
+		} else {
+			const auto add_probability = [&str2](double probability, bool more_is_better) {
+				str2 << font::span_color(game_config::red_to_green((more_is_better ? probability : 1.0 - probability) * 100.0, true))
+					<< get_probability_string(probability) << "</span>";
+			};
+
+			// TODO: document for users what these values are.
+			add_probability(probability_lt, !more_is_better);
+			str2 << ", ";
+			add_probability(probability_gt, more_is_better);
+		}
+	}
+
+	return hitrate_table_element{str.str(), str2.str()};
+}
+
+void statistics_dialog::add_hits_row(
+		window& window,
+		const std::string& type,
+		const bool more_is_better,
+		const statistics::stats::hitrate_map& by_cth,
+		const statistics::stats::hitrate_map& turn_by_cth,
+		const bool show_this_turn)
+{
+	listbox& hits_list = find_widget<listbox>(&window, "stats_list_hits", false);
+
+	std::map<std::string, string_map> data;
+	string_map item;
+
+	hitrate_table_element element;
+
+	item["label"] = type;
+	data.emplace("hits_type", item);
+
+	element = tally(by_cth, more_is_better);
+	item["label"] = element.hitrate_str;
+	data.emplace("hits_overall", item);
+	item["label"] = element.percentage_str;
+	data.emplace("overall_percent", item);
+
+	if(show_this_turn) {
+		element = tally(turn_by_cth, more_is_better);
+		item["label"] = element.hitrate_str;
+		data.emplace("hits_this_turn", item);
+		item["label"] = element.percentage_str;
+		data.emplace("this_turn_percent", item);
+	}
+
+	hits_list.add_row(data);
 }
 
 void statistics_dialog::update_lists(window& window)
@@ -197,11 +351,19 @@ void statistics_dialog::update_lists(window& window)
 
 	damage_list.clear();
 
+	listbox& hits_list = find_widget<listbox>(&window, "stats_list_hits", false);
+	hits_list.clear();
+
 	add_damage_row(window, _("Inflicted"),
 		stats.damage_inflicted,
 		stats.expected_damage_inflicted,
 		stats.turn_damage_inflicted,
 		stats.turn_expected_damage_inflicted,
+		show_this_turn
+	);
+	add_hits_row(window, _("Inflicted"), true,
+		stats.by_cth_inflicted,
+		stats.turn_by_cth_inflicted,
 		show_this_turn
 	);
 
@@ -210,6 +372,11 @@ void statistics_dialog::update_lists(window& window)
 		stats.expected_damage_taken,
 		stats.turn_damage_taken,
 		stats.turn_expected_damage_taken,
+		show_this_turn
+	);
+	add_hits_row(window, _("Taken"), false,
+		stats.by_cth_taken,
+		stats.turn_by_cth_taken,
 		show_this_turn
 	);
 }
