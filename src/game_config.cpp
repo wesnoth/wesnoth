@@ -18,6 +18,7 @@
 #include "config.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "utils/color.hpp"
 #include "utils/general.hpp"
 #include "utils/math.hpp"
 #include "game_version.hpp"
@@ -551,20 +552,14 @@ color_t red_to_green(int val, bool for_text)
 {
 	const std::vector<color_t>& color_scale = for_text ? red_green_scale_text : red_green_scale;
 
-	val = utils::clamp(val, 0, 100);
-	const int lvl = (color_scale.size() - 1) * val / 100;
-
-	return color_scale[lvl];
+	return utils::pick_color_range(color_scale, val);
 }
 
 color_t blue_to_white(int val, bool for_text)
 {
 	const std::vector<color_t>& color_scale = for_text ? blue_white_scale_text : blue_white_scale;
 
-	val = utils::clamp(val, 0, 100);
-	const int lvl = (color_scale.size() - 1) * val / 100;
-
-	return color_scale[lvl];
+	return utils::pick_color_range(color_scale, val);
 }
 
 std::string get_default_title_string()
