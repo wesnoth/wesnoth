@@ -145,6 +145,7 @@ namespace game_config
 	extern std::string flag_rgb, unit_rgb;
 	extern std::vector<color_t> red_green_scale;
 	extern std::vector<color_t> red_green_scale_text;
+	extern std::vector<color_t> red_grey_green_scale;
 
 	extern std::vector<std::string> foot_speed_prefix;
 	extern std::string foot_teleport_enter, foot_teleport_exit;
@@ -193,6 +194,7 @@ namespace game_config
 	 */
 
 	color_t red_to_green(int val, bool for_text = true);
+	color_t red_grey_green(int val);
 	color_t blue_to_white(int val, bool for_text = true);
 
 	std::string get_default_title_string();

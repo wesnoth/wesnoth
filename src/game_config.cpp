@@ -153,6 +153,8 @@ std::string flag_rgb, unit_rgb;
 std::vector<color_t> red_green_scale;
 std::vector<color_t> red_green_scale_text;
 
+std::vector<color_t> red_grey_green_scale;
+
 static std::vector<color_t> blue_white_scale;
 static std::vector<color_t> blue_white_scale_text;
 
@@ -396,6 +398,7 @@ void load_config(const config &v)
 
 	red_green_scale       = parse_config_color_list("red_green_scale",       {255, 255, 255});
 	red_green_scale_text  = parse_config_color_list("red_green_scale_text",  {255, 255, 255});
+	red_grey_green_scale  = parse_config_color_list("red_grey_green_scale",  {255, 255, 255});
 	blue_white_scale      = parse_config_color_list("blue_white_scale",      {0  , 0  , 255});
 	blue_white_scale_text = parse_config_color_list("blue_white_scale_text", {0  , 0  , 255});
 
@@ -553,6 +556,11 @@ color_t red_to_green(int val, bool for_text)
 	const std::vector<color_t>& color_scale = for_text ? red_green_scale_text : red_green_scale;
 
 	return utils::pick_color_range(color_scale, val);
+}
+
+color_t red_grey_green(int val)
+{
+	return utils::interpolate_color_range(red_grey_green_scale, val);
 }
 
 color_t blue_to_white(int val, bool for_text)
