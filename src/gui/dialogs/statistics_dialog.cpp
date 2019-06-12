@@ -266,7 +266,7 @@ static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth,
 			str2 << "0%";
 		} else {
 			const auto add_probability = [&str2](double probability, bool more_is_better) {
-				str2 << font::span_color(game_config::red_to_green((more_is_better ? probability : 1.0 - probability) * 100.0, true))
+				str2 << font::span_color(game_config::red_grey_green((more_is_better ? probability : 1.0 - probability) * 100.0))
 					<< get_probability_string(probability) << "</span>";
 			};
 
