@@ -26,4 +26,14 @@ namespace utils {
 	 * @return              The color value corresponding to the value
 	 */
 	color_t pick_color_range(const std::vector<color_t>& color_scale, int value);
+
+	/**
+	 * Return a color interpolated from the spline defined by the scale.
+	 * As the interpolation happens in RGB, the colors on the scale should not be too far apart.
+	 *
+	 * @param color_scale   The scale to interpolate the color from
+	 * @param value         The 0-100 range integer used to interpolate from the scale
+	 * @return              The color value corresponding to the value
+	 */
+	color_t interpolate_color_range(const std::vector<color_t>& color_scale, double value);
 };
