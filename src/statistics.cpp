@@ -832,9 +832,10 @@ stats::hitrate_t::hitrate_t(const config &cfg) :
 	hits(cfg["hits"])
 {}
 
+} // end namespace statistics
+
 std::ostream& operator<<(std::ostream& outstream, const statistics::stats::hitrate_t& by_cth) {
 	outstream << "[" << by_cth.hits << "/" << by_cth.strikes << "]";
 	return outstream;
 }
 
-} // end namespace statistics
