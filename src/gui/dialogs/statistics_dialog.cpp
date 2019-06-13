@@ -264,11 +264,10 @@ static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth,
 		for(unsigned int i = 0; i < overall_hits; ++i) {
 			probability_lt += chance_of_exactly_N_hits(i);
 		}
+		// The a priori probability of scoring exactly the actual number of hits
+		double probability_eq = chance_of_exactly_N_hits(overall_hits);
 		// The a priori probability of scoring more hits than the actual number of hits
-		double probability_gt = 0.0;
-		for(unsigned int i = final_hp_dist.size() - 1; i > overall_hits; --i) {
-			probability_gt += chance_of_exactly_N_hits(i);
-		}
+		double probability_gt = 1.0 - (probability_lt + probability_eq);
 
 		if(overall_strikes == 0) {
 			// Start of turn
