@@ -170,11 +170,18 @@ void statistics_dialog::add_damage_row(
 	data.emplace("overall_percent", item);
 
 	if(show_this_turn) {
+		label& this_turn_header = find_widget<label>(&window, "damage_this_turn_header", false);
+		this_turn_header.set_label(_("This Turn"));
+
 		item["label"] = damage_str(turn_damage, turn_expected);
 		data.emplace("damage_this_turn", item);
 
 		item["label"] = percent_str(dst, turn_expected);
 		data.emplace("this_turn_percent", item);
+	} else {
+		// TODO: Setting the label to "" causes "This Turn" not to be drawn when changing back to the current scenraio view, so set the label to " " (a single space) instead.
+		label& this_turn_header = find_widget<label>(&window, "damage_this_turn_header", false);
+		this_turn_header.set_label(" ");
 	}
 
 	damage_list.add_row(data);
@@ -305,11 +312,18 @@ void statistics_dialog::add_hits_row(
 	data.emplace("overall_percent", item);
 
 	if(show_this_turn) {
+		label& this_turn_header = find_widget<label>(&window, "hits_this_turn_header", false);
+		this_turn_header.set_label(_("This Turn"));
+
 		element = tally(turn_by_cth, more_is_better);
 		item["label"] = element.hitrate_str;
 		data.emplace("hits_this_turn", item);
 		item["label"] = element.percentage_str;
 		data.emplace("this_turn_percent", item);
+	} else {
+		// TODO: Setting the label to "" causes "This Turn" not to be drawn when changing back to the current scenraio view, so set the label to " " (a single space) instead.
+		label& this_turn_header = find_widget<label>(&window, "hits_this_turn_header", false);
+		this_turn_header.set_label(" ");
 	}
 
 	hits_list.add_row(data);
