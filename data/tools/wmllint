@@ -783,8 +783,8 @@ linechanges = (
         ("portraits/orcs/transparent/grunt-5.png", "portraits/orcs/grunt-5.png"),
         ("portraits/orcs/transparent/grunt-6.png", "portraits/orcs/grunt-6.png"),
         ("portraits/orcs/transparent/grunt.png", "portraits/orcs/grunt.png"),
-        ("portraits/orcs/transparent/leader-2.png", "portraits/orcs/leader-2.png"),
-        ("portraits/orcs/transparent/leader.png", "portraits/orcs/leader.png"),
+        ("portraits/orcs/transparent/leader-2.png", "portraits/orcs/ruler-2.png"),
+        ("portraits/orcs/transparent/leader.png", "portraits/orcs/ruler.png"),
         ("portraits/orcs/transparent/slayer.png", "portraits/orcs/slayer.png"),
         ("portraits/orcs/transparent/slurbow.png", "portraits/orcs/slurbow.png"),
         ("portraits/orcs/transparent/sovereign.png", "portraits/orcs/sovereign.png"),
@@ -924,10 +924,11 @@ linechanges = (
         ("Tineen", "Dune Firetrooper"),
         ("Rami", "Dune Rider"),
         ("Saree", "Dune Swiftrider"),
-        ("Jawal", "Dune Windrider")
+        ("Jawal", "Dune Windrider"),
 
-        ("images/portraits/orcs/leader.png", "images/portraits/ors/ruler.png"),
-        ("images/portraits/orcs/leader-2.png", "images/portraits/ors/ruler-2.png"),
+        # Changed in 1.15.0: separate portrait for leader
+        ("portraits/orcs/leader.png", "portraits/orcs/ruler.png"),
+        ("portraits/orcs/leader-2.png", "portraits/orcs/ruler-2.png")
 
         )
 
