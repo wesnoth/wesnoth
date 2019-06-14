@@ -133,8 +133,14 @@ void statistics_dialog::add_stat_row(window& window, const std::string& type, co
 static std::ostream& write_actual_and_expected(std::ostream& str, const long long actual, const double expected)
 {
 	// This is displayed as a sum or difference, not as "actual/expected", to prevent the string in the next column, str2.str(), from being mistaken for the result of the division.
-	str << expected << (actual >= expected ? " + " : " − ")
-		<< static_cast<unsigned int>(std::round(std::abs(expected - actual)));
+	if(expected == 0) {
+		str << "+0% (0 + 0)";
+	} else {
+		str << (formatter() << std::showpos << std::round((actual - expected) * 100 / expected) << "% (").str();
+		str << expected << (actual >= expected ? " + " : " − ")
+			<< static_cast<unsigned int>(std::round(std::abs(expected - actual)));
+		str << ')';
+	}
 	return str;
 }
 
@@ -157,25 +163,17 @@ void statistics_dialog::add_damage_row(
 
 	const int shift = statistics::stats::decimal_shift;
 
-	const long long dsa = shift * damage      - expected;
-	const long long dst = shift * turn_damage - turn_expected;
-
 	const auto damage_str = [shift](long long damage, long long expected) {
 		const long long shifted = ((expected * 20) + shift) / (2 * shift);
 		std::ostringstream str;
 		write_actual_and_expected(str, damage, static_cast<double>(shifted) * 0.1);
 		return str.str();
 	};
+
 	item["label"] = damage_str(damage, expected);
 	data.emplace("damage_overall", item);
 
-	const auto percent_str = [](long long dsx, long long expected) {
-		std::ostringstream str;
-		str << (((dsx < 0) ^ (expected < 0)) ? "" : "+")
-			<< (expected == 0 ? 0 : 100 * dsx / expected) << '%';
-		return str.str();
-	};
-	item["label"] = percent_str(dsa, expected);
+	item["label"] = "";
 	data.emplace("overall_percent", item);
 
 	if(show_this_turn) {
@@ -185,7 +183,7 @@ void statistics_dialog::add_damage_row(
 		item["label"] = damage_str(turn_damage, turn_expected);
 		data.emplace("damage_this_turn", item);
 
-		item["label"] = percent_str(dst, turn_expected);
+		item["label"] = "";
 		data.emplace("this_turn_percent", item);
 	} else {
 		// TODO: Setting the label to "" causes "This Turn" not to be drawn when changing back to the current scenraio view, so set the label to " " (a single space) instead.
