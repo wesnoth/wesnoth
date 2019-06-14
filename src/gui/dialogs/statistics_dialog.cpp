@@ -41,9 +41,9 @@ static std::string get_probability_string(const double prob)
        std::ostringstream ss;
 
        if(prob > 0.9995) {
-               ss << "100%";
+               ss << "100";
        } else {
-               ss << std::fixed << std::setprecision(1) << 100.0 * prob << '%';
+               ss << std::fixed << std::setprecision(1) << 100.0 * prob;
        }
 
        return ss.str();
@@ -259,10 +259,12 @@ static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth,
 		const std::vector<double>& final_hp_dist = current_defender->hp_dist;
 		const auto chance_of_exactly_N_hits = [&final_hp_dist](int n) { return final_hp_dist[final_hp_dist.size() - 1 - n]; };
 
+		// The a priori probability of scoring less hits than the actual number of hits
 		double probability_lt = 0.0;
 		for(unsigned int i = 0; i < overall_hits; ++i) {
 			probability_lt += chance_of_exactly_N_hits(i);
 		}
+		// The a priori probability of scoring more hits than the actual number of hits
 		double probability_gt = 0.0;
 		for(unsigned int i = final_hp_dist.size() - 1; i > overall_hits; --i) {
 			probability_gt += chance_of_exactly_N_hits(i);
@@ -270,17 +272,18 @@ static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth,
 
 		if(overall_strikes == 0) {
 			// Start of turn
-			str2 << "0%";
+			str2 << font::unicode_em_dash;
 		} else {
 			const auto add_probability = [&str2](double probability, bool more_is_better) {
 				str2 << font::span_color(game_config::red_to_green((more_is_better ? probability : 1.0 - probability) * 100.0, true))
 					<< get_probability_string(probability) << "</span>";
 			};
 
-			// TODO: document for users what these values are.
-			add_probability(probability_lt, !more_is_better);
-			str2 << ", ";
-			add_probability(probability_gt, more_is_better);
+			// Take the average. At the end of a scenario or a campaign the sum of
+			// probability_lt+probability_gt is very close to 1.0 so the percentile is
+			// approximately equal to probability_lt.
+			const double percentile = (probability_lt + (1.0 - probability_gt)) / 2.0;
+			add_probability(percentile, more_is_better);
 		}
 	}
 
