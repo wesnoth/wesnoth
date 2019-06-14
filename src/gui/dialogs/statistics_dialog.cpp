@@ -129,6 +129,15 @@ void statistics_dialog::add_stat_row(window& window, const std::string& type, co
 	main_stat_table_.push_back(&value);
 }
 
+// Generate the string for the "A + B" column of the damage and hits tables.
+static std::ostream& write_actual_and_expected(std::ostream& str, const long long actual, const double expected)
+{
+	// This is displayed as a sum or difference, not as "actual/expected", to prevent the string in the next column, str2.str(), from being mistaken for the result of the division.
+	str << expected << (actual >= expected ? " + " : " − ")
+		<< static_cast<unsigned int>(std::round(std::abs(expected - actual)));
+	return str;
+}
+
 void statistics_dialog::add_damage_row(
 		window& window,
 		const std::string& type,
@@ -154,7 +163,7 @@ void statistics_dialog::add_damage_row(
 	const auto damage_str = [shift](long long damage, long long expected) {
 		const long long shifted = ((expected * 20) + shift) / (2 * shift);
 		std::ostringstream str;
-		str << damage << " / " << static_cast<double>(shifted) * 0.1;
+		write_actual_and_expected(str, damage, static_cast<double>(shifted) * 0.1);
 		return str.str();
 	};
 	item["label"] = damage_str(damage, expected);
@@ -211,7 +220,7 @@ static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth,
 	}
 
 	std::ostringstream str, str2;
-	str << overall_hits << " / " << expected_hits;
+	write_actual_and_expected(str, overall_hits, expected_hits);
 
 	// Compute the a priori probability of this actual result, by simulating many attacks against a single defender.
 	{
