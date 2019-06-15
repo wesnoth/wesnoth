@@ -649,13 +649,14 @@ void menu_handler::rename_unit()
 unit_map::iterator menu_handler::current_unit()
 {
 	const mouse_handler& mousehandler = pc_.get_mouse_handler_base();
+	const bool see_all = pc_.is_replay() && dynamic_cast<playsingle_controller&>(pc_).get_replay_controller()->see_all();
 
-	unit_map::iterator res = board().find_visible_unit(mousehandler.get_last_hex(), teams()[gui_->viewing_team()]);
+	unit_map::iterator res = board().find_visible_unit(mousehandler.get_last_hex(), teams()[gui_->viewing_team()], see_all);
 	if(res != units().end()) {
 		return res;
 	}
 
-	return board().find_visible_unit(mousehandler.get_selected_hex(), teams()[gui_->viewing_team()]);
+	return board().find_visible_unit(mousehandler.get_selected_hex(), teams()[gui_->viewing_team()], see_all);
 }
 
 // Helpers for create_unit()
