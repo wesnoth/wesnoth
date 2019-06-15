@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2019-05-03 00:51+0300\n"
+"PO-Revision-Date: 2019-06-09 16:54+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -90,7 +90,7 @@ msgid ""
 "the unit on it."
 msgstr ""
 "Bir nehir aşırı sığ olduğu zaman kara birimleri için nehri geçmek pek zor "
-"değil. Ayrıca yüzmeye alışmış her yaratık nehrin bu kısımlarında da tam "
+"olmaz. Ayrıca yüzmeye alışmış her yaratık nehrin bu kısımlarında da tam "
 "manevra kabiliyetine sahiptir. Oyuna göre sığ yer ya çayır ya da sığ su "
 "olarak kabul edilir. Üzerindeki birime hangisi en iyi savunmayı sağlıyorsa o "
 "seçilir."
@@ -283,7 +283,7 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in sand."
 msgstr ""
-"<italic>text='kum'</italic>'un dengesizliği çoğu birimin geçmesini "
+"<italic>text='Kum'</italic>un dengesizliği çoğu birimin geçmesini "
 "zorlaştırıp saldırılara açık kalmalarına sebep olur. Öte yandan sürüngenvari "
 "ırkların geniş ayakları veya yılan gibi vücutları kumu onlar için hareket "
 "edilmesi kolay bir arazi kılar..\n"
@@ -929,8 +929,9 @@ msgstr "Paslı Demir Kapı"
 #. [terrain_type]: id=p_open_wooden
 #: data/core/terrain.cfg:1457
 #, fuzzy
+#| msgid "Wooden Door"
 msgid "Wooden Open Door"
-msgstr "Köprü"
+msgstr "Tahta Kapı"
 
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1473
@@ -1141,7 +1142,7 @@ msgstr "Bataklık Köyü"
 #. [terrain_type]: id=mermen-village
 #: data/core/terrain.cfg:1889
 msgid "Merfolk Village"
-msgstr "Deniz İnsanı Köyü"
+msgstr "Susal Köyü"
 
 #. [terrain_type]: id=mermen-village
 #: data/core/terrain.cfg:1890
@@ -1156,14 +1157,14 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
-"<italic>text='Batmış Köyler'</italic> Deniz İnsanları ve Nagaların evidir. "
-"Su yerlisi yaratıklar burada evdeymiş gibi olsalar da Kara Yaratıkları için "
-"burada hareket etmek ve savunmak pek zordur. Ancak Diğer her köy gibi bu "
-"yapıtlar yaralarını sarmak için bütün canlılara açıktır. Köyde kalan her "
-"birim her el 8 can elde eder veya zehiri tedavi olur.\n"
+"<italic>text='Batmış Köyler'</italic> Susal ve Nagaların evidir. Su yerlisi "
+"yaratıklar burada evdeymiş gibi olsalar da Kara Yaratıkları için burada "
+"hareket etmek ve savunmak pek zordur. Ancak diğer her köy gibi bu yapıtlar "
+"yaralarını sarmak için bütün canlılara açıktır. Köyde kalan her birim her el "
+"8 can elde eder veya zehiri tedavi olur.\n"
 "\n"
-"Deniz İnsanları ve Nagaların batmış köylerde %60 savunması varken genelde "
-"kara birimlerinin savunması azdır."
+"Susallar ve Nagaların batmış köylerde %60 savunması varken genelde kara "
+"birimlerinin savunması azdır."
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1907
@@ -1598,9 +1599,9 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
-"<italic>text='Mantar Korusu'</italic> yeraltında bulunan, rütubetli "
+"<italic>text='Mantar Korusu'</italic> yeraltında bulunan, rutubetli "
 "karanlıkta yeşeren dev mantar ormanlarıdır.\n"
-"Çoğu birim küçük mantarların oluşturduğu süngerimsi tabanda ilerlemede "
+"Çoğu birim küçük mantarların oluşturduğu süngerimsi tabanda ilerlemekte "
 "güçlük çeker, Ancak büyük sapların arkasında iyi koruma bulurlar. Atlı "
 "birimler ise tamamen batar ve muharebede gerekli hareket özgürlükleri eksik "
 "olur. Yarı Ölü birimler ise çürümeye meyilli oldukları için mantar "
@@ -1633,16 +1634,16 @@ msgstr ""
 "yeraltı kovuğunu temsil eder.\n"
 "Çoğu birim bu araziye tamamiyle yabancıdır, bu yüzden hızları ve savunmaları "
 "düşer. Cüceler ve Troller ise yuva edindiği için bu arazide hareket ederken "
-"pek zorluk çekmezler, Özellikle küçük boylarından ötürü çoğu ırkın "
-"geçemeyeceği engelleri geçebilen Cüceler. Bazen mağaralar  "
-"<ref>dst='terrain_illuminated_cave' text='Aydınlatılmış'</ref> olur\n"
+"pek zorluk çekmezler, Özellikle Cüceler küçük boylarından ötürü çoğu ırkın "
+"geçemeyeceği engelleri geçebilir. Bazen mağaralar "
+"<ref>dst='terrain_illuminated_cave' text='aydınlatılmış'</ref> olur.\n"
 "\n"
 "Yeraltı dünyasının bazı kısımları yeryüzünden derin karanlığa ışıldayan ışık "
 "tarafından aydınlatılır. Bu durum adil birimlere ek saldırı verir ve kaypak "
-"birimlerinkini ise alır. Diğer meselelerde bu arazi türü diğer mağara "
+"birimlerinkini ise alır. Diğer tüm durumlarda bu arazi türü diğer mağara "
 "arazileri ile aynıdır.\n"
 "\n"
-"Çoğu birim mağaralarda 20 ila %40 savunma alırken Cüceler %50 alır."
+"Çoğu birim mağaralarda %20 ila %40 savunma alırken Cüceler %50 alır."
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:2807
@@ -1669,13 +1670,13 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
-"<italic> Text = ' Kıyı resifleri ' </italic> taş, mercan ve kum tarafından "
+"<italic>text='Kıyı resifleri'</italic> taş, mercan ve kum tarafından "
 "oluşturulan sığ yerlerdir.\n"
-"Bu oluşan yerler kara birimlerine normal sığ suya oranla daha sağlam basacak "
-"bir zemin ve savunma yerleri verir. Aynı zamanda su ırklarına çok yüksek bir "
-"savunma verir\n"
+"Kıyı resifleri kara birimlerine normal sığ suya oranla daha sağlam basacak "
+"bir zemin ve savunma konumları verir. Aynı zamanda su ırklarına çok yüksek "
+"bir savunma sağlar.\n"
 "\n"
-"Su İnsanları ve Naga her ikisi de kıyı resiflerind % 70 savunma alır."
+"Susallar ve Nagalar kıyı resiflerinde %70 savunma alır."
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:2838
@@ -1690,11 +1691,11 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
-"<italic> Text = ' Tepeler' </italic> koruma sağlayacak kadar çıkıntısı olan "
-"hafif engebeli herhangi bir araziyi temsil eder.\n"
+"<italic>text='Tepeler'</italic> koruma sağlayacak kadar çıkıntısı olan hafif "
+"engebeli herhangi bir araziyi temsil eder.\n"
 "Tepeler çoğu asker için geçmesi zordur. Cüce, Ork, ve Trollerin bu araziden "
 "geçerken zorlanmayacak kadar aşinalığı vardır. Süvariler bu arazide o kadar "
-"zorlanır ki arazinin sağladığı savunma eki etkisiz kalır.\n"
+"zorlanır ki arazinin sağladığı ek savunma etkisiz kalır.\n"
 "\n"
 "Süvarilerin savunması %40'ta kalırken çoğu birimin tepelerde %50 savunması "
 "vardır. Cüceler tepelerde %60 savunma alır."
@@ -1723,15 +1724,15 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
 "all generally enjoy 60%."
 msgstr ""
-"<italic>text='Bataklıklar'</italic> herhangi nemli, ıslak toprağı temsil "
+"<italic>text='Bataklıklar'</italic> herhangi bir nemli, ıslak toprağı temsil "
 "eder.\n"
 "Bataklıklar neredeyse herkesi yavaşlatıp savunma becerilerini azaltır. Buna "
 "bir istisna ise vücutları suda harekete alışmış herhangi bir ırk olabilir; "
 "bu ırklar bataklıkta tam hareket ve ek savunma alır. Bataklığın yerli "
 "yaratıkları da bu araziyi koruma olarak kullanmakta ustadır.\n"
 "\n"
-"Çoğu birim bataklıklarda %30 savunma alır. Su İnsanları, Naga ve Sürüngenler "
-"ise %60 savunma alır."
+"Çoğu birim bataklıklarda %30 savunma alır. Susallar, Naga ve Sürüngenler ise "
+"%60 savunma alır."
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:2866
@@ -1759,15 +1760,14 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "naga and mermen enjoy 60%."
 msgstr ""
-"<italic>text='Sığ su'</italic> arazi tipi su seviyesinin bir adamın beline "
-"gelecek yükseklikte olduğu herhangi bir yeri temsil eder. Bunun gereği "
+"<italic>text='Sığ su'</italic> arazi türü su seviyesinin bir adamın beline "
+"gelecek yükseklikte olduğu herhangi bir yeri temsil eder. Bu nedenle "
 "neredeyse herkesi yavaşlatıp saldırılara açık bırakır. Cüceler, su "
-"kafalarına geliyor diye daha çok zorluk çekerler. Buna tek istisnalar "
+"kafalarına geliyor diye daha çok zorluk çekerler. Bunun tek istisnası "
 "vücutları suda hareket için şekillenmiş ırklardır. Bu ırklar fazladan "
 "savunma da alır.\n"
 "\n"
-"Çoğu birim sığ suda %20-%30 savunma alırken hem Nagalar hem Su İnsanları %60 "
-"alır."
+"Çoğu birim sığ suda %20-%30 savunma alırken Nagalar ve Susallar %60 alır."
 
 #. [terrain_type]: id=castle
 #: data/core/terrain.cfg:2881
@@ -1803,7 +1803,7 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
-"<italic>text='Dağlar'</italic> Birimlerin hareket etmek için engelleri "
+"<italic>text='Dağlar'</italic> birimlerin hareket etmek için engelleri "
 "tırmanmasını gerektirecek kadar dik yerlerdir.\n"
 "Bu doğalarından ötürü çoğu asker için güzel bir ek savunma verir, ancak aynı "
 "zamanda aralarından geçmeyi zorlaştırırlar. Elf süvarileri ve Goblin "
@@ -1834,11 +1834,10 @@ msgid ""
 msgstr ""
 "<italic>text='Derin Su'</italic> Bir adamın kafasına kadar gelen herhangi "
 "bir su kütlesini temsil eder.\n"
-"Çoğu birim derin suya giremez: Ya uçabilen ya da çok güçlü yüzücülerin "
+"Çoğu birim derin suya giremez: Uçabilen birimlerin ve çok güçlü yüzücülerin "
 "mekanıdır.\n"
 "\n"
-"Hem Su İnsanları hem de Nagalar derin suda %50 savunma ve tam hareket "
-"sahibidir."
+"Susallar ve Nagalar derin suda %50 savunma ve tam hareket sahibidir."
 
 #. [terrain_type]: id=flat
 #: data/core/terrain.cfg:2918 data/core/terrain.cfg:2919
@@ -1934,16 +1933,16 @@ msgid ""
 "Most units have 50 to 60% defense in villages, whereas cavalry receive only "
 "40%."
 msgstr ""
-"<italic>text='Köyler'</italic> Beşerî veya başka kaynaklı herhangi bir bina "
-"topluluğunu temsil eder.\n"
+"<italic>text='Köyler'</italic> insanlara veya başka bir ırka ait herhangi "
+"bir bina topluluğunu temsil eder.\n"
 "Neredeyse bütün birimler, süvariler bile, köylerde hareket etmekte "
 "zorlanmazlar ve çoğu birim köyde konuşlandığında ek savunma alır. Köyler "
 "birimlere yaralarını temizleyip sarmaları için gerekli kaynakları sağlar. Bu "
-"sayede köyde konuşlanmış herhangi bir birimin canının her el 8 puan "
-"artmasını veya zehirden iyileşmesini sağlar.\n"
+"sayede köyde konuşlanmış herhangi bir birim her el 8 YP iyileşir veya "
+"zehirden arınır.\n"
 "\n"
-"Çoğu birimin köyde %50 ila %60 savunması vardır, lakin süvarilerin %40 "
-"savunması vardır."
+"Çoğu birimin köyde %50 ila %60 savunması varken süvarilerin %40 savunması "
+"vardır."
 
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:2969 data/core/terrain.cfg:2970
@@ -1977,7 +1976,7 @@ msgid ""
 "for sheer walls which would take days to traverse. As far as gameplay is "
 "concerned, only units capable of flying can cross this terrain."
 msgstr ""
-"<italic>text='Yürünmez Arazi'</italic> İsmin belirttiği gibi yürüyerek "
+"<italic>text='Yürünmez Arazi'</italic>, adından anlaşılacağı gibi yürüyerek "
 "geçilemeyecek kanyon ve boğazları temsil eder. Kanyonlar yolcuların geçmesi "
 "günler alacak duvar gibi uçurumlarından dolayı bu araziye girer. Oyuna göre "
 "sadece uçabilen birimler bu araziden geçebilir."
@@ -2027,8 +2026,9 @@ msgstr "Öntanımlılar"
 #. [label]
 #: data/gui/macros/player_list_panel.cfg:30
 #, fuzzy
+#| msgid "Computer Player"
 msgid "Connected Players"
-msgstr "Oyuncular:"
+msgstr "Bilgisayar Oyuncu"
 
 #. [toggle_button]: id=sort_0
 #. [label]
@@ -3152,7 +3152,7 @@ msgid ""
 "files generated by older versions; or you may purge its entire contents if "
 "you are experiencing issues when loading the game data."
 msgstr ""
-"Wesnoth seferberlikler, çok oyunculu senaryolar ve diğer eklentilerin "
+"Vesnot seferberlikler, çok oyunculu senaryolar ve diğer eklentilerin "
 "yüklenmesini hızlandırmak için önceden işlenmiş WML verileri için bir "
 "önbellek tutar. Önbellek diskte yer açmak için güvenlice silinebilir, "
 "böylece eski sürümlerin oluşturduğu bayat dosyalar yok olur. Eğer oyun "
@@ -3453,12 +3453,12 @@ msgstr "Çalışma zamanı sürümü"
 #: data/gui/window/game_version.cfg:293
 msgid ""
 "The following features were selected when building this version of Wesnoth:"
-msgstr "Aşağıdaki özellikler Wesnoth'un şu sürümü derlenirken seçildi:"
+msgstr "Aşağıdaki özellikler Vesnot Savaşı'nın şu sürümü derlenirken seçildi:"
 
 #. [label]
 #: data/gui/window/game_version.cfg:447
 msgid "The Battle for Wesnoth"
-msgstr "Wesnoth Savaşı"
+msgstr "Vesnot Savaşı"
 
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:528
@@ -3556,7 +3556,7 @@ msgstr "Etiketleri Göster"
 #. [label]
 #: data/gui/window/help_browser.cfg:127
 msgid "Battle For Wesnoth Help"
-msgstr "Wesnoth Savaşı Yardım"
+msgstr "Vesnot Savaşı Yardım"
 
 #. [label]
 #: data/gui/window/hotkey_bind.cfg:35
@@ -3612,6 +3612,7 @@ msgstr "Gözlemle"
 #. [label]
 #: data/gui/window/lobby_main.cfg:223
 #, fuzzy
+#| msgid "Players:"
 msgid "Sort players:"
 msgstr "Oyuncular:"
 
@@ -3655,8 +3656,9 @@ msgstr "Çık"
 #. [button]: id=refresh
 #: data/gui/window/lobby_main.cfg:485 data/gui/window/lobby_main.cfg:626
 #, fuzzy
+#| msgid "Refresh WML"
 msgid "Refresh"
-msgstr "Görüntüyü Tazele"
+msgstr "WML Tazele"
 
 #. [label]
 #. [button]: id=ok
@@ -3946,12 +3948,12 @@ msgstr "Çağlar:"
 #. [label]
 #: data/gui/window/mp_create_game.cfg:155
 msgid "Random Faction Matchups:"
-msgstr "Rastgele taraf eşleştirmeleri:"
+msgstr "Rastgele Birlik Eşleştirmeleri:"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:156
 msgid "Allow for mirror matchups when random factions are chosen."
-msgstr "Rastgele taraflar seçilince aynı tarafların eşleşmesine izin ver."
+msgstr "Rastgele birlikler seçilince aynı birliklerin eşleşmesine izin ver."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=mods_header
@@ -4225,7 +4227,7 @@ msgstr "Askere alımlar:"
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:280
 msgid "Choose Your Faction"
-msgstr "Tarafınızı Seçin"
+msgstr "Birliğinizi Seçin"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:305
@@ -4253,7 +4255,7 @@ msgstr ""
 #. [label]
 #: data/gui/window/mp_join_game.cfg:143 data/gui/window/mp_staging.cfg:157
 msgid "<b>Faction:</b>"
-msgstr "<b>Taraf:</b>"
+msgstr "<b>Birlik:</b>"
 
 #. [label]
 #: data/gui/window/mp_join_game.cfg:175 data/gui/window/mp_staging.cfg:190
@@ -4322,14 +4324,6 @@ msgstr "Çok Oyunculu"
 
 #. [text_box]: id=user_name
 #: data/gui/window/mp_method_selection.cfg:92
-#, fuzzy
-#| msgid ""
-#| "You may login to the official multiplayer server with your forum username "
-#| "and password.\n"
-#| "Note that registration is not required to join the server: you need to "
-#| "supply a password only if you wish to use a registered username.\n"
-#| "\n"
-#| "The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
 msgid ""
 "You may login to the official multiplayer server with your forum username "
 "and password.\n"
@@ -4338,17 +4332,11 @@ msgid ""
 "\n"
 "The Battle for Wesnoth forum can be found at https://forums.wesnoth.org/"
 msgstr ""
-"Resmi çokoyunculu sunucusuna forum kullanıcı adınız ve parolanızla oturum "
-"açabilirsiniz.\n"
-" Sunucuya bağlanmak için kayıt olmak gerekli değildir; kayıtlı bir kullanıcı "
-"isminiz olsun isterseniz yapcağınız tek şey bir parola belirtmek olacaktır.\n"
-"\n"
-"Forum adresi: http://www.wesnoth.org/forum/"
 
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:183
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr "Resmi Wesnoth çok oyunculu sunucusuna gir"
+msgstr "Resmi Vesnot çok oyunculu sunucusuna gir"
 
 #. [widget]: id=name
 #: data/gui/window/mp_method_selection.cfg:192
@@ -4390,7 +4378,7 @@ msgstr "Seçiniz"
 #. [button]: id=select_leader
 #: data/gui/window/mp_staging.cfg:70
 msgid "Select the faction and leader for this side"
-msgstr "Bu taraf için tarafınızı ve liderini seçiniz"
+msgstr "Bu taraf için birliğinizi ve liderini seçiniz"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
@@ -4465,14 +4453,16 @@ msgstr "YZ birimlerinin hareketleri canlandırılmaz"
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:83
 #, fuzzy
-#| msgid "Speed: "
+#| msgid "Scroll speed:"
 msgid "Speed:"
-msgstr "Hız: "
+msgstr "Kaydırma Hızı:"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:88
+#, fuzzy
+#| msgid "Make units move and fight faster"
 msgid "Units move and fight speed"
-msgstr "Birimlerin hareket ve döğüş hızı"
+msgstr "Birimlerin daha hızlı hareket etmesi ve savaşmasını sağlar"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:104
@@ -5030,15 +5020,16 @@ msgstr "İstatistikler"
 #. [widget]: id=tab_label
 #: data/gui/window/statistics_dialog.cfg:485
 #, fuzzy
+#| msgid "Scenarios"
 msgid "Scenario"
-msgstr "Senaryo Amaçları"
+msgstr "Senaryolar"
 
 #. [widget]: id=tab_label
 #: data/gui/window/statistics_dialog.cfg:498
 #, fuzzy
-#| msgid "Campaign"
+#| msgid "Campaigns"
 msgid "Campaign"
-msgstr "Seferberlik"
+msgstr "Seferberlikler"
 
 #. [button]: id=cancel
 #: data/gui/window/story_viewer.cfg:131
@@ -5129,7 +5120,7 @@ msgstr "Tema Seç"
 #. [button]: id=help
 #: data/gui/window/title_screen.cfg:175
 msgid "Show Battle for Wesnoth help"
-msgstr "Wesnoth Savaşı yardımını göster"
+msgstr "Vesnot Savaşı yardımını göster"
 
 #. [button]: id=previous_tip
 #: data/gui/window/title_screen.cfg:191
@@ -5576,7 +5567,7 @@ msgstr "ÇO çağlar"
 
 #: src/gui/dialogs/addon/manager.cpp:203
 msgid "addons_of_type^MP factions"
-msgstr "ÇO taraflar"
+msgstr "ÇO birlikleri"
 
 #: src/gui/dialogs/addon/manager.cpp:204
 msgid "addons_of_type^Modifications"
@@ -5785,7 +5776,7 @@ msgstr "'$addon|' eklentisini silmek ister misiniz?"
 #: src/gui/dialogs/campaign_selection.cpp:274
 #: src/gui/dialogs/multiplayer/lobby.cpp:459
 #, fuzzy
-#| msgid "None"
+#| msgid "url^None"
 msgid "None"
 msgstr "Yok"
 
@@ -6223,8 +6214,8 @@ msgid ""
 "This build of wesnoth does not include support for desktop notifications, "
 "contact your package manager"
 msgstr ""
-"Wesnoth'un bu sürümü masaüstü bildirimlerini desteklemiyor, lütfen paket "
-"yöneticiniz ile irtibata geçin"
+"Vesnot Savaşı'nın bu sürümü masaüstü bildirimlerini desteklemiyor, lütfen "
+"paket yöneticiniz ile irtibata geçin"
 
 #: src/gui/dialogs/multiplayer/mp_change_control.cpp:108
 msgid "Side $side"
@@ -6269,15 +6260,15 @@ msgstr "Hiç çağ bulunamadı"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:280
 msgid "Independent: Random factions assigned independently"
-msgstr "Bağımsız: Bağımsız atanmış rastgele taraflar"
+msgstr "Bağımsız: Bağımsız atanmış rastgele birlikler"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:281
 msgid "No Mirror: No two players will get the same faction"
-msgstr "Aksetme olmasın: Hiçbir oyuncu aynı tarafı almaz"
+msgstr "Aksetme olmasın: Hiçbir oyuncu aynı birliği alamaz"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:282
 msgid "No Ally Mirror: No two allied players will get the same faction"
-msgstr "Müttefik aksetmesi olnasın: Hiçbir müttefik oyuncu aynı tarafı almaz"
+msgstr "Müttefik aksetmesi olnasın: Hiçbir müttefik oyuncu aynı birliği alamaz"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:536
 msgid "No eras available for this game."
@@ -6297,9 +6288,9 @@ msgstr "Bu seferberliğe nerden başlayacağınızı seçin."
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:193
 #, fuzzy
-#| msgid "Map Information"
+#| msgid "No eras found."
 msgid "No era information found."
-msgstr "Harita Bilgileri"
+msgstr "Hiç çağ bulunamadı."
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:248
 msgid "Computer Player"
@@ -6328,7 +6319,7 @@ msgstr "Takım:"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:464
 msgid "Waiting for players to choose factions..."
-msgstr "Oyuncuların taraf seçmesi bekleniyor..."
+msgstr "Oyuncuların birlikleri seçmesi bekleniyor..."
 
 #: src/gui/dialogs/outro.cpp:42
 msgid "The End"
@@ -7607,7 +7598,7 @@ msgstr ""
 #~ "A registered account on the Wesnoth forums is required to join the "
 #~ "official server."
 #~ msgstr ""
-#~ "Resmi sunucuya girmek için Wesnoth forumlarında kayıtlı bir hesap gerek."
+#~ "Resmi sunucuya girmek için Vesnot forumlarında kayıtlı bir hesap gerek."
 
 #~ msgid "Sign Up"
 #~ msgstr "Kayıt Ol"
@@ -7753,689 +7744,3 @@ msgstr ""
 
 #~ msgid "Touch"
 #~ msgstr "Dokun"
-
-#, fuzzy
-#~| msgid "Unlimited"
-#~ msgid "FPS limiter"
-#~ msgstr "Sınırsız"
-
-#~ msgid "Password Reminder"
-#~ msgstr "Parola Hatırlatıcı"
-
-#, fuzzy
-#~| msgid "Screenshot failed"
-#~ msgid "Screenshot Saved"
-#~ msgstr "Ekran görüntüsü alınamadı"
-
-#, fuzzy
-#~| msgid "Choose Resolution"
-#~ msgid "Choose weapon:"
-#~ msgstr "Çözünürlüğü Seç"
-
-#, fuzzy
-#~| msgid "Add-ons"
-#~ msgid "Get Add-ons"
-#~ msgstr "Eklentiler"
-
-#, fuzzy
-#~| msgid "Connect to Server"
-#~ msgid "Send new version to server"
-#~ msgstr "Sunucuya Bağlan"
-
-#~ msgid "Experience modifier"
-#~ msgstr "Tecrübe ayarı"
-
-#, fuzzy
-#~ msgid "Multiplayer command dialog"
-#~ msgstr "Çok oyunculu komut penceresi"
-
-#~ msgid "Messaging"
-#~ msgstr "İletişim"
-
-#~ msgid "Message:"
-#~ msgstr "İleti:"
-
-#, fuzzy
-#~ msgid "Send"
-#~ msgstr "Kum"
-
-#~ msgid "Friends/Ignored List"
-#~ msgstr "Arkadaşlar/Yoksayılanlar Listesi"
-
-#, fuzzy
-#~| msgid "Add As Friend"
-#~ msgid "Add as Friend"
-#~ msgstr "Arkadaş Olarak Ekle"
-
-#, fuzzy
-#~| msgid "Add As Ignore"
-#~ msgid "Add as Ignore"
-#~ msgstr "Gözardı Edilen Olarak Ekle"
-
-#~ msgid "Moderating"
-#~ msgstr "Yönetim"
-
-#~ msgid "Reason:"
-#~ msgstr "Sebep:"
-
-#~ msgid "Ban"
-#~ msgstr "Yasakla"
-
-#~ msgid "Sort lobby list"
-#~ msgstr "Salondakiler Listesini Sırala"
-
-#~ msgid "Sort the player list in the lobby by player groups"
-#~ msgstr "Salondaki oyuncuların listesini oyuncu gruplarına göre listeler"
-
-#~ msgid "Iconize lobby list"
-#~ msgstr "Salondakiler Listesini Simgeleştir"
-
-#, fuzzy
-#~| msgid "Show icons in front of the player names in the lobby."
-#~ msgid "Show icons in front of the player names in the lobby"
-#~ msgstr "Salondaki oyuncu isimlerinin önünde simge gösterir."
-
-#, fuzzy
-#~| msgid "Close Map"
-#~ msgid "User Maps"
-#~ msgstr "Haritayı Kapat"
-
-#, fuzzy
-#~| msgid "Campaign"
-#~ msgid "SP Campaigns"
-#~ msgstr "Seferberlik"
-
-#~ msgid ""
-#~ "Widget definition '$definition' doesn't contain the definition for '$id'."
-#~ msgstr "Pencere gereci tanımı '$definition', '$id' için tanım içermiyor."
-
-#, fuzzy
-#~| msgid "Save password to preferences (clear text)"
-#~ msgid "Save password to preferences (plain text)"
-#~ msgstr "Parolayı tercihlere kaydet (şifresiz)"
-
-#~ msgid "player"
-#~ msgstr "oyuncu"
-
-#, fuzzy
-#~| msgid "sound^Advanced Options"
-#~ msgid "Advanced Settings"
-#~ msgstr "Gelişmiş Seçenekler"
-
-#, fuzzy
-#~| msgid "New theme will take effect on next new or loaded game."
-#~ msgid "The new theme will take effect after loading or starting a new game."
-#~ msgstr ""
-#~ "Yeni tema bir sonraki yeni oyunda ya da yüklenen oyunda etkili olmaya "
-#~ "başlayacak."
-
-#, fuzzy
-#~| msgid "Choose Resolution"
-#~ msgid "Modifiers"
-#~ msgstr "Çözünürlüğü Seç"
-
-#, fuzzy
-#~ msgid "Options"
-#~ msgstr "Eylem"
-
-#, fuzzy
-#~| msgid "Add-ons"
-#~ msgid "Add-on types:"
-#~ msgstr "Eklentiler"
-
-#, fuzzy
-#~ msgid "Toggle All"
-#~ msgstr "Izgarayı Aç-Kapa"
-
-#, fuzzy
-#~| msgid "Speed: "
-#~ msgid "Seed:"
-#~ msgstr "Hız: "
-
-#, fuzzy
-#~ msgid "Filter"
-#~ msgstr "Dosya:"
-
-#~ msgid "Set Password"
-#~ msgstr "Parola Ata"
-
-#, fuzzy
-#~ msgid "Contents"
-#~ msgstr "Bağlan"
-
-#, fuzzy
-#~| msgid "Add As Friend"
-#~ msgid "Add to Friends"
-#~ msgstr "Arkadaş Olarak Ekle"
-
-#, fuzzy
-#~| msgid "Add As Ignore"
-#~ msgid "Add to Ignores"
-#~ msgstr "Gözardı Edilen Olarak Ekle"
-
-#~ msgid "Default"
-#~ msgstr "Öntanımlı"
-
-#~ msgid "Map to play:"
-#~ msgstr "Oyun haritasi:"
-
-#~ msgid "Show haloing effects"
-#~ msgstr "Nur Efektlerini Göster"
-
-#, fuzzy
-#~| msgid "Show haloing effects"
-#~ msgid "Show special unit graphical effects"
-#~ msgstr "Nur Efektlerini Göster"
-
-#, fuzzy
-#~| msgid "Add As Ignore"
-#~ msgid "Add Ignored"
-#~ msgstr "Gözardı Edilen Olarak Ekle"
-
-#~ msgid "Delete File"
-#~ msgstr "Dosyayı Sil"
-
-#~ msgid "Deletion of the file failed."
-#~ msgstr "Dosyanın silinmesi başarısız oldu."
-
-#~ msgid "Creation of the directory failed."
-#~ msgstr "Dizin oluşturma başarısız oldu."
-
-#~ msgid "Load Game..."
-#~ msgstr "Oyun Yükle..."
-
-#~ msgid "infinite"
-#~ msgstr "sonsuz"
-
-#, fuzzy
-#~| msgid "Prefs section^General"
-#~ msgid "Prefs tab^General"
-#~ msgstr "Genel"
-
-#~ msgid "Prefs section^General"
-#~ msgstr "Genel"
-
-#, fuzzy
-#~| msgid "Prefs section^General"
-#~ msgid "Prefs section^Hotkeys"
-#~ msgstr "Genel"
-
-#~ msgid "Prefs section^Display"
-#~ msgstr "Görüntü"
-
-#~ msgid "Prefs section^Sound"
-#~ msgstr "Ses"
-
-#~ msgid "Prefs section^Multiplayer"
-#~ msgstr "Çok Oyunculu"
-
-#, fuzzy
-#~| msgid "Prefs section^General"
-#~ msgid "Prefs section^Advanced"
-#~ msgstr "Genel"
-
-#, fuzzy
-#~ msgid "Version "
-#~ msgstr "Sürüm"
-
-#, fuzzy
-#~| msgid "Find $filename server binary to host networked games"
-#~ msgid "Find $filename server binary"
-#~ msgstr "Ağ oyunlarını sunacak $filename sunucu çalıştırılabilirini bulur."
-
-#, fuzzy
-#~ msgid "Hewn Cave Wall"
-#~ msgstr "Mağara Duvarı"
-
-#, fuzzy
-#~| msgid "Mouse scrolling"
-#~ msgid "Map scrolling"
-#~ msgstr "Fare ile Kaydırma"
-
-#, fuzzy
-#~ msgid "Mouse emulation"
-#~ msgstr "Yönetim"
-
-#, fuzzy
-#~| msgid "Hotkey Settings"
-#~ msgid "Joystick Settings"
-#~ msgstr "Klavye Kısayolları"
-
-#, fuzzy
-#~ msgid "Private message:"
-#~ msgstr "Bir özel ileti gönder"
-
-#, fuzzy
-#~| msgid "Send a private message"
-#~ msgid "When a private message is received"
-#~ msgstr "Bir özel ileti gönder"
-
-#, fuzzy
-#~| msgid "Random start time"
-#~ msgid "Ready to start game:"
-#~ msgstr "Rasgele başlatma zamanı"
-
-#, fuzzy
-#~| msgid "Set path to wesnothd"
-#~ msgid "Set Path to wesnothd"
-#~ msgstr "wesnothd için dosya yolu tanımlar"
-
-#~ msgid "Friends List"
-#~ msgstr "Arkadaşlar Listesi"
-
-#~ msgid "Add As Friend"
-#~ msgstr "Arkadaş Olarak Ekle"
-
-#~ msgid "Add As Ignore"
-#~ msgstr "Gözardı Edilen Olarak Ekle"
-
-#~ msgid "sound^Advanced Options"
-#~ msgstr "Gelişmiş Seçenekler"
-
-#~ msgid "sound^Standard Options"
-#~ msgstr "Stardart Seçenekler"
-
-#~ msgid "Custom"
-#~ msgstr "Özel"
-
-#~ msgid "Apply"
-#~ msgstr "Uygula"
-
-#~ msgid "Sample rate (Hz):"
-#~ msgstr "Örnekleme Hızı (Hz):"
-
-#~ msgid "User defined sample rate"
-#~ msgstr "Kullanıcı tanımlı ses örnekleme hızı"
-
-#~ msgid "Change the buffer size"
-#~ msgstr "Tampon boyunu değiştir"
-
-#~ msgid "Buffer size: "
-#~ msgstr "Tampon Boyu:"
-
-#~ msgid "Choose whether the game should run full screen or in a window"
-#~ msgstr ""
-#~ "Oyunun tam ekran mı yoksa pencere içinde mi çalışması gerektiğini seçer"
-
-#~ msgid "Back to the multiplayer options"
-#~ msgstr "Çok Oyuncu seçeneklerine geri dönülür"
-
-#~ msgid "Insert a username"
-#~ msgstr "Bir kullanıcı adını yerleştirir"
-
-#~ msgid "Show text above a unit when it is hit to display damage inflicted"
-#~ msgstr ""
-#~ "Bir birim darbe aldığında üzerinde aldığı hasarı gösteren bir yazı göster"
-
-#~ msgid "Change the resolution the game runs at"
-#~ msgstr "Oyunun çalıştığı çözünürlüğü değiştirir"
-
-#~ msgid "Change the theme the game runs with"
-#~ msgstr "Oyunun çalıştığı temayı değiştirir"
-
-#~ msgid "Use graphical special effects (may be slower)"
-#~ msgstr "Görsel özel efektler kullanılır (yavaşlatabilir)"
-
-#~ msgid "View and configure keyboard shortcuts"
-#~ msgstr "Klavye kısayolları gösterilir ve değiştirilir"
-
-#~ msgid "Advanced section^Advanced"
-#~ msgstr "Gelişmiş"
-
-#, fuzzy
-#~| msgid "Refresh Image Cache"
-#~ msgid "Purge Cache"
-#~ msgstr "Resim Belleğini Tazele"
-
-#~ msgid "Hotkey Settings"
-#~ msgstr "Klavye Kısayolları"
-
-#, fuzzy
-#~| msgid "Prefs section^Sound"
-#~ msgid "Prefs section^Title Screen"
-#~ msgstr "Ses"
-
-#, fuzzy
-#~| msgid "Prefs section^Sound"
-#~ msgid "Prefs section^Editor"
-#~ msgstr "Ses"
-
-#~ msgid "There are no alternative video modes available"
-#~ msgstr "Başka video kipi mevcut değil"
-
-#, fuzzy
-#~| msgid "Height:"
-#~ msgid "Right"
-#~ msgstr "Boyu:"
-
-#, fuzzy
-#~ msgid "Hat"
-#~ msgstr "Kes"
-
-#~ msgid ""
-#~ "The video mode could not be changed. Your window manager must be set to "
-#~ "16 bits per pixel to run the game in windowed mode. Your display must "
-#~ "support 1024x768x16 to run the game full screen."
-#~ msgstr ""
-#~ "Video kipi değiştirilemedi. Oyunu pencereli kipte çalıştırmak için "
-#~ "pencere yönetici benek başına 16 bit olarak ayarlanmış olmalıdır. Oyunu "
-#~ "tam ekran çalıştırmak için ekran 1024x768x16 çözünürlüğü desteklemelidir."
-
-#, fuzzy
-#~ msgid "Share map"
-#~ msgstr "Harita Üret"
-
-#, fuzzy
-#~ msgid "Quit Editor"
-#~ msgstr "Düzenleyici"
-
-#~ msgid "Next Generator"
-#~ msgstr "Sonraki Üreteç"
-
-#, fuzzy
-#~ msgid "Password: "
-#~ msgstr "Parola:"
-
-#, fuzzy
-#~ msgid "Elvish Castle"
-#~ msgstr "Kale"
-
-#~ msgid "Forested Hills"
-#~ msgstr "Ağaçlık Tepeler"
-
-#~ msgid "Forested Snow Hills"
-#~ msgstr "Ağaçlık Karlı Tepeler"
-
-#, fuzzy
-#~ msgid "Summer Deciduous Forested Hills"
-#~ msgstr "Ağaçlık Tepeler"
-
-#, fuzzy
-#~ msgid "Fall Deciduous Forested Hills"
-#~ msgstr "Ağaçlık Tepeler"
-
-#, fuzzy
-#~ msgid "Winter Deciduous Forested Hills"
-#~ msgstr "Ağaçlık Tepeler"
-
-#, fuzzy
-#~ msgid "Snowy Deciduous Forested Hills"
-#~ msgstr "Ağaçlık Tepeler"
-
-#, fuzzy
-#~ msgid "Summer Mixed Forested Hills"
-#~ msgstr "Ağaçlık Tepeler"
-
-#, fuzzy
-#~ msgid "Fall Mixed Forested Hills"
-#~ msgstr "Ağaçlık Tepeler"
-
-#, fuzzy
-#~ msgid "Winter Mixed Forested Hills"
-#~ msgstr "Ağaçlık Tepeler"
-
-#, fuzzy
-#~ msgid "Snowy Mixed Forested Hills"
-#~ msgstr "Ağaçlık Tepeler"
-
-#, fuzzy
-#~| msgid "Tropical Forest"
-#~ msgid "Tropical Forested Hills"
-#~ msgstr "Tropik Orman"
-
-#, fuzzy
-#~| msgid "Forested Hills"
-#~ msgid "Palm Forested Hills"
-#~ msgstr "Ağaçlık Tepeler"
-
-#, fuzzy
-#~| msgid "Forested Hills"
-#~ msgid "Dense Palm Forested Hills"
-#~ msgstr "Ağaçlık Tepeler"
-
-#, fuzzy
-#~| msgid "Forested Hills"
-#~ msgid "Savanna Forested Hills"
-#~ msgstr "Ağaçlık Tepeler"
-
-#~ msgid "Show color cursors"
-#~ msgstr "Renkli İmleçleri Göster"
-
-#~ msgid "Use colored mouse cursors (may be slower)"
-#~ msgstr "Renkli fare imleçleri kullanılır (yavaşlatabilir)"
-
-#, fuzzy
-#~| msgid ""
-#~| "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
-#~ msgid ""
-#~ "Screenshot hotkeys should be combined with the Control, Alt or Meta "
-#~ "modifiers to avoid problems."
-#~ msgstr ""
-#~ "Uyarı: Ekran görüntüsü kısayollarında Ctrl, Alt ve Meta tuşları "
-#~ "kullanılamaz."
-
-#, fuzzy
-#~| msgid "Switch Map"
-#~ msgid "Switch Area"
-#~ msgstr "Haritaya Geç"
-
-#~ msgid "Map-Screenshot"
-#~ msgstr "Harita-Ekran-Görüntüsü"
-
-#, fuzzy
-#~| msgid "Screenshot done"
-#~ msgid "Screenshot Done"
-#~ msgstr "Ekran görüntüsü alındı"
-
-#, fuzzy
-#~| msgid "Multiplayer Options"
-#~ msgid "Filter Options"
-#~ msgstr "Çok Oyuncu Seçenekleri"
-
-#, fuzzy
-#~| msgid "Flip Clipboard Horizontally"
-#~ msgid "Scroll Viewport Horizontally"
-#~ msgstr "Panoyu Yatayda Katla"
-
-#, fuzzy
-#~| msgid "Flip Clipboard Vertically"
-#~ msgid "Scroll Viewport Vertically"
-#~ msgstr "Panoyu Düşeyde Katla"
-
-#, fuzzy
-#~| msgid "Time of day lighting preset"
-#~ msgid "Time of day lighting preset:"
-#~ msgstr "Vaktin aydınlığını sıfırla"
-
-#, fuzzy
-#~| msgid "Custom lighting setting"
-#~ msgid "Custom lighting settings"
-#~ msgstr "Özel aydınlık ayarları"
-
-#, fuzzy
-#~| msgid "Auto-update map view"
-#~ msgid "Automatically update map view"
-#~ msgstr "Harite görünümünü güncel tut"
-
-#~ msgid "Add this username to your ignores list"
-#~ msgstr "Bu kullanıcı adı gözardı edilenler listenize eklenir"
-
-#, fuzzy
-#~| msgid "Auto-update Terrain Transitions"
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "Arazi Geçişlerini Sürekli Güncelle"
-
-#, fuzzy
-#~ msgid "Types"
-#~ msgstr "evet"
-
-#, fuzzy
-#~| msgid "Default"
-#~ msgid "Reset Defaults"
-#~ msgstr "Öntanımlı"
-
-#, fuzzy
-#~| msgid "Select All"
-#~ msgid "Reset All"
-#~ msgstr "Tümünü Seç"
-
-#, fuzzy
-#~| msgid "This Hotkey is already in use."
-#~ msgid "This hotkey is already in use."
-#~ msgstr "Bu kısayol zaten kullanımda."
-
-#~ msgid "Create New Map"
-#~ msgstr "Yeni harita üretir"
-
-#~ msgid "Create game"
-#~ msgstr "Oyun oluştur"
-
-#~ msgid "Save replay on SP/MP victory or MP defeat"
-#~ msgstr "TO/ÇO Zaferi veya ÇO Yenilgisinde Oyunu Kaydet"
-
-#, fuzzy
-#~| msgid "Save replay on SP/MP victory or MP defeat"
-#~ msgid "Save Replay on SP/MP Victory or MP Defeat"
-#~ msgstr "TO/ÇO Zaferi veya ÇO Yenilgisinde Oyunu Kaydet"
-
-#, fuzzy
-#~| msgid "Delete auto-saves on SP/MP victory or MP defeat"
-#~ msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
-#~ msgstr ""
-#~ "TO/ÇO Galibiyetinde veya ÇO Yenilgisinde kendiliğinden kaydedilenleri sil"
-
-#~ msgid "Resize map"
-#~ msgstr "Haritayı boyutlandır"
-
-#~ msgid "Allow more than one map to be open at the same time (MDI)"
-#~ msgstr "Aynı anda birden fazla harita açmayı mümkün kılar (MDI)"
-
-#~ msgid "Show Unit Idle Animations"
-#~ msgstr "Boştaki Birimleri Canlandır"
-
-#~ msgid "Stop"
-#~ msgstr "Dur"
-
-#~ msgid "Play"
-#~ msgstr "Oyun"
-
-#~ msgid "Reset"
-#~ msgstr "Sıfırla"
-
-#~ msgid "Close Window"
-#~ msgstr "Pencereyi Kapat"
-
-#, fuzzy
-#~ msgid "Saved preference:"
-#~ msgstr "Kayıtlı Tema Tercihleri: "
-
-#, fuzzy
-#~ msgid "Sunken Keep"
-#~ msgstr "Çökük Harabe"
-
-#, fuzzy
-#~ msgid "Swamp Keep"
-#~ msgstr "Bataklık"
-
-#, fuzzy
-#~ msgid "Add to friends list"
-#~ msgstr "Bu kullanıcı adı arkadaşlar listenize eklenir"
-
-#, fuzzy
-#~ msgid "Add to ignores list"
-#~ msgstr "Bu kullanıcı adı gözardı edilenler listenize eklenir"
-
-#~ msgid "Name: "
-#~ msgstr "Ad: "
-
-#~ msgid "Enable scroll tracking of unit actions"
-#~ msgstr "Birim eylemlerini izlemek için kaydırmayı etkin kıl"
-
-#~ msgid "Reverse Time Graphics"
-#~ msgstr "Zaman Çizgelerini Ters Çevir"
-
-#~ msgid "Music Volume:"
-#~ msgstr "Müzik Ses Düzeyi:"
-
-#~ msgid "UI Sound Volume:"
-#~ msgstr "KA Ses Düzeyi:"
-
-#~ msgid "Bell Volume:"
-#~ msgstr "Gong Ses Düzeyi:"
-
-#~ msgid ""
-#~ "Should the map view scroll to a unit when an action or move is animated."
-#~ msgstr "Bir eylem veya hareket oluştuğunda harita o oyuncuya doğru kaysın."
-
-#~ msgid "Choose whether the sun moves left-to-right or right-to-left"
-#~ msgstr "Güneşin soldan sağa mı sağdan sola mı hareket edeceğini seçer"
-
-#, fuzzy
-#~ msgid "Select unit:"
-#~ msgstr "Hiçbir şey Seçme"
-
-#, fuzzy
-#~ msgid "Generate name"
-#~ msgstr "Harita Üret"
-
-#~ msgid "Mushroom Grove Lit"
-#~ msgstr "Işıklı Mantar Korusu"
-
-#~ msgid "Impassable Desert Mountains"
-#~ msgstr "Aşılmaz Çöl Dağları"
-
-#, fuzzy
-#~ msgid "Castle Human Keep"
-#~ msgstr "Kale"
-
-#, fuzzy
-#~ msgid "Snowy Castle Keep"
-#~ msgstr "Kale"
-
-#, fuzzy
-#~ msgid "Deep Water Medium"
-#~ msgstr "Derin Su"
-
-#, fuzzy
-#~ msgid "Deep Water Tropical"
-#~ msgstr "Derin Su"
-
-#~ msgid "Snow Forest"
-#~ msgstr "Karlı Orman"
-
-#~ msgid "User-Command#2"
-#~ msgstr "2. Kullanıcı Komutu"
-
-#~ msgid "User-Command#3"
-#~ msgstr "3. Kullanıcı Komutu"
-
-#~ msgid "Wall"
-#~ msgstr "Duvar"
-
-#~ msgid "Could not get image for terrain: $terrain."
-#~ msgstr "$terrain için resim alınamadı."
-
-#~ msgid "Error creating or aquiring an image."
-#~ msgstr "Bir resim edinilirken veya oluşturulurken hata."
-
-#, fuzzy
-#~ msgid "Fort"
-#~ msgstr "Orman"
-
-#~ msgid "Ruin"
-#~ msgstr "Harabe"
-
-#~ msgid "River Ford"
-#~ msgstr "Sığ Geçit"
-
-#~ msgid "Window not defined."
-#~ msgstr "Pencere tanımsız."
-
-#~ msgid "Save The Map"
-#~ msgstr "Haritayı Kaydet"
-
-#, fuzzy
-#~ msgid ""
-#~ "'stack_data' must have the same number of columns as the "
-#~ "'list_definition'."
-#~ msgstr "'list_data', 'list_definition' ile aynı sütun sayısında olmalı."
