@@ -644,7 +644,7 @@ void menu_handler::rename_unit()
 unit_map::iterator menu_handler::current_unit()
 {
 	const mouse_handler& mousehandler = pc_.get_mouse_handler_base();
-	const bool see_all = pc_.is_replay() && pc_.get_replay_controller()->see_all();
+	const bool see_all = gui_->show_everything() || (pc_.is_replay() && pc_.get_replay_controller()->see_all());
 
 	unit_map::iterator res = board().find_visible_unit(mousehandler.get_last_hex(), teams()[gui_->viewing_team()], see_all);
 	if(res != units().end()) {
