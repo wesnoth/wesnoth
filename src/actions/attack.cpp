@@ -140,7 +140,8 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	petrifies = weapon->get_special_bool("petrifies");
 	poisons = !opp.get_state("unpoisonable") && weapon->get_special_bool("poison") && !opp.get_state(unit::STATE_POISONED);
 	backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, resources::gameboard->teams());
-	rounds = weapon->get_specials("berserk").highest("value", 1).first;
+	signed int rds = weapon->get_specials("berserk").highest("value", 1).first;
+	rounds = utils::clamp(rds, 1, 100);
 	firststrike = weapon->get_special_bool("firststrike");
 
 	{
