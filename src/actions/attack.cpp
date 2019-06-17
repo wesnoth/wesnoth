@@ -296,7 +296,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	drains = !opp_type->musthave_status("undrainable") && weapon->get_special_bool("drains");
 	petrifies = weapon->get_special_bool("petrifies");
 	poisons = !opp_type->musthave_status("unpoisonable") && weapon->get_special_bool("poison");
-	rounds = weapon->get_specials("berserk").highest("value", 1).first;
+	rounds = utils::clamp((weapon->get_specials("berserk").highest("value", 1).first), 1, 100);
 	firststrike = weapon->get_special_bool("firststrike");
 	disable = weapon->get_special_bool("disable");
 
