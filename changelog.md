@@ -2,6 +2,8 @@
  ### AI:
     * Fixed a rare crash in attack prediction (issue #4068)
  ### Campaigns
+   * A Tale of Two Brothers:
+     * S3: modify castle illumination tip on easy mode
     * Dead Water:
      * S3: modify starting dialogue
    * Descent into Darkness:
