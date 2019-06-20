@@ -130,6 +130,8 @@
 
 ## Version 1.14.8+dev
  ### Campaigns
+   * A Tale of Two Brothers:
+     * S3: modify castle illumination tip on easy mode
    * Dead Water:
      * S3: modify starting dialogue
    * Descent into Darkness:
