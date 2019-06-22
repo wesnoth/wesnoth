@@ -170,6 +170,9 @@
      * S2: add dehydration explanation to objectives
  ### Miscellaneous and bug fixes
      * Update various references of mermen to merfolk or mer
+     * It wasn't possible to view unit descriptions of units that would be
+       fogged or shrouded in three cases: during replays, in MP linger mode,
+       and in MP when one is the host but doesn't play. (issue #3687)
  ### Units
    * Add new Water Serpent portrait
 
