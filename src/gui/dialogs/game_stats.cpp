@@ -97,11 +97,12 @@ void game_stats::pre_show(window& window)
 		std::string leader_name;
 		std::string leader_image;
 
+		const bool see_all = game_config::debug || (resources::controller && resources::controller->get_display().show_everything());
 		if(leader) {
-			const bool visible = leader->is_visible_to_team(leader->get_location(), viewing_team_, false);
+			const bool visible = leader->is_visible_to_team(leader->get_location(), viewing_team_, see_all);
 
 			// Add leader image. If it's fogged/[hides], show only a random leader image.
-			if(visible || known || game_config::debug) {
+			if(visible || known) {
 				leader_image = leader->absolute_image() + leader->image_mods();
 				leader_name  = leader->name();
 			} else {
@@ -135,9 +136,9 @@ void game_stats::pre_show(window& window)
 		row_data_stats.emplace("team_name", column_stats);
 
 		// Only fill in the rest of the info if the side is known...
-		if(known || game_config::debug) {
+		if(known || see_all) {
 			std::string gold_str;
-			if(game_config::debug || !enemy || !viewing_team_.uses_fog()) {
+			if(see_all || !enemy || !viewing_team_.uses_fog()) {
 				gold_str = utils::half_signed_value(team.gold());
 			}
 
