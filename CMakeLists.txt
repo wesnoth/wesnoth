@@ -197,7 +197,7 @@ endif(NOT DEFINED CXX_FLAGS_USER)
 set(COMPILER_FLAGS "-std=c++11 -Wall -Wextra -Werror=non-virtual-dtor -Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wold-style-cast")
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-	set(COMPILER_FLAGS "${COMPILER_FLAGS} -Qunused-arguments -Wno-unknown-warning-option -Wmismatched-tags -Wno-conditional-uninitialized")
+	set(COMPILER_FLAGS "${COMPILER_FLAGS} -Qunused-arguments -Wno-unknown-warning-option -Wmismatched-tags -Wno-conditional-uninitialized -Wno-unused-lambda-capture")
 endif()
 
 ### Set strict compiler flags.

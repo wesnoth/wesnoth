@@ -1,7 +1,9 @@
 ## Version 1.14.8+dev
- ###
+ ### AI:
     * Fixed a rare crash in attack prediction (issue #4068)
  ### Campaigns
+   * A Tale of Two Brothers:
+     * S3: modify castle illumination tip on easy mode
     * Dead Water:
      * S3: modify starting dialogue
    * Descent into Darkness:
@@ -35,21 +37,22 @@
      * S8b: fixed bug with shifted ToD schedules near campfires
    * Under the Burning Suns:
      * Various bugfixes (objectives, allied vision, unit spawns, event firing)
+     * Updated various maps
      * Add additional animations to cutscenes and events
      * S2: add dehydration explanation to objectives
+ ### Graphics
+   * Own portraits for higher level bats
+   * New Water Serpent and Cuttlefish portrait
+   * New Wolf, Great Wolf and Direwolf portraits
+   * Additional wolf/dog portrait for custom units
+   * Separate Mudcrawler portrait
+   * New Walking Corpse portrait for mounted variation
  ### Language and i18n
-   * Updated translations: Dutch, Turkish, Ukrainian
+   * Updated translations: Dutch, German, Turkish, Ukrainian
  ### WML engine
    * Fixed [music] ms_after= affecting the previous track instead of the intended one
  ### Miscellaneous and bug fixes
    * Update various references of mermen to merfolk or mer
- ### Units
-   * Add new Water Serpent portrait
-   * Add new Cuttlefish portrait
-   * Add new Bat portraits
-   * Add new Mudcrawler portrait
-   * Add new Great Wolf portrait
-   * Add new Walking Corpse portrait for mounted variation
 
 ## Version 1.14.8
  * Skipped due to needed to reupload the a broken 1.14.7 macOS App Store package as 1.14.8
