@@ -46,6 +46,7 @@
    * New Wolf, Great Wolf and Direwolf portraits
    * Additional wolf/dog portrait for custom units
    * Separate Mudcrawler portrait
+   * New Walking Corpse portrait for mounted variation
  ### Language and i18n
    * Updated translations: Dutch, German, Turkish, Ukrainian
  ### WML engine
