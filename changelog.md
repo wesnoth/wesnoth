@@ -31,6 +31,7 @@
      * S17a: prevent time over defeat if player chooses to defeat remaining saurians
    * The South Guard:
      * Update campaign description
+     * Highlight narrator and gameplay explanations with colors
      * S1: create Sir Gerrick if player skips scenario with debug
      * S6b: create Urza Afalas if player skips S5 with debug
      * S6b: kill elves on side 1 if player got to this scenario with debug
@@ -49,13 +50,23 @@
    * New Walking Corpse portrait for mounted variation
  ### Language and i18n
    * Updated translations: Dutch, German, Turkish, Ukrainian
+ ### Multiplayer
+   * A new Land:
+     * Help menu can be accessed in any turn and doesn't pause the game
+     * Bottleneck in the spider's caves removed
+     * Swapped positions of Gryphon and Drake
+     * Guards can't be tricked off position, leaders won't destroy buildings
+     * Guards and Spiders are loyal – AI income has been adjusted accordingly
+     * AI income increases gradually in lategame (very slowly)
+     * Use Experimental AI (can be changed if game is launched with -d switch)
  ### WML engine
    * Fixed [music] ms_after= affecting the previous track instead of the intended one
  ### Miscellaneous and bug fixes
    * Update various references of mermen to merfolk or mer
+   * Adjust several maps to use different castle graphics
 
 ## Version 1.14.8
- * Skipped due to needed to reupload the a broken 1.14.7 macOS App Store package as 1.14.8
+ * Skipped due to need to reupload a broken 1.14.7 macOS App Store package as 1.14.8
 
 ## Version 1.14.7
  ### Campaigns
