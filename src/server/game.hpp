@@ -407,7 +407,7 @@ private:
 	 * If observer is true it only checks against players.
 	 * @return  A comma separated string of members with matching IPs.
 	 */
-	std::string has_same_ip(const socket_ptr& user, bool observer) const;
+	std::string has_same_ip(const socket_ptr& user) const;
 
 	/**
 	 * Function which should be called every time a player ends their turn
