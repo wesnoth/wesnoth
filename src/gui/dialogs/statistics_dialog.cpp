@@ -274,6 +274,7 @@ static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth,
 		const auto chance_of_exactly_N_hits = [&final_hp_dist](int n) { return final_hp_dist[final_hp_dist.size() - 1 - n]; };
 
 		// The a priori probability of scoring less hits than the actual number of hits
+		// aka "percentile" or "p-value"
 		double probability_lt = 0.0;
 		for(unsigned int i = 0; i < overall_hits; ++i) {
 			probability_lt += chance_of_exactly_N_hits(i);
