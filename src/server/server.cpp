@@ -1462,7 +1462,7 @@ void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
 		send_server_message(socket, "You are banned from this game.");
 		async_send_doc(socket, games_and_users_list_);
 		return;
-	} else if(!observer && !g->password_matches(password)) {
+	} else if(!g->password_matches(password)) {
 		WRN_SERVER << client_address(socket) << "\t" << player_connections_.find(socket)->info().name()
 				   << "\tattempted to join game:\t\"" << g->name() << "\" (" << game_id << ") with bad password\n";
 		async_send_doc(socket, leave_game_doc);
