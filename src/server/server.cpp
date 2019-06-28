@@ -1454,7 +1454,7 @@ void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
 		send_server_message(socket, "Only registered users are allowed to join this game.");
 		async_send_doc(socket, games_and_users_list_);
 		return;
-	} else if(g->player_is_banned(socket)) {
+	} else if(g->player_is_banned(socket, player_connections_.find(socket)->info().name())) {
 		DBG_SERVER << client_address(socket)
 				   << "\tReject banned player: " << player_connections_.find(socket)->info().name()
 				   << "\tfrom game:\t\"" << g->name() << "\" (" << game_id << ").\n";
