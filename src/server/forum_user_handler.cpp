@@ -45,6 +45,8 @@ fuh::fuh(const config& c)
 	, db_game_info_table_(c["db_game_info_table"].str())
 	, db_game_player_info_table_(c["db_game_player_info_table"].str())
 	, db_game_modification_info_table_(c["db_game_modification_info_table"].str())
+	, db_group_table_(c["db_group_table"].str())
+	, mp_mod_group_(std::stoi(c["mp_mod_group"]))
 	, conn(mysql_init(nullptr))
 {
 	mysql_options(conn, MYSQL_SET_CHARSET_NAME, "utf8mb4");
@@ -157,9 +159,9 @@ bool fuh::user_is_moderator(const std::string& name) {
 	if(!user_exists(name)) return false;
 
 	try {
-		return get_writable_detail_for_user<int>(name, "user_is_moderator") == 1;
+		return get_writable_detail_for_user<int>(name, "user_is_moderator") == 1 || is_user_in_group(name, mp_mod_group_);
 	} catch (const sql_error& e) {
-		ERR_UH << "Could not query user_is_moderator for user '" << name << "' :" << e.message << std::endl;
+		ERR_UH << "Could not query user_is_moderator/MP Moderators group for user '" << name << "' :" << e.message << std::endl;
 		// If the database is down mark nobody as a mod
 		return false;
 	}
@@ -406,6 +408,15 @@ void fuh::write_detail(const std::string& name, const std::string& detail, T&& v
 	}
 }
 
+bool fuh::is_user_in_group(const std::string& name, unsigned int group_id) {
+	try {
+		return prepared_statement<bool>("SELECT 1 FROM `" + db_users_table_ + "` u, `" + db_group_table_ + "` ug WHERE UPPER(u.username)=UPPER(?) AND u.USER_ID = ug.USER_ID AND ug.GROUP_ID = ?", name, group_id);
+	} catch (const sql_error& e) {
+		ERR_UH << "Could not execute test query for user group '" << group_id << "' and username '" << name << "'" << e.message << std::endl;
+		return false;
+	}
+}
+
 bool fuh::extra_row_exists(const std::string& name) {
 
 	// Make a test query for this username
@@ -428,7 +439,7 @@ std::string fuh::get_uuid(){
 
 void fuh::db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name){
 	try {
-		prepared_statement<void>("insert into `" + db_game_info_table_ + "`(INSTANCE_UUID, GAME_ID, INSTANCE_VERSION, GAME_NAME) values(?, ?, ?, ?)",
+		prepared_statement<void>("INSERT INTO `" + db_game_info_table_ + "`(INSTANCE_UUID, GAME_ID, INSTANCE_VERSION, GAME_NAME) VALUES(?, ?, ?, ?)",
 		uuid, game_id, version, name);
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not insert into table `" + db_game_info_table_ + "`:" << e.message << std::endl;
@@ -437,7 +448,7 @@ void fuh::db_insert_game_info(const std::string& uuid, int game_id, const std::s
 
 void fuh::db_update_game_start(const std::string& uuid, int game_id, const std::string& map_name, const std::string& era_name){
 	try {
-		prepared_statement<void>("update `" + db_game_info_table_ + "` set START_TIME = CURRENT_TIMESTAMP, MAP_NAME = ?, ERA_NAME = ? where INSTANCE_UUID = ? and GAME_ID = ?",
+		prepared_statement<void>("UPDATE `" + db_game_info_table_ + "` SET START_TIME = CURRENT_TIMESTAMP, MAP_NAME = ?, ERA_NAME = ? WHERE INSTANCE_UUID = ? AND GAME_ID = ?",
 		map_name, era_name, uuid, game_id);
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not update the game's starting information on table `" + db_game_info_table_ + "`:" << e.message << std::endl;
@@ -446,7 +457,7 @@ void fuh::db_update_game_start(const std::string& uuid, int game_id, const std::
 
 void fuh::db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location){
 	try {
-		prepared_statement<void>("update `" + db_game_info_table_ + "` set END_TIME = CURRENT_TIMESTAMP, REPLAY_NAME = ? where INSTANCE_UUID = ? and GAME_ID = ?",
+		prepared_statement<void>("UPDATE `" + db_game_info_table_ + "` SET END_TIME = CURRENT_TIMESTAMP, REPLAY_NAME = ? WHERE INSTANCE_UUID = ? AND GAME_ID = ?",
 		replay_location, uuid, game_id);
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not update the game's ending information on table `" + db_game_info_table_ + "`:" << e.message << std::endl;
@@ -455,7 +466,7 @@ void fuh::db_update_game_end(const std::string& uuid, int game_id, const std::st
 
 void fuh::db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, const std::string& is_host, const std::string& faction){
 	try {
-		prepared_statement<void>("insert into `" + db_game_player_info_table_ + "`(INSTANCE_UUID, GAME_ID, USER_ID, SIDE_NUMBER, IS_HOST, FACTION) values(?, ?, IFNULL((select user_id from `"+db_users_table_+"` where username = ?), -1), ?, ?, ?)",
+		prepared_statement<void>("INSERT INTO `" + db_game_player_info_table_ + "`(INSTANCE_UUID, GAME_ID, USER_ID, SIDE_NUMBER, IS_HOST, FACTION) VALUES(?, ?, IFNULL((SELECT user_id FROM `"+db_users_table_+"` WHERE username = ?), -1), ?, ?, ?)",
 		uuid, game_id, username, side_number, is_host, faction);
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not insert the game's player information on table `" + db_game_player_info_table_ + "`:" << e.message << std::endl;
@@ -464,7 +475,7 @@ void fuh::db_insert_game_player_info(const std::string& uuid, int game_id, const
 
 void fuh::db_insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name){
 	try {
-		prepared_statement<void>("insert into `" + db_game_modification_info_table_ + "`(INSTANCE_UUID, GAME_ID, MODIFICATION_NAME) values(?, ?, ?)",
+		prepared_statement<void>("INSERT INTO `" + db_game_modification_info_table_ + "`(INSTANCE_UUID, GAME_ID, MODIFICATION_NAME) VALUES(?, ?, ?)",
 		uuid, game_id, modification_name);
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not insert the game's modification information on table `" + db_game_modification_info_table_ + "`:" << e.message << std::endl;

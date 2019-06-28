@@ -105,7 +105,8 @@ class fuh : public user_handler {
 		std::time_t retrieve_ban_duration_internal(const std::string& col, const std::string& detail);
 		std::time_t retrieve_ban_duration_internal(const std::string& col, unsigned int detail);
 
-		std::string db_name_, db_host_, db_user_, db_password_, db_users_table_, db_banlist_table_, db_extra_table_, db_game_info_table_, db_game_player_info_table_, db_game_modification_info_table_;
+		std::string db_name_, db_host_, db_user_, db_password_, db_users_table_, db_banlist_table_, db_extra_table_, db_game_info_table_, db_game_player_info_table_, db_game_modification_info_table_, db_group_table_;
+		unsigned int mp_mod_group_;
 
 		MYSQL *conn;
 
@@ -123,4 +124,7 @@ class fuh : public user_handler {
 
 		// Same as user_exists() but checks if we have a row for this user in the extra table
 		bool extra_row_exists(const std::string& name);
+		
+		bool is_user_in_group(const std::string& name, unsigned int group_id);
 };
+
