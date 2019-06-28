@@ -1444,7 +1444,7 @@ bool game::add_player(const socket_ptr& player, bool observer)
 		send_user_list();
 	}
 
-	const std::string clones = has_same_ip(player, observer);
+	const std::string clones = has_same_ip(player);
 	if(!clones.empty()) {
 		send_and_record_server_message(
 			player_connections_.find(user)->info().name() + " has the same IP as: " + clones);
@@ -1718,9 +1718,9 @@ bool game::controls_side(const std::vector<int>& sides, const socket_ptr& player
 	return false;
 }
 
-std::string game::has_same_ip(const socket_ptr& user, bool observer) const
+std::string game::has_same_ip(const socket_ptr& user) const
 {
-	const user_vector users = observer ? players_ : all_game_users();
+	const user_vector users = all_game_users();
 	const std::string ip = client_address(user);
 
 	std::string clones;
