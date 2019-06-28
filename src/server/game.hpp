@@ -74,8 +74,8 @@ public:
 	bool is_observer(const socket_ptr& player) const;
 	bool is_player(const socket_ptr& player) const;
 
-	/** Checks whether the connection's ip address is banned. */
-	bool player_is_banned(const socket_ptr& player) const;
+	/** Checks whether the connection's ip address or username is banned. */
+	bool player_is_banned(const socket_ptr& player, const std::string& name) const;
 
 	/** when the host sends the new scenario of a mp campaign */
 	void new_scenario(const socket_ptr& player);
@@ -501,7 +501,9 @@ private:
 	int num_turns_;
 	bool all_observers_muted_;
 
+	// IP ban list and name ban list
 	std::vector<std::string> bans_;
+	std::vector<std::string> name_bans_;
 	/// in multiplayer campaigns it can happen that some players are still in the previousl scenario
 	/// keep track of those players because processing certain
 	/// input from those side wil lead to error (oos)

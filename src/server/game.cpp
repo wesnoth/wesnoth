@@ -116,6 +116,7 @@ game::game(player_connections& player_connections,
 	, num_turns_(0)
 	, all_observers_muted_(false)
 	, bans_()
+	, name_bans_()
 	, players_not_advanced_()
 	, termination_()
 	, save_replays_(save_replays)
@@ -701,10 +702,12 @@ bool game::describe_slots()
 	return true;
 }
 
-bool game::player_is_banned(const socket_ptr& sock) const
+bool game::player_is_banned(const socket_ptr& sock, const std::string& name) const
 {
 	auto ban = std::find(bans_.begin(), bans_.end(), client_address(sock));
-	return ban != bans_.end();
+	auto name_ban = std::find(name_bans_.begin(), name_bans_.end(), name);
+
+	return ban != bans_.end() || name_ban != name_bans_.end();
 }
 
 void game::mute_all_observers()
@@ -857,7 +860,7 @@ socket_ptr game::ban_user(const simple_wml::node& ban, const socket_ptr& banner)
 	} else if(user == banner) {
 		send_server_message("Don't ban yourself, silly.", banner);
 		return socket_ptr();
-	} else if(player_is_banned(user)) {
+	} else if(player_is_banned(user, username.to_string())) {
 		send_server_message("'" + username.to_string() + "' is already banned.", banner);
 		return socket_ptr();
 	} else if(player_connections_.find(user)->info().is_moderator()) {
@@ -869,6 +872,7 @@ socket_ptr game::ban_user(const simple_wml::node& ban, const socket_ptr& banner)
 	         << client_address(user) << ")\tfrom game:\t\"" << name_ << "\" (" << id_ << ")\n";
 
 	bans_.push_back(client_address(user));
+	name_bans_.push_back(username.to_string());
 	send_and_record_server_message(username.to_string() + " has been banned.");
 
 	if(is_member(user)) {
@@ -897,7 +901,7 @@ void game::unban_user(const simple_wml::node& unban, const socket_ptr& unbanner)
 		return;
 	}
 
-	if(!player_is_banned(user)) {
+	if(!player_is_banned(user, username.to_string())) {
 		send_server_message("'" + username.to_string() + "' is not banned.", unbanner);
 		return;
 	}
@@ -908,6 +912,7 @@ void game::unban_user(const simple_wml::node& unban, const socket_ptr& unbanner)
 		<< id_ << ")\n";
 
 	bans_.erase(std::remove(bans_.begin(), bans_.end(), client_address(user)), bans_.end());
+	name_bans_.erase(std::remove(name_bans_.begin(), name_bans_.end(), username.to_string()), name_bans_.end());
 	send_and_record_server_message(username.to_string() + " has been unbanned.");
 }
 
