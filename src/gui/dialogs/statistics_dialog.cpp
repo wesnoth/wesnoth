@@ -201,6 +201,8 @@ struct hitrate_table_element
 	std::string hitrate_str;
 	// The string with the a priori probability of that result
 	std::string pvalue_str;
+	// The tooltip of the table cell - shows the actual (empirical) CTH
+	std::string tooltip;
 };
 
 // Return the strings to use in the "Hits" table, showing actual and expected number of hits.
@@ -210,14 +212,19 @@ static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth,
 	double expected_hits = 0;
 	unsigned int overall_strikes = 0;
 
+	std::ostringstream str, str2, tooltip;
+
+	tooltip << '\n' << '\n' << _("Actual hit rates, by chance to hit:");
 	for(const auto& i : by_cth) {
 		int cth = i.first;
 		overall_hits += i.second.hits;
 		expected_hits += (cth * 0.01) * i.second.strikes;
 		overall_strikes += i.second.strikes;
+		tooltip << "\n" << cth << "%: "
+			<< get_probability_string(i.second.hits/static_cast<double>(i.second.strikes))
+			<< "% (N=" << i.second.strikes << ")";
 	}
 
-	std::ostringstream str, str2;
 	write_actual_and_expected(str, overall_hits, expected_hits);
 
 	// Compute the a priori probability of this actual result, by simulating many attacks against a single defender.
@@ -293,7 +300,7 @@ static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth,
 		}
 	}
 
-	return hitrate_table_element{str.str(), str2.str()};
+	return hitrate_table_element{str.str(), str2.str(), tooltip.str()};
 }
 
 void statistics_dialog::add_hits_row(
@@ -315,6 +322,11 @@ void statistics_dialog::add_hits_row(
 	data.emplace("hits_type", item);
 
 	element = tally(by_cth, more_is_better);
+	item["tooltip"] = _(
+		"stats dialog^Difference of actual outcome to expected outcome, as a percentage.\n"
+		"The first number in parentheses is the expected number of hits.\n"
+		"The sum (or difference) of the two numbers in parentheses is the actual number of hits.")
+		+ element.tooltip;
 	item["label"] = element.hitrate_str;
 	data.emplace("hits_overall", item);
 	item["label"] = element.pvalue_str;
@@ -325,6 +337,11 @@ void statistics_dialog::add_hits_row(
 		this_turn_header.set_label(_("This Turn"));
 
 		element = tally(turn_by_cth, more_is_better);
+		item["tooltip"] = _(
+			"stats dialog^Estimate of how much randomness of battles favored or disfavored this side.\n"
+			"Values between 0 and 50 suggest the number of hits was less than expected."
+			"Values between 50 and 100 suggest the number of hits was more than expected.")
+			+ element.tooltip;
 		item["label"] = element.hitrate_str;
 		data.emplace("hits_this_turn", item);
 		item["label"] = element.pvalue_str;
