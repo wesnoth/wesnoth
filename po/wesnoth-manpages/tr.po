@@ -1,22 +1,22 @@
 # translation of wesnoth-manpages.po to Turkish
 # Turkish translations for Battle for Wesnoth package
-# Copyright (C) 2008 Wesnoth development team.
+# Copyright (C) 2019 Wesnoth development team.
 #
 # Automatically generated, 2006.
-# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, 2009.
+# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, ..., 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manpages\n"
 "POT-Creation-Date: 2018-02-12 20:02+0300\n"
-"PO-Revision-Date: 2009-04-12 14:58+0300\n"
+"PO-Revision-Date: 2019-06-28 14:37+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
-"Language-Team: Turkish <ceviri@belgeler.gen.tr>\n"
+"Language-Team: Turkish\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Poedit 1.8.11\n"
 
 # type: TH
 #. type: TH
@@ -29,7 +29,7 @@ msgstr "WESNOTH"
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2018"
-msgstr ""
+msgstr "2018"
 
 # type: TH
 #. type: TH
@@ -43,7 +43,7 @@ msgstr "wesnoth"
 #: doc/man/wesnoth.6:16
 #, no-wrap
 msgid "Battle for Wesnoth"
-msgstr "Wesnoth Savaşı"
+msgstr "Vesnot Savaşı"
 
 # type: SH
 #. type: SH
@@ -56,7 +56,7 @@ msgstr "İSİM"
 #. type: Plain text
 #: doc/man/wesnoth.6:20
 msgid "wesnoth - Battle for Wesnoth, a turn-based fantasy strategy game"
-msgstr "wesnoth - Wesnoth Savaşı, sırayla oynanan fantastik bir strateji oyunu"
+msgstr "wesnoth - Vesnot Savaşı, sırayla oynanan kurgusal bir strateji oyunu"
 
 # type: SH
 #. type: SH
@@ -82,7 +82,7 @@ msgstr "AÇIKLAMA"
 #. type: Plain text
 #: doc/man/wesnoth.6:32
 msgid "Battle for B<Wesnoth> is a turn-based fantasy strategy game."
-msgstr "B<Wesnoth> Savaşı, sırayla oynanan fantastik bir strateji oyunudur."
+msgstr "B<Vesnot Savaşı>, sırayla oynanan kurgusal bir strateji oyunudur."
 
 # type: Plain text
 #. type: Plain text
@@ -100,12 +100,12 @@ msgstr ""
 "Oyunda iyi seçilmiş bir asker kadrosu kullanılarak tüm düşman liderleri "
 "yenilmeye çalışılır. Bunun için köyler ve altın kaynak olarak kullanılır. "
 "Bütün birimlerin kendilerine özgü kuvvetli ve zayıf yetenekleri vardır. "
-"Kazanmak için kuvvetlerinizi düşmana karşı avantaj sağlayacak yerlere "
+"Kazanmak için kuvvetlerinizi düşmana karşı üstünlük sağlayacak yerlere "
 "konuşlandırmalısınız. Birimler deneyim kazandıkça yeni yetenekler kazanır ve "
 "daha güçlü hale gelirler. Oyunu kendi dilinizde oynayabilir, yeteneklerinizi "
-"bilgisayara karşı veya Wesnoth'un çevrimiçi oyuncularına karşı "
-"sınayabilirsiniz. Kendi özel birimlerinizi, senaryolarınızı veya "
-"seferberliklerinizi yazabilir ve bunları başkaları ile paylaşabilirsiniz."
+"bilgisayara karşı veya çevrimiçi oyunculara karşı sınayabilirsiniz. Kendi "
+"özel birimlerinizi, senaryolarınızı veya seferberliklerinizi yazabilir ve "
+"bunları başkaları ile paylaşabilirsiniz."
 
 # type: SH
 #. type: SH
@@ -118,53 +118,43 @@ msgstr "SEÇENEKLER"
 #. type: TP
 #: doc/man/wesnoth.6:45
 #, fuzzy, no-wrap
-#| msgid "B<--gunzip>I<\\ infile.gz>"
+#| msgid "B<--bunzip2>I<\\ infile.bz2>"
 msgid "B<--bunzip>I<\\ infile.bz2>"
-msgstr "B<--gunzip>I<\\ girdi-dosyası.gz>"
+msgstr "B<--bunzip2>I<\\ dosya.bz2>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:51
-#, fuzzy
-#| msgid ""
-#| "decompresses a file which should be in gzip format and stores it without "
-#| "the .gz suffix. The I<infile.gz> will be removed."
 msgid ""
 "decompresses a file which should be in bzip2 format and stores it without "
 "the .bz2 suffix. The I<infile.bz2> will be removed."
 msgstr ""
-"Gzipli bir dosyanın sıkıştırmasını açar ve .gz uzantısız olarak kaydeder. "
-"I<girdi-dosyası.gz> dosyasını da siler."
+"bzip2 biçemli bir dosyanın sıkıştırmasını açar ve .bz2 uzantısız olarak "
+"kaydeder. I<dosya.bz2> dosyasını da siler."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:51
 #, fuzzy, no-wrap
-#| msgid "B<--gzip>I<\\ infile>"
+#| msgid "B<--bzip2>I<\\ infile>"
 msgid "B<--bzip>I<\\ infile>"
-msgstr "B<--gzip>I<\\ girdi-dosyası>"
+msgstr "B<--bzip2>I<\\ dosya>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:57
-#, fuzzy
-#| msgid ""
-#| "compresses a file in gzip format, stores it as I<infile>.gz and removes "
-#| "I<infile>."
 msgid ""
 "compresses a file in bzip2 format, stores it as I<infile>.bz2 and removes "
 "I<infile>."
 msgstr ""
-"Bir dosyayı I<girdi-dosyası>.gz adıyla sıkıştırarak kaydeder ve I<girdi-"
-"dosyası>nı siler."
+"bir dosyayı I<dosya>.gz adıyla sıkıştırarak kaydeder ve I<dosya>yı siler."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:57
-#, fuzzy, no-wrap
-#| msgid "B<-c, --campaign>"
+#, no-wrap
 msgid "B<-c[>I<id_campaign>B<],\\ --campaign[>I<=id_campaign>B<]>"
-msgstr "B<-c, --campaign>"
+msgstr "B<-c[>I<seferberlik>B<],\\ --campaign[>I<=seferberlik>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:62
@@ -172,12 +162,14 @@ msgid ""
 "goes directly to the campaign with id I<id_campaign>.  A selection menu will "
 "appear if no id was specified."
 msgstr ""
+"<seferberlik> kimliği ile doğrudan seferberliğe gider. Kimlik "
+"belirtilmemişse bir seçim menüsü görünecektir."
 
 #. type: TP
 #: doc/man/wesnoth.6:62
 #, no-wrap
 msgid "B<--campaign-difficulty[>I<=difficulty>B<]>"
-msgstr ""
+msgstr "B<--campaign-difficulty[>I<=zorluk>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:66
@@ -185,12 +177,14 @@ msgid ""
 "The difficulty of the specified campaign (1 to max). If none specified, the "
 "campaign difficulty selection widget will appear."
 msgstr ""
+"Belirtilen seferberliğin zorluğu (1 - azami). Belirtilmezse, seferberlik "
+"zorluğu seçim gereci görünür."
 
 #. type: TP
 #: doc/man/wesnoth.6:66
 #, no-wrap
 msgid "B<--campaign-scenario>I<\\ id_scenario>"
-msgstr ""
+msgstr "B<--campaign-scenario>I<\\ senaryo>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:69
@@ -198,47 +192,45 @@ msgid ""
 "The id of the scenario from the specified campaign. The default is the first "
 "scenario."
 msgstr ""
+"belirtilen seferberlikteki senaryonun kimliği. Belirtilmezse ilk senaryo "
+"öntanımlıdır."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:69
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--core>I<\\ id_core>"
-msgstr "B<-e, --editor>"
+msgstr "B<--core>I<\\ çekirdek>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:72
 msgid "overrides the loaded core with the one whose id is specified."
-msgstr ""
+msgstr "kimliği belirtilen çekirdek yüklü olanın yerine geçer."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:72
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--data-dir>I<\\ directory>"
-msgstr "B<--config-dir>I<\\ isim>"
+msgstr "B<--data-dir>I<\\ dizin>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:75
 msgid "overrides the data directory with the one specified"
-msgstr ""
+msgstr "data dizini olarak belirtilen dizin kullanılır."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:75
-#, fuzzy, no-wrap
-#| msgid "B<--path>"
+#, no-wrap
 msgid "B<--data-path>"
-msgstr "B<--path>"
+msgstr "B<--data-path>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:78
-#, fuzzy
-#| msgid "prints the path of the user configuration directory and exits."
 msgid "prints the path of the data directory and exits."
-msgstr "Kullanıcı yapılandırma dizininin yolunu basar ve çıkar."
+msgstr "data dizininin yolunu basar ve çıkar."
 
 # type: TP
 #. type: TP
@@ -250,32 +242,33 @@ msgstr "B<-d, --debug>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:83
-#, fuzzy
-#| msgid ""
-#| "enables additional command mode options in-game (see the wiki page at "
-#| "http://www.wesnoth.org/wiki/CommandMode for more information about "
-#| "command mode)."
 msgid ""
 "enables additional command mode options in-game (see the wiki page at "
 "https://www.wesnoth.org/wiki/CommandMode for more information about command "
 "mode)."
 msgstr ""
-"Oyun içi ek komut kipi seçeneklerini etkin kılar (komut kipi hakkında bilgi "
+"oyun içi ek komut kipi seçeneklerini etkin kılar (komut kipi hakkında bilgi "
 "edinmek için http://www.wesnoth.org/wiki/CommandMode adresine bakınız)."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:83
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-e[>I<file>B<],\\ --editor[>I<=file>B<]>"
-msgstr "B<-e, --editor>"
+msgstr "B<-e[>I<dosya>B<],\\ --editor[>I<=dosya>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:89
+#, fuzzy
+#| msgid ""
+#| "start the in-game map editor directly. If I<file> is specified, "
+#| "equivalent to B<-l> B<--load>."
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-l --load>"
 msgstr ""
+"oyun içi harita düzenleticisini doğrudan başlatır. I<dosya> belirtilmezse B<-"
+"l> veya B<--load> kullanılmış varsayılır."
 
 # type: TP
 #. type: TP
@@ -291,7 +284,7 @@ msgid ""
 "displays the number of frames per second the game is currently running at, "
 "in a corner of the screen."
 msgstr ""
-"Çalışmakta olan oyunda ekranın saniyede kaç kere yeniden çizildiğini ekranın "
+"çalışmakta olan oyunda ekranın saniyede kaç kere yeniden çizildiğini ekranın "
 "bir köşesinde gösterir."
 
 # type: TP
@@ -305,7 +298,7 @@ msgstr "B<-f, --fullscreen>"
 #. type: Plain text
 #: doc/man/wesnoth.6:96
 msgid "runs the game in full screen mode."
-msgstr "Oyunu tam ekran çalıştırır."
+msgstr "oyunu tam ekran çalıştırır."
 
 # type: TP
 #. type: TP
@@ -322,7 +315,7 @@ msgid ""
 "the .gz suffix. The I<infile.gz> will be removed."
 msgstr ""
 "Gzipli bir dosyanın sıkıştırmasını açar ve .gz uzantısız olarak kaydeder. "
-"I<girdi-dosyası.gz> dosyasını da siler."
+"I<dosya.gz> dosyasını da siler."
 
 # type: TP
 #. type: TP
@@ -338,8 +331,7 @@ msgid ""
 "compresses a file in gzip format, stores it as I<infile>.gz and removes "
 "I<infile>."
 msgstr ""
-"Bir dosyayı I<girdi-dosyası>.gz adıyla sıkıştırarak kaydeder ve I<girdi-"
-"dosyası>nı siler."
+"Bir dosyayı I<dosya>.gz adıyla sıkıştırarak kaydeder ve I<dosya>yı siler."
 
 # type: TP
 #. type: TP
@@ -365,24 +357,23 @@ msgstr "B<-l,\\ --load>I<\\ dosya>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:122
-#, fuzzy
 msgid ""
 "loads the savegame I<file> from the standard save game directory. If the B<-"
 "e> or B<--editor> option is used as well, starts the editor with the map "
 "from I<file> open. If it is a directory, the editor will start with a load "
 "map dialog opened there."
 msgstr ""
-"Kayıtlı oyun dosyası I<dosya>, oyun kayıt dizininden yüklenir. Eğer B<-e> "
-"veya B<--editor> seçeneği de kullanılmışsa I<dosya>'ya ait harita, harita "
-"düzenleyicide açılır."
+"kayıtlı oyun dosyası I<dosya>, standart oyun kayıt dizininden yüklenir. Eğer "
+"B<-e> veya B<--editor> seçeneği de kullanılmışsa I<dosya>'ya ait harita, "
+"harita düzenleyicide açılır. Düzenleyici başlatıldığında harita yükleme "
+"diyaloguyla açılır."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:122
-#, fuzzy, no-wrap
-#| msgid "B<-l,\\ --load>I<\\ file>"
+#, no-wrap
 msgid "B<-L,\\ --language>I<\\ lang>"
-msgstr "B<-l,\\ --load>I<\\ dosya>"
+msgstr "B<-L,\\ --language>I<\\ lisan>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:129
@@ -390,6 +381,8 @@ msgid ""
 "uses language I<lang> (symbol) this session.  Example: B<--language "
 "ang_GB@latin>"
 msgstr ""
+"geçerli oturumda I<lisan> (dilin resmi sembolü) ile belirtilen dil "
+"kullanılır. Örnek: B<--language ang_GB@latin>"
 
 # type: TP
 #. type: TP
@@ -401,35 +394,40 @@ msgstr "B<--log->I<seviye>B<=>I<alan1>B<,>I<alan2>B<,>I<...>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:138
+#, fuzzy
+#| msgid ""
+#| "sets the severity level of the log domains.  B<all> can be used to match "
+#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#| "B<debug>.  By default the B<error> level is used and the B<info> level "
+#| "for the B<server> domain."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
 "B<debug>.  By default the B<error> level is used."
 msgstr ""
-"Günlük alanlarının önem seviyelerini ayarlar. Bütün günlük alanlarını "
+"günlük kayıt alanlarının önem seviyelerini ayarlar. Bütün günlük alanlarını "
 "kapsamak üzere B<all> belirtilebilir. Olası önem seviyeleri: B<error>,\\ "
-"B<warning>,\\ B<info>,\\ B<debug>. B<error> seviyesi öntanımlıdır."
+"B<warning>,\\ B<info>,\\ B<debug>. B<error> seviyesi öntanımlıdır ve "
+"B<server> alanı için B<info> seviyesi kullanılır."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:138
-#, fuzzy, no-wrap
-#| msgid "B<--nogui>"
+#, no-wrap
 msgid "B<--log-precise>"
-msgstr "B<--nogui>"
+msgstr "B<--log-precise>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:141
 msgid "shows the timestamps in the logfile with more precision."
-msgstr ""
+msgstr "günlük dosyasında zaman damgaları daha ayrıntılı gösterilir."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:141
-#, fuzzy, no-wrap
-#| msgid "B<--nomusic>"
+#, no-wrap
 msgid "B<--log-strict>"
-msgstr "B<--nomusic>"
+msgstr "B<--log-strict>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:147
@@ -438,14 +436,17 @@ msgid ""
 "this level or more severe will cause the unit test to fail regardless of the "
 "victory result. Only relevant when used with B<-u>."
 msgstr ""
+"günlük iletilerinin önem seviyesi. Günlük alanlarına gönderilen bu ve daha "
+"önemli seviyelerdeki iletiler, zafer sonucuna bakılmaksızın birim "
+"sınamalarının başarısız olmasında sebep olur. Sadece B<-u> ile "
+"kullanıldığında etkin olur."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:147
-#, fuzzy, no-wrap
-#| msgid "B<--logdomains>"
+#, no-wrap
 msgid "B<--logdomains[>I<=filter>B<]>"
-msgstr "B<--logdomains>"
+msgstr "B<--logdomains[>I<=süzgeç>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:152
@@ -453,14 +454,15 @@ msgid ""
 "lists defined log domains (only the ones containing I<filter> if used) and "
 "exits"
 msgstr ""
+"tanımlı günlük alanlarını listeler ve çıkar (bir I<süzgeç> belirtilmişse "
+"sadece belirtilenleri içerir)."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:152
-#, fuzzy, no-wrap
-#| msgid "B<--max-fps>"
+#, no-wrap
 msgid "B<--max-fps>I<\\ fps>"
-msgstr "B<--max-fps>"
+msgstr "B<--max-fps>I<\\ sayı>"
 
 # type: Plain text
 #. type: Plain text
@@ -468,13 +470,13 @@ msgstr "B<--max-fps>"
 #, fuzzy
 #| msgid ""
 #| "the number of frames per second the game can show, the value should be "
-#| "between the 1 and 1000, the default is B<50>."
+#| "between B<1> and B<1000>, the default is the monitor's refresh rate."
 msgid ""
 "the number of frames per second the game can show, the value should be "
 "between I<1> and I<1000>, the default is the monitor's refresh rate."
 msgstr ""
-"Oyun sırasında ekranın azami kare hızıdır. Değer 1 ile 1000 arasında "
-"olmalıdır. B<50> öntanımlıdır."
+"oyun sırasında ekrana her saniye çizilen kare sayısıdır. Değer B<1> ile "
+"B<1000>arasında olmalıdır. Monitörün tazeleme hızı öntanımlıdır."
 
 # type: TP
 #. type: TP
@@ -486,64 +488,56 @@ msgstr "B<-m, --multiplayer>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:165
-#, fuzzy
 msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below."
 msgstr ""
-"Bir çok oyunculu oyunu çalıştırır. Bu seçenekle birlikte, aşağıda açıklanan "
-"seçenekler belirtilebilir."
+"bir çok oyunculu oyunu çalıştırır. B<--multiplayer> ile birlikte, aşağıda "
+"açıklanan seçenekler belirtilebilir."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:165
-#, fuzzy, no-wrap
-#| msgid "B<-t, --test>"
+#, no-wrap
 msgid "B<--mp-test>"
-msgstr "B<-t, --test>"
+msgstr "B<--mp-test>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:168
 msgid "load the test mp scenarios."
-msgstr ""
+msgstr "çok oyunculu deneme senaryosu yükler."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:168
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--nodelay>"
 msgid "B<--no-delay>"
-msgstr "B<--no-delay>"
+msgstr "B<--nodelay>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:172
-#, fuzzy
-#| msgid ""
-#| "runs the game without any delays for graphic benchmarking. This is "
-#| "automatically enabled by B<--nogui>."
 msgid ""
 "runs the game without any delays for graphic benchmarking. This is "
 "automatically enabled by B<--nogui>."
 msgstr ""
-"Çizgesel başarımı ölçümlemek amacıyla oyunu gecikmeler olmaksızın "
+"çizgesel başarımı ölçümlemek amacıyla oyunu gecikmeler olmaksızın "
 "çalıştırır. Bu seçenek B<--nogui> seçeneği tarafından kendiliğinden etkin "
 "kılınır."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:172
-#, fuzzy, no-wrap
-#| msgid "B<--nosound>"
+#, no-wrap
 msgid "B<--noaddons>"
-msgstr "B<--nosound>"
+msgstr "B<--noaddons>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:175
-#, fuzzy
-#| msgid "disables caching of game data."
 msgid "disables loading of user addons."
-msgstr "Oyun verisinin belleklenmesini iptal eder."
+msgstr "kullanıcı eklentilerinin yüklenmesini iptal eder."
 
 # type: TP
 #. type: TP
@@ -571,6 +565,8 @@ msgid ""
 "runs the game without the GUI. Only available in combination with B<--"
 "multiplayer> or B<--screenshot> or B<--plugin>."
 msgstr ""
+"oyunu GUI olmadan çalıştırır. Sadece B<--multiplayer>, B<--screenshot> veya "
+"B<--plugin> seçeneklerinden biri ile birlikte çalışır."
 
 # type: TP
 #. type: TP
@@ -583,15 +579,14 @@ msgstr "B<--nomusic>"
 #. type: Plain text
 #: doc/man/wesnoth.6:189
 msgid "runs the game without music."
-msgstr "Oyunu müziksiz çalıştırır."
+msgstr "oyunu müziksiz çalıştırır."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:189
-#, fuzzy, no-wrap
-#| msgid "B<--nocache>"
+#, no-wrap
 msgid "B<--noreplaycheck>"
-msgstr "B<--nocache>"
+msgstr "B<--noreplaycheck>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:193
@@ -599,6 +594,8 @@ msgid ""
 "don't try to validate replay of unit test. Only relevant when used with B<-"
 "u>."
 msgstr ""
+"birim sınamalarının yinelenmesi doğrulanmaya çalışılmaz. Yalnız B<-u> ile "
+"kullanıldığında çalışır."
 
 # type: TP
 #. type: TP
@@ -611,15 +608,14 @@ msgstr "B<--nosound>"
 #. type: Plain text
 #: doc/man/wesnoth.6:196
 msgid "runs the game without sounds and music."
-msgstr "Oyunu sesler ve müzikler olmaksızın çalıştırır."
+msgstr "oyunu sesler ve müzikler olmaksızın çalıştırır."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:196
-#, fuzzy, no-wrap
-#| msgid "B<db_password>"
+#, no-wrap
 msgid "B<--password>I<\\ password>"
-msgstr "B<db_password>"
+msgstr "B<--password>I<\\ parola>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:201
@@ -627,6 +623,8 @@ msgid ""
 "uses I<password> when connecting to a server, ignoring other preferences. "
 "Unsafe."
 msgstr ""
+"I<parola> bir sunucuya bağlanırken diğer tercihler yoksayılarak  kullanılır. "
+"Güvenli değildir."
 
 # type: TP
 #. type: TP
@@ -645,10 +643,20 @@ msgstr "Oyun data dizininin yerini basar ve çıkar."
 #: doc/man/wesnoth.6:204
 #, no-wrap
 msgid "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
-msgstr ""
+msgstr "B<-p,\\ --preprocess>I<\\ kaynak-dosya/dizin>B<\\ >I<hedef-dizin>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:214
+#, fuzzy
+#| msgid ""
+#| "preprocesses a specified file/folder. For each file(s) a plain .cfg file "
+#| "and a processed .cfg file will be written in specified target directory. "
+#| "If a folder is specified, it will be preprocessed recursively based on "
+#| "the known preprocessor rules. The common macros from the \"data/core/"
+#| "macros\" directory will be preprocessed before the specified resources.  "
+#| "Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/result.> For details "
+#| "regarding the preprocessor visit: https://wiki.wesnoth.org/"
+#| "PreprocessorRef#Command-line_preprocessor."
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "
@@ -659,12 +667,20 @@ msgid ""
 "preprocessor visit: https://wiki.wesnoth.org/PreprocessorRef#Command-"
 "line_preprocessor"
 msgstr ""
+"belirtilen bir dosya/dizini önceden işler. Her dosya için bir düz metin .cfg "
+"dosyası ve işlenmiş bir .cfg dosyası belirtilen hedef dizine yazılacaktır. "
+"Bir dizin belirtilirse, bilinen önişlemci kurallarına dayanarak ardışık "
+"olarak önişlem ugulanır. \"gata/core/macros\" dizinindeki ortak makrolar, "
+"belirtilen kaynaklardan önce önişleme tabi tutulur. Örnek: B<-p ~ /wesnoth/"
+"data/campaigns/tutorial ~ /result> Önişlemci ile ilgili ayrıntılar için "
+"https://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor adresine "
+"balınız."
 
 #. type: TP
 #: doc/man/wesnoth.6:214
 #, no-wrap
 msgid "B<--preprocess-defines=>I<DEFINE1>B<,>I<DEFINE2>B<,>I<...>"
-msgstr ""
+msgstr "B<--preprocess-defines=>I<TANIM1>B<,>I<TANIM2>B<,>I<...>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:221
@@ -673,12 +689,15 @@ msgid ""
 "If B<SKIP_CORE> is in the define list the \"data/core\" directory won't be "
 "preprocessed."
 msgstr ""
+"B<--preprocess> seçeneği tarafından kullanılacak tanımların virgülle "
+"ayrılmış listesi. Eğer B<SKIP_CORE> tanım listesinde ise \"data/core\" "
+"dizinine önişlem uygulanmaz."
 
 #. type: TP
 #: doc/man/wesnoth.6:221
 #, no-wrap
 msgid "B<--preprocess-input-macros>I<\\ source-file>"
-msgstr ""
+msgstr "B<--preprocess-input-macros>I<\\ kaynak-dosya>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:228
@@ -686,12 +705,14 @@ msgid ""
 "used only by the B<--preprocess> command. Specifies a file that contains "
 "B<[preproc_define]>s to be included before preprocessing."
 msgstr ""
+"sadece B<--preprocess> seçeneği tarafından kullanılır. Önişleme başlamadan "
+"önce eklenecek B<[önişlem_tanım]>larını içeren dosyayı belirtir."
 
 #. type: TP
 #: doc/man/wesnoth.6:228
 #, no-wrap
 msgid "B<--preprocess-output-macros[>I<=target-file>B<]>"
-msgstr ""
+msgstr "B<--preprocess-output-macros[>I<=hedef-dosya>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:239
@@ -702,6 +723,11 @@ msgid ""
 "output file can be passed to B<--preprocess-input-macros>.  This switch "
 "should be typed before the B<--preprocess> command."
 msgstr ""
+"sadece B<--preprocess> seçeneğiyle kullanılır. Önişlemden geçmiş tüm "
+"makroları hedef dosyaya çıktılar. Eğer dosya belirtilmemişse, çıktılama "
+"önişlem seçeneğinin hedef dizinindeki '_MACROS_.cfg' dosyasına yapılır. "
+"Çıktı dosyası B<--preprocess-input-macros> seçeneğine aktarılabilir. Bu "
+"seçenek komut satırında B<--preprocess> seçeneğinden önce yer almalıdır."
 
 # type: TP
 #. type: TP
@@ -713,31 +739,40 @@ msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:243
+#, fuzzy
+#| msgid "sets the screen resolution. Example: B<-r> B<800x600>."
 msgid "sets the screen resolution. Example: B<-r 800x600>"
-msgstr "Ekran çözünürlüğünü ayarlar. Örnek: B<-r 800x600>"
+msgstr "ekran çözünürlüğünü ayarlar. Örnek: B<-r> B<800x600>."
 
 #. type: TP
 #: doc/man/wesnoth.6:243
 #, no-wrap
 msgid "B<--render-image>I<\\ image>B<\\ >I<output>"
-msgstr ""
+msgstr "B<--render-image>I<\\ resim>B<\\ >I<çıktı>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:246
+#, fuzzy
+#| msgid ""
+#| "takes a valid wesnoth 'image path string' with image path functions, and "
+#| "outputs to a .png file. Image path functions are documented at https://"
+#| "wiki.wesnoth.org/ImagePathFunctionWML."
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
 "outputs to a .png file. Outputs to a windows .bmp file if the filename ends "
 "with .bmp or if libpng is not available. Image path functions are documented "
 "at https://wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
+"resim yolu işlevleri için geçerli bir wesnoth 'resim yolu dizesi' alır ve "
+"bir .png dosyasına çıktılar. Resim yolu işlevleri https://wiki.wesnoth.org/"
+"ImagePathFunctionWML adresinde belgelenmiştir."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:246
-#, fuzzy, no-wrap
-#| msgid "B<port>"
+#, no-wrap
 msgid "B<-R,\\ --report>"
-msgstr "B<port>"
+msgstr "B<-R,\\ --report>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:249
@@ -745,81 +780,93 @@ msgid ""
 "initializes game directories, prints build information suitable for use in "
 "bug reports, and exits."
 msgstr ""
+"oyun dizinlerini ilklendirir, hata raporlarında kullanıma uygun derleme "
+"bilgileri basar ve çıkar."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:249
 #, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#| msgid "B<--rng-seed>I<\\ number>"
 msgid "B<--rng-seed>I<\\ seed>"
-msgstr "B<--config-dir>I<\\ isim>"
+msgstr "B<--rng-seed>I<\\ sayı>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:253
+#, fuzzy
+#| msgid ""
+#| "seeds the random number generator with I<number>.  Example: B<--rng-seed> "
+#| "B<0>."
 msgid ""
 "seeds the random number generator with number E<lt>argE<gt>. Example: B<--"
 "rng-seed 0>"
 msgstr ""
+"rasgele sayı üretecini I<sayı> ile tohumlar. Örnek: B<--rng-seed> B<0>."
 
 #. type: TP
 #: doc/man/wesnoth.6:253
 #, no-wrap
 msgid "B<--screenshot>I<\\ map>B<\\ >I<output>"
-msgstr ""
+msgstr "B<--screenshot>I<\\ harita>B<\\ >I<çıktı>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:260
 msgid ""
 "saves a screenshot of I<map> to I<output> without initializing a screen."
 msgstr ""
+"ekranı ilklendirmeksizin  I<harita> ekran görüntüsünü I<çıktı> dosyasına "
+"yazar."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:260
-#, fuzzy, no-wrap
-#| msgid "B<-s,\\ --server\\ [host]>"
+#, no-wrap
 msgid "B<-s[>I<host>B<],\\ --server[>I<=host>B<]>"
-msgstr "B<-s,\\ --server\\ [sunucu]>"
+msgstr "B<-s[>I<konak>B<],\\ --server[>I<=konak>B<]>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:264
+#, fuzzy
+#| msgid ""
+#| "connects to the specified host if any, otherwise connect to the first "
+#| "server in preferences. Example: B<--server> B<server.wesnoth.org>."
 msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
-"Varsa belirtilen sunucuya, yoksa tercihler arasındaki ilk sunucuya "
-"bağlanılır. Örnek: B<--server server.wesnoth.org>"
+"varsa belirtilen sunucuya, yoksa tercihlerde belirtilen ilk sunucuya "
+"bağlanılır. Örnek: B<--server> B<server.wesnoth.org>."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:264
-#, fuzzy, no-wrap
-#| msgid "B<--nogui>"
+#, no-wrap
 msgid "B<--showgui>"
-msgstr "B<--nogui>"
+msgstr "B<--showgui>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:268
 msgid "runs the game with the GUI, overriding any implicit B<--nogui>."
 msgstr ""
+"B<--nogui> seçeneğini örtük olarak geçersiz kılarak oyunu GUI ile çalıştırır."
 
 #. type: TP
 #: doc/man/wesnoth.6:268
 #, no-wrap
 msgid "B<--strict-validation>"
-msgstr ""
+msgstr "B<--strict-validation>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:271
 msgid "validation errors are treated as fatal errors."
-msgstr ""
+msgstr "doğrulama hatalarını ölümcül hatalar haline getirir."
 
 #. type: TP
 #: doc/man/wesnoth.6:271
 #, no-wrap
 msgid "B<-t[>I<scenario_id>B<],\\ --test[>I<=scenario_id>B<]>"
-msgstr ""
+msgstr "B<-t[>I<senaryo>B<],\\ --test[>I<=senaryo>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:283
@@ -829,34 +876,35 @@ msgid ""
 "B<[micro_ai]> feature can be started with B<micro_ai_test>.  Implies B<--"
 "nogui>."
 msgstr ""
+"küçük bir deneme senaryosu çalıştırır. Senaryo bir B<[deneme]> WML etiketi "
+"ile tanımlanmalıdır. B<test> öntanımlıdır. B<[micro_ai]> yapay zekasının bir "
+"deneme gösterimi B<micro_ai_test> ile başlatılabilir. Seçenek B<--nogui> "
+"seçeneğini örtük olarak uygular."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:283
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-u,\\ --unit>I<\\ scenario-id>"
-msgstr "B<-e, --editor>"
+msgstr "B<-u,\\ --unit>I<\\ senaryo>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:287
 msgid "runs the specified test scenario as a unit test. Implies B<--nogui>."
 msgstr ""
+"birim sınaması olarak belirtilen deneme senaryosunu çalıştırır. Örtük "
+"olarak  B<--nogui> uygular."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:287
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--userconfig-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ isim>"
+msgstr "B<--userconfig-dir>I<\\ isim>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:298
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows."
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -866,16 +914,21 @@ msgid ""
 "\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, "
 "on other systems to the userdata path."
 msgstr ""
-"Kullanıcı yapılandırma dizini olarak *n*x türevlerinde $HOME, windows’ta "
-"\"Belgelerim\\eOyunlarım\" dizini altında I<isim> dizini kullanılır."
+"kullanıcı yapılandırma dizini olarak *n*x türevlerinde $HOME, windows'ta "
+"\"Belgelerim\\eOyunlarım\" dizini altında I<isim> dizini kullanılır. Ayrıca, "
+"$HOME veya \"Belgelerim\\eOyunlarım\" dışında bir yapılandırma dizinini de "
+"mutlak yolunu belirtmek suretiyle kullanabilirsiniz. Windows'ta ayrıca, yolu "
+"\".\\e\" veya \"..\\e\" ile başlatarak sürecin çalışma dizinine göreli bir "
+"dosya yolu da belirtebilirsiniz. X11 altında bu, öntanımlı olarak "
+"$XDG_CONFIG_HOME veya $HOME/.config/wesnoth olup diğer sistemlerde kullanıcı "
+"verisi dizinidir."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:298
-#, fuzzy, no-wrap
-#| msgid "B<--config-path>"
+#, no-wrap
 msgid "B<--userconfig-path>"
-msgstr "B<--config-path>"
+msgstr "B<--userconfig-path>"
 
 # type: Plain text
 #. type: Plain text
@@ -886,18 +939,13 @@ msgstr "Kullanıcı yapılandırma dizininin yolunu basar ve çıkar."
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:301
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--userdata-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ isim>"
+msgstr "B<--userdata-dir>I<\\ dizin>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:310
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows."
 msgid ""
 "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
 "Games\" for windows.  You can also specify an absolute path for the userdata "
@@ -905,38 +953,40 @@ msgid ""
 "also possible to specify a directory relative to the process working "
 "directory by using path starting with \".\\e\" or \"..\\e\"."
 msgstr ""
-"Kullanıcı yapılandırma dizini olarak *n*x türevlerinde $HOME, windows’ta "
-"\"Belgelerim\\eOyunlarım\" dizini altında I<isim> dizini kullanılır."
+"kullanıcı verisi dizini olarak *n*x türevlerinde $HOME, windows'ta "
+"\"Belgelerim\\eOyunlarım\" dizini altında I<isim> dizini kullanılır. Ayrıca, "
+"$HOME veya \"Belgelerim\\eOyunlarım\" dışında bir kullanıcı verisi dizinini "
+"de mutlak yolunu belirtmek suretiyle kullanabilirsiniz. Windows'ta ayrıca, "
+"yolu \".\\e\" veya \"..\\e\" ile başlatarak sürecin çalışma dizinine göreli "
+"bir dosya yolu da belirtebilirsiniz"
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:310
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--username>I<\\ username>"
-msgstr "B<--config-dir>I<\\ isim>"
+msgstr "B<--username>I<\\ kullanıcı>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:315
 msgid ""
 "uses I<username> when connecting to a server, ignoring other preferences."
 msgstr ""
+"bir sunucuya bağlanırken I<kullanıcı> diğer tercihler yoksayılarak "
+"kullanılır."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:315
-#, fuzzy, no-wrap
-#| msgid "B<--path>"
+#, no-wrap
 msgid "B<--userdata-path>"
-msgstr "B<--path>"
+msgstr "B<--userdata-path>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:318
-#, fuzzy
-#| msgid "prints the path of the user configuration directory and exits."
 msgid "prints the path of the userdata directory and exits."
-msgstr "Kullanıcı yapılandırma dizininin yolunu basar ve çıkar."
+msgstr "kullanıcı verileri dizininin yolunu basar ve çıkar."
 
 # type: TP
 #. type: TP
@@ -949,7 +999,7 @@ msgstr "B<--validcache>"
 #. type: Plain text
 #: doc/man/wesnoth.6:321
 msgid "assumes that the cache is valid. (dangerous)"
-msgstr "Önbelleğin geçerli olduğu varsayılır. (tehlikeli)"
+msgstr "önbelleğin geçerli olduğu varsayılır. (tehlikeli)"
 
 # type: TP
 #. type: TP
@@ -962,7 +1012,7 @@ msgstr "B<-v, --version>"
 #. type: Plain text
 #: doc/man/wesnoth.6:324
 msgid "shows the version number and exits."
-msgstr "Sürüm numarasını gösterir ve çıkar."
+msgstr "sürüm numarasını gösterir ve çıkar."
 
 # type: TP
 #. type: TP
@@ -975,7 +1025,7 @@ msgstr "B<-w, --windowed>"
 #. type: Plain text
 #: doc/man/wesnoth.6:327
 msgid "runs the game in windowed mode."
-msgstr "Oyunu pencereli kipte çalıştırır."
+msgstr "oyunu pencereli kipte çalıştırır."
 
 # type: TP
 #. type: TP
@@ -1013,8 +1063,9 @@ msgstr ""
 #. type: TP
 #: doc/man/wesnoth.6:340
 #, fuzzy, no-wrap
+#| msgid "B<--ai-config>I<\\ number>B<:>I<value>"
 msgid "B<--ai_config>I<\\ number>B<:>I<value>"
-msgstr "B<--side>I<taraf>B<=>I<değer>"
+msgstr "B<--ai-config>I<\\ taraf>B<:>I<değer>"
 
 # type: Plain text
 #. type: Plain text
@@ -1022,14 +1073,15 @@ msgstr "B<--side>I<taraf>B<=>I<değer>"
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
 msgstr ""
+"belirtilen tarafın yapay zeka denetleyicisi için yüklenecek yapılandırma "
+"dosyasını seçer."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:343
-#, fuzzy, no-wrap
-#| msgid "B<--algorithm>I<number>B<=>I<value>"
+#, no-wrap
 msgid "B<--algorithm>I<\\ number>B<:>I<value>"
-msgstr "B<--algorithm>I<taraf>B<=>I<değer>"
+msgstr "B<--algorithm>I<\\ sayı>B<:>I<değer>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:353
@@ -1039,14 +1091,18 @@ msgid ""
 "either in \"data/ai/ais\" or \"data/ai/dev\" or an algorithm defined by an "
 "addon. Available values include: B<idle_ai> and B<experimental_ai>."
 msgstr ""
+"YZ denetleyicisi tarafından belirtilen taraf için kullanılacak standartdışı "
+"bir algoritma seçer. Algoritma, \"data/ai/ais\" veya \"data/ai/dev\" "
+"altındaki bir çekirdek ya da bir eklenti tarafından tanımlanmış bir "
+"algoritmadaki bir B <[ai]> etiketi ile tanımlanır. Mevcut değerler "
+"şunlardır: B<idle_ai> ve B<experimental_ai>."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:353
-#, fuzzy, no-wrap
-#| msgid "B<--controller>I<number>B<=>I<value>"
+#, no-wrap
 msgid "B<--controller>I<\\ number>B<:>I<value>"
-msgstr "B<--controller>I<taraf>B<=>I<değer>"
+msgstr "B<--controller>I<\\ sayı>B<:>I<değer>"
 
 # type: Plain text
 #. type: Plain text
@@ -1054,16 +1110,15 @@ msgstr "B<--controller>I<taraf>B<=>I<değer>"
 msgid ""
 "selects the controller for this side. Available values: B<human> and B<ai>."
 msgstr ""
-"Tarafı kimin oynayacağı belirtilir. Olası değerler: B<human> ve B<ai> "
-"(sırayla insan ve bilgisayar)."
+"tarafı kimin oynayacağı belirtilir. Olası değerler: B<human> ve B<ai> "
+"(sırayla insan ve yapay zeka)."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:359
-#, fuzzy, no-wrap
-#| msgid "B<--era=>I<value>"
+#, no-wrap
 msgid "B<--era>I<\\ value>"
-msgstr "B<--era=>I<değer>"
+msgstr "B<--era>I<\\ değer>"
 
 # type: Plain text
 #. type: Plain text
@@ -1087,12 +1142,17 @@ msgstr "B<--exit-at-end>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:370
+#, fuzzy
+#| msgid ""
+#| "exits once the scenario is over, without displaying victory/defeat dialog "
+#| "which normally requires the user to click End Scenario.  This is also "
+#| "used for scriptable benchmarking."
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which requires the user to click OK.  This is also used for scriptable "
 "benchmarking."
 msgstr ""
-"Oyuncunun tıklamasını gerektiren zafer/yenilgi penceresi gösterilmeden "
+"oyuncunun tıklamasını gerektiren zafer/yenilgi penceresi gösterilmeden "
 "senaryo bitiminde oyundan çıkılır. Bu ayrıca betikli başarım ölçümlemesi "
 "yapılırken de kullanılır."
 
@@ -1100,20 +1160,19 @@ msgstr ""
 #: doc/man/wesnoth.6:370
 #, no-wrap
 msgid "B<--ignore-map-settings>"
-msgstr ""
+msgstr "B<--ignore-map-settings>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:373
 msgid "do not use map settings, use default values instead."
-msgstr ""
+msgstr "harita ayarları yerine öntanımlı değerler kullanılır."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:373
-#, fuzzy, no-wrap
-#| msgid "B<--era=>I<value>"
+#, no-wrap
 msgid "B<--multiplayer-repeat>I<\\ value>"
-msgstr "B<--era=>I<değer>"
+msgstr "B<--multiplayer-repeat>I<\\ değer>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:380
@@ -1121,12 +1180,13 @@ msgid ""
 "repeats a multiplayer game I<value> times. Best to use with B<--nogui> for "
 "scriptable benchmarking."
 msgstr ""
+"bir çok oyunculu oyunun I<değer> kere tekrarlar. Betikli başarım ölçümlemesi "
+"için en iyi sonuç B<--nogui> seçeneğiyle birlikte alınır."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:380
-#, fuzzy, no-wrap
-#| msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
+#, no-wrap
 msgid "B<--parm>I<\\ number>B<:>I<name>B<:>I<value>"
 msgstr "B<--parm>I<taraf>B<=>I<isim>B<:>I<değer>"
 
@@ -1138,18 +1198,16 @@ msgid ""
 "options used with B<--controller> and B<--algorithm>.  It should only be "
 "useful for people designing their own AI. (not yet documented completely)"
 msgstr ""
-"Tarafla ilgili ek parametreleri ayarlar. Bu parametreler B<--controller> ve "
-"B<--algorithm> seçenekleri ile kullanılan seçeneklerle ilgilidir. Sadece "
-"kendi saldırı arayüzünü tasarlamak isteyen kişilerin işine yarar. (Yeterince "
-"iyi belgelenmemiştir.)"
+"tarafla ilgili ek değiştirgeleri ayarlar. Bu değiştirgeler B<--controller> "
+"ve B<--algorithm> seçenekleriyle ilgilidir. Sadece kendi saldırı arayüzünü "
+"tasarlamak isteyen kişilerin işine yarar. (Yeterince iyi belgelenmemiştir.)"
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:389
-#, fuzzy, no-wrap
-#| msgid "B<--scenario=>I<value>"
+#, no-wrap
 msgid "B<--scenario>I<\\ value>"
-msgstr "B<--scenario=>I<değer>"
+msgstr "B<--scenario>I<\\ değer>"
 
 # type: Plain text
 #. type: Plain text
@@ -1158,16 +1216,15 @@ msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
 msgstr ""
-"Kimliği belirtilen çok oyunculu senaryoyu seçer. Öntanımlı senaryo kimliği "
+"kimliği belirtilen çok oyunculu senaryoyu seçer. Öntanımlı senaryo kimliği "
 "B<multiplayer_The_Freelands>'dır."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:393
-#, fuzzy, no-wrap
-#| msgid "B<--side>I<number>B<=>I<value>"
+#, no-wrap
 msgid "B<--side>I<\\ number>B<:>I<value>"
-msgstr "B<--side>I<taraf>B<=>I<değer>"
+msgstr "B<--side>I<\\ taraf>B<:>I<değer>"
 
 # type: Plain text
 #. type: Plain text
@@ -1176,36 +1233,32 @@ msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
 msgstr ""
-"Bu taraf için geçerli çağdan bir ırk seçmek için kullanılır. Irklar "
-"kimlikleriyle belirtilirler. Irklar B<data/multiplayer.cfg> dosyasında "
+"Bu taraf için geçerli çağdan birlik seçmek için kullanılır. Birlikler "
+"kimlikleriyle belirtilirler. Birlikler B<data/multiplayer.cfg> dosyasında "
 "tanımlanmıştır."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:398
-#, fuzzy, no-wrap
-#| msgid "B<--turns=>I<value>"
+#, no-wrap
 msgid "B<--turns>I<\\ value>"
-msgstr "B<--turns=>I<değer>"
+msgstr "B<--turns>I<\\ değer>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:401
-#, fuzzy
-#| msgid ""
-#| "sets the number of turns for the chosen scenario. The default is B<50>."
 msgid ""
 "sets the number of turns for the chosen scenario. By default no turn limit "
 "is set."
 msgstr ""
-"Seçilen senaryonun el sayısını sınırlamak için kullanılır. B<50> "
-"öntanımlıdır."
+"seçilen senaryonun el sayısını sınırlamak için kullanılır. Öntanımlı olarak "
+"el sınırı yoktur."
 
 #. type: SH
 #: doc/man/wesnoth.6:402 doc/man/wesnothd.6:265
 #, no-wrap
 msgid "EXIT STATUS"
-msgstr ""
+msgstr "ÇIKIŞ DURUMU"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:407
@@ -1214,6 +1267,9 @@ msgid ""
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
 "with the command line options."
 msgstr ""
+"Normal çıkış durumu 0'dır. 1 çıkış durumu bir (SDL, video, fontlar, vb.) "
+"ilklendirme hatasını gösterir. 2 çıkış durumu, komut satırı seçeneklerinde "
+"hata olduğunu gösterir."
 
 #. type: Plain text
 #: doc/man/wesnoth.6:419
@@ -1226,6 +1282,14 @@ msgid ""
 "if B<--noreplaycheck> is not passed. An exit status of 2 indicates that the "
 "test timed out, when used with the deprecated B<--timeout> option."
 msgstr ""
+"Birim sınamalarını çalıştırırken (B<\\ -u> ile), çıkış durumu farklıdır. 0 "
+"çıkış durumu, sınamanın başarılı olduğunu ve 1 başarısız olduğunu gösterir. "
+"3 çıkış durumu, sınamanın geçtiğini ancak geçersiz bir yeniden oynatma "
+"dosyası üretildiğini gösterir. 4 çıkış durumu, sınamanın geçtiğini ancak "
+"yeniden oynatma dosyasının hatalar ürettiğini gösterir. Bu son ikisi, "
+"yalnızca B<--noreplaycheck> kullanılmazsa döndürülür. 2 çıkış durumu, B<--"
+"timeout> seçeneğiyle kullanıldığında sınamanın zaman aşımına uğradığını "
+"gösterir."
 
 # type: SH
 #. type: SH
@@ -1238,8 +1302,7 @@ msgstr "YAZAN"
 #. type: Plain text
 #: doc/man/wesnoth.6:423
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
-msgstr ""
-"Oyun David White E<lt>davidnwhite@verizon.netE<gt> tarafından yazılmıştır."
+msgstr "David White E<lt>davidnwhite@verizon.netE<gt> tarafından yazılmıştır."
 
 # type: Plain text
 #. type: Plain text
@@ -1249,7 +1312,7 @@ msgid ""
 "netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
 "Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> ve "
-"Soliton E<lt>soliton.de@gmail.comE<gt> tarafından düzenlenmiştir."
+"Soliton E<lt>soliton.de@gmail.comE<gt> tarafından yeniden düzenlenmiştir."
 
 # type: Plain text
 #. type: Plain text
@@ -1260,15 +1323,13 @@ msgid ""
 msgstr ""
 "Bu kılavuz sayfası ilk defa Cyril Bouthors E<lt>cyril@bouthors.orgE<gt> "
 "tarafından yazılmış ve Nilgün Belma Bugüner E<lt>nilgun@belgeler.orgE<gt> "
-"tarafından Türkçe'ye çevrilmiştir."
+"tarafından Türkçeye çevrilmiştir."
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:429 doc/man/wesnothd.6:276
-#, fuzzy
-#| msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgid "Visit the official homepage: https://www.wesnoth.org/"
-msgstr "Oyunun ana sayfasını ziyaret etmeyi unutmayın: http://www.wesnoth.org/"
+msgstr "oyunun ana sayfasını ziyaret etmeyi unutmayın: http://www.wesnoth.org/"
 
 # type: SH
 #. type: SH
@@ -1280,11 +1341,8 @@ msgstr "TELİF HAKKI"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:433 doc/man/wesnothd.6:280
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2009 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
-msgstr "Copyright © 2003-2009 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgstr "Copyright © 2003-2019 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -1294,10 +1352,10 @@ msgid ""
 "published by the Free Software Foundation.  There is NO warranty; not even "
 "for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 msgstr ""
-"Bu bir özgür yazılımdır; GNU Genel Kamu Lisansının 2 koşullarına bağlı "
-"kalarak kopyalarını yeniden dağıtabilirsiniz. Yasaların izin verdiği ölçüde "
-"hiçbir garantisi yoktur; hatta SATILABİLİRLİĞİ veya ŞAHSİ KULLANIMINIZA "
-"UYGUNLUĞU için bile garanti verilmez."
+"Bu bir özgür yazılımdır; GNU Genel Kamu Lisansının 2. sürümünün (GPLv2) "
+"koşullarına bağlı kalarak kopyalarını yeniden dağıtabilirsiniz. Yasaların "
+"izin verdiği ölçüde hiçbir garantisi yoktur; hatta SATILABİLİRLİĞİ veya "
+"ŞAHSİ KULLANIMINIZA UYGUNLUĞU için bile garanti verilmez."
 
 # type: SH
 #. type: SH
@@ -1321,16 +1379,16 @@ msgstr "İLGİLİ BELGELER"
 #. type: Plain text
 #: doc/man/wesnothd.6:15
 #, fuzzy
-#| msgid "wesnothd"
+#| msgid "B<wesnothd>(6)"
 msgid "B<wesnothd>(6)."
-msgstr "wesnothd"
+msgstr "B<wesnothd>(6)"
 
 # type: TH
 #. type: TH
 #: doc/man/wesnothd.6:16
 #, no-wrap
 msgid "WESNOTHD"
-msgstr "wesnothd"
+msgstr "WESNOTHD"
 
 # type: TH
 #. type: TH
@@ -1344,13 +1402,13 @@ msgstr "wesnothd"
 #: doc/man/wesnothd.6:16
 #, no-wrap
 msgid "Battle for Wesnoth multiplayer network daemon"
-msgstr "Wesnoth Savaşı çok oyunculu ağ sunucusu"
+msgstr "Vesnot Savaşı çok oyunculu ağ sunucusu"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:23
 msgid "wesnothd - Battle for B<Wesnoth> multiplayer network daemon"
-msgstr "wesnothd - B<Wesnoth>Savaşı çok oyunculu ağ sunucusu"
+msgstr "wesnothd - B<Vesnot Savaşı> çok oyunculu ağ sunucusu"
 
 # type: Plain text
 #. type: Plain text
@@ -1371,17 +1429,12 @@ msgstr "B<wesnothd> B<-V>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:44
-#, fuzzy
-#| msgid ""
-#| "Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
-#| "wiki/ServerAdministration on what commands the server accepts via the "
-#| "wesnoth client (/query ...) or the fifo."
 msgid ""
 "Manages Battle for Wesnoth multiplayer games. See https://www.wesnoth.org/"
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
-"Wesnoth Savaşı çok oyunculu oyunlarını yönetir. Wesnoth istemcisinden veya "
+"Vesnot Savaşı çok oyunculu oyunlarını yönetir. wesnoth istemcisinden veya "
 "soket üzerinden hangi komutların (/query ...) kabul edildiğini öğrenmek için "
 "http://www.wesnoth.org/wiki/ServerAdministration adresine bakınız."
 
@@ -1421,7 +1474,7 @@ msgstr " wesnothd'yi bir artalan süreci olarak çalıştırır."
 #. type: Plain text
 #: doc/man/wesnothd.6:58
 msgid "tells you what the command line options do."
-msgstr "Komut satırı seçeneklerini basar ve çıkar."
+msgstr "komut satırı seçeneklerini basar ve çıkar."
 
 # type: Plain text
 #. type: Plain text
@@ -1432,7 +1485,7 @@ msgid ""
 "B<debug>.  By default the B<error> level is used and the B<info> level for "
 "the B<server> domain."
 msgstr ""
-"Günlük alanlarının önem seviyelerini ayarlar. Bütün günlük alanlarını "
+"günlük kayıt alanlarının önem seviyelerini ayarlar. Bütün günlük alanlarını "
 "kapsamak üzere B<all> belirtilebilir. Olası önem seviyeleri: B<error>,\\ "
 "B<warning>,\\ B<info>,\\ B<debug>. B<error> seviyesi öntanımlıdır ve "
 "B<server> alanı için B<info> seviyesi kullanılır."
@@ -1451,7 +1504,7 @@ msgid ""
 "binds the server to the specified port. If no port is specified, port "
 "B<15000> will be used."
 msgstr ""
-"Sunucunun belirtilen portu dinlemesini sağlar. Bir port belirtilmezse "
+"sunucunun belirtilen portu dinlemesini sağlar. Bir port belirtilmezse "
 "B<15000> öntanımlıdır."
 
 # type: TP
@@ -1468,7 +1521,7 @@ msgid ""
 "sets the maximum number of waiting worker threads for network I/O to n "
 "(default: B<5>,\\ max:\\ B<30>)."
 msgstr ""
-"Ağ G/Ç için bekleyen iş evrelerinin azami sayısını belirler. (B<5> "
+"ağa G/Ç için bekleyen iş evrelerinin azami sayısını belirler. (B<5> "
 "öntanımlıdır. En çok B<30> belirtilebilir.)"
 
 # type: TP
@@ -1499,7 +1552,7 @@ msgstr "B<-V, --version>"
 #. type: Plain text
 #: doc/man/wesnothd.6:91
 msgid "shows version number and exits."
-msgstr "Sürüm numarasını gösterir ve çıkar."
+msgstr "sürüm numarasını gösterir ve çıkar."
 
 # type: TP
 #. type: TP
@@ -1512,7 +1565,7 @@ msgstr "B<-v, --verbose>"
 #. type: Plain text
 #: doc/man/wesnothd.6:94
 msgid "turns debug logging on."
-msgstr "Hata ayıklama günlüğünü açar."
+msgstr "hata ayıklama günlüğünü açar."
 
 # type: SH
 #. type: SH
@@ -1526,7 +1579,7 @@ msgstr "SUNUCU YAPILANDIRMASI"
 #: doc/man/wesnothd.6:97
 #, no-wrap
 msgid "The general syntax is:"
-msgstr "Genel sözdizimi şöyledir:"
+msgstr "Genel sözdizimi:"
 
 # type: Plain text
 #. type: Plain text
@@ -1537,16 +1590,14 @@ msgstr "[I<etiket>]"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:103
-#, fuzzy
 msgid "I<key>=\"I<value>\""
-msgstr "key=\"I<değer>\""
+msgstr "I<anahtar>=\"I<değer>\""
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:105
-#, fuzzy
 msgid "I<key>=\"I<value>,I<value>,...\""
-msgstr "key=\"I<değer>,I<değer>,...\""
+msgstr "I<anahtar>=\"I<değer>,I<değer>,...\""
 
 # type: Plain text
 #. type: Plain text
@@ -1559,14 +1610,14 @@ msgstr "[/I<etiket>]"
 #: doc/man/wesnothd.6:108
 #, no-wrap
 msgid "Global keys:"
-msgstr "Genel anahtar (key) isimleri:"
+msgstr "Genel anahtarlar:"
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<allow_remote_shutdown>"
-msgstr ""
+msgstr "B<allow_remote_shutdown>"
 
 # type: Plain text
 #. type: Plain text
@@ -1576,6 +1627,9 @@ msgid ""
 "they come from the fifo.  Set it to B<yes> to allow remote shutdown via a /"
 "query by an administrator."
 msgstr ""
+"Değer olarak B<no> (öntanımlı) belirtilirse, kapatma ve yeniden başlatma "
+"istekleri, fifo'dan gelmedikçe dikkate alınmaz. Bir yönetici tarafından bir /"
+"query komutuyla uzaktan kapatmaya izin vermek için değer olarak B<yes> verin."
 
 # type: TP
 #. type: TP
@@ -1600,7 +1654,7 @@ msgstr ""
 #: doc/man/wesnothd.6:118
 #, no-wrap
 msgid "B<compress_stored_rooms>"
-msgstr ""
+msgstr "B<compress_stored_rooms>"
 
 # type: Plain text
 #. type: Plain text
@@ -1609,6 +1663,8 @@ msgid ""
 "Determines whether the rooms file should be read and written to in "
 "compressed form. Defaults to B<yes>."
 msgstr ""
+"rooms dosyasının sıkıştırılmış haliyle okunup yazılabillmesini belirler. "
+"Öntanımlı değer B<yes>'tir."
 
 # type: TP
 #. type: TP
@@ -1625,7 +1681,7 @@ msgid ""
 "(default: B<5>)"
 msgstr ""
 "Aynı IP adresinden izin verilen bağlantı sayısı. B<0> sonsuz anlamına gelir. "
-"B<5> öntanımlıdır."
+"(B<5> öntanımlıdır)"
 
 # type: TP
 #. type: TP
@@ -1637,17 +1693,16 @@ msgstr "B<disallow_names>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:131
-#, fuzzy
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
 "(used if nothing is specified) are: B<*admin*,*admln*,*server*,ai,ai?,"
 "computer,human,network,player>."
 msgstr ""
-"Sunucu tarafından kabul edilmeyen isimler/rumuzlar. Dosya ismi kalıp "
-"karakterlerinden `*' ve `?' desteklenir. Daha ayrıntılı bilgi için "
+"sunucu tarafından kabul edilmeyen isimler/rumuzlar. Dosya ismi kalıp "
+"karakterlerinden B<*> ve B<?> desteklenmektedir. Daha ayrıntılı bilgi için "
 "B<glob>(7) sayfasına bakınız. Öntanımlı (bir şey belirtilmezse kullanılacak) "
-"değerler: B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>"
+"değerler: B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
 
 # type: TP
 #. type: TP
@@ -1659,15 +1714,14 @@ msgstr "B<fifo_path>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:135
-#, fuzzy
 msgid ""
 "The path to the fifo you can echo server commands into (same as /query ... "
 "from wesnoth).  If not specified defaults to the compile-time path (default: "
 "B</var/run/wesnothd/socket>)."
 msgstr ""
-"Sunucu komutlarının yansılandığı fifo yolu (wesnoth'tan /query ... ile aynı) "
-"Yol belirtilmezse derleme sırasında belirtilen yol (/var/run/socket/wesnothd/"
-"socket) öntanımlıdır."
+"sunucu komutlarının yansılandığı fifo yolu (oyun içinde /query ... ile aynı) "
+"Yol belirtilmezse derleme sırasında belirtilen yol (B</var/run/wesnothd/"
+"socket>) öntanımlıdır."
 
 # type: TP
 #. type: TP
@@ -1720,7 +1774,7 @@ msgstr "Günün sözü."
 #: doc/man/wesnothd.6:144
 #, no-wrap
 msgid "B<new_room_policy>"
-msgstr ""
+msgstr "B<new_room_policy>"
 
 # type: Plain text
 #. type: Plain text
@@ -1731,6 +1785,10 @@ msgid ""
 "respectively to everyone, registered users, admin users or disables new room "
 "creation. Default value is B<everyone>."
 msgstr ""
+"Sunucuda yeni odaları kimin oluşturacağını belirler. Kullanılabilir "
+"değerler, B<everyone>, B<registered>, B<admin> ve B<nobody> olup bu yetki "
+"sırasıyla herkese, kayıtlı kullanıcılara, yöneticilere verilir veya hiç oda "
+"oluşturulmaz. Ötanımlı değer: B<everyone>."
 
 # type: TP
 #. type: TP
@@ -1742,12 +1800,11 @@ msgstr "B<passwd>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:150
-#, fuzzy
 msgid ""
 "The password used to gain admin privileges (via B</query admin >I<password>)."
 msgstr ""
-"Yönetici yetkilerini kazanmak için kullanılacak parola. Genellikle `admin ' "
-"ile başlar."
+"yönetici yetkilerini kazanmak için kullanılacak parola. (kullanım: B</query "
+"admin >I<parola>)."
 
 #. type: TP
 #: doc/man/wesnothd.6:150
@@ -1775,21 +1832,21 @@ msgstr "B<restart_command>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:156
-#, fuzzy
 msgid ""
 "The command that the server uses to start a new server process via the "
 "B<restart> command. (Can only be issued via the fifo. See the "
 "B<allow_remote_shutdown> setting.)"
 msgstr ""
-"`restart' komutu üzerinden yeni bir sunucu süreci başlatmak için sunucunun "
-"kullanacağı komut. (Sadece fifo üzerinden kullanılabilir.)"
+"B<restart> komutu üzerinden yeni bir sunucu süreci başlatmak için sunucunun "
+"kullanacağı komut. (Sadece fifo üzerinden kullanılabilir. "
+"B<allow_remote_shutdown> ayarına bakınız.)"
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:156
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<room_save_file>"
-msgstr "B<ban_save_file>"
+msgstr "B<room_save_file>"
 
 # type: Plain text
 #. type: Plain text
@@ -1799,6 +1856,9 @@ msgid ""
 "server startup and written to later. If empty or not set, rooms are not "
 "loaded and not saved."
 msgstr ""
+"Oda bilgisinin saklanacağı dosyanın yolu. Bu dosya sunucu başlatılırken "
+"okunur ve sonrasında yazılır. Boşsa veya hiç yoksa hiçbir oda yüklenmez ve "
+"saklanmaz."
 
 #. type: TP
 #: doc/man/wesnothd.6:159
@@ -1812,8 +1872,8 @@ msgid ""
 "Defines whether the server will automatically save replays of games. "
 "(default: B<false>)"
 msgstr ""
-"Sunucunun oyun tekrarlarını özdevinimli olarak kaydadip kaydatmayacağını "
-"belirler. Öntanımlı değeri: B<false>"
+"Sunucunun oyun tekrarlarını özdevinimli olarak kaydedip kaydetmeyeceğini "
+"belirler. (Öntanımlı değeri: B<false>)"
 
 # type: TP
 #. type: TP
@@ -1825,21 +1885,20 @@ msgstr "B<versions_accepted>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:166
-#, fuzzy
 msgid ""
 "A comma separated list of version strings to be accepted by the server. B<*> "
 "and B<?> from wildcard patterns are supported.  (defaults to the "
 "corresponding wesnoth version)"
 msgstr ""
-"Sunucu tarafından kabul edilen sürüm dizgelerinin virgül ayraçlı listesi. "
-"Dosya ismi kalıp karakterlerinden `*' ve `?' desteklenir. (Dağıtıldığı "
+"sunucu tarafından kabul edilen sürüm dizgelerinin virgül ayraçlı listesi. "
+"Dosya ismi kalıp karakterlerinden B<*> ve B<?>desteklenmektedir. (kurulu "
 "wesnoth sürümü öntanımlıdır.)"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:168
 msgid "Example: B<versions_accepted=\"*\"> accepts any version string."
-msgstr "Örnek: B<versions_accepted=\"*\"> her sürüm dizgesi kabul edilir.."
+msgstr "Örnek: B<versions_accepted=\"*\"> her sürüm dizgesi kabul edilir."
 
 # type: TP
 #. type: TP
@@ -1851,7 +1910,6 @@ msgstr "B<user_handler>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:173
-#, fuzzy
 msgid ""
 "The name of the user handler to use. Currently available user handlers are "
 "B<forum> (to connect wesnothd to a phpbb forum database) and B<sample> (a "
@@ -1860,9 +1918,9 @@ msgid ""
 "add a B<[user_handler]> section, see below."
 msgstr ""
 "Kullanılacak kullanıcı işlemcisinin ismi. Şu an kullanılabilecek kullanıcı "
-"işlemcisi isimleri: 'forum' (wesnothd ile bir phpbb forumu veritabanını "
-"bağlanmak için) ve 'sample' (kullanıcı işlemcisi arayüzü için örnek "
-"gerçeklenim; bunu gerçek bir uygulamada kullanmamalısınız). 'forum' "
+"işlemcisi isimleri:  B<forum> (wesnothd ile bir phpbb forumu veritabanını "
+"bağlanmak için) ve B<sample> (kullanıcı işlemcisi arayüzü için örnek "
+"gerçeklenim; bunu gerçek bir uygulamada kullanmamalısınız). B<forum> "
 "öntanımlıdır. Ayrıca, bir B<[user_handler]> bölümü eklemeniz gerekir; "
 "aşağıya bakınız."
 
@@ -1871,7 +1929,7 @@ msgstr ""
 #: doc/man/wesnothd.6:174
 #, no-wrap
 msgid "Global tags:"
-msgstr "Genel etiket isimleri:"
+msgstr "Genel etiketler:"
 
 # type: Plain text
 #. type: Plain text
@@ -1959,7 +2017,6 @@ msgstr "B<time>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:207
-#, fuzzy
 msgid ""
 "The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s "
 "(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d "
@@ -1967,10 +2024,10 @@ msgid ""
 "Example: B<time=\"1D12h30m\"> results in a ban time of 1 day, 12 hours and "
 "30 minutes."
 msgstr ""
-"Biçemi: %d[%s[%d%s[...]]]\n"
-"Burada %s yerine (saniye)s, (dakika)m, (saat)h, (gün)D, (ay)M, (sene)Y; %d "
-"yerine de bir numara belirtilebilir. Bir zaman birimi belirteci "
-"kullanılmamışsa dakika (m) öntanımlıdır. Örneğin time=\"1D12h30m\" "
+"Zaman uzunluğu tanımı. Biçemi: %d[%s[%d%s[...]]]\n"
+"Burada %s yerine B<s> (saniye), B<m> (dakika), B<h> (saat), B<D> (gün), B<M> "
+"(ay), B<Y> (yıl); %d yerine de bir sayı belirtilebilir. Bir zaman birimi "
+"belirteci kullanılmamışsa dakika (m) öntanımlıdır. Örneğin time=\"1D12h30m\" "
 "belirtilmişse 1 gün 12 saat 30 dakikalık yasak süresi konmuş olur."
 
 # type: Plain text
@@ -1988,7 +2045,6 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:221
-#, fuzzy
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
@@ -2040,7 +2096,7 @@ msgid ""
 "(for user_handler=forum) The name of the user under which to log into the "
 "database"
 msgstr ""
-"(user_handler=forum için) Veritabanını girişte kullanılacak kullanıcı ismi."
+"(user_handler=forum için) Veritabanına girişte kullanılacak kullanıcı ismi."
 
 # type: TP
 #. type: TP
@@ -2070,8 +2126,8 @@ msgid ""
 "saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
 "(e.g. phpbb3_users)."
 msgstr ""
-"(user_handler=forum için) PHPBB forumlarınızın kullanıcı verilerini "
-"saklayacağı tablonun ismi. Bu tablo genellikle belirtilir: E<lt>tablo-"
+"(user_handler=forum için) phpbb forumlarınızın kullanıcı verilerini "
+"saklayacağı tablonun ismi. Bu tablo genellikle şöyle belirtilir: E<lt>tablo-"
 "önekiE<gt>_users (örnek: phpbb3_users)."
 
 # type: TP
@@ -2084,7 +2140,6 @@ msgstr "B<db_extra_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:241
-#, fuzzy
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about users. You will have to create this table manually, e.g.: "
@@ -2094,9 +2149,9 @@ msgid ""
 msgstr ""
 "(user_handler=forum için) wesnothd'nin kullanıcıları hakkındaki verileri "
 "saklayacağı tablonun ismi. Bu tabloyu elle kendiniz oluşturmalısınız. Örnek: "
-"CREATE TABLE E<lt>tablo-ismiE<gt>(kullanıcı VARCHAR(255) PRIMARY KEY, "
+"B<CREATE TABLE E<lt>tablo-ismiE<gt>(kullanıcı VARCHAR(255) PRIMARY KEY, "
 "son_giren_kullanıcı INT UNSIGNED NOT NULL DEFAULT 0, yönetici_adı TINYINT(4) "
-"NOT NULL DEFAULT 0);"
+"NOT NULL DEFAULT 0);>"
 
 # type: TP
 #. type: TP
@@ -2123,7 +2178,7 @@ msgid ""
 "mail. Currently only used by the sample user handler."
 msgstr ""
 "B<[mail]> Kullanıcı işlemcisinin epostaları göndereceği SMTP sunucusunu "
-"yapılandırır. Şimdilik sadece örnek kullanıcı işlemcisi tarafından "
+"yapılandırır. Şimdilik sadece sample kullanıcı işlemcisi tarafından "
 "kullanılmaktadır."
 
 # type: TP
@@ -2197,6 +2252,8 @@ msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
 msgstr ""
+"Sunucu düzgün kapandığında çıkış durumu 0'dır. Çıkış durumu 2, komut satırı "
+"seçeneklerinde bir hata olduğunu gösterir."
 
 # type: Plain text
 #. type: Plain text
@@ -2208,21 +2265,211 @@ msgid ""
 "baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
 "Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
-"Program David White E<lt>davidnwhite@verizon.netE<gt> tarafından yazılmış, "
-"Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
+"David White E<lt>davidnwhite@verizon.netE<gt> tarafından yazılmış, Nils "
+"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
 "Soliton E<lt>soliton.de@gmail.comE<gt> ve Thomas Baumhauer E<lt>thomas."
 "baumhauer@gmail.comE<gt> tarafından düzenlenmiştir. Bu kılavuz sayfası ilk "
 "defa Cyril Bouthors E<lt>cyril@bouthors.orgE<gt> tarafından yazılmış Nilgün "
-"Belma Bugüner E<lt>nilgun@belgeler.orgE<gt> tarafından Türkçe'ye "
-"çevrilmiştir."
+"Belma Bugüner E<lt>nilgun@belgeler.orgE<gt> tarafından Türkçeye çevrilmiştir."
 
 # type: TH
 #. type: Plain text
 #: doc/man/wesnothd.6:286
 #, fuzzy
-#| msgid "wesnoth"
+#| msgid "B<wesnoth>(6)"
 msgid "B<wesnoth>(6)."
-msgstr "wesnoth"
+msgstr "B<wesnoth>(6)"
+
+#, no-wrap
+#~ msgid "B<--all-translations>"
+#~ msgstr "B<--all-translations>"
+
+#~ msgid ""
+#~ "Show all translations in the in-game language selection list, even if "
+#~ "they are deemed insufficiently complete."
+#~ msgstr ""
+#~ "Oyun içi dil seçim listesindeki tüm çevirileri yeterli olmasalar bile, "
+#~ "gösterir."
+
+#, no-wrap
+#~ msgid "B<--campaign-skip-story>"
+#~ msgstr "B<--campaign-skip-story>"
+
+#~ msgid ""
+#~ "Skip [story] screens and dialog through the end of the B<start> event."
+#~ msgstr "olayların B<başlangıcındaki> [hikaye} ekranlarını atlar."
+
+# type: TP
+#, no-wrap
+#~| msgid "B<--nomusic>"
+#~ msgid "B<--clock>"
+#~ msgstr "B<--clock>"
+
+#~ msgid "Adds the option to show a clock for testing the drawing timer."
+#~ msgstr ""
+#~ "çizim zamanlayıcısını denerken saati göstermek için bu seçeneği ekler."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<--config-dir>I<\\ name>"
+#~ msgstr "B<--config-dir>I<\\ isim>"
+
+#~ msgid "Deprecated, use B<--userdata-dir>."
+#~ msgstr "Kullanım dışı, yerine B<--userdata-dir> kullanın."
+
+# type: TP
+#, no-wrap
+#~| msgid "B<--config-path>"
+#~ msgid "B<--config-path>"
+#~ msgstr "B<--config-path>"
+
+# type: TP
+#~| msgid "B<--path>"
+#~ msgid "Deprecated, use B<--userdata-path>."
+#~ msgstr "Kullanım dışı, yerine B<--userdata-path> kullanın."
+
+# type: TP
+#, no-wrap
+#~| msgid "B<-d, --debug>"
+#~ msgid "B<--debug-lua>"
+#~ msgstr "B<--debug-lua>"
+
+#~ msgid "enables some Lua debugging mechanisms"
+#~ msgstr "bazı Lua hata ayıklama mekanizmalarını etkinleştirir."
+
+# type: Plain text
+#~ msgid ""
+#~ "sets the severity level of the log domains.  B<all> can be used to match "
+#~ "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#~ "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
+#~ "domains, but B<deprecation> defaults to B<none> unless combined with the "
+#~ "B<-d> option."
+#~ msgstr ""
+#~ "Günlük kayıt alanlarının önem seviyelerini ayarlar. Bütün günlük "
+#~ "alanlarını kapsamak üzere B<all> belirtilebilir. Olası önem seviyeleri: "
+#~ "B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,\\ B<none>. Çoğu sunucu "
+#~ "B<warning> öntanımlı değerini kullanır, fakat B<-d>  seçeneği ile "
+#~ "birlikte kullanılmadıkça B<deprecation> için B<none> öntanımlıdır."
+
+# type: TP
+#, no-wrap
+#~| msgid "B<--no-delay>"
+#~ msgid "B<--new-widgets>"
+#~ msgstr "B<--new-widgets>"
+
+#~ msgid ""
+#~ "there is a new WIP widget toolkit, this option enables it. This is very "
+#~ "experimental, don't fill bug reports since most are known. Parts of the "
+#~ "library are deemed stable and will work without this switch."
+#~ msgstr ""
+#~ "Yeni bir WIP gereci araçkutusu varsa bu seçenek onu etkin kılar. Çok "
+#~ "deneysel olduğundan ve hataların çoğu bilindiğinden bir hata raporu "
+#~ "doldurmayın. Kütüphanenin bölümleri kararlı sayılır ve bu anahtar olmadan "
+#~ "da çalışacaktır."
+
+# type: TP
+#, no-wrap
+#~| msgid "B<--gzip>I<\\ infile>"
+#~ msgid "B<--plugin>I<\\ script>"
+#~ msgstr "B<--plugin>I<\\ betik>"
+
+#~ msgid ""
+#~ "(experimental) load a I<script> which defines a Wesnoth plugin. Similar "
+#~ "to B<--script>, but Lua file should return a function which will be run "
+#~ "as a coroutine and periodically woken up with updates."
+#~ msgstr ""
+#~ "(deneysel) bir wesnoth eklentisini tanımlayan bir <betik> yükler. B<--"
+#~ "script> gibidir, ancak Lua dosyası, bir alt yordam olarak çalıştırılacak "
+#~ "ve periyodik olarak güncellemelerle uyanacak bir işlev döndürmelidir."
+
+# type: TP
+#, no-wrap
+#~| msgid "B<--fps>"
+#~ msgid "B<--proxy>"
+#~ msgstr "B<--proxy>"
+
+#~ msgid "enables usage of proxy for network connections."
+#~ msgstr "ağ bağlatıları için vekil kullanımını etkin kılar."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<--proxy-address>I<\\ address>"
+#~ msgstr "B<--proxy-address>I<\\ adres>"
+
+#~ msgid "specifies I<address> of the proxy."
+#~ msgstr "vekil sunucu için I<adres> belirtir."
+
+# type: TP
+#, no-wrap
+#~| msgid "B<-p\\ >I<port>B<,\\ --port>I<\\ port>"
+#~ msgid "B<--proxy-port>I<\\ port>"
+#~ msgstr "B<--proxy-port>I<\\ port>"
+
+#~ msgid "specifies I<port> of the proxy."
+#~ msgstr "vekil sunucu için I<port> belirtir."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<--proxy-user>I<\\ username>"
+#~ msgstr "B<--proxy-user>I<\\ kullanıcı>"
+
+#~ msgid "specifies I<username> to log in to the proxy."
+#~ msgstr "vekil sunucuya oturum açacak I<kullanıcı> belirtilir."
+
+# type: TP
+#, no-wrap
+#~| msgid "B<db_password>"
+#~ msgid "B<--proxy-password>I<\\ password>"
+#~ msgstr "B<--proxy-password>I<\\ parola>"
+
+#~ msgid "specifies I<password> to log in to the proxy."
+#~ msgstr "vekil sunucuya oturum açacak I<parola> belirtilir."
+
+# type: TP
+#, no-wrap
+#~| msgid "B<--gzip>I<\\ infile>"
+#~ msgid "B<--script>I<\\ file>"
+#~ msgstr "B<--script>I<\\ dosya>"
+
+#~ msgid ""
+#~ "(experimental)  I<file> containing a Lua script to control the client."
+#~ msgstr "istemciyi yönetecek Lua betiğini içeren I<dosya> (deneyseldir)."
+
+#, no-wrap
+#~ msgid "B<--translations-over>I<\\ percent>"
+#~ msgstr "B<--translations-over>I<\\ yüzde>"
+
+#~ msgid ""
+#~ "Set the standard for deeming a translation is complete enough to show in "
+#~ "the in-game language list to I<percent>.  Valid values are 0 to 100."
+#~ msgstr ""
+#~ "oyun içi dil listesinde göstermek için standart çeviri tamamlanma oranını "
+#~ "I<yüzde> ile belirtilen değere ayarlar. Geçerli değerler 0 ile 100 "
+#~ "arasındadır."
+
+# type: TP
+#, no-wrap
+#~| msgid "B<--config-path>"
+#~ msgid "B<--unsafe-scripts>"
+#~ msgstr "B<--unsafe-scripts>"
+
+#~ msgid ""
+#~ "makes the B<package> package available to lua scripts, so that they can "
+#~ "load arbitrary packages. Do not do this with untrusted scripts! This "
+#~ "action gives lua the same permissions as the wesnoth executable."
+#~ msgstr ""
+#~ "B<paket>i Lua betiklerinde kullanılabilir kılar, böylece keyfi paketler "
+#~ "yüklenebilir. Güvenilmez betiklerle kullanmayın! Bu işlem Lua betiğine "
+#~ "wesnoth çalıştırılabiliri ile aynı yetkileri sağlar."
+
+# type: TP
+#, no-wrap
+#~| msgid "B<--era=>I<value>"
+#~ msgid "B<--label>I<\\ label>"
+#~ msgstr "B<--label>I<\\ etiket>"
+
+#~ msgid "sets the I<label> for AIs."
+#~ msgstr "yapay zekalar için  I<etiket> belirtir."
 
 # type: TP
 #, fuzzy
