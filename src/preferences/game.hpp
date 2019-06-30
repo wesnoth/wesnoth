@@ -64,6 +64,7 @@ class acquaintance;
 	enum LOBBY_JOINS { SHOW_NONE, SHOW_FRIENDS, SHOW_ALL };
 
 	const std::map<std::string, acquaintance> & get_acquaintances();
+	const std::string get_ignored_delim();
 	std::map<std::string, std::string> get_acquaintances_nice(const std::string& filter);
 	std::pair<preferences::acquaintance*, bool> add_acquaintance(const std::string& nick, const std::string& mode, const std::string& notes);
 	void add_completed_campaign(const std::string &campaign_id, const std::string &difficulty_level);

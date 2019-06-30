@@ -787,6 +787,7 @@ void connect_engine::send_level_data() const
 			"create_game", config {
 				"name", params_.name,
 				"password", params_.password,
+				"ignored", preferences::get_ignored_delim(),
 			},
 		});
 		send_to_server(level_);

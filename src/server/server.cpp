@@ -1371,6 +1371,7 @@ void server::create_game(player_record& host_record, simple_wml::node& create_ga
 {
 	const std::string game_name = create_game["name"].to_string();
 	const std::string game_password = create_game["password"].to_string();
+	const std::string initial_bans = create_game["ignored"].to_string();
 
 	DBG_SERVER << client_address(host_record.socket()) << "\t" << host_record.info().name()
 			   << "\tcreates a new game: \"" << game_name << "\".\n";
@@ -1383,6 +1384,11 @@ void server::create_game(player_record& host_record, simple_wml::node& create_ga
 	);
 
 	wesnothd::game& g = *host_record.get_game();
+
+	DBG_SERVER << "initial bans: " << initial_bans << "\n";
+	if(initial_bans != "") {
+		g.set_name_bans(utils::split(initial_bans,','));
+	}
 
 	if(game_password.empty() == false) {
 		g.set_password(game_password);
