@@ -230,6 +230,20 @@ const std::map<std::string, acquaintance> & get_acquaintances() {
 	return acquaintances;
 }
 
+const std::string get_ignored_delim() {
+	load_acquaintances();
+	std::vector<std::string> ignored;
+
+	for(const auto& person : acquaintances)
+	{
+		if(person.second.get_status() == "ignore") {
+			ignored.push_back(person.second.get_nick());
+		}
+	}
+
+	return utils::join(ignored);
+}
+
 //returns acquaintances in the form nick => notes where the status = filter
 std::map<std::string, std::string> get_acquaintances_nice(const std::string& filter) {
 	load_acquaintances();
