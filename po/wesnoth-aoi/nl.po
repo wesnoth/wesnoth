@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-04 16:39 UTC\n"
-"PO-Revision-Date: 2019-04-15 15:44+0200\n"
+"PO-Revision-Date: 2019-06-26 18:37+0200\n"
 "Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
 "Language-Team: none\n"
 "Language: nl\n"
@@ -11,12 +11,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:11
 msgid "An Orcish Incursion"
-msgstr "Een Orkinvasie"
+msgstr "Een Orkinval"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:12
@@ -30,7 +30,7 @@ msgid ""
 "Continent, learning valuable tactics as you do so.\n"
 "\n"
 msgstr ""
-"Verdedig het woud van de elfen tegen de eerste orks die het Grote Continent "
+"Verdedig de bossen van de elfen tegen de eerste orks die het Grote Continent "
 "bereiken, terwijl je ondertussen waardevolle tactieken leert.\n"
 "\n"
 
@@ -39,7 +39,7 @@ msgstr ""
 #, fuzzy
 #| msgid "(Rookie level, 7 scenarios.)"
 msgid "(Novice level, 7 scenarios.)"
-msgstr "(Nieuwkomer niveau, 7 scenarios.)"
+msgstr "(Beginnersniveau, 7 scenarios.)"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:22
@@ -516,7 +516,7 @@ msgstr ""
 #. [scenario]: id=03_Wasteland
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:10
 msgid "Wasteland"
-msgstr "Woestenij"
+msgstr "Niemandsland"
 
 #. [part]
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:25
@@ -736,12 +736,10 @@ msgid ""
 "wasteland now; we won’t find much forage on the march."
 msgstr ""
 "Verdeel er een aantal over onze troepen en bewaar de rest voor onderweg. Dit "
-"gebied is een wildernis nu; we zullen niet veel voedsel tegenkomen tijdens "
-"de tocht."
+"is een niemandsland nu; we zullen niet veel voedsel vinden tijdens de tocht."
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:287
-#, fuzzy
 msgid ""
 "We found some supplies when searching the camp, but nothing much. What is to "
 "be done with them?"
@@ -751,50 +749,48 @@ msgstr ""
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:292
-#, fuzzy
 msgid ""
 "Save it for the march north. There is little to be found in this barren "
 "country."
 msgstr ""
-"Bewaar het voor de tocht noordwaarts. In dit dorre land is weinig te vinden."
+"Bewaar het voor de tocht naar het noorden. Er is weinig te vinden in dit "
+"onvruchtbare land."
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:320
 #, fuzzy
+#| msgid ""
+#| "We can’t carry on, lord, the men are too tired. We have to fall back."
 msgid "We can’t carry on Lord, the men are too tired. We have to fall back."
 msgstr ""
-"We kunnen niet verdergaan, Heer, de mannen zijn te moe. We moeten ons "
+"We kunnen niet verdergaan, heer, de mannen zijn te moe. We moeten ons "
 "terugtrekken."
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:325
-#, fuzzy
 msgid "Damn it. Sound the retreat, we’ll try again when reinforcements arrive."
 msgstr ""
-"Verdomme. Blaas het teken om terug te trekken, we zullen het opnieuw "
+"Verdomme. Blaas het teken om ons terug te trekken, we zullen het opnieuw "
 "proberen wanneer de versterkingen er aan komen."
 
 #. [message]: speaker=narrator
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:331
-#, fuzzy
 msgid ""
 "The expected relief caught up with them a few days later. The following "
 "morning they took the field against a far larger host of orcs. The battle "
 "ended in a draw; the war raged on for years..."
 msgstr ""
 "De verwachte verlossing haalde hen enkele dagen later in. De volgende morgen "
-"bonden ze de strijd aan tegen een veel groter leger Orks. Het gevecht "
+"bonden ze de strijd aan tegen een veel groter leger orks. Het gevecht "
 "eindigde onbeslist; de oorlog raasde jarenlang verder..."
 
 #. [scenario]: id=04_Valley_of_Trolls
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:10
-#, fuzzy
 msgid "Valley of Trolls"
-msgstr "Vallei van de trollen"
+msgstr "Vallei van de Trollen"
 
 #. [part]
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:25
-#, fuzzy
 msgid ""
 "Next morning, the elves set off again, increasingly wearied by the hardships "
 "of the campaign and longing for the green comfort of their home forests. "
@@ -803,13 +799,12 @@ msgid ""
 msgstr ""
 "De volgende ochtend vertrokken de Elfen opnieuw, beduidend meer vermoeid "
 "door de ontberingen van de veldtocht en het verlangen naar het groene "
-"comfort van de bossen waarin ze wonen. Dit land was dor en ruig; niets "
-"beschermde hen tegen de snijdende, noordelijke wind terwijl ze verder "
+"comfort van de bossen waarin ze wonen. Dit land was kaal en onvruchtbaar; "
+"niets beschermde hen tegen de snijdende, noordelijke wind terwijl ze verder "
 "trokken naar de bergen die voor hen uit tegen de horizon afstaken."
 
 #. [part]
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:29
-#, fuzzy
 msgid ""
 "At dusk they arrived at the mouth of a valley cutting almost straight "
 "through the range and made camp, as scouts warned that the area was hostile "
@@ -821,12 +816,11 @@ msgstr ""
 "bijna recht op hun pad lag en ze sloegen hun kamp op, omdat verkenners hen "
 "gewaarschuwd hadden dat de streek vijandig was en de weg vooruit "
 "verraderlijk in het donker. Er waren geen liederen of muziek die avond en de "
-"meeste Elfen sliepen slecht. Een aantal ongelukkigen hield behoedzaam de "
+"meeste Elfen sliepen slecht. Een aantal ongelukkigen hielden behoedzaam de "
 "wacht."
 
 #. [part]
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:33
-#, fuzzy
 msgid ""
 "When sunrise came, the elves moved into battle formations. Whatever waited "
 "in the slopes ahead, it would not find them unprepared."
@@ -838,43 +832,36 @@ msgstr ""
 #. [side]: type=Troll, type=Troll Warrior, id=Hrugu
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:66
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:106
-#, fuzzy
 msgid "Trolls"
 msgstr "Trollen"
 
 #. [side]: type=Troll, type=Troll Warrior, id=Gurk
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:75
-#, fuzzy
 msgid "Gurk"
 msgstr "Gurk"
 
 #. [side]: type=Troll, type=Troll Warrior, id=Hrugu
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:115
-#, fuzzy
 msgid "Hrugu"
 msgstr "Hrugu"
 
 #. [objective]: condition=win
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:154
-#, fuzzy
 msgid "Defeat all enemy leaders"
 msgstr "Versla alle vijandelijke leiders"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:170
-#, fuzzy
 msgid ""
 "Trolls are poor fighters when not on rugged terrain and fare even worse "
 "during the daytime. Lure them out of the hills and attack in the sunlight."
 msgstr ""
-"Hint:\n"
 "Trollen zijn zwakke krijgers wanneer ze zich niet op ruw terrein bevinden en "
-"ze bevinden zich overdag in een nog slechtere situatie. Lok hen uit de "
-"heuvels en val hen aan in het zonlicht."
+"worden nog zwakker gedurende de dag. Lok hen uit de heuvels en val hen aan "
+"in het zonlicht."
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:184
-#, fuzzy
 msgid ""
 "We are far from our lands, now, Erlornas, and we have driven the orcs from "
 "the forest. Why do we not return home?"
@@ -884,7 +871,6 @@ msgstr ""
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:189
-#, fuzzy
 msgid ""
 "You know well enough... Rualsha. That name sounds everywhere we go since the "
 "incursion began. That orc is much more than a mere marauding bandit in "
@@ -896,17 +882,15 @@ msgstr ""
 "sinds de invasie begon. Die ork is veel meer dan een armzalige, plunderende "
 "bandiet op zoek naar buit. En hij wil dit land. <i>Ons</i> land. Hij plant "
 "een invasie, daar ben ik zeker van. We moeten meer informatie verzamelen "
-"over zijn plannen vooraleer we terugkeren."
+"over zijn plannen voordat we terugkeren."
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:194
-#, fuzzy
 msgid "And tell me... How did you sleep last night?"
-msgstr "En vertel me eens... Hoe sliep je de voorbije nacht?"
+msgstr "En vertel me eens... Hoe heb je geslapen afgelopen nacht?"
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:199
-#, fuzzy
 msgid ""
 "How did I?... Uneasy, lord. My dreams were bleak, some of them nightmares."
 msgstr ""
@@ -915,7 +899,6 @@ msgstr ""
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:204
-#, fuzzy
 msgid ""
 "Yes. The earth currents are perturbed here, and the bridges to the dreamland "
 "are tainted. I think there is a mage dwelling somewhere nearby. Or perhaps "
@@ -929,7 +912,6 @@ msgstr ""
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:209
-#, fuzzy
 msgid ""
 "It would be dire indeed for us if these orcs have magic to add to their "
 "battle-might."
@@ -939,23 +921,20 @@ msgstr ""
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:214
-#, fuzzy
 msgid "We must discover if this is so."
-msgstr "We moeten ontdekken of dit zo is."
+msgstr "We moeten erachter komen of dit zo is."
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:219
-#, fuzzy
 msgid ""
 "Information will do us no good if we are killed before we return with it! "
 "These mountains look like troll territory."
 msgstr ""
 "Informatie is waardeloos als ze het terug brengen tussen zes planken! Deze "
-"bergen lijken trollenterrein."
+"bergen lijken op trolterrein."
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:224
-#, fuzzy
 msgid "Enough. The sun’s fully over the horizon. Give the order to advance."
 msgstr ""
 "Genoeg. De zon is nu helemaal boven de horizon. Geef het bevel om op te "
@@ -963,34 +942,30 @@ msgstr ""
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:235
-#, fuzzy
 msgid ""
 "That was the last of the chieftains, lord. The lesser trolls seem to be "
 "retreating now."
 msgstr ""
-"Dat was de laatste van hun hoofdmannen, heer. De mindere trollen lijken zich "
-"nu terug te trekken."
+"Dat was de laatste van hun leiders, heer. De mindere trollen lijken zich nu "
+"terug te trekken."
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:240
-#, fuzzy
 msgid ""
 "It is well. Break camp and move everyone through the pass before they rally. "
 "We’ll rest a bit on the other side; we have earned it."
 msgstr ""
-"Het is goed. Breek het kamp op en laat door de pas gaan vooraleer ze zich "
+"Het is goed. Breek het kamp op en laten we door de pas gaan voordat ze zich "
 "verenigen. We zullen een beetje rusten aan de andere kant; we hebben het "
 "verdiend."
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:245
-#, fuzzy
 msgid "At once. How much time do you think we have?"
 msgstr "Onmiddelijk. Hoeveel tijd denkt u dat we hebben?"
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:250
-#, fuzzy
 msgid ""
 "A day, perhaps. We fought two clans today; they won’t take long to rally. We "
 "need to be gone from here by sunset next."
@@ -1001,27 +976,23 @@ msgstr ""
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:269
-#, fuzzy
 msgid "We have slain a chieftain! Take heart! This battle is almost won!"
 msgstr ""
-"We hebben een hoofdman verslagen! Verzamel al je moed! Dit gevecht is bijna "
+"We hebben een leider verslagen! Verzamel al je moed! Dit gevecht is bijna "
 "gewonnen!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:284
-#, fuzzy
 msgid "Ha! Me smashed da funny elf. Me got a trophy!"
-msgstr "Ha! Ik versloeg grappige Elf. Ik krijg een trofee."
+msgstr "Ha! Ik versloeg grappige Elf. Ik krijg beloning!"
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:289
-#, fuzzy
 msgid "No! This can’t be!"
 msgstr "Nee! Dit kan niet waar zijn!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:295
-#, fuzzy
 msgid ""
 "Soon after Erlornas died, the elven party, lacking a leader and pressed from "
 "all sides, scattered and fled. Their retreat to Wesmere was arduous and long."
@@ -1032,58 +1003,51 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:300
-#, fuzzy
 msgid ""
 "During their retreat, the pass was crossed by another army moving in the "
 "opposite direction. Orcs were back south of the pass, and this time they "
 "were to stay for a long, long time."
 msgstr ""
 "Gedurende hun terugkeer, werd de pas overgestoken door een ander leger dat "
-"zich in de tegengestelde verplaatste. De Orks bevonden zich terug ten zuiden "
-"van de pas, en deze keer zouden ze er voor een lange, heel lange tijd "
+"zich in tegengestelde richting verplaatste. De orks bevonden zich weer ten "
+"zuiden van de pas, en deze keer zouden ze er voor een lange, heel lange tijd "
 "blijven."
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:311
-#, fuzzy
 msgid ""
 "We can’t get through, my Lord. These whelps are not individually very "
 "dangerous, but there are huge numbers of them."
 msgstr ""
-"We kunnen er niet door, Heer. Deze welpen zijn individueel niet gevaarlijk, "
-"maar ze zijn er in grote aantallen."
+"We kunnen er niet door, heer. Deze welpen zijn individueel niet gevaarlijk, "
+"maar het zijn er zo veel."
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:316
-#, fuzzy
 msgid ""
 "Four days of combat and nothing to show for it. How does it feel to you?"
-msgstr ""
-"Vier dagen van gevecht en niets om het te laten zien. Hoe voelt dat voor jou?"
+msgstr "Vier dagen gevochten en nog geen resultaat. Hoe voelt dat voor jou?"
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:321
-#, fuzzy
 msgid ""
 "Terrible, my lord. Never in my life did I dream I’d be bested by mere "
 "trolls. What are your orders?"
 msgstr ""
 "Verschrikkelijk, heer. Ik heb nooit van mij leven gedroomd dat ik overwonnen "
-"zou worden door louter trollen. Wat zijn uw orders?"
+"zou worden door enkel trollen. Wat zijn uw orders?"
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:326
-#, fuzzy
 msgid ""
 "Withdraw and make camp a safe distance from the hills. There is no further "
 "point in this fight. We’ll wait for reinforcements."
 msgstr ""
-"Trek terug en maak een kamp op een veilige afstand van de heuvels. Er is "
-"geen verder punt in dit gevecht. We zullen wachten op versterkingen."
+"Trek je terug en maak een kamp op een veilige afstand van de heuvels. Dit "
+"gevecht heeft geen nut. We zullen moeten wachten op versterkingen."
 
 #. [message]: speaker=narrator
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:332
-#, fuzzy
 msgid ""
 "The reinforcements arrived a few days later, a crack force of rangers with "
 "some cavalry support. When they attempted the pass again, they found not "
@@ -1091,12 +1055,11 @@ msgid ""
 msgstr ""
 "De versterkingen kwamen enkele dagen later aan, een sterke macht jagers met "
 "wat cavalerie-ondersteuning. Op het moment dat ze opnieuw proberen de pas "
-"over te steken, vonden ze geen trollen maar iets veel ergers — een Orkleger "
+"over te steken, vonden ze geen trollen maar iets veel ergers — een orkleger "
 "dat naderde vanuit het noorden."
 
 #. [message]: speaker=narrator
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:338
-#, fuzzy
 msgid ""
 "The battle that ensued was bloody and inconclusive, and the elven losses "
 "were only the beginning of the mournful toll in a war that would rage for "
@@ -1108,62 +1071,55 @@ msgstr ""
 
 #. [scenario]: id=05_Linaera_the_Quick
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:10
-#, fuzzy
 msgid "Linaera the Quick"
-msgstr "Linaera de vlugge"
+msgstr "Linaera de Snelle"
 
 #. [part]
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:26
-#, fuzzy
 msgid ""
 "After a day of hard-earned rest the elves marched north again. This was "
 "unknown country, not frequented even by Wesmere’s furthermost-faring scouts."
 msgstr ""
-"Na een dag van welverdiende rust marcheerden de Elfen opnieuw noordwaarts. "
-"Dit was ongekend gebied, zelfs door Wesmere's verst reizende verkenners niet "
-"bezocht."
+"Na een dag van welverdiende rust marcheerden de elfen opnieuw noordwaarts. "
+"Dit was ongekend gebied, zelfs door de verst reizende verkenners van Wesmere "
+"niet bezocht."
 
 #. [part]
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:30
-#, fuzzy
 msgid ""
 "Two days’ travel later, the forward scouts reported another orcish warband "
 "laying siege to a tower."
 msgstr ""
-"Twee dagreizen later meldden de verkenners die voorop gingen een ander "
-"Orkleger dat een toren belegerde."
+"Twee dagen reizen later, meldden de verkenners die voorop gingen een andere "
+"orkbende dat een toren belegerde."
 
 #. [part]
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:34
-#, fuzzy
 msgid ""
 "Erlornas surveyed the siege from atop a small tree-covered hill overlooking "
 "the tower valley..."
 msgstr ""
 "Erlornas overzag het beleg vanop de top van een kleine heuvel die door bomen "
-"bedekt was en op de torenvallei uitzicht bood."
+"bedekt was en uitzicht bood op de torenvallei."
 
 #. [side]: type=Orcish Warlord, id=Krughnar
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:69
-#, fuzzy
 msgid "Krughnar"
 msgstr "Krughnar"
 
 #. [side]
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:89
 msgid "Mages"
-msgstr ""
+msgstr "Magiërs"
 
 #. [objective]: condition=win
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:107
-#, fuzzy
 msgid "Defeat Krughnar and break the siege"
 msgstr "Versla Krughnar en verbreek het beleg"
 
 #. [objective]: condition=lose
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:115
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:78
-#, fuzzy
 msgid "Death of Linaera"
 msgstr "Dood van Linaera"
 
@@ -1172,39 +1128,36 @@ msgstr "Dood van Linaera"
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:89
 msgid "Linaera is a leader and can recruit mages when standing on a keep."
 msgstr ""
+"Linaera is een leider en kan magiërs rekruteren wanneer ze zich op een "
+"donjon bevindt."
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:129
-#, fuzzy
 msgid ""
 "Use Elven Scouts and Linaera’s power of teleportation to mount hit-and-run "
 "attacks."
 msgstr ""
-"Hint:\n"
-"Gebruik Elfenverkenners en Linaera's kracht om te teleporteren om stormlopen "
-"te doen."
+"Gebruik Elfenverkenners en Linaera's kracht om te teleporteren om na het "
+"aanvallen te vluchten."
 
 #. [message]: id=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:143
-#, fuzzy
 msgid "Report."
 msgstr "Rapporteer."
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:148
-#, fuzzy
 msgid ""
 "A warband of orcs, no women or children among them, besieges a tower. It’s "
 "of human design... but we are far from the lands granted to humans by "
 "treaty, my lord Erlornas."
 msgstr ""
-"Een leger Orks, zonder vrouwen of kinderen bij hen, belegert een toren. De "
-"toren is door mensenhanden gemaakt... maar we bevinden ons ver van de landen "
-"die door de verdragen aan de mensen verleend zijn, heer Erlornas."
+"Een leger Orks, zonder vrouwen of kinderen, belegert een toren. De toren is "
+"door mensenhanden gemaakt... maar we bevinden ons ver van de landen die door "
+"de verdragen aan de mensen verleend zijn, heer Erlornas."
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:153
-#, fuzzy
 msgid ""
 "Under the letter of the treaty, it is so. But this country is too cold and "
 "barren for us. I wonder, what manner of human would choose to live here, far "
@@ -1216,33 +1169,30 @@ msgstr ""
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:158
-#, fuzzy
 msgid "It trespasses, and should be driven out!"
 msgstr "Het valt binnen, en moet terug naar buiten verdreven worden!"
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:163
-#, fuzzy
 msgid ""
 "Hold. It is only one human, or a few of them at most. Time enough to speak "
 "of driving it out when we have no enemies in common."
 msgstr ""
-"Wacht. Het is slechts één mens, of maximum enkelen. Tijd genoeg om hen te "
-"spreken of te verdrijven wanneer we geen gemeenschappelijke vijanden hebben."
+"Wacht. Het is slechts één mens, in ieder geval niet veel. Tijd genoeg om hen "
+"te spreken of te verdrijven wanneer we geen gemeenschappelijke vijanden "
+"hebben."
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:168
-#, fuzzy
 msgid ""
 "Tell me: I see no bridge over the chasm around that keep. Is there any sign "
 "that one has been withdrawn by the defenders?"
 msgstr ""
 "Vertel me: ik zie geen brug over de kloof rond het donjon. Is er een teken "
-"dat er ooit een binnengehaald is door de verdedigers?"
+"dat er ooit een brug opgehaald is door de verdedigers?"
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:173
-#, fuzzy
 msgid ""
 "No, lord. No traces of any construction. It looks like no bridge has ever "
 "existed there. There must be other, hidden means of access to the tower."
@@ -1253,7 +1203,6 @@ msgstr ""
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:178
-#, fuzzy
 msgid ""
 "Interesting... Go to my personal stores and bring me a bottle of wine. And a "
 "couple of glasses."
@@ -1263,15 +1212,13 @@ msgstr ""
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:183
-#, fuzzy
 msgid "... Glasses?"
 msgstr "... Glazen?"
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:188
-#, fuzzy
 msgid "Do it. We’ll have a guest soon."
-msgstr "Doe het. We zullen dadelijk een gast hebben."
+msgstr "Doe het. We zullen snel een gast hebben."
 
 #. [message]: speaker=narrator
 #. "Faerie" in this paragraph is a rare, poetic word in
@@ -1283,7 +1230,6 @@ msgstr "Doe het. We zullen dadelijk een gast hebben."
 #. the source of magical power or a label for the inner
 #. nonhuman/magical nature of the Elves. Translate freely.
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:202
-#, fuzzy
 msgid ""
 "Erlornas closed his eyes and brought his hands forward, joined palms forming "
 "a cup open to the sky. Soon they began to glow, then to flare like a brazier "
@@ -1295,20 +1241,18 @@ msgstr ""
 "Erlornas sloot zijn ogen en bracht zijn handen voorwaarts, zijn handpalmen "
 "samen brengend om een kom te vormen die geopend was richting de hemel. Al "
 "vlug begonnen ze te gloeien en vervolgens te schitteren als een smid met het "
-"vuur van Faerie, een koud, blauw licht gietend rond de Elfenheer. Een sliert "
-"licht kwam vooruit uit de akelige vlammen, en na enkele gemompelde woorden "
-"van de Elfenheer vloog die weg richting de toren daar beneden. Daarna doofde "
-"het licht rond Erlornas en alles leek zoals het vooraf was."
+"vuur van een fee, een koud, blauw licht gietend rond de Elfenheer. Een "
+"sliert licht kwam voort uit de akelige vlammen, en na enkele gemompelde "
+"woorden van de Elfenheer vloog die weg richting de toren daar beneden. "
+"Daarna doofde het licht rond Erlornas en alles leek zoals het vooraf was."
 
 #. [message]: speaker=narrator
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:212
-#, fuzzy
 msgid "Some time later..."
-msgstr "Later..."
+msgstr "Enige tijd later..."
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:236
-#, fuzzy
 msgid ""
 "So you decided to accept the invitation. Good. Welcome, I am lord Erlornas "
 "of Wesmere. I find your presence here... surprising."
@@ -1318,17 +1262,15 @@ msgstr ""
 
 #. [message]: speaker=Linaera
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:241
-#, fuzzy
 msgid ""
 "Scarcely less than I find yours, my lord elf, but I would welcome your aid "
 "against these orcs. They have been besieging my tower for weeks."
 msgstr ""
-"Nauwelijks minder dan ik die van u vind, heer Elf, maar ik zou uw hulp tegen "
-"deze Orks erg op prijs stellen. Ze belegeren mijn toren reeds weken."
+"Nauwelijks minder dan ik die van u vind, heer elf, maar ik zou uw hulp tegen "
+"deze Orks erg op prijs stellen. Ze belegeren mijn toren al weken."
 
 #. [message]: id=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:246
-#, fuzzy
 msgid ""
 "I wish their foul kind driven as far as possible from my borders, not to "
 "return. It would be no bad thing if an ally of the elves kept watch over "
@@ -1336,11 +1278,10 @@ msgid ""
 msgstr ""
 "Ik wens hun smerige soort zo ver als mogelijk van mijn grenzen te "
 "verdrijven, zodat ze zeker niet terugkeren. Het zou geen kwaad kunnen als "
-"een bondgenoot van de Elfen de wacht hield over dit land."
+"een bondgenoot van de elfen de wacht hield over dit land."
 
 #. [message]: speaker=Linaera
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:251
-#, fuzzy
 msgid "Count me an ally, then, lord Erlornas. We can defeat them together."
 msgstr ""
 "Beschouw me dan als een bondgenoot, heer Erlornas. Samen kunnen we hen "
@@ -1348,7 +1289,6 @@ msgstr ""
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:265
-#, fuzzy
 msgid ""
 "My lord... humans cannot be trusted! They shift their allegiances with the "
 "changing of the wind!"
@@ -1358,18 +1298,16 @@ msgstr ""
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:270
-#, fuzzy
 msgid ""
 "That may be, but I do not think this one will betray us to the orcs. And we "
 "may need her assistance, too: that is a powerful force of orcs ahead."
 msgstr ""
 "Dat kan zijn, maar ik denk niet dat deze ons zal in de steek zal laten. We "
-"hebben haar hulp waarschijnlijk nodig ook; het is een sterk legertje van "
-"Orks wat ons wacht."
+"hebben haar hulp waarschijnlijk nodig ook; het is een sterk leger van orks "
+"wat ons wacht."
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:279
-#, fuzzy
 msgid ""
 "And that is well ended. But, Linaera, there is somewhat else that concerns "
 "me. You are a mage; do you not feel something... wrong... to the east of "
@@ -1381,7 +1319,6 @@ msgstr ""
 
 #. [message]: speaker=Linaera
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:284
-#, fuzzy
 msgid ""
 "I do indeed. Something evil has recently made a nest in the next valley "
 "over; its servants have been sniffing at the edges of my domain. I had meant "
@@ -1395,48 +1332,41 @@ msgstr ""
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:289
-#, fuzzy
 msgid "We are of one mind, then. Let us go to it."
-msgstr "Dan zijn we dezelfde mening toegedaan. Laat ons er naar toe gaan."
+msgstr "Dan hebben we dezelfde mening. Laat ons er naar toe gaan."
 
 #. [scenario]: id=06_A_Detour_through_the_Swamp
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:10
-#, fuzzy
 msgid "A Detour through the Swamp"
-msgstr "Een omweg door het moeras"
+msgstr "Een Omweg Door het Moeras"
 
 #. [side]: type=Lich, id=Keremal
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:45
 msgid "Undead"
-msgstr ""
+msgstr "Ondoden"
 
 #. [side]: type=Lich, id=Keremal
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:50
-#, fuzzy
 msgid "Keremal"
 msgstr "Keremal"
 
 #. [objective]: condition=win
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:70
-#, fuzzy
 msgid "Defeat Keremal"
 msgstr "Versla Keremal"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:90
-#, fuzzy
 msgid ""
 "Undead are resistant to physical attack. Use mages to attack the undead, and "
 "elves to protect and support the mages."
 msgstr ""
-"Hint:\n"
 "Ondoden zijn resistent tegen fysieke aanvallen. Gebruik magiërs om de "
-"ondoden aan te vallen en Elfen om de magiërs te verdedigen en te "
+"ondoden aan te vallen en elfen om de magiërs te verdedigen en te "
 "ondersteunen."
 
 #. [message]: speaker=Linaera
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:107
-#, fuzzy
 msgid ""
 "The evil spirits who have settled in this wetland have turned it into a vile "
 "bog. My apprentices and I have the power to dispel them, but you must "
@@ -1448,116 +1378,104 @@ msgstr ""
 
 #. [message]: speaker=Linaera
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:118
-#, fuzzy
 msgid ""
 "Thank you, Erlornas... now I can return to my tower in peace. But I think "
 "some of my apprentices wish to follow you north in pursuit of the orcs."
 msgstr ""
 "Dank u, Erlornas... nu kan ik rustig terug naar mijn toren. Maar ik denk dat "
-"enkele van mijn volgelingen u wel willen vergezellen bij je jacht op de Orks."
+"enkele van mijn leerlingen u wel willen vergezellen bij de jacht op de orks."
 
 #. [message]: role=mage
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:123
-#, fuzzy
 msgid ""
 "I have always wished to see elves, and now I have fought alongside them! May "
 "I please travel with you?"
 msgstr ""
-"Ik heb altijd al Elfen willen zien en nu heb ik aan hun zijde meegevochten! "
+"Ik heb altijd al elfen willen zien en nu heb ik aan hun zijde meegevochten! "
 "Kan ik alsjeblieft met jullie meereizen?"
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:128
-#, fuzzy
 msgid "Certainly... I shall be glad of your help."
-msgstr "Zeker... ik zal u graag van dienst zijn."
+msgstr "Zeker... Ik zal u graag van dienst zijn."
 
 #. [scenario]: id=07_Showdown
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:10
-#, fuzzy
 msgid "Showdown"
-msgstr "De Krachtmeting"
+msgstr "Confrontatie"
 
 #. [side]: type=Orcish Sovereign, id=Rualsha
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:63
-#, fuzzy
 msgid "Rualsha"
 msgstr "Rualsha"
 
 #. [objective]: condition=win
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:90
-#, fuzzy
 msgid "Defeat Rualsha"
 msgstr "Versla Rualsha"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:102
-#, fuzzy
 msgid ""
 "Your enemy is well-defended against attacks from the south. Use rangers to "
 "sneak through the forest and mount a surprise attack from the north."
 msgstr ""
-"Hint:\n"
 "Je tegenstander heeft een goede verdediging tegen aanvallen vanuit het "
-"zuiden. Gebruik dolers om door het woud te sluipen en plan een "
+"zuiden. Gebruik elfenbeschermers om door het woud te sluipen en plan een "
 "verrassingsaanval vanuit het noorden."
 
 #. [unit]: type=Elvish Ranger, id=Celodith
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:139
 msgid "Celodith"
-msgstr ""
+msgstr "Celodith"
 
 #. [unit]: type=Elvish Ranger, id=Earanduil
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:159
 msgid "Earanduil"
-msgstr ""
+msgstr "Earanduil"
 
 #. [unit]: type=Elvish Ranger, id=Elvyniel
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:179
 msgid "Elvyniel"
-msgstr ""
+msgstr "Elvyniel"
 
 #. [unit]: type=Elvish Ranger, id=Delorfilith
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:199
 msgid "Delorfilith"
-msgstr ""
+msgstr "Delorfilith"
 
 #. [message]: speaker=Lomarfel
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:212
-#, fuzzy
 msgid ""
 "My lord! We have ridden hard for over a week to catch up with you! The "
 "Ka’lian has deliberated, and asks you to defeat Rualsha quickly before he "
 "can muster a full invasion force."
 msgstr ""
 "Mijn heer! We hebben een week lang hard gereden om u in te halen! De Ka'lian "
-"heeft overlegd en vraagt u om Rualsha snel te verslaan alvorens hij een "
+"heeft overlegd en vraagt u om Rualsha snel te verslaan voordat hij een "
 "volledige invasiemacht kan verzamelen."
 
 #. [message]: speaker=Rualsha
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:217
-#, fuzzy
 msgid ""
 "Puny elves! My full army will be here soon, and then we will crush you. You "
 "will beg for a quick death!"
 msgstr ""
-"Zielige Elfen! Mijn volledige leger zal hier snel zijn en dan zullen we je "
-"vernietigen. Je zult om een spoedige dood smeken!"
+"Zielige elfen! Mijn complete leger zal hier snel zijn en dan zullen we "
+"jullie vernietigen. Je zult om een snelle dood smeken!"
 
 #. [message]: speaker=unit
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:229
-#, fuzzy
 msgid ""
 "You may slay me, Erlornas, but my people live on. They will not forget! They "
 "will pursue you, and destroy you utterly... we will... we... arrgh..."
 msgstr ""
-"Misschien versla je mij Erlornas, maar mijn onderdanen leven verder. Zij "
+"Misschien versla je mij, Erlornas, maar mijn onderdanen leven verder. Zij "
 "zullen het niet vergeten. Zij zullen je opjagen en je uiteindelijk "
 "vernietigen... we zullen... we... aargh..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:242
-#, fuzzy
 msgid ""
 "But Rualsha overestimated the will of his troops. With their leader dead, "
 "they scattered, and fled from the elves back to their fastnesses in the far "
@@ -1569,44 +1487,38 @@ msgstr ""
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:253
-#, fuzzy
 msgid "It grieves me to take life, even of a barbarian such as Rualsha."
 msgstr ""
-"Het doet me pijn om een leven te nemen, zelfs al is het van een schurk als "
-"Rualsha."
+"Het doet me pijn om een leven te nemen, zelfs al is het van een slechterik "
+"als Rualsha."
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:258
-#, fuzzy
 msgid ""
 "If the orcs press us, we shall need to become more accustomed to fighting."
 msgstr ""
-"Als de Orks ons aanvallen, zullen we meer vertrouwd moeten worden met "
+"Als de orks ons aanvallen, zullen we meer vertrouwd moeten worden met "
 "vechten."
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:263
-#, fuzzy
 msgid ""
 "I fear it will be so. We have won a first victory here, but dark times come "
 "upon its heels."
 msgstr ""
 "Ik vrees dat het zo zal zijn. We hebben hier een eerste overwinning behaald, "
-"maar de donkere tijden zitten ons op de hielen."
+"maar donkere tijden zitten ons op de hielen."
 
 #: data/campaigns/An_Orcish_Incursion/utils/characters.cfg:6
-#, fuzzy
 msgid "Erlornas"
 msgstr "Erlornas"
 
 #: data/campaigns/An_Orcish_Incursion/utils/characters.cfg:16
-#, fuzzy
 msgid "Linaera"
 msgstr "Linaera"
 
 #. [message]: speaker=narrator
 #: data/campaigns/An_Orcish_Incursion/utils/deaths.cfg:13
-#, fuzzy
 msgid ""
 "Lord Erlornas never saw the blade that felled him. He died on the spot, with "
 "not a chance to issue last commands or farewells. Without him his wardens "
@@ -1619,35 +1531,32 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/An_Orcish_Incursion/utils/deaths.cfg:19
-#, fuzzy
 msgid ""
 "When reinforcements finally arrived, elves managed to dislodge the orcish "
 "tribe. But the threat from the north remained unresolved and loomed large "
 "over their future."
 msgstr ""
 "Toen de versterkingen uiteindelijk aankwamen, slaagden de Elfen erin de "
-"Orkstam te verdrijven. Maar de dreiging vanuit het noorden bleef onopgelost "
+"orkbende te verdrijven. Maar de dreiging vanuit het noorden bleef onopgelost "
 "en wierp een grote schaduw over hun toekomst."
 
 #. [message]: speaker=Linaera
 #: data/campaigns/An_Orcish_Incursion/utils/deaths.cfg:37
-#, fuzzy
 msgid "Alas, Erlornas, I have failed us..."
-msgstr "Helaas, Erlornas, ik ben ons bondgenootschap niet nagekomen..."
+msgstr "Helaas, Erlornas, ik heb gefaald..."
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/utils/deaths.cfg:49
-#, fuzzy
 msgid ""
 "All is lost! Without Linaera’s help, I cannot hope to defeat these "
 "abominations!"
 msgstr ""
-"Alles is verloren! Zonder de hulp van Linaera kan ik niet hopen deze "
-"verschrikkelijke monsters te verslaan!"
+"Alles is verloren! Zonder de hulp van Linaera kan ik deze verschrikkelijke "
+"monsters niet verslaan!"
 
 #: data/campaigns/An_Orcish_Incursion/utils/macros.cfg:4
 msgid "Hint:"
-msgstr ""
+msgstr "Hint:"
 
 #~ msgid ""
 #~ "My lord, none of our healers have experience on the battlefield. It "
