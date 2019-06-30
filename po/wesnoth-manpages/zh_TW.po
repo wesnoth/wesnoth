@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
-"POT-Creation-Date: 2019-02-24 00:45+0300\n"
+"POT-Creation-Date: 2019-06-30 15:14+0300\n"
 "PO-Revision-Date: 2019-03-12 19:22+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -1097,19 +1097,24 @@ msgid "B<--controller>I<\\ number>B<:>I<value>"
 msgstr "B<--controller>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:440
+#: doc/man/wesnoth.6:441
+#, fuzzy
+#| msgid ""
+#| "selects the controller for this side. Available values: B<human> and "
+#| "B<ai>."
 msgid ""
-"selects the controller for this side. Available values: B<human> and B<ai>."
+"selects the controller for this side. Available values: B<human>, B<ai> and "
+"B<null>."
 msgstr "選擇這個陣營的控制者。可選值有：B<human> 和 B<ai>。"
 
 #. type: TP
-#: doc/man/wesnoth.6:440
+#: doc/man/wesnoth.6:441
 #, no-wrap
 msgid "B<--era>I<\\ value>"
 msgstr "B<--era>I<\\ value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:447
+#: doc/man/wesnoth.6:448
 msgid ""
 "use this option to play in the selected era instead of the B<Default> era. "
 "The era is chosen by an id. Eras are described in the B<data/multiplayer/"
@@ -1119,13 +1124,13 @@ msgstr ""
 "B<data/multiplayer/eras.cfg> 檔案中描述。"
 
 #. type: TP
-#: doc/man/wesnoth.6:447
+#: doc/man/wesnoth.6:448
 #, no-wrap
 msgid "B<--exit-at-end>"
 msgstr "B<--exit-at-end>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:451
+#: doc/man/wesnoth.6:452
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which normally requires the user to click End Scenario.  This is also used "
@@ -1135,48 +1140,48 @@ msgstr ""
 "也可以用在腳本化的性能基準測試。"
 
 #. type: TP
-#: doc/man/wesnoth.6:451
+#: doc/man/wesnoth.6:452
 #, no-wrap
 msgid "B<--ignore-map-settings>"
 msgstr "B<--ignore-map-settings>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:454
+#: doc/man/wesnoth.6:455
 msgid "do not use map settings, use default values instead."
 msgstr "不使用地圖設定，而使用預設值。"
 
 #. type: TP
-#: doc/man/wesnoth.6:454
+#: doc/man/wesnoth.6:455
 #, no-wrap
 msgid "B<--label>I<\\ label>"
 msgstr "B<--label>I<\\ label>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:459
+#: doc/man/wesnoth.6:460
 msgid "sets the I<label> for AIs."
 msgstr "設定 AI 的 I<label>。"
 
 #. type: TP
-#: doc/man/wesnoth.6:459
+#: doc/man/wesnoth.6:460
 #, no-wrap
 msgid "B<--multiplayer-repeat>I<\\ value>"
 msgstr "B<--multiplayer-repeat>I<\\ value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:466
+#: doc/man/wesnoth.6:467
 msgid ""
 "repeats a multiplayer game I<value> times. Best to use with B<--nogui> for "
 "scriptable benchmarking."
 msgstr "重複執行多人遊戲 I<value> 次。建議與 B<--nogui> 使用腳本化性能測試。"
 
 #. type: TP
-#: doc/man/wesnoth.6:466
+#: doc/man/wesnoth.6:467
 #, no-wrap
 msgid "B<--parm>I<\\ number>B<:>I<name>B<:>I<value>"
 msgstr "B<--parm>I<\\ number>B<:>I<name>B<:>I<value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:475
+#: doc/man/wesnoth.6:476
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm>.  It should only be "
@@ -1186,26 +1191,26 @@ msgstr ""
 "定。這個選項只對設計 AI 的人比較有用。(目前還沒有相應的文檔)"
 
 #. type: TP
-#: doc/man/wesnoth.6:475
+#: doc/man/wesnoth.6:476
 #, no-wrap
 msgid "B<--scenario>I<\\ value>"
 msgstr "B<--scenario>I<\\ value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:479
+#: doc/man/wesnoth.6:480
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
 msgstr "透過 ID 選擇多人遊戲地圖。預設地圖是 B<multiplayer_The_Freelands>。"
 
 #. type: TP
-#: doc/man/wesnoth.6:479
+#: doc/man/wesnoth.6:480
 #, no-wrap
 msgid "B<--side>I<\\ number>B<:>I<value>"
 msgstr "B<--side>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:484
+#: doc/man/wesnoth.6:485
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
@@ -1214,26 +1219,26 @@ msgstr ""
 "multiplayer.cfg 文件中描述。"
 
 #. type: TP
-#: doc/man/wesnoth.6:484
+#: doc/man/wesnoth.6:485
 #, no-wrap
 msgid "B<--turns>I<\\ value>"
 msgstr "B<--turns>I<\\ value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:487
+#: doc/man/wesnoth.6:488
 msgid ""
 "sets the number of turns for the chosen scenario. By default no turn limit "
 "is set."
 msgstr "設定所選章節的回合數限制。預設為沒有限制。"
 
 #. type: SH
-#: doc/man/wesnoth.6:488 doc/man/wesnothd.6:265
+#: doc/man/wesnoth.6:489 doc/man/wesnothd.6:265
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr "退出狀態碼"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:493
+#: doc/man/wesnoth.6:494
 msgid ""
 "Normal exit status is 0.  An exit status of 1 indicates an (SDL, video, "
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
@@ -1243,7 +1248,7 @@ msgstr ""
 "碼2代表指令行選項中有錯誤。"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:505
+#: doc/man/wesnoth.6:506
 msgid ""
 "When running unit tests (withB<\\ -u>), the exit status is different. An "
 "exit status of 0 indicates that the test passed, and 1 indicates that the "
@@ -1259,18 +1264,18 @@ msgstr ""
 "碼2是測試時間逾時，當與 B<--timeout> 使用時才會出現。"
 
 #. type: SH
-#: doc/man/wesnoth.6:506 doc/man/wesnothd.6:269
+#: doc/man/wesnoth.6:507 doc/man/wesnothd.6:269
 #, no-wrap
 msgid "AUTHOR"
 msgstr "作者"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:509
+#: doc/man/wesnoth.6:510
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "由David White E<lt>davidnwhite@verizon.netE<gt>編寫。"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:511
+#: doc/man/wesnoth.6:512
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
@@ -1279,30 +1284,30 @@ msgstr ""
 "and Soliton E<lt>soliton.de@gmail.comE<gt>更動。"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:513
+#: doc/man/wesnoth.6:514
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr "這個說明頁最早由 Cyril Bouthors 撰寫E<lt>cyril@bouthors.orgE<gt>。"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:515 doc/man/wesnothd.6:276
+#: doc/man/wesnoth.6:516 doc/man/wesnothd.6:276
 msgid "Visit the official homepage: https://www.wesnoth.org/"
 msgstr "參閱官方網站：http://www.wesnoth.org/"
 
 #. type: SH
-#: doc/man/wesnoth.6:516 doc/man/wesnothd.6:277
+#: doc/man/wesnoth.6:517 doc/man/wesnothd.6:277
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "版權"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:519 doc/man/wesnothd.6:280
+#: doc/man/wesnoth.6:520 doc/man/wesnothd.6:280
 msgid "Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr "版權 \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:522 doc/man/wesnothd.6:283
+#: doc/man/wesnoth.6:523 doc/man/wesnothd.6:283
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -1315,7 +1320,7 @@ msgstr ""
 "not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 
 #. type: SH
-#: doc/man/wesnoth.6:523 doc/man/wesnothd.6:284
+#: doc/man/wesnoth.6:524 doc/man/wesnothd.6:284
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "參見"

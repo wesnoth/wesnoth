@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-03-11 13:09 UTC\n"
+"POT-Creation-Date: 2019-06-30 12:13 UTC\n"
 "PO-Revision-Date: 2019-04-09 16:15+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -63,12 +63,12 @@ msgstr "召喚者"
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:23
 msgid ""
-"Learn the dark arts of necromancy in order to save your people from an "
-"orcish incursion.\n"
+"The northern frontier town of Parthyn is annually raided by neighboring "
+"tribes of orcs. Malin Keshar, an outcast mage, seeks to defend his home and "
+"wreak vengeance on the orcs by any means necessary, even if it means "
+"sacrificing his own soul in the process.\n"
 "\n"
 msgstr ""
-"為了從半獸人的手中拯救人民而學習黑魔法成為了死靈法師。\n"
-"\n"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:25
@@ -189,6 +189,15 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:53
+#, fuzzy
+#| msgid ""
+#| "The silence was broken by the irregular shuffle of a man emerging from "
+#| "the trees. He stood before them, a hunched figure with a rasping voice "
+#| "reminiscent of crackling bones. <i>“I am Darken Volk. While I know you do "
+#| "not love my kind, I think it is vital that we put aside our differences "
+#| "for the moment. The orcish menace grows in the north and they will soon "
+#| "return in even greater force. You cannot hope to defend against them "
+#| "without my... help.”</i>"
 msgid ""
 "The silence was broken by the irregular shuffle of a man emerging from the "
 "trees. He stood before them, a hunched figure with a rasping voice "
@@ -196,7 +205,7 @@ msgid ""
 "not love my kind, I think it is vital that we put aside our differences for "
 "the moment. The orcish menace grows in the north and they will soon return "
 "in even greater force. You cannot hope to defend against them without my... "
-"help.”</i>"
+"help. For now, however, I ask only to refresh myself in your town.”</i>"
 msgstr ""
 "一位拖著怪異長袍的人從樹林裡冒出來打破了眼前的寂靜。他站在眾人面前，彎著身軀"
 "發出像是骨頭關節的刺耳聲音。<i>「我是黑暗弗科。我知道你們並不喜歡我們這些人，"
@@ -227,8 +236,8 @@ msgstr ""
 "無濟於事。過了幾天，死靈法師就平靜地離開了帕辛。"
 
 #. [side]
-#. [side]: type=Sergeant, id=Drogan
 #. [side]: type=General, id=Taylor
+#. [side]: type=Sergeant, id=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:75
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:122
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:122
@@ -242,11 +251,11 @@ msgstr "防衛隊"
 
 #. [side]: type=Orcish Warlord, id=Gron'r Hronk
 #. [side]: type=Orcish Warlord, id=K'rrlar Oban
+#. [modify_side]
 #. [side]: type=Orcish Warrior, id=Kreg'a'shar Trr
 #. [side]: type=Orcish Warlord, id=Borth
 #. [side]: type=Orcish Warlord, id=P'Gareth
 #. [side]: type=Orcish Warlord, id=K'Vark
-#. [modify_side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:97
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:57
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:85
@@ -303,9 +312,10 @@ msgstr "半獸人抵達帕辛外圍"
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:400
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:125
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:847
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:200
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:898
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:962
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:203
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:950
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1018
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1065
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:161
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:742
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:723
@@ -314,31 +324,42 @@ msgstr "馬林‧基沙爾陣亡"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:197
+#, fuzzy
+#| msgid "Death of Malin Keshar"
+msgid "Death of Dela Keshar"
+msgstr "馬林‧基沙爾陣亡"
+
+#. [objective]: condition=lose
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:201
 msgid "Death of Drogan"
 msgstr "卓根陣亡"
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:214
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:218
+#, fuzzy
+#| msgid ""
+#| "Was it really a good idea to send out a raiding party so soon after the "
+#| "orcs just attacked us? Even father is no longer here..."
 msgid ""
 "Was it really a good idea to send out a raiding party so soon after the orcs "
-"just attacked us? Even father is no longer here..."
+"just attacked us? Even Father is no longer here..."
 msgstr ""
 "半獸人才剛襲擊過我們，而現在就要發動一場攻擊這樣好嗎？更何況父親已經不在..."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:219
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:223
 msgid "Nor is Darken Volk. We are truly defenseless."
 msgstr "沒有黑暗弗科，我們真的手無縛雞之力。"
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:224
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:228
 msgid ""
 "Not like we needed him. I cannot believe that you would even consider "
 "trusting a necromancer!"
 msgstr "我們不需要他。我真不敢相信你竟然考慮要相信一個死靈法師！"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:229
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:233
 msgid ""
 "Quit bickering, you two. With the bulk of their forces massacred in that "
 "assault, the orcish encampments will be greatly weakened. The raiding party "
@@ -348,24 +369,24 @@ msgstr ""
 "大地減弱。現在突襲他們應該能將他們消滅，讓我們能過一個寧靜的夏天。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:234
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:238
 msgid "So much for quiet, Drogan. Orcs amass north of the river!"
 msgstr "這裡多麼寧靜。卓根，半獸人聚集在河的北方！"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:239
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:243
 msgid "What? Curses! How can there still be so many of them?"
 msgstr "什麼？天啊！他們的數量怎麼還是這麼多？"
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:244
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:248
 msgid ""
 "You sent most of our soldiers away to attack the orcs, and we haven’t even "
 "begun to rebuild the city walls..."
 msgstr "你派我們大部分的士兵去突襲半獸人，而我們甚至還沒有開始修復城牆..."
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:249
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:253
 msgid ""
 "Quiet, you. Malin, you must hold the river fort, or they shall surely "
 "overrun the town. If you can defend for two days, the raiding party should "
@@ -377,25 +398,29 @@ msgstr ""
 "留下來支援你。"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:263
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:267
 msgid ""
 "What in blazes is that thing? Has the necromancer returned? His timing could "
 "not be worse..."
 msgstr "那個火光是有什麼東西？那個死靈法師又回來了？這個時間點還不算糟..."
 
 #. [message]: speaker=Malin Keshar
-#. stewpots means a big pot that orcs cook things in, like humans in this case
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:270
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:272
+#, fuzzy
+#| msgid ""
+#| "No, Drogan. I raised this corpse with the skills Darken Volk taught me "
+#| "before he left. While I have no love for it, without the help of the "
+#| "dead, we consign ourselves and our families to orcish stewpots!"
 msgid ""
 "No, Drogan. I raised this corpse with the skills Darken Volk taught me "
-"before he left. While I have no love for it, without the help of the dead, "
-"we consign ourselves and our families to orcish stewpots!"
+"before he left. While I have no love for it, we cannot hope to repel the "
+"orcs without the help of the dead!"
 msgstr ""
 "不是，卓根。我用黑暗弗科離開前教我的法術喚起了這些屍體。雖然我不喜歡這個，但"
 "是沒有這些屍體的幫助，我們自己及我們的家人就要被半獸人的丟下鍋煮了！"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:275
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:277
 msgid ""
 "You say it will ensure our survival, but at what price? Defiling the bodies "
 "of our dead? Your soul, sold to black magic?"
@@ -404,14 +429,19 @@ msgstr ""
 "賣給黑魔法了？"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:280
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:282
 msgid "What? I am hardly evil, Drogan!"
 msgstr "什麼？我是討厭邪惡的，卓根！"
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:285
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:287
+#, fuzzy
+#| msgid ""
+#| "You say that, brother, but you have been very close-mouthed about why the "
+#| "mages sent you home from Alduin. I am beginning to think that you were "
+#| "already dabbling in this witchcraft even before you met that necromancer!"
 msgid ""
-"You say that, brother, but you have been very close-mouthed about why the "
+"You say that, Brother, but you have been very close-mouthed about why the "
 "mages sent you home from Alduin. I am beginning to think that you were "
 "already dabbling in this witchcraft even before you met that necromancer!"
 msgstr ""
@@ -419,7 +449,7 @@ msgstr ""
 "不是在遇到死靈法師之前就已經在涉獵這些巫術了！"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:290
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:292
 msgid ""
 "No! No... it was something stupid, something silly... it does not matter "
 "now! I will not stand by and allow the orcs to destroy my home while I have "
@@ -429,54 +459,54 @@ msgstr ""
 "就不會袖手旁觀讓半獸人摧毀我的家園！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:305
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:307
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:517
 msgid "Welcome to Parthyn"
 msgstr "歡迎來到帕辛"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:320
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:322
 msgid ""
 "Fear is the path to the dark side. Fear leads to anger. Anger leads to hate. "
 "Hate leads to suffering."
 msgstr "恐懼是走向黑暗的道路。恐懼導致憤怒，憤怒導致憎恨，憎恨導致痛苦。"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:337
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:339
 msgid "The orcs have broken through. Parthyn is open to attack!"
 msgstr "半獸人已經攻破我們的防線。帕辛鎮要被攻破了！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:354
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:356
 msgid "Who will be left to defend Parthyn?"
 msgstr "誰要留下來保衛帕辛呢？"
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:370
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:372
 msgid "I’m... dying..."
 msgstr "我要...死了..."
 
 #. [message]: speaker=Soldier
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:401
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:403
 msgid ""
 "We’ve returned from ransacking the orcish camps, Drogan. It seems like we’re "
 "just in time!"
 msgstr "卓根，我們從半獸人的營地回來了。看樣子我們趕上了！"
 
 #. [message]: speaker=Kreg'a'shar Trr
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:405
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:407
 msgid ""
 "More humans! We will need the Chief if we are to fight them now. Grunts, "
 "retreat!"
 msgstr "更多的人類！現在如果我們要擊潰他們就需要更多人手。撤退（戰吼）！"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:425
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:427
 msgid "The orcs are dead!"
 msgstr "這些半獸人死了！"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:452
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:454
 msgid ""
 "By all rights, I should have you executed on the spot, Malin. I cannot "
 "believe you let that necromancer corrupt you. I suppose part of this is my "
@@ -489,13 +519,13 @@ msgstr ""
 "驅逐。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:457
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:459
 msgid ""
 "Fine words, Drogan. Would you rather have let the orcs overrun the town?"
 msgstr "很好，卓根。難道你寧願讓半獸人橫掃這個城鎮？"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:462
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:464
 msgid ""
 "Aye, better that than to even dabble in dark magic. People would have "
 "rebuilt the town, just as they always have before. Even had I died, it would "
@@ -505,32 +535,32 @@ msgstr ""
 "使我被殺死，至少我還有尊嚴。難道法師們沒有教過你這些。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:467
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:469
 msgid ""
 "I only did it to protect those whom I care about. Is this really what I "
 "deserve for saving your hides?"
 msgstr "我只是想保護我在乎的人。這就是拯救你們的人所應得的對待嗎？"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:472
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:474
 msgid "Yes, yes it is. Nobody will support you on your path to depravity."
 msgstr "是，沒錯。沒有人會支持你走向墮落。"
 
 #. [message]: race=human
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:482
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:484
 msgid ""
 "We should all be glad to see you gone, necromancer. I detest having fought "
 "by your side."
 msgstr "我們都很高興看到你要走了，死靈法師。我討厭為你打仗。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:487
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:548
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:489
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:550
 msgid "Dela? Sister?"
 msgstr "黛拉？妹妹？"
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:492
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:494
 msgid ""
 "It sickens me to be of the same blood as a necromancer. Father would turn in "
 "his grave if he could see what you’ve become. Just leave."
@@ -539,16 +569,22 @@ msgstr ""
 "過。離開吧。"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:497
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:499
 msgid "Begone, Malin. I’ve no wish to see your face around here ever again."
 msgstr "走吧，馬林。我在也不希望看見你的臉。"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:503
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:505
+#, fuzzy
+#| msgid ""
+#| "That was bravely done, lad, holding the orcs off by yourself. But I fear "
+#| "the raiding party brings grave news from the north. More warlords have "
+#| "begun to mass armies in the hills, no more than a few days north of the "
+#| "Great River. I do not know if we possess the strength to fight them off."
 msgid ""
 "That was bravely done, lad, holding the orcs off by yourself. But I fear the "
 "raiding party brings grave news from the north. More warlords have begun to "
-"mass armies in the hills, no more than a few days north of the Great River. "
+"amass armies in the hills, no more than a few days north of the Great River. "
 "I do not know if we possess the strength to fight them off."
 msgstr ""
 "真勇敢，孩子，你自己要和半獸人保持距離。我擔心突襲隊從北方帶壞消息回來。更多"
@@ -556,7 +592,7 @@ msgstr ""
 "足夠的力量抵擋他們。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:508
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:510
 msgid ""
 "Then we must seek help. It has not been long since Darken Volk’s departure. "
 "Perhaps I can find him and ask him to aid us."
@@ -564,12 +600,12 @@ msgstr ""
 "我們必須尋求幫助，黑暗弗科剛離開不久。也許我可以找到他並且請他幫助我們。"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:513
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:515
 msgid "I will pretend I did not hear that."
 msgstr "我會假裝我剛沒聽到你說話。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:518
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:520
 msgid ""
 "Then what would you have us do, Drogan? Let the orcs overrun Parthyn? "
 "Abandon our families to those savages?"
@@ -577,7 +613,7 @@ msgstr ""
 "卓根，那你又做了什麼？讓半獸人入侵帕辛？在那些野蠻人面前拋棄我們的家人？"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:523
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:525
 msgid ""
 "If it comes to it, yes. Abandon the town and rebuild later, as we have "
 "always done."
@@ -585,7 +621,7 @@ msgstr ""
 "沒錯，如果那天真的到來的話。放棄這個城鎮然後再重建起來，就像我們以前一樣。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:528
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:530
 msgid ""
 "Or we can drive off the orcs altogether and make sure they never attack us "
 "again. Surely I cannot be the only one who sees that what Drogan says is "
@@ -595,38 +631,38 @@ msgstr ""
 "的瘋子一定不會只有我一個！"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:533
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:535
 msgid ""
 "Should you embark on a quest to seek out depravity, none of us will support "
 "you."
 msgstr "如果你開始走向墮落，沒有人會支持你。"
 
 #. [message]: race=human
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:543
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:545
 msgid "Better to die than to ally ourselves with a necromancer."
 msgstr "跟一個死靈法師結盟，我寧願去死。"
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:553
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:555
 msgid "I hope that you will stay with us, Malin. Be reasonable."
 msgstr "馬林，我希望你和我們站在一起。這樣才是對的。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:558
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:560
 msgid ""
 "Be reasonable? I am the only one who sees reason here. If no one will help "
 "me, I will go by myself."
 msgstr "對的？我是在場唯一一個看清真相的。如果沒有人要幫我，我會自己去做。"
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:563
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:565
 msgid ""
 "Malin, seeking out the help of a necromancer is just... just foolhardy! We "
 "need you here to help protect the town!"
 msgstr "馬林，尋求死靈法師的幫助只有... 只有魯莽！我們需要你保護這個城鎮！"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:568
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:570
 msgid "You will eventually see that I am right, Dela. I am resolved."
 msgstr "黛拉，你最後會明白我是對的。我已經決定了。"
 
@@ -699,9 +735,10 @@ msgstr "佔領所有地精的村莊"
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:404
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:129
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:851
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:204
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:902
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:966
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:207
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:954
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1022
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1069
 msgid "Death of Darken Volk"
 msgstr "黑暗弗科陣亡"
 
@@ -1387,8 +1424,8 @@ msgid "The ice doesn’t look very thick..."
 msgstr "這裡的冰面看起來不太厚..."
 
 #. [message]: speaker=Darken Volk
-#. [message]: speaker=Malin Keshar
 #. [message]: speaker=Mal Keshar
+#. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:292
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:497
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:923
@@ -1476,10 +1513,17 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:35
+#, fuzzy
+#| msgid ""
+#| "Malin and Darken Volk continue their raids on the orcs and eventually "
+#| "force the usually fractious Whitefang chieftains to unite in opposition. "
+#| "The orcs pursue the two necromancers east toward the mouth of the river "
+#| "men call the Longlier and Elves call the Arkan-thoria, where they manage "
+#| "to surround the humans and force a fight."
 msgid ""
 "Malin and Darken Volk continue their raids on the orcs and eventually force "
 "the usually fractious Whitefang chieftains to unite in opposition. The orcs "
-"pursue the two necromancers east toward the mouth of the river men call the "
+"pursue the two necromancers east toward the mouth of the river Men call the "
 "Longlier and Elves call the Arkan-thoria, where they manage to surround the "
 "humans and force a fight."
 msgstr ""
@@ -2163,8 +2207,17 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:854
+#, fuzzy
+#| msgid ""
+#| "O Gods, how did it come to this? My own sister determined to personally "
+#| "see to my demise. Banished from Parthyn, my country, my home... spurned "
+#| "by my people, whom I have given everything for... nothing has gone right "
+#| "ever since I got into an argument with that fat, orc-loving toad Zephrin "
+#| "and tried to curse him. I was only testing my new spell on him! It was "
+#| "only supposed to be a simple curse! How was I supposed to know it would "
+#| "kill him? Blasted Academy."
 msgid ""
-"O Gods, how did it come to this? My own sister determined to personally see "
+"O gods, how did it come to this? My own sister determined to personally see "
 "to my demise. Banished from Parthyn, my country, my home... spurned by my "
 "people, whom I have given everything for... nothing has gone right ever "
 "since I got into an argument with that fat, orc-loving toad Zephrin and "
@@ -2466,7 +2519,7 @@ msgstr "柯瑞思領主"
 
 #. [command]
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:259
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:332
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:335
 msgid "Guard"
 msgstr "守衛"
 
@@ -2635,7 +2688,7 @@ msgstr "我找到了通往墓穴的通道了！"
 #. [message]: speaker=RGuard
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:917
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:946
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1067
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1145
 msgid "Surround those necromancers! They cannot escape now!"
 msgstr "包圍那些死靈法師！他們逃不掉了！"
 
@@ -2665,39 +2718,39 @@ msgid "Guardian"
 msgstr "看守者"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:196
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:199
 msgid "Retrieve the book and escape"
 msgstr "尋找書本並逃亡"
 
 #. [command]
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:362
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:365
 msgid "Mage"
 msgstr "法師"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:465
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:468
 msgid "The book is very close, somewhere to the northwest."
 msgstr "這本書非常靠近，在西北方的某個地方。"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:740
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:784
 msgid "The guards continue to pursue us."
 msgstr "守衛繼續追捕我們。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:754
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:798
 msgid "The guards are catching up to us!"
 msgstr "守衛正趕上我們！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:768
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:812
 msgid ""
 "<i>Beware that, when fighting monsters, you yourself do not become a "
 "monster...</i>"
 msgstr "<i>注意，當你和怪物戰鬥，小心自己不要變成怪物...</i>"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:781
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:825
 msgid ""
 "<i>Death is the twilight that follows the light of day.\n"
 "Life fades with the setting sun into darkness.\n"
@@ -2708,83 +2761,93 @@ msgstr ""
 "紛擾重生成就無盡夜晚。</i>"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:796
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:840
 msgid "There are quite a few failed potions around here."
 msgstr "這附近有很多失效的藥水。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:808
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:852
 msgid "This coffin is empty."
 msgstr "這個棺木是空的。"
 
 #. [message]
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:830
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:878
 msgid "I have found the book, master!"
 msgstr "主人，我找到書了！"
 
 #. [message]: id=Malin Keshar
 #. The speaker addresses an undead minion.
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:842
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:892
 msgid "Good! Guard it with your unlife while I come to fetch it."
 msgstr "很好！在我拿到它之前用你的身軀保護它。"
 
 #. [message]: id=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:849
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:899
 msgid "Good! Guard it with your life while I come to fetch it."
 msgstr "很好！在我拿到它之前用你的生命保護它。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:877
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:929
 msgid ""
 "Such an old, worn book. It does not seem like much, but at least we’ve got "
 "it now."
 msgstr "有點破舊的書。看起來並不完整，但至少我們現在得到它了。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:882
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:934
 msgid "... So... how do we get out of here?"
 msgstr "...所以...我們怎麼從這裡出去呢？"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:887
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:939
 msgid ""
 "There is a small tunnel in the cellar to the northeast. It will lead us far "
 "enough out of the city that we can escape pursuit."
 msgstr "在東北面的地窖裡有個小隧道。它可以讓我們遠離城鎮，足以讓我們逃離這裡。"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:894
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:946
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1014
 msgid "Escape via the tunnel in the northeast cellar"
 msgstr "透過東北方地窖的隧道逃跑"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:922
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1030
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:974
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1108
 msgid "Let’s get out of here."
 msgstr "讓我們從這裡出去。"
 
-#. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:958
-msgid "Escape the manor"
-msgstr "逃離莊園"
-
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:981
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1037
 msgid "We’ve got the book, but how do we get out of here?"
 msgstr "我們已經得到書了，可是現在我們怎麼從這裡出去呢？"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:994
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1050
 msgid "Wait, you aren’t leaving me behind, are you?"
 msgstr "等等，你不會把我扔在後面吧？"
 
+#. [objective]: condition=win
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1057
+#, fuzzy
+#| msgid "Escape via the tunnel in the northeast cellar"
+msgid ""
+"Escape the manor (Malin reaches the tunnel in the northeast cellar before "
+"Darken Volk)"
+msgstr "透過東北方地窖的隧道逃跑"
+
+#. [objective]: condition=lose
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1061
+msgid "Darken Volk reaches the tunnel before Malin does"
+msgstr ""
+
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1007
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1085
 msgid "You have served me well, boy."
 msgstr "你做得很好，孩子。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1013
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1091
 msgid ""
 "As he heads into the tunnel, Darken Volk collapses the entrance, leaving "
 "Malin to be captured and executed by the city guards."
@@ -2925,8 +2988,12 @@ msgstr "為什麼你不說話？！難道你一點都不關係嗎？！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:325
+#, fuzzy
+#| msgid ""
+#| "... you can’t abandon me too, not the way they did... father, Drogan, "
+#| "Dela..."
 msgid ""
-"... you can’t abandon me too, not the way they did... father, Drogan, Dela..."
+"... you can’t abandon me too, not the way they did... Father, Drogan, Dela..."
 msgstr "...你不能也丟下我，不能像他們一樣...父親、卓根、黛拉..."
 
 #. [message]: role=advisor
@@ -3613,44 +3680,44 @@ msgstr "然後被拉扯的力量代替，無法忍受的痛苦，然後..."
 msgid "... by emptiness."
 msgstr "沒了知覺。"
 
-#. [modify_side]
 #. [side]
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1661
+#. [modify_side]
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1669
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:115
 #: data/campaigns/Descent_Into_Darkness/utils/characters.cfg:15
 msgid "Mal Keshar"
 msgstr "麥爾‧基沙爾"
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1687
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1695
 msgid "<big>AAAaaiiigghh!!</big>"
 msgstr "<big>啊啊啊咿咿咿呀呀！！</big>"
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1692
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1700
 msgid "The cold, it burns!"
 msgstr "這個寒冷，它在燃燒！"
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1697
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1705
 msgid "I need warmth... life..."
 msgstr "我需要溫暖的... 生命..."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1755
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1763
 msgid ""
 "I sense some primitive life in that direction. Perhaps I can sustain myself "
 "upon them."
 msgstr ""
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1907
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1917
 msgid "Regain your strength"
 msgstr "恢復你的力量"
 
 #. [objective]: condition=lose
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1911
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1921
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:3109
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:196
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:214
@@ -3658,7 +3725,7 @@ msgid "Destruction of Mal Keshar"
 msgstr "麥爾‧基沙爾的毀滅"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1939
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1949
 msgid ""
 "<s><i>Welcome to Zephryn’s laboratory. Please be mindful of ongoing "
 "experiments during your visit.</i></s>\n"
@@ -3667,19 +3734,19 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1954
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1964
 msgid "That mage’s name is suspiciously... familiar."
 msgstr ""
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1976
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1986
 #, fuzzy
 #| msgid "What are those things?"
 msgid "Why are these bats chasing me?"
 msgstr "那些是什麼東西？"
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:1997
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:2007
 msgid "Blasted rats!"
 msgstr ""
 
@@ -4764,12 +4831,12 @@ msgstr "邊境女爵"
 #: data/campaigns/Descent_Into_Darkness/units/Frontier_Baroness.cfg:23
 msgid ""
 "At Wesnoth’s frontiers, all able-bodied men and women must be able to defend "
-"their homes at need. Men are most often trained in the use of sword or bow "
-"and are used as soldiers who withstand the brunt of orcish assaults to hold "
-"the raiders at bay. Women, instead, learn to use the staff and sling and are "
-"most effective as scouts and ambushers. The most proficient are powerful "
-"skirmishers and are highly adept at reconnaissance, allowing them to often "
-"outmaneuver and entrap orcish raiders."
+"their homes in times of need. Men are most often trained in the use of sword "
+"or bow and are used as soldiers who withstand the brunt of orcish assaults "
+"to hold the raiders at bay. Women, instead, learn to use the staff and sling "
+"and are most effective as scouts and ambushers. The most proficient are "
+"powerful skirmishers and are highly adept at reconnaissance, allowing them "
+"to often outmaneuver and entrap orcish raiders."
 msgstr ""
 
 #: data/campaigns/Descent_Into_Darkness/utils/characters.cfg:28
@@ -4813,6 +4880,17 @@ msgstr "這麼簡單的任務你都無法勝任真令人震驚，你還沒強大
 #: data/campaigns/Descent_Into_Darkness/utils/macros.cfg:239
 msgid "Lich"
 msgstr "巫妖"
+
+#~ msgid ""
+#~ "Learn the dark arts of necromancy in order to save your people from an "
+#~ "orcish incursion.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "為了從半獸人的手中拯救人民而學習黑魔法成為了死靈法師。\n"
+#~ "\n"
+
+#~ msgid "Escape the manor"
+#~ msgstr "逃離莊園"
 
 #~ msgid "Campaign Maintenance"
 #~ msgstr "戰役維護"

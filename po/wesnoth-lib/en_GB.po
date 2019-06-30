@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-03-11 16:09+0300\n"
+"POT-Creation-Date: 2019-06-30 15:14+0300\n"
 "PO-Revision-Date: 2019-03-12 11:01+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -2482,7 +2482,7 @@ msgstr ""
 #. [label]: id=title
 #. [slider]: id=enemey_gold_factor
 #: data/gui/window/campaign_difficulty.cfg:53
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:251
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:279
 msgid "Difficulty"
 msgstr "Difficulty"
 
@@ -4336,7 +4336,9 @@ msgstr "Which team this side belongs to"
 
 #. [menu_button]: id=side_color
 #: data/gui/window/mp_staging.cfg:304
-msgid "The team color"
+#, fuzzy
+#| msgid "The team color"
+msgid "This side’s color"
 msgstr "The team colour"
 
 #. [button]: id=ok
@@ -4968,11 +4970,6 @@ msgstr "Damage"
 #: data/gui/window/statistics_dialog.cfg:141
 msgid "Overall"
 msgstr "Overall"
-
-#. [label]
-#: data/gui/window/statistics_dialog.cfg:153
-msgid "This Turn"
-msgstr "This Turn"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -6377,7 +6374,12 @@ msgstr "Not on friends or ignore lists"
 msgid "&#9679;"
 msgstr "&#9679;"
 
-#: src/gui/dialogs/preferences_dialog.cpp:876
+#: src/gui/dialogs/preferences_dialog.cpp:850
+#: src/gui/dialogs/preferences_dialog.cpp:920
+msgid "No hotkey selected"
+msgstr ""
+
+#: src/gui/dialogs/preferences_dialog.cpp:881
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -6385,19 +6387,19 @@ msgstr ""
 "‘<b>$hotkey_sequence|</b>’ is in use by ‘<b>$old_hotkey_action|</b>’.\n"
 "Do you wish to re-assign it to ‘<b>$new_hotkey_action|</b>’?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:882
+#: src/gui/dialogs/preferences_dialog.cpp:887
 msgid "Reassign Hotkey"
 msgstr "Re-assign Hotkey"
 
-#: src/gui/dialogs/preferences_dialog.cpp:899
+#: src/gui/dialogs/preferences_dialog.cpp:904
 msgid "All hotkeys have been reset to their default values."
 msgstr "All hotkeys have been reset to their default values."
 
-#: src/gui/dialogs/preferences_dialog.cpp:899
+#: src/gui/dialogs/preferences_dialog.cpp:904
 msgid "Hotkeys Reset"
 msgstr "Hotkeys Reset"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1030
+#: src/gui/dialogs/preferences_dialog.cpp:1040
 msgid "∞"
 msgstr "∞"
 
@@ -6415,35 +6417,39 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "All Scenarios"
 
-#: src/gui/dialogs/statistics_dialog.cpp:177
+#: src/gui/dialogs/statistics_dialog.cpp:151
+msgid "This Turn"
+msgstr "This Turn"
+
+#: src/gui/dialogs/statistics_dialog.cpp:185
 msgid "Recruits"
 msgstr "Recruits"
 
-#: src/gui/dialogs/statistics_dialog.cpp:178
+#: src/gui/dialogs/statistics_dialog.cpp:186
 msgid "Recalls"
 msgstr "Recalls"
 
-#: src/gui/dialogs/statistics_dialog.cpp:179
+#: src/gui/dialogs/statistics_dialog.cpp:187
 msgid "Advancements"
 msgstr "Advancements"
 
-#: src/gui/dialogs/statistics_dialog.cpp:180
+#: src/gui/dialogs/statistics_dialog.cpp:188
 msgid "Losses"
 msgstr "Losses"
 
-#: src/gui/dialogs/statistics_dialog.cpp:181
+#: src/gui/dialogs/statistics_dialog.cpp:189
 msgid "Kills"
 msgstr "Kills"
 
-#: src/gui/dialogs/statistics_dialog.cpp:200
+#: src/gui/dialogs/statistics_dialog.cpp:208
 msgid "Inflicted"
 msgstr "Inflicted"
 
-#: src/gui/dialogs/statistics_dialog.cpp:208
+#: src/gui/dialogs/statistics_dialog.cpp:216
 msgid "Taken"
 msgstr "Taken"
 
-#: src/gui/dialogs/statistics_dialog.cpp:251
+#: src/gui/dialogs/statistics_dialog.cpp:259
 msgid "$count|× $name"
 msgstr "$count|× $name"
 

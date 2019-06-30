@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-03-11 13:10 UTC\n"
+"POT-Creation-Date: 2019-06-30 12:14 UTC\n"
 "PO-Revision-Date: 2019-01-23 23:12+0100\n"
 "Last-Translator: PaulP <paulp@hotmail.sk>\n"
 "Language-Team: none <viliam@bur.sk>\n"
@@ -75,7 +75,9 @@ msgstr ""
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:26
-msgid "(Hard level, 24 scenarios.)"
+#, fuzzy
+#| msgid "(Hard level, 24 scenarios.)"
+msgid "(Hard level, 20 scenarios.)"
 msgstr "(Pre expertov, 24 scén.)"
 
 #. [about]
@@ -532,15 +534,6 @@ msgstr "Stormvale"
 msgid "Tan-Rarbag"
 msgstr "Tan-Rarbag"
 
-#. [side]: type=Orcish Warlord, id=Tan-Vrodis
-#. [side]: type=Orcish Warlord, id=Tan-Bok
-#. [side]: type=Orcish Warlord, id=Tan-Hogar
-#. [side]: type=Draug, id=General Heravan
-#. [side]: type=Orcish Warlord, id=Tan-Halg
-#. [side]: type=Orcish Warlord, id=Tan-Rinak
-#. [side]: type=Orcish Warlord, id=Tan-Erirt
-#. [side]: type=Orcish Warlord, id=Tan-Gagar
-#. [side]: type=Troll Warrior, id=Thruf
 #. [side]: type=Orcish Warlord, id=Tan-Gralg
 #. [side]: type=Orcish Warlord, id=Tan-Rugar
 #. [side]: type=Orcish Warlord, id=Tan-Vragar
@@ -555,6 +548,15 @@ msgstr "Tan-Rarbag"
 #. [side]: type=Orcish Warrior, id=Tan-Erang
 #. [side]: type=Orcish Warlord, id=Tan-Schmog
 #. [side]: type=Orcish Warlord, id=Tan-NauVong
+#. [side]: type=Orcish Warlord, id=Tan-Vrodis
+#. [side]: type=Orcish Warlord, id=Tan-Bok
+#. [side]: type=Orcish Warlord, id=Tan-Hogar
+#. [side]: type=Orcish Warlord, id=Tan-Erirt
+#. [side]: type=Orcish Warlord, id=Tan-Gagar
+#. [side]: type=Troll Warrior, id=Thruf
+#. [side]: type=Draug, id=General Heravan
+#. [side]: type=Orcish Warlord, id=Tan-Halg
+#. [side]: type=Orcish Warlord, id=Tan-Rinak
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:76
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:99
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:41
@@ -645,37 +647,40 @@ msgstr ""
 "ponáhľať."
 
 #. [message]: speaker=Tan-Rarbag
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:208
-msgid "So, <i>human</i>, care to make your final stand?"
-msgstr "Tak <i>človeče</i>, postavíš sa proti nám konečne?"
+#. meat is a derogatory term for humans used by orcs and also is a subtle reference to orcs eating humans opportunistically
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:209
+msgid ""
+"Run, meat, run! Sooner or later, you will tire and our wolves will hunt you "
+"down!"
+msgstr ""
 
 #. [message]: speaker=Tan-Erang
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:213
-msgid "Die! Die! Die!"
-msgstr "Skap! Skap! Skap!"
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:214
+msgid "The meat will die! Die! Die! Die!"
+msgstr ""
 
 #. [message]: speaker=Wesfolk Leader
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:218
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:219
 msgid "This is going to get ugly..."
 msgstr "Toto bude drsné..."
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:226
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:227
 msgid "Hurry! Only death awaits in this valley!"
 msgstr "Rýchlo! V tomto údolí čaká iba smrť!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:270
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:271
 msgid "Umm, I invoke the right of surren..."
 msgstr "Hmm, žiadam o právo vzdať..."
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:275
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:276
 msgid "Nay! Off with your hea—"
 msgstr "Nie! Preč s tvojou hlavou..."
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:280
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:281
 msgid ""
 "But I can help! Really! You could use me and my men’s skills on the long "
 "road ahead!"
@@ -684,62 +689,62 @@ msgstr ""
 "dlhej ceste, ktorá nás čaká!"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:285
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:286
 msgid "Haldric, what say you on this matter?"
 msgstr "Haldrik, čo na toto povieš?"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:290
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:291
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:371
 msgid "Hmm... after some thought..."
 msgstr "Hm... keď sa nad tým zamyslím..."
 
 #. [option]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:294
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:295
 msgid "I think that your skills may be useful. You may join us."
 msgstr "Myslím, že by sa nám vaše schopnosti hodili. Môžete sa k nám pridať."
 
 #. [message]: speaker=Wesfolk Leader
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:298
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:299
 #, fuzzy
 #| msgid "Let there be peace between us, our survival depends on it."
 msgid "Let there be peace between us. Our survival depends on it."
 msgstr "Nech je medzi nami mier, závisí na tom naše prežitie."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:306
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:307
 msgid "So what shall I call you?"
 msgstr "Tak ako ťa mám volať?"
 
 #. [message]: speaker=Wesfolk Leader
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:310
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:311
 msgid "The Lady Outlaw will do."
 msgstr "Povedzme, zbojnícka lady."
 
 #. [unit]: id=Lady Outlaw, type=$wesfolk_leader_store.type
 #. [then]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:323
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:476
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:324
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:477
 msgid "Lady Outlaw"
 msgstr "Zbojnícka lady"
 
 #. [option]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:346
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:347
 msgid "Your word can’t be trusted. Prepare to meet your gods!"
 msgstr "Tvojim slovám sa nedá veriť. Pober sa na onen svet!"
 
 #. [message]: speaker=Wesfolk Leader
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:350
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:351
 msgid "Arrogant fools! (<i>Reaches into pocket</i>) <i>Poof</i>!"
 msgstr "Namyslení blázni! (<i>Siahne do vrecka</i>) <i>Puf</i>!"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:367
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:368
 msgid "Argh, she’s gone. Next time, more sword, less chat."
 msgstr "Ach, je preč. Nabudúce viac sekať, menej kecať."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:372
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:373
 msgid ""
 "She’s clever! Maybe I made the wrong choice. Well, at least she left some of "
 "her gold behind..."
@@ -748,7 +753,7 @@ msgstr ""
 "nejaké to zlato..."
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:391
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:392
 msgid ""
 "Son, you must lead our people through the south pass. I will remain behind "
 "to hold off these vile monsters for as long as I can."
@@ -757,32 +762,32 @@ msgstr ""
 "zadržal tie hnusné tvory tak dlho, ako budem môcť."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:395
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:396
 msgid "But, Father!"
 msgstr "Ale otče!"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:399
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:400
 msgid "It’s the only way. Go now, and don’t look back! Luck be with you!"
 msgstr "Je to jediná cesta. Choď už a neobzeraj sa! Nech ťa šťastie sprevádza!"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:421
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:422
 msgid "We’re surrounded! The orcs have taken the southern pass! All is lost!"
 msgstr "Sme obkľúčení! Orkovia dobyli južný priesmyk! Všetko je stratené!"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:433
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:434
 msgid "We’re surrounded! I can see their reinforcements! All is lost!"
 msgstr "Sme obkľúčení! Vidím ich posily! Všetko je stratené!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:446
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:447
 msgid "Our home! Where shall we go!"
 msgstr "Náš domov! Kam len pôjdeme!"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:450
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:451
 msgid "There can be no looking back! We must go south."
 msgstr "Nemôžeme sa obzerať! Musíme ísť na juh."
 
@@ -792,8 +797,8 @@ msgid "A Harrowing Escape"
 msgstr "Nešťastný únik"
 
 #. [side]: type=Noble Commander, id=Prince Haldric
-#. [side]: id=Prince Haldric, type=Noble Commander
 #. [side]: type=Ancient Wose, id=Elilmaldur-Rithrandil
+#. [side]: id=Prince Haldric, type=Noble Commander
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:28
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:41
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:41
@@ -874,10 +879,15 @@ msgstr "Porazíš všetkých nepriateľských veliteľov"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:130
+#, fuzzy
+#| msgid ""
+#| "Argh, the orcish vanguard must have flanked us even further to the east! "
+#| "They’re already holding the mouth of the pass. We have to get out of the "
+#| "mountain pass before winter comes or we’re all dead meat!"
 msgid ""
 "Argh, the orcish vanguard must have flanked us even further to the east! "
 "They’re already holding the mouth of the pass. We have to get out of the "
-"mountain pass before winter comes or we’re all dead meat!"
+"mountain pass before winter comes or we’re all doomed!"
 msgstr ""
 "Ach, tá orkská hliadka nás iste obišla ešte ďalej na východ! Už držia ústie "
 "priesmyku. Musíme sa dostať von z tohoto horského priesmyku prv než príde "
@@ -896,29 +906,29 @@ msgid ""
 msgstr "Odložila by som teraz pocity a zobrala svoj meč. Čaká nás veľký boj!"
 
 #. [message]: speaker=Tan-Schmog
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:147
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:146
 #, fuzzy
 #| msgid "You won’t get much further boy. Grrrr!"
-msgid "You won’t get much further, boy. Grrrr!"
+msgid "You won’t get any further than this, meat!"
 msgstr "Ďalej sa už nedostaneš, chlapče. Grrrr!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:161
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:160
 msgid "Who goes there?"
 msgstr "Kto je tam?"
 
 #. [unit]: id=Burin the Lost, type=Dwarvish Steelclad
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:166
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:165
 msgid "Burin the Lost"
 msgstr "Burin stratený"
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:182
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:181
 msgid "Burin, Burin the Lost. Who be ye?"
 msgstr "Burin, Burin Stratený. A kto ste vy?"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:188
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:187
 msgid ""
 "I’m Prince Haldric, we have little time to talk. We must make haste through "
 "the pass... What are you?"
@@ -927,7 +937,7 @@ msgstr ""
 "cez priesmyk... Čo si ty zač?"
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:193
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:192
 msgid ""
 "I’m a dwarf, you fool of a boy! I got lost while exploring deep underground, "
 "almost a century ago. I’ve never found my way home. But it seems nice enough "
@@ -938,12 +948,12 @@ msgstr ""
 "vyzerá byť celkom pekne."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:199
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:198
 msgid "Nice? The orcs have come, and we must flee!"
 msgstr "Pekne? Sú tu orkovia a musíme utekať!"
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:204
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:203
 msgid ""
 "Orcs! It’s been a long time since I felt the satisfying crunch of one of "
 "those under my axe. Time for a fight!"
@@ -952,18 +962,18 @@ msgstr ""
 "pod mojou sekerou. Je čas bojovať!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:209
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:208
 msgid "You’ve fought orcs before?"
 msgstr "Už si bojoval s orkmi?"
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:214
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:213
 msgid ""
 "Fool boy! Where did you grow up? Enough of this, let’s go get some orcs!"
 msgstr "Bláznivý chlapče! Skadeže to pochádzaš? Dosť rečí, ideme na orkov!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:222
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:221
 msgid ""
 "We’re trapped in the pass! I can see their reinforcements! All is lost! Is "
 "that... Is that snow...? We’re doomed!"
@@ -972,7 +982,7 @@ msgstr ""
 "Sneží...? Je po nás!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:243
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:242
 msgid ""
 "SE — The River Road.\n"
 "SW — The Midlands."
@@ -981,12 +991,12 @@ msgstr ""
 "JZ - Stredozem."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:266
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:265
 msgid "GO HOME! AIN’T NUTTIN TO SEE HEER!"
 msgstr "IĎ DOM! TU NENI NIČ NA KUKANIE!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:276
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:275
 msgid ""
 "Now, should I go southeast on the river road, or southwest through the "
 "midlands? The river road crosses the Swamp of Esten, so I doubt that even "
@@ -998,17 +1008,17 @@ msgstr ""
 "orkovia. Stredozem bývala pekná, ale kto vie, čo sa tam deje teraz."
 
 #. [option]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:279
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:278
 msgid "I think I’ll take the river road..."
 msgstr "Myslím, že pôjdem po tej Riečnej ceste..."
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:283
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:282
 msgid "Good. The Midlands are probably an orc-infested ruin by now."
 msgstr "Dobre. Stredozem je už teraz asi len ruina plná orkov."
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:288
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:287
 msgid ""
 "<i>Swamp</i>?! I’m under five feet tall, and I don’t float! ... Argh, have "
 "it your way."
@@ -1017,17 +1027,17 @@ msgstr ""
 "tvojom."
 
 #. [option]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:301
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:300
 msgid "We’ll go through the Midlands..."
 msgstr "Pôjdeme cez Stredozem..."
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:305
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:304
 msgid "I suspect that the Midlands might be in ruins by now."
 msgstr "Obávam sa, že zo stredozeme sú teraz už iba ruiny."
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:310
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:309
 msgid ""
 "It’s better than the swamp. I’m under five feet tall, and I don’t float! "
 "Besides, I’d rather enjoy meeting more orcs."
@@ -1036,29 +1046,29 @@ msgstr ""
 "toho, celkom sa teším na ďalších orkov."
 
 #. [message]: speaker=Tan-NauVong
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:346
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:345
 msgid "Come and get it!"
 msgstr "Poď to schytať!"
 
 #. [message]: type=Orcish Slayer
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:356
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:404
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:355
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:403
 msgid "Die, human."
 msgstr "Skap, človeče."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:361
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:409
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:360
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:408
 msgid "Uh-oh!"
 msgstr "Uh-oh!"
 
 #. [message]: speaker=Tan-Schmog
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:394
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:393
 msgid "I’ll not go so easily!"
 msgstr "Ja sa ľahko nedám!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:424
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:423
 msgid ""
 "We’ve escaped the pass. Well, at least I know that the orcs can be beaten. "
 "Hmm, I guess that this is the last I’ll see of my home... and my father. "
@@ -1069,7 +1079,7 @@ msgstr ""
 "(<i>Vzdych</i>)"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:428
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:427
 msgid ""
 "We should make our way to Southbay. It is the largest city on the Isle. We "
 "should be able to make a stand there. Failing that, there’s always "
@@ -1344,16 +1354,16 @@ msgid ""
 msgstr ""
 "No skvelé, teraz ten les... Mal som zostať doma a skúsiť šťastie proti orkom!"
 
-#. [message]: speaker=Sir Ladoc
 #. [message]: speaker=Sir Ruddry
+#. [message]: speaker=Sir Ladoc
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:594
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:416
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:415
 msgid "Sir, if you don’t mind, I’ll go with you."
 msgstr "Pane, ak vám to nebude prekážať, pôjdem s vami."
 
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:599
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:421
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:420
 msgid "On we go..."
 msgstr "Pokračujeme..."
 
@@ -1469,27 +1479,27 @@ msgid "Vrogar"
 msgstr "Vrogar"
 
 #. [message]: speaker=Vrogar
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:310
-msgid "How’d they get behind us? I hate to miss such tasty meat."
-msgstr "Ako sa cez nás dostali? Škoda takého dobrého mäsa."
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:309
+msgid "They’re attacking the chief! Kill the meat before it gets any farther!"
+msgstr ""
 
 #. [message]: speaker=Tan-Hogar
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:323
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:322
 msgid "Better him than me! Reserves!"
 msgstr "Radšej on ako ja! Posily!"
 
 #. [message]: speaker=Tan-Bok
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:340
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:339
 msgid "Hogar was a fool! Reserves!"
 msgstr "Hogar bol blázon! Posily!"
 
 #. [unit]: type=Knight, id=Sir Ladoc
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:360
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:359
 msgid "Sir Ladoc"
 msgstr "Sir Ladoc"
 
 #. [message]: speaker=Sir Ladoc
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:380
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:379
 msgid ""
 "Hold there! You cannot pass. You’ve already stumbled on the orcish rear "
 "guard. The main body of their forces is on the road to Southbay. It is an "
@@ -1499,7 +1509,7 @@ msgstr ""
 "ich armády je na ceste do Southbay. Je to armáda ozrutných rozmerov."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:385
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:384
 msgid ""
 "I’m Haldric, my father was King Eldaric IV in the lands northwest of here. "
 "Soldier, aren’t you on the wrong side of the lines?"
@@ -1508,7 +1518,7 @@ msgstr ""
 "odtiaľto. Vojak, nie si na nesprávnej strane frontu?"
 
 #. [message]: speaker=Sir Ladoc
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:390
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:389
 msgid ""
 "They overran my post. I got hit on the head pretty good. When I came to the "
 "orcish army had already passed my position."
@@ -1517,12 +1527,12 @@ msgstr ""
 "armáda orkov už bola za našimi pozíciami."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:395
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:394
 msgid "Tell me, how fares Southbay?"
 msgstr "Povedz mi, ako je na tom Southbay?"
 
 #. [message]: speaker=Sir Ladoc
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:400
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:399
 msgid ""
 "Southbay won’t fall without one hell of a fight, sir. They’ll stand to the "
 "last! I only wish I was there!"
@@ -1531,7 +1541,7 @@ msgstr ""
 "som tam bol!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:405
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:404
 msgid ""
 "Well, we can’t go back, and the road ahead is blocked... I guess we’ll have "
 "to risk it and go through the Oldwood forest, then make a break for "
@@ -1542,7 +1552,7 @@ msgstr ""
 "Clearwater."
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:410
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:409
 msgid ""
 "Oh great, now a forest. I should have stayed at home and taken my chances "
 "with the orcs!"
@@ -1551,7 +1561,7 @@ msgstr ""
 "orkom!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:439
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:438
 msgid ""
 "We have run out of time... We’ll be trapped in the midlands when winter "
 "comes!"
@@ -2293,11 +2303,17 @@ msgstr ""
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:299
+#, fuzzy
+#| msgid ""
+#| "And now, I’m as much a refugee as you. In truth, I don’t know if the Lich-"
+#| "Lords are working with the orcs or not. The orcs may have gotten rid of "
+#| "the Lich-Lords, or they may not have, but I do know that the orcs are not "
+#| "going to tolerate living humans outside of the slave mines or stew pot!"
 msgid ""
 "And now, I’m as much a refugee as you. In truth, I don’t know if the Lich-"
-"Lords are working with the orcs or not. The orcs may have gotten rid of the "
-"Lich-Lords, or they may not have, but I do know that the orcs are not going "
-"to tolerate living humans outside of the slave mines or stew pot!"
+"Lords still command these orcs or if the orcs have rid themselves of the "
+"Lich-Lords, but I do know that no orc is going to tolerate living humans "
+"outside of the slave mines or worse, stew pots!"
 msgstr ""
 "A teraz som utečenec, rovnako ako vy. Úprimne povedané, neviem, či vládci "
 "kostejovia ešte spolupracujú s orkmi, alebo nie. Orkovia sa možno už vládcov "
@@ -4037,7 +4053,7 @@ msgstr "Akosi ma tá predstava nepotešila."
 #. [message]: speaker=Familiar
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:298
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:373
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:312
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:329
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:368
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:475
 msgid "<i>Clack</i>! <i>Clack!</i>"
@@ -5019,7 +5035,7 @@ msgstr "Stále musíme zabiť draka!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:466
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:534
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:533
 msgid "The dragon’s cave has yielded some treasure!"
 msgstr "Dračia jaskyňa obsahuje slušný poklad!"
 
@@ -5039,14 +5055,26 @@ msgid "Let’s get out of here!"
 msgstr "Vypadnime odtiaľto!"
 
 #. [option]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:521
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:520
 msgid "Let’s finish off the rest of these monsters!"
 msgstr "Dorazme aj tie zvyšné potvory!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:553
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:559
 msgid "More saurians are arriving. They’ve surrounded us! We’re doomed."
 msgstr "Prichádzajú ďalší sauri. Obkľúčili nás! Sme stratení."
+
+#. [message]: speaker=Lady Jessene
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:566
+msgid ""
+"We already killed the dragon. We really don’t need to be spending this much "
+"time chasing down the rest of these lizards."
+msgstr ""
+
+#. [message]: speaker=Prince Haldric
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:571
+msgid "You’re right, you’re right. Let’s head back."
+msgstr ""
 
 #. [scenario]: id=17b_Lizard_Beach
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_Lizard_Beach.cfg:4
@@ -5652,12 +5680,16 @@ msgstr ""
 
 #. [message]: speaker=Tan-Gagar
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:604
-msgid "We must block the human advance!"
-msgstr "Musíme zastaviť postup ľudí!"
+msgid ""
+"The meat is stronger than I thought! We must use all of our forces to stop "
+"them!"
+msgstr ""
 
 #. [message]: speaker=Tan-Erirt
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:625
-msgid "Reserves! We can’t let them get to their landing site."
+#, fuzzy
+#| msgid "Reserves! We can’t let them get to their landing site."
+msgid "Reserves! We can’t let the meat get to the landing site."
 msgstr "Posily! Nemôžeme ich pustiť na miesto, kde pristáli."
 
 #. [message]: speaker=Prince Haldric
@@ -5671,7 +5703,7 @@ msgstr ""
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:660
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:529
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:546
 msgid "Oh, to join my family again! Do not mourn my passing."
 msgstr "Ach, idem za svojou rodinou! Neplačte za mnou."
 
@@ -5783,10 +5815,16 @@ msgstr ""
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:279
+#, fuzzy
+#| msgid ""
+#| "We’ll see about that. The Fool Prince of Southbay was wrong to start this "
+#| "war, but you’re the real monster! You sacrificed your own people to "
+#| "preserve your immortal un-life."
 msgid ""
 "We’ll see about that. The Fool Prince of Southbay was wrong to start this "
-"war, but you’re the real monster! You sacrificed your own people to preserve "
-"your immortal un-life."
+"war, but you’re the real monster. You’ve turned to using orcs as cheap "
+"lackeys and even sacrificed your own people to preserve your immortal un-"
+"life!"
 msgstr ""
 "To sa ešte uvidí. Bláznivý princ zo Southbay urobil chybu, že začal túto "
 "vojnu, ale ty si skutočný netvor! Obetoval si vlastný národ, aby si si "
@@ -5794,32 +5832,59 @@ msgstr ""
 
 #. [message]: speaker=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:284
-msgid "Enough of this. A curse of darkness upon you, young prince."
+msgid ""
+"I am hardly concerned with the doing of mortal worms — they are no more than "
+"petty pawns, orcs and humans both. The only difference is that orcs will not "
+"complain as long as they are well fed."
+msgstr ""
+
+#. [message]: speaker=Tan-Halg
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:288
+msgid "Actually, I <i>am</i> pretty hungry right now..."
+msgstr ""
+
+#. [message]: speaker=Lich-Lord Jevyan
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:292
+msgid "Pah. Just eat the humans, then. But leave the boy’s body intact."
+msgstr ""
+
+#. [message]: speaker=Prince Haldric
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:296
+msgid "Come and fight me yourself, you old bag of bones!"
+msgstr ""
+
+#. [message]: speaker=Lich-Lord Jevyan
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:301
+#, fuzzy
+#| msgid "Enough of this. A curse of darkness upon you, young prince."
+msgid ""
+"As if a measly child would be worth the effort. Enough of this. A curse of "
+"darkness upon you, young prince."
 msgstr "Dosť bolo. Temná kliatba na teba, mladý princ."
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:344
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:361
 msgid "I see masts on the horizon. Jevyan’s fleet is here! It’s all over."
 msgstr "Vidím sťažne na obzore. Jevyanova flotila je tu! Je po všetkom."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:361
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:378
 msgid "Please Disembark in an Orderly Fashion and Proceed South"
 msgstr "Prosím usporiadane sa vyloďte a pokračujte smerom na juh"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:366
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:383
 msgid "Hmm, they left off the ‘or the orcs will eat you’ part."
 msgstr "Hm, vynechali to, že 'inak vás zožerú orkovia'."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:393
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:410
 msgid ""
 "I’m back, things went well! Haldric, I sure hope you know what you’re doing."
 msgstr "Som naspäť, všetko išlo skvele! Haldrik, dúfam, že vieš, čo robíš."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:397
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:414
 msgid ""
 "Umm, we’ll talk about it later. I’m just a little busy at the moment. I’m "
 "glad you made it back in one piece."
@@ -5828,12 +5893,12 @@ msgstr ""
 "sa vrátila celá."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:401
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:418
 msgid "Yes, it looks like you could use all of the help you can get."
 msgstr "Hej, vyzerá to, že sa ti hodí každá pomocná ruka."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:409
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:426
 msgid ""
 "We’ve defeated Jevyan’s forces. The ships must disembark their passengers "
 "quickly—"
@@ -5841,18 +5906,18 @@ msgstr ""
 "Porazili sme Jevyanove vojská. Lode musia pristáť a cestujúci rýchlo..."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:413
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:430
 msgid "Haldric, what’s going on? What’s the plan?"
 msgstr "Haldrik, čo sa deje? Aký máš plán?"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:417
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:434
 msgid "We’re going to confront Jevyan and destroy him."
 msgstr "No, pôjdeme priamo na Jevyana a zničíme ho."
 
 # Jessica:
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:421
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:438
 msgid ""
 "That will be easier said than done. Even if we defeat him, the other Lich-"
 "Lords will follow. It’s because of that ruby. If I were paranoid I’d say "
@@ -5863,27 +5928,27 @@ msgstr ""
 "že náš starý 'priateľ strom' to mohol vedieť."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:425
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:442
 msgid "We should discuss this in private. Here, come with me."
 msgstr "O tom by sme sa mali baviť v súkromí. Teraz poď so mnou."
 
 #. [message]: type=Cuttle Fish
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:462
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:479
 msgid "<i>Slurp, click, click, click!</i>"
 msgstr "<i>Mľask, cvak, cvak, cvak!</i>"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:466
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:483
 msgid "I don’t know what that is, but it doesn’t sound friendly."
 msgstr "Neviem, čo to je, ale neznie to priateľsky."
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:484
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:501
 msgid "Flixta"
 msgstr "Flixta"
 
 #. [message]: speaker=Flixta
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:502
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:519
 msgid ""
 "You again! You will sssuffer for your attack against my people! Shek’kahan, "
 "our Naga friendsss— You’ll pay! We have new friends now."
@@ -5892,13 +5957,13 @@ msgstr ""
 "priateľ... Zaplatíte! Máme teraz nových ssspojencov."
 
 #. [message]: speaker=Tan-Halg
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:549
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:566
 msgid ""
 "My people are like a rock slide, you can run, but we will crush you... Ahhck!"
 msgstr "Môj ľud je ako skalná lavína, môžete utekať, ale rozdrvíme vás... Ach!"
 
 #. [message]: speaker=Tan-Rinak
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:570
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:587
 msgid "I— I die?"
 msgstr "Zomieram...?"
 
@@ -7227,6 +7292,18 @@ msgid ""
 msgstr ""
 "To sú naozaj skvelé správy. Náš počet sa zdvojnásobil. Teraz poďme riešiť "
 "problémy poruke."
+
+#~ msgid "So, <i>human</i>, care to make your final stand?"
+#~ msgstr "Tak <i>človeče</i>, postavíš sa proti nám konečne?"
+
+#~ msgid "Die! Die! Die!"
+#~ msgstr "Skap! Skap! Skap!"
+
+#~ msgid "How’d they get behind us? I hate to miss such tasty meat."
+#~ msgstr "Ako sa cez nás dostali? Škoda takého dobrého mäsa."
+
+#~ msgid "We must block the human advance!"
+#~ msgstr "Musíme zastaviť postup ľudí!"
 
 #~ msgid "bite"
 #~ msgstr "hrýzť"

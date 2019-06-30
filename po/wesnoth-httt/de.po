@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-03-11 13:09 UTC\n"
+"POT-Creation-Date: 2019-06-30 12:13 UTC\n"
 "PO-Revision-Date: 2019-06-17 19:53+0200\n"
 "Last-Translator: German translation team <irc://irc.freenode.net/#wesnoth-"
 "de>\n"
@@ -203,8 +203,8 @@ msgstr "Konrad"
 #. [side]: type=Elvish Champion, id=Galdrad
 #. [side]: type=Elvish Shyde, id=Chantal
 #. [side]: id=Relgorn, type=Dwarvish Lord
-#. [side]
 #. [side]: id=Geldar, type=Dwarvish Lord
+#. [side]
 #. [side]: type=Ancient Wose, id=Haralamdum
 #. [side]: type=Elvish Sylph, id=Bona-Melodia
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:80
@@ -250,25 +250,25 @@ msgid "Urug-Telfar"
 msgstr "Urug-Telfar"
 
 #. [side]: type=Orcish Warrior, id=Mokolo Qimur
-#. [side]: type=Orcish Warrior, id=Usadar Q'kai
-#. [side]: type=Orcish Warrior, id=Dwaba-Kukai
-#. [side]: type=Orcish Warrior, id=Managa'Gwin
-#. [side]: type=Orcish Warlord, id=Gaga-Breuk
 #. [side]: type=Orcish Warrior, id=Halgar Du'nar
 #. [side]: type=Orcish Warrior, id=Gorlak
-#. [side]: type=Orcish Warlord, id=Urag-Tifer
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
-#. [side]: type=Goblin Rouser
-#. [side]: type=Orcish Warlord
-#. [side]: type=Troll Warrior
 #. [side]: type=Orcish Warlord, id=Kojun Herolm
 #. [side]: type=Orcish Warrior, id=Mokho Kimer
+#. [side]: type=Orcish Warrior, id=Usadar Q'kai
+#. [side]: type=Orcish Warrior, id=Dwaba-Kukai
+#. [side]: type=Orcish Warrior, id=Managa'Gwin
 #. [side]: type=Orcish Slurbow, id=Knafa-Telfar
 #. [side]: type=Orcish Warlord, id=Urug-Tan
 #. [side]: type=Orcish Sovereign, id=Shuuga-Mool
+#. [side]: type=Goblin Rouser
+#. [side]: type=Orcish Warlord
+#. [side]: type=Troll Warrior
+#. [side]: type=Orcish Warlord, id=Urag-Tifer
 #. [side]: type=Orcish Warlord, id=Kior-Dal
+#. [side]: type=Orcish Warlord, id=Gaga-Breuk
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:181
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:194
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:215
@@ -1033,8 +1033,14 @@ msgstr ""
 
 #. [message]: speaker=Seimus
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:313
+#, fuzzy
+#| msgid ""
+#| "She has taken control of the Bay of Pearls, long held by the Mermen, and "
+#| "has turned them into slaves. There they dive for pearls by which she "
+#| "grows richer every day. There are even rumors that she may break the "
+#| "ancient treaty and attack Elensefar!"
 msgid ""
-"She has taken control of the Bay of Pearls, long held by the Mermen, and has "
+"She has taken control of the Bay of Pearls, long held by the Mer, and has "
 "turned them into slaves. There they dive for pearls by which she grows "
 "richer every day. There are even rumors that she may break the ancient "
 "treaty and attack Elensefar!"
@@ -1075,8 +1081,8 @@ msgstr ""
 "Besiegt einen gegnerischen Anführer und widersteht dem Anderen bis zum "
 "Ablauf des Rundenlimits"
 
-#. [objectives]
 #. [objective]: condition=win
+#. [objectives]
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:26
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:25
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:24
@@ -1270,9 +1276,13 @@ msgstr "Gwarloa"
 
 #. [message]: speaker=Gwimli
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:558
+#, fuzzy
+#| msgid ""
+#| "Thank you for rescuing us! Now we can help you fight the evil orcs! The "
+#| "main cage where they keep most of the mermen is in the northwest!"
 msgid ""
 "Thank you for rescuing us! Now we can help you fight the evil orcs! The main "
-"cage where they keep most of the mermen is in the northwest!"
+"cage where they keep most of the merfolk is in the northwest!"
 msgstr ""
 "Danke, dass ihr uns gerettet habt. Jetzt können wir euch helfen, die bösen "
 "Orks zu bekämpfen! Der Hauptkäfig, in dem sie die meisten Wassermänner "
@@ -1310,17 +1320,24 @@ msgstr "Tini"
 
 #. [message]: speaker=Heldaga
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:658
+#, fuzzy
+#| msgid ""
+#| "Death to the orcs! Come, my mer brethren, let us fight the orcs and drive "
+#| "them from our shores!"
 msgid ""
-"Death to the orcs! Come, my mer brethren, let us fight the orcs and drive "
-"them from our shores!"
+"Death to the orcs! Come, my brethren, let us fight the orcs and drive them "
+"from our shores!"
 msgstr ""
 "Tod den Orks! Folgt mir in die Schlacht, meine Brüder des Meeres. Gemeinsam "
 "werden wir sie aus unserem Gebiet vertreiben!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:668
+#, fuzzy
+#| msgid ""
+#| "At last, we have freed the mermen. Go back to the ocean and live in peace."
 msgid ""
-"At last, we have freed the mermen. Go back to the ocean and live in peace."
+"At last, we have freed the merfolk. Go back to the ocean and live in peace."
 msgstr ""
 "Nun sind die Wassermänner befreit. Geht zurück in die See und lebt in "
 "Frieden."
@@ -1571,11 +1588,11 @@ msgid "Muff Malal"
 msgstr "Muff Malal"
 
 #. [side]: type=Dark Sorcerer, id=Muff Malal
-#. [side]: id=Haf-Mal, type=Lich
-#. [side]: id=Jarmal-Gorg, type=Lich
 #. [side]: type=Lich, id=Galga
 #. [side]: type=Lich, id=Na-alga
 #. [side]: type=Lich, id=Selda-Mana
+#. [side]: id=Haf-Mal, type=Lich
+#. [side]: id=Jarmal-Gorg, type=Lich
 #. [side]: type=Death Knight, id=Clarustus
 #. [side]: type=Death Knight, id=Merlunius
 #. [side]: type=Lich, id=Aimucasur
@@ -1710,8 +1727,12 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:95
+#, fuzzy
+#| msgid ""
+#| "The mermen finally saved Konrad from the sea, but were unable to get him "
+#| "back to the ship. By dint of great effort they reached a nearby island..."
 msgid ""
-"The mermen finally saved Konrad from the sea, but were unable to get him "
+"The merfolk finally saved Konrad from the sea, but were unable to get him "
 "back to the ship. By dint of great effort they reached a nearby island..."
 msgstr ""
 "Die Wassermänner retteten Konrad, aber sie konnten ihn nicht wieder auf das "
@@ -1814,8 +1835,8 @@ msgstr "Dieser Tempel scheint leer zu sein."
 msgid "Looks like there is somebody hidden in the temple."
 msgstr "Es scheint, als verstecke sich jemand in diesem Tempel."
 
-#. [unit]: id=Moremirmu, type=White Mage
 #. [unit]: id=Moremirmu, type=Mage of Light
+#. [unit]: id=Moremirmu, type=White Mage
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:301
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:259
 msgid "Moremirmu"
@@ -1939,13 +1960,13 @@ msgstr "Elensefar"
 msgid "Agadla"
 msgstr "Agadla"
 
-#. [side]: type=Troll Warrior, id=Haaf-Garga
 #. [side]: id=Brugg, type=Troll Warrior
 #. [side]: id=Lionel, type=Death Knight
 #. [side]: type=Orcish Warlord, id=Agadla
 #. [side]: type=Dark Sorcerer, id=Muff Jaanal
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Death Knight, id=Unan-Ka'tall
+#. [side]: type=Troll Warrior, id=Haaf-Garga
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:74
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:116
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:91
@@ -2559,15 +2580,16 @@ msgstr "Elbengrat"
 
 #. [side]: type=Princess, id=Li'sar
 #. [event]
+#. [unit]: id=Li'sar, type=Princess
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:87
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:68
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:754
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:93
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:720
 msgid "Li’sar"
 msgstr "Li’sar"
 
 #. [side]: type=General, id=Robryn
-#. [side]: type=Princess, id=Li'sar
 #. [side]: type=Orcish Warlord, id=Haliel-Maga
 #. [side]: type=General, id=Heford
 #. [side]: type=Cavalier, id=Sir Kalm
@@ -2575,6 +2597,7 @@ msgstr "Li’sar"
 #. [side]: type=General, id=Josephus
 #. [side]: type=Orcish Warlord, id=Dwar-Ni
 #. [side]: type=General, id=Malatus
+#. [side]: type=Princess, id=Li'sar
 #. [side]: type=General, id=Honber
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:161
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:99
@@ -2690,7 +2713,9 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:403
-msgid "Good day then, Princess. Come, men, to the northern road!"
+#, fuzzy
+#| msgid "Good day then, Princess. Come, men, to the northern road!"
+msgid "Good day to you, then. Come, men, to the northern road!"
 msgstr "Schönen Tag noch, Prinzessin. Auf geht es Leute, weiter nordwärts!"
 
 #. [message]: speaker=unit
@@ -4024,8 +4049,13 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:766
+#, fuzzy
+#| msgid ""
+#| "Whew! We make our way through the dangerous fog of the mountains, and now "
+#| "there is all this chaos before us! Come on, men! We must make it to the "
+#| "caves that lie ahead of us!"
 msgid ""
-"Whew! We make our way through the dangerous fog of the mountains, and now "
+"Whew! We made our way through the dangerous fog of the mountains, and now "
 "there is all this chaos before us! Come on, men! We must make it to the "
 "caves that lie ahead of us!"
 msgstr ""
@@ -4891,8 +4921,12 @@ msgstr "Überraschung! Sterbt, ihr Sonnenwesen!"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:359
+#, fuzzy
+#| msgid ""
+#| "Now we are surrounded! Do you still want to fight us, Princess? Surely "
+#| "that would lead to doom for us all!"
 msgid ""
-"Now we are surrounded! Do you still want to fight us, Princess? Surely that "
+"Now we are surrounded! Do you still want to fight us, Li’sar? Surely that "
 "would lead to doom for us all!"
 msgstr ""
 "Jetzt sind wir umzingelt. Wollt ihr uns immer noch bekämpfen, Prinzessin? "
@@ -4909,9 +4943,13 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:367
+#, fuzzy
+#| msgid ""
+#| "Very well, I promise that you will reach the surface again, or we shall "
+#| "all perish together, Princess."
 msgid ""
 "Very well, I promise that you will reach the surface again, or we shall all "
-"perish together, Princess."
+"perish together."
 msgstr ""
 "Ich bin einverstanden. Ich verspreche, dass ihr die Oberfläche wieder "
 "erreichen werdet oder wir alle sterben werden."
@@ -4924,9 +4962,13 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:380
+#, fuzzy
+#| msgid ""
+#| "Well, we have helped each other survive so far, Princess. Now let’s "
+#| "continue together. What do you say?"
 msgid ""
-"Well, we have helped each other survive so far, Princess. Now let’s continue "
-"together. What do you say?"
+"Well, we have helped each other survive so far. Now let’s continue together. "
+"What do you say?"
 msgstr ""
 "Wir haben einander geholfen bis jetzt zu überleben, Prinzessin. Lasst uns "
 "nun zusammen weitergehen. Was meint ihr?"
@@ -4944,11 +4986,13 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:389
-msgid "Thank you, Princess. Come, men. Let us find the Sceptre!"
+#, fuzzy
+#| msgid "Thank you, Princess. Come, men. Let us find the Sceptre!"
+msgid "Thank you. Come, men. Let us find the Sceptre!"
 msgstr "Danke, Prinzessin. Los Männer. Lasst uns das Zepter finden!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:427
+#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:425
 #: data/campaigns/Heir_To_The_Throne/utils/deaths.cfg:24
 msgid "I can’t believe it should end like this!"
 msgstr "Ich kann nicht glauben, dass es so enden soll!"
@@ -5026,9 +5070,12 @@ msgstr "Ein Erdbeben. Wir werden verschüttet werden!"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:514
+#, fuzzy
+#| msgid ""
+#| "No, not an earthquake, Princess. I feel it too. Something is... aware... "
+#| "of us."
 msgid ""
-"No, not an earthquake, Princess. I feel it too. Something is... aware... of "
-"us."
+"No, not an earthquake, but I feel it too. Something is... aware... of us."
 msgstr ""
 "Nein, kein Erdbeben, Prinzessin. Ich kann es ebenfalls spüren. Etwas weiß, "
 "dass wir hier sind."
@@ -5268,7 +5315,9 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:180
-msgid "You still want to fight me, do you, Princess?"
+#, fuzzy
+#| msgid "You still want to fight me, do you, Princess?"
+msgid "You still want to fight me, do you, Li’sar?"
 msgstr "Noch immer wollt ihr mich bekämpfen, Prinzessin?"
 
 #. [message]: speaker=Li'sar
@@ -5290,9 +5339,13 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:192
+#, fuzzy
+#| msgid ""
+#| "Indeed there are. We shall have to fight our way out. Are you with us, "
+#| "Princess, or against us?"
 msgid ""
-"Indeed there are. We shall have to fight our way out. Are you with us, "
-"Princess, or against us?"
+"Indeed there are. We shall have to fight our way out. Are you with us or "
+"against us?"
 msgstr ""
 "Stimmt. Unsere einzige Möglichkeit ist, uns hier herauszukämpfen. Was ist "
 "nun Prinzessin? Seid Ihr für oder gegen uns?"
@@ -5318,8 +5371,12 @@ msgstr "Wir haben es geschafft."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:212
+#, fuzzy
+#| msgid ""
+#| "Yes, we have. Now I suppose you want to use the Sceptre against me, "
+#| "Princess?"
 msgid ""
-"Yes, we have. Now I suppose you want to use the Sceptre against me, Princess?"
+"Yes, we have. Now I suppose you want to use the Sceptre against me, Li’sar?"
 msgstr ""
 "Ja, das haben wir. Und nun nehme ich an, dass ihr das Zepter gegen mich "
 "verwenden wollt, Prinzessin?"
@@ -5337,9 +5394,13 @@ msgstr ""
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:220
+#, fuzzy
+#| msgid ""
+#| "With all due respect, Princess, it is once again we who will spare you, "
+#| "Sceptre or no Sceptre."
 msgid ""
-"With all due respect, Princess, it is once again we who will spare you, "
-"Sceptre or no Sceptre."
+"With all due respect, <i>Princess</i>, it is once again we who will spare "
+"you, Sceptre or no Sceptre."
 msgstr ""
 "Mit allem nötigen Respekt, Prinzessin. Einmal mehr sind wir es, die euch "
 "verschonen werden. Zepter hin oder her."
@@ -5434,7 +5495,10 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:260
-msgid "And will you join us in seeking refuge with the North Elves, Princess?"
+#, fuzzy
+#| msgid ""
+#| "And will you join us in seeking refuge with the North Elves, Princess?"
+msgid "And will you join us in seeking refuge with the North Elves, Li’sar?"
 msgstr ""
 "Werdet ihr uns begleiten und Unterschlupf bei den Nordelfen suchen, "
 "Prinzessin?"
@@ -5448,9 +5512,14 @@ msgstr ""
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:268
+#, fuzzy
+#| msgid ""
+#| "That we will, Princess. Even though you are the daughter of the Queen, "
+#| "our enemy, we shall not harm you on this encounter, for you have helped "
+#| "us."
 msgid ""
-"That we will, Princess. Even though you are the daughter of the Queen, our "
-"enemy, we shall not harm you on this encounter, for you have helped us."
+"That we will. Even though you are the daughter of the Queen, our enemy, we "
+"shall not harm you on this encounter, for you have helped us."
 msgstr ""
 "Das versprechen wir, Prinzessin. Auch wenn ihr die Tochter der Königin, "
 "unserer Feindin, seid, werden wir euch diesmal verschonen, da ihr uns "
@@ -5496,8 +5565,13 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:308
+#, fuzzy
+#| msgid ""
+#| "Your people have already saved me once from a watery death, noble mer, "
+#| "fighting by my side as undead horrors threatened to devour us. I entrust "
+#| "our army to your strength and protection."
 msgid ""
-"Your people have already saved me once from a watery death, noble mer, "
+"Your people have already saved me once from a watery death, noble merfolk, "
 "fighting by my side as undead horrors threatened to devour us. I entrust our "
 "army to your strength and protection."
 msgstr ""
@@ -5834,8 +5908,14 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:177
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:384
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:222
+#, fuzzy
+#| msgid ""
+#| "Enough! I can listen to no more of this. Princess, you may want to end "
+#| "your mother’s rule, but I will end her life as she ended the life of my "
+#| "father and my brothers. Asheviere’s masterwork of treachery will end, and "
+#| "it will end by my blade!"
 msgid ""
-"Enough! I can listen to no more of this. Princess, you may want to end your "
+"Enough! I can listen to no more of this. Li’sar, you may want to end your "
 "mother’s rule, but I will end her life as she ended the life of my father "
 "and my brothers. Asheviere’s masterwork of treachery will end, and it will "
 "end by my blade!"
@@ -6104,9 +6184,14 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:248
+#, fuzzy
+#| msgid ""
+#| "One day they saw a gruesome sight — a fleet of boats and rafts sunk or "
+#| "shattered among the river islands. Konrad sent some of the mermen to "
+#| "investigate."
 msgid ""
 "One day they saw a gruesome sight — a fleet of boats and rafts sunk or "
-"shattered among the river islands. Konrad sent some of the mermen to "
+"shattered among the river islands. Konrad sent some of the merfolk to "
 "investigate."
 msgstr ""
 "Eines Tages bot sich ihnen ein erschreckendes Bild – die Überreste einer "
@@ -6251,7 +6336,7 @@ msgstr ""
 "ihr wirklich sicher, dass es ein Drake ist?"
 
 #. [message]: role=merman-advisor
-#. Yes, "Eastern Shore" is correct. Mermen are water-oriented;
+#. Yes, "Eastern Shore" is correct. Merfolk are water-oriented;
 #. it's the eastern shore of the Great Ocean.
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:343
 msgid ""
@@ -6291,9 +6376,13 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:356
+#, fuzzy
+#| msgid ""
+#| "And I am Princess Li’sar, the only daughter of the late King Garard II "
+#| "and Queen Asheviere. I too am an heir to the throne of Wesnoth!"
 msgid ""
-"And I am Princess Li’sar, the only daughter of the late King Garard II and "
-"Queen Asheviere. I too am an heir to the throne of Wesnoth!"
+"And I am the Princess, Li’sar, the only daughter of the late King Garard II "
+"and Queen Asheviere. I, too, am an heir to the throne of Wesnoth!"
 msgstr ""
 "Und ich bin Prinzessin Li'sar, die einzige Tochter König Garads des II. und "
 "Königin Ashevieres. Ich bin ebenfalls Thronerbin von Wesnoth."
@@ -6465,9 +6554,13 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:769
+#, fuzzy
+#| msgid ""
+#| "Princess Li’sar, do I have to remind you again that it is Konrad, not "
+#| "you, who is the rightful heir?"
 msgid ""
-"Princess Li’sar, do I have to remind you again that it is Konrad, not you, "
-"who is the rightful heir?"
+"Li’sar, do I have to remind you again that it is Konrad, not you, who is the "
+"rightful heir?"
 msgstr ""
 "Prinzessin Li'sar, muss ich euch erneut daran erinnern, dass Konrad der "
 "rechtmäßige Thronerbe ist und nicht ihr?"
@@ -6526,9 +6619,13 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:836
+#, fuzzy
+#| msgid ""
+#| "I am Princess Li’sar, and we are friends. Join us and wait for the "
+#| "healers to help you, young sergeant."
 msgid ""
-"I am Princess Li’sar, and we are friends. Join us and wait for the healers "
-"to help you, young sergeant."
+"I am the Princess, Li’sar, and we are friends. Join us and wait for the "
+"healers to help you, young sergeant."
 msgstr ""
 "Ich bin Prinzessin Li'sar und wir sind Verbündete. Schließt euch uns an. "
 "Unsere Heiler werden sich um eure Verletzungen kümmern, junger Feldwebel."
@@ -6668,9 +6765,9 @@ msgid "Your encampment will be dismantled after the first turn."
 msgstr "Euer Lager wird nach der ersten Runde aufgelöst."
 
 #. [side]: type=Commander, id=Konrad
+#. [side]: type=Elvish Marshal, id=El'rien
 #. [side]: type=Elvish Lord, id=Uradredia
 #. [side]: type=Elvish Lady, id=Parandra
-#. [side]: type=Elvish Marshal, id=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:61
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:225
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:30
@@ -6807,9 +6904,13 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:462
+#, fuzzy
+#| msgid ""
+#| "I think these wild lands are too dangerous for that! Anyhow... I expected "
+#| "you to be on the side of Wesnoth, Princess?"
 msgid ""
 "I think these wild lands are too dangerous for that! Anyhow... I expected "
-"you to be on the side of Wesnoth, Princess?"
+"you to be on the side of Wesnoth, Li’sar?"
 msgstr ""
 "Ich denke, dass diese wilden Länder dafür zu gefährlich sind. Wie auch "
 "immer... Ich hatte erwartet, dass ihr auf der Seite von Wesnoth stehen "
@@ -6902,7 +7003,7 @@ msgstr ""
 #| "troops are marching full speed for the orcs’ camp, and vice-versa. These "
 #| "armies are out for blood."
 msgid ""
-"Stop for a moment, Princess. Look — you can barely see them in the distance "
+"Stop for a moment, Li’sar. Look — you can barely see them in the distance "
 "there, but the advance scouts have found each other. The Queen’s troops are "
 "marching full speed for the orcs’ camp, and vice-versa. These armies are out "
 "for blood."
@@ -6930,8 +7031,7 @@ msgstr ""
 #| "it across alive."
 msgid ""
 "(hushed) Our soldiers will defend us as we rush across the field. Sorry to "
-"be blunt, Princess, but you and I are the only ones who need to make it "
-"across alive."
+"be blunt, but you and I are the only ones who need to make it across alive."
 msgstr ""
 "(flüstert) Unsere Soldaten werden uns verteidigen, während wir über das "
 "Schlachtfeld eilen. Haltet mich nicht für gefühllos, Prinzessin, aber es ist "
@@ -7215,9 +7315,13 @@ msgstr ""
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:256
+#, fuzzy
+#| msgid ""
+#| "Change is coming to the human lands. We rush to Elensiria seeking "
+#| "assistance, and the perils of the Longlier presented the quickest route."
 msgid ""
 "Change is coming to the human lands. We rush to Elensiria seeking "
-"assistance, and the perils of the Longlier presented the quickest route."
+"assistance, and the perils of the Arkan-thoria presented the quickest route."
 msgstr ""
 "Umbruch macht sich im Land der Menschen breit. Wir brauchen Unterstützung "
 "aus Elensiria, der Longlier zeigte sich als der schnellste Weg dorthin."
@@ -7707,9 +7811,13 @@ msgstr ""
 
 #. [message]: speaker=Parandra
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:151
+#, fuzzy
+#| msgid ""
+#| "Princess, when Delfador the Great speaks of the Queen Dowager, Asheviere, "
+#| "ordering the princes of Wesnoth to be put to death, he speaks the truth."
 msgid ""
-"Princess, when Delfador the Great speaks of the Queen Dowager, Asheviere, "
-"ordering the princes of Wesnoth to be put to death, he speaks the truth."
+"When Delfador the Great speaks of the Queen Dowager, Asheviere, ordering the "
+"princes of Wesnoth to be put to death, he speaks the truth."
 msgstr ""
 "Delfador der Große spricht die Wahrheit, Prinzessin. Eure Mutter Asheviere, "
 "die Königinwitwe, hat den Tod der Prinzen Wesnoths befohlen."
@@ -7721,11 +7829,16 @@ msgstr "Was sagt ihr dazu, Elfenkönig?"
 
 #. [message]: speaker=Uradredia
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:159
+#, fuzzy
+#| msgid ""
+#| "I did not see it myself, Princess, but I have heard many reliable "
+#| "reports. Asheviere indeed has the blood of the princes on her hands. She "
+#| "has also allowed orcs to desecrate the lands, abandoning all respect for "
+#| "the peoples around her."
 msgid ""
-"I did not see it myself, Princess, but I have heard many reliable reports. "
-"Asheviere indeed has the blood of the princes on her hands. She has also "
-"allowed orcs to desecrate the lands, abandoning all respect for the peoples "
-"around her."
+"I did not see it myself, but I have heard many reliable reports. Asheviere "
+"indeed has the blood of the princes on her hands. She has also allowed orcs "
+"to desecrate the lands, abandoning all respect for the peoples around her."
 msgstr ""
 "Selbst habe ich es nicht gesehen, Prinzessin. Jedoch habe ich viele "
 "verlässliche Geschichten darüber gehört. Das Blut der Prinzen klebt an "
@@ -7746,8 +7859,12 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:174
+#, fuzzy
+#| msgid ""
+#| "Princess, there is some good in you, but the throne is not yours to "
+#| "claim. Konrad has the Sceptre. He will take the throne."
 msgid ""
-"Princess, there is some good in you, but the throne is not yours to claim. "
+"Young lady, there is some good in you, but the throne is not yours to claim. "
 "Konrad has the Sceptre. He will take the throne."
 msgstr ""
 "Es ist viel Gutes in euch, Prinzessin, doch werdet ihr den Thron nicht "
@@ -7768,9 +7885,13 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:185
+#, fuzzy
+#| msgid ""
+#| "Though you have the Sceptre, Princess, it is rightfully Konrad’s. You "
+#| "have it now only because we helped you get it."
 msgid ""
-"Though you have the Sceptre, Princess, it is rightfully Konrad’s. You have "
-"it now only because we helped you get it."
+"Though you have the Sceptre, Li’sar, it is rightfully Konrad’s. You have it "
+"now only because we helped you get it."
 msgstr ""
 "Auch wenn ihr das Zepter besitzt, Prinzessin, so ist Konrad doch der "
 "rechtmäßige Thronfolger. Ihr habt es nur, weil wir euch geholfen haben."
@@ -7782,9 +7903,11 @@ msgstr "Und wenn ich mich weigere, es herauszugeben?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:194
-msgid ""
-"If it is necessary, Princess, I will ask Konrad to fight you in a duel for "
-"it."
+#, fuzzy
+#| msgid ""
+#| "If it is necessary, Princess, I will ask Konrad to fight you in a duel "
+#| "for it."
+msgid "If it is necessary, I will ask Konrad to fight you in a duel for it."
 msgstr ""
 "Falls nötig, bitte ich Konrad, gegen Euch in einem Duell darum anzutreten."
 
@@ -8983,28 +9106,15 @@ msgstr ""
 msgid "female^Battle Princess"
 msgstr "Kriegsprinzessin"
 
+#. [variation]: race=human
 #. [unit_type]: id=Battle Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:28
+#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:124
 msgid ""
 "A noble by birth, the Princess has learnt swordplay with the greatest "
 "generals and battle tactics with the greatest sages, making her both a great "
 "combatant and a leader. Now battle-hardened and strong of will, she can aid "
 "those around her in the art of combat."
-msgstr ""
-"Als Adlige hat die Prinzessin das Schwertkämpfen bei den besten Generälen "
-"gelernt. Außerdem wurden sie von den klügsten Köpfen des Landes in "
-"verschiedenen Kampftaktiken unterrichtet, was sie zu einer guten Kämpferin "
-"und Anführerin macht. Kampferprobt und mit unerschütterlicher Willenskraft "
-"gesegnet, unterstützt sie nun jene, die sie Seite an Seite in die Schlacht "
-"begleiten."
-
-#. [variation]: race=human
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:124
-msgid ""
-"A noble by birth, the Princess has learnt swordplay with the greatest "
-"generals, and battle tactics with the greatest sages, making her both a "
-"great combatant and a leader. Now battle-hardened and strong of will, she "
-"can aid those around her in the art of combat."
 msgstr ""
 "Als Adlige hat die Prinzessin das Schwertkämpfen bei den besten Generälen "
 "gelernt. Außerdem wurden sie von den klügsten Köpfen des Landes in "
@@ -9440,11 +9550,6 @@ msgstr "Delfador"
 msgid "Kalenz"
 msgstr "Kalenz"
 
-#. [unit]: id=Li'sar, type=Princess
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:720
-msgid "Li'sar"
-msgstr "Li'sar"
-
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:7
 msgid ""
@@ -9587,6 +9692,22 @@ msgstr ""
 "Delfador floh in die Aethenwälder und zog Konrad unter dem Schutz der Elfen "
 "groß. Traurig musste er mit ansehen, wie Asheviere ihre Schreckensherrschaft "
 "über Wesnoth begann..."
+
+#~ msgid ""
+#~ "A noble by birth, the Princess has learnt swordplay with the greatest "
+#~ "generals, and battle tactics with the greatest sages, making her both a "
+#~ "great combatant and a leader. Now battle-hardened and strong of will, she "
+#~ "can aid those around her in the art of combat."
+#~ msgstr ""
+#~ "Als Adlige hat die Prinzessin das Schwertkämpfen bei den besten Generälen "
+#~ "gelernt. Außerdem wurden sie von den klügsten Köpfen des Landes in "
+#~ "verschiedenen Kampftaktiken unterrichtet, was sie zu einer guten "
+#~ "Kämpferin und Anführerin macht. Kampferprobt und mit unerschütterlicher "
+#~ "Willenskraft gesegnet, unterstützt sie nun jene, die sie Seite an Seite "
+#~ "in die Schlacht begleiten."
+
+#~ msgid "Li'sar"
+#~ msgstr "Li'sar"
 
 #~ msgid "Defeat one more enemy unit"
 #~ msgid_plural "Defeat $units_to_slay enemy units"

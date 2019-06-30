@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-03-11 13:10 UTC\n"
+"POT-Creation-Date: 2019-06-30 12:14 UTC\n"
 "PO-Revision-Date: 2019-03-21 01:20+0100\n"
 "Last-Translator: Rhonda D'Vine <rhonda@deb.at>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -169,11 +169,11 @@ msgid ""
 "undo a move if you move to the wrong place.)"
 msgstr ""
 "Wenn Ihr eine Einheit auswählt, in diesem Fall Konrad, dann werden die "
-"Felder, die er erreichen kann, angezeigt. Jede Einheit hat eine bestimmte Anzahl "
-"an <i>Bewegungspunkten</i>. Um sich über Flachland zu bewegen, verbrauchen "
-"die meisten Einheiten einen Bewegungspunkt. Um Eure Einheit zu bewegen, "
-"klickt auf Konrad und anschließend auf das Zielfeld. (Ihr könnt den Zug mit "
-"<b>u</b> rückgängig machen, falls Ihr in die falsche Richtung lauft.)"
+"Felder, die er erreichen kann, angezeigt. Jede Einheit hat eine bestimmte "
+"Anzahl an <i>Bewegungspunkten</i>. Um sich über Flachland zu bewegen, "
+"verbrauchen die meisten Einheiten einen Bewegungspunkt. Um Eure Einheit zu "
+"bewegen, klickt auf Konrad und anschließend auf das Zielfeld. (Ihr könnt den "
+"Zug mit <b>u</b> rückgängig machen, falls Ihr in die falsche Richtung lauft.)"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:367
@@ -318,8 +318,8 @@ msgstr "Soll ich mich zurückziehen?"
 msgid "female^Should I retreat?"
 msgstr "Soll ich mich zurückziehen?"
 
-#. [message]: speaker=Delfador
 #. [message]: speaker=Galdrad
+#. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:550
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:794
 msgid "Good idea!"
@@ -396,12 +396,12 @@ msgid ""
 "of the screen."
 msgstr ""
 "Jede Runde hat eine Partei die Möglichkeit, ihren Zug zu machen. Sobald Ihr "
-"alles in Eurem Zug erledigt habt, klickt auf den <b>Zug Beenden</b>-Knopf unten "
-"rechts auf dem Bildschirm. Die anderen Teams, ob von der KI oder anderen "
-"menschlichen Spielern kontrolliert, werden dann ihren Zug machen. Einige "
-"Szenarien müssen in einer bestimmten Anzahl von Runden abgeschlossen werden. "
-"Oben am Bildschirm befindet sich ein Flaggensymbol, neben dem die momentane "
-"Runde und das Rundenlimit zu sehen ist."
+"alles in Eurem Zug erledigt habt, klickt auf den <b>Zug Beenden</b>-Knopf "
+"unten rechts auf dem Bildschirm. Die anderen Teams, ob von der KI oder "
+"anderen menschlichen Spielern kontrolliert, werden dann ihren Zug machen. "
+"Einige Szenarien müssen in einer bestimmten Anzahl von Runden abgeschlossen "
+"werden. Oben am Bildschirm befindet sich ein Flaggensymbol, neben dem die "
+"momentane Runde und das Rundenlimit zu sehen ist."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:614
@@ -503,9 +503,9 @@ msgid ""
 "this turn. Instead, you should return to the keep and recruit two units; you "
 "have plenty of gold for that."
 msgstr ""
-"Eine hervorragende Idee! Es ist vermutlich besser, die Turnierpuppe in diesem "
-"Zug nicht anzugreifen. Stattdessen kannst du zwei Einheiten ausbilden, wenn "
-"du zum Burgfried zurückkehrst."
+"Eine hervorragende Idee! Es ist vermutlich besser, die Turnierpuppe in "
+"diesem Zug nicht anzugreifen. Stattdessen kannst du zwei Einheiten "
+"ausbilden, wenn du zum Burgfried zurückkehrst."
 
 #. [label]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:717
@@ -554,10 +554,17 @@ msgstr "Charakteristiken"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:777
+#, fuzzy
+#| msgid ""
+#| "Be sure to examine the <i>traits</i> of your new recruits. They are "
+#| "listed under its race in the sidebar. Traits can subtly affect how you "
+#| "use your troops. For example, units with the <i>quick</i> trait can move "
+#| "a extra hex each turn, and units with the <i>intelligent</i> trait "
+#| "require 20% less experience to level up."
 msgid ""
 "Be sure to examine the <i>traits</i> of your new recruits. They are listed "
 "under its race in the sidebar. Traits can subtly affect how you use your "
-"troops. For example, units with the <i>quick</i> trait can move a extra hex "
+"troops. For example, units with the <i>quick</i> trait can move an extra hex "
 "each turn, and units with the <i>intelligent</i> trait require 20% less "
 "experience to level up."
 msgstr ""
@@ -1145,9 +1152,9 @@ msgid ""
 "while your leader stands on a keep and select the <i>Recall</i> option. "
 "Remember to also recruit new troops in addition to recalling old ones."
 msgstr ""
-"Neben der Möglichkeit, in jedem Szenario neue Einheiten auszubilden, kannst du "
-"auch erfahrene Veteranen aus früheren Szenarien für einen Preis von 20 Gold "
-"<i>einberufen</i>. Dies erlaubt es Euch, über mehrere Szenarien hinweg "
+"Neben der Möglichkeit, in jedem Szenario neue Einheiten auszubilden, kannst "
+"du auch erfahrene Veteranen aus früheren Szenarien für einen Preis von 20 "
+"Gold <i>einberufen</i>. Dies erlaubt es Euch, über mehrere Szenarien hinweg "
 "mächtige Truppen aufzubauen, indem Ihr die Einheiten mit der meisten "
 "Erfahrung oder einer guten Kombination von Charakteristiken oder "
 "Fertigkeiten einberuft. Um Einheiten einberufen zu können, muss Euer "
@@ -1163,9 +1170,9 @@ msgid ""
 "fighters, and a shaman."
 msgstr ""
 "Du kannst in diesem Szenario auch 2 neue Einheitentypen ausbilden: "
-"Elfenbogenschützen und Elfenschamaninnen. Ich erzähle dir mehr über sie, wenn "
-"du sie ausbildest. Ich würde eine ausgeglichene Truppe von 2 Elfenkriegern, "
-"2 Elfenbogenschützen und einer Elfenschamanin anvisieren."
+"Elfenbogenschützen und Elfenschamaninnen. Ich erzähle dir mehr über sie, "
+"wenn du sie ausbildest. Ich würde eine ausgeglichene Truppe von 2 "
+"Elfenkriegern, 2 Elfenbogenschützen und einer Elfenschamanin anvisieren."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:293
@@ -1206,12 +1213,12 @@ msgid ""
 "Heal, can be very useful, so be careful when sending them into battle."
 msgstr ""
 "Manche Einheiten verfügen über besondere <i>Fertigkeiten</i>. Während "
-"Charakteristiken einen eher geringen Bonus oder Malus vergeben, "
-"ermöglichen Fertigkeiten neue Spielweisen. In diesem Fall beherrscht die "
-"Elfenschamanin die Fertigkeit Heilen, sie kann benachbarte Einheiten um 4 "
-"Lebenspunkte zu Beginn Eures Zuges heilen. Einheitentypen mit Fertigkeiten, "
-"besonders solchen wie Heilen, können sehr nützlich sein. Seid vorsichtig "
-"wenn Ihr sie in den Kampf schickt."
+"Charakteristiken einen eher geringen Bonus oder Malus vergeben, ermöglichen "
+"Fertigkeiten neue Spielweisen. In diesem Fall beherrscht die Elfenschamanin "
+"die Fertigkeit Heilen, sie kann benachbarte Einheiten um 4 Lebenspunkte zu "
+"Beginn Eures Zuges heilen. Einheitentypen mit Fertigkeiten, besonders "
+"solchen wie Heilen, können sehr nützlich sein. Seid vorsichtig wenn Ihr sie "
+"in den Kampf schickt."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:322
@@ -1230,8 +1237,8 @@ msgstr ""
 "verfügt über einen Angriff mit der Waffenfähigkeit Verlangsamen. Wenn sie "
 "damit trifft, wird sie den Schaden des Gegners für eine Runde halbieren. "
 "Eine andere Waffenfähigkeit wäre Erstschlag, womit man immer den ersten "
-"Schlag im Kampf ausführt, egal ob man angreift oder verteidigt. Eine "
-"Einheit mit der Waffenfähigkeit Magie, womit ein Angriff immer eine 70%ige "
+"Schlag im Kampf ausführt, egal ob man angreift oder verteidigt. Eine Einheit "
+"mit der Waffenfähigkeit Magie, womit ein Angriff immer eine 70%ige "
 "Trefferchance hat, habt Ihr im Training bereits bekämpft.\n"
 "\n"
 "Eine Liste der Fertigkeiten und Waffenfähigkeiten gibt es in der Hilfe."
@@ -1250,9 +1257,9 @@ msgid ""
 "units to take less damage overall when your enemy counterattacks."
 msgstr ""
 "Im Gegensatz zum Elfenkrieger, einem guten Nahkämpfer, ist der "
-"Elfenbogenschütze auf Fernkampf spezialisiert. Es ist vorteilhaft, feindliche "
-"Einheiten, welche über einen starken Nahkampfangriff verfügen, mit "
-"Fernkampfeinheiten anzugreifen und andersherum genauso. Denn auf diese "
+"Elfenbogenschütze auf Fernkampf spezialisiert. Es ist vorteilhaft, "
+"feindliche Einheiten, welche über einen starken Nahkampfangriff verfügen, "
+"mit Fernkampfeinheiten anzugreifen und andersherum genauso. Denn auf diese "
 "Weise nehmen deine Einheiten weniger Schaden durch den Gegenangriff."
 
 #. [message]: speaker=Galdrad
@@ -1323,12 +1330,12 @@ msgid ""
 "a side may be hidden; however, it is still useful to check this table when a "
 "scenario begins. You can access it in the <b>Menu</b> menu."
 msgstr ""
-"Die Spielübersicht zeigt sowohl Informationen über den Stand der verschiedenen "
-"Parteien als auch über das Szenario. Sowohl Nebel als auch der Schleier der "
-"Finsternis, welche es in manchen Szenarien gibt, beeinflussen die "
-"angezeigten Informationen und in manchen Fällen wird eine Partei verborgen; "
-"es ist jedoch trotzdem vorteilhaft, die Spielübersicht zu Beginn des Spiels "
-"zu begutachten. Ihr könnt sie im <b>Menü</b> finden."
+"Die Spielübersicht zeigt sowohl Informationen über den Stand der "
+"verschiedenen Parteien als auch über das Szenario. Sowohl Nebel als auch der "
+"Schleier der Finsternis, welche es in manchen Szenarien gibt, beeinflussen "
+"die angezeigten Informationen und in manchen Fällen wird eine Partei "
+"verborgen; es ist jedoch trotzdem vorteilhaft, die Spielübersicht zu Beginn "
+"des Spiels zu begutachten. Ihr könnt sie im <b>Menü</b> finden."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:428
@@ -1379,12 +1386,12 @@ msgid ""
 "while Shamans and Archers will only incur a 30% chance."
 msgstr ""
 "Das könntest du. Allerdings ist die <i>Verteidigung</i> von Elfen (und Orks) "
-"im Wasser sehr niedrig. Während du langsam durch das Wasser watest, haben die "
-"Feinde eine 80%ige Chance, dich zu treffen. Da Elfen eine gute Verteidigung im "
-"Wald haben, schlage ich vor, bei den Bäumen in Deckung zu bleiben und die "
-"Orks von dort anzugreifen, dort ist die Chance, getroffen zu werden, "
-"wesentlich niedriger; 40% für Elfenkrieger, und nur 30% für Bogenschützen "
-"und Schamaninnen."
+"im Wasser sehr niedrig. Während du langsam durch das Wasser watest, haben "
+"die Feinde eine 80%ige Chance, dich zu treffen. Da Elfen eine gute "
+"Verteidigung im Wald haben, schlage ich vor, bei den Bäumen in Deckung zu "
+"bleiben und die Orks von dort anzugreifen, dort ist die Chance, getroffen zu "
+"werden, wesentlich niedriger; 40% für Elfenkrieger, und nur 30% für "
+"Bogenschützen und Schamaninnen."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:450
@@ -1394,8 +1401,8 @@ msgid ""
 "village there."
 msgstr ""
 "Aber behalte die Furt im Auge. Die Orks können versuchen, sie zu überqueren "
-"und deine Truppen von hinten angreifen. Es mag ausreichen, ein paar Einheiten "
-"dorthin zu schicken, um das Flussufer und das Dorf zu verteidigen."
+"und deine Truppen von hinten angreifen. Es mag ausreichen, ein paar "
+"Einheiten dorthin zu schicken, um das Flussufer und das Dorf zu verteidigen."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:455
@@ -1472,8 +1479,8 @@ msgid ""
 msgstr ""
 "Du hast gut aufgepasst, Konrad. Es ist in der Tat eine gute Idee, deinen "
 "Anführer in der Nähe des Burgfrieds zu lassen. Das Blatt kann sich im Kampf "
-"leicht wenden und dann wäre es blöd, wenn du zu weit entfernt bist, um Truppen "
-"auszubilden."
+"leicht wenden und dann wäre es blöd, wenn du zu weit entfernt bist, um "
+"Truppen auszubilden."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:482
@@ -1485,8 +1492,8 @@ msgid ""
 msgstr ""
 "Du hast gut aufgepasst, Li’sar. Es ist in der Tat eine gute Idee, deinen "
 "Anführer in der Nähe des Burgfrieds zu lassen. Das Blatt kann sich im Kampf "
-"leicht wenden und dann wäre es blöd, wenn du zu weit entfernt bist, um Truppen "
-"auszubilden."
+"leicht wenden und dann wäre es blöd, wenn du zu weit entfernt bist, um "
+"Truppen auszubilden."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:492
@@ -1564,9 +1571,10 @@ msgid ""
 "this turn. I’d better grab more villages if I can and move everyone closer "
 "for next turn."
 msgstr ""
-"Ich hoffe, meine Einheiten überleben den Gegenangriff, wenn ich den Ork nicht "
-"schon diesen Zug zur Strecke bringen kann. Ich nehme besser weitere Dörfer "
-"ein und lasse meine übrigen Einheiten weiter auf den Gegner zumarschieren."
+"Ich hoffe, meine Einheiten überleben den Gegenangriff, wenn ich den Ork "
+"nicht schon diesen Zug zur Strecke bringen kann. Ich nehme besser weitere "
+"Dörfer ein und lasse meine übrigen Einheiten weiter auf den Gegner "
+"zumarschieren."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:543
@@ -1615,9 +1623,9 @@ msgid ""
 "good defense."
 msgstr ""
 "Gut gemacht! Die Insel gehört uns. Du kannst die Deckung der Bäume nutzen, "
-"um eine Blockade gegen die Orks aufzustellen; ohne durch das Wasser zu waten, "
-"können sie nur über die Brücke auf die Insel gelangen, und dort hast du eine "
-"gute Verteidigung."
+"um eine Blockade gegen die Orks aufzustellen; ohne durch das Wasser zu "
+"waten, können sie nur über die Brücke auf die Insel gelangen, und dort hast "
+"du eine gute Verteidigung."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:627
@@ -1626,9 +1634,9 @@ msgid ""
 "it if they try to sneak around via the ford! It will be hard to dislodge "
 "them if they do."
 msgstr ""
-"Vergiss nicht das Dorf unten am Fluss. Die Orks werden es einnehmen, wenn sie "
-"den Fluss bei der Furt überqueren. Wenn sie das erreichen, werden wir sie "
-"nicht mehr so leicht los …"
+"Vergiss nicht das Dorf unten am Fluss. Die Orks werden es einnehmen, wenn "
+"sie den Fluss bei der Furt überqueren. Wenn sie das erreichen, werden wir "
+"sie nicht mehr so leicht los …"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:644
@@ -1695,8 +1703,8 @@ msgstr ""
 "Während des Szenarios ändert sich die Tageszeit. Manche Einheiten kämpfen "
 "tagsüber besser, manche in der Nacht, und wiederum andere sind nicht davon "
 "beeinflusst. Welche Einheiten gerade einen Bonus haben, wird in der "
-"Seitenleiste angezeigt. Bewegt die Maus über das Bild in der Seitenleiste, um "
-"zu sehen, wie der <i>Tag-/Nacheinfluss</i> im Moment ist."
+"Seitenleiste angezeigt. Bewegt die Maus über das Bild in der Seitenleiste, "
+"um zu sehen, wie der <i>Tag-/Nacheinfluss</i> im Moment ist."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:710
@@ -2161,7 +2169,6 @@ msgstr ""
 
 #. [unit_type]: id=Warrioress, race=human
 #: data/campaigns/tutorial/units/Warrioress.cfg:4
-#| msgid "female^Fighter"
 msgid "female^Warrior"
 msgstr ""
 

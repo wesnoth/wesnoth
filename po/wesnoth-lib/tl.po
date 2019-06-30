@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-03-11 16:09+0300\n"
+"POT-Creation-Date: 2019-06-30 15:14+0300\n"
 "PO-Revision-Date: 2006-05-13 05:43-0000\n"
 "Last-Translator: Joset Anthony Zamora <eradicus_kee@yahoo.ca>\n"
 "Language-Team: none\n"
@@ -2386,7 +2386,7 @@ msgstr ""
 #. [label]: id=title
 #. [slider]: id=enemey_gold_factor
 #: data/gui/window/campaign_difficulty.cfg:53
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:251
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:279
 msgid "Difficulty"
 msgstr ""
 
@@ -4332,7 +4332,7 @@ msgstr ""
 #. [menu_button]: id=side_color
 #: data/gui/window/mp_staging.cfg:304
 #, fuzzy
-msgid "The team color"
+msgid "This side’s color"
 msgstr "Ipakita ang Galaw ng Kalaban"
 
 #. [button]: id=ok
@@ -4985,12 +4985,6 @@ msgstr ""
 #: data/gui/window/statistics_dialog.cfg:141
 msgid "Overall"
 msgstr ""
-
-#. [label]
-#: data/gui/window/statistics_dialog.cfg:153
-#, fuzzy
-msgid "This Turn"
-msgstr "Batingaw ng turno"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -6420,26 +6414,31 @@ msgstr ""
 msgid "&#9679;"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:876
+#: src/gui/dialogs/preferences_dialog.cpp:850
+#: src/gui/dialogs/preferences_dialog.cpp:920
+msgid "No hotkey selected"
+msgstr ""
+
+#: src/gui/dialogs/preferences_dialog.cpp:881
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:882
+#: src/gui/dialogs/preferences_dialog.cpp:887
 #, fuzzy
 msgid "Reassign Hotkey"
 msgstr "I-seyb As"
 
-#: src/gui/dialogs/preferences_dialog.cpp:899
+#: src/gui/dialogs/preferences_dialog.cpp:904
 msgid "All hotkeys have been reset to their default values."
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:899
+#: src/gui/dialogs/preferences_dialog.cpp:904
 msgid "Hotkeys Reset"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:1030
+#: src/gui/dialogs/preferences_dialog.cpp:1040
 msgid "∞"
 msgstr ""
 
@@ -6455,40 +6454,45 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "I-seyb ang Mapa"
 
-#: src/gui/dialogs/statistics_dialog.cpp:177
+#: src/gui/dialogs/statistics_dialog.cpp:151
+#, fuzzy
+msgid "This Turn"
+msgstr "Batingaw ng turno"
+
+#: src/gui/dialogs/statistics_dialog.cpp:185
 #, fuzzy
 #| msgid "Delete File"
 msgid "Recruits"
 msgstr "Burahin ang Fayl"
 
-#: src/gui/dialogs/statistics_dialog.cpp:178
+#: src/gui/dialogs/statistics_dialog.cpp:186
 #, fuzzy
 #| msgid "Delete File"
 msgid "Recalls"
 msgstr "Burahin ang Fayl"
 
-#: src/gui/dialogs/statistics_dialog.cpp:179
+#: src/gui/dialogs/statistics_dialog.cpp:187
 #, fuzzy
 msgid "Advancements"
 msgstr "Pumili ng Resolusyon"
 
-#: src/gui/dialogs/statistics_dialog.cpp:180
+#: src/gui/dialogs/statistics_dialog.cpp:188
 msgid "Losses"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:181
+#: src/gui/dialogs/statistics_dialog.cpp:189
 msgid "Kills"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:200
+#: src/gui/dialogs/statistics_dialog.cpp:208
 msgid "Inflicted"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:208
+#: src/gui/dialogs/statistics_dialog.cpp:216
 msgid "Taken"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:251
+#: src/gui/dialogs/statistics_dialog.cpp:259
 msgid "$count|× $name"
 msgstr ""
 

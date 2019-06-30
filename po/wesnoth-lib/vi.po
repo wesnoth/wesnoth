@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-03-11 16:09+0300\n"
+"POT-Creation-Date: 2019-06-30 15:14+0300\n"
 "PO-Revision-Date: 2014-06-05 22:47+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -2655,7 +2655,7 @@ msgstr ""
 #. [label]: id=title
 #. [slider]: id=enemey_gold_factor
 #: data/gui/window/campaign_difficulty.cfg:53
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:251
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:279
 msgid "Difficulty"
 msgstr "Độ khó"
 
@@ -4678,7 +4678,7 @@ msgstr ""
 #: data/gui/window/mp_staging.cfg:304
 #, fuzzy
 #| msgid "Show team colors"
-msgid "The team color"
+msgid "This side’s color"
 msgstr "Hiện màu của đội"
 
 #. [button]: id=ok
@@ -5381,13 +5381,6 @@ msgstr "Ảnh"
 #: data/gui/window/statistics_dialog.cfg:141
 msgid "Overall"
 msgstr ""
-
-#. [label]
-#: data/gui/window/statistics_dialog.cfg:153
-#, fuzzy
-#| msgid "Turn"
-msgid "This Turn"
-msgstr "Lượt"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -6916,7 +6909,12 @@ msgstr "Xem và sửa danh sách bạn bè và danh sách từ chối của bạ
 msgid "&#9679;"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:876
+#: src/gui/dialogs/preferences_dialog.cpp:850
+#: src/gui/dialogs/preferences_dialog.cpp:920
+msgid "No hotkey selected"
+msgstr ""
+
+#: src/gui/dialogs/preferences_dialog.cpp:881
 #, fuzzy
 #| msgid ""
 #| "\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\". Do you wish "
@@ -6928,19 +6926,19 @@ msgstr ""
 "\"$hotkey_sequence|\" đang được sử dụng bởi \"$old_hotkey_action|\". Bạn có "
 "muốn gán lại nó cho \"$new_hotkey_action|\" không?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:882
+#: src/gui/dialogs/preferences_dialog.cpp:887
 msgid "Reassign Hotkey"
 msgstr "Gán lại phím tắt"
 
-#: src/gui/dialogs/preferences_dialog.cpp:899
+#: src/gui/dialogs/preferences_dialog.cpp:904
 msgid "All hotkeys have been reset to their default values."
 msgstr "Tất cả các phím tắt đã được đặt lại v giá trị mặc định."
 
-#: src/gui/dialogs/preferences_dialog.cpp:899
+#: src/gui/dialogs/preferences_dialog.cpp:904
 msgid "Hotkeys Reset"
 msgstr "Đặt lại phím tắt"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1030
+#: src/gui/dialogs/preferences_dialog.cpp:1040
 msgid "∞"
 msgstr ""
 
@@ -6957,43 +6955,49 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "Mở đầu màn"
 
-#: src/gui/dialogs/statistics_dialog.cpp:177
+#: src/gui/dialogs/statistics_dialog.cpp:151
+#, fuzzy
+#| msgid "Turn"
+msgid "This Turn"
+msgstr "Lượt"
+
+#: src/gui/dialogs/statistics_dialog.cpp:185
 #, fuzzy
 #| msgid "Recruit"
 msgid "Recruits"
 msgstr "Tuyển quân"
 
-#: src/gui/dialogs/statistics_dialog.cpp:178
+#: src/gui/dialogs/statistics_dialog.cpp:186
 #, fuzzy
 #| msgid "Recall"
 msgid "Recalls"
 msgstr "Gọi lại"
 
-#: src/gui/dialogs/statistics_dialog.cpp:179
+#: src/gui/dialogs/statistics_dialog.cpp:187
 #, fuzzy
 #| msgid "sound^Advanced Options"
 msgid "Advancements"
 msgstr "Tùy chọn nâng cao"
 
-#: src/gui/dialogs/statistics_dialog.cpp:180
+#: src/gui/dialogs/statistics_dialog.cpp:188
 msgid "Losses"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:181
+#: src/gui/dialogs/statistics_dialog.cpp:189
 #, fuzzy
 #| msgid "Hills"
 msgid "Kills"
 msgstr "Đồi"
 
-#: src/gui/dialogs/statistics_dialog.cpp:200
+#: src/gui/dialogs/statistics_dialog.cpp:208
 msgid "Inflicted"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:208
+#: src/gui/dialogs/statistics_dialog.cpp:216
 msgid "Taken"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:251
+#: src/gui/dialogs/statistics_dialog.cpp:259
 msgid "$count|× $name"
 msgstr ""
 

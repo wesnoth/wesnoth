@@ -1,0 +1,434 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2018 wesnoth "Vesnot Savaşı"
+.
+.SH İSİM
+wesnoth \- Vesnot Savaşı, sırayla oynanan kurgusal bir strateji oyunu
+.
+.SH KULLANIM
+.
+\fBwesnoth\fP [\fIseçenekler\fP] [\fIdata_dizini\fP]
+.
+.SH AÇIKLAMA
+.
+\fBVesnot Savaşı\fP, sırayla oynanan kurgusal bir strateji oyunudur.
+
+Oyunda iyi seçilmiş bir asker kadrosu kullanılarak tüm düşman liderleri
+yenilmeye çalışılır. Bunun için köyler ve altın kaynak olarak
+kullanılır. Bütün birimlerin kendilerine özgü kuvvetli ve zayıf yetenekleri
+vardır. Kazanmak için kuvvetlerinizi düşmana karşı üstünlük sağlayacak
+yerlere konuşlandırmalısınız. Birimler deneyim kazandıkça yeni yetenekler
+kazanır ve daha güçlü hale gelirler. Oyunu kendi dilinizde oynayabilir,
+yeteneklerinizi bilgisayara karşı veya çevrimiçi oyunculara karşı
+sınayabilirsiniz. Kendi özel birimlerinizi, senaryolarınızı veya
+seferberliklerinizi yazabilir ve bunları başkaları ile paylaşabilirsiniz.
+.
+.SH SEÇENEKLER
+.
+.TP 
+\fB\-\-all\-translations\fP
+Oyun içi dil seçim listesindeki tüm çevirileri yeterli olmasalar bile,
+gösterir.
+.TP 
+\fB\-\-bunzip2\fP\fI\ dosya.bz2\fP
+bzip2 biçemli bir dosyanın sıkıştırmasını açar ve .bz2 uzantısız olarak
+kaydeder. \fIdosya.bz2\fP dosyasını da siler.
+.TP 
+\fB\-\-bzip2\fP\fI\ dosya\fP
+bir dosyayı \fIdosya\fP.gz adıyla sıkıştırarak kaydeder ve \fIdosya\fPyı siler.
+.TP 
+\fB\-c[\fP\fIseferberlik\fP\fB],\ \-\-campaign[\fP\fI=seferberlik\fP\fB]\fP
+\fIseferberlik\fP kimliği ile doğrudan seferberliğe gider. Kimlik
+belirtilmemişse bir seçim menüsü görünecektir.
+.TP 
+\fB\-\-campaign\-difficulty[\fP\fI=zorluk\fP\fB]\fP
+Belirtilen seferberliğin zorluğu (1 \- azami). Belirtilmezse, seferberlik
+zorluğu seçim gereci görünür.
+.TP 
+\fB\-\-campaign\-scenario\fP\fI\ senaryo\fP
+belirtilen seferberlikteki senaryonun kimliği. Belirtilmezse ilk senaryo
+öntanımlıdır.
+.TP 
+\fB\-\-campaign\-skip\-story\fP
+olayların \fBbaşlangıcındaki\fP [hikaye} ekranlarını atlar.
+.TP 
+\fB\-\-clock\fP
+çizim zamanlayıcısını denerken saati göstermek için bu seçeneği ekler.
+.TP 
+\fB\-\-config\-dir\fP\fI\ isim\fP
+Kullanım dışı, yerine \fB\-\-userdata\-dir\fP kullanın.
+.TP 
+\fB\-\-config\-path\fP
+Kullanım dışı, yerine \fB\-\-userdata\-path\fP kullanın.
+.TP 
+\fB\-\-core\fP\fI\ çekirdek\fP
+kimliği belirtilen çekirdek yüklü olanın yerine geçer.
+.TP 
+\fB\-\-data\-dir\fP\fI\ dizin\fP
+data dizini olarak belirtilen dizin kullanılır.
+.TP 
+\fB\-\-data\-path\fP
+data dizininin yolunu basar ve çıkar.
+.TP 
+\fB\-d, \-\-debug\fP
+oyun içi ek komut kipi seçeneklerini etkin kılar (komut kipi hakkında bilgi
+edinmek için http://www.wesnoth.org/wiki/CommandMode adresine bakınız).
+.TP 
+\fB\-\-debug\-lua\fP
+bazı Lua hata ayıklama mekanizmalarını etkinleştirir.
+.TP 
+\fB\-e[\fP\fIdosya\fP\fB],\ \-\-editor[\fP\fI=dosya\fP\fB]\fP
+oyun içi harita düzenleticisini doğrudan başlatır. \fIdosya\fP belirtilmezse
+\fB\-l\fP veya \fB\-\-load\fP kullanılmış varsayılır.
+.TP 
+\fB\-\-fps\fP
+çalışmakta olan oyunda ekranın saniyede kaç kere yeniden çizildiğini ekranın
+bir köşesinde gösterir.
+.TP 
+\fB\-f, \-\-fullscreen\fP
+oyunu tam ekran çalıştırır.
+.TP 
+\fB\-\-gunzip\fP\fI\ girdi\-dosyası.gz\fP
+Gzipli bir dosyanın sıkıştırmasını açar ve .gz uzantısız olarak
+kaydeder. \fIdosya.gz\fP dosyasını da siler.
+.TP 
+\fB\-\-gzip\fP\fI\ girdi\-dosyası\fP
+Bir dosyayı \fIdosya\fP.gz adıyla sıkıştırarak kaydeder ve \fIdosya\fPyı siler.
+.TP 
+\fB\-h, \-\-help\fP
+Komut satırı seçeneklerini standart çıktıya listeler ve çıkar.
+.TP 
+\fB\-l,\ \-\-load\fP\fI\ dosya\fP
+kayıtlı oyun dosyası \fIdosya\fP, standart oyun kayıt dizininden yüklenir. Eğer
+\fB\-e\fP veya \fB\-\-editor\fP seçeneği de kullanılmışsa \fIdosya\fP'ya ait harita,
+harita düzenleyicide açılır. Düzenleyici başlatıldığında harita yükleme
+diyaloguyla açılır.
+.TP 
+\fB\-L,\ \-\-language\fP\fI\ lisan\fP
+geçerli oturumda \fIlisan\fP (dilin resmi sembolü) ile belirtilen dil
+kullanılır. Örnek: \fB\-\-language ang_GB@latin\fP
+.TP 
+\fB\-\-log\-\fP\fIseviye\fP\fB=\fP\fIalan1\fP\fB,\fP\fIalan2\fP\fB,\fP\fI...\fP
+Günlük kayıt alanlarının önem seviyelerini ayarlar. Bütün günlük alanlarını
+kapsamak üzere \fBall\fP belirtilebilir. Olası önem seviyeleri: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP. Çoğu sunucu \fBwarning\fP öntanımlı
+değerini kullanır, fakat \fB\-d\fP  seçeneği ile birlikte kullanılmadıkça
+\fBdeprecation\fP için \fBnone\fP öntanımlıdır.
+.TP 
+\fB\-\-log\-precise\fP
+günlük dosyasında zaman damgaları daha ayrıntılı gösterilir.
+.TP 
+\fB\-\-log\-strict\fP
+günlük iletilerinin önem seviyesi. Günlük alanlarına gönderilen bu ve daha
+önemli seviyelerdeki iletiler, zafer sonucuna bakılmaksızın birim
+sınamalarının başarısız olmasında sebep olur. Sadece \fB\-u\fP ile
+kullanıldığında etkin olur.
+.TP 
+\fB\-\-logdomains[\fP\fI=süzgeç\fP\fB]\fP
+tanımlı günlük alanlarını listeler ve çıkar (bir \fIsüzgeç\fP belirtilmişse
+sadece belirtilenleri içerir).
+.TP 
+\fB\-\-max\-fps\fP\fI\ sayı\fP
+oyun sırasında ekrana her saniye çizilen kare sayısıdır. Değer \fB1\fP ile
+\fB1000\fParasında olmalıdır. Monitörün tazeleme hızı öntanımlıdır.
+.TP 
+\fB\-m, \-\-multiplayer\fP
+bir çok oyunculu oyunu çalıştırır. \fB\-\-multiplayer\fP ile birlikte, aşağıda
+açıklanan seçenekler belirtilebilir.
+.TP 
+\fB\-\-mp\-test\fP
+çok oyunculu deneme senaryosu yükler.
+.TP 
+\fB\-\-new\-widgets\fP
+Yeni bir WIP gereci araçkutusu varsa bu seçenek onu etkin kılar. Çok
+deneysel olduğundan ve hataların çoğu bilindiğinden bir hata raporu
+doldurmayın. Kütüphanenin bölümleri kararlı sayılır ve bu anahtar olmadan da
+çalışacaktır.
+.TP 
+\fB\-\-nodelay\fP
+çizgesel başarımı ölçümlemek amacıyla oyunu gecikmeler olmaksızın
+çalıştırır. Bu seçenek \fB\-\-nogui\fP seçeneği tarafından kendiliğinden etkin
+kılınır.
+.TP 
+\fB\-\-noaddons\fP
+kullanıcı eklentilerinin yüklenmesini iptal eder.
+.TP 
+\fB\-\-nocache\fP
+Oyun verisinin belleklenmesini iptal eder.
+.TP 
+\fB\-\-nogui\fP
+oyunu GUI olmadan çalıştırır. Sadece \fB\-\-multiplayer\fP, \fB\-\-screenshot\fP veya
+\fB\-\-plugin\fP seçeneklerinden biri ile birlikte çalışır.
+.TP 
+\fB\-\-nomusic\fP
+oyunu müziksiz çalıştırır.
+.TP 
+\fB\-\-noreplaycheck\fP
+birim sınamalarının yinelenmesi doğrulanmaya çalışılmaz. Yalnız \fB\-u\fP ile
+kullanıldığında çalışır.
+.TP 
+\fB\-\-nosound\fP
+oyunu sesler ve müzikler olmaksızın çalıştırır.
+.TP 
+\fB\-\-password\fP\fI\ parola\fP
+\fIparola\fP bir sunucuya bağlanırken diğer tercihler yoksayılarak
+kullanılır. Güvenli değildir.
+.TP 
+\fB\-\-plugin\fP\fI\ betik\fP
+(deneysel) bir wesnoth eklentisini tanımlayan bir \fIbetik\fP
+yükler. \fB\-\-script\fP gibidir, ancak Lua dosyası, bir alt yordam olarak
+çalıştırılacak ve periyodik olarak güncellemelerle uyanacak bir işlev
+döndürmelidir.
+.TP 
+\fB\-p,\ \-\-preprocess\fP\fI\ kaynak\-dosya/dizin\fP\fB\ \fP\fIhedef\-dizin\fP
+belirtilen bir dosya/dizini önceden işler. Her dosya için bir düz metin .cfg
+dosyası ve işlenmiş bir .cfg dosyası belirtilen hedef dizine
+yazılacaktır. Bir dizin belirtilirse, bilinen önişlemci kurallarına
+dayanarak ardışık olarak önişlem ugulanır. "gata/core/macros" dizinindeki
+ortak makrolar, belirtilen kaynaklardan önce önişleme tabi tutulur. Örnek:
+\fB\-p ~ /wesnoth/data/campaigns/tutorial ~ /result\fP Önişlemci ile ilgili
+ayrıntılar için
+https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor adresine
+balınız.
+.TP 
+\fB\-\-preprocess\-defines=\fP\fITANIM1\fP\fB,\fP\fITANIM2\fP\fB,\fP\fI...\fP
+\fB\-\-preprocess\fP seçeneği tarafından kullanılacak tanımların virgülle
+ayrılmış listesi. Eğer \fBSKIP_CORE\fP tanım listesinde ise "data/core"
+dizinine önişlem uygulanmaz.
+.TP 
+\fB\-\-preprocess\-input\-macros\fP\fI\ kaynak\-dosya\fP
+sadece \fB\-\-preprocess\fP seçeneği tarafından kullanılır. Önişleme başlamadan
+önce eklenecek \fB[önişlem_tanım]\fPlarını içeren dosyayı belirtir.
+.TP 
+\fB\-\-preprocess\-output\-macros[\fP\fI=hedef\-dosya\fP\fB]\fP
+sadece \fB\-\-preprocess\fP seçeneğiyle kullanılır. Önişlemden geçmiş tüm
+makroları hedef dosyaya çıktılar. Eğer dosya belirtilmemişse, çıktılama
+önişlem seçeneğinin hedef dizinindeki '_MACROS_.cfg' dosyasına
+yapılır. Çıktı dosyası \fB\-\-preprocess\-input\-macros\fP seçeneğine
+aktarılabilir. Bu seçenek komut satırında \fB\-\-preprocess\fP seçeneğinden önce
+yer almalıdır.
+.TP 
+\fB\-\-proxy\fP
+ağ bağlatıları için vekil kullanımını etkin kılar.
+.TP 
+\fB\-\-proxy\-address\fP\fI\ adres\fP
+vekil sunucu için \fIadres\fP belirtir.
+.TP 
+\fB\-\-proxy\-port\fP\fI\ port\fP
+vekil sunucu için \fIport\fP belirtir.
+.TP 
+\fB\-\-proxy\-user\fP\fI\ kullanıcı\fP
+vekil sunucuya oturum açacak \fIkullanıcı\fP belirtilir.
+.TP 
+\fB\-\-proxy\-password\fP\fI\ parola\fP
+vekil sunucuya oturum açacak \fIparola\fP belirtilir.
+.TP 
+\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
+ekran çözünürlüğünü ayarlar. Örnek: \fB\-r\fP \fB800x600\fP.
+.TP 
+\fB\-\-render\-image\fP\fI\ resim\fP\fB\ \fP\fIçıktı\fP
+resim yolu işlevleri için geçerli bir wesnoth 'resim yolu dizesi' alır ve
+bir .png dosyasına çıktılar. Resim yolu işlevleri
+https://wiki.wesnoth.org/ImagePathFunctionWML adresinde belgelenmiştir.
+.TP 
+\fB\-R,\ \-\-report\fP
+oyun dizinlerini ilklendirir, hata raporlarında kullanıma uygun derleme
+bilgileri basar ve çıkar.
+.TP 
+\fB\-\-rng\-seed\fP\fI\ sayı\fP
+rasgele sayı üretecini \fIsayı\fP ile tohumlar. Örnek: \fB\-\-rng\-seed\fP \fB0\fP.
+.TP 
+\fB\-\-screenshot\fP\fI\ harita\fP\fB\ \fP\fIçıktı\fP
+ekranı ilklendirmeksizin  \fIharita\fP ekran görüntüsünü \fIçıktı\fP dosyasına
+yazar.
+.TP 
+\fB\-\-script\fP\fI\ dosya\fP
+istemciyi yönetecek Lua betiğini içeren \fIdosya\fP (deneyseldir).
+.TP 
+\fB\-s[\fP\fIkonak\fP\fB],\ \-\-server[\fP\fI=konak\fP\fB]\fP
+varsa belirtilen sunucuya, yoksa tercihlerde belirtilen ilk sunucuya
+bağlanılır. Örnek: \fB\-\-server\fP \fBserver.wesnoth.org\fP.
+.TP 
+\fB\-\-showgui\fP
+\fB\-\-nogui\fP seçeneğini örtük olarak geçersiz kılarak oyunu GUI ile
+çalıştırır.
+.TP 
+\fB\-\-strict\-validation\fP
+doğrulama hatalarını ölümcül hatalar haline getirir.
+.TP 
+\fB\-t[\fP\fIsenaryo\fP\fB],\ \-\-test[\fP\fI=senaryo\fP\fB]\fP
+küçük bir deneme senaryosu çalıştırır. Senaryo bir \fB[deneme]\fP WML etiketi
+ile tanımlanmalıdır. \fBtest\fP öntanımlıdır. \fB[micro_ai]\fP yapay zekasının bir
+deneme gösterimi \fBmicro_ai_test\fP ile başlatılabilir. Seçenek \fB\-\-nogui\fP
+seçeneğini örtük olarak uygular.
+.TP 
+\fB\-\-translations\-over\fP\fI\ yüzde\fP
+oyun içi dil listesinde göstermek için standart çeviri tamamlanma oranını
+\fIyüzde\fP ile belirtilen değere ayarlar. Geçerli değerler 0 ile 100
+arasındadır.
+.TP 
+\fB\-u,\ \-\-unit\fP\fI\ senaryo\fP
+birim sınaması olarak belirtilen deneme senaryosunu çalıştırır. Örtük olarak
+\fB\-\-nogui\fP uygular.
+.TP 
+\fB\-\-unsafe\-scripts\fP
+\fBpaket\fPi Lua betiklerinde kullanılabilir kılar, böylece keyfi paketler
+yüklenebilir. Güvenilmez betiklerle kullanmayın! Bu işlem Lua betiğine
+wesnoth çalıştırılabiliri ile aynı yetkileri sağlar.
+.TP 
+\fB\-\-userconfig\-dir\fP\fI\ isim\fP
+kullanıcı yapılandırma dizini olarak *n*x türevlerinde $HOME, windows'ta
+"Belgelerim\eOyunlarım" dizini altında \fIisim\fP dizini kullanılır. Ayrıca,
+$HOME veya "Belgelerim\eOyunlarım" dışında bir yapılandırma dizinini de
+mutlak yolunu belirtmek suretiyle kullanabilirsiniz. Windows'ta ayrıca, yolu
+".\e" veya "..\e" ile başlatarak sürecin çalışma dizinine göreli bir dosya
+yolu da belirtebilirsiniz. X11 altında bu, öntanımlı olarak $XDG_CONFIG_HOME
+veya $HOME/.config/wesnoth olup diğer sistemlerde kullanıcı verisi
+dizinidir.
+.TP 
+\fB\-\-userconfig\-path\fP
+Kullanıcı yapılandırma dizininin yolunu basar ve çıkar.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ dizin\fP
+kullanıcı verisi dizini olarak *n*x türevlerinde $HOME, windows'ta
+"Belgelerim\eOyunlarım" dizini altında \fIisim\fP dizini kullanılır. Ayrıca,
+$HOME veya "Belgelerim\eOyunlarım" dışında bir kullanıcı verisi dizinini de
+mutlak yolunu belirtmek suretiyle kullanabilirsiniz. Windows'ta ayrıca, yolu
+".\e" veya "..\e" ile başlatarak sürecin çalışma dizinine göreli bir dosya
+yolu da belirtebilirsiniz
+.TP 
+\fB\-\-userdata\-path\fP
+kullanıcı verileri dizininin yolunu basar ve çıkar.
+.TP 
+\fB\-\-username\fP\fI\ kullanıcı\fP
+bir sunucuya bağlanırken \fIkullanıcı\fP diğer tercihler yoksayılarak
+kullanılır.
+.TP 
+\fB\-\-validcache\fP
+önbelleğin geçerli olduğu varsayılır. (tehlikeli)
+.TP 
+\fB\-v, \-\-version\fP
+sürüm numarasını gösterir ve çıkar.
+.TP 
+\fB\-w, \-\-windowed\fP
+oyunu pencereli kipte çalıştırır.
+.TP 
+\fB\-\-with\-replay\fP
+\fB\-\-load\fP seçeneğiyle yüklenen oyun tekrar oynatılır.
+.
+.SH "\-\-multiplayer ile belirtilebilecek seçenekler"
+.
+Taraf belirtilen çok oyunculu seçenekleri \fItaraf\fP ile imlenmiştir. \fItaraf\fP
+yerine ilgili tarafın numarası yazılır. Seçilen senaryodaki olası oyuncu
+sayısına bağlı olmakla birlikte bu im genellikle 1 veya 2 olur.
+.TP 
+\fB\-\-ai\-config\fP\fI\ taraf\fP\fB:\fP\fIdeğer\fP
+belirtilen tarafın yapay zeka denetleyicisi için yüklenecek yapılandırma
+dosyasını seçer.
+.TP 
+\fB\-\-algorithm\fP\fI\ sayı\fP\fB:\fP\fIdeğer\fP
+YZ denetleyicisi tarafından belirtilen taraf için kullanılacak standartdışı
+bir algoritma seçer. Algoritma, "data/ai/ais" veya "data/ai/dev" altındaki
+bir çekirdek ya da bir eklenti tarafından tanımlanmış bir algoritmadaki bir
+\fB[ai]\fP etiketi ile tanımlanır. Mevcut değerler şunlardır: \fBidle_ai\fP ve
+\fBexperimental_ai\fP.
+.TP 
+\fB\-\-controller\fP\fI\ sayı\fP\fB:\fP\fIdeğer\fP
+selects the controller for this side. Available values: \fBhuman\fP, \fBai\fP and
+\fBnull\fP.
+.TP 
+\fB\-\-era\fP\fI\ değer\fP
+Bu seçenek oyunu öntanımlı (\fBDefault\fP) çağ yerine \fIdeğer\fP ile belirtilen
+çağda oynamak için kullanılır. Çağ bir kimlik ile belirtilir. Çağlar
+\fBdata/multiplayer/eras.cfg\fP dosyasında tanımlanmıştır.
+.TP 
+\fB\-\-exit\-at\-end\fP
+oyuncunun tıklamasını gerektiren zafer/yenilgi penceresi gösterilmeden
+senaryo bitiminde oyundan çıkılır. Bu ayrıca betikli başarım ölçümlemesi
+yapılırken de kullanılır.
+.TP 
+\fB\-\-ignore\-map\-settings\fP
+harita ayarları yerine öntanımlı değerler kullanılır.
+.TP 
+\fB\-\-label\fP\fI\ etiket\fP
+yapay zekalar için  \fIetiket\fP belirtir.
+.TP 
+\fB\-\-multiplayer\-repeat\fP\fI\ değer\fP
+bir çok oyunculu oyunun \fIdeğer\fP kere tekrarlar. Betikli başarım ölçümlemesi
+için en iyi sonuç \fB\-\-nogui\fP seçeneğiyle birlikte alınır.
+.TP 
+\fB\-\-parm\fP\fItaraf\fP\fB=\fP\fIisim\fP\fB:\fP\fIdeğer\fP
+tarafla ilgili ek değiştirgeleri ayarlar. Bu değiştirgeler \fB\-\-controller\fP
+ve \fB\-\-algorithm\fP seçenekleriyle ilgilidir. Sadece kendi saldırı arayüzünü
+tasarlamak isteyen kişilerin işine yarar. (Yeterince iyi belgelenmemiştir.)
+.TP 
+\fB\-\-scenario\fP\fI\ değer\fP
+kimliği belirtilen çok oyunculu senaryoyu seçer. Öntanımlı senaryo kimliği
+\fBmultiplayer_The_Freelands\fP'dır.
+.TP 
+\fB\-\-side\fP\fI\ taraf\fP\fB:\fP\fIdeğer\fP
+Bu taraf için geçerli çağdan birlik seçmek için kullanılır. Birlikler
+kimlikleriyle belirtilirler. Birlikler \fBdata/multiplayer.cfg\fP dosyasında
+tanımlanmıştır.
+.TP 
+\fB\-\-turns\fP\fI\ değer\fP
+seçilen senaryonun el sayısını sınırlamak için kullanılır. Öntanımlı olarak
+el sınırı yoktur.
+.
+.SH "ÇIKIŞ DURUMU"
+.
+Normal çıkış durumu 0'dır. 1 çıkış durumu bir (SDL, video, fontlar, vb.)
+ilklendirme hatasını gösterir. 2 çıkış durumu, komut satırı seçeneklerinde
+hata olduğunu gösterir.
+.br
+Birim sınamalarını çalıştırırken (\fB\ \-u\fP ile), çıkış durumu farklıdır. 0
+çıkış durumu, sınamanın başarılı olduğunu ve 1 başarısız olduğunu
+gösterir. 3 çıkış durumu, sınamanın geçtiğini ancak geçersiz bir yeniden
+oynatma dosyası üretildiğini gösterir. 4 çıkış durumu, sınamanın geçtiğini
+ancak yeniden oynatma dosyasının hatalar ürettiğini gösterir. Bu son ikisi,
+yalnızca \fB\-\-noreplaycheck\fP kullanılmazsa döndürülür. 2 çıkış durumu,
+\fB\-\-timeout\fP seçeneğiyle kullanıldığında sınamanın zaman aşımına uğradığını
+gösterir.
+.
+.SH YAZAN
+.
+David White <davidnwhite@verizon.net> tarafından yazılmıştır.
+.br
+Nils Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> ve
+Soliton <soliton.de@gmail.com> tarafından yeniden düzenlenmiştir.
+.br
+Bu kılavuz sayfası ilk defa Cyril Bouthors <cyril@bouthors.org>
+tarafından yazılmış ve Nilgün Belma Bugüner <nilgun@belgeler.org>
+tarafından Türkçeye çevrilmiştir.
+.br
+oyunun ana sayfasını ziyaret etmeyi unutmayın: http://www.wesnoth.org/
+.
+.SH "TELİF HAKKI"
+.
+Copyright © 2003\-2019 David White <davidnwhite@verizon.net>
+.br
+Bu bir özgür yazılımdır; GNU Genel Kamu Lisansının 2. sürümünün (GPLv2)
+koşullarına bağlı kalarak kopyalarını yeniden dağıtabilirsiniz. Yasaların
+izin verdiği ölçüde hiçbir garantisi yoktur; hatta SATILABİLİRLİĞİ veya
+ŞAHSİ KULLANIMINIZA UYGUNLUĞU için bile garanti verilmez.
+.
+.SH "İLGİLİ BELGELER"
+.
+\fBwesnothd\fP(6)

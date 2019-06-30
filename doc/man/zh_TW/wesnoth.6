@@ -1,0 +1,344 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2018 wesnoth "Battle for Wesnoth"
+.
+.SH 名稱
+wesnoth \- 韋諾之戰，一個回合制奇幻風格的策略遊戲
+.
+.SH 摘要
+.
+\fBwesnoth\fP [\fIOPTIONS\fP] [\fIPATH_TO_DATA\fP]
+.
+.SH 描述
+.
+Battle for \fBWesnoth\fP是一個回合制奇幻風格的策略遊戲。
+
+用精心挑選的部隊打敗所有的敵人。管理好您的資源和村莊。 所有單位都有自己的優勢與劣勢；要取得勝利，必須發揮出您的部隊的優勢， 同時阻止對手這麼做。
+隨着單位獲得經驗，他們會學會新的技能，變得更強大。
+遊戲特性：可以使用當地語言進行遊戲。通過與電腦AI進行對抗提高自己的技能，當然也可以進入韋諾網路多人對戰。你還可以創造自己的單位，關卡和戰役，並與所有韋諾玩家分享。
+.
+.SH 選項
+.
+.TP 
+\fB\-\-all\-translations\fP
+在遊戲中的語言選單中顯示所有的翻譯，如果翻譯不完整也一樣顯示。
+.TP 
+\fB\-\-bunzip2\fP\fI\ infile.bz2\fP
+解壓縮 bzip2 格式的檔案，並儲存為去除 .bz2 後的相同文件。文件\fIinfile.gz\fP將被刪除。
+.TP 
+\fB\-\-bzip2\fP\fI\ infile\fP
+用 bzip2 格式壓縮檔案，命名為\fIinfile\fP.bz2，並刪除\fIinfile\fP。
+.TP 
+\fB\-c[\fP\fIid_campaign\fP\fB],\ \-\-campaign[\fP\fI=id_campaign\fP\fB]\fP
+進入 ID 為 \fIid_campaign\fP 的戰役。如果沒有指定ID將會出現選單。
+.TP 
+\fB\-\-campaign\-difficulty[\fP\fI=difficulty\fP\fB]\fP
+指定戰役的難度（1至最大）。如果沒有指定，則會出現戰役難度的選單。
+.TP 
+\fB\-\-campaign\-scenario\fP\fI\ id_scenario\fP
+指定戰役中章節的 ID。預設為第一個章節。
+.TP 
+\fB\-\-campaign\-skip\-story\fP
+在 \fBstart\fP 事件最後跳過 [story] 畫面及對話框。
+.TP 
+\fB\-\-clock\fP
+增加一個顯示時鐘的選項用來當測試畫面繪製計時器。
+.TP 
+\fB\-\-config\-dir\fP\fI\ name\fP
+已廢棄，請使用 \fB\-\-userdata\-dir\fP。
+.TP 
+\fB\-\-config\-path\fP
+Deprecated, use \fB\-\-userdata\-path\fP.
+.TP 
+\fB\-\-core\fP\fI\ id_core\fP
+指定 ID 的核心作為讀取的核心。
+.TP 
+\fB\-\-data\-dir\fP\fI\ directory\fP
+指定想使用的資料目錄
+.TP 
+\fB\-\-data\-path\fP
+顯示配置目錄的路徑並退出。
+.TP 
+\fB\-d, \-\-debug\fP
+開啟遊戲中附加的指令模式（更多資訊可以參閱wiki頁面 http://www.wesnoth.org/wiki/CommandMode）。
+.TP 
+\fB\-\-debug\-lua\fP
+開啟一些 Lua 偵錯機制
+.TP 
+\fB\-e[\fP\fIfile\fP\fB],\ \-\-editor[\fP\fI=file\fP\fB]\fP
+啟動遊戲內建的地圖編輯器。如果指定 \fIfile\fP，則等同 \fB\-l\fP \fB\-\-load\fP。
+.TP 
+\fB\-\-fps\fP
+在螢幕一角的顯示游戲幀幅數。
+.TP 
+\fB\-f, \-\-fullscreen\fP
+使用全螢幕模式。
+.TP 
+\fB\-\-gunzip\fP\fI\ infile.gz\fP
+解壓縮gzip格式的檔案，並儲存為去除 .gz 後的相同文件。文件\fIinfile.gz\fP將被刪除。
+.TP 
+\fB\-\-gzip\fP\fI\ infile\fP
+用gzip格式壓縮檔案，文件名為\fIinfile\fP.gz，並刪除\fIinfile\fP。
+.TP 
+\fB\-h, \-\-help\fP
+顯示指令可用選項，然後退出。
+.TP 
+\fB\-l,\ \-\-load\fP\fI\ file\fP
+從預設遊戲存檔目錄讀取存檔\fIfile\fP。如果與 \fB\-e\fP 或 \fB\-\-editor\fP
+選項同時使用，啟動地圖編輯器並打開\fIfile\fP所對應的地圖。如果是一個目錄，則編輯器啟動後自動打開讀取地圖對話框並定位到該目錄。
+.TP 
+\fB\-L,\ \-\-language\fP\fI\ lang\fP
+這次使用語言 \fIlang\fP (符號) 。  範例： \fB\-\-language ang_GB@latin\fP
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+設定日誌記錄的類別。\fBall\fP可以用來支援任何日誌域的類別。可選的類別有：\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP。預設的類別是\fBwarning\fP，對\fBdeprecation\fP域預設類別是\fBnone\fP，除非和\fB\-d\fP選項一併使用。
+.TP 
+\fB\-\-log\-precise\fP
+在日誌檔案中顯示更詳細的時間記錄。
+.TP 
+\fB\-\-log\-strict\fP
+設定日誌記錄器的嚴格等級。任何訊息傳送至此等級網域記錄或更高等級不論勝利與否單位測試都會失敗。只有在和 \fB\-u\fP 使用時才會有效。
+.TP 
+\fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
+列表預設日誌網域（只列出 \fIfilter\fP 的日誌網域）及退出
+.TP 
+\fB\-\-max\-fps\fP\fI\ fps\fP
+遊戲每秒能顯示的幀數，數值為 \fB1\fP 至 \fB1000\fP 之間，預設為螢幕刷新率。
+.TP 
+\fB\-m, \-\-multiplayer\fP
+執行一個多人對戰游戲。有更多選項可以與 \fB\-\-multiplayer\fP 一起使用，範例如下。
+.TP 
+\fB\-\-mp\-test\fP
+載入測試用的多人對戰章節。
+.TP 
+\fB\-\-new\-widgets\fP
+新的 WIP 物件工具，這個選項開啟此工具。此功能為實驗性，大部分的 Bug 都是已知的所以請勿回報任何
+Bug。部分確認為穩定的功能即使不開啟此功能也會啟用。
+.TP 
+\fB\-\-nodelay\fP
+執行遊戲並進行無延遲圖形測試。啟用 \fB\-\-nogui\fP 選項時會自動執行本選項。
+.TP 
+\fB\-\-noaddons\fP
+停用讀取使用者模組。
+.TP 
+\fB\-\-nocache\fP
+停用建立遊戲資料庫的暫存。
+.TP 
+\fB\-\-nogui\fP
+不開啟遊戲介面的情況下執行遊戲。只有與 \fB\-\-multiplayer\fP 或 \fB\-\-screenshot\fP 或 \fB\-\-plugin\fP 合併使用。
+.TP 
+\fB\-\-nomusic\fP
+以無音樂和音效的方式啟動游戲。
+.TP 
+\fB\-\-noreplaycheck\fP
+不嘗試執行單位測試回播的檢查。只有在和 \fB\-u\fP 使用時才會有效。
+.TP 
+\fB\-\-nosound\fP
+以無音樂和音效的方式啟動游戲。
+.TP 
+\fB\-\-password\fP\fI\ password\fP
+當連線伺服器時使用 \fIpassword\fP，忽略其他偏好設定。不安全。
+.TP 
+\fB\-\-plugin\fP\fI\ script\fP
+（實驗性）讀取一個定義韋諾插件的 \fIscript\fP。與 \fB\-\-script\fP 相似，但 Lua
+文件應該傳回一個函數，該函數將運行且週期性地喚醒並更新。
+.TP 
+\fB\-p,\ \-\-preprocess\fP\fI\ source\-file/folder\fP\fB\ \fP\fItarget\-directory\fP
+預先處理指定的檔案/資料夾。每個檔案未處理及已處理的 .cfg
+檔將會寫入於指定的目標目錄中。如果指定的是資料夾，將會按照處理規則預先處理。"data/core/macros"
+目錄裡的巨集指令在指定資源之前就會預先處理。例如：\fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP
+預先處理器更詳細的資訊請參閱
+https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor。
+.TP 
+\fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
+\fB\-\-preprocess\fP 指令中用逗號來定義列表。如果在列表中出現 \fBSKIP_CORE\fP 則 "data/core" 目錄將不會被預先處理。
+.TP 
+\fB\-\-preprocess\-input\-macros\fP\fI\ source\-file\fP
+只給 \fB\-\-preprocess\fP 指令使用。在預先處理之前找到一個或多個包含 \fB[preproc_define]\fP 的檔案。
+.TP 
+\fB\-\-preprocess\-output\-macros[\fP\fI=target\-file\fP\fB]\fP
+只給 \fB\-\-preprocess\fP 指令使用。輸出所有預先處理過的巨集指令至目標檔案。如果沒有指定檔案將預先處理指令輸出成
+\&'_MACROS_.cfg' 到目標目錄。輸出的檔案可以傳至 \fB\-\-preprocess\-input\-macros\fP。必須在
+\fB\-\-preprocess\fP 指令之前使用。
+.TP 
+\fB\-\-proxy\fP
+開啟代理伺服器來進行網路連線。
+.TP 
+\fB\-\-proxy\-address\fP\fI\ address\fP
+指定代理伺服器的 \fIaddress\fP。
+.TP 
+\fB\-\-proxy\-port\fP\fI\ port\fP
+指定代理伺服器的 \fIport\fP。
+.TP 
+\fB\-\-proxy\-user\fP\fI\ username\fP
+指定用於登入代理伺服器的 \fIusername\fP。
+.TP 
+\fB\-\-proxy\-password\fP\fI\ password\fP
+指定用於登入代理伺服器的 \fIpassword\fP。
+.TP 
+\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
+設定螢幕解析度。例如：\fB\-r\fP \fB800x600\fP。
+.TP 
+\fB\-\-render\-image\fP\fI\ image\fP\fB\ \fP\fIoutput\fP
+取一個包含圖形路徑函數的韋諾 '圖形路徑字串'值，並輸出一個 .png 檔。圖形路徑函數的文件可參閱
+https://wiki.wesnoth.org/ImagePathFunctionWML。
+.TP 
+\fB\-R,\ \-\-report\fP
+初始化遊戲目錄，建構並輸出回報臭蟲的訊息，退出。
+.TP 
+\fB\-\-rng\-seed\fP\fI\ number\fP
+包含數字 \fInumber\fP 的隨機種子生成器。例如：\fB\-\-rng\-seed\fP \fB0\fP。
+.TP 
+\fB\-\-screenshot\fP\fI\ map\fP\fB\ \fP\fIoutput\fP
+不初始化螢幕的情況下將 \fImap\fP 螢幕截圖儲存至 \fIoutput\fP。
+.TP 
+\fB\-\-script\fP\fI\ file\fP
+（實驗性）指定一個包含控制客戶端 Lua 腳本的 \fIfile\fP。
+.TP 
+\fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
+如果指定了主機的話，連接到指定的主機。否則，連接到偏好設定中的第一個伺服器。例如：\fB\-\-server\fP \fBserver.wesnoth.org\fP。
+.TP 
+\fB\-\-showgui\fP
+以圖形界面的方式執行遊戲，覆蓋任何 \fB\-\-nogui\fP。
+.TP 
+\fB\-\-strict\-validation\fP
+驗證出的錯誤視為致命錯誤。
+.TP 
+\fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
+在小型測試章節中執行遊戲。該章節應使用 \fB[test]\fP WML 標籤。預設為 \fBtest\fP。可以使用 \fBmicro_ai_test\fP 來展示
+\fB[micro_ai]\fP 的特性。包含 \fB\-\-nogui\fP。
+.TP 
+\fB\-\-translations\-over\fP\fI\ percent\fP
+設定翻譯的語言是否顯示於遊戲列表的值為 \fIpercent\fP。該值為0至100。
+.TP 
+\fB\-u,\ \-\-unit\fP\fI\ scenario\-id\fP
+執行指定章節來進行單位測試。包含 \fB\-\-nogui\fP。
+.TP 
+\fB\-\-unsafe\-scripts\fP
+讓 \fBpackage\fP 在 Lua 腳本中可以使用，Lua 腳本將取得載入權限。請不要對不信任的腳本使用！此動作將賦予 Lua
+與韋諾可執行文件相同權限。
+.TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+在 $HOME 底下或「我的文件\我的遊戲」(Windows 系統)底下設定使用者配置目錄 \fIname\fP 。您也可以設定一個在 $HOME
+或「我的文件\我的遊戲」之外的絕對路徑。在 Windows 也可以使用 ".\e" 或 "..\e" 來指定相對於遊戲資料夾的相對路徑。在 X11
+預設為 $XDG_CONFIG_HOME 或 $HOME/.config/wesnoth，其他作業系統則預設在使用者資料中。
+.TP 
+\fB\-\-userconfig\-path\fP
+顯示玩家設定資料夾的路徑並退出。
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ name\fP
+在 $HOME 底下或「我的文件\我的遊戲」(Windows 系統)底下設定使用者資料目錄 \fIname\fP 。您也可以設定一個在 $HOME
+或「我的文件\我的遊戲」之外的絕對路徑。在 Windows 也可以使用 ".\e" 或 "..\e" 來指定相對於遊戲資料夾的相對路徑。
+.TP 
+\fB\-\-userdata\-path\fP
+輸出使用者資料目錄的路徑並退出。
+.TP 
+\fB\-\-username\fP\fI\ username\fP
+當連結伺服器時使用 \fIusername\fP，忽略其他偏好設定。
+.TP 
+\fB\-\-validcache\fP
+假定快取是有效的。（危險）
+.TP 
+\fB\-v, \-\-version\fP
+顯示版本並退出。
+.TP 
+\fB\-w, \-\-windowed\fP
+使用視窗模式執行遊戲。
+.TP 
+\fB\-\-with\-replay\fP
+使用 \fB\-\-load\fP 播放遊戲錄影。
+.
+.SH 多人遊戲選項
+.
+多人遊戲裡面選擇一個陣營，可以使用標記 \fInumber\fP。\fInumber\fP
+要用代表某個陣營的數字替換。一般是1或者2。不過不同的章節可選的陣營數會有不同。取決於您的章節。
+.TP 
+\fB\-\-ai\-config\fP\fI\ number\fP\fB:\fP\fIvalue\fP
+為該陣營的 AI 控制者選擇一個配置檔案來讀取。
+.TP 
+\fB\-\-algorithm\fP\fI\ number\fP\fB:\fP\fIvalue\fP
+為該陣營的 AI 控制者選擇一個非標準的演算法。該演算法以 \fB[ai]\fP 標籤定義，可以是核心遊戲裡 "data/ai/ais" 或
+"data/ai/dev"，或是模組裡的演算法。可選擇的值包含 \fBidle_ai\fP 及 \fBexperimental_ai\fP。
+.TP 
+\fB\-\-controller\fP\fI\ number\fP\fB:\fP\fIvalue\fP
+selects the controller for this side. Available values: \fBhuman\fP, \fBai\fP and
+\fBnull\fP.
+.TP 
+\fB\-\-era\fP\fI\ value\fP
+使用這個選項選擇一個模式來代替 \fBDefault\fP 模式。所選模式由 ID 決定。模式在 \fBdata/multiplayer/eras.cfg\fP
+檔案中描述。
+.TP 
+\fB\-\-exit\-at\-end\fP
+當章節結束時直接退出而不顯示需要玩家點選'結束章節'的勝利/失敗對話框。這個選項也可以用在腳本化的性能基準測試。
+.TP 
+\fB\-\-ignore\-map\-settings\fP
+不使用地圖設定，而使用預設值。
+.TP 
+\fB\-\-label\fP\fI\ label\fP
+設定 AI 的 \fIlabel\fP。
+.TP 
+\fB\-\-multiplayer\-repeat\fP\fI\ value\fP
+重複執行多人遊戲 \fIvalue\fP 次。建議與 \fB\-\-nogui\fP 使用腳本化性能測試。
+.TP 
+\fB\-\-parm\fP\fI\ number\fP\fB:\fP\fIname\fP\fB:\fP\fIvalue\fP
+為這個陣營設置附加選項。這個參數依 \fB\-\-controller\fP 和 \fB\-\-algorithm\fP 的選項而定。這個選項只對設計 AI
+的人比較有用。(目前還沒有相應的文檔)
+.TP 
+\fB\-\-scenario\fP\fI\ value\fP
+透過 ID 選擇多人遊戲地圖。預設地圖是 \fBmultiplayer_The_Freelands\fP。
+.TP 
+\fB\-\-side\fP\fI\ number\fP\fB:\fP\fIvalue\fP
+為當前陣營選擇模式中的一個類別。所選類別由 ID 決定。類別在文件 data/multiplayer.cfg 文件中描述。
+.TP 
+\fB\-\-turns\fP\fI\ value\fP
+設定所選章節的回合數限制。預設為沒有限制。
+.
+.SH 退出狀態碼
+.
+正常退出時的狀態碼為0。狀態碼1代表發生了（SDL、視訊、字型等）初始化錯誤。狀態碼2代表指令行選項中有錯誤。
+.br
+當執行單位測試（使用 \fB\ \-u\fP），狀態碼會不同。狀態碼0表示通過測試，狀態碼1表示測試失敗。狀態碼3表示通過測試，但無法建立回放檔案。狀態碼4表示測試通過，但回放檔案錯誤。後兩個狀態碼只有在
+\fB\-\-noreplaycheck\fP 不通過的情況下返回。狀態碼2是測試時間逾時，當與 \fB\-\-timeout\fP 使用時才會出現。
+.
+.SH 作者
+.
+由David White <davidnwhite@verizon.net>編寫。
+.br
+經Nils Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>
+and Soliton <soliton.de@gmail.com>更動。
+.br
+這個說明頁最早由 Cyril Bouthors 撰寫<cyril@bouthors.org>。
+.br
+參閱官方網站：http://www.wesnoth.org/
+.
+.SH 版權
+.
+版權 \(co 2003\-2018 David White <davidnwhite@verizon.net>
+.br
+這是一個免費遊戲；使用由FSF發布的GPL v2協議授權。原文如下：This is Free Software; this software is
+licensed under the GPL version 2, as published by the Free Software
+Foundation.  There is NO warranty; not even for MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.There is NO warranty; not even for MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.
+.
+.SH 參見
+.
+\fBwesnothd\fP(6)

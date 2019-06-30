@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-03-11 13:10 UTC\n"
+"POT-Creation-Date: 2019-06-30 12:14 UTC\n"
 "PO-Revision-Date: 2012-02-21 04:59+0200\n"
 "Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
@@ -27,6 +27,16 @@ msgstr "Ev"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:19
+msgid ""
+"A young knight, Deoran, is dispatched to the southern Wesnoth province of "
+"Kerlath to investigate the ravaged towns at the border. Thrust quickly into "
+"a hapless conflict against marauding bandits, Deoran must rally the "
+"remaining men of the derelict South Guard to defend his country.\n"
+"\n"
+msgstr ""
+
+#. [campaign]: id=The_South_Guard
+#: data/campaigns/The_South_Guard/_main.cfg:21
 #, fuzzy
 #| msgid ""
 #| "A young Knight, Deoran, is dispatched to take command of the South "
@@ -34,11 +44,8 @@ msgstr "Ev"
 #| "The ‘Civilian’ difficulty level is aimed at first-time players.\n"
 #| "\n"
 msgid ""
-"A young Knight, Deoran, is dispatched to take command of the South Guard.\n"
-"\n"
-"Note: This campaign is designed as an introduction to Wesnoth. The "
-"‘Civilian’ difficulty level is aimed at first-time players.\n"
-"\n"
+"This campaign is designed as an introduction to Wesnoth. The ‘Civilian’ "
+"difficulty level is aimed at first-time players."
 msgstr ""
 "Nuori ritari, Deoran, lähetetään Etelän vartioston johtoon. Tämän kampanjan "
 "tarkoitus on johdattaa sinut Wesnothin maailmaan. Siviili-vaikeustaso on "
@@ -151,10 +158,10 @@ msgstr "Etelän vartiosto"
 msgid "Urza Mathin"
 msgstr "Urza Mathin"
 
+#. [side]: type=Outlaw, id=Jera Ilras
 #. [side]: type=Bandit, id=Urza Mathin
 #. [side]: type=Outlaw, id=Urza Nalmath
 #. [side]: type=Rogue, id=Urza Fastik
-#. [side]: type=Outlaw, id=Jera Ilras
 #. [side]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:61
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:65
@@ -185,7 +192,7 @@ msgstr "Kukista Urza Mathin"
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:260
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:298
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:361
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:542
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:575
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:408
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:32
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:517
@@ -200,7 +207,7 @@ msgstr "Deoranin kuolema"
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:302
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:365
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:254
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:546
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:579
 msgid "Death of Sir Gerrick"
 msgstr "Sir Gerrickin kuolema"
 
@@ -304,6 +311,7 @@ msgstr ""
 
 #. [unit]: type=Infantry Lieutenant, id=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:258
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:798
 msgid "Sir Gerrick"
 msgstr "Sir Gerrick"
 
@@ -472,7 +480,7 @@ msgstr ""
 #| "them in rivers and swamps and they will fight well! Put them on dry land "
 #| "and they’re in trouble!"
 msgid ""
-"You may now recruit Merman Hunters. Mermen are aquatic creatures and fight "
+"You may now recruit Merman Hunters. Merfolk are aquatic creatures and fight "
 "best in rivers and swamps. They are much less effective on dry land."
 msgstr ""
 "Voit nyt värvätä merenväkeä. Nimensä mukaisesti merenväki asuu meressä. Pidä "
@@ -864,7 +872,7 @@ msgstr "Surmaa Urza Nalmath, ryöväreiden johtaja"
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:268
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:306
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:369
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:550
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:583
 msgid "Death of Minister Hylas"
 msgstr "Ministeri Hylasin kuolema"
 
@@ -1430,13 +1438,13 @@ msgstr "Mithalwe"
 #. [event]
 #. [unit]: type=Elvish Marshal, id=Ithelden
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:384
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1184
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1217
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:433
 msgid "Ithelden"
 msgstr "Ithelden"
 
-#. [event]
 #. [unit]: type=Elvish Avenger, id=Eltenmir
+#. [event]
 #. [side]: type=Elvish Avenger, id=Eltenmir
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:385
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:358
@@ -1692,12 +1700,12 @@ msgid "Mal A’kai"
 msgstr "Mal A'kai"
 
 #. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
+#. [side]: type=Soulless, id=Gruth
+#. [side]: type=Lich, id=Mal M'Brin
 #. [side]
 #. [side]: type=Ancient Lich, id=Mal M'Brin
 #. [side]: type=Soulless, id=Groth
 #. [side]: type=Lich, id=Mal Tera
-#. [side]: type=Soulless, id=Gruth
-#. [side]: type=Lich, id=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:66
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:96
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:141
@@ -1972,8 +1980,8 @@ msgstr "Ainakaan sinusta ei ole enää haittaa meille!"
 msgid "Mebrin! Are you there? We have come to seek your aid!"
 msgstr "Mebrin! Oletko siellä? Me tarvitsemme apuasi!"
 
-#. [message]: speaker=Kramak
 #. [message]: speaker=narrator
+#. [message]: speaker=Kramak
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:635
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:646
@@ -2084,7 +2092,9 @@ msgid "Choice in the Fog"
 msgstr "Valinta sumussa"
 
 #. [side]: type=Outlaw, id=Urza Afalas
+#. [unit]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:55
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:473
 msgid "Urza Afalas"
 msgstr "Urza Afalas"
 
@@ -2240,7 +2250,7 @@ msgstr "Kukista Urza Afalas"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:389
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:554
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:587
 msgid "Death of Urza Afalas"
 msgstr "Urza Afalasin kuolema"
 
@@ -2561,13 +2571,20 @@ msgid ""
 "defeat the undead."
 msgstr ""
 
+#. [message]: speaker=narrator
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:896
+msgid ""
+"Urza Afalas’s troops are exhausted from battle and cannot attack this turn, "
+"but are still able to withdraw and reposition themselves."
+msgstr ""
+
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:922
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:928
 msgid "I pay for my crimes, but without me, you cannot fight the undead..."
 msgstr ""
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:935
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:941
 #, fuzzy
 #| msgid ""
 #| "Fools! That lich will be the death of us all! You have sealed our doom!"
@@ -2577,27 +2594,27 @@ msgstr ""
 "tuhomme!"
 
 #. [unit]: type=Water Serpent, id=Beast of the Lake
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:964
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:970
 msgid "Beast of the Lake"
 msgstr "Järven peto"
 
 #. [message]: speaker=Beast of the Lake
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:974
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:980
 msgid "Graar!"
 msgstr "Graar!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:989
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:995
 msgid "Ouch! Did anyone feel that?"
 msgstr ""
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:993
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:999
 msgid "Aye, I felt it too. A dreadful chill of perverse origin."
 msgstr ""
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:997
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1003
 msgid ""
 "It is the work of the undead. They have begun to cast a spell on us to drain "
 "our energy and trap us in these forests. We must hurry before they complete "
@@ -2606,35 +2623,35 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1009
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1015
 msgid "Foul magic pervades these forests."
 msgstr ""
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1013
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1019
 msgid "The spell grows stronger by the moment."
 msgstr ""
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1025
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1031
 msgid ""
 "The darkness is so heavy... I do not know how much longer I can go on..."
 msgstr ""
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1038
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1044
 msgid "It is... so cold..."
 msgstr ""
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1042
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1048
 msgid ""
 "The undead have ensnared us in their spell... we will not be able to escape "
 "now..."
 msgstr ""
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1065
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1071
 #, fuzzy
 #| msgid ""
 #| "Well! That was easier than I thought it’d be. Looks like the undead "
@@ -2645,14 +2662,14 @@ msgstr ""
 "etteivät epäkuolleet olekaan niin kovia vastustajia!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1070
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1076
 msgid ""
 "Indeed. The lich has fallen. Looks like the corrupted sage was no match for "
 "us!"
 msgstr ""
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1074
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1080
 #, fuzzy
 #| msgid ""
 #| "I’m afraid it is not so. This was not the real Mebrin we destroyed, but a "
@@ -2669,14 +2686,14 @@ msgstr ""
 "minne ei ole menemistä ilman taikuutta."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1079
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1085
 msgid ""
 "What?! You knew this all along and yet you still brought us here? You misled "
 "us!"
 msgstr ""
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1083
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1089
 #, fuzzy
 #| msgid ""
 #| "If I had told you, you and the elves would have killed me! I didn’t have "
@@ -2688,12 +2705,12 @@ msgstr ""
 "Minulla ei ollut vaihtoehtoja!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1087
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1093
 msgid "Perhaps we should correct that error now."
 msgstr "Ehkä meidän pitäisi korjata se virhe nyt."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1091
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1097
 #, fuzzy
 #| msgid ""
 #| "Then you would surely be lost in these woods forever at the mercy of the "
@@ -2709,7 +2726,7 @@ msgstr ""
 "minulle armahduksen."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1096
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1102
 #, fuzzy
 #| msgid ""
 #| "Now that the elves have abandoned us, that would seem to be our only "
@@ -2728,12 +2745,12 @@ msgstr ""
 "koteihimme, ellemme kitke heitä heidän lähteestään."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1100
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1106
 msgid "You would never make it back on your own."
 msgstr ""
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1104
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1110
 msgid ""
 "Bah, it is not like we have a choice. Very well, you will lead us back to "
 "Westin, and we will grant your pardon so long as you do not try any more "
@@ -2741,7 +2758,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1108
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1114
 msgid ""
 "I know that Mebrin intends to lead the undead to Westin and raze the city. "
 "While his power is great and his army vast, we have fought the undead before "
@@ -2749,12 +2766,12 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1113
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1119
 msgid "That’s <i>Sir</i> Deoran to the likes of you!"
 msgstr ""
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1117
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1123
 msgid ""
 "Yes, yes, Sir Deoran! If we fight against the undead on open plains or in "
 "the forests, we will surely be slaughtered. But, if we prepare our defenses "
@@ -2763,7 +2780,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1122
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1128
 msgid ""
 "Then we shall retreat towards Westin and prepare for the oncoming battle. I "
 "pray our only chance at victory was not lost today."
@@ -2773,19 +2790,19 @@ msgstr ""
 "tänään."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1139
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1145
 msgid "Now to defeat those bandits!"
 msgstr ""
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1170
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1176
 #, fuzzy
 #| msgid "We have beaten them both, criminals and undead!"
 msgid "We have beaten them both, outlaws and undead!"
 msgstr "Löimme molemmat, ryövärit ja epäkuolleet!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1175
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1181
 #, fuzzy
 #| msgid ""
 #| "We should make haste to return to Wesnoth before the harvest. Fall "
@@ -2798,7 +2815,7 @@ msgstr ""
 "sadonkorjuuta. Syksyä on kulunut jo jonkin aikaa."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1179
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1185
 #, fuzzy
 #| msgid ""
 #| "Do not be so hasty; great mages are no mere tricksters to be easily "
@@ -2820,12 +2837,12 @@ msgstr ""
 "ja kitkeä hänet sieltä."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1183
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1189
 msgid "Very well, but where is the entrance?"
 msgstr ""
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1187
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1193
 msgid ""
 "There are strong magical wards that have hidden the way and bar our entry, "
 "but I am capable of dispelling them. It will take some time so stand back "
@@ -2834,7 +2851,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1191
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:1197
 msgid ""
 "Indeed. We will leave you to your work and prepare ourselves for the coming "
 "battle."
@@ -2870,8 +2887,8 @@ msgstr "Zerix"
 msgid "Scorpion"
 msgstr "Skorpioni"
 
-#. [side]
 #. [event]
+#. [side]
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:67
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:126
 msgid "Kramak"
@@ -3102,8 +3119,8 @@ msgstr ""
 "Hoh! Minä näke haltiat. Haltiat hyvä ruoka? Minä vie haltiat mukana, sitten "
 "minä syö."
 
-#. [message]: speaker=second_unit
 #. [message]: speaker=Deoran
+#. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:387
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:230
 msgid "Err, Mr. Ogre, we are not very tasty."
@@ -3206,7 +3223,7 @@ msgid "The Long March"
 msgstr "Pitkä marssi"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:467
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:500
 #, fuzzy
 #| msgid ""
 #| "Deoran and Urza Afalas led their men quickly from Mebrin’s fortress..."
@@ -3215,7 +3232,7 @@ msgstr ""
 "Deoran ja Urza Afalas johtivat miehensä nopeasti Mebrinin linnoituksesta..."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:505
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:538
 msgid ""
 "Forest, forest, forest! As far as the eye can see, it is all forest! I am "
 "getting sick of endlessly trudging through these woods. Are you sure you are "
@@ -3223,7 +3240,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:509
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:542
 #, fuzzy
 #| msgid ""
 #| "You have to follow me! I have often traveled these woods avoiding the "
@@ -3237,21 +3254,21 @@ msgstr ""
 "haltioita tovereideni kera ja tiedän salareitin metsän läpi!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:513
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:546
 msgid ""
 "Would that I had listened to Ethiliel... we would be battling the undead by "
 "now, instead of crawling around in these woods like rats!"
 msgstr ""
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:517
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:550
 msgid ""
 "What’s done is done. We must worry about the task at hand. Winter is almost "
 "upon us and it will be much more difficult to forage for food then."
 msgstr ""
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:521
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:554
 msgid ""
 "That is not our only problem. I sense that many undead creatures are "
 "approaching us rapidly. It seems as if they are chasing us, though I know "
@@ -3259,7 +3276,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:525
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:558
 msgid ""
 "It must be because we destroyed that phantom lich. The corrupted sage is "
 "sending them to hunt us in retaliation. Let’s get out of here quickly so we "
@@ -3267,7 +3284,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:532
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:565
 #, fuzzy
 #| msgid ""
 #| "Remember that these woods are crawling with elves, and I don’t think "
@@ -3282,12 +3299,12 @@ msgstr ""
 "mieluissaan. Jos pysyttelet polulla voimme ehkä vältellä useimpia heistä."
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:538
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:571
 msgid "Move Deoran through the woods and over the river"
 msgstr "Saata Deoran läpi metsän ja yli joen"
 
 #. [note]
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:566
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:599
 msgid ""
 "At the start of each turn, Urza Afalas will reveal as much of the secret "
 "path as is within his vision range."
@@ -3296,39 +3313,39 @@ msgstr ""
 "hänen näköetäisyytensä riittää."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:766
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:799
 msgid "Just a little further!"
 msgstr "Hieman pidemmälle vielä!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:784
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:817
 msgid "We’re almost there!"
 msgstr "Olemme melkein perillä!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:802
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:835
 msgid "Come on! Hurry!"
 msgstr "Tulkaa jo! Kiirehtikää!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:820
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:853
 msgid "Keep moving!"
 msgstr "Pysykää liikkeellä!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:839
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:872
 msgid "You can see the banks of the river from here!"
 msgstr ""
 
 #. [message]: race=elf
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:893
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:926
 msgid ""
 "Humans! You are the curs who kidnapped the Sage Mebrin! Tell us where you "
 "have hidden him and perhaps we will grant you a quick death!"
 msgstr ""
 
 #. [message]: id=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:897
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:930
 msgid ""
 "We have already told you of his whereabouts! Your wise sage now practices "
 "necromancy and commands an army of undead. He means to march on our land and "
@@ -3336,7 +3353,7 @@ msgid ""
 msgstr ""
 
 #. [message]: race=elf
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:906
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:939
 msgid ""
 "How dare you speak of Mebrin with such lies?! Though he has knowledge of the "
 "undead, he is no human, so easily corrupted by the temptation of such power. "
@@ -3344,33 +3361,33 @@ msgid ""
 msgstr ""
 
 #. [message]: id=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:910
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:943
 msgid ""
 "We are not lying! If you travel south and enter the undead lair, you see "
 "that we speak the truth!"
 msgstr ""
 
 #. [message]: race=elf
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:919
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:952
 msgid ""
 "Enough! I should have known that the stupidity of humans knows no bounds. We "
 "have nothing more to say here."
 msgstr ""
 
 #. [message]: race=elf
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:953
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:986
 msgid "Humans, bandits and abductors! Prepare to be slain!"
 msgstr ""
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:957
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:990
 #, fuzzy
 #| msgid "We wish only to return to our homes!"
 msgid "We don’t want to fight you! We wish only to return to our homes!"
 msgstr "Haluamme vain palata koteihimme!"
 
 #. [message]: race=elf
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:966
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:999
 msgid ""
 "And so does our Sage Mebrin, yet you have not returned him to us! Even if "
 "you did, we would still dispatch of you for your heinous transgressions, you "
@@ -3378,44 +3395,44 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:970
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1003
 msgid ""
 "There is no reasoning with the elves. We will either have to fight or run."
 msgstr ""
 
 #. [message]: race=elf
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1004
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1037
 msgid "Get them!"
 msgstr "Napatkaa heidät!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1146
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1179
 msgid ""
 "I pay for my crimes, but without me, you will never make it back to "
 "Kerlath..."
 msgstr ""
 
 #. [message]: speaker=Ithelden
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1195
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1228
 msgid ""
 "So, these pitiful humans are still alive? Good. I will have the pleasure of "
 "crushing them myself."
 msgstr ""
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1199
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1232
 msgid "We took too long to escape these forests..."
 msgstr ""
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1219
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1252
 msgid ""
 "At last, we have escaped that awful forest! It seems that you actually kept "
 "your word about something, Afalas."
 msgstr ""
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1223
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1256
 msgid ""
 "Good knight, I am not evil as you think I am. I really do mean to aid in "
 "your battle against the undead. I am sorry for my deception before, but that "
@@ -3423,7 +3440,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1227
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1260
 msgid ""
 "Your past crimes are not easy to overlook, but we will see how you aid us in "
 "the coming battle. As Sir Deoran said, you have kept your word about leading "
@@ -3431,7 +3448,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1231
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1264
 #, fuzzy
 #| msgid "I can only hope for mercy when I return to Westin."
 msgid "Thank you. I will help you as much as I can when we return to Westin."
@@ -5300,81 +5317,6 @@ msgid ""
 "by a Walking Corpse will be plagued with undeath and become one as well."
 msgstr ""
 
-#. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/utils/sg_help_NEW.cfg:29
-msgid ""
-"Thugs are the mainstay of the bandit armies. They do not have a <i>ranged</"
-"i> attack, and are vulnerable to your archers. Deoran’s lance will also "
-"strike fear into their hearts! Like all of the bandit units, they are much "
-"more dangerous at night."
-msgstr ""
-"Korstot ovat ryöväriarmeijoiden tukipilari. Heillä ei ole <i>kaukotaistelu</"
-"i>hyökkäystä ja he ovat haavoittuvia jousiampujiasi vastaan. Myös Deoranin "
-"keihäs saattaa heidät pelon valtaan! Kuten kaikki ryöväriyksiköt, he ovat "
-"paljon vaarallisempia öisin."
-
-#. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/utils/sg_help_NEW.cfg:56
-msgid ""
-"Thieves are more subtle than thugs. They try to surround your units and stab "
-"them in the back. Make sure that thieves never have an opportunity to attack "
-"when they have an ally directly behind the unit they are attacking — they’ll "
-"do double damage! Like thugs, thieves are vulnerable to the ranged attacks "
-"of your archers."
-msgstr ""
-"Varkaat ovat ovelampia kuin korstot. He yrittävät piirittää yksikkösi ja "
-"puukottaa näitä selkään. Älä koskaan anna varkaalle mahdollisuutta hyökätä "
-"yksikkösi kimppuun sellaisesta suunnasta, jossa on varkaan liittolaisyksikkö "
-"suoraan kohteena olevan yksikön takana tai he tekevät kaksinkertaisen "
-"vahingon! Kuten korstoilla, myös varkailla on ongelmia jousiampujiesi "
-"hyökkäyksiä vastaan."
-
-#. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/utils/sg_help_NEW.cfg:83
-msgid ""
-"Footpads are the scouts of the bandit armies. They are quick, and have both "
-"a <i>melee</i> attack and a <i>ranged</i> attack. Neither of their attacks "
-"is very strong, however, and your spearmen will make quick work of them "
-"during the day."
-msgstr ""
-"Pikkurosvot ovat ryöväriarmeijoiden tiedustelijoita. He ovat nopeita, ja "
-"heillä on sekä <i>lähi</i>- että <i>pitkän kantaman</i> hyökkäykset. "
-"Kumpikaan heidän hyökkäyksistään ei ole kuitenkaan erityisen vahva, ja "
-"keihäsmiehesi tekevätkin heistä nopeasti selvää päivänvalossa."
-
-#. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/utils/sg_help_NEW.cfg:110
-msgid ""
-"Skeletons are the bones of fallen warriors raised by some dark magic. They "
-"are almost immune to piercing weapons like arrows and spears. Bladed attacks "
-"like swords will injure them, and Minister Hylas’s <i>arcane</i> attack is "
-"deadly against them. Like the rest of the bandits, they are more dangerous "
-"at night!"
-msgstr ""
-"Luurangot ovat kaatuneiden sotureiden luita, jotka on nostatettu pimeällä "
-"taikuudella. Niihin eivät juurikaan tehoa lävistävät aseet, kuten nuolet tai "
-"keihäät. Viiltävät hyökkäykset, kuten miekat, vahingoittavat niitä, ja "
-"ministeri Hylasin <i>salatiede</i>hyökkäys on niitä vastaan tuhoisa. Kuten "
-"muutkin ryöväreistä, myös luurangot ovat vaarallisimmillaan yöllä!"
-
-#. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/utils/sg_help_NEW.cfg:137
-msgid ""
-"Walking corpses are the bodies of slain warriors, filled with some black "
-"magic. They are slow and weak — any of your units is more than a match for "
-"them. They are only dangerous in packs..."
-msgstr ""
-"Elävät kuolleet ovat surmattujen soturien ruumiita, jotka on täytetty "
-"mustalla magialla. Ne ovat hitaita ja heikkoja — mikä tahansa yksiköistäsi "
-"pystyy voittamaan sellaisen. Ne ovat vaarallisia ainoastaan laumoissa..."
-
-#. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/utils/sg_help_NEW.cfg:165
-msgid ""
-"Losing units is part of the battle. Learn to accept losses, sometimes they "
-"may even help you to protect your more important units."
-msgstr ""
-
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:7
 #, fuzzy
@@ -5778,6 +5720,65 @@ msgstr ""
 "pirstoutuneiden muurien ja vallihautojen uudelleenrakennustyötä. Lopulta, "
 "lumen sulaessa ja teiden tullessa taas käyttökuntoon, sanansaattaja tuli "
 "kuningas Haldricilta."
+
+#~ msgid ""
+#~ "Thugs are the mainstay of the bandit armies. They do not have a "
+#~ "<i>ranged</i> attack, and are vulnerable to your archers. Deoran’s lance "
+#~ "will also strike fear into their hearts! Like all of the bandit units, "
+#~ "they are much more dangerous at night."
+#~ msgstr ""
+#~ "Korstot ovat ryöväriarmeijoiden tukipilari. Heillä ei ole "
+#~ "<i>kaukotaistelu</i>hyökkäystä ja he ovat haavoittuvia jousiampujiasi "
+#~ "vastaan. Myös Deoranin keihäs saattaa heidät pelon valtaan! Kuten kaikki "
+#~ "ryöväriyksiköt, he ovat paljon vaarallisempia öisin."
+
+#~ msgid ""
+#~ "Thieves are more subtle than thugs. They try to surround your units and "
+#~ "stab them in the back. Make sure that thieves never have an opportunity "
+#~ "to attack when they have an ally directly behind the unit they are "
+#~ "attacking — they’ll do double damage! Like thugs, thieves are vulnerable "
+#~ "to the ranged attacks of your archers."
+#~ msgstr ""
+#~ "Varkaat ovat ovelampia kuin korstot. He yrittävät piirittää yksikkösi ja "
+#~ "puukottaa näitä selkään. Älä koskaan anna varkaalle mahdollisuutta "
+#~ "hyökätä yksikkösi kimppuun sellaisesta suunnasta, jossa on varkaan "
+#~ "liittolaisyksikkö suoraan kohteena olevan yksikön takana tai he tekevät "
+#~ "kaksinkertaisen vahingon! Kuten korstoilla, myös varkailla on ongelmia "
+#~ "jousiampujiesi hyökkäyksiä vastaan."
+
+#~ msgid ""
+#~ "Footpads are the scouts of the bandit armies. They are quick, and have "
+#~ "both a <i>melee</i> attack and a <i>ranged</i> attack. Neither of their "
+#~ "attacks is very strong, however, and your spearmen will make quick work "
+#~ "of them during the day."
+#~ msgstr ""
+#~ "Pikkurosvot ovat ryöväriarmeijoiden tiedustelijoita. He ovat nopeita, ja "
+#~ "heillä on sekä <i>lähi</i>- että <i>pitkän kantaman</i> hyökkäykset. "
+#~ "Kumpikaan heidän hyökkäyksistään ei ole kuitenkaan erityisen vahva, ja "
+#~ "keihäsmiehesi tekevätkin heistä nopeasti selvää päivänvalossa."
+
+#~ msgid ""
+#~ "Skeletons are the bones of fallen warriors raised by some dark magic. "
+#~ "They are almost immune to piercing weapons like arrows and spears. Bladed "
+#~ "attacks like swords will injure them, and Minister Hylas’s <i>arcane</i> "
+#~ "attack is deadly against them. Like the rest of the bandits, they are "
+#~ "more dangerous at night!"
+#~ msgstr ""
+#~ "Luurangot ovat kaatuneiden sotureiden luita, jotka on nostatettu pimeällä "
+#~ "taikuudella. Niihin eivät juurikaan tehoa lävistävät aseet, kuten nuolet "
+#~ "tai keihäät. Viiltävät hyökkäykset, kuten miekat, vahingoittavat niitä, "
+#~ "ja ministeri Hylasin <i>salatiede</i>hyökkäys on niitä vastaan tuhoisa. "
+#~ "Kuten muutkin ryöväreistä, myös luurangot ovat vaarallisimmillaan yöllä!"
+
+#~ msgid ""
+#~ "Walking corpses are the bodies of slain warriors, filled with some black "
+#~ "magic. They are slow and weak — any of your units is more than a match "
+#~ "for them. They are only dangerous in packs..."
+#~ msgstr ""
+#~ "Elävät kuolleet ovat surmattujen soturien ruumiita, jotka on täytetty "
+#~ "mustalla magialla. Ne ovat hitaita ja heikkoja — mikä tahansa "
+#~ "yksiköistäsi pystyy voittamaan sellaisen. Ne ovat vaarallisia ainoastaan "
+#~ "laumoissa..."
 
 #, fuzzy
 #~| msgid ""

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-03-11 13:10 UTC\n"
+"POT-Creation-Date: 2019-06-30 12:14 UTC\n"
 "PO-Revision-Date: 2009-10-13 02:35-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -83,7 +83,7 @@ msgstr ""
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:26
 #, fuzzy
-msgid "(Hard level, 24 scenarios.)"
+msgid "(Hard level, 20 scenarios.)"
 msgstr "(𐑧𐑒𐑕𐑐𐑼𐑑 𐑤𐑧𐑝𐑩𐑤, 25 𐑕𐑦𐑯𐑺𐑰𐑴𐑟.)"
 
 #. [about]
@@ -538,15 +538,6 @@ msgstr "Stormvale"
 msgid "Tan-Rarbag"
 msgstr "𐑑𐑨𐑯-Rarbag"
 
-#. [side]: type=Orcish Warlord, id=Tan-Vrodis
-#. [side]: type=Orcish Warlord, id=Tan-Bok
-#. [side]: type=Orcish Warlord, id=Tan-Hogar
-#. [side]: type=Draug, id=General Heravan
-#. [side]: type=Orcish Warlord, id=Tan-Halg
-#. [side]: type=Orcish Warlord, id=Tan-Rinak
-#. [side]: type=Orcish Warlord, id=Tan-Erirt
-#. [side]: type=Orcish Warlord, id=Tan-Gagar
-#. [side]: type=Troll Warrior, id=Thruf
 #. [side]: type=Orcish Warlord, id=Tan-Gralg
 #. [side]: type=Orcish Warlord, id=Tan-Rugar
 #. [side]: type=Orcish Warlord, id=Tan-Vragar
@@ -561,6 +552,15 @@ msgstr "𐑑𐑨𐑯-Rarbag"
 #. [side]: type=Orcish Warrior, id=Tan-Erang
 #. [side]: type=Orcish Warlord, id=Tan-Schmog
 #. [side]: type=Orcish Warlord, id=Tan-NauVong
+#. [side]: type=Orcish Warlord, id=Tan-Vrodis
+#. [side]: type=Orcish Warlord, id=Tan-Bok
+#. [side]: type=Orcish Warlord, id=Tan-Hogar
+#. [side]: type=Orcish Warlord, id=Tan-Erirt
+#. [side]: type=Orcish Warlord, id=Tan-Gagar
+#. [side]: type=Troll Warrior, id=Thruf
+#. [side]: type=Draug, id=General Heravan
+#. [side]: type=Orcish Warlord, id=Tan-Halg
+#. [side]: type=Orcish Warlord, id=Tan-Rinak
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:76
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:99
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:41
@@ -656,40 +656,42 @@ msgstr ""
 "𐑕𐑒𐑩𐑥 𐑯 𐑓𐑤𐑰 𐑑 𐑞 𐑕𐑬𐑔. 𐑬𐑼 𐑣𐑴𐑥 𐑦𐑟 𐑤𐑪𐑕𐑑... 𐑢𐑰 𐑥𐑳𐑕𐑑 𐑥𐑱𐑒 𐑣𐑱𐑕𐑑."
 
 #. [message]: speaker=Tan-Rarbag
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:208
-#, fuzzy
-msgid "So, <i>human</i>, care to make your final stand?"
-msgstr "𐑕𐑴 𐑣𐑿𐑥𐑩𐑯, 𐑒𐑺 𐑑 𐑥𐑱𐑒 𐑿𐑼 𐑓𐑲𐑯𐑩𐑤 𐑕𐑑𐑨𐑯𐑛?"
+#. meat is a derogatory term for humans used by orcs and also is a subtle reference to orcs eating humans opportunistically
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:209
+msgid ""
+"Run, meat, run! Sooner or later, you will tire and our wolves will hunt you "
+"down!"
+msgstr ""
 
 #. [message]: speaker=Tan-Erang
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:213
-msgid "Die! Die! Die!"
-msgstr "𐑛𐑲! 𐑛𐑲! 𐑛𐑲!"
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:214
+msgid "The meat will die! Die! Die! Die!"
+msgstr ""
 
 #. [message]: speaker=Wesfolk Leader
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:218
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:219
 msgid "This is going to get ugly..."
 msgstr "𐑞𐑦𐑕 𐑦𐑟 𐑜𐑴𐑦𐑙 𐑑 𐑜𐑧𐑑 𐑳𐑜𐑤𐑦..."
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:226
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:227
 msgid "Hurry! Only death awaits in this valley!"
 msgstr "𐑣𐑳𐑮𐑦! 𐑴𐑯𐑤𐑦 𐑛𐑧𐑔 𐑩𐑢𐑱𐑑𐑕 𐑦𐑯 𐑞𐑦𐑕 𐑝𐑨𐑤𐑰!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:270
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:271
 #, fuzzy
 msgid "Umm, I invoke the right of surren..."
 msgstr "𐑩𐑥, 𐑲 𐑦𐑯𐑝𐑴𐑒 𐑞 𐑮𐑲𐑑 𐑝 surren..."
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:275
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:276
 #, fuzzy
 msgid "Nay! Off with your hea—"
 msgstr "𐑯𐑱! 𐑪𐑓 𐑢𐑦𐑞 𐑿𐑼 hea- - -"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:280
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:281
 #, fuzzy
 msgid ""
 "But I can help! Really! You could use me and my men’s skills on the long "
@@ -697,64 +699,64 @@ msgid ""
 msgstr "𐑚𐑳𐑑 𐑲 𐑒𐑨𐑯 𐑣𐑧𐑤𐑐! 𐑮𐑾𐑤𐑦! 𐑿 𐑒𐑫𐑛 𐑿𐑕 𐑥𐑰 𐑯 𐑥𐑲 𐑥𐑧𐑯𐑟 𐑕𐑒𐑦𐑤𐑟 𐑪𐑯 𐑞 𐑤𐑪𐑙 𐑮𐑴𐑛 𐑩𐑣𐑧𐑛!"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:285
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:286
 msgid "Haldric, what say you on this matter?"
 msgstr "·𐑣𐑭𐑤𐑛𐑮𐑦𐑒, 𐑢𐑪𐑑 𐑕𐑱 𐑿 𐑪𐑯 𐑞𐑦𐑕 𐑥𐑨𐑑𐑼?"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:290
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:291
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:371
 msgid "Hmm... after some thought..."
 msgstr "𐑣𐑥... 𐑭𐑓𐑑𐑼 𐑕𐑳𐑥 𐑔𐑷𐑑..."
 
 #. [option]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:294
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:295
 msgid "I think that your skills may be useful. You may join us."
 msgstr "𐑲 𐑔𐑦𐑙𐑒 𐑞𐑨𐑑 𐑿𐑼 𐑕𐑒𐑦𐑤𐑟 𐑥𐑱 𐑚𐑰 𐑿𐑕𐑓𐑩𐑤. 𐑿 𐑥𐑱 𐑡𐑶𐑯 𐑳𐑕."
 
 #. [message]: speaker=Wesfolk Leader
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:298
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:299
 #, fuzzy
 #| msgid "Let there be peace between us, our survival depends on it."
 msgid "Let there be peace between us. Our survival depends on it."
 msgstr "𐑤𐑧𐑑 𐑞𐑺 𐑚𐑰 𐑐𐑰𐑕 𐑚𐑦𐑑𐑢𐑰𐑯 𐑳𐑕, 𐑬𐑼 𐑕𐑻𐑝𐑲𐑝𐑩𐑤 𐑛𐑦𐑐𐑧𐑯𐑛𐑟 𐑪𐑯 𐑦𐑑."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:306
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:307
 msgid "So what shall I call you?"
 msgstr "𐑕𐑴 𐑢𐑪𐑑 𐑖𐑨𐑤 𐑲 𐑒𐑷𐑤 𐑿?"
 
 #. [message]: speaker=Wesfolk Leader
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:310
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:311
 msgid "The Lady Outlaw will do."
 msgstr "𐑞 𐑤𐑱𐑛𐑦 𐑬𐑑𐑤𐑷 𐑢𐑦𐑤 𐑛𐑵."
 
 #. [unit]: id=Lady Outlaw, type=$wesfolk_leader_store.type
 #. [then]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:323
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:476
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:324
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:477
 msgid "Lady Outlaw"
 msgstr "𐑤𐑱𐑛𐑦 𐑬𐑑𐑤𐑷"
 
 #. [option]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:346
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:347
 msgid "Your word can’t be trusted. Prepare to meet your gods!"
 msgstr "𐑿𐑼 𐑢𐑻𐑛 𐑒𐑭𐑯𐑑 𐑚𐑰 𐑑𐑮𐑳𐑕𐑑𐑩𐑛. 𐑐𐑮𐑰𐑐𐑺 𐑑 𐑥𐑰𐑑 𐑿𐑼 𐑜𐑪𐑛𐑟!"
 
 #. [message]: speaker=Wesfolk Leader
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:350
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:351
 #, fuzzy
 msgid "Arrogant fools! (<i>Reaches into pocket</i>) <i>Poof</i>!"
 msgstr "𐑺𐑩𐑜𐑩𐑯𐑑 𐑓𐑵𐑤𐑟! (𐑮𐑰𐑗𐑩𐑟 𐑦𐑯𐑑𐑫 𐑐𐑪𐑒𐑩𐑑) 𐑐𐑵𐑓!"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:367
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:368
 #, fuzzy
 msgid "Argh, she’s gone. Next time, more sword, less chat."
 msgstr "𐑸𐑜, 𐑖𐑰'𐑟 𐑜𐑪𐑯. 𐑯𐑧𐑒𐑕𐑑 𐑑𐑲𐑥, 𐑥𐑹 𐑕𐑹𐑛, 𐑤𐑧𐑕 𐑗𐑨𐑑."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:372
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:373
 msgid ""
 "She’s clever! Maybe I made the wrong choice. Well, at least she left some of "
 "her gold behind..."
@@ -763,7 +765,7 @@ msgstr ""
 "𐑚𐑦𐑣𐑲𐑯𐑛..."
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:391
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:392
 msgid ""
 "Son, you must lead our people through the south pass. I will remain behind "
 "to hold off these vile monsters for as long as I can."
@@ -772,32 +774,32 @@ msgstr ""
 "𐑥𐑪𐑯𐑕𐑑𐑼𐑟 𐑓𐑹 𐑨𐑟 𐑤𐑪𐑙 𐑨𐑟 𐑲 𐑒𐑨𐑯."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:395
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:396
 msgid "But, Father!"
 msgstr "𐑚𐑳𐑑, 𐑓𐑭𐑞𐑼!"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:399
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:400
 msgid "It’s the only way. Go now, and don’t look back! Luck be with you!"
 msgstr "𐑦𐑑'𐑕 𐑞 𐑴𐑯𐑤𐑦 𐑢𐑱. 𐑜𐑴 𐑯𐑬, 𐑯 𐑛𐑴𐑯𐑑 𐑤𐑫𐑒 𐑚𐑨𐑒! 𐑤𐑳𐑒 𐑚𐑰 𐑢𐑦𐑞 𐑿!"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:421
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:422
 msgid "We’re surrounded! The orcs have taken the southern pass! All is lost!"
 msgstr "𐑢𐑰'𐑼 𐑕𐑼𐑬𐑯𐑛𐑩𐑛! 𐑞 𐑹𐑒𐑕 𐑣𐑨𐑝 𐑑𐑱𐑒𐑩𐑯 𐑞 𐑕𐑳𐑞𐑼𐑯 𐑐𐑭𐑕! 𐑷𐑤 𐑦𐑟 𐑤𐑪𐑕𐑑!"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:433
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:434
 msgid "We’re surrounded! I can see their reinforcements! All is lost!"
 msgstr "𐑢𐑰'𐑼 𐑕𐑼𐑬𐑯𐑛𐑩𐑛! 𐑲 𐑒𐑨𐑯 𐑕𐑰 𐑞𐑺 𐑮𐑦𐑦𐑯𐑓𐑹𐑕𐑥𐑩𐑯𐑑𐑕! 𐑷𐑤 𐑦𐑟 𐑤𐑪𐑕𐑑!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:446
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:447
 msgid "Our home! Where shall we go!"
 msgstr "𐑬𐑼 𐑣𐑴𐑥! 𐑢𐑺 𐑖𐑨𐑤 𐑢𐑰 𐑜𐑴!"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:450
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:451
 msgid "There can be no looking back! We must go south."
 msgstr "𐑞𐑺 𐑒𐑨𐑯 𐑚𐑰 𐑯𐑴 𐑤𐑫𐑒𐑦𐑙 𐑚𐑨𐑒! 𐑢𐑰 𐑥𐑳𐑕𐑑 𐑜𐑴 𐑕𐑬𐑔."
 
@@ -807,8 +809,8 @@ msgid "A Harrowing Escape"
 msgstr "𐑩 ·𐑣𐑨𐑮𐑴𐑦𐑙 ·𐑦𐑕𐑒𐑱𐑐"
 
 #. [side]: type=Noble Commander, id=Prince Haldric
-#. [side]: id=Prince Haldric, type=Noble Commander
 #. [side]: type=Ancient Wose, id=Elilmaldur-Rithrandil
+#. [side]: id=Prince Haldric, type=Noble Commander
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:28
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:41
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:41
@@ -895,10 +897,15 @@ msgstr "𐑛𐑦𐑓𐑰𐑑 𐑷𐑤 𐑧𐑯𐑩𐑥𐑦 𐑤𐑰𐑛𐑼𐑟"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:130
+#, fuzzy
+#| msgid ""
+#| "Argh, the orcish vanguard must have flanked us even further to the east! "
+#| "They’re already holding the mouth of the pass. We have to get out of the "
+#| "mountain pass before winter comes or we’re all dead meat!"
 msgid ""
 "Argh, the orcish vanguard must have flanked us even further to the east! "
 "They’re already holding the mouth of the pass. We have to get out of the "
-"mountain pass before winter comes or we’re all dead meat!"
+"mountain pass before winter comes or we’re all doomed!"
 msgstr ""
 "𐑸𐑜, 𐑞 𐑹𐑒𐑦𐑖 𐑝𐑨𐑯𐑜𐑸𐑛 𐑥𐑳𐑕𐑑 𐑣𐑨𐑝 𐑓𐑤𐑨𐑙𐑒𐑑 𐑳𐑕 𐑰𐑝𐑩𐑯 𐑓𐑻𐑞𐑼 𐑑 𐑞 𐑰𐑕𐑑! 𐑞𐑱'𐑼 𐑷𐑤𐑮𐑧𐑛𐑦 𐑣𐑴𐑤𐑛𐑦𐑙 𐑞 "
 "𐑥𐑬𐑔 𐑝 𐑞 𐑐𐑭𐑕. 𐑢𐑰 𐑣𐑨𐑝 𐑑 𐑜𐑧𐑑 𐑬𐑑 𐑝 𐑞 𐑥𐑬𐑯𐑑𐑩𐑯 𐑐𐑭𐑕 𐑚𐑦𐑓𐑹 𐑢𐑦𐑯𐑑𐑼 𐑒𐑳𐑥𐑟 𐑹 𐑢𐑰'𐑼 𐑷𐑤 𐑛𐑧𐑛 "
@@ -917,28 +924,28 @@ msgid ""
 msgstr "𐑲'𐑛𐑰 𐑛𐑮𐑪𐑐 𐑞 𐑕𐑧𐑯𐑑𐑦𐑥𐑩𐑯𐑑 𐑯 𐑐𐑦𐑒 𐑳𐑐 𐑿𐑼 𐑕𐑹𐑛. 𐑞𐑺'𐑟 𐑐𐑤𐑧𐑯𐑑𐑰 𐑝 𐑓𐑲𐑑𐑦𐑙 𐑩𐑣𐑧𐑛 𐑝 𐑳𐑕!"
 
 #. [message]: speaker=Tan-Schmog
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:147
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:146
 #, fuzzy
-msgid "You won’t get much further, boy. Grrrr!"
+msgid "You won’t get any further than this, meat!"
 msgstr "𐑿 𐑢𐑴𐑯𐑑 𐑜𐑧𐑑 𐑥𐑳𐑗 𐑓𐑻𐑞𐑼 𐑚𐑶. Grrrr!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:161
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:160
 msgid "Who goes there?"
 msgstr "𐑣𐑵 𐑜𐑴𐑟 𐑞𐑺?"
 
 #. [unit]: id=Burin the Lost, type=Dwarvish Steelclad
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:166
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:165
 msgid "Burin the Lost"
 msgstr "·𐑚𐑻𐑦𐑯 𐑞 𐑤𐑪𐑕𐑑"
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:182
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:181
 msgid "Burin, Burin the Lost. Who be ye?"
 msgstr "·𐑚𐑻𐑦𐑯, ·𐑚𐑻𐑦𐑯 𐑞 𐑤𐑪𐑕𐑑. 𐑣𐑵 𐑚𐑰 𐑘𐑰?"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:188
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:187
 msgid ""
 "I’m Prince Haldric, we have little time to talk. We must make haste through "
 "the pass... What are you?"
@@ -947,7 +954,7 @@ msgstr ""
 "𐑢𐑪𐑑 𐑸 𐑿?"
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:193
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:192
 msgid ""
 "I’m a dwarf, you fool of a boy! I got lost while exploring deep underground, "
 "almost a century ago. I’ve never found my way home. But it seems nice enough "
@@ -957,12 +964,12 @@ msgstr ""
 "𐑕𐑧𐑯𐑑𐑘𐑼𐑦 𐑩𐑜𐑴. 𐑲'𐑝 𐑯𐑧𐑝𐑼 𐑓𐑬𐑯𐑛 𐑥𐑲 𐑢𐑱 𐑣𐑴𐑥. 𐑚𐑳𐑑 𐑦𐑑 𐑕𐑰𐑥𐑟 𐑯𐑲𐑕 𐑦𐑯𐑳𐑓 𐑣𐑽."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:199
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:198
 msgid "Nice? The orcs have come, and we must flee!"
 msgstr "𐑯𐑲𐑕? 𐑞 𐑹𐑒𐑕 𐑣𐑨𐑝 𐑒𐑳𐑥, 𐑯 𐑢𐑰 𐑥𐑳𐑕𐑑 𐑓𐑤𐑰!"
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:204
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:203
 msgid ""
 "Orcs! It’s been a long time since I felt the satisfying crunch of one of "
 "those under my axe. Time for a fight!"
@@ -971,18 +978,18 @@ msgstr ""
 "𐑨𐑒𐑕. 𐑑𐑲𐑥 𐑓𐑹 𐑩 𐑓𐑲𐑑!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:209
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:208
 msgid "You’ve fought orcs before?"
 msgstr "𐑿'𐑝 𐑓𐑷𐑑 𐑹𐑒𐑕 𐑚𐑦𐑓𐑹?"
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:214
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:213
 msgid ""
 "Fool boy! Where did you grow up? Enough of this, let’s go get some orcs!"
 msgstr "𐑓𐑵𐑤 𐑚𐑶! 𐑢𐑺 𐑛𐑦𐑛 𐑿 𐑜𐑮𐑴 𐑳𐑐? 𐑦𐑯𐑳𐑓 𐑝 𐑞𐑦𐑕, 𐑤𐑧𐑑'𐑕 𐑜𐑴 𐑜𐑧𐑑 𐑕𐑳𐑥 𐑹𐑒𐑕!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:222
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:221
 #, fuzzy
 msgid ""
 "We’re trapped in the pass! I can see their reinforcements! All is lost! Is "
@@ -992,7 +999,7 @@ msgstr ""
 "𐑕𐑯𐑴?... 𐑢𐑰'𐑼 𐑛𐑵𐑥𐑛!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:243
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:242
 msgid ""
 "SE — The River Road.\n"
 "SW — The Midlands."
@@ -1001,13 +1008,13 @@ msgstr ""
 "SW - 𐑞 𐑥𐑦𐑛𐑤𐑨𐑯𐑛𐑟."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:266
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:265
 #, fuzzy
 msgid "GO HOME! AIN’T NUTTIN TO SEE HEER!"
 msgstr "𐑜𐑴 𐑣𐑴𐑥! 𐑱𐑯𐑑 NUTTIN 𐑑 𐑕𐑰 𐑣𐑰𐑻!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:276
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:275
 #, fuzzy
 msgid ""
 "Now, should I go southeast on the river road, or southwest through the "
@@ -1020,18 +1027,18 @@ msgstr ""
 "𐑚𐑳𐑑 𐑣𐑵 𐑯𐑴𐑟 𐑢𐑪𐑑'𐑕 𐑜𐑴𐑦𐑙 𐑪𐑯 𐑞𐑺 𐑯𐑬."
 
 #. [option]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:279
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:278
 #, fuzzy
 msgid "I think I’ll take the river road..."
 msgstr "𐑲 𐑔𐑦𐑙𐑒 𐑲'𐑤 𐑑𐑱𐑒 𐑞 𐑮𐑦𐑝𐑼 𐑮𐑴𐑛..."
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:283
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:282
 msgid "Good. The Midlands are probably an orc-infested ruin by now."
 msgstr "𐑜𐑫𐑛. 𐑞 𐑥𐑦𐑛𐑤𐑨𐑯𐑛𐑟 𐑸 𐑐𐑮𐑪𐑚𐑩𐑚𐑤𐑦 𐑩𐑯 𐑹𐑒-𐑦𐑯𐑓𐑧𐑕𐑑𐑩𐑛 𐑮𐑵𐑦𐑯 𐑚𐑲 𐑯𐑬."
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:288
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:287
 #, fuzzy
 msgid ""
 "<i>Swamp</i>?! I’m under five feet tall, and I don’t float! ... Argh, have "
@@ -1039,17 +1046,17 @@ msgid ""
 msgstr "𐑕𐑢𐑭𐑥𐑐! 𐑲'𐑧𐑥 𐑳𐑯𐑛𐑼 5 𐑓𐑰𐑑 𐑑𐑷𐑤, 𐑯 𐑲 𐑛𐑴𐑯𐑑 𐑓𐑤𐑴𐑑! 𐑸𐑜, 𐑣𐑨𐑝 𐑦𐑑 𐑿𐑼 𐑢𐑱."
 
 #. [option]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:301
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:300
 msgid "We’ll go through the Midlands..."
 msgstr "𐑢𐑰'𐑤 𐑜𐑴 𐑔𐑮𐑵 𐑞 𐑥𐑦𐑛𐑤𐑨𐑯𐑛𐑟..."
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:305
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:304
 msgid "I suspect that the Midlands might be in ruins by now."
 msgstr "𐑲 𐑕𐑳𐑕𐑐𐑧𐑒𐑑 𐑞𐑨𐑑 𐑞 𐑥𐑦𐑛𐑤𐑨𐑯𐑛𐑟 𐑥𐑲𐑑 𐑚𐑰 𐑦𐑯 𐑮𐑵𐑦𐑯𐑟 𐑚𐑲 𐑯𐑬."
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:310
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:309
 #, fuzzy
 msgid ""
 "It’s better than the swamp. I’m under five feet tall, and I don’t float! "
@@ -1059,29 +1066,29 @@ msgstr ""
 "𐑦𐑯𐑡𐑶 𐑥𐑰𐑑𐑦𐑙 𐑥𐑹 𐑹𐑒𐑕."
 
 #. [message]: speaker=Tan-NauVong
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:346
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:345
 msgid "Come and get it!"
 msgstr "𐑒𐑳𐑥 𐑯 𐑜𐑧𐑑 𐑦𐑑!"
 
 #. [message]: type=Orcish Slayer
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:356
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:404
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:355
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:403
 msgid "Die, human."
 msgstr "𐑛𐑲, 𐑣𐑿𐑥𐑩𐑯."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:361
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:409
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:360
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:408
 msgid "Uh-oh!"
 msgstr "𐑩-𐑴!"
 
 #. [message]: speaker=Tan-Schmog
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:394
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:393
 msgid "I’ll not go so easily!"
 msgstr "𐑲'𐑤 𐑯𐑪𐑑 𐑜𐑴 𐑕𐑴 𐑰𐑟𐑦𐑤𐑦!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:424
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:423
 #, fuzzy
 msgid ""
 "We’ve escaped the pass. Well, at least I know that the orcs can be beaten. "
@@ -1092,7 +1099,7 @@ msgstr ""
 "𐑞𐑦𐑕 𐑦𐑟 𐑞 𐑤𐑭𐑕𐑑 𐑲'𐑤 𐑕𐑰 𐑝 𐑥𐑲 𐑣𐑴𐑥... 𐑯 𐑥𐑲 𐑓𐑭𐑞𐑼. (𐑕𐑲)"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:428
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:427
 msgid ""
 "We should make our way to Southbay. It is the largest city on the Isle. We "
 "should be able to make a stand there. Failing that, there’s always "
@@ -1376,16 +1383,16 @@ msgid ""
 "with the orcs!"
 msgstr "𐑴 𐑜𐑮𐑱𐑑, 𐑯𐑬 𐑩 𐑓𐑹𐑦𐑕𐑑... 𐑲 𐑖𐑫𐑛 𐑣𐑨𐑝 𐑕𐑑𐑱𐑛 𐑨𐑑 𐑣𐑴𐑥 𐑯 𐑑𐑫𐑒 𐑥𐑲 𐑗𐑭𐑯𐑕𐑩𐑟 𐑢𐑦𐑞 𐑞 𐑹𐑒𐑕!"
 
-#. [message]: speaker=Sir Ladoc
 #. [message]: speaker=Sir Ruddry
+#. [message]: speaker=Sir Ladoc
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:594
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:416
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:415
 msgid "Sir, if you don’t mind, I’ll go with you."
 msgstr "𐑕𐑻, 𐑦𐑓 𐑿 𐑛𐑴𐑯𐑑 𐑥𐑲𐑯𐑛, 𐑲'𐑤 𐑜𐑴 𐑢𐑦𐑞 𐑿."
 
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:599
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:421
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:420
 msgid "On we go..."
 msgstr "𐑪𐑯 𐑢𐑰 𐑜𐑴..."
 
@@ -1502,28 +1509,28 @@ msgid "Vrogar"
 msgstr "Vrogar"
 
 #. [message]: speaker=Vrogar
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:310
-msgid "How’d they get behind us? I hate to miss such tasty meat."
-msgstr "𐑣𐑬𐑛 𐑞𐑱 𐑜𐑧𐑑 𐑚𐑦𐑣𐑲𐑯𐑛 𐑳𐑕? 𐑲 𐑣𐑱𐑑 𐑑 𐑥𐑦𐑕 𐑕𐑳𐑗 𐑑𐑱𐑕𐑑𐑰 𐑥𐑰𐑑."
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:309
+msgid "They’re attacking the chief! Kill the meat before it gets any farther!"
+msgstr ""
 
 #. [message]: speaker=Tan-Hogar
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:323
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:322
 msgid "Better him than me! Reserves!"
 msgstr "𐑚𐑧𐑑𐑼 𐑣𐑦𐑥 𐑞𐑨𐑯 𐑥𐑰! 𐑮𐑦𐑟𐑻𐑝𐑟!"
 
 #. [message]: speaker=Tan-Bok
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:340
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:339
 msgid "Hogar was a fool! Reserves!"
 msgstr "𐑣𐑴𐑜𐑸 𐑢𐑪𐑟 𐑩 𐑓𐑵𐑤! 𐑮𐑦𐑟𐑻𐑝𐑟!"
 
 #. [unit]: type=Knight, id=Sir Ladoc
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:360
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:359
 #, fuzzy
 msgid "Sir Ladoc"
 msgstr "𐑕𐑻 Ladoc"
 
 #. [message]: speaker=Sir Ladoc
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:380
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:379
 #, fuzzy
 #| msgid ""
 #| "Hold there! You can not pass. You’ve already stumbled on the orcish rear "
@@ -1538,7 +1545,7 @@ msgstr ""
 "𐑞𐑺 𐑓𐑹𐑕𐑩𐑟 𐑦𐑟 𐑪𐑯 𐑞 𐑮𐑴𐑛 𐑑 ·𐑕𐑬𐑔𐑚𐑱. 𐑦𐑑 𐑦𐑟 𐑩𐑯 𐑸𐑥𐑦 𐑝 𐑯𐑲𐑑𐑥𐑺𐑦𐑖 𐑕𐑲𐑟."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:385
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:384
 msgid ""
 "I’m Haldric, my father was King Eldaric IV in the lands northwest of here. "
 "Soldier, aren’t you on the wrong side of the lines?"
@@ -1547,7 +1554,7 @@ msgstr ""
 "𐑕𐑴𐑤𐑡𐑼, 𐑸𐑯𐑑 𐑿 𐑪𐑯 𐑞 𐑮𐑪𐑙 𐑕𐑲𐑛 𐑝 𐑞 𐑤𐑲𐑯𐑟?"
 
 #. [message]: speaker=Sir Ladoc
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:390
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:389
 msgid ""
 "They overran my post. I got hit on the head pretty good. When I came to the "
 "orcish army had already passed my position."
@@ -1556,12 +1563,12 @@ msgstr ""
 "𐑷𐑤𐑮𐑧𐑛𐑦 𐑐𐑭𐑕𐑑 𐑥𐑲 𐑐𐑩𐑟𐑦𐑖𐑩𐑯."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:395
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:394
 msgid "Tell me, how fares Southbay?"
 msgstr "𐑑𐑧𐑤 𐑥𐑰, 𐑣𐑬 𐑓𐑺𐑟 ·𐑕𐑬𐑔𐑚𐑱?"
 
 #. [message]: speaker=Sir Ladoc
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:400
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:399
 msgid ""
 "Southbay won’t fall without one hell of a fight, sir. They’ll stand to the "
 "last! I only wish I was there!"
@@ -1570,7 +1577,7 @@ msgstr ""
 "𐑢𐑪𐑟 𐑞𐑺!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:405
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:404
 msgid ""
 "Well, we can’t go back, and the road ahead is blocked... I guess we’ll have "
 "to risk it and go through the Oldwood forest, then make a break for "
@@ -1580,7 +1587,7 @@ msgstr ""
 "𐑔𐑮𐑵 𐑞 ·𐑴𐑤𐑛𐑢𐑫𐑛 𐑓𐑹𐑦𐑕𐑑, 𐑞𐑧𐑯 𐑥𐑱𐑒 𐑩 𐑚𐑮𐑱𐑒 𐑓𐑹 𐑒𐑤𐑽𐑢𐑪𐑑𐑻 𐑐𐑹𐑑."
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:410
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:409
 #, fuzzy
 #| msgid ""
 #| "Oh great, now a forest. I should have stayed at home and took my chances "
@@ -1591,7 +1598,7 @@ msgid ""
 msgstr "𐑴 𐑜𐑮𐑱𐑑, 𐑯𐑬 𐑩 𐑓𐑹𐑦𐑕𐑑. 𐑲 𐑖𐑫𐑛 𐑣𐑨𐑝 𐑕𐑑𐑱𐑛 𐑨𐑑 𐑣𐑴𐑥 𐑯 𐑑𐑫𐑒 𐑥𐑲 𐑗𐑭𐑯𐑕𐑩𐑟 𐑢𐑦𐑞 𐑞 𐑹𐑒𐑕!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:439
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:438
 msgid ""
 "We have run out of time... We’ll be trapped in the midlands when winter "
 "comes!"
@@ -2342,11 +2349,17 @@ msgstr ""
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:299
+#, fuzzy
+#| msgid ""
+#| "And now, I’m as much a refugee as you. In truth, I don’t know if the Lich-"
+#| "Lords are working with the orcs or not. The orcs may have gotten rid of "
+#| "the Lich-Lords, or they may not have, but I do know that the orcs are not "
+#| "going to tolerate living humans outside of the slave mines or stew pot!"
 msgid ""
 "And now, I’m as much a refugee as you. In truth, I don’t know if the Lich-"
-"Lords are working with the orcs or not. The orcs may have gotten rid of the "
-"Lich-Lords, or they may not have, but I do know that the orcs are not going "
-"to tolerate living humans outside of the slave mines or stew pot!"
+"Lords still command these orcs or if the orcs have rid themselves of the "
+"Lich-Lords, but I do know that no orc is going to tolerate living humans "
+"outside of the slave mines or worse, stew pots!"
 msgstr ""
 "𐑯 𐑯𐑬, 𐑲'𐑧𐑥 𐑨𐑟 𐑥𐑳𐑗 𐑩 𐑮𐑧𐑓𐑿𐑡𐑰 𐑨𐑟 𐑿. 𐑦𐑯 𐑑𐑮𐑵𐑔, 𐑲 𐑛𐑴𐑯𐑑 𐑯𐑴 𐑦𐑓 𐑞 𐑤𐑦𐑗-𐑤𐑹𐑛𐑟 𐑸 𐑢𐑻𐑒𐑦𐑙 "
 "𐑢𐑦𐑞 𐑞 𐑹𐑒𐑕 𐑹 𐑯𐑪𐑑. 𐑞 𐑹𐑒𐑕 𐑥𐑱 𐑣𐑨𐑝 𐑜𐑪𐑑𐑩𐑯 𐑮𐑦𐑛 𐑝 𐑞 𐑤𐑦𐑗-𐑤𐑹𐑛𐑟, 𐑹 𐑞𐑱 𐑥𐑱 𐑯𐑪𐑑 𐑣𐑨𐑝, 𐑚𐑳𐑑 𐑲 "
@@ -4110,7 +4123,7 @@ msgstr "𐑲 𐑛𐑴𐑯𐑑 𐑓𐑲𐑯𐑛 𐑞𐑨𐑑 𐑔𐑷𐑑 𐑝�
 #. [message]: speaker=Familiar
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:298
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:373
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:312
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:329
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:368
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:475
 msgid "<i>Clack</i>! <i>Clack!</i>"
@@ -5105,7 +5118,7 @@ msgstr "𐑢𐑰 𐑕𐑑𐑦𐑤 𐑣𐑨𐑝 𐑑 𐑕𐑤𐑱 𐑞 𐑛𐑮�
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:466
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:534
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:533
 msgid "The dragon’s cave has yielded some treasure!"
 msgstr "𐑞 𐑛𐑮𐑨𐑜𐑩𐑯𐑟 𐑒𐑱𐑝 𐑣𐑨𐑟 𐑘𐑰𐑤𐑛𐑧𐑛 𐑕𐑳𐑥 𐑑𐑮𐑧𐑠𐑼!"
 
@@ -5125,14 +5138,26 @@ msgid "Let’s get out of here!"
 msgstr "𐑤𐑧𐑑'𐑕 𐑜𐑧𐑑 𐑬𐑑 𐑝 𐑣𐑽!"
 
 #. [option]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:521
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:520
 msgid "Let’s finish off the rest of these monsters!"
 msgstr "𐑤𐑧𐑑'𐑕 𐑓𐑦𐑯𐑦𐑖 𐑪𐑓 𐑞 𐑮𐑧𐑕𐑑 𐑝 𐑞𐑰𐑟 𐑥𐑪𐑯𐑕𐑑𐑼𐑟!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:553
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:559
 msgid "More saurians are arriving. They’ve surrounded us! We’re doomed."
 msgstr "𐑥𐑹 𐑕𐑸𐑾𐑯𐑟 𐑸 𐑻𐑲𐑝𐑦𐑙. 𐑞𐑱'𐑝 𐑕𐑼𐑬𐑯𐑛𐑩𐑛 𐑳𐑕! 𐑢𐑰'𐑼 𐑛𐑵𐑥𐑛."
+
+#. [message]: speaker=Lady Jessene
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:566
+msgid ""
+"We already killed the dragon. We really don’t need to be spending this much "
+"time chasing down the rest of these lizards."
+msgstr ""
+
+#. [message]: speaker=Prince Haldric
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:571
+msgid "You’re right, you’re right. Let’s head back."
+msgstr ""
 
 #. [scenario]: id=17b_Lizard_Beach
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_Lizard_Beach.cfg:4
@@ -5753,12 +5778,16 @@ msgstr "𐑞 𐑴𐑯𐑤𐑦 𐑡𐑪𐑚 𐑝 𐑞 𐑛𐑧𐑛 𐑦𐑟 𐑑 
 
 #. [message]: speaker=Tan-Gagar
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:604
-msgid "We must block the human advance!"
-msgstr "𐑢𐑰 𐑥𐑳𐑕𐑑 𐑚𐑤𐑪𐑒 𐑞 𐑣𐑿𐑥𐑩𐑯 𐑩𐑛𐑝𐑭𐑯𐑕!"
+msgid ""
+"The meat is stronger than I thought! We must use all of our forces to stop "
+"them!"
+msgstr ""
 
 #. [message]: speaker=Tan-Erirt
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:625
-msgid "Reserves! We can’t let them get to their landing site."
+#, fuzzy
+#| msgid "Reserves! We can’t let them get to their landing site."
+msgid "Reserves! We can’t let the meat get to the landing site."
 msgstr "𐑮𐑦𐑟𐑻𐑝𐑟! 𐑢𐑰 𐑒𐑭𐑯𐑑 𐑤𐑧𐑑 𐑞𐑧𐑥 𐑜𐑧𐑑 𐑑 𐑞𐑺 𐑤𐑨𐑯𐑛𐑦𐑙 𐑕𐑲𐑑."
 
 #. [message]: speaker=Prince Haldric
@@ -5772,7 +5801,7 @@ msgstr ""
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:660
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:529
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:546
 msgid "Oh, to join my family again! Do not mourn my passing."
 msgstr "𐑴, 𐑑 𐑡𐑶𐑯 𐑥𐑲 𐑓𐑨𐑥𐑦𐑤𐑦 𐑩𐑜𐑱𐑯! 𐑛𐑵 𐑯𐑪𐑑 𐑥𐑹𐑯 𐑥𐑲 𐑐𐑭𐑕𐑦𐑙."
 
@@ -5889,42 +5918,75 @@ msgstr ""
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:279
+#, fuzzy
+#| msgid ""
+#| "We’ll see about that. The Fool Prince of Southbay was wrong to start this "
+#| "war, but you’re the real monster! You sacrificed your own people to "
+#| "preserve your immortal un-life."
 msgid ""
 "We’ll see about that. The Fool Prince of Southbay was wrong to start this "
-"war, but you’re the real monster! You sacrificed your own people to preserve "
-"your immortal un-life."
+"war, but you’re the real monster. You’ve turned to using orcs as cheap "
+"lackeys and even sacrificed your own people to preserve your immortal un-"
+"life!"
 msgstr ""
 "𐑢𐑰'𐑤 𐑕𐑰 𐑩𐑚𐑬𐑑 𐑞𐑨𐑑. 𐑞 𐑓𐑵𐑤 𐑐𐑮𐑦𐑯𐑕 𐑝 ·𐑕𐑬𐑔𐑚𐑱 𐑢𐑪𐑟 𐑮𐑪𐑙 𐑑 𐑕𐑑𐑸𐑑 𐑞𐑦𐑕 𐑢𐑹, 𐑚𐑳𐑑 𐑿'𐑼 𐑞 𐑮𐑾𐑤 "
 "𐑥𐑪𐑯𐑕𐑑𐑼! 𐑿 𐑕𐑨𐑒𐑮𐑦𐑓𐑲𐑕𐑑 𐑿𐑼 𐑴𐑯 𐑐𐑰𐑐𐑩𐑤 𐑑 𐑐𐑮𐑦𐑟𐑻𐑝 𐑿𐑼 𐑦𐑥𐑹𐑑𐑩𐑤 𐑩𐑯-𐑤𐑲𐑓."
 
 #. [message]: speaker=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:284
-msgid "Enough of this. A curse of darkness upon you, young prince."
+msgid ""
+"I am hardly concerned with the doing of mortal worms — they are no more than "
+"petty pawns, orcs and humans both. The only difference is that orcs will not "
+"complain as long as they are well fed."
+msgstr ""
+
+#. [message]: speaker=Tan-Halg
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:288
+msgid "Actually, I <i>am</i> pretty hungry right now..."
+msgstr ""
+
+#. [message]: speaker=Lich-Lord Jevyan
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:292
+msgid "Pah. Just eat the humans, then. But leave the boy’s body intact."
+msgstr ""
+
+#. [message]: speaker=Prince Haldric
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:296
+msgid "Come and fight me yourself, you old bag of bones!"
+msgstr ""
+
+#. [message]: speaker=Lich-Lord Jevyan
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:301
+#, fuzzy
+#| msgid "Enough of this. A curse of darkness upon you, young prince."
+msgid ""
+"As if a measly child would be worth the effort. Enough of this. A curse of "
+"darkness upon you, young prince."
 msgstr "𐑦𐑯𐑳𐑓 𐑝 𐑞𐑦𐑕. 𐑩 𐑒𐑻𐑕 𐑝 𐑛𐑸𐑒𐑯𐑩𐑕 𐑩𐑐𐑪𐑯 𐑿, 𐑘𐑳𐑙 𐑐𐑮𐑦𐑯𐑕."
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:344
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:361
 msgid "I see masts on the horizon. Jevyan’s fleet is here! It’s all over."
 msgstr "𐑲 𐑕𐑰 𐑥𐑭𐑕𐑑𐑕 𐑪𐑯 𐑞 𐑣𐑼𐑲𐑟𐑩𐑯. ·𐑡𐑧𐑝𐑾𐑯𐑕 𐑓𐑤𐑰𐑑 𐑦𐑟 𐑣𐑽! 𐑦𐑑'𐑕 𐑷𐑤 𐑴𐑝𐑼."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:361
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:378
 msgid "Please Disembark in an Orderly Fashion and Proceed South"
 msgstr "𐑐𐑤𐑰𐑟 𐑛𐑦𐑕𐑧𐑥𐑚𐑸𐑒 𐑦𐑯 𐑩𐑯 𐑹𐑛𐑻𐑤𐑰 𐑓𐑨𐑖𐑩𐑯 𐑯 𐑐𐑮𐑩𐑕𐑰𐑛 𐑕𐑬𐑔"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:366
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:383
 msgid "Hmm, they left off the ‘or the orcs will eat you’ part."
 msgstr "𐑣𐑥, 𐑞𐑱 𐑤𐑧𐑓𐑑 𐑪𐑓 𐑞 '𐑹 𐑞 𐑹𐑒𐑕 𐑢𐑦𐑤 𐑰𐑑 𐑿' 𐑐𐑸𐑑."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:393
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:410
 msgid ""
 "I’m back, things went well! Haldric, I sure hope you know what you’re doing."
 msgstr "𐑲'𐑧𐑥 𐑚𐑨𐑒, 𐑔𐑦𐑙𐑟 𐑢𐑧𐑯𐑑 𐑢𐑧𐑤! ·𐑣𐑭𐑤𐑛𐑮𐑦𐑒, 𐑲 𐑖𐑫𐑼 𐑣𐑴𐑐 𐑿 𐑯𐑴 𐑢𐑪𐑑 𐑿'𐑼 𐑛𐑵𐑦𐑙."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:397
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:414
 msgid ""
 "Umm, we’ll talk about it later. I’m just a little busy at the moment. I’m "
 "glad you made it back in one piece."
@@ -5933,30 +5995,30 @@ msgstr ""
 "𐑥𐑱𐑛 𐑦𐑑 𐑚𐑨𐑒 𐑦𐑯 𐑢𐑳𐑯 𐑐𐑰𐑕."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:401
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:418
 msgid "Yes, it looks like you could use all of the help you can get."
 msgstr "𐑘𐑧𐑕, 𐑦𐑑 𐑤𐑫𐑒𐑕 𐑤𐑲𐑒 𐑿 𐑒𐑫𐑛 𐑿𐑕 𐑷𐑤 𐑝 𐑞 𐑣𐑧𐑤𐑐 𐑿 𐑒𐑨𐑯 𐑜𐑧𐑑."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:409
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:426
 msgid ""
 "We’ve defeated Jevyan’s forces. The ships must disembark their passengers "
 "quickly—"
 msgstr "𐑢𐑰'𐑝 𐑛𐑦𐑓𐑰𐑑𐑩𐑛 ·𐑡𐑧𐑝𐑾𐑯𐑕 𐑓𐑹𐑕𐑩𐑟. 𐑞 𐑖𐑦𐑐𐑕 𐑥𐑳𐑕𐑑 𐑛𐑦𐑕𐑧𐑥𐑚𐑸𐑒 𐑞𐑺 𐑐𐑨𐑕𐑩𐑯𐑡𐑼𐑟 𐑒𐑢𐑦𐑒𐑤𐑦-"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:413
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:430
 msgid "Haldric, what’s going on? What’s the plan?"
 msgstr "·𐑣𐑭𐑤𐑛𐑮𐑦𐑒, 𐑢𐑪𐑑'𐑕 𐑜𐑴𐑦𐑙 𐑪𐑯? 𐑢𐑪𐑑'𐑕 𐑞 𐑐𐑤𐑨𐑯?"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:417
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:434
 #, fuzzy
 msgid "We’re going to confront Jevyan and destroy him."
 msgstr "𐑢𐑰'𐑼 𐑜𐑴𐑦𐑙 𐑑 𐑒𐑩𐑯𐑓𐑮𐑩𐑯𐑑 ·𐑡𐑧𐑝𐑾𐑯 𐑯 𐑛𐑩𐑕𐑑𐑮𐑶 𐑣𐑦𐑥."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:421
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:438
 msgid ""
 "That will be easier said than done. Even if we defeat him, the other Lich-"
 "Lords will follow. It’s because of that ruby. If I were paranoid I’d say "
@@ -5967,30 +6029,30 @@ msgstr ""
 "𐑣𐑨𐑝 𐑯𐑴𐑯 𐑨𐑟 𐑥𐑳𐑗."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:425
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:442
 msgid "We should discuss this in private. Here, come with me."
 msgstr "𐑢𐑰 𐑖𐑫𐑛 𐑛𐑦𐑕𐑒𐑳𐑕 𐑞𐑦𐑕 𐑦𐑯 𐑐𐑮𐑲𐑝𐑩𐑑. 𐑣𐑽, 𐑒𐑳𐑥 𐑢𐑦𐑞 𐑥𐑰."
 
 #. [message]: type=Cuttle Fish
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:462
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:479
 #, fuzzy
 msgid "<i>Slurp, click, click, click!</i>"
 msgstr "𐑕𐑤𐑻𐑐, 𐑒𐑤𐑦𐑒, 𐑒𐑤𐑦𐑒, 𐑒𐑤𐑦𐑒!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:466
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:483
 #, fuzzy
 msgid "I don’t know what that is, but it doesn’t sound friendly."
 msgstr "𐑲 𐑛𐑴𐑯𐑑 𐑯𐑴 𐑢𐑪𐑑 𐑞𐑨𐑑 𐑦𐑟, 𐑚𐑳𐑑 𐑦𐑑 𐑛𐑳𐑟𐑯𐑑 𐑕𐑬𐑯𐑛 𐑓𐑮𐑧𐑯𐑛𐑤𐑦."
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:484
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:501
 #, fuzzy
 msgid "Flixta"
 msgstr "Flixta"
 
 #. [message]: speaker=Flixta
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:502
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:519
 #, fuzzy
 msgid ""
 "You again! You will sssuffer for your attack against my people! Shek’kahan, "
@@ -6000,14 +6062,14 @@ msgstr ""
 "friendsss- 𐑿'𐑤 𐑐𐑱! 𐑢𐑰 𐑣𐑨𐑝 𐑯𐑿 𐑓𐑮𐑧𐑯𐑛𐑟 𐑯𐑬."
 
 #. [message]: speaker=Tan-Halg
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:549
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:566
 #, fuzzy
 msgid ""
 "My people are like a rock slide, you can run, but we will crush you... Ahhck!"
 msgstr "𐑥𐑲 𐑐𐑰𐑐𐑩𐑤 𐑸 𐑤𐑲𐑒 𐑩 𐑮𐑪𐑒 𐑕𐑤𐑲𐑛, 𐑿 𐑒𐑨𐑯 𐑮𐑳𐑯, 𐑚𐑳𐑑 𐑢𐑰 𐑢𐑦𐑤 𐑒𐑮𐑳𐑖 𐑿...Ahhck!"
 
 #. [message]: speaker=Tan-Rinak
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:570
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:587
 msgid "I— I die?"
 msgstr "𐑲- 𐑲 𐑛𐑲?"
 
@@ -7355,6 +7417,19 @@ msgid ""
 "business at hand."
 msgstr ""
 "𐑞𐑨𐑑 𐑦𐑟 𐑧𐑒𐑕𐑩𐑤𐑩𐑯𐑑 𐑯𐑿𐑟 𐑦𐑯𐑛𐑰𐑛. 𐑬𐑼 𐑯𐑳𐑥𐑚𐑼𐑟 𐑣𐑨𐑝 𐑛𐑳𐑚𐑩𐑤𐑛. 𐑯𐑬 𐑪𐑯 𐑑 𐑞 𐑚𐑦𐑟𐑯𐑩𐑕 𐑨𐑑 𐑣𐑨𐑯𐑛."
+
+#, fuzzy
+#~ msgid "So, <i>human</i>, care to make your final stand?"
+#~ msgstr "𐑕𐑴 𐑣𐑿𐑥𐑩𐑯, 𐑒𐑺 𐑑 𐑥𐑱𐑒 𐑿𐑼 𐑓𐑲𐑯𐑩𐑤 𐑕𐑑𐑨𐑯𐑛?"
+
+#~ msgid "Die! Die! Die!"
+#~ msgstr "𐑛𐑲! 𐑛𐑲! 𐑛𐑲!"
+
+#~ msgid "How’d they get behind us? I hate to miss such tasty meat."
+#~ msgstr "𐑣𐑬𐑛 𐑞𐑱 𐑜𐑧𐑑 𐑚𐑦𐑣𐑲𐑯𐑛 𐑳𐑕? 𐑲 𐑣𐑱𐑑 𐑑 𐑥𐑦𐑕 𐑕𐑳𐑗 𐑑𐑱𐑕𐑑𐑰 𐑥𐑰𐑑."
+
+#~ msgid "We must block the human advance!"
+#~ msgstr "𐑢𐑰 𐑥𐑳𐑕𐑑 𐑚𐑤𐑪𐑒 𐑞 𐑣𐑿𐑥𐑩𐑯 𐑩𐑛𐑝𐑭𐑯𐑕!"
 
 #~ msgid "sword"
 #~ msgstr "𐑕𐑹𐑛"
