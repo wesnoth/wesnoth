@@ -413,22 +413,9 @@ bool savegame::check_filename(const std::string& filename)
 	return true;
 }
 
-bool savegame::is_illegal_file_char(char c)
-{
-	return c == '/' || c == '\\' || c == ':' || (c >= 0x00 && c < 0x20)
-#ifdef _WIN32
-	|| c == '?' || c == '|' || c == '<' || c == '>' || c == '*' || c == '"'
-#endif
-	;
-}
-
 std::string savegame::create_filename(unsigned int turn_number) const
 {
-	std::string filename = create_initial_filename(turn_number);
-	filename.erase(std::remove_if(filename.begin(), filename.end(),
-	            is_illegal_file_char), filename.end());
-	std::replace(filename.begin(), filename.end(), '_', ' ');
-	return filename;
+	return create_initial_filename(turn_number);
 }
 
 void savegame::before_save()
