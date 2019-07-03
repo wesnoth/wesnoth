@@ -1188,7 +1188,7 @@ protected:
 
 		register_command("refresh", &console_handler::do_refresh, _("Refresh gui."));
 		register_command("droid", &console_handler::do_droid, _("Switch a side to/from AI control."),
-				_("do not translate the on/off^[<side> [on/off]]"));
+				_("do not translate the on/off/full^[<side> [on/off/full]]"));
 		register_command("idle", &console_handler::do_idle, _("Switch a side to/from idle state."),
 				_("do not translate the on/off^[<side> [on/off]]"));
 		register_command("theme", &console_handler::do_theme);
@@ -1420,47 +1420,61 @@ void console_handler::do_refresh()
 
 void console_handler::do_droid()
 {
-	// :droid [<side> [on/off]]
+	// :droid [<side> [on/off/full]]
 	const std::string side_s = get_arg(1);
-	const std::string action = get_arg(2);
+	std::string action = get_arg(2);
+	std::transform(action.begin(), action.end(), action.begin(), tolower);
 	// default to the current side if empty
 	const unsigned int side = side_s.empty() ? team_num_ : lexical_cast_default<unsigned int>(side_s);
 
+	utils::string_map symbols;
+	symbols["side"] = std::to_string(side);
+
 	if(side < 1 || side > menu_handler_.teams().size()) {
-		utils::string_map symbols;
-		symbols["side"] = side_s;
 		command_failed(VGETTEXT("Can't droid invalid side: '$side'.", symbols));
 		return;
 	} else if(menu_handler_.board().get_team(side).is_network()) {
-		utils::string_map symbols;
-		symbols["side"] = std::to_string(side);
 		command_failed(VGETTEXT("Can't droid networked side: '$side'.", symbols));
 		return;
-	} else if(menu_handler_.board().get_team(side).is_local_human()) {
-		utils::string_map symbols;
-		symbols["side"] = std::to_string(side);
-		if(menu_handler_.board().get_team(side).is_droid() ? action == "on" : action == "off") {
-			print(get_cmd(), VGETTEXT("Side '$side' is already droided.", symbols));
-			return;
+	} else if(menu_handler_.board().get_team(side).is_local()) {
+		bool changed = false;
+
+		if(action == "on") {
+			if(!menu_handler_.board().get_team(side).is_human() || !menu_handler_.board().get_team(side).is_droid()) {
+				menu_handler_.board().get_team(side).make_human();
+				menu_handler_.board().get_team(side).make_droid();
+				changed = true;
+				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: AI.", symbols));
+			} else {
+				print(get_cmd(), VGETTEXT("Side '$side' is already droided.", symbols));
+			}
+		} else if(action == "off") {
+			if(!menu_handler_.board().get_team(side).is_human() || !menu_handler_.board().get_team(side).is_proxy_human()) {
+				menu_handler_.board().get_team(side).make_human();
+				menu_handler_.board().get_team(side).make_proxy_human();
+				changed = true;
+				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: human.", symbols));
+			} else {
+				print(get_cmd(), VGETTEXT("Side '$side' is already not droided.", symbols));
+			}
+		} else if(action == "full") {
+			if(!menu_handler_.board().get_team(side).is_ai() || !menu_handler_.board().get_team(side).is_droid()) {
+				menu_handler_.board().get_team(side).make_ai();
+				menu_handler_.board().get_team(side).make_droid();
+				changed = true;
+				print(get_cmd(), VGETTEXT("Side '$side' controller is now fully controlled by: AI.", symbols));
+			} else {
+				print(get_cmd(), VGETTEXT("Side '$side' is already fully AI controlled.", symbols));
+			}
+		} else {
+			print(get_cmd(), VGETTEXT("Invalid action provided for side '$side'. Valid actions are: on, off, full.", symbols));
 		}
-		menu_handler_.board().get_team(side).toggle_droid();
-		if(team_num_ == side) {
+
+		if(team_num_ == side && changed) {
 			if(playsingle_controller* psc = dynamic_cast<playsingle_controller*>(&menu_handler_.pc_)) {
 				psc->set_player_type_changed();
 			}
 		}
-		if (menu_handler_.board().get_team(side).is_droid()) {
-			print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: AI.", symbols));
-		} else {
-			print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: human.", symbols));
-		}
-	} else if(menu_handler_.board().get_team(side).is_local_ai()) {
-		//		menu_handler_.board().get_team(side).make_human();
-		//		menu_handler_.change_controller(std::to_string(side),"human");
-
-		utils::string_map symbols;
-		symbols["side"] = side_s;
-		command_failed(VGETTEXT("Can't droid a local ai side: '$side'.", symbols));
 	}
 	menu_handler_.textbox_info_.close(*menu_handler_.gui_);
 }
