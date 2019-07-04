@@ -159,15 +159,11 @@ int display_context::side_upkeep(int side) const
 	return res;
 }
 
-team_data display_context::calculate_team_data(const team& tm) const
+team_data::team_data(const display_context& dc, const team& tm)
+	: side(tm.side())
+	, units(dc.side_units(side))
+	, upkeep(dc.side_upkeep(side))
+	, expenses(std::max<int>(0, upkeep - tm.support()))
+	, net_income(tm.total_income() - expenses)
 {
-	team_data res;
-	res.units = side_units(tm.side());
-	res.upkeep = side_upkeep(tm.side());
-	res.villages = tm.villages().size();
-	res.expenses = std::max<int>(0,res.upkeep - tm.support());
-	res.net_income = tm.total_income() - res.expenses;
-	res.gold = tm.gold();
-	res.teamname = tm.user_team_name();
-	return res;
 }

@@ -666,7 +666,7 @@ static config unit_moves(reports::context & rc, const unit* u)
 
 	for (const terrain_movement& tm : terrain_moves) {
 		tooltip << tm.name << ": ";
-		
+
 		std::string color;
 		//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
 		const bool cannot_move = tm.moves > u->total_movement();
@@ -1339,7 +1339,7 @@ REPORT_GENERATOR(upkeep, rc)
 	std::ostringstream str;
 	int viewing_side = rc.screen().viewing_side();
 	const team &viewing_team = rc.dc().get_team(viewing_side);
-	team_data td = rc.dc().calculate_team_data(viewing_team);
+	team_data td(rc.dc(), viewing_team);
 	str << td.expenses << " (" << td.upkeep << ")";
 	return gray_inactive(rc,str.str(), _("Upkeep") + "\n\n" + _("The expenses incurred at the end of every turn to maintain your army. The first number is the amount of gold that will be deducted. The second is the total cost of upkeep, including that covered by villages — in other words, the amount of gold that would be deducted if you lost all villages."));
 }
@@ -1348,7 +1348,7 @@ REPORT_GENERATOR(expenses, rc)
 {
 	int viewing_side = rc.screen().viewing_side();
 	const team &viewing_team = rc.dc().get_team(viewing_side);
-	team_data td = rc.dc().calculate_team_data(viewing_team);
+	team_data td(rc.dc(), viewing_team);
 	return gray_inactive(rc,std::to_string(td.expenses));
 }
 
@@ -1357,7 +1357,7 @@ REPORT_GENERATOR(income, rc)
 	std::ostringstream str;
 	int viewing_side = rc.screen().viewing_side();
 	const team &viewing_team = rc.dc().get_team(viewing_side);
-	team_data td = rc.dc().calculate_team_data(viewing_team);
+	team_data td(rc.dc(), viewing_team);
 	char const *end = naps;
 	if (viewing_side != rc.screen().playing_side()) {
 		if (td.net_income < 0) {

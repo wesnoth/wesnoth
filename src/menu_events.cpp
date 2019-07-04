@@ -159,10 +159,10 @@ void menu_handler::unit_list()
 
 void menu_handler::status_table()
 {
-	int selected_index;
+	int selected_side;
 
-	if(gui2::dialogs::game_stats::execute(board(), gui_->viewing_team(), selected_index)) {
-		gui_->scroll_to_leader(teams()[selected_index].side());
+	if(gui2::dialogs::game_stats::execute(board(), gui_->viewing_team(), selected_side)) {
+		gui_->scroll_to_leader(selected_side);
 	}
 }
 

@@ -58,6 +58,7 @@ static int impl_side_get(lua_State *L)
 	return_tstring_attrib("objectives", t.objectives());
 	return_int_attrib("village_gold", t.village_gold());
 	return_int_attrib("village_support", t.village_support());
+	return_int_attrib("num_villages", t.villages().size());
 	return_int_attrib("recall_cost", t.recall_cost());
 	return_int_attrib("base_income", t.base_income());
 	return_int_attrib("total_income", t.total_income());
@@ -102,10 +103,9 @@ static int impl_side_get(lua_State *L)
 
 	// These are blocked together because they are all part of the team_data struct.
 	// Some of these values involve iterating over the units map to calculate them.
-	auto d = [&](){ return resources::gameboard->calculate_team_data(t); };
+	auto d = [&](){ return team_data(*resources::gameboard, t); };
 	return_int_attrib("num_units", d().units);
 	return_int_attrib("total_upkeep", d().upkeep);
-	return_int_attrib("num_villages", d().villages);
 	return_int_attrib("expenses", d().expenses);
 	return_int_attrib("net_income", d().net_income);
 
