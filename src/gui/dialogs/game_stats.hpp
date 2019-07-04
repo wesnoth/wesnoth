@@ -35,16 +35,16 @@ namespace dialogs
 class game_stats : public modal_dialog
 {
 public:
-	game_stats(const display_context& board, const int viewing_team, int& selected_index);
+	game_stats(const display_context& board, const int viewing_team, int& selected_side_number);
 
-	static bool execute(game_board& board, const int viewing_team, int& selected_index)
+	static bool execute(game_board& board, const int viewing_team, int& selected_side_number)
 	{
 		if(std::all_of(board.teams().begin(), board.teams().end(), [](team& team) { return team.hidden(); })) {
 			show_transient_message("", _("No visible sides found."));
 			return false;
 		}
 
-		return game_stats(board, viewing_team, selected_index).show();
+		return game_stats(board, viewing_team, selected_side_number).show();
 	}
 
 private:
@@ -55,7 +55,7 @@ private:
 
 	std::vector<team_data> team_data_;
 
-	int& selected_index_;
+	int& selected_side_number_;
 
 	unit_const_ptr get_leader(const int side);
 

@@ -48,14 +48,11 @@ namespace dialogs
 
 REGISTER_DIALOG(game_stats)
 
-game_stats::game_stats(const display_context& board, const int viewing_team, int& selected_index)
+game_stats::game_stats(const display_context& board, const int viewing_team, int& selected_side_number)
 	: board_(board)
 	, viewing_team_(board_.teams()[viewing_team])
-	, selected_index_(selected_index)
+	, selected_side_number_(selected_side_number)
 {
-	for(const auto& team : board_.teams()) {
-		team_data_.push_back(board_.calculate_team_data(team));
-	}
 }
 
 unit_const_ptr game_stats::get_leader(const int side)
@@ -85,13 +82,15 @@ void game_stats::pre_show(window& window)
 			continue;
 		}
 
+		team_data_.emplace_back(board_, team);
+
 		std::map<std::string, string_map> row_data_stats;
 		string_map column_stats;
 
 		const bool known = viewing_team_.knows_about_team(team.side() - 1);
 		const bool enemy = viewing_team_.is_enemy(team.side());
 
-		const team_data& data = team_data_[team.side() - 1];
+		const team_data& data = team_data_.back();
 
 		unit_const_ptr leader = get_leader(team.side());
 
@@ -130,20 +129,20 @@ void game_stats::pre_show(window& window)
 		column_stats["label"] = leader_name + "\n" + controller_name(team);
 		row_data_stats.emplace("team_leader_name", column_stats);
 
-		column_stats["label"] = data.teamname.empty() ? team.team_name() : data.teamname;
+		column_stats["label"] = team.user_team_name().empty() ? team.team_name() : team.user_team_name();
 		row_data_stats.emplace("team_name", column_stats);
 
 		// Only fill in the rest of the info if the side is known...
 		if(known || game_config::debug) {
 			std::string gold_str;
 			if(game_config::debug || !enemy || !viewing_team_.uses_fog()) {
-				gold_str = utils::half_signed_value(data.gold);
+				gold_str = utils::half_signed_value(team.gold());
 			}
 
-			column_stats["label"] = data.gold < 0 ? "<span color='#ff0000'>" + gold_str + "</span>" : gold_str;
+			column_stats["label"] = team.gold() < 0 ? "<span color='#ff0000'>" + gold_str + "</span>" : gold_str;
 			row_data_stats.emplace("team_gold", column_stats);
 
-			std::string village_count = std::to_string(data.villages);
+			std::string village_count = std::to_string(team.villages().size());
 			if(!viewing_team_.uses_fog() && !viewing_team_.uses_shroud()) {
 				village_count += "/" + std::to_string(board_.map().villages().size());
 			}
@@ -205,7 +204,8 @@ void game_stats::pre_show(window& window)
 	// Sorting options for the status list
 	stats_list.register_translatable_sorting_option(0, [this](const int i) {
 		unit_const_ptr leader = get_leader(i + 1);
-		return leader ? leader->name().str() : ""; });
+		return leader ? leader->name().str() : "";
+	});
 
 	stats_list.register_translatable_sorting_option(1, [this](const int i) {
 		return board_.teams()[i].user_team_name().str(); });
@@ -218,7 +218,8 @@ void game_stats::pre_show(window& window)
 	// Sorting options for the settings list
 	settings_list.register_translatable_sorting_option(0, [this](const int i) {
 		unit_const_ptr leader = get_leader(i + 1);
-		return leader ? leader->name().str() : ""; });
+		return leader ? leader->name().str() : "";
+	});
 
 	settings_list.register_sorting_option(1, [this](const int i) { return board_.teams()[i].side(); });
 	settings_list.register_sorting_option(2, [this](const int i) { return board_.teams()[i].start_gold(); });
@@ -258,7 +259,7 @@ void game_stats::post_show(window& window)
 		const int selected_tab = find_widget<listbox>(&window, "tab_bar", false).get_selected_row();
 
 		const std::string list_id = selected_tab == 0 ? "game_stats_list" : "scenario_settings_list";
-		selected_index_ = find_widget<listbox>(&window, list_id, false).get_selected_row();
+		selected_side_number_ = team_data_[find_widget<listbox>(&window, list_id, false).get_selected_row()].side;
 	}
 }
 
