@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2019-06-16 13:23+0300\n"
+"PO-Revision-Date: 2019-07-02 10:10+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -97,13 +97,13 @@ msgstr "Bağlantı süresi aşıldı"
 #, fuzzy
 #| msgid ""
 #| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#| "0 to disable"
+#| "0 to disable."
 msgid ""
 "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
 "disable"
 msgstr ""
-"Oyun-içi bir sohbet iletisinin ekrandan kaç dakika sonra gideceği. 0 olursa "
-"devre dışı olur"
+"Oyun-içi bir sohbet iletisinin ekranda kalma süresi. 0 olursa devre dışı "
+"olur."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:72
@@ -134,12 +134,16 @@ msgstr "Sohbet iletisinin eskimesi"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:104
+#, fuzzy
+#| msgid ""
+#| "Number of minutes to wait before clearing an ingame chat message. Set to "
+#| "0 to disable."
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable"
 msgstr ""
-"Oyun-içi bir sohbet iletisinin ekrandan kaç dakika sonra gideceği. 0 olursa "
-"devre dışı olur"
+"Oyun-içi bir sohbet iletisinin ekranda kalma süresi. 0 olursa devre dışı "
+"olur."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:114
@@ -4353,19 +4357,24 @@ msgstr "HP"
 msgid "def"
 msgstr "sav"
 
+# Bunu (sv) değiştirmeyin yoksa seviye numarası panele sığmıyor
 #. [unit_level]: id=unit-level
 #: data/themes/default.cfg:394
 msgid "statuspanel^lvl"
-msgstr "seviye"
+msgstr "sv"
 
 #. [tip]
 #: data/tips.cfg:4
+#, fuzzy
+#| msgid ""
+#| "Use the map editor’s <i>Areas</i> menu to define regions later addressed "
+#| "by event or AI coding."
 msgid ""
 "Use the map editor's <i>Areas</i> menu to define regions later addressed by "
 "event or ai coding."
 msgstr ""
-"Etkinlik veya yapay zeka kodunun hitap ettiği alanları tanımlamak için "
-"harita düzenleyicisindeki <i>Alanlar</i> menüsünü kullanın"
+"Etkinlik veya yapay zeka koduyla sonradan adreslenecek alanları tanımlamak "
+"için harita düzenleyicisindeki <i>Alanlar</i> menüsünü kullanın"
 
 #. [tip]
 #: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
@@ -4374,21 +4383,31 @@ msgstr "<i>― Vesnot Tasarım Kılavuzu</i>"
 
 #. [tip]
 #: data/tips.cfg:8
+#, fuzzy
+#| msgid ""
+#| "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
+#| "make use of advanced features."
 msgid ""
 "Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use of "
 "advanced features."
 msgstr ""
 "Gelişmiş araçları kullanmak için düzenleyicinin <i>Dosya</i> menüsünden "
-"<i>Yeni Senaryo</i> yaratın."
+"<i>Yeni Senaryo</i> seçin."
 
 #. [tip]
 #: data/tips.cfg:12
+#, fuzzy
+#| msgid ""
+#| "Scenarios saved from the editor in their default folder can be selected "
+#| "in the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” "
+#| "screen."
 msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the mp create screen's <i>User Scenarios</i> section."
 msgstr ""
-"Düzenleyiciden öntanımlı dizine kaydedilen senaryolar çok oyunculu oluşturma "
-"ekranında <i>Kullanıcı Senaryoları</i> bölümünden seçilebilir."
+"Düzenleyiciden öntanımlı senaryo dizinine kaydedilen senaryolar çok oyunculu "
+"\"Oyun Oluştur\" ekranında <i>Kullanıcı Senaryoları</i> bölümünden "
+"seçilebilir."
 
 #. [tip]
 #: data/tips.cfg:16
@@ -8324,6 +8343,9 @@ msgstr "Beyaztahta Ayarları"
 
 #~ msgid "waiting for^an advancement choice"
 #~ msgstr "bir terfi seçeneği"
+
+#~ msgid "Nobody"
+#~ msgstr "Hiçkimse"
 
 #~ msgid "scenario_abbreviation^S"
 #~ msgstr "S"

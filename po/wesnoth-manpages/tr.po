@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manpages\n"
 "POT-Creation-Date: 2018-02-12 20:02+0300\n"
-"PO-Revision-Date: 2019-06-28 14:37+0300\n"
+"PO-Revision-Date: 2019-07-02 23:50+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -1094,8 +1094,8 @@ msgstr ""
 "YZ denetleyicisi tarafından belirtilen taraf için kullanılacak standartdışı "
 "bir algoritma seçer. Algoritma, \"data/ai/ais\" veya \"data/ai/dev\" "
 "altındaki bir çekirdek ya da bir eklenti tarafından tanımlanmış bir "
-"algoritmadaki bir B<[ai]> etiketi ile tanımlanır. Mevcut değerler "
-"şunlardır: B<idle_ai> ve B<experimental_ai>."
+"algoritmadaki bir B<[ai]> etiketi ile tanımlanır. Mevcut değerler şunlardır: "
+"B<idle_ai> ve B<experimental_ai>."
 
 # type: TP
 #. type: TP
@@ -1107,11 +1107,15 @@ msgstr "B<--controller>I<\\ sayı>B<:>I<değer>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:359
+#, fuzzy
+#| msgid ""
+#| "selects the controller for this side. Available values: B<human>, B<ai> "
+#| "and B<null>."
 msgid ""
 "selects the controller for this side. Available values: B<human> and B<ai>."
 msgstr ""
-"tarafı kimin oynayacağı belirtilir. Olası değerler: B<human> ve B<ai> "
-"(sırayla insan ve yapay zeka)."
+"tarafı kimin oynayacağı belirtilir. Olası değerler: B<human>. B<ai> ve  "
+"B<null>. (sırayla insan, yapay zeka ve hiçbiri)."
 
 # type: TP
 #. type: TP
@@ -2280,7 +2284,6 @@ msgstr ""
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)"
 
-#, no-wrap
 #~ msgid "B<--all-translations>"
 #~ msgstr "B<--all-translations>"
 
@@ -2291,7 +2294,6 @@ msgstr "B<wesnoth>(6)"
 #~ "Oyun içi dil seçim listesindeki tüm çevirileri yeterli olmasalar bile, "
 #~ "gösterir."
 
-#, no-wrap
 #~ msgid "B<--campaign-skip-story>"
 #~ msgstr "B<--campaign-skip-story>"
 
@@ -2300,8 +2302,6 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "olayların B<başlangıcındaki> [hikaye} ekranlarını atlar."
 
 # type: TP
-#, no-wrap
-#~| msgid "B<--nomusic>"
 #~ msgid "B<--clock>"
 #~ msgstr "B<--clock>"
 
@@ -2310,7 +2310,6 @@ msgstr "B<wesnoth>(6)"
 #~ "çizim zamanlayıcısını denerken saati göstermek için bu seçeneği ekler."
 
 # type: TP
-#, no-wrap
 #~ msgid "B<--config-dir>I<\\ name>"
 #~ msgstr "B<--config-dir>I<\\ isim>"
 
@@ -2318,19 +2317,14 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "Kullanım dışı, yerine B<--userdata-dir> kullanın."
 
 # type: TP
-#, no-wrap
-#~| msgid "B<--config-path>"
 #~ msgid "B<--config-path>"
 #~ msgstr "B<--config-path>"
 
 # type: TP
-#~| msgid "B<--path>"
 #~ msgid "Deprecated, use B<--userdata-path>."
 #~ msgstr "Kullanım dışı, yerine B<--userdata-path> kullanın."
 
 # type: TP
-#, no-wrap
-#~| msgid "B<-d, --debug>"
 #~ msgid "B<--debug-lua>"
 #~ msgstr "B<--debug-lua>"
 
@@ -2352,8 +2346,6 @@ msgstr "B<wesnoth>(6)"
 #~ "birlikte kullanılmadıkça B<deprecation> için B<none> öntanımlıdır."
 
 # type: TP
-#, no-wrap
-#~| msgid "B<--no-delay>"
 #~ msgid "B<--new-widgets>"
 #~ msgstr "B<--new-widgets>"
 
@@ -2368,8 +2360,6 @@ msgstr "B<wesnoth>(6)"
 #~ "da çalışacaktır."
 
 # type: TP
-#, no-wrap
-#~| msgid "B<--gzip>I<\\ infile>"
 #~ msgid "B<--plugin>I<\\ script>"
 #~ msgstr "B<--plugin>I<\\ betik>"
 
@@ -2383,8 +2373,6 @@ msgstr "B<wesnoth>(6)"
 #~ "ve periyodik olarak güncellemelerle uyanacak bir işlev döndürmelidir."
 
 # type: TP
-#, no-wrap
-#~| msgid "B<--fps>"
 #~ msgid "B<--proxy>"
 #~ msgstr "B<--proxy>"
 
@@ -2392,7 +2380,6 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "ağ bağlatıları için vekil kullanımını etkin kılar."
 
 # type: TP
-#, no-wrap
 #~ msgid "B<--proxy-address>I<\\ address>"
 #~ msgstr "B<--proxy-address>I<\\ adres>"
 
@@ -2400,8 +2387,6 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "vekil sunucu için I<adres> belirtir."
 
 # type: TP
-#, no-wrap
-#~| msgid "B<-p\\ >I<port>B<,\\ --port>I<\\ port>"
 #~ msgid "B<--proxy-port>I<\\ port>"
 #~ msgstr "B<--proxy-port>I<\\ port>"
 
@@ -2409,7 +2394,6 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "vekil sunucu için I<port> belirtir."
 
 # type: TP
-#, no-wrap
 #~ msgid "B<--proxy-user>I<\\ username>"
 #~ msgstr "B<--proxy-user>I<\\ kullanıcı>"
 
@@ -2417,8 +2401,6 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "vekil sunucuya oturum açacak I<kullanıcı> belirtilir."
 
 # type: TP
-#, no-wrap
-#~| msgid "B<db_password>"
 #~ msgid "B<--proxy-password>I<\\ password>"
 #~ msgstr "B<--proxy-password>I<\\ parola>"
 
@@ -2426,8 +2408,6 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr "vekil sunucuya oturum açacak I<parola> belirtilir."
 
 # type: TP
-#, no-wrap
-#~| msgid "B<--gzip>I<\\ infile>"
 #~ msgid "B<--script>I<\\ file>"
 #~ msgstr "B<--script>I<\\ dosya>"
 
@@ -2435,7 +2415,6 @@ msgstr "B<wesnoth>(6)"
 #~ "(experimental)  I<file> containing a Lua script to control the client."
 #~ msgstr "istemciyi yönetecek Lua betiğini içeren I<dosya> (deneyseldir)."
 
-#, no-wrap
 #~ msgid "B<--translations-over>I<\\ percent>"
 #~ msgstr "B<--translations-over>I<\\ yüzde>"
 
@@ -2448,8 +2427,6 @@ msgstr "B<wesnoth>(6)"
 #~ "arasındadır."
 
 # type: TP
-#, no-wrap
-#~| msgid "B<--config-path>"
 #~ msgid "B<--unsafe-scripts>"
 #~ msgstr "B<--unsafe-scripts>"
 
@@ -2463,8 +2440,6 @@ msgstr "B<wesnoth>(6)"
 #~ "wesnoth çalıştırılabiliri ile aynı yetkileri sağlar."
 
 # type: TP
-#, no-wrap
-#~| msgid "B<--era=>I<value>"
 #~ msgid "B<--label>I<\\ label>"
 #~ msgstr "B<--label>I<\\ etiket>"
 
