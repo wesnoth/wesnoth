@@ -53,8 +53,8 @@
  ### Language and i18n
    * Updated translations: British English, Bulgarian, Chinese (Simplified),
      Chinese (Traditional), Czech, Dutch, French, Galician, German, Hungarian,
-     Italian, Japanese, Lithuanian, Polish, Russian, Scottish Gaelic, Slovak,
-     Spanish, Turkish, Ukrainian.
+     Italian, Japanese, Lithuanian, Polish, Portuguese (Brazil), Russian,
+     Scottish Gaelic, Slovak, Spanish, Turkish, Ukrainian.
  ### Lua API
    * Allow specifying custom flags (in particular teleport) when using a custom cost function in wesnoth.find_path
    * Add wml.load() and wml.parse() functions
