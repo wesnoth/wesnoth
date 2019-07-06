@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 17:01 UTC\n"
-"PO-Revision-Date: 2019-03-20 11:14+0100\n"
+"PO-Revision-Date: 2019-06-30 20:30+0200\n"
 "Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
@@ -25,12 +25,17 @@ msgstr "4s - Een nieuw land"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
+#, fuzzy
+#| msgid ""
+#| "This 4p survival scenario allows you to construct buildings and terraform "
+#| "the land. The recommended starting gold is 100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. Use map settings. The recommended starting gold is 100."
 msgstr ""
 "In dit survival scenario voor 4 spelers kan je gebouwen bouwen en land "
-"transformeren. Gebruik de kaartinstellingen. Aanbevolen startgoud is 100"
+"transformeren. Gebruik de kaartinstellingen. Gebruikt kaartinstellingen. "
+"Aanbevolen startgoud is 100"
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:27
@@ -53,6 +58,8 @@ msgstr "Klik met je rechtermuisknop op je leider voor hulp tijdens je beurt"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:37
+#, fuzzy
+#| msgid "You must survive until turn 25"
 msgid "You must survive until turn 25."
 msgstr "Je moet overleven tot beurt 25"
 
@@ -371,8 +378,10 @@ msgstr "Een nieuw land - Help"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:112
+#, fuzzy
+#| msgid "Select a topic:"
 msgid "Select a topic."
-msgstr "Selecteer een onderwerp"
+msgstr "Selecteer een onderwerp:"
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:115
@@ -845,6 +854,36 @@ msgstr "Kosten: 7g"
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:576
 msgid "Clear the Ground"
 msgstr "Maak de grond schoon"
+
+#~ msgid "teamname^Monsters"
+#~ msgstr "Monsters"
+
+#~ msgid "In this scenario you build up an economy"
+#~ msgstr "In dit scenario zorg je voor een startende economie"
+
+#~ msgid "Move any unit next to captives and they will join your side"
+#~ msgstr ""
+#~ "Verplaats een eenheid naast gevangenen en ze zullen zich bij je voegen"
+
+#~ msgid "Right-click on a leader to read about the game mechanics"
+#~ msgstr ""
+#~ "Klik met rechter muisknop op een leider om over spelmechanismen te kunnen "
+#~ "lezen"
+
+#~ msgid "Rules:"
+#~ msgstr "Regels:"
+
+#~ msgid "Goal:"
+#~ msgstr "Doel:"
+
+#~ msgid "Hint:"
+#~ msgstr "Hint:"
+
+#~ msgid "Hints:"
+#~ msgstr "Hints:"
+
+#~ msgid "Defeat all enemy leaders"
+#~ msgstr "Versla alle vijandelijke leiders"
 
 #~ msgid "Convert to Grassland"
 #~ msgstr "Verander in grasland"
@@ -1358,9 +1397,6 @@ msgstr "Maak de grond schoon"
 
 #~ msgid "Survive and defeat the waves of opposition."
 #~ msgstr "Overleef en versla iedere golf tegenstanders."
-
-#~ msgid "Defeat all waves"
-#~ msgstr "Versla alle aanvalsgolven."
 
 #~ msgid "Lose all your team's leaders"
 #~ msgstr "Dood van een van de teamleiders."
