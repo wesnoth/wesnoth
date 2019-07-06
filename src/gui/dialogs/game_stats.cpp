@@ -129,7 +129,9 @@ void game_stats::pre_show(window& window)
 		column_stats["label"] = leader_name + "\n" + controller_name(team);
 		row_data_stats.emplace("team_leader_name", column_stats);
 
-		column_stats["label"] = team.user_team_name().empty() ? team.team_name() : team.user_team_name();
+		// The static cast on the next line is necessary, otherwise it's ambiguous whether the right-hand-side should be a std::string
+		// or a t_string, and both of those classes are convertible to the other one.
+		column_stats["label"] = team.user_team_name().empty() ? static_cast<t_string> (team.team_name()) : team.user_team_name();
 		row_data_stats.emplace("team_name", column_stats);
 
 		// Only fill in the rest of the info if the side is known...
