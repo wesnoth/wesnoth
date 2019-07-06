@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-06-30 15:14+0300\n"
-"PO-Revision-Date: 2019-03-20 11:13+0100\n"
+"PO-Revision-Date: 2019-06-30 20:13+0200\n"
 "Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -113,16 +113,12 @@ msgstr "Chatbericht veroudering"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid ""
-#| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#| "0 to disable"
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
 msgstr ""
 "Aantal minuten wachten voordat een chatbericht verwijderd wordt. Schakel uit "
-"met 0"
+"met 0."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:103
@@ -4383,16 +4379,12 @@ msgstr "rang"
 
 #. [tip]
 #: data/tips.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Use the map editor's <i>Areas</i> menu to define regions later addressed "
-#| "by event or ai coding."
 msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
 msgstr ""
 "Gebruik de kaart editor <i>Gebieden</i> menu om regio's te definiëren die "
-"later wordt aangesproken bij gebeurtenis of ai codering."
+"later wordt aangesproken bij gebeurtenis of AI codering."
 
 #. [tip]
 #: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
@@ -4401,29 +4393,22 @@ msgstr "<i>― De Wesnoth Ontwerp Gids</i>"
 
 #. [tip]
 #: data/tips.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use "
-#| "of advanced features."
 msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
 msgstr ""
-"Creëer een <i>Nieuw Scenario</i> in het <i>Bestand</i> menu van de editor om "
-"gebruik te maken van geavanceerde mogelijkheden."
+"In de kaarteditor, selecteer <i>Nieuw Scenario</i> in het <i>Bestand</i> "
+"menu om gebruik te maken van de geavanceerde mogelijkheden."
 
 #. [tip]
 #: data/tips.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Scenarios saved from the editor in their default folder can be selected "
-#| "in the mp create screen's <i>User Scenarios</i> section."
 msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” screen."
 msgstr ""
-"Scenario's opgeslagen vanuit de editor in de standaard map kunnen worden "
-"geselecteerd in het mp creatie scherm <i>Gebruiker Scenarios</i> gedeelte."
+"Scenario's opgeslagen vanuit de editor in hun standaard map kunnen "
+"geselecteerd worden in het <i>Aangepaste Scenario's</i> deel van de Meer "
+"Spelers \"Creëer Spel\" scherm."
 
 #. [tip]
 #: data/tips.cfg:16
@@ -6098,7 +6083,7 @@ msgstr "Lokale speler"
 
 #: src/game_initialization/connect_engine.cpp:1317
 msgid "Nobody"
-msgstr ""
+msgstr "Niemand"
 
 #: src/game_initialization/connect_engine.cpp:1320
 msgid "Reserved"
