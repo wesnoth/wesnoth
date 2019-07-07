@@ -129,7 +129,7 @@ void game_stats::pre_show(window& window)
 		column_stats["label"] = leader_name + "\n" + controller_name(team);
 		row_data_stats.emplace("team_leader_name", column_stats);
 
-		column_stats["label"] = team.user_team_name().empty() ? team.team_name() : team.user_team_name();
+		column_stats["label"] = team.user_team_name().empty() ? team.team_name() : team.user_team_name().str();
 		row_data_stats.emplace("team_name", column_stats);
 
 		// Only fill in the rest of the info if the side is known...
