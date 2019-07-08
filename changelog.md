@@ -128,6 +128,11 @@
    * The sidebar, recall dialog, etc now show attack's range (melee/ranged) and
      damage type (arcane/blade/cold/...) using icons. (PR #3732, #3740)
    * Add hit count statistics to the statistics dialog. (PR #4070)
+   * Added FULL option for :droid command. (PR#4147)
+   * Observers must now also enter the password before observing a game that is password protected. (PR#4140)
+   * A message is now displayed when observers share IP addresses. (PR#4138)
+   * Game bans are now also enforced by username. (PR#4139)
+   * Usernames on the host's ignore list are automatically banned. (PR#4143)
 
 ## Version 1.14.8+dev
  ### Campaigns
