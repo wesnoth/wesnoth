@@ -174,7 +174,7 @@ void statistics_dialog::add_damage_row(
 	data.emplace("damage_overall", item);
 
 	item["label"] = "";
-	data.emplace("overall_percent", item);
+	data.emplace("overall_score", item);
 
 	if(show_this_turn) {
 		label& this_turn_header = find_widget<label>(&window, "damage_this_turn_header", false);
@@ -184,7 +184,7 @@ void statistics_dialog::add_damage_row(
 		data.emplace("damage_this_turn", item);
 
 		item["label"] = "";
-		data.emplace("this_turn_percent", item);
+		data.emplace("this_turn_score", item);
 	} else {
 		// TODO: Setting the label to "" causes "This Turn" not to be drawn when changing back to the current scenraio view, so set the label to " " (a single space) instead.
 		label& this_turn_header = find_widget<label>(&window, "damage_this_turn_header", false);
@@ -200,7 +200,7 @@ struct hitrate_table_element
 	// The string with <actual number of hits>/<expected number of hits>
 	std::string hitrate_str;
 	// The string with the a priori probability of that result
-	std::string percentage_str;
+	std::string pvalue_str;
 };
 
 // Return the strings to use in the "Hits" table, showing actual and expected number of hits.
@@ -317,8 +317,8 @@ void statistics_dialog::add_hits_row(
 	element = tally(by_cth, more_is_better);
 	item["label"] = element.hitrate_str;
 	data.emplace("hits_overall", item);
-	item["label"] = element.percentage_str;
-	data.emplace("overall_percent", item);
+	item["label"] = element.pvalue_str;
+	data.emplace("overall_score", item);
 
 	if(show_this_turn) {
 		label& this_turn_header = find_widget<label>(&window, "hits_this_turn_header", false);
@@ -327,8 +327,8 @@ void statistics_dialog::add_hits_row(
 		element = tally(turn_by_cth, more_is_better);
 		item["label"] = element.hitrate_str;
 		data.emplace("hits_this_turn", item);
-		item["label"] = element.percentage_str;
-		data.emplace("this_turn_percent", item);
+		item["label"] = element.pvalue_str;
+		data.emplace("this_turn_score", item);
 	} else {
 		// TODO: Setting the label to "" causes "This Turn" not to be drawn when changing back to the current scenraio view, so set the label to " " (a single space) instead.
 		label& this_turn_header = find_widget<label>(&window, "hits_this_turn_header", false);
