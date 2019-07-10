@@ -64,7 +64,8 @@ function ca_grab_villages:evaluation(cfg, data)
             if wesnoth.is_enemy(owner, wesnoth.current.side) then village_rating = village_rating + 20000 end
         end
 
-        local _, enemy_distance_from_village = AH.get_closest_enemy(v)
+        local village_closest_enemy, enemy_distance_from_village = AH.get_closest_enemy(v)
+        if (not village_closest_enemy) then enemy_distance_from_village = 0 end
 
         -- Now we go on to the unit-dependent rating
         local best_unit_rating = - math.huge
@@ -96,7 +97,8 @@ function ca_grab_villages:evaluation(cfg, data)
                         end
 
                         -- Prefer not backtracking and moving more distant units to capture villages
-                        local _, enemy_distance_from_unit = AH.get_closest_enemy({u.x, u.y})
+                        local unit_closest_enemy, enemy_distance_from_unit = AH.get_closest_enemy({u.x, u.y})
+                        if (not unit_closest_enemy) then enemy_distance_from_unit = 0 end
                         rating = rating - (enemy_distance_from_village + enemy_distance_from_unit)/5
 
                         if (rating > best_unit_rating) then
