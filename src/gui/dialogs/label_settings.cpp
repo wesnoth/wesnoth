@@ -122,7 +122,7 @@ bool label_settings::execute(display_context& dc) {
 }
 
 void label_settings::toggle_category(widget& box, std::string category) {
-	all_labels[category] = (static_cast<toggle_button&>(box).get_value() != 0);
+	all_labels[category] = static_cast<toggle_button&>(box).get_value_bool();
 }
 } // namespace dialogs
 } // namespace gui2
