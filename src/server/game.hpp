@@ -408,8 +408,7 @@ private:
 	bool is_legal_command(const simple_wml::node& command, const socket_ptr& user);
 
 	/**
-	 * Checks whether a user has the same IP as members of this game.
-	 * If observer is true it only checks against players.
+	 * Checks whether a user has the same IP as any other members of this game.
 	 * @return  A comma separated string of members with matching IPs.
 	 */
 	std::string has_same_ip(const socket_ptr& user) const;
