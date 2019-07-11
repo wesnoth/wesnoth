@@ -117,7 +117,7 @@ bool label_settings::execute(display_context& dc) {
 			hidden_categories.push_back(lbl.first);
 		}
 	}
-	dc.hidden_label_categories_ref().swap(hidden_categories);
+	dc.hidden_label_categories().swap(hidden_categories);
 	return true;
 }
 

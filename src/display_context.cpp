@@ -20,10 +20,6 @@
 #include "units/unit.hpp"
 #include "units/map.hpp"
 
-std::vector<std::string>& display_context::hidden_label_categories_ref() {
-	return const_cast<std::vector<std::string>&>(this->hidden_label_categories());
-}
-
 const team& display_context::get_team(int side) const
 {
 	return teams().at(side - 1);

@@ -38,7 +38,7 @@ public:
 	virtual const gamemap & map() const = 0;
 	virtual const unit_map & units() const = 0;
 	virtual const std::vector<std::string> & hidden_label_categories() const = 0;
-	std::vector<std::string> & hidden_label_categories_ref();
+	virtual std::vector<std::string> & hidden_label_categories() = 0;
 	const team& get_team(int side) const;
 
 	// this one is only a template function to prevent compilation erros when class team is an incomplete type.

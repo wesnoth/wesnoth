@@ -159,6 +159,11 @@ public:
 		return lbl_categories_;
 	}
 
+	virtual std::vector<std::string>& hidden_label_categories() override
+	{
+		return lbl_categories_;
+	}
+
 	/**
 	 * Replace the [time]s of the currently active area.
 	 */
