@@ -122,7 +122,7 @@ void label_settings::pre_show(window& window)
 	}
 }
 
-void label_settings::post_show(window& window)
+void label_settings::post_show(window& /*window*/)
 {
 	if(get_retval() == retval::OK) {
 		std::vector<std::string> hidden_categories;
