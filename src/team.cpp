@@ -986,7 +986,7 @@ std::string team::get_side_color_id_from_config(const config& cfg)
 
 std::string team::get_side_highlight_pango(int side)
 {
-	return get_side_color_range(side + 1).mid().to_hex_string();
+	return get_side_color_range(side).mid().to_hex_string();
 }
 
 void team::log_recruitable() const

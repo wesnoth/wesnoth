@@ -156,7 +156,7 @@ chat_msg::chat_msg(const config &cfg)
 	if (side==0) {
 		color_ = "white";//observers
 	} else {
-		color_ = team::get_side_highlight_pango(side-1);
+		color_ = team::get_side_highlight_pango(side);
 	}
 	time_ = get_time(cfg);
 	/*
