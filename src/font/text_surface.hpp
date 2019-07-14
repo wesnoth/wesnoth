@@ -17,7 +17,7 @@
 #include "font_id.hpp" // for text_chunk
 #include "color.hpp"
 
-#include <SDL_ttf.h>
+#include <SDL2/SDL_ttf.h>
 
 #include <string>
 #include <vector>

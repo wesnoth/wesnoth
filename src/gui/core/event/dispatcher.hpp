@@ -21,7 +21,7 @@
 #include "utils/functional.hpp"
 #include "utils/type_trait_aliases.hpp"
 
-#include <SDL_events.h>
+#include <SDL2/SDL_events.h>
 
 #include <boost/mpl/int.hpp>
 
@@ -253,8 +253,8 @@ public:
 			  widget& target,
 			  const point& pos,
 			  const point& distance);
-	
-	
+
+
 	/**
 	 * Fires an event which takes touch-gesture parameters.
 	 *
@@ -271,7 +271,7 @@ public:
 			  float dTheta,
 			  float dDist,
 			  Uint8 numFingers);
-	
+
 
 	/**
 	 * Fires an event which takes notification parameters.

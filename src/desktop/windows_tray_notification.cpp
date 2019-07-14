@@ -14,7 +14,7 @@
 
 #include "desktop/windows_tray_notification.hpp"
 
-#include <SDL_syswm.h>
+#include <SDL2/SDL_syswm.h>
 
 #include "gettext.hpp"
 #include "serialization/string_utils.hpp"

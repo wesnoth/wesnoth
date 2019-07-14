@@ -17,7 +17,7 @@
 #include "events.hpp"
 #include "gui/core/log.hpp"
 
-#include <SDL_timer.h>
+#include <SDL2/SDL_timer.h>
 
 #include <map>
 #include <mutex>
@@ -45,7 +45,7 @@ static std::map<size_t, timer>& get_timers()
 	static std::map<size_t, timer>* ptimers = new std::map<size_t, timer>();
 	return *ptimers;
 }
-/** 
+/**
 	The id of the event being executed, 0 if none.
 	NOTE: it is possible that multiple timers are executed at the same time
 	      if one of the timer starts an event loop for example if its handler

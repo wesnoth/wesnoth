@@ -24,7 +24,7 @@ class surface;
 #include <string>
 #include "serialization/unicode_types.hpp"
 
-#include <SDL_rect.h>
+#include <SDL2/SDL_rect.h>
 
 namespace font {
 

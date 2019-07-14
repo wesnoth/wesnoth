@@ -11,8 +11,8 @@
    See the COPYING file for more details.
 */
 
-#include <SDL.h>
-#include <SDL_rwops.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_rwops.h>
 
 #include "filesystem.hpp"
 #include "log.hpp"

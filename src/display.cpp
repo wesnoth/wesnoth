@@ -51,7 +51,7 @@
 #include "show_dialog.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 
-#include <SDL_image.h>
+#include <SDL2/SDL_image.h>
 
 #include <array>
 #include <cmath>

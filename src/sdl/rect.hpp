@@ -22,7 +22,7 @@
 #include "global.hpp"
 #include "utils.hpp"
 
-#include <SDL_rect.h>
+#include <SDL2/SDL_rect.h>
 
 struct point;
 

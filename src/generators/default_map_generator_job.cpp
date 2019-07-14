@@ -31,7 +31,7 @@
 #include "seed_rng.hpp"
 #include "wml_exception.hpp"
 
-#include <SDL_timer.h>
+#include <SDL2/SDL_timer.h>
 
 static lg::log_domain log_mapgen("mapgen");
 #define ERR_NG LOG_STREAM(err, log_mapgen)
@@ -692,9 +692,9 @@ static void flood_name(const map_location& start, const std::string& name, std::
 std::string default_map_generator_job::default_generate_map(generator_data data, std::map<map_location,std::string>* labels, const config& cfg)
 {
 	log_scope("map generation");
-	
-	LOG_NG << "default_generate_map parameters" 
-		<< " width=" << data.width 
+
+	LOG_NG << "default_generate_map parameters"
+		<< " width=" << data.width
 		<< " height=" << data.height
 		<< " nplayers=" << data.nplayers
 		<< " nvillages=" << data.nvillages
