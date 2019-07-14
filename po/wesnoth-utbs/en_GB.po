@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-06-30 12:14 UTC\n"
-"PO-Revision-Date: 2019-03-12 12:06+1100\n"
+"PO-Revision-Date: 2019-07-08 13:19+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -1119,6 +1119,8 @@ msgid ""
 "Your units become dehydrated during the day, losing hitpoints and damage "
 "when they are not on a water hex"
 msgstr ""
+"Your units become dehydrated during the day, losing hit-points and damage "
+"when they are not on a water hex"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:218
@@ -1126,16 +1128,18 @@ msgid ""
 "Units are refreshed at the start of your turn when they are on a water or "
 "oasis hex"
 msgstr ""
+"Units are refreshed at the start of your turn when they are on a water or "
+"oasis hex"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:221
 msgid "Healers can prevent dehydration from getting worse, but cannot heal it"
-msgstr ""
+msgstr "Healers can prevent dehydration from getting worse, but cannot heal it"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:224
 msgid "Healers are unable to heal adjacent units during the day"
-msgstr ""
+msgstr "Healers are unable to heal adjacent units during the day"
 
 #. [label]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:248
@@ -1660,19 +1664,14 @@ msgstr ""
 
 #. [message]: speaker=Vengeful Lord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1287
-#, fuzzy
-#| msgid ""
-#| "Elf with a bow, I remember you. You thought me defeated, but I am back "
-#| "even more powerful than before. Death reigns eternal, your scorched bones "
-#| "and lifeless body will join my host."
 msgid ""
 "Elf of the sands, I remember you. You thought me defeated, but I am back "
 "even more powerful than before. Death reigns eternal, your scorched bones "
 "and lifeless body will join my host."
 msgstr ""
-"Elf with a bow, I remember you. You thought me defeated, but I am back even "
-"more powerful than before. Death reigns eternal, your scorched bones and "
-"lifeless body will join my host."
+"Elf of the sands, I remember you. You thought me defeated, but I am back "
+"even more powerful than before. Death reigns eternal, your scorched bones "
+"and lifeless body will join my host."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1292
@@ -7744,10 +7743,8 @@ msgstr ""
 
 #. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2039
-#, fuzzy
-#| msgid "Break the circle"
 msgid "Break the circle."
-msgstr "Break the circle"
+msgstr "Break the circle."
 
 #. [command]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2058
@@ -9437,7 +9434,7 @@ msgid ""
 "immediate vicinity we should be pretty safe."
 msgstr ""
 "Indeed. Undead ghosts such as these are often bound to the places they died: "
-"the farther away they travel, the weaker they are. So if we move out of the "
+"the further away they travel, the weaker they are. So if we move out of the "
 "immediate vicinity we should be pretty safe."
 
 #. [message]: speaker=Kaleh
@@ -10846,16 +10843,12 @@ msgstr ""
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1858
-#, fuzzy
-#| msgid ""
-#| "I have followed you this far Kaleh, I will not abandon you now. But I "
-#| "admit that my faith is shaken. If that is not our god, than what is it?"
 msgid ""
 "I have followed you this far Kaleh, I will not abandon you now. But I admit "
 "that my faith is shaken. If that is not our god, then what is it?"
 msgstr ""
-"I have followed you this far, Kaleh; I will not abandon you now. But I admit "
-"that my faith is shaken. If that is not our god, than what is it?"
+"I have followed you this far, Kaleh, I will not abandon you now. But I admit "
+"that my faith is shaken. If that is not our god, then what is it?"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1862
@@ -15443,33 +15436,6 @@ msgstr "Tauroch Protector"
 
 #. [unit_type]: id=Tauroch Protector, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Protector.cfg:37
-#, fuzzy
-#| msgid ""
-#| "From the journal of Syniel, the sand skipper:\n"
-#| "\n"
-#| "The orcs ambushed me near the oasis at twilight. I had to flee into the "
-#| "desert, but even there, the wolves were nearly fast enough to keep up "
-#| "with me. I ran and ran for hours until I could barely feel my legs and "
-#| "still, they hounded me under the bright moonlight. I thought that I was "
-#| "dead for sure, but as Eloh would have it, I came across a young Tauroch "
-#| "that had wandered away from her pack. She must have sensed my trouble, "
-#| "for she came to me swiftly and fought beside me all through the long "
-#| "night; beyond exhaustion, we somehow managed to drive off dozens of orcs "
-#| "and wolves by ourselves. By dawn, we were alone, but wounded and weary to "
-#| "our bones with nothing but sand in sight. I used what little remained of "
-#| "my supplies to tend to the Tauroch’s wounds, then I succumbed to fatigue "
-#| "and I remember little after that.\n"
-#| "\n"
-#| "-----------------------\n"
-#| "\n"
-#| "I woke up today in the village, tired, but alive. My friends told me that "
-#| "the Tauroch had carried me through the desert for many hours at no little "
-#| "cost to herself, for she was in worse condition than I by the time we had "
-#| "arrived. I can only be grateful that I managed to survive that dreadful "
-#| "night, for it is only by Eloh’s grace that I happened upon such a loyal "
-#| "companion. She is my savior, my watchful guardian, a blessing from the "
-#| "Goddess herself. I think I will call her Nala, meaning ‘Protector’ in our "
-#| "tongue. I am sure we will have many more adventures together."
 msgid ""
 "From the journal of Syniel, the Sand Skipper:\n"
 "\n"
@@ -15516,11 +15482,11 @@ msgstr ""
 "\n"
 "I woke up today in the village, tired, but alive. My friends told me that "
 "the Tauroch had carried me through the desert for many hours at no little "
-"cost to herself, for she was in worse condition than I by the time we had "
-"arrived. I can only be grateful that I managed to survive that dreadful "
+"cost to herself, for she was in worse condition than I was by the time we "
+"had arrived. I can only be grateful that I managed to survive that dreadful "
 "night, for it is only by Eloh’s grace that I happened upon such a loyal "
 "companion. She is my saviour, my watchful guardian, a blessing from the "
-"Goddess herself. I think I will call her Nala, meaning ‘Protector’ in our "
+"goddess herself. I think I will call her Nala, meaning ‘Protector’ in our "
 "tongue. I am sure we will have many more adventures together."
 
 #. [attack]: type=impact

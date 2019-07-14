@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-06-30 12:13 UTC\n"
-"PO-Revision-Date: 2019-03-12 14:33+1100\n"
+"PO-Revision-Date: 2019-07-08 12:55+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #. [scenario]: id=11_Descent_into_Darkness
 #. [campaign]: id=Descent_into_Darkness
@@ -65,6 +65,11 @@ msgid ""
 "sacrificing his own soul in the process.\n"
 "\n"
 msgstr ""
+"The northern frontier town of Parthyn is annually raided by neighbouring "
+"tribes of orcs. Malin Keshar, an outcast mage, seeks to defend his home and "
+"wreak vengeance on the orcs by any means necessary, even if it means "
+"sacrificing his own soul in the process.\n"
+"\n"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:25
@@ -197,15 +202,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:53
-#, fuzzy
-#| msgid ""
-#| "The silence was broken by the irregular shuffle of a man emerging from "
-#| "the trees. He stood before them, a hunched figure with a rasping voice "
-#| "reminiscent of crackling bones. <i>“I am Darken Volk. While I know you do "
-#| "not love my kind, I think it is vital that we put aside our differences "
-#| "for the moment. The orcish menace grows in the north and they will soon "
-#| "return in even greater force. You cannot hope to defend against them "
-#| "without my... help.”</i>"
 msgid ""
 "The silence was broken by the irregular shuffle of a man emerging from the "
 "trees. He stood before them, a hunched figure with a rasping voice "
@@ -221,7 +217,7 @@ msgstr ""
 "not love my kind, I think it is vital that we put aside our differences for "
 "the moment. The orcish menace grows in the north and they will soon return "
 "in even greater force. You cannot hope to defend against them without my... "
-"help.”</i>"
+"help. For now, however, I ask only to refresh myself in your town.”</i>"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:57
@@ -338,10 +334,8 @@ msgstr "Death of Malin Keshar"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:197
-#, fuzzy
-#| msgid "Death of Malin Keshar"
 msgid "Death of Dela Keshar"
-msgstr "Death of Malin Keshar"
+msgstr "Death of Dela Keshar"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:201
@@ -350,10 +344,6 @@ msgstr "Death of Drogan"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:218
-#, fuzzy
-#| msgid ""
-#| "Was it really a good idea to send out a raiding party so soon after the "
-#| "orcs just attacked us? Even father is no longer here..."
 msgid ""
 "Was it really a good idea to send out a raiding party so soon after the orcs "
 "just attacked us? Even Father is no longer here..."
@@ -429,19 +419,14 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:272
-#, fuzzy
-#| msgid ""
-#| "No, Drogan. I raised this corpse with the skills Darken Volk taught me "
-#| "before he left. While I have no love for it, without the help of the "
-#| "dead, we consign ourselves and our families to orcish stewpots!"
 msgid ""
 "No, Drogan. I raised this corpse with the skills Darken Volk taught me "
 "before he left. While I have no love for it, we cannot hope to repel the "
 "orcs without the help of the dead!"
 msgstr ""
 "No, Drogan. I raised this corpse with the skills Darken Volk taught me "
-"before he left. While I have no love for it, without the help of the dead, "
-"we consign ourselves and our families to orcish stew pots!"
+"before he left. While I have no love for it, we cannot hope to repel the "
+"orcs without the help of the dead!"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:277
@@ -459,11 +444,6 @@ msgstr "What? I am hardly evil, Drogan!"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:287
-#, fuzzy
-#| msgid ""
-#| "You say that, brother, but you have been very close-mouthed about why the "
-#| "mages sent you home from Alduin. I am beginning to think that you were "
-#| "already dabbling in this witchcraft even before you met that necromancer!"
 msgid ""
 "You say that, Brother, but you have been very close-mouthed about why the "
 "mages sent you home from Alduin. I am beginning to think that you were "
@@ -615,12 +595,6 @@ msgstr "Begone, Malin. I’ve no wish to see your face around here ever again."
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:505
-#, fuzzy
-#| msgid ""
-#| "That was bravely done, lad, holding the orcs off by yourself. But I fear "
-#| "the raiding party brings grave news from the north. More warlords have "
-#| "begun to mass armies in the hills, no more than a few days north of the "
-#| "Great River. I do not know if we possess the strength to fight them off."
 msgid ""
 "That was bravely done, lad, holding the orcs off by yourself. But I fear the "
 "raiding party brings grave news from the north. More warlords have begun to "
@@ -1640,13 +1614,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:35
-#, fuzzy
-#| msgid ""
-#| "Malin and Darken Volk continue their raids on the orcs and eventually "
-#| "force the usually fractious Whitefang chieftains to unite in opposition. "
-#| "The orcs pursue the two necromancers east toward the mouth of the river "
-#| "men call the Longlier and Elves call the Arkan-thoria, where they manage "
-#| "to surround the humans and force a fight."
 msgid ""
 "Malin and Darken Volk continue their raids on the orcs and eventually force "
 "the usually fractious Whitefang chieftains to unite in opposition. The orcs "
@@ -1656,8 +1623,8 @@ msgid ""
 msgstr ""
 "Malin and Darken Volk continue their raids on the orcs and eventually force "
 "the usually fractious Whitefang chieftains to unite in opposition. The orcs "
-"pursue the two necromancers east towards the mouth of the river men call the "
-"Longlier and elves call the Arkan-thoria, where they manage to surround the "
+"pursue the two necromancers east towards the mouth of the river Men call the "
+"Longlier and Elves call the Arkan-thoria, where they manage to surround the "
 "humans and force a fight."
 
 #. [side]: type=Orcish Warlord, id=Borth
@@ -2402,15 +2369,6 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:854
-#, fuzzy
-#| msgid ""
-#| "O Gods, how did it come to this? My own sister determined to personally "
-#| "see to my demise. Banished from Parthyn, my country, my home... spurned "
-#| "by my people, whom I have given everything for... nothing has gone right "
-#| "ever since I got into an argument with that fat, orc-loving toad Zephrin "
-#| "and tried to curse him. I was only testing my new spell on him! It was "
-#| "only supposed to be a simple curse! How was I supposed to know it would "
-#| "kill him? Blasted Academy."
 msgid ""
 "O gods, how did it come to this? My own sister determined to personally see "
 "to my demise. Banished from Parthyn, my country, my home... spurned by my "
@@ -2501,7 +2459,7 @@ msgid ""
 "with his teacher."
 msgstr ""
 "Malin wakes up to a plume of smoke rising in the east. He gives it only a "
-"brief thought before heading farther west toward Tath. Soon, he reunites "
+"brief thought before heading further west towards Tath. Soon, he reunites "
 "with his teacher."
 
 #. [part]
@@ -3066,17 +3024,17 @@ msgstr "Wait, you aren’t leaving me behind, are you?"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1057
-#, fuzzy
-#| msgid "Escape via the tunnel in the northeast cellar"
 msgid ""
 "Escape the manor (Malin reaches the tunnel in the northeast cellar before "
 "Darken Volk)"
-msgstr "Escape via the tunnel in the north-east cellar"
+msgstr ""
+"Escape the manor (Malin reaches the tunnel in the north-east cellar before "
+"Darken Volk)"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1061
 msgid "Darken Volk reaches the tunnel before Malin does"
-msgstr ""
+msgstr "Darken Volk reaches the tunnel before Malin does"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1085
@@ -3232,10 +3190,6 @@ msgstr "Why don’t you say anything?! Don’t you care at all?!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:325
-#, fuzzy
-#| msgid ""
-#| "... you can’t abandon me too, not the way they did... father, Drogan, "
-#| "Dela..."
 msgid ""
 "... you can’t abandon me too, not the way they did... Father, Drogan, Dela..."
 msgstr ""
@@ -5263,16 +5217,6 @@ msgstr "Frontier Baroness"
 
 #. [unit_type]: id=Frontier Baroness, race=human
 #: data/campaigns/Descent_Into_Darkness/units/Frontier_Baroness.cfg:23
-#, fuzzy
-#| msgid ""
-#| "At Wesnoth’s frontiers, all able-bodied men and women must be able to "
-#| "defend their homes at need. Men are most often trained in the use of "
-#| "sword or bow and are used as soldiers who withstand the brunt of orcish "
-#| "assaults to hold the raiders at bay. Women, instead, learn to use the "
-#| "staff and sling and are most effective as scouts and ambushers. The most "
-#| "proficient are powerful skirmishers and are highly adept at "
-#| "reconnaissance, allowing them to often outmaneuver and entrap orcish "
-#| "raiders."
 msgid ""
 "At Wesnoth’s frontiers, all able-bodied men and women must be able to defend "
 "their homes in times of need. Men are most often trained in the use of sword "
@@ -5283,12 +5227,12 @@ msgid ""
 "to often outmaneuver and entrap orcish raiders."
 msgstr ""
 "At Wesnoth’s frontiers, all able-bodied men and women must be able to defend "
-"their homes at times of need. Men are most often trained in the use of sword "
+"their homes in times of need. Men are most often trained in the use of sword "
 "or bow and are used as soldiers who withstand the brunt of orcish assaults "
 "to hold the raiders at bay. Women, instead, learn to use the staff and sling "
 "and are most effective as scouts and ambushers. The most proficient are "
 "powerful skirmishers and are highly adept at reconnaissance, allowing them "
-"to often outmaneuvre and entrap orcish raiders."
+"to often outmanoeuvre and entrap orcish raiders."
 
 #: data/campaigns/Descent_Into_Darkness/utils/characters.cfg:28
 msgid "Dela Keshar"
