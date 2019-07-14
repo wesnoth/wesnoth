@@ -14,8 +14,8 @@
 
 #pragma once
 
-#include <SDL_events.h>
-#include <SDL.h>
+#include <SDL2/SDL_events.h>
+#include <SDL2/SDL.h>
 #include <memory>
 #include <vector>
 #include <string>

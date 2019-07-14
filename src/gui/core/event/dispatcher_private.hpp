@@ -19,7 +19,7 @@
 #include "gui/widgets/widget.hpp"
 #include "utils/type_trait_aliases.hpp"
 
-#include <SDL_events.h>
+#include <SDL2/SDL_events.h>
 
 #include <boost/mpl/for_each.hpp>
 #include <boost/range/adaptor/reversed.hpp>

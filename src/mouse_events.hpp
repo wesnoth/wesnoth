@@ -23,7 +23,7 @@
 
 #include <set>                          // for set
 #include <vector>                       // for vector
-#include <SDL_events.h>                 // for SDL_MouseButtonEvent
+#include <SDL2/SDL_events.h>                 // for SDL_MouseButtonEvent
 
 class game_display;
 class battle_context;  // lines 23-23
@@ -84,7 +84,7 @@ public:
 		const bool fire_event = true);
 
 	void move_action(bool browse);
-	
+
 	void touch_action(const map_location hex, bool browse);
 
 	void select_or_action(bool browse);

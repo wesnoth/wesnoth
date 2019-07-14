@@ -31,7 +31,7 @@
 #include "sdl/surface.hpp"
 #include "serialization/unicode.hpp"
 
-#include <SDL_ttf.h>
+#include <SDL2/SDL_ttf.h>
 
 #include <map>
 #include <string>

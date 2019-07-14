@@ -25,7 +25,7 @@
 #include "sdl/rect.hpp"
 #include "tstring.hpp"
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 namespace gui2
 {

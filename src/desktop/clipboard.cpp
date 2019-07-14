@@ -18,8 +18,8 @@
 #include "serialization/unicode.hpp"
 #include <algorithm>
 
-#include <SDL_events.h>
-#include <SDL_clipboard.h>
+#include <SDL2/SDL_events.h>
+#include <SDL2/SDL_clipboard.h>
 
 #define CLIPBOARD_FUNCS_DEFINED
 

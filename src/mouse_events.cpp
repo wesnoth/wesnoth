@@ -44,7 +44,7 @@
 #include "whiteboard/manager.hpp"  // for manager, etc
 #include "whiteboard/typedefs.hpp" // for whiteboard_lock
 
-#include <SDL_mouse.h> // for SDL_GetMouseState
+#include <SDL2/SDL_mouse.h> // for SDL_GetMouseState
 #include <cassert>     // for assert
 #include <new>         // for bad_alloc
 #include <ostream>     // for operator<<, basic_ostream, etc
@@ -99,14 +99,14 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 	// Frankensteining from mouse_motion(), as it has a lot in common, but a lot of differences too.
 	// Copy-pasted from everywhere. TODO: generalize the two.
 	SDL_GetMouseState(&x,&y);
-	
+
 	// This is from mouse_handler_base::mouse_motion_default()
 	tooltips::process(x, y);
-	
+
 	if(simple_warp_) {
 		return;
 	}
-	
+
 	if(minimap_scrolling_) {
 		const map_location& mini_loc = gui().minimap_location_on(x,y);
 		if(mini_loc.valid()) {
@@ -120,7 +120,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 			minimap_scrolling_ = false;
 		}
 	}
-	
+
 	// Fire the drag & drop only after minimal drag distance
 	// While we check the mouse buttons state, we also grab fresh position data.
 	int mx = drag_from_x_; // some default value to prevent unlikely SDL bug
@@ -152,14 +152,14 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 		}
 		return;
 	}
-	
+
 	// now copy-pasting mouse_handler::mouse_motion()
-	
+
 	game_board & board = pc_.gamestate().board_;
-	
+
 	if(new_hex == map_location::null_location())
 		new_hex = gui().hex_clicked_on(x,y);
-	
+
 	if(new_hex != last_hex_) {
 		update = true;
 		if( pc_.get_map_const().on_board(last_hex_) ) {
@@ -175,11 +175,11 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 		}
 		last_hex_ = new_hex;
 	}
-	
+
 	if(reachmap_invalid_) update = true;
-	
+
 	if(!update) return;
-	
+
 	if(reachmap_invalid_) {
 		reachmap_invalid_ = false;
 		if(!current_paths_.destinations.empty() && !show_partial_move_) {
@@ -195,7 +195,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 			// we do never deselect here, mainly because of canceled attack-move
 		}
 	}
-	
+
 	// reset current_route_ and current_paths if not valid anymore
 	// we do it before cursor selection, because it uses current_paths_
 	if( !pc_.get_map_const().on_board(new_hex) ) {
@@ -203,7 +203,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 		gui().set_route(nullptr);
 		pc_.get_whiteboard()->erase_temp_move();
 	}
-	
+
 	if(unselected_paths_) {
 		unselected_paths_ = false;
 		current_paths_ = pathfind::paths();
@@ -217,11 +217,11 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 
 	gui().highlight_hex(new_hex);
 	pc_.get_whiteboard()->on_mouseover_change(new_hex);
-	
+
 	unit_map::iterator selected_unit;
 	unit_map::iterator mouseover_unit;
 	map_location attack_from;
-	
+
 	{ // start planned unit map scope
 		wb::future_map_if_active planned_unit_map;
 		selected_unit = found_unit;
@@ -229,7 +229,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 
 		// we search if there is an attack possibility and where
 		attack_from = current_unit_attacks_from(new_hex);
-		
+
 		//see if we should show the normal cursor, the movement cursor, or
 		//the attack cursor
 		//If the cursor is on WAIT, we don't change it and let the setter
@@ -253,7 +253,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 				}
 			} else {
 				// no selected unit or we can't move it
-				
+
 				if ( selected_hex_.valid() && mouseover_unit
 					 && mouseover_unit->side() == side_num_ ) {
 					// empty hex field selected and unit on our site under the cursor
@@ -264,16 +264,16 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 			}
 		}
 	} // end planned unit map scope
-	
+
 	// show (or cancel) the attack direction indicator
 	if(attack_from.valid() && (!browse || pc_.get_whiteboard()->is_active())) {
 		gui().set_attack_indicator(attack_from, new_hex);
 	} else {
 		gui().clear_attack_indicator();
 	}
-	
+
 	unit_ptr un; //will later point to unit at mouseover_hex_
-	
+
 	// the destination is the pointed hex or the adjacent hex
 	// used to attack it
 	map_location dest;
@@ -287,7 +287,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 			dest = new_hex;
 			dest_un = find_unit(new_hex);
 		}
-		
+
 		if(dest == selected_hex_ || dest_un) {
 			current_route_.steps.clear();
 			gui().set_route(nullptr);
@@ -299,24 +299,24 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 			if (selected_unit && !selected_unit->incapacitated()) {
 				// Show the route from selected unit to mouseover hex
 				current_route_ = get_route(&*selected_unit, dest, viewing_team());
-				
+
 				pc_.get_whiteboard()->create_temp_move();
-				
+
 				if(!browse) {
 					gui().set_route(&current_route_);
 				}
 			}
 		}
-		
+
 		if(board.map().on_board(selected_hex_)
 		   && !selected_unit
 		   && mouseover_unit.valid()
 		   && mouseover_unit) {
 			// Show the route from selected hex to mouseover unit
 			current_route_ = get_route(&*mouseover_unit, selected_hex_, viewing_team());
-			
+
 			pc_.get_whiteboard()->create_temp_move();
-			
+
 			if(!browse) {
 				gui().set_route(&current_route_);
 			}
@@ -325,14 +325,14 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 			gui().set_route(nullptr);
 			pc_.get_whiteboard()->erase_temp_move();
 		}
-		
+
 		unit_map::iterator iter = mouseover_unit;
 		if (iter)
 			un = iter.get_shared_ptr();
 		else
 			un.reset();
 	} //end planned unit map scope
-	
+
 	if( (!selected_hex_.valid()) && un && current_paths_.destinations.empty() &&
 		 !gui().fogged(un->get_location()))
 	{
@@ -348,7 +348,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 				gui().set_route(&route);
 			}
 			over_route_ = true;
-			
+
 			wb::future_map_if_active raii;
 			current_paths_ = pathfind::paths(*un, false, true,
 											 viewing_team(), path_turns_);
@@ -357,16 +357,16 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 			//Note: planned unit map must be activated after this is done,
 			//since the future state includes changes to units' movement.
 			unit_movement_resetter move_reset(*un);
-			
+
 			wb::future_map_if_active raii;
 			current_paths_ = pathfind::paths(*un, false, true,
 											 viewing_team(), path_turns_);
 		}
-		
+
 		unselected_paths_ = true;
 		gui().highlight_reach(current_paths_);
 	}
-	
+
 }
 
 void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, map_location new_hex)

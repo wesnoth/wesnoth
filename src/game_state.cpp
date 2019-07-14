@@ -33,7 +33,7 @@
 #include "gui/dialogs/loading_screen.hpp"
 
 #include "utils/functional.hpp"
-#include <SDL_timer.h>
+#include <SDL2/SDL_timer.h>
 
 #include <algorithm>
 #include <set>

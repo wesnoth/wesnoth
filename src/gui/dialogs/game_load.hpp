@@ -20,7 +20,7 @@
 #include "save_index.hpp"
 #include "gettext.hpp"
 
-#include <SDL_keycode.h>
+#include <SDL2/SDL_keycode.h>
 
 namespace gui2
 {
