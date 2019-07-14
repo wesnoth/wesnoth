@@ -51,7 +51,7 @@
    * New Walking Corpse portrait for mounted variation
  ### Language and i18n
    * Updated translations: British English, Chinese (Traditional), Dutch,
-     German, Turkish, Portuguese (Brazil), Ukrainian
+     German, Spanish, Turkish, Portuguese (Brazil), Ukrainian
  ### Multiplayer
    * A new Land:
      * Help menu can be accessed in any turn and doesn't pause the game

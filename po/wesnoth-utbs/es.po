@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-06-30 12:14 UTC\n"
-"PO-Revision-Date: 2019-03-28 14:04+0100\n"
+"PO-Revision-Date: 2019-07-03 11:47+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -1145,6 +1145,8 @@ msgid ""
 "Your units become dehydrated during the day, losing hitpoints and damage "
 "when they are not on a water hex"
 msgstr ""
+"Sus unidades se deshidratan durante el día, perdiendo puntos de vida y daño "
+"cuando no están en un hexágono de agua"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:218
@@ -1152,16 +1154,21 @@ msgid ""
 "Units are refreshed at the start of your turn when they are on a water or "
 "oasis hex"
 msgstr ""
+"Las unidades se revitalizan al comienzo de su turno cuando están en un "
+"hexágono de agua o de oasis"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:221
 msgid "Healers can prevent dehydration from getting worse, but cannot heal it"
 msgstr ""
+"Los sanadores pueden evitar que la deshidratación empeore, pero no pueden "
+"sanarla"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:224
 msgid "Healers are unable to heal adjacent units during the day"
 msgstr ""
+"Los sanadores son incapaces de sanar unidades adyacentes durante el día"
 
 #. [label]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:248
@@ -1692,24 +1699,19 @@ msgid ""
 "The most hated living in my castle! To me! To me stray souls of the deserts! "
 "Let’s cleanse this pollution!"
 msgstr ""
-"¡Los vivos más odiados en mi castillo! ¡A mí! ¡A mí espíritus perdidos de "
-"los desiertos! ¡Limpiemos esta contaminación!"
+"¡Los más odiados de entre los vivos se acercan a mi castillo! ¡A mí! ¡Venid "
+"a mí, espíritus perdidos de los desiertos! ¡Limpiemos esta inmundicia!"
 
 #. [message]: speaker=Vengeful Lord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1287
-#, fuzzy
-#| msgid ""
-#| "Elf with a bow, I remember you. You thought me defeated, but I am back "
-#| "even more powerful than before. Death reigns eternal, your scorched bones "
-#| "and lifeless body will join my host."
 msgid ""
 "Elf of the sands, I remember you. You thought me defeated, but I am back "
 "even more powerful than before. Death reigns eternal, your scorched bones "
 "and lifeless body will join my host."
 msgstr ""
-"Elfo con un arco, os recuerdo. Pensabais que me habíais derrotado, pero he "
-"vuelto aún más poderoso que antes. La muerte reina eternamente, y pronto "
-"vuestros cuerpos requemados y sin vida seguirán a un nuevo maestro."
+"Elfo del desierto, te recuerdo. Pensabas que me habías derrotado, pero he "
+"retornado aún más poderoso que antes. La muerte reina eternamente, y pronto "
+"vuestros cuerpos requemados y sin vida se unirán a mis huestes."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1292
@@ -7906,10 +7908,8 @@ msgstr ""
 
 #. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2039
-#, fuzzy
-#| msgid "Break the circle"
 msgid "Break the circle."
-msgstr "Romper el círculo"
+msgstr "Romper el círculo."
 
 #. [command]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2058
@@ -11074,16 +11074,12 @@ msgstr ""
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1858
-#, fuzzy
-#| msgid ""
-#| "I have followed you this far Kaleh, I will not abandon you now. But I "
-#| "admit that my faith is shaken. If that is not our god, than what is it?"
 msgid ""
 "I have followed you this far Kaleh, I will not abandon you now. But I admit "
 "that my faith is shaken. If that is not our god, then what is it?"
 msgstr ""
-"Te he seguido hasta aquí, Kaleh, y yo no te abandonaré ahora. Pero admito "
-"que mi fe se tambalea. Si eso no es nuestra diosa, ¿entonces qué es?"
+"Te he seguido hasta aquí, Kaleh, y no te abandonaré ahora. Pero admito que "
+"mi fe se tambalea. Si eso no es nuestra diosa, ¿Qué es lo que es?"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1862
@@ -15770,33 +15766,6 @@ msgstr "Protector Tauro"
 
 #. [unit_type]: id=Tauroch Protector, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Protector.cfg:37
-#, fuzzy
-#| msgid ""
-#| "From the journal of Syniel, the sand skipper:\n"
-#| "\n"
-#| "The orcs ambushed me near the oasis at twilight. I had to flee into the "
-#| "desert, but even there, the wolves were nearly fast enough to keep up "
-#| "with me. I ran and ran for hours until I could barely feel my legs and "
-#| "still, they hounded me under the bright moonlight. I thought that I was "
-#| "dead for sure, but as Eloh would have it, I came across a young Tauroch "
-#| "that had wandered away from her pack. She must have sensed my trouble, "
-#| "for she came to me swiftly and fought beside me all through the long "
-#| "night; beyond exhaustion, we somehow managed to drive off dozens of orcs "
-#| "and wolves by ourselves. By dawn, we were alone, but wounded and weary to "
-#| "our bones with nothing but sand in sight. I used what little remained of "
-#| "my supplies to tend to the Tauroch’s wounds, then I succumbed to fatigue "
-#| "and I remember little after that.\n"
-#| "\n"
-#| "-----------------------\n"
-#| "\n"
-#| "I woke up today in the village, tired, but alive. My friends told me that "
-#| "the Tauroch had carried me through the desert for many hours at no little "
-#| "cost to herself, for she was in worse condition than I by the time we had "
-#| "arrived. I can only be grateful that I managed to survive that dreadful "
-#| "night, for it is only by Eloh’s grace that I happened upon such a loyal "
-#| "companion. She is my savior, my watchful guardian, a blessing from the "
-#| "Goddess herself. I think I will call her Nala, meaning ‘Protector’ in our "
-#| "tongue. I am sure we will have many more adventures together."
 msgid ""
 "From the journal of Syniel, the Sand Skipper:\n"
 "\n"
@@ -15828,7 +15797,7 @@ msgstr ""
 "\n"
 "Los orcos me emboscaron cerca del oasis en el ocaso. Tuve que adentrarme "
 "huyendo en el desierto, pero incluso allí, los lobos casi eran lo bastante "
-"rápidos como para alcanzarme. Corrí y corrí durante horas hasta que ya no "
+"rápidos como para alcanzarme. Corrí y corrí durante horas hasta que apenas "
 "sentía mis piernas y aún así, me seguían acechando bajo la brillante luz de "
 "la luna. Pensé que ya podía darme por muerto, pero como si fuera cosa de "
 "Eloh, me crucé con una joven Tauro que se había separado de su manada. Debió "
