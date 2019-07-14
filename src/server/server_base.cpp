@@ -65,7 +65,7 @@ void server_base::start_server()
 
 void server_base::serve()
 {
-	socket_ptr socket = std::make_shared<boost::asio::ip::tcp::socket>(std::ref(io_service_));
+	socket_ptr socket = std::make_shared<boost::asio::ip::tcp::socket>(io_service_);
 	acceptor_.async_accept(*socket, std::bind(&server_base::accept_connection, this, _1, socket));
 }
 
