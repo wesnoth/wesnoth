@@ -77,7 +77,7 @@ void server_base::start_server()
 
 void server_base::serve(boost::asio::ip::tcp::acceptor& acceptor)
 {
-	socket_ptr socket = std::make_shared<boost::asio::ip::tcp::socket>(std::ref(io_service_));
+	socket_ptr socket = std::make_shared<boost::asio::ip::tcp::socket>(io_service_);
 	acceptor.async_accept(*socket, [&acceptor, socket, this](const boost::system::error_code& error){
 		this->accept_connection(acceptor, error, socket);
 	});
