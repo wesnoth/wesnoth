@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "POT-Creation-Date: 2018-02-12 20:02+0300\n"
-"PO-Revision-Date: 2019-03-26 11:23+0100\n"
+"PO-Revision-Date: 2019-07-03 11:22+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -1033,11 +1033,15 @@ msgstr "B<--controller>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:359
+#, fuzzy
+#| msgid ""
+#| "selects the controller for this side. Available values: B<human>, B<ai> "
+#| "and B<null>."
 msgid ""
 "selects the controller for this side. Available values: B<human> and B<ai>."
 msgstr ""
 "selecciona el controlador para este bando. Los valores disponibles son: "
-"B<human> y B<ai>."
+"B<human>, B<ai> y B<null>."
 
 #. type: TP
 #: doc/man/wesnoth.6:359
@@ -2094,6 +2098,7 @@ msgstr ""
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)"
 
+#, no-wrap
 #~ msgid "B<--all-translations>"
 #~ msgstr "B<--all-translations>"
 
@@ -2104,6 +2109,7 @@ msgstr "B<wesnoth>(6)"
 #~ "Muestra todas las traducciones en la lista de selección de idioma del "
 #~ "juego, incluso si se considera que no están lo bastante completas."
 
+#, no-wrap
 #~ msgid "B<--campaign-skip-story>"
 #~ msgstr "B<--campaign-skip-story>"
 
@@ -2113,6 +2119,7 @@ msgstr "B<wesnoth>(6)"
 #~ "Omite las pantallas de [story] y los diálogos hasta el final del evento "
 #~ "B<start>."
 
+#, no-wrap
 #~ msgid "B<--clock>"
 #~ msgstr "B<--clock>"
 
@@ -2120,18 +2127,21 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr ""
 #~ "Añade la opción de mostrar un reloj para probar el tiempo de trazado."
 
+#, no-wrap
 #~ msgid "B<--config-dir>I<\\ name>"
 #~ msgstr "B<--config-dir>I<\\ nombre>"
 
 #~ msgid "Deprecated, use B<--userdata-dir>."
 #~ msgstr "Obsoleto, utilice B<--userdata-dir>."
 
+#, no-wrap
 #~ msgid "B<--config-path>"
 #~ msgstr "B<--config-path>"
 
 #~ msgid "Deprecated, use B<--userdata-path>."
 #~ msgstr "Obsoleto, utilice B<--userdata-path>."
 
+#, no-wrap
 #~ msgid "B<--debug-lua>"
 #~ msgstr "B<--debug-lua>"
 
@@ -2152,6 +2162,7 @@ msgstr "B<wesnoth>(6)"
 #~ "los dominios, pero B<deprecation> equivale por omisión a B<none> a no ser "
 #~ "que se combine con la opción B<-d>."
 
+#, no-wrap
 #~ msgid "B<--new-widgets>"
 #~ msgstr "B<--new-widgets>"
 
@@ -2165,6 +2176,7 @@ msgstr "B<wesnoth>(6)"
 #~ "conozca la mayoría de ellos. Partes de la biblioteca se consideran "
 #~ "estables y funcionarán sin este conmutador."
 
+#, no-wrap
 #~ msgid "B<--plugin>I<\\ script>"
 #~ msgstr "B<--plugin>I<\\ script>"
 
@@ -2178,36 +2190,42 @@ msgstr "B<wesnoth>(6)"
 #~ "que se ejecutará como una corutina que se activará periódicamente con "
 #~ "actualizaciones."
 
+#, no-wrap
 #~ msgid "B<--proxy>"
 #~ msgstr "B<--proxy>"
 
 #~ msgid "enables usage of proxy for network connections."
 #~ msgstr "habilita el uso de proxy para conexiones de red."
 
+#, no-wrap
 #~ msgid "B<--proxy-address>I<\\ address>"
 #~ msgstr "B<--proxy-address>I<\\ address>"
 
 #~ msgid "specifies I<address> of the proxy."
 #~ msgstr "especifica la  I<address> para el proxy."
 
+#, no-wrap
 #~ msgid "B<--proxy-port>I<\\ port>"
 #~ msgstr "B<--proxy-port>I<\\ port>"
 
 #~ msgid "specifies I<port> of the proxy."
 #~ msgstr "especifica el  I<port> para el proxy."
 
+#, no-wrap
 #~ msgid "B<--proxy-user>I<\\ username>"
 #~ msgstr "B<--proxy-user>I<\\ username>"
 
 #~ msgid "specifies I<username> to log in to the proxy."
 #~ msgstr "especifica el I<username> para iniciar sesión en el proxy."
 
+#, no-wrap
 #~ msgid "B<--proxy-password>I<\\ password>"
 #~ msgstr "B<--proxy-password>I<\\ password>"
 
 #~ msgid "specifies I<password> to log in to the proxy."
 #~ msgstr "especifica la I<password> para iniciar sesión en el proxy."
 
+#, no-wrap
 #~ msgid "B<--script>I<\\ file>"
 #~ msgstr "B<--script>I<\\ file>"
 
@@ -2216,6 +2234,7 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr ""
 #~ "(experimental)  I<file> contiene un script Lua para controlar el cliente."
 
+#, no-wrap
 #~ msgid "B<--translations-over>I<\\ percent>"
 #~ msgstr "B<--translations-over>I<\\ percent>"
 
@@ -2227,6 +2246,7 @@ msgstr "B<wesnoth>(6)"
 #~ "está lo bastante completa como para mostrarse en la lista de idiomas del "
 #~ "juego.  Los valores válidos van desde 0 hasta 100."
 
+#, no-wrap
 #~ msgid "B<--unsafe-scripts>"
 #~ msgstr "B<--unsafe-scripts>"
 
@@ -2240,6 +2260,7 @@ msgstr "B<wesnoth>(6)"
 #~ "confiables! Esta acción da a los lua los mismos permisos que el "
 #~ "ejecutable de wesnoth."
 
+#, no-wrap
 #~ msgid "B<--label>I<\\ label>"
 #~ msgstr "B<--label>I<\\ label>"
 

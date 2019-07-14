@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 17:01 UTC\n"
-"PO-Revision-Date: 2019-03-22 14:10+0100\n"
+"PO-Revision-Date: 2019-07-05 12:09+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -38,13 +38,17 @@ msgstr "4 jug. — Una nueva tierra"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
+#, fuzzy
+#| msgid ""
+#| "This 4p survival scenario allows you to construct buildings and terraform "
+#| "the land. The recommended starting gold is 100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. Use map settings. The recommended starting gold is 100."
 msgstr ""
 "Escenario de supervivencia para 4 jugadores que le permite construir "
-"edificios y transformar el terreno. Use los ajustes predeterminados del "
-"mapa. La cantidad inicial de oro recomendada es 100."
+"edificios y transformar el terreno. La cantidad inicial de oro recomendada "
+"es 100."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:27
@@ -68,8 +72,10 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:37
+#, fuzzy
+#| msgid "You must survive until turn 25"
 msgid "You must survive until turn 25."
-msgstr "Debe sobrevivir hasta el turno 25."
+msgstr "Debe sobrevivir hasta el turno 25"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:57
@@ -388,8 +394,10 @@ msgstr "Una nueva tierra — Ayuda"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:112
+#, fuzzy
+#| msgid "Select a topic:"
 msgid "Select a topic."
-msgstr "Seleccione un tema."
+msgstr "Seleccione un tema:"
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:115
@@ -862,6 +870,35 @@ msgstr "Costo: 7 oro"
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:576
 msgid "Clear the Ground"
 msgstr "Despejar la el campo"
+
+#~ msgid "teamname^Monsters"
+#~ msgstr "Monstruos"
+
+#~ msgid "In this scenario you build up an economy"
+#~ msgstr "En este escenario usted configura la economía"
+
+#~ msgid "Move any unit next to captives and they will join your side"
+#~ msgstr ""
+#~ "Mueva cualquier unidad al lado de los cautivos y se unirán a vuestro bando"
+
+#~ msgid "Right-click on a leader to read about the game mechanics"
+#~ msgstr ""
+#~ "Haga clic derecho en un líder para leer acerca de las mecánicas del juego"
+
+#~ msgid "Rules:"
+#~ msgstr "Reglas:"
+
+#~ msgid "Goal:"
+#~ msgstr "Objetivo:"
+
+#~ msgid "Hint:"
+#~ msgstr "Consejo:"
+
+#~ msgid "Hints:"
+#~ msgstr "Consejos:"
+
+#~ msgid "Defeat all enemy leaders"
+#~ msgstr "Derrote a todos los líderes enemigos"
 
 #~ msgid "Convert to Grassland"
 #~ msgstr "Convertir en pradera"
