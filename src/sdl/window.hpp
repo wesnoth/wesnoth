@@ -19,7 +19,7 @@
  * Contains a wrapper class for the @ref SDL_Window class.
  */
 
-#include <SDL_video.h>
+#include <SDL2/SDL_video.h>
 
 #include <string>
 

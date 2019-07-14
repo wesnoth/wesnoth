@@ -21,8 +21,8 @@
 #include "serialization/string_utils.hpp"
 #include "sound_music_track.hpp"
 
-#include <SDL.h> // Travis doesn't like this, although it works on my machine -> '#include <SDL_sound.h>
-#include <SDL_mixer.h>
+#include <SDL2/SDL.h> // Travis doesn't like this, although it works on my machine -> '#include <SDL2/SDL_sound.h>
+#include <SDL2/SDL_mixer.h>
 
 #include <list>
 #include <sstream>

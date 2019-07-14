@@ -15,7 +15,7 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-#include <SDL_keycode.h>
+#include <SDL2/SDL_keycode.h>
 #include <vector>
 
 class display;

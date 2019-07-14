@@ -21,7 +21,7 @@
 #include <string>
 #include <tuple>
 
-#include <SDL_ttf.h>
+#include <SDL2/SDL_ttf.h>
 
 /***
  * Note: This is specific to SDL_TTF code path

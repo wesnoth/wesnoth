@@ -18,7 +18,7 @@
 
 #include "gui/widgets/widget.hpp"
 
-#include <SDL_events.h>
+#include <SDL2/SDL_events.h>
 
 #include <boost/mpl/for_each.hpp>
 #include <boost/range/adaptor/reversed.hpp>

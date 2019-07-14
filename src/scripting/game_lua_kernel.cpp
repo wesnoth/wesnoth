@@ -122,7 +122,7 @@
 #include <utility>                      // for pair
 #include <algorithm>
 #include <vector>                       // for vector, etc
-#include <SDL_timer.h>                  // for SDL_GetTicks
+#include <SDL2/SDL_timer.h>                  // for SDL_GetTicks
 #include "lua/lauxlib.h"                // for luaL_checkinteger, etc
 #include "lua/lua.h"                    // for lua_setfield, etc
 

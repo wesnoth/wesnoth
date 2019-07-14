@@ -23,7 +23,7 @@
 #include <iostream>                     // for basic_ostream, operator<<, etc
 #include <list>                         // for _List_const_iterator, etc
 #include <utility>                      // for pair
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 class CVideo;  // lines 56-56
 

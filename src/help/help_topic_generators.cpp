@@ -34,7 +34,7 @@
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <map>                          // for map, etc
 #include <set>
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 static lg::log_domain log_help("help");
 #define WRN_HP LOG_STREAM(warn, log_help)
@@ -710,7 +710,7 @@ std::string unit_topic_generator::operator()() const {
 			}
 
 			if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
-				terrain_movement_info movement_info = 
+				terrain_movement_info movement_info =
 				{
 					info.name(),
 					info.id(),
@@ -857,7 +857,7 @@ std::string unit_topic_generator::operator()() const {
 
 			table.push_back(row);
 		}
-		
+
 		ss << generate_table(table);
 	} else {
 		WRN_HP << "When building unit help topics, the display object was null and we couldn't get the terrain info we need.\n";

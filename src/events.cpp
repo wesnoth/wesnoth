@@ -33,7 +33,7 @@
 #include <vector>
 #include <thread>
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 #include <boost/range/adaptor/reversed.hpp>
 
@@ -520,7 +520,7 @@ void pump()
 				if(event.motion.state & SDL_BUTTON(SDL_BUTTON_RIGHT))
 				{
 					SDL_Rect r = CVideo::get_singleton().screen_area();
-					
+
 					// TODO: Check if SDL_FINGERMOTION is actually signaled for COMPLETE motions (I doubt, but tbs)
 					SDL_Event touch_event;
 					touch_event.type = SDL_FINGERMOTION;
@@ -534,7 +534,7 @@ void pump()
 					touch_event.tfinger.y = static_cast<float>(event.motion.y) / r.h;
 					touch_event.tfinger.pressure = 1;
 					::SDL_PushEvent(&touch_event);
-					
+
 					event.motion.state = SDL_BUTTON(SDL_BUTTON_LEFT);
 					event.motion.which = SDL_TOUCH_MOUSEID;
 				}
@@ -545,7 +545,7 @@ void pump()
 				{
 					event.button.button = SDL_BUTTON_LEFT;
 					event.button.which = SDL_TOUCH_MOUSEID;
-					
+
 					SDL_Rect r = CVideo::get_singleton().screen_area();
 					SDL_Event touch_event;
 					touch_event.type = (event.type == SDL_MOUSEBUTTONDOWN) ? SDL_FINGERDOWN : SDL_FINGERUP;
