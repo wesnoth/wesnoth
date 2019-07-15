@@ -143,6 +143,7 @@
    * Descent into Darkness:
      * Update campaign description
      * Update maps for S1 and S6
+     * S4: reduce difficulty on easy and normal modes
      * S11: reduce difficulty just after Malin turns into lich
    * Eastern Invasion:
      * S9: add dialogue on victory
