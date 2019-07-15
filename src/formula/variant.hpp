@@ -36,6 +36,8 @@ public:
 	explicit variant(const std::vector<variant>& array);
 	explicit variant(const std::string& str);
 	explicit variant(const std::map<variant, variant>& map);
+	variant(const variant& v) = default;
+	variant(variant&& v) = default;
 
 	template<typename T>
 	variant(std::shared_ptr<T> callable)
@@ -44,7 +46,8 @@ public:
 		assert(value_.get());
 	}
 
-	variant& operator=(const variant& v);
+	variant& operator=(const variant& v) = default;
+	variant& operator=(variant&& v) = default;
 
 	variant operator[](size_t n) const;
 	variant operator[](const variant& v) const;
