@@ -9,14 +9,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-06-30 15:14+0300\n"
-"PO-Revision-Date: 2012-10-29 18:41-0300\n"
+"PO-Revision-Date: 2019-07-08 09:44-0300\n"
 "Last-Translator: gilberto dos santos alves <gsavix@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
-"Language: Portuguese (Brazil)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #
 # File: src/menu_events.cpp, line: 3119
@@ -27,10 +28,8 @@ msgstr ""
 # File: src/menu_events.cpp, line: 3148
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
-#, fuzzy
-#| msgid "prompt^Command:"
 msgid "Custom"
-msgstr "Comando:"
+msgstr "Personalizado"
 
 #
 # File: data/advanced_preferences.cfg, line: 4
@@ -38,10 +37,8 @@ msgstr "Comando:"
 # File: data/advanced_preferences.cfg, line: 4
 #. [advanced_preference]: type=combo
 #: data/advanced_preferences.cfg:4
-#, fuzzy
-#| msgid "Compressed saves"
 msgid "Compress saved games"
-msgstr "Comprimir Jogos Salvo"
+msgstr "Compactar jogos salvo"
 
 #. [option]: id=gzip
 #: data/advanced_preferences.cfg:9
@@ -66,7 +63,7 @@ msgstr ""
 #. [option]: id=none
 #: data/advanced_preferences.cfg:19
 msgid "save_compression^No"
-msgstr ""
+msgstr "Não"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:20
@@ -79,9 +76,8 @@ msgstr ""
 # File: data/advanced_preferences.cfg, line: 11
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
-#, fuzzy
 msgid "Confirm deleting saves"
-msgstr "Confirmar ao apagar algum jogo salvo"
+msgstr "Confirmar ao apagar jogo salvo"
 
 #
 # File: data/advanced_preferences.cfg, line: 18
@@ -90,7 +86,7 @@ msgstr "Confirmar ao apagar algum jogo salvo"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:33
 msgid "Mouse scrolling"
-msgstr "Rolagem com Mouse"
+msgstr "Rolagem com o mouse"
 
 #
 # File: data/advanced_preferences.cfg, line: 25
@@ -98,6 +94,7 @@ msgstr "Rolagem com Mouse"
 # File: data/advanced_preferences.cfg, line: 25
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:40
+#, fuzzy
 msgid "Middle-click scrolling"
 msgstr "Rolagem com Clique do Botão do Meio"
 
@@ -644,7 +641,7 @@ msgstr "Contribuidores Diversos"
 #. [about]
 #: data/core/about.cfg:1736
 msgid "Bots"
-msgstr "Robôs"
+msgstr "Bots"
 
 #
 # File: data/core/about.cfg, line: 1317
@@ -7112,18 +7109,12 @@ msgstr ""
 "irão evitar vilas. Mesmo que ocupem uma vila, não receberão nenhum bonus "
 "defensivo dela, mas ainda serão curados."
 
-#
-# File: src/reports.cpp, line: 243
-# File: src/reports.cpp, line: 243
-# File: src/reports.cpp, line: 243
 #. TRANSLATORS: In networked games, when one player has the choice
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:225
-#, fuzzy
-#| msgid "No advancement"
 msgid "waiting for^an advancement choice"
-msgstr "Sem avanços"
+msgstr ""
 
 #
 # File: src/actions/attack.cpp, line: 217
@@ -9207,18 +9198,9 @@ msgstr "O nick '$nick' está registrado neste servidor."
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "O nick '$nick' está registrado neste servidor."
 
-#
-# File: src/multiplayer.cpp, line: 359
-# File: src/multiplayer.cpp, line: 361
-# File: src/multiplayer.cpp, line: 359
-# File: src/multiplayer.cpp, line: 361
-# File: src/multiplayer.cpp, line: 359
-# File: src/multiplayer.cpp, line: 361
 #: src/game_initialization/multiplayer.cpp:338
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "Your IP address is banned on this server’s forums for $duration|."
-msgstr "O nick '$nick' está registrado neste servidor."
+msgstr ""
 
 #: src/game_initialization/multiplayer.cpp:340
 msgid "Your IP address is banned on this server’s forums."
@@ -12795,7 +12777,7 @@ msgstr "Caracteres inesperados após o nome da variável (esperado , ou =)"
 # File: src/serialization/parser.cpp, line: 310
 #: src/serialization/parser.cpp:352 src/serialization/parser.cpp:392
 msgid "Unterminated quoted string"
-msgstr "Texto entre aspas não terminado"
+msgstr "Texto entre aspas inacabado"
 
 #: src/serialization/parser.cpp:459
 msgid "at $pos"
@@ -12984,10 +12966,8 @@ msgstr ""
 # File: src/statistics_dialog.cpp, line: 167
 # File: src/statistics_dialog.cpp, line: 167
 #: src/synced_commands.cpp:425
-#, fuzzy
-#| msgid "Details"
 msgid "Details:"
-msgstr "Detalhes"
+msgstr "Detalhes:"
 
 #: src/synced_commands.cpp:428
 msgid "Do you wish to save the game before continuing?"
@@ -13054,7 +13034,7 @@ msgstr "border_size deve estar entre 0.0 e 0.5."
 
 #: src/theme.cpp:557 src/theme.cpp:562
 msgid "Hotkey(s): "
-msgstr ""
+msgstr "Atalho(s): "
 
 #
 # File: src/attack_prediction_display.cpp, line: 214
@@ -13206,10 +13186,8 @@ msgstr "caótico"
 # File: src/unit_types.cpp, line: 819
 # File: src/unit_types.cpp, line: 819
 #: src/units/types.cpp:545 src/units/types.hpp:179
-#, fuzzy
-#| msgid "female^lawful"
 msgid "lawful"
-msgstr "ordeira"
+msgstr "ordeiro"
 
 #
 # File: src/unit_types.cpp, line: 818
@@ -13413,7 +13391,7 @@ msgstr "Mostrar planos para $player"
 # File: src/whiteboard/manager.cpp, line: 1111
 #: src/whiteboard/manager.cpp:1140
 msgid "Hide plans for $player"
-msgstr "Esconder planos de $player"
+msgstr "Esconder planos para $player"
 
 #
 # File: src/whiteboard/manager.cpp, line: 1114
@@ -13424,11 +13402,35 @@ msgid "Whiteboard Options"
 msgstr "Opções do Quadro-Branco"
 
 #
-# File: src/multiplayer_connect.cpp, line: 1659
-# File: src/multiplayer_connect.cpp, line: 1659
-# File: src/multiplayer_connect.cpp, line: 1659
-#~ msgid "Empty"
-#~ msgstr "Vazio"
+# File: data/advanced_preferences.cfg, line: 60
+# File: data/advanced_preferences.cfg, line: 60
+# File: data/advanced_preferences.cfg, line: 60
+#, fuzzy
+#~ msgid "Ping timeout"
+#~ msgstr "Tempo Limite de Ping"
+
+#
+# File: data/advanced_preferences.cfg, line: 61
+# File: data/advanced_preferences.cfg, line: 61
+# File: data/advanced_preferences.cfg, line: 61
+#, fuzzy
+#~ msgid ""
+#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
+#~ "disable"
+#~ msgstr ""
+#~ "Número de segundos aguardando a resposta de um ping antes de acabar o "
+#~ "tempo. 0 para Desabilitado."
+
+#
+# File: data/lua/wml/objectives.lua, line: 11937
+# File: data/lua/wml/objectives.lua, line: 1496
+# File: data/lua/wml/objectives.lua, line: 1496
+#, fuzzy
+#~| msgid "(this turn left)"
+#~ msgid "(this turn left)"
+#~ msgid_plural "(%d turns left)"
+#~ msgstr[0] "(resta um turno)"
+#~ msgstr[1] "(resta um turno)"
 
 #
 # File: data/hardwired/tips.cfg, line: 200
@@ -13450,31 +13452,11 @@ msgstr "Opções do Quadro-Branco"
 #~ msgstr "O defensor selecionou uma arma inválida."
 
 #
-# File: src/reports.cpp, line: 245
-# File: src/reports.cpp, line: 245
-# File: src/reports.cpp, line: 245
-#~ msgid "Advances to:"
-#~ msgstr "Avança para: "
-
-#
-# File: data/lua/wml/objectives.lua, line: 11937
-# File: data/lua/wml/objectives.lua, line: 1496
-# File: data/lua/wml/objectives.lua, line: 1496
-#, fuzzy
-#~| msgid "(this turn left)"
-#~ msgid "(this turn left)"
-#~ msgid_plural "(%d turns left)"
-#~ msgstr[0] "(resta um turno)"
-#~ msgstr[1] "(resta um turno)"
-
-#
-# File: src/gui/dialogs/lobby_player_info.cpp, line: 100
-# File: src/gui/dialogs/lobby_player_info.cpp, line: 100
-# File: src/gui/dialogs/lobby_player_info.cpp, line: 100
-#, fuzzy
-#~| msgid "(observing)"
-#~ msgid "(missing)"
-#~ msgstr "(observando)"
+# File: src/multiplayer_connect.cpp, line: 1659
+# File: src/multiplayer_connect.cpp, line: 1659
+# File: src/multiplayer_connect.cpp, line: 1659
+#~ msgid "Empty"
+#~ msgstr "Vazio"
 
 #
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 100
@@ -13486,6 +13468,15 @@ msgstr "Opções do Quadro-Branco"
 #~ msgstr "(observando)"
 
 #
+# File: src/gui/dialogs/lobby_player_info.cpp, line: 100
+# File: src/gui/dialogs/lobby_player_info.cpp, line: 100
+# File: src/gui/dialogs/lobby_player_info.cpp, line: 100
+#, fuzzy
+#~| msgid "(observing)"
+#~ msgid "(missing)"
+#~ msgstr "(observando)"
+
+#
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 314
 # File: src/multiplayer_lobby.cpp, line: 615
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 314
@@ -13494,6 +13485,13 @@ msgstr "Opções do Quadro-Branco"
 # File: src/multiplayer_lobby.cpp, line: 615
 #~ msgid "none"
 #~ msgstr "nada"
+
+#
+# File: src/reports.cpp, line: 245
+# File: src/reports.cpp, line: 245
+# File: src/reports.cpp, line: 245
+#~ msgid "Advances to:"
+#~ msgstr "Avança para: "
 
 #
 # File: src/reports.cpp, line: 878
@@ -13513,25 +13511,6 @@ msgstr "Opções do Quadro-Branco"
 #~ "<span color=\"$color\">$number_or_percent movement</span> points"
 #~ msgstr[0] "por turno"
 #~ msgstr[1] "por turno"
-
-#
-# File: data/advanced_preferences.cfg, line: 60
-# File: data/advanced_preferences.cfg, line: 60
-# File: data/advanced_preferences.cfg, line: 60
-#~ msgid "Ping timeout"
-#~ msgstr "Tempo Limite de Ping"
-
-#
-# File: data/advanced_preferences.cfg, line: 61
-# File: data/advanced_preferences.cfg, line: 61
-# File: data/advanced_preferences.cfg, line: 61
-#, fuzzy
-#~ msgid ""
-#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
-#~ "disable"
-#~ msgstr ""
-#~ "Número de segundos aguardando a resposta de um ping antes de acabar o "
-#~ "tempo. 0 para Desabilitado."
 
 #
 # File: src/multiplayer_create.cpp, line: 664

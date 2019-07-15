@@ -9,14 +9,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-03-11 16:09+0300\n"
-"PO-Revision-Date: 2012-04-18 23:26-0300\n"
+"PO-Revision-Date: 2019-07-12 16:21-0300\n"
 "Last-Translator: Davi Duarte Pinheiro <daviduartep@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
-"Language: \n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #
 # File: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg, line: 529
@@ -145,7 +146,7 @@ msgstr ""
 #. [section]: id=editor
 #: data/core/editor/help.cfg:5
 msgid "Map and Scenario Editor"
-msgstr ""
+msgstr "Editor de Mapa e Cenário"
 
 #. [topic]: id=editor_brush
 #: data/core/editor/help.cfg:13
@@ -393,15 +394,19 @@ msgstr ""
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:184
 msgid "Editing Modes"
-msgstr ""
+msgstr "Modos de Edição"
 
 #
-# File: data/core/help.cfg, line: 819
-# File: data/core/help.cfg, line: 819
-# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
 #, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -409,7 +414,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Chance de acertar'</header>"
+"<header>text=Danos</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
@@ -457,12 +462,16 @@ msgid ""
 msgstr ""
 
 #
-# File: data/core/help.cfg, line: 819
-# File: data/core/help.cfg, line: 819
-# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:198
 #, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -470,7 +479,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Chance de acertar'</header>"
+"<header>text=Danos</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:200
@@ -488,7 +497,7 @@ msgstr ""
 #. [topic]: id=editor_toolkit
 #: data/core/editor/help.cfg:211
 msgid "Editor Tools"
-msgstr ""
+msgstr "Ferramentas do Editor"
 
 #. [topic]: id=editor_toolkit
 #: data/core/editor/help.cfg:212
@@ -546,7 +555,7 @@ msgstr ""
 #. [topic]: id=editor_time_schedule
 #: data/core/editor/help.cfg:250
 msgid "Time Schedule Editor"
-msgstr ""
+msgstr "Editor de Período do Dia"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:258
@@ -1169,7 +1178,7 @@ msgstr "Efeitos das Armas"
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:66 data/core/help.cfg:131
 msgid "Eras"
-msgstr ""
+msgstr "Eras"
 
 #
 # File: data/core/help.cfg, line: 63
@@ -1195,7 +1204,7 @@ msgstr "Terrenos"
 #. [topic]: id=..addons
 #: data/core/help.cfg:82 data/core/help.cfg:466
 msgid "Add-ons"
-msgstr ""
+msgstr "Add-ons"
 
 #
 # File: data/core/help.cfg, line: 76
@@ -1466,6 +1475,15 @@ msgstr "Vitória e Derrota"
 # File: data/core/help.cfg, line: 162
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:194
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "When you win a scenario, the map grays over and the <bold>text='End "
+#| "Turn'</bold> button changes to <bold>text='End Scenario'</bold>. You can "
+#| "now do things like changing your save options or (if you are in a "
+#| "multiplayer game) chatting with other players before pressing that button "
+#| "to advance."
 msgid ""
 "\n"
 "\n"
@@ -1671,6 +1689,12 @@ msgstr ""
 # File: data/core/help.cfg, line: 324
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:220
+#, fuzzy
+#| msgid ""
+#| "In Wesnoth, it is not enough simply to recruit units and fight. You must "
+#| "watch your gold as well, especially in campaigns, where you can carry "
+#| "extra gold over from one scenario to the next. There are two aspects to "
+#| "this; <italic>text='income'</italic> and <italic>text='upkeep'</italic>."
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1733,6 +1757,16 @@ msgstr ""
 # File: data/core/help.cfg, line: 330
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:226
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "There are two important exceptions to upkeep: units with the loyal trait "
+#| "and leaders never incur upkeep. Units you begin the scenario with (such "
+#| "as Delfador), or units who join you during a scenario (such as the "
+#| "horseman in the second scenario of <italic>text='Heir to the Throne'</"
+#| "italic>) will usually have the <italic>text='loyal'</italic> trait. The "
+#| "unit you are playing (such as Konrad) will almost always be a leader."
 msgid ""
 "\n"
 "\n"
@@ -1766,6 +1800,13 @@ msgstr "Pontos de Vida e Experiência"
 # File: data/core/help.cfg, line: 201
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:236
+#, fuzzy
+#| msgid ""
+#| "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). "
+#| "If the hitpoints of a unit drop below 1, the unit dies. Each unit also "
+#| "has a certain number of <italic>text='experience points'</italic> (XP). A "
+#| "freshly recruited unit starts with no experience points, and gains "
+#| "experience by fighting enemies."
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -1825,10 +1866,8 @@ msgstr ""
 # File: src/help.cpp, line: 1389
 #. [topic]: id=advancement
 #: data/core/help.cfg:249
-#, fuzzy
-#| msgid "Advances to: "
 msgid "Advancement"
-msgstr "Avança para: "
+msgstr "Avança para:"
 
 #
 # File: data/core/help.cfg, line: 296
@@ -1876,6 +1915,21 @@ msgstr ""
 # File: data/core/help.cfg, line: 298
 #. [topic]: id=advancement
 #: data/core/help.cfg:252
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "While most units have three levels, not all do. Occasional units (such as "
+#| "<ref>dst='unit_Mage' text='magi'</ref>) may have four. Once a unit has "
+#| "reached its maximum level, it may have an <italic>text='After Maximum "
+#| "Level Advancement'</italic> (AMLA) available to it. The AMLA will modify "
+#| "the unit each time the unit reaches the experience goal, but the unit "
+#| "will remain the same level. The typical AMLA effect is for the unit to "
+#| "raise the maximum HP by 3 and full-heal it. The first AMLA will normally "
+#| "be reached with 150 XP gained (120 XP for intelligent units). However, "
+#| "gaining an AMLA becomes progressively harder for each AMLA the unit "
+#| "receives, and so it is usually more useful to try to advance your lower "
+#| "level units."
 msgid ""
 "\n"
 "\n"
@@ -1919,6 +1973,19 @@ msgstr "Movimento"
 # File: data/core/help.cfg, line: 214
 #. [topic]: id=movement
 #: data/core/help.cfg:262
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Each unit has a certain number of movement points which are used up when "
+#| "moving into a new hex, depending on the Terrain of that particular hex. "
+#| "For instance, grassland nearly always costs 1 movement point to enter. "
+#| "Exactly how many movement points are spent entering a hex depends on the "
+#| "unit type — in forest, elvish units only spend 1 movement point, most "
+#| "human and orc units spend 2, while horsemen spend 3. You can learn how "
+#| "many movement points a unit requires to enter a certain terrain type by "
+#| "right-clicking on it, selecting <bold>text='Unit Description'</bold>, and "
+#| "then looking at <bold>text='Terrain Modifiers'</bold>."
 msgid ""
 "\n"
 "\n"
@@ -1951,6 +2018,21 @@ msgstr ""
 # File: data/core/help.cfg, line: 214
 #. [topic]: id=movement
 #: data/core/help.cfg:262
+#, fuzzy
+#| msgid ""
+#| "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click "
+#| "on the unit you wish to move to select it, then click on the hex you wish "
+#| "to move it to. When a unit is selected, everywhere it can move this turn "
+#| "will be highlighted, and all other hexes on the map are made dull. "
+#| "Mousing over a highlighted hex shows the defense rating the unit would "
+#| "have if you moved it to that hex. Mousing over a dull hex will also show "
+#| "the number of turns required to reach it, and clicking will cause the "
+#| "unit to move towards it by the fastest route over this and subsequent "
+#| "turns. If you don’t use up all of a unit’s movement when you first move a "
+#| "unit, you may move it again. This is useful when having two units switch "
+#| "places. Attacking with a unit will use up its movement. Ending a move in "
+#| "a village you don’t already own will also use up a unit’s movement, but "
+#| "will still allow it to attack."
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -2054,6 +2136,28 @@ msgstr "Escuridão e Névoa de Guerra"
 # File: data/core/help.cfg, line: 228
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:276
+#, fuzzy
+#| msgid ""
+#| "In some scenarios, parts of the map will be hidden from you. There are "
+#| "two mechanisms that can be used separately or together. The "
+#| "<italic>text='shroud'</italic> hides both the terrain and any units at a "
+#| "location. However, once it is cleared, you can always see that location. "
+#| "The <italic>text='fog of war'</italic> only hides units and ownership of "
+#| "villages (other than by you or your allies). The fog of war is cleared "
+#| "temporarily when you have units nearby, but returns when they leave. Both "
+#| "the shroud and the fog of war are cleared by units. Each unit clears "
+#| "locations adjacent to those within one turn’s move (ignoring zones of "
+#| "control and enemy units).\n"
+#| "\n"
+#| "Normally you can undo a unit’s movement, as long as an event with a "
+#| "randomized result has not occurred, such as combat or recruitment (as "
+#| "most units receive random traits when recruited). Exploring hidden "
+#| "terrain by clearing shroud or fog will also prevent undos to a previous "
+#| "state. You may wish to activate <bold>text='Delay Shroud Updates'</bold> "
+#| "in the actions menu. This will prevent units from clearing shroud or fog "
+#| "until the next randomized event or a manual update via <bold>text='Update "
+#| "Shroud Now'</bold> (or the end of your turn) and thereby preserve your "
+#| "ability to undo movement."
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -2116,6 +2220,11 @@ msgstr "Combate"
 # File: data/core/help.cfg, line: 238
 #. [topic]: id=combat
 #: data/core/help.cfg:286
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Order and Number of Strikes'</header>"
 msgid ""
 "\n"
 "\n"
@@ -2131,6 +2240,19 @@ msgstr ""
 # File: data/core/help.cfg, line: 238
 #. [topic]: id=combat
 #: data/core/help.cfg:286
+#, fuzzy
+#| msgid ""
+#| "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
+#| "between units in adjacent hexes. Click on your unit, and click on the "
+#| "enemy you want to attack: your unit will move towards the enemy unit, and "
+#| "when they are next to each other, combat will begin. The attacker and "
+#| "defender alternate strikes until each has used their allotted number of "
+#| "strikes. The attacker chooses one of its weapons to attack with, and the "
+#| "defender retaliates with one of its attacks of the same type. There are "
+#| "two types of attacks: <italic>text='melee'</italic>, which usually "
+#| "involves weapons such as swords, axes or fangs; and "
+#| "<italic>text='ranged'</italic>, which usually involves weapons such as "
+#| "bows, spears and fireballs."
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -2194,11 +2316,16 @@ msgstr ""
 "acerto)."
 
 #
-# File: data/core/help.cfg, line: 242
-# File: data/core/help.cfg, line: 242
-# File: data/core/help.cfg, line: 242
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
 #. [topic]: id=combat
 #: data/core/help.cfg:290
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -2206,7 +2333,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Chance de acertar'</header>"
+"<header>text=Danos</header>"
 
 #
 # File: data/core/help.cfg, line: 244
@@ -2214,6 +2341,18 @@ msgstr ""
 # File: data/core/help.cfg, line: 244
 #. [topic]: id=combat
 #: data/core/help.cfg:292
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Every unit has a chance of being hit, based on the "
+#| "<italic>text='terrain'</italic> it is in. This is shown in the status "
+#| "pane, and may also be found by right-clicking a unit, selecting "
+#| "<bold>text='Unit Description'</bold>, and then looking at "
+#| "<bold>text='Terrain Modifiers'</bold>. For instance, many elves have a "
+#| "defense rating of 70% in forest, so a unit attacking them has only a 30% "
+#| "chance of hitting. Conversely, the elf’s chance of hitting the attacker "
+#| "in return depends on what terrain the attacker is in."
 msgid ""
 "\n"
 "\n"
@@ -2373,6 +2512,14 @@ msgstr ""
 # File: data/core/help.cfg, line: 261
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:309
+#, fuzzy
+#| msgid ""
+#| "In Wesnoth, there are three types of damage usually associated with "
+#| "physical attacks: <italic>text='blade, pierce, and impact damage'</"
+#| "italic>. Additionally, there are three further types of damage usually "
+#| "associated with magical attacks: <italic>text='fire, cold, and arcane "
+#| "attacks'</italic>. Different units may have resistances which alter the "
+#| "damage which they take from certain damage types."
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -2432,7 +2579,7 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:321
 msgid "Orbs"
-msgstr "Orbes"
+msgstr "Esferas"
 
 #
 # File: data/core/help.cfg, line: 188
@@ -2509,7 +2656,7 @@ msgstr "Unidades inimigas não têm orbes no topo de suas barras de energia."
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:335
 msgid "Time of Day"
-msgstr "Hora do Dia"
+msgstr "Período do Dia"
 
 #
 # File: data/core/help.cfg, line: 274
@@ -2903,6 +3050,14 @@ msgstr "Conclusão"
 # File: data/core/help.cfg, line: 339
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:386
+#, fuzzy
+#| msgid ""
+#| "This concludes the fundamentals of Wesnoth. You might want to read up on "
+#| "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
+#| "text='traits'</ref> and <ref>dst='..abilities_section' text='abilities'</"
+#| "ref>, but you now know everything you need to know to play the "
+#| "<italic>text='Heir to the Throne'</italic> campaign. Have fun, and good "
+#| "luck!"
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -3050,12 +3205,16 @@ msgstr ""
 "\n"
 
 #
-# File: data/core/help.cfg, line: 819
-# File: data/core/help.cfg, line: 819
-# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:416
 #, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -3063,7 +3222,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Chance de acertar'</header>"
+"<header>text=Danos</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:418
@@ -3087,12 +3246,16 @@ msgid ""
 msgstr ""
 
 #
-# File: data/core/help.cfg, line: 819
-# File: data/core/help.cfg, line: 819
-# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:424
 #, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -3100,7 +3263,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Chance de acertar'</header>"
+"<header>text=Danos</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:426
@@ -3175,12 +3338,16 @@ msgid ""
 msgstr ""
 
 #
-# File: data/core/help.cfg, line: 819
-# File: data/core/help.cfg, line: 819
-# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:446
 #, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -3188,7 +3355,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Chance de acertar'</header>"
+"<header>text=Danos</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:448
@@ -3221,12 +3388,16 @@ msgid ""
 msgstr ""
 
 #
-# File: data/core/help.cfg, line: 819
-# File: data/core/help.cfg, line: 819
-# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:454
 #, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -3235,7 +3406,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Chance de acertar'</header>"
+"<header>text=Danos</header>"
 
 #. [topic]: id=..addons
 #: data/core/help.cfg:467
@@ -3256,12 +3427,16 @@ msgid "Using Add-ons"
 msgstr ""
 
 #
-# File: data/core/help.cfg, line: 805
-# File: data/core/help.cfg, line: 805
-# File: data/core/help.cfg, line: 805
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
 #. [topic]: id=using_addons
 #: data/core/help.cfg:478
 #, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -3328,10 +3503,6 @@ msgstr ""
 "\n"
 "<header>text='Ordem e número de golpes'</header>"
 
-#
-# File: data/core/help.cfg, line: 815
-# File: data/core/help.cfg, line: 815
-# File: data/core/help.cfg, line: 815
 #. [topic]: id=using_addons
 #: data/core/help.cfg:488
 msgid ""
@@ -3357,12 +3528,16 @@ msgid ""
 msgstr ""
 
 #
-# File: data/core/help.cfg, line: 813
-# File: data/core/help.cfg, line: 813
-# File: data/core/help.cfg, line: 813
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
 #. [topic]: id=using_addons
 #: data/core/help.cfg:494
 #, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -3370,7 +3545,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Ordem e número de golpes'</header>"
+"<header>text=Danos</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:496
@@ -3383,12 +3558,16 @@ msgid ""
 msgstr ""
 
 #
-# File: data/core/help.cfg, line: 819
-# File: data/core/help.cfg, line: 819
-# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
 #. [topic]: id=using_addons
 #: data/core/help.cfg:498
 #, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -3396,7 +3575,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Chance de acertar'</header>"
+"<header>text=Danos</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:500
@@ -3413,12 +3592,16 @@ msgid ""
 msgstr ""
 
 #
-# File: data/core/help.cfg, line: 819
-# File: data/core/help.cfg, line: 819
-# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
 #. [topic]: id=using_addons
 #: data/core/help.cfg:504
 #, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -3426,7 +3609,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Chance de acertar'</header>"
+"<header>text=Danos</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:506
@@ -4285,7 +4468,7 @@ msgstr ""
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:125
 msgid "skirmisher"
-msgstr "combatente"
+msgstr "escaramuçador"
 
 #
 # File: data/core/macros/abilities.cfg, line: 338
@@ -4294,7 +4477,7 @@ msgstr "combatente"
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:126
 msgid "female^skirmisher"
-msgstr "combatente"
+msgstr "escaramuçador"
 
 #
 # File: data/core/macros/abilities.cfg, line: 339
@@ -4618,7 +4801,7 @@ msgstr ""
 #. [berserk]: id=berserk
 #: data/core/macros/abilities.cfg:274
 msgid "berserk"
-msgstr "frenesi"
+msgstr "berserk"
 
 #
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 757
@@ -4634,7 +4817,6 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Frenesi:\n"
 "Sempre que usado ofensivamente ou defensivamente, este ataque mantém o "
 "combate até que um dos combatentes morra, ou 30 rodadas de combate tenham se "
 "passado."
@@ -4903,7 +5085,6 @@ msgstr ""
 # File: data/core/macros/abilities.cfg, line: 686
 #. [firststrike]: id=firststrike
 #: data/core/macros/abilities.cfg:404
-#, fuzzy
 msgid "first strike"
 msgstr "iniciativa"
 
@@ -5295,9 +5476,8 @@ msgstr "Tarde"
 # File: data/core/macros/abilities.cfg, line: 686
 #. [time]: id=dusk1
 #: data/core/macros/schedules.cfg:592
-#, fuzzy
 msgid "First Dusk"
-msgstr "iniciativa"
+msgstr ""
 
 #
 # File: data/core/help.cfg, line: 286
@@ -7997,9 +8177,8 @@ msgstr "Lobo"
 # File: data/core/units.cfg, line: 311
 #. [race]: id=wolf
 #: data/core/units.cfg:394
-#, fuzzy
 msgid "race+female^Wolf"
-msgstr "Elfa"
+msgstr "Loba"
 
 #
 # File: data/core/units.cfg, line: 312
@@ -8115,49 +8294,163 @@ msgid "Parse error when parsing help text: "
 msgstr "Erro de formato ao ler o texto de ajuda: "
 
 #
-# File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 757
-# File: data/core/macros/abilities.cfg, line: 563
-# File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 757
-# File: data/core/macros/abilities.cfg, line: 563
-# File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 757
-# File: data/core/macros/abilities.cfg, line: 563
-#, fuzzy
+# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 819
 #~ msgid ""
-#~ "Whether used offensively or defensively, this attack presses the "
-#~ "engagement until one of the champions is slain, or 30 rounds of attacks "
-#~ "have occurred."
+#~ "\n"
+#~ "\n"
+#~ "<big>Pure Map Mode</big>"
 #~ msgstr ""
-#~ "Frenesi:\n"
-#~ "Sempre que usado ofensivamente ou defensivamente, este ataque mantém o "
-#~ "combate até que um dos combatentes morra, ou 30 rodadas de combate tenham "
-#~ "se passado."
+#~ "\n"
+#~ "\n"
+#~ "<big>Modo Só de Mapa</big>"
 
 #
-# File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 783
-# File: data/core/macros/abilities.cfg, line: 686
-# File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 783
-# File: data/core/macros/abilities.cfg, line: 686
-# File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 783
-# File: data/core/macros/abilities.cfg, line: 686
-#, fuzzy
-#~ msgid "true strike"
-#~ msgstr "iniciativa"
-
-#
-# File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 771
-# File: data/core/macros/abilities.cfg, line: 642
-# File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 771
-# File: data/core/macros/abilities.cfg, line: 642
-# File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 771
-# File: data/core/macros/abilities.cfg, line: 642
+# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 819
 #, fuzzy
 #~ msgid ""
-#~ "This attack always has a 70% chance to hit regardless of the defensive "
-#~ "ability of the champion being attacked."
+#~ "\n"
+#~ "\n"
+#~ "<big>Scenario Mode</big>"
 #~ msgstr ""
-#~ "Mágico:\n"
-#~ "Este ataque sempre tem 70% de chance de acertar, não importando a "
-#~ "habilidade defensiva da unidade sendo atacada."
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Chance de acertar'</header>"
+
+#
+# File: data/core/help.cfg, line: 141
+# File: data/core/help.cfg, line: 141
+# File: data/core/help.cfg, line: 141
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Fundamentals of Gameplay</big>\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Fundamentos do Jogo</big>\n"
+#~ "\n"
+
+#
+# File: data/core/help.cfg, line: 242
+# File: data/core/help.cfg, line: 242
+# File: data/core/help.cfg, line: 242
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Chance to Hit'</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Chance to Hit</big>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Chance de acertar'</header>"
+
+#
+# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 819
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Basic Terrain Types</big>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Chance de acertar'</header>"
+
+#
+# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 819
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Mixed Terrain Types</big>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Chance de acertar'</header>"
+
+#
+# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 819
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Defense Caps</big>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Chance de acertar'</header>"
+
+#
+# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 819
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Basic Terrain Types</big>\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Chance de acertar'</header>"
+
+#
+# File: data/core/help.cfg, line: 805
+# File: data/core/help.cfg, line: 805
+# File: data/core/help.cfg, line: 805
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Campaigns and Scenarios</big>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text=Danos</header>"
+
+#
+# File: data/core/help.cfg, line: 813
+# File: data/core/help.cfg, line: 813
+# File: data/core/help.cfg, line: 813
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Multiplayer Modifications</big>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Ordem e número de golpes'</header>"
+
+#
+# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 819
+# File: data/core/help.cfg, line: 819
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Creator Resources</big>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Chance de acertar'</header>"
 
 #
 # File: data/core/units.cfg, line: 210
@@ -8374,13 +8667,6 @@ msgstr "Erro de formato ao ler o texto de ajuda: "
 # File: data/core/help.cfg, line: 126
 #~ msgid "Overview"
 #~ msgstr "Resumo"
-
-#
-# File: data/core/help.cfg, line: 141
-# File: data/core/help.cfg, line: 141
-# File: data/core/help.cfg, line: 141
-#~ msgid "Fundamentals of Gameplay"
-#~ msgstr "Regras Básicas"
 
 #
 # File: data/core/help.cfg, line: 142
