@@ -180,12 +180,6 @@ variant::variant(const std::map<variant,variant>& map)
 	assert(value_.get());
 }
 
-variant& variant::operator=(const variant& v)
-{
-	value_ = v.value_;
-	return *this;
-}
-
 variant variant::operator[](size_t n) const
 {
 	if(is_callable()) {
