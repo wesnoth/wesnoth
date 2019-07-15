@@ -9,14 +9,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:26+0300\n"
-"PO-Revision-Date: 2012-04-18 23:26-0300\n"
+"PO-Revision-Date: 2019-07-12 16:21-0300\n"
 "Last-Translator: Davi Duarte Pinheiro <daviduartep@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
-"Language: \n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #
 # File: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg, line: 529
@@ -43,7 +44,7 @@ msgstr "Subsolo"
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:657
 #: data/core/macros/abilities.cfg:274
 msgid "berserk"
-msgstr "frenesi"
+msgstr "berserk"
 
 #
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 757
@@ -61,7 +62,6 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Frenesi:\n"
 "Sempre que usado ofensivamente ou defensivamente, este ataque mantém o "
 "combate até que um dos combatentes morra, ou 30 rodadas de combate tenham se "
 "passado."
@@ -110,7 +110,6 @@ msgstr ""
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:679
 #: data/core/macros/abilities.cfg:404
-#, fuzzy
 msgid "first strike"
 msgstr "iniciativa"
 
@@ -246,7 +245,7 @@ msgstr ""
 #. [section]: id=editor
 #: data/core/editor/help.cfg:5
 msgid "Map and Scenario Editor"
-msgstr ""
+msgstr "Editor de Mapa e Cenário"
 
 #. [topic]: id=editor_brush
 #: data/core/editor/help.cfg:13
@@ -494,7 +493,7 @@ msgstr ""
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:184
 msgid "Editing Modes"
-msgstr ""
+msgstr "Modos de Edição"
 
 #
 # File: data/core/help.cfg, line: 819
@@ -502,7 +501,6 @@ msgstr ""
 # File: data/core/help.cfg, line: 819
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -510,7 +508,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Chance de acertar'</header>"
+"<big>Modo Só de Mapa</big>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
@@ -589,7 +587,7 @@ msgstr ""
 #. [topic]: id=editor_toolkit
 #: data/core/editor/help.cfg:211
 msgid "Editor Tools"
-msgstr ""
+msgstr "Ferramentas do Editor"
 
 #. [topic]: id=editor_toolkit
 #: data/core/editor/help.cfg:212
@@ -647,7 +645,7 @@ msgstr ""
 #. [topic]: id=editor_time_schedule
 #: data/core/editor/help.cfg:250
 msgid "Time Schedule Editor"
-msgstr ""
+msgstr "Editor de Período do Dia"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:258
@@ -1238,7 +1236,7 @@ msgstr "Efeitos das Armas"
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:62 data/core/help.cfg:128
 msgid "Eras"
-msgstr ""
+msgstr "Eras"
 
 #
 # File: data/core/help.cfg, line: 63
@@ -1264,7 +1262,7 @@ msgstr "Terrenos"
 #. [topic]: id=..addons
 #: data/core/help.cfg:79 data/core/help.cfg:459
 msgid "Add-ons"
-msgstr ""
+msgstr "Add-ons"
 
 #
 # File: data/core/help.cfg, line: 76
@@ -1471,14 +1469,16 @@ msgstr ""
 # File: data/core/help.cfg, line: 141
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:176
-#, fuzzy
-#| msgid "Fundamentals of Gameplay"
 msgid ""
 "\n"
 "\n"
 "<big>Fundamentals of Gameplay</big>\n"
 "\n"
-msgstr "Regras Básicas"
+msgstr ""
+"\n"
+"\n"
+"<big>Fundamentos do Jogo</big>\n"
+"\n"
 
 #
 # File: data/core/help.cfg, line: 147
@@ -1910,10 +1910,8 @@ msgstr ""
 # File: src/help.cpp, line: 1389
 #. [topic]: id=advancement
 #: data/core/help.cfg:244
-#, fuzzy
-#| msgid "Advances to: "
 msgid "Advancement"
-msgstr "Avança para: "
+msgstr "Avança para:"
 
 #
 # File: data/core/help.cfg, line: 296
@@ -2622,7 +2620,7 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:316
 msgid "Orbs"
-msgstr "Orbes"
+msgstr "Esferas"
 
 #
 # File: data/core/help.cfg, line: 188
@@ -2699,7 +2697,7 @@ msgstr "Unidades inimigas não têm orbes no topo de suas barras de energia."
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:330
 msgid "Time of Day"
-msgstr "Hora do Dia"
+msgstr "Período do Dia"
 
 #
 # File: data/core/help.cfg, line: 274
@@ -4425,7 +4423,7 @@ msgstr ""
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:125
 msgid "skirmisher"
-msgstr "combatente"
+msgstr "escaramuçador"
 
 #
 # File: data/core/macros/abilities.cfg, line: 338
@@ -4434,7 +4432,7 @@ msgstr "combatente"
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:126
 msgid "female^skirmisher"
-msgstr "combatente"
+msgstr "escaramuçador"
 
 #
 # File: data/core/macros/abilities.cfg, line: 339
@@ -5344,9 +5342,8 @@ msgstr "Tarde"
 # File: data/core/macros/abilities.cfg, line: 686
 #. [time]: id=dusk1
 #: data/core/macros/schedules.cfg:592
-#, fuzzy
 msgid "First Dusk"
-msgstr "iniciativa"
+msgstr ""
 
 #
 # File: data/core/help.cfg, line: 286
@@ -7870,9 +7867,8 @@ msgstr "Lobo"
 # File: data/core/units.cfg, line: 311
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:361
-#, fuzzy
 msgid "race+female^Wolf"
-msgstr "Elfa"
+msgstr "Loba"
 
 #
 # File: data/core/units.cfg, line: 312

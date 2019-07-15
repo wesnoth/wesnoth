@@ -9,14 +9,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-03-27 04:27+0300\n"
-"PO-Revision-Date: 2012-10-29 18:41-0300\n"
+"PO-Revision-Date: 2019-07-08 09:44-0300\n"
 "Last-Translator: gilberto dos santos alves <gsavix@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
-"Language: Portuguese (Brazil)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #
 # File: src/menu_events.cpp, line: 3119
@@ -27,10 +28,8 @@ msgstr ""
 # File: src/menu_events.cpp, line: 3148
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
-#, fuzzy
-#| msgid "prompt^Command:"
 msgid "Custom"
-msgstr "Comando:"
+msgstr "Personalizado"
 
 #
 # File: data/advanced_preferences.cfg, line: 4
@@ -38,10 +37,8 @@ msgstr "Comando:"
 # File: data/advanced_preferences.cfg, line: 4
 #. [advanced_preference]: type=combo
 #: data/advanced_preferences.cfg:4
-#, fuzzy
-#| msgid "Compressed saves"
 msgid "Compress saved games"
-msgstr "Comprimir Jogos Salvo"
+msgstr "Compactar jogos salvo"
 
 #. [option]: id=gzip
 #: data/advanced_preferences.cfg:9
@@ -66,7 +63,7 @@ msgstr ""
 #. [option]: id=none
 #: data/advanced_preferences.cfg:19
 msgid "save_compression^No"
-msgstr ""
+msgstr "Não"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:20
@@ -79,9 +76,8 @@ msgstr ""
 # File: data/advanced_preferences.cfg, line: 11
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
-#, fuzzy
 msgid "Confirm deleting saves"
-msgstr "Confirmar ao apagar algum jogo salvo"
+msgstr "Confirmar ao apagar jogo salvo"
 
 #
 # File: data/advanced_preferences.cfg, line: 18
@@ -90,7 +86,7 @@ msgstr "Confirmar ao apagar algum jogo salvo"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:33
 msgid "Mouse scrolling"
-msgstr "Rolagem com Mouse"
+msgstr "Rolagem com o mouse"
 
 #
 # File: data/advanced_preferences.cfg, line: 25
@@ -98,6 +94,7 @@ msgstr "Rolagem com Mouse"
 # File: data/advanced_preferences.cfg, line: 25
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:40
+#, fuzzy
 msgid "Middle-click scrolling"
 msgstr "Rolagem com Clique do Botão do Meio"
 
@@ -126,6 +123,7 @@ msgstr "Mostrar Combate"
 # File: data/advanced_preferences.cfg, line: 60
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:61
+#, fuzzy
 msgid "Ping timeout"
 msgstr "Tempo Limite de Ping"
 
@@ -667,7 +665,7 @@ msgstr "Contribuidores Diversos"
 #. [about]
 #: data/core/about.cfg:1653
 msgid "Bots"
-msgstr "Robôs"
+msgstr "Bots"
 
 #
 # File: data/core/about.cfg, line: 1317
@@ -12544,7 +12542,7 @@ msgstr "Caracteres inesperados após o nome da variável (esperado , ou =)"
 # File: src/serialization/parser.cpp, line: 310
 #: src/serialization/parser.cpp:352 src/serialization/parser.cpp:392
 msgid "Unterminated quoted string"
-msgstr "Texto entre aspas não terminado"
+msgstr "Texto entre aspas inacabado"
 
 #: src/serialization/parser.cpp:459
 msgid "at $pos"
@@ -12720,10 +12718,8 @@ msgstr ""
 # File: src/statistics_dialog.cpp, line: 167
 # File: src/statistics_dialog.cpp, line: 167
 #: src/synced_commands.cpp:414
-#, fuzzy
-#| msgid "Details"
 msgid "Details:"
-msgstr "Detalhes"
+msgstr "Detalhes:"
 
 #: src/synced_commands.cpp:417
 msgid "Do you wish to save the game before continuing?"
@@ -12781,7 +12777,7 @@ msgstr "border_size deve estar entre 0.0 e 0.5."
 
 #: src/theme.cpp:552 src/theme.cpp:557
 msgid "Hotkey(s): "
-msgstr ""
+msgstr "Atalho(s): "
 
 #
 # File: src/attack_prediction_display.cpp, line: 214
@@ -12933,10 +12929,8 @@ msgstr "caótico"
 # File: src/unit_types.cpp, line: 819
 # File: src/unit_types.cpp, line: 819
 #: src/units/types.cpp:545 src/units/types.hpp:179
-#, fuzzy
-#| msgid "female^lawful"
 msgid "lawful"
-msgstr "ordeira"
+msgstr "ordeiro"
 
 #
 # File: src/unit_types.cpp, line: 818
@@ -13127,7 +13121,7 @@ msgstr "Mostrar planos para $player"
 # File: src/whiteboard/manager.cpp, line: 1111
 #: src/whiteboard/manager.cpp:1100
 msgid "Hide plans for $player"
-msgstr "Esconder planos de $player"
+msgstr "Esconder planos para $player"
 
 #
 # File: src/whiteboard/manager.cpp, line: 1114
