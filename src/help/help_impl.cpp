@@ -325,22 +325,8 @@ std::string generate_topic_text(const std::string &generator, const config *help
 	return empty_string;
 }
 
-topic_text::~topic_text()
+topic_text& topic_text::operator=(std::shared_ptr<topic_generator> g)
 {
-	if (generator_ && --generator_->count == 0)
-		delete generator_;
-}
-
-topic_text::topic_text(const topic_text& t): parsed_text_(t.parsed_text_), generator_(t.generator_)
-{
-	if (generator_)
-		++generator_->count;
-}
-
-topic_text &topic_text::operator=(topic_generator *g)
-{
-	if (generator_ && --generator_->count == 0)
-		delete generator_;
 	generator_ = g;
 	return *this;
 }
@@ -349,9 +335,8 @@ const std::vector<std::string>& topic_text::parsed_text() const
 {
 	if (generator_) {
 		parsed_text_ = parse_text((*generator_)());
-		if (--generator_->count == 0)
-			delete generator_;
-		generator_ = nullptr;
+		// This caches the result, so doesn't need the generator any more
+		generator_.reset();
 	}
 	return parsed_text_;
 }
@@ -855,7 +840,7 @@ void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*l
 		topic terrain_topic;
 		terrain_topic.title = info.editor_name();
 		terrain_topic.id    = hidden_symbol(hidden) + terrain_prefix + info.id();
-		terrain_topic.text  = new terrain_topic_generator(info);
+		terrain_topic.text  = std::make_shared<terrain_topic_generator>(info);
 
 		t_translation::ter_list base_terrains = tdata->underlying_union_terrain(t);
 		for (const t_translation::terrain_code& base : base_terrains) {
@@ -900,7 +885,7 @@ void generate_unit_sections(const config* /*help_cfg*/, section& sec, int level,
 			const std::string var_ref = hidden_symbol(var_type.hide_help()) + variation_prefix + var_type.id() + "_" + variation_id;
 
 			topic var_topic(topic_name, var_ref, "");
-			var_topic.text = new unit_topic_generator(var_type, variation_id);
+			var_topic.text = std::make_shared<unit_topic_generator>(var_type, variation_id);
 			base_unit.topics.push_back(var_topic);
 		}
 
@@ -938,7 +923,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		const std::string real_prefix = type.show_variations_in_help() ? ".." : "";
 		const std::string ref_id = hidden_symbol(type.hide_help()) + real_prefix + unit_prefix +  type.id();
 		topic unit_topic(type_name, ref_id, "");
-		unit_topic.text = new unit_topic_generator(type);
+		unit_topic.text = std::make_shared<unit_topic_generator>(type);
 		topics.push_back(unit_topic);
 
 		if (!type.hide_help()) {
