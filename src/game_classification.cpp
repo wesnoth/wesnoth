@@ -28,27 +28,6 @@ static lg::log_domain log_engine("engine");
 /// The default difficulty setting for campaigns.
 const std::string DEFAULT_DIFFICULTY("NORMAL");
 
-game_classification::game_classification()
-	: label()
-	, version()
-	, campaign_type()
-	, campaign_define()
-	, campaign_xtra_defines()
-	, scenario_define()
-	, era_define()
-	, mod_defines()
-	, campaign()
-	, campaign_name()
-	, abbrev()
-	, end_credits(true)
-	, end_text()
-	, end_text_duration()
-	, difficulty(DEFAULT_DIFFICULTY)
-	, random_mode("")
-	, oos_debug(false)
-{
-}
-
 game_classification::game_classification(const config& cfg)
 	: label(cfg["label"])
 	, version(cfg["version"])
@@ -68,27 +47,6 @@ game_classification::game_classification(const config& cfg)
 	, difficulty(cfg["difficulty"].empty() ? DEFAULT_DIFFICULTY : cfg["difficulty"].str())
 	, random_mode(cfg["random_mode"])
 	, oos_debug(cfg["oos_debug"].to_bool(false))
-{
-}
-
-game_classification::game_classification(const game_classification& gc)
-	: label(gc.label)
-	, version(gc.version)
-	, campaign_type(gc.campaign_type)
-	, campaign_define(gc.campaign_define)
-	, campaign_xtra_defines(gc.campaign_xtra_defines)
-	, scenario_define(gc.scenario_define)
-	, era_define(gc.era_define)
-	, mod_defines(gc.mod_defines)
-	, campaign(gc.campaign)
-	, campaign_name(gc.campaign_name)
-	, abbrev(gc.abbrev)
-	, end_credits(gc.end_credits)
-	, end_text(gc.end_text)
-	, end_text_duration(gc.end_text_duration)
-	, difficulty(gc.difficulty)
-	, random_mode(gc.random_mode)
-	, oos_debug(gc.oos_debug)
 {
 }
 

@@ -358,17 +358,6 @@ locator& locator::operator=(const locator& a)
 	return *this;
 }
 
-locator::value::value(const locator::value& a)
-	: type_(a.type_)
-	, is_data_uri_(a.is_data_uri_)
-	, filename_(a.filename_)
-	, loc_(a.loc_)
-	, modifications_(a.modifications_)
-	, center_x_(a.center_x_)
-	, center_y_(a.center_y_)
-{
-}
-
 locator::value::value()
 	: type_(NONE)
 	, is_data_uri_(false)
