@@ -62,10 +62,8 @@ typedef std::vector<section *> section_list;
 /// Generate a topic text on the fly.
 class topic_generator
 {
-	unsigned count;
-	friend class topic_text;
 public:
-	topic_generator(): count(1) {}
+	topic_generator() = default;
 	virtual std::string operator()() const = 0;
 	virtual ~topic_generator() {}
 };
@@ -82,31 +80,30 @@ public:
 class topic_text
 {
 	mutable std::vector< std::string > parsed_text_;
-	mutable topic_generator *generator_;
+	mutable std::shared_ptr<topic_generator> generator_;
 public:
-	~topic_text();
-	topic_text():
-		parsed_text_(),
-		generator_(nullptr)
-	{
-	}
+	topic_text() = default;
+	~topic_text() = default;
 
 	topic_text(const std::string& t):
 		parsed_text_(),
-		generator_(new text_topic_generator(t))
+		generator_(std::make_shared<text_topic_generator>(t))
 	{
 	}
 
-	explicit topic_text(topic_generator *g):
+	explicit topic_text(std::shared_ptr<topic_generator> g):
 		parsed_text_(),
 		generator_(g)
 	{
 	}
-	topic_text &operator=(topic_generator *g);
-	topic_text(const topic_text& t);
-	topic_text& operator=(const topic_text& t) = default;
 
-    const std::vector<std::string>& parsed_text() const;
+	topic_text(const topic_text& t) = default;
+	topic_text(topic_text&& t) = default;
+	topic_text& operator=(topic_text&& t) = default;
+	topic_text& operator=(const topic_text& t) = default;
+	topic_text& operator=(std::shared_ptr<topic_generator> g);
+
+	const std::vector<std::string>& parsed_text() const;
 };
 
 /// A topic contains a title, an id and some text.
@@ -128,7 +125,7 @@ struct topic
 
 	topic(const std::string &_title, const std::string &_id, const std::string &_text)
 		: title(_title), id(_id), text(_text) {}
-	topic(const std::string &_title, const std::string &_id, topic_generator *g)
+	topic(const std::string &_title, const std::string &_id, std::shared_ptr<topic_generator> g)
 		: title(_title), id(_id), text(g) {}
 	/// Two topics are equal if their IDs are equal.
 	bool operator==(const topic &) const;
