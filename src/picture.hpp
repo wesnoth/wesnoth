@@ -41,7 +41,6 @@ namespace image {
 		void parse_arguments();
 		struct value {
 			value();
-			value(const value &a);
 			value(const char *filename);
 			value(const std::string& filename);
 			value(const std::string& filename, const std::string& modifications);

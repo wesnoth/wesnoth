@@ -101,6 +101,7 @@ public:
 		              const terrain_costs * cascade=nullptr) :
 			terrain_info(that, fallback, cascade)
 		{}
+		terrain_costs& operator=(const terrain_costs&) = default;
 
 		/// Returns the cost associated with the given terrain.
 		/// Costs are doubled when @a slowed is true.
@@ -173,6 +174,7 @@ public:
 	movetype();
 	explicit movetype(const config & cfg);
 	movetype(const movetype & that);
+	movetype& operator=(const movetype& that) = default;
 
 	// This class is basically just a holder for its various pieces, so
 	// provide access to those pieces on demand.

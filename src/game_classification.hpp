@@ -27,9 +27,8 @@ extern const std::string DEFAULT_DIFFICULTY;
 class game_classification
 {
 public:
-	game_classification();
+	game_classification() = default;
 	explicit game_classification(const config& cfg);
-	game_classification(const game_classification& gc);
 
 	config to_config() const;
 	std::string get_tagname() const;
@@ -54,10 +53,10 @@ public:
 	std::string campaign_name;                       /**< The name of the campaign being played. */
 
 	std::string abbrev;                              /**< the campaign abbreviation */
-	bool end_credits;                                /**< whether to show the standard credits at the end */
+	bool end_credits = true;                                /**< whether to show the standard credits at the end */
 	std::string end_text;                            /**< end-of-campaign text */
 	unsigned int end_text_duration;                  /**< for how long the end-of-campaign text is shown */
-	std::string difficulty; /**< The difficulty level the game is being played on. */
-	std::string random_mode;
-	bool oos_debug;
+	std::string difficulty = DEFAULT_DIFFICULTY; /**< The difficulty level the game is being played on. */
+	std::string random_mode = "";
+	bool oos_debug = false;
 };
