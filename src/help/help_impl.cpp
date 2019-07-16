@@ -181,9 +181,8 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 		}
 
 		generate_sections(help_cfg, (*section_cfg)["sections_generator"], sec, level);
-		//TODO: harmonize topics/sections sorting
 		if ((*section_cfg)["sort_sections"] == "yes") {
-			std::sort(sec.sections.begin(),sec.sections.end(), section_less());
+			sec.sections.sort(section_less());
 		}
 
 		bool sort_topics = false;
@@ -1043,18 +1042,16 @@ std::string generate_contents_links(const section &sec, const std::vector<topic>
 {
 		std::stringstream res;
 
-		section_list::const_iterator s;
-		for (s = sec.sections.begin(); s != sec.sections.end(); ++s) {
-			if (is_visible_id((*s)->id)) {
-				std::string link = make_link((*s)->title, ".."+(*s)->id);
+		for (auto &s : sec.sections) {
+			if (is_visible_id(s.id)) {
+				std::string link = make_link(s.title, ".."+s.id);
 				res << font::unicode_bullet << " " << link << "\n";
 			}
 		}
 
-		std::vector<topic>::const_iterator t;
-		for (t = topics.begin(); t != topics.end(); ++t) {
-			if (is_visible_id(t->id)) {
-				std::string link = make_link(t->title, t->id);
+		for (auto &t : topics) {
+			if (is_visible_id(t.id)) {
+				std::string link = make_link(t.title, t.id);
 				res << font::unicode_bullet << " " << link << "\n";
 			}
 		}
@@ -1071,34 +1068,6 @@ bool topic::operator<(const topic &t) const
 	return id < t.id;
 }
 
-section::~section()
-{
-	std::for_each(sections.begin(), sections.end(), delete_section());
-}
-
-section::section(const section &sec) :
-	title(sec.title),
-	id(sec.id),
-	topics(sec.topics),
-	sections(),
-	level(sec.level)
-{
-	std::transform(sec.sections.begin(), sec.sections.end(),
-				   std::back_inserter(sections), create_section());
-}
-
-section& section::operator=(const section &sec)
-{
-	title = sec.title;
-	id = sec.id;
-	level = sec.level;
-	topics.insert(topics.end(), sec.topics.begin(), sec.topics.end());
-	std::transform(sec.sections.begin(), sec.sections.end(),
-				   std::back_inserter(sections), create_section());
-	return *this;
-}
-
-
 bool section::operator==(const section &sec) const
 {
 	return sec.id == id;
@@ -1111,13 +1080,12 @@ bool section::operator<(const section &sec) const
 
 void section::add_section(const section &s)
 {
-	sections.push_back(new section(s));
+	sections.emplace_back(s);
 }
 
 void section::clear()
 {
 	topics.clear();
-	std::for_each(sections.begin(), sections.end(), delete_section());
 	sections.clear();
 }
 
@@ -1130,9 +1098,8 @@ const topic *find_topic(const section &sec, const std::string &id)
 	if (tit != sec.topics.end()) {
 		return &(*tit);
 	}
-	section_list::const_iterator sit;
-	for (sit = sec.sections.begin(); sit != sec.sections.end(); ++sit) {
-		const topic *t = find_topic(*(*sit), id);
+	for (const auto &s : sec.sections) {
+		const auto t = find_topic(s, id);
 		if (t != nullptr) {
 			return t;
 		}
@@ -1142,13 +1109,13 @@ const topic *find_topic(const section &sec, const std::string &id)
 
 const section *find_section(const section &sec, const std::string &id)
 {
-	section_list::const_iterator sit =
+	const auto &sit =
 		std::find_if(sec.sections.begin(), sec.sections.end(), has_id(id));
 	if (sit != sec.sections.end()) {
-		return *sit;
+		return &*sit;
 	}
-	for (sit = sec.sections.begin(); sit != sec.sections.end(); ++sit) {
-		const section *s = find_section(*(*sit), id);
+	for (const auto &subsection : sec.sections) {
+		const auto s = find_section(subsection, id);
 		if (s != nullptr) {
 			return s;
 		}

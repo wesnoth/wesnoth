@@ -49,15 +49,12 @@ class config;
 class unit_type;
 class terrain_type_data;
 typedef std::shared_ptr<terrain_type_data> ter_data_cache;
-namespace help { struct section; }  // lines 51-51
-
 namespace help {
 
 /// Generate the help contents from the configurations given to the
 /// manager.
 void generate_contents();
 
-typedef std::vector<section *> section_list;
 
 /// Generate a topic text on the fly.
 class topic_generator
@@ -136,6 +133,8 @@ struct topic
 	mutable topic_text text;
 };
 
+struct section;
+typedef std::list<section> section_list;
 typedef std::list<topic> topic_list;
 
 /// A section contains topics and sections along with title and ID.
@@ -149,9 +148,6 @@ struct section {
 	{
 	}
 
-	section(const section&);
-	section& operator=(const section&);
-	~section();
 	/// Two sections are equal if their IDs are equal.
 	bool operator==(const section &) const;
 	/// Comparison on the ID.
@@ -193,8 +189,8 @@ public:
 class section_less
 {
 public:
-	bool operator()(const section* s1, const section* s2) {
-            return translation::compare(s1->title, s2->title) < 0; }
+	bool operator()(const section& s1, const section& s2) {
+            return translation::compare(s1.title, s2.title) < 0; }
 };
 
 class string_less
@@ -203,17 +199,6 @@ public:
 	bool operator() (const std::string &s1, const std::string &s2) const {
 		return translation::compare(s1, s2) < 0;
 	}
-};
-
-struct delete_section
-{
-	void operator()(section *s) { delete s; }
-};
-
-struct create_section
-{
-	section *operator()(const section *s) { return new section(*s); }
-	section *operator()(const section &s) { return new section(s); }
 };
 
 /// Thrown when the help system fails to parse something.

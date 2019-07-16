@@ -70,13 +70,12 @@ void help_menu::update_visible_items(const section &sec, unsigned level)
 		// Clear if this is the top level, otherwise append items.
 		visible_items_.clear();
 	}
-	section_list::const_iterator sec_it;
-	for (sec_it = sec.sections.begin(); sec_it != sec.sections.end(); ++sec_it) {
-		if (is_visible_id((*sec_it)->id)) {
-			const std::string vis_string = get_string_to_show(*(*sec_it), level + 1);
-			visible_items_.emplace_back(*sec_it, vis_string);
-			if (expanded(*(*sec_it))) {
-				update_visible_items(*(*sec_it), level + 1);
+	for (const auto &s : sec.sections) {
+		if (is_visible_id(s.id)) {
+			const std::string vis_string = get_string_to_show(s, level + 1);
+			visible_items_.emplace_back(&s, vis_string);
+			if (expanded(s)) {
+				update_visible_items(s, level + 1);
 			}
 		}
 	}
@@ -126,9 +125,8 @@ bool help_menu::select_topic_internal(const topic &t, const section &sec)
 			expand(sec);
 		return true;
 	}
-	section_list::const_iterator sit;
-	for (sit = sec.sections.begin(); sit != sec.sections.end(); ++sit) {
-		if (select_topic_internal(t, *(*sit))) {
+	for (const auto &s : sec.sections) {
+		if (select_topic_internal(t, s)) {
 			expand(sec);
 			return true;
 		}
