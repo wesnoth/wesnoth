@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-09-09 08:38 UTC\n"
+"POT-Creation-Date: 2019-07-18 12:50 UTC\n"
 "PO-Revision-Date: 2018-09-13 19:26+0200\n"
 "Last-Translator: daMark <daMark@arcor.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -25,7 +25,7 @@ msgid "Multiplayer_AI^Default AI (RCA)"
 msgstr "Standard KI (RCA)"
 
 #. [ai]: id=experimental_ai
-#: data/ai/ais/ai_generic_rush.cfg:10
+#: data/ai/ais/ai_experimental.cfg:9
 msgid "Multiplayer_AI^Experimental AI"
 msgstr "Experimentelle KI"
 
@@ -49,10 +49,6 @@ msgstr ""
 #: data/ai/dev/formula_ai_poisoning.cfg:9
 msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
 msgstr "Entw. KI: Standard + Vergiftend (Formelbasierte KI)"
-
-#: data/ai/lua/patrol.lua:4
-msgid "Use the Patrols Micro AI instead of patrol.lua."
-msgstr "Benutzt die Patrols Mikro KI anstatt patrol.lua."
 
 #. [test]: id=The_Elves_Besieged
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:5
@@ -336,8 +332,8 @@ msgstr ""
 "lassen einander in Ruhe, was die außerordentliche Selbstkontrolle eines gut "
 "trainierten Schäferhundes zeigt."
 
-#. [event]
 #. [test]: id=animals
+#. [event]
 #: data/ai/micro_ais/scenarios/animals.cfg:27
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:45
 msgid "Animals"
@@ -380,8 +376,8 @@ msgstr "Spinnen"
 msgid "Yetis"
 msgstr "Yetis"
 
-#. [event]
 #. [side]
+#. [event]
 #. [test]: id=wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:119
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:48
@@ -647,8 +643,8 @@ msgstr ""
 "Ich mag gefallen sein, aber wir werden den Pass bis zum letzte Mann "
 "verteidigen!"
 
-#. [event]
 #. [test]: id=dragon
+#. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:54
 msgid "Dragon"
@@ -777,8 +773,8 @@ msgstr ""
 "Es gibt hier nichts zu tun. Man schaut nur zu oder benutzt dieses Szenario "
 "als eine Vorlage für seine eigenen Tests."
 
-#. [event]
 #. [test]: id=goto
+#. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:84
 msgid "Goto"
@@ -1106,8 +1102,8 @@ msgid "We're back together, let's head out to the corners again."
 msgstr ""
 "Wir sind wieder zusammengekommen. Lasst und wieder zu den Ecken ausschwärmen."
 
-#. [event]
 #. [test]: id=guardians
+#. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:17
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:57
 msgid "Guardians"
@@ -1869,9 +1865,9 @@ msgstr "Boten Geleitschutz"
 msgid "Vanak"
 msgstr "Vanak"
 
-#. [event]
 #. [side]
 #. [unit]: type=Dragoon, id=messenger
+#. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:37
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:73
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:72
@@ -1972,8 +1968,8 @@ msgid "Nooo!  All is lost. We will never stop the orcs now!"
 msgstr ""
 "Neiiiin! Alles ist verloren. Wir werden die Orks jetzt niemals stoppen!"
 
-#. [event]
 #. [test]: id=patrols
+#. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:75
 msgid "Patrols"
@@ -2185,8 +2181,8 @@ msgstr ""
 msgid "Let's go home, chaps."
 msgstr "Lasst uns nach Hause gehen, Kameraden."
 
-#. [event]
 #. [test]: id=protect_unit
+#. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:63
 msgid "Protect Unit"
@@ -2351,8 +2347,8 @@ msgstr "Ich habe so lange durchgehalten wie ich konnte."
 msgid "I made it"
 msgstr "Ich habe es geschafft"
 
-#. [event]
 #. [test]: id=recruiting
+#. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:78
 msgid "Recruiting"
@@ -2897,12 +2893,27 @@ msgstr ""
 
 #. [message]: speaker=Uralt
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:176
+#, fuzzy
+#| msgid ""
+#| "Hahahahaha !! I have given special instruction to my Soulless to attack "
+#| "all you almost-advanced units first. Also watch how those same Soulless "
+#| "will throw themselves mercilessly at your pitiful soldiers after that, "
+#| "saving my more valuable skeleton minions for later.  I have taken the "
+#| "term 'disposable units' to a whole new level. Watch in awe !!\n"
+#| "\n"
+#| "<i>Translation: The undead side includes two instances of the Simple "
+#| "Attack Micro AI.  The first makes the Soulless attack all units 1 XP from "
+#| "leveling up, such that they can be eliminated afterward.  The second "
+#| "executes all remaining attacks possible by Soulless (and Walking "
+#| "Corpses), without regard for their own safety.  Only after that does the "
+#| "default Wesnoth attack mechanism kick in to attack with the remaining "
+#| "units (skeletons).</i>"
 msgid ""
-"Hahahahaha !! I have given special instruction to my Soulless to attack all "
-"you almost-advanced units first. Also watch how those same Soulless will "
+"Hahahahaha!! I have given special instruction to my Soulless to attack all "
+"your almost-advanced units first. Also watch how those same Soulless will "
 "throw themselves mercilessly at your pitiful soldiers after that, saving my "
-"more valuable skeleton minions for later.  I have taken the term 'disposable "
-"units' to a whole new level. Watch in awe !!\n"
+"more valuable skeleton minions for later. I have taken the term 'disposable "
+"units' to a whole new level. Watch in awe!!\n"
 "\n"
 "<i>Translation: The undead side includes two instances of the Simple Attack "
 "Micro AI.  The first makes the Soulless attack all units 1 XP from leveling "
@@ -3312,6 +3323,9 @@ msgstr "Lua KI Test Szenario (alte Syntax)"
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:87
 msgid "Kiressh"
 msgstr "Kiressh"
+
+#~ msgid "Use the Patrols Micro AI instead of patrol.lua."
+#~ msgstr "Benutzt die Patrols Mikro KI anstatt patrol.lua."
 
 #~ msgid "Messanger Waypoint 1"
 #~ msgstr "Boten Wegpunkt 1"

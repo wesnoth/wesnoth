@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-09-16 07:03 UTC\n"
+"POT-Creation-Date: 2019-07-18 12:51 UTC\n"
 "PO-Revision-Date: 2018-09-14 23:44+0200\n"
 "Last-Translator: Crommy\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -93,7 +93,9 @@ msgstr ""
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:34
-msgid "(Expert level, 9 scenarios.)"
+#, fuzzy
+#| msgid "(Expert level, 9 scenarios.)"
+msgid "(Hard level, 9 scenarios.)"
 msgstr "(Einstufung: Schwierig, 9 Szenarien)"
 
 #. [about]
@@ -127,8 +129,8 @@ msgid "Rugnur"
 msgstr "Rugnur"
 
 #. [side]: type=Dwarvish Fighter, id=Rugnur
-#. [side]: type=Haldric II, id=Haldric II
 #. [side]: type=Dwarvish Lord, id=Durstorn
+#. [side]: type=Haldric II, id=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:27
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:42
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:24
@@ -141,7 +143,7 @@ msgstr "Rugnur"
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:23
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:36
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:23
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:24
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:22
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:33
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:27
 msgid "Dwarves"
@@ -149,7 +151,7 @@ msgstr "Zwerge"
 
 #. [side]: type=Haldric II, id=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:34
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:26
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:25
 msgid "Haldric II"
 msgstr "Haldric II"
 
@@ -159,25 +161,25 @@ msgid "Glildur"
 msgstr "Glildur"
 
 #. [side]: type=Elvish Captain, id=Glildur
-#. [side]: type=Elvish Captain, id=Glindur
+#. [side]
 #. [side]: type=Elvish Marshal, id=Gaenlar
 #. [side]: type=Elvish Marshal, id=Glinan
 #. [side]: type=Elvish Captain, id=Kalnar
-#. [side]
+#. [side]: type=Elvish Captain, id=Glindur
 #. [side]: type=Elvish Marshal, id=Crintil
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:90
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:42
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:41
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:88
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:125
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:59
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:91
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:43
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:39
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:86
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:123
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:57
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:64
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:35
 msgid "Elves"
 msgstr "Elfen"
 
 #. [part]
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:109
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:110
 msgid ""
 "Ay, the Sceptre of Fire. The sceptre has a long, glorious, and fearful "
 "history. But I am not here to tell you how the jewel within it was brought "
@@ -192,7 +194,7 @@ msgstr ""
 "von Konrad, König von Wesnoth durch des Zepters Macht."
 
 #. [part]
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:112
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:113
 msgid ""
 "I am here to tell you of its making. Of its crafting, deep in the caverns of "
 "dwarfdom. And of the dwarves who made it; for they were great, they were. "
@@ -204,7 +206,7 @@ msgstr ""
 "Sie zählen zu den größten Helden des alten Zwergenreiches von Knalga."
 
 #. [part]
-#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:115
+#: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:116
 msgid ""
 "Our story begins in a small border outpost in the southern hills of Knalga, "
 "with a young dwarf, named Rugnur, in charge of it. And with the second king "
@@ -239,15 +241,15 @@ msgstr "Besiegt Glildur"
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:155
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:92
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:132
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:533
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:157
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:189
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:162
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:95
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:130
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:529
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:162
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:185
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:161
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:188
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:467
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:585
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:440
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:556
 msgid "Death of Rugnur"
 msgstr "Rugnur fällt in der Schlacht"
 
@@ -258,10 +260,10 @@ msgstr "Haldric II. fällt in der Schlacht"
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:163
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:136
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:161
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:198
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:87
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:134
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:166
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:194
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:91
 msgid "Death of Alanin"
 msgstr "Alanin fällt in der Schlacht"
 
@@ -479,12 +481,12 @@ msgstr ""
 "meiner Herrschaft sein wird."
 
 #. [unit]: type=Dragoon, id=Alanin
-#. [side]: id=Alanin, type=Dragoon
+#. [side]
 #. [side]: type=Haldric II, id=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:373
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:29
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:20
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:31
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:27
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:19
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:30
 msgid "Alanin"
 msgstr "Alanin"
 
@@ -698,9 +700,9 @@ msgstr "Schließen der Tore"
 msgid "Glindur"
 msgstr "Glindur"
 
-#. [side]
 #. [side]: type=Troll Warrior, type=Troll
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:50
+#. [side]
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:55
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:234
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:261
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:288
@@ -708,7 +710,7 @@ msgid "Trolls"
 msgstr "Trolle"
 
 #. [part]
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:55
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:60
 msgid ""
 "Next in our story, Rugnur retreated into the caves of Knalga. But the elves "
 "pressed on, and would enter the caves shortly."
@@ -718,7 +720,7 @@ msgstr ""
 "Höhle einzudringen."
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:71
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:74
 msgid ""
 "Place someone on each of the six magic glyphs in order to close the dwarvish "
 "gates"
@@ -727,23 +729,23 @@ msgstr ""
 "zwergischen Tore zu schließen"
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:78
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:81
 msgid "Kill all elves in the caves after the gates are closed"
 msgstr "Tötet alle Elfen, die nach Schließung der Tore noch in den Höhlen sind"
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:85
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:88
 msgid "Kill all elves in the caves"
 msgstr "Tötet alle Elfen in den Stollen"
 
 #. [objective]: condition=lose
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:96
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:140
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:99
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:138
 msgid "Death of Baglur"
 msgstr "Baglur fällt in der Schlacht"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:220
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:224
 msgid ""
 "These elves are right behind me! We have to go warn the council of this "
 "attack...!"
@@ -752,20 +754,20 @@ msgstr ""
 "warnen!"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:224
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:228
 msgid "Here — I’ll go warn the council. You stay here and fight."
 msgstr ""
 "Ich werde mich aufmachen, um den Rat zu warnen. Ihr bleibt besser hier und "
 "kämpft."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:228
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:232
 msgid "Yes, that sounds good. I’ll stay here and try to defend the gates..."
 msgstr ""
 "Ja, das klingt gut. Ich werde hier bleiben, um die Tore zu verteidigen..."
 
 #. [message]: speaker=Glindur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:240
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:244
 msgid ""
 "I see you have sent a messenger to the city. Good idea, but will it really "
 "help? We have more troops and more provisions, and we are going to enter "
@@ -776,32 +778,32 @@ msgstr ""
 "werden wir die Höhlen erstürmen und euch töten!"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:244
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:248
 msgid "(<i>Gulp</i>)"
 msgstr "(<i>Schluck</i>)"
 
 #. [message]: speaker=Glindur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:248
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:252
 msgid "Ha! I thought as much. Well then, surrender!"
 msgstr "Ha! Das habe ich mir gedacht. Also, kapituliert!"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:252
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:256
 msgid "Um... on what terms?"
 msgstr "Uhm... zu welchen Bedingungen?"
 
 #. [message]: speaker=Glindur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:256
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:260
 msgid "Unconditional."
 msgstr "Bedingungslos."
 
 #. [unit]: type=Dwarvish Stalwart, id=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:272
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:276
 msgid "Baglur"
 msgstr "Baglur"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:289
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:293
 msgid ""
 "Wait! Rugnur, dinna’ they tell you <i>anything</i> when you took command "
 "here?!"
@@ -810,13 +812,13 @@ msgstr ""
 "hier übergaben?!?"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:293
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:297
 msgid "Not really. This was supposedly a time of peace. Who are you?"
 msgstr ""
 "Nicht wirklich. Alle dachten, es sei eine Zeit des Friedens. Wer seid ihr?"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:297
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:301
 msgid ""
 "Argh! I’m a retired warrior... it looks like I’ll ha’ to come out and help "
 "you, else we’ll be overrun by the damn elves... argh again. Well, listen "
@@ -832,7 +834,7 @@ msgstr ""
 "hinfort!"
 
 #. [message]: speaker=Glindur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:301
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:305
 msgid ""
 "Cease your meddling, old dwarf! Rugnur is in charge here, and it is he who "
 "will bargain with us."
@@ -841,12 +843,12 @@ msgstr ""
 "verhandeln hier um seinen Kopf, nicht um euren."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:305
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:309
 msgid "Baglur, how do you close the gates?"
 msgstr "Baglur, wie kann ich die Tore verschließen?"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:309
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:313
 msgid ""
 "Och, well that’s the difficulty. It’s a magic gate. Indestructible. But that "
 "means it can only be closed by magic. Ye need to position a warrior on each "
@@ -861,12 +863,12 @@ msgstr ""
 "nicht hereinkommen."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:313
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:317
 msgid "Don’t we have troops positioned near these glyphs, to unlock them?"
 msgstr "Haben wir keine Truppen in der Nähe der Runen, um sie zu aktivieren?"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:317
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:321
 msgid ""
 "Och, well, no. Lately trolls have been more in charge of those caves where "
 "the glyphs are than we dwarves have."
@@ -875,12 +877,12 @@ msgstr ""
 "nahe den Runen mehr Trolle als Zwerge."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:321
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:325
 msgid "Well, where are they located?"
 msgstr "Nun, wo genau sind sie?"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:325
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:329
 msgid ""
 "Two are down a side passage in the northwest, another two are in a similar "
 "location in the southeast, and two are right next to the front gate."
@@ -890,7 +892,7 @@ msgstr ""
 "Haupttor."
 
 #. [message]: speaker=Glindur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:329
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:333
 msgid ""
 "Have you made up your mind yet about surrendering? If you will not give up, "
 "prepare for battle!"
@@ -899,7 +901,7 @@ msgstr ""
 "den Kampf vor!"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:334
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:338
 msgid ""
 "You may be more powerful than us, but I doubt even you can blast through "
 "dwarf-made stonecraft. We refuse — now let’s close these gates!"
@@ -908,8 +910,7 @@ msgstr ""
 "Mauerwerk brechen könnt. Wir lehnen ab - nun lasst uns diese Tore schließen!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:444
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:462
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:449
 msgid ""
 "But what about this entrance? The elves can come through it just as easily "
 "as the main gate, and it cannot be closed!"
@@ -918,8 +919,7 @@ msgstr ""
 "eindringen, wie durch das Haupttor und er kann nicht verschlossen werden!"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:448
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:466
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:453
 msgid ""
 "I think it can be sealed up somehow... Yes, look, activating that glyph "
 "seems to have closed up the gap."
@@ -928,12 +928,12 @@ msgstr ""
 "Aktivierung der Rune hat die Lücke geschlossen."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:509
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:496
 msgid "We have everyone positioned on the glyphs! What do we do now?"
 msgstr "Alle Runen sind besetzt! Was machen wir nun?"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:513
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:508
 msgid ""
 "Just watch. The gates wi’ close very soon. Then the elves outside — and, "
 "unfortunately, our dwarves who are still out there — wi’ become irrelevant."
@@ -942,8 +942,24 @@ msgstr ""
 "Elfen die draußen sind, genau wie unsere zwergischen Freunde, die es nicht "
 "in die Höhle schaffen, nicht mehr von Bedeutung."
 
+#. [message]: speaker=Baglur
+#. all the dwarves are inside, although there might still be some elves inside too
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:515
+#, fuzzy
+#| msgid ""
+#| "Just watch. The gates wi’ close very soon. Then the elves outside — and, "
+#| "unfortunately, our dwarves who are still out there — wi’ become "
+#| "irrelevant."
+msgid ""
+"Just watch. The gates wi’ close very soon. Then the elves outside wi’ become "
+"irrelevant."
+msgstr ""
+"Wartet einfach. Die Tore werden sich schon bald schließen. Dann sind die "
+"Elfen die draußen sind, genau wie unsere zwergischen Freunde, die es nicht "
+"in die Höhle schaffen, nicht mehr von Bedeutung."
+
 #. [message]: speaker=Glindur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:546
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:550
 msgid ""
 "Agh! Well, you have defeated me for now, but eventually you will have to "
 "exit these caves, to give Haldric back his jewel. And when you do, we will "
@@ -954,7 +970,7 @@ msgstr ""
 "weit ist, werden wir bereits auf euch warten."
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:550
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:554
 msgid ""
 "If that is what ye choose to do, fine, but be prepared to wait for many "
 "years."
@@ -963,7 +979,7 @@ msgstr ""
 "darauf gefasst, viele Jahre zu warten."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:585
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:589
 msgid ""
 "There are still some elves left in here. We have to eliminate them, too, "
 "unless they surrender."
@@ -972,23 +988,23 @@ msgstr ""
 "sie nicht aufgeben."
 
 #. [message]
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:589
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:593
 msgid "You would have us be cowards! We do not surrender."
 msgstr "Ihr denkt wohl, wir seien Feiglinge! Wir werden niemals aufgeben."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:598
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:602
 msgid "Well, now I should go down to the city and report. I’m late already..."
 msgstr ""
 "Nun muss ich wirklich in die Stadt zum Rapport. Ich bin bereits spät dran..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:611
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:615
 msgid "My glyph is on."
 msgstr "Ich verharre und spüre die Kraft der Rune fließen!"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:698
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:702
 msgid ""
 "That’s all of the elves. Now I should go down to the city and report. I’m "
 "late already..."
@@ -1006,7 +1022,7 @@ msgstr "In der Zitadelle der Zwerge"
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:30
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:30
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:30
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:194
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:199
 msgid "Durstorn"
 msgstr "Durstorn"
 
@@ -1046,7 +1062,7 @@ msgstr "Glinar"
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:89
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:83
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:83
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:208
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:213
 msgid "Noiraran"
 msgstr "Noiraran"
 
@@ -1054,7 +1070,7 @@ msgstr "Noiraran"
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:101
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:95
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:95
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:220
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:225
 msgid "Kuhnar"
 msgstr "Kuhnar"
 
@@ -1269,10 +1285,16 @@ msgstr "Monster"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:40
+#, fuzzy
+#| msgid ""
+#| "The journey to the far northern wastelands was long and perilous. For the "
+#| "tunnels were winding and treacherous, and the paths were not safe from "
+#| "orcs, or worse. Nevertheless, they did reach the northlands, and began to "
+#| "search for the runesmith named Thursagan — the sage of fire."
 msgid ""
 "The journey to the far northern wastelands was long and perilous. For the "
 "tunnels were winding and treacherous, and the paths were not safe from orcs, "
-"or worse. Nevertheless, they did reach the northlands, and began to search "
+"or worse. Nevertheless, they did reach the Northlands, and began to search "
 "for the runesmith named Thursagan — the sage of fire."
 msgstr ""
 "Und doch brauchten sie Jahr und Tag, um die nördliche Einöde zu erreichen. "
@@ -1281,13 +1303,13 @@ msgstr ""
 "ihre Suche nach dem Runenschmied Thursagan - dem Weisen des Feuers."
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:98
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:96
 msgid "Find Thursagan and convince him to come back to the dwarvish city"
 msgstr ""
 "Findet Thursagan und überzeugt ihn, in die Stadt der Zwerge zurückzukommen"
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:109
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:107
 msgid ""
 "Find Thursagan and convince him to come back to the dwarvish city, then "
 "bring him back to the caves"
@@ -1296,35 +1318,35 @@ msgstr ""
 "und geleitet ihn in die Höhlen"
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:123
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:121
 msgid "Move Thursagan to the signpost"
 msgstr "Bringt Thursagan zu dem Wegweiser"
 
 #. [objective]: condition=lose
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:144
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:165
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:207
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:166
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:142
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:170
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:203
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:165
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:192
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:471
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:589
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:444
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:560
 msgid "Death of Krawg"
 msgstr "Krawg fällt in der Schlacht"
 
 #. [objective]: condition=lose
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:153
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:537
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:169
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:216
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:170
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:151
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:533
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:174
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:212
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:169
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:196
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:475
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:593
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:448
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:564
 msgid "Death of Thursagan"
 msgstr "Thursagan fällt in der Schlacht"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:208
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:206
 msgid ""
 "Now where are we going, anyway? We have been taking wrong turns and fighting "
 "orcs for months. This trip better have a good payoff to be worth that."
@@ -1334,7 +1356,7 @@ msgstr ""
 "diese lange Reise lohnt sich wenigstens."
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:212
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:210
 msgid ""
 "We need to find the mage Thursagan and convince him to return to the citadel "
 "with us. He’s somewhere up here."
@@ -1343,12 +1365,12 @@ msgstr ""
 "die Zitadelle zurückzukehren. Er muss irgendwo hier in der Nähe sein."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:216
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:214
 msgid "Well, how are we supposed to find him?"
 msgstr "Wie sollen wir ihn finden?"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:220
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:218
 msgid ""
 "His will probably be the only house up here. No one else is insane enough to "
 "live this far north! Even the elves won’t challenge us here."
@@ -1358,22 +1380,26 @@ msgstr ""
 "stellen hier eine Bedrohung für uns dar."
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:224
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:222
+#, fuzzy
+#| msgid ""
+#| "Except for trolls and ogres, right? They live in the far northlands. "
+#| "They’re probably lurking around here somewhere."
 msgid ""
-"Except for trolls and ogres, right? They live in the far northlands. They’re "
+"Except for trolls and ogres, right? They live in the far Northlands. They’re "
 "probably lurking around here somewhere."
 msgstr ""
 "Außer Trollen und Orks, nicht wahr? Sie leben in den fernen Nordlanden. Die "
 "lungern hier mit Sicherheit irgendwo herum."
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:228
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:226
 msgid "Right. We’ll probably have to fight our way through to his house."
 msgstr ""
 "Richtig. Wir werden uns wohl einen Weg zu seinem Haus freikämpfen müssen."
 
 #. [unit]: type=Gryphon, id=Krawg
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:336
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:334
 msgid "Krawg"
 msgstr "Krawg"
 
@@ -1381,82 +1407,82 @@ msgstr "Krawg"
 #. Krawg's speech is purposely very distorted -- he has the
 #. vocal tract of a bird and is speaking through a beak.
 #. "Will you speak with us?"
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:351
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:349
 msgid "Kwill yooo spakkk wit uus?!"
 msgstr "Spräächt duu miit uuns?!?"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:356
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:354
 msgid "Aah! What is that?!"
 msgstr "Aah! Was ist das?!?"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:360
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:358
 msgid "Is that... is that a gryphon?"
 msgstr "Ist das... ist das ein Greif?"
 
 #. [message]: speaker=Krawg
 #. "Yes. You speak with us now?"
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:365
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:363
 msgid "Kwes! Yooo spakkk wit uuus nuu?"
 msgstr "Jaaa! Duu spräächt jeetzzt mit uuuns?"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:369
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:367
 msgid "It’s talking to us! What do you want, gryphon?"
 msgstr "Es spricht zu uns! Was willst du, Greif?"
 
 #. [message]: speaker=Krawg
 #. "My name is Krawg. You is looking for a runemaster?"
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:374
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:372
 msgid "Myy namm ees Krawgg. Yooo ees oooking forr a uunmasta?"
 msgstr "Meiin Naammee iiist Krawgg. Duu suucht unnmeista?"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:378
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:376
 msgid "Well, um, yes. Why, can you help us?"
 msgstr "Nun, ähm, ja. Wieso? Kannst du uns helfen?"
 
 #. [message]: speaker=Krawg
 #. "Yes. If you kill the trolls and ogres, we'll help you."
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:383
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:381
 msgid "Ess... if yooo ills ka rolls aan ogras, us’ll elp yoo!"
 msgstr "Jaaa... Weennn duu toot maaachst rooolle uund ooge, wiiir heelfen die!"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:387
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:385
 msgid "Sure, we’ll help you fight trolls and ogres."
 msgstr "Sicher helfen wir dir, die Trolle und Orks zu bekämpfen."
 
 #. [message]: speaker=Krawg
 #. "I see a house in the distance!"
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:433
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:431
 msgid "Iii zeee hoose iiin eee d’zztaaan’eee!"
 msgstr "Icccccch sssssssseh daaaaaaa hiiiiiinten eiiiiin Hausssssssss!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:439
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:437
 msgid "I see a house in the distance!"
 msgstr "Ich sehe ein Haus in der Ferne!"
 
 #. [message]: speaker=narrator
 #. [unit]: type=Dwarvish Runemaster, id=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:466
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:503
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:448
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:454
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:464
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:501
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:447
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:453
 msgid "Thursagan"
 msgstr "Thursagan"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:468
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:466
 msgid "Go away, you birds! Or I shall burn you out of the air!"
 msgstr ""
 "Verschwindet, ihr lästigen Vögel! Oder soll ich euch gewaltsam vom Himmel "
 "holen?!"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:472
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:470
 msgid ""
 "He doesn’t want to talk to the gryphons, apparently. I think we’ll have to "
 "get someone there he will talk to..."
@@ -1465,12 +1491,12 @@ msgstr ""
 "jemanden dort hinüberschaffen, mit dem er bereit ist, zu sprechen..."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:516
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:514
 msgid "What do you people want?! Leave me alone!"
 msgstr "Was wollt ihr von mir!? Lasst mich in Ruhe!"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:520
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:518
 msgid ""
 "Old mage, we come with a message from Lord Durstorn. He asks you to come "
 "back to the city."
@@ -1479,7 +1505,7 @@ msgstr ""
 "euch, in die Stadt zurückzukehren."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:524
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:522
 msgid ""
 "Ha! That fool thinks he can order me around. Why does he want me to go back, "
 "anyway?"
@@ -1488,7 +1514,7 @@ msgstr ""
 "überhaupt, dass ich zurückkomme?"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:528
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:526
 msgid ""
 "We have entered into a bargain with the king of Wesnoth to craft a sceptre "
 "for him."
@@ -1497,7 +1523,7 @@ msgstr ""
 "ihn zu fertigen."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:532
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:530
 msgid ""
 "Oh, and now I suppose Durstorn wants me to craft it, eh? Well I’m not going "
 "to."
@@ -1506,7 +1532,7 @@ msgstr ""
 "werde ich nicht tun."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:536
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:534
 msgid ""
 "You don’t want to make a sceptre to contain the power of the ruby of fire? "
 "Very well, your choice is made."
@@ -1515,12 +1541,12 @@ msgstr ""
 "beherbergt? Nun, ihr habt euch entschieden."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:540
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:538
 msgid "The ruby of fire, what is that, some worthless Wesnothian gem?"
 msgstr "Was ist der Rubin des Feuers? Irgendein Wesnother Glasplunder?"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:544
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:542
 msgid ""
 "It is a Wesnothian gem, but it is also supposedly the most powerful magical "
 "artifact ever seen. Even an untrained hand can use it to cast fiery bolts as "
@@ -1531,17 +1557,17 @@ msgstr ""
 "Feuerbälle zu erschaffen, die so mächtig sind, wie die eines Erzmagiers."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:548
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:546
 msgid "Oh, really? And what does Haldric want us to do with it?"
 msgstr "Oh, wirklich? Und was sollen wir für Haldric daraus machen?"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:552
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:550
 msgid "Contain and intensify its power."
 msgstr "Seine Macht einschließen und verstärken."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:556
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:554
 msgid ""
 "I see. Fine then, I will help you craft this sceptre... into the most "
 "powerful magic artifact ever seen. This will be a true test of my skill. I "
@@ -1552,7 +1578,7 @@ msgstr ""
 "Aufgabe für meine Fähigkeiten. Ich schätze, dies wird Jahre verschlingen."
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:560
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:558
 msgid ""
 "Good. Now, there are still wild animals here... We have to get back into the "
 "caves."
@@ -1561,7 +1587,7 @@ msgstr ""
 "müssen zurück in die Stollen."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:598
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:596
 msgid "Well, now we are in the caves again! Come on, back south, to the city."
 msgstr ""
 "Gut, wir sind zurück in unseren Höhlen! Los, zurück südwärts zur Stadt."
@@ -1600,7 +1626,9 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:135
-msgid "Yes, we did. And that is Krawg, who helped us in the northlands."
+#, fuzzy
+#| msgid "Yes, we did. And that is Krawg, who helped us in the northlands."
+msgid "Yes, we did. And that is Krawg, who helped us in the Northlands."
 msgstr "Ja, haben wir. Und dies ist Krawg. Er half uns in den Nordlanden."
 
 #. [message]: speaker=Krawg
@@ -1817,7 +1845,7 @@ msgstr ""
 "vordringen."
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:525
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:521
 msgid ""
 "Bring the necessary gold and coal to create the sceptre to the starting "
 "castle"
@@ -1826,12 +1854,12 @@ msgstr ""
 "Ausgangsfestung"
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:529
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:525
 msgid "1 load of gold and 2 loads of coal are needed"
 msgstr "1 Ladung Gold und 2 Ladungen Kohle werden benötigt"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:566
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:562
 msgid ""
 "Well, these are the eastern mines. Trolls and ogres live here, be prepared "
 "to fight them; also be prepared to spend quite some time here — mining can "
@@ -1842,7 +1870,7 @@ msgstr ""
 "Zeit hier verbringen müssen, denn Bergbau ist kein schnelles Geschäft."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:570
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:566
 msgid ""
 "For me to make the artifact Haldric wants, I need a special type of gold. I "
 "do not know where it was found, but Baglur said these mines were the source "
@@ -1853,14 +1881,14 @@ msgstr ""
 "Baglur hat gesagt, es sei in diesen Minen."
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:574
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:570
 msgid "Also, the only coal that wi’ melt this gold is here."
 msgstr ""
 "Außerdem werden wir hier auch die einzigartige Sorte Kohle finden können, "
 "die in der Lage ist dieses Gold zu schmelzen."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:578
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:574
 msgid ""
 "So we’re down here to, what, mine this gold and coal? That should be easy "
 "enough."
@@ -1869,7 +1897,7 @@ msgstr ""
 "Kleinigkeit sein."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:582
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:578
 msgid ""
 "Yes, although we will have to hire the miners — they don’t work for free. "
 "But beware, there are trolls and such down here..."
@@ -1879,7 +1907,7 @@ msgstr ""
 "sein, hier unten..."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:602
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:598
 msgid ""
 "Don’t forget to recruit the miners. Our warriors can clear the tunnels of "
 "trolls and worse, but once we find the gold and coal we need the miners to "
@@ -1890,43 +1918,43 @@ msgstr ""
 "Gold- und Kohlevorkommen stoßen brauchen wir die Bergmänner für den Abbau."
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:663
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:659
 msgid "Here is some of the coal that we need! Bring the miners to take it!"
 msgstr ""
 "Hier ist ein wenig von der Kohle, die wir benötigen! Schafft einige "
 "Bergmänner herbei, um sie abzubauen!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:688
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:725
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:846
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:684
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:721
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:842
 msgid "I have all the coal I can carry..."
 msgstr "Mehr Kohle kann ich nicht tragen..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:757
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:753
 msgid "Here is the mine of precious gold! Send the miners this way."
 msgstr "Hier ist die Mine für das kostbare Gold! Schickt die Bergmänner her."
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:782
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:920
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:778
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:916
 msgid "I have all the gold I can carry..."
 msgstr "Mehr Gold kann ich nicht tragen..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:961
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:957
 msgid "My load of coal is delivered!"
 msgstr "Ich habe meine Ladung Kohle abgeliefert!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:989
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:985
 msgid "That’s the last load of coal we need."
 msgstr "Das ist die letzte Ladung Kohle die wir brauchen."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:999
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:1060
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:995
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:1056
 msgid ""
 "This is all we need from these mines. Now we should go back further west, "
 "where there are no trolls and ogres, and mine there."
@@ -1936,7 +1964,7 @@ msgstr ""
 "ihr Unwesen treiben."
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:1026
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:1022
 msgid "Here’s the gold."
 msgstr "Hier ist das Gold."
 
@@ -2078,7 +2106,7 @@ msgid "Very well. See what you can do."
 msgstr "Sehr gut. Gebt euer Bestes."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:205
+#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:259
 msgid ""
 "Theganli spent many months cutting the jewels that would go into the Sceptre "
 "of Fire, and the Ruby of Fire he attempted last. But he could not cut it."
@@ -2088,12 +2116,12 @@ msgstr ""
 "Versuchen.."
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:210
+#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:265
 msgid "Well, do you have anything yet?!"
 msgstr "Habt ihr schon etwas fertig?!"
 
 #. [message]: speaker=Theganli
-#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:214
+#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:269
 msgid ""
 "Ah, well, uh, no... no, not yet... unfortunately... it seems... it can’t be "
 "cut... or scratched... or damaged at all... at least not by my tools..."
@@ -2103,7 +2131,7 @@ msgstr ""
 "beschädigt... zumindest nicht mit meinen Werkzeugen..."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:218
+#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:273
 msgid ""
 "So what do you propose we do? We need this jewel cut in a very specific way "
 "to make sure... well, it doesn’t matter why."
@@ -2113,7 +2141,7 @@ msgstr ""
 "spielt keine Rolle."
 
 #. [message]: speaker=Theganli
-#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:222
+#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:277
 msgid ""
 "Well... maybe... the Shorbear clan? They have good tools... yes, yes, they "
 "do..."
@@ -2122,12 +2150,12 @@ msgstr ""
 "die haben sie..."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:226
+#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:281
 msgid "Who are they?"
 msgstr "Wer ist das?"
 
 #. [message]: speaker=Theganli
-#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:230
+#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:285
 msgid ""
 "Another group... of dwarves... live south of here... above ground... yes... "
 "best jewelers I know of... have special tools... tools, yes..."
@@ -2137,7 +2165,7 @@ msgstr ""
 "Spezialwerkzeuge... Werkzeuge, ja..."
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:234
+#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:289
 msgid ""
 "Well, Rugnur, what are you waiting for? Go down and get these tools from "
 "them, and carve the jewel!"
@@ -2147,8 +2175,8 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:243
-#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:249
+#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:298
+#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:304
 msgid ""
 "We can’t just go in there and take their property. We’ll have to buy, or "
 "rent, it from them."
@@ -2157,17 +2185,17 @@ msgstr ""
 "müssen es von ihnen kaufen oder mieten."
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:255
+#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:310
 msgid "Fine. Go rent it from them."
 msgstr "Gut. Dann geht und mietet es von ihnen."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:259
+#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:314
 msgid "Very well. We’ll go south now."
 msgstr "Nun denn, auf gen Süden."
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:263
+#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:318
 msgid ""
 "Wait! Last time you made a bargain by yourself you lost us five thousand "
 "pieces of silver. I’m going with you this time!"
@@ -2176,12 +2204,12 @@ msgstr ""
 "fünftausend Silberlinge gekostet. Diesmal begleite ich euch besser!"
 
 #. [message]: speaker=Kuhnar
-#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:267
+#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:322
 msgid "Are you sure that is wise, lord?"
 msgstr "Meint ihr wirklich, dass das eine weise Entscheidung ist, Herr?"
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:271
+#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:326
 msgid ""
 "Of course! To be safe, though, you and Noiraran are going to come with us."
 msgstr ""
@@ -2189,7 +2217,7 @@ msgstr ""
 "mit uns."
 
 #. [message]: speaker=Kuhnar
-#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:275
+#: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:330
 msgid "Yes sir... (<i>Sigh</i>)"
 msgstr "Ja Herr... (<i>seufz</i>)"
 
@@ -2222,25 +2250,33 @@ msgstr ""
 "denn sie waren die Werkzeugmacher. Sie waren die besten des ganzen Landes. "
 "Und auch im Verhandeln waren sie überaus geübt."
 
+#. [label]
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:138
+msgid "Shorbear caves"
+msgstr ""
+
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:141
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:146
 msgid "Defeat Glonoin, the Shorbear clan leader"
 msgstr "Besiegt Glonoin, Oberhaupt des Shorbear Klans"
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:150
-msgid "Have all heroes in the Shorbear caves while no enemies are in the caves"
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:155
+#, fuzzy
+#| msgid ""
+#| "Have all heroes in the Shorbear caves while no enemies are in the caves"
+msgid "Have all heroes, and no enemies, in the Shorbear caves"
 msgstr ""
 "Geleitet alle Helden in die Shorbear Höhlen und vertreibt alle Feinde aus "
 "ihnen"
 
 #. [objective]: condition=lose
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:173
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:178
 msgid "Death of Durstorn"
 msgstr "Durstorn fällt in der Schlacht"
 
 #. [message]: speaker=Kuhnar
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:247
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:252
 msgid ""
 "Here we are; the hills of the Shorbear clan. What are we here for, anyway?"
 msgstr ""
@@ -2248,7 +2284,7 @@ msgstr ""
 "überhaupt?"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:251
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:256
 msgid ""
 "If I understand it correctly, we’re here to bargain with the Shorbears, and "
 "arrange for us to use their tools to cut the ruby."
@@ -2258,12 +2294,12 @@ msgstr ""
 "um den Rubin zurechtzuschneiden."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:255
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:260
 msgid "Exactly."
 msgstr "Genau."
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:259
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:264
 msgid ""
 "And I’ll be doing the talking; I remember what happened last time you "
 "negotiated a deal! We lost five thousand pieces of silver."
@@ -2273,12 +2309,12 @@ msgstr ""
 "fünftausend Silberlinge verloren."
 
 #. [message]: speaker=Glonoin
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:263
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:268
 msgid "Och, it’s some o’ them cave-dwarves. What business do you have here?"
 msgstr "Da schau, da sind ja ein paar Höhlenzwerge! Was führt euch hierher?"
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:267
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:272
 msgid ""
 "I’m Lord Durstorn, king of my tribe. I have been told you are great jeweler-"
 "workers, and so we come to rent some of your tools for a short time, a few "
@@ -2289,7 +2325,7 @@ msgstr ""
 "für kurze Zeit zu mieten. Höchstens ein paar Jahre."
 
 #. [message]: speaker=Glonoin
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:271
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:276
 msgid ""
 "You’re a king?! Must be a pretty small kingdom for you to come yourself to "
 "bargain with us!"
@@ -2298,18 +2334,18 @@ msgstr ""
 "persönlich kommt, um mit uns zu handeln!"
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:275
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:280
 msgid "You insult me! Do you want my business, or not?"
 msgstr ""
 "Ihr beleidigt mich! Wollt ihr mit mir ein Geschäft schließen, oder nicht?"
 
 #. [message]: speaker=Glonoin
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:279
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:284
 msgid "Well, fine, I’ll hear your offer."
 msgstr "Nun ja, ich warte auf euer Angebot."
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:283
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:288
 msgid ""
 "We’d like to rent your best tools for a short period of time. We’ll only be "
 "cutting one jewel with it. My starting offer is two hundred silver."
@@ -2319,7 +2355,7 @@ msgstr ""
 "zweihundert Silberlingen."
 
 #. [message]: speaker=Glonoin
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:287
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:292
 msgid ""
 "It must be worth a lot for you to come this way and offer that much! How "
 "much are you going to sell it for, eh?"
@@ -2328,27 +2364,27 @@ msgstr ""
 "Kauf genommen habt! Für wie viel wollt ihr es verkaufen, heh?"
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:291
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:296
 msgid "That’s none of your concern!"
 msgstr "Das geht euch nichts an!"
 
 #. [message]: speaker=Glonoin
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:295
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:300
 msgid "I’ll take twenty-five hundred, minimum."
 msgstr "Das kostet euch mindestens fünfundzwanzig-hundert."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:299
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:304
 msgid "Durstorn, that would be a quarter of all our profits!"
 msgstr "Das wäre ein Viertel unserer Einnahme, Durstorn!"
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:303
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:308
 msgid "I know that. Uh, Glonoin, how about five hundred?"
 msgstr "Das ist mir klar. Wie sieht es mit fünfhundert aus, Glonoin?"
 
 #. [message]: speaker=Glonoin
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:307
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:312
 msgid ""
 "Twenty-three hundred is my lowest offer. I can tell I don’t need the money "
 "as much as you need the jewel cut!"
@@ -2357,28 +2393,28 @@ msgstr ""
 "nicht so dringend, wie ihr das Werkzeug."
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:311
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:316
 msgid "You must be mad! I’ll offer one thousand, but no higher!"
 msgstr ""
 "Ihr müsst verrückt sein! Ich biete tausend, doch keinen Silberling mehr!"
 
 #. [message]: speaker=Glonoin
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:315
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:320
 msgid "Two thousand, and I’ll go no lower!"
 msgstr "Zweitausend, mein letztes Angebot!"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:319
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:324
 msgid "What are we going to do? We can’t go much higher!"
 msgstr "Was sollen wir machen? Wir können nicht mehr bieten!"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:323
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:328
 msgid "Offer him fifteen hundred, but don’t go up, even if he refuses."
 msgstr "Bietet ihm fünfzehnhundert, aber nicht mehr, selbst wenn er ablehnt."
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:327
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:332
 msgid ""
 "Bah! Getting this cut isn’t worth that much; what with Rugnur’s mistake "
 "earlier, and all the other expenses, if we pay more than a thousand we’ll "
@@ -2389,22 +2425,22 @@ msgstr ""
 "Profit machen, wenn wir mehr als tausend zahlen."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:331
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:336
 msgid "So what are you going to do?"
 msgstr "Also was wollt ihr machen?"
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:335
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:340
 msgid "Fight him, and take the tools by force."
 msgstr "Ihn bekämpfen und ihm dann die Werkzeuge abnehmen."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:339
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:344
 msgid "Are you mad?!"
 msgstr "Seid ihr wahnsinnig?!?"
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:343
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:348
 msgid ""
 "Of course not! Now, Glonoin; one thousand was my final offer. If you won’t "
 "accept it, we will take the tools from you by force!"
@@ -2413,27 +2449,32 @@ msgstr ""
 "annehmt, werden wir mit Gewalt uns nehmen, was ihr uns vorenthaltet!"
 
 #. [message]: speaker=Glonoin
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:347
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:352
 msgid "I’d like to see you try!"
 msgstr "Das will ich erst sehen!"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:351
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:356
 msgid "You’re making a mistake, Durstorn."
 msgstr "Ihr macht einen Fehler, Durstorn."
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:366
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:371
 msgid "Shut up, all of you! Attack them!"
 msgstr "Schweigt, alle! Greift sie an!"
 
+#. [message]: speaker=narrator
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:376
+msgid "You may now recruit Gryphon Riders."
+msgstr ""
+
 #. [unit]: id=Lyndar, type=Elvish Marshal
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:384
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:392
 msgid "Lyndar"
 msgstr "Lyndar"
 
 #. [message]: speaker=Lyndar
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:404
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:412
 msgid ""
 "Aha! I’ve spent years looking for you dwarves, but now I’ve found you! "
 "Prepare to die!"
@@ -2442,12 +2483,12 @@ msgstr ""
 "sterben!"
 
 #. [message]: speaker=Glonoin
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:408
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:416
 msgid "Who the devil are you?"
 msgstr "Wer zum Teufel seid ihr?"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:412
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:420
 msgid ""
 "I thought we left the elves behind at the gates four years ago! It seems we "
 "have two enemies now."
@@ -2456,7 +2497,7 @@ msgstr ""
 "Anscheinend haben wir nun zwei Feinde."
 
 #. [message]: speaker=Glonoin
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:416
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:424
 msgid ""
 "So, elves, are you against these dwarves too? They’re attacking my clan for "
 "absolutely no reason!"
@@ -2465,12 +2506,12 @@ msgstr ""
 "an ohne irgendeinen Grund!"
 
 #. [message]: speaker=Lyndar
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:420
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:428
 msgid "I see. So you don’t have the ruby?"
 msgstr "Wahrlich. Also habt ihr den Rubin nicht?"
 
 #. [message]: speaker=Glonoin
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:424
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:432
 msgid ""
 "No, they do. They wanted to rent my tools to cut it, but they didn’t offer "
 "me nearly enough!"
@@ -2479,7 +2520,7 @@ msgstr ""
 "zurechtzuschneiden, doch haben sie mir nicht annähernd genug geboten!"
 
 #. [message]: speaker=Lyndar
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:428
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:436
 msgid ""
 "How about this — I help you defeat them, and you let me keep the ruby when "
 "we have?"
@@ -2488,18 +2529,18 @@ msgstr ""
 "danach den Rubin?"
 
 #. [message]: speaker=Glonoin
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:432
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:440
 msgid "Deal!"
 msgstr "Abgemacht!"
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:436
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:444
 msgid "Ah, they don’t scare me! We can take both of them!"
 msgstr ""
 "Ha, ich fürchte mich nicht vor ihnen! Wir können es mit beiden aufnehmen!"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:440
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:448
 msgid ""
 "Don’t be a fool! We can’t take the elves, and it was a mistake to attack "
 "these dwarves, but if we have to fight we should retreat once we get what we "
@@ -2510,14 +2551,14 @@ msgstr ""
 "uns schnell zurückziehen, wenn wir erstmal das Werkzeug haben."
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:469
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:477
 msgid "Ha! Now we can get those tools easily, and go back to our own caves."
 msgstr ""
 "Ha! Nun können wir uns die Werkzeuge einfach nehmen und in unsere Stollen "
 "zurückkehren."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:473
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:481
 msgid ""
 "And how do you plan on doing that? There are elves swarming these hills, "
 "trying to kill us."
@@ -2526,7 +2567,7 @@ msgstr ""
 "versuchen uns zu töten."
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:477
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:485
 msgid ""
 "You are right... well, we will be able to break out eventually, and while "
 "we’re here, we’ll be able to finally make the sceptre."
@@ -2536,7 +2577,7 @@ msgstr ""
 "fertigstellen."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:509
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:517
 msgid ""
 "Well, back to the battle — we are all in the caves, but there are still "
 "enemies in here also!"
@@ -2545,7 +2586,7 @@ msgstr ""
 "noch einige Feinde hier drin!"
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:513
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:521
 msgid ""
 "Indeed. Kill them! And make sure no more enter. Then we can close the gates."
 msgstr ""
@@ -2553,7 +2594,7 @@ msgstr ""
 "Dann können wir die Tore verschließen."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:524
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:532
 msgid ""
 "We have driven all of the dwarves and elves out of these caves. They are not "
 "ours, though, and we can’t stay here forever."
@@ -2562,14 +2603,14 @@ msgstr ""
 "sie nicht uns. Wir können nicht ewig hier ausharren."
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:528
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:536
 msgid "True. I suspect these elves will try to besiege us here."
 msgstr ""
 "Das ist ein wahres Wort. Ich vermute die Elfen werden versuchen uns hier zu "
 "belagern."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:541
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:549
 msgid ""
 "Well, back to the battle — we need everyone to get into the Shorbear caves. "
 "And then stop any enemies from coming in here."
@@ -2578,14 +2619,14 @@ msgstr ""
 "müssen verhindern, dass noch mehr Feinde hier eindringen."
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:545
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:553
 msgid "Indeed. Everyone to the caves, and kill those still inside!"
 msgstr "Fürwahr. Alle in die Höhlen, und tötet jene die sie beherbergen!"
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:598
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:674
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:728
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:606
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:682
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:736
 msgid ""
 "We have driven all of the dwarves and elves out of these caves! Now, seal "
 "the gates!"
@@ -2595,7 +2636,7 @@ msgstr ""
 
 #. [message]: speaker=Durstorn
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:758
+#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:766
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:61
 msgid "Gaanngh..."
 msgstr "Gaanngh..."
@@ -2606,22 +2647,22 @@ msgid "Towards the Caves"
 msgstr "Auf in die Höhlen"
 
 #. [side]: type=Elvish Marshal, id=Gaenlar
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:35
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:33
 msgid "Gaenlar"
 msgstr "Gaenlar"
 
 #. [side]: type=Elvish Marshal, id=Glinan
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:81
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:79
 msgid "Glinan"
 msgstr "Glinan"
 
 #. [side]: type=Elvish Captain, id=Kalnar
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:119
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:117
 msgid "Kalnar"
 msgstr "Kalnar"
 
 #. [part]
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:149
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:147
 msgid ""
 "Durstorn’s rash action led to many problems. Not the least of which was "
 "being surrounded by elves."
@@ -2630,7 +2671,7 @@ msgstr ""
 "war es, von Elfen vollständig umzingelt zu sein."
 
 #. [part]
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:152
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:150
 msgid ""
 "The dwarves spent several years trapped in those caves, the elves besieging "
 "them. The dwarves could not leave, for there were far too many elves, and "
@@ -2643,7 +2684,7 @@ msgstr ""
 "Elfen auch nicht eindringen, da die magischen Tore versiegelt waren."
 
 #. [part]
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:155
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:153
 msgid ""
 "During this time, Thursagan crafted the Sceptre of Fire, first cutting the "
 "jewel, then putting it, the gold and the cold steel into the heat of the "
@@ -2658,17 +2699,17 @@ msgstr ""
 "erfüllte seinen Zweck nicht."
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:171
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:167
 msgid "Move Rugnur to the northeast cave entrance"
 msgstr "Führt Rugnur zum nordöstlichen Höhleneingang"
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:180
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:176
 msgid "Move Alanin to the southern border east of the river"
 msgstr "Führt Alanin zur südlichen Grenze, östlich des Flusses"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:260
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:264
 msgid ""
 "Well, Thursagan has reached a conclusion. He can’t make the sceptre with the "
 "materials he has here, but he has the final plans for it, and all the jewels "
@@ -2680,7 +2721,7 @@ msgstr ""
 "aufbrechen?"
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:264
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:268
 msgid ""
 "All this time and he couldn’t make it? Fine, we should try to leave... but "
 "it’s not like we could leave if we wanted to. We’re surrounded!"
@@ -2690,12 +2731,12 @@ msgstr ""
 "wenn wir es wollten. Wir werden belagert!"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:273
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:277
 msgid "If ye’ll permit me to say so, sir, ye’re wrong. We could—"
 msgstr "Mit Verlaub, Herr, wenn ich Euch zu widersprechen wage, wir könnten–"
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:277
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:281
 msgid ""
 "Shut up, Baglur! You don’t know what you’re talking about. I’ve analyzed the "
 "situation, and we’re doomed. Our best hope is to surrender. Perhaps if we "
@@ -2707,12 +2748,12 @@ msgstr ""
 "das Zepter des Feuers übergeben."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:283
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:287
 msgid "If you’ll permit me to say so, sir, you’re wrong. We could —"
 msgstr "Mit Verlaub, Herr, wenn ich Euch zu widersprechen wage, wir könnten –"
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:287
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:291
 msgid ""
 "Shut up, Rugnur! You don’t know what you’re talking about. I’ve analyzed the "
 "situation, and we’re doomed. Our best hope is to surrender. Perhaps if we "
@@ -2724,7 +2765,7 @@ msgstr ""
 "das Zepter des Feuers übergeben."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:293
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:297
 msgid ""
 "Yes, of course, let’s just all be cowards! What happened to your honor, "
 "Durstorn?!"
@@ -2733,7 +2774,7 @@ msgstr ""
 "Ehre geschehen, Durstorn?!"
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:297
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:301
 msgid ""
 "You little fool, honor is less important than life! So, I’m ordering "
 "Thursagan to give the plans and the ruby to the elves, as a peace offering. "
@@ -2744,7 +2785,7 @@ msgstr ""
 "übergeben. Dann kommen wir hier vielleicht lebendig heraus."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:301
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:305
 msgid ""
 "You don’t have authority over me, Durstorn. And I wouldn’t give the Sceptre "
 "to them even if you did. It’s not yours to give, it’s mine, and Rugnur’s, "
@@ -2758,7 +2799,7 @@ msgstr ""
 "als ihr! Und doch erhaltet ihr den Gewinn vom Verkauf an Haldric."
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:305
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:309
 msgid ""
 "So what, all of you want to die? Fine by me, but I won’t die with you! And "
 "if you won’t give the Sceptre to the elves, I’ll take it from you!"
@@ -2768,12 +2809,12 @@ msgstr ""
 "mir von euch holen!"
 
 #. [animate_unit]
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:319
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:323
 msgid "<i>Swoosh!</i>"
 msgstr "<i>Wusch!</i>"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:348
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:352
 msgid ""
 "Nice try, Durstorn, but you missed. Now, I’d say that attacking an ally "
 "constitutes treason, wouldn’t you?"
@@ -2782,7 +2823,7 @@ msgstr ""
 "stellt Hochverrat dar, nicht wahr?"
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:352
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:356
 msgid ""
 "You’re not my ally. You’re more against me than the elves are; all they want "
 "is the ruby, but you want us dead!"
@@ -2791,7 +2832,7 @@ msgstr ""
 "sie wollen, ist der Rubin – Ihr jedoch wollt unseren Tod!"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:356
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:360
 msgid ""
 "If that’s what you’re thinking, you’re not fit to be ruler over us! So step "
 "down, or we’ll force you."
@@ -2800,17 +2841,17 @@ msgstr ""
 "Tretet zurück oder wir zwingen euch dazu."
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:360
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:364
 msgid "Never!"
 msgstr "Niemals!"
 
 #. [animate]
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:389
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:393
 msgid "<i>Thud!</i>"
 msgstr "<i>Klonck!</i>"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:408
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:416
 msgid ""
 "Well, I suppose we were right to silence him, but I don’t like this. In any "
 "case, now we should try to get out of here."
@@ -2819,12 +2860,12 @@ msgstr ""
 "sich falsch an. Auf jeden Fall sollten wir nun von hier verschwinden."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:412
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:420
 msgid "Yes. So, see the area to the northeast of us?"
 msgstr "Ja. Also, seht ihr das Gebiet nordöstlich von uns?"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:422
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:430
 msgid ""
 "That’s where there are the least elvish guards, so we have the greatest "
 "chance of success there. I think we should try to get to it."
@@ -2834,7 +2875,7 @@ msgstr ""
 "dorthin durchzuschlagen."
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:426
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:434
 msgid ""
 "This plan, it isn’t worse than staying here to be killed, but it isn’t "
 "likely to succeed either. Even if it does, what will it accomplish? We will "
@@ -2845,7 +2886,7 @@ msgstr ""
 "uns? Wir werden dort eingeschlossen sein."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:430
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:438
 msgid ""
 "I don’t know if we will be cornered. That cave looks like it goes deep, and "
 "we can lose the elves in the caves, they move so slow there. Once we get "
@@ -2857,7 +2898,7 @@ msgstr ""
 "raus schaffen machen wir uns auf den Weg zurück nach Knalga."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:434
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:442
 msgid ""
 "The country between here and Knalga will be swarming with elves. We had "
 "better head back to the abandoned mines north of the Arkan-thoria, where we "
@@ -2870,7 +2911,7 @@ msgstr ""
 "dort die Möglichkeit, uns zu finden."
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:438
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:446
 msgid ""
 "That’s fine for you, you can run fast in caves, but I can’t! What am I "
 "supposed to do?"
@@ -2879,7 +2920,7 @@ msgstr ""
 "ist mit mir? Was soll ich machen?"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:442
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:450
 msgid ""
 "Well, you are a member of the Wesnothian army. Why don’t you rejoin it? See "
 "if you can run past those elves to our southeast..."
@@ -2888,13 +2929,13 @@ msgstr ""
 "nicht wieder den Euren an? Versucht im Südosten durchzubrechen..."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:452
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:460
 msgid "... and then ride south until you reach one of your outposts."
 msgstr ""
 "... und reitet dann südwärts, bis ihr einen eurer Außenposten erreicht."
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:456
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:464
 msgid ""
 "I’m not going to do that, it’s suicide! And in any case, I’ve been with you "
 "for ten years, almost as long as I was in the Wesnothian army; I’d prefer to "
@@ -2905,7 +2946,7 @@ msgstr ""
 "gedient habe. Ich würde lieber an eurer Seite kämpfen."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:460
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:468
 msgid ""
 "You going south has more of a chance of success for you than staying here or "
 "going back to the mines! And getting news to Haldric of what has happened is "
@@ -2917,19 +2958,19 @@ msgstr ""
 "sendet."
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:464
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:472
 msgid "I suppose..."
 msgstr "Ich glaube..."
 
 #. [message]: speaker=Gaenlar
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:468
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:476
 msgid "Come out, dwarves, and surrender! Or die in that cave, your choice."
 msgstr ""
 "Kommt heraus, Zwerge und ergebt euch! Oder sterbt in dem Loch, ihr habt die "
 "Wahl."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:502
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:510
 msgid ""
 "Alanin, ride south as fast as you can. Tell Haldric we are heading "
 "northeast, towards the old eastern mines, and if he wants his precious "
@@ -2941,7 +2982,7 @@ msgstr ""
 "dort treffen!"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:520
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:525
 msgid ""
 "I have made it past those elves, but they will chase me, and elvish horses "
 "are faster than mine."
@@ -2950,12 +2991,12 @@ msgstr ""
 "elfische Pferde sind schneller als meines."
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:554
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:556
 msgid "Rugnur, I am going south. What should I tell Haldric?"
 msgstr "Ich ziehe gen Süden, Rugnur. Was soll ich Haldric berichten?"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:558
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:560
 msgid ""
 "Tell him to send forces north to aid us and fight the elves, but that we are "
 "probably going to die. We will run northeast towards the old eastern mines, "
@@ -2969,7 +3010,7 @@ msgstr ""
 "zusammenschließen."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:584
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:583
 msgid ""
 "I don’t know what is in these caves, but whatever it is can’t be worse than "
 "staying here to die."
@@ -2983,7 +3024,7 @@ msgid "Outriding the Outriders"
 msgstr "Flucht vor den Elfen"
 
 #. [part]
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:65
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:63
 msgid ""
 "Rugnur had fled across the Arkan-thoria, but Alanin could not do that. He "
 "went south — back to the Wesnoth border."
@@ -2993,7 +3034,7 @@ msgstr ""
 "zurück zur Grenze von Wesnoth."
 
 #. [part]
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:68
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:66
 msgid ""
 "The elves followed both of them. First I will tell of their pursuit of "
 "Alanin, before we descend into the caves to learn Rugnur’s fate."
@@ -3003,12 +3044,12 @@ msgstr ""
 "seinem Schicksal entgegenstellen."
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:83
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:87
 msgid "Reach the Wesnothian outpost in the south"
 msgstr "Erreicht den Außenposten von Wesnoth im Süden"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:103
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:107
 msgid ""
 "Well, the elves are behind me for now, but they will send riders to catch "
 "me, and elvish riders are faster than me."
@@ -3017,7 +3058,7 @@ msgstr ""
 "sind schneller als ich!"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:107
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:111
 msgid ""
 "My only hope is to convince the peasants to stop the elves from passing "
 "through their land, so I can get ahead of them."
@@ -3026,32 +3067,32 @@ msgstr ""
 "dass ich einen Vorsprung gewinne."
 
 #. [unit]: type=Elvish Outrider, id=Asaeri
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:113
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:117
 msgid "Lord Asaeri"
 msgstr "Fürst Asaeri"
 
 #. [unit]: type=Elvish Outrider, id=Gaelir
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:124
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:128
 msgid "Gaelir"
 msgstr "Gaelir"
 
 #. [unit]: type=Elvish Outrider, id=Salira
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:135
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:139
 msgid "Salira"
 msgstr "Salira"
 
 #. [unit]: type=Elvish Outrider, id=Losnin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:147
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:151
 msgid "Losnin"
 msgstr "Losnin"
 
 #. [unit]: type=Elvish Outrider, id=Ealin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:159
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:163
 msgid "Ealin"
 msgstr "Ealin"
 
 #. [message]: speaker=Asaeri
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:174
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:178
 msgid ""
 "You cannot outride us, horseman of Wesnoth! Whatever message you are "
 "carrying, it will not be delivered!"
@@ -3060,17 +3101,51 @@ msgstr ""
 "die ihr überbringen wollt, besagt, ihr werdet sie mit ins Grab nehmen!"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:178
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:182
 msgid "We shall see about that!"
 msgstr "Das werden wir noch sehen!"
 
 #. [unit]: type=Elvish Outrider, id=Raesil
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:187
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:191
 msgid "Raesil"
 msgstr "Raesil"
 
+#. [message]: speaker=second_unit
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:217
+msgid "Great, now there is no need to worry about those elves anymore!"
+msgstr ""
+
+#. [message]: role=newcomer
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:226
+msgid ""
+"Did you really think that you could escape us? Don’t underestimate us, "
+"inferior humans!"
+msgstr ""
+
+#. [message]: id=Alanin
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:238
+msgid ""
+"Even though my chances have grown worse, I have to fulfil my duty. I do not "
+"owe them any less!"
+msgstr ""
+
+#. [message]: id=Alanin
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:263
+msgid "Oh no, more of them? And there I thought I could catch my breath…"
+msgstr ""
+
+#. [message]: role=fighter
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:268
+msgid "Don’t worry sir, we’ll make it through this!"
+msgstr ""
+
+#. [message]: id=Alanin
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:293
+msgid "Is there no end to their numbers?"
+msgstr ""
+
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:257
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:358
 msgid ""
 "The villagers here are loyal to Wesnoth. They should be willing to help me "
 "escape these elves!"
@@ -3079,39 +3154,68 @@ msgstr ""
 "diesen Elfen zu entkommen!"
 
 #. [unit]: type=Spearman, id=Rolin    # wmllint: ignore
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:262
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:363
 msgid "Rolin"
 msgstr "Rolin"
 
 #. [message]: speaker=Rolin   # wmllint: ignore
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:273
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:374
 msgid "We will certainly help any warrior of Wesnoth who needs our help!"
 msgstr ""
 "Wir werden jeden Streiter von Wesnoth unterstützen, der unserer Hilfe bedarf!"
 
+#. [message]: race=elf
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:432
+msgid ""
+"You slow humans took too long, our detachment has already caught up with you!"
+msgstr ""
+
 #. [unit]: type=Lieutenant, id=Hadlin   # wmllint: ignore
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:330
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:554
 msgid "Hadlin"
 msgstr "Hadlin"
 
 #. [message]: speaker=Hadlin  # wmllint: ignore
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:341
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:565
 msgid "Who goes there?"
 msgstr "Wer da?"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:345
+#. dragoon = his unit type
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:576
+#, fuzzy
+#| msgid ""
+#| "I’m a dragoon, with Haldric II’s personal bodyguard. I was sent on a "
+#| "mission in the northlands, and now elvish horsemen are chasing me. I "
+#| "barely evaded them."
 msgid ""
 "I’m a dragoon, with Haldric II’s personal bodyguard. I was sent on a mission "
-"in the northlands, and now elvish horsemen are chasing me. I barely evaded "
+"in the Northlands, and now elvish horsemen are chasing me. I barely evaded "
 "them."
 msgstr ""
 "Ich bin ein Dragoner aus der Leibwache von Haldric II. Ich wurde auf eine "
 "Mission in den Nordlanden ausgesandt und werde nun von elfischen Reitern "
 "verfolgt. Ich konnte ihnen nur knapp entkommen."
 
+#. [message]: speaker=Alanin
+#. cavalier = his unit type
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:583
+#, fuzzy
+#| msgid ""
+#| "I’m a dragoon, with Haldric II’s personal bodyguard. I was sent on a "
+#| "mission in the northlands, and now elvish horsemen are chasing me. I "
+#| "barely evaded them."
+msgid ""
+"I’m a cavalier, with Haldric II’s personal bodyguard. I was sent on a "
+"mission in the Northlands, and now elvish horsemen are chasing me. I barely "
+"evaded them."
+msgstr ""
+"Ich bin ein Dragoner aus der Leibwache von Haldric II. Ich wurde auf eine "
+"Mission in den Nordlanden ausgesandt und werde nun von elfischen Reitern "
+"verfolgt. Ich konnte ihnen nur knapp entkommen."
+
 #. [message]: speaker=Hadlin  # wmllint: ignore
-#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:349
+#: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:589
 msgid ""
 "I see. Well, come on in. I doubt they would be able to capture this fort, "
 "even if they did want to start a war, which I doubt."
@@ -3132,12 +3236,12 @@ msgstr "Crintil"
 
 #. [side]: type=Fire Dragon, id=Khrakrahs
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:71
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:93
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:92
 msgid "Khrakrahs"
 msgstr "Khrakrahs"
 
 #. [part]
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:110
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:109
 msgid ""
 "Thus Alanin escaped from his elvish pursuers. But the dwarves were not so "
 "lucky. I would say that, perhaps, their betrayal of Durstorn was coming back "
@@ -3151,32 +3255,32 @@ msgstr ""
 "bewohnt wurden... von Khrakrahs... dem Drachen."
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:126
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:125
 msgid "Get all heroes to the end of the tunnel"
 msgstr "Führt alle Helden zum Ende des Tunnels"
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:136
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:135
 msgid "Move Thursagan to the forge"
 msgstr "Geleitet Thursagan zur Schmiede"
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:143
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:142
 msgid "Defend Thursagan until the Sceptre of Fire is complete"
 msgstr "Verteidigt Thursagan bis das Zepter des Feuers fertig ist"
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:150
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:149
 msgid "Survive until turns run out"
 msgstr "Überlebt bis das Rundenlimit ausläuft"
 
 #. [objective]: condition=lose
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:179
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:178
 msgid "An enemy moves onto the forge"
 msgstr "Ein Gegner nähert sich der Schmiede"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:268
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:267
 msgid ""
 "Well, Thursagan, we’ve reached the eastern mine, but the elves are hot on "
 "our trail. What do we do now?"
@@ -3185,7 +3289,7 @@ msgstr ""
 "kleben uns an den Fersen. Was sollen wir nun machen?"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:272
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:271
 msgid ""
 "Well, we have two choices. We may either stand and fight, and assuredly die, "
 "or run as quickly as possible down this path into the depths of the cave, "
@@ -3208,14 +3312,14 @@ msgstr ""
 # Ja, du hast recht, es war Krawg, manchmal ist es gut in den original texten nachzulesen, was da steht, wer es sagt, und was das eigentlich heißen soll...
 #. [message]: speaker=Krawg
 #. "Why don't we just surrender? All they want is that magic stone!"
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:277
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:276
 msgid "Wyy yoo no urrendrr? Alddey woont iz za wagic doun!"
 msgstr ""
 "Warrrum gebt ihrrr nicht auf? Allessss wasss sssssie wollen issst diessser "
 "magische Sssstein!"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:281
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:280
 msgid ""
 "If we give them the ruby, then what? They’ll probably kill us anyway. And, "
 "that ruby has the power to do great things, evil things. We can’t let it "
@@ -3226,7 +3330,7 @@ msgstr ""
 "Dinge. Wir dürfen ihn nicht in die falschen Hände fallen lassen."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:285
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:284
 msgid ""
 "Then we shall run. I suggest calling to arms every last dwarf we possibly "
 "can here. This might be the last chance we’ll get to do so."
@@ -3236,7 +3340,7 @@ msgstr ""
 "dafür sein."
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:294
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:293
 msgid ""
 "So we’re running away, eh? I dinna’ like that, but it seems it’s our only "
 "option."
@@ -3245,27 +3349,27 @@ msgstr ""
 "Wahl."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:298
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:297
 msgid "If it makes you feel any better, we’ll probably die this way, too."
 msgstr "Wenn du dich dann besser fühlst: Auch so werden wir wohl sterben."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:321
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:320
 msgid "Look, there’s a dragon in these caves!"
 msgstr "Schaut, es gibt einen Drachen in dieser Höhle!"
 
 #. [message]: speaker=Khrakrahs
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:325
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:324
 msgid "Ah, fresh meat!"
 msgstr "Ah, frisches Fleisch!"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:329
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:328
 msgid "And which of the great dragons are you?"
 msgstr "Und welcher der großen Drachen seid ihr?"
 
 #. [message]: speaker=Khrakrahs
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:334
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:333
 msgid ""
 "I am Khrakrahs, greatest dragon of all time! Haldric killed Shek’kahan my "
 "brother, but he was weaker than me, and you will not find me so easy to "
@@ -3276,7 +3380,7 @@ msgstr ""
 "bezwingen. Verschwindet aus meinem Vulkan!"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:338
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:337
 msgid ""
 "I’d rather face one powerful dragon than hundreds of mighty elves. Continue!"
 msgstr ""
@@ -3284,12 +3388,12 @@ msgstr ""
 "starker Elfen anzulegen. Los, weiter!"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:359
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:358
 msgid "What’s this? A dwarf fighting against us with the elves?!"
 msgstr "Was ist das? Ein Zwerg kämpft gegen uns auf Seiten der Elfen?!"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:364
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:363
 msgid ""
 "It must be one of those Surghan mercenaries. I’ll bet those elves have hired "
 "more of them. That’s bad news for us, for they’ll go as fast in caves as we "
@@ -3301,12 +3405,12 @@ msgstr ""
 
 #. [message]: speaker=Krawg
 #. "(excited bird cry) Look! Forge here!"
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:388
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:387
 msgid "Raaaawww! Loook! Forge heeeere!"
 msgstr "Raaaawww! Schhhaaaau! Hiiiier Schmiiiiede!"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:393
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:392
 msgid ""
 "It looks like a forge, heated by the lava. It looks magic, and it looks hot "
 "enough to make the Sceptre."
@@ -3315,7 +3419,7 @@ msgstr ""
 "sieht magisch aus und ist heiß genug, um das Zepter zu schmieden."
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:399
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:398
 msgid ""
 "Look, I’ve found something here. It looks like a forge, heated by the lava. "
 "It looks magic, and it looks hot enough to make the sceptre."
@@ -3325,12 +3429,12 @@ msgstr ""
 "das Zepter zu schmieden."
 
 #. [message]: speaker=Khrakrahs
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:405
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:404
 msgid "That pretty metal rock is mine! Get away from it!"
 msgstr "Dieser wunderschöne Metallberg ist mein! Verschwindet von hier!"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:422
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:421
 msgid ""
 "This forge will work perfectly. Give me a day or two here, and I can reforge "
 "the Sceptre of Fire to fulfill its purpose."
@@ -3339,20 +3443,20 @@ msgstr ""
 "das Zepter fertigstellen, so dass es seinen Zweck erfüllt."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:450
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:449
 msgid "You fool, you let the enemy get at me when I was unarmed!"
 msgstr ""
 "Du Narr! Der Feind hat mich erwischt und das, wo ich doch unbewaffnet bin!"
 
 #. [message]: speaker=narrator
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:456
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:455
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:84
 msgid "Ayahahh..."
 msgstr "Ayahahh..."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:486
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:485
 msgid ""
 "I have completed my work. Now it is truly the Sceptre of Fire, a powerful "
 "magical artifact."
@@ -3362,7 +3466,7 @@ msgstr ""
 "das Zepter des Feuers, ein mächtiges magisches Artefakt."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:490
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:489
 msgid ""
 "Good. Now, let’s get out of this cave, before the elves, dwarves or bats "
 "kill us!"
@@ -3508,36 +3612,36 @@ msgstr ""
 "Die sitzen dann in der Falle, wenn der Felsen Glut entflammt!"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:454
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:427
 msgid "These orcs appear to be guarding something."
 msgstr "Es scheint, als würden diese Orks etwas bewachen."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:458
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:431
 msgid "It is probably the magical object. Attack them!"
 msgstr "Es ist wahrscheinlich das magische Objekt. Greift sie an!"
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:463
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:436
 msgid "Move onto the glyph in the center of the volcano"
 msgstr "Begebt Euch auf die magische Rune im Zentrum des Vulkans"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:519
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:492
 msgid "That’s it! The volcano will erupt soon now that you’ve triggered it."
 msgstr ""
 "Das war's! Der Vulkan wird nun bald ausbrechen, da ihr die Rune ausgelöst "
 "habt."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:535
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:508
 msgid ""
 "Look, it has knocked down some of the walls! Those orcs have a way out now!"
 msgstr ""
 "Schaut, einige Wände sind zusammengebrochen! Die Orks haben nun freie Bahn!"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:544
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:517
 msgid ""
 "Well, we’ve succeeded in stopping the elves from getting the Sceptre, I "
 "would say. But what do we do now?!"
@@ -3546,14 +3650,14 @@ msgstr ""
 "kommen, doch was sollen wir nun machen?!"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:550
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:523
 msgid "Now, we must fight the orcs until we die, it’s our only option."
 msgstr ""
 "Wir bekämpfen die Orks bis wir alle tot sind. Eine andere Wahl haben wir "
 "nicht."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:557
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:530
 msgid ""
 "We cannot let any of the elves or their mercenaries escape; they would tell "
 "where the Sceptre of Fire is. Make sure they all die!"
@@ -3563,7 +3667,7 @@ msgstr ""
 "sie alle sterben!"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:563
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:536
 msgid ""
 "We have to kill them quickly, before they realize what is happening. And "
 "remember, the lava spreads quickly, suddenly, and dangerously. The only "
@@ -3574,12 +3678,12 @@ msgstr ""
 "gefährlich aus. Einzig in der Nähe der Rune ist es sicher."
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:581
-msgid "Kill all of the elves before one of them escapes from the caves"
-msgstr "Tötet alle Elfen bevor einer von ihnen aus den Höhlen entkommt"
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:552
+msgid "Survive as long as possible"
+msgstr ""
 
 #. [message]: role=smartelf
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:635
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:603
 msgid ""
 "Wait, what’s going on? The volcano is going to erupt! Everyone, try to get "
 "out of these caves!"
@@ -3588,22 +3692,22 @@ msgstr ""
 "diesen Höhlen!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:650
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:632
 msgid "I must go report to my superiors!"
 msgstr "Ich muss meine Vorgesetzten benachrichtigen!"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:654
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:636
 msgid "We have allowed an enemy to escape; we have failed."
 msgstr "Ein Feind konnte entkommen. Wir haben versagt."
 
 #. [message]: role=dumbelf
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:714
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:696
 msgid "Aghh!! The volcano is erupting, and now our exit has been blocked off!!"
 msgstr "Argh!!! Der Vulkan bricht aus und der Ausgang ist nun verschüttet!!!"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:740
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:722
 msgid ""
 "We have hidden the Sceptre well, but now the volcano is going to erupt and "
 "kill us all."
@@ -3613,7 +3717,7 @@ msgstr ""
 
 #. [message]: speaker=Krawg
 #. "Hmmm, me leave now!"
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:823
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:805
 msgid "Hm... Me le’ no’w!"
 msgstr "Hm... Ich verschwinden jetzt!"
 
@@ -3623,7 +3727,7 @@ msgid "Epilogue"
 msgstr "Abspann"
 
 #. [part]
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:36
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:35
 msgid ""
 "And thus Rugnur died — a glorious death, in the eyes of the dwarven sages. "
 "But our tale is not yet complete. For Alanin lived still, as did Krawg the "
@@ -3634,7 +3738,7 @@ msgstr ""
 "nicht. Denn noch lebten Alanin, und es lebt Krawg, der Greif."
 
 #. [part]
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:40
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:39
 msgid ""
 "Alanin traveled south, to Wesnoth, to Haldric II. To report the events of "
 "the past fifteen years."
@@ -3643,7 +3747,7 @@ msgstr ""
 "berichten über die Geschehnisse der vergangenen fünfzehn Jahre."
 
 #. [part]
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:43
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:42
 msgid ""
 "And Krawg — well, Krawg followed him. I know not how. But Krawg made his way "
 "south, to Weldyn, and reached it about the time that Alanin did."
@@ -3653,36 +3757,40 @@ msgstr ""
 "auch Alanin dort ankam."
 
 #. [unit]: type=Royal Guard, id=Guard Captain
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:63
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:62
 msgid "Guard Captain"
 msgstr "Hauptmann der Garde"
 
 #. [unit]: type=Swordsman, id=Gatekeeper
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:80
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:79
 msgid "Gatekeeper"
 msgstr "Torwächter"
 
 #. [message]: speaker=Gatekeeper
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:96
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:103
 msgid "Halt! What is your business in Weldyn, capital of Wesnoth?"
 msgstr "Halt! Was wollt ihr in Weldyn, der Hauptstadt von Wesnoth?"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:100
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:107
+#, fuzzy
+#| msgid ""
+#| "Stand aside. I am Alanin, of Haldric’s royal guard, and I bring news from "
+#| "the northlands."
 msgid ""
 "Stand aside. I am Alanin, of Haldric’s royal guard, and I bring news from "
-"the northlands."
+"the Northlands."
 msgstr ""
 "Tretet beiseite! Ich bin Alanin, Leibwache des Königs. Ich bringe Kunde aus "
 "den Nordlanden."
 
 #. [message]: speaker=Gatekeeper
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:104
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:111
 msgid "Very well. You may pass."
 msgstr "Nun denn, ihr dürft passieren."
 
 #. [message]: speaker=Guard Captain
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:109
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:116
 msgid ""
 "I hear you desire to speak to the king, Alanin. What do you have to tell him?"
 msgstr ""
@@ -3690,7 +3798,7 @@ msgstr ""
 "habt ihr ihm zu sagen?"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:113
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:120
 msgid ""
 "I bring tidings of the Sceptre of Fire, commissioned fifteen years ago by "
 "our king. I have been away for a long time, do not delay me even more."
@@ -3700,14 +3808,18 @@ msgstr ""
 "nicht noch mehr auf."
 
 #. [message]: speaker=Guard Captain
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:117
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:124
 msgid "Enter, Alanin, and give the king your message."
 msgstr "Tretet ein, Alanin, und überbringt dem König eure Nachricht."
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:123
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:130
+#, fuzzy
+#| msgid ""
+#| "My King, fifteen years ago you sent me on a mission into the northlands. "
+#| "I have returned. What do you wish to know of my mission?"
 msgid ""
-"My King, fifteen years ago you sent me on a mission into the northlands. I "
+"My King, fifteen years ago you sent me on a mission into the Northlands. I "
 "have returned. What do you wish to know of my mission?"
 msgstr ""
 "Mein König, vor fünfzehn Jahren habt ihr mich auf eine Mission in die "
@@ -3715,12 +3827,12 @@ msgstr ""
 "Mission zu erfahren?"
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:127
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:134
 msgid "Well, was the Sceptre completed? Do you have it? Give it to me!"
 msgstr "Nun, wurde das Zepter fertiggestellt? Habt ihr es? Gebt es mir!"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:131
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:138
 msgid ""
 "I believe it was completed, but, I do not have it. It is buried deep in the "
 "mountains of the Northlands."
@@ -3729,7 +3841,7 @@ msgstr ""
 "Nordlanden, vergraben liegt es in den Tiefen der Berge."
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:135
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:142
 msgid ""
 "Why? Why was it not returned to me? Have the dwarves reneged on their "
 "promise, and kept it?"
@@ -3738,7 +3850,7 @@ msgstr ""
 "Versprechen gebrochen und es selbst behalten?"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:139
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:146
 msgid ""
 "My Lord, the dwarves are dead, slain by fire and smoke as lava poured out of "
 "one of the mountains. I saw the eruption from afar as I was returning to you."
@@ -3749,12 +3861,12 @@ msgstr ""
 "Weg zurück zu euch war."
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:143
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:150
 msgid "Why were you returning without the sceptre, then?"
 msgstr "Warum wart ihr auf dem Rückweg – ohne das Zepter? Sprecht!"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:147
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:154
 msgid ""
 "We had been besieged by elves, in a dwarvish castle that was not Rugnur’s. "
 "The sceptre could not be completed there, but it could in a cave that lay to "
@@ -3771,7 +3883,7 @@ msgstr ""
 "Höhlen und wurden von hunderten Elfenkriegern verfolgt."
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:151
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:158
 msgid ""
 "If the sceptre was not completed in your sight, what makes you so sure it "
 "exists?"
@@ -3780,17 +3892,17 @@ msgstr ""
 "seid ihr euch dann so sicher das es existiert?"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:155
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:162
 msgid "I will let Krawg explain that."
 msgstr "Das werde ich Krawg erklären lassen."
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:159
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:166
 msgid "Who?"
 msgstr "Wen?"
 
 #. [message]: speaker=Gatekeeper
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:183
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:190
 msgid ""
 "My lord, a gryphon has just flown over our walls! It may be a sign of an "
 "attack!"
@@ -3799,7 +3911,7 @@ msgstr ""
 "Angriff bedeuten!"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:187
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:194
 msgid ""
 "No, that is my... friend Krawg. He went with Rugnur into the caves, but "
 "escaped through a hole in the roof right before the lava filled the cave."
@@ -3810,17 +3922,17 @@ msgstr ""
 
 #. [message]: speaker=Krawg
 #. "Yes, yes. I saw the sceptre. Rugnur had it. Lost it in the cave."
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:192
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:199
 msgid "Ya, ya! Meh seah za zeptahur. Hrugnaar ha ee. Lozeet enda caav."
 msgstr "Jah, jah! Mich sehen Zepta. Rugnur es hat. In Höhle verloren."
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:196
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:203
 msgid "What the devil is he saying?"
 msgstr "Was zum Teufel sagt er?"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:200
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:207
 msgid ""
 "He says that he has seen the Sceptre. Rugnur had it, but he lost it in the "
 "caves. He came to tell you, so that you would know that the dwarves did "
@@ -3832,12 +3944,12 @@ msgstr ""
 
 #. [message]: speaker=Krawg
 #. "Kreeya! That’s right! Now I'm done. Bye."
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:205
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:212
 msgid "Kreeeeya! Darat! Nomiduun. Bah."
 msgstr "Kreeeya! Stiiimmt! Feeertig bin! Lebwohhhl!"
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:209
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:216
 msgid ""
 "I see. Well... what do you want me to do now? The Sceptre of Fire is made, "
 "yes, but I don’t know where it is, the makers are dead, and orcs have "
@@ -3848,7 +3960,7 @@ msgstr ""
 "Orks haben es wohl schon gefunden und verstecken es nun irgendwo."
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:213
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:220
 msgid ""
 "I do not know. I only bring the news, I did not cause it, nor do I fully "
 "understand its implications. But, my advice would be to do nothing. I "
@@ -3862,7 +3974,7 @@ msgstr ""
 "existiert."
 
 #. [message]: speaker=Haldric II
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:217
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:224
 msgid ""
 "Your advice seems good to me. I will take it. As for you, and the gryphon, "
 "you are free to go. Alanin, you’ve served in the army long enough to retire, "
@@ -3875,12 +3987,12 @@ msgstr ""
 "euch die Ruhe getreulich verdient."
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:221
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:228
 msgid "Very well, my lord."
 msgstr "So sei es, mein König. Habt Dank."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:233
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:240
 msgid ""
 "The sceptre would not be found until many generations after Haldric II, in "
 "the time of Asheviere the Dark Queen. During that time, it sat in the caves "
@@ -3894,7 +4006,7 @@ msgstr ""
 "seine wahren Kräfte zu verstehen."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:238
+#: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:245
 msgid ""
 "But before it was found, legends grew up around it, and around its makers — "
 "Thursagan, most brilliant of the Dwarven Sages, and Rugnur, the greatest of "
@@ -3969,6 +4081,9 @@ msgstr "Ahhgg..."
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:71
 msgid "Kraa..."
 msgstr "Kraa..."
+
+#~ msgid "Kill all of the elves before one of them escapes from the caves"
+#~ msgstr "Tötet alle Elfen bevor einer von ihnen aus den Höhlen entkommt"
 
 #~ msgid "Kawn"
 #~ msgstr "Kawn"

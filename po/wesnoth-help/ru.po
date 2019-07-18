@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-27 04:26+0300\n"
+"POT-Creation-Date: 2019-07-18 15:50+0300\n"
 "PO-Revision-Date: 2016-10-16 04:35+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: \n"
@@ -31,55 +31,6 @@ msgstr ""
 #: data/core/macros/schedules.cfg:109
 msgid "Underground"
 msgstr "Подземелье"
-
-#. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:659
-#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:657
-#: data/core/macros/abilities.cfg:274
-msgid "berserk"
-msgstr "берсерк"
-
-#. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:661
-#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:659
-#: data/core/macros/abilities.cfg:275
-msgid ""
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"И в наступлении, и в обороне продолжает бой, пока один из сражающихся не "
-"погибнет, или пока не пройдут 30 раундов боя."
-
-#. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:670
-#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:668
-#: data/core/macros/abilities.cfg:359
-msgid "magical"
-msgstr "магия"
-
-#. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:672
-#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:670
-#: data/core/macros/abilities.cfg:360
-msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"Магия всегда попадает с вероятностью 70%, вне зависимости от защиты "
-"обороняющегося."
-
-#. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:679
-#: data/core/macros/abilities.cfg:404
-msgid "first strike"
-msgstr "бьёт первым"
-
-#. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:681
-#: data/core/macros/abilities.cfg:405
-msgid ""
-"This unit always strikes first with this attack, even if they are defending."
-msgstr "Боец с этой атакой всегда наносит первый удар, даже если защищается."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -347,7 +298,7 @@ msgid ""
 "on which every Wesnoth scenario takes place. It also provides a limited set "
 "of features for setting up a basic scenario.\n"
 "\n"
-"The editor can be launched from the <i>Map Editor</i>"
+"The editor can be launched from the <italic>text='Map Editor'</italic>"
 msgstr ""
 "Редактор карт и сценариев Веснота позволяет пользователям создавать и "
 "редактировать карты, на которых происходит любой сценарий Веснота. Он также "
@@ -366,7 +317,7 @@ msgstr ""
 msgid ""
 " option at the title screen.\n"
 "\n"
-"<big>What you get</big>"
+"<header>text='What you get'</header>"
 msgstr ""
 " опция в Главном Меню. \n"
 "\n"
@@ -440,15 +391,15 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Creator Resources'</header>"
+#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
-"<big>Pure Map Mode</big>"
+"<header>text='Pure Map Mode'</header>"
 msgstr ""
 "\n"
 "\n"
-"<header>text='Ресурсы для авторов'</header>"
+"<header>text=Урон</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
@@ -470,7 +421,7 @@ msgid ""
 "\n"
 "How the information is saved depends on the loaded file:\n"
 "\n"
-"<b>Native</b>"
+"<bold>text='Native'</bold>"
 msgstr ""
 
 #. [topic]: id=editor_modes
@@ -482,7 +433,7 @@ msgid ""
 "The produced map can be played in the “User Maps” game type at the create "
 "multiplayer game dialog if saved to the default directory.\n"
 "\n"
-"<b>Embedded</b>"
+"<bold>text='Embedded'</bold>"
 msgstr ""
 
 #. [topic]: id=editor_modes
@@ -501,15 +452,15 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Creator Resources'</header>"
+#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
-"<big>Scenario Mode</big>"
+"<header>text='Scenario Mode'</header>"
 msgstr ""
 "\n"
 "\n"
-"<header>text='Ресурсы для авторов'</header>"
+"<header>text=Урон</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:200
@@ -539,7 +490,7 @@ msgid ""
 "These following tools are provided:\n"
 "\n"
 "• <ref>dst='editor_tool_paint' text='Paint Tool'</ref>\n"
-"• <ref>dst='editor_tool_fill'  text='Fill Tool'</ref>\n"
+"• <ref>dst='editor_tool_fill' text='Fill Tool'</ref>\n"
 "• <ref>dst='editor_tool_select' text='Select Tool'</ref>\n"
 "• <ref>dst='editor_tool_paste' text='Paste Tool'</ref>\n"
 "• <ref>dst='editor_tool_starting' text='Starting Tool'</ref>\n"
@@ -674,13 +625,37 @@ msgstr ""
 "Река, берущая исток в <ref>dst='heart_mountains' text='Горах Сердца'</ref> и "
 "текущая на восток, к Листре."
 
-#. [topic]: id=great_ocean
+#. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:32
+#, fuzzy
+#| msgid "Great Ocean"
+msgid "Great River"
+msgstr "Великий Океан"
+
+#. [topic]: id=great_river
+#: data/core/encyclopedia/geography.cfg:33
+#, fuzzy
+#| msgid ""
+#| "The continent on which the <ref>dst='kingdom_wesnoth' text='Kingdom of "
+#| "Wesnoth'</ref> lies. Its west coast is surrounded by the "
+#| "<ref>dst='great_ocean' text='Great Ocean'</ref>."
+msgid ""
+"The Great River forms the boundary between the <ref>dst='kingdom_wesnoth' "
+"text='Kingdom of Wesnoth'</ref> and the <ref>dst='northlands' "
+"text='Northlands'</ref>. It empties to the <ref>dst='great_ocean' "
+"text='Great Ocean'</ref> at <ref>dst='elensefar' text='Elensefar'</ref>."
+msgstr ""
+"Континент, на котором находится <ref>dst='kingdom_wesnoth' text='Королевство "
+"Веснот'</ref>. Западное побережье омывается <ref>dst='great_ocean' "
+"text='Великим Океаном'</ref>."
+
+#. [topic]: id=great_ocean
+#: data/core/encyclopedia/geography.cfg:38
 msgid "Great Ocean"
 msgstr "Великий Океан"
 
 #. [topic]: id=great_ocean
-#: data/core/encyclopedia/geography.cfg:33
+#: data/core/encyclopedia/geography.cfg:39
 msgid ""
 "Lies to the west of the <ref>dst='great_continent' text='continent'</ref> "
 "and all rivers eventually flow to it. Far to the west in the Great Ocean is "
@@ -691,12 +666,12 @@ msgstr ""
 "огромный архипелаг <ref>dst='morogor' text='Морогор'</ref>."
 
 #. [topic]: id=morogor
-#: data/core/encyclopedia/geography.cfg:38
+#: data/core/encyclopedia/geography.cfg:44
 msgid "Morogor"
 msgstr "Морогор"
 
 #. [topic]: id=morogor
-#: data/core/encyclopedia/geography.cfg:39
+#: data/core/encyclopedia/geography.cfg:45
 msgid ""
 "Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
 "Ocean'</ref> east of the <ref>dst='green_isle' text='Green Isle'</ref> and "
@@ -711,24 +686,24 @@ msgstr ""
 "Центральный остров архипелага также называется «Морогор»."
 
 #. [topic]: id=green_isle
-#: data/core/encyclopedia/geography.cfg:46
+#: data/core/encyclopedia/geography.cfg:52
 msgid "Green Isle"
 msgstr "Зелёный Остров"
 
 #. [topic]: id=green_isle
-#: data/core/encyclopedia/geography.cfg:47
+#: data/core/encyclopedia/geography.cfg:53
 msgid ""
 "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
 "Большой остров, лежащий в <ref>dst='great_ocean' text='Великом Океане'</ref>."
 
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:52
+#: data/core/encyclopedia/geography.cfg:58
 msgid "Old Continent"
 msgstr "Старый континент"
 
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:53
+#: data/core/encyclopedia/geography.cfg:59
 msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
@@ -737,12 +712,12 @@ msgstr ""
 "<ref>dst='great_ocean' text='Великого океана'</ref>."
 
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:58
+#: data/core/encyclopedia/geography.cfg:64
 msgid "Great Continent"
 msgstr "Большой континент"
 
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:59
+#: data/core/encyclopedia/geography.cfg:65
 msgid ""
 "The continent on which the <ref>dst='kingdom_wesnoth' text='Kingdom of "
 "Wesnoth'</ref> lies. Its west coast is surrounded by the "
@@ -753,12 +728,12 @@ msgstr ""
 "text='Великим Океаном'</ref>."
 
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:64
+#: data/core/encyclopedia/geography.cfg:70
 msgid "Irdya"
 msgstr "Ирдия"
 
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:65
+#: data/core/encyclopedia/geography.cfg:71
 msgid ""
 "The name of the world in which the kingdom of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref> is situated is ‘Irdya’. This term is, however, only "
@@ -771,12 +746,12 @@ msgstr ""
 "«мир» или, поэтично, «большой зелёный мир»."
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:70
+#: data/core/encyclopedia/geography.cfg:76
 msgid "Kingdom of Wesnoth"
 msgstr "Королевство Веснот"
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:71
+#: data/core/encyclopedia/geography.cfg:77
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
@@ -880,12 +855,12 @@ msgstr ""
 "между Карцином и Алдрилом; большинство считает, что он проклят"
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:100
+#: data/core/encyclopedia/geography.cfg:106
 msgid "Elensefar"
 msgstr "Эленсефар"
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:101
+#: data/core/encyclopedia/geography.cfg:107
 #, fuzzy
 #| msgid ""
 #| "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
@@ -936,12 +911,52 @@ msgstr ""
 "очень широка; переплыть её можно только на корабле."
 
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:113
+#: data/core/encyclopedia/geography.cfg:119
 msgid "Northlands"
 msgstr "Север"
 
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:114
+#: data/core/encyclopedia/geography.cfg:120
+#, fuzzy
+#| msgid ""
+#| "There is no government of the Northlands. Various groups of orcs, "
+#| "dwarves, barbarian men and even elves populate the region. The northern "
+#| "and eastern borders are not defined, the southern border is the "
+#| "<ref>dst='great_river' text='Great River'</ref>, and the western border "
+#| "is the <ref>dst='great_ocean' text='Great Ocean'</ref>.\n"
+#| "\n"
+#| "<header>text='Notable cities:'</header>\n"
+#| "    • Glamdrol: An Orcish tribal capital.\n"
+#| "    • Wesmere: The location of the Ka’lian — the Elvish Council.\n"
+#| "    • Dwarven Doors: A mixed human/dwarven town in the region of Knalga "
+#| "in the southern Heart Mountains. A major trade center.\n"
+#| "    • Dallben and Delwyn: Human villages originally built by settlers who "
+#| "crossed the Great River during Wesnoth’s Golden Age expansion. Now "
+#| "abandoned. The forested area northeast of Elensefar, where these villages "
+#| "were located, was named the Annuvin province by men but was known by the "
+#| "elves as Wesmere.\n"
+#| "\n"
+#| "<header>text='Notable land features:'</header>\n"
+#| "    • Heart Mountains: A virtually impassable barrier between the river "
+#| "country and the Northern Plains.\n"
+#| "    • Heartfangs: the particularly forbidding stretch of high peaks "
+#| "southwest of Lake Vrug and north of the Forest of Wesmere. The most "
+#| "inhospitable and dangerous portion of the Heart Mountains; only hermits, "
+#| "madmen, and mages live there.\n"
+#| "    • Swamp of Dread: a very large bog located between the Heart "
+#| "Mountains and the Great River. A notoriously dangerous place.\n"
+#| "    • Lake Vrug: A large mountain lake whose river carves the only "
+#| "pathway through the Northern Mountains.\n"
+#| "    • Arkan-thoria: The river that comes out of Lake Vrug. This is the "
+#| "elvish name; among humans it is called Longlier.\n"
+#| "    • River Listra: The south-running tributary of the Great River into "
+#| "which the Arkan-thoria empties.\n"
+#| "    • Lintanir Forest: The southernmost portion of the Great Northern "
+#| "Forest, a gigantic wood whose eastern and northern boundaries are known "
+#| "only the elves. Their capitol, Elensiria, has only seldom been visited by "
+#| "humans.\n"
+#| "    • Great River: The origin of this river is somewhere in the east of "
+#| "the northern lands."
 msgid ""
 "There is no government of the Northlands. Various groups of orcs, dwarves, "
 "barbarian men and even elves populate the region. The northern and eastern "
@@ -977,7 +992,7 @@ msgid ""
 "which the Arkan-thoria empties.\n"
 "    • Lintanir Forest: The southernmost portion of the Great Northern "
 "Forest, a gigantic wood whose eastern and northern boundaries are known only "
-"the elves. Their capitol, Elensiria, has only seldom been visited by "
+"to the elves. Their capital, Elensiria, has only seldom been visited by "
 "humans.\n"
 "    • Great River: The origin of this river is somewhere in the east of the "
 "northern lands."
@@ -1019,12 +1034,12 @@ msgstr ""
 "          ◦ Великая река: где-то в северных землях затерялся исток этой реки"
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:135
+#: data/core/encyclopedia/geography.cfg:141
 msgid "Southwest Elven Lands"
 msgstr "Южные эльфийские земли"
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:136
+#: data/core/encyclopedia/geography.cfg:142
 msgid ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
@@ -1060,12 +1075,12 @@ msgstr ""
 "покинутый эльфами."
 
 #. [topic]: id=heart_mountains
-#: data/core/encyclopedia/geography.cfg:148
+#: data/core/encyclopedia/geography.cfg:154
 msgid "Heart Mountains"
 msgstr "Горы Сердца"
 
 #. [topic]: id=heart_mountains
-#: data/core/encyclopedia/geography.cfg:149
+#: data/core/encyclopedia/geography.cfg:155
 msgid ""
 "A virtually impassable barrier between the <ref>dst='arkan_thoria' "
 "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
@@ -1075,12 +1090,12 @@ msgstr ""
 "долиной и <ref>dst='far_north' text='Северной равниной'</ref>."
 
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:154
+#: data/core/encyclopedia/geography.cfg:160
 msgid "Far North"
 msgstr "Дальний Север"
 
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:155
+#: data/core/encyclopedia/geography.cfg:161
 msgid ""
 "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
 "Orcish Clannate. It lies north of the <ref>dst='heart_mountains' text='Heart "
@@ -1146,72 +1161,72 @@ msgstr ""
 "          ◦ Бесплодные равнины"
 
 #. [section]: id=schedule
-#: data/core/help.cfg:10
+#: data/core/help.cfg:14
 msgid "Time of Day Schedule"
 msgstr "Время суток"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
-#: data/core/help.cfg:17 data/core/help.cfg:96
+#: data/core/help.cfg:21 data/core/help.cfg:99
 msgid "Introduction"
 msgstr "Введение"
 
 #. [section]: id=gameplay
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:23 data/core/help.cfg:168
+#: data/core/help.cfg:27 data/core/help.cfg:171
 msgid "Gameplay"
 msgstr "Игра"
 
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:29 data/core/help.cfg:391
+#: data/core/help.cfg:33 data/core/help.cfg:398
 msgid "Traits"
 msgstr "Особенности"
 
 #. [section]: id=units
 #. [topic]: id=..units
-#: data/core/help.cfg:37 data/core/help.cfg:119
+#: data/core/help.cfg:41 data/core/help.cfg:122
 msgid "Units"
 msgstr "Бойцы"
 
 #. [section]: id=abilities_section
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:46 data/core/help.cfg:139
+#: data/core/help.cfg:50 data/core/help.cfg:142
 msgid "Abilities"
 msgstr "Способности"
 
 #. [section]: id=weapon_specials
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:54 data/core/help.cfg:148
+#: data/core/help.cfg:58 data/core/help.cfg:151
 msgid "Weapon Specials"
 msgstr "Особенности оружия"
 
 #. [section]: id=eras_section
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:62 data/core/help.cfg:128
+#: data/core/help.cfg:66 data/core/help.cfg:131
 msgid "Eras"
 msgstr "Эры"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:71 data/core/help.cfg:406
+#: data/core/help.cfg:74 data/core/help.cfg:413
 msgid "Terrains"
 msgstr "Местности"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:79 data/core/help.cfg:459
+#: data/core/help.cfg:82 data/core/help.cfg:466
 msgid "Add-ons"
 msgstr "Аддоны"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:85 data/core/help.cfg:526
+#: data/core/help.cfg:88 data/core/help.cfg:539
 msgid "Commands"
 msgstr "Команды"
 
 #. [topic]: id=..introduction
-#: data/core/help.cfg:97
+#: data/core/help.cfg:100
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -1230,12 +1245,12 @@ msgstr "Команды"
 msgid ""
 "\n"
 "\n"
-"<i>Battle for Wesnoth</i> is a turn-based fantasy strategy game somewhat "
-"unusual among modern strategy games. While other games strive for "
-"complexity, <i>Battle for Wesnoth</i> strives for simplicity of both rules "
-"and gameplay. This does not make the game simple, however — from these "
-"simple rules arise a wealth of strategy, making the game easy to learn but a "
-"challenge to master.\n"
+"<italic>text='Battle for Wesnoth'</italic> is a turn-based fantasy strategy "
+"game somewhat unusual among modern strategy games. While other games strive "
+"for complexity, <italic>text='Battle for Wesnoth'</italic> strives for "
+"simplicity of both rules and gameplay. This does not make the game simple, "
+"however — from these simple rules arise a wealth of strategy, making the "
+"game easy to learn but a challenge to master.\n"
 "\n"
 "The following pages outline all you need to know to play Wesnoth. As you "
 "play, new information is added to the various categories as you come across "
@@ -1259,12 +1274,12 @@ msgstr ""
 "следуйте приведенным ссылкам."
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:107
+#: data/core/help.cfg:110
 msgid "About the Game"
 msgstr "Об игре"
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:108
+#: data/core/help.cfg:111
 #, fuzzy
 #| msgid ""
 #| "The game takes place on a hex-based game field, where your units battle "
@@ -1291,18 +1306,19 @@ msgid ""
 "same computer (hotseat play), other players on the same network, or players "
 "worldwide in multiplayer mode.\n"
 "\n"
-"Each of these battles is called a <i>scenario</i>, which can be strung "
-"together to make <i>campaigns</i>. Besides the campaigns that ship with the "
-"game, Wesnoth supports user-made content, and the add-on server boasts "
-"hundreds of custom maps, campaigns, eras, factions, and resources.\n"
+"Each of these battles is called a <italic>text='scenario'</italic>, which "
+"can be strung together to make <italic>text='campaigns'</italic>. Besides "
+"the campaigns that ship with the game, Wesnoth supports user-made content, "
+"and the add-on server boasts hundreds of custom maps, campaigns, eras, "
+"factions, and resources.\n"
 "\n"
 "The game also features a human-readable markup called Wesnoth Markup "
 "Language (WML) to easily allow users to create their own content, as well as "
 "a fully-featured Map and Scenario Editor for designing your own "
 "battlefields.\n"
 "\n"
-"The <i>Battle for Wesnoth</i> project was begun in 2003, and has been worked "
-"on by a multitude of volunteers ever since."
+"The <italic>text='Battle for Wesnoth'</italic> project was begun in 2003, "
+"and has been worked on by a multitude of volunteers ever since."
 msgstr ""
 "Действие игры разворачивается на поле, поделенном на шестигранные ячейки, "
 "где Ваши бойцы сражаются против бойцов, контролируемых компьютером или "
@@ -1327,7 +1343,7 @@ msgstr ""
 "в 2003 году и с тех пор тысячи волонтеров приняли участие в его развитии."
 
 #. [topic]: id=..units
-#: data/core/help.cfg:120
+#: data/core/help.cfg:123
 msgid ""
 "This section will list all the units you discover as you explore the world "
 "of Wesnoth. When you see a new unit during a campaign or multiplayer "
@@ -1344,7 +1360,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:129
+#: data/core/help.cfg:132
 msgid ""
 "A faction is a collection of units and leaders. Factions are assigned to "
 "sides in multiplayer games.\n"
@@ -1355,7 +1371,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:131
+#: data/core/help.cfg:134
 msgid ""
 "An era is a collection of factions, intended to be played against one "
 "another. Besides the mainline eras that come with the game, many user-made "
@@ -1368,7 +1384,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:140
+#: data/core/help.cfg:143
 msgid ""
 "Certain units have abilities that either directly affect other units or have "
 "an impact on how the unit interacts with other units. These abilities will "
@@ -1384,7 +1400,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:149
+#: data/core/help.cfg:152
 msgid ""
 "Some weapons have special features that increase the effectiveness of "
 "attacking with them. When you see a new weapon special during a campaign or "
@@ -1402,12 +1418,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:158
+#: data/core/help.cfg:161
 msgid "Unknown Unit"
 msgstr "Неизвестный боец"
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:159
+#: data/core/help.cfg:162
 msgid ""
 "\n"
 "\n"
@@ -1420,7 +1436,7 @@ msgstr ""
 "его описание."
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:169
+#: data/core/help.cfg:172
 #, fuzzy
 #| msgid ""
 #| "Wesnoth is comprised of a series of battles, called "
@@ -1442,22 +1458,35 @@ msgstr ""
 #| "quite challenging, you may wish to start on easy before progressing to "
 #| "higher difficulties."
 msgid ""
-"Wesnoth is comprised of a series of battles, called <i>scenarios</i>, that "
-"pit your troops against the troops of one or more adversaries. Multiple "
-"scenarios that follow on from each other, telling a story, make up "
-"<i>campaigns</i>. In a campaign, you often need to play more carefully, "
-"preserving your best troops for use again in later scenarios.\n"
+"Wesnoth is comprised of a series of battles, called "
+"<italic>text='scenarios'</italic>, that pit your troops against the troops "
+"of one or more adversaries. Multiple scenarios that follow on from each "
+"other, telling a story, make up <italic>text='campaigns'</italic>. In a "
+"campaign, you often need to play more carefully, preserving your best troops "
+"for use again in later scenarios.\n"
 "\n"
-"The interactive <b>Tutorial</b> introduces the basics of Wesnoth gameplay in "
-"the context of a scenario. Most material covered in the tutorial is "
-"explained more in-depth in these pages, so you can always refer back here if "
-"you forget something.\n"
+"The interactive <bold>text='Tutorial'</bold> introduces the basics of "
+"Wesnoth gameplay in the context of a scenario. Most material covered in the "
+"tutorial is explained more in-depth in these pages, so you can always refer "
+"back here if you forget something.\n"
 "\n"
-"After you master the basics, try out a beginner campaign, such as <i>Heir to "
-"the Throne</i> or <i>The South Guard</i>. A full list of installed campaigns "
-"can be found via the <b>Campaign</b> option on the main menu. As Wesnoth can "
-"be quite challenging, you may wish to start on easy before progressing to "
-"higher difficulties."
+"After you master the basics, try out a beginner campaign, such as "
+"<italic>text='Heir to the Throne'</italic> or <italic>text='The South "
+"Guard'</italic>. A full list of installed campaigns can be found via the "
+"<bold>text='Campaign'</bold> option on the main menu. As Wesnoth can be "
+"quite challenging, you may wish to start on easy before progressing to "
+"higher difficulties.\n"
+"\n"
+"Campaigns are grouped by <italic>text='level'</italic> and "
+"<italic>text='difficulty'</italic>. For example, <italic>text='Heir to the "
+"Throne'</italic> is ‘Novice’ level, and is playable at three difficulties: "
+"‘Beginner’, ‘Normal’, and ‘Challenging’. The level of a campaign indicates "
+"what degree of proficiency in the game mechanics (such as "
+"<ref>dst='movement' text='zones of control'</ref> and <ref>dst='time_of_day' "
+"text='time of day'</ref>) is assumed. The difficulty indicates how "
+"challenging the scenarios will be to a veteran player: at higher "
+"difficulties, the obstacles to victory will be higher and overcoming them "
+"will require more skillful play."
 msgstr ""
 "Игровой процесс Веснота состоит из серии сражений, под названием "
 "<italic>text='сценариев'</italic>, что бросают Ваши войска против войск "
@@ -1479,18 +1508,20 @@ msgstr ""
 "сложное."
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:176
-#, fuzzy
-#| msgid "Fundamentals of Gameplay"
+#: data/core/help.cfg:181
 msgid ""
 "\n"
 "\n"
-"<big>Fundamentals of Gameplay</big>\n"
+"<header>text='Fundamentals of Gameplay'</header>\n"
 "\n"
-msgstr "Основы игры"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Основы игрового процесса'</header>\n"
+"\n"
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:176
+#: data/core/help.cfg:181
 msgid ""
 "While playing, keep in mind that you can mouse-over many items in the game, "
 "such as the information displayed in the status pane, to see a brief "
@@ -1504,12 +1535,12 @@ msgstr ""
 "abilities_section' text='способностей'</ref>."
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:188
+#: data/core/help.cfg:193
 msgid "Victory and Defeat"
 msgstr "Победа и поражение"
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:189
+#: data/core/help.cfg:194
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -1522,10 +1553,10 @@ msgstr "Победа и поражение"
 msgid ""
 "\n"
 "\n"
-"When you win a scenario, the map grays over and the <b>End Turn</b> button "
-"changes to <b>End Scenario</b>. You can now do things like changing your "
-"save options or (if you are in a multiplayer game) chatting with other "
-"players before pressing that button to advance."
+"When you win a scenario, the map grays over and the <bold>text='End Turn'</"
+"bold> button changes to <bold>text='End Scenario'</bold>. You can now do "
+"things like changing your save options or (if you are in a multiplayer game) "
+"chatting with other players before pressing that button to advance."
 msgstr ""
 "\n"
 "\n"
@@ -1535,7 +1566,7 @@ msgstr ""
 "другими игроками (в многопользовательской игре)."
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:189
+#: data/core/help.cfg:194
 #, fuzzy
 #| msgid ""
 #| "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
@@ -1546,13 +1577,13 @@ msgstr ""
 #| "point, rescuing an ally, solving a puzzle, or holding out against a siege "
 #| "until a certain number of turns have elapsed."
 msgid ""
-"Pay careful attention to the <b>Objectives</b> pop-up box at the beginning "
-"of each scenario. In most scenarios, you will achieve victory by killing all "
-"enemy leaders ; likewise, the death of your own leader generally results in "
-"defeat. However, some scenarios may have other victory objectives, such as "
-"getting your leader to a designated point, rescuing an ally, solving a "
-"puzzle, or holding out against a siege until a certain number of turns have "
-"elapsed."
+"Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
+"the beginning of each scenario. In most scenarios, you will achieve victory "
+"by killing all enemy leaders ; likewise, the death of your own leader "
+"generally results in defeat. However, some scenarios may have other victory "
+"objectives, such as getting your leader to a designated point, rescuing an "
+"ally, solving a puzzle, or holding out against a siege until a certain "
+"number of turns have elapsed."
 msgstr ""
 "Внимательно читайте <bold>text='Список задач'</bold> во всплывающем окне в "
 "начале каждого сценария. Чаще всего, чтобы победить, Вы должны будете убить "
@@ -1562,12 +1593,12 @@ msgstr ""
 "загадку, или продержаться в течение определённого количества ходов."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:198
+#: data/core/help.cfg:203
 msgid "Recruiting and Recalling"
 msgstr "Вербовка и Призыв"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:199
+#: data/core/help.cfg:204
 msgid ""
 "\n"
 "\n"
@@ -1584,7 +1615,7 @@ msgstr ""
 "замке, и Вы не сможете потратить на вербовку больше золота, чем у Вас есть."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:199
+#: data/core/help.cfg:204
 #, fuzzy
 #| msgid ""
 #| "Each side begins with one leader in their keep. At the start of any "
@@ -1602,12 +1633,13 @@ msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
 "text='units'</ref> into your army. To recruit, you must have your leader "
-"(for instance, Konrad in the <i>Heir to the Throne</i> campaign) on the keep "
-"hex of a <ref>dst='terrain_castle' text='castle'</ref>. Then you may recruit "
-"by either choosing <b>Recruit</b> from the menu or right-clicking on a hex "
-"and selecting <b>Recruit</b>. This brings up the recruit menu, which lists "
-"units available for recruitment, along with their gold cost. Click on a unit "
-"to see its statistics, then press the OK button to recruit it."
+"(for instance, Konrad in the <italic>text='Heir to the Throne'</italic> "
+"campaign) on the keep hex of a <ref>dst='..terrain_castle' text='castle'</"
+"ref>. Then you may recruit by either choosing <bold>text='Recruit'</bold> "
+"from the menu or right-clicking on a hex and selecting <bold>text='Recruit'</"
+"bold>. This brings up the recruit menu, which lists units available for "
+"recruitment, along with their gold cost. Click on a unit to see its "
+"statistics, then press the <bold>text='Recruit'</bold> button to recruit it."
 msgstr ""
 "Каждый игрок начинает игру с одним лидером в своей цитадели. В начале и по "
 "ходу каждой битвы Вам нужно будет вербовать <ref>dst='..units' "
@@ -1621,7 +1653,7 @@ msgstr ""
 "Чтобы завербовать выделенного бойца, нажмите кнопку «Вербовать»."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:201
+#: data/core/help.cfg:206
 msgid ""
 "\n"
 "\n"
@@ -1634,7 +1666,7 @@ msgstr ""
 "text='особенности'</ref>, которые изменяют их характеристики."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:203
+#: data/core/help.cfg:208
 msgid ""
 "\n"
 "\n"
@@ -1649,7 +1681,7 @@ msgstr ""
 "сможете вернуть на поле боя любого бойца, выжившего в предыдущем сценарии."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:205
+#: data/core/help.cfg:210
 msgid ""
 "\n"
 "\n"
@@ -1664,12 +1696,12 @@ msgstr ""
 "«<ref>dst='income_and_upkeep' text='Доход и Содержание'</ref>»"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:214
+#: data/core/help.cfg:219
 msgid "Income and Upkeep"
 msgstr "Доход и содержание"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:215
+#: data/core/help.cfg:220
 msgid ""
 "\n"
 "\n"
@@ -1690,7 +1722,7 @@ msgstr ""
 "ниже."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:215
+#: data/core/help.cfg:220
 #, fuzzy
 #| msgid ""
 #| "In Wesnoth, it is not enough simply to recruit units and fight. You must "
@@ -1701,7 +1733,7 @@ msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
 "gold over from one scenario to the next. There are two aspects to this; "
-"<i>income</i> and <i>upkeep</i>."
+"<italic>text='income'</italic> and <italic>text='upkeep'</italic>."
 msgstr ""
 "В Весноте недостаточно просто завербовать бойцов и сражаться. Нужно следить "
 "за количеством золота, особенно в кампаниях, где вы можете получить "
@@ -1709,7 +1741,7 @@ msgstr ""
 "<italic>text='доход'</italic> и <italic>text='содержание'</italic>."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:217
+#: data/core/help.cfg:222
 msgid ""
 "\n"
 "\n"
@@ -1730,7 +1762,7 @@ msgstr ""
 "будете платить две золотые монеты в ход за их содержание."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:219
+#: data/core/help.cfg:224
 msgid ""
 "\n"
 "\n"
@@ -1745,7 +1777,7 @@ msgstr ""
 "ход."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:221
+#: data/core/help.cfg:226
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -1762,9 +1794,9 @@ msgid ""
 "There are two important exceptions to upkeep: units with the loyal trait and "
 "leaders never incur upkeep. Units you begin the scenario with (such as "
 "Delfador), or units who join you during a scenario (such as the horseman in "
-"the second scenario of <i>Heir to the Throne</i>) will usually have the "
-"<i>loyal</i> trait. The unit you are playing (such as Konrad) will almost "
-"always be a leader."
+"the second scenario of <italic>text='Heir to the Throne'</italic>) will "
+"usually have the <italic>text='loyal'</italic> trait. The unit you are "
+"playing (such as Konrad) will almost always be a leader."
 msgstr ""
 "\n"
 "\n"
@@ -1777,12 +1809,12 @@ msgstr ""
 "— это обычно лидер."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:230
+#: data/core/help.cfg:235
 msgid "Hitpoints and Experience"
 msgstr "Здоровье и Опыт"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:231
+#: data/core/help.cfg:236
 #, fuzzy
 #| msgid ""
 #| "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). "
@@ -1791,10 +1823,11 @@ msgstr "Здоровье и Опыт"
 #| "freshly recruited unit starts with no experience points, and gains "
 #| "experience by fighting enemies."
 msgid ""
-"Each unit has a certain number of <i>hitpoints</i> (HP). If the hitpoints of "
-"a unit drop below 1, the unit dies. Each unit also has a certain number of "
-"<i>experience points</i> (XP). A freshly recruited unit starts with no "
-"experience points, and gains experience by fighting enemies."
+"Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
+"the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
+"certain number of <italic>text='experience points'</italic> (XP). A freshly "
+"recruited unit starts with no experience points, and gains experience by "
+"fighting enemies."
 msgstr ""
 "Каждый боец имеет определенное количество <italic>text='единиц здоровья'</"
 "italic> (ЗД). Если здоровье бойца падает ниже 1, боец погибает. Каждый боец "
@@ -1803,7 +1836,7 @@ msgstr ""
 "получат опыт в сражениях с врагами."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:235
+#: data/core/help.cfg:240
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -1813,7 +1846,7 @@ msgstr ""
 "и максимально возможное для этого бойцазначения)."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:237
+#: data/core/help.cfg:242
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -1826,12 +1859,12 @@ msgstr ""
 "<ref>dst='experience_and_advancement' text='продвижению'</ref>."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:244
+#: data/core/help.cfg:249
 msgid "Advancement"
 msgstr "Продвижение"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:245
+#: data/core/help.cfg:250
 msgid ""
 "\n"
 "\n"
@@ -1849,7 +1882,7 @@ msgstr ""
 "на выбор."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:245
+#: data/core/help.cfg:250
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they’re fighting. If a unit kills another in "
@@ -1862,7 +1895,7 @@ msgstr ""
 "бойца 3-го уровня, и так далее."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:247
+#: data/core/help.cfg:252
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -1883,12 +1916,12 @@ msgid ""
 "\n"
 "While most units have three levels, not all do. Occasional units (such as "
 "<ref>dst='unit_Mage' text='magi'</ref>) may have four. Once a unit has "
-"reached its maximum level, it may have an <i>After Maximum Level "
-"Advancement</i> (AMLA) available to it. The AMLA will modify the unit each "
-"time the unit reaches the experience goal, but the unit will remain the same "
-"level. The typical AMLA effect is for the unit to raise the maximum HP by 3 "
-"and full-heal it. The first AMLA will normally be reached with 150 XP gained "
-"(120 XP for intelligent units). However, gaining an AMLA becomes "
+"reached its maximum level, it may have an <italic>text='After Maximum Level "
+"Advancement'</italic> (AMLA) available to it. The AMLA will modify the unit "
+"each time the unit reaches the experience goal, but the unit will remain the "
+"same level. The typical AMLA effect is for the unit to raise the maximum HP "
+"by 3 and full-heal it. The first AMLA will normally be reached with 150 XP "
+"gained (120 XP for intelligent units). However, gaining an AMLA becomes "
 "progressively harder for each AMLA the unit receives, and so it is usually "
 "more useful to try to advance your lower level units."
 msgstr ""
@@ -1906,12 +1939,12 @@ msgstr ""
 "сложнее, поэтому гораздо полезнее продвигать бойцов более низких уровней."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:256
+#: data/core/help.cfg:261
 msgid "Movement"
 msgstr "Ходы"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:257
+#: data/core/help.cfg:262
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -1935,8 +1968,8 @@ msgid ""
 "in forest, elvish units only spend 1 movement point, most human and orc "
 "units spend 2, while horsemen spend 3. You can learn how many movement "
 "points a unit requires to enter a certain terrain type by right-clicking on "
-"it, selecting <b>Unit Description</b>, and then looking at <b>Terrain "
-"Modifiers</b>."
+"it, selecting <bold>text='Unit Description'</bold>, and then looking at "
+"<bold>text='Terrain Modifiers'</bold>."
 msgstr ""
 "\n"
 "\n"
@@ -1951,7 +1984,7 @@ msgstr ""
 "<bold>text='Модификаторы местности'</bold>."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:257
+#: data/core/help.cfg:262
 #, fuzzy
 #| msgid ""
 #| "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click "
@@ -1968,18 +2001,18 @@ msgstr ""
 #| "a village you don’t already own will also use up a unit’s movement, but "
 #| "will still allow it to attack."
 msgid ""
-"Movement in <i>Battle for Wesnoth</i> is simple. Click on the unit you wish "
-"to move to select it, then click on the hex you wish to move it to. When a "
-"unit is selected, everywhere it can move this turn will be highlighted, and "
-"all other hexes on the map are made dull. Mousing over a highlighted hex "
-"shows the defense rating the unit would have if you moved it to that hex. "
-"Mousing over a dull hex will also show the number of turns required to reach "
-"it, and clicking will cause the unit to move towards it by the fastest route "
-"over this and subsequent turns. If you don’t use up all of a unit’s movement "
-"when you first move a unit, you may move it again. This is useful when "
-"having two units switch places. Attacking with a unit will use up its "
-"movement. Ending a move in a village you don’t already own will also use up "
-"a unit’s movement, but will still allow it to attack."
+"Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
+"the unit you wish to move to select it, then click on the hex you wish to "
+"move it to. When a unit is selected, everywhere it can move this turn will "
+"be highlighted, and all other hexes on the map are made dull. Mousing over a "
+"highlighted hex shows the defense rating the unit would have if you moved it "
+"to that hex. Mousing over a dull hex will also show the number of turns "
+"required to reach it, and clicking will cause the unit to move towards it by "
+"the fastest route over this and subsequent turns. If you don’t use up all of "
+"a unit’s movement when you first move a unit, you may move it again. This is "
+"useful when having two units switch places. Attacking with a unit will use "
+"up its movement. Ending a move in a village you don’t already own will also "
+"use up a unit’s movement, but will still allow it to attack."
 msgstr ""
 "Делать ходы в <italic>text='Битве за Веснот'</italic> проще простого: "
 "выберите бойца, который должен сделать ход, а затем выберите поле, на "
@@ -1994,7 +2027,7 @@ msgstr ""
 "очки, но все еще может атаковать."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:259
+#: data/core/help.cfg:264
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2009,13 +2042,13 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"Another thing to keep in mind while moving is <i>zones of control</i>. Each "
-"unit — except for level 0 units — generates a zone of control in the hexes "
-"immediately surrounding it, and any enemy unit entering those hexes "
-"immediately ends its movement. Learning how to use zones of control to your "
-"advantage is an important part of Wesnoth, as only "
-"<ref>dst='ability_skirmisher' text='skirmishers'</ref> can ignore zones of "
-"control."
+"Another thing to keep in mind while moving is <italic>text='zones of "
+"control'</italic>. Each unit — except for level 0 units — generates a zone "
+"of control in the hexes immediately surrounding it, and any enemy unit "
+"entering those hexes immediately ends its movement. Learning how to use "
+"zones of control to your advantage is an important part of Wesnoth, as only "
+"<ref>dst='ability_skirmisherskirmisher' text='skirmishers'</ref> can ignore "
+"zones of control."
 msgstr ""
 "\n"
 "\n"
@@ -2027,7 +2060,7 @@ msgstr ""
 "игнорировать."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:261
+#: data/core/help.cfg:266
 msgid ""
 "\n"
 "\n"
@@ -2042,12 +2075,12 @@ msgstr ""
 "ваших бойцов не было на карте и они не блокировали бы его передвижение."
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:270
+#: data/core/help.cfg:275
 msgid "Shroud and Fog of War"
 msgstr "Пелена и туман войны"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:271
+#: data/core/help.cfg:276
 #, fuzzy
 #| msgid ""
 #| "In some scenarios, parts of the map will be hidden from you. There are "
@@ -2072,12 +2105,13 @@ msgstr "Пелена и туман войны"
 #| "ability to undo movement."
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
-"mechanisms that can be used separately or together. The <i>shroud</i> hides "
-"both the terrain and any units at a location. However, once it is cleared, "
-"you can always see that location. The <i>fog of war</i> only hides units and "
-"ownership of villages (other than by you or your allies). The fog of war is "
-"cleared temporarily when you have units nearby, but returns when they leave. "
-"Both the shroud and the fog of war are cleared by units. Each unit clears "
+"mechanisms that can be used separately or together. The "
+"<italic>text='shroud'</italic> hides both the terrain and any units at a "
+"location. However, once it is cleared, you can always see that location. The "
+"<italic>text='fog of war'</italic> only hides units and ownership of "
+"villages (other than by you or your allies). The fog of war is cleared "
+"temporarily when you have units nearby, but returns when they leave. Both "
+"the shroud and the fog of war are cleared by units. Each unit clears "
 "locations adjacent to those within one turn’s move (ignoring zones of "
 "control and enemy units).\n"
 "\n"
@@ -2085,10 +2119,11 @@ msgid ""
 "randomized result has not occurred, such as combat or recruitment (as most "
 "units receive random traits when recruited). Exploring hidden terrain by "
 "clearing shroud or fog will also prevent undos to a previous state. You may "
-"wish to activate <b>Delay Shroud Updates</b> in the actions menu. This will "
-"prevent units from clearing shroud or fog until the next randomized event or "
-"a manual update via <b>Update Shroud Now</b> (or the end of your turn) and "
-"thereby preserve your ability to undo movement."
+"wish to activate <bold>text='Delay Shroud Updates'</bold> in the actions "
+"menu. This will prevent units from clearing shroud or fog until the next "
+"randomized event or a manual update via <bold>text='Update Shroud Now'</"
+"bold> (or the end of your turn) and thereby preserve your ability to undo "
+"movement."
 msgstr ""
 "В некоторых сценариях части карты скрыты от вас. Есть два механизма, которые "
 "могут работать по отдельности или вместе. <italic>text='Пелена'</italic> "
@@ -2111,12 +2146,12 @@ msgstr ""
 "вашего хода. Эта возможность позволит вам отменить перемещение."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:280
+#: data/core/help.cfg:285
 msgid "Combat"
 msgstr "Битва"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:281
+#: data/core/help.cfg:286
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2125,14 +2160,14 @@ msgstr "Битва"
 msgid ""
 "\n"
 "\n"
-"<big>Order and Number of Strikes</big>"
+"<header>text='Order and Number of Strikes'</header>"
 msgstr ""
 "\n"
 "\n"
 "<header>text='Порядок и число атак'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:281
+#: data/core/help.cfg:286
 #, fuzzy
 #| msgid ""
 #| "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
@@ -2147,16 +2182,16 @@ msgstr ""
 #| "<italic>text='ranged'</italic>, which usually involves weapons such as "
 #| "bows, spears and fireballs."
 msgid ""
-"Combat in <i>Battle for Wesnoth</i> always takes place between units in "
-"adjacent hexes. Click on your unit, and click on the enemy you want to "
-"attack: your unit will move towards the enemy unit, and when they are next "
-"to each other, combat will begin. The attacker and defender alternate "
-"strikes until each has used their allotted number of strikes. The attacker "
-"chooses one of its weapons to attack with, and the defender retaliates with "
-"one of its attacks of the same type. There are two types of attacks: "
-"<i>melee</i>, which usually involves weapons such as swords, axes or fangs; "
-"and <i>ranged</i>, which usually involves weapons such as bows, spears and "
-"fireballs."
+"Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
+"between units in adjacent hexes. Click on your unit, and click on the enemy "
+"you want to attack: your unit will move towards the enemy unit, and when "
+"they are next to each other, combat will begin. The attacker and defender "
+"alternate strikes until each has used their allotted number of strikes. The "
+"attacker chooses one of its weapons to attack with, and the defender "
+"retaliates with one of its attacks of the same type. There are two types of "
+"attacks: <italic>text='melee'</italic>, which usually involves weapons such "
+"as swords, axes or fangs; and <italic>text='ranged'</italic>, which usually "
+"involves weapons such as bows, spears and fireballs."
 msgstr ""
 "Бой в <italic>text='Битве за Веснот'</italic> всегда происходит между "
 "бойцами на соседних полях. Выберите своего бойца, затем выберите вражеского "
@@ -2170,7 +2205,7 @@ msgstr ""
 "и огненные шары."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:283
+#: data/core/help.cfg:288
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2203,23 +2238,23 @@ msgstr ""
 "ударить лишь дважды (но с уроном 9 за каждый успешный удар)."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:285
+#: data/core/help.cfg:290
 #, fuzzy
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Chance to Hit'</header>"
+#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
-"<big>Chance to Hit</big>"
+"<header>text='Chance to Hit'</header>"
 msgstr ""
 "\n"
 "\n"
-"<header>text='Шанс попадания'</header>"
+"<header>text=Урон</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:287
+#: data/core/help.cfg:292
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2235,13 +2270,13 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"Every unit has a chance of being hit, based on the <i>terrain</i> it is in. "
-"This is shown in the status pane, and may also be found by right-clicking a "
-"unit, selecting <b>Unit Description</b>, and then looking at <b>Terrain "
-"Modifiers</b>. For instance, many elves have a defense rating of 70% in "
-"forest, so a unit attacking them has only a 30% chance of hitting. "
-"Conversely, the elf’s chance of hitting the attacker in return depends on "
-"what terrain the attacker is in."
+"Every unit has a chance of being hit, based on the <italic>text='terrain'</"
+"italic> it is in. This is shown in the status pane, and may also be found by "
+"right-clicking a unit, selecting <bold>text='Unit Description'</bold>, and "
+"then looking at <bold>text='Terrain Modifiers'</bold>. For instance, many "
+"elves have a defense rating of 70% in forest, so a unit attacking them has "
+"only a 30% chance of hitting. Conversely, the elf’s chance of hitting the "
+"attacker in return depends on what terrain the attacker is in."
 msgstr ""
 "\n"
 "\n"
@@ -2253,7 +2288,7 @@ msgstr ""
 "попасть по атакующему зависит от типа местности, на которой стоит атакующий."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:289
+#: data/core/help.cfg:294
 msgid ""
 "\n"
 "\n"
@@ -2272,7 +2307,7 @@ msgstr ""
 "от местности, но только при атаке."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:291
+#: data/core/help.cfg:296
 msgid ""
 "\n"
 "\n"
@@ -2283,7 +2318,7 @@ msgstr ""
 "<header>text=Урон</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:293
+#: data/core/help.cfg:298
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2303,8 +2338,8 @@ msgid ""
 "damage. This is usually modified by two things: "
 "<ref>dst='damage_types_and_resistance' text='resistance'</ref> and "
 "<ref>dst='time_of_day' text='time of day'</ref>. To see how base damage is "
-"modified by the circumstances, select <b>Damage Calculations</b> in the "
-"attack selection menu."
+"modified by the circumstances, select <bold>text='Damage Calculations'</"
+"bold> in the attack selection menu."
 msgstr ""
 "\n"
 "\n"
@@ -2316,7 +2351,7 @@ msgstr ""
 "кнопку <bold>text='Вычисление повреждений'</bold> в окне атаки."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:295
+#: data/core/help.cfg:300
 msgid ""
 "\n"
 "\n"
@@ -2334,12 +2369,12 @@ msgstr ""
 "этой способностью атакует."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:303
+#: data/core/help.cfg:308
 msgid "Damage Types and Resistance"
 msgstr "Типы урона и сопротивление"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:304
+#: data/core/help.cfg:309
 msgid ""
 "\n"
 "\n"
@@ -2357,7 +2392,7 @@ msgstr ""
 "какого-либо типа атаки, то он получит от этой атаки на 100% больше урона."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:304
+#: data/core/help.cfg:309
 #, fuzzy
 #| msgid ""
 #| "In Wesnoth, there are three types of damage usually associated with "
@@ -2368,10 +2403,11 @@ msgstr ""
 #| "damage which they take from certain damage types."
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
-"attacks: <i>blade, pierce, and impact damage</i>. Additionally, there are "
-"three further types of damage usually associated with magical attacks: "
-"<i>fire, cold, and arcane attacks</i>. Different units may have resistances "
-"which alter the damage which they take from certain damage types."
+"attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
+"Additionally, there are three further types of damage usually associated "
+"with magical attacks: <italic>text='fire, cold, and arcane attacks'</"
+"italic>. Different units may have resistances which alter the damage which "
+"they take from certain damage types."
 msgstr ""
 "В Весноте есть три типа наносимых повреждений, связанных с физической "
 "атакой: <italic>text='режущее, колющее и крушащее оружие'</italic>. Также "
@@ -2380,7 +2416,7 @@ msgstr ""
 "разную сопротивляемость против каждого типа атаки."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:306
+#: data/core/help.cfg:311
 msgid ""
 "\n"
 "\n"
@@ -2395,7 +2431,7 @@ msgstr ""
 "мистическому."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:308
+#: data/core/help.cfg:313
 msgid ""
 "\n"
 "\n"
@@ -2409,12 +2445,12 @@ msgstr ""
 "ущерба. Это так даже для 100% сопротивления защищающегося данному типу урона."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:316
+#: data/core/help.cfg:321
 msgid "Orbs"
 msgstr "Шары"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:317
+#: data/core/help.cfg:322
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -2423,19 +2459,19 @@ msgstr ""
 "шар означает:"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:319
+#: data/core/help.cfg:324
 msgid " green if it hasn’t moved this turn,"
 msgstr " зеленый, если боец еще не совершал хода,"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:320
+#: data/core/help.cfg:325
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr ""
 " желтый, если он уже ходил, но все еще может двигаться дальше или атаковать, "
 "или"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:321
+#: data/core/help.cfg:326
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
@@ -2443,22 +2479,22 @@ msgstr ""
 "ход бойца."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:322
+#: data/core/help.cfg:327
 msgid " blue if the unit is an ally you do not control."
 msgstr " синий, если боец — ваш союзник, которым вы не можете управлять."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:323
+#: data/core/help.cfg:328
 msgid " Enemy units have no orb on top of their energy bar."
 msgstr " У бойцов противника над полоской здоровья находится красный шар."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:330
+#: data/core/help.cfg:335
 msgid "Time of Day"
 msgstr "Время суток"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:331
+#: data/core/help.cfg:336
 #, fuzzy
 #| msgid ""
 #| "The time of day affects the damage of certain units as follows:\n"
@@ -2473,10 +2509,12 @@ msgstr "Время суток"
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 "\n"
-"• <b>Lawful</b> units get +25% damage in daytime, and −25% damage at night.\n"
-"• <b>Chaotic</b> units get +25% damage at night, and −25% in daytime.\n"
-"• <b>Neutral</b> units are unaffected by the time of day.\n"
-"• <b>Liminal</b> units get −25% damage during both night and daytime."
+"• <bold>text='Lawful'</bold> units get +25% damage in daytime, and −25% "
+"damage at night.\n"
+"• <bold>text='Chaotic'</bold> units get +25% damage at night, and −25% in "
+"daytime.\n"
+"• <bold>text='Neutral'</bold> units are unaffected by the time of day.\n"
+"• <bold>text='Liminal'</bold> units get +25% damage during twilight."
 msgstr ""
 "Время суток влияет на урон, наносимый некоторыми бойцами:\n"
 " Порядочные бойцы наносят +25% урона днем и −25% ночью.\n"
@@ -2485,7 +2523,7 @@ msgstr ""
 " Сумеречные бойцы наносят -25% урона днём и ночью."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:336
+#: data/core/help.cfg:341
 msgid ""
 "\n"
 "\n"
@@ -2503,21 +2541,21 @@ msgstr ""
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:340 data/core/macros/schedules.cfg:14
+#: data/core/help.cfg:345 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "Рассвет"
 
 #. [time]: id=morning
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:341 data/core/macros/schedules.cfg:26
+#: data/core/help.cfg:346 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "Утро"
 
 #. [time]: id=afternoon
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:342 data/core/macros/schedules.cfg:44
+#: data/core/help.cfg:347 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "День"
@@ -2525,27 +2563,27 @@ msgstr "День"
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:343 data/core/macros/schedules.cfg:53
+#: data/core/help.cfg:348 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "Закат"
 
 #. [time]: id=first_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:344 data/core/macros/schedules.cfg:65
+#: data/core/help.cfg:349 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "Первая стража"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:345 data/core/macros/schedules.cfg:89
+#: data/core/help.cfg:350 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "Вторая стража"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:347
+#: data/core/help.cfg:352
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!\n"
@@ -2553,7 +2591,7 @@ msgstr ""
 "Помните, что некоторые сценарии происходят в подземелье, где всегда ночь!\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:349
+#: data/core/help.cfg:354
 msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night.\n"
@@ -2562,21 +2600,34 @@ msgstr ""
 "промежуточными между днем и ночью\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:351
+#: data/core/help.cfg:356
+#, fuzzy
+#| msgid ""
+#| "Some role-playing scenarios take place indoors — these regions are "
+#| "similarly intermediate."
 msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
-"intermediate."
+"intermediate.\n"
 msgstr ""
 "Некоторые ролевых сценарии происходят в помещениях — в эти местах "
 "освещенность также промежуточная."
 
-#. [topic]: id=healing
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:358
+msgid ""
+"Finally, units with the <ref>dst='ability_illuminationilluminates' "
+"text='illuminates'</ref> ability and terrain features such as "
+"<ref>dst='terrain_lava' text='lava'</ref> change the time of day bonus "
+"around them."
+msgstr ""
+
+#. [topic]: id=healing
+#: data/core/help.cfg:365
 msgid "Healing"
 msgstr "Лечение"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:359
+#: data/core/help.cfg:366
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2586,8 +2637,8 @@ msgstr "Лечение"
 msgid ""
 "\n"
 "\n"
-"• <b>Resting</b>: A unit which neither moves, attacks, nor is attacked will "
-"heal 2 HP in its next turn."
+"• <bold>text='Resting'</bold>: A unit which neither moves, attacks, nor is "
+"attacked will heal 2 HP in its next turn."
 msgstr ""
 "\n"
 "\n"
@@ -2595,7 +2646,7 @@ msgstr ""
 "был атакован, излечивается на 2 ЗД на следующем ходу."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:359
+#: data/core/help.cfg:366
 msgid ""
 "In combat, your units will inevitably take damage. There are several ways to "
 "heal your units. However, with the exception of resting, these do not stack; "
@@ -2606,7 +2657,7 @@ msgstr ""
 "складываются; только один способ лечения может использоваться за ход."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:361
+#: data/core/help.cfg:368
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2615,27 +2666,34 @@ msgstr ""
 #| "instead."
 msgid ""
 "\n"
-"• <b>Villages</b>: A unit which starts a turn in a village or oasis will "
-"heal 8HP. If the unit is poisoned, the poison will be cured instead."
+"• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
+"<ref>dst='terrain_oasis' text='oasis'</ref> will heal 8HP. If the unit is "
+"poisoned, the poison will be cured instead."
 msgstr ""
 "\n"
 "<italic>text='Деревни'</italic>: боец, начавший свой ход в деревне, "
 "восстанавливает 8 ЗД."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:362
+#: data/core/help.cfg:369
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "• <ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
+#| "(such as trolls) will automatically heal 8HP every turn. If the unit is "
+#| "poisoned, the poison will be cured instead."
 msgid ""
 "\n"
-"• <ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
-"(such as trolls) will automatically heal 8HP every turn. If the unit is "
-"poisoned, the poison will be cured instead."
+"• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
+"Certain units (such as trolls) will automatically heal 8HP every turn. If "
+"the unit is poisoned, the poison will be cured instead."
 msgstr ""
 "\n"
 "<ref>dst='ability_regenerates' text='Регенерация'</ref>: некоторые бойцы "
 "(например, тролли) могут автоматически восстанавливать 8 ЗД за ход."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:363
+#: data/core/help.cfg:370
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2646,10 +2704,11 @@ msgstr ""
 #| "Poison from causing that unit damage."
 msgid ""
 "\n"
-"• <b>Healing units</b>: Units with the <ref>dst='ability_heals +4' "
-"text='Heals'</ref> ability will heal each allied adjacent unit, usually "
-"<ref>dst='ability_heals +4' text='4HP'</ref> or <ref>dst='ability_heals +8' "
-"text='8HP'</ref> per turn, or prevent Poison from causing that unit damage."
+"• <bold>text='Healing units'</bold>: Units with the "
+"<ref>dst='ability_healingheals +4' text='Heals'</ref> ability will heal each "
+"allied adjacent unit, usually <ref>dst='ability_healingheals +4' text='4HP'</"
+"ref> or <ref>dst='ability_healingheals +8' text='8HP'</ref> per turn, or "
+"prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
 "<italic>text='Лекари'</italic>: бойцы с умением <ref>dst='ability_heals +4' "
@@ -2658,7 +2717,7 @@ msgstr ""
 "находящихся союзников или сдерживать урон от отравления."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:364
+#: data/core/help.cfg:371
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2668,9 +2727,10 @@ msgstr ""
 #| "ability as well)."
 msgid ""
 "\n"
-"• <b>Curing units</b>: Units with the <ref>dst='ability_cures' text='cures'</"
-"ref> ability will cure Poison in all allied adjacent units (in preference to "
-"healing, if it has that ability as well)."
+"• <bold>text='Curing units'</bold>: Units with the "
+"<ref>dst='ability_curingcures' text='cures'</ref> ability will cure Poison "
+"in all allied adjacent units (in preference to healing, if it has that "
+"ability as well)."
 msgstr ""
 "\n"
 "<italic>text='Целители'</italic>: бойцы с умением <ref>dst='ability_cures' "
@@ -2678,7 +2738,7 @@ msgstr ""
 "лечения, если у них есть и это умение)."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:365
+#: data/core/help.cfg:372
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2687,9 +2747,9 @@ msgstr ""
 #| "your unit gains enough experience, whether it is your turn or not."
 msgid ""
 "\n"
-"• <b>Advancement</b>: When a unit <ref>dst='advancement' text='advances'</"
-"ref>, it will heal fully. This can happen as soon as your unit gains enough "
-"experience, whether it is your turn or not."
+"• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
+"text='advances'</ref>, it will heal fully. This can happen as soon as your "
+"unit gains enough experience, whether it is your turn or not."
 msgstr ""
 "\n"
 "• <bold>text='Продвижение'</bold>: Когда юнит получает "
@@ -2698,7 +2758,7 @@ msgstr ""
 "зависимости от того, ваш это ход или нет."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:366
+#: data/core/help.cfg:373
 msgid ""
 "\n"
 "\n"
@@ -2713,7 +2773,7 @@ msgstr ""
 "вариант. Наконец, бойцы полностью восстанавливаются между сценариями."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:368
+#: data/core/help.cfg:375
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2722,14 +2782,14 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<b>Advanced</b>"
+"<bold>text='Advanced'</bold>"
 msgstr ""
 "\n"
 "\n"
 "<bold>text='Продвинутый'</bold>"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:370
+#: data/core/help.cfg:377
 msgid ""
 "\n"
 "\n"
@@ -2749,12 +2809,12 @@ msgstr ""
 "сторон."
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:378
+#: data/core/help.cfg:385
 msgid "Wrap Up"
 msgstr "Итоги"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:379
+#: data/core/help.cfg:386
 #, fuzzy
 #| msgid ""
 #| "This concludes the fundamentals of Wesnoth. You might want to read up on "
@@ -2767,8 +2827,8 @@ msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
 "text='traits'</ref> and <ref>dst='..abilities_section' text='abilities'</"
-"ref>, but you now know everything you need to know to play the <i>Heir to "
-"the Throne</i> campaign. Have fun, and good luck!"
+"ref>, but you now know everything you need to know to play the "
+"<italic>text='Heir to the Throne'</italic> campaign. Have fun, and good luck!"
 msgstr ""
 "Вы изучили основы игры «Битва за Веснот». Ещё Вы можете прочитать «Основы "
 "стратегии» или ознакомиться с <ref>dst='..traits_section' "
@@ -2777,12 +2837,12 @@ msgstr ""
 "кампанию <italic>text='Наследник престола'</italic>. Наслаждайтесь, и удачи!"
 
 #. [topic]: id=license
-#: data/core/help.cfg:384
+#: data/core/help.cfg:391
 msgid "License"
 msgstr "Лицензия"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:393
+#: data/core/help.cfg:400
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2795,8 +2855,9 @@ msgid ""
 "\n"
 "\n"
 "Most units have two traits. However, goblins have only one trait, undead "
-"units are always assigned the single trait <i>undead</i> and in some cases "
-"<i>fearless</i>, and woses do not receive any traits. "
+"units are always assigned the single trait <italic>text='undead'</italic> "
+"and in some cases <italic>text='fearless'</italic>, and woses do not receive "
+"any traits. "
 msgstr ""
 "\n"
 "\n"
@@ -2806,7 +2867,7 @@ msgstr ""
 "бойцов. Обычно они назначаются бойцам случайным образом при вербовке."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:393
+#: data/core/help.cfg:400
 #, fuzzy
 #| msgid ""
 #| "Traits are modifications that change a unit’s attributes slightly. They "
@@ -2816,7 +2877,8 @@ msgstr ""
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
-"available to a unit are largely determined by its <i>race</i>."
+"available to a unit are largely determined by its <italic>text='race'</"
+"italic>."
 msgstr ""
 "Особенности - это модификации бойца, которые слегка могут изменить его "
 "параметры. Они обычно присваиваются по случайному принципу в момент вербовки "
@@ -2824,7 +2886,7 @@ msgstr ""
 "его<italic>text='расой'</italic>."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:395
+#: data/core/help.cfg:402
 msgid ""
 "\n"
 "\n"
@@ -2841,7 +2903,7 @@ msgstr ""
 "<ref>dst='traits_strong' text='сильный'</ref>."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:397
+#: data/core/help.cfg:404
 msgid ""
 "\n"
 "\n"
@@ -2865,7 +2927,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:407
+#: data/core/help.cfg:414
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2875,7 +2937,8 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"Terrains come in two types: <i>basic</i> and <i>mixed</i>."
+"Terrains come in two types: <italic>text='basic'</italic> and "
+"<italic>text='mixed'</italic>."
 msgstr ""
 "\n"
 "\n"
@@ -2883,7 +2946,7 @@ msgstr ""
 "<italic>text='смешанным'</italic>."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:407
+#: data/core/help.cfg:414
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
@@ -2892,23 +2955,23 @@ msgstr ""
 "передвижения бойцов, так и на степень их защищённости."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:409
+#: data/core/help.cfg:416
 #, fuzzy
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Basic Terrain Types'</header>"
+#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
-"<big>Basic Terrain Types</big>"
+"<header>text='Basic Terrain Types'</header>"
 msgstr ""
 "\n"
 "\n"
-"<header>text='Базовые типы рельефа местности'</header>"
+"<header>text=Урон</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:411
+#: data/core/help.cfg:418
 msgid ""
 "\n"
 "\n"
@@ -2925,7 +2988,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:415
+#: data/core/help.cfg:422
 msgid ""
 "\n"
 "\n"
@@ -2941,23 +3004,23 @@ msgstr ""
 "эффекты освещения."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:417
+#: data/core/help.cfg:424
 #, fuzzy
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Mixed Terrain Types'</header>"
+#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
-"<big>Mixed Terrain Types</big>"
+"<header>text='Mixed Terrain Types'</header>"
 msgstr ""
 "\n"
 "\n"
-"<header>text='Смешанные типы рельефа местности'</header>"
+"<header>text=Урон</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:419
+#: data/core/help.cfg:426
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2973,10 +3036,11 @@ msgid ""
 "\n"
 "\n"
 "Mixed terrain types share the properties of multiple basic terrain types — "
-"units generally receive the <i>best defense</i> and <i>worst movement</i> of "
-"the underlying basic types when they move onto a mixed type. For example, "
-"this is the case with <i>forested hills</i>, <i>sand hills</i>, and <i>cave "
-"hills</i>.\n"
+"units generally receive the <italic>text='best defense'</italic> and "
+"<italic>text='worst movement'</italic> of the underlying basic types when "
+"they move onto a mixed type. For example, this is the case with "
+"<italic>text='forested hills'</italic>, <italic>text='sand hills'</italic>, "
+"and <italic>text='cave hills'</italic>.\n"
 "\n"
 msgstr ""
 "\n"
@@ -2990,7 +3054,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:423
+#: data/core/help.cfg:430
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3006,12 +3070,13 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"One notable exception is bridge terrains, such as <i>bridges over shallow "
-"water</i>, <i>fords</i>, and <i>bridges over chasms</i>. Fords are easily "
-"passable to both merfolk and humans — all units moving on a ford enjoy the "
-"best defense and best movement out of flat and shallow water, rather than "
-"the worse movement of the two. Similarly, bridges over chasms are passable "
-"to nonfliers (unsurprisingly).\n"
+"One notable exception is bridge terrains, such as <italic>text='bridges over "
+"shallow water'</italic>, <italic>text='fords'</italic>, and "
+"<italic>text='bridges over chasms'</italic>. Fords are easily passable to "
+"both merfolk and humans — all units moving on a ford enjoy the best defense "
+"and best movement out of flat and shallow water, rather than the worse "
+"movement of the two. Similarly, bridges over chasms are passable to "
+"nonfliers (unsurprisingly).\n"
 "\n"
 msgstr ""
 "\n"
@@ -3026,7 +3091,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:427
+#: data/core/help.cfg:434
 msgid ""
 "\n"
 "\n"
@@ -3044,7 +3109,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:431
+#: data/core/help.cfg:438
 msgid ""
 "\n"
 "\n"
@@ -3061,7 +3126,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:435
+#: data/core/help.cfg:442
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3083,7 +3148,7 @@ msgstr ""
 "(в теме оформления по умолчанию)."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:437
+#: data/core/help.cfg:444
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3096,8 +3161,9 @@ msgid ""
 "\n"
 "\n"
 "You can see what type of behavior the mixed terrain gives by mousing over "
-"its hex and viewing the <i>terrain description</i> by either pressing the "
-"hotkey, or right clicking and selecting from the context menu."
+"its hex and viewing the <italic>text='terrain description'</italic> by "
+"either pressing the hotkey, or right clicking and selecting from the context "
+"menu."
 msgstr ""
 "\n"
 "\n"
@@ -3107,23 +3173,23 @@ msgstr ""
 "этого пункта из контекстного меню."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:439
+#: data/core/help.cfg:446
 #, fuzzy
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Defense Caps'</header>"
+#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
-"<big>Defense Caps</big>"
+"<header>text='Defense Caps'</header>"
 msgstr ""
 "\n"
 "\n"
-"<header>text='Потолки защиты'</header>"
+"<header>text=Урон</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:441
+#: data/core/help.cfg:448
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3134,9 +3200,9 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"Some units have <i>defense caps</i> for a particular basic terrain type. "
-"These units suffer a penalty on mixed terrains with that type — their "
-"defense cannot exceed the cap."
+"Some units have <italic>text='defense caps'</italic> for a particular basic "
+"terrain type. These units suffer a penalty on mixed terrains with that type "
+"— their defense cannot exceed the cap."
 msgstr ""
 "\n"
 "\n"
@@ -3146,7 +3212,7 @@ msgstr ""
 "потолок."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:443
+#: data/core/help.cfg:450
 msgid ""
 "\n"
 "\n"
@@ -3163,7 +3229,7 @@ msgstr ""
 "уровень для смешанной местности не может превысить потолок."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:445
+#: data/core/help.cfg:452
 msgid ""
 "\n"
 "\n"
@@ -3177,26 +3243,24 @@ msgstr ""
 "может быть выше)."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:447
+#: data/core/help.cfg:454
 #, fuzzy
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Basic Terrain Types'</header>\n"
-#| "\n"
+#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
-"<big>Basic Terrain Types</big>\n"
+"<header>text='Basic Terrain Types'</header>\n"
 "\n"
 msgstr ""
 "\n"
 "\n"
-"<header>text='Базовые Типы Рельефа Местности'</header>\n"
-"\n"
+"<header>text=Урон</header>"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:460
+#: data/core/help.cfg:467
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -3209,28 +3273,28 @@ msgstr ""
 "\n"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:470
+#: data/core/help.cfg:477
 msgid "Using Add-ons"
 msgstr "Использование аддонов"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:471
+#: data/core/help.cfg:478
 #, fuzzy
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Campaigns and Scenarios'</header>"
+#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
-"<big>Campaigns and Scenarios</big>"
+"<header>text='Campaigns and Scenarios'</header>"
 msgstr ""
 "\n"
 "\n"
-"<header>text=Кампании и сценарии</header>"
+"<header>text=Урон</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:471
+#: data/core/help.cfg:478
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
@@ -3239,7 +3303,7 @@ msgstr ""
 "режиме игры."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:473
+#: data/core/help.cfg:480
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3253,8 +3317,8 @@ msgid ""
 "\n"
 "Single-player campaigns are collections of scenarios that fit together to "
 "tell a story. Both stand-alone scenarios—if intended to be played as such—"
-"and regular campaigns are available from the <i>Campaigns</i> menu at the "
-"title screen."
+"and regular campaigns are available from the <italic>text='Campaigns'</"
+"italic> menu at the title screen."
 msgstr ""
 "\n"
 "\n"
@@ -3264,7 +3328,7 @@ msgstr ""
 "<italic>text='Кампании'</italic> на заглавном экране."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:475
+#: data/core/help.cfg:482
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3273,14 +3337,14 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<big>Multiplayer Campaigns, Scenarios, and Map Packs</big>"
+"<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
 msgstr ""
 "\n"
 "\n"
 "<header>text='Кампании, сценарии и наборы карт для мультиплеера'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:477
+#: data/core/help.cfg:484
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3291,9 +3355,9 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<i>Multiplayer</i> games can be played in fully customized, scripted "
-"scenarios or even specially designed campaigns. There are also packs "
-"providing sets of individual multiplayer scenarios."
+"<italic>text='Multiplayer'</italic> games can be played in fully customized, "
+"scripted scenarios or even specially designed campaigns. There are also "
+"packs providing sets of individual multiplayer scenarios."
 msgstr ""
 "\n"
 "\n"
@@ -3302,7 +3366,7 @@ msgstr ""
 "кампании. Бывают также наборы, содержащие отдельные сценарии мультиплеера."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:479
+#: data/core/help.cfg:486
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3311,14 +3375,14 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<big>Multiplayer Eras and Factions</big>"
+"<header>text='Multiplayer Eras and Factions'</header>"
 msgstr ""
 "\n"
 "\n"
 "<header>text='Эры и фракции мультиплеера'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:481
+#: data/core/help.cfg:488
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3339,9 +3403,9 @@ msgid ""
 "common theme; for example, the main factions of Wesnoth can be found in the "
 "included Default Era.\n"
 "\n"
-"In <i>Multiplayer</i> mode, you can choose an era when creating a new game, "
-"and players can pick from the available factions for that era when setting "
-"up their sides and teams."
+"In <italic>text='Multiplayer'</italic> mode, you can choose an era when "
+"creating a new game, and players can pick from the available factions for "
+"that era when setting up their sides and teams."
 msgstr ""
 "\n"
 "\n"
@@ -3354,7 +3418,7 @@ msgstr ""
 "выбирая себе сторону и команду."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:485
+#: data/core/help.cfg:492
 msgid ""
 "\n"
 "\n"
@@ -3367,23 +3431,23 @@ msgstr ""
 "eras_section'</ref> в помощи."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:487
+#: data/core/help.cfg:494
 #, fuzzy
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Multiplayer Modifications'</header>"
+#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
-"<big>Multiplayer Modifications</big>"
+"<header>text='Modifications'</header>"
 msgstr ""
 "\n"
 "\n"
-"<header>text='Модификации мультиплеера'</header>"
+"<header>text=Урон</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:489
+#: data/core/help.cfg:496
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3395,9 +3459,9 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"Modifications are optional scenario- and era-independent scripts for "
-"<i>Multiplayer</i> games that can alter the default ruleset in various ways. "
-"You can choose and configure modifications when creating a new game."
+"Modifications are optional scenario- and era-independent scripts that can "
+"alter the default ruleset in various ways. You can choose and configure "
+"modifications when creating a new game."
 msgstr ""
 "\n"
 "\n"
@@ -3407,7 +3471,7 @@ msgstr ""
 "игры."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:491
+#: data/core/help.cfg:498
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3416,14 +3480,44 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<big>Creator Resources</big>"
+"<big>Cores</big>"
 msgstr ""
 "\n"
 "\n"
 "<header>text='Ресурсы для авторов'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:493
+#: data/core/help.cfg:500
+msgid ""
+"\n"
+"\n"
+"Cores enable total conversion of The Battle for Wesnoth. A core can replace "
+"all the content in Wesnoth: when a different core is loaded, the regular "
+"units, terrains and the like do not exist.\n"
+"\n"
+"Cores allow a significantly different game experience: for example, a World "
+"War II campaign, or even a different game altogether, as long as it can be "
+"represented as a hexagonal map with ’units’ in some way."
+msgstr ""
+
+#. [topic]: id=using_addons
+#: data/core/help.cfg:504
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text=Damage</header>"
+msgid ""
+"\n"
+"\n"
+"<header>text='Creator Resources'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text=Урон</header>"
+
+#. [topic]: id=using_addons
+#: data/core/help.cfg:506
 msgid ""
 "\n"
 "\n"
@@ -3442,12 +3536,12 @@ msgstr ""
 "при скачивании."
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:502
+#: data/core/help.cfg:515
 msgid "Installing Add-ons"
 msgstr "Установка аддонов"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:503
+#: data/core/help.cfg:516
 #, fuzzy
 #| msgid ""
 #| "User-made add-ons can be obtained and updated through the "
@@ -3474,26 +3568,27 @@ msgstr "Установка аддонов"
 #| "details about the add-on, such as its full description, installation "
 #| "status, and available languages."
 msgid ""
-"User-made add-ons can be obtained and updated through the <i>Add-ons</i> "
-"option in the main menu. After connecting to the add-ons server (by default "
-"<i>add-ons.wesnoth.org</i>), you will be presented with a list of add-ons "
-"available on the server for downloading.\n"
+"User-made add-ons can be obtained and updated through the <italic>text='Add-"
+"ons'</italic> option in the main menu. After connecting to the add-ons "
+"server (by default <italic>text='add-ons.wesnoth.org'</italic>), you will be "
+"presented with a list of add-ons available on the server for downloading.\n"
 "\n"
 "The installation status for each add-on is shown below each entry. For add-"
-"ons that are <i>upgradable</i> or <i>outdated</i> on the server, their "
-"installed and published versions will be shown in the <i>Version</i> "
-"column.\n"
+"ons that are <italic>text='upgradable'</italic> or <italic>text='outdated'</"
+"italic> on the server, their installed and published versions will be shown "
+"in the <italic>text='Version'</italic> column.\n"
 "\n"
 "To search for add-ons by keywords, type any relevant terms in any order in "
-"the <b>Filter</b> box, separated by spaces. You can also sort the add-on "
-"list by clicking the column headers. It is also possible to choose to only "
-"display add-ons of specific categories by clicking on the <b>Options</b> "
-"button in the top-right corner.\n"
+"the search box, separated by spaces. You can also sort the add-on list by "
+"clicking the column headers. It is also possible to choose to only display "
+"add-ons of specific categories by clicking on the <bold>text='Type'</bold> "
+"dropdown.\n"
 "\n"
-"To install an add-on, select it from the list and click <b>OK</b>, or simply "
-"double-click on the add-on’s title. The <b>Description</b> button provides "
-"you with additional details about the add-on, such as its full description, "
-"installation status, and available languages."
+"To install an add-on, select it from the list and click the <b>+</b> icon, "
+"or simply double-click on the add-on’s title. If the window is too small to "
+"show them inline, the <bold>text='Addon Details'</bold> button provides you "
+"with additional details about the add-on, such as its full description, "
+"installation status, and available translations."
 msgstr ""
 "Пользовательские аддоны могут быть получен через подменю "
 "<italic>text='Аддоны'</italic> гланого меню. Соединившись с сервером аддонов "
@@ -3517,12 +3612,12 @@ msgstr ""
 "— его полное описание, статус установки и доступные переводы."
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:516
+#: data/core/help.cfg:529
 msgid "Removing Add-ons"
 msgstr "Удаление аддонов"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:517
+#: data/core/help.cfg:530
 #, fuzzy
 #| msgid ""
 #| "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-"
@@ -3535,14 +3630,15 @@ msgstr "Удаление аддонов"
 #| "information files or the add-ons themselves using a file manager provided "
 #| "by your platform."
 msgid ""
-"To remove add-ons, choose <b>Remove Add-ons</b> in the add-ons server "
-"connection dialog. You will be presented with options to remove any number "
-"of add-ons you currently have installed.\n"
+"To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
+"server connection dialog. You will be presented with options to remove any "
+"number of add-ons you currently have installed.\n"
 "\n"
 "It is not possible to remove add-ons for which there is publishing "
-"information (<i>.pbl</i> files) attached, in order to prevent its accidental "
-"loss. If necessary, you must manually delete the information files or the "
-"add-ons themselves using a file manager provided by your platform."
+"information (<italic>text='.pbl'</italic> files) attached, in order to "
+"prevent its accidental loss. If necessary, you must manually delete the "
+"information files or the add-ons themselves using a file manager provided by "
+"your platform."
 msgstr ""
 "Чтобы удалить аддоные, выберите <bold>text='Удалить аддоны'</bold> в диалоге "
 "соединения с сервером аддонов. Вы получите возможность удалить любое число "
@@ -3554,14 +3650,14 @@ msgstr ""
 "используя ваш файловый менеджер."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:532
+#: data/core/help.cfg:545
 msgid "General Commands"
 msgstr "Основные команды"
 
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:534 data/core/help.cfg:577 data/core/help.cfg:615
+#: data/core/help.cfg:547 data/core/help.cfg:590 data/core/help.cfg:628
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3574,7 +3670,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:536
+#: data/core/help.cfg:549
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3585,7 +3681,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:539
+#: data/core/help.cfg:552
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3600,7 +3696,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:543
+#: data/core/help.cfg:556
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3628,7 +3724,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:546
+#: data/core/help.cfg:559
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -3639,7 +3735,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:549
+#: data/core/help.cfg:562
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3651,7 +3747,7 @@ msgstr ""
 
 # ?
 #. [topic]: id=general_commands
-#: data/core/help.cfg:552
+#: data/core/help.cfg:565
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3662,7 +3758,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:555
+#: data/core/help.cfg:568
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3673,7 +3769,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:558
+#: data/core/help.cfg:571
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3684,7 +3780,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:561
+#: data/core/help.cfg:574
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3695,7 +3791,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:564
+#: data/core/help.cfg:577
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3706,7 +3802,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:567
+#: data/core/help.cfg:580
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3715,12 +3811,12 @@ msgstr ""
 "Сохранить игру и выйти из сценария (без подтверждения)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:576
+#: data/core/help.cfg:589
 msgid "Multiplayer Commands"
 msgstr "Команды многопользовательской игры"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:579
+#: data/core/help.cfg:592
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3735,7 +3831,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:582
+#: data/core/help.cfg:595
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3750,9 +3846,10 @@ msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
 "username (write here the nickname of the player or observer). You can check "
-"what side belongs to which player in the <b>Scenario Settings</b> dialog "
-"(Press the <b>More</b> button in the <b>Status Table</b> (alt+s by default) "
-"to get there.). The host can change control of any side.\n"
+"what side belongs to which player in the <bold>text='Scenario Settings'</"
+"bold> dialog (Press the <bold>text='More'</bold> button in the "
+"<bold>text='Status Table'</bold> (alt+s by default) to get there.). The host "
+"can change control of any side.\n"
 "\n"
 msgstr ""
 "\n"
@@ -3765,7 +3862,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:585
+#: data/core/help.cfg:598
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -3778,7 +3875,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:588
+#: data/core/help.cfg:601
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -3791,7 +3888,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:591
+#: data/core/help.cfg:604
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -3806,7 +3903,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:594
+#: data/core/help.cfg:607
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3820,7 +3917,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:597
+#: data/core/help.cfg:610
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3833,7 +3930,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:600
+#: data/core/help.cfg:613
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -3844,7 +3941,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:603
+#: data/core/help.cfg:616
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3857,7 +3954,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:606
+#: data/core/help.cfg:619
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -3868,12 +3965,12 @@ msgstr ""
 "разрешит сообщения от всех."
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:614
+#: data/core/help.cfg:627
 msgid "Debug Mode Commands"
 msgstr "Команды режима отладки"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:617
+#: data/core/help.cfg:630
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3885,7 +3982,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:620
+#: data/core/help.cfg:633
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3896,7 +3993,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:623
+#: data/core/help.cfg:636
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3907,7 +4004,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:626
+#: data/core/help.cfg:639
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3918,7 +4015,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:629
+#: data/core/help.cfg:642
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3929,7 +4026,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:632
+#: data/core/help.cfg:645
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3940,7 +4037,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:635
+#: data/core/help.cfg:648
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3951,7 +4048,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:638
+#: data/core/help.cfg:651
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3962,7 +4059,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:641
+#: data/core/help.cfg:654
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3974,7 +4071,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:644
+#: data/core/help.cfg:657
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -4305,6 +4402,20 @@ msgstr ""
 "Этот боец увеличивает своё максимальное здоровье на 1 каждый раз, когда он "
 "убивает врага (кроме тех, на кого не действует чума)."
 
+#. [berserk]: id=berserk
+#: data/core/macros/abilities.cfg:274
+msgid "berserk"
+msgstr "берсерк"
+
+#. [berserk]: id=berserk
+#: data/core/macros/abilities.cfg:275
+msgid ""
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 30 rounds of attacks have occurred."
+msgstr ""
+"И в наступлении, и в обороне продолжает бой, пока один из сражающихся не "
+"погибнет, или пока не пройдут 30 раундов боя."
+
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:285
 msgid "backstab"
@@ -4397,6 +4508,20 @@ msgid ""
 msgstr ""
 "При нападении данная атака всегда имеет шанс не менее 60% нанести ущерб."
 
+#. [chance_to_hit]: id=magical
+#: data/core/macros/abilities.cfg:359
+msgid "magical"
+msgstr "магия"
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/abilities.cfg:360
+msgid ""
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr ""
+"Магия всегда попадает с вероятностью 70%, вне зависимости от защиты "
+"обороняющегося."
+
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:371
 msgid "swarm"
@@ -4442,6 +4567,17 @@ msgid ""
 msgstr ""
 "Этот боец высасывает здоровье из живых врагов, приобретая здоровье в "
 "половину нанесенного ущерба (округляется вниз)."
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/abilities.cfg:404
+msgid "first strike"
+msgstr "бьёт первым"
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/abilities.cfg:405
+msgid ""
+"This unit always strikes first with this attack, even if they are defending."
+msgstr "Боец с этой атакой всегда наносит первый удар, даже если защищается."
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:414
@@ -4652,7 +4788,7 @@ msgid "The Long Dark (2)"
 msgstr "Долгая ночь (2)"
 
 #. [time]: id=long_dark3
-#: data/core/macros/schedules.cfg:652
+#: data/core/macros/schedules.cfg:650
 msgid "The Long Dark (3)"
 msgstr "Долгая ночь (3)"
 
@@ -4672,217 +4808,367 @@ msgstr ""
 "Специальное:"
 
 #: data/core/macros/special-notes.cfg:8
+#, fuzzy
+#| msgid ""
+#| " Spirits have very unusual resistances to damage, and move quite slowly "
+#| "over open water."
 msgid ""
-" Spirits have very unusual resistances to damage, and move quite slowly over "
-"open water."
+"\n"
+"• Spirits have very unusual resistances to damage, and move quite slowly "
+"over open water."
 msgstr ""
 " Духи имеют очень необычную сопротивляемость, и их движение замедляется над "
 "открытой водой."
 
-#: data/core/macros/special-notes.cfg:11
+#: data/core/macros/special-notes.cfg:12
+#, fuzzy
+#| msgid ""
+#| " This unit’s arcane attack deals tremendous damage to magical creatures, "
+#| "and even some to mundane creatures."
 msgid ""
-" This unit’s arcane attack deals tremendous damage to magical creatures, and "
-"even some to mundane creatures."
+"\n"
+"• This unit’s arcane attack deals tremendous damage to magical creatures, "
+"and even some to mundane creatures."
 msgstr ""
 " Мистическая атака этого бойца наносит огромный ущерб магическим созданиям и "
 "некоторый ущерб даже обычным созданиям."
 
-#: data/core/macros/special-notes.cfg:14
-msgid " This unit is capable of basic healing."
+#: data/core/macros/special-notes.cfg:16
+#, fuzzy
+#| msgid " This unit is capable of basic healing."
+msgid ""
+"\n"
+"• This unit is capable of basic healing."
 msgstr " Этот боец обучен основам лечения."
 
-#: data/core/macros/special-notes.cfg:17
-msgid " This unit is capable of rapid healing."
+#: data/core/macros/special-notes.cfg:20
+#, fuzzy
+#| msgid " This unit is capable of rapid healing."
+msgid ""
+"\n"
+"• This unit is capable of rapid healing."
 msgstr " Этот боец может быстро лечится."
 
-#: data/core/macros/special-notes.cfg:20
+#: data/core/macros/special-notes.cfg:24
+#, fuzzy
+#| msgid ""
+#| " This unit is capable of healing those around it, and curing them of "
+#| "poison."
 msgid ""
-" This unit is capable of healing those around it, and curing them of poison."
+"\n"
+"• This unit is capable of healing those around it, and curing them of poison."
 msgstr " Этот боец способен лечить рядом стоящих и исцелять их от яда."
 
-#: data/core/macros/special-notes.cfg:23
+#: data/core/macros/special-notes.cfg:28
+#, fuzzy
+#| msgid ""
+#| " This unit is capable of neutralizing the effects of poison in units "
+#| "around it."
 msgid ""
-" This unit is capable of neutralizing the effects of poison in units around "
+"\n"
+"• This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr " Этот боец способен сдерживать действие яда в бойцах вокруг него."
 
-#: data/core/macros/special-notes.cfg:26
+#: data/core/macros/special-notes.cfg:32
+#, fuzzy
+#| msgid ""
+#| " This unit regenerates, which allows it to heal as though always "
+#| "stationed in a village."
 msgid ""
-" This unit regenerates, which allows it to heal as though always stationed "
+"\n"
+"• This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
 msgstr ""
 " Этот боец регенерирует, что позволяет ему восстанавливать здоровье так, как "
 "будто он находится в деревне."
 
-#: data/core/macros/special-notes.cfg:29
+#: data/core/macros/special-notes.cfg:36
+#, fuzzy
+#| msgid ""
+#| " The steadiness of this unit reduces damage from some attacks, but only "
+#| "while defending."
 msgid ""
-" The steadiness of this unit reduces damage from some attacks, but only "
+"\n"
+"• The steadiness of this unit reduces damage from some attacks, but only "
 "while defending."
 msgstr ""
 " Стойкость этого бойца снижает урон от некоторых видов атак, но только при "
 "защите."
 
-#: data/core/macros/special-notes.cfg:32
+#: data/core/macros/special-notes.cfg:40
+#, fuzzy
+#| msgid ""
+#| " The leadership of this unit enables adjacent units of the same side to "
+#| "deal more damage in combat, though this only applies to units of lower "
+#| "level."
 msgid ""
-" The leadership of this unit enables adjacent units of the same side to deal "
-"more damage in combat, though this only applies to units of lower level."
+"\n"
+"• The leadership of this unit enables adjacent units of the same side to "
+"deal more damage in combat, though this only applies to units of lower level."
 msgstr ""
 " Лидерство этого бойца позволяет рядом стоящим дружественным войскам "
 "наносить больше урона в бою, хотя это применимо только к бойцам более "
 "низкого уровня."
 
-#: data/core/macros/special-notes.cfg:35
+#: data/core/macros/special-notes.cfg:44
+#, fuzzy
+#| msgid ""
+#| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
+#| "control and thus move unhindered around them."
 msgid ""
-" This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
+"\n"
+"• This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
 " Способности неуловимого позволяют этому бойцу игнорировать зоны контроля "
 "врагов и беспрепятственно проходить мимо них."
 
-#: data/core/macros/special-notes.cfg:38
-msgid " Illumination increases the lighting level in adjacent areas."
+#: data/core/macros/special-notes.cfg:48
+#, fuzzy
+#| msgid " Illumination increases the lighting level in adjacent areas."
+msgid ""
+"\n"
+"• Illumination increases the lighting level in adjacent areas."
 msgstr " Освещение увеличивает уровень света на соседних ячейках."
 
-#: data/core/macros/special-notes.cfg:41
+#: data/core/macros/special-notes.cfg:52
+#, fuzzy
+#| msgid ""
+#| " This unit can use one move to teleport between any two empty villages "
+#| "controlled by its side."
 msgid ""
-" This unit can use one move to teleport between any two empty villages "
+"\n"
+"• This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
 " Данный боец может использовать один ход, чтобы телепортироваться между "
 "двумя пустыми деревнями, принадлежащими его стороне."
 
-#: data/core/macros/special-notes.cfg:44
+#: data/core/macros/special-notes.cfg:56
+#, fuzzy
+#| msgid ""
+#| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
+#| "unless it is immediately adjacent or has revealed itself by attacking."
 msgid ""
-" In woodlands, this unit’s ambush skill renders it invisible to enemies "
+"\n"
+"• In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
 " В лесу этот боец может замаскироваться и стать невидимым для противника до "
 "тех пор, пока тот не он не окажется рядом с ним, либо он не обнаружит себя, "
 "атаковав противника."
 
-#: data/core/macros/special-notes.cfg:47
-msgid " This unit is able to hide at night, leaving no trace of its presence."
+#: data/core/macros/special-notes.cfg:60
+#, fuzzy
+#| msgid ""
+#| " This unit is able to hide at night, leaving no trace of its presence."
+msgid ""
+"\n"
+"• This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
 " Этот боец способен скрываться в ночи, не оставляя следов своего присутствия."
 
-#: data/core/macros/special-notes.cfg:50
+#: data/core/macros/special-notes.cfg:64
+#, fuzzy
+#| msgid ""
+#| " This unit can hide in villages (with the exception of water villages), "
+#| "and remain undetected by its enemies, except by those standing next to it."
 msgid ""
-" This unit can hide in villages (with the exception of water villages), and "
+"\n"
+"• This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
 " Этот боец может прятаться в деревнях (за исключением водных) и оставаться "
 "незамеченным для противника, кроме стоящего рядом с ним."
 
-#: data/core/macros/special-notes.cfg:53
+#: data/core/macros/special-notes.cfg:68
+#, fuzzy
+#| msgid ""
+#| " This unit can move unseen in deep water, requiring no air from the "
+#| "surface."
 msgid ""
-" This unit can move unseen in deep water, requiring no air from the surface."
+"\n"
+"• This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
 " Этот боец может передвигаться незамеченным в глубокой воде, так как ему не "
 "требуется дышать воздухом."
 
-#: data/core/macros/special-notes.cfg:56
+#: data/core/macros/special-notes.cfg:72
+#, fuzzy
+#| msgid ""
+#| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
+#| "living unit."
 msgid ""
-" This unit gains 1 hitpoint added to its maximum whenever it kills a living "
+"\n"
+"• This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
 " Этот боец увеличивает своё максимальное здоровье на 1 каждый раз, когда он "
 "убивает живого врага."
 
-#: data/core/macros/special-notes.cfg:59
+#: data/core/macros/special-notes.cfg:76
+#, fuzzy
+#| msgid ""
+#| " Whenever its berserk attack is used, this unit continues to push the "
+#| "attack until either it or its enemy lies dead."
 msgid ""
-" Whenever its berserk attack is used, this unit continues to push the attack "
-"until either it or its enemy lies dead."
+"\n"
+"• Whenever its berserk attack is used, this unit continues to push the "
+"attack until either it or its enemy lies dead."
 msgstr ""
 " Вне зависимости, защищается или атакует берсерк, он будет наносить удары до "
 "тех пор, пока не будет убит он или его противник."
 
-#: data/core/macros/special-notes.cfg:62
+#: data/core/macros/special-notes.cfg:80
+#, fuzzy
+#| msgid ""
+#| " If there is an enemy of the target on the opposite side of the target "
+#| "while attacking it, this unit may backstab, inflicting double damage by "
+#| "creeping around behind that enemy."
 msgid ""
-" If there is an enemy of the target on the opposite side of the target while "
-"attacking it, this unit may backstab, inflicting double damage by creeping "
-"around behind that enemy."
+"\n"
+"• If there is an enemy of the target on the opposite side of the target "
+"while attacking it, this unit may backstab, inflicting double damage by "
+"creeping around behind that enemy."
 msgstr ""
 " Если при атаке кто-нибудь из союзников стоит напротив противника, этот боец "
 "может ударить в спину, причинив двойной урон."
 
-#: data/core/macros/special-notes.cfg:65
+#: data/core/macros/special-notes.cfg:84
+#, fuzzy
+#| msgid ""
+#| " Foes who lose their life to the plague will rise again in unlife, unless "
+#| "they are standing on a village."
 msgid ""
-" Foes who lose their life to the plague will rise again in unlife, unless "
+"\n"
+"• Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
 " Противники, умершие от чумы, будут возрождены в качестве мертвецов, если не "
 "находились в деревне."
 
-#: data/core/macros/special-notes.cfg:68
+#: data/core/macros/special-notes.cfg:88
+#, fuzzy
+#| msgid ""
+#| " This unit is able to slow its enemies, halving their movement speed and "
+#| "attack damage until they end a turn."
 msgid ""
-" This unit is able to slow its enemies, halving their movement speed and "
+"\n"
+"• This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
 " Этот боец способен замедлять противника, вдвое уменьшая скорость "
 "передвижения и количество атак до его следующего хода."
 
-#: data/core/macros/special-notes.cfg:71
+#: data/core/macros/special-notes.cfg:92
+#, fuzzy
+#| msgid ""
+#| " The ability to turn the living to stone makes this unit extremely "
+#| "dangerous."
 msgid ""
-" The ability to turn the living to stone makes this unit extremely dangerous."
+"\n"
+"• The ability to turn the living to stone makes this unit extremely "
+"dangerous."
 msgstr ""
 " Способность превращать живых в камень делает этого бойца очень опасным."
 
-#: data/core/macros/special-notes.cfg:74
+#: data/core/macros/special-notes.cfg:96
+#, fuzzy
+#| msgid ""
+#| " This unit’s marksmanship gives it a high chance of hitting targeted "
+#| "enemies, but only on the attack."
 msgid ""
-" This unit’s marksmanship gives it a high chance of hitting targeted "
+"\n"
+"• This unit’s marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
 msgstr ""
 " Высокая точность стрельбы этого бойца дает высокие шансы поразить мишень, "
 "но лишь при атаке."
 
-#: data/core/macros/special-notes.cfg:77
+#: data/core/macros/special-notes.cfg:100
+#, fuzzy
+#| msgid ""
+#| " This unit has magical attacks, which always have a high chance of "
+#| "hitting an opponent."
 msgid ""
-" This unit has magical attacks, which always have a high chance of hitting "
+"\n"
+"• This unit has magical attacks, which always have a high chance of hitting "
 "an opponent."
 msgstr ""
 " Этот боец атакует магией, которая всегда с высокой вероятностью поражает "
 "противника."
 
-#: data/core/macros/special-notes.cfg:80
+#: data/core/macros/special-notes.cfg:104
+#, fuzzy
+#| msgid ""
+#| " The swarming attacks of this unit become less deadly whenever its "
+#| "members are wounded."
 msgid ""
-" The swarming attacks of this unit become less deadly whenever its members "
+"\n"
+"• The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr " При ранении роевая атака этого бойца становится менее действенной."
 
-#: data/core/macros/special-notes.cfg:83
+#: data/core/macros/special-notes.cfg:108
+#, fuzzy
+#| msgid ""
+#| " Using a charging attack doubles both damage dealt and received; this "
+#| "does not affect defensive retaliation."
 msgid ""
-" Using a charging attack doubles both damage dealt and received; this does "
+"\n"
+"• Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
 " Атака наскоком удваивает наносимые и получаемые повреждения. Это не "
 "действует при ответном ударе в обороне."
 
-#: data/core/macros/special-notes.cfg:86
+#: data/core/macros/special-notes.cfg:112
+#, fuzzy
+#| msgid ""
+#| " During battle, this unit can drain life from victims to renew its own "
+#| "health."
 msgid ""
-" During battle, this unit can drain life from victims to renew its own "
+"\n"
+"• During battle, this unit can drain life from victims to renew its own "
 "health."
 msgstr ""
 " Во время битвы этот боец способен высасывать жизненные силы у жертвы, "
 "увеличивая собственное здоровье."
 
-#: data/core/macros/special-notes.cfg:89
+#: data/core/macros/special-notes.cfg:116
+#, fuzzy
+#| msgid ""
+#| " The length of this unit’s weapon allows it to strike first in melee, "
+#| "even in defense."
 msgid ""
-" The length of this unit’s weapon allows it to strike first in melee, even "
+"\n"
+"• The length of this unit’s weapon allows it to strike first in melee, even "
 "in defense."
 msgstr ""
 " Длина оружия этого бойца позволяет ему наносить удар первым, даже в обороне."
 
-#: data/core/macros/special-notes.cfg:92
+#: data/core/macros/special-notes.cfg:120
+#, fuzzy
+#| msgid ""
+#| " The victims of this unit’s poison will continually take damage until "
+#| "they can be cured in town or by a unit which cures."
 msgid ""
-" The victims of this unit’s poison will continually take damage until they "
+"\n"
+"• The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
 " Жертвы яда этого бойца будут постоянно терять здоровье, пока не будут "
 "излечены в деревне или целителем."
 
-#: data/core/macros/special-notes.cfg:95
+#: data/core/macros/special-notes.cfg:124
+#, fuzzy
+#| msgid ""
+#| " This unit has a defense cap on certain terrain types — it cannot achieve "
+#| "a higher defense rating on mixed terrains with such terrain types."
 msgid ""
-" This unit has a defense cap on certain terrain types — it cannot achieve a "
+"\n"
+"• This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
 msgstr ""
 "Этот боец имеет потолок уровня защиты на определенных типах местности, и он "
@@ -5424,38 +5710,38 @@ msgstr ""
 "<italic>text='Старые'</italic> бойцы имеют на 8 ЗД меньше и наносят на 1 "
 "меньше урона в ближнем бою."
 
-#: data/core/units.cfg:11
+#: data/core/units.cfg:4
 msgid ""
 "Despite orcs’ reliance on raw strength, few of their children are destined "
 "to grow to possess any. Goblins are, despite their appearance, born as "
 "siblings to the orcs and members of the same race. While other races usually "
 "bear children singly or in pairs, orcs will have large litters of children "
 "all at once, causing their populations to explode. Within any litter, there "
-"will be only one or two who grow to the strength of a \"true orc\", a few "
-"who are born slightly smaller and weaker, and the rest, often a full half of "
-"any litter, are much weaker and destined to be goblins. Almost as newborns "
-"the class system of orcish society is visible, with the weak put in their "
-"place by their stronger siblings. The stronger ones will routinely grab most "
-"of the food and thus grow stronger still, while their weaker siblings do not."
+"will be only one or two who grow to the strength of a “true orc”, a few who "
+"are born slightly smaller and weaker, and the rest, often a full half of any "
+"litter, are much weaker and destined to be goblins. Almost as newborns the "
+"class system of orcish society is visible, with the weak put in their place "
+"by their stronger siblings. The stronger ones will routinely grab most of "
+"the food and thus grow stronger still, while their weaker siblings do not."
 msgstr ""
 
 #. [race]: id=bats
-#: data/core/units.cfg:46
+#: data/core/units.cfg:39
 msgid "race^Bat"
 msgstr "Летучая мышь"
 
 #. [race]: id=bats
-#: data/core/units.cfg:47
+#: data/core/units.cfg:40
 msgid "race+female^Bat"
 msgstr "Летучая мышь"
 
 #. [race]: id=bats
-#: data/core/units.cfg:48
+#: data/core/units.cfg:41
 msgid "race^Bats"
 msgstr "Летучие мыши"
 
 #. [race]: id=bats
-#: data/core/units.cfg:49
+#: data/core/units.cfg:42
 msgid ""
 "Bats come in many shapes and sizes, and most are fairly harmless, feeding on "
 "insects and other small animals. The larger and more vicious breeds are "
@@ -5471,22 +5757,22 @@ msgstr ""
 "разделяет их любовь к ночи."
 
 #. [race]: id=drake
-#: data/core/units.cfg:58
+#: data/core/units.cfg:51
 msgid "race^Drake"
 msgstr "Дрейк"
 
 #. [race]: id=drake
-#: data/core/units.cfg:59
+#: data/core/units.cfg:52
 msgid "race+female^Drake"
 msgstr "Дрейк"
 
 #. [race]: id=drake
-#: data/core/units.cfg:60
+#: data/core/units.cfg:53
 msgid "race^Drakes"
 msgstr "Дрейки"
 
 #. [race]: id=drake
-#: data/core/units.cfg:61
+#: data/core/units.cfg:54
 #, fuzzy
 #| msgid ""
 #| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
@@ -5597,11 +5883,11 @@ msgid ""
 "unpopulated areas to establish their own territory there. They primarily "
 "feed on large game they hunt in the lowlands around their homes, but "
 "hatchlings and lower caste drakes are known to feed also on certain kinds of "
-"moss and fungi they cultivate deep in their caverns. The only technology "
-"drakes value is armor- and weapon-smithing, and neither know or need other "
-"science and culture besides this. However, the few implements they do "
-"fashion are almost unrivaled in quality, only matched by those produced in "
-"the finest Dwarvish foundries.\n"
+"moss and fungi they cultivate deep in their caverns. Drakes value armor- and "
+"weapon-smithing, but neither know nor need other science and culture besides "
+"this. Nonetheless, the few implements they do fashion are almost unrivaled "
+"in quality, only matched by those produced in the finest Dwarvish "
+"foundries.\n"
 "\n"
 "Drakes hatch from eggs and usually live naturally between 20 to 30 years. "
 "Death in battle is the most preferred way for a drake to leave this world. "
@@ -5680,22 +5966,71 @@ msgstr ""
 "позволяет им селиться даже в горах на Дальнем Севере."
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:94
+#: data/core/units.cfg:87
 msgid "race^Dwarf"
 msgstr "Гном"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:95
+#: data/core/units.cfg:88
 msgid "race+female^Dwarf"
 msgstr "Гном"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:96
+#: data/core/units.cfg:89
 msgid "race^Dwarves"
 msgstr "Гномы"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:97
+#: data/core/units.cfg:90
+#, fuzzy
+#| msgid ""
+#| "The dwarves are a race famed for their miners, blacksmiths, merchants and "
+#| "warriors. Considered as the third oldest race on the great continent "
+#| "after the elves and trolls, their early history is shrouded in mystery. "
+#| "Legends tell of a time long forgotten when their people began emerging "
+#| "from their underground world through caves. Nothing is known about their "
+#| "life prior to their arrival, or their reasons for entering the surface "
+#| "world, but they have been an integral part of the history of the "
+#| "continent since. Soon after their emergence from the underground, the "
+#| "dwarves entered into conflict with the original inhabitants of the land, "
+#| "the elves. The original reason for their dispute has been lost to "
+#| "history, but the two races have since fought three long wars, interrupted "
+#| "by a few decades of peace. During these wars the dwarves could not "
+#| "dislodge the elves from the deep forests in the south, but managed to "
+#| "consolidate their position in hills and the mountains in the north of the "
+#| "continent, known now as the Northlands. Since then they have constructed "
+#| "fantastic fortifications and settlements deep within the mountains and "
+#| "crags of their territory.\n"
+#| "\n"
+#| "Possibly due to their isolation, the dwarves are generally distrustful or "
+#| "hostile towards most other races, particularly the elves. The single "
+#| "exception to this temperament is towards humans. This could be traced "
+#| "back to the era of Haldric I and the arrival of humans and orcs to the "
+#| "continent. At this point the dwarves began allowing some humans, mostly "
+#| "dissidents and outlaws from the Kingdom of Wesnoth, to settle in certain "
+#| "areas of the Northlands. Their motivation was unsurprising. The plight of "
+#| "these individuals reminded the dwarves of their early history of "
+#| "persecution, eliciting a sense of solidarity. The dwarves also had much "
+#| "to gain in forming a bond with these outcasts. They would settle in areas "
+#| "where dwarves disliked living themselves; plains, forests, and swamps, "
+#| "freeing them from defending these areas.\n"
+#| "\n"
+#| "Dwarves are of small stature by human measure, but they are by no means "
+#| "fragile. Their warriors, tough and powerful are both feared and respected "
+#| "throughout the continent for their prowess in battle. In addition, "
+#| "dwarves are known for their calculating intellects and superb "
+#| "craftsmanship. Dwarven smiths are renowned for their deadly weapons and "
+#| "heavy armor. These accouterments are unrivaled in quality, possibly only "
+#| "matched by those produced by drake armorers. Their intelligence and "
+#| "natural inquisitiveness has also made them the most technically advanced "
+#| "race on the continent. One of their most famous, and feared, discoveries "
+#| "was a mysterious powder that produces an immense explosion when exposed "
+#| "to fire or sparks. Certain dwarf warriors use this powder to hurl small "
+#| "objects at tremendous speeds. Given their technological inclinations, "
+#| "many dwarves tend to distrust magic users. However some practice a form "
+#| "of magic based on the engraving of runes. Called runesmiths, they use "
+#| "these carvings to enchant items in order to augment certain aspects of "
+#| "their natures."
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -5739,7 +6074,7 @@ msgid ""
 "produces an immense explosion when exposed to fire or sparks. Certain dwarf "
 "warriors use this powder to hurl small objects at tremendous speeds. Given "
 "their technological inclinations, many dwarves tend to distrust magic users. "
-"However some practice a form of magic based on the engraving of runes. "
+"However, some practice a form of magic based on the engraving of runes. "
 "Called runesmiths, they use these carvings to enchant items in order to "
 "augment certain aspects of their natures."
 msgstr ""
@@ -5789,22 +6124,60 @@ msgstr ""
 "образом некоторые особенности их природы."
 
 #. [race]: id=elf
-#: data/core/units.cfg:114
+#: data/core/units.cfg:107
 msgid "race^Elf"
 msgstr "Эльф"
 
 #. [race]: id=elf
-#: data/core/units.cfg:115
+#: data/core/units.cfg:108
 msgid "race+female^Elf"
 msgstr "Эльфийка"
 
 #. [race]: id=elf
-#: data/core/units.cfg:116
+#: data/core/units.cfg:109
 msgid "race^Elves"
 msgstr "Эльфы"
 
 #. [race]: id=elf
-#: data/core/units.cfg:118
+#: data/core/units.cfg:111
+#, fuzzy
+#| msgid ""
+#| "Compared to humans, elves are somewhat taller, more agile but less "
+#| "sturdy. They have slightly pointy ears, pale skin and usually blond hair. "
+#| "Few differences between humans and elves are more pronounced than the "
+#| "Elves’ unusually long life — most, unless claimed by illness, accident or "
+#| "war, live a full two and a half centuries. While some elves possessing a "
+#| "high magical aptitude have been known to live an additional full century, "
+#| "most elves begin to grow physically frail at some point between 250 and "
+#| "300 years of age and pass away rapidly (generally within a year or two) "
+#| "thereafter.\n"
+#| "\n"
+#| "Elves are naturally imbued with magic to a small degree. Though most are "
+#| "unable to channel it directly, its latent presence gives them their keen "
+#| "senses and long life. Many elves have magic-driven talents such as "
+#| "marksmanship or stealth, allowing them to achieve tasks that most normal "
+#| "beings would find astonishing. Those elves that learn to wield this power "
+#| "in more general ways can become truly formidable in its use. Many choose "
+#| "to use their gift to heal others.\n"
+#| "\n"
+#| "A few elves, venturing far down the paths of magic and mysticism, become "
+#| "sensitive to the presence of cold iron and can even be burned by it. "
+#| "Elvish legend hints that this was more common in the far past.\n"
+#| "\n"
+#| "Elves spend much of their time honing their talents and skills. Those not "
+#| "adept at the magical arts typically devote their time honing their "
+#| "physical skills. As a result, elves excel at archery, which is perhaps "
+#| "their most important method of warfare. Most elvish troops carry a bow "
+#| "and no other race can rival their archers in speed and accuracy. All "
+#| "elves also share an intense affection for unspoiled nature. They often "
+#| "feel uncomfortable in open unvegetated spaces. They live primarily in the "
+#| "forests of the Great Continent; the Aethenwood in the southwest, Wesmere "
+#| "in the northwest, and the great northern woods of which the Lintanir "
+#| "Forest is the southernmost edge.\n"
+#| "\n"
+#| "Elves are the eldest race of the continent, with the possible exception "
+#| "of trolls. Many of their settlements cannot be reliably dated, "
+#| "undoubtedly having existed for over a millennium."
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -5833,7 +6206,7 @@ msgid ""
 "important method of warfare. Most elvish troops carry a bow and no other "
 "race can rival their archers in speed and accuracy. All elves also share an "
 "intense affection for unspoiled nature. They often feel uncomfortable in "
-"open unvegetated spaces. They live primarily in the forests of the Great "
+"open, unvegetated spaces. They live primarily in the forests of the Great "
 "Continent; the Aethenwood in the southwest, Wesmere in the northwest, and "
 "the great northern woods of which the Lintanir Forest is the southernmost "
 "edge.\n"
@@ -5882,38 +6255,72 @@ msgstr ""
 "настолько давно, что невозможно установить точные даты возникновения их "
 "первых поселений, хотя, несомненно, это было тысячи лет назад."
 
-#. [race]: id=falcon, description=
-#: data/core/units.cfg:135
+#. [race]: id=falcon
+#: data/core/units.cfg:128
 msgid "race^Falcon"
 msgstr "Сокол"
 
-#. [race]: id=falcon, description=
-#: data/core/units.cfg:136
+#. [race]: id=falcon
+#: data/core/units.cfg:129
 msgid "race+female^Falcon"
 msgstr "Соколица"
 
-#. [race]: id=falcon, description=
-#: data/core/units.cfg:137
+#. [race]: id=falcon
+#: data/core/units.cfg:130
 msgid "race^Falcons"
 msgstr "Соколы"
 
+#. [race]: id=falcon
+#: data/core/units.cfg:131
+msgid ""
+"Falcons are birds of prey, noted for their exceptional speed and agility. "
+"Lighter and with less powerful talons than other raptors, falcons instead "
+"favor the use of their beak to kill their targets. Their keen eye and "
+"capacity for domestication makes them a populous and well-known creature, "
+"used both by nobles in sport, and by nomads or tribes who find them useful "
+"in hunting for food. Falcons occasionally find a role on the field of war as "
+"well, with certain falconers training their birds to distinguish between "
+"friend and foe, making them a useful asset to aid in an army’s charge."
+msgstr ""
+
+#. [race]: id=roc, description=
+#: data/core/units.cfg:140
+#, fuzzy
+#| msgid "race^Orc"
+msgid "race^Roc"
+msgstr "Орк"
+
+#. [race]: id=roc, description=
+#: data/core/units.cfg:141
+#, fuzzy
+#| msgid "race+female^Orc"
+msgid "race+female^Roc"
+msgstr "Орчиха"
+
+#. [race]: id=roc, description=
+#: data/core/units.cfg:142
+#, fuzzy
+#| msgid "race^Orcs"
+msgid "race^Rocs"
+msgstr "Орки"
+
 #. [race]: id=goblin
-#: data/core/units.cfg:148
+#: data/core/units.cfg:153
 msgid "race^Goblin"
 msgstr "Гоблин"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:149
+#: data/core/units.cfg:154
 msgid "race+female^Goblin"
 msgstr "Гоблинша"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:150
+#: data/core/units.cfg:155
 msgid "race^Goblins"
 msgstr "Гоблины"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:151
+#: data/core/units.cfg:156
 #, fuzzy
 #| msgid ""
 #| "Goblins are, despite their appearance, born as siblings to the orcs and "
@@ -5967,22 +6374,22 @@ msgstr ""
 "удовлетворение, как показатель их силы и мастерства."
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:168
+#: data/core/units.cfg:173
 msgid "race^Gryphon"
 msgstr "Грифон"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:169
+#: data/core/units.cfg:174
 msgid "race+female^Gryphon"
 msgstr "Грифонша"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:170
+#: data/core/units.cfg:175
 msgid "race^Gryphons"
 msgstr "Грифоны"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:171
+#: data/core/units.cfg:176
 msgid ""
 "Gryphons are broad, powerful beasts with traits shared from both terrestrial "
 "predators and birds of prey. While occasionally tamed and ridden by the "
@@ -6003,22 +6410,22 @@ msgstr ""
 "столь же неразгаданными, как и происхождение гифонов."
 
 #. [race]: id=human
-#: data/core/units.cfg:189
+#: data/core/units.cfg:194
 msgid "race^Human"
 msgstr "Человек"
 
 #. [race]: id=human
-#: data/core/units.cfg:190
+#: data/core/units.cfg:195
 msgid "race+female^Human"
 msgstr "Человек"
 
 #. [race]: id=human
-#: data/core/units.cfg:191
+#: data/core/units.cfg:196
 msgid "race^Humans"
 msgstr "Люди"
 
 #. [race]: id=human
-#: data/core/units.cfg:192
+#: data/core/units.cfg:197
 #, fuzzy
 #| msgid ""
 #| "The race of men is an extremely diverse one. Although they originally "
@@ -6139,28 +6546,28 @@ msgstr ""
 "друг друга."
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:207
+#: data/core/units.cfg:212
 #, fuzzy
 #| msgid "race^Human"
 msgid "race^Dunefolk Human"
 msgstr "Человек"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:208
+#: data/core/units.cfg:213
 #, fuzzy
 #| msgid "race+female^Human"
 msgid "race+female^Dunefolk Human"
 msgstr "Человек"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:209
+#: data/core/units.cfg:214
 #, fuzzy
 #| msgid "race+plural^Undead"
 msgid "race+plural^Dunefolk"
 msgstr "Мертвецы"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:210
+#: data/core/units.cfg:215
 msgid ""
 "An offshoot of a forgotten nomadic civilization, the Dunefolk lay claim to "
 "the river valleys and oases of the Sandy Wastes. How they came to inhabit "
@@ -6217,33 +6624,103 @@ msgid ""
 "distant past in the exotic far corners of Irdya."
 msgstr ""
 
-#. [race]: id=lizard, description=
-#: data/core/units.cfg:231
+#. [race]: id=lizard
+#: data/core/units.cfg:236
 msgid "race^Saurian"
 msgstr "Ящер"
 
-#. [race]: id=lizard, description=
-#: data/core/units.cfg:232
+#. [race]: id=lizard
+#: data/core/units.cfg:237
 msgid "race+female^Saurian"
 msgstr "Ящерица"
 
-#. [race]: id=lizard, description=
-#: data/core/units.cfg:233
+#. [race]: id=lizard
+#: data/core/units.cfg:238
 msgid "race^Saurians"
 msgstr "Ящеры"
 
+#. [race]: id=lizard
+#: data/core/units.cfg:239
+msgid ""
+"Saurians are lizard-like creatures. Smaller and more slender than humans, "
+"they rarely stand taller than a ten year old child, though from tip of snout "
+"to end of tail a Saurian can be as long as the average man is tall. Light "
+"and nimble, the warriors prefer to fight as they hunt — slipping through "
+"enemy lines to target the weak and the injured while evading their "
+"attackers.\n"
+"\n"
+"<header>text='Society'</header>\n"
+"Saurians are very mysterious creatures due to their tendency to live in "
+"areas inhospitable to others, such as swamps. Fatalistic in the extreme, "
+"Saurians believe all the events in a life can be predicted by the use of a "
+"complex form of astrology.\n"
+"\n"
+"Saurian culture is sharply segregated between the genders. Within each "
+"gender the members compete, and through skill, determination, and reputation "
+"establish a clear pecking order, with a chief at the top. On those occasions "
+"when the two genders interact they do not contest for dominance; instead, "
+"the situation determines the dominant gender. The chief of the males is "
+"alpha within the clan's village or encampment while the chief of females is "
+"dominant anywhere else. This continues down the rank structure with each "
+"male or female being dominant over any member of the opposite gender with "
+"lower rank and submitting to members of the opposite gender with higher "
+"rank.\n"
+"\n"
+"The segregation and alternating gender-dominance of Saurian society is an "
+"outgrowth of their clearly defined gender roles. It is the responsibility of "
+"the female to hunt and find food, skills which ultimately train them to be "
+"warriors: the skirmishers, flankers, and ambushers other races so fear. "
+"Males, meanwhile, are responsible for guarding the clutch — the eggs left by "
+"the females. While this leaves time for the males to develop and hone the "
+"arts of astrology, healing, and magic, it also exposes them to significant "
+"danger, as they are stationary targets for a Saurian clan's number one enemy "
+"— other Saurian clans.\n"
+"\n"
+"New Saurian clans are started when the proper astrological signs are read. "
+"Called a “hatching,” each female indicated by the conjunction selects a "
+"group of individuals with lower rank and leave their source clan. Frequently "
+"all females with a specific trait will be indicated, causing multiple clans "
+"to “hatch” at the same time. Selection is a simple process: no group leaving "
+"can be larger than any other, all the groups together cannot be larger than "
+"the group being left, and higher ranking allows a female to overrule another "
+"female's choice of who they take.\n"
+"\n"
+"Because of their rapid population growth, frequent splits in clans, and the "
+"fact that cannibalism is not taboo, violence is one of the defining features "
+"of Saurian life. This limits the growth of the Saurian culture to fits and "
+"starts, as much of their knowledge is passed by oral tradition and their "
+"possessions must be mobile.\n"
+"\n"
+"<header>text='Geography'</header>\n"
+"Saurians can live in many different areas, though swamps are by far their "
+"most common habitat.\n"
+"\n"
+"<header>text='Biology'</header>\n"
+"Saurians live spectacularly short lives by comparison to most of the other "
+"races of Wesnoth, reaching full adulthood within three years and often dying "
+"by the time they are 10 to 15 years old. By far, the most common cause of "
+"death is violence. Saurian females produce clutches of about 20 eggs roughly "
+"once a year, which creates constant population pressure and would stress "
+"most carnivores' food supply. Hunters and scavengers, Saurians have "
+"extremely strong jaws and have a very powerful digestive system with highly "
+"acidic fluids, making them capable of eating and digesting all of their prey "
+"including skin, teeth, horns and bones. Further, they have no aversion to "
+"eating carrion and even committing cannibalism, which are both regular "
+"occurrences."
+msgstr ""
+
 #. [race]: id=mechanical
-#: data/core/units.cfg:243
+#: data/core/units.cfg:265
 msgid "race^Mechanical"
 msgstr "Механизмы"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:244
+#: data/core/units.cfg:266
 msgid "race+plural^Mechanical"
 msgstr "Механизмы"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:245
+#: data/core/units.cfg:267
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -6256,22 +6733,24 @@ msgstr ""
 "некоторые получают эти способности в результате магического вмешательства."
 
 #. [race]: id=merman
-#: data/core/units.cfg:254
+#: data/core/units.cfg:276
 msgid "race^Merman"
 msgstr "Водяной"
 
 #. [race]: id=merman
-#: data/core/units.cfg:255
+#: data/core/units.cfg:277
 msgid "race^Mermaid"
 msgstr "Русалка"
 
 #. [race]: id=merman
-#: data/core/units.cfg:256
-msgid "race^Mermen"
-msgstr "Водяные"
+#: data/core/units.cfg:278
+#, fuzzy
+#| msgid "race^Troll"
+msgid "race^Merfolk"
+msgstr "Тролль"
 
 #. [race]: id=merman
-#: data/core/units.cfg:258
+#: data/core/units.cfg:280
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -6295,22 +6774,22 @@ msgstr ""
 "замедляется."
 
 #. [race]: id=monster
-#: data/core/units.cfg:266
+#: data/core/units.cfg:288
 msgid "race^Monster"
 msgstr "Монстр"
 
 #. [race]: id=monster
-#: data/core/units.cfg:267
+#: data/core/units.cfg:289
 msgid "race+female^Monster"
 msgstr "Монстр"
 
 #. [race]: id=monster
-#: data/core/units.cfg:268
+#: data/core/units.cfg:290
 msgid "race^Monsters"
 msgstr "Монстры"
 
 #. [race]: id=monster
-#: data/core/units.cfg:269
+#: data/core/units.cfg:291
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -6322,22 +6801,22 @@ msgstr ""
 "рассказах."
 
 #. [race]: id=naga
-#: data/core/units.cfg:276
+#: data/core/units.cfg:298
 msgid "race^Naga"
 msgstr "Наг"
 
 #. [race]: id=naga
-#: data/core/units.cfg:277
+#: data/core/units.cfg:299
 msgid "race^Nagini"
 msgstr "Нагиня"
 
 #. [race]: id=naga
-#: data/core/units.cfg:278
+#: data/core/units.cfg:300
 msgid "race^Nagas"
 msgstr "Наги"
 
 #. [race]: id=naga
-#: data/core/units.cfg:279
+#: data/core/units.cfg:301
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -6366,22 +6845,22 @@ msgstr ""
 "целом, наги любят болота и реки так же, как и открытые моря и океаны."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:287
+#: data/core/units.cfg:309
 msgid "race^Ogre"
 msgstr "Огр"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:288
+#: data/core/units.cfg:310
 msgid "race+female^Ogre"
 msgstr "Огриха"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:289
+#: data/core/units.cfg:311
 msgid "race^Ogres"
 msgstr "Огры"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:290
+#: data/core/units.cfg:312
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -6414,22 +6893,22 @@ msgstr ""
 "или случайность."
 
 #. [race]: id=orc
-#: data/core/units.cfg:298
+#: data/core/units.cfg:320
 msgid "race^Orc"
 msgstr "Орк"
 
 #. [race]: id=orc
-#: data/core/units.cfg:299
+#: data/core/units.cfg:321
 msgid "race+female^Orc"
 msgstr "Орчиха"
 
 #. [race]: id=orc
-#: data/core/units.cfg:300
+#: data/core/units.cfg:322
 msgid "race^Orcs"
 msgstr "Орки"
 
 #. [race]: id=orc
-#: data/core/units.cfg:301
+#: data/core/units.cfg:323
 #, fuzzy
 #| msgid ""
 #| "In appearance, orcs are half men and half beasts. They are taller, "
@@ -6592,7 +7071,7 @@ msgstr ""
 "силовые умения, например, стрельбу из лука или ночные убийства."
 
 #. [race]: id=orc
-#: data/core/units.cfg:312
+#: data/core/units.cfg:334
 msgid ""
 "\n"
 "\n"
@@ -6601,22 +7080,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=troll
-#: data/core/units.cfg:321
+#: data/core/units.cfg:343
 msgid "race^Troll"
 msgstr "Тролль"
 
 #. [race]: id=troll
-#: data/core/units.cfg:322
+#: data/core/units.cfg:344
 msgid "race+female^Troll"
 msgstr "Троллиха"
 
 #. [race]: id=troll
-#: data/core/units.cfg:323
+#: data/core/units.cfg:345
 msgid "race^Trolls"
 msgstr "Тролли"
 
 #. [race]: id=troll
-#: data/core/units.cfg:324
+#: data/core/units.cfg:346
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -6689,22 +7168,48 @@ msgstr ""
 "востоке Веснота, а также везде, куда где находятся орды орков."
 
 #. [race]: id=undead
-#: data/core/units.cfg:344
+#: data/core/units.cfg:366
 msgid "race^Undead"
 msgstr "Мертвецы"
 
 #. [race]: id=undead
-#: data/core/units.cfg:345
+#: data/core/units.cfg:367
 msgid "race+female^Undead"
 msgstr "Мертвецы"
 
 #. [race]: id=undead
-#: data/core/units.cfg:346
+#: data/core/units.cfg:368
 msgid "race+plural^Undead"
 msgstr "Мертвецы"
 
 #. [race]: id=undead
-#: data/core/units.cfg:347
+#: data/core/units.cfg:369
+#, fuzzy
+#| msgid ""
+#| "Undead are not really a single race of creatures, although often treated "
+#| "as such. Almost any dead creature can, by a sufficiently skilled "
+#| "necromancer, be reanimated and rise again in undeath. Undead are for the "
+#| "most part unnatural but mindless constructs, obeying whoever created them "
+#| "without question nor thought. A greater mystery of necromancy is in how "
+#| "constructs are sustained without continuous effort from the necromancer. "
+#| "An undead creature does not require the constant attention of the "
+#| "necromancer to command and sustain, but can work autonomously according "
+#| "to the commands of its master. Only rarely, perhaps once every few "
+#| "months, does the necromancer need to maintain his creation.\n"
+#| "\n"
+#| "Necromancy is almost solely limited to humans. Even the legends of "
+#| "magically apt races like elves and mermen tell of very few of their kind "
+#| "who have ever delved in the dark arts. It is surmised that necromantic "
+#| "magic requires great adaptability and a flexible mind, extremes of which "
+#| "are most commonly found in humans. The ultimate goal of most necromancers "
+#| "is to turn the same art of preserving and imbuing life upon themselves, "
+#| "to alter themselves at whatever cost, to ultimately escape death by "
+#| "preserving their own mind and spirit.\n"
+#| "\n"
+#| "<header>text='Geography'</header>\n"
+#| "While undead lords arrived on the Great Continent in considerable numbers "
+#| "only in the wake of Haldric I, they were not completely unheard of by "
+#| "elves and dwarves before that."
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -6718,8 +7223,8 @@ msgid ""
 "need to maintain his creation.\n"
 "\n"
 "Necromancy is almost solely limited to humans. Even the legends of magically "
-"apt races like elves and mermen tell of very few of their kind who have ever "
-"delved in the dark arts. It is surmised that necromantic magic requires "
+"apt races like elves and merfolk tell of very few of their kind who have "
+"ever delved in the dark arts. It is surmised that necromantic magic requires "
 "great adaptability and a flexible mind, extremes of which are most commonly "
 "found in humans. The ultimate goal of most necromancers is to turn the same "
 "art of preserving and imbuing life upon themselves, to alter themselves at "
@@ -6753,42 +7258,93 @@ msgstr ""
 "Хотя в значительном количестве лорды мертвецов начали прибывать на Великий "
 "Континент лишь незадолго до Халдрика I, эльфы и гномы слышали о них и прежде."
 
-#. [race]: id=wolf, description=
-#: data/core/units.cfg:360
+#. [race]: id=wolf
+#: data/core/units.cfg:382
 msgid "race^Wolf"
 msgstr "Волк"
 
-#. [race]: id=wolf, description=
-#: data/core/units.cfg:361
+#. [race]: id=wolf
+#: data/core/units.cfg:383
 msgid "race+female^Wolf"
 msgstr "Волчица"
 
-#. [race]: id=wolf, description=
-#: data/core/units.cfg:362
+#. [race]: id=wolf
+#: data/core/units.cfg:384
 msgid "race^Wolves"
 msgstr "Волки"
 
+#. [race]: id=wolf
+#: data/core/units.cfg:385
+msgid ""
+"Wolves are predatory canines encountered frequently in the wilderness. "
+"Quick, tough, and durable, a solitary wolf suffices to maim or kill "
+"civilians and untrained soldiers with ease, but it is their tendency to "
+"travel in packs and attack in an organized manner that makes them "
+"particularly fearsome to travelers. They tend to stay away from "
+"civilization, though, only occasionally venturing close to prey upon "
+"livestock."
+msgstr ""
+
 #. [race]: id=wose
-#: data/core/units.cfg:372
+#: data/core/units.cfg:394
 msgid "race^Wose"
 msgstr "Древень"
 
 #. [race]: id=wose
-#: data/core/units.cfg:373
+#: data/core/units.cfg:395
 msgid "race^Woses"
 msgstr "Древни"
 
 #. [race]: id=wose
-#: data/core/units.cfg:374
+#: data/core/units.cfg:396
+#, fuzzy
+#| msgid ""
+#| "The mighty wose resides within the deepest forests of the known world. To "
+#| "the untrained eye, the wose appears to be nothing more than an oddly "
+#| "shaped, yet noble, tree. As guardians of the forest, the woses share a "
+#| "deeper connection to the woodlands than even the elves. While the woses "
+#| "are a peaceful race, disturbance of the ancient forests, which they tend, "
+#| "will incite the wrath of nature itself. Woses are slow moving creatures "
+#| "that may spend centuries standing in one location undisturbed by the ebb "
+#| "and flow of time.\n"
+#| "\n"
+#| "Although they practice no magic of their own, the woses share a deep "
+#| "connection to faerie. What little is known of this ancient race comes "
+#| "from elvish scholars who believe that this mystical power, which the "
+#| "mightiest elves have dedicated their lives to master, is inherent to the "
+#| "wose. Though woses resemble them, they share no ancestry with trees. "
+#| "Woses are believed to be some of the oldest creatures in the world, "
+#| "perhaps even more ancient than the forests in which they dwell, and it is "
+#| "thought that the power of faerie has given these beings the eternal task "
+#| "of serving as wardens of the forest.\n"
+#| "\n"
+#| "Woses are not warlike in the least and are ill-accustomed to combat. They "
+#| "will however respond with indiscriminate violence in defense of their "
+#| "forested territory. Woses are slow moving and are vulnerable away from "
+#| "the woodlands. Due to their close connection with faerie, woses are "
+#| "particularly sensitive to the arcane. The hardwood that makes the wose "
+#| "nigh-impervious to physical assault has left it grievously vulnerable to "
+#| "flame. Their thick bark and ability to harness the power of faerie to "
+#| "regenerate quickly when injured allows the wose to survive an enemy "
+#| "onslaught long enough to respond with a crushing might belied by its "
+#| "peaceful, plodding nature. Within its forest home, the wose can disappear "
+#| "amongst the trees and ambush even the best-trained elvish scout.\n"
+#| "\n"
+#| "The life span of the wose is unknown, although the most ancient members "
+#| "of this race have lived many hundreds of years and have grown to massive "
+#| "heights. It is thought that unless a wose falls in battle, it will find "
+#| "no natural end. Content to pass the centuries standing like a sentry, "
+#| "uninterested in the goings-on of the civilized world, the wose will stir "
+#| "only to march to the defense of the natural world and the forests it "
+#| "calls home."
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
-"yet noble, tree. As guardians of the forest, the woses share a deeper "
-"connection to the woodlands than even the elves. While the woses are a "
-"peaceful race, disturbance of the ancient forests, which they tend, will "
-"incite the wrath of nature itself. Woses are slow moving creatures that may "
-"spend centuries standing in one location undisturbed by the ebb and flow of "
-"time.\n"
+"yet noble, tree. As guardians of the forest, the woses share a connection to "
+"the woodlands deeper than even the elves’. While the woses are a peaceful "
+"race, disturbance of the ancient forests, which they tend, will incite the "
+"wrath of nature itself. Woses are slow moving creatures that may spend "
+"centuries standing in one location undisturbed by the ebb and flow of time.\n"
 "\n"
 "Although they practice no magic of their own, the woses share a deep "
 "connection to faerie. What little is known of this ancient race comes from "
@@ -6859,28 +7415,161 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "+1 max ЗД"
 
+#: src/help/help.cpp:181
+msgid "Close"
+msgstr "Закрыть"
+
+#: src/help/help.cpp:184
+msgid "The Battle for Wesnoth Help"
+msgstr "Помощь по игре Битва за Веснот"
+
+#: src/help/help.cpp:241
+msgid "Parse error when parsing help text: "
+msgstr "Синтаксическая ошибка при загрузке помощи: "
+
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Creator Resources'</header>"
 #~ msgid ""
 #~ "\n"
 #~ "\n"
-#~ "<header>text='Fundamentals of Gameplay'</header>\n"
+#~ "<big>Pure Map Mode</big>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Ресурсы для авторов'</header>"
+
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Creator Resources'</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Scenario Mode</big>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Ресурсы для авторов'</header>"
+
+#, fuzzy
+#~| msgid "Fundamentals of Gameplay"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Fundamentals of Gameplay</big>\n"
+#~ "\n"
+#~ msgstr "Основы игры"
+
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Chance to Hit'</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Chance to Hit</big>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Шанс попадания'</header>"
+
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Basic Terrain Types'</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Basic Terrain Types</big>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Базовые типы рельефа местности'</header>"
+
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Mixed Terrain Types'</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Mixed Terrain Types</big>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Смешанные типы рельефа местности'</header>"
+
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Defense Caps'</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Defense Caps</big>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Потолки защиты'</header>"
+
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Basic Terrain Types'</header>\n"
+#~| "\n"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Basic Terrain Types</big>\n"
 #~ "\n"
 #~ msgstr ""
 #~ "\n"
 #~ "\n"
-#~ "<header>text='Основы игрового процесса'</header>\n"
+#~ "<header>text='Базовые Типы Рельефа Местности'</header>\n"
 #~ "\n"
+
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Campaigns and Scenarios'</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Campaigns and Scenarios</big>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text=Кампании и сценарии</header>"
+
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Multiplayer Modifications'</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Multiplayer Modifications</big>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Модификации мультиплеера'</header>"
+
+#~ msgid "race^Mermen"
+#~ msgstr "Водяные"
 
 #~ msgid "This race does not have a description yet."
 #~ msgstr "У этой расы пока нет описания."
-
-#~ msgid "Close"
-#~ msgstr "Закрыть"
-
-#~ msgid "The Battle for Wesnoth Help"
-#~ msgstr "Помощь по игре Битва за Веснот"
-
-#~ msgid "Parse error when parsing help text: "
-#~ msgstr "Синтаксическая ошибка при загрузке помощи: "
 
 #~ msgid "ingame_help_item^Contributors"
 #~ msgstr "Участники"

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
-"POT-Creation-Date: 2018-02-12 20:02+0300\n"
+"POT-Creation-Date: 2019-07-18 15:50+0300\n"
 "PO-Revision-Date: 2019-03-12 19:22+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -100,13 +100,26 @@ msgstr "選項"
 
 #. type: TP
 #: doc/man/wesnoth.6:45
+#, no-wrap
+msgid "B<--all-translations>"
+msgstr "B<--all-translations>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:49
+msgid ""
+"Show all translations in the in-game language selection list, even if they "
+"are deemed insufficiently complete."
+msgstr "在遊戲中的語言選單中顯示所有的翻譯，如果翻譯不完整也一樣顯示。"
+
+#. type: TP
+#: doc/man/wesnoth.6:49
 #, fuzzy, no-wrap
 #| msgid "B<--bunzip2>I<\\ infile.bz2>"
-msgid "B<--bunzip>I<\\ infile.bz2>"
+msgid "B<--bunzip2>I<\\ infile.bz2>"
 msgstr "B<--bunzip2>I<\\ infile.bz2>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:51
+#: doc/man/wesnoth.6:55
 msgid ""
 "decompresses a file which should be in bzip2 format and stores it without "
 "the .bz2 suffix. The I<infile.bz2> will be removed."
@@ -115,99 +128,143 @@ msgstr ""
 "刪除。"
 
 #. type: TP
-#: doc/man/wesnoth.6:51
+#: doc/man/wesnoth.6:55
 #, fuzzy, no-wrap
 #| msgid "B<--bzip2>I<\\ infile>"
-msgid "B<--bzip>I<\\ infile>"
+msgid "B<--bzip2>I<\\ infile>"
 msgstr "B<--bzip2>I<\\ infile>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:57
+#: doc/man/wesnoth.6:61
 msgid ""
 "compresses a file in bzip2 format, stores it as I<infile>.bz2 and removes "
 "I<infile>."
 msgstr "用 bzip2 格式壓縮檔案，命名為I<infile>.bz2，並刪除I<infile>。"
 
 #. type: TP
-#: doc/man/wesnoth.6:57
+#: doc/man/wesnoth.6:61
 #, no-wrap
 msgid "B<-c[>I<id_campaign>B<],\\ --campaign[>I<=id_campaign>B<]>"
 msgstr "B<-c[>I<id_campaign>B<],\\ --campaign[>I<=id_campaign>B<]>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:62
+#: doc/man/wesnoth.6:66
 msgid ""
 "goes directly to the campaign with id I<id_campaign>.  A selection menu will "
 "appear if no id was specified."
 msgstr "進入 ID 為 I<id_campaign> 的戰役。如果沒有指定ID將會出現選單。"
 
 #. type: TP
-#: doc/man/wesnoth.6:62
+#: doc/man/wesnoth.6:66
 #, no-wrap
 msgid "B<--campaign-difficulty[>I<=difficulty>B<]>"
 msgstr "B<--campaign-difficulty[>I<=difficulty>B<]>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:66
+#: doc/man/wesnoth.6:70
 msgid ""
 "The difficulty of the specified campaign (1 to max). If none specified, the "
 "campaign difficulty selection widget will appear."
 msgstr "指定戰役的難度（1至最大）。如果沒有指定，則會出現戰役難度的選單。"
 
 #. type: TP
-#: doc/man/wesnoth.6:66
+#: doc/man/wesnoth.6:70
 #, no-wrap
 msgid "B<--campaign-scenario>I<\\ id_scenario>"
 msgstr "B<--campaign-scenario>I<\\ id_scenario>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:69
+#: doc/man/wesnoth.6:73
 msgid ""
 "The id of the scenario from the specified campaign. The default is the first "
 "scenario."
 msgstr "指定戰役中章節的 ID。預設為第一個章節。"
 
 #. type: TP
-#: doc/man/wesnoth.6:69
+#: doc/man/wesnoth.6:73
+#, no-wrap
+msgid "B<--campaign-skip-story>"
+msgstr "B<--campaign-skip-story>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:78
+msgid "Skip [story] screens and dialog through the end of the B<start> event."
+msgstr "在 B<start> 事件最後跳過 [story] 畫面及對話框。"
+
+#. type: TP
+#: doc/man/wesnoth.6:78
+#, no-wrap
+msgid "B<--clock>"
+msgstr "B<--clock>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:81
+msgid "Adds the option to show a clock for testing the drawing timer."
+msgstr "增加一個顯示時鐘的選項用來當測試畫面繪製計時器。"
+
+#. type: TP
+#: doc/man/wesnoth.6:81
+#, no-wrap
+msgid "B<--config-dir>I<\\ name>"
+msgstr "B<--config-dir>I<\\ name>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:85
+msgid "Deprecated, use B<--userdata-dir>."
+msgstr "已廢棄，請使用 B<--userdata-dir>。"
+
+#. type: TP
+#: doc/man/wesnoth.6:85
+#, no-wrap
+msgid "B<--config-path>"
+msgstr "B<--config-path>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:89
+msgid "Deprecated, use B<--userdata-path>."
+msgstr "Deprecated, use B<--userdata-path>."
+
+#. type: TP
+#: doc/man/wesnoth.6:89
 #, no-wrap
 msgid "B<--core>I<\\ id_core>"
 msgstr "B<--core>I<\\ id_core>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:72
+#: doc/man/wesnoth.6:92
 msgid "overrides the loaded core with the one whose id is specified."
 msgstr "指定 ID 的核心作為讀取的核心。"
 
 #. type: TP
-#: doc/man/wesnoth.6:72
+#: doc/man/wesnoth.6:92
 #, no-wrap
 msgid "B<--data-dir>I<\\ directory>"
 msgstr "B<--data-dir>I<\\ directory>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:75
+#: doc/man/wesnoth.6:95
 msgid "overrides the data directory with the one specified"
 msgstr "指定想使用的資料目錄"
 
 #. type: TP
-#: doc/man/wesnoth.6:75
+#: doc/man/wesnoth.6:95
 #, no-wrap
 msgid "B<--data-path>"
 msgstr "B<--data-path>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:78
+#: doc/man/wesnoth.6:98
 msgid "prints the path of the data directory and exits."
 msgstr "顯示配置目錄的路徑並退出。"
 
 #. type: TP
-#: doc/man/wesnoth.6:78
+#: doc/man/wesnoth.6:98
 #, no-wrap
 msgid "B<-d, --debug>"
 msgstr "B<-d, --debug>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:83
+#: doc/man/wesnoth.6:103
 msgid ""
 "enables additional command mode options in-game (see the wiki page at "
 "https://www.wesnoth.org/wiki/CommandMode for more information about command "
@@ -217,55 +274,66 @@ msgstr ""
 "wiki/CommandMode）。"
 
 #. type: TP
-#: doc/man/wesnoth.6:83
+#: doc/man/wesnoth.6:103
+#, no-wrap
+msgid "B<--debug-lua>"
+msgstr "B<--debug-lua>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:106
+msgid "enables some Lua debugging mechanisms"
+msgstr "開啟一些 Lua 偵錯機制"
+
+#. type: TP
+#: doc/man/wesnoth.6:106
 #, no-wrap
 msgid "B<-e[>I<file>B<],\\ --editor[>I<=file>B<]>"
 msgstr "B<-e[>I<file>B<],\\ --editor[>I<=file>B<]>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:89
+#: doc/man/wesnoth.6:113
 #, fuzzy
 #| msgid ""
 #| "start the in-game map editor directly. If I<file> is specified, "
 #| "equivalent to B<-l> B<--load>."
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
-"to B<-l --load>"
+"to B<-l> B<--load>."
 msgstr "啟動遊戲內建的地圖編輯器。如果指定 I<file>，則等同 B<-l> B<--load>。"
 
 #. type: TP
-#: doc/man/wesnoth.6:89
+#: doc/man/wesnoth.6:113
 #, no-wrap
 msgid "B<--fps>"
 msgstr "B<--fps>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:93
+#: doc/man/wesnoth.6:117
 msgid ""
 "displays the number of frames per second the game is currently running at, "
 "in a corner of the screen."
 msgstr "在螢幕一角的顯示游戲幀幅數。"
 
 #. type: TP
-#: doc/man/wesnoth.6:93
+#: doc/man/wesnoth.6:117
 #, no-wrap
 msgid "B<-f, --fullscreen>"
 msgstr "B<-f, --fullscreen>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:96
+#: doc/man/wesnoth.6:120
 msgid "runs the game in full screen mode."
 msgstr "使用全螢幕模式。"
 
 #. type: TP
-#: doc/man/wesnoth.6:96
+#: doc/man/wesnoth.6:120
 #, no-wrap
 msgid "B<--gunzip>I<\\ infile.gz>"
 msgstr "B<--gunzip>I<\\ infile.gz>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:102
+#: doc/man/wesnoth.6:126
 msgid ""
 "decompresses a file which should be in gzip format and stores it without "
 "the .gz suffix. The I<infile.gz> will be removed."
@@ -274,38 +342,38 @@ msgstr ""
 "除。"
 
 #. type: TP
-#: doc/man/wesnoth.6:102
+#: doc/man/wesnoth.6:126
 #, no-wrap
 msgid "B<--gzip>I<\\ infile>"
 msgstr "B<--gzip>I<\\ infile>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:108
+#: doc/man/wesnoth.6:132
 msgid ""
 "compresses a file in gzip format, stores it as I<infile>.gz and removes "
 "I<infile>."
 msgstr "用gzip格式壓縮檔案，文件名為I<infile>.gz，並刪除I<infile>。"
 
 #. type: TP
-#: doc/man/wesnoth.6:108 doc/man/wesnothd.6:55
+#: doc/man/wesnoth.6:132 doc/man/wesnothd.6:55
 #, no-wrap
 msgid "B<-h, --help>"
 msgstr "B<-h, --help>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:111
+#: doc/man/wesnoth.6:135
 msgid ""
 "displays a summary of command line options to standard output, and exits."
 msgstr "顯示指令可用選項，然後退出。"
 
 #. type: TP
-#: doc/man/wesnoth.6:111
+#: doc/man/wesnoth.6:135
 #, no-wrap
 msgid "B<-l,\\ --load>I<\\ file>"
 msgstr "B<-l,\\ --load>I<\\ file>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:122
+#: doc/man/wesnoth.6:146
 msgid ""
 "loads the savegame I<file> from the standard save game directory. If the B<-"
 "e> or B<--editor> option is used as well, starts the editor with the map "
@@ -317,53 +385,55 @@ msgstr ""
 "開讀取地圖對話框並定位到該目錄。"
 
 #. type: TP
-#: doc/man/wesnoth.6:122
+#: doc/man/wesnoth.6:146
 #, no-wrap
 msgid "B<-L,\\ --language>I<\\ lang>"
 msgstr "B<-L,\\ --language>I<\\ lang>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:129
+#: doc/man/wesnoth.6:153
 msgid ""
 "uses language I<lang> (symbol) this session.  Example: B<--language "
 "ang_GB@latin>"
 msgstr "這次使用語言 I<lang> (符號) 。  範例： B<--language ang_GB@latin>"
 
 #. type: TP
-#: doc/man/wesnoth.6:129 doc/man/wesnothd.6:58
+#: doc/man/wesnoth.6:153 doc/man/wesnothd.6:58
 #, no-wrap
 msgid "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:138
+#: doc/man/wesnoth.6:168
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
-"log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-"B<debug>.  By default the B<error> level is used."
+"log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
+"\\ B<none>.  By default the B<warning> level is used for most domains, but "
+"B<deprecation> defaults to B<none> unless combined with the B<-d> option."
 msgstr ""
-"設定debug的級別。B<all>用來支配任意bebug級別。可選的級別有：B<error>，\\ "
-"B<warning>，\\ B<info>，\\ B<debug>。預設的級別是B<error>。"
+"設定日誌記錄的類別。B<all>可以用來支援任何日誌域的類別。可選的類別有："
+"B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,\\ B<none>。預設的類別是"
+"B<warning>，對B<deprecation>域預設類別是B<none>，除非和B<-d>選項一併使用。"
 
 #. type: TP
-#: doc/man/wesnoth.6:138
+#: doc/man/wesnoth.6:168
 #, no-wrap
 msgid "B<--log-precise>"
 msgstr "B<--log-precise>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:141
+#: doc/man/wesnoth.6:171
 msgid "shows the timestamps in the logfile with more precision."
 msgstr "在日誌檔案中顯示更詳細的時間記錄。"
 
 #. type: TP
-#: doc/man/wesnoth.6:141
+#: doc/man/wesnoth.6:171
 #, no-wrap
 msgid "B<--log-strict>"
 msgstr "B<--log-strict>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:147
+#: doc/man/wesnoth.6:177
 msgid ""
 "sets the strict level of the logger. Any messages sent to log domains of "
 "this level or more severe will cause the unit test to fail regardless of the "
@@ -373,43 +443,43 @@ msgstr ""
 "單位測試都會失敗。只有在和 B<-u> 使用時才會有效。"
 
 #. type: TP
-#: doc/man/wesnoth.6:147
+#: doc/man/wesnoth.6:177
 #, no-wrap
 msgid "B<--logdomains[>I<=filter>B<]>"
 msgstr "B<--logdomains[>I<=filter>B<]>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:152
+#: doc/man/wesnoth.6:182
 msgid ""
 "lists defined log domains (only the ones containing I<filter> if used) and "
 "exits"
 msgstr "列表預設日誌網域（只列出 I<filter> 的日誌網域）及退出"
 
 #. type: TP
-#: doc/man/wesnoth.6:152
+#: doc/man/wesnoth.6:182
 #, no-wrap
 msgid "B<--max-fps>I<\\ fps>"
 msgstr "B<--max-fps>I<\\ fps>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:159
+#: doc/man/wesnoth.6:189
 #, fuzzy
 #| msgid ""
 #| "the number of frames per second the game can show, the value should be "
 #| "between B<1> and B<1000>, the default is the monitor's refresh rate."
 msgid ""
 "the number of frames per second the game can show, the value should be "
-"between I<1> and I<1000>, the default is the monitor's refresh rate."
+"between B<1> and B<1000>, the default is the monitor's refresh rate."
 msgstr "遊戲每秒能顯示的幀數，數值為 B<1> 至 B<1000> 之間，預設為螢幕刷新率。"
 
 #. type: TP
-#: doc/man/wesnoth.6:159
+#: doc/man/wesnoth.6:189
 #, no-wrap
 msgid "B<-m, --multiplayer>"
 msgstr "B<-m, --multiplayer>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:165
+#: doc/man/wesnoth.6:195
 msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below."
@@ -417,60 +487,76 @@ msgstr ""
 "執行一個多人對戰游戲。有更多選項可以與 B<--multiplayer> 一起使用，範例如下。"
 
 #. type: TP
-#: doc/man/wesnoth.6:165
+#: doc/man/wesnoth.6:195
 #, no-wrap
 msgid "B<--mp-test>"
 msgstr "B<--mp-test>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:168
+#: doc/man/wesnoth.6:198
 msgid "load the test mp scenarios."
 msgstr "載入測試用的多人對戰章節。"
 
 #. type: TP
-#: doc/man/wesnoth.6:168
+#: doc/man/wesnoth.6:198
+#, no-wrap
+msgid "B<--new-widgets>"
+msgstr "B<--new-widgets>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:201
+msgid ""
+"there is a new WIP widget toolkit, this option enables it. This is very "
+"experimental, don't fill bug reports since most are known. Parts of the "
+"library are deemed stable and will work without this switch."
+msgstr ""
+"新的 WIP 物件工具，這個選項開啟此工具。此功能為實驗性，大部分的 Bug 都是已知"
+"的所以請勿回報任何 Bug。部分確認為穩定的功能即使不開啟此功能也會啟用。"
+
+#. type: TP
+#: doc/man/wesnoth.6:201
 #, fuzzy, no-wrap
 #| msgid "B<--nodelay>"
-msgid "B<--no-delay>"
+msgid "B<--nodelay>"
 msgstr "B<--nodelay>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:172
+#: doc/man/wesnoth.6:205
 msgid ""
 "runs the game without any delays for graphic benchmarking. This is "
 "automatically enabled by B<--nogui>."
 msgstr "執行遊戲並進行無延遲圖形測試。啟用 B<--nogui> 選項時會自動執行本選項。"
 
 #. type: TP
-#: doc/man/wesnoth.6:172
+#: doc/man/wesnoth.6:205
 #, no-wrap
 msgid "B<--noaddons>"
 msgstr "B<--noaddons>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:175
+#: doc/man/wesnoth.6:208
 msgid "disables loading of user addons."
 msgstr "停用讀取使用者模組。"
 
 #. type: TP
-#: doc/man/wesnoth.6:175
+#: doc/man/wesnoth.6:208
 #, no-wrap
 msgid "B<--nocache>"
 msgstr "B<--nocache>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:178
+#: doc/man/wesnoth.6:211
 msgid "disables caching of game data."
 msgstr "停用建立遊戲資料庫的暫存。"
 
 #. type: TP
-#: doc/man/wesnoth.6:178
+#: doc/man/wesnoth.6:211
 #, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:186
+#: doc/man/wesnoth.6:219
 msgid ""
 "runs the game without the GUI. Only available in combination with B<--"
 "multiplayer> or B<--screenshot> or B<--plugin>."
@@ -479,72 +565,77 @@ msgstr ""
 "或 B<--plugin> 合併使用。"
 
 #. type: TP
-#: doc/man/wesnoth.6:186
+#: doc/man/wesnoth.6:219
 #, no-wrap
 msgid "B<--nomusic>"
 msgstr "B<--nomusic>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:189
+#: doc/man/wesnoth.6:222
 msgid "runs the game without music."
 msgstr "以無音樂和音效的方式啟動游戲。"
 
 #. type: TP
-#: doc/man/wesnoth.6:189
+#: doc/man/wesnoth.6:222
 #, no-wrap
 msgid "B<--noreplaycheck>"
 msgstr "B<--noreplaycheck>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:193
+#: doc/man/wesnoth.6:226
 msgid ""
 "don't try to validate replay of unit test. Only relevant when used with B<-"
 "u>."
 msgstr "不嘗試執行單位測試回播的檢查。只有在和 B<-u> 使用時才會有效。"
 
 #. type: TP
-#: doc/man/wesnoth.6:193
+#: doc/man/wesnoth.6:226
 #, no-wrap
 msgid "B<--nosound>"
 msgstr "B<--nosound>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:196
+#: doc/man/wesnoth.6:229
 msgid "runs the game without sounds and music."
 msgstr "以無音樂和音效的方式啟動游戲。"
 
 #. type: TP
-#: doc/man/wesnoth.6:196
+#: doc/man/wesnoth.6:229
 #, no-wrap
 msgid "B<--password>I<\\ password>"
 msgstr "B<--password>I<\\ password>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:201
+#: doc/man/wesnoth.6:234
 msgid ""
 "uses I<password> when connecting to a server, ignoring other preferences. "
 "Unsafe."
 msgstr "當連線伺服器時使用 I<password>，忽略其他偏好設定。不安全。"
 
 #. type: TP
-#: doc/man/wesnoth.6:201
+#: doc/man/wesnoth.6:234
 #, no-wrap
-msgid "B<--path>"
-msgstr "B<--path>"
+msgid "B<--plugin>I<\\ script>"
+msgstr "B<--plugin>I<\\ script>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:204
-msgid "prints the name of the game data directory and exits."
-msgstr "顯示遊戲資料庫目錄並退出。"
+#: doc/man/wesnoth.6:241
+msgid ""
+"(experimental) load a I<script> which defines a Wesnoth plugin. Similar to "
+"B<--script>, but Lua file should return a function which will be run as a "
+"coroutine and periodically woken up with updates."
+msgstr ""
+"（實驗性）讀取一個定義韋諾插件的 I<script>。與 B<--script> 相似，但 Lua 文件"
+"應該傳回一個函數，該函數將運行且週期性地喚醒並更新。"
 
 #. type: TP
-#: doc/man/wesnoth.6:204
+#: doc/man/wesnoth.6:241
 #, no-wrap
 msgid "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
 msgstr "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:214
+#: doc/man/wesnoth.6:251
 #, fuzzy
 #| msgid ""
 #| "preprocesses a specified file/folder. For each file(s) a plain .cfg file "
@@ -563,7 +654,7 @@ msgid ""
 "directory will be preprocessed before the specified resources.  Example: B<-"
 "p ~/wesnoth/data/campaigns/tutorial ~/result.> For details regarding the "
 "preprocessor visit: https://wiki.wesnoth.org/PreprocessorRef#Command-"
-"line_preprocessor"
+"line_preprocessor."
 msgstr ""
 "預先處理指定的檔案/資料夾。每個檔案未處理及已處理的 .cfg 檔將會寫入於指定的目"
 "標目錄中。如果指定的是資料夾，將會按照處理規則預先處理。\"data/core/macros\" "
@@ -572,13 +663,13 @@ msgstr ""
 "wesnoth.org/PreprocessorRef#Command-line_preprocessor。"
 
 #. type: TP
-#: doc/man/wesnoth.6:214
+#: doc/man/wesnoth.6:251
 #, no-wrap
 msgid "B<--preprocess-defines=>I<DEFINE1>B<,>I<DEFINE2>B<,>I<...>"
 msgstr "B<--preprocess-defines=>I<DEFINE1>B<,>I<DEFINE2>B<,>I<...>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:221
+#: doc/man/wesnoth.6:258
 msgid ""
 "comma separated list of defines to be used by the B<--preprocess> command. "
 "If B<SKIP_CORE> is in the define list the \"data/core\" directory won't be "
@@ -588,13 +679,13 @@ msgstr ""
 "\"data/core\" 目錄將不會被預先處理。"
 
 #. type: TP
-#: doc/man/wesnoth.6:221
+#: doc/man/wesnoth.6:258
 #, no-wrap
 msgid "B<--preprocess-input-macros>I<\\ source-file>"
 msgstr "B<--preprocess-input-macros>I<\\ source-file>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:228
+#: doc/man/wesnoth.6:265
 msgid ""
 "used only by the B<--preprocess> command. Specifies a file that contains "
 "B<[preproc_define]>s to be included before preprocessing."
@@ -603,13 +694,13 @@ msgstr ""
 "B<[preproc_define]> 的檔案。"
 
 #. type: TP
-#: doc/man/wesnoth.6:228
+#: doc/man/wesnoth.6:265
 #, no-wrap
 msgid "B<--preprocess-output-macros[>I<=target-file>B<]>"
 msgstr "B<--preprocess-output-macros[>I<=target-file>B<]>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:239
+#: doc/man/wesnoth.6:276
 msgid ""
 "used only by the B<--preprocess> command. Will output all preprocessed "
 "macros in the target file. If the file is not specified the output will be "
@@ -622,26 +713,81 @@ msgstr ""
 "B<--preprocess-input-macros>。必須在 B<--preprocess> 指令之前使用。"
 
 #. type: TP
-#: doc/man/wesnoth.6:239
+#: doc/man/wesnoth.6:276
+#, no-wrap
+msgid "B<--proxy>"
+msgstr "B<--proxy>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:279
+msgid "enables usage of proxy for network connections."
+msgstr "開啟代理伺服器來進行網路連線。"
+
+#. type: TP
+#: doc/man/wesnoth.6:279
+#, no-wrap
+msgid "B<--proxy-address>I<\\ address>"
+msgstr "B<--proxy-address>I<\\ address>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:284
+msgid "specifies I<address> of the proxy."
+msgstr "指定代理伺服器的 I<address>。"
+
+#. type: TP
+#: doc/man/wesnoth.6:284
+#, no-wrap
+msgid "B<--proxy-port>I<\\ port>"
+msgstr "B<--proxy-port>I<\\ port>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:289
+msgid "specifies I<port> of the proxy."
+msgstr "指定代理伺服器的 I<port>。"
+
+#. type: TP
+#: doc/man/wesnoth.6:289
+#, no-wrap
+msgid "B<--proxy-user>I<\\ username>"
+msgstr "B<--proxy-user>I<\\ username>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:294
+msgid "specifies I<username> to log in to the proxy."
+msgstr "指定用於登入代理伺服器的 I<username>。"
+
+#. type: TP
+#: doc/man/wesnoth.6:294
+#, no-wrap
+msgid "B<--proxy-password>I<\\ password>"
+msgstr "B<--proxy-password>I<\\ password>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:299
+msgid "specifies I<password> to log in to the proxy."
+msgstr "指定用於登入代理伺服器的 I<password>。"
+
+#. type: TP
+#: doc/man/wesnoth.6:299
 #, no-wrap
 msgid "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:243
+#: doc/man/wesnoth.6:304
 #, fuzzy
 #| msgid "sets the screen resolution. Example: B<-r> B<800x600>."
-msgid "sets the screen resolution. Example: B<-r 800x600>"
+msgid "sets the screen resolution. Example: B<-r> B<800x600>."
 msgstr "設定螢幕解析度。例如：B<-r> B<800x600>。"
 
 #. type: TP
-#: doc/man/wesnoth.6:243
+#: doc/man/wesnoth.6:304
 #, no-wrap
 msgid "B<--render-image>I<\\ image>B<\\ >I<output>"
 msgstr "B<--render-image>I<\\ image>B<\\ >I<output>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:246
+#: doc/man/wesnoth.6:307
 #, fuzzy
 #| msgid ""
 #| "takes a valid wesnoth 'image path string' with image path functions, and "
@@ -649,106 +795,116 @@ msgstr "B<--render-image>I<\\ image>B<\\ >I<output>"
 #| "wiki.wesnoth.org/ImagePathFunctionWML."
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Outputs to a windows .bmp file if the filename ends "
-"with .bmp or if libpng is not available. Image path functions are documented "
-"at https://wiki.wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://wiki."
+"wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 "取一個包含圖形路徑函數的韋諾 '圖形路徑字串'值，並輸出一個 .png 檔。圖形路徑函"
 "數的文件可參閱 https://wiki.wesnoth.org/ImagePathFunctionWML。"
 
 #. type: TP
-#: doc/man/wesnoth.6:246
+#: doc/man/wesnoth.6:307
 #, no-wrap
 msgid "B<-R,\\ --report>"
 msgstr "B<-R,\\ --report>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:249
+#: doc/man/wesnoth.6:310
 msgid ""
 "initializes game directories, prints build information suitable for use in "
 "bug reports, and exits."
 msgstr "初始化遊戲目錄，建構並輸出回報臭蟲的訊息，退出。"
 
 #. type: TP
-#: doc/man/wesnoth.6:249
+#: doc/man/wesnoth.6:310
 #, fuzzy, no-wrap
 #| msgid "B<--rng-seed>I<\\ number>"
-msgid "B<--rng-seed>I<\\ seed>"
+msgid "B<--rng-seed>I<\\ number>"
 msgstr "B<--rng-seed>I<\\ number>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:253
+#: doc/man/wesnoth.6:317
 #, fuzzy
 #| msgid ""
 #| "seeds the random number generator with I<number>.  Example: B<--rng-seed> "
 #| "B<0>."
 msgid ""
-"seeds the random number generator with number E<lt>argE<gt>. Example: B<--"
-"rng-seed 0>"
+"seeds the random number generator with I<number>.  Example: B<--rng-seed> "
+"B<0>."
 msgstr "包含數字 I<number> 的隨機種子生成器。例如：B<--rng-seed> B<0>。"
 
 #. type: TP
-#: doc/man/wesnoth.6:253
+#: doc/man/wesnoth.6:317
 #, no-wrap
 msgid "B<--screenshot>I<\\ map>B<\\ >I<output>"
 msgstr "B<--screenshot>I<\\ map>B<\\ >I<output>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:260
+#: doc/man/wesnoth.6:324
 msgid ""
 "saves a screenshot of I<map> to I<output> without initializing a screen."
 msgstr "不初始化螢幕的情況下將 I<map> 螢幕截圖儲存至 I<output>。"
 
 #. type: TP
-#: doc/man/wesnoth.6:260
+#: doc/man/wesnoth.6:324
+#, no-wrap
+msgid "B<--script>I<\\ file>"
+msgstr "B<--script>I<\\ file>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:329
+msgid "(experimental)  I<file> containing a Lua script to control the client."
+msgstr "（實驗性）指定一個包含控制客戶端 Lua 腳本的 I<file>。"
+
+#. type: TP
+#: doc/man/wesnoth.6:329
 #, no-wrap
 msgid "B<-s[>I<host>B<],\\ --server[>I<=host>B<]>"
 msgstr "B<-s[>I<host>B<],\\ --server[>I<=host>B<]>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:264
+#: doc/man/wesnoth.6:334
 #, fuzzy
 #| msgid ""
 #| "connects to the specified host if any, otherwise connect to the first "
 #| "server in preferences. Example: B<--server> B<server.wesnoth.org>."
 msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
-"in preferences. Example: B<--server server.wesnoth.org>"
+"in preferences. Example: B<--server> B<server.wesnoth.org>."
 msgstr ""
 "如果指定了主機的話，連接到指定的主機。否則，連接到偏好設定中的第一個伺服器。"
 "例如：B<--server> B<server.wesnoth.org>。"
 
 #. type: TP
-#: doc/man/wesnoth.6:264
+#: doc/man/wesnoth.6:334
 #, no-wrap
 msgid "B<--showgui>"
 msgstr "B<--showgui>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:268
+#: doc/man/wesnoth.6:338
 msgid "runs the game with the GUI, overriding any implicit B<--nogui>."
 msgstr "以圖形界面的方式執行遊戲，覆蓋任何 B<--nogui>。"
 
 #. type: TP
-#: doc/man/wesnoth.6:268
+#: doc/man/wesnoth.6:338
 #, no-wrap
 msgid "B<--strict-validation>"
 msgstr "B<--strict-validation>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:271
+#: doc/man/wesnoth.6:341
 msgid "validation errors are treated as fatal errors."
 msgstr "驗證出的錯誤視為致命錯誤。"
 
 #. type: TP
-#: doc/man/wesnoth.6:271
+#: doc/man/wesnoth.6:341
 #, no-wrap
 msgid "B<-t[>I<scenario_id>B<],\\ --test[>I<=scenario_id>B<]>"
 msgstr "B<-t[>I<scenario_id>B<],\\ --test[>I<=scenario_id>B<]>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:283
+#: doc/man/wesnoth.6:353
 msgid ""
 "runs the game in a small test scenario. The scenario should be one defined "
 "with a B<[test]> WML tag. The default is B<test>.  A demonstration of the "
@@ -759,25 +915,66 @@ msgstr ""
 "以使用 B<micro_ai_test> 來展示 B<[micro_ai]> 的特性。包含 B<--nogui>。"
 
 #. type: TP
-#: doc/man/wesnoth.6:283
+#: doc/man/wesnoth.6:353
+#, no-wrap
+msgid "B<--translations-over>I<\\ percent>"
+msgstr "B<--translations-over>I<\\ percent>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:359
+msgid ""
+"Set the standard for deeming a translation is complete enough to show in the "
+"in-game language list to I<percent>.  Valid values are 0 to 100."
+msgstr "設定翻譯的語言是否顯示於遊戲列表的值為 I<percent>。該值為0至100。"
+
+#. type: TP
+#: doc/man/wesnoth.6:359
 #, no-wrap
 msgid "B<-u,\\ --unit>I<\\ scenario-id>"
 msgstr "B<-u,\\ --unit>I<\\ scenario-id>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:287
+#: doc/man/wesnoth.6:363
 msgid "runs the specified test scenario as a unit test. Implies B<--nogui>."
 msgstr "執行指定章節來進行單位測試。包含 B<--nogui>。"
 
 #. type: TP
-#: doc/man/wesnoth.6:287
+#: doc/man/wesnoth.6:363
+#, no-wrap
+msgid "B<--unsafe-scripts>"
+msgstr "B<--unsafe-scripts>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:368
+msgid ""
+"makes the B<package> package available to lua scripts, so that they can load "
+"arbitrary packages. Do not do this with untrusted scripts! This action gives "
+"lua the same permissions as the wesnoth executable."
+msgstr ""
+"讓 B<package> 在 Lua 腳本中可以使用，Lua 腳本將取得載入權限。請不要對不信任的"
+"腳本使用！此動作將賦予 Lua 與韋諾可執行文件相同權限。"
+
+#. type: TP
+#: doc/man/wesnoth.6:368
+#, fuzzy, no-wrap
+#| msgid "B<--scenario>I<\\ value>"
+msgid "B<-S,--use-schema>I<\\ path>"
+msgstr "B<--scenario>I<\\ value>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:372
+msgid "sets the WML schema for use with B<-V,--validate>."
+msgstr ""
+
+#. type: TP
+#: doc/man/wesnoth.6:372
 #, no-wrap
 msgid "B<--userconfig-dir>I<\\ name>"
 msgstr "B<--userconfig-dir>I<\\ name>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:298
+#: doc/man/wesnoth.6:383
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -794,25 +991,25 @@ msgstr ""
 "設在使用者資料中。"
 
 #. type: TP
-#: doc/man/wesnoth.6:298
+#: doc/man/wesnoth.6:383
 #, no-wrap
 msgid "B<--userconfig-path>"
 msgstr "B<--userconfig-path>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:301
+#: doc/man/wesnoth.6:386
 msgid "prints the path of the user configuration directory and exits."
 msgstr "顯示玩家設定資料夾的路徑並退出。"
 
 #. type: TP
-#: doc/man/wesnoth.6:301
+#: doc/man/wesnoth.6:386
 #, no-wrap
 msgid "B<--userdata-dir>I<\\ name>"
 msgstr "B<--userdata-dir>I<\\ name>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:310
+#: doc/man/wesnoth.6:395
 msgid ""
 "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
 "Games\" for windows.  You can also specify an absolute path for the userdata "
@@ -826,82 +1023,129 @@ msgstr ""
 "徑。"
 
 #. type: TP
-#: doc/man/wesnoth.6:310
-#, no-wrap
-msgid "B<--username>I<\\ username>"
-msgstr "B<--username>I<\\ username>"
-
-#. type: Plain text
-#: doc/man/wesnoth.6:315
-msgid ""
-"uses I<username> when connecting to a server, ignoring other preferences."
-msgstr "當連結伺服器時使用 I<username>，忽略其他偏好設定。"
-
-#. type: TP
-#: doc/man/wesnoth.6:315
+#: doc/man/wesnoth.6:395
 #, no-wrap
 msgid "B<--userdata-path>"
 msgstr "B<--userdata-path>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:318
+#: doc/man/wesnoth.6:398
 msgid "prints the path of the userdata directory and exits."
 msgstr "輸出使用者資料目錄的路徑並退出。"
 
 #. type: TP
-#: doc/man/wesnoth.6:318
+#: doc/man/wesnoth.6:398
+#, no-wrap
+msgid "B<--username>I<\\ username>"
+msgstr "B<--username>I<\\ username>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:403
+msgid ""
+"uses I<username> when connecting to a server, ignoring other preferences."
+msgstr "當連結伺服器時使用 I<username>，忽略其他偏好設定。"
+
+#. type: TP
+#: doc/man/wesnoth.6:403
+#, fuzzy, no-wrap
+#| msgid "B<--data-path>"
+msgid "B<--validate>I<\\ path>"
+msgstr "B<--data-path>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:406
+msgid "validates a file against the WML schema."
+msgstr ""
+
+#. type: TP
+#: doc/man/wesnoth.6:406
+#, no-wrap
+msgid "B<--validate-addon>I<\\ addon_id>"
+msgstr ""
+
+#. type: Plain text
+#: doc/man/wesnoth.6:409
+msgid "validates the WML of the given addon as you play."
+msgstr ""
+
+#. type: TP
+#: doc/man/wesnoth.6:409
+#, fuzzy, no-wrap
+#| msgid "B<--validcache>"
+msgid "B<--validate-core>"
+msgstr "B<--validcache>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:412
+msgid "validates the core WML as you play."
+msgstr ""
+
+#. type: TP
+#: doc/man/wesnoth.6:412
+#, fuzzy, no-wrap
+#| msgid "B<--validcache>"
+msgid "B<--validate-schema \\ path>"
+msgstr "B<--validcache>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:415
+msgid "validates a file as a WML schema."
+msgstr ""
+
+#. type: TP
+#: doc/man/wesnoth.6:415
 #, no-wrap
 msgid "B<--validcache>"
 msgstr "B<--validcache>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:321
+#: doc/man/wesnoth.6:418
 msgid "assumes that the cache is valid. (dangerous)"
 msgstr "假定快取是有效的。（危險）"
 
 #. type: TP
-#: doc/man/wesnoth.6:321
+#: doc/man/wesnoth.6:418
 #, no-wrap
 msgid "B<-v, --version>"
 msgstr "B<-v, --version>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:324
+#: doc/man/wesnoth.6:421
 msgid "shows the version number and exits."
 msgstr "顯示版本並退出。"
 
 #. type: TP
-#: doc/man/wesnoth.6:324
+#: doc/man/wesnoth.6:421
 #, no-wrap
 msgid "B<-w, --windowed>"
 msgstr "B<-w, --windowed>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:327
+#: doc/man/wesnoth.6:424
 msgid "runs the game in windowed mode."
 msgstr "使用視窗模式執行遊戲。"
 
 #. type: TP
-#: doc/man/wesnoth.6:327
+#: doc/man/wesnoth.6:424
 #, no-wrap
 msgid "B<--with-replay>"
 msgstr "B<--with-replay>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:332
+#: doc/man/wesnoth.6:429
 msgid "replays the game loaded with the B<--load> option."
 msgstr "使用 B<--load> 播放遊戲錄影。"
 
 #. type: SH
-#: doc/man/wesnoth.6:333
+#: doc/man/wesnoth.6:430
 #, no-wrap
 msgid "Options for --multiplayer"
 msgstr "多人遊戲選項"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:340
+#: doc/man/wesnoth.6:437
 msgid ""
 "The side-specific multiplayer options are marked with I<number>.  I<number> "
 "has to be replaced by a side number. It usually is 1 or 2 but depends on the "
@@ -912,27 +1156,27 @@ msgstr ""
 "節。"
 
 #. type: TP
-#: doc/man/wesnoth.6:340
+#: doc/man/wesnoth.6:437
 #, fuzzy, no-wrap
 #| msgid "B<--ai-config>I<\\ number>B<:>I<value>"
-msgid "B<--ai_config>I<\\ number>B<:>I<value>"
+msgid "B<--ai-config>I<\\ number>B<:>I<value>"
 msgstr "B<--ai-config>I<\\ number>B<:>I<value>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:343
+#: doc/man/wesnoth.6:440
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
 msgstr "為該陣營的 AI 控制者選擇一個配置檔案來讀取。"
 
 #. type: TP
-#: doc/man/wesnoth.6:343
+#: doc/man/wesnoth.6:440
 #, no-wrap
 msgid "B<--algorithm>I<\\ number>B<:>I<value>"
 msgstr "B<--algorithm>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:353
+#: doc/man/wesnoth.6:450
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. The algorithm is defined by an B<[ai]> tag, which can be a core one "
@@ -944,25 +1188,30 @@ msgstr ""
 "值包含 B<idle_ai> 及 B<experimental_ai>。"
 
 #. type: TP
-#: doc/man/wesnoth.6:353
+#: doc/man/wesnoth.6:450
 #, no-wrap
 msgid "B<--controller>I<\\ number>B<:>I<value>"
 msgstr "B<--controller>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:359
+#: doc/man/wesnoth.6:457
+#, fuzzy
+#| msgid ""
+#| "selects the controller for this side. Available values: B<human> and "
+#| "B<ai>."
 msgid ""
-"selects the controller for this side. Available values: B<human> and B<ai>."
+"selects the controller for this side. Available values: B<human>, B<ai> and "
+"B<null>."
 msgstr "選擇這個陣營的控制者。可選值有：B<human> 和 B<ai>。"
 
 #. type: TP
-#: doc/man/wesnoth.6:359
+#: doc/man/wesnoth.6:457
 #, no-wrap
 msgid "B<--era>I<\\ value>"
 msgstr "B<--era>I<\\ value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:366
+#: doc/man/wesnoth.6:464
 msgid ""
 "use this option to play in the selected era instead of the B<Default> era. "
 "The era is chosen by an id. Eras are described in the B<data/multiplayer/"
@@ -972,13 +1221,13 @@ msgstr ""
 "B<data/multiplayer/eras.cfg> 檔案中描述。"
 
 #. type: TP
-#: doc/man/wesnoth.6:366
+#: doc/man/wesnoth.6:464
 #, no-wrap
 msgid "B<--exit-at-end>"
 msgstr "B<--exit-at-end>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:370
+#: doc/man/wesnoth.6:468
 #, fuzzy
 #| msgid ""
 #| "exits once the scenario is over, without displaying victory/defeat dialog "
@@ -986,44 +1235,55 @@ msgstr "B<--exit-at-end>"
 #| "used for scriptable benchmarking."
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
-"which requires the user to click OK.  This is also used for scriptable "
-"benchmarking."
+"which normally requires the user to click End Scenario.  This is also used "
+"for scriptable benchmarking."
 msgstr ""
 "當章節結束時直接退出而不顯示需要玩家點選'結束章節'的勝利/失敗對話框。這個選項"
 "也可以用在腳本化的性能基準測試。"
 
 #. type: TP
-#: doc/man/wesnoth.6:370
+#: doc/man/wesnoth.6:468
 #, no-wrap
 msgid "B<--ignore-map-settings>"
 msgstr "B<--ignore-map-settings>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:373
+#: doc/man/wesnoth.6:471
 msgid "do not use map settings, use default values instead."
 msgstr "不使用地圖設定，而使用預設值。"
 
 #. type: TP
-#: doc/man/wesnoth.6:373
+#: doc/man/wesnoth.6:471
+#, no-wrap
+msgid "B<--label>I<\\ label>"
+msgstr "B<--label>I<\\ label>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:476
+msgid "sets the I<label> for AIs."
+msgstr "設定 AI 的 I<label>。"
+
+#. type: TP
+#: doc/man/wesnoth.6:476
 #, no-wrap
 msgid "B<--multiplayer-repeat>I<\\ value>"
 msgstr "B<--multiplayer-repeat>I<\\ value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:380
+#: doc/man/wesnoth.6:483
 msgid ""
 "repeats a multiplayer game I<value> times. Best to use with B<--nogui> for "
 "scriptable benchmarking."
 msgstr "重複執行多人遊戲 I<value> 次。建議與 B<--nogui> 使用腳本化性能測試。"
 
 #. type: TP
-#: doc/man/wesnoth.6:380
+#: doc/man/wesnoth.6:483
 #, no-wrap
 msgid "B<--parm>I<\\ number>B<:>I<name>B<:>I<value>"
 msgstr "B<--parm>I<\\ number>B<:>I<name>B<:>I<value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:389
+#: doc/man/wesnoth.6:492
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm>.  It should only be "
@@ -1033,26 +1293,26 @@ msgstr ""
 "定。這個選項只對設計 AI 的人比較有用。(目前還沒有相應的文檔)"
 
 #. type: TP
-#: doc/man/wesnoth.6:389
+#: doc/man/wesnoth.6:492
 #, no-wrap
 msgid "B<--scenario>I<\\ value>"
 msgstr "B<--scenario>I<\\ value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:393
+#: doc/man/wesnoth.6:496
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
 msgstr "透過 ID 選擇多人遊戲地圖。預設地圖是 B<multiplayer_The_Freelands>。"
 
 #. type: TP
-#: doc/man/wesnoth.6:393
+#: doc/man/wesnoth.6:496
 #, no-wrap
 msgid "B<--side>I<\\ number>B<:>I<value>"
 msgstr "B<--side>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:398
+#: doc/man/wesnoth.6:501
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
@@ -1061,26 +1321,26 @@ msgstr ""
 "multiplayer.cfg 文件中描述。"
 
 #. type: TP
-#: doc/man/wesnoth.6:398
+#: doc/man/wesnoth.6:501
 #, no-wrap
 msgid "B<--turns>I<\\ value>"
 msgstr "B<--turns>I<\\ value>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:401
+#: doc/man/wesnoth.6:504
 msgid ""
 "sets the number of turns for the chosen scenario. By default no turn limit "
 "is set."
 msgstr "設定所選章節的回合數限制。預設為沒有限制。"
 
 #. type: SH
-#: doc/man/wesnoth.6:402 doc/man/wesnothd.6:265
+#: doc/man/wesnoth.6:505 doc/man/wesnothd.6:265
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr "退出狀態碼"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:407
+#: doc/man/wesnoth.6:510
 msgid ""
 "Normal exit status is 0.  An exit status of 1 indicates an (SDL, video, "
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
@@ -1090,7 +1350,7 @@ msgstr ""
 "碼2代表指令行選項中有錯誤。"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:419
+#: doc/man/wesnoth.6:522
 msgid ""
 "When running unit tests (withB<\\ -u>), the exit status is different. An "
 "exit status of 0 indicates that the test passed, and 1 indicates that the "
@@ -1106,18 +1366,18 @@ msgstr ""
 "碼2是測試時間逾時，當與 B<--timeout> 使用時才會出現。"
 
 #. type: SH
-#: doc/man/wesnoth.6:420 doc/man/wesnothd.6:269
+#: doc/man/wesnoth.6:523 doc/man/wesnothd.6:269
 #, no-wrap
 msgid "AUTHOR"
 msgstr "作者"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:423
+#: doc/man/wesnoth.6:526
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "由David White E<lt>davidnwhite@verizon.netE<gt>編寫。"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:425
+#: doc/man/wesnoth.6:528
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
@@ -1126,30 +1386,30 @@ msgstr ""
 "and Soliton E<lt>soliton.de@gmail.comE<gt>更動。"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:427
+#: doc/man/wesnoth.6:530
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr "這個說明頁最早由 Cyril Bouthors 撰寫E<lt>cyril@bouthors.orgE<gt>。"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:429 doc/man/wesnothd.6:276
+#: doc/man/wesnoth.6:532 doc/man/wesnothd.6:276
 msgid "Visit the official homepage: https://www.wesnoth.org/"
 msgstr "參閱官方網站：http://www.wesnoth.org/"
 
 #. type: SH
-#: doc/man/wesnoth.6:430 doc/man/wesnothd.6:277
+#: doc/man/wesnoth.6:533 doc/man/wesnothd.6:277
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "版權"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:433 doc/man/wesnothd.6:280
+#: doc/man/wesnoth.6:536 doc/man/wesnothd.6:280
 msgid "Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr "版權 \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:436 doc/man/wesnothd.6:283
+#: doc/man/wesnoth.6:539 doc/man/wesnothd.6:283
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -1162,7 +1422,7 @@ msgstr ""
 "not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 
 #. type: SH
-#: doc/man/wesnoth.6:437 doc/man/wesnothd.6:284
+#: doc/man/wesnoth.6:540 doc/man/wesnothd.6:284
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "參見"
@@ -1182,7 +1442,7 @@ msgstr "參見"
 #: doc/man/wesnothd.6:15
 #, fuzzy
 #| msgid "B<wesnothd>(6)"
-msgid "B<wesnothd>(6)."
+msgid "B<wesnothd>(6)"
 msgstr "B<wesnothd>(6)"
 
 #. type: TH
@@ -1961,158 +2221,23 @@ msgstr ""
 #: doc/man/wesnothd.6:286
 #, fuzzy
 #| msgid "B<wesnoth>(6)"
-msgid "B<wesnoth>(6)."
+msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
-
-#~| msgid "B<--strict-validation>"
-#~ msgid "B<--all-translations>"
-#~ msgstr "B<--all-translations>"
-
-#~ msgid ""
-#~ "Show all translations in the in-game language selection list, even if "
-#~ "they are deemed insufficiently complete."
-#~ msgstr "在遊戲中的語言選單中顯示所有的翻譯，如果翻譯不完整也一樣顯示。"
-
-#~ msgid "B<--campaign-skip-story>"
-#~ msgstr "B<--campaign-skip-story>"
-
-#~ msgid ""
-#~ "Skip [story] screens and dialog through the end of the B<start> event."
-#~ msgstr "在 B<start> 事件最後跳過 [story] 畫面及對話框。"
-
-#~| msgid "B<--log-strict>"
-#~ msgid "B<--clock>"
-#~ msgstr "B<--clock>"
-
-#~ msgid "Adds the option to show a clock for testing the drawing timer."
-#~ msgstr "增加一個顯示時鐘的選項用來當測試畫面繪製計時器。"
-
-#~| msgid "B<--userconfig-dir>I<\\ name>"
-#~ msgid "B<--config-dir>I<\\ name>"
-#~ msgstr "B<--config-dir>I<\\ name>"
-
-#~ msgid "Deprecated, use B<--userdata-dir>."
-#~ msgstr "已廢棄，請使用 B<--userdata-dir>。"
-
-#~| msgid "B<--userconfig-path>"
-#~ msgid "B<--config-path>"
-#~ msgstr "B<--config-path>"
-
-#~| msgid "B<--userdata-path>"
-#~ msgid "Deprecated, use B<--userdata-path>."
-#~ msgstr "Deprecated, use B<--userdata-path>."
-
-#~| msgid "B<-d, --debug>"
-#~ msgid "B<--debug-lua>"
-#~ msgstr "B<--debug-lua>"
-
-#~ msgid "enables some Lua debugging mechanisms"
-#~ msgstr "開啟一些 Lua 偵錯機制"
 
 #~ msgid ""
 #~ "sets the severity level of the log domains.  B<all> can be used to match "
 #~ "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#~ "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
-#~ "domains, but B<deprecation> defaults to B<none> unless combined with the "
-#~ "B<-d> option."
+#~ "B<debug>.  By default the B<error> level is used."
 #~ msgstr ""
-#~ "設定日誌記錄的類別。B<all>可以用來支援任何日誌域的類別。可選的類別有："
-#~ "B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,\\ B<none>。預設的類別是"
-#~ "B<warning>，對B<deprecation>域預設類別是B<none>，除非和B<-d>選項一併使用。"
+#~ "設定debug的級別。B<all>用來支配任意bebug級別。可選的級別有：B<error>，\\ "
+#~ "B<warning>，\\ B<info>，\\ B<debug>。預設的級別是B<error>。"
 
-#~| msgid "B<--no-delay>"
-#~ msgid "B<--new-widgets>"
-#~ msgstr "B<--new-widgets>"
+#, no-wrap
+#~ msgid "B<--path>"
+#~ msgstr "B<--path>"
 
-#~ msgid ""
-#~ "there is a new WIP widget toolkit, this option enables it. This is very "
-#~ "experimental, don't fill bug reports since most are known. Parts of the "
-#~ "library are deemed stable and will work without this switch."
-#~ msgstr ""
-#~ "新的 WIP 物件工具，這個選項開啟此工具。此功能為實驗性，大部分的 Bug 都是已"
-#~ "知的所以請勿回報任何 Bug。部分確認為穩定的功能即使不開啟此功能也會啟用。"
-
-#~| msgid "B<--gzip>I<\\ infile>"
-#~ msgid "B<--plugin>I<\\ script>"
-#~ msgstr "B<--plugin>I<\\ script>"
-
-#~ msgid ""
-#~ "(experimental) load a I<script> which defines a Wesnoth plugin. Similar "
-#~ "to B<--script>, but Lua file should return a function which will be run "
-#~ "as a coroutine and periodically woken up with updates."
-#~ msgstr ""
-#~ "（實驗性）讀取一個定義韋諾插件的 I<script>。與 B<--script> 相似，但 Lua 文"
-#~ "件應該傳回一個函數，該函數將運行且週期性地喚醒並更新。"
-
-#~| msgid "B<--fps>"
-#~ msgid "B<--proxy>"
-#~ msgstr "B<--proxy>"
-
-#~ msgid "enables usage of proxy for network connections."
-#~ msgstr "開啟代理伺服器來進行網路連線。"
-
-#~| msgid "B<--core>I<\\ id_core>"
-#~ msgid "B<--proxy-address>I<\\ address>"
-#~ msgstr "B<--proxy-address>I<\\ address>"
-
-#~ msgid "specifies I<address> of the proxy."
-#~ msgstr "指定代理伺服器的 I<address>。"
-
-#~| msgid "B<-p\\ >I<port>B<,\\ --port>I<\\ port>"
-#~ msgid "B<--proxy-port>I<\\ port>"
-#~ msgstr "B<--proxy-port>I<\\ port>"
-
-#~ msgid "specifies I<port> of the proxy."
-#~ msgstr "指定代理伺服器的 I<port>。"
-
-#~| msgid "B<--username>I<\\ username>"
-#~ msgid "B<--proxy-user>I<\\ username>"
-#~ msgstr "B<--proxy-user>I<\\ username>"
-
-#~ msgid "specifies I<username> to log in to the proxy."
-#~ msgstr "指定用於登入代理伺服器的 I<username>。"
-
-#~| msgid "B<--password>I<\\ password>"
-#~ msgid "B<--proxy-password>I<\\ password>"
-#~ msgstr "B<--proxy-password>I<\\ password>"
-
-#~ msgid "specifies I<password> to log in to the proxy."
-#~ msgstr "指定用於登入代理伺服器的 I<password>。"
-
-#~| msgid "B<--bzip>I<\\ infile>"
-#~ msgid "B<--script>I<\\ file>"
-#~ msgstr "B<--script>I<\\ file>"
-
-#~ msgid ""
-#~ "(experimental)  I<file> containing a Lua script to control the client."
-#~ msgstr "（實驗性）指定一個包含控制客戶端 Lua 腳本的 I<file>。"
-
-#~ msgid "B<--translations-over>I<\\ percent>"
-#~ msgstr "B<--translations-over>I<\\ percent>"
-
-#~ msgid ""
-#~ "Set the standard for deeming a translation is complete enough to show in "
-#~ "the in-game language list to I<percent>.  Valid values are 0 to 100."
-#~ msgstr "設定翻譯的語言是否顯示於遊戲列表的值為 I<percent>。該值為0至100。"
-
-#~| msgid "B<--userconfig-path>"
-#~ msgid "B<--unsafe-scripts>"
-#~ msgstr "B<--unsafe-scripts>"
-
-#~ msgid ""
-#~ "makes the B<package> package available to lua scripts, so that they can "
-#~ "load arbitrary packages. Do not do this with untrusted scripts! This "
-#~ "action gives lua the same permissions as the wesnoth executable."
-#~ msgstr ""
-#~ "讓 B<package> 在 Lua 腳本中可以使用，Lua 腳本將取得載入權限。請不要對不信"
-#~ "任的腳本使用！此動作將賦予 Lua 與韋諾可執行文件相同權限。"
-
-#~| msgid "B<--era>I<\\ value>"
-#~ msgid "B<--label>I<\\ label>"
-#~ msgstr "B<--label>I<\\ label>"
-
-#~ msgid "sets the I<label> for AIs."
-#~ msgstr "設定 AI 的 I<label>。"
+#~ msgid "prints the name of the game data directory and exits."
+#~ msgstr "顯示遊戲資料庫目錄並退出。"
 
 #, fuzzy
 #~| msgid "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"

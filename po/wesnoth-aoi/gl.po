@@ -11,8 +11,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-04 16:39 UTC\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2019-07-18 12:50 UTC\n"
 "PO-Revision-Date: 2018-04-15 01:05+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -52,7 +52,9 @@ msgstr ""
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:20
-msgid "(Novice level, 7 scenarios.)"
+#, fuzzy
+#| msgid "(Novice level, 7 scenarios.)"
+msgid "(Rookie level, 7 scenarios.)"
 msgstr "Nivel principiante, 7 escenarios."
 
 #. [campaign]: id=An_Orcish_Incursion
@@ -173,8 +175,8 @@ msgstr ""
 "A primeira vez que se avistaron orcos foi nas marcas ao norte do Bosque de "
 "Güesmer."
 
-#. [side]
 #. [side]: type=Elvish Lord
+#. [side]
 #: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:56
 #: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:41
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:49
@@ -187,15 +189,15 @@ msgstr "Elfos"
 
 #. [unit]: type=Elvish Rider, id=Lomarfel
 #: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:68
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:119
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:111
 msgid "Lomarfel"
 msgstr "Lomarfel"
 
-#. [side]: type=Orcish Sovereign, id=Rualsha
-#. [side]: type=Orcish Warrior, id=Urugha
 #. [side]: type=Orcish Slayer, id=Gharlsa
 #. [side]: type=Orcish Warlord, id=Gnargha
+#. [side]: type=Orcish Sovereign, id=Rualsha
 #. [side]: type=Orcish Warlord, id=Krughnar
+#. [side]: type=Orcish Warrior, id=Urugha
 #: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:88
 #: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:59
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:66
@@ -210,23 +212,23 @@ msgid "Urugha"
 msgstr "Uruga"
 
 #. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:113
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:108
 msgid "Defeat Urugha"
 msgstr "Derrota a Uruga."
 
 #. [objective]: condition=lose
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:117
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:102
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:91
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:158
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:111
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:74
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:94
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:112
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:96
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:86
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:144
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:103
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:66
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:86
 msgid "Death of Erlornas"
 msgstr "Morte de Erlornas."
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:129
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:124
 msgid ""
 "Elves can move quickly and safely among the trees. Pick off the enemy grunts "
 "with your archers from the safety of the forest."
@@ -235,7 +237,7 @@ msgstr ""
 "Protexe aos arqueiros neles mentres se desfán dos roñóns inimigos."
 
 #. [message]: speaker=Lomarfel
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:139
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:134
 msgid ""
 "My lord! A party of aliens has made camp to the north and lays waste to the "
 "forest. Our scouts believe it’s a band of orcs."
@@ -244,7 +246,7 @@ msgstr ""
 "bosque. Os exploradores din que se trata dun grupo de orcos."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:144
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:139
 msgid ""
 "Orcs? It seems unlikely. The human king, Haldric, crushed them when they "
 "landed on these shores, and since then they’ve been no more than a bogey "
@@ -255,7 +257,7 @@ msgstr ""
 "para asustar aos nenos."
 
 #. [message]: speaker=Lomarfel
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:149
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:144
 msgid ""
 "So it seemed, my lord. Yet there is a band of them in the north cutting down "
 "healthy trees by the dozen, and making great fires from the wood. They "
@@ -268,12 +270,19 @@ msgstr ""
 "fedor case pode cheirarse desde aquí."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:154
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:149
+#, fuzzy
+#| msgid ""
+#| "So the grim tales of them prove true. They must not be allowed to "
+#| "continue; we must banish this blight from our forests. I shall marshal "
+#| "the wardens and drive them off. And the Council needs to hear of this; "
+#| "take the message and return with reinforcements, there might be more of "
+#| "them."
 msgid ""
 "So the grim tales of them prove true. They must not be allowed to continue; "
 "we must banish this blight from our forests. I shall marshal the wardens and "
 "drive them off. And the Council needs to hear of this; take the message and "
-"return with reinforcements, there might be more of them."
+"return with reinforcements, for there might be more of them."
 msgstr ""
 "Entón eran certas as historias. Haberá que pararlles os pés, debemos librar "
 "os bosques desa praga. Reunirei aos gardas e encargarémonos deles. Mentres "
@@ -281,12 +290,12 @@ msgstr ""
 "haber máis orcos."
 
 #. [message]: speaker=Lomarfel
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:159
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:154
 msgid "Yes, my lord!"
 msgstr "Partirei de contado, señor!"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:178
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:175
 msgid ""
 "Look at them. Big, slow, clumsy and hardly a bow in hand. Keep to the trees, "
 "use your arrows and the day will be ours."
@@ -295,13 +304,49 @@ msgstr ""
 "frechas desde o bosque e acabaremos con eles antes do solpor."
 
 #. [message]: race=elf
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:187
+#. the player hasn't recruited any Shamans. This message isn't shown if they have a Shaman, even if she has 0 xp.
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:208
+msgid ""
+"My lord, none of our healers have experience on the battlefield. It pleases "
+"me that they are safe, but if we should embark on a campaign then we will "
+"surely need them alongside us in the battles ahead."
+msgstr ""
+
+#. [message]: race=elf
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:209
+msgid ""
+"female^My lord, none of our healers have experience on the battlefield. It "
+"pleases me that they are safe, but if we should embark on a campaign then we "
+"will surely need them alongside us in the battles ahead."
+msgstr ""
+
+#. [message]: race=elf
+#. the player has recruited some Shamans but has lost all them (or managed to level a Sorceress)
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:223
+msgid ""
+"My lord, none of our surviving healers have experience on the battlefield. "
+"It pains me to suggest that we should risk another, but if we should embark "
+"on a campaign then we will surely need them alongside us in the battles "
+"ahead."
+msgstr ""
+
+#. [message]: race=elf
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:224
+msgid ""
+"female^My lord, none of our surviving healers have experience on the "
+"battlefield. It pains me to suggest that we should risk another, but if we "
+"should embark on a campaign then we will surely need them alongside us in "
+"the battles ahead."
+msgstr ""
+
+#. [message]: race=elf
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:239
 msgid "It’s hopeless; we’ve tried everything, and they’re still coming back."
 msgstr ""
 "Estamos acabados, fixemos todo o que puidemos e seguen chegando máis e máis."
 
 #. [message]: speaker=Urugha
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:192
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:244
 msgid ""
 "Forward, you worthless worms! Look at them, they’re tired and afraid! You "
 "killed their will to fight, now go and finish the job!"
@@ -311,7 +356,7 @@ msgstr ""
 "rematalos!"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:197
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:249
 msgid ""
 "That cloud of dust on the horizon... flee! There’s more of the abominations "
 "heading this way! Fall back before we’re outnumbered and crushed."
@@ -320,7 +365,7 @@ msgstr ""
 "Corran antes de que nos superen en número e acaben con nós."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:203
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:255
 msgid ""
 "Lord Erlornas didn’t drive the orcs back, although he and his warriors tried "
 "their absolute best. When another war band arrived, elvish resistance "
@@ -331,7 +376,7 @@ msgstr ""
 "partida de guerra, a resistencia dos elfos caeu."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:209
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:261
 msgid ""
 "Of the ensuing events little is known, since much was lost in the chaos and "
 "confusion, but one thing is painfully sure. Elves lost the campaign."
@@ -341,27 +386,27 @@ msgstr ""
 "Os elfos perderon a campaña."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:221
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:273
 msgid "Ugh..."
 msgstr "Agh…"
 
 #. [message]: speaker=Urugha
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:226
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:278
 msgid "Finally! Got him!"
 msgstr "Por fin! Collémolo!"
 
 #. [message]: race=elf
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:234
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:286
 msgid "Lord!"
 msgstr "Señor!"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:239
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:291
 msgid "Take... command... Drive them... away."
 msgstr "Tome… o mando… Afásteos… de aquí."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:245
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:297
 msgid ""
 "Lord Erlornas died the day he first fought the orcs and never saw the end of "
 "the war. Given its final outcome, this was perhaps for the best."
@@ -372,7 +417,7 @@ msgstr ""
 
 # Rualsha → Rualsa (o “sh” non é necesariamente comprensible en galego, e aínda entendéndoo a pronuncia “Rualxa” soa un pouco forzada). “Rualsa” é unha adaptación de “Rualxa” que non soa extraña na fonética galega (“balsa”).
 #. [message]: speaker=unit
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:257
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:309
 msgid ""
 "I’ve been bested, but the combat wasn’t fair... A thousand curses on you, "
 "withered coward! May you suffer... and when my master, Rualsha, finds you "
@@ -383,7 +428,7 @@ msgstr ""
 "teus da face da terra!"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:269
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:321
 msgid ""
 "Rualsha? Hmm... What if... Assemble a war-party, we need to scout north!"
 msgstr ""
@@ -422,12 +467,12 @@ msgid "Gharlsa"
 msgstr "Garsa"
 
 #. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:98
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:92
 msgid "Defeat Gharlsa"
 msgstr "Derrota a Garsa."
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:114
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:108
 msgid ""
 "Assassins are hard to hit, and their poison is insidious. Stay close to the "
 "villages, where poisoning can be cured, and force your enemies to attack you "
@@ -438,12 +483,12 @@ msgstr ""
 "a atacar desde o río."
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:128
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:122
 msgid "The trail leads straight to this place, my lord."
 msgstr "O rastro segue por aquí, señor, non cabe dúbida."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:133
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:127
 msgid ""
 "There is a keep ahead of us. How comes it that we know nothing of it? I "
 "thought our borders were watched more carefully."
@@ -452,7 +497,7 @@ msgstr ""
 "dela? Pensaba que tiñamos mellor vixiadas as fronteiras."
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:138
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:132
 msgid ""
 "I... I know not, my lord. For ages there was no one in these lands that "
 "could build such a thing save us. I fear we have fallen prey a false sense "
@@ -463,45 +508,45 @@ msgstr ""
 "súas roldas."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:143
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:137
 msgid "When the fighting ends, I’ll have some answers. But for now—"
 msgstr "Xa haberá tempo de depurar responsabilidades, agora…"
 
 #. [message]: speaker=Gharlsa
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:148
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:142
 msgid "Gharlsa sees elves... yes... Fresh meat for wolves. Yes, yes..."
 msgstr "Garsa ve elfos… si… Carne fresca para os lobos… si, si…"
 
 # Soa culto, va que si?
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:153
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:147
 msgid "— let’s focus on the task at hand."
 msgstr "…mellor será centrarnos na empresa que nos ocupa."
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:158
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:152
 msgid "Does that demented creature truly believe he can kill us?"
 msgstr "De veras pensa ese demente que nos vai poder matar?"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:163
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:157
 msgid "Appearances can be deceiving. Tell the men to be cautious."
 msgstr ""
 "Non se deixe enganar pola súa aparencia. Dígalle ás tropas que sexan "
 "cautelosas."
 
 #. [message]: speaker=Gharlsa
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:175
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:169
 msgid "Yes... yes... Slay them!"
 msgstr "Si… si… matádeos a todos!"
 
 #. [message]: speaker=unit
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:187
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:181
 msgid "Hurts... failed... Rualsha gonna be angry..."
 msgstr "Doe… fracasei… Rualsa vai cabrear…"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:199
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:193
 msgid ""
 "This... ‘Rualsha’ again. We need to forge ahead; the answers we seek are not "
 "here. Perhaps we will find them further north."
@@ -510,7 +555,7 @@ msgstr ""
 "buscamos non as imos atopar aquí. Pode que máis ao norte."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:204
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:198
 msgid ""
 "Destroy this place and let the forest take the ruins. We don’t want any more "
 "undesirables to use it."
@@ -579,12 +624,12 @@ msgid "Gnargha"
 msgstr "Narga"
 
 #. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:87
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:82
 msgid "Defeat Gnargha"
 msgstr "Derrota a Narga."
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:103
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:98
 msgid ""
 "There are no villages in this scenario — you must use healers instead. Use "
 "hit-and-run tactics to weaken enemy units who cannot heal themselves."
@@ -593,7 +638,7 @@ msgstr ""
 "e retirada para debilitar ás unidades do inimigo xa que non poden sandar."
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:121
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:116
 msgid ""
 "Lord... I’m... I am filled with grief. This senseless destruction is... "
 "overwhelming."
@@ -601,7 +646,7 @@ msgstr ""
 "Señor… i… isto supérame. Esta destrución sen sentido resúltame… insoportábel."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:126
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:121
 msgid ""
 "Yes. And this is the threat we were blind to but are now facing. This tribe "
 "is small, yet we must drive them back to the north. They must have no "
@@ -612,7 +657,7 @@ msgstr ""
 "Non poden quedarlles reforzos ao sur dos outeiros."
 
 #. [message]: speaker=Gnargha
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:131
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:126
 msgid ""
 "Elves!? This means Urugha failed and his spirit will suffer greatly for his "
 "weakness. So be it!"
@@ -621,7 +666,7 @@ msgstr ""
 "súa debilidade. Estalle ben merecido!"
 
 #. [message]: speaker=Gnargha
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:136
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:131
 msgid ""
 "Rise up, grunts! We have a great fight upon us! Let your rage flow freely! "
 "Let your blades slay all! First one to draw blood will feast by my fire this "
@@ -632,7 +677,7 @@ msgstr ""
 "esta noite festéxao na miña fogueira!"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:141
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:136
 msgid ""
 "Aim true, men, with wit and courage the day will be ours. And spare no-one, "
 "there can be no orc south of the hills, else we’ll never have peace again."
@@ -643,12 +688,12 @@ msgstr ""
 
 # Descoñedo dunha boa onomatopea para imitar a tos.
 #. [message]: speaker=unit
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:199
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:194
 msgid "You won... elf... But it changes... nothing... (<i>cough</i>)"
 msgstr "Venciches… elfo… pero iso non… cambia nada… (<i>tose</i>)"
 
 #. [message]: speaker=unit
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:204
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:199
 msgid ""
 "We found the way... Now... we will come in numbers... (<i>cough</i>) you "
 "can’t imagine..."
@@ -657,12 +702,12 @@ msgstr ""
 "imaxinar cantos…"
 
 #. [message]: speaker=unit
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:209
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:204
 msgid "(<i>Cough</i>) I’ll be waiting... among the dead..."
 msgstr "Esperareivos… (<i>tose</i>) ao outro lado…"
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:222
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:217
 msgid ""
 "The orcish chieftain finally fell, overcome by his wounds. The elves found "
 "themselves in a half-ruined camp littered with the bodies of both sides. "
@@ -676,14 +721,14 @@ msgstr ""
 
 # Cómpre ter en conta que este rol pódeno desempeñar personaxes de ambos os dous sexos. Evítense as formas femininas ou masculinas.
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:239
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:238
 msgid ""
 "It’s done, lord. No-one escaped. No-one tried to escape. I’m... disturbed."
 msgstr ""
 "Xa está, señor. Ningún escapou. Ningún o intentou. Isto resulta… perturbador."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:244
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:243
 msgid ""
 "Good. But their disregard for self-preservation is astounding. As is their "
 "ferocity when defending what they claim as their own. Have the scouts found "
@@ -694,7 +739,7 @@ msgstr ""
 "seu. Atoparon os exploradores a algún máis a este lado dos outeiros?"
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:249
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:248
 msgid ""
 "No, lord. But trolls were spotted in the hills ahead. Do we really need to "
 "cross them to the north?"
@@ -703,7 +748,7 @@ msgstr ""
 "que debemos continuar avanzando?"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:254
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:253
 msgid ""
 "Yes. The council has spoken to me through a dream-sending. They are "
 "troubled. Reinforcements have been sent after us, but we need to press on. "
@@ -714,17 +759,21 @@ msgstr ""
 "descansen, partiremos co primeiro raio de sol."
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:265
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:264
+#, fuzzy
+#| msgid ""
+#| "What about the loot lord? We found supplies worth over a hundred gold in "
+#| "the camp."
 msgid ""
-"What about the loot lord? We found supplies worth over a hundred gold in the "
-"camp."
+"What about the loot, lord? We found supplies worth over a hundred gold in "
+"the camp."
 msgstr ""
 "Que pasa co botín, señor? Atopamos recursos por valor de máis dun centenar "
 "de moedas de ouro no campamento."
 
 # Téñase en conta que no exército dos elfos non se discrimina por razón de sexo. Evítese “homes”.
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:270
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:269
 msgid ""
 "Distribute some among the men, save the rest for the road. This country is a "
 "wasteland now; we won’t find much forage on the march."
@@ -733,7 +782,7 @@ msgstr ""
 "Estas terras están desertas, non atoparemos moita cousa durante a marcha."
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:287
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:286
 msgid ""
 "We found some supplies when searching the camp, but nothing much. What is to "
 "be done with them?"
@@ -742,7 +791,7 @@ msgstr ""
 "facemos con eles?"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:292
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:291
 msgid ""
 "Save it for the march north. There is little to be found in this barren "
 "country."
@@ -750,19 +799,21 @@ msgstr ""
 "Gárdeo para a viaxe ao norte. Pouco habemos atopar nestas terras baldías."
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:320
-msgid "We can’t carry on Lord, the men are too tired. We have to fall back."
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:319
+#, fuzzy
+#| msgid "We can’t carry on Lord, the men are too tired. We have to fall back."
+msgid "We can’t carry on, lord, the men are too tired. We have to fall back."
 msgstr ""
 "Non podemos seguir, señor. Os guerreiros están esgotados. Temos que volver."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:325
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:324
 msgid "Damn it. Sound the retreat, we’ll try again when reinforcements arrive."
 msgstr ""
 "Maldición. Toque retirada, volveremos intentalo cando cheguen os reforzos."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:331
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:330
 msgid ""
 "The expected relief caught up with them a few days later. The following "
 "morning they took the field against a far larger host of orcs. The battle "
@@ -818,7 +869,7 @@ msgstr ""
 #. [side]: type=Troll, type=Troll Warrior, id=Gurk
 #. [side]: type=Troll, type=Troll Warrior, id=Hrugu
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:66
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:106
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:99
 msgid "Trolls"
 msgstr "Trolles"
 
@@ -828,17 +879,17 @@ msgid "Gurk"
 msgstr "Gurc"
 
 #. [side]: type=Troll, type=Troll Warrior, id=Hrugu
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:115
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:108
 msgid "Hrugu"
 msgstr "Rugu"
 
 #. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:154
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:140
 msgid "Defeat all enemy leaders"
 msgstr "Derrota a todos os líderes inimigos."
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:170
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:156
 msgid ""
 "Trolls are poor fighters when not on rugged terrain and fare even worse "
 "during the daytime. Lure them out of the hills and attack in the sunlight."
@@ -847,7 +898,7 @@ msgstr ""
 "aínda cando é de día. Atráeos fóra dos outeiros e atácaos coa luz do día."
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:184
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:170
 msgid ""
 "We are far from our lands, now, Erlornas, and we have driven the orcs from "
 "the forest. Why do we not return home?"
@@ -856,7 +907,7 @@ msgstr ""
 "bosque. Por que non regresamos?"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:189
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:175
 msgid ""
 "You know well enough... Rualsha. That name sounds everywhere we go since the "
 "incursion began. That orc is much more than a mere marauding bandit in "
@@ -871,18 +922,18 @@ msgstr ""
 "seus planes antes de volver."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:194
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:180
 msgid "And tell me... How did you sleep last night?"
 msgstr "Que tal durmiu esta noite?"
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:199
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:185
 msgid ""
 "How did I?... Uneasy, lord. My dreams were bleak, some of them nightmares."
 msgstr "Que que tal? Mal, señor. Foron soños tristes, mesmo algúns pesadelos."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:204
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:190
 msgid ""
 "Yes. The earth currents are perturbed here, and the bridges to the dreamland "
 "are tainted. I think there is a mage dwelling somewhere nearby. Or perhaps "
@@ -894,7 +945,7 @@ msgstr ""
 "máis dun; os rastros están confundidos, e algúns deles non pintan nada ben."
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:209
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:195
 msgid ""
 "It would be dire indeed for us if these orcs have magic to add to their "
 "battle-might."
@@ -903,12 +954,12 @@ msgstr ""
 "empresa."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:214
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:200
 msgid "We must discover if this is so."
 msgstr "Debemos descubrilo."
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:219
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:205
 msgid ""
 "Information will do us no good if we are killed before we return with it! "
 "These mountains look like troll territory."
@@ -917,12 +968,12 @@ msgstr ""
 "entreguemos! Estas montañas parecen territorio de trolles."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:224
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:210
 msgid "Enough. The sun’s fully over the horizon. Give the order to advance."
 msgstr "Basta de leria. O sol xa asoma polo horizonte. Dea orde de avanzar."
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:235
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:221
 msgid ""
 "That was the last of the chieftains, lord. The lesser trolls seem to be "
 "retreating now."
@@ -930,7 +981,7 @@ msgstr ""
 "Ese era o derradeiro xefe, señor. Parece que agora o resto dos trolles foxen."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:240
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:226
 msgid ""
 "It is well. Break camp and move everyone through the pass before they rally. "
 "We’ll rest a bit on the other side; we have earned it."
@@ -940,12 +991,12 @@ msgstr ""
 "lado. Temos o descanso ben merecido."
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:245
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:231
 msgid "At once. How much time do you think we have?"
 msgstr "En seguida. De canto tempo cre que dispomos?"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:250
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:236
 msgid ""
 "A day, perhaps. We fought two clans today; they won’t take long to rally. We "
 "need to be gone from here by sunset next."
@@ -954,22 +1005,22 @@ msgstr ""
 "recuperarse. Temos que marchar antes da seguinte posta de sol."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:269
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:255
 msgid "We have slain a chieftain! Take heart! This battle is almost won!"
 msgstr "Derrotamos a un dos xefes! Ánimo! Xa case gañamos a batalla!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:284
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:270
 msgid "Ha! Me smashed da funny elf. Me got a trophy!"
 msgstr "Ha! Eu esmagar elfo gracioso. Eu ter trofeo!"
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:289
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:275
 msgid "No! This can’t be!"
 msgstr "Non! Non pode ser!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:295
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:281
 msgid ""
 "Soon after Erlornas died, the elven party, lacking a leader and pressed from "
 "all sides, scattered and fled. Their retreat to Wesmere was arduous and long."
@@ -979,7 +1030,7 @@ msgstr ""
 "retirada a Güesmer foi longa e ardua."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:300
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:286
 msgid ""
 "During their retreat, the pass was crossed by another army moving in the "
 "opposite direction. Orcs were back south of the pass, and this time they "
@@ -990,7 +1041,7 @@ msgstr ""
 "unha longa tempada, moi longa."
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:311
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:297
 msgid ""
 "We can’t get through, my Lord. These whelps are not individually very "
 "dangerous, but there are huge numbers of them."
@@ -999,13 +1050,13 @@ msgstr ""
 "separado, pero hai unha morea deles."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:316
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:302
 msgid ""
 "Four days of combat and nothing to show for it. How does it feel to you?"
 msgstr "Catro días loitando e nada. Como o ve?"
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:321
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:307
 msgid ""
 "Terrible, my lord. Never in my life did I dream I’d be bested by mere "
 "trolls. What are your orders?"
@@ -1014,7 +1065,7 @@ msgstr ""
 "uns simples trolles. Cales son as súas ordes?"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:326
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:312
 msgid ""
 "Withdraw and make camp a safe distance from the hills. There is no further "
 "point in this fight. We’ll wait for reinforcements."
@@ -1023,7 +1074,7 @@ msgstr ""
 "non vai chegar a ningures. Agardaremos polos reforzos."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:332
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:318
 msgid ""
 "The reinforcements arrived a few days later, a crack force of rangers with "
 "some cavalry support. When they attempted the pass again, they found not "
@@ -1035,7 +1086,7 @@ msgstr ""
 "norte."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:338
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:324
 msgid ""
 "The battle that ensued was bloody and inconclusive, and the elven losses "
 "were only the beginning of the mournful toll in a war that would rage for "
@@ -1085,29 +1136,29 @@ msgid "Krughnar"
 msgstr "Crunar"
 
 #. [side]
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:89
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:81
 msgid "Mages"
 msgstr "Magos"
 
 #. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:107
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:99
 msgid "Defeat Krughnar and break the siege"
 msgstr "Derrota a Crunar e ponlle fin ao asedio."
 
 #. [objective]: condition=lose
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:115
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:78
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:107
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:70
 msgid "Death of Linaera"
 msgstr "Morte de Linera."
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:121
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:89
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:113
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:81
 msgid "Linaera is a leader and can recruit mages when standing on a keep."
 msgstr "Linera é unha líder e pode recrutar magos cando está nunha fortaleza."
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:129
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:121
 msgid ""
 "Use Elven Scouts and Linaera’s power of teleportation to mount hit-and-run "
 "attacks."
@@ -1116,12 +1167,12 @@ msgstr ""
 "organizar ataques de ofensiva e fuxida."
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:143
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:135
 msgid "Report."
 msgstr "Informe."
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:148
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:140
 msgid ""
 "A warband of orcs, no women or children among them, besieges a tower. It’s "
 "of human design... but we are far from the lands granted to humans by "
@@ -1132,7 +1183,7 @@ msgstr ""
 "que lles foron garantidas coa sinatura do tratado, señor."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:153
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:145
 msgid ""
 "Under the letter of the treaty, it is so. But this country is too cold and "
 "barren for us. I wonder, what manner of human would choose to live here, far "
@@ -1143,12 +1194,12 @@ msgstr ""
 "vivir aquí, afastados do resto dos da súa especie? Hm…"
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:158
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:150
 msgid "It trespasses, and should be driven out!"
 msgstr "Incumpriron os tratados, e deberían ser expulsados!"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:163
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:155
 msgid ""
 "Hold. It is only one human, or a few of them at most. Time enough to speak "
 "of driving it out when we have no enemies in common."
@@ -1157,7 +1208,7 @@ msgstr ""
 "falar de expulsalos cando non teñamos inimigos en común."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:168
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:160
 msgid ""
 "Tell me: I see no bridge over the chasm around that keep. Is there any sign "
 "that one has been withdrawn by the defenders?"
@@ -1166,7 +1217,7 @@ msgstr ""
 "sinal de que os defensores retirasen un?"
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:173
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:165
 msgid ""
 "No, lord. No traces of any construction. It looks like no bridge has ever "
 "existed there. There must be other, hidden means of access to the tower."
@@ -1175,7 +1226,7 @@ msgstr ""
 "nunca unha ponte para acceder. Debe haber algunha entrada secreta."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:178
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:170
 msgid ""
 "Interesting... Go to my personal stores and bring me a bottle of wine. And a "
 "couple of glasses."
@@ -1184,12 +1235,12 @@ msgstr ""
 "par de vasos."
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:183
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:175
 msgid "... Glasses?"
 msgstr "…vasos?"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:188
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:180
 msgid "Do it. We’ll have a guest soon."
 msgstr "Fágao. Pronto teremos un convidado."
 
@@ -1202,7 +1253,7 @@ msgstr "Fágao. Pronto teremos un convidado."
 #. deliberately unclear whether Faerie is a place that is
 #. the source of magical power or a label for the inner
 #. nonhuman/magical nature of the Elves. Translate freely.
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:202
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:194
 msgid ""
 "Erlornas closed his eyes and brought his hands forward, joined palms forming "
 "a cup open to the sky. Soon they began to glow, then to flare like a brazier "
@@ -1220,12 +1271,12 @@ msgstr ""
 "desapareceu e todo volveu á normalidade."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:212
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:204
 msgid "Some time later..."
 msgstr "Un tempo despois…"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:236
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:228
 msgid ""
 "So you decided to accept the invitation. Good. Welcome, I am lord Erlornas "
 "of Wesmere. I find your presence here... surprising."
@@ -1234,7 +1285,7 @@ msgstr ""
 "cabaleiro de Güesmer. A vosa presenza nestas terras resúltame… sorprendente."
 
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:241
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:233
 msgid ""
 "Scarcely less than I find yours, my lord elf, but I would welcome your aid "
 "against these orcs. They have been besieging my tower for weeks."
@@ -1243,7 +1294,7 @@ msgstr ""
 "grao a vosa axuda contra os orcos. Levan semanas cercando a miña fortaleza."
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:246
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:238
 msgid ""
 "I wish their foul kind driven as far as possible from my borders, not to "
 "return. It would be no bad thing if an ally of the elves kept watch over "
@@ -1254,14 +1305,14 @@ msgstr ""
 "vixiase estas terras."
 
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:251
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:243
 msgid "Count me an ally, then, lord Erlornas. We can defeat them together."
 msgstr ""
 "Daquela conte comigo para esa empresa, cabaleiro Erlornas. Xuntos podemos "
 "derrotalos."
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:265
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:257
 msgid ""
 "My lord... humans cannot be trusted! They shift their allegiances with the "
 "changing of the wind!"
@@ -1270,7 +1321,7 @@ msgstr ""
 "cambio!"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:270
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:262
 msgid ""
 "That may be, but I do not think this one will betray us to the orcs. And we "
 "may need her assistance, too: that is a powerful force of orcs ahead."
@@ -1279,7 +1330,7 @@ msgstr ""
 "pode que precisemos a súa axuda, ese exército de orcos parece forte."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:279
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:271
 msgid ""
 "And that is well ended. But, Linaera, there is somewhat else that concerns "
 "me. You are a mage; do you not feel something... wrong... to the east of "
@@ -1289,7 +1340,7 @@ msgstr ""
 "sente que algo… ao leste de aquí… non vai ben?"
 
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:284
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:276
 msgid ""
 "I do indeed. Something evil has recently made a nest in the next valley "
 "over; its servants have been sniffing at the edges of my domain. I had meant "
@@ -1302,7 +1353,7 @@ msgstr ""
 "penso que quereredes acabar con el tanto coma min."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:289
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:281
 msgid "We are of one mind, then. Let us go to it."
 msgstr "Entón estamos de acordo. Vaiamos."
 
@@ -1322,12 +1373,12 @@ msgid "Keremal"
 msgstr "Queremal"
 
 #. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:70
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:62
 msgid "Defeat Keremal"
 msgstr "Derrota a Queremal."
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:90
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:82
 msgid ""
 "Undead are resistant to physical attack. Use mages to attack the undead, and "
 "elves to protect and support the mages."
@@ -1336,7 +1387,7 @@ msgstr ""
 "non mortos, e elfos para protexelos e apoialos."
 
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:107
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:99
 msgid ""
 "The evil spirits who have settled in this wetland have turned it into a vile "
 "bog. My apprentices and I have the power to dispel them, but you must "
@@ -1347,7 +1398,7 @@ msgstr ""
 "necesario para facelos desaparecer, pero debedes protexernos das súas armas."
 
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:118
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:110
 msgid ""
 "Thank you, Erlornas... now I can return to my tower in peace. But I think "
 "some of my apprentices wish to follow you north in pursuit of the orcs."
@@ -1357,7 +1408,7 @@ msgstr ""
 "orcos."
 
 #. [message]: role=mage
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:123
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:115
 msgid ""
 "I have always wished to see elves, and now I have fought alongside them! May "
 "I please travel with you?"
@@ -1366,7 +1417,7 @@ msgstr ""
 "Podo acompañarvos na vosa viaxe?"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:128
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:120
 msgid "Certainly... I shall be glad of your help."
 msgstr "Por suposto… a vosa axuda será de agradecer."
 
@@ -1381,12 +1432,12 @@ msgid "Rualsha"
 msgstr "Rualsa"
 
 #. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:90
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:82
 msgid "Defeat Rualsha"
 msgstr "Derrota a Rualsa."
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:102
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:94
 msgid ""
 "Your enemy is well-defended against attacks from the south. Use rangers to "
 "sneak through the forest and mount a surprise attack from the north."
@@ -1395,27 +1446,27 @@ msgstr ""
 "para coarte polo bosque e montar un ataque sorpresa desde o norte."
 
 #. [unit]: type=Elvish Ranger, id=Celodith
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:139
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:131
 msgid "Celodith"
 msgstr "Celodiz"
 
 #. [unit]: type=Elvish Ranger, id=Earanduil
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:159
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:151
 msgid "Earanduil"
 msgstr "Earanduil"
 
 #. [unit]: type=Elvish Ranger, id=Elvyniel
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:179
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:171
 msgid "Elvyniel"
 msgstr "Elvïniel"
 
 #. [unit]: type=Elvish Ranger, id=Delorfilith
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:199
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:191
 msgid "Delorfilith"
 msgstr "Delorfiliz"
 
 #. [message]: speaker=Lomarfel
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:212
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:204
 msgid ""
 "My lord! We have ridden hard for over a week to catch up with you! The "
 "Ka’lian has deliberated, and asks you to defeat Rualsha quickly before he "
@@ -1426,7 +1477,7 @@ msgstr ""
 "forza suficientemente forte para invadirnos."
 
 #. [message]: speaker=Rualsha
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:217
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:209
 msgid ""
 "Puny elves! My full army will be here soon, and then we will crush you. You "
 "will beg for a quick death!"
@@ -1435,7 +1486,7 @@ msgstr ""
 "Pregaredes unha morte rápida!"
 
 #. [message]: speaker=unit
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:229
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:221
 msgid ""
 "You may slay me, Erlornas, but my people live on. They will not forget! They "
 "will pursue you, and destroy you utterly... we will... we... arrgh..."
@@ -1444,7 +1495,7 @@ msgstr ""
 "Hante perseguir, e acabarán contigo… vamos… va… argh…"
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:242
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:234
 msgid ""
 "But Rualsha overestimated the will of his troops. With their leader dead, "
 "they scattered, and fled from the elves back to their fastnesses in the far "
@@ -1454,12 +1505,12 @@ msgstr ""
 "esparexéronse e fuxiron dos elfos, volvendo ás súas terras no afastado norte."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:253
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:245
 msgid "It grieves me to take life, even of a barbarian such as Rualsha."
 msgstr "Non me gusta segar vidas, nin sequera a dun bárbaro coma Rualsa."
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:258
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:250
 msgid ""
 "If the orcs press us, we shall need to become more accustomed to fighting."
 msgstr ""
@@ -1467,7 +1518,7 @@ msgstr ""
 "loitar."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:263
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:255
 msgid ""
 "I fear it will be so. We have won a first victory here, but dark times come "
 "upon its heels."
