@@ -185,8 +185,8 @@ void terrain_palette::draw_item(const t_translation::terrain_code& terrain,
 		}
 
 		if(base_image->w != item_size_ || base_image->h != item_size_) {
-			base_image.assign(scale_surface(base_image,
-				item_size_, item_size_));
+			base_image = scale_surface(base_image,
+				item_size_, item_size_);
 		}
 	}
 
@@ -203,8 +203,7 @@ void terrain_palette::draw_item(const t_translation::terrain_code& terrain,
 	}
 
 	if(image->w != item_size_ || image->h != item_size_) {
-		image.assign(scale_surface(image,
-			item_size_, item_size_));
+		image = scale_surface(image, item_size_, item_size_);
 	}
 
 	tooltip_text << map().get_terrain_editor_string(terrain);

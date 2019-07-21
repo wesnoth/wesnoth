@@ -305,8 +305,8 @@ static surface render_text(const std::string& text, int fontsize, const color_t&
 		surface surf = surfaces.front().front();
 		return surf;
 	} else {
-		surface res(create_compatible_surface(surfaces.front().front(),width,height));
-		if (res.null())
+		surface res(width,height);
+		if (!res)
 			return res;
 
 		size_t ypos = 0;
@@ -341,7 +341,7 @@ SDL_Rect draw_text_line(surface& gui_surface, const SDL_Rect& area, int size,
 		   int x, int y, bool use_tooltips, int style)
 {
 	size = preferences::font_scaled(size);
-	if (gui_surface.null()) {
+	if (!gui_surface) {
 		const text_surface& u = text_cache::find(text_surface(text, size, color, style));
 		return sdl::create_rect(0, 0, u.width(), u.height());
 	}

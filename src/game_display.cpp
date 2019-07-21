@@ -110,13 +110,13 @@ void game_display::new_turn()
 				if(old_mask != nullptr) {
 					const fixed_t proportion = ftofxp(1.0) - fxpdiv(i,niterations);
 					adjust_surface_alpha(old_mask, proportion);
-					tod_hex_mask1.assign(old_mask);
+					tod_hex_mask1 = old_mask;
 				}
 
 				if(new_mask != nullptr) {
 					const fixed_t proportion = fxpdiv(i,niterations);
 					adjust_surface_alpha(new_mask, proportion);
-					tod_hex_mask2.assign(new_mask);
+					tod_hex_mask2 = new_mask;
 				}
 
 				invalidate_all();
@@ -129,8 +129,8 @@ void game_display::new_turn()
 			}
 		}
 
-		tod_hex_mask1.assign(nullptr);
-		tod_hex_mask2.assign(nullptr);
+		tod_hex_mask1 = nullptr;
+		tod_hex_mask2 = nullptr;
 	}
 
 	first_turn_ = false;

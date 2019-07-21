@@ -701,7 +701,7 @@ void pango_text::rerender(const bool force)
 		this->create_surface_buffer(stride * height);
 
 		if (surface_buffer_.empty()) {
-			surface_.assign(create_neutral_surface(0, 0));
+			surface_ = surface(0, 0);
 			return;
 		}
 
@@ -719,11 +719,11 @@ void pango_text::rerender(const bool force)
 		}
 
 #if SDL_VERSION_ATLEAST(2, 0, 6)
-		surface_.assign(SDL_CreateRGBSurfaceWithFormatFrom(
-			&surface_buffer_[0], width, height, 32, stride, SDL_PIXELFORMAT_ARGB8888));
+		surface_ = SDL_CreateRGBSurfaceWithFormatFrom(
+			&surface_buffer_[0], width, height, 32, stride, SDL_PIXELFORMAT_ARGB8888);
 #else
-		surface_.assign(SDL_CreateRGBSurfaceFrom(
-			&surface_buffer_[0], width, height, 32, stride, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000));
+		surface_ = SDL_CreateRGBSurfaceFrom(
+			&surface_buffer_[0], width, height, 32, stride, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000);
 #endif
 	}
 }
@@ -731,7 +731,7 @@ void pango_text::rerender(const bool force)
 void pango_text::create_surface_buffer(const size_t size) const
 {
 	// Clear surface.
-	surface_.assign(nullptr);
+	surface_ = nullptr;
 
 	// Resize buffer appropriately and clear all existing data (essentially sets all pixel values to 0).
 	surface_buffer_.assign(size, 0);
