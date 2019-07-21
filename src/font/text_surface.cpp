@@ -185,7 +185,7 @@ const std::vector<surface>& text_surface::get_surfaces() const
 		TTF_Font* ttfont = sdl_ttf::get_font(font_id(chunk.subset, font_size_, style_));
 
 		surface s = surface(TTF_RenderUTF8_Blended(ttfont, chunk.text.c_str(), color_.to_sdl()));
-		if(!s.null())
+		if(s)
 			surfs_.push_back(s);
 	}
 

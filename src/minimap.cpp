@@ -61,10 +61,10 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 		//return if there is nothing to draw.
 		//(optimisation)
 		double ratio = std::min<double>( w*1.0 / map_width, h*1.0 / map_height);
-		return create_neutral_surface(map_width * ratio, map_height * ratio);
+		return surface(map_width * ratio, map_height * ratio);
 	}
 
-	surface minimap(create_neutral_surface(map_width, map_height));
+	surface minimap(map_width, map_height);
 	if(minimap == nullptr)
 		return surface(nullptr);
 
@@ -144,13 +144,12 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 							surface overlay = get_image(overlay_file,image::HEXED);
 
 							if(overlay != nullptr && overlay != tile) {
-								surface combined = create_neutral_surface(tile->w, tile->h);
+								surface combined(tile->w, tile->h);
 								SDL_Rect r {0,0,0,0};
 								sdl_blit(tile, nullptr, combined, &r);
 								r.x = std::max(0, (tile->w - overlay->w)/2);
 								r.y = std::max(0, (tile->h - overlay->h)/2);
-								surface overlay_neutral = make_neutral_surface(overlay);
-								sdl_blit(overlay_neutral, nullptr, combined, &r);
+								sdl_blit(overlay, nullptr, combined, &r);
 								tile = combined;
 							}
 						}

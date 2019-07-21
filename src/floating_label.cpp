@@ -89,7 +89,7 @@ int floating_label::xpos(size_t width) const
 
 surface floating_label::create_surface()
 {
-	if(surf_.null()) {
+	if(!surf_) {
 		font::pango_text text;
 		text.set_foreground_color(color_);
 		text.set_font_size(font_size_);
@@ -113,7 +113,7 @@ surface floating_label::create_surface()
 		// combine foreground text with its background
 		if(bgalpha_ != 0) {
 			// background is a dark tooltip box
-			surface background = create_neutral_surface(foreground->w + border_ * 2, foreground->h + border_ * 2);
+			surface background(foreground->w + border_ * 2, foreground->h + border_ * 2);
 
 			if(background == nullptr) {
 				ERR_FT << "could not create tooltip box" << std::endl;
@@ -136,7 +136,7 @@ surface floating_label::create_surface()
 			surf_ = background;
 		} else {
 			// background is blurred shadow of the text
-			surface background = create_neutral_surface(foreground->w + 4, foreground->h + 4);
+			surface background(foreground->w + 4, foreground->h + 4);
 			sdl::fill_surface_rect(background, nullptr, 0);
 			SDL_Rect r{2, 2, 0, 0};
 			sdl_blit(foreground, nullptr, background, &r);
@@ -157,7 +157,7 @@ surface floating_label::create_surface()
 void floating_label::draw(surface screen)
 {
 	if(!visible_) {
-		buf_.assign(nullptr);
+		buf_ = nullptr;
 		return;
 	}
 
@@ -171,7 +171,7 @@ void floating_label::draw(surface screen)
 	}
 
 	if(buf_ == nullptr) {
-		buf_.assign(create_compatible_surface(screen, surf_->w, surf_->h));
+		buf_ = surface(surf_->w, surf_->h);
 		if(buf_ == nullptr) {
 			return;
 		}
@@ -197,7 +197,7 @@ void floating_label::undraw(surface screen)
 		--lifetime_;
 		if(alpha_change_ != 0 && (xmove_ != 0.0 || ymove_ != 0.0) && surf_ != nullptr) {
 			// fade out moving floating labels
-			surf_.assign(adjust_surface_alpha_add(surf_,alpha_change_));
+			surf_ = adjust_surface_alpha_add(surf_,alpha_change_);
 		}
 	}
 }

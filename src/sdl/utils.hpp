@@ -42,20 +42,6 @@ inline void sdl_copy_portion(const surface& screen, SDL_Rect* screen_rect, surfa
 }
 
 /**
- * Check that the surface is neutral bpp 32.
- *
- * The surface may have an empty alpha channel.
- *
- * @param surf                    The surface to test.
- *
- * @returns                       The status @c true if neutral, @c false if not.
- */
-bool is_neutral(const surface& surf);
-
-surface make_neutral_surface(const surface &surf);
-surface create_neutral_surface(int w, int h);
-
-/**
  * Stretches a surface in the horizontal direction.
  *
  *  The stretches a surface it uses the first pixel in the horizontal
@@ -300,7 +286,6 @@ surface rotate_90_surface(const surface &surf, bool clockwise);
 
 surface flip_surface(const surface &surf);
 surface flop_surface(const surface &surf);
-surface create_compatible_surface(const surface &surf, int width = -1, int height = -1);
 
 /**
  * Replacement for sdl_blit.

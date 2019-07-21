@@ -88,7 +88,7 @@ void unit_palette::draw_item(const unit_type& u, surface& image, std::stringstre
 	}
 
 	if(image->w != item_size_ || image->h != item_size_) {
-		image.assign(scale_surface(image, item_size_, item_size_));
+		image = scale_surface(image, item_size_, item_size_);
 	}
 
 	tooltip_text << u.type_name();

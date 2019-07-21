@@ -154,7 +154,7 @@ void mouse_action::set_terrain_mouse_overlay(editor_display& disp, const t_trans
 	}
 
 	// Create a transparent surface of the right size.
-	surface image = create_neutral_surface(image_fg->w, image_fg->h);
+	surface image(image_fg->w, image_fg->h);
 
 	// For efficiency the size of the tile is cached.
 	// We assume all tiles are of the same size.
@@ -334,7 +334,7 @@ void mouse_action_paste::set_mouse_overlay(editor_display& disp)
 	surface image60 = image::get_image("icons/action/editor-paste_60.png");
 
 	//TODO avoid hardcoded hex field size
-	surface image = create_neutral_surface(72,72);
+	surface image(72,72);
 
 	SDL_Rect r {6, 6, 0, 0};
 	sdl_blit(image60, nullptr, image, &r);
@@ -452,7 +452,7 @@ void mouse_action_starting_position::set_mouse_overlay(editor_display& disp)
 	surface image60 = image::get_image("icons/action/editor-tool-starting-position_60.png");
 
 	//TODO avoid hardcoded hex field size
-	surface image = create_neutral_surface(72,72);
+	surface image(72,72);
 
 	SDL_Rect r {6, 6, 0, 0};
 	sdl_blit(image60, nullptr, image, &r);
