@@ -85,8 +85,8 @@ bool use_color_cursors()
 
 SDL_Cursor* create_cursor(surface surf)
 {
-	const surface nsurf(make_neutral_surface(surf));
-	if(nsurf == nullptr) {
+	surf.make_neutral();
+	if(surf == nullptr) {
 		return nullptr;
 	}
 
@@ -95,25 +95,25 @@ SDL_Cursor* create_cursor(surface surf)
 #ifdef __APPLE__
 	std::size_t cursor_width = 16;
 #else
-	std::size_t cursor_width = nsurf->w;
+	std::size_t cursor_width = surf->w;
 	if((cursor_width % 8) != 0) {
 		cursor_width += 8 - (cursor_width % 8);
 	}
 #endif
 
-	std::vector<uint8_t> data((cursor_width * nsurf->h) / 8, 0);
+	std::vector<uint8_t> data((cursor_width * surf->h) / 8, 0);
 	std::vector<uint8_t> mask(data.size(), 0);
 
 	// See https://wiki.libsdl.org/SDL_CreateCursor for documentation
 	// on the format that data has to be in to pass to SDL_CreateCursor
-	const_surface_lock lock(nsurf);
+	const_surface_lock lock(surf);
 	const uint32_t* const pixels = lock.pixels();
 
-	for(int y = 0; y != nsurf->h; ++y) {
-		for(int x = 0; x != nsurf->w; ++x) {
+	for(int y = 0; y != surf->h; ++y) {
+		for(int x = 0; x != surf->w; ++x) {
 			if(static_cast<std::size_t>(x) < cursor_width) {
 				uint8_t r, g, b, a;
-				SDL_GetRGBA(pixels[y * nsurf->w + x], nsurf->format, &r, &g, &b, &a);
+				SDL_GetRGBA(pixels[y * surf->w + x], surf->format, &r, &g, &b, &a);
 
 				const std::size_t index = y * cursor_width + x;
 				const std::size_t shift = 7 - (index % 8);
@@ -127,7 +127,7 @@ SDL_Cursor* create_cursor(surface surf)
 		}
 	}
 
-	return SDL_CreateCursor(&data[0], &mask[0], cursor_width, nsurf->h, 0, 0);
+	return SDL_CreateCursor(&data[0], &mask[0], cursor_width, surf->h, 0, 0);
 }
 
 SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)

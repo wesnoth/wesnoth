@@ -213,8 +213,8 @@ void unit_drawer::redraw_unit (const unit & u) const
 			const std::string ellipse_bot = formatter() << ellipse << "-" << leader << nozoc << selected << "bottom.png~RC(ellipse_red>" << tc << ")";
 
 			// Load the ellipse parts recolored to match team color
-			ellipse_back.assign(image::get_image(image::locator(ellipse_top), image::SCALED_TO_ZOOM));
-			ellipse_front.assign(image::get_image(image::locator(ellipse_bot), image::SCALED_TO_ZOOM));
+			ellipse_back = image::get_image(image::locator(ellipse_top), image::SCALED_TO_ZOOM);
+			ellipse_front = image::get_image(image::locator(ellipse_bot), image::SCALED_TO_ZOOM);
 		}
 	}
 	if (ellipse_back != nullptr) {
@@ -238,8 +238,8 @@ void unit_drawer::redraw_unit (const unit & u) const
 		int yoff;
 		if(cfg_offset_x.empty() && cfg_offset_y.empty()) {
 			const surface unit_img = image::get_image(u.default_anim_image(), image::SCALED_TO_ZOOM);
-			xoff = unit_img.null() ? 0 : (hex_size - unit_img->w)/2;
-			yoff = unit_img.null() ? 0 : (hex_size - unit_img->h)/2;
+			xoff = !unit_img ? 0 : (hex_size - unit_img->w)/2;
+			yoff = !unit_img ? 0 : (hex_size - unit_img->h)/2;
 		}
 		else {
 			xoff = cfg_offset_x.to_int();
@@ -317,7 +317,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 		if (can_recruit) {
 			surface crown(image::get_image(u.leader_crown(),image::SCALED_TO_ZOOM));
-			if(!crown.null()) {
+			if(crown) {
 				//if(bar_alpha != ftofxp(1.0)) {
 				//	crown = adjust_surface_alpha(crown, bar_alpha);
 				//}
@@ -415,7 +415,7 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 
 	if(unfilled < height && alpha >= ftofxp(0.3)) {
 		const uint8_t r_alpha = std::min<unsigned>(unsigned(fxpmult(alpha,255)),255);
-		surface filled_surf = create_compatible_surface(bar_surf, bar_loc.w, height - unfilled);
+		surface filled_surf(bar_loc.w, height - unfilled);
 		SDL_Rect filled_area = sdl::create_rect(0, 0, bar_loc.w, height-unfilled);
 		sdl::fill_surface_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
 		disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf);
@@ -438,14 +438,12 @@ const SDL_Rect& unit_drawer::calculate_energy_bar(surface surf) const
 
 	int first_row = -1, last_row = -1, first_col = -1, last_col = -1;
 
-	surface image(make_neutral_surface(surf));
-
-	const_surface_lock image_lock(image);
+	const_surface_lock image_lock(surf);
 	const uint32_t* const begin = image_lock.pixels();
 
-	for(int y = 0; y != image->h; ++y) {
-		const uint32_t* const i1 = begin + image->w*y;
-		const uint32_t* const i2 = i1 + image->w;
+	for(int y = 0; y != surf->h; ++y) {
+		const uint32_t* const i1 = begin + surf->w*y;
+		const uint32_t* const i2 = i1 + surf->w;
 		const uint32_t* const itor = std::find_if(i1,i2,is_energy_color());
 		const int count = std::count_if(itor,i2,is_energy_color());
 

@@ -1070,7 +1070,7 @@ void image_shape::draw(surface& canvas,
 		return;
 	}
 
-	image_.assign(make_neutral_surface(tmp));
+	image_ = tmp;
 	assert(image_);
 	src_clip_ = {0, 0, image_->w, image_->h};
 
@@ -1363,7 +1363,7 @@ canvas::canvas()
 {
 }
 
-canvas::canvas(canvas&& c)
+canvas::canvas(canvas&& c) NOEXCEPT
 	: shapes_(std::move(c.shapes_))
 	, drawn_shapes_(std::move(c.drawn_shapes_))
 	, blur_depth_(c.blur_depth_)
@@ -1397,12 +1397,12 @@ void canvas::draw(const bool force)
 		variables_.add("height", wfl::variant(h_));
 	}
 
-	if(!canvas_.null()) {
+	if(canvas_) {
 		DBG_GUI_D << "Canvas: use cached canvas.\n";
 	} else {
 		// create surface
 		DBG_GUI_D << "Canvas: create new empty canvas.\n";
-		canvas_.assign(create_neutral_surface(w_, h_));
+		canvas_ = surface(w_, h_);
 	}
 
 	SDL_DestroyRenderer(renderer_);
@@ -1436,7 +1436,7 @@ void canvas::blit(surface& surf, SDL_Rect rect)
 		 * can be seen in the title screen. So also use the not 32 bpp method
 		 * for this situation.
 		 */
-		if(surf != CVideo::get_singleton().getSurface() && is_neutral(surf)) {
+		if(surf != CVideo::get_singleton().getSurface() && surf.is_neutral()) {
 			blur_surface(surf, rect, blur_depth_);
 		} else {
 			// Can't directly blur the surface if not 32 bpp.
@@ -1514,7 +1514,7 @@ void canvas::clear_shapes(const bool force)
 
 void canvas::invalidate_cache()
 {
-	canvas_.assign(nullptr);
+	canvas_ = nullptr;
 
 	if(shapes_.empty()) {
 		shapes_.swap(drawn_shapes_);

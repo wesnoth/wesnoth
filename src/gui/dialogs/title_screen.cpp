@@ -169,8 +169,8 @@ static void launch_lua_console()
 
 static void make_screenshot(window& win)
 {
-	surface screenshot = make_neutral_surface(win.video().getSurface());
-	if(!screenshot.null()) {
+	surface screenshot = win.video().getSurface().clone();
+	if(screenshot) {
 		std::string filename = filesystem::get_screenshot_dir() + "/" + _("Screenshot") + "_";
 		filename = filesystem::get_next_filename(filename, ".png");
 		gui2::dialogs::screenshot_notification::display(filename, screenshot);

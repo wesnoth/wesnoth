@@ -204,17 +204,14 @@ void CVideo::update_framebuffer()
 	}
 
 	surface fb = SDL_GetWindowSurface(*window);
-	if(!frameBuffer) {
-		frameBuffer = fb;
-	} else {
-		if(sdl_get_version() >= version_info(2, 0, 6)) {
-			// Because SDL has already freed the old framebuffer,
-			// ensure that we won't attempt to free it.
-			frameBuffer.clear_without_free();
-		}
 
-		frameBuffer.assign(fb);
+	if(frameBuffer && sdl_get_version() >= version_info(2, 0, 6)) {
+		// Because SDL has already freed the old framebuffer,
+		// ensure that we won't attempt to free it.
+		frameBuffer.clear_without_free();
 	}
+
+	frameBuffer = fb;
 }
 
 void CVideo::init_window()

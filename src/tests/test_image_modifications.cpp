@@ -466,7 +466,7 @@ BOOST_AUTO_TEST_CASE(test_blit_modification_decoding_1_arg)
 	// The dynamic_cast returns nullptr if the argument doesn't match the type
 	BOOST_REQUIRE(mod != nullptr);
 
-	BOOST_CHECK(!mod->get_surface().null());
+	BOOST_CHECK(mod->get_surface());
 	BOOST_CHECK_EQUAL(mod->get_x(), 0);
 	BOOST_CHECK_EQUAL(mod->get_y(), 0);
 }
@@ -488,7 +488,7 @@ BOOST_AUTO_TEST_CASE(test_blit_modification_decoding_3_args)
 	BOOST_REQUIRE(mod != nullptr);
 	// The dynamic_cast returns nullptr if the argument doesn't match the type
 
-	BOOST_CHECK(!mod->get_surface().null());
+	BOOST_CHECK(mod->get_surface());
 	BOOST_CHECK_EQUAL(mod->get_x(), 1);
 	BOOST_CHECK_EQUAL(mod->get_y(), 2);
 }
@@ -525,7 +525,7 @@ BOOST_AUTO_TEST_CASE(test_mask_modification_decoding_1_arg)
 	// The dynamic_cast returns nullptr if the argument doesn't match the type
 	BOOST_REQUIRE(mod != nullptr);
 
-	BOOST_CHECK(!mod->get_mask().null());
+	BOOST_CHECK(mod->get_mask());
 	BOOST_CHECK_EQUAL(mod->get_x(), 0);
 	BOOST_CHECK_EQUAL(mod->get_y(), 0);
 }
@@ -547,7 +547,7 @@ BOOST_AUTO_TEST_CASE(test_mask_modification_decoding_3_args)
 	// The dynamic_cast returns nullptr if the argument doesn't match the type
 	BOOST_REQUIRE(mod != nullptr);
 
-	BOOST_CHECK(!mod->get_mask().null());
+	BOOST_CHECK(mod->get_mask());
 	BOOST_CHECK_EQUAL(mod->get_x(), 3);
 	BOOST_CHECK_EQUAL(mod->get_y(), 4);
 }
@@ -593,7 +593,7 @@ BOOST_AUTO_TEST_CASE(test_l_modification_decoding_1_arg)
 	// The dynamic_cast returns nullptr if the argument doesn't match the type
 	BOOST_REQUIRE(mod != nullptr);
 
-	BOOST_CHECK(!mod->get_surface().null());
+	BOOST_CHECK(mod->get_surface());
 }
 
 /// Tests if the SCALE modification without arguments is ignored
