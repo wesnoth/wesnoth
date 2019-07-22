@@ -36,7 +36,7 @@ public:
 		add_surface_ref(surface_);
 	}
 
-	surface(surface&& s) NOEXCEPT : surface_(s.get())
+	surface(surface&& s) noexcept : surface_(s.get())
 	{
 		s.surface_ = nullptr;
 	}
@@ -58,7 +58,7 @@ public:
 		return *this;
 	}
 
-	surface& operator=(surface&& s) NOEXCEPT
+	surface& operator=(surface&& s) noexcept
 	{
 		free_surface();
 		surface_ = s.surface_;

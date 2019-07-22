@@ -1363,7 +1363,7 @@ canvas::canvas()
 {
 }
 
-canvas::canvas(canvas&& c) NOEXCEPT
+canvas::canvas(canvas&& c) noexcept
 	: shapes_(std::move(c.shapes_))
 	, drawn_shapes_(std::move(c.drawn_shapes_))
 	, blur_depth_(c.blur_depth_)
