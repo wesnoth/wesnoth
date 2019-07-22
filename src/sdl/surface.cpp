@@ -22,11 +22,11 @@ const SDL_PixelFormat surface::neutral_pixel_format = []() {
 	SDL_PixelFormat format;
 
 #if SDL_VERSION_ATLEAST(2, 0, 6)
-	surface surf(
-		SDL_CreateRGBSurfaceWithFormat(0, 1, 1, 32, SDL_PIXELFORMAT_ARGB8888));
+	SDL_Surface* surf =
+		SDL_CreateRGBSurfaceWithFormat(0, 1, 1, 32, SDL_PIXELFORMAT_ARGB8888);
 #else
-	surface surf(
-		SDL_CreateRGBSurface(0, 1, 1, 32, SDL_RED_MASK, SDL_GREEN_MASK, SDL_BLUE_MASK, SDL_ALPHA_MASK));
+	SDL_Surface* surf =
+		SDL_CreateRGBSurface(0, 1, 1, 32, SDL_RED_MASK, SDL_GREEN_MASK, SDL_BLUE_MASK, SDL_ALPHA_MASK);
 #endif
 
 	format = *surf->format;
