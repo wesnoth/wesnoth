@@ -224,7 +224,7 @@ void unit_type::build_help_index(
 	}
 
 	// Make sure we are built to the preceding build level.
-	build_created(mv_types, races, traits);
+	build_created();
 
 	type_name_ = cfg_["name"];
 	description_ = cfg_["description"];
@@ -363,8 +363,7 @@ void unit_type::build_help_index(
  * This creates the gender-specific types (if needed) and also defines how much
  * experience is needed to advance as well as what this advances to.
  */
-void unit_type::build_created(
-		const movement_type_map& mv_types, const race_map& races, const config::const_child_itors& traits)
+void unit_type::build_created()
 {
 	// Don't build twice.
 	if(CREATED <= build_status_) {
@@ -389,7 +388,7 @@ void unit_type::build_created(
 
 	for(unsigned i = 0; i < gender_types_.size(); ++i) {
 		if(gender_types_[i]) {
-			gender_types_[i]->build_created(mv_types, races, traits);
+			gender_types_[i]->build_created();
 		}
 	}
 
@@ -422,7 +421,7 @@ void unit_type::build(BUILD_STATUS status,
 
 	case CREATED:
 		// Build the basic data.
-		build_created(movement_types, races, traits);
+		build_created();
 		return;
 
 	case VARIATIONS: // Implemented as part of HELP_INDEXED
@@ -1437,7 +1436,7 @@ void unit_type::apply_scenario_fix(const config& cfg)
 	}
 	if(auto attr = cfg.get("add_advancement")) {
 		for(const auto& str : utils::split(attr->str())) {
-			advances_to_.push_back(str);			
+			advances_to_.push_back(str);
 		}
 	}
 	if(auto attr = cfg.get("remove_advancement")) {

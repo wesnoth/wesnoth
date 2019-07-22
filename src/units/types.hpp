@@ -82,8 +82,7 @@ private: // These will be called by build().
 	void build_help_index(const movement_type_map &movement_types,
 		const race_map &races, const config::const_child_itors &traits);
 	/// Load the most needed data into an empty unit_type (build to CREATE).
-	void build_created(const movement_type_map &movement_types,
-		const race_map &races, const config::const_child_itors &traits);
+	void build_created();
 
 	typedef std::map<std::string,unit_type> variations_map;
 public:
