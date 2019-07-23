@@ -38,7 +38,7 @@ public:
 		event_.code = code;
 	}
 
-	UserEvent(int type, int code, int data1, int data2) : UserEvent(type)
+	UserEvent(int type, int code, std::size_t data1, std::size_t data2) : UserEvent(type)
 	{
 		event_.code = code;
 		event_.data1 = reinterpret_cast<void*>(data1);
