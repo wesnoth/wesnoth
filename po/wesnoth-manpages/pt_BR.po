@@ -8,14 +8,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-18 15:50+0300\n"
-"PO-Revision-Date: 2009-11-24 22:50-0300\n"
-"Last-Translator: Claus Aranha <fred.maranhao@gmail.com>\n"
+"PO-Revision-Date: 2019-07-16 22:31-0300\n"
+"Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-l10n-br@listas.cipsga.org.br>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.2.3\n"
 
 # type: TH
 #. type: TH
@@ -28,7 +29,7 @@ msgstr "WESNOTH"
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2018"
-msgstr ""
+msgstr "2018"
 
 # type: TH
 #. type: TH
@@ -120,7 +121,7 @@ msgstr "OPÇÕES"
 #: doc/man/wesnoth.6:45
 #, no-wrap
 msgid "B<--all-translations>"
-msgstr ""
+msgstr "B<--all-translations>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:49
@@ -132,10 +133,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
-#| msgid "B<--gunzip>I<\\ infile.gz>"
+#, no-wrap
 msgid "B<--bunzip2>I<\\ infile.bz2>"
-msgstr "B<--gunzip>I<\\ infile.gz>"
+msgstr "B<--bunzip2>I<\\ infile.bz2>"
 
 # type: Plain text
 #. type: Plain text
@@ -154,10 +154,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:55
-#, fuzzy, no-wrap
-#| msgid "B<--gzip>I<\\ infile>"
+#, no-wrap
 msgid "B<--bzip2>I<\\ infile>"
-msgstr "B<--gzip>I<\\ infile>"
+msgstr "B<--bzip2>I<\\ infile>"
 
 # type: Plain text
 #. type: Plain text
@@ -177,7 +176,7 @@ msgstr ""
 #: doc/man/wesnoth.6:61
 #, no-wrap
 msgid "B<-c[>I<id_campaign>B<],\\ --campaign[>I<=id_campaign>B<]>"
-msgstr ""
+msgstr "B<-c[>I<id_campaign>B<],\\ --campaign[>I<=id_campaign>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:66
@@ -190,7 +189,7 @@ msgstr ""
 #: doc/man/wesnoth.6:66
 #, no-wrap
 msgid "B<--campaign-difficulty[>I<=difficulty>B<]>"
-msgstr ""
+msgstr "B<--campaign-difficulty[>I<=difficulty>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:70
@@ -226,10 +225,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:78
-#, fuzzy, no-wrap
-#| msgid "B<--nomusic>"
+#, no-wrap
 msgid "B<--clock>"
-msgstr "B<--nomusic>"
+msgstr "B<--clock>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:81
@@ -502,19 +500,17 @@ msgstr "B<--log->I<nível>B<=>I<domínio1>B<,>I<domínio2>B<,>I<...>"
 #| msgid ""
 #| "sets the severity level of the log domains.  B<all> can be used to match "
 #| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>.  By default the B<error> level is used and the B<info> level "
-#| "for the B<server> domain."
+#| "B<debug>.  By default the B<error> level is used."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
 "\\ B<none>.  By default the B<warning> level is used for most domains, but "
 "B<deprecation> defaults to B<none> unless combined with the B<-d> option."
 msgstr ""
-"Ajusta o nível de severidade dos dompinios de log.  B<all> (todos) pode ser "
+"Ajusta o nível de severidade dos domínios de log.  B<all> (tudo) pode ser "
 "usado para casar com qualquer domínio de log. Níveis disponíveis: B<error> "
 "(erro),\\ B<warning> (aviso),\\ B<info> (informação),\\ B<debug> "
-"(depuração).  Por padrão, o nível B<error> é usado e o nível B<info> para o "
-"domínio do B<servidor>."
+"(depuração).  O nível padrão é o B<error>."
 
 # type: TP
 #. type: TP
@@ -1638,9 +1634,8 @@ msgstr "VEJA TAMBÉM"
 #.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
 #: doc/man/wesnothd.6:15
-#, fuzzy
 msgid "B<wesnothd>(6)"
-msgstr "wesnothd"
+msgstr "B<wesnothd>(6)"
 
 # type: TH
 #. type: TH
@@ -2533,19 +2528,7 @@ msgstr ""
 msgid "B<wesnoth>(6)"
 msgstr "wesnoth"
 
-# type: Plain text
-#~ msgid ""
-#~ "sets the severity level of the log domains.  B<all> can be used to match "
-#~ "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#~ "B<debug>.  By default the B<error> level is used."
-#~ msgstr ""
-#~ "Ajusta o nível de severidade dos domínios de log.  B<all> (tudo) pode ser "
-#~ "usado para casar com qualquer domínio de log. Níveis disponíveis: "
-#~ "B<error> (erro),\\ B<warning> (aviso),\\ B<info> (informação),\\ B<debug> "
-#~ "(depuração).  O nível padrão é o B<error>."
-
 # type: TP
-#, no-wrap
 #~ msgid "B<--path>"
 #~ msgstr "B<--path>"
 
