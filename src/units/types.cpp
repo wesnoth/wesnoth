@@ -235,7 +235,6 @@ void unit_type::build_help_index(
 	vision_ = cfg_["vision"].to_int(-1);
 	jamming_ = cfg_["jamming"].to_int(0);
 	max_attacks_ = cfg_["attacks"].to_int(1);
-	cost_ = cfg_["cost"].to_int(1);
 	usage_ = cfg_["usage"].str();
 	undead_variation_ = cfg_["undead_variation"].str();
 	image_ = cfg_["image"].str();
@@ -400,6 +399,7 @@ void unit_type::build_created()
 	DBG_UT << "unit_type '" << log_id() << "' advances to : " << advances_to_val << "\n";
 
 	experience_needed_ = cfg_["experience"].to_int(500);
+	cost_ = cfg_["cost"].to_int(1);
 
 	build_status_ = CREATED;
 }
@@ -1425,6 +1425,7 @@ const unit_race* unit_type_data::find_race(const std::string& key) const
 
 void unit_type::apply_scenario_fix(const config& cfg)
 {
+	build_created();
 	if(auto p_setxp = cfg.get("set_experience")) {
 		experience_needed_ = p_setxp->to_int();
 	}
@@ -1442,6 +1443,22 @@ void unit_type::apply_scenario_fix(const config& cfg)
 	if(auto attr = cfg.get("remove_advancement")) {
 		for(const auto& str : utils::split(attr->str())) {
 			boost::remove_erase(advances_to_, str);
+		}
+	}
+
+	// apply recursively to subtypes.
+	for(int gender = 0; gender <= 1; ++gender) {
+		if(!gender_types_[gender]) {
+			continue;
+		}
+		gender_types_[gender]->apply_scenario_fix(cfg);
+	}
+
+	if(cfg_.has_child("variation")) {
+		// Make sure the variations are created.
+		unit_types.build_unit_type(*this, VARIATIONS);
+		for(auto& v : variations_) {
+			v.second.apply_scenario_fix(cfg);
 		}
 	}
 }
@@ -1467,6 +1484,17 @@ void unit_type::remove_scenario_fixes()
 	}
 	experience_needed_ = cfg_["experience"].to_int(500);
 	cost_ = cfg_["cost"].to_int(1);
+
+	// apply recursively to subtypes.
+	for(int gender = 0; gender <= 1; ++gender) {
+		if(!gender_types_[gender]) {
+			continue;
+		}
+		gender_types_[gender]->remove_scenario_fixes();
+	}
+	for(auto& v : variations_) {
+		v.second.remove_scenario_fixes();
+	}
 }
 
 void unit_type_data::remove_scenario_fixes()
