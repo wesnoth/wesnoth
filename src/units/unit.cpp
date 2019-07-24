@@ -2042,32 +2042,11 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		{
 			set_state(to_remove, false);
 		}
-	// Note: It would not be hard to define a new "applies_to=" that
-	//       combines the next five options (the movetype effects).
-	} else if(apply_to == "movement_costs") {
-		if(const config& ap = effect.child("movement_costs")) {
+	} else if(std::find(movetype::effects.cbegin(), movetype::effects.cend(), apply_to) != movetype::effects.cend()) {
+		// "movement_costs", "vision_costs", "jamming_costs", "defense", "resistance"
+		if(const config& ap = effect.child(apply_to)) {
 			set_attr_changed(UA_MOVEMENT_TYPE);
-			movement_type_.get_movement().merge(ap, effect["replace"].to_bool());
-		}
-	} else if(apply_to == "vision_costs") {
-		if(const config& ap = effect.child("vision_costs")) {
-			set_attr_changed(UA_MOVEMENT_TYPE);
-			movement_type_.get_vision().merge(ap, effect["replace"].to_bool());
-		}
-	} else if(apply_to == "jamming_costs") {
-		if(const config& ap = effect.child("jamming_costs")) {
-			set_attr_changed(UA_MOVEMENT_TYPE);
-			movement_type_.get_jamming().merge(ap, effect["replace"].to_bool());
-		}
-	} else if(apply_to == "defense") {
-		if(const config& ap = effect.child("defense")) {
-			set_attr_changed(UA_MOVEMENT_TYPE);
-			movement_type_.get_defense().merge(ap, effect["replace"].to_bool());
-		}
-	} else if(apply_to == "resistance") {
-		if(const config& ap = effect.child("resistance")) {
-			set_attr_changed(UA_MOVEMENT_TYPE);
-			movement_type_.get_resistances().merge(ap, effect["replace"].to_bool());
+			movement_type_.merge(ap, apply_to, effect["replace"].to_bool());
 		}
 	} else if(apply_to == "zoc") {
 		if(const config::attribute_value* v = effect.get("value")) {			
