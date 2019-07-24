@@ -299,6 +299,8 @@ void game::start_game(const socket_ptr& starter)
 	DBG_GAME << debug_sides_info() << std::endl;
 	DBG_GAME << "****" << std::endl;
 
+	// If the game was already started we're actually advancing.
+	const bool advance = started_;
 	started_ = true;
 	// Prevent inserting empty keys when reading.
 	const simple_wml::node& multiplayer = get_multiplayer(level_.root());
@@ -306,7 +308,7 @@ void game::start_game(const socket_ptr& starter)
 	const bool save = multiplayer["savegame"].to_bool();
 	LOG_GAME
 		<< client_address(starter) << "\t" << player_connections_.find(starter)->name() << "\t"
-		<< "started" << (save ? " reloaded" : "") << " game:\t\"" << name_ << "\" (" << id_
+		<< (advance ? "advanced" : "started") << (save ? " reloaded" : "") << " game:\t\"" << name_ << "\" (" << id_
 		// << ") with: " << list_users(players_, __func__) << ". Settings: map: " << s["id"]
 		<< ") with: " << list_users(players_, __func__)
 		<< ". Settings: map: " << multiplayer["mp_scenario"]
