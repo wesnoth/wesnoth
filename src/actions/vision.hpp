@@ -42,7 +42,8 @@ struct clearer_info {
 	size_t underlying_id;
 	int sight_range;
 	bool slowed;
-	movetype::terrain_costs costs;
+	/// costs is always non-null, all of the constructors initialize it
+	std::unique_ptr<movetype::terrain_costs> costs;
 
 	clearer_info(const unit & viewer);
 	clearer_info(const config & cfg);

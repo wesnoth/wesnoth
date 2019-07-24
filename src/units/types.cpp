@@ -1079,7 +1079,7 @@ const boost::regex fai_identifier("[a-zA-Z_]+");
 
 template<typename MoveT>
 void patch_movetype(
-		MoveT& mt, const std::string& new_key, const std::string& formula_str, int default_val, bool replace)
+		MoveT& mt, const std::string& type, const std::string& new_key, const std::string& formula_str, int default_val, bool replace)
 {
 	config temp_cfg, original_cfg;
 	mt.write(original_cfg);
@@ -1101,7 +1101,7 @@ void patch_movetype(
 	}
 
 	temp_cfg[new_key] = formula(original);
-	mt.merge(temp_cfg, true);
+	mt.merge(temp_cfg, type, true);
 }
 } // unnamed namespace
 
@@ -1142,7 +1142,7 @@ void unit_type_data::set_config(config& cfg)
 				continue;
 			}
 
-			patch_movetype(movement_types_[mt].get_resistances(), dmg_type, attr.second, 100, true);
+			patch_movetype(movement_types_[mt], "resistances", dmg_type, attr.second, 100, true);
 		}
 
 		if(r.has_attribute("default")) {
@@ -1152,7 +1152,7 @@ void unit_type_data::set_config(config& cfg)
 					continue;
 				}
 
-				patch_movetype(mt.second.get_resistances(), dmg_type, r["default"], 100, false);
+				patch_movetype(mt.second, "resistances", dmg_type, r["default"], 100, false);
 			}
 		}
 	}
@@ -1179,13 +1179,9 @@ void unit_type_data::set_config(config& cfg)
 				}
 
 				if(tag == "defense") {
-					patch_movetype(movement_types_[mt].get_defense(),  ter_type, attr.second, 100, true);
-				} else if(tag == "vision") {
-					patch_movetype(movement_types_[mt].get_vision(),   ter_type, attr.second, 99, true);
-				} else if(tag == "movement") {
-					patch_movetype(movement_types_[mt].get_movement(), ter_type, attr.second, 99, true);
-				} else if(tag == "jamming") {
-					patch_movetype(movement_types_[mt].get_jamming(),  ter_type, attr.second, 99, true);
+					patch_movetype(movement_types_[mt], tag, ter_type, attr.second, 100, true);
+				} else {
+					patch_movetype(movement_types_[mt], tag, ter_type, attr.second, 99, true);
 				}
 			}
 
@@ -1197,13 +1193,9 @@ void unit_type_data::set_config(config& cfg)
 					}
 
 					if(tag == "defense") {
-						patch_movetype(mt.second.get_defense(), ter_type,  info["default"], 100, false);
-					} else if(tag == "vision") {
-						patch_movetype(mt.second.get_vision(), ter_type,   info["default"], 99, false);
-					} else if(tag == "movement") {
-						patch_movetype(mt.second.get_movement(), ter_type, info["default"], 99, false);
-					} else if(tag == "jamming") {
-						patch_movetype(mt.second.get_jamming(), ter_type,  info["default"], 99, false);
+						patch_movetype(mt.second, tag, ter_type, info["default"], 100, false);
+					} else {
+						patch_movetype(mt.second, tag, ter_type, info["default"], 99, false);
 					}
 				}
 			}
