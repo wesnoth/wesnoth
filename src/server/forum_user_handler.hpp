@@ -99,8 +99,6 @@ class fuh : public user_handler {
 
 		std::string db_name_, db_host_, db_user_, db_password_, db_users_table_, db_banlist_table_, db_extra_table_;
 
-		typedef std::unique_ptr<MYSQL_RES, decltype(&mysql_free_result)> mysql_result;
-
 		MYSQL *conn;
 
 		template<typename T, typename... Args>
