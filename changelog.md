@@ -67,6 +67,7 @@
  ### Miscellaneous and bug fixes
    * Update various references of mermen to merfolk or mer
    * Adjust several maps to use different castle graphics
+   * OpenMP support has been removed
 
 ## Version 1.14.8
  * Skipped due to need to reupload a broken 1.14.7 macOS App Store package as 1.14.8
