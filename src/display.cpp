@@ -2969,9 +2969,6 @@ void display::invalidate_all()
 {
 	DBG_DP << "invalidate_all()\n";
 	invalidateAll_ = true;
-#ifdef _OPENMP
-#pragma omp critical(invalidated_)
-#endif //_OPENMP
 	invalidated_.clear();
 }
 
@@ -2981,9 +2978,6 @@ bool display::invalidate(const map_location& loc)
 		return false;
 
 	bool tmp;
-#ifdef _OPENMP
-#pragma omp critical(invalidated_)
-#endif //_OPENMP
 	tmp = invalidated_.insert(loc).second;
 	return tmp;
 }
@@ -2994,9 +2988,6 @@ bool display::invalidate(const std::set<map_location>& locs)
 		return false;
 	bool ret = false;
 	for (const map_location& loc : locs) {
-#ifdef _OPENMP
-#pragma omp critical(invalidated_)
-#endif //_OPENMP
 		ret = invalidated_.insert(loc).second || ret;
 	}
 	return ret;
@@ -3011,9 +3002,6 @@ bool display::propagate_invalidation(const std::set<map_location>& locs)
 		return false; // propagation never needed
 
 	bool result = false;
-#ifdef _OPENMP
-#pragma omp critical(invalidated_)
-#endif //_OPENMP
 	{
 		// search the first hex invalidated (if any)
 		std::set<map_location>::const_iterator i = locs.begin();
