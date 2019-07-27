@@ -531,7 +531,14 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 	// Connection should never be null in the lobby.
 	assert(helper->connection);
 
-	// We use a loop here to allow returning to the lobby if you, say, cancel game creation.
+	// The list of games to show was retrieved from the server before this function was called, and is in
+	// initial_lobby_config.
+	//
+	// We use a loop here to allow returning to the lobby if you, say, play a game or cancel game creation. In
+	// that case the loop recreates the lobby GUI before the current gamelist has been retrieved from the server,
+	// so that the lobby doesn't look empty, the most recently shown data is cached in recent_lobby_config.
+	config recent_lobby_config;
+
 	while(true) {
 		if(const config& cfg = helper->game_config.child("lobby_music")) {
 			for(const config& i : cfg.child_range("music")) {
@@ -547,7 +554,9 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 		mp::lobby_info li(installed_addons);
 		helper->lobby_info = &li;
 
-		if(!initial_lobby_config.empty()) {
+		if(!recent_lobby_config.empty()) {
+			li.process_gamelist(recent_lobby_config);
+		} else if(!initial_lobby_config.empty()) {
 			li.process_gamelist(initial_lobby_config);
 		}
 
@@ -561,6 +570,9 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 			dlg_joined_game_id = dlg.get_joined_game_id();
 		}
 
+		// If this while() loop runs again, start with the most recent version of the game list
+		recent_lobby_config = li.gamelist();
+
 		switch(dlg_retval) {
 			case gui2::dialogs::mp_lobby::CREATE:
 				try {
@@ -570,7 +582,7 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 						gui2::show_error_message(error.message);
 					}
 
-					// Update lobby content
+					// Ask the server to send up to date data, but in the meantime display the most recent version
 					helper->connection->send_data(config("refresh_lobby"));
 				}
 
@@ -587,7 +599,7 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 						gui2::show_error_message(error.message);
 					}
 
-					// Update lobby content
+					// Ask the server to send up to date data, but in the meantime display the most recent version
 					helper->connection->send_data(config("refresh_lobby"));
 				}
 
