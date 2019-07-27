@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-03-11 13:10 UTC\n"
-"PO-Revision-Date: 2019-07-21 12:22-0300\n"
+"PO-Revision-Date: 2019-07-26 10:22-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -143,9 +143,9 @@ msgid ""
 "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
 "Está é uma encenação do cenário Os Elfos Sitiados da campanha O Herdeiro do "
-"Trono onde a AI joga com o Konrad. O objetivo do necário é mover Konrad "
-"patra o poste de sinalização no nordeste . Konrad e Delfador devem "
-"sobreviver. A mesma AI do cenário Proteger Unidade é usado aqui.\n"
+"Trono onde a AI joga com Konrad. O objetivo do cenário é mover Konrad patra "
+"o poste de sinalização no nordeste . Konrad e Delfador devem sobreviver. A "
+"mesma AI do cenário Proteger Unidade é usado aqui.\n"
 "\n"
 "Nota: A Proteger Unidade AI é codificada como uma Micro AI e pode ser "
 "adicionada e adaptada de acordo com as necessidades do cenário usando o WML "
@@ -232,6 +232,29 @@ msgid ""
 "Wolves Multipack AI (used in a different scenario), this Wolves AI combines "
 "all wolves of the side in the same pack."
 msgstr ""
+"<u>Geral</u>: Estas AIs foram configuradas para simular (até certo ponto) "
+"como esses animais se comportam na vida real. Isso inclui o fato de que eles "
+"são animais, o que significa que não são super inteligentes. Por exemplo, os "
+"lobos geralmente caçam em bando, mas são facilmente distraídos quando suas "
+"presas entram em alcance. Eles também são decentes, mas não excelente em "
+"encurralar veados. Na maior parte dos casos, isso é intencional.\n"
+"\n"
+"<u>Ursos (substituídos por Ghasts), aranhas e Pé-Grandes</u> em grande parte "
+"apenas vagam em seus respectivos cantos do mapa. Eles ficam fora do caminho "
+"uns dos outros (e fora do caminho dos cães), mas atacam uns aos outros se "
+"forem encurralados. Eles atacam os outros animais mais fracos (veados, etc), "
+"se eles estiverem dentro de seu alcance.\n"
+"\n"
+"<u>Lobos</u> caçam em bando. Eles vão ativamente atrás do veado mais próximo "
+"(contanto que ele permaneça na floresta) e tentam encurralar-lo (nem sempre "
+"eles obtem sucesso), mas são facilmente distraídos por outras presas que "
+"entram em seu alcance. Lobos tentam evitar entrar no alcance dos ursos, "
+"aranhas, cães e do Pé-Grande , exceto quando eles vão ataca-los. Se você "
+"deixá-los agir por conta própria por tempo suficiente, eles também vão "
+"aprender que não é saudável atacar os filhotes de javalis. Quando não há "
+"mais nenhum veado, eles vagam aleatóriamente. Note que, ao contrário da "
+"Wolves Multipack AI (usado em um cenário diferente), esta AI dos lobos "
+"combina todos os lobos do mesmo lado na mesma alcateia."
 
 #: data/ai/micro_ais/scenarios/animals.cfg:12
 msgid ""
@@ -268,6 +291,40 @@ msgid ""
 "threat to each other and leave each other alone, demonstrating the enormous "
 "self control of a well trained sheep dog."
 msgstr ""
+"Cada <u>Veado (substituído por morcegos)</u> anda aleatóriamente pelos "
+"hexágonos de floresta, exceto quando os inimigos entram no seu alcance. "
+"Neste caso, ele corre para longe.\n"
+"\n"
+"<u>Javalis (substituído por Ogros)</u> exibem o mesmo comportamento que os "
+"veados, exceto quando um inimigo está próximo de um filhote de javali. Neste "
+"caso, o inimigo terá a honra de presenciar a irá de um javali enfurecido.\n"
+"\n"
+"<u>Filhotes de Javalis (substituído por Ogros Jovens)</u> seguem cegamente o "
+"Javali adulto mais próximo, exceto quando não há nenhum Javali adulto vivo. "
+"Neste caso, eles se comportam como veados.\n"
+"\n"
+"<u>Coelhos (substituídos por Ratos)</u> vagam aleatóriamente, mas "
+"desaparecem em suas tocas (substituídos fardos de palha; se algum estiver ao "
+"alcance) quando inimigos estão por perto. Eles reaparecem fora de suas tocas "
+"no início do turno, se for seguro.\n"
+"\n"
+"<u>Cães Pastores (substituídos por Trombadinhas)</u> tentam manter suas "
+"ovelhas seguras. Isso envolve mantê-las dentro da área delineada pelo "
+"caminho que os cães frmarcaram no campo, posicionando-se entre as ovelhas e "
+"os inimigos, e atacando os inimigos que chegam muito perto. Você "
+"provavelmente terá que deixar o cenário rolando por um bom tempo antes de "
+"ver uma interação entre cães e lobos interessante. Se não há necessidade de "
+"pastoreio ou proteção, os cães vagam aleatório no caminho que eles "
+"delinearam.\n"
+"\n"
+"<u>Ovelhas (substituídas por Filhotes Troll )</u> vagam sem rumo, exceto "
+"quando um cão pastor está ao próximo delas. Neste caso, elas correm para "
+"longe do cão. Os cães usam isto em beneficio próprio posicionando-se na "
+"parte externa as ovelhas, se possível. Ovelhas também fugem de inimigos que "
+"se aproximam. As ovelhas, os cães e as criaturas da floresta (veados, "
+"javalis, coelhos) aprenderam que não são uma ameaça e por isso não reagem "
+"com a presença dos outros, demonstrando o enorme auto-controle de um cão "
+"pastor bem treinado."
 
 #. [event]
 #. [test]: id=animals
@@ -407,6 +464,21 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"É possível incluir um Lado 1 controlado por humano, de modo que o jogo para "
+"no início de cada turno, o que lhe permite dar uma olhada na situação atual "
+"do jogo (ou mexer com o modo debug).\n"
+"\n"
+"Note que este cenário não tem fim. Para fins de demonstração, qualquer "
+"unidade que morrer é substituída por outra unidade do mesmo tipo no começo "
+"de cada turno. Para terminar o cenário, há uma opção no menu do botão "
+"direito - que só funciona caso haja um Lado controlado por humano. Caso só "
+"haja AIs, você pode apertar 'Esc' or carregar um save anterior.\n"
+"\n"
+"Note também que a AI dos animais é codificada como uma Micro AI. A Micro AI "
+"pode ser adicionada e adaptada de cordo com as necessidades do cenário "
+"usando WML e a [micro_ai] tag. De uma olhada na <span color='#00A000'>Micro "
+"AI wiki página</span> em https://wiki.wesnoth.org/Micro_AIs para mais "
+"informações (nota: página em inglês)."
 
 #. [option]
 #: data/ai/micro_ais/scenarios/animals.cfg:378
@@ -589,7 +661,6 @@ msgstr "Tome cuidado para não cruzar o caminho do dragão. Ele é do mal."
 
 #. [message]: speaker=Rowck
 #: data/ai/micro_ais/scenarios/dragon.cfg:91
-#, fuzzy
 msgid ""
 "Hi there. I am Rowck and here is what I do:\n"
 "When hungry, I move around part of the map in a random wander until I get "
@@ -610,12 +681,27 @@ msgid ""
 "tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at "
 "https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Olá. Eu sou Rowck e faço o seguinte:\n"
+"Quando estou com fome, movo aleatóriamente por uma parte do mapa até chegar "
+"no alcance de um inimigo. Se inimigos estiverem dentro do meu alcançe, ataco "
+"e devoro o mais fraco deles. Depois disso, eu recuo para o meu local de "
+"descanso, onde eu fico por um certo número de turnos ou até estar totalmente "
+"curado.\n"
+"Alguns detalhes (características, e não bugs, que podem ser alterados se "
+"assim desejar):\n"
+"- Se, na volta, o caminho para a minha casa estiver bloqueado, a AI normal "
+"RCA assume o controle do meu comportamento.\n"
+"- Eu, entretanto, atacarei qualquer inimigo que esteja no meu hexágono de "
+"descaso, se conseguir chegar lá.\n"
+"- Só volto pra casa quando mato algo como atacante e não como defensor.\n"
+"- De vez em quando eu não vou me mover no turno quando estiver vagando (até "
+"mesmo um dragão tem que descansar de vez em quando!)\n"
 "\n"
-"Nota:  é codificada como uma Micro AI. A Micro AI pode ser adicionada e "
-"adaptada de cordo com as necessidades do cenário usando WML e a [micro_ai] "
-"tag. De uma olhada na <span color='#00A000'>Micro AI wiki página</span> em "
-"https://wiki.wesnoth.org/Micro_AIs para mais informações (nota: página em "
-"inglês)."
+"Nota: A AI Caçadora é codificada como uma Micro AI. A Micro AI pode ser "
+"adicionada e adaptada de cordo com as necessidades do cenário usando WML e a "
+"[micro_ai] tag. De uma olhada na <span color='#00A000'>Micro AI wiki página</"
+"span> em https://wiki.wesnoth.org/Micro_AIs para mais informações (nota: "
+"página em inglês)."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/dragon.cfg:104
@@ -659,6 +745,14 @@ msgid ""
 "There is nothing to do here, just watch or use this scenario as a template "
 "or for your own tests."
 msgstr ""
+"Este cenário apresenta uma situação com tantas unidades no mapa que causa um "
+"delay perceptível (alguns segundos) antes da AI padrão mover as unidades. Em "
+"contraste, a Rápida Micro AI possui um delay muito menor. Para exemplificar "
+"a diferença, o lado 1é jogado pela Rápida Micro AI e o lado 2 é jogada pela "
+"AI padrão (RCA).\n"
+"\n"
+"Não há o que fazer aqui. Assista o cenário ou use-o como base para os seus "
+"próprios testes."
 
 #. [event]
 #. [test]: id=goto
@@ -715,7 +809,7 @@ msgstr "Sargento Aethubry"
 #. [set_menu_item]: id=m01_new_footpad
 #: data/ai/micro_ais/scenarios/goto.cfg:339
 msgid "Place Side 1 Footpad"
-msgstr "Botar Trmbadinha do Lado 1"
+msgstr "Botar Trombadinha do Lado 1"
 
 #. [set_menu_item]: id=m02_kill_unit
 #. [set_menu_item]: id=m05_kill_unit
@@ -732,7 +826,6 @@ msgstr "Desabilitar o controle humano do Lado 1"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/goto.cfg:419
-#, fuzzy
 msgid ""
 "This scenario demonstrates a variety of different uses of the Goto Micro AI. "
 "All AI sides are controlled by this MAI in one way or another (except for "
@@ -748,12 +841,20 @@ msgid ""
 "tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at "
 "https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Este cenário demonstra diferentes usos para a Goto Micro AI. Todos os lados "
+"são controlados por esta Micro AI (com escessão dos saurinos que usam uma "
+"versão da Espreitador Micro AI). Mensagens aparecerão durante o cenário para "
+"lhe informar o que as unidades estão fazendo.\n"
 "\n"
-"Nota:  é codificada como uma Micro AI. A Micro AI pode ser adicionada e "
-"adaptada de cordo com as necessidades do cenário usando WML e a [micro_ai] "
-"tag. De uma olhada na <span color='#00A000'>Micro AI wiki página</span> em "
-"https://wiki.wesnoth.org/Micro_AIs para mais informações (nota: página em "
-"inglês)."
+"O jogador controla o Lado 1. Há opções no menu contextual do botão direito "
+"para adicionar unidades do Lado 1 no mapa e para remove-las. Isto é útil, "
+"principalmente, para testar como os guardiões do Lado 3 reagem.\n"
+"\n"
+"Nota: A Goto AI é codificada como uma Micro AI. A Micro AI pode ser "
+"adicionada e adaptada de cordo com as necessidades do cenário usando WML e a "
+"[micro_ai] tag. De uma olhada na <span color='#00A000'>Micro AI wiki página</"
+"span> em https://wiki.wesnoth.org/Micro_AIs para mais informações (nota: "
+"página em inglês)."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/goto.cfg:429
@@ -787,6 +888,13 @@ msgid ""
 "guardian units, although one of the dedicated Guardian Micro AIs will often "
 "be better suited for that purpose."
 msgstr ""
+"Rapazes, ignorem todos com exceção daquele vigarista do Vaddan e seus "
+"homens. Mantenham posição até que uma das unidades dele fique menos de 8 "
+"hexágonos de distância de você.\n"
+"\n"
+"Nota: Isso demonstra como a Goto Micro AI pode ser usada para botar unidades "
+"como guardas, embora uma das Micro AIs dedicadas para guardiões normalmente "
+"cumpra melhor esse papel."
 
 #. [message]: type=Vampire Bat
 #: data/ai/micro_ais/scenarios/goto.cfg:474
@@ -796,6 +904,9 @@ msgid ""
 "behavior is set up with a single [micro_ai] tag, one with "
 "'unique_goals=yes', the other without."
 msgstr ""
+"Nós quatro morcegos alternamos entre voar para cada canto do mapa (cada um "
+"para um canto diferente) e agrupar aqui, neste ponto. Cada comportamento é "
+"decdido com uma só [micro_ai] tag, uma com 'unique_goals=yes', a outra sem."
 
 #. [message]: speaker=ghost1
 #: data/ai/micro_ais/scenarios/goto.cfg:484
@@ -817,6 +928,13 @@ msgid ""
 "which they seem to get along just fine for some reason.  So as long as we "
 "don't corner them, they'll leave us alone."
 msgstr ""
+"Não se preocupe, esses fantasmas são bem tímidos.  Ninguém sabe o por que, "
+"mas eles sempre aparecem no norte nesta época do ano e migram para o sul.  "
+"Além disso, ao contrário dos outros fantasmas, eles parecem temer não-"
+"fantasmas e tentam evitar outras unidades o tanto quanto possível - exceto "
+"pelos morcegos e lagartos que, pelo visto, se dão bem com eles por alguma "
+"razão que nos ilude.  Contanto que não encurralemos eles, eles devem nos "
+"deixar em paz."
 
 #. [message]: speaker=messenger2
 #: data/ai/micro_ais/scenarios/goto.cfg:551
@@ -867,6 +985,9 @@ msgid ""
 "Sergeant Aethubry. Once that has happened, the rest of you can head into "
 "battle directly."
 msgstr ""
+"Ah, esse é o burocrata Gadoc! Homens, também quero que vocês sigam direto "
+"para o Forte no Rio, mas só um de vocês precisa reportar para o Sargento "
+"Aethubry. Feito isso, os outros podem ir direto para a batalha."
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:628
@@ -1095,7 +1216,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/guardians.cfg:463
 #: data/ai/micro_ais/scenarios/guardians.cfg:472
 msgid "Return Guardian"
-msgstr ""
+msgstr "Guardião Acorrentado"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/guardians.cfg:473
@@ -1111,13 +1232,26 @@ msgid ""
 "- If enemies are blocking your way back, do your best to get there anyway.\n"
 "- If you end up next to an enemy on the way back, attack after the move."
 msgstr ""
+"Um 'guardião acorrentado'é uma variação do guardião normal de Wesnoth. Ele "
+"possui uma posição guardada (PG), para onde ele retorna após atacar os "
+"inimigos que se aproximam se:\n"
+"- Se estiver no PG e não tiver nenhum inimigo dentro do seu alcance, não "
+"faça nada.\n"
+"- Se estiver no PG com inimigos dentro do alcance, deixe que a AI padrão "
+"ataque (note que isto significa não atacar se o inimigo for considerado "
+"forte demais).\n"
+"- Se não estiver na PG, volte pra lá, haja inimigos no caminho ou não.\n"
+"- Se inimigos estão bloqueando a sua jornada de retorno, dê o seu melhor "
+"para voltar pra lá.\n"
+"- Se você terminar perto de um inimigo na sua jornada de retorno, ataque "
+"após se mover."
 
 #. [message]: speaker=narrator
 #. [set_menu_item]: id=m03_home
 #: data/ai/micro_ais/scenarios/guardians.cfg:484
 #: data/ai/micro_ais/scenarios/guardians.cfg:493
 msgid "Home Guard"
-msgstr ""
+msgstr "Guardião com Casa"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/guardians.cfg:494
@@ -1136,6 +1270,21 @@ msgid ""
 "return and stationed guardians and the cowards are written in Lua AI. In "
 "addition the non-guardian units of the side follow the default AI behavior."
 msgstr ""
+"Um 'guardião com casa' é um variante da 'guardião' AI especial. Nesta "
+"variante, a unidade possui uma 'casa', para onde ela retorna-ra caso não "
+"esteja envolvida em combate e nem indo para uma aldeia, seja para se curar "
+"ou capturar a aldeia neste turno. (A AI guardião padrão, ao contrário, faz "
+"com que a unidade fique no local onde ela atacou) O que difere este guardião "
+"do 'guardião acorrentado' é que o guardião com casa continua à atacar, "
+"possivelmente se afastando bastante da sua 'casa', ao invés de voltar após "
+"cada ataque. (também pode ser atraido por um grupo de aldeias posicionadas "
+"muito próximas umas das outras, mas isto é algo que a pessoa que está "
+"fazendo o mapa pode controlar.)\n"
+"Isto também demonstra como combinar ações da Fórmula AI e Lua AI de um mesmo "
+"lado. O guardião com casa é escrito em Fórmula AI, enquanto que os guardiões "
+"acorrentados e estacionados e os covardes são escritos em Lua AI. Além "
+"disso, as unidades que não são guardiões do lado seguem o comportamento da "
+"AI padrão."
 
 #. [message]: speaker=narrator
 #. [set_menu_item]: id=m04_stationed
@@ -1162,6 +1311,21 @@ msgid ""
 "rating and attack from there.\n"
 "  - If not in reach, move toward this unit."
 msgstr ""
+"Um 'guardião estacionário' é uma outra variante do guardião padrão de "
+"Wesnoth que possui um comportamento um pouco mais complexo do que o do "
+"'guardião acorrentado'. Duas posições são definidas para ele, uma 'estação' "
+"e um 'local protegido', assim como uma 'distância'. O guardião se comporta "
+"da seguinte maneira:\n"
+"- Se nenhum inimigo estiver dentro da 'distância' da posição atual do "
+"guarda, ele não faz nada.\n"
+"- Caso contrário: Se um inimigo estiver dentro da 'distância' do guardião, "
+"mas não dentro da distância do local guardado e da estação (tudo isso "
+"simultaneamente), mova o guardião em direção a estação.\n"
+"- Caso contrário:\n"
+" - Selecione a unidade inimiga mais perto da posição guardada.\n"
+" - Se conseguir alcança-lo, escolha o hexágono adjacente com a melhor defesa "
+"e ataque a partir dele.\n"
+" - Se não estiver no alcance, mova em direção da unidade."
 
 #. [message]: speaker=narrator
 #. [set_menu_item]: id=m05_coward
@@ -1188,6 +1352,20 @@ msgid ""
 "- Both 'seek' and 'avoid' may consist of only one coordinate ('x' or 'y'), "
 "in which case not a single hex, but a line of hexes is sought or avoided."
 msgstr ""
+"Covardes são unidades que, como os guardiões, não fazem nada até que um "
+"inimigo entre no seu alcance. Entretanto, ao contrário dos guardiões, eles "
+"fogem dos inimigos que se aproximam. Comumente usado para animais selvagens, "
+"civis desarmados que calharam de parar no meio de um combate, etc. A macro "
+"covarde possui duas opções adicionais, 'buscar' e 'evitar':\n"
+"- Se nenhum comando adicional for dado, o covarde recua o mais longe quanto "
+"possível do inimigo.\n"
+"- Se 'buscar' for adicionado, ele tenta ir para a localização dada (fugir "
+"dos inimigos ainda assim é prioridade).\n"
+"- Se 'evitar' for adicionado, ele também tenta evitar o local designado "
+"(maximizando a distância do inimigo e 'buscar' assume prioridade).\n"
+"- Tanto 'buscar' quanto 'evitar' podem consistir de apenas uma coordenada "
+"('x' ou 'y'). Neste caso, ao invés de buscar ou evitar um hexágono, o foco "
+"vira uma linha de hexágonos."
 
 #. [message]: speaker=narrator
 #. [set_menu_item]: id=m06_zone
@@ -1208,6 +1386,15 @@ msgid ""
 "- Otherwise, it attacks any enemy entering the enemy zone and once there are "
 "no more enemies, it goes back to patrol in its basic zone."
 msgstr ""
+"Um guardião de zone é uma unidade que, como o nome sugere, guarda uma zona. "
+"Ele move aleatóriamente dentro da zona até que um inimigo entre nela (ou uma "
+"zona inimiga, mais informações abaixo). Esse guardião é comumente usado para "
+"defender castelos ou ninhos. O macro de zona pode incluir uma zona inimiga "
+"(opcional):\n"
+"- Caso não seja especificada, o guardião da zona ataca qualquer inimigo que "
+"entre na sua zona de guarda.\n"
+"- Caso contrário, ele ataca qualquer inimigo que entre na zona inimiga e "
+"quando não houver mais inimigos volta a patrulhar a sua zona normal."
 
 #. [message]: speaker=Kraa
 #: data/ai/micro_ais/scenarios/guardians.cfg:568
@@ -1216,7 +1403,6 @@ msgstr "Kraahhh!!!!"
 
 #. [message]: speaker=Kraa
 #: data/ai/micro_ais/scenarios/guardians.cfg:578
-#, fuzzy
 msgid ""
 "Gryphons of the High Plains, look at all these enemies. They don't behave "
 "normally. Most of them don't move at all unless we get close. Let's check "
@@ -1230,12 +1416,18 @@ msgid ""
 "the [micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Grifos das Planíces Altas, olhem para esses inimigos. Eles estão se "
+"comportando de maneira estranha. A maioria deles não se move, a não ser que "
+"cheguemos perto deles. Vejamos como eles reagem a nossa presença.\n"
 "\n"
-"Nota:  é codificada como uma Micro AI. A Micro AI pode ser adicionada e "
-"adaptada de cordo com as necessidades do cenário usando WML e a [micro_ai] "
-"tag. De uma olhada na <span color='#00A000'>Micro AI wiki página</span> em "
-"https://wiki.wesnoth.org/Micro_AIs para mais informações (nota: página em "
-"inglês)."
+"Nota para o jogador: O menu contextual do botão direito possui mais "
+"informações sobre o comportamento de cada unidade.\n"
+"\n"
+"Nota: A maior parte da AI dos grifos é codificada como uma Micro AI. A Micro "
+"AI pode ser adicionada e adaptada de cordo com as necessidades do cenário "
+"usando WML e a [micro_ai] tag. De uma olhada na <span color='#00A000'>Micro "
+"AI wiki página</span> em https://wiki.wesnoth.org/Micro_AIs para mais "
+"informações (nota: página em inglês)."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/guardians.cfg:588
@@ -1277,7 +1469,7 @@ msgstr ""
 #. [test]: id=hang_out
 #: data/ai/micro_ais/scenarios/hang_out.cfg:5
 msgid "Hang Out"
-msgstr ""
+msgstr "Permanecer Num Lugar"
 
 #. [side]: id=Bad Outlaw, type=Outlaw
 #: data/ai/micro_ais/scenarios/hang_out.cfg:23
@@ -1296,7 +1488,6 @@ msgstr "Fora-da-Lei move para cá"
 
 #. [message]: speaker=Good Bandit
 #: data/ai/micro_ais/scenarios/hang_out.cfg:120
-#, fuzzy
 msgid ""
 "That outlaw over there is going to run for the keep in the southeast.  He's "
 "only going to recruit for three rounds before he'll start moving and he and "
@@ -1311,12 +1502,19 @@ msgid ""
 "the <span color='#00A000'>Micro AI wiki page</span> at https://wiki.wesnoth."
 "org/Micro_AIs for more information."
 msgstr ""
+"Aquele fora-da-lei vai correr em direção a Torre de Menagem no sudeste.  Ele "
+"só irá recrutar por três turnos antes de começar a se mover e ele e seus "
+"trombadinhas são muito mais rápidos do que nós.  Devemos nós apressar se "
+"quisermos capturá-lo.\n"
 "\n"
-"Nota:  é codificada como uma Micro AI. A Micro AI pode ser adicionada e "
-"adaptada de cordo com as necessidades do cenário usando WML e a [micro_ai] "
-"tag. De uma olhada na <span color='#00A000'>Micro AI wiki página</span> em "
-"https://wiki.wesnoth.org/Micro_AIs para mais informações (nota: página em "
-"inglês)."
+"Nota: Este cenário usa uma combinação de duas Micro AIs, a Permanecer Num "
+"Lugar Micro AI faz com que as unidades do Lado 2 fiquem perto da Torre de "
+"Menagem por dois turnos (saindo do castelo para permitir que outras unidades "
+"sejam recrutadas) e a Escoltar Mensageiro Micro AI, que assume controle logo "
+"em seguida. A Micro AI pode ser adicionada e adaptada de cordo com as "
+"necessidades do cenário usando WML e a [micro_ai] tag. De uma olhada na "
+"<span color='#00A000'>Micro AI wiki página</span> em https://wiki.wesnoth."
+"org/Micro_AIs para mais informações (nota: página em inglês)."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/hang_out.cfg:127
@@ -1371,7 +1569,6 @@ msgstr "Rebeldes 2"
 
 #. [message]: speaker=Rebels1
 #: data/ai/micro_ais/scenarios/healer_support.cfg:81
-#, fuzzy
 msgid ""
 "In this scenario, we demonstrate the use of the Healer Support Micro AI. "
 "This AI configures the healers of a side to stay behind the battle lines and "
@@ -1389,12 +1586,22 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Este cenário demonstra o uso da Curandeiro Dando Suporte Micro AI. Essa AI "
+"faz com que os curandeiros de um lado não tomem parte do combate e foquem "
+"apenas em curar/tratar as unidades feridas. Ela inclui várias opções que "
+"podem ser configuradas (que foram configuradas diferentemente para os dois "
+"lados deste cenário) que determinam o quanto agressivo/cuidadoso os "
+"curandeiros são, se eles também devem atacar, o nível de risco que eles "
+"estão dispostos a enfrentar, etc.\n"
 "\n"
-"Nota:  é codificada como uma Micro AI. A Micro AI pode ser adicionada e "
-"adaptada de cordo com as necessidades do cenário usando WML e a [micro_ai] "
-"tag. De uma olhada na <span color='#00A000'>Micro AI wiki página</span> em "
-"https://wiki.wesnoth.org/Micro_AIs para mais informações (nota: página em "
-"inglês)."
+"Cada curandeira anuncia para onde ira se mover. Se você não quiser ver essas "
+"mensagens sempre, aperte 'esc' quando ela aparecer pela primeira vez.\n"
+"\n"
+"Nota: A Curandeiro Dando Suporte AI é codificada como uma Micro AI. A Micro "
+"AI pode ser adicionada e adaptada de cordo com as necessidades do cenário "
+"usando WML e a [micro_ai] tag. De uma olhada na <span color='#00A000'>Micro "
+"AI wiki página</span> em https://wiki.wesnoth.org/Micro_AIs para mais "
+"informações (nota: página em inglês)."
 
 #. [message]: speaker=$unit.id
 #: data/ai/micro_ais/scenarios/healer_support.cfg:100
@@ -1478,6 +1685,16 @@ msgid ""
 "enemy within their reach. If no enemy is in reach, the lurker does a random "
 "move instead - or it just sits and waits (lurks)."
 msgstr ""
+"Neste cenário nós demonstramos a Espreitador Micro AI. Uma unidade "
+"espreitadora é capaz de se mover por sobre a maioria dos terrenos, mas só "
+"para e ataca em um tipo de terreno específico. A unidade talvez também tenha "
+"a habilidade de se esconder neste terreno (o que é a razão que ela é chamada "
+"de Espreitadora AI).\n"
+"\n"
+"Espreitadores movem individualmente sem nenhuma estratégia e sempre atacam o "
+"inimigo mais próximo que esteja dentro de seu alcance. Se nenhum inimigo "
+"estiver no seu alcance, o espreitador move-se aleatóriamente ao invés de "
+"atacar - ou ele simplesmente fica parado e espera (na espreita)."
 
 #. [message]: speaker=Pekzs
 #: data/ai/micro_ais/scenarios/lurkers.cfg:460
@@ -1497,6 +1714,20 @@ msgid ""
 "We also added two other sides, which demonstrate lurker behavior coded in "
 "WML (Side 5, gray) and Formula AI (Side 6, brown)."
 msgstr ""
+"Três comportamentos diferentes para os espreitadores foram programados "
+"usando [micro_ai] tag com os seguintes parâmetros:\n"
+"\n"
+"Lado 2 (azul): Sauros atacam apenas em pântanos. Se não tiver nenhum inimigo "
+"no alcance, eles não se movem.\n"
+"\n"
+"Lado 3 (verde): Sauros atacam apenas em pântanos. Se não tiver nenhum "
+"inimigo no alcance, eles vagam aleatóriamente (apenas em pântanos).\n"
+"\n"
+"Lado 4 (roxo): nagas vagando apenas em terrenos aquáticos, mas atacando "
+"tanto em pântanos quanto águas.\n"
+"\n"
+"Também foram adicionados outros dois lados para demonstrar o comportamento "
+"dos espreitadores em WML (Lado 5, cinza) e Formula AI (Lado 6, marrom)."
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/lurkers.cfg:474
@@ -1508,7 +1739,6 @@ msgstr "Notas"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/lurkers.cfg:475
-#, fuzzy
 msgid ""
 "You can use the right-click context menu to add additional lurkers.\n"
 "\n"
@@ -1520,12 +1750,17 @@ msgid ""
 "tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at "
 "https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Você pode usar o menu contextual aberto com o botão esquerdo para adicionar "
+"mais espreitadores.\n"
 "\n"
-"Nota:  é codificada como uma Micro AI. A Micro AI pode ser adicionada e "
-"adaptada de cordo com as necessidades do cenário usando WML e a [micro_ai] "
-"tag. De uma olhada na <span color='#00A000'>Micro AI wiki página</span> em "
-"https://wiki.wesnoth.org/Micro_AIs para mais informações (nota: página em "
-"inglês)."
+"Qualquer unidade que não esteja adjacente ao pântano (e água, para as nagas) "
+"está segura dos espreitadores. Portanto, é fácil manter Pekzs em segurança.\n"
+"\n"
+"Nota: A AI Lua Espreitadora é codificada como uma Micro AI. A Micro AI pode "
+"ser adicionada e adaptada de cordo com as necessidades do cenário usando WML "
+"e a [micro_ai] tag. De uma olhada na <span color='#00A000'>Micro AI wiki "
+"página</span> em https://wiki.wesnoth.org/Micro_AIs para mais informações "
+"(nota: página em inglês)."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/lurkers.cfg:485
@@ -1613,7 +1848,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:152
-#, fuzzy
 msgid ""
 "The Messenger Escort AI will try to move the dragoon messenger to the "
 "signpost in the north, while protecting him as well as possible with the "
@@ -1632,12 +1866,23 @@ msgid ""
 "tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at "
 "https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"A Escoltar Mensageiro AI tentará mover o mensageiro dragoon até o poste de "
+"sinalização no norte, protegendo-o tanto quanto possível com as outras "
+"unidades que possui. Os orcs de Vanak devem impedir que ele chegue lá.\n"
 "\n"
-"Nota:  é codificada como uma Micro AI. A Micro AI pode ser adicionada e "
-"adaptada de cordo com as necessidades do cenário usando WML e a [micro_ai] "
-"tag. De uma olhada na <span color='#00A000'>Micro AI wiki página</span> em "
-"https://wiki.wesnoth.org/Micro_AIs para mais informações (nota: página em "
-"inglês)."
+"Note que o caminho do mensageito é feito por meio da demarcação de uma série "
+"de pontos de rota aqui para demonstrar como usar pontos de rota. Neste mapa, "
+"usar apenas um ponto de rota no destino final dele funconaria perfeitamente "
+"(e talvez fosse até melhor).\n"
+"\n"
+"Note também que o mensageiro não precisa chegar exatamente em cada poste de "
+"sinalização (com excessão do último), chegar perto já é o suficiente.\n"
+"\n"
+"Nota: A Escoltar Mensageiro AI  é codificada como uma Micro AI. A Micro AI "
+"pode ser adicionada e adaptada de cordo com as necessidades do cenário "
+"usando WML e a [micro_ai] tag. De uma olhada na <span color='#00A000'>Micro "
+"AI wiki página</span> em https://wiki.wesnoth.org/Micro_AIs para mais "
+"informações (nota: página em inglês)."
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:165
@@ -1750,6 +1995,16 @@ msgid ""
 "\n"
 "All of this is implemented by use of the Patrol [micro_ai] tag."
 msgstr ""
+"Olá!  Eu sou um Konrad impostor. Nós vamos demonstrar a Patrol AI para você "
+"neste cenário.\n"
+"\n"
+"Estou indo para a torre de menagem ao leste da montanha central por meio de "
+"alguns pontos de rota ao sul. Ficarei por lá quando chegar no meu destino. "
+"Em contrapartida, esses dois rapazes no centro estão perpetuamente dando "
+"voltas na montanha, um deles sempre na mesma direção e o outro mudando "
+"direção a cada volta concluida.\n"
+"\n"
+"Tudo isso foi implementado usando a Patrol [micro_ai] tag."
 
 #. [message]: speaker=guard1
 #: data/ai/micro_ais/scenarios/patrols.cfg:225
@@ -1760,6 +2015,12 @@ msgid ""
 "same side.  For more details on different types of guardian AIs, there is a "
 "separate test scenario specializing on those."
 msgstr ""
+"Em contrapartida, eu sou um guardião de zona patrulhando, de certa forma, a "
+"parte mais ao sul do mapa.  Está AI foi implementada via a guardião "
+"[micro_ai] tag.  e está presente aqui para demonstrar como definir "
+"diferentes Micro AIs para o mesmo lado.  Para mais detalhes sobre os "
+"diferentes tipos de AIs guardiões, há um cenário de teste separado que se "
+"especializa nelas."
 
 #. [message]: speaker=Urudin
 #: data/ai/micro_ais/scenarios/patrols.cfg:229
@@ -1770,10 +2031,14 @@ msgid ""
 "\n"
 "This is an AI separate from the Patrols of Side 2."
 msgstr ""
+"E eu sou Urudin. Atacarei meus oponentes por alguns turnos, mas recuarei em "
+"direção ao canto direito do mapa caso meus pontos de vida caiam para abaixo "
+"da metado ou começe o Turno 5, o que acontecer primeiro.\n"
+"\n"
+"Está é uma AI separada das Patrulhas do Lado 2."
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/patrols.cfg:239
-#, fuzzy
 msgid ""
 "You, as the player, are in charge of Gertburt's bandits in this scenario. "
 "You can either simply watch the patrols move around, or you can move units "
@@ -1799,12 +2064,25 @@ msgid ""
 "and the [micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki "
 "page</span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Você, como o jogador, assume o controle dos bandidos de Gertburt neste "
+"cenário. Você pode simplesmente observar as patrulhas se movendo pelo seu "
+"caminho, ou você pode mover unidades no caminho do seu oponente. As três "
+"unidades em patrulha foram instruidas para agir de maneira diferente quando "
+"entrarem em contato com unidades inimigas.\n"
 "\n"
-"Nota:  é codificada como uma Micro AI. A Micro AI pode ser adicionada e "
-"adaptada de cordo com as necessidades do cenário usando WML e a [micro_ai] "
-"tag. De uma olhada na <span color='#00A000'>Micro AI wiki página</span> em "
-"https://wiki.wesnoth.org/Micro_AIs para mais informações (nota: página em "
-"inglês)."
+"Konrad só ataca Gertburt, ou qualquer unidade bloqueando o seu destino "
+"final.\n"
+"\n"
+"O Espadachim nunca ataca.\n"
+"\n"
+"O Arqueiro de Arco Longo ataca qualquer unidade inimiga que fica adjacente a "
+"ele quando ele termina de se mover.\n"
+"\n"
+"Nota: A Patrulha AI controlando todas as unidades do Lado 2 é codificada "
+"como uma Micro AI. A Micro AI pode ser adicionada e adaptada de cordo com as "
+"necessidades do cenário usando WML e a [micro_ai] tag. De uma olhada na "
+"<span color='#00A000'>Micro AI wiki página</span> em https://wiki.wesnoth."
+"org/Micro_AIs para mais informações (nota: página em inglês)."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/patrols.cfg:254
@@ -1892,16 +2170,17 @@ msgstr "Gentil da sua parte, mas ..."
 
 #. [message]: speaker=Langzhar
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:142
-#, fuzzy
 msgid ""
 "No buts!  You stay behind the lines and do not engage in battle unless there "
 "is no risk to your life, is that understood?  And get to that signpost in "
 "the northwest if it is safe."
-msgstr "Nada de mas!"
+msgstr ""
+"Nada de mas!  Você fica atrás das linhas de combate e não entra em batalha a "
+"não ser que haja um risco para a sua vida, entendeu?  E vá para aquele poste "
+"de sinalização no noroeste caso seja seguro."
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:150
-#, fuzzy
 msgid ""
 "In this scenario, the AI playing the humans in the east (Langzhar) is "
 "instructed to protect the wizard Rossauba, while moving him safely to the "
@@ -1914,12 +2193,17 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Neste cenário, a AI jogando com os humanos no leste (Langzhar) foi instruida "
+"para proteger o mago Rossauba enquanto move-o com segurança para o poste de "
+"sinalização. Do outro lado, as unidades de Koorzhar (no oeste) focarão seus "
+"ataques em Rossauba, mesmo havendo um alvo melhor para seus ataques. Você "
+"quer assumir o controle de um dos lados ou deixar que as AIs se enfrentem?\n"
 "\n"
-"Nota:  é codificada como uma Micro AI. A Micro AI pode ser adicionada e "
-"adaptada de cordo com as necessidades do cenário usando WML e a [micro_ai] "
-"tag. De uma olhada na <span color='#00A000'>Micro AI wiki página</span> em "
-"https://wiki.wesnoth.org/Micro_AIs para mais informações (nota: página em "
-"inglês)."
+"Nota: A Proteger Unidade Micro AI é codificada como uma Micro AI. A Micro AI "
+"pode ser adicionada e adaptada de cordo com as necessidades do cenário "
+"usando WML e a [micro_ai] tag. De uma olhada na <span color='#00A000'>Micro "
+"AI wiki página</span> em https://wiki.wesnoth.org/Micro_AIs para mais "
+"informações (nota: página em inglês)."
 
 #. [option]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:155
@@ -2020,7 +2304,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/recruiting.cfg:101
-#, fuzzy
 msgid ""
 "If you have not changed anything in the scenario code, Side 1 uses the "
 "Random Recruitment Micro AI, with swordsmen and peasants having been given "
@@ -2036,12 +2319,19 @@ msgid ""
 "AI wiki page</span> at https://wiki.wesnoth.org/Micro_AIs for more "
 "information."
 msgstr ""
+"Se você não mudou nada no código deste cenário, o Lado 1 usa a Recrutamente "
+"Aleatório Micro AI, sendo que espadachins e camponeses receberam uma "
+"probabilidade mais alta de serem recrutados do que outras unidades, e magos "
+"uma chance razoável. A ideia aqui não é demonstrar um bom padrão de "
+"recrutamento, mas sim demonstrar como usar a AI.\n"
 "\n"
-"Nota:  é codificada como uma Micro AI. A Micro AI pode ser adicionada e "
-"adaptada de cordo com as necessidades do cenário usando WML e a [micro_ai] "
-"tag. De uma olhada na <span color='#00A000'>Micro AI wiki página</span> em "
-"https://wiki.wesnoth.org/Micro_AIs para mais informações (nota: página em "
-"inglês)."
+"O Lado 2 usa a Apressar Recrutamento Micro AI (que também é usada na "
+"Experimental AI).\n"
+"\n"
+"Nota: Uma Micro AI pode ser adicionada e adaptada de cordo com as "
+"necessidades do cenário usando WML e a [micro_ai] tag. De uma olhada na "
+"<span color='#00A000'>Micro AI wiki página</span> em https://wiki.wesnoth."
+"org/Micro_AIs para mais informações (nota: página em inglês)."
 
 #. [test]: id=micro_ai_test
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:5
@@ -2088,7 +2378,7 @@ msgstr "Curandeiros"
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:87
 msgid "Hang Out and Messenger"
-msgstr ""
+msgstr "Permanecer Num Lugar e Mensageiro"
 
 #. [event]
 #. [test]: id=simple_attack
@@ -2140,6 +2430,11 @@ msgid ""
 "and always attack the weakest enemy within their reach. If no enemy is in "
 "reach, the lurker does a random move instead."
 msgstr ""
+"Espreitadores do pântano são criaturas burras e impulsivas que podem mover-"
+"se por quase todos os terrenos, parando apenas em pântanos. Eles movem "
+"individualmente sem nenhuma estratégia e sempre atacam o oponente mais "
+"próximo de si. Se não há nenhum oponente em seu alcance, o espreitador move-"
+"se aleatóriamente."
 
 #. [message]: speaker=Grnk
 #. [set_menu_item]: id=m03_guardians
@@ -2155,6 +2450,9 @@ msgid ""
 "shown, including a \"coward\" unit that runs away from any approaching unit "
 "(an \"inverse guardian\", in a way)."
 msgstr ""
+"Em 'Guardiões', várias variantes do guardião Wsnoth são demonstradas, "
+"incluindo uma unidade \"covarde\" que corre para longe de qualquer unidade "
+"que se aproximar (de certa forma um \"guardião inverso\")."
 
 #. [message]: speaker=Grnk
 #. [set_menu_item]: id=m04_patrol
@@ -2205,6 +2503,12 @@ msgid ""
 "is available. You can watch the two AIs fight it out, or take control of "
 "either side to explore how the opposing AI behaves."
 msgstr ""
+"Este cenário consiste de um lado defendendo um mago enquanto escoltam-o para "
+"um destno. Ao mesmo tempo, o outro lado foi modificado para dar prioridade "
+"em atacar o mago, mesmo que hajam algos melhores (pelo critério da AI "
+"padrão) para serem atacados. Você pode observar as duas AIs se enfrentarem "
+"ou assumir o comando de um dos dois lados para explorar o comportamento da "
+"AI oponente."
 
 #. [message]: speaker=Grnk
 #. [set_menu_item]: id=m06a_protect
@@ -2220,13 +2524,16 @@ msgid ""
 "campaign \"Heir to the Throne\", just that the AI is playing Konrad's side "
 "here. The same algorithm as for scenario \"Protect Unit\" is used."
 msgstr ""
+"Está é uma encenação do cenário \"Os Elfos Sitiados\" da campanha \"O "
+"Herdeiro do Trono\" mas, neste caso, a AI joga com Konrad. O mesmo "
+"algorítimo do cenário \"Proteger Unidade\" é usado aqui."
 
 #. [message]: speaker=Grnk
 #. [set_menu_item]: id=m07_messenger
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:234
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:245
 msgid "Messenger Escort Micro AI demo"
-msgstr "Escoltar o Mensageiro Micro AI demo"
+msgstr "Escoltar Mensageiro Micro AI demo"
 
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:246
@@ -2235,6 +2542,9 @@ msgid ""
 "his way to the edge of the map. The escort will also try to open the path "
 "for the messenger if there are enemies in the way."
 msgstr ""
+"'Escoltar Mensageiro' faz com que a AI ativamente proteja o mensageiro "
+"enquanto ele faz seu trajeto até a borda do mapa. A escolta tentará, também, "
+"abrir caminho para o mensageiro caso hajam inimigos no seu caminho."
 
 #. [message]: speaker=Grnk
 #. [set_menu_item]: id=m08_animals
@@ -2251,6 +2561,10 @@ msgid ""
 "sheep; bears, spiders, yetis, boar and rabbits wandering and hunting/"
 "avoiding each other."
 msgstr ""
+"Este cenário demonstra um número de diferentes animais seguindo um "
+"comportamento de AI customizado, incluindo lobos caçando em bando; cães "
+"pastoreando ovelhas; lobos, aranhas, pé-grandes, javali e coelhos vagando e "
+"caçando/evitando uns aos outros."
 
 #. [message]: speaker=Grnk
 #. [set_menu_item]: id=m09_wolves
@@ -2265,7 +2579,7 @@ msgid ""
 "Another demonstration of wolves wandering and attacking in packs, with a "
 "different behavior from that in 'Animals'."
 msgstr ""
-"Outra demonstração de lobos errantes atacando em bandos, com comportamento "
+"Outra demonstração de lobos errantes atacando em bando, com comportamento "
 "diferente do dos 'Animais'."
 
 #. [message]: speaker=Grnk
@@ -2333,16 +2647,23 @@ msgid ""
 "set of locations. The units to be moved are defined using a Standard Unit "
 "Filter, while the goto locations are given in a Standard Location Filter."
 msgstr ""
+"Este cenário contém vários exemplos do uso da Goto Micro AI, que é um método "
+"altamento configurável de mandar unidade (ou unidades) para um local ou um "
+"conjunto de locais. As unidades que serão movidas são definidas usando um "
+"Filtro Padrão de Unidade, enquanto que os locais da goto são dados em um "
+"Filtro Padrão de Locais."
 
 #. [set_menu_item]: id=m14_hangout
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:367
 msgid "Hang Out Micro AI demo"
-msgstr ""
+msgstr "Permanecer Num Lugar Micro AI demo"
 
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:378
 msgid "Combined Hang Out and Messenger Escort Micro AI demo"
 msgstr ""
+"Demonstração da combinação da Escoltar Mensageiro Micro AI com a Permanecer "
+"Num Lugar Micro AI"
 
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:379
@@ -2353,6 +2674,12 @@ msgid ""
 "also shows how to combine two Micro AIs on the same side by having the "
 "Messenger Escort Micro AI take over at that point."
 msgstr ""
+"Este cenário é uma demonstração da Permanecer Num Lugar Micro AI, que mantêm "
+"a unidade no entorno de um local (customizável) até que uma condição "
+"(customizável) seja atendida.  Após isso, a unidade fica livre para seguir "
+"outro comportamento da AI.  Este cenário também mostra como combinar duas "
+"AIs no mesmo lado, pois a Escoltar Mensageiro Micro AI assume logo em "
+"seguida."
 
 #. [message]: speaker=Grnk
 #. [set_menu_item]: id=m15_simple_attack
@@ -2444,6 +2771,16 @@ msgid ""
 "Attack Micro AI in this scenario. General Grospur might be in for a surprise."
 "</i>"
 msgstr ""
+"Não seja tão covarde, Sargento!  Eu posicionei unidades experiêntes ao redor "
+"do perímetro. Os mortos-vivos não terão a coragem necessáriia para atacá-"
+"los. E os poucos que conseguirem se esgueirar...daremos um jeito neles caso "
+"consigam atravessar nossa linha.\n"
+"\n"
+"<i> Em outras palavras, a AI padrão geralmente não ataca unidades que estão "
+"a 1 ponto de experiência de subirem de nível caso não tenham chance de mata-"
+"la em um ataque. Entretanto, alguns dos ataques dos mortos-vivos são feitos "
+"pela Ataque Simples Micro AI neste cenário. General Grospur não tem ideia do "
+"que lhe espera.</i>"
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:135
@@ -2490,6 +2827,20 @@ msgid ""
 "for their own safety.  Only after that does the default Wesnoth attack "
 "mechanism kick in to attack with the remaining units (skeletons).</i>"
 msgstr ""
+"Hahahahaha!! Eu dei uma ordem especial aos meus desalmados para que ataquem "
+"as unidades de nível mais alto primeiro. Observe também como os meus "
+"desalmados se jogam nos seus lamentáveis soldados sem se importar com a "
+"própria segurança, conservando minhas unidades mais importantes para depois. "
+"Isto dá um novo significado para o termo 'unidade descartável'. Observe e "
+"trema!!\n"
+"\n"
+"<i>Tradução: O lado dos mortos-vivos inclui duas instâncias da Ataque "
+"Simples Micro AI.  A primeira faz com que os desalmados ataquem todas as "
+"unidades que precisam de 1 XP para subir de nível, facilitando com que sejam "
+"eliminados depois.  A segunda executa todos os ataques possíveis restantes "
+"para os desalmados (e corpos ambulantes), sem se importar com a segunraça "
+"destas unidades.  Em seguida, a AI padrão do jogo assume o comando e "
+"coordena os ataques das unidades restantes (esqueletos).</i>"
 
 #. [message]: speaker=Uralt
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:195
@@ -2518,7 +2869,6 @@ msgstr "Botar Morego do Lado 2"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/swarm.cfg:144
-#, fuzzy
 msgid ""
 "This scenario features bats moving around in a swarm. Without adjacent "
 "enemies, they simply try to stay together and at a certain distance from "
@@ -2540,12 +2890,27 @@ msgid ""
 "tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at "
 "https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Este cenário consiste de morcegos movendo-se em um enxame. Caso não haja "
+"inimigos adjacentes, eles simplesmente tentam se manter juntos e há uma "
+"certa distância dos inimigos. Entretanto, se um inimigo estiver adjacente "
+"aos morcegos, o enxame se dispersa. Isso é particularmente engraçado de se "
+"ver quando botam uma unidade no meio do enxame. Após estarem dispersos, os "
+"membros do enxame aos poucos vão se reagrupando, mas não de forma "
+"organizada. pequenos grupos enxames ou morcegos individuais podem vagar por "
+"algum tempo antes de encontrar seu caminho de volta para o enxame. Também é "
+"possível que morcegos solitários (ou pequenos grupos) separem-se do enxame "
+"de tempos em tempos.\n"
 "\n"
-"Nota:  é codificada como uma Micro AI. A Micro AI pode ser adicionada e "
-"adaptada de cordo com as necessidades do cenário usando WML e a [micro_ai] "
-"tag. De uma olhada na <span color='#00A000'>Micro AI wiki página</span> em "
-"https://wiki.wesnoth.org/Micro_AIs para mais informações (nota: página em "
-"inglês)."
+"O jogador controla o lado dos grifos, cada um tendo 99 de movimento, o que "
+"faz com que seja fácl testar a reação dos inimigos. Há também várias opções "
+"no menu contextual como, por exemplo, adicionar morcegos ou grifos ou "
+"retirar unidades do mapa.\n"
+"\n"
+"Nota: A Enxame AI é codificada como uma Micro AI. A Micro AI pode ser "
+"adicionada e adaptada de cordo com as necessidades do cenário usando WML e a "
+"[micro_ai] tag. De uma olhada na <span color='#00A000'>Micro AI wiki página</"
+"span> em https://wiki.wesnoth.org/Micro_AIs para mais informações (nota: "
+"página em inglês)."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/swarm.cfg:154
@@ -2611,10 +2976,31 @@ msgid ""
 "displayed below each wolf in this scenario once the AI takes control of a "
 "side the first time."
 msgstr ""
+"Neste cenário os lobos possuem um comportamento diferente do cenário "
+"'Animals'. Primeiramente, pode haver um número arbitrário de alcateias e o "
+"tamanho de cada uma delas é um parâmetro livre (definido como 3 para o Lado "
+"2 e 4 para o Lado 3 neste cenário). No início do cenário, lobos próximos são "
+"agrupados em alcateias de maneira semimetódica. Primeiro, lobos da mesma "
+"alcateia convergem para o mesmo lugar. Depois disso, eles ficam juntos até "
+"que reste apenas um lobo na alcateia, que então tenta juntar-se com uma "
+"alcateia incompleto ou com outros lobos que estejam sem alcateia. Lobos que "
+"entram sozinhos no mapa comportam-se dessa maneira também.\n"
+"\n"
+"Em segundo lugar, os lobos não caçam ativamente neste cenário. Em grande "
+"parte eles só vagam (muitas vezes por longas distâncias). No entanto, a "
+"alcateia ataca ferozmente (e sem se importar com sua própria segurança) "
+"todas as unidades inimigas que entram em alcance, contanto que isso não "
+"signifique separar a alcateia por mais do que alguns hexágonos. Ficar "
+"juntos, ou juntar-se com um novo lobo designado para a alcateia, são as "
+"únicas coisas que tem prioridade sobre a satisfazer a sede de sangue dos "
+"lobos.\n"
+"\n"
+"Para enfatizar qual lobo pertence a qual alcateia, o número da alcateia será "
+"exibido abaixo de cada lobo neste cenário uma vez que o AI assumir o "
+"controle de um lado na primeira vez."
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/wolves.cfg:207
-#, fuzzy
 msgid ""
 "It is possible to include a human-controlled Side 1, so that the action "
 "stops once every turn for looking around (or for messing with things in "
@@ -2633,12 +3019,23 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"É possível incluir um humano controlando o Lado 1, para que a ação pare "
+"todos os turnos e você dê uma olhada no que está acontecendo (ou fazer "
+"coisas no modo de debug). No modo de controle humano, várias opções "
+"adicionais estão inclusas no menu do botão direito; tais quais adicionar "
+"adicionar lobos para o lado desejado, retirar lobos do mapa, adicionar "
+"camponêses ao lado controlado por humano ou terminar o cenário. Isto permite "
+"que a AI dos lobos seja testada em várias situações diferentes.\n"
 "\n"
-"Nota:  é codificada como uma Micro AI. A Micro AI pode ser adicionada e "
-"adaptada de cordo com as necessidades do cenário usando WML e a [micro_ai] "
-"tag. De uma olhada na <span color='#00A000'>Micro AI wiki página</span> em "
-"https://wiki.wesnoth.org/Micro_AIs para mais informações (nota: página em "
-"inglês)."
+"Note que o líder do lado controlado por humano, Rutburt, pode se mover 99 "
+"hexágonos por turno, o que faz com que sempre seja possível tirá-lo de "
+"situações perigosas.\n"
+"\n"
+"Válido de nota, também, é que a AI dos lobos é codificada como uma Micro AI. "
+"A Micro AI pode ser adicionada e adaptada de cordo com as necessidades do "
+"cenário usando WML e a [micro_ai] tag. De uma olhada na <span "
+"color='#00A000'>Micro AI wiki página</span> em https://wiki.wesnoth.org/"
+"Micro_AIs para mais informações (nota: página em inglês)."
 
 #. [option]
 #: data/ai/micro_ais/scenarios/wolves.cfg:214
