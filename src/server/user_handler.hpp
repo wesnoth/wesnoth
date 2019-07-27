@@ -18,6 +18,7 @@ class config;
 
 #include "exceptions.hpp"
 
+#include <ctime>
 #include <string>
 
 /**
@@ -108,12 +109,32 @@ class user_handler {
 		/** Mark this user as a moderator */
 		virtual void set_is_moderator(const std::string& name, const bool& is_moderator) =0;
 
+		/** Ban type values */
 		enum BAN_TYPE
 		{
-			BAN_NONE,
-			BAN_USER,
-			BAN_IP,
-			BAN_EMAIL,
+			BAN_NONE,		/**< Not a ban */
+			BAN_USER,		/**< User account/name ban */
+			BAN_IP,			/**< IP address ban */
+			BAN_EMAIL,		/**< Account email address ban */
+		};
+
+		/** Ban status description */
+		struct ban_info
+		{
+			BAN_TYPE type;			/**< Ban type */
+			std::time_t duration;	/**< Ban duration (0 if permanent) */
+
+			ban_info()
+				: type(BAN_NONE)
+				, duration(0)
+			{
+			}
+
+			ban_info(BAN_TYPE ptype, std::time_t pduration)
+				: type(ptype)
+				, duration(pduration)
+			{
+			}
 		};
 
 		/**
@@ -123,7 +144,7 @@ class user_handler {
 		 *       subclass. Regular IP ban checks are done by @a server_base
 		 *       instead.
 		 */
-		virtual BAN_TYPE user_is_banned(const std::string& name, const std::string& addr="") = 0;
+		virtual ban_info user_is_banned(const std::string& name, const std::string& addr="") = 0;
 
 		struct error : public game::error {
 			error(const std::string& message) : game::error(message) {}

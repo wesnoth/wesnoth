@@ -787,6 +787,7 @@ void connect_engine::send_level_data() const
 			"create_game", config {
 				"name", params_.name,
 				"password", params_.password,
+				"ignored", preferences::get_ignored_delim(),
 			},
 		});
 		send_to_server(level_);
@@ -1291,7 +1292,7 @@ void side_engine::update_controller_options()
 
 	add_controller_option(CNTR_LOCAL, _("Local Player"), "human");
 	add_controller_option(CNTR_COMPUTER, _("Computer Player"), "ai");
-	add_controller_option(CNTR_EMPTY, _("Empty"), "null");
+	add_controller_option(CNTR_EMPTY, _("Nobody"), "null");
 
 	if(!reserved_for_.empty()) {
 		add_controller_option(CNTR_RESERVED, _("Reserved"), "human");

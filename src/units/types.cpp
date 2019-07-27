@@ -33,6 +33,7 @@
 #include "gui/dialogs/loading_screen.hpp"
 
 #include <boost/regex.hpp>
+#include <boost/range/algorithm_ext/erase.hpp>
 
 #include <locale>
 
@@ -223,7 +224,7 @@ void unit_type::build_help_index(
 	}
 
 	// Make sure we are built to the preceding build level.
-	build_created(mv_types, races, traits);
+	build_created();
 
 	type_name_ = cfg_["name"];
 	description_ = cfg_["description"];
@@ -234,7 +235,6 @@ void unit_type::build_help_index(
 	vision_ = cfg_["vision"].to_int(-1);
 	jamming_ = cfg_["jamming"].to_int(0);
 	max_attacks_ = cfg_["attacks"].to_int(1);
-	cost_ = cfg_["cost"].to_int(1);
 	usage_ = cfg_["usage"].str();
 	undead_variation_ = cfg_["undead_variation"].str();
 	image_ = cfg_["image"].str();
@@ -362,8 +362,7 @@ void unit_type::build_help_index(
  * This creates the gender-specific types (if needed) and also defines how much
  * experience is needed to advance as well as what this advances to.
  */
-void unit_type::build_created(
-		const movement_type_map& mv_types, const race_map& races, const config::const_child_itors& traits)
+void unit_type::build_created()
 {
 	// Don't build twice.
 	if(CREATED <= build_status_) {
@@ -388,7 +387,7 @@ void unit_type::build_created(
 
 	for(unsigned i = 0; i < gender_types_.size(); ++i) {
 		if(gender_types_[i]) {
-			gender_types_[i]->build_created(mv_types, races, traits);
+			gender_types_[i]->build_created();
 		}
 	}
 
@@ -400,6 +399,7 @@ void unit_type::build_created(
 	DBG_UT << "unit_type '" << log_id() << "' advances to : " << advances_to_val << "\n";
 
 	experience_needed_ = cfg_["experience"].to_int(500);
+	cost_ = cfg_["cost"].to_int(1);
 
 	build_status_ = CREATED;
 }
@@ -421,7 +421,7 @@ void unit_type::build(BUILD_STATUS status,
 
 	case CREATED:
 		// Build the basic data.
-		build_created(movement_types, races, traits);
+		build_created();
 		return;
 
 	case VARIATIONS: // Implemented as part of HELP_INDEXED
@@ -1421,6 +1421,87 @@ const unit_race* unit_type_data::find_race(const std::string& key) const
 {
 	race_map::const_iterator i = races_.find(key);
 	return i != races_.end() ? &i->second : nullptr;
+}
+
+void unit_type::apply_scenario_fix(const config& cfg)
+{
+	build_created();
+	if(auto p_setxp = cfg.get("set_experience")) {
+		experience_needed_ = p_setxp->to_int();
+	}
+	if(auto attr = cfg.get("set_advances_to")) {
+		advances_to_ = utils::split(attr->str());
+	}
+	if(auto attr = cfg.get("set_cost")) {
+		cost_ = attr->to_int(1);
+	}
+	if(auto attr = cfg.get("add_advancement")) {
+		for(const auto& str : utils::split(attr->str())) {
+			advances_to_.push_back(str);
+		}
+	}
+	if(auto attr = cfg.get("remove_advancement")) {
+		for(const auto& str : utils::split(attr->str())) {
+			boost::remove_erase(advances_to_, str);
+		}
+	}
+
+	// apply recursively to subtypes.
+	for(int gender = 0; gender <= 1; ++gender) {
+		if(!gender_types_[gender]) {
+			continue;
+		}
+		gender_types_[gender]->apply_scenario_fix(cfg);
+	}
+
+	if(cfg_.has_child("variation")) {
+		// Make sure the variations are created.
+		unit_types.build_unit_type(*this, VARIATIONS);
+		for(auto& v : variations_) {
+			v.second.apply_scenario_fix(cfg);
+		}
+	}
+}
+
+void unit_type_data::apply_scenario_fix(const config& cfg)
+{
+	unit_type_map::iterator itor = types_.find(cfg["type"].str());
+	// This might happen if units of another era are requested (for example for savegames)
+	if(itor != types_.end()) {
+		itor->second.apply_scenario_fix(cfg);
+	}
+	else {
+		// should we give an error message?
+	}
+}
+
+void unit_type::remove_scenario_fixes()
+{
+	advances_to_.clear();
+	const std::string& advances_to_val = cfg_["advances_to"];
+	if(advances_to_val != "null" && !advances_to_val.empty()) {
+		advances_to_ = utils::split(advances_to_val);
+	}
+	experience_needed_ = cfg_["experience"].to_int(500);
+	cost_ = cfg_["cost"].to_int(1);
+
+	// apply recursively to subtypes.
+	for(int gender = 0; gender <= 1; ++gender) {
+		if(!gender_types_[gender]) {
+			continue;
+		}
+		gender_types_[gender]->remove_scenario_fixes();
+	}
+	for(auto& v : variations_) {
+		v.second.remove_scenario_fixes();
+	}
+}
+
+void unit_type_data::remove_scenario_fixes()
+{
+	for(auto& pair : types_) {
+		pair.second.remove_scenario_fixes();
+	}
 }
 
 void unit_type::check_id(std::string& id)

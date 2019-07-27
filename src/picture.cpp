@@ -17,15 +17,12 @@
  * Routines for images: load, scale, re-color, etc.
  */
 
-#define GETTEXT_DOMAIN "wesnoth-lib"
-
 #include "picture.hpp"
 
 #include "config.hpp"
 #include "display.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
-#include "gettext.hpp"
 #include "image_modifications.hpp"
 #include "log.hpp"
 #include "preferences/general.hpp"
@@ -34,7 +31,7 @@
 #include "sdl/rect.hpp"
 #include "utils/general.hpp"
 
-#include <SDL_image.h>
+#include <SDL2/SDL_image.h>
 
 #include "utils/functional.hpp"
 
@@ -358,17 +355,6 @@ locator& locator::operator=(const locator& a)
 	return *this;
 }
 
-locator::value::value(const locator::value& a)
-	: type_(a.type_)
-	, is_data_uri_(a.is_data_uri_)
-	, filename_(a.filename_)
-	, loc_(a.loc_)
-	, modifications_(a.modifications_)
-	, center_x_(a.center_x_)
-	, center_y_(a.center_y_)
-{
-}
-
 locator::value::value()
 	: type_(NONE)
 	, is_data_uri_(false)
@@ -463,110 +449,14 @@ bool locator::value::operator<(const value& a) const
 	return false;
 }
 
-// Check if localized file is up-to-date according to l10n track index.
-// Make sure only that the image is not explicitly recorded as fuzzy,
-// in order to be able to use non-tracked images (e.g. from UMC).
-static std::set<std::string> fuzzy_localized_files;
-static bool localized_file_uptodate(const std::string& loc_file)
-{
-	if(fuzzy_localized_files.empty()) {
-		// First call, parse track index to collect fuzzy files by path.
-		std::string fsep = "\xC2\xA6"; // UTF-8 for "broken bar"
-		std::string trackpath = filesystem::get_binary_file_location("", "l10n-track");
-
-		// l10n-track file not present. Assume image is up-to-date.
-		if(trackpath.empty()) {
-			return true;
-		}
-
-		std::string contents = filesystem::read_file(trackpath);
-
-		for(const std::string& line : utils::split(contents, '\n')) {
-			std::size_t p1 = line.find(fsep);
-			if(p1 == std::string::npos) {
-				continue;
-			}
-
-			std::string state = line.substr(0, p1);
-			boost::trim(state);
-			if(state == "fuzzy") {
-				std::size_t p2 = line.find(fsep, p1 + fsep.length());
-				if(p2 == std::string::npos) {
-					continue;
-				}
-
-				std::string relpath = line.substr(p1 + fsep.length(), p2 - p1 - fsep.length());
-				fuzzy_localized_files.insert(game_config::path + '/' + relpath);
-			}
-		}
-
-		fuzzy_localized_files.insert(""); // make sure not empty any more
-	}
-
-	return fuzzy_localized_files.count(loc_file) == 0;
-}
-
-// Return path to localized counterpart of the given file, if any, or empty string.
-// Localized counterpart may also be requested to have a suffix to base name.
-static std::string get_localized_path(const std::string& file, const std::string& suff = "")
-{
-	std::string dir = filesystem::directory_name(file);
-	std::string base = filesystem::base_name(file);
-
-	const std::size_t pos_ext = base.rfind(".");
-
-	std::string loc_base;
-	if(pos_ext != std::string::npos) {
-		loc_base = base.substr(0, pos_ext) + suff + base.substr(pos_ext);
-	} else {
-		loc_base = base + suff;
-	}
-
-	// TRANSLATORS: This is the language code which will be used
-	// to store and fetch localized non-textual resources, such as images,
-	// when they exist. Normally it is just the code of the PO file itself,
-	// e.g. "de" of de.po for German. But it can also be a comma-separated
-	// list of language codes by priority, when the localized resource
-	// found for first of those languages will be used. This is useful when
-	// two languages share sufficient commonality, that they can use each
-	// other's resources rather than duplicating them. For example,
-	// Swedish (sv) and Danish (da) are such, so Swedish translator could
-	// translate this message as "sv,da", while Danish as "da,sv".
-	std::vector<std::string> langs = utils::split(_("language code for localized resources^en_US"));
-
-	// In case even the original image is split into base and overlay,
-	// add en_US with lowest priority, since the message above will
-	// not have it when translated.
-	langs.push_back("en_US");
-	for(const std::string& lang : langs) {
-		std::string loc_file = dir + "/" + "l10n" + "/" + lang + "/" + loc_base;
-		if(filesystem::file_exists(loc_file) && localized_file_uptodate(loc_file)) {
-			return loc_file;
-		}
-	}
-
-	return "";
-}
-
-// Ensure PNG images with an indexed palette are converted to 32-bit RGBA.
-static void standardize_surface_format(surface& surf)
-{
-	if(!surf.null() && !is_neutral(surf)) {
-		surf = make_neutral_surface(surf);
-		assert(is_neutral(surf));
-	}
-}
-
 // Load overlay image and compose it with the original surface.
 static void add_localized_overlay(const std::string& ovr_file, surface& orig_surf)
 {
 	filesystem::rwops_ptr rwops = filesystem::make_read_RWops(ovr_file);
 	surface ovr_surf = IMG_Load_RW(rwops.release(), true); // SDL takes ownership of rwops
-	if(ovr_surf.null()) {
+	if(!ovr_surf) {
 		return;
 	}
-
-	standardize_surface_format(ovr_surf);
 
 	SDL_Rect area {0, 0, ovr_surf->w, ovr_surf->h};
 
@@ -582,7 +472,7 @@ static surface load_image_file(const image::locator& loc)
 	{
 		if(!location.empty()) {
 			// Check if there is a localized image.
-			const std::string loc_location = get_localized_path(location);
+			const std::string loc_location = filesystem::get_localized_path(location);
 			if(!loc_location.empty()) {
 				location = loc_location;
 			}
@@ -590,11 +480,9 @@ static surface load_image_file(const image::locator& loc)
 			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(location);
 			res = IMG_Load_RW(rwops.release(), true); // SDL takes ownership of rwops
 
-			standardize_surface_format(res);
-
 			// If there was no standalone localized image, check if there is an overlay.
-			if(!res.null() && loc_location.empty()) {
-				const std::string ovr_location = get_localized_path(location, "--overlay");
+			if(res && loc_location.empty()) {
+				const std::string ovr_location = filesystem::get_localized_path(location, "--overlay");
 				if(!ovr_location.empty()) {
 					add_localized_overlay(ovr_location, res);
 				}
@@ -602,7 +490,7 @@ static surface load_image_file(const image::locator& loc)
 		}
 	}
 
-	if(res.null() && !loc.get_filename().empty()) {
+	if(!res && !loc.get_filename().empty()) {
 		ERR_DP << "could not open image '" << loc.get_filename() << "'" << std::endl;
 		if(game_config::debug && loc.get_filename() != game_config::images::missing)
 			return get_image(game_config::images::missing, UNSCALED);
@@ -763,7 +651,7 @@ static surface apply_light(surface surf, const light_string& ls)
 			// first image will be the base where we blit the others
 			if(lightmap == nullptr) {
 				// copy the cached image to avoid modifying the cache
-				lightmap = make_neutral_surface(lts);
+				lightmap = lts.clone();
 			} else {
 				sdl_blit(lts, nullptr, lightmap, nullptr);
 			}
@@ -807,41 +695,6 @@ manager::manager()
 manager::~manager()
 {
 	flush_cache();
-}
-
-static SDL_PixelFormat last_pixel_format;
-
-void set_pixel_format(SDL_PixelFormat* format)
-{
-	assert(format != nullptr);
-
-	SDL_PixelFormat& f = *format;
-	SDL_PixelFormat& l = last_pixel_format;
-	// if the pixel format change, we clear the cache,
-	// because some images are now optimized for the wrong display format
-	// FIXME: 8 bpp use palette, need to compare them. For now assume a change
-	if(format->BitsPerPixel == 8
-			|| f.BitsPerPixel != l.BitsPerPixel
-			|| f.BytesPerPixel != l.BytesPerPixel
-			|| f.Rmask != l.Rmask
-			|| f.Gmask != l.Gmask
-			|| f.Bmask != l.Bmask
-//			|| f.Amask != l.Amask This field in not checked, not sure why.
-			|| f.Rloss != l.Rloss
-			|| f.Gloss != l.Gloss
-			|| f.Bloss != l.Bloss
-//			|| f.Aloss != l.Aloss This field in not checked, not sure why.
-			|| f.Rshift != l.Rshift
-			|| f.Gshift != l.Gshift
-			|| f.Bshift != l.Bshift
-//			|| f.Ashift != l.Ashift This field in not checked, not sure why.
-			)
-	{
-		LOG_DP << "detected a new display format\n";
-		flush_cache();
-	}
-
-	last_pixel_format = *format;
 }
 
 void set_color_adjustment(int r, int g, int b)
@@ -943,7 +796,7 @@ static surface get_scaled_to_hex(const locator& i_locator)
 	surface img = get_image(i_locator, HEXED);
 	// return scale_surface(img, zoom, zoom);
 
-	if(!img.null()) {
+	if(img) {
 		return scale_to_hex_func(img, zoom, zoom);
 	}
 
@@ -964,7 +817,7 @@ static surface get_scaled_to_zoom(const locator& i_locator)
 
 	surface res(get_image(i_locator, UNSCALED));
 	// For some reason haloes seems to have invalid images, protect against crashing
-	if(!res.null()) {
+	if(res) {
 		return scale_to_zoom_func(res, ((res->w * zoom) / tile_size), ((res->h * zoom) / tile_size));
 	}
 
@@ -1294,7 +1147,7 @@ save_result save_image(const locator& i_locator, const std::string& filename)
 
 save_result save_image(const surface& surf, const std::string& filename)
 {
-	if(surf.null()) {
+	if(!surf) {
 		return save_result::no_image;
 	}
 

@@ -20,7 +20,7 @@
 #include "serialization/parser.hpp"
 #include "utils/functional.hpp"
 
-#include <SDL_timer.h>
+#include <SDL2/SDL_timer.h>
 
 #include <cstdint>
 #include <deque>

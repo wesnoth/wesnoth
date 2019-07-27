@@ -66,7 +66,7 @@
 #include <fenv.h>
 #endif // _MSC_VER
 
-#include <SDL.h> // for SDL_Init, SDL_INIT_TIMER
+#include <SDL2/SDL.h> // for SDL_Init, SDL_INIT_TIMER
 
 #include <boost/iostreams/categories.hpp>   // for input, output
 #include <boost/iostreams/copy.hpp>         // for copy
@@ -1076,11 +1076,11 @@ int main(int argc, char** argv)
 
 	// Mac's touchpad generates touch events too.
 	// Ignore them until Macs have a touchscreen: https://forums.libsdl.org/viewtopic.php?p=45758
-#if defined(__APPLE__) && !defined(__IPHONEOS__) 
+#if defined(__APPLE__) && !defined(__IPHONEOS__)
 	SDL_EventState(SDL_FINGERMOTION, SDL_DISABLE);
 	SDL_EventState(SDL_FINGERDOWN, SDL_DISABLE);
 	SDL_EventState(SDL_FINGERUP, SDL_DISABLE);
-#endif	
+#endif
 
 	// declare this here so that it will always be at the front of the event queue.
 	events::event_context global_context;

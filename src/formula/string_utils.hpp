@@ -20,6 +20,8 @@
 
 #include "serialization/string_utils.hpp"
 
+#include <ctime>
+
 class variable_set;
 
 namespace utils {
@@ -74,6 +76,13 @@ std::string format_conjunct_list(const t_string& empty, const std::vector<t_stri
  */
 std::string format_disjunct_list(const t_string& empty, const std::vector<t_string>& elems);
 
+/**
+ * Formats a timespan into human-readable text.
+ * @param time The timespan in seconds.
+ * @return A string such as "6 days, 12 hours, 4 minutes, 13 seconds". Years,
+ *         months and weeks are also considered.
+ */
+std::string format_timespan(std::time_t time);
 }
 
 /**

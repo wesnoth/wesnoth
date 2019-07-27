@@ -110,13 +110,13 @@ void game_display::new_turn()
 				if(old_mask != nullptr) {
 					const fixed_t proportion = ftofxp(1.0) - fxpdiv(i,niterations);
 					adjust_surface_alpha(old_mask, proportion);
-					tod_hex_mask1.assign(old_mask);
+					tod_hex_mask1 = old_mask;
 				}
 
 				if(new_mask != nullptr) {
 					const fixed_t proportion = fxpdiv(i,niterations);
 					adjust_surface_alpha(new_mask, proportion);
-					tod_hex_mask2.assign(new_mask);
+					tod_hex_mask2 = new_mask;
 				}
 
 				invalidate_all();
@@ -129,8 +129,8 @@ void game_display::new_turn()
 			}
 		}
 
-		tod_hex_mask1.assign(nullptr);
-		tod_hex_mask2.assign(nullptr);
+		tod_hex_mask1 = nullptr;
+		tod_hex_mask2 = nullptr;
 	}
 
 	first_turn_ = false;
@@ -556,17 +556,25 @@ void game_display::highlight_reach(const pathfind::paths &paths_list)
 	highlight_another_reach(paths_list);
 }
 
-void game_display::highlight_another_reach(const pathfind::paths &paths_list)
+void game_display::highlight_another_reach(const pathfind::paths &paths_list,
+			const map_location& goal)
 {
 	// Fold endpoints of routes into reachability map.
 	for (const pathfind::paths::step &dest : paths_list.destinations) {
 		reach_map_[dest.curr]++;
 	}
 	reach_map_changed_ = true;
+
+	if(goal != map_location::null_location() && paths_list.destinations.contains(goal)) {
+		const auto& path_to_goal = paths_list.destinations.get_path(paths_list.destinations.find(goal));
+		const map_location enemy_unit_location = path_to_goal[0];
+		units_that_can_reach_goal_.insert(enemy_unit_location);
+	}
 }
 
 bool game_display::unhighlight_reach()
 {
+	units_that_can_reach_goal_.clear();
 	if(!reach_map_.empty()) {
 		reach_map_.clear();
 		reach_map_changed_ = true;

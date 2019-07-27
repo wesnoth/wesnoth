@@ -11,8 +11,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.2\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-12 17:01 UTC\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2019-07-18 12:50 UTC\n"
 "PO-Revision-Date: 2012-01-02 23:50+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -28,15 +28,19 @@ msgstr "4l — Terra Nova"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
+#, fuzzy
+#| msgid ""
+#| "This 4p survival scenario allows you to construct buildings and terraform "
+#| "the land. Use map settings. The recommended starting gold is 100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
-"the land. Use map settings. The recommended starting gold is 100."
+"the land. The recommended starting gold is 100."
 msgstr ""
 "Hoc scaenarium superandum te sinit ut aedifices et terram mutes. Utere "
 "electionibus chartae. Aurum probatum initio centum est."
 
 #. [part]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:27
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:26
 msgid ""
 "In the aftermath of the great war the remnants of humanity fled to an "
 "obscure secluded glen. Though they knew they could not hide from the mighty "
@@ -48,21 +52,11 @@ msgstr ""
 "oppressis posse, duces resistentium tantum sperabant tempus ad copias "
 "restituendum fore. "
 
-#. [objectives]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:35
-msgid "Right-click on your leader during your turn for help"
-msgstr "Vicem tuam prime manum dextrum muris in ducem auxilio."
-
-#. [objective]: condition=win
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:37
-msgid "You must survive until turn 25."
-msgstr "Necesse est usque ad vicem XXV vivere."
-
 #. [side]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:57
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:71
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:85
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:99
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:46
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:62
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:78
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:94
 #, fuzzy
 #| msgid "teamname^Team 1"
 msgid "teamname^Settlers"
@@ -70,9 +64,9 @@ msgstr "Manus I"
 
 #. [side]: type=Death Knight
 #. [side]: type=Orcish Sovereign
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:117
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:148
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:179
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:114
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:146
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:178
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:210
 #, fuzzy
 #| msgid "teamname^Team 1"
@@ -80,17 +74,17 @@ msgid "teamname^Enemies"
 msgstr "Manus I"
 
 #. [side]: type=Death Knight
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:126
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:123
 msgid "Mal Sevu"
 msgstr ""
 
 #. [side]: type=Orcish Sovereign
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:157
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:155
 msgid "Gol Goroth"
 msgstr ""
 
 #. [side]: type=Orcish Sovereign
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:188
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:187
 msgid "Greg"
 msgstr ""
 
@@ -100,14 +94,21 @@ msgid "Mal Shiki"
 msgstr ""
 
 #. [side]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:245
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:246
 #, fuzzy
 #| msgid "teamname^Team 1"
 msgid "teamname^Prisoners"
 msgstr "Manus I"
 
+#. [side]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:270
+#, fuzzy
+#| msgid "teamname^Team 1"
+msgid "teamname^Monsters"
+msgstr "Manus I"
+
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:426
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:466
 msgid ""
 "You destroy the mushroom mine. The northwest undead now have 10 less income."
 msgstr ""
@@ -115,7 +116,7 @@ msgstr ""
 "septentrionem decem decrescit."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:449
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:494
 msgid ""
 "You destroy the mushroom mine. The northeast orcs now have 10 less income."
 msgstr ""
@@ -123,7 +124,7 @@ msgstr ""
 "septentrionem decem decrescit."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:472
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:522
 msgid ""
 "You destroy the mushroom mine. The southwest orcs now have 10 less income."
 msgstr ""
@@ -131,7 +132,7 @@ msgstr ""
 "decem decrescit."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:495
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:550
 msgid ""
 "You destroy the mushroom mine. The southeast undead now have 10 less income."
 msgstr ""
@@ -139,14 +140,14 @@ msgstr ""
 "decem decrescit."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:604
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:665
 msgid ""
 "One of your peasants has happened upon some spiders’ nests in the north and "
 "south."
 msgstr "Unus rusticorum in borea austroque aliquos nidos aranearum invenit."
 
 #. [message]: type=Peasant
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:610
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:671
 msgid ""
 "I swear I saw somebody trapped in the spider’s web. Maybe we should rescue "
 "him?"
@@ -154,7 +155,7 @@ msgstr ""
 "Vere puto me nescioquem in araneo captum vidisse. Fortasse debemus subvenire?"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:632
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:693
 msgid ""
 "Move any unit next to these captives and they will join your side. The "
 "spiders guarding each captive are currently wounded, the sooner you get "
@@ -165,7 +166,7 @@ msgstr ""
 "interficies."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:644
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:705
 msgid ""
 "Your men report strange sounds coming from some caves to the east and west."
 msgstr ""
@@ -173,7 +174,7 @@ msgstr ""
 "occidenteque edere."
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:650
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:711
 msgid ""
 "It would seem the enemy has built some underground mushroom mines nearby — "
 "it must be where the mainstay of their resources are produced. If we could "
@@ -184,7 +185,7 @@ msgstr ""
 "non tam mala esse videatur."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:672
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:733
 msgid ""
 "Move any unit onto these villages to destroy the mine. Each one you destroy "
 "will reduce the enemy’s income by 10."
@@ -193,12 +194,12 @@ msgstr ""
 "decem decrescit."
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:685
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:746
 msgid "This battle is nearly at an end. Victory is close at hand!"
 msgstr "Proelium haud multum abest quin finiatur. Victoria ad manus est! "
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:697
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:758
 msgid ""
 "We have survived the onslaught! The tide of the battle has turned, victory "
 "cannot elude us now!"
@@ -207,34 +208,29 @@ msgstr ""
 "victoria! "
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:701
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:762
 msgid "You have won the game, but you may continue if you wish..."
 msgstr "Ludum vicisti, sed pergas si vis..."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:717
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:778
 msgid "I have fallen, but all is not lost!"
 msgstr "Cecidi, at non omnia ceduntur!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:730
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:791
 msgid "I am done for, but we have yet to lose this battle!"
 msgstr "Ruor, sed etiam proelio non desumus! "
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:743
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:804
 msgid "Comrades, avenge me!"
 msgstr "Comites, me vindicate!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:756
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:817
 msgid "Do not fear, there is hope for us still!"
 msgstr "Noli timere, spes etiam nobis est!"
-
-#. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_general_macros.cfg:34
-msgid "The chest contains $oc_treasure gold."
-msgstr "Arca $oc_treasure auri continet."
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:5
@@ -243,13 +239,13 @@ msgstr "Ad tabulam redire"
 
 #. [message]: speaker=narrator
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:16
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:125
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:14
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:105
 msgid "Peasants"
 msgstr "Rustici"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:19
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:17
 msgid ""
 "Peasants are your workers. Depending on the terrain, right-clicking on a "
 "peasant allows you to terraform the landscape and/or build castles, mines, "
@@ -261,13 +257,13 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:27
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:132
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:24
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:112
 msgid "Mages"
 msgstr "Magi"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:29
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:26
 msgid ""
 "Mages are your wise men. They can study at universities, pursuing advances "
 "in mining, farming and recruitment."
@@ -277,13 +273,13 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:37
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:139
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:33
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:119
 msgid "Farms"
 msgstr "Fundi"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:39
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:35
 msgid ""
 "Farms can only be planted on grassland. Move a peasant onto a farm and he "
 "will begin to automatically harvest the cash crop."
@@ -293,13 +289,13 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:47
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:146
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:42
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:126
 msgid "Villages"
 msgstr "Viculi"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:49
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:44
 msgid ""
 "Villages can only be built on grassland. They provide income and healing as "
 "usual. Right-click on a peasant in a village and you can establish a "
@@ -311,13 +307,13 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:57
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:153
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:51
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:133
 msgid "Mines"
 msgstr "Metalla"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:59
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:53
 msgid ""
 "Mines can be built on hills or mountains. A peasant on a mine will "
 "automatically dig for gold at the start of your turn."
@@ -327,13 +323,13 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:67
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:160
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:60
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:140
 msgid "Universities"
 msgstr "Universitates"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:69
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:62
 msgid ""
 "Any of the ‘Elvish’ style villages represent universities. At the start of "
 "your turn, Mages in universities automatically add to the study progress of "
@@ -347,14 +343,14 @@ msgstr ""
 #. [message]: speaker=narrator
 #. [option]
 #. [set_menu_item]: id=anl_diplomacy
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:77
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:167
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:199
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:69
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:147
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:217
 msgid "Diplomacy"
 msgstr "Legatio"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:79
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:71
 msgid ""
 "Right-clicking on your leader when in a university allows you to select "
 "special diplomatic options."
@@ -363,32 +359,34 @@ msgstr ""
 "legationis videas."
 
 #. [set_menu_item]: id=anl_help
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:87
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:79
 msgid "Help"
 msgstr "Auxilium"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:111
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:94
 msgid "A New Land — Help"
 msgstr "Terra Nova — Auxilium"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:112
-msgid "Select a topic."
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:95
+#, fuzzy
+#| msgid "Select a topic."
+msgid "Select a topic:"
 msgstr "Elige materiam."
 
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:115
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:98
 msgid "Done"
 msgstr "Perficere"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:47
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:52
 msgid "I hereby donate 20 gold to the coffers of $df_player_name|."
 msgstr "Hic XX auri thesauro $df_player_name|sis dono."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:101
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:111
 msgid ""
 "$sf_player_name|, since our wisdom exceeds yours I have instructed my "
 "scholars to further your understanding of agriculture."
@@ -397,7 +395,7 @@ msgstr ""
 "ut scientiae tuae agri culturae prosint."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:140
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:155
 msgid ""
 "$sm_player_name|, since the wisdom of my people exceeds yours I have "
 "instructed my scholars to aid you in your efforts to learn the science of "
@@ -407,7 +405,7 @@ msgstr ""
 "praecepi ut studio tuo artis fodiendi discendi prosint."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:186
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:204
 msgid ""
 "You know worryingly little about the arts of war, $sw_player_name|. I feel "
 "an obligation to instruct you in this vital matter."
@@ -416,7 +414,7 @@ msgstr ""
 "de materia gravissima docere."
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:248
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:266
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of agriculture"
@@ -425,7 +423,7 @@ msgstr ""
 "Scientiam agri culturae communicare"
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:255
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:273
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of mining"
@@ -434,7 +432,7 @@ msgstr ""
 "Scientiam fossiendi communicare"
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:262
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:280
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of warfare"
@@ -443,25 +441,25 @@ msgstr ""
 "Scientiam belli communicare"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:292
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:330
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:375
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:310
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:348
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:393
 msgid "Diplomatic Options"
 msgstr "Optiones Legationis"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:295
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:313
 msgid "What shall I do?"
 msgstr "Quod faciam?"
 
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:301
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:47
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:319
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:48
 msgid "Nothing"
 msgstr "Nihil"
 
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:314
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:332
 msgid ""
 "<span color='green'>Donate Funds</span>\n"
 "Give 20 gold to another player"
@@ -470,18 +468,18 @@ msgstr ""
 "XX auri lusori alio datur"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:333
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:351
 msgid "Who will you donate funds to?"
 msgstr "Cui pecuniam dabo?"
 
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:336
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:381
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:354
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:399
 msgid "Back"
 msgstr "Rursus"
 
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:359
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:377
 msgid ""
 "<span color='green'>Share Knowledge</span>\n"
 "Help an ally with their research"
@@ -490,12 +488,12 @@ msgstr ""
 "Socium cum proficiendo adiuvare"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:378
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:396
 msgid "Who will you share knowledge with?"
 msgstr "Cum quibus scientiam communicabis?"
 
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:417
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:435
 msgid ""
 "<span color='green'>Negotiate with the Dwarves</span>\n"
 "Lets you recruit a Dwarvish unit\n"
@@ -508,7 +506,7 @@ msgstr ""
 "$player_$side_number|.leader_option_1.target"
 
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:473
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:491
 msgid ""
 "<span color='green'>Negotiate with the Elves</span>\n"
 "Lets you recruit an Elvish unit\n"
@@ -521,13 +519,13 @@ msgstr ""
 "$player_$side_number|.leader_option_2.target"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:541
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:573
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:559
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:591
 msgid "Negotiation Complete"
 msgstr "Pacti Sumus"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:544
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:562
 msgid ""
 "Our talks are complete — the Dwarves will gladly fight by your side. Which "
 "of our brethren do you want to recruit?"
@@ -535,7 +533,7 @@ msgstr ""
 "Constat — Nani libenter tecum pugnabunt. Quos sodalium nostrum adlegere vis?"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:576
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:594
 msgid ""
 "Our talks are complete — the Elves shall aid you in this battle. Which our "
 "of kin do you wish to recruit?"
@@ -543,37 +541,84 @@ msgstr ""
 "Constat — Dryadales te in proelio iuvabunt. Quos sodalium nostrum adlegere "
 "vis?"
 
+#. Part of the scenario objectives
+#: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:5
+msgid "In this scenario you build up an economy"
+msgstr ""
+
+#. Part of the scenario objectives
+#: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:9
+msgid "Move any unit next to captives and they will join your side"
+msgstr ""
+
+#. Part of the scenario objectives
+#: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:13
+msgid "Right-click on a leader to read about the game mechanics"
+msgstr ""
+
+#. Part of the scenario objectives
+#: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:17
+msgid "Rules:"
+msgstr ""
+
+#. Part of the scenario objectives
+#: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:21
+msgid "Goal:"
+msgstr ""
+
+#. Part of the scenario objectives
+#: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:25
+msgid "Hint:"
+msgstr ""
+
+#. Part of the scenario objectives
+#: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:29
+msgid "Hints:"
+msgstr ""
+
+#. Part of the scenario objectives
+#: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:33
+msgid "Defeat all enemy leaders"
+msgstr ""
+
+#. Part of the scenario objectives
+#: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:37
+#, fuzzy
+#| msgid "You must survive until turn 25."
+msgid "You must survive until turn 25"
+msgstr "Necesse est usque ad vicem XXV vivere."
+
 #. [set_menu_item]: id=anl_choose_new_recruit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:34
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:45
 msgid "Choose New Recruit"
 msgstr "Tironem Eligere"
 
 #. [message]: speaker=unit
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:58
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:236
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:268
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:295
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:69
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:207
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:239
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:266
 msgid "Study Complete"
 msgstr "Studia Finita Sunt"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:59
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:70
 msgid "Which type of unit would you like to be able to recruit?"
 msgstr "Qualis actor adlegere posse vis?"
 
 #. [set_menu_item]: id=anl_oversee_research
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:82
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:93
 msgid "Oversee Research"
 msgstr "Exquisitioni Praeesse"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:126
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:124
 msgid "Research"
 msgstr "Exquisitio"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:128
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:126
 msgid ""
 "We are currently studying $player_$side_number|.research."
 "target_language_name|. To which end would you have our scholars devote their "
@@ -589,12 +634,12 @@ msgstr ""
 "Metalla nostra $player_$side_number|.mining.gold|a comparant\n"
 
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:136
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:134
 msgid "Continue as before"
 msgstr "Ut ante pergere"
 
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:154
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:144
 msgid ""
 "<span color='green'>Agriculture</span>\n"
 "Farmers produce +1 gold\n"
@@ -608,13 +653,13 @@ msgstr ""
 
 #. [command]
 #. [research]
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:158
-#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:102
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:148
+#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:99
 msgid "agriculture"
 msgstr "agri cultura"
 
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:166
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:156
 msgid ""
 "<span color='green'>Mining</span>\n"
 "Miners produce +1 gold\n"
@@ -627,12 +672,12 @@ msgstr ""
 "$side_number|.mining.target"
 
 #. [command]
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:170
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:160
 msgid "mining"
 msgstr "fodere"
 
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:178
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:168
 msgid ""
 "<span color='green'>Warfare</span>\n"
 "Allows you to recruit a new type of unit\n"
@@ -645,12 +690,12 @@ msgstr ""
 "$side_number|.warfare.target"
 
 #. [command]
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:189
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:179
 msgid "warfare"
 msgstr "ars militaris"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:238
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:209
 msgid ""
 "$player_$side_number|.name|’s farms now produce $player_$side_number|."
 "farming.gold gold."
@@ -659,7 +704,7 @@ msgstr ""
 "faciunt."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:270
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:241
 msgid ""
 "$player_$side_number|.name|’s mines now produce $player_$side_number|.mining."
 "gold gold."
@@ -668,7 +713,7 @@ msgstr ""
 "faciunt."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:297
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:268
 msgid ""
 "$player_$side_number|.name|, we have finished researching warfare. Right-"
 "click on a mage in a university to select a unit to recruit."
@@ -677,12 +722,12 @@ msgstr ""
 "dextrum muris in mago ut actorem ad adlegendum eligas."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:198
+#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:196
 msgid "Let’s cut you free!"
 msgstr "Te solvamus!"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:202
+#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:201
 msgid "You release the creature from the web and it agrees to help you."
 msgstr "Creata ab araneo soluta constat se te iuturam esse. "
 
@@ -692,158 +737,165 @@ msgid "Get to Work!"
 msgstr "Labora!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:44
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:45
 msgid "What shall I do my liege?"
 msgstr "Quod faciam domine mi?"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:63
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:82
-msgid "Plant Farm"
-msgstr "Rurem Pangere"
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:64
+msgid "Convert to Grassland"
+msgstr "In Caespitem Convertere"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:64
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:83
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:368
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:577
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:65
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:84
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:369
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:578
 msgid "Cost: 0g"
 msgstr "Sumptus: 0a"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:98
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:83
+msgid "Plant Farm"
+msgstr "Rurem Pangere"
+
+#. [option]: description=<span size='small'>
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:99
 msgid "Build Village"
 msgstr "Viculum Instruere"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:99
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:100
 msgid "Cost: 15g"
 msgstr "Sumptus: 15a"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:122
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:123
 msgid "Build Castle"
 msgstr "Castellum Instruere"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:123
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:524
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:124
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:525
 msgid "Cost: 6g"
 msgstr "Sumptus: 6a"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:145
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:146
 msgid "Flood the Field"
 msgstr "Agrum Perfundere"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:146
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:147
 msgid "Cost: 4g"
 msgstr "Sumptus: 1a"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:170
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:171
 msgid "Plant Saplings"
 msgstr "Arbusculam Constituere"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:171
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:393
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:172
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:394
 msgid "Cost: 1g"
 msgstr "Sumptus: 1a"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:198
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:199
 msgid "Chop Down Forest"
 msgstr "Silvam Caedere"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:199
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:200
 msgid "Earns: 1g"
 msgstr "Reditus: 1a"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:254
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:281
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:255
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:282
 msgid "Build Mine"
 msgstr "Metallum Instruere"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:255
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:282
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:256
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:283
 msgid "Cost: 25g"
 msgstr "Sumptus: 25a"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:308
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:309
 msgid "Make a Ford"
 msgstr "Vadum Facere"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:309
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:449
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:310
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:450
 msgid "Cost: 3g"
 msgstr "Sumptus: 3a"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:336
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:392
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:337
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:393
 msgid "Landfill"
 msgstr "Quisquiliae"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:337
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:338
 msgid "Cost: 5g"
 msgstr "Sumptus: 5a"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:367
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:368
 msgid "Destroy the Ford"
 msgstr "Vadum Perdere"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:423
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:448
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:424
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:449
 msgid "Smash Cave Floor"
 msgstr "Solium Cavernae Frangere"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:424
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:425
 msgid "Cost: 2g"
 msgstr "Sumptus: 2a"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:473
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:474
 msgid "Harvest Mushrooms"
 msgstr "Fungos Colligere"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:474
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:475
 msgid "Earns: 3g"
 msgstr "Reditus: 3a"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:523
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:524
 msgid "Build a Keep"
 msgstr "Arcem Instruere"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:549
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:550
 msgid "Establish University"
 msgstr "Universitatem Condere"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:550
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:551
 msgid "Cost: 7g"
 msgstr "Sumptus: 7a"
 
 #. [option]: description=<span size='small'>
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:576
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:577
 msgid "Clear the Ground"
 msgstr "Terram Deficare"
 
+#~ msgid "Right-click on your leader during your turn for help"
+#~ msgstr "Vicem tuam prime manum dextrum muris in ducem auxilio."
+
+#~ msgid "The chest contains $oc_treasure gold."
+#~ msgstr "Arca $oc_treasure auri continet."
+
 #~ msgid "teamname^Team 2"
 #~ msgstr "Manus II"
-
-#~ msgid "Convert to Grassland"
-#~ msgstr "In Caespitem Convertere"

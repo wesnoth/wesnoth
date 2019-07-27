@@ -208,9 +208,6 @@ protected:
 	std::string title_;
 
 private:
-	/** Checks if a certain character is allowed in a savefile name. */
-	static bool is_illegal_file_char(char c);
-
 	/** Subclass-specific part of filename building. */
 	virtual std::string create_initial_filename(unsigned int turn_number) const = 0;
 	/** Display the save game dialog. */

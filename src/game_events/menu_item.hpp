@@ -189,6 +189,9 @@ private:
 	 * The command shall not change the gamestate if !is_synced_
 	 */
 	bool is_synced_;
+
+	/** If true, keep this menu item in later scenarios. */
+	bool persistent_;
 };
 
 } // end namespace game_events

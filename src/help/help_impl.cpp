@@ -51,7 +51,7 @@
 #include <iterator>                     // for back_insert_iterator, etc
 #include <map>                          // for map, etc
 #include <set>
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 static lg::log_domain log_display("display");
 #define WRN_DP LOG_STREAM(warn, log_display)
@@ -325,22 +325,8 @@ std::string generate_topic_text(const std::string &generator, const config *help
 	return empty_string;
 }
 
-topic_text::~topic_text()
+topic_text& topic_text::operator=(std::shared_ptr<topic_generator> g)
 {
-	if (generator_ && --generator_->count == 0)
-		delete generator_;
-}
-
-topic_text::topic_text(const topic_text& t): parsed_text_(t.parsed_text_), generator_(t.generator_)
-{
-	if (generator_)
-		++generator_->count;
-}
-
-topic_text &topic_text::operator=(topic_generator *g)
-{
-	if (generator_ && --generator_->count == 0)
-		delete generator_;
 	generator_ = g;
 	return *this;
 }
@@ -349,9 +335,8 @@ const std::vector<std::string>& topic_text::parsed_text() const
 {
 	if (generator_) {
 		parsed_text_ = parse_text((*generator_)());
-		if (--generator_->count == 0)
-			delete generator_;
-		generator_ = nullptr;
+		// This caches the result, so doesn't need the generator any more
+		generator_.reset();
 	}
 	return parsed_text_;
 }
@@ -855,7 +840,7 @@ void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*l
 		topic terrain_topic;
 		terrain_topic.title = info.editor_name();
 		terrain_topic.id    = hidden_symbol(hidden) + terrain_prefix + info.id();
-		terrain_topic.text  = new terrain_topic_generator(info);
+		terrain_topic.text  = std::make_shared<terrain_topic_generator>(info);
 
 		t_translation::ter_list base_terrains = tdata->underlying_union_terrain(t);
 		for (const t_translation::terrain_code& base : base_terrains) {
@@ -900,7 +885,7 @@ void generate_unit_sections(const config* /*help_cfg*/, section& sec, int level,
 			const std::string var_ref = hidden_symbol(var_type.hide_help()) + variation_prefix + var_type.id() + "_" + variation_id;
 
 			topic var_topic(topic_name, var_ref, "");
-			var_topic.text = new unit_topic_generator(var_type, variation_id);
+			var_topic.text = std::make_shared<unit_topic_generator>(var_type, variation_id);
 			base_unit.topics.push_back(var_topic);
 		}
 
@@ -933,11 +918,12 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		if (desc_type != FULL_DESCRIPTION)
 			continue;
 
-		const std::string type_name = type.type_name();
+		const std::string debug_suffix = (game_config::debug ? " (" + type.id() + ")" : "");
+		const std::string type_name = type.type_name() + (type.id() == type.type_name().str() ? "" : debug_suffix);
 		const std::string real_prefix = type.show_variations_in_help() ? ".." : "";
 		const std::string ref_id = hidden_symbol(type.hide_help()) + real_prefix + unit_prefix +  type.id();
 		topic unit_topic(type_name, ref_id, "");
-		unit_topic.text = new unit_topic_generator(type);
+		unit_topic.text = std::make_shared<unit_topic_generator>(type);
 		topics.push_back(unit_topic);
 
 		if (!type.hide_help()) {
@@ -1477,9 +1463,18 @@ unsigned image_width(const std::string &filename)
 	return 0;
 }
 
-void push_tab_pair(std::vector<std::pair<std::string, unsigned int>> &v, const std::string &s)
+void push_tab_pair(std::vector<help::item> &v, const std::string &s, const boost::optional<std::string> &image, unsigned padding)
 {
-	v.emplace_back(s, font::line_width(s, normal_font_size));
+	help::item item(s, font::line_width(s, normal_font_size));
+	if (image) {
+		// If the image doesn't exist, don't add padding.
+		auto width = image_width(image.get());
+		padding = (width ? padding : 0);
+
+		item.first = "<img>src='" + image.get() + "'</img>" + (padding ? jump(padding) : "") + s;
+		item.second += width + padding;
+	}
+	v.emplace_back(item);
 }
 
 std::string generate_table(const table_spec &tab, const unsigned int spacing)

@@ -211,6 +211,10 @@ if __name__ == "__main__":
         version = info.get_all(tag = "info")[0].get_text_val("version", "")
         return uploads, version
 
+    def fixup(column):
+        column = column.replace("\n", "\\n")
+        return column
+
     campaign_list = None
 
     if args.list:
@@ -244,7 +248,7 @@ if __name__ == "__main__":
                             column_sizes[i] = 1 + len(column[i])
                 for c in columns:
                     for i, f in enumerate(c):
-                        sys.stdout.write(f.ljust(column_sizes[i]))
+                        sys.stdout.write(fixup(f).ljust(column_sizes[i]))
                     sys.stdout.write("\n")
             print_messages(data)
         else:

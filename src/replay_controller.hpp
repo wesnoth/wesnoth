@@ -56,6 +56,7 @@ public:
 	void replay_show_team1();
 	void update_teams();
 	void update_viewing_player();
+	bool see_all();
 private:
 	void add_replay_theme();
 	void init();

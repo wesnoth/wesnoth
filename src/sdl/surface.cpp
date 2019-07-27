@@ -14,8 +14,89 @@
 #include "sdl/surface.hpp"
 
 #include "sdl/rect.hpp"
-#include "sdl/utils.hpp"
 #include "video.hpp"
+
+#include <iostream>
+
+const SDL_PixelFormat surface::neutral_pixel_format = []() {
+	SDL_PixelFormat format;
+
+#if SDL_VERSION_ATLEAST(2, 0, 6)
+	SDL_Surface* surf =
+		SDL_CreateRGBSurfaceWithFormat(0, 1, 1, 32, SDL_PIXELFORMAT_ARGB8888);
+#else
+	SDL_Surface* surf =
+		SDL_CreateRGBSurface(0, 1, 1, 32, SDL_RED_MASK, SDL_GREEN_MASK, SDL_BLUE_MASK, SDL_ALPHA_MASK);
+#endif
+
+	format = *surf->format;
+	format.palette = nullptr;
+
+	return format;
+}();
+
+surface::surface(SDL_Surface* surf)
+	: surface_(surf)
+{
+	make_neutral(); // EXTREMELY IMPORTANT!
+}
+
+surface::surface(int w, int h)
+	: surface_(nullptr)
+{
+	if (w < 0 || h < 0) {
+		std::cerr << "error: creating surface with negative dimensions\n";
+		return;
+	}
+
+#if SDL_VERSION_ATLEAST(2, 0, 6)
+	surface_ = SDL_CreateRGBSurfaceWithFormat(0, w, h, neutral_pixel_format.BitsPerPixel, neutral_pixel_format.format);
+#else
+	surface_ = SDL_CreateRGBSurface(0, w, h,
+		neutral_pixel_format.BitsPerPixel,
+		neutral_pixel_format.Rmask,
+		neutral_pixel_format.Gmask,
+		neutral_pixel_format.Bmask,
+		neutral_pixel_format.Amask);
+#endif
+}
+
+bool surface::is_neutral() const
+{
+	return surface_
+		&& SDL_ISPIXELFORMAT_INDEXED(surface_->format->format) == SDL_FALSE
+		&&  surface_->format->BytesPerPixel == 4
+		&&  surface_->format->Rmask == SDL_RED_MASK
+		&& (surface_->format->Amask | SDL_ALPHA_MASK) == SDL_ALPHA_MASK;
+}
+
+surface& surface::make_neutral()
+{
+	if(surface_ && !is_neutral()) {
+		SDL_Surface* res = SDL_ConvertSurface(surface_, &neutral_pixel_format, 0);
+
+		// Ensure we don't leak memory with the old surface.
+		free_surface();
+
+		surface_ = res;
+	}
+
+	return *this;
+}
+
+surface surface::clone() const
+{
+	// Use SDL_ConvertSurface to make a copy
+	return surface(SDL_ConvertSurface(surface_, &neutral_pixel_format, 0));
+}
+
+void surface::assign_surface_internal(SDL_Surface* surf)
+{
+	add_surface_ref(surf); // Needs to be done before assignment to avoid corruption on "a = a;"
+	free_surface();
+	surface_ = surf;
+	make_neutral(); // EXTREMELY IMPORTANT!
+}
 
 void surface::free_surface()
 {
@@ -59,7 +140,7 @@ surface_restorer::~surface_restorer()
 
 void surface_restorer::restore(const SDL_Rect& dst) const
 {
-	if(surface_.null()) {
+	if(!surface_) {
 		return;
 	}
 
@@ -76,7 +157,7 @@ void surface_restorer::restore(const SDL_Rect& dst) const
 
 void surface_restorer::restore() const
 {
-	if(surface_.null()) {
+	if(!surface_) {
 		return;
 	}
 
@@ -87,15 +168,15 @@ void surface_restorer::restore() const
 void surface_restorer::update()
 {
 	if(rect_.w <= 0 || rect_.h <= 0) {
-		surface_.assign(nullptr);
+		surface_ = nullptr;
 	} else {
-		surface_.assign(::get_surface_portion(target_->getSurface(),rect_));
+		surface_ = ::get_surface_portion(target_->getSurface(),rect_);
 	}
 }
 
 void surface_restorer::cancel()
 {
-	surface_.assign(nullptr);
+	surface_ = nullptr;
 }
 
 bool operator<(const surface& a, const surface& b)

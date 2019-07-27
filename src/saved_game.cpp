@@ -85,6 +85,38 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
+namespace
+{
+bool variable_to_bool(const config& vars, const std::string& expression)
+{
+	std::string res = utils::interpolate_variables_into_string(expression, config_variable_set(vars));
+	return res == "true" || res == "yes" || res == "1";
+}
+
+// helper objects for saved_game::expand_mp_events()
+struct modevents_entry
+{
+	modevents_entry(const std::string& _type, const std::string& _id)
+		: type(_type)
+		, id(_id)
+	{
+	}
+
+	std::string type;
+	std::string id;
+};
+
+bool is_illegal_file_char(char c)
+{
+	return c == '/' || c == '\\' || c == ':' || (c >= 0x00 && c < 0x20)
+#ifdef _WIN32
+	|| c == '?' || c == '|' || c == '<' || c == '>' || c == '*' || c == '"'
+#endif
+	;
+}
+
+} // end anon namespace
+
 saved_game::saved_game()
 	: has_carryover_expanded_(false)
 	, carryover_(carryover_info().to_config())
@@ -275,29 +307,6 @@ void saved_game::check_require_scenario()
 	mp_settings_.update_addon_requirements(required_scenario);
 }
 
-namespace
-{
-bool variable_to_bool(const config& vars, const std::string& expression)
-{
-	std::string res = utils::interpolate_variables_into_string(expression, config_variable_set(vars));
-	return res == "true" || res == "yes" || res == "1";
-}
-
-// helper objects for saved_game::expand_mp_events()
-struct modevents_entry
-{
-	modevents_entry(const std::string& _type, const std::string& _id)
-		: type(_type)
-		, id(_id)
-	{
-	}
-
-	std::string type;
-	std::string id;
-};
-
-} // end anon namespace
-
 void saved_game::load_mod(const std::string& type, const std::string& id, size_t pos)
 {
 	if(const config& cfg = game_config_manager::get()->game_config().find_child(type, "id", id)) {
@@ -330,6 +339,11 @@ void saved_game::load_mod(const std::string& type, const std::string& id, size_t
 		// Copy lua
 		for(const config& modlua : cfg.child_range("lua")) {
 			this->starting_point_.add_child_at_total("lua", modlua, pos++);
+		}
+		
+		// Copy unit_type_fix
+		for(const config& modlua : cfg.child_range("unit_type_fix")) {
+			this->starting_point_.add_child_at_total("unit_type_fix", modlua, pos++);
 		}
 
 		// Copy load_resource
@@ -472,7 +486,7 @@ void saved_game::post_scenario_generation(const config& old_scenario, config& ge
 		generated_scenario[str] = old_scenario[str];
 	}
 
-	// Preserve "story" form the scenario toplevel.
+	// Preserve "story" from the scenario toplevel.
 	// Note that it does not delete [story] tags in generated_scenario, so you can still have your story
 	// dependent on the generated scenario.
 	for(const config& story : old_scenario.child_range("story")) {
@@ -615,11 +629,16 @@ bool saved_game::not_corrupt() const
 
 void saved_game::update_label()
 {
+	std::string& label = classification().label;
+
 	if(classification().abbrev.empty()) {
-		classification().label = starting_point_["name"].str();
+		label = starting_point_["name"].str();
 	} else {
-		classification().label = classification().abbrev + "-" + starting_point_["name"];
+		label = classification().abbrev + "-" + starting_point_["name"];
 	}
+
+	label.erase(std::remove_if(label.begin(), label.end(), is_illegal_file_char), label.end());
+	std::replace(label.begin(), label.end(), '_', ' ');
 }
 
 void saved_game::cancel_orders()

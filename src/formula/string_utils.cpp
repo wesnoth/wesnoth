@@ -279,6 +279,41 @@ std::string format_disjunct_list(const t_string& empty, const std::vector<t_stri
 	return VGETTEXT("disjunct end^$prefix, or $last", {{"prefix", prefix}, {"last", elems.back()}});
 }
 
+std::string format_timespan(std::time_t time)
+{
+	if(time <= 0) {
+		return _("timespan^expired");
+	}
+
+	typedef std::tuple<std::time_t, const char*, const char*> time_factor;
+
+	static const std::vector<time_factor> TIME_FACTORS{
+		time_factor{ 31104000, N_("timespan^$num year"),   N_("timespan^$num years")   }, // 12 months
+		time_factor{ 2592000,  N_("timespan^$num month"),  N_("timespan^$num months")  }, // 30 days
+		time_factor{ 604800,   N_("timespan^$num week"),   N_("timespan^$num weeks")   },
+		time_factor{ 86400,    N_("timespan^$num day"),    N_("timespan^$num days")    },
+		time_factor{ 3600,     N_("timespan^$num hour"),   N_("timespan^$num hours")   },
+		time_factor{ 60,       N_("timespan^$num minute"), N_("timespan^$num minutes") },
+		time_factor{ 1,        N_("timespan^$num second"), N_("timespan^$num seconds") },
+	};
+
+	std::vector<t_string> display_text;
+	string_map i18n;
+
+	for(const auto& factor : TIME_FACTORS) {
+		const int amount = time / std::get<0>(factor);
+
+		if(amount) {
+			time -= std::get<0>(factor) * amount;
+			i18n["num"] = std::to_string(amount);
+			const auto fmt = amount == 1 ? std::get<1>(factor) : std::get<2>(factor);
+			display_text.emplace_back(VGETTEXT(fmt, i18n));
+		}
+	}
+
+	return format_conjunct_list(_("timespan^expired"), display_text);
+}
+
 }
 
 std::string vgettext_impl(const char *domain

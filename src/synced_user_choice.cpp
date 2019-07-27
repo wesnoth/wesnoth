@@ -323,6 +323,9 @@ void user_choice_manager::update_local_choice()
 		}
 	}
 
+	// TRANSLATORS: In networked games, this text is shown on the map while
+	// waiting for $desc from another player.
+	// Don't end the text with a punctuation sign.
 	wait_message_ = VNGETTEXT(
 		"waiting for $desc from side $sides",
 		"waiting for $desc from sides $sides",
@@ -345,7 +348,7 @@ void user_choice_manager::ask_local_choice()
 	config cfg = uch_.query_user(local_choice_);
 	if(res_.find(local_choice_) != res_.end()) {
 		// It might be possible that we this choice was already made by another client while we were in uch_.query_user
-		// because our side might be ressigned while we made our choice.
+		// because our side might be reassigned while we made our choice.
 		WRN_REPLAY << "Discarding a local choice because we found it already on the replay";
 		return;
 	}
@@ -354,7 +357,7 @@ void user_choice_manager::ask_local_choice()
 
 	//send data to others.
 	//but if there wasn't any data sent during this turn, we don't want to begin with that now.
-	//TODO: we should send user choices during nonundoable actions immideatley.
+	//TODO: we should send user choices during nonundoable actions immediately.
 	if(synced_context::is_simultaneously() || current_side_ != local_choice_)
 	{
 		synced_context::send_user_choice();

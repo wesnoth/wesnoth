@@ -524,9 +524,30 @@ std::string half_signed_value(int val)
 
 static void si_string_impl_stream_write(std::stringstream &ss, double input) {
 	std::streamsize oldprec = ss.precision();
+#ifdef _MSC_VER
+	// For MSVC, default mode misbehaves, so we use fixed instead.
 	ss.precision(1);
 	ss << std::fixed
 	   << input;
+#else
+	// In default mode, precision sets the number of significant figures.
+
+	// 999.5 and above will render as 1000+, however, only numbers above 1000 will use 4 digits
+	// Rounding everything from 100 up (at which point we stop using decimals anyway) avoids this.
+	if (input >= 100) {
+		input = std::round(input);
+	}
+
+	// When in binary mode, numbers of up to 1023.9999 can be passed
+	// We should render those with 4 digits, instead of as 1e+3.
+	// Input should be an integer number now, but doubles can do strange things, so check the halfway point instead.
+	if (input >= 999.5) {
+		ss.precision(4);
+	} else {
+		ss.precision(3);
+	}
+	ss << input;
+#endif
 	ss.precision(oldprec);
 }
 
@@ -534,6 +555,10 @@ std::string si_string(double input, bool base2, const std::string& unit) {
 	const double multiplier = base2 ? 1024 : 1000;
 
 	typedef std::array<std::string, 9> strings9;
+
+	if(input < 0){
+		return font::unicode_minus + si_string(std::abs(input), base2, unit);
+	}
 
 	strings9 prefixes;
 	strings9::const_iterator prefix;

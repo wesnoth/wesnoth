@@ -1,12 +1,14 @@
 # Translators:
-# RatArmy <broadbarredfirefish@gmail.com>, 2018
+# RatArmy <broadbarredfirefish@gmail.com>, 2019
+# tamanegi, 2019
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-12 17:02 UTC\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2018\n"
+"POT-Creation-Date: 2019-07-18 12:51 UTC\n"
+"PO-Revision-Date: 2018-09-12 07:30+0000\n"
+"Last-Translator: tamanegi, 2019\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -18,7 +20,7 @@ msgstr ""
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:10
 msgid "The Hammer of Thursagan"
-msgstr "Thursagan の槌"
+msgstr "Thursagan の鎚"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:12
@@ -64,16 +66,18 @@ msgid ""
 "though great, pale beside the evil they will face at its end.\n"
 "\n"
 msgstr ""
-"北部同盟が初期の頃、Knalga からの遠征隊は、Kal Kartha の一族を探し出し、伝説"
-"の Thursagan の槌の運命を知る事になりました。荒れ果てた北の大地を旅する危険は"
-"凄まじいものででしたが、旅の終わりに出くわす邪悪に比べれば大したものではあり"
-"ませんでした。\n"
+"北部同盟の成立から間もない時期、Kal Kartha の同胞を探し出し、伝説に謳われる "
+"Thursagan の鎚の行方をつかむため、Knalga から遠征隊が派遣されることになりまし"
+"た。荒れ果てた北部の大地の危険な旅が、そしてその旅の果てには悪鬼の持つ破滅的"
+"な青き輝きが彼らを待っていることでしょう……\n"
 "\n"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:26
-msgid "(Intermediate level, 11 scenarios.)"
-msgstr "（中級者レベル、11 シナリオ）"
+#, fuzzy
+#| msgid "(Intermediate level, 11 scenarios.)"
+msgid "(Intermediate level, 8 scenarios.)"
+msgstr "（中級レベル、11 シナリオ）"
 
 #. [about]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:29
@@ -93,7 +97,7 @@ msgstr "美術"
 #. [about]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:54
 msgid "Brainstorming, playtesting, and spousal support"
-msgstr "ブレインストーミング、テストプレイ、配偶者のサポート"
+msgstr "ブレインストーミング、テストプレイ、他諸々に関する妻への感謝"
 
 #. [about]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:60
@@ -103,7 +107,7 @@ msgstr "キャンペーンメンテナンス"
 #. [scenario]: id=01_At_the_East_Gate
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:5
 msgid "At the East Gate"
-msgstr "東の門で"
+msgstr "東の門にて"
 
 #. [part]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:26
@@ -115,10 +119,13 @@ msgid ""
 "mining their past for inspiration to rebuild Knalga even greater than "
 "before, and began also reaching out for contact with their scattered kinfolk."
 msgstr ""
-"北部同盟が結成されてから数年間は、ドワーフの戸口にいるKnalgaのドワーフと人間"
-"は、オークの長い略奪によって失われたものを再建するのに夢中でした。そして、す"
-"ぐに繁栄の時代は再び訪れました。Knalgaを以前よりさらに偉大なものとするために"
-"ドワーフは採掘を始め、ほうぼうに散らばっていた仲間たちと連絡を取りました。"
+"北部同盟の結成から数年間、Knalga のドワーフとドワーフの戸口の人間はオークによ"
+"る長い略奪によって失われたものの再建に専念せざるを得ませんでした。それでも、"
+"その努力の結果、繁栄の時代は思ったよりも早く帰ってきました。そこまでたどり着"
+"いてもなおドワーフ達はそれでもその歩みを止めず、Knalga を以前よりもさらにすば"
+"らしい所にしたいと考えていました。そこで彼らは行動を始めました。過去の歴史を"
+"紐解いてアイデアを求め、また一方では世界中に散らばった同胞との接触から何かを"
+"得ようとしたのです。"
 
 #. [part]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:30
@@ -128,36 +135,30 @@ msgid ""
 "year 550 after the founding of Wesnoth, the captain of the East Gate "
 "received a warning that a small band of rogue orcs had been sighted."
 msgstr ""
-"だが非友好的なオークや、野蛮な人間、残されたアンデッドによる脅威はまだ終わっ"
-"てはいませんでした。ドワーフ族は Knalga への入口に強固な警備を敷き続けまし"
-"た。そうして、Wesnoth の成立より 550 年後、東の門の隊長は小規模なならず者オー"
-"クの集団が目撃されるようになったとの報告を受け取りました。"
+"その一方で、敵対的なオークや、野蛮な人間、アンデッドの残党の脅威が消え去って"
+"いたわけではありませんでした。そのため、ドワーフは Knalga の入口に強固な警備"
+"を敷き続けていました。そんな Wesnoth 歴 550 年、Kanlag の東門の隊長が小規模な"
+"ならず者オークの一団が目撃されているとの報告を受け取りました。"
 
 #. [side]
-#. [side]: type=Orcish Warrior, id=Marth-Tak
 #. [side]: type=Dwarvish Lord, id=Hamel
-#. [side]: type=Great Mage, id=Master Perrin
+#. [side]: type=Orcish Warrior, id=Marth-Tak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:43
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:34
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:48
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:43
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:59
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:34
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:38
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:33
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:26
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:42
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:31
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:105
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:26
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:32
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:47
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:36
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:26
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:20
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:70
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:36
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:52
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:33
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:32
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:26
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:32
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:47
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:36
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:22
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:20
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:70
 msgid "Alliance"
-msgstr "同盟軍"
+msgstr "北部同盟"
 
 #. [unit]: type=Gryphon Rider, id=Pelmathidrol
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:54
@@ -165,21 +166,15 @@ msgid "Pelmathidrol"
 msgstr "Pelmathidrol"
 
 #. [side]: type=Orcish Warrior, id=Bashnark
-#. [side]: type=Orcish Warlord, id=Tan-Malgar
-#. [side]: type=Orcish Warlord, id=Tan-Grolak
-#. [side]: type=Orcish Warlord, id=Tan-Uthkar
 #. [side]: type=Orcish Warlord, id=Tan-Morgh
 #. [side]: type=Orcish Warlord, id=Tan-Garukh
 #. [side]: type=Orcish Warlord, id=Tan-Wagran
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:71
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:54
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:92
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:129
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:82
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:128
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:170
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:82
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:127
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:169
 msgid "Orcs"
-msgstr "オーク軍"
+msgstr "オーク"
 
 #. [side]: type=Orcish Warrior, id=Bashnark
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:76
@@ -187,67 +182,123 @@ msgid "Bashnark"
 msgstr "Bashnark"
 
 #. [label]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:89
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:88
 msgid "East Gate"
-msgstr "東の門"
+msgstr "東門"
 
 #. [objective]: condition=win
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:98
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:97
 msgid "Defeat Bashnark"
 msgstr "Bashnark を倒す"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:102
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:146
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:102
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:180
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:109
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:120
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:118
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:319
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:141
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:223
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:143
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:373
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:101
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:129
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:118
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:121
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:362
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:136
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:221
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:135
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:215
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:765
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:931
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1099
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1152
 msgid "Death of Aiglondur"
 msgstr "Aiglondur の死"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:120
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:119
 msgid ""
 "<i>Up axes!</i> We will be the Northern Alliance’s arm today, and kill or "
 "scatter these invaders."
 msgstr ""
-"<i>斧を上げよ！</i> 本日俺達は北部同盟の名の下に、この侵入者どもを殺すか追い"
-"散らすぞ。"
+"<i>斧を上げよ！</i> 今日の俺達は北部同盟の刃となる！侵入者どもを蹴散らすぞ。"
 
 #. [message]: speaker=Bashnark
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:125
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:124
 msgid ""
 "We are the true orcs, not the weaklings who ally with human-worms and stinky-"
 "midgets like you. You will be meat for our wolves."
 msgstr ""
-"俺達こそ真のオーク族であり、人間の虫けらどもや貴様等のような臭いチビと手を結"
-"ぶような軟弱者どもとは違うのだ。狼の餌となるがいい。"
+"俺達こそ真のオークだ。貴様等臭いチビや人間の虫けらと手を結ぶような弱虫共とは"
+"違うのだ。貴様等は狼の餌にしてやるとしよう。"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:137
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:136
+#, fuzzy
+#| msgid ""
+#| "What is this? Their vanquished leader wears a cloak-pin of dwarvish make. "
+#| "And it bears a loremaster’s emblem."
 msgid ""
 "What is this? Their vanquished leader wears a cloak-pin of dwarvish make. "
-"And it bears a loremaster’s emblem."
+"And it bears a loremaster’s emblem. Why would an orc be carrying metalwork "
+"of dwarvish make?"
 msgstr ""
-"何だこれは？ 倒したリーダーはドワーフの作ったクロークピンを身に着けているぞ。"
-"それに伝承家の紋章も持っているぞ。"
+"何だこれは？このリーダーのクロークの留め金、ドワーフの作った物だぞ。伝承家の"
+"紋章までついているぞ。"
+
+#. [unit]: id=Movrur, type=Dwarvish Masked Steelclad
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:146
+msgid "Movrur"
+msgstr ""
+
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:160
+msgid ""
+"Hail, kinsmen of Knalga. I have been tracking that orc for several days. He "
+"be part of a band of raiders that attacked us a few weeks ago and stole many "
+"arms from our forges."
+msgstr ""
+
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:170
+msgid "Yes, this cloak-pin be of our work."
+msgstr ""
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:142
-msgid "The maker’s mark is strange to me. We had best consult the lord Hamel."
-msgstr "製作者の印章は俺の知らないものだな。Hamel 陛下にご相談するのが一番だ。"
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:175
+msgid "Hold... kinsman. Who are you and from where do you hail?"
+msgstr ""
+
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:180
+msgid "I be Movrur, of the ancient stronghold of Kal Kartha."
+msgstr ""
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:185
+msgid ""
+"Kal Kartha, the hold of the forges and the olden birthplace of our kind? "
+"That Kal Kartha? We have not heard from you in years! It was thought that "
+"your hold was lost to the orcs long ago."
+msgstr ""
+
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:190
+msgid ""
+"Aye, our hold was once overrun by orcs, but in recent times, we have begun "
+"to clear them out and reclaim the lands that were once ours. However, as you "
+"saw here, our troubles with the orcs are far from over."
+msgstr ""
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:195
+msgid ""
+"In that case, we had best consult Lord Hamel. We may yet be able to send you "
+"some aid against these orcish marauders."
+msgstr ""
+
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:200
+msgid "If you wish it. Let us see what you can offer."
+msgstr ""
 
 #. [scenario]: id=02_Reclaiming_the_Past
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:5
 msgid "Reclaiming the Past"
-msgstr "取り戻せる過去"
+msgstr "過去の奪還"
 
 #. [part]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:23
@@ -257,9 +308,9 @@ msgid ""
 "Alliance. Beside the dais stood a stranger in the robes of the Order of "
 "Loremasters..."
 msgstr ""
-"オーク族に勝利した後、Aiglondur は Knalga の君主にして北部同盟の護民官でもあ"
-"る Hamel の謁見の間に呼び出されました。高座の傍らには伝承家組合のローブをま"
-"とった見知らぬ人物が立っておりました……"
+"オークに勝利した後、Aiglondur は Knalga の君主にして北部同盟の護民官でもある "
+"Hamel の謁見の間に呼び出されました。高座の傍らには伝承家組合のローブをまとっ"
+"た見知らぬ人物が立っておりました……"
 
 #. [side]: type=Dwarvish Lord, id=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:53
@@ -267,123 +318,156 @@ msgid "Hamel"
 msgstr "Hamel"
 
 #. [message]: speaker=Hamel
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:93
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:98
+#, fuzzy
+#| msgid ""
+#| "Aiglondur, what ye ha’ found is disturbing, for all it seems a small "
+#| "thing. I make known to ye Angarthing, loremaster in training, who "
+#| "recognized the mark on it."
 msgid ""
-"Aiglondur, what ye ha’ found is disturbing, for all it seems a small thing. "
-"I make known to ye Angarthing, loremaster in training, who recognized the "
-"mark on it."
+"Aiglondur, the news ye bring is disturbing, for all it seems a small thing. "
+"I make known to ye Angarthing, loremaster in training."
 msgstr ""
-"Aiglondur よ、お前が発見したものは大したことは無いもののように見えるがの、物"
-"騒な代物だぞ。お前に Angarthing を紹介しよう。彼は伝承家の見習いで、その印章"
-"について知っている者じゃ。"
+"Aiglondur よ、お前が発見したものは一見大したことは無いもののように見えるが、"
+"不穏な代物だぞ。お前に Angarthing を紹介しよう。こいつは伝承家の見習いで、そ"
+"の印章を知っている者だ。"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:98
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:103
+#, fuzzy
+#| msgid ""
+#| "The mark on this cloak-pin is that of our kin at Kal Kartha in the "
+#| "eastern hills, from whom we’ve heard nothing since before Tallin broke "
+#| "the orcish occupation of Knalga. It troubles us that an orc should have "
+#| "come to possess it; no orc should know even that loremasters exist, let "
+#| "alone come near enough one to get this."
 msgid ""
-"The mark on this cloak-pin is that of our kin at Kal Kartha in the eastern "
-"hills, from whom we’ve heard nothing since before Tallin broke the orcish "
-"occupation of Knalga. It troubles us that an orc should have come to possess "
-"it; no orc should know even that loremasters exist, let alone come near "
-"enough one to get this."
+"As you know, the mark on this cloak-pin is that of our ancient kin at Kal "
+"Kartha in the high mountains. That an orc should come to possess this is "
+"troubling, for no orc should know even that loremasters exist, let alone "
+"come near enough to one to get this."
 msgstr ""
-"そのクロークピンの印章は東部丘陵にある Kal Kartha の一族のものですが、Tallin "
-"がオークによる Knalga の侵略を打ち破った時以来、連絡が取れていません。オーク"
-"がそれを所有するに至ったとなると厄介です。伝承家が存在することすらオークに知"
-"られるべきではないのに、ましてやそれを入手できるほど接近させてしまうとは。"
+"その留め金の印章は東部丘陵にある Kal Kartha の同胞のものです。彼らとは "
+"Tallin がオークによる Knalga の侵略を打ち破る前から連絡が取れていません。そし"
+"て、オークがそれを所有するに至ってしまったとなると問題です。何しろ、伝承家の"
+"存在はオークに知られてはいけないのですから。ましてやそれを入手できるほど接近"
+"させてしまうとは。"
 
 #. [message]: speaker=Hamel
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:103
-msgid "I fear some grave ill may have become Kal Kartha."
-msgstr "Kal Kartha に何か重大な災厄が起きている恐れがある。"
-
-#. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:108
-msgid ""
-"And I fear for the Hammer of Thursagan. Our kin at Kal Kartha have been its "
-"keepers since a hero of their line recovered it from the Caverns of Flame, "
-"centuries ago."
+#, fuzzy
+#| msgid "I fear some grave ill may have become Kal Kartha."
+msgid "Has some grave ill become of Kal Kartha?"
 msgstr ""
-"それに Thursagan の槌のことも心配です。何世紀も前に炎の洞窟からそれを取り戻し"
-"た英雄が彼らの一族であったため、Kal Kartha の一族は槌の管理者となっていたので"
-"す。"
+"つまり、Kal Kartha で重大な問題が起きているかもしれない、ということになる。"
+
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:113
+msgid ""
+"Nay, it was merely... bad luck. We had just uncovered a magma bed for a new "
+"forge, one hot enough to reforge the ruined Hammer of Thursagan. We brought "
+"a loremaster to survey the site, but orcs ambushed us not long after he "
+"arrived."
+msgstr ""
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:113
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:118
 msgid "The Hammer of Thursagan?"
-msgstr "Thursagan の槌？"
+msgstr "Thursagan の鎚？"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:118
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:123
+#, fuzzy
+#| msgid ""
+#| "Aye. The very tool with which our greatest runesmith made the Sceptre of "
+#| "Fire. But it is ancient, far older than Thursagan; he was but the last to "
+#| "wield it, and our oldest histories hint that this very hammer was used to "
+#| "forge the dwarves themselves in the heart of the earth."
 msgid ""
 "Aye. The very tool with which our greatest runesmith made the Sceptre of "
 "Fire. But it is ancient, far older than Thursagan; he was but the last to "
 "wield it, and our oldest histories hint that this very hammer was used to "
-"forge the dwarves themselves in the heart of the earth."
+"forge the dwarves themselves in the heart of the deepest forges beneath Kal "
+"Kartha."
 msgstr ""
-"えぇ。最も偉大なルーンスミスが炎の笏を製作する際に使用したまさにその道具で"
-"す。ですがそれは Thursagan よりも遥かに昔の、古代のものなのです。彼は最後にそ"
-"れを所有していたというだけに過ぎず、我々の最古の史書によれば、大地の中心から"
-"ドワーフ族自身を造り出すのに使われた槌であるとされています。"
+"ええ。歴史上最も偉大なルーンスミスがかの「炎の笏」を製作する際に使用した道具"
+"です。ただし、ただし、その鎚は Thursagan 本人よりも遥かに歴史がある、古代の遺"
+"物なのです。彼は最後にそれを使っていただけに過ぎません。我々に伝わる最古の歴"
+"史において、大地の中心からドワーフ族自身を削り出す際にこの鎚が使われたと示唆"
+"されています。"
 
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:123
-msgid ""
-"But if the dwarves of Kal Kartha have held it all this time, why has none "
-"wielded it since Thursagan?"
-msgstr ""
-"だが、これまでずっと Kal Kartha のドワーフ族がそれを手元に置いていたのなら、"
-"Thursagan 以降槌を所有する者が出て来なかったのは何故だ？"
-
-#. [message]: speaker=Hamel
+#. [message]: speaker=Movrur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:128
 msgid ""
-"Because when Thursagan burned to death with his hand on the Hammer, all the "
+"We recovered the pieces from the Caverns of Flame long ago, but were unable "
+"to repair the artifact. The consequences of the Hammer’s ruination have thus "
+"been irreparable."
+msgstr ""
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:133
+msgid "What consequences?"
+msgstr ""
+
+#. [message]: speaker=Hamel
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:138
+#, fuzzy
+#| msgid ""
+#| "Because when Thursagan burned to death with his hand on the Hammer, all "
+#| "the runemasters and arcanisters then living — all those who had sworn to "
+#| "the craft and bound themselves to the power o’ the Hammer — dropped dead "
+#| "without a mark on them, all struck down at the same moment. Their craft "
+#| "secrets died with them. That is why there are nae runesmiths among the "
+#| "Dwarves today, and sorely we miss them."
+msgid ""
+"When Thursagan burned to death with his hand on the Hammer, all the "
 "runemasters and arcanisters then living — all those who had sworn to the "
 "craft and bound themselves to the power o’ the Hammer — dropped dead without "
 "a mark on them, all struck down at the same moment. Their craft secrets died "
 "with them. That is why there are nae runesmiths among the Dwarves today, and "
 "sorely we miss them."
 msgstr ""
-"Thursagan が槌を手にしたまま焼け死んだ際に、その時生きていた全てのルーンマス"
-"ターと秘法師――工芸術に、そして自らを槌の力と一つになる事を宣誓したもの――が同"
-"時に倒れ、残す間も無く死んでしまったからじゃ。工芸術の秘密は彼らと共に失われ"
-"た。これが今日ドワーフ族にルーンスミスが一人もいない理由なのだよ。大変寂しい"
-"話だがの。"
+"Thursagan が鎚を手にしたまま焼け死んだ際、その時生きていた全てのルーンマス"
+"ターと秘儀術師が一人残らず、何も残すことなく死んでしまったのだ ── その技術と"
+"鎚の力の秘密に誓いを立てた者は全て死んでしまった。ルーンスミスの技術は彼らと"
+"ともに失われてしまったのだ。ルーンスミスが一人も残っていない、それが鎚を使う"
+"ものが現れない理由だ。そして今、我らはただ彼らの復活を待ちわびている。"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:133
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:143
 msgid ""
 "That is what is said, my lord Hamel, and it is true. Except this; the Order "
 "of Loremasters has given me leave to reveal that the craft secrets were not, "
 "actually, quite as lost as we believed."
 msgstr ""
-"仰せのとおりです、Hamel 陛下、それが真実です。ただし例外があります。私は、工"
-"芸術の秘密が実際には我々が信じていたように完全に失われてしまったわけではない"
-"ことを明かす許可を伝承家組合から受けております。"
+"まさにその通りです、Hamel 陛下。しかし、一点だけそのお話から漏れていることが"
+"あります。そして、その点を開示する許可を伝承者協会より受けております。実際の"
+"ところ、これまで我々が思っていたほどにルーンスミスの技術が失われてしまったわ"
+"けではないようです。"
 
 #. [message]: speaker=Hamel
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:138
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:148
 msgid "What is this ye say? Nae lost?"
-msgstr "なんだと？ 失われてはいないとな？"
+msgstr "どういうことだ？失われてはいないと？"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:143
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:153
 msgid ""
 "Aye. Ye’ll recall that in repairing the western galleries we cleared a small "
 "cave-in hard by where Thursagan himself once had a workshop here, before he "
 "left to study in solitude in the further North."
 msgstr ""
-"えぇ。我々が西部の坑道を修復していた時、かって Thursagan が一人で研究をし、さ"
-"らに北へ向かう前に仕事場を設けていた場所近くでの小規模な崩落現場をきれいにし"
-"たことを思い出してください。"
+"ええ。西部坑道の修復中、我々が小規模な崩落現場の片付けをしたことは覚えておい"
+"ででしょう。一人で研究を行うために北へ向かう前、その崩落現場のごく近くでかつ"
+"て Thursagan が工房を構えていたことがあるのです。"
 
 #. [message]: speaker=Hamel
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:148
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:158
 msgid "And ye found something?"
 msgstr "何かを見つけたのだな？"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:153
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:163
 msgid ""
 "A book. Thursagan’s book, in a secret and locked compartment he must have "
 "dug from the living rock himself by unaided runecraft. The cave-in breached "
@@ -391,1875 +475,1878 @@ msgid ""
 "that, with the book and the Hammer to hand, we could train and initiate "
 "runesmiths once more."
 msgstr ""
-"書物です。ルーンの助けを借りずに彼自身の手で天然石を掘り抜いたのでしょう、秘"
-"密の閉鎖された区画に Thursagan の書がありました。崩落で破けており、暗号を解き"
-"明かすのには大変な労力を要しました。ですが、その書とその槌があれば、今一度"
-"ルーンスミスを手解きし養成できるかもしれません。"
+"書物、Thursagan の書いた本です。ルーンの助けを借りずに自身の手で天然石を掘り"
+"抜いたと思われる秘密の一角に厳重に隠してありました。崩落で破れてしまっていた"
+"こともあり、暗号を解き明かすのには大変な労力を要しました。ですが、その書と鎚"
+"があれば、今一度ルーンスミスの技術を復活させることができるかもしれません。"
 
 #. [message]: speaker=Hamel
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:158
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:168
 msgid "And for what cause ha’ I heard naught o’ this?"
-msgstr "その件について何もわしの耳に入ってきていないのはどういうわけだ？"
+msgstr "その件が我が元に伝わっていないのはどういうことだろうか？"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:163
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:173
 msgid ""
 "My lord, the find was very recent. We are still deciphering the book. And "
 "there is this: with the Hammer at Kal Kartha and the book here, the question "
 "of which holding shall have the training of the new runesmiths in its hands "
 "would be... delicate."
 msgstr ""
-"陛下、発見はごく最近のものです。まだ書を解読しているところなのです。それに、"
-"Kal Kartha にある槌とここにある書のどちらで新しいルーンスミスを養成するのかと"
-"いう問題が……微妙なのです。"
+"陛下、発見はごく最近のことです。そして、書の解読もまだ終わっていません。それ"
+"に、Kal Kartha に鎚があり、書がここにあるという状況が厄介で…… どちらで新しい"
+"ルーンスミスを養成するのかというデリケートな問題が……"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:168
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:178
 msgid ""
 "We feared stirring up a controversy before the book was even properly "
 "understood."
-msgstr "書の正確な理解もなされない内に論争が巻き起こるのが心配だったのです。"
+msgstr ""
+"我々は書が完全に解読されない内に論争が巻き起こることを心配していたのです。"
 
 #. [message]: speaker=Hamel
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:173
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:183
 msgid ""
 "I’ll grant that was well thought, even if I am nae entirely pleased to have "
 "been kept in the dark. But ye came to me with a request, and I think I ken "
 "what it will be."
 msgstr ""
-"闇に伏せたままにしておくのは全くもってわしの本意に反するところではあるが、深"
-"慮の故じゃと思う。だが、お前は望みがあって来たのじゃったの、それが何なのかが"
-"判った気がするぞ。"
+"陰でそのようなことを進めるのは我が意に反することだ。しかし、熟慮の上での判断"
+"であったことは理解した。それで、お前は望みがあって来たということだったな。ま"
+"あもう内容は予想はつくがな。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:178
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:188
+#, fuzzy
+#| msgid ""
+#| "That is obvious; the Order of Loremasters wants to send an expedition to "
+#| "Kal Kartha to find what has become of our kindred and the Hammer."
 msgid ""
 "That is obvious; the Order of Loremasters wants to send an expedition to Kal "
-"Kartha to find what has become of our kindred and the Hammer."
+"Kartha to examine the possibility of restoring the order of Runemasters."
 msgstr ""
-"明白でしょう。彼ら一族に起こった事と槌を探すために、伝承家組合は Kal Kartha "
-"へ遠征隊を送りたいのです。"
+"もう言うまでもないだろう。Kal Kartha の現状と鎚の調査のため、伝承家協会は "
+"Kal Kartha への遠征隊の派遣を望んでいるのだな。"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:183
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:193
 msgid "Indeed, Lord Hamel, that is what we came to ask."
-msgstr "その通りです、Hamel 陛下、それこそが我々がお願いしに来た事です。"
+msgstr "その通りです。Hamel 陛下、まさにその願いのために参上した次第です。"
 
 #. [message]: speaker=Hamel
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:188
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:198
 msgid "And you spoke my guess, Aiglondur. Are you nae kin of mine?"
-msgstr "わしの推測を言い当てたな、Aiglondur。お前はわしの血縁よのぉ？"
+msgstr ""
+"我が推測はお前に先に言われてしまったな。Aiglondur、お前は我が血筋の者だった"
+"な？"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:193
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:203
 msgid "Your great-nephew, my lord."
 msgstr "大甥に当たります、陛下。"
 
 #. [message]: speaker=Hamel
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:198
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:208
+#, fuzzy
+#| msgid ""
+#| "Ye’re young and not tested... but ye have the rank, and ye’ve shown the "
+#| "wits to use it well. I have decided. You and Angarthing will fare to Kal "
+#| "Kartha together, as soon as may be, with the best men of your guard."
 msgid ""
 "Ye’re young and not tested... but ye have the rank, and ye’ve shown the wits "
-"to use it well. I have decided. You and Angarthing will fare to Kal Kartha "
+"to use it well. Movrur? What think ye?"
+msgstr ""
+"お前は若く、まだ試練も受けていない……しかし、役に就いており、その能力を存分に"
+"発揮しておる。良し、決めたぞ。お前と Angarthing が Kal Kartha へ赴くがよい。"
+"部下から精鋭を選び、可能な限り速やかに出発するのだ。"
+
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:213
+msgid ""
+"As the orcs recently slew one of our invaluable loremasters, we would "
+"welcome the wisdom of one of our kin from Knalga."
+msgstr ""
+
+#. [message]: speaker=Hamel
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:218
+#, fuzzy
+#| msgid ""
+#| "Ye’re young and not tested... but ye have the rank, and ye’ve shown the "
+#| "wits to use it well. I have decided. You and Angarthing will fare to Kal "
+#| "Kartha together, as soon as may be, with the best men of your guard."
+msgid ""
+"Then I have decided. Aiglondur, you and Angarthing will fare to Kal Kartha "
 "together, as soon as may be, with the best men of your guard."
 msgstr ""
-"お前は若く、試練を受けていない……じゃが役に就いており、その才能を存分に発揮し"
-"ておる。決めたぞ。お前と Angarthing とで Kal Kartha へ赴くがよい。お前の部下"
-"の内で精鋭を連れて、できるだけ早くな。"
+"お前は若く、まだ試練も受けていない……しかし、役に就いており、その能力を存分に"
+"発揮しておる。良し、決めたぞ。お前と Angarthing が Kal Kartha へ赴くがよい。"
+"部下から精鋭を選び、可能な限り速やかに出発するのだ。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:215
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:235
 msgid "Aye, my Lord Hamel."
 msgstr "承知しました、Hamel 陛下。"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:220
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:240
 msgid "The Order thanks you, Lord Hamel."
-msgstr "有りがたき幸せです、Hamel卿。"
+msgstr "御英断に感謝いたします、Hamel 陛下。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:225
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:245
 msgid ""
 "We must make haste; winter approaches, and travel over the mountains will "
 "soon grow dangerous."
 msgstr ""
-"急がなければ。冬が近づいてきているから、山々を越えて旅するのはますます危険度"
-"が高くなる。"
+"陛下の仰った通り急がなければ。冬が近づいている、山々を踏破するのがどんどん危"
+"険になってしまう。"
 
 #. [scenario]: id=03_Strange_Allies
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:5
 msgid "Strange Allies"
-msgstr "珍しい同盟軍"
+msgstr "珍しい味方"
 
 #. [part]
 #. 'march' is *not* a typo for 'marsh' here. In archaic English, 'march' means 'border'.
 #. The same word, as '-mark', is in the name of 'the Estmarks': the hills of the eastern border.
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:23
+#, fuzzy
+#| msgid ""
+#| "Angarthing and Aiglondur and the dwarvish troop traveled swiftly to the "
+#| "east through the settled lands of the Northern Alliance. Soon enough they "
+#| "came to the wilder march country, where raids by large bands of hostile "
+#| "orcs and men were all too common."
 msgid ""
-"Angarthing and Aiglondur and the dwarvish troop traveled swiftly to the east "
-"through the settled lands of the Northern Alliance. Soon enough they came to "
-"the wilder march country, where raids by large bands of hostile orcs and men "
-"were all too common."
+"Angarthing, Aiglondur, Movrur, and the dwarvish troop traveled swiftly to "
+"the east through the settled lands of the Northern Alliance. Soon enough "
+"they came to the wilder march country, where raids by large bands of hostile "
+"orcs and men were all too common."
 msgstr ""
-"Angarthing と Aiglondur およびドワーフ族の部隊は、速やかに北部同盟の定住圏を"
-"抜け東へ向かいました。すぐに未開の国境地帯へと到着しましが、そこでは敵対的な"
-"オーク達と人間達の大集団による略奪が日常的になっておりました。"
+"Angarthing と Aiglondur の率いる一団は北部同盟の領域を速やかに東へ向かいまし"
+"た。そしてすぐに未開の国境地帯へと到着したのですが、そこでは敵対的なオーク達"
+"と人間達の大集団による略奪が日常的に行われていました。"
 
 #. [side]: type=Orcish Warrior, id=Marth-Tak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:64
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:57
 msgid "Marth-Tak"
 msgstr "Marth-Tak"
 
-#. [side]: type=Outlaw, id=Gothras
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:98
-msgid "Bandits"
-msgstr "ならず者集団"
+#. [side]: type=Orcish Slayer, id=Gorthas
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:82
+msgid "Invaders"
+msgstr "侵略者達"
 
-#. [side]: type=Outlaw, id=Gothras
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:104
-msgid "Gothras"
-msgstr "Gothras"
+#. [side]: type=Orcish Slayer, id=Gorthas
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:88
+msgid "Gorthas"
+msgstr ""
 
 #. [objective]: condition=win
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:142
-msgid "Help Marth-Tak defeat Gothras"
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:125
+#, fuzzy
+#| msgid "Help Marth-Tak defeat Gothras"
+msgid "Help Marth-Tak defeat Gorthas"
 msgstr "Marth-Tak を助けて Gothras を倒す"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:150
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:106
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:184
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:113
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:124
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:122
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:323
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:145
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:227
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:147
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:377
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:133
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:122
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:125
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:366
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:140
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:225
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:139
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:219
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:769
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:935
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1103
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1156
 msgid "Death of Angarthing"
 msgstr "Angarthing の死"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:154
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:137
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:126
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:129
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:370
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:144
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:229
+#, fuzzy
+#| msgid "Death of Aiglondur"
+msgid "Death of Movrur"
+msgstr "Aiglondur の死"
+
+#. [objective]: condition=lose
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:141
 msgid "Death of Marth-Tak"
 msgstr "Marth-Tak の死"
 
-#. [message]: speaker=Marth-Tak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:179
-msgid "In the name of the Alliance, quit these lands now!"
-msgstr "同盟の名の下に、直ちにこの地から立ち去るがいい！"
-
-#. [message]: speaker=Gothras
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:184
-msgid ""
-"We will fare where we will and take what we will, dog of an orc. To the Dark "
-"Gods with you and your precious ‘Alliance’."
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:171
+msgid "Movrur, I had meant to ask you this before, but why do you wear a mask?"
 msgstr ""
-"俺達は行きたいところへ行き、欲しいものを手に入れる。オークの犬っころめ。て"
-"めぇらと大事な「同盟」とやらに暗黒の神々が共にあるように。"
+
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:177
+msgid ""
+"Kal Kartha is the stronghold of numerous, ancient forges. We are at home in "
+"deep firepits, as smiths and craftsmen. The mask is a sign of our mastery of "
+"the forge."
+msgstr ""
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:189
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:182
+msgid ""
+"And more practically, it shields the face from flying sparks and molten "
+"steel. Even the forgemasters of Knalga don the mask, though perhaps not as "
+"continuously as our friend Movrur does. But we have no time to discuss this "
+"further right now; I see trouble brewing down the road!"
+msgstr ""
+
+#. [message]: speaker=Marth-Tak
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:187
+msgid "In the name of the Alliance, quit these lands now!"
+msgstr "ここは北部同盟の領土だ！直ちにこの地より立ち去れ！"
+
+#. [message]: speaker=Gorthas
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:192
+msgid ""
+"Stinkin’ weakling! No true orc would fight for somethin’ as stupid as the "
+"Alliance."
+msgstr ""
+
+#. [message]: speaker=Marth-Tak
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:197
+msgid ""
+"You underestimate our strength. We shall see who the true orc is after this "
+"battle is over!"
+msgstr ""
+
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:202
 msgid ""
 "Now that is a sight still strange to my eyes — an orc fighting for the "
 "Northern Alliance."
-msgstr "いまだに奇妙な光景ですな――北部同盟のためにオークが戦っているなんて。"
+msgstr ""
+"いまだに慣れない光景ですな ── 北部同盟のためにオークが戦っているなんて。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:194
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:207
+#, fuzzy
+#| msgid ""
+#| "I’m surprised myself that so many of the orcish tribes came over to the "
+#| "Alliance. Not so strange to see humans raiding us, worse luck."
 msgid ""
 "I’m surprised myself that so many of the orcish tribes came over to the "
-"Alliance. Not so strange to see humans raiding us, worse luck."
+"Alliance."
 msgstr ""
-"本当に多数のオークの部族が同盟に付いたのにはびっくりだ。人間がこちらを襲撃す"
-"るのは珍しくもないがな、ついてない。"
+"俺も多数のオークの部族が同盟に付いたのには本当にびっくりした。人間に襲撃され"
+"るのは珍しくも何ともないがな。ついてない。"
 
 #. [message]: speaker=Marth-Tak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:199
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:214
 msgid "You, on the road! Are you of the Northern Alliance or not?"
-msgstr "そこの道の貴様ら！ 貴様らは北部同盟の者か否か？"
+msgstr "おい、そこの道にいる連中！お前たちは北部同盟の者か？"
 
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:206
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:219
 msgid "We are."
 msgstr "同盟の者だ。"
 
 #. [message]: speaker=Marth-Tak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:211
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:224
 msgid "Well, then, honor the treaty as I have."
-msgstr "よし、ならば、俺のように条約を守れ。"
-
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:216
-msgid "That is our duty."
-msgstr "当然だ。"
+msgstr "よし、ならばお前たちも盟約に従ってくれるな？"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:221
-msgid "For the Alliance! Axes up!"
-msgstr "同盟のために！ 斧を上げよ！"
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:229
+#, fuzzy
+#| msgid "We have failed our duty to the Alliance."
+msgid "That is our duty. For the Alliance!"
+msgstr "同盟の責務を果たせなかったようです…"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:233
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:241
 msgid "We have failed our duty to the Alliance."
-msgstr "同盟の責務を果たせませんでした。"
+msgstr "同盟の責務を果たせなかったようです…"
 
 #. [message]: speaker=Marth-Tak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:249
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:257
 msgid ""
-"My thanks, dwarves. These bandits might have hacked a bloody swathe through "
-"the Alliance’s tribes if we had not killed them here."
+"My thanks, dwarves. There have been many attacks on the border tribes of "
+"late, and though we have repelled them thus far, the assaults have gotten "
+"only more fierce with each passing day."
 msgstr ""
-"感謝する、ドワーフ。あのごろつきどもをここで始末できなければ、同盟側の部族が"
-"血祭りに上げられていたかもしれん。"
-
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:254
-msgid ""
-"My thanks to you, for proving there are orcs I can fight alongside rather "
-"than against. But we cannot linger here to celebrate; we are journeying east."
-msgstr ""
-"こちらこそ。敵対するのではなく、共に並んで戦うことのできるオークも存在するの"
-"だと証明してくれて。だが祝いの為の長居はできない。我々は東へ旅をしている最中"
-"だ。"
-
-#. [message]: speaker=Marth-Tak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:259
-msgid "East, eh? You won’t find many friends in that direction. Travel safely."
-msgstr ""
-"東、だと？ そっちの方じゃ友軍は多くは見つかるまい。気をつけて旅するがいい。"
-
-#. [scenario]: id=04_Troll_Bridge
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:5
-msgid "Troll Bridge"
-msgstr "トロルの橋"
-
-#. [part]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:21
-msgid ""
-"Aiglondur and his troop, some still shaking their heads dubiously at the "
-"very notion of fighting alongside orcs rather than against them, continued "
-"east to the easternmost edge of the Northern Alliance’s lands."
-msgstr ""
-"Aiglondur 達は、オークに向かってではなくオークと並んで戦うという現実にまだ少"
-"し疑わしげに頭を振りながら、北部同盟の最東端へ旅を続けました。"
-
-#. [side]: type=Troll, id=Gronk
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:58
-msgid "Trolls"
-msgstr "トロル軍"
-
-#. [side]: type=Troll, id=Gronk
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:62
-msgid "Gronk"
-msgstr "Gronk"
-
-#. [objective]: condition=win
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:98
-msgid "Defeat Gronk"
-msgstr "Gronk を倒す"
-
-#. [message]: speaker=Gronk
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:132
-msgid "Dis a troll bridge. You pay toll. Er..."
-msgstr "ごれトロルの橋。料金払う。ァー……"
-
-#. [message]: speaker=Gronk
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:137
-msgid "Dat not right. Dis a toll bridge. You pay troll. Er..."
-msgstr "ぞれ正しくない。ごれトロルの橋。トロルに払う。ァー……"
-
-#. [message]: speaker=Gronk
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:142
-msgid ""
-"Dat not right either. Big words confuse Gronk. You pay now or we smash you."
-msgstr ""
-"ぞれも正しくない。難しい言葉 Gronk わからない。今すぐ払わなければお前潰す。"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:147
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:262
 msgid ""
-"The stonework of yon bridge is not good enough to be dwarf-made, but it is "
-"nowhere near crude enough to be troll-work."
+"Indeed? What disturbs me is that these orcs bear arms and coins of dwarvish "
+"make. It intimates that this war-band was hired for this purpose."
 msgstr ""
-"あの石造りの橋は、ドワーフ製にしては質が良くありませんが、トロル製にしては雑"
-"とは言えませんね。"
+
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:267
+msgid ""
+"Nonsense. It may very well be that these orcs defeated a garrison of dwarves "
+"and raided their supplies. You need not draw such drastic conclusions from "
+"such an insignificant encounter."
+msgstr ""
+
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:272
+msgid ""
+"And what of the orcs that Aiglondur fended off at the East Gate of Knalga? "
+"Their leader’s cloak-pin bore the emblem of Kal Kartha—"
+msgstr ""
+
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:277
+msgid ""
+"Several of our scouting bands were ambushed recently. These orcs must have "
+"been among those who slew our kinsmen. It is all the better we slaughtered "
+"them here!"
+msgstr ""
+
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:282
+msgid "Indeed..."
+msgstr ""
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:152
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:287
+#, fuzzy
+#| msgid ""
+#| "My thanks to you, for proving there are orcs I can fight alongside rather "
+#| "than against. But we cannot linger here to celebrate; we are journeying "
+#| "east."
 msgid ""
-"Then it will be of the Alliance’s making, right enough, like this road that "
-"leads to it. It won’t do to have wild trolls squatting on it. Axes up!"
+"What matters is that these raiders are defeated now. My thanks to you, Marth-"
+"Tak, for proving there are orcs I can fight alongside rather than against. "
+"But we cannot linger here to celebrate; we are journeying east."
 msgstr ""
-"なら同盟側の作ったものだろう。その証拠に街道がそこまで続いている。野蛮なトロ"
-"ルに橋を無断所有させるわけにはいかないな。斧を上げよ！"
+"こちらこそ感謝する。敵対するのではなく、共に戦うことのできるオークも存在する"
+"のだと知ることができた。しかし戦勝祝いの為に長居はできない。我々は東へ旅をし"
+"ている最中なのだ。"
 
-#. [message]: speaker=second_unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:164
-msgid "Hey! That troll was sitting on some treasure!"
-msgstr "おい！ トロルが宝箱に腰掛けているぞ！"
+#. [message]: speaker=Marth-Tak
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:292
+msgid "East, eh? You won’t find many friends in that direction. Travel safely."
+msgstr "東、だと？あっちの方では友軍はほとんど見つからないだろう。気をつけろ。"
 
-#. [scenario]: id=05_Invaders
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:5
-msgid "Invaders"
-msgstr "侵略者達"
-
-#. [part]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:25
-msgid ""
-"The Alliance’s road ended at the troll bridge. East of it lay only the "
-"wildlands."
-msgstr ""
-"同盟の街道はトロルの橋で終わっており、その東にはただ未開の地が広がっていまし"
-"た。"
-
-#. [side]: type=Orcish Warlord, id=Tan-Malgar
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:58
-msgid "Tan-Malgar"
-msgstr "Tan-Malgar"
-
-#. [side]: type=Orcish Warlord, id=Tan-Grolak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:96
-msgid "Tan-Grolak"
-msgstr "Tan-Grolak"
-
-#. [side]: type=Orcish Warlord, id=Tan-Uthkar
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:133
-msgid "Tan-Uthkar"
-msgstr "Tan-Uthkar"
-
-#. [label]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:167
-msgid "Ruined Castle"
-msgstr "荒廃した城"
-
-#. [objective]: condition=win
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:176
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:219
-msgid "Defeat all enemies"
-msgstr "全ての敵を倒す"
-
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:225
-msgid ""
-"Stay alert, everyone, and keep together. This is bandit country — more than "
-"likely where Gothras and his gang came from."
-msgstr ""
-"総員、警戒を怠らず、離れ離れにならないようにしろ。ここはならず者の土地だ……恐"
-"らく Gothras の一味はここからやって来たんだ。"
-
-#. [message]: role=scout
-#. 'muckle' = Scottish/archaic English meaning 'great' or 'large'
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:231
-msgid ""
-"Nae sign o’ bandits I can see, captain — but there are three muckle hosts of "
-"orcs off to our east."
-msgstr ""
-"ならず者の痕跡は見つかりません、隊長――ですが我々の東の方にオークの軍勢が 3 つ"
-"構えてます。"
-
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:236
-msgid ""
-"What’s this? Large orcish war-bands so close to the Alliance’s border? That "
-"can only mean trouble."
-msgstr ""
-"何だと？ こんなに同盟の境界に近いところにオークの大戦闘部隊だと？ これは厄介"
-"な事だぞ"
-
-#. [message]: speaker=Tan-Malgar
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:241
-msgid ""
-"Well, boys, we were planning to invade the Northern Alliance anyway... These "
-"dwarves should make a tasty appetizer."
-msgstr ""
-"よし、野郎ども、とにかく俺達は北部同盟に攻め入るぞ……あのドワーフどもは休んで"
-"いる頃だろうからな"
-
-#. [message]: speaker=Tan-Grolak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:246
-msgid "Yeah, boss. Anything to get away from those masked ones..."
-msgstr "へぃ、ボス。何としてもあの覆面の連中から逃げなきゃ……"
-
-#. [message]: speaker=Tan-Malgar
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:251
-msgid "Be silent. We are orc warriors; we do not flee foes."
-msgstr "黙れ。俺達はオークの戦士だ。敵から逃げたりはしない。"
-
-#. [message]: speaker=Tan-Uthkar
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:256
-msgid "But, given a choice, we fight the weaker foe first."
-msgstr "でも、できるなら、まず弱い連中と戦おうぜ"
-
-#. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:268
-msgid "The villagers are attacking us!"
-msgstr "村人の攻撃だ！"
-
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:273
-msgid "Aye, it’s still bandit country, right enough."
-msgstr "あぁ、確かに未だならず者の土地だ。"
-
-#. [scenario]: id=06_High_Pass
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:5
+#. [scenario]: id=04_High_Pass
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:5
 msgid "High Pass"
-msgstr "高山道"
+msgstr "峠道"
 
 #. [side]: type=Gryphon, id=Kaara
 #. [side]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:49
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:70
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:50
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:73
 msgid "Monsters"
 msgstr "モンスター"
 
 #. [side]: type=Gryphon, id=Kaara
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:53
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:54
 msgid "Kaara"
 msgstr "Kaara"
 
 #. [objective]: condition=win
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:105
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:114
 msgid "Move Aiglondur to the signpost at the east end of the pass"
-msgstr "Aiglondur を道の東端にある道標まで動かす"
-
-#. [objective]: condition=lose
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:117
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:128
-msgid "Death of Ratheln"
-msgstr "Ratheln の死"
+msgstr "Aiglondur を道の東端にある道標まで移動させる"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:146
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:154
 msgid ""
 "Behold, the High Pass. By the old maps, we are halfway to Kal Kartha here."
 msgstr ""
-"見てください、高山道です。古い地図によれば、ここが Kal Kartha までの中間地点"
-"です。"
+"見てください、峠道です。古い地図によれば、ここが Kal Kartha への中間地点にな"
+"ります。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:151
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:159
 msgid ""
 "We must push through quickly; there is a vicious storm coming in behind us. "
 "Being caught in a blizzard on those heights would be no laughing matter."
 msgstr ""
-"急いで通らなければ。背後にひどい嵐が迫っている。こんな高度でブリザードに捕"
-"まったら笑い事じゃないぞ。"
-
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:239
-msgid ""
-"That hut near the top of the pass... Something is glowing inside it. We "
-"should investigate."
-msgstr ""
-
-#. [message]: speaker=Ratheln
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:271
-msgid ""
-"Hail, I am Ratheln. If you’re traveling down the pass, please take me with "
-"you. I am near freezing and starving to death up here."
-msgstr ""
-"私は Rathelnと言います。もし峠を下っているのであれば、私も連れて行ってもらえ"
-"ませんか。寒さと飢えでほとんど死にかけているのです。"
-
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:276
-msgid "Pardon my curiosity, but what is a fire-mage doing freezing to death?"
-msgstr ""
-"興味本位で申し訳ないのですが、炎の魔術師が寒さで死ぬとはどういうことです？"
-
-#. [message]: speaker=Ratheln
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:281
-msgid ""
-"In case you haven’t noticed, there is a serious shortage of both firewood "
-"and food in this gods-forsaken slot. And the damned gryphons descend on me "
-"whenever I stir out of this shack. I’ve had nothing to eat but flash-roasted "
-"gryphon for the last three weeks."
-msgstr ""
-"お気付きになっていないのかもしれませんが、この神々にも見捨てられた土地では薪"
-"も食料も深刻なほど不足しているのです。それにこの掘っ立て小屋から出ようとする"
-"と、いまいましいグリフォンが降りてくるのです。ここ 3 週間グリフォンの炙り焼き"
-"以外何も口にしていません。"
+"急いで通り抜けねば。背後からひどい嵐が迫っている。こんな高所で猛吹雪に捕まっ"
+"たら洒落にならん。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:286
-msgid "Where were you bound when you got stuck here?"
-msgstr "こんなところで立ち往生してまで、どこへ行く気だったんだ？"
-
-#. [message]: speaker=Ratheln
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:291
-msgid ""
-"There is a school of mages near the east end of the pass. They’ve an opening "
-"for an instructor, and they’re expecting me."
-msgstr ""
-"山道の東端近くに魔術師の学院があります。教官を募集していて、私を心待ちにして"
-"くれているのです。"
-
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:296
-msgid ""
-"Let’s take him with us, Aiglondur. We know little about the country beyond "
-"to the east; we’ve had few reports on it since before the orcs took Knalga. "
-"Those mages should know at least rumors."
-msgstr ""
-"彼を連れて行きましょう、Aiglondur。我々は東の向こう側の土地についてほとんど知"
-"識がありません。オーク族の Knalga 占領より昔の報告書がわずかにあるだけです。"
-"魔術師達なら少なくとも噂ぐらいは知っているでしょう。"
-
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:301
-msgid ""
-"Aye. And I’d not leave anyone who had done my kin no harm stranded to starve."
-msgstr ""
-"あぁ。それに我々の部族に対して無害で飢えて困っている人を置いて行くなんてでき"
-"ないしな。"
-
-#. [message]: speaker=Ratheln
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:317
-msgid "This is no fit death for a mage of fire!"
-msgstr "炎の魔術師に相応しい死に方じゃない！"
-
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:322
-msgid ""
-"The snow has redoubled its fury, as if his presence had been holding it "
-"back. I do not see a way forward for us."
-msgstr ""
-"雪が勢いを増しています。まるで彼の存在が雪を抑えつけていたかのようです。前方"
-"の道も見えなくなっています。"
-
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:335
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:252
 msgid ""
 "It has begun to snow. Move, everyone! To be trapped here would be death."
-msgstr "雪が降り始めてきた。行くぞ！ ここに閉じ込められたら死んでしまう。"
+msgstr "雪が降り始めてきた。進め！ここに留まれば確実に死ぬぞ！"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:344
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:261
 msgid ""
 "We’re snowed in. Our mission has failed, even if we live until the spring."
 msgstr ""
-"雪に閉じ込められてしまった。春まで生き延びられたとしても、我々の任務は失敗"
+"雪に捕われ進むことができない。春まで生き延びられたとしても、我々の任務は失敗"
 "だ。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:358
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:275
 msgid "We’re through the pass!"
 msgstr "峠を越えたぞ！"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:363
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:280
+#, fuzzy
+#| msgid ""
+#| "That may not be a blessing. Something frightened those orcs we fought "
+#| "among the bandit villages, enough to make them push west into Alliance "
+#| "territory. Don’t you wonder what it was?"
 msgid ""
-"That may not be a blessing. Something frightened those orcs we fought among "
-"the bandit villages, enough to make them push west into Alliance territory. "
-"Don’t you wonder what it was?"
+"That may not be a blessing. Something has been driving these orcish raiders "
+"to push into Alliance territory. Don’t you wonder what it is?"
 msgstr ""
-"喜んでいられないかもしれません。ならず者の村で戦ったあのオーク達を、同盟の領"
-"土に至るまで西へ押し進ませるくらいに脅かしてきた何かがあるのです。それが何な"
-"のか、気になりませんか？"
+"喜んでばかりもいられません。ならず者の村で戦ったオーク、彼らを同盟の領土へ向"
+"かわせる程に追い立てた何かがこの地に存在するかもしれないのです。それが何なの"
+"か、気になってはいませんか？"
 
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:368
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:285
 msgid ""
-"Aye. But I’ve a grim feeling we might be going to discover that in person."
-msgstr "あぁ。だが、それを見つけるかもしれないと思うと空恐ろしい気分だ。"
-
-#. [scenario]: id=07_Mages_and_Drakes
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:5
-msgid "Mages and Drakes"
-msgstr "魔術師とドレーク"
-
-#. [side]: type=Great Mage, id=Master Perrin
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:46
-msgid "Master Perrin"
-msgstr "Perrin 学長"
-
-#. [unit]: type=White Mage, id=Preceptor
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:56
-msgid "Preceptor"
-msgstr "教師"
-
-#. [unit]: type=Red Mage, id=Warder
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:69
-msgid "Warder"
-msgstr "警備員"
-
-#. [side]: type=Drake Flameheart, id=Glashal
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:93
-msgid "Drakes"
-msgstr "ドレーク軍"
-
-#. [side]: type=Drake Flameheart, id=Glashal
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:97
-msgid "Glashal"
-msgstr "Glashal"
-
-#. [objective]: condition=win
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:116
-msgid "Defeat Glashal"
-msgstr "Glashal を倒す"
-
-#. [message]: speaker=Preceptor
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:157
-msgid ""
-"Master Perrin! A mage comes down from the High Pass, with a company of "
-"dwarves. They are well-armed, but not in battle array."
+"The same that has been driving them to attack us at Kal Kartha. But, no "
+"matter the reason for their aggression, we shall slaughter them all the same."
 msgstr ""
-"Perrin 学長！ 高山道からドワーフの一隊を伴って魔術師が下ってきます。武装して"
-"いますが、戦闘陣形ではありません。"
-
-#. [message]: speaker=Master Perrin
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:162
-msgid ""
-"That will be Ratheln, I expect. Hail! You on the road! Who comes bearing "
-"arms into our valley?"
-msgstr ""
-"おそらく Ratheln だろう。ようこそ！ 旅のお方！ 我々の谷へ武器を携えてくるのは"
-"どなたかな？"
-
-#. [message]: speaker=Glashal
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:167
-msgid ""
-"‘Our’ valley, says Master Perrin. The arrogance of these mages is "
-"intolerable!"
-msgstr ""
-"「我々の」谷、と Perrin が言いやがった。あの魔術師どもの傲慢さには耐えられ"
-"ん！"
-
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:172
-msgid ""
-"A delegation of the Northern Alliance, traveling east. I believe we’ve found "
-"a friend of yours in the High Pass."
-msgstr ""
-"北部同盟の代表団で、東へ旅している。高山道であなた方のご友人を見つけた、と思"
-"うのだが。"
-
-#. [message]: speaker=Master Perrin
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:177
-msgid ""
-"Well met, then. But if you intend to travel east of here, beware of the nest "
-"of drakes in the cliffs near the valley’s end. They were here before us, and "
-"have become more hostile to travelers of late."
-msgstr ""
-"そういうことでしたら歓迎します。ですがここより東へ旅しようというつもりなら、"
-"谷の終端の近くの崖にあるドレークの巣にお気を付けなさい。我々よりも前からここ"
-"にいて、近頃は旅人にますます敵意を持つようになっているのです。"
-
-#. [message]: speaker=Glashal
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:182
-msgid "The axe-bearers must not be let near our nestlings. Attack!"
-msgstr "我らの雛に斧を持つ者を近づけさせるわけにはいかない。攻撃せよ！"
-
-#. [message]: speaker=Master Perrin
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:198
-msgid ""
-"We’re grateful for your assistance. And I’d like to send a couple of our "
-"senior apprentices with you to the east. It has come time for them to be "
-"journeymen... and I sense something being born to the east that I do not "
-"like the feel of."
-msgstr ""
-"ご助力感謝致します。力のある者を2人、あなた方と東へ向かわせせましょう。彼らも"
-"独り立ちした魔術師となる時が来ました……それに好ましくない何かが東に生まれた感"
-"じがするのです。\""
-
-#. [message]: speaker=Master Perrin
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:203
-msgid ""
-"We’re grateful for your assistance. And I’d like to send one of our senior "
-"apprentices with you to the east. It has come time for him to be a "
-"journeyman... and I sense something being born to the east that I do not "
-"like the feel of."
-msgstr ""
-"お力を貸していただいて、本当に感謝しています。私の教え子の中でも熟練した者を1"
-"人、あなたたちに同行させましょう。そろそろ彼には旅が必要でしょう...。それに、"
-"東では何か好ましくないものが生まれたようです。"
-
-#. [unit]: type=Mage, id=Lorinne
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:212
-msgid "Lorinne"
-msgstr "Lorinne"
-
-#. [unit]: type=Mage, id=Darchas
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:225
-msgid "Darchas"
-msgstr "Darchas"
-
-#. [message]: speaker=narrator
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:243
-msgid ""
-"The presence of Lorinne and Darchas gives you the ability to recruit mages."
-msgstr "Lorinne と Darchas が居るので、魔術師を雇用することができます。"
-
-#. [message]: speaker=narrator
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:249
-msgid "The presence of Darchas gives you the ability to recruit mages."
-msgstr "Darchas が居るので、魔術師を雇用することができます。"
-
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:256
-msgid "What sort of thing?"
-msgstr "それはどのようなものですか？"
-
-#. [message]: speaker=Master Perrin
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:261
-msgid ""
-"There is some great magic brewing. Something... evil. I feel its traces in "
-"the currents of the earth and air."
-msgstr ""
-"何らかの強大な魔力が醸し出されているのです。何か……邪悪な。天地の流れにその痕"
-"跡が感じられます。"
-
-#. [message]: speaker=Ratheln
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:267
-msgid ""
-"I would travel east with you if I could, but I have duties I must take up "
-"here."
-msgstr "できるなら私もあなた方と共に東へ旅したいが、ここに残る義務がある。"
-
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:272
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:305
-msgid "You have your duty, as we have ours. Fare well."
-msgstr "あなたにはあなたの責務がある、俺達と同じようにな。さらばだ。"
-
-#. [message]: speaker=Ratheln
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:288
-msgid ""
-"Perrin, I owe these dwarves a debt; I think it is my duty to aid them in "
-"their journey. I’ll return with your apprentices as soon as I may."
-msgstr ""
-"Perrin、私はこのドワーフ達に借りがあります。その旅で彼らを助けることが私の責"
-"務だと思います。すぐに生徒達を連れて戻ってきます。"
-
-#. [message]: speaker=Master Perrin
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:293
-msgid "As you will. Go safely and return swiftly."
-msgstr "思いのままにしなさい。気を付けて行き、すぐに戻って来てください。"
-
-#. [message]: speaker=Ratheln
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:300
-msgid ""
-"I would travel east with you if I could, but the school will need me all the "
-"more with Master Perrin gone."
-msgstr ""
-"できるなら私もあなた方と共に東へ旅したいが、Perrin 学長が亡くなって、なおさら"
-"学院には私が必要だ。"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:314
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:290
 msgid ""
-"I think we will regret Perrin’s passing. There is much he might have told us."
+"We are coming to Kal Kartha to study the Hammer of Thursagan, not mindlessly "
+"slay orcs."
 msgstr ""
-"Perrin 学長がお亡くなりになられた事を残念に思う。我々は彼にもっと教われたこと"
-"があるかも知れない。"
 
-#. [scenario]: id=08_Fear
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:5
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:295
+msgid ""
+"Indeed, you are, but you musn’t lose sight of the end goal. Restoring the "
+"Hammer will revive the ancient art of runecraft and bring dwarven-kind back "
+"to glory. With the Hammer restored, no orc shall ever be a threat to us ever "
+"again."
+msgstr ""
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:300
+msgid ""
+"I hope so, for the sake of peace and the safety of our people. For now, "
+"however, we must content ourselves with pressing onward toward Kal Kartha."
+msgstr ""
+
+#. [scenario]: id=05_Fear
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:5
 msgid "Fear"
 msgstr "恐怖"
 
-#. [unit]: type=Dwarvish Ulfserker, id={ID_STRING}
-#. [unit]: type=Dwarvish Masked Steelclad
-#. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
-#. [unit]: type=Dwarvish Masked Steelclad, id=Gog
-#. [unit]: type=Dwarvish Masked Steelclad, id=Magog
-#. [unit]: type=Dwarvish Ulfserker, id=Hekyll
-#. [unit]: type=Dwarvish Ulfserker, id=Jekyll
-#. [unit]: type={TYPE}
-#. [side]: type=Dwarvish Masked Steelclad, id=Dufon
-#. [side]: type=Dwarvish Masked Lord, id=Aragoth
-#. [side]: type=Dwarvish Masked Lord, id=Dranath
-#. [side]: type=Dwarvish Masked Steelclad, id=Sashaon
-#. [event]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:47
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:64
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:87
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:63
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:71
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:79
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:87
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:65
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:137
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:176
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:212
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:291
-#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:183
-msgid "Masked Dwarf"
-msgstr "覆面のドワーフ"
-
-#. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
 #. [side]
-#. [side]: type=Dwarvish Masked Steelclad, id=Dufon
+#. [side]: type=Dwarvish Masked Lord, id=Dufon
 #. [side]: type=Dwarvish Masked Lord, id=Aragoth
 #. [side]: type=Dwarvish Masked Lord, id=Dranath
-#. [side]: type=Dwarvish Masked Steelclad, id=Sashaon
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:59
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:77
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:132
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:171
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:207
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:286
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:52
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:58
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:101
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:134
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:163
 msgid "Masked Dwarves"
 msgstr "覆面ドワーフ"
 
+#. [side]
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:78
+msgid "Peasants"
+msgstr ""
+
+#. [side]
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:106
+#, fuzzy
+#| msgid "Invaders"
+msgid "Raiders"
+msgstr "侵略者達"
+
 #. [objective]: condition=win
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:114
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:117
 msgid "Find the inhabitants"
 msgstr "住民を探す"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:160
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:182
 msgid ""
 "We should be on the outskirts of the settled country around Kal Kartha, but "
 "something doesn’t feel right here."
 msgstr ""
-"私達は Kal Kartha の周囲にある居住地の郊外にいるはずなのですが、ここでは何の"
-"気配も感じられませんね。"
+"私達は Kal Kartha の周囲にある居住地の外れにいるはずなのですが、どうも様子が"
+"おかしいようですね。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:165
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:187
 msgid "It’s too quiet... and I think I smell traces of smoke on the wind."
-msgstr "静か過ぎる……それに風に乗って煙の残り香がする。"
+msgstr "静か過ぎる…… それに、わずかながら風に煙の臭いが乗っているようだ。"
 
-#. [message]: speaker=Ratheln
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:170
-msgid ""
-"I do not sense hostile magic in the vicinity. But there has been fire near "
-"here recently, and not a clean one."
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:192
+#, fuzzy
+#| msgid ""
+#| "I do not sense hostile magic in the vicinity. But there has been fire "
+#| "near here recently, and not a clean one."
+msgid "There has been fire near here recently, and not a clean one."
 msgstr ""
-"この近辺では敵意のある魔力は感じられません。ですが、少し前にこの近くで火が燃"
-"えていたようです。清浄ではない火が。"
+"この近辺では敵意のある魔力は感じられません。ですが、最近この辺りで火が燃えて"
+"いたようです…… 清浄ではない火が。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:175
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:197
 msgid ""
 "Look sharp for the inhabitants here. They might have something to tell us."
-msgstr "気を付けてここの住民を探すんだ。俺達に何か教えてくれるかもしれない。"
+msgstr "急いで住民を探すんだ。何か知っているかもしれない。"
 
-#. [unit]: type=Peasant, id=Ollin
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:192
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:215
-msgid "Ollin"
-msgstr "Ollin"
-
-#. [message]: speaker=Ollin
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:238
-msgid "Don’t kill me, masters! Please don’t kill me!"
-msgstr "殺さんでくれ、だんなさま！ どうか殺さんでくださいませ！"
-
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:243
-msgid "You’re in no danger from us. What lies to the east of here?"
-msgstr "危害を加えるつもりはない。この東には何がいるんだ？"
-
-#. [message]: speaker=Ollin
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:248
-msgid "You wear no mask. You... you’re not with them?"
-msgstr "あんたがたは覆面を付けてない。あ……あんたがたは奴らと一緒じゃないのか？"
-
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:253
-msgid "What are you talking about?"
-msgstr "何のことを言っているんだ？"
-
-#. [message]: speaker=Ollin
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:258
-msgid "The masked dwarves. Killing, burning, kidnapping. Look..."
+#. [message]: role=peasantry
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:234
+msgid "Help! Someone please help!"
 msgstr ""
-"覆面のドワーフだ。殺して、火をつけて、人間を攫っていきやがった。見てくれ……"
+
+#. [message]: role=peasantry
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:244
+msgid "Help!"
+msgstr ""
+
+#. [message]: role=slaver
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:254
+msgid ""
+"<i>Quiet, dirtgrubber. Ye’ll not cry for help from these newcomers, else "
+"I’ll torture yer family ta death bef’re yer eyes.</i>"
+msgstr ""
+
+#. [message]: role=peasantry
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:259
+msgid "They’ll stop you!"
+msgstr ""
+
+#. [message]: role=slaver
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:264
+msgid "<i>Look again, slave. We march among their ranks too!</i>"
+msgstr ""
+
+#. [message]: role=peasantry
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:277
+msgid "<i>It can’t be...</i>"
+msgstr ""
+
+#. [message]: speaker=slaver
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:282
+msgid "<i>Now, be silent while the master speaks.</i>"
+msgstr ""
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:287
+msgid "What in the world is going on here?"
+msgstr ""
 
 #. [message]: speaker=Masked Dwarf Leader
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:268
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:292
 msgid ""
-"Fellow dwarves, hail! We’re looking for a human refugee, one named Ollin. "
-"Have you seen him? Our master demands his life."
+"Fellow dwarves, hail! Kinsman Movrur, are ye back so soon from your journey "
+"to Knalga?"
 msgstr ""
-"よう、ドワーフの仲間！ Ollin という名の人間の難民を探しているんだ。そいつを見"
-"なかったか？ 主人がそいつの命を欲していてな。"
 
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:273
-msgid "He is here. How has he wronged your master, that you seek his death?"
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:297
+msgid ""
+"Aye. I’ve brought some of our brethren from the Dwarven Doors; we make for "
+"the forges of Kal Kartha to examine the Hammer."
 msgstr ""
-"そいつはここにいる。こいつの死を求めるなんて、あんたの主人にどんな悪いことを"
-"したんだ？"
 
 #. [message]: speaker=Masked Dwarf Leader
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:278
-msgid ""
-"Does it matter? He is only a dirtgrubbing human, not fit to polish the boots "
-"of the true people."
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:302
+msgid "Excellent. As for the current project, we—"
 msgstr ""
-"どうでもいいだろ？ ただの地を這う人間だ、まことの民の靴を磨くにも値しない。"
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:307
+msgid ""
+"You two haven’t answered my question. Burnt homes? The peasants in a panic? "
+"Something is very wrong here."
+msgstr ""
+
+#. [message]: speaker=Masked Dwarf Leader
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:312
+msgid ""
+"... aye. We’ve been under attack by some marauding orcs, who’re hidin’ out "
+"in some of the villages. I put some guards out in the fields to... protect "
+"the peasants, but we haven’t the forces to root out all of them orcs."
+msgstr ""
+
+#. [message]: role=peasantry
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:317
+msgid "<i>That’s not what the guards are for...</i>"
+msgstr ""
+
+#. [message]: role=slaver
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:322
+msgid "<i>Did I not tell you to be silent?</i>"
+msgstr ""
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:283
-msgid ""
-"What is your name, masked one? Will you stand behind your deed? I am a "
-"witness."
-msgstr "覆面の者、あなたの名は？ 自らの行いを是認できるのか？ 我は証人である。"
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:327
+msgid "Orcs, you say?"
+msgstr ""
 
-#. [message]: speaker=Masked Dwarf Leader
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:288
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:332
 msgid ""
-"A witness? My name is... my name is not important. My deed will speak its "
-"own truth."
-msgstr "証人だと？ 俺の名は……俺の名は重要じゃない。俺の行動こそが真実なのだ。"
+"Yes, orcs. The outskirts of Kal Kartha are a dangerous place. We’ve been "
+"forced to dedicate more of our forces here just to protect the peasants "
+"while they... go about their business."
+msgstr ""
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:293
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:337
 msgid ""
-"You speak without honor. Mine is the power of our ancient Law; speak your "
-"name and give up your murder, or the Law will cast you forth. I am a witness!"
+"Well, then. Since we are already here, why don’t we... help you root out "
+"these orcs? It will help the peasants get back to their lives."
 msgstr ""
-"義を伴わない言葉だ。私の言葉は太古の法の力。名を告げて殺戮を止めよ、さもなく"
-"ば法がお前を追放する。我は証人である！"
 
 #. [message]: speaker=Masked Dwarf Leader
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:298
-msgid ""
-"If you were a witness of the true people, you would not let a dirtgrubber "
-"hide behind your robes. I deny you!"
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:342
+msgid "Certainly..."
 msgstr ""
-"貴様がまことの民の証人なら、その地虫野郎をローブの後ろに隠したりしないはず"
-"だ。拒否する！"
-
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:304
-msgid "The Law speaks: you are cast out. You are un-dwarf. I AM A WITNESS!"
-msgstr ""
-"法の言葉だ――お前を追放する。お前はドワーフならざるものである。我は証人であ"
-"る！"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:309
-msgid "Up axes!"
-msgstr "斧を上げよ！"
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:347
+msgid "<i>Angarthing, is something wrong?</i>"
+msgstr ""
+
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:352
+msgid ""
+"<i>Something is suspicious here. Stay alert and keep an eye on what those "
+"masked dwarves do. Movrur, too.</i>"
+msgstr ""
 
 #. [objective]: condition=win
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:315
-msgid "Defeat the Masked Dwarf"
-msgstr "覆面のドワーフを倒す"
-
-#. [message]: speaker=Ollin
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:345
-msgid "Take that for my family’s memory, you murderer!"
-msgstr "家族の思い出をくらえ、この人殺し！"
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:358
+#, fuzzy
+#| msgid "Defeat the orcish leaders"
+msgid "Find and defeat the orcish intruders"
+msgstr "オークのリーダー達を倒す"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:354
-msgid "They are defeated!"
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:422
+msgid "The orcs are here! Up axes!"
+msgstr ""
+
+#. [unit]: type=Orcish Slayer, type=Orcish Nightblade, id=Maluk
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:568
+msgid "Maluk"
+msgstr ""
+
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:582
+msgid ""
+"So, the filth shows its face at last. You may think yourself mighty for "
+"preying weak humans, but you stand no chance against us dwarves."
+msgstr ""
+
+#. [message]: speaker=Maluk
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:587
+msgid "We shall see, masked one."
+msgstr ""
+
+#. [message]: speaker=Maluk
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:600
+#, fuzzy
+#| msgid "They are defeated!"
+msgid "They are too powerful! Retreat!"
 msgstr "やつらを倒したぞ！"
 
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:613
+msgid "Their leader has fled! We have won!"
+msgstr ""
+
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:624
+msgid "In his haste to escape, it seems like the orc dropped some coins."
+msgstr ""
+
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:359
-msgid "You have acted in honor. I am a witness."
-msgstr "あなたは義において行動しました。我は証人である。"
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:629
+msgid "Let me see those."
+msgstr ""
+
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:638
+msgid ""
+"These look as if they are of dwarven make! Movrur, what is the meaning of "
+"this?"
+msgstr ""
+
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:649
+msgid ""
+"In his haste to escape, it seems like the orc dropped some coins. It looks "
+"as if they are of dwarven make! Movrur, what is the meaning of this?"
+msgstr ""
+
+#. [message]: speaker=second_unit
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:656
+msgid ""
+"In his haste to escape, it seems like the orc dropped some coins. It looks "
+"as if they are of dwarven make!"
+msgstr ""
+
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:661
+msgid "What, are you sure? Movrur, what is the meaning of this?"
+msgstr ""
+
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:668
+msgid ""
+"Thieves and raiders, that be what these orcs are. They oft steal our gold "
+"and weapons in their raids, for such beasts have little ability to create "
+"either on their own."
+msgstr ""
+
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:673
+msgid "So you say."
+msgstr ""
+
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:678
+msgid ""
+"We of Kal Kartha have no reason to give these foul orcs any of our hard-"
+"earned gold, if that is what you are insinuating, <i>loremaster</i>."
+msgstr ""
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:364
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:683
 msgid ""
-"I have never seen the formal banishment before. One reads of it in the old "
-"tales, of course, but to hear it with one’s own ears? It was... unsettling."
+"Indeed. Although I find it odd that the orcs would have found such a sum of "
+"dwarven currency from raiding human villages..."
 msgstr ""
-"正式な追放を見たのは初めてだ。無論、古い物語で読むことはあるが、自らの耳にし"
-"た者がいたかな? どうも……落ち着かないものだな。"
+
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:688
+msgid ""
+"If it pleases you, I will distribute this gold to these... poor... humans. "
+"That way, they can return to their fields with their money returned to them, "
+"and we can be on our way to Kal Kartha."
+msgstr ""
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:369
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:693
 msgid ""
-"It is not something we do often. The last such was in my grandsire’s time. "
-"But look at what these filth were carrying if you have any doubt it was "
-"merited."
+"<i>That did not really answer your concern.</i> Very well, that sounds "
+"reasonable to me."
 msgstr ""
-"頻繁に行うようなものではありません。以前にあったのは祖父の代です。ですがもし"
-"不当だと思うのなら、あの堕落者達が運んでいたものを見てください。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:374
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:698
 msgid ""
-"Whips. Shackles. No, Angarthing, I would not doubt you, even if it were my "
-"place to doubt a loremaster."
+"<i>Aye, we shall have to watch him more closely. Something is strange about "
+"him and the rest of these masked ones.</i> Lead the way, Movrur."
 msgstr ""
-"鞭に枷か。いや、Angarthing、君を疑ったりはしない。たとえ俺が伝承家を危ぶむ立"
-"場だったとしてもな。"
 
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:379
-msgid ""
-"They were seeking captives. To what purpose, I cannot say. But I doubt it "
-"was any good one."
-msgstr ""
-"彼らは捕虜を探していました。どのような目的でかは私には分かりませんが、まとも"
-"な目的だったとは思えません。"
-
-#. [scenario]: id=09_Forbidden_Forest
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:5
+#. [scenario]: id=06_Forbidden_Forest
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:5
 msgid "Forbidden Forest"
 msgstr "禁じられた森"
 
 #. [side]: type=Elvish High Lord, id=Telcherion
 #. [side]: type=Elvish Enchantress, id=Iluvarda
 #. [side]: type=Ancient Wose, id=Burumardir-Athelorand
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:55
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:79
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:104
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:52
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:76
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:101
 msgid "Forest"
-msgstr "森の勢力"
+msgstr "森の住人"
 
 #. [side]: type=Elvish High Lord, id=Telcherion
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:60
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:57
 msgid "Telcherion"
 msgstr "Telcherion"
 
 #. [side]: type=Elvish Enchantress, id=Iluvarda
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:84
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:81
 msgid "Iluvarda"
 msgstr "Iluvarda"
 
 #. [side]: type=Ancient Wose, id=Burumardir-Athelorand
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:108
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:105
 msgid "Burumardir-Athelorand"
 msgstr "Burumardir-Athelorand"
 
 #. [objective]: condition=win
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:137
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:132
 msgid "Move both Aiglondur and Angarthing to the eastern signpost"
-msgstr "Aiglondur と Angarthing の両者を東端の標識まで移動させる"
+msgstr "Aiglondur と Angarthing の両者を東端の道標まで移動させる"
+
+#. [note]
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:151
+msgid ""
+"To win, either move Aiglondor to the signpost and Angarthing next to him, or "
+"move Angarthing to the signpost and Aiglondur next to him."
+msgstr ""
 
 #. [unit]: type=Elvish Scout, id=Elurin
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:199
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:192
 msgid "Elurin"
 msgstr "Elurin"
 
 #. [message]: speaker=Elurin
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:208
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:201
 msgid "Who disturbs our forest?"
 msgstr "我らの森を乱すのは何者か？"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:213
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:206
 msgid ""
 "A delegation of the Northern Alliance, seeking the road through to Kal "
 "Kartha."
-msgstr "北部同盟の代表団であり、Kal Kartha へ続く道を探している。"
+msgstr "北部同盟の派遣団だ。Kal Kartha へ続く道を探している。"
 
 #. [message]: speaker=Elurin
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:218
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:211
 msgid ""
 "We allow few outsiders in our forest paths, and no dwarves since the masked "
 "ones began to trouble our eastern margins. No axe-bearers shall come near "
 "our trees. Return whence you came!"
 msgstr ""
-"我らの森の道に入るのを許可するよそ者は限られている。覆面の者が我らの東の境界"
-"を騒がせ始めたため、ドワーフ族は許可しない。斧を持つ者を我らの森に近づけさせ"
-"はしない。来た場所へ帰るがいい！"
+"よそ者が我らの森を通過することは基本的に許可できない。ましてやお前達はドワー"
+"フだ。覆面のドワーフが我らの東の境界を騒がせ始めて以来、ドワーフの通行は一切"
+"許可していない。斧を持つ者は我らの木々に近づくな。来た道を戻るのだ！"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:223
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:216
 msgid "No. We have our duty. We must pass."
 msgstr "駄目だ。俺達には責務がある。通らねばならん。"
 
 #. [message]: speaker=Elurin
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:228
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:221
 msgid "You shall not pass here."
-msgstr "ここを通させはしない。"
+msgstr "通させはしない。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:233
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:226
 msgid ""
 "Winter comes on our heels, and your forest straddles the only gap in these "
 "mountains. You leave us no choice but to fight you."
 msgstr ""
-"冬が足元まで近づいていて、お前達の森がこの山脈の唯一の切れ目に跨っているん"
-"だ。お前達は戦う以外の選択肢を残してくれないのか。"
+"冬がもう間近まで迫っている。この時期は俺達でも山越えは厳しい。そしてお前達の"
+"森はこの山脈の唯一の切れ目を覆っているのだ。お前達は戦う以外の選択肢を残して"
+"くれないのか？"
 
 #. [message]: speaker=Elurin
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:238
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:231
 msgid ""
 "So be it, then. Yours will not be the first bones to nourish the earth of "
 "our forest."
 msgstr ""
-"ではそうなればよい。貴様らの骨が我らの森の土を肥やす最初の骨というわけでもな"
-"いしな。"
+"ならばそうする他あるまい。これまでの連中と同じく、お前らの骨も我らの森の土の"
+"肥やしになってもらおう。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:267
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:282
 msgid ""
 "Rally on me, everyone. We have better things to do than brawl with elves."
-msgstr "全員、俺の元へ集まれ。エルフ族との口喧嘩よりもするべきことがある。"
+msgstr ""
+"全員、俺の元へ集まれ。俺達にはエルフと争うよりも大事な責務があるのだぞ。"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:298
-msgid "Kal Kartha should be only another day’s march east of here."
-msgstr "Kal Kartha はここから東に行進してほんのもう 1 日のはずです。"
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:291
+#, fuzzy
+#| msgid "Kal Kartha should be only another day’s march east of here."
+msgid "Kal Kartha should be only another day’s march north of here."
+msgstr "あと 1 日程東へ進めば Kal Kartha に着くはずです。"
 
-#. [scenario]: id=10_The_Siege_of_Kal_Kartha
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:5
+#. [scenario]: id=07_The_Siege_of_Kal_Kartha
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:5
 msgid "The Siege of Kal Kartha"
 msgstr "Kal Kartha 包囲戦"
 
 #. [side]: type=Orcish Warlord, id=Tan-Morgh
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:87
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:87
 msgid "Tan-Morgh"
 msgstr "Tan-Morgh"
 
 #. [side]: type=Orcish Warlord, id=Tan-Garukh
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:133
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:132
 msgid "Tan-Garukh"
 msgstr "Tan-Garukh"
 
 #. [side]: type=Orcish Warlord, id=Tan-Wagran
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:175
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:174
 msgid "Tan-Wagran"
 msgstr "Tan-Wagran"
 
 #. [label]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:210
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:208
 msgid "West Gate"
-msgstr "西の門"
+msgstr "西門"
+
+#. [objective]: condition=win
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:217
+msgid "Defeat the orcish leaders"
+msgstr "オークのリーダー達を倒す"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:231
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:151
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:381
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:233
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:143
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:223
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:773
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:939
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1107
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1160
 msgid "Death of Dulcatulos"
 msgstr "Dulcatulos の死"
 
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:269
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:261
 msgid "Behold! The West Gate of Kal Kartha!"
-msgstr "見てください！ Kal Kartha の西の門です！"
+msgstr "見てください！Kal Kartha の西門です！"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:274
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:266
 msgid ""
 "And under siege, I see. There is a mighty host of orcs between us and that "
 "gate."
-msgstr ""
-"それに包囲されているようだ。こちらとあの門の中間に強力なオークの軍勢がいる"
-"ぞ。"
+msgstr "包囲されているようだな。俺達と門の間にオークの軍勢がいるぞ。"
 
 #. [message]: speaker=Tan-Morgh
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:279
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:271
 msgid ""
 "Ahhh... more stinky-midgets, come to get killed just like these cowards in "
 "their den."
 msgstr ""
-"アァァァ……臭いチビどもが増えたか、巣窟に篭った臆病者どもと同じく殺されに来た"
-"ぞ。"
+"ああ……？臭いチビどもが増えたぞ。巣穴に篭った臆病者どもと同じように殺されに来"
+"たか。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:284
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:276
 msgid "Let us bring our kin that orc’s head as a guesting-gift."
-msgstr "我らが同胞にあのオークの首を手土産として持って行こうじゃないか。"
+msgstr "我らが同胞への手土産として、あのオークの首を持って行くとするか。"
 
 #. [message]: speaker=Dulcatulos
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:300
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:292
 msgid "Kal Kartha shall not fall!"
-msgstr "Kal Kartha を陥落させるものか！"
+msgstr "Kal Kartha を落とさせるわけにはいかない！"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:312
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:304
 msgid "Kal Kartha is taken. Our mission has failed."
-msgstr "Kal Kartha を取られた。任務は失敗だ。"
+msgstr "Kal Kartha が落ちた。任務は失敗だ。"
 
 #. [message]: speaker=Dulcatulos
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:325
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:317
 msgid ""
 "Well fought, and our thanks; we were sore pressed. You are our honored "
 "guests, and I will show you to the best quarters we have myself. Our lord, "
 "the runemaster Karrag, will want to have speech with you on the morrow."
 msgstr ""
-"素晴らしい戦いぶりだった、感謝する。我らはひどく押されていたのだ。あなた方は"
-"栄誉ある客人だから、我らの所有する最高の客室へ案内しよう。我らが領主、ルーン"
-"マスターの Karrag 様が後でお会いになるだろう。"
+"素晴らしい戦いぶりだった、感謝する。あなた方の協力がなかったら危なかった。そ"
+"んな栄誉ある客人には我らの持つ最高の客室を用意しよう。明日には我らが領主、"
+"ルーンマスターの Karrag 様とお会いする場も用意できるだろう。"
 
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:330
-msgid ""
-"A runemaster? There had been none such since Thursagan’s day. And for one to "
-"lead a holding was unheard-of; they tended towards the solitary life."
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:322
+msgid "<i>Dulcatulos, you dunce...</i>"
 msgstr ""
-"ルーンマスターですと？ Thursagan の日以来そのようなものは存在しません。それに"
-"集団を率いる者なんて聞いたことが無い。彼らは孤独な生活を送るはずですから。"
 
 #. [message]: speaker=Dulcatulos
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:335
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:327
+msgid "<i>Did I say something I should have not?</i>"
+msgstr ""
+
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:332
+msgid "<i>Never mind. I shall deal with you later.</i>"
+msgstr ""
+
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:337
+#, fuzzy
+#| msgid ""
+#| "A runemaster? There have been none such since Thursagan’s day. And for "
+#| "one to lead a holding was unheard-of; they tended towards the solitary "
+#| "life."
 msgid ""
-"Aye? Well, you’d know such things better than I, loremaster. Our Karrag "
+"A runemaster? There have been none such since Thursagan’s day. And for one "
+"to lead a holding was unheard-of; they tended towards the solitary life."
+msgstr ""
+"ルーンマスター？Thursagan よりも後の時代には彼らは存在しないはずでしょう？そ"
+"れに、ルーンマスターが指導者となるということは聞いたことがありません。彼らは"
+"孤独な生活を好むと伝わっておりますし。"
+
+#. [message]: speaker=Dulcatulos
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:342
+#, fuzzy
+#| msgid ""
+#| "Aye? Well, you’d know such things better than I, loremaster. Our Karrag "
+#| "toiled for long years to recover the craft lore. He was elevated when our "
+#| "old lord fell in battle against the besieging orcs. Karrag himself was "
+#| "wounded near to death; none thought he would recover. But he leads us "
+#| "today, and his runelore has oft been the only shield between us and the "
+#| "orcs."
+msgid ""
+"Aye? Well, you’d know such things better than I, loremaster. Lord Karrag "
 "toiled for long years to recover the craft lore. He was elevated when our "
 "old lord fell in battle against the besieging orcs. Karrag himself was "
-"wounded near to death; none thought he would recover. But he leads us today, "
-"and his runelore has oft been the only shield between us and the orcs."
+"wounded near to death; none thought he would recover."
 msgstr ""
-"ん？ そういうことは私よりあなたの方がよく知っているだろうが、伝承家殿。我ら"
-"が Karrag 様は長年苦労して伝承の工芸術を復活させたのだ。オーク族の包囲軍との"
-"戦いで先の領主が亡くなった際に今の地位に上った。Karrag 様自身も瀕死の傷を負"
-"い、誰も治ると思わなかったが、今では我らを率い、そのルーンの知識が我らとオー"
-"クの間の唯一の盾となっているのだ。"
+"ん？伝承者殿、そういうことは私よりあなたの方がよく知っているだろう？我らが "
+"Karrag 様は長年の苦労の末、ルーンスミスの技術を復活させたのだ。オークの包囲軍"
+"との戦いで先の領主が戦死された際、Karrag 様が領主となられた。とは言え、"
+"Karrag 様自身も瀕死の傷を負っており、誰もがもう駄目だと思っていた。それがどう"
+"だ、彼は今では立派な指導者となり、そのルーンの知識がオークから我々を守ってい"
+"るのだ。"
+
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:347
+msgid ""
+"But he revived himself and stands with us now. That is all that matters."
+msgstr ""
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:340
-msgid "He has grasped the Hammer of Thursagan, then?"
-msgstr "では、彼は Thursagan の槌を手にしたと？"
-
-#. [message]: speaker=Dulcatulos
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:345
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:352
+#, fuzzy
+#| msgid "He has grasped the Hammer of Thursagan, then?"
 msgid ""
-"Aye. Toils over it in a workshop in the underlevels with his personal "
-"followers. He has promised all of us that the Hammer’s power will smash and "
-"scatter all our enemies."
+"He has grasped the Hammer of Thursagan, then? Else I know not how he "
+"recovered the runelore of old."
+msgstr "では、彼は Thursagan の鎚を手にしていると？"
+
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:357
+msgid ""
+"Aye. Shattered though the Hammer may be, it still retains some of its old "
+"power. With your knowledge and help, loremaster, we can reforge the hammer "
+"and use its power to smash all enemies that oppose us."
 msgstr ""
-"あぁ。地下平地の仕事場で、個人的な取り巻きとともに頑張っておられる。槌の力が"
-"我らのあらゆる敵を打ち砕き追い散らすと全員に断言しておられた。"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:350
-msgid ""
-"That is strange. The Hammer is a tool of crafting and making, not a weapon. "
-"What can he mean to do with it?"
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:362
+#, fuzzy
+#| msgid ""
+#| "That is strange. The Hammer is a tool of crafting and making, not a "
+#| "weapon. What can he mean to do with it?"
+msgid "The Hammer is a tool of crafting and making, not a weapon."
 msgstr ""
-"それはおかしい。槌は工芸と製作の道具であって、武器ではありません。彼はそれを"
+"それはおかしい。鎚は工芸と製作の道具であって、武器ではありません。彼はそれを"
 "使って何をしようとしているのでしょうか？"
 
 #. [message]: speaker=Dulcatulos
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:355
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:367
 msgid ""
-"That’s for lords and loremasters to worry about, not the likes of me. I must "
-"see to my troop’s care. Food will be brought to you; rest well, we will "
-"speak again."
+"Is it not? Lord Karrag has wielded it in battle to great effect, even broken "
+"as it is."
 msgstr ""
-"それは領主や伝承家が気にかけることであって、私のような者が心配することではな"
-"い。私は兵を監督しなければならない。食料が運ばれてくるだろう。よく休むがい"
-"い、また話をしよう。"
 
-#. [scenario]: id=11_The_Court_of_Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:5
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:372
+msgid ""
+"<i>Stop speaking, you imbecile.</i> That would be the power of runecraft you "
+"witness. No fool would take a broken weapon into battle, much less a "
+"precious artifact like the Hammer. Karrag holds it as a symbol of his "
+"knowledge and mastery of lore, no more than that."
+msgstr ""
+
+#. [message]: speaker=Dulcatulos
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:377
+#, fuzzy
+#| msgid ""
+#| "That’s for lords and loremasters to worry about, not the likes of me. I "
+#| "must see to my troop’s care. Food will be brought to you; rest well. We "
+#| "will speak again."
+msgid ""
+"As you say. These things are for lords and loremasters to worry about, not "
+"the likes of me. I must see to my troop’s care. Food will be brought to you; "
+"rest well. We will speak again."
+msgstr ""
+"それは領主や伝承者のような偉い方が考えることであって、私のような者にはわから"
+"ん。さて、私は兵の様子を見てやらなきゃならん。食料もすぐに運ばれてくるだろ"
+"う。まずはゆっくり休んでくれ。話をする機会もまたあるだろう。"
+
+#. [scenario]: id=08_The_Court_of_Karrag
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:5
 msgid "The Court of Karrag"
-msgstr "Karrag の謁見"
+msgstr "Karrag への謁見"
 
 #. [side]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:50
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:108
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:46
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:50
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:100
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:46
 msgid "Kal Karthans"
 msgstr "Kal Kartha 軍"
 
+#. [unit]: type=Dwarvish Masked Steelclad, id=Magog
+#. [unit]: type=Dwarvish Masked Ulfserker, id=Hekyll
+#. [unit]: type=Dwarvish Masked Ulfserker, id=Jekyll
+#. [unit]: type={TYPE}
+#. [side]: type=Dwarvish Masked Lord, id=Dufon
+#. [side]: type=Dwarvish Masked Lord, id=Aragoth
+#. [side]: type=Dwarvish Masked Lord, id=Dranath
+#. [event]
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:64
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:72
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:80
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:47
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:106
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:139
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:168
+#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:25
+msgid "Masked Dwarf"
+msgstr "覆面のドワーフ"
+
 #. [objective]: condition=win
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:139
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:369
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:131
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1095
 msgid "Defeat Karrag"
 msgstr "Karrag を倒す"
 
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:184
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:178
 msgid ""
-"Psst, Angarthing... Karrag and those dwarves on the dais, they’re all "
-"<i>masked</i>."
+"I shall go take my place by Lord Karrag. See to it that you offer him the "
+"respect that he is due."
 msgstr ""
-"シーッ、Angarthing……Karrag とあの壇上のドワーフ達、全員<i>覆面</i>をしている"
-"ぞ。"
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:190
+msgid "Angarthing... I have a bad feeling about this."
+msgstr ""
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:189
-msgid "I see it. There is something very wrong here."
-msgstr "えぇ。ここには非常に悪しき何かがあります。"
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:195
+#, fuzzy
+#| msgid "I see it. There is something very wrong here."
+msgid "Indeed. There is something very wrong here."
+msgstr "ええ。ここには非常に悪しき何かがあるようです。"
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:194
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:200
 msgid "Hail, fellow dwarves. All Kal Kartha thanks you for your timely rescue."
 msgstr ""
-"ドワーフの同族よ。諸君の時宜を得た救援に全 Kal Kartha を代表して感謝する。"
+"ようこそ、ドワーフの同族よ。時宜を得た救援に Kal Kartha の皆を代表して感謝す"
+"る。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:199
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:205
 msgid ""
 "We are from Knalga; your clans are kin to ours of old. We but did our duty "
 "to kin."
 msgstr ""
-"私達は Knalga から来ました。あなた方の氏族は我々の氏族の祖先の眷属。私達は一"
-"族への責務を果たしたに過ぎません"
+"我々は Knalga より参りました。長い間連絡が取れなかったとは言え、あなた方の氏"
+"族と血族である事実は変わりません。我々は一族の義務を果たしたに過ぎません。"
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:204
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:210
+#, fuzzy
+#| msgid ""
+#| "All dwarves are kin, and must prevail against orcs and humans and other "
+#| "dirtgrubbers. You can be part of the fist that smites them."
 msgid ""
 "All dwarves are kin, and must prevail against orcs and humans and other "
-"dirtgrubbers. You can be part of the fist that smites them."
+"dirtgrubbers. You can be part of the fist that smites them through the power "
+"of our ancient heirloom, the Hammer of Thursagan."
 msgstr ""
-"ドワーフはみな血族だ、それにオーク族や人間、あるいはその他の地虫どもより優れ"
-"ているはずだ。諸君は奴らを打ちのめす拳の一部となれる。"
+"ドワーフはみな血族。ドワーフはオークや人間、その他の虫けら共よりも優れている"
+"のだ。諸君らも奴らを打ちのめす拳となるに相応しい。"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:209
-msgid "We did not come to smite anyone, but to re-open contact and trade."
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:215
+msgid ""
+"We did not come to smite anyone, especially not using the most prized "
+"artifact of our heritage as a mere weapon."
 msgstr ""
-"私達は誰かを打ちのめしに来たのではなく、交流と交易を再開しに来たのです。"
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:214
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:220
 msgid ""
-"Trade? Your destruction of the besieging orcs was a far nobler act than "
-"trade. There can be more such victories. And there will be by the power of "
-"our ancient heirloom, the Hammer of Thursagan."
+"Weapon? No, no, loremaster... you mistake my intentions. You know, as well "
+"as I do, that the Hammer is hardly a paltry weapon. The Hammer holds the "
+"soul of the dwarves, the true people. It is that which forged our flesh and "
+"blood, that which binds our will and forges our resolve. It is a symbol of "
+"our superiority as the true people of Irdya, an image that the other races "
+"shall respect and fear!"
 msgstr ""
-"交易？ 諸君がオーク族の包囲軍を打ち破ったのは交易などよりもずっと尊い行いだ"
-"ぞ。今回のようにもっと勝利が得られる。それはきっと我らの太古の家宝、"
-"Thursagan の槌の力で得られる。"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:219
-msgid "It is remembered in Knalga that Kal Kartha holds the Hammer."
-msgstr "Knalga では Kal Kartha が槌を持っていると記憶されていますが。"
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:225
+msgid "... so... what are you suggesting?"
+msgstr ""
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:224
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:230
 msgid ""
-"Yes! And the Hammer holds the soul of the dwarves, the true people. "
-"Together, we can march to greater victories! Will you of Knalga join me?"
+"The Hammer is still incomplete; we need the knowledge of a loremaster to "
+"reforge the remaining shards and restore the artifact to its most powerful "
+"state. Once that is done, none will be able to stand before me! Join us, "
+"loremaster. We can put your talent to good use."
 msgstr ""
-"その通り！ まことの民たるドワーフ族の魂は槌にある。我らは共に、なお偉大なる勝"
-"利へ歩んでいける！ Knalga の諸君は力を貸してくれるか？"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:229
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:235
 msgid ""
 "On one condition. You must take off that mask and show your true face. I am "
 "a witness."
-msgstr "条件がある。仮面を脱ぎ捨て真の顔を見せよ。我は証人である。"
+msgstr "一つだけ条件がある。仮面を脱ぎ捨て真の顔を見せよ。我は証人である。"
+
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:240
+msgid "Impertinent cur! You dare—"
+msgstr ""
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:234
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:245
+#, fuzzy
+#| msgid ""
+#| "You... do not wish to see what is beneath this mask. I was terribly "
+#| "wounded in an orcish attack. Disfigured."
 msgid ""
-"You... do not wish to see what is beneath this mask. I was terribly wounded "
-"in an orcish attack. Disfigured."
+"Quiet, Movrur. Loremaster, you... do not wish to see what is beneath this "
+"mask. I was terribly wounded in an orcish attack. Disfigured."
 msgstr ""
-"お前は……この仮面の下にあるものを見たいとは思わない事だ。私はオークの攻撃でひ"
-"どい傷を負ったのだ。醜くなっている。"
+"お前は……この仮面の下にあるものを見ようとはするな。私はオークの攻撃でひどい傷"
+"を負ったのだ。余人に見せられるものでは無い。"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:239
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:250
 msgid ""
 "But the Law must see. A dwarf must put his name and his face behind his "
 "deeds. I am a witness."
 msgstr ""
-"だが法は見なければならない。ドワーフはその所業の影に名と顔を据えねばならな"
+"法はそれを認めない。ドワーフが何かを為すならばその名と顔を表に出さねばならな"
 "い。我は証人である。"
 
-#. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:244
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:255
+#, fuzzy
+#| msgid ""
+#| "Impertinent fool! It is not for you to dictate to a lord in his own "
+#| "holding, much less one who holds the very soul of the dwarves in his hand."
 msgid ""
-"Impertinent fool! It is not for you to dictate to a lord in his own holding, "
-"much less one who holds the very soul of the dwarves in his hand."
+"Master, you need not answer to this fool. Even for a loremaster, to dictate "
+"to a lord in his own holding... and one who holds the very soul of the "
+"dwarves in his hand. It is unthinkable!"
 msgstr ""
-"生意気な愚か者め！ 貴様に自らの領内にいる領主に命令する権利など無いわ。まして"
-"やドワーフ族のまさに魂を手にしている者になど。"
+"生意気な愚か者め！自らの領内にいる領主に指図する権利など貴様には無い！まして"
+"やドワーフ族のまさに魂を手にしている者に指図するなど有り得ぬぞ！"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:249
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:260
 msgid ""
 "The Law speaks. Against him with the eyes to see, no deception can hold. I "
 "AM A WITNESS!"
 msgstr ""
-"これは法の言葉である。見るべき両の眼を持つこの者に対しては、どんな言い訳も通"
-"りはしない。我は証人である！"
+"法は力である。その眼の前には如何なる言い訳も無意味と知れ。<b>我は証人である！"
+"</b>"
+
+#. [message]: speaker=Movrur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:265
+msgid "Master—"
+msgstr ""
 
 #. [message]: speaker=Dulcatulos
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:272
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:296
 msgid "No... no... it is horrible! My lord, how did you come to this?"
-msgstr ""
-"そ……そんな……なんとおぞましい！ 領主様、どのようにしてこうなってしまったのです"
-"か？"
+msgstr "そ……そんな……なんと恐ろしい！領主様、どうしてこんなことに……？"
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:277
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:301
 msgid ""
 "I lingered for weeks in agony. Only my hatred and the runelore of old "
 "sustained me, until I became as I am. I will have revenge; I will destroy "
 "the orcs, and the humans, and the elves, and all but the true people!"
 msgstr ""
-"私は何週間も苦痛の中を彷徨っていた。ただ憎悪と太古のルーン知識のみで持ち堪え"
-"ていたのだ、このようになるまではな。私は恨みを晴らす。オーク族を滅ぼし、人間"
-"を滅ぼし、エルフ族を滅ぼし、そしてまことの民の他全てを滅ぼしてやろう！"
+"私は何週間も苦痛の中を彷徨っていた。ただ憎悪とルーンの知識だけが私を支えてい"
+"た…… このようになるまではな。私は恨みを晴らす。オークを滅ぼし、人間を滅ぼし、"
+"エルフを滅ぼし、そしてまことの民以外の全てを滅ぼすのだ！"
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:282
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:306
 msgid ""
 "And you have sealed your doom. Hundreds of dirtgrubbers have already died to "
 "weave a web of blood around the Hammer and the soul of the dwarves. You and "
 "your new friends will be the last sacrifices I require to bind the entire "
 "dwarvish race to my purpose. TAKE THEM!"
 msgstr ""
-"お前達は自身の悲運を決定づけてしまったのだ。既に百千の地虫どもが槌とドワーフ"
-"族の魂の周りで息絶え、血の織物を編み上げている。貴様と、貴様の新たな仲間ども"
-"が、ドワーフの種族全体を我が目的に結びつけるのに必要な最後の贄となるのだ。か"
-"かれ！"
+"そして、お前達の破滅も確定した。鎚とそこに宿るドワーフの魂の元、数百の虫けら"
+"の血でもって陣は組みあがっている。後はここにいる貴様等を生贄に捧げればドワー"
+"フという種族全てを我が手駒とできるのだ。<b>やれ！</b>"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:295
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:319
 msgid ""
 "Neither side can recruit or recall. You must win with the troops you have."
 msgstr "両軍とも雇用も召還もできません。手持ちの部隊で勝たなければなりません。"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:312
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:336
 msgid ""
 "Wait... the lich’s apparent death was another illusion. In truth he ran "
 "through that doorway behind the throne."
 msgstr ""
-"待ってください……リッチの死は見せかけの幻影です。本当の彼は玉座の背後のあの戸"
-"口を走り抜けていったのです。"
+"待ってください… 今見たリッチの死は単なる幻影です。本物は玉座の背後のあの扉を"
+"抜けて逃げて行きました。"
 
 #. [message]: speaker=Dulcatulos
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:317
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:341
 msgid ""
 "Then Karrag has fled to the underlevels. None but his masked ones go there "
 "any more."
 msgstr ""
-"では Karrag 様は地下平地へ逃げてしまったのか。あそこへ行くのは覆面の者達しか"
-"いない。"
+"では Karrag 様は地下へ逃げてしまったのか。覆面の者達以外はあそこには行かな"
+"い。"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:322
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:346
 msgid ""
 "We must follow. Quickly! It may be his talk of perverting the Hammer was "
 "merely mad raving, but we cannot allow the risk that his foul spell might "
 "succeed."
 msgstr ""
-"追わねばなりません。急いで！ 槌を悪用するという話は単に気の狂った戯言かもしれ"
-"ませんが、彼の悪しき呪術が成功してしまうような危険を冒すことは許されません。"
+"追わねばなりません。急ぎましょう！鎚の力を悪用するという話は単なる妄言かもし"
+"れませんが、完全に否定することもできません。どちらにせよ、あのような存在に何"
+"かをする時間を与えてはいけません。"
 
-#. [scenario]: id=12_The_Underlevels
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:9
+#. [scenario]: id=09_The_Underlevels
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:5
 msgid "The Underlevels"
-msgstr "地下平地"
+msgstr "地下坑道"
 
-#. [side]: type=Lich, id=Fleleen
-#. [side]: type=Lich, id=Lannex
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:244
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:263
-msgid "Undead"
-msgstr "アンデッド"
-
-#. [side]: type=Lich, id=Fleleen
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:249
-msgid "Fleleen"
-msgstr "Fleleen"
-
-#. [side]: type=Lich, id=Lannex
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:268
-msgid "Lannex"
-msgstr "Lannex"
+#. [objective]: condition=win
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:211
+msgid "Find and defeat Karrag"
+msgstr "Karrag を見つけ、倒す"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:411
-msgid "This place smells of death."
-msgstr "ここは死の香りがします。"
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:277
+#, fuzzy
+#| msgid "This place reeks of death."
+msgid "This place reeks of death."
+msgstr "この場所には死が満ちています。"
 
 #. [message]: speaker=Dulcatulos
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:416
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:282
+#, fuzzy
+#| msgid ""
+#| "It has been... so many years since I’ve been down here. Only Karrag and "
+#| "his personal followers used this level. I can't believe I never wondered "
+#| "about that before."
 msgid ""
-"It’s been... it’s been years since I’ve been down here. Only Karrag and his "
-"personal followers used this level. Why did I never wonder about that before?"
+"It has been... so many years since I’ve been down here. Only Karrag and his "
+"personal followers used this level. I can't believe I never wondered about "
+"that before."
 msgstr ""
-"かつて私がここに降りた時から……何年も経っている。この土地を使っていたのは "
-"Karrag とその取り巻きだけだった。俺はこれまで何故不思議に思わなかったんだ？"
+"ここに来たのは…… 何年振りになるのかすらわからんな。Karrag 様とその個人的な取"
+"り巻き以外はここの坑道を使っていなかった。しかしなぜだろう、今までそのことを"
+"疑問に思うことはなかったな……"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:422
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:288
+#, fuzzy
+#| msgid ""
+#| "It is Karrag's doing—his will, and his dark magic. I think he has been "
+#| "casting glamours on all of you ever since he passed over."
 msgid ""
-"Karrag’s will, and his dark magic. I think he has been casting glamours on "
-"all of you ever since he passed over."
+"It is Karrag's doing—his will, and his dark magic. I think he has been "
+"casting glamours on all of you ever since he passed over."
 msgstr ""
-"Karrag の意思と、そして邪悪な魔術のせいでしょう。彼が逝ってしまってからずっと"
-"あなた方全員に魔法をかけていたのだと思います。"
+"Karrag の仕業でしょう。態度や立ち振る舞い、そして闇の魔術 ── 命を落として以"
+"来、Karrag はそれらを利用してあなた方を魅了し、欺いていたのだと思います。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:427
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:293
 msgid ""
 "Where <i>is</i> Karrag? We can’t have been more than seconds behind him."
-msgstr "Karrag は<i>どこ</i>にいる？ 奴より何秒も遅れちゃいないはずだ。"
+msgstr "Karrag は今どこにいる？奴にのんびり逃げる時間は与えなかったはずだ。"
 
-#. [message]: speaker=Dulcatulos
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:432
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:298
+#, fuzzy
+#| msgid ""
+#| "Most likely he has cloaked himself, thinking to run ahead to gather his "
+#| "followers. He could be within a spear-cast of us now and we wouldn’t know "
+#| "it in this gloom."
 msgid ""
-"This is the Grand Gallery. There are rows of small chambers along its sides; "
-"he could have slipped into any of them."
-msgstr ""
-"ここは大回廊だ。両側に小部屋が列をなしている。そのどれかに滑り込んだのかもし"
-"れない。"
-
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:437
-msgid ""
-"More likely he has cloaked himself, thinking to run ahead to gather his "
+"Most likely he has cloaked himself, thinking to run ahead to gather his "
 "followers. He could be within a spear-cast of us now and we wouldn’t know it "
 "in this gloom."
 msgstr ""
-"先へ駆け出して取り巻きを集めると思わせて、奴自身は隠れているというのがありそ"
-"うな話だ。今槍を投げて届く範囲にいるのかもしれないが、この暗がりの中じゃそれ"
-"もわかりゃしない。"
+"おそらくは身を隠しているのでしょう。そして逃げ出して取り巻きを集めようとして"
+"いるのではないかと。この暗闇ではわかりませんが、もしかしたら、槍の届く範囲に"
+"彼はいるのかもしれません。"
 
 #. [message]: speaker=Dulcatulos
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:446
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:307
 msgid "Those are war-drums!"
-msgstr "戦いのドラムだ！"
+msgstr "戦太鼓だ！"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:451
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:312
 msgid ""
 "Aye. Karrag, calling his troops to battle. Only the Dark Gods know what "
 "hellspawn the lich will summon. AXES UP!"
 msgstr ""
-"あぁ。Karrag が戦いに手駒を呼んでいる。リッチがいかなる地獄の落とし子を呼び出"
-"すのかはただ暗黒の神々のみぞ知る、といったところか。斧を上げよ！"
+"ああ。Karrag が手駒を呼び寄せているのだろう。リッチがいかなる地獄の落とし子を"
+"呼び出すのかはただ暗黒の神々のみぞ知る、といったところか。斧を上げよ！"
 
-#. [message]: speaker=Dranath
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:496
-msgid ""
-"You cannot pass, fools. The doors I guard are sealed by the power of the "
-"Hammer itself."
-msgstr "通れんぞ、バカどもめ。私の守る扉は槌自体の力で封印されているのだ。"
+#. [message]: speaker=unit
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:336
+msgid "Someone died here."
+msgstr "誰かがここで死んだようだ。"
+
+#. [message]: speaker=unit
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:365
+msgid "Poor guy didn't make it."
+msgstr "かわいそうに。駄目だったのか。"
+
+#. [message]: speaker=unit
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:396
+msgid "There's some gold in here!"
+msgstr "金貨が入っているぞ！"
+
+#. [message]: speaker=unit
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:416
+msgid "I found some gold!"
+msgstr "金貨を見つけた！"
+
+#. [message]: speaker=unit
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:450
+msgid "The gates are locked. I will have to break them open by force!"
+msgstr "門は鍵がかかっている。力づくで開けるしかない！"
+
+#. [message]: speaker=unit
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:456
+msgid "The gates are locked!"
+msgstr "門には鍵がかかっている！"
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:461
+msgid "Force them open!"
+msgstr "ブチ抜け！"
+
+#. [message]: speaker=unit
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:466
+msgid "Yes, sir!"
+msgstr "おう、やってやるぜ！"
+
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:499
+msgid "Let us proceed onward."
+msgstr "進みましょう。"
+
+#. [message]: speaker=unit
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:525
+msgid "There's something behind this door. I shall break it down!"
+msgstr "ドアの向こうに何かがある。打ち破る！"
+
+#. [message]: speaker=unit
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:531
+msgid "There's something behind this door."
+msgstr "ドアの向こうに何かあるみたいだ。"
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:536
+msgid "Break it down!"
+msgstr "打ち破れ！"
+
+#. [message]: speaker=unit
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:573
+msgid "It looks like there is a rune behind this gate!"
+msgstr "このゲートの向こうにルーンがあるようだぞ！"
+
+#. [message]: speaker=unit
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:611
+msgid "The dirtgrubber-friends have come! Slay them all!"
+msgstr "クズ共が来たぞ！皆殺しだ！"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:501
-msgid "We’ll see about that!"
-msgstr "肝に命じておこう！"
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:616
+msgid "You could not stop us before and you won't be stopping us now!"
+msgstr "何度やってもお前らじゃ俺達には勝てねぇよ！"
 
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:516
-msgid "I sense wrongness. Some greater evil awakens before us."
-msgstr "悪しき気配を感じます。前方で何か強大な邪悪が目覚めました。"
-
-#. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:537
+#. [message]: speaker=Dufon
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:637
+#, fuzzy
+#| msgid ""
+#| "You shall never pass through here! The doors I guard are sealed by the "
+#| "power of the Hammer itself."
 msgid ""
-"It seems that guard spoke truth. These doors cannot be forced open by any "
-"means we have!"
-msgstr "あの警護の話は本当らしいぞ。この扉は俺らの道具じゃ、こじ開けられない！"
+"You shall never pass through here! The doors I guard are sealed by the power "
+"of the Hammer itself."
+msgstr "貴様等にここは通れんぞ！この扉はあの鎚の力で封じられているのだから！"
 
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:542
+#. [message]: speaker=second_unit
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:642
+msgid "You won't stop us!"
+msgstr "邪魔だ、どけ！"
+
+#. [message]: speaker=Dufon
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:647
 msgid ""
-"I sense these bindings to be the work of common sorcery, not the power of "
-"the Hammer. Usually to each such locking spell there is some sort of key. If "
-"we can but find the key, we will be able to open these doors."
+"Fools! Even should you defeat me, the master's ritual will soon be complete "
+"and you shall all become his slaves!"
 msgstr ""
-"これらの建物は共通した魔術で動いていますが、Thursganの槌によるものではありま"
-"せん。このような魔術には何かしらの鍵があるものです。鍵を見つけることができれ"
-"ば、扉を開くことができるでしょう。"
-
-#. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:557
-msgid "The key has been uttered, these doors should open..."
-msgstr "鍵は読み上げられたり、扉は開くべし……"
-
-#. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:576
-msgid "There we go... faugh, what is that smell!"
-msgstr "行こう……うへっ、何の臭いだ！"
-
-#. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:626
-msgid "I think I hear noises, ahead of us..."
-msgstr "物音が聞こえる気がする、先の方から……"
-
-#. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:646
-msgid "Fresh blood! Exactly what I need to complete the rite."
-msgstr "鮮血だ！ まさしく儀式を完成させるのに必要としていたものだ。"
-
-#. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:666
-msgid "It’s locked, but nothing that our hammers can’t manage."
-msgstr "閉まっている、が、我らのハンマーでどうにもできないものなどない。"
-
-#. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:685
-msgid "A scroll with some strange writing on it..."
-msgstr "妙な書き方の巻物がある……"
-
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:690
-msgid "I believe that will be the key-spell for that sealed door."
-msgstr "きっと封印された扉の鍵の呪文だと思います。"
-
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:695
-msgid "(<i>Reads</i>) <i>Kannin a’kana du’masi a’forigln de’amp.</i>"
-msgstr ""
-"(読み上げて) カンニン、ア・カナ、デュ・マシ、ア・フォリーン、デ・アムプ。"
-
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:721
-msgid "Now try the door again. It should open."
-msgstr "ではもう一度試してみましょう、扉が開くはずです。"
-
-#. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:736
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:754
-msgid "A door. Perhaps Karrag is hiding in here..."
-msgstr "扉だ。この裏に Karrag が隠れているかもしれない……"
-
-#. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:772
-msgid "150 gold pieces. This should help."
-msgstr "150 ゴールドだ。役に立つだろう。"
-
-#. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:794
-msgid ""
-"150 gold pieces. I wonder why Karrag would choose to store his gold here."
-msgstr ""
-"150 ゴールドだ。どうして Karrag はここに金を保管するようにしたんだろう。"
-
-#. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:816
-msgid ""
-"An old caved-in passageway. Perhaps if we clear away some of this rubble we "
-"may be able to get through..."
-msgstr ""
-"通路に古い陥没がある。この瓦礫を片付けたらあるいは通過できるようになるかもし"
-"れない……"
-
-#. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:835
-msgid "Another old caved-in passageway..."
-msgstr "また通路に古い陥没地点がある……"
-
-#. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:851
-msgid ""
-"Finally! I see someone managed to see through the web of deception thrown up "
-"by that vile Karrag!"
-msgstr ""
-"ついに現れたか！ かの邪悪なる Karrag の吐いた欺きの網を見事に見抜いた者に出"
-"会ったぞ！"
-
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:856
-msgid ""
-"I thought Karrag’s fight was against the so called ‘dirtgrubbers’. Why would "
-"he keep you, a dwarf captive?"
-msgstr ""
-"Karrag は「地虫野郎ども」と呼ぶものを相手に戦っているのだと思っていたが。奴は"
-"どうしてあなたのような、ドワーフの捕虜を取っていたんだ？"
-
-#. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:861
-msgid ""
-"I guess Karrag thought I knew too much. When his masked henchmen started "
-"raiding, plundering and taking all sorts of prisoners — which were sent to "
-"these underlevels and never seen again — I began to inquire. I discovered "
-"many unsettling things indeed, but before I could act on them I was arrested "
-"and thrown down here."
-msgstr ""
-"おそらく Karrag はわしが知りすぎたと思ったのだろう。奴の覆面の取り巻きが襲撃"
-"や略奪を開始し、様々な捕虜――この地下平地へ送られ、二度と会うことは無かったが"
-"――を取り始めた頃、わしは調べを始めた。実に多くの不安な事柄を見つけたのじゃ、"
-"が、それに対する行動を起こす前に捕まり、ここに投げ込まれたのじゃ。"
-
-#. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:866
-msgid ""
-"I gather that he is involved in some sick ritual which requires the blood of "
-"living creatures. These cells seem to be the holding place where he keeps "
-"his victims. The ‘dirtgrubbers’ he seems to prefer sacrificing have long "
-"since been taken away. Now it is just us few dwarves that remain..."
-msgstr ""
-"奴は生き血を必要とする、ある種の病的な儀式に熱中しているらしい。この部屋は生"
-"贄を逃がさないようにしておく場所のようじゃ。奴が生贄に捧げたがる「地虫野郎ど"
-"も」が連れ出されてからずいぶん経つ。今では残っているのはわしら少数のドワーフ"
-"だけなのじゃ……"
-
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:871
-msgid ""
-"Freeing these prisoners is more of a blow to Karrag than we thought, for now "
-"he is unable to continue his foul sorcery."
-msgstr ""
-"囚人たちを自由にすれば、Karragへの痛手にもなるdでしょう。もはや奴は愚かな魔術"
-"を仕えはしまい。"
-
-#. [unit]: type=Dwarvish Steelclad, id=Trisi
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:899
-msgid "Trisi"
-msgstr "Trisi"
-
-#. [unit]: type=Dwarvish Steelclad, id=Malifen
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:937
-msgid "Malifen"
-msgstr "Malifen"
-
-#. [unit]: type=Dwarvish Thunderguard, id=Borras
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:975
-msgid "Borras"
-msgstr "Borras"
-
-#. [unit]: type=Dwarvish Steelclad, id=Zamak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1013
-msgid "Zamak"
-msgstr "Zamak"
-
-#. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1039
-msgid ""
-"When I step on this rune, I feel strange indeed. I feel like I am being "
-"pulled somewhere else, but at the same time being held back by an equally "
-"powerful force."
-msgstr ""
-"ルーンに足を踏み入れると、実に不思議な感じがした。どこか別のところへ引っ張ら"
-"れるような感じがし、しかし同時に同じくらい強い力に引き留められた。"
-
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1044
-msgid ""
-"It seems to be some sort of a teleportation device. What’s more, the "
-"bindings that are preventing it from working seem to be the same ones that "
-"bar those sealed gates."
-msgstr ""
-"これはある種の転移装置だと思われます。さらに、この動作を妨げている力は、封印"
-"された扉を閉ざしていたものと同一のものであるようです。"
+"愚か者め！私を倒しても無駄だ！主様の儀式は間もなく完成し、貴様等も全員まとめ"
+"て主様の奴隷となるのだ！"
 
 #. [message]: speaker=Aragoth
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1112
-msgid "Our master’s ritual must not be interrupted. Stop them!"
-msgstr "我らの主人の儀式を中断させるわけにはいかない。奴らを止めろ！"
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:667
+msgid ""
+"Your path forward ends here! Once the lord's spell is complete, your souls "
+"will soon be chained to his will!"
+msgstr ""
+"貴様等の前進もここまでだ！術が完成すれば貴様等の魂は主様の物となるのだから！"
+
+#. [message]: speaker=Dranath
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:688
+msgid "The dirtgrubbers have come! Stop their advance!"
+msgstr "虫けら共が来たぞ！ここで食い止めろ！"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1126
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:715
+msgid "This must be one of the runic keys!"
+msgstr "このルーンは鍵の一つに違いない！"
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:755
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:921
+msgid "We still need to find the other one!"
+msgstr "もう一個を探さねばならん！"
+
+#. [objective]: condition=win
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:761
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:927
+msgid "Find and activate the runic keys (one remaining)"
+msgstr "ルーンの鍵を見つけて起動させる (残り一つ)"
+
+#. [note]
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:777
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:943
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1111
 msgid ""
-"Yon doors are big, tightly locked — and, I would imagine, well barricaded. "
-"This may take a while."
+"You may teleport units between matching runes (the destination must be clear)"
 msgstr ""
-"あの扉は巨大で、固く閉ざされている――それに、察するところ、防壁が築かれてい"
-"る。少し時間がかかるだろう。"
+"同じ模様のルーンの間をテレポートすることができます (行き先は自明でしょう)"
+
+#. [message]: speaker=unit
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:881
+msgid "We've found a runic key!"
+msgstr "ルーンの鍵を見つけたぞ！"
+
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1037
+#, fuzzy
+#| msgid "The keys have been found. The door should open..."
+msgid "The keys have been found. The door should open..."
+msgstr "鍵は見つけました。これでドアが開くはず……"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1131
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1089
+msgid "The lich surely awaits us within. We must be on guard."
+msgstr "中ではあのリッチが待っているはずだ。注意して進むぞ。"
+
+#. [message]: speaker=unit
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1137
+#, fuzzy
+#| msgid ""
+#| "It seems that the guard spoke the truth. These doors will not open to us!"
 msgid ""
-"Go through that rubble yonder; see if you can dig up some sort of battering "
-"ram."
-msgstr "向こうの瓦礫を通り抜けろ。いけそうなら破城槌のようなもので掘り進め。"
+"It seems that the guard spoke the truth. These doors will not open to us!"
+msgstr ""
+"あの門番が言っていたことは本当のようだ。このドアは俺達の力でも開けられない！"
 
-#. [message]: speaker=narrator
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1137
-msgid "One hour later"
-msgstr "一時間後"
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1142
+msgid ""
+"They are sealed by the ancient runelore of the Hammer. No amount of force "
+"can open these doors - we will need to find the keys to the seals here."
+msgstr ""
+"扉は鎚の持つ古代ルーンの力で封印されているようです。単純な力をどれだけ集めよ"
+"うと、開くことはないでしょう ── 封印の鍵を探すしか無さそうですね。"
 
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1142
-msgid "The door is about to give. Brace yourselves, everyone."
-msgstr "あともう少しだ。みんな踏ん張れ。"
+#. [objective]: condition=win
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1148
+msgid "Find and activate the runic keys to the sealed door"
+msgstr "ルーンの鍵を見つけて起動させる"
+
+#. [message]: speaker=unit
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1180
+msgid "My lord, the dirtgrubbers have entered our sanctuary!"
+msgstr "主様、虫けら共が我らの聖地へ侵入しました！"
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1160
-msgid "No! No! No! Dirtgrubbers must die! The true people must rule all!"
-msgstr ""
-"違う！ 違う！ 違う！ 地虫どもこそ死ぬべきなのだ！ まことの民こそが全てを支配"
-"するべきなのだ！"
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1185
+msgid "Excellent! Their blood will provide plenty of fuel for my ritual!"
+msgstr "素晴らしい！やつらの血があれば我が儀式も完成することだろう！"
+
+#. [message]: speaker=Karrag
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1206
+msgid "So, the usurpers have arrived at last."
+msgstr "ふむ、簒奪を企む者がここまで来てしまったか。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1165
-msgid "The ‘true people’ speak through our axes. Die, foul lich."
-msgstr "「まことの民」は己の斧でものを言う。死ね、醜悪なリッチ。"
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1211
+msgid ""
+"We are not the usurpers but the liberators of Kal Kartha! We are here to "
+"free our kin from your dark sorcery!"
+msgstr ""
+"簒奪者などではない！俺達は Kal Kartha の解放者だ！貴様の邪悪な魔術による支配"
+"から同胞を解放するため、俺達はそのためにここまで来たのだ！"
 
-#. [scenario]: id=13_Epilogue
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:5
+#. [message]: speaker=Karrag
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1216
+msgid ""
+"You insolent fool! It is I who have led Kal Kartha to glory and I who have "
+"cleansed the lands of the true people from all unworthy scum! Kal Kartha "
+"owes me everything!"
+msgstr ""
+"何を偉そうに！まことの民のため、私は大地より虫けらを掃除し、Kal Kartha を栄光"
+"に導こうとしているのだぞ！私なしでは Kal Kartha は存在し得ないのだ！"
+
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1221
+msgid ""
+"No! You are the one who owes our brethren their freedom! You have ensnared "
+"their minds with your foul magic and now we are here to put an end to your "
+"tyrannical rule!"
+msgstr ""
+"違います！あなたは我らが同胞の自由を奪った罪人に過ぎません！邪悪な魔術で人々"
+"の心を惑わす暴君の支配もここで終わりです！"
+
+#. [message]: speaker=Karrag
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1226
+msgid ""
+"Any enemy of my rule is no better than the filthiest of dirtgrubbers. You no "
+"longer belong to the true people. You will become my slaves!"
+msgstr ""
+"我が意志に逆らう者は薄汚れた虫けらと何ら変わらぬ。つまり貴様等は最早まことの"
+"民ではない。ならばおとなしく奴隷となるが良い！"
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1231
+msgid "Not if we stop you here. AXES UP!"
+msgstr "ここでお前を止めてしまえば問題無いということだな。<b>斧を上げよ！</b>"
+
+#. [message]: speaker=Karrag
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1249
+msgid "No! No! No! Dirtgrubbers must die! The true people must rule all!"
+msgstr ""
+"違う！違う！違う！貴様等虫けらどもが死ぬのだ！まことの民は全てを支配するの"
+"だ！"
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1254
+msgid "The ‘true people’ speak through our axes. Die, foul lich."
+msgstr "「まことの民」は己の斧でものを言う。くたばれ、卑怯者。"
+
+#. [message]: speaker=Karrag
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1259
+msgid "Nooo! My power... it wanes..."
+msgstr "そんなああぁぁぁぁ！我が力が…… 消える…………"
+
+#. [message]: speaker=Dulcatulos
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1269
+msgid "And your rule is at an end, Karrag, once the brave lord of Kal Kartha."
+msgstr ""
+"これであなたの治世も終わりです、かつて Kal Kartha の勇猛な領主であらせられた "
+"Karrag 様。"
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1274
+msgid ""
+"Do not mourn his passing, Dulcatulos. The Karrag you knew died many years "
+"ago when his lust for power consumed him. It is now time to put the past "
+"behind and right the wrongs that have been wrought here."
+msgstr ""
+"Dulcatulos、今更彼の死を悼んでも仕方がない。力を欲し、それに飲み込まれた時"
+"点、ずっと前に本当の Karrag 殿は亡くなられていたのだから。今を前を向き、これ"
+"までの間違いを正していかねばならない時だろう。"
+
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1279
+msgid ""
+"Aiglondur speaks the truth. The deed is done. Though the heart of the "
+"darkness is gone, there is still much to do. Much will have to be done to "
+"amend the desecration of the Hammer and the evil that has been done here."
+msgstr ""
+"Aiglondur が正しいでしょう。もう終わったのです。そして、大きな闇を払ったとは"
+"言え、まだまだやるべきことがたくさんあります。冒涜された鎚を浄化し、ここで行"
+"われてきた邪悪な行為の後始末をしなければならないのです。"
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1284
+msgid ""
+"But first, we must bring this news to the rest of Kal Kartha. A new Lord "
+"must be chosen."
+msgstr ""
+"しかし、まずはこの知らせを Kal Kartha の他の者に持っていってやろう。新しい領"
+"主も決めねばならんしな。"
+
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1289
+msgid "Aye, let us go."
+msgstr "ええ、行きましょう。"
+
+#. [message]: speaker=Dufon
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1311
+#, fuzzy
+#| msgid "The master's ritual... must not be... interrupted..."
+msgid "The master's ritual... must not be... interrupted..."
+msgstr "主様の儀式は……邪魔……させない……"
+
+#. [message]: speaker=Dranath
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1323
+msgid ""
+"Imbeciles! Once the master's dark rite is complete, I will return to slay "
+"you myself!"
+msgstr ""
+"愚か者め！主様の闇の儀式が完成すれば私はまた戻ってこれるのだ！その時は私が自"
+"ら貴様を殺してやろう！"
+
+#. [message]: speaker=Aragoth
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1335
+msgid "The heathens... have slain me-"
+msgstr "異教徒に……やられるとは…"
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1346
+msgid "The air is cold with the stench of death."
+msgstr "空気が冷たくなってきた。死の臭いも強くなっている。"
+
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1351
+msgid ""
+"No doubt it is this ritual that the masked ones spoke of. We must hurry and "
+"stop Karrag!"
+msgstr ""
+"あの覆面の者が言っていた儀式に違いありません。急いで Karrag を止めねばなりま"
+"せん！"
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1370
+msgid "I feel as if the life is being sapped out of my body!"
+msgstr "まるで命が身体から吸い取られているようだ！"
+
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1375
+msgid ""
+"Karrag's spell grows more powerful with every passing moment. If we do not "
+"defeat him now, we will all turn into his thralls!"
+msgstr ""
+"Karrag の術が刻一刻とその力を増しています。すぐに彼を倒さねば、我らも彼の奴隷"
+"と化してしまうでしょう！"
+
+#. [message]: speaker=Karrag
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1384
+msgid ""
+"HAHAHAHA! Yes, yes, YES! The rite of death is complete at last! Die, you "
+"filthy dirtgrubbers, die so that I may raise you again as my mindless slaves!"
+msgstr ""
+"ハハハハハ！やった、やったぞ！死の儀式がついに完成した！死ね、虫けら共、さっ"
+"さと死ね！後で木偶人形として起き上がれるから安心して死ぬといいぞ！"
+
+#. [scenario]: id=10_Epilogue
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:5
 msgid "Epilogue"
 msgstr "エピローグ"
 
 #. [side]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:51
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:51
 msgid "Glamcatsil"
 msgstr "Glamcatsil"
 
 #. [side]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:52
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:52
 msgid "Trithdurus"
 msgstr "Trithdurus"
 
 #. [side]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:53
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:53
 msgid "Althasol"
 msgstr "Althasol"
 
 #. [side]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:54
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:54
 msgid "Dulalas"
 msgstr "Dulalas"
 
 #. [side]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:55
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:55
 msgid "Pelalsol"
 msgstr "Pelalsol"
 
 #. [side]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:56
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:56
 msgid "Aigthaing"
 msgstr "Aigthaing"
 
 #. [side]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:57
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:57
 msgid "Pelcatol"
 msgstr "Pelcatol"
 
 #. [side]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:58
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:58
 msgid "Narithil"
 msgstr "Narithil"
 
 #. [side]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:59
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:59
 msgid "Glamdrsol"
 msgstr "Glamdrsol"
 
 #. [side]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:60
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:60
 msgid "Pelaithil"
 msgstr "Pelaithil"
 
 #. [side]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:61
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:61
 msgid "Alaithus"
 msgstr "Alaithus"
 
 #. [unit]: type=Lancer, id=Pelias
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:76
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:76
 msgid "Pelias"
 msgstr "Pelias"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:127
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:127
 msgid ""
 "Dwarves of Kal Kartha, I speak the Law. Your house is cast down; you have "
 "harbored a great evil. Who now will take the burden of cleansing this "
 "holding of its taint?"
 msgstr ""
 "Kal Kartha のドワーフよ、これは法の言葉である。お前達の家は引き倒された。お前"
-"達は巨悪を匿っていた。この領地の穢れを払うという重荷を担う者は誰か？"
+"達の内には巨悪が潜んでいた。この領地の穢れを払うという重荷を担う者は誰か？"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:132
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:132
 msgid ""
 "The dwarves of Kal Kartha muttered among themselves and looked at one "
 "another uneasily. None stepped forward."
 msgstr ""
 "Kal Kartha のドワーフ達は仲間内でぼそぼそとつぶやき、不安げにお互いを見つめ"
-"あった。前に踏み出す者はいなかった。"
+"あった。しかし前に踏み出す者はいなかった。"
 
 #. [message]: speaker=Dulcatulos
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:138
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:138
 msgid ""
 "Loremaster... None of us is fit to take up the lordship. Karrag fooled us "
 "all, made us the tools of his foul scheme."
 msgstr ""
-"伝承家殿……我らの内に指導力を発揮するのに相応しい者はいない。Karrag がみんなを"
-"虚仮にし、邪悪な企みの道具としたのだ。"
+"伝承者殿…… 我らの中に指導者として相応しい者はいない。我々はみんな Karrag に欺"
+"かれ、邪悪な企みの道具となってしまっていたのだから。"
 
 #. [message]: speaker=Pelias
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:163
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:163
 msgid ""
 "I was told I’d find Aiglondur of Knalga here. I bear a message from Tallin, "
 "the Lord Protector of the Alliance."
@@ -2268,12 +2355,12 @@ msgstr ""
 "言を預かっています。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:168
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:168
 msgid "I am he. Speak your message."
-msgstr "私だ。話してくれ。"
+msgstr "私が Aiglondur だ。伝言を読み上げてくれ。"
 
 #. [message]: speaker=Pelias
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:174
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:174
 msgid ""
 "I have been on your track for weeks. Word of your rout of Tan-Malgar and his "
 "allies spread, and reached Tallin. You did the Alliance better service than "
@@ -2281,27 +2368,28 @@ msgid ""
 "chieftains within the Alliance, and your victory prevented a dangerous "
 "revolt."
 msgstr ""
-"私は何週間もあなたの後を追って来ました。Tan-Malgar 一党を敗走させたという知ら"
-"せが広がり、Tallin に届きました。その事は、貴方が思っている以上に同盟に貢献し"
-"ていたのです――Tan-Malgar は同盟内のオークの首長と密通していましたが、あなたの"
-"勝利により危険な反乱を未然に防げたのです。"
+"あなたが Tan-Malgar の一派を敗走させたという知らせが広がり、Tallin に届きまし"
+"た。この勝利は貴方が思っている以上に同盟に貢献していたのです。と言うのは、実"
+"は Tan-Malgar は同盟内の一部のオークの首長と密かに通じていたのです。しかし、"
+"あなたの勝利により危険な反乱は未然に防がれたのです。その後、私は数週間をかけ"
+"てあなたの後を追って来ました。"
 
 #. [message]: speaker=Pelias
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:179
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:179
 msgid ""
 "Aiglondur, the Protector dubs you a Lord Companion of the Alliance. He bids "
 "you return to Knalga as soon as convenient, for your investiture."
 msgstr ""
-"Aiglondur 、護民長はあなたを同盟の護民官に叙します。叙任式のため、可及的速や"
-"かに Knalga へ帰還せよとの命です。"
+"Aiglondur、護民長はあなたを同盟の護民官に叙すると決定しました。叙任式のため、"
+"速やかに Knalga へ帰還せよとの命です。"
 
 #. [message]: speaker=Dulcatulos
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:184
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:184
 msgid "(<i>Wonderingly</i>) A Lord Companion? And kin of ours..."
-msgstr "(驚嘆して) 護民官？ しかも我らの一族から……"
+msgstr "(驚嘆して) 護民官？しかも同族から……"
 
 #. [message]: speaker=Narithil
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:189
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:189
 msgid ""
 "It would be no shame for a Lord Companion to rule this holding, as Hamel "
 "does at Knalga."
@@ -2310,26 +2398,26 @@ msgstr ""
 "ようにな。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:194
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:194
 msgid ""
 "The Kal Karthans looked at each other, and Aiglondur, with dawning hope."
 msgstr ""
-"Kal Kartha の民は互いに目を交わし、そして明けゆく希望をもって Aiglondur を見"
-"つめました。"
+"Kal Kartha の民は互いに目を交わし、そして希望に満ちた目で Aiglondur を見つめ"
+"ました。"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:200
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:200
 msgid "It would be fitting. The Loremasters will approve."
-msgstr "それが最適であるようです。伝承家達も承認するでしょう。"
+msgstr "それが最適であるようです。伝承者達も承認するでしょう。"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:205
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:205
 msgid ""
 "Pelias, my thanks to the Lord Protector; I will attend him in the spring. "
 "But it seems that I have some work to do here first."
 msgstr ""
-"Pelias、護民長へ感謝を。春には彼のところへ顔を出そう。だがまず始めにここです"
-"るべき仕事があるようだからな。"
+"Pelias、護民長へ感謝の意を、そして春には顔を出すと伝えてくれ。どうも俺にはこ"
+"こでやるべき仕事があるようだ。"
 
 #. [unit_type]: id=Dwarvish Annalist, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:4
@@ -2344,9 +2432,9 @@ msgid ""
 "other peoples of the Great Continent. To the abilities of the Witness they "
 "add, through the study of herb and mineral lore, the ability to cure poison."
 msgstr ""
-"ドワーフの年代記編者はその太古から続く誇り高い種族の歴史家です。彼らは数が少"
-"なく、その存在は大陸の他の種族には一般には知られていません。証人の能力に加"
-"え、ハーブと鉱物知識の学習を通して、毒を治療する能力を持ちます。"
+"ドワーフの年代記編者は太古から続く誇り高い種族の歴史家です。彼らは数が少な"
+"く、その存在は大陸の他の種族には一般に知られてはいません。証人の能力に加え、"
+"ハーブと鉱物の知識により毒を治療する能力を持ちます。"
 
 #. [attack]: type=impact
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:61
@@ -2358,7 +2446,7 @@ msgstr "ボーラ"
 #. [unit_type]: id=Dwarvish Loremaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:4
 msgid "Dwarvish Loremaster"
-msgstr "ドワーフの伝承家"
+msgstr "ドワーフの伝承者"
 
 #. [unit_type]: id=Dwarvish Loremaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:23
@@ -2370,11 +2458,18 @@ msgid ""
 "stands, there is the soul of the dwarves. To the abilities of the Annalist "
 "they add a limited ability to heal."
 msgstr ""
-"伝承家はドワーフの種族の賢者です。彼らのみが最も深遠で最も固く封印されたド"
-"ワーフの知識の秘密を理解しているため、彼らの助言は戦争の指揮官や武将から大い"
-"に評価され、一般のドワーフからは畏敬の念を込めて見られます。伝承家の立つとこ"
-"ろドワーフ族の魂あり、といわれています。年代記編者の能力に加え、限定的な治癒"
-"能力を持ちます。"
+"伝承者はドワーフの賢者です。最も深遠で最も固く封印されたドワーフの知識の秘密"
+"を理解するのは彼らのみであるため、その助言は戦争の指揮官や将からも大事にさ"
+"れ、一般のドワーフには畏敬の念を抱かせます。伝承者の立つところドワーフ族の魂"
+"あり、とまでいわれるほどです。年代記編者の能力に加え、限定的な回復能力を持ち"
+"ます。"
+
+#. [unit_type]: id=Dwarvish Masked Berserker, race=dwarf
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Berserker.cfg:4
+#, fuzzy
+#| msgid "Dwarvish Masked Thunderer"
+msgid "Dwarvish Masked Berserker"
+msgstr "ドワーフの覆面銃撃兵"
 
 #. [unit_type]: id=Dwarvish Masked Dragonguard, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:4
@@ -2410,17 +2505,17 @@ msgstr "ドワーフの覆面貴族"
 msgid ""
 "Feared in dwarven legend is the Dwarf Lord who masks his face, using the "
 "formidable fighting powers of his kind without accounting to his peers and "
-"the loremasters of Dwarven-kind for the dark and bloody uses to which he "
+"to the loremasters of Dwarven-kind for the dark and bloody uses to which he "
 "puts his weapons. Like his barefaced kin, the Dwarf Lord wields axe and "
 "hammer with masterful skill, and can hit a target with a thrown hand axe at "
 "several paces. Though slow on their feet, these dwarves are a testament to "
 "the prowess of their kind."
 msgstr ""
-"ドワーフの伝承に恐れられるドワーフの覆面貴族（Dwarvish Masked Lord）は、邪悪"
-"で血塗られた目的のために、仲間やドワーフ族の伝承家がいなくても恐るべき戦闘能"
-"力を発揮します。顔をさらした同族のように、ドワーフの貴族は斧とハンマーの扱い"
-"に長けており、数歩離れた距離から手投げ斧を命中させることもできます。足が遅い"
-"とはいえ、このドワーフはドワーフ族の武勇の証であるのです。"
+"ドワーフの伝承に恐れられるドワーフの覆面貴族（Dwarvish Masked Lord）は、仲間"
+"やドワーフ族の伝承者の存在を気にせず、邪悪で血塗られた目的のために、恐るべき"
+"戦闘能力を発揮します。顔をさらした同族のようにこのドワーフの貴族も斧とハン"
+"マーの扱いに長けており、数歩離れた距離から手投げ斧を命中させることもできま"
+"す。足が遅いのが玉に瑕ですが、このドワーフ達は種族の武勇の象徴であるのです。"
 
 #. [unit_type]: id=Dwarvish Masked Sentinel, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg:4
@@ -2458,6 +2553,13 @@ msgstr "ドワーフの覆面銃撃兵"
 msgid "Dwarvish Masked Thunderguard"
 msgstr "ドワーフの覆面精鋭銃撃兵"
 
+#. [unit_type]: id=Dwarvish Masked Ulfserker, race=dwarf
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Ulfserker.cfg:4
+#, fuzzy
+#| msgid "Dwarvish Masked Thunderer"
+msgid "Dwarvish Masked Ulfserker"
+msgstr "ドワーフの覆面銃撃兵"
+
 #. [unit_type]: id=Dwarvish Witness, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:10
 msgid "Dwarvish Witness"
@@ -2474,41 +2576,48 @@ msgid ""
 "itself. The person of a Witness is considered sacred, and Witnesses are "
 "often used as envoys between dwarvish clans."
 msgstr ""
-"証人は、外部の者には決して分け与えられることのない深遠な知識であるドワーフの"
-"歴史の眼として働きます。証人が存在することで、ドワーフの戦士は彼らの行為(ある"
-"いは彼らの死)が記録されないままの知識にはならないという感銘を受けます。ドワー"
-"フ族の自慢の腕力に背を向けることを意図して、彼らは仲間とは異なりゆっくりと戦"
-"闘方法を学んでいきます。証人は神聖なものと考えられており、証人達はしばしばド"
-"ワーフの氏族間の使節として利用されます。"
+"証人は、他種族とは決して共有しない深遠な知識であるドワーフの歴史の眼として働"
+"きます。証人が存在すれば、戦士達は自分達の行為、あるいはその死が記録として確"
+"実に残るため、彼らの存在は周囲の戦士達を鼓舞するでしょう。彼らはドワーフ自慢"
+"の腕力には頼らない、仲間達とは異なる戦闘方法を敢えて学んでいきます。証人は神"
+"聖なものと考えられており、証人達はしばしばドワーフの氏族間の使節として利用さ"
+"れます。"
 
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:4
+#, fuzzy
+#| msgid ""
+#| " The presence of this unit inspires own units next to it to deal more "
+#| "damage in combat, though this only applies to units of lower or equal "
+#| "level."
 msgid ""
-" The presence of this unit inspires own units next to it to deal more damage "
-"in combat, though this only applies to units of lower or equal level."
+"\n"
+"• The presence of this unit inspires own units next to it to deal more "
+"damage in combat, though this only applies to units of lower or equal level."
 msgstr ""
-" このユニットが存在することで、隣接するユニットは戦闘においてより多くのダメー"
-"ジを与えられますが、レベルが同じか低いユニットにしか効果がありません。"
-
-#. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:13
-msgid "inspire"
-msgstr "感銘"
+"このユニットが存在することで、隣接するユニットは戦闘においてより多くのダメー"
+"ジを与えられます。ただし、この効果はレベルが同じ、もしくは低いユニットに対し"
+"てのみ有効です。"
 
 #. [leadership]: id=inspire
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:14
-msgid "female^inspire"
-msgstr "感銘"
+msgid "inspire"
+msgstr "鼓舞"
 
 #. [leadership]: id=inspire
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:15
+msgid "female^inspire"
+msgstr "鼓舞"
+
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:16
 msgid ""
 "This unit can inspire own units that are next to it, making them fight "
 "better. Adjacent own units of lower or equal level will deal 25% more damage "
 "plus 25% for each level they are below the inspiring unit."
 msgstr ""
-"このユニットは隣接するユニットに感銘を与え、上手く戦わせることができます。隣"
-"接するユニットの中で感銘ユニット以下のレベルを持つ者は、レベル差ごとに25%ダ"
-"メージが上昇します。"
+"このユニットは隣接するユニットを鼓舞し、上手く戦わせることができます。隣接す"
+"るユニットが鼓舞ユニットと同じ、もしくは低いレベルの場合、( レベル差 + 1 ) × "
+"25 %) のダメージボーナスが得られます。"
 
 #: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:6
 msgid "Aiglondur"
@@ -2535,64 +2644,606 @@ msgstr "Karrag"
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/utils/herodeaths.cfg:12
 msgid "I fall!"
-msgstr "負けた！"
+msgstr "やられた！"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/utils/herodeaths.cfg:30
 msgid "Oh no! Without a loremaster we cannot complete our mission!"
-msgstr "そんな！ 伝承家がいなくては任務を達成できない！"
-
-#. [message]: speaker=Ratheln
-#: data/campaigns/The_Hammer_of_Thursagan/utils/herodeaths.cfg:48
-msgid "Aaarrgh! My students... What will become of them?"
-msgstr "アァァァァグッ！ 私の生徒達は……どうなってしまうんだ？"
+msgstr "なんてことだ！証人がいなくては任務を達成できない！"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/utils/herodeaths.cfg:62
+#: data/campaigns/The_Hammer_of_Thursagan/utils/herodeaths.cfg:48
+msgid "We needed Movrur to accompany us to Kal Kartha!"
+msgstr ""
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/utils/herodeaths.cfg:66
 msgid ""
 "Without Dulcatulos to explain our actions to the Kal Karthans we’ll have to "
 "fight them, too. Our mission has failed."
 msgstr ""
-"Dulcatulos が我々の行動を Kal Kartha の住民に釈明してくれなければ、彼らとも戦"
-"わなければならなくなる。それでは任務が失敗してしまう。"
+"Dulcatulos が我々の行動を Kal Kartha の住民に説明してくれなければ、彼らとも戦"
+"わなければならなくなる。任務は失敗だ。"
 
-#. [message]: speaker=narrator
-#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:43
-msgid ""
-"Without magic users from Master Perrin’s academy in your party, you can no "
-"longer recruit new ones."
-msgstr ""
-"Perrin 学長の学院から来た魔術師がいなければ、新しく魔術師を雇用することはでき"
-"ません。"
+#~ msgid ""
+#~ "The maker’s mark is strange to me. We had best consult the lord Hamel."
+#~ msgstr ""
+#~ "製作者の印章は俺の知らないものだな。Hamel 陛下にご相談するのが一番だろう"
+#~ "な。"
 
-#. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:67
-msgid "There an altar in this temple, and a staff lies upon it."
-msgstr "この神殿には祭壇があり、その上には杖が横たわっている。"
+#~ msgid ""
+#~ "And I fear for the Hammer of Thursagan. Our kin at Kal Kartha have been "
+#~ "its keepers since a hero of their line recovered it from the Caverns of "
+#~ "Flame, centuries ago."
+#~ msgstr ""
+#~ "それに Thursagan の鎚のことも心配です。何世紀か前、Kal Kartha の一人の英雄"
+#~ "が炎の洞窟からそれを回収して以来、Kal Kartha が鎚の管理者となっていたので"
+#~ "す。"
 
-#. [object]: id=sorf	# Prevent it from being picked up more than once.
-#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:81
-msgid "Staff of Righteous Flame"
-msgstr "正しき炎の杖"
+#~ msgid ""
+#~ "But if the dwarves of Kal Kartha have held it all this time, why has none "
+#~ "wielded it since Thursagan?"
+#~ msgstr ""
+#~ "しかし、これまでずっと Kal Kartha でそれを管理していたと言うのなら、何故 "
+#~ "Thursagan 以降誰も鎚を使っていないのだ？"
 
-#. [object]: id=sorf	# Prevent it from being picked up more than once.
-#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:84
-msgid ""
-"This staff gives a dying mage a final strike that will destroy all nearby "
-"enemies."
-msgstr "この杖は死にゆく魔術師に周囲の敵を破壊する最後の一撃の能力を与えます。"
+#~ msgid "Bandits"
+#~ msgstr "盗賊"
 
-#. [object]: id=sorf	# Prevent it from being picked up more than once.
-#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:85
-msgid "Only a mage may wield this Staff."
-msgstr "魔術師だけがこの杖を装備できます。"
+#~ msgid "Gothras"
+#~ msgstr "Gothras"
 
-#. [message]: speaker=unit
-#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:110
-msgid ""
-"Aaarrgh! Though I die, the flame of righteousness shall send you down to "
-"darkness!"
-msgstr "アァァァァグゥ！ 私が死んでも、正義の炎がお前達を闇に堕とす！"
+#~ msgid ""
+#~ "We will fare where we will and take what we will, dog of an orc. To the "
+#~ "Dark Gods with you and your precious ‘Alliance’."
+#~ msgstr ""
+#~ "俺達は行きたいところへ行き、欲しいものを手に入れる。オークの犬っころ、て"
+#~ "めぇらと大事な「同盟」とやらに暗黒の神々の祝福をくれてやろう。"
 
-#~ msgid "Defeat the orcish leaders"
-#~ msgstr "オークのリーダー達を倒す"
+#~ msgid "That is our duty."
+#~ msgstr "当然の義務です。"
+
+#~ msgid "For the Alliance! Axes up!"
+#~ msgstr "同盟のために！斧を上げよ！"
+
+#~ msgid ""
+#~ "My thanks, dwarves. These bandits might have hacked a bloody swathe "
+#~ "through the Alliance’s tribes if we had not killed them here."
+#~ msgstr ""
+#~ "ドワーフよ、感謝する。あのごろつきどもをここで始末できなければ、同盟の仲間"
+#~ "が血祭りに上げられていたかもしれん。"
+
+#~ msgid "Troll Bridge"
+#~ msgstr "トロルの橋"
+
+#~ msgid ""
+#~ "Aiglondur and his troop, some still shaking their heads dubiously at the "
+#~ "very notion of fighting alongside orcs rather than against them, "
+#~ "continued east to the easternmost edge of the Northern Alliance’s lands."
+#~ msgstr ""
+#~ "オークと並んで戦うという現実に未だに違和感を拭えない者もそれなりに居たもの"
+#~ "の、Aiglondur 達はさらに東、北部同盟の領域の最東端へと進んでいきました。"
+
+#~ msgid "Trolls"
+#~ msgstr "トロル"
+
+#~ msgid "Gronk"
+#~ msgstr "Gronk"
+
+#~ msgid "Defeat Gronk"
+#~ msgstr "Gronk を倒す"
+
+#~ msgid "Dis a troll bridge. You pay toll. Er..."
+#~ msgstr "ごれトロルの橋。通行料払う。アー……"
+
+#~ msgid "Dat not right. Dis a toll bridge. You pay troll. Er..."
+#~ msgstr "ぞれ正しくない。橋のトロルごれ。払う通行料。アー……"
+
+#~ msgid ""
+#~ "Dat not right either. Big words confuse Gronk. You pay now or we smash "
+#~ "you."
+#~ msgstr ""
+#~ "ぞれも正しくない。Gronk 長い言葉わからない。今すぐ払わなければお前達潰す。"
+
+#~ msgid ""
+#~ "The stonework of yon bridge is not good enough to be dwarf-made, but it "
+#~ "is nowhere near crude enough to be troll-work."
+#~ msgstr ""
+#~ "あの石橋はドワーフが作ったと思える程に良い品質ではありませんが、トロルが"
+#~ "作ったものとは絶対思えない程度には良くできていますね。"
+
+#~ msgid ""
+#~ "Then it will be of the Alliance’s making, right enough, like this road "
+#~ "that leads to it. It won’t do to have wild trolls squatting on it. Axes "
+#~ "up!"
+#~ msgstr ""
+#~ "ならば同盟の作ったものだろう。だからこそ街道もあそこまで続いているのだろ"
+#~ "う。そういうことなら、あの橋に野良トロルを居座らせておくわけにはいかない"
+#~ "な！斧を上げよ！"
+
+#~ msgid "Hey! That troll was sitting on some treasure!"
+#~ msgstr "おい！あのトロルは宝箱に腰掛けていたようだぞ！"
+
+#~ msgid ""
+#~ "The Alliance’s road ended at the troll bridge. East of it lay only the "
+#~ "wildlands."
+#~ msgstr ""
+#~ "同盟の街道はトロルの橋で終わっており、その東にはただ未開の地が広がっていま"
+#~ "した。"
+
+#~ msgid "Tan-Malgar"
+#~ msgstr "Tan-Malgar"
+
+#~ msgid "Tan-Grolak"
+#~ msgstr "Tan-Grolak"
+
+#~ msgid "Tan-Uthkar"
+#~ msgstr "Tan-Uthkar"
+
+#~ msgid "Ruined Castle"
+#~ msgstr "荒廃した城"
+
+#~ msgid ""
+#~ "Stay alert, everyone, and keep together. This is bandit country — more "
+#~ "than likely where Gothras and his gang came from."
+#~ msgstr ""
+#~ "総員、警戒を怠るな。まとまって行動しろ。ここはならず者の土地だ ── Gothras "
+#~ "の一味はほぼ間違いなくこの地からやってきたはずだ。"
+
+#~ msgid ""
+#~ "Nae sign o’ bandits I can see, captain — but there are three muckle hosts "
+#~ "of orcs off to our east."
+#~ msgstr ""
+#~ "ならず者の痕跡は見つかりません、隊長 ── ですが東に 3 つのオークの軍勢が陣"
+#~ "を構えています。"
+
+#~ msgid ""
+#~ "What’s this? Large orcish war-bands so close to the Alliance’s border? "
+#~ "That can only mean trouble."
+#~ msgstr ""
+#~ "何だと？同盟の境界のこんな近いところにオークの大軍がいるだと？厄介事の予感"
+#~ "しかしないぞ。"
+
+#~ msgid ""
+#~ "Well, boys, we were planning to invade the Northern Alliance anyway... "
+#~ "These dwarves should make a tasty appetizer."
+#~ msgstr ""
+#~ "野郎ども、俺たちはどのみち北部同盟に攻め入ろうとしていたんだ…… まずはあの"
+#~ "ドワーフ共を血祭りに上げてやろう。ちょうど良い前菜みたいなモンだ。"
+
+#~ msgid "Yeah, boss. Anything to get away from those masked ones..."
+#~ msgstr "へい、ボス。何でもいいからあの覆面の連中から逃げなきゃ……"
+
+#~ msgid "Be silent. We are orc warriors; we do not flee foes."
+#~ msgstr "黙れ。俺達はオークの戦士だ。敵から逃げたりはしない。"
+
+#~ msgid "But, given a choice, we fight the weaker foe first."
+#~ msgstr ""
+#~ "しかし、相手を選べるのならまずは弱そうな方から潰した方が良いだろう。"
+
+#~ msgid "The villagers are attacking us!"
+#~ msgstr "村人が攻撃してきた！"
+
+#~ msgid "Aye, it’s still bandit country, right enough."
+#~ msgstr "あぁ、ここは確かにならず者の土地なのだな。"
+
+#~ msgid "Death of Ratheln"
+#~ msgstr "Ratheln の死"
+
+#~ msgid ""
+#~ "Hail, I am Ratheln. If you’re traveling down the pass, please take me "
+#~ "with you. I am near freezing and starving to death up here."
+#~ msgstr ""
+#~ "やあ、私は Ratheln と言う者です。もし峠を下るのであれば、私も連れて行って"
+#~ "もらえませんか。寒さと飢えで死にそうなのです。"
+
+#~ msgid ""
+#~ "Pardon my curiosity, but what is a fire-mage doing freezing to death?"
+#~ msgstr ""
+#~ "興味本位で申し訳ないのですが、炎の魔術師が寒さで死ぬとはどういうことです？"
+
+#~ msgid ""
+#~ "In case you haven’t noticed, there is a serious shortage of both firewood "
+#~ "and food in this gods-forsaken slot. And the damned gryphons descend on "
+#~ "me whenever I stir out of this shack. I’ve had nothing to eat but flash-"
+#~ "roasted gryphon for the last three weeks."
+#~ msgstr ""
+#~ "お気付きになっていないのかもしれませんが、この神々に見捨てられた土地では薪"
+#~ "も食料も深刻なほど不足しているのです。それにこの掘っ立て小屋から出ようとす"
+#~ "ると、あの忌々しいグリフォンが襲ってくるのです。この 3 週間、グリフォンの"
+#~ "炙り焼き以外何も口にできていません。"
+
+#~ msgid "Where were you bound when you got stuck here?"
+#~ msgstr "こんなところで立ち往生するとは、一体どこへ行く気だったんだ？"
+
+#~ msgid ""
+#~ "There is a school of mages near the east end of the pass. They’ve an "
+#~ "opening for an instructor, and they’re expecting me."
+#~ msgstr ""
+#~ "峠道を東側に降りた辺りに魔術師の学院があります。今そこでは教官を募集してい"
+#~ "て、私を心待ちにしてくれているのです。"
+
+#~ msgid ""
+#~ "Let’s take him with us, Aiglondur. We know little about the country "
+#~ "beyond to the east; we’ve had few reports on it since before the orcs "
+#~ "took Knalga. Those mages should know at least rumors."
+#~ msgstr ""
+#~ "彼を連れて行きましょう、Aiglondur。我々には東の土地に関する知識がほとんど"
+#~ "ありません。オークによる Knalga 占領より昔の報告書からわずかに窺える程度で"
+#~ "す。その点、魔術師達ならば最悪でも噂話くらいは知っているでしょう。"
+
+#~ msgid ""
+#~ "Aye. And I’d not leave anyone who had done my kin no harm stranded to "
+#~ "starve."
+#~ msgstr ""
+#~ "ああ、そうしよう。もっとも、そんな事情が無くとも、飢えに苦しむ無害な者を捨"
+#~ "て置くことなど我らにはできんがな。"
+
+#~ msgid "This is no fit death for a mage of fire!"
+#~ msgstr "こんなのは炎の魔術師に相応しい死に方じゃない！"
+
+#~ msgid ""
+#~ "The snow has redoubled its fury, as if his presence had been holding it "
+#~ "back. I do not see a way forward for us."
+#~ msgstr ""
+#~ "雪が勢いを増しています。まるで彼の存在が雪を抑えつけていたかのようです。前"
+#~ "方の道も見えなくなってきました。"
+
+#~ msgid ""
+#~ "Aye. But I’ve a grim feeling we might be going to discover that in person."
+#~ msgstr ""
+#~ "気になってはいる。一方で、我々はその何かに向かって進んでいるような気もして"
+#~ "いる。俺の個人的な感覚でしかないが。"
+
+#~ msgid "Mages and Drakes"
+#~ msgstr "魔術師とドレーク"
+
+#~ msgid "Master Perrin"
+#~ msgstr "Perrin 学長"
+
+#~ msgid "Preceptor"
+#~ msgstr "教師"
+
+#~ msgid "Warder"
+#~ msgstr "警備員"
+
+#~ msgid "Drakes"
+#~ msgstr "ドレーク"
+
+#~ msgid "Glashal"
+#~ msgstr "Glashal"
+
+#~ msgid "Defeat Glashal"
+#~ msgstr "Glashal を倒す"
+
+#~ msgid ""
+#~ "Master Perrin! A mage comes down from the High Pass, with a company of "
+#~ "dwarves. They are well-armed, but not in battle array."
+#~ msgstr ""
+#~ "Perrin 学長！峠道からドワーフの一隊と共に一人の魔術師が下ってきます。武装"
+#~ "していますが、戦闘に備えた隊列は取っていないようです。"
+
+#~ msgid ""
+#~ "That will be Ratheln, I expect. Hail! You on the road! Who comes bearing "
+#~ "arms into our valley?"
+#~ msgstr ""
+#~ "それはおそらく Ratheln だろう。こんにちは、旅のお方！何のために武器を携え"
+#~ "て我々の谷へ来られたのでしょうか？"
+
+#~ msgid ""
+#~ "‘Our’ valley, says Master Perrin. The arrogance of these mages is "
+#~ "intolerable!"
+#~ msgstr ""
+#~ "Perrin の奴め、「我々の谷」と抜かしたか。あの魔術師どもの傲慢さにはもう耐"
+#~ "えられん！"
+
+#~ msgid ""
+#~ "A delegation of the Northern Alliance, traveling east. I believe we’ve "
+#~ "found a friend of yours in the High Pass."
+#~ msgstr ""
+#~ "我々は北部同盟の遠征団で、東へ向かっている。その道中、峠道であなた方のご友"
+#~ "人と思われる魔術師を見つけたので、こちらに来た次第だ。"
+
+#~ msgid ""
+#~ "Well met, then. But if you intend to travel east of here, beware of the "
+#~ "nest of drakes in the cliffs near the valley’s end. They were here before "
+#~ "us, and have become more hostile to travelers of late."
+#~ msgstr ""
+#~ "そうでしたか、ありがとうございます。ですがここより東へ旅するのならば、谷の"
+#~ "端近くの崖にあるドレークの巣にはお気をつけ下さい。彼らは我々よりも前からこ"
+#~ "こにいて、最近は旅人への敵意を膨らましているようなのです。"
+
+#~ msgid "The axe-bearers must not be let near our nestlings. Attack!"
+#~ msgstr "我らの雛達に斧を持つ者を近づけさせるわけにはいかない！攻撃だ！"
+
+#, fuzzy
+#~| msgid ""
+#~| "We’re grateful for your assistance. Moreover, I’d like to send a couple "
+#~| "of our senior apprentices with you to the east. It has come time for "
+#~| "them to be journeymen... and I sense something being born to the east "
+#~| "that I do not like the feel of."
+#~ msgid ""
+#~ "We’re grateful for your assistance. And I’d like to send a couple of our "
+#~ "senior apprentices with you to the east. It has come time for them to be "
+#~ "journeymen... and I sense something being born to the east that I do not "
+#~ "like the feel of."
+#~ msgstr ""
+#~ "あなた方の協力に感謝いたします。ところで、二人の上級生徒をあなた方と一緒に"
+#~ "東へ連れて行ってもらえないでしょうか？彼らもそろそろ一人前になる時期です"
+#~ "し…… それに、何か良くないものが東の方で生まれてしまったように私には感じら"
+#~ "れるのです。"
+
+#, fuzzy
+#~| msgid ""
+#~| "We’re grateful for your assistance. Moreover, I’d like to send one of "
+#~| "our senior apprentices with you to the east. It has come time for him to "
+#~| "be a journeyman... and I sense something being born to the east that I "
+#~| "do not like the feel of."
+#~ msgid ""
+#~ "We’re grateful for your assistance. And I’d like to send one of our "
+#~ "senior apprentices with you to the east. It has come time for him to be a "
+#~ "journeyman... and I sense something being born to the east that I do not "
+#~ "like the feel of."
+#~ msgstr ""
+#~ "あなた方の協力に感謝いたします。ところで、上級生徒を一人、あなた方と一緒に"
+#~ "東へ連れて行ってもらえないでしょうか？彼らもそろそろ一人前になる時期です"
+#~ "し…… それに、何か良くないものが東の方で生まれてしまったように私には感じら"
+#~ "れるのです。"
+
+#~ msgid "Lorinne"
+#~ msgstr "Lorinne"
+
+#~ msgid "Darchas"
+#~ msgstr "Darchas"
+
+#~ msgid ""
+#~ "The presence of Lorinne and Darchas gives you the ability to recruit "
+#~ "mages."
+#~ msgstr ""
+#~ "Lorinne と Darchas の加入により、魔術師を雇用できるようになりました。"
+
+#~ msgid "The presence of Darchas gives you the ability to recruit mages."
+#~ msgstr "Darchas の加入により、魔術師を雇用できるようになりました。"
+
+#~ msgid "What sort of thing?"
+#~ msgstr "それは一体どのようなものだろうか？"
+
+#~ msgid ""
+#~ "There is some great magic brewing. Something... evil. I feel its traces "
+#~ "in the currents of the earth and air."
+#~ msgstr ""
+#~ "何らかの強大な魔力が発生しているようです。何か……邪悪なものが。大地や風の流"
+#~ "れからその痕跡を感じられるのです。"
+
+#~ msgid ""
+#~ "I would travel east with you if I could, but I have duties I must take up "
+#~ "here."
+#~ msgstr ""
+#~ "できることなら私もあなた方と共に東へ向かいたいが、私にはここでやらねばなら"
+#~ "ないことがある。"
+
+#~ msgid "You have your duty, as we have ours. Fare well."
+#~ msgstr ""
+#~ "それは仕方が無い。俺達に責務があるように、あなたにも責務があるのだから。さ"
+#~ "らばだ。"
+
+#~ msgid ""
+#~ "Perrin, I owe these dwarves a debt; I think it is my duty to aid them in "
+#~ "their journey. I’ll return with your apprentices as soon as I may."
+#~ msgstr ""
+#~ "Perrin、私はこのドワーフ達に借りがあります。彼らの旅を助けることが私の責務"
+#~ "だと思います。それが終わり次第、生徒達を連れて戻って来るつもりです。"
+
+#~ msgid "As you will. Go safely and return swiftly."
+#~ msgstr ""
+#~ "思いのままにしなさい。気を付けて、そしてできるだけ早く戻って来てください。"
+
+#~ msgid ""
+#~ "I would travel east with you if I could, but the school will need me all "
+#~ "the more with Master Perrin gone."
+#~ msgstr ""
+#~ "できるなら私もあなた方と共に東へ向かいたいが、Perrin 学長が亡くなった今、"
+#~ "私まで学院を離れるわけにはいかない。"
+
+#~ msgid ""
+#~ "I think we will regret Perrin’s passing. There is much he might have told "
+#~ "us."
+#~ msgstr ""
+#~ "Perrin 学長が亡くなられた事は本当に残念です。彼ならば東の異変について何か"
+#~ "感じていたかもしれませんから、生きていれば何か教えていただけたかもしれませ"
+#~ "ん。"
+
+#~ msgid "Ollin"
+#~ msgstr "Ollin"
+
+#~ msgid "Don’t kill me, masters! Please don’t kill me!"
+#~ msgstr "殺さんでくれ、だんなさま！ どうか殺さんでくださいませ！"
+
+#~ msgid "You’re in no danger from us. What lies to the east of here?"
+#~ msgstr "危害を加えるつもりはない。この東には何があるんだ？"
+
+#~ msgid "You wear no mask. You... you’re not with them?"
+#~ msgstr ""
+#~ "あんたがたは覆面を付けてない。あ……あんたがたは奴らと一緒じゃないのか？"
+
+#~ msgid "What are you talking about?"
+#~ msgstr "何のことを言っているんだ？"
+
+#~ msgid "The masked dwarves. Killing, burning, kidnapping. Look..."
+#~ msgstr "覆面のドワーフだ。殺して、火をつけて、人を攫っていった。あれを……"
+
+#~ msgid ""
+#~ "Fellow dwarves, hail! We’re looking for a human refugee, one named Ollin. "
+#~ "Have you seen him? Our master demands his life."
+#~ msgstr ""
+#~ "よう、ドワーフの同胞！Ollin という名の人間の脱走者を探しているんだ。どこか"
+#~ "で見なかったか？主がそいつの命を欲していてな。"
+
+#~ msgid "He is here. How has he wronged your master, that you seek his death?"
+#~ msgstr ""
+#~ "そいつはここにいる。しかし、死を求めるとは穏やかじゃないな。こいつがあんた"
+#~ "の主人に一体何をしたんだ？"
+
+#~ msgid ""
+#~ "Does it matter? He is only a dirtgrubbing human, not fit to polish the "
+#~ "boots of the true people."
+#~ msgstr ""
+#~ "どうでもいいだろ？ただの地を這う人間だ、まことの民の靴を磨くにも値しない。"
+
+#~ msgid ""
+#~ "What is your name, masked one? Will you stand behind your deed? I am a "
+#~ "witness."
+#~ msgstr ""
+#~ "覆面の者、名乗りなさい。その行為の責任を取る覚悟はあるか？我は証人である。"
+
+#~ msgid ""
+#~ "A witness? My name is... my name is not important. My deed will speak its "
+#~ "own truth."
+#~ msgstr ""
+#~ "証人だと？俺の名は…… 俺の名は重要じゃない。俺の行動こそが真実なのだ。"
+
+#~ msgid ""
+#~ "You speak without honor. Mine is the power of our ancient Law; speak your "
+#~ "name and give up your murder, or the Law will cast you forth. I am a "
+#~ "witness!"
+#~ msgstr ""
+#~ "不遜な言葉だ。我が言葉こそが太古の法の力。名を名乗り殺戮を止めよ。さもなく"
+#~ "ば法の元にお前を追放する。我は証人である！"
+
+#~ msgid ""
+#~ "If you were a witness of the true people, you would not let a dirtgrubber "
+#~ "hide behind your robes. I deny you!"
+#~ msgstr ""
+#~ "貴様がまことの民の証人なら、その地虫野郎をローブの後ろに隠したりしない。お"
+#~ "前は証人などでは無い！"
+
+#~ msgid "The Law speaks: you are cast out. You are un-dwarf. I AM A WITNESS!"
+#~ msgstr ""
+#~ "法によって裁きを告げる ── お前を追放する。お前はもはやドワーフでは無い。"
+#~ "<b>我は証人である！</b>"
+
+#~ msgid "Up axes!"
+#~ msgstr "斧を上げよ！"
+
+#~ msgid "Defeat the Masked Dwarf"
+#~ msgstr "覆面のドワーフを倒す"
+
+#~ msgid "Take that for my family’s memory, you murderer!"
+#~ msgstr "家族の仇！この人殺し！これでも喰らえ！"
+
+#~ msgid "You have acted in honor. I am a witness."
+#~ msgstr "あなたは義において行動しました。我は証人である。"
+
+#~ msgid ""
+#~ "I have never seen the formal banishment before. One reads of it in the "
+#~ "old tales, of course, but to hear it with one’s own ears? It was... "
+#~ "unsettling."
+#~ msgstr ""
+#~ "正式な追放を見たのは初めてだ。無論、古い物語で読んだことはあったが、実際に"
+#~ "自分の耳で聞いてしまうと…… 何というか、こっちまで落ち着かないな……"
+
+#~ msgid ""
+#~ "It is not something we do often. The last such was in my grandsire’s "
+#~ "time. But look at what these filth were carrying if you have any doubt it "
+#~ "was merited."
+#~ msgstr ""
+#~ "頻繁に行うようなものではありません。以前にあったのは祖父の代です。ですがも"
+#~ "し不安に感じるようなら、あの堕落者達が運んでいたものを見てみると良いでしょ"
+#~ "う。"
+
+#~ msgid ""
+#~ "Whips. Shackles. No, Angarthing, I would not doubt you, even if it were "
+#~ "my place to doubt a loremaster."
+#~ msgstr ""
+#~ "鞭。それに枷か。それと Angarthing、俺はお前を疑ったわけじゃない。もし今後"
+#~ "俺が証人を疑うことがあったとしても、その証人がお前でないことだけは確実だ。"
+
+#, fuzzy
+#~| msgid ""
+#~| "They were seeking captives. To what purpose, I cannot say, but I doubt "
+#~| "it was any good one."
+#~ msgid ""
+#~ "They were seeking captives. To what purpose, I cannot say. But I doubt it "
+#~ "was any good one."
+#~ msgstr ""
+#~ "彼らは脱走した捕囚を探していました。どんな目的であれ、それが良いことだった"
+#~ "とは到底思えません。だからまずは問い質すのです。"
+
+#~ msgid ""
+#~ "Aye. Toils over it in a workshop in the underlevels with his personal "
+#~ "followers. He has promised all of us that the Hammer’s power will smash "
+#~ "and scatter all our enemies."
+#~ msgstr ""
+#~ "あぁ。地下の作業場で、個人的な取り巻きとともに頑張っておられる。鎚の力が我"
+#~ "らのあらゆる敵を打ち砕き追い散らしてくれる、と皆の前で断言されていたぞ。"
+
+#~ msgid ""
+#~ "Psst, Angarthing... Karrag and those dwarves on the dais, they’re all "
+#~ "<i>masked</i>."
+#~ msgstr ""
+#~ "おい、Angarthing…… Karrag とあの講座のドワーフ達、全員<i>覆面</i>をしてい"
+#~ "るぞ。"
+
+#~ msgid "We did not come to smite anyone, but to re-open contact and trade."
+#~ msgstr ""
+#~ "我々は誰かを打ちのめしに来たのではありません。交流と交易を再開するために来"
+#~ "たのです。"
+
+#~ msgid ""
+#~ "Trade? Your destruction of the besieging orcs was a far nobler act than "
+#~ "trade. There can be more such victories. And there will be by the power "
+#~ "of our ancient heirloom, the Hammer of Thursagan."
+#~ msgstr ""
+#~ "交易？諸君がオークの包囲軍を打ち破ったのは交易などよりもずっと尊い行為だ"
+#~ "ぞ。我々はさらに勝利を積み重ねねばならん。我らの太古の家宝、Thursagan の鎚"
+#~ "の力がそれを可能としてくれることだろう。"
+
+#~ msgid "It is remembered in Knalga that Kal Kartha holds the Hammer."
+#~ msgstr "Knalga でも鎚は Kal Kartha で管理されていると伝わっておりました。"
+
+#~ msgid ""
+#~ "Yes! And the Hammer holds the soul of the dwarves, the true people. "
+#~ "Together, we can march to greater victories! Will you of Knalga join me?"
+#~ msgstr ""
+#~ "然り！まことの民たるドワーフ族の魂は鎚と共にある。力を合わせればさらなる大"
+#~ "勝利が約束される！Knalga の同胞は力を貸してくれるか？"
+
+#~ msgid "Aaarrgh! My students... What will become of them?"
+#~ msgstr "うわああ！私の生徒達は…… どうなってしまうんだ？"
+
+#~ msgid ""
+#~ "Without magic users from Master Perrin’s academy in your party, you can "
+#~ "no longer recruit new ones."
+#~ msgstr ""
+#~ "Perrin 学長の学院から来た魔術師がいなければ、新しく魔術師を雇用することは"
+#~ "できません。"
+
+#~ msgid "There an altar in this temple, and a staff lies upon it."
+#~ msgstr "この神殿には祭壇があり、その上には杖が横たわっている。"
+
+#~ msgid "Staff of Righteous Flame"
+#~ msgstr "正しき炎の杖"
+
+#~ msgid ""
+#~ "This staff gives a dying mage a final strike that will destroy all nearby "
+#~ "enemies."
+#~ msgstr ""
+#~ "この杖を持った魔術師が死ぬ時、周囲の敵を破壊する最後の一撃を放ちます。"
+
+#~ msgid "Only a mage may wield this Staff."
+#~ msgstr "魔術師だけがこの杖を装備できます。"
+
+#~ msgid ""
+#~ "Aaarrgh! Though I die, the flame of righteousness shall send you down to "
+#~ "darkness!"
+#~ msgstr "ウグっ！例え私が死のうと、正義の炎がお前達を闇へと還す！"
+
+#~ msgid "Villagers"
+#~ msgstr "村人"
+
+#~ msgid ""
+#~ "There’s a scent of scorched gryphon meat in the air, emanating from that "
+#~ "hut yonder. We should investigate."
+#~ msgstr ""
+#~ "グリフォンの肉が焼ける臭いが漂っています。あそこの小屋が発生源のようです。"
+#~ "調査の必要があるでしょう。"

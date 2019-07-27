@@ -13,6 +13,7 @@
 */
 
 #include "game_data.hpp"
+#include "gettext.hpp"
 #include "log.hpp"
 #include "persist_context.hpp"
 #include "persist_manager.hpp"
@@ -51,7 +52,10 @@ struct persist_choice: mp_sync::user_choice {
 
 	virtual std::string description() const
 	{
-		return "a global variable";
+		// TRANSLATORS:  In networked games, this text is shown for other
+		// clients, while they wait to receive the content of a global variable
+		// from another player. This text will be embedded into a sentence.
+		return _("waiting for^a global variable");
 	}
 	virtual bool is_visible() const { return false; }
 };

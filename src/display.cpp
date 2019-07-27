@@ -51,7 +51,7 @@
 #include "show_dialog.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 
-#include <SDL_image.h>
+#include <SDL2/SDL_image.h>
 
 #include <algorithm>
 #include <array>
@@ -761,8 +761,7 @@ map_location display::minimap_location_on(int x, int y)
 surface display::screenshot(bool map_screenshot)
 {
 	if (!map_screenshot) {
-		// Use make_neutral_surface() to copy surface content
-		return make_neutral_surface(screen_.getSurface());
+		return screen_.getSurface().clone();
 	} else {
 		if (get_map().empty()) {
 			ERR_DP << "No map loaded, cannot create a map screenshot.\n";
@@ -770,7 +769,7 @@ surface display::screenshot(bool map_screenshot)
 		}
 
 		SDL_Rect area = max_map_area();
-		map_screenshot_surf_ = create_compatible_surface(screen_.getSurface(), area.w, area.h);
+		map_screenshot_surf_ = surface(area.w, area.h);
 
 		if (map_screenshot_surf_ == nullptr) {
 			// Memory problem ?
@@ -1168,7 +1167,7 @@ void display::get_terrain_images(const map_location &loc,
 				surf = image::get_lighted_image(image, lt, image::SCALED_TO_HEX);
 			}
 
-			if (!surf.null()) {
+			if (surf) {
 				terrain_image_vector_.push_back(std::move(surf));
 			}
 		}
@@ -1394,9 +1393,9 @@ static void draw_panel(CVideo &video, const theme::panel& panel, std::vector<std
 	DBG_DP << "panel location: x=" << loc.x << ", y=" << loc.y
 			<< ", w=" << loc.w << ", h=" << loc.h << "\n";
 
-	if(!surf.null()) {
+	if(surf) {
 		if(surf->w != loc.w || surf->h != loc.h) {
-			surf.assign(tile_surface(surf,loc.w,loc.h));
+			surf = tile_surface(surf,loc.w,loc.h);
 		}
 		video.blit_surface(loc.x, loc.y, surf);
 	}
@@ -1424,9 +1423,9 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 
 	if(icon.empty() == false) {
 		surface surf(image::get_image(icon));
-		if(!surf.null()) {
+		if(surf) {
 			if(surf->w > loc.w || surf->h > loc.h) {
-				surf.assign(scale_surface(surf,loc.w,loc.h));
+				surf = scale_surface(surf,loc.w,loc.h);
 			}
 
 			sdl_blit(surf,nullptr,target,&loc);
@@ -1471,7 +1470,7 @@ static void draw_background(surface screen, const SDL_Rect& area, const std::str
 	}
 
 	const surface background(image::get_image(image));
-	if(background.null()) {
+	if(!background) {
 		return;
 	}
 
@@ -1552,9 +1551,8 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 	//} else if(alpha != 1.0 && blendto != 0) {
 	//	surf.assign(blend_surface(surf,1.0-alpha,blendto));
 	} else if(alpha != ftofxp(1.0)) {
-		surface temp = make_neutral_surface(surf);
-		adjust_surface_alpha(temp, alpha);
-		surf = temp;
+		surf = surf.clone();
+		adjust_surface_alpha(surf, alpha);
 	}
 
 	if(surf == nullptr) {
@@ -1937,7 +1935,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 
 		// This is a workaround for a SDL2 bug when blitting on overlapping surfaces. The bug
 		// only strikes during scrolling, but will then duplicate textures across the entire map.
-		surface screen_copy = make_neutral_surface(screen);
+		surface screen_copy = screen.clone();
 
 		SDL_SetSurfaceBlendMode(screen_copy, SDL_BLENDMODE_NONE);
 		SDL_BlitSurface(screen_copy, &srcrect, screen, &dstrect);
@@ -2655,7 +2653,7 @@ void display::draw_hex(const map_location& loc) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
 			surface text = font::get_rendered_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOR);
-			surface bg = create_neutral_surface(text->w, text->h);
+			surface bg(text->w, text->h);
 			SDL_Rect bg_rect {0, 0, text->w, text->h};
 			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
@@ -2673,7 +2671,7 @@ void display::draw_hex(const map_location& loc) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
 			surface text = font::get_rendered_text(lexical_cast<std::string>(get_map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOR);
-			surface bg = create_neutral_surface(text->w, text->h);
+			surface bg(text->w, text->h);
 			SDL_Rect bg_rect {0, 0, text->w, text->h};
 			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
@@ -2690,7 +2688,7 @@ void display::draw_hex(const map_location& loc) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
 			surface text = font::get_rendered_text(lexical_cast<std::string>(num_images_bg + num_images_fg), font::SIZE_SMALL, font::NORMAL_COLOR);
-			surface bg = create_neutral_surface(text->w, text->h);
+			surface bg(text->w, text->h);
 			SDL_Rect bg_rect {0, 0, text->w, text->h};
 			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
@@ -2731,8 +2729,8 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 		}
 
 		if(visible_area.w > rect.w || visible_area.h > rect.h) {
-			img.assign(get_surface_portion(img,visible_area));
-			img.assign(scale_surface(img,rect.w,rect.h));
+			img = get_surface_portion(img,visible_area);
+			img = scale_surface(img,rect.w,rect.h);
 			visible_area.x = 0;
 			visible_area.y = 0;
 			visible_area.w = img->w;
@@ -2747,7 +2745,7 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 		sdl_blit(img,&visible_area,screen_.getSurface(),&target);
 	} else {
 		if(img->w != rect.w || img->h != rect.h) {
-			img.assign(scale_surface(img,rect.w,rect.h));
+			img = scale_surface(img,rect.w,rect.h);
 		}
 
 		sdl_blit(img,nullptr,screen_.getSurface(),&target);
@@ -2763,7 +2761,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 {
 	const theme::status_item *item = theme_.get_status_item(report_name);
 	if (!item) {
-		reportSurfaces_[report_name].assign(nullptr);
+		reportSurfaces_[report_name] = nullptr;
 		return;
 	}
 
@@ -2801,7 +2799,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 	// If the rectangle has just changed, assign the surface to it
 	if (!surf || new_rect != rect)
 	{
-		surf.assign(nullptr);
+		surf = nullptr;
 		rect = new_rect;
 
 		// If the rectangle is present, and we are blitting text,
@@ -2809,7 +2807,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 		// (Images generally won't need backing up,
 		// unless they are transparent, but that is done later).
 		if (rect.w > 0 && rect.h > 0) {
-			surf.assign(get_surface_portion(screen_.getSurface(), rect));
+			surf = get_surface_portion(screen_.getSurface(), rect);
 			if (reportSurfaces_[report_name] == nullptr) {
 				ERR_DP << "Could not backup background for report!" << std::endl;
 			}
@@ -2946,10 +2944,10 @@ void display::refresh_report(const std::string& report_name, const config * new_
 		}
 
 		skip_element:
-		t = elements.front()["tooltip"].t_str().base_str();
+		t = elements.front()["tooltip"].t_str().c_str();
 		if (!t.empty()) {
 			if (!used_ellipsis) {
-				tooltips::add_tooltip(area, t, elements.front()["help"].t_str().base_str());
+				tooltips::add_tooltip(area, t, elements.front()["help"].t_str().c_str());
 			} else {
 				// Collect all tooltips for the ellipsis.
 				// TODO: need a better separator
@@ -2971,9 +2969,6 @@ void display::invalidate_all()
 {
 	DBG_DP << "invalidate_all()\n";
 	invalidateAll_ = true;
-#ifdef _OPENMP
-#pragma omp critical(invalidated_)
-#endif //_OPENMP
 	invalidated_.clear();
 }
 
@@ -2983,9 +2978,6 @@ bool display::invalidate(const map_location& loc)
 		return false;
 
 	bool tmp;
-#ifdef _OPENMP
-#pragma omp critical(invalidated_)
-#endif //_OPENMP
 	tmp = invalidated_.insert(loc).second;
 	return tmp;
 }
@@ -2996,9 +2988,6 @@ bool display::invalidate(const std::set<map_location>& locs)
 		return false;
 	bool ret = false;
 	for (const map_location& loc : locs) {
-#ifdef _OPENMP
-#pragma omp critical(invalidated_)
-#endif //_OPENMP
 		ret = invalidated_.insert(loc).second || ret;
 	}
 	return ret;
@@ -3013,9 +3002,6 @@ bool display::propagate_invalidation(const std::set<map_location>& locs)
 		return false; // propagation never needed
 
 	bool result = false;
-#ifdef _OPENMP
-#pragma omp critical(invalidated_)
-#endif //_OPENMP
 	{
 		// search the first hex invalidated (if any)
 		std::set<map_location>::const_iterator i = locs.begin();

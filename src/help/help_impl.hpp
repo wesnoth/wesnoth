@@ -41,8 +41,9 @@
 #include <string>                       // for string, allocator, etc
 #include <utility>                      // for pair, make_pair
 #include <vector>                       // for vector, etc
-#include <SDL.h>                  // for SDL_Surface
+#include <SDL2/SDL.h>                  // for SDL_Surface
 #include <boost/logic/tribool.hpp>
+#include <boost/optional.hpp>
 
 class config;
 class unit_type;
@@ -61,10 +62,8 @@ typedef std::vector<section *> section_list;
 /// Generate a topic text on the fly.
 class topic_generator
 {
-	unsigned count;
-	friend class topic_text;
 public:
-	topic_generator(): count(1) {}
+	topic_generator() = default;
 	virtual std::string operator()() const = 0;
 	virtual ~topic_generator() {}
 };
@@ -81,30 +80,30 @@ public:
 class topic_text
 {
 	mutable std::vector< std::string > parsed_text_;
-	mutable topic_generator *generator_;
+	mutable std::shared_ptr<topic_generator> generator_;
 public:
-	~topic_text();
-	topic_text():
-		parsed_text_(),
-		generator_(nullptr)
-	{
-	}
+	topic_text() = default;
+	~topic_text() = default;
 
 	topic_text(const std::string& t):
 		parsed_text_(),
-		generator_(new text_topic_generator(t))
+		generator_(std::make_shared<text_topic_generator>(t))
 	{
 	}
 
-	explicit topic_text(topic_generator *g):
+	explicit topic_text(std::shared_ptr<topic_generator> g):
 		parsed_text_(),
 		generator_(g)
 	{
 	}
-	topic_text &operator=(topic_generator *g);
-	topic_text(const topic_text& t);
 
-    const std::vector<std::string>& parsed_text() const;
+	topic_text(const topic_text& t) = default;
+	topic_text(topic_text&& t) = default;
+	topic_text& operator=(topic_text&& t) = default;
+	topic_text& operator=(const topic_text& t) = default;
+	topic_text& operator=(std::shared_ptr<topic_generator> g);
+
+	const std::vector<std::string>& parsed_text() const;
 };
 
 /// A topic contains a title, an id and some text.
@@ -126,7 +125,7 @@ struct topic
 
 	topic(const std::string &_title, const std::string &_id, const std::string &_text)
 		: title(_title), id(_id), text(_text) {}
-	topic(const std::string &_title, const std::string &_id, topic_generator *g)
+	topic(const std::string &_title, const std::string &_id, std::shared_ptr<topic_generator> g)
 		: title(_title), id(_id), text(g) {}
 	/// Two topics are equal if their IDs are equal.
 	bool operator==(const topic &) const;
@@ -383,7 +382,10 @@ inline std::string bold(const std::string &s)
 		return ss.str();
 	}
 
-typedef std::vector<std::vector<std::pair<std::string, unsigned int >> > table_spec;
+// A string to be displayed and its width.
+typedef std::pair< std::string, unsigned > item;
+
+typedef std::vector<std::vector<help::item> > table_spec;
 // Create a table using the table specs. Return markup with jumps
 // that create a table. The table spec contains a vector with
 // vectors with pairs. The pairs are the markup string that should
@@ -393,6 +395,7 @@ std::string generate_table(const table_spec &tab, const unsigned int spacing=fon
 // Return the width for the image with filename.
 unsigned image_width(const std::string &filename);
 
-void push_tab_pair(std::vector<std::pair<std::string, unsigned int>> &v, const std::string &s);
+// Add to the vector v an help::item for the string s, preceded by the given image if any.
+void push_tab_pair(std::vector<help::item> &v, const std::string &s, const boost::optional<std::string> &image = {}, unsigned padding = 0);
 
 } // end namespace help

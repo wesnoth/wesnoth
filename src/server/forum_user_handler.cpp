@@ -172,7 +172,7 @@ void fuh::set_is_moderator(const std::string& name, const bool& is_moderator) {
 	}
 }
 
-fuh::BAN_TYPE fuh::user_is_banned(const std::string& name, const std::string& addr)
+fuh::ban_info fuh::user_is_banned(const std::string& name, const std::string& addr)
 {
 	//
 	// NOTE: glob IP and email address bans are NOT supported yet since they
@@ -186,17 +186,20 @@ fuh::BAN_TYPE fuh::user_is_banned(const std::string& name, const std::string& ad
 	const std::string& is_extant_ban_sql =
 		"ban_exclude = 0 AND (ban_end = 0 OR ban_end >=" + std::to_string(std::time(nullptr)) + ")";
 
+	// TODO: retrieve full ban info in a single statement instead of issuing
+	//       separate queries to check for a ban's existence and its duration.
+
 	try {
 		if(!addr.empty() && prepared_statement<bool>("SELECT 1 FROM `" + db_banlist_table_ + "` WHERE UPPER(ban_ip) = UPPER(?) AND " + is_extant_ban_sql, addr)) {
 			LOG_UH << "User '" << name << "' ip " << addr << " banned by IP address\n";
-			return BAN_IP;
+			return retrieve_ban_info(BAN_IP, addr);
 		}
 	} catch(const sql_error& e) {
 		ERR_UH << "Could not check forum bans on address '" << addr << "' :" << e.message << '\n';
-		return BAN_NONE;
+		return {};
 	}
 
-	if(!user_exists(name)) return BAN_NONE;
+	if(!user_exists(name)) return {};
 
 	try {
 		auto uid = get_detail_for_user<unsigned int>(name, "user_id");
@@ -205,21 +208,67 @@ fuh::BAN_TYPE fuh::user_is_banned(const std::string& name, const std::string& ad
 			ERR_UH << "Invalid user id for user '" << name << "'\n";
 		} else if(prepared_statement<bool>("SELECT 1 FROM `" + db_banlist_table_ + "` WHERE ban_userid = ? AND " + is_extant_ban_sql, uid)) {
 			LOG_UH << "User '" << name << "' uid " << uid << " banned by uid\n";
-			return BAN_USER;
+			return retrieve_ban_info(BAN_USER, uid);
 		}
 
 		auto email = get_detail_for_user<std::string>(name, "user_email");
 
 		if(!email.empty() && prepared_statement<bool>("SELECT 1 FROM `" + db_banlist_table_ + "` WHERE UPPER(ban_email) = UPPER(?) AND " + is_extant_ban_sql, email)) {
 			LOG_UH << "User '" << name << "' email " << email << " banned by email address\n";
-			return BAN_EMAIL;
+			return retrieve_ban_info(BAN_EMAIL, email);
 		}
 
 	} catch(const sql_error& e) {
 		ERR_UH << "Could not check forum bans on user '" << name << "' :" << e.message << '\n';
 	}
 
-	return BAN_NONE;
+	return {};
+}
+
+template<typename T>
+fuh::ban_info fuh::retrieve_ban_info(fuh::BAN_TYPE type, T detail)
+{
+	std::string col;
+
+	switch(type) {
+	case BAN_USER:
+		col = "ban_userid";
+		break;
+	case BAN_EMAIL:
+		col = "ban_email";
+		break;
+	case BAN_IP:
+		col = "ban_ip";
+		break;
+	default:
+		return {};
+	}
+
+	try {
+		return { type, retrieve_ban_duration_internal(col, detail) };
+	} catch(const sql_error& e) {
+		//
+		// NOTE:
+		// If retrieve_ban_internal() fails to fetch the ban row, odds are the ban was
+		// lifted in the meantime (it's meant to be called by user_is_banned(), so we
+		// assume the ban expires in one second instead of returning 0 (permanent ban)
+		// just to err on the safe side (returning BAN_NONE would be a terrible idea,
+		// for that matter).
+		//
+		return { type, 1 };
+	}
+}
+
+std::time_t fuh::retrieve_ban_duration_internal(const std::string& col, const std::string& detail)
+{
+	const std::time_t end_time = prepared_statement<int>("SELECT `ban_end` FROM `" + db_banlist_table_ + "` WHERE UPPER(" + col + ") = UPPER(?)", detail);
+	return end_time ? end_time - std::time(nullptr) : 0;
+}
+
+std::time_t fuh::retrieve_ban_duration_internal(const std::string& col, unsigned int detail)
+{
+	const std::time_t end_time = prepared_statement<int>("SELECT `ban_end` FROM `" + db_banlist_table_ + "` WHERE " + col + " = ?", detail);
+	return end_time ? end_time - std::time(nullptr) : 0;
 }
 
 std::string fuh::user_info(const std::string& name) {
@@ -314,7 +363,9 @@ inline T fuh::prepared_statement(const std::string& sql, Args&&... args)
 		WRN_UH << "caught sql error: " << e.message << std::endl;
 		WRN_UH << "trying to reconnect and retry..." << std::endl;
 		//Try to reconnect and execute query again
-		if(!mysql_real_connect(conn, db_host_.c_str(),  db_user_.c_str(), db_password_.c_str(), db_name_.c_str(), 0, nullptr, 0)) {
+		mysql_close(conn);
+		conn = mysql_init(nullptr);
+		if(!conn || !mysql_real_connect(conn, db_host_.c_str(),  db_user_.c_str(), db_password_.c_str(), db_name_.c_str(), 0, nullptr, 0)) {
 			ERR_UH << "Could not connect to database: " << mysql_errno(conn) << ": " << mysql_error(conn) << std::endl;
 			throw sql_error("Error querying database.");
 		}

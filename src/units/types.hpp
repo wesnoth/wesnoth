@@ -82,8 +82,7 @@ private: // These will be called by build().
 	void build_help_index(const movement_type_map &movement_types,
 		const race_map &races, const config::const_child_itors &traits);
 	/// Load the most needed data into an empty unit_type (build to CREATE).
-	void build_created(const movement_type_map &movement_types,
-		const race_map &races, const config::const_child_itors &traits);
+	void build_created();
 
 	typedef std::map<std::string,unit_type> variations_map;
 public:
@@ -275,6 +274,8 @@ public:
 	/// Attention: Filters in resistance-abilities will be ignored.
 	int resistance_against(const std::string& damage_name, bool attacker) const;
 
+	void apply_scenario_fix(const config& cfg);
+	void remove_scenario_fixes();
 private:
 	/// Generates (and returns) a trimmed config suitable for use with units.
 	const config & build_unit_cfg() const;
@@ -375,6 +376,8 @@ public:
 	/** Checks if the [hide_help] tag contains these IDs. */
 	bool hide_help(const std::string &type_id, const std::string &race_id) const;
 
+	void apply_scenario_fix(const config& cfg);
+	void remove_scenario_fixes();
 private:
 	/** Parses the [hide_help] tag. */
 	void read_hide_help(const config &cfg);

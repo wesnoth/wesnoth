@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <string>
 //forces to call Unicode winapi functions instead of ASCII (default)
 #ifndef UNICODE

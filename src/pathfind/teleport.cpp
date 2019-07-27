@@ -75,6 +75,7 @@ public:
 	const gamemap & map() const override { return *gm_; }
 	const std::vector<team> & teams() const override { return *tm_; }
 	const std::vector<std::string> & hidden_label_categories() const override { return *lbls_; }
+	std::vector<std::string>& hidden_label_categories() override { throw "Writable hidden label categories not supported in this context"; }
 
 private:
 	const unit_map * um_;

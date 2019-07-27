@@ -19,8 +19,6 @@
 #include <map>
 #include <vector>
 
-#include <ctime>
-
 /**
  * An example of how to implement user_handler.
  * If you use this on anything real, you are insane.
@@ -43,7 +41,7 @@ class suh : public user_handler {
 		bool user_is_moderator(const std::string& name);
 		void set_is_moderator(const std::string& name, const bool& is_moderator);
 
-		BAN_TYPE user_is_banned(const std::string& name, const std::string&);
+		ban_info user_is_banned(const std::string& name, const std::string&);
 
 		std::string user_info(const std::string& name);
 

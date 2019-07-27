@@ -28,8 +28,9 @@
 
 struct reset_gamestate_exception : public std::exception
 {
-	reset_gamestate_exception(std::shared_ptr<config> l, bool s = true) : level(l), start_replay(s) {}
+	reset_gamestate_exception(std::shared_ptr<config> l, std::shared_ptr<config> stats, bool s = true) : level(l), stats_(stats), start_replay(s) {}
 	std::shared_ptr<config> level;
+	std::shared_ptr<config> stats_;
 	bool start_replay;
 };
 
@@ -58,8 +59,7 @@ public:
 	bool get_player_type_changed() const { return player_type_changed_; }
 	void set_player_type_changed() { player_type_changed_ = true; }
 	virtual bool should_return_to_play_side() const override;
-	replay_controller * get_replay_controller() { return replay_controller_.get(); }
-	bool is_replay() override { return get_replay_controller() != nullptr; }
+	replay_controller * get_replay_controller() const override { return replay_controller_.get(); }
 	void enable_replay(bool is_unit_test = false);
 	void on_replay_end(bool is_unit_test);
 protected:

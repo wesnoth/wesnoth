@@ -35,7 +35,7 @@
 
 #include "utils/functional.hpp"
 
-#include <SDL_image.h>
+#include <SDL2/SDL_image.h>
 
 #include <cassert>
 #include <ios>
@@ -55,7 +55,7 @@ namespace {
 void make_screenshot(const std::string& name, bool map_screenshot)
 {
 	surface screenshot = display::get_singleton()->screenshot(map_screenshot);
-	if(!screenshot.null()) {
+	if(screenshot) {
 		std::string filename = filesystem::get_screenshot_dir() + "/" + name + "_";
 		filename = filesystem::get_next_filename(filename, ".png");
 		gui2::dialogs::screenshot_notification::display(filename, screenshot);

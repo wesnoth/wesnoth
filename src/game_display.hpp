@@ -95,9 +95,15 @@ public:
 
 	/**
 	 * Add more paths to highlight.  Print numbers where they overlap.
-	 * Used only by Show Enemy Moves.
+	 * Used by Show Enemy Moves.  If @a goal is not @c null_location, highlight
+	 * enemy units that can reach @a goal.
 	 */
-	void highlight_another_reach(const pathfind::paths &paths_list);
+	void highlight_another_reach(const pathfind::paths &paths_list,
+			const map_location& goal = map_location::null_location());
+	/**
+	 * Return the locations of units that can reach @a goal (@see highlight_another_reach()).
+	 */
+	const std::set<map_location>& units_that_can_reach_goal() const { return units_that_can_reach_goal_; }
 
 	/** Reset highlighting of paths. */
 	bool unhighlight_reach();
@@ -108,6 +114,12 @@ public:
 	 * valid after being set.
 	 */
 	void set_route(const pathfind::marked_route *route);
+	/**
+	 * Gets the route along which footsteps are drawn to show movement of a
+	 * unit. If no route is currently being shown, the array get_route().steps
+	 * will be empty.
+	 */
+	const pathfind::marked_route& get_route() { return route_; }
 
 	/** Function to float a label above a tile */
 	void float_label(const map_location& loc, const std::string& text, const color_t& color);
@@ -144,6 +156,8 @@ protected:
 
 	/** Inherited from display. */
 	virtual overlay_map& get_overlays() override;
+
+	std::set<map_location> units_that_can_reach_goal_;
 
 public:
 	/** Set the attack direction indicator. */

@@ -21,6 +21,8 @@
 
 #include "exceptions.hpp"
 
+#include <map>
+
 #include <boost/asio.hpp>
 #include <boost/asio/signal_set.hpp>
 #include <boost/shared_array.hpp>
@@ -80,6 +82,8 @@ protected:
 std::string client_address(socket_ptr socket);
 bool check_error(const boost::system::error_code& error, socket_ptr socket);
 
-void async_send_error(socket_ptr socket, const std::string& msg, const char* error_code = "");
-void async_send_warning(socket_ptr socket, const std::string& msg, const char* warning_code = "");
-void async_send_message(socket_ptr socket, const std::string& msg);
+typedef std::map<std::string, std::string> info_table;
+
+void async_send_error(socket_ptr socket, const std::string& msg, const char* error_code = "", const info_table& info = {});
+void async_send_warning(socket_ptr socket, const std::string& msg, const char* warning_code = "", const info_table& info = {});
+void async_send_message(socket_ptr socket, const std::string& msg, const info_table& info = {});

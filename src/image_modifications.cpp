@@ -284,7 +284,7 @@ surface adjust_alpha_modification::operator()(const surface & src) const
 
 	wfl::formula new_alpha(formula_);
 
-	surface nsurf(make_neutral_surface(src));
+	surface nsurf = src.clone();
 
 	if(nsurf == nullptr) {
 		std::cerr << "could not make neutral surface...\n";
@@ -331,7 +331,7 @@ surface adjust_channels_modification::operator()(const surface & src) const
 	wfl::formula new_blue(formulas_[2]);
 	wfl::formula new_alpha(formulas_[3]);
 
-	surface nsurf(make_neutral_surface(src));
+	surface nsurf = src.clone();
 
 	if(nsurf == nullptr) {
 		std::cerr << "could not make neutral surface...\n";
@@ -389,8 +389,7 @@ surface crop_modification::operator()(const surface& src) const
 	 * Since it seems to work for most cases, rather change this caller instead
 	 * of the function signature. (The issue was discovered in bug #20876).
 	 */
-	surface temp = cut_surface(make_neutral_surface(src), area);
-	return temp;
+	return cut_surface(src, area);
 }
 
 surface blit_modification::operator()(const surface& src) const
@@ -429,10 +428,9 @@ surface blit_modification::operator()(const surface& src) const
 		throw imod_exception(sstr);
 	}
 
-	surface nsrc = make_neutral_surface(src);
-	surface nsurf = make_neutral_surface(surf_);
+	surface nsrc = src.clone();
 	SDL_Rect r {x_, y_, 0, 0};
-	sdl_blit(nsurf, nullptr, nsrc, &r);
+	sdl_blit(surf_, nullptr, nsrc, &r);
 	return nsrc;
 }
 
@@ -443,7 +441,7 @@ surface mask_modification::operator()(const surface& src) const
 	}
 
 	SDL_Rect r {x_, y_, 0, 0};
-	surface new_mask = create_neutral_surface(src->w, src->h);
+	surface new_mask(src->w, src->h);
 	sdl_blit(mask_, nullptr, new_mask, &r);
 	return mask_surface(src, new_mask);
 }
@@ -456,7 +454,7 @@ surface light_modification::operator()(const surface& src) const {
 	if(surf_->w != src->w || surf_->h != src->h) {
 		nsurf = scale_surface(surf_, src->w, src->h);
 	} else {
-		nsurf = make_neutral_surface(surf_);
+		nsurf = surf_;
 	}
 
 	return light_surface(src, nsurf);
@@ -538,7 +536,7 @@ surface xbrz_modification::operator()(const surface& src) const
  */
 surface o_modification::operator()(const surface& src) const
 {
-	surface nsurf(make_neutral_surface(src));
+	surface nsurf = src.clone();
 
 	if(nsurf == nullptr) {
 		std::cerr << "could not make neutral surface...\n";
@@ -592,11 +590,10 @@ surface bl_modification::operator()(const surface& src) const
 
 surface background_modification::operator()(const surface &src) const
 {
-	surface ret = make_neutral_surface(src);
+	surface ret = src.clone();
 	SDL_FillRect(ret, nullptr, SDL_MapRGBA(ret->format, color_.r, color_.g,
 					    color_.b, color_.a));
-	surface temp = src;
-	sdl_blit(temp, nullptr, ret, nullptr);
+	sdl_blit(src, nullptr, ret, nullptr);
 	return ret;
 }
 
@@ -1019,12 +1016,12 @@ REGISTER_MOD_PARSER(BLIT, args)
 		ERR_DP << "no arguments passed to the ~BLIT() function" << std::endl;
 		return nullptr;
 	}
-	
+
 	if(s > 3){
 		ERR_DP << "too many arguments passed to the ~BLIT() function" << std::endl;
 		return nullptr;
 	}
-	
+
 	int x = 0, y = 0;
 
 	if(s == 3) {

@@ -84,7 +84,27 @@ void mp_staging::pre_show(window& window)
 	update_status_label_and_buttons(window);
 
 	//
+	// Set up teams
+	//
+	for(const ng::connect_engine::team_data_pod& team : connect_engine_.team_data()) {
+		tree_view& tree = find_widget<tree_view>(&window, "side_list", false);
+		static const std::map<std::string, string_map> empty_map;
+
+		std::map<std::string, string_map> tree_data;
+		string_map tree_item;
+
+		tree_item["label"] = (formatter() << _("Team:") << " " << t_string::from_serialized(team.user_team_name)).str();
+		tree_data.emplace("tree_view_node_label", tree_item);
+
+		tree_view_node& team_node = tree.add_node("team_header", tree_data);
+		team_node.add_sibling("side_spacer", empty_map);
+
+		team_tree_map_[team.team_name] = &team_node;
+	}
+
+	//
 	// Set up sides list
+	// This must be after setting up teams because add_side_node() uses team_tree_map_
 	//
 	for(const auto& side : connect_engine_.side_engines()) {
 		if(side->allow_player() || game_config::debug) {
@@ -141,9 +161,6 @@ int mp_staging::get_side_node_position(ng::side_engine_ptr side) const
 
 void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 {
-	tree_view& tree = find_widget<tree_view>(&window, "side_list", false);
-	static const std::map<std::string, string_map> empty_map;
-
 	std::map<std::string, string_map> data;
 	string_map item;
 
@@ -157,21 +174,6 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	item["label"] = "icons/icon-random.png";
 	data.emplace("leader_gender", item);
 
-	// Check to see whether we've added a toplevel tree node for this team. If not, add one
-	if(team_tree_map_.find(side->team_name()) == team_tree_map_.end()) {
-		std::map<std::string, string_map> tree_data;
-		string_map tree_item;
-
-		tree_item["label"] = (formatter() << _("Team:") << " " << side->user_team_name()).str();
-		tree_data.emplace("tree_view_node_label", tree_item);
-
-		tree_view_node& team_node = tree.add_node("team_header", tree_data);
-		team_node.add_sibling("side_spacer", empty_map);
-
-		team_tree_map_[side->team_name()] = &team_node;
-	}
-
-	// Must be *after* the above if block, or the node ptr could be invalid
 	tree_view_node& node = team_tree_map_[side->team_name()]->add_child("side_panel", data, get_side_node_position(side));
 
 	side_tree_map_[side] = &node;

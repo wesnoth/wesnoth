@@ -77,7 +77,7 @@ void server_base::start_server()
 
 void server_base::serve(boost::asio::ip::tcp::acceptor& acceptor)
 {
-	socket_ptr socket = std::make_shared<boost::asio::ip::tcp::socket>(std::ref(io_service_));
+	socket_ptr socket = std::make_shared<boost::asio::ip::tcp::socket>(io_service_);
 	acceptor.async_accept(*socket, [&acceptor, socket, this](const boost::system::error_code& error){
 		this->accept_connection(acceptor, error, socket);
 	});
@@ -208,32 +208,51 @@ bool check_error(const boost::system::error_code& error, socket_ptr socket)
 	return false;
 }
 
-void async_send_error(socket_ptr socket, const std::string& msg, const char* error_code)
+namespace {
+
+void info_table_into_simple_wml(simple_wml::document& doc, const std::string& parent_name, const info_table& info)
+{
+	if(info.empty()) {
+		return;
+	}
+
+	auto& node = doc.child(parent_name.c_str())->add_child("data");
+	for(const auto& kv : info) {
+		node.set_attr_dup(kv.first.c_str(), kv.second.c_str());
+	}
+}
+
+}
+
+void async_send_error(socket_ptr socket, const std::string& msg, const char* error_code, const info_table& info)
 {
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr_dup("message", msg.c_str());
 	if(*error_code != '\0') {
 		doc.child("error")->set_attr("error_code", error_code);
 	}
+	info_table_into_simple_wml(doc, "error", info);
 
 	async_send_doc(socket, doc);
 }
 
-void async_send_warning(socket_ptr socket, const std::string& msg, const char* warning_code)
+void async_send_warning(socket_ptr socket, const std::string& msg, const char* warning_code, const info_table& info)
 {
 	simple_wml::document doc;
 	doc.root().add_child("warning").set_attr_dup("message", msg.c_str());
 	if(*warning_code != '\0') {
 		doc.child("warning")->set_attr("warning_code", warning_code);
 	}
+	info_table_into_simple_wml(doc, "warning", info);
 
 	async_send_doc(socket, doc);
 }
 
-void async_send_message(socket_ptr socket, const std::string& msg)
+void async_send_message(socket_ptr socket, const std::string& msg, const info_table& info)
 {
 	simple_wml::document doc;
 	doc.root().add_child("message").set_attr_dup("message", msg.c_str());
+	info_table_into_simple_wml(doc, "message", info);
 
 	async_send_doc(socket, doc);
 }

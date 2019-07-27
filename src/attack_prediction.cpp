@@ -2107,8 +2107,8 @@ void complex_fight(attack_prediction_mode mode,
 		debug(("Using exact probability calculations.\n"));
 
 		probability_combat_matrix* pm = new probability_combat_matrix(stats.max_hp, opp_stats.max_hp, stats.hp,
-				opp_stats.hp, summary, opp_summary, stats.slows || opp_stats.is_slowed,
-				opp_stats.slows || stats.is_slowed, a_damage, b_damage, a_slow_damage, b_slow_damage,
+				opp_stats.hp, summary, opp_summary, stats.slows, opp_stats.slows,
+				a_damage, b_damage, a_slow_damage, b_slow_damage,
 				stats.drain_percent, opp_stats.drain_percent, stats.drain_constant, opp_stats.drain_constant);
 		m.reset(pm);
 
@@ -2169,8 +2169,8 @@ void complex_fight(attack_prediction_mode mode,
 		debug(("Using Monte Carlo simulation.\n"));
 
 		monte_carlo_combat_matrix* mcm = new monte_carlo_combat_matrix(stats.max_hp, opp_stats.max_hp, stats.hp,
-				opp_stats.hp, summary, opp_summary, stats.slows || opp_stats.is_slowed,
-				opp_stats.slows || stats.is_slowed, a_damage, b_damage, a_slow_damage, b_slow_damage,
+				opp_stats.hp, summary, opp_summary, stats.slows, opp_stats.slows,
+				a_damage, b_damage, a_slow_damage, b_slow_damage,
 				stats.drain_percent, opp_stats.drain_percent, stats.drain_constant, opp_stats.drain_constant, rounds,
 				hit_chance, opp_hit_chance, split, opp_split, initially_slowed_chance, opp_initially_slowed_chance);
 		m.reset(mcm);

@@ -70,7 +70,7 @@ class fuh : public user_handler {
 		bool user_is_moderator(const std::string& name);
 		void set_is_moderator(const std::string& name, const bool& is_moderator);
 
-		BAN_TYPE user_is_banned(const std::string& name, const std::string& addr);
+		ban_info user_is_banned(const std::string& name, const std::string& addr);
 
 		// Throws user_handler::error
 		std::string user_info(const std::string& name);
@@ -92,9 +92,13 @@ class fuh : public user_handler {
 
 		void set_lastlogin(const std::string& user, const std::time_t& lastlogin);
 
-		std::string db_name_, db_host_, db_user_, db_password_, db_users_table_, db_banlist_table_, db_extra_table_;
+		template<typename T>
+		ban_info retrieve_ban_info(BAN_TYPE, T detail);
 
-		typedef std::unique_ptr<MYSQL_RES, decltype(&mysql_free_result)> mysql_result;
+		std::time_t retrieve_ban_duration_internal(const std::string& col, const std::string& detail);
+		std::time_t retrieve_ban_duration_internal(const std::string& col, unsigned int detail);
+
+		std::string db_name_, db_host_, db_user_, db_password_, db_users_table_, db_banlist_table_, db_extra_table_;
 
 		MYSQL *conn;
 

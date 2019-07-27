@@ -23,6 +23,8 @@
 #include "actions/vision.hpp"
 
 #include "ai/lua/aspect_advancements.hpp"
+#include "formula/callable_objects.hpp"
+#include "formula/formula.hpp"
 #include "game_config.hpp"
 #include "game_data.hpp"
 #include "game_events/pump.hpp"
@@ -1094,14 +1096,16 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 			? (dies
 				? statistics::attack_context::KILLS
 				: statistics::attack_context::HITS)
-			: statistics::attack_context::MISSES, damage_done, drains_damage
+			: statistics::attack_context::MISSES,
+			attacker.cth_, damage_done, drains_damage
 		);
 	} else {
 		stats.defend_result(hits
 			? (dies
 				? statistics::attack_context::KILLS
 				: statistics::attack_context::HITS)
-			: statistics::attack_context::MISSES, damage_done, drains_damage
+			: statistics::attack_context::MISSES,
+			attacker.cth_, damage_done, drains_damage
 		);
 	}
 
@@ -1588,24 +1592,27 @@ bool unit::abilities_filter_matches(const config& cfg, bool attacker, int res) c
 
 //functions for emulate weapon specials.
 //filter opponent and affect self/opponent/both option.
-bool unit::ability_filter_fighter(const std::string& ability, const std::string& filter_attacker , const config& cfg, const map_location& loc) const
+bool unit::ability_filter_fighter(const std::string& ability, const std::string& filter_attacker , const config& cfg, const map_location& loc, const unit& u2) const
 {
 	const config &filter = cfg.child(filter_attacker);
 	if(!filter) {
 		return true;
 	}
-	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
+	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc, u2);
 }
 
 static bool ability_apply_filter(const unit_map::const_iterator un, const unit_map::const_iterator up, const std::string& ability, const config& cfg, const map_location& loc, const map_location& opp_loc, bool attacker )
 {
-	if(!up->ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc)){
+	if(!up->ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc, *un)){
 		return true;
 	}
-	if((attacker && !un->ability_filter_fighter(ability, "filter_attacker", cfg, loc)) || (!attacker && !up->ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc))){
+	if(!un->ability_filter_fighter(ability, "filter_student", cfg, loc, *up)){
 		return true;
 	}
-	if((!attacker && !un->ability_filter_fighter(ability, "filter_defender", cfg, loc)) || (attacker && !up->ability_filter_fighter(ability, "filter_defender", cfg, opp_loc))){
+	if((attacker && !un->ability_filter_fighter(ability, "filter_attacker", cfg, loc, *up)) || (!attacker && !up->ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc, *un))){
+		return true;
+	}
+	if((!attacker && !un->ability_filter_fighter(ability, "filter_defender", cfg, loc, *up)) || (attacker && !up->ability_filter_fighter(ability, "filter_defender", cfg, opp_loc, *un))){
 		return true;
 	}
 	return false;
@@ -1671,12 +1678,13 @@ std::pair<int, bool> ability_leadership(const std::string& ability,const unit_ma
 	unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
 		const config &filter = (*i->first).child("filter_opponent");
+		const config &filter_student = (*i->first).child("filter_student");
 		const config &filter_attacker = (*i->first).child("filter_attacker");
 		const config &filter_defender = (*i->first).child("filter_defender");
 		bool show_result = false;
-		if(up == units.end() && !filter && !filter_attacker && !filter_defender) {
+		if(up == units.end() && !filter_student && !filter && !filter_attacker && !filter_defender) {
 			show_result = un->abilities_filter_matches(*i->first, attacker, abil_value);
-		} else if(up == units.end() && (filter || filter_attacker || filter_defender)) {
+		} else if(up == units.end() && (filter_student || filter || filter_attacker || filter_defender)) {
 			return {abil_value, false};
 		} else {
 			show_result = !(!un->abilities_filter_matches(*i->first, attacker, abil_value) || ability_apply_filter(un, up, ability, *i->first, loc, opp_loc, attacker));

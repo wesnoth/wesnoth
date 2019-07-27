@@ -31,6 +31,7 @@
 #include "units/animation_component.hpp"
 #include "units/filter.hpp"
 #include "units/map.hpp"
+#include "utils/scope_exit.hpp"
 
 #define LOG_DP LOG_STREAM(info, display)
 
@@ -746,28 +747,30 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 	unit_map::const_iterator leader = disp->get_units().find(leader_loc); // may be null_location
 	const bool leader_visible = (leader != disp->get_units().end()) && leader->is_visible_to_team(viewing_team, false);
 
-	u->set_hidden(true);
-
 	unit_animator animator;
 
-	if (leader_visible && unit_visible) {
-		disp->scroll_to_tiles(loc,leader_loc,game_display::ONSCREEN,true,0.0,false);
-	} else if (leader_visible) {
-		disp->scroll_to_tile(leader_loc,game_display::ONSCREEN,true,false);
-	} else if (unit_visible) {
-		disp->scroll_to_tile(loc,game_display::ONSCREEN,true,false);
-	} else {
-		return;
-	}
-	if (leader != disp->get_units().end()) {
-		leader->set_facing(leader_loc.get_relative_dir(loc));
-		if (leader_visible) {
-			animator.add_animation(&*leader, "recruiting", leader_loc, loc, 0, true);
-		}
-	}
+	{
+		utils::scope_exit se([u] () { u->set_hidden(false); });
+		u->set_hidden(true);
 
-	disp->draw();
-	u->set_hidden(false);
+		if (leader_visible && unit_visible) {
+			disp->scroll_to_tiles(loc,leader_loc,game_display::ONSCREEN,true,0.0,false);
+		} else if (leader_visible) {
+			disp->scroll_to_tile(leader_loc,game_display::ONSCREEN,true,false);
+		} else if (unit_visible) {
+			disp->scroll_to_tile(loc,game_display::ONSCREEN,true,false);
+		} else {
+			return;
+		}
+		if (leader != disp->get_units().end()) {
+			leader->set_facing(leader_loc.get_relative_dir(loc));
+			if (leader_visible) {
+				animator.add_animation(&*leader, "recruiting", leader_loc, loc, 0, true);
+			}
+		}
+
+		disp->draw();
+	}
 	animator.add_animation(&*u, "recruited", loc, leader_loc);
 	animator.start_animations();
 	animator.wait_for_end();

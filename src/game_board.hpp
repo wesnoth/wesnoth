@@ -126,6 +126,11 @@ public:
 		return labels_;
 	}
 
+	virtual std::vector<std::string>& hidden_label_categories() override
+	{
+		return labels_;
+	}
+
 	// Copy and swap idiom, because we have a scoped pointer.
 
 	game_board(const game_board & other);

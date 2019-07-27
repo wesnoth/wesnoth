@@ -239,6 +239,7 @@ local function place_units(unittypes, x, y)
 		})
 		local dst_x, dst_y = wesnoth.find_vacant_tile(x, y, u)
 		u:to_map(dst_x, dst_y)
+		wesnoth.add_known_unit(v)
 		wesnoth.set_village_owner(dst_x, dst_y, 1)
 	end
 end
@@ -313,6 +314,8 @@ on_event("new turn", function()
 		canrecruit=true,
 		message= _ "The last and most powerful of these creatures are almost upon us. I feel that if we can finish them off in time, we shall be victorious.",
 	}
+
+	wml.variables["next_final_spawn"] = wesnoth.current.turn + wesnoth.random(1,2)
 end)
 
 -- after the first final spawn, spawn a new final spawn every 1 or 2 turns.

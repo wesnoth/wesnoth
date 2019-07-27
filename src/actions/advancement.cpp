@@ -228,7 +228,10 @@ namespace
 		}
 		virtual std::string description() const
 		{
-			return _("an advancement choice");
+			// TRANSLATORS: In networked games, when one player has the choice
+			// between multiple advancements of a unit, this text is sent to
+			// other players. It will be embedded within a message.
+			return _("waiting for^an advancement choice");
 		}
 	private:
 		const map_location loc_;

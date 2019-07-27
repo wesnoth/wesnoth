@@ -18,6 +18,7 @@ class CVideo;
 
 #include <cassert>
 #include <vector>
+#include <string>
 
 #include "utils/functional.hpp"
 

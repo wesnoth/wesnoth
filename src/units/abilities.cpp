@@ -265,20 +265,17 @@ namespace {
 		                     gender == unit_race::MALE ? male_key : female_key,
 		                     default_key);
 	}
-}
 
-std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability_tooltips(boost::dynamic_bitset<>* active_list) const
-{
-	std::vector<std::tuple<std::string, t_string,t_string,t_string>> res;
-	if ( active_list )
-		active_list->clear();
-
-	for (const config::any_child &ab : this->abilities_.all_children_range())
+	/**
+	 * Adds a quadruple consisting of (in order) id, base name,
+	 * male or female name as appropriate for the unit, and description.
+	 *
+	 * @returns Whether name was resolved and quadruple added.
+	 */
+	bool add_ability_tooltip(const config::any_child &ab, unit_race::GENDER gender, std::vector<std::tuple<std::string, t_string,t_string,t_string>>& res, bool active)
 	{
-		if ( !active_list || ability_active(ab.key, ab.cfg, loc_) )
-		{
-			const t_string& name =
-				gender_value(ab.cfg, gender_, "name", "female_name", "name").t_str();
+		if (active) {
+			const t_string& name = gender_value(ab.cfg, gender, "name", "female_name", "name").t_str();
 
 			if (!name.empty()) {
 				res.emplace_back(
@@ -286,18 +283,17 @@ std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability
 						ab.cfg["name"].t_str(),
 						name,
 						ab.cfg["description"].t_str() );
-				if ( active_list )
-					active_list->push_back(true);
+				return true;
 			}
 		}
 		else
 		{
 			// See if an inactive name was specified.
 			const config::attribute_value& inactive_value =
-				gender_value(ab.cfg, gender_, "name_inactive",
-				             "female_name_inactive", "name_inactive");
+				gender_value(ab.cfg, gender, "name_inactive",
+						"female_name_inactive", "name_inactive");
 			const t_string& name = !inactive_value.blank() ? inactive_value.t_str() :
-				gender_value(ab.cfg, gender_, "name", "female_name", "name").t_str();
+				gender_value(ab.cfg, gender, "name", "female_name", "name").t_str();
 
 			if (!name.empty()) {
 				res.emplace_back(
@@ -305,8 +301,37 @@ std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability
 						default_value(ab.cfg, "name_inactive", "name").t_str(),
 						name,
 						default_value(ab.cfg, "description_inactive", "description").t_str() );
-				active_list->push_back(false);
+				return true;
 			}
+		}
+
+		return false;
+	}
+}
+
+std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability_tooltips() const
+{
+	std::vector<std::tuple<std::string, t_string,t_string,t_string>> res;
+
+	for (const config::any_child &ab : this->abilities_.all_children_range())
+	{
+		add_ability_tooltip(ab, gender_, res, true);
+	}
+
+	return res;
+}
+
+std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability_tooltips(boost::dynamic_bitset<>& active_list, const map_location& loc) const
+{
+	std::vector<std::tuple<std::string, t_string,t_string,t_string>> res;
+	active_list.clear();
+
+	for (const config::any_child &ab : this->abilities_.all_children_range())
+	{
+		bool active = ability_active(ab.key, ab.cfg, loc);
+		if (add_ability_tooltip(ab, gender_, res, active))
+		{
+			active_list.push_back(active);
 		}
 	}
 	return res;

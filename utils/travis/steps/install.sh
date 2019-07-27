@@ -24,6 +24,7 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
         travis_wait ./projectfiles/Xcode/Fix_Xcode_Dependencies
     else
         brew install scons cairo pango moreutils sdl2_image sdl2_ttf sdl2_mixer glew ccache
+        brew reinstall libffi
     fi
 else
     if [ "$NLS" != "true" ]; then

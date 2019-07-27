@@ -47,10 +47,30 @@ namespace statistics
 		/** A type that will map different % chances to hit to different results. */
 		typedef std::map<int,battle_sequence_frequency_map> battle_result_map;
 
-		battle_result_map attacks, defends;
+		/// Statistics of this side's attacks on its own turns.
+		battle_result_map attacks_inflicted;
+		/// Statistics of this side's attacks on enemies' turns.
+		battle_result_map defends_inflicted;
+		/// Statistics of enemies' counter attacks on this side's turns.
+		battle_result_map attacks_taken;
+		/// Statistics of enemies' attacks against this side on their turns.
+		battle_result_map defends_taken;
 
 		long long damage_inflicted, damage_taken;
 		long long turn_damage_inflicted, turn_damage_taken;
+
+		struct hitrate_t
+		{
+			int strikes; //< Number of strike attempts at the given CTH
+			int hits; //< Number of strikes that hit at the given CTH
+			hitrate_t() = default;
+			explicit hitrate_t(const config& cfg);
+			config write() const;
+		};
+		/// A type that maps chance-to-hit percentage to number of hits and strikes at that CTH.
+		typedef std::map<int, hitrate_t> hitrate_map;
+		hitrate_map by_cth_inflicted, by_cth_taken;
+		hitrate_map turn_by_cth_inflicted, turn_by_cth_taken;
 
 		static const int decimal_shift = 1000;
 
@@ -80,8 +100,8 @@ namespace statistics
 		enum hit_result { MISSES, HITS, KILLS };
 
 		void attack_expected_damage(double attacker_inflict, double defender_inflict);
-		void attack_result(hit_result res, int damage, int drain);
-		void defend_result(hit_result res, int damage, int drain);
+		void attack_result(hit_result res, int cth, int damage, int drain);
+		void defend_result(hit_result res, int cth, int damage, int drain);
 
 	private:
 
@@ -106,7 +126,10 @@ namespace statistics
 	void write_stats(config_writer &out);
 	void read_stats(const config& cfg);
 	void fresh_stats();
+	/// Delete the current scenario from the stats.
 	void clear_current_scenario();
+	/// Reset the stats of the current scenario to the beginning.
+	void reset_current_scenario();
 
 	void reset_turn_stats(const std::string & save_id);
 	stats calculate_stats(const std::string & save_id);
@@ -115,3 +138,4 @@ namespace statistics
 	/// Returns a list of names and stats for each scenario in the current campaign.
 	levels level_stats(const std::string & save_id);
 } // end namespace statistics
+std::ostream& operator<<(std::ostream& outstream, const statistics::stats::hitrate_t& by_cth);

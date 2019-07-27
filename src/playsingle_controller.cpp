@@ -203,6 +203,13 @@ void playsingle_controller::play_scenario_main_loop()
 			for(std::size_t i = 0; i < local_players.size(); ++i) {
 				local_players[i] = gamestate().board_.teams()[i].is_local();
 			}
+			if(ex.start_replay) {
+				// MP "Back to turn"
+				statistics::read_stats(*ex.stats_);
+			} else {
+				// SP replay
+				statistics::reset_current_scenario();
+			}
 			reset_gamestate(*ex.level, (*ex.level)["replay_pos"]);
 			for(std::size_t i = 0; i < local_players.size(); ++i) {
 				resources::gameboard->teams()[i].set_local(local_players[i]);
@@ -667,7 +674,7 @@ void playsingle_controller::reset_replay()
 {
 	if(replay_controller_ && replay_controller_->allow_reset_replay()) {
 		replay_controller_->stop_replay();
-		throw reset_gamestate_exception(replay_controller_->get_reset_state(), false);
+		throw reset_gamestate_exception(replay_controller_->get_reset_state(), {}, false);
 	}
 	else {
 		ERR_NG << "received invalid reset replay\n";

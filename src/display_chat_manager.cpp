@@ -27,7 +27,7 @@
 #include "preferences/credentials.hpp"
 #include "serialization/utf8_exception.hpp"
 
-#include <SDL_timer.h>
+#include <SDL2/SDL_timer.h>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -194,7 +194,7 @@ void display_chat_manager::prune_chat_messages(bool remove_all)
 	const unsigned message_aging = preferences::chat_message_aging();
 	const unsigned max_chat_messages = preferences::chat_lines();
 	const bool enable_aging = message_aging != 0;
-	
+
 	const unsigned remove_before = enable_aging ? safe_subtract(SDL_GetTicks(), message_aging * 60 * 1000) : 0;
 	int movement = 0;
 

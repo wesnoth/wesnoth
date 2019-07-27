@@ -65,7 +65,7 @@ def InstallBinary(env, source):
         env.InstallAs(os.path.join(installdir, binary + env["program_suffix"]), source)
     )
 
-def InstallData(env, datadir, component, source, subdir = ""):
+def InstallData(env, datadir, component, source, subdir = "", **kwargs):
     installdir = Dir(env.subst(os.path.join(env["destdir"], env[datadir].lstrip("/"), subdir)))
     sources = map(Entry, Flatten([source]))
     dirs = []
@@ -74,12 +74,12 @@ def InstallData(env, datadir, component, source, subdir = ""):
             dirs.append(source)
         else:
             if source.exists():
-                env.Alias("install-" + component, env.Install(installdir, source))
+                env.Alias("install-" + component, env.Install(installdir, source, **kwargs))
     if dirs:
         if len(dirs) == 1:
-            install = env.InstallFiltered(installdir.path, dirs[0].path)
+            install = env.InstallFiltered(installdir.path, dirs[0].path, **kwargs)
         else:
-            install = [env.InstallFiltered(os.path.join(installdir.path, x.name), x.path) for x in dirs]
+            install = [env.InstallFiltered(os.path.join(installdir.path, x.name, **kwargs), x.path) for x in dirs]
         AlwaysBuild(install)
         env.Alias("install-" + component, install)
 

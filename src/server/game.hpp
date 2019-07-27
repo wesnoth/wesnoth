@@ -74,8 +74,8 @@ public:
 	bool is_observer(const socket_ptr& player) const;
 	bool is_player(const socket_ptr& player) const;
 
-	/** Checks whether the connection's ip address is banned. */
-	bool player_is_banned(const socket_ptr& player) const;
+	/** Checks whether the connection's ip address or username is banned. */
+	bool player_is_banned(const socket_ptr& player, const std::string& name) const;
 
 	/** when the host sends the new scenario of a mp campaign */
 	void new_scenario(const socket_ptr& player);
@@ -281,6 +281,11 @@ public:
 	{
 		password_ = passwd;
 	}
+	
+	void set_name_bans(const std::vector<std::string> name_bans)
+	{
+	  name_bans_ = name_bans;
+	}
 
 	bool password_matches(const std::string& passwd) const
 	{
@@ -403,11 +408,10 @@ private:
 	bool is_legal_command(const simple_wml::node& command, const socket_ptr& user);
 
 	/**
-	 * Checks whether a user has the same IP as members of this game.
-	 * If observer is true it only checks against players.
+	 * Checks whether a user has the same IP as any other members of this game.
 	 * @return  A comma separated string of members with matching IPs.
 	 */
-	std::string has_same_ip(const socket_ptr& user, bool observer) const;
+	std::string has_same_ip(const socket_ptr& user) const;
 
 	/**
 	 * Function which should be called every time a player ends their turn
@@ -501,7 +505,9 @@ private:
 	int num_turns_;
 	bool all_observers_muted_;
 
+	// IP ban list and name ban list
 	std::vector<std::string> bans_;
+	std::vector<std::string> name_bans_;
 	/// in multiplayer campaigns it can happen that some players are still in the previousl scenario
 	/// keep track of those players because processing certain
 	/// input from those side wil lead to error (oos)
