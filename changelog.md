@@ -29,8 +29,12 @@
      * [goal]name=protect_unit: do not protect units hidden from the AI
      * General code clean-up, in particular of TODOs left over from 1.7 and 1.9
  ### Campaigns
-   * A Tale of Two Brothers
+   * A Tale of Two Brothers:
      * S2 'Chase': improved behavior of undead side leader with custom AI
+   * Delfador's Memoirs:
+     * S08: Show carryover report to make it clear the scenario has ended
+     * S09 & 10: Increase difficulty
+     * S12: Allow respective recruits when the loyalists & mages join Delfador
    * Secrets of the Ancients:
      * Added ability to recruit different kinds of walking corpses during the campaign.
      * Unit type naming convention cleanup.
