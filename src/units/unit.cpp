@@ -2122,9 +2122,9 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			std::vector<std::string> temp_overlays = utils::parenthetical_split(add, ',');
 			std::vector<std::string>::iterator it;
 			for(it=temp_overlays.begin();it<temp_overlays.end();++it) {
-				 auto itr = std::find(overlays_.begin(), overlays_.end(), *it);
-				 if (itr != overlays_.end()){}
-				 else {overlays_.push_back(*it);}
+				auto itr = std::find(overlays_.begin(), overlays_.end(), *it);
+				if (itr != overlays_.end()){}
+				else {overlays_.push_back(*it);}
 			}
 		}
 		else if(!replace.empty()) {
