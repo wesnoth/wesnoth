@@ -915,8 +915,6 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	is_fearless_ = false;
 	is_healthy_ = false;
 	image_mods_.clear();
-	std::vector<std::string> temp_overlays = overlays_;
-	overlays_.clear();
 
 	// Clear modification-related caches
 	modification_descriptions_.clear();
@@ -1001,19 +999,6 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	// since there can be filters on the modifications
 	// that may result in different effects after the advancement.
 	apply_modifications();
-	std::vector<std::string>::iterator it;
-	if(!overlays_.empty()){
-		for(it=temp_overlays.begin();it<temp_overlays.end();++it) {
-			auto itr = std::find(overlays_.begin(), overlays_.end(), *it);
-			if (itr != overlays_.end()) {}
-			else {overlays_.push_back(*it);}
-		}
-	}
-	else {
-		overlays_ = temp_overlays;
-	}
-
-            temp_overlays.clear();
 
 	// Now that modifications are done modifying traits, check if poison should
 	// be cleared.
@@ -2137,7 +2122,9 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			std::vector<std::string> temp_overlays = utils::parenthetical_split(add, ',');
 			std::vector<std::string>::iterator it;
 			for(it=temp_overlays.begin();it<temp_overlays.end();++it) {
-				overlays_.push_back(*it);
+				 auto itr = std::find(overlays_.begin(), overlays_.end(), *it);
+				 if (itr != overlays_.end()){}
+				 else {overlays_.push_back(*it);}
 			}
 		}
 		else if(!replace.empty()) {
