@@ -350,7 +350,7 @@ end
 function wml_actions.unit_overlay(cfg)
 	local img = cfg.image or helper.wml_error( "[unit_overlay] missing required image= attribute" )
 	for i,u in ipairs(wesnoth.get_units(cfg)) do
-				local ucfg = u.__cfg
+		local ucfg = u.__cfg
 		for w in utils.split(ucfg.overlays) do
 			if w == img then ucfg = nil end
 		end
