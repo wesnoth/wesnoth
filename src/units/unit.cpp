@@ -104,6 +104,7 @@ namespace
 		"side",
 		"underlying_id",
 		"overlays",
+		"bis_overlays",
 		"facing",
 		"race",
 		"level",
@@ -338,6 +339,7 @@ unit::unit(const unit& o)
 	, filter_recall_(o.filter_recall_)
 	, emit_zoc_(o.emit_zoc_)
 	, overlays_(o.overlays_)
+	, bis_overlays_(o.bis_overlays_)
 	, role_(o.role_)
 	, attacks_(o.attacks_)
 	, facing_(o.facing_)
@@ -418,6 +420,7 @@ unit::unit()
 	, filter_recall_()
 	, emit_zoc_(0)
 	, overlays_()
+	, bis_overlays_()
 	, role_()
 	, attacks_()
 	, facing_(map_location::NDIRECTIONS)
@@ -515,6 +518,13 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		overlays_ = utils::parenthetical_split(v->str(), ',');
 		if(overlays_.size() == 1 && overlays_.front().empty()) {
 			overlays_.clear();
+		}
+	}
+
+	if(const config::attribute_value* v = cfg.get("bis_overlays")) {
+		bis_overlays_ = utils::parenthetical_split(v->str(), ',');
+		if(bis_overlays_.size() == 1 && bis_overlays_.front().empty()) {
+			bis_overlays_.clear();
 		}
 	}
 
@@ -798,6 +808,7 @@ void unit::swap(unit & o)
 	swap(filter_recall_, o.filter_recall_);
 	swap(emit_zoc_, o.emit_zoc_);
 	swap(overlays_, o.overlays_);
+	swap(bis_overlays_, o.bis_overlays_);
 	swap(role_, o.role_);
 	swap(attacks_, o.attacks_);
 	swap(facing_, o.facing_);
@@ -915,6 +926,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	is_fearless_ = false;
 	is_healthy_ = false;
 	image_mods_.clear();
+	bis_overlays_.clear();
 
 	// Clear modification-related caches
 	modification_descriptions_.clear();
@@ -978,7 +990,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	max_attacks_ = new_type.max_attacks();
 
 	flag_rgb_ = new_type.flag_rgb();
-	
+
 	upkeep_ = upkeep_full();
 	parse_upkeep(new_type.get_cfg()["upkeep"]);
 
@@ -1409,7 +1421,7 @@ bool unit::get_attacks_changed() const
 		if(a_ptr->get_changed()) {
 			return true;
 		}
-		
+
 	}
 	return false;
 }
@@ -1496,6 +1508,7 @@ void unit::write(config& cfg, bool write_all) const
 	cfg.append(events_);
 
 	cfg["overlays"] = utils::join(overlays_);
+	cfg["bis_overlays"] = utils::join(bis_overlays_);
 
 	cfg["name"] = name_;
 	cfg["id"] = id_;
@@ -1810,7 +1823,7 @@ const std::set<std::string> unit::builtin_effects {
 	"alignment", "attack", "defense", "ellipse", "experience", "fearless",
 	"halo", "healthy", "hitpoints", "image_mod", "jamming", "jamming_costs",
 	"loyal", "max_attacks", "max_experience", "movement", "movement_costs",
-	"new_ability", "new_advancement", "new_animation", "new_attack", "overlay", "profile",
+	"new_ability", "new_advancement", "new_animation", "new_attack", "old_overlay", "overlay", "profile",
 	"recall_cost", "remove_ability", "remove_advancement", "remove_attacks", "resistance",
 	"status", "type", "variation", "vision", "vision_costs", "zoc"
 };
@@ -2069,7 +2082,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			movement_type_.get_resistances().merge(ap, effect["replace"].to_bool());
 		}
 	} else if(apply_to == "zoc") {
-		if(const config::attribute_value* v = effect.get("value")) {			
+		if(const config::attribute_value* v = effect.get("value")) {
 			set_attr_changed(UA_ZOC);
 			emit_zoc_ = v->to_bool();
 		}
@@ -2114,6 +2127,22 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		set_image_ellipse(effect["ellipse"]);
 	} else if(apply_to == "halo") {
 		set_image_halo(effect["halo"]);
+	} else if(apply_to == "old_overlay") {
+		const std::string& add = effect["add"];
+		const std::string& replace = effect["replace"];
+
+		if(!add.empty()) {
+			std::vector<std::string> temp_overlays = utils::parenthetical_split(add, ',');
+			std::vector<std::string>::iterator it;
+			for(it=temp_overlays.begin();it<temp_overlays.end();++it) {
+                auto itr = std::find(overlays_.begin(), overlays_.end(), *it);
+                if (itr != overlays_.end()){}
+                else {overlays_.push_back(*it);}
+			}
+		}
+		else if(!replace.empty()) {
+			overlays_ = utils::parenthetical_split(replace, ',');
+		}
 	} else if(apply_to == "overlay") {
 		const std::string& add = effect["add"];
 		const std::string& replace = effect["replace"];
@@ -2122,13 +2151,11 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			std::vector<std::string> temp_overlays = utils::parenthetical_split(add, ',');
 			std::vector<std::string>::iterator it;
 			for(it=temp_overlays.begin();it<temp_overlays.end();++it) {
-				auto itr = std::find(overlays_.begin(), overlays_.end(), *it);
-				if (itr != overlays_.end()){}
-				else {overlays_.push_back(*it);}
+                bis_overlays_.push_back(*it);
 			}
 		}
 		else if(!replace.empty()) {
-			overlays_ = utils::parenthetical_split(replace, ',');
+			bis_overlays_ = utils::parenthetical_split(replace, ',');
 		}
 	} else if(apply_to == "new_advancement") {
 		const std::string& types = effect["types"];
@@ -2626,7 +2653,7 @@ void unit::clear_changed_attributes()
 {
 	changed_attributes_.reset();
 	for(const auto& a_ptr : attacks_) {
-		a_ptr->set_changed(false);	
+		a_ptr->set_changed(false);
 	}
 }
 
