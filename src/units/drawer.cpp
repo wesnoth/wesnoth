@@ -335,6 +335,15 @@ void unit_drawer::redraw_unit (const unit & u) const
 		}
 	}
 
+		for(const std::string& bov : u.bis_overlays()) {
+			const surface bov_img(image::get_image(bov, image::SCALED_TO_ZOOM));
+			if(bov_img != nullptr) {
+				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
+					loc, xsrc+xoff, ysrc+yoff+adjusted_params.y, bov_img);
+			}
+		}
+	}
+
 	// Smooth unit movements from terrain of different elevation.
 	// Do this separately from above so that the health bar doesn't go up and down.
 
