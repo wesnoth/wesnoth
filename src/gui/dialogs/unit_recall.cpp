@@ -185,6 +185,10 @@ void unit_recall::pre_show(window& window)
 			mods += "~BLIT(" + overlay + ")";
 		}
 
+		for(const std::string& bis_overlay : unit->bis_overlays()) {
+			mods += "~BLIT(" + bis_overlay + ")";
+		}
+
 		column["use_markup"] = "true";
 
 		column["label"] = unit->absolute_image() + mods;
