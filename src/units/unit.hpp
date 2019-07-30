@@ -1502,6 +1502,11 @@ public:
 		return overlays_;
 	}
 
+	const std::vector<std::string>& bis_overlays() const
+	{
+		return bis_overlays_;
+	}
+
 	/**
 	 * Color for this unit's *current* hitpoints.
 	 *
@@ -1774,6 +1779,7 @@ private:
 	bool emit_zoc_;
 
 	std::vector<std::string> overlays_;
+	std::vector<std::string> bis_overlays_;
 
 	std::string role_;
 	attack_list attacks_;
