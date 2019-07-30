@@ -990,7 +990,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	max_attacks_ = new_type.max_attacks();
 
 	flag_rgb_ = new_type.flag_rgb();
-
+	
 	upkeep_ = upkeep_full();
 	parse_upkeep(new_type.get_cfg()["upkeep"]);
 
@@ -1421,7 +1421,7 @@ bool unit::get_attacks_changed() const
 		if(a_ptr->get_changed()) {
 			return true;
 		}
-
+		
 	}
 	return false;
 }
@@ -2082,7 +2082,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			movement_type_.get_resistances().merge(ap, effect["replace"].to_bool());
 		}
 	} else if(apply_to == "zoc") {
-		if(const config::attribute_value* v = effect.get("value")) {
+		if(const config::attribute_value* v = effect.get("value")) {			
 			set_attr_changed(UA_ZOC);
 			emit_zoc_ = v->to_bool();
 		}
@@ -2653,7 +2653,7 @@ void unit::clear_changed_attributes()
 {
 	changed_attributes_.reset();
 	for(const auto& a_ptr : attacks_) {
-		a_ptr->set_changed(false);
+		a_ptr->set_changed(false);	
 	}
 }
 
