@@ -332,6 +332,10 @@ static int impl_unit_get(lua_State *L)
 		lua_push(L, u.overlays());
 		return 1;
 	}
+	if(strcmp(m, "bis_overlays") == 0) {
+		lua_push(L, u.bis_overlays());
+		return 1;
+	}
 	if(strcmp(m, "traits") == 0) {
 		lua_push(L, u.get_traits_list());
 		return 1;
