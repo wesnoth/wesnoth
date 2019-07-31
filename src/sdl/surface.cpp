@@ -16,23 +16,12 @@
 #include "sdl/rect.hpp"
 #include "video.hpp"
 
-#include <iostream>
-
 const SDL_PixelFormat surface::neutral_pixel_format = []() {
-	SDL_PixelFormat format;
-
 #if SDL_VERSION_ATLEAST(2, 0, 6)
-	SDL_Surface* surf =
-		SDL_CreateRGBSurfaceWithFormat(0, 1, 1, 32, SDL_PIXELFORMAT_ARGB8888);
+	return *SDL_CreateRGBSurfaceWithFormat(0, 1, 1, 32, SDL_PIXELFORMAT_ARGB8888)->format;
 #else
-	SDL_Surface* surf =
-		SDL_CreateRGBSurface(0, 1, 1, 32, SDL_RED_MASK, SDL_GREEN_MASK, SDL_BLUE_MASK, SDL_ALPHA_MASK);
+	return *SDL_CreateRGBSurface(0, 1, 1, 32, SDL_RED_MASK, SDL_GREEN_MASK, SDL_BLUE_MASK, SDL_ALPHA_MASK)->format;
 #endif
-
-	format = *surf->format;
-	format.palette = nullptr;
-
-	return format;
 }();
 
 surface::surface(SDL_Surface* surf)
@@ -45,8 +34,7 @@ surface::surface(int w, int h)
 	: surface_(nullptr)
 {
 	if (w < 0 || h < 0) {
-		std::cerr << "error: creating surface with negative dimensions\n";
-		return;
+		throw std::invalid_argument("Creating surface with negative dimensions");
 	}
 
 #if SDL_VERSION_ATLEAST(2, 0, 6)
