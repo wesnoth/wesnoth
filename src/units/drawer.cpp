@@ -333,7 +333,6 @@ void unit_drawer::redraw_unit (const unit & u) const
 					loc, xsrc+xoff, ysrc+yoff+adjusted_params.y, ov_img);
 			}
 		}
-	}
 
 		for(const std::string& bov : u.bis_overlays()) {
 			const surface bov_img(image::get_image(bov, image::SCALED_TO_ZOOM));
