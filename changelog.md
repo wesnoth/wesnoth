@@ -119,6 +119,7 @@
    * Support [disallow_end_turn]reason=
    * The {SPECIAL_NOTES_*} macros now start with a newline and a bullet point.
    * Support [unit]jamming=
+   * Support [movetype]flying= and deprecate [movetype]flies=, for consistency with [unit]flying=
  ### Miscellaneous and bug fixes
    * Rest healing now happens on turn 2. (issue #3562)
    * Normal healing now happens on turn 1 for all sides except the first. (issue #3562)

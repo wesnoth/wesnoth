@@ -421,10 +421,7 @@ movetype::terrain_info::terrain_info(const config & cfg, const parameters & para
  */
 std::unique_ptr<movetype::terrain_costs> movetype::read_terrain_costs(const config & cfg)
 {
-	// todoc++14: use std::make_unique
-	std::unique_ptr<terrain_costs> ret;
-	ret.reset(new terrain_info(cfg, mvj_params_, nullptr));
-	return ret;
+	return std::make_unique<terrain_info> (cfg, movetype::mvj_params_, nullptr);
 }
 
 /**
@@ -604,11 +601,10 @@ void movetype::terrain_info::write(config & cfg, const std::string & child_name,
  */
 std::unique_ptr<movetype::terrain_costs> movetype::terrain_info::make_standalone() const
 {
-	// todoc++14: use std::make_unique
 	std::unique_ptr<terrain_costs> t;
 	if(!fallback_) {
 		// Call the copy constructor, which will make_data_shareable().
-		t.reset(new terrain_info(*this, nullptr));
+		t = std::make_unique<terrain_info>(*this, nullptr);
 	}
 	else if(get_data().empty()) {
 		// Pure fallback.
@@ -618,7 +614,7 @@ std::unique_ptr<movetype::terrain_costs> movetype::terrain_info::make_standalone
 		// Need to merge data.
 		config merged;
 		write(merged, "", true);
-		t.reset(new terrain_info(merged, get_data().params(), nullptr));
+		t = std::make_unique<terrain_info>(merged, get_data().params(), nullptr);
 	}
 	return t;
 }
@@ -811,8 +807,9 @@ movetype::movetype(const config & cfg) :
 	defense_(cfg.child_or_empty("defense")),
 	resist_(cfg.child_or_empty("resistance")),
 	flying_(cfg["flies"].to_bool(false))
-	// \todo standardize on "flying" instead of "flies"
 {
+	// 1.15 will support both "flying" and "flies", with "flies" being deprecated
+	flying_ = cfg["flying"].to_bool(flying_);
 }
 
 
@@ -868,6 +865,7 @@ void movetype::merge(const config & new_cfg, bool overwrite)
 	// "flies" is used when WML defines a movetype.
 	// "flying" is used when WML defines a unit.
 	// It's easier to support both than to track which case we are in.
+	// Note: in 1.15 "flies" is deprecated, with "flying" preferred in movetype too.
 	flying_ = new_cfg["flies"].to_bool(flying_);
 	flying_ = new_cfg["flying"].to_bool(flying_);
 }
@@ -899,9 +897,6 @@ const std::set<std::string> movetype::effects {"movement_costs",
 
 /**
  * Writes the movement type data to the provided config.
- *
- * Note that this writes the movement part of SingleUnitWML, not the WML for a
- * [movetype] tag, because it uses the key "flying" instead of "flies".
  */
 void movetype::write(config & cfg) const
 {

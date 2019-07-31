@@ -26,8 +26,8 @@ namespace t_translation { struct terrain_code; }
 ///
 /// This class is used for both [movetype] and [unit] configs, which use the
 /// same data in their configs for [movement_costs], [defense], etc. However,
-/// the data for whether the unit flies is held in [movetype]'s "flies" vs
-/// [unit]'s "flying".
+/// the data for whether the unit flies is historically held in [movetype]'s
+/// "flies" vs [unit]'s "flying".
 ///
 /// Existing behavior of 1.14:
 /// * movetype::movetype(const config & cfg) will read only the "flies" key
@@ -296,8 +296,7 @@ public:
 	/// The set of applicable effects for movement types
 	static const std::set<std::string> effects;
 
-	/// Writes the movement type data to the provided config. This uses
-	/// [unit]'s keynames, with "flying" instead of "flies".
+	/// Writes the movement type data to the provided config.
 	void write(config & cfg) const;
 
 private:
