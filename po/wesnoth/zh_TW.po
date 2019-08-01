@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-06-30 15:14+0300\n"
-"PO-Revision-Date: 2019-03-16 21:11+0800\n"
+"PO-Revision-Date: 2019-07-21 10:06+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -114,14 +114,10 @@ msgstr "聊天訊息上限"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid ""
-#| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#| "0 to disable"
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
-msgstr "等待幾秒鐘後默認逾時。設定為0則取消此功能"
+msgstr "等待幾分鐘後清除聊天視窗訊息。設定為0則取消此功能。"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:103
@@ -4360,14 +4356,10 @@ msgstr "等級"
 
 #. [tip]
 #: data/tips.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Use the map editor's <i>Areas</i> menu to define regions later addressed "
-#| "by event or ai coding."
 msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
-msgstr "使用地圖編輯器的 <i>區域</i> 來編輯事件或設定AI。"
+msgstr "使用地圖編輯器的 <i>區域</i> 選項來編輯事件或設定AI。"
 
 #. [tip]
 #: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
@@ -4376,26 +4368,20 @@ msgstr "<i>― 韋諾 設計指南</i>"
 
 #. [tip]
 #: data/tips.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use "
-#| "of advanced features."
 msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
-msgstr "在 <i>檔案</i> 選單中新增ㄧ個 <i>新章節</i> 來使用進階功能。"
+msgstr ""
+"在地圖編輯器中，選擇 <i>檔案</i> 選單裡的 <i>新章節</i> 來使用進階功能。"
 
 #. [tip]
 #: data/tips.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Scenarios saved from the editor in their default folder can be selected "
-#| "in the mp create screen's <i>User Scenarios</i> section."
 msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” screen."
 msgstr ""
-"從地圖編輯器中儲存在預設資料夾的章節可以在選擇章節中的<i>自製章節</i>裡選取。"
+"在多人遊戲裡的 \"建立遊戲\" 中選擇 <i>自訂章節</i> 來選擇從地圖編輯器中儲存在"
+"預設資料夾的章節。"
 
 #. [tip]
 #: data/tips.cfg:16
@@ -5906,7 +5892,7 @@ msgstr "本機玩家"
 
 #: src/game_initialization/connect_engine.cpp:1317
 msgid "Nobody"
-msgstr ""
+msgstr "沒有人"
 
 #: src/game_initialization/connect_engine.cpp:1320
 msgid "Reserved"

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-06-30 12:13 UTC\n"
-"PO-Revision-Date: 2019-06-01 19:55+0800\n"
+"PO-Revision-Date: 2019-07-21 10:47+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -69,6 +69,10 @@ msgid ""
 "sacrificing his own soul in the process.\n"
 "\n"
 msgstr ""
+"韋諾北部邊境的城鎮帕辛，每年都會被鄰近的半獸人部落襲擊。馬林‧基沙爾，是一名被"
+"驅逐的法師，他竭盡所能地想要保衛他的家園並且向半獸人反擊，甚至在過程中犧牲了"
+"自己的靈魂。\n"
+"\n"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:25
@@ -189,15 +193,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:53
-#, fuzzy
-#| msgid ""
-#| "The silence was broken by the irregular shuffle of a man emerging from "
-#| "the trees. He stood before them, a hunched figure with a rasping voice "
-#| "reminiscent of crackling bones. <i>“I am Darken Volk. While I know you do "
-#| "not love my kind, I think it is vital that we put aside our differences "
-#| "for the moment. The orcish menace grows in the north and they will soon "
-#| "return in even greater force. You cannot hope to defend against them "
-#| "without my... help.”</i>"
 msgid ""
 "The silence was broken by the irregular shuffle of a man emerging from the "
 "trees. He stood before them, a hunched figure with a rasping voice "
@@ -210,7 +205,8 @@ msgstr ""
 "一位拖著怪異長袍的人從樹林裡冒出來打破了眼前的寂靜。他站在眾人面前，彎著身軀"
 "發出像是骨頭關節的刺耳聲音。<i>「我是黑暗弗科。我知道你們並不喜歡我們這些人，"
 "但我想我們該暫時放下意見分歧的時候了。半獸人在北方的威脅日以俱增而且很快他們"
-"將要有更強大的勢力要回歸，你們肯定會希望抵禦半獸人時會有我的...幫助。」</i>"
+"將要有更強大的勢力要回歸，你們肯定會希望抵禦半獸人時會有我的...幫助。現在，我"
+"希望我能在你的城鎮休息一下。」</i>"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:57
@@ -324,10 +320,8 @@ msgstr "馬林‧基沙爾陣亡"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:197
-#, fuzzy
-#| msgid "Death of Malin Keshar"
 msgid "Death of Dela Keshar"
-msgstr "馬林‧基沙爾陣亡"
+msgstr "黛拉‧基沙爾陣亡"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:201
@@ -336,15 +330,11 @@ msgstr "卓根陣亡"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:218
-#, fuzzy
-#| msgid ""
-#| "Was it really a good idea to send out a raiding party so soon after the "
-#| "orcs just attacked us? Even father is no longer here..."
 msgid ""
 "Was it really a good idea to send out a raiding party so soon after the orcs "
 "just attacked us? Even Father is no longer here..."
 msgstr ""
-"半獸人才剛襲擊過我們，而現在就要發動一場攻擊這樣好嗎？更何況父親已經不在..."
+"半獸人才剛襲擊過我們，而現在就要發動一場攻擊是好主意嗎？更何況父親已經不在..."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:223
@@ -406,18 +396,13 @@ msgstr "那個火光是有什麼東西？那個死靈法師又回來了？這個
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:272
-#, fuzzy
-#| msgid ""
-#| "No, Drogan. I raised this corpse with the skills Darken Volk taught me "
-#| "before he left. While I have no love for it, without the help of the "
-#| "dead, we consign ourselves and our families to orcish stewpots!"
 msgid ""
 "No, Drogan. I raised this corpse with the skills Darken Volk taught me "
 "before he left. While I have no love for it, we cannot hope to repel the "
 "orcs without the help of the dead!"
 msgstr ""
 "不是，卓根。我用黑暗弗科離開前教我的法術喚起了這些屍體。雖然我不喜歡這個，但"
-"是沒有這些屍體的幫助，我們自己及我們的家人就要被半獸人的丟下鍋煮了！"
+"是沒有這些屍體的幫助，我們就無法擊退這些半獸人！"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:277
@@ -435,18 +420,13 @@ msgstr "什麼？我是討厭邪惡的，卓根！"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:287
-#, fuzzy
-#| msgid ""
-#| "You say that, brother, but you have been very close-mouthed about why the "
-#| "mages sent you home from Alduin. I am beginning to think that you were "
-#| "already dabbling in this witchcraft even before you met that necromancer!"
 msgid ""
 "You say that, Brother, but you have been very close-mouthed about why the "
 "mages sent you home from Alduin. I am beginning to think that you were "
 "already dabbling in this witchcraft even before you met that necromancer!"
 msgstr ""
-"兄弟，你說的，但你一直避而不談為什麼法師們從艾頓島把你趕回家。我開始覺得你是"
-"不是在遇到死靈法師之前就已經在涉獵這些巫術了！"
+"兄弟，都你在說，但你一直避而不談為什麼法師們從艾頓島把你趕回家。我開始覺得你"
+"是不是在遇到死靈法師之前就已經在涉獵這些巫術了！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:292
@@ -575,12 +555,6 @@ msgstr "走吧，馬林。我在也不希望看見你的臉。"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:505
-#, fuzzy
-#| msgid ""
-#| "That was bravely done, lad, holding the orcs off by yourself. But I fear "
-#| "the raiding party brings grave news from the north. More warlords have "
-#| "begun to mass armies in the hills, no more than a few days north of the "
-#| "Great River. I do not know if we possess the strength to fight them off."
 msgid ""
 "That was bravely done, lad, holding the orcs off by yourself. But I fear the "
 "raiding party brings grave news from the north. More warlords have begun to "
@@ -1513,13 +1487,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:35
-#, fuzzy
-#| msgid ""
-#| "Malin and Darken Volk continue their raids on the orcs and eventually "
-#| "force the usually fractious Whitefang chieftains to unite in opposition. "
-#| "The orcs pursue the two necromancers east toward the mouth of the river "
-#| "men call the Longlier and Elves call the Arkan-thoria, where they manage "
-#| "to surround the humans and force a fight."
 msgid ""
 "Malin and Darken Volk continue their raids on the orcs and eventually force "
 "the usually fractious Whitefang chieftains to unite in opposition. The orcs "
@@ -2207,15 +2174,6 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:854
-#, fuzzy
-#| msgid ""
-#| "O Gods, how did it come to this? My own sister determined to personally "
-#| "see to my demise. Banished from Parthyn, my country, my home... spurned "
-#| "by my people, whom I have given everything for... nothing has gone right "
-#| "ever since I got into an argument with that fat, orc-loving toad Zephrin "
-#| "and tried to curse him. I was only testing my new spell on him! It was "
-#| "only supposed to be a simple curse! How was I supposed to know it would "
-#| "kill him? Blasted Academy."
 msgid ""
 "O gods, how did it come to this? My own sister determined to personally see "
 "to my demise. Banished from Parthyn, my country, my home... spurned by my "
@@ -2226,9 +2184,9 @@ msgid ""
 "Blasted Academy."
 msgstr ""
 "天啊，事情怎麼變成這樣？我唯一的姐姐想要殺了我。被帕辛驅逐出境、我的國家、我"
-"的家園及我的人民都唾棄我，我已經為此付出了一切...自從我跟那個胖子，喜歡半獸人"
-"的討厭鬼哲芬萊吵架後，我詛咒了他開始，這一切都變了。我只是對他測試我的新咒"
-"語！這只是個簡單的咒語！我怎麼知道這會殺了他？！該死的學校！"
+"的家園及村民都唾棄我，我已經為此付出了一切...自從我跟那個胖子，喜歡半獸人的討"
+"厭鬼哲芬萊吵架後，我詛咒了他開始，這一切都變了。我只是對他測試我的新咒語！這"
+"只是個簡單的咒語！我怎麼知道這會殺了他？！該死的學校！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:859
@@ -2829,17 +2787,15 @@ msgstr "等等，你不會把我扔在後面吧？"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1057
-#, fuzzy
-#| msgid "Escape via the tunnel in the northeast cellar"
 msgid ""
 "Escape the manor (Malin reaches the tunnel in the northeast cellar before "
 "Darken Volk)"
-msgstr "透過東北方地窖的隧道逃跑"
+msgstr "逃離莊園（馬林必須比黑暗弗科還快抵達東北方地窖的隧道）"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1061
 msgid "Darken Volk reaches the tunnel before Malin does"
-msgstr ""
+msgstr "黑暗弗科比馬林還快抵達隧道"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1085
@@ -2988,13 +2944,9 @@ msgstr "為什麼你不說話？！難道你一點都不關係嗎？！"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:325
-#, fuzzy
-#| msgid ""
-#| "... you can’t abandon me too, not the way they did... father, Drogan, "
-#| "Dela..."
 msgid ""
 "... you can’t abandon me too, not the way they did... Father, Drogan, Dela..."
-msgstr "...你不能也丟下我，不能像他們一樣...父親、卓根、黛拉..."
+msgstr "...你不能也丟下我啊，不能像他們一樣...父親、卓根、黛拉..."
 
 #. [message]: role=advisor
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:333
@@ -4881,16 +4833,6 @@ msgstr "邊境女爵"
 
 #. [unit_type]: id=Frontier Baroness, race=human
 #: data/campaigns/Descent_Into_Darkness/units/Frontier_Baroness.cfg:23
-#, fuzzy
-#| msgid ""
-#| "At Wesnoth’s frontiers, all able-bodied men and women must be able to "
-#| "defend their homes at need. Men are most often trained in the use of "
-#| "sword or bow and are used as soldiers who withstand the brunt of orcish "
-#| "assaults to hold the raiders at bay. Women, instead, learn to use the "
-#| "staff and sling and are most effective as scouts and ambushers. The most "
-#| "proficient are powerful skirmishers and are highly adept at "
-#| "reconnaissance, allowing them to often outmaneuver and entrap orcish "
-#| "raiders."
 msgid ""
 "At Wesnoth’s frontiers, all able-bodied men and women must be able to defend "
 "their homes in times of need. Men are most often trained in the use of sword "
@@ -4903,7 +4845,7 @@ msgstr ""
 "在韋諾王國的邊境，所有健壯的男人跟女人都要能夠在需要時保衛自己的家園。男性通"
 "常接受劍或弓的訓練，來抵禦半獸人的襲擊並將入侵者擋在海灣。而女性則學習使用棍"
 "棒及投石索，在偵察兵及突襲兵上發揮很大的效用。熟練的游擊兵力量非常強大，他們"
-"擅長偵察，使他們經常能夠以智取勝並且捕獲半獸人騎兵。"
+"擅長偵察，使他們經常能夠戰勝並且捕獲半獸人騎兵。"
 
 #: data/campaigns/Descent_Into_Darkness/utils/characters.cfg:28
 msgid "Dela Keshar"
