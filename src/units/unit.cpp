@@ -515,6 +515,16 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		overlays_ = utils::parenthetical_split(v->str(), ',');
 		if(overlays_.size() == 1 && overlays_.front().empty()) {
 			overlays_.clear();
+		} else {
+			std::vector<std::string>::iterator it;
+			for(it=overlays_.begin();it<overlays_.end();++it) {
+				auto itr = std::find(meta_overlays_.begin(), meta_overlays_.end(), *it);
+				if (itr != meta_overlays_.end()){}
+				else {meta_overlays_.push_back(*it);}
+			}
+		}
+		if(meta_overlays_.size() == 1 && meta_overlays_.front().empty()) {
+			meta_overlays_.clear();
 		}
 	}
 
@@ -915,7 +925,8 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	is_fearless_ = false;
 	is_healthy_ = false;
 	image_mods_.clear();
-	overlays_.clear();
+	meta_overlays_.clear();
+	obj_overlays_.clear();
 
 	// Clear modification-related caches
 	modification_descriptions_.clear();
@@ -1000,6 +1011,13 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	// since there can be filters on the modifications
 	// that may result in different effects after the advancement.
 	apply_modifications();
+	meta_overlays_ = overlays_;
+	std::vector<std::string>::iterator it;
+	for(it=obj_overlays_.begin();it<obj_overlays_.end();++it) {
+		auto itr = std::find(meta_overlays_.begin(), meta_overlays_.end(), *it);
+		if (itr != meta_overlays_.end()){}
+		else {meta_overlays_.push_back(*it);}
+	}
 
 	// Now that modifications are done modifying traits, check if poison should
 	// be cleared.
@@ -1496,7 +1514,7 @@ void unit::write(config& cfg, bool write_all) const
 	cfg.clear_children("events");
 	cfg.append(events_);
 
-	cfg["overlays"] = utils::join(overlays_);
+	cfg["overlays"] = utils::join(meta_overlays_);
 
 	cfg["name"] = name_;
 	cfg["id"] = id_;
@@ -2102,11 +2120,13 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			std::vector<std::string> temp_overlays = utils::parenthetical_split(add, ',');
 			std::vector<std::string>::iterator it;
 			for(it=temp_overlays.begin();it<temp_overlays.end();++it) {
-				overlays_.push_back(*it);
+				auto itr = std::find(obj_overlays_.begin(), obj_overlays_.end(), *it);
+				if (itr != obj_overlays_.end()){}
+				else {obj_overlays_.push_back(*it);}
 			}
 		}
 		else if(!replace.empty()) {
-			overlays_ = utils::parenthetical_split(replace, ',');
+			obj_overlays_ = utils::parenthetical_split(replace, ',');
 		}
 	} else if(apply_to == "new_advancement") {
 		const std::string& types = effect["types"];
