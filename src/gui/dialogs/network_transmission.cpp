@@ -42,10 +42,11 @@ network_transmission::pump_monitor::pump_monitor(connection_data*& connection)
 	, window_()
 	, completed_(0)
 	, total_(0)
+	, stop_(false)
 	, poller_(std::async(std::launch::async, [this]() {
 		while(true) {
 			// connection_ will be null if we reset the ptr in the main thread before canceling the dialog
-			if(!connection_) {
+			if(stop_) {
 				return false;
 			}
 
@@ -123,18 +124,14 @@ void network_transmission::post_show(window& /*window*/)
 	pump_monitor_.window_.reset();
 
 	if(get_retval() == retval::CANCEL) {
-		// The worker thread holds a reference to connection_ and checks whether it's null before polling.
-		// The actual object to which connection_ is pointing will be destroyed by cancel(), so we're
-		// setting connection_ to null here before that so the worker thread will exit next run.
-		connection_data* const connection_ptr_copy = connection_;
-		connection_ = nullptr;
+		// We need to wait for the current polling loop to conclude before exiting so we don't invalidate
+		// the pointer mid-loop, so signal that here. The thread should return false if connection_ is null.
+		pump_monitor_.stop_ = true;
 
-		// Wait for the current polling loop to conclude before exiting so we don't invalidate the pointer
-		// mid-loop. The thread should return false if connection_ is null.
 		pump_monitor_.poller_.wait();
 		assert(pump_monitor_.poller_.get() == false);
 
-		connection_ptr_copy->cancel();
+		connection_->cancel();
 	}
 }
 
