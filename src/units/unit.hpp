@@ -1499,7 +1499,7 @@ public:
 	/** Get the unit's overlay images. */
 	const std::vector<std::string>& overlays() const
 	{
-		return overlays_;
+		return meta_overlays_;
 	}
 
 	/**
@@ -1774,6 +1774,8 @@ private:
 	bool emit_zoc_;
 
 	std::vector<std::string> overlays_;
+	std::vector<std::string> meta_overlays_;
+	std::vector<std::string> obj_overlays_;
 
 	std::string role_;
 	attack_list attacks_;
