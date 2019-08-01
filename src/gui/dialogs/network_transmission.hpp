@@ -66,6 +66,8 @@ private:
 
 		std::atomic_size_t completed_, total_;
 
+		std::atomic_bool stop_;
+
 		std::future<bool> poller_;
 	} pump_monitor_;
 
