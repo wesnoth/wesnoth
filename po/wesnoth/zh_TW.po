@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-07-18 15:51+0300\n"
-"PO-Revision-Date: 2019-03-16 21:11+0800\n"
+"PO-Revision-Date: 2019-07-21 10:06+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -114,14 +114,10 @@ msgstr "聊天訊息上限"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid ""
-#| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#| "0 to disable"
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
-msgstr "等待幾秒鐘後默認逾時。設定為0則取消此功能"
+msgstr "等待幾分鐘後清除聊天視窗訊息。設定為0則取消此功能。"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:103
@@ -1767,9 +1763,6 @@ msgstr "$unit.name 無法使用風暴三戟！讓能夠使用它的人魚擁有�
 
 #. [object]
 #: data/core/macros/items.cfg:521
-#, fuzzy
-#| msgid ""
-#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr "這個三叉戟讓人魚使用能向敵人射出閃電。"
@@ -4425,14 +4418,10 @@ msgstr "等級"
 
 #. [tip]
 #: data/tips.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Use the map editor's <i>Areas</i> menu to define regions later addressed "
-#| "by event or ai coding."
 msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
-msgstr "使用地圖編輯器的 <i>區域</i> 來編輯事件或設定AI。"
+msgstr "使用地圖編輯器的 <i>區域</i> 選項來編輯事件或設定AI。"
 
 #. [tip]
 #: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
@@ -4441,26 +4430,20 @@ msgstr "<i>― 韋諾 設計指南</i>"
 
 #. [tip]
 #: data/tips.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use "
-#| "of advanced features."
 msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
-msgstr "在 <i>檔案</i> 選單中新增ㄧ個 <i>新章節</i> 來使用進階功能。"
+msgstr ""
+"在地圖編輯器中，選擇 <i>檔案</i> 選單裡的 <i>新章節</i> 來使用進階功能。"
 
 #. [tip]
 #: data/tips.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Scenarios saved from the editor in their default folder can be selected "
-#| "in the mp create screen's <i>User Scenarios</i> section."
 msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” screen."
 msgstr ""
-"從地圖編輯器中儲存在預設資料夾的章節可以在選擇章節中的<i>自製章節</i>裡選取。"
+"在多人遊戲裡的 \"建立遊戲\" 中選擇 <i>自訂章節</i> 來選擇從地圖編輯器中儲存在"
+"預設資料夾的章節。"
 
 #. [tip]
 #: data/tips.cfg:16
@@ -5971,7 +5954,7 @@ msgstr "本機玩家"
 
 #: src/game_initialization/connect_engine.cpp:1295
 msgid "Nobody"
-msgstr ""
+msgstr "沒有人"
 
 #: src/game_initialization/connect_engine.cpp:1298
 msgid "Reserved"
@@ -6622,8 +6605,6 @@ msgstr "生命："
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves:"
 msgid "Moves:"
 msgstr "移動："
 
@@ -6631,8 +6612,6 @@ msgstr "移動："
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "Vision:"
 msgid "Vision:"
 msgstr "視野："
 
@@ -6640,8 +6619,6 @@ msgstr "視野："
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
-#, fuzzy
-#| msgid "Jamming:"
 msgid "Jamming:"
 msgstr "干擾："
 
@@ -6649,8 +6626,6 @@ msgstr "干擾："
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost:"
 msgid "Cost:"
 msgstr "價格："
 
@@ -6665,8 +6640,6 @@ msgstr "立場："
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Required XP:"
 msgid "Required XP:"
 msgstr "升級所需經驗值："
 
@@ -7490,10 +7463,6 @@ msgid "Save and abort game"
 msgstr "儲存並退出遊戲"
 
 #: src/playturn.cpp:297
-#, fuzzy
-#| msgid ""
-#| "$player who controlled side $side_drop has left the game. What do you "
-#| "want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -7616,8 +7585,6 @@ msgid "Defense: "
 msgstr "防禦："
 
 #: src/reports.cpp:631 src/reports.cpp:632
-#, fuzzy
-#| msgid "vision:"
 msgid "vision:"
 msgstr "視野："
 
@@ -8095,9 +8062,6 @@ msgid "A unit was created using debug mode during $player’s turn"
 msgstr "此單位是$player的回合透過除錯模式建立的"
 
 #: src/synced_user_choice.cpp:330
-#, fuzzy
-#| msgid "waiting for $desc from side $sides"
-#| msgid_plural "waiting for $desc from sides $sides"
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "等待 $sides 陣營的 $desc"
@@ -8316,6 +8280,34 @@ msgstr "對 $player 隱藏計劃"
 msgid "Whiteboard Options"
 msgstr "白板選項"
 
+#~ msgid ""
+#~ "Liminal units only reach their full strength during twilight.\n"
+#~ "\n"
+#~ "Day: −25% Damage\n"
+#~ "Night: −25% Damage"
+#~ msgstr ""
+#~ "邊緣單位只有適合在清晨及傍晚戰鬥。\n"
+#~ "\n"
+#~ "白天：-25% 傷害值\n"
+#~ "晚上：−25% 傷害值"
+
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr "這裡沒有自訂選項中可以選擇的時代、遊戲或模組。"
+
+#~ msgid "Defaults"
+#~ msgstr "預設"
+
+#~ msgid "Connected Players"
+#~ msgstr "已連線玩家"
+
+#~ msgid "Can't droid a local ai side: '$side'."
+#~ msgstr "無法託管本地 AI 陣營：'$side'。"
+
+#~ msgid "Empty"
+#~ msgstr "空位"
+
 #~ msgid "Ping timeout"
 #~ msgstr "連線逾時"
 
@@ -8358,17 +8350,6 @@ msgstr "白板選項"
 #~ "7個陣營在46張多人地圖/章節上互戰，\n"
 #~ "500多個模組。)"
 
-#~ msgid ""
-#~ "Liminal units only reach their full strength during twilight.\n"
-#~ "\n"
-#~ "Day: −25% Damage\n"
-#~ "Night: −25% Damage"
-#~ msgstr ""
-#~ "邊緣單位只有適合在清晨及傍晚戰鬥。\n"
-#~ "\n"
-#~ "白天：-25% 傷害值\n"
-#~ "晚上：−25% 傷害值"
-
 #~ msgid "(this turn left)"
 #~ msgid_plural "(%d turns left)"
 #~ msgstr[0] "(只剩下本回合)"
@@ -8381,9 +8362,6 @@ msgstr "白板選項"
 
 #~ msgid "An invalid defender weapon got selected."
 #~ msgstr "無效的防禦。"
-
-#~ msgid "Empty"
-#~ msgstr "空位"
 
 #~ msgid "$era_name (missing)"
 #~ msgstr "$era_name （遺失）"
@@ -8400,9 +8378,6 @@ msgstr "白板選項"
 #~ msgid "none"
 #~ msgstr "無"
 
-#~ msgid "Can't droid a local ai side: '$side'."
-#~ msgstr "無法託管本地 AI 陣營：'$side'。"
-
 #~ msgid "Advances to:"
 #~ msgstr "升級為： "
 
@@ -8416,17 +8391,6 @@ msgstr "白板選項"
 #~ "<span color=\"$color\">$number_or_percent movement</span> 移動點數"
 #~ msgstr[1] ""
 #~ "<span color=\"$color\">$number_or_percent movement</span> 移動點數"
-
-#~ msgid ""
-#~ "There are no custom options available for the selected era, game, or "
-#~ "modification."
-#~ msgstr "這裡沒有自訂選項中可以選擇的時代、遊戲或模組。"
-
-#~ msgid "Defaults"
-#~ msgstr "預設"
-
-#~ msgid "Connected Players"
-#~ msgstr "已連線玩家"
 
 #, fuzzy
 #~| msgid "Size: "
