@@ -247,6 +247,10 @@ bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*inde
 		case HOTKEY_HELP:
 			show_help();
 			break;
+		case HOTKEY_HELP_ABOUT_SAVELOAD:
+			// although HOTKEY_HELP uses a virtual call to allow context-specific help, this one is already a specific topic
+			help::show_help("saveload");
+			break;
 		case HOTKEY_CHAT_LOG:
 			show_chat_log();
 			break;

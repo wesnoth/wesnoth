@@ -275,6 +275,7 @@ std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_SPEAK_ALLY, "speaktoally", N_("Speak to Ally"), false, scope_game, HKCAT_CHAT, "" },
 	{ HOTKEY_SPEAK_ALL, "speaktoall", N_("Speak to All"), false, scope_game, HKCAT_CHAT, "" },
 	{ HOTKEY_HELP, "help", N_("Help"), false, scope_game | scope_editor | scope_main, HKCAT_GENERAL, "" },
+	{ HOTKEY_HELP_ABOUT_SAVELOAD, "help-about-saveload", N_("Help about save-loading"), false, scope_game, HKCAT_GENERAL, N_("Hint: save-loading is unnecessary")},
 	{ HOTKEY_CHAT_LOG, "chatlog", N_("View Chat Log"), false, scope_game, HKCAT_CHAT, "" },
 	{ HOTKEY_USER_CMD, "command", N_("Enter User Command"), false, scope_game, HKCAT_CHAT, "" },
 	{ HOTKEY_CUSTOM_CMD, "customcommand", N_("Custom Command"), false, scope_game, HKCAT_CHAT, "" },
