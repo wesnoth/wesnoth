@@ -518,9 +518,9 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		} else {
 			std::vector<std::string>::iterator it;
 			for(it=overlays_.begin();it<overlays_.end();++it) {
-				auto itr = std::find(meta_overlays_.begin(), meta_overlays_.end(), *it);
-				if (itr != meta_overlays_.end()){}
-				else {meta_overlays_.push_back(*it);}
+				if (std::find(meta_overlays_.begin(), meta_overlays_.end(), *it) == meta_overlays_.end()){
+					meta_overlays_.push_back(*it);
+				}
 			}
 		}
 		if(meta_overlays_.size() == 1 && meta_overlays_.front().empty()) {
@@ -1014,9 +1014,9 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	meta_overlays_ = overlays_;
 	std::vector<std::string>::iterator it;
 	for(it=obj_overlays_.begin();it<obj_overlays_.end();++it) {
-		auto itr = std::find(meta_overlays_.begin(), meta_overlays_.end(), *it);
-		if (itr != meta_overlays_.end()){}
-		else {meta_overlays_.push_back(*it);}
+		if (std::find(meta_overlays_.begin(), meta_overlays_.end(), *it) == meta_overlays_.end()){
+			meta_overlays_.push_back(*it);
+		}
 	}
 
 	// Now that modifications are done modifying traits, check if poison should
@@ -2120,9 +2120,9 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			std::vector<std::string> temp_overlays = utils::parenthetical_split(add, ',');
 			std::vector<std::string>::iterator it;
 			for(it=temp_overlays.begin();it<temp_overlays.end();++it) {
-				auto itr = std::find(obj_overlays_.begin(), obj_overlays_.end(), *it);
-				if (itr != obj_overlays_.end()){}
-				else {obj_overlays_.push_back(*it);}
+				if (std::find(obj_overlays_.begin(), obj_overlays_.end(), *it) == obj_overlays_.end()){
+					obj_overlays_.push_back(*it);
+				}
 			}
 		}
 		else if(!replace.empty()) {
