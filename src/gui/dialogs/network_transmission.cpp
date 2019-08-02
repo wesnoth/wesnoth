@@ -44,17 +44,12 @@ network_transmission::pump_monitor::pump_monitor(connection_data*& connection)
 	, total_(0)
 	, stop_(false)
 	, poller_(std::async(std::launch::async, [this]() {
-		while(true) {
-			// connection_ will be null if we reset the ptr in the main thread before canceling the dialog
-			if(stop_) {
-				return false;
-			}
-
+		while(!stop_) {
 			// Check for updates
 			connection_->poll();
 
 			if(connection_->finished()) {
-				return true;
+				return;
 			}
 
 			completed_ = connection_->current();
@@ -73,7 +68,7 @@ void network_transmission::pump_monitor::process(events::pump_info&)
 	}
 
 	// Check if the thread is complete. If it is, loading is done.
-	if(poller_.wait_for(0ms) == std::future_status::ready && poller_.get()) {
+	if(poller_.wait_for(0ms) == std::future_status::ready) {
 		window_.get().set_retval(retval::OK);
 		return;
 	}
@@ -125,11 +120,9 @@ void network_transmission::post_show(window& /*window*/)
 
 	if(get_retval() == retval::CANCEL) {
 		// We need to wait for the current polling loop to conclude before exiting so we don't invalidate
-		// the pointer mid-loop, so signal that here. The thread should return false if connection_ is null.
+		// the pointer mid-loop, so signal that here.
 		pump_monitor_.stop_ = true;
-
 		pump_monitor_.poller_.wait();
-		assert(pump_monitor_.poller_.get() == false);
 
 		connection_->cancel();
 	}

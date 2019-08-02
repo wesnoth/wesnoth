@@ -68,7 +68,7 @@ private:
 
 		std::atomic_bool stop_;
 
-		std::future<bool> poller_;
+		std::future<void> poller_;
 	} pump_monitor_;
 
 public:
