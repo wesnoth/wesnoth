@@ -350,18 +350,13 @@ end
 function wml_actions.unit_overlay(cfg)
 	local img = cfg.image or helper.wml_error( "[unit_overlay] missing required image= attribute" )
 	for i,u in ipairs(wesnoth.get_units(cfg)) do
-		local has_already = false
-		for i, w in ipairs(u.overlays) do
-			if w == img then has_already = true end
+		local ucfg = u.__cfg
+		for w in utils.split(ucfg.overlays) do
+			if w == img then ucfg = nil end
 		end
-		if has_already == false then
-			u:add_modification("object", {
-				id = cfg.object_id,
-				wml.tag.effect {
-					apply_to = "overlay",
-					add = img,
-				}
-			})
+		if ucfg then
+			ucfg.overlays = ucfg.overlays .. ',' .. img
+			wesnoth.put_unit(ucfg)
 		end
 	end
 end
