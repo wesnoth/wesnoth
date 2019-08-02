@@ -45,7 +45,8 @@ void network_transmission::pump_monitor::process(events::pump_info&)
 		size_t completed, total;
 			completed = connection_->current();
 			total = connection_->total();
-		if(total) {
+		if(total && completed != shown_size_) {
+			shown_size_ = completed;
 			find_widget<progress_bar>(&(window_.get()), "progress", false)
 					.set_percentage((completed * 100.) / total);
 

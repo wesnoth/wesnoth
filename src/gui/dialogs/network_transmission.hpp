@@ -57,11 +57,18 @@ private:
 		virtual void process(events::pump_info&);
 
 		pump_monitor(connection_data*& connection)
-			: connection_(connection), window_()
+			: connection_(connection),
+			  window_(),
+			  shown_size_(std::numeric_limits<std::size_t>::max())
 		{
 		}
 
 		boost::optional<window&> window_;
+		/**
+		 * The value of current() when the GUI was last refreshed, used so that
+		 * the display isn't refreshed unless the number changes.
+		 */
+		std::size_t shown_size_;
 	} pump_monitor_;
 
 public:
