@@ -1773,9 +1773,9 @@ private:
 
 	bool emit_zoc_;
 
-	std::vector<std::string> overlays_;
-	std::vector<std::string> meta_overlays_;
-	std::vector<std::string> obj_overlays_;
+	std::vector<std::string> overlays_; //vector used for enter value of overlays without using [modifications]
+	std::vector<std::string> meta_overlays_; // vector who contain values of overlays_ and obj_overlays_ and returned like final result
+	std::vector<std::string> obj_overlays_; //used for enter value of overlays using [modifications]
 
 	std::string role_;
 	attack_list attacks_;
