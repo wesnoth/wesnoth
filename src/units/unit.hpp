@@ -1499,7 +1499,7 @@ public:
 	/** Get the unit's overlay images. */
 	const std::vector<std::string>& overlays() const
 	{
-		return meta_overlays_;
+		return overlays_;
 	}
 
 	/**
@@ -1773,8 +1773,8 @@ private:
 
 	bool emit_zoc_;
 
-	std::vector<std::string> overlays_; //vector used for enter value of overlays without using [modifications]
-	std::vector<std::string> meta_overlays_; // vector who contain values of overlays_ and obj_overlays_ and returned like final result
+	std::vector<std::string> overlays_; // vector who contain values of nobj_overlays_ and obj_overlays_ and returned the final result
+	std::vector<std::string> nobj_overlays_; //vector used for enter value of overlays without using [modifications]
 	std::vector<std::string> obj_overlays_; //used for enter value of overlays using [modifications]
 
 	std::string role_;
