@@ -33,8 +33,6 @@ namespace gui2
 {
 namespace dialogs
 {
-using namespace std::chrono_literals;
-
 REGISTER_DIALOG(network_transmission)
 
 network_transmission::pump_monitor::pump_monitor(connection_data*& connection)
@@ -55,7 +53,7 @@ network_transmission::pump_monitor::pump_monitor(connection_data*& connection)
 			completed_ = connection_->current();
 			total_ = connection_->total();
 
-			std::this_thread::sleep_for(10ms);
+			std::this_thread::sleep_for(std::chrono::milliseconds(10));
 		}
 	}))
 {
@@ -68,7 +66,7 @@ void network_transmission::pump_monitor::process(events::pump_info&)
 	}
 
 	// Check if the thread is complete. If it is, loading is done.
-	if(poller_.wait_for(0ms) == std::future_status::ready) {
+	if(poller_.wait_for(std::chrono::milliseconds(0)) == std::future_status::ready) {
 		window_.get().set_retval(retval::OK);
 		return;
 	}
