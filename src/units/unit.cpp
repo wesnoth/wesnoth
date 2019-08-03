@@ -338,6 +338,8 @@ unit::unit(const unit& o)
 	, filter_recall_(o.filter_recall_)
 	, emit_zoc_(o.emit_zoc_)
 	, overlays_(o.overlays_)
+	, meta_overlays_(o.meta_overlays_)
+	, obj_overlays_(o.obj_overlays_)
 	, role_(o.role_)
 	, attacks_(o.attacks_)
 	, facing_(o.facing_)
@@ -418,6 +420,8 @@ unit::unit()
 	, filter_recall_()
 	, emit_zoc_(0)
 	, overlays_()
+	, meta_overlays_()
+	, obj_overlays_()
 	, role_()
 	, attacks_()
 	, facing_(map_location::NDIRECTIONS)
@@ -808,6 +812,8 @@ void unit::swap(unit & o)
 	swap(filter_recall_, o.filter_recall_);
 	swap(emit_zoc_, o.emit_zoc_);
 	swap(overlays_, o.overlays_);
+	swap(meta_overlays_, o.meta_overlays_);
+	swap(obj_overlays_, o.obj_overlays_);
 	swap(role_, o.role_);
 	swap(attacks_, o.attacks_);
 	swap(facing_, o.facing_);
