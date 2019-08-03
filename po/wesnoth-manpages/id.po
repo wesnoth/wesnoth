@@ -500,8 +500,7 @@ msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 #| msgid ""
 #| "sets the severity level of the log domains.  B<all> can be used to match "
 #| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>.  By default the B<error> level is used and the B<info> level "
-#| "for the B<server> domain."
+#| "B<debug>.  By default the B<error> level is used."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
@@ -510,8 +509,7 @@ msgid ""
 msgstr ""
 "menentukan tingkat keparahan dari domain log. B<all> dapat digunakan untuk "
 "menyesuaikan dengan semua domain log. Tersedia tingkatan: B<error>,\\ "
-"B<warning>,\\ B<info>,\\ B<debug>. Secara default tingkat B<error> digunakan "
-"dan tingkat B<info> untuk domain B<server>."
+"B<warning>,\\ B<info>,\\ B<debug>. Secara default tingkat B<error> digunakan."
 
 # type: TP
 #. type: TP
@@ -2621,6 +2619,12 @@ msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)."
 
 # type: Plain text
+#, fuzzy
+#~| msgid ""
+#~| "sets the severity level of the log domains.  B<all> can be used to match "
+#~| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#~| "B<debug>.  By default the B<error> level is used and the B<info> level "
+#~| "for the B<server> domain."
 #~ msgid ""
 #~ "sets the severity level of the log domains.  B<all> can be used to match "
 #~ "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
@@ -2629,10 +2633,9 @@ msgstr "B<wesnoth>(6)."
 #~ "menentukan tingkat keparahan dari domain log. B<all> dapat digunakan "
 #~ "untuk menyesuaikan dengan semua domain log. Tersedia tingkatan: B<error>,"
 #~ "\\ B<warning>,\\ B<info>,\\ B<debug>. Secara default tingkat B<error> "
-#~ "digunakan."
+#~ "digunakan dan tingkat B<info> untuk domain B<server>."
 
 # type: TP
-#, no-wrap
 #~ msgid "B<--path>"
 #~ msgstr "B<--path>"
 

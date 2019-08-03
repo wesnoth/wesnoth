@@ -552,18 +552,17 @@ msgstr "B<--log->I<nível>B<=>I<domínio1>B<,>I<domínio2>B<,>I<...>"
 #| msgid ""
 #| "sets the severity level of the log domains.  B<all> can be used to match "
 #| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>.  By default the B<error> level is used and the B<info> level "
-#| "for the B<server> domain."
+#| "B<debug>.  By default the B<error> level is used."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
 "\\ B<none>.  By default the B<warning> level is used for most domains, but "
 "B<deprecation> defaults to B<none> unless combined with the B<-d> option."
 msgstr ""
-"define o nível de gravidade dos domínios de log. B<all> pode ser usado para "
-"combinar com qualquer domínio de log. Níveis disponíveis: B<erro>,\\ "
-"B<warning>,\\ B<info>,\\ B<debug>. Por defeito, o nivel B<erro> é usado do "
-"nível B<info> para o domínio B<servidor>."
+"Ajusta o nível de severidade dos domínios de log.  B<all> (tudo) pode ser "
+"usado para qualquer domínio de log. Níveis disponíveis: B<error> (erro),\\ "
+"B<warning> (aviso),\\ B<info> (informação),\\ B<debug> (depuração).  O nível "
+"padrão é B<error>."
 
 #
 # type: TP
@@ -2879,19 +2878,24 @@ msgstr "B<wesnoth>(6)."
 
 #
 # type: Plain text
+#, fuzzy
+#~| msgid ""
+#~| "sets the severity level of the log domains.  B<all> can be used to match "
+#~| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#~| "B<debug>.  By default the B<error> level is used and the B<info> level "
+#~| "for the B<server> domain."
 #~ msgid ""
 #~ "sets the severity level of the log domains.  B<all> can be used to match "
 #~ "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
 #~ "B<debug>.  By default the B<error> level is used."
 #~ msgstr ""
-#~ "Ajusta o nível de severidade dos domínios de log.  B<all> (tudo) pode ser "
-#~ "usado para qualquer domínio de log. Níveis disponíveis: B<error> (erro),"
-#~ "\\ B<warning> (aviso),\\ B<info> (informação),\\ B<debug> (depuração).  O "
-#~ "nível padrão é B<error>."
+#~ "define o nível de gravidade dos domínios de log. B<all> pode ser usado "
+#~ "para combinar com qualquer domínio de log. Níveis disponíveis: B<erro>,\\ "
+#~ "B<warning>,\\ B<info>,\\ B<debug>. Por defeito, o nivel B<erro> é usado "
+#~ "do nível B<info> para o domínio B<servidor>."
 
 #
 # type: TP
-#, no-wrap
 #~ msgid "B<--path>"
 #~ msgstr "B<--path>"
 

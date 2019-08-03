@@ -479,18 +479,16 @@ msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 #| msgid ""
 #| "sets the severity level of the log domains.  B<all> can be used to match "
 #| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>.  By default the B<error> level is used and the B<info> level "
-#| "for the B<server> domain."
+#| "B<debug>.  By default the B<error> level is used."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
 "\\ B<none>.  By default the B<warning> level is used for most domains, but "
 "B<deprecation> defaults to B<none> unless combined with the B<-d> option."
 msgstr ""
-"indstiller strenghedsniveauet på fejlsøgningsdomænerne.  B<all> kan bruges "
+"indstiller strenghedsniveauet på fejlsøgningsdomænerne. B<all> kan bruges "
 "til alle fejlsøgningsdomæner. Tilgængelige niveauer: B<fejl>,\\ B<advarsel>,"
-"\\ B<info>,\\ B<fejlsøgning>.  Som standard bruges B<fejl>-niveauet og "
-"B<info>-niveauet for B<server>-domænet."
+"\\ B<info>,\\ B<fejlsøgning>.  Som standard bruges B<fejl>-niveauet."
 
 # type: TP
 #. type: TP
@@ -2452,18 +2450,23 @@ msgid "B<wesnoth>(6)"
 msgstr "wesnoth"
 
 # type: Plain text
+#, fuzzy
+#~| msgid ""
+#~| "sets the severity level of the log domains.  B<all> can be used to match "
+#~| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#~| "B<debug>.  By default the B<error> level is used and the B<info> level "
+#~| "for the B<server> domain."
 #~ msgid ""
 #~ "sets the severity level of the log domains.  B<all> can be used to match "
 #~ "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
 #~ "B<debug>.  By default the B<error> level is used."
 #~ msgstr ""
-#~ "indstiller strenghedsniveauet på fejlsøgningsdomænerne. B<all> kan bruges "
-#~ "til alle fejlsøgningsdomæner. Tilgængelige niveauer: B<fejl>,\\ "
+#~ "indstiller strenghedsniveauet på fejlsøgningsdomænerne.  B<all> kan "
+#~ "bruges til alle fejlsøgningsdomæner. Tilgængelige niveauer: B<fejl>,\\ "
 #~ "B<advarsel>,\\ B<info>,\\ B<fejlsøgning>.  Som standard bruges B<fejl>-"
-#~ "niveauet."
+#~ "niveauet og B<info>-niveauet for B<server>-domænet."
 
 # type: TP
-#, no-wrap
 #~ msgid "B<--path>"
 #~ msgstr "B<--path>"
 

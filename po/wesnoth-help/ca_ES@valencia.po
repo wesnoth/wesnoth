@@ -355,10 +355,6 @@ msgstr ""
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -366,7 +362,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Mal</header>"
+"<header>text='Possibilitat de colpejar'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
@@ -416,10 +412,6 @@ msgstr ""
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:198
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -427,7 +419,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Mal</header>"
+"<header>text='Possibilitat de colpejar'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:200
@@ -1718,10 +1710,6 @@ msgstr ""
 #. [topic]: id=combat
 #: data/core/help.cfg:290
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -1729,7 +1717,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Mal</header>"
+"<header>text='Possibilitat de colpejar'</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:292
@@ -2312,10 +2300,6 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:416
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -2323,7 +2307,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Mal</header>"
+"<header>text='Possibilitat de colpejar'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:418
@@ -2433,10 +2417,6 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:446
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -2444,7 +2424,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Mal</header>"
+"<header>text='Possibilitat de colpejar'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:448
@@ -2603,7 +2583,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Possibilitat de colpejar'</header>"
+"<header>text='Orde i nombre dels atacs'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:496
@@ -2644,10 +2624,6 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:504
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -2655,7 +2631,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Mal</header>"
+"<header>text='Possibilitat de colpejar'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:506
@@ -5864,6 +5840,16 @@ msgid "Parse error when parsing help text: "
 msgstr "S'ha produït un error en analitzar el text d'ajuda: "
 
 #, fuzzy
+msgid ""
+"\n"
+"\n"
+"<big>Multiplayer Modifications</big>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Orde i nombre dels atacs'</header>"
+
+#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "\n"
@@ -5956,16 +5942,6 @@ msgstr "S'ha produït un error en analitzar el text d'ajuda: "
 #~ "\n"
 #~ "\n"
 #~ "<header>text=Mal</header>"
-
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Multiplayer Modifications</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Orde i nombre dels atacs'</header>"
 
 #~ msgid "race^Mermen"
 #~ msgstr "Sirènids"
@@ -6871,3 +6847,54 @@ msgstr "S'ha produït un error en analitzar el text d'ajuda: "
 #~ "Algunes armes tenen característiques especials que incrementen la seua "
 #~ "efectivitat d'atac.\n"
 #~ "\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Cores'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Possibilitat de colpejar'</header>"
+
+#, fuzzy
+#~| msgid ""
+#~| "Berserk:\n"
+#~| "Whether used offensively or defensively, this attack presses the "
+#~| "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#~| "have occurred."
+#~ msgid ""
+#~ "Whether used offensively or defensively, this attack presses the "
+#~ "engagement until one of the champions is slain, or 30 rounds of attacks "
+#~ "have occurred."
+#~ msgstr ""
+#~ "Berserk:\n"
+#~ "Tant si s'usa ofensiva com defensivament, este atac allarga la lluita "
+#~ "fins a la mort d'un dels dos combatents, o fins que s'hagen produït 30 "
+#~ "rondes d'atacs."
+
+#, fuzzy
+#~| msgid "firststrike"
+#~ msgid "true strike"
+#~ msgstr "iniciatiu"
+
+#, fuzzy
+#~| msgid ""
+#~| "Magical:\n"
+#~| "This attack always has a 70% chance to hit regardless of the defensive "
+#~| "ability of the unit being attacked."
+#~ msgid ""
+#~ "This attack always has a 70% chance to hit regardless of the defensive "
+#~ "ability of the champion being attacked."
+#~ msgstr ""
+#~ "Màgic:\n"
+#~ "Este atac sempre té un 70% de possibilitats de colpejar, indiferentment "
+#~ "de l'habilitat defensiva de la unitat atacada."
+
+#, fuzzy
+#~ msgid "<header>text='Race specific topics'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Possibilitat de colpejar'</header>"

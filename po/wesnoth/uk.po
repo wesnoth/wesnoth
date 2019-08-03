@@ -1787,9 +1787,6 @@ msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:521
-#, fuzzy
-#| msgid ""
-#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr "Цей тризуб дарує водяному силу стріляти блискавками у ворогів!"
@@ -6798,8 +6795,6 @@ msgstr "ЗД:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves:"
 msgid "Moves:"
 msgstr "Ходів:"
 
@@ -6807,8 +6802,6 @@ msgstr "Ходів:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "Vision:"
 msgid "Vision:"
 msgstr "Бачення:"
 
@@ -6824,8 +6817,6 @@ msgstr "Заглушення/Перешкоди:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost:"
 msgid "Cost:"
 msgstr "Вартість:"
 
@@ -6840,8 +6831,6 @@ msgstr "Тип:"
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Required XP:"
 msgid "Required XP:"
 msgstr "Необхідно ДВ:"
 
@@ -7577,10 +7566,8 @@ msgstr "Виявлена територія з ціною руху менше 1.
 #. clients, while they wait to receive the content of a global variable
 #. from another player. This text will be embedded into a sentence.
 #: src/persist_var.cpp:58
-#, fuzzy
-#| msgid "an advancement choice"
 msgid "waiting for^a global variable"
-msgstr "вибір підвищення"
+msgstr ""
 
 #: src/play_controller.cpp:247
 msgid "time left for current turn"
@@ -7688,10 +7675,6 @@ msgid "Save and abort game"
 msgstr "Зберегти і перервати гру"
 
 #: src/playturn.cpp:297
-#, fuzzy
-#| msgid ""
-#| "$player who controlled side $side_drop has left the game. What do you "
-#| "want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -8309,14 +8292,11 @@ msgid "A unit was created using debug mode during $player’s turn"
 msgstr "Під час ходу $player було створено бійця"
 
 #: src/synced_user_choice.cpp:330
-#, fuzzy
-#| msgid "waiting for $desc from side $sides"
-#| msgid_plural "waiting for $desc from sides $sides"
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "чекаю на $desc від сторони $sides"
-msgstr[1] "чекаю на $desc від сторони $sides"
-msgstr[2] "чекаю на $desc від сторони $sides"
+msgstr[1] "чекаю на $desc від сторін $sides"
+msgstr[2] "чекаю на $desc від сторін $sides"
 
 #. TRANSLATORS: In networked games, this text is shown for other clients,
 #. while they wait for an action from another player.

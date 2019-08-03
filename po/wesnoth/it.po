@@ -1814,9 +1814,6 @@ msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:521
-#, fuzzy
-#| msgid ""
-#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr ""
@@ -6921,8 +6918,6 @@ msgstr "PF:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves:"
 msgid "Moves:"
 msgstr "Mosse:"
 
@@ -6930,8 +6925,6 @@ msgstr "Mosse:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "Vision:"
 msgid "Vision:"
 msgstr "Visione:"
 
@@ -6939,8 +6932,6 @@ msgstr "Visione:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
-#, fuzzy
-#| msgid "Jamming:"
 msgid "Jamming:"
 msgstr "Disturbo:"
 
@@ -6948,8 +6939,6 @@ msgstr "Disturbo:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost:"
 msgid "Cost:"
 msgstr "Costo:"
 
@@ -6964,8 +6953,6 @@ msgstr "Allineamento:"
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Required XP:"
 msgid "Required XP:"
 msgstr "PE richiesti:"
 
@@ -7835,10 +7822,6 @@ msgid "Save and abort game"
 msgstr "Abbandona il gioco"
 
 #: src/playturn.cpp:297
-#, fuzzy
-#| msgid ""
-#| "$player who controlled side $side_drop has left the game. What do you "
-#| "want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -7969,8 +7952,6 @@ msgid "Defense: "
 msgstr "Difesa: "
 
 #: src/reports.cpp:631 src/reports.cpp:632
-#, fuzzy
-#| msgid "vision:"
 msgid "vision:"
 msgstr "visione:"
 
@@ -8475,13 +8456,10 @@ msgstr ""
 "debug"
 
 #: src/synced_user_choice.cpp:330
-#, fuzzy
-#| msgid "waiting for $desc from side $sides"
-#| msgid_plural "waiting for $desc from sides $sides"
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "in attesa di $desc dalla squadra $sides"
-msgstr[1] "in attesa di $desc dalla squadra $sides"
+msgstr[1] "in attesa di $desc dalle squadrae $sides"
 
 #. TRANSLATORS: In networked games, this text is shown for other clients,
 #. while they wait for an action from another player.

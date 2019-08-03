@@ -133,8 +133,7 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
-#| msgid "B<--bunzip2>I<\\ infile.bz2>"
+#, no-wrap
 msgid "B<--bunzip2>I<\\ infile.bz2>"
 msgstr "B<--bunzip>I<\\ failas.bz2>"
 
@@ -151,8 +150,7 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:55
-#, fuzzy, no-wrap
-#| msgid "B<--bzip2>I<\\ infile>"
+#, no-wrap
 msgid "B<--bzip2>I<\\ infile>"
 msgstr "B<--bzip>I<\\ failas>"
 
@@ -336,10 +334,6 @@ msgstr "B<-e[>I<failas>B<],\\ --editor[>I<=failas>B<]>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:113
-#, fuzzy
-#| msgid ""
-#| "start the in-game map editor directly. If I<file> is specified, "
-#| "equivalent to B<-l> B<--load>."
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-l> B<--load>."
@@ -531,10 +525,6 @@ msgstr "B<--max-fps>I<\\ fps>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:189
-#, fuzzy
-#| msgid ""
-#| "the number of frames per second the game can show, the value should be "
-#| "between B<1> and B<1000>, the default is the monitor's refresh rate."
 msgid ""
 "the number of frames per second the game can show, the value should be "
 "between B<1> and B<1000>, the default is the monitor's refresh rate."
@@ -589,8 +579,7 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:201
-#, fuzzy, no-wrap
-#| msgid "B<--nodelay>"
+#, no-wrap
 msgid "B<--nodelay>"
 msgstr "B<--nodelay>"
 
@@ -846,8 +835,6 @@ msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:304
-#, fuzzy
-#| msgid "sets the screen resolution. Example: B<-r> B<800x600>."
 msgid "sets the screen resolution. Example: B<-r> B<800x600>."
 msgstr "nustato ekrano raišką. Pavyzdžiui: B<-r> B<800x600>."
 
@@ -882,8 +869,7 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:310
-#, fuzzy, no-wrap
-#| msgid "B<--rng-seed>I<\\ number>"
+#, no-wrap
 msgid "B<--rng-seed>I<\\ number>"
 msgstr "B<--rng-seed>I<\\ skaičius>"
 
@@ -1246,8 +1232,7 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:437
-#, fuzzy, no-wrap
-#| msgid "B<--ai-config>I<\\ number>B<:>I<value>"
+#, no-wrap
 msgid "B<--ai-config>I<\\ number>B<:>I<value>"
 msgstr "B<--ai-config>I<\\ numeris>B<:>I<vertė>"
 
@@ -1322,11 +1307,6 @@ msgstr "B<--exit-at-end>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:468
-#, fuzzy
-#| msgid ""
-#| "exits once the scenario is over, without displaying victory/defeat dialog "
-#| "which normally requires the user to click End Scenario.  This is also "
-#| "used for scriptable benchmarking."
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which normally requires the user to click End Scenario.  This is also used "
@@ -1556,8 +1536,6 @@ msgstr "TAIP PAT ŽIŪRĖKITE"
 #.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
 #: doc/man/wesnothd.6:15
-#, fuzzy
-#| msgid "B<wesnothd>(6)"
 msgid "B<wesnothd>(6)"
 msgstr "B<wesnothd>(6)"
 
@@ -2407,13 +2385,11 @@ msgstr ""
 # type: TH
 #. type: Plain text
 #: doc/man/wesnothd.6:286
-#, fuzzy
-#| msgid "B<wesnoth>(6)"
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
 
 # type: TP
-#, fuzzy, no-wrap
+#, fuzzy
 #~| msgid "B<--data-path>"
 #~ msgid "B<--path>"
 #~ msgstr "B<--data-path>"

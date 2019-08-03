@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-07-18 12:50 UTC\n"
-"PO-Revision-Date: 2018-06-04 01:55+0200\n"
+"PO-Revision-Date: 2019-03-21 00:52+0100\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:13
@@ -74,10 +74,8 @@ msgstr ""
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:24
-#, fuzzy
-#| msgid "(Intermediate level, 16 scenarios.)"
 msgid "(Novice level, 16 scenarios.)"
-msgstr "(Einstufung: Mittel, 16 Szenarien)"
+msgstr "(Einstufung: Einfach, 16 Szenarien)"
 
 #. [about]
 #: data/campaigns/Eastern_Invasion/_main.cfg:28
@@ -583,25 +581,17 @@ msgstr ""
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:192
-#, fuzzy
-#| msgid ""
-#| "This is an old escape tunnel for the outpost; unfortunately these caves "
-#| "are currently inhabited by trolls. Now hurry, we have to move quickly; "
-#| "the undead will surely follow us down here."
 msgid ""
 "This is an old escape route for the outpost. Unfortunately these caves are "
 "currently inhabited by trolls, who are blocking our path through the tunnel."
 msgstr ""
-"Ein alter Fluchttunnel des Außenpostens; nur hausen in diesen Höhlen leider "
-"mittlerweile Trolle. Die Untoten werden uns sicher folgen. Wir müssen rasch "
-"voran!"
+"Ein alter Fluchttunnel des Außenpostens. Unglücklicherweise hausen in diesen "
+"Höhlen Trolle die uns den Weg versperren."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:245
-#, fuzzy
-#| msgid "Hurry up. We must get across before these undead slaughter us!"
 msgid "We must make haste to escape before the undead catch up."
-msgstr "Beeilung! Wir müssen rüber, bevor die uns abschlachten!"
+msgstr "Wir müssen die Flucht ergreifen, bevor uns die Untoten einholen!"
 
 # Wartet. Bevor wir weitergehen habe ich eine Frage: Wer waren diese Untoten?
 #. [message]: speaker=Gweddry
@@ -635,7 +625,7 @@ msgstr "Wer wandelt auf unseren Wegen?"
 msgid ""
 "We are soldiers of the king of Wesnoth. Will you help us fight these trolls?"
 msgstr ""
-"Wir sind Soldaten der Krone von Wesnoth. Hilfst du uns, mit den Trollen hier "
+"Wir sind Soldaten der Krone von Wesnoth. Helft ihr uns, mit den Trollen hier "
 "unten fertig zu werden?"
 
 #. [message]: speaker=unit
@@ -680,6 +670,8 @@ msgid ""
 "Very well. The best of luck in your battle. Gweddry, we may be able to avoid "
 "the bulk of the trolls by going through the dwarves’ tunnel."
 msgstr ""
+"Nun den, viel Erfolg im Kampf. Gweddry, wir können die Orks umgehen indem "
+"wir den Tunnel der Zwerge benutzen."
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:378
@@ -706,11 +698,6 @@ msgstr ""
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:452
-#, fuzzy
-#| msgid ""
-#| "They follow us... we must get out of this tunnel. It looks like it is "
-#| "leading east. That is unfortunate, for it will take us beyond the borders "
-#| "of Wesnoth. But it is our only option."
 msgid ""
 "They follow us... we must escape through this tunnel. That is unfortunate, "
 "for it will take us into the Estmark hills, beyond the borders of Wesnoth. "
@@ -1803,10 +1790,8 @@ msgstr "Grug"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:104
-#, fuzzy
-#| msgid "Move Gweddry and Owaec across the river"
 msgid "Move Gweddry, Owaec, and Dacyn across the river"
-msgstr "Führt Gweddry und Owaec über den Fluss"
+msgstr "Führt Gweddry,Owaec und Dacyn über den Fluss"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:145
@@ -3346,6 +3331,11 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:35
+#, fuzzy
+#| msgid ""
+#| "His attack was swift and his power great, but through unwavering faith "
+#| "and no small skill I emerged victorious. As he lie there mortally wounded "
+#| "I prepared to excise the darkness in his soul."
 msgid ""
 "His attack was swift and his power great, but through unwavering faith and "
 "no small skill I emerged victorious. As he lie there mortally wounded I "
@@ -4317,11 +4307,9 @@ msgid ""
 "to all in its path."
 msgstr ""
 "Es mag sein, dass Sterben nicht das Schlimmste war für Gweddry und seine "
-"wagemutige Schar.\n"
-"Dass sie nicht lange genug lebten, den Anblick einer entsetzlichen Armee "
-"Untoter zu ertragen,\n"
-"die sich einer Flutwelle gleich gen Wesnoth ergoß und nichts als Chaos "
-"hinterließ."
+"wagemutige Schar. Dass sie nicht lange genug lebten, den Anblick einer "
+"entsetzlichen Armee Untoter zu ertragen, die sich einer Flutwelle gleich gen "
+"Wesnoth ergoß und nichts als Chaos hinterließ."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:104

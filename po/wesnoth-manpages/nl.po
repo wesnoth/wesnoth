@@ -471,18 +471,16 @@ msgstr "B<--log->I<niveau>B<=>I<domein1>B<,>I<domein2>B<,>I<...>"
 #| msgid ""
 #| "sets the severity level of the log domains.  B<all> can be used to match "
 #| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>.  By default the B<error> level is used and the B<info> level "
-#| "for the B<server> domain."
+#| "B<debug>.  By default the B<error> level is used."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
 "\\ B<none>.  By default the B<warning> level is used for most domains, but "
 "B<deprecation> defaults to B<none> unless combined with the B<-d> option."
 msgstr ""
-"stelt het meldingsniveau van de logdomeinen in. B<all> kiest alle "
-"logdomeinen. Beschikbare niveaus: B<error>,\\ B<warning>,\\ B<info>,\\ "
-"B<debug>. Standaard wordt het B<error> niveau gebruikt en het B<info> niveau "
-"voor het B<server> domein."
+"stelt het meldingsniveau van de logdomeinen in. B<all> kan gebruikt worden "
+"om alle logdomeinen te kiezen. Beschikbare niveaus zijn B<error>,\\ "
+"B<warning>,\\ B<info>,\\ B<debug>. De standaard is B<error>."
 
 # type: TP
 #. type: TP
@@ -2418,17 +2416,23 @@ msgid "B<wesnoth>(6)"
 msgstr "wesnoth"
 
 # type: Plain text
+#, fuzzy
+#~| msgid ""
+#~| "sets the severity level of the log domains.  B<all> can be used to match "
+#~| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#~| "B<debug>.  By default the B<error> level is used and the B<info> level "
+#~| "for the B<server> domain."
 #~ msgid ""
 #~ "sets the severity level of the log domains.  B<all> can be used to match "
 #~ "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
 #~ "B<debug>.  By default the B<error> level is used."
 #~ msgstr ""
-#~ "stelt het meldingsniveau van de logdomeinen in. B<all> kan gebruikt "
-#~ "worden om alle logdomeinen te kiezen. Beschikbare niveaus zijn B<error>,"
-#~ "\\ B<warning>,\\ B<info>,\\ B<debug>. De standaard is B<error>."
+#~ "stelt het meldingsniveau van de logdomeinen in. B<all> kiest alle "
+#~ "logdomeinen. Beschikbare niveaus: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#~ "B<debug>. Standaard wordt het B<error> niveau gebruikt en het B<info> "
+#~ "niveau voor het B<server> domein."
 
 # type: TP
-#, no-wrap
 #~ msgid "B<--path>"
 #~ msgstr "B<--path>"
 

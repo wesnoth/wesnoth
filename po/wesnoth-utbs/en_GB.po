@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-07-18 12:51 UTC\n"
-"PO-Revision-Date: 2019-03-12 12:06+1100\n"
+"PO-Revision-Date: 2019-07-08 13:19+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -452,8 +452,6 @@ msgstr "Eloshi"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:446
-#, fuzzy
-#| msgid "Illuvin"
 msgid "Illuvin"
 msgstr "Illuvin"
 
@@ -475,8 +473,6 @@ msgstr "Jorazan"
 
 #. [event]: role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:558
-#, fuzzy
-#| msgid "Zyar"
 msgid "Zyar"
 msgstr "Zyar"
 
@@ -643,8 +639,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:814
-#, fuzzy
-#| msgid "These fields seem strangely vacant. Where are the dustboks?"
 msgid "These fields seem strangely vacant. Where are the dustboks?"
 msgstr "These fields seem strangely vacant. Where are the dustboks?"
 
@@ -665,19 +659,11 @@ msgstr "Is it safe to come out? I was so scared."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:866
-#, fuzzy
-#| msgid "Where are all the other dustboks?"
 msgid "Where are all the other dustboks?"
 msgstr "Where are all the other dustboks?"
 
 #. [message]: speaker=Naru
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:871
-#, fuzzy
-#| msgid ""
-#| "A hunting party left just yesterday, so unless the rocks fell all over "
-#| "the land, many of the dustboks have probably survived. The few that "
-#| "remained here were scared by the falling rocks and fled into the night. "
-#| "It took all my skill to calm Yasi and keep him from running."
 msgid ""
 "A hunting party left just yesterday, so unless the rocks fell all over the "
 "land, many of the dustboks have probably survived. The few that remained "
@@ -691,12 +677,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:876
-#, fuzzy
-#| msgid ""
-#| "We’ll need your help in checking to see if the outer settlements "
-#| "survived. Who knows what kinds of damage they suffered in the night? And "
-#| "perhaps some of the people out in the desert have been able to round up "
-#| "some of the loose dusties."
 msgid ""
 "We’ll need your help in checking to see if the outer settlements survived. "
 "Who knows what kinds of damage they suffered in the night? And perhaps some "
@@ -715,8 +695,6 @@ msgstr "We can only hope that hunting party returns soon."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:891
-#, fuzzy
-#| msgid "Hey, Nisen, the rocks have stopped falling. You can come out now!"
 msgid "Hey, Nisen, the rocks have stopped falling. You can come out now!"
 msgstr "Hey, Nisen, the rocks have stopped falling. You can come out now!"
 
@@ -793,10 +771,6 @@ msgstr ""
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1125
-#, fuzzy
-#| msgid ""
-#| "Bah, I’ve fought these dark cultists before. They can be killed just like "
-#| "anyone else, and our riders can easily defeat their skeleton armies."
 msgid ""
 "Bah, I’ve fought these dark cultists before. They can be killed just like "
 "anyone else, and our riders can easily defeat their skeleton armies."
@@ -1133,6 +1107,8 @@ msgid ""
 "Your units become dehydrated during the day, losing hitpoints and damage "
 "when they are not on a water hex"
 msgstr ""
+"Your units become dehydrated during the day, losing hit-points and damage "
+"when they are not on a water hex"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:234
@@ -1140,16 +1116,18 @@ msgid ""
 "Units are refreshed at the start of your turn when they are on a water or "
 "oasis hex"
 msgstr ""
+"Units are refreshed at the start of your turn when they are on a water or "
+"oasis hex"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:237
 msgid "Healers can prevent dehydration from getting worse, but cannot heal it"
-msgstr ""
+msgstr "Healers can prevent dehydration from getting worse, but cannot heal it"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:240
 msgid "Healers are unable to heal adjacent units during the day"
-msgstr ""
+msgstr "Healers are unable to heal adjacent units during the day"
 
 #. [label]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:264
@@ -1672,19 +1650,14 @@ msgstr ""
 
 #. [message]: speaker=Vengeful Lord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1223
-#, fuzzy
-#| msgid ""
-#| "Elf with a bow, I remember you. You thought me defeated, but I am back "
-#| "even more powerful than before. Death reigns eternal, your scorched bones "
-#| "and lifeless body will join my host."
 msgid ""
 "Elf of the sands, I remember you. You thought me defeated, but I am back "
 "even more powerful than before. Death reigns eternal, your scorched bones "
 "and lifeless body will join my host."
 msgstr ""
-"Elf with a bow, I remember you. You thought me defeated, but I am back even "
-"more powerful than before. Death reigns eternal, your scorched bones and "
-"lifeless body will join my host."
+"Elf of the sands, I remember you. You thought me defeated, but I am back "
+"even more powerful than before. Death reigns eternal, your scorched bones "
+"and lifeless body will join my host."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1228
@@ -2307,11 +2280,6 @@ msgstr ""
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:673
-#, fuzzy
-#| msgid ""
-#| "I bless you with the light that will come, I bless you with the memory "
-#| "and the promise. Lay down your shield, champion, and let your blade shine "
-#| "in the dark."
 msgid ""
 "I bless you with the light that will come, I bless you with the memory and "
 "the promise. Lay down your shield, champion, and let your blade shine in the "
@@ -3985,8 +3953,6 @@ msgstr "What by the names of my forefathers are they?"
 
 #. [message]: speaker=first_dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1017
-#, fuzzy
-#| msgid "Wait a minute... Vacuous eyes, pointy ears — they must be elves."
 msgid "Wait a minute... Vacuous eyes, pointy ears — they must be elves."
 msgstr "Wait a minute... Vacuous eyes, pointy ears — they must be elves."
 
@@ -7111,11 +7077,6 @@ msgstr "Huh? Elves?"
 
 #. [message]: speaker=Bellerin
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:973
-#, fuzzy
-#| msgid ""
-#| "Yeah, just like my old grandmam used to tell us: pointy ears, those "
-#| "shifty eyes, hearts as hard as a hermit crab’s shell. It must be an "
-#| "invasion! They must have started the flood!"
 msgid ""
 "Yeah, just like my old grandmam used to tell us: pointy ears, those shifty "
 "eyes, hearts as hard as a hermit crab’s shell. It must be an invasion! They "
@@ -7679,10 +7640,8 @@ msgstr ""
 
 #. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2043
-#, fuzzy
-#| msgid "Break the circle"
 msgid "Break the circle."
-msgstr "Break the circle"
+msgstr "Break the circle."
 
 #. [command]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2062
@@ -9395,7 +9354,7 @@ msgid ""
 "immediate vicinity we should be pretty safe."
 msgstr ""
 "Indeed. Undead ghosts such as these are often bound to the places they died: "
-"the farther away they travel, the weaker they are. So if we move out of the "
+"the further away they travel, the weaker they are. So if we move out of the "
 "immediate vicinity we should be pretty safe."
 
 #. [message]: speaker=Kaleh
@@ -10802,16 +10761,12 @@ msgstr ""
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1828
-#, fuzzy
-#| msgid ""
-#| "I have followed you this far Kaleh, I will not abandon you now. But I "
-#| "admit that my faith is shaken. If that is not our god, than what is it?"
 msgid ""
 "I have followed you this far Kaleh, I will not abandon you now. But I admit "
 "that my faith is shaken. If that is not our god, then what is it?"
 msgstr ""
-"I have followed you this far, Kaleh; I will not abandon you now. But I admit "
-"that my faith is shaken. If that is not our god, than what is it?"
+"I have followed you this far, Kaleh, I will not abandon you now. But I admit "
+"that my faith is shaken. If that is not our god, then what is it?"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1832
@@ -15067,14 +15022,6 @@ msgstr "Quenoth Archer"
 
 #. [unit_type]: id=Quenoth Archer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:21
-#, fuzzy
-#| msgid ""
-#| "With the open sands providing much less protection than the old forests "
-#| "did, the wide ranks of elvish archers that once formed the core of the "
-#| "elvish military have all but disappeared. Instead, the few who still "
-#| "dedicate themselves to the traditional weapon of their ancestors practice "
-#| "the art from the saddle, allowing them to more easily avoid the perils of "
-#| "melee combat."
 msgid ""
 "With the open sands providing much less protection than the old forests did, "
 "the wide ranks of elvish archers that once formed the core of the elvish "
@@ -15268,15 +15215,6 @@ msgstr "Quenoth Flanker"
 
 #. [unit_type]: id=Quenoth Flanker, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:23
-#, fuzzy
-#| msgid ""
-#| "Some fighters find that their true talents lie not within rigid spear "
-#| "ranks, but out in the sands, striking at the flanks and rear of enemy "
-#| "forces. Fast and nimble, these elves make use of the weaknesses in enemy "
-#| "formations to disrupt their lines and sow chaos on the battlefield. In "
-#| "more cutthroat conflicts, Flankers even rely on the use of poison — a "
-#| "tool whose use was frowned on by their ancestors — to cripple their foes "
-#| "before charging in for the finish."
 msgid ""
 "Some fighters find that their true talents lie not within rigid spear ranks, "
 "but out in the sands, striking at the flanks and rear of enemy forces. Fast "
@@ -15416,33 +15354,6 @@ msgstr "Tauroch Protector"
 
 #. [unit_type]: id=Tauroch Protector, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Protector.cfg:37
-#, fuzzy
-#| msgid ""
-#| "From the journal of Syniel, the sand skipper:\n"
-#| "\n"
-#| "The orcs ambushed me near the oasis at twilight. I had to flee into the "
-#| "desert, but even there, the wolves were nearly fast enough to keep up "
-#| "with me. I ran and ran for hours until I could barely feel my legs and "
-#| "still, they hounded me under the bright moonlight. I thought that I was "
-#| "dead for sure, but as Eloh would have it, I came across a young Tauroch "
-#| "that had wandered away from her pack. She must have sensed my trouble, "
-#| "for she came to me swiftly and fought beside me all through the long "
-#| "night; beyond exhaustion, we somehow managed to drive off dozens of orcs "
-#| "and wolves by ourselves. By dawn, we were alone, but wounded and weary to "
-#| "our bones with nothing but sand in sight. I used what little remained of "
-#| "my supplies to tend to the Tauroch’s wounds, then I succumbed to fatigue "
-#| "and I remember little after that.\n"
-#| "\n"
-#| "-----------------------\n"
-#| "\n"
-#| "I woke up today in the village, tired, but alive. My friends told me that "
-#| "the Tauroch had carried me through the desert for many hours at no little "
-#| "cost to herself, for she was in worse condition than I by the time we had "
-#| "arrived. I can only be grateful that I managed to survive that dreadful "
-#| "night, for it is only by Eloh’s grace that I happened upon such a loyal "
-#| "companion. She is my savior, my watchful guardian, a blessing from the "
-#| "Goddess herself. I think I will call her Nala, meaning ‘Protector’ in our "
-#| "tongue. I am sure we will have many more adventures together."
 msgid ""
 "From the journal of Syniel, the Sand Skipper:\n"
 "\n"
@@ -15489,11 +15400,11 @@ msgstr ""
 "\n"
 "I woke up today in the village, tired, but alive. My friends told me that "
 "the Tauroch had carried me through the desert for many hours at no little "
-"cost to herself, for she was in worse condition than I by the time we had "
-"arrived. I can only be grateful that I managed to survive that dreadful "
+"cost to herself, for she was in worse condition than I was by the time we "
+"had arrived. I can only be grateful that I managed to survive that dreadful "
 "night, for it is only by Eloh’s grace that I happened upon such a loyal "
 "companion. She is my saviour, my watchful guardian, a blessing from the "
-"Goddess herself. I think I will call her Nala, meaning ‘Protector’ in our "
+"goddess herself. I think I will call her Nala, meaning ‘Protector’ in our "
 "tongue. I am sure we will have many more adventures together."
 
 #. [attack]: type=impact

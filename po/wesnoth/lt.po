@@ -1772,9 +1772,6 @@ msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:521
-#, fuzzy
-#| msgid ""
-#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr "Šis trišakis leidžia vandeniams trankyti priešus žaibais."
@@ -6434,8 +6431,6 @@ msgstr "GT:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves:"
 msgid "Moves:"
 msgstr "Žingsniai:"
 
@@ -6443,8 +6438,6 @@ msgstr "Žingsniai:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "Vision:"
 msgid "Vision:"
 msgstr "Matymas:"
 
@@ -6460,8 +6453,6 @@ msgstr "Įspėjimas: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost:"
 msgid "Cost:"
 msgstr "Kaina:"
 
@@ -6476,8 +6467,6 @@ msgstr "Prigimtis:"
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Required XP:"
 msgid "Required XP:"
 msgstr "Reikalingi PT:"
 
@@ -7943,15 +7932,12 @@ msgstr ""
 "Per žaidėjo $player ėjimą buvo sukurtas karys naudojant derinimo režimą"
 
 #: src/synced_user_choice.cpp:330
-#, fuzzy
-#| msgid "waiting for $desc from side $sides"
-#| msgid_plural "waiting for $desc from sides $sides"
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "laukiama $desc iš žaidėjo $sides"
-msgstr[1] "laukiama $desc iš žaidėjo $sides"
-msgstr[2] "laukiama $desc iš žaidėjo $sides"
-msgstr[3] "laukiama $desc iš žaidėjo $sides"
+msgstr[1] "laukiama $desc iš žaidėjų $sides"
+msgstr[2] "laukiama $desc iš žaidėjų $sides"
+msgstr[3] "laukiama $desc iš žaidėjų $sides"
 
 #. TRANSLATORS: In networked games, this text is shown for other clients,
 #. while they wait for an action from another player.
@@ -8056,13 +8042,12 @@ msgstr[3] "$number judėjimo taškas"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:451
-#, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
-msgstr[0] "per ėjimą"
-msgstr[1] "per ėjimą"
-msgstr[2] "per ėjimą"
-msgstr[3] "per ėjimą"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> judėjimo taškas"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> judėjimo taškai"
+msgstr[2] "<span color=\"$color\">$number_or_percent</span> judėjimo taškų"
+msgstr[3] "<span color=\"$color\">$number_or_percent</span> judėjimo taškas"
 
 #: src/units/types.cpp:546 src/units/types.hpp:181
 msgid "chaotic"

@@ -5227,8 +5227,10 @@ msgstr ""
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:234
+#, fuzzy
+#| msgid "No advancement"
 msgid "waiting for^an advancement choice"
-msgstr ""
+msgstr "Brak awansów"
 
 #: src/actions/attack.cpp:600 src/actions/attack.cpp:1350
 msgid "An invalid attacker weapon got selected."
@@ -6330,8 +6332,10 @@ msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Pseudonim „$nick” jest zarejestrowany na tym serwerze."
 
 #: src/game_initialization/multiplayer.cpp:335
+#, fuzzy
+#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "Your IP address is banned on this server’s forums for $duration|."
-msgstr ""
+msgstr "Pseudonim „$nick” jest zarejestrowany na tym serwerze."
 
 #: src/game_initialization/multiplayer.cpp:337
 msgid "Your IP address is banned on this server’s forums."
@@ -10084,241 +10088,183 @@ msgstr "Opcje planowania"
 #~ msgid "(side $temp_i|)"
 #~ msgstr "(strona $temp_i|)"
 
-#~| msgid "Cancel"
 #~ msgid "cancel"
 #~ msgstr "Anuluj"
 
-#~| msgid "Test scenario"
 #~ msgid "Select Hex"
 #~ msgstr "Scenariusz testowy"
 
-#~| msgid "Attacker"
 #~ msgid "Move/Attack"
 #~ msgstr "Atakujący"
 
 #~ msgid "Animate Map"
 #~ msgstr "Animacja mapy"
 
-#~| msgid "Next Turn"
 #~ msgid "Next Unit"
 #~ msgstr "Następna tura"
 
-#~| msgid "End Turn"
 #~ msgid "End Unit Turn"
 #~ msgstr "Zakończ turę"
 
-#~| msgid "Screenshot"
 #~ msgid "Map Screenshot"
 #~ msgstr "Zrzut ekranu"
 
-#~| msgid "Description"
 #~ msgid "Terrain Description"
 #~ msgstr "Opis"
 
-#~| msgid "Description"
 #~ msgid "Unit Description"
 #~ msgstr "Opis"
 
-#~| msgid "Delete add-on: "
 #~ msgid "Delete Unit"
 #~ msgstr "Usuń dodatek:"
 
-#~| msgid "Share Maps"
 #~ msgid "Save Map"
 #~ msgstr "Dziel mapę"
 
-#~| msgid "Recruit"
 #~ msgid "Repeat Recruit"
 #~ msgstr "Rekrutuj"
 
-#~| msgid "Mouse scrolling"
 #~ msgid "Mouse Scrolling"
 #~ msgstr "Przewijanie myszą"
 
-#~| msgid "Status"
 #~ msgid "Status Table"
 #~ msgstr "Status"
 
-#~| msgid "Create Unit (Debug!)"
 #~ msgid "Change Side (Debug!)"
 #~ msgstr "Utwórz jednostkę (debugowanie!)"
 
-#~| msgid "Create Unit (Debug!)"
 #~ msgid "Kill Unit (Debug!)"
 #~ msgstr "Utwórz jednostkę (debugowanie!)"
 
-#~| msgid "Scenario Settings"
 #~ msgid "Scenario Objectives"
 #~ msgstr "Ustawienia scenariusza"
 
-#~| msgid "Host Networked Game"
 #~ msgid "Pause Network Game"
 #~ msgstr "Załóż grę sieciową"
 
-#~| msgid "Host Networked Game"
 #~ msgid "Continue Network Game"
 #~ msgstr "Załóż grę sieciową"
 
 #~ msgid "Quit Game"
 #~ msgstr "Opuść grę"
 
-#~| msgid "Place Label"
 #~ msgid "Set Label"
 #~ msgstr "Umieść etykietę"
 
-#~| msgid "Save Replay"
 #~ msgid "Play Replay"
 #~ msgstr "Zapisz powtórkę"
 
-#~| msgid "Save Replay"
 #~ msgid "Reset Replay"
 #~ msgstr "Zapisz powtórkę"
 
-#~| msgid "Save Replay"
 #~ msgid "Stop Replay"
 #~ msgstr "Zapisz powtórkę"
 
-#~| msgid "Full Heal"
 #~ msgid "Full Map"
 #~ msgstr "Pełne uzdrowienie"
 
-#~| msgid "Team"
 #~ msgid "Each Team"
 #~ msgstr "Drużyna"
 
-#~| msgid "Team"
 #~ msgid "Team 1"
 #~ msgstr "Drużyna"
 
-#~| msgid "Skip animation"
 #~ msgid "Skip Animation"
 #~ msgstr "Pomiń animację"
 
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Execute Action"
 #~ msgstr "Opcje planowania"
 
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Execute All Actions"
 #~ msgstr "Opcje planowania"
 
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Delete Action"
 #~ msgstr "Opcje planowania"
 
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Move Action Up"
 #~ msgstr "Opcje planowania"
 
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Move Action Down"
 #~ msgstr "Opcje planowania"
 
-#~| msgid "Time of Day"
 #~ msgid "Switch Time of Day"
 #~ msgstr "Pora dnia"
 
-#~| msgid "Share Maps"
 #~ msgid "Switch Map"
 #~ msgstr "Dziel mapę"
 
-#~| msgid "Time of Day"
 #~ msgid "Custom Time of Day Creator"
 #~ msgstr "Pora dnia"
 
-#~| msgid "Load Game"
 #~ msgid "Load Map"
 #~ msgstr "Wczytaj grę"
 
-#~| msgid "Test scenario"
 #~ msgid "Save Scenario As"
 #~ msgstr "Scenariusz testowy"
 
-#~| msgid "Save the Map As"
 #~ msgid "Save All Maps"
 #~ msgstr "Zapisz mapę Jako"
 
-#~| msgid "Skip animation"
 #~ msgid "Map Information"
 #~ msgstr "Pomiń animację"
 
-#~| msgid "Next Side"
 #~ msgid "Add New Side"
 #~ msgstr "Następna strona"
 
-#~| msgid "Next Turn"
 #~ msgid "Next Tool"
 #~ msgstr "Następna tura"
 
-#~| msgid "Starting position: "
 #~ msgid "Starting Positions Tool"
 #~ msgstr "Pozycja startowa: "
 
-#~| msgid "Label: "
 #~ msgid "Label Tool"
 #~ msgstr "Etykieta: "
 
-#~| msgid "Village gold: "
 #~ msgid "Village Tool"
 #~ msgstr "Złoto z wiosek:"
 
-#~| msgid "Recruit"
 #~ msgid "Can Recruit"
 #~ msgstr "Rekrutuj"
 
-#~| msgid "Advance Unit"
 #~ msgid "Change Unit ID"
 #~ msgstr "Awans jednostki"
 
-#~| msgid "Next Turn"
 #~ msgid "Next Brush"
 #~ msgstr "Następna tura"
 
-#~| msgid "Select unit:"
 #~ msgid "Select All"
 #~ msgstr "Wybierz jednostkę:"
 
-#~| msgid "Select an add-on to update:"
 #~ msgid "Select Inverse"
 #~ msgstr "Wybierz dodatek do aktualizacji:"
 
-#~| msgid "Select unit:"
 #~ msgid "Select None"
 #~ msgstr "Wybierz jednostkę:"
 
-#~| msgid "Invalid location"
 #~ msgid "Flip Selection"
 #~ msgstr "Nieprawidłowa lokalizacja"
 
-#~| msgid "Randomize time of day in begin"
 #~ msgid "Randomize Tiles in Selection"
 #~ msgstr "Losowy wybór początkowej pory dnia"
 
-#~| msgid "Animate Map"
 #~ msgid "Rotate Map"
 #~ msgstr "Animacja mapy"
 
-#~| msgid "Animate Map"
 #~ msgid "Generate Map"
 #~ msgstr "Animacja mapy"
 
-#~| msgid "Create Game"
 #~ msgid "Create Mask"
 #~ msgstr "Stwórz grę"
 
-#~| msgid "Refresh gui."
 #~ msgid "Refresh Display"
 #~ msgstr "Odśwież interfejs."
 
-#~| msgid "Latin Translation"
 #~ msgid "Update Terrain Transitions"
 #~ msgstr "Tłumaczenie łacińskie"
 
-#~| msgid "End Scenario"
 #~ msgid "Edit Scenario"
 #~ msgstr "Kończ scenariusz"
 
-#~| msgid "Next Side"
 #~ msgid "Edit Side"
 #~ msgstr "Następna strona"
 
@@ -10326,81 +10272,60 @@ msgstr "Opcje planowania"
 #~ msgid "Remove Side"
 #~ msgstr "liczba ruchów"
 
-#~| msgid "Update all"
 #~ msgid "Speak to Ally"
 #~ msgstr "Zaktualizuj wszystkie"
 
-#~| msgid "Update all"
 #~ msgid "Speak to All"
 #~ msgstr "Zaktualizuj wszystkie"
 
-#~| msgid "Chat Log"
 #~ msgid "View Chat Log"
 #~ msgstr "Zapis rozmów"
 
-#~| msgid "User-Command#3"
 #~ msgid "Enter User Command"
 #~ msgstr "User-Command#3"
 
-#~| msgid ""
-#~| "\n"
-#~| "Clear chat messages.\n"
-#~| "\n"
 #~ msgid "Clear Messages"
 #~ msgstr ""
 #~ "\n"
 #~ "Usuń wiadomości rozmowy.\n"
 #~ "\n"
 
-#~| msgid "Refresh gui."
 #~ msgid "Refresh WML"
 #~ msgstr "Odśwież interfejs."
 
-#~| msgid "Show next tip of the day"
 #~ msgid "Next Tip of the Day"
 #~ msgstr "Pokaż następną poradę dnia"
 
-#~| msgid "Show previous tip of the day"
 #~ msgid "Previous Tip of the Day"
 #~ msgstr "Pokaż poprzednią poradę dnia"
 
-#~| msgid "Tutorial"
 #~ msgid "Start Tutorial"
 #~ msgstr "Samouczek"
 
-#~| msgid "Campaign"
 #~ msgid "Start Campaign"
 #~ msgstr "Kampania"
 
-#~| msgid "Multiplayer"
 #~ msgid "Start Multiplayer Game"
 #~ msgstr "Gra z innymi"
 
-#~| msgid "Update add-ons"
 #~ msgid "Manage Add-ons"
 #~ msgstr "Aktualizuj dodatki"
 
-#~| msgid "Start the map editor"
 #~ msgid "Start Editor"
 #~ msgstr "Uruchom edytor map"
 
-#~| msgid "Credits"
 #~ msgid "Show Credits"
 #~ msgstr "Twórcy"
 
-#~| msgid "Show replay"
 #~ msgid "Show Helptip"
 #~ msgstr "Pokaż powtórkę"
 
-#~| msgid "Unknown command."
 #~ msgid "Unrecognized Command"
 #~ msgstr "Nieznane polecenie."
 
-#~| msgid "Compressed saves"
 #~ msgid "Compress savegames using bzip2"
 #~ msgstr "Kompresja zapisanych gier"
 
-#~| msgid "Settings..."
 #~ msgid "Options..."
 #~ msgstr "Ustawienia..."
 
@@ -10425,94 +10350,72 @@ msgstr "Opcje planowania"
 #~ msgid "KB"
 #~ msgstr "KB"
 
-#~| msgid "Multiplayer_AI^Default AI"
 #~ msgid "Multiplayer_AI^Default AI (RCA)"
 #~ msgstr "Multiplayer_AI^Domyślne AI"
 
-#~| msgid "Multiplayer_AI^Default AI"
 #~ msgid "Multiplayer_AI^Experimental AI"
 #~ msgstr "Multiplayer_AI^Domyślne AI"
 
-#~| msgid "Enemy unit sighted!"
-#~| msgid_plural "$enemies enemy units sighted!"
 #~ msgid "Enemy unit weight  (default: 100)"
 #~ msgstr "Zauważono jednostkę wroga!"
 
 #~ msgid "Orcs"
 #~ msgstr "Orki"
 
-#~| msgid "Move leader here"
 #~ msgid "Move Konrad here"
 #~ msgstr "Przesuń przywódcę tutaj"
 
-#~| msgid "race^Humans"
 #~ msgid "Humans"
 #~ msgstr "Ludzie"
 
-#~| msgid "Elves"
 #~ msgid "Wolves"
 #~ msgstr "Elfy"
 
-#~| msgid "help"
 #~ msgid "Whelps"
 #~ msgstr "pomoc"
 
 #~ msgid "End scenario"
 #~ msgstr "Kończ scenariusz"
 
-#~| msgid "Save the Map As"
 #~ msgid "Take the pass"
 #~ msgstr "Zapisz mapę Jako"
 
-#~| msgid "Defeat"
 #~ msgid "Defeat Rowck"
 #~ msgstr "Porażka"
 
-#~| msgid "Defeat enemy leader"
 #~ msgid "Death of the bat leader"
 #~ msgstr "Pokonaj przywódcę wroga"
 
-#~| msgid "race^Saurians"
 #~ msgid "Saurians"
 #~ msgstr "Jaszczury"
 
-#~| msgid "race^Gryphon"
 #~ msgid "Place Side 1 Footpad"
 #~ msgstr "Gryf"
 
-#~| msgid "race^Gryphons"
 #~ msgid "Gryphons"
 #~ msgstr "Gryfy"
 
-#~| msgid "Forward >"
 #~ msgid "Coward 1"
 #~ msgstr "Dalej >"
 
-#~| msgid "Forward >"
 #~ msgid "coward r=5"
 #~ msgstr "Dalej >"
 
-#~| msgid "Forward >"
 #~ msgid "Coward 2"
 #~ msgstr "Dalej >"
 
-#~| msgid "Forward >"
 #~ msgid "Coward 3"
 #~ msgstr "Dalej >"
 
-#~| msgid "Forward >"
 #~ msgid "Coward 4"
 #~ msgstr "Dalej >"
 
-#~| msgid "Faction"
 #~ msgid "Station 1"
 #~ msgstr "Strona"
 
-#~| msgid "Faction"
 #~ msgid "Station 2"
 #~ msgstr "Strona"
 
-#~| msgid "Forward >"
 #~ msgid "Coward"
 #~ msgstr "Dalej >"
 
@@ -10522,43 +10425,33 @@ msgstr "Opcje planowania"
 #~ "Zwycięstwo:\n"
 #~ "@Pokonaj wrogich przywódców!"
 
-#~| msgid "teleport"
 #~ msgid "Healer Support"
 #~ msgstr "teleportacja"
 
-#~| msgid "Notes:"
 #~ msgid "Notes"
 #~ msgstr "Uwagi:"
 
-#~| msgid "Clear all orders"
 #~ msgid "Defeat all lurkers"
 #~ msgstr "Usuń wszystkie rozkazy"
 
-#~| msgid "Message:"
 #~ msgid "Messenger"
 #~ msgstr "Wiadomość:"
 
-#~| msgid "Move leader here"
 #~ msgid "AI moves Messenger here"
 #~ msgstr "Przesuń przywódcę tutaj"
 
-#~| msgid "Defeat enemy leader"
 #~ msgid "Defeat the messenger"
 #~ msgstr "Pokonaj przywódcę wroga"
 
-#~| msgid "Language"
 #~ msgid "Langzhar"
 #~ msgstr "Język"
 
-#~| msgid "Move leader here"
 #~ msgid "Move Rossauba here"
 #~ msgstr "Przesuń przywódcę tutaj"
 
-#~| msgid "Take it"
 #~ msgid "I made it"
 #~ msgstr "Weź go"
 
-#~| msgid "Recruit"
 #~ msgid "Recruiting"
 #~ msgstr "Rekrutuj"
 
@@ -10566,27 +10459,21 @@ msgstr "Opcje planowania"
 #~ msgid "Swarm"
 #~ msgstr "rój"
 
-#~| msgid "race^Bats"
 #~ msgid "Bats"
 #~ msgstr "Nietoperze"
 
-#~| msgid "race^Gryphon"
 #~ msgid "Place Side 1 Gryphon"
 #~ msgstr "Gryf"
 
-#~| msgid "race^Wolves"
 #~ msgid "More Wolves"
 #~ msgstr "Wilki"
 
-#~| msgid "Wesnoth Developers"
 #~ msgid "AI Developer"
 #~ msgstr "Twórcy Wesnoth"
 
-#~| msgid "Invalid location"
 #~ msgid "AI Location:"
 #~ msgstr "Nieprawidłowa lokalizacja"
 
-#~| msgid "firststrike"
 #~ msgid "first"
 #~ msgstr "pierwszy cios"
 
@@ -10702,25 +10589,21 @@ msgstr "Opcje planowania"
 #~ "Kampania testowa używana do sprawdzania, czy działa nowa składnia "
 #~ "kampanii."
 
-#~| msgid "Easy"
 #~ msgid "(Easy)"
 #~ msgstr "(łatwy)"
 
 #~ msgid "Soldier"
 #~ msgstr "Żołnierz"
 
-#~| msgid "Normal"
 #~ msgid "(Normal)"
 #~ msgstr "(normalny)"
 
 #~ msgid "Lord"
 #~ msgstr "Lord"
 
-#~| msgid "Hard"
 #~ msgid "(Hard)"
 #~ msgstr "(trudny)"
 
-#~| msgid "Elvish High Lord"
 #~ msgid "High Lord"
 #~ msgstr "Wielki władca"
 
@@ -10730,11 +10613,9 @@ msgstr "Opcje planowania"
 #~ msgid "Test campaign - first scenario (grass)"
 #~ msgstr "Kampania testowa — pierwszy scenariusz (trawa)"
 
-#~| msgid "Players: "
 #~ msgid "Players"
 #~ msgstr "Gracze"
 
-#~| msgid "Enemy village"
 #~ msgid "Enemies"
 #~ msgstr "Wrogowie"
 
@@ -10744,27 +10625,21 @@ msgstr "Opcje planowania"
 #~ msgid "Failed test color"
 #~ msgstr "Kolor niezaliczonego testu"
 
-#~| msgid "Difficulty: "
 #~ msgid "Difficulty: Easy"
 #~ msgstr "Poziom trudności: łatwy"
 
-#~| msgid "Difficulty: "
 #~ msgid "Difficulty: Normal"
 #~ msgstr "Poziom trudności: normalny"
 
-#~| msgid "Difficulty: "
 #~ msgid "Difficulty: Hard"
 #~ msgstr "Poziom trudności: trudny"
 
-#~| msgid "Campaign Designer"
 #~ msgid "Main campaign define"
 #~ msgstr "Definiowanie kampanii głównej"
 
-#~| msgid "Campaign Designer"
 #~ msgid "Extra campaign define"
 #~ msgstr "Definiowanie kampanii dodatkowej"
 
-#~| msgid "Multiplayer"
 #~ msgid "Multiplayer define"
 #~ msgstr "Definiowanie gry wieloosobowej"
 
@@ -10792,7 +10667,6 @@ msgstr "Opcje planowania"
 #~ msgid "Add-on '$addon|' deleted."
 #~ msgstr "Dodatek '$addon|' został usunięty."
 
-#~| msgid "Invalid location"
 #~ msgid "Invalid WML found"
 #~ msgstr "Nieprawidłowa lokalizacja"
 

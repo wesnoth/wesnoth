@@ -354,10 +354,6 @@ msgstr ""
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -365,7 +361,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Skade</header>"
+"<header>text='Sjanse for å treffe'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
@@ -415,10 +411,6 @@ msgstr ""
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:198
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -426,7 +418,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Skade</header>"
+"<header>text='Sjanse for å treffe'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:200
@@ -1692,10 +1684,6 @@ msgstr ""
 #. [topic]: id=combat
 #: data/core/help.cfg:290
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -1703,7 +1691,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Skade</header>"
+"<header>text='Sjanse for å treffe'</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:292
@@ -2275,10 +2263,6 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:416
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -2286,7 +2270,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Skade</header>"
+"<header>text='Sjanse for å treffe'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:418
@@ -2396,10 +2380,6 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:446
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -2407,7 +2387,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Skade</header>"
+"<header>text='Sjanse for å treffe'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:448
@@ -2568,7 +2548,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Sjanse for å treffe'</header>"
+"<header>text='Rekkefølge og antall angrep'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:496
@@ -2609,10 +2589,6 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:504
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -2620,7 +2596,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Skade</header>"
+"<header>text='Sjanse for å treffe'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:506
@@ -5700,6 +5676,16 @@ msgid "Parse error when parsing help text: "
 msgstr "Feil med hjelpeteksten: "
 
 #, fuzzy
+msgid ""
+"\n"
+"\n"
+"<big>Multiplayer Modifications</big>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Rekkefølge og antall angrep'</header>"
+
+#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "\n"
@@ -5792,16 +5778,6 @@ msgstr "Feil med hjelpeteksten: "
 #~ "\n"
 #~ "\n"
 #~ "<header>text=Skade</header>"
-
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Multiplayer Modifications</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Rekkefølge og antall angrep'</header>"
 
 #~ msgid "race^Mermen"
 #~ msgstr "Havfolk"
@@ -6655,3 +6631,49 @@ msgstr "Feil med hjelpeteksten: "
 #~ msgstr ""
 #~ "Førsteslag:\n"
 #~ "Denne enheten slår alltid først, selv om den forsvarer seg."
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Cores'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Sjanse for å treffe'</header>"
+
+#, fuzzy
+#~| msgid ""
+#~| "Berserk:\n"
+#~| "Whether used offensively or defensively, this attack presses the "
+#~| "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#~| "have occurred."
+#~ msgid ""
+#~ "Whether used offensively or defensively, this attack presses the "
+#~ "engagement until one of the champions is slain, or 30 rounds of attacks "
+#~ "have occurred."
+#~ msgstr ""
+#~ "Berserkergang:\n"
+#~ "Denne effekten presser et sammenstøt til døden, både på offensiven og "
+#~ "defensiven. Kampen går til en av sidene er drept, eller til 30 runder med "
+#~ "angrep har skjedd. "
+
+#, fuzzy
+#~| msgid "firststrike"
+#~ msgid "true strike"
+#~ msgstr "førsteslag"
+
+#, fuzzy
+#~ msgid ""
+#~ "This attack always has a 70% chance to hit regardless of the defensive "
+#~ "ability of the champion being attacked."
+#~ msgstr ""
+#~ "Magisk:\n"
+#~ "Dette angrepet har alltid 70% sjanse for å treffe."
+
+#, fuzzy
+#~ msgid "<header>text='Race specific topics'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Sjanse for å treffe'</header>"

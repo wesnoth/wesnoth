@@ -361,10 +361,6 @@ msgstr ""
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -372,7 +368,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=נזק</header>"
+"<header>text='סיכויי פגיעה'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
@@ -422,10 +418,6 @@ msgstr ""
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:198
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -433,7 +425,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=נזק</header>"
+"<header>text='סיכויי פגיעה'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:200
@@ -1701,10 +1693,6 @@ msgstr ""
 #. [topic]: id=combat
 #: data/core/help.cfg:290
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -1712,7 +1700,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=נזק</header>"
+"<header>text='סיכויי פגיעה'</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:292
@@ -2279,10 +2267,6 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:416
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -2290,7 +2274,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=נזק</header>"
+"<header>text='סיכויי פגיעה'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:418
@@ -2400,10 +2384,6 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:446
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -2411,7 +2391,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=נזק</header>"
+"<header>text='סיכויי פגיעה'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:448
@@ -2570,7 +2550,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='סיכויי פגיעה'</header>"
+"<header>text='סדר ניסיונות הפגיעה ומספרם'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:496
@@ -2611,10 +2591,6 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:504
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -2622,7 +2598,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=נזק</header>"
+"<header>text='סיכויי פגיעה'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:506
@@ -5863,6 +5839,16 @@ msgid "Parse error when parsing help text: "
 msgstr "טעות ניתוח בניתוח טקסט העזרה: "
 
 #, fuzzy
+msgid ""
+"\n"
+"\n"
+"<big>Multiplayer Modifications</big>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='סדר ניסיונות הפגיעה ומספרם'</header>"
+
+#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "\n"
@@ -5955,16 +5941,6 @@ msgstr "טעות ניתוח בניתוח טקסט העזרה: "
 #~ "\n"
 #~ "\n"
 #~ "<header>text=נזק</header>"
-
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Multiplayer Modifications</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='סדר ניסיונות הפגיעה ומספרם'</header>"
 
 #~ msgid "race^Mermen"
 #~ msgstr "בני-ים"
@@ -6852,3 +6828,52 @@ msgstr "טעות ניתוח בניתוח טקסט העזרה: "
 #~ "לנשקים מסוימים יש יכולות מיוחדות אשר מגבירים את האפקטיביות של השימוש "
 #~ "בהם.\n"
 #~ "\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Cores'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='סיכויי פגיעה'</header>"
+
+#, fuzzy
+#~| msgid ""
+#~| "Berserk:\n"
+#~| "Whether used offensively or defensively, this attack presses the "
+#~| "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#~| "have occurred."
+#~ msgid ""
+#~ "Whether used offensively or defensively, this attack presses the "
+#~ "engagement until one of the champions is slain, or 30 rounds of attacks "
+#~ "have occurred."
+#~ msgstr ""
+#~ "שיגעון קרב:\n"
+#~ "בלי קשר לאם היחידה השתמשה בהתקפה זו להגנה או לתקיפה, היא תמשיך את הקרב עד "
+#~ "שאחד מהנלחמים ימות, או עד שיעברו 30 מהלכי תקיפה"
+
+#, fuzzy
+#~| msgid "firststrike"
+#~ msgid "true strike"
+#~ msgstr "תקיפה ראשונה"
+
+#, fuzzy
+#~| msgid ""
+#~| "Magical:\n"
+#~| "This attack always has a 70% chance to hit regardless of the defensive "
+#~| "ability of the unit being attacked."
+#~ msgid ""
+#~ "This attack always has a 70% chance to hit regardless of the defensive "
+#~ "ability of the champion being attacked."
+#~ msgstr ""
+#~ "קסם:\n"
+#~ "התקפות קסומות מתעלמות משטח ומקבלות סיכוי פגיעה של 70%."
+
+#, fuzzy
+#~ msgid "<header>text='Race specific topics'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='סיכויי פגיעה'</header>"

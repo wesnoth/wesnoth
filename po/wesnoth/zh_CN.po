@@ -1772,9 +1772,6 @@ msgstr "$unit.name|无法使用风暴三叉戟！让能够使用它的人鱼拥�
 
 #. [object]
 #: data/core/macros/items.cfg:521
-#, fuzzy
-#| msgid ""
-#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr "这柄三叉戟赐予人鱼向敌人发射闪电的力量。"
@@ -7004,8 +7001,6 @@ msgstr "生命："
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves:"
 msgid "Moves:"
 msgstr "移动："
 
@@ -7013,8 +7008,6 @@ msgstr "移动："
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "Vision:"
 msgid "Vision:"
 msgstr "视野："
 
@@ -7022,8 +7015,6 @@ msgstr "视野："
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
-#, fuzzy
-#| msgid "Jamming:"
 msgid "Jamming:"
 msgstr "干扰："
 
@@ -7031,8 +7022,6 @@ msgstr "干扰："
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost:"
 msgid "Cost:"
 msgstr "费用："
 
@@ -7047,8 +7036,6 @@ msgstr "立场："
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Required XP:"
 msgid "Required XP:"
 msgstr "所需经验："
 
@@ -7878,10 +7865,6 @@ msgid "Save and abort game"
 msgstr "保存并中止游戏"
 
 #: src/playturn.cpp:297
-#, fuzzy
-#| msgid ""
-#| "$player who controlled side $side_drop has left the game. What do you "
-#| "want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -8490,9 +8473,6 @@ msgid "A unit was created using debug mode during $player’s turn"
 msgstr "在$player|的回合中，使用调试模式创建了一个单位"
 
 #: src/synced_user_choice.cpp:330
-#, fuzzy
-#| msgid "waiting for $desc from side $sides"
-#| msgid_plural "waiting for $desc from sides $sides"
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "等待$sides|阵营的$desc"
@@ -8589,13 +8569,10 @@ msgstr[1] "$number|移动力"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:451
-#, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> move"
-#| msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span>行动数"
-msgstr[1] "<span color=\"$color\">$number_or_percent</span>行动数"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span>移动力"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span>移动力"
 
 #: src/units/types.cpp:546 src/units/types.hpp:181
 msgid "chaotic"

@@ -114,10 +114,6 @@ msgstr "Sohbet iletisinin eskimesi"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid ""
-#| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#| "0 to disable."
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
@@ -1784,9 +1780,6 @@ msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:521
-#, fuzzy
-#| msgid ""
-#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr "Bu çatal deniz insanlarına düşmanlarına yıldırım fırlatma gücü verir"
@@ -4446,10 +4439,6 @@ msgstr "sv"
 
 #. [tip]
 #: data/tips.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Use the map editor’s <i>Areas</i> menu to define regions later addressed "
-#| "by event or AI coding."
 msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
@@ -4464,10 +4453,6 @@ msgstr "<i>― Vesnot Tasarım Kılavuzu</i>"
 
 #. [tip]
 #: data/tips.cfg:8
-#, fuzzy
-#| msgid ""
-#| "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
-#| "make use of advanced features."
 msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
@@ -4477,11 +4462,6 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Scenarios saved from the editor in their default folder can be selected "
-#| "in the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” "
-#| "screen."
 msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” screen."
@@ -6788,8 +6768,6 @@ msgstr "YP: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves:"
 msgid "Moves:"
 msgstr "Hamleler: "
 
@@ -6797,8 +6775,6 @@ msgstr "Hamleler: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "Vision:"
 msgid "Vision:"
 msgstr "Görüş: "
 
@@ -6806,8 +6782,6 @@ msgstr "Görüş: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
-#, fuzzy
-#| msgid "Jamming:"
 msgid "Jamming:"
 msgstr "Sıkıştırma: "
 
@@ -6815,8 +6789,6 @@ msgstr "Sıkıştırma: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost:"
 msgid "Cost:"
 msgstr "Bedel: "
 
@@ -6831,8 +6803,6 @@ msgstr "Yönelim: "
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Required XP:"
 msgid "Required XP:"
 msgstr "Gerekli TP: "
 
@@ -7677,10 +7647,6 @@ msgid "Save and abort game"
 msgstr "Oyunu kaydet ve terket"
 
 #: src/playturn.cpp:297
-#, fuzzy
-#| msgid ""
-#| "$player who controlled side $side_drop has left the game. What do you "
-#| "want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -7808,8 +7774,6 @@ msgid "Defense: "
 msgstr "Savunma: "
 
 #: src/reports.cpp:631 src/reports.cpp:632
-#, fuzzy
-#| msgid "vision:"
 msgid "vision:"
 msgstr "görüş: "
 
@@ -8295,13 +8259,10 @@ msgstr ""
 "oluşturuldu"
 
 #: src/synced_user_choice.cpp:330
-#, fuzzy
-#| msgid "waiting for $desc from side $sides"
-#| msgid_plural "waiting for $desc from sides $sides"
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "$sides tarafından $desc bekleniyor"
-msgstr[1] "$sides tarafından $desc bekleniyor"
+msgstr[1] "$sides taraflarından $desc bekleniyor"
 
 #. TRANSLATORS: In networked games, this text is shown for other clients,
 #. while they wait for an action from another player.
@@ -8394,13 +8355,10 @@ msgstr[1] "$number Hareket sayısı"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:451
-#, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> move"
-#| msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span> hareket"
-msgstr[1] "<span color=\"$color\">$number_or_percent</span> hareket"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> hareket sayısı"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> hareket sayıları"
 
 #: src/units/types.cpp:546 src/units/types.hpp:181
 msgid "chaotic"

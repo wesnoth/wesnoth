@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-07-18 15:50+0300\n"
-"PO-Revision-Date: 2018-09-15 01:40+0200\n"
+"PO-Revision-Date: 2019-06-25 16:43+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -252,11 +252,6 @@ msgstr "Wüstensand"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:301
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Deserts'</italic> have a somewhat different composition "
-#| "than small sand pits or beaches, however for gameplay purposes they are "
-#| "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
@@ -264,8 +259,8 @@ msgid ""
 msgstr ""
 "Eigentlich sind <italic>text='Wüsten'</italic> anders beschaffen, als kleine "
 "Sandflächen oder Strände. Der Einfachheit halber verhält sich eine Wüste "
-"spieltechnisch jedoch wie das Gelände <ref>dst='terrain_sand_beach' "
-"text='Sand'</ref>."
+"spieltechnisch jedoch wie das Gelände <ref>dst='..terrain_sand' text='Sand'</"
+"ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -2555,8 +2550,6 @@ msgstr "Schwierigkeitsgrad"
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:73
-#, fuzzy
-#| msgid "Select difficulty level:"
 msgid "Select difficulty:"
 msgstr "Wählt den Schwierigkeitsgrad:"
 
@@ -4593,7 +4586,7 @@ msgstr "Filter:"
 #. [text_box]: id=filter
 #: data/gui/window/preferences/02_hotkeys.cfg:67
 msgid "Filters on hotkey description."
-msgstr ""
+msgstr "Filtere nach Tastenkürzel-Beschreibung."
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:111
@@ -4722,7 +4715,7 @@ msgstr "Zeigt animierte Geländegrafiken an (kann die Performance beeinflussen)"
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:142
 msgid "Show unit standing animations"
-msgstr "Untätigkeitsanimationen der Einheiten anzeigen"
+msgstr "Standanimationen der Einheiten anzeigen"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:143
@@ -5520,65 +5513,66 @@ msgstr "$prefix, $next"
 msgid "disjunct end^$prefix, or $last"
 msgstr "$prefix, oder $last"
 
+# Unklar wo das angezeigt wird. Ob der String passt?
 #: src/formula/string_utils.cpp:285 src/formula/string_utils.cpp:314
 msgid "timespan^expired"
-msgstr ""
+msgstr "nicht mehr"
 
 #: src/formula/string_utils.cpp:291
 msgid "timespan^$num year"
-msgstr ""
+msgstr "$num Jahr"
 
 #: src/formula/string_utils.cpp:291
 msgid "timespan^$num years"
-msgstr ""
+msgstr "$num Jahre"
 
 #: src/formula/string_utils.cpp:292
 msgid "timespan^$num month"
-msgstr ""
+msgstr "$num Monat"
 
 #: src/formula/string_utils.cpp:292
 msgid "timespan^$num months"
-msgstr ""
+msgstr "$num Monate"
 
 #: src/formula/string_utils.cpp:293
 msgid "timespan^$num week"
-msgstr ""
+msgstr "$num Woche"
 
 #: src/formula/string_utils.cpp:293
 msgid "timespan^$num weeks"
-msgstr ""
+msgstr "$num Wochen"
 
 #: src/formula/string_utils.cpp:294
 msgid "timespan^$num day"
-msgstr ""
+msgstr "$num Tag"
 
 #: src/formula/string_utils.cpp:294
 msgid "timespan^$num days"
-msgstr ""
+msgstr "$num Tage"
 
 #: src/formula/string_utils.cpp:295
 msgid "timespan^$num hour"
-msgstr ""
+msgstr "$num Stunde"
 
 #: src/formula/string_utils.cpp:295
 msgid "timespan^$num hours"
-msgstr ""
+msgstr "$num Stunden"
 
 #: src/formula/string_utils.cpp:296
 msgid "timespan^$num minute"
-msgstr ""
+msgstr "$num Minute"
 
 #: src/formula/string_utils.cpp:296
 msgid "timespan^$num minutes"
-msgstr ""
+msgstr "$num Minuten"
 
 #: src/formula/string_utils.cpp:297
 msgid "timespan^$num second"
-msgstr ""
+msgstr "$num Sekunde"
 
 #: src/formula/string_utils.cpp:297
 msgid "timespan^$num seconds"
-msgstr ""
+msgstr "$num Sekunden"
 
 #: src/gui/core/canvas.cpp:612
 msgid "Line doesn't fit on canvas."
@@ -6040,33 +6034,31 @@ msgstr "B"
 
 #: src/gui/dialogs/game_cache_options.cpp:162
 msgid "Cache Cleaned"
-msgstr "Cache geleert"
+msgstr "Cache bereinigt"
 
 #: src/gui/dialogs/game_cache_options.cpp:163
 msgid "The game data cache has been cleaned."
-msgstr "Spieldaten Cache wurde geleert."
+msgstr "Spieldaten-Cache wurde bereinigt."
 
 #: src/gui/dialogs/game_cache_options.cpp:165
 msgid "The game data cache could not be completely cleaned."
-msgstr "Spieldaten Cache konnte nicht geleert werden."
+msgstr "Spieldaten-Cache konnte nicht vollständig bereinigt werden."
 
 #: src/gui/dialogs/game_cache_options.cpp:181
 msgid "Cache Purged"
-msgstr "Cache gesäubert"
+msgstr "Cache geleert"
 
 #: src/gui/dialogs/game_cache_options.cpp:182
 msgid "The game data cache has been purged."
-msgstr "Spieldaten Cache wurde gesäubert."
+msgstr "Spieldaten-Cache wurde geleert."
 
 #: src/gui/dialogs/game_cache_options.cpp:184
 msgid "The game data cache could not be purged."
-msgstr "Spieldaten Cache konnte nicht gesäubert werden."
+msgstr "Spieldaten-Cache konnte nicht vollständig geleert werden."
 
 #: src/gui/dialogs/game_load.cpp:264
-#, fuzzy
-#| msgid "The selected game has no sides!"
 msgid "The selected file is corrupt: "
-msgstr "Die gewählte Partie hat keine Parteien!"
+msgstr "Die gewählte Datei ist fehlerhaft: "
 
 #: src/gui/dialogs/game_load.cpp:343
 msgid "(Invalid)"
@@ -7875,22 +7867,18 @@ msgstr ""
 #~ msgstr "Bildschirmfoto gespeichert"
 
 #, fuzzy
-#~| msgid "Choose Resolution"
 #~ msgid "Choose weapon:"
 #~ msgstr "Wählt die gewünschte Auflösung"
 
 #, fuzzy
-#~| msgid "addon_state^Unknown"
 #~ msgid "file_size^Unknown"
 #~ msgstr "Unbekannt"
 
 #, fuzzy
-#~| msgid "Add-ons"
 #~ msgid "Get Add-ons"
 #~ msgstr "Erweiterungen"
 
 #, fuzzy
-#~| msgid "Connecting to server"
 #~ msgid "Send new version to server"
 #~ msgstr "Mit einem Server verbinden"
 
@@ -7949,7 +7937,6 @@ msgstr ""
 #~ msgstr "Zeigt Piktogramme vor den Spielernamen in der Empfangshalle an"
 
 #, fuzzy
-#~| msgid "controller^None"
 #~ msgid "controller^Computer"
 #~ msgstr "Niemand"
 
@@ -7978,7 +7965,6 @@ msgstr ""
 #~ msgstr "Erweiterte Einstellungen"
 
 #, fuzzy
-#~| msgid "Configuration:"
 #~ msgid "Configure sides"
 #~ msgstr "Konfiguration:"
 
@@ -7991,7 +7977,6 @@ msgstr ""
 #~ "Spiel gestartet wird."
 
 #, fuzzy
-#~| msgid "Modifications:"
 #~ msgid "Modifiers"
 #~ msgstr "Modifikationen:"
 
@@ -8034,7 +8019,6 @@ msgstr ""
 #~ msgstr "Nach Veröffentlichungstermin"
 
 #, fuzzy
-#~| msgid "Speed: "
 #~ msgid "Seed:"
 #~ msgstr "Geschwindigkeit: "
 
@@ -8079,12 +8063,10 @@ msgstr ""
 #~ msgstr "Spezialeffekte anzeigen"
 
 #, fuzzy
-#~| msgid "Show haloing effects"
 #~ msgid "Show special unit graphical effects"
 #~ msgstr "Spezialeffekte anzeigen"
 
 #, fuzzy
-#~| msgid "Add as Ignore"
 #~ msgid "Add Ignored"
 #~ msgstr "Als Ignoriert hinzufügen"
 
@@ -8104,7 +8086,6 @@ msgstr ""
 #~ msgstr "unendlich"
 
 #, fuzzy
-#~| msgid "Prefs section^General"
 #~ msgid "Prefs tab^General"
 #~ msgstr "Allgemein"
 
@@ -8112,7 +8093,6 @@ msgstr ""
 #~ msgstr "Allgemein"
 
 #, fuzzy
-#~| msgid "Prefs section^Game"
 #~ msgid "Prefs section^Hotkeys"
 #~ msgstr "Spiel"
 
@@ -8126,7 +8106,6 @@ msgstr ""
 #~ msgstr "Mehrspieler"
 
 #, fuzzy
-#~| msgid "Prefs section^Game"
 #~ msgid "Prefs section^Advanced"
 #~ msgstr "Spiel"
 
@@ -8134,7 +8113,6 @@ msgstr ""
 #~ msgstr "Version "
 
 #, fuzzy
-#~| msgid "Find $filename server binary to host networked games"
 #~ msgid "Find $filename server binary"
 #~ msgstr "Sucht den $filename Server, um Mehrspielerpartien auszurichten"
 
@@ -8163,27 +8141,22 @@ msgstr ""
 #~ msgstr "100/100"
 
 #, fuzzy
-#~| msgid "Mouse Scrolling"
 #~ msgid "Map scrolling"
 #~ msgstr "Mit der Maus scrollen"
 
 #, fuzzy
-#~| msgid "Moderation"
 #~ msgid "Mouse emulation"
 #~ msgstr "Moderation"
 
 #, fuzzy
-#~| msgid "Hotkey Settings"
 #~ msgid "Joystick Settings"
 #~ msgstr "Tastenkürzel anpassen"
 
 #, fuzzy
-#~| msgid "Send Private Message"
 #~ msgid "Private message:"
 #~ msgstr "Private Nachricht senden"
 
 #, fuzzy
-#~| msgid "Random start time"
 #~ msgid "Ready to start game:"
 #~ msgstr "Zufällige Startzeit"
 
@@ -8254,7 +8227,6 @@ msgstr ""
 #~ msgstr "Diverses"
 
 #, fuzzy
-#~| msgid "Refresh Image Cache"
 #~ msgid "Purge Cache"
 #~ msgstr "Grafik-Cache aktualisieren"
 
@@ -8378,7 +8350,6 @@ msgstr ""
 #~ msgstr "Karte erstellen"
 
 #, fuzzy
-#~| msgid "Default"
 #~ msgid "Reset Defaults"
 #~ msgstr "Standard"
 
@@ -8398,7 +8369,6 @@ msgstr ""
 #~ msgstr "Typen"
 
 #, fuzzy
-#~| msgid "Auto-update Terrain Transitions"
 #~ msgid "Auto-update Terrain Transitions: Yes"
 #~ msgstr "Geländeübergänge automatisch aktualisieren"
 
@@ -8418,17 +8388,14 @@ msgstr ""
 #~ msgstr "Tageszeitvoreinstellungen"
 
 #, fuzzy
-#~| msgid "Flip Clipboard Vertically"
 #~ msgid "Scroll Viewport Vertically"
 #~ msgstr "Zwischenablage vertikal spiegeln"
 
 #, fuzzy
-#~| msgid "Flip Clipboard Horizontally"
 #~ msgid "Scroll Viewport Horizontally"
 #~ msgstr "Zwischenablage horizontal spiegeln"
 
 #, fuzzy
-#~| msgid "Multiplayer Options"
 #~ msgid "Filter Options"
 #~ msgstr "Mehrspieler"
 
@@ -8439,7 +8406,6 @@ msgstr ""
 #~ msgstr "Bildschirmfoto der Karte"
 
 #, fuzzy
-#~| msgid "Switch Map"
 #~ msgid "Switch Area"
 #~ msgstr "Karte wechseln"
 
@@ -8463,22 +8429,18 @@ msgstr ""
 #~ msgstr "Farbige Mauszeiger anzeigen"
 
 #, fuzzy
-#~| msgid "Forested Hills"
 #~ msgid "Savanna Forested Hills"
 #~ msgstr "Bewaldete Hügel"
 
 #, fuzzy
-#~| msgid "Forested Hills"
 #~ msgid "Dense Palm Forested Hills"
 #~ msgstr "Bewaldete Hügel"
 
 #, fuzzy
-#~| msgid "Forested Hills"
 #~ msgid "Palm Forested Hills"
 #~ msgstr "Bewaldete Hügel"
 
 #, fuzzy
-#~| msgid "Tropical Forest"
 #~ msgid "Tropical Forested Hills"
 #~ msgstr "Tropischer Wald"
 

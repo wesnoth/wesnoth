@@ -486,8 +486,7 @@ msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 #| msgid ""
 #| "sets the severity level of the log domains.  B<all> can be used to match "
 #| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>.  By default the B<error> level is used and the B<info> level "
-#| "for the B<server> domain."
+#| "B<debug>.  By default the B<error> level is used."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
@@ -496,7 +495,7 @@ msgid ""
 msgstr ""
 "𐑕𐑧𐑑𐑕 𐑞 𐑕𐑦𐑝𐑧𐑮𐑦𐑑𐑦 𐑤𐑧𐑝𐑩𐑤 𐑝 𐑞 𐑤𐑪𐑜 𐑛𐑴𐑥𐑱𐑯𐑟. B<𐑷𐑤> 𐑒𐑨𐑯 𐑚𐑰 𐑫𐑸𐑹𐑴𐑖𐑱𐑿𐑟𐑛 𐑑 𐑥𐑨𐑗 𐑧𐑯𐑦 𐑤𐑪𐑜 "
 "𐑛𐑴𐑥𐑱𐑯. 𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤 𐑤𐑧𐑝𐑩𐑤𐑟: B<𐑻𐑹>,\\ B<𐑢𐑹𐑯𐑦𐑙>,\\ B<𐑦𐑯𐑓𐑴>,\\ B<𐑛𐑰𐑚𐑳𐑜>. 𐑚𐑲 𐑛𐑰𐑓𐑷𐑤𐑑 "
-"𐑞 B<𐑻𐑹> 𐑤𐑧𐑝𐑩𐑤 𐑦𐑟 𐑫𐑸𐑹𐑴𐑖𐑱𐑿𐑟𐑛 𐑯 𐑞 B<𐑦𐑯𐑓𐑴> 𐑤𐑧𐑝𐑩𐑤 𐑓𐑹 𐑞 B<𐑕𐑻𐑝𐑻> 𐑛𐑴𐑥𐑱𐑯."
+"𐑞 B<𐑻𐑹> 𐑤𐑧𐑝𐑩𐑤 𐑦𐑟 𐑫𐑸𐑹𐑴𐑖𐑱𐑿𐑟𐑛."
 
 # type: TP
 #. type: TP
@@ -2498,6 +2497,12 @@ msgid "B<wesnoth>(6)"
 msgstr "wesnoth"
 
 # type: Plain text
+#, fuzzy
+#~| msgid ""
+#~| "sets the severity level of the log domains.  B<all> can be used to match "
+#~| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#~| "B<debug>.  By default the B<error> level is used and the B<info> level "
+#~| "for the B<server> domain."
 #~ msgid ""
 #~ "sets the severity level of the log domains.  B<all> can be used to match "
 #~ "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
@@ -2505,10 +2510,9 @@ msgstr "wesnoth"
 #~ msgstr ""
 #~ "𐑕𐑧𐑑𐑕 𐑞 𐑕𐑦𐑝𐑧𐑮𐑦𐑑𐑦 𐑤𐑧𐑝𐑩𐑤 𐑝 𐑞 𐑤𐑪𐑜 𐑛𐑴𐑥𐑱𐑯𐑟. B<𐑷𐑤> 𐑒𐑨𐑯 𐑚𐑰 𐑫𐑸𐑹𐑴𐑖𐑱𐑿𐑟𐑛 𐑑 𐑥𐑨𐑗 𐑧𐑯𐑦 "
 #~ "𐑤𐑪𐑜 𐑛𐑴𐑥𐑱𐑯. 𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤 𐑤𐑧𐑝𐑩𐑤𐑟: B<𐑻𐑹>,\\ B<𐑢𐑹𐑯𐑦𐑙>,\\ B<𐑦𐑯𐑓𐑴>,\\ B<𐑛𐑰𐑚𐑳𐑜>. 𐑚𐑲 "
-#~ "𐑛𐑰𐑓𐑷𐑤𐑑 𐑞 B<𐑻𐑹> 𐑤𐑧𐑝𐑩𐑤 𐑦𐑟 𐑫𐑸𐑹𐑴𐑖𐑱𐑿𐑟𐑛."
+#~ "𐑛𐑰𐑓𐑷𐑤𐑑 𐑞 B<𐑻𐑹> 𐑤𐑧𐑝𐑩𐑤 𐑦𐑟 𐑫𐑸𐑹𐑴𐑖𐑱𐑿𐑟𐑛 𐑯 𐑞 B<𐑦𐑯𐑓𐑴> 𐑤𐑧𐑝𐑩𐑤 𐑓𐑹 𐑞 B<𐑕𐑻𐑝𐑻> 𐑛𐑴𐑥𐑱𐑯."
 
 # type: TP
-#, no-wrap
 #~ msgid "B<--path>"
 #~ msgstr "B<--𐑐𐑭𐑔>"
 

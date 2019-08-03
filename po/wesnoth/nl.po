@@ -113,10 +113,6 @@ msgstr "Chatbericht veroudering"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid ""
-#| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#| "0 to disable."
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
@@ -1793,9 +1789,6 @@ msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:521
-#, fuzzy
-#| msgid ""
-#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr ""
@@ -4450,10 +4443,6 @@ msgstr "rang"
 
 #. [tip]
 #: data/tips.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Use the map editor’s <i>Areas</i> menu to define regions later addressed "
-#| "by event or AI coding."
 msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
@@ -4468,10 +4457,6 @@ msgstr "<i>― De Wesnoth Ontwerp Gids</i>"
 
 #. [tip]
 #: data/tips.cfg:8
-#, fuzzy
-#| msgid ""
-#| "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
-#| "make use of advanced features."
 msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
@@ -4481,11 +4466,6 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Scenarios saved from the editor in their default folder can be selected "
-#| "in the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” "
-#| "screen."
 msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” screen."
@@ -6846,8 +6826,6 @@ msgstr "HP:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves:"
 msgid "Moves:"
 msgstr "Zetten:"
 
@@ -6855,8 +6833,6 @@ msgstr "Zetten:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "Vision:"
 msgid "Vision:"
 msgstr "Zicht:"
 
@@ -6864,8 +6840,6 @@ msgstr "Zicht:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
-#, fuzzy
-#| msgid "Jamming:"
 msgid "Jamming:"
 msgstr "Waarschuwingszicht:"
 
@@ -6873,8 +6847,6 @@ msgstr "Waarschuwingszicht:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost:"
 msgid "Cost:"
 msgstr "Prijs:"
 
@@ -6889,8 +6861,6 @@ msgstr "Alliantie:"
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Required XP:"
 msgid "Required XP:"
 msgstr "Benodigde XP:"
 
@@ -7744,10 +7714,6 @@ msgid "Save and abort game"
 msgstr "Spel opslaan en afbreken"
 
 #: src/playturn.cpp:297
-#, fuzzy
-#| msgid ""
-#| "$player who controlled side $side_drop has left the game. What do you "
-#| "want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -7878,8 +7844,6 @@ msgid "Defense: "
 msgstr "Verdediging: "
 
 #: src/reports.cpp:631 src/reports.cpp:632
-#, fuzzy
-#| msgid "vision:"
 msgid "vision:"
 msgstr "zicht:"
 
@@ -8379,13 +8343,10 @@ msgstr ""
 "beurt"
 
 #: src/synced_user_choice.cpp:330
-#, fuzzy
-#| msgid "waiting for $desc from side $sides"
-#| msgid_plural "waiting for $desc from sides $sides"
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "wachten op $desc van $sides kant"
-msgstr[1] "wachten op $desc van $sides kant"
+msgstr[1] "wachten op $desc van $sides kanten"
 
 #. TRANSLATORS: In networked games, this text is shown for other clients,
 #. while they wait for an action from another player.
@@ -10431,7 +10392,6 @@ msgstr "Whiteboard Opties"
 #~ msgid "Compress savegames using bzip2"
 #~ msgstr "Gecomprimeerde opgeslagen bestanden"
 
-#~| msgid "Settings..."
 #~ msgid "Options..."
 #~ msgstr "Opties..."
 
@@ -10464,87 +10424,66 @@ msgstr "Whiteboard Opties"
 #~ msgid "Multiplayer_AI^Experimental AI"
 #~ msgstr "Multiplayer"
 
-#~| msgid "Enemy unit sighted!"
-#~| msgid_plural "$enemies enemy units sighted!"
 #~ msgid "Enemy unit weight  (default: 100)"
 #~ msgstr "Vijandelijke eenheid in zicht!"
 
-#~| msgid "race^Orcs"
 #~ msgid "Orcs"
 #~ msgstr "Boemannen"
 
-#~| msgid "Move leader here"
 #~ msgid "Move Konrad here"
 #~ msgstr "Verplaats leider hierheen"
 
-#~| msgid "race^Humans"
 #~ msgid "Humans"
 #~ msgstr "Mensen"
 
-#~| msgid "race^Wolves"
 #~ msgid "Wolves"
 #~ msgstr "Wolven"
 
-#~| msgid "help"
 #~ msgid "Whelps"
 #~ msgstr "help"
 
 #~ msgid "End scenario"
 #~ msgstr "Einde scenario"
 
-#~| msgid "Save the Map As"
 #~ msgid "Take the pass"
 #~ msgstr "Kaart opslaan als"
 
-#~| msgid "Defeat"
 #~ msgid "Defeat Rowck"
 #~ msgstr "Nederlaag"
 
-#~| msgid "Defeat enemy leader"
 #~ msgid "Death of the bat leader"
 #~ msgstr "Dood de vijandelijke leider"
 
-#~| msgid "race^Saurians"
 #~ msgid "Saurians"
 #~ msgstr "Saurianen"
 
-#~| msgid "race^Gryphon"
 #~ msgid "Place Side 1 Footpad"
 #~ msgstr "Grifioen"
 
-#~| msgid "race^Gryphons"
 #~ msgid "Gryphons"
 #~ msgstr "Griffioenen"
 
-#~| msgid "Forward >"
 #~ msgid "Coward 1"
 #~ msgstr "Volgende >"
 
-#~| msgid "Forward >"
 #~ msgid "coward r=5"
 #~ msgstr "Volgende >"
 
-#~| msgid "Forward >"
 #~ msgid "Coward 2"
 #~ msgstr "Volgende >"
 
-#~| msgid "Forward >"
 #~ msgid "Coward 3"
 #~ msgstr "Volgende >"
 
-#~| msgid "Forward >"
 #~ msgid "Coward 4"
 #~ msgstr "Volgende >"
 
-#~| msgid "Faction"
 #~ msgid "Station 1"
 #~ msgstr "Factie"
 
-#~| msgid "Faction"
 #~ msgid "Station 2"
 #~ msgstr "Factie"
 
-#~| msgid "Forward >"
 #~ msgid "Coward"
 #~ msgstr "Volgende >"
 
@@ -10554,43 +10493,33 @@ msgstr "Whiteboard Opties"
 #~ "Overwinning\n"
 #~ "@Dood de vijandelijke leider(s)"
 
-#~| msgid "teleport"
 #~ msgid "Healer Support"
 #~ msgstr "teleportatie"
 
-#~| msgid "Notes:"
 #~ msgid "Notes"
 #~ msgstr "Opmerkingen:"
 
-#~| msgid "Clear all orders"
 #~ msgid "Defeat all lurkers"
 #~ msgstr "Alle bevelen annuleren"
 
-#~| msgid "Message:"
 #~ msgid "Messenger"
 #~ msgstr "Bericht:"
 
-#~| msgid "Move leader here"
 #~ msgid "AI moves Messenger here"
 #~ msgstr "Verplaats leider hierheen"
 
-#~| msgid "Defeat enemy leader"
 #~ msgid "Defeat the messenger"
 #~ msgstr "Dood de vijandelijke leider"
 
-#~| msgid "Language"
 #~ msgid "Langzhar"
 #~ msgstr "Taal"
 
-#~| msgid "Move leader here"
 #~ msgid "Move Rossauba here"
 #~ msgstr "Verplaats leider hierheen"
 
-#~| msgid "Take it"
 #~ msgid "I made it"
 #~ msgstr "Neem het"
 
-#~| msgid "Recruit"
 #~ msgid "Recruiting"
 #~ msgstr "Rekruteren"
 
@@ -10598,23 +10527,18 @@ msgstr "Whiteboard Opties"
 #~ msgid "Swarm"
 #~ msgstr "Moeras"
 
-#~| msgid "race^Bats"
 #~ msgid "Bats"
 #~ msgstr "Vleermuizen"
 
-#~| msgid "race^Gryphon"
 #~ msgid "Place Side 1 Gryphon"
 #~ msgstr "Grifioen"
 
-#~| msgid "race^Wolves"
 #~ msgid "More Wolves"
 #~ msgstr "Wolven"
 
-#~| msgid "Wesnoth Developers"
 #~ msgid "AI Developer"
 #~ msgstr "Wesnoth ontwikkelaars"
 
-#~| msgid "Invalid location"
 #~ msgid "AI Location:"
 #~ msgstr "Ongeldige locatie"
 
@@ -10628,26 +10552,18 @@ msgstr "Whiteboard Opties"
 #~ msgid "Multiplayer_AI^RCA AI"
 #~ msgstr "RCA AI"
 
-#~| msgid "invisible: "
 #~ msgid "invisible"
 #~ msgstr "onzichtbaar: "
 
-#~| msgid "female^slowed"
 #~ msgid "female^invisible"
 #~ msgstr "vertraagd"
 
-#~| msgid "Fire a game event."
 #~ msgid "I triggered a moveto event."
 #~ msgstr "Vuur een spelgebeurtenis af."
 
-#~| msgid "drains"
 #~ msgid "drains 20%"
 #~ msgstr "bloedzuiger"
 
-#~| msgid ""
-#~| "Drain:\n"
-#~| "This unit drains health from living units, healing itself for half the "
-#~| "amount of damage it deals (rounded down)."
 #~ msgid ""
 #~ "Drain 20%:\n"
 #~ "This unit drains health from living units, healing itself for 20% of the "
@@ -10657,18 +10573,12 @@ msgstr "Whiteboard Opties"
 #~ "Deze eenheid zuigt energie uit levende eenheden en geneest zichzelf met "
 #~ "de helft van de schade die hij toebrengt (naar beneden afgerond)."
 
-#~| msgid "invisible: "
 #~ msgid "It is invisible!"
 #~ msgstr "onzichtbaar: "
 
-#~| msgid "drains"
 #~ msgid "drains 100%"
 #~ msgstr "bloedzuiger"
 
-#~| msgid ""
-#~| "Drain:\n"
-#~| "This unit drains health from living units, healing itself for half the "
-#~| "amount of damage it deals (rounded down)."
 #~ msgid ""
 #~ "Drain 100%:\n"
 #~ "This unit drains health from living units, healing itself for 100% of the "
@@ -10678,23 +10588,18 @@ msgstr "Whiteboard Opties"
 #~ "Deze eenheid zuigt energie uit levende eenheden en geneest zichzelf met "
 #~ "de helft van de schade die hij toebrengt (naar beneden afgerond)."
 
-#~| msgid "Choose the game to load"
 #~ msgid "Choose a Mask to Apply"
 #~ msgstr "Kies een spel om te laden"
 
-#~| msgid "Choose weapon:"
 #~ msgid "Choose Target Map"
 #~ msgstr "Kies wapen:"
 
-#~| msgid "The map already exists. Do you want to overwrite it?"
 #~ msgid "The file already exists. Do you want to overwrite it?"
 #~ msgstr "De kaart bestaat al. Wil je hem overschrijven?"
 
-#~| msgid "No era information found."
 #~ msgid "No random map generators found."
 #~ msgstr "Geen tijdperkinformatie gevonden."
 
-#~| msgid "Installation failed"
 #~ msgid "Map creation failed."
 #~ msgstr "Installatie mislukt"
 
@@ -10704,7 +10609,6 @@ msgstr "Whiteboard Opties"
 #~ msgid "Sending add-on"
 #~ msgstr "Add-on wordt verstuurd"
 
-#~| msgid "Requesting list of add-ons"
 #~ msgid "Requesting the addon to be deleted"
 #~ msgstr "Bezig met het opvragen van een lijst met add-ons"
 
@@ -10775,7 +10679,6 @@ msgstr "Whiteboard Opties"
 #~ msgid "A map without a header is not supported"
 #~ msgstr "Een kaart zonder header wordt niet ondersteund"
 
-#~| msgid "Local time of day light effect (use more memory)."
 #~ msgid "Custom lighting for local time of day areas (uses more memory)"
 #~ msgstr "Lokale tijd-van-de-daglichteffecten (gebruikt meer geheugen)."
 
@@ -10811,15 +10714,12 @@ msgstr "Whiteboard Opties"
 #~ msgid "Difficulty: Hard"
 #~ msgstr "Niveau: Moeilijk"
 
-#~| msgid "Campaign: $campaign_name"
 #~ msgid "Main campaign define"
 #~ msgstr "Veldtocht: $campaign_name"
 
-#~| msgid "Campaign Design"
 #~ msgid "Extra campaign define"
 #~ msgstr "Veldtochtontwerp"
 
-#~| msgid "Multiplayer"
 #~ msgid "Multiplayer define"
 #~ msgstr "Multiplayer"
 
@@ -10847,7 +10747,6 @@ msgstr "Whiteboard Opties"
 #~ msgid "Add-on '$addon|' deleted."
 #~ msgstr "Add-on '$addon|' verwijderd."
 
-#~| msgid "Invalid location"
 #~ msgid "Invalid WML found"
 #~ msgstr "Ongeldige locatie"
 

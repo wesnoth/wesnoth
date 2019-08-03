@@ -11,7 +11,7 @@ msgstr ""
 "Language-Team: none\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -500,8 +500,7 @@ msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 #| msgid ""
 #| "sets the severity level of the log domains.  B<all> can be used to match "
 #| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>.  By default the B<error> level is used and the B<info> level "
-#| "for the B<server> domain."
+#| "B<debug>.  By default the B<error> level is used."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
@@ -509,8 +508,7 @@ msgid ""
 "B<deprecation> defaults to B<none> unless combined with the B<-d> option."
 msgstr ""
 "määrab logimise taseme.  B<all> valib kõik tasemed.  Tasemeteks on: B<error>,"
-"\\ B<warning>,\\ B<info>,\\ B<debug>.  Vaikimisi on kasutusel B<error> ning "
-"B<server>i jaoks B<info>."
+"\\ B<warning>,\\ B<info>,\\ B<debug>.  Vaikimisi on kasutusel B<error>."
 
 # type: TP
 #. type: TP
@@ -2593,6 +2591,12 @@ msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)."
 
 # type: Plain text
+#, fuzzy
+#~| msgid ""
+#~| "sets the severity level of the log domains.  B<all> can be used to match "
+#~| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#~| "B<debug>.  By default the B<error> level is used and the B<info> level "
+#~| "for the B<server> domain."
 #~ msgid ""
 #~ "sets the severity level of the log domains.  B<all> can be used to match "
 #~ "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
@@ -2600,10 +2604,9 @@ msgstr "B<wesnoth>(6)."
 #~ msgstr ""
 #~ "määrab logimise taseme.  B<all> valib kõik tasemed.  Tasemeteks on: "
 #~ "B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>.  Vaikimisi on kasutusel "
-#~ "B<error>."
+#~ "B<error> ning B<server>i jaoks B<info>."
 
 # type: TP
-#, no-wrap
 #~ msgid "B<--path>"
 #~ msgstr "B<--path>"
 

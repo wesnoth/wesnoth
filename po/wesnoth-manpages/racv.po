@@ -482,8 +482,7 @@ msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 #| msgid ""
 #| "sets the severity level of the log domains.  B<all> can be used to match "
 #| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>.  By default the B<error> level is used and the B<info> level "
-#| "for the B<server> domain."
+#| "B<debug>.  By default the B<error> level is used."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
@@ -492,8 +491,7 @@ msgid ""
 msgstr ""
 "estableix el nivell de gravetat dels dominis de depuració. B<all> pot usar-"
 "se per a seleccionar tots els dominis. Nivells disponibles: B<error>,\\ "
-"B<warning>,\\ B<info>,\\ B<debug>.  Per defecte el nivell B<error> es usat i "
-"el nivell B<info> per al domini B<server>."
+"B<warning>,\\ B<info>,\\ B<debug>.  Per defecte s'usarà el nivell B<error>."
 
 # type: TP
 #. type: TP
@@ -2437,6 +2435,12 @@ msgid "B<wesnoth>(6)"
 msgstr "wesnoth"
 
 # type: Plain text
+#, fuzzy
+#~| msgid ""
+#~| "sets the severity level of the log domains.  B<all> can be used to match "
+#~| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#~| "B<debug>.  By default the B<error> level is used and the B<info> level "
+#~| "for the B<server> domain."
 #~ msgid ""
 #~ "sets the severity level of the log domains.  B<all> can be used to match "
 #~ "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
@@ -2444,11 +2448,10 @@ msgstr "wesnoth"
 #~ msgstr ""
 #~ "estableix el nivell de gravetat dels dominis de depuració. B<all> pot "
 #~ "usar-se per a seleccionar tots els dominis. Nivells disponibles: B<error>,"
-#~ "\\ B<warning>,\\ B<info>,\\ B<debug>.  Per defecte s'usarà el nivell "
-#~ "B<error>."
+#~ "\\ B<warning>,\\ B<info>,\\ B<debug>.  Per defecte el nivell B<error> es "
+#~ "usat i el nivell B<info> per al domini B<server>."
 
 # type: TP
-#, no-wrap
 #~ msgid "B<--path>"
 #~ msgstr "B<--path>"
 

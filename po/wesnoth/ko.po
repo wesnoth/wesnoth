@@ -4888,8 +4888,10 @@ msgstr ""
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:234
+#, fuzzy
+#| msgid "No advancement"
 msgid "waiting for^an advancement choice"
-msgstr ""
+msgstr "승급 불가능"
 
 #: src/actions/attack.cpp:600 src/actions/attack.cpp:1350
 msgid "An invalid attacker weapon got selected."
@@ -5946,8 +5948,10 @@ msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "'$nick' 아이디는 이 서버에 등록되어 있습니다."
 
 #: src/game_initialization/multiplayer.cpp:335
+#, fuzzy
+#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "Your IP address is banned on this server’s forums for $duration|."
-msgstr ""
+msgstr "'$nick' 아이디는 이 서버에 등록되어 있습니다."
 
 #: src/game_initialization/multiplayer.cpp:337
 msgid "Your IP address is banned on this server’s forums."
@@ -9510,124 +9514,93 @@ msgstr ""
 #~ msgid "KB"
 #~ msgstr "KB"
 
-#~| msgid "Multiplayer_AI^Default AI"
 #~ msgid "Multiplayer_AI^Default AI (RCA)"
 #~ msgstr "기본 AI"
 
-#~| msgid "Multiplayer_AI^Default AI"
 #~ msgid "Multiplayer_AI^Experimental AI"
 #~ msgstr "기본 AI"
 
-#~| msgid "Enemy unit sighted!"
-#~| msgid_plural "$enemies enemy units sighted!"
 #~ msgid "Enemy unit weight  (default: 100)"
 #~ msgstr "적 유닛 발견!"
 
-#~| msgid "race^Orcs"
 #~ msgid "Orcs"
 #~ msgstr "오크족"
 
-#~| msgid "race^Humans"
 #~ msgid "Humans"
 #~ msgstr "인간족"
 
-#~| msgid "race^Wolves"
 #~ msgid "Wolves"
 #~ msgstr "늑대과"
 
-#~| msgid "End Scenario"
 #~ msgid "End scenario"
 #~ msgstr "시나리오 마치기"
 
-#~| msgid "Save the Map As"
 #~ msgid "Take the pass"
 #~ msgstr "다른 이름으로 맵 저장"
 
-#~| msgid "Defeat"
 #~ msgid "Defeat Rowck"
 #~ msgstr "패배"
 
-#~| msgid "Defeat enemy leader"
 #~ msgid "Death of the bat leader"
 #~ msgstr "적 지휘관 격파"
 
-#~| msgid "race^Saurians"
 #~ msgid "Saurians"
 #~ msgstr "사우리언족"
 
-#~| msgid "race^Gryphon"
 #~ msgid "Place Side 1 Footpad"
 #~ msgstr "그리폰"
 
-#~| msgid "race^Gryphons"
 #~ msgid "Gryphons"
 #~ msgstr "그리폰족"
 
-#~| msgid "Forward >"
 #~ msgid "Coward 1"
 #~ msgstr "앞으로 >"
 
-#~| msgid "Forward >"
 #~ msgid "coward r=5"
 #~ msgstr "앞으로 >"
 
-#~| msgid "Forward >"
 #~ msgid "Coward 2"
 #~ msgstr "앞으로 >"
 
-#~| msgid "Forward >"
 #~ msgid "Coward 3"
 #~ msgstr "앞으로 >"
 
-#~| msgid "Forward >"
 #~ msgid "Coward 4"
 #~ msgstr "앞으로 >"
 
-#~| msgid "Faction"
 #~ msgid "Station 1"
 #~ msgstr "당파"
 
-#~| msgid "Faction"
 #~ msgid "Station 2"
 #~ msgstr "당파"
 
-#~| msgid "Forward >"
 #~ msgid "Coward"
 #~ msgstr "앞으로 >"
 
-#~| msgid "Defeat enemy leader(s)"
 #~ msgid "Defeat all enemy units"
 #~ msgstr "적 지휘관(들)을 격파하라"
 
-#~| msgid "teleport"
 #~ msgid "Healer Support"
 #~ msgstr "전이"
 
-#~| msgid "Clear all orders"
 #~ msgid "Defeat all lurkers"
 #~ msgstr "모든 지령 소거"
 
-#~| msgid "Message:"
 #~ msgid "Messenger"
 #~ msgstr "대화:"
 
-#~| msgid "Defeat enemy leader"
 #~ msgid "Defeat the messenger"
 #~ msgstr "적 지휘관 격파"
 
-#~| msgid "Language"
 #~ msgid "Langzhar"
 #~ msgstr "언어"
 
-#~| msgid "Recruit"
 #~ msgid "Recruiting"
 #~ msgstr "소집"
 
-#~| msgid "race^Bats"
 #~ msgid "Bats"
 #~ msgstr "박쥐과"
 
-#~| msgid "race^Gryphon"
 #~ msgid "Place Side 1 Gryphon"
 #~ msgstr "그리폰"
 
@@ -9635,33 +9608,24 @@ msgstr ""
 #~ msgid "AI Developer"
 #~ msgstr "- 중심개발자"
 
-#~| msgid "Actions"
 #~ msgid "AI Location:"
 #~ msgstr "행동 메뉴"
 
-#~| msgid "firststrike"
 #~ msgid "first"
 #~ msgstr "선공"
 
 #~ msgid "Multiplayer_AI^RCA AI"
 #~ msgstr "평가판 AI"
 
-#~| msgid "invisible: "
 #~ msgid "invisible"
 #~ msgstr "투명:"
 
-#~| msgid "female^slowed"
 #~ msgid "female^invisible"
 #~ msgstr "둔화"
 
-#~| msgid "drains"
 #~ msgid "drains 20%"
 #~ msgstr "흡수"
 
-#~| msgid ""
-#~| "Drain:\n"
-#~| "This unit drains health from living units, healing itself for half the "
-#~| "amount of damage it deals (rounded down)."
 #~ msgid ""
 #~ "Drain 20%:\n"
 #~ "This unit drains health from living units, healing itself for 20% of the "
@@ -9671,18 +9635,12 @@ msgstr ""
 #~ "이 유닛은 생명체 유닛에게 준 데미지의 절반을 그로부터 흡수해서 자신을 치유"
 #~ "합니다.(소수점 이하 내림)"
 
-#~| msgid "invisible: "
 #~ msgid "It is invisible!"
 #~ msgstr "투명:"
 
-#~| msgid "drains"
 #~ msgid "drains 100%"
 #~ msgstr "흡수"
 
-#~| msgid ""
-#~| "Drain:\n"
-#~| "This unit drains health from living units, healing itself for half the "
-#~| "amount of damage it deals (rounded down)."
 #~ msgid ""
 #~ "Drain 100%:\n"
 #~ "This unit drains health from living units, healing itself for 100% of the "
@@ -9692,15 +9650,12 @@ msgstr ""
 #~ "이 유닛은 생명체 유닛에게 준 데미지의 절반을 그로부터 흡수해서 자신을 치유"
 #~ "합니다.(소수점 이하 내림)"
 
-#~| msgid "Choose the game to load"
 #~ msgid "Choose a Mask to Apply"
 #~ msgstr "불러올 게임을 고르십시오"
 
-#~| msgid "Choose weapon:"
 #~ msgid "Choose Target Map"
 #~ msgstr "무기 선택:"
 
-#~| msgid "The map already exists. Do you want to overwrite it?"
 #~ msgid "The file already exists. Do you want to overwrite it?"
 #~ msgstr "해당 이름의 맵이 이미 있습니다. 덮어씌우시겠습니까?"
 
@@ -9725,31 +9680,24 @@ msgstr ""
 #~ msgid "Don’t show again"
 #~ msgstr "다시 묻지 않음"
 
-#~| msgid "Easy"
 #~ msgid "(Easy)"
 #~ msgstr "쉬움"
 
-#~| msgid "Hard"
 #~ msgid "(Hard)"
 #~ msgstr "어려움"
 
-#~| msgid "Players: "
 #~ msgid "Players"
 #~ msgstr "플레이어 수:"
 
-#~| msgid "Enemy village"
 #~ msgid "Enemies"
 #~ msgstr "적 소속 마을"
 
-#~| msgid "Difficulty: "
 #~ msgid "Difficulty: Easy"
 #~ msgstr "난이도:"
 
-#~| msgid "Difficulty: "
 #~ msgid "Difficulty: Normal"
 #~ msgstr "난이도:"
 
-#~| msgid "Difficulty: "
 #~ msgid "Difficulty: Hard"
 #~ msgstr "난이도:"
 

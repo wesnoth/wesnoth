@@ -5025,8 +5025,10 @@ msgstr ""
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:234
+#, fuzzy
+#| msgid "No advancement"
 msgid "waiting for^an advancement choice"
-msgstr ""
+msgstr "Inga befordringar"
 
 #: src/actions/attack.cpp:600 src/actions/attack.cpp:1350
 msgid "An invalid attacker weapon got selected."
@@ -6141,8 +6143,10 @@ msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Användarnamnet ’$nick’ är registrerat på den här servern."
 
 #: src/game_initialization/multiplayer.cpp:335
+#, fuzzy
+#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "Your IP address is banned on this server’s forums for $duration|."
-msgstr ""
+msgstr "Användarnamnet ’$nick’ är registrerat på den här servern."
 
 #: src/game_initialization/multiplayer.cpp:337
 msgid "Your IP address is banned on this server’s forums."
@@ -6887,9 +6891,9 @@ msgstr "Det finns inte några trupper tillgängliga att värva till armén."
 
 #: src/menu_events.cpp:283
 #, fuzzy
-#| msgid "No eras found."
+#| msgid "cost to recall"
 msgid "No unit recruited"
-msgstr "Inga eror funna."
+msgstr "kostnad för att återkalla"
 
 #: src/menu_events.cpp:351
 msgid "You are separated from your soldiers and may not recall them"

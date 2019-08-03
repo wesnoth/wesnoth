@@ -362,7 +362,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text=Damage</header>"
+#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -370,7 +370,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Skada</header>"
+"<header>text='Chans för träff'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
@@ -423,7 +423,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text=Damage</header>"
+#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -431,7 +431,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Skada</header>"
+"<header>text='Chans för träff'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:200
@@ -1531,15 +1531,6 @@ msgstr "Vinst och förlust"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:194
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "When you win a scenario, the map grays over and the <bold>text='End "
-#| "Turn'</bold> button changes to <bold>text='End Scenario'</bold>. You can "
-#| "now do things like changing your save options or (if you are in a "
-#| "multiplayer game) chatting with other players before pressing that button "
-#| "to advance."
 msgid ""
 "\n"
 "\n"
@@ -1727,12 +1718,6 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:220
-#, fuzzy
-#| msgid ""
-#| "In Wesnoth, it is not enough simply to recruit units and fight. You must "
-#| "watch your gold as well, especially in campaigns, where you can carry "
-#| "extra gold over from one scenario to the next. There are two aspects to "
-#| "this; <italic>text='income'</italic> and <italic>text='upkeep'</italic>."
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1783,16 +1768,6 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:226
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "There are two important exceptions to upkeep: units with the loyal trait "
-#| "and leaders never incur upkeep. Units you begin the scenario with (such "
-#| "as Delfador), or units who join you during a scenario (such as the "
-#| "horseman in the second scenario of <italic>text='Heir to the Throne'</"
-#| "italic>) will usually have the <italic>text='loyal'</italic> trait. The "
-#| "unit you are playing (such as Konrad) will almost always be a leader."
 msgid ""
 "\n"
 "\n"
@@ -1818,13 +1793,6 @@ msgstr "Hälsopoäng och erfarenhet"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:236
-#, fuzzy
-#| msgid ""
-#| "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). "
-#| "If the hitpoints of a unit drop below 1, the unit dies. Each unit also "
-#| "has a certain number of <italic>text='experience points'</italic> (XP). A "
-#| "freshly recruited unit starts with no experience points, and gains "
-#| "experience by fighting enemies."
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -1909,21 +1877,6 @@ msgstr ""
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:252
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "While most units have three levels, not all do. Occasional units (such as "
-#| "<ref>dst='unit_Mage' text='magi'</ref>) may have four. Once a unit has "
-#| "reached its maximum level, it may have an <italic>text='After Maximum "
-#| "Level Advancement'</italic> (AMLA) available to it. The AMLA will modify "
-#| "the unit each time the unit reaches the experience goal, but the unit "
-#| "will remain the same level. The typical AMLA effect is for the unit to "
-#| "raise the maximum HP by 3 and full-heal it. The first AMLA will normally "
-#| "be reached with 150 XP gained (120 XP for intelligent units). However, "
-#| "gaining an AMLA becomes progressively harder for each AMLA the unit "
-#| "receives, and so it is usually more useful to try to advance your lower "
-#| "level units."
 msgid ""
 "\n"
 "\n"
@@ -1960,19 +1913,6 @@ msgstr "Förflyttning"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:262
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Each unit has a certain number of movement points which are used up when "
-#| "moving into a new hex, depending on the Terrain of that particular hex. "
-#| "For instance, grassland nearly always costs 1 movement point to enter. "
-#| "Exactly how many movement points are spent entering a hex depends on the "
-#| "unit type — in forest, elvish units only spend 1 movement point, most "
-#| "human and orc units spend 2, while horsemen spend 3. You can learn how "
-#| "many movement points a unit requires to enter a certain terrain type by "
-#| "right-clicking on it, selecting <bold>text='Unit Description'</bold>, and "
-#| "then looking at <bold>text='Terrain Modifiers'</bold>."
 msgid ""
 "\n"
 "\n"
@@ -2001,21 +1941,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:262
-#, fuzzy
-#| msgid ""
-#| "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click "
-#| "on the unit you wish to move to select it, then click on the hex you wish "
-#| "to move it to. When a unit is selected, everywhere it can move this turn "
-#| "will be highlighted, and all other hexes on the map are made dull. "
-#| "Mousing over a highlighted hex shows the defense rating the unit would "
-#| "have if you moved it to that hex. Mousing over a dull hex will also show "
-#| "the number of turns required to reach it, and clicking will cause the "
-#| "unit to move towards it by the fastest route over this and subsequent "
-#| "turns. If you don’t use up all of a unit’s movement when you first move a "
-#| "unit, you may move it again. This is useful when having two units switch "
-#| "places. Attacking with a unit will use up its movement. Ending a move in "
-#| "a village you don’t already own will also use up a unit’s movement, but "
-#| "will still allow it to attack."
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -2101,28 +2026,6 @@ msgstr "Slöja och stridsdimma"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:276
-#, fuzzy
-#| msgid ""
-#| "In some scenarios, parts of the map will be hidden from you. There are "
-#| "two mechanisms that can be used separately or together. The "
-#| "<italic>text='shroud'</italic> hides both the terrain and any units at a "
-#| "location. However, once it is cleared, you can always see that location. "
-#| "The <italic>text='fog of war'</italic> only hides units and ownership of "
-#| "villages (other than by you or your allies). The fog of war is cleared "
-#| "temporarily when you have units nearby, but returns when they leave. Both "
-#| "the shroud and the fog of war are cleared by units. Each unit clears "
-#| "locations adjacent to those within one turn’s move (ignoring zones of "
-#| "control and enemy units).\n"
-#| "\n"
-#| "Normally you can undo a unit’s movement, as long as an event with a "
-#| "randomized result has not occurred, such as combat or recruitment (as "
-#| "most units receive random traits when recruited). Exploring hidden "
-#| "terrain by clearing shroud or fog will also prevent undos to a previous "
-#| "state. You may wish to activate <bold>text='Delay Shroud Updates'</bold> "
-#| "in the actions menu. This will prevent units from clearing shroud or fog "
-#| "until the next randomized event or a manual update via <bold>text='Update "
-#| "Shroud Now'</bold> (or the end of your turn) and thereby preserve your "
-#| "ability to undo movement."
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -2172,11 +2075,6 @@ msgstr "Strid"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:286
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Order and Number of Strikes'</header>"
 msgid ""
 "\n"
 "\n"
@@ -2188,19 +2086,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:286
-#, fuzzy
-#| msgid ""
-#| "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
-#| "between units in adjacent hexes. Click on your unit, and click on the "
-#| "enemy you want to attack: your unit will move towards the enemy unit, and "
-#| "when they are next to each other, combat will begin. The attacker and "
-#| "defender alternate strikes until each has used their allotted number of "
-#| "strikes. The attacker chooses one of its weapons to attack with, and the "
-#| "defender retaliates with one of its attacks of the same type. There are "
-#| "two types of attacks: <italic>text='melee'</italic>, which usually "
-#| "involves weapons such as swords, axes or fangs; and "
-#| "<italic>text='ranged'</italic>, which usually involves weapons such as "
-#| "bows, spears and fireballs."
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -2261,11 +2146,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:290
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -2273,22 +2153,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Skada</header>"
+"<header>text='Chans för träff'</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:292
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Every unit has a chance of being hit, based on the "
-#| "<italic>text='terrain'</italic> it is in. This is shown in the status "
-#| "pane, and may also be found by right-clicking a unit, selecting "
-#| "<bold>text='Unit Description'</bold>, and then looking at "
-#| "<bold>text='Terrain Modifiers'</bold>. For instance, many elves have a "
-#| "defense rating of 70% in forest, so a unit attacking them has only a 30% "
-#| "chance of hitting. Conversely, the elf’s chance of hitting the attacker "
-#| "in return depends on what terrain the attacker is in."
 msgid ""
 "\n"
 "\n"
@@ -2421,14 +2289,6 @@ msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:309
-#, fuzzy
-#| msgid ""
-#| "In Wesnoth, there are three types of damage usually associated with "
-#| "physical attacks: <italic>text='blade, pierce, and impact damage'</"
-#| "italic>. Additionally, there are three further types of damage usually "
-#| "associated with magical attacks: <italic>text='fire, cold, and arcane "
-#| "attacks'</italic>. Different units may have resistances which alter the "
-#| "damage which they take from certain damage types."
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -2821,14 +2681,6 @@ msgstr "Slutord"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:386
-#, fuzzy
-#| msgid ""
-#| "This concludes the fundamentals of Wesnoth. You might want to read up on "
-#| "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
-#| "text='traits'</ref> and <ref>dst='..abilities_section' text='abilities'</"
-#| "ref>, but you now know everything you need to know to play the "
-#| "<italic>text='Heir to the Throne'</italic> campaign. Have fun, and good "
-#| "luck!"
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -2962,7 +2814,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text=Damage</header>"
+#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -2970,7 +2822,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Skada</header>"
+"<header>text='Chans för träff'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:418
@@ -2996,6 +2848,10 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:424
 #, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3083,7 +2939,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text=Damage</header>"
+#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3091,7 +2947,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Skada</header>"
+"<header>text='Chans för träff'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:448
@@ -3126,6 +2982,10 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:454
 #, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3247,6 +3107,10 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:494
 #, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Order and Number of Strikes'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3254,7 +3118,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Chans för träff'</header>"
+"<header>text='Turordning och antal attacker'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:496
@@ -3302,7 +3166,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text=Damage</header>"
+#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3310,7 +3174,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Skada</header>"
+"<header>text='Chans för träff'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:506
@@ -7370,6 +7234,20 @@ msgid "Parse error when parsing help text: "
 msgstr "Tolkningsfel när hjälptexten tolkades: "
 
 #, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Order and Number of Strikes'</header>"
+msgid ""
+"\n"
+"\n"
+"<big>Multiplayer Modifications</big>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Turordning och antal attacker'</header>"
+
+#, fuzzy
 #~| msgid ""
 #~| "\n"
 #~| "\n"
@@ -7490,20 +7368,6 @@ msgstr "Tolkningsfel när hjälptexten tolkades: "
 #~ "\n"
 #~ "\n"
 #~ "<header>text=Skada</header>"
-
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "\n"
-#~| "<header>text='Order and Number of Strikes'</header>"
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Multiplayer Modifications</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Turordning och antal attacker'</header>"
 
 #~ msgid "race^Mermen"
 #~ msgstr "Sjöfolket"
@@ -8761,3 +8625,56 @@ msgstr "Tolkningsfel när hjälptexten tolkades: "
 #~ "Vissa vapen har speciella egenskaper som ökar dess effektivitet när man "
 #~ "attackerar med dem.\n"
 #~ "\n"
+
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Chance to Hit'</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Cores'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Chans för träff'</header>"
+
+#, fuzzy
+#~| msgid ""
+#~| "Berserk:\n"
+#~| "Whether used offensively or defensively, this attack presses the "
+#~| "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#~| "have occurred."
+#~ msgid ""
+#~ "Whether used offensively or defensively, this attack presses the "
+#~ "engagement until one of the champions is slain, or 30 rounds of attacks "
+#~ "have occurred."
+#~ msgstr ""
+#~ "Bärsärkagång:\n"
+#~ "Vare sig det gäller anfall eller försvar fortsätter striden tills en av "
+#~ "parterna ligger död på marken eller tills striden pågått i 30 utfall."
+
+#, fuzzy
+#~| msgid "firststrike"
+#~ msgid "true strike"
+#~ msgstr "första slaget"
+
+#, fuzzy
+#~| msgid ""
+#~| "Magical:\n"
+#~| "This attack always has a 70% chance to hit regardless of the defensive "
+#~| "ability of the unit being attacked."
+#~ msgid ""
+#~ "This attack always has a 70% chance to hit regardless of the defensive "
+#~ "ability of the champion being attacked."
+#~ msgstr ""
+#~ "Magisk:\n"
+#~ "Denna attack har alltid 70% chans att träffa oavsett måltavlans försvar."
+
+#, fuzzy
+#~ msgid "<header>text='Race specific topics'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Chans för träff'</header>"

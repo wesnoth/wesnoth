@@ -5412,12 +5412,15 @@ msgstr ""
 "aldeias. Mesmo se ocupam uma aldeia, não irão receber qualquer beneficio "
 "defensivo desta, mas serão curadas."
 
+#
 #. TRANSLATORS: In networked games, when one player has the choice
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:234
+#, fuzzy
+#| msgid "No advancement"
 msgid "waiting for^an advancement choice"
-msgstr ""
+msgstr "Sem avanço"
 
 #
 #: src/actions/attack.cpp:600 src/actions/attack.cpp:1350
@@ -6706,9 +6709,12 @@ msgstr "A alcunha ‘$nick’ está registado neste servidor."
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "A alcunha ‘$nick’ está registado neste servidor."
 
+#
 #: src/game_initialization/multiplayer.cpp:335
+#, fuzzy
+#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "Your IP address is banned on this server’s forums for $duration|."
-msgstr ""
+msgstr "A alcunha ‘$nick’ está registado neste servidor."
 
 #: src/game_initialization/multiplayer.cpp:337
 msgid "Your IP address is banned on this server’s forums."

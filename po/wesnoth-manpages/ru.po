@@ -11,7 +11,7 @@ msgstr ""
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
@@ -505,8 +505,7 @@ msgstr "B<--log->I<уровень>B<=>I<домен1>B<,>I<домен2>B<,>I<...>
 #| msgid ""
 #| "sets the severity level of the log domains.  B<all> can be used to match "
 #| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>.  By default the B<error> level is used and the B<info> level "
-#| "for the B<server> domain."
+#| "B<debug>.  By default the B<error> level is used."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
@@ -515,8 +514,7 @@ msgid ""
 msgstr ""
 "задает уровень для отладочных доменов.  B<all> может соответствовать любому "
 "отладочному домену. Доступны уровни: B<error>,\\ B<warning>,\\ B<info>,\\ "
-"B<debug>.  По умолчанию используется уровень B<error>, а для домена "
-"B<server> — уровень B<info>."
+"B<debug>.  По умолчанию используется уровень B<error>."
 
 # type: TP
 #. type: TP
@@ -2658,6 +2656,12 @@ msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)."
 
 # type: Plain text
+#, fuzzy
+#~| msgid ""
+#~| "sets the severity level of the log domains.  B<all> can be used to match "
+#~| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#~| "B<debug>.  By default the B<error> level is used and the B<info> level "
+#~| "for the B<server> domain."
 #~ msgid ""
 #~ "sets the severity level of the log domains.  B<all> can be used to match "
 #~ "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
@@ -2665,10 +2669,10 @@ msgstr "B<wesnoth>(6)."
 #~ msgstr ""
 #~ "задает уровень для отладочных доменов.  B<all> может соответствовать "
 #~ "любому отладочному домену. Доступны уровни: B<error>,\\ B<warning>,\\ "
-#~ "B<info>,\\ B<debug>.  По умолчанию используется уровень B<error>."
+#~ "B<info>,\\ B<debug>.  По умолчанию используется уровень B<error>, а для "
+#~ "домена B<server> — уровень B<info>."
 
 # type: TP
-#, no-wrap
 #~ msgid "B<--path>"
 #~ msgstr "B<--path>"
 

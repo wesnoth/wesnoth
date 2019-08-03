@@ -511,8 +511,7 @@ msgstr "B<--log->I<mức_độ>B<=>I<miền_1>B<,>I<miền_2>B<,>I<...>"
 #| msgid ""
 #| "sets the severity level of the log domains.  B<all> can be used to match "
 #| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>.  By default the B<error> level is used and the B<info> level "
-#| "for the B<server> domain."
+#| "B<debug>.  By default the B<error> level is used."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
@@ -521,8 +520,7 @@ msgid ""
 msgstr ""
 "đặt mức độ nghiêm trọng của các miền ghi lưu. B<all> có thể được sử dụng để "
 "khớp với bất kỳ miền ghi lưu nào. Các mức độ có sẵn: B<error>,\\ B<warning>,"
-"\\ B<info>,\\ B<debug>. Theo mặc định mức độ B<error> được sử dụng và mức độ "
-"B<info> cho miền B<server>."
+"\\ B<info>,\\ B<debug>. Theo mặc định mức độ B<error> được sử dụng."
 
 # type: TP
 #. type: TP
@@ -2641,6 +2639,12 @@ msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)."
 
 # type: Plain text
+#, fuzzy
+#~| msgid ""
+#~| "sets the severity level of the log domains.  B<all> can be used to match "
+#~| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#~| "B<debug>.  By default the B<error> level is used and the B<info> level "
+#~| "for the B<server> domain."
 #~ msgid ""
 #~ "sets the severity level of the log domains.  B<all> can be used to match "
 #~ "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
@@ -2649,10 +2653,9 @@ msgstr "B<wesnoth>(6)."
 #~ "đặt mức độ nghiêm trọng của các miền ghi lưu. B<all> có thể được sử dụng "
 #~ "để khớp với bất kỳ miền ghi lưu nào. Các mức độ có sẵn: B<error>,\\ "
 #~ "B<warning>,\\ B<info>,\\ B<debug>. Theo mặc định mức độ B<error> được sử "
-#~ "dụng."
+#~ "dụng và mức độ B<info> cho miền B<server>."
 
 # type: TP
-#, no-wrap
 #~ msgid "B<--path>"
 #~ msgstr "B<--path>"
 

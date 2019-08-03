@@ -1787,9 +1787,6 @@ msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:521
-#, fuzzy
-#| msgid ""
-#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr ""
@@ -6075,10 +6072,8 @@ msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "Prezývka ‘$nick’ zakázaná na fóre na tomto serveri."
 
 #: src/game_initialization/multiplayer.cpp:337
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums."
-msgstr "Prezývka ‘$nick’ zakázaná na fóre na tomto serveri."
+msgstr ""
 
 #: src/game_initialization/multiplayer.cpp:341
 #, fuzzy
@@ -6523,8 +6518,6 @@ msgstr "Životy:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves:"
 msgid "Moves:"
 msgstr "Kroky:"
 
@@ -6532,8 +6525,6 @@ msgstr "Kroky:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "Vision:"
 msgid "Vision:"
 msgstr "Dohľadnosť:"
 
@@ -6541,8 +6532,6 @@ msgstr "Dohľadnosť:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
-#, fuzzy
-#| msgid "Jamming:"
 msgid "Jamming:"
 msgstr "Blokovanie:"
 
@@ -6550,8 +6539,6 @@ msgstr "Blokovanie:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost:"
 msgid "Cost:"
 msgstr "Cena:"
 
@@ -6566,8 +6553,6 @@ msgstr "Príslušnosť:"
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Required XP:"
 msgid "Required XP:"
 msgstr "Potrebné skúsenosti:"
 
@@ -7400,10 +7385,6 @@ msgid "Save and abort game"
 msgstr "Uložiť a zrušiť hru"
 
 #: src/playturn.cpp:297
-#, fuzzy
-#| msgid ""
-#| "$player who controlled side $side_drop has left the game. What do you "
-#| "want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -8018,13 +7999,10 @@ msgid "A unit was created using debug mode during $player’s turn"
 msgstr "V režime ladenia bola vytvorená jednotka počas ťahu hráča $player"
 
 #: src/synced_user_choice.cpp:330
-#, fuzzy
-#| msgid "waiting for $desc from side $sides"
-#| msgid_plural "waiting for $desc from sides $sides"
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "čaká sa na $desc od strán: $sides"
-msgstr[1] "čaká sa na $desc od strán: $sides"
+msgstr[1] "čaká sa na $desc od strany: $sides"
 msgstr[2] "čaká sa na $desc od strán: $sides"
 
 #. TRANSLATORS: In networked games, this text is shown for other clients,
@@ -9776,237 +9754,180 @@ msgstr "Nastavenia tabule"
 #~ msgid "(side $temp_i|)"
 #~ msgstr "(strana $temp_i|)"
 
-#~| msgid "Cancel"
 #~ msgid "cancel"
 #~ msgstr "Storno"
 
-#~| msgid "Test scenario"
 #~ msgid "Select Hex"
 #~ msgstr "Testovacia scéna"
 
-#~| msgid "Attacker"
 #~ msgid "Move/Attack"
 #~ msgstr "Útočník"
 
 #~ msgid "Animate Map"
 #~ msgstr "Animovať mapu"
 
-#~| msgid "Next Turn"
 #~ msgid "Next Unit"
 #~ msgstr "Nasledujúce kolo"
 
-#~| msgid "End Turn"
 #~ msgid "End Unit Turn"
 #~ msgstr "Koniec kola"
 
-#~| msgid "Screenshot"
 #~ msgid "Map Screenshot"
 #~ msgstr "Záber obrazovky"
 
-#~| msgid "Description"
 #~ msgid "Terrain Description"
 #~ msgstr "Popis"
 
-#~| msgid "Description"
 #~ msgid "Unit Description"
 #~ msgstr "Popis"
 
-#~| msgid "Delete add-on: "
 #~ msgid "Delete Unit"
 #~ msgstr "Vymaž doplnok: "
 
-#~| msgid "Share Maps"
 #~ msgid "Save Map"
 #~ msgstr "Spoločná mapa"
 
-#~| msgid "Recruit"
 #~ msgid "Repeat Recruit"
 #~ msgstr "Verbuj"
 
-#~| msgid "Mouse scrolling"
 #~ msgid "Mouse Scrolling"
 #~ msgstr "Umožniť rolovanie myšou"
 
-#~| msgid "Status"
 #~ msgid "Status Table"
 #~ msgstr "Stav"
 
-#~| msgid "Create Unit (Debug!)"
 #~ msgid "Change Side (Debug!)"
 #~ msgstr "Vytvoriť jednotku (ladenie!)"
 
-#~| msgid "Create Unit (Debug!)"
 #~ msgid "Kill Unit (Debug!)"
 #~ msgstr "Vytvoriť jednotku (ladenie!)"
 
-#~| msgid "Scenario Settings"
 #~ msgid "Scenario Objectives"
 #~ msgstr "Nastavenia scény"
 
-#~| msgid "Host Networked Game"
 #~ msgid "Pause Network Game"
 #~ msgstr "Založ sieťovú hru"
 
-#~| msgid "Host Networked Game"
 #~ msgid "Continue Network Game"
 #~ msgstr "Založ sieťovú hru"
 
 #~ msgid "Quit Game"
 #~ msgstr "Ukonči hru"
 
-#~| msgid "Place Label"
 #~ msgid "Set Label"
 #~ msgstr "Umiestni značku"
 
-#~| msgid "Save Replay"
 #~ msgid "Play Replay"
 #~ msgstr "Uložiť záznam"
 
-#~| msgid "Save Replay"
 #~ msgid "Reset Replay"
 #~ msgstr "Uložiť záznam"
 
-#~| msgid "Save Replay"
 #~ msgid "Stop Replay"
 #~ msgstr "Uložiť záznam"
 
-#~| msgid "Team"
 #~ msgid "Each Team"
 #~ msgstr "Tím"
 
-#~| msgid "Team"
 #~ msgid "Team 1"
 #~ msgstr "Tím"
 
-#~| msgid "Skip animation"
 #~ msgid "Skip Animation"
 #~ msgstr "Preskoč animáciu"
 
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Execute Action"
 #~ msgstr "Nastavenia tabule"
 
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Execute All Actions"
 #~ msgstr "Nastavenia tabule"
 
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Delete Action"
 #~ msgstr "Nastavenia tabule"
 
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Move Action Up"
 #~ msgstr "Nastavenia tabule"
 
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Move Action Down"
 #~ msgstr "Nastavenia tabule"
 
-#~| msgid "Time of Day"
 #~ msgid "Switch Time of Day"
 #~ msgstr "Denná doba"
 
-#~| msgid "Share Maps"
 #~ msgid "Switch Map"
 #~ msgstr "Spoločná mapa"
 
-#~| msgid "Time of Day"
 #~ msgid "Custom Time of Day Creator"
 #~ msgstr "Denná doba"
 
-#~| msgid "Load Game"
 #~ msgid "Load Map"
 #~ msgstr "Načítaj hru"
 
-#~| msgid "Test scenario"
 #~ msgid "Save Scenario As"
 #~ msgstr "Testovacia scéna"
 
-#~| msgid "Save the Map As"
 #~ msgid "Save All Maps"
 #~ msgstr "Uložiť mapu ako"
 
-#~| msgid "Skip animation"
 #~ msgid "Map Information"
 #~ msgstr "Preskoč animáciu"
 
-#~| msgid "Next Side"
 #~ msgid "Add New Side"
 #~ msgstr "Nasledujúca strana"
 
-#~| msgid "Next Turn"
 #~ msgid "Next Tool"
 #~ msgstr "Nasledujúce kolo"
 
-#~| msgid "Starting position: "
 #~ msgid "Starting Positions Tool"
 #~ msgstr "Východzia pozícia: "
 
-#~| msgid "Label: "
 #~ msgid "Label Tool"
 #~ msgstr "Značka: "
 
-#~| msgid "Village gold: "
 #~ msgid "Village Tool"
 #~ msgstr "Zlato za dedinu: "
 
-#~| msgid "Recruit"
 #~ msgid "Can Recruit"
 #~ msgstr "Verbuj"
 
-#~| msgid "Advance Unit"
 #~ msgid "Change Unit ID"
 #~ msgstr "Povýšenie jednotky"
 
-#~| msgid "Next Turn"
 #~ msgid "Next Brush"
 #~ msgstr "Nasledujúce kolo"
 
-#~| msgid "Select unit:"
 #~ msgid "Select All"
 #~ msgstr "Vyber si jednotku:"
 
-#~| msgid "Select an add-on to update:"
 #~ msgid "Select Inverse"
 #~ msgstr "Vyber doplnok na aktualizovanie:"
 
-#~| msgid "Select unit:"
 #~ msgid "Select None"
 #~ msgstr "Vyber si jednotku:"
 
-#~| msgid "Invalid location"
 #~ msgid "Flip Selection"
 #~ msgstr "Neplatná poloha"
 
-#~| msgid "Randomize time of day in begin"
 #~ msgid "Randomize Tiles in Selection"
 #~ msgstr "Hra začne v náhodnej fáze dňa"
 
-#~| msgid "Animate Map"
 #~ msgid "Rotate Map"
 #~ msgstr "Animovať mapu"
 
-#~| msgid "Animate Map"
 #~ msgid "Generate Map"
 #~ msgstr "Animovať mapu"
 
-#~| msgid "Create Game"
 #~ msgid "Create Mask"
 #~ msgstr "Vytvor hru"
 
-#~| msgid "Refresh gui."
 #~ msgid "Refresh Display"
 #~ msgstr "Prekreslí grafické prostredie."
 
-#~| msgid "Latin Translation"
 #~ msgid "Update Terrain Transitions"
 #~ msgstr "Latinský preklad"
 
-#~| msgid "End Scenario"
 #~ msgid "Edit Scenario"
 #~ msgstr "Ukončiť scénu"
 
-#~| msgid "Next Side"
 #~ msgid "Edit Side"
 #~ msgstr "Nasledujúca strana"
 
@@ -10014,71 +9935,54 @@ msgstr "Nastavenia tabule"
 #~ msgid "Remove Side"
 #~ msgstr "ťahy"
 
-#~| msgid "Update all"
 #~ msgid "Speak to Ally"
 #~ msgstr "Aktualizuj všetko"
 
-#~| msgid "Update all"
 #~ msgid "Speak to All"
 #~ msgstr "Aktualizuj všetko"
 
-#~| msgid "Chat Log"
 #~ msgid "View Chat Log"
 #~ msgstr "Záznam rozhovoru"
 
-#~| msgid "User-Command#3"
 #~ msgid "Enter User Command"
 #~ msgstr "Používateľský príkaz#3"
 
-#~| msgid "Refresh gui."
 #~ msgid "Refresh WML"
 #~ msgstr "Prekreslí grafické prostredie."
 
-#~| msgid "Show next tip of the day"
 #~ msgid "Next Tip of the Day"
 #~ msgstr "Zobraz nasledujúci tip dňa"
 
-#~| msgid "Show previous tip of the day"
 #~ msgid "Previous Tip of the Day"
 #~ msgstr "Zobraz predchádzajúci tip dňa"
 
-#~| msgid "Tutorial"
 #~ msgid "Start Tutorial"
 #~ msgstr "Výcvik"
 
-#~| msgid "Campaign Design"
 #~ msgid "Start Campaign"
 #~ msgstr "Dizajnér výprav"
 
-#~| msgid "Multiplayer"
 #~ msgid "Start Multiplayer Game"
 #~ msgstr "Zápas"
 
-#~| msgid "Remove Add-ons"
 #~ msgid "Manage Add-ons"
 #~ msgstr "Odstráň doplnky"
 
-#~| msgid "Start the map editor"
 #~ msgid "Start Editor"
 #~ msgstr "Spustiť editor máp"
 
-#~| msgid "Show replay"
 #~ msgid "Show Credits"
 #~ msgstr "Ukáž záznam"
 
-#~| msgid "Show replay"
 #~ msgid "Show Helptip"
 #~ msgstr "Ukáž záznam"
 
-#~| msgid "Unknown command."
 #~ msgid "Unrecognized Command"
 #~ msgstr "Neznámy príkaz."
 
-#~| msgid "Compressed saves"
 #~ msgid "Compress savegames using bzip2"
 #~ msgstr "Komprimovať uložené hry"
 
-#~| msgid "Settings..."
 #~ msgid "Options..."
 #~ msgstr "Nastavenia..."
 
@@ -10103,95 +10007,72 @@ msgstr "Nastavenia tabule"
 #~ msgid "KB"
 #~ msgstr "KB"
 
-#~| msgid "Multiplayer_AI^Default AI"
 #~ msgid "Multiplayer_AI^Default AI (RCA)"
 #~ msgstr "Štandardná UI"
 
-#~| msgid "Multiplayer_AI^Default AI"
 #~ msgid "Multiplayer_AI^Experimental AI"
 #~ msgstr "Štandardná UI"
 
-#~| msgid "Enemy unit sighted!"
-#~| msgid_plural "$enemies enemy units sighted!"
 #~ msgid "Enemy unit weight  (default: 100)"
 #~ msgstr "Vidím $enemies nepriateľských jednotiek!"
 
-#~| msgid "race^Orcs"
 #~ msgid "Orcs"
 #~ msgstr "Orkovia"
 
-#~| msgid "Move leader here"
 #~ msgid "Move Konrad here"
 #~ msgstr "Presunúť veliteľa sem"
 
-#~| msgid "race^Humans"
 #~ msgid "Humans"
 #~ msgstr "Ľudia"
 
-#~| msgid "race^Wolves"
 #~ msgid "Wolves"
 #~ msgstr "Vlci"
 
-#~| msgid "help"
 #~ msgid "Whelps"
 #~ msgstr "pomoc"
 
 #~ msgid "End scenario"
 #~ msgstr "Ukončiť scénu"
 
-#~| msgid "Save the Map As"
 #~ msgid "Take the pass"
 #~ msgstr "Uložiť mapu ako"
 
-#~| msgid "Defeat"
 #~ msgid "Defeat Rowck"
 #~ msgstr "Prehra"
 
-#~| msgid "Defeat enemy leader"
 #~ msgid "Death of the bat leader"
 #~ msgstr "Porazíš nepriateľského veliteľa"
 
-#~| msgid "race^Saurians"
 #~ msgid "Saurians"
 #~ msgstr "Sauri"
 
-#~| msgid "race^Gryphon"
 #~ msgid "Place Side 1 Footpad"
 #~ msgstr "Gryf"
 
-#~| msgid "race^Gryphons"
 #~ msgid "Gryphons"
 #~ msgstr "Gryfovia"
 
-#~| msgid "Forward >"
 #~ msgid "Coward 1"
 #~ msgstr "Ďalej >"
 
-#~| msgid "Forward >"
 #~ msgid "coward r=5"
 #~ msgstr "Ďalej >"
 
-#~| msgid "Forward >"
 #~ msgid "Coward 2"
 #~ msgstr "Ďalej >"
 
-#~| msgid "Forward >"
 #~ msgid "Coward 3"
 #~ msgstr "Ďalej >"
 
-#~| msgid "Forward >"
 #~ msgid "Coward 4"
 #~ msgstr "Ďalej >"
 
-#~| msgid "Faction"
 #~ msgid "Station 1"
 #~ msgstr "Frakcia"
 
-#~| msgid "Faction"
 #~ msgid "Station 2"
 #~ msgstr "Frakcia"
 
-#~| msgid "Forward >"
 #~ msgid "Coward"
 #~ msgstr "Ďalej >"
 
@@ -10201,43 +10082,33 @@ msgstr "Nastavenia tabule"
 #~ "Vyhráš, ak:\n"
 #~ "@Porazíš ostatných veliteľov"
 
-#~| msgid "teleport"
 #~ msgid "Healer Support"
 #~ msgstr "teleport"
 
-#~| msgid "Notes:"
 #~ msgid "Notes"
 #~ msgstr "Poznámky:"
 
-#~| msgid "Clear all orders"
 #~ msgid "Defeat all lurkers"
 #~ msgstr "Vymaž všetky rozkazy"
 
-#~| msgid "Message:"
 #~ msgid "Messenger"
 #~ msgstr "Správa:"
 
-#~| msgid "Move leader here"
 #~ msgid "AI moves Messenger here"
 #~ msgstr "Presunúť veliteľa sem"
 
-#~| msgid "Defeat enemy leader"
 #~ msgid "Defeat the messenger"
 #~ msgstr "Porazíš nepriateľského veliteľa"
 
-#~| msgid "Language"
 #~ msgid "Langzhar"
 #~ msgstr "Jazyk"
 
-#~| msgid "Move leader here"
 #~ msgid "Move Rossauba here"
 #~ msgstr "Presunúť veliteľa sem"
 
-#~| msgid "Take it"
 #~ msgid "I made it"
 #~ msgstr "Vziať ho"
 
-#~| msgid "Recruit"
 #~ msgid "Recruiting"
 #~ msgstr "Verbuj"
 
@@ -10245,27 +10116,21 @@ msgstr "Nastavenia tabule"
 #~ msgid "Swarm"
 #~ msgstr "húf"
 
-#~| msgid "race^Bats"
 #~ msgid "Bats"
 #~ msgstr "Netopiere"
 
-#~| msgid "race^Gryphon"
 #~ msgid "Place Side 1 Gryphon"
 #~ msgstr "Gryf"
 
-#~| msgid "race^Wolves"
 #~ msgid "More Wolves"
 #~ msgstr "Vlci"
 
-#~| msgid "Wesnoth Developers"
 #~ msgid "AI Developer"
 #~ msgstr "Vývojári Wesnothu"
 
-#~| msgid "Invalid location"
 #~ msgid "AI Location:"
 #~ msgstr "Neplatná poloha"
 
-#~| msgid "firststrike"
 #~ msgid "first"
 #~ msgstr "prvý úder"
 
@@ -10379,21 +10244,18 @@ msgstr "Nastavenia tabule"
 #~ msgid "Test campaign used to check if new campaign syntax is working."
 #~ msgstr "Testovacia výprava na otestovanie funkčnosti novej syntaxe výprav."
 
-#~| msgid "Easy"
 #~ msgid "(Easy)"
 #~ msgstr "(Ľahká)"
 
 #~ msgid "Soldier"
 #~ msgstr "Vojak"
 
-#~| msgid "Normal"
 #~ msgid "(Normal)"
 #~ msgstr "(Normálna)"
 
 #~ msgid "Lord"
 #~ msgstr "Pán"
 
-#~| msgid "Hard"
 #~ msgid "(Hard)"
 #~ msgstr "(Ťažká)"
 
@@ -10403,11 +10265,9 @@ msgstr "Nastavenia tabule"
 #~ msgid "Test campaign - first scenario (grass)"
 #~ msgstr "Testovacia výprava - prvá scéna (tráva)"
 
-#~| msgid "Players: "
 #~ msgid "Players"
 #~ msgstr "Hráči"
 
-#~| msgid "Enemy village"
 #~ msgid "Enemies"
 #~ msgstr "Nepriatelia"
 
@@ -10417,15 +10277,12 @@ msgstr "Nastavenia tabule"
 #~ msgid "Failed test color"
 #~ msgstr "Farba neúspešného testu"
 
-#~| msgid "Difficulty: "
 #~ msgid "Difficulty: Easy"
 #~ msgstr "Obtiažnosť: Ľahká"
 
-#~| msgid "Difficulty: "
 #~ msgid "Difficulty: Normal"
 #~ msgstr "Obtiažnosť: Normálna"
 
-#~| msgid "Difficulty: "
 #~ msgid "Difficulty: Hard"
 #~ msgstr "Obtiažnosť: Ťažká"
 
@@ -10452,7 +10309,6 @@ msgstr "Nastavenia tabule"
 #~ msgid "Add-on '$addon|' deleted."
 #~ msgstr "Doplnok '$addon|' vymazaný."
 
-#~| msgid "Invalid location"
 #~ msgid "Invalid WML found"
 #~ msgstr "Neplatná poloha"
 

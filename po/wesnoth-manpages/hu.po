@@ -519,8 +519,7 @@ msgstr "B<--log->I<szint>B<=>I<tartomány1>B<,>I<tartomány2>B<,>I<...>"
 #| msgid ""
 #| "sets the severity level of the log domains.  B<all> can be used to match "
 #| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>.  By default the B<error> level is used and the B<info> level "
-#| "for the B<server> domain."
+#| "B<debug>.  By default the B<error> level is used."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
@@ -529,8 +528,7 @@ msgid ""
 msgstr ""
 "beállítja a naplózási tartomány szintjét. Az B<all> minden naplózási "
 "tartományra illeszkedik. Beállítható szintek: B<error>,\\ B<warning>,\\ "
-"B<info>,\\ B<debug>. Alapértelmezettként az B<error> szint van beállítva, "
-"míg a B<server> tartományhoz az B<info> szint tartozik."
+"B<info>,\\ B<debug>. Alapértelmezettként az B<error> szint van beállítva."
 
 # type: TP
 #. type: TP
@@ -2668,6 +2666,12 @@ msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)."
 
 # type: Plain text
+#, fuzzy
+#~| msgid ""
+#~| "sets the severity level of the log domains.  B<all> can be used to match "
+#~| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#~| "B<debug>.  By default the B<error> level is used and the B<info> level "
+#~| "for the B<server> domain."
 #~ msgid ""
 #~ "sets the severity level of the log domains.  B<all> can be used to match "
 #~ "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
@@ -2675,10 +2679,10 @@ msgstr "B<wesnoth>(6)."
 #~ msgstr ""
 #~ "beállítja a naplózási tartomány szintjét. Az B<all> minden naplózási "
 #~ "tartományra illeszkedik. Beállítható szintek: B<error>,\\ B<warning>,\\ "
-#~ "B<info>,\\ B<debug>. Alapértelmezettként az B<error> szint van beállítva."
+#~ "B<info>,\\ B<debug>. Alapértelmezettként az B<error> szint van beállítva, "
+#~ "míg a B<server> tartományhoz az B<info> szint tartozik."
 
 # type: TP
-#, no-wrap
 #~ msgid "B<--path>"
 #~ msgstr "B<--path>"
 

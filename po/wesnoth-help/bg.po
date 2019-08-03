@@ -355,10 +355,6 @@ msgstr ""
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -366,7 +362,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Поражение</header>"
+"<header>text='Вероятност за попадение'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
@@ -416,10 +412,6 @@ msgstr ""
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:198
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -427,7 +419,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Поражение</header>"
+"<header>text='Вероятност за попадение'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:200
@@ -1717,10 +1709,6 @@ msgstr ""
 #. [topic]: id=combat
 #: data/core/help.cfg:290
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -1728,7 +1716,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Поражение</header>"
+"<header>text='Вероятност за попадение'</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:292
@@ -2308,10 +2296,6 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:416
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -2319,7 +2303,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Поражение</header>"
+"<header>text='Вероятност за попадение'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:418
@@ -2429,10 +2413,6 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:446
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -2440,7 +2420,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Поражение</header>"
+"<header>text='Вероятност за попадение'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:448
@@ -2601,7 +2581,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Вероятност за попадение'</header>"
+"<header>text='Ред и брой на ударите'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:496
@@ -2642,10 +2622,6 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:504
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -2653,7 +2629,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Поражение</header>"
+"<header>text='Вероятност за попадение'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:506
@@ -5845,6 +5821,16 @@ msgid "Parse error when parsing help text: "
 msgstr "Грешка при показването на помощният текст: "
 
 #, fuzzy
+msgid ""
+"\n"
+"\n"
+"<big>Multiplayer Modifications</big>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Ред и брой на ударите'</header>"
+
+#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "\n"
@@ -5937,16 +5923,6 @@ msgstr "Грешка при показването на помощният те�
 #~ "\n"
 #~ "\n"
 #~ "<header>text=Поражение</header>"
-
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Multiplayer Modifications</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Ред и брой на ударите'</header>"
 
 #~ msgid "race^Mermen"
 #~ msgstr "Океаниди"
@@ -6835,3 +6811,49 @@ msgstr "Грешка при показването на помощният те�
 #~ msgstr ""
 #~ "Бързак:\n"
 #~ "Тази единица винаги удря първа, дори и да е в защита."
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Cores'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Вероятност за попадение'</header>"
+
+#, fuzzy
+#~| msgid ""
+#~| "Berserk:\n"
+#~| "Whether used offensively or defensively, this attack presses the "
+#~| "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#~| "have occurred."
+#~ msgid ""
+#~ "Whether used offensively or defensively, this attack presses the "
+#~ "engagement until one of the champions is slain, or 30 rounds of attacks "
+#~ "have occurred."
+#~ msgstr ""
+#~ "Бурна ярост:\n"
+#~ "Независимо дали този тип атака се използва в нападение или защита, тя "
+#~ "продължава докато един от бойците бъде убит или докато изтекат 30 хода от "
+#~ "началото на схватката."
+
+#, fuzzy
+#~| msgid "firststrike"
+#~ msgid "true strike"
+#~ msgstr "бързак"
+
+#, fuzzy
+#~ msgid ""
+#~ "This attack always has a 70% chance to hit regardless of the defensive "
+#~ "ability of the champion being attacked."
+#~ msgstr ""
+#~ "Магическа:\n"
+#~ "Тази атака винаги има 70% шанс да уцели."
+
+#, fuzzy
+#~ msgid "<header>text='Race specific topics'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Вероятност за попадение'</header>"

@@ -10,7 +10,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [campaign]: id=Secrets of the Ancients
 #. [editor_group]: id=sota
@@ -61,7 +61,7 @@ msgstr "Schwer"
 #| "Rediscover the secrets known by the lich lords of the Green Isle. They "
 #| "knew how to live forever, so why can't you?\n"
 #| "\n"
-#| "(Intermediate level, 21 scenarios.)\n"
+#| "(Hard level, 21 scenarios.)\n"
 msgid ""
 "Rediscover the secrets known by the lich lords of the Green Isle. They knew "
 "how to live forever, so why can't you?\n"
@@ -72,7 +72,7 @@ msgstr ""
 "wussten, wie man ewig leben kann, also warum solltest Ihr es nicht auch "
 "können? \n"
 "\n"
-"(Einstufung: Mittel, 21 Szenarien)\n"
+"(Einstufung: Schwierig, 21 Szenarien)\n"
 
 #. [about]
 #: data/campaigns/Secrets_of_the_Ancients/_main.cfg:28
@@ -281,6 +281,7 @@ msgid ""
 "Ardonna can climb over a fence for 2 movement points, but wild animals "
 "cannot."
 msgstr ""
+"Ardonna kann für zwei Bewegungspunkte über Zäune klettern, wilde Tiere nicht."
 
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:194
@@ -334,19 +335,13 @@ msgstr ""
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:341
-#, fuzzy
-#| msgid ""
-#| "Wolves! This journey may be more dangerous than I thought. Well, we can "
-#| "find safety inside the sturdy fences built by farmers and woodcutters. "
-#| "The wild animals surely won't be able to enter."
 msgid ""
 "A wolf! This journey may be more dangerous than I thought. If we need to, I "
 "suppose we could rest inside a farmer's or woodcutter's fence."
 msgstr ""
 "Wölfe! Diese Reise scheint gefährlicher zu sein, als ich gedacht habe. Aber "
-"gut, wir können uns innerhalb dieser robusten Zäune, die von Farmern und "
-"Holzfällern gebaut wurden, in Sicherheit wiegen. Die wilden Tiere kommen "
-"sicherlich nicht hinein."
+"gut, wir können uns innerhalb dieser robusten Zäune, die von Farmern oder "
+"Holzfällern gebaut wurden, in Sicherheit wiegen."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:364
@@ -472,43 +467,37 @@ msgstr "Caradoc"
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:394
 msgid "Oh, hello friend! I didn't know you were hiding in there."
-msgstr ""
+msgstr "Oh, nah. Hier versteckst du dich also."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:400
 msgid "Oh, hello! You're a handsome one."
-msgstr ""
+msgstr "Oh, hey. Du bis ja ein Niedlicher."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:417
 msgid "Hey, come back! I didn't mean to frighten you."
-msgstr ""
+msgstr "Hey, komm zurück. Ich wollte dich nicht verschrecken."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:421
 msgid "Maybe I could attract it if I jingled some coins."
-msgstr ""
+msgstr "Vielleicht kann ich es anlocken wenn ich mit ein paar Münzen klimpere."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:444
-#, fuzzy
-#| msgid "Right-click on a grave adjacent to your leader to raise a unit."
 msgid "Right-click adjacent to your leader to summon the bat."
-msgstr ""
-"Rechtsklicke auf ein benachbartes Grab, damit dein Anführer eine Einheit "
-"erweckt."
+msgstr "Erweckt die Fledermaus durch einen Rechtsklick neben Ardonna."
 
 #. [set_menu_item]: id=summon_bat
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:452
 msgid "Summon the Bat (20 gold)"
-msgstr ""
+msgstr "Erwecke die Fledermaus (20 Gold)"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:492
-#, fuzzy
-#| msgid "You don't have enough gold to raise that unit."
 msgid "You don't have enough gold to summon the bat."
-msgstr "Du hast nicht genug Gold, um diese Einheit zu erwecken."
+msgstr "Du hast nicht genug Gold, um die Flerdermaus zu erwecken."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:574
@@ -1164,7 +1153,7 @@ msgstr "Passiert? Tod."
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:332
 msgid "Keep quiet about that."
-msgstr ""
+msgstr "Erwähn das nicht."
 
 #. [message]: speaker=Gweddyn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:336
@@ -1947,7 +1936,7 @@ msgstr ""
 "außerhalb von Carcyn und wies sie an, wie man in die Welt der Geister ruft "
 "und einen kleinen Teil ihrer Kraft kanalisiert. Kurz nachdem sie "
 "weitergezogen sind, entdeckten sie drei Bauernhöfe am Flussufer, die "
-"offensichtlicherweise geplündert worden sind,"
+"offensichtlicherweise geplündert worden sind."
 
 #. [objective]: condition=win
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:138
@@ -2436,20 +2425,17 @@ msgstr ""
 msgid ""
 "We will help you drive off this foe if you will consider your share paid in "
 "full."
-msgstr "Wir werden dir dabei helfen, wenn du deinen Anteil komplett bezahlst."
+msgstr ""
+"Wir werden dir dabei helfen, wenn ihr euren Anteil als bezzzahlt betrachtet."
 
 #. [message]: speaker=Krissaz
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:160
-#, fuzzy
-#| msgid ""
-#| "When the mage isss dead and her sssouls put to ressst, we agree. We will "
-#| "have been compensssated adequately."
 msgid ""
 "When the mage isss dead and her dead horde put to ressst, we agree. We will "
 "have been compensssated adequately."
 msgstr ""
-"Wenn die Magierin tot issst und ihre Seele sich zur Ruhe gelegt hat, stimmen "
-"wir zu. Wir werden angemessssen entschädigt werden."
+"Wenn die Magierin tot issst und ihre Horde zur Ruhe gelegt wurde, stimmen "
+"wir zu. Wir werden angemessssen entschädigt sein."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:164
@@ -2458,10 +2444,8 @@ msgstr "Jedes verdammte Mal..."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:173
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "Good. Now I can practice recruiting ghosts."
-msgstr "Du kannst jetzt Geister rekrutieren!"
+msgstr "Gut. Nun kann ich das Erwecken von Geistern üben."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:179
@@ -2501,13 +2485,6 @@ msgstr ""
 
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:228
-#, fuzzy
-#| msgid ""
-#| "I have ssstared into the darknesss between the starsss and not been "
-#| "intimidated by the void, but your mind holdsss a darknesss of another "
-#| "kind, frightening and forbidden by my clan. I sssubmit to your power. Now "
-#| "that I know you are female, I will find it easier as it is the way of my "
-#| "kind."
 msgid ""
 "I have ssstared into the darknesss between the starsss and not been "
 "intimidated by the void, but your mind holds a darknesss of another kind, "
@@ -2517,8 +2494,8 @@ msgstr ""
 "Ich ssstarrte in die Dunkelheit zwischen den Sssternen und wurde von der "
 "Leere eingesschüchtert, aber dein Geissst hält eine Dunkelheit einer anderen "
 "Art bereit, angsssteinflößend und verboten in meinem Klan. Ich unterwerfe "
-"mich deiner Kraft. Jetzt, wo ich weißss, dass du weiblich bissst, wird es "
-"mir noch leichter Fallen, esss issst schließlich der Weg meiner Art."
+"mich deiner Kraft. Jetzt, wo ich weißß, dass du weiblich bissst, wird es mir "
+"noch leichter Fallen, esss issst schließlich der Weg meiner Art."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:232
@@ -2716,7 +2693,7 @@ msgstr ""
 "Namen des großen Magiers Crelanu in Berührung. Er kämpfte mit König Haldric "
 "dem Ersten. Da er den unsterblichen Lords der grünen Insel persönlich "
 "gegenüberstand, weiß er unbestreitbar mehr als wir über deren Methoden. Ich "
-"habe kürzlich herausgefunden, wo wir ihn finden können. "
+"habe kürzlich herausgefunden, wo wir ihn finden können."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:152
@@ -3596,7 +3573,7 @@ msgstr "Riesige Spinnen! Das erklärt die riesigen Spinnenweben überall…"
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:467
 msgid "They are not moving much. Hopefully they continue to stay sleepy."
 msgstr ""
-"Sie bewegen sich nicht viel. Hoffentlich bleiben sie weiterhin schläfrig"
+"Sie bewegen sich nicht viel. Hoffentlich bleiben sie weiterhin schläfrig."
 
 #. [message]: speaker=Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:473
@@ -4016,7 +3993,7 @@ msgstr "Thrigalurd"
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:637
 msgid "Look! The dwarves circled around in front of us."
-msgstr "Schau! DIe Zwerge sind uns wohl ausgewichen, um uns vorauszueilen!"
+msgstr "Schau! Die Zwerge sind uns wohl ausgewichen, um uns vorauszueilen!"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:641
@@ -4062,7 +4039,7 @@ msgid ""
 "ill-favored look."
 msgstr ""
 "Dies ist der Ort, an den uns Crenalus Greif geschickt hat, und deine Truppe "
-"sieht wahrlich zwielichtig aus,"
+"sieht wahrlich zwielichtig aus."
 
 #. [message]: speaker=Gwendir
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:849
@@ -4158,17 +4135,6 @@ msgstr "Epilog"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/22_Epilogue.cfg:16
-#, fuzzy
-#| msgid ""
-#| "10 VII, 23 YW — Final Entry\n"
-#| "\n"
-#| "We prevailed today on the field, but our victory was somewhat bitter. "
-#| "<i>Everyone</i> was afraid or angry and immediately attacked us instead "
-#| "of listening to our news. I realize now... the world is not ready for our "
-#| "knowledge. I give up on all of them. I am going to live in the old troll "
-#| "city and learn the applications of mountain fire. In some future time, "
-#| "less conservative attitudes will dominate, and I can certainly afford to "
-#| "wait. In the meantime, we are doing what we can to hasten that day."
 msgid ""
 "10 VII, 23 YW — Final Entry\n"
 "\n"
@@ -4189,25 +4155,17 @@ msgstr ""
 "Wir siegten heute auf dem Feld, aber unser Sieg war ein bitterer. <i>Jeder</"
 "i> war ängstlich oder wütend und griff uns sofort an, anstatt unsere "
 "Neuigkeiten zu hören. Ich verstehe es nun... Die Welt ist noch nicht bereit "
-"für unser Wissen. Ich gebe alles auf. Ich werde von nun an in der alten "
-"Trollstadt leben und mich den Verwendungszwecken des Gebirgsfeuers widmen. "
-"Irgendwann in der Zukunft werden weniger konservative Verhaltensweisen "
-"vorherrschen und ich kann es mir leisten, zu warten. In der Zwischenzeit tun "
-"wir, was wir können, um jeden Tag bis dahin so schnell wie möglich hinter "
-"uns zu bringen."
+"für unser Wissen. Sie wollen nicht verstehen dass wir die uralte Furcht vor "
+"dem Tod überwunden haben. Stattdessen bewerten sie und nach unserem "
+"Aussehen, und fallen in Angst und Terror. Ich gebe alles auf. Ich werde von "
+"nun an in der alten Trollstadt leben und mich den Verwendungszwecken des "
+"Gebirgsfeuers widmen. Irgendwann in der Zukunft werden weniger konservative "
+"Verhaltensweisen vorherrschen und ich kann es mir leisten, zu warten. In der "
+"Zwischenzeit tun wir, was wir können, um jeden Tag bis dahin so schnell wie "
+"möglich hinter uns zu bringen."
 
 #. [then]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/22_Epilogue.cfg:31
-#, fuzzy
-#| msgid ""
-#| "Ras-Tabahn is going to rebuild his strength and continue to Elensefar. "
-#| "Most of the others are going with him. I wish them success. Vendraxis now "
-#| "knows what he must learn to replicate our metamorphosis. He will use the "
-#| "years left to him in study and practice while he attempts to change the "
-#| "attitudes of his people. As for me, I have placed some spells on my "
-#| "journal to help keep it from harm, and I will make it conspicuous on this "
-#| "battlefield. I hope that it will eventually make its way into the hands "
-#| "of someone in Tath who is willing to learn the secrets of the ancients."
 msgid ""
 "Ras-Tabahn is going to rebuild his strength and continue to Elensefar. Most "
 "of the others are going with him. I wish them success. Vendraxis now knows "
@@ -4229,18 +4187,10 @@ msgstr ""
 "angewendet, ums es vor Schaden zu schützen, und ich werde es auf diesem "
 "Kampfplatz auffällig platzieren, in der Hoffnung, dass es eines Tages seinen "
 "Weg in die Hände einer Person in Tath findet, die bereit ist, sie zu lernen, "
-"die Geheimnisse der Alten."
+"die Geheimnisse der Ahnen."
 
 #. [else]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/22_Epilogue.cfg:34
-#, fuzzy
-#| msgid ""
-#| "Ras-Tabahn is going to rebuild his strength and continue to Elensefar. "
-#| "Most of the others are going with him. I wish them success. As for me, I "
-#| "have placed some spells on my journal to help keep it from harm, and I "
-#| "will make it conspicuous on this battlefield. I hope that it will "
-#| "eventually make its way into the hands of someone in Tath who is willing "
-#| "to learn the secrets of the ancients."
 msgid ""
 "Ras-Tabahn is going to rebuild his strength and continue to Elensefar. Most "
 "of the others are going with him. I wish them success. As for me, I will "
@@ -4257,7 +4207,7 @@ msgstr ""
 "angewendet, ums es vor Schaden zu schützen, und ich werde es auf diesem "
 "Kampfplatz auffällig platzieren, in der Hoffnung, dass es eines Tages seinen "
 "Weg in die Hände einer Person in Tath findet, die bereit ist, sie zu lernen, "
-"die Geheimnisse der Alten."
+"die Geheimnisse der Ahnen."
 
 #. [unit_type]: id=Bone Bird, race=undead, description=
 #: data/campaigns/Secrets_of_the_Ancients/units/Bone_Bird.cfg:4

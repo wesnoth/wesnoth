@@ -13,15 +13,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-07-18 15:51+0300\n"
-"PO-Revision-Date: 2018-09-16 00:58+0200\n"
-"Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
+"PO-Revision-Date: 2019-03-21 00:43+0100\n"
+"Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -5372,7 +5372,7 @@ msgid ""
 msgstr ""
 "Die Rekrutierungskosten von manchen Einheiten überschreiten die üblichen 20 "
 "Gold durch Einberufung. Überprüfe in Kampagnen immer, ob die Einberufung "
-"einer Einheit möglicherweise günstiger als die Ausbildung. "
+"einer Einheit möglicherweise günstiger als die Ausbildung."
 
 #. [tip]
 #: data/tips.cfg:253
@@ -5393,6 +5393,7 @@ msgstr "<i>― Königin Asheviere, 503JW</i>"
 #: data/tips.cfg:257
 msgid "Using lower-level units can be very cost-effective."
 msgstr ""
+"Das Nutzen von Einheiten mit niedrigem Level kann sehr kosteneffizient sein."
 
 #. [tip]
 #: data/tips.cfg:261
@@ -5401,13 +5402,14 @@ msgid ""
 "<i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can make a "
 "big difference in a campaign."
 msgstr ""
+"Einige Einheiten höheren Levels haben besondere Fertigkeiten, wie etwa "
+"<i>Führungsqualitäten</i> oder <i>Schemen</i>. Frühes Erspielen solcher "
+"Einheiten kann sich im Laufe der Kampagne als vorteilhaft erweisen."
 
 #. [tip]
 #: data/tips.cfg:262
-#, fuzzy
-#| msgid "<i>― Memoirs of Gweddry, 627YW</i>"
 msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
-msgstr "<i>― Erinnerungen von Gweddry, 627JW</i>"
+msgstr "<i>― Ser Gerrick von Westin, 607JW</i>"
 
 #. [tip]
 #: data/tips.cfg:266
@@ -5424,8 +5426,6 @@ msgstr ""
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:234
-#, fuzzy
-#| msgid "an advancement choice"
 msgid "waiting for^an advancement choice"
 msgstr "eine Aufstiegsentscheidung"
 
@@ -5493,13 +5493,13 @@ msgstr "Teleportation fehlgeschlagen! Ziel ist besetzt."
 #: src/actions/move.cpp:1146
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
-msgstr[0] "eine verbündete"
+msgstr[0] "Verbündete"
 msgstr[1] "$friends verbündete"
 
 #: src/actions/move.cpp:1147
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
-msgstr[0] "eine feindliche"
+msgstr[0] "Feindliche"
 msgstr[1] "$enemies feindliche"
 
 #: src/actions/move.cpp:1148
@@ -5528,11 +5528,11 @@ msgstr "Verbinden mit $server_address|..."
 
 #: src/addon/client.cpp:85
 msgid "Downloading list of add-ons..."
-msgstr "Add-on Liste wird heruntergeladen..."
+msgstr "Add-on Liste wird heruntergeladen…"
 
 #: src/addon/client.cpp:99
 msgid "Requesting distribution terms..."
-msgstr "Nutzungsbedingungen werden angefordert..."
+msgstr "Nutzungsbedingungen werden angefordert…"
 
 #: src/addon/client.cpp:123
 msgid ""
@@ -5579,7 +5579,7 @@ msgstr ""
 
 #: src/addon/client.cpp:180
 msgid "Sending add-on <i>$addon_title</i>..."
-msgstr "Erweiterung <i>$addon_title</i> wird gesendet..."
+msgstr "Erweiterung <i>$addon_title</i> wird gesendet…"
 
 #: src/addon/client.cpp:213
 msgid "Removing add-on <i>$addon_title</i> from the server..."
@@ -6520,42 +6520,37 @@ msgid " This server disallows unregistered nicknames."
 msgstr " Der Server erlaubt keine unregistrierten Benutzernamen."
 
 #: src/game_initialization/multiplayer.cpp:329
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
-msgstr "Der Benutzername »$nick« ist von den Foren dieses Servers verbannt."
+msgstr ""
+"Der Benutzername »$nick« ist von den Foren dieses Servers verbannt für "
+"$duration|."
 
 #: src/game_initialization/multiplayer.cpp:331
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Der Benutzername »$nick« ist von den Foren dieses Servers verbannt."
 
 #: src/game_initialization/multiplayer.cpp:335
-#, fuzzy
-#| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums for $duration|."
-msgstr "Eure IP Adresse ist von den Foren dieses Servers verbannt."
+msgstr ""
+"Eure IP Adresse ist von den Foren dieses Servers verbannt für $duration|."
 
 #: src/game_initialization/multiplayer.cpp:337
 msgid "Your IP address is banned on this server’s forums."
 msgstr "Eure IP Adresse ist von den Foren dieses Servers verbannt."
 
 #: src/game_initialization/multiplayer.cpp:341
-#, fuzzy
-#| msgid ""
-#| "The email address for the nickname ‘$nick’ is banned on this server’s "
-#| "forums."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
 msgstr ""
-"Der E-Mail Adresse für den Benutzernamen »$nick« ist von den Foren dieses "
-"Servers verbannt."
+"Die E-Mail Adresse für den Benutzernamen »$nick« ist von den Foren dieses "
+"Servers verbannt für $duration|."
 
 #: src/game_initialization/multiplayer.cpp:343
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
-"Der E-Mail Adresse für den Benutzernamen »$nick« ist von den Foren dieses "
+"Die E-Mail Adresse für den Benutzernamen »$nick« ist von den Foren dieses "
 "Servers verbannt."
 
 #: src/game_initialization/multiplayer.cpp:346
@@ -6976,64 +6971,51 @@ msgstr "Fähigkeitenverbesserungen: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:512
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "LP: "
+msgstr "LP:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves: "
 msgid "Moves:"
-msgstr "BP: "
+msgstr "BP:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "Vision: "
 msgid "Vision:"
-msgstr "Sichtweite: "
+msgstr "Sichtweite:"
 
+# Diesen String gibt es zwei mal.
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
-#, fuzzy
-#| msgid "Jamming: "
 msgid "Jamming:"
-msgstr "Störung: "
+msgstr "Sichtblockade:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost: "
 msgid "Cost:"
-msgstr "Kosten: "
+msgstr "Kosten:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:536
-#, fuzzy
-#| msgid "Alignment: "
 msgid "Alignment:"
-msgstr "Tag-/Nachteinfluss: "
+msgstr "Tag-/Nachteinfluss:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Required XP: "
 msgid "Required XP:"
-msgstr "Benötigte EP: "
+msgstr "Benötigte EP:"
 
 #: src/help/help_topic_generators.cpp:552
 msgid "unit help^Attacks"
@@ -7239,7 +7221,7 @@ msgstr "Pseudonyme:"
 
 #: src/menu_events.cpp:177
 msgid "Save Map As"
-msgstr "Karte speichern unter…"
+msgstr "Karte speichern unter"
 
 #: src/menu_events.cpp:188
 msgid "Map saved."
@@ -7266,10 +7248,8 @@ msgid "You have no units available to recruit."
 msgstr "Es gibt keine Einheiten, die Ihr ausbilden könntet."
 
 #: src/menu_events.cpp:283
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recruited"
-msgstr "Keine Einheit einberufen"
+msgstr "Keine Einheit ausgebildet"
 
 #: src/menu_events.cpp:351
 msgid "You are separated from your soldiers and may not recall them"
@@ -7820,12 +7800,13 @@ msgstr "Nächster Spieler"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Gelände mit Bewegungskosten niedriger als 1 gefunden."
 
+# weniger technische Übersetzung
 #. TRANSLATORS:  In networked games, this text is shown for other
 #. clients, while they wait to receive the content of a global variable
 #. from another player. This text will be embedded into a sentence.
 #: src/persist_var.cpp:58
 msgid "waiting for^a global variable"
-msgstr ""
+msgstr "Daten"
 
 #: src/play_controller.cpp:247
 msgid "time left for current turn"
@@ -7965,17 +7946,15 @@ msgstr "Typ: "
 
 #: src/reports.cpp:235
 msgid "Side:"
-msgstr ""
+msgstr "Partei:"
 
 #: src/reports.cpp:257
 msgid "Level: "
 msgstr "Stufe: "
 
 #: src/reports.cpp:262
-#, fuzzy
-#| msgid "Advancements"
 msgid "Advancements:"
-msgstr "Stufenaufstiege"
+msgstr "Stufenaufstiege:"
 
 #: src/reports.cpp:275
 msgid "No advancement"
@@ -8077,17 +8056,15 @@ msgstr "min."
 msgid "Defense: "
 msgstr "Verteidigung: "
 
+# Oder auch nur Sicht
 #: src/reports.cpp:631 src/reports.cpp:632
-#, fuzzy
-#| msgid "vision: "
 msgid "vision:"
-msgstr "Sichtbarkeit: "
+msgstr "Sichtweite:"
 
+# Diesen String gibt es zwei mal.
 #: src/reports.cpp:636 src/reports.cpp:637
-#, fuzzy
-#| msgid "Programming"
 msgid "jamming:"
-msgstr "Programmierung"
+msgstr "Sichtblockade:"
 
 #: src/reports.cpp:666
 msgid "Movement Costs:"
@@ -8203,16 +8180,12 @@ msgstr[0] "Angriff"
 msgstr[1] "Angriffe"
 
 #: src/reports.cpp:1216
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day schedule:"
-msgstr "Tageszeit: "
+msgstr "Tagesablauf:"
 
 #: src/reports.cpp:1265
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day:"
-msgstr "Tageszeit: "
+msgstr "Tageszeit:"
 
 #: src/reports.cpp:1266 src/reports.cpp:1320
 msgid "Lawful units: "
@@ -8612,7 +8585,7 @@ msgstr[1] "warte auf $desc von Parteien $sides"
 #. This text will be embedded into a sentence.
 #: src/synced_user_choice.hpp:42
 msgid "waiting for^input"
-msgstr ""
+msgstr "eine Eingabe"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8871,7 +8844,7 @@ msgstr "Planungsmodus Optionen"
 #~ msgstr "Für den Verteidiger wurde eine ungültige Waffe ausgewählt."
 
 #~ msgid "Empty"
-#~ msgstr "Leer"
+#~ msgstr "Niemand"
 
 # Im Original wird nicht "fraction" benutzt – m.E. sind "Fraktion" und "Seite" nicht unbedingt dasselbe, bin aber kein MP
 # Kontrolle der ungültigen Seite »$side« kann nicht gewechselt werden.
@@ -8966,17 +8939,14 @@ msgstr "Planungsmodus Optionen"
 #~ "bedeutet Verbindungstest deaktiviert"
 
 #, fuzzy
-#~| msgid "Size: "
 #~ msgid "Size:"
 #~ msgstr "Größe: "
 
 #, fuzzy
-#~| msgid "Screenshot"
 #~ msgid "Screenshots..."
 #~ msgstr "Bildschirmfoto"
 
 #, fuzzy
-#~| msgid "Saved"
 #~ msgid "Save"
 #~ msgstr "Gespeichert"
 
@@ -8999,7 +8969,6 @@ msgstr "Planungsmodus Optionen"
 #~ msgstr "Unbekannte Kampagne: $campaign_name"
 
 #, fuzzy
-#~| msgid "lawful"
 #~ msgid "wfl"
 #~ msgstr "redlich"
 
@@ -9007,7 +8976,6 @@ msgstr "Planungsmodus Optionen"
 #~ msgstr " und "
 
 #, fuzzy
-#~| msgid "% accuracy"
 #~ msgid "$percent|% accuracy"
 #~ msgstr "% Treffsicherheit"
 
@@ -9058,14 +9026,10 @@ msgstr "Planungsmodus Optionen"
 #~ msgstr "Chance, ungeschoren davonzukommen"
 
 #, fuzzy
-#~| msgid "Experimental multiplayer lobby"
 #~ msgid "Experimental multiplayer UI"
 #~ msgstr "Experimentelle Mehrspieler-Lobby"
 
 #, fuzzy
-#~| msgid ""
-#~| "Replace the classic multiplayer lobby with a newer, experimental "
-#~| "interface"
 #~ msgid ""
 #~ "Replace the classic multiplayer lobby and game setup UI with a newer, "
 #~ "experimental interface"
@@ -9254,12 +9218,10 @@ msgstr "Planungsmodus Optionen"
 #~ msgstr "Beobachter"
 
 #, fuzzy
-#~| msgid "Register your nickname"
 #~ msgid "Registered users only"
 #~ msgstr "Registriert Euren Benutzernamen."
 
 #, fuzzy
-#~| msgid "Debug: "
 #~ msgid "Debug OOS"
 #~ msgstr "Debug: "
 
@@ -9267,7 +9229,6 @@ msgstr "Planungsmodus Optionen"
 #~ msgstr "Fraktionen zufällig mischen"
 
 #, fuzzy
-#~| msgid "Random map options:"
 #~ msgid "Random factions:"
 #~ msgstr "Zufällige Kartenoptionen:"
 
@@ -9791,7 +9752,6 @@ msgstr "Planungsmodus Optionen"
 #~ msgstr "% Parade"
 
 #, fuzzy
-#~| msgid "moves"
 #~ msgid "move"
 #~ msgid_plural "moves"
 #~ msgstr[0] "BP"
@@ -9801,7 +9761,6 @@ msgstr "Planungsmodus Optionen"
 #~ msgstr "EP pro Stufenaufstieg"
 
 #, fuzzy
-#~| msgid " per turn"
 #~ msgid "attacks per turn"
 #~ msgstr " pro Runde"
 
@@ -9809,35 +9768,28 @@ msgstr "Planungsmodus Optionen"
 #~ msgstr "Nur Wassermänner können diesen Gegenstand nutzen!"
 
 #, fuzzy
-#~| msgid "$name|’s Bridge,$name|’s Crossing"
 #~ msgid " main=$base{!}’s Bridge|$base{!}’s Crossing "
 #~ msgstr "$name|brücke,$name|s Überquerung,$name|furt"
 
 #, fuzzy
-#~| msgid "$name|’s Highway,$name|’s Pass,Path of $name"
 #~ msgid " main=$base{!}’s Highway|$base{!}’s Pass|Path of $base "
 #~ msgstr "$name|s Pfad,$name|s Pass,Pfad von $name"
 
 #, fuzzy
-#~| msgid "$name River,River $name"
 #~ msgid " main=$base River|River $base "
 #~ msgstr "$name Fluss,Fluss $name"
 
 #, fuzzy
-#~| msgid "$name Forest,$name|’s Forest"
 #~ msgid " main=$base Forest|$base{!}’s Forest "
 #~ msgstr "$name|wald,$name|s Wald,$name|forst,$name|hein,$name|s Gehölz"
 
 #, fuzzy
-#~| msgid "$name|harbor,$name|port,$lake|port,$lake|harbor"
 #~ msgid " main=$base{!}harbor|$base{!}port|$lake{!}port|$lake{!}harbor "
 #~ msgstr ""
 #~ "$name|hafen,$name|baden,$lake|baden,$lake|hafen,$name|koog,$name|heven,"
 #~ "$name|siel,$name|haven,$lake|deich,$lake|roog"
 
 #, fuzzy
-#~| msgid ""
-#~| "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross,$name on river"
 #~ msgid ""
 #~ " main=$base{!}ham|$base{!}ford|$base{!}cross|$river{!}ford|$river{!}cross|"
 #~ "$base on $river "
@@ -9845,9 +9797,6 @@ msgstr "Planungsmodus Optionen"
 #~ "$name|heim,$name|furt,$name|kreuz,$river|furt,$river|kreuz, $name am Fluss"
 
 #, fuzzy
-#~| msgid ""
-#~| "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|"
-#~| "ham,$bridge|ton"
 #~ msgid ""
 #~ " main=$river{!}bridge|$river{!}bridge|$river{!}bridge|$base{!}ham|$base{!}"
 #~ "bridge|$bridge{!}ham|$bridge{!}ton "
@@ -9856,9 +9805,6 @@ msgstr "Planungsmodus Optionen"
 #~ "heim,$bridge|hausen"
 
 #, fuzzy
-#~| msgid ""
-#~| "$name|ham,$name|ton,$name|wood,$name Forest,$forest|wood,$forest|ham,"
-#~| "$forest|ton"
 #~ msgid ""
 #~ " main=$base{!}ham|$base{!}ton|$base{!}wood|$base Forest|$forest{!}wood|"
 #~ "$forest{!}ham|$forest{!}ton "
@@ -9867,7 +9813,6 @@ msgstr "Planungsmodus Optionen"
 #~ "Forst"
 
 #, fuzzy
-#~| msgid "$mountain|mont,$mountain|cliff,$mountain|bury,$mountain|ham"
 #~ msgid ""
 #~ " main=$mountain{!}mont|$mountain{!}cliff|$mountain{!}bury|$mountain{!}ham "
 #~ msgstr ""
@@ -9875,8 +9820,6 @@ msgstr "Planungsmodus Optionen"
 #~ "tal,$mountain|binge,$mountain|horst"
 
 #, fuzzy
-#~| msgid ""
-#~| "$road|’s Rest,$road|’s Waypoint,$road|bury,$road|ham,$name|bury,$name|ham"
 #~ msgid ""
 #~ " main=$road{!}’s Rest|$road{!}’s Waypoint|$road{!}bury|$road{!}ham|"
 #~ "$base{!}bury|$base{!}ham "
@@ -9885,7 +9828,6 @@ msgstr "Planungsmodus Optionen"
 #~ "Hof, $name|sbrunn,$name"
 
 #, fuzzy
-#~| msgid "$name|bury,$name|ham,$name|ton,$swamp|bury,$swamp|ham,$swamp|ton,"
 #~ msgid ""
 #~ " main=$base{!}bury|$base{!}ham|$base{!}ton|$swamp{!}bury|$swamp{!}ham|"
 #~ "$swamp{!}ton "
@@ -9962,7 +9904,6 @@ msgstr "Planungsmodus Optionen"
 #~ msgstr "Stufe"
 
 #, fuzzy
-#~| msgid "Connecting to Server..."
 #~ msgid "Connecting"
 #~ msgstr "Mit dem Server verbinden..."
 
@@ -10066,7 +10007,6 @@ msgstr "Planungsmodus Optionen"
 #~ msgstr "Warten auf das nächste Szenario…"
 
 #, fuzzy
-#~| msgid "Items"
 #~ msgid "More Items"
 #~ msgstr "Gegenstände"
 
@@ -10103,7 +10043,6 @@ msgstr "Planungsmodus Optionen"
 #~ "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
 
 #, fuzzy
-#~| msgid "Clear chat history."
 #~ msgid "Clear Weather"
 #~ msgstr "Löscht das Gesprächsprotokoll."
 
@@ -10167,12 +10106,10 @@ msgstr "Planungsmodus Optionen"
 #~ msgstr " BP"
 
 #, fuzzy
-#~| msgid "vision: "
 #~ msgid " vision"
 #~ msgstr "Sichtbarkeit:"
 
 #, fuzzy
-#~| msgid "Programming"
 #~ msgid " jamming"
 #~ msgstr "Programmierung"
 
@@ -10185,7 +10122,6 @@ msgstr "Planungsmodus Optionen"
 #~ "eingetragen."
 
 #, fuzzy
-#~| msgid "The Battle for Wesnoth"
 #~ msgid "Battle for Wesnoth"
 #~ msgstr "The Battle for Wesnoth"
 
@@ -10218,10 +10154,6 @@ msgstr "Planungsmodus Optionen"
 # Evtl. ist also der korrekte Weg:
 # "... Ladet es besser über das Menü »Mehrspieler > Lokales Spiel > PARTIE ERÖFFNEN«.
 #, fuzzy
-#~| msgid ""
-#~| "This is a multiplayer scenario. Some parts of it may not work properly "
-#~| "in single-player. It is recommended to load this scenario through the "
-#~| "Multiplayer -> Load Game dialog instead."
 #~ msgid ""
 #~ "This is a multiplayer scenario. Some parts of it may not work properly in "
 #~ "single-player. It is recommended to load this scenario through the "

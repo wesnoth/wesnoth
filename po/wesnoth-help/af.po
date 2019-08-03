@@ -347,10 +347,6 @@ msgstr ""
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -358,7 +354,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Skade</header>"
+"<header>text='Kans om te tref'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
@@ -408,10 +404,6 @@ msgstr ""
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:198
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -419,7 +411,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Skade</header>"
+"<header>text='Kans om te tref'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:200
@@ -1674,10 +1666,6 @@ msgstr ""
 #. [topic]: id=combat
 #: data/core/help.cfg:290
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -1685,7 +1673,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Skade</header>"
+"<header>text='Kans om te tref'</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:292
@@ -2266,10 +2254,6 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:416
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -2277,7 +2261,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Skade</header>"
+"<header>text='Kans om te tref'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:418
@@ -2387,10 +2371,6 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:446
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -2398,7 +2378,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Skade</header>"
+"<header>text='Kans om te tref'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:448
@@ -2559,7 +2539,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Kans om te tref'</header>"
+"<header>text='Volgorde en aantal trefhoue'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:496
@@ -2600,10 +2580,6 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:504
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -2611,7 +2587,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Skade</header>"
+"<header>text='Kans om te tref'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:506
@@ -5549,6 +5525,16 @@ msgid "Parse error when parsing help text: "
 msgstr "Fout met lees hulp teks: "
 
 #, fuzzy
+msgid ""
+"\n"
+"\n"
+"<big>Multiplayer Modifications</big>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Volgorde en aantal trefhoue'</header>"
+
+#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "\n"
@@ -5641,16 +5627,6 @@ msgstr "Fout met lees hulp teks: "
 #~ "\n"
 #~ "\n"
 #~ "<header>text=Skade</header>"
-
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Multiplayer Modifications</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Volgorde en aantal trefhoue'</header>"
 
 #, fuzzy
 #~ msgid "race+female^Khalifate Human"
@@ -6455,3 +6431,49 @@ msgstr "Fout met lees hulp teks: "
 #~ "Eerste Trefhou:\n"
 #~ "Hierdie eenheid sal altyd eerste slaan met hierdie aanval, selfs al "
 #~ "verdedig hy."
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Cores'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Kans om te tref'</header>"
+
+#, fuzzy
+#~| msgid ""
+#~| "Berserk:\n"
+#~| "Whether used offensively or defensively, this attack presses the "
+#~| "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#~| "have occurred."
+#~ msgid ""
+#~ "Whether used offensively or defensively, this attack presses the "
+#~ "engagement until one of the champions is slain, or 30 rounds of attacks "
+#~ "have occurred."
+#~ msgstr ""
+#~ "Waansin:\n"
+#~ "Hetsy dit aanvallend of verdedigend gebruik word, sal hierdie aanval "
+#~ "voortduur totdat een van die vegters sneuwel, of 30 rondtes van aanvalle "
+#~ "is verby."
+
+#, fuzzy
+#~| msgid "firststrike"
+#~ msgid "true strike"
+#~ msgstr "eerste trefhou"
+
+#, fuzzy
+#~ msgid ""
+#~ "This attack always has a 70% chance to hit regardless of the defensive "
+#~ "ability of the champion being attacked."
+#~ msgstr ""
+#~ "Magies:\n"
+#~ "Hierdie aanval het 'n 70 % kans om 'n trefhou te wees."
+
+#, fuzzy
+#~ msgid "<header>text='Race specific topics'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Kans om te tref'</header>"

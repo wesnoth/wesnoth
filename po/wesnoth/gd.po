@@ -1802,9 +1802,6 @@ msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:521
-#, fuzzy
-#| msgid ""
-#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr ""
@@ -7131,8 +7128,6 @@ msgstr "PB:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves:"
 msgid "Moves:"
 msgstr "Gluasadan:"
 
@@ -7140,8 +7135,6 @@ msgstr "Gluasadan:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "Vision:"
 msgid "Vision:"
 msgstr "Lèirsinn:"
 
@@ -7149,8 +7142,6 @@ msgstr "Lèirsinn:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
-#, fuzzy
-#| msgid "Jamming:"
 msgid "Jamming:"
 msgstr "Casg:"
 
@@ -7158,8 +7149,6 @@ msgstr "Casg:"
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost:"
 msgid "Cost:"
 msgstr "Cosgais:"
 
@@ -7174,8 +7163,6 @@ msgstr "Co-thaobhadh:"
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Required XP:"
 msgid "Required XP:"
 msgstr "Feum air PE:"
 
@@ -8058,10 +8045,6 @@ msgid "Save and abort game"
 msgstr "Sàbhail is sgur dhen gheama"
 
 #: src/playturn.cpp:297
-#, fuzzy
-#| msgid ""
-#| "$player who controlled side $side_drop has left the game. What do you "
-#| "want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -8705,15 +8688,12 @@ msgstr ""
 "chluicheadair $player"
 
 #: src/synced_user_choice.cpp:330
-#, fuzzy
-#| msgid "waiting for $desc from side $sides"
-#| msgid_plural "waiting for $desc from sides $sides"
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "a’ feitheamh air $desc o thaobh $sides"
-msgstr[1] "a’ feitheamh air $desc o thaobh $sides"
-msgstr[2] "a’ feitheamh air $desc o thaobh $sides"
-msgstr[3] "a’ feitheamh air $desc o thaobh $sides"
+msgstr[1] "a’ feitheamh air $desc o thaobhan $sides"
+msgstr[2] "a’ feitheamh air $desc o thaobhan $sides"
+msgstr[3] "a’ feitheamh air $desc o thaobhan $sides"
 
 #. TRANSLATORS: In networked games, this text is shown for other clients,
 #. while they wait for an action from another player.
@@ -8816,15 +8796,12 @@ msgstr[3] "$number puing-gluasaid"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:451
-#, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> move"
-#| msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span> ghluasad"
-msgstr[1] "<span color=\"$color\">$number_or_percent</span> ghluasad"
-msgstr[2] "<span color=\"$color\">$number_or_percent</span> gluasadan"
-msgstr[3] "<span color=\"$color\">$number_or_percent</span> gluasad"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> puing gluasaid"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> phuing gluasaid"
+msgstr[2] "<span color=\"$color\">$number_or_percent</span> puingean gluasaid"
+msgstr[3] "<span color=\"$color\">$number_or_percent</span> puing gluasaid"
 
 #: src/units/types.cpp:546 src/units/types.hpp:181
 msgid "chaotic"

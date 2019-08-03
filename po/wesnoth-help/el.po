@@ -463,10 +463,6 @@ msgstr ""
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -474,7 +470,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=ζημιά'</header>"
+"<header>text='Πιθανότητα επιτυχούς χτυπήματος'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
@@ -524,10 +520,6 @@ msgstr ""
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:198
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -535,7 +527,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=ζημιά'</header>"
+"<header>text='Πιθανότητα επιτυχούς χτυπήματος'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:200
@@ -1689,10 +1681,6 @@ msgstr ""
 #. [topic]: id=combat
 #: data/core/help.cfg:290
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -1700,7 +1688,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=ζημιά'</header>"
+"<header>text='Πιθανότητα επιτυχούς χτυπήματος'</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:292
@@ -2197,10 +2185,6 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:416
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -2208,7 +2192,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=ζημιά'</header>"
+"<header>text='Πιθανότητα επιτυχούς χτυπήματος'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:418
@@ -2318,10 +2302,6 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:446
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -2329,7 +2309,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=ζημιά'</header>"
+"<header>text='Πιθανότητα επιτυχούς χτυπήματος'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:448
@@ -2490,7 +2470,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Πιθανότητα επιτυχούς χτυπήματος'</header>"
+"<header>text='Σειρά καί αριθμός χτυπημάτων'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:496
@@ -2531,10 +2511,6 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:504
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -2542,7 +2518,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=ζημιά'</header>"
+"<header>text='Πιθανότητα επιτυχούς χτυπήματος'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:506
@@ -5389,6 +5365,16 @@ msgid "Parse error when parsing help text: "
 msgstr ""
 
 #, fuzzy
+msgid ""
+"\n"
+"\n"
+"<big>Multiplayer Modifications</big>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Σειρά καί αριθμός χτυπημάτων'</header>"
+
+#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "\n"
@@ -5481,16 +5467,6 @@ msgstr ""
 #~ "\n"
 #~ "\n"
 #~ "<header>text=ζημιά'</header>"
-
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Multiplayer Modifications</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Σειρά καί αριθμός χτυπημάτων'</header>"
 
 #~ msgid "race^Mermen"
 #~ msgstr "Γοργόνοι"
@@ -6134,3 +6110,33 @@ msgstr ""
 #~ "Πρώτο χτύπημα:\n"
 #~ "Αυτή η μονάδα πάντα χτυπάει πρώτη μ'αυτήν την επίθεση, ακόμα και όταν "
 #~ "αμύνεται."
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Cores'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Πιθανότητα επιτυχούς χτυπήματος'</header>"
+
+#, fuzzy
+#~| msgid "firststrike"
+#~ msgid "true strike"
+#~ msgstr "Πρώτο χτύπημα"
+
+#, fuzzy
+#~ msgid ""
+#~ "This attack always has a 70% chance to hit regardless of the defensive "
+#~ "ability of the champion being attacked."
+#~ msgstr ""
+#~ "Μαγική:\n"
+#~ "Αυτή η επίθεση έχει πάντα 70% πιθανότητες να είναι εύστοχη."
+
+#, fuzzy
+#~ msgid "<header>text='Race specific topics'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Πιθανότητα επιτυχούς χτυπήματος'</header>"

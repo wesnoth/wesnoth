@@ -5980,8 +5980,10 @@ msgstr ""
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:234
+#, fuzzy
+#| msgid "No advancement"
 msgid "waiting for^an advancement choice"
-msgstr ""
+msgstr "Non pode avanzar."
 
 #: src/actions/attack.cpp:600 src/actions/attack.cpp:1350
 msgid "An invalid attacker weapon got selected."
@@ -7804,9 +7806,9 @@ msgstr "Non tes unidades dispoñíbeis para recrutar."
 
 #: src/menu_events.cpp:283
 #, fuzzy
-#| msgid "No units found."
+#| msgid "cost to recall"
 msgid "No unit recruited"
-msgstr "Non se atoparon unidades."
+msgstr "custo para reincorporar"
 
 #: src/menu_events.cpp:351
 msgid "You are separated from your soldiers and may not recall them"
@@ -8444,10 +8446,6 @@ msgid "Save and abort game"
 msgstr "Gardar e interromper a partida"
 
 #: src/playturn.cpp:297
-#, fuzzy
-#| msgid ""
-#| "$player who controlled side $side_drop has left the game. What do you "
-#| "want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -9094,13 +9092,10 @@ msgstr ""
 "Creouse unha unidade usando o modo de depuración durante a quenda de $player."
 
 #: src/synced_user_choice.cpp:330
-#, fuzzy
-#| msgid "waiting for $desc from side $sides"
-#| msgid_plural "waiting for $desc from sides $sides"
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "agardando por $desc do bando $sides"
-msgstr[1] "agardando por $desc do bando $sides"
+msgstr[1] "agardando por $desc dos bandos $sides"
 
 #. TRANSLATORS: In networked games, this text is shown for other clients,
 #. while they wait for an action from another player.
@@ -11152,18 +11147,15 @@ msgstr "Opcións de planificación"
 #~ msgid "(side $temp_i|)"
 #~ msgstr "(do bando $temp_i|)"
 
-#~| msgid "Cancel"
 #~ msgid "cancel"
 #~ msgstr "Cancelar"
 
-#~| msgid "Select Scenario"
 #~ msgid "Select Hex"
 #~ msgstr "Seleccionar"
 
 #~ msgid "Deselect Hex"
 #~ msgstr "Anular a selección"
 
-#~| msgid "Attacker"
 #~ msgid "Move/Attack"
 #~ msgstr "Moverse ou atacar"
 
@@ -11173,14 +11165,12 @@ msgstr "Opcións de planificación"
 #~ msgid "Animate Map"
 #~ msgstr "Animacións nos mapas."
 
-#~| msgid "Next Turn"
 #~ msgid "Next Unit"
 #~ msgstr "Seguinte unidade"
 
 #~ msgid "Hold Position"
 #~ msgstr "Manter a posición"
 
-#~| msgid "End Turn"
 #~ msgid "End Unit Turn"
 #~ msgstr "Rematar a quenda da unidade"
 
@@ -11199,30 +11189,24 @@ msgstr "Opcións de planificación"
 #~ msgid "Toggle Full Screen"
 #~ msgstr "Cambiar a pantalla completa"
 
-#~| msgid "Screenshot"
 #~ msgid "Map Screenshot"
 #~ msgstr "Facer unha captura do mapa"
 
 #~ msgid "Accelerated"
 #~ msgstr "Activar a velocidade acelerada"
 
-#~| msgid "Description"
 #~ msgid "Terrain Description"
 #~ msgstr "Descrición do terreo"
 
-#~| msgid "Description"
 #~ msgid "Unit Description"
 #~ msgstr "Descrición da unidade"
 
-#~| msgid "Delete: $addon_title"
 #~ msgid "Delete Unit"
 #~ msgstr "Eliminar a unidade"
 
-#~| msgid "Share Maps"
 #~ msgid "Save Map"
 #~ msgstr "Gardar o mapa"
 
-#~| msgid "Recruit"
 #~ msgid "Repeat Recruit"
 #~ msgstr "Repetir o recrutamento"
 
@@ -11232,11 +11216,9 @@ msgstr "Opcións de planificación"
 #~ msgid "Toggle Grid"
 #~ msgstr "Activar a grade"
 
-#~| msgid "Mouse scrolling"
 #~ msgid "Mouse Scrolling"
 #~ msgstr "Desprazamento co rato."
 
-#~| msgid "Status"
 #~ msgid "Status Table"
 #~ msgstr "Cadro da situación"
 
@@ -11246,23 +11228,18 @@ msgstr "Opcións de planificación"
 #~ msgid "Speak"
 #~ msgstr "Falar"
 
-#~| msgid "Create Unit (Debug!)"
 #~ msgid "Change Side (Debug!)"
 #~ msgstr "Cambiar de bando (depuración!)"
 
-#~| msgid "Create Unit (Debug!)"
 #~ msgid "Kill Unit (Debug!)"
 #~ msgstr "Matar a unidade (depuración!)"
 
-#~| msgid "Scenario Settings"
 #~ msgid "Scenario Objectives"
 #~ msgstr "Obxectivos do escenario"
 
-#~| msgid "Network Player"
 #~ msgid "Pause Network Game"
 #~ msgstr "Deter a partida en rede"
 
-#~| msgid "Configure Game"
 #~ msgid "Continue Network Game"
 #~ msgstr "Continuar a partida en rede"
 
@@ -11275,60 +11252,48 @@ msgstr "Opcións de planificación"
 #~ msgid "Set Team Label"
 #~ msgstr "Poñer unha etiqueta do equipo"
 
-#~| msgid "Place Label"
 #~ msgid "Set Label"
 #~ msgstr "Poñer unha etiqueta"
 
 #~ msgid "Best Possible Enemy Moves"
 #~ msgstr "Mellores movementos posíbeis do inimigo"
 
-#~| msgid "Save Replay"
 #~ msgid "Play Replay"
 #~ msgstr "Reproducir a repetición"
 
-#~| msgid "Save Replay"
 #~ msgid "Reset Replay"
 #~ msgstr "Restaurar a repetición"
 
-#~| msgid "Save Replay"
 #~ msgid "Stop Replay"
 #~ msgstr "Deter a repetición"
 
 #~ msgid "Full Map"
 #~ msgstr "Mapa completo"
 
-#~| msgid "Team"
 #~ msgid "Each Team"
 #~ msgstr "Cada equipo"
 
-#~| msgid "Team"
 #~ msgid "Team 1"
 #~ msgstr "Equipo 1"
 
-#~| msgid "Skip animation"
 #~ msgid "Skip Animation"
 #~ msgstr "Saltar a animación"
 
 #~ msgid "whiteboard^Planning Mode"
 #~ msgstr "Modo de planificación"
 
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Execute Action"
 #~ msgstr "Executar a acción"
 
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Execute All Actions"
 #~ msgstr "Executar as accións"
 
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Delete Action"
 #~ msgstr "Eliminar a acción"
 
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Move Action Up"
 #~ msgstr "Adiantar a acción"
 
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Move Action Down"
 #~ msgstr "Atrasar a acción"
 
@@ -11338,18 +11303,15 @@ msgstr "Opcións de planificación"
 #~ msgid "Quit to Desktop"
 #~ msgstr "Saír ao escritorio"
 
-#~| msgid "Stub Time of Day"
 #~ msgid "Switch Time of Day"
 #~ msgstr "Cambiar o momento do día"
 
-#~| msgid "Share Maps"
 #~ msgid "Switch Map"
 #~ msgstr "Cambiar de mapa"
 
 #~ msgid "Assign Local Time"
 #~ msgstr "Asignar a hora local"
 
-#~| msgid "Stub Time of Day"
 #~ msgid "Custom Time of Day Creator"
 #~ msgstr "Creador de momentos do día personalizados"
 
@@ -11359,22 +11321,18 @@ msgstr "Opcións de planificación"
 #~ msgid "New Map"
 #~ msgstr "Novo mapa"
 
-#~| msgid "Load Game"
 #~ msgid "Load Map"
 #~ msgstr "Cargar un mapa"
 
-#~| msgid "Select Scenario"
 #~ msgid "Save Scenario As"
 #~ msgstr "Gardar o escenario como"
 
-#~| msgid "Save the Map As"
 #~ msgid "Save All Maps"
 #~ msgstr "Gardar oos mapas"
 
 #~ msgid "Revert All Changes"
 #~ msgstr "Desbotar todos os cambios"
 
-#~| msgid "Skip animation"
 #~ msgid "Map Information"
 #~ msgstr "Información do mapa"
 
@@ -11393,11 +11351,9 @@ msgstr "Opcións de planificación"
 #~ msgid "Scroll Palette Right"
 #~ msgstr "Mover a paleta á dereita"
 
-#~| msgid "Next Side"
 #~ msgid "Add New Side"
 #~ msgstr "Engadir un bando"
 
-#~| msgid "Next Turn"
 #~ msgid "Next Tool"
 #~ msgstr "Seguinte ferramenta"
 
@@ -11437,11 +11393,9 @@ msgstr "Opcións de planificación"
 #~ "xunto cun número establece a respectiva posición inicial baixo o "
 #~ "punteiro, «Supr» bórraa."
 
-#~| msgid "Starting position: "
 #~ msgid "Starting Positions Tool"
 #~ msgstr "Ferramenta das posicións iniciais"
 
-#~| msgid "Label: "
 #~ msgid "Label Tool"
 #~ msgstr "Ferramenta de etiquetas"
 
@@ -11487,11 +11441,9 @@ msgstr "Opcións de planificación"
 #~ "O botón principal establece a propiedade da vila ao bando actual, o "
 #~ "secundario quita a propiedade. É necesario ter un bando definido."
 
-#~| msgid "Village gold: "
 #~ msgid "Village Tool"
 #~ msgstr "Ferramenta de vilas"
 
-#~| msgid "Recruit"
 #~ msgid "Can Recruit"
 #~ msgstr "Pode recrutar"
 
@@ -11512,7 +11464,6 @@ msgstr "Opcións de planificación"
 #~ "Asignar o grupo de unidades seleccionado como lista de recrutamento á "
 #~ "unidade."
 
-#~| msgid "Advance Unit"
 #~ msgid "Change Unit ID"
 #~ msgstr "Cambiar o identificador da unidade"
 
@@ -11531,7 +11482,6 @@ msgstr "Opcións de planificación"
 #~ msgid "Toggle Minimap Terrain Drawing"
 #~ msgstr "Cambiar o debuxado de terreos do minimapa"
 
-#~| msgid "Next Turn"
 #~ msgid "Next Brush"
 #~ msgstr "Seguinte brocha"
 
@@ -11570,16 +11520,13 @@ msgstr "Opcións de planificación"
 #~ msgstr "Exportar as coordenadas seleccionadas ao portapapeis do sistema"
 
 # Mensaxe que aparece encabezando a lista de unidades a recrutar ou reincorporar.
-#~| msgid "Select unit:"
 #~ msgid "Select All"
 #~ msgstr "Seleccionalo todo"
 
-#~| msgid "Select an add-on to update:"
 #~ msgid "Select Inverse"
 #~ msgstr "Inverter a selección"
 
 # Mensaxe que aparece encabezando a lista de unidades a recrutar ou reincorporar.
-#~| msgid "Select unit:"
 #~ msgid "Select None"
 #~ msgstr "Anular a selección"
 
@@ -11597,7 +11544,6 @@ msgstr "Opcións de planificación"
 #~ msgid "Flip Clipboard Vertically"
 #~ msgstr "Voltear verticalmente o que hai no portapapeis"
 
-#~| msgid "Invalid location"
 #~ msgid "Flip Selection"
 #~ msgstr "Voltear a selección"
 
@@ -11607,33 +11553,27 @@ msgstr "Opcións de planificación"
 #~ msgid "Generate Tiles in Selection"
 #~ msgstr "Xerar hexágonos na selección"
 
-#~| msgid "Randomize time of day in begin"
 #~ msgid "Randomize Tiles in Selection"
 #~ msgstr "Xerar ao chou os hexágonos da selección"
 
 #~ msgid "Resize Map"
 #~ msgstr "Cambiar as dimensións"
 
-#~| msgid "Animate Map"
 #~ msgid "Rotate Map"
 #~ msgstr "Rotar o mapa"
 
-#~| msgid "Animate Map"
 #~ msgid "Generate Map"
 #~ msgstr "Xerar un mapa"
 
 #~ msgid "Apply a Mask"
 #~ msgstr "Aplicar unha máscara"
 
-#~| msgid "Create Game"
 #~ msgid "Create Mask"
 #~ msgstr "Crear unha máscara"
 
-#~| msgid "Refresh gui."
 #~ msgid "Refresh Display"
 #~ msgstr "Actualizar a pantalla"
 
-#~| msgid "Latin Translation"
 #~ msgid "Update Terrain Transitions"
 #~ msgstr "Actualizar as transicións dos terreos"
 
@@ -11669,15 +11609,12 @@ msgstr "Opcións de planificación"
 #~ msgstr "Engadir unha nova zona"
 
 # Optimizado para a interface.
-#~| msgid "End Scenario"
 #~ msgid "Edit Scenario"
 #~ msgstr "Editar o escenario"
 
-#~| msgid "Next Side"
 #~ msgid "Edit Side"
 #~ msgstr "Editar o bando"
 
-#~| msgid "Remove"
 #~ msgid "Remove Side"
 #~ msgstr "Eliminar o bando"
 
@@ -11690,19 +11627,15 @@ msgstr "Opcións de planificación"
 #~ msgid "Find Label or Unit"
 #~ msgstr "Buscar un elemento ou unidade"
 
-#~| msgid "Update All"
 #~ msgid "Speak to Ally"
 #~ msgstr "Escribirlles unha mensaxe aos aliados"
 
-#~| msgid "Update All"
 #~ msgid "Speak to All"
 #~ msgstr "Escribirlle unha mensaxe a todo o mundo"
 
-#~| msgid "Chat Log"
 #~ msgid "View Chat Log"
 #~ msgstr "Ver o rexistro das conversas"
 
-#~| msgid "User-Command#3"
 #~ msgid "Enter User Command"
 #~ msgstr "Escribir unha orde"
 
@@ -11712,47 +11645,36 @@ msgstr "Opcións de planificación"
 #~ msgid "Change Language"
 #~ msgstr "Cambiar de idioma"
 
-#~| msgid "Refresh gui."
 #~ msgid "Refresh WML"
 #~ msgstr "Actualizar o código WML"
 
-#~| msgid "Show next tip of the day"
 #~ msgid "Next Tip of the Day"
 #~ msgstr "Seguinte consello"
 
-#~| msgid "Show previous tip of the day"
 #~ msgid "Previous Tip of the Day"
 #~ msgstr "Consello anterior"
 
-#~| msgid "Tutorial"
 #~ msgid "Start Tutorial"
 #~ msgstr "Comezar a aprendizaxe"
 
-#~| msgid "Campaign"
 #~ msgid "Start Campaign"
 #~ msgstr "Comezar unha campaña"
 
-#~| msgid "Multiplayer"
 #~ msgid "Start Multiplayer Game"
 #~ msgstr "Comezar unha partida con varios xogadores"
 
-#~| msgid "Remove Add-ons"
 #~ msgid "Manage Add-ons"
 #~ msgstr "Xestionar os complementos"
 
-#~| msgid "Start the map editor"
 #~ msgid "Start Editor"
 #~ msgstr "Iniciar o editor de mapas"
 
-#~| msgid "Show replay"
 #~ msgid "Show Credits"
 #~ msgstr "Mostrar os autores"
 
-#~| msgid "Show replay"
 #~ msgid "Show Helptip"
 #~ msgstr "Mostrar a axuda"
 
-#~| msgid "Unknown command."
 #~ msgid "Unrecognized Command"
 #~ msgstr "Orde descoñecida"
 

@@ -5073,8 +5073,10 @@ msgstr ""
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:234
+#, fuzzy
+#| msgid "No advancement"
 msgid "waiting for^an advancement choice"
-msgstr ""
+msgstr "bez napredovanja"
 
 #: src/actions/attack.cpp:600 src/actions/attack.cpp:1350
 msgid "An invalid attacker weapon got selected."
@@ -6253,8 +6255,10 @@ msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Nadimak „$nick“ registrovan je na ovom serveru."
 
 #: src/game_initialization/multiplayer.cpp:335
+#, fuzzy
+#| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "Your IP address is banned on this server’s forums for $duration|."
-msgstr ""
+msgstr "Nadimak „$nick“ registrovan je na ovom serveru."
 
 #: src/game_initialization/multiplayer.cpp:337
 msgid "Your IP address is banned on this server’s forums."

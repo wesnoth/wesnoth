@@ -137,8 +137,7 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
-#| msgid "B<--bunzip2>I<\\ infile.bz2>"
+#, no-wrap
 msgid "B<--bunzip2>I<\\ infile.bz2>"
 msgstr "B<--bunzip2>I<\\ infile.bz2>"
 
@@ -155,8 +154,7 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:55
-#, fuzzy, no-wrap
-#| msgid "B<--bzip2>I<\\ infile>"
+#, no-wrap
 msgid "B<--bzip2>I<\\ infile>"
 msgstr "B<--bzip2>I<\\ infile>"
 
@@ -345,10 +343,6 @@ msgstr "B<-e[>I<file>B<],\\ --editor[>I<=file>B<]>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:113
-#, fuzzy
-#| msgid ""
-#| "start the in-game map editor directly. If I<file> is specified, "
-#| "equivalent to B<-l> B<--load>."
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-l> B<--load>."
@@ -553,10 +547,6 @@ msgstr "B<--max-fps>I<\\ fps>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:189
-#, fuzzy
-#| msgid ""
-#| "the number of frames per second the game can show, the value should be "
-#| "between B<1> and B<1000>, the default is the monitor's refresh rate."
 msgid ""
 "the number of frames per second the game can show, the value should be "
 "between B<1> and B<1000>, the default is the monitor's refresh rate."
@@ -616,8 +606,7 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:201
-#, fuzzy, no-wrap
-#| msgid "B<--nodelay>"
+#, no-wrap
 msgid "B<--nodelay>"
 msgstr "B<--nodelay>"
 
@@ -757,16 +746,6 @@ msgstr "B<-p,\\ --preprocess>I<\\ file/cartella sorgente>B<\\ >I<cartella destin
 
 #. type: Plain text
 #: doc/man/wesnoth.6:251
-#, fuzzy
-#| msgid ""
-#| "preprocesses a specified file/folder. For each file(s) a plain .cfg file "
-#| "and a processed .cfg file will be written in specified target directory. "
-#| "If a folder is specified, it will be preprocessed recursively based on "
-#| "the known preprocessor rules. The common macros from the \"data/core/"
-#| "macros\" directory will be preprocessed before the specified resources.  "
-#| "Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/result.> For details "
-#| "regarding the preprocessor visit: https://wiki.wesnoth.org/"
-#| "PreprocessorRef#Command-line_preprocessor."
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "
@@ -908,8 +887,6 @@ msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:304
-#, fuzzy
-#| msgid "sets the screen resolution. Example: B<-r> B<800x600>."
 msgid "sets the screen resolution. Example: B<-r> B<800x600>."
 msgstr "imposta la risoluzione dello schermo. Esempio:B<-r> B<800x600>."
 
@@ -921,11 +898,6 @@ msgstr "B<--render-image>I<\\ immagine>B<\\ >I<output>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:307
-#, fuzzy
-#| msgid ""
-#| "takes a valid wesnoth 'image path string' with image path functions, and "
-#| "outputs to a .png file. Image path functions are documented at https://"
-#| "wiki.wesnoth.org/ImagePathFunctionWML."
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
 "outputs to a .png file. Image path functions are documented at https://wiki."
@@ -954,17 +926,12 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:310
-#, fuzzy, no-wrap
-#| msgid "B<--rng-seed>I<\\ number>"
+#, no-wrap
 msgid "B<--rng-seed>I<\\ number>"
 msgstr "B<--rng-seed>I<\\ seme>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:317
-#, fuzzy
-#| msgid ""
-#| "seeds the random number generator with I<number>.  Example: B<--rng-seed> "
-#| "B<0>."
 msgid ""
 "seeds the random number generator with I<number>.  Example: B<--rng-seed> "
 "B<0>."
@@ -1009,10 +976,6 @@ msgstr "B<-s[>I<host>B<],\\ --server[>I<=host>B<]>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:334
-#, fuzzy
-#| msgid ""
-#| "connects to the specified host if any, otherwise connect to the first "
-#| "server in preferences. Example: B<--server> B<server.wesnoth.org>."
 msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server> B<server.wesnoth.org>."
@@ -1344,8 +1307,7 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:437
-#, fuzzy, no-wrap
-#| msgid "B<--ai-config>I<\\ number>B<:>I<value>"
+#, no-wrap
 msgid "B<--ai-config>I<\\ number>B<:>I<value>"
 msgstr "B<--ai_config>I<\\ numero>B<:>I<valore>"
 
@@ -1429,11 +1391,6 @@ msgstr "B<--exit-at-end>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:468
-#, fuzzy
-#| msgid ""
-#| "exits once the scenario is over, without displaying victory/defeat dialog "
-#| "which normally requires the user to click End Scenario.  This is also "
-#| "used for scriptable benchmarking."
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which normally requires the user to click End Scenario.  This is also used "
@@ -1679,8 +1636,6 @@ msgstr "SEE ALSO"
 #.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
 #: doc/man/wesnothd.6:15
-#, fuzzy
-#| msgid "B<wesnothd>(6)"
 msgid "B<wesnothd>(6)"
 msgstr "B<wesnothd>(6)"
 
@@ -2585,8 +2540,6 @@ msgstr ""
 # type: TH
 #. type: Plain text
 #: doc/man/wesnothd.6:286
-#, fuzzy
-#| msgid "B<wesnoth>(6)"
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
 
@@ -2601,7 +2554,6 @@ msgstr "B<wesnoth>(6)"
 #~ "\\ B<info>,\\ B<debug>. Normalmente è usato il livello B<error>."
 
 # type: TP
-#, no-wrap
 #~ msgid "B<--path>"
 #~ msgstr "B<--path>"
 

@@ -507,8 +507,7 @@ msgstr "B<--log->I<taso>B<=>I<aihealue1>B<,>I<aihealue2>B<,>I<...>"
 #| msgid ""
 #| "sets the severity level of the log domains.  B<all> can be used to match "
 #| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>.  By default the B<error> level is used and the B<info> level "
-#| "for the B<server> domain."
+#| "B<debug>.  By default the B<error> level is used."
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
@@ -517,8 +516,7 @@ msgid ""
 msgstr ""
 "Asettaa vakavuusasteen lokin aihealueille. Sana B<all> vastaa kaikkia "
 "aihealueita. Käytettävissä olevat tasot: B<error>,\\ B<warning>,\\ B<info>,"
-"\\ B<debug>. Oletuksena käytetään B<sever>-aihealueella tasoa B<info> ja "
-"muualla tasoa B<error>."
+"\\ B<debug>. Oletuksena käytetään tasoa B<error>."
 
 # type: TP
 #. type: TP
@@ -2624,6 +2622,12 @@ msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)."
 
 # type: Plain text
+#, fuzzy
+#~| msgid ""
+#~| "sets the severity level of the log domains.  B<all> can be used to match "
+#~| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+#~| "B<debug>.  By default the B<error> level is used and the B<info> level "
+#~| "for the B<server> domain."
 #~ msgid ""
 #~ "sets the severity level of the log domains.  B<all> can be used to match "
 #~ "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
@@ -2631,10 +2635,10 @@ msgstr "B<wesnoth>(6)."
 #~ msgstr ""
 #~ "Asettaa vakavuusasteen lokin aihealueille. Sana B<all> vastaa kaikkia "
 #~ "aihealueita. Käytettävissä olevat tasot: B<error>,\\ B<warning>,\\ "
-#~ "B<info>,\\ B<debug>. Oletuksena käytetään tasoa B<error>."
+#~ "B<info>,\\ B<debug>. Oletuksena käytetään B<sever>-aihealueella tasoa "
+#~ "B<info> ja muualla tasoa B<error>."
 
 # type: TP
-#, no-wrap
 #~ msgid "B<--path>"
 #~ msgstr "B<--path>"
 

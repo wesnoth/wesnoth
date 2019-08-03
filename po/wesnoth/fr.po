@@ -1812,9 +1812,6 @@ msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:521
-#, fuzzy
-#| msgid ""
-#| "This trident gives merfolk the power to throw lightning at their enemies."
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr "Ce trident permet à un ondin de tirer des éclairs sur ses ennemis !"
@@ -6949,8 +6946,6 @@ msgstr "PV : "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:516
-#, fuzzy
-#| msgid "Moves:"
 msgid "Moves:"
 msgstr "Déplacements : "
 
@@ -6958,8 +6953,6 @@ msgstr "Déplacements : "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
-#, fuzzy
-#| msgid "Vision:"
 msgid "Vision:"
 msgstr "Vision : "
 
@@ -6967,8 +6960,6 @@ msgstr "Vision : "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
-#, fuzzy
-#| msgid "Jamming:"
 msgid "Jamming:"
 msgstr "Brouillage : "
 
@@ -6976,8 +6967,6 @@ msgstr "Brouillage : "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:532
-#, fuzzy
-#| msgid "Cost:"
 msgid "Cost:"
 msgstr "Coût : "
 
@@ -6992,8 +6981,6 @@ msgstr "Alignement : "
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:543
-#, fuzzy
-#| msgid "Required XP:"
 msgid "Required XP:"
 msgstr "Expérience requise : "
 
@@ -7862,10 +7849,6 @@ msgid "Save and abort game"
 msgstr "Sauvegarder puis arrêter le jeu"
 
 #: src/playturn.cpp:297
-#, fuzzy
-#| msgid ""
-#| "$player who controlled side $side_drop has left the game. What do you "
-#| "want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -8508,13 +8491,10 @@ msgstr ""
 "joueur $player"
 
 #: src/synced_user_choice.cpp:330
-#, fuzzy
-#| msgid "waiting for $desc from side $sides"
-#| msgid_plural "waiting for $desc from sides $sides"
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "En attente de $desc pour le camp $sides"
-msgstr[1] "En attente de $desc pour le camp $sides"
+msgstr[1] "En attente de $desc pour les camps $sides"
 
 #. TRANSLATORS: In networked games, this text is shown for other clients,
 #. while they wait for an action from another player.
@@ -10366,237 +10346,180 @@ msgstr "Options de planification"
 #~ msgid "cancel"
 #~ msgstr "annuler"
 
-#~| msgid "Select Scenario"
 #~ msgid "Select Hex"
 #~ msgstr "Sélectionner le scénario"
 
-#~| msgid "Attacker"
 #~ msgid "Move/Attack"
 #~ msgstr "Attaquant"
 
 #~ msgid "Animate Map"
 #~ msgstr "Animer la carte"
 
-#~| msgid "Next Turn"
 #~ msgid "Next Unit"
 #~ msgstr "Tour suivant"
 
-#~| msgid "End Turn"
 #~ msgid "End Unit Turn"
 #~ msgstr "Fin du tour"
 
-#~| msgid "Map_Screenshot"
 #~ msgid "Map Screenshot"
 #~ msgstr "Capture d'écran de la carte"
 
-#~| msgid "Description"
 #~ msgid "Terrain Description"
 #~ msgstr "Description"
 
-#~| msgid "Description"
 #~ msgid "Unit Description"
 #~ msgstr "Description"
 
-#~| msgid "Delete: $addon_title"
 #~ msgid "Delete Unit"
 #~ msgstr "Effacer l'extension : $addon_title"
 
-#~| msgid "Share Maps"
 #~ msgid "Save Map"
 #~ msgstr "Partager les cartes"
 
-#~| msgid "Recruit"
 #~ msgid "Repeat Recruit"
 #~ msgstr "Recruter"
 
-#~| msgid "Mouse scrolling"
 #~ msgid "Mouse Scrolling"
 #~ msgstr "Défilement avec la souris"
 
-#~| msgid "Status"
 #~ msgid "Status Table"
 #~ msgstr "État"
 
-#~| msgid "Create Unit (Debug!)"
 #~ msgid "Change Side (Debug!)"
 #~ msgstr "Créer une unité (Débug !)"
 
-#~| msgid "Create Unit (Debug!)"
 #~ msgid "Kill Unit (Debug!)"
 #~ msgstr "Créer une unité (Débug !)"
 
-#~| msgid "Scenario Settings"
 #~ msgid "Scenario Objectives"
 #~ msgstr "Paramètres du scénario"
 
-#~| msgid "Host Networked Game"
 #~ msgid "Pause Network Game"
 #~ msgstr "Héberger un jeu en réseau"
 
-#~| msgid "Host Networked Game"
 #~ msgid "Continue Network Game"
 #~ msgstr "Héberger un jeu en réseau"
 
 #~ msgid "Quit Game"
 #~ msgstr "Quitter le jeu"
 
-#~| msgid "Place Label"
 #~ msgid "Set Label"
 #~ msgstr "Placer une note"
 
-#~| msgid "Save Replay"
 #~ msgid "Play Replay"
 #~ msgstr "Sauvegarder le film"
 
-#~| msgid "Save Replay"
 #~ msgid "Reset Replay"
 #~ msgstr "Sauvegarder le film"
 
-#~| msgid "Save Replay"
 #~ msgid "Stop Replay"
 #~ msgstr "Sauvegarder le film"
 
-#~| msgid "Full Heal"
 #~ msgid "Full Map"
 #~ msgstr "Soins complets"
 
-#~| msgid "Team"
 #~ msgid "Each Team"
 #~ msgstr "Équipe"
 
-#~| msgid "Team"
 #~ msgid "Team 1"
 #~ msgstr "Équipe"
 
-#~| msgid "Skip animation"
 #~ msgid "Skip Animation"
 #~ msgstr "Passer les animations"
 
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Execute Action"
 #~ msgstr "Options de planification"
 
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Execute All Actions"
 #~ msgstr "Options de planification"
 
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Delete Action"
 #~ msgstr "Options de planification"
 
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Move Action Up"
 #~ msgstr "Options de planification"
 
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Move Action Down"
 #~ msgstr "Options de planification"
 
-#~| msgid "Time of Day"
 #~ msgid "Switch Time of Day"
 #~ msgstr "Moment de la journée"
 
-#~| msgid "Share Maps"
 #~ msgid "Switch Map"
 #~ msgstr "Partager les cartes"
 
-#~| msgid "Time of Day"
 #~ msgid "Custom Time of Day Creator"
 #~ msgstr "Moment de la journée"
 
-#~| msgid "Load Game"
 #~ msgid "Load Map"
 #~ msgstr "Charger un jeu"
 
-#~| msgid "Select Scenario"
 #~ msgid "Save Scenario As"
 #~ msgstr "Sélectionner le scénario"
 
-#~| msgid "Save the Map As"
 #~ msgid "Save All Maps"
 #~ msgstr "Sauvegarder la carte sous"
 
-#~| msgid "Skip animation"
 #~ msgid "Map Information"
 #~ msgstr "Passer les animations"
 
-#~| msgid "(New Side)"
 #~ msgid "Add New Side"
 #~ msgstr "Équipe suivante"
 
-#~| msgid "Next Turn"
 #~ msgid "Next Tool"
 #~ msgstr "Tour suivant"
 
-#~| msgid "Starting position: "
 #~ msgid "Starting Positions Tool"
 #~ msgstr "Commencer le positionnement : "
 
-#~| msgid "Label: "
 #~ msgid "Label Tool"
 #~ msgstr "Note : "
 
-#~| msgid "Village gold: "
 #~ msgid "Village Tool"
 #~ msgstr "Or par village : "
 
-#~| msgid "Recruit"
 #~ msgid "Can Recruit"
 #~ msgstr "Recruter"
 
-#~| msgid "Advance Unit"
 #~ msgid "Change Unit ID"
 #~ msgstr "Unité promue"
 
-#~| msgid "Next Turn"
 #~ msgid "Next Brush"
 #~ msgstr "Tour suivant"
 
-#~| msgid "Select unit:"
 #~ msgid "Select All"
 #~ msgstr "Sélectionner l'unité : "
 
-#~| msgid "Select an add-on to update:"
 #~ msgid "Select Inverse"
 #~ msgstr "Sélectionner une extension à mettre à jour :"
 
-#~| msgid "Select unit:"
 #~ msgid "Select None"
 #~ msgstr "Sélectionner l'unité : "
 
-#~| msgid "Invalid location"
 #~ msgid "Flip Selection"
 #~ msgstr "Emplacement non valide"
 
-#~| msgid "Randomize time of day in begin"
 #~ msgid "Randomize Tiles in Selection"
 #~ msgstr "Rendre aléatoire le début du moment de la journée"
 
-#~| msgid "Animate Map"
 #~ msgid "Rotate Map"
 #~ msgstr "Animer la carte"
 
-#~| msgid "Animate Map"
 #~ msgid "Generate Map"
 #~ msgstr "Animer la carte"
 
-#~| msgid "Create Game"
 #~ msgid "Create Mask"
 #~ msgstr "Créer une partie"
 
-#~| msgid "Refresh gui."
 #~ msgid "Refresh Display"
 #~ msgstr "Rafraîchit l'IHM."
 
-#~| msgid "Latin Translation"
 #~ msgid "Update Terrain Transitions"
 #~ msgstr "Traduction latine"
 
-#~| msgid "End Scenario"
 #~ msgid "Edit Scenario"
 #~ msgstr "Fin du scénario"
 
-#~| msgid "Next Side"
 #~ msgid "Edit Side"
 #~ msgstr "Équipe suivante"
 
@@ -10604,59 +10527,45 @@ msgstr "Options de planification"
 #~ msgid "Remove Side"
 #~ msgstr "déplacements"
 
-#~| msgid "Update All"
 #~ msgid "Speak to Ally"
 #~ msgstr "Tout mettre à jour"
 
-#~| msgid "Update All"
 #~ msgid "Speak to All"
 #~ msgstr "Tout mettre à jour"
 
-#~| msgid "Chat Log"
 #~ msgid "View Chat Log"
 #~ msgstr "Historique des discussions"
 
-#~| msgid "User-Command#3"
 #~ msgid "Enter User Command"
 #~ msgstr "Commande utilisateur #3"
 
-#~| msgid "Refresh gui."
 #~ msgid "Refresh WML"
 #~ msgstr "Rafraîchit l'IHM."
 
-#~| msgid "Show next tip of the day"
 #~ msgid "Next Tip of the Day"
 #~ msgstr "Astuce suivante"
 
-#~| msgid "Show previous tip of the day"
 #~ msgid "Previous Tip of the Day"
 #~ msgstr "Voir la précédente astuce du jour"
 
-#~| msgid "Tutorial"
 #~ msgid "Start Tutorial"
 #~ msgstr "Didacticiel"
 
-#~| msgid "Campaign"
 #~ msgid "Start Campaign"
 #~ msgstr "Campagne"
 
-#~| msgid "Multiplayer"
 #~ msgid "Start Multiplayer Game"
 #~ msgstr "Multijoueur"
 
-#~| msgid "Update add-ons"
 #~ msgid "Manage Add-ons"
 #~ msgstr "Mettre à jour les extensions"
 
-#~| msgid "Start the map editor"
 #~ msgid "Start Editor"
 #~ msgstr "Ouvrir l'éditeur de cartes"
 
-#~| msgid "Credits"
 #~ msgid "Show Credits"
 #~ msgstr "Crédits"
 
-#~| msgid "Show replay"
 #~ msgid "Show Helptip"
 #~ msgstr "Revoir les actions passées"
 
@@ -10710,86 +10619,66 @@ msgstr "Options de planification"
 #~ msgid "Multiplayer_AI^Experimental AI"
 #~ msgstr "IA expérimentale"
 
-#~| msgid "Enemy unit sighted!"
-#~| msgid_plural "$enemies enemy units sighted!"
 #~ msgid "Enemy unit weight  (default: 100)"
 #~ msgstr "Unité ennemie en vue !"
 
 #~ msgid "Orcs"
 #~ msgstr "Orcs"
 
-#~| msgid "Move leader here"
 #~ msgid "Move Konrad here"
 #~ msgstr "Déplacer le chef ici"
 
-#~| msgid "race^Humans"
 #~ msgid "Humans"
 #~ msgstr "Humains"
 
-#~| msgid "Elves"
 #~ msgid "Wolves"
 #~ msgstr "Elfes"
 
-#~| msgid "help"
 #~ msgid "Whelps"
 #~ msgstr "aide"
 
 #~ msgid "End scenario"
 #~ msgstr "Fin du scénario"
 
-#~| msgid "Save the Map As"
 #~ msgid "Take the pass"
 #~ msgstr "Sauvegarder la carte sous"
 
-#~| msgid "Defeat"
 #~ msgid "Defeat Rowck"
 #~ msgstr "Défaite"
 
-#~| msgid "Defeat enemy leader"
 #~ msgid "Death of the bat leader"
 #~ msgstr "Vaincre le chef ennemi"
 
-#~| msgid "race^Saurians"
 #~ msgid "Saurians"
 #~ msgstr "Sauriens"
 
-#~| msgid "race^Gryphon"
 #~ msgid "Place Side 1 Footpad"
 #~ msgstr "Gryphon"
 
-#~| msgid "race^Gryphons"
 #~ msgid "Gryphons"
 #~ msgstr "Gryphons"
 
-#~| msgid "Forward >"
 #~ msgid "Coward 1"
 #~ msgstr "Suivant >"
 
-#~| msgid "Forward >"
 #~ msgid "coward r=5"
 #~ msgstr "Suivant >"
 
-#~| msgid "Forward >"
 #~ msgid "Coward 2"
 #~ msgstr "Suivant >"
 
-#~| msgid "Forward >"
 #~ msgid "Coward 3"
 #~ msgstr "Suivant >"
 
-#~| msgid "Forward >"
 #~ msgid "Coward 4"
 #~ msgstr "Suivant >"
 
-#~| msgid "Faction"
 #~ msgid "Station 1"
 #~ msgstr "Faction"
 
-#~| msgid "Faction"
 #~ msgid "Station 2"
 #~ msgstr "Faction"
 
-#~| msgid "Forward >"
 #~ msgid "Coward"
 #~ msgstr "Suivant >"
 
@@ -10799,43 +10688,33 @@ msgstr "Options de planification"
 #~ "Victoire :\n"
 #~ "@Vaincre le(s) chef(s) ennemi(s)"
 
-#~| msgid "teleport"
 #~ msgid "Healer Support"
 #~ msgstr "téléportation"
 
-#~| msgid "Notes:"
 #~ msgid "Notes"
 #~ msgstr "Remarques :"
 
-#~| msgid "Clear all orders"
 #~ msgid "Defeat all lurkers"
 #~ msgstr "Annuler tous les ordres"
 
-#~| msgid "Message:"
 #~ msgid "Messenger"
 #~ msgstr "Message : "
 
-#~| msgid "Move leader here"
 #~ msgid "AI moves Messenger here"
 #~ msgstr "Déplacer le chef ici"
 
-#~| msgid "Defeat enemy leader"
 #~ msgid "Defeat the messenger"
 #~ msgstr "Vaincre le chef ennemi"
 
-#~| msgid "Language"
 #~ msgid "Langzhar"
 #~ msgstr "Langue"
 
-#~| msgid "Move leader here"
 #~ msgid "Move Rossauba here"
 #~ msgstr "Déplacer le chef ici"
 
-#~| msgid "Take it"
 #~ msgid "I made it"
 #~ msgstr "Prenez-le"
 
-#~| msgid "Recruit"
 #~ msgid "Recruiting"
 #~ msgstr "Recruter"
 
@@ -10843,27 +10722,21 @@ msgstr "Options de planification"
 #~ msgid "Swarm"
 #~ msgstr "déferlement"
 
-#~| msgid "race^Bats"
 #~ msgid "Bats"
 #~ msgstr "Chauves-souris"
 
-#~| msgid "race^Gryphon"
 #~ msgid "Place Side 1 Gryphon"
 #~ msgstr "Gryphon"
 
-#~| msgid "race^Wolves"
 #~ msgid "More Wolves"
 #~ msgstr "Loups"
 
-#~| msgid "Wesnoth Developers"
 #~ msgid "AI Developer"
 #~ msgstr "Développeurs de Wesnoth"
 
-#~| msgid "Invalid location"
 #~ msgid "AI Location:"
 #~ msgstr "Emplacement non valide"
 
-#~| msgid "firststrike"
 #~ msgid "first"
 #~ msgstr "initiative"
 
@@ -10876,26 +10749,18 @@ msgstr "Options de planification"
 #~ msgid "Multiplayer_AI^RCA AI"
 #~ msgstr "RCA IA"
 
-#~| msgid "invisible: "
 #~ msgid "invisible"
 #~ msgstr "invisible : "
 
-#~| msgid "female^slowed"
 #~ msgid "female^invisible"
 #~ msgstr "ralentie"
 
-#~| msgid "Fire a game event."
 #~ msgid "I triggered a moveto event."
 #~ msgstr "Déclenche un événement."
 
-#~| msgid "drains"
 #~ msgid "drains 20%"
 #~ msgstr "drain"
 
-#~| msgid ""
-#~| "Drain:\n"
-#~| "This unit drains health from living units, healing itself for half the "
-#~| "amount of damage it deals (rounded down)."
 #~ msgid ""
 #~ "Drain 20%:\n"
 #~ "This unit drains health from living units, healing itself for 20% of the "
@@ -10905,18 +10770,12 @@ msgstr "Options de planification"
 #~ "Cette unité draine la vie des unités vivantes et se régénère de la moitié "
 #~ "des dégâts causés (arrondis à l'inférieur)."
 
-#~| msgid "invisible: "
 #~ msgid "It is invisible!"
 #~ msgstr "invisible : "
 
-#~| msgid "drains"
 #~ msgid "drains 100%"
 #~ msgstr "drain"
 
-#~| msgid ""
-#~| "Drain:\n"
-#~| "This unit drains health from living units, healing itself for half the "
-#~| "amount of damage it deals (rounded down)."
 #~ msgid ""
 #~ "Drain 100%:\n"
 #~ "This unit drains health from living units, healing itself for 100% of the "
@@ -10926,23 +10785,18 @@ msgstr "Options de planification"
 #~ "Cette unité draine la vie des unités vivantes et se régénère de la moitié "
 #~ "des dégâts causés (arrondis à l'inférieur)."
 
-#~| msgid "Choose the game to load"
 #~ msgid "Choose a Mask to Apply"
 #~ msgstr "Choisissez le jeu à charger"
 
-#~| msgid "Choose weapon:"
 #~ msgid "Choose Target Map"
 #~ msgstr "Choisir une arme : "
 
-#~| msgid "The map already exists. Do you want to overwrite it?"
 #~ msgid "The file already exists. Do you want to overwrite it?"
 #~ msgstr "Cette carte existe déjà. Voulez-vous l'écraser ?"
 
-#~| msgid "No era information found."
 #~ msgid "No random map generators found."
 #~ msgstr "Aucune information sur l'ère trouvée."
 
-#~| msgid "Installation failed"
 #~ msgid "Map creation failed."
 #~ msgstr "L'installation a échoué"
 
