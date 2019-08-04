@@ -195,7 +195,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		auto disp_set_team = [](int side_index) {
 			const bool side_changed = static_cast<int>(display::get_singleton()->viewing_team()) != side_index;
 			display::get_singleton()->set_team(side_index);
-	
+
 			if(side_changed) {
 				display::get_singleton()->redraw_everything();
 				display::get_singleton()->recalculate_minimap();

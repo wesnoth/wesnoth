@@ -166,17 +166,17 @@ void scrollarea::handle_event(const SDL_Event& event)
 			}
 		}
 	}
-	
+
 	if (event.type == SDL_FINGERUP) {
 		swipe_dy_ = 0;
 	}
-	
+
 	if (event.type == SDL_FINGERDOWN || event.type == SDL_FINGERMOTION) {
 		SDL_Rect r = video().screen_area();
 		auto tx = static_cast<int>(event.tfinger.x * r.w);
 		auto ty = static_cast<int>(event.tfinger.y * r.h);
 		auto dy = static_cast<int>(event.tfinger.dy * r.h);
-		
+
 		if (event.type == SDL_FINGERDOWN) {
 			swipe_dy_ = 0;
 			swipe_origin_.x = tx;
@@ -184,7 +184,7 @@ void scrollarea::handle_event(const SDL_Event& event)
 		}
 
 		if (event.type == SDL_FINGERMOTION) {
-			
+
 			swipe_dy_ += dy;
 			if (scrollbar_.get_max_position() == 0) {
 				return;
@@ -194,7 +194,7 @@ void scrollarea::handle_event(const SDL_Event& event)
 			if (scrollbar_step <= 0) {
 				return;
 			}
-			
+
 			if (sdl::point_in_rect(swipe_origin_.x, swipe_origin_.y, inner_location())
 				&& abs(swipe_dy_) >= scrollbar_step)
 			{
@@ -206,7 +206,7 @@ void scrollarea::handle_event(const SDL_Event& event)
 			}
 		}
 	}
-	
+
 }
 
 } // end namespace gui

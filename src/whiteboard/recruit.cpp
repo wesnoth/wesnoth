@@ -87,7 +87,7 @@ void recruit::init()
 {
 	temp_unit_->set_movement(0, true);
 	temp_unit_->set_attacks(0);
-	
+
 	fake_unit_->set_location(recruit_hex_);
 	fake_unit_->set_movement(0, true);
 	fake_unit_->set_attacks(0);
@@ -145,7 +145,7 @@ void recruit::apply_temp_modifier(unit_map& unit_map)
 	// unit map takes ownership of temp_unit
 	const size_t old_id = temp_unit_->underlying_id();
 	unit_map.insert(temp_unit_);
-	
+
 	//in the past there was a bug where the map changed the unit ids here (because a unit with that id already existed) which caused crashes later.
 	assert(temp_unit_->underlying_id() == old_id);
 

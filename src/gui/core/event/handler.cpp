@@ -230,14 +230,14 @@ private:
 	 * @param distance               The distance moved.
 	 */
 	void touch_motion(const point& position, const point& distance);
-	
+
 	/**
 	 * Fires a touch "finger down" event.
 	 *
 	 * @param position               The position touched.
 	 */
 	void touch_down(const point& position);
-	
+
 	/**
 	 * Fires a touch "finger up" event.
 	 *

@@ -22,7 +22,7 @@
 #include "game_version.hpp"
 
 #include <boost/ptr_container/ptr_vector.hpp>
-#include <boost/optional.hpp> 
+#include <boost/optional.hpp>
 
 #include <map>
 #include <vector>
@@ -521,7 +521,7 @@ private:
 	randomness::mt_rng rng_;
 	int last_choice_request_id_;
 	mutable boost::optional<version_range> player_versions_;
-	
+
 };
 
 } // namespace wesnothd

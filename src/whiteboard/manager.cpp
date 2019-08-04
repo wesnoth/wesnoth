@@ -272,7 +272,7 @@ bool manager::allow_leader_to_move(const unit& leader) const
 
 	//Look for another leader on another keep in the same castle
 	{ wb::future_map future; // start planned unit map scope
-	
+
 		// TODO: when the game executes all whiteboard moves at turn end applying the future map
 		//       will fail because we are currently executing actions, and if one of those actions
 		//       was a movement of the leader this function will be called, resulting the the error

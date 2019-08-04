@@ -120,7 +120,7 @@ public:
 protected:
 	/** Get length of composition text by IME **/
 	size_t get_composition_length() const;
-	
+
 	/**
 	 * Moves the cursor to the end of the line.
 	 *

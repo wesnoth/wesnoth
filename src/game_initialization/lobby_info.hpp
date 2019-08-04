@@ -142,7 +142,7 @@ public:
 		return users_;
 	}
 
-	bool gamelist_initialized() const 
+	bool gamelist_initialized() const
 	{
 		return gamelist_initialized_;
 	}

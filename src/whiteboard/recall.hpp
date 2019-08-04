@@ -86,7 +86,7 @@ private:
 	unit_ptr temp_unit_;
 	map_location recall_hex_;
 	fake_unit_ptr fake_unit_;
-	
+
 	int original_mp_;
 	int original_ap_;
 	int original_recall_pos_;

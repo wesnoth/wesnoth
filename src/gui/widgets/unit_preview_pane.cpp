@@ -167,7 +167,7 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
 		}
 	}
 
-	
+
 
 	for(const terrain_movement& tm: terrain_moves)
 	{
