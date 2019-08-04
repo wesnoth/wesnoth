@@ -120,7 +120,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINSOCK_DEPRECATED_NO_WARNINGS;BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_WIN32_WINNT=_WIN32_WINNT_WINXP;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;HAVE_LIBPNG;NOMINMAX;_SCL_SECURE_NO_WARNINGS;DEBUG_LUA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINSOCK_DEPRECATED_NO_WARNINGS;BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_WIN32_WINNT=_WIN32_WINNT_WIN7;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;HAVE_LIBPNG;NOMINMAX;_SCL_SECURE_NO_WARNINGS;DEBUG_LUA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>UninitializedLocalUsageCheck</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -157,7 +157,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <AdditionalIncludeDirectories>..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINSOCK_DEPRECATED_NO_WARNINGS;BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_WIN32_WINNT=_WIN32_WINNT_WINXP;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;HAVE_LIBPNG;NOMINMAX;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINSOCK_DEPRECATED_NO_WARNINGS;BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_WIN32_WINNT=_WIN32_WINNT_WIN7;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;HAVE_LIBPNG;NOMINMAX;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -202,7 +202,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINSOCK_DEPRECATED_NO_WARNINGS;BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_WIN32_WINNT=_WIN32_WINNT_WINXP;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;HAVE_LIBPNG;NOMINMAX;_SCL_SECURE_NO_WARNINGS;DEBUG_LUA;MSVC_DO_UNIT_TESTS;BOOST_TEST_DYN_LINK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINSOCK_DEPRECATED_NO_WARNINGS;BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_WIN32_WINNT=_WIN32_WINNT_WIN7;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;HAVE_LIBPNG;NOMINMAX;_SCL_SECURE_NO_WARNINGS;DEBUG_LUA;MSVC_DO_UNIT_TESTS;BOOST_TEST_DYN_LINK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -238,7 +238,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <AdditionalIncludeDirectories>..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINSOCK_DEPRECATED_NO_WARNINGS;BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_WIN32_WINNT=_WIN32_WINNT_WINXP;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;HAVE_LIBPNG;NOMINMAX;_SCL_SECURE_NO_WARNINGS;MSVC_DO_UNIT_TESTS;BOOST_TEST_DYN_LINK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINSOCK_DEPRECATED_NO_WARNINGS;BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_WIN32_WINNT=_WIN32_WINNT_WIN7;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;HAVE_LIBPNG;NOMINMAX;_SCL_SECURE_NO_WARNINGS;MSVC_DO_UNIT_TESTS;BOOST_TEST_DYN_LINK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -284,7 +284,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <AdditionalIncludeDirectories>..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINSOCK_DEPRECATED_NO_WARNINGS;BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_WIN32_WINNT=_WIN32_WINNT_WINXP;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;HAVE_LIBPNG;NOMINMAX;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINSOCK_DEPRECATED_NO_WARNINGS;BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_WIN32_WINNT=_WIN32_WINNT_WIN7;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;HAVE_LIBPNG;NOMINMAX;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -2726,6 +2726,20 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Scripting\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Scripting\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_terrainfilter.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Scripting\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_terrainmap.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Scripting\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\scripting\lua_unit.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Scripting\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Scripting\</ObjectFileName>
@@ -2811,14 +2825,28 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)SDL\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\seed_rng.cpp" />
-    <ClCompile Include="..\..\src\serialization\tag.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Serialization\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Serialization\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Serialization\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Serialization\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Serialization\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\map_settings.cpp" />
+    <ClCompile Include="..\..\src\serialization\schema\key.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Serialization\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Serialization\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Serialization\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Serialization\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Serialization\Schema\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\serialization\schema\tag.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Serialization\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Serialization\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Serialization\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Serialization\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Serialization\Schema\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\serialization\schema\type.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Serialization\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Serialization\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Serialization\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Serialization\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Serialization\Schema\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\show_dialog.cpp" />
     <ClCompile Include="..\..\src\side_filter.cpp" />
     <ClCompile Include="..\..\src\sound.cpp" />
@@ -3356,6 +3384,13 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)utils\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)utils\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)utils\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\utils\parse_network_address.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Utils\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Utils\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Utils\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Utils\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Utils\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\variable.cpp" />
     <ClCompile Include="..\..\src\variable_info.cpp" />
@@ -3962,6 +3997,8 @@
     <ClInclude Include="..\..\src\scripting\lua_race.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_rng.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_team.hpp" />
+    <ClInclude Include="..\..\src\scripting\lua_terrainfilter.hpp" />
+    <ClInclude Include="..\..\src\scripting\lua_terrainmap.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_unit.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_unit_attacks.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_unit_type.hpp" />
@@ -3978,6 +4015,9 @@
     <ClInclude Include="..\..\src\sdl\window.hpp" />
     <ClInclude Include="..\..\src\seed_rng.hpp" />
     <ClInclude Include="..\..\src\map_settings.hpp" />
+    <ClInclude Include="..\..\src\serialization\schema\key.hpp" />
+    <ClInclude Include="..\..\src\serialization\schema\tag.hpp" />
+    <ClInclude Include="..\..\src\serialization\schema\type.hpp" />
     <ClInclude Include="..\..\src\show_dialog.hpp" />
     <ClInclude Include="..\..\src\side_filter.hpp" />
     <ClInclude Include="..\..\src\sound.hpp" />
@@ -4033,7 +4073,6 @@
     <ClInclude Include="..\..\src\theme.hpp" />
     <ClInclude Include="..\..\src\time_of_day.hpp" />
     <ClInclude Include="..\..\src\tod_manager.hpp" />
-    <ClInclude Include="..\..\src\serialization\tag.hpp" />
     <ClInclude Include="..\..\src\tooltips.hpp" />
     <ClInclude Include="..\..\src\units\abilities.hpp" />
     <ClInclude Include="..\..\src\units\animation.hpp" />
@@ -4065,6 +4104,7 @@
     <ClInclude Include="..\..\src\utils\math.hpp" />
     <ClInclude Include="..\..\src\utils\name_generator.hpp" />
     <ClInclude Include="..\..\src\utils\name_generator_factory.hpp" />
+    <ClInclude Include="..\..\src\utils\parse_network_address.hpp" />
     <ClInclude Include="..\..\src\utils\reference_counter.hpp" />
     <ClInclude Include="..\..\src\utils\scope_exit.hpp" />
     <ClInclude Include="..\..\src\variable.hpp" />
