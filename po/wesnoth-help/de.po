@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-07-18 15:50+0300\n"
-"PO-Revision-Date: 2019-03-28 02:33+0100\n"
+"PO-Revision-Date: 2019-08-04 21:50+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -521,25 +521,6 @@ msgstr "Editor Werkzeuge"
 
 #. [topic]: id=editor_toolkit
 #: data/core/editor/help.cfg:212
-#, fuzzy
-#| msgid ""
-#| "The editor provides several tools for editing your maps and scenarios. At "
-#| "all times, one of the editor tools is active. The active tool's context "
-#| "determines the content of the editor palette and context menu.\n"
-#| "\n"
-#| "These following tools are provided:\n"
-#| "\n"
-#| "• <ref>dst='editor_tool_paint' text='Paint Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_fill'  text='Fill Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_select' text='Select Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_paste' text='Paste Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_starting' text='Starting Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_label' text='Label Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_item' text='Item Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_soundsource' text='Soundsource Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_village' text='Village Tool'</ref>\n"
-#| "• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>\n"
-#| "\n"
 msgid ""
 "The editor provides several tools for editing your maps and scenarios. At "
 "all times, one of the editor tools is active. The active tool's context "
@@ -567,7 +548,7 @@ msgstr ""
 "Folgende Werkzeuge sind vorhanden:\n"
 "\n"
 "• <ref>dst='editor_tool_paint' text='Malen Werkzeug'</ref>\n"
-"• <ref>dst='editor_tool_fill'  text='Füllen Werkzeug'</ref>\n"
+"• <ref>dst='editor_tool_fill' text='Füllen Werkzeug'</ref>\n"
 "• <ref>dst='editor_tool_select' text='Auswahl Werkzeug'</ref>\n"
 "• <ref>dst='editor_tool_paste' text='Kopieren Werkzeug'</ref>\n"
 "• <ref>dst='editor_tool_starting' text='Startpunkt Werkzeug'</ref>\n"
@@ -2347,17 +2328,6 @@ msgstr "Tageszeit"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:336
-#, fuzzy
-#| msgid ""
-#| "The time of day affects the damage of certain units as follows:\n"
-#| "\n"
-#| "• <bold>text='Lawful'</bold> units get +25% damage in daytime, and −25% "
-#| "damage at night.\n"
-#| "• <bold>text='Chaotic'</bold> units get +25% damage at night, and −25% in "
-#| "daytime.\n"
-#| "• <bold>text='Neutral'</bold> units are unaffected by the time of day.\n"
-#| "• <bold>text='Liminal'</bold> units get −25% damage during both night and "
-#| "daytime."
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 "\n"
@@ -2377,8 +2347,8 @@ msgstr ""
 "Schaden an, nachts dafür 25% mehr.\n"
 "• <bold>text='Neutrale'</bold> Einheiten werden von den Tageszeiten nicht "
 "beeinflusst.\n"
-"• <bold>text='Zwielichtige'</bold> Einheiten fügen sowohl tagsüber als auch "
-"während der Nacht 25% weniger Schaden zu."
+"• <bold>text='Zwielichtige'</bold> Einheiten fügen während der Dämmerung 25% "
+"mehr Schaden zu."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:341
@@ -3164,6 +3134,9 @@ msgid ""
 "\n"
 "<big>Cores</big>"
 msgstr ""
+"\n"
+"\n"
+"<big>Kerne</big>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:500
@@ -3227,32 +3200,6 @@ msgstr "Installation von Erweiterungen"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:516
-#, fuzzy
-#| msgid ""
-#| "User-made add-ons can be obtained and updated through the "
-#| "<italic>text='Add-ons'</italic> option in the main menu. After connecting "
-#| "to the add-ons server (by default <italic>text='add-ons.wesnoth.org'</"
-#| "italic>), you will be presented with a list of add-ons available on the "
-#| "server for downloading.\n"
-#| "\n"
-#| "The installation status for each add-on is shown below each entry. For "
-#| "add-ons that are <italic>text='upgradable'</italic> or "
-#| "<italic>text='outdated'</italic> on the server, their installed and "
-#| "published versions will be shown in the <italic>text='Version'</italic> "
-#| "column.\n"
-#| "\n"
-#| "To search for add-ons by keywords, type any relevant terms in any order "
-#| "in the search box, separated by spaces. You can also sort the add-on list "
-#| "by clicking the column headers. It is also possible to choose to only "
-#| "display add-ons of specific categories by clicking on the "
-#| "<bold>text='Type'</bold> dropdown.\n"
-#| "\n"
-#| "To install an add-on, select it from the list and click the "
-#| "<bold>text='+'</bold> icon, or simply double-click on the add-on’s title. "
-#| "If the window is too small to show them inline, the <bold>text='Addon "
-#| "Details'</bold> button provides you with additional details about the add-"
-#| "on, such as its full description, installation status, and available "
-#| "translations."
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3328,8 +3275,8 @@ msgstr ""
 " \n"
 "Erweiterungen, die als Anlage Veröffentlichungsdaten mitbringen (*.pbl-"
 "Dateien), können nicht per Klick entfernt werden, um deren versehentlichen "
-"Verlust zu vermeiden. In dem Fall müsst Ihr diese Datei erst manuell löschen "
-"oder die komplette Erweiterung über den Dateimanager des Betriebssystems "
+"Verlust zu vermeiden. In diesem Fall müsst Ihr diese Datei erst manuell "
+"löschen oder die Erweiterung über den Dateimanager des Betriebssystems "
 "deinstallieren."
 
 #. [topic]: id=general_commands
@@ -4555,394 +4502,312 @@ msgstr ""
 "Info:"
 
 #: data/core/macros/special-notes.cfg:8
-#, fuzzy
-#| msgid ""
-#| " Spirits have very unusual resistances to damage, and move quite slowly "
-#| "over open water."
 msgid ""
 "\n"
 "• Spirits have very unusual resistances to damage, and move quite slowly "
 "over open water."
 msgstr ""
-" Geister haben sehr ungewöhnliche Widerstandsfähigkeiten und bewegen sich "
+"\n"
+"• Geister haben sehr ungewöhnliche Widerstandsfähigkeiten und bewegen sich "
 "nur recht langsam über offenes Wasser."
 
 #: data/core/macros/special-notes.cfg:12
-#, fuzzy
-#| msgid ""
-#| " This unit’s arcane attack deals tremendous damage to magical creatures, "
-#| "and even some to mundane creatures."
 msgid ""
 "\n"
 "• This unit’s arcane attack deals tremendous damage to magical creatures, "
 "and even some to mundane creatures."
 msgstr ""
-" Der arkane Angriff dieser Einheit fügt Untoten und Zauberwesen furchtbaren "
+"\n"
+"• Der arkane Angriff dieser Einheit fügt Untoten und Zauberwesen furchtbaren "
 "Schaden zu, selbst Normalsterbliche sind davor nicht immer sicher."
 
 #: data/core/macros/special-notes.cfg:16
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid ""
 "\n"
 "• This unit is capable of basic healing."
-msgstr " Diese Einheit beherrscht die Grundlagen der Heilkunst."
+msgstr ""
+"\n"
+"• Diese Einheit beherrscht die Grundlagen der Heilkunst."
 
 #: data/core/macros/special-notes.cfg:20
-#, fuzzy
-#| msgid " This unit is capable of rapid healing."
 msgid ""
 "\n"
 "• This unit is capable of rapid healing."
-msgstr " Diese Einheit beherrscht die grundlegenden Fähigkeiten der Heilkunst."
+msgstr ""
+"\n"
+"• Diese Einheit beherrscht die grundlegenden Fähigkeiten der Heilkunst."
 
 #: data/core/macros/special-notes.cfg:24
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "\n"
 "• This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
-" Diese Einheit ist in der Lage, alle befreundeten, direkt benachbarten "
+"\n"
+"• Diese Einheit ist in der Lage, alle befreundeten, direkt benachbarten "
 "Einheiten von ihren Wunden zu heilen oder von der Wirkung eines Giftes zu "
 "kurieren."
 
 #: data/core/macros/special-notes.cfg:28
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of neutralizing the effects of poison in units "
-#| "around it."
 msgid ""
 "\n"
 "• This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr ""
-" Diese Einheit kann die Wunden der Umstehenden heilen und hält die Wirkung "
+"\n"
+"• Diese Einheit kann die Wunden der Umstehenden heilen und hält die Wirkung "
 "eines Giftes auf."
 
 #: data/core/macros/special-notes.cfg:32
-#, fuzzy
-#| msgid ""
-#| " This unit regenerates, which allows it to heal as though always "
-#| "stationed in a village."
 msgid ""
 "\n"
 "• This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
 msgstr ""
-" Diese Einheit kann sich regenerieren. Durch Selbstheilung gesundet sie auf "
+"\n"
+"• Diese Einheit kann sich regenerieren. Durch Selbstheilung gesundet sie auf "
 "die gleiche Weise wie bei einem Aufenthalt in einem Dorf."
 
 #: data/core/macros/special-notes.cfg:36
-#, fuzzy
-#| msgid ""
-#| " The steadiness of this unit reduces damage from some attacks, but only "
-#| "while defending."
 msgid ""
 "\n"
 "• The steadiness of this unit reduces damage from some attacks, but only "
 "while defending."
 msgstr ""
-" Diese Einheit erleidet dank ihrer Zähigkeit bei einigen Angriffen weniger "
+"\n"
+"• Diese Einheit erleidet dank ihrer Zähigkeit bei einigen Angriffen weniger "
 "Schaden, jedoch nur bei der Verteidigung."
 
 #: data/core/macros/special-notes.cfg:40
-#, fuzzy
-#| msgid ""
-#| " The leadership of this unit enables adjacent units of the same side to "
-#| "deal more damage in combat, though this only applies to units of lower "
-#| "level."
 msgid ""
 "\n"
 "• The leadership of this unit enables adjacent units of the same side to "
 "deal more damage in combat, though this only applies to units of lower level."
 msgstr ""
-" Die Führungsqualität dieser Einheit bewirkt, dass benachbarte "
+"\n"
+"• Die Führungsqualität dieser Einheit bewirkt, dass benachbarte "
 "Gleichgesinnte niederer Ränge im Kampf größere Schäden anrichten."
 
 #: data/core/macros/special-notes.cfg:44
-#, fuzzy
-#| msgid ""
-#| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
-#| "control and thus move unhindered around them."
 msgid ""
 "\n"
 "• This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
-" Ihre Gewandtheit als Plänkler erlaubt es dieser Einheit, ungehindert "
+"\n"
+"• Ihre Gewandtheit als Plänkler erlaubt es dieser Einheit, ungehindert "
 "feindliche Stellungen zu umgehen und dabei jegliche Kontrollzone zu "
 "ignorieren."
 
 #: data/core/macros/special-notes.cfg:48
-#, fuzzy
-#| msgid " Illumination increases the lighting level in adjacent areas."
 msgid ""
 "\n"
 "• Illumination increases the lighting level in adjacent areas."
 msgstr ""
-" Diese Einheit ist von einer gleißenden Lichtaura umgeben, die sogar bessere "
-"Sichtverhältnisse in ihrer Umgebung schafft."
+"\n"
+"• Diese Einheit ist von einer gleißenden Lichtaura umgeben, die sogar "
+"bessere Sichtverhältnisse in ihrer Umgebung schafft."
 
 #: data/core/macros/special-notes.cfg:52
-#, fuzzy
-#| msgid ""
-#| " This unit can use one move to teleport between any two empty villages "
-#| "controlled by its side."
 msgid ""
 "\n"
 "• This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-" Durch Magie ist es dieser Einheit möglich, sich im Bruchteil eines "
+"\n"
+"• Durch Magie ist es dieser Einheit möglich, sich im Bruchteil eines "
 "Augenblickes von einem in ein anderes eigenes, freies Dorf zu versetzen."
 
 #: data/core/macros/special-notes.cfg:56
-#, fuzzy
-#| msgid ""
-#| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
-#| "unless it is immediately adjacent or has revealed itself by attacking."
 msgid ""
 "\n"
 "• In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
-" Diese Einheit kennt sich in Wäldern bestens aus und passt sich der Umgebung "
-"an, was ihr so gut wie Unsichtbarkeit erbringt. Der Gegner bekommt sie nur "
-"zu Gesicht, wenn er auf ein benachbartes Feld gelangt oder sie sich selbst "
-"durch einen Angriff zu erkennen gibt."
+"\n"
+"• Diese Einheit kennt sich in Wäldern bestens aus und passt sich der "
+"Umgebung an, was ihr so gut wie Unsichtbarkeit erbringt. Der Gegner bekommt "
+"sie nur zu Gesicht, wenn er auf ein benachbartes Feld gelangt oder sie sich "
+"selbst durch einen Angriff zu erkennen gibt."
 
 #: data/core/macros/special-notes.cfg:60
-#, fuzzy
-#| msgid ""
-#| " This unit is able to hide at night, leaving no trace of its presence."
 msgid ""
 "\n"
 "• This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
-" Diese Einheit vermag nachts mit der sie umgebenden Finsternis spurlos zu "
+"\n"
+"• Diese Einheit vermag nachts mit der sie umgebenden Finsternis spurlos zu "
 "verschmelzen. Solang der Gegner nicht direkt neben ihr steht, ist sie "
 "unsichtbar – es sei denn, sie offenbart sich durch einen Angriff ohne "
 "Warnung."
 
 #: data/core/macros/special-notes.cfg:64
-#, fuzzy
-#| msgid ""
-#| " This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to it."
 msgid ""
 "\n"
 "• This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
-" Diese Einheit findet in jedweden Dörfern (mit Ausnahme von Behausungen des "
+"\n"
+"• Diese Einheit findet in jedweden Dörfern (mit Ausnahme von Behausungen des "
 "Meervolkes) ein Versteck. Sie kann nur von Einheiten aufgespürt werden, die "
 "auf einem direkt benachbarten Feld stehen. Zudem wird sie sichtbar, sobald "
 "sie angreift."
 
 #: data/core/macros/special-notes.cfg:68
-#, fuzzy
-#| msgid ""
-#| " This unit can move unseen in deep water, requiring no air from the "
-#| "surface."
 msgid ""
 "\n"
 "• This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
-" Diese Einheit kann sich ungesehen in tiefem Wasser fortbewegen und braucht "
+"\n"
+"• Diese Einheit kann sich ungesehen in tiefem Wasser fortbewegen und braucht "
 "nicht aufzutauchen um Luft zu holen."
 
 #: data/core/macros/special-notes.cfg:72
-#, fuzzy
-#| msgid ""
-#| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
 msgid ""
 "\n"
 "• This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-" Da diese Einheit sich die Kadaver ihrer Opfer einverleibt und daran stärkt, "
-"erhält sie mit jeder Tötung einen zusätzlichen LP zu ihrem Maximalwert."
+"\n"
+"• Da diese Einheit sich die Kadaver ihrer Opfer einverleibt und daran "
+"stärkt, erhält sie mit jeder Tötung einen zusätzlichen LP zu ihrem "
+"Maximalwert."
 
 #: data/core/macros/special-notes.cfg:76
-#, fuzzy
-#| msgid ""
-#| " Whenever its berserk attack is used, this unit continues to push the "
-#| "attack until either it or its enemy lies dead."
 msgid ""
 "\n"
 "• Whenever its berserk attack is used, this unit continues to push the "
 "attack until either it or its enemy lies dead."
 msgstr ""
-" Im Kampfrausch kennt diese Einheit kein Erbarmen und ruht erst, wenn sie "
+"\n"
+"• Im Kampfrausch kennt diese Einheit kein Erbarmen und ruht erst, wenn sie "
 "selbst oder der Gegner tot am Boden liegt."
 
 #: data/core/macros/special-notes.cfg:80
-#, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "\n"
 "• If there is an enemy of the target on the opposite side of the target "
 "while attacking it, this unit may backstab, inflicting double damage by "
 "creeping around behind that enemy."
 msgstr ""
-" Steht einem Gegner noch ein weiterer Feind gegenüber, nutz diese Einheit "
+"\n"
+"• Steht einem Gegner noch ein weiterer Feind gegenüber, nutz diese Einheit "
 "ihren Vorteil rücksichtslos aus und überfällt das abgelenkte Opfer aus dem "
 "Hinterhalt – das Überraschungsmoment verhilft zu doppeltem Schaden."
 
 #: data/core/macros/special-notes.cfg:84
-#, fuzzy
-#| msgid ""
-#| " Foes who lose their life to the plague will rise again in unlife, unless "
-#| "they are standing on a village."
 msgid ""
 "\n"
 "• Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
-" Wer von dieser Einheit mittels der Waffenfähigkeit »Untote Plage« "
+"\n"
+"• Wer von dieser Einheit mittels der Waffenfähigkeit »Untote Plage« "
 "niedergestreckt wird, erhebt sich sogleich wieder als wandelnde Leiche und "
 "kämpft ab sofort an ihrer Seite. Nur Opfer, die sich gerade in einem Dorf "
 "aufhalten, entrinnen solchem Schicksal."
 
 #: data/core/macros/special-notes.cfg:88
-#, fuzzy
-#| msgid ""
-#| " This unit is able to slow its enemies, halving their movement speed and "
-#| "attack damage until they end a turn."
 msgid ""
 "\n"
 "• This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
-" Diese Einheit kann Gegner derart verlangsamen, dass sowohl deren Schadkraft "
-"im Kampf als auch die Bewegungsfähigkeit bis zum Ende der Runde um die "
-"Hälfte reduziert werden."
+"\n"
+"• Diese Einheit kann Gegner derart verlangsamen, dass sowohl deren "
+"Schadkraft im Kampf als auch die Bewegungsfähigkeit bis zum Ende der Runde "
+"um die Hälfte reduziert werden."
 
 #: data/core/macros/special-notes.cfg:92
-#, fuzzy
-#| msgid ""
-#| " The ability to turn the living to stone makes this unit extremely "
-#| "dangerous."
 msgid ""
 "\n"
 "• The ability to turn the living to stone makes this unit extremely "
 "dangerous."
 msgstr ""
-" Die Fähigkeit, Lebende in Stein zu verwandeln, macht diese Einheit zu einem "
-"extrem gefährlichen Gegner."
+"\n"
+"• Die Fähigkeit, Lebende in Stein zu verwandeln, macht diese Einheit zu "
+"einem extrem gefährlichen Gegner."
 
 #: data/core/macros/special-notes.cfg:96
-#, fuzzy
-#| msgid ""
-#| " This unit’s marksmanship gives it a high chance of hitting targeted "
-#| "enemies, but only on the attack."
 msgid ""
 "\n"
 "• This unit’s marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
 msgstr ""
-" Ihre hervorragende Treffsicherheit erlaubt es dieser Einheit, jeden Feind "
+"\n"
+"• Ihre hervorragende Treffsicherheit erlaubt es dieser Einheit, jeden Feind "
 "mit hoher Wahrscheinlichkeit zu treffen. Dies gilt jedoch nur in der "
 "Offensive."
 
 #: data/core/macros/special-notes.cfg:100
-#, fuzzy
-#| msgid ""
-#| " This unit has magical attacks, which always have a high chance of "
-#| "hitting an opponent."
 msgid ""
 "\n"
 "• This unit has magical attacks, which always have a high chance of hitting "
 "an opponent."
 msgstr ""
-" Diese Einheit verfügt über Angriffe magischer Natur, welche immer eine hohe "
-"Trefferwahrscheinlichkeit aufweisen."
+"\n"
+"• Diese Einheit verfügt über Angriffe magischer Natur, welche immer eine "
+"hohe Trefferwahrscheinlichkeit aufweisen."
 
 #: data/core/macros/special-notes.cfg:104
-#, fuzzy
-#| msgid ""
-#| " The swarming attacks of this unit become less deadly whenever its "
-#| "members are wounded."
 msgid ""
 "\n"
 "• The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
-" Mit steigender Verwundung ihrer Tentakel wird der Angriff dieser Einheit "
+"\n"
+"• Mit steigender Verwundung ihrer Tentakel wird der Angriff dieser Einheit "
 "immer weniger gefährlich."
 
 #: data/core/macros/special-notes.cfg:108
-#, fuzzy
-#| msgid ""
-#| " Using a charging attack doubles both damage dealt and received; this "
-#| "does not affect defensive retaliation."
 msgid ""
 "\n"
 "• Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
-" Angriffe dieser Einheit stehen unter dem Zeichen »Ansturm«. Damit "
+"\n"
+"• Angriffe dieser Einheit stehen unter dem Zeichen »Ansturm«. Damit "
 "verursacht sie doppelten Schaden, hat aber auch bei einem Vergeltungstreffer "
 "durch den Gegner doppelt so viel einzustecken – im Verteidigungsfall kommt "
 "dieser Nachteil jedoch nicht zum Tragen."
 
 #: data/core/macros/special-notes.cfg:112
-#, fuzzy
-#| msgid ""
-#| " During battle, this unit can drain life from victims to renew its own "
-#| "health."
 msgid ""
 "\n"
 "• During battle, this unit can drain life from victims to renew its own "
 "health."
 msgstr ""
-" Mittels einer Berührung oder eines Bisses entzieht die Einheit ihrem Opfer "
+"\n"
+"• Mittels einer Berührung oder eines Bisses entzieht die Einheit ihrem Opfer "
 "Lebenskraft, die sie sich zur eigenen Heilung einverleibt."
 
 #: data/core/macros/special-notes.cfg:116
-#, fuzzy
-#| msgid ""
-#| " The length of this unit’s weapon allows it to strike first in melee, "
-#| "even in defense."
 msgid ""
 "\n"
 "• The length of this unit’s weapon allows it to strike first in melee, even "
 "in defense."
 msgstr ""
-" Wegen der Länge ihrer Waffe führt diese Einheit stets den ersten Schlag, "
+"\n"
+"• Wegen der Länge ihrer Waffe führt diese Einheit stets den ersten Schlag, "
 "selbst wenn sie sich nur verteidigt."
 
 #: data/core/macros/special-notes.cfg:120
-#, fuzzy
-#| msgid ""
-#| " The victims of this unit’s poison will continually take damage until "
-#| "they can be cured in town or by a unit which cures."
 msgid ""
 "\n"
 "• The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
-" Vergiftungsopfer nehmen kontinuierlich Schaden, bis sie in einem Dorf oder "
+"\n"
+"• Vergiftungsopfer nehmen kontinuierlich Schaden, bis sie in einem Dorf oder "
 "von einem Heiler kuriert werden."
 
 #: data/core/macros/special-notes.cfg:124
-#, fuzzy
-#| msgid ""
-#| " This unit has a defense cap on certain terrain types — it cannot achieve "
-#| "a higher defense rating on mixed terrains with such terrain types."
 msgid ""
 "\n"
 "• This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
 msgstr ""
-" Diese Einheit hat ein Limit für ein bestimmtes Geländefeld – es kann keine "
+"\n"
+"• Diese Einheit hat ein Limit für ein bestimmtes Geländefeld – es kann keine "
 "höheren Verteidigungswerte auf gemischten Geländefeldern erhalten, die "
 "diesen Geländefeldtypen beinhalten."
 
@@ -5462,10 +5327,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<italic>text='Tumb'<italic> ist eine Schwäche, die unter Kobolden nur allzu "
-"oft feststellbar ist, aber auch bei anderen niederen Arten. Es hat schon "
-"seine Gründe, dass einige Spezies in Rangordnungen weiter unten stehen – ein "
-"weniger stark entwickelter Intellekt ist einer davon."
+"<italic>text='Tumb'</italic> ist eine Schwäche, die unter Kobolden nur allzu "
+"oft feststellbar ist, aber auch bei anderen niederen Arten. Es hat durchaus "
+"seine Gründe, dass einige Spezies in der Rangordnung weiter unten stehen – "
+"ein weniger stark entwickelter Intellekt ist einer davon."
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:315
@@ -5956,26 +5821,25 @@ msgstr ""
 "Falkner ihre Vögel so ausbilden, dass sie zwischen Freund und Feind "
 "unterscheiden können, was sie zu einem gewissen Grad nützlich macht."
 
+# Evt. auf andere Schreibweise umsteigen.
 #. [race]: id=roc, description=
 #: data/core/units.cfg:140
-#, fuzzy
 #| msgid "race^Orc"
 msgid "race^Roc"
-msgstr "Ork"
+msgstr "Roch"
 
 #. [race]: id=roc, description=
 #: data/core/units.cfg:141
-#, fuzzy
 #| msgid "race+female^Orc"
 msgid "race+female^Roc"
-msgstr "Ork"
+msgstr "Roch"
 
+# Es gibt nicht wirklich ein Plural davon …
 #. [race]: id=roc, description=
 #: data/core/units.cfg:142
-#, fuzzy
 #| msgid "race^Orcs"
 msgid "race^Rocs"
-msgstr "Orks"
+msgstr "Roch"
 
 #. [race]: id=goblin
 #: data/core/units.cfg:153
