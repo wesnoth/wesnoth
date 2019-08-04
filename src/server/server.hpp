@@ -124,6 +124,8 @@ private:
 	std::string input_path_;
 #endif
 
+	std::string uuid_;
+	
 	const std::string config_file_;
 	config cfg_;
 
