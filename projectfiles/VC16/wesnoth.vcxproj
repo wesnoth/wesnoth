@@ -83,7 +83,7 @@
     <LinkIncremental>true</LinkIncremental>
     <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\</LocalDebuggerWorkingDirectory>
     <LocalDebuggerEnvironment>OMP_WAIT_POLICY=PASSIVE</LocalDebuggerEnvironment>
-    <OutDir>$(SolutionDir)\..\..\</OutDir>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -96,13 +96,13 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)\..\..\</OutDir>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)\..\..\</OutDir>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">
