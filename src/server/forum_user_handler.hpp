@@ -81,6 +81,13 @@ class fuh : public user_handler {
 
 		bool use_phpbb_encryption() const { return true; }
 
+		std::string get_uuid();
+		void db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name);
+		void db_update_game_start(const std::string& uuid, int game_id, const std::string& map_name, const std::string& era_name);
+		void db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location);
+		void db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, const std::string& is_host, const std::string& faction);
+		void db_insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name);
+
 	private:
 		std::string get_hash(const std::string& user);
 		std::string get_mail(const std::string& user);
@@ -98,7 +105,7 @@ class fuh : public user_handler {
 		std::time_t retrieve_ban_duration_internal(const std::string& col, const std::string& detail);
 		std::time_t retrieve_ban_duration_internal(const std::string& col, unsigned int detail);
 
-		std::string db_name_, db_host_, db_user_, db_password_, db_users_table_, db_banlist_table_, db_extra_table_;
+		std::string db_name_, db_host_, db_user_, db_password_, db_users_table_, db_banlist_table_, db_extra_table_, db_game_info_table_, db_game_player_info_table_, db_game_modification_info_table_;
 
 		typedef std::unique_ptr<MYSQL_RES, decltype(&mysql_free_result)> mysql_result;
 

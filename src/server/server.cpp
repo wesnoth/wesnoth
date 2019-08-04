@@ -230,6 +230,7 @@ server::server(int port,
 #ifndef _WIN32
 	, input_path_()
 #endif
+	, uuid_("")
 	, config_file_(config_file)
 	, cfg_(read_config())
 	, accepted_versions_()
@@ -536,6 +537,7 @@ void server::load_config()
 		// from the config file
 		if(user_handler_) {
 			user_handler_->init_mailer(cfg_.child("mail"));
+			uuid_ = user_handler_->get_uuid();
 		}
 	}
 }
@@ -1395,11 +1397,19 @@ void server::create_game(player_record& host_record, simple_wml::node& create_ga
 	}
 
 	create_game.copy_into(g.level().root());
+
+	if(user_handler_) {
+		user_handler_->db_insert_game_info(uuid_, g.id(), game_config::wesnoth_version.str(), g.name());
+	}
 }
 
 void server::cleanup_game(game* game_ptr)
 {
 	metrics_.game_terminated(game_ptr->termination_reason());
+
+	if(user_handler_){
+		user_handler_->db_update_game_end(uuid_, game_ptr->id(), game_ptr->get_replay_filename());
+	}
 
 	simple_wml::node* const gamelist = games_and_users_list_.child("gamelist");
 	assert(gamelist != nullptr);
@@ -1710,6 +1720,24 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		// the [start_game] message has been sent
 		g.send_data(data, socket);
 		g.start_game(socket);
+
+		if(user_handler_) {
+			const simple_wml::node& multiplayer = *g.level().root().child("multiplayer");
+			user_handler_->db_update_game_start(uuid_, g.id(), multiplayer["mp_scenario"].to_string(), multiplayer["mp_era"].to_string());
+
+			const simple_wml::node::child_list& sides = g.get_sides_list();
+			for(unsigned side_index = 0; side_index < sides.size(); ++side_index) {
+				const simple_wml::node& side = *sides[side_index];
+				user_handler_->db_insert_game_player_info(uuid_, g.id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_string(), side["faction"].to_string());
+			}
+
+			const std::string mods = multiplayer["active_mods"].to_string();
+			if(mods != "") {
+				for(const std::string mod : utils::split(mods, ',')){
+					user_handler_->db_insert_modification_info(uuid_, g.id(), mod);
+				}
+			}
+		}
 
 		// update the game having changed in the lobby
 		update_game_in_lobby(g);

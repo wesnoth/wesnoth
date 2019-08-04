@@ -137,6 +137,8 @@ public:
 		current_turn_ = turn;
 	}
 
+	std::string get_replay_filename();
+
 	void mute_all_observers();
 
 	/**

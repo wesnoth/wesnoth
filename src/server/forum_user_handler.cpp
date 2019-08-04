@@ -42,8 +42,12 @@ fuh::fuh(const config& c)
 	, db_users_table_(c["db_users_table"].str())
 	, db_banlist_table_(c["db_banlist_table"].str())
 	, db_extra_table_(c["db_extra_table"].str())
+	, db_game_info_table_(c["db_game_info_table"].str())
+	, db_game_player_info_table_(c["db_game_player_info_table"].str())
+	, db_game_modification_info_table_(c["db_game_modification_info_table"].str())
 	, conn(mysql_init(nullptr))
 {
+	mysql_options(conn, MYSQL_SET_CHARSET_NAME, "utf8mb4");
 	if(!conn || !mysql_real_connect(conn, db_host_.c_str(),  db_user_.c_str(), db_password_.c_str(), db_name_.c_str(), 0, nullptr, 0)) {
 		ERR_UH << "Could not connect to database: " << mysql_errno(conn) << ": " << mysql_error(conn) << std::endl;
 	}
@@ -410,6 +414,60 @@ bool fuh::extra_row_exists(const std::string& name) {
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not execute test query for user '" << name << "' :" << e.message << std::endl;
 		return false;
+	}
+}
+
+std::string fuh::get_uuid(){
+	try {
+		return prepared_statement<std::string>("SELECT UUID()");
+	} catch (const sql_error& e) {
+		ERR_UH << "Could not retrieve a UUID:" << e.message << std::endl;
+		return "";
+	}
+}
+
+void fuh::db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name){
+	try {
+		prepared_statement<void>("insert into `" + db_game_info_table_ + "`(INSTANCE_UUID, GAME_ID, INSTANCE_VERSION, GAME_NAME) values(?, ?, ?, ?)",
+		uuid, game_id, version, name);
+	} catch (const sql_error& e) {
+		ERR_UH << "Could not insert into table `" + db_game_info_table_ + "`:" << e.message << std::endl;
+	}
+}
+
+void fuh::db_update_game_start(const std::string& uuid, int game_id, const std::string& map_name, const std::string& era_name){
+	try {
+		prepared_statement<void>("update `" + db_game_info_table_ + "` set START_TIME = CURRENT_TIMESTAMP, MAP_NAME = ?, ERA_NAME = ? where INSTANCE_UUID = ? and GAME_ID = ?",
+		map_name, era_name, uuid, game_id);
+	} catch (const sql_error& e) {
+		ERR_UH << "Could not update the game's starting information on table `" + db_game_info_table_ + "`:" << e.message << std::endl;
+	}
+}
+
+void fuh::db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location){
+	try {
+		prepared_statement<void>("update `" + db_game_info_table_ + "` set END_TIME = CURRENT_TIMESTAMP, REPLAY_NAME = ? where INSTANCE_UUID = ? and GAME_ID = ?",
+		replay_location, uuid, game_id);
+	} catch (const sql_error& e) {
+		ERR_UH << "Could not update the game's ending information on table `" + db_game_info_table_ + "`:" << e.message << std::endl;
+	}
+}
+
+void fuh::db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, const std::string& is_host, const std::string& faction){
+	try {
+		prepared_statement<void>("insert into `" + db_game_player_info_table_ + "`(INSTANCE_UUID, GAME_ID, USER_ID, SIDE_NUMBER, IS_HOST, FACTION) values(?, ?, IFNULL((select user_id from `"+db_users_table_+"` where username = ?), -1), ?, ?, ?)",
+		uuid, game_id, username, side_number, is_host, faction);
+	} catch (const sql_error& e) {
+		ERR_UH << "Could not insert the game's player information on table `" + db_game_player_info_table_ + "`:" << e.message << std::endl;
+	}
+}
+
+void fuh::db_insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name){
+	try {
+		prepared_statement<void>("insert into `" + db_game_modification_info_table_ + "`(INSTANCE_UUID, GAME_ID, MODIFICATION_NAME) values(?, ?, ?)",
+		uuid, game_id, modification_name);
+	} catch (const sql_error& e) {
+		ERR_UH << "Could not insert the game's modification information on table `" + db_game_modification_info_table_ + "`:" << e.message << std::endl;
 	}
 }
 
