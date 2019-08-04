@@ -17,7 +17,6 @@
 #include "events.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "network_asio.hpp"
-#include "wesnothd_connection.hpp"
 
 #include <boost/optional.hpp>
 
