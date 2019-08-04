@@ -40,7 +40,7 @@ namespace lua_mapgen
 		//moving is ok though.
 		filter(filter&&) = default;
 		filter& operator=(filter&&) = default;
-		
+
 		~filter();
 
 		bool matches(const mapgen_gamemap& m, map_location l);

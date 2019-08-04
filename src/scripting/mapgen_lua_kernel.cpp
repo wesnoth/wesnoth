@@ -85,7 +85,7 @@ static int intf_random(lua_State *L)
 static int intf_default_generate(lua_State *L)
 {
 	std::mt19937& rng = lua_kernel_base::get_lua_kernel<mapgen_lua_kernel>(L).get_default_rng();
-	
+
 	int width = luaL_checkinteger(L, 1);
 	int height = luaL_checkinteger(L, 2);
 
@@ -104,7 +104,7 @@ static int intf_default_generate(lua_State *L)
 	arg.max_lakes = cfg["max_lakes"].to_int(0);
 	arg.link_castles = cfg["link_castles"].to_bool();
 	arg.show_labels = cfg["show_labels"].to_bool(0);
-	
+
 	uint32_t seed = cfg["seed"].to_int(0);
 	if(!cfg.has_attribute("seed")) {
 		seed = rng();
@@ -123,7 +123,7 @@ static int intf_default_generate(lua_State *L)
 static int intf_default_generate_height_map(lua_State *L)
 {
 	std::mt19937& rng = lua_kernel_base::get_lua_kernel<mapgen_lua_kernel>(L).get_default_rng();
-	
+
 	int width = luaL_checkinteger(L, 1);
 	int height = luaL_checkinteger(L, 2);
 
@@ -235,8 +235,8 @@ mapgen_lua_kernel::mapgen_lua_kernel(const config* vars)
 	luaL_setfuncs(L, callbacks, 0);
 	lua_pop(L, 1);
 	assert(lua_gettop(L) == 0);
-	
-	
+
+
 	cmd_log_ << lua_terrainmap::register_metatables(L);
 	cmd_log_ << lua_terrainfilter::register_metatables(L);
 }

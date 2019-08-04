@@ -24,7 +24,7 @@ struct lua_State;
 class lua_unit;
 struct map_location;
 
-// this clas is similar to the orginal gamemap class but they have no 'is' rlation: 
+// this clas is similar to the orginal gamemap class but they have no 'is' rlation:
 //  mapgen_gamemap, unlike gamemap offers 'raw' access to the data
 //  gamemap, unlike mapgen_gamemap uses terain type data.
 class mapgen_gamemap
@@ -37,7 +37,7 @@ public:
 	mapgen_gamemap(int w, int h, terrain_code);
 
 	std::string to_string() const;
-	
+
 	/** Effective map width. */
 	int w() const { return total_width() - 2; }
 
@@ -91,7 +91,7 @@ public:
 	static int intf_mg_terrain_mask(lua_State *L);
 private:
 	t_translation::ter_map tiles_;
-	starting_positions starting_positions_;	
+	starting_positions starting_positions_;
 };
 
 bool luaW_isslocs(lua_State* L, int index);

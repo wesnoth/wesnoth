@@ -1093,7 +1093,7 @@ int game_lua_kernel::intf_terrain_mask(lua_State *L)
 			lua_pop(L, 1);
 		}
 	}
-	
+
 
 	gamemap mask_map(board().map().tdata(), "");
 	mask_map.read(t_str, false);
@@ -1743,7 +1743,7 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 		ignore_units = luaW_table_get_def<bool>(L, arg, "ignore_units", false);
 
 		ignore_teleport = luaW_table_get_def<bool>(L, arg, "ignore_teleport", false);
-	
+
 		stop_at = luaW_table_get_def<double>(L, arg, "stop_at", stop_at);
 
 

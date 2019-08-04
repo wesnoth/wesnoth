@@ -416,7 +416,7 @@ namespace
 		} else {
 			message = VGETTEXT(text.c_str(), i18n_vars);
 		}
-		
+
 		if(show_long_message && !ignore) {
 			play_controller::scoped_savegame_snapshot snapshot(controller);
 			std::stringstream sbuilder;

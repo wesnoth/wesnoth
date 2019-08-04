@@ -241,7 +241,7 @@ void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
 	typedef std::set<map_location> location_set;
 	location_set not_visited(locs.begin(), locs.end());
 
-	get_tiles_radius(std::move(not_visited), radius, result, 
+	get_tiles_radius(std::move(not_visited), radius, result,
 		[&](const map_location& l) {
 			return with_border ? map.on_board_with_border(l) : map.on_board(l);
 		},

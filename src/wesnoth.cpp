@@ -497,7 +497,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		std::cout << "\n========= BUILD INFORMATION =========\n\n" << game_config::full_build_report();
 		return 0;
 	}
-	
+
 	if(cmdline_opts.validate_schema) {
 		schema_validation::schema_self_validator validator;
 		validator.set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
@@ -510,7 +510,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		handle_preprocess_command(cmdline_opts);
 		return 0;
 	}
-	
+
 	if(cmdline_opts.validate_wml) {
 		std::string schema_path;
 		if(cmdline_opts.validate_with) {

@@ -561,7 +561,7 @@ static const std::string& get_version_path_suffix()
 		old_saves_dir += get_version_path_suffix();
 		boost::filesystem::path new_saves_dir = home / "Library/Containers/org.wesnoth.Wesnoth/Data/Library/Application Support/Wesnoth_";
 		new_saves_dir += get_version_path_suffix();
-	
+
 		if(bfs::is_directory(new_saves_dir)) {
 			if(!bfs::exists(old_saves_dir)) {
 				std::cout << "Apple developer's userdata migration: ";

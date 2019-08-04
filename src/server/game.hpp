@@ -281,7 +281,7 @@ public:
 	{
 		password_ = passwd;
 	}
-	
+
 	void set_name_bans(const std::vector<std::string> name_bans)
 	{
 	  name_bans_ = name_bans;

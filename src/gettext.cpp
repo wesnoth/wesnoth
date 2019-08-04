@@ -490,7 +490,7 @@ int icompare(const std::string& s1, const std::string& s2)
 
 		if(!bad_cast_once) {
 			ERR_G << "locale set-up for icompare() is broken, falling back to std::string::compare()\n";
-			
+
 			try { //just to be safe.
 				ERR_G << get_manager().debug_description() << "\n";
 			} catch (const std::exception& e) {
