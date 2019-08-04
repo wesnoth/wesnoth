@@ -57,7 +57,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 
 	wesnothd_connection_ptr sock(nullptr);
 	if(host.empty()) {
-		return std::make_pair(std::move(sock), config());
+		return std::make_pair(nullptr, config());
 	}
 
 	// shown_hosts is used to prevent the client being locked in a redirect loop.
@@ -75,17 +75,14 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 	// Initializes the connection to the server.
 	sock = std::make_unique<wesnothd_connection>(addr.first, addr.second);
 	if(!sock) {
-		return std::make_pair(std::move(sock), config());
+		return std::make_pair(nullptr, config());
 	}
 
 	// Start stage
 	gui2::dialogs::loading_screen::progress(loading_stage::connect_to_server);
 
 	// First, spin until we get a handshake from the server.
-	while(!sock->handshake_finished()) {
-		sock->poll();
-		SDL_Delay(1);
-	}
+	sock->wait_for_handshake();
 
 	gui2::dialogs::loading_screen::progress(loading_stage::waiting);
 
@@ -98,7 +95,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 	// Then, log in and wait for the lobby/game join prompt.
 	do {
 		if(!sock) {
-			return std::make_pair(std::move(sock), config());
+			return std::make_pair(nullptr, config());
 		}
 
 		data.clear();
@@ -140,10 +137,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 			sock = std::make_unique<wesnothd_connection>(redirect_host, redirect_port);
 
 			// Wait for new handshake.
-			while(!sock->handshake_finished()) {
-				sock->poll();
-				SDL_Delay(1);
-			}
+			sock->wait_for_handshake();
 
 			gui2::dialogs::loading_screen::progress(loading_stage::waiting);
 			continue;

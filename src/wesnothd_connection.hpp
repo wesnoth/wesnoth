@@ -36,6 +36,7 @@
 #include <boost/asio.hpp>
 
 #include <deque>
+#include <future>
 #include <list>
 #include <thread>
 #include <mutex>
@@ -80,6 +81,8 @@ public:
 	 */
 	bool wait_and_receive_data(config& data);
 
+	void wait_for_handshake();
+
 	/** Handles all pending asynchornous events and returns. */
 	std::size_t poll();
 
@@ -87,12 +90,6 @@ public:
 
 	// Destroys this object.
 	void stop();
-
-	/** True if connected and no high-level operation is in progress */
-	bool handshake_finished() const
-	{
-		return handshake_finished_;
-	}
 
 	std::size_t bytes_to_write() const
 	{
@@ -125,7 +122,7 @@ public:
 	}
 
 private:
-	std::unique_ptr<std::thread> worker_thread_;
+	std::thread worker_thread_;
 
 	boost::asio::io_service io_service_;
 
@@ -139,7 +136,7 @@ private:
 
 	std::mutex last_error_mutex_;
 
-	bool handshake_finished_;
+	std::promise<bool> handshake_finished_;
 
 	boost::asio::streambuf read_buf_;
 

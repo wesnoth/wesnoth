@@ -61,7 +61,7 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 	, socket_(io_service_)
 	, last_error_()
 	, last_error_mutex_()
-	, handshake_finished_(false)
+	, handshake_finished_()
 	, read_buf_()
 	, handshake_response_()
 	, recv_queue_()
@@ -76,6 +76,12 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 	resolver_.async_resolve(boost::asio::ip::tcp::resolver::query(host, service),
 		std::bind(&wesnothd_connection::handle_resolve, this, _1, _2));
 
+	// Starts the worker thread. Do this *after* the above async_resolve call or it will just exit immediately!
+	worker_thread_ = std::thread([this]() {
+		io_service_.run();
+		LOG_NW << "wesnothd_connection::io_service::run() returned\n";
+	});
+
 	LOG_NW << "Resolving hostname: " << host << '\n';
 }
 
@@ -84,13 +90,11 @@ wesnothd_connection::~wesnothd_connection()
 	MPTEST_LOG;
 
 	// Stop the io_service and wait for the worker thread to terminate.
-	if(worker_thread_) {
-		stop();
-		worker_thread_->join();
-	}
+	stop();
+	worker_thread_.join();
 }
 
-// main thread
+// worker thread
 void wesnothd_connection::handle_resolve(const error_code& ec, resolver::iterator iterator)
 {
 	MPTEST_LOG;
@@ -102,7 +106,7 @@ void wesnothd_connection::handle_resolve(const error_code& ec, resolver::iterato
 	connect(iterator);
 }
 
-// main thread
+// worker thread
 void wesnothd_connection::connect(resolver::iterator iterator)
 {
 	MPTEST_LOG;
@@ -110,7 +114,7 @@ void wesnothd_connection::connect(resolver::iterator iterator)
 	LOG_NW << "Connecting to " << iterator->endpoint().address() << '\n';
 }
 
-// main thread
+// worker thread
 void wesnothd_connection::handle_connect(const boost::system::error_code& ec, resolver::iterator iterator)
 {
 	MPTEST_LOG;
@@ -130,7 +134,7 @@ void wesnothd_connection::handle_connect(const boost::system::error_code& ec, re
 	}
 }
 
-// main thread
+// worker thread
 void wesnothd_connection::handshake()
 {
 	MPTEST_LOG;
@@ -143,7 +147,7 @@ void wesnothd_connection::handshake()
 		std::bind(&wesnothd_connection::handle_handshake, this, _1));
 }
 
-// main thread
+// worker thread
 void wesnothd_connection::handle_handshake(const error_code& ec)
 {
 	MPTEST_LOG;
@@ -152,13 +156,16 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 		throw system_error(ec);
 	}
 
-	handshake_finished_ = true;
+	handshake_finished_.set_value(true);
 	recv();
+}
 
-	worker_thread_.reset(new std::thread([this]() {
-		io_service_.run();
-		LOG_NW << "wesnothd_connection::io_service::run() returned\n";
-	}));
+// main thread
+void wesnothd_connection::wait_for_handshake()
+{
+	MPTEST_LOG;
+	LOG_NW << "Waiting for handshake" << std::endl;
+	handshake_finished_.get_future().wait();
 }
 
 // main thread
@@ -366,7 +373,6 @@ void wesnothd_connection::recv()
 std::size_t wesnothd_connection::poll()
 {
 	MPTEST_LOG;
-	assert(!worker_thread_);
 
 	try {
 		return io_service_.poll();
