@@ -389,23 +389,6 @@ void wesnothd_connection::recv()
 		std::bind(&wesnothd_connection::handle_read, this, _1, _2));
 }
 
-// main thread, during handshake
-std::size_t wesnothd_connection::poll()
-{
-	MPTEST_LOG;
-
-	try {
-		return io_service_.poll();
-	} catch(const boost::system::system_error& err) {
-		if(err.code() == boost::asio::error::operation_aborted || err.code() == boost::asio::error::eof) {
-			return 1;
-		}
-
-		WRN_NW << __func__ << " Rethrowing: " << err.code() << "\n";
-		throw error(err.code());
-	}
-}
-
 // main thread
 bool wesnothd_connection::receive_data(config& result)
 {

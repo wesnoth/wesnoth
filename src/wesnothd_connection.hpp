@@ -84,9 +84,6 @@ public:
 
 	void wait_for_handshake();
 
-	/** Handles all pending asynchornous events and returns. */
-	std::size_t poll();
-
 	void cancel();
 
 	// Destroys this object.
