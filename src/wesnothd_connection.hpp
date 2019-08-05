@@ -40,6 +40,7 @@
 #include <list>
 #include <thread>
 #include <mutex>
+#include <queue>
 
 class config;
 enum class loading_stage;
@@ -159,8 +160,11 @@ private:
 	void send();
 	void recv();
 
-	std::list<std::shared_ptr<boost::asio::streambuf>> send_queue_;
-	std::list<config> recv_queue_;
+	template<typename T>
+	using data_queue = std::queue<T, std::list<T>>;
+
+	data_queue<std::shared_ptr<boost::asio::streambuf>> send_queue_;
+	data_queue<config> recv_queue_;
 
 	std::mutex recv_queue_mutex_;
 

@@ -182,7 +182,7 @@ void wesnothd_connection::send_data(const configr_of& request)
 	// TODO: should I capture a shared_ptr for this?
 	io_service_.post([this, buf_ptr]() {
 		DBG_NW << "In wesnothd_connection::send_data::lambda\n";
-		send_queue_.push_back(buf_ptr);
+		send_queue_.push(buf_ptr);
 
 		if(send_queue_.size() == 1) {
 			send();
@@ -248,7 +248,7 @@ void wesnothd_connection::handle_write(const boost::system::error_code& ec, std:
 	MPTEST_LOG;
 	DBG_NW << "Written " << bytes_transferred << " bytes.\n";
 
-	send_queue_.pop_front();
+	send_queue_.pop();
 
 	if(ec) {
 		{
@@ -332,7 +332,7 @@ void wesnothd_connection::handle_read(const boost::system::error_code& ec, std::
 
 	{
 		std::lock_guard<std::mutex> lock(recv_queue_mutex_);
-		recv_queue_.emplace_back(std::move(data));
+		recv_queue_.emplace(std::move(data));
 	}
 
 	recv();
@@ -395,7 +395,7 @@ bool wesnothd_connection::receive_data(config& result)
 		std::lock_guard<std::mutex> lock(recv_queue_mutex_);
 		if(!recv_queue_.empty()) {
 			result.swap(recv_queue_.front());
-			recv_queue_.pop_front();
+			recv_queue_.pop();
 			return true;
 		}
 	}
