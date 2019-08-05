@@ -78,7 +78,17 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 
 	// Starts the worker thread. Do this *after* the above async_resolve call or it will just exit immediately!
 	worker_thread_ = std::thread([this]() {
-		io_service_.run();
+		try {
+			io_service_.run();
+		} catch(const boost::system::system_error& err) {
+			try {
+				// Attempt to pass the exception on to the handshake promise.
+				handshake_finished_.set_exception(std::current_exception());
+			} catch(const std::future_error&) {
+				// Handshake already complete. Do nothing.
+			}
+		}
+
 		LOG_NW << "wesnothd_connection::io_service::run() returned\n";
 	});
 
@@ -165,7 +175,17 @@ void wesnothd_connection::wait_for_handshake()
 {
 	MPTEST_LOG;
 	LOG_NW << "Waiting for handshake" << std::endl;
-	handshake_finished_.get_future().wait();
+
+	try {
+		handshake_finished_.get_future().get();
+	} catch(const boost::system::system_error& err) {
+		if(err.code() == boost::asio::error::operation_aborted || err.code() == boost::asio::error::eof) {
+			return;
+		}
+
+		WRN_NW << __func__ << " Rethrowing: " << err.code() << "\n";
+		throw error(err.code());
+	}
 }
 
 // main thread
