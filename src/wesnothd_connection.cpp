@@ -40,7 +40,7 @@ struct mptest_log
 {
 	mptest_log(const char* functionname)
 	{
-		WRN_NW << "Process:" << getpid() << " Thread:" << boost::this_thread::get_id() << " Function: " << functionname << " Start\n";
+		WRN_NW << "Process:" << getpid() << " Thread:" << std::this_thread::get_id() << " Function: " << functionname << " Start\n";
 	}
 };
 }
