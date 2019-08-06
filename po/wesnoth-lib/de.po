@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-07-18 15:50+0300\n"
-"PO-Revision-Date: 2019-06-25 16:43+0200\n"
+"PO-Revision-Date: 2019-08-04 23:21+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -4398,10 +4398,8 @@ msgstr "Zu welcher Allianz diese Partei gehört"
 
 #. [menu_button]: id=side_color
 #: data/gui/window/mp_staging.cfg:304
-#, fuzzy
-#| msgid "The team color"
 msgid "This side’s color"
-msgstr "Farbe der Partei"
+msgstr "Farbe dieser Partei"
 
 #. [button]: id=ok
 #: data/gui/window/mp_staging.cfg:422
@@ -6499,7 +6497,7 @@ msgstr "&#9679;"
 #: src/gui/dialogs/preferences_dialog.cpp:850
 #: src/gui/dialogs/preferences_dialog.cpp:920
 msgid "No hotkey selected"
-msgstr ""
+msgstr "Kein Tastenkürzel ausgewählt"
 
 #: src/gui/dialogs/preferences_dialog.cpp:881
 msgid ""
@@ -7387,13 +7385,15 @@ msgstr "ID der Einheit ändern"
 msgid "Loyal"
 msgstr "Loyal"
 
+# Übersetung sollte nicht länger sein, verursacht sonst eine Scrollleiste in den Hotkey-Einstellungen.
 #: src/hotkey/hotkey_command.cpp:210
 msgid "Toggle Minimap Unit Coding"
-msgstr "Einheitenkodierung auf Minikarte umschalten"
+msgstr "Zeige Teamfarben auf der Minikarte"
 
+# Übersetung sollte nicht länger sein, verursacht sonst eine Scrollleiste in den Hotkey-Einstellungen.
 #: src/hotkey/hotkey_command.cpp:211
 msgid "Toggle Minimap Terrain Coding"
-msgstr "Geländekodierung auf Minikarte umschalten"
+msgstr "Zeige Geländetyp auf der Minkarte"
 
 #: src/hotkey/hotkey_command.cpp:213
 msgid "Toggle Minimap Unit Drawing"
@@ -7405,7 +7405,7 @@ msgstr "Zeichne Dörfer auf die Minikarte"
 
 #: src/hotkey/hotkey_command.cpp:215
 msgid "Toggle Minimap Terrain Drawing"
-msgstr "Geländeübergänge aktualisieren"
+msgstr "Zeichne Gelände auf die Minikarte"
 
 #: src/hotkey/hotkey_command.cpp:217
 msgid "Next Brush"
@@ -7470,13 +7470,15 @@ msgstr "Auswahl umkehren"
 msgid "Select None"
 msgstr "Nichts auswählen"
 
+# Übersetung sollte nicht länger sein, verursacht sonst eine Scrollleiste in den Hotkey-Einstellungen.
 #: src/hotkey/hotkey_command.cpp:232
 msgid "Rotate Clipboard Clockwise"
-msgstr "Zwischenablage im Uhrzeigersinn rotieren"
+msgstr "Zwischenablage rotieren (Uhrzeigersinn)"
 
+# Übersetung sollte nicht länger sein, verursacht sonst eine Scrollleiste in den Hotkey-Einstellungen.
 #: src/hotkey/hotkey_command.cpp:233
 msgid "Rotate Clipboard Counter-Clockwise"
-msgstr "Zwischenablage gegen den Uhrzeigersinn rotieren"
+msgstr "Zwischenablage rotieren (Gegenrichtung)"
 
 #: src/hotkey/hotkey_command.cpp:234
 msgid "Flip Clipboard Horizontally"
@@ -8476,3 +8478,50 @@ msgstr ""
 
 #~ msgid "Elvish Castle"
 #~ msgstr "Elfenkastell"
+
+#~ msgid ""
+#~ "<italic>text='Mushroom groves'</italic> are vast underground forests of "
+#~ "giant mushrooms,\n"
+#~ "which thrive in the damp darkness. Most units have trouble negotiating "
+#~ "the spongy floor of smaller fungi, but they have plenty of cover behind "
+#~ "the larger stalks. Mounted units, however, become completely mired and "
+#~ "lack proper freedom of movement in combat. Undead units have a natural "
+#~ "affinity for decay and function quite well in mushroom forests.\n"
+#~ "\n"
+#~ "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
+#~ "receive only 20%."
+#~ msgstr ""
+#~ "<italic>text='Pilzhaine'</italic> sind große Untergrundwälder bestehend "
+#~ "aus riesigen Pilzen, \n"
+#~ "welche in der feuchten Dunkelheit gut wachsen. Die meisten Einheiten sind "
+#~ "durch den weichen, schwammartigen Boden in ihrer Bewegung eingeschränkt, "
+#~ "doch haben sie gute Deckung hinter größeren Pilzen. Berittene Einheiten "
+#~ "jedoch büßen ihren Bewegungsfreiraum im Kampf vollständig ein. Untote "
+#~ "Einheiten haben eine natürliche Neigung zum Zerfall und finden sich in "
+#~ "den Pilzhainen bestens zurecht.\n"
+#~ "\n"
+#~ "Die meisten Einheiten erhalten 50% bis 60% Verteidigung in Pilzhainen, "
+#~ "wohingegen Reiter nur 20% erhalten."
+
+#~ msgid ""
+#~ "<italic>text='Hills'</italic> represent any reasonably rough terrain,\n"
+#~ "with enough dips and rises in the ground to provide some cover. Hills are "
+#~ "difficult for most troops to navigate. Dwarves, trolls, and orcs have "
+#~ "enough familiarity with the terrain that they can pass through it without "
+#~ "being slowed down. Cavalry have enough trouble navigating the terrain "
+#~ "that any defensive aid lent by cover is negated.\n"
+#~ "\n"
+#~ "Most units have about 50% defense in hills, whereas cavalry are limited "
+#~ "to 40%. Dwarves enjoy 60% defense in hills."
+#~ msgstr ""
+#~ "<italic>text='Hügel'</italic> repräsentieren hügeliges Gelände, \n"
+#~ "mit genug Erhöhungen und Einbuchtungen, um etwas Deckung zu "
+#~ "gewährleisten. Für die meisten Truppen ist es schwierig, auf hügeligem "
+#~ "Gelände zu navigieren. Zwerge, Trolle und Orks sind zur Genüge mit dem "
+#~ "Gelände vertraut, um sie ohne Komplikationen bereisen zu können. Reiter "
+#~ "haben jedoch Schwierigkeiten, dieses Gelände zu bereisen, wodurch sie "
+#~ "jegliche Deckung verlieren.\n"
+#~ "\n"
+#~ "Die meisten Einheiten haben etwa 50% Verteidigung. Reiter sind auf "
+#~ "maximal 40% beschränkt. Zwerge freuen sich über gute 60% Verteidigung im "
+#~ "Hügelland."

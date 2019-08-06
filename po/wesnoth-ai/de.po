@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-07-18 12:50 UTC\n"
-"PO-Revision-Date: 2018-09-13 19:26+0200\n"
+"PO-Revision-Date: 2019-08-04 23:56+0200\n"
 "Last-Translator: daMark <daMark@arcor.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -37,18 +37,17 @@ msgstr "Entw. KI: Leerlaufende KI"
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
-msgstr "Stadndard KI (RCA) mit alternativer Einheitenauswahl"
+msgstr "Entw. KI: Stadndard KI (RCA) mit alternativer Rekrutierung"
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/dev/formula_ai.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (Formula AI)"
-msgstr ""
-"Entw. KI: Standard + experimentelle Einheitenauswahl (Formelbasierte KI)"
+msgstr "Entw. KI: Standard + experimentelle Rekrutierung (Formula KI)"
 
 #. [ai]: id=formula_ai_poisoning
 #: data/ai/dev/formula_ai_poisoning.cfg:9
 msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
-msgstr "Entw. KI: Standard + Vergiftend (Formelbasierte KI)"
+msgstr "Entw. KI: Standard + Vergiftend (Formlua KI)"
 
 #. [test]: id=The_Elves_Besieged
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:5
@@ -139,18 +138,18 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
-"Dies ist eine Neuauflage des Szenarios „Die Belagerung der Elfen“ aus der "
-"Hauptkampagne „Der Thronerbe“, aber hier bestimmt die KI die Züge von "
+"Dies ist eine Neuauflage des Szenarios »Die Belagerung der Elfen« aus der "
+"Hauptkampagne »Der Thronerbe«, aber hier bestimmt die KI die Züge von "
 "Konrad. Das Ziel ist es, Konrad bis zum Wegweiser im Nordwesten zu bringen "
 "und auch Delfador am Leben zu halten. Es wird die gleiche KI verwendet wie "
-"im Szenario „Beschütze die Einheit“.\n"
+"im Demo-Szenario »Beschütze die Einheit«.\n"
 "\n"
-"Bemerkung: Die „Beschütze die Einheit“ KI ist als Mikro-KI programmiert. "
+"Bemerkung: Die »Beschütze die Einheit« KI ist als Mikro-KI programmiert. "
 "Eine Mikro-KI kann, abgestimmt auf die Anforderungen eines Szenarios, "
 "einfach eingesetzt und angepasst werden. Dazu benötigt man nur WML Code und "
-"die Markierung [micro-ai]. Weitergehende Informationen finden sich auf der "
-"<span color='#00A000'>Micro AI wiki page</span> unter http://wiki.wesnoth."
-"org/Micro_AIs "
+"benutzt den WML-Tag [micro_ai]. Weitergehende Informationen finden sich auf "
+"der <span color='#00A000'>Micro AI wiki page</span> unter http://wiki."
+"wesnoth.org/Micro_AIs"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:226
@@ -169,36 +168,36 @@ msgid ""
 "In HttT, we would travel north now, and try to make it to the Isle of "
 "Alduin. But for this demo campaign, we'll call it good here."
 msgstr ""
-"In „Der Thronerbe“ würde man jetzt in den Norden reisen und versuchen die "
+"In »Der Thronerbe« würde man jetzt in den Norden reisen und versuchen die "
 "Insel Alduin zu erreichen. Aber in dieser Demo-Kampagne lassen wir es hier "
 "zu Ende gehen."
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:272
 msgid "I... I don’t think I can make it anymore."
-msgstr "I... Ich glaube nicht, dass ich weitermachen kann."
+msgstr "I… Ich glaube nicht, dass ich weitermachen kann."
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:276
 msgid "Prince... you must keep fighting! Nooooooo!"
-msgstr "Prinz... ihr müsst weiterkämpfen! NEIN!"
+msgstr "Prinz… Ihr müsst weiterkämpfen! NEIN!"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:280
 msgid "It is over. I am doomed..."
-msgstr "Es ist vorbei, ich bin des Todes..."
+msgstr "Es ist vorbei, ich bin des Todes…"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:294
 msgid "I have... have failed in my duty to protect the prince! I am defeated."
 msgstr ""
-"Ich... bin in meiner Pflicht, den Prinzen zu beschützen... gescheitert. Ich "
-"bin besiegt."
+"Ich… bin in meiner Pflicht, den Prinzen zu beschützen… gescheitert. Ich habe "
+"verloren."
 
 #. [message]: speaker=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:298
 msgid "Don’t die, Delfador! Please, you have to stay alive!"
-msgstr "Sterbt nicht, Delfador! Bitte, ihr müsst am Leben bleiben!"
+msgstr "Sterbt nicht, Delfador! Bitte, Ihr müsst am Leben bleiben!"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:302
@@ -211,7 +210,7 @@ msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
 msgstr ""
 "Die Orks haben den Weg nach Norden versperrt. Wir können nicht mehr "
-"entkommen..."
+"entkommen…"
 
 #: data/ai/micro_ais/scenarios/animals.cfg:4
 msgid ""
@@ -258,8 +257,8 @@ msgstr ""
 "angreifen. Mit der Zeit lernen sie auch, dass es nicht gesund ist, junge "
 "Ferkel anzugreifen. Wenn kein Rotwild mehr da ist, wandern sie zufällig "
 "umher. Anders als die durch die allgemeine KI gesteuerten Wölfe, die in "
-"einem anderen Szenario verwendet wird, fasst diese KI alle Wölfe dieser "
-"Karte zu einem Rudel zusammen."
+"einem anderen Szenario verwendet wird, fast diese KI alle Wölfe dieser Karte "
+"zu einem Rudel zusammen."
 
 #: data/ai/micro_ais/scenarios/animals.cfg:12
 msgid ""
@@ -427,7 +426,7 @@ msgid ""
 "Wesnoth mainline, such as bears, sheep and sheep dogs, or deer. In this test "
 "scenario, these units have been replaced by mainline units."
 msgstr ""
-"<span color='#A00000'>Wichtig:</span> Die Tiere Mikro-KIs in diesem Szenario "
+"<span color='#A00000'>Wichtig:</span> Die Mikro-KIs in diesem Szenario "
 "wurden für eine Reihe von Tieren geschrieben, die im Hauptzweig von Wesnoth "
 "nicht existieren wie Bären, Schafe, Schäferhunde oder Rotwild. In diesem "
 "Test-Szenario wurden diese Einheiten durch im Wesnoth-Hauptzweig "
@@ -471,9 +470,9 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
-"Es ist möglich eine von einem menschlichen Spieler kontrollierte „Fraktion "
-"1“ einzufügen. In diesem Fall hält die Simulation einmal in jeder Runde an, "
-"so dass man sich umsehen kann (oder im Debugmodus mit Einstellungen spielen "
+"Es ist möglich eine von einem menschlichen Spieler kontrollierte »Partei 1« "
+"einzufügen. In diesem Fall hält die Simulation einmal in jeder Runde an, so "
+"dass man sich umsehen kann (oder im Debugmodus mit Einstellungen spielen "
 "kann).\n"
 "\n"
 "Man sollte daran denken, dass dieses Szenario kein Ende hat. Zu "
@@ -500,7 +499,7 @@ msgstr "<span font='16'>Ich will nur die Tiere beobachten.</span>"
 #: data/ai/micro_ais/scenarios/animals.cfg:396
 #: data/ai/micro_ais/scenarios/wolves.cfg:232
 msgid "<span font='16'>I want to have control of Side 1.</span>"
-msgstr "<span font='16'>Ich will die „Fraktion 1“ kontrollieren.</span>"
+msgstr "<span font='16'>Ich will die »Partei 1« kontrollieren.</span>"
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/animals.cfg:402
@@ -707,7 +706,7 @@ msgstr ""
 "Ein paar Details (Eigenschaften, keine Fehler, aber das kann geändert "
 "werden, wenn es gewünscht wird):\n"
 "- Wenn mir der Heimweg versperrt ist, wenn ich ihn gehen will, dann "
-"übernimmt die normale RCA die Steuerung meines Verhaltens.\n"
+"übernimmt die normale RCA KI die Steuerung meines Verhaltens.\n"
 "- Ich werde jeden Feind angreifen, der meinen Hort besetzt hält, wenn es mir "
 "möglich ist dorthin zu kommen.\n"
 "- Nach dem Töten meiner Beute gehe ich nur dann zu meinem Hort, wenn ich der "
@@ -828,7 +827,7 @@ msgstr "Feldwebel Aethubry"
 #. [set_menu_item]: id=m01_new_footpad
 #: data/ai/micro_ais/scenarios/goto.cfg:339
 msgid "Place Side 1 Footpad"
-msgstr "Platz Fraktion 1 Wegelagerer"
+msgstr "Wegelagerer platzieren (Partei 1)"
 
 #. [set_menu_item]: id=m02_kill_unit
 #. [set_menu_item]: id=m05_kill_unit
@@ -841,8 +840,7 @@ msgstr "Töte die Einheit unter dem Cursor"
 #. [set_menu_item]: id=m03_null_control
 #: data/ai/micro_ais/scenarios/goto.cfg:363
 msgid "Turn off human control of Side 1"
-msgstr ""
-"Schalte die Kontrolle durch einen menschlichen Spieler für die Fraktion 1 ab"
+msgstr "Schalte die Kontrolle durch einen menschlichen Spieler für Partie 1 ab"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/goto.cfg:419
@@ -861,18 +859,18 @@ msgid ""
 "tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at "
 "https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
-"Dieses Szenario demonstriert verschiedene Anwendungen der „Ziel“ Mikro-Ki. "
+"Dieses Szenario demonstriert verschiedene Anwendungen der »Goto« Mikro-Ki. "
 "Alle KI Fraktionen werden von dieser M-KI in der einen oder anderen Weise "
-"kontrolliert (Ausnahme sind die Saurianer, die von der Schleicher Mikro-KI "
+"kontrolliert (Ausnahme sind die Saurianer, die von der »Lurker« Mikro-KI "
 "gesteuert werden). Während des Szenarios werden laufend Nachrichten "
 "angezeigt um zu zeigendes die Einheiten tun.\n"
 "\n"
 "Der Spieler kontrolliert die Fraktion 1. Per Rechtsklick kann man auf ein "
-"Menü zugreifen mit dem man für die Fraktion 1 der Karte Einheiten hinzufügen "
+"Menü zugreifen mit dem man für die Partei 1 der Karte Einheiten hinzufügen "
 "und wieder entfernen kann. Das ist vor allem nützlich um zu beobachten wie "
-"die Wächter der Fraktion 3 reagieren.\n"
+"die Wächter der Partei 3 reagieren.\n"
 "\n"
-"Bemerkung: Die „Ziel“-KI ist als Mikro-KI programmiert. Eine Mikro-KI kann, "
+"Bemerkung: Die »Goto«-KI ist als Mikro-KI programmiert. Eine Mikro-KI kann, "
 "abgestimmt auf die Anforderungen eines Szenarios, einfach eingesetzt und "
 "angepasst werden. Dazu benötigt man nur WML Code und den Tag [micro_ai]. "
 "Weitergehende Informationen finden sich auf der <span color='#00A000'>Micro "
@@ -916,7 +914,7 @@ msgstr ""
 "Bleibt auf euren Posten bis eine seiner Einheiten bis auf 8 Felder an euch "
 "herangekommen ist.\n"
 "\n"
-"Bemerkung: Hier wird vorgeführt, wie die „Ziel“ Mikro-KI benutzt werden "
+"Bemerkung: Hier wird vorgeführt, wie die „Goto“ Mikro-KI benutzt werden "
 "kann, um Wächter Einheiten zu programmieren, auch wenn die spezielle Wächter "
 "Mikro-KI für solche Aufgaben oft besser passen dürfte."
 
@@ -982,9 +980,9 @@ msgstr ""
 "Du bist verrückt. Von der Strecke her mag es kürzer sein, aber du wirst ewig "
 "brauchen um diese Berge zu überwinden.\n"
 "\n"
-"Bemerkung: Die Kuriere werden durch „Ziel“ Mikro-KI gesteuert, die sich "
-"durch eine einzelne Zeile unterscheiden. Dort steht ’use_straight_line=yes/"
-"no'."
+"Bemerkung: Die Kuriere werden durch „Goto“ Mikro-KIs gesteuert, die sich "
+"durch eine einzelne Zeile unterscheiden. Dort steht »use_straight_line=yes/"
+"no«."
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:591
@@ -1059,7 +1057,7 @@ msgid ""
 "Ah, Lieutenant Senvan... Is every single one of you going to bother me "
 "individually as well?"
 msgstr ""
-"Ach, Leutnant Senvan … Wird jeder einzelne von ihnen mich persönlich stören?"
+"Ach, Leutnant Senvan… Wird jeder einzelne von ihnen mich persönlich stören?"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:691
@@ -1124,7 +1122,7 @@ msgstr "Greifen"
 #. [side]: type=Orcish Leader, id=Another Bad Orc
 #: data/ai/micro_ais/scenarios/guardians.cfg:49
 msgid "Another Bad Orc"
-msgstr "Ein weiterer übler Ork"
+msgstr "Übler Ork"
 
 #. [unit]: type=Dwarvish Guardsman, id=guardian1
 #: data/ai/micro_ais/scenarios/guardians.cfg:96
@@ -2893,21 +2891,6 @@ msgstr ""
 
 #. [message]: speaker=Uralt
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:176
-#, fuzzy
-#| msgid ""
-#| "Hahahahaha !! I have given special instruction to my Soulless to attack "
-#| "all you almost-advanced units first. Also watch how those same Soulless "
-#| "will throw themselves mercilessly at your pitiful soldiers after that, "
-#| "saving my more valuable skeleton minions for later.  I have taken the "
-#| "term 'disposable units' to a whole new level. Watch in awe !!\n"
-#| "\n"
-#| "<i>Translation: The undead side includes two instances of the Simple "
-#| "Attack Micro AI.  The first makes the Soulless attack all units 1 XP from "
-#| "leveling up, such that they can be eliminated afterward.  The second "
-#| "executes all remaining attacks possible by Soulless (and Walking "
-#| "Corpses), without regard for their own safety.  Only after that does the "
-#| "default Wesnoth attack mechanism kick in to attack with the remaining "
-#| "units (skeletons).</i>"
 msgid ""
 "Hahahahaha!! I have given special instruction to my Soulless to attack all "
 "your almost-advanced units first. Also watch how those same Soulless will "
@@ -2930,7 +2913,7 @@ msgstr ""
 "Ebene gebracht. Beobachtet es mit Ehrfurcht !!\n"
 "\n"
 "<i>Übersetzung: Die Fraktion der Untoten benutzt zwei Ausprägungen der "
-"Einfacher Angriff Mikro-KI. Die erste veranlasst die Seelenlosen alle "
+"»Simple Attack« Mikro-KI. Die erste veranlasst die Seelenlosen alle "
 "Einheiten anzugreifen, die einen Erfahrungspunkt vor dem Aufstieg sind, so "
 "dass sie nachher vernichtet werden können. Die zweite steuert alle weiteren "
 "Angriffe, die durch Seelenlose (und Zombies) möglich sind ohne Rücksicht auf "
@@ -3325,7 +3308,7 @@ msgid "Kiressh"
 msgstr "Kiressh"
 
 #~ msgid "Use the Patrols Micro AI instead of patrol.lua."
-#~ msgstr "Benutzt die Patrols Mikro KI anstatt patrol.lua."
+#~ msgstr "Benutzt die »Patrols« Mikro-KI anstatt patrol.lua."
 
 #~ msgid "Messanger Waypoint 1"
 #~ msgstr "Boten Wegpunkt 1"

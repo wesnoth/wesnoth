@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-07-18 15:51+0300\n"
-"PO-Revision-Date: 2019-03-21 00:43+0100\n"
+"PO-Revision-Date: 2019-08-04 22:45+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -119,16 +119,12 @@ msgstr "Frist für Chat-Nachrichten"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid ""
-#| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#| "0 to disable"
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
 msgstr ""
-"Wartezeit in Minuten, ehe eine Chat-Nachricht im Spiel verworfen wird. 0 "
-"bedeutet Löschen deaktiviert"
+"Wartezeit in Minuten, ehe eine Chat-Nachricht im Spiel ausgeblendet wird. "
+"Mit 0 werden Nichtrichten nicht gelöscht Löschen deaktiviert."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:103
@@ -4515,16 +4511,13 @@ msgstr "S"
 
 #. [tip]
 #: data/tips.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Use the map editor's <i>Areas</i> menu to define regions later addressed "
-#| "by event or ai coding."
 msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
 msgstr ""
-"Nutzt im Karteneditor das Menü »Zonen«, um Gebiete abzustecken, in denen "
-"sich später Ereignisse oder computergeteuerte Abläufe abspielen sollen."
+"Nutzt im Karteneditor das Menü <i>Zonen</i>, um Gebiete abzustecken, für "
+"welche im Nachhinein Events oder separate KI-Einstellungen hinzugefügt "
+"werden können."
 
 # Der "Design Guide" soll vermutlich Tipps zur Verwendung vom "Map/Scenario Editor" geben.
 # Um "taktische Tipps" geht es bei den bisher 3 Einträgen jedenfalls nicht:
@@ -4544,31 +4537,23 @@ msgstr "<i>― Wesnoth Anleitung für Planung und Gestaltung</i>"
 
 #. [tip]
 #: data/tips.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use "
-#| "of advanced features."
 msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
 msgstr ""
-"Entwerft ein »Neues Szenario« über die gleichnamige Option im Menü »Datei« "
-"des Karteneditors. Damit stehen Euch die erweiterten Funktionen zur "
-"Verfügung."
+"Entwerft ein <i>Neues Szenario</i> über die gleichnamige Option im Menü "
+"<i>Datei</i> des Karteneditors. Damit stehen Euch die erweiterten Funktionen "
+"zur Verfügung."
 
 #. [tip]
 #: data/tips.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Scenarios saved from the editor in their default folder can be selected "
-#| "in the mp create screen's <i>User Scenarios</i> section."
 msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” screen."
 msgstr ""
-"Szenarien, die per Karteneditor im vordefinierten Ordner gepeichert wurden, "
-"können im Mehrspieler-Menü »Szenarien« für eine neue Partie ausgewählt "
-"werden."
+"Durch den Karteneditor erstellte Szenarien können im Mehrspielermodus unter "
+"dem Punkt »Eigene Karten« ausgewählt werden, sofern diese im vordefiniertem "
+"Ordner gespeichert wurden. "
 
 #. [tip]
 #: data/tips.cfg:16
@@ -6290,7 +6275,7 @@ msgstr "Lokaler Spieler"
 
 #: src/game_initialization/connect_engine.cpp:1295
 msgid "Nobody"
-msgstr ""
+msgstr "Niemand"
 
 #: src/game_initialization/connect_engine.cpp:1298
 msgid "Reserved"
@@ -10303,3 +10288,9 @@ msgstr "Planungsmodus Optionen"
 #~ msgstr ""
 #~ "Der Spielstand kann nicht gelanden werden, da die Versionsinformation "
 #~ "($version_number|) beschädigt ist."
+
+#~ msgid "%d%% of gold carried over to the next scenario."
+#~ msgstr "%d%% Goldstücke werden ins nächste Szenario übernommen."
+
+#~ msgid "Choose weapon:"
+#~ msgstr "Waffe auswählen:"

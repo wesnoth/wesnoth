@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "POT-Creation-Date: 2019-07-18 15:50+0300\n"
-"PO-Revision-Date: 2019-02-23 18:17+0100\n"
+"PO-Revision-Date: 2019-08-05 02:00+0200\n"
 "Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
 "Language-Team: German <irc://irc.freenode.net/#wesnoth-de>\n"
 "Language: de_DE\n"
@@ -235,6 +235,8 @@ msgstr "B<--clock>"
 #: doc/man/wesnoth.6:81
 msgid "Adds the option to show a clock for testing the drawing timer."
 msgstr ""
+"(Entwickleroption) Fügt dem Hauptmenü einen neuen Button hinzu, mit welchem "
+"man eine Uhr mit GUI2-Elementen zum Testen aufrufen kann."
 
 # type: TP
 #. type: TP
@@ -587,14 +589,14 @@ msgstr "B<--new-widgets>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:201
-#, fuzzy
 msgid ""
 "there is a new WIP widget toolkit, this option enables it. This is very "
 "experimental, don't fill bug reports since most are known. Parts of the "
 "library are deemed stable and will work without this switch."
 msgstr ""
-"Es gibt ein neues widget toolkit, mit dieser Option wird der experimentelle "
-"Teil aktiviert. Bitte keine Bugs dafür melden, die meisten sind bekannt."
+"(Entwickleroption) Es gibt ein neues widget toolkit, mit dieser Option wird "
+"der experimentelle Teil aktiviert. Bitte keine Bugs dafür melden, die "
+"meisten sind bekannt."
 
 # type: TP
 #. type: TP
@@ -719,7 +721,7 @@ msgstr ""
 #: doc/man/wesnoth.6:234
 #, no-wrap
 msgid "B<--plugin>I<\\ script>"
-msgstr "B<--plugin>I<\\ Skript>"
+msgstr "B<--plugin>I<\\ Skript-Datei>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:241
@@ -728,6 +730,10 @@ msgid ""
 "B<--script>, but Lua file should return a function which will be run as a "
 "coroutine and periodically woken up with updates."
 msgstr ""
+"(experimentell) lädt eine I<Skript-Datei> welche ein Wesnoth Plugin "
+"definiert. Ähnlich zur Option B<--script>, aber die Lua-Datei soll hierbei "
+"eine Funktion zurpckliefern. Diese wird als Korutine ausgeführt und "
+"regelmäßig aufgerufen."
 
 #. type: TP
 #: doc/man/wesnoth.6:241
@@ -957,7 +963,6 @@ msgstr "B<--script>I<\\ Dateiname>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:329
-#, fuzzy
 msgid "(experimental)  I<file> containing a Lua script to control the client."
 msgstr ""
 "(experimentell) Eine I<Datei> mit Luaanweisungen, welche den Wesnoth-Client "
@@ -1067,6 +1072,10 @@ msgid ""
 "arbitrary packages. Do not do this with untrusted scripts! This action gives "
 "lua the same permissions as the wesnoth executable."
 msgstr ""
+"(Entwickleroption) Lua kann nun das Paket B<package> benutzen, wodurch "
+"wiederum beliebige Pakete geladen werden können. Nicht mit fremden Skripten "
+"verwenden! Dadurch wird die Sandbox aufgebrochen, Lua hat dann dieselben "
+"Zugriffsrechte wie Wesnoth."
 
 # type: TP
 #. type: TP
@@ -1348,16 +1357,13 @@ msgstr "B<--controller>I<\\ Nummer>B<:>I<\\ Wert>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:457
-#, fuzzy
-#| msgid ""
-#| "selects the controller for this side. Available values: B<human> and "
-#| "B<ai>."
 msgid ""
 "selects the controller for this side. Available values: B<human>, B<ai> and "
 "B<null>."
 msgstr ""
 "Bestimmt, wer die gewählte Partei kontrolliert. Mögliche Werte sind B<human> "
-"für einen Menschen oder B<ai> für einen KI-Spieler."
+"für einen Menschen, B<ai> für einen KI-Spieler und B<null> um eine Seite zu "
+"deaktivieren."
 
 # type: TP
 #. type: TP
