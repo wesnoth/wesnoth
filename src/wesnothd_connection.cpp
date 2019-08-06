@@ -166,7 +166,7 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 		throw system_error(ec);
 	}
 
-	handshake_finished_.set_value(true);
+	handshake_finished_.set_value();
 	recv();
 }
 

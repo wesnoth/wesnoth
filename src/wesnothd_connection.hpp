@@ -134,7 +134,7 @@ private:
 
 	std::mutex last_error_mutex_;
 
-	std::promise<bool> handshake_finished_;
+	std::promise<void> handshake_finished_;
 
 	boost::asio::streambuf read_buf_;
 
