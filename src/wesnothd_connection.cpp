@@ -80,7 +80,7 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 	worker_thread_ = std::thread([this]() {
 		try {
 			io_service_.run();
-		} catch(const boost::system::system_error& err) {
+		} catch(const boost::system::system_error&) {
 			try {
 				// Attempt to pass the exception on to the handshake promise.
 				handshake_finished_.set_exception(std::current_exception());
@@ -185,6 +185,10 @@ void wesnothd_connection::wait_for_handshake()
 
 		WRN_NW << __func__ << " Rethrowing: " << err.code() << "\n";
 		throw error(err.code());
+	} catch(const std::future_error& e) {
+		if(e.code() == std::future_errc::future_already_retrieved) {
+			return;
+		}
 	}
 }
 
