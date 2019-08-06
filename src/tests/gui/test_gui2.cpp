@@ -833,7 +833,7 @@ struct dialog_tester<mp_lobby>
 	wesnothd_connection connection;
 	std::vector<std::string> installed_addons;
 	mp::lobby_info li;
-	dialog_tester() : connection("", ""), init(connection), li(installed_addons)
+	dialog_tester() : connection("", ""), li(installed_addons)
 	{
 	}
 	mp_lobby* create()
@@ -860,7 +860,7 @@ struct dialog_tester<lobby_player_info>
 	std::vector<std::string> installed_addons;
 	mp::lobby_info li;
 	dialog_tester()
-		: connection("", ""), init(connection)
+		: connection("", "")
 		, ui(c), li(installed_addons)
 	{
 	}
