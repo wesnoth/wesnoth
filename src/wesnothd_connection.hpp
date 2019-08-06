@@ -35,6 +35,7 @@
 
 #include <boost/asio.hpp>
 
+#include <condition_variable>
 #include <deque>
 #include <future>
 #include <list>
@@ -164,6 +165,8 @@ private:
 	data_queue<config> recv_queue_;
 
 	std::mutex recv_queue_mutex_;
+
+	std::condition_variable recv_queue_lock_;
 
 	uint32_t payload_size_;
 

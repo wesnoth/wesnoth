@@ -66,6 +66,7 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 	, handshake_response_()
 	, recv_queue_()
 	, recv_queue_mutex_()
+	, recv_queue_lock_()
 	, payload_size_(0)
 	, bytes_to_write_(0)
 	, bytes_written_(0)
@@ -357,6 +358,7 @@ void wesnothd_connection::handle_read(const boost::system::error_code& ec, std::
 	{
 		std::lock_guard<std::mutex> lock(recv_queue_mutex_);
 		recv_queue_.emplace(std::move(data));
+		recv_queue_lock_.notify_all();
 	}
 
 	recv();
@@ -425,12 +427,9 @@ bool wesnothd_connection::receive_data(config& result)
 
 bool wesnothd_connection::wait_and_receive_data(config& data)
 {
-	while(!has_data_received()) {
-		SDL_Delay(1);
-		std::lock_guard<std::mutex> lock(last_error_mutex_);
-		if(last_error_) {
-			break;
-		}
+	{
+		std::unique_lock<std::mutex> lock(recv_queue_mutex_);
+		recv_queue_lock_.wait(lock, [this]() { return has_data_received(); });
 	}
 
 	return receive_data(data);
