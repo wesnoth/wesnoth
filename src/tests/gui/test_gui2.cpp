@@ -826,30 +826,11 @@ struct dialog_tester<hotkey_bind>
 	}
 };
 
-struct wesnothd_connection_init
-{
-	wesnothd_connection_init(wesnothd_connection& conn)
-	{
-		//Swallow the 'cannot connect' execption so that the connection object doesn't throw while we test the dialog.
-		try
-		{
-			while (true) {
-				conn.poll();
-			}
-		}
-		catch (...)
-		{
-
-		}
-	}
-};
-
 template<>
 struct dialog_tester<mp_lobby>
 {
 	config game_config;
 	wesnothd_connection connection;
-	wesnothd_connection_init init;
 	std::vector<std::string> installed_addons;
 	mp::lobby_info li;
 	dialog_tester() : connection("", ""), init(connection), li(installed_addons)
@@ -875,7 +856,6 @@ struct dialog_tester<lobby_player_info>
 	config c;
 	fake_chat_handler ch;
 	wesnothd_connection connection;
-	wesnothd_connection_init init;
 	mp::user_info ui;
 	std::vector<std::string> installed_addons;
 	mp::lobby_info li;
