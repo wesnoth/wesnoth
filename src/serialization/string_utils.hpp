@@ -148,19 +148,6 @@ std::vector<std::string> square_parenthetical_split(
 	const int flags = REMOVE_EMPTY | STRIP_SPACES);
 
 /**
- * Splits a string into two parts as evenly as possible based on lines.
- * For example, if the string contains 3288 lines, then both parts will
- * be 1644 lines long.
- *
- * The line separator in between won't be in either of the parts the
- * function returns.
- *
- * Because this function is intended for extremely long strings
- * (kilobytes long), it returns string_views for performance.
- */
-std::pair<string_view, string_view> vertical_split(const std::string& val);
-
-/**
  * Generates a new string joining container items in a list.
  *
  * @param v A container with elements.

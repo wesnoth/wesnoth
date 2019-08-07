@@ -257,9 +257,6 @@ private:
 	std::unique_ptr<PangoLayout, std::function<void(void*)>> layout_;
 	mutable PangoRectangle rect_;
 
-	// Used if the text is too long to fit into a single Cairo surface.
-	std::vector<std::unique_ptr<PangoLayout, std::function<void(void*)>>> sublayouts_;
-
 	/** The SDL surface to render upon used as a cache. */
 	mutable surface surface_;
 
@@ -420,25 +417,6 @@ private:
 	bool set_markup(utils::string_view text, PangoLayout& layout);
 
 	bool validate_markup(utils::string_view text, char** raw_text, std::string& semi_escaped) const;
-
-	/** Splits the text to two Cairo surfaces.
-	 *
-	 * The implementation isn't recursive: the function only splits the text once.
-	 * As a result, it only doubles the maximum surface height to 64,000 pixels
-	 * or so.
-	 * The reason for this is that a recursive implementation would be more complex
-	 * and it's unnecessary for now, as the longest surface in the game
-	 * (end credits) is only about 40,000 pixels high with the default_large widget
-	 * definition.
-	 * If we need even larger surfaces in the future, the implementation can be made
-	 * recursive.
-	 */
-	void split_surface();
-
-	bool is_surface_split() const
-	{
-		return sublayouts_.size() > 0;
-	}
 
 	static void copy_layout_properties(PangoLayout& src, PangoLayout& dst);
 

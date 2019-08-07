@@ -13,6 +13,7 @@
    * Move Wose Sapling from TRoW to core (PR#4226)
  ### Miscellaneous and bug fixes
    * use the 1.15 add-ons server
+   * Fix a crash if the credits (including all add-ons) are very long (PR#4207)
 
 ## Version 1.15.0
  ### AI
