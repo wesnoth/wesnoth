@@ -173,7 +173,7 @@
    * The South Guard:
      * Update campaign description
      * S1: create Sir Gerrick if player skips scenario with debug
-     * S5: add narrator warning when siding with bandits
+     * S5: add narrator warning when siding with bandits and reduce difficulty
      * S6b: create Urza Afalas if player skips S5 with debug
      * S6b: kill elves on side 1 if player got to this scenario with debug
      * S8b: fixed bug with shifted ToD schedules near campfires
