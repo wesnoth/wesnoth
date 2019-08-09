@@ -1875,7 +1875,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			   << data.output();
 }
 
-using SendQueue = std::map<socket_ptr, std::deque<std::shared_ptr<simple_wml::document>>>;
+using SendQueue = std::map<socket_ptr, std::queue<std::shared_ptr<simple_wml::document>>>;
 SendQueue send_queue;
 
 static void handle_send_to_player(socket_ptr socket)
@@ -1884,7 +1884,7 @@ static void handle_send_to_player(socket_ptr socket)
 		send_queue.erase(socket);
 	} else {
 		async_send_doc(socket, *(send_queue[socket].front()), handle_send_to_player, handle_send_to_player);
-		send_queue[socket].pop_front();
+		send_queue[socket].pop();
 	}
 }
 
@@ -1895,7 +1895,7 @@ void send_to_player(socket_ptr socket, simple_wml::document& doc)
 		send_queue[socket];
 		async_send_doc(socket, doc, handle_send_to_player, handle_send_to_player);
 	} else {
-		send_queue[socket].push_back(std::shared_ptr<simple_wml::document>(doc.clone()));
+		send_queue[socket].emplace(doc.clone());
 	}
 }
 
