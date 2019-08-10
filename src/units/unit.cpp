@@ -512,9 +512,15 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	advance_to(*type_, use_traits);
 
 	if(const config::attribute_value* v = cfg.get("overlays")) {
-		overlays_ = utils::parenthetical_split(v->str(), ',');
-		if(overlays_.size() == 1 && overlays_.front().empty()) {
-			overlays_.clear();
+		auto overlays = utils::parenthetical_split(v->str(), ',');
+		if(overlays.size() > 0) {
+			deprecated_message("[unit]overlays", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Add overlays via objects instead.");
+			config effect;
+			config o;
+			effect["apply_to"] = "overlay";
+			effect["add"] = v->str();
+			o.add_child("effect", effect);
+			add_modification("object", o);
 		}
 	}
 
@@ -1496,7 +1502,10 @@ void unit::write(config& cfg, bool write_all) const
 	cfg.clear_children("events");
 	cfg.append(events_);
 
-	cfg["overlays"] = utils::join(overlays_);
+	// Overlays are exported as the modifications that add them, not as an overlays= value,
+	// however removing the key breaks the Gui Debug Tools.
+	// \todo does anything depend on the key's value, other than the re-import code in unit::init?
+	cfg["overlays"] = "";
 
 	cfg["name"] = name_;
 	cfg["id"] = id_;
@@ -2097,15 +2106,19 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 	} else if(apply_to == "overlay") {
 		const std::string& add = effect["add"];
 		const std::string& replace = effect["replace"];
+		const std::string& remove = effect["remove"];
 
 		if(!add.empty()) {
-			std::vector<std::string> temp_overlays = utils::parenthetical_split(add, ',');
-			std::vector<std::string>::iterator it;
-			for(it=temp_overlays.begin();it<temp_overlays.end();++it) {
-				overlays_.push_back(*it);
+			for(const auto& to_add : utils::parenthetical_split(add, ',')) {
+				overlays_.push_back(to_add);
 			}
 		}
-		else if(!replace.empty()) {
+		if(!remove.empty()) {
+			for(const auto& to_remove : utils::parenthetical_split(remove, ',')) {
+				overlays_.erase(std::remove(overlays_.begin(), overlays_.end(), to_remove), overlays_.end());
+			}
+		}
+		if(add.empty() && remove.empty() && !replace.empty()) {
 			overlays_ = utils::parenthetical_split(replace, ',');
 		}
 	} else if(apply_to == "new_advancement") {
