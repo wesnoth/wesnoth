@@ -320,8 +320,8 @@ public:
 
 private:
 	// forbidden operations
-	game(const game&);
-	void operator=(const game&);
+	game(const game&) = delete;
+	void operator=(const game&) = delete;
 
 	std::size_t current_side() const
 	{
