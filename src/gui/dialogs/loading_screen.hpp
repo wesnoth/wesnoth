@@ -99,11 +99,7 @@ private:
 	/** Callback to handle drawing the progress animation. */
 	void draw_callback();
 
-	void set_next_animation_time();
-
 	int animation_counter_;
-	uint32_t next_animation_time_;
-
 	std::function<void()> load_func_;
 	std::future<void> worker_result_;
 	std::unique_ptr<cursor::setter> cursor_setter_;
