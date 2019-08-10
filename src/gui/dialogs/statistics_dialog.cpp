@@ -215,6 +215,8 @@ static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth,
 	std::ostringstream str, str2, tooltip;
 
 	tooltip << '\n' << '\n' << _("Actual hit rates, by chance to hit:");
+	if(by_cth.empty())
+		tooltip << '\n' << _("(no attacks have taken place yet)");
 	for(const auto& i : by_cth) {
 		int cth = i.first;
 		overall_hits += i.second.hits;
