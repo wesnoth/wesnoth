@@ -322,14 +322,18 @@ void statistics_dialog::add_hits_row(
 	item["label"] = type;
 	data.emplace("hits_type", item);
 
-	element = tally(by_cth, more_is_better);
-	item["tooltip"] = _(
+	const auto tooltip_static_part = _(
 		"stats dialog^Difference of actual outcome to expected outcome, as a percentage.\n"
 		"The first number in parentheses is the expected number of hits inflicted/taken.\n"
-		"The sum (or difference) of the two numbers in parentheses is the actual number of hits inflicted/taken.")
-		+ element.tooltip;
+		"The sum (or difference) of the two numbers in parentheses is the actual number of hits inflicted/taken.");
+	element = tally(by_cth, more_is_better);
+	item["tooltip"] = tooltip_static_part + element.tooltip;
 	item["label"] = element.hitrate_str;
 	data.emplace("hits_overall", item);
+	item["tooltip"] = _(
+		"stats dialog^Estimate of how much randomness of battles favored or disfavored this side.\n"
+		"Values between 0 and 50 suggest the number of hits was less than expected."
+		"Values between 50 and 100 suggest the number of hits was more than expected.");
 	item["label"] = element.pvalue_str;
 	data.emplace("overall_score", item);
 
@@ -338,11 +342,7 @@ void statistics_dialog::add_hits_row(
 		this_turn_header.set_label(_("This Turn"));
 
 		element = tally(turn_by_cth, more_is_better);
-		item["tooltip"] = _(
-			"stats dialog^Estimate of how much randomness of battles favored or disfavored this side.\n"
-			"Values between 0 and 50 suggest the number of hits was less than expected."
-			"Values between 50 and 100 suggest the number of hits was more than expected.")
-			+ element.tooltip;
+		item["tooltip"] = tooltip_static_part + element.tooltip;
 		item["label"] = element.hitrate_str;
 		data.emplace("hits_this_turn", item);
 		item["label"] = element.pvalue_str;
