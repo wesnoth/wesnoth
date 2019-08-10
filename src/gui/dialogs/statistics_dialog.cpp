@@ -325,8 +325,8 @@ void statistics_dialog::add_hits_row(
 	element = tally(by_cth, more_is_better);
 	item["tooltip"] = _(
 		"stats dialog^Difference of actual outcome to expected outcome, as a percentage.\n"
-		"The first number in parentheses is the expected number of hits.\n"
-		"The sum (or difference) of the two numbers in parentheses is the actual number of hits.")
+		"The first number in parentheses is the expected number of hits inflicted/taken.\n"
+		"The sum (or difference) of the two numbers in parentheses is the actual number of hits inflicted/taken.")
 		+ element.tooltip;
 	item["label"] = element.hitrate_str;
 	data.emplace("hits_overall", item);
