@@ -332,12 +332,9 @@ void statistics_dialog::add_hits_row(
 	item["tooltip"] = tooltip_static_part + element.tooltip;
 	item["label"] = element.hitrate_str;
 	data.emplace("hits_overall", item);
-	item["tooltip"] = _(
-		"stats dialog^Estimate of how much randomness of battles favored or disfavored this side.\n"
-		"Values between 0 and 50 suggest the number of hits was less than expected."
-		"Values between 50 and 100 suggest the number of hits was more than expected.");
-	item["label"] = element.pvalue_str;
-	data.emplace("overall_score", item);
+
+	// Don't set the tooltip; it's set in WML.
+	data.emplace("overall_score", string_map { { "label", element.pvalue_str } });
 
 	if(show_this_turn) {
 		label& this_turn_header = find_widget<label>(&window, "hits_this_turn_header", false);
@@ -347,8 +344,9 @@ void statistics_dialog::add_hits_row(
 		item["tooltip"] = tooltip_static_part + element.tooltip;
 		item["label"] = element.hitrate_str;
 		data.emplace("hits_this_turn", item);
-		item["label"] = element.pvalue_str;
-		data.emplace("this_turn_score", item);
+
+		// Don't set the tooltip; it's set in WML.
+		data.emplace("this_turn_score", string_map { { "label", element.pvalue_str } });
 	} else {
 		// TODO: Setting the label to "" causes "This Turn" not to be drawn when changing back to the current scenraio view, so set the label to " " (a single space) instead.
 		label& this_turn_header = find_widget<label>(&window, "hits_this_turn_header", false);
