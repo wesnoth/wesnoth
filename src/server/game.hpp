@@ -15,9 +15,9 @@
 #pragma once
 
 #include "mt_rng.hpp"
-#include "player.hpp"
-#include "player_connection.hpp"
-#include "simple_wml.hpp"
+#include "server/player.hpp"
+#include "server/player_connection.hpp"
+#include "server/simple_wml.hpp"
 #include "utils/make_enum.hpp"
 
 #include <boost/ptr_container/ptr_vector.hpp>

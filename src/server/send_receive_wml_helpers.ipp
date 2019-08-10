@@ -27,8 +27,8 @@
 #include <windows.h>
 #endif
 
-#include "server_base.hpp"
-#include "simple_wml.hpp"
+#include "server/server_base.hpp"
+#include "server/simple_wml.hpp"
 #include "filesystem.hpp"
 #include "serialization/unicode_cast.hpp" //only used in windows specific code.
 
