@@ -1724,7 +1724,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		} else {
 			auto description = g.description();
 
-			player_connections_.modify(player_connections_.find(socket), player_record::enter_lobby);
+			player_connections_.modify(player_connections_.find(socket), std::bind(&player_record::enter_lobby, _1));
 			if(!g_ptr.expired()) {
 				g.describe_slots();
 			}
@@ -1801,7 +1801,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			: g.kick_member(*data.child("kick"), socket));
 
 		if(user) {
-			player_connections_.modify(player_connections_.find(user), player_record::enter_lobby);
+			player_connections_.modify(player_connections_.find(user), std::bind(&player_record::enter_lobby, _1));
 			if(g.describe_slots()) {
 				update_game_in_lobby(g, user);
 			}
@@ -2927,7 +2927,7 @@ void server::delete_game(int gameid)
 	// This will call cleanup_game() deleter since there won't
 	// be any references to that game from player_connections_ anymore
 	for(const auto& it : range_vctor) {
-		player_connections_.get<game_t>().modify(it, player_record::enter_lobby);
+		player_connections_.get<game_t>().modify(it, std::bind(&player_record::enter_lobby, _1));
 	}
 
 	// send users in the game a notification to leave the game since it has ended
