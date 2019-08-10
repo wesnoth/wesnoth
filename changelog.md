@@ -80,6 +80,7 @@
    * Move Fire Dragon portrait from TRoW and SoF to core
    * Move Orcish Leader portraits to Orcish Ruler and use grunt variation portrait for Leader
    * Increased Mermaid Initiate advancement line hitpoints (Diviner 41->45, Enchantress 38->39, Priestess 31->35, Siren 49->51)
+   * The Dunefolk faction was overhauled to improve balance against the six Default factions
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a special location ID
