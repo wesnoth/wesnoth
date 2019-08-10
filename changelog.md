@@ -187,6 +187,9 @@
      * It wasn't possible to view unit descriptions of units that would be
        fogged or shrouded in three cases: during replays, in MP linger mode,
        and in MP when one is the host but doesn't play. (issue #3687)
+     * In multiplayer hotseat games, the turn dialog is now shown before updating the
+       minimap, main map, healing and auras to the incoming player's view. (issue #4187,
+       PR #4188)
  ### Units
    * Add new Water Serpent portrait
 
