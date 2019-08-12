@@ -170,6 +170,11 @@ Example: \fBversions_accepted="*"\fR accepts any version string.
 The name of the user handler to use. Currently available user handlers are \fBforum\fR (to connect wesnothd to a phpbb forum database) and \fBsample\fR (a sample implementation of the user handler interface, if you use this on anything real you are insane). The default value is \fBforum\fR. You must also add a
 .B [user_handler]
 section, see below.
+.TP
+.B deny_unregistered_login
+Whether to prevent users who are not registered with the
+.B user_handler
+being used from logging in. (default: false)
 .
 .SS "Global tags:"
 .
