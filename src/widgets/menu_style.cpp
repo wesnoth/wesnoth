@@ -88,7 +88,7 @@ bool menu::imgsel_style::load_image(const std::string &img_sub)
 	std::string path = img_base_ + "-" + img_sub + ".png";
 	const surface image = image::get_image(path);
 	img_map_[img_sub] = image;
-	return(image);
+	return image.get() != nullptr;
 }
 
 bool menu::imgsel_style::load_images()
