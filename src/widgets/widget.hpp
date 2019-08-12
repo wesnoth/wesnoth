@@ -69,6 +69,7 @@ public:
 	virtual void process_tooltip_string(int mousex, int mousey);
 
 protected:
+	widget(const widget& o);
 	widget(CVideo& video, const bool auto_join=true);
 	virtual ~widget();
 
