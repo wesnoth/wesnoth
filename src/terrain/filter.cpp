@@ -356,6 +356,13 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 		}
 	}
 
+	if(cfg_.has_child("heals")) {
+		const auto heals = fc_->get_disp_context().map().gives_healing(loc);
+		if(heals <= 0) {
+			return false;
+		}
+	}
+
 	return true;
 }
 
