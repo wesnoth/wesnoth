@@ -86,6 +86,14 @@ void context::add_handler(sdl_handler* ptr)
 	staging_handlers.push_back(ptr);
 }
 
+bool context::has_handler(const sdl_handler* ptr) const
+{
+	if(handlers.cend() != std::find(handlers.cbegin(), handlers.cend(), ptr)) {
+		return true;
+	}
+	return staging_handlers.cend() != std::find(staging_handlers.cbegin(), staging_handlers.cend(), ptr);
+}
+
 bool context::remove_handler(sdl_handler* ptr)
 {
 	static int depth = 0;
@@ -234,6 +242,49 @@ sdl_handler::sdl_handler(const bool auto_join)
 	}
 }
 
+sdl_handler::sdl_handler(const sdl_handler &that)
+	: has_joined_(that.has_joined_)
+	, has_joined_global_(that.has_joined_global_)
+{
+	if(has_joined_global_) {
+		assert(!event_contexts.empty());
+		event_contexts.front().add_handler(this);
+	} else if(has_joined_) {
+		bool found_context = false;
+		for(auto &context : boost::adaptors::reverse(event_contexts)) {
+			if(context.has_handler(&that)) {
+				found_context = true;
+				context.add_handler(this);
+				break;
+			}
+		}
+
+		if (!found_context) {
+			throw std::logic_error("Copy-constructing a sdl_handler that has_joined_ but can't be found by searching contexts");
+		}
+	}
+}
+
+sdl_handler &sdl_handler::operator=(const sdl_handler &that)
+{
+	if(that.has_joined_global_) {
+		join_global();
+	} else if(that.has_joined_) {
+		for(auto &context : boost::adaptors::reverse(event_contexts)) {
+			if(context.has_handler(&that)) {
+				join(context);
+				break;
+			}
+		}
+	} else if(has_joined_) {
+		leave();
+	} else if(has_joined_global_) {
+		leave_global();
+	}
+
+	return *this;
+}
+
 sdl_handler::~sdl_handler()
 {
 	if(has_joined_) {
@@ -281,8 +332,7 @@ void sdl_handler::join_same(sdl_handler* parent)
 	}
 
 	for(auto& context : boost::adaptors::reverse(event_contexts)) {
-		handler_list& handlers = context.handlers;
-		if(std::find(handlers.begin(), handlers.end(), parent) != handlers.end()) {
+		if(context.has_handler(parent)) {
 			join(context);
 			return;
 		}
