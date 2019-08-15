@@ -6,7 +6,7 @@
  ### Units
    * Fix typo in the Dune Ranger's advancements
  ### Miscellaneous and bug fixes
-   * 1.15 clients use a separate add-ons server to 1.14 (the fix is server-side)
+   * use the 1.15 add-ons server
 
 ## Version 1.15.0
  ### AI
