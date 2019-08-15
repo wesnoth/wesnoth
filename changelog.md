@@ -50,6 +50,8 @@
    * Additional wolf/dog portrait for custom units
    * Separate Mudcrawler portrait
    * New Walking Corpse portrait for mounted variation
+   * The mushroom terrain graphics have changed to match the terrain statistics.
+     (PR #4185)
  ### Language and i18n
    * Updated translations: British English, Chinese (Traditional), Dutch,
      German, Spanish, Turkish, Portuguese (Brazil), Ukrainian
