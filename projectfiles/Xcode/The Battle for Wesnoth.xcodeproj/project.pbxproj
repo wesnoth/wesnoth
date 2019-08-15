@@ -1451,13 +1451,13 @@
 		463896702034180900075E54 /* deprecation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = deprecation.cpp; sourceTree = "<group>"; };
 		4649B879202886F000827CFB /* test_irdya_date.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_irdya_date.cpp; sourceTree = "<group>"; };
 		464C0362228361B5007D2741 /* libSDL2_image-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_image-2.0.0.dylib"; path = "lib/libSDL2_image-2.0.0.dylib"; sourceTree = "<group>"; };
-		464C0363228361B6007D2741 /* libogg.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libogg.0.dylib; path = "lib/libogg.0.dylib"; sourceTree = "<group>"; };
-		464C0364228361B6007D2741 /* libvorbis.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvorbis.0.dylib; path = "lib/libvorbis.0.dylib"; sourceTree = "<group>"; };
+		464C0363228361B6007D2741 /* libogg.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libogg.0.dylib; path = lib/libogg.0.dylib; sourceTree = "<group>"; };
+		464C0364228361B6007D2741 /* libvorbis.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvorbis.0.dylib; path = lib/libvorbis.0.dylib; sourceTree = "<group>"; };
 		464C0365228361B6007D2741 /* libSDL2_net-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_net-2.0.0.dylib"; path = "lib/libSDL2_net-2.0.0.dylib"; sourceTree = "<group>"; };
 		464C0366228361B6007D2741 /* libSDL2_ttf-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_ttf-2.0.0.dylib"; path = "lib/libSDL2_ttf-2.0.0.dylib"; sourceTree = "<group>"; };
 		464C0367228361B6007D2741 /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
 		464C0368228361B7007D2741 /* libSDL2_mixer-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_mixer-2.0.0.dylib"; path = "lib/libSDL2_mixer-2.0.0.dylib"; sourceTree = "<group>"; };
-		464C0369228361B7007D2741 /* libvorbisfile.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvorbisfile.dylib; path = "lib/libvorbisfile.dylib"; sourceTree = "<group>"; };
+		464C0369228361B7007D2741 /* libvorbisfile.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvorbisfile.dylib; path = lib/libvorbisfile.dylib; sourceTree = "<group>"; };
 		4654109E2078BC02002BCD13 /* l10n-track */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "l10n-track"; path = "../../l10n-track"; sourceTree = "<group>"; };
 		46685C6B219D51870009CFFE /* utf8_exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utf8_exception.hpp; sourceTree = "<group>"; };
 		46685C6C219D51870009CFFE /* ucs4_iterator_base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ucs4_iterator_base.hpp; sourceTree = "<group>"; };
@@ -6564,6 +6564,7 @@
 					"-Werror=sign-compare",
 					"-Werror=unused",
 					"-Werror=switch",
+					"-Wno-unused-lambda-capture",
 				);
 			};
 			name = Release;
