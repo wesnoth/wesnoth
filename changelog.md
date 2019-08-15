@@ -3,7 +3,7 @@
    * Fix buttons in the editor being inactive
  ### Multiplayer server
    * Add support for storing game information in wesnoth's mysql database (PR#4204)
-   * When the forum user handler is enabled, the Multiplayer Moderators group is now also used when determining if someone is a moderator.
+   * When the forum user handler is enabled, the Multiplayer Moderators group is now also used when determining if someone is a moderator. (PR#4136)
  ### Units
    * Fix typo in the Dune Ranger's advancements
  ### Miscellaneous and bug fixes
