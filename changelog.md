@@ -1,4 +1,12 @@
 ## Version 1.15.0+dev
+ ### Editor
+   * Fix buttons in the editor being inactive
+ ### Multiplayer server
+   * Add support for storing game information in wesnoth's mysql database
+ ### Units
+   * Fix typo in the Dune Ranger's advancements
+ ### Miscellaneous and bug fixes
+   * 1.15 clients use a separate add-ons server to 1.14 (the fix is server-side)
 
 ## Version 1.15.0
  ### AI
