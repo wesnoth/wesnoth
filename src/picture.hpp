@@ -17,7 +17,7 @@
 #include "map/location.hpp"
 #include "terrain/translation.hpp"
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <unordered_map>
 
 class surface;
@@ -41,7 +41,6 @@ namespace image {
 		void parse_arguments();
 		struct value {
 			value();
-			value(const value &a);
 			value(const char *filename);
 			value(const std::string& filename);
 			value(const std::string& filename, const std::string& modifications);
@@ -172,10 +171,6 @@ namespace image {
 	void set_team_colors(const std::vector<std::string>* colors = nullptr);
 
 	const std::vector<std::string>& get_team_colors();
-
-	///sets the pixel format used by the images. Is called every time the
-	///video mode changes. Invalidates all images.
-	void set_pixel_format(SDL_PixelFormat* format);
 
 	///sets the amount scaled images should be scaled. Invalidates all
 	///scaled images.

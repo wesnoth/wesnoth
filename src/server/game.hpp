@@ -15,9 +15,9 @@
 #pragma once
 
 #include "mt_rng.hpp"
-#include "player.hpp"
-#include "player_connection.hpp"
-#include "simple_wml.hpp"
+#include "server/player.hpp"
+#include "server/player_connection.hpp"
+#include "server/simple_wml.hpp"
 #include "utils/make_enum.hpp"
 
 #include <boost/ptr_container/ptr_vector.hpp>
@@ -136,6 +136,8 @@ public:
 	{
 		current_turn_ = turn;
 	}
+
+	std::string get_replay_filename();
 
 	void mute_all_observers();
 
@@ -281,7 +283,7 @@ public:
 	{
 		password_ = passwd;
 	}
-	
+
 	void set_name_bans(const std::vector<std::string> name_bans)
 	{
 	  name_bans_ = name_bans;
@@ -320,8 +322,8 @@ public:
 
 private:
 	// forbidden operations
-	game(const game&);
-	void operator=(const game&);
+	game(const game&) = delete;
+	void operator=(const game&) = delete;
 
 	std::size_t current_side() const
 	{

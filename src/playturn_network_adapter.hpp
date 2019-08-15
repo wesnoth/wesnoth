@@ -47,7 +47,7 @@ private:
 	// note: all of the following could be replaced by a simple std::list<config> if we would
 	//       split incoming tags right after we rechived them from network_reader_ the reason
 	//       why we currently don'T do that is for performance.
-	
+
 	//this always contains one empty config because we want a valid value for next_.
 	std::list<config> data_;
 	//packages that the client could not process at that point.

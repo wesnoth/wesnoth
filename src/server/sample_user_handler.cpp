@@ -233,3 +233,23 @@ std::string suh::user_info(const std::string& name) {
 	}
 	return info.str();
 }
+
+std::string suh::get_uuid(){
+	return "";
+}
+
+void suh::db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name){
+	std::cout << uuid << " - " << game_id << " - " << version << " - " << name << std::endl;
+}
+void suh::db_update_game_start(const std::string& uuid, int game_id, const std::string& map_name, const std::string& era_name){
+	std::cout << uuid << " - " << game_id << " - " << map_name << " - " << era_name << std::endl;
+}
+void suh::db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location){
+	std::cout << uuid << " - " << game_id << " - " << replay_location << std::endl;
+}
+void suh::db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, const std::string& is_host, const std::string& faction){
+	std::cout << uuid << " - " << game_id << " - " << username << " - " << side_number << " - " << is_host << " - " << faction << std::endl;
+}
+void suh::db_insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name){
+	std::cout << uuid << " - " << game_id << " - " << modification_name << std::endl;
+}

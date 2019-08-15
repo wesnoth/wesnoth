@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.10\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-17 18:31 UTC\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2019-07-18 12:51 UTC\n"
 "PO-Revision-Date: 2015-03-29 14:36+0300\n"
 "Last-Translator: Gvido Bruveris <huhims@gmail.com>\n"
 "Language-Team: none\n"
@@ -134,7 +134,12 @@ msgid "Grand total: <b>%d</b>"
 msgstr "Summa: <b>%d</b>"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:87
+#: data/multiplayer/eras.lua:93
+msgid "Sides %s and %d are tied."
+msgstr ""
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:95
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgstr "<span foreground='%s'>Pusei %d</span> ir priekšrocība."
 
@@ -461,7 +466,7 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:35
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:40
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:32
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:60
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:107
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:31
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:31
 #: data/multiplayer/scenarios/3p_Morituri.cfg:31
@@ -495,7 +500,7 @@ msgstr "Austrumi"
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:24
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:24
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:21
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:72
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:119
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:42
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:42
 #: data/multiplayer/scenarios/3p_Morituri.cfg:42
@@ -708,16 +713,34 @@ msgstr "Blumduks"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:147
+#, fuzzy
+#| msgid ""
+#| "Blum Duk was renowned among his goblin clan for having tamed one of the "
+#| "Dire Wolves of the mountains, and he had the courage to match. His "
+#| "leadership and skills alone were what kept the area’s goblins alive "
+#| "despite human and elvish menaces. Rumor had it that his wolf had slain "
+#| "fifty men and a hundred Elves.\n"
+#| "Thus, when he heard of the awful monster that was inhabiting the area, it "
+#| "was only natural that he ride out alone to face it. All the other goblins "
+#| "expected him to slay the creature easily and drag back its carcass to "
+#| "feast on.\n"
+#| "He was in for quite a shock. As soon as he saw the Basilisk, Blum Duk "
+#| "cowered in fright. He tried to wheel his wolf around to run away, but it "
+#| "wouldn’t move. As the creature stalked towards him, he screamed his last "
+#| "words: Good Gog, dog, are yer legs made of stone?!\n"
+#| "(inscribed by Elvish Pillager)"
 msgid ""
 "Blum Duk was renowned among his goblin clan for having tamed one of the Dire "
 "Wolves of the mountains, and he had the courage to match. His leadership and "
 "skills alone were what kept the area’s goblins alive despite human and "
 "elvish menaces. Rumor had it that his wolf had slain fifty men and a hundred "
 "Elves.\n"
+"\n"
 "Thus, when he heard of the awful monster that was inhabiting the area, it "
 "was only natural that he ride out alone to face it. All the other goblins "
 "expected him to slay the creature easily and drag back its carcass to feast "
 "on.\n"
+"\n"
 "He was in for quite a shock. As soon as he saw the Basilisk, Blum Duk "
 "cowered in fright. He tried to wheel his wolf around to run away, but it "
 "wouldn’t move. As the creature stalked towards him, he screamed his last "
@@ -739,12 +762,12 @@ msgstr ""
 "(Elvish Pillager)"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:154
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:156
 msgid "Rah Ihn Mar"
 msgstr "Rah-in Mars"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:156
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:158
 msgid ""
 "Rah Ihn Mar, Champion of the Burning Hills, made his way to the Ruaskkolin "
 "Lake region in pursuit of the Elvish Hero Terowydlithrol, known among Elves "
@@ -762,8 +785,13 @@ msgstr ""
 "pēc tam izplānoja pretuzbrukumu, kurā krita 37 Dreiki. Zinot ka šie Dreiki "
 "nebija vainīgi Rah-in Mars sāka medības uz Terovlinu."
 
+#. [side]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:162
+msgid "Turin's Monster of the Lake"
+msgstr ""
+
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:163
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:165
 msgid ""
 "He had lived there for ages upon ages, in the depths of the water, preying "
 "upon the various fish and frogs and merfolk that entered his domain. It was "
@@ -779,8 +807,13 @@ msgstr ""
 "saimnieks.\n"
 "(Turin)"
 
+#. [side]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:170
+msgid "The Spider"
+msgstr ""
+
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:171
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:173
 msgid ""
 "It would seem that no one knows the tale of this brave spider.\n"
 "(inscribed by WinnerA)"
@@ -789,7 +822,7 @@ msgstr ""
 "(WinnerA)"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:179
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:181
 msgid ""
 "The tale of this unlucky highwayman is yet to be told.\n"
 "(inscribed by WinnerB)"
@@ -798,7 +831,7 @@ msgstr ""
 "(WinnerB)"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:187
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:189
 msgid ""
 "A brave hero of Wesnoth’s Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
@@ -816,23 +849,42 @@ msgstr ""
 "(Fynmiir)"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:192
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:194
 msgid "Bramwythl"
 msgstr "Bramils"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:194
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:196
+#, fuzzy
+#| msgid ""
+#| "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
+#| "other Woses. More than any other Wose, he enjoyed simply standing alone "
+#| "in the sun, arms upraised, admiring the beauty of the empty sky. Once, "
+#| "even, he confided in a fellow that his greatest wish was to be able to "
+#| "bask forever in the sun’s glory.\n"
+#| "However, not long after, the local wose community heard of the approach "
+#| "of a horrible monster, powerful enough to easily destroy the few woses "
+#| "that lived in the area. They quickly moved off (quickly for Woses, "
+#| "anyway), but Bramwythl was left behind — in their haste, no one had "
+#| "remembered to find him and tell him of the danger.\n"
+#| "He was taken quite unawares by the Basilisk, and turned to stone before "
+#| "he even recognized the beast. His petrified form still stands there "
+#| "today, warmed by the sun’s rays, under an open sky. His greatest wish has "
+#| "been granted.\n"
+#| "(inscribed by Elvish Pillager)"
 msgid ""
 "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
-"other Woses. More than any other Wose, he enjoyed simply standing alone in "
+"other woses. More than any other wose, he enjoyed simply standing alone in "
 "the sun, arms upraised, admiring the beauty of the empty sky. Once, even, he "
 "confided in a fellow that his greatest wish was to be able to bask forever "
 "in the sun’s glory.\n"
+"\n"
 "However, not long after, the local wose community heard of the approach of a "
 "horrible monster, powerful enough to easily destroy the few woses that lived "
-"in the area. They quickly moved off (quickly for Woses, anyway), but "
+"in the area. They quickly moved off (quickly for woses, anyway), but "
 "Bramwythl was left behind — in their haste, no one had remembered to find "
 "him and tell him of the danger.\n"
+"\n"
 "He was taken quite unawares by the Basilisk, and turned to stone before he "
 "even recognized the beast. His petrified form still stands there today, "
 "warmed by the sun’s rays, under an open sky. His greatest wish has been "
@@ -849,12 +901,12 @@ msgstr ""
 "līdz šai dienai viņa akmens ķermenis sildās saulītē baudot skaidrās debesis."
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:201
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:205
 msgid "Talael Ryndoc"
 msgstr "Talels Rindoks"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:204
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:208
 msgid ""
 "General Talael Ryndoc came to this place to fight a duel with the Grand "
 "Marshal Aethec Corryn, but the two men never found one another."
@@ -863,12 +915,12 @@ msgstr ""
 "viņi abi tā ari neatrada viens otru."
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:207
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:211
 msgid "Aethec Corryn"
 msgstr "Ateks Korins"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:210
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:214
 msgid ""
 "The last words spoken by Grand Marshal Aethec Corryn: “Talael Ryndoc! I am "
 "through searching for you! I shall make my way back to Haldric’s Hall, and "
@@ -885,12 +937,12 @@ msgstr ""
 "Iespējams viņam nevajadzēja to paziņot tik skaļi...."
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:216
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:220
 msgid "Rilhon"
 msgstr "Rilons"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:218
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:222
 msgid ""
 "This brave warrior, known as Rilhon among the Naga, heard tell of a fabulous "
 "treasure that had been lost in these watery caves— a spear whose head was "
@@ -911,7 +963,7 @@ msgstr ""
 "(Paterson)"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:226
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:230
 msgid ""
 "Through waves and rocky channels\n"
 "blue and white\n"
@@ -1003,24 +1055,24 @@ msgstr ""
 "Piezīme: Scenārijs darbojas ja izmanto kartes noklusētos iestatījumus. "
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:22
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:34
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:21
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:33
 msgid "teamname^Revolt"
 msgstr "Ienaidnieks"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:52
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:72
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:50
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:70
 msgid "teamname^Human"
 msgstr "Spēlētājs"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:107
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:105
 msgid "Death of your leader"
 msgstr "Tava līdera nāve"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:108
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:106
 msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
@@ -1028,28 +1080,28 @@ msgstr ""
 "Tākā komandā ir tikai viens līderis, pretinieku uzbrukumi nebūs pilnā spēkā."
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:111
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:109
 msgid "Death of both of your team’s leaders"
 msgstr "Mirst abi komanda līderi"
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:112
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:110
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr "Tākā komandā ir divi līderi, pretinieku uzbrukumi būs pilnā spēkā."
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:133
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:131
 msgid "Survive and defeat all enemy waves"
 msgstr "Izturi visus pretinieka uzbrukumus"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:153
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:151
 msgid "Dark Forecast — a random survival scenario"
 msgstr "Tumšā prognoze — nejaušs izdzīvošanas scenārijs"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:158
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:156
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
 "archenemies.\n"
@@ -1094,12 +1146,12 @@ msgstr ""
 "• WML realizācija"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:178
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:176
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "Šī ir tā ieleja — tikai pastiep roku un būs kārtība."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:182
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:180
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -1109,7 +1161,7 @@ msgstr ""
 "un mūsu klātbūtne te netiks akceptēta. Mums jābūt gataviem uz pārsteigumiem."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:186
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:184
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
@@ -1117,21 +1169,21 @@ msgstr ""
 "Tad uzmetīsim aci, kas te notiek... un parādīsim, kurš te ir saimnieks."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:205
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:203
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
 msgstr "ahh! Kā tas var būt? Barbari mani piebeidza! Dievi mani pameta..."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:219
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:217
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
 msgstr "Ienaidnieku gaviles ir pēdējais ko Tu dzirdi, krītot nāves skavās..."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:241
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:239
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
@@ -1146,7 +1198,7 @@ msgid "Changes the gold worth of the enemy spawns by a certain percentage"
 msgstr ""
 
 #. [lua]: final_spawn
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:310
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:315
 msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
@@ -1154,7 +1206,7 @@ msgstr ""
 "Mums tuvojas pēdējais vilnis! Ja mēs salauzīsim viņus - uzvara būs Mūsu!"
 
 #. [lua]: final_spawn
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:338
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:345
 msgid ""
 "The screams and pleas for mercy are finally silenced, as you remove your "
 "blood soaked blade from the last of the rebels. There will be no more "
@@ -1165,27 +1217,27 @@ msgstr ""
 "pārvaldījumā beidzot ir kārtība."
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:459
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:469
 msgid "Clear Weather"
 msgstr "Skaidras debesis"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:465
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:475
 msgid "Drought"
 msgstr "Sausums"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:477
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:487
 msgid "Heavy Rains"
 msgstr "Spēcīgi līst"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:483
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:493
 msgid "Snowfall"
 msgstr "Snieg"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:489
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:499
 msgid "Heavy Snowfall"
 msgstr "Sniegputenis"
 
@@ -1619,7 +1671,9 @@ msgstr "2s — Tūkstots Garisona kodieni"
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
-msgid "A strange place. Designed by Doc Paterson"
+#, fuzzy
+#| msgid "A strange place. Designed by Doc Paterson"
+msgid "A strange place. Designed by Doc Paterson."
 msgstr "Dīvaina vieta."
 
 #. [side]
@@ -1710,14 +1764,14 @@ msgid ""
 msgstr ""
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:118
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:161
 msgid ""
 "The map contains mausoleums and campfires that shift the time of the day by "
 "one step toward night and day, respectively."
 msgstr ""
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:121
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:164
 msgid ""
 "The tile in the centre, which contains the casket of the titular "
 "necromancer, is always covered in pitch black fog."
@@ -1747,12 +1801,12 @@ msgstr "3s — Aliroka slīknājs"
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_4p_Hamlets
-#. [multiplayer]: id=multiplayer_Loris_River
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #. [multiplayer]: id=multiplayer_8p_Morituri
+#. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -1931,8 +1985,8 @@ msgstr "4s — Isara krustojums"
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
-"1+4 vs. 2+3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
-"villages."
+"1 &amp; 4 vs. 2 &amp; 3 (northeast vs. southwest). Designed for 75 starting "
+"gold, 20 villages."
 msgstr ""
 "Ļoti maza karte cīņai 2 pret 2. Tuvās pozīcijas prasīs regulāru karavīru "
 "maiņu. Komandas sadalītas: Ziemeļaustrumi pret Dienvidrietumi."
@@ -2027,7 +2081,7 @@ msgstr "4s — Lorisa upe"
 #| "corners. Designed for players 1&4 vs. 2&3. There are 28 villages."
 msgid ""
 "2 vs. 2 map centered around a river with keeps in opposite corners. Designed "
-"for players 1+4 vs. 2+3. There are 28 villages."
+"for players 1 &amp; 4 vs. 2 &amp; 3. There are 28 villages."
 msgstr "Paredzēts vairāk 2 pret 2 režīmam."
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
@@ -2058,7 +2112,8 @@ msgstr " Ieteicams uzstādīt 2 zelta gabalus par ciemu."
 #| "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
 msgid ""
 "A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
-"east vs. west (1+4 vs. 2+3), but works well with any teams or FFA."
+"east vs. west (1 &amp; 4 vs. 2 &amp; 3), but works well with any teams or "
+"FFA."
 msgstr "Kartē būs 28 ciemati, režīmā 2 pret 2 (Austrumi pret Rietumi)."
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
@@ -2516,6 +2571,16 @@ msgid ""
 msgstr ""
 "Vesnotas izejas punkts izmanto --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#. [multiplayer]: id=multiplayer_test_lua_mapgen
+#: data/multiplayer/scenarios/test_lua_mapgen.cfg:16
+msgid "Lua Mapgen Maritime"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_test_lua_mapgen
+#: data/multiplayer/scenarios/test_lua_mapgen.cfg:17
+msgid "Testing new lua mapgen features"
+msgstr ""
 
 #~ msgid "Default + Khalifate"
 #~ msgstr "Noklusēti + Kalifāts"

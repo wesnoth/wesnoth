@@ -84,7 +84,7 @@ std::size_t side_actions_container::get_turn_impl(std::size_t begin, std::size_t
 			ERR_WB << "get_turn: begin >= end\n";
 		}
 		else if(it < turn_beginnings_[begin]) {
-			ERR_WB << "get_turn failed\n";			
+			ERR_WB << "get_turn failed\n";
 		}
 		return begin;
 	}
@@ -564,18 +564,18 @@ side_actions::iterator side_actions::remove_action(side_actions::iterator positi
 
 	LOG_WB << "Erasing action at turn #" << get_turn(position) << " position #" << actions_.position_in_turn(position) << "\n";
 
-	
+
 	if(resources::gameboard->get_team(team_index_ + 1).is_local()) {
 		position = synced_erase(position);
 	}
 	else {
-		// don't sync actions of sides that we don't control, this would only generate 
+		// don't sync actions of sides that we don't control, this would only generate
 		// 'illegal whiteboard data' server wanrings.
 		// it might be better to instead don't even erase the action in this case to keep
 		// the actionlist in sync with the owner client.
 		position = safe_erase(position);
 	}
-	
+
 
 	if(validate_after_delete) {
 		resources::whiteboard->validate_viewer_actions();

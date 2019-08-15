@@ -158,7 +158,7 @@ public:
 
 	/**
 	 * Get maximum length.
-	 * 
+	 *
 	 * @returns                   The maximum length of the text. The length of text
 	 *                            should not exceed this value.
 	 */

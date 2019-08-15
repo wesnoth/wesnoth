@@ -92,6 +92,6 @@ public:
 	struct error : public game::error {
 		error(const std::string& message) : game::error(message) {}
 	};
-	
+
 	const std::string name_;
 };

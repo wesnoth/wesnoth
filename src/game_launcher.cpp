@@ -67,7 +67,7 @@
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <new>
 #include <utility>                      // for pair
-#include <SDL.h>                        // for SDL_INIT_JOYSTICK, etc
+#include <SDL2/SDL.h>                        // for SDL_INIT_JOYSTICK, etc
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"

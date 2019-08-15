@@ -643,7 +643,7 @@ lua_kernel_base::lua_kernel_base()
 	luaL_setfuncs(L, callbacks, 0);
 	//lua_cpp::set_functions(L, cpp_callbacks, 0);
 	lua_setglobal(L, "wesnoth");
-	
+
 	static luaL_Reg const wml_callbacks[]= {
 		{ "load",      &intf_load_wml},
 		{ "parse",     &intf_parse_wml},

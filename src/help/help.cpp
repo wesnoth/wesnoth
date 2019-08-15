@@ -43,7 +43,7 @@
 #include <algorithm>                    // for min
 #include <ostream>                      // for basic_ostream, operator<<, etc
 #include <vector>                       // for vector, vector<>::iterator
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 
 static lg::log_domain log_display("display");

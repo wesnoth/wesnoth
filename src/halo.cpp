@@ -162,7 +162,7 @@ void halo_impl::effect::set_location(int x, int y)
 	if (new_x != x_ || new_y != y_) {
 		x_ = new_x;
 		y_ = new_y;
-		buffer_.assign(nullptr);
+		buffer_ = nullptr;
 		overlayed_hexes_.clear();
 	}
 }
@@ -191,15 +191,15 @@ bool halo_impl::effect::render()
 	}
 
 	images_.update_last_draw_time();
-	surf_.assign(image::get_image(current_image(),image::SCALED_TO_ZOOM));
+	surf_ = image::get_image(current_image(),image::SCALED_TO_ZOOM);
 	if(surf_ == nullptr) {
 		return false;
 	}
 	if(orientation_ == HREVERSE || orientation_ == HVREVERSE) {
-		surf_.assign(image::reverse_image(surf_));
+		surf_ = image::reverse_image(surf_);
 	}
 	if(orientation_ == VREVERSE || orientation_ == HVREVERSE) {
-		surf_.assign(flop_surface(surf_));
+		surf_ = flop_surface(surf_);
 	}
 
 	const int screenx = disp->get_location_x(map_location::ZERO());
@@ -223,7 +223,7 @@ bool halo_impl::effect::render()
 	}
 
 	if(sdl::rects_overlap(rect,clip_rect) == false) {
-		buffer_.assign(nullptr);
+		buffer_ = nullptr;
 		return false;
 	}
 
@@ -232,7 +232,7 @@ bool halo_impl::effect::render()
 	const clip_rect_setter clip_setter(screen, &clip_rect);
 	if(buffer_ == nullptr || buffer_->w != rect.w || buffer_->h != rect.h) {
 		SDL_Rect rect2 = rect_;
-		buffer_.assign(get_surface_portion(screen,rect2));
+		buffer_ = get_surface_portion(screen,rect2);
 	} else {
 		SDL_Rect rect2 = rect_;
 		sdl_copy_portion(screen,&rect2,buffer_,nullptr);

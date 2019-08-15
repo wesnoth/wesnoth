@@ -47,7 +47,7 @@ mapgen_gamemap* luaW_toslocs(lua_State *L, int index)
 	if(!lua_istable(L, index)) {
 		return nullptr;
 	}
-	
+
 	lua_rawgeti(L, index, 1);
 	mapgen_gamemap* m = luaW_toterrainmap(L, -1);
 	lua_pop(L, 1);
@@ -103,7 +103,7 @@ int impl_slocs_get(lua_State* L)
 		//functions with variable return numbers have been causing problem in the past
 		lua_pushnil(L);
 	}
-	return 1;		
+	return 1;
 }
 
 int impl_slocs_set(lua_State* L)
@@ -134,7 +134,7 @@ mapgen_gamemap::mapgen_gamemap(int w, int h, terrain_code t)
 	: tiles_(w, h, t)
 	, starting_positions_()
 {
-	
+
 }
 
 std::string mapgen_gamemap::to_string() const
@@ -148,7 +148,7 @@ void mapgen_gamemap::set_terrain(const map_location& loc, const terrain_code & t
 	terrain_code old = t;
 	t = terrain;
 	simplemerge(old, t, mode);
-	
+
 }
 
 void mapgen_gamemap::simplemerge(terrain_code old_t, terrain_code& new_t, const terrain_type_data::merge_mode mode)
@@ -160,7 +160,7 @@ void mapgen_gamemap::simplemerge(terrain_code old_t, terrain_code& new_t, const 
 		new_t = t_translation::terrain_code(new_t.base, old_t.overlay);
 	}
 }
-	
+
 void mapgen_gamemap::set_special_location(const std::string& id, const map_location& loc)
 {
 	bool valid = loc.valid();
@@ -270,12 +270,12 @@ static int impl_terainmap_get(lua_State *L)
 {
 	mapgen_gamemap& tm = luaW_checkterrainmap(L, 1);
 	char const *m = luaL_checkstring(L, 2);
-	
+
 	// Find the corresponding attribute.
 	return_int_attrib("width", tm.total_width());
 	return_int_attrib("height", tm.total_height());
 	return_string_attrib("data", tm.to_string());
-	
+
 	if(strcmp(m, "special_locations") == 0) {
 		luaW_pushslocs(L, 1);
 		return 1;
@@ -314,10 +314,10 @@ static int intf_set_terrain(lua_State *L)
 	mapgen_gamemap& tm = luaW_checkterrainmap(L, 1);
 	map_location loc = luaW_checklocation(L, 2);
 	string_view t_str = luaL_checkstring(L, 3);
-	
+
 	auto terrain = t_translation::read_terrain_code(t_str);
 	auto mode = terrain_type_data::BOTH;
-	
+
 	if(!lua_isnoneornil(L, 4)) {
 		string_view mode_str = luaL_checkstring(L, 4);
 		if(mode_str == "base") {
@@ -438,7 +438,7 @@ int mapgen_gamemap::intf_mg_terrain_mask(lua_State *L)
 		is_odd,
 		ignore_special_locations
 	);
-		
+
 	return 0;
 }
 

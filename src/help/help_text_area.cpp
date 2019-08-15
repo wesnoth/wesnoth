@@ -344,7 +344,7 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 		}
 		else {
 			surface surf(font::get_rendered_text(first_part, scaled_font_size, color, state));
-			if (!surf.null())
+			if (surf)
 				add_item(item(surf, curr_loc_.first, curr_loc_.second, first_part, ref_dst));
 		}
 		if (parts.size() > 1) {
@@ -376,7 +376,7 @@ void help_text_area::add_img_item(const std::string& path, const std::string& al
 								  const bool floating, const bool box)
 {
 	surface surf(image::get_image(path));
-	if (surf.null())
+	if (!surf)
 		return;
 	ALIGNMENT align = str_to_align(alignment);
 	if (align == HERE && floating) {

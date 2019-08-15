@@ -122,7 +122,6 @@ void playmp_controller::play_human_turn()
 	const std::unique_ptr<countdown_clock> timer(saved_game_.mp_settings().mp_countdown
         ? new countdown_clock(current_team())
         : nullptr);
-	show_turn_dialog();
 	if(undo_stack().can_undo()) {
 		// If we reload a networked mp game we cannot undo moves made before the save
 		// because other players already received them

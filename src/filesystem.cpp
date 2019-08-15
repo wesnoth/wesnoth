@@ -58,7 +58,7 @@
 #if defined(__APPLE__) && defined(__MACH__) && defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__)
 
 #define WESNOTH_BOOST_OS_IOS (__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__*1000)
-#include <SDL_filesystem.h>
+#include <SDL2/SDL_filesystem.h>
 
 #endif
 
@@ -555,13 +555,13 @@ static const std::string& get_version_path_suffix()
 	{
 		const char* home_str = getenv("HOME");
 		bfs::path home = home_str ? home_str : ".";
-		
+
 		// We don't know which of the two is in PREFERENCES_DIR now.
 		boost::filesystem::path old_saves_dir = home / "Library/Application Support/Wesnoth_";
 		old_saves_dir += get_version_path_suffix();
 		boost::filesystem::path new_saves_dir = home / "Library/Containers/org.wesnoth.Wesnoth/Data/Library/Application Support/Wesnoth_";
 		new_saves_dir += get_version_path_suffix();
-		
+
 		if(bfs::is_directory(new_saves_dir)) {
 			if(!bfs::exists(old_saves_dir)) {
 				std::cout << "Apple developer's userdata migration: ";
@@ -582,7 +582,7 @@ static void setup_user_data_dir()
 #if defined(__APPLE__) && !defined(__IPHONEOS__)
 	migrate_apple_config_directory_for_unsandboxed_builds();
 #endif
-	
+
 	if(!create_directory_if_missing_recursive(user_data_dir)) {
 		ERR_FS << "could not open or create user data directory at " << user_data_dir.string() << '\n';
 		return;

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-ai\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-17 18:29 UTC\n"
+"POT-Creation-Date: 2019-07-18 12:50 UTC\n"
 "PO-Revision-Date: 2019-06-18 11:34+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
@@ -25,7 +25,7 @@ msgid "Multiplayer_AI^Default AI (RCA)"
 msgstr "Öntanımlı YZ (RCA)"
 
 #. [ai]: id=experimental_ai
-#: data/ai/ais/ai_generic_rush.cfg:10
+#: data/ai/ais/ai_experimental.cfg:9
 msgid "Multiplayer_AI^Experimental AI"
 msgstr "Deneysel YZ"
 
@@ -48,10 +48,6 @@ msgstr "Glş YZ: Öntanımlı + Deneysel Askere Alım (Formula AI)"
 #: data/ai/dev/formula_ai_poisoning.cfg:9
 msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
 msgstr "Glş YZ: Öntanımlı + Zehirleme (Formül YZ)"
-
-#: data/ai/lua/patrol.lua:4
-msgid "Use the Patrols Micro AI instead of patrol.lua."
-msgstr "patrol.lua yerine Devriyeler Mikro YZ kullan"
 
 #. [test]: id=The_Elves_Besieged
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:5
@@ -127,8 +123,8 @@ msgstr "Üstat Delfador! Her yerden ork yağıyor! Şimdi ne yapacağız?"
 msgid "There are too many to fight, far too many. We must escape!"
 msgstr "Bunlar öldürmekle hayatta bitmez. Kaçmalıyız!"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:216
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:219
 msgid ""
 "This is a reenactment of scenario The Elves Besieged of the mainline "
 "campaign Heir to the Throne, just that the AI is playing Konrad's side here. "
@@ -154,17 +150,17 @@ msgstr ""
 "sayfasına</span> bakınız."
 
 #. [event]
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:222
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:226
 msgid "Move Konrad here"
 msgstr "Konrad'ı buraya götür"
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:238
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:242
 msgid "Very well, we have made it this far! But where do we go next?"
 msgstr "Tamam buraya kadar geldik! Şimdi nereye gidiyoruz?"
 
 #. [message]: speaker=Delfador
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:243
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:247
 msgid ""
 "In HttT, we would travel north now, and try to make it to the Isle of "
 "Alduin. But for this demo campaign, we'll call it good here."
@@ -173,37 +169,37 @@ msgstr ""
 "deneyecektik. Fakat bu demo seferberlik için burası iyi diyeceğiz."
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:268
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:272
 msgid "I... I don’t think I can make it anymore."
 msgstr "Ben... Ben daha fazla dayanamayacağım."
 
 #. [message]: speaker=Delfador
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:272
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:276
 msgid "Prince... you must keep fighting! Nooooooo!"
 msgstr "Prensim... savaşa devam etmelisiniz! Haaayııııır!"
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:276
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:280
 msgid "It is over. I am doomed..."
 msgstr "Herşey bitti. Kaybettik..."
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:290
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:294
 msgid "I have... have failed in my duty to protect the prince! I am defeated."
 msgstr "Ben.. ben prensi koruyamadım! Yenildim!"
 
 #. [message]: speaker=Konrad
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:294
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:298
 msgid "Don’t die, Delfador! Please, you have to stay alive!"
 msgstr "Delfador ölme! Lütfen, sana ihtiyacımız var!"
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:298
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:302
 msgid "Ugh!"
 msgstr "Of!"
 
 #. [message]: speaker=Delfador
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:309
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:313
 msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
 msgstr "Olamaz! Vakit kalmadı ve onların takviyeleri yetişti..."
@@ -394,27 +390,26 @@ msgstr "Trol Yavruları"
 #: data/ai/micro_ais/scenarios/goto.cfg:382
 #: data/ai/micro_ais/scenarios/guardians.cfg:85
 #: data/ai/micro_ais/scenarios/lurkers.cfg:382
-#: data/ai/micro_ais/scenarios/patrols.cfg:177
+#: data/ai/micro_ais/scenarios/patrols.cfg:185
 #: data/ai/micro_ais/scenarios/swarm.cfg:66
 #: data/ai/micro_ais/scenarios/wolves.cfg:95
 msgid "End Scenario"
 msgstr "Senaryoyu Bitir"
 
-#. [command]
-#. [then]
-#: data/ai/micro_ais/scenarios/animals.cfg:221
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:184
-#: data/ai/micro_ais/scenarios/goto.cfg:394
-#: data/ai/micro_ais/scenarios/recruiting.cfg:111
-#: data/ai/micro_ais/scenarios/swarm.cfg:72
-#: data/ai/micro_ais/scenarios/swarm.cfg:177
-#: data/ai/micro_ais/scenarios/wolves.cfg:101
-#: data/ai/micro_ais/scenarios/wolves.cfg:262
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/animals.cfg:224
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:200
+#: data/ai/micro_ais/scenarios/goto.cfg:397
+#: data/ai/micro_ais/scenarios/recruiting.cfg:126
+#: data/ai/micro_ais/scenarios/swarm.cfg:75
+#: data/ai/micro_ais/scenarios/swarm.cfg:188
+#: data/ai/micro_ais/scenarios/wolves.cfg:104
+#: data/ai/micro_ais/scenarios/wolves.cfg:273
 msgid "Well, that was that."
 msgstr "Ehem, işte bu kadar."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/animals.cfg:338
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/animals.cfg:346
 msgid ""
 "<span color='#A00000'>Important:</span> The animal Micro AIs in this "
 "scenario are written for a number of animal unit types that do not exist in "
@@ -426,8 +421,8 @@ msgstr ""
 "yerleşik hayvan birimleri olmayan bazı türler için yazılmıştır. Bu senaryo "
 "denemesinde, bu birimler yerleşik birimlerle değiştirilmiştir."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/animals.cfg:341
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/animals.cfg:353
 msgid ""
 "This is a fun little scenario with a bunch of different animal AIs, mostly "
 "for watching only. The animal AIs behave as follows:\n"
@@ -438,15 +433,15 @@ msgstr ""
 "\n"
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/animals.cfg:349
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:98
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:135
-#: data/ai/micro_ais/scenarios/wolves.cfg:196
+#: data/ai/micro_ais/scenarios/animals.cfg:366
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:108
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:147
+#: data/ai/micro_ais/scenarios/wolves.cfg:204
 msgid "Question for the Player"
 msgstr "Oyuncu için Sorular"
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/animals.cfg:353
+#: data/ai/micro_ais/scenarios/animals.cfg:370
 msgid ""
 "It is possible to include a human-controlled Side 1, so that the action "
 "stops once every turn for looking around (or to mess with things in debug "
@@ -481,45 +476,45 @@ msgstr ""
 "Intelligence)"
 
 #. [option]
-#: data/ai/micro_ais/scenarios/animals.cfg:361
+#: data/ai/micro_ais/scenarios/animals.cfg:378
 msgid "<span font='16'>I'll just watch the animals.</span>"
 msgstr "<span font='16'>Hayvanları sadece izleyeceğim.</span>"
 
 #. [option]
-#: data/ai/micro_ais/scenarios/animals.cfg:379
-#: data/ai/micro_ais/scenarios/wolves.cfg:224
+#: data/ai/micro_ais/scenarios/animals.cfg:396
+#: data/ai/micro_ais/scenarios/wolves.cfg:232
 msgid "<span font='16'>I want to have control of Side 1.</span>"
 msgstr "<span font='16'>1. tarafı oynamak istiyorum.</span>"
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/animals.cfg:385
+#: data/ai/micro_ais/scenarios/animals.cfg:402
 msgid "Watch the animals do their things"
 msgstr "Hayvanların yaptıklarını izle"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/animals.cfg:387
-#: data/ai/micro_ais/scenarios/goto.cfg:424
-#: data/ai/micro_ais/scenarios/swarm.cfg:152
-#: data/ai/micro_ais/scenarios/wolves.cfg:236
+#: data/ai/micro_ais/scenarios/animals.cfg:404
+#: data/ai/micro_ais/scenarios/goto.cfg:431
+#: data/ai/micro_ais/scenarios/swarm.cfg:160
+#: data/ai/micro_ais/scenarios/wolves.cfg:244
 msgid "Use right-click option"
 msgstr "Sağ-tık seçeneğini kullan"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/animals.cfg:391
-#: data/ai/micro_ais/scenarios/wolves.cfg:240
+#: data/ai/micro_ais/scenarios/animals.cfg:408
+#: data/ai/micro_ais/scenarios/wolves.cfg:248
 msgid "Death of Rutburt"
 msgstr "Rutburt'un ölümü"
 
 #. [note]
-#: data/ai/micro_ais/scenarios/animals.cfg:395
-#: data/ai/micro_ais/scenarios/goto.cfg:432
-#: data/ai/micro_ais/scenarios/swarm.cfg:160
-#: data/ai/micro_ais/scenarios/wolves.cfg:244
+#: data/ai/micro_ais/scenarios/animals.cfg:412
+#: data/ai/micro_ais/scenarios/goto.cfg:439
+#: data/ai/micro_ais/scenarios/swarm.cfg:168
+#: data/ai/micro_ais/scenarios/wolves.cfg:252
 msgid "Check out the right-click menu options for additional actions"
 msgstr "Diğer eylemler için sağ-tık menü seçeneklerine bakın"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/animals.cfg:413
+#. [message]: speaker=$second_unit.id
+#: data/ai/micro_ais/scenarios/animals.cfg:432
 msgid ""
 "Yowl!\n"
 "Translation: Those Ogres are mean!  We better stay away from them and their "
@@ -538,20 +533,22 @@ msgstr "Darboğaz Savunma"
 msgid "Big Bad Orc"
 msgstr "Büyük Kötü Ork"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:85
+#. [message]: speaker=LuaAI
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:87
 msgid "All right, chaps. Those orcs need to be stopped."
 msgstr "Pekala, arkadaşlar. Bu orkların durdurulması lazım."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:87
-#: data/ai/micro_ais/scenarios/guardians.cfg:514
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:135
+#. [message]: speaker=Big Bad Orc
+#. [message]: speaker=Another Bad Orc
+#. [message]: speaker=Vanak
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:93
+#: data/ai/micro_ais/scenarios/guardians.cfg:572
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:140
 msgid "They there!  We them get!"
 msgstr "Onlar orada! Biz onları alırız!"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:90
+#. [message]: speaker=LuaAI
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:99
 msgid ""
 "We need to hold that pass for as long as we can. Let's put our strongest "
 "fighters on the front line and bring injured units to the back for healing. "
@@ -576,7 +573,7 @@ msgstr ""
 "Artificial Intelligence)"
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:100
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:110
 msgid ""
 "In this scenario, the AI playing the humans in the east is instructed to "
 "form a defensive line at the pass and hold off the orcs for as long as "
@@ -589,37 +586,37 @@ msgstr ""
 "bırakmak istersiniz?"
 
 #. [option]
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:102
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:112
 msgid "<span font='16'>I'll watch the two AIs fight it out.</span>"
 msgstr "<span font='16'>İki YZ'nın çarpışmasını dışardan izleyeceğim.</span>"
 
 #. [option]
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:105
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:115
 msgid "<span font='16'>I'll play the orcs.</span>"
 msgstr "<span font='16'>Orkları oynayacağım.</span>"
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:116
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:126
 msgid "Take the pass"
 msgstr "Geçidi ele geçir"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:118
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:128
 msgid "Defeat all humans"
 msgstr "Tüm insanları öldür"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:122
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:132
 msgid "Death of Big Bad Orc"
 msgstr "Büyük Kötü Orku öldür"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:126
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:136
 msgid "Only one orc remains"
 msgstr "Yalnız bir ork kalınca"
 
-#. [then]
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:151
+#. [message]: speaker=LuaAI
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:163
 msgid ""
 "I may have fallen, but we will continue to defend the pass to the last man!"
 msgstr ""
@@ -652,33 +649,13 @@ msgstr "Rovik'in Evi"
 msgid "Rowck"
 msgstr "Rovik"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/dragon.cfg:81
+#. [message]: speaker=Dreadful Bat
+#: data/ai/micro_ais/scenarios/dragon.cfg:85
 msgid "Be careful to stay out of the way of that dragon. He's a mean one."
 msgstr "Ejderhanın yolundan uzak durmaya dikkat et. O huysuz biri."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/dragon.cfg:84
-#, fuzzy
-#| msgid ""
-#| "Hi there. I am Rowck and here is what I do:\n"
-#| "When hungry, I move around part of the map in a random wander until I get "
-#| "into range of an enemy. If enemies are within range, I attack and devour "
-#| "the weakest of them. After that, I retreat to my rest location, where I "
-#| "stay for a certain number of turns or until fully healed.\n"
-#| "A few details (features, not bugs, but can be changed if desired):\n"
-#| "- If my way home is blocked on the return, the normal RCA AI takes over "
-#| "my behavior.\n"
-#| "- I will, however, attack any enemy occupying my rest hex, if I can get "
-#| "there.\n"
-#| "- A kill only makes me go home when I am the attacker, not as defender.\n"
-#| "- Occasionally I will not move at all while wandering (a dragon has to "
-#| "rest sometimes!)\n"
-#| "\n"
-#| "Note: The Hunter AI is coded as a Micro AI. A Micro AI can be added and "
-#| "adapted to the need of a scenario easily using only WML and the "
-#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
-#| "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
+#. [message]: speaker=Rowck
+#: data/ai/micro_ais/scenarios/dragon.cfg:91
 msgid ""
 "Hi there. I am Rowck and here is what I do:\n"
 "When hungry, I move around part of the map in a random wander until I get "
@@ -696,8 +673,8 @@ msgid ""
 "\n"
 "Note: The Hunter AI is coded as a Micro AI. A Micro AI can be added and "
 "adapted to the need of a scenario easily using only WML and the [micro_ai] "
-"tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at http://"
-"wiki.wesnoth.org/Micro_AIs for more information."
+"tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at "
+"https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
 "Merhaba. Ben Rovik, yapacaklarım şunlar:\n"
 "Acıktığımda, bir düşman menziline girinceye kadar haritanın bir kısmını "
@@ -721,29 +698,29 @@ msgstr ""
 "bakın. (kısaltmalar - YZ: Yapay Zeka; AI: Artificial Intelligence)"
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/dragon.cfg:96
+#: data/ai/micro_ais/scenarios/dragon.cfg:104
 msgid "Move the bats around to explore how Rowck reacts"
 msgstr ""
 "Rovik'in nasıl tepki verdiğini keşfetmek için yarasaları etrafta hareket "
 "ettirin"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/dragon.cfg:98
+#: data/ai/micro_ais/scenarios/dragon.cfg:106
 msgid "Defeat Rowck"
 msgstr "Rovik'i yen"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/dragon.cfg:102
+#: data/ai/micro_ais/scenarios/dragon.cfg:110
 msgid "Move the lead bat to the signpost"
 msgstr "Öncü yarasayı yol işaretine götür"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/dragon.cfg:106
+#: data/ai/micro_ais/scenarios/dragon.cfg:114
 msgid "Death of the bat leader"
 msgstr "Yarasa liderin ölümü"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/dragon.cfg:139
+#. [message]: speaker=Dreadful Bat
+#: data/ai/micro_ais/scenarios/dragon.cfg:149
 msgid "I'm out of here."
 msgstr "Buradan çıkıyorum."
 
@@ -752,8 +729,8 @@ msgstr "Buradan çıkıyorum."
 msgid "Fast"
 msgstr "Hızlı"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/fast.cfg:64
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/fast.cfg:67
 msgid ""
 "This scenario presents a situation with so many units on the map, that there "
 "is a noticeable delay (a few seconds or so) before each move by the default "
@@ -833,8 +810,8 @@ msgstr "1. Tarafa Kapkaççı yerleştir"
 #. [set_menu_item]: id=m02_kill_unit
 #. [set_menu_item]: id=m05_kill_unit
 #: data/ai/micro_ais/scenarios/goto.cfg:350
-#: data/ai/micro_ais/scenarios/swarm.cfg:113
-#: data/ai/micro_ais/scenarios/wolves.cfg:153
+#: data/ai/micro_ais/scenarios/swarm.cfg:117
+#: data/ai/micro_ais/scenarios/wolves.cfg:157
 msgid "Kill Unit under Cursor"
 msgstr "İmlecin altındaki Birimi öldür"
 
@@ -843,24 +820,8 @@ msgstr "İmlecin altındaki Birimi öldür"
 msgid "Turn off human control of Side 1"
 msgstr "1. Tarafın insan denetimini kapat"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/goto.cfg:413
-#, fuzzy
-#| msgid ""
-#| "This scenario demonstrates a variety of different uses of the Goto Micro "
-#| "AI. All AI sides are controlled by this MAI in one way or another (except "
-#| "for the saurians, which are run by the Lurkers Micro AI). Messages will "
-#| "be displayed throughout the scenario to point out what the units are "
-#| "doing.\n"
-#| "\n"
-#| "The player controls Side 1. There are right-click context menu options "
-#| "for adding Side 1 units to the map and for taking them off again. This is "
-#| "useful mostly for testing how the Side 3 guardians react.\n"
-#| "\n"
-#| "Note: The Goto AI is coded as a Micro AI. A Micro AI can be added and "
-#| "adapted to the need of a scenario easily using only WML and the "
-#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
-#| "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/goto.cfg:419
 msgid ""
 "This scenario demonstrates a variety of different uses of the Goto Micro AI. "
 "All AI sides are controlled by this MAI in one way or another (except for "
@@ -873,8 +834,8 @@ msgid ""
 "\n"
 "Note: The Goto AI is coded as a Micro AI. A Micro AI can be added and "
 "adapted to the need of a scenario easily using only WML and the [micro_ai] "
-"tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at http://"
-"wiki.wesnoth.org/Micro_AIs for more information."
+"tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at "
+"https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
 "Bu senaryo, Gidiş Mikro YZ'sinin çeşitli kullanımlarını göstermektedir. "
 "Bütün YZ tarafları, bu Mikto YZ tarafından şu veya bu şekilde yönetilir "
@@ -893,28 +854,28 @@ msgstr ""
 "Intelligence)"
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/goto.cfg:422
+#: data/ai/micro_ais/scenarios/goto.cfg:429
 msgid "Watch the AI units do their things"
 msgstr "YZ birimlerinin işlerini yapmalarını izleyin"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/goto.cfg:428
+#: data/ai/micro_ais/scenarios/goto.cfg:435
 msgid "Death of Vaddan"
 msgstr "Vaddan'ın ölümü"
 
 #. [message]: speaker=messenger1
-#: data/ai/micro_ais/scenarios/goto.cfg:443
+#: data/ai/micro_ais/scenarios/goto.cfg:450
 msgid "The bridge is out. What do we do now?"
 msgstr "Köprü yıkılmış. Şimdi ne yapacağız?"
 
 #. [message]: speaker=messenger2
-#: data/ai/micro_ais/scenarios/goto.cfg:447
+#: data/ai/micro_ais/scenarios/goto.cfg:454
 msgid "Looks like we need to take the long way around to get to General Minry."
 msgstr ""
 "General Minri'ye ulaşmak için uzun yoldan gitmemiz gerekiyor gibi görünüyor."
 
 #. [message]: speaker=leader3
-#: data/ai/micro_ais/scenarios/goto.cfg:456
+#: data/ai/micro_ais/scenarios/goto.cfg:463
 msgid ""
 "Chaps, ignore everybody except for that swindler Vaddan and his men. Stay in "
 "place until any of his units gets within 8 hexes of you.\n"
@@ -931,7 +892,7 @@ msgstr ""
 "biri bu amaç için daha uygun olacaktır."
 
 #. [message]: type=Vampire Bat
-#: data/ai/micro_ais/scenarios/goto.cfg:467
+#: data/ai/micro_ais/scenarios/goto.cfg:474
 msgid ""
 "Us four bats switch between running off to the corners of the map (each one "
 "to a different corner), and getting back in a group right here. Either "
@@ -943,18 +904,18 @@ msgstr ""
 "etiketi ile,  biri 'unique_goals = yes' satırı ile  diğeri ise bu satır "
 "olmadan atanır."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/goto.cfg:475
+#. [message]: speaker=ghost1
+#: data/ai/micro_ais/scenarios/goto.cfg:484
 msgid "Aaiiieeeeeee !!!"
 msgstr "Aaiiiyyyyyyy !!!"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/goto.cfg:476
+#. [message]: speaker=messenger2
+#: data/ai/micro_ais/scenarios/goto.cfg:488
 msgid "O no, a ghost!"
 msgstr "Oh hayır, bir hayalet!"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/goto.cfg:477
+#. [message]: speaker=messenger1
+#: data/ai/micro_ais/scenarios/goto.cfg:492
 msgid ""
 "Don't worry, those are really shy ghosts.  Nobody knows why, but they always "
 "appear in the north this time of year and move through to the south.  Also, "
@@ -971,7 +932,7 @@ msgstr ""
 "hariç. Onları köşeye sıkıştırlmadığımız sürece, bizi rahat bırakacaklar."
 
 #. [message]: speaker=messenger2
-#: data/ai/micro_ais/scenarios/goto.cfg:536
+#: data/ai/micro_ais/scenarios/goto.cfg:551
 msgid ""
 "I'll take the route straight through the mountains. It's much shorter than "
 "following the trail all the way around in the south."
@@ -980,7 +941,7 @@ msgstr ""
 "çok daha kısa."
 
 #. [message]: speaker=messenger1
-#: data/ai/micro_ais/scenarios/goto.cfg:540
+#: data/ai/micro_ais/scenarios/goto.cfg:555
 msgid ""
 "You're crazy. It might be shorter as the crow flies, but it will take you "
 "forever to get through those mountains.\n"
@@ -995,12 +956,12 @@ msgstr ""
 "gösteren Goto Micro AI tanımlarıyla yönetilir."
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/goto.cfg:574
+#: data/ai/micro_ais/scenarios/goto.cfg:591
 msgid "I told you so!"
 msgstr "Sana söylemiştim!"
 
 #. [message]: speaker=leader5
-#: data/ai/micro_ais/scenarios/goto.cfg:584
+#: data/ai/micro_ais/scenarios/goto.cfg:601
 msgid ""
 "Men, head down to the River Fort and get your orders from Sergeant Aethubry. "
 "I want each and every one of you to report to him before going east to fight "
@@ -1011,7 +972,7 @@ msgstr ""
 "vermesini istiyorum."
 
 #. [message]: speaker=leader6
-#: data/ai/micro_ais/scenarios/goto.cfg:593
+#: data/ai/micro_ais/scenarios/goto.cfg:610
 msgid ""
 "Hah, that's that pencil pusher Gadoc for you! Men, I want you to move toward "
 "the River Fort as well, but it's good enough for one of you to report to "
@@ -1023,7 +984,7 @@ msgstr ""
 "olduktan sonra, geri kalanınız doğrudan savaşa girebilir."
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/goto.cfg:611
+#: data/ai/micro_ais/scenarios/goto.cfg:628
 msgid ""
 "$unit.language_name $unit.name from Lieutenant Gadoc's squadron reporting "
 "for duty, sir."
@@ -1032,17 +993,17 @@ msgstr ""
 "$unit.name, efendim."
 
 #. [message]: speaker=fort_commander
-#: data/ai/micro_ais/scenarios/goto.cfg:627
+#: data/ai/micro_ais/scenarios/goto.cfg:644
 msgid "Ready to fight those saurians, soldier?"
 msgstr "Bu sürüngenlerle dövüşmeye hazır mısın, asker?"
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/goto.cfg:631
+#: data/ai/micro_ais/scenarios/goto.cfg:648
 msgid "Yes, sir."
 msgstr "Evet, efendim."
 
 #. [message]: speaker=fort_commander
-#: data/ai/micro_ais/scenarios/goto.cfg:639
+#: data/ai/micro_ais/scenarios/goto.cfg:656
 msgid ""
 "Very good, $unit.language_name. Now go help your comrade get rid of that "
 "saurian infestation in the swamps."
@@ -1051,24 +1012,24 @@ msgstr ""
 "istilasından kurtulmasına yardım edin."
 
 #. [message]: speaker=fort_commander
-#: data/ai/micro_ais/scenarios/goto.cfg:647
+#: data/ai/micro_ais/scenarios/goto.cfg:664
 msgid "Maybe if I ignore them, they'll just go away?"
 msgstr "Acaba onları görmezden gelirsem, hemen giderler mi?"
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/goto.cfg:666
+#: data/ai/micro_ais/scenarios/goto.cfg:683
 msgid "Lieutenant Senvan's men reporting for duty, sir."
 msgstr "Teğmen Senvan'ın adamları görev için rapor veriyor, efendim."
 
 #. [message]: speaker=fort_commander
-#: data/ai/micro_ais/scenarios/goto.cfg:670
+#: data/ai/micro_ais/scenarios/goto.cfg:687
 msgid ""
 "Ah, Lieutenant Senvan... Is every single one of you going to bother me "
 "individually as well?"
 msgstr "Ah, Teğmen Senvan... Her biriniz ben ayrı ayrı rahatsız edecek mi?"
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/goto.cfg:674
+#: data/ai/micro_ais/scenarios/goto.cfg:691
 msgid ""
 "No, sir. Lieutenant Senvan ordered us to head into battle as soon as I have "
 "reported to you."
@@ -1077,7 +1038,7 @@ msgstr ""
 "emretti."
 
 #. [message]: speaker=fort_commander
-#: data/ai/micro_ais/scenarios/goto.cfg:678
+#: data/ai/micro_ais/scenarios/goto.cfg:695
 msgid ""
 "Well, that's a relief. Somebody knows how to use his ... I mean, very well, "
 "off you go then.\n"
@@ -1088,7 +1049,7 @@ msgstr ""
 "\n"
 
 #. [message]: speaker=fort_commander
-#: data/ai/micro_ais/scenarios/goto.cfg:680
+#: data/ai/micro_ais/scenarios/goto.cfg:697
 msgid ""
 "I wouldn't say anything negative about one of my superior officers now, "
 "would I?"
@@ -1097,12 +1058,12 @@ msgstr ""
 "mi?"
 
 #. [message]: type=Vampire Bat
-#: data/ai/micro_ais/scenarios/goto.cfg:718
+#: data/ai/micro_ais/scenarios/goto.cfg:735
 msgid "We've all made it to the corners, let's get back together again."
 msgstr "Köşelerde herşeyi yaptık, tekrar bir araya gelelim."
 
 #. [message]: type=Vampire Bat
-#: data/ai/micro_ais/scenarios/goto.cfg:759
+#: data/ai/micro_ais/scenarios/goto.cfg:776
 msgid "We're back together, let's head out to the corners again."
 msgstr "Tekrar bir araya geldik, yine köşelere gidelim."
 
@@ -1146,94 +1107,94 @@ msgid "Coward 1"
 msgstr "1. Korkak"
 
 #. [unit]: type=Giant Rat, id=coward2
-#: data/ai/micro_ais/scenarios/guardians.cfg:142
+#: data/ai/micro_ais/scenarios/guardians.cfg:144
 msgid "Coward 2"
 msgstr "2. Korkak"
 
 #. [unit]: type=Giant Rat, id=coward3
-#: data/ai/micro_ais/scenarios/guardians.cfg:166
+#: data/ai/micro_ais/scenarios/guardians.cfg:170
 msgid "Coward 3"
 msgstr "3. Korkak"
 
 #. [unit]: type=Giant Rat, id=coward4
-#: data/ai/micro_ais/scenarios/guardians.cfg:191
+#: data/ai/micro_ais/scenarios/guardians.cfg:197
 msgid "Coward 4"
 msgstr "4. Korkak"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/guardians.cfg:211
+#: data/ai/micro_ais/scenarios/guardians.cfg:219
 msgid "Move gryphons here to see different coward reactions"
 msgstr "Farklı korkak tepkileri görmek için grifini buraya götür"
 
 #. [unit]: type=Troll, id=return1
-#: data/ai/micro_ais/scenarios/guardians.cfg:220
+#: data/ai/micro_ais/scenarios/guardians.cfg:228
 msgid "Return Guardian 1"
 msgstr "1. Muhafız döner"
 
 #. [unit]: type=Troll Whelp, id=return2
-#: data/ai/micro_ais/scenarios/guardians.cfg:239
+#: data/ai/micro_ais/scenarios/guardians.cfg:249
 msgid "Return Guardian 2"
 msgstr "2. Muhafız döner"
 
 #. [unit]: type=Troll Whelp, id=home1
-#: data/ai/micro_ais/scenarios/guardians.cfg:259
+#: data/ai/micro_ais/scenarios/guardians.cfg:271
 msgid "Home Guard 1"
 msgstr "1. Ev Muhafızı"
 
 #. [unit]: type=Troll, id=home 2
-#: data/ai/micro_ais/scenarios/guardians.cfg:271
+#: data/ai/micro_ais/scenarios/guardians.cfg:283
 msgid "Home Guard 2"
 msgstr "2. Ev Muhafızı"
 
 #. [unit]: type=Skeleton Archer, id=stationed1
-#: data/ai/micro_ais/scenarios/guardians.cfg:284
+#: data/ai/micro_ais/scenarios/guardians.cfg:296
 msgid "Stationed Guardian 1"
 msgstr "1. İstasyonlu Muhafız"
 
 #. [unit]: type=Skeleton, id=stationed2
-#: data/ai/micro_ais/scenarios/guardians.cfg:306
+#: data/ai/micro_ais/scenarios/guardians.cfg:320
 msgid "Stationed Guardian 2"
 msgstr "2. İstasyonlu Muhafız"
 
 #. [unit]: type=Troll, id=zone1
-#: data/ai/micro_ais/scenarios/guardians.cfg:329
+#: data/ai/micro_ais/scenarios/guardians.cfg:345
 msgid "Gate Keeper"
 msgstr "Kapı Bekçisi"
 
 #. [unit]: type=Dwarvish Guardsman, id=zone2
-#: data/ai/micro_ais/scenarios/guardians.cfg:354
+#: data/ai/micro_ais/scenarios/guardians.cfg:372
 msgid "Home Keeper"
 msgstr "Ev Sahibi"
 
 #. [unit]: type=Naga Fighter, id=zone3
-#: data/ai/micro_ais/scenarios/guardians.cfg:383
+#: data/ai/micro_ais/scenarios/guardians.cfg:403
 msgid "Water Guardian"
 msgstr "Su Muhafızı"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/guardians.cfg:402
+#: data/ai/micro_ais/scenarios/guardians.cfg:424
 msgid "Guarded Location"
 msgstr "Korunan Yer"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/guardians.cfg:403
+#: data/ai/micro_ais/scenarios/guardians.cfg:425
 msgid "Station 1"
 msgstr "1. İstasyon"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/guardians.cfg:404
+#: data/ai/micro_ais/scenarios/guardians.cfg:426
 msgid "Station 2"
 msgstr "2. İstasyon"
 
-#. [command]
+#. [message]: speaker=narrator
 #. [set_menu_item]: id=m01_guardian
-#: data/ai/micro_ais/scenarios/guardians.cfg:425
-#: data/ai/micro_ais/scenarios/guardians.cfg:431
+#: data/ai/micro_ais/scenarios/guardians.cfg:447
+#: data/ai/micro_ais/scenarios/guardians.cfg:456
 msgid "Standard WML Guardian"
 msgstr "Standart WML Muhafız"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:431
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/guardians.cfg:457
 msgid ""
 "This is the built-in WML guardian coded using 'ai_special=guardian'. These "
 "guardians attack if there is an enemy within their movement range, otherwise "
@@ -1243,15 +1204,15 @@ msgstr ""
 "gardiyanlar hareket menzilinde bir düşman varsa saldırırlar, aksi takdirde "
 "hiçbir şey yapmazlar (iyileşmek için bir köye geri çekilmek dışında)."
 
-#. [command]
+#. [message]: speaker=narrator
 #. [set_menu_item]: id=m02_return
-#: data/ai/micro_ais/scenarios/guardians.cfg:436
-#: data/ai/micro_ais/scenarios/guardians.cfg:442
+#: data/ai/micro_ais/scenarios/guardians.cfg:463
+#: data/ai/micro_ais/scenarios/guardians.cfg:472
 msgid "Return Guardian"
 msgstr "Dönen Muhafız"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:442
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/guardians.cfg:473
 msgid ""
 "A 'return guardian' is a variation of the standard Wesnoth guardian. It has "
 "an assigned guard position (GP) to which it returns after attacks on "
@@ -1276,15 +1237,15 @@ msgstr ""
 "geleni yapar.\n"
 "- Geri dönerken bir düşmanın yanında durursa, hamle sonrasında saldırır."
 
-#. [command]
+#. [message]: speaker=narrator
 #. [set_menu_item]: id=m03_home
-#: data/ai/micro_ais/scenarios/guardians.cfg:452
-#: data/ai/micro_ais/scenarios/guardians.cfg:458
+#: data/ai/micro_ais/scenarios/guardians.cfg:484
+#: data/ai/micro_ais/scenarios/guardians.cfg:493
 msgid "Home Guard"
 msgstr "Ev Bekçisi"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:458
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/guardians.cfg:494
 msgid ""
 "A 'home guard' is a variant on the 'guardian' AI special. With this variant, "
 "the unit has an assigned 'home' location, and will return there if not "
@@ -1315,15 +1276,15 @@ msgstr ""
 "Ek olarak, tarafın koruyucu olmayan birimleri öntanımlı YZ davranışını takip "
 "eder."
 
-#. [command]
+#. [message]: speaker=narrator
 #. [set_menu_item]: id=m04_stationed
-#: data/ai/micro_ais/scenarios/guardians.cfg:464
-#: data/ai/micro_ais/scenarios/guardians.cfg:470
+#: data/ai/micro_ais/scenarios/guardians.cfg:501
+#: data/ai/micro_ais/scenarios/guardians.cfg:510
 msgid "Stationed Guardian"
 msgstr "İstasyon Muhafızı"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:470
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/guardians.cfg:511
 msgid ""
 "A 'stationed guardian' is another variation of the standard Wesnoth guardian "
 "with a somewhat more complex behavior than that of the 'return guardian'. "
@@ -1355,15 +1316,15 @@ msgstr ""
 "altıgei'i seçer ve oradan saldırır.\n"
 "   - Ulaşamazsa, bu birime doğru ilerler."
 
-#. [command]
+#. [message]: speaker=narrator
 #. [set_menu_item]: id=m05_coward
-#: data/ai/micro_ais/scenarios/guardians.cfg:481
-#: data/ai/micro_ais/scenarios/guardians.cfg:487
+#: data/ai/micro_ais/scenarios/guardians.cfg:523
+#: data/ai/micro_ais/scenarios/guardians.cfg:532
 msgid "Coward"
 msgstr "Korkak"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:487
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/guardians.cfg:533
 msgid ""
 "Cowards are units that, like guardians, sit around doing nothing until an "
 "enemy comes into range. Unlike guardians, however, they run away once "
@@ -1395,15 +1356,15 @@ msgstr ""
 "- Hem 'toplan' hem de 'kaçın' yalnızca tek bir koordinattan ('x' veya 'y') "
 "oluşabilir; bu durumda konum tek bir altıgen değil, bir altıgen hattı olur."
 
-#. [command]
+#. [message]: speaker=narrator
 #. [set_menu_item]: id=m06_zone
-#: data/ai/micro_ais/scenarios/guardians.cfg:496
-#: data/ai/micro_ais/scenarios/guardians.cfg:502
+#: data/ai/micro_ais/scenarios/guardians.cfg:543
+#: data/ai/micro_ais/scenarios/guardians.cfg:552
 msgid "Zone Guardian"
 msgstr "Bölge Muhafızı"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:502
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/guardians.cfg:553
 msgid ""
 "A zone guardian is a unit that, as the name says, guards a zone. It moves "
 "randomly inside this zone until an enemy enters it (or a separately defined "
@@ -1424,13 +1385,13 @@ msgstr ""
 "- Aksi takdirde, düşman bölgesine giren herhangi bir düşmana saldırır ve bir "
 "düşman olmadığında, temel bölgesinde devriye gezmeye gider."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/guardians.cfg:513
+#. [message]: speaker=Kraa
+#: data/ai/micro_ais/scenarios/guardians.cfg:568
 msgid "Kraahhh!!!!"
 msgstr "Kıraa-yaaaa!!!"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/guardians.cfg:516
+#. [message]: speaker=Kraa
+#: data/ai/micro_ais/scenarios/guardians.cfg:578
 msgid ""
 "Gryphons of the High Plains, look at all these enemies. They don't behave "
 "normally. Most of them don't move at all unless we get close. Let's check "
@@ -1458,34 +1419,34 @@ msgstr ""
 "Artificial Intelligence)"
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/guardians.cfg:525
+#: data/ai/micro_ais/scenarios/guardians.cfg:588
 msgid "Move the Gryphons around to explore how the guardians react"
 msgstr "Muhafızların tepkisini keşfetmek için Grifinleri etrafta uçur"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/guardians.cfg:527
-#: data/ai/micro_ais/scenarios/patrols.cfg:233
+#: data/ai/micro_ais/scenarios/guardians.cfg:590
+#: data/ai/micro_ais/scenarios/patrols.cfg:256
 msgid "Defeat all enemy units"
 msgstr "Tüm düşman birimlerini yen"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/guardians.cfg:531
+#: data/ai/micro_ais/scenarios/guardians.cfg:594
 msgid "Move Kraa to the signpost"
 msgstr "Kırağa'ı yol işaretine götür"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/guardians.cfg:535
+#: data/ai/micro_ais/scenarios/guardians.cfg:598
 msgid "Death of Kraa"
 msgstr "Kırağa'nın ölümü"
 
 #. [note]
-#: data/ai/micro_ais/scenarios/guardians.cfg:539
+#: data/ai/micro_ais/scenarios/guardians.cfg:602
 msgid ""
 "Check out the right-click menu options for information on each guardian type"
 msgstr "Her muhafız türü hakkında bilgi için sağ-tık menü seçeneklerine bak"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/guardians.cfg:594
+#. [message]: speaker=Kraa
+#: data/ai/micro_ais/scenarios/guardians.cfg:659
 msgid ""
 "Gryphons of the High Plains, it is time to return to said plains. Follow me."
 msgstr ""
@@ -1511,8 +1472,8 @@ msgstr "İyi Haydut"
 msgid "Outlaw moves here"
 msgstr "Eşkiyayı buraya götür"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/hang_out.cfg:116
+#. [message]: speaker=Good Bandit
+#: data/ai/micro_ais/scenarios/hang_out.cfg:120
 msgid ""
 "That outlaw over there is going to run for the keep in the southeast.  He's "
 "only going to recruit for three rounds before he'll start moving and he and "
@@ -1541,33 +1502,33 @@ msgstr ""
 "bakın. (kısaltmalar - YZ: Yapay Zeka; AI: Artificial Intelligence)"
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/hang_out.cfg:122
+#: data/ai/micro_ais/scenarios/hang_out.cfg:127
 msgid ""
 "Get into the outlaw's way before he can make it to the south-eastern keep"
 msgstr "Eşkiyanın güneydoğu içkalesini kullanamamasını sağla"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/hang_out.cfg:124
+#: data/ai/micro_ais/scenarios/hang_out.cfg:129
 msgid "Death of Bad Outlaw"
 msgstr "Kötü Eşkiyanın ölümü"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/hang_out.cfg:128
+#: data/ai/micro_ais/scenarios/hang_out.cfg:133
 msgid "Death of Good Bandit"
 msgstr "İyi Haydutun ölümü"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/hang_out.cfg:132
+#: data/ai/micro_ais/scenarios/hang_out.cfg:137
 msgid "Bad Outlaw makes it to the signpost"
 msgstr "Kötü Eşkiya yol işaretine ulaşırsa"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/hang_out.cfg:144
+#. [message]: speaker=Good Bandit
+#: data/ai/micro_ais/scenarios/hang_out.cfg:151
 msgid "We got him! Now whatever it is we are fighting for is safe."
 msgstr "Onu yakaladık! Ne için savaşıyorsak artık... güvende olururuz."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/hang_out.cfg:168
+#. [message]: speaker=Bad Outlaw
+#: data/ai/micro_ais/scenarios/hang_out.cfg:178
 msgid ""
 "I made it! Now we can keep fighting for whatever it is that we are fighting "
 "for."
@@ -1588,8 +1549,8 @@ msgstr "İsyancılar 1"
 msgid "Rebels 2"
 msgstr "İsyancılar 2"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/healer_support.cfg:79
+#. [message]: speaker=Rebels1
+#: data/ai/micro_ais/scenarios/healer_support.cfg:81
 msgid ""
 "In this scenario, we demonstrate the use of the Healer Support Micro AI. "
 "This AI configures the healers of a side to stay behind the battle lines and "
@@ -1626,8 +1587,8 @@ msgstr ""
 "sayfasına</span> bakın. (kısaltmalar - YZ: Yapay Zeka; AI: Artificial "
 "Intelligence)"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/healer_support.cfg:95
+#. [message]: speaker=$unit.id
+#: data/ai/micro_ais/scenarios/healer_support.cfg:100
 msgid "Argh!  They got us..."
 msgstr "Ahh! Bizi yakaladılar..."
 
@@ -1696,8 +1657,8 @@ msgstr "5. Taraf Pusucusunu yerleştir"
 msgid "Place a Side 6 lurker"
 msgstr "6. Taraf Pusucusunu yerleştir"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/lurkers.cfg:450
+#. [message]: speaker=Pekzs
+#: data/ai/micro_ais/scenarios/lurkers.cfg:452
 msgid ""
 "In this scenario we demonstrate the Lurker Micro AI. A lurker is a unit that "
 "is capable of moving across most terrains, but that only stops on and "
@@ -1718,8 +1679,8 @@ msgstr ""
 "ulaşılmazsa, pusucu bunun yerine rastgele bir hareket yapar - ya da sadece "
 "oturur ve pusuda bekler."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/lurkers.cfg:455
+#. [message]: speaker=Pekzs
+#: data/ai/micro_ais/scenarios/lurkers.cfg:460
 msgid ""
 "Three different lurker behaviors are set up here using the [micro_ai] tag "
 "with different parameters:\n"
@@ -1751,26 +1712,16 @@ msgstr ""
 "Ayrıca WML (5. taraf, gri) ve Formül YZ'de (6. taraf, kahverengi) kodlanan "
 "ve pusucu davranışını sergileyen iki taraf daha ekledik."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/lurkers.cfg:465
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:139
-#: data/ai/micro_ais/scenarios/patrols.cfg:217
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/lurkers.cfg:474
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:151
+#: data/ai/micro_ais/scenarios/patrols.cfg:238
+#: data/ai/micro_ais/scenarios/recruiting.cfg:100
 msgid "Notes"
 msgstr "Bilgiler"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/lurkers.cfg:465
-#, fuzzy
-#| msgid ""
-#| "You can use the right-click context menu to add additional lurkers.\n"
-#| "\n"
-#| "Any unit not adjacent to swamp (and water, for the nagas) is safe from "
-#| "the lurkers, thus it is easy to keep Pekzs from being attacked.\n"
-#| "\n"
-#| "The Lua Lurker AI is coded as a Micro AI. A Micro AI can be added and "
-#| "adapted to the need of a scenario easily using only WML and the "
-#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
-#| "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/lurkers.cfg:475
 msgid ""
 "You can use the right-click context menu to add additional lurkers.\n"
 "\n"
@@ -1779,8 +1730,8 @@ msgid ""
 "\n"
 "The Lua Lurker AI is coded as a Micro AI. A Micro AI can be added and "
 "adapted to the need of a scenario easily using only WML and the [micro_ai] "
-"tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at http://"
-"wiki.wesnoth.org/Micro_AIs for more information."
+"tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at "
+"https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
 "Fazladan pusucu eklemek için sağ-tık menüsünü kullanabilirsiniz.\n"
 "\n"
@@ -1795,33 +1746,33 @@ msgstr ""
 "Intelligence)"
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/lurkers.cfg:474
+#: data/ai/micro_ais/scenarios/lurkers.cfg:485
 msgid "Watch the lurkers move around and fight them if you want"
 msgstr "Pusucuların hareketlerini izleyin ve isterseniz onlarla savaşın"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/lurkers.cfg:476
+#: data/ai/micro_ais/scenarios/lurkers.cfg:487
 msgid "Defeat all lurkers"
 msgstr "Tüm pusucuların ölümü"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/lurkers.cfg:480
+#: data/ai/micro_ais/scenarios/lurkers.cfg:491
 msgid "Move Pekzs to the signpost"
 msgstr "Pekzis'i yol işaretine götür"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/lurkers.cfg:484
+#: data/ai/micro_ais/scenarios/lurkers.cfg:495
 msgid "Death of Pekzs"
 msgstr "Pekzis'in ölümü"
 
 #. [note]
-#: data/ai/micro_ais/scenarios/lurkers.cfg:488
+#: data/ai/micro_ais/scenarios/lurkers.cfg:499
 msgid "Right-click on unoccupied swamp hexes to add more lurkers"
 msgstr ""
 "Daha fazla pusucu eklemek için askersiz bataklık altıgenlerine sağ tıklayın"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/lurkers.cfg:533
+#. [message]: speaker=Pekzs
+#: data/ai/micro_ais/scenarios/lurkers.cfg:546
 msgid ""
 "Zzanksss for helping me wizz zzossse lurkerss. Hope to sssee you again "
 "ssometime."
@@ -1838,37 +1789,37 @@ msgstr "Haberciyi Koru"
 msgid "Vanak"
 msgstr "Vanak"
 
-#. [event]
 #. [side]
 #. [unit]: type=Dragoon, id=messenger
+#. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:37
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:71
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:73
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:72
 msgid "Messenger"
 msgstr "Haberci"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:121
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:123
 msgid "Messenger Waypoint 1"
 msgstr "Haberci 1. Yol Noktası"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:123
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:125
 msgid "Messenger Waypoint 2"
 msgstr "Haberci 2. Yol Noktası"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:125
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:127
 msgid "Messenger Waypoint 3"
 msgstr "Haberci 3. Yol Noktası"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:128
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:130
 msgid "AI moves Messenger here"
 msgstr "YZ Haberciyi buraya götürürse"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:137
+#. [message]: speaker=messenger
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:145
 msgid ""
 "Men, I need to get to that signpost in the north, to get the message to our "
 "leader. Let's head up there as quickly as we can."
@@ -1876,26 +1827,8 @@ msgstr ""
 "Gençler, iletiyi liderimize götürmek için kuzeydeki yol işaretine gitmem "
 "gerekiyor. Oraya mümkün olduğunca çabuk gidelim."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:139
-#, fuzzy
-#| msgid ""
-#| "The Messenger Escort AI will try to move the dragoon messenger to the "
-#| "signpost in the north, while protecting him as well as possible with the "
-#| "other units. Vanak's orcs need to stop him.\n"
-#| "\n"
-#| "Note that the messenger route is set up through a series of waypoints "
-#| "here simply to demonstrate how to use waypoints. On this map, using only "
-#| "a single waypoint at the end of the route would work just as well (or "
-#| "probably even better).\n"
-#| "\n"
-#| "Also note that the messenger does not have to get exactly to each "
-#| "signpost (except for the last one), getting close is good enough.\n"
-#| "\n"
-#| "The Messenger Escort AI is coded as a Micro AI. A Micro AI can be added "
-#| "and adapted to the need of a scenario easily using only WML and the "
-#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
-#| "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:152
 msgid ""
 "The Messenger Escort AI will try to move the dragoon messenger to the "
 "signpost in the north, while protecting him as well as possible with the "
@@ -1911,8 +1844,8 @@ msgid ""
 "\n"
 "The Messenger Escort AI is coded as a Micro AI. A Micro AI can be added and "
 "adapted to the need of a scenario easily using only WML and the [micro_ai] "
-"tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at http://"
-"wiki.wesnoth.org/Micro_AIs for more information."
+"tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at "
+"https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
 "Haberciyi Koru YZ'si, haberci Ağır Süvariyi mümkün olduğu kadar korurken "
 "kuzeydeki yol işaretine götürmeye çalışacaktır. Vanak'ın orklarının onu "
@@ -1934,27 +1867,27 @@ msgstr ""
 "Artificial Intelligence)"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:151
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:165
 msgid "Defeat the messenger"
 msgstr "Habercinin ölümü"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:155
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:169
 msgid "Messenger gets to the signpost"
 msgstr "Haberci yol işaretine varırsa"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:159
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:173
 msgid "Death of Vanak"
 msgstr "Vanak'ın ölümü"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:173
+#. [message]: speaker=messenger
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:189
 msgid "I made it!  Now our people will be safe."
 msgstr "Başardım! Artık halkımız güvende olacak."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:185
+#. [message]: speaker=messenger
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:204
 msgid "Nooo!  All is lost. We will never stop the orcs now!"
 msgstr "Hayııır! Kaybettik! Orkları artık asla durduramayacağız!"
 
@@ -1991,47 +1924,47 @@ msgid "Urudin"
 msgstr "Urudin"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/patrols.cfg:180
+#: data/ai/micro_ais/scenarios/patrols.cfg:188
 msgid "Konrad Waypoint 1"
 msgstr "Konrad'ın 1. Yol Noktası"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/patrols.cfg:182
+#: data/ai/micro_ais/scenarios/patrols.cfg:190
 msgid "Konrad Waypoint 2"
 msgstr "Konrad'ın 2.Yol Noktası"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/patrols.cfg:184
+#: data/ai/micro_ais/scenarios/patrols.cfg:192
 msgid "Konrad Final Waypoint"
 msgstr "Konrad'ın Son Yol Noktası"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/patrols.cfg:187
+#: data/ai/micro_ais/scenarios/patrols.cfg:195
 msgid "Patrol Waypoint 1"
 msgstr "Devriye 1. Yol Noktası"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/patrols.cfg:189
+#: data/ai/micro_ais/scenarios/patrols.cfg:197
 msgid "Patrol Waypoint 2"
 msgstr "Devriye 2. Yol Noktası"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/patrols.cfg:191
+#: data/ai/micro_ais/scenarios/patrols.cfg:199
 msgid "Patrol Waypoint 3"
 msgstr "Devriye 3. Yol Noktası"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/patrols.cfg:193
+#: data/ai/micro_ais/scenarios/patrols.cfg:201
 msgid "Patrol Waypoint 4"
 msgstr "Devriye 4. Yol Noktası"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/patrols.cfg:196
+#: data/ai/micro_ais/scenarios/patrols.cfg:204
 msgid "Urudin retreats here"
 msgstr "Urudin buraya geri çekilirse"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/patrols.cfg:204
+#. [message]: speaker=Konrad
+#: data/ai/micro_ais/scenarios/patrols.cfg:215
 msgid ""
 "Hello!  I'm a Konrad impostor. We are going to demonstrate the Patrol AI to "
 "you in this scenario.\n"
@@ -2053,8 +1986,8 @@ msgstr ""
 "\n"
 "Bütün bunlar Devriye [micro_ai] etiketinin kullanılmasıyla gerçekleştirilir."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/patrols.cfg:211
+#. [message]: speaker=guard1
+#: data/ai/micro_ais/scenarios/patrols.cfg:225
 msgid ""
 "By contrast, I am a zone guardian patrolling, in a way, the southernmost "
 "part of the map.  This AI is implemented via the Guardian [micro_ai] tag.  "
@@ -2068,8 +2001,8 @@ msgstr ""
 "göstermek içindir. Farklı muhafız YZ'leri hakkında daha fazla bilgi "
 "edinmeniz için, bunlar için özelleştirilmiş ayrı bir deneme senaryosu vardır."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/patrols.cfg:212
+#. [message]: speaker=Urudin
+#: data/ai/micro_ais/scenarios/patrols.cfg:229
 msgid ""
 "And I am Urudin. I will attack my enemies for a few turns, but will retreat "
 "toward the right edge of the map if my hitpoints are below half of maximum "
@@ -2083,8 +2016,8 @@ msgstr ""
 "\n"
 "Bu, 2. Taraf Devriyelerinden ayrı bir YZ'dir."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/patrols.cfg:217
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/patrols.cfg:239
 msgid ""
 "You, as the player, are in charge of Gertburt's bandits in this scenario. "
 "You can either simply watch the patrols move around, or you can move units "
@@ -2136,22 +2069,22 @@ msgstr ""
 "color='#00A000'>Micro AI wiki sayfasına</span> bakınız."
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/patrols.cfg:231
+#: data/ai/micro_ais/scenarios/patrols.cfg:254
 msgid "Watch the patrols, attack them etc."
 msgstr "Devriyeleri izleyin, olara saldırın, vs."
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/patrols.cfg:237
+#: data/ai/micro_ais/scenarios/patrols.cfg:260
 msgid "Move Gertburt to the signpost"
 msgstr "Gertburt'u yol işaretine götür"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/patrols.cfg:241
+#: data/ai/micro_ais/scenarios/patrols.cfg:264
 msgid "Death of Gertburt"
 msgstr "Gertburt'un ölümü"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/patrols.cfg:256
+#. [message]: speaker=Konrad
+#: data/ai/micro_ais/scenarios/patrols.cfg:281
 msgid ""
 "Well, that was fun!  I'll just hang out here now and watch those two guys "
 "walk and walk and ..."
@@ -2159,8 +2092,8 @@ msgstr ""
 "Bu eğlenceliydi! Şimdi hemen burada takılıyorum ve şu iki adamın yürüşünü "
 "izliyorum..."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/patrols.cfg:297
+#. [message]: speaker=Gertburt
+#: data/ai/micro_ais/scenarios/patrols.cfg:325
 msgid "Let's go home, chaps."
 msgstr "Eve dönelim, arkadaşlar."
 
@@ -2196,17 +2129,17 @@ msgid "team_name^Koorzhar"
 msgstr "Kurzar"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:120
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:119
 msgid "Move Rossauba here"
 msgstr "Rosoba'ı buraya götür"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:127
+#. [message]: speaker=Koorzhar
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:129
 msgid "There's that traitor wizard. Let's get him."
 msgstr "İşte o hain sihirbaz. Hadi onu yakalayalım."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:129
+#. [message]: speaker=Langzhar
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:134
 msgid ""
 "Men, you know the deal. We must protect Rossauba under all circumstances. "
 "Even my survival is not as important."
@@ -2214,13 +2147,13 @@ msgstr ""
 "Gençler, anlaşmayı biliyorsunuz. Rosoba'yı her durumda korumak zorundayız. "
 "Hatta benim hayatta kalmamın bile bir önemi yok."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:130
+#. [message]: speaker=Rossauba
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:138
 msgid "That's very kind of you, but ..."
 msgstr "Çok naziksiniz ama..."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:131
+#. [message]: speaker=Langzhar
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:142
 msgid ""
 "No buts!  You stay behind the lines and do not engage in battle unless there "
 "is no risk to your life, is that understood?  And get to that signpost in "
@@ -2231,7 +2164,7 @@ msgstr ""
 "işaretine gidiyorsun."
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:138
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:150
 msgid ""
 "In this scenario, the AI playing the humans in the east (Langzhar) is "
 "instructed to protect the wizard Rossauba, while moving him safely to the "
@@ -2258,12 +2191,12 @@ msgstr ""
 "Artificial Intelligence)"
 
 #. [option]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:143
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:155
 msgid "<span font='16'>I'll watch the two AIs fight it out</span>"
 msgstr "<span font='16'>İki YZ'nin çarpışmasını dışardan izleyeceğim.</span>"
 
 #. [option]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:146
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:158
 msgid ""
 "<span font='16'>I'll play Langzhar's side (to see how Koorzhar's units "
 "target Rossauba)</span>"
@@ -2272,7 +2205,7 @@ msgstr ""
 "için Langzar'ın tarafını oynayacağım.</span>"
 
 #. [option]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:155
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:167
 msgid ""
 "<span font='16'>I'll play Koorzhar's side (to see how Langzhar's units "
 "protect Rossauba)</span>"
@@ -2281,61 +2214,61 @@ msgstr ""
 "için Kurzar'ın tarafını oynayacağım.</span>"
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:167
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:179
 msgid "Protect Rossauba while moving him to the signpost"
 msgstr "Yol işaretine götürüken Rosoba'yı koru"
 
 #. [objective]: condition=win
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:169
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:189
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:181
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:201
 msgid "Rossauba makes it to the signpost"
 msgstr "Rosoba yol işaretine giderse"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:173
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:185
 msgid "Death of Rossauba"
 msgstr "Rosoba'nın ölümü"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:177
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:189
 msgid "Death of Langzhar"
 msgstr "Langzar'ın ölümü"
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:183
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:195
 msgid "Get rid of that traitor wizard Rossauba"
 msgstr "O hain sihirbaz Rosoba'dan kurtul."
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:185
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:197
 msgid "Defeat Rossauba"
 msgstr "Rosoba'nın ölümü"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:193
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:205
 msgid "Death of Koorzhar"
 msgstr "Kurzar'ın ölümü"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:216
+#. [message]: speaker=Rossauba
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:230
 msgid "I held out for as long as I could."
 msgstr "Elimden geldiğince uzun süre dayandım."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:230
+#. [message]: speaker=Rossauba
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:248
 msgid "I made it"
 msgstr "Başardım"
 
-#. [event]
 #. [test]: id=recruiting
+#. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:78
 msgid "Recruiting"
 msgstr "Askere Alım"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/recruiting.cfg:85
+#. [message]: speaker=Koorzhar
+#: data/ai/micro_ais/scenarios/recruiting.cfg:88
 msgid ""
 "This is a very simple scenario that can be used to test out different "
 "recruiting patterns."
@@ -2343,8 +2276,8 @@ msgstr ""
 "Bu, farklı askere alım modellerini denemek için kullanılabilecek çok basit "
 "bir senaryodur."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/recruiting.cfg:88
+#. [message]: speaker=Langzhar
+#: data/ai/micro_ais/scenarios/recruiting.cfg:94
 msgid ""
 "Just watch the recruiting of both sides and see if it is what you would "
 "expect. The recruitment lists cover level 0 to level 2 units, in order to "
@@ -2354,8 +2287,8 @@ msgstr ""
 "olmadığını görün. Askere alım listeleri, farklılıkları daha açık hale "
 "getirmek için 0. seviyeden  2. seviyeye kadar birimleri kapsar."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/recruiting.cfg:90
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/recruiting.cfg:101
 msgid ""
 "If you have not changed anything in the scenario code, Side 1 uses the "
 "Random Recruitment Micro AI, with swordsmen and peasants having been given "
@@ -2448,13 +2381,13 @@ msgstr "Hızlı YZ"
 msgid "Bottleneck Defense Micro AI demo"
 msgstr "Darboğaz Savunma Mikro YZ gösterisi"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:109
+#. [message]: speaker=Grnk
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:111
 msgid "Bottleneck Defense Micro AI Demo"
 msgstr "Darboğaz Savunma Mikro YZ Gösterisi"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:109
+#. [message]: speaker=Grnk
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:112
 msgid ""
 "In the Bottleneck Defense Micro AI scenario, a small group of human soldiers "
 "is instructed to hold a pass against a large horde of orcs. You can either "
@@ -2466,15 +2399,15 @@ msgstr ""
 "isteniyor. Standart RCA YZ'ye karşı savaşı dışardan izleyebilir ya da ork "
 "tarafını yönetebilirsiniz."
 
-#. [command]
+#. [message]: speaker=Grnk
 #. [set_menu_item]: id=m02_swamp_lurkers
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:115
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:124
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:119
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:130
 msgid "Swamp Lurker Micro AI demo"
 msgstr "Bataklık Pusucusu Mikro YZ gösterisi"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:124
+#. [message]: speaker=Grnk
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:131
 msgid ""
 "Swamp lurkers are dumb, impulse-driven creatures which can move across most "
 "terrain, but only stop on swamp. They move individually without any strategy "
@@ -2487,15 +2420,15 @@ msgstr ""
 "ulaşabilecekleri en zayıf düşmana saldırırlar. Eğer düşmana ulaşılmazsa, "
 "pusucu bunun yerine rasgele bir hareket yapar."
 
-#. [command]
+#. [message]: speaker=Grnk
 #. [set_menu_item]: id=m03_guardians
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:130
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:139
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:138
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:149
 msgid "Guardian Micro AI demo"
 msgstr "Muhafız Mikro YZ gösterisi"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:139
+#. [message]: speaker=Grnk
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:150
 msgid ""
 "In 'Guardians', several variations of the standard Wesnoth guardian are "
 "shown, including a \"coward\" unit that runs away from any approaching unit "
@@ -2505,29 +2438,29 @@ msgstr ""
 "\"ters muhafız\") kaçan \"korkak\" birim de dahil, standart Vesnot "
 "muhafızlarının çeşitli türleri gösterilmektedir."
 
-#. [command]
+#. [message]: speaker=Grnk
 #. [set_menu_item]: id=m04_patrol
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:145
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:154
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:157
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:168
 msgid "Patrol Micro AI demo"
 msgstr "Devriye Mikro YZ gösterisi"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:154
+#. [message]: speaker=Grnk
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:169
 msgid "'Patrols' contains AI modifications for units following patrol routes."
 msgstr ""
 "'Devriyeler', devriye güzergahlarını takip eden birimler için YZ "
 "değişiklikleri içerir."
 
-#. [command]
+#. [message]: speaker=Grnk
 #. [set_menu_item]: id=m05_recruiting
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:160
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:169
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:176
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:187
 msgid "Recruiting Tests Micro AI demo"
 msgstr "Askere Alım Denemeleri Mikro YZ gösterisi"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:169
+#. [message]: speaker=Grnk
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:188
 msgid ""
 "A simple scenario set up for the sole purpose of testing different "
 "recruiting patterns."
@@ -2536,17 +2469,17 @@ msgstr ""
 "oluşturulmuştur."
 
 #. [set_menu_item]: id=m06_protect
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:175
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:195
 msgid "Protect Unit Micro AI demo"
 msgstr "Birimi Korumak Mikro YZ gösterisi"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:184
+#. [message]: speaker=Grnk
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:206
 msgid "Protect Unit Micro AI Demo"
 msgstr "Birimi Korumak Mikro YZ Gösterisi"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:184
+#. [message]: speaker=Grnk
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:207
 msgid ""
 "This scenario demonstrates one side protecting a wizard while moving him to "
 "a goal location. At the same time, the other side is modified to do priority "
@@ -2561,15 +2494,15 @@ msgstr ""
 "YZ'nin nasıl davrandığını keşfetmek için iki tarafın yönetimini ele "
 "geçirebilirsiniz."
 
-#. [command]
+#. [message]: speaker=Grnk
 #. [set_menu_item]: id=m06a_protect
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:191
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:200
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:215
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:226
 msgid "HttT: The Elves Besieged Micro AI demo"
 msgstr "Tahtın Varisi: Elfler Kuşatma Altında Mikro YZ gösterisi"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:200
+#. [message]: speaker=Grnk
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:227
 msgid ""
 "This is a reenactment of scenario \"The Elves Besieged\" of the mainline "
 "campaign \"Heir to the Throne\", just that the AI is playing Konrad's side "
@@ -2580,15 +2513,15 @@ msgstr ""
 "oynamaktadır. Senaryo için \"Birimi Korumak\" senaryosundaki algoritma "
 "kullanılmıştır."
 
-#. [command]
+#. [message]: speaker=Grnk
 #. [set_menu_item]: id=m07_messenger
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:206
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:215
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:234
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:245
 msgid "Messenger Escort Micro AI demo"
 msgstr "Haberciyi Koru Mikro YZ gösterisi"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:215
+#. [message]: speaker=Grnk
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:246
 msgid ""
 "'Messenger Escort' has the AI actively protect a messenger while he makes "
 "his way to the edge of the map. The escort will also try to open the path "
@@ -2598,15 +2531,15 @@ msgstr ""
 "olarak koruyor. Koruma, eğer yolunda düşmanlar varsa, habercinin yolunu "
 "açmaya çalışacaktır."
 
-#. [command]
+#. [message]: speaker=Grnk
 #. [set_menu_item]: id=m08_animals
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:221
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:230
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:253
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:264
 msgid "Animals Micro AI demo"
 msgstr "Hayvanlar Mikro YZ gösterisi"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:230
+#. [message]: speaker=Grnk
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:265
 msgid ""
 "This scenario demonstrates a number of different animals following "
 "customized AI behavior, including wolves hunting deer in packs; dogs herding "
@@ -2618,15 +2551,15 @@ msgstr ""
 "köpekleri; ayılar, örümcekler, yetiler, yaban domuzları ve tavşanlar dolaşıp "
 "birbirlerini avlarlar."
 
-#. [command]
+#. [message]: speaker=Grnk
 #. [set_menu_item]: id=m09_wolves
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:236
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:245
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:272
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:283
 msgid "Wolves Micro AI demo"
 msgstr "Kurtlar Mikro YZ gösterisi"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:245
+#. [message]: speaker=Grnk
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:284
 msgid ""
 "Another demonstration of wolves wandering and attacking in packs, with a "
 "different behavior from that in 'Animals'."
@@ -2634,29 +2567,29 @@ msgstr ""
 "Kurtların, 'Hayvanlar'dakinden farklı bir davranışla, sürüler halinde "
 "dolaşıp saldırdığı başka bir gösteri."
 
-#. [command]
+#. [message]: speaker=Grnk
 #. [set_menu_item]: id=m10_swarm
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:251
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:260
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:291
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:302
 msgid "Swarm Micro AI demo"
 msgstr "Sürü Mikro YZ gösterisi"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:260
+#. [message]: speaker=Grnk
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:303
 msgid "This scenario features bats moving around semi-randomly in a swarm."
 msgstr ""
 "Bu senaryoda bir sürü halinde kısmen rastgele dolaşan yarasalar "
 "bulunmaktadır."
 
-#. [command]
+#. [message]: speaker=Grnk
 #. [set_menu_item]: id=m11_dragon
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:266
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:275
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:310
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:321
 msgid "Dragon Micro AI demo"
 msgstr "Ejder Mikro YZ gösterisi"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:275
+#. [message]: speaker=Grnk
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:322
 msgid ""
 "This scenario features a fire dragon displaying a hunt-and-rest behavior."
 msgstr ""
@@ -2664,17 +2597,17 @@ msgstr ""
 "bulunmaktadır."
 
 #. [set_menu_item]: id=m12_healer_support
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:281
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:329
 msgid "Healer support Micro AI demo"
 msgstr "Şifacı desteği Mikro YZ gösterisi"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:290
+#. [message]: speaker=Grnk
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:340
 msgid "Healer Support Micro AI demo"
 msgstr "Şifacı Desteği Mikro YZ gösterisi"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:290
+#. [message]: speaker=Grnk
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:341
 msgid ""
 "This scenario contains a simple demonstration of setting up the Healer "
 "Support Micro AI, which uses the healers of a side to back up injured or "
@@ -2685,15 +2618,15 @@ msgstr ""
 "altındaki birimleri desteklemek için bir tarafın şifacılarını kullanan "
 "Şifacı Desteği Mikro YZ yapılandırmasının basit bir gösterimi içerir."
 
-#. [command]
+#. [message]: speaker=Grnk
 #. [set_menu_item]: id=m13_goto
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:296
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:305
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:348
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:359
 msgid "Goto Micro AI demo"
 msgstr "Gidiş Mikro YZ gösterisi"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:305
+#. [message]: speaker=Grnk
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:360
 msgid ""
 "This scenario contains several example usages of the Goto Micro AI, which is "
 "a highly configurable method of sending a unit (or units) to a location or "
@@ -2707,17 +2640,17 @@ msgstr ""
 "Filtresi içinde verilir."
 
 #. [set_menu_item]: id=m14_hangout
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:311
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:367
 msgid "Hang Out Micro AI demo"
 msgstr "Oyalanmak Mikro YZ gösterisi"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:320
+#. [message]: speaker=Grnk
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:378
 msgid "Combined Hang Out and Messenger Escort Micro AI demo"
 msgstr "Birleşik Hangout ve Haberciyi Korumak Mikro YZ gösterisi"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:320
+#. [message]: speaker=Grnk
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:379
 msgid ""
 "This scenario is a demonstration of the Hang Out Micro AI which keeps units "
 "around a (customizable) location until a (customizable) condition is met.  "
@@ -2732,15 +2665,15 @@ msgstr ""
 "YZ'sinin bu noktada denetimi devralmasıyla iki Mikro YZ'nin aynı tarafta "
 "nasıl birlilikte hareket edeceği de gösterilmiştir."
 
-#. [command]
+#. [message]: speaker=Grnk
 #. [set_menu_item]: id=m15_simple_attack
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:326
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:335
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:386
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:397
 msgid "Simple Attack Micro AI demo"
 msgstr "Basit Saldırı Mikro YZ gösterisi"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:335
+#. [message]: speaker=Grnk
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:398
 msgid ""
 "This scenario demonstrates how certain attacks can be executed with higher "
 "priority than the standard Wesnoth attacks and how the AI can be forced to "
@@ -2750,15 +2683,15 @@ msgstr ""
 "önceliğe sahip olarak nasıl gerçekleştirilebileceğini ve YZ'nın aksi "
 "takdirde kaçınacağı saldırılara nasıl zorlanabileceğini göstermektedir."
 
-#. [command]
+#. [message]: speaker=Grnk
 #. [set_menu_item]: id=m16_fast
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:341
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:350
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:405
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:416
 msgid "Fast Micro AI demo"
 msgstr "Hızlı Mikro YZ gösterisi"
 
-#. [command]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:350
+#. [message]: speaker=Grnk
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:417
 msgid ""
 "A simple demonstration of the calculation time advantage of the Fast Micro "
 "AI over the default AI in scenarios with many units."
@@ -2766,8 +2699,8 @@ msgstr ""
 "Hızlı Mikro YZ'nin hesaplama süresinin Öntanımlı YZ'ye üstünlüğünü basitçe "
 "kanıtlayan, çok birimli bir senaryo."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:360
+#. [message]: speaker=Grnk
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:430
 msgid ""
 "Move me to any of the signposts to go to a Micro AI demonstration.\n"
 "\n"
@@ -2781,12 +2714,12 @@ msgstr ""
 "erişilebilir."
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:366
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:437
 msgid "Move Grnk to one of the signposts"
 msgstr "Gırınk'ı yol işaretlerinden birine götür"
 
 #. [note]
-#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:370
+#: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:441
 msgid "Right-click on a signpost to get information about the scenario"
 msgstr "Senaryo hakkında bilgi edinmek için yol işaretine sağ tıkla"
 
@@ -2800,14 +2733,14 @@ msgstr "Grospur"
 msgid "Uralt"
 msgstr "Uralt"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:123
+#. [message]: speaker=sergeant
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:125
 msgid "General Grospur, what do we do?  These undead will surely wipe us out."
 msgstr ""
 "General Grospur, ne yapıyoruz? Bu yarı ölüler kesinlikle bizi yok edecek."
 
-#. [event]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:124
+#. [message]: speaker=Grospur
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:129
 msgid ""
 "Don't be such a chicken, Sergeant!  I have placed units with lots of "
 "experience around the perimeter. The undead will not dare to attack them. "
@@ -2831,55 +2764,40 @@ msgstr ""
 "sürprizle karşı karşıya kalabilir.</i>"
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:129
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:135
 msgid "Watch the undead take care of business"
 msgstr "Yarı ölülerin işleriyle ilgilenmelerini izleyin"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:131
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:137
 msgid "Don't even try. You can't reach the Lich."
 msgstr "Deneme bile. Umacıya ulaşamazsın."
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:135
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:141
 msgid "Death of the last of Grospur's units"
 msgstr "Grospur'un birimlerinin tamamının ölümü"
 
 #. [note]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:139
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:145
 msgid "When your leader dies, side leadership passes on to another unit"
 msgstr "Lideriniz öldüğünde, taraf liderliği başka bir birime geçer"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:164
+#. [message]: speaker=$second_unit.id
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:172
 msgid ""
 "What the ... ?!?  They are not supposed to attack me. That just doesn't "
 "happen in Wesnoth!"
 msgstr "Ne ...?!? Bana saldırmamaları gerekiyor. Bu Vesnot'ta böyle olmaz!"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:165
-#, fuzzy
-#| msgid ""
-#| "Hahahahaha!! I have given special instruction to my Soulless to attack "
-#| "all your almost-advanced units first. Also watch how those same Soulless "
-#| "will throw themselves mercilessly at your pitiful soldiers after that, "
-#| "saving my more valuable skeleton minions for later. I have taken the term "
-#| "'disposable units' to a whole new level. Watch in awe!!\n"
-#| "\n"
-#| "<i>Translation: The undead side includes two instances of the Simple "
-#| "Attack Micro AI.  The first makes the Soulless attack all units 1 XP from "
-#| "leveling up, such that they can be eliminated afterward.  The second "
-#| "executes all remaining attacks possible by Soulless (and Walking "
-#| "Corpses), without regard for their own safety.  Only after that does the "
-#| "default Wesnoth attack mechanism kick in to attack with the remaining "
-#| "units (skeletons).</i>"
+#. [message]: speaker=Uralt
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:176
 msgid ""
-"Hahahahaha !! I have given special instruction to my Soulless to attack all "
-"you almost-advanced units first. Also watch how those same Soulless will "
+"Hahahahaha!! I have given special instruction to my Soulless to attack all "
+"your almost-advanced units first. Also watch how those same Soulless will "
 "throw themselves mercilessly at your pitiful soldiers after that, saving my "
-"more valuable skeleton minions for later.  I have taken the term 'disposable "
-"units' to a whole new level. Watch in awe !!\n"
+"more valuable skeleton minions for later. I have taken the term 'disposable "
+"units' to a whole new level. Watch in awe!!\n"
 "\n"
 "<i>Translation: The undead side includes two instances of the Simple Attack "
 "Micro AI.  The first makes the Soulless attack all units 1 XP from leveling "
@@ -2901,13 +2819,13 @@ msgstr ""
 "yürütür. Ancak bundan sonra öntanımlı Vesnot saldırı mekanizması kalan "
 "birimlere (iskeletler) saldırmak için devreye giriyor.</i>"
 
-#. [then]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:181
+#. [message]: speaker=Uralt
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:195
 msgid "Rise, minions!"
 msgstr "Kalkın, kölelerim!"
 
-#. [else]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:224
+#. [message]: speaker=Uralt
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:241
 msgid "And that's how the undead AI executes total annihilation ..."
 msgstr "Ve bu, yarı ölü YZ'in topyekün imhayı nası yaptığını gösteriyor..."
 
@@ -2917,38 +2835,17 @@ msgid "Bats"
 msgstr "Yarasalar"
 
 #. [set_menu_item]: id=m02_new_gryphon
-#: data/ai/micro_ais/scenarios/swarm.cfg:91
+#: data/ai/micro_ais/scenarios/swarm.cfg:95
 msgid "Place Side 1 Gryphon"
 msgstr "1. Taraf Grifini yerleştir"
 
 #. [set_menu_item]: id=m03_new_bat
-#: data/ai/micro_ais/scenarios/swarm.cfg:102
+#: data/ai/micro_ais/scenarios/swarm.cfg:106
 msgid "Place Side 2 Bat"
 msgstr "2. Taraf Yarasayı yerleştir"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/swarm.cfg:137
-#, fuzzy
-#| msgid ""
-#| "This scenario features bats moving around in a swarm. Without adjacent "
-#| "enemies, they simply try to stay together and at a certain distance from "
-#| "enemies. However, if an enemy unit is close to any bat, the swarm "
-#| "scatters. This is particular fun to watch when one places an enemy unit "
-#| "in the middle of the swarm. After being scattered, the swarm members "
-#| "slowly rejoin, but not in a very organized way. Sub-swarms or individual "
-#| "bats might roam around for quite some time before they find their way "
-#| "back. It is also possible that individual bats (or small groups) split "
-#| "off from the larger swarm at times.\n"
-#| "\n"
-#| "The player controls a side of gryphons, each of which is given 99 moves "
-#| "so that the reaction of the swarm to enemies can be tested easily. There "
-#| "are also several right-click options, for example for adding bats or "
-#| "gryphons or for taking units off the map.\n"
-#| "\n"
-#| "Note: The Swarm AI is coded as a Micro AI. A Micro AI can be added and "
-#| "adapted to the need of a scenario easily using only WML and the "
-#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
-#| "span> at https://wiki.wesnoth.org/Micro_AIs for more information."
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/swarm.cfg:144
 msgid ""
 "This scenario features bats moving around in a swarm. Without adjacent "
 "enemies, they simply try to stay together and at a certain distance from "
@@ -2967,8 +2864,8 @@ msgid ""
 "\n"
 "Note: The Swarm AI is coded as a Micro AI. A Micro AI can be added and "
 "adapted to the need of a scenario easily using only WML and the [micro_ai] "
-"tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at http://"
-"wiki.wesnoth.org/Micro_AIs for more information."
+"tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at "
+"https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
 "Bu senaryoda, sürü halinde dolanan yarasalar bulunur. Bitişik düşmanları "
 "olmadan, basitçe birlikte kalmayı denerler ve düşmanlardan belli bir "
@@ -2994,17 +2891,17 @@ msgstr ""
 "Intelligence)"
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/swarm.cfg:146
+#: data/ai/micro_ais/scenarios/swarm.cfg:154
 msgid "Watch the bats move around and fight them if you want"
 msgstr "Yarasaların hareketlerini izleyin ve isterseniz onlarla savaşın"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/swarm.cfg:148
+#: data/ai/micro_ais/scenarios/swarm.cfg:156
 msgid "Defeat all bats"
 msgstr "Tüm yarasaların ölümü"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/swarm.cfg:156
+#: data/ai/micro_ais/scenarios/swarm.cfg:164
 msgid "Death of all gryphons"
 msgstr "Grifinlerin ölümü"
 
@@ -3019,22 +2916,22 @@ msgid "More Wolves"
 msgstr "Diğer Kurtlar"
 
 #. [set_menu_item]: id=m02_new_peasant
-#: data/ai/micro_ais/scenarios/wolves.cfg:120
+#: data/ai/micro_ais/scenarios/wolves.cfg:124
 msgid "Place Side 1 Peasant"
 msgstr "1. Taraf Köylüyü yerleştir"
 
 #. [set_menu_item]: id=m03_new_wolf2
-#: data/ai/micro_ais/scenarios/wolves.cfg:131
+#: data/ai/micro_ais/scenarios/wolves.cfg:135
 msgid "Place Side 2 Wolf"
 msgstr "2. Taraf Kurtu yerleştir"
 
 #. [set_menu_item]: id=m04_new_wolf3
-#: data/ai/micro_ais/scenarios/wolves.cfg:142
+#: data/ai/micro_ais/scenarios/wolves.cfg:146
 msgid "Place Side 3 Wolf"
 msgstr "3. Taraf Kurtu yerleştir"
 
-#. [event]
-#: data/ai/micro_ais/scenarios/wolves.cfg:188
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/wolves.cfg:195
 msgid ""
 "This scenario features a different kind of wolf behavior from 'Animals'. "
 "First, there can be an arbitrary number of wolf packs and the pack size on "
@@ -3079,7 +2976,7 @@ msgstr ""
 "gösterilecektir."
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/wolves.cfg:199
+#: data/ai/micro_ais/scenarios/wolves.cfg:207
 msgid ""
 "It is possible to include a human-controlled Side 1, so that the action "
 "stops once every turn for looking around (or for messing with things in "
@@ -3118,17 +3015,17 @@ msgstr ""
 "Intelligence)"
 
 #. [option]
-#: data/ai/micro_ais/scenarios/wolves.cfg:206
+#: data/ai/micro_ais/scenarios/wolves.cfg:214
 msgid "<span font='16'>I'll just watch the two wolf sides.</span>"
 msgstr "<span font='16'>İki kurt tarafını sadece izleyeceğim.</span>"
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/wolves.cfg:230
+#: data/ai/micro_ais/scenarios/wolves.cfg:238
 msgid "Watch the wolves move around and fight each other"
 msgstr "Etrafta dolaşan ve birbirleriyle dövüşen kurtları izleyin"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/wolves.cfg:232
+#: data/ai/micro_ais/scenarios/wolves.cfg:240
 msgid "No wolves left on one side"
 msgstr "Bir tarafın hiç kurtu kalmazsa"
 
@@ -3189,67 +3086,67 @@ msgid "Small ai arena"
 msgstr "Küçük YZ arenası"
 
 #. [set_menu_item]: id=repeat_test
-#: data/ai/scenarios/scenario-AI_Arena_small.cfg:64
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:61
 msgid "Repeat last test"
 msgstr "Son denemeyi tekrarla"
 
 #. [set_menu_item]: id=select_another_ai
-#: data/ai/scenarios/scenario-AI_Arena_small.cfg:80
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:77
 msgid "Select another ai"
 msgstr "Başka bir YZ seç"
 
 #. [set_menu_item]: id=select_test
-#: data/ai/scenarios/scenario-AI_Arena_small.cfg:90
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:87
 msgid "Select another test"
 msgstr "Başka bir deneme seç"
 
 #. [side]: type=Nightgaunt
-#: data/ai/scenarios/scenario-AI_Arena_small.cfg:103
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:100
 msgid "AI Developer"
 msgstr "YZ Yazarı"
 
 #. [side]: type=Nightgaunt
-#: data/ai/scenarios/scenario-AI_Arena_small.cfg:109
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:106
 msgid "team_name^AI Developer"
 msgstr "YZ Geliştirici"
 
 #. [side]: id=chall-ai, type=White Mage
-#: data/ai/scenarios/scenario-AI_Arena_small.cfg:120
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:117
 msgid "Challenger AI"
 msgstr "Meydan Okuma YZ"
 
 #. [side]: id=chall-ai, type=White Mage
-#: data/ai/scenarios/scenario-AI_Arena_small.cfg:125
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:122
 msgid "North"
 msgstr "Kuzey"
 
 #. [side]: id=champ-ai, type=Dark Adept
-#: data/ai/scenarios/scenario-AI_Arena_small.cfg:132
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:129
 msgid "Champion AI"
 msgstr "Şampiyon YZ"
 
 #. [side]: id=champ-ai, type=Dark Adept
-#: data/ai/scenarios/scenario-AI_Arena_small.cfg:137
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:134
 msgid "South"
 msgstr "Güney"
 
 #. [message]: speaker=narrator
-#: data/ai/scenarios/scenario-AI_Arena_small.cfg:176
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:173
 msgid "Which AI do you wish to use, O Mighty AI Developer?"
 msgstr "Hangi YZ'yi kullanmak istiyorsun, Güçlü YZ Geliştiricisi?"
 
 #. [option]
-#: data/ai/scenarios/scenario-AI_Arena_small.cfg:178
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:175
 msgid "I am happy with the current AI of team 2, [$test_path_to_ai]"
 msgstr "2. takımın geçerli YZ'si ile mutluyum. [$test_path_to_ai]"
 
 #. [option]
-#: data/ai/scenarios/scenario-AI_Arena_small.cfg:181
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:178
 msgid "My AI is the RCA AI (the current default)."
 msgstr "Benim YZ'm RCA YZ'dir (geçerli öntanımlı YZ)."
 
 #. [option]
-#: data/ai/scenarios/scenario-AI_Arena_small.cfg:190
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:187
 msgid ""
 "I am the king of FORMULA AI, and I will use its vast powers for world "
 "domination."
@@ -3258,27 +3155,27 @@ msgstr ""
 "kullanacağım."
 
 #. [option]
-#: data/ai/scenarios/scenario-AI_Arena_small.cfg:199
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:196
 msgid "I want to test formulaAI-based poisoning improvements"
 msgstr "Formül YZ tabanlı zehirlenme gelişmelerini denemek istiyorum"
 
 #. [option]
-#: data/ai/scenarios/scenario-AI_Arena_small.cfg:208
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:205
 msgid "I've come with my own AI, and I am ready to test its strength"
 msgstr "Kendi YZ'mle geldim ve gücünü denemeye hazırım"
 
 #. [message]: speaker=narrator
-#: data/ai/scenarios/scenario-AI_Arena_small.cfg:213
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:210
 msgid "And where is it located (path follows the usual WML convention)"
 msgstr "Ve nerede bulunduğu (yol her zamanki WML kurallarını izler)"
 
 #. [text_input]
-#: data/ai/scenarios/scenario-AI_Arena_small.cfg:215
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:212
 msgid "AI Location:"
 msgstr "YZ Konumu:"
 
 #. [message]: speaker=narrator
-#: data/ai/scenarios/scenario-AI_Arena_small.cfg:316
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:313
 msgid "And so, the AI for team 2 was redeployed from file '$test_path_to_ai'"
 msgstr ""
 "Ve böylece, 2. takımın YZ'si, '$test_path_to_ai' dosyasından yeniden "
@@ -3298,3 +3195,6 @@ msgstr "Lua YZ Deneme senaryosu (eski sözdizimi)"
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:87
 msgid "Kiressh"
 msgstr "Kireş"
+
+#~ msgid "Use the Patrols Micro AI instead of patrol.lua."
+#~ msgstr "patrol.lua yerine Devriyeler Mikro YZ kullan"

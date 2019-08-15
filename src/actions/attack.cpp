@@ -387,7 +387,7 @@ battle_context::battle_context(
 
 	const_attack_ptr a_wep(a_wep_uindex < attacker.attacks().size() ? attacker.attacks()[a_wep_index].shared_from_this() : nullptr);
 	const_attack_ptr d_wep(d_wep_uindex < defender.attacks().size() ? defender.attacks()[d_wep_index].shared_from_this() : nullptr);
-	
+
 	attacker_stats_.reset(new battle_context_unit_stats(attacker, a_loc, a_wep_index, true , defender, d_loc, d_wep, units));
 	defender_stats_.reset(new battle_context_unit_stats(defender, d_loc, d_wep_index, false, attacker, a_loc, a_wep, units));
 }
@@ -975,7 +975,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 	bool& update_fog = attacker_turn ? update_def_fog_ : update_att_fog_;
 
 	int ran_num;
-        
+
 	if(use_prng_) {
 
 		std::vector<bool>& prng_seq = attacker_turn ? prng_attacker_ : prng_defender_;

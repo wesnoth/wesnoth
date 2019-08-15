@@ -102,7 +102,6 @@ Section "Battle for Wesnoth" BfWSection
   File "/oname=copyright.txt" copyright
   File "/oname=COPYING.txt" COPYING
   File "/oname=changelog.txt" changelog.md
-  File "/oname=players_changelog.txt" players_changelog.md
   File cwesnoth.cmd
 
   %NSIS_INSTALL_FILES
@@ -155,7 +154,6 @@ Function StartMenuShortcuts
     CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Map editor.lnk" "$INSTDIR\wesnoth.exe" "-e" "$INSTDIR\wesnoth_editor-icon.ico"
     CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
     CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Changelog.lnk" "$INSTDIR\changelog.txt"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Player's changelog.lnk" "$INSTDIR\players_changelog.txt"
   ${EndIf}
 
   StrCpy $0 "$SMPROGRAMS\$StartMenuFolder\desktop.ini"
@@ -196,7 +194,6 @@ Section "un.$(LWesnoth)" un.BfW
   Delete $INSTDIR\copyright.txt
   Delete $INSTDIR\COPYING.txt
   Delete $INSTDIR\changelog.txt
-  Delete $INSTDIR\players_changelog.txt
   Delete $INSTDIR\cwesnoth.cmd
 
   Delete "$INSTDIR\Uninstall.exe"
@@ -215,7 +212,6 @@ Section "un.$(LWesnoth)" un.BfW
   ${EndIf}
 
   Delete "$SMPROGRAMS\$StartMenuFolder\License.lnk"
-  Delete "$SMPROGRAMS\$StartMenuFolder\Player's changelog.lnk"
   Delete "$SMPROGRAMS\$StartMenuFolder\Changelog.lnk"
   Delete "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk"
   Delete "$SMPROGRAMS\$StartMenuFolder\Manual.lnk"

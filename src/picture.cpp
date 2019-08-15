@@ -31,7 +31,7 @@
 #include "sdl/rect.hpp"
 #include "utils/general.hpp"
 
-#include <SDL_image.h>
+#include <SDL2/SDL_image.h>
 
 #include "utils/functional.hpp"
 
@@ -355,17 +355,6 @@ locator& locator::operator=(const locator& a)
 	return *this;
 }
 
-locator::value::value(const locator::value& a)
-	: type_(a.type_)
-	, is_data_uri_(a.is_data_uri_)
-	, filename_(a.filename_)
-	, loc_(a.loc_)
-	, modifications_(a.modifications_)
-	, center_x_(a.center_x_)
-	, center_y_(a.center_y_)
-{
-}
-
 locator::value::value()
 	: type_(NONE)
 	, is_data_uri_(false)
@@ -460,25 +449,14 @@ bool locator::value::operator<(const value& a) const
 	return false;
 }
 
-// Ensure PNG images with an indexed palette are converted to 32-bit RGBA.
-static void standardize_surface_format(surface& surf)
-{
-	if(!surf.null() && !is_neutral(surf)) {
-		surf = make_neutral_surface(surf);
-		assert(is_neutral(surf));
-	}
-}
-
 // Load overlay image and compose it with the original surface.
 static void add_localized_overlay(const std::string& ovr_file, surface& orig_surf)
 {
 	filesystem::rwops_ptr rwops = filesystem::make_read_RWops(ovr_file);
 	surface ovr_surf = IMG_Load_RW(rwops.release(), true); // SDL takes ownership of rwops
-	if(ovr_surf.null()) {
+	if(!ovr_surf) {
 		return;
 	}
-
-	standardize_surface_format(ovr_surf);
 
 	SDL_Rect area {0, 0, ovr_surf->w, ovr_surf->h};
 
@@ -502,10 +480,8 @@ static surface load_image_file(const image::locator& loc)
 			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(location);
 			res = IMG_Load_RW(rwops.release(), true); // SDL takes ownership of rwops
 
-			standardize_surface_format(res);
-
 			// If there was no standalone localized image, check if there is an overlay.
-			if(!res.null() && loc_location.empty()) {
+			if(res && loc_location.empty()) {
 				const std::string ovr_location = filesystem::get_localized_path(location, "--overlay");
 				if(!ovr_location.empty()) {
 					add_localized_overlay(ovr_location, res);
@@ -514,7 +490,7 @@ static surface load_image_file(const image::locator& loc)
 		}
 	}
 
-	if(res.null() && !loc.get_filename().empty()) {
+	if(!res && !loc.get_filename().empty()) {
 		ERR_DP << "could not open image '" << loc.get_filename() << "'" << std::endl;
 		if(game_config::debug && loc.get_filename() != game_config::images::missing)
 			return get_image(game_config::images::missing, UNSCALED);
@@ -675,7 +651,7 @@ static surface apply_light(surface surf, const light_string& ls)
 			// first image will be the base where we blit the others
 			if(lightmap == nullptr) {
 				// copy the cached image to avoid modifying the cache
-				lightmap = make_neutral_surface(lts);
+				lightmap = lts.clone();
 			} else {
 				sdl_blit(lts, nullptr, lightmap, nullptr);
 			}
@@ -719,41 +695,6 @@ manager::manager()
 manager::~manager()
 {
 	flush_cache();
-}
-
-static SDL_PixelFormat last_pixel_format;
-
-void set_pixel_format(SDL_PixelFormat* format)
-{
-	assert(format != nullptr);
-
-	SDL_PixelFormat& f = *format;
-	SDL_PixelFormat& l = last_pixel_format;
-	// if the pixel format change, we clear the cache,
-	// because some images are now optimized for the wrong display format
-	// FIXME: 8 bpp use palette, need to compare them. For now assume a change
-	if(format->BitsPerPixel == 8
-			|| f.BitsPerPixel != l.BitsPerPixel
-			|| f.BytesPerPixel != l.BytesPerPixel
-			|| f.Rmask != l.Rmask
-			|| f.Gmask != l.Gmask
-			|| f.Bmask != l.Bmask
-//			|| f.Amask != l.Amask This field in not checked, not sure why.
-			|| f.Rloss != l.Rloss
-			|| f.Gloss != l.Gloss
-			|| f.Bloss != l.Bloss
-//			|| f.Aloss != l.Aloss This field in not checked, not sure why.
-			|| f.Rshift != l.Rshift
-			|| f.Gshift != l.Gshift
-			|| f.Bshift != l.Bshift
-//			|| f.Ashift != l.Ashift This field in not checked, not sure why.
-			)
-	{
-		LOG_DP << "detected a new display format\n";
-		flush_cache();
-	}
-
-	last_pixel_format = *format;
 }
 
 void set_color_adjustment(int r, int g, int b)
@@ -855,7 +796,7 @@ static surface get_scaled_to_hex(const locator& i_locator)
 	surface img = get_image(i_locator, HEXED);
 	// return scale_surface(img, zoom, zoom);
 
-	if(!img.null()) {
+	if(img) {
 		return scale_to_hex_func(img, zoom, zoom);
 	}
 
@@ -876,7 +817,7 @@ static surface get_scaled_to_zoom(const locator& i_locator)
 
 	surface res(get_image(i_locator, UNSCALED));
 	// For some reason haloes seems to have invalid images, protect against crashing
-	if(!res.null()) {
+	if(res) {
 		return scale_to_zoom_func(res, ((res->w * zoom) / tile_size), ((res->h * zoom) / tile_size));
 	}
 
@@ -1206,7 +1147,7 @@ save_result save_image(const locator& i_locator, const std::string& filename)
 
 save_result save_image(const surface& surf, const std::string& filename)
 {
-	if(surf.null()) {
+	if(!surf) {
 		return save_result::no_image;
 	}
 

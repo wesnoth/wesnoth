@@ -102,163 +102,35 @@ void replay_controller::add_replay_theme()
 	}
 }
 
-
-void replay_controller::rebuild_replay_theme()
-{
-	const config &theme_cfg = controller_.get_theme(game_config_manager::get()->game_config(), controller_.theme());
-	if (const config &res = theme_cfg.child("resolution"))
-	{
-		if (const config &replay_theme_cfg = res.child("replay")) {
-			controller_.get_display().get_theme().modify(replay_theme_cfg);
-		}
-		controller_.get_display().get_theme().modify_label("time-icon", _ ("current local time"));
-		//Make sure we get notified if the theme is redrawn completely. That way we have
-		//a chance to restore the replay controls of the theme as well.
-		controller_.get_display().invalidate_theme();
-	}
-}
-
-std::shared_ptr<gui::button> replay_controller::play_button()
-{
-	return controller_.get_display().find_action_button("button-playreplay");
-}
-
-std::shared_ptr<gui::button> replay_controller::stop_button()
-{
-	return controller_.get_display().find_action_button("button-stopreplay");
-}
-
-std::shared_ptr<gui::button> replay_controller::reset_button()
-{
-	return controller_.get_display().find_action_button("button-resetreplay");
-}
-
-std::shared_ptr<gui::button> replay_controller::play_turn_button()
-{
-	return controller_.get_display().find_action_button("button-nextturn");
-}
-
-std::shared_ptr<gui::button> replay_controller::play_side_button()
-{
-	return controller_.get_display().find_action_button("button-nextside");
-}
-
-std::shared_ptr<gui::button> replay_controller::play_move_button()
-{
-	return controller_.get_display().find_action_button("button-nextmove");
-}
-
-void replay_controller::update_replay_ui()
-{
-	//check if we have all buttons - if someone messed with theme then some buttons may be missing
-	//if any of the buttons is missing, we just disable every one
-	if(!replay_ui_has_all_buttons()) {
-		std::shared_ptr<gui::button> play_b = play_button(), stop_b = stop_button(),
-		            reset_b = reset_button(), play_turn_b = play_turn_button(),
-		            play_side_b = play_side_button(), play_move_b = play_move_button();
-
-		if(play_b) {
-			play_b->enable(false);
-		}
-
-		if(stop_b) {
-			stop_b->enable(false);
-		}
-
-		if(reset_b) {
-			reset_b->enable(false);
-		}
-
-		if(play_turn_b) {
-			play_turn_b->enable(false);
-		}
-
-		if(play_side_b) {
-			play_side_b->enable(false);
-		}
-
-		if (play_move_b) {
-			play_move_b->enable(false);
-		}
-	}
-}
-
-void replay_controller::replay_ui_playback_should_start()
-{
-	if(!replay_ui_has_all_buttons())
-		return;
-
-	play_button()->enable(false);
-	reset_button()->enable(false);
-	play_turn_button()->enable(false);
-	play_side_button()->enable(false);
-	play_move_button()->enable(false);
-}
-
-void replay_controller::replay_ui_playback_should_stop()
-{
-	if(!replay_ui_has_all_buttons())
-		return;
-
-	if(!resources::recorder->at_end()) {
-		play_button()->enable(true);
-		reset_button()->enable(true);
-		play_turn_button()->enable(true);
-		play_side_button()->enable(true);
-		play_move_button()->enable(true);
-
-		play_button()->release();
-		play_turn_button()->release();
-		play_side_button()->release();
-		play_move_button()->release();
-	} else {
-		reset_button()->enable(true);
-		stop_button()->enable(false);
-	}
-
-	if(stop_condition_->should_stop()) {
-		//user interrupted
-		stop_button()->release();
-	}
-}
-
-void replay_controller::reset_replay_ui()
-{
-	if(!replay_ui_has_all_buttons())
-		return;
-
-	play_button()->enable(true);
-	stop_button()->enable(true);
-	reset_button()->enable(true);
-	play_turn_button()->enable(true);
-	play_side_button()->enable(true);
-}
-
-
 void replay_controller::stop_replay()
 {
 	stop_condition_.reset(new replay_stop_condition());
+	update_enabled_buttons();
 }
 
 void replay_controller::replay_next_turn()
 {
 	stop_condition_.reset(new replay_play_turn(controller_.gamestate().tod_manager_.turn()));
+	update_enabled_buttons();
 }
 
 void replay_controller::replay_next_side()
 {
 	stop_condition_.reset(new replay_play_side());
+	update_enabled_buttons();
 }
 
 void replay_controller::replay_next_move()
 {
 	stop_condition_.reset(new replay_play_moves(1));
+	update_enabled_buttons();
 }
 
 //move all sides till stop/end
 void replay_controller::play_replay()
 {
 	stop_condition_.reset(new replay_play_nostop());
+	update_enabled_buttons();
 }
 
 void replay_controller::update_gui()
@@ -266,14 +138,19 @@ void replay_controller::update_gui()
 	controller_.get_display().recalculate_minimap();
 	controller_.get_display().redraw_minimap();
 	controller_.get_display().invalidate_all();
+	controller_.get_display().redraw_everything();
+}
+
+void replay_controller::update_enabled_buttons()
+{
+	controller_.get_display().invalidate_theme();
+	controller_.get_display().redraw_everything();
 }
 
 void replay_controller::handle_generic_event(const std::string& name)
 {
-
-	if( name == "completely_redrawn" ) {
-		update_replay_ui();
-	} else {
+	// this is only attached to one event - the theme_reset_event
+	if(name == "theme_reset") {
 		add_replay_theme();
 	}
 	if(std::shared_ptr<gui::button> skip_animation_button = controller_.get_display().find_action_button("skip-animation")) {
@@ -288,6 +165,7 @@ bool replay_controller::recorder_at_end() const
 
 REPLAY_RETURN replay_controller::play_side_impl()
 {
+	update_enabled_buttons();
 	while(!return_to_play_side_ && !static_cast<playsingle_controller&>(controller_).get_player_type_changed())
 	{
 		if(!stop_condition_->should_stop())
@@ -313,11 +191,18 @@ REPLAY_RETURN replay_controller::play_side_impl()
 				}
 			}
 			controller_.play_slice(false);
+
+			// Update the buttons once, on the transition from not-stopped to stopped.
+			if(stop_condition_->should_stop()) {
+				update_enabled_buttons();
+			}
 		}
 		else
 		{
+			// Don't move the update_enabled_buttons() call here. This play_slice() should block
+			// until the next event occurs, but on X11/Linux update_enabled_buttons() seems to put
+			// an event in the queue, turning this into a busy loop.
 			controller_.play_slice(true);
-			replay_ui_playback_should_stop();
 		}
 	}
 	return REPLAY_FOUND_END_MOVE;

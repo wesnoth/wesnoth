@@ -17,7 +17,7 @@
 
 #include "map/location.hpp"
 
-#include <SDL_events.h>
+#include <SDL2/SDL_events.h>
 
 class display;
 
@@ -48,7 +48,7 @@ public:
 
 	/** Const version of @ref gui */
 	virtual const display& gui() const = 0;
-	
+
 	/** If mouse/finger has moved far enough to consider it move/swipe, and not a click/touch */
 	bool dragging_started() const;
 

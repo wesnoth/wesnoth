@@ -23,10 +23,72 @@ namespace t_translation { struct terrain_code; }
 
 /// The basic "size" of the unit - flying, small land, large land, etc.
 /// This encompasses terrain costs, defenses, and resistances.
+///
+/// This class is used for both [movetype] and [unit] configs, which use the
+/// same data in their configs for [movement_costs], [defense], etc. However,
+/// the data for whether the unit flies is historically held in [movetype]'s
+/// "flies" vs [unit]'s "flying".
+///
+/// Existing behavior of 1.14:
+/// * movetype::movetype(const config & cfg) will read only the "flies" key
+/// * movetype::merge(const config & cfg, bool overwrite) will read both keys,
+///     with "flying" taking priority if both are supplied
+/// * movetype::write() will write only the "flying" key
+///
+/// \todo make this more logical. Ideas:
+/// * for 1.15, support both "flying" and "flies" in [movetype]
+/// * for 1.17 or later, drop the "flies"
 class movetype
 {
-	/// Stores a set of data based on terrain.
-	class terrain_info
+public:
+	/// A const-only interface for how many (movement, vision, or "jamming") points a
+	/// unit needs for each hex. Functions to modify the costs are exposed by the
+	/// movetype instance owning this terrain_costs, so that changes to movement will
+	/// cascade to the vision, etc.
+	class terrain_costs
+	{
+	public:
+		virtual ~terrain_costs() = default;
+
+		/// Returns the value associated with the given terrain.
+		///
+		/// Calculated values are cached for later queries.
+		virtual int value(const t_translation::terrain_code & terrain) const = 0;
+
+		/// Returns the cost associated with the given terrain.
+		/// Costs are doubled when @a slowed is true.
+		int cost(const t_translation::terrain_code & terrain, bool slowed=false) const
+		{
+			int result = value(terrain);
+			return  slowed  &&  result != movetype::UNREACHABLE ? 2 * result : result;
+		}
+
+		/// Does a sufficiently deep copy so that the returned object's lifespan
+		/// is independent of other objects' lifespan. Never returns nullptr.
+		virtual std::unique_ptr<terrain_costs> make_standalone() const = 0;
+
+		/// Writes our data to a config.
+		virtual void write(config & cfg, const std::string & child_name="", bool merged=true) const = 0;
+	};
+
+	/// Reverse of terrain_costs::write. Never returns nullptr.
+	static std::unique_ptr<terrain_costs> read_terrain_costs(const config & cfg);
+
+	// Forward declaration so that terrain_info can friend the
+	// swap(terrain_defense, terrain_defense) function
+	class terrain_defense;
+
+private:
+
+	/// Stores a set of data based on terrain, in some cases with raw pointers to
+	/// other instances of terrain_info (the fallback_).
+	///
+	/// The data can either be a single instance (in which case it's
+	/// writable and stored in unique_data_) or may have already been shared
+	/// (via make_data_shareable()), in which case it's stored in shared_data_.
+	/// There will always be exactly one of those two that's non-null,
+	/// get_data() returns it from where-ever it is.
+	class terrain_info : public terrain_costs
 	{
 		/// The terrain-based data.
 		class data;
@@ -37,43 +99,53 @@ class movetype
 		struct parameters;
 
 		explicit terrain_info(const parameters & params,
-		                      const terrain_info * fallback=nullptr,
-		                      const terrain_info * cascade=nullptr);
+		                      const terrain_info * fallback);
 		terrain_info(const config & cfg, const parameters & params,
-		             const terrain_info * fallback=nullptr,
-		             const terrain_info * cascade=nullptr);
+		             const terrain_info * fallback);
+		~terrain_info() override;
+
+		// Instead of the standard copy and move constructors, there are ones
+		// that copy the data but require the caller to specify the fallback.
+		terrain_info(const terrain_info & that) = delete;
+		terrain_info(terrain_info && that) = delete;
+		explicit terrain_info(terrain_info && that,
+		                      const terrain_info * fallback);
 		terrain_info(const terrain_info & that,
-		             const terrain_info * fallback=nullptr,
-		             const terrain_info * cascade=nullptr);
-		~terrain_info();
+		             const terrain_info * fallback);
 
-		terrain_info & operator=(const terrain_info & that);
+		// Similarly to the copy and move constructors, the default assignments
+		// are deleted, because the caller needs to know about the siblings.
+		terrain_info & operator=(const terrain_info & that) = delete;
+		terrain_info & operator=(terrain_info && that) = delete;
+		void copy_data(const movetype::terrain_info & that);
+		void swap_data(movetype::terrain_info & that);
 
-
-		/// Clears the cache of values.
-		void clear_cache() const;
 		/// Returns whether or not our data is empty.
 		bool empty() const;
 		/// Merges the given config over the existing values.
-		void merge(const config & new_values, bool overwrite);
-		/// Returns the value associated with the given terrain.
-		int value(const t_translation::terrain_code & terrain) const;
-		/// Writes our data to a config.
-		void write(config & cfg, const std::string & child_name="", bool merged=true) const;
+		void merge(const config & new_values, bool overwrite,
+			const std::vector<movetype::terrain_info *> & dependants);
+
+		// Implementation of terrain_costs
+		int value(const t_translation::terrain_code & terrain) const override;
+		void write(config & cfg, const std::string & child_name="", bool merged=true) const override;
+		std::unique_ptr<terrain_costs> make_standalone() const override;
 
 	private:
-		// Returns a pointer to data the incorporates our fallback.
-		const std::shared_ptr<data> & get_merged() const;
-		// Ensures our data is not shared, and propagates to our cascade.
-		void make_unique_cascade() const;
-		// Ensures our data is not shared, and propagates to our fallback.
-		void make_unique_fallback() const;
+		/// Move data to an immutable copy in shared_data_, no-op if the data
+		/// is already in shared_data_.
+		void make_data_shareable() const;
+		/// Copy the immutable data back to unique_data_, no-op if the data
+		/// is already in unique_data_.
+		void make_data_writable() const;
+		/// Returns either *unique_data_ or *shared_data_, choosing the one that
+		/// currently holds the data.
+		const data & get_data() const;
 
 	private:
-		std::shared_ptr<data> data_;                 /// Never nullptr
-		mutable std::shared_ptr<data> merged_data_;  /// Created as needed.
+		std::unique_ptr<data> unique_data_;
+		std::shared_ptr<const data> shared_data_;
 		const terrain_info * const fallback_;
-		const terrain_info * const cascade_;
 	};
 
 
@@ -82,37 +154,6 @@ public:
 	/// The UNREACHABLE macro in the data tree should match this value.
 	static const int UNREACHABLE = 99;
 
-	/// Stores a set of terrain costs (for movement, vision, or "jamming").
-	class terrain_costs : public terrain_info
-	{
-		static const parameters params_;
-	public:
-		explicit terrain_costs(const terrain_costs * fallback=nullptr,
-		                       const terrain_costs * cascade=nullptr) :
-			terrain_info(params_, fallback, cascade)
-		{}
-		explicit terrain_costs(const config & cfg,
-		                       const terrain_costs * fallback=nullptr,
-		                       const terrain_costs * cascade=nullptr) :
-			terrain_info(cfg, params_, fallback, cascade)
-		{}
-		terrain_costs(const terrain_costs & that,
-		              const terrain_costs * fallback=nullptr,
-		              const terrain_costs * cascade=nullptr) :
-			terrain_info(that, fallback, cascade)
-		{}
-
-		/// Returns the cost associated with the given terrain.
-		/// Costs are doubled when @a slowed is true.
-		int cost(const t_translation::terrain_code & terrain, bool slowed=false) const
-		{ int result = value(terrain);
-		  return  slowed  &&  result != movetype::UNREACHABLE ? 2 * result : result; }
-
-		// Inherited from terrain_info:
-		//void merge(const config & new_values, bool overwrite);
-		//void write(config & cfg, const std::string & child_name="", bool merged=true) const;
-	};
-
 	/// Stores a set of defense levels.
 	class terrain_defense
 	{
@@ -120,10 +161,14 @@ public:
 		static const terrain_info::parameters params_max_;
 
 	public:
-		terrain_defense() : min_(params_min_), max_(params_max_) {}
+		terrain_defense() : min_(params_min_, nullptr), max_(params_max_, nullptr) {}
 		explicit terrain_defense(const config & cfg) :
-			min_(cfg, params_min_), max_(cfg, params_max_)
+			min_(cfg, params_min_, nullptr), max_(cfg, params_max_, nullptr)
 		{}
+		terrain_defense(const terrain_defense & that);
+		terrain_defense(terrain_defense && that);
+		terrain_defense & operator=(const terrain_defense & that);
+		terrain_defense & operator=(terrain_defense && that);
 
 		/// Returns the defense associated with the given terrain.
 		int defense(const t_translation::terrain_code & terrain) const
@@ -133,12 +178,13 @@ public:
 		{ return min_.value(terrain) != 0; }
 		/// Merges the given config over the existing costs.
 		/// (Not overwriting implies adding.)
-		void merge(const config & new_data, bool overwrite)
-		{ min_.merge(new_data, overwrite);  max_.merge(new_data, overwrite); }
+		void merge(const config & new_data, bool overwrite);
 		/// Writes our data to a config, as a child if @a child_name is specified.
 		/// (No child is created if there is no data.)
 		void write(config & cfg, const std::string & child_name="") const
 		{ max_.write(cfg, child_name, false); }
+
+		friend void swap(movetype::terrain_defense & a, movetype::terrain_defense & b);
 
 	private:
 		// There will be duplication of the config here, but it is a small
@@ -169,16 +215,30 @@ public:
 		config cfg_;
 	};
 
+private:
+	static const terrain_info::parameters mvj_params_;
+
 public:
 	movetype();
 	explicit movetype(const config & cfg);
 	movetype(const movetype & that);
+	movetype(movetype && that);
+	movetype &operator=(const movetype & that);
+	movetype &operator=(movetype && that);
+	// The default destructor is sufficient, despite the Rule of Five.
+	// The copy and assignment functions handle the pointers between
+	// terrain_cost_impl instances, but all of these instances are owned
+	// by this instance of movetype.
+	~movetype() = default;
+
+	friend void swap(movetype & a, movetype & b);
+	friend void swap(movetype::terrain_info & a, movetype::terrain_info & b);
 
 	// This class is basically just a holder for its various pieces, so
-	// provide access to those pieces on demand.
-	terrain_costs & get_movement()   { return movement_; }
-	terrain_costs & get_vision()     { return vision_; }
-	terrain_costs & get_jamming()    { return jamming_; }
+	// provide access to those pieces on demand. There's no non-const
+	// getters for terrain_costs, as that's now an interface with only
+	// const functions in it, and because the logic for how the cascade and
+	// fallback mechanism works would be easier to handle in movetype itself.
 	terrain_defense & get_defense()  { return defense_; }
 	resistances & get_resistances()  { return resist_; }
 	// And const access:
@@ -224,8 +284,14 @@ public:
 	/// Returns whether or not there are any jamming-specific costs.
 	bool has_jamming_data() const { return !jamming_.empty(); }
 
-	/// Merges the given config over the existing data.
+	/// Merges the given config over the existing data, the config should have zero or more
+	/// children named "movement_costs", "defense", etc.
 	void merge(const config & new_cfg, bool overwrite=true);
+
+	/// Merges the given config over the existing data.
+	/// @a applies_to which type of movement to change ("movement_costs", etc)
+	/// @a new_cfg data which could be one of the children of the config for the two-argument form of this function.
+	void merge(const config & new_cfg, const std::string & applies_to, bool overwrite=true);
 
 	/// The set of applicable effects for movement types
 	static const std::set<std::string> effects;
@@ -234,9 +300,9 @@ public:
 	void write(config & cfg) const;
 
 private:
-	terrain_costs movement_;
-	terrain_costs vision_;
-	terrain_costs jamming_;
+	terrain_info movement_;
+	terrain_info vision_;
+	terrain_info jamming_;
 	terrain_defense defense_;
 	resistances resist_;
 

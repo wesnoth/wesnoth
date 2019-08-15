@@ -1,4 +1,15 @@
-## Version 1.15.0-dev
+## Version 1.15.0+dev
+ ### Editor
+   * Fix buttons in the editor being inactive
+ ### Multiplayer server
+   * Add support for storing game information in wesnoth's mysql database (PR#4204)
+   * When the forum user handler is enabled, the Multiplayer Moderators group is now also used when determining if someone is a moderator. (PR#4136)
+ ### Units
+   * Fix typo in the Dune Ranger's advancements
+ ### Miscellaneous and bug fixes
+   * use the 1.15 add-ons server
+
+## Version 1.15.0
  ### AI
    * Micro AIs
      * Add [avoid] tag functionality to Multipack Wolves, Wolves, Swarm and Goto Micro AIs
@@ -29,8 +40,12 @@
      * [goal]name=protect_unit: do not protect units hidden from the AI
      * General code clean-up, in particular of TODOs left over from 1.7 and 1.9
  ### Campaigns
-   * A Tale of Two Brothers
+   * A Tale of Two Brothers:
      * S2 'Chase': improved behavior of undead side leader with custom AI
+   * Delfador's Memoirs:
+     * S08: Show carryover report to make it clear the scenario has ended
+     * S09 & 10: Increase difficulty
+     * S12: Allow respective recruits when the loyalists & mages join Delfador
    * Secrets of the Ancients:
      * Added ability to recruit different kinds of walking corpses during the campaign.
      * Unit type naming convention cleanup.
@@ -76,6 +91,7 @@
    * Move Fire Dragon portrait from TRoW and SoF to core
    * Move Orcish Leader portraits to Orcish Ruler and use grunt variation portrait for Leader
    * Increased Mermaid Initiate advancement line hitpoints (Diviner 41->45, Enchantress 38->39, Priestess 31->35, Siren 49->51)
+   * The Dunefolk faction was overhauled to improve balance against the six Default factions
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a special location ID
@@ -114,6 +130,8 @@
    * Support an optional EXTRA_WML argument to {REMOVE_LABEL}.
    * Support [disallow_end_turn]reason=
    * The {SPECIAL_NOTES_*} macros now start with a newline and a bullet point.
+   * Support [unit]jamming=
+   * Support [movetype]flying= and deprecate [movetype]flies=, for consistency with [unit]flying=
  ### Miscellaneous and bug fixes
    * Rest healing now happens on turn 2. (issue #3562)
    * Normal healing now happens on turn 1 for all sides except the first. (issue #3562)
@@ -143,6 +161,7 @@
    * Descent into Darkness:
      * Update campaign description
      * Update maps for S1 and S6
+     * S4: reduce difficulty on easy and normal modes
      * S11: reduce difficulty just after Malin turns into lich
    * Eastern Invasion:
      * S9: add dialogue on victory
@@ -166,7 +185,7 @@
    * The South Guard:
      * Update campaign description
      * S1: create Sir Gerrick if player skips scenario with debug
-     * S5: add narrator warning when siding with bandits
+     * S5: add narrator warning when siding with bandits and reduce difficulty
      * S6b: create Urza Afalas if player skips S5 with debug
      * S6b: kill elves on side 1 if player got to this scenario with debug
      * S8b: fixed bug with shifted ToD schedules near campfires
@@ -180,6 +199,9 @@
      * It wasn't possible to view unit descriptions of units that would be
        fogged or shrouded in three cases: during replays, in MP linger mode,
        and in MP when one is the host but doesn't play. (issue #3687)
+     * In multiplayer hotseat games, the turn dialog is now shown before updating the
+       minimap, main map, healing and auras to the incoming player's view. (issue #4187,
+       PR #4188)
  ### Units
    * Add new Water Serpent portrait
 

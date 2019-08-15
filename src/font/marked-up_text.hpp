@@ -23,7 +23,7 @@ class surface;
 
 #include <string>
 
-#include <SDL_rect.h>
+#include <SDL2/SDL_rect.h>
 
 namespace font {
 

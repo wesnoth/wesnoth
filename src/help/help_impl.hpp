@@ -41,7 +41,7 @@
 #include <string>                       // for string, allocator, etc
 #include <utility>                      // for pair, make_pair
 #include <vector>                       // for vector, etc
-#include <SDL.h>                  // for SDL_Surface
+#include <SDL2/SDL.h>                  // for SDL_Surface
 #include <boost/logic/tribool.hpp>
 #include <boost/optional.hpp>
 
@@ -49,23 +49,18 @@ class config;
 class unit_type;
 class terrain_type_data;
 typedef std::shared_ptr<terrain_type_data> ter_data_cache;
-namespace help { struct section; }  // lines 51-51
-
 namespace help {
 
 /// Generate the help contents from the configurations given to the
 /// manager.
 void generate_contents();
 
-typedef std::vector<section *> section_list;
 
 /// Generate a topic text on the fly.
 class topic_generator
 {
-	unsigned count;
-	friend class topic_text;
 public:
-	topic_generator(): count(1) {}
+	topic_generator() = default;
 	virtual std::string operator()() const = 0;
 	virtual ~topic_generator() {}
 };
@@ -82,30 +77,30 @@ public:
 class topic_text
 {
 	mutable std::vector< std::string > parsed_text_;
-	mutable topic_generator *generator_;
+	mutable std::shared_ptr<topic_generator> generator_;
 public:
-	~topic_text();
-	topic_text():
-		parsed_text_(),
-		generator_(nullptr)
-	{
-	}
+	topic_text() = default;
+	~topic_text() = default;
 
 	topic_text(const std::string& t):
 		parsed_text_(),
-		generator_(new text_topic_generator(t))
+		generator_(std::make_shared<text_topic_generator>(t))
 	{
 	}
 
-	explicit topic_text(topic_generator *g):
+	explicit topic_text(std::shared_ptr<topic_generator> g):
 		parsed_text_(),
 		generator_(g)
 	{
 	}
-	topic_text &operator=(topic_generator *g);
-	topic_text(const topic_text& t);
 
-    const std::vector<std::string>& parsed_text() const;
+	topic_text(const topic_text& t) = default;
+	topic_text(topic_text&& t) = default;
+	topic_text& operator=(topic_text&& t) = default;
+	topic_text& operator=(const topic_text& t) = default;
+	topic_text& operator=(std::shared_ptr<topic_generator> g);
+
+	const std::vector<std::string>& parsed_text() const;
 };
 
 /// A topic contains a title, an id and some text.
@@ -127,7 +122,7 @@ struct topic
 
 	topic(const std::string &_title, const std::string &_id, const std::string &_text)
 		: title(_title), id(_id), text(_text) {}
-	topic(const std::string &_title, const std::string &_id, topic_generator *g)
+	topic(const std::string &_title, const std::string &_id, std::shared_ptr<topic_generator> g)
 		: title(_title), id(_id), text(g) {}
 	/// Two topics are equal if their IDs are equal.
 	bool operator==(const topic &) const;
@@ -138,6 +133,8 @@ struct topic
 	mutable topic_text text;
 };
 
+struct section;
+typedef std::list<section> section_list;
 typedef std::list<topic> topic_list;
 
 /// A section contains topics and sections along with title and ID.
@@ -151,9 +148,6 @@ struct section {
 	{
 	}
 
-	section(const section&);
-	section& operator=(const section&);
-	~section();
 	/// Two sections are equal if their IDs are equal.
 	bool operator==(const section &) const;
 	/// Comparison on the ID.
@@ -195,8 +189,8 @@ public:
 class section_less
 {
 public:
-	bool operator()(const section* s1, const section* s2) {
-            return translation::compare(s1->title, s2->title) < 0; }
+	bool operator()(const section& s1, const section& s2) {
+            return translation::compare(s1.title, s2.title) < 0; }
 };
 
 class string_less
@@ -205,17 +199,6 @@ public:
 	bool operator() (const std::string &s1, const std::string &s2) const {
 		return translation::compare(s1, s2) < 0;
 	}
-};
-
-struct delete_section
-{
-	void operator()(section *s) { delete s; }
-};
-
-struct create_section
-{
-	section *operator()(const section *s) { return new section(*s); }
-	section *operator()(const section &s) { return new section(s); }
 };
 
 /// Thrown when the help system fails to parse something.

@@ -125,7 +125,7 @@ std::string os_version()
 	//
 	// Standard Mac OS X version
 	//
-	
+
 	return desktop::apple::os_version();
 
 #elif defined(_X11)

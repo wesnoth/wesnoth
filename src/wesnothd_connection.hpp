@@ -35,10 +35,13 @@
 
 #include <boost/asio.hpp>
 
+#include <condition_variable>
 #include <deque>
+#include <future>
 #include <list>
 #include <thread>
 #include <mutex>
+#include <queue>
 
 class config;
 enum class loading_stage;
@@ -80,19 +83,12 @@ public:
 	 */
 	bool wait_and_receive_data(config& data);
 
-	/** Handles all pending asynchornous events and returns. */
-	std::size_t poll();
+	void wait_for_handshake();
 
 	void cancel();
 
 	// Destroys this object.
 	void stop();
-
-	/** True if connected and no high-level operation is in progress */
-	bool handshake_finished() const
-	{
-		return handshake_finished_;
-	}
 
 	std::size_t bytes_to_write() const
 	{
@@ -125,7 +121,7 @@ public:
 	}
 
 private:
-	std::unique_ptr<std::thread> worker_thread_;
+	std::thread worker_thread_;
 
 	boost::asio::io_service io_service_;
 
@@ -139,7 +135,7 @@ private:
 
 	std::mutex last_error_mutex_;
 
-	bool handshake_finished_;
+	std::promise<void> handshake_finished_;
 
 	boost::asio::streambuf read_buf_;
 
@@ -162,10 +158,15 @@ private:
 	void send();
 	void recv();
 
-	std::list<std::shared_ptr<boost::asio::streambuf>> send_queue_;
-	std::list<config> recv_queue_;
+	template<typename T>
+	using data_queue = std::queue<T, std::list<T>>;
+
+	data_queue<std::shared_ptr<boost::asio::streambuf>> send_queue_;
+	data_queue<config> recv_queue_;
 
 	std::mutex recv_queue_mutex_;
+
+	std::condition_variable recv_queue_lock_;
 
 	uint32_t payload_size_;
 

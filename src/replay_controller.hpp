@@ -61,26 +61,19 @@ private:
 	void add_replay_theme();
 	void init();
 	void update_gui();
-	void rebuild_replay_theme();
 	void handle_generic_event(const std::string& name) override;
 
-	void reset_replay_ui();
-	void update_replay_ui();
+	/**
+	 * Refresh the states of the replay-control buttons, this will cause the
+	 * hotkey framework to query can_execute_command() for each button and then
+	 * set the enabled/disabled state based on that query.
+	 *
+	 * The ids for the associated buttons are: "button-playreplay",
+	 * "button-stopreplay", "button-resetreplay", "button-nextturn",
+	 * "button-nextside", and "button-nextmove".
+	 */
+	void update_enabled_buttons();
 
-	void replay_ui_playback_should_start();
-	void replay_ui_playback_should_stop();
-
-	std::shared_ptr<gui::button> play_button();
-	std::shared_ptr<gui::button> stop_button();
-	std::shared_ptr<gui::button> reset_button();
-	std::shared_ptr<gui::button> play_turn_button();
-	std::shared_ptr<gui::button> play_side_button();
-	std::shared_ptr<gui::button> play_move_button();
-
-	bool replay_ui_has_all_buttons() {
-		return play_button() && stop_button() && reset_button() &&
-		       play_turn_button() && play_side_button();
-	}
 	play_controller& controller_;
 	std::unique_ptr<replay_stop_condition> stop_condition_;
 	events::command_disabler disabler_;

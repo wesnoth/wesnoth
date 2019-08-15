@@ -512,9 +512,15 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	advance_to(*type_, use_traits);
 
 	if(const config::attribute_value* v = cfg.get("overlays")) {
-		overlays_ = utils::parenthetical_split(v->str(), ',');
-		if(overlays_.size() == 1 && overlays_.front().empty()) {
-			overlays_.clear();
+		auto overlays = utils::parenthetical_split(v->str(), ',');
+		if(overlays.size() > 0) {
+			deprecated_message("[unit]overlays", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Add overlays via objects instead.");
+			config effect;
+			config o;
+			effect["apply_to"] = "overlay";
+			effect["add"] = v->str();
+			o.add_child("effect", effect);
+			add_modification("object", o);
 		}
 	}
 
@@ -979,7 +985,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	max_attacks_ = new_type.max_attacks();
 
 	flag_rgb_ = new_type.flag_rgb();
-	
+
 	upkeep_ = upkeep_full();
 	parse_upkeep(new_type.get_cfg()["upkeep"]);
 
@@ -1410,7 +1416,7 @@ bool unit::get_attacks_changed() const
 		if(a_ptr->get_changed()) {
 			return true;
 		}
-		
+
 	}
 	return false;
 }
@@ -1496,7 +1502,10 @@ void unit::write(config& cfg, bool write_all) const
 	cfg.clear_children("events");
 	cfg.append(events_);
 
-	cfg["overlays"] = utils::join(overlays_);
+	// Overlays are exported as the modifications that add them, not as an overlays= value,
+	// however removing the key breaks the Gui Debug Tools.
+	// \todo does anything depend on the key's value, other than the re-import code in unit::init?
+	cfg["overlays"] = "";
 
 	cfg["name"] = name_;
 	cfg["id"] = id_;
@@ -2042,35 +2051,14 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		{
 			set_state(to_remove, false);
 		}
-	// Note: It would not be hard to define a new "applies_to=" that
-	//       combines the next five options (the movetype effects).
-	} else if(apply_to == "movement_costs") {
-		if(const config& ap = effect.child("movement_costs")) {
+	} else if(std::find(movetype::effects.cbegin(), movetype::effects.cend(), apply_to) != movetype::effects.cend()) {
+		// "movement_costs", "vision_costs", "jamming_costs", "defense", "resistance"
+		if(const config& ap = effect.child(apply_to)) {
 			set_attr_changed(UA_MOVEMENT_TYPE);
-			movement_type_.get_movement().merge(ap, effect["replace"].to_bool());
-		}
-	} else if(apply_to == "vision_costs") {
-		if(const config& ap = effect.child("vision_costs")) {
-			set_attr_changed(UA_MOVEMENT_TYPE);
-			movement_type_.get_vision().merge(ap, effect["replace"].to_bool());
-		}
-	} else if(apply_to == "jamming_costs") {
-		if(const config& ap = effect.child("jamming_costs")) {
-			set_attr_changed(UA_MOVEMENT_TYPE);
-			movement_type_.get_jamming().merge(ap, effect["replace"].to_bool());
-		}
-	} else if(apply_to == "defense") {
-		if(const config& ap = effect.child("defense")) {
-			set_attr_changed(UA_MOVEMENT_TYPE);
-			movement_type_.get_defense().merge(ap, effect["replace"].to_bool());
-		}
-	} else if(apply_to == "resistance") {
-		if(const config& ap = effect.child("resistance")) {
-			set_attr_changed(UA_MOVEMENT_TYPE);
-			movement_type_.get_resistances().merge(ap, effect["replace"].to_bool());
+			movement_type_.merge(ap, apply_to, effect["replace"].to_bool());
 		}
 	} else if(apply_to == "zoc") {
-		if(const config::attribute_value* v = effect.get("value")) {			
+		if(const config::attribute_value* v = effect.get("value")) {
 			set_attr_changed(UA_ZOC);
 			emit_zoc_ = v->to_bool();
 		}
@@ -2118,15 +2106,19 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 	} else if(apply_to == "overlay") {
 		const std::string& add = effect["add"];
 		const std::string& replace = effect["replace"];
+		const std::string& remove = effect["remove"];
 
 		if(!add.empty()) {
-			std::vector<std::string> temp_overlays = utils::parenthetical_split(add, ',');
-			std::vector<std::string>::iterator it;
-			for(it=temp_overlays.begin();it<temp_overlays.end();++it) {
-				overlays_.push_back(*it);
+			for(const auto& to_add : utils::parenthetical_split(add, ',')) {
+				overlays_.push_back(to_add);
 			}
 		}
-		else if(!replace.empty()) {
+		if(!remove.empty()) {
+			for(const auto& to_remove : utils::parenthetical_split(remove, ',')) {
+				overlays_.erase(std::remove(overlays_.begin(), overlays_.end(), to_remove), overlays_.end());
+			}
+		}
+		if(add.empty() && remove.empty() && !replace.empty()) {
 			overlays_ = utils::parenthetical_split(replace, ',');
 		}
 	} else if(apply_to == "new_advancement") {
@@ -2625,7 +2617,7 @@ void unit::clear_changed_attributes()
 {
 	changed_attributes_.reset();
 	for(const auto& a_ptr : attacks_) {
-		a_ptr->set_changed(false);	
+		a_ptr->set_changed(false);
 	}
 }
 

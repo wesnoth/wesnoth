@@ -603,7 +603,7 @@ REPORT_GENERATOR(unit_defense,rc)
 	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
 	const map_location& mouseover_hex = rc.screen().mouseover_hex();
 	const map_location& displayed_unit_hex = rc.screen().displayed_unit_hex();
-	const map_location& hex = (mouseover_hex.valid() && !viewing_team.shrouded(mouseover_hex)) ? mouseover_hex : displayed_unit_hex; 
+	const map_location& hex = (mouseover_hex.valid() && !viewing_team.shrouded(mouseover_hex)) ? mouseover_hex : displayed_unit_hex;
 	return unit_defense(rc, u, hex);
 }
 REPORT_GENERATOR(selected_unit_defense, rc)
@@ -938,7 +938,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 		bool attacking = (u.side() == rc.screen().playing_side());
 		auto ctx = (sec_u == nullptr) ? at.specials_context_for_listing(attacking) :
 						at.specials_context(unit_const_ptr(&u), unit_const_ptr(sec_u), hex, sec_u->get_location(), attacking, sec_u_weapon);
-		
+
 		boost::dynamic_bitset<> active;
 		const std::vector<std::pair<t_string, t_string>> &specials = at.special_tooltips(&active);
 		const std::size_t specials_size = specials.size();

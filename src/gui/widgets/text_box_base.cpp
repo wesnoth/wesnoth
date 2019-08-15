@@ -168,13 +168,13 @@ size_t text_box_base::get_composition_length() const
 	if(!is_composing()) {
 		return 0;
 	}
-	
+
 	size_t text_length = utf8::size(text_.text());
 	size_t text_cached_length = utf8::size(text_cached_);
 	if(text_length < text_cached_length) {
 		return 0;
 	}
-	
+
 	return utf8::size(text_.text()) - utf8::size(text_cached_);
 }
 

@@ -102,7 +102,7 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 	update_available_factions();
 
 	select_default_faction();
-	
+
 }
 
 void flg_manager::set_current_faction(const unsigned index)

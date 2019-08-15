@@ -182,7 +182,7 @@ public:
 	bool is_fuzzy() const {
 		return fuzzy_;
 	}
-	
+
 	bool accepts_any_tag() const {
 		return any_tag_;
 	}
@@ -209,7 +209,7 @@ public:
 	{
 		super_ = s;
 	}
-	
+
 	void set_fuzzy(bool f) {
 		fuzzy_ = f;
 	}
@@ -217,7 +217,7 @@ public:
 	void set_any_tag(bool any) {
 		any_tag_ = any;
 	}
-	
+
 	void add_key(const wml_key& new_key)
 	{
 		keys_.emplace(new_key.get_name(), new_key);

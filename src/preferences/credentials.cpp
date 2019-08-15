@@ -297,7 +297,7 @@ static secure_buffer rc4_crypt(const secure_buffer& text, const secure_buffer& k
 		result.data(),
 		result.size(),
 		&outWritten);
-	
+
 	assert(ccStatus == kCCSuccess);
 	assert(outWritten == text.size());
 #endif

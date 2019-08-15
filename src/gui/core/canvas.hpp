@@ -88,7 +88,7 @@ public:
 
 	canvas();
 	canvas(const canvas&) = delete;
-	canvas(canvas&& c);
+	canvas(canvas&& c) noexcept;
 
 	~canvas();
 

@@ -20,7 +20,7 @@
 #include "serialization/parser.hpp"
 #include "utils/functional.hpp"
 
-#include <SDL_timer.h>
+#include <SDL2/SDL_timer.h>
 
 #include <cstdint>
 #include <deque>
@@ -40,7 +40,7 @@ struct mptest_log
 {
 	mptest_log(const char* functionname)
 	{
-		WRN_NW << "Process:" << getpid() << " Thread:" << boost::this_thread::get_id() << " Function: " << functionname << " Start\n";
+		WRN_NW << "Process:" << getpid() << " Thread:" << std::this_thread::get_id() << " Function: " << functionname << " Start\n";
 	}
 };
 }
@@ -61,11 +61,12 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 	, socket_(io_service_)
 	, last_error_()
 	, last_error_mutex_()
-	, handshake_finished_(false)
+	, handshake_finished_()
 	, read_buf_()
 	, handshake_response_()
 	, recv_queue_()
 	, recv_queue_mutex_()
+	, recv_queue_lock_()
 	, payload_size_(0)
 	, bytes_to_write_(0)
 	, bytes_written_(0)
@@ -76,6 +77,22 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 	resolver_.async_resolve(boost::asio::ip::tcp::resolver::query(host, service),
 		std::bind(&wesnothd_connection::handle_resolve, this, _1, _2));
 
+	// Starts the worker thread. Do this *after* the above async_resolve call or it will just exit immediately!
+	worker_thread_ = std::thread([this]() {
+		try {
+			io_service_.run();
+		} catch(const boost::system::system_error&) {
+			try {
+				// Attempt to pass the exception on to the handshake promise.
+				handshake_finished_.set_exception(std::current_exception());
+			} catch(const std::future_error&) {
+				// Handshake already complete. Do nothing.
+			}
+		}
+
+		LOG_NW << "wesnothd_connection::io_service::run() returned\n";
+	});
+
 	LOG_NW << "Resolving hostname: " << host << '\n';
 }
 
@@ -84,13 +101,11 @@ wesnothd_connection::~wesnothd_connection()
 	MPTEST_LOG;
 
 	// Stop the io_service and wait for the worker thread to terminate.
-	if(worker_thread_) {
-		stop();
-		worker_thread_->join();
-	}
+	stop();
+	worker_thread_.join();
 }
 
-// main thread
+// worker thread
 void wesnothd_connection::handle_resolve(const error_code& ec, resolver::iterator iterator)
 {
 	MPTEST_LOG;
@@ -102,7 +117,7 @@ void wesnothd_connection::handle_resolve(const error_code& ec, resolver::iterato
 	connect(iterator);
 }
 
-// main thread
+// worker thread
 void wesnothd_connection::connect(resolver::iterator iterator)
 {
 	MPTEST_LOG;
@@ -110,7 +125,7 @@ void wesnothd_connection::connect(resolver::iterator iterator)
 	LOG_NW << "Connecting to " << iterator->endpoint().address() << '\n';
 }
 
-// main thread
+// worker thread
 void wesnothd_connection::handle_connect(const boost::system::error_code& ec, resolver::iterator iterator)
 {
 	MPTEST_LOG;
@@ -130,7 +145,7 @@ void wesnothd_connection::handle_connect(const boost::system::error_code& ec, re
 	}
 }
 
-// main thread
+// worker thread
 void wesnothd_connection::handshake()
 {
 	MPTEST_LOG;
@@ -143,7 +158,7 @@ void wesnothd_connection::handshake()
 		std::bind(&wesnothd_connection::handle_handshake, this, _1));
 }
 
-// main thread
+// worker thread
 void wesnothd_connection::handle_handshake(const error_code& ec)
 {
 	MPTEST_LOG;
@@ -152,13 +167,30 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 		throw system_error(ec);
 	}
 
-	handshake_finished_ = true;
+	handshake_finished_.set_value();
 	recv();
+}
 
-	worker_thread_.reset(new std::thread([this]() {
-		io_service_.run();
-		LOG_NW << "wesnothd_connection::io_service::run() returned\n";
-	}));
+// main thread
+void wesnothd_connection::wait_for_handshake()
+{
+	MPTEST_LOG;
+	LOG_NW << "Waiting for handshake" << std::endl;
+
+	try {
+		handshake_finished_.get_future().get();
+	} catch(const boost::system::system_error& err) {
+		if(err.code() == boost::asio::error::operation_aborted || err.code() == boost::asio::error::eof) {
+			return;
+		}
+
+		WRN_NW << __func__ << " Rethrowing: " << err.code() << "\n";
+		throw error(err.code());
+	} catch(const std::future_error& e) {
+		if(e.code() == std::future_errc::future_already_retrieved) {
+			return;
+		}
+	}
 }
 
 // main thread
@@ -175,7 +207,7 @@ void wesnothd_connection::send_data(const configr_of& request)
 	// TODO: should I capture a shared_ptr for this?
 	io_service_.post([this, buf_ptr]() {
 		DBG_NW << "In wesnothd_connection::send_data::lambda\n";
-		send_queue_.push_back(buf_ptr);
+		send_queue_.push(buf_ptr);
 
 		if(send_queue_.size() == 1) {
 			send();
@@ -241,7 +273,7 @@ void wesnothd_connection::handle_write(const boost::system::error_code& ec, std:
 	MPTEST_LOG;
 	DBG_NW << "Written " << bytes_transferred << " bytes.\n";
 
-	send_queue_.pop_front();
+	send_queue_.pop();
 
 	if(ec) {
 		{
@@ -325,7 +357,8 @@ void wesnothd_connection::handle_read(const boost::system::error_code& ec, std::
 
 	{
 		std::lock_guard<std::mutex> lock(recv_queue_mutex_);
-		recv_queue_.emplace_back(std::move(data));
+		recv_queue_.emplace(std::move(data));
+		recv_queue_lock_.notify_all();
 	}
 
 	recv();
@@ -362,24 +395,6 @@ void wesnothd_connection::recv()
 		std::bind(&wesnothd_connection::handle_read, this, _1, _2));
 }
 
-// main thread, during handshake
-std::size_t wesnothd_connection::poll()
-{
-	MPTEST_LOG;
-	assert(!worker_thread_);
-
-	try {
-		return io_service_.poll();
-	} catch(const boost::system::system_error& err) {
-		if(err.code() == boost::asio::error::operation_aborted || err.code() == boost::asio::error::eof) {
-			return 1;
-		}
-
-		WRN_NW << __func__ << " Rethrowing: " << err.code() << "\n";
-		throw error(err.code());
-	}
-}
-
 // main thread
 bool wesnothd_connection::receive_data(config& result)
 {
@@ -389,7 +404,7 @@ bool wesnothd_connection::receive_data(config& result)
 		std::lock_guard<std::mutex> lock(recv_queue_mutex_);
 		if(!recv_queue_.empty()) {
 			result.swap(recv_queue_.front());
-			recv_queue_.pop_front();
+			recv_queue_.pop();
 			return true;
 		}
 	}
@@ -412,12 +427,9 @@ bool wesnothd_connection::receive_data(config& result)
 
 bool wesnothd_connection::wait_and_receive_data(config& data)
 {
-	while(!has_data_received()) {
-		SDL_Delay(1);
-		std::lock_guard<std::mutex> lock(last_error_mutex_);
-		if(last_error_) {
-			break;
-		}
+	{
+		std::unique_lock<std::mutex> lock(recv_queue_mutex_);
+		recv_queue_lock_.wait(lock, [this]() { return has_data_received(); });
 	}
 
 	return receive_data(data);
