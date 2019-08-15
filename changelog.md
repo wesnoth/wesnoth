@@ -6,6 +6,7 @@
    * When the forum user handler is enabled, the Multiplayer Moderators group is now also used when determining if someone is a moderator. (PR#4136)
  ### Units
    * Fix typo in the Dune Ranger's advancements
+   * Additional animations for the Wose Shaman (PR#4229)
    * Move Wose Shaman from DM and WoV to core (PR#4226)
    * Move Wose Sapling from TRoW to core (PR#4226)
  ### Miscellaneous and bug fixes
