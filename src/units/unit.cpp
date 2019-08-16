@@ -922,6 +922,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	is_healthy_ = false;
 	image_mods_.clear();
 	overlays_.clear();
+	ellipse_.reset();
 
 	// Clear modification-related caches
 	modification_descriptions_.clear();
