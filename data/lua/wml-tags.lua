@@ -347,6 +347,10 @@ function wml_actions.select_unit(cfg)
 	wesnoth.select_unit(u.x, u.y, cfg.highlight, cfg.fire_event)
 end
 
+local function get_overlay_object_id(overlay)
+	return "overlay_" .. overlay
+end
+
 function wml_actions.unit_overlay(cfg)
 	local img = cfg.image or helper.wml_error( "[unit_overlay] missing required image= attribute" )
 	for i,u in ipairs(wesnoth.get_units(cfg)) do
@@ -356,7 +360,7 @@ function wml_actions.unit_overlay(cfg)
 		end
 		if has_already == false then
 			u:add_modification("object", {
-				id = cfg.object_id,
+				id = cfg.object_id or get_overlay_object_id(img),
 				wml.tag.effect {
 					apply_to = "overlay",
 					add = img,
