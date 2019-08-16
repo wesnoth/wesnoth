@@ -65,7 +65,7 @@ public:
 protected:
 	virtual void play_side_impl() override;
 	void before_human_turn();
-	virtual void show_turn_dialog() override;
+	void show_turn_dialog();
 	void execute_gotos();
 	virtual void play_human_turn();
 	virtual void after_human_turn();

@@ -1217,10 +1217,6 @@ void play_controller::play_turn()
 
 		// If a side is empty skip over it.
 		if (!current_team().is_empty()) {
-			// Show the turn dialog now, before the minimap is redrawn and before healing is animated.
-			if(current_team().is_local_human() && current_team().is_proxy_human() && !is_replay()) {
-				show_turn_dialog();
-			}
 			init_side_begin();
 			if(gamestate_->init_side_done()) {
 				// This is the case in a reloaded game where the side was initialized before saving the game.
