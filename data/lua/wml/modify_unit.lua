@@ -8,12 +8,12 @@ local wml_actions = wesnoth.wml_actions
 --  second part of this file
 
 local function split_to_array(str, sep)
-    -- Split string @str into a table using the delimiter @sep (default: ',')
+	-- Split string @str into a table using the delimiter @sep (default: ',')
 
-    local sep, fields = sep or ",", {}
-    local pattern = string.format("([^%s]+)", sep)
-    string.gsub(str, pattern, function(c) fields[#fields+1] = c end)
-    return fields
+	local sep, fields = sep or ",", {}
+	local pattern = string.format("([^%s]+)", sep)
+	string.gsub(str, pattern, function(c) fields[#fields+1] = c end)
+	return fields
 end
 
 local function make_set(t)
