@@ -458,6 +458,8 @@ void playsingle_controller::execute_gotos()
 }
 
 void playsingle_controller::play_human_turn() {
+	show_turn_dialog();
+
 	if (!preferences::disable_auto_moves()) {
 		execute_gotos();
 	}
