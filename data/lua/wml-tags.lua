@@ -1014,3 +1014,10 @@ function wml_actions.terrain_mask(cfg)
 		ignore_special_locations = cfg.ignore_special_locations,
 	})
 end
+
+function wml_actions.remove_trait(cfg)
+	local obj_id = cfg.trait_id
+	for _,unit in ipairs(wesnoth.get_units(cfg)) do
+		wesnoth.remove_modifications(unit, {id = obj_id}, "trait")
+	end
+end
