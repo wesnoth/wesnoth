@@ -361,6 +361,7 @@ function wml_actions.unit_overlay(cfg)
 		if has_already == false then
 			u:add_modification("object", {
 				id = cfg.object_id or get_overlay_object_id(img),
+				duration = cfg.duration,
 				wml.tag.effect {
 					apply_to = "overlay",
 					add = img,
