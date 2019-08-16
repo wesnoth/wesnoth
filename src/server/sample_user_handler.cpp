@@ -253,3 +253,7 @@ void suh::db_insert_game_player_info(const std::string& uuid, int game_id, const
 void suh::db_insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name){
 	std::cout << uuid << " - " << game_id << " - " << modification_name << std::endl;
 }
+
+void suh::db_set_oos_flag(const std::string& uuid, int game_id){
+	std::cout << uuid << " - " << game_id << " - " << "OOS occurred!" << std::endl;
+}

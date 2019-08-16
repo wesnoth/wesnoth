@@ -482,4 +482,13 @@ void fuh::db_insert_modification_info(const std::string& uuid, int game_id, cons
 	}
 }
 
+void fuh::db_set_oos_flag(const std::string& uuid, int game_id){
+	try {
+		prepared_statement<void>("UPDATE `" + db_game_info_table_ + "` SET OOS = 'Y' WHERE INSTANCE_UUID = ? AND GAME_ID = ?",
+		uuid, game_id);
+	} catch (const sql_error& e) {
+		ERR_UH << "Could not update the game's OOS flag on table `" + db_game_info_table_ + "`:" << e.message << std::endl;
+	}
+}
+
 #endif //HAVE_MYSQLPP
