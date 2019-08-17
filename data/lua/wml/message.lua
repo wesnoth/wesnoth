@@ -339,32 +339,28 @@ function wesnoth.wml_actions.message(cfg)
 	local options, option_events = {}, {}
 	for option in wml.child_range(cfg, "option") do
 		local condition = wml.get_child(option, "show_if") or {}
-
 		if wesnoth.eval_conditional(condition) then
-			if option.message and not option.image and not option.label then
-				local message = tostring(option.message)
-				wesnoth.deprecated_message("[option]message=", 2, "1.15.0", "Use label= instead.");
-				-- Legacy format
-				table.insert(options, option.message)
-			else
-				local opt = {
-					label = option.label,
-					description = option.description,
-					image = option.image,
-					default = option.default,
-					value = option.value
-				}
-				if option.message then
-					wesnoth.deprecated_message("[option]message=", 2, "1.15.0", "Use label= instead.");
-					if not option.label then
-						-- Support either message or description
-						opt.label = option.message
-					else
-						log("[option] has both label= and message=, ignoring the latter", "warning")
-					end
-				end
-				table.insert(options, opt)
+
+			-- make message= and description= equivalent for the sake of backwards compatibility
+			local msg_text = ""
+			if option.message and option.description then
+				log("[option] uses both message= and description= which is invalid.", "warning")
+				msg_text = "Invalid use of both message and description attributes on this option!"
+			elseif option.message then
+				msg_text = tostring(option.message)
+			elseif option.description then
+				msg_text = tostring(option.description)
 			end
+			
+			local opt = {
+				label = option.label,
+				description = msg_text,
+				image = option.image,
+				default = option.default,
+				value = option.value
+			}
+			
+			table.insert(options, opt)
 			table.insert(option_events, {})
 
 			for cmd in wml.child_range(option, "command") do
