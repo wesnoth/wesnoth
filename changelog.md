@@ -1,10 +1,10 @@
 ## Version 1.14.8+dev
  ### AI:
-    * Fixed a rare crash in attack prediction (issue #4068)
+   * Fixed a rare crash in attack prediction (issue #4068)
  ### Campaigns
    * A Tale of Two Brothers:
      * S3: modify castle illumination tip on easy mode
-    * Dead Water:
+   * Dead Water:
      * S3: modify starting dialogue
    * Descent into Darkness:
      * Update campaign description
@@ -56,7 +56,7 @@
    * Updated translations: British English, Chinese (Traditional), Dutch,
      German, Spanish, Turkish, Portuguese (Brazil), Ukrainian
  ### Multiplayer
-   * A new Land:
+   * A New Land:
      * Help menu can be accessed in any turn and doesn't pause the game
      * Bottleneck in the spider's caves removed
      * Swapped positions of Gryphon and Drake
