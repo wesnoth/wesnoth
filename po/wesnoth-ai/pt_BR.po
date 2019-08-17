@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-07-18 12:50 UTC\n"
-"PO-Revision-Date: 2019-07-26 10:22-0300\n"
+"PO-Revision-Date: 2019-08-13 13:02-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -755,7 +755,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/goto.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:84
 msgid "Goto"
-msgstr "Goto"
+msgstr "Ir-para"
 
 #. [side]: id=Vaddan, type=Outlaw
 #: data/ai/micro_ais/scenarios/goto.cfg:27
@@ -837,10 +837,10 @@ msgid ""
 "tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at "
 "https://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
-"Este cenário demonstra diferentes usos para a Goto Micro AI. Todos os lados "
-"são controlados por esta Micro AI (com escessão dos saurinos que usam uma "
-"versão da Espreitador Micro AI). Mensagens aparecerão durante o cenário para "
-"lhe informar o que as unidades estão fazendo.\n"
+"Este cenário demonstra uma variedade de diferentes usos da Ir-para Micro AI. "
+"Todos os lados são controlados por esta Micro AI (com escessão dos saurinos "
+"que usam uma versão da Espreitador Micro AI). Mensagens aparecerão durante o "
+"cenário para lhe informar o que as unidades estão fazendo.\n"
 "\n"
 "O jogador controla o Lado 1. Há opções no menu contextual do botão direito "
 "para adicionar unidades do Lado 1 no mapa e para remove-las. Isto é útil, "
@@ -888,9 +888,9 @@ msgstr ""
 "homens. Mantenham posição até que uma das unidades dele fique menos de 8 "
 "hexágonos de distância de você.\n"
 "\n"
-"Nota: Isso demonstra como a Goto Micro AI pode ser usada para botar unidades "
-"como guardas, embora uma das Micro AIs dedicadas para guardiões normalmente "
-"cumpra melhor esse papel."
+"Nota: Isso é uma demonstração de como a Ir-para Micro AI pode ser usada para "
+"botar unidades como guardas, embora uma das Micro AIs dedicadas para "
+"guardiões normalmente cumpra melhor esse papel."
 
 #. [message]: type=Vampire Bat
 #: data/ai/micro_ais/scenarios/goto.cfg:474
@@ -953,8 +953,8 @@ msgstr ""
 "Você está doido. Essa rota pode ser mais curta, se você souber voar. Você "
 "vai demorar uma eternidade para atravessar aquelas montanhas.\n"
 "\n"
-"Nota: Os mensageiros são controlados pelas definições da Goto Micro AI que "
-"diferem em uma única linha,\n"
+"Nota: Os mensageiros são controlados pelas definições da Ir-para Micro AI "
+"que diferem em uma única linha,\n"
 "'use_straight_line=yes/no'."
 
 #. [message]: speaker=unit
@@ -2633,7 +2633,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:348
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:359
 msgid "Goto Micro AI demo"
-msgstr "Goto Micro AI demo"
+msgstr "Ir-para Micro AI demo"
 
 #. [message]: speaker=Grnk
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:360
@@ -2643,10 +2643,10 @@ msgid ""
 "set of locations. The units to be moved are defined using a Standard Unit "
 "Filter, while the goto locations are given in a Standard Location Filter."
 msgstr ""
-"Este cenário contém vários exemplos do uso da Goto Micro AI, que é um método "
-"altamento configurável de mandar unidade (ou unidades) para um local ou um "
-"conjunto de locais. As unidades que serão movidas são definidas usando um "
-"Filtro Padrão de Unidade, enquanto que os locais da goto são dados em um "
+"Este cenário contém vários exemplos do uso da Ir-para Micro AI, que é um "
+"método altamento configurável de mandar unidade (ou unidades) para um local "
+"ou um conjunto de locais. As unidades que serão movidas são definidas usando "
+"um Filtro Padrão de Unidade, enquanto que os locais da goto são dados em um "
 "Filtro Padrão de Locais."
 
 #. [set_menu_item]: id=m14_hangout

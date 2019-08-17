@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-07-18 15:50+0300\n"
-"PO-Revision-Date: 2019-07-12 16:21-0300\n"
-"Last-Translator: Davi Duarte Pinheiro <daviduartep@gmail.com>\n"
+"PO-Revision-Date: 2019-08-11 18:36-0300\n"
+"Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -176,7 +176,7 @@ msgstr ""
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:29
 msgid "Paint Tool"
-msgstr ""
+msgstr "Pincel"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:30
@@ -185,11 +185,14 @@ msgid ""
 "\n"
 "The paint tool utilizes the brushes and the terrain palette."
 msgstr ""
+"Pinta os terrenos do mapa.\n"
+"\n"
+"O pincel utiliza os pinceis e a paleta de terreno."
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:39
 msgid "Fill Tool"
-msgstr ""
+msgstr "Balde"
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:40
@@ -202,7 +205,7 @@ msgstr ""
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:49
 msgid "Select Tool"
-msgstr ""
+msgstr "Ferramenta de Seleção"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:50
@@ -215,7 +218,7 @@ msgstr ""
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:59
 msgid "Paste Tool"
-msgstr ""
+msgstr "Ferramenta de Colagem"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:60
@@ -239,17 +242,17 @@ msgstr ""
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:77
 msgid "Label Tool"
-msgstr ""
+msgstr "Ferramenta de Etiquetas"
 
 #. [topic]: id=editor_tool_item
 #: data/core/editor/help.cfg:85
 msgid "Item Tool"
-msgstr ""
+msgstr "Ferramenta de Itens"
 
 #. [topic]: id=editor_tool_soundsource
 #: data/core/editor/help.cfg:93
 msgid "Soundsource Tool"
-msgstr ""
+msgstr "Ferramenta de Fonte do Som"
 
 #. [topic]: id=editor_tool_soundsource
 #: data/core/editor/help.cfg:94
@@ -258,21 +261,24 @@ msgid ""
 "\n"
 "This tool has not been implemented yet."
 msgstr ""
+"Bota fontes de som no seu mapa!\n"
+"\n"
+"Essa ferramenta ainda não foi implementada."
 
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:103
 msgid "Village Ownership Tool"
-msgstr ""
+msgstr "Ferramento de Comando da Aldeia"
 
 #. [topic]: id=editor_tool_unit
 #: data/core/editor/help.cfg:111
 msgid "Unit Tool"
-msgstr ""
+msgstr "Ferramenta de Unidades"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:119
 msgid "Named Areas"
-msgstr ""
+msgstr "Áreas Nomeadas"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:120
@@ -289,7 +295,7 @@ msgstr ""
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:130
 msgid "Playlist Manager"
-msgstr ""
+msgstr "Gerenciador de Playlist"
 
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:131
@@ -302,7 +308,7 @@ msgstr ""
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:140
 msgid "Map/Scenario Editor"
-msgstr ""
+msgstr "Editor de Mapas/Cenários"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:142
@@ -320,19 +326,14 @@ msgstr ""
 # File: data/core/help.cfg, line: 242
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:144
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Chance to Hit'</header>"
 msgid ""
 " option at the title screen.\n"
 "\n"
 "<header>text='What you get'</header>"
 msgstr ""
+" opção no menu inicial.\n"
 "\n"
-"\n"
-"<header>text='Chance de acertar'</header>"
+"<header>text='O que você consegue'</header>"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:146
@@ -356,6 +357,11 @@ msgid ""
 "• Time Schedule Editor\n"
 "\n"
 msgstr ""
+"\n"
+"Predefine a seleção de músicas da playlist do cenário.\n"
+"\n"
+"• Editor de Período do Dia\n"
+"\n"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:158
@@ -381,6 +387,7 @@ msgstr ""
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:172
+#, fuzzy
 msgid ""
 "\n"
 "• <ref>dst='editor_modes' text='Editing Modes'</ref>\n"
@@ -390,6 +397,13 @@ msgid ""
 "needs a topic on its own\n"
 "• <ref>dst='editor_clipboard' text='Editor Clipboard'</ref>"
 msgstr ""
+"\n"
+"• <ref>dst='editor_modes' text='Modos de Edição'</ref>\n"
+"• <ref>dst='editor_toolkit' text='Editor Toolkit'</ref>\n"
+"• <ref>dst='editor_palette' text='Editor Palette'</ref>\n"
+"• <ref>dst='editor_brush' text='Pinceis de Edição'</ref> AFAZER: incerto se "
+"precisa de um tópico próprio\n"
+"• <ref>dst='editor_clipboard' text='Editor Clipboard'</ref>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:184
@@ -402,11 +416,6 @@ msgstr "Modos de Edição"
 # File: data/core/help.cfg, line: 248
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -414,12 +423,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Danos</header>"
+"<header>text='Modo Mapa Puro'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
 msgid "The editor features two separate modes of operation:"
-msgstr ""
+msgstr "O editor possui opera em dois modos diferentes"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:187
@@ -467,11 +476,6 @@ msgstr ""
 # File: data/core/help.cfg, line: 248
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:198
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -479,7 +483,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Danos</header>"
+"<header>text='Modo Cenário'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:200
@@ -527,10 +531,8 @@ msgstr ""
 # File: src/help.cpp, line: 1602
 #. [topic]: id=editor_terrain
 #: data/core/editor/help.cfg:234
-#, fuzzy
-#| msgid "Terrain Modifiers"
 msgid "Terrain Editor"
-msgstr "Modificadores de Terreno"
+msgstr "Editor de Terreno"
 
 #. [topic]: id=editor_terrain
 #: data/core/editor/help.cfg:235
@@ -560,7 +562,7 @@ msgstr "Editor de Período do Dia"
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:258
 msgid "Editor Palette"
-msgstr ""
+msgstr "Paleta do Editor"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:259
@@ -1091,10 +1093,8 @@ msgstr ""
 # File: data/core/help.cfg, line: 273
 #. [section]: id=schedule
 #: data/core/help.cfg:14
-#, fuzzy
-#| msgid "Time of Day"
 msgid "Time of Day Schedule"
-msgstr "Hora do Dia"
+msgstr "Cronograma de Período do Dia"
 
 #
 # File: data/core/help.cfg, line: 10
@@ -1425,14 +1425,16 @@ msgstr ""
 # File: src/help.cpp, line: 1897
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:181
-#, fuzzy
-#| msgid "<header>text='Units of this race'</header>"
 msgid ""
 "\n"
 "\n"
 "<header>text='Fundamentals of Gameplay'</header>\n"
 "\n"
-msgstr "<header>text='Unidades desta raça'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Fundamentos do Jogo'</header>\n"
+"\n"
 
 #
 # File: data/core/help.cfg, line: 147
@@ -1538,7 +1540,7 @@ msgstr ""
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:203
 msgid "Recruiting and Recalling"
-msgstr "Recrutando e Convocando Unidades"
+msgstr "Recrutando e Convocando"
 
 #
 # File: data/core/help.cfg, line: 172
@@ -1867,7 +1869,7 @@ msgstr ""
 #. [topic]: id=advancement
 #: data/core/help.cfg:249
 msgid "Advancement"
-msgstr "Avança para:"
+msgstr "Avança para"
 
 #
 # File: data/core/help.cfg, line: 296
@@ -2601,7 +2603,7 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:324
 msgid " green if it hasn’t moved this turn,"
-msgstr "verde se a unidade não se moveu neste turno,"
+msgstr " verde se ainda não se moveu neste turno,"
 
 #
 # File: data/core/help.cfg, line: 190
@@ -2611,7 +2613,7 @@ msgstr "verde se a unidade não se moveu neste turno,"
 #: data/core/help.cfg:325
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr ""
-"amarela se ela se moveu, mas ainda pode mover mais um pouco ou atacar, ou"
+" amarela se ela já se moveu, mas ainda pode se mover mais ou atacar, ou"
 
 #
 # File: data/core/help.cfg, line: 191
@@ -2636,7 +2638,7 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:327
 msgid " blue if the unit is an ally you do not control."
-msgstr "azul se a unidade é um aliado que você não controla."
+msgstr " azul se a unidade é um aliado que você não controla."
 
 #
 # File: data/core/help.cfg, line: 193
@@ -4063,10 +4065,8 @@ msgstr ""
 # File: data/core/help.cfg, line: 933
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:627
-#, fuzzy
-#| msgid "Debug mode commands"
 msgid "Debug Mode Commands"
-msgstr "Comandos do modo de Debug"
+msgstr "Comandos do Modo de Debug"
 
 #
 # File: data/core/help.cfg, line: 936
@@ -5571,7 +5571,7 @@ msgstr ""
 msgid ""
 "\n"
 "• This unit is capable of basic healing."
-msgstr "Esta unidade é capaz de curar aqueles ao seu redor."
+msgstr " Esta unidade é capaz de curar lentamente."
 
 #
 # File: data/core/macros/special-notes.cfg, line: 17
@@ -5583,7 +5583,7 @@ msgstr "Esta unidade é capaz de curar aqueles ao seu redor."
 msgid ""
 "\n"
 "• This unit is capable of rapid healing."
-msgstr "Esta unidade é capaz de se curar rapidamente."
+msgstr " Esta unidade é capaz de curar rapidamente."
 
 #
 # File: data/core/macros/special-notes.cfg, line: 20
@@ -5598,7 +5598,7 @@ msgid ""
 "\n"
 "• This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
-"Esta unidade é capaz de curar aqueles ao seu redor, e também de remover "
+" Esta unidade é capaz de curar aqueles ao seu redor, e também de remover "
 "envenenamento."
 
 #
@@ -6814,7 +6814,7 @@ msgstr ""
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:329
 msgid "aged"
-msgstr "Fraco"
+msgstr "envelhecido"
 
 #
 # File: data/core/macros/traits.cfg, line: 281
@@ -6823,7 +6823,7 @@ msgstr "Fraco"
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:330
 msgid "female^aged"
-msgstr ""
+msgstr "Envelhecida"
 
 #
 # File: data/core/help.cfg, line: 486
@@ -6831,16 +6831,12 @@ msgstr ""
 # File: data/core/help.cfg, line: 486
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:331
-#, fuzzy
-#| msgid ""
-#| "Units with trait <italic>text='aged'</italic> get a −8 increment in "
-#| "hitpoints and a −1 increment in movement and melee damage."
 msgid ""
 "Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
 "suffer from a 1 point decrease in movement and melee damage."
 msgstr ""
-"As unidades com a característica <italic>text='Fraco'</italic> recebem -8 em "
-"pontos de vida (HP) e -1 no dano corpo a corpo e movimento."
+"Unidades com a característica <italic>text='Envelhecido'</italic> recebem -8 "
+"pontos de vida e -1 ponto de movimento e de ataque corpo a corpo"
 
 #: data/core/units.cfg:4
 msgid ""
@@ -7331,10 +7327,8 @@ msgstr ""
 # File: data/core/units.cfg, line: 168
 #. [race]: id=falcon
 #: data/core/units.cfg:128
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Falcon"
-msgstr "Humano"
+msgstr "Falção"
 
 #
 # File: data/core/units.cfg, line: 169
@@ -7342,10 +7336,8 @@ msgstr "Humano"
 # File: data/core/units.cfg, line: 169
 #. [race]: id=falcon
 #: data/core/units.cfg:129
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Falcon"
-msgstr "Humana"
+msgstr "Falção"
 
 #
 # File: data/core/units.cfg, line: 170
@@ -7353,10 +7345,8 @@ msgstr "Humana"
 # File: data/core/units.cfg, line: 170
 #. [race]: id=falcon
 #: data/core/units.cfg:130
-#, fuzzy
-#| msgid "race^Humans"
 msgid "race^Falcons"
-msgstr "Humanos"
+msgstr "Falções"
 
 #. [race]: id=falcon
 #: data/core/units.cfg:131
@@ -7690,10 +7680,8 @@ msgstr ""
 # File: data/core/units.cfg, line: 168
 #. [race]: id=dunefolk
 #: data/core/units.cfg:212
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Dunefolk Human"
-msgstr "Humano"
+msgstr ""
 
 #
 # File: data/core/units.cfg, line: 169
@@ -7701,10 +7689,8 @@ msgstr "Humano"
 # File: data/core/units.cfg, line: 169
 #. [race]: id=dunefolk
 #: data/core/units.cfg:213
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Dunefolk Human"
-msgstr "Humana"
+msgstr ""
 
 #
 # File: data/core/units.cfg, line: 296
@@ -7712,10 +7698,8 @@ msgstr "Humana"
 # File: data/core/units.cfg, line: 296
 #. [race]: id=dunefolk
 #: data/core/units.cfg:214
-#, fuzzy
-#| msgid "race+plural^Undead"
 msgid "race+plural^Dunefolk"
-msgstr "Mortos-Vivos"
+msgstr ""
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:215
@@ -7931,10 +7915,8 @@ msgstr "Sereia"
 # File: data/core/units.cfg, line: 271
 #. [race]: id=merman
 #: data/core/units.cfg:278
-#, fuzzy
-#| msgid "race^Troll"
 msgid "race^Merfolk"
-msgstr "Troll"
+msgstr "Tritões"
 
 #
 # File: data/core/units.cfg, line: 212
@@ -7979,9 +7961,8 @@ msgstr "Monstro"
 # File: data/core/units.cfg, line: 221
 #. [race]: id=monster
 #: data/core/units.cfg:289
-#, fuzzy
 msgid "race+female^Monster"
-msgstr "Monstro"
+msgstr "Monstra"
 
 #
 # File: data/core/units.cfg, line: 222
@@ -8458,6 +8439,27 @@ msgstr "Ajuda para Battle for Wesnoth"
 #: src/help/help.cpp:241
 msgid "Parse error when parsing help text: "
 msgstr "Erro de formato ao ler o texto de ajuda: "
+
+#
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
+# File: data/core/help.cfg, line: 248
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text=Damage</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Cores'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text=Danos</header>"
+
+#~ msgid "This race does not have a description yet."
+#~ msgstr "Esta raça ainda não possui uma descrição."
 
 #
 # File: data/core/help.cfg, line: 819
@@ -10101,21 +10103,3 @@ msgstr "Erro de formato ao ler o texto de ajuda: "
 #~ "constantemente envolvidas em nuvens. Mesmo criaturas voadoras não "
 #~ "conseguem transpor os salientes picos em suas altitudes rarefeitas e nem "
 #~ "mesmo o mais forte troll pode destruir um sólido muro de pedras."
-
-#
-# File: data/core/help.cfg, line: 248
-# File: data/core/help.cfg, line: 248
-# File: data/core/help.cfg, line: 248
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "\n"
-#~| "<header>text=Damage</header>"
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Cores'</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text=Danos</header>"

@@ -1,6 +1,8 @@
 ## Version 1.15.0+dev
  ### Editor
    * Fix buttons in the editor being inactive
+ ### Language and i18n
+   * Updated translations: Portuguese (Brazil)
  ### Multiplayer server
    * Add support for storing game information in wesnoth's mysql database (PR#4204)
    * When the forum user handler is enabled, the Multiplayer Moderators group is now also used when determining if someone is a moderator. (PR#4136)
