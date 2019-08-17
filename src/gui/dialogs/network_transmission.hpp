@@ -21,9 +21,6 @@
 
 #include <boost/optional.hpp>
 
-#include <atomic>
-#include <future>
-
 namespace gui2
 {
 namespace dialogs
@@ -56,19 +53,15 @@ private:
 	class pump_monitor : public events::pump_monitor
 	{
 	public:
-		virtual void process(events::pump_info&) override;
-
-		pump_monitor(connection_data*& connection);
-
 		connection_data*& connection_;
+		virtual void process(events::pump_info&);
+
+		pump_monitor(connection_data*& connection)
+			: connection_(connection), window_()
+		{
+		}
 
 		boost::optional<window&> window_;
-
-		std::atomic_size_t completed_, total_;
-
-		std::atomic_bool stop_;
-
-		std::future<void> poller_;
 	} pump_monitor_;
 
 public:
