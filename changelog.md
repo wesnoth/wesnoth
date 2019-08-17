@@ -157,6 +157,8 @@
    * Usernames on the host's ignore list are automatically banned. (PR#4143)
 
 ## Version 1.14.8+dev
+ ### AI:
+   * Fixed a rare crash in attack prediction (issue #4068)
  ### Campaigns
    * A Tale of Two Brothers:
      * S3: modify castle illumination tip on easy mode
@@ -188,6 +190,7 @@
      * S17a: prevent time over defeat if player chooses to defeat remaining saurians
    * The South Guard:
      * Update campaign description
+     * Highlight narrator and gameplay explanations with colors
      * S1: create Sir Gerrick if player skips scenario with debug
      * S5: add narrator warning when siding with bandits and reduce difficulty
      * S6b: create Urza Afalas if player skips S5 with debug
@@ -198,16 +201,35 @@
      * Updated various maps
      * Add additional animations to cutscenes and events
      * S2: add dehydration explanation to objectives
+ ### Graphics
+   * Own portraits for higher level bats
+   * New Water Serpent and Cuttlefish portrait
+   * New Wolf, Great Wolf and Direwolf portraits
+   * Additional wolf/dog portrait for custom units
+   * Separate Mudcrawler portrait
+   * New Walking Corpse portrait for mounted variation
+   * The mushroom terrain graphics have changed to match the terrain statistics.
+     (PR #4185)
+ ### Language and i18n
+   * Updated translations: British English, Chinese (Traditional), Dutch,
+     German, Spanish, Turkish, Portuguese (Brazil), Ukrainian
+ ### Multiplayer
+   * A new Land:
+     * Help menu can be accessed in any turn and doesn't pause the game
+     * Bottleneck in the spider's caves removed
+     * Swapped positions of Gryphon and Drake
+     * Guards can't be tricked off position, leaders won't destroy buildings
+     * Guards and Spiders are loyal – AI income has been adjusted accordingly
+     * AI income increases gradually in lategame (very slowly)
+ ### WML engine
+   * Fixed [music] ms_after= affecting the previous track instead of the intended one
  ### Miscellaneous and bug fixes
-     * Update various references of mermen to merfolk or mer
-     * It wasn't possible to view unit descriptions of units that would be
-       fogged or shrouded in three cases: during replays, in MP linger mode,
-       and in MP when one is the host but doesn't play. (issue #3687)
- ### Units
-   * Add new Water Serpent portrait
+   * Update various references of mermen to merfolk or mer
+   * Adjust several maps to use different castle graphics
+   * OpenMP support has been removed
 
 ## Version 1.14.8
- * Skipped due to needed to reupload the a broken 1.14.7 macOS App Store package as 1.14.8
+ * Skipped due to need to reupload a broken 1.14.7 macOS App Store package as 1.14.8
 
 ## Version 1.14.6+dev
  ### Campaigns
