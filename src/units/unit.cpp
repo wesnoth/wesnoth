@@ -514,7 +514,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	if(const config::attribute_value* v = cfg.get("overlays")) {
 		auto overlays = utils::parenthetical_split(v->str(), ',');
 		if(overlays.size() > 0) {
-			deprecated_message("[unit]overlays", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Add overlays via objects instead.");
+			deprecated_message("[unit]overlays", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "This warning is only triggered by the cases that *do* still work: setting [unit]overlays= works, but the [unit]overlays attribute will always be empty if WML tries to read it.");
 			config effect;
 			config o;
 			effect["apply_to"] = "overlay";
