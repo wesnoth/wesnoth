@@ -341,7 +341,7 @@ void game_board::write_config(config & cfg) const
 			if(i.side() == side_num) {
 				config& u = side.add_child("unit");
 				i.get_location().write(u);
-				i.write(u, false);
+				i.write(u);
 			}
 		}
 		//recall list
