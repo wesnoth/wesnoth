@@ -1023,12 +1023,14 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	if(resources::game_events) {
 		resources::game_events->add_events(new_type.events(), new_type.id());
 	}
+	bool bool_small_profile = get_attr_changed(UA_SMALL_PROFILE);
+	bool bool_profile = get_attr_changed(UA_PROFILE);
 	clear_changed_attributes();
-	if(small_profile_ != new_type.small_profile()) {
+	if(bool_small_profile && small_profile_ != new_type.small_profile()) {
 		set_attr_changed(UA_SMALL_PROFILE);
 	}
 
-	if(profile_ != new_type.big_profile()) {
+	if(bool_profile && profile_ != new_type.big_profile()) {
 		set_attr_changed(UA_PROFILE);
 	}
 }
