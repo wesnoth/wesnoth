@@ -2,7 +2,7 @@
  ### Editor
    * Fix buttons in the editor being inactive
  ### Language and i18n
-   * Updated translations: Portuguese (Brazil)
+   * Updated translations: German, Portuguese (Brazil)
  ### Multiplayer server
    * Add support for storing game information in wesnoth's mysql database (PR#4204)
    * When the forum user handler is enabled, the Multiplayer Moderators group is now also used when determining if someone is a moderator. (PR#4136)
@@ -232,7 +232,7 @@
 ## Version 1.14.8
  * Skipped due to need to reupload a broken 1.14.7 macOS App Store package as 1.14.8
 
-## Version 1.14.6+dev
+## Version 1.14.7
  ### Campaigns
    * A Tale of Two Brothers:
      * S3: Changed castle to permanent chaotic ToD and rebalanced scenario accordingly
@@ -265,8 +265,6 @@
      * S5: Add gates to map instead of images and overlays
      * S8: add text and updated objectives when rescuing Eryssa
      * S12a: Update objectives to make it clear that gold is not received if Sisal dies
-   * The Hammer of Thursagan
-     * Add new Ulfserker and Berserker sprites
    * The Rise of Wesnoth:
      * Fixed various typos
      * S17c: Modified Burin's description of trolls
@@ -279,15 +277,31 @@
      * Allow Konrad and Li'sar to level up and add corresponding dialogue for part 2
    * Under the Burning Suns:
      * Added embellishments to various maps
+ ### Language and i18n
+   * Updated translations: British English, Chinese (Traditional), Dutch,
+     French, Italian, Japanese, Lithuanian, Spanish.
  ### Multiplayer
-     * Dark Forecast: fixed bug where additional boss spawns would not occur after the initial wave
+   * Dark Forecast: AI units are "discovered" (added to the help if not already known)
+   * Dark Forecast: fixed bug where additional boss spawns would not occur after the initial wave
  ### Multiplayer server
    * Forum user handler ban durations are now reported back to banned players.
  ### Units
    * Updated descriptions for Goblin Knight and Wolf Rider
    * Add new descriptions for Quenoth faction
+ ### User interface
+   * Add jamming to the vision tooltip in the sidebar. (PR #3327)
+   * Fix undoing a recall not un-drawing parts of the sprite that go beyond the unit's hex (issue #3325)
+   * Fix crash when the recruit filter matched nothing. (PR #3969)
+   * "Show Enemy Moves" now highlights enemy units that can reach the highlighted hex. (PR #3961)
+   * The time of day graphics for midday and midnight have been updated to match the rest of the
+     summer/winter time of day schedules. (issue #2677)
+ ### Miscellaneous and bug fixes
+   * Fix auxiliary attack end event handlers defined by FORCE_CHANCE_TO_HIT breaking if one or more of the
+     affected units are removed by another attack end event handler (issue #3982).
+   * The statistics dialog no longer forgets to reset stats when using "Reset Replay" ("Stop") in replay
+     mode or "Back to turn" in networked MP games (issue #2852).
 
-## Version 1.14.5+dev
+## Version 1.14.6
  ### AI
    * Fixed crash when the AI simulates a fight between two units which can slow but aren't yet slowed, then
      simulates another fight for one of them in Monte Carlo mode (issue #3650).
@@ -338,11 +352,13 @@
      * S2: Wolf riders are not initially recruited, to not hinder the player
        from reaching the island in time
  ### Language and i18n
-   * Updated translations: Chinese (Traditional), French, German, Italian,
-     Russian, Spanish, Ukrainian.
+   * Updated translations: British English, Chinese (Simplified),
+     Chinese (Traditional), Czech, French, German, Italian, Japanese,
+     Lithuanian, Russian, Scottish Gaelic, Slovak, Spanish, Ukrainian.
  ### Lua API
    * Fix wesnoth.set_dialog_callback calling the function immediately when used in the previous callback. (issue #3794)
    * Fix wesnoth.set_dialog_value not triggering re-layout. (issue #3572)
+   * wml.tostring() now outputs a string that can be parsed back to WML without loss of data.
  ### Miscellaneous and bug fixes
    * Fix crash with custom themes on desktop PCs. (issue #3599)
    * Add --campaign-skip-story command line switch for skipping directly to turn 1. (issue #3472)
@@ -354,6 +370,9 @@
    * Fix SDL_DestroyRenderer assertion failure under XMonad. (part of issue #3716)
    * Fix map item names not being translated in the scenario editor.
    * Usernames specified in the MP UI and command line are now stripped of leading and trailing whitespace, including newlines.
+   * Show ability of a selected unit as active/inactive with respect to mouseover hex. (issue #3912)
+   * macOS: Wesnoth now uses the app sandboxing feature, which means there is a new location for saves. All saves will be migrated during first launch automatically. For info about backwards compatibility see: https://gist.github.com/hrubymar10/eb5afd896f933a46fac344ced940e020
+   * Many units lacking animations now have at least a defense animations
  ### Multiplayer server
    * Fix stale temporary bans continuing to have an effect on players until cleared by
      phpBB on the next ban/unban operation.
@@ -384,6 +403,7 @@
    * The "Recruit Unit" dialog is searchable by unit type name. (PR #3787)
    * Add text filter to hotkeys preferences. (PR #3759)
    * Hide leader in status table if it's unfogged but invisible. (PR #3854)
+   * macOS: Dark GUI on macOS Mojave and later when dark appearance is enabled.
 
 ## Version 1.14.5
  ### AI
