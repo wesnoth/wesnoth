@@ -1,4 +1,4 @@
-## Version 1.15.0+dev
+## Version 1.15.1
  ### Editor
    * Fix buttons in the editor being inactive
  ### Language and i18n
