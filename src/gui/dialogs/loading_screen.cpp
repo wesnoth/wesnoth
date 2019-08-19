@@ -71,7 +71,7 @@ namespace dialogs
 {
 REGISTER_DIALOG(loading_screen)
 
-loading_screen* loading_screen::current_load = nullptr;
+loading_screen* loading_screen::singleton_ = nullptr;
 
 loading_screen::loading_screen(std::function<void()> f)
 	: animation_counter_(0)
@@ -98,7 +98,7 @@ loading_screen::loading_screen(std::function<void()> f)
 	}
 
 	current_visible_stage_ = visible_stages_.end();
-	current_load = this;
+	singleton_ = this;
 }
 
 void loading_screen::pre_show(window& window)
@@ -140,8 +140,8 @@ void loading_screen::post_show(window& /*window*/)
 
 void loading_screen::progress(loading_stage stage)
 {
-	if(current_load && stage != loading_stage::none) {
-		current_load->current_stage_.store(stage, std::memory_order_release);
+	if(singleton_ && stage != loading_stage::none) {
+		singleton_->current_stage_.store(stage, std::memory_order_release);
 	}
 }
 
@@ -197,14 +197,14 @@ loading_screen::~loading_screen()
 #endif
 	}
 
-	current_load = nullptr;
+	singleton_ = nullptr;
 }
 
 void loading_screen::display(std::function<void()> f)
 {
 	const bool use_loadingscreen_animation = !preferences::disable_loadingscreen_animation();
 
-	if(current_load || CVideo::get_singleton().faked()) {
+	if(singleton_ || CVideo::get_singleton().faked()) {
 		f();
 	} else if(use_loadingscreen_animation) {
 		loading_screen(f).show();
