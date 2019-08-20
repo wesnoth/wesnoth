@@ -1003,7 +1003,7 @@ function wml_actions.terrain_mask(cfg)
 	end
 	local rules = {}
 	for rule in wml.child_range(cfg, 'rule') do
-		rules[#rules] = rule
+		rules[#rules + 1] = rule
 	end
 	if cfg.mask_file then
 		mask = wesnoth.read_file(cfg.mask_file)
