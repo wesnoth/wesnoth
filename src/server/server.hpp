@@ -148,7 +148,6 @@ private:
 	std::time_t last_user_seen_time_;
 	std::string restart_command;
 	std::size_t max_ip_log_size_;
-	std::string uh_name_;
 	bool deny_unregistered_login_;
 	bool save_replays_;
 	std::string replay_save_path_;
