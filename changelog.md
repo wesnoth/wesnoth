@@ -1,4 +1,8 @@
 ## Version 1.15.1+dev
+ ### Campaigns
+   * Delfador's Memoirs:
+     * S20: Improve leveling of units and give player a note about it (Issue#4219)
+     * S21: Better indication that the book has gone missing (Issue#4220)
 
 ## Version 1.15.1
  ### Editor
