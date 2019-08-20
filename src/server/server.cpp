@@ -38,7 +38,6 @@
 #include "server/metrics.hpp"
 #include "server/player.hpp"
 #include "server/player_network.hpp"
-#include "server/sample_user_handler.hpp"
 #include "server/simple_wml.hpp"
 #include "server/user_handler.hpp"
 
@@ -525,11 +524,8 @@ void server::load_config()
 	user_handler_.reset();
 
 	if(const config& user_handler = cfg_.child("user_handler")) {
-		if(uh_name_ == "sample") {
-			user_handler_.reset(new suh(user_handler));
-		}
 #ifdef HAVE_MYSQLPP
-		else if(uh_name_ == "forum" || uh_name_.empty()) {
+		if(uh_name_ == "forum" || uh_name_.empty()) {
 			user_handler_.reset(new fuh(user_handler));
 		}
 #endif
