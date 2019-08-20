@@ -246,7 +246,6 @@ server::server(int port,
 	, last_user_seen_time_(std::time(nullptr))
 	, restart_command()
 	, max_ip_log_size_(0)
-	, uh_name_()
 	, deny_unregistered_login_(false)
 	, save_replays_(false)
 	, replay_save_path_()
@@ -456,7 +455,6 @@ void server::load_config()
 	admin_passwd_ = cfg_["passwd"].str();
 	motd_ = cfg_["motd"].str();
 	lan_server_ = cfg_["lan_server"].to_time_t(0);
-	uh_name_ = cfg_["user_handler"].str();
 
 	deny_unregistered_login_ = cfg_["deny_unregistered_login"].to_bool();
 
@@ -525,9 +523,7 @@ void server::load_config()
 
 	if(const config& user_handler = cfg_.child("user_handler")) {
 #ifdef HAVE_MYSQLPP
-		if(uh_name_ == "forum" || uh_name_.empty()) {
-			user_handler_.reset(new fuh(user_handler));
-		}
+		user_handler_.reset(new fuh(user_handler));
 #endif
 		// Initiate the mailer class with the [mail] tag
 		// from the config file
