@@ -26,6 +26,7 @@
 #include "utils/general.hpp"
 #include <cassert>
 #include <array>
+#include <limits>
 #include <stdexcept>
 
 #include <boost/algorithm/string.hpp>
@@ -805,11 +806,18 @@ std::pair<int, int> parse_range(const std::string& str)
 	const std::string b = dash != str.end() ? std::string(dash + 1, str.end()) : a;
 	std::pair<int,int> res {0,0};
 	try {
-		res = std::make_pair(std::stoi(a), std::stoi(b));
+		if (b == "infinity") {
+			res = std::make_pair(std::stoi(a), std::numeric_limits<int>::max());
+		} else {
+			res = std::make_pair(std::stoi(a), std::stoi(b));
+		}
+
 		if (res.second < res.first) {
 			res.second = res.first;
 		}
-	} catch(const std::invalid_argument&) {}
+	} catch(const std::invalid_argument&) {
+	    ERR_GENERAL << "Invalid range: "<< str << std::endl;
+	}
 
 	return res;
 }
