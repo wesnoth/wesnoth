@@ -54,7 +54,7 @@
      (PR #4185)
  ### Language and i18n
    * Updated translations: British English, Chinese (Traditional), Dutch,
-     German, Spanish, Turkish, Portuguese (Brazil), Ukrainian
+     French, German, Spanish, Turkish, Portuguese (Brazil), Ukrainian
  ### Multiplayer
    * A New Land:
      * Help menu can be accessed in any turn and doesn't pause the game
