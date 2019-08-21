@@ -519,14 +519,12 @@ void server::load_config()
 	// nullptr every time we want to use it.
 	user_handler_.reset();
 
-	if(const config& user_handler = cfg_.child("user_handler")) {
 #ifdef HAVE_MYSQLPP
+	if(const config& user_handler = cfg_.child("user_handler")) {
 		user_handler_.reset(new fuh(user_handler));
-#endif
-		if(user_handler_) {
-			uuid_ = user_handler_->get_uuid();
-		}
+		uuid_ = user_handler_->get_uuid();
 	}
+#endif
 }
 
 bool server::ip_exceeds_connection_limit(const std::string& ip) const
