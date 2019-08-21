@@ -50,14 +50,12 @@ bool notif_pref(const std::string& id)
 
 } // end anonymous namespace
 
-// Note: This list must agree with data/gui/.../lobby_sound_options.cfg
-// @lilinitsy: As of 1.14, it seems the above comment is not true, but someone could check.
 const std::vector<std::string> items {"player_joins", "player_leaves", "private_message", "friend_message", "public_message", "server_message", "ready_for_start", "game_has_begun", "turn_changed", "game_created"};
 
-void game_created(bool is_lobby, const std::string & scenario, const std::string & name)
+void game_created(const std::string & scenario, const std::string & name)
 {
 	std::string id = "game_created";
-	if (is_lobby && !lobby_pref(id)) {
+	if (!lobby_pref(id)) {
 		return ;
 	}
 
