@@ -583,7 +583,6 @@ void server::clean_user_handler(const std::time_t& now)
 	}
 
 	last_uh_clean_ = now;
-	user_handler_->clean_up();
 }
 
 void server::handle_new_client(socket_ptr socket)

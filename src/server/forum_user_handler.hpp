@@ -43,8 +43,6 @@ class fuh : public user_handler {
 		fuh(const config& c);
 		~fuh();
 
-		void clean_up() {}
-
 		bool login(const std::string& name, const std::string& password, const std::string& seed);
 
 		/**

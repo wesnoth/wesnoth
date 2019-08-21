@@ -44,14 +44,6 @@ class user_handler {
 		}
 
 		/**
-		 * Called by the server once a day.
-		 *
-		 * Could for example be used for removing users that have not logged in
-		 * for a certain amount of time.
-		 */
-		virtual void clean_up() =0;
-
-		/**
 		 * Return true if the given password matches the password for the given user.
 		 *
 		 * Password could also be a hash
