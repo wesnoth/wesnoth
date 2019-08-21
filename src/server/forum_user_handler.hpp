@@ -43,12 +43,6 @@ class fuh : public user_handler {
 		fuh(const config& c);
 		~fuh();
 
-		// Throws user_handler::error
-		void add_user(const std::string& name, const std::string& mail, const std::string& password);
-
-		// Throws user_handler::error
-		void remove_user(const std::string& name);
-
 		void clean_up() {}
 
 		bool login(const std::string& name, const std::string& password, const std::string& seed);
@@ -74,10 +68,6 @@ class fuh : public user_handler {
 
 		// Throws user_handler::error
 		std::string user_info(const std::string& name);
-
-		// Throws user_handler::error
-		void set_user_detail(const std::string& user, const std::string& detail, const std::string& value);
-		std::string get_valid_details();
 
 		bool use_phpbb_encryption() const { return true; }
 

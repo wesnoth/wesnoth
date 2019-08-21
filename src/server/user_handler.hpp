@@ -44,22 +44,6 @@ class user_handler {
 		}
 
 		/**
-		 * Adds a user.
-		 *
-		 * Throws an error containing the error message if adding fails
-		 * (e.g. because a user with the same name already exists).
-		 */
-		virtual void add_user(const std::string& name, const std::string& mail, const std::string& password) =0;
-
-		/**
-		 * Removes a user.
-		 *
-		 * Throws an error containing the error message if removing fails
-		 * (e.g. no user with the given name exists).
-		 */
-		virtual void remove_user(const std::string& name) =0;
-
-		/**
 		 * Called by the server once a day.
 		 *
 		 * Could for example be used for removing users that have not logged in
@@ -86,16 +70,6 @@ class user_handler {
 		 * Formatted for user readable output.
 		 */
 		virtual std::string user_info(const std::string& name) =0;
-
-		/**
-		 * Set data for a given user name.
-		 *
-		 * Should throw an error on invalid data.
-		 */
-		virtual void set_user_detail(const std::string& user, const std::string& detail, const std::string& value) =0;
-
-		/** List of details that can be set for this user_handler. */
-		virtual std::string get_valid_details() =0;
 
 		/** Returns true if a user with the given name exists. */
 		virtual bool user_exists(const std::string& name) =0;

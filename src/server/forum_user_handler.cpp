@@ -59,14 +59,6 @@ fuh::~fuh() {
 	mysql_close(conn);
 }
 
-void fuh::add_user(const std::string& /*name*/, const std::string& /*mail*/, const std::string& /*password*/) {
-	throw error("For now please register at https://forums.wesnoth.org");
-}
-
-void fuh::remove_user(const std::string& /*name*/) {
-	throw error("'Dropping your nickname is currently impossible");
-}
-
 // The hashing code is basically taken from forum_auth.cpp
 bool fuh::login(const std::string& name, const std::string& password, const std::string& seed) {
 
@@ -303,14 +295,6 @@ std::string fuh::user_info(const std::string& name) {
 	}
 
 	return info.str();
-}
-
-void fuh::set_user_detail(const std::string& /*user*/, const std::string& /*detail*/, const std::string& /*value*/) {
-	throw error("For now this is a 'read-only' user_handler");
-}
-
-std::string fuh::get_valid_details() {
-	return "For now this is a 'read-only' user_handler";
 }
 
 std::string fuh::get_hash(const std::string& user) {
