@@ -150,9 +150,6 @@ class user_handler {
 			error(const std::string& message) : game::error(message) {}
 		};
 
-		/** Initiate the mailer object. */
-		void init_mailer(const config &c);
-
 		/** Create a random string of digits for password encryption. */
 		std::string create_unsecure_nonce(int length = 8);
 		std::string create_secure_nonce();
@@ -178,20 +175,4 @@ class user_handler {
 		virtual void db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, const std::string& is_host, const std::string& faction) =0;
 		virtual void db_insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name) =0;
 		virtual void db_set_oos_flag(const std::string& uuid, int game_id) =0;
-
-	protected:
-
-		/**
-		 * Sends an email to the specified address. Requires access to an SMTP server.
-		 *
-		 * Throws an error if the mail could not be sent.
-		 */
-		bool send_mail(const std::string& to_user, const std::string& subject, const std::string& message);
-
-		/**
-		 * Used in send_mail().
-		 *
-		 * Should return an empty string when not used.
-		 */
-		virtual std::string get_mail(const std::string& user) =0;
 };

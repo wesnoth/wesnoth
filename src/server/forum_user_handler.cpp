@@ -322,15 +322,6 @@ std::string fuh::get_hash(const std::string& user) {
 	}
 }
 
-std::string fuh::get_mail(const std::string& user) {
-	try {
-		return get_detail_for_user<std::string>(user, "user_email");
-	} catch (const sql_error& e) {
-		ERR_UH << "Could not retrieve email for user '" << user << "' :" << e.message << std::endl;
-		return "";
-	}
-}
-
 std::time_t fuh::get_lastlogin(const std::string& user) {
 	try {
 		int time_int = get_writable_detail_for_user<int>(user, "user_lastvisit");
