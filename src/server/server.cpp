@@ -259,9 +259,7 @@ server::server(int port,
 	, join_lobby_response_("[join_lobby]\n[/join_lobby]\n", simple_wml::INIT_COMPRESSED)
 	, games_and_users_list_("[gamelist]\n[/gamelist]\n", simple_wml::INIT_STATIC)
 	, metrics_()
-	, last_ping_(std::time(nullptr))
 	, dump_stats_timer_(io_service_)
-	, last_uh_clean_(last_ping_)
 	, cmd_handlers_()
 	, timer_(io_service_)
 	, lan_server_timer_(io_service_)
@@ -574,15 +572,6 @@ void server::dump_stats(const boost::system::error_code& ec)
 			   << "\tnumber_of_games = " << games().size() << "\tnumber_of_users = " << player_connections_.size()
 			   << "\n";
 	start_dump_stats();
-}
-
-void server::clean_user_handler(const std::time_t& now)
-{
-	if(!user_handler_) {
-		return;
-	}
-
-	last_uh_clean_ = now;
 }
 
 void server::handle_new_client(socket_ptr socket)
