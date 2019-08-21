@@ -91,9 +91,6 @@ class fuh : public user_handler {
 
 	private:
 		std::string get_hash(const std::string& user);
-		std::string get_mail(const std::string& user);
-		/*std::vector<std::string> get_friends(const std::string& user);
-		std::vector<std::string> get_ignores(const std::string& user);*/
 		std::time_t get_lastlogin(const std::string& user);
 		std::time_t get_registrationdate(const std::string& user);
 		bool is_inactive(const std::string& user);

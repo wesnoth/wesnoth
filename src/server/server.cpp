@@ -525,10 +525,7 @@ void server::load_config()
 #ifdef HAVE_MYSQLPP
 		user_handler_.reset(new fuh(user_handler));
 #endif
-		// Initiate the mailer class with the [mail] tag
-		// from the config file
 		if(user_handler_) {
-			user_handler_->init_mailer(cfg_.child("mail"));
 			uuid_ = user_handler_->get_uuid();
 		}
 	}
