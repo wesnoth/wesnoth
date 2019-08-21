@@ -3,6 +3,8 @@
    * Delfador's Memoirs:
      * S20: Improve leveling of units and give player a note about it (Issue#4219)
      * S21: Better indication that the book has gone missing (Issue#4220)
+ ### Language and i18n
+   * Updated translations: French
 
 ## Version 1.15.1
  ### Editor
