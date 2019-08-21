@@ -1197,67 +1197,6 @@ void server::handle_nickserv(socket_ptr socket, simple_wml::node& nickserv)
 		return;
 	}
 
-	if(nickserv.child("register")) {
-		try {
-			(user_handler_->add_user(player_connections_.find(socket)->name(),
-					(*nickserv.child("register"))["mail"].to_string(),
-					(*nickserv.child("register"))["password"].to_string()));
-
-			std::stringstream msg;
-			msg << "Your username has been registered." <<
-					// Warn that providing an email address might be a good idea
-					((*nickserv.child("register"))["mail"].empty()
-						? " It is recommended that you provide an email address for password recovery."
-						: "");
-
-			send_server_message(socket, msg.str());
-
-			// Mark the player as registered and send the other clients
-			// an update to display this change
-			player_connections_.find(socket)->info().mark_registered();
-
-			simple_wml::document diff;
-			make_change_diff(games_and_users_list_.root(), nullptr, "user",
-					player_connections_.find(socket)->info().config_address(), diff);
-			send_to_lobby(diff);
-
-		} catch(const user_handler::error& e) {
-			send_server_message(socket,
-				"There was an error registering your username. The error message was: " + e.message);
-		}
-
-		return;
-	}
-
-	// A user requested to update his password or mail
-	if(nickserv.child("set")) {
-		if(!(user_handler_->user_exists(player_connections_.find(socket)->name()))) {
-			send_server_message(socket, "You are not registered. Please register first.");
-			return;
-		}
-
-		const simple_wml::node& set = *(nickserv.child("set"));
-
-		try {
-			user_handler_->set_user_detail(
-				player_connections_.find(socket)->name(), set["detail"].to_string(), set["value"].to_string());
-
-			send_server_message(socket, "Your details have been updated.");
-
-		} catch(const user_handler::error& e) {
-			send_server_message(socket,
-				"There was an error updating your details. The error message was: " + e.message);
-		}
-
-		return;
-	}
-
-	// A user requested information about another user
-	if(nickserv.child("details")) {
-		send_server_message(socket, "Valid details for this server are: " + user_handler_->get_valid_details());
-		return;
-	}
-
 	// A user requested a list of which details can be set
 	if(nickserv.child("info")) {
 		try {
@@ -1271,41 +1210,6 @@ void server::handle_nickserv(socket_ptr socket, simple_wml::node& nickserv)
 			);
 		}
 
-		return;
-	}
-
-	// A user requested to delete his nick
-	if(nickserv.child("drop")) {
-		if(!(user_handler_->user_exists(player_connections_.find(socket)->name()))) {
-			send_server_message(socket, "You are not registered.");
-			return;
-		}
-
-		// With the current policy of dissallowing to log in with a
-		// registered username without the password we should never get
-		// to call this
-		if(!(player_connections_.find(socket)->info().registered())) {
-			send_server_message(socket, "You are not logged in.");
-			return;
-		}
-
-		try {
-			user_handler_->remove_user(player_connections_.find(socket)->name());
-			send_server_message(socket, "Your username has been dropped.");
-
-			// Mark the player as not registered and send the other clients
-			// an update to display this change.
-			player_connections_.find(socket)->info().mark_registered(false);
-
-			simple_wml::document diff;
-			make_change_diff(games_and_users_list_.root(), nullptr, "user",
-				player_connections_.find(socket)->info().config_address(), diff);
-
-			send_to_lobby(diff);
-		} catch(const user_handler::error& e) {
-			send_server_message(socket,
-				"There was an error dropping your username. The error message was: " + e.message);
-		}
 		return;
 	}
 }
