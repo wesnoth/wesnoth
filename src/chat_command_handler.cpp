@@ -158,61 +158,6 @@ void chat_command_handler::do_version() {
 	print(_("version"), game_config::revision);
 }
 
-void chat_command_handler::do_register() {
-	config data;
-	config& nickserv = data.add_child("nickserv");
-
-	if (get_data(1).empty()) return command_failed_need_arg(1);
-
-	config &reg = nickserv.add_child("register");
-	reg["password"] = get_arg(1);
-	if (!get_data(2).empty()) {
-		reg["mail"] = get_arg(2);
-	}
-	std::string msg;
-	if (get_data(2).empty()) {
-		msg = _("registering with password *** and no email address");
-	}
-	else {
-		utils::string_map symbols;
-		symbols["email"] = get_data(2);
-		msg = VGETTEXT("registering with password *** and "
-			"email address $email", symbols);
-	}
-	print(_("nick registration"), msg);
-
-	chat_handler_.send_to_server(data);
-}
-
-void chat_command_handler::do_drop() {
-	config data;
-	config& nickserv = data.add_child("nickserv");
-
-	nickserv.add_child("drop");
-
-	print(_("nick registration"), _("dropping your username"));
-
-	chat_handler_.send_to_server(data);
-}
-
-void chat_command_handler::do_set() {
-	config data;
-	config& nickserv = data.add_child("nickserv");
-
-	if (get_data(1).empty()) return command_failed_need_arg(1);
-	if (get_data(2).empty()) return command_failed_need_arg(2);
-
-	config &set = nickserv.add_child("set");
-	set["detail"] = get_arg(1);
-	set["value"] = get_data(2);
-	utils::string_map symbols;
-	symbols["var"] = get_arg(1);
-	symbols["value"] = get_arg(2);
-	print(_("nick registration"), VGETTEXT("setting $var to $value", symbols));
-
-	chat_handler_.send_to_server(data);
-}
-
 void chat_command_handler::do_info() {
 	if (get_data(1).empty()) return command_failed_need_arg(1);
 
@@ -223,15 +168,6 @@ void chat_command_handler::do_info() {
 	utils::string_map symbols;
 	symbols["nick"] = get_arg(1);
 	print(_("nick registration"), VGETTEXT("requesting information for user $nick", symbols));
-
-	chat_handler_.send_to_server(data);
-}
-
-void chat_command_handler::do_details() {
-
-	config data;
-	config& nickserv = data.add_child("nickserv");
-	nickserv.add_child("details");
 
 	chat_handler_.send_to_server(data);
 }
