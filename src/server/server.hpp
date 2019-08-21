@@ -170,13 +170,9 @@ private:
 
 	metrics metrics_;
 
-	std::time_t last_ping_;
 	boost::asio::steady_timer dump_stats_timer_;
 	void start_dump_stats();
 	void dump_stats(const boost::system::error_code& ec);
-
-	std::time_t last_uh_clean_;
-	void clean_user_handler(const std::time_t& now);
 
 	/** Process commands from admins and users. */
 	std::string process_command(std::string cmd, std::string issuer_name);
