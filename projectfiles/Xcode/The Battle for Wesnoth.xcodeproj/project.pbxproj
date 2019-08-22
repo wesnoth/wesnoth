@@ -15,6 +15,15 @@
 		4621074C219DC03C004FEBE7 /* schema in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 4621074A219DBFEE004FEBE7 /* schema */; };
 		463896712034180900075E54 /* deprecation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 463896702034180900075E54 /* deprecation.cpp */; };
 		463896722034180900075E54 /* deprecation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 463896702034180900075E54 /* deprecation.cpp */; };
+		46406DE9230DA7030069492E /* libogg.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0363228361B6007D2741 /* libogg.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		46406DEA230DA7180069492E /* libSDL2_image-2.0.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0362228361B5007D2741 /* libSDL2_image-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		46406DEB230DA7180069492E /* libSDL2_mixer-2.0.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0368228361B7007D2741 /* libSDL2_mixer-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		46406DEC230DA7180069492E /* libSDL2_net-2.0.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0365228361B6007D2741 /* libSDL2_net-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		46406DED230DA7180069492E /* libSDL2_ttf-2.0.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0366228361B6007D2741 /* libSDL2_ttf-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		46406DEE230DA7180069492E /* libSDL2-2.0.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0367228361B6007D2741 /* libSDL2-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		46406DEF230DA7190069492E /* libvorbis.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0364228361B6007D2741 /* libvorbis.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		46406DF0230DA7190069492E /* libvorbisfile.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0369228361B7007D2741 /* libvorbisfile.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		46406DF1230DA73E0069492E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C58BBDF21822A930078D25A /* Security.framework */; };
 		4649B87A202886F000827CFB /* test_irdya_date.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4649B879202886F000827CFB /* test_irdya_date.cpp */; };
 		4649B87B20288CBB00827CFB /* manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA556251E7B5DA5006E907D /* manager.cpp */; };
 		4649B87C20288D2F00827CFB /* make.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF44F681FC8A82A00B404D6 /* make.cpp */; };
@@ -1408,18 +1417,26 @@
 				91B6220D1B76C0A600B00E0F /* libfontconfig.1.dylib in Copy Frameworks */,
 				91B6220E1B76C0A600B00E0F /* libfreetype.6.dylib in Copy Frameworks */,
 				91B6220F1B76C0A600B00E0F /* libglib-2.0.0.dylib in Copy Frameworks */,
+				46406DEA230DA7180069492E /* libSDL2_image-2.0.0.dylib in Copy Frameworks */,
+				46406DEF230DA7190069492E /* libvorbis.0.dylib in Copy Frameworks */,
 				91B622101B76C0A600B00E0F /* libgmodule-2.0.0.dylib in Copy Frameworks */,
 				91B622111B76C0A600B00E0F /* libgobject-2.0.0.dylib in Copy Frameworks */,
 				91B622121B76C0A600B00E0F /* libgraphite2.3.dylib in Copy Frameworks */,
 				91B622131B76C0A600B00E0F /* libgthread-2.0.0.dylib in Copy Frameworks */,
 				91B622141B76C0A600B00E0F /* libharfbuzz.0.dylib in Copy Frameworks */,
+				46406DEC230DA7180069492E /* libSDL2_net-2.0.0.dylib in Copy Frameworks */,
 				915C68F51DF1F90F00594B07 /* libintl.8.dylib in Copy Frameworks */,
+				46406DF0230DA7190069492E /* libvorbisfile.dylib in Copy Frameworks */,
+				46406DE9230DA7030069492E /* libogg.0.dylib in Copy Frameworks */,
 				91B622171B76C0A600B00E0F /* libpango-1.0.0.dylib in Copy Frameworks */,
+				46406DEB230DA7180069492E /* libSDL2_mixer-2.0.0.dylib in Copy Frameworks */,
 				91B622181B76C0A600B00E0F /* libpangocairo-1.0.0.dylib in Copy Frameworks */,
 				91B622191B76C0A600B00E0F /* libpangoft2-1.0.0.dylib in Copy Frameworks */,
 				EC6C6B8B1D77CB0800807ED1 /* libpcre.1.dylib in Copy Frameworks */,
 				91B6221A1B76C0A600B00E0F /* libpixman-1.0.dylib in Copy Frameworks */,
 				46F92F252174FF7500602C1C /* libboost_thread-mt-x64.dylib in Copy Frameworks */,
+				46406DEE230DA7180069492E /* libSDL2-2.0.0.dylib in Copy Frameworks */,
+				46406DED230DA7180069492E /* libSDL2_ttf-2.0.0.dylib in Copy Frameworks */,
 				91B6221B1B76C0A600B00E0F /* libpng16.16.dylib in Copy Frameworks */,
 				91A41F901CA22A98008B10D5 /* libreadline.8.0.dylib in Copy Frameworks */,
 			);
@@ -2790,6 +2807,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46406DF1230DA73E0069492E /* Security.framework in Frameworks */,
 				46BCC905211A1E68003BDB8C /* IOKit.framework in Frameworks */,
 				ECA9E7471CA20AA800A947D6 /* libreadline.8.0.dylib in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
@@ -4896,6 +4914,15 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0900;
+				TargetAttributes = {
+					8D1107260486CEB800E47090 = {
+						SystemCapabilities = {
+							com.apple.HardenedRuntime = {
+								enabled = 1;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "The Battle for Wesnoth" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -4966,7 +4993,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$SOURCE_ROOT/../..\"\nif [ -e \"./translations\" ]; then\nrsync -rv --delete \"./translations\" \"$BUILT_PRODUCTS_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/\";\nfi";
+			shellScript = "cd \"$SOURCE_ROOT/../..\"\nif [ -e \"./translations\" ]; then\nrsync -rv --delete \"./translations\" \"$BUILT_PRODUCTS_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/\";\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -6373,6 +6400,7 @@
 				CODE_SIGN_ENTITLEMENTS = Resources/Wesnoth.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -6416,6 +6444,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = N5CYW96P9T;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
