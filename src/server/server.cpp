@@ -808,7 +808,7 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 		auto g_ptr { record.get_game() };
 		if(g_ptr != last_sent) {
 			// Note: This string is parsed by the client to identify lobby join messages!
-			record.get_game()->send_server_message_to_all(username + " has logged into the lobby");
+			g_ptr->send_server_message_to_all(username + " has logged into the lobby");
 			last_sent = g_ptr;
 		}
 	}
