@@ -780,6 +780,16 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 	LOG_SERVER << client_address(socket) << "\t" << username << "\thas logged on"
 			   << (registered ? " to a registered account" : "") << "\n";
 
+	std::shared_ptr<game> last_sent;
+	for(const auto& record : player_connections_.get<game_t>()) {
+		auto g_ptr { record.get_game() };
+		if(g_ptr != last_sent) {
+			// Note: This string is parsed by the client to identify lobby join messages!
+			record.get_game()->send_server_message_to_all(username + " has logged into the lobby");
+			last_sent = g_ptr;
+		}
+	}
+
 	if(is_moderator) {
 		LOG_SERVER << "Admin automatically recognized: IP: " << client_address(socket) << "\tnick: " << username
 				   << std::endl;
