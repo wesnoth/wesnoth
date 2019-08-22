@@ -5,6 +5,7 @@
      * S21: Better indication that the book has gone missing (Issue#4220)
  ### Language and i18n
    * Updated translations: French, Portuguese (Brazil)
+   * Set up for translating the Wings of Victory campaign (PR#4265)
 
 ## Version 1.15.1
  ### Editor
