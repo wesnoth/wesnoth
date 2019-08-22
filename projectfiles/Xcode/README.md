@@ -7,7 +7,7 @@
  * `scons` and `gettext` (if you want to compile translations)
 
 ## Targets
-* **Wesnoth**:
+* **The Battle for Wesnoth**:
 Builds the actual game, depends on wesnothd. If you don't want to build wesnothd, get info on the Wesnoth target, go to the General tab, and remove wesnothd from its dependencies.
 
 * **wesnothd**:
@@ -49,12 +49,12 @@ When compiling Wesnoth for an official release, the following steps should be ta
  * Rebuild all in XCode (clean all, then build). Be sure to set it to RELEASE configuration first!
  * Download old `.dmg` release.
  * Convert it using Disk Utility to Read and Write disk image and mount it.
- * Delete old `Wesnoth.app` and copy new `Wesnoth.app`.
- * CodeSign `Wesnoth.app` inside Read and Write disk image using `codesign --deep --force -s "Wesnoth, Inc" Wesnoth.app`. You must have Wesnoth's signing certificate.
- * Verify that you signed `.app` propertly using `spctl -a -t exec -vv Wesnoth.app`.
+ * Delete old `The Battle for Wesnoth.app` and copy new `The Battle for Wesnoth.app`.
+ * CodeSign `The Battle for Wesnoth.app` inside Read and Write disk image using `codesign --deep --force -s "Developer ID Application: Wesnoth, Inc (N5CYW96P9T)" The\ Battle\ for\ Wesnoth.app`. You must have Wesnoth's signing certificate.
+ * Verify that you signed `.app` propertly using `spctl -a -t exec -vv The\ Battle\ for\ Wesnoth.app`.
  * Rename disk image to match new release version.
  * Unmount it and convert it back using `hdiutil convert /PATH/TO/IMAGE.dmg -format UDBZ -o /PATH/TO/NEW/IMAGE.dmg` command.
- * Sign newly created `.dmg` using `codesign -s "Wesnoth, Inc" /PATH/TO/NEW/IMAGE.dmg`. You must have Wesnoth's signing certificate.
+ * Sign newly created `.dmg` using `codesign -s "Developer ID Application: Wesnoth, Inc (N5CYW96P9T)" /PATH/TO/NEW/IMAGE.dmg`. You must have Wesnoth's signing certificate.
  * Verify that you signed `.dmg` propertly using `spctl -a -t open --context context:primary-signature -v /PATH/TO/NEW/IMAGE.dmg`.
  * Create SHA-256 checksum using `shasum -a 256 /PATH/TO/NEW/IMAGE.dmg` command.
  * Done! You can release it now.
