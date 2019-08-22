@@ -6199,7 +6199,6 @@
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = lua;
-				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -6220,7 +6219,6 @@
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = lua;
-				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -6305,7 +6303,6 @@
 					"FIFODIR=\\\"/var/run/wesnothd\\\"",
 				);
 				PRODUCT_NAME = wesnothd;
-				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -6319,7 +6316,6 @@
 					"FIFODIR=\\\"/var/run/wesnothd\\\"",
 				);
 				PRODUCT_NAME = wesnothd;
-				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -6357,6 +6353,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.Wesnoth;
 				PRODUCT_NAME = "The Battle for Wesnoth";
+				SKIP_INSTALL = NO;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -6396,6 +6393,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.Wesnoth;
 				PRODUCT_NAME = "The Battle for Wesnoth";
+				SKIP_INSTALL = NO;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -6467,6 +6465,7 @@
 					"-lbz2",
 				);
 				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 				SYSTEM_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Headers";
 			};
 			name = Debug;
@@ -6509,6 +6508,7 @@
 					"-lbz2",
 				);
 				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 				SYSTEM_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Headers";
 				WARNING_CFLAGS = (
 					"-Werror=format",
