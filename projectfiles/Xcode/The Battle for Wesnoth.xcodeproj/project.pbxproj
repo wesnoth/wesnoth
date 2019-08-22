@@ -1145,7 +1145,6 @@
 		B5BB6B820F893E7500444FBF /* simple_wml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6B6D0F893E7500444FBF /* simple_wml.cpp */; };
 		B5BB6B830F893E7500444FBF /* user_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6B6E0F893E7500444FBF /* user_handler.cpp */; };
 		B5BB6B840F893E7500444FBF /* server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6B710F893E7500444FBF /* server.cpp */; };
-		B5BB6B850F893E7500444FBF /* sample_user_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6B720F893E7500444FBF /* sample_user_handler.cpp */; };
 		B5BB6B870F893E7500444FBF /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6B740F893E7500444FBF /* player.cpp */; };
 		B5BB6B880F893E7500444FBF /* metrics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6B750F893E7500444FBF /* metrics.cpp */; };
 		B5BB6B8A0F893E7500444FBF /* forum_user_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6B7B0F893E7500444FBF /* forum_user_handler.cpp */; };
@@ -2526,13 +2525,11 @@
 		B5BB6B5A0F893E7500444FBF /* game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
 		B5BB6B690F893E7500444FBF /* metrics.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = metrics.hpp; sourceTree = "<group>"; };
 		B5BB6B6A0F893E7500444FBF /* player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = player.hpp; sourceTree = "<group>"; };
-		B5BB6B6C0F893E7500444FBF /* sample_user_handler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sample_user_handler.hpp; sourceTree = "<group>"; };
 		B5BB6B6D0F893E7500444FBF /* simple_wml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simple_wml.cpp; sourceTree = "<group>"; };
 		B5BB6B6E0F893E7500444FBF /* user_handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = user_handler.cpp; sourceTree = "<group>"; };
 		B5BB6B6F0F893E7500444FBF /* user_handler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = user_handler.hpp; sourceTree = "<group>"; };
 		B5BB6B700F893E7500444FBF /* simple_wml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = simple_wml.hpp; sourceTree = "<group>"; };
 		B5BB6B710F893E7500444FBF /* server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = server.cpp; sourceTree = "<group>"; };
-		B5BB6B720F893E7500444FBF /* sample_user_handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sample_user_handler.cpp; sourceTree = "<group>"; };
 		B5BB6B740F893E7500444FBF /* player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = player.cpp; sourceTree = "<group>"; };
 		B5BB6B750F893E7500444FBF /* metrics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = metrics.cpp; sourceTree = "<group>"; };
 		B5BB6B780F893E7500444FBF /* game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game.hpp; sourceTree = "<group>"; };
@@ -4737,8 +4734,6 @@
 				91FBBAD51CB6AF8900470BFE /* player_connection.hpp */,
 				B54AC6790FEA9C4A006F6FBD /* player_network.cpp */,
 				B54AC67A0FEA9C4A006F6FBD /* player_network.hpp */,
-				B5BB6B720F893E7500444FBF /* sample_user_handler.cpp */,
-				B5BB6B6C0F893E7500444FBF /* sample_user_handler.hpp */,
 				91C548CF1D886AF000FE6A7B /* send_receive_wml_helpers.ipp */,
 				B5BB6B710F893E7500444FBF /* server.cpp */,
 				B54AC67F0FEA9C4A006F6FBD /* server.hpp */,
@@ -6184,7 +6179,6 @@
 				EC64D7661A085F120092EF75 /* mt_rng.cpp in Sources */,
 				B54AC6800FEA9C4A006F6FBD /* player_network.cpp in Sources */,
 				B5BB6B870F893E7500444FBF /* player.cpp in Sources */,
-				B5BB6B850F893E7500444FBF /* sample_user_handler.cpp in Sources */,
 				EC64D7671A085F2F0092EF75 /* seed_rng.cpp in Sources */,
 				B5BB6B840F893E7500444FBF /* server.cpp in Sources */,
 				B5BB6B820F893E7500444FBF /* simple_wml.cpp in Sources */,
