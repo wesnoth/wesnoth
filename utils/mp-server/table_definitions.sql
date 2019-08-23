@@ -10,6 +10,14 @@
 --     KEY user_type (user_type)
 -- ) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+-- a minimal groups table, if not using a phpbb3 installation
+-- CREATE TABLE user_groups
+-- (
+--     group_id mediumint(8) unsigned NOT NULL,
+--     user_id mediumint(8) unsigned NOT NULL,
+--     PRIMARY KEY (user_id, group_id)
+-- ) ENGINE=InnoDB;
+
 -- table which the forum inserts bans into, which wesnothd checks during login
 -- CREATE TABLE ban
 -- (
