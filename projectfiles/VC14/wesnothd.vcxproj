@@ -206,11 +206,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\server\sample_user_handler.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\server\server.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
@@ -243,7 +238,6 @@
     <ClInclude Include="..\..\src\server\player.hpp" />
     <ClInclude Include="..\..\src\server\player_connection.hpp" />
     <ClInclude Include="..\..\src\server\player_network.hpp" />
-    <ClInclude Include="..\..\src\server\sample_user_handler.hpp" />
     <ClInclude Include="..\..\src\server\server.hpp" />
     <ClInclude Include="..\..\src\server\server_base.hpp" />
     <ClInclude Include="..\..\src\server\simple_wml.hpp" />
