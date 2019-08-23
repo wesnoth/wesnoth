@@ -369,6 +369,7 @@ inline T fuh::prepared_statement(const std::string& sql, Args&&... args)
 		//Try to reconnect and execute query again
 		mysql_close(conn);
 		conn = mysql_init(nullptr);
+		mysql_options(conn, MYSQL_SET_CHARSET_NAME, "utf8mb4");
 		if(!conn || !mysql_real_connect(conn, db_host_.c_str(),  db_user_.c_str(), db_password_.c_str(), db_name_.c_str(), 0, nullptr, 0)) {
 			ERR_UH << "Could not connect to database: " << mysql_errno(conn) << ": " << mysql_error(conn) << std::endl;
 			throw sql_error("Error querying database.");
