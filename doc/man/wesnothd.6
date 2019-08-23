@@ -217,7 +217,7 @@ Configures the user handler. Available keys vary depending on which user handler
 .B user_handler
 key. If no
 .B [user_handler]
-section is present in the configuration the server will run without any nick registration service.
+section is present in the configuration the server will run without any nick registration service. All additional tables that are needed for the forum_user_handler to function can be found in table_definitions.sql in the Wesnoth source repository.
 .RS
 .TP
 .B db_host
@@ -236,8 +236,16 @@ section is present in the configuration the server will run without any nick reg
 (for user_handler=forum) The name of the table in which your phpbb forums saves its user data. Most likely this will be <table-prefix>_users (e.g. phpbb3_users).
 .TP
 .B db_extra_table
-(for user_handler=forum) The name of the table in which wesnothd will save its own data about users. You will have to create this table manually, e.g.:
-.B CREATE TABLE <table-name>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);
+(for user_handler=forum) The name of the table in which wesnothd will save its own data about users. You will have to create this table manually.
+.TP
+.B db_game_info_table
+(for user_handler=forum) The name of the table in which wesnothd will save its own data about games.
+.TP
+.B db_game_player_info_table
+(for user_handler=forum) The name of the table in which wesnothd will save its own data about the players in a game.
+.TP
+.B db_game_modification_info_table
+(for user_handler=forum) The name of the table in which wesnothd will save its own data about the modifications used in a game.
 .TP
 .B user_expiration
 (for user_handler=sample) The time after which a registered nick expires (in days).

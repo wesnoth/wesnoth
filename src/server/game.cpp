@@ -1831,6 +1831,16 @@ static bool is_invalid_filename_char(char c)
 	);
 }
 
+std::string game::get_replay_filename()
+{
+	std::stringstream name;
+	name << (*starting_pos(level_.root()))["name"] << " Turn " << current_turn() << " (" << id_ << ").bz2";
+	std::string filename(name.str());
+	std::replace(filename.begin(), filename.end(), ' ', '_');
+	filename.erase(std::remove_if(filename.begin(), filename.end(), is_invalid_filename_char), filename.end());
+	return filename;
+}
+
 void game::save_replay()
 {
 	if(!save_replays_ || !started_ || history_.empty()) {
@@ -1847,9 +1857,6 @@ void game::save_replay()
 	}
 
 	history_.clear();
-
-	std::stringstream name;
-	name << (*starting_pos(level_.root()))["name"] << " Turn " << current_turn();
 
 	std::stringstream replay_data;
 	try {
@@ -1873,16 +1880,10 @@ void game::save_replay()
 			<< (has_old_replay ? "" : "\t[command]\n\t\t[start]\n\t\t[/start]\n\t[/command]\n")
 			<< replay_commands << "[/replay]\n";
 
-		name << " (" << id_ << ").bz2";
-
 		std::string replay_data_str = replay_data.str();
 		simple_wml::document replay(replay_data_str.c_str(), simple_wml::INIT_STATIC);
 
-		std::string filename(name.str());
-
-		std::replace(filename.begin(), filename.end(), ' ', '_');
-		filename.erase(std::remove_if(filename.begin(), filename.end(), is_invalid_filename_char), filename.end());
-
+		std::string filename = get_replay_filename();
 		DBG_GAME << "saving replay: " << filename << std::endl;
 
 		filesystem::scoped_ostream os(filesystem::ostream_file(replay_save_path_ + filename));
