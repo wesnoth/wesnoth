@@ -166,11 +166,6 @@ A comma separated list of version strings to be accepted by the server. \fB*\fR 
 .br
 Example: \fBversions_accepted="*"\fR accepts any version string.
 .TP
-.B user_handler
-The name of the user handler to use. Currently available user handlers are \fBforum\fR (to connect wesnothd to a phpbb forum database) and \fBsample\fR (a sample implementation of the user handler interface, if you use this on anything real you are insane). The default value is \fBforum\fR. You must also add a
-.B [user_handler]
-section, see below.
-.TP
 .B deny_unregistered_login
 Whether to prevent users who are not registered with the
 .B user_handler
@@ -257,29 +252,7 @@ section is present in the configuration the server will run without any nick reg
 .TP
 .B mp_mod_group
 (for user_handler=forum) The ID of the forum group to be considered as having moderation authority.
-.TP
-.B user_expiration
-(for user_handler=sample) The time after which a registered nick expires (in days).
 .RE
-.P
-.B [mail]
-Configures an SMTP server through which the user handler can send mail. Currently only used by the sample user handler.
-.RS
-.TP
-.B server
-The hostname of the mail server
-.TP
-.B username
-The user name under which to log into the mail server.
-.TP
-.B password
-This user's password.
-.TP
-.B from_address
-The reply-to address of you mail.
-.TP
-.B mail_port
-The port on which your mail server is running. Default is 25.
 .
 .SH EXIT STATUS
 .
