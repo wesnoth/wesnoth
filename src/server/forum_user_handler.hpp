@@ -86,6 +86,7 @@ class fuh : public user_handler {
 		void db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location);
 		void db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, const std::string& is_host, const std::string& faction);
 		void db_insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name);
+		void db_set_oos_flag(const std::string& uuid, int game_id);
 
 	private:
 		std::string get_hash(const std::string& user);
