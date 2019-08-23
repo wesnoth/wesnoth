@@ -45,6 +45,8 @@ fuh::fuh(const config& c)
 	, db_game_info_table_(c["db_game_info_table"].str())
 	, db_game_player_info_table_(c["db_game_player_info_table"].str())
 	, db_game_modification_info_table_(c["db_game_modification_info_table"].str())
+	, db_group_table_(c["db_group_table"].str())
+	, mp_mod_group_(std::stoi(c["mp_mod_group"]))
 	, conn(mysql_init(nullptr))
 {
 	mysql_options(conn, MYSQL_SET_CHARSET_NAME, "utf8mb4");
@@ -157,9 +159,9 @@ bool fuh::user_is_moderator(const std::string& name) {
 	if(!user_exists(name)) return false;
 
 	try {
-		return get_writable_detail_for_user<int>(name, "user_is_moderator") == 1;
+		return get_writable_detail_for_user<int>(name, "user_is_moderator") == 1 || is_user_in_group(name, mp_mod_group_);
 	} catch (const sql_error& e) {
-		ERR_UH << "Could not query user_is_moderator for user '" << name << "' :" << e.message << std::endl;
+		ERR_UH << "Could not query user_is_moderator/MP Moderators group for user '" << name << "' :" << e.message << std::endl;
 		// If the database is down mark nobody as a mod
 		return false;
 	}
@@ -404,6 +406,15 @@ void fuh::write_detail(const std::string& name, const std::string& detail, T&& v
 		prepared_statement<void>("UPDATE `" + db_extra_table_ + "` SET " + detail + "=? WHERE UPPER(username)=UPPER(?)", std::forward<T>(value), name);
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not set detail for user '" << name << "': " << e.message << std::endl;
+	}
+}
+
+bool fuh::is_user_in_group(const std::string& name, unsigned int group_id) {
+	try {
+		return prepared_statement<bool>("SELECT 1 FROM `" + db_users_table_ + "` u, `" + db_group_table_ + "` ug WHERE UPPER(u.username)=UPPER(?) AND u.USER_ID = ug.USER_ID AND ug.GROUP_ID = ?", name, group_id);
+	} catch (const sql_error& e) {
+		ERR_UH << "Could not execute test query for user group '" << group_id << "' and username '" << name << "'" << e.message << std::endl;
+		return false;
 	}
 }
 
