@@ -45,6 +45,7 @@ CREATE TABLE extra
 -- MAP_NAME: the mp_scenario attribute value
 -- ERA_NAME: the mp_era attribute value
 -- REPLAY_NAME: the file name of the replay create when the game is ended
+-- OOS: Y/N flag of whether the game encountered an OOS error
 create table game_info
 (
     INSTANCE_UUID      CHAR(36) NOT NULL,
@@ -57,6 +58,7 @@ create table game_info
     MAP_NAME           VARCHAR(255),
     ERA_NAME           VARCHAR(255),
     REPLAY_NAME        VARCHAR(255),
+    OOS                CHAR(1) NOT NULL DEFAULT 'N',
     primary key (INSTANCE_UUID, GAME_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

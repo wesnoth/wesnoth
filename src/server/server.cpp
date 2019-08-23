@@ -1874,6 +1874,9 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			g.set_termination_reason((*info)["condition"].to_string());
 			if((*info)["condition"].to_string() == "out of sync") {
 				g.send_server_message_to_all(player.name() + " reports out of sync errors.");
+				if(user_handler_){
+					user_handler_->db_set_oos_flag(uuid_, g.id());
+				}
 			}
 		}
 
