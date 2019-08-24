@@ -46,9 +46,14 @@ fuh::fuh(const config& c)
 	, db_game_player_info_table_(c["db_game_player_info_table"].str())
 	, db_game_modification_info_table_(c["db_game_modification_info_table"].str())
 	, db_group_table_(c["db_group_table"].str())
-	, mp_mod_group_(std::stoi(c["mp_mod_group"]))
+	, mp_mod_group_(0)
 	, conn(mysql_init(nullptr))
 {
+	try {
+		mp_mod_group_ = std::stoi(c["mp_mod_group"].str());
+	} catch(...) {
+		ERR_UH << "Failed to convert the mp_mod_group value of '" << c["mp_mod_group"].str() << "' into an int!  Defaulting to " << mp_mod_group_ << "." << std::endl;
+	}
 	mysql_options(conn, MYSQL_SET_CHARSET_NAME, "utf8mb4");
 	if(!conn || !mysql_real_connect(conn, db_host_.c_str(),  db_user_.c_str(), db_password_.c_str(), db_name_.c_str(), 0, nullptr, 0)) {
 		ERR_UH << "Could not connect to database: " << mysql_errno(conn) << ": " << mysql_error(conn) << std::endl;
@@ -159,7 +164,7 @@ bool fuh::user_is_moderator(const std::string& name) {
 	if(!user_exists(name)) return false;
 
 	try {
-		return get_writable_detail_for_user<int>(name, "user_is_moderator") == 1 || is_user_in_group(name, mp_mod_group_);
+		return get_writable_detail_for_user<int>(name, "user_is_moderator") == 1 || (mp_mod_group_ != 0 && is_user_in_group(name, mp_mod_group_));
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not query user_is_moderator/MP Moderators group for user '" << name << "' :" << e.message << std::endl;
 		// If the database is down mark nobody as a mod
