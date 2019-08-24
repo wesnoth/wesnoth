@@ -30,19 +30,20 @@ def generate(env):
 
     env["MSGINIT"] = WhereIs("msginit")
     msginit = Builder(
-        action = "$MSGINIT -i $SOURCE -o $TARGET --no-translator",
+        action = "$MSGINIT -i $SOURCE -o $TARGET -l $MSGINIT_LINGUA --no-translator",
         src_suffix = ".pot",
         suffix = ".po",
         single_source = True
         )
     env["BUILDERS"]["MsgInit"] = msginit
     env["ENV"]["LANG"] = os.environ.get("LANG")
+    env["MSGINIT_LINGUA"] = "C"
 
-    def MsgInitMerge(env, target, source):
+    def MsgInitMerge(env, target, source, **kw):
         if os.path.exists(target + ".po"):
-            return env.MsgMerge(target, source)
+            return env.MsgMerge(target, source, **kw)
         else:
-            return env.MsgInit(target, source)
+            return env.MsgInit(target, source, **kw)
     env.AddMethod(MsgInitMerge)
 
     env["PO4A_GETTEXTIZE"] = WhereIs("po4a-gettextize")
