@@ -22,9 +22,9 @@ class terrain_type
 {
 public:
 
-	terrain_type();
-	terrain_type(const config& cfg);
-	terrain_type(const terrain_type& base, const terrain_type& overlay);
+	explicit terrain_type();
+	explicit terrain_type(const config& cfg);
+	explicit terrain_type(const terrain_type& base, const terrain_type& overlay);
 
 	const std::string& icon_image() const { return icon_image_; }
 	const std::string& minimap_image() const { return minimap_image_; }
@@ -43,12 +43,67 @@ public:
 	//the character representing this terrain
 	t_translation::terrain_code number() const { return number_; }
 
-	//the underlying type of the terrain
+	/**
+	 * The underlying type of the terrain.
+	 *
+	 * Whether "underlying" means "only the types used in [movetype]" is determined
+	 * by the terrain.cfg file, rather than the .cpp code - in 1.14, the terrain.cfg
+	 * file uses only the [movetype] terrains in its alias lists.
+	 */
 	const t_translation::ter_list& mvt_type() const { return mvt_type_; }
 	const t_translation::ter_list& def_type() const { return def_type_; }
 	const t_translation::ter_list& vision_type() const { return vision_type_; }
 	const t_translation::ter_list& union_type() const { return union_type_; }
 
+	/**
+	 * Returns true if a terrain has no underlying types other than itself,
+	 * in respect of either union, movement or defense.
+	 *
+	 * If this returns false, then @underlying must be non-empty.
+	 *
+	 * This function is to encapsulate the logic of whether such a terrain
+	 * is represented by a empty list, or whether it's represented by a list
+	 * including only itself; so that a refactor can switch between these two
+	 * possible implementations.
+	 *
+	 * This is not related to whether the terrain has an overlay. For example,
+	 * Gg^Uf (flat with old mushrooms) is indivisible (it's only Tt), although
+	 * Gg^Tf (flat with new mushrooms) can be divided (in to Gt and Tt).
+	 *
+	 * \todo: should this document vision_type() too?
+	 *
+	 * @a id the terrain
+	 * @a underlying the corresponding mvt_type(), def_type() or union_type()
+	 */
+	static bool is_indivisible(t_translation::terrain_code id, const t_translation::ter_list& underlying) {
+		return (underlying.empty()
+			|| (underlying.size() == 1 && underlying.front() == id));
+	}
+
+	/**
+	 * Returns true if this terrain has no underlying types other than itself.
+	 *
+	 * \todo what about a terrain where is_mvt_indivisible() != is_def_indivisible()?
+	 */
+	bool is_indivisible() const {
+		return (union_type_.empty()
+			|| (union_type_.size() == 1 && union_type_.front() == number_));
+	}
+	bool is_mvt_indivisible() const {
+		return (mvt_type_.empty()
+			|| (mvt_type_.size() == 1 && mvt_type_.front() == number_));
+	}
+
+	/**
+	 * True if this object represents some sentinel values.
+	 *
+	 * \todo number_ should never be NONE_TERRAIN
+	 * \todo there's two different VOID_TERRAINS - see the comment attached to
+	 * the definition of VOID_TERRAIN.
+	 *
+	 * \todo unclear what this should mean, so replace it with a clearly-named
+	 * successor.
+	 */
 	bool is_nonnull() const { return  (number_ != t_translation::NONE_TERRAIN) &&
 		(number_ != t_translation::VOID_TERRAIN ); }
 	/// Returns the light (lawful) bonus for this terrain when the time of day
@@ -82,6 +137,20 @@ public:
 	t_translation::terrain_code default_base() const { return editor_default_base_; }
 	t_translation::terrain_code terrain_with_default_base() const;
 
+	/**
+	 * Returns true if all most of the data matches. The ones that don't need to match:
+	 * - editor_group_
+	 * - icon_image_
+	 * - description_
+	 * - help_topic_text_
+	 * - income_description_ , ~ally_ , ~enemy_, ~own_
+	 * - hide_if_impassable_
+	 *
+	 * The intention seems to be to allow additional [terrain_type] tags to add
+	 * compatible definitions to multiple addon-specific editor groups. For
+	 * this purpose the description strings aren't too important, and
+	 * hide_if_impassable_ seems trivial.
+	 */
 	bool operator==(const terrain_type& other) const;
 private:
 
@@ -137,9 +206,3 @@ private:
 	t_translation::terrain_code editor_default_base_;
 	bool hide_help_, hide_in_editor_, hide_if_impassable_;
 };
-
-void create_terrain_maps(const config::const_child_itors &cfgs,
-                         t_translation::ter_list& terrain_list,
-                         std::map<t_translation::terrain_code, terrain_type>& letter_to_terrain);
-
-void merge_alias_lists(t_translation::ter_list& first, const t_translation::ter_list& second);

@@ -153,17 +153,14 @@ std::string terrain_topic_generator::operator()() const {
 		return ss.str();
 	}
 
-	if (!(type_.union_type().size() == 1 && type_.union_type()[0] == type_.number() && type_.is_nonnull())) {
-
-		const t_translation::ter_list& underlying_mvt_terrains = tdata->underlying_mvt_terrain(type_.number());
-
+	if (!type_.is_indivisible()) {
 		ss << "\n" << _("Base Terrain: ");
 
 		bool first = true;
-		for (const t_translation::terrain_code& underlying_terrain : underlying_mvt_terrains) {
-			const terrain_type& mvt_base = tdata->get_terrain_info(underlying_terrain);
+		for (const auto& underlying_terrain : type_.union_type()) {
+			const terrain_type& base = tdata->get_terrain_info(underlying_terrain);
 
-			if (mvt_base.editor_name().empty()) continue;
+			if (base.editor_name().empty()) continue;
 
 			if (!first) {
 				ss << ", ";
@@ -171,15 +168,16 @@ std::string terrain_topic_generator::operator()() const {
 				first = false;
 			}
 
-			ss << make_link(mvt_base.editor_name(), ".." + terrain_prefix + mvt_base.id());
+			ss << make_link(base.editor_name(), ".." + terrain_prefix + base.id());
 		}
 
 		ss << "\n";
 
+		const t_translation::ter_list& underlying_mvt_terrains = type_.mvt_type();
 		ss << "\n" << _("Movement properties: ");
 		ss << print_behavior_description(underlying_mvt_terrains.begin(), underlying_mvt_terrains.end(), tdata) << "\n";
 
-		const t_translation::ter_list& underlying_def_terrains = tdata->underlying_def_terrain(type_.number());
+		const t_translation::ter_list& underlying_def_terrains = type_.def_type();
 		ss << "\n" << _("Defense properties: ");
 		ss << print_behavior_description(underlying_def_terrains.begin(), underlying_def_terrains.end(), tdata) << "\n";
 	}
@@ -717,7 +715,7 @@ std::string unit_topic_generator::operator()() const {
 				continue;
 			}
 
-			if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
+			if (info.is_indivisible() && info.is_nonnull()) {
 				terrain_movement_info movement_info =
 				{
 					info.name(),

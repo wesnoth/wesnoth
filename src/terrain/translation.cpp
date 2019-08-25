@@ -118,6 +118,11 @@ namespace t_translation {
 
 const terrain_code OFF_MAP_USER = string_to_number_("_off^_usr");
 
+/**
+ * VOID_TERRAIN is used for shrouded hexes. It's also used by terrain_type's
+ * default constructor, but that's only used as the sentinel value for when
+ * terrain_type_data::get_terrain_info() is asked for an unknown terrain code.
+ */
 const terrain_code VOID_TERRAIN = string_to_number_("_s");
 const terrain_code FOGGED = string_to_number_("_f");
 
