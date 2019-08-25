@@ -67,7 +67,6 @@ void game_created(const std::string & scenario, const std::string & name)
 		const std::string message = VGETTEXT("A game ($name|, $scenario|) has been created", {{"name", name}, {"scenario", scenario}});
 		desktop::notifications::send(_("Wesnoth"), message, desktop::notifications::OTHER);
 	}
-	
 }
 
 void player_joins(bool is_lobby)
