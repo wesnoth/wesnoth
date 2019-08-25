@@ -246,7 +246,7 @@ std::string
 	game_user_leave  = "leave.wav",
 	ready_for_start  = "bell.wav",
 	game_has_begun   = "gamestart.ogg",
-	game_created	 = "chat-highlight.ogg";
+	game_created	 = "join.wav";
 
 const std::string
 	button_press     = "button.wav",
