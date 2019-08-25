@@ -31,6 +31,8 @@
 
 namespace wesnothd
 {
+class game;
+
 class player_record
 {
 public:

@@ -21,8 +21,6 @@
 
 namespace wesnothd {
 
-class game;
-
 class player
 {
 public:
@@ -51,19 +49,6 @@ public:
 	const simple_wml::node* config_address() const { return &cfg_; }
 
 	bool is_message_flooding();
-
-	/**
-	 * @return true iff the player is in a game
-	 */
-	bool in_game() const { return get_game() != nullptr; }
-
-	/**
-	 * @return a pointer to the game the player is in, or nullptr if he/she is not
-	 * in a game at the moment
-	 */
-	const game* get_game() const;
-
-	void set_game(game* g);
 
 	void set_moderator(bool moderator) { moderator_ = moderator; }
 	bool is_moderator() const { return moderator_; }
