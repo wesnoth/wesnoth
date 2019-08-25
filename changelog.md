@@ -14,6 +14,7 @@
    * Added translatable explanations of :droid, :help and :idle's arguments
  ### WML engine
    * Ranges can now have upper limit "infinity" instead of using a big number like "99" or "99999"
+   * Print a deprecation warning for `[terrain_type]`'s partly-implemented `vision_alias`
  ### Miscellaneous and bug fixes
    * Fixed :droid's arguments not all being optional (Issue#4308)
 

@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#include "deprecation.hpp"
+#include "game_version.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
@@ -149,6 +151,10 @@ terrain_type::terrain_type(const config& cfg) :
 
 	const t_translation::ter_list& vision_alias = t_translation::read_list(cfg["vision_alias"].str());
 	if(!vision_alias.empty()) {
+		// Vision costs are calculated in movetype.cpp, but they're calculated based on gamemap::underlying_mvt_terrain().
+		// Having vision costs that are different to movement costs is still supported, but having separate aliases seems
+		// an edge case that shouldn't be introduced until we're ready to test it.
+		deprecated_message("vision_alias", DEP_LEVEL::REMOVED, {1, 15, 2}, "vision_alias was never completely implemented, vision is calculated using mvt_alias instead");
 		vision_type_ = vision_alias;
 	}
 
