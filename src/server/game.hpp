@@ -319,6 +319,12 @@ public:
 	 * Function which returns true iff 'player' controls any of the sides spcified in 'sides'.
 	 */
 	bool controls_side(const std::vector<int>& sides, const socket_ptr& player) const;
+	/**
+	 * Updates the game's id to the next available value.
+	 * For example, for when the next scenario of an MP campaign is loaded.
+	 */
+	void set_next_id_bmi();
+	void set_next_id();
 
 private:
 	// forbidden operations

@@ -684,7 +684,6 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 	bool name_taken = p != player_connections_.get<name_t>().end();
 
 	// Check for password
-
 	bool registered;
 	if(!authenticate(socket, username, (*login)["password"].to_string(), version, name_taken, registered))
 		return true; // it's a failed login but we don't want to call server::login again
@@ -1540,6 +1539,9 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		}
 
 		g.save_replay();
+		if(user_handler_){
+			user_handler_->db_update_game_end(uuid_, g.id(), g.get_replay_filename());
+		}
 
 		g.new_scenario(socket);
 		g.reset_last_synced_context_id();
@@ -1547,6 +1549,13 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		// Record the full scenario in g.level()
 		g.level().clear();
 		scenario->copy_into(g.level().root());
+
+		// update game to have new id
+		g.set_next_id_bmi();
+		// insert info for new id
+		if(user_handler_) {
+			user_handler_->db_insert_game_info(uuid_, g.id(), game_config::wesnoth_version.str(), g.name());
+		}
 
 		if(g.description() == nullptr) {
 			ERR_SERVER << client_address(socket) << "\tERROR: \"" << g.name() << "\" (" << g.id()

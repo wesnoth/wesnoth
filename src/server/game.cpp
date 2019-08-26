@@ -2045,4 +2045,26 @@ void game::send_server_message(const char* message, const socket_ptr& sock, simp
 		send_to_player(sock, doc);
 	}
 }
+
+void game::set_next_id()
+{
+	// ID directly accessible from the game instance
+	id_ = id_num++;
+
+	// ID used for list of games to be displayed in the lobby
+	description_->set_attr_int("id", id_);
+
+	// ID used for list of users to be displayed in the lobby
+	for(const auto p : players_) {
+		player_connections_.get<socket_t>().find(p)->info().mark_available(id_, name_);
+	}
+	for(const auto o : observers_) {
+		player_connections_.get<socket_t>().find(o)->info().mark_available(id_, name_);
+	}
+}
+
+void game::set_next_id_bmi()
+{
+	player_connections_.modify(player_connections_.find(owner_), std::bind(&player_record::set_next_game_id, _1));
+}
 } // namespace wesnothd

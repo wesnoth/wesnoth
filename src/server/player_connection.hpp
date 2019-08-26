@@ -70,6 +70,8 @@ public:
 
 	int game_id() const;
 
+	void set_next_game_id();
+
 	void set_game(std::shared_ptr<game> new_game);
 
 	void enter_lobby();

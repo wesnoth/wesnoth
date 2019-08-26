@@ -33,6 +33,14 @@ int player_record::game_id() const
 	return game_ ? game_->id() : 0;
 }
 
+void player_record::set_next_game_id()
+{
+	if(game_)
+	{
+		game_->set_next_id();
+	}
+}
+
 void player_record::set_game(std::shared_ptr<game> new_game)
 {
 	game_ = new_game;
