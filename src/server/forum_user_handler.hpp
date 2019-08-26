@@ -91,7 +91,7 @@ class fuh : public user_handler {
 		std::time_t retrieve_ban_duration_internal(const std::string& col, const std::string& detail);
 		std::time_t retrieve_ban_duration_internal(const std::string& col, unsigned int detail);
 
-		std::string db_name_, db_host_, db_user_, db_password_, db_users_table_, db_banlist_table_, db_extra_table_, db_game_info_table_, db_game_player_info_table_, db_game_modification_info_table_, db_group_table_;
+		std::string db_name_, db_host_, db_user_, db_password_, db_users_table_, db_banlist_table_, db_extra_table_, db_game_info_table_, db_game_player_info_table_, db_game_modification_info_table_, db_user_group_table_;
 		unsigned int mp_mod_group_;
 
 		MYSQL *conn;
