@@ -792,7 +792,6 @@ void connect_engine::send_level_data() const
 		});
 		send_to_server(level_);
 	} else {
-		send_to_server(config {"update_game", config()});
 		config next_level;
 		next_level.add_child("store_next_scenario", level_);
 		send_to_server(next_level);
