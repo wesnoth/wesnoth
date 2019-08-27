@@ -215,7 +215,10 @@ protected:
 		register_command("help", &map_command_handler<Worker>::help,
 			_("Available commands list and command-specific help. "
 				"Use \"help all\" to include currently unavailable commands."),
-			_("do not translate the 'all'^[all|<command>]"));
+			// TRANSLATORS: These are the arguments accepted by the "help" command,
+			// which are either "all" or the name of another command.
+			// As with the command's name, "all" is hardcoded, and shouldn't change in the translation.
+			_("[all|<command>]\n“all” = overview of all commands, <command> = name of a specific command (provides more detail)"));
 	}
 	//derived classes initialize the map overriding this function
 	virtual void init_map() = 0;
@@ -323,15 +326,21 @@ protected:
 				ss << _(" No help available.");
 			}
 			else {
-				ss << " - " << c->help;
+				ss << " - " << c->help << "\n";
 			}
 			if (!c->usage.empty()) {
-				ss << " " << _("Usage:") << " " << cmd_prefix_ << cmd << " " << c->usage;
+				ss << _("Usage:") << " " << cmd_prefix_ << cmd << " " << c->usage << "\n";
 			}
-			ss << get_command_flags_description(*c);
+			const auto flags_description = get_command_flags_description(*c);
+			if (!flags_description.empty()) {
+				// This shares the objectives dialog's translation of "Notes:"
+				ss << _("Notes:") << " " << get_command_flags_description(*c) << "\n";
+			}
 			const std::vector<std::string> l = get_aliases(cmd);
 			if (!l.empty()) {
-				ss << " (" << _("aliases:") << " " << utils::join(l, " ") << ")";
+				// TRANSLATORS: alternative names for command-line commands, only shown if
+				// there is at least one of them.
+				ss << _n("command^Alias:", "Aliases:", l.size()) << " " << utils::join(l, " ") << "\n";
 			}
 			print(_("help"), ss.str());
 		}

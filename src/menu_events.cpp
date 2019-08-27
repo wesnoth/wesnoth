@@ -1183,9 +1183,15 @@ protected:
 
 		register_command("refresh", &console_handler::do_refresh, _("Refresh gui."));
 		register_command("droid", &console_handler::do_droid, _("Switch a side to/from AI control."),
-				_("do not translate the on/off^[<side> [on/off]]"));
+				// TRANSLATORS: These are the arguments accepted by the "droid" command,
+				// which must be a side-number and then optionally one of "on", "off" or "full".
+				// As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
+				_("[<side> [on/off]]\n“on” = enable control by the AI, “off” = side is controlled by the player"));
 		register_command("idle", &console_handler::do_idle, _("Switch a side to/from idle state."),
-				_("do not translate the on/off^[<side> [on/off]]"));
+				// TRANSLATORS: These are the arguments accepted by the "idle" command,
+				// which must be a side-number and then optionally "on" or "off".
+				// As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
+				_("command_idle^[<side> [on/off]]"));
 		register_command("theme", &console_handler::do_theme);
 		register_command("control", &console_handler::do_control,
 				_("Assign control of a side to a different player or observer."), _("<side> <nickname>"), "N");
@@ -1195,7 +1201,7 @@ protected:
 		register_command("foreground", &console_handler::do_foreground, _("Debug foreground terrain."), "", "D");
 		register_command(
 				"layers", &console_handler::do_layers, _("Debug layers from terrain under the mouse."), "", "D");
-		register_command("fps", &console_handler::do_fps, _("Show fps."));
+		register_command("fps", &console_handler::do_fps, _("Show fps (Frames Per Second)."));
 		register_command("benchmark", &console_handler::do_benchmark);
 		register_command("save", &console_handler::do_save, _("Save game."));
 		register_alias("save", "w");
