@@ -6,6 +6,8 @@
  ### Language and i18n
    * Updated translations: French, Portuguese (Brazil)
    * Set up for translating the Wings of Victory campaign (PR#4265)
+   * Changed the :help command's output to split over multiple lines
+   * Added translatable explanations of :droid, :help and :idle's arguments
 
 ## Version 1.15.1
  ### Editor
