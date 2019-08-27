@@ -163,12 +163,9 @@ odpovídá příslušné verzi wesnothu.
 .br
 Příklad: \fBversions_accepted="*"\fP akceptuje všechny verze.
 .TP 
-\fBuser_handler\fP
-Název handleru uživatelů, jenž má být použit. V tuto chvíli jsou dostupné
-handlery \fBforum\fP (propojení s databází phpbb) a \fBsample\fP (vzorová
-implementace rozhraní, prakticky nepoužitelná). Výchozí hodnota je
-\fBforum\fP. Handler musí být dále konfigurován v sekci \fB[user_handler]\fP \- viz
-níže.
+\fBdeny_unregistered_login\fP
+Whether to prevent users who are not registered with the \fBuser_handler\fP
+being used from logging in. (default: false)
 .
 .SS "Globální značky:"
 .
@@ -208,59 +205,52 @@ na určený server klientské požadavky. Akceptuje stejné klíče jako
 \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Konfiguruje uživatelský handler. Dostupné klíče se liší
-podle toho, který handler je použit \- nastaveno klíčem
-\fBuser_handler\fP. Pokud není v konfiguraci nalezena žádná sekce
-\fB[user_handler]\fP, server poběží bez služeb správy přezdívek.
+\fB[user_handler]\fP Configures the user handler. Available keys vary depending
+on which user handler is set with the \fBuser_handler\fP key. If no
+\fB[user_handler]\fP section is present in the configuration the server will
+run without any nick registration service. All additional tables that are
+needed for the forum_user_handler to function can be found in
+table_definitions.sql in the Wesnoth source repository.
 .RS
 .TP 
 \fBdb_host\fP
-(pro user_handler=forum) Hostitelský databázový server
+The hostname of the database server
 .TP 
 \fBdb_name\fP
-(pro user_handler=forum) Jméno databáze
+The name of the database
 .TP 
 \fBdb_user\fP
-(pro user_handler=forum) Uživatelské jméno pro přihlášení k databázi
+The name of the user under which to log into the database
 .TP 
 \fBdb_password\fP
-(pro user_handler=forum) Heslo pro databázi
+This user's password
 .TP 
 \fBdb_users_table\fP
-(pro user_handler=forum) Název tabulky, v níž ukládá vaše fórum (typu phpbb)
-data o uživatelích. Pravděpodobně to je <prefix>_users (například
-phpbb3_users).
+The name of the table in which your phpbb forums saves its user data. Most
+likely this will be <table\-prefix>_users (e.g. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
-(pro user_handler=forum) Název tabulky, v níž bude wesnothd ukládat svá
-vlastní data o uživatelích. Tuto tabulku budete muset vytvořit ručně \-
-například: \fBCREATE TABLE <jméno_tabulky>(username VARCHAR(255)
-PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0,
-user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);\fP
+The name of the table in which wesnothd will save its own data about users.
 .TP 
-\fBuser_expiration\fP
-(pro user_handler=sample) Čas, po němž vyprší platnost registrovaného
-uživatelského jména (dny).
+\fBdb_game_info_table\fP
+The name of the table in which wesnothd will save its own data about games.
+.TP 
+\fBdb_game_player_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+players in a game.
+.TP 
+\fBdb_game_modification_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+modifications used in a game.
+.TP 
+\fBdb_user_group_table\fP
+The name of the table in which your phpbb forums saves its user group
+data. Most likely this will be <table\-prefix>_user_group
+(e.g. phpbb3_user_group).
+.TP 
+\fBmp_mod_group\fP
+The ID of the forum group to be considered as having moderation authority.
 .RE
-.P
-\fB[mail]\fP Konfiguruje SMTP server skrz nějž je možno odesílat poštu
-uživatelského handleru. V tuto chvíli jej používá pouze vzorový handler.
-.RS
-.TP 
-\fBserver\fP
-Hostitelský server emailu
-.TP 
-\fBusername\fP
-Uživatelské jméno pro emailový server.
-.TP 
-\fBpassword\fP
-Heslo pro emailový server.
-.TP 
-\fBfrom_address\fP
-Adresa vložená do hlavičky Reply\-To odesílaných mailů.
-.TP 
-\fBmail_port\fP
-Port, na němž běží emailový server. Výchozí hodnota 25.
 .
 .SH "NÁVRATOVÝ STATUS"
 .
@@ -291,3 +281,4 @@ to i co se týká obchodovatelnosti a použitelnosti.
 .SH "VIZ TAKÉ"
 .
 \fBwesnoth\fP(6)
+

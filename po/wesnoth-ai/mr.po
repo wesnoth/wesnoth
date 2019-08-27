@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-07-18 12:50 UTC\n"
+"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,8 +54,8 @@ msgstr ""
 msgid "The Elves Besieged"
 msgstr ""
 
-#. [side]: type=Spearman, id=Konrad
 #. [unit]: type=Spearman, id=Konrad
+#. [side]: type=Spearman, id=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:34
 #: data/ai/micro_ais/scenarios/patrols.cfg:92
 msgid "Konrad"
@@ -65,8 +65,8 @@ msgstr ""
 #. [side]: type=Elvish Champion, id=Galdrad
 #. [side]: type=Elvish Shyde, id=Chantal
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:46
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:152
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:172
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:151
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:171
 msgid "Rebels"
 msgstr ""
 
@@ -76,7 +76,7 @@ msgid "Delfador"
 msgstr ""
 
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:86
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:85
 msgid "Urug-Telfar"
 msgstr ""
 
@@ -84,47 +84,47 @@ msgstr ""
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
 #. [side]: id=Vanak, type=Orcish Ruler
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:98
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:112
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:130
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:97
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:111
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:129
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:24
 msgid "Orcs"
 msgstr ""
 
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:105
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:104
 msgid "Knafa-Tan"
 msgstr ""
 
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:123
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:122
 msgid "Maga-Knafa"
 msgstr ""
 
 #. [side]: type=Elvish Champion, id=Galdrad
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:142
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:141
 msgid "Galdrad"
 msgstr ""
 
 #. [side]: type=Elvish Shyde, id=Chantal
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:159
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:158
 msgid "Chantal"
 msgstr ""
 
 #. [message]: speaker=Konrad
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:209
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:208
 msgid ""
 "Master Delfador! Look, there are orcs coming from all directions! What shall "
 "we do?"
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:213
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:212
 msgid "There are too many to fight, far too many. We must escape!"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:219
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:218
 msgid ""
 "This is a reenactment of scenario The Elves Besieged of the mainline "
 "campaign Heir to the Throne, just that the AI is playing Konrad's side here. "
@@ -139,54 +139,54 @@ msgid ""
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:226
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:225
 msgid "Move Konrad here"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:242
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:241
 msgid "Very well, we have made it this far! But where do we go next?"
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:247
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:246
 msgid ""
 "In HttT, we would travel north now, and try to make it to the Isle of "
 "Alduin. But for this demo campaign, we'll call it good here."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:272
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:271
 msgid "I... I don’t think I can make it anymore."
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:276
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:275
 msgid "Prince... you must keep fighting! Nooooooo!"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:280
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:279
 msgid "It is over. I am doomed..."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:294
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:293
 msgid "I have... have failed in my duty to protect the prince! I am defeated."
 msgstr ""
 
 #. [message]: speaker=Konrad
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:298
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:297
 msgid "Don’t die, Delfador! Please, you have to stay alive!"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:302
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:301
 msgid "Ugh!"
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:313
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:312
 msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
 msgstr ""
@@ -448,7 +448,7 @@ msgstr ""
 #. [message]: speaker=Vanak
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:93
 #: data/ai/micro_ais/scenarios/guardians.cfg:572
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:140
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:148
 msgid "They there!  We them get!"
 msgstr ""
 
@@ -1386,7 +1386,7 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/lurkers.cfg:474
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:151
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:159
 #: data/ai/micro_ais/scenarios/patrols.cfg:238
 #: data/ai/micro_ais/scenarios/recruiting.cfg:100
 msgid "Notes"
@@ -1448,9 +1448,9 @@ msgstr ""
 msgid "Vanak"
 msgstr ""
 
+#. [event]
 #. [side]
 #. [unit]: type=Dragoon, id=messenger
-#. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:37
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:73
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:72
@@ -1458,34 +1458,34 @@ msgid "Messenger"
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:123
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:131
 msgid "Messenger Waypoint 1"
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:125
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:133
 msgid "Messenger Waypoint 2"
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:127
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:135
 msgid "Messenger Waypoint 3"
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:130
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:138
 msgid "AI moves Messenger here"
 msgstr ""
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:145
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:153
 msgid ""
 "Men, I need to get to that signpost in the north, to get the message to our "
 "leader. Let's head up there as quickly as we can."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:152
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:160
 msgid ""
 "The Messenger Escort AI will try to move the dragoon messenger to the "
 "signpost in the north, while protecting him as well as possible with the "
@@ -1506,27 +1506,27 @@ msgid ""
 msgstr ""
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:165
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:173
 msgid "Defeat the messenger"
 msgstr ""
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:169
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:177
 msgid "Messenger gets to the signpost"
 msgstr ""
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:173
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:181
 msgid "Death of Vanak"
 msgstr ""
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:189
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:197
 msgid "I made it!  Now our people will be safe."
 msgstr ""
 
 #. [message]: speaker=messenger
-#: data/ai/micro_ais/scenarios/messenger_escort.cfg:204
+#: data/ai/micro_ais/scenarios/messenger_escort.cfg:212
 msgid "Nooo!  All is lost. We will never stop the orcs now!"
 msgstr ""
 

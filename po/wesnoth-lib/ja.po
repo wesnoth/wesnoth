@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-07-18 15:50+0300\n"
+"POT-Creation-Date: 2019-08-27 22:40+0300\n"
 "PO-Revision-Date: 2018-05-06 10:15+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2019\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -1952,8 +1952,8 @@ msgstr "カスタムModの設定を変更することができます。"
 
 #. [button]: id=reset_option_values
 #. [button]: id=btn_reset_hotkeys
-#. [button]: id=revert_to_defaults
 #. [button]: id=orb_defaults
+#. [button]: id=revert_to_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:293
@@ -2058,7 +2058,7 @@ msgstr "メッセージ待機中"
 #: data/gui/window/mp_alerts_options.cfg:249
 #: data/gui/window/preferences.cfg:429
 #: data/gui/window/screenshot_notification.cfg:216
-#: data/gui/window/statistics_dialog.cfg:608
+#: data/gui/window/statistics_dialog.cfg:610
 #: data/gui/window/terrain_layers.cfg:434 data/gui/window/unit_list.cfg:447
 msgid "Close"
 msgstr "閉じる"
@@ -2480,7 +2480,7 @@ msgstr "概ねストーリー上のイベントの順"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:293
-#: src/gui/dialogs/multiplayer/lobby.cpp:451
+#: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Modifications"
 msgstr "Mod"
 
@@ -2766,7 +2766,7 @@ msgstr "解説："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:473
+#: src/gui/dialogs/multiplayer/lobby.cpp:477
 msgid "Experience modifier:"
 msgstr "必要経験値の変更（％）："
 
@@ -2828,7 +2828,7 @@ msgstr "ゴールド："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#: src/gui/dialogs/multiplayer/lobby.cpp:474
+#: src/gui/dialogs/multiplayer/lobby.cpp:478
 msgid "Gold per village:"
 msgstr "村あたりのゴールド："
 
@@ -2899,7 +2899,7 @@ msgstr "マップジェネレーターの選択："
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
-#: src/gui/dialogs/multiplayer/lobby.cpp:472
+#: src/gui/dialogs/multiplayer/lobby.cpp:476
 msgid "Settings"
 msgstr "設定"
 
@@ -3755,8 +3755,8 @@ msgstr ""
 msgid "Event"
 msgstr "イベント"
 
-#. [label]
 #. [widget]: id=label
+#. [label]
 #: data/gui/window/mp_alerts_options.cfg:154
 #: data/gui/window/preferences.cfg:346
 msgid "Sound"
@@ -3860,6 +3860,20 @@ msgstr "ターン経過時："
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:199
 msgid "When a new turn has begun"
+msgstr "新しいターンが始まった時"
+
+#. [grid]
+#: data/gui/window/mp_alerts_options.cfg:200
+#, fuzzy
+#| msgid "Game data:"
+msgid "Game created:"
+msgstr "ゲームデータ："
+
+#. [grid]
+#: data/gui/window/mp_alerts_options.cfg:200
+#, fuzzy
+#| msgid "When a new turn has begun"
+msgid "When a new game has been created"
 msgstr "新しいターンが始まった時"
 
 #. [button]: id=revert_to_defaults
@@ -4127,7 +4141,7 @@ msgstr "このゲームの参加時に必要となるパスワードを設定し
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/multiplayer/lobby.cpp:479
 msgid "Map size:"
 msgstr "マップサイズ："
 
@@ -4698,9 +4712,13 @@ msgstr "FPS 制限"
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:275
+#, fuzzy
+#| msgid ""
+#| "Disabling this increases CPU usage to 100% but may slightly improve "
+#| "performance at high resolutions"
 msgid ""
-"Disabling this increases CPU usage to 100% but may slightly improve "
-"performance at high resolutions"
+"Disabling this increases CPU usage, but may slightly improve performance "
+"(requires restart to take effect)"
 msgstr ""
 "CPU 使用率が 100% になるのを抑えますが、高解像度でのパフォーマンスが大きく向"
 "上します。"
@@ -4996,9 +5014,10 @@ msgstr "ダメージ"
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
-"The first number in parentheses is the expected number of hitpoints.\n"
+"The first number in parentheses is the expected number of hitpoints "
+"inflicted/taken.\n"
 "The sum (or difference) of the two numbers in parentheses is the actual "
-"number of hitpoints."
+"number of hitpoints inflicted/taken."
 msgstr ""
 
 #. [column]
@@ -5009,6 +5028,15 @@ msgstr ""
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:568
 msgid "Hits"
+msgstr ""
+
+#. [column]
+#: data/gui/window/statistics_dialog.cfg:571
+msgid ""
+"stats dialog^Estimate of how much randomness of battles favored or "
+"disfavored this side.\n"
+"Values between 0 and 50 suggest the number of hits was less than expected.\n"
+"Values between 50 and 100 suggest the number of hits was more than expected."
 msgstr ""
 
 #. [button]: id=cancel
@@ -5405,7 +5433,7 @@ msgstr "ja"
 msgid "The maximum text width is less than 1."
 msgstr "最大テキスト幅が 1 より小さいです。"
 
-#: src/font/text.cpp:761
+#: src/font/text.cpp:775
 msgid "The text contains invalid Pango markup: "
 msgstr "テキストに無効な Pango マークアップが含まれています："
 
@@ -5848,7 +5876,7 @@ msgid "Attacker vulnerability vs"
 msgstr "攻撃側の弱点："
 
 #: src/gui/dialogs/campaign_selection.cpp:318
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:460
 msgid "active_modifications^None"
 msgstr "なし"
 
@@ -5957,8 +5985,8 @@ msgid "dir_size^Unknown"
 msgstr "不明"
 
 #: src/gui/dialogs/game_cache_options.cpp:139
-#: src/gui/dialogs/network_transmission.cpp:53
-#: src/gui/dialogs/network_transmission.cpp:54
+#: src/gui/dialogs/network_transmission.cpp:81
+#: src/gui/dialogs/network_transmission.cpp:82
 #: src/gui/dialogs/screenshot_notification.cpp:148
 msgid "unit_byte^B"
 msgstr "B"
@@ -6040,12 +6068,12 @@ msgid "Unknown"
 msgstr "不明"
 
 #: src/gui/dialogs/game_stats.cpp:195 src/gui/dialogs/game_stats.cpp:198
-#: src/gui/dialogs/multiplayer/lobby.cpp:470
+#: src/gui/dialogs/multiplayer/lobby.cpp:474
 msgid "no"
 msgstr "いいえ"
 
 #: src/gui/dialogs/game_stats.cpp:195 src/gui/dialogs/game_stats.cpp:198
-#: src/gui/dialogs/multiplayer/lobby.cpp:470
+#: src/gui/dialogs/multiplayer/lobby.cpp:474
 msgid "yes"
 msgstr "はい"
 
@@ -6070,91 +6098,91 @@ msgstr "チームラベル"
 msgid "Side $side_number ($name)"
 msgstr "陣営 $side_number （ $name ）"
 
-#: src/gui/dialogs/loading_screen.cpp:44
+#: src/gui/dialogs/loading_screen.cpp:43
 msgid "Building terrain rules"
 msgstr "地形ルールの構築"
 
-#: src/gui/dialogs/loading_screen.cpp:45
+#: src/gui/dialogs/loading_screen.cpp:44
 msgid "Reading files and creating cache"
 msgstr "ファイルの読込み、キャッシュの作成"
 
-#: src/gui/dialogs/loading_screen.cpp:46 src/gui/dialogs/loading_screen.cpp:49
+#: src/gui/dialogs/loading_screen.cpp:45 src/gui/dialogs/loading_screen.cpp:48
 msgid "Initializing display"
 msgstr "表示の初期化"
 
-#: src/gui/dialogs/loading_screen.cpp:47
+#: src/gui/dialogs/loading_screen.cpp:46
 msgid "Reinitialize fonts for the current language"
 msgstr "現在の言語向けにフォントを再初期化"
 
-#: src/gui/dialogs/loading_screen.cpp:48
+#: src/gui/dialogs/loading_screen.cpp:47
 msgid "Initializing teams"
 msgstr "チームの初期化"
 
-#: src/gui/dialogs/loading_screen.cpp:50
+#: src/gui/dialogs/loading_screen.cpp:49
 msgid "Loading game configuration"
 msgstr "ゲーム設定の読込み"
 
-#: src/gui/dialogs/loading_screen.cpp:51
+#: src/gui/dialogs/loading_screen.cpp:50
 msgid "Loading data files"
 msgstr "データファイルの読込み"
 
-#: src/gui/dialogs/loading_screen.cpp:52
+#: src/gui/dialogs/loading_screen.cpp:51
 msgid "Loading level"
 msgstr "レベルの読込み"
 
-#: src/gui/dialogs/loading_screen.cpp:53
+#: src/gui/dialogs/loading_screen.cpp:52
 msgid "Initializing scripting engine"
 msgstr "スクリプトエンジンの初期化"
 
-#: src/gui/dialogs/loading_screen.cpp:54
+#: src/gui/dialogs/loading_screen.cpp:53
 msgid "Initializing planning mode"
 msgstr "計画モードの初期化"
 
-#: src/gui/dialogs/loading_screen.cpp:55
+#: src/gui/dialogs/loading_screen.cpp:54
 msgid "Reading unit files"
 msgstr "ユニットのファイルを読込み"
 
-#: src/gui/dialogs/loading_screen.cpp:56
+#: src/gui/dialogs/loading_screen.cpp:55
 msgid "Loading units"
 msgstr "ユニットの読込み"
 
-#: src/gui/dialogs/loading_screen.cpp:57
+#: src/gui/dialogs/loading_screen.cpp:56
 msgid "Searching for installed add-ons"
 msgstr "インストール済みアドオンを検索中"
 
-#: src/gui/dialogs/loading_screen.cpp:58
+#: src/gui/dialogs/loading_screen.cpp:57
 msgid "Starting game"
 msgstr "ゲーム開始"
 
-#: src/gui/dialogs/loading_screen.cpp:59
+#: src/gui/dialogs/loading_screen.cpp:58
 msgid "Verifying cache"
 msgstr "キャッシュの検証"
 
-#: src/gui/dialogs/loading_screen.cpp:60
+#: src/gui/dialogs/loading_screen.cpp:59
 msgid "Connecting to server"
 msgstr "サーバーへ接続中"
 
-#: src/gui/dialogs/loading_screen.cpp:61
+#: src/gui/dialogs/loading_screen.cpp:60
 msgid "Logging in"
 msgstr "ログイン中"
 
-#: src/gui/dialogs/loading_screen.cpp:62
+#: src/gui/dialogs/loading_screen.cpp:61
 msgid "Waiting for server"
 msgstr "サーバーを待機中"
 
-#: src/gui/dialogs/loading_screen.cpp:63
+#: src/gui/dialogs/loading_screen.cpp:62
 msgid "Connecting to redirected server"
 msgstr "リダイレクトされたサーバーへ接続中"
 
-#: src/gui/dialogs/loading_screen.cpp:64
+#: src/gui/dialogs/loading_screen.cpp:63
 msgid "Waiting for next scenario"
 msgstr "次のシナリオを待機中"
 
-#: src/gui/dialogs/loading_screen.cpp:65
+#: src/gui/dialogs/loading_screen.cpp:64
 msgid "Getting game data"
 msgstr "ゲームデータの取得中"
 
-#: src/gui/dialogs/loading_screen.cpp:66
+#: src/gui/dialogs/loading_screen.cpp:65
 msgid "Downloading lobby data"
 msgstr "ロビーデータをダウンロード中"
 
@@ -6215,43 +6243,43 @@ msgstr ""
 "このゲームをプレイするには、いくつかのアドオンをインストールまたはアップデー"
 "トする必要があります。それらのアドオンをインストールしますか？"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:391
+#: src/gui/dialogs/multiplayer/lobby.cpp:395
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "ゲーム： $num_total 中の $num_shown を表示"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:411
+#: src/gui/dialogs/multiplayer/lobby.cpp:415
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name（時代： $era_name）"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:441
+#: src/gui/dialogs/multiplayer/lobby.cpp:445
 msgid "era_or_mod^not installed"
 msgstr "未インストール"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:444
+#: src/gui/dialogs/multiplayer/lobby.cpp:448
 msgid "Era"
 msgstr "時代"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:476
+#: src/gui/dialogs/multiplayer/lobby.cpp:480
 msgid "Reloaded:"
 msgstr "再開："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:477
+#: src/gui/dialogs/multiplayer/lobby.cpp:481
 msgid "Shared vision:"
 msgstr "共有された視界："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:478
+#: src/gui/dialogs/multiplayer/lobby.cpp:482
 msgid "Shuffle sides:"
 msgstr "陣営をシャッフル："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:479
+#: src/gui/dialogs/multiplayer/lobby.cpp:483
 msgid "Time limit:"
 msgstr "制限時間："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:480
+#: src/gui/dialogs/multiplayer/lobby.cpp:484
 msgid "Use map settings:"
 msgstr "マップ設定を使用："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:488
+#: src/gui/dialogs/multiplayer/lobby.cpp:492
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -6259,19 +6287,19 @@ msgstr ""
 "このゲームに参加するには、１つあるいは複数のアドオンをインストールする必要が"
 "あります。"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:513
+#: src/gui/dialogs/multiplayer/lobby.cpp:517
 msgid "Observers allowed"
 msgstr "観戦可"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:516
+#: src/gui/dialogs/multiplayer/lobby.cpp:520
 msgid "Observers not allowed"
 msgstr "観戦不可"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:791
+#: src/gui/dialogs/multiplayer/lobby.cpp:795
 msgid "lobby"
 msgstr "ロビー"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:951
+#: src/gui/dialogs/multiplayer/lobby.cpp:955
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -6472,7 +6500,7 @@ msgid "All Scenarios"
 msgstr "すべてのシナリオ"
 
 #: src/gui/dialogs/statistics_dialog.cpp:181
-#: src/gui/dialogs/statistics_dialog.cpp:338
+#: src/gui/dialogs/statistics_dialog.cpp:341
 msgid "This Turn"
 msgstr "このターン"
 
@@ -6480,21 +6508,18 @@ msgstr "このターン"
 msgid "Actual hit rates, by chance to hit:"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:327
+#: src/gui/dialogs/statistics_dialog.cpp:219
+msgid "(no attacks have taken place yet)"
+msgstr ""
+
+#: src/gui/dialogs/statistics_dialog.cpp:328
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
-"The first number in parentheses is the expected number of hits.\n"
+"The first number in parentheses is the expected number of hits inflicted/"
+"taken.\n"
 "The sum (or difference) of the two numbers in parentheses is the actual "
-"number of hits."
-msgstr ""
-
-#: src/gui/dialogs/statistics_dialog.cpp:342
-msgid ""
-"stats dialog^Estimate of how much randomness of battles favored or "
-"disfavored this side.\n"
-"Values between 0 and 50 suggest the number of hits was less than expected."
-"Values between 50 and 100 suggest the number of hits was more than expected."
+"number of hits inflicted/taken."
 msgstr ""
 
 #: src/gui/dialogs/statistics_dialog.cpp:372
@@ -7536,82 +7561,90 @@ msgid "Speak to All"
 msgstr "全員とチャット"
 
 #: src/hotkey/hotkey_command.cpp:278
+msgid "Help about save-loading"
+msgstr ""
+
+#: src/hotkey/hotkey_command.cpp:278
+msgid "Hint: save-loading is unnecessary"
+msgstr ""
+
+#: src/hotkey/hotkey_command.cpp:279
 msgid "View Chat Log"
 msgstr "チャットログ表示"
 
-#: src/hotkey/hotkey_command.cpp:279
+#: src/hotkey/hotkey_command.cpp:280
 msgid "Enter User Command"
 msgstr "ユーザーコマンドを入力"
 
-#: src/hotkey/hotkey_command.cpp:280
+#: src/hotkey/hotkey_command.cpp:281
 msgid "Custom Command"
 msgstr "カスタムコマンド"
 
-#: src/hotkey/hotkey_command.cpp:281
+#: src/hotkey/hotkey_command.cpp:282
 msgid "Run Formula"
 msgstr "フォーミュラの実行"
 
-#: src/hotkey/hotkey_command.cpp:282
+#: src/hotkey/hotkey_command.cpp:283
 msgid "Clear Messages"
 msgstr "チャットメッセージを消去"
 
-#: src/hotkey/hotkey_command.cpp:284
+#: src/hotkey/hotkey_command.cpp:285
 msgid "Change Language"
 msgstr "言語の変更"
 
-#: src/hotkey/hotkey_command.cpp:285
+#: src/hotkey/hotkey_command.cpp:286
 msgid "Refresh WML"
 msgstr "WMLのリフレッシュ"
 
-#: src/hotkey/hotkey_command.cpp:286
+#: src/hotkey/hotkey_command.cpp:287
 msgid "Next Tip of the Day"
 msgstr "次のヒント"
 
-#: src/hotkey/hotkey_command.cpp:287
+#: src/hotkey/hotkey_command.cpp:288
 msgid "Previous Tip of the Day"
 msgstr "前のヒント"
 
-#: src/hotkey/hotkey_command.cpp:288
+#: src/hotkey/hotkey_command.cpp:289
 msgid "Start Tutorial"
 msgstr "チュートリアルの開始"
 
-#: src/hotkey/hotkey_command.cpp:289
+#: src/hotkey/hotkey_command.cpp:290
 msgid "Start Campaign"
 msgstr "キャンペーンの開始"
 
-#: src/hotkey/hotkey_command.cpp:290
+#: src/hotkey/hotkey_command.cpp:291
 msgid "Start Multiplayer Game"
 msgstr "マルチプレイヤーゲームの開始"
 
-#: src/hotkey/hotkey_command.cpp:291
+#: src/hotkey/hotkey_command.cpp:292
 msgid "Manage Add-ons"
 msgstr "アドオンの管理"
 
-#: src/hotkey/hotkey_command.cpp:292
+#: src/hotkey/hotkey_command.cpp:293
 msgid "Manage Cores"
 msgstr "コアの管理"
 
-#: src/hotkey/hotkey_command.cpp:293
+#: src/hotkey/hotkey_command.cpp:294
 msgid "Start Editor"
 msgstr "エディタの起動"
 
-#: src/hotkey/hotkey_command.cpp:294
+#: src/hotkey/hotkey_command.cpp:295
 msgid "Show Credits"
 msgstr "クレジットの表示"
 
-#: src/hotkey/hotkey_command.cpp:295
+#: src/hotkey/hotkey_command.cpp:296
 msgid "Start Test Scenario"
 msgstr "テストシナリオの開始"
 
-#: src/hotkey/hotkey_command.cpp:297
+#: src/hotkey/hotkey_command.cpp:298
 msgid "Show Helptip"
 msgstr "ヘルプチップの表示"
 
-#: src/hotkey/hotkey_command.cpp:299
+#: src/hotkey/hotkey_command.cpp:300
 msgid "Show Lua Console"
 msgstr "Luaコンソールの表示"
 
-#: src/hotkey/hotkey_command.cpp:302
+#: src/hotkey/hotkey_command.cpp:303
 msgid "Unrecognized Command"
 msgstr "認識できないコマンド"
 

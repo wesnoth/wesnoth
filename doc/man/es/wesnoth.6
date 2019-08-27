@@ -50,11 +50,11 @@ compártalas con otros.
 Muestra todas las traducciones en la lista de selección de idioma del juego,
 incluso si se considera que no están lo bastante completas.
 .TP 
-\fB\-\-bunzip2\fP\fI\ infile.bz2\fP
+\fB\-\-bunzip2\fP\fI\ archivo_de_entrada.bz2\fP
 descomprime un archivo que debería estar en formato bzip2 y lo almacena sin
 el sufijo .bz2. El \fIarchivo_de_entrada.bz2\fP será eliminado.
 .TP 
-\fB\-\-bzip2\fP\fI\ infile\fP
+\fB\-\-bzip2\fP\fI\ archivo_de_entrada\fP
 comprime un archivo en formato bzip2, lo guarda como
 \fIarchivo_de_entrada\fP.bz2 y elimina \fIarchivo_de_entrada\fP.
 .TP 
@@ -102,8 +102,8 @@ el modo de comandos).
 habilita algunos mecanismos de depuración de Lua
 .TP 
 \fB\-e[\fP\fIfile\fP\fB],\ \-\-editor[\fP\fI=file\fP\fB]\fP
-start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
-to \fB\-l\fP \fB\-\-load\fP.
+inicia directamente el editor de mapas del juego. Si \fIarchivo\fP es
+especificado, equivale a \fB\-l\fP \fB\-\-load\fP.
 .TP 
 \fB\-\-fps\fP
 muestra el número de fotogramas por segundo a los que se está ejecutando el
@@ -155,8 +155,9 @@ muestra una lista de dominios de registro definidos (únicamente aquéllos
 conteniendo \fIfiltro\fP si es indicado) y regresa
 .TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
-the number of frames per second the game can show, the value should be
-between \fB1\fP and \fB1000\fP, the default is the monitor's refresh rate.
+el número de fotogramas por segundo que el juego puede mostrar, el valor
+debería estar entre \fB1\fP y \fB1000\fP, por omisión es índice de refresco del
+monitor.
 .TP 
 \fB\-m, \-\-multiplayer\fP
 inicia una partida multijugador. Existen opciones adicionales que pueden
@@ -206,13 +207,14 @@ función que se ejecutará como una corutina que se activará periódicamente
 con actualizaciones.
 .TP 
 \fB\-p,\ \-\-preprocess\fP\fI\ source\-file/folder\fP\fB\ \fP\fItarget\-directory\fP
-preprocesses a specified file/folder. For each file(s) a plain .cfg file and
-a processed .cfg file will be written in specified target directory. If a
-folder is specified, it will be preprocessed recursively based on the known
-preprocessor rules. The common macros from the "data/core/macros" directory
-will be preprocessed before the specified resources.  Example: \fB\-p
-~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
-preprocessor visit:
+preprocesa un archivo o carpeta especificados. Por cada archivo, se
+generarán en el directorio especificado un archivo .cfg de texto plano y
+otro archivo .cfg procesado. Si se especifica una carpeta, se preprocesará
+recursivamente basándose en las reglas conocidas del preprocesador. Las
+macros comunes del directorio «data/core/macros» serán preprocesadas antes
+que los recursos especificados. Ejemplo:  \fB\-p
+~/wesnoth/data/campaigns/tutorial ~/result.\fP Para más detalles en relación
+con el preprocesador visite:
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
@@ -248,11 +250,12 @@ especifica el \fIusername\fP para iniciar sesión en el proxy.
 especifica la \fIpassword\fP para iniciar sesión en el proxy.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
-sets the screen resolution. Example: \fB\-r\fP \fB800x600\fP.
+establece la resolución de la pantalla. Por ejemplo: \fB\-r\fP \fB800x600\fP.
 .TP 
 \fB\-\-render\-image\fP\fI\ image\fP\fB\ \fP\fIoutput\fP
-takes a valid wesnoth 'image path string' with image path functions, and
-outputs to a .png file. Image path functions are documented at
+toma una 'cadena de dirección de imágen' válida de wesnoth con funciones de
+direccionado de imágen, y genera un archivo .png. Las funciones de
+direccionado de imágenes están documentadas en
 https://wiki.wesnoth.org/ImagePathFunctionWML.
 .TP 
 \fB\-R,\ \-\-report\fP
@@ -260,8 +263,8 @@ inicializa los directorios del juego, imprime la información necesaria para
 su uso en informes de error, y sale.
 .TP 
 \fB\-\-rng\-seed\fP\fI\ number\fP
-seeds the random number generator with \fInumber\fP.  Example: \fB\-\-rng\-seed\fP
-\fB0\fP.
+inicializa el generador de números aleatorios con \fInumber\fP.  Ejemplo:
+\fB\-\-rng\-seed\fP \fB0\fP.
 .TP 
 \fB\-\-screenshot\fP\fI\ map\fP\fB\ \fP\fIoutput\fP
 guarda una captura de pantalla de \fImap\fP en \fIoutput\fP sin inicializar una
@@ -271,8 +274,9 @@ pantalla.
 (experimental)  \fIfile\fP contiene un script Lua para controlar el cliente.
 .TP 
 \fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
-connects to the specified host if any, otherwise connect to the first server
-in preferences. Example: \fB\-\-server\fP \fBserver.wesnoth.org\fP.
+se conecta al servidor especificado si lo hay, de otro modo se conecta al
+primer servidor seleccionado en las preferencias. Ejemplo: \fB\-\-server\fP
+\fBserver.wesnoth.org\fP.
 .TP 
 \fB\-\-showgui\fP
 ejecuta el juego con la GUI (interfaz gráfica de usuario), ignorando
@@ -376,8 +380,8 @@ definido por un complemento. Entre los valores disponibles se incluyen:
 \fBidle_ai\fP y \fBexperimental_ai\fP.
 .TP 
 \fB\-\-controller\fP\fI\ number\fP\fB:\fP\fIvalue\fP
-selects the controller for this side. Available values: \fBhuman\fP, \fBai\fP and
-\fBnull\fP.
+selecciona el controlador para este bando. Los valores disponibles son:
+\fBhuman\fP, \fBai\fP y \fBnull\fP.
 .TP 
 \fB\-\-era\fP\fI\ value\fP
 use esta opción para jugar en la era seleccionada en lugar de la era por
@@ -385,9 +389,10 @@ omisión (\fBDefault\fP). La era se selecciona usando un identificador (id). Las
 eras incluidas están descritas en el archivo \fBdata/multiplayer/eras.cfg\fP.
 .TP 
 \fB\-\-exit\-at\-end\fP
-exits once the scenario is over, without displaying victory/defeat dialog
-which normally requires the user to click End Scenario.  This is also used
-for scriptable benchmarking.
+sale una vez se ha completado el escenario, sin mostrar un diálogo de
+victoria o derrota que normalmente requiere que el usuario pulse en
+Finalizar escenario. Esto se usa también para pruebas de rendimiento
+automatizadas.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
 no se utilizan las configuraciones del mapa sino los valores

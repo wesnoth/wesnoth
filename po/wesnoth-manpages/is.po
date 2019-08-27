@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+dev\n"
-"POT-Creation-Date: 2019-07-18 15:50+0300\n"
+"POT-Creation-Date: 2019-08-27 22:41+0300\n"
 "PO-Revision-Date: 2009-05-17 11:48-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
@@ -1413,7 +1413,7 @@ msgid ""
 msgstr "setur fjöldi lotna fyrir valda atburðarás. Sjálfgefið gildi er B<50>."
 
 #. type: SH
-#: doc/man/wesnoth.6:505 doc/man/wesnothd.6:265
+#: doc/man/wesnoth.6:505 doc/man/wesnothd.6:257
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr ""
@@ -1440,7 +1440,7 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:523 doc/man/wesnothd.6:269
+#: doc/man/wesnoth.6:523 doc/man/wesnothd.6:261
 #, no-wrap
 msgid "AUTHOR"
 msgstr "HÖFUNDUR"
@@ -1468,25 +1468,25 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:532 doc/man/wesnothd.6:276
+#: doc/man/wesnoth.6:532 doc/man/wesnothd.6:268
 msgid "Visit the official homepage: https://www.wesnoth.org/"
 msgstr ""
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:533 doc/man/wesnothd.6:277
+#: doc/man/wesnoth.6:533 doc/man/wesnothd.6:269
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "HÖFUNDARRÉTTUR"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:536 doc/man/wesnothd.6:280
+#: doc/man/wesnoth.6:536 doc/man/wesnothd.6:272
 msgid "Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:539 doc/man/wesnothd.6:283
+#: doc/man/wesnoth.6:539 doc/man/wesnothd.6:275
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -1495,7 +1495,7 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:540 doc/man/wesnothd.6:284
+#: doc/man/wesnoth.6:540 doc/man/wesnothd.6:276
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "SJÁ EINNIG"
@@ -1986,22 +1986,17 @@ msgstr ""
 msgid "Example: B<versions_accepted=\"*\"> accepts any version string."
 msgstr ""
 
-# type: TP
 #. type: TP
 #: doc/man/wesnothd.6:168
 #, no-wrap
-msgid "B<user_handler>"
-msgstr "B<user_handler>"
+msgid "B<deny_unregistered_login>"
+msgstr ""
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:173
 msgid ""
-"The name of the user handler to use. Currently available user handlers are "
-"B<forum> (to connect wesnothd to a phpbb forum database) and B<sample> (a "
-"sample implementation of the user handler interface, if you use this on "
-"anything real you are insane). The default value is B<forum>. You must also "
-"add a B<[user_handler]> section, see below."
+"Whether to prevent users who are not registered with the B<user_handler> "
+"being used from logging in. (default: false)"
 msgstr ""
 
 # type: SS
@@ -2108,14 +2103,15 @@ msgid ""
 "as B<[redirect]>."
 msgstr ""
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:221
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
 "B<[user_handler]> section is present in the configuration the server will "
-"run without any nick registration service."
+"run without any nick registration service. All additional tables that are "
+"needed for the forum_user_handler to function can be found in "
+"table_definitions.sql in the Wesnoth source repository."
 msgstr ""
 
 # type: TP
@@ -2128,8 +2124,10 @@ msgstr "B<db_host>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:225
-msgid "(for user_handler=forum) The hostname of the database server"
-msgstr "(fyrir user_handler=forum) Tengislóð gagnagrunns"
+#, fuzzy
+#| msgid "The hostname of the mail server"
+msgid "The hostname of the database server"
+msgstr "Tengingarslóð tölvupóstsmiðlara"
 
 # type: TP
 #. type: TP
@@ -2141,8 +2139,10 @@ msgstr "B<db_name>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:228
-msgid "(for user_handler=forum) The name of the database"
-msgstr "(fyrir user_handler=forum) Nafn gagnagrunns"
+#, fuzzy
+#| msgid "The hostname of the mail server"
+msgid "The name of the database"
+msgstr "Tengingarslóð tölvupóstsmiðlara"
 
 # type: TP
 #. type: TP
@@ -2154,9 +2154,11 @@ msgstr "B<db_user>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:231
-msgid ""
-"(for user_handler=forum) The name of the user under which to log into the "
-"database"
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the user under which to log into the "
+#| "database"
+msgid "The name of the user under which to log into the database"
 msgstr ""
 "(fyrir user_handler=forum) Notendanafn til innskráningar við gagnagrunn"
 
@@ -2170,8 +2172,10 @@ msgstr "B<db_password>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:234
-msgid "(for user_handler=forum) This user's password"
-msgstr "(fyrir user_handler=forum) Lykilorð til innskráningar við gagnagrunn"
+#, fuzzy
+#| msgid "This user's password."
+msgid "This user's password"
+msgstr "Lykilorð þessa notanda."
 
 # type: TP
 #. type: TP
@@ -2183,10 +2187,14 @@ msgstr "B<db_users_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:237
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the table in which your phpbb forums "
+#| "saves its user data. Most likely this will be E<lt>table-"
+#| "prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
-"(for user_handler=forum) The name of the table in which your phpbb forums "
-"saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
-"(e.g. phpbb3_users)."
+"The name of the table in which your phpbb forums saves its user data. Most "
+"likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgstr ""
 "(fyrir user_handler=forum) Nafn töflunnar sem PHPBB vistar notendagögn sín. "
 "Í flestum tilvikum er það E<lt>table-prefixE<gt>_users (t.d. phpbb3_users)."
@@ -2198,116 +2206,92 @@ msgstr ""
 msgid "B<db_extra_table>"
 msgstr "B<db_extra_table>"
 
-# type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:241
-#, fuzzy
+#: doc/man/wesnothd.6:240
 msgid ""
-"(for user_handler=forum) The name of the table in which wesnothd will save "
-"its own data about users. You will have to create this table manually, e.g.: "
-"B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) PRIMARY KEY, "
-"user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
-"NOT NULL DEFAULT 0);>"
+"The name of the table in which wesnothd will save its own data about users."
 msgstr ""
-"(fyrir user_handler=forum) Nafn töflunnar sem wesnothd getur vistað sínar "
-"eigin upplýsingar um notendur. Þú verður að búa til þessa töflu handvirkt: "
-"CREATE TABLE E<lt>nafn-töfluE<gt>(username VARCHAR(255) PRIMARY KEY, "
-"user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
-"NOT NULL DEFAULT 0);"
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:241
-#, no-wrap
-msgid "B<user_expiration>"
-msgstr "B<user_expiration>"
+#: doc/man/wesnothd.6:240
+#, fuzzy, no-wrap
+#| msgid "B<db_users_table>"
+msgid "B<db_game_info_table>"
+msgstr "B<db_users_table>"
 
-# type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:244
+#: doc/man/wesnothd.6:243
 msgid ""
-"(for user_handler=sample) The time after which a registered nick expires (in "
-"days)."
+"The name of the table in which wesnothd will save its own data about games."
 msgstr ""
-"(fyrir user_handler=sample) Tíminn sem líða þarf til að skráð notendanafn "
-"þyrnist (í dögum)."
 
-# type: Plain text
+# type: TP
+#. type: TP
+#: doc/man/wesnothd.6:243
+#, fuzzy, no-wrap
+#| msgid "B<db_users_table>"
+msgid "B<db_game_player_info_table>"
+msgstr "B<db_users_table>"
+
 #. type: Plain text
-#: doc/man/wesnothd.6:248
+#: doc/man/wesnothd.6:246
 msgid ""
-"B<[mail]> Configures an SMTP server through which the user handler can send "
-"mail. Currently only used by the sample user handler."
+"The name of the table in which wesnothd will save its own data about the "
+"players in a game."
+msgstr ""
+
+#. type: TP
+#: doc/man/wesnothd.6:246
+#, no-wrap
+msgid "B<db_game_modification_info_table>"
+msgstr ""
+
+#. type: Plain text
+#: doc/man/wesnothd.6:249
+msgid ""
+"The name of the table in which wesnothd will save its own data about the "
+"modifications used in a game."
 msgstr ""
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:249
-#, no-wrap
-msgid "B<server>"
-msgstr "B<server>"
+#, fuzzy, no-wrap
+#| msgid "B<db_users_table>"
+msgid "B<db_user_group_table>"
+msgstr "B<db_users_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:252
-msgid "The hostname of the mail server"
-msgstr "Tengingarslóð tölvupóstsmiðlara"
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the table in which your phpbb forums "
+#| "saves its user data. Most likely this will be E<lt>table-"
+#| "prefixE<gt>_users (e.g. phpbb3_users)."
+msgid ""
+"The name of the table in which your phpbb forums saves its user group data. "
+"Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
+"phpbb3_user_group)."
+msgstr ""
+"(fyrir user_handler=forum) Nafn töflunnar sem PHPBB vistar notendagögn sín. "
+"Í flestum tilvikum er það E<lt>table-prefixE<gt>_users (t.d. phpbb3_users)."
 
-# type: TP
 #. type: TP
 #: doc/man/wesnothd.6:252
 #, no-wrap
-msgid "B<username>"
-msgstr "B<username>"
-
-# type: Plain text
-#. type: Plain text
-#: doc/man/wesnothd.6:255
-msgid "The user name under which to log into the mail server."
-msgstr ""
-"Notendanafnið sem notast skal við til innskráningu við tölvupóstsmiðlara."
-
-# type: TP
-#. type: TP
-#: doc/man/wesnothd.6:255
-#, no-wrap
-msgid "B<password>"
-msgstr "B<password>"
-
-# type: Plain text
-#. type: Plain text
-#: doc/man/wesnothd.6:258
-msgid "This user's password."
-msgstr "Lykilorð þessa notanda."
-
-# type: TP
-#. type: TP
-#: doc/man/wesnothd.6:258
-#, no-wrap
-msgid "B<from_address>"
-msgstr "B<from_address>"
-
-# type: Plain text
-#. type: Plain text
-#: doc/man/wesnothd.6:261
-msgid "The reply-to address of you mail."
+msgid "B<mp_mod_group>"
 msgstr ""
 
-# type: TP
-#. type: TP
-#: doc/man/wesnothd.6:261
-#, no-wrap
-msgid "B<mail_port>"
-msgstr "B<mail_port>"
-
-# type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:264
-msgid "The port on which your mail server is running. Default is 25."
-msgstr "Gáttið sem tölvupóstsmiðlarinn keyrir á. Sjálfgefið gildi er 25."
+#: doc/man/wesnothd.6:255
+msgid ""
+"The ID of the forum group to be considered as having moderation authority."
+msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:268
+#: doc/man/wesnothd.6:260
 msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
@@ -2315,7 +2299,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:274
+#: doc/man/wesnothd.6:266
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
@@ -2326,11 +2310,91 @@ msgstr ""
 
 # type: TH
 #. type: Plain text
-#: doc/man/wesnothd.6:286
+#: doc/man/wesnothd.6:279
 #, fuzzy
 #| msgid "wesnoth"
 msgid "B<wesnoth>(6)"
 msgstr "wesnoth"
+
+# type: TP
+#, no-wrap
+#~ msgid "B<user_handler>"
+#~ msgstr "B<user_handler>"
+
+# type: Plain text
+#~ msgid "(for user_handler=forum) The hostname of the database server"
+#~ msgstr "(fyrir user_handler=forum) Tengislóð gagnagrunns"
+
+# type: Plain text
+#~ msgid "(for user_handler=forum) The name of the database"
+#~ msgstr "(fyrir user_handler=forum) Nafn gagnagrunns"
+
+# type: Plain text
+#~ msgid "(for user_handler=forum) This user's password"
+#~ msgstr ""
+#~ "(fyrir user_handler=forum) Lykilorð til innskráningar við gagnagrunn"
+
+# type: Plain text
+#, fuzzy
+#~ msgid ""
+#~ "(for user_handler=forum) The name of the table in which wesnothd will "
+#~ "save its own data about users. You will have to create this table "
+#~ "manually, e.g.: B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) "
+#~ "PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
+#~ "user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
+#~ msgstr ""
+#~ "(fyrir user_handler=forum) Nafn töflunnar sem wesnothd getur vistað sínar "
+#~ "eigin upplýsingar um notendur. Þú verður að búa til þessa töflu "
+#~ "handvirkt: CREATE TABLE E<lt>nafn-töfluE<gt>(username VARCHAR(255) "
+#~ "PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
+#~ "user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);"
+
+# type: TP
+#, no-wrap
+#~ msgid "B<user_expiration>"
+#~ msgstr "B<user_expiration>"
+
+# type: Plain text
+#~ msgid ""
+#~ "(for user_handler=sample) The time after which a registered nick expires "
+#~ "(in days)."
+#~ msgstr ""
+#~ "(fyrir user_handler=sample) Tíminn sem líða þarf til að skráð notendanafn "
+#~ "þyrnist (í dögum)."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<server>"
+#~ msgstr "B<server>"
+
+# type: TP
+#, no-wrap
+#~ msgid "B<username>"
+#~ msgstr "B<username>"
+
+# type: Plain text
+#~ msgid "The user name under which to log into the mail server."
+#~ msgstr ""
+#~ "Notendanafnið sem notast skal við til innskráningu við tölvupóstsmiðlara."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<password>"
+#~ msgstr "B<password>"
+
+# type: TP
+#, no-wrap
+#~ msgid "B<from_address>"
+#~ msgstr "B<from_address>"
+
+# type: TP
+#, no-wrap
+#~ msgid "B<mail_port>"
+#~ msgstr "B<mail_port>"
+
+# type: Plain text
+#~ msgid "The port on which your mail server is running. Default is 25."
+#~ msgstr "Gáttið sem tölvupóstsmiðlarinn keyrir á. Sjálfgefið gildi er 25."
 
 # type: TP
 #~ msgid "B<--path>"

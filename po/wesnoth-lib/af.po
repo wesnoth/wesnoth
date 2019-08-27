@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-07-18 15:50+0300\n"
+"POT-Creation-Date: 2019-08-27 22:40+0300\n"
 "PO-Revision-Date: 2005-12-14 12:29+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans <wesnothaf@gmail.com>\n"
@@ -1898,8 +1898,8 @@ msgstr ""
 
 #. [button]: id=reset_option_values
 #. [button]: id=btn_reset_hotkeys
-#. [button]: id=revert_to_defaults
 #. [button]: id=orb_defaults
+#. [button]: id=revert_to_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:293
@@ -2006,7 +2006,7 @@ msgstr ""
 #: data/gui/window/mp_alerts_options.cfg:249
 #: data/gui/window/preferences.cfg:429
 #: data/gui/window/screenshot_notification.cfg:216
-#: data/gui/window/statistics_dialog.cfg:608
+#: data/gui/window/statistics_dialog.cfg:610
 #: data/gui/window/terrain_layers.cfg:434 data/gui/window/unit_list.cfg:447
 msgid "Close"
 msgstr "Sluit"
@@ -2451,7 +2451,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:293
-#: src/gui/dialogs/multiplayer/lobby.cpp:451
+#: src/gui/dialogs/multiplayer/lobby.cpp:455
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Modifications"
@@ -2759,7 +2759,7 @@ msgstr "Eenheidsbeskrywing"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:473
+#: src/gui/dialogs/multiplayer/lobby.cpp:477
 msgid "Experience modifier:"
 msgstr ""
 
@@ -2829,7 +2829,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#: src/gui/dialogs/multiplayer/lobby.cpp:474
+#: src/gui/dialogs/multiplayer/lobby.cpp:478
 #, fuzzy
 msgid "Gold per village:"
 msgstr "Dorpie"
@@ -2907,7 +2907,7 @@ msgstr "Kaartskepper"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
-#: src/gui/dialogs/multiplayer/lobby.cpp:472
+#: src/gui/dialogs/multiplayer/lobby.cpp:476
 #, fuzzy
 msgid "Settings"
 msgstr "Sleutelbordstellings"
@@ -3825,8 +3825,8 @@ msgstr ""
 msgid "Event"
 msgstr ""
 
-#. [label]
 #. [widget]: id=label
+#. [label]
 #: data/gui/window/mp_alerts_options.cfg:154
 #: data/gui/window/preferences.cfg:346
 msgid "Sound"
@@ -3943,6 +3943,17 @@ msgstr ""
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:199
 msgid "When a new turn has begun"
+msgstr ""
+
+#. [grid]
+#: data/gui/window/mp_alerts_options.cfg:200
+#, fuzzy
+msgid "Game created:"
+msgstr "Grot Muur"
+
+#. [grid]
+#: data/gui/window/mp_alerts_options.cfg:200
+msgid "When a new game has been created"
 msgstr ""
 
 #. [button]: id=revert_to_defaults
@@ -4225,7 +4236,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/multiplayer/lobby.cpp:479
 #, fuzzy
 #| msgid "Max hill size:"
 msgid "Map size:"
@@ -4824,8 +4835,8 @@ msgstr ""
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:275
 msgid ""
-"Disabling this increases CPU usage to 100% but may slightly improve "
-"performance at high resolutions"
+"Disabling this increases CPU usage, but may slightly improve performance "
+"(requires restart to take effect)"
 msgstr ""
 
 #. [button]: id=choose_theme
@@ -5130,9 +5141,10 @@ msgstr ""
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
-"The first number in parentheses is the expected number of hitpoints.\n"
+"The first number in parentheses is the expected number of hitpoints "
+"inflicted/taken.\n"
 "The sum (or difference) of the two numbers in parentheses is the actual "
-"number of hitpoints."
+"number of hitpoints inflicted/taken."
 msgstr ""
 
 #. [column]
@@ -5143,6 +5155,15 @@ msgstr ""
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:568
 msgid "Hits"
+msgstr ""
+
+#. [column]
+#: data/gui/window/statistics_dialog.cfg:571
+msgid ""
+"stats dialog^Estimate of how much randomness of battles favored or "
+"disfavored this side.\n"
+"Values between 0 and 50 suggest the number of hits was less than expected.\n"
+"Values between 50 and 100 suggest the number of hits was more than expected."
 msgstr ""
 
 #. [button]: id=cancel
@@ -5562,7 +5583,7 @@ msgstr "af"
 msgid "The maximum text width is less than 1."
 msgstr ""
 
-#: src/font/text.cpp:761
+#: src/font/text.cpp:775
 msgid "The text contains invalid Pango markup: "
 msgstr ""
 
@@ -6004,7 +6025,7 @@ msgid "Attacker vulnerability vs"
 msgstr ""
 
 #: src/gui/dialogs/campaign_selection.cpp:318
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:460
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "active_modifications^None"
@@ -6108,8 +6129,8 @@ msgid "dir_size^Unknown"
 msgstr ""
 
 #: src/gui/dialogs/game_cache_options.cpp:139
-#: src/gui/dialogs/network_transmission.cpp:53
-#: src/gui/dialogs/network_transmission.cpp:54
+#: src/gui/dialogs/network_transmission.cpp:81
+#: src/gui/dialogs/network_transmission.cpp:82
 #: src/gui/dialogs/screenshot_notification.cpp:148
 msgid "unit_byte^B"
 msgstr ""
@@ -6196,12 +6217,12 @@ msgid "Unknown"
 msgstr ""
 
 #: src/gui/dialogs/game_stats.cpp:195 src/gui/dialogs/game_stats.cpp:198
-#: src/gui/dialogs/multiplayer/lobby.cpp:470
+#: src/gui/dialogs/multiplayer/lobby.cpp:474
 msgid "no"
 msgstr "nee"
 
 #: src/gui/dialogs/game_stats.cpp:195 src/gui/dialogs/game_stats.cpp:198
-#: src/gui/dialogs/multiplayer/lobby.cpp:470
+#: src/gui/dialogs/multiplayer/lobby.cpp:474
 msgid "yes"
 msgstr "ja"
 
@@ -6227,96 +6248,96 @@ msgstr "Plaas Etiket"
 msgid "Side $side_number ($name)"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:44
+#: src/gui/dialogs/loading_screen.cpp:43
 msgid "Building terrain rules"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:45
+#: src/gui/dialogs/loading_screen.cpp:44
 msgid "Reading files and creating cache"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:46 src/gui/dialogs/loading_screen.cpp:49
+#: src/gui/dialogs/loading_screen.cpp:45 src/gui/dialogs/loading_screen.cpp:48
 msgid "Initializing display"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:47
+#: src/gui/dialogs/loading_screen.cpp:46
 msgid "Reinitialize fonts for the current language"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:48
+#: src/gui/dialogs/loading_screen.cpp:47
 msgid "Initializing teams"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:50
+#: src/gui/dialogs/loading_screen.cpp:49
 msgid "Loading game configuration"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:51
+#: src/gui/dialogs/loading_screen.cpp:50
 msgid "Loading data files"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:52
+#: src/gui/dialogs/loading_screen.cpp:51
 msgid "Loading level"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:53
+#: src/gui/dialogs/loading_screen.cpp:52
 msgid "Initializing scripting engine"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:54
+#: src/gui/dialogs/loading_screen.cpp:53
 msgid "Initializing planning mode"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:55
+#: src/gui/dialogs/loading_screen.cpp:54
 msgid "Reading unit files"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:56
+#: src/gui/dialogs/loading_screen.cpp:55
 msgid "Loading units"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:57
+#: src/gui/dialogs/loading_screen.cpp:56
 #, fuzzy
 msgid "Searching for installed add-ons"
 msgstr "Doen weer"
 
-#: src/gui/dialogs/loading_screen.cpp:58
+#: src/gui/dialogs/loading_screen.cpp:57
 msgid "Starting game"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:59
+#: src/gui/dialogs/loading_screen.cpp:58
 msgid "Verifying cache"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:60
+#: src/gui/dialogs/loading_screen.cpp:59
 #, fuzzy
 msgid "Connecting to server"
 msgstr "Gaan voort met skuif"
 
-#: src/gui/dialogs/loading_screen.cpp:61
+#: src/gui/dialogs/loading_screen.cpp:60
 #, fuzzy
 msgid "Logging in"
 msgstr "Aksie"
 
-#: src/gui/dialogs/loading_screen.cpp:62
+#: src/gui/dialogs/loading_screen.cpp:61
 msgid "Waiting for server"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:63
+#: src/gui/dialogs/loading_screen.cpp:62
 #, fuzzy
 msgid "Connecting to redirected server"
 msgstr "Gaan voort met skuif"
 
-#: src/gui/dialogs/loading_screen.cpp:64
+#: src/gui/dialogs/loading_screen.cpp:63
 msgid "Waiting for next scenario"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:65
+#: src/gui/dialogs/loading_screen.cpp:64
 #, fuzzy
 msgid "Getting game data"
 msgstr "Vee lêer uit"
 
-#: src/gui/dialogs/loading_screen.cpp:66
+#: src/gui/dialogs/loading_screen.cpp:65
 msgid "Downloading lobby data"
 msgstr ""
 
@@ -6375,64 +6396,64 @@ msgid ""
 "Do you want to try to install them?"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:391
+#: src/gui/dialogs/multiplayer/lobby.cpp:395
 msgid "Games: showing $num_shown out of $num_total"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:411
+#: src/gui/dialogs/multiplayer/lobby.cpp:415
 msgid "$game_name (Era: $era_name)"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:441
+#: src/gui/dialogs/multiplayer/lobby.cpp:445
 msgid "era_or_mod^not installed"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:444
+#: src/gui/dialogs/multiplayer/lobby.cpp:448
 msgid "Era"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:476
+#: src/gui/dialogs/multiplayer/lobby.cpp:480
 #, fuzzy
 msgid "Reloaded:"
 msgstr "Maak Nuwe Kaart"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:477
+#: src/gui/dialogs/multiplayer/lobby.cpp:481
 msgid "Shared vision:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:478
+#: src/gui/dialogs/multiplayer/lobby.cpp:482
 msgid "Shuffle sides:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:479
+#: src/gui/dialogs/multiplayer/lobby.cpp:483
 #, fuzzy
 msgid "Time limit:"
 msgstr "Tema"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:480
+#: src/gui/dialogs/multiplayer/lobby.cpp:484
 #, fuzzy
 msgid "Use map settings:"
 msgstr "Sleutelbordstellings"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:488
+#: src/gui/dialogs/multiplayer/lobby.cpp:492
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:513
+#: src/gui/dialogs/multiplayer/lobby.cpp:517
 msgid "Observers allowed"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:516
+#: src/gui/dialogs/multiplayer/lobby.cpp:520
 msgid "Observers not allowed"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:791
+#: src/gui/dialogs/multiplayer/lobby.cpp:795
 msgid "lobby"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:951
+#: src/gui/dialogs/multiplayer/lobby.cpp:955
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -6634,7 +6655,7 @@ msgid "All Scenarios"
 msgstr "Scenario Doelwitte"
 
 #: src/gui/dialogs/statistics_dialog.cpp:181
-#: src/gui/dialogs/statistics_dialog.cpp:338
+#: src/gui/dialogs/statistics_dialog.cpp:341
 #, fuzzy
 msgid "This Turn"
 msgstr "Beëindig Beurt"
@@ -6643,21 +6664,18 @@ msgstr "Beëindig Beurt"
 msgid "Actual hit rates, by chance to hit:"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:327
+#: src/gui/dialogs/statistics_dialog.cpp:219
+msgid "(no attacks have taken place yet)"
+msgstr ""
+
+#: src/gui/dialogs/statistics_dialog.cpp:328
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
-"The first number in parentheses is the expected number of hits.\n"
+"The first number in parentheses is the expected number of hits inflicted/"
+"taken.\n"
 "The sum (or difference) of the two numbers in parentheses is the actual "
-"number of hits."
-msgstr ""
-
-#: src/gui/dialogs/statistics_dialog.cpp:342
-msgid ""
-"stats dialog^Estimate of how much randomness of battles favored or "
-"disfavored this side.\n"
-"Values between 0 and 50 suggest the number of hits was less than expected."
-"Values between 50 and 100 suggest the number of hits was more than expected."
+"number of hits inflicted/taken."
 msgstr ""
 
 #: src/gui/dialogs/statistics_dialog.cpp:372
@@ -7803,97 +7821,105 @@ msgid "Speak to All"
 msgstr "Praat met Almal"
 
 #: src/hotkey/hotkey_command.cpp:278
+msgid "Help about save-loading"
+msgstr ""
+
+#: src/hotkey/hotkey_command.cpp:278
+msgid "Hint: save-loading is unnecessary"
+msgstr ""
+
+#: src/hotkey/hotkey_command.cpp:279
 msgid "View Chat Log"
 msgstr "Vertoon Kletsrekord"
 
-#: src/hotkey/hotkey_command.cpp:279
+#: src/hotkey/hotkey_command.cpp:280
 msgid "Enter User Command"
 msgstr "Voer gebruikerbevel in"
 
-#: src/hotkey/hotkey_command.cpp:280
+#: src/hotkey/hotkey_command.cpp:281
 #, fuzzy
 msgid "Custom Command"
 msgstr "Voer gebruikerbevel in"
 
-#: src/hotkey/hotkey_command.cpp:281
+#: src/hotkey/hotkey_command.cpp:282
 msgid "Run Formula"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:282
+#: src/hotkey/hotkey_command.cpp:283
 #, fuzzy
 msgid "Clear Messages"
 msgstr "Plaas Etiket"
 
-#: src/hotkey/hotkey_command.cpp:284
+#: src/hotkey/hotkey_command.cpp:285
 #, fuzzy
 msgid "Change Language"
 msgstr "Verander die taal"
 
-#: src/hotkey/hotkey_command.cpp:285
+#: src/hotkey/hotkey_command.cpp:286
 #, fuzzy
 msgid "Refresh WML"
 msgstr "Vertoon"
 
-#: src/hotkey/hotkey_command.cpp:286
+#: src/hotkey/hotkey_command.cpp:287
 #, fuzzy
 msgid "Next Tip of the Day"
 msgstr "Vorige eenheid"
 
-#: src/hotkey/hotkey_command.cpp:287
+#: src/hotkey/hotkey_command.cpp:288
 #, fuzzy
 msgid "Previous Tip of the Day"
 msgstr "Vorige eenheid"
 
-#: src/hotkey/hotkey_command.cpp:288
+#: src/hotkey/hotkey_command.cpp:289
 #, fuzzy
 msgid "Start Tutorial"
 msgstr "Beurt Dialoog"
 
-#: src/hotkey/hotkey_command.cpp:289
+#: src/hotkey/hotkey_command.cpp:290
 msgid "Start Campaign"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:290
+#: src/hotkey/hotkey_command.cpp:291
 #, fuzzy
 msgid "Start Multiplayer Game"
 msgstr "speler"
 
-#: src/hotkey/hotkey_command.cpp:291
+#: src/hotkey/hotkey_command.cpp:292
 #, fuzzy
 msgid "Manage Add-ons"
 msgstr "Doen weer"
 
-#: src/hotkey/hotkey_command.cpp:292
+#: src/hotkey/hotkey_command.cpp:293
 #, fuzzy
 msgid "Manage Cores"
 msgstr "Doen weer"
 
-#: src/hotkey/hotkey_command.cpp:293
+#: src/hotkey/hotkey_command.cpp:294
 #, fuzzy
 msgid "Start Editor"
 msgstr "Stop Verwerker"
 
-#: src/hotkey/hotkey_command.cpp:294
+#: src/hotkey/hotkey_command.cpp:295
 #, fuzzy
 #| msgid "Show grid"
 msgid "Show Credits"
 msgstr "Wys Ruite"
 
-#: src/hotkey/hotkey_command.cpp:295
+#: src/hotkey/hotkey_command.cpp:296
 #, fuzzy
 msgid "Start Test Scenario"
 msgstr "Scenario Doelwitte"
 
-#: src/hotkey/hotkey_command.cpp:297
+#: src/hotkey/hotkey_command.cpp:298
 #, fuzzy
 msgid "Show Helptip"
 msgstr "speler"
 
-#: src/hotkey/hotkey_command.cpp:299
+#: src/hotkey/hotkey_command.cpp:300
 msgid "Show Lua Console"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:302
+#: src/hotkey/hotkey_command.cpp:303
 msgid "Unrecognized Command"
 msgstr ""
 

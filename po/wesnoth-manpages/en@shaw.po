@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-07-18 15:50+0300\n"
+"POT-Creation-Date: 2019-08-27 22:41+0300\n"
 "PO-Revision-Date: 2009-10-14 16:00-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -1485,7 +1485,7 @@ msgid ""
 msgstr "𐑕𐑧𐑑𐑕 𐑞 𐑯𐑳𐑥𐑚𐑻 𐑝 𐑑𐑻𐑯𐑟 𐑓𐑹 𐑞 𐑗𐑴𐑟𐑩𐑯 𐑕𐑦𐑯𐑺𐑰𐑴. 𐑞 𐑛𐑰𐑓𐑷𐑤𐑑 𐑦𐑟 B<50>."
 
 #. type: SH
-#: doc/man/wesnoth.6:505 doc/man/wesnothd.6:265
+#: doc/man/wesnoth.6:505 doc/man/wesnothd.6:257
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr ""
@@ -1512,7 +1512,7 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:523 doc/man/wesnothd.6:269
+#: doc/man/wesnoth.6:523 doc/man/wesnothd.6:261
 #, no-wrap
 msgid "AUTHOR"
 msgstr "𐑷𐑔𐑼"
@@ -1548,21 +1548,21 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:532 doc/man/wesnothd.6:276
+#: doc/man/wesnoth.6:532 doc/man/wesnothd.6:268
 #, fuzzy
 msgid "Visit the official homepage: https://www.wesnoth.org/"
 msgstr "𐑝𐑦𐑟𐑦𐑑 𐑞 𐑪𐑓𐑦𐑖𐑩𐑤 homepage: http://·𐑢·𐑢·𐑢.·𐑢𐑧𐑕𐑯𐑷𐑔.𐑹𐑜/"
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:533 doc/man/wesnothd.6:277
+#: doc/man/wesnoth.6:533 doc/man/wesnothd.6:269
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "𐑒𐑪𐑐𐑦𐑮𐑲𐑑"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:536 doc/man/wesnothd.6:280
+#: doc/man/wesnoth.6:536 doc/man/wesnothd.6:272
 #, fuzzy
 msgid "Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
@@ -1570,7 +1570,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:539 doc/man/wesnothd.6:283
+#: doc/man/wesnoth.6:539 doc/man/wesnothd.6:275
 #, fuzzy
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
@@ -1583,7 +1583,7 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:540 doc/man/wesnothd.6:284
+#: doc/man/wesnoth.6:540 doc/man/wesnothd.6:276
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "𐑕𐑰 𐑷𐑤𐑕𐑴"
@@ -2127,28 +2127,18 @@ msgstr ""
 msgid "Example: B<versions_accepted=\"*\"> accepts any version string."
 msgstr "𐑦𐑜𐑟𐑭𐑥𐑐𐑩𐑤: B<versions_accepted=\"*\"> 𐑨𐑒𐑕𐑧𐑐𐑑𐑕 𐑧𐑯𐑦 𐑝𐑻𐑠𐑩𐑯 𐑕𐑑𐑮𐑦𐑙."
 
-# type: TP
 #. type: TP
 #: doc/man/wesnothd.6:168
 #, no-wrap
-msgid "B<user_handler>"
-msgstr "B<user_handler>"
+msgid "B<deny_unregistered_login>"
+msgstr ""
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:173
-#, fuzzy
 msgid ""
-"The name of the user handler to use. Currently available user handlers are "
-"B<forum> (to connect wesnothd to a phpbb forum database) and B<sample> (a "
-"sample implementation of the user handler interface, if you use this on "
-"anything real you are insane). The default value is B<forum>. You must also "
-"add a B<[user_handler]> section, see below."
+"Whether to prevent users who are not registered with the B<user_handler> "
+"being used from logging in. (default: false)"
 msgstr ""
-"𐑞 𐑯𐑱𐑥 𐑝 𐑞 𐑿𐑟𐑼 𐑣𐑨𐑯𐑛𐑤𐑼 𐑑 𐑿𐑕. 𐑒𐑳𐑮𐑩𐑯𐑑𐑤𐑦 𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤 𐑿𐑟𐑼 𐑣𐑨𐑯𐑛𐑤𐑻𐑟 𐑸 B<𐑓𐑹𐑩𐑥> (𐑑 𐑒𐑩𐑯𐑧𐑒𐑑 "
-"wesnothd 𐑑 𐑩 phpbb 𐑓𐑹𐑩𐑥 𐑛𐑱𐑑𐑩𐑚𐑱𐑕) 𐑯 B<𐑕𐑭𐑥𐑐𐑩𐑤> (𐑩 𐑕𐑭𐑥𐑐𐑩𐑤 𐑦𐑥𐑐𐑤𐑩𐑥𐑧𐑯𐑑𐑱𐑖𐑩𐑯 𐑝 𐑞 𐑿𐑟𐑼 "
-"𐑣𐑨𐑯𐑛𐑤𐑼 𐑦𐑯𐑑𐑼𐑓𐑱𐑕, 𐑦𐑓 𐑿 𐑿𐑟 𐑞𐑦𐑕 𐑪𐑯 𐑧𐑯𐑦𐑔𐑦𐑙 𐑮𐑾𐑤 𐑿 𐑸 𐑦𐑯𐑕𐑱𐑯). 𐑞 𐑛𐑰𐑓𐑷𐑤𐑑 𐑝𐑨𐑤𐑿 𐑦𐑟 "
-"B<𐑓𐑹𐑩𐑥>. 𐑿 𐑥𐑳𐑕𐑑 𐑷𐑤𐑕𐑴 𐑨𐑛 𐑩 B<[user_handler]> 𐑕𐑧𐑒𐑖𐑩𐑯, 𐑕𐑰 𐑚𐑩𐑤𐑴."
 
 # type: SS
 #. type: SS
@@ -2266,11 +2256,19 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:221
+#, fuzzy
+#| msgid ""
+#| "B<[user_handler]> Configures the user handler. Available keys vary "
+#| "depending on which user handler is set with the B<user_handler> key. If "
+#| "no B<[user_handler]> section is present in the configuration the server "
+#| "will run without any nick registration service."
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
 "B<[user_handler]> section is present in the configuration the server will "
-"run without any nick registration service."
+"run without any nick registration service. All additional tables that are "
+"needed for the forum_user_handler to function can be found in "
+"table_definitions.sql in the Wesnoth source repository."
 msgstr ""
 "B<[user_handler]> 𐑒𐑩𐑯𐑓𐑦𐑜𐑘𐑼𐑟 𐑞 𐑿𐑟𐑼 𐑣𐑨𐑯𐑛𐑤𐑼. 𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤 𐑒𐑰𐑟 𐑝𐑺𐑦 𐑛𐑦𐑐𐑧𐑯𐑛𐑦𐑙 𐑪𐑯 𐑢𐑦𐑗 "
 "𐑿𐑟𐑼 𐑣𐑨𐑯𐑛𐑤𐑼 𐑦𐑟 𐑕𐑧𐑑 𐑢𐑦𐑞 𐑞 B<user_handler> 𐑒𐑰. 𐑦𐑓 𐑯𐑴 B<[user_handler]> 𐑕𐑧𐑒𐑖𐑩𐑯 "
@@ -2286,8 +2284,10 @@ msgstr "B<db_host>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:225
-msgid "(for user_handler=forum) The hostname of the database server"
-msgstr "(𐑓𐑹 user_handler=forum) 𐑞 𐑣𐑴𐑕𐑑𐑯𐑱𐑥 𐑝 𐑞 𐑛𐑱𐑑𐑩𐑚𐑱𐑕 𐑕𐑻𐑝𐑻"
+#, fuzzy
+#| msgid "The hostname of the mail server"
+msgid "The hostname of the database server"
+msgstr "𐑞 𐑣𐑴𐑕𐑑𐑯𐑱𐑥 𐑝 𐑞 𐑥𐑱𐑤 𐑕𐑻𐑝𐑻"
 
 # type: TP
 #. type: TP
@@ -2299,8 +2299,10 @@ msgstr "B<db_name>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:228
-msgid "(for user_handler=forum) The name of the database"
-msgstr "(𐑓𐑹 user_handler=forum) 𐑞 𐑯𐑱𐑥 𐑝 𐑞 𐑛𐑱𐑑𐑩𐑚𐑱𐑕"
+#, fuzzy
+#| msgid "The hostname of the mail server"
+msgid "The name of the database"
+msgstr "𐑞 𐑣𐑴𐑕𐑑𐑯𐑱𐑥 𐑝 𐑞 𐑥𐑱𐑤 𐑕𐑻𐑝𐑻"
 
 # type: TP
 #. type: TP
@@ -2312,9 +2314,11 @@ msgstr "B<db_user>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:231
-msgid ""
-"(for user_handler=forum) The name of the user under which to log into the "
-"database"
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the user under which to log into the "
+#| "database"
+msgid "The name of the user under which to log into the database"
 msgstr "(𐑓𐑹 user_handler=forum) 𐑞 𐑯𐑱𐑥 𐑝 𐑞 𐑿𐑟𐑼 𐑳𐑯𐑛𐑼 𐑢𐑦𐑗 𐑑 𐑤𐑪𐑜 𐑦𐑯𐑑𐑫 𐑞 𐑛𐑱𐑑𐑩𐑚𐑱𐑕"
 
 # type: TP
@@ -2327,8 +2331,10 @@ msgstr "B<db_password>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:234
-msgid "(for user_handler=forum) This user's password"
-msgstr "(𐑓𐑹 user_handler=forum) 𐑞𐑦𐑕 𐑿𐑟𐑼'𐑟 𐑐𐑭𐑕𐑢𐑻𐑛"
+#, fuzzy
+#| msgid "This user's password."
+msgid "This user's password"
+msgstr "𐑞𐑦𐑕 𐑿𐑟𐑼'𐑟 𐑐𐑭𐑕𐑢𐑻𐑛."
 
 # type: TP
 #. type: TP
@@ -2342,9 +2348,8 @@ msgstr "B<db_users_table>"
 #: doc/man/wesnothd.6:237
 #, fuzzy
 msgid ""
-"(for user_handler=forum) The name of the table in which your phpbb forums "
-"saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
-"(e.g. phpbb3_users)."
+"The name of the table in which your phpbb forums saves its user data. Most "
+"likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgstr ""
 "(𐑓𐑹 user_handler=forum) 𐑞 𐑯𐑱𐑥 𐑝 𐑞 𐑑𐑱𐑚𐑩𐑤 𐑦𐑯 𐑢𐑦𐑗 𐑿𐑼 phpbb 𐑓𐑹𐑩𐑥𐑟 𐑕𐑱𐑝𐑟 𐑦𐑑𐑕 𐑿𐑟𐑼 "
 "𐑛𐑱𐑑𐑩. 𐑥𐑴𐑕𐑑 𐑤𐑲𐑒𐑤𐑦 𐑞𐑦𐑕 𐑢𐑦𐑤 𐑚𐑰 𐑧<·𐑤𐑿𐑑𐑧𐑯𐑩𐑯𐑑>𐑑𐑱𐑚𐑩𐑤-prefixE<gt>_users (𐑧.𐑡𐑰. "
@@ -2357,116 +2362,89 @@ msgstr ""
 msgid "B<db_extra_table>"
 msgstr "B<db_extra_table>"
 
-# type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:241
-#, fuzzy
+#: doc/man/wesnothd.6:240
 msgid ""
-"(for user_handler=forum) The name of the table in which wesnothd will save "
-"its own data about users. You will have to create this table manually, e.g.: "
-"B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) PRIMARY KEY, "
-"user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
-"NOT NULL DEFAULT 0);>"
+"The name of the table in which wesnothd will save its own data about users."
 msgstr ""
-"(𐑓𐑹 user_handler=forum) 𐑞 𐑯𐑱𐑥 𐑝 𐑞 𐑑𐑱𐑚𐑩𐑤 𐑦𐑯 𐑢𐑦𐑗 wesnothd 𐑢𐑦𐑤 𐑕𐑱𐑝 𐑦𐑑𐑕 𐑴𐑯 𐑛𐑱𐑑𐑩 "
-"𐑩𐑚𐑬𐑑 𐑿𐑟𐑼𐑟. 𐑿 𐑢𐑦𐑤 𐑣𐑨𐑝 𐑑 𐑒𐑮𐑰𐑱𐑑 𐑞𐑦𐑕 𐑑𐑱𐑚𐑩𐑤 𐑥𐑨𐑯𐑘𐑫𐑩𐑤𐑦, 𐑧.𐑡𐑰.: B<𐑒𐑮𐑰𐑱𐑑 𐑑𐑱𐑚𐑩𐑤 "
-"𐑧<·𐑤𐑿𐑑𐑧𐑯𐑩𐑯𐑑>𐑑𐑱𐑚𐑩𐑤-nameE<gt>(𐑿𐑟𐑻𐑯𐑱𐑥 VARCHAR(255) 𐑐𐑮𐑲𐑥𐑩𐑮𐑦 𐑒𐑰, user_lastvisit "
-"INT 𐑩𐑯𐑕𐑲𐑯𐑛 𐑯𐑪𐑑 𐑯𐑳𐑤 𐑛𐑰𐑓𐑷𐑤𐑑 0, user_is_moderator TINYINT(4) 𐑯𐑪𐑑 𐑯𐑳𐑤 𐑛𐑰𐑓𐑷𐑤𐑑 0);>"
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:241
+#: doc/man/wesnothd.6:240
+#, fuzzy, no-wrap
+#| msgid "B<db_users_table>"
+msgid "B<db_game_info_table>"
+msgstr "B<db_users_table>"
+
+#. type: Plain text
+#: doc/man/wesnothd.6:243
+msgid ""
+"The name of the table in which wesnothd will save its own data about games."
+msgstr ""
+
+# type: TP
+#. type: TP
+#: doc/man/wesnothd.6:243
+#, fuzzy, no-wrap
+#| msgid "B<db_users_table>"
+msgid "B<db_game_player_info_table>"
+msgstr "B<db_users_table>"
+
+#. type: Plain text
+#: doc/man/wesnothd.6:246
+msgid ""
+"The name of the table in which wesnothd will save its own data about the "
+"players in a game."
+msgstr ""
+
+#. type: TP
+#: doc/man/wesnothd.6:246
 #, no-wrap
-msgid "B<user_expiration>"
-msgstr "B<user_expiration>"
-
-# type: Plain text
-#. type: Plain text
-#: doc/man/wesnothd.6:244
-msgid ""
-"(for user_handler=sample) The time after which a registered nick expires (in "
-"days)."
+msgid "B<db_game_modification_info_table>"
 msgstr ""
-"(𐑓𐑹 user_handler=sample) 𐑞 𐑑𐑲𐑥 𐑭𐑓𐑑𐑼 𐑢𐑦𐑗 𐑩 𐑮𐑧𐑡𐑦𐑕𐑑𐑼𐑛 𐑯𐑦𐑒 𐑦𐑒𐑕𐑐𐑲𐑻𐑟 (𐑦𐑯 𐑛𐑱𐑟)."
 
-# type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:248
-#, fuzzy
+#: doc/man/wesnothd.6:249
 msgid ""
-"B<[mail]> Configures an SMTP server through which the user handler can send "
-"mail. Currently only used by the sample user handler."
+"The name of the table in which wesnothd will save its own data about the "
+"modifications used in a game."
 msgstr ""
-"B<[𐑥𐑱𐑤]> 𐑒𐑩𐑯𐑓𐑦𐑜𐑘𐑼𐑟 𐑩𐑯 SMTP 𐑕𐑻𐑝𐑻 𐑔𐑮𐑵 𐑢𐑦𐑗 𐑞 𐑿𐑟𐑼 𐑣𐑨𐑯𐑛𐑤𐑼 𐑒𐑨𐑯 𐑕𐑧𐑯𐑛 𐑥𐑱𐑤. 𐑒𐑳𐑮𐑩𐑯𐑑𐑤𐑦 "
-"𐑴𐑯𐑤𐑦 𐑫𐑖𐑔𐑴𐑵𐑿𐑕𐑑 𐑚𐑲 𐑞 𐑕𐑭𐑥𐑐𐑩𐑤 𐑿𐑟𐑼 𐑣𐑨𐑯𐑛𐑤𐑼."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:249
-#, no-wrap
-msgid "B<server>"
-msgstr "B<𐑕𐑻𐑝𐑻>"
+#, fuzzy, no-wrap
+#| msgid "B<db_users_table>"
+msgid "B<db_user_group_table>"
+msgstr "B<db_users_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:252
-msgid "The hostname of the mail server"
-msgstr "𐑞 𐑣𐑴𐑕𐑑𐑯𐑱𐑥 𐑝 𐑞 𐑥𐑱𐑤 𐑕𐑻𐑝𐑻"
+#, fuzzy
+msgid ""
+"The name of the table in which your phpbb forums saves its user group data. "
+"Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
+"phpbb3_user_group)."
+msgstr ""
+"(𐑓𐑹 user_handler=forum) 𐑞 𐑯𐑱𐑥 𐑝 𐑞 𐑑𐑱𐑚𐑩𐑤 𐑦𐑯 𐑢𐑦𐑗 𐑿𐑼 phpbb 𐑓𐑹𐑩𐑥𐑟 𐑕𐑱𐑝𐑟 𐑦𐑑𐑕 𐑿𐑟𐑼 "
+"𐑛𐑱𐑑𐑩. 𐑥𐑴𐑕𐑑 𐑤𐑲𐑒𐑤𐑦 𐑞𐑦𐑕 𐑢𐑦𐑤 𐑚𐑰 𐑧<·𐑤𐑿𐑑𐑧𐑯𐑩𐑯𐑑>𐑑𐑱𐑚𐑩𐑤-prefixE<gt>_users (𐑧.𐑡𐑰. "
+"phpbb3_users)."
 
-# type: TP
 #. type: TP
 #: doc/man/wesnothd.6:252
 #, no-wrap
-msgid "B<username>"
-msgstr "B<𐑿𐑟𐑻𐑯𐑱𐑥>"
+msgid "B<mp_mod_group>"
+msgstr ""
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:255
-msgid "The user name under which to log into the mail server."
-msgstr "𐑞 𐑿𐑟𐑼 𐑯𐑱𐑥 𐑳𐑯𐑛𐑼 𐑢𐑦𐑗 𐑑 𐑤𐑪𐑜 𐑦𐑯𐑑𐑫 𐑞 𐑥𐑱𐑤 𐑕𐑻𐑝𐑻."
-
-# type: TP
-#. type: TP
-#: doc/man/wesnothd.6:255
-#, no-wrap
-msgid "B<password>"
-msgstr "B<𐑐𐑭𐑕𐑢𐑻𐑛>"
-
-# type: Plain text
-#. type: Plain text
-#: doc/man/wesnothd.6:258
-msgid "This user's password."
-msgstr "𐑞𐑦𐑕 𐑿𐑟𐑼'𐑟 𐑐𐑭𐑕𐑢𐑻𐑛."
-
-# type: TP
-#. type: TP
-#: doc/man/wesnothd.6:258
-#, no-wrap
-msgid "B<from_address>"
-msgstr "B<from_address>"
-
-# type: Plain text
-#. type: Plain text
-#: doc/man/wesnothd.6:261
-msgid "The reply-to address of you mail."
-msgstr "𐑞 𐑮𐑦𐑐𐑤𐑲-𐑑 𐑩𐑛𐑮𐑧𐑕 𐑝 𐑿 𐑥𐑱𐑤."
-
-# type: TP
-#. type: TP
-#: doc/man/wesnothd.6:261
-#, no-wrap
-msgid "B<mail_port>"
-msgstr "B<mail_port>"
-
-# type: Plain text
-#. type: Plain text
-#: doc/man/wesnothd.6:264
-msgid "The port on which your mail server is running. Default is 25."
-msgstr "𐑞 𐑐𐑹𐑑 𐑪𐑯 𐑢𐑦𐑗 𐑿𐑼 𐑥𐑱𐑤 𐑕𐑻𐑝𐑻 𐑦𐑟 𐑮𐑳𐑯𐑦𐑙. 𐑛𐑰𐑓𐑷𐑤𐑑 𐑦𐑟 25."
+msgid ""
+"The ID of the forum group to be considered as having moderation authority."
+msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:268
+#: doc/man/wesnothd.6:260
 msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
@@ -2474,7 +2452,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:274
+#: doc/man/wesnothd.6:266
 #, fuzzy
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
@@ -2491,10 +2469,115 @@ msgstr ""
 
 # type: TH
 #. type: Plain text
-#: doc/man/wesnothd.6:286
+#: doc/man/wesnothd.6:279
 #, fuzzy
 msgid "B<wesnoth>(6)"
 msgstr "wesnoth"
+
+# type: TP
+#, no-wrap
+#~ msgid "B<user_handler>"
+#~ msgstr "B<user_handler>"
+
+# type: Plain text
+#, fuzzy
+#~ msgid ""
+#~ "The name of the user handler to use. Currently available user handlers "
+#~ "are B<forum> (to connect wesnothd to a phpbb forum database) and "
+#~ "B<sample> (a sample implementation of the user handler interface, if you "
+#~ "use this on anything real you are insane). The default value is B<forum>. "
+#~ "You must also add a B<[user_handler]> section, see below."
+#~ msgstr ""
+#~ "𐑞 𐑯𐑱𐑥 𐑝 𐑞 𐑿𐑟𐑼 𐑣𐑨𐑯𐑛𐑤𐑼 𐑑 𐑿𐑕. 𐑒𐑳𐑮𐑩𐑯𐑑𐑤𐑦 𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤 𐑿𐑟𐑼 𐑣𐑨𐑯𐑛𐑤𐑻𐑟 𐑸 B<𐑓𐑹𐑩𐑥> (𐑑 "
+#~ "𐑒𐑩𐑯𐑧𐑒𐑑 wesnothd 𐑑 𐑩 phpbb 𐑓𐑹𐑩𐑥 𐑛𐑱𐑑𐑩𐑚𐑱𐑕) 𐑯 B<𐑕𐑭𐑥𐑐𐑩𐑤> (𐑩 𐑕𐑭𐑥𐑐𐑩𐑤 "
+#~ "𐑦𐑥𐑐𐑤𐑩𐑥𐑧𐑯𐑑𐑱𐑖𐑩𐑯 𐑝 𐑞 𐑿𐑟𐑼 𐑣𐑨𐑯𐑛𐑤𐑼 𐑦𐑯𐑑𐑼𐑓𐑱𐑕, 𐑦𐑓 𐑿 𐑿𐑟 𐑞𐑦𐑕 𐑪𐑯 𐑧𐑯𐑦𐑔𐑦𐑙 𐑮𐑾𐑤 𐑿 𐑸 "
+#~ "𐑦𐑯𐑕𐑱𐑯). 𐑞 𐑛𐑰𐑓𐑷𐑤𐑑 𐑝𐑨𐑤𐑿 𐑦𐑟 B<𐑓𐑹𐑩𐑥>. 𐑿 𐑥𐑳𐑕𐑑 𐑷𐑤𐑕𐑴 𐑨𐑛 𐑩 B<[user_handler]> "
+#~ "𐑕𐑧𐑒𐑖𐑩𐑯, 𐑕𐑰 𐑚𐑩𐑤𐑴."
+
+# type: Plain text
+#~ msgid "(for user_handler=forum) The hostname of the database server"
+#~ msgstr "(𐑓𐑹 user_handler=forum) 𐑞 𐑣𐑴𐑕𐑑𐑯𐑱𐑥 𐑝 𐑞 𐑛𐑱𐑑𐑩𐑚𐑱𐑕 𐑕𐑻𐑝𐑻"
+
+# type: Plain text
+#~ msgid "(for user_handler=forum) The name of the database"
+#~ msgstr "(𐑓𐑹 user_handler=forum) 𐑞 𐑯𐑱𐑥 𐑝 𐑞 𐑛𐑱𐑑𐑩𐑚𐑱𐑕"
+
+# type: Plain text
+#~ msgid "(for user_handler=forum) This user's password"
+#~ msgstr "(𐑓𐑹 user_handler=forum) 𐑞𐑦𐑕 𐑿𐑟𐑼'𐑟 𐑐𐑭𐑕𐑢𐑻𐑛"
+
+# type: Plain text
+#, fuzzy
+#~ msgid ""
+#~ "(for user_handler=forum) The name of the table in which wesnothd will "
+#~ "save its own data about users. You will have to create this table "
+#~ "manually, e.g.: B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) "
+#~ "PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
+#~ "user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
+#~ msgstr ""
+#~ "(𐑓𐑹 user_handler=forum) 𐑞 𐑯𐑱𐑥 𐑝 𐑞 𐑑𐑱𐑚𐑩𐑤 𐑦𐑯 𐑢𐑦𐑗 wesnothd 𐑢𐑦𐑤 𐑕𐑱𐑝 𐑦𐑑𐑕 𐑴𐑯 "
+#~ "𐑛𐑱𐑑𐑩 𐑩𐑚𐑬𐑑 𐑿𐑟𐑼𐑟. 𐑿 𐑢𐑦𐑤 𐑣𐑨𐑝 𐑑 𐑒𐑮𐑰𐑱𐑑 𐑞𐑦𐑕 𐑑𐑱𐑚𐑩𐑤 𐑥𐑨𐑯𐑘𐑫𐑩𐑤𐑦, 𐑧.𐑡𐑰.: B<𐑒𐑮𐑰𐑱𐑑 "
+#~ "𐑑𐑱𐑚𐑩𐑤 𐑧<·𐑤𐑿𐑑𐑧𐑯𐑩𐑯𐑑>𐑑𐑱𐑚𐑩𐑤-nameE<gt>(𐑿𐑟𐑻𐑯𐑱𐑥 VARCHAR(255) 𐑐𐑮𐑲𐑥𐑩𐑮𐑦 𐑒𐑰, "
+#~ "user_lastvisit INT 𐑩𐑯𐑕𐑲𐑯𐑛 𐑯𐑪𐑑 𐑯𐑳𐑤 𐑛𐑰𐑓𐑷𐑤𐑑 0, user_is_moderator TINYINT(4) "
+#~ "𐑯𐑪𐑑 𐑯𐑳𐑤 𐑛𐑰𐑓𐑷𐑤𐑑 0);>"
+
+# type: TP
+#, no-wrap
+#~ msgid "B<user_expiration>"
+#~ msgstr "B<user_expiration>"
+
+# type: Plain text
+#~ msgid ""
+#~ "(for user_handler=sample) The time after which a registered nick expires "
+#~ "(in days)."
+#~ msgstr ""
+#~ "(𐑓𐑹 user_handler=sample) 𐑞 𐑑𐑲𐑥 𐑭𐑓𐑑𐑼 𐑢𐑦𐑗 𐑩 𐑮𐑧𐑡𐑦𐑕𐑑𐑼𐑛 𐑯𐑦𐑒 𐑦𐑒𐑕𐑐𐑲𐑻𐑟 (𐑦𐑯 𐑛𐑱𐑟)."
+
+# type: Plain text
+#, fuzzy
+#~ msgid ""
+#~ "B<[mail]> Configures an SMTP server through which the user handler can "
+#~ "send mail. Currently only used by the sample user handler."
+#~ msgstr ""
+#~ "B<[𐑥𐑱𐑤]> 𐑒𐑩𐑯𐑓𐑦𐑜𐑘𐑼𐑟 𐑩𐑯 SMTP 𐑕𐑻𐑝𐑻 𐑔𐑮𐑵 𐑢𐑦𐑗 𐑞 𐑿𐑟𐑼 𐑣𐑨𐑯𐑛𐑤𐑼 𐑒𐑨𐑯 𐑕𐑧𐑯𐑛 𐑥𐑱𐑤. "
+#~ "𐑒𐑳𐑮𐑩𐑯𐑑𐑤𐑦 𐑴𐑯𐑤𐑦 𐑫𐑖𐑔𐑴𐑵𐑿𐑕𐑑 𐑚𐑲 𐑞 𐑕𐑭𐑥𐑐𐑩𐑤 𐑿𐑟𐑼 𐑣𐑨𐑯𐑛𐑤𐑼."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<server>"
+#~ msgstr "B<𐑕𐑻𐑝𐑻>"
+
+# type: TP
+#, no-wrap
+#~ msgid "B<username>"
+#~ msgstr "B<𐑿𐑟𐑻𐑯𐑱𐑥>"
+
+# type: Plain text
+#~ msgid "The user name under which to log into the mail server."
+#~ msgstr "𐑞 𐑿𐑟𐑼 𐑯𐑱𐑥 𐑳𐑯𐑛𐑼 𐑢𐑦𐑗 𐑑 𐑤𐑪𐑜 𐑦𐑯𐑑𐑫 𐑞 𐑥𐑱𐑤 𐑕𐑻𐑝𐑻."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<password>"
+#~ msgstr "B<𐑐𐑭𐑕𐑢𐑻𐑛>"
+
+# type: TP
+#, no-wrap
+#~ msgid "B<from_address>"
+#~ msgstr "B<from_address>"
+
+# type: Plain text
+#~ msgid "The reply-to address of you mail."
+#~ msgstr "𐑞 𐑮𐑦𐑐𐑤𐑲-𐑑 𐑩𐑛𐑮𐑧𐑕 𐑝 𐑿 𐑥𐑱𐑤."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<mail_port>"
+#~ msgstr "B<mail_port>"
+
+# type: Plain text
+#~ msgid "The port on which your mail server is running. Default is 25."
+#~ msgstr "𐑞 𐑐𐑹𐑑 𐑪𐑯 𐑢𐑦𐑗 𐑿𐑼 𐑥𐑱𐑤 𐑕𐑻𐑝𐑻 𐑦𐑟 𐑮𐑳𐑯𐑦𐑙. 𐑛𐑰𐑓𐑷𐑤𐑑 𐑦𐑟 25."
 
 # type: Plain text
 #, fuzzy

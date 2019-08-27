@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-mapages_1.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-18 15:50+0300\n"
+"POT-Creation-Date: 2019-08-27 22:41+0300\n"
 "PO-Revision-Date: 2012-01-09 11:57+0100\n"
 "Last-Translator: Gábor Udvari <gabor.udvari@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -1608,7 +1608,7 @@ msgstr ""
 "B<50>."
 
 #. type: SH
-#: doc/man/wesnoth.6:505 doc/man/wesnothd.6:265
+#: doc/man/wesnoth.6:505 doc/man/wesnothd.6:257
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr "BEFEJEZÉSI ÁLLAPOT"
@@ -1644,7 +1644,7 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:523 doc/man/wesnothd.6:269
+#: doc/man/wesnoth.6:523 doc/man/wesnothd.6:261
 #, no-wrap
 msgid "AUTHOR"
 msgstr "SZERZŐ"
@@ -1681,7 +1681,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:532 doc/man/wesnothd.6:276
+#: doc/man/wesnoth.6:532 doc/man/wesnothd.6:268
 #, fuzzy
 #| msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgid "Visit the official homepage: https://www.wesnoth.org/"
@@ -1691,14 +1691,14 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:533 doc/man/wesnothd.6:277
+#: doc/man/wesnoth.6:533 doc/man/wesnothd.6:269
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "SZERZŐI JOGOK"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:536 doc/man/wesnothd.6:280
+#: doc/man/wesnoth.6:536 doc/man/wesnothd.6:272
 #, fuzzy
 #| msgid ""
 #| "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
@@ -1709,7 +1709,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:539 doc/man/wesnothd.6:283
+#: doc/man/wesnoth.6:539 doc/man/wesnothd.6:275
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -1724,7 +1724,7 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:540 doc/man/wesnothd.6:284
+#: doc/man/wesnoth.6:540 doc/man/wesnothd.6:276
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "LÁSD MÉG"
@@ -2280,29 +2280,18 @@ msgstr ""
 msgid "Example: B<versions_accepted=\"*\"> accepts any version string."
 msgstr "Példa: B<versions_accepted=\"*\"> bármilyen verziót elfogad."
 
-# type: TP
 #. type: TP
 #: doc/man/wesnothd.6:168
 #, no-wrap
-msgid "B<user_handler>"
-msgstr "B<user_handler>"
+msgid "B<deny_unregistered_login>"
+msgstr ""
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:173
 msgid ""
-"The name of the user handler to use. Currently available user handlers are "
-"B<forum> (to connect wesnothd to a phpbb forum database) and B<sample> (a "
-"sample implementation of the user handler interface, if you use this on "
-"anything real you are insane). The default value is B<forum>. You must also "
-"add a B<[user_handler]> section, see below."
+"Whether to prevent users who are not registered with the B<user_handler> "
+"being used from logging in. (default: false)"
 msgstr ""
-"A használandó felhasználókezelő neve. Jelenleg elérhető kezelők a B<forum> "
-"(a wesnothd egy phpbb fórum adatbázishoz való csatlakoztatásához) és a "
-"B<sample> (a felhasználókezelő felület minta megvalósítása, ha ezt bármilyen "
-"valós környezetben használod, őrült vagy). Alapértelmezetten az értéke a "
-"B<forum>. Emellett meg kell adnod egy B<[user_handler]> részt is, lásd "
-"később."
 
 # type: SS
 #. type: SS
@@ -2426,11 +2415,19 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:221
+#, fuzzy
+#| msgid ""
+#| "B<[user_handler]> Configures the user handler. Available keys vary "
+#| "depending on which user handler is set with the B<user_handler> key. If "
+#| "no B<[user_handler]> section is present in the configuration the server "
+#| "will run without any nick registration service."
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
 "B<[user_handler]> section is present in the configuration the server will "
-"run without any nick registration service."
+"run without any nick registration service. All additional tables that are "
+"needed for the forum_user_handler to function can be found in "
+"table_definitions.sql in the Wesnoth source repository."
 msgstr ""
 "B<[user_handler]> Beállítja a felhasználókezelőt. Az elérhető változók a "
 "B<user_handler> kapcsolóban meghatározott értékektől függnek. Ha nincs "
@@ -2447,8 +2444,10 @@ msgstr "B<db_host>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:225
-msgid "(for user_handler=forum) The hostname of the database server"
-msgstr "(user_handler=forum esetén) Az adatbázis szerver kiszolgálóneve"
+#, fuzzy
+#| msgid "The hostname of the mail server"
+msgid "The hostname of the database server"
+msgstr "Az e-mail szerver kiszolgálóneve"
 
 # type: TP
 #. type: TP
@@ -2460,8 +2459,10 @@ msgstr "B<db_name>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:228
-msgid "(for user_handler=forum) The name of the database"
-msgstr "(user_handler=forum esetén) Az adatbázis neve"
+#, fuzzy
+#| msgid "The hostname of the mail server"
+msgid "The name of the database"
+msgstr "Az e-mail szerver kiszolgálóneve"
 
 # type: TP
 #. type: TP
@@ -2473,9 +2474,11 @@ msgstr "B<db_user>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:231
-msgid ""
-"(for user_handler=forum) The name of the user under which to log into the "
-"database"
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the user under which to log into the "
+#| "database"
+msgid "The name of the user under which to log into the database"
 msgstr ""
 "(user_handler=forum esetén) A felhasználónév, amivel az adatbázisba "
 "jelentkezel be"
@@ -2490,8 +2493,10 @@ msgstr "B<db_passwd>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:234
-msgid "(for user_handler=forum) This user's password"
-msgstr "(user_handler=forum esetén) Ennek a felhasználónak a jelszava"
+#, fuzzy
+#| msgid "This user's password."
+msgid "This user's password"
+msgstr "Ennek a felhasználónak a jelszava."
 
 # type: TP
 #. type: TP
@@ -2503,10 +2508,14 @@ msgstr "B<db_users_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:237
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the table in which your phpbb forums "
+#| "saves its user data. Most likely this will be E<lt>table-"
+#| "prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
-"(for user_handler=forum) The name of the table in which your phpbb forums "
-"saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
-"(e.g. phpbb3_users)."
+"The name of the table in which your phpbb forums saves its user data. Most "
+"likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgstr ""
 "(user_handler=forum esetén) Az adattábla, amibe a phpbb fórumod elmenti a "
 "felhasználó adatait. Ez valószínűséggel E<lt>tábla-előtagE<gt>_users lesz "
@@ -2519,116 +2528,93 @@ msgstr ""
 msgid "B<db_extra_table>"
 msgstr "B<db_extra_table>"
 
-# type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:241
+#: doc/man/wesnothd.6:240
 msgid ""
-"(for user_handler=forum) The name of the table in which wesnothd will save "
-"its own data about users. You will have to create this table manually, e.g.: "
-"B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) PRIMARY KEY, "
-"user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
-"NOT NULL DEFAULT 0);>"
+"The name of the table in which wesnothd will save its own data about users."
 msgstr ""
-"(user_handler=forum esetén) Az adattábla neve, amiben a wesnothd fogja "
-"eltárolni a felhasználókról készített saját adatait. Ezt a táblát magadtól "
-"kell létrehoznod, pl.: B<CREATE TABLE E<lt>tábla-neveE<gt>(username "
-"VARCHAR(255) PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
-"user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
 
 # type: TP
 #. type: TP
-#: doc/man/wesnothd.6:241
+#: doc/man/wesnothd.6:240
+#, fuzzy, no-wrap
+#| msgid "B<db_users_table>"
+msgid "B<db_game_info_table>"
+msgstr "B<db_users_table>"
+
+#. type: Plain text
+#: doc/man/wesnothd.6:243
+msgid ""
+"The name of the table in which wesnothd will save its own data about games."
+msgstr ""
+
+# type: TP
+#. type: TP
+#: doc/man/wesnothd.6:243
+#, fuzzy, no-wrap
+#| msgid "B<db_users_table>"
+msgid "B<db_game_player_info_table>"
+msgstr "B<db_users_table>"
+
+#. type: Plain text
+#: doc/man/wesnothd.6:246
+msgid ""
+"The name of the table in which wesnothd will save its own data about the "
+"players in a game."
+msgstr ""
+
+#. type: TP
+#: doc/man/wesnothd.6:246
 #, no-wrap
-msgid "B<user_expiration>"
-msgstr "B<user_expiration>"
-
-# type: Plain text
-#. type: Plain text
-#: doc/man/wesnothd.6:244
-msgid ""
-"(for user_handler=sample) The time after which a registered nick expires (in "
-"days)."
+msgid "B<db_game_modification_info_table>"
 msgstr ""
-"(user_handle=sample esetén) Az idő, miután egy regisztrált felhasználónév "
-"lejár (napokban)."
 
-# type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:248
+#: doc/man/wesnothd.6:249
 msgid ""
-"B<[mail]> Configures an SMTP server through which the user handler can send "
-"mail. Currently only used by the sample user handler."
+"The name of the table in which wesnothd will save its own data about the "
+"modifications used in a game."
 msgstr ""
-"B<[mail]> Létrehoz egy SMTP szervert, amin keresztül a felhasználókezelő "
-"levelet küldhet. Jelenleg egyedül a minta felhasználókezelő használja."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:249
-#, no-wrap
-msgid "B<server>"
-msgstr "B<server>"
+#, fuzzy, no-wrap
+#| msgid "B<db_users_table>"
+msgid "B<db_user_group_table>"
+msgstr "B<db_users_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:252
-msgid "The hostname of the mail server"
-msgstr "Az e-mail szerver kiszolgálóneve"
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the table in which your phpbb forums "
+#| "saves its user data. Most likely this will be E<lt>table-"
+#| "prefixE<gt>_users (e.g. phpbb3_users)."
+msgid ""
+"The name of the table in which your phpbb forums saves its user group data. "
+"Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
+"phpbb3_user_group)."
+msgstr ""
+"(user_handler=forum esetén) Az adattábla, amibe a phpbb fórumod elmenti a "
+"felhasználó adatait. Ez valószínűséggel E<lt>tábla-előtagE<gt>_users lesz "
+"(pl. phpbb3_users)."
 
-# type: TP
 #. type: TP
 #: doc/man/wesnothd.6:252
 #, no-wrap
-msgid "B<username>"
-msgstr "B<username>"
+msgid "B<mp_mod_group>"
+msgstr ""
 
-# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:255
-msgid "The user name under which to log into the mail server."
-msgstr "Az e-mail szerverre bejelentkező felhasználó neve."
-
-# type: TP
-#. type: TP
-#: doc/man/wesnothd.6:255
-#, no-wrap
-msgid "B<password>"
-msgstr "B<password>"
-
-# type: Plain text
-#. type: Plain text
-#: doc/man/wesnothd.6:258
-msgid "This user's password."
-msgstr "Ennek a felhasználónak a jelszava."
-
-# type: TP
-#. type: TP
-#: doc/man/wesnothd.6:258
-#, no-wrap
-msgid "B<from_address>"
-msgstr "B<from_address>"
-
-# type: Plain text
-#. type: Plain text
-#: doc/man/wesnothd.6:261
-msgid "The reply-to address of you mail."
-msgstr "Az e-mailed válaszcíme."
-
-# type: TP
-#. type: TP
-#: doc/man/wesnothd.6:261
-#, no-wrap
-msgid "B<mail_port>"
-msgstr "B<mail_port>"
-
-# type: Plain text
-#. type: Plain text
-#: doc/man/wesnothd.6:264
-msgid "The port on which your mail server is running. Default is 25."
-msgstr "A port, amin az e-mail szervered fut. Az alapértelmezett 25."
+msgid ""
+"The ID of the forum group to be considered as having moderation authority."
+msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:268
+#: doc/man/wesnothd.6:260
 msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
@@ -2639,7 +2625,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:274
+#: doc/man/wesnothd.6:266
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
@@ -2659,11 +2645,115 @@ msgstr ""
 
 # type: TH
 #. type: Plain text
-#: doc/man/wesnothd.6:286
+#: doc/man/wesnothd.6:279
 #, fuzzy
 #| msgid "B<wesnoth>(6)."
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<user_handler>"
+#~ msgstr "B<user_handler>"
+
+# type: Plain text
+#~ msgid ""
+#~ "The name of the user handler to use. Currently available user handlers "
+#~ "are B<forum> (to connect wesnothd to a phpbb forum database) and "
+#~ "B<sample> (a sample implementation of the user handler interface, if you "
+#~ "use this on anything real you are insane). The default value is B<forum>. "
+#~ "You must also add a B<[user_handler]> section, see below."
+#~ msgstr ""
+#~ "A használandó felhasználókezelő neve. Jelenleg elérhető kezelők a "
+#~ "B<forum> (a wesnothd egy phpbb fórum adatbázishoz való "
+#~ "csatlakoztatásához) és a B<sample> (a felhasználókezelő felület minta "
+#~ "megvalósítása, ha ezt bármilyen valós környezetben használod, őrült "
+#~ "vagy). Alapértelmezetten az értéke a B<forum>. Emellett meg kell adnod "
+#~ "egy B<[user_handler]> részt is, lásd később."
+
+# type: Plain text
+#~ msgid "(for user_handler=forum) The hostname of the database server"
+#~ msgstr "(user_handler=forum esetén) Az adatbázis szerver kiszolgálóneve"
+
+# type: Plain text
+#~ msgid "(for user_handler=forum) The name of the database"
+#~ msgstr "(user_handler=forum esetén) Az adatbázis neve"
+
+# type: Plain text
+#~ msgid "(for user_handler=forum) This user's password"
+#~ msgstr "(user_handler=forum esetén) Ennek a felhasználónak a jelszava"
+
+# type: Plain text
+#~ msgid ""
+#~ "(for user_handler=forum) The name of the table in which wesnothd will "
+#~ "save its own data about users. You will have to create this table "
+#~ "manually, e.g.: B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) "
+#~ "PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
+#~ "user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
+#~ msgstr ""
+#~ "(user_handler=forum esetén) Az adattábla neve, amiben a wesnothd fogja "
+#~ "eltárolni a felhasználókról készített saját adatait. Ezt a táblát "
+#~ "magadtól kell létrehoznod, pl.: B<CREATE TABLE E<lt>tábla-"
+#~ "neveE<gt>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT UNSIGNED "
+#~ "NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
+
+# type: TP
+#, no-wrap
+#~ msgid "B<user_expiration>"
+#~ msgstr "B<user_expiration>"
+
+# type: Plain text
+#~ msgid ""
+#~ "(for user_handler=sample) The time after which a registered nick expires "
+#~ "(in days)."
+#~ msgstr ""
+#~ "(user_handle=sample esetén) Az idő, miután egy regisztrált felhasználónév "
+#~ "lejár (napokban)."
+
+# type: Plain text
+#~ msgid ""
+#~ "B<[mail]> Configures an SMTP server through which the user handler can "
+#~ "send mail. Currently only used by the sample user handler."
+#~ msgstr ""
+#~ "B<[mail]> Létrehoz egy SMTP szervert, amin keresztül a felhasználókezelő "
+#~ "levelet küldhet. Jelenleg egyedül a minta felhasználókezelő használja."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<server>"
+#~ msgstr "B<server>"
+
+# type: TP
+#, no-wrap
+#~ msgid "B<username>"
+#~ msgstr "B<username>"
+
+# type: Plain text
+#~ msgid "The user name under which to log into the mail server."
+#~ msgstr "Az e-mail szerverre bejelentkező felhasználó neve."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<password>"
+#~ msgstr "B<password>"
+
+# type: TP
+#, no-wrap
+#~ msgid "B<from_address>"
+#~ msgstr "B<from_address>"
+
+# type: Plain text
+#~ msgid "The reply-to address of you mail."
+#~ msgstr "Az e-mailed válaszcíme."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<mail_port>"
+#~ msgstr "B<mail_port>"
+
+# type: Plain text
+#~ msgid "The port on which your mail server is running. Default is 25."
+#~ msgstr "A port, amin az e-mail szervered fut. Az alapértelmezett 25."
 
 # type: Plain text
 #, fuzzy

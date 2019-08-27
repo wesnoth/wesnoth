@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-07-18 12:51 UTC\n"
+"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
 "PO-Revision-Date: 2019-02-08 15:50+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -1513,7 +1513,7 @@ msgstr "很好。就按你说的办吧。"
 #. [scenario]: id=08_Carcyn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:13
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:136
-#: data/campaigns/Secrets_of_the_Ancients/utils/characters.cfg:65
+#: data/campaigns/Secrets_of_the_Ancients/utils/characters.cfg:64
 msgid "Carcyn"
 msgstr "卡辛"
 
@@ -4010,11 +4010,11 @@ msgstr ""
 msgid "Ardonna"
 msgstr "阿冬娜"
 
-#: data/campaigns/Secrets_of_the_Ancients/utils/characters.cfg:76
+#: data/campaigns/Secrets_of_the_Ancients/utils/characters.cfg:74
 msgid "Shynal"
 msgstr "赛娜尔"
 
-#: data/campaigns/Secrets_of_the_Ancients/utils/characters.cfg:126
+#: data/campaigns/Secrets_of_the_Ancients/utils/characters.cfg:123
 msgid "Vendraxis"
 msgstr "文德拉克西斯"
 
@@ -4353,6 +4353,61 @@ msgstr ""
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:346
 msgid "A lua error has occurred, and a corpse cannot be recruited."
 msgstr ""
+
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:30
+msgid "Lvl 0"
+msgstr ""
+
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:33
+msgid "Undead"
+msgstr ""
+
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:38
+msgid "Traits"
+msgstr ""
+
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:41
+msgid "Attacks"
+msgstr ""
+
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:53
+msgid "Choose a Corpse"
+msgstr ""
+
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:68
+msgid "Recruit"
+msgstr ""
+
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:69
+msgid "Cancel"
+msgstr ""
+
+#. [lua]: select
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:80
+msgid "HP: "
+msgstr ""
+
+#. [lua]: select
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:80
+msgid "MP: "
+msgstr ""
+
+#. [lua]: select
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:80
+msgid "XP: "
+msgstr ""
+
+#. [lua]: postshow
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:143
+msgid "There are no corpses available."
+msgstr ""
+
+#. [lua]: postshow
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:147
+#, fuzzy
+#| msgid "You don't have enough gold to raise that unit."
+msgid "You do not have enough gold to recruit that unit"
+msgstr "你的金币不足，不能复苏该单位。"
 
 #, fuzzy
 #~| msgid "You may watch."

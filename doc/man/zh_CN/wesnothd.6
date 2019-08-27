@@ -137,8 +137,9 @@ wesnothd \- 韦诺之战（Battle for \fBWesnoth\fP）多人网络守护进程
 .br
 例如: \fBversions_accepted="*"\fP 允许所有版本连接。
 .TP 
-\fBuser_handler\fP
-希望使用的用户信息处理器的名称。目前可选的有\fBforum\fP（将wesnothd与phpbb论坛的数据库连接起来）和\fBsample\fP（一个用户信息处理接口的样例实现，如果您真的在实际中使用它，那您一定是疯了）。默认值是\fBforum\fP，同时您必须添加一个\fB[user_handler]\fP小节，请看下面。
+\fBdeny_unregistered_login\fP
+Whether to prevent users who are not registered with the \fBuser_handler\fP
+being used from logging in. (default: false)
 .
 .SS 全局标签：
 .
@@ -172,53 +173,52 @@ wesnothd \- 韦诺之战（Battle for \fBWesnoth\fP）多人网络守护进程
 这个标签用于告诉服务器扮演代理服务器角色，把连接在本服务器上的用户的请求转发到指定的服务器。与\fB[redirect]\fP接受一样的主键。
 .RE
 .P
-\fB[user_handler]\fP
-配置用户数据处理器。可设置的主键取决于通过\fBuser_handler\fP设置的用户数据处理器是哪一个。如果配置文件中没有\fB[user_handler]\fP小节，则服务器在运行中将不提供任何昵称注册服务。
+\fB[user_handler]\fP Configures the user handler. Available keys vary depending
+on which user handler is set with the \fBuser_handler\fP key. If no
+\fB[user_handler]\fP section is present in the configuration the server will
+run without any nick registration service. All additional tables that are
+needed for the forum_user_handler to function can be found in
+table_definitions.sql in the Wesnoth source repository.
 .RS
 .TP 
 \fBdb_host\fP
-（如果user_handler=forum）数据库服务器的主机名
+The hostname of the database server
 .TP 
 \fBdb_name\fP
-（如果user_handler=forum）数据库名
+The name of the database
 .TP 
 \fBdb_user\fP
-（如果user_handler=forum）数据库登录用户名
+The name of the user under which to log into the database
 .TP 
 \fBdb_password\fP
-（如果user_handler=forum）这个用户的密码
+This user's password
 .TP 
 \fBdb_users_table\fP
-（如果user_handler=forum）phpbb
-论坛中存放用户数据的表名。很可能是<table\-prefix>_users（例如phpbb3_users）。
+The name of the table in which your phpbb forums saves its user data. Most
+likely this will be <table\-prefix>_users (e.g. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
-（如果user_handler=forum）wesnothd存放自用的用户数据的表名。您必须自己手动创建这个表，例如：\fBCREATE TABLE
-<table\-name>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
-UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
-0);\fP
+The name of the table in which wesnothd will save its own data about users.
 .TP 
-\fBuser_expiration\fP
-（如果user_handler=sample）注册昵称的失效时间（天数）。
+\fBdb_game_info_table\fP
+The name of the table in which wesnothd will save its own data about games.
+.TP 
+\fBdb_game_player_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+players in a game.
+.TP 
+\fBdb_game_modification_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+modifications used in a game.
+.TP 
+\fBdb_user_group_table\fP
+The name of the table in which your phpbb forums saves its user group
+data. Most likely this will be <table\-prefix>_user_group
+(e.g. phpbb3_user_group).
+.TP 
+\fBmp_mod_group\fP
+The ID of the forum group to be considered as having moderation authority.
 .RE
-.P
-\fB[mail]\fP 设置一个SMTP服务器，通过它用户信息处理器可以发送邮件。目前只在样例处理器中使用。
-.RS
-.TP 
-\fBserver\fP
-邮件服务器的主机名
-.TP 
-\fBusername\fP
-登录到邮件服务器的用户名。
-.TP 
-\fBpassword\fP
-这个用户的密码。
-.TP 
-\fBfrom_address\fP
-您的邮箱的“回复到”邮件地址。
-.TP 
-\fBmail_port\fP
-邮件服务器的端口。默认值为25。
 .
 .SH 退出状态码
 .
@@ -243,3 +243,4 @@ UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
 .SH 参见
 .
 \fBwesnoth\fP(6)
+

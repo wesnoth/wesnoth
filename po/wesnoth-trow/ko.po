@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-07-18 12:51 UTC\n"
+"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
 "PO-Revision-Date: 2011-11-22 15:47+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -279,13 +279,13 @@ msgstr "Eldaric 4세"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:122
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:161
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:160
 msgid "Defeat the Wesfolk Leader"
 msgstr "Wesfolk 지도자를 격파하라"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:126
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:165
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:164
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:111
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:159
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:148
@@ -538,6 +538,12 @@ msgstr "Tan-Rarbag"
 #. [side]: type=Orcish Warlord, id=Tan-Harak
 #. [side]: type=Orcish Warlord, id=Tan-Hork
 #. [side]: type=Orcish Warlord, id=Tan-Gulo
+#. [side]: type=Orcish Warlord, id=Tan-Erirt
+#. [side]: type=Orcish Warlord, id=Tan-Gagar
+#. [side]: type=Troll Warrior, id=Thruf
+#. [side]: type=Draug, id=General Heravan
+#. [side]: type=Orcish Warlord, id=Tan-Halg
+#. [side]: type=Orcish Warlord, id=Tan-Rinak
 #. [side]: type=Orcish Warlord, id=Tan-Rarbag
 #. [side]: type=Orcish Warrior, id=Tan-Erang
 #. [side]: type=Orcish Warlord, id=Tan-Schmog
@@ -545,12 +551,6 @@ msgstr "Tan-Rarbag"
 #. [side]: type=Orcish Warlord, id=Tan-Vrodis
 #. [side]: type=Orcish Warlord, id=Tan-Bok
 #. [side]: type=Orcish Warlord, id=Tan-Hogar
-#. [side]: type=Orcish Warlord, id=Tan-Erirt
-#. [side]: type=Orcish Warlord, id=Tan-Gagar
-#. [side]: type=Troll Warrior, id=Thruf
-#. [side]: type=Draug, id=General Heravan
-#. [side]: type=Orcish Warlord, id=Tan-Halg
-#. [side]: type=Orcish Warlord, id=Tan-Rinak
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:75
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:98
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:41
@@ -583,32 +583,32 @@ msgid "Tan-Erang"
 msgstr "Tan-Erang"
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:154
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:153
 msgid "Thegwyn"
 msgstr "친위병 테그윈"
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:155
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:154
 msgid "Galdred"
 msgstr "친위병 갈드레드"
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:156
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:155
 msgid "Tromas"
 msgstr "친위병 트로마스"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:169
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:168
 msgid "Death of King Eldaric IV"
 msgstr "Eldaric 4세의 죽음"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:173
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:172
 msgid "Orcs kill the Wesfolk Leader"
 msgstr "오크가 Wesfolk 지도자를 죽인다"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:191
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:190
 msgid ""
 "Haldric, things have not gone well! The orcs have arrived. We met them at "
 "the north keep but they were just too many. They have flanked us to the east "
@@ -621,7 +621,7 @@ msgstr ""
 "나야 한다."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:196
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:195
 msgid ""
 "That’s awful! And it only gets worse. That Wesfolk rabble has set up shop "
 "again in the south pass..."
@@ -630,7 +630,7 @@ msgstr ""
 "쪽 통로에서 다시 사업을 시작했어요..."
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:202
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:201
 msgid ""
 "That’s the only way out of the valley! This is a disaster! We must defeat "
 "that Wesfolk scum and flee to the south. Our home is lost... We must make "
@@ -641,39 +641,39 @@ msgstr ""
 
 #. [message]: speaker=Tan-Rarbag
 #. meat is a derogatory term for humans used by orcs and also is a subtle reference to orcs eating humans opportunistically
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:208
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:207
 msgid ""
 "Run, meat, run! Sooner or later, you will tire and our wolves will hunt you "
 "down!"
 msgstr ""
 
 #. [message]: speaker=Tan-Erang
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:213
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:212
 msgid "The meat will die! Die! Die! Die!"
 msgstr ""
 
 #. [message]: speaker=Wesfolk Leader
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:218
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:217
 msgid "This is going to get ugly..."
 msgstr "더럽게 흘러가는데..."
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:226
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:225
 msgid "Hurry! Only death awaits in this valley!"
 msgstr "서둘러라! 이 협곡에서 기다리는건 죽음뿐이야!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:270
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:269
 msgid "Umm, I invoke the right of surren..."
 msgstr "으음, 항복의 권리를 주장하겠..."
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:275
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:274
 msgid "Nay! Off with your hea—"
 msgstr "됐다! 목 닦고 기다리—"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:280
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:279
 msgid ""
 "But I can help! Really! You could use me and my men’s skills on the long "
 "road ahead!"
@@ -682,62 +682,62 @@ msgstr ""
 "거에요!"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:285
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:284
 msgid "Haldric, what say you on this matter?"
 msgstr "Haldric, 넌 어떻게 했으면 좋겠느냐?"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:290
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:289
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:368
 msgid "Hmm... after some thought..."
 msgstr "흠... 생각좀 해보고요..."
 
 #. [option]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:294
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:293
 msgid "I think that your skills may be useful. You may join us."
 msgstr "너희 능력은 유용할 것 같군. 우리와 함께 가자."
 
 #. [message]: speaker=Wesfolk Leader
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:298
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:297
 #, fuzzy
 #| msgid "Let there be peace between us, our survival depends on it."
 msgid "Let there be peace between us. Our survival depends on it."
 msgstr "서로간에 평화롭게 지내자구. 우리 생존은 거기에 달렸어."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:306
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:305
 msgid "So what shall I call you?"
 msgstr "네 이름은 뭐지?"
 
 #. [message]: speaker=Wesfolk Leader
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:310
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:309
 msgid "The Lady Outlaw will do."
 msgstr "무법자 양이라고 불러주면 돼요."
 
 #. [unit]: id=Lady Outlaw, type=$wesfolk_leader_store.type
 #. [then]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:323
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:476
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:322
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:474
 msgid "Lady Outlaw"
 msgstr "무법자 양"
 
 #. [option]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:346
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:344
 msgid "Your word can’t be trusted. Prepare to meet your gods!"
 msgstr "네 말은 믿을 수 없다. 너희 신께 기도나 하거라!"
 
 #. [message]: speaker=Wesfolk Leader
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:350
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:348
 msgid "Arrogant fools! (<i>Reaches into pocket</i>) <i>Poof</i>!"
 msgstr "오만한 멍청이! (<i>주머니에 손을 넣는다</i>) <i>펑</i>!"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:367
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:365
 msgid "Argh, she’s gone. Next time, more sword, less chat."
 msgstr "으윽, 달아나버렸군. 다음번엔 말보다 칼이 우선이다."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:372
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:370
 msgid ""
 "She’s clever! Maybe I made the wrong choice. Well, at least she left some of "
 "her gold behind..."
@@ -746,7 +746,7 @@ msgstr ""
 "요..."
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:391
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:389
 msgid ""
 "Son, you must lead our people through the south pass. I will remain behind "
 "to hold off these vile monsters for as long as I can."
@@ -755,33 +755,33 @@ msgstr ""
 "찍한 괴물들을 되도록 오래 붙들고 있으마."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:395
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:393
 msgid "But, Father!"
 msgstr "하지만, 아버지!"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:399
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:397
 msgid "It’s the only way. Go now, and don’t look back! Luck be with you!"
 msgstr ""
 "그게 유일한 방법이다. 가거라, 뒤돌아보지 말고! 행운이 너와 함께 할게다!"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:421
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:419
 msgid "We’re surrounded! The orcs have taken the southern pass! All is lost!"
 msgstr "우린 포위됐다! 오크들이 남쪽 통로를 장악했어! 모든게 끝이야!"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:433
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:431
 msgid "We’re surrounded! I can see their reinforcements! All is lost!"
 msgstr "우린 포위됐다! 놈들의 증원이 왔어! 모든게 끝이야!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:446
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:444
 msgid "Our home! Where shall we go!"
 msgstr "우리의 집이! 이제 어디로 가야 되나요!"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:450
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:448
 msgid "There can be no looking back! We must go south."
 msgstr "뒤돌아보면 안된다! 우린 남쪽으로 가야해!"
 
@@ -917,12 +917,12 @@ msgid "Burin the Lost"
 msgstr "길잃은 Burin"
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:179
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:178
 msgid "Burin, Burin the Lost. Who be ye?"
 msgstr "Burin, 길 잃은 Burin이다. 넌 누구냐?"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:185
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:184
 msgid ""
 "I’m Prince Haldric, we have little time to talk. We must make haste through "
 "the pass... What are you?"
@@ -931,7 +931,7 @@ msgstr ""
 "신 뭐요?"
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:190
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:189
 msgid ""
 "I’m a dwarf, you fool of a boy! I got lost while exploring deep underground, "
 "almost a century ago. I’ve never found my way home. But it seems nice enough "
@@ -942,31 +942,31 @@ msgstr ""
 "찮아."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:196
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:195
 msgid "Nice? The orcs have come, and we must flee!"
 msgstr "괜찮다고? 오크들이 오고 있으니 어서 달아나야 돼!"
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:201
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:200
 msgid ""
 "Orcs! It’s been a long time since I felt the satisfying crunch of one of "
 "those under my axe. Time for a fight!"
 msgstr "오크라고! 도끼로 그놈들을 찍어본 지도 꽤 오래 되었지. 싸울 시간이군!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:206
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:205
 msgid "You’ve fought orcs before?"
 msgstr "오크와 전에 싸워본 적이 있소?"
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:211
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:210
 msgid ""
 "Fool boy! Where did you grow up? Enough of this, let’s go get some orcs!"
 msgstr ""
 "멍청한 꼬마같으니! 너 대체 어디서 살았던거냐? 됐다, 오크 몇놈 잡으러 가보자!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:219
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:218
 msgid ""
 "We’re trapped in the pass! I can see their reinforcements! All is lost! Is "
 "that... Is that snow...? We’re doomed!"
@@ -975,7 +975,7 @@ msgstr ""
 "린 망했어!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:240
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:239
 msgid ""
 "SE — The River Road.\n"
 "SW — The Midlands."
@@ -984,12 +984,12 @@ msgstr ""
 "남서 — 중부 지역."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:263
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:262
 msgid "GO HOME! AIN’T NUTTIN TO SEE HEER!"
 msgstr "집에 가! 여기 볼 생각 말고!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:273
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:272
 msgid ""
 "Now, should I go southeast on the river road, or southwest through the "
 "midlands? The river road crosses the Swamp of Esten, so I doubt that even "
@@ -1001,17 +1001,17 @@ msgstr ""
 "지역은 좋은 곳이었지만, 이제 거기서 무슨 일이 일어날진 아무도 모르지."
 
 #. [option]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:276
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:275
 msgid "I think I’ll take the river road..."
 msgstr "강변 도로로 가야겠어..."
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:280
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:279
 msgid "Good. The Midlands are probably an orc-infested ruin by now."
 msgstr "좋아요. 중부 지역은 아마 지금쯤 오크 천지의 폐허가 됐을 거에요."
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:285
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:284
 msgid ""
 "<i>Swamp</i>?! I’m under five feet tall, and I don’t float! ... Argh, have "
 "it your way."
@@ -1020,17 +1020,17 @@ msgstr ""
 "로 하라고."
 
 #. [option]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:298
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:297
 msgid "We’ll go through the Midlands..."
 msgstr "중부 지역을 지나가야겠어..."
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:302
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:301
 msgid "I suspect that the Midlands might be in ruins by now."
 msgstr "중부 지역은 이제 폐허가 되어있을텐데요."
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:307
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:306
 msgid ""
 "It’s better than the swamp. I’m under five feet tall, and I don’t float! "
 "Besides, I’d rather enjoy meeting more orcs."
@@ -1039,29 +1039,29 @@ msgstr ""
 "보는 편이 즐겁지."
 
 #. [message]: speaker=Tan-NauVong
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:343
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:342
 msgid "Come and get it!"
 msgstr "놈들을 잡아라!"
 
 #. [message]: type=Orcish Slayer
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:353
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:401
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:352
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:400
 msgid "Die, human."
 msgstr "죽어, 인간."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:358
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:406
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:357
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:405
 msgid "Uh-oh!"
 msgstr "어엇!"
 
 #. [message]: speaker=Tan-Schmog
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:391
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:390
 msgid "I’ll not go so easily!"
 msgstr "난 그렇게 쉽게 당하지 않아!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:421
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:420
 msgid ""
 "We’ve escaped the pass. Well, at least I know that the orcs can be beaten. "
 "Hmm, I guess that this is the last I’ll see of my home... and my father. "
@@ -1071,7 +1071,7 @@ msgstr ""
 "가면 다시는 고향을 볼 수 없겠지... 아버지도. (<i>후우</i>)"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:425
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:424
 msgid ""
 "We should make our way to Southbay. It is the largest city on the Isle. We "
 "should be able to make a stand there. Failing that, there’s always "
@@ -1226,7 +1226,7 @@ msgid "Minister Edren"
 msgstr "Edren 목사"
 
 #. [message]: speaker=Minister Edren
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:374
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:373
 msgid ""
 "Back you vile— Oh, sorry I thought you were undead. When are those goofs in "
 "Clearwater Port going to clear the swamp again?"
@@ -1235,22 +1235,22 @@ msgstr ""
 "체 언제 늪을 청소할 생각인지."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:378
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:377
 msgid "Maybe they’ll clear it some time after the APOCALYPSE is OVER!"
 msgstr "아마도 이 재앙이 끝난다면 언젠가 치우겠지요!"
 
 #. [message]: speaker=Minister Edren
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:383
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:382
 msgid "Oooh! I take it you wouldn’t mind if I helped out?"
 msgstr "오오! 내가 좀 도와줘도 되겠소?"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:398
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:397
 msgid "Hey, there’s somebody hidden in the temple. Ack! Hold there!"
 msgstr "이봐, 누가 사원 안에 숨어 있어. 엑! 저기 잡아!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:482
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:481
 msgid ""
 "SW — The Oldwood Forest.\n"
 "Enter at Your Own Risk!"
@@ -1259,27 +1259,27 @@ msgstr ""
 "함부로 들어간 책임은 당신에게 있습니다!"
 
 #. [message]: speaker=Lollyra
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:499
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:498
 msgid "May I live forever in Un-death!"
 msgstr "나는 영원히 죽지 않는 삶을 살거다!"
 
 #. [message]: speaker=Clurka
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:510
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:509
 msgid "Ohh! To be risen again!"
 msgstr "오오! 다시 일으켜지리라!"
 
 #. [message]: speaker=Cleon
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:521
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:520
 msgid "A prayer for life immortal!"
 msgstr "불멸의 삶을 위해 기도하라!"
 
 #. [unit]: type=Knight, id=Sir Ruddry
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:536
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:535
 msgid "Sir Ruddry"
 msgstr "Ruddry 경"
 
 #. [message]: speaker=Sir Ruddry
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:555
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:553
 msgid ""
 "I don’t know who you are, but you can’t continue down this road! There is a "
 "horde of those orcs bigger than any army I’ve ever seen just down the road!"
@@ -1288,7 +1288,7 @@ msgstr ""
 "그 어떤 군대보다도 큰 규모의 오크 무리가 있소!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:560
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:558
 msgid ""
 "I’m Haldric; my father was King Eldaric IV in the lands northwest of here. "
 "Soldier, have you deserted your post?"
@@ -1297,7 +1297,7 @@ msgstr ""
 "네는 근무지를 이탈한 것인가?"
 
 #. [message]: speaker=Sir Ruddry
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:565
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:563
 msgid ""
 "No, Sir! I’m the sole survivor of the Clearwater Port expeditionary force. "
 "Trust me, you can’t continue down this road, Sir. Especially with the "
@@ -1308,12 +1308,12 @@ msgstr ""
 "니다."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:570
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:568
 msgid "Tell me, does Clearwater Port still stand? Is the port free?"
 msgstr "말해라, 맑은물 항구는 아직도 건재한가? 항구를 쓸 수 있는가?"
 
 #. [message]: speaker=Sir Ruddry
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:575
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:573
 msgid ""
 "As far as I know, Sir. We have a large army, and they were pressing all able "
 "bodied men and boys into service when I left. That orcish army is huge, but "
@@ -1324,7 +1324,7 @@ msgstr ""
 "거대하긴 하지만, 아직 우리의 본대가 남아있습니다."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:580
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:578
 msgid ""
 "Well, we can’t go back, and the road ahead is blocked. I guess we’ll have to "
 "risk it and go through the Oldwood forest, then make a break for Clearwater "
@@ -1334,7 +1334,7 @@ msgstr ""
 "숲을 통과해서 맑은물 항구나 남안국에서 휴식을 취해야 할 것 같다."
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:585
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:583
 #, fuzzy
 #| msgid ""
 #| "Oh great, now a forest... I should have stayed at home and took my "
@@ -1346,19 +1346,19 @@ msgstr "오 대단해, 이젠 숲인가... 그냥 집에서 운에 맡기고 오
 
 #. [message]: speaker=Sir Ruddry
 #. [message]: speaker=Sir Ladoc
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:591
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:412
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:589
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:411
 msgid "Sir, if you don’t mind, I’ll go with you."
 msgstr "전하, 개의치 않으신다면 저도 따라가겠습니다."
 
 #. [message]: speaker=Lady Outlaw
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:596
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:417
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:594
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:416
 msgid "On we go..."
 msgstr "그럼 가죠..."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:617
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:615
 msgid ""
 "We have run out of time... We’ll be trapped in this swamp when winter "
 "arrives!"
@@ -1489,7 +1489,7 @@ msgid "Sir Ladoc"
 msgstr "Ladoc 경"
 
 #. [message]: speaker=Sir Ladoc
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:376
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:375
 #, fuzzy
 #| msgid ""
 #| "Hold there! You can not pass. You’ve already stumbled on the orcish rear "
@@ -1505,7 +1505,7 @@ msgstr ""
 "을 이루고 있습니다."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:381
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:380
 msgid ""
 "I’m Haldric, my father was King Eldaric IV in the lands northwest of here. "
 "Soldier, aren’t you on the wrong side of the lines?"
@@ -1514,7 +1514,7 @@ msgstr ""
 "는 전선을 이탈한 것이 아닌가?"
 
 #. [message]: speaker=Sir Ladoc
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:386
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:385
 msgid ""
 "They overran my post. I got hit on the head pretty good. When I came to the "
 "orcish army had already passed my position."
@@ -1523,12 +1523,12 @@ msgstr ""
 "가 깨어났을 때는 오크 군단이 이미 제 위치를 지나간 후였습니다."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:391
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:390
 msgid "Tell me, how fares Southbay?"
 msgstr "말해보게, 남안국의 상황은 어떤가?"
 
 #. [message]: speaker=Sir Ladoc
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:396
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:395
 msgid ""
 "Southbay won’t fall without one hell of a fight, sir. They’ll stand to the "
 "last! I only wish I was there!"
@@ -1537,7 +1537,7 @@ msgstr ""
 "후까지 버텨낼 겁니다! 제가 거기에 있었더라면!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:401
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:400
 msgid ""
 "Well, we can’t go back, and the road ahead is blocked... I guess we’ll have "
 "to risk it and go through the Oldwood forest, then make a break for "
@@ -1547,7 +1547,7 @@ msgstr ""
 "랜나무 숲을 지나서 맑은 물 항구에서 휴식을 취해야겠군."
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:406
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:405
 #, fuzzy
 #| msgid ""
 #| "Oh great, now a forest. I should have stayed at home and took my chances "
@@ -1559,7 +1559,7 @@ msgstr ""
 "오 대단해, 이젠 숲이란 말이지. 그냥 집에서 운에 맡기고 오크들과 싸우는건데!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:435
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:434
 msgid ""
 "We have run out of time... We’ll be trapped in the midlands when winter "
 "comes!"
@@ -2294,7 +2294,7 @@ msgid "Lady Jessene"
 msgstr "Jessene 양"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:295
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:294
 msgid ""
 "I am the Lady Jessene, a noble, a princess of the Wesfolk! I was betrayed by "
 "the Lich-Lords’ dark pact with the orcs, in no small part because your fool "
@@ -2305,7 +2305,7 @@ msgstr ""
 "끝나버릴거라고 믿게 만든 것 때문에!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:299
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:298
 #, fuzzy
 #| msgid ""
 #| "And now, I’m as much a refugee as you. In truth, I don’t know if the Lich-"
@@ -2324,12 +2324,12 @@ msgstr ""
 "인간이 아니면 절대 용납하지 않을거라는 거에요!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:303
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:302
 msgid "Young prince, it is time to go! We must flee before the winter snow!"
 msgstr "젊은 왕자, 이제 가야할 때에요! 우린 겨울 눈이 오기 전에 떠나야 해요!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:307
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:306
 msgid ""
 "Fair enough. We will head for Clearwater Port. Thank you, Elilmaldur-"
 "Rithrandil, I will remember your hospitality!"
@@ -2338,14 +2338,14 @@ msgstr ""
 "는 잊지 않겠소!"
 
 #. [message]: speaker=Elilmaldur-Rithrandil
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:311
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:310
 msgid ""
 "Always happy to help a tree-friend. May the Powers of Light guide you on "
 "your way!"
 msgstr "나무의 친구를 돕는 일은 언제나 즐겁지. 빛의 힘이 너의 길을 비춰주기를!"
 
 #. [message]: speaker=Burin the Lost
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:315
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:314
 msgid "Finally, we’re getting out of this forest!"
 msgstr "드디어, 이 숲에서 나가는구나!"
 
@@ -4089,7 +4089,7 @@ msgstr ""
 #. [side]: type=Naga Warrior, id=Abraxas
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:41
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1303
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1300
 msgid "Abraxas"
 msgstr "Abraxas"
 
@@ -6594,32 +6594,32 @@ msgid "Squiddy"
 msgstr "징어징어"
 
 #. [message]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:975
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:974
 msgid "Ack. One of those monsters is destroying the bridge."
 msgstr "엑. 괴물 한놈이 다리를 부수고 있어."
 
 #. [unit]: id=Inky, type=Cuttle Fish
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1096
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1095
 msgid "Inky"
 msgstr "먹물이"
 
 #. [message]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1114
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1112
 msgid "The bridge!"
 msgstr "다리가!"
 
 #. [unit]: id=Beaky, type=Cuttle Fish
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1217
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1215
 msgid "Beaky"
 msgstr "딱딱이"
 
 #. [message]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1284
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1281
 msgid "Our advance is thwarted, that monster has destroyed the bridge!"
 msgstr "진군이 저지되었다, 괴물이 다리를 파괴했어!"
 
 #. [message]: speaker=Abraxas
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1311
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1308
 msgid ""
 "It’s the Prince Haldric! Jevyan, you never said you came to destroy this "
 "monster. We will help you."
@@ -6628,42 +6628,42 @@ msgstr ""
 "가. 우리도 돕겠다."
 
 #. [message]: speaker=Familiar
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1342
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1339
 msgid "<i>Clack</i>! <i>Splat</i>!"
 msgstr "<i>키릭</i>! <i>파직</i>!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1355
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1352
 msgid "Ahh... That almost makes it all worth while!"
 msgstr "아... 꽤나 보람있는 일이야!"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1366
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1363
 msgid "You’ll pay for that!"
 msgstr "댓가를 치르게 해주마!"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1380
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1377
 msgid "Strike down these fools."
 msgstr "저 멍청이들을 날려버려."
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1393
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1390
 msgid "Rise, rise from the ground!"
 msgstr "일어나라, 지하에서 일어나라!"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1434
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1431
 msgid "Come in from the deep my loyal soldiers!"
 msgstr "심해에서 걸어나오라 내 충성스런 병사들이여!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1618
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1615
 msgid "We did it! We won!"
 msgstr "우리가 해냈어요! 우리가 이겼어!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1622
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1619
 msgid ""
 "Jevyan is destroyed, but at a terrible price. Let’s put Commander Aethyr to "
 "rest and discuss what is to come in the following days."
@@ -6672,7 +6672,7 @@ msgstr ""
 "으로의 일에 대해 논의해 봅시다."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1630
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1627
 msgid ""
 "Our strength is waning, and our foes grow stronger by the hour. The battle "
 "is lost!"
@@ -7188,11 +7188,6 @@ msgstr ""
 "고귀한 혈통을 간직하고 있으며 전장에서 귀중한 경험을 쌓아왔다. 그녀는 이 경험"
 "을 부하들에게 빌려주어 좀더 유리하게 전투를 이끌어 간다."
 
-#. [unit_type]: id=Wose Sapling
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:7
-msgid "Wose Sapling"
-msgstr "나모 묘목"
-
 #. [skirmisher]: id=distract
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:6
 msgid "distract"
@@ -7276,7 +7271,7 @@ msgid "Without him the bottoms of our ships will be completely vulnerable..."
 msgstr "그가 없으면 우리 배는 바닥이 완전히 취약해진다..."
 
 #. [unit]: type=Walking Corpse
-#: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-macros.cfg:84
+#: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-macros.cfg:80
 msgid "A Former Friend"
 msgstr "옛 친구"
 
@@ -7350,6 +7345,9 @@ msgid ""
 msgstr ""
 "그건 정말로 좋은 소식이군요. 우리의 숫자가 두배가 됐어. 이제 지금 할 일을 하"
 "죠."
+
+#~ msgid "Wose Sapling"
+#~ msgstr "나모 묘목"
 
 #~ msgid "So, <i>human</i>, care to make your final stand?"
 #~ msgstr "그럼, <i>인간</i>, 최후의 저항을 해볼텐가?"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-07-18 12:50 UTC\n"
+"POT-Creation-Date: 2019-08-27 19:40 UTC\n"
 "PO-Revision-Date: 2009-10-12 21:45-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -282,14 +282,9 @@ msgstr "·𐑢𐑧𐑕𐑯𐑷𐑔𐑾𐑯𐑕"
 
 #. [side]: type=Dark Sorcerer, id=Mal-Skraat
 #. [side]: type=Lich, id=Mal-Telnarad
-#. [side]: type=Dark Sorcerer, id=Mal-Marak
-#. [side]: type=Dark Sorcerer, id=Mal-Galkar
-#. [side]: type=Death Knight, id=Ravanal-Guard
-#. [side]
 #. [side]: type=Necromancer, id=Mal-un-Darak
 #. [side]: type=Necromancer, id=Mal-un-Zanrad
 #. [side]: type=Necromancer, id=Mal-un-Xadrux
-#. [side]: type=Revenant, id=Lanar-Skal
 #. [side]: type=Necromancer, id=Mal-un-Karad
 #. [side]: type=Lich Lord, id=Mal-Ravanal
 #. [side]: type=Lich, id=Lich2
@@ -302,12 +297,17 @@ msgstr "·𐑢𐑧𐑕𐑯𐑷𐑔𐑾𐑯𐑕"
 #. [side]: type=Dark Sorcerer, id=Mal-Sakkat
 #. [side]: type=Dark Sorcerer, id=Mal-Talar
 #. [side]: type=Lich, id=Mal-Uldhar
+#. [side]
+#. [side]: type=Dark Adept, id=Mal-Tar
+#. [side]: type=Dark Sorcerer, id=Mal-Kallat
+#. [side]: type=Dark Sorcerer, id=Mal-Marak
+#. [side]: type=Dark Sorcerer, id=Mal-Galkar
+#. [side]: type=Death Knight, id=Ravanal-Guard
+#. [side]: type=Revenant, id=Lanar-Skal
 #. [side]: type=Bone Knight, id=Garnad
 #. [side]: type=Lich, id=Mal-Grekulak
 #. [side]: type=Lich, id=Mal-Xakralan
 #. [side]: type=Lich, id=Mal-Uknalu
-#. [side]: type=Dark Adept, id=Mal-Tar
-#. [side]: type=Dark Sorcerer, id=Mal-Kallat
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:95
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:123
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:158
@@ -508,8 +508,8 @@ msgstr ""
 msgid "Move Gweddry to the trapdoor"
 msgstr "𐑥𐑵𐑝 ·𐑜𐑢𐑧𐑛𐑮𐑰 𐑑 𐑞 𐑑𐑮𐑨𐑐𐑛𐑹"
 
-#. [objectives]
 #. [objective]: condition=win
+#. [objectives]
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:442
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:167
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:153
@@ -534,9 +534,9 @@ msgstr "𐑞 𐑦𐑕𐑒𐑱𐑐 𐑑𐑳𐑯𐑩𐑤"
 
 #. [side]
 #. [side]: type=Troll, id=Kabak
-#. [side]: type=Ogre, id=Grug
 #. [side]: type=Troll Warrior, id=Darg
 #. [side]: type=Gryphon, id=Kraagak
+#. [side]: type=Ogre, id=Grug
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:43
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:83
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:68
@@ -1129,7 +1129,7 @@ msgstr ""
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:198
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:248
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:247
 msgid "Hmm..."
 msgstr "𐑣𐑥𐑥..."
 
@@ -1227,7 +1227,7 @@ msgid "Terraent"
 msgstr "·𐑑𐑻𐑱𐑯𐑑"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:265
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:264
 msgid ""
 "The Bitter Swamp’s ill reputation is, it seems, well merited. Mal-Ravanal’s "
 "capital lies before us!"
@@ -1236,7 +1236,7 @@ msgstr ""
 "𐑤𐑲𐑟 𐑚𐑦𐑓𐑹 𐑳𐑕!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:270
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:269
 #, fuzzy
 #| msgid ""
 #| "Yes, but look! The undead forces are closing in behind us. As I said "
@@ -1251,7 +1251,7 @@ msgstr ""
 "𐑒𐑦𐑤 ·𐑥𐑨𐑤-𐑮𐑨𐑝𐑨𐑯𐑭𐑤. 𐑦𐑑 𐑢𐑪𐑟 𐑓𐑵𐑤𐑦𐑖 𐑑 𐑒𐑳𐑥 𐑞𐑦𐑕 𐑓𐑸, 𐑢𐑰 𐑥𐑳𐑕𐑑 𐑑𐑻𐑯 𐑚𐑨𐑒!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:275
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:274
 #, fuzzy
 #| msgid ""
 #| "Perhaps. To retreat, we must kill one of these dark sorcerers that follow "
@@ -1264,13 +1264,13 @@ msgstr ""
 "𐑢𐑰 𐑒𐑨𐑯 𐑒𐑦𐑤 𐑞𐑦𐑕 ·𐑥𐑨𐑤-𐑮𐑨𐑝𐑨𐑯𐑭𐑤 𐑕𐑑𐑦𐑤. 𐑲 𐑥𐑲𐑑 𐑢𐑦𐑖 𐑑 𐑑𐑮𐑲."
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:280
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:279
 msgid ""
 "These humans have dared foolishly to come this far into my land. Crush them!"
 msgstr "𐑞𐑰𐑟 𐑣𐑿𐑥𐑩𐑯𐑟 𐑣𐑨𐑝 𐑛𐑺𐑛 𐑓𐑵𐑤𐑦𐑖𐑤𐑦 𐑑 𐑒𐑳𐑥 𐑞𐑦𐑕 𐑓𐑸 𐑦𐑯𐑑𐑫 𐑥𐑲 𐑤𐑨𐑯𐑛. 𐑒𐑮𐑳𐑖 𐑞𐑧𐑥!"
 
 #. [message]: speaker=$freed_prisoner.id
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:335
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:334
 msgid ""
 "Thank you for destroying that skeleton warrior! Every time you kill one of "
 "the Revenants, one of us knights is let free!"
@@ -1279,12 +1279,12 @@ msgstr ""
 "𐑝 𐑳𐑕 𐑯𐑲𐑑𐑕 𐑦𐑟 𐑤𐑧𐑑 𐑓𐑮𐑰!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:340
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:339
 msgid "Why? Are you the undead’s prisoners?"
 msgstr "𐑢𐑲? 𐑸 𐑿 𐑞 𐑳𐑯𐑛𐑧𐑛𐑕 𐑐𐑮𐑦𐑟𐑩𐑯𐑼𐑟?"
 
 #. [message]: speaker=$freed_prisoner.id
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:345
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:344
 #, fuzzy
 msgid ""
 "Yes. My allies and I were questing when we were ambushed by undead. The "
@@ -1296,7 +1296,7 @@ msgstr ""
 "𐑓𐑲𐑑𐑼, 𐑞𐑱 𐑒𐑦𐑤 𐑢𐑳𐑯 𐑝 𐑳𐑕."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:350
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:349
 msgid ""
 "This sounds dangerous. We will try to free as many of you as possible before "
 "we escape from here."
@@ -1305,74 +1305,74 @@ msgstr ""
 "𐑓𐑮𐑪𐑥 𐑣𐑽."
 
 #. [message]: speaker=$freed_prisoner.id
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:355
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:354
 msgid ""
 "Five of my comrades are still imprisoned. We will gladly enter your service "
 "in appreciation for our freedom."
 msgstr ""
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:486
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:485
 msgid ""
 "Wait! I recognize that magic! Dacyn, have you come to surrender to me? Or "
 "perhaps you wish to finish the duel we started so long ago?"
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:491
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:490
 msgid ""
 "If I have one regret, it is that mercy slowed my hand thirty three years "
 "ago. Stop this madness and I will release you from your torment."
 msgstr ""
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:496
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:495
 msgid ""
 "Torment?! You have no idea... but you soon will. Kill them all and bring "
 "Dacyn to me!"
 msgstr ""
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:501
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:500
 msgid "You know this lich?"
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:506
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:505
 msgid ""
 "Yes... We studied together many years ago. He was most powerful then, but "
 "the dark power I sense today is far greater. We must escape immediately!"
 msgstr ""
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:522
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:521
 msgid "Ah, so you’ve decided to fight me."
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:527
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:526
 msgid "I will atone for my failure thirty three years ago."
 msgstr ""
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:540
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:539
 msgid "Enough! You cannot possibly defeat me!"
 msgstr ""
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:555
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:554
 msgid "Is he... dead?"
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:560
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:559
 msgid ""
 "Merely departed. He will return once he has recovered; we would best be away "
 "from here by then."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:597
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:596
 msgid ""
 "Gweddry’s men retreated swiftly from the Bitter Swamp, fleeing north and "
 "west as if their heels were winged. Finding a low pass through the northern "
@@ -1623,7 +1623,7 @@ msgstr ""
 
 #. [unit]: id=Owaec, type=$stored_Owaec.type
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:431
-#: data/campaigns/Eastern_Invasion/utils/character-definitions.cfg:40
+#: data/campaigns/Eastern_Invasion/utils/character-definitions.cfg:39
 msgid "Owaec"
 msgstr "·𐑴𐑢𐑨𐑧𐑒"
 
@@ -1634,11 +1634,11 @@ msgstr "𐑑𐑵 𐑐𐑭𐑞𐑟"
 
 #. [side]: type=Orcish Warlord, id=Wak-Rano
 #. [side]: type=Dark Sorcerer, id=Mal-Arnai
+#. [side]
+#. [side]: type=Orcish Ruler, id=Draka-Kura
 #. [side]: type=Orcish Warlord, id=Varrak-Klar
 #. [side]: type=Troll Warrior, id=Unhk
 #. [side]: type=Orcish Warlord, id=Ran-Lar
-#. [side]
-#. [side]: type=Orcish Ruler, id=Draka-Kura
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:38
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:67
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:60
@@ -1909,12 +1909,12 @@ msgid "Grug say join you will he."
 msgstr "·𐑜𐑮𐑳𐑜 𐑕𐑱 𐑡𐑶𐑯 𐑿 𐑢𐑦𐑤 𐑣𐑰."
 
 #. [unit]: type=Ogre
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:384
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:383
 msgid "Gork"
 msgstr "·𐑜𐑪𐑮𐑒"
 
 #. [unit]: type=Ogre
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:391
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:390
 msgid "Drog"
 msgstr "·𐑛𐑮𐑴𐑜"
 
@@ -2789,7 +2789,7 @@ msgid "Engineer"
 msgstr "𐑧𐑯𐑡𐑦𐑯𐑽"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:198
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:197
 #, fuzzy
 msgid ""
 "We have to get out of the Northlands as quickly as possible! Run for your — "
@@ -2800,7 +2800,7 @@ msgstr ""
 
 #. [message]: speaker=Engineer
 #. This is thickly accented English
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:203
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:202
 msgid ""
 "I’m an enginea’. I s’pect you’ll have a need of me services. I bet you’re "
 "gonna want me to blow up that bridge ov’r theah."
@@ -2809,13 +2809,13 @@ msgstr ""
 "𐑑 𐑚𐑤𐑴 𐑳𐑐 𐑞𐑨𐑑 𐑚𐑮𐑦𐑡 𐑴𐑝𐑸 𐑞𐑱𐑳."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:207
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:206
 #, fuzzy
 msgid "Why would we want to do that?!"
 msgstr "𐑢𐑲 𐑢𐑫𐑛 𐑢𐑰 𐑢𐑪𐑯𐑑 𐑑 𐑛𐑵 𐑞𐑨𐑑?!?"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:211
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:210
 msgid ""
 "Well, I see those orcs are chasin’ you, and if I blow up the bridge, they "
 "can’t get across. It’ll help you to escape."
@@ -2824,12 +2824,12 @@ msgstr ""
 "𐑣𐑧𐑤𐑐 𐑿 𐑑 𐑦𐑕𐑒𐑱𐑐."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:215
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:214
 msgid "I see... I think it is a good idea to hire him. How much?"
 msgstr "𐑲 𐑕𐑰... 𐑲 𐑔𐑦𐑙𐑒 𐑦𐑑 𐑦𐑟 𐑩 𐑜𐑫𐑛 𐑲𐑛𐑾 𐑑 𐑣𐑲𐑼 𐑣𐑦𐑥. 𐑣𐑬 𐑥𐑳𐑗?"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:219
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:218
 #, fuzzy
 msgid ""
 "I ain’t charging gold — I wants protecshun! Everywhere I go, I see orcs, "
@@ -2839,7 +2839,7 @@ msgstr ""
 "𐑕𐑱𐑓 '𐑮𐑬𐑯𐑛 '𐑺!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:223
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:222
 #, fuzzy
 #| msgid ""
 #| "Very well, we’ll protect you from the undead. But we can’t help you until "
@@ -2852,7 +2852,7 @@ msgstr ""
 "𐑞𐑦𐑕 𐑮𐑦𐑝𐑼. 𐑯𐑬 𐑤𐑧𐑑'𐑕 𐑜𐑴!"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:227
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:226
 #, fuzzy
 msgid ""
 "Deal. I c’n blow’er up once I get to that signpost ov’r dere. That’s where "
@@ -2864,28 +2864,28 @@ msgstr ""
 "𐑹𐑒𐑕 𐑓𐑷' 𐑖𐑫𐑼!"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:244
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:243
 msgid "So, d’ya want me to blow up der bridge yet, Cap’n?"
 msgstr "𐑕𐑴, 𐑛𐑰'𐑘𐑭 𐑢𐑪𐑯𐑑 𐑥𐑰 𐑑 𐑚𐑤𐑴 𐑳𐑐 𐑛𐑻 𐑚𐑮𐑦𐑡 𐑘𐑧𐑑, 𐑒𐑨𐑐'𐑯?"
 
 #. [option]
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:250
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:249
 msgid "Yes, blow it up."
 msgstr "𐑘𐑧𐑕, 𐑚𐑤𐑴 𐑦𐑑 𐑳𐑐."
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:254
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:253
 #, fuzzy
 msgid "All right! Blast’n time!"
 msgstr "𐑪𐑤𐑮𐑲𐑑! 𐑚𐑤𐑨𐑕𐑑𐑯 𐑑𐑲𐑥!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:267
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:266
 msgid "<big><i>BOOM!!</i></big>"
 msgstr ""
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:306
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:305
 #, fuzzy
 #| msgid ""
 #| "Good, we have escaped from these orcs. But where will we go? There are "
@@ -2896,23 +2896,23 @@ msgstr ""
 "𐑜𐑫𐑛, 𐑢𐑰 𐑣𐑨𐑝 𐑦𐑕𐑒𐑱𐑐𐑑 𐑓𐑮𐑪𐑥 𐑞𐑰𐑟 𐑹𐑒𐑕. 𐑚𐑳𐑑 𐑢𐑺 𐑢𐑦𐑤 𐑢𐑰 𐑜𐑴? 𐑞𐑺 𐑸 𐑳𐑯𐑛𐑧𐑛 𐑦𐑯 ·𐑢𐑧𐑕𐑯𐑷𐑔."
 
 #. [option]
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:318
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:317
 msgid "No, wait until later."
 msgstr "𐑯𐑴, 𐑢𐑱𐑑 𐑳𐑯𐑑𐑦𐑤 𐑤𐑱𐑑𐑼."
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:322
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:321
 #, fuzzy
 msgid "Neh? A’right then, we’ll wait fa’ later, eh?"
 msgstr "𐑯𐑧? 𐑪𐑤𐑮𐑲𐑑 𐑞𐑧𐑯, 𐑢𐑰'𐑤 𐑢𐑱𐑑 𐑓𐑷' 𐑤𐑱𐑑𐑼, 𐑱?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:335
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:334
 msgid "We have not thrown down the bridge in time! The orcs will kill us all!"
 msgstr "𐑢𐑰 𐑣𐑨𐑝 𐑯𐑪𐑑 𐑔𐑮𐑴𐑯 𐑛𐑬𐑯 𐑞 𐑚𐑮𐑦𐑡 𐑦𐑯 𐑑𐑲𐑥! 𐑞 𐑹𐑒𐑕 𐑢𐑦𐑤 𐑒𐑦𐑤 𐑳𐑕 𐑷𐑤!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:343
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:342
 #, fuzzy
 #| msgid ""
 #| "Well, we didn’t have to blow up the bridge after all, but we still have "
@@ -2926,14 +2926,14 @@ msgstr ""
 "·𐑯𐑹𐑔𐑤𐑨𐑯𐑛𐑕. 𐑥𐑹 𐑹𐑒𐑕 𐑢𐑦𐑤 𐑒𐑳𐑥. 𐑚𐑳𐑑 𐑢𐑺 𐑢𐑦𐑤 𐑢𐑰 𐑜𐑴? 𐑞𐑺 𐑸 𐑳𐑯𐑛𐑧𐑛 𐑦𐑯 ·𐑢𐑧𐑕𐑯𐑷𐑔."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:357
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:356
 #, fuzzy
 #| msgid "So what do you propose?"
 msgid "How do you propose to do that?"
 msgstr "𐑕𐑴 𐑢𐑪𐑑 𐑛𐑵 𐑿 𐑐𐑮𐑩𐑐𐑴𐑟?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:362
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:361
 msgid ""
 "We head south. My research revealed that the dragon Khrakrahs is in "
 "possession of a Null Stone; with it I will be able to block Mal-Ravanal’s "
@@ -2944,14 +2944,14 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:366
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:365
 msgid ""
 "Very well, we will head south. Let us hope we reach Weldyn before Mal-"
 "Ravanal."
 msgstr ""
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:370
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:369
 msgid ""
 "I’ll be followin’ yah from now on. Hope yah can get to Weld’n an’ all so I "
 "c’n stop runnin’..."
@@ -3243,7 +3243,7 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:35
 msgid ""
 "His attack was swift and his power great, but through unwavering faith and "
-"no small skill I emerged victorious. As he lie there mortally wounded I "
+"no small skill I emerged victorious. As he lay there mortally wounded I "
 "prepared to excise the darkness in his soul."
 msgstr ""
 
@@ -3411,7 +3411,7 @@ msgid "Survive the long night"
 msgstr ""
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:234
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:233
 #, fuzzy
 #| msgid ""
 #| "We will fight soon, my lord. Look, night approaches; they will soon "
@@ -3424,12 +3424,12 @@ msgstr ""
 "𐑞𐑧𐑥 𐑪𐑓."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:238
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:237
 msgid "Very well. But this... Mal-Ravanal, that you spoke of, is he here?"
 msgstr "𐑝𐑧𐑮𐑦 𐑢𐑧𐑤. 𐑚𐑳𐑑 𐑞𐑦𐑕... ·𐑥𐑨𐑤-𐑮𐑨𐑝𐑨𐑯𐑭𐑤, 𐑞𐑨𐑑 𐑿 𐑕𐑐𐑴𐑒 𐑝, 𐑦𐑟 𐑣𐑰 𐑣𐑽?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:242
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:241
 #, fuzzy
 #| msgid "I do not sense his magic, but he might be concealing his presence."
 msgid ""
@@ -3437,7 +3437,7 @@ msgid ""
 msgstr "𐑲 𐑛𐑵 𐑯𐑪𐑑 𐑕𐑧𐑯𐑕 𐑣𐑦𐑟 𐑥𐑨𐑡𐑦𐑒, 𐑚𐑳𐑑 𐑣𐑰 𐑥𐑲𐑑 𐑚𐑰 𐑒𐑩𐑯𐑕𐑰𐑤𐑦𐑙 𐑣𐑦𐑟 𐑐𐑮𐑧𐑟𐑩𐑯𐑕."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:246
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:245
 #, fuzzy
 #| msgid ""
 #| "In any case, the undead are attacking now. Let us hope we can last out "
@@ -3448,58 +3448,58 @@ msgid ""
 msgstr "𐑦𐑯 𐑧𐑯𐑦 𐑒𐑱𐑕, 𐑞 𐑳𐑯𐑛𐑧𐑛 𐑸 𐑩𐑑𐑨𐑒𐑦𐑙 𐑯𐑬. 𐑤𐑧𐑑 𐑳𐑕 𐑣𐑴𐑐 𐑢𐑰 𐑒𐑨𐑯 𐑤𐑭𐑕𐑑 𐑬𐑑 𐑞 𐑯𐑲𐑑."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:257
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:256
 #, fuzzy
 #| msgid "I have died, and with me gone the city shall fall."
 msgid "I have died, and with me gone the kingdom is lost."
 msgstr "𐑲 𐑣𐑨𐑝 𐑛𐑲𐑛, 𐑯 𐑢𐑦𐑞 𐑥𐑰 𐑜𐑪𐑯 𐑞 𐑕𐑦𐑑𐑦 𐑖𐑨𐑤 𐑓𐑷𐑤."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:269
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:268
 #, fuzzy
 #| msgid "Look, the sun has risen, and the undead are retreating."
 msgid "Look, the sun has finally risen, and the undead are retreating."
 msgstr "𐑤𐑫𐑒, 𐑞 𐑕𐑳𐑯 𐑣𐑨𐑟 𐑮𐑦𐑟𐑩𐑯, 𐑯 𐑞 𐑳𐑯𐑛𐑧𐑛 𐑸 𐑮𐑦𐑑𐑮𐑰𐑑𐑦𐑙."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:282
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:281
 msgid "Even this infernal darkness cannot dim the spirits of our men!"
 msgstr ""
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:296
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:295
 msgid ""
 "This long night is over, and Wesnoth still stands. Yet I do not know how "
 "many more such nights we can endure."
 msgstr ""
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:300
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:299
 msgid "Gweddry, have you made a decision regarding our course of action?"
 msgstr ""
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:305
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:304
 msgid "I have. I think we should..."
 msgstr ""
 
 #. [option]
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:307
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:306
 msgid "challenge Mal-Ravanal to a duel."
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:311
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:310
 msgid "I will send the message at once."
 msgstr ""
 
 #. [option]
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:321
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:320
 msgid "try to isolate Mal-Ravanal in battle."
 msgstr ""
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:325
+#: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:324
 msgid "I will begin preparing our troops."
 msgstr ""
 
@@ -3512,7 +3512,7 @@ msgstr "𐑞 ·𐑛𐑵𐑩𐑤"
 #. [modify_unit]: type=Lich Lord, id=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:33
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:339
-#: data/campaigns/Eastern_Invasion/utils/character-definitions.cfg:29
+#: data/campaigns/Eastern_Invasion/utils/character-definitions.cfg:28
 msgid "Mal-Ravanal"
 msgstr "·𐑥𐑨𐑤-𐑮𐑨𐑝𐑨𐑯𐑭𐑤"
 

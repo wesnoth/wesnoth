@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-07-18 12:51 UTC\n"
+"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
 "PO-Revision-Date: 2018-05-07 13:27+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -1613,7 +1613,7 @@ msgstr "Moi ben. Faremos como dis."
 #. [scenario]: id=08_Carcyn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:13
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:136
-#: data/campaigns/Secrets_of_the_Ancients/utils/characters.cfg:65
+#: data/campaigns/Secrets_of_the_Ancients/utils/characters.cfg:64
 msgid "Carcyn"
 msgstr "Corsin"
 
@@ -4296,11 +4296,11 @@ msgstr ""
 msgid "Ardonna"
 msgstr "Ardona"
 
-#: data/campaigns/Secrets_of_the_Ancients/utils/characters.cfg:76
+#: data/campaigns/Secrets_of_the_Ancients/utils/characters.cfg:74
 msgid "Shynal"
 msgstr "Xinal"
 
-#: data/campaigns/Secrets_of_the_Ancients/utils/characters.cfg:126
+#: data/campaigns/Secrets_of_the_Ancients/utils/characters.cfg:123
 msgid "Vendraxis"
 msgstr "Vendraxis"
 
@@ -4643,17 +4643,72 @@ msgstr ""
 msgid "A lua error has occurred, and a corpse cannot be recruited."
 msgstr ""
 
-msgid "Translations"
-msgstr "Traducións"
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:30
+msgid "Lvl 0"
+msgstr ""
 
-msgid "Hungarian - WhiteWolf"
-msgstr "Húngaro - WhiteWolf"
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:33
+msgid "Undead"
+msgstr ""
 
-msgid "Japanese - RatArmy"
-msgstr "Xaponés - RatArmy"
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:38
+msgid "Traits"
+msgstr ""
 
-msgid "Russian - iven, olga_flox, and marat"
-msgstr "Ruso - iven, olga_flox e marat"
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:41
+msgid "Attacks"
+msgstr ""
+
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:53
+msgid "Choose a Corpse"
+msgstr ""
+
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:68
+msgid "Recruit"
+msgstr ""
+
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:69
+msgid "Cancel"
+msgstr ""
+
+#. [lua]: select
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:80
+msgid "HP: "
+msgstr ""
+
+#. [lua]: select
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:80
+msgid "MP: "
+msgstr ""
+
+#. [lua]: select
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:80
+msgid "XP: "
+msgstr ""
+
+#. [lua]: postshow
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:143
+msgid "There are no corpses available."
+msgstr ""
+
+#. [lua]: postshow
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:147
+#, fuzzy
+#| msgid "You don't have enough gold to raise that unit."
+msgid "You do not have enough gold to recruit that unit"
+msgstr "Non tes ouro dabondo para erguer esa unidade."
+
+#~ msgid "Translations"
+#~ msgstr "Traducións"
+
+#~ msgid "Hungarian - WhiteWolf"
+#~ msgstr "Húngaro - WhiteWolf"
+
+#~ msgid "Japanese - RatArmy"
+#~ msgstr "Xaponés - RatArmy"
+
+#~ msgid "Russian - iven, olga_flox, and marat"
+#~ msgstr "Ruso - iven, olga_flox e marat"
 
 #~ msgid "Gwillyn"
 #~ msgstr "Güilin"

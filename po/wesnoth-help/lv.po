@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.10+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-07-18 15:50+0300\n"
+"POT-Creation-Date: 2019-08-27 22:40+0300\n"
 "PO-Revision-Date: 2015-08-08 15:21+0300\n"
 "Last-Translator: Gvido Bruveris <huhims@gmail.com>\n"
 "Language-Team: none\n"
@@ -1235,7 +1235,7 @@ msgstr "Spēles gaita"
 
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:33 data/core/help.cfg:398
+#: data/core/help.cfg:33 data/core/help.cfg:454
 msgid "Traits"
 msgstr "Iezīmes"
 
@@ -1265,19 +1265,19 @@ msgstr ""
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:74 data/core/help.cfg:413
+#: data/core/help.cfg:74 data/core/help.cfg:469
 msgid "Terrains"
 msgstr "Apvidi"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:82 data/core/help.cfg:466
+#: data/core/help.cfg:82 data/core/help.cfg:522
 msgid "Add-ons"
 msgstr "Pielikumi"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:88 data/core/help.cfg:539
+#: data/core/help.cfg:88 data/core/help.cfg:595
 msgid "Commands"
 msgstr "Darbības"
 
@@ -1459,7 +1459,9 @@ msgid ""
 "text='time of day'</ref>) is assumed. The difficulty indicates how "
 "challenging the scenarios will be to a veteran player: at higher "
 "difficulties, the obstacles to victory will be higher and overcoming them "
-"will require more skillful play."
+"will require more skillful play. For example, at higher difficulties the "
+"enemy may have higher incomes, higher-level units, more castle hexes, and so "
+"on."
 msgstr ""
 
 #. [topic]: id=..gameplay
@@ -2015,13 +2017,150 @@ msgstr ""
 "izvēlēsies <bold>text='Atjaunināt plīvuru tagad'</bold>. (vai līdz gājiena "
 "beigām)."
 
-#. [topic]: id=combat
+#. [topic]: id=saveload
+#: data/core/help.cfg:284
+msgid "Save-loading"
+msgstr ""
+
+#. [topic]: id=saveload
 #: data/core/help.cfg:285
+msgid ""
+"Random numbers are part of Wesnoth, attacks can fail and units can die due "
+"to bad luck. This is an expected part of the game, and one of the aims of "
+"the game is that a sufficiently skilled player should be able to complete "
+"all of the mainline campaigns, on hard, without needing to save-load. Going "
+"back to a previous turn to try a different strategy is a part of learning "
+"the game, but we recommend against reloading merely to try the same strategy "
+"again while hoping for better luck.\n"
+"\n"
+"One of the challenges of the game is to work out how to protect your heroes. "
+"Small risks quickly build up: if you have five important units, and they "
+"each have just a 1% chance of death each turn, you can "
+"<italic>text='expect'</italic> one of them to die about every 20 turns. So, "
+"you’ll rarely make it through a scenario without having it happen.\n"
+"\n"
+"The following points are under discussion on the forums. At least for the "
+"1.15.x series before 1.16.0 please assume that the forum threads are more "
+"authoritative than the text on this page.\n"
+"\n"
+"In the mainline campaigns, on hard:\n"
+"• A sufficiently skilled player will have a good chance to win each scenario "
+"on the first time that they see that scenario, without foreknowledge of what "
+"will happen.\n"
+"• This assumes that the player picks up all of the clues given in the "
+"dialogue.\n"
+"• There are more experience points available than on easy, and the player "
+"will be able to train enough troops to cope with losing some L2 or L3 "
+"units.\n"
+"\n"
+"That said, it’s a game; the best way to play it is whichever way gives you "
+"the most enjoyment."
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:301
+msgid "Learning from Losses"
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:302
+msgid ""
+"<italic>text='Why did I lose that scenario?'</italic>\n"
+"\n"
+"One of the most difficult parts of Wesnoth is understanding why a scenario "
+"was lost.\n"
+"\n"
+"When you first start playing, you will probably lose some scenarios. That is "
+"normal, and is part of learning the game. When that happens, try to learn "
+"from your mistakes: watch the replay, try to understand what you did wrong, "
+"then <ref>dst='saveload' text='restart the scenario'</ref> and try again.\n"
+"\n"
+"Some common reasons for losing a scenario are:\n"
+"\n"
+"• Playing a campaign at too high a <ref>dst='..gameplay' text='difficulty "
+"level'</ref>. Try restarting the scenario at an easier difficulty.\n"
+"\n"
+"• Playing a poor strategy: for example, recruiting the wrong types of units, "
+"fighting at the wrong <ref>dst='time_of_day' text='time of day'</ref>, not "
+"taking advantage of terrain features or units’ special abilities, and so "
+"on.\n"
+"\n"
+"• Missing clues. Often there will be hints in the campaign’s story and "
+"dialog about what to expect from a difficult scenario and how to prepare for "
+"it. If you have a loyal mage on your side, take the time to listen to its "
+"advice; it may save your life.\n"
+"\n"
+"• Barely scraping a victory in a previous scenario. At all difficulties "
+"except “Beginner” (TODO: and “Easy”?), campaigns assume that you will have "
+"some <italic>text='carryover gold'</italic> and some advanced units on your "
+"<italic>text='recall list.'</italic> (These concepts are explained in the "
+"tutorial.) If you win a scenario but lose most of your advanced units and "
+"much of your gold, the following scenario may be very difficult to beat, "
+"even for a more experienced player. If you find yourself in this situation, "
+"you may try to go back a scenario or two and win them more convincingly, or "
+"change to an easier difficulty. (However, remember that <italic>text='some'</"
+"italic> losses are expected, particularly at higher difficulties.)\n"
+"\n"
+"• Poor gold management. At higher difficulties, managing gold — capturing "
+"villages to increase the income, and using low-level units and fresh "
+"recruits to reduce the spending — becomes important. If you use many high-"
+"level units, you might win a scenario easily but have not enough gold "
+"carryover for the next scenario. (This would be an example of “barely "
+"scraping a victory”.)\n"
+"\n"
+"<header>text='Unlikely reasons'</header>\n"
+"\n"
+"In addition to the common reasons, listed above, there are a few other "
+"reasons which are unlikely, though not impossible. They are:\n"
+"\n"
+"• You may have played a strategy that the campaign developer did not "
+"anticipate, and ended up with a set of high-level units not suitable for the "
+"next scenario.\n"
+"\n"
+"• You may have found a scenario that can only be won on the second or third "
+"time through, whether by requiring above-average luck or by expecting the "
+"players to have foreknowledge — to know what surprises are coming up before "
+"they happen. (It is under discussion whether foreknowledge is expected at "
+"the highest difficulties. Requiring above-average luck, however, would "
+"qualify as a bug.)\n"
+"\n"
+"• Unusually-bad luck. Whether an attack hits or misses is random, so it "
+"could happen that the enemy was very lucky and had many hits, while you were "
+"very unlucky and had many misses. However, this is a very rare occurrence, "
+"virtually unheard of in all but the shortest, smallest scenarios. In fact, "
+"losses are more commonly caused by playing a <italic>text='bad'</italic> "
+"strategy despite having <italic>text='above-average'</italic> luck, than by "
+"playing a <italic>text='good'</italic> strategy but having "
+"<italic>text='below-average'</italic> luck. Moreover, merely having “below-"
+"average” luck does not excuse a loss; having below-average luck is perfectly "
+"normal, and scenarios are designed to be winnable even with below-average "
+"luck. It is only exceedingly bad luck, over multiple turns, that we mean "
+"here.\n"
+"\n"
+"Be wary of attributing a loss to any of these reasons. If you are not a "
+"veteran player, it is far more likely that your loss was caused by one of "
+"the <italic>text='common'</italic> errors, listed above, and is not "
+"indicative of a bug in the campaign. However, if you still think you found a "
+"bug, then by all means, report it!\n"
+"\n"
+"The “Damage Calculations” dialog shows some statistics that can help "
+"determine whether a match was very lucky or very unlucky. However, reading "
+"the statistics is no substitute to watching the replay and looking for "
+"strategic mistakes, or small bits of luck at critical points in the "
+"engagement.\n"
+"\n"
+"TODO: link to a forum thread where new players can post their replays and "
+"get review/corrections (like https://forums.wesnoth.org/viewtopic.php?"
+"f=3&t=39944 but specifically for new players)?\n"
+msgstr ""
+
+#. [topic]: id=combat
+#: data/core/help.cfg:341
 msgid "Combat"
 msgstr "Cīņa"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:286
+#: data/core/help.cfg:342
 msgid ""
 "\n"
 "\n"
@@ -2032,7 +2171,7 @@ msgstr ""
 "<header>text='Sitienu secība un skaits'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:286
+#: data/core/help.cfg:342
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -2058,7 +2197,7 @@ msgstr ""
 "bumbas."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:288
+#: data/core/help.cfg:344
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2092,7 +2231,7 @@ msgstr ""
 "var sist tikai divas reizes (bet atņemot 9 punktus ar katru trāpījumu)."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:290
+#: data/core/help.cfg:346
 msgid ""
 "\n"
 "\n"
@@ -2103,7 +2242,7 @@ msgstr ""
 "<header>text='Iespējamība trāpīt'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:292
+#: data/core/help.cfg:348
 msgid ""
 "\n"
 "\n"
@@ -2127,7 +2266,7 @@ msgstr ""
 "atkarīgas no tā, kādā apvidus tipā ir uzbrucējs."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:294
+#: data/core/help.cfg:350
 msgid ""
 "\n"
 "\n"
@@ -2146,7 +2285,7 @@ msgstr ""
 "iespējamība trāpīt neatkarīgi no apvidus."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:296
+#: data/core/help.cfg:352
 msgid ""
 "\n"
 "\n"
@@ -2157,7 +2296,7 @@ msgstr ""
 "<header>text='Bojājumi'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:298
+#: data/core/help.cfg:354
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2190,7 +2329,7 @@ msgstr ""
 "<bold>text='Bojājumu aprēķinus'</bold> uzbrukuma izvēles logā."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:300
+#: data/core/help.cfg:356
 msgid ""
 "\n"
 "\n"
@@ -2207,12 +2346,12 @@ msgstr ""
 "uzbrucēja, gan upura saņemto bojājumu apjomu."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:308
+#: data/core/help.cfg:364
 msgid "Damage Types and Resistance"
 msgstr "Bojājumu un izturību veidi"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:309
+#: data/core/help.cfg:365
 msgid ""
 "\n"
 "\n"
@@ -2231,7 +2370,7 @@ msgstr ""
 "saņems par 100% vairāk bojājumu, kad tai trāpīs ar noteikto uzbrukumu."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:309
+#: data/core/help.cfg:365
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -2247,7 +2386,7 @@ msgstr ""
 "izturība maina to saņemto bojājumu apjomu."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:311
+#: data/core/help.cfg:367
 msgid ""
 "\n"
 "\n"
@@ -2262,7 +2401,7 @@ msgstr ""
 "mistiksko uzbrukumu."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:313
+#: data/core/help.cfg:369
 msgid ""
 "\n"
 "\n"
@@ -2276,12 +2415,12 @@ msgstr ""
 "ir spēkā pat tad, ja upurim ir 100% izturība pret konkrēto bojājumu veidu."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:321
+#: data/core/help.cfg:377
 msgid "Orbs"
 msgstr "Lodes"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:322
+#: data/core/help.cfg:378
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -2290,19 +2429,19 @@ msgstr ""
 "esošajām vienībām tā ir:"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:324
+#: data/core/help.cfg:380
 msgid " green if it hasn’t moved this turn,"
 msgstr " zaļa, ja vienība gājienā nav pārvietojusies,"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:325
+#: data/core/help.cfg:381
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr ""
 " dzeltena, ja vienība pārvietojusies, bet varētu pārvietoties tālāk, vai "
 "uzbrukt,"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:326
+#: data/core/help.cfg:382
 #, fuzzy
 #| msgid ""
 #| " black if it can no longer move or attack, or the user ended the unit’s "
@@ -2314,24 +2453,24 @@ msgstr ""
 "vienības gājienu,"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:327
+#: data/core/help.cfg:383
 msgid " blue if the unit is an ally you do not control."
 msgstr " zila, ja vienība ir sabiedrotais, kuru tu nekontrolē."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:328
+#: data/core/help.cfg:384
 #, fuzzy
 #| msgid " Enemy units have a red orb on top of their energy bar."
 msgid " Enemy units have no orb on top of their energy bar."
 msgstr " Pretinieku vienībām virs veselības stabiņa ir sarkana lode."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:335
+#: data/core/help.cfg:391
 msgid "Time of Day"
 msgstr "Diennakts laiks"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:336
+#: data/core/help.cfg:392
 #, fuzzy
 #| msgid ""
 #| "The time of day affects the damage of certain units as follows:\n"
@@ -2357,7 +2496,7 @@ msgstr ""
 " Ēnotās vienības saņem −25% spēka gan dienas, gan nakts laikā."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:341
+#: data/core/help.cfg:397
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2382,21 +2521,21 @@ msgstr ""
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:345 data/core/macros/schedules.cfg:14
+#: data/core/help.cfg:401 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "Saullēkts"
 
 #. [time]: id=morning
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:346 data/core/macros/schedules.cfg:26
+#: data/core/help.cfg:402 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "Rīts"
 
 #. [time]: id=afternoon
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:347 data/core/macros/schedules.cfg:44
+#: data/core/help.cfg:403 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "Pēcpusdiena"
@@ -2404,27 +2543,27 @@ msgstr "Pēcpusdiena"
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:348 data/core/macros/schedules.cfg:53
+#: data/core/help.cfg:404 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "Saulriets"
 
 #. [time]: id=first_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:349 data/core/macros/schedules.cfg:65
+#: data/core/help.cfg:405 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "Pirmā sardze"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:350 data/core/macros/schedules.cfg:89
+#: data/core/help.cfg:406 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "Otrā sardze"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:352
+#: data/core/help.cfg:408
 #, fuzzy
 #| msgid ""
 #| "Keep in mind that some scenarios take place underground, where it is "
@@ -2435,21 +2574,21 @@ msgid ""
 msgstr "Paturi prātā, ka daži scenāriji notiek pazemē, kur ir mūžīgā nakts!"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:354
+#: data/core/help.cfg:410
 msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night.\n"
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:356
+#: data/core/help.cfg:412
 msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate.\n"
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:358
+#: data/core/help.cfg:414
 msgid ""
 "Finally, units with the <ref>dst='ability_illuminationilluminates' "
 "text='illuminates'</ref> ability and terrain features such as "
@@ -2458,12 +2597,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:365
+#: data/core/help.cfg:421
 msgid "Healing"
 msgstr "Dziedēšana"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:366
+#: data/core/help.cfg:422
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2483,7 +2622,7 @@ msgstr ""
 "nākamajā gājienā."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:366
+#: data/core/help.cfg:422
 msgid ""
 "In combat, your units will inevitably take damage. There are several ways to "
 "heal your units. However, with the exception of resting, these do not stack; "
@@ -2491,7 +2630,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:368
+#: data/core/help.cfg:424
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2508,7 +2647,7 @@ msgstr ""
 "dziedēta par 8 veselības punktiem."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:369
+#: data/core/help.cfg:425
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2526,7 +2665,7 @@ msgstr ""
 "punktiem."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:370
+#: data/core/help.cfg:426
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2551,7 +2690,7 @@ msgstr ""
 "turpināt novārdzināt kareivi."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:371
+#: data/core/help.cfg:427
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2573,7 +2712,7 @@ msgstr ""
 "piemīt arī šī spēja)."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:372
+#: data/core/help.cfg:428
 msgid ""
 "\n"
 "• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
@@ -2582,7 +2721,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:373
+#: data/core/help.cfg:429
 msgid ""
 "\n"
 "\n"
@@ -2598,7 +2737,7 @@ msgstr ""
 "scenārijiem."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:375
+#: data/core/help.cfg:431
 msgid ""
 "\n"
 "\n"
@@ -2606,7 +2745,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:377
+#: data/core/help.cfg:433
 msgid ""
 "\n"
 "\n"
@@ -2618,12 +2757,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:385
+#: data/core/help.cfg:441
 msgid "Wrap Up"
 msgstr "Kopsavilkums"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:386
+#: data/core/help.cfg:442
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -2639,12 +2778,12 @@ msgstr ""
 "veiksmi spēlējot!"
 
 #. [topic]: id=license
-#: data/core/help.cfg:391
+#: data/core/help.cfg:447
 msgid "License"
 msgstr "Licence"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:400
+#: data/core/help.cfg:456
 #, fuzzy
 #| msgid ""
 #| "Most units have two traits. However, undead units are assigned the single "
@@ -2666,7 +2805,7 @@ msgstr ""
 "tiek piešķirtas vienībām nejaušības kārtā, kad tās tiek iesauktas."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:400
+#: data/core/help.cfg:456
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
@@ -2675,7 +2814,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:402
+#: data/core/help.cfg:458
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2700,7 +2839,7 @@ msgstr ""
 "<ref>dst='traits_strong' text='spēks'</ref>."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:404
+#: data/core/help.cfg:460
 msgid ""
 "\n"
 "\n"
@@ -2714,7 +2853,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:414
+#: data/core/help.cfg:470
 msgid ""
 "\n"
 "\n"
@@ -2723,7 +2862,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:414
+#: data/core/help.cfg:470
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
@@ -2732,7 +2871,7 @@ msgstr ""
 "vienības aizsardzības spējas."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:416
+#: data/core/help.cfg:472
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2748,7 +2887,7 @@ msgstr ""
 "<header>text='Resursi veidotājiem'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:418
+#: data/core/help.cfg:474
 msgid ""
 "\n"
 "\n"
@@ -2759,7 +2898,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:422
+#: data/core/help.cfg:478
 msgid ""
 "\n"
 "\n"
@@ -2769,7 +2908,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:424
+#: data/core/help.cfg:480
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2785,7 +2924,7 @@ msgstr ""
 "<header>text='Resursi veidotājiem'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:426
+#: data/core/help.cfg:482
 msgid ""
 "\n"
 "\n"
@@ -2799,7 +2938,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:430
+#: data/core/help.cfg:486
 msgid ""
 "\n"
 "\n"
@@ -2814,7 +2953,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:434
+#: data/core/help.cfg:490
 msgid ""
 "\n"
 "\n"
@@ -2825,7 +2964,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:438
+#: data/core/help.cfg:494
 msgid ""
 "\n"
 "\n"
@@ -2836,7 +2975,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:442
+#: data/core/help.cfg:498
 msgid ""
 "\n"
 "\n"
@@ -2846,7 +2985,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:444
+#: data/core/help.cfg:500
 msgid ""
 "\n"
 "\n"
@@ -2857,7 +2996,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:446
+#: data/core/help.cfg:502
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2873,7 +3012,7 @@ msgstr ""
 "<header>text='Resursi veidotājiem'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:448
+#: data/core/help.cfg:504
 msgid ""
 "\n"
 "\n"
@@ -2883,7 +3022,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:450
+#: data/core/help.cfg:506
 msgid ""
 "\n"
 "\n"
@@ -2894,7 +3033,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:452
+#: data/core/help.cfg:508
 msgid ""
 "\n"
 "\n"
@@ -2903,7 +3042,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:454
+#: data/core/help.cfg:510
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2920,7 +3059,7 @@ msgstr ""
 "<header>text='Resursi veidotājiem'</header>"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:467
+#: data/core/help.cfg:523
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -2931,12 +3070,12 @@ msgstr ""
 "Scenārijus, Kampaņas, utt.. paplašinot jau esošās spēles materiālus.\n"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:477
+#: data/core/help.cfg:533
 msgid "Using Add-ons"
 msgstr "Papildinājumu lietošana"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:478
+#: data/core/help.cfg:534
 msgid ""
 "\n"
 "\n"
@@ -2947,7 +3086,7 @@ msgstr ""
 "<header>text='Kampaņas un Scenāriji'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:478
+#: data/core/help.cfg:534
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
@@ -2955,7 +3094,7 @@ msgstr ""
 "Spēle atbalsta dažāda tipa pielikumus. Ne visi ir pieejami dažādos režīmos."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:480
+#: data/core/help.cfg:536
 msgid ""
 "\n"
 "\n"
@@ -2970,7 +3109,7 @@ msgstr ""
 "Scenārijus un kampaņas var paņemt <italic>text='Kampaņas'</italic>."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:482
+#: data/core/help.cfg:538
 msgid ""
 "\n"
 "\n"
@@ -2981,7 +3120,7 @@ msgstr ""
 "<header>text='Daudzspēlētāju kampaņas, scenāriji un kartes'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:484
+#: data/core/help.cfg:540
 msgid ""
 "\n"
 "\n"
@@ -2996,7 +3135,7 @@ msgstr ""
 "Daudzspēlētāja modifikāciju."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:486
+#: data/core/help.cfg:542
 msgid ""
 "\n"
 "\n"
@@ -3007,7 +3146,7 @@ msgstr ""
 "<header>text='Daudzspēlētāju ēras un Frakcijas'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:488
+#: data/core/help.cfg:544
 msgid ""
 "\n"
 "\n"
@@ -3031,7 +3170,7 @@ msgstr ""
 "savas puses un komandas."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:492
+#: data/core/help.cfg:548
 msgid ""
 "\n"
 "\n"
@@ -3040,7 +3179,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:494
+#: data/core/help.cfg:550
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3056,7 +3195,7 @@ msgstr ""
 "<header>text='Daudzspēlētāju modifikācijas'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:496
+#: data/core/help.cfg:552
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3079,7 +3218,7 @@ msgstr ""
 "kopu. Izvēlēties modifikācijas (un iestatīt) var pirms spēles izveidošanas."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:498
+#: data/core/help.cfg:554
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3088,14 +3227,14 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<big>Cores</big>"
+"<header>text='Cores'</header>"
 msgstr ""
 "\n"
 "\n"
 "<header>text='Resursi veidotājiem'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:500
+#: data/core/help.cfg:556
 msgid ""
 "\n"
 "\n"
@@ -3109,7 +3248,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:504
+#: data/core/help.cfg:560
 msgid ""
 "\n"
 "\n"
@@ -3120,7 +3259,7 @@ msgstr ""
 "<header>text='Resursi veidotājiem'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:506
+#: data/core/help.cfg:562
 msgid ""
 "\n"
 "\n"
@@ -3138,12 +3277,12 @@ msgstr ""
 "piedāvāt ielādēt, vai pat pieprasīt."
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:515
+#: data/core/help.cfg:571
 msgid "Installing Add-ons"
 msgstr "Uzstādīt pielikumus"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:516
+#: data/core/help.cfg:572
 #, fuzzy
 #| msgid ""
 #| "User-made add-ons can be obtained and updated through the "
@@ -3186,11 +3325,11 @@ msgid ""
 "add-ons of specific categories by clicking on the <bold>text='Type'</bold> "
 "dropdown.\n"
 "\n"
-"To install an add-on, select it from the list and click the <b>+</b> icon, "
-"or simply double-click on the add-on’s title. If the window is too small to "
-"show them inline, the <bold>text='Addon Details'</bold> button provides you "
-"with additional details about the add-on, such as its full description, "
-"installation status, and available translations."
+"To install an add-on, select it from the list and click the <bold>text='+'</"
+"bold> icon, or simply double-click on the add-on’s title. If the window is "
+"too small to show them inline, the <bold>text='Addon Details'</bold> button "
+"provides you with additional details about the add-on, such as its full "
+"description, installation status, and available translations."
 msgstr ""
 "Lietotāja pielikumus var iegūt un atjaunot spēles galvenajā izvēlnē, "
 "nospiežot pogu <italic>text='Papildinājumi'</italic>. Pēc pieslēgšanās "
@@ -3214,12 +3353,12 @@ msgstr ""
 "pielikumu."
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:529
+#: data/core/help.cfg:585
 msgid "Removing Add-ons"
 msgstr "Noņemt Papildinājumu"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:530
+#: data/core/help.cfg:586
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -3241,7 +3380,7 @@ msgstr ""
 "jāizdzēš manuāli (caur savu faila menedžeri)."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:545
+#: data/core/help.cfg:601
 #, fuzzy
 #| msgid "General commands"
 msgid "General Commands"
@@ -3250,7 +3389,7 @@ msgstr "Vispārējas komandas"
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:547 data/core/help.cfg:590 data/core/help.cfg:628
+#: data/core/help.cfg:603 data/core/help.cfg:646 data/core/help.cfg:684
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3262,7 +3401,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:549
+#: data/core/help.cfg:605
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3273,7 +3412,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:552
+#: data/core/help.cfg:608
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3288,7 +3427,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:556
+#: data/core/help.cfg:612
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3317,7 +3456,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:559
+#: data/core/help.cfg:615
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -3328,7 +3467,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:562
+#: data/core/help.cfg:618
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3339,7 +3478,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:565
+#: data/core/help.cfg:621
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3350,7 +3489,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:568
+#: data/core/help.cfg:624
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3361,7 +3500,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:571
+#: data/core/help.cfg:627
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3372,7 +3511,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:574
+#: data/core/help.cfg:630
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3383,7 +3522,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:577
+#: data/core/help.cfg:633
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3394,7 +3533,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:580
+#: data/core/help.cfg:636
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3403,14 +3542,14 @@ msgstr ""
 "Saglabāt spēli un pamest scenāriju (bez jautāšanas)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:589
+#: data/core/help.cfg:645
 #, fuzzy
 #| msgid "Multiplayer commands"
 msgid "Multiplayer Commands"
 msgstr "Daudzspēlētāju komandas"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:592
+#: data/core/help.cfg:648
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3426,7 +3565,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:595
+#: data/core/help.cfg:651
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3447,7 +3586,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:598
+#: data/core/help.cfg:654
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -3460,7 +3599,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:601
+#: data/core/help.cfg:657
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -3473,7 +3612,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:604
+#: data/core/help.cfg:660
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -3488,7 +3627,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:607
+#: data/core/help.cfg:663
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3502,7 +3641,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:610
+#: data/core/help.cfg:666
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3515,7 +3654,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:613
+#: data/core/help.cfg:669
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -3526,7 +3665,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:616
+#: data/core/help.cfg:672
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3540,7 +3679,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:619
+#: data/core/help.cfg:675
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -3551,14 +3690,14 @@ msgstr ""
 "lietotājvārds, tad tiek notīrīts viss apklusināto lietāju saraksts."
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:627
+#: data/core/help.cfg:683
 #, fuzzy
 #| msgid "Debug mode commands"
 msgid "Debug Mode Commands"
 msgstr "Atkļūdošanas darbības"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:630
+#: data/core/help.cfg:686
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3571,7 +3710,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:633
+#: data/core/help.cfg:689
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3582,7 +3721,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:636
+#: data/core/help.cfg:692
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3593,7 +3732,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:639
+#: data/core/help.cfg:695
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3604,7 +3743,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:642
+#: data/core/help.cfg:698
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3615,7 +3754,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:645
+#: data/core/help.cfg:701
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3626,7 +3765,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:648
+#: data/core/help.cfg:704
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3637,7 +3776,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:651
+#: data/core/help.cfg:707
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3648,7 +3787,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:654
+#: data/core/help.cfg:710
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3660,7 +3799,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:657
+#: data/core/help.cfg:713
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -3760,18 +3899,45 @@ msgstr ""
 "Vienība dziedēs sevi par 8 VP gājienā. Ja tā ir saindēta, tad dziedēšanas "
 "vietā tā izņems indi."
 
+#. [heals]: id=regenerates_4
+#: data/core/macros/abilities.cfg:83
+#, fuzzy
+#| msgid "regenerates"
+msgid "regenerates +4"
+msgstr "atjaunojas"
+
+#. [heals]: id=regenerates_4
+#: data/core/macros/abilities.cfg:84
+#, fuzzy
+#| msgid "female^regenerates"
+msgid "female^regenerates +4"
+msgstr "atjaunojas"
+
+#. [heals]: id=regenerates_4
+#: data/core/macros/abilities.cfg:85
+#, fuzzy
+#| msgid ""
+#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
+#| "remove the poison instead of healing."
+msgid ""
+"The unit will heal itself 4 HP per turn. If it is poisoned, it will remove "
+"the poison instead of healing."
+msgstr ""
+"Vienība dziedēs sevi par 8 VP gājienā. Ja tā ir saindēta, tad dziedēšanas "
+"vietā tā izņems indi."
+
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:91
+#: data/core/macros/abilities.cfg:104
 msgid "steadfast"
 msgstr "izturīgs"
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:92
+#: data/core/macros/abilities.cfg:105
 msgid "female^steadfast"
 msgstr "izturīga"
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:93
+#: data/core/macros/abilities.cfg:106
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
@@ -3780,17 +3946,17 @@ msgstr ""
 "Ievainojamības paliek nemainīgas."
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:106
+#: data/core/macros/abilities.cfg:119
 msgid "leadership"
 msgstr "vadītājs"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:107
+#: data/core/macros/abilities.cfg:120
 msgid "female^leadership"
 msgstr "vadītāja"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:108
+#: data/core/macros/abilities.cfg:121
 #, fuzzy
 #| msgid ""
 #| "This unit can lead our own units that are next to it, making them fight "
@@ -3817,17 +3983,17 @@ msgstr ""
 "nodara par 25% lielākus bojājumus."
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:125
+#: data/core/macros/abilities.cfg:138
 msgid "skirmisher"
 msgstr "nenotverams"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:126
+#: data/core/macros/abilities.cfg:139
 msgid "female^skirmisher"
 msgstr "nenotverama"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:127
+#: data/core/macros/abilities.cfg:140
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
@@ -3836,17 +4002,17 @@ msgstr ""
 "'kontroles zonas'."
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:140
+#: data/core/macros/abilities.cfg:153
 msgid "illuminates"
 msgstr "izgaismotājs"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:141
+#: data/core/macros/abilities.cfg:154
 msgid "female^illuminates"
 msgstr "izgaismotāja"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:142
+#: data/core/macros/abilities.cfg:155
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -3861,17 +4027,17 @@ msgstr ""
 "bet krēslas laikā — tā it kā būtu diena."
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:154
+#: data/core/macros/abilities.cfg:167
 msgid "teleport"
 msgstr "teleportētājs"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:155
+#: data/core/macros/abilities.cfg:168
 msgid "female^teleport"
 msgstr "teleportētāja"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:156
+#: data/core/macros/abilities.cfg:169
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
@@ -3880,17 +4046,17 @@ msgstr ""
 "jebkuriem diviem tukšiem ciematiem (kuri pieder tev)."
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:185
+#: data/core/macros/abilities.cfg:198
 msgid "ambush"
 msgstr "ložņa"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:186
+#: data/core/macros/abilities.cfg:199
 msgid "female^ambush"
 msgstr "ložņa"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:187
+#: data/core/macros/abilities.cfg:200
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -3906,12 +4072,12 @@ msgstr ""
 "atlikušos gājienu punktus."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:204 data/core/macros/abilities.cfg:205
+#: data/core/macros/abilities.cfg:217 data/core/macros/abilities.cfg:218
 msgid "nightstalk"
 msgstr "nakts ložņa"
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:206
+#: data/core/macros/abilities.cfg:219
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -3926,17 +4092,17 @@ msgstr ""
 "nakts ložņu, nekavējoties zaudē visus atlikušos gājienu punktus."
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:223
+#: data/core/macros/abilities.cfg:236
 msgid "concealment"
 msgstr "maskējas"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:224
+#: data/core/macros/abilities.cfg:237
 msgid "female^concealment"
 msgstr "maskējas"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:225
+#: data/core/macros/abilities.cfg:238
 #, fuzzy
 #| msgid ""
 #| "This unit can hide in villages (with the exception of water villages), "
@@ -3962,17 +4128,17 @@ msgstr ""
 "nekavējoties zaudē visus atlikušos gājienu punktus."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:242
+#: data/core/macros/abilities.cfg:255
 msgid "submerge"
 msgstr "nirējs"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:243
+#: data/core/macros/abilities.cfg:256
 msgid "female^submerge"
 msgstr "nirēja"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:244
+#: data/core/macros/abilities.cfg:257
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -3987,17 +4153,17 @@ msgstr ""
 "visus tās atlikušos gājienu punktus."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:261
+#: data/core/macros/abilities.cfg:274
 msgid "feeding"
 msgstr "sūcējs"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:262
+#: data/core/macros/abilities.cfg:275
 msgid "female^feeding"
 msgstr "sūcēja"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:263
+#: data/core/macros/abilities.cfg:276
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -4006,12 +4172,12 @@ msgstr ""
 "ienaidnieku (izņemot tos, kuriem ir imuinitāte)."
 
 #. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:274
+#: data/core/macros/abilities.cfg:287
 msgid "berserk"
 msgstr "cīņasspars"
 
 #. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:275
+#: data/core/macros/abilities.cfg:288
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
@@ -4020,12 +4186,12 @@ msgstr ""
 "Parasti šādas saķeršanās beidzas ar to ka kādam ir jāmirst."
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:285
+#: data/core/macros/abilities.cfg:298
 msgid "backstab"
 msgstr "uzbrūk no muguras"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:286
+#: data/core/macros/abilities.cfg:299
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -4037,12 +4203,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:304 data/core/macros/abilities.cfg:315
+#: data/core/macros/abilities.cfg:317 data/core/macros/abilities.cfg:328
 msgid "plague"
 msgstr "mēris"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:305
+#: data/core/macros/abilities.cfg:318
 #, fuzzy
 #| msgid ""
 #| "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -4057,7 +4223,7 @@ msgstr ""
 "uzbrucēja pusē. Tas nestrādā uz nedzīvajiem un vienībām ciemos."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:316
+#: data/core/macros/abilities.cfg:329
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -4067,12 +4233,12 @@ msgstr ""
 "uzbrucēja pusē. Tas nestrādā uz nedzīvajiem un vienībām ciemos."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:326
+#: data/core/macros/abilities.cfg:339
 msgid "slows"
 msgstr "sapīšana"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:327
+#: data/core/macros/abilities.cfg:340
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -4085,12 +4251,12 @@ msgstr ""
 "ikona."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:336
+#: data/core/macros/abilities.cfg:349
 msgid "petrifies"
 msgstr "pārakmeņot"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:337
+#: data/core/macros/abilities.cfg:350
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
@@ -4099,23 +4265,23 @@ msgstr ""
 "ne uzbrukt."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:346
+#: data/core/macros/abilities.cfg:359
 msgid "marksman"
 msgstr "snaipers"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:347
+#: data/core/macros/abilities.cfg:360
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr "Šim uzbrukumam vienmēr ir vismaz 60% iespējamība trāpīt."
 
 #. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:359
+#: data/core/macros/abilities.cfg:372
 msgid "magical"
 msgstr "maģija"
 
 #. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:360
+#: data/core/macros/abilities.cfg:373
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
@@ -4124,12 +4290,12 @@ msgstr ""
 "aizsardzību. "
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:371
+#: data/core/macros/abilities.cfg:384
 msgid "swarm"
 msgstr "spiets"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:372
+#: data/core/macros/abilities.cfg:385
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -4142,12 +4308,12 @@ msgstr ""
 "veselības punktiem būs 3/4 no tās sitienu skaita."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:381
+#: data/core/macros/abilities.cfg:394
 msgid "charge"
 msgstr "lādiņš"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:382
+#: data/core/macros/abilities.cfg:395
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
@@ -4156,12 +4322,12 @@ msgstr ""
 "izraisa dubultus bojājumus no mērķa pretuzbrukumiem."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:394
+#: data/core/macros/abilities.cfg:407
 msgid "drains"
 msgstr "izsūkšana"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:395
+#: data/core/macros/abilities.cfg:408
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -4170,23 +4336,23 @@ msgstr ""
 "izsūktās veselības daudzuma (noapaļojot uz leju)."
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:404
+#: data/core/macros/abilities.cfg:417
 msgid "first strike"
 msgstr "pirmais trieciens"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:405
+#: data/core/macros/abilities.cfg:418
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr "Šī vienība vienmēr iesit pirmā, pat ja tā aizstāvas."
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:414
+#: data/core/macros/abilities.cfg:427
 msgid "poison"
 msgstr "inde"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:415
+#: data/core/macros/abilities.cfg:428
 #, fuzzy
 #| msgid ""
 #| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -4764,22 +4930,22 @@ msgid ""
 msgstr ""
 
 #. [trait]: id=loyal
-#: data/core/macros/traits.cfg:8
+#: data/core/macros/traits.cfg:12
 msgid "loyal"
 msgstr "lojāls"
 
 #. [trait]: id=loyal
-#: data/core/macros/traits.cfg:9
+#: data/core/macros/traits.cfg:13
 msgid "female^loyal"
 msgstr "lojāla"
 
 #. [trait]: id=loyal
-#: data/core/macros/traits.cfg:10
+#: data/core/macros/traits.cfg:14
 msgid "Zero upkeep"
 msgstr "Nav jāuztur"
 
 #. [trait]: id=loyal
-#: data/core/macros/traits.cfg:11
+#: data/core/macros/traits.cfg:15
 msgid ""
 "\n"
 "\n"
@@ -4800,7 +4966,7 @@ msgstr ""
 "atbrīvot vai sūtīt bezjēdzīgā nāvē."
 
 #. [trait]: id=loyal
-#: data/core/macros/traits.cfg:11
+#: data/core/macros/traits.cfg:15
 msgid ""
 "<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
 "upkeep cost at the end of every turn, which is equal to their level. Loyal "
@@ -4811,25 +4977,25 @@ msgstr ""
 "līmeni). Lojālas vienības neprasa šo maksu."
 
 #. [trait]: id=undead
-#: data/core/macros/traits.cfg:25
+#: data/core/macros/traits.cfg:55
 msgid "undead"
 msgstr "nedzīvs"
 
 #. [trait]: id=undead
-#: data/core/macros/traits.cfg:26
+#: data/core/macros/traits.cfg:56
 msgid "female^undead"
 msgstr "nedzīva"
 
 #. [trait]: id=undead
 #. [trait]: id=mechanical
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:27 data/core/macros/traits.cfg:53
-#: data/core/macros/traits.cfg:79
+#: data/core/macros/traits.cfg:57 data/core/macros/traits.cfg:83
+#: data/core/macros/traits.cfg:109
 msgid "Immune to drain, poison, and plague"
 msgstr "Neitekmē izsūkšana, inde un inficēšāna"
 
 #. [trait]: id=undead
-#: data/core/macros/traits.cfg:28
+#: data/core/macros/traits.cfg:58
 msgid ""
 "\n"
 "\n"
@@ -4846,7 +5012,7 @@ msgstr ""
 "ienaidniekiem, kuri izmanto indi kopā ar uzbrukumu."
 
 #. [trait]: id=undead
-#: data/core/macros/traits.cfg:28
+#: data/core/macros/traits.cfg:58
 msgid ""
 "<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
 msgstr ""
@@ -4854,17 +5020,17 @@ msgstr ""
 "sērgu."
 
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:51
+#: data/core/macros/traits.cfg:81
 msgid "mechanical"
 msgstr "mehānisks"
 
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:52
+#: data/core/macros/traits.cfg:82
 msgid "female^mechanical"
 msgstr "mehāniska"
 
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:54
+#: data/core/macros/traits.cfg:84
 msgid ""
 "\n"
 "\n"
@@ -4878,7 +5044,7 @@ msgstr ""
 "vienības nav dzīvas, izsūkšana, inde un sērga uz tām neatstāj nekādu ietekmi."
 
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:54
+#: data/core/macros/traits.cfg:84
 msgid ""
 "<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
 "plague."
@@ -4887,17 +5053,17 @@ msgstr ""
 "un sērgu."
 
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:77
+#: data/core/macros/traits.cfg:107
 msgid "elemental"
 msgstr "pirmatnējs"
 
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:78
+#: data/core/macros/traits.cfg:108
 msgid "female^elemental"
 msgstr "pirmatnēja"
 
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:80
+#: data/core/macros/traits.cfg:110
 msgid ""
 "\n"
 "\n"
@@ -4912,7 +5078,7 @@ msgstr ""
 "neatstāj nekādu ietekmi."
 
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:80
+#: data/core/macros/traits.cfg:110
 msgid ""
 "<italic>text='Elemental'</italic> units are immune to poison, drain, and "
 "plague."
@@ -4921,17 +5087,17 @@ msgstr ""
 "un sērgu."
 
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:102
+#: data/core/macros/traits.cfg:132
 msgid "strong"
 msgstr "spēcīgs"
 
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:103
+#: data/core/macros/traits.cfg:133
 msgid "female^strong"
 msgstr "spēcīga"
 
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:104
+#: data/core/macros/traits.cfg:134
 msgid ""
 "\n"
 "\n"
@@ -4947,7 +5113,7 @@ msgstr ""
 "apjoms ir viss, kas nepieciešams lai pārvērstu sitienu nāvējošā."
 
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:104
+#: data/core/macros/traits.cfg:134
 #, fuzzy
 #| msgid ""
 #| "<italic>text='Strong'</italic> units do 1 more damage for every "
@@ -4961,17 +5127,17 @@ msgstr ""
 "augstāks maksimālais veselības līmenis."
 
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:123
+#: data/core/macros/traits.cfg:153
 msgid "dextrous"
 msgstr "veikls"
 
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:124
+#: data/core/macros/traits.cfg:154
 msgid "female^dextrous"
 msgstr "veikla"
 
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:125
+#: data/core/macros/traits.cfg:155
 msgid ""
 "\n"
 "\n"
@@ -4988,7 +5154,7 @@ msgstr ""
 "katru bultu."
 
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:125
+#: data/core/macros/traits.cfg:155
 msgid ""
 "<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
 "strike in ranged combat."
@@ -4997,17 +5163,17 @@ msgstr ""
 "katrā veiksmīgā šāvienā no attāluma."
 
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:140
+#: data/core/macros/traits.cfg:170
 msgid "quick"
 msgstr "ātrs"
 
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:141
+#: data/core/macros/traits.cfg:171
 msgid "female^quick"
 msgstr "ātra"
 
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:142
+#: data/core/macros/traits.cfg:172
 msgid ""
 "\n"
 "\n"
@@ -5027,7 +5193,7 @@ msgstr ""
 "šīs iezīmes, un tās ir daudz mazāk spējīgas apdraudētu pozīciju noturēšanā."
 
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:142
+#: data/core/macros/traits.cfg:172
 #, fuzzy
 #| msgid ""
 #| "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% "
@@ -5040,17 +5206,17 @@ msgstr ""
 "bet par 5% mazāk veselības punktu kā parasti."
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:160
+#: data/core/macros/traits.cfg:190
 msgid "intelligent"
 msgstr "inteliģents"
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:161
+#: data/core/macros/traits.cfg:191
 msgid "female^intelligent"
 msgstr "inteliģenta"
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:162
+#: data/core/macros/traits.cfg:192
 msgid ""
 "\n"
 "\n"
@@ -5071,24 +5237,24 @@ msgstr ""
 "atsaukt vienības ar vēlamām iezīmēm."
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:162
+#: data/core/macros/traits.cfg:192
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Inteliģentām vienībām nepieciešams par 20% mazāk pieredzes punktu kā "
 "parasti, lai sasniegtu nākamo līmeni."
 
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:176
+#: data/core/macros/traits.cfg:206
 msgid "resilient"
 msgstr "izturīgs"
 
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:177
+#: data/core/macros/traits.cfg:207
 msgid "female^resilient"
 msgstr "izturīga"
 
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:178
+#: data/core/macros/traits.cfg:208
 msgid ""
 "\n"
 "\n"
@@ -5106,7 +5272,7 @@ msgstr ""
 "noderīgas stratēģisko pozīciju noturēšanā."
 
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:178
+#: data/core/macros/traits.cfg:208
 #, fuzzy
 #| msgid ""
 #| "<italic>text='Resilient'</italic> units have 4 HP plus 1 HP per level "
@@ -5119,22 +5285,22 @@ msgstr ""
 "veselības punkts par katru līmeni vairāk kā parasti."
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:197
+#: data/core/macros/traits.cfg:227
 msgid "healthy"
 msgstr "veselīgs"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:198
+#: data/core/macros/traits.cfg:228
 msgid "female^healthy"
 msgstr "veselīga"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:199
+#: data/core/macros/traits.cfg:229
 msgid "Always rest heals"
 msgstr "Atpūta vienmēr dziedē"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:200
+#: data/core/macros/traits.cfg:230
 msgid ""
 "\n"
 "\n"
@@ -5144,7 +5310,7 @@ msgid ""
 msgstr ""
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:200
+#: data/core/macros/traits.cfg:230
 #, fuzzy
 #| msgid ""
 #| "Renowned for their vitality, some dwarves are sturdier than others and "
@@ -5157,42 +5323,42 @@ msgstr ""
 "atpūsties pat ceļojot."
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:222 data/core/macros/traits.cfg:239
+#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
 msgid "fearless"
 msgstr "bezbailīgs"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:223 data/core/macros/traits.cfg:240
+#: data/core/macros/traits.cfg:253 data/core/macros/traits.cfg:270
 msgid "female^fearless"
 msgstr "bezbailīga"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:224 data/core/macros/traits.cfg:241
+#: data/core/macros/traits.cfg:254 data/core/macros/traits.cfg:271
 msgid "Fights normally during unfavorable times of day/night"
 msgstr "Bez grūtībām cīnās arī nelabvēlīgā diennakts periodā"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:225 data/core/macros/traits.cfg:242
+#: data/core/macros/traits.cfg:255 data/core/macros/traits.cfg:272
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr "Nepatika pret gaišo un tumšo nekādi neietekmē šos drosminiekus."
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:255
+#: data/core/macros/traits.cfg:285
 msgid "feral"
 msgstr "savvaļas"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:256
+#: data/core/macros/traits.cfg:286
 msgid "female^feral"
 msgstr "savvaļas"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:257
+#: data/core/macros/traits.cfg:287
 msgid "Receives only 50% defense in land-based villages"
 msgstr "Saņem tikai 50% aizsardzību uz zemes esošos ciemos"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:258
+#: data/core/macros/traits.cfg:288
 msgid ""
 "Dwellings of sentient beings are not easily used for cover by feral "
 "creatures of low intelligence. As a result, <italic>text='feral'</italic> "
@@ -5205,17 +5371,17 @@ msgstr ""
 "tā apvidu."
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:274
+#: data/core/macros/traits.cfg:304
 msgid "weak"
 msgstr "vājš"
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:275
+#: data/core/macros/traits.cfg:305
 msgid "female^weak"
 msgstr "vāja"
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:276
+#: data/core/macros/traits.cfg:306
 #, fuzzy
 #| msgid ""
 #| "Units with trait <italic>text='weak'</italic> get a −1 increment in "
@@ -5228,17 +5394,17 @@ msgstr ""
 "tuvcīņas spēks ir samazināts par vienu."
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:293
+#: data/core/macros/traits.cfg:323
 msgid "slow"
 msgstr "gauss"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:294
+#: data/core/macros/traits.cfg:324
 msgid "female^slow"
 msgstr "gausa"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:295
+#: data/core/macros/traits.cfg:325
 msgid ""
 "\n"
 "\n"
@@ -5252,7 +5418,7 @@ msgstr ""
 "tas tiek kompensēts ar nelielu izturības pieaugumu."
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:295
+#: data/core/macros/traits.cfg:325
 #, fuzzy
 #| msgid ""
 #| "<italic>text='Slow'</italic> units have −1 movement but 5% more hitpoints."
@@ -5264,17 +5430,17 @@ msgstr ""
 "mazāk, bet 5% vairāk veselības punktu."
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:313
+#: data/core/macros/traits.cfg:343
 msgid "dim"
 msgstr "bāls"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:314
+#: data/core/macros/traits.cfg:344
 msgid "female^dim"
 msgstr "bāla"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:315
+#: data/core/macros/traits.cfg:345
 msgid ""
 "\n"
 "\n"
@@ -5287,7 +5453,7 @@ msgstr ""
 "iemesli, kādēļ šīs sugas ir zemākas, un šī ir viena no tām."
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:315
+#: data/core/macros/traits.cfg:345
 msgid ""
 "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
 "experience required to advance."
@@ -5296,17 +5462,17 @@ msgstr ""
 "attīstībai nepieciešamo pieredzes punktu skaitā."
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:329
+#: data/core/macros/traits.cfg:359
 msgid "aged"
 msgstr "gados"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:330
+#: data/core/macros/traits.cfg:360
 msgid "female^aged"
 msgstr "gados"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:331
+#: data/core/macros/traits.cfg:361
 #, fuzzy
 #| msgid ""
 #| "Units with trait <italic>text='aged'</italic> get a −8 increment in "
@@ -5892,44 +6058,23 @@ msgid ""
 "friend and foe, making them a useful asset to aid in an army’s charge."
 msgstr ""
 
-#. [race]: id=roc, description=
-#: data/core/units.cfg:140
-#, fuzzy
-#| msgid "race^Orc"
-msgid "race^Roc"
-msgstr "Orks"
-
-#. [race]: id=roc, description=
-#: data/core/units.cfg:141
-#, fuzzy
-#| msgid "race+female^Orc"
-msgid "race+female^Roc"
-msgstr "Orkiete"
-
-#. [race]: id=roc, description=
-#: data/core/units.cfg:142
-#, fuzzy
-#| msgid "race^Orcs"
-msgid "race^Rocs"
-msgstr "Orki"
-
 #. [race]: id=goblin
-#: data/core/units.cfg:153
+#: data/core/units.cfg:141
 msgid "race^Goblin"
 msgstr "Goblins"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:154
+#: data/core/units.cfg:142
 msgid "race+female^Goblin"
 msgstr "Gobliniete"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:155
+#: data/core/units.cfg:143
 msgid "race^Goblins"
 msgstr "Goblini"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:156
+#: data/core/units.cfg:144
 #, fuzzy
 #| msgid ""
 #| "Goblins are, despite their appearance, born as siblings to the orcs and "
@@ -5982,22 +6127,22 @@ msgstr ""
 "pierādījumu savam spēkam."
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:173
+#: data/core/units.cfg:161
 msgid "race^Gryphon"
 msgstr "Grifs"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:174
+#: data/core/units.cfg:162
 msgid "race+female^Gryphon"
 msgstr "Grifiene"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:175
+#: data/core/units.cfg:163
 msgid "race^Gryphons"
 msgstr "Grifi"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:176
+#: data/core/units.cfg:164
 msgid ""
 "Gryphons are broad, powerful beasts with traits shared from both terrestrial "
 "predators and birds of prey. While occasionally tamed and ridden by the "
@@ -6010,22 +6155,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=human
-#: data/core/units.cfg:194
+#: data/core/units.cfg:182
 msgid "race^Human"
 msgstr "Vīrietis"
 
 #. [race]: id=human
-#: data/core/units.cfg:195
+#: data/core/units.cfg:183
 msgid "race+female^Human"
 msgstr "Sieviete"
 
 #. [race]: id=human
-#: data/core/units.cfg:196
+#: data/core/units.cfg:184
 msgid "race^Humans"
 msgstr "Cilvēki"
 
 #. [race]: id=human
-#: data/core/units.cfg:197
+#: data/core/units.cfg:185
 #, fuzzy
 #| msgid ""
 #| "The race of men is an extremely diverse one. Although they originally "
@@ -6139,28 +6284,28 @@ msgstr ""
 "valsts karavīri."
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:212
+#: data/core/units.cfg:200
 #, fuzzy
 #| msgid "race^Human"
 msgid "race^Dunefolk Human"
 msgstr "Vīrietis"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:213
+#: data/core/units.cfg:201
 #, fuzzy
 #| msgid "race+female^Human"
 msgid "race+female^Dunefolk Human"
 msgstr "Sieviete"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:214
+#: data/core/units.cfg:202
 #, fuzzy
 #| msgid "race+plural^Undead"
 msgid "race+plural^Dunefolk"
 msgstr "Nedzīvie"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:215
+#: data/core/units.cfg:203
 msgid ""
 "An offshoot of a forgotten nomadic civilization, the Dunefolk lay claim to "
 "the river valleys and oases of the Sandy Wastes. How they came to inhabit "
@@ -6218,22 +6363,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=lizard
-#: data/core/units.cfg:236
+#: data/core/units.cfg:224
 msgid "race^Saurian"
 msgstr "Rāpulis"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:237
+#: data/core/units.cfg:225
 msgid "race+female^Saurian"
 msgstr "Rāpule"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:238
+#: data/core/units.cfg:226
 msgid "race^Saurians"
 msgstr "Rāpuļi"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:239
+#: data/core/units.cfg:227
 msgid ""
 "Saurians are lizard-like creatures. Smaller and more slender than humans, "
 "they rarely stand taller than a ten year old child, though from tip of snout "
@@ -6303,17 +6448,17 @@ msgid ""
 msgstr ""
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:265
+#: data/core/units.cfg:253
 msgid "race^Mechanical"
 msgstr "Mehānisms"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:266
+#: data/core/units.cfg:254
 msgid "race+plural^Mechanical"
 msgstr "Mehānismi"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:267
+#: data/core/units.cfg:255
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -6326,24 +6471,24 @@ msgstr ""
 "to spēj pateicoties burvestībām."
 
 #. [race]: id=merman
-#: data/core/units.cfg:276
+#: data/core/units.cfg:264
 msgid "race^Merman"
 msgstr "Ūdensvīrs"
 
 #. [race]: id=merman
-#: data/core/units.cfg:277
+#: data/core/units.cfg:265
 msgid "race^Mermaid"
 msgstr "Nāra"
 
 #. [race]: id=merman
-#: data/core/units.cfg:278
+#: data/core/units.cfg:266
 #, fuzzy
 #| msgid "race^Troll"
 msgid "race^Merfolk"
 msgstr "Trollis"
 
 #. [race]: id=merman
-#: data/core/units.cfg:280
+#: data/core/units.cfg:268
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -6366,22 +6511,22 @@ msgstr ""
 "meža apvidu."
 
 #. [race]: id=monster
-#: data/core/units.cfg:288
+#: data/core/units.cfg:276
 msgid "race^Monster"
 msgstr "Briesmonis"
 
 #. [race]: id=monster
-#: data/core/units.cfg:289
+#: data/core/units.cfg:277
 msgid "race+female^Monster"
 msgstr "Briesmone"
 
 #. [race]: id=monster
-#: data/core/units.cfg:290
+#: data/core/units.cfg:278
 msgid "race^Monsters"
 msgstr "Briesmoņi"
 
 #. [race]: id=monster
-#: data/core/units.cfg:291
+#: data/core/units.cfg:279
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -6392,22 +6537,22 @@ msgstr ""
 "to iemītnieku stāstos un murgos."
 
 #. [race]: id=naga
-#: data/core/units.cfg:298
+#: data/core/units.cfg:286
 msgid "race^Naga"
 msgstr "Nāga"
 
 #. [race]: id=naga
-#: data/core/units.cfg:299
+#: data/core/units.cfg:287
 msgid "race^Nagini"
 msgstr "Nāgans"
 
 #. [race]: id=naga
-#: data/core/units.cfg:300
+#: data/core/units.cfg:288
 msgid "race^Nagas"
 msgstr "Nāgas"
 
 #. [race]: id=naga
-#: data/core/units.cfg:301
+#: data/core/units.cfg:289
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -6438,22 +6583,22 @@ msgstr ""
 "ūdenim."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:309
+#: data/core/units.cfg:297
 msgid "race^Ogre"
 msgstr "Cilvēkēdājs"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:310
+#: data/core/units.cfg:298
 msgid "race+female^Ogre"
 msgstr "Cilvēkēdāja"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:311
+#: data/core/units.cfg:299
 msgid "race^Ogres"
 msgstr "Cilvēkēdāji"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:312
+#: data/core/units.cfg:300
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -6485,22 +6630,22 @@ msgstr ""
 "sadarbības, piejaucēšanas vai vienkārši izdevīga gadījuma zīme."
 
 #. [race]: id=orc
-#: data/core/units.cfg:320
+#: data/core/units.cfg:308
 msgid "race^Orc"
 msgstr "Orks"
 
 #. [race]: id=orc
-#: data/core/units.cfg:321
+#: data/core/units.cfg:309
 msgid "race+female^Orc"
 msgstr "Orkiete"
 
 #. [race]: id=orc
-#: data/core/units.cfg:322
+#: data/core/units.cfg:310
 msgid "race^Orcs"
 msgstr "Orki"
 
 #. [race]: id=orc
-#: data/core/units.cfg:323
+#: data/core/units.cfg:311
 #, fuzzy
 #| msgid ""
 #| "In appearance, orcs are half men and half beasts. They are taller, "
@@ -6667,7 +6812,7 @@ msgstr ""
 "prasmēs, kā piemēram lokšaušana vai slepkavošana."
 
 #. [race]: id=orc
-#: data/core/units.cfg:334
+#: data/core/units.cfg:322
 msgid ""
 "\n"
 "\n"
@@ -6676,22 +6821,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=troll
-#: data/core/units.cfg:343
+#: data/core/units.cfg:331
 msgid "race^Troll"
 msgstr "Trollis"
 
 #. [race]: id=troll
-#: data/core/units.cfg:344
+#: data/core/units.cfg:332
 msgid "race+female^Troll"
 msgstr "Trolle"
 
 #. [race]: id=troll
-#: data/core/units.cfg:345
+#: data/core/units.cfg:333
 msgid "race^Trolls"
 msgstr "Troļļi"
 
 #. [race]: id=troll
-#: data/core/units.cfg:346
+#: data/core/units.cfg:334
 #, fuzzy
 #| msgid ""
 #| "Trolls are ancient creatures, one of the oldest known races known to "
@@ -6801,22 +6946,22 @@ msgstr ""
 "Vesnotas, un lai kur arī orku bari ceļotu."
 
 #. [race]: id=undead
-#: data/core/units.cfg:366
+#: data/core/units.cfg:354
 msgid "race^Undead"
 msgstr "Nedzīvais"
 
 #. [race]: id=undead
-#: data/core/units.cfg:367
+#: data/core/units.cfg:355
 msgid "race+female^Undead"
 msgstr "Nedzīvā"
 
 #. [race]: id=undead
-#: data/core/units.cfg:368
+#: data/core/units.cfg:356
 msgid "race+plural^Undead"
 msgstr "Nedzīvie"
 
 #. [race]: id=undead
-#: data/core/units.cfg:369
+#: data/core/units.cfg:357
 #, fuzzy
 #| msgid ""
 #| "Undead are not really a single race of creatures, although often treated "
@@ -6895,22 +7040,22 @@ msgstr ""
 "rūķiem jau pirms tam."
 
 #. [race]: id=wolf
-#: data/core/units.cfg:382
+#: data/core/units.cfg:370
 msgid "race^Wolf"
 msgstr "Vilks"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:383
+#: data/core/units.cfg:371
 msgid "race+female^Wolf"
 msgstr "Vilcene"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:384
+#: data/core/units.cfg:372
 msgid "race^Wolves"
 msgstr "Vilki"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:385
+#: data/core/units.cfg:373
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -6922,17 +7067,17 @@ msgid ""
 msgstr ""
 
 #. [race]: id=wose
-#: data/core/units.cfg:394
+#: data/core/units.cfg:382
 msgid "race^Wose"
 msgstr "Vose"
 
 #. [race]: id=wose
-#: data/core/units.cfg:395
+#: data/core/units.cfg:383
 msgid "race^Woses"
 msgstr "Voses"
 
 #. [race]: id=wose
-#: data/core/units.cfg:396
+#: data/core/units.cfg:384
 #, fuzzy
 #| msgid ""
 #| "The mighty wose resides within the deepest forests of the known world. To "
@@ -7060,18 +7205,47 @@ msgid "Parse error when parsing help text: "
 msgstr "Parsēšanas kļūda palīdzības tekstā: "
 
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Multiplayer Modifications'</header>"
-msgid ""
-"\n"
-"\n"
-"<big>Multiplayer Modifications</big>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Daudzspēlētāju modifikācijas'</header>"
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Creator Resources'</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Cores</big>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Resursi veidotājiem'</header>"
+
+#, fuzzy
+#~| msgid "race^Orc"
+#~ msgid "race^Roc"
+#~ msgstr "Orks"
+
+#, fuzzy
+#~| msgid "race+female^Orc"
+#~ msgid "race+female^Roc"
+#~ msgstr "Orkiete"
+
+#, fuzzy
+#~| msgid "race^Orcs"
+#~ msgid "race^Rocs"
+#~ msgstr "Orki"
+
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Multiplayer Modifications'</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Multiplayer Modifications</big>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Daudzspēlētāju modifikācijas'</header>"
 
 #, fuzzy
 #~| msgid ""
@@ -7873,20 +8047,6 @@ msgstr ""
 
 #~ msgid "corrupted original file"
 #~ msgstr "sabojāts oriģinālais fails"
-
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "\n"
-#~| "<header>text='Creator Resources'</header>"
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Cores'</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Resursi veidotājiem'</header>"
 
 #, fuzzy
 #~| msgid ""

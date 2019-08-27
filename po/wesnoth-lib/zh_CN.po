@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-07-18 15:50+0300\n"
+"POT-Creation-Date: 2019-08-27 22:40+0300\n"
 "PO-Revision-Date: 2019-02-07 15:12+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -1927,8 +1927,8 @@ msgstr "配置所选的自定义模组的设置。"
 
 #. [button]: id=reset_option_values
 #. [button]: id=btn_reset_hotkeys
-#. [button]: id=revert_to_defaults
 #. [button]: id=orb_defaults
+#. [button]: id=revert_to_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:293
@@ -2033,7 +2033,7 @@ msgstr "消息等待中"
 #: data/gui/window/mp_alerts_options.cfg:249
 #: data/gui/window/preferences.cfg:429
 #: data/gui/window/screenshot_notification.cfg:216
-#: data/gui/window/statistics_dialog.cfg:608
+#: data/gui/window/statistics_dialog.cfg:610
 #: data/gui/window/terrain_layers.cfg:434 data/gui/window/unit_list.cfg:447
 msgid "Close"
 msgstr "关闭"
@@ -2455,7 +2455,7 @@ msgstr "按照故事事件的大略时间顺序排序"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:293
-#: src/gui/dialogs/multiplayer/lobby.cpp:451
+#: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Modifications"
 msgstr "模组"
 
@@ -2741,7 +2741,7 @@ msgstr "描述："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:473
+#: src/gui/dialogs/multiplayer/lobby.cpp:477
 msgid "Experience modifier:"
 msgstr "经验值修正："
 
@@ -2803,7 +2803,7 @@ msgstr "金币："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#: src/gui/dialogs/multiplayer/lobby.cpp:474
+#: src/gui/dialogs/multiplayer/lobby.cpp:478
 msgid "Gold per village:"
 msgstr "每村庄产出金币："
 
@@ -2874,7 +2874,7 @@ msgstr "选择地图生成器："
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
-#: src/gui/dialogs/multiplayer/lobby.cpp:472
+#: src/gui/dialogs/multiplayer/lobby.cpp:476
 msgid "Settings"
 msgstr "设置"
 
@@ -3728,8 +3728,8 @@ msgstr ""
 msgid "Event"
 msgstr "事件"
 
-#. [label]
 #. [widget]: id=label
+#. [label]
 #: data/gui/window/mp_alerts_options.cfg:154
 #: data/gui/window/preferences.cfg:346
 msgid "Sound"
@@ -3833,6 +3833,20 @@ msgstr "回合变化："
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:199
 msgid "When a new turn has begun"
+msgstr "当新的回合开始时"
+
+#. [grid]
+#: data/gui/window/mp_alerts_options.cfg:200
+#, fuzzy
+#| msgid "Game data:"
+msgid "Game created:"
+msgstr "游戏数据："
+
+#. [grid]
+#: data/gui/window/mp_alerts_options.cfg:200
+#, fuzzy
+#| msgid "When a new turn has begun"
+msgid "When a new game has been created"
 msgstr "当新的回合开始时"
 
 #. [button]: id=revert_to_defaults
@@ -4099,7 +4113,7 @@ msgstr "设置密码，这是想加入你的游戏的玩家所必需输入的。
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/multiplayer/lobby.cpp:479
 msgid "Map size:"
 msgstr "地图尺寸："
 
@@ -4659,9 +4673,13 @@ msgstr "限制FPS"
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:275
+#, fuzzy
+#| msgid ""
+#| "Disabling this increases CPU usage to 100% but may slightly improve "
+#| "performance at high resolutions"
 msgid ""
-"Disabling this increases CPU usage to 100% but may slightly improve "
-"performance at high resolutions"
+"Disabling this increases CPU usage, but may slightly improve performance "
+"(requires restart to take effect)"
 msgstr "禁用此项将使得CPU使用率达到100%，但或许能够稍稍提升在高分辨率下的性能"
 
 #. [button]: id=choose_theme
@@ -4948,9 +4966,10 @@ msgstr "伤害"
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
-"The first number in parentheses is the expected number of hitpoints.\n"
+"The first number in parentheses is the expected number of hitpoints "
+"inflicted/taken.\n"
 "The sum (or difference) of the two numbers in parentheses is the actual "
-"number of hitpoints."
+"number of hitpoints inflicted/taken."
 msgstr ""
 
 #. [column]
@@ -4961,6 +4980,15 @@ msgstr ""
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:568
 msgid "Hits"
+msgstr ""
+
+#. [column]
+#: data/gui/window/statistics_dialog.cfg:571
+msgid ""
+"stats dialog^Estimate of how much randomness of battles favored or "
+"disfavored this side.\n"
+"Values between 0 and 50 suggest the number of hits was less than expected.\n"
+"Values between 50 and 100 suggest the number of hits was more than expected."
 msgstr ""
 
 #. [button]: id=cancel
@@ -5356,7 +5384,7 @@ msgstr "zh_CN"
 msgid "The maximum text width is less than 1."
 msgstr "最大文字宽度小于1。"
 
-#: src/font/text.cpp:761
+#: src/font/text.cpp:775
 msgid "The text contains invalid Pango markup: "
 msgstr "此文本中包含非法的Pango标记："
 
@@ -5790,7 +5818,7 @@ msgid "Attacker vulnerability vs"
 msgstr "进攻方弱点"
 
 #: src/gui/dialogs/campaign_selection.cpp:318
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:460
 msgid "active_modifications^None"
 msgstr "无"
 
@@ -5895,8 +5923,8 @@ msgid "dir_size^Unknown"
 msgstr "未知"
 
 #: src/gui/dialogs/game_cache_options.cpp:139
-#: src/gui/dialogs/network_transmission.cpp:53
-#: src/gui/dialogs/network_transmission.cpp:54
+#: src/gui/dialogs/network_transmission.cpp:81
+#: src/gui/dialogs/network_transmission.cpp:82
 #: src/gui/dialogs/screenshot_notification.cpp:148
 msgid "unit_byte^B"
 msgstr "B"
@@ -5978,12 +6006,12 @@ msgid "Unknown"
 msgstr "未知"
 
 #: src/gui/dialogs/game_stats.cpp:195 src/gui/dialogs/game_stats.cpp:198
-#: src/gui/dialogs/multiplayer/lobby.cpp:470
+#: src/gui/dialogs/multiplayer/lobby.cpp:474
 msgid "no"
 msgstr "否"
 
 #: src/gui/dialogs/game_stats.cpp:195 src/gui/dialogs/game_stats.cpp:198
-#: src/gui/dialogs/multiplayer/lobby.cpp:470
+#: src/gui/dialogs/multiplayer/lobby.cpp:474
 msgid "yes"
 msgstr "是"
 
@@ -6008,91 +6036,91 @@ msgstr "团队标签"
 msgid "Side $side_number ($name)"
 msgstr "阵营$side_number|（$name）"
 
-#: src/gui/dialogs/loading_screen.cpp:44
+#: src/gui/dialogs/loading_screen.cpp:43
 msgid "Building terrain rules"
 msgstr "正在构建地形规则"
 
-#: src/gui/dialogs/loading_screen.cpp:45
+#: src/gui/dialogs/loading_screen.cpp:44
 msgid "Reading files and creating cache"
 msgstr "正在读取文件并创建缓存"
 
-#: src/gui/dialogs/loading_screen.cpp:46 src/gui/dialogs/loading_screen.cpp:49
+#: src/gui/dialogs/loading_screen.cpp:45 src/gui/dialogs/loading_screen.cpp:48
 msgid "Initializing display"
 msgstr "正在初始化显示"
 
-#: src/gui/dialogs/loading_screen.cpp:47
+#: src/gui/dialogs/loading_screen.cpp:46
 msgid "Reinitialize fonts for the current language"
 msgstr "正在为当前语言重新初始化字体"
 
-#: src/gui/dialogs/loading_screen.cpp:48
+#: src/gui/dialogs/loading_screen.cpp:47
 msgid "Initializing teams"
 msgstr "正在初始化团队"
 
-#: src/gui/dialogs/loading_screen.cpp:50
+#: src/gui/dialogs/loading_screen.cpp:49
 msgid "Loading game configuration"
 msgstr "正在载入游戏配置"
 
-#: src/gui/dialogs/loading_screen.cpp:51
+#: src/gui/dialogs/loading_screen.cpp:50
 msgid "Loading data files"
 msgstr "正在载入数据文件"
 
-#: src/gui/dialogs/loading_screen.cpp:52
+#: src/gui/dialogs/loading_screen.cpp:51
 msgid "Loading level"
 msgstr "正在载入关卡"
 
-#: src/gui/dialogs/loading_screen.cpp:53
+#: src/gui/dialogs/loading_screen.cpp:52
 msgid "Initializing scripting engine"
 msgstr "正在初始化脚本引擎"
 
-#: src/gui/dialogs/loading_screen.cpp:54
+#: src/gui/dialogs/loading_screen.cpp:53
 msgid "Initializing planning mode"
 msgstr "正在初始化计划模式"
 
-#: src/gui/dialogs/loading_screen.cpp:55
+#: src/gui/dialogs/loading_screen.cpp:54
 msgid "Reading unit files"
 msgstr "正在读取单位文件"
 
-#: src/gui/dialogs/loading_screen.cpp:56
+#: src/gui/dialogs/loading_screen.cpp:55
 msgid "Loading units"
 msgstr "正在载入单位"
 
-#: src/gui/dialogs/loading_screen.cpp:57
+#: src/gui/dialogs/loading_screen.cpp:56
 msgid "Searching for installed add-ons"
 msgstr "正在搜索已安装的附加组件"
 
-#: src/gui/dialogs/loading_screen.cpp:58
+#: src/gui/dialogs/loading_screen.cpp:57
 msgid "Starting game"
 msgstr "正在开始游戏"
 
-#: src/gui/dialogs/loading_screen.cpp:59
+#: src/gui/dialogs/loading_screen.cpp:58
 msgid "Verifying cache"
 msgstr "正在验证缓存"
 
-#: src/gui/dialogs/loading_screen.cpp:60
+#: src/gui/dialogs/loading_screen.cpp:59
 msgid "Connecting to server"
 msgstr "正在连接服务器"
 
-#: src/gui/dialogs/loading_screen.cpp:61
+#: src/gui/dialogs/loading_screen.cpp:60
 msgid "Logging in"
 msgstr "正在登录"
 
-#: src/gui/dialogs/loading_screen.cpp:62
+#: src/gui/dialogs/loading_screen.cpp:61
 msgid "Waiting for server"
 msgstr "正在等待服务器回复"
 
-#: src/gui/dialogs/loading_screen.cpp:63
+#: src/gui/dialogs/loading_screen.cpp:62
 msgid "Connecting to redirected server"
 msgstr "正在连接到重定向目标服务器"
 
-#: src/gui/dialogs/loading_screen.cpp:64
+#: src/gui/dialogs/loading_screen.cpp:63
 msgid "Waiting for next scenario"
 msgstr "正在等待下幕场景"
 
-#: src/gui/dialogs/loading_screen.cpp:65
+#: src/gui/dialogs/loading_screen.cpp:64
 msgid "Getting game data"
 msgstr "正在获取游戏数据"
 
-#: src/gui/dialogs/loading_screen.cpp:66
+#: src/gui/dialogs/loading_screen.cpp:65
 msgid "Downloading lobby data"
 msgstr "正在下载大厅数据"
 
@@ -6150,43 +6178,43 @@ msgstr ""
 "需要安装或更新一个或多个用户制作的附件组件后，才能加入此游戏。\n"
 "你要尝试安全它们吗？"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:391
+#: src/gui/dialogs/multiplayer/lobby.cpp:395
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "游戏：$num_shown|个已显示，共有$num_total|个"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:411
+#: src/gui/dialogs/multiplayer/lobby.cpp:415
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name|（时代：$era_name|）"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:441
+#: src/gui/dialogs/multiplayer/lobby.cpp:445
 msgid "era_or_mod^not installed"
 msgstr "未安装"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:444
+#: src/gui/dialogs/multiplayer/lobby.cpp:448
 msgid "Era"
 msgstr "时代"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:476
+#: src/gui/dialogs/multiplayer/lobby.cpp:480
 msgid "Reloaded:"
 msgstr "重新载入："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:477
+#: src/gui/dialogs/multiplayer/lobby.cpp:481
 msgid "Shared vision:"
 msgstr "共享视野："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:478
+#: src/gui/dialogs/multiplayer/lobby.cpp:482
 msgid "Shuffle sides:"
 msgstr "阵营洗牌："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:479
+#: src/gui/dialogs/multiplayer/lobby.cpp:483
 msgid "Time limit:"
 msgstr "时间限制："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:480
+#: src/gui/dialogs/multiplayer/lobby.cpp:484
 msgid "Use map settings:"
 msgstr "使用地图设置："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:488
+#: src/gui/dialogs/multiplayer/lobby.cpp:492
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -6194,19 +6222,19 @@ msgstr ""
 "为了加入此游戏\n"
 "需要安装一个或多个附加组件。"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:513
+#: src/gui/dialogs/multiplayer/lobby.cpp:517
 msgid "Observers allowed"
 msgstr "允许观察"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:516
+#: src/gui/dialogs/multiplayer/lobby.cpp:520
 msgid "Observers not allowed"
 msgstr "不允许观察"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:791
+#: src/gui/dialogs/multiplayer/lobby.cpp:795
 msgid "lobby"
 msgstr "大厅"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:951
+#: src/gui/dialogs/multiplayer/lobby.cpp:955
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -6400,7 +6428,7 @@ msgid "All Scenarios"
 msgstr "全部场景"
 
 #: src/gui/dialogs/statistics_dialog.cpp:181
-#: src/gui/dialogs/statistics_dialog.cpp:338
+#: src/gui/dialogs/statistics_dialog.cpp:341
 msgid "This Turn"
 msgstr "此回合"
 
@@ -6408,21 +6436,18 @@ msgstr "此回合"
 msgid "Actual hit rates, by chance to hit:"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:327
+#: src/gui/dialogs/statistics_dialog.cpp:219
+msgid "(no attacks have taken place yet)"
+msgstr ""
+
+#: src/gui/dialogs/statistics_dialog.cpp:328
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
-"The first number in parentheses is the expected number of hits.\n"
+"The first number in parentheses is the expected number of hits inflicted/"
+"taken.\n"
 "The sum (or difference) of the two numbers in parentheses is the actual "
-"number of hits."
-msgstr ""
-
-#: src/gui/dialogs/statistics_dialog.cpp:342
-msgid ""
-"stats dialog^Estimate of how much randomness of battles favored or "
-"disfavored this side.\n"
-"Values between 0 and 50 suggest the number of hits was less than expected."
-"Values between 50 and 100 suggest the number of hits was more than expected."
+"number of hits inflicted/taken."
 msgstr ""
 
 #: src/gui/dialogs/statistics_dialog.cpp:372
@@ -7451,82 +7476,90 @@ msgid "Speak to All"
 msgstr "向所有人说话"
 
 #: src/hotkey/hotkey_command.cpp:278
+msgid "Help about save-loading"
+msgstr ""
+
+#: src/hotkey/hotkey_command.cpp:278
+msgid "Hint: save-loading is unnecessary"
+msgstr ""
+
+#: src/hotkey/hotkey_command.cpp:279
 msgid "View Chat Log"
 msgstr "查看聊天纪录"
 
-#: src/hotkey/hotkey_command.cpp:279
+#: src/hotkey/hotkey_command.cpp:280
 msgid "Enter User Command"
 msgstr "输入用户命令"
 
-#: src/hotkey/hotkey_command.cpp:280
+#: src/hotkey/hotkey_command.cpp:281
 msgid "Custom Command"
 msgstr "自定义命令"
 
-#: src/hotkey/hotkey_command.cpp:281
+#: src/hotkey/hotkey_command.cpp:282
 msgid "Run Formula"
 msgstr "运行公式"
 
-#: src/hotkey/hotkey_command.cpp:282
+#: src/hotkey/hotkey_command.cpp:283
 msgid "Clear Messages"
 msgstr "清除信息"
 
-#: src/hotkey/hotkey_command.cpp:284
+#: src/hotkey/hotkey_command.cpp:285
 msgid "Change Language"
 msgstr "改变语言"
 
-#: src/hotkey/hotkey_command.cpp:285
+#: src/hotkey/hotkey_command.cpp:286
 msgid "Refresh WML"
 msgstr "刷新WML"
 
-#: src/hotkey/hotkey_command.cpp:286
+#: src/hotkey/hotkey_command.cpp:287
 msgid "Next Tip of the Day"
 msgstr "下一条每日提示"
 
-#: src/hotkey/hotkey_command.cpp:287
+#: src/hotkey/hotkey_command.cpp:288
 msgid "Previous Tip of the Day"
 msgstr "前一条每日提示"
 
-#: src/hotkey/hotkey_command.cpp:288
+#: src/hotkey/hotkey_command.cpp:289
 msgid "Start Tutorial"
 msgstr "开始教程"
 
-#: src/hotkey/hotkey_command.cpp:289
+#: src/hotkey/hotkey_command.cpp:290
 msgid "Start Campaign"
 msgstr "开始战役"
 
-#: src/hotkey/hotkey_command.cpp:290
+#: src/hotkey/hotkey_command.cpp:291
 msgid "Start Multiplayer Game"
 msgstr "开始多人游戏"
 
-#: src/hotkey/hotkey_command.cpp:291
+#: src/hotkey/hotkey_command.cpp:292
 msgid "Manage Add-ons"
 msgstr "管理附加组件"
 
-#: src/hotkey/hotkey_command.cpp:292
+#: src/hotkey/hotkey_command.cpp:293
 msgid "Manage Cores"
 msgstr "管理核心"
 
-#: src/hotkey/hotkey_command.cpp:293
+#: src/hotkey/hotkey_command.cpp:294
 msgid "Start Editor"
 msgstr "启动编辑器"
 
-#: src/hotkey/hotkey_command.cpp:294
+#: src/hotkey/hotkey_command.cpp:295
 msgid "Show Credits"
 msgstr "显示制作者名单"
 
-#: src/hotkey/hotkey_command.cpp:295
+#: src/hotkey/hotkey_command.cpp:296
 msgid "Start Test Scenario"
 msgstr "开始测试场景"
 
-#: src/hotkey/hotkey_command.cpp:297
+#: src/hotkey/hotkey_command.cpp:298
 msgid "Show Helptip"
 msgstr "显示帮助提示"
 
-#: src/hotkey/hotkey_command.cpp:299
+#: src/hotkey/hotkey_command.cpp:300
 msgid "Show Lua Console"
 msgstr "显示Lua控制台"
 
-#: src/hotkey/hotkey_command.cpp:302
+#: src/hotkey/hotkey_command.cpp:303
 msgid "Unrecognized Command"
 msgstr "未识别的命令"
 

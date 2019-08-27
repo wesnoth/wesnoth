@@ -170,13 +170,9 @@ accettare. I caratteri jolly \fB*\fP e \fB?\fP sono ammessi (il valore predefini
 .br
 Esempio: \fBversions_accepted="*"\fP accetta tutte le stringhe di versione.
 .TP 
-\fBuser_handler\fP
-Il nome dello user handler da utilizzare. Attualmente gli user handler
-disponibili sono \fBforum\fP (per connettere wesnothd ad un forum con database
-phpbb) e  \fBsample\fP (una implementazione di esempio di una interfaccia user
-handler; Usarla per qualcosa di real è semplicemente una cosa da pazzi). il
-valore di default è \fBforum\fP. Va anche aggiunto una sezione
-\fB[user_handler]\fP, vedi sotto.
+\fBdeny_unregistered_login\fP
+Whether to prevent users who are not registered with the \fBuser_handler\fP
+being used from logging in. (default: false)
 .
 .SS "Tag globali:"
 .
@@ -218,61 +214,52 @@ richieste dei client connessi al server specificato. Accetta le stesse
 parole chiave di \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configura lo user handler. Diverse parole chiavi sono
-disponibili a seconda dello user handler selezionato con la chiave
-\fBuser_handler\fP. Se non è presente una sezione \fB[user_handler]\fP nella
-configurazione il server verrà lanciato sena un servizio di registrazione
-del nick.
+\fB[user_handler]\fP Configures the user handler. Available keys vary depending
+on which user handler is set with the \fBuser_handler\fP key. If no
+\fB[user_handler]\fP section is present in the configuration the server will
+run without any nick registration service. All additional tables that are
+needed for the forum_user_handler to function can be found in
+table_definitions.sql in the Wesnoth source repository.
 .RS
 .TP 
 \fBdb_host\fP
-(per user_handler=forum) L’hostname del server del database
+The hostname of the database server
 .TP 
 \fBdb_name\fP
-(per ser_handleu=forum) Il nome del database
+The name of the database
 .TP 
 \fBdb_user\fP
-(per user_handler=forum) Il nome dell’utente con cui connettersi al database
+The name of the user under which to log into the database
 .TP 
 \fBdb_password\fP
-(per user_handler=forum) La password di questo utente
+This user's password
 .TP 
 \fBdb_users_table\fP
-(per user_handler=forum) Il nome della tabella nella quale il vostro forum
-phpbb salva i dati degli utenti. Di solito questo valore è
-<table\-prefix>_users (i.e. phpbb3_users).
+The name of the table in which your phpbb forums saves its user data. Most
+likely this will be <table\-prefix>_users (e.g. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
-( per user_handler=forum) Il nome della tabella nella quale il demone
-wesnothd salverà i suoi dati degli utenti. Questa tabella deve essere creata
-manualmente, i.e: \fBCREATE TABLE <table\-name>(username VARCHAR(255)
-PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0,
-user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);\fP
+The name of the table in which wesnothd will save its own data about users.
 .TP 
-\fBuser_expiration\fP
-(per user_handler=sample) Il tempo dopo cui un nome registrato scade (in
-giorni).
+\fBdb_game_info_table\fP
+The name of the table in which wesnothd will save its own data about games.
+.TP 
+\fBdb_game_player_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+players in a game.
+.TP 
+\fBdb_game_modification_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+modifications used in a game.
+.TP 
+\fBdb_user_group_table\fP
+The name of the table in which your phpbb forums saves its user group
+data. Most likely this will be <table\-prefix>_user_group
+(e.g. phpbb3_user_group).
+.TP 
+\fBmp_mod_group\fP
+The ID of the forum group to be considered as having moderation authority.
 .RE
-.P
-\fB[mail]\fP Configura un server SMTP attraverso il quale l’utente può inviare
-e\-mail. Attualmente utilizzato soltanto dallo user_handler sample.
-.RS
-.TP 
-\fBserver\fP
-L’hostname del sever della posta
-.TP 
-\fBusername\fP
-Il nome utente per connettersi al server della posta.
-.TP 
-\fBpassword\fP
-La password di questo utente.
-.TP 
-\fBfrom_address\fP
-L’indirizzo reply\-to della tua posta.
-.TP 
-\fBmail_port\fP
-La porta su cui il tuo server di posta è in ascolto. Omettendo un valore,
-viene usata la 25.
 .
 .SH "STATO DI USCITA"
 .
@@ -302,3 +289,4 @@ per l’ADEGUATEZZA AD UNO SCOPO PARTICOLARE.
 .SH "SEE ALSO"
 .
 \fBwesnoth\fP(6)
+

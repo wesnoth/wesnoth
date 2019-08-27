@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-07-18 12:51 UTC\n"
+"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
 "PO-Revision-Date: 2019-06-30 20:23+0200\n"
 "Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
@@ -60,15 +60,15 @@ msgstr "inkt"
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Guardian.cfg:27
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Sentinel.cfg:28
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Warden.cfg:27
-#: data/core/units/dunefolk/Apothecary.cfg:27
-#: data/core/units/dunefolk/Cataphract.cfg:31
-#: data/core/units/dunefolk/Herbalist.cfg:25
-#: data/core/units/dunefolk/Marauder.cfg:31
-#: data/core/units/dunefolk/Piercer.cfg:34
-#: data/core/units/dunefolk/Raider.cfg:27 data/core/units/dunefolk/Rider.cfg:22
-#: data/core/units/dunefolk/Sunderer.cfg:29
+#: data/core/units/dunefolk/Alchemist.cfg:31
+#: data/core/units/dunefolk/Apothecary.cfg:32
+#: data/core/units/dunefolk/Cataphract.cfg:28
+#: data/core/units/dunefolk/Herbalist.cfg:33
+#: data/core/units/dunefolk/Luminary.cfg:34
+#: data/core/units/dunefolk/Rider.cfg:22
+#: data/core/units/dunefolk/Sunderer.cfg:27
 #: data/core/units/dunefolk/Swiftrider.cfg:22
-#: data/core/units/dunefolk/Windrider.cfg:23
+#: data/core/units/dunefolk/Windrider.cfg:27
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
 msgid "mace"
 msgstr "knuppel"
@@ -106,22 +106,6 @@ msgstr "knuppel"
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:48
 msgid "staff"
 msgstr "staf"
-
-#. [attack]: type=impact
-#: data/campaigns/Delfadors_Memoirs/units/Wose_Shaman.cfg:34
-#: data/campaigns/Wings_of_Victory/units/Wose_Shaman.cfg:34
-#: data/core/units/wose/Ancient.cfg:34 data/core/units/wose/Elder.cfg:34
-#: data/core/units/wose/Wose.cfg:29
-msgid "crush"
-msgstr "verpletter"
-
-#. [attack]: type=impact
-#: data/campaigns/Delfadors_Memoirs/units/Wose_Shaman.cfg:43
-#: data/campaigns/Wings_of_Victory/units/Wose_Shaman.cfg:43
-#: data/core/units/elves/Enchantress.cfg:36 data/core/units/elves/Shaman.cfg:37
-#: data/core/units/elves/Sorceress.cfg:38
-msgid "entangle"
-msgstr "verstrikking"
 
 #. [attack]: type=blade
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:23
@@ -165,6 +149,7 @@ msgstr "schaduwgolf"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:74
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:73
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:38
+#: data/core/units/dunefolk/Skirmisher.cfg:38
 #: data/core/units/humans/Outlaw.cfg:31
 #: data/core/units/humans/Outlaw_Footpad.cfg:33
 #: data/core/units/humans/Outlaw_Fugitive.cfg:36
@@ -179,8 +164,8 @@ msgstr "slinger"
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:41
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:32
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Undead_Horseman.cfg:39
-#: data/core/units/dunefolk/Explorer.cfg:24
-#: data/core/units/dunefolk/Ranger.cfg:25 data/core/units/dunefolk/Rover.cfg:24
+#: data/core/units/dunefolk/Explorer.cfg:30
+#: data/core/units/dunefolk/Ranger.cfg:39 data/core/units/dunefolk/Rover.cfg:27
 #: data/core/units/dwarves/Explorer.cfg:33
 #: data/core/units/dwarves/Fighter.cfg:41
 #: data/core/units/dwarves/Pathfinder.cfg:36
@@ -247,18 +232,14 @@ msgstr "goedendag"
 #: data/campaigns/tutorial/units/Fighteress.cfg:25
 #: data/campaigns/tutorial/units/Warrior.cfg:25
 #: data/campaigns/tutorial/units/Warrioress.cfg:26
-#: data/core/units/dunefolk/Blademaster.cfg:26
-#: data/core/units/dunefolk/Soldier.cfg:25
-#: data/core/units/dunefolk/Swordsman.cfg:25
-#: data/core/units/dunefolk/Warmaster.cfg:32
-#: data/core/units/elves/Archer.cfg:23 data/core/units/elves/Avenger.cfg:38
-#: data/core/units/elves/Captain.cfg:34 data/core/units/elves/Champion.cfg:23
-#: data/core/units/elves/Fighter.cfg:22 data/core/units/elves/Hero.cfg:22
-#: data/core/units/elves/High_Lord.cfg:46 data/core/units/elves/Lord.cfg:26
-#: data/core/units/elves/Marksman.cfg:29 data/core/units/elves/Marshal.cfg:33
-#: data/core/units/elves/Outrider.cfg:32 data/core/units/elves/Ranger.cfg:35
-#: data/core/units/elves/Rider.cfg:32 data/core/units/elves/Scout.cfg:32
-#: data/core/units/elves/Sharpshooter.cfg:24
+#: data/core/units/dunefolk/Paragon.cfg:26 data/core/units/elves/Archer.cfg:23
+#: data/core/units/elves/Avenger.cfg:38 data/core/units/elves/Captain.cfg:34
+#: data/core/units/elves/Champion.cfg:23 data/core/units/elves/Fighter.cfg:22
+#: data/core/units/elves/Hero.cfg:22 data/core/units/elves/High_Lord.cfg:46
+#: data/core/units/elves/Lord.cfg:26 data/core/units/elves/Marksman.cfg:29
+#: data/core/units/elves/Marshal.cfg:33 data/core/units/elves/Outrider.cfg:32
+#: data/core/units/elves/Ranger.cfg:35 data/core/units/elves/Rider.cfg:32
+#: data/core/units/elves/Scout.cfg:32 data/core/units/elves/Sharpshooter.cfg:24
 #: data/core/units/humans/Horse_Knight.cfg:23
 #: data/core/units/humans/Horse_Paladin.cfg:39
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:44
@@ -288,8 +269,8 @@ msgstr "zwaard"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:466
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:523
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:580
-#: data/core/units/dunefolk/Marauder.cfg:39
-#: data/core/units/dunefolk/Raider.cfg:35 data/core/units/elves/Archer.cfg:32
+#: data/core/units/dunefolk/Marauder.cfg:40
+#: data/core/units/dunefolk/Raider.cfg:38 data/core/units/elves/Archer.cfg:32
 #: data/core/units/elves/Avenger.cfg:47 data/core/units/elves/Captain.cfg:43
 #: data/core/units/elves/Champion.cfg:32 data/core/units/elves/Fighter.cfg:31
 #: data/core/units/elves/Hero.cfg:31 data/core/units/elves/Marshal.cfg:42
@@ -301,6 +282,8 @@ msgstr "zwaard"
 #: data/core/units/humans/Woodsman_Poacher.cfg:42
 #: data/core/units/humans/Woodsman_Ranger.cfg:53
 #: data/core/units/humans/Woodsman_Trapper.cfg:48
+#: data/core/units/nagas/Bladewhirler.cfg:37
+#: data/core/units/nagas/Dervish.cfg:39 data/core/units/nagas/Slasher.cfg:33
 #: data/core/units/orcs/Archer.cfg:33 data/core/units/orcs/Archer.cfg:42
 #: data/core/units/orcs/Warlord.cfg:33
 #: data/core/units/undead/Skele_Banebow.cfg:40
@@ -317,27 +300,19 @@ msgstr "boog"
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:132
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:23
 #: data/core/units/drakes/Burner.cfg:25
-#: data/core/units/dunefolk/Elder_Falcon.cfg:26
-#: data/core/units/dunefolk/Falcon.cfg:25
 #: data/core/units/goblins/Direwolf_Rider.cfg:41
 #: data/core/units/gryphons/Gryphon.cfg:28
 #: data/core/units/gryphons/Gryphon_Master.cfg:28
 #: data/core/units/gryphons/Gryphon_Rider.cfg:27
-#: data/core/units/monsters/Roc.cfg:25
+#: data/core/units/monsters/Elder_Falcon.cfg:26
+#: data/core/units/monsters/Falcon.cfg:25 data/core/units/monsters/Roc.cfg:27
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
-#: data/core/units/monsters/Young_Roc.cfg:25
 #: data/core/units/undead/Corpse_Ghoul.cfg:25
 #: data/core/units/undead/Corpse_Necrophage.cfg:26
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:33
 #: data/core/units/undead/Spirit_Shadow.cfg:62
 msgid "claws"
 msgstr "klauwen"
-
-#. [attack]: type=blade
-#: data/campaigns/Legend_of_Wesmere/units/ogres/Great_Ogre.cfg:40
-#: data/core/units/ogres/Ogre.cfg:25 data/core/units/ogres/Young_Ogre.cfg:24
-msgid "cleaver"
-msgstr "hakmes"
 
 #. [attack]: type=blade
 #: data/campaigns/Secrets_of_the_Ancients/units/Bone_Captain.cfg:34
@@ -641,6 +616,9 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:24
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:29
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:26
+#: data/core/units/dunefolk/Burner.cfg:28
+#: data/core/units/dunefolk/Firetrooper.cfg:29
+#: data/core/units/dunefolk/Scorcher.cfg:29
 #: data/core/units/dwarves/Dragonguard.cfg:37
 #: data/core/units/dwarves/Thunderer.cfg:49
 #: data/core/units/dwarves/Thunderguard.cfg:38
@@ -651,8 +629,8 @@ msgstr ""
 #: data/core/units/humans/Woodsman_Huntsman.cfg:36
 #: data/core/units/humans/Woodsman_Poacher.cfg:33
 #: data/core/units/humans/Woodsman_Trapper.cfg:39
-#: data/core/units/orcs/Archer.cfg:24 data/core/units/orcs/Assassin.cfg:26
-#: data/core/units/orcs/Slayer.cfg:26
+#: data/core/units/nagas/Slasher.cfg:24 data/core/units/orcs/Archer.cfg:24
+#: data/core/units/orcs/Assassin.cfg:26 data/core/units/orcs/Slayer.cfg:26
 #: data/core/units/undead/Skele_Banebow.cfg:31
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:29
 msgid "dagger"
@@ -718,8 +696,11 @@ msgstr ""
 #: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:31
 #: data/core/units/drakes/Clasher.cfg:33 data/core/units/drakes/Thrasher.cfg:31
-#: data/core/units/dunefolk/Spearguard.cfg:25
-#: data/core/units/dunefolk/Spearmaster.cfg:26
+#: data/core/units/dunefolk/Harrier.cfg:27
+#: data/core/units/dunefolk/Skirmisher.cfg:26
+#: data/core/units/dunefolk/Spearguard.cfg:26
+#: data/core/units/dunefolk/Spearmaster.cfg:29
+#: data/core/units/dunefolk/Strider.cfg:27
 #: data/core/units/dwarves/Guardsman.cfg:28
 #: data/core/units/dwarves/Sentinel.cfg:38
 #: data/core/units/dwarves/Stalwart.cfg:33
@@ -919,9 +900,7 @@ msgstr "Elfenfee"
 #. [attack]: type=pierce
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:30
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:31
-#: data/core/units/dunefolk/Cataphract.cfg:23
-#: data/core/units/dunefolk/Piercer.cfg:26
-#: data/core/units/dunefolk/Sunderer.cfg:21
+#: data/core/units/dunefolk/Cataphract.cfg:37
 #: data/core/units/humans/Horse_Grand_Knight.cfg:33
 #: data/core/units/humans/Horse_Knight.cfg:32
 #: data/core/units/humans/Horse_Lancer.cfg:23
@@ -931,8 +910,8 @@ msgstr "lans"
 
 #. [attack]: type=impact
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:40
-#: data/core/units/dunefolk/Blademaster.cfg:38
-#: data/core/units/dunefolk/Swordsman.cfg:37
+#: data/core/units/dunefolk/Spearguard.cfg:38
+#: data/core/units/dunefolk/Spearmaster.cfg:41
 msgid "shield bash"
 msgstr "schildbeuk"
 
@@ -964,6 +943,8 @@ msgstr "beuk"
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Pathfinder.cfg:41
+#: data/core/units/dunefolk/Harrier.cfg:39
+#: data/core/units/dunefolk/Strider.cfg:39
 msgid "bolas"
 msgstr "boleadoras"
 
@@ -1539,25 +1520,52 @@ msgstr ""
 "eeuwen doen, gehuld in leder met keramische platen met het traditionele "
 "strijdstaal gemonteerd op de rug van elke hand."
 
+#. [unit_type]: id=Dune Alchemist, race=dunefolk
+#: data/core/units/dunefolk/Alchemist.cfg:4
+#, fuzzy
+#| msgid "Dune Blademaster"
+msgid "Dune Alchemist"
+msgstr "Duinse Zwaardmeester"
+
+#. [unit_type]: id=Dune Alchemist, race=dunefolk
+#: data/core/units/dunefolk/Alchemist.cfg:21
+msgid ""
+"To the Dunefolk, alchemy is less a form of philosophy or science, and more "
+"of an extension of the phytology that is practiced by herbalists. However, "
+"in contrast to their brethrens’ focus on herbs for medicine and healing, "
+"Alchemists utilize various plants and naturally occurring venoms to concoct "
+"potent poisons. Though useful for weakening tough enemies, the Alchemists’ "
+"art is viewed warily by other Dunefolk, for it is often employed for "
+"espionage and assassination. Nevertheless, almost every caravan will contain "
+"at least one Alchemist for precisely this reason — the political advantage "
+"from the threat of nearly untraceable poisons is not to be underestimated."
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/dunefolk/Alchemist.cfg:40
+msgid "blowgun"
+msgstr ""
+
 #. [unit_type]: id=Dune Apothecary, race=dunefolk
 #: data/core/units/dunefolk/Apothecary.cfg:4
 msgid "Dune Apothecary"
 msgstr "Duinapotheker"
 
 #. [unit_type]: id=Dune Apothecary, race=dunefolk
-#: data/core/units/dunefolk/Apothecary.cfg:22
+#: data/core/units/dunefolk/Apothecary.cfg:21
 msgid ""
-"Some men excel at medicine the way others do at strength of arms, and the "
-"Apothecaries are those whose knowledge is without peer outside of the "
-"Dunefolk. Their remedies can not only heal wounds but remove infection and "
-"poison as well, often to the disbelief of the injured. Hardened by years of "
-"travels, many are able to treat themselves."
+"Even in the absence of battle, infection and injury are common plights in "
+"the harsh desert sands. Dunefolk healers, in particular, require vast "
+"knowledge of herbs and medicine in comparison with healers of other races; "
+"the lack of magic combined with the meager plantlife in the desert results "
+"in great difficulty in treating the plethora of ailments and poisons that "
+"plague the dune peoples. Apothecaries are typically more knowledgeable and "
+"well-traveled compared to their less experienced brethren, but the title is "
+"usually applied to those who undertake the complex task of tending to "
+"valuable medicinal plants. The Dunefolk have no means of healing without the "
+"necessary materials, and thus Apothecaries possess a special role in "
+"supporting the remedial arts of their kind."
 msgstr ""
-"Sommigen blinken uit in het maken van medicijnen zoals anderen uitblinken "
-"tijdens een gevecht. Het Duinvolk heeft de beste genezers van alle Rassen. "
-"Zij kunnen niet alleen wonden helen maar ook infecties en vergiftiging "
-"genezen, zelfs de mensen die genezen zijn geloven het niet. Aangesterkt door "
-"vele jaren reizen kunnen veel Duinapothekers ook zichzelf verzorgen."
 
 #. [unit_type]: id=Dune Blademaster, race=dunefolk
 #: data/core/units/dunefolk/Blademaster.cfg:4
@@ -1565,19 +1573,39 @@ msgid "Dune Blademaster"
 msgstr "Duinse Zwaardmeester"
 
 #. [unit_type]: id=Dune Blademaster, race=dunefolk
-#: data/core/units/dunefolk/Blademaster.cfg:20
+#: data/core/units/dunefolk/Blademaster.cfg:22
 msgid ""
-"Distinguished for their bravery and skill, Blademasters are the leaders "
-"among the Dunefolk's ranks. Their exploits are well known among their "
-"cohorts, inspiring soldiers to fight for their cause. Despite this, they are "
-"often found leading from the front, taking down their foes with sword and "
-"shield."
+"Dunefolk swordsmen are known for playing a game called the ‘Laeqad "
+"Challenge’, in which Laeqads—thick, sturdy reeds that are several sword-"
+"lengths in height—are hurled at them like javelins and they attempt to split "
+"the reed length-wise in midair. The trick to the game is that the reed is "
+"not circularly symmetric: most of the stalk is quite hard, but there is a "
+"thin line across the cross section that is softer and easier to cut. For "
+"even an experienced swordsman, splitting an entire Laeqad down its length "
+"would be an extraordinary achievement; most would be hard-pressed to cut "
+"even a single sword length, given the precise aim required to line up the "
+"blade with the reed’s soft spot. For a Blademaster, however, splitting "
+"several Laeqads in quick succession is quite ordinary, and some are even "
+"able to cut through two or three reeds simultaneously with a single sword "
+"swish.\n"
+"\n"
+"This game has more practical implications in real battles. No matter how "
+"elusive or well-armored the fighter, against a Blademaster, it often seems "
+"like the defense does not even exist. These warriors are undoubtedly the "
+"masters of offensive swordsmanship and are capable of subverting even the "
+"strongest fortifications."
 msgstr ""
-"De Zwaardmeesters van het Duinvolk staan bekend om hun moed en vaardigheid, "
-"zij zijn de leiders van de Duinse strijdkracht. Hun heldendaden zijn goed "
-"bekend bij hun medesoldaten, deze worden erdoor geïnspireerd om mee te "
-"vechten. Desondanks worden ze vaak aangetroffen in de frontlinie, waarbij ze "
-"hun vijanden neerhalen met zwaard en schild."
+
+#. [attack]: type=blade
+#: data/core/units/dunefolk/Blademaster.cfg:30
+#: data/core/units/dunefolk/Blademaster.cfg:39
+#: data/core/units/dunefolk/Captain.cfg:31
+#: data/core/units/dunefolk/Soldier.cfg:22
+#: data/core/units/dunefolk/Swordsman.cfg:22
+#: data/core/units/dunefolk/Swordsman.cfg:31
+#: data/core/units/dunefolk/Warmaster.cfg:32
+msgid "scimitar"
+msgstr "kromzwaard"
 
 #. [unit_type]: id=Dune Burner, race=dunefolk
 #: data/core/units/dunefolk/Burner.cfg:4
@@ -1585,32 +1613,50 @@ msgid "Dune Burner"
 msgstr "Duinbrander"
 
 #. [unit_type]: id=Dune Burner, race=dunefolk
-#: data/core/units/dunefolk/Burner.cfg:23
+#: data/core/units/dunefolk/Burner.cfg:17
 msgid ""
-"Utilizing various resources found in the Dunefolk domain, a highly flammable "
-"substance can be made. The Burners are those charged with making and "
-"carrying this dangerous mixture into battle. While the use of fire in "
-"warfare is not a novel concept, the effectiveness of their work is."
+"An oft forgotten hazard of traversing the desert is the freezing cold that "
+"descends upon the sands during the night. To combat this, the Dunefolk "
+"typically make use of the highly flammable sap of the Sanbaar tree, which "
+"burns slowly and gently in small quantities. In larger amounts, however, "
+"Sanbaar sap is very nearly combustible and burns extremely violently. The "
+"Dunefolk quickly realized the applicability of such a substance to warfare "
+"and regularly employ fire spouting weapons to sow chaos among their enemies."
 msgstr ""
-"Met behulp van verschillende middelen die in het Duinvolk-gebied worden "
-"aangetroffen kan een licht ontvlambare stof worden gemaakt. De Branders zijn "
-"diegene die belast zijn met het maken en dragen van dit gevaarlijke mengsel "
-"in de strijd. Hoewel het gebruik van vuur in een veldtocht geen nieuw "
-"concept is, is de effectiviteit van hun werk dat wel."
-
-#. [attack]: type=fire
-#: data/core/units/dunefolk/Burner.cfg:28
-#: data/core/units/dunefolk/Firetrooper.cfg:29
-#: data/core/units/dunefolk/Scorcher.cfg:28
-msgid "naphtha attack"
-msgstr "nafta-aanval"
 
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Burner.cfg:37
 #: data/core/units/dunefolk/Firetrooper.cfg:38
-#: data/core/units/dunefolk/Scorcher.cfg:37
-msgid "fire arrow"
-msgstr "brandende pijl"
+#: data/core/units/dunefolk/Scorcher.cfg:38
+msgid "flamethrower"
+msgstr ""
+
+#. [female]
+#: data/core/units/dunefolk/Burner.cfg:89
+#, fuzzy
+#| msgid "Dune Burner"
+msgid "female^Dune Burner"
+msgstr "Duinbrander"
+
+#. [unit_type]: id=Dune Captain, race=dunefolk
+#: data/core/units/dunefolk/Captain.cfg:4
+#, fuzzy
+#| msgid "Dune Cataphract"
+msgid "Dune Captain"
+msgstr "Duinkatafrakt"
+
+#. [unit_type]: id=Dune Captain, race=dunefolk
+#: data/core/units/dunefolk/Captain.cfg:25
+msgid ""
+"Traditionally hailing from noble or military families, Dune Captains are the "
+"core of any Dunefolk platoon. Usually a position filled based on heritage "
+"rather than merit, Captains are those who are often relatively weak with the "
+"blade, but still reasonably trained in tactics. Unlike other leaders, the "
+"Captains’ abilities lie largely in directing their troops to strategically "
+"advantageous positions rather than directly raising their morale. The "
+"presence of such a commander is rarely inspiring for most Soldiers, but they "
+"are still quick to follow the expert tactical direction of their officers."
+msgstr ""
 
 #. [unit_type]: id=Dune Cataphract, race=dunefolk
 #: data/core/units/dunefolk/Cataphract.cfg:4
@@ -1618,48 +1664,31 @@ msgid "Dune Cataphract"
 msgstr "Duinkatafrakt"
 
 #. [unit_type]: id=Dune Cataphract, race=dunefolk
-#: data/core/units/dunefolk/Cataphract.cfg:18
+#: data/core/units/dunefolk/Cataphract.cfg:17
 msgid ""
-"The Cataphract are eminent horsemen, amassing titles and accolades that are "
-"as distinguishing for them as the scrollwork on their armor. Having honed "
-"their skill with a lance in years of battle, the Cataphract are an "
-"unstoppable force of nature. Fleeing enemies swiftly discover that hills do "
-"not deter these riders in the slightest, and the displaced air of a "
+"Cataphracts are eminent horsemen, riders of mounts that are possessed less "
+"of speed or endurance, but tremendous power instead. Bearing a lance along "
+"with their signature maces, these warriors are most often the secondary "
+"strike force after a primary assault. After enemy forces are already "
+"occupied and weakened by a flank of swordsmen, a common and terrifying sight "
+"is a group of Cataphracts lining up, lances pitched at the ready. A gap is "
+"made amongst the Dunefolk ranks, and in a single charge, these mighty "
+"horsemen pierce straight through enemy formations, dealing a lethal blow in "
+"a single stroke. Those who try to flee swiftly discover that neither sand "
+"nor hills deter these riders in the slightest, and the displaced air of a "
 "descending mace is the last sound they hear."
 msgstr ""
-"De Katafrakten zijn uitstekende ruiters, de titels en onderscheidingen die "
-"ze hebben verzameld zijn net zo opvallend als het krulwerk op hun "
-"wapenuitrusting. a jarenlange verbetering van hun vaardigheid met de lans, "
-"is de Katafrakt een kracht die niet te stoppen is. Vluchtende vijanden "
-"ontdekken snel dat deze rijders niet afgeschrikt worden door de duinen, en "
-"het geluid van verplaatste lucht door een dalende knuppel is het laatste "
-"geluid dat ze horen."
-
-#. [unit_type]: id=Elder Falcon, race=falcon
-#: data/core/units/dunefolk/Elder_Falcon.cfg:4
-msgid "Elder Falcon"
-msgstr "Oude Valk"
-
-#. [unit_type]: id=Elder Falcon, race=falcon
-#: data/core/units/dunefolk/Elder_Falcon.cfg:18
-msgid ""
-"Elder Falcons bear the telltale scars of veteran warriors from protecting "
-"their masters, their bodies proof of repeated dives into a swirling melee. "
-"Stronger and faster than their younger kin, they are rumored to hit with "
-"enough force to remove an enemy's head. "
-msgstr ""
-"Oude Valken dragen de veel betekende littekens van ervaren vechters en het "
-"jarenlange beschermen van hun meesters. Door de vorm van hun lichaam kunnen "
-"ze snel en herhaaldelijk duiken in een wervelend gevecht. Ze zijn sterker en "
-"sneller dan hun jongere soortgenoten en er gaan zelfs verhalen rond dat ze "
-"genoeg kracht hebben om het hoofd van een vijand te verwijderen. "
 
 #. [attack]: type=pierce
-#: data/core/units/dunefolk/Elder_Falcon.cfg:35
-#: data/core/units/dunefolk/Falcon.cfg:34 data/core/units/monsters/Roc.cfg:34
-#: data/core/units/monsters/Young_Roc.cfg:34
-msgid "beak"
-msgstr "snavel"
+#: data/core/units/dunefolk/Cataphract.cfg:49
+#: data/core/units/dunefolk/Explorer.cfg:39
+#: data/core/units/dunefolk/Ranger.cfg:48 data/core/units/dunefolk/Rider.cfg:31
+#: data/core/units/dunefolk/Rover.cfg:36
+#: data/core/units/dunefolk/Sunderer.cfg:36
+#: data/core/units/dunefolk/Swiftrider.cfg:31
+#: data/core/units/dunefolk/Windrider.cfg:36
+msgid "composite bow"
+msgstr "hoornboog"
 
 #. [unit_type]: id=Dune Explorer, race=dunefolk
 #: data/core/units/dunefolk/Explorer.cfg:4
@@ -1669,45 +1698,14 @@ msgstr "Duinverkenner"
 #. [unit_type]: id=Dune Explorer, race=dunefolk
 #: data/core/units/dunefolk/Explorer.cfg:16
 msgid ""
-"Explorers are often utilized as heavy scouts, no longer just probing the "
-"enemy but conducting raids on the supply lines or eliminating patrols. Often "
-"away from the main body of the army for long periods of time, Explorers have "
-"no issue pilfering these supplies, and so they tend to be more well-equipped "
-"than most."
+"A slow-moving caravan out in the open desert is a prime target for bandits "
+"or marauders. In order to protect themselves, the Dunefolk employ Explorers "
+"to scout and repel potential threats. In doing so, these fleet fighters not "
+"only protect their vulnerable caravans, but pilfer the supplies of supposed "
+"raiders for themselves. When employed for warfare, Explorers no longer act "
+"only as scouts for probing enemies, but are skilled enough to be effective "
+"flankers or potent shock attackers."
 msgstr ""
-"Verkenners worden niet alleen gebruikt als verkenners, ook voeren ze "
-"overvallen op de bevoorradingslijnen uit en elimineren ze patrouilles. Vaak "
-"zijn ze voor langere tijd weg van de strijdkracht maar ontdekkers hebben er "
-"geen moeite mee vijanden te beroven, hierdoor zijn ze over het algemeen "
-"beter uitgerust dan de meesten."
-
-#. [attack]: type=pierce
-#: data/core/units/dunefolk/Explorer.cfg:32
-#: data/core/units/dunefolk/Ranger.cfg:33 data/core/units/dunefolk/Rider.cfg:30
-#: data/core/units/dunefolk/Rover.cfg:32
-#: data/core/units/dunefolk/Swiftrider.cfg:30
-#: data/core/units/dunefolk/Windrider.cfg:31
-msgid "composite bow"
-msgstr "hoornboog"
-
-#. [unit_type]: id=Falcon, race=falcon
-#: data/core/units/dunefolk/Falcon.cfg:4
-msgid "Falcon"
-msgstr "Valk"
-
-#. [unit_type]: id=Falcon, race=falcon
-#: data/core/units/dunefolk/Falcon.cfg:17
-msgid ""
-"Seen as status symbols of the nobles, falcons are precious possessions "
-"normally used for sport. The same techniques are employed to rend and tear "
-"foes on the battlefield, and their great speed is a boon to scouting out the "
-"land."
-msgstr ""
-"Valken worden gezien als statussymbool door de adel en zijn kostbare "
-"bezittingen die normaal worden gebruikt voor de sport. Dezelfde technieken "
-"die in de sport gebruikt worden, kunnen worden gebruikt om vijanden op het "
-"slagveld in stukken te scheuren, en hun grote snelheid is een groot voordeel "
-"die gebruikt kan worden om het land te verkennen."
 
 #. [unit_type]: id=Dune Firetrooper, race=dunefolk
 #: data/core/units/dunefolk/Firetrooper.cfg:4
@@ -1715,50 +1713,48 @@ msgid "Dune Firetrooper"
 msgstr "Duinse Vlammenwerper"
 
 #. [unit_type]: id=Dune Firetrooper, race=dunefolk
-#: data/core/units/dunefolk/Firetrooper.cfg:24
+#: data/core/units/dunefolk/Firetrooper.cfg:18
 msgid ""
-"Scorchers who have shut out the world for their experiments are given the "
-"title of Firetrooper, as both a sign of respect and of fear. No longer "
-"cognizant of the value of life, Firetroopers are caught up in the power of "
-"their caged fire and likely to test their latest naphtha jar at the first "
-"opportunity."
+"By refining Sanbaar sap through a very specific distillation process, it "
+"becomes possible to produce exceedingly flammable naphtha which burns even "
+"more violently than the sap it was derived from. Such a substance is, of "
+"course, extremely dangerous due to its highly combustible nature. Even "
+"Scorchers will shy away from its use since the potential for self injury is "
+"very high, but a few daring souls choose to use pure naphtha as their weapon "
+"of choice. The resulting destruction is more than enough to justify the use "
+"of such a hazardous chemical."
 msgstr ""
-"Verbranders die de wereld hebben buitengesloten in ruil voor hun "
-"experimenten krijgen de rang Vlammenwerper, als een teken van respect en "
-"angst. Niet langer op de hoogte van de waarde van het leven, worden "
-"Vlammenwerpers gevangen in de kracht van hun opgesloten vuur en zullen "
-"waarschijnlijk hun nieuwste nafta-pot testen bij de eerste gelegenheid."
+
+#. [female]
+#: data/core/units/dunefolk/Firetrooper.cfg:91
+#, fuzzy
+#| msgid "Dune Firetrooper"
+msgid "female^Dune Firetrooper"
+msgstr "Duinse Vlammenwerper"
 
 #. [unit_type]: id=Dune Harrier, race=dunefolk
 #: data/core/units/dunefolk/Harrier.cfg:4
-msgid "Dune Harrier"
+#, fuzzy
+#| msgid "Dune Harrier"
+msgid "female^Dune Harrier"
 msgstr "Duinheld"
 
 #. [unit_type]: id=Dune Harrier, race=dunefolk
-#: data/core/units/dunefolk/Harrier.cfg:20
+#: data/core/units/dunefolk/Harrier.cfg:21
 msgid ""
-"Harriers hold themselves to a higher standard than the ranks of the "
-"Skirmishers from which they ascended. Not content to merely draw the enemy "
-"out, they combine their speed with an aggression that sends the Harriers "
-"dancing through the ranks of the enemy, swords ripping and tearing at those "
-"around them. "
+"While Dune Harriers can fulfill a similar role to Striders in hampering "
+"enemy forces, their name is actually derived from the harrier falcons they "
+"employ to maintain contact with the bulk of a Dunefolk army. Most commonly "
+"found operating behind enemy lines, Harriers are usually tasked with "
+"providing useful intelligence on enemy troop movements. However, when the "
+"time is right, these agile warriors gather together and strike at the rear "
+"of weakened supply lines or flanks. A rain of bolas followed by a piercing "
+"thrust of spears is often enough to severely cripple the target, allowing "
+"the main Dunefolk force to close in and finish the job. The choice to stand "
+"and fight is not an easy one either: Harriers are considerably skilled in "
+"wielding their spears, and their falcons can provide an extra attack when "
+"absolutely necessary."
 msgstr ""
-"Helden houden zichzelf aan een hogere standaard dan de rangen van de "
-"strijders van waaruit ze zijn gepromoveerd. Omdat ze geen genoegen nemen met "
-"het uitlokken van de vijand combineren ze hun snelheid en agressiviteit om "
-"door de rijen vijanden te dansen, zwaaiend met hun zwaarden die de mensen "
-"rondom hen verscheren. "
-
-#. [attack]: type=blade
-#: data/core/units/dunefolk/Harrier.cfg:28
-#: data/core/units/dunefolk/Skirmisher.cfg:27
-#: data/core/units/humans/Horse_Grand_Knight.cfg:24
-#: data/core/units/humans/Loyalist_Cavalier.cfg:37
-#: data/core/units/humans/Loyalist_General.cfg:43
-#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:38
-#: data/core/units/humans/Loyalist_Royal_Guard.cfg:27
-msgid "longsword"
-msgstr "lang zwaard"
 
 #. [unit_type]: id=Dune Herbalist, race=dunefolk
 #: data/core/units/dunefolk/Herbalist.cfg:4
@@ -1766,24 +1762,46 @@ msgid "Dune Herbalist"
 msgstr "Duinse Kruidendokter"
 
 #. [unit_type]: id=Dune Herbalist, race=dunefolk
-#: data/core/units/dunefolk/Herbalist.cfg:20
+#: data/core/units/dunefolk/Herbalist.cfg:21
 msgid ""
-"Herbalists are learned individuals who have given up their urban life in "
-"order to assist the Dunefolk armies in their travels. Their motivations are "
-"many; some look to it as an adventure or as a steady source of pay, while "
-"others feel it to be a duty to their society. Regardless, Herbalists are "
-"highly respected by all. They are trained with the advanced medical "
-"techniques and possess a potent clutch of medicines and herbs, which allows "
-"them to quickly heal even the most gravely wounded allies."
+"As those responsible for caring for the ill and wounded among the Dunefolk, "
+"Herbalists possess both the medicinal skills to heal a variety of "
+"afflictions and the skill to seek and gather restorative herbs. Their "
+"motivations are many; some look to it as an adventure or as a steady source "
+"of pay while others feel it to be a duty to their society. No matter the "
+"reason, Herbalists are an invaluable part of Dunefolk society and are "
+"especially useful for their ability to administer quick treatments in the "
+"midst of battle or while traveling in the desert.\n"
+"\n"
+"Even among the nomadic Dunefolk, healers journey a great deal in search of "
+"the various flora and fauna that supply their work. Hardened by their "
+"travels, many of these men are even able to heal themselves."
 msgstr ""
-"Kruidendokters zijn geleerde personen die hun stadsleven hebben opgegeven om "
-"de Duinvolk-strijdkrachten bij te staan tijdens hun reizen. Hier zijn "
-"verschillende motivaties voor; sommigen beschouwen het als een avontuur of "
-"een vast inkomen, terwijl anderen het als een plicht voor hun samenleving "
-"beschouwen. Hoe dan ook, Kruidendokters zijn zeer gerespecteerd. Ze worden "
-"getraind met de geavanceerde medische technieken en beschikken over een "
-"krachtige combinatie van medicijnen en kruiden, waardoor ze zelfs de meest "
-"ernstig gewonde bondgenoten snel kunnen genezen."
+
+#. [unit_type]: id=Dune Luminary, race=dunefolk
+#: data/core/units/dunefolk/Luminary.cfg:4
+#, fuzzy
+#| msgid "Dune Burner"
+msgid "Dune Luminary"
+msgstr "Duinbrander"
+
+#. [unit_type]: id=Dune Luminary, race=dunefolk
+#: data/core/units/dunefolk/Luminary.cfg:21
+msgid ""
+"On the surface, it is not entirely clear what distinguishes a Luminary from "
+"other healers among the Dunefolk. Certainly, a Luminary may be marginally "
+"more knowledgeable, well-traveled, or skilled in combat compared to "
+"Herbalists or Apothecaries, but the difference is usually modest at best. "
+"Nevertheless, ‘Luminary’ is a formal title granted to the highest order of "
+"Dunefolk healers and grants these men both the greatest esteem and the "
+"greatest envy.\n"
+"\n"
+"There is some speculation that a secret order exists among the Luminaries. "
+"These so called ‘Eminents’ hoard a great deal of forbidden knowledge and "
+"advise many Dunefolk leaders from the shadows. Such a thing has never been "
+"proven, but the fact remains that some Luminaries seem to hold much more "
+"influence than their abilities should afford."
+msgstr ""
 
 #. [unit_type]: id=Dune Marauder, race=dunefolk
 #: data/core/units/dunefolk/Marauder.cfg:4
@@ -1791,43 +1809,65 @@ msgid "Dune Marauder"
 msgstr "Duinplunderaar"
 
 #. [unit_type]: id=Dune Marauder, race=dunefolk
-#: data/core/units/dunefolk/Marauder.cfg:26
+#: data/core/units/dunefolk/Marauder.cfg:17
 msgid ""
-"Those Raiders who prove to be particularly skilled are formed into units of "
-"Marauders, which are often used to raid enemy depots and towns for supplies. "
-"This greater autonomy often means that these horsemen are gone for weeks at "
-"a time, returning to camp only for supplies and to pass on news of their "
-"exploits."
+"Some find themselves well suited to the life of a Raider and may even form "
+"their own clans with like-minded individuals. Ever roaming the deserts for "
+"unwary travelers or vulnerable caravans, these horsemen make their "
+"livelihood off of scavenging and pilfering. Having no particular specialty, "
+"Marauders are neither the strongest warriors, nor the most dexterous "
+"archers; nevertheless, they are among the most dangerous enemies out in the "
+"desert due to their sheer maneuverability. A coordinated Marauder attack can "
+"wipe out even medium-sized camps before any response is possible, and "
+"against stronger foes, guerrilla tactics may allow them to prevail where "
+"brute force does not. For this reason, they are sometimes hired by small "
+"armies or wealthier caravans as a deterrent to unwanted raids."
 msgstr ""
-"De Stropers die bijzonder bekwaam blijken te zijn, worden benoemd tot "
-"Plunderaars, die vaak worden ingezet om vijandige opslaglocaties en steden "
-"aan te vallen om de strijdmacht van het Zandvolk van bevoorrading te "
-"voorzien. Dit betekend vaak dat deze Ruiters weken achter elkaar weg zijn en "
-"alleen terugkeren naar het kamp voor het brengen van spullen en het "
-"doorgeven van nieuws over hun daden."
 
-#. [unit_type]: id=Dune Piercer, race=dunefolk
-#: data/core/units/dunefolk/Piercer.cfg:4
-msgid "Dune Piercer"
-msgstr "Duinsteker"
+#. [attack]: type=fire
+#: data/core/units/dunefolk/Marauder.cfg:31
+#: data/core/units/dunefolk/Raider.cfg:29
+#: data/core/units/goblins/Pillager.cfg:41
+msgid "torch"
+msgstr "fakkel"
 
-#. [unit_type]: id=Dune Piercer, race=dunefolk
-#: data/core/units/dunefolk/Piercer.cfg:21
+#. [unit_type]: id=Dune Paragon, race=dunefolk
+#: data/core/units/dunefolk/Paragon.cfg:4
+#, fuzzy
+#| msgid "Dune Marauder"
+msgid "Dune Paragon"
+msgstr "Duinplunderaar"
+
+#. [unit_type]: id=Dune Paragon, race=dunefolk
+#: data/core/units/dunefolk/Paragon.cfg:18
 msgid ""
-"The Piercer understand the psychological impact of a charging horse, and "
-"reinforce this by cladding themselves in heavy armor. Majestic at rest, a "
-"Piercer at the charge with lance in hand is often impetus enough to break "
-"men. On the rare occurrences that their charge fails to rout their foe, the "
-"Piercer ride into the resulting melee with their maces in hand, trusting "
-"their armor to keep them safe."
+"In many Dunefolk city-states, the process for selecting the next generation "
+"of leaders is a long process that takes place over many years. In each "
+"generation, a few particularly talented youths among the nobility are "
+"trained separately from their peers. Eat, sleep, and train, these warriors "
+"learn to live and breathe swordsmanship as their core identity more than "
+"even an extension of themselves. From adolescence, ten years of intense "
+"training paves the path to the final test, a series of duels to the death "
+"between pairs of these fighters. When the dust settles and the process is "
+"ended, eight are left remaining. These men are granted the title Kal, or "
+"collectively, Kalai.\n"
+"\n"
+"Among the Dunefolk, while great leaders are required to have mastered the "
+"blade, the ruling caste is required to know far more than mere swordplay. "
+"Gruelling training is usually followed by either several years of nomadic "
+"roving through the deserts or dedication of the mind to the sciences, the "
+"purpose of which is to find a self-motivated path toward enlightened wisdom. "
+"No matter the case, at the end of the second training period, the remaining "
+"Kalai return and demonstrate their knowledge to the elders of the current "
+"ruling caste. Those who are found worthy are then called Paragon, warriors "
+"of great strength and acuity who may then be considered as candidates to "
+"lead the next generation of Dunefolk."
 msgstr ""
-"De Steker begrijpt de psychologische impact van een aanvallend paard en "
-"versterkt dit door zware bepantsering aan te trekken. Ze zien er majestueus "
-"uit in stilstand, maar wanneer ze aanvallen is dit vaak genoeg stimulans om "
-"mannen te breken. In de zeldzame gevallen dat het paard niet zorgt voor een "
-"overwinning in de strijd kan een Steker ook het gevecht op de korte afstand "
-"winnen met hun knuppels, vertrouwend op hun wapenuitrusting om hen te "
-"beschermen."
+
+#. [attack]: type=impact
+#: data/core/units/dunefolk/Paragon.cfg:38
+msgid "pommel strike"
+msgstr "handvatslag"
 
 #. [unit_type]: id=Dune Raider, race=dunefolk
 #: data/core/units/dunefolk/Raider.cfg:4
@@ -1835,21 +1875,17 @@ msgid "Dune Raider"
 msgstr "Duinstroper"
 
 #. [unit_type]: id=Dune Raider, race=dunefolk
-#: data/core/units/dunefolk/Raider.cfg:22
+#: data/core/units/dunefolk/Raider.cfg:16
 msgid ""
-"Those horsemen who are not skilled enough to join the ranks of the Sunderers "
-"or quick enough with a bow for the Swiftriders are instead placed with the "
-"Raiders. Far from being a sign of failure, the Raiders were created as a "
-"mounted counterpart to the Explorers, supporting the foot troops with mace "
-"or bow as needed. Raiders are often used to draw enemies into a position "
-"where they will be surrounded and crushed by Sunderers."
+"Though rarely found in organized armies, Raiders are a staple among the "
+"nomadic Dunefolk, who regularly ambush rival caravans and camps at night. In "
+"these scenarios, raw power is of little concern. The greatest importance is "
+"placed on speed—striking quickly, spreading as much chaos with their torches "
+"in the shortest time possible, allows these riders to get in and out of the "
+"blitz without any fear of counterattack. Raiders are the fastest of the "
+"Dunefolk, capable of outpacing nearly anything they might encounter in the "
+"sandy deserts."
 msgstr ""
-"De Ruiters die niet bekwaam genoeg zijn om zich bij de Verdelers of "
-"Snelrijders te voegen worden in plaats daarvan bij de Stropers geplaatst. "
-"Verre van een mislukking, werden de Stropers als tegenhangers van de "
-"Verkenners gezien, ze kunnen de voettroepen ondersteunen met een boog indien "
-"nodig. Stropers worden vaak gebruikt om vijanden in een positie te brengen "
-"waarin ze worden omringd en verpletterd door Verdelers."
 
 #. [unit_type]: id=Dune Ranger, race=dunefolk
 #: data/core/units/dunefolk/Ranger.cfg:4
@@ -1859,20 +1895,36 @@ msgstr "Duincommando"
 #. [unit_type]: id=Dune Ranger, race=dunefolk
 #: data/core/units/dunefolk/Ranger.cfg:17
 msgid ""
-"Rangers are the elite of the Explorers, engaging in constant hit and run "
-"attacks against an enemy army. Nimble as a goat and strong as a ram, they "
-"prefer to coordinate multiple attacks at the same time, sending foes running "
-"from their arrows only to be cut down by their axes. Given their penchant "
-"for taking on only the most daring missions, Rangers are often heroes to the "
-"common troopers, an image they do not try to dissuade."
+"From the journal of Balah, the Dune Watcher:\n"
+"\n"
+"“... Today was the sixth day. Six days of pursuit through the desert without "
+"sleep, without rest... but, I require neither. The Bloodeye Roc has pilfered "
+"too many of my herd for its ravenous feasting. I must be rid of it before "
+"the caravan starves. I have tracked it thus far, and no matter how far it "
+"flees, I shall follow.\n"
+"\n"
+"... blast it! The creature was only a couple hundred paces away, but the sun "
+"was in my eyes! I managed to land a few arrows on the foul thing, but only "
+"enough to slow it. Still, it seems to be tiring faster than I. With any "
+"luck, I will catch it before it can reach the mountains.\n"
+"\n"
+"... Day eleven. I cornered the creature after it landed on the hillside, but "
+"there were three more that I was not accounting for. Rocs are ferocious "
+"creatures in close quarters; fighting one is already no simple task, but "
+"four at once? I am lucky I brought my second axe, otherwise I would have "
+"sustained severe injury during that battle. As it is, I am waiting for the "
+"gauze to set on my leg before I return to slay the final two. Perhaps then "
+"it will finally be time to eat and get some rest.\n"
+"\n"
+"... it comes as a surprise to even me that I traveled nearly halfway across "
+"the Northern Dunes in my twenty-one day expedition. It would take the "
+"caravan nearly three months to make that trip, but I do suppose the "
+"circumstances around my joruney were somewhat extenuating. On the bright "
+"side, I was able to procure some salted roc meat along the way, which should "
+"make for a fine treat for the children. It will also be nice to see some of "
+"the other Rangers again. My tale might not be that impressive to them, but "
+"at least it is an improvement over my previous encounter with the wyvern...”"
 msgstr ""
-"De Commando's zijn de elite onder de Verkenners, ze voeren voortdurend "
-"aanvallen uit tegen de vijandelijke strijdmacht. Behendig als een geit en "
-"sterk als een ram, ze geven de voorkeur om meerdere aanvallen tegelijkertijd "
-"uit te voeren, waardoor ze vijanden weg laten rennen van hun pijlen om "
-"neergeslagen te worden door hun bijlen. Ze nemen alleen gedurfde missies aan "
-"en dat maakt een Commando de held van de strijdkrachten, een beeld dat ze "
-"graag in stand houden."
 
 #. [unit_type]: id=Dune Rider, race=dunefolk
 #: data/core/units/dunefolk/Rider.cfg:4
@@ -1880,18 +1932,18 @@ msgid "Dune Rider"
 msgstr "Duinruiter"
 
 #. [unit_type]: id=Dune Rider, race=dunefolk
-#: data/core/units/dunefolk/Rider.cfg:17
+#: data/core/units/dunefolk/Rider.cfg:16
 msgid ""
-"Riders are excellent horsemen, able to shoot from horseback better than most "
-"men can manage from foot. Disdaining the use of heavy armor, Riders use "
-"their superior speed and agility to circle and harass their foes, whittling "
-"down their numbers with relentless arrows."
+"The Dunefolk are prominent horse breeders who raise many different varieties "
+"of mounts to fulfill various purposes. Those who are used for hard labor are "
+"bred for power, while those for journeys or caravans are bred for endurance. "
+"For warfare, a mix of traits is usually best, though the ability to easily "
+"and rapidly traverse sand is of utmost importance. The riders of these "
+"horses primarily function as scouts and messengers, or occasionally as "
+"supporting forces for weakened lines. The crucial trait of maneuverability "
+"is what allows these horsemen to be so effective and versatile out on the "
+"rolling dunes."
 msgstr ""
-"Ruiters zijn uitstekend met het paard, ze kunnen beter schieten met pijl en "
-"boog vanaf de rug van een paard dan de meeste mensen kunnen te voet. Door "
-"het gebruik van zware bepantsering te weigeren, kunnen de Ruiters hun "
-"superieure snelheid en behendigheid gebruiken om vijanden te omcirkelen en "
-"aan te vallen, waarbij ze ontelbare meedogenloze pijlen afschieten."
 
 #. [unit_type]: id=Dune Rover, race=dunefolk
 #: data/core/units/dunefolk/Rover.cfg:4
@@ -1900,13 +1952,23 @@ msgstr "Duinrover"
 
 #. [unit_type]: id=Dune Rover, race=dunefolk
 #: data/core/units/dunefolk/Rover.cfg:16
+#, fuzzy
+#| msgid ""
+#| "Rovers in many ways represent the ideal Dunefolk unit; flexible, mobile, "
+#| "equally effective in defense and offense as well as in ranged or close "
+#| "combat. They are most comfortable operating in terrain and environments "
+#| "common to them; the deserts and hills of their southern lands. Moreover "
+#| "they fight best at dawn or dusk, corresponding to the time when desert "
+#| "temperatures are the most reasonable."
 msgid ""
-"Rovers in many ways represent the ideal Dunefolk unit; flexible, mobile, "
-"equally effective in defense and offense as well as in ranged or close "
-"combat. They are most comfortable operating in terrain and environments "
-"common to them; the deserts and hills of their southern lands. Moreover they "
-"fight best at dawn or dusk, corresponding to the time when desert "
-"temperatures are the most reasonable."
+"Originating from the nomadic wanderers of the open deserts, Rovers, in many "
+"ways, represent the ideal Dunefolk soldier: flexible, mobile, equally "
+"effective in defense and offense as well as in ranged or close combat. They "
+"are hardy inhabitants of the deserts and hills that they call home and "
+"experienced hunters and trackers. While lacking training as formal soldiers, "
+"the skills Rovers employ for survival in the desert translate readily to "
+"warfare. Their unique trait of fighting best at dawn or dusk corresponds "
+"with the time when desert temperatures are the most habitable."
 msgstr ""
 "Rovers vertegenwoordigen in veel opzichten de ideale eenheid van het "
 "Duinvolk; flexibel, mobiel en even effectief in het gevecht op afstand als "
@@ -1917,42 +1979,49 @@ msgstr ""
 "woestijn het meest redelijk zijn."
 
 #. [unit_type]: id=Dune Scorcher, race=dunefolk
-#: data/core/units/dunefolk/Scorcher.cfg:4
+#: data/core/units/dunefolk/Scorcher.cfg:5
 msgid "Dune Scorcher"
 msgstr "Duinverbrander"
 
 #. [unit_type]: id=Dune Scorcher, race=dunefolk
-#: data/core/units/dunefolk/Scorcher.cfg:23
+#: data/core/units/dunefolk/Scorcher.cfg:18
 msgid ""
-"Scorchers spend so much time experimenting with their weapons that they "
-"smell constantly of ash and flame. Regarded with wariness by their fellow "
-"troops, Scorchers can be easily located in battle by the cleared charred "
-"area around them, a testament to the success of their experiments."
+"The Scorcher’s name is derived not from the destruction they wreak on "
+"adversarial formations, but on their own singed appearance. By experimenting "
+"endlessly with their equipment, most Scorchers inevitably overstep their "
+"bounds and are seared by the highly volatile Sanbaar sap that soaks their "
+"weapons. Bearing their burns as a mark of pride in their work, these archers "
+"relish igniting great swaths of flame on the battlefield, though this "
+"sometimes results in unintended friendly fire as well."
 msgstr ""
-"Verbranders spenderen zoveel tijd aan het experimenteren met hun wapens dat "
-"ze constant naar as en vuur ruiken. Ze worden met behoedzaamheid aangekeken "
-"door het Zandvolk en kunnen in de strijd makkelijk gevonden worden door het "
-"verkoolde gebied om hen heen, een bewijs van het succes van hun experimenten."
+
+#. [female]
+#: data/core/units/dunefolk/Scorcher.cfg:91
+#, fuzzy
+#| msgid "Dune Scorcher"
+msgid "female^Dune Scorcher"
+msgstr "Duinverbrander"
 
 #. [unit_type]: id=Dune Skirmisher, race=dunefolk
 #: data/core/units/dunefolk/Skirmisher.cfg:4
-msgid "Dune Skirmisher"
+#, fuzzy
+#| msgid "Dune Skirmisher"
+msgid "female^Dune Skirmisher"
 msgstr "Duinstrijder"
 
 #. [unit_type]: id=Dune Skirmisher, race=dunefolk
-#: data/core/units/dunefolk/Skirmisher.cfg:19
+#: data/core/units/dunefolk/Skirmisher.cfg:17
 msgid ""
-"Those Rovers who are proficient at scouting are elevated into the ranks of "
-"the Skirmishers. Discarding their bow, Skirmishers focus on developing their "
-"swiftness of foot to allow them to flow in and out of combat. They are often "
-"used to harry the flanks of opposing forces, and it is said to be easier to "
-"catch the wind in your hand than to catch a Skirmisher."
+"Born and raised out on the open sands, Dune Skirmishers are accustomed to "
+"the harsh, arid desert heat and inhospitable terrain. Compared to even other "
+"Dunefolk, Skirmishers are unnaturally agile on the unstable dunes, allowing "
+"them to safeguard their herds and hunt the barrens with ease. When applied "
+"to battle, the same agility allows them to both slip through enemy lines and "
+"avoid all manner of attack. These skills make Skirmishers effective "
+"saboteurs, capable of cutting of escape routes and supply lines, "
+"assassinating key units, or pincering an enemy formation into a "
+"disadvantageous position."
 msgstr ""
-"De Rovers die bedreven genoeg zijn in het verkennen, worden gepromoveerd tot "
-"Strijders. Ze laten hun boog achter en richten zich op het vergroten van hun "
-"snelheid te voet om snel in en uit de strijd te komen. Ze worden vaak "
-"gebruikt om de flanken van de tegenstander te verzwakken, en er wordt gezegd "
-"dat je makkelijker de wind in je hand vangt dan een Strijder."
 
 #. [unit_type]: id=Dune Soldier, race=dunefolk
 #: data/core/units/dunefolk/Soldier.cfg:4
@@ -1960,22 +2029,16 @@ msgid "Dune Soldier"
 msgstr "Duinsoldaat"
 
 #. [unit_type]: id=Dune Soldier, race=dunefolk
-#: data/core/units/dunefolk/Soldier.cfg:19
+#: data/core/units/dunefolk/Soldier.cfg:16
 msgid ""
-"The Soldier forms the backbone of any Dunefolk foot advance. Many come from "
-"noble or military families, and have spent most of their lives training "
-"their craft. Given their intense focus on swordplay, they are often sent "
-"against fortified enemy positions to create a breach for the remaining "
-"troops to exploit. The sight of Soldiers on the march, shields high, has "
-"caused many a defender to worry about the strength of their walls."
+"While most Dunefolk castes serve an additional practical purpose beyond only "
+"direct warfare, Dune Soldiers are among the few who are completely dedicated "
+"to military purposes. By train intensely to hone their skill in swordplay, "
+"Soldiers learn to navigate tricky fights in close quarters and repel ranged "
+"assaults with their shields. A typical Dunefolk formation makes use of this "
+"adeptness by placing Soldiers in a spaced pattern, allowing them to draw out "
+"clustered enemy lines and overwhelm their foes in pseudo single combat."
 msgstr ""
-"De Soldaat vormt de ruggengraat van elke strijdmacht van het Zandvolk. Velen "
-"komen uit nobele of militaire families en hebben het grootste deel van hun "
-"leven hun vak geleerd. Gezien hun intense focus op zwaardvechten, worden ze "
-"vaak gestuurd naar versterkte vijandelijke posities om een brug voor de "
-"achtergebleven eenheden te vormen. De aanblik van Soldaten tijdens de mars, "
-"hoge schilden die in een eenheid bewegen, heeft ervoor gezorgd dat menig "
-"verdediger zich zorgen maakte over de sterkte van zijn muren."
 
 #. [unit_type]: id=Dune Spearguard, race=dunefolk
 #: data/core/units/dunefolk/Spearguard.cfg:4
@@ -1983,20 +2046,19 @@ msgid "Dune Spearguard"
 msgstr "Duinse Speervechter"
 
 #. [unit_type]: id=Dune Spearguard, race=dunefolk
-#: data/core/units/dunefolk/Spearguard.cfg:19
+#: data/core/units/dunefolk/Spearguard.cfg:16
 msgid ""
-"Although the Dunefolk armies are known for their astonishing mobility and "
-"fierce attack, they can be able defenders. Spearguard excel at holding their "
-"ground, keeping opponents at bay with long, razor sharp spears. Their "
-"preferred strategy is to gradually wear down enemies, until they can be "
-"defeated in a vicious counter stroke."
+"The push and pull of any battle requires varying degrees of offense and "
+"defense. The Dunefolk no doubt value offense as the greater of the two and "
+"focus their greatest efforts on training skilled swordsmen, but in any band "
+"of warriors, a small number of soldiers opt to trade in their sword and "
+"instead fulfill the vital duties of the Spearguard. Guarding crucial supply "
+"lines and vantage points, Spearguards are most often positioned slightly "
+"behind the main line and used as a supporting force or a deterrent to "
+"flanking attacks. Though these fighters tend to see less direct combat than "
+"their sword-wielding brethren, they are highly skilled with spear and shield "
+"and more than capable of repelling most advances."
 msgstr ""
-"Hoewel de strijdkrachten van het Zandvolk bekend staan om hun verbluffende "
-"mobiliteit en heftige aanvalskracht, kunnen ze ook verdedigers worden. De "
-"Speervechters blinken uit in het vasthouden van veroverd gebied en kan "
-"tegenstanders op afstand houden met lange, vlijmscherpe speren. Hun "
-"voorkeursstrategie is om vijanden geleidelijk aan te vermoeien, totdat ze "
-"kunnen worden neergehaald in een krachtige tegenaanval."
 
 #. [unit_type]: id=Dune Spearmaster, race=dunefolk
 #: data/core/units/dunefolk/Spearmaster.cfg:4
@@ -2004,20 +2066,51 @@ msgid "Dune Spearmaster"
 msgstr "Duinse Speermeester"
 
 #. [unit_type]: id=Dune Spearmaster, race=dunefolk
-#: data/core/units/dunefolk/Spearmaster.cfg:20
+#: data/core/units/dunefolk/Spearmaster.cfg:17
 msgid ""
-"Spread across the Dunefolk's lands are lonely towers and garrisons that "
-"provide shelter to caravans and locals from bandits and monsters. These "
-"bastions are defended by the most determined of soldiers, who have often "
-"faced off against overwhelming odds only to repel the invaders. In an army "
-"they can be trusted to hold any position or line, long after lesser soldiers "
-"and men have fled in terror."
+"Among the Dunefolk armies, the highest prestige goes to the master swordsmen "
+"leading every assault. Though honored for their service in battle, those who "
+"wield the spear and shield are largely forgotten beyond that: the path of a "
+"spearman is to fulfill the least desirable role in combat without glory or "
+"recognition. When a Dunefolk assault fails and a retreat must be had, a rank "
+"of Spearguards is usually left behind to hold back the counterassault. "
+"Though providing a formidable defense, the shield line is inevitably "
+"overwhelmed and most of the Spearguards lost to the maw of war. On the off "
+"chance that one manages to survive and find his way back to the recuperating "
+"army, he is often reprimanded for failing to stand his ground and die with "
+"the rest of his unnamed brethren. Nevertheless, after a minor scolding, the "
+"warrior is accepted back and carries his hard won experience into the next "
+"battle.\n"
+"\n"
+"It is not a formal title, but ‘Spearmaster’ is what Spearguards call their "
+"companions who manage to return from the usually suicidal defense that the "
+"Dunefolk mount to guard their retreats. Hardly a term of praise or "
+"distinction, it is still a modicum of recognition for those who were "
+"prepared to die as nameless martyrs to protect their brethren."
 msgstr ""
-"Verspreid over het land van het Zandvolk zijn eenzame torens en garnizoenen "
-"die onderdak bieden aan handelaren en monsters. Deze vestigingen worden "
-"verdedigd door de meest vastberaden soldaten, die zelfs winnen wanneer de "
-"tegenstander in het voordeel is. In een strijdkracht wekken ze vertrouwen "
-"omdat ze blijven staan terwijl mindere eenheden zijn gevlucht van angst."
+
+#. [unit_type]: id=Dune Strider, race=dunefolk
+#: data/core/units/dunefolk/Strider.cfg:4
+#, fuzzy
+#| msgid "Dune Swiftrider"
+msgid "female^Dune Strider"
+msgstr "Duinse Snelruiter"
+
+#. [unit_type]: id=Dune Strider, race=dunefolk
+#: data/core/units/dunefolk/Strider.cfg:17
+msgid ""
+"The power of any Dunefolk assault is inhibited by one major drawback: "
+"organized Dunefolk forces tend to be rather slow. Because of this, enemy "
+"forces often have the ability to regroup and call upon reinforcements, in "
+"which case a second assault becomes much more difficult. To combat this, "
+"Dune Striders exchange their rudimentary slings with heavy bolas, allowing "
+"them to slow retreating lines from the side and prevent a clean escape. The "
+"same tactic can be applied in the opposite scenario of a Dunefolk retreat; "
+"an advancing army can be hampered, allowing injured Dunefolk warriors time "
+"to recuperate. The danger of such a tactic is that despite their "
+"elusiveness, Striders are fairly fragile in direct combat and are easily "
+"taken down if left exposed."
+msgstr ""
 
 #. [unit_type]: id=Dune Sunderer, race=dunefolk
 #: data/core/units/dunefolk/Sunderer.cfg:4
@@ -2027,19 +2120,17 @@ msgstr "Duinverdeler"
 #. [unit_type]: id=Dune Sunderer, race=dunefolk
 #: data/core/units/dunefolk/Sunderer.cfg:16
 msgid ""
-"Those Piercers who distinguish themselves in battle are given the "
-"opportunity to prove themselves worthy of becoming a Sunderer. Those who "
-"pass the trial are given the traditional barding for their horse, "
-"distinguishing them from the rest of the Dunefolk cavalry. Consummate "
-"horsemen, the Sunderers have long claimed they need only a single lance "
-"strike to kill a man."
+"Among the many different type of Dune horsemen, there are those who most "
+"enjoy the frantic melee at the heart of battle. Those who are so disposed—"
+"and skilled enough to survive multiple skirmishes—are recruited into the "
+"ranks of the Sunderers. As sturdy, robust warriors, these men usually bear "
+"short-ranged maces, a rather odd choice of weaponry for most riders. That is "
+"not to say Sunderers are impotent in any way: though not typically effective "
+"chargers, even a small group of Sunderers is powerful enough to breach any "
+"enemy line through sheer force. In a situation that requires it, these "
+"horsemen possess enough skill with the bow to weaken enemy forces or pick "
+"off fleeing stragglers."
 msgstr ""
-"De Stekers die zich in de strijd onderscheiden, krijgen de kans om te "
-"bewijzen dat ze het waard zijn om een Verdeler te worden. Degenen die slagen "
-"voor het proces krijgen de traditionele kleden voor hun paard, waardoor ze "
-"worden onderscheiden van de rest van de cavalerie van het Duinvolk. De "
-"Verdelers beweerden al lang dat ze slechts één enkele steek nodig hebben om "
-"een man te doden."
 
 #. [unit_type]: id=Dune Swiftrider, race=dunefolk
 #: data/core/units/dunefolk/Swiftrider.cfg:4
@@ -2047,17 +2138,16 @@ msgid "Dune Swiftrider"
 msgstr "Duinse Snelruiter"
 
 #. [unit_type]: id=Dune Swiftrider, race=dunefolk
-#: data/core/units/dunefolk/Swiftrider.cfg:17
+#: data/core/units/dunefolk/Swiftrider.cfg:16
 msgid ""
-"Riders who demonstrate exceptional skill with the bow are made into "
-"Swiftriders, spending hours every day practicing and building a rapport with "
-"their steed. This has made them the fastest riders in the Dunefolk armies, "
-"and a wise Warmaster uses this to their advantage."
+"Swiftriders are those who favor archery over melee weaponry. Fleet and "
+"elusive, these horsemen are experts at harassing less mobile foes with hails "
+"of arrows. As excellent skirmishers in the desert, Swiftriders are most "
+"often used as combat scouts or to hunt down fleeing enemies. Though not "
+"usually trained for infiltration or spying, these equestrians’ ability to "
+"pass messages from afar with their long-ranged arrows is of great use to "
+"maintain communication among the Dunefolk armies."
 msgstr ""
-"Ruiters die buitengewone vaardigheden met de boog laten zien, promoveren tot "
-"Snelruiters. Ze oefenen urenlang om een band op te bouwen met hun paard. Dit "
-"heeft hen tot de snelste Ruiters in de Zandvolk strijdkracht gemaakt, en een "
-"verstandige Oorlogsmeester gebruikt dit in hun voordeel."
 
 #. [unit_type]: id=Dune Swordsman, race=dunefolk
 #: data/core/units/dunefolk/Swordsman.cfg:4
@@ -2065,19 +2155,20 @@ msgid "Dune Swordsman"
 msgstr "Duinse Zwaardvechter"
 
 #. [unit_type]: id=Dune Swordsman, race=dunefolk
-#: data/core/units/dunefolk/Swordsman.cfg:19
+#: data/core/units/dunefolk/Swordsman.cfg:16
 msgid ""
-"Armed with their sword and shield, Swordsman are warriors of some renown "
-"among the Dunefolk armies. They have further refined their combat arts, "
-"adding a powerful shield bash to knock back unsuspecting enemies. Though few "
-"in number, their presence can be decisive in dislodging even the most "
-"hardened redoubt."
+"In a direct clash of large armies, the Dunefolk commonly encounter either "
+"densely packed ‘Shield Walls’ or heavily fortified enemy positions. Striking "
+"against these highly organized fronts can be quite challenging; an enemy "
+"formation might leave only small, brief gaps between shields and armor, "
+"while threatening a counterstrike with a thrust of spears and projectiles. "
+"Thus, Dunefolk swordplay places a heavy emphasis on power and more "
+"importantly, precision. A warrior might find only one chance to strike at an "
+"enemy, but an experienced Dune Swordsman is more than likely to seize the "
+"opportunity and make his strike count. Honing in with nearly unnatural "
+"accuracy, a contingent of of Swordsmen is enough to crack even the sternest "
+"of defenses."
 msgstr ""
-"Gewapend met hun zwaard en schild zijn Zwaardvechters redelijk bekend onder "
-"de Duinvolk strijdkrachten. Ze hebben hun gevechtskunsten verfijnd door een "
-"krachtige slag te krijgen om de nietsvermoedende vijanden te vernietigen. "
-"Hoewel er maar weinig zijn, kan hun aanwezigheid doorslaggevend zijn om "
-"zelfs de meest geharde vijand te verdrijven."
 
 #. [unit_type]: id=Dune Warmaster, race=dunefolk
 #: data/core/units/dunefolk/Warmaster.cfg:4
@@ -2087,22 +2178,16 @@ msgstr "Duinse Oorlogsmeester"
 #. [unit_type]: id=Dune Warmaster, race=dunefolk
 #: data/core/units/dunefolk/Warmaster.cfg:26
 msgid ""
-"Among every generation, a warrior elevates himself above his peers and foes; "
-"They seem to be able to alter the destiny of the world themselves. Often "
-"given the name Warmaster, these individuals are celebrated for their "
-"strength and skill. Their travels and travails are told endlessly around the "
-"campfire with the reverent tones of those that speak of living legends."
+"In direct contrast with other Dunefolk commanders, Warmasters focus heavily "
+"on rousing their troops and maintaining high morale. These generals are "
+"often found at the forefront of battle, leading by example and fighting and "
+"bleeding alongside their soldiers. While Warmasters usually leave the finer "
+"details of strategy to their Captains, they are certainly capable tacticians "
+"as well; many a battle has been won on an inventive or surprise maneuver "
+"that is often the creative byproduct of combat experience rather than formal "
+"training. Said to be a veteran of a thousand battles, a Warmaster is an "
+"expert leader that should never be underestimated."
 msgstr ""
-"Elke generatie verheft een krijger zichzelf boven zijn gelijken en vijanden. "
-"Ze lijken in staat om de bestemming van de wereld zelf te kunnen veranderen. "
-"Ze krijgen vaak de naam Oorlogsmeester en worden gevierd om hun kracht en "
-"vaardigheden. Hun reizen en beproevingen worden eindeloos verteld rond het "
-"kampvuur met de eerbiedige toon van iemand die spreekt over levende legendes."
-
-#. [attack]: type=impact
-#: data/core/units/dunefolk/Warmaster.cfg:44
-msgid "pommel strike"
-msgstr "handvatslag"
 
 #. [unit_type]: id=Dune Windrider, race=dunefolk
 #: data/core/units/dunefolk/Windrider.cfg:4
@@ -2110,21 +2195,20 @@ msgid "Dune Windrider"
 msgstr "Duinse Windruiter"
 
 #. [unit_type]: id=Dune Windrider, race=dunefolk
-#: data/core/units/dunefolk/Windrider.cfg:18
+#: data/core/units/dunefolk/Windrider.cfg:17
 msgid ""
-"The elite of the Swiftriders are the Windriders, horse archers of such speed "
-"and dexterity that rumors are always spread that they have elven blood. "
-"Irritated at such mystical nonsense, the Windriders can frequently be found "
-"demonstrating their exceptional skill at the forefront of battle, riding "
-"with great speed through the lines of battle to rain arrows down upon the "
-"enemy."
+"Archery on horseback presents a number of additional challenges that very "
+"few are able to overcome. What separates the renowned Windrider caste from "
+"other bowmen is their ability to not only master these difficulties, but "
+"turn them into benefits instead. Making great use of their steeds’ "
+"incredible speed, a Windrider is actually a better archer when mounted as "
+"compared to on land. The extra momentum from riding on horseback provides "
+"additional force to their already potent shots, and by riding in meandering "
+"patterns, these bowmen are able to curve the trajectories of their arrows, "
+"reaching targets they might not be able to otherwise. Having honed their "
+"craft to its apex, Windriders are undisputed masters of ranged combat among "
+"the Dunefolk."
 msgstr ""
-"De elite van de Snelruiters zijn de Windruiters, boogschutters die een "
-"zodanige behendigheid en snelheid bezitten dat er geruchten verspreid worden "
-"dat ze elvenbloed hebben. Geïrriteerd door dergelijke mystieke onzin, kunnen "
-"de Windruiters vaak gevonden worden door hun uitzonderlijke vaardigheden in "
-"de voorhoede van de strijd. Ze rijden met grote snelheid over de "
-"tegenstander heen terwijl ze het pijlen laten regenen."
 
 #. [unit_type]: id=Wyvern Rider, race=monster, description=
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:4
@@ -2508,6 +2592,13 @@ msgstr ""
 "hebben. En zij die er meester in zijn, zijn even mysterieus. Hoewel gezegd "
 "moet worden dat ze aanbeden worden door hun volk kan er weinig gezegd worden "
 "over hun functie en doel in de samenleving."
+
+#. [attack]: type=impact
+#: data/core/units/elves/Enchantress.cfg:36 data/core/units/elves/Shaman.cfg:37
+#: data/core/units/elves/Sorceress.cfg:38
+#: data/core/units/wose/Wose_Shaman.cfg:49
+msgid "entangle"
+msgstr "verstrikking"
 
 #. [unit_type]: id=Elvish Fighter, race=elf
 #: data/core/units/elves/Fighter.cfg:4
@@ -3103,11 +3194,6 @@ msgstr ""
 "Tijdens rooftochten ondersteunen deze kobolds door huizen en gewassen te "
 "verbranden, daarnaast zaaien ze met hun netten verwarring bij de verdedigers."
 
-#. [attack]: type=fire
-#: data/core/units/goblins/Pillager.cfg:41
-msgid "torch"
-msgstr "fakkel"
-
 #. [attack]: type=impact
 #: data/core/units/goblins/Pillager.cfg:50
 #: data/core/units/merfolk/Entangler.cfg:34
@@ -3256,6 +3342,15 @@ msgstr ""
 "hun kracht, vormen deze strijders de kern van elke serieuze cavalerie. Een "
 "commandeur vooraan een stormloop is een angstaanjagende aanblik voor "
 "infanterie en is vaak genoeg om dwars door een verdedigingslinie te breken."
+
+#. [attack]: type=blade
+#: data/core/units/humans/Horse_Grand_Knight.cfg:24
+#: data/core/units/humans/Loyalist_Cavalier.cfg:37
+#: data/core/units/humans/Loyalist_General.cfg:43
+#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:38
+#: data/core/units/humans/Loyalist_Royal_Guard.cfg:27
+msgid "longsword"
+msgstr "lang zwaard"
 
 #. [unit_type]: id=Knight, race=human
 #: data/core/units/humans/Horse_Knight.cfg:4
@@ -5040,6 +5135,50 @@ msgstr ""
 "De beste manier om een ontmoeting met deze monsters te overleven is aan wal "
 "te blijven."
 
+#. [unit_type]: id=Elder Falcon, race=falcon
+#: data/core/units/monsters/Elder_Falcon.cfg:4
+msgid "Elder Falcon"
+msgstr "Oude Valk"
+
+#. [unit_type]: id=Elder Falcon, race=falcon
+#: data/core/units/monsters/Elder_Falcon.cfg:18
+msgid ""
+"Elder Falcons bear the telltale scars of veteran warriors from protecting "
+"their masters, their bodies proof of repeated dives into a swirling melee. "
+"Stronger and faster than their younger kin, they are rumored to hit with "
+"enough force to remove an enemy's head. "
+msgstr ""
+"Oude Valken dragen de veel betekende littekens van ervaren vechters en het "
+"jarenlange beschermen van hun meesters. Door de vorm van hun lichaam kunnen "
+"ze snel en herhaaldelijk duiken in een wervelend gevecht. Ze zijn sterker en "
+"sneller dan hun jongere soortgenoten en er gaan zelfs verhalen rond dat ze "
+"genoeg kracht hebben om het hoofd van een vijand te verwijderen. "
+
+#. [attack]: type=pierce
+#: data/core/units/monsters/Elder_Falcon.cfg:35
+#: data/core/units/monsters/Falcon.cfg:34 data/core/units/monsters/Roc.cfg:36
+msgid "beak"
+msgstr "snavel"
+
+#. [unit_type]: id=Falcon, race=falcon
+#: data/core/units/monsters/Falcon.cfg:4
+msgid "Falcon"
+msgstr "Valk"
+
+#. [unit_type]: id=Falcon, race=falcon
+#: data/core/units/monsters/Falcon.cfg:17
+msgid ""
+"Seen as status symbols of the nobles, falcons are precious possessions "
+"normally used for sport. The same techniques are employed to rend and tear "
+"foes on the battlefield, and their great speed is a boon to scouting out the "
+"land."
+msgstr ""
+"Valken worden gezien als statussymbool door de adel en zijn kostbare "
+"bezittingen die normaal worden gebruikt voor de sport. Dezelfde technieken "
+"die in de sport gebruikt worden, kunnen worden gebruikt om vijanden op het "
+"slagveld in stukken te scheuren, en hun grote snelheid is een groot voordeel "
+"die gebruikt kan worden om het land te verkennen."
+
 #. [unit_type]: id=Fire Dragon, race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:4
 msgid "Fire Dragon"
@@ -5146,7 +5285,7 @@ msgid "Giant Scorpion"
 msgstr "Reuzenschorpioen"
 
 #. [unit_type]: id=Giant Scorpion, race=monster
-#: data/core/units/monsters/Giant_Scorpion.cfg:41
+#: data/core/units/monsters/Giant_Scorpion.cfg:42
 msgid ""
 "A normal scorpion is dangerous enough — the deadliness of one the size of a "
 "man needs little explanation."
@@ -5155,19 +5294,18 @@ msgstr ""
 "behoeft geen uitleg."
 
 #. [attack]: type=pierce
-#: data/core/units/monsters/Giant_Scorpion.cfg:46
-#: data/core/units/monsters/Giant_Scorpling.cfg:31
+#: data/core/units/monsters/Giant_Scorpion.cfg:47
+#: data/core/units/monsters/Giant_Scorpling.cfg:32
 msgid "sting"
 msgstr "steek"
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Giant_Scorpion.cfg:58
-#: data/core/units/monsters/Giant_Scorpling.cfg:43
+#: data/core/units/monsters/Giant_Scorpion.cfg:59
+#: data/core/units/monsters/Giant_Scorpling.cfg:44
 msgid "pincers"
 msgstr "scharen"
 
 #. [variation]
-#: data/core/units/monsters/Giant_Scorpion.cfg:110
 #: data/core/units/monsters/Giant_Scorpion.cfg:111
 msgid "Sand Scuttler"
 msgstr ""
@@ -5186,7 +5324,7 @@ msgid "Giant Scorpling"
 msgstr "Jonge Reuzenschorpioen"
 
 #. [unit_type]: id=Giant Scorpling, race=monster
-#: data/core/units/monsters/Giant_Scorpling.cfg:26
+#: data/core/units/monsters/Giant_Scorpling.cfg:27
 msgid ""
 "One of the most potent known venoms is that of the monstrous scorpions of "
 "the frontier. Fetching a high price by assassins and apothecaries alike, "
@@ -5262,7 +5400,7 @@ msgstr ""
 "botte wapens van een gewone burger, hen het middel bij uitstek voor "
 "ambitieuze maar onervaren Magiërs."
 
-#. [unit_type]: id=Roc, race=roc, description=
+#. [unit_type]: id=Roc, race=monster, description=
 #: data/core/units/monsters/Roc.cfg:4
 msgid "Roc"
 msgstr ""
@@ -5416,12 +5554,52 @@ msgstr ""
 "blote vuisten. Dit is genoeg om twee keer na te denken voordat men de bergen "
 "in gaat waarvan gezegd wordt dat ze er wonen."
 
-#. [unit_type]: id=Young Roc, race=roc, description=
-#: data/core/units/monsters/Young_Roc.cfg:4
+#. [unit_type]: id=Naga Bladewhirler, race=naga
+#: data/core/units/nagas/Bladewhirler.cfg:4
+msgid "Naga Bladewhirler"
+msgstr ""
+
+#. [unit_type]: id=Naga Bladewhirler, race=naga
+#: data/core/units/nagas/Bladewhirler.cfg:18
+msgid ""
+"Experienced warriors of the Southern Naga often find work as mercenaries, "
+"usually hired by neighboring Dunefolk to control key waterways near the "
+"coastline. Though generally amicable with their wealthy employers, this "
+"friendliness should not be mistaken for loyalty. Bladewhirlers, in "
+"particular, are known for readily switching between rival city-state "
+"factions at the start of each shipping season, when demand for water-based "
+"protection is the highest. By encouraging a healthy amount of competition, "
+"these nagas ensure that their services are always sought after by one tribe "
+"or another."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/nagas/Bladewhirler.cfg:28
+#: data/core/units/nagas/Dervish.cfg:30
 #, fuzzy
-#| msgid "Young Ogre"
-msgid "Young Roc"
-msgstr "Jonge Boeman"
+#| msgid "war blade"
+msgid "curved blade"
+msgstr "strijdstaal"
+
+#. [unit_type]: id=Naga Dervish, race=naga
+#: data/core/units/nagas/Dervish.cfg:4
+msgid "Naga Dervish"
+msgstr ""
+
+#. [unit_type]: id=Naga Dervish, race=naga
+#: data/core/units/nagas/Dervish.cfg:19
+msgid ""
+"While they sometimes still stand in as sellswords for potential Dunefolk "
+"allies, Naga Dervishes are more often the keepers of trade routes and "
+"resource beds close to waterways. For the right fee or exchange of goods, a "
+"Dervish will guarantee safe travel or free access to valuable supplies in "
+"his territory. Rubbed the wrong way and a Dervish becomes a fearsome foe—not "
+"because of their personal strength in combat, but instead due to the "
+"numerous allies that he can call upon to quash any potential nuisance. "
+"Though perfectly capable warriors when the time is necessary, these "
+"experienced mercenaries know perfectly well that the best methods for "
+"generating money are those that do not place themselves in danger."
+msgstr ""
 
 #. [unit_type]: id=Naga Fighter, race=naga
 #: data/core/units/nagas/Fighter.cfg:4
@@ -5490,6 +5668,54 @@ msgstr ""
 "vijandelijke aanvallen. Niet alleen zijn het geduchte tegenstanders op het "
 "open veld, ze verplaatsen zich ook razendsnel door het water."
 
+#. [unit_type]: id=Naga Ringcaster, race=naga
+#: data/core/units/nagas/Ringcaster.cfg:4
+#, fuzzy
+#| msgid "Naga Fighter"
+msgid "Naga Ringcaster"
+msgstr "Naga Krijger"
+
+#. [unit_type]: id=Naga Ringcaster, race=naga
+#: data/core/units/nagas/Ringcaster.cfg:17
+msgid ""
+"The blade ring, or chakram, is the signature weapon of the southern Naga and "
+"their renowned Ringcasters. These nagas choose their tools with great care: "
+"the process of forging a chakram underwater is quite tricky and usually "
+"results in weapons with a fair bit of variance. Each Ringcaster picks a "
+"specific set of chakrams that suits them, whether it be rings with high "
+"uniformity for faster spinning, blades with a slight bit of wobble for "
+"unpredictability, or lopsided rings for curved trajectories. As different as "
+"each blade ring is coming out of the forge, each Ringcaster has a different "
+"fighting style to which their tools are tailored."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/nagas/Ringcaster.cfg:28
+#: data/core/units/nagas/Ringcaster.cfg:37 data/core/units/nagas/Zephyr.cfg:41
+#: data/core/units/nagas/Zephyr.cfg:50
+msgid "chakram"
+msgstr ""
+
+#. [unit_type]: id=Naga Slasher, race=naga
+#: data/core/units/nagas/Slasher.cfg:4
+#, fuzzy
+#| msgid "Drake Slasher"
+msgid "Naga Slasher"
+msgstr "Draakling Hakker"
+
+#. [unit_type]: id=Naga Slasher, race=naga
+#: data/core/units/nagas/Slasher.cfg:18
+msgid ""
+"In contrast to the heavily melee-focused style of their northern brethren, "
+"young Naga of the southern tribes prefer to carry small bows, with which "
+"they used to pepper their prey with arrows. While finishing off any water-"
+"based enemies usually must be done at close range, softening foes with "
+"ranged attacks is usually much less dangerous than rushing headlong directly "
+"into the fray. Sometimes viewed as cowardly by more proper Naga warriors, "
+"these fighters are nonetheless effective when it comes time to engage in "
+"warfare."
+msgstr ""
+
 #. [unit_type]: id=Naga Warrior, race=naga
 #: data/core/units/nagas/Warrior.cfg:4
 msgid "Naga Warrior"
@@ -5534,6 +5760,51 @@ msgstr ""
 "ze de aanvallen. Ze zijn sterk op het land, maar in het water worden ze "
 "gehinderd in hun bewegingen."
 
+#. [unit_type]: id=Naga Zephyr, race=naga
+#: data/core/units/nagas/Zephyr.cfg:4
+#, fuzzy
+#| msgid "Naga Fighter"
+msgid "Naga Zephyr"
+msgstr "Naga Krijger"
+
+#. [unit_type]: id=Naga Zephyr, race=naga
+#: data/core/units/nagas/Zephyr.cfg:18
+msgid ""
+"The Southern Naga commonly recount a curious story about the Wind Spirit, "
+"Zefra and the aetherial chakram:\n"
+"\n"
+"In the distant past, there was a chakram wielder who was possessed of "
+"legendary skill. It is said that he could cleave the very seas with a flurry "
+"of blades, fell a hundred foes before a single could reach him, and deflect "
+"a thousand arrows without being struck. Called by the name of Xylrix, "
+"tempest, he was a warrior whose arrogance was as great as his talent. He was "
+"always more than willing to boast his prowess to any and all who would watch "
+"him. Then one day, while flaunting himself to a band of young Nagini, he "
+"chose a sacred Allnai tree as his target.\n"
+"\n"
+"‘Watch,’ he bellowed, and split the tree straight in two.\n"
+"\n"
+"In that moment, a great wind surrounded him and the Wind Spirit’s voice "
+"echoed in his ears, ‘You think yourself mighty for slaying my hapless "
+"offspring? Though talent you possess, no mortal should trifle with the "
+"divinity that guides them.’\n"
+"\n"
+"He retorted, ‘Come, spirit. I am not afraid. No weapon, steel, water, or "
+"wind, shall stand up to my rings.’\n"
+"\n"
+"The wind whirled ever faster, a torrent of gale force spiraling and "
+"spiraling in a gyrating dance of fury. He felt himself lifted from the "
+"ground, spinning at a tremendous rate, rendered utterly hapless at the mercy "
+"of Zefra’s wrath. Face upturned in terror, he let go of his blades and "
+"suddenly saw it in the whirling tempest—the twirling motion of the ringed "
+"chakrams, patterned in the very wind itself.\n"
+"\n"
+"As quickly as the storm came, it vanished, leaving Xylrix to contemplate his "
+"broken weapons. When he finally returned to his home many days later, he "
+"announced his new name: Zephyr, a warrior who serves the Wind on which his "
+"blades fly."
+msgstr ""
+
 #. [unit_type]: id=Ogre, race=ogre
 #: data/core/units/ogres/Ogre.cfg:4
 msgid "Ogre"
@@ -5551,6 +5822,11 @@ msgstr ""
 "wildernis leven, ze lijken opvallend veel op Mensen, maar dan groter en "
 "misvormd. Hoewel ze langzaam en dommer zijn dan de meeste wezens, blinken ze "
 "uit in hun kracht."
+
+#. [attack]: type=blade
+#: data/core/units/ogres/Ogre.cfg:25 data/core/units/ogres/Young_Ogre.cfg:24
+msgid "cleaver"
+msgstr "hakmes"
 
 #. [unit_type]: id=Young Ogre, race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:4
@@ -6770,6 +7046,12 @@ msgstr ""
 "Dit soort gebeurtenissen zijn de enige aanwijzingen die er zijn voor wat "
 "vermoedelijke de alleroudste enten zijn."
 
+#. [attack]: type=impact
+#: data/core/units/wose/Ancient.cfg:34 data/core/units/wose/Elder.cfg:34
+#: data/core/units/wose/Wose.cfg:29 data/core/units/wose/Wose_Shaman.cfg:40
+msgid "crush"
+msgstr "verpletter"
+
 #. [unit_type]: id=Elder Wose, race=wose
 #: data/core/units/wose/Elder.cfg:4
 msgid "Elder Wose"
@@ -6828,6 +7110,371 @@ msgstr ""
 "\n"
 "Enten zijn geenszins oorlogszuchtig, maar bezitten een enorme kracht. Ze "
 "zijn echter niet gewend veel te bewegen."
+
+#. [unit_type]: id=Wose Sapling
+#: data/core/units/wose/Wose_Sapling.cfg:7
+msgid "Wose Sapling"
+msgstr ""
+
+#. [unit_type]: id=Wose Shaman, race=wose
+#: data/core/units/wose/Wose_Shaman.cfg:4
+#, fuzzy
+#| msgid "Troll Shaman"
+msgid "Wose Shaman"
+msgstr "Trolsjamaan"
+
+#. [unit_type]: id=Wose Shaman, race=wose
+#: data/core/units/wose/Wose_Shaman.cfg:27
+msgid ""
+"These woses are able to command forest plants such as vines and creepers to "
+"hinder their enemies."
+msgstr ""
+
+#~ msgid ""
+#~ "Some men excel at medicine the way others do at strength of arms, and the "
+#~ "Apothecaries are those whose knowledge is without peer outside of the "
+#~ "Dunefolk. Their remedies can not only heal wounds but remove infection "
+#~ "and poison as well, often to the disbelief of the injured. Hardened by "
+#~ "years of travels, many are able to treat themselves."
+#~ msgstr ""
+#~ "Sommigen blinken uit in het maken van medicijnen zoals anderen uitblinken "
+#~ "tijdens een gevecht. Het Duinvolk heeft de beste genezers van alle "
+#~ "Rassen. Zij kunnen niet alleen wonden helen maar ook infecties en "
+#~ "vergiftiging genezen, zelfs de mensen die genezen zijn geloven het niet. "
+#~ "Aangesterkt door vele jaren reizen kunnen veel Duinapothekers ook "
+#~ "zichzelf verzorgen."
+
+#~ msgid ""
+#~ "Distinguished for their bravery and skill, Blademasters are the leaders "
+#~ "among the Dunefolk's ranks. Their exploits are well known among their "
+#~ "cohorts, inspiring soldiers to fight for their cause. Despite this, they "
+#~ "are often found leading from the front, taking down their foes with sword "
+#~ "and shield."
+#~ msgstr ""
+#~ "De Zwaardmeesters van het Duinvolk staan bekend om hun moed en "
+#~ "vaardigheid, zij zijn de leiders van de Duinse strijdkracht. Hun "
+#~ "heldendaden zijn goed bekend bij hun medesoldaten, deze worden erdoor "
+#~ "geïnspireerd om mee te vechten. Desondanks worden ze vaak aangetroffen in "
+#~ "de frontlinie, waarbij ze hun vijanden neerhalen met zwaard en schild."
+
+#~ msgid ""
+#~ "Utilizing various resources found in the Dunefolk domain, a highly "
+#~ "flammable substance can be made. The Burners are those charged with "
+#~ "making and carrying this dangerous mixture into battle. While the use of "
+#~ "fire in warfare is not a novel concept, the effectiveness of their work "
+#~ "is."
+#~ msgstr ""
+#~ "Met behulp van verschillende middelen die in het Duinvolk-gebied worden "
+#~ "aangetroffen kan een licht ontvlambare stof worden gemaakt. De Branders "
+#~ "zijn diegene die belast zijn met het maken en dragen van dit gevaarlijke "
+#~ "mengsel in de strijd. Hoewel het gebruik van vuur in een veldtocht geen "
+#~ "nieuw concept is, is de effectiviteit van hun werk dat wel."
+
+#~ msgid "naphtha attack"
+#~ msgstr "nafta-aanval"
+
+#~ msgid "fire arrow"
+#~ msgstr "brandende pijl"
+
+#~ msgid ""
+#~ "The Cataphract are eminent horsemen, amassing titles and accolades that "
+#~ "are as distinguishing for them as the scrollwork on their armor. Having "
+#~ "honed their skill with a lance in years of battle, the Cataphract are an "
+#~ "unstoppable force of nature. Fleeing enemies swiftly discover that hills "
+#~ "do not deter these riders in the slightest, and the displaced air of a "
+#~ "descending mace is the last sound they hear."
+#~ msgstr ""
+#~ "De Katafrakten zijn uitstekende ruiters, de titels en onderscheidingen "
+#~ "die ze hebben verzameld zijn net zo opvallend als het krulwerk op hun "
+#~ "wapenuitrusting. a jarenlange verbetering van hun vaardigheid met de "
+#~ "lans, is de Katafrakt een kracht die niet te stoppen is. Vluchtende "
+#~ "vijanden ontdekken snel dat deze rijders niet afgeschrikt worden door de "
+#~ "duinen, en het geluid van verplaatste lucht door een dalende knuppel is "
+#~ "het laatste geluid dat ze horen."
+
+#~ msgid ""
+#~ "Explorers are often utilized as heavy scouts, no longer just probing the "
+#~ "enemy but conducting raids on the supply lines or eliminating patrols. "
+#~ "Often away from the main body of the army for long periods of time, "
+#~ "Explorers have no issue pilfering these supplies, and so they tend to be "
+#~ "more well-equipped than most."
+#~ msgstr ""
+#~ "Verkenners worden niet alleen gebruikt als verkenners, ook voeren ze "
+#~ "overvallen op de bevoorradingslijnen uit en elimineren ze patrouilles. "
+#~ "Vaak zijn ze voor langere tijd weg van de strijdkracht maar ontdekkers "
+#~ "hebben er geen moeite mee vijanden te beroven, hierdoor zijn ze over het "
+#~ "algemeen beter uitgerust dan de meesten."
+
+#~ msgid ""
+#~ "Scorchers who have shut out the world for their experiments are given the "
+#~ "title of Firetrooper, as both a sign of respect and of fear. No longer "
+#~ "cognizant of the value of life, Firetroopers are caught up in the power "
+#~ "of their caged fire and likely to test their latest naphtha jar at the "
+#~ "first opportunity."
+#~ msgstr ""
+#~ "Verbranders die de wereld hebben buitengesloten in ruil voor hun "
+#~ "experimenten krijgen de rang Vlammenwerper, als een teken van respect en "
+#~ "angst. Niet langer op de hoogte van de waarde van het leven, worden "
+#~ "Vlammenwerpers gevangen in de kracht van hun opgesloten vuur en zullen "
+#~ "waarschijnlijk hun nieuwste nafta-pot testen bij de eerste gelegenheid."
+
+#~ msgid ""
+#~ "Harriers hold themselves to a higher standard than the ranks of the "
+#~ "Skirmishers from which they ascended. Not content to merely draw the "
+#~ "enemy out, they combine their speed with an aggression that sends the "
+#~ "Harriers dancing through the ranks of the enemy, swords ripping and "
+#~ "tearing at those around them. "
+#~ msgstr ""
+#~ "Helden houden zichzelf aan een hogere standaard dan de rangen van de "
+#~ "strijders van waaruit ze zijn gepromoveerd. Omdat ze geen genoegen nemen "
+#~ "met het uitlokken van de vijand combineren ze hun snelheid en "
+#~ "agressiviteit om door de rijen vijanden te dansen, zwaaiend met hun "
+#~ "zwaarden die de mensen rondom hen verscheren. "
+
+#~ msgid ""
+#~ "Herbalists are learned individuals who have given up their urban life in "
+#~ "order to assist the Dunefolk armies in their travels. Their motivations "
+#~ "are many; some look to it as an adventure or as a steady source of pay, "
+#~ "while others feel it to be a duty to their society. Regardless, "
+#~ "Herbalists are highly respected by all. They are trained with the "
+#~ "advanced medical techniques and possess a potent clutch of medicines and "
+#~ "herbs, which allows them to quickly heal even the most gravely wounded "
+#~ "allies."
+#~ msgstr ""
+#~ "Kruidendokters zijn geleerde personen die hun stadsleven hebben opgegeven "
+#~ "om de Duinvolk-strijdkrachten bij te staan tijdens hun reizen. Hier zijn "
+#~ "verschillende motivaties voor; sommigen beschouwen het als een avontuur "
+#~ "of een vast inkomen, terwijl anderen het als een plicht voor hun "
+#~ "samenleving beschouwen. Hoe dan ook, Kruidendokters zijn zeer "
+#~ "gerespecteerd. Ze worden getraind met de geavanceerde medische technieken "
+#~ "en beschikken over een krachtige combinatie van medicijnen en kruiden, "
+#~ "waardoor ze zelfs de meest ernstig gewonde bondgenoten snel kunnen "
+#~ "genezen."
+
+#~ msgid ""
+#~ "Those Raiders who prove to be particularly skilled are formed into units "
+#~ "of Marauders, which are often used to raid enemy depots and towns for "
+#~ "supplies. This greater autonomy often means that these horsemen are gone "
+#~ "for weeks at a time, returning to camp only for supplies and to pass on "
+#~ "news of their exploits."
+#~ msgstr ""
+#~ "De Stropers die bijzonder bekwaam blijken te zijn, worden benoemd tot "
+#~ "Plunderaars, die vaak worden ingezet om vijandige opslaglocaties en "
+#~ "steden aan te vallen om de strijdmacht van het Zandvolk van bevoorrading "
+#~ "te voorzien. Dit betekend vaak dat deze Ruiters weken achter elkaar weg "
+#~ "zijn en alleen terugkeren naar het kamp voor het brengen van spullen en "
+#~ "het doorgeven van nieuws over hun daden."
+
+#~ msgid "Dune Piercer"
+#~ msgstr "Duinsteker"
+
+#~ msgid ""
+#~ "The Piercer understand the psychological impact of a charging horse, and "
+#~ "reinforce this by cladding themselves in heavy armor. Majestic at rest, a "
+#~ "Piercer at the charge with lance in hand is often impetus enough to break "
+#~ "men. On the rare occurrences that their charge fails to rout their foe, "
+#~ "the Piercer ride into the resulting melee with their maces in hand, "
+#~ "trusting their armor to keep them safe."
+#~ msgstr ""
+#~ "De Steker begrijpt de psychologische impact van een aanvallend paard en "
+#~ "versterkt dit door zware bepantsering aan te trekken. Ze zien er "
+#~ "majestueus uit in stilstand, maar wanneer ze aanvallen is dit vaak genoeg "
+#~ "stimulans om mannen te breken. In de zeldzame gevallen dat het paard niet "
+#~ "zorgt voor een overwinning in de strijd kan een Steker ook het gevecht op "
+#~ "de korte afstand winnen met hun knuppels, vertrouwend op hun "
+#~ "wapenuitrusting om hen te beschermen."
+
+#~ msgid ""
+#~ "Those horsemen who are not skilled enough to join the ranks of the "
+#~ "Sunderers or quick enough with a bow for the Swiftriders are instead "
+#~ "placed with the Raiders. Far from being a sign of failure, the Raiders "
+#~ "were created as a mounted counterpart to the Explorers, supporting the "
+#~ "foot troops with mace or bow as needed. Raiders are often used to draw "
+#~ "enemies into a position where they will be surrounded and crushed by "
+#~ "Sunderers."
+#~ msgstr ""
+#~ "De Ruiters die niet bekwaam genoeg zijn om zich bij de Verdelers of "
+#~ "Snelrijders te voegen worden in plaats daarvan bij de Stropers geplaatst. "
+#~ "Verre van een mislukking, werden de Stropers als tegenhangers van de "
+#~ "Verkenners gezien, ze kunnen de voettroepen ondersteunen met een boog "
+#~ "indien nodig. Stropers worden vaak gebruikt om vijanden in een positie te "
+#~ "brengen waarin ze worden omringd en verpletterd door Verdelers."
+
+#~ msgid ""
+#~ "Rangers are the elite of the Explorers, engaging in constant hit and run "
+#~ "attacks against an enemy army. Nimble as a goat and strong as a ram, they "
+#~ "prefer to coordinate multiple attacks at the same time, sending foes "
+#~ "running from their arrows only to be cut down by their axes. Given their "
+#~ "penchant for taking on only the most daring missions, Rangers are often "
+#~ "heroes to the common troopers, an image they do not try to dissuade."
+#~ msgstr ""
+#~ "De Commando's zijn de elite onder de Verkenners, ze voeren voortdurend "
+#~ "aanvallen uit tegen de vijandelijke strijdmacht. Behendig als een geit en "
+#~ "sterk als een ram, ze geven de voorkeur om meerdere aanvallen "
+#~ "tegelijkertijd uit te voeren, waardoor ze vijanden weg laten rennen van "
+#~ "hun pijlen om neergeslagen te worden door hun bijlen. Ze nemen alleen "
+#~ "gedurfde missies aan en dat maakt een Commando de held van de "
+#~ "strijdkrachten, een beeld dat ze graag in stand houden."
+
+#~ msgid ""
+#~ "Riders are excellent horsemen, able to shoot from horseback better than "
+#~ "most men can manage from foot. Disdaining the use of heavy armor, Riders "
+#~ "use their superior speed and agility to circle and harass their foes, "
+#~ "whittling down their numbers with relentless arrows."
+#~ msgstr ""
+#~ "Ruiters zijn uitstekend met het paard, ze kunnen beter schieten met pijl "
+#~ "en boog vanaf de rug van een paard dan de meeste mensen kunnen te voet. "
+#~ "Door het gebruik van zware bepantsering te weigeren, kunnen de Ruiters "
+#~ "hun superieure snelheid en behendigheid gebruiken om vijanden te "
+#~ "omcirkelen en aan te vallen, waarbij ze ontelbare meedogenloze pijlen "
+#~ "afschieten."
+
+#~ msgid ""
+#~ "Scorchers spend so much time experimenting with their weapons that they "
+#~ "smell constantly of ash and flame. Regarded with wariness by their fellow "
+#~ "troops, Scorchers can be easily located in battle by the cleared charred "
+#~ "area around them, a testament to the success of their experiments."
+#~ msgstr ""
+#~ "Verbranders spenderen zoveel tijd aan het experimenteren met hun wapens "
+#~ "dat ze constant naar as en vuur ruiken. Ze worden met behoedzaamheid "
+#~ "aangekeken door het Zandvolk en kunnen in de strijd makkelijk gevonden "
+#~ "worden door het verkoolde gebied om hen heen, een bewijs van het succes "
+#~ "van hun experimenten."
+
+#~ msgid ""
+#~ "Those Rovers who are proficient at scouting are elevated into the ranks "
+#~ "of the Skirmishers. Discarding their bow, Skirmishers focus on developing "
+#~ "their swiftness of foot to allow them to flow in and out of combat. They "
+#~ "are often used to harry the flanks of opposing forces, and it is said to "
+#~ "be easier to catch the wind in your hand than to catch a Skirmisher."
+#~ msgstr ""
+#~ "De Rovers die bedreven genoeg zijn in het verkennen, worden gepromoveerd "
+#~ "tot Strijders. Ze laten hun boog achter en richten zich op het vergroten "
+#~ "van hun snelheid te voet om snel in en uit de strijd te komen. Ze worden "
+#~ "vaak gebruikt om de flanken van de tegenstander te verzwakken, en er "
+#~ "wordt gezegd dat je makkelijker de wind in je hand vangt dan een Strijder."
+
+#~ msgid ""
+#~ "The Soldier forms the backbone of any Dunefolk foot advance. Many come "
+#~ "from noble or military families, and have spent most of their lives "
+#~ "training their craft. Given their intense focus on swordplay, they are "
+#~ "often sent against fortified enemy positions to create a breach for the "
+#~ "remaining troops to exploit. The sight of Soldiers on the march, shields "
+#~ "high, has caused many a defender to worry about the strength of their "
+#~ "walls."
+#~ msgstr ""
+#~ "De Soldaat vormt de ruggengraat van elke strijdmacht van het Zandvolk. "
+#~ "Velen komen uit nobele of militaire families en hebben het grootste deel "
+#~ "van hun leven hun vak geleerd. Gezien hun intense focus op zwaardvechten, "
+#~ "worden ze vaak gestuurd naar versterkte vijandelijke posities om een brug "
+#~ "voor de achtergebleven eenheden te vormen. De aanblik van Soldaten "
+#~ "tijdens de mars, hoge schilden die in een eenheid bewegen, heeft ervoor "
+#~ "gezorgd dat menig verdediger zich zorgen maakte over de sterkte van zijn "
+#~ "muren."
+
+#~ msgid ""
+#~ "Although the Dunefolk armies are known for their astonishing mobility and "
+#~ "fierce attack, they can be able defenders. Spearguard excel at holding "
+#~ "their ground, keeping opponents at bay with long, razor sharp spears. "
+#~ "Their preferred strategy is to gradually wear down enemies, until they "
+#~ "can be defeated in a vicious counter stroke."
+#~ msgstr ""
+#~ "Hoewel de strijdkrachten van het Zandvolk bekend staan om hun "
+#~ "verbluffende mobiliteit en heftige aanvalskracht, kunnen ze ook "
+#~ "verdedigers worden. De Speervechters blinken uit in het vasthouden van "
+#~ "veroverd gebied en kan tegenstanders op afstand houden met lange, "
+#~ "vlijmscherpe speren. Hun voorkeursstrategie is om vijanden geleidelijk "
+#~ "aan te vermoeien, totdat ze kunnen worden neergehaald in een krachtige "
+#~ "tegenaanval."
+
+#~ msgid ""
+#~ "Spread across the Dunefolk's lands are lonely towers and garrisons that "
+#~ "provide shelter to caravans and locals from bandits and monsters. These "
+#~ "bastions are defended by the most determined of soldiers, who have often "
+#~ "faced off against overwhelming odds only to repel the invaders. In an "
+#~ "army they can be trusted to hold any position or line, long after lesser "
+#~ "soldiers and men have fled in terror."
+#~ msgstr ""
+#~ "Verspreid over het land van het Zandvolk zijn eenzame torens en "
+#~ "garnizoenen die onderdak bieden aan handelaren en monsters. Deze "
+#~ "vestigingen worden verdedigd door de meest vastberaden soldaten, die "
+#~ "zelfs winnen wanneer de tegenstander in het voordeel is. In een "
+#~ "strijdkracht wekken ze vertrouwen omdat ze blijven staan terwijl mindere "
+#~ "eenheden zijn gevlucht van angst."
+
+#~ msgid ""
+#~ "Those Piercers who distinguish themselves in battle are given the "
+#~ "opportunity to prove themselves worthy of becoming a Sunderer. Those who "
+#~ "pass the trial are given the traditional barding for their horse, "
+#~ "distinguishing them from the rest of the Dunefolk cavalry. Consummate "
+#~ "horsemen, the Sunderers have long claimed they need only a single lance "
+#~ "strike to kill a man."
+#~ msgstr ""
+#~ "De Stekers die zich in de strijd onderscheiden, krijgen de kans om te "
+#~ "bewijzen dat ze het waard zijn om een Verdeler te worden. Degenen die "
+#~ "slagen voor het proces krijgen de traditionele kleden voor hun paard, "
+#~ "waardoor ze worden onderscheiden van de rest van de cavalerie van het "
+#~ "Duinvolk. De Verdelers beweerden al lang dat ze slechts één enkele steek "
+#~ "nodig hebben om een man te doden."
+
+#~ msgid ""
+#~ "Riders who demonstrate exceptional skill with the bow are made into "
+#~ "Swiftriders, spending hours every day practicing and building a rapport "
+#~ "with their steed. This has made them the fastest riders in the Dunefolk "
+#~ "armies, and a wise Warmaster uses this to their advantage."
+#~ msgstr ""
+#~ "Ruiters die buitengewone vaardigheden met de boog laten zien, promoveren "
+#~ "tot Snelruiters. Ze oefenen urenlang om een band op te bouwen met hun "
+#~ "paard. Dit heeft hen tot de snelste Ruiters in de Zandvolk strijdkracht "
+#~ "gemaakt, en een verstandige Oorlogsmeester gebruikt dit in hun voordeel."
+
+#~ msgid ""
+#~ "Armed with their sword and shield, Swordsman are warriors of some renown "
+#~ "among the Dunefolk armies. They have further refined their combat arts, "
+#~ "adding a powerful shield bash to knock back unsuspecting enemies. Though "
+#~ "few in number, their presence can be decisive in dislodging even the most "
+#~ "hardened redoubt."
+#~ msgstr ""
+#~ "Gewapend met hun zwaard en schild zijn Zwaardvechters redelijk bekend "
+#~ "onder de Duinvolk strijdkrachten. Ze hebben hun gevechtskunsten verfijnd "
+#~ "door een krachtige slag te krijgen om de nietsvermoedende vijanden te "
+#~ "vernietigen. Hoewel er maar weinig zijn, kan hun aanwezigheid "
+#~ "doorslaggevend zijn om zelfs de meest geharde vijand te verdrijven."
+
+#~ msgid ""
+#~ "Among every generation, a warrior elevates himself above his peers and "
+#~ "foes; They seem to be able to alter the destiny of the world themselves. "
+#~ "Often given the name Warmaster, these individuals are celebrated for "
+#~ "their strength and skill. Their travels and travails are told endlessly "
+#~ "around the campfire with the reverent tones of those that speak of living "
+#~ "legends."
+#~ msgstr ""
+#~ "Elke generatie verheft een krijger zichzelf boven zijn gelijken en "
+#~ "vijanden. Ze lijken in staat om de bestemming van de wereld zelf te "
+#~ "kunnen veranderen. Ze krijgen vaak de naam Oorlogsmeester en worden "
+#~ "gevierd om hun kracht en vaardigheden. Hun reizen en beproevingen worden "
+#~ "eindeloos verteld rond het kampvuur met de eerbiedige toon van iemand die "
+#~ "spreekt over levende legendes."
+
+#~ msgid ""
+#~ "The elite of the Swiftriders are the Windriders, horse archers of such "
+#~ "speed and dexterity that rumors are always spread that they have elven "
+#~ "blood. Irritated at such mystical nonsense, the Windriders can frequently "
+#~ "be found demonstrating their exceptional skill at the forefront of "
+#~ "battle, riding with great speed through the lines of battle to rain "
+#~ "arrows down upon the enemy."
+#~ msgstr ""
+#~ "De elite van de Snelruiters zijn de Windruiters, boogschutters die een "
+#~ "zodanige behendigheid en snelheid bezitten dat er geruchten verspreid "
+#~ "worden dat ze elvenbloed hebben. Geïrriteerd door dergelijke mystieke "
+#~ "onzin, kunnen de Windruiters vaak gevonden worden door hun uitzonderlijke "
+#~ "vaardigheden in de voorhoede van de strijd. Ze rijden met grote snelheid "
+#~ "over de tegenstander heen terwijl ze het pijlen laten regenen."
+
+#, fuzzy
+#~| msgid "Young Ogre"
+#~ msgid "Young Roc"
+#~ msgstr "Jonge Boeman"
 
 #~ msgid ""
 #~ "Champions among their fellow troops, the dwarven sentinels form the "
@@ -7382,9 +8029,6 @@ msgstr ""
 #~ "De zware infanterie is gemanteld in staal. Ze zijn uitermate robuust maar "
 #~ "traag..."
 
-#~ msgid "scimitar"
-#~ msgstr "kromzwaard"
-
 #~ msgid ""
 #~ "The weighted nets used by mermen in warfare are a difficult weapon to use "
 #~ "well; those who master it are valued and revered by their comrades. This "
@@ -7415,9 +8059,6 @@ msgstr ""
 #~ "Meermannen gebruiken deze wapens om troepen in het water de blokkeren, en "
 #~ "nog belangrijker om een gelijk speelveld te creëeren tegen de "
 #~ "landtroepen, die anders in een groot voordeel zijn."
-
-#~ msgid "Drake Slasher"
-#~ msgstr "Draakling Hakker"
 
 #~ msgid ""
 #~ "The great Drake Enforcers epitomize the raw strength of their kind. Long "

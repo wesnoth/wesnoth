@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-07-18 15:50+0300\n"
+"POT-Creation-Date: 2019-08-27 22:40+0300\n"
 "PO-Revision-Date: 2019-07-16 10:01-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -3362,8 +3362,8 @@ msgstr ""
 # File: src/hotkey_preferences_display.cpp, line: 169
 #. [button]: id=reset_option_values
 #. [button]: id=btn_reset_hotkeys
-#. [button]: id=revert_to_defaults
 #. [button]: id=orb_defaults
+#. [button]: id=revert_to_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:293
@@ -3539,7 +3539,7 @@ msgstr "Esperando mensagens"
 #: data/gui/window/mp_alerts_options.cfg:249
 #: data/gui/window/preferences.cfg:429
 #: data/gui/window/screenshot_notification.cfg:216
-#: data/gui/window/statistics_dialog.cfg:608
+#: data/gui/window/statistics_dialog.cfg:610
 #: data/gui/window/terrain_layers.cfg:434 data/gui/window/unit_list.cfg:447
 msgid "Close"
 msgstr "Fechar"
@@ -4334,7 +4334,7 @@ msgstr "Ordenar por ordem cronológica aproximada dos eventos da história"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:293
-#: src/gui/dialogs/multiplayer/lobby.cpp:451
+#: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Modifications"
 msgstr "Modificações"
 
@@ -4874,7 +4874,7 @@ msgstr "Descrição:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:473
+#: src/gui/dialogs/multiplayer/lobby.cpp:477
 msgid "Experience modifier:"
 msgstr "Modificador de experiência:"
 
@@ -4972,7 +4972,7 @@ msgstr "Ouro:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#: src/gui/dialogs/multiplayer/lobby.cpp:474
+#: src/gui/dialogs/multiplayer/lobby.cpp:478
 msgid "Gold per village:"
 msgstr "Ouro por aldeia:"
 
@@ -5073,7 +5073,7 @@ msgstr "Escolha um gerador de mapa:"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
-#: src/gui/dialogs/multiplayer/lobby.cpp:472
+#: src/gui/dialogs/multiplayer/lobby.cpp:476
 msgid "Settings"
 msgstr "Preferências"
 
@@ -6469,8 +6469,8 @@ msgstr ""
 msgid "Event"
 msgstr "Evento"
 
-#. [label]
 #. [widget]: id=label
+#. [label]
 #: data/gui/window/mp_alerts_options.cfg:154
 #: data/gui/window/preferences.cfg:346
 msgid "Sound"
@@ -6610,6 +6610,20 @@ msgstr "Turno mudou:"
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:199
 msgid "When a new turn has begun"
+msgstr "Quando um novo turno começou"
+
+#. [grid]
+#: data/gui/window/mp_alerts_options.cfg:200
+#, fuzzy
+#| msgid "Game data:"
+msgid "Game created:"
+msgstr "Dados do jogo:"
+
+#. [grid]
+#: data/gui/window/mp_alerts_options.cfg:200
+#, fuzzy
+#| msgid "When a new turn has begun"
+msgid "When a new game has been created"
 msgstr "Quando um novo turno começou"
 
 #. [button]: id=revert_to_defaults
@@ -7020,7 +7034,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/multiplayer/lobby.cpp:479
 msgid "Map size:"
 msgstr "Tamanho do mapa:"
 
@@ -7915,9 +7929,13 @@ msgstr "Limitar FPS"
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:275
+#, fuzzy
+#| msgid ""
+#| "Disabling this increases CPU usage to 100% but may slightly improve "
+#| "performance at high resolutions"
 msgid ""
-"Disabling this increases CPU usage to 100% but may slightly improve "
-"performance at high resolutions"
+"Disabling this increases CPU usage, but may slightly improve performance "
+"(requires restart to take effect)"
 msgstr ""
 "Desabilitar isso aumenta o uso da CPU para 100% mas aument aum pouco a "
 "performance em resoluções altas"
@@ -8392,9 +8410,10 @@ msgstr "Dano"
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
-"The first number in parentheses is the expected number of hitpoints.\n"
+"The first number in parentheses is the expected number of hitpoints "
+"inflicted/taken.\n"
 "The sum (or difference) of the two numbers in parentheses is the actual "
-"number of hitpoints."
+"number of hitpoints inflicted/taken."
 msgstr ""
 
 #. [column]
@@ -8405,6 +8424,15 @@ msgstr ""
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:568
 msgid "Hits"
+msgstr ""
+
+#. [column]
+#: data/gui/window/statistics_dialog.cfg:571
+msgid ""
+"stats dialog^Estimate of how much randomness of battles favored or "
+"disfavored this side.\n"
+"Values between 0 and 50 suggest the number of hits was less than expected.\n"
+"Values between 50 and 100 suggest the number of hits was more than expected."
 msgstr ""
 
 #. [button]: id=cancel
@@ -9034,7 +9062,7 @@ msgstr "O tamanho máximo de largura de texto é menor que 1."
 # File: src/text.cpp, line: 734
 # File: src/text.cpp, line: 734
 # File: src/text.cpp, line: 734
-#: src/font/text.cpp:761
+#: src/font/text.cpp:775
 msgid "The text contains invalid Pango markup: "
 msgstr "Este texto contém marcação Pango inválida: "
 
@@ -9713,7 +9741,7 @@ msgstr "Vulnerabilidades do atacante vs"
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 #: src/gui/dialogs/campaign_selection.cpp:318
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:460
 msgid "active_modifications^None"
 msgstr "Nenhum"
 
@@ -9883,8 +9911,8 @@ msgstr "desconhecido"
 # File: src/gui/dialogs/network_transmission.cpp, line: 56
 # File: src/hotkeys.cpp, line: 1191
 #: src/gui/dialogs/game_cache_options.cpp:139
-#: src/gui/dialogs/network_transmission.cpp:53
-#: src/gui/dialogs/network_transmission.cpp:54
+#: src/gui/dialogs/network_transmission.cpp:81
+#: src/gui/dialogs/network_transmission.cpp:82
 #: src/gui/dialogs/screenshot_notification.cpp:148
 msgid "unit_byte^B"
 msgstr "B"
@@ -10010,7 +10038,7 @@ msgstr "Desconhecido"
 # File: src/game_preferences_display.cpp, line: 1090
 # File: src/game_preferences_display.cpp, line: 1090
 #: src/gui/dialogs/game_stats.cpp:195 src/gui/dialogs/game_stats.cpp:198
-#: src/gui/dialogs/multiplayer/lobby.cpp:470
+#: src/gui/dialogs/multiplayer/lobby.cpp:474
 msgid "no"
 msgstr "não"
 
@@ -10019,7 +10047,7 @@ msgstr "não"
 # File: src/game_preferences_display.cpp, line: 1088
 # File: src/game_preferences_display.cpp, line: 1088
 #: src/gui/dialogs/game_stats.cpp:195 src/gui/dialogs/game_stats.cpp:198
-#: src/gui/dialogs/multiplayer/lobby.cpp:470
+#: src/gui/dialogs/multiplayer/lobby.cpp:474
 msgid "yes"
 msgstr "sim"
 
@@ -10056,27 +10084,27 @@ msgstr "Nome do Time"
 msgid "Side $side_number ($name)"
 msgstr "Lado $side_number ($name)"
 
-#: src/gui/dialogs/loading_screen.cpp:44
+#: src/gui/dialogs/loading_screen.cpp:43
 msgid "Building terrain rules"
 msgstr "Construíndo as regras do terreno"
 
-#: src/gui/dialogs/loading_screen.cpp:45
+#: src/gui/dialogs/loading_screen.cpp:44
 msgid "Reading files and creating cache"
 msgstr "Lendo arquivos e criando cache"
 
-#: src/gui/dialogs/loading_screen.cpp:46 src/gui/dialogs/loading_screen.cpp:49
+#: src/gui/dialogs/loading_screen.cpp:45 src/gui/dialogs/loading_screen.cpp:48
 msgid "Initializing display"
 msgstr "Inicializando gráficos"
 
-#: src/gui/dialogs/loading_screen.cpp:47
+#: src/gui/dialogs/loading_screen.cpp:46
 msgid "Reinitialize fonts for the current language"
 msgstr "Reinicializando fontes para a língua atual"
 
-#: src/gui/dialogs/loading_screen.cpp:48
+#: src/gui/dialogs/loading_screen.cpp:47
 msgid "Initializing teams"
 msgstr "Inicializando times"
 
-#: src/gui/dialogs/loading_screen.cpp:50
+#: src/gui/dialogs/loading_screen.cpp:49
 msgid "Loading game configuration"
 msgstr "Carregando as configurações do jogo"
 
@@ -10084,15 +10112,15 @@ msgstr "Carregando as configurações do jogo"
 # File: data/core/terrain.cfg, line: 446
 # File: data/core/terrain.cfg, line: 446
 # File: data/core/terrain.cfg, line: 446
-#: src/gui/dialogs/loading_screen.cpp:51
+#: src/gui/dialogs/loading_screen.cpp:50
 msgid "Loading data files"
 msgstr "Carregando arquivos do jogo"
 
-#: src/gui/dialogs/loading_screen.cpp:52
+#: src/gui/dialogs/loading_screen.cpp:51
 msgid "Loading level"
 msgstr "Carregando o nível"
 
-#: src/gui/dialogs/loading_screen.cpp:53
+#: src/gui/dialogs/loading_screen.cpp:52
 msgid "Initializing scripting engine"
 msgstr "Inicializando o mecanismo de scripts"
 
@@ -10100,15 +10128,15 @@ msgstr "Inicializando o mecanismo de scripts"
 # File: src/game_preferences_display.cpp, line: 192
 # File: src/game_preferences_display.cpp, line: 192
 # File: src/game_preferences_display.cpp, line: 192
-#: src/gui/dialogs/loading_screen.cpp:54
+#: src/gui/dialogs/loading_screen.cpp:53
 msgid "Initializing planning mode"
 msgstr "Inicializando modo de planejamento"
 
-#: src/gui/dialogs/loading_screen.cpp:55
+#: src/gui/dialogs/loading_screen.cpp:54
 msgid "Reading unit files"
 msgstr "Lendo arquivos de unidades"
 
-#: src/gui/dialogs/loading_screen.cpp:56
+#: src/gui/dialogs/loading_screen.cpp:55
 msgid "Loading units"
 msgstr "Carregando unidades"
 
@@ -10116,7 +10144,7 @@ msgstr "Carregando unidades"
 # File: data/gui/default/window/addon_uninstall_list.cfg, line: 51
 # File: data/gui/default/window/addon_uninstall_list.cfg, line: 51
 # File: data/gui/default/window/addon_uninstall_list.cfg, line: 51
-#: src/gui/dialogs/loading_screen.cpp:57
+#: src/gui/dialogs/loading_screen.cpp:56
 msgid "Searching for installed add-ons"
 msgstr "Procurando por add-ons"
 
@@ -10124,11 +10152,11 @@ msgstr "Procurando por add-ons"
 # File: data/gui/default/window/mp_create_game.cfg, line: 501
 # File: data/gui/default/window/mp_create_game.cfg, line: 501
 # File: data/gui/default/window/mp_create_game.cfg, line: 501
-#: src/gui/dialogs/loading_screen.cpp:58
+#: src/gui/dialogs/loading_screen.cpp:57
 msgid "Starting game"
 msgstr "Começando o jogo"
 
-#: src/gui/dialogs/loading_screen.cpp:59
+#: src/gui/dialogs/loading_screen.cpp:58
 msgid "Verifying cache"
 msgstr "Verificando cache"
 
@@ -10145,7 +10173,7 @@ msgstr "Verificando cache"
 # File: data/gui/default/window/mp_connect.cfg, line: 41
 # File: data/gui/default/window/mp_method_selection.cfg, line: 156
 # File: data/gui/default/window/mp_server_list.cfg, line: 49
-#: src/gui/dialogs/loading_screen.cpp:60
+#: src/gui/dialogs/loading_screen.cpp:59
 msgid "Connecting to server"
 msgstr "Conectando ao servidor"
 
@@ -10153,11 +10181,11 @@ msgstr "Conectando ao servidor"
 # File: data/gui/default/window/formula_debugger.cfg, line: 94
 # File: data/gui/default/window/formula_debugger.cfg, line: 94
 # File: data/gui/default/window/formula_debugger.cfg, line: 94
-#: src/gui/dialogs/loading_screen.cpp:61
+#: src/gui/dialogs/loading_screen.cpp:60
 msgid "Logging in"
 msgstr "Logando"
 
-#: src/gui/dialogs/loading_screen.cpp:62
+#: src/gui/dialogs/loading_screen.cpp:61
 msgid "Waiting for server"
 msgstr "Esperando pelo servidor"
 
@@ -10174,11 +10202,11 @@ msgstr "Esperando pelo servidor"
 # File: data/gui/default/window/mp_connect.cfg, line: 41
 # File: data/gui/default/window/mp_method_selection.cfg, line: 156
 # File: data/gui/default/window/mp_server_list.cfg, line: 49
-#: src/gui/dialogs/loading_screen.cpp:63
+#: src/gui/dialogs/loading_screen.cpp:62
 msgid "Connecting to redirected server"
 msgstr "Conectando ao servidor redirecionado"
 
-#: src/gui/dialogs/loading_screen.cpp:64
+#: src/gui/dialogs/loading_screen.cpp:63
 msgid "Waiting for next scenario"
 msgstr "Esperando pelo próximo cenário"
 
@@ -10186,11 +10214,11 @@ msgstr "Esperando pelo próximo cenário"
 # File: data/gui/default/window/mp_create_game.cfg, line: 501
 # File: data/gui/default/window/mp_create_game.cfg, line: 501
 # File: data/gui/default/window/mp_create_game.cfg, line: 501
-#: src/gui/dialogs/loading_screen.cpp:65
+#: src/gui/dialogs/loading_screen.cpp:64
 msgid "Getting game data"
 msgstr "Buscando data do jogo"
 
-#: src/gui/dialogs/loading_screen.cpp:66
+#: src/gui/dialogs/loading_screen.cpp:65
 msgid "Downloading lobby data"
 msgstr "Baixando data do saguão"
 
@@ -10278,11 +10306,11 @@ msgstr ""
 # File: src/gui/dialogs/lobby_main.cpp, line: 662
 # File: src/gui/dialogs/lobby_main.cpp, line: 662
 # File: src/gui/dialogs/lobby_main.cpp, line: 662
-#: src/gui/dialogs/multiplayer/lobby.cpp:391
+#: src/gui/dialogs/multiplayer/lobby.cpp:395
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Jogos: mostrando $num_shown de $num_total"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:411
+#: src/gui/dialogs/multiplayer/lobby.cpp:415
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Era: $era_name)"
 
@@ -10290,7 +10318,7 @@ msgstr "$game_name (Era: $era_name)"
 # File: src/gui/dialogs/addon/description.cpp, line: 47
 # File: src/gui/dialogs/addon/description.cpp, line: 47
 # File: src/gui/dialogs/addon/description.cpp, line: 47
-#: src/gui/dialogs/multiplayer/lobby.cpp:441
+#: src/gui/dialogs/multiplayer/lobby.cpp:445
 msgid "era_or_mod^not installed"
 msgstr "Não instalado"
 
@@ -10298,7 +10326,7 @@ msgstr "Não instalado"
 # File: data/gui/default/window/mp_create_game.cfg, line: 185
 # File: data/gui/default/window/mp_create_game.cfg, line: 185
 # File: data/gui/default/window/mp_create_game.cfg, line: 185
-#: src/gui/dialogs/multiplayer/lobby.cpp:444
+#: src/gui/dialogs/multiplayer/lobby.cpp:448
 msgid "Era"
 msgstr "Era"
 
@@ -10306,15 +10334,15 @@ msgstr "Era"
 # File: data/gui/default/window/lobby_main.cfg, line: 179
 # File: data/gui/default/window/lobby_main.cfg, line: 179
 # File: data/gui/default/window/lobby_main.cfg, line: 179
-#: src/gui/dialogs/multiplayer/lobby.cpp:476
+#: src/gui/dialogs/multiplayer/lobby.cpp:480
 msgid "Reloaded:"
 msgstr "Recarregado:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:477
+#: src/gui/dialogs/multiplayer/lobby.cpp:481
 msgid "Shared vision:"
 msgstr "Visão compartilhada:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:478
+#: src/gui/dialogs/multiplayer/lobby.cpp:482
 msgid "Shuffle sides:"
 msgstr "Times embaralhados:"
 
@@ -10322,7 +10350,7 @@ msgstr "Times embaralhados:"
 # File: data/gui/default/window/lobby_main.cfg, line: 186
 # File: data/gui/default/window/lobby_main.cfg, line: 186
 # File: data/gui/default/window/lobby_main.cfg, line: 186
-#: src/gui/dialogs/multiplayer/lobby.cpp:479
+#: src/gui/dialogs/multiplayer/lobby.cpp:483
 msgid "Time limit:"
 msgstr "Tempo limite:"
 
@@ -10333,11 +10361,11 @@ msgstr "Tempo limite:"
 # File: data/gui/default/window/mp_create_game.cfg, line: 321
 # File: data/gui/default/window/lobby_main.cfg, line: 178
 # File: data/gui/default/window/mp_create_game.cfg, line: 321
-#: src/gui/dialogs/multiplayer/lobby.cpp:480
+#: src/gui/dialogs/multiplayer/lobby.cpp:484
 msgid "Use map settings:"
 msgstr "Usar configurações do mapa:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:488
+#: src/gui/dialogs/multiplayer/lobby.cpp:492
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -10349,7 +10377,7 @@ msgstr ""
 # File: src/gui/dialogs/lobby_main.cpp, line: 705
 # File: src/gui/dialogs/lobby_main.cpp, line: 705
 # File: src/gui/dialogs/lobby_main.cpp, line: 705
-#: src/gui/dialogs/multiplayer/lobby.cpp:513
+#: src/gui/dialogs/multiplayer/lobby.cpp:517
 msgid "Observers allowed"
 msgstr "Observadores permitidos"
 
@@ -10357,7 +10385,7 @@ msgstr "Observadores permitidos"
 # File: src/gui/dialogs/lobby_main.cpp, line: 708
 # File: src/gui/dialogs/lobby_main.cpp, line: 708
 # File: src/gui/dialogs/lobby_main.cpp, line: 708
-#: src/gui/dialogs/multiplayer/lobby.cpp:516
+#: src/gui/dialogs/multiplayer/lobby.cpp:520
 msgid "Observers not allowed"
 msgstr "Observadores não permitidos"
 
@@ -10365,11 +10393,11 @@ msgstr "Observadores não permitidos"
 # File: data/gui/default/window/lobby_main.cfg, line: 339
 # File: data/gui/default/window/lobby_main.cfg, line: 339
 # File: data/gui/default/window/lobby_main.cfg, line: 339
-#: src/gui/dialogs/multiplayer/lobby.cpp:791
+#: src/gui/dialogs/multiplayer/lobby.cpp:795
 msgid "lobby"
 msgstr "saguão"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:951
+#: src/gui/dialogs/multiplayer/lobby.cpp:955
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -10655,7 +10683,7 @@ msgstr "Todos os Cenários"
 # File: src/gui/dialogs/game_load.cpp, line: 310
 # File: src/gui/dialogs/game_load.cpp, line: 310
 #: src/gui/dialogs/statistics_dialog.cpp:181
-#: src/gui/dialogs/statistics_dialog.cpp:338
+#: src/gui/dialogs/statistics_dialog.cpp:341
 msgid "This Turn"
 msgstr "Este Turno"
 
@@ -10663,21 +10691,18 @@ msgstr "Este Turno"
 msgid "Actual hit rates, by chance to hit:"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:327
+#: src/gui/dialogs/statistics_dialog.cpp:219
+msgid "(no attacks have taken place yet)"
+msgstr ""
+
+#: src/gui/dialogs/statistics_dialog.cpp:328
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
-"The first number in parentheses is the expected number of hits.\n"
+"The first number in parentheses is the expected number of hits inflicted/"
+"taken.\n"
 "The sum (or difference) of the two numbers in parentheses is the actual "
-"number of hits."
-msgstr ""
-
-#: src/gui/dialogs/statistics_dialog.cpp:342
-msgid ""
-"stats dialog^Estimate of how much randomness of battles favored or "
-"disfavored this side.\n"
-"Values between 0 and 50 suggest the number of hits was less than expected."
-"Values between 50 and 100 suggest the number of hits was more than expected."
+"number of hits inflicted/taken."
 msgstr ""
 
 #
@@ -12648,11 +12673,19 @@ msgstr "Falar com Aliados"
 msgid "Speak to All"
 msgstr "Falar com Todos"
 
+#: src/hotkey/hotkey_command.cpp:278
+msgid "Help about save-loading"
+msgstr ""
+
+#: src/hotkey/hotkey_command.cpp:278
+msgid "Hint: save-loading is unnecessary"
+msgstr ""
+
 #
 # File: src/hotkeys.cpp, line: 236
 # File: src/hotkeys.cpp, line: 236
 # File: src/hotkeys.cpp, line: 236
-#: src/hotkey/hotkey_command.cpp:278
+#: src/hotkey/hotkey_command.cpp:279
 msgid "View Chat Log"
 msgstr "Ver log da Conversa"
 
@@ -12660,7 +12693,7 @@ msgstr "Ver log da Conversa"
 # File: src/hotkeys.cpp, line: 238
 # File: src/hotkeys.cpp, line: 238
 # File: src/hotkeys.cpp, line: 238
-#: src/hotkey/hotkey_command.cpp:279
+#: src/hotkey/hotkey_command.cpp:280
 msgid "Enter User Command"
 msgstr "Digitar Comando do Usuário"
 
@@ -12668,7 +12701,7 @@ msgstr "Digitar Comando do Usuário"
 # File: src/hotkeys.cpp, line: 239
 # File: src/hotkeys.cpp, line: 239
 # File: src/hotkeys.cpp, line: 239
-#: src/hotkey/hotkey_command.cpp:280
+#: src/hotkey/hotkey_command.cpp:281
 msgid "Custom Command"
 msgstr "Comando Customizado"
 
@@ -12676,7 +12709,7 @@ msgstr "Comando Customizado"
 # File: src/hotkeys.cpp, line: 240
 # File: src/hotkeys.cpp, line: 240
 # File: src/hotkeys.cpp, line: 240
-#: src/hotkey/hotkey_command.cpp:281
+#: src/hotkey/hotkey_command.cpp:282
 msgid "Run Formula"
 msgstr "Executar Fórmula"
 
@@ -12684,7 +12717,7 @@ msgstr "Executar Fórmula"
 # File: src/hotkeys.cpp, line: 241
 # File: src/hotkeys.cpp, line: 241
 # File: src/hotkeys.cpp, line: 241
-#: src/hotkey/hotkey_command.cpp:282
+#: src/hotkey/hotkey_command.cpp:283
 msgid "Clear Messages"
 msgstr "Apagar mensagens"
 
@@ -12692,7 +12725,7 @@ msgstr "Apagar mensagens"
 # File: src/hotkeys.cpp, line: 237
 # File: src/hotkeys.cpp, line: 237
 # File: src/hotkeys.cpp, line: 237
-#: src/hotkey/hotkey_command.cpp:284
+#: src/hotkey/hotkey_command.cpp:285
 msgid "Change Language"
 msgstr "Mudar Idioma"
 
@@ -12700,7 +12733,7 @@ msgstr "Mudar Idioma"
 # File: src/hotkeys.cpp, line: 242
 # File: src/hotkeys.cpp, line: 242
 # File: src/hotkeys.cpp, line: 242
-#: src/hotkey/hotkey_command.cpp:285
+#: src/hotkey/hotkey_command.cpp:286
 msgid "Refresh WML"
 msgstr "Atualizar WML"
 
@@ -12708,7 +12741,7 @@ msgstr "Atualizar WML"
 # File: src/hotkeys.cpp, line: 243
 # File: src/hotkeys.cpp, line: 243
 # File: src/hotkeys.cpp, line: 243
-#: src/hotkey/hotkey_command.cpp:286
+#: src/hotkey/hotkey_command.cpp:287
 msgid "Next Tip of the Day"
 msgstr "Próxima Dica do Dia"
 
@@ -12716,7 +12749,7 @@ msgstr "Próxima Dica do Dia"
 # File: src/hotkeys.cpp, line: 244
 # File: src/hotkeys.cpp, line: 244
 # File: src/hotkeys.cpp, line: 244
-#: src/hotkey/hotkey_command.cpp:287
+#: src/hotkey/hotkey_command.cpp:288
 msgid "Previous Tip of the Day"
 msgstr "Dica do Dia Anterior"
 
@@ -12724,7 +12757,7 @@ msgstr "Dica do Dia Anterior"
 # File: src/hotkeys.cpp, line: 245
 # File: src/hotkeys.cpp, line: 245
 # File: src/hotkeys.cpp, line: 245
-#: src/hotkey/hotkey_command.cpp:288
+#: src/hotkey/hotkey_command.cpp:289
 msgid "Start Tutorial"
 msgstr "Iniciar Tutorial"
 
@@ -12732,7 +12765,7 @@ msgstr "Iniciar Tutorial"
 # File: src/hotkeys.cpp, line: 246
 # File: src/hotkeys.cpp, line: 246
 # File: src/hotkeys.cpp, line: 246
-#: src/hotkey/hotkey_command.cpp:289
+#: src/hotkey/hotkey_command.cpp:290
 msgid "Start Campaign"
 msgstr "Iniciar Campanha"
 
@@ -12740,7 +12773,7 @@ msgstr "Iniciar Campanha"
 # File: src/hotkeys.cpp, line: 247
 # File: src/hotkeys.cpp, line: 247
 # File: src/hotkeys.cpp, line: 247
-#: src/hotkey/hotkey_command.cpp:290
+#: src/hotkey/hotkey_command.cpp:291
 msgid "Start Multiplayer Game"
 msgstr "Iniciar Jogo Multiplayer"
 
@@ -12748,7 +12781,7 @@ msgstr "Iniciar Jogo Multiplayer"
 # File: src/hotkeys.cpp, line: 248
 # File: src/hotkeys.cpp, line: 248
 # File: src/hotkeys.cpp, line: 248
-#: src/hotkey/hotkey_command.cpp:291
+#: src/hotkey/hotkey_command.cpp:292
 msgid "Manage Add-ons"
 msgstr "Administrar Add-ons"
 
@@ -12756,7 +12789,7 @@ msgstr "Administrar Add-ons"
 # File: src/hotkeys.cpp, line: 248
 # File: src/hotkeys.cpp, line: 248
 # File: src/hotkeys.cpp, line: 248
-#: src/hotkey/hotkey_command.cpp:292
+#: src/hotkey/hotkey_command.cpp:293
 msgid "Manage Cores"
 msgstr "Administrar Módulos"
 
@@ -12764,7 +12797,7 @@ msgstr "Administrar Módulos"
 # File: src/hotkeys.cpp, line: 249
 # File: src/hotkeys.cpp, line: 249
 # File: src/hotkeys.cpp, line: 249
-#: src/hotkey/hotkey_command.cpp:293
+#: src/hotkey/hotkey_command.cpp:294
 msgid "Start Editor"
 msgstr "Iniciar Editor"
 
@@ -12772,7 +12805,7 @@ msgstr "Iniciar Editor"
 # File: src/hotkeys.cpp, line: 250
 # File: src/hotkeys.cpp, line: 250
 # File: src/hotkeys.cpp, line: 250
-#: src/hotkey/hotkey_command.cpp:294
+#: src/hotkey/hotkey_command.cpp:295
 msgid "Show Credits"
 msgstr "Mostrar Créditos"
 
@@ -12780,7 +12813,7 @@ msgstr "Mostrar Créditos"
 # File: src/gui/dialogs/game_load.cpp, line: 300
 # File: src/gui/dialogs/game_load.cpp, line: 300
 # File: src/gui/dialogs/game_load.cpp, line: 300
-#: src/hotkey/hotkey_command.cpp:295
+#: src/hotkey/hotkey_command.cpp:296
 msgid "Start Test Scenario"
 msgstr "Iniciar Cenário de Teste"
 
@@ -12788,15 +12821,15 @@ msgstr "Iniciar Cenário de Teste"
 # File: src/hotkeys.cpp, line: 251
 # File: src/hotkeys.cpp, line: 251
 # File: src/hotkeys.cpp, line: 251
-#: src/hotkey/hotkey_command.cpp:297
+#: src/hotkey/hotkey_command.cpp:298
 msgid "Show Helptip"
 msgstr "Mostrar Helptip"
 
-#: src/hotkey/hotkey_command.cpp:299
+#: src/hotkey/hotkey_command.cpp:300
 msgid "Show Lua Console"
 msgstr "Mostrar Console Lua"
 
-#: src/hotkey/hotkey_command.cpp:302
+#: src/hotkey/hotkey_command.cpp:303
 msgid "Unrecognized Command"
 msgstr "Comando não Reconhecido"
 

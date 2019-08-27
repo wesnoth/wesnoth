@@ -171,14 +171,9 @@ Wesnoth\-Version)
 .br
 Beispiel: \fBversions_accepted="*"\fP akzeptiert alle Versionen.
 .TP 
-\fBuser_handler\fP
-Der Name der zu verwendenden Nutzerverwaltung. Momentan sind als
-Nutzerverwaltungen \fBforum\fP (um via wesnothd eine Verbindung zu einer phpbb
-Forum Datenbank aufzubauen) und \fBsample\fP (eine Beispielimplementierung der
-Nutzerverwaltungsschnittstelle, diese dient nur als Beispiel und sollte
-nicht genutzt werden) verfügbar. Standardmäßig wird die Nutzerverwaltung
-\fBforum\fP verwendet. Außerdem muss ein \fB[user_handler]\fP angelegt werden. Der
-Aufbau von diesem ist weiter unten beschrieben.
+\fBdeny_unregistered_login\fP
+Whether to prevent users who are not registered with the \fBuser_handler\fP
+being used from logging in. (default: false)
 .
 .SS "Globale Elemente:"
 .
@@ -220,63 +215,52 @@ den angegebenen Server weiterzuleiten. Es werden die gleichen Schlüssel wie
 bei \fB[redirect]\fP akzeptiert.
 .RE
 .P
-\fB[user_handler]\fP Dies Konfiguriert die Nutzerverwaltung. Die verwendbaren
-Schlüssel hängen davon ab, welche Nutzerverwaltung beim \fBuser_handler\fP
-Schlüssel festgelegt wurde. Ist kein \fB[user_handler]\fP\-Bereich vorhanden, so
-ist es nicht möglich registrierte Nutzernamen auf dem Server zu verwenden.
+\fB[user_handler]\fP Configures the user handler. Available keys vary depending
+on which user handler is set with the \fBuser_handler\fP key. If no
+\fB[user_handler]\fP section is present in the configuration the server will
+run without any nick registration service. All additional tables that are
+needed for the forum_user_handler to function can be found in
+table_definitions.sql in the Wesnoth source repository.
 .RS
 .TP 
 \fBdb_host\fP
-(für user_handler=forum) Der Hostname des Datenbank\-Servers.
+The hostname of the database server
 .TP 
 \fBdb_name\fP
-(für user_handler=forum) Der Name der zu nutzenden Datenbank.
+The name of the database
 .TP 
 \fBdb_user\fP
-(für user_handler=forum) Der Benutzername, der zur Anmeldung an der
-Datenbank verwendet werden soll.
+The name of the user under which to log into the database
 .TP 
 \fBdb_password\fP
-(für user_handler=forum) Das zugehörige Passwort für diesen Benutzer.
+This user's password
 .TP 
 \fBdb_users_table\fP
-(für user_handler=forum) Der Name der Tabelle, in der das phpbb Forum die
-Nutzerdaten ablegt. Dies ist höchstwahrscheinlich
-<table\-prefix>_users (z.B. phpbb3_users).
+The name of the table in which your phpbb forums saves its user data. Most
+likely this will be <table\-prefix>_users (e.g. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
-(für user_handler=forum) Der Name der Tabelle, in der wesnothd spezifische
-Nutzerdaten abgelegt werden sollen. Diese Tabelle muss manuell angelegt
-werden. Dies erfolgt z.B. mit einem Befehl wie diesem: \fBCREATE TABLE
-<table\-name>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
-UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
-0);\fP
+The name of the table in which wesnothd will save its own data about users.
 .TP 
-\fBuser_expiration\fP
-(für user_handler=sample) Zeit (in Tagen) nach der ein registrierter
-Benutzername verfällt.
+\fBdb_game_info_table\fP
+The name of the table in which wesnothd will save its own data about games.
+.TP 
+\fBdb_game_player_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+players in a game.
+.TP 
+\fBdb_game_modification_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+modifications used in a game.
+.TP 
+\fBdb_user_group_table\fP
+The name of the table in which your phpbb forums saves its user group
+data. Most likely this will be <table\-prefix>_user_group
+(e.g. phpbb3_user_group).
+.TP 
+\fBmp_mod_group\fP
+The ID of the forum group to be considered as having moderation authority.
 .RE
-.P
-\fB[mail]\fP Konfiguriert einen SMTP\-Server über den die Nutzerverwaltung
-Benachrichtigungen verschicken kann. Dies wird momentan nur von der
-Nutzerverwaltung »sample« verwendet.
-.RS
-.TP 
-\fBserver\fP
-Der Hostname des Mail\-Servers.
-.TP 
-\fBusername\fP
-Der Benutzername mit welchem man sich beim Mail\-Server anmeldet.
-.TP 
-\fBpassword\fP
-Das Passwort dieses Benutzers.
-.TP 
-\fBfrom_address\fP
-Die Antwortadresse für ausgehende Mails.
-.TP 
-\fBmail_port\fP
-Der Port, auf welchem der Mailserver arbeitet. Standardmäßig wird Port 25
-verwendet.
 .
 .SH RÜCKGABEWERT
 .
@@ -316,3 +300,4 @@ Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110\-1301, USA.
 .SH ANDERE
 .
 \fBwesnoth\fP(6)
+

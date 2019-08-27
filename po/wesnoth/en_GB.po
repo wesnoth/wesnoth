@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-07-18 15:51+0300\n"
+"POT-Creation-Date: 2019-08-27 22:41+0300\n"
 "PO-Revision-Date: 2019-07-08 12:17+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -341,71 +341,6 @@ msgstr "Joystick: number of the thrust axis"
 msgid "Joystick: deadzone of the thruster"
 msgstr "Joystick: dead-zone of the thruster"
 
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:28
-msgid "Lvl 0"
-msgstr ""
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:31
-msgid "Undead"
-msgstr ""
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:36
-#: src/help/help_topic_generators.cpp:439
-#: src/help/help_topic_generators.cpp:462
-msgid "Traits"
-msgstr "Traits"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:39
-#, fuzzy
-#| msgid "Attack"
-#| msgid_plural "Attacks"
-msgid "Attacks"
-msgstr "Attack"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:51
-#, fuzzy
-#| msgid "Choose Orb/Minimap Colors"
-msgid "Choose a Corpse"
-msgstr "Choose Orb/Minimap Colours"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:66
-msgid "Recruit"
-msgstr "Recruit"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:67
-#: data/scenario-test.cfg:1074
-msgid "Cancel"
-msgstr "Cancel"
-
-#. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:78
-msgid "HP: "
-msgstr ""
-
-#. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:78
-msgid "MP: "
-msgstr ""
-
-#. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:78
-msgid "XP: "
-msgstr "XP: "
-
-#. [lua]: postshow
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:141
-#, fuzzy
-#| msgid "There are no save files to load"
-msgid "There are no corpses available."
-msgstr "There are no save files to load"
-
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [lua]: postshow
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:145
-#: src/menu_events.cpp:315
-msgid "You do not have enough gold to recruit that unit"
-msgstr "You do not have enough gold to recruit that unit"
-
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
@@ -454,37 +389,37 @@ msgid "Artwork and Graphics"
 msgstr "Artwork and Graphics"
 
 #. [about]
-#: data/core/about.cfg:749
+#: data/core/about.cfg:753
 msgid "Music"
 msgstr "Music"
 
 #. [about]
-#: data/core/about.cfg:786
+#: data/core/about.cfg:790
 msgid "Sound Effects"
 msgstr "Sound Effects"
 
 #. [about]
-#: data/core/about.cfg:810
+#: data/core/about.cfg:814
 msgid "Campaign Design"
 msgstr "Campaign Design"
 
 #. [about]
-#: data/core/about.cfg:896
+#: data/core/about.cfg:900
 msgid "Multiplayer Maps and Balancing"
 msgstr "Multiplayer Maps and Balancing"
 
 #. [about]
-#: data/core/about.cfg:941
+#: data/core/about.cfg:945
 msgid "Packagers"
 msgstr "Packagers"
 
 #. [about]
-#: data/core/about.cfg:1048
+#: data/core/about.cfg:1052
 msgid "Miscellaneous Contributors"
 msgstr "Miscellaneous Contributors"
 
 #. [about]
-#: data/core/about.cfg:1742
+#: data/core/about.cfg:1746
 msgid "Bots"
 msgstr "Bots"
 
@@ -739,23 +674,23 @@ msgid "Turkish Translation"
 msgstr "Turkish Translation"
 
 #. [about]
-#: data/core/about_i18n.cfg:1680
+#: data/core/about_i18n.cfg:1683
 msgid "Ukrainian Translation"
 msgstr "Ukrainian Translation"
 
 #. [about]
-#: data/core/about_i18n.cfg:1696
+#: data/core/about_i18n.cfg:1699
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valencian (southern Catalan) Translation"
 
 #. [about]
-#: data/core/about_i18n.cfg:1709
+#: data/core/about_i18n.cfg:1712
 msgid "Vietnamese Translation"
 msgstr "Vietnamese Translation"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1729
+#: data/core/about_i18n.cfg:1732
 msgid "RACV’s Translation"
 msgstr "RACV’s Translation"
 
@@ -2767,8 +2702,21 @@ msgstr ""
 "Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,"
 "Ziyad,Zubayr,Zuhayr"
 
+#: data/core/macros/names.cfg:144
+msgid ""
+"Abiha,Afaf,A'isha,Ajda,Aliya,Amira,Ashraqat,Atikah,Azra,Boutheina,Bushra,"
+"Chaima,Cynthia,Dalal,Dalia,Eliana,Esma,Farida,Fatima,Feyrouz,Habiba,Hafsa,"
+"Hajra,Halima,Hamida,Hanifa,Havva,Hayat,Hessa,Ibtisam,Ibtissam,Inaam,Jamila,"
+"Jawahir,Jena,Jumana,Kareena,Karima,Katya,Khadija,Khairunnisa,Khawla,Khawlah,"
+"Lama,Lamia,Latifa,Layal,Layan,Leila,Lina,Lulwa,Madiha,Maha,Mahmuna,Mai,"
+"Malika,Marwa,Maryam,Maya,Maysoon,Melissa,Nadia,Nafisa,Nahla,Naila,Najat,"
+"Nasim,Nasrin,Nejla,Nezha,Niusha,Qistina,Rahima,Rana,Rashida,Reem,Ruqayya,"
+"Saadia,Sabiha,Safiya,Sahar,Saida,Sajida,Sakhra,Salma,Samira,Sarah,Shahd,"
+"Shatha,Sherine,Shumaila,Sumaya,Taslima,Umm,Yara,Yasmin,Zahra,Zakiya,Zaynab"
+msgstr ""
+
 #. Generator for male dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:145
+#: data/core/macros/names.cfg:146
 msgid ""
 "\n"
 "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{name_mid}\n"
@@ -2799,7 +2747,7 @@ msgstr ""
 "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 
 #. Generator for female dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:156
+#: data/core/macros/names.cfg:157
 msgid ""
 "\n"
 "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{surname}\n"
@@ -2855,7 +2803,7 @@ msgstr ""
 "riya|ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|"
 "kib\n"
 
-#: data/core/macros/names.cfg:176
+#: data/core/macros/names.cfg:177
 msgid ""
 "Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
 "Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
@@ -2880,7 +2828,7 @@ msgstr ""
 "Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 
 #. Generator for saurian names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:178
+#: data/core/macros/names.cfg:179
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -2897,26 +2845,26 @@ msgstr ""
 "Xe|Xi|Zan|Zil|Zzu\n"
 "suffix=ta|ir|az|ix|za|trax|il|le|esz|izs|ezz|irr|asch|ez|is|iss|azz\n"
 "centre=ix|’Kza|tra|na|an|ex|ssa|zzi|’Usz\n"
-
-#: data/core/macros/names.cfg:187
-msgid ""
-"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
-"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
-"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
-"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
-"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
-"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
-"Triton,Vizi,Vodnik,Vourukasa"
-msgstr ""
-"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
-"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
-"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
-"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
-"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
-"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
-"Triton,Vizi,Vodnik,Vourukasa"
 
 #: data/core/macros/names.cfg:188
+msgid ""
+"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
+"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
+"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
+"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
+"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
+"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
+"Triton,Vizi,Vodnik,Vourukasa"
+msgstr ""
+"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
+"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
+"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
+"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
+"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
+"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
+"Triton,Vizi,Vodnik,Vourukasa"
+
+#: data/core/macros/names.cfg:189
 msgid ""
 "Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
 "Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
@@ -2929,7 +2877,7 @@ msgstr ""
 "Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 
 #. Generator for merman names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:190
+#: data/core/macros/names.cfg:191
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -2948,7 +2896,7 @@ msgstr ""
 "centre=la|ma|ri|sei|te|ka|li|cer|tu|ni|ki|na|ga|si\n"
 
 #. Generator for mermaid names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:197
+#: data/core/macros/names.cfg:198
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -2963,24 +2911,24 @@ msgstr ""
 "Pi|Se|Ste|Ma|The|Ti|Va|Ve\n"
 "suffix=me|pe|gia|noe|dna|la|ris|ta|tea|va|mo|pe|riam|riel|na|ra|tea\n"
 "centre=ophe|phri|tri|phro|di|si|xie|ce|ty|la|me|ro|co|mar|ran|then|la|ga\n"
-
-#: data/core/macros/names.cfg:206
-msgid ""
-"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
-"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
-"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
-"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
-"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
-"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
-msgstr ""
-"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
-"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
-"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
-"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
-"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
-"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 
 #: data/core/macros/names.cfg:207
+msgid ""
+"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
+"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
+"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
+"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
+"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
+"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
+msgstr ""
+"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
+"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
+"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
+"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
+"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
+"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
+
+#: data/core/macros/names.cfg:208
 msgid ""
 "Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
 "Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
@@ -2999,7 +2947,7 @@ msgstr ""
 "Zsekp"
 
 #. Generator for male naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:209
+#: data/core/macros/names.cfg:210
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3018,7 +2966,7 @@ msgstr ""
 "iaz|on|sal|ol|kil|oz|ail|al|nis|rak|lel|nas|kon|ekp\n"
 
 #. Generator for female naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:215
+#: data/core/macros/names.cfg:216
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3036,7 +2984,7 @@ msgstr ""
 "suffix=asse|mailia|ilis|ana|ama|ssa|ssilai|zi|xias|lai|maissa|bra|lin|lina|"
 "na|bra|aa|lia|lai|laila|na|pkne|alsp|ekp\n"
 
-#: data/core/macros/names.cfg:223
+#: data/core/macros/names.cfg:224
 msgid ""
 "Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
 "Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
@@ -3053,7 +3001,7 @@ msgstr ""
 "Urkark"
 
 #. Generator for ogre names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:225
+#: data/core/macros/names.cfg:226
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3067,7 +3015,7 @@ msgstr ""
 "Ker|Kil|King|Kor|Kru|Kur|Mar|Mer|Nal|Trak|Urk\n"
 "suffix=ark|ort|alk|arm|kuk|kak|ukk|nak|ta|k|rok|rar|kon|gak|nik\n"
 
-#: data/core/macros/names.cfg:233
+#: data/core/macros/names.cfg:234
 msgid ""
 "Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
 "Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
@@ -3136,7 +3084,7 @@ msgstr ""
 "Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 
 #. Generator for orc names
-#: data/core/macros/names.cfg:235
+#: data/core/macros/names.cfg:236
 msgid ""
 "\n"
 "main={starting_consonnant}{vowel}{consonnant}{vowel}{ending_consonnant}|"
@@ -3164,7 +3112,7 @@ msgstr ""
 "ending_consonnant=b|g|r|sh|k\n"
 "ending_vowel=o|u\n"
 
-#: data/core/macros/names.cfg:247
+#: data/core/macros/names.cfg:248
 msgid ""
 "Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
 "Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
@@ -3177,7 +3125,7 @@ msgstr ""
 "Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 
 #. Generator for troll names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:249
+#: data/core/macros/names.cfg:250
 msgid ""
 "\n"
 "main={short_name}|{short_name}|{short_name}|{short_name} {short_name}\n"
@@ -3197,7 +3145,7 @@ msgstr ""
 "beginning=Ä|Ü|A|U\n"
 "suffix=rb|g|gh|k|rf|kk|r|g|th|h|rg\n"
 
-#: data/core/macros/names.cfg:260
+#: data/core/macros/names.cfg:261
 msgid ""
 "Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
 "Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
@@ -3226,7 +3174,7 @@ msgstr ""
 "Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 
 #. Generator for wose names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:262
+#: data/core/macros/names.cfg:263
 msgid ""
 "\n"
 "main={prefix}{centre}{centre}{suffix}|{prefix}{centre}{centre}{centre}"
@@ -3252,7 +3200,7 @@ msgstr ""
 "suffix=men|drum|tor|num|lad|de|ak|lol|dum|tam|nur|dium|deum|bil|rook|relm|"
 "dium|numm|dan|doom|tum|din\n"
 
-#: data/core/macros/names.cfg:271
+#: data/core/macros/names.cfg:272
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
@@ -3261,7 +3209,7 @@ msgstr ""
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 
 #. Generator for the base names of features assigned by the random map generator; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:273
+#: data/core/macros/names.cfg:274
 msgid ""
 "\n"
 "main={prefix}{middle}{suffix}\n"
@@ -4090,7 +4038,7 @@ msgstr "No"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:628
+#: src/hotkey/command_executor.cpp:632
 msgid "Screenshot"
 msgstr "Screenshot"
 
@@ -4135,7 +4083,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr "Invalid deprecation level $level (should be 1-4)"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:905
+#: data/lua/wml-tags.lua:912
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Invalid deprecation level (should be 1-4)"
 
@@ -4220,6 +4168,10 @@ msgstr ""
 msgid "OK"
 msgstr "OK"
 
+#: data/scenario-test.cfg:1074
+msgid "Cancel"
+msgstr "Cancel"
+
 #. [language]
 #: data/scenario-test.cfg:4155
 msgid "very long"
@@ -4231,92 +4183,92 @@ msgid "electrical"
 msgstr "electrical"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:426 data/themes/_initial.cfg:586
+#: data/themes/_initial.cfg:428 data/themes/_initial.cfg:588
 msgid "Play"
 msgstr "Play"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:427 data/themes/_initial.cfg:587
+#: data/themes/_initial.cfg:429 data/themes/_initial.cfg:589
 msgid "continuous replay"
 msgstr "continuous replay"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:441 data/themes/_initial.cfg:600
+#: data/themes/_initial.cfg:443 data/themes/_initial.cfg:602
 msgid "Stop"
 msgstr "Stop"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:442
+#: data/themes/_initial.cfg:444
 msgid "pause after current move"
 msgstr "pause after current move"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:457 data/themes/_initial.cfg:614
+#: data/themes/_initial.cfg:459 data/themes/_initial.cfg:616
 msgid "Reset"
 msgstr "Reset"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:458 data/themes/_initial.cfg:615
+#: data/themes/_initial.cfg:460 data/themes/_initial.cfg:617
 msgid "reset to beginning"
 msgstr "reset to beginning"
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:473 data/themes/_initial.cfg:628
+#: data/themes/_initial.cfg:475 data/themes/_initial.cfg:630
 msgid "Next Turn"
 msgstr "Next Turn"
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:474 data/themes/_initial.cfg:629
+#: data/themes/_initial.cfg:476 data/themes/_initial.cfg:631
 msgid "play turn"
 msgstr "play turn"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:489 data/themes/_initial.cfg:642
+#: data/themes/_initial.cfg:491 data/themes/_initial.cfg:644
 msgid "Next Side"
 msgstr "Next Side"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:490 data/themes/_initial.cfg:643
+#: data/themes/_initial.cfg:492 data/themes/_initial.cfg:645
 msgid "play side turn"
 msgstr "play side turn"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:504 data/themes/_initial.cfg:656
+#: data/themes/_initial.cfg:506 data/themes/_initial.cfg:658
 msgid "Next Move"
 msgstr "Next Move"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:505 data/themes/_initial.cfg:657
+#: data/themes/_initial.cfg:507 data/themes/_initial.cfg:659
 msgid "play single move"
 msgstr "play single move"
 
 #. [menu]: id=show-what
-#: data/themes/_initial.cfg:517 data/themes/_initial.cfg:669
+#: data/themes/_initial.cfg:519 data/themes/_initial.cfg:671
 msgid "Point of view"
 msgstr "Point of view"
 
 #. [action]: id=button-continue
-#: data/themes/_initial.cfg:528
+#: data/themes/_initial.cfg:530
 msgid "Continue Play"
 msgstr "Continue Play"
 
 #. [action]: id=button-continue
-#: data/themes/_initial.cfg:529
+#: data/themes/_initial.cfg:531
 msgid "Exit the replay mode and continue playing normally."
 msgstr "Exit the replay mode and continue playing normally."
 
 #. [action]: id=skip-animation, type=checkbox
-#: data/themes/_initial.cfg:541 data/themes/_initial.cfg:681
+#: data/themes/_initial.cfg:543 data/themes/_initial.cfg:683
 msgid "Skip animation"
 msgstr "Skip animation"
 
 #. [label]: id=replay-label
-#: data/themes/_initial.cfg:571
+#: data/themes/_initial.cfg:573
 msgid "Replay"
 msgstr "Replay"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:601
+#: data/themes/_initial.cfg:603
 msgid "pause"
 msgstr "pause"
 
@@ -5501,7 +5453,7 @@ msgid "Do you really wish to continue?"
 msgstr "Do you really wish to continue?"
 
 #: src/addon/client.cpp:459 src/addon/manager_ui.cpp:174
-#: src/game_initialization/multiplayer.cpp:233
+#: src/game_initialization/multiplayer.cpp:227
 msgid "Confirm"
 msgstr "Confirm"
 
@@ -5679,40 +5631,23 @@ msgstr "friends and ignores list"
 msgid "version"
 msgstr "version"
 
-#: src/chat_command_handler.cpp:174
-msgid "registering with password *** and no email address"
-msgstr "registering with password *** and no e-mail address"
-
-#: src/chat_command_handler.cpp:179
-msgid "registering with password *** and email address $email"
-msgstr "registering with password *** and e-mail address $email"
-
-#: src/chat_command_handler.cpp:182 src/chat_command_handler.cpp:193
-#: src/chat_command_handler.cpp:211 src/chat_command_handler.cpp:225
+#: src/chat_command_handler.cpp:170
 msgid "nick registration"
 msgstr "nick registration"
 
-#: src/chat_command_handler.cpp:193
-msgid "dropping your username"
-msgstr "dropping your username"
-
-#: src/chat_command_handler.cpp:211
-msgid "setting $var to $value"
-msgstr "setting $var to $value"
-
-#: src/chat_command_handler.cpp:225
+#: src/chat_command_handler.cpp:170
 msgid "requesting information for user $nick"
 msgstr "requesting information for user $nick"
 
-#: src/chat_command_handler.hpp:66
+#: src/chat_command_handler.hpp:51
 msgid "(A) — admin command"
 msgstr "(A) — admin command"
 
-#: src/chat_command_handler.hpp:73 src/menu_events.cpp:1159
+#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1159
 msgid "(admin only)"
 msgstr "(admin only)"
 
-#: src/chat_command_handler.hpp:88
+#: src/chat_command_handler.hpp:73
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -5720,7 +5655,7 @@ msgstr ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 
-#: src/chat_command_handler.hpp:92
+#: src/chat_command_handler.hpp:77
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -5728,35 +5663,35 @@ msgstr ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 
-#: src/chat_command_handler.hpp:93 src/chat_command_handler.hpp:96
-#: src/chat_command_handler.hpp:98 src/chat_command_handler.hpp:100
-#: src/chat_command_handler.hpp:102 src/chat_command_handler.hpp:123
-#: src/chat_command_handler.hpp:125 src/chat_command_handler.hpp:127
-#: src/chat_command_handler.hpp:138
+#: src/chat_command_handler.hpp:78 src/chat_command_handler.hpp:81
+#: src/chat_command_handler.hpp:83 src/chat_command_handler.hpp:85
+#: src/chat_command_handler.hpp:87 src/chat_command_handler.hpp:108
+#: src/chat_command_handler.hpp:110 src/chat_command_handler.hpp:112
+#: src/chat_command_handler.hpp:116
 msgid "<nickname>"
 msgstr "<nickname>"
 
-#: src/chat_command_handler.hpp:95
+#: src/chat_command_handler.hpp:80
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr "Unban a user. He does not have to be in the game but on the server."
 
-#: src/chat_command_handler.hpp:98
+#: src/chat_command_handler.hpp:83
 msgid "Kick a player or observer."
 msgstr "Kick a player or observer."
 
-#: src/chat_command_handler.hpp:100
+#: src/chat_command_handler.hpp:85
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "Mute an observer. Without an argument displays the mute status."
 
-#: src/chat_command_handler.hpp:102
+#: src/chat_command_handler.hpp:87
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr "Unmute an observer. Without an argument unmutes everyone."
 
-#: src/chat_command_handler.hpp:104
+#: src/chat_command_handler.hpp:89
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Mute/Unmute all observers. (toggles)"
 
-#: src/chat_command_handler.hpp:108
+#: src/chat_command_handler.hpp:93
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
@@ -5764,15 +5699,15 @@ msgstr ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
 
-#: src/chat_command_handler.hpp:112
+#: src/chat_command_handler.hpp:97
 msgid "<message>"
 msgstr "<message>"
 
-#: src/chat_command_handler.hpp:112
+#: src/chat_command_handler.hpp:97
 msgid "Send an emotion or personal action in chat."
 msgstr "Send an emotion or personal action in chat."
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:100
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
@@ -5780,96 +5715,72 @@ msgstr ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
 
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:102
 msgid "<nickname> <message>"
 msgstr "<nickname> <message>"
 
-#: src/chat_command_handler.hpp:121
+#: src/chat_command_handler.hpp:106
 msgid "<level> <domain>"
 msgstr "<level> <domain>"
 
-#: src/chat_command_handler.hpp:121
+#: src/chat_command_handler.hpp:106
 msgid "Change the log level of a log domain."
 msgstr "Change the log level of a log domain."
 
-#: src/chat_command_handler.hpp:123
+#: src/chat_command_handler.hpp:108
 msgid "Add a nickname to your ignores list."
 msgstr "Add a nickname to your ignores list."
 
-#: src/chat_command_handler.hpp:125
+#: src/chat_command_handler.hpp:110
 msgid "Add a nickname to your friends list."
 msgstr "Add a nickname to your friends list."
 
-#: src/chat_command_handler.hpp:127
+#: src/chat_command_handler.hpp:112
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Remove a nickname from your ignores or friends list."
 
-#: src/chat_command_handler.hpp:129
+#: src/chat_command_handler.hpp:114
 msgid "Display version information."
 msgstr "Display version information."
 
-#: src/chat_command_handler.hpp:131
-msgid "<password> <email (optional)>"
-msgstr "<password> <e-mail (optional)>"
-
-#: src/chat_command_handler.hpp:131
-msgid "Register your nickname"
-msgstr "Register your nickname"
-
-#: src/chat_command_handler.hpp:133
-msgid "Drop your nickname."
-msgstr "Drop your nickname."
-
-#: src/chat_command_handler.hpp:135
-msgid "Update details for your nickname. For possible details see '/details'."
-msgstr "Update details for your nickname. For possible details see '/details'."
-
-#: src/chat_command_handler.hpp:136
-msgid "<detail> <value>"
-msgstr "<detail> <value>"
-
-#: src/chat_command_handler.hpp:138
+#: src/chat_command_handler.hpp:116
 msgid "Request information about a nickname."
 msgstr "Request information about a nickname."
 
-#: src/chat_command_handler.hpp:140
-msgid "Request a list of details you can set for your registered nickname."
-msgstr "Request a list of details you can set for your registered nickname."
-
-#: src/chat_command_handler.hpp:142 src/chat_command_handler.hpp:145
-#: src/chat_command_handler.hpp:147
+#: src/chat_command_handler.hpp:118 src/chat_command_handler.hpp:121
+#: src/chat_command_handler.hpp:123
 msgid "<room>"
 msgstr "<room>"
 
-#: src/chat_command_handler.hpp:142
+#: src/chat_command_handler.hpp:118
 msgid "Join a room."
 msgstr "Join a room."
 
-#: src/chat_command_handler.hpp:145
+#: src/chat_command_handler.hpp:121
 msgid "Part a room."
 msgstr "Part a room."
 
-#: src/chat_command_handler.hpp:147
+#: src/chat_command_handler.hpp:123
 msgid "List room members."
 msgstr "List room members."
 
-#: src/chat_command_handler.hpp:149
+#: src/chat_command_handler.hpp:125
 msgid "List available rooms."
 msgstr "List available rooms."
 
-#: src/chat_command_handler.hpp:151
+#: src/chat_command_handler.hpp:127
 msgid "<room> <msg>"
 msgstr "<room> <msg>"
 
-#: src/chat_command_handler.hpp:151
+#: src/chat_command_handler.hpp:127
 msgid "Room message."
 msgstr "Room message."
 
-#: src/chat_command_handler.hpp:153
+#: src/chat_command_handler.hpp:129
 msgid "<room> <type> [value]"
 msgstr "<room> <type> [value]"
 
-#: src/chat_command_handler.hpp:153
+#: src/chat_command_handler.hpp:129
 msgid "Room query."
 msgstr "Room query."
 
@@ -5921,7 +5832,7 @@ msgstr "$elem has been deprecated and removed."
 msgid "Chat message"
 msgstr "Chat message"
 
-#: src/desktop/windows_tray_notification.cpp:125 src/game_config.cpp:572
+#: src/desktop/windows_tray_notification.cpp:125 src/game_config.cpp:574
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
@@ -5953,7 +5864,7 @@ msgstr "%b %d"
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
-#: src/game_config.cpp:520
+#: src/game_config.cpp:522
 msgid "Invalid color in range: "
 msgstr "Invalid colour in range: "
 
@@ -6068,32 +5979,32 @@ msgstr "$login|’s game"
 msgid "Team"
 msgstr "Team"
 
-#: src/game_initialization/connect_engine.cpp:991
+#: src/game_initialization/connect_engine.cpp:990
 msgid "Anonymous player"
 msgstr "Anonymous player"
 
-#: src/game_initialization/connect_engine.cpp:996
-#: src/game_initialization/connect_engine.cpp:1294
+#: src/game_initialization/connect_engine.cpp:995
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "Computer Player"
 msgstr "Computer Player"
 
-#: src/game_initialization/connect_engine.cpp:1038
+#: src/game_initialization/connect_engine.cpp:1037
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1289
 msgid "Network Player"
 msgstr "Network Player"
 
-#: src/game_initialization/connect_engine.cpp:1293
+#: src/game_initialization/connect_engine.cpp:1292
 msgid "Local Player"
 msgstr "Local Player"
 
-#: src/game_initialization/connect_engine.cpp:1295
+#: src/game_initialization/connect_engine.cpp:1294
 msgid "Nobody"
 msgstr "Nobody"
 
-#: src/game_initialization/connect_engine.cpp:1298
+#: src/game_initialization/connect_engine.cpp:1297
 msgid "Reserved"
 msgstr "Reserved"
 
@@ -6246,7 +6157,7 @@ msgstr "Connection timed out"
 msgid "Invalid address specified for multiplayer server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:121
+#: src/game_initialization/multiplayer.cpp:118
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
@@ -6254,11 +6165,11 @@ msgstr ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
 
-#: src/game_initialization/multiplayer.cpp:131
+#: src/game_initialization/multiplayer.cpp:128
 msgid "Server-side redirect loop"
 msgstr "Server-side redirect loop"
 
-#: src/game_initialization/multiplayer.cpp:206
+#: src/game_initialization/multiplayer.cpp:200
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6268,29 +6179,29 @@ msgstr ""
 "nickname until you activate your account via e-mail or ask an administrator "
 "to do it for you."
 
-#: src/game_initialization/multiplayer.cpp:215
+#: src/game_initialization/multiplayer.cpp:209
 msgid "Do you want to continue?"
 msgstr "Do you want to continue?"
 
-#: src/game_initialization/multiplayer.cpp:217
+#: src/game_initialization/multiplayer.cpp:211
 msgid "Warning"
 msgstr "Warning"
 
-#: src/game_initialization/multiplayer.cpp:260
-#: src/game_initialization/multiplayer.cpp:276
-#: src/game_initialization/multiplayer.cpp:279
+#: src/game_initialization/multiplayer.cpp:254
+#: src/game_initialization/multiplayer.cpp:270
+#: src/game_initialization/multiplayer.cpp:273
 msgid "Bad data received from server"
 msgstr "Bad data received from server"
 
-#: src/game_initialization/multiplayer.cpp:312
+#: src/game_initialization/multiplayer.cpp:306
 msgid "You must login first."
 msgstr "You must login first."
 
-#: src/game_initialization/multiplayer.cpp:314
+#: src/game_initialization/multiplayer.cpp:308
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "The nickname ‘$nick’ is already taken."
 
-#: src/game_initialization/multiplayer.cpp:316
+#: src/game_initialization/multiplayer.cpp:310
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -6298,39 +6209,39 @@ msgstr ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
 
-#: src/game_initialization/multiplayer.cpp:320
+#: src/game_initialization/multiplayer.cpp:314
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 
-#: src/game_initialization/multiplayer.cpp:323
+#: src/game_initialization/multiplayer.cpp:317
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "The nickname ‘$nick’ is reserved and cannot be used by players."
 
-#: src/game_initialization/multiplayer.cpp:325
+#: src/game_initialization/multiplayer.cpp:319
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "The nickname ‘$nick’ is not registered on this server."
 
-#: src/game_initialization/multiplayer.cpp:326
+#: src/game_initialization/multiplayer.cpp:320
 msgid " This server disallows unregistered nicknames."
 msgstr " This server disallows unregistered nicknames."
 
-#: src/game_initialization/multiplayer.cpp:329
+#: src/game_initialization/multiplayer.cpp:323
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 
-#: src/game_initialization/multiplayer.cpp:331
+#: src/game_initialization/multiplayer.cpp:325
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "The nickname ‘$nick’ is banned on this server’s forums."
 
-#: src/game_initialization/multiplayer.cpp:335
+#: src/game_initialization/multiplayer.cpp:329
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "Your IP address is banned on this server’s forums for $duration|."
 
-#: src/game_initialization/multiplayer.cpp:337
+#: src/game_initialization/multiplayer.cpp:331
 msgid "Your IP address is banned on this server’s forums."
 msgstr "Your IP address is banned on this server’s forums."
 
-#: src/game_initialization/multiplayer.cpp:341
+#: src/game_initialization/multiplayer.cpp:335
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
@@ -6338,37 +6249,37 @@ msgstr ""
 "The e-mail address for the nickname ‘$nick’ is banned on this server’s "
 "forums for $duration|."
 
-#: src/game_initialization/multiplayer.cpp:343
+#: src/game_initialization/multiplayer.cpp:337
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
 "The e-mail address for the nickname ‘$nick’ is banned on this server’s "
 "forums."
 
-#: src/game_initialization/multiplayer.cpp:346
-#: src/game_initialization/multiplayer.cpp:348
+#: src/game_initialization/multiplayer.cpp:340
+#: src/game_initialization/multiplayer.cpp:342
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "The nickname ‘$nick’ is registered on this server."
 
+#: src/game_initialization/multiplayer.cpp:343
+msgid ""
+"WARNING: There is already a client using this nickname, logging in will "
+"cause that client to be kicked!"
+msgstr ""
+"WARNING: There is already a client using this nickname, logging in will "
+"cause that client to be kicked!"
+
+#: src/game_initialization/multiplayer.cpp:346
+msgid ""
+"Error in the login procedure (the server had no seed for your connection)."
+msgstr ""
+"Error in the login procedure (the server had no seed for your connection)."
+
 #: src/game_initialization/multiplayer.cpp:349
-msgid ""
-"WARNING: There is already a client using this nickname, logging in will "
-"cause that client to be kicked!"
-msgstr ""
-"WARNING: There is already a client using this nickname, logging in will "
-"cause that client to be kicked!"
-
-#: src/game_initialization/multiplayer.cpp:352
-msgid ""
-"Error in the login procedure (the server had no seed for your connection)."
-msgstr ""
-"Error in the login procedure (the server had no seed for your connection)."
-
-#: src/game_initialization/multiplayer.cpp:355
 msgid "The password you provided was incorrect."
 msgstr "The password you provided was incorrect."
 
-#: src/game_initialization/multiplayer.cpp:357
+#: src/game_initialization/multiplayer.cpp:351
 msgid "You have made too many login attempts."
 msgstr "You have made too many login attempts."
 
@@ -6624,76 +6535,76 @@ msgstr "yes"
 msgid "Reference to unknown topic: "
 msgstr "Reference to unknown topic: "
 
-#: src/help/help_impl.cpp:350
+#: src/help/help_impl.cpp:349
 msgid "Only available during a scenario."
 msgstr "Only available during a scenario."
 
-#: src/help/help_impl.cpp:367
+#: src/help/help_impl.cpp:366
 msgid "Schedule"
 msgstr "Schedule"
 
-#: src/help/help_impl.cpp:459
+#: src/help/help_impl.cpp:458
 msgid "<header>text='Units with this special attack'</header>"
 msgstr "<header>text='Units with this special attack'</header>"
 
-#: src/help/help_impl.cpp:523
+#: src/help/help_impl.cpp:522
 msgid "<header>text='Units with this ability'</header>"
 msgstr "<header>text='Units with this ability'</header>"
 
-#: src/help/help_impl.cpp:553
+#: src/help/help_impl.cpp:552
 msgid "Era:"
 msgstr "Era:"
 
-#: src/help/help_impl.cpp:561
+#: src/help/help_impl.cpp:560
 msgid "Factions"
 msgstr "Factions"
 
-#: src/help/help_impl.cpp:610
+#: src/help/help_impl.cpp:609
 msgid "Races: "
 msgstr "Races: "
 
-#: src/help/help_impl.cpp:619 src/help/help_impl.cpp:970
+#: src/help/help_impl.cpp:618 src/help/help_impl.cpp:969
 msgid "Alignments: "
 msgstr "Alignments: "
 
-#: src/help/help_impl.cpp:626
+#: src/help/help_impl.cpp:625
 msgid "Leaders"
 msgstr "Leaders"
 
-#: src/help/help_impl.cpp:635
+#: src/help/help_impl.cpp:634
 msgid "Recruits"
 msgstr "Recruits"
 
-#: src/help/help_impl.cpp:696 src/units/types.cpp:480
+#: src/help/help_impl.cpp:695 src/units/types.cpp:479
 msgid "No description available."
 msgstr "No description available."
 
-#: src/help/help_impl.cpp:700 src/help/help_impl.cpp:702
+#: src/help/help_impl.cpp:699 src/help/help_impl.cpp:701
 msgid "Availability: "
 msgstr "Availability: "
 
-#: src/help/help_impl.cpp:700
+#: src/help/help_impl.cpp:699
 msgid "Must-have"
 msgstr "Must-have"
 
-#: src/help/help_impl.cpp:702
+#: src/help/help_impl.cpp:701
 msgid "Unavailable"
 msgstr "Unavailable"
 
-#: src/help/help_impl.cpp:782 src/help/help_impl.cpp:958
+#: src/help/help_impl.cpp:781 src/help/help_impl.cpp:957
 #: src/help/help_topic_generators.cpp:400
 msgid "race^Miscellaneous"
 msgstr "Miscellaneous"
 
-#: src/help/help_impl.cpp:970 src/reports.cpp:382
+#: src/help/help_impl.cpp:969 src/reports.cpp:382
 msgid "Alignment: "
 msgstr "Alignment: "
 
-#: src/help/help_impl.cpp:977
+#: src/help/help_impl.cpp:976
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Units of this race'</header>"
 
-#: src/help/help_impl.cpp:1320
+#: src/help/help_impl.cpp:1287
 msgid "corrupted original file"
 msgstr "corrupted original file"
 
@@ -6744,6 +6655,11 @@ msgstr "Variations: "
 #: src/help/help_topic_generators.cpp:402 src/reports.cpp:203
 msgid "Race: "
 msgstr "Race: "
+
+#: src/help/help_topic_generators.cpp:439
+#: src/help/help_topic_generators.cpp:462
+msgid "Traits"
+msgstr "Traits"
 
 #: src/help/help_topic_generators.cpp:472
 msgid "Abilities: "
@@ -6866,15 +6782,15 @@ msgstr "Vision Cost"
 msgid "Jamming Cost"
 msgstr "Jamming Cost"
 
-#: src/hotkey/command_executor.cpp:391
+#: src/hotkey/command_executor.cpp:395
 msgid "Do you really want to surrender the game?"
 msgstr "Do you really want to surrender the game?"
 
-#: src/hotkey/command_executor.cpp:391
+#: src/hotkey/command_executor.cpp:395
 msgid "Surrender"
 msgstr "Surrender"
 
-#: src/hotkey/command_executor.cpp:804
+#: src/hotkey/command_executor.cpp:808
 msgid "Map-Screenshot"
 msgstr "Map-Screenshot"
 
@@ -6890,11 +6806,11 @@ msgstr "Accelerated speed enabled!"
 msgid "Accelerated speed disabled!"
 msgstr "Accelerated speed disabled!"
 
-#: src/hotkey/hotkey_handler.cpp:413
+#: src/hotkey/hotkey_handler.cpp:414
 msgid "Back to Turn "
 msgstr "Back to Turn "
 
-#: src/hotkey/hotkey_handler.cpp:419
+#: src/hotkey/hotkey_handler.cpp:420
 msgid "Back to Start"
 msgstr "Back to Start"
 
@@ -7030,6 +6946,10 @@ msgstr "You have no units available to recruit."
 #: src/menu_events.cpp:283
 msgid "No unit recruited"
 msgstr "No unit recruited"
+
+#: src/menu_events.cpp:315
+msgid "You do not have enough gold to recruit that unit"
+msgstr "You do not have enough gold to recruit that unit"
 
 #: src/menu_events.cpp:351
 msgid "You are separated from your soldiers and may not recall them"
@@ -7494,32 +7414,36 @@ msgstr "No Mirror"
 msgid "No Ally Mirror"
 msgstr "No Ally Mirror"
 
-#: src/mp_ui_alerts.cpp:66
-msgid "A player has joined"
-msgstr "A player has joined"
+#: src/mp_ui_alerts.cpp:67
+msgid "A game ($name|, $scenario|) has been created"
+msgstr ""
 
-#: src/mp_ui_alerts.cpp:66 src/mp_ui_alerts.cpp:80 src/mp_ui_alerts.cpp:149
-#: src/mp_ui_alerts.cpp:160
+#: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
+#: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
 msgid "Wesnoth"
 msgstr "Wesnoth"
 
-#: src/mp_ui_alerts.cpp:80
+#: src/mp_ui_alerts.cpp:82
+msgid "A player has joined"
+msgstr "A player has joined"
+
+#: src/mp_ui_alerts.cpp:96
 msgid "A player has left"
 msgstr "A player has left"
 
-#: src/mp_ui_alerts.cpp:149
+#: src/mp_ui_alerts.cpp:165
 msgid "Ready to start!"
 msgstr "Ready to start!"
 
-#: src/mp_ui_alerts.cpp:160
+#: src/mp_ui_alerts.cpp:176
 msgid "Game has begun!"
 msgstr "Game has begun!"
 
-#: src/mp_ui_alerts.cpp:170
+#: src/mp_ui_alerts.cpp:186
 msgid "$name has taken control"
 msgstr "$name has taken control"
 
-#: src/mp_ui_alerts.cpp:170
+#: src/mp_ui_alerts.cpp:186
 msgid "Turn changed"
 msgstr "Turn changed"
 
@@ -7538,7 +7462,7 @@ msgstr "a global variable"
 msgid "time left for current turn"
 msgstr "time left for current turn"
 
-#: src/play_controller.cpp:249 src/replay_controller.cpp:114
+#: src/play_controller.cpp:249
 msgid "current local time"
 msgstr "current local time"
 
@@ -8154,75 +8078,75 @@ msgstr "at $pos"
 msgid "Value: '$value' Previous: '$previous_value'"
 msgstr "Value: '$value' Previous: '$previous_value'"
 
-#: src/serialization/string_utils.cpp:572
+#: src/serialization/string_utils.cpp:543
 msgid "prefix_milli^m"
 msgstr "m"
 
-#: src/serialization/string_utils.cpp:573
+#: src/serialization/string_utils.cpp:544
 msgid "prefix_micro^µ"
 msgstr "µ"
 
-#: src/serialization/string_utils.cpp:574
+#: src/serialization/string_utils.cpp:545
 msgid "prefix_nano^n"
 msgstr "n"
 
-#: src/serialization/string_utils.cpp:575
+#: src/serialization/string_utils.cpp:546
 msgid "prefix_pico^p"
 msgstr "p"
 
-#: src/serialization/string_utils.cpp:576
+#: src/serialization/string_utils.cpp:547
 msgid "prefix_femto^f"
 msgstr "f"
 
-#: src/serialization/string_utils.cpp:577
+#: src/serialization/string_utils.cpp:548
 msgid "prefix_atto^a"
 msgstr "a"
 
-#: src/serialization/string_utils.cpp:578
+#: src/serialization/string_utils.cpp:549
 msgid "prefix_zepto^z"
 msgstr "z"
 
-#: src/serialization/string_utils.cpp:579
+#: src/serialization/string_utils.cpp:550
 msgid "prefix_yocto^y"
 msgstr "y"
 
-#: src/serialization/string_utils.cpp:591
+#: src/serialization/string_utils.cpp:562
 msgid "prefix_kibi^K"
 msgstr "K"
 
-#: src/serialization/string_utils.cpp:592
+#: src/serialization/string_utils.cpp:563
 msgid "prefix_kilo^k"
 msgstr "k"
 
-#: src/serialization/string_utils.cpp:594
+#: src/serialization/string_utils.cpp:565
 msgid "prefix_mega^M"
 msgstr "M"
 
-#: src/serialization/string_utils.cpp:595
+#: src/serialization/string_utils.cpp:566
 msgid "prefix_giga^G"
 msgstr "G"
 
-#: src/serialization/string_utils.cpp:596
+#: src/serialization/string_utils.cpp:567
 msgid "prefix_tera^T"
 msgstr "T"
 
-#: src/serialization/string_utils.cpp:597
+#: src/serialization/string_utils.cpp:568
 msgid "prefix_peta^P"
 msgstr "P"
 
-#: src/serialization/string_utils.cpp:598
+#: src/serialization/string_utils.cpp:569
 msgid "prefix_exa^E"
 msgstr "E"
 
-#: src/serialization/string_utils.cpp:599
+#: src/serialization/string_utils.cpp:570
 msgid "prefix_zetta^Z"
 msgstr "Z"
 
-#: src/serialization/string_utils.cpp:600
+#: src/serialization/string_utils.cpp:571
 msgid "prefix_yotta^Y"
 msgstr "Y"
 
-#: src/serialization/string_utils.cpp:614
+#: src/serialization/string_utils.cpp:585
 msgid "infix_binary^i"
 msgstr "i"
 
@@ -8360,76 +8284,76 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> movement point"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> movement points"
 
-#: src/units/types.cpp:546 src/units/types.hpp:181
+#: src/units/types.cpp:545 src/units/types.hpp:180
 msgid "chaotic"
 msgstr "chaotic"
 
-#: src/units/types.cpp:546 src/units/types.hpp:179
+#: src/units/types.cpp:545 src/units/types.hpp:178
 msgid "lawful"
 msgstr "lawful"
 
-#: src/units/types.cpp:546 src/units/types.hpp:182
+#: src/units/types.cpp:545 src/units/types.hpp:181
 msgid "liminal"
 msgstr "liminal"
 
-#: src/units/types.cpp:546 src/units/types.hpp:180
+#: src/units/types.cpp:545 src/units/types.hpp:179
 msgid "neutral"
 msgstr "neutral"
 
-#: src/units/types.cpp:547 src/units/types.cpp:913
+#: src/units/types.cpp:546 src/units/types.cpp:912
 msgid "female^chaotic"
 msgstr "chaotic"
 
-#: src/units/types.cpp:547 src/units/types.cpp:911
+#: src/units/types.cpp:546 src/units/types.cpp:910
 msgid "female^lawful"
 msgstr "lawful"
 
-#: src/units/types.cpp:547 src/units/types.cpp:912
+#: src/units/types.cpp:546 src/units/types.cpp:911
 msgid "female^neutral"
 msgstr "neutral"
 
-#: src/units/types.cpp:548 src/units/types.cpp:914
+#: src/units/types.cpp:547 src/units/types.cpp:913
 msgid "female^liminal"
 msgstr "liminal"
 
-#: src/units/unit.cpp:1835
+#: src/units/unit.cpp:1854
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1841
+#: src/units/unit.cpp:1860
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> HP"
 
-#: src/units/unit.cpp:1851
+#: src/units/unit.cpp:1870
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> move"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> moves"
 
-#: src/units/unit.cpp:1857
+#: src/units/unit.cpp:1876
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> vision"
 
-#: src/units/unit.cpp:1861
+#: src/units/unit.cpp:1880
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> jamming"
 
-#: src/units/unit.cpp:1866
+#: src/units/unit.cpp:1885
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> XP to advance"
 
-#: src/units/unit.cpp:1870
+#: src/units/unit.cpp:1889
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 
-#: src/units/unit.cpp:1877
+#: src/units/unit.cpp:1896
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> cost to recall"
 
-#: src/units/unit.cpp:2294
+#: src/units/unit.cpp:2296
 msgid "$effect_description per level"
 msgstr "$effect_description per level"
 
@@ -8453,7 +8377,7 @@ msgstr "$year BF"
 msgid "$year AF"
 msgstr "$year AF"
 
-#: src/wesnothd_connection.cpp:403
+#: src/wesnothd_connection.cpp:418
 msgid "Disconnected from server."
 msgstr "Disconnected from server."
 
@@ -8476,6 +8400,60 @@ msgstr "Hide plans for $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Whiteboard Options"
+
+#, fuzzy
+#~| msgid "Attack"
+#~| msgid_plural "Attacks"
+#~ msgid "Attacks"
+#~ msgstr "Attack"
+
+#, fuzzy
+#~| msgid "Choose Orb/Minimap Colors"
+#~ msgid "Choose a Corpse"
+#~ msgstr "Choose Orb/Minimap Colours"
+
+#~ msgid "Recruit"
+#~ msgstr "Recruit"
+
+#~ msgid "XP: "
+#~ msgstr "XP: "
+
+#, fuzzy
+#~| msgid "There are no save files to load"
+#~ msgid "There are no corpses available."
+#~ msgstr "There are no save files to load"
+
+#~ msgid "registering with password *** and no email address"
+#~ msgstr "registering with password *** and no e-mail address"
+
+#~ msgid "registering with password *** and email address $email"
+#~ msgstr "registering with password *** and e-mail address $email"
+
+#~ msgid "dropping your username"
+#~ msgstr "dropping your username"
+
+#~ msgid "setting $var to $value"
+#~ msgstr "setting $var to $value"
+
+#~ msgid "<password> <email (optional)>"
+#~ msgstr "<password> <e-mail (optional)>"
+
+#~ msgid "Register your nickname"
+#~ msgstr "Register your nickname"
+
+#~ msgid "Drop your nickname."
+#~ msgstr "Drop your nickname."
+
+#~ msgid ""
+#~ "Update details for your nickname. For possible details see '/details'."
+#~ msgstr ""
+#~ "Update details for your nickname. For possible details see '/details'."
+
+#~ msgid "<detail> <value>"
+#~ msgstr "<detail> <value>"
+
+#~ msgid "Request a list of details you can set for your registered nickname."
+#~ msgstr "Request a list of details you can set for your registered nickname."
 
 #~ msgid "Ping timeout"
 #~ msgstr "Ping time-out"

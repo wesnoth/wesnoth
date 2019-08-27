@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-07-18 15:51+0300\n"
+"POT-Creation-Date: 2019-08-27 22:41+0300\n"
 "PO-Revision-Date: 2019-02-15 21:56+0100\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
@@ -343,71 +343,6 @@ msgstr "Joystick: number of the thrust axis"
 msgid "Joystick: deadzone of the thruster"
 msgstr "Joystick: deadzone of the thruster"
 
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:28
-msgid "Lvl 0"
-msgstr ""
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:31
-msgid "Undead"
-msgstr ""
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:36
-#: src/help/help_topic_generators.cpp:439
-#: src/help/help_topic_generators.cpp:462
-msgid "Traits"
-msgstr "Vlastnosti"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:39
-#, fuzzy
-#| msgid "Attack"
-#| msgid_plural "Attacks"
-msgid "Attacks"
-msgstr "Útok"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:51
-#, fuzzy
-#| msgid "Choose weapon:"
-msgid "Choose a Corpse"
-msgstr "Vyber si zbraň:"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:66
-msgid "Recruit"
-msgstr "Naverbuj"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:67
-#: data/scenario-test.cfg:1074
-msgid "Cancel"
-msgstr "Zrušit"
-
-#. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:78
-msgid "HP: "
-msgstr ""
-
-#. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:78
-msgid "MP: "
-msgstr ""
-
-#. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:78
-msgid "XP: "
-msgstr "zkušeností: "
-
-#. [lua]: postshow
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:141
-#, fuzzy
-#| msgid "There are no save files to load"
-msgid "There are no corpses available."
-msgstr "Nejsou tu žádné soubory uložených her"
-
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [lua]: postshow
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:145
-#: src/menu_events.cpp:315
-msgid "You do not have enough gold to recruit that unit"
-msgstr "K naverbování této jednotky nemáš dost peněz"
-
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
@@ -457,37 +392,37 @@ msgid "Artwork and Graphics"
 msgstr "Kresby a grafika"
 
 #. [about]
-#: data/core/about.cfg:749
+#: data/core/about.cfg:753
 msgid "Music"
 msgstr "Hudba"
 
 #. [about]
-#: data/core/about.cfg:786
+#: data/core/about.cfg:790
 msgid "Sound Effects"
 msgstr "Zvukové efekty"
 
 #. [about]
-#: data/core/about.cfg:810
+#: data/core/about.cfg:814
 msgid "Campaign Design"
 msgstr "Návrh tažení"
 
 #. [about]
-#: data/core/about.cfg:896
+#: data/core/about.cfg:900
 msgid "Multiplayer Maps and Balancing"
 msgstr "Mapy pro Hru více hráčů"
 
 #. [about]
-#: data/core/about.cfg:941
+#: data/core/about.cfg:945
 msgid "Packagers"
 msgstr "Tvorba balíčků"
 
 #. [about]
-#: data/core/about.cfg:1048
+#: data/core/about.cfg:1052
 msgid "Miscellaneous Contributors"
 msgstr "Různé"
 
 #. [about]
-#: data/core/about.cfg:1742
+#: data/core/about.cfg:1746
 msgid "Bots"
 msgstr "Boti"
 
@@ -743,17 +678,17 @@ msgid "Turkish Translation"
 msgstr "Turecký překlad"
 
 #. [about]
-#: data/core/about_i18n.cfg:1680
+#: data/core/about_i18n.cfg:1683
 msgid "Ukrainian Translation"
 msgstr "Ukrajinský překlad"
 
 #. [about]
-#: data/core/about_i18n.cfg:1696
+#: data/core/about_i18n.cfg:1699
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valencijský překlad (jižní Katalánie)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1709
+#: data/core/about_i18n.cfg:1712
 msgid "Vietnamese Translation"
 msgstr "Vietnamský překlad"
 
@@ -761,7 +696,7 @@ msgstr "Vietnamský překlad"
 # Každopádně RACV představuje zkratku instituce, proto tato forma.
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1729
+#: data/core/about_i18n.cfg:1732
 msgid "RACV’s Translation"
 msgstr "Překlad RACV"
 
@@ -2778,8 +2713,21 @@ msgstr ""
 "Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,"
 "Ziyad,Zubayr,Zuhayr"
 
+#: data/core/macros/names.cfg:144
+msgid ""
+"Abiha,Afaf,A'isha,Ajda,Aliya,Amira,Ashraqat,Atikah,Azra,Boutheina,Bushra,"
+"Chaima,Cynthia,Dalal,Dalia,Eliana,Esma,Farida,Fatima,Feyrouz,Habiba,Hafsa,"
+"Hajra,Halima,Hamida,Hanifa,Havva,Hayat,Hessa,Ibtisam,Ibtissam,Inaam,Jamila,"
+"Jawahir,Jena,Jumana,Kareena,Karima,Katya,Khadija,Khairunnisa,Khawla,Khawlah,"
+"Lama,Lamia,Latifa,Layal,Layan,Leila,Lina,Lulwa,Madiha,Maha,Mahmuna,Mai,"
+"Malika,Marwa,Maryam,Maya,Maysoon,Melissa,Nadia,Nafisa,Nahla,Naila,Najat,"
+"Nasim,Nasrin,Nejla,Nezha,Niusha,Qistina,Rahima,Rana,Rashida,Reem,Ruqayya,"
+"Saadia,Sabiha,Safiya,Sahar,Saida,Sajida,Sakhra,Salma,Samira,Sarah,Shahd,"
+"Shatha,Sherine,Shumaila,Sumaya,Taslima,Umm,Yara,Yasmin,Zahra,Zakiya,Zaynab"
+msgstr ""
+
 #. Generator for male dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:145
+#: data/core/macros/names.cfg:146
 msgid ""
 "\n"
 "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{name_mid}\n"
@@ -2810,7 +2758,7 @@ msgstr ""
 "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 
 #. Generator for female dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:156
+#: data/core/macros/names.cfg:157
 msgid ""
 "\n"
 "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{surname}\n"
@@ -2866,7 +2814,7 @@ msgstr ""
 "riya|ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|"
 "kib\n"
 
-#: data/core/macros/names.cfg:176
+#: data/core/macros/names.cfg:177
 msgid ""
 "Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
 "Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
@@ -2891,7 +2839,7 @@ msgstr ""
 "Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 
 #. Generator for saurian names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:178
+#: data/core/macros/names.cfg:179
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -2908,26 +2856,26 @@ msgstr ""
 "Xe|Xi|Zan|Zil|Zzu\n"
 "suffix=ta|ir|az|ix|za|trax|il|le|esz|izs|ezz|irr|asch|ez|is|iss|azz\n"
 "centre=ix|’Kza|tra|na|an|ex|ssa|zzi|’Usz\n"
-
-#: data/core/macros/names.cfg:187
-msgid ""
-"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
-"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
-"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
-"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
-"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
-"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
-"Triton,Vizi,Vodnik,Vourukasa"
-msgstr ""
-"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
-"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
-"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
-"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
-"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
-"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
-"Triton,Vizi,Vodnik,Vourukasa"
 
 #: data/core/macros/names.cfg:188
+msgid ""
+"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
+"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
+"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
+"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
+"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
+"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
+"Triton,Vizi,Vodnik,Vourukasa"
+msgstr ""
+"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
+"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
+"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
+"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
+"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
+"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
+"Triton,Vizi,Vodnik,Vourukasa"
+
+#: data/core/macros/names.cfg:189
 msgid ""
 "Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
 "Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
@@ -2940,7 +2888,7 @@ msgstr ""
 "Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 
 #. Generator for merman names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:190
+#: data/core/macros/names.cfg:191
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -2959,7 +2907,7 @@ msgstr ""
 "centre=la|ma|ri|sei|te|ka|li|cer|tu|ni|ki|na|ga|si\n"
 
 #. Generator for mermaid names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:197
+#: data/core/macros/names.cfg:198
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -2974,24 +2922,24 @@ msgstr ""
 "Pi|Se|Ste|Ma|The|Ti|Va|Ve\n"
 "suffix=me|pe|gia|noe|dna|la|ris|ta|tea|va|mo|pe|riam|riel|na|ra|tea\n"
 "centre=ophe|phri|tri|phro|di|si|xie|ce|ty|la|me|ro|co|mar|ran|then|la|ga\n"
-
-#: data/core/macros/names.cfg:206
-msgid ""
-"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
-"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
-"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
-"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
-"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
-"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
-msgstr ""
-"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
-"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
-"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
-"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
-"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
-"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 
 #: data/core/macros/names.cfg:207
+msgid ""
+"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
+"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
+"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
+"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
+"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
+"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
+msgstr ""
+"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
+"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
+"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
+"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
+"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
+"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
+
+#: data/core/macros/names.cfg:208
 msgid ""
 "Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
 "Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
@@ -3011,7 +2959,7 @@ msgstr ""
 
 # teoreticky by se dalo přidat více syčení pomocí ššš
 #. Generator for male naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:209
+#: data/core/macros/names.cfg:210
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3031,7 +2979,7 @@ msgstr ""
 
 # teoreticky by se dalo přidat více syčení pomocí ššš
 #. Generator for female naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:215
+#: data/core/macros/names.cfg:216
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3049,7 +2997,7 @@ msgstr ""
 "suffix=asse|mailia|ilis|ana|ama|ssa|ssilai|zi|xias|lai|maissa|bra|lin|lina|"
 "na|bra|aa|lia|lai|laila|na|pkne|alsp|ekp\n"
 
-#: data/core/macros/names.cfg:223
+#: data/core/macros/names.cfg:224
 msgid ""
 "Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
 "Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
@@ -3066,7 +3014,7 @@ msgstr ""
 "Urkark"
 
 #. Generator for ogre names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:225
+#: data/core/macros/names.cfg:226
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3080,7 +3028,7 @@ msgstr ""
 "Ker|Kil|King|Kor|Kru|Kur|Mar|Mer|Nal|Trak|Urk\n"
 "suffix=ark|ort|alk|arm|kuk|kak|ukk|nak|ta|k|rok|rar|kon|gak|nik\n"
 
-#: data/core/macros/names.cfg:233
+#: data/core/macros/names.cfg:234
 msgid ""
 "Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
 "Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
@@ -3149,7 +3097,7 @@ msgstr ""
 "Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 
 #. Generator for orc names
-#: data/core/macros/names.cfg:235
+#: data/core/macros/names.cfg:236
 msgid ""
 "\n"
 "main={starting_consonnant}{vowel}{consonnant}{vowel}{ending_consonnant}|"
@@ -3177,7 +3125,7 @@ msgstr ""
 "ending_consonnant=b|g|r|sh|k\n"
 "ending_vowel=o|u\n"
 
-#: data/core/macros/names.cfg:247
+#: data/core/macros/names.cfg:248
 msgid ""
 "Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
 "Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
@@ -3190,7 +3138,7 @@ msgstr ""
 "Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 
 #. Generator for troll names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:249
+#: data/core/macros/names.cfg:250
 msgid ""
 "\n"
 "main={short_name}|{short_name}|{short_name}|{short_name} {short_name}\n"
@@ -3210,7 +3158,7 @@ msgstr ""
 "beginning=Ä|Ü|A|U\n"
 "suffix=rb|g|gh|k|rf|kk|r|g|th|h|rg\n"
 
-#: data/core/macros/names.cfg:260
+#: data/core/macros/names.cfg:261
 msgid ""
 "Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
 "Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
@@ -3239,7 +3187,7 @@ msgstr ""
 "Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 
 #. Generator for wose names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:262
+#: data/core/macros/names.cfg:263
 msgid ""
 "\n"
 "main={prefix}{centre}{centre}{suffix}|{prefix}{centre}{centre}{centre}"
@@ -3265,7 +3213,7 @@ msgstr ""
 "suffix=men|drum|tor|num|lad|de|ak|lol|dum|tam|nur|dium|deum|bil|rook|relm|"
 "dium|numm|dan|doom|tum|din\n"
 
-#: data/core/macros/names.cfg:271
+#: data/core/macros/names.cfg:272
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
@@ -3274,7 +3222,7 @@ msgstr ""
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 
 #. Generator for the base names of features assigned by the random map generator; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:273
+#: data/core/macros/names.cfg:274
 msgid ""
 "\n"
 "main={prefix}{middle}{suffix}\n"
@@ -4023,7 +3971,7 @@ msgstr "Ne"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:628
+#: src/hotkey/command_executor.cpp:632
 msgid "Screenshot"
 msgstr "Screenshot"
 
@@ -4068,7 +4016,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr "Neplatná úroveň zastarání $level (měla by být 1-4)"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:905
+#: data/lua/wml-tags.lua:912
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Neplatná úroveň zastarání (měla by být 1-4)"
 
@@ -4153,6 +4101,10 @@ msgstr ""
 msgid "OK"
 msgstr "OK"
 
+#: data/scenario-test.cfg:1074
+msgid "Cancel"
+msgstr "Zrušit"
+
 #. [language]
 #: data/scenario-test.cfg:4155
 msgid "very long"
@@ -4164,92 +4116,92 @@ msgid "electrical"
 msgstr "elektrický"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:426 data/themes/_initial.cfg:586
+#: data/themes/_initial.cfg:428 data/themes/_initial.cfg:588
 msgid "Play"
 msgstr "Hrát"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:427 data/themes/_initial.cfg:587
+#: data/themes/_initial.cfg:429 data/themes/_initial.cfg:589
 msgid "continuous replay"
 msgstr "souvislé přehrávání záznamu"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:441 data/themes/_initial.cfg:600
+#: data/themes/_initial.cfg:443 data/themes/_initial.cfg:602
 msgid "Stop"
 msgstr "Zastavit"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:442
+#: data/themes/_initial.cfg:444
 msgid "pause after current move"
 msgstr "po tomto tahu pauznout hru"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:457 data/themes/_initial.cfg:614
+#: data/themes/_initial.cfg:459 data/themes/_initial.cfg:616
 msgid "Reset"
 msgstr "Resetovat"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:458 data/themes/_initial.cfg:615
+#: data/themes/_initial.cfg:460 data/themes/_initial.cfg:617
 msgid "reset to beginning"
 msgstr "znovu od začátku"
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:473 data/themes/_initial.cfg:628
+#: data/themes/_initial.cfg:475 data/themes/_initial.cfg:630
 msgid "Next Turn"
 msgstr "Další kolo"
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:474 data/themes/_initial.cfg:629
+#: data/themes/_initial.cfg:476 data/themes/_initial.cfg:631
 msgid "play turn"
 msgstr "přehraj další kolo"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:489 data/themes/_initial.cfg:642
+#: data/themes/_initial.cfg:491 data/themes/_initial.cfg:644
 msgid "Next Side"
 msgstr "Další strana"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:490 data/themes/_initial.cfg:643
+#: data/themes/_initial.cfg:492 data/themes/_initial.cfg:645
 msgid "play side turn"
 msgstr "přehraj kolo další strany"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:504 data/themes/_initial.cfg:656
+#: data/themes/_initial.cfg:506 data/themes/_initial.cfg:658
 msgid "Next Move"
 msgstr "Další tah"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:505 data/themes/_initial.cfg:657
+#: data/themes/_initial.cfg:507 data/themes/_initial.cfg:659
 msgid "play single move"
 msgstr "přehraj další tah"
 
 #. [menu]: id=show-what
-#: data/themes/_initial.cfg:517 data/themes/_initial.cfg:669
+#: data/themes/_initial.cfg:519 data/themes/_initial.cfg:671
 msgid "Point of view"
 msgstr "Druh pohledu"
 
 #. [action]: id=button-continue
-#: data/themes/_initial.cfg:528
+#: data/themes/_initial.cfg:530
 msgid "Continue Play"
 msgstr "Pokračovat v přehrávání"
 
 #. [action]: id=button-continue
-#: data/themes/_initial.cfg:529
+#: data/themes/_initial.cfg:531
 msgid "Exit the replay mode and continue playing normally."
 msgstr "Opustit mód přehrávání a pokračovat ve hře."
 
 #. [action]: id=skip-animation, type=checkbox
-#: data/themes/_initial.cfg:541 data/themes/_initial.cfg:681
+#: data/themes/_initial.cfg:543 data/themes/_initial.cfg:683
 msgid "Skip animation"
 msgstr "Přeskočit animaci"
 
 #. [label]: id=replay-label
-#: data/themes/_initial.cfg:571
+#: data/themes/_initial.cfg:573
 msgid "Replay"
 msgstr "Záznam"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:601
+#: data/themes/_initial.cfg:603
 msgid "pause"
 msgstr "pozastavit"
 
@@ -5456,7 +5408,7 @@ msgid "Do you really wish to continue?"
 msgstr "Opravdu si přeješ pokračovat?"
 
 #: src/addon/client.cpp:459 src/addon/manager_ui.cpp:174
-#: src/game_initialization/multiplayer.cpp:233
+#: src/game_initialization/multiplayer.cpp:227
 msgid "Confirm"
 msgstr "Potvrdit"
 
@@ -5642,40 +5594,23 @@ msgstr "seznam otrapů a přátel."
 msgid "version"
 msgstr "verze"
 
-#: src/chat_command_handler.cpp:174
-msgid "registering with password *** and no email address"
-msgstr "registruji s heslem *** a bez e-mailové adresy"
-
-#: src/chat_command_handler.cpp:179
-msgid "registering with password *** and email address $email"
-msgstr "registruji s heslem *** a adresou $email"
-
-#: src/chat_command_handler.cpp:182 src/chat_command_handler.cpp:193
-#: src/chat_command_handler.cpp:211 src/chat_command_handler.cpp:225
+#: src/chat_command_handler.cpp:170
 msgid "nick registration"
 msgstr "registrace přezdívky"
 
-#: src/chat_command_handler.cpp:193
-msgid "dropping your username"
-msgstr "mazání přezdívky"
-
-#: src/chat_command_handler.cpp:211
-msgid "setting $var to $value"
-msgstr "nastavuji $var na $value"
-
-#: src/chat_command_handler.cpp:225
+#: src/chat_command_handler.cpp:170
 msgid "requesting information for user $nick"
 msgstr "vyžaduji informace o uživateli $nick"
 
-#: src/chat_command_handler.hpp:66
+#: src/chat_command_handler.hpp:51
 msgid "(A) — admin command"
 msgstr "(A) - administrátorský příkaz"
 
-#: src/chat_command_handler.hpp:73 src/menu_events.cpp:1159
+#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1159
 msgid "(admin only)"
 msgstr "(pouze admin)"
 
-#: src/chat_command_handler.hpp:88
+#: src/chat_command_handler.hpp:73
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -5684,7 +5619,7 @@ msgstr ""
 "Pokud se nepoužije žádný argument, server by měl vypsat seznam možných "
 "příkazů."
 
-#: src/chat_command_handler.hpp:92
+#: src/chat_command_handler.hpp:77
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -5692,37 +5627,37 @@ msgstr ""
 "Zakáže přístup a vyhodí hráče nebo pozorovatele. Pokud není ve hře, ale jen "
 "na serveru, bude mu pouze zakázán přístup."
 
-#: src/chat_command_handler.hpp:93 src/chat_command_handler.hpp:96
-#: src/chat_command_handler.hpp:98 src/chat_command_handler.hpp:100
-#: src/chat_command_handler.hpp:102 src/chat_command_handler.hpp:123
-#: src/chat_command_handler.hpp:125 src/chat_command_handler.hpp:127
-#: src/chat_command_handler.hpp:138
+#: src/chat_command_handler.hpp:78 src/chat_command_handler.hpp:81
+#: src/chat_command_handler.hpp:83 src/chat_command_handler.hpp:85
+#: src/chat_command_handler.hpp:87 src/chat_command_handler.hpp:108
+#: src/chat_command_handler.hpp:110 src/chat_command_handler.hpp:112
+#: src/chat_command_handler.hpp:116
 msgid "<nickname>"
 msgstr "<přezdívka>"
 
-#: src/chat_command_handler.hpp:95
+#: src/chat_command_handler.hpp:80
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr "Zruší zákaz hráče. Nemusí být přímo ve hře, ale na serveru ano."
 
-#: src/chat_command_handler.hpp:98
+#: src/chat_command_handler.hpp:83
 msgid "Kick a player or observer."
 msgstr "Vyhodí hráče nebo pozorovatele."
 
-#: src/chat_command_handler.hpp:100
+#: src/chat_command_handler.hpp:85
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "Umlčí pozorovatele. Bez parametru vypíše stav umlčení."
 
-#: src/chat_command_handler.hpp:102
+#: src/chat_command_handler.hpp:87
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 "Od-umlčí pozorovatele. Bez parametru je akce provedena pro všechny "
 "pozorovatele."
 
-#: src/chat_command_handler.hpp:104
+#: src/chat_command_handler.hpp:89
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Umlčí všechny pozorovatele. (přepínač)"
 
-#: src/chat_command_handler.hpp:108
+#: src/chat_command_handler.hpp:93
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
@@ -5730,15 +5665,15 @@ msgstr ""
 "Porušení pravidel, nevhodné chování atd. hlašte moderátorům serveru. "
 "Nezapomeňte zmínit konkrétní přezdívky a role v konfliktu."
 
-#: src/chat_command_handler.hpp:112
+#: src/chat_command_handler.hpp:97
 msgid "<message>"
 msgstr "<zpráva>"
 
-#: src/chat_command_handler.hpp:112
+#: src/chat_command_handler.hpp:97
 msgid "Send an emotion or personal action in chat."
 msgstr "Napíše, co děláš, nebo jak se cítíš, do chatu."
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:100
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
@@ -5746,99 +5681,73 @@ msgstr ""
 "Pošle soukromou zprávu. Nelze ji poslat hráči, který hraje za některou "
 "stranu ve stejné hře jako vy (právě běžící)."
 
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:102
 msgid "<nickname> <message>"
 msgstr "<přezdívka> <zpráva>"
 
-#: src/chat_command_handler.hpp:121
+#: src/chat_command_handler.hpp:106
 msgid "<level> <domain>"
 msgstr "<úroveň> <doména>"
 
-#: src/chat_command_handler.hpp:121
+#: src/chat_command_handler.hpp:106
 msgid "Change the log level of a log domain."
 msgstr "Přepne logovací kategorii na jinou úroveň logování."
 
-#: src/chat_command_handler.hpp:123
+#: src/chat_command_handler.hpp:108
 msgid "Add a nickname to your ignores list."
 msgstr "Přidá jméno do seznamu otrapů."
 
-#: src/chat_command_handler.hpp:125
+#: src/chat_command_handler.hpp:110
 msgid "Add a nickname to your friends list."
 msgstr "Přidá jméno do seznamu přátel."
 
-#: src/chat_command_handler.hpp:127
+#: src/chat_command_handler.hpp:112
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Smaže jméno ze seznamu otrapů nebo přátel."
 
 # Když nedostane klient v datech která éra je použita.
-#: src/chat_command_handler.hpp:129
+#: src/chat_command_handler.hpp:114
 msgid "Display version information."
 msgstr "Zobrazí informace o verzi."
 
-#: src/chat_command_handler.hpp:131
-msgid "<password> <email (optional)>"
-msgstr "<heslo> <email (nepovinný)>"
-
-#: src/chat_command_handler.hpp:131
-msgid "Register your nickname"
-msgstr "Zaregistrovat tvou přezdívku"
-
-#: src/chat_command_handler.hpp:133
-msgid "Drop your nickname."
-msgstr "Zahodí tvou přezdívku."
-
-#: src/chat_command_handler.hpp:135
-msgid "Update details for your nickname. For possible details see '/details'."
-msgstr "Aktualizuje podrobnosti vaší přezdívky. Možné detaily viz '/details'."
-
-#: src/chat_command_handler.hpp:136
-msgid "<detail> <value>"
-msgstr "<vlastnost> <hodnota>"
-
-#: src/chat_command_handler.hpp:138
+#: src/chat_command_handler.hpp:116
 msgid "Request information about a nickname."
 msgstr "Vyžádá informace o hráči."
 
-#: src/chat_command_handler.hpp:140
-msgid "Request a list of details you can set for your registered nickname."
-msgstr ""
-"Vyžádá seznam podrobností, které můžete nastavit pro vaši registrovanou "
-"přezdívku."
-
-#: src/chat_command_handler.hpp:142 src/chat_command_handler.hpp:145
-#: src/chat_command_handler.hpp:147
+#: src/chat_command_handler.hpp:118 src/chat_command_handler.hpp:121
+#: src/chat_command_handler.hpp:123
 msgid "<room>"
 msgstr "<místnost>"
 
-#: src/chat_command_handler.hpp:142
+#: src/chat_command_handler.hpp:118
 msgid "Join a room."
 msgstr "Vstup do místnosti."
 
-#: src/chat_command_handler.hpp:145
+#: src/chat_command_handler.hpp:121
 msgid "Part a room."
 msgstr "Rozdělí místnost."
 
-#: src/chat_command_handler.hpp:147
+#: src/chat_command_handler.hpp:123
 msgid "List room members."
 msgstr "Vypíše hráče v místnosti."
 
-#: src/chat_command_handler.hpp:149
+#: src/chat_command_handler.hpp:125
 msgid "List available rooms."
 msgstr "Vypíše dostupné místnosti."
 
-#: src/chat_command_handler.hpp:151
+#: src/chat_command_handler.hpp:127
 msgid "<room> <msg>"
 msgstr "<místnost> <zpráva>"
 
-#: src/chat_command_handler.hpp:151
+#: src/chat_command_handler.hpp:127
 msgid "Room message."
 msgstr "Pošle zprávu pro celou místnost."
 
-#: src/chat_command_handler.hpp:153
+#: src/chat_command_handler.hpp:129
 msgid "<room> <type> [value]"
 msgstr "<místnost> <zpráva> [hodnota]"
 
-#: src/chat_command_handler.hpp:153
+#: src/chat_command_handler.hpp:129
 msgid "Room query."
 msgstr "Odešle místnosti dotaz."
 
@@ -5890,7 +5799,7 @@ msgstr "$elem byl označen za zastaralý a odstraněn."
 msgid "Chat message"
 msgstr "Zpráva chatu"
 
-#: src/desktop/windows_tray_notification.cpp:125 src/game_config.cpp:572
+#: src/desktop/windows_tray_notification.cpp:125 src/game_config.cpp:574
 msgid "The Battle for Wesnoth"
 msgstr "Bitva o Wesnoth"
 
@@ -5922,7 +5831,7 @@ msgstr "%b %d"
 msgid "%b %d %Y"
 msgstr "%b %d %y"
 
-#: src/game_config.cpp:520
+#: src/game_config.cpp:522
 msgid "Invalid color in range: "
 msgstr "Neplatná barva v rozsahu: "
 
@@ -6041,32 +5950,32 @@ msgstr "hraje $login"
 msgid "Team"
 msgstr "Tým"
 
-#: src/game_initialization/connect_engine.cpp:991
+#: src/game_initialization/connect_engine.cpp:990
 msgid "Anonymous player"
 msgstr "Anonymní hráč"
 
-#: src/game_initialization/connect_engine.cpp:996
-#: src/game_initialization/connect_engine.cpp:1294
+#: src/game_initialization/connect_engine.cpp:995
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "Computer Player"
 msgstr "Počítačový hráč"
 
-#: src/game_initialization/connect_engine.cpp:1038
+#: src/game_initialization/connect_engine.cpp:1037
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1289
 msgid "Network Player"
 msgstr "Síťový hráč"
 
-#: src/game_initialization/connect_engine.cpp:1293
+#: src/game_initialization/connect_engine.cpp:1292
 msgid "Local Player"
 msgstr "Místní hráč"
 
-#: src/game_initialization/connect_engine.cpp:1295
+#: src/game_initialization/connect_engine.cpp:1294
 msgid "Nobody"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1298
+#: src/game_initialization/connect_engine.cpp:1297
 msgid "Reserved"
 msgstr "Rezervováno"
 
@@ -6220,7 +6129,7 @@ msgstr "Časový limit pro připojení vypršel"
 msgid "Invalid address specified for multiplayer server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:121
+#: src/game_initialization/multiplayer.cpp:118
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
@@ -6228,11 +6137,11 @@ msgstr ""
 "Server přijímá pouze verzi '$required_version', zatímco vy máte verzi "
 "'$your_version'"
 
-#: src/game_initialization/multiplayer.cpp:131
+#: src/game_initialization/multiplayer.cpp:128
 msgid "Server-side redirect loop"
 msgstr "Serverově orientované přesměrování"
 
-#: src/game_initialization/multiplayer.cpp:206
+#: src/game_initialization/multiplayer.cpp:200
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6241,29 +6150,29 @@ msgstr ""
 "Přezdívka ‘$nick’ není aktivní. Nelze si ji přivlastnit, dokud svůj účet "
 "neaktivujete emailem, nebo o to nepožádáte administrátora."
 
-#: src/game_initialization/multiplayer.cpp:215
+#: src/game_initialization/multiplayer.cpp:209
 msgid "Do you want to continue?"
 msgstr "Přeješ si pokračovat?"
 
-#: src/game_initialization/multiplayer.cpp:217
+#: src/game_initialization/multiplayer.cpp:211
 msgid "Warning"
 msgstr "Varování"
 
-#: src/game_initialization/multiplayer.cpp:260
-#: src/game_initialization/multiplayer.cpp:276
-#: src/game_initialization/multiplayer.cpp:279
+#: src/game_initialization/multiplayer.cpp:254
+#: src/game_initialization/multiplayer.cpp:270
+#: src/game_initialization/multiplayer.cpp:273
 msgid "Bad data received from server"
 msgstr "Ze serveru byla přijata špatná data"
 
-#: src/game_initialization/multiplayer.cpp:312
+#: src/game_initialization/multiplayer.cpp:306
 msgid "You must login first."
 msgstr "Nejprve se musíš přihlásit."
 
-#: src/game_initialization/multiplayer.cpp:314
+#: src/game_initialization/multiplayer.cpp:308
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Přezdívka „$nick“ již je registrována někým jiným."
 
-#: src/game_initialization/multiplayer.cpp:316
+#: src/game_initialization/multiplayer.cpp:310
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -6271,43 +6180,43 @@ msgstr ""
 "Přezdívka '$nick' obsahuje neplatné znaky. Povolena jsou pouze písmena "
 "(alespoň jedno), čísla, podtržítka a pomlčky."
 
-#: src/game_initialization/multiplayer.cpp:320
+#: src/game_initialization/multiplayer.cpp:314
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "Přezdívka '$nick' je příliš dlouhá. Maximální délka je 20 znaků."
 
-#: src/game_initialization/multiplayer.cpp:323
+#: src/game_initialization/multiplayer.cpp:317
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "Přezdívka '$nick' je rezervovaná a hráči ji nemohou registrovat."
 
-#: src/game_initialization/multiplayer.cpp:325
+#: src/game_initialization/multiplayer.cpp:319
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Přezdívka '$nick' není na tomto serveru registrovaná."
 
-#: src/game_initialization/multiplayer.cpp:326
+#: src/game_initialization/multiplayer.cpp:320
 msgid " This server disallows unregistered nicknames."
 msgstr " Tento server nepovoluje použití neregistrovaných přezdívek."
 
-#: src/game_initialization/multiplayer.cpp:329
+#: src/game_initialization/multiplayer.cpp:323
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr "Přezdívka '$nick' je na fórum tohoto serveru serveru zablokována."
 
-#: src/game_initialization/multiplayer.cpp:331
+#: src/game_initialization/multiplayer.cpp:325
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Přezdívka '$nick' je na fórum tohoto serveru serveru zablokována."
 
-#: src/game_initialization/multiplayer.cpp:335
+#: src/game_initialization/multiplayer.cpp:329
 #, fuzzy
 #| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "Tvoje IP adresa je zablokovaná na fórum tohoto serveru."
 
-#: src/game_initialization/multiplayer.cpp:337
+#: src/game_initialization/multiplayer.cpp:331
 msgid "Your IP address is banned on this server’s forums."
 msgstr "Tvoje IP adresa je zablokovaná na fórum tohoto serveru."
 
-#: src/game_initialization/multiplayer.cpp:341
+#: src/game_initialization/multiplayer.cpp:335
 #, fuzzy
 #| msgid ""
 #| "The email address for the nickname ‘$nick’ is banned on this server’s "
@@ -6319,34 +6228,34 @@ msgstr ""
 "Emailová adresa pro přezdívku '$nick' je na fórum tohoto serveru serveru "
 "zablokována."
 
-#: src/game_initialization/multiplayer.cpp:343
+#: src/game_initialization/multiplayer.cpp:337
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
 "Emailová adresa pro přezdívku '$nick' je na fórum tohoto serveru serveru "
 "zablokována."
 
-#: src/game_initialization/multiplayer.cpp:346
-#: src/game_initialization/multiplayer.cpp:348
+#: src/game_initialization/multiplayer.cpp:340
+#: src/game_initialization/multiplayer.cpp:342
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Přezdívka '$nick' je na tomto serveru registrovaná."
 
-#: src/game_initialization/multiplayer.cpp:349
+#: src/game_initialization/multiplayer.cpp:343
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr "Varování: Tuto přezdívku již někdo používá, přihlášení jej vyhodí!"
 
-#: src/game_initialization/multiplayer.cpp:352
+#: src/game_initialization/multiplayer.cpp:346
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "Chyba při přihlašování (server nemá seed pro vaše připojení)."
 
-#: src/game_initialization/multiplayer.cpp:355
+#: src/game_initialization/multiplayer.cpp:349
 msgid "The password you provided was incorrect."
 msgstr "Zadané heslo není správné."
 
-#: src/game_initialization/multiplayer.cpp:357
+#: src/game_initialization/multiplayer.cpp:351
 msgid "You have made too many login attempts."
 msgstr "Bylo provedeno příliš mnoho pokusů o přihášení."
 
@@ -6609,77 +6518,77 @@ msgstr "ano"
 msgid "Reference to unknown topic: "
 msgstr "Odkaz na neznámé téma: "
 
-#: src/help/help_impl.cpp:350
+#: src/help/help_impl.cpp:349
 msgid "Only available during a scenario."
 msgstr "Dostupné pouze během scénáře."
 
-#: src/help/help_impl.cpp:367
+#: src/help/help_impl.cpp:366
 msgid "Schedule"
 msgstr "Plán"
 
-#: src/help/help_impl.cpp:459
+#: src/help/help_impl.cpp:458
 msgid "<header>text='Units with this special attack'</header>"
 msgstr "<header>text='Jednotky s tímto speciálním útokem'</header>"
 
-#: src/help/help_impl.cpp:523
+#: src/help/help_impl.cpp:522
 msgid "<header>text='Units with this ability'</header>"
 msgstr "<header>text='Jednotky s touto schopností'</header>"
 
-#: src/help/help_impl.cpp:553
+#: src/help/help_impl.cpp:552
 msgid "Era:"
 msgstr "Věk:"
 
-#: src/help/help_impl.cpp:561
+#: src/help/help_impl.cpp:560
 msgid "Factions"
 msgstr "Frakce"
 
-#: src/help/help_impl.cpp:610
+#: src/help/help_impl.cpp:609
 msgid "Races: "
 msgstr "Rasy: "
 
-#: src/help/help_impl.cpp:619 src/help/help_impl.cpp:970
+#: src/help/help_impl.cpp:618 src/help/help_impl.cpp:969
 msgid "Alignments: "
 msgstr "Příslušnost: "
 
-#: src/help/help_impl.cpp:626
+#: src/help/help_impl.cpp:625
 msgid "Leaders"
 msgstr "Vůdci"
 
-#: src/help/help_impl.cpp:635
+#: src/help/help_impl.cpp:634
 msgid "Recruits"
 msgstr "Naverbováno"
 
 # v nápovědě podrobnosti jednotky když k ní není žádný text
-#: src/help/help_impl.cpp:696 src/units/types.cpp:480
+#: src/help/help_impl.cpp:695 src/units/types.cpp:479
 msgid "No description available."
 msgstr "Žádné informace nejsou k dispozici."
 
-#: src/help/help_impl.cpp:700 src/help/help_impl.cpp:702
+#: src/help/help_impl.cpp:699 src/help/help_impl.cpp:701
 msgid "Availability: "
 msgstr "Dostupnost: "
 
-#: src/help/help_impl.cpp:700
+#: src/help/help_impl.cpp:699
 msgid "Must-have"
 msgstr ""
 
-#: src/help/help_impl.cpp:702
+#: src/help/help_impl.cpp:701
 msgid "Unavailable"
 msgstr "Není k dispozici"
 
-#: src/help/help_impl.cpp:782 src/help/help_impl.cpp:958
+#: src/help/help_impl.cpp:781 src/help/help_impl.cpp:957
 #: src/help/help_topic_generators.cpp:400
 msgid "race^Miscellaneous"
 msgstr "Náhodná"
 
-#: src/help/help_impl.cpp:970 src/reports.cpp:382
+#: src/help/help_impl.cpp:969 src/reports.cpp:382
 msgid "Alignment: "
 msgstr "Příslušnost: "
 
-#: src/help/help_impl.cpp:977
+#: src/help/help_impl.cpp:976
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Jednotky této rasy'</header>"
 
-#: src/help/help_impl.cpp:1320
+#: src/help/help_impl.cpp:1287
 msgid "corrupted original file"
 msgstr "původní soubor je poškozený"
 
@@ -6730,6 +6639,11 @@ msgstr "Úpravy: "
 #: src/help/help_topic_generators.cpp:402 src/reports.cpp:203
 msgid "Race: "
 msgstr "Národ: "
+
+#: src/help/help_topic_generators.cpp:439
+#: src/help/help_topic_generators.cpp:462
+msgid "Traits"
+msgstr "Vlastnosti"
 
 #: src/help/help_topic_generators.cpp:472
 msgid "Abilities: "
@@ -6852,15 +6766,15 @@ msgstr "Cena vidění"
 msgid "Jamming Cost"
 msgstr "Cena za rušení"
 
-#: src/hotkey/command_executor.cpp:391
+#: src/hotkey/command_executor.cpp:395
 msgid "Do you really want to surrender the game?"
 msgstr "Opravdu se chcete v této hře vzdát?"
 
-#: src/hotkey/command_executor.cpp:391
+#: src/hotkey/command_executor.cpp:395
 msgid "Surrender"
 msgstr "Vzdát se"
 
-#: src/hotkey/command_executor.cpp:804
+#: src/hotkey/command_executor.cpp:808
 msgid "Map-Screenshot"
 msgstr "Screenshot mapy"
 
@@ -6876,11 +6790,11 @@ msgstr "Povoleno zvýšení rychlosti!"
 msgid "Accelerated speed disabled!"
 msgstr "Zakázáno zvýšení rychlosti!"
 
-#: src/hotkey/hotkey_handler.cpp:413
+#: src/hotkey/hotkey_handler.cpp:414
 msgid "Back to Turn "
 msgstr "Zpět na kolo "
 
-#: src/hotkey/hotkey_handler.cpp:419
+#: src/hotkey/hotkey_handler.cpp:420
 msgid "Back to Start"
 msgstr "Zpět na začátek"
 
@@ -7017,6 +6931,10 @@ msgstr "Nemáš žádné jednotky k naverbování."
 #| msgid "No unit recalled"
 msgid "No unit recruited"
 msgstr "Žádná jednotka nebyla přivolána"
+
+#: src/menu_events.cpp:315
+msgid "You do not have enough gold to recruit that unit"
+msgstr "K naverbování této jednotky nemáš dost peněz"
 
 #: src/menu_events.cpp:351
 msgid "You are separated from your soldiers and may not recall them"
@@ -7476,33 +7394,37 @@ msgstr "Nezrcadlit"
 msgid "No Ally Mirror"
 msgstr "Nezrcadlit spojence"
 
-#: src/mp_ui_alerts.cpp:66
-msgid "A player has joined"
-msgstr "Připojil se hráč"
+#: src/mp_ui_alerts.cpp:67
+msgid "A game ($name|, $scenario|) has been created"
+msgstr ""
 
-#: src/mp_ui_alerts.cpp:66 src/mp_ui_alerts.cpp:80 src/mp_ui_alerts.cpp:149
-#: src/mp_ui_alerts.cpp:160
+#: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
+#: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
 msgid "Wesnoth"
 msgstr "Wesnoth"
 
-#: src/mp_ui_alerts.cpp:80
+#: src/mp_ui_alerts.cpp:82
+msgid "A player has joined"
+msgstr "Připojil se hráč"
+
+#: src/mp_ui_alerts.cpp:96
 msgid "A player has left"
 msgstr "Hráč opustil hru"
 
-#: src/mp_ui_alerts.cpp:149
+#: src/mp_ui_alerts.cpp:165
 msgid "Ready to start!"
 msgstr "Připraveni začít!"
 
-#: src/mp_ui_alerts.cpp:160
+#: src/mp_ui_alerts.cpp:176
 msgid "Game has begun!"
 msgstr "Hra začala!"
 
-#: src/mp_ui_alerts.cpp:170
+#: src/mp_ui_alerts.cpp:186
 msgid "$name has taken control"
 msgstr "$name převzal(a) kontrolu"
 
 # když se změní vlastník strany nebo tak něco
-#: src/mp_ui_alerts.cpp:170
+#: src/mp_ui_alerts.cpp:186
 msgid "Turn changed"
 msgstr "Změna tahu"
 
@@ -7521,7 +7443,7 @@ msgstr ""
 msgid "time left for current turn"
 msgstr "zbývající čas do konce tohoto tahu"
 
-#: src/play_controller.cpp:249 src/replay_controller.cpp:114
+#: src/play_controller.cpp:249
 msgid "current local time"
 msgstr "skutečný čas (hodiny)"
 
@@ -8146,77 +8068,77 @@ msgstr "v $pos"
 msgid "Value: '$value' Previous: '$previous_value'"
 msgstr "Hodnota: '$value', předchozí '$previous_value'"
 
-#: src/serialization/string_utils.cpp:572
+#: src/serialization/string_utils.cpp:543
 msgid "prefix_milli^m"
 msgstr "m"
 
-#: src/serialization/string_utils.cpp:573
+#: src/serialization/string_utils.cpp:544
 msgid "prefix_micro^µ"
 msgstr "µ"
 
-#: src/serialization/string_utils.cpp:574
+#: src/serialization/string_utils.cpp:545
 msgid "prefix_nano^n"
 msgstr "n"
 
-#: src/serialization/string_utils.cpp:575
+#: src/serialization/string_utils.cpp:546
 msgid "prefix_pico^p"
 msgstr "p"
 
-#: src/serialization/string_utils.cpp:576
+#: src/serialization/string_utils.cpp:547
 msgid "prefix_femto^f"
 msgstr "f"
 
-#: src/serialization/string_utils.cpp:577
+#: src/serialization/string_utils.cpp:548
 msgid "prefix_atto^a"
 msgstr "a"
 
-#: src/serialization/string_utils.cpp:578
+#: src/serialization/string_utils.cpp:549
 msgid "prefix_zepto^z"
 msgstr "z"
 
-#: src/serialization/string_utils.cpp:579
+#: src/serialization/string_utils.cpp:550
 msgid "prefix_yocto^y"
 msgstr "y"
 
 # 1024 (počítačové kilo)
-#: src/serialization/string_utils.cpp:591
+#: src/serialization/string_utils.cpp:562
 msgid "prefix_kibi^K"
 msgstr "K"
 
-#: src/serialization/string_utils.cpp:592
+#: src/serialization/string_utils.cpp:563
 msgid "prefix_kilo^k"
 msgstr "k"
 
-#: src/serialization/string_utils.cpp:594
+#: src/serialization/string_utils.cpp:565
 msgid "prefix_mega^M"
 msgstr "M"
 
-#: src/serialization/string_utils.cpp:595
+#: src/serialization/string_utils.cpp:566
 msgid "prefix_giga^G"
 msgstr "G"
 
-#: src/serialization/string_utils.cpp:596
+#: src/serialization/string_utils.cpp:567
 msgid "prefix_tera^T"
 msgstr "T"
 
-#: src/serialization/string_utils.cpp:597
+#: src/serialization/string_utils.cpp:568
 msgid "prefix_peta^P"
 msgstr "P"
 
-#: src/serialization/string_utils.cpp:598
+#: src/serialization/string_utils.cpp:569
 msgid "prefix_exa^E"
 msgstr "E"
 
-#: src/serialization/string_utils.cpp:599
+#: src/serialization/string_utils.cpp:570
 msgid "prefix_zetta^Z"
 msgstr "Z"
 
-#: src/serialization/string_utils.cpp:600
+#: src/serialization/string_utils.cpp:571
 msgid "prefix_yotta^Y"
 msgstr "Y"
 
 # pro binární jednotky velikosti jako KiB
-#: src/serialization/string_utils.cpp:614
+#: src/serialization/string_utils.cpp:585
 msgid "infix_binary^i"
 msgstr "i"
 
@@ -8374,49 +8296,49 @@ msgstr[0] "útok za kolo"
 msgstr[1] "útok za kolo"
 msgstr[2] "útok za kolo"
 
-#: src/units/types.cpp:546 src/units/types.hpp:181
+#: src/units/types.cpp:545 src/units/types.hpp:180
 msgid "chaotic"
 msgstr "chaotická"
 
-#: src/units/types.cpp:546 src/units/types.hpp:179
+#: src/units/types.cpp:545 src/units/types.hpp:178
 msgid "lawful"
 msgstr "zákonná"
 
-#: src/units/types.cpp:546 src/units/types.hpp:182
+#: src/units/types.cpp:545 src/units/types.hpp:181
 msgid "liminal"
 msgstr "šerý"
 
-#: src/units/types.cpp:546 src/units/types.hpp:180
+#: src/units/types.cpp:545 src/units/types.hpp:179
 msgid "neutral"
 msgstr "neutrální"
 
-#: src/units/types.cpp:547 src/units/types.cpp:913
+#: src/units/types.cpp:546 src/units/types.cpp:912
 msgid "female^chaotic"
 msgstr "chaotická"
 
-#: src/units/types.cpp:547 src/units/types.cpp:911
+#: src/units/types.cpp:546 src/units/types.cpp:910
 msgid "female^lawful"
 msgstr "zákonná"
 
-#: src/units/types.cpp:547 src/units/types.cpp:912
+#: src/units/types.cpp:546 src/units/types.cpp:911
 msgid "female^neutral"
 msgstr "neutrální"
 
-#: src/units/types.cpp:548 src/units/types.cpp:914
+#: src/units/types.cpp:547 src/units/types.cpp:913
 msgid "female^liminal"
 msgstr "šerá"
 
-#: src/units/unit.cpp:1835
+#: src/units/unit.cpp:1854
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1841
+#: src/units/unit.cpp:1860
 #, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "útok za kolo"
 
-#: src/units/unit.cpp:1851
+#: src/units/unit.cpp:1870
 #, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8425,25 +8347,25 @@ msgstr[0] "útok za kolo"
 msgstr[1] "útok za kolo"
 msgstr[2] "útok za kolo"
 
-#: src/units/unit.cpp:1857
+#: src/units/unit.cpp:1876
 #, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "útok za kolo"
 
-#: src/units/unit.cpp:1861
+#: src/units/unit.cpp:1880
 #, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "útok za kolo"
 
-#: src/units/unit.cpp:1866
+#: src/units/unit.cpp:1885
 #, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "útok za kolo"
 
-#: src/units/unit.cpp:1870
+#: src/units/unit.cpp:1889
 #, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8453,13 +8375,13 @@ msgstr[0] "útok za kolo"
 msgstr[1] "útok za kolo"
 msgstr[2] "útok za kolo"
 
-#: src/units/unit.cpp:1877
+#: src/units/unit.cpp:1896
 #, fuzzy
 #| msgid "attack per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "útok za kolo"
 
-#: src/units/unit.cpp:2294
+#: src/units/unit.cpp:2296
 msgid "$effect_description per level"
 msgstr "$effect_description na úroveň"
 
@@ -8483,7 +8405,7 @@ msgstr ""
 msgid "$year AF"
 msgstr ""
 
-#: src/wesnothd_connection.cpp:403
+#: src/wesnothd_connection.cpp:418
 msgid "Disconnected from server."
 msgstr "Odpojen od serveru."
 
@@ -8506,6 +8428,62 @@ msgstr "Skryj plány pro hráče $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Nastavení plánovacího módu"
+
+#, fuzzy
+#~| msgid "Attack"
+#~| msgid_plural "Attacks"
+#~ msgid "Attacks"
+#~ msgstr "Útok"
+
+#, fuzzy
+#~| msgid "Choose weapon:"
+#~ msgid "Choose a Corpse"
+#~ msgstr "Vyber si zbraň:"
+
+#~ msgid "Recruit"
+#~ msgstr "Naverbuj"
+
+#~ msgid "XP: "
+#~ msgstr "zkušeností: "
+
+#, fuzzy
+#~| msgid "There are no save files to load"
+#~ msgid "There are no corpses available."
+#~ msgstr "Nejsou tu žádné soubory uložených her"
+
+#~ msgid "registering with password *** and no email address"
+#~ msgstr "registruji s heslem *** a bez e-mailové adresy"
+
+#~ msgid "registering with password *** and email address $email"
+#~ msgstr "registruji s heslem *** a adresou $email"
+
+#~ msgid "dropping your username"
+#~ msgstr "mazání přezdívky"
+
+#~ msgid "setting $var to $value"
+#~ msgstr "nastavuji $var na $value"
+
+#~ msgid "<password> <email (optional)>"
+#~ msgstr "<heslo> <email (nepovinný)>"
+
+#~ msgid "Register your nickname"
+#~ msgstr "Zaregistrovat tvou přezdívku"
+
+#~ msgid "Drop your nickname."
+#~ msgstr "Zahodí tvou přezdívku."
+
+#~ msgid ""
+#~ "Update details for your nickname. For possible details see '/details'."
+#~ msgstr ""
+#~ "Aktualizuje podrobnosti vaší přezdívky. Možné detaily viz '/details'."
+
+#~ msgid "<detail> <value>"
+#~ msgstr "<vlastnost> <hodnota>"
+
+#~ msgid "Request a list of details you can set for your registered nickname."
+#~ msgstr ""
+#~ "Vyžádá seznam podrobností, které můžete nastavit pro vaši registrovanou "
+#~ "přezdívku."
 
 #~ msgid "Ping timeout"
 #~ msgstr "Doba vypršení pingu"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-07-18 15:51+0300\n"
+"POT-Creation-Date: 2019-08-27 22:41+0300\n"
 "PO-Revision-Date: 2019-01-27 23:07+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: \n"
@@ -350,71 +350,6 @@ msgstr "Джойстик: номер тяговой оси"
 msgid "Joystick: deadzone of the thruster"
 msgstr "Джойстик: мертвая зона тягового джойстика"
 
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:28
-msgid "Lvl 0"
-msgstr ""
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:31
-msgid "Undead"
-msgstr ""
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:36
-#: src/help/help_topic_generators.cpp:439
-#: src/help/help_topic_generators.cpp:462
-msgid "Traits"
-msgstr "Особенности"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:39
-#, fuzzy
-#| msgid "Attack"
-#| msgid_plural "Attacks"
-msgid "Attacks"
-msgstr "Атака"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:51
-#, fuzzy
-#| msgid "Choose weapon:"
-msgid "Choose a Corpse"
-msgstr "Выберите оружие:"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:66
-msgid "Recruit"
-msgstr "Завербовать"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:67
-#: data/scenario-test.cfg:1074
-msgid "Cancel"
-msgstr "Отмена"
-
-#. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:78
-msgid "HP: "
-msgstr ""
-
-#. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:78
-msgid "MP: "
-msgstr ""
-
-#. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:78
-msgid "XP: "
-msgstr "ОП: "
-
-#. [lua]: postshow
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:141
-#, fuzzy
-#| msgid "There are no save files to load"
-msgid "There are no corpses available."
-msgstr "Нет сохраненных файлов для загрузки"
-
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [lua]: postshow
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:145
-#: src/menu_events.cpp:315
-msgid "You do not have enough gold to recruit that unit"
-msgstr "У Вас недостаточно золота для вербовки данного бойца"
-
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
@@ -463,37 +398,37 @@ msgid "Artwork and Graphics"
 msgstr "Графика и дизайн"
 
 #. [about]
-#: data/core/about.cfg:749
+#: data/core/about.cfg:753
 msgid "Music"
 msgstr "Музыка"
 
 #. [about]
-#: data/core/about.cfg:786
+#: data/core/about.cfg:790
 msgid "Sound Effects"
 msgstr "Звуковые эффекты"
 
 #. [about]
-#: data/core/about.cfg:810
+#: data/core/about.cfg:814
 msgid "Campaign Design"
 msgstr "Разработка кампаний"
 
 #. [about]
-#: data/core/about.cfg:896
+#: data/core/about.cfg:900
 msgid "Multiplayer Maps and Balancing"
 msgstr "Сетевые карты и баланс игры"
 
 #. [about]
-#: data/core/about.cfg:941
+#: data/core/about.cfg:945
 msgid "Packagers"
 msgstr "Программные сборки"
 
 #. [about]
-#: data/core/about.cfg:1048
+#: data/core/about.cfg:1052
 msgid "Miscellaneous Contributors"
 msgstr "Прочие участники"
 
 #. [about]
-#: data/core/about.cfg:1742
+#: data/core/about.cfg:1746
 msgid "Bots"
 msgstr "Боты"
 
@@ -748,23 +683,23 @@ msgid "Turkish Translation"
 msgstr "Турецкий перевод"
 
 #. [about]
-#: data/core/about_i18n.cfg:1680
+#: data/core/about_i18n.cfg:1683
 msgid "Ukrainian Translation"
 msgstr "Украинский перевод"
 
 #. [about]
-#: data/core/about_i18n.cfg:1696
+#: data/core/about_i18n.cfg:1699
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Валенсийский (Южнокаталанский) перевод"
 
 #. [about]
-#: data/core/about_i18n.cfg:1709
+#: data/core/about_i18n.cfg:1712
 msgid "Vietnamese Translation"
 msgstr "Вьетнамский перевод"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1729
+#: data/core/about_i18n.cfg:1732
 msgid "RACV’s Translation"
 msgstr "Перевод RACV"
 
@@ -2794,8 +2729,21 @@ msgstr ""
 "Юсри,Юсуф,Зафар,Зафир,Захид,Захир,Зайд,Заим,Зайн,Зариф,Закаррия,Заки,Закван,"
 "Зияд,Зубайр,Зухайр"
 
+#: data/core/macros/names.cfg:144
+msgid ""
+"Abiha,Afaf,A'isha,Ajda,Aliya,Amira,Ashraqat,Atikah,Azra,Boutheina,Bushra,"
+"Chaima,Cynthia,Dalal,Dalia,Eliana,Esma,Farida,Fatima,Feyrouz,Habiba,Hafsa,"
+"Hajra,Halima,Hamida,Hanifa,Havva,Hayat,Hessa,Ibtisam,Ibtissam,Inaam,Jamila,"
+"Jawahir,Jena,Jumana,Kareena,Karima,Katya,Khadija,Khairunnisa,Khawla,Khawlah,"
+"Lama,Lamia,Latifa,Layal,Layan,Leila,Lina,Lulwa,Madiha,Maha,Mahmuna,Mai,"
+"Malika,Marwa,Maryam,Maya,Maysoon,Melissa,Nadia,Nafisa,Nahla,Naila,Najat,"
+"Nasim,Nasrin,Nejla,Nezha,Niusha,Qistina,Rahima,Rana,Rashida,Reem,Ruqayya,"
+"Saadia,Sabiha,Safiya,Sahar,Saida,Sajida,Sakhra,Salma,Samira,Sarah,Shahd,"
+"Shatha,Sherine,Shumaila,Sumaya,Taslima,Umm,Yara,Yasmin,Zahra,Zakiya,Zaynab"
+msgstr ""
+
 #. Generator for male dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:145
+#: data/core/macros/names.cfg:146
 msgid ""
 "\n"
 "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{name_mid}\n"
@@ -2826,7 +2774,7 @@ msgstr ""
 "centre=ʿ|ʾ|хи|са|кар|да|на|я|тай|ки|хай|сав\n"
 
 #. Generator for female dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:156
+#: data/core/macros/names.cfg:157
 msgid ""
 "\n"
 "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{surname}\n"
@@ -2882,7 +2830,7 @@ msgstr ""
 "рья|айл|айр|ах|ен|ин|айд|уд|рах|вах|нан|ас|ир|ба|ни|йад|рас|зук|хид|маль|"
 "киб\n"
 
-#: data/core/macros/names.cfg:176
+#: data/core/macros/names.cfg:177
 msgid ""
 "Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
 "Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
@@ -2907,7 +2855,7 @@ msgstr ""
 "Хеззис,Хертраззир,Хесз,Хеффез,Чамил"
 
 #. Generator for saurian names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:178
+#: data/core/macros/names.cfg:179
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -2925,7 +2873,7 @@ msgstr ""
 "suffix=та|ир|аз|икс|за|тракс|ил|ле|есз|изс|езз|ирр|асч|ез|ис|исс|азз\n"
 "centre=ик|’Кза|тра|на|ан|екс|сса|ззи|’Усз\n"
 
-#: data/core/macros/names.cfg:187
+#: data/core/macros/names.cfg:188
 msgid ""
 "Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
 "Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
@@ -2943,7 +2891,7 @@ msgstr ""
 "Тангалоа,Тангароа,Таумас,Тикитики,Тини,Тинилау,Тинирау,Тонива,Тритон,Фаро,"
 "Форцис,Хабаек,Элкмар,Эмбер,Энки,"
 
-#: data/core/macros/names.cfg:188
+#: data/core/macros/names.cfg:189
 msgid ""
 "Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
 "Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
@@ -2956,7 +2904,7 @@ msgstr ""
 "Марис,Телксепия,Тиргата,Ватея,Вед-Ава,Веен емо,Вете-ема"
 
 #. Generator for merman names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:190
+#: data/core/macros/names.cfg:191
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -2975,7 +2923,7 @@ msgstr ""
 "centre=ла|ма|ри|сей|те|ка|ли|цер|ту|ни|ки|на|га|си\n"
 
 #. Generator for mermaid names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:197
+#: data/core/macros/names.cfg:198
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -2991,7 +2939,7 @@ msgstr ""
 "suffix=мe|ре|гиа|ное|дна|ла|рис|та|теа|ва|мо|пе|риам|риель|на|ра|ти\n"
 "centre=офе|фри|три|фро|ди|си|кси|ци|ти|ла|ме|ро|цо|мар|ран|зен|ла|га\n"
 
-#: data/core/macros/names.cfg:206
+#: data/core/macros/names.cfg:207
 msgid ""
 "Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
 "Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
@@ -3007,7 +2955,7 @@ msgstr ""
 "Пониаз,Псел,Псон,Реи,Саксил,Саксриреи,Сассал,Секол,Силас,Скелл,Скепз,Слелл,"
 "Снол,Сойлл,Соркол,Срелл,Тиксоз,Харксос,Хейлосс,Хейносс,Хузел"
 
-#: data/core/macros/names.cfg:207
+#: data/core/macros/names.cfg:208
 msgid ""
 "Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
 "Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
@@ -3026,7 +2974,7 @@ msgstr ""
 "Хайла,Хайна,Харксиас,Хузи"
 
 #. Generator for male naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:209
+#: data/core/macros/names.cfg:210
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3045,7 +2993,7 @@ msgstr ""
 "йаз|он|сал|ол|кил|оз|айл|ал|нис|рак|лел|нас|кон|екп\n"
 
 #. Generator for female naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:215
+#: data/core/macros/names.cfg:216
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3063,7 +3011,7 @@ msgstr ""
 "suffix=ассе|майлиа|илис|ана|ама|сса|ссилаи|зи|ксиас|лай|маисса|бра|лин|лина|"
 "на|бра|аа|лиа|лаи|лайла|на|пкне|алсп|екп\n"
 
-#: data/core/macros/names.cfg:223
+#: data/core/macros/names.cfg:224
 msgid ""
 "Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
 "Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
@@ -3079,7 +3027,7 @@ msgstr ""
 "Маркук,Меркник,Награк,Олк,Оркут,Рекнак,Таколак,Трабук,Траккон,Уркар,Уркарк"
 
 #. Generator for ogre names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:225
+#: data/core/macros/names.cfg:226
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3093,7 +3041,7 @@ msgstr ""
 "Кер|Кил|Кинг|Кор|Кру|Кур|Мар|Мер|Нал|Трак|Урк\n"
 "suffix=арк|орт|алк|арм|кук|как|укк|нак|та|к|рок|рар|кон|гак|ник\n"
 
-#: data/core/macros/names.cfg:233
+#: data/core/macros/names.cfg:234
 msgid ""
 "Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
 "Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
@@ -3170,7 +3118,7 @@ msgstr ""
 "Эрудуш,Эруло,Эруло,Эрунк,Эруол,Эруол,Эрураг,Эрураг,Эруурк,"
 
 #. Generator for orc names
-#: data/core/macros/names.cfg:235
+#: data/core/macros/names.cfg:236
 msgid ""
 "\n"
 "main={starting_consonnant}{vowel}{consonnant}{vowel}{ending_consonnant}|"
@@ -3198,7 +3146,7 @@ msgstr ""
 "ending_consonnant=б|г|р|ш|к\n"
 "ending_vowel=о|у\n"
 
-#: data/core/macros/names.cfg:247
+#: data/core/macros/names.cfg:248
 msgid ""
 "Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
 "Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
@@ -3211,7 +3159,7 @@ msgstr ""
 "Тук Рух,Угг,Йух,Ург,Ургх,Урк,Вак,Зог,Зууг"
 
 #. Generator for troll names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:249
+#: data/core/macros/names.cfg:250
 msgid ""
 "\n"
 "main={short_name}|{short_name}|{short_name}|{short_name} {short_name}\n"
@@ -3231,7 +3179,7 @@ msgstr ""
 "beginning=Ай|Уй|А|У\n"
 "suffix=рб|г|гх|к|рф|кк|р|г|тс|кс|рг\n"
 
-#: data/core/macros/names.cfg:260
+#: data/core/macros/names.cfg:261
 msgid ""
 "Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
 "Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
@@ -3260,7 +3208,7 @@ msgstr ""
 "Тумтумгамтомтом,Вонрунмалдин,Вудадоонопл"
 
 #. Generator for wose names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:262
+#: data/core/macros/names.cfg:263
 msgid ""
 "\n"
 "main={prefix}{centre}{centre}{suffix}|{prefix}{centre}{centre}{centre}"
@@ -3286,7 +3234,7 @@ msgstr ""
 "suffix=мен|друм|тор|нум|лад|де|ак|лол|дум|там|нур|диум|декм|бил|рук|релм|"
 "диум|нумм|дан|дум|тум|дин\n"
 
-#: data/core/macros/names.cfg:271
+#: data/core/macros/names.cfg:272
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
@@ -3295,7 +3243,7 @@ msgstr ""
 "Ол,Олд,Олф,Оул,Окс,Рок,Рук,Сал,Сам,Сед,Сел,Сен,Сил,Тал,Уотер,Вет,Йорк"
 
 #. Generator for the base names of features assigned by the random map generator; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:273
+#: data/core/macros/names.cfg:274
 msgid ""
 "\n"
 "main={prefix}{middle}{suffix}\n"
@@ -4122,7 +4070,7 @@ msgstr "Нет"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:628
+#: src/hotkey/command_executor.cpp:632
 msgid "Screenshot"
 msgstr "Скриншот"
 
@@ -4168,7 +4116,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr "Недопустимый уровень устаревания  $level (должен быть 1-4)"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:905
+#: data/lua/wml-tags.lua:912
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Недопустимый уровень устаревания  (должен быть 1-4)"
 
@@ -4253,6 +4201,10 @@ msgstr ""
 msgid "OK"
 msgstr "OK"
 
+#: data/scenario-test.cfg:1074
+msgid "Cancel"
+msgstr "Отмена"
+
 #. [language]
 #: data/scenario-test.cfg:4155
 msgid "very long"
@@ -4264,92 +4216,92 @@ msgid "electrical"
 msgstr "электрический"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:426 data/themes/_initial.cfg:586
+#: data/themes/_initial.cfg:428 data/themes/_initial.cfg:588
 msgid "Play"
 msgstr "Проиграть"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:427 data/themes/_initial.cfg:587
+#: data/themes/_initial.cfg:429 data/themes/_initial.cfg:589
 msgid "continuous replay"
 msgstr "непрерывный повтор"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:441 data/themes/_initial.cfg:600
+#: data/themes/_initial.cfg:443 data/themes/_initial.cfg:602
 msgid "Stop"
 msgstr "Стоп"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:442
+#: data/themes/_initial.cfg:444
 msgid "pause after current move"
 msgstr "пауза после текущего хода"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:457 data/themes/_initial.cfg:614
+#: data/themes/_initial.cfg:459 data/themes/_initial.cfg:616
 msgid "Reset"
 msgstr "Сброс"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:458 data/themes/_initial.cfg:615
+#: data/themes/_initial.cfg:460 data/themes/_initial.cfg:617
 msgid "reset to beginning"
 msgstr "сбросить на начало"
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:473 data/themes/_initial.cfg:628
+#: data/themes/_initial.cfg:475 data/themes/_initial.cfg:630
 msgid "Next Turn"
 msgstr "Следующий ход"
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:474 data/themes/_initial.cfg:629
+#: data/themes/_initial.cfg:476 data/themes/_initial.cfg:631
 msgid "play turn"
 msgstr "проиграть ход"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:489 data/themes/_initial.cfg:642
+#: data/themes/_initial.cfg:491 data/themes/_initial.cfg:644
 msgid "Next Side"
 msgstr "Следующая сторона"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:490 data/themes/_initial.cfg:643
+#: data/themes/_initial.cfg:492 data/themes/_initial.cfg:645
 msgid "play side turn"
 msgstr "проиграть ход стороны"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:504 data/themes/_initial.cfg:656
+#: data/themes/_initial.cfg:506 data/themes/_initial.cfg:658
 msgid "Next Move"
 msgstr "Следующий ход"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:505 data/themes/_initial.cfg:657
+#: data/themes/_initial.cfg:507 data/themes/_initial.cfg:659
 msgid "play single move"
 msgstr "проиграть один ход"
 
 #. [menu]: id=show-what
-#: data/themes/_initial.cfg:517 data/themes/_initial.cfg:669
+#: data/themes/_initial.cfg:519 data/themes/_initial.cfg:671
 msgid "Point of view"
 msgstr "Точка зрения"
 
 #. [action]: id=button-continue
-#: data/themes/_initial.cfg:528
+#: data/themes/_initial.cfg:530
 msgid "Continue Play"
 msgstr "Продолжить проигрывание"
 
 #. [action]: id=button-continue
-#: data/themes/_initial.cfg:529
+#: data/themes/_initial.cfg:531
 msgid "Exit the replay mode and continue playing normally."
 msgstr "Выйти из режима воспроизведения и продолжать играть в обычном режиме."
 
 #. [action]: id=skip-animation, type=checkbox
-#: data/themes/_initial.cfg:541 data/themes/_initial.cfg:681
+#: data/themes/_initial.cfg:543 data/themes/_initial.cfg:683
 msgid "Skip animation"
 msgstr "Пропустить анимацию"
 
 #. [label]: id=replay-label
-#: data/themes/_initial.cfg:571
+#: data/themes/_initial.cfg:573
 msgid "Replay"
 msgstr "Повтор"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:601
+#: data/themes/_initial.cfg:603
 msgid "pause"
 msgstr "пауза"
 
@@ -5566,7 +5518,7 @@ msgid "Do you really wish to continue?"
 msgstr "Вы точно хотите продолжить?"
 
 #: src/addon/client.cpp:459 src/addon/manager_ui.cpp:174
-#: src/game_initialization/multiplayer.cpp:233
+#: src/game_initialization/multiplayer.cpp:227
 msgid "Confirm"
 msgstr "Подтвердить"
 
@@ -5746,40 +5698,23 @@ msgstr "списки друзей и игнора"
 msgid "version"
 msgstr "версия"
 
-#: src/chat_command_handler.cpp:174
-msgid "registering with password *** and no email address"
-msgstr "регистрируем с паролем *** и без е-мэйла"
-
-#: src/chat_command_handler.cpp:179
-msgid "registering with password *** and email address $email"
-msgstr "регистрируем с паролем *** на е-мэйл $email"
-
-#: src/chat_command_handler.cpp:182 src/chat_command_handler.cpp:193
-#: src/chat_command_handler.cpp:211 src/chat_command_handler.cpp:225
+#: src/chat_command_handler.cpp:170
 msgid "nick registration"
 msgstr "регистрирую ник"
 
-#: src/chat_command_handler.cpp:193
-msgid "dropping your username"
-msgstr "удаляю Ваш ник"
-
-#: src/chat_command_handler.cpp:211
-msgid "setting $var to $value"
-msgstr "выставляю для $var значение $value"
-
-#: src/chat_command_handler.cpp:225
+#: src/chat_command_handler.cpp:170
 msgid "requesting information for user $nick"
 msgstr "запрашиваю информацию о пользователе $nick"
 
-#: src/chat_command_handler.hpp:66
+#: src/chat_command_handler.hpp:51
 msgid "(A) — admin command"
 msgstr "(A) — админская команда"
 
-#: src/chat_command_handler.hpp:73 src/menu_events.cpp:1159
+#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1159
 msgid "(admin only)"
 msgstr "(только для админов)"
 
-#: src/chat_command_handler.hpp:88
+#: src/chat_command_handler.hpp:73
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -5787,7 +5722,7 @@ msgstr ""
 "Отослать запрос на сервер. Без параметров, сервер выдаст список доступных "
 "команд."
 
-#: src/chat_command_handler.hpp:92
+#: src/chat_command_handler.hpp:77
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -5795,39 +5730,39 @@ msgstr ""
 "Забанить и кикнуть игрока или зрителя. Если он не в игре, но на сервере, то "
 "Вы его только забаните."
 
-#: src/chat_command_handler.hpp:93 src/chat_command_handler.hpp:96
-#: src/chat_command_handler.hpp:98 src/chat_command_handler.hpp:100
-#: src/chat_command_handler.hpp:102 src/chat_command_handler.hpp:123
-#: src/chat_command_handler.hpp:125 src/chat_command_handler.hpp:127
-#: src/chat_command_handler.hpp:138
+#: src/chat_command_handler.hpp:78 src/chat_command_handler.hpp:81
+#: src/chat_command_handler.hpp:83 src/chat_command_handler.hpp:85
+#: src/chat_command_handler.hpp:87 src/chat_command_handler.hpp:108
+#: src/chat_command_handler.hpp:110 src/chat_command_handler.hpp:112
+#: src/chat_command_handler.hpp:116
 msgid "<nickname>"
 msgstr "<ник>"
 
-#: src/chat_command_handler.hpp:95
+#: src/chat_command_handler.hpp:80
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 "Разбанить пользователя. Он не обязан быть в игре, но должен быть на сервере."
 
-#: src/chat_command_handler.hpp:98
+#: src/chat_command_handler.hpp:83
 msgid "Kick a player or observer."
 msgstr "Кикнуть игрока или зрителя."
 
-#: src/chat_command_handler.hpp:100
+#: src/chat_command_handler.hpp:85
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
 "Отключить реплики наблюдателей. Без параметра — отключает всех наблюдателей."
 
-#: src/chat_command_handler.hpp:102
+#: src/chat_command_handler.hpp:87
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 "Разрешить наблюдателю говорить. Без параметра — разрешает говорить всем "
 "наблюдателям."
 
-#: src/chat_command_handler.hpp:104
+#: src/chat_command_handler.hpp:89
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Запретить/разрешить всем зрителям говорить. (переключить)"
 
-#: src/chat_command_handler.hpp:108
+#: src/chat_command_handler.hpp:93
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
@@ -5835,15 +5770,15 @@ msgstr ""
 "Сообщить о некорректном поведении, нарушении правил и т.п. модераторам "
 "сервера. Пожалуйста, правильно называйте ники и т.п."
 
-#: src/chat_command_handler.hpp:112
+#: src/chat_command_handler.hpp:97
 msgid "<message>"
 msgstr "<сообщение>"
 
-#: src/chat_command_handler.hpp:112
+#: src/chat_command_handler.hpp:97
 msgid "Send an emotion or personal action in chat."
 msgstr "Отправить эмоцию или действие в чате."
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:100
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
@@ -5851,96 +5786,72 @@ msgstr ""
 "Отправить приватное сообщение. Вы не можете отправлять сообщения игрокам, "
 "играющим в или наблюдающим за Вашей партией."
 
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:102
 msgid "<nickname> <message>"
 msgstr "<ник> <сообщение>"
 
-#: src/chat_command_handler.hpp:121
+#: src/chat_command_handler.hpp:106
 msgid "<level> <domain>"
 msgstr "<уровень> <домен>"
 
-#: src/chat_command_handler.hpp:121
+#: src/chat_command_handler.hpp:106
 msgid "Change the log level of a log domain."
 msgstr "Сменить уровень лога в домене лога."
 
-#: src/chat_command_handler.hpp:123
+#: src/chat_command_handler.hpp:108
 msgid "Add a nickname to your ignores list."
 msgstr "Добавить игрока в список игнора."
 
-#: src/chat_command_handler.hpp:125
+#: src/chat_command_handler.hpp:110
 msgid "Add a nickname to your friends list."
 msgstr "Добавить в друзья."
 
-#: src/chat_command_handler.hpp:127
+#: src/chat_command_handler.hpp:112
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Удалить игрока из списка игнора или списка друзей."
 
-#: src/chat_command_handler.hpp:129
+#: src/chat_command_handler.hpp:114
 msgid "Display version information."
 msgstr "Показать версию."
 
-#: src/chat_command_handler.hpp:131
-msgid "<password> <email (optional)>"
-msgstr "<пароль> <email (необязательно)>"
-
-#: src/chat_command_handler.hpp:131
-msgid "Register your nickname"
-msgstr "Зарегистрировать свой ник."
-
-#: src/chat_command_handler.hpp:133
-msgid "Drop your nickname."
-msgstr "Удалить свой ник."
-
-#: src/chat_command_handler.hpp:135
-msgid "Update details for your nickname. For possible details see '/details'."
-msgstr "Обновить профиль своего ника. Подробности смотрите через '/details'."
-
-#: src/chat_command_handler.hpp:136
-msgid "<detail> <value>"
-msgstr "<параметр> <значение>"
-
-#: src/chat_command_handler.hpp:138
+#: src/chat_command_handler.hpp:116
 msgid "Request information about a nickname."
 msgstr "Запросить данные о нике."
 
-#: src/chat_command_handler.hpp:140
-msgid "Request a list of details you can set for your registered nickname."
-msgstr "Запросить, какие данные можно менять для своего ника."
-
-#: src/chat_command_handler.hpp:142 src/chat_command_handler.hpp:145
-#: src/chat_command_handler.hpp:147
+#: src/chat_command_handler.hpp:118 src/chat_command_handler.hpp:121
+#: src/chat_command_handler.hpp:123
 msgid "<room>"
 msgstr "<комната>"
 
-#: src/chat_command_handler.hpp:142
+#: src/chat_command_handler.hpp:118
 msgid "Join a room."
 msgstr "Зайти в комнату."
 
-#: src/chat_command_handler.hpp:145
+#: src/chat_command_handler.hpp:121
 msgid "Part a room."
 msgstr "Разделить комнату."
 
-#: src/chat_command_handler.hpp:147
+#: src/chat_command_handler.hpp:123
 msgid "List room members."
 msgstr "Список игроков в комнате."
 
-#: src/chat_command_handler.hpp:149
+#: src/chat_command_handler.hpp:125
 msgid "List available rooms."
 msgstr "Список доступных комнат."
 
-#: src/chat_command_handler.hpp:151
+#: src/chat_command_handler.hpp:127
 msgid "<room> <msg>"
 msgstr "<комната> <сообщение>"
 
-#: src/chat_command_handler.hpp:151
+#: src/chat_command_handler.hpp:127
 msgid "Room message."
 msgstr "Сообщение для комнаты."
 
-#: src/chat_command_handler.hpp:153
+#: src/chat_command_handler.hpp:129
 msgid "<room> <type> [value]"
 msgstr "<комната> <тип> [значение]"
 
-#: src/chat_command_handler.hpp:153
+#: src/chat_command_handler.hpp:129
 msgid "Room query."
 msgstr "Запрос к комнате."
 
@@ -5993,7 +5904,7 @@ msgid "Chat message"
 msgstr "Сообщение в чате"
 
 # ?
-#: src/desktop/windows_tray_notification.cpp:125 src/game_config.cpp:572
+#: src/desktop/windows_tray_notification.cpp:125 src/game_config.cpp:574
 msgid "The Battle for Wesnoth"
 msgstr "Битва за Веснот"
 
@@ -6025,7 +5936,7 @@ msgstr "%b %d"
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
-#: src/game_config.cpp:520
+#: src/game_config.cpp:522
 msgid "Invalid color in range: "
 msgstr "Неверный диапазон цветов:"
 
@@ -6146,32 +6057,32 @@ msgstr "Игра $login"
 msgid "Team"
 msgstr "Команда"
 
-#: src/game_initialization/connect_engine.cpp:991
+#: src/game_initialization/connect_engine.cpp:990
 msgid "Anonymous player"
 msgstr "Анонимный игрок"
 
-#: src/game_initialization/connect_engine.cpp:996
-#: src/game_initialization/connect_engine.cpp:1294
+#: src/game_initialization/connect_engine.cpp:995
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "Computer Player"
 msgstr "Компьютер"
 
-#: src/game_initialization/connect_engine.cpp:1038
+#: src/game_initialization/connect_engine.cpp:1037
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1289
 msgid "Network Player"
 msgstr "Сетевой игрок"
 
-#: src/game_initialization/connect_engine.cpp:1293
+#: src/game_initialization/connect_engine.cpp:1292
 msgid "Local Player"
 msgstr "Локальный игрок"
 
-#: src/game_initialization/connect_engine.cpp:1295
+#: src/game_initialization/connect_engine.cpp:1294
 msgid "Nobody"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1298
+#: src/game_initialization/connect_engine.cpp:1297
 msgid "Reserved"
 msgstr "Занято"
 
@@ -6323,7 +6234,7 @@ msgstr "Превышен лимит времени подключения"
 msgid "Invalid address specified for multiplayer server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:121
+#: src/game_initialization/multiplayer.cpp:118
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
@@ -6331,11 +6242,11 @@ msgstr ""
 "Сервер принимает версии '$required_version', тогда как Вы используете версию "
 "'$your_version'"
 
-#: src/game_initialization/multiplayer.cpp:131
+#: src/game_initialization/multiplayer.cpp:128
 msgid "Server-side redirect loop"
 msgstr "Редирект со стороны сервера"
 
-#: src/game_initialization/multiplayer.cpp:206
+#: src/game_initialization/multiplayer.cpp:200
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6345,29 +6256,29 @@ msgstr ""
 "активируете свой аккаунт по email или не попросите администратора "
 "активировать Вас."
 
-#: src/game_initialization/multiplayer.cpp:215
+#: src/game_initialization/multiplayer.cpp:209
 msgid "Do you want to continue?"
 msgstr "Вы хотите продолжить?"
 
-#: src/game_initialization/multiplayer.cpp:217
+#: src/game_initialization/multiplayer.cpp:211
 msgid "Warning"
 msgstr "Предупреждение"
 
-#: src/game_initialization/multiplayer.cpp:260
-#: src/game_initialization/multiplayer.cpp:276
-#: src/game_initialization/multiplayer.cpp:279
+#: src/game_initialization/multiplayer.cpp:254
+#: src/game_initialization/multiplayer.cpp:270
+#: src/game_initialization/multiplayer.cpp:273
 msgid "Bad data received from server"
 msgstr "Сервер прислал неверные данные"
 
-#: src/game_initialization/multiplayer.cpp:312
+#: src/game_initialization/multiplayer.cpp:306
 msgid "You must login first."
 msgstr "Сначала залогинтесь."
 
-#: src/game_initialization/multiplayer.cpp:314
+#: src/game_initialization/multiplayer.cpp:308
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Ник ‘$nick’ уже занят."
 
-#: src/game_initialization/multiplayer.cpp:316
+#: src/game_initialization/multiplayer.cpp:310
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -6375,43 +6286,43 @@ msgstr ""
 "Ник ‘$nick’ содержит запрещённые символы. Разрешены только алфавитно-"
 "цифровые символы (минимум один), знаки подчёркивания и переноса."
 
-#: src/game_initialization/multiplayer.cpp:320
+#: src/game_initialization/multiplayer.cpp:314
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "Ник ‘$nick’ слишком длинен. Ники должны быть не длиннее 20 символов."
 
-#: src/game_initialization/multiplayer.cpp:323
+#: src/game_initialization/multiplayer.cpp:317
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "Ник ‘$nick’ зарезервирован, его нельзя использовать."
 
-#: src/game_initialization/multiplayer.cpp:325
+#: src/game_initialization/multiplayer.cpp:319
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Ник ‘$nick’ на этом сервере не зарегистрирован."
 
-#: src/game_initialization/multiplayer.cpp:326
+#: src/game_initialization/multiplayer.cpp:320
 msgid " This server disallows unregistered nicknames."
 msgstr " Этот сервер не разрешает использовать незарегистрированные ники."
 
-#: src/game_initialization/multiplayer.cpp:329
+#: src/game_initialization/multiplayer.cpp:323
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr "Ник ‘$nick’ забанен на форумах этого сервера."
 
-#: src/game_initialization/multiplayer.cpp:331
+#: src/game_initialization/multiplayer.cpp:325
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Ник ‘$nick’ забанен на форумах этого сервера."
 
-#: src/game_initialization/multiplayer.cpp:335
+#: src/game_initialization/multiplayer.cpp:329
 #, fuzzy
 #| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "Ваш IP-адрес забанен на форумах этого сервера."
 
-#: src/game_initialization/multiplayer.cpp:337
+#: src/game_initialization/multiplayer.cpp:331
 msgid "Your IP address is banned on this server’s forums."
 msgstr "Ваш IP-адрес забанен на форумах этого сервера."
 
-#: src/game_initialization/multiplayer.cpp:341
+#: src/game_initialization/multiplayer.cpp:335
 #, fuzzy
 #| msgid ""
 #| "The email address for the nickname ‘$nick’ is banned on this server’s "
@@ -6423,19 +6334,19 @@ msgstr ""
 "Адрес электронной почты для псевдонима ‘$nick’ забанен на форумах этого "
 "сервера."
 
-#: src/game_initialization/multiplayer.cpp:343
+#: src/game_initialization/multiplayer.cpp:337
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
 "Адрес электронной почты для псевдонима ‘$nick’ забанен на форумах этого "
 "сервера."
 
-#: src/game_initialization/multiplayer.cpp:346
-#: src/game_initialization/multiplayer.cpp:348
+#: src/game_initialization/multiplayer.cpp:340
+#: src/game_initialization/multiplayer.cpp:342
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Ник ‘$nick’ зарегистрирован на этом сервере."
 
-#: src/game_initialization/multiplayer.cpp:349
+#: src/game_initialization/multiplayer.cpp:343
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -6443,16 +6354,16 @@ msgstr ""
 "ВНИМАНИЕ: Один из клиентов уже использует этот ник, если Вы залогинитесь под "
 "ним, его кикнут!"
 
-#: src/game_initialization/multiplayer.cpp:352
+#: src/game_initialization/multiplayer.cpp:346
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "Ошибка при входе (сервер не отвечает на ваше подключение)"
 
-#: src/game_initialization/multiplayer.cpp:355
+#: src/game_initialization/multiplayer.cpp:349
 msgid "The password you provided was incorrect."
 msgstr "Вы ввели неправильный пароль."
 
-#: src/game_initialization/multiplayer.cpp:357
+#: src/game_initialization/multiplayer.cpp:351
 msgid "You have made too many login attempts."
 msgstr "Вы пытались войти слишком много раз."
 
@@ -6717,76 +6628,76 @@ msgstr "да"
 msgid "Reference to unknown topic: "
 msgstr "Ссылка на неизвестную тему:"
 
-#: src/help/help_impl.cpp:350
+#: src/help/help_impl.cpp:349
 msgid "Only available during a scenario."
 msgstr "Доступно только в сценарии."
 
-#: src/help/help_impl.cpp:367
+#: src/help/help_impl.cpp:366
 msgid "Schedule"
 msgstr "Планировать"
 
-#: src/help/help_impl.cpp:459
+#: src/help/help_impl.cpp:458
 msgid "<header>text='Units with this special attack'</header>"
 msgstr "<header>text='Бойцы с этой особой атакой'</header>"
 
-#: src/help/help_impl.cpp:523
+#: src/help/help_impl.cpp:522
 msgid "<header>text='Units with this ability'</header>"
 msgstr "<header>text='Бойцы с этой способностью'</header>"
 
-#: src/help/help_impl.cpp:553
+#: src/help/help_impl.cpp:552
 msgid "Era:"
 msgstr "Эра:"
 
-#: src/help/help_impl.cpp:561
+#: src/help/help_impl.cpp:560
 msgid "Factions"
 msgstr "Фракции"
 
-#: src/help/help_impl.cpp:610
+#: src/help/help_impl.cpp:609
 msgid "Races: "
 msgstr "Расы: "
 
-#: src/help/help_impl.cpp:619 src/help/help_impl.cpp:970
+#: src/help/help_impl.cpp:618 src/help/help_impl.cpp:969
 msgid "Alignments: "
 msgstr "Тип: "
 
-#: src/help/help_impl.cpp:626
+#: src/help/help_impl.cpp:625
 msgid "Leaders"
 msgstr "Лидеры"
 
-#: src/help/help_impl.cpp:635
+#: src/help/help_impl.cpp:634
 msgid "Recruits"
 msgstr "Завербовано"
 
-#: src/help/help_impl.cpp:696 src/units/types.cpp:480
+#: src/help/help_impl.cpp:695 src/units/types.cpp:479
 msgid "No description available."
 msgstr "Описание недоступно."
 
-#: src/help/help_impl.cpp:700 src/help/help_impl.cpp:702
+#: src/help/help_impl.cpp:699 src/help/help_impl.cpp:701
 msgid "Availability: "
 msgstr "Наличие: "
 
-#: src/help/help_impl.cpp:700
+#: src/help/help_impl.cpp:699
 msgid "Must-have"
 msgstr "Обязан иметь"
 
-#: src/help/help_impl.cpp:702
+#: src/help/help_impl.cpp:701
 msgid "Unavailable"
 msgstr "Недоступно."
 
-#: src/help/help_impl.cpp:782 src/help/help_impl.cpp:958
+#: src/help/help_impl.cpp:781 src/help/help_impl.cpp:957
 #: src/help/help_topic_generators.cpp:400
 msgid "race^Miscellaneous"
 msgstr "Разное"
 
-#: src/help/help_impl.cpp:970 src/reports.cpp:382
+#: src/help/help_impl.cpp:969 src/reports.cpp:382
 msgid "Alignment: "
 msgstr "Тип: "
 
-#: src/help/help_impl.cpp:977
+#: src/help/help_impl.cpp:976
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Бойцы этой расы'</header>"
 
-#: src/help/help_impl.cpp:1320
+#: src/help/help_impl.cpp:1287
 msgid "corrupted original file"
 msgstr "поврежденный исходный файл"
 
@@ -6837,6 +6748,11 @@ msgstr "Вариации: "
 #: src/help/help_topic_generators.cpp:402 src/reports.cpp:203
 msgid "Race: "
 msgstr "Раса: "
+
+#: src/help/help_topic_generators.cpp:439
+#: src/help/help_topic_generators.cpp:462
+msgid "Traits"
+msgstr "Особенности"
 
 #: src/help/help_topic_generators.cpp:472
 msgid "Abilities: "
@@ -6959,15 +6875,15 @@ msgstr "Цена видимости"
 msgid "Jamming Cost"
 msgstr "Цена помехи"
 
-#: src/hotkey/command_executor.cpp:391
+#: src/hotkey/command_executor.cpp:395
 msgid "Do you really want to surrender the game?"
 msgstr "Вы действительно хотите признать поражение? "
 
-#: src/hotkey/command_executor.cpp:391
+#: src/hotkey/command_executor.cpp:395
 msgid "Surrender"
 msgstr "Признать поражение"
 
-#: src/hotkey/command_executor.cpp:804
+#: src/hotkey/command_executor.cpp:808
 msgid "Map-Screenshot"
 msgstr "Скриншот карты"
 
@@ -6983,11 +6899,11 @@ msgstr "Ускорение включено!"
 msgid "Accelerated speed disabled!"
 msgstr "Ускорение отключено!"
 
-#: src/hotkey/hotkey_handler.cpp:413
+#: src/hotkey/hotkey_handler.cpp:414
 msgid "Back to Turn "
 msgstr "Вернуться к ходу "
 
-#: src/hotkey/hotkey_handler.cpp:419
+#: src/hotkey/hotkey_handler.cpp:420
 msgid "Back to Start"
 msgstr "Вернуться к началу"
 
@@ -7125,6 +7041,10 @@ msgstr "Нет бойцов для вербовки."
 #| msgid "No unit recalled"
 msgid "No unit recruited"
 msgstr "Ни один боец не призван"
+
+#: src/menu_events.cpp:315
+msgid "You do not have enough gold to recruit that unit"
+msgstr "У Вас недостаточно золота для вербовки данного бойца"
 
 #: src/menu_events.cpp:351
 msgid "You are separated from your soldiers and may not recall them"
@@ -7594,32 +7514,36 @@ msgstr "Нет зеркала"
 msgid "No Ally Mirror"
 msgstr "Нет дружественного зеркала"
 
-#: src/mp_ui_alerts.cpp:66
-msgid "A player has joined"
-msgstr "Игрок подсоединился"
+#: src/mp_ui_alerts.cpp:67
+msgid "A game ($name|, $scenario|) has been created"
+msgstr ""
 
-#: src/mp_ui_alerts.cpp:66 src/mp_ui_alerts.cpp:80 src/mp_ui_alerts.cpp:149
-#: src/mp_ui_alerts.cpp:160
+#: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
+#: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
 msgid "Wesnoth"
 msgstr "Веснот"
 
-#: src/mp_ui_alerts.cpp:80
+#: src/mp_ui_alerts.cpp:82
+msgid "A player has joined"
+msgstr "Игрок подсоединился"
+
+#: src/mp_ui_alerts.cpp:96
 msgid "A player has left"
 msgstr "Игрок вышел"
 
-#: src/mp_ui_alerts.cpp:149
+#: src/mp_ui_alerts.cpp:165
 msgid "Ready to start!"
 msgstr "Готов к старту!"
 
-#: src/mp_ui_alerts.cpp:160
+#: src/mp_ui_alerts.cpp:176
 msgid "Game has begun!"
 msgstr "Игра началась!"
 
-#: src/mp_ui_alerts.cpp:170
+#: src/mp_ui_alerts.cpp:186
 msgid "$name has taken control"
 msgstr "$name принял управление"
 
-#: src/mp_ui_alerts.cpp:170
+#: src/mp_ui_alerts.cpp:186
 msgid "Turn changed"
 msgstr "Ход сменился"
 
@@ -7638,7 +7562,7 @@ msgstr ""
 msgid "time left for current turn"
 msgstr "осталось времени на этот ход"
 
-#: src/play_controller.cpp:249 src/replay_controller.cpp:114
+#: src/play_controller.cpp:249
 msgid "current local time"
 msgstr "осталось времени"
 
@@ -8261,75 +8185,75 @@ msgstr "в позиции $pos"
 msgid "Value: '$value' Previous: '$previous_value'"
 msgstr "Значение: '$value' Предыдущее: '$previous_value'"
 
-#: src/serialization/string_utils.cpp:572
+#: src/serialization/string_utils.cpp:543
 msgid "prefix_milli^m"
 msgstr "м"
 
-#: src/serialization/string_utils.cpp:573
+#: src/serialization/string_utils.cpp:544
 msgid "prefix_micro^µ"
 msgstr "мк"
 
-#: src/serialization/string_utils.cpp:574
+#: src/serialization/string_utils.cpp:545
 msgid "prefix_nano^n"
 msgstr "н"
 
-#: src/serialization/string_utils.cpp:575
+#: src/serialization/string_utils.cpp:546
 msgid "prefix_pico^p"
 msgstr "п"
 
-#: src/serialization/string_utils.cpp:576
+#: src/serialization/string_utils.cpp:547
 msgid "prefix_femto^f"
 msgstr "ф"
 
-#: src/serialization/string_utils.cpp:577
+#: src/serialization/string_utils.cpp:548
 msgid "prefix_atto^a"
 msgstr "а"
 
-#: src/serialization/string_utils.cpp:578
+#: src/serialization/string_utils.cpp:549
 msgid "prefix_zepto^z"
 msgstr "з"
 
-#: src/serialization/string_utils.cpp:579
+#: src/serialization/string_utils.cpp:550
 msgid "prefix_yocto^y"
 msgstr "и"
 
-#: src/serialization/string_utils.cpp:591
+#: src/serialization/string_utils.cpp:562
 msgid "prefix_kibi^K"
 msgstr "К"
 
-#: src/serialization/string_utils.cpp:592
+#: src/serialization/string_utils.cpp:563
 msgid "prefix_kilo^k"
 msgstr "к"
 
-#: src/serialization/string_utils.cpp:594
+#: src/serialization/string_utils.cpp:565
 msgid "prefix_mega^M"
 msgstr "М"
 
-#: src/serialization/string_utils.cpp:595
+#: src/serialization/string_utils.cpp:566
 msgid "prefix_giga^G"
 msgstr "Г"
 
-#: src/serialization/string_utils.cpp:596
+#: src/serialization/string_utils.cpp:567
 msgid "prefix_tera^T"
 msgstr "Т"
 
-#: src/serialization/string_utils.cpp:597
+#: src/serialization/string_utils.cpp:568
 msgid "prefix_peta^P"
 msgstr "П"
 
-#: src/serialization/string_utils.cpp:598
+#: src/serialization/string_utils.cpp:569
 msgid "prefix_exa^E"
 msgstr "Э"
 
-#: src/serialization/string_utils.cpp:599
+#: src/serialization/string_utils.cpp:570
 msgid "prefix_zetta^Z"
 msgstr "З"
 
-#: src/serialization/string_utils.cpp:600
+#: src/serialization/string_utils.cpp:571
 msgid "prefix_yotta^Y"
 msgstr "Й"
 
-#: src/serialization/string_utils.cpp:614
+#: src/serialization/string_utils.cpp:585
 msgid "infix_binary^i"
 msgstr "и"
 
@@ -8474,66 +8398,66 @@ msgstr[0] "<span color=\"$color\">$number_or_percent</span> очко движе�
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> очка движения"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> очков движения"
 
-#: src/units/types.cpp:546 src/units/types.hpp:181
+#: src/units/types.cpp:545 src/units/types.hpp:180
 msgid "chaotic"
 msgstr "хаотичный"
 
-#: src/units/types.cpp:546 src/units/types.hpp:179
+#: src/units/types.cpp:545 src/units/types.hpp:178
 msgid "lawful"
 msgstr "порядочный"
 
-#: src/units/types.cpp:546 src/units/types.hpp:182
+#: src/units/types.cpp:545 src/units/types.hpp:181
 msgid "liminal"
 msgstr "теневой"
 
-#: src/units/types.cpp:546 src/units/types.hpp:180
+#: src/units/types.cpp:545 src/units/types.hpp:179
 msgid "neutral"
 msgstr "нейтральный"
 
-#: src/units/types.cpp:547 src/units/types.cpp:913
+#: src/units/types.cpp:546 src/units/types.cpp:912
 msgid "female^chaotic"
 msgstr "хаотичная"
 
-#: src/units/types.cpp:547 src/units/types.cpp:911
+#: src/units/types.cpp:546 src/units/types.cpp:910
 msgid "female^lawful"
 msgstr "порядочная"
 
-#: src/units/types.cpp:547 src/units/types.cpp:912
+#: src/units/types.cpp:546 src/units/types.cpp:911
 msgid "female^neutral"
 msgstr "нейтральная"
 
-#: src/units/types.cpp:548 src/units/types.cpp:914
+#: src/units/types.cpp:547 src/units/types.cpp:913
 msgid "female^liminal"
 msgstr "теневая"
 
-#: src/units/unit.cpp:1835
+#: src/units/unit.cpp:1854
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1841
+#: src/units/unit.cpp:1860
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> ОЗ"
 
-#: src/units/unit.cpp:1851
+#: src/units/unit.cpp:1870
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> ход"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> хода"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> ходов"
 
-#: src/units/unit.cpp:1857
+#: src/units/unit.cpp:1876
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> видения"
 
-#: src/units/unit.cpp:1861
+#: src/units/unit.cpp:1880
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> помех"
 
-#: src/units/unit.cpp:1866
+#: src/units/unit.cpp:1885
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> ОП для продвижения"
 
-#: src/units/unit.cpp:1870
+#: src/units/unit.cpp:1889
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -8541,11 +8465,11 @@ msgstr[0] "<span color=\"$color\">$number_or_percent</span> атака за хо
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> атаки за ход"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> атак за ход"
 
-#: src/units/unit.cpp:1877
+#: src/units/unit.cpp:1896
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> стоимость призыва"
 
-#: src/units/unit.cpp:2294
+#: src/units/unit.cpp:2296
 msgid "$effect_description per level"
 msgstr "$effect_description за уровень"
 
@@ -8569,7 +8493,7 @@ msgstr "$year BF"
 msgid "$year AF"
 msgstr "$year AF"
 
-#: src/wesnothd_connection.cpp:403
+#: src/wesnothd_connection.cpp:418
 msgid "Disconnected from server."
 msgstr "Отключен от сервера."
 
@@ -8592,6 +8516,60 @@ msgstr "Скрыть план $player"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "Настройки планировщика"
+
+#, fuzzy
+#~| msgid "Attack"
+#~| msgid_plural "Attacks"
+#~ msgid "Attacks"
+#~ msgstr "Атака"
+
+#, fuzzy
+#~| msgid "Choose weapon:"
+#~ msgid "Choose a Corpse"
+#~ msgstr "Выберите оружие:"
+
+#~ msgid "Recruit"
+#~ msgstr "Завербовать"
+
+#~ msgid "XP: "
+#~ msgstr "ОП: "
+
+#, fuzzy
+#~| msgid "There are no save files to load"
+#~ msgid "There are no corpses available."
+#~ msgstr "Нет сохраненных файлов для загрузки"
+
+#~ msgid "registering with password *** and no email address"
+#~ msgstr "регистрируем с паролем *** и без е-мэйла"
+
+#~ msgid "registering with password *** and email address $email"
+#~ msgstr "регистрируем с паролем *** на е-мэйл $email"
+
+#~ msgid "dropping your username"
+#~ msgstr "удаляю Ваш ник"
+
+#~ msgid "setting $var to $value"
+#~ msgstr "выставляю для $var значение $value"
+
+#~ msgid "<password> <email (optional)>"
+#~ msgstr "<пароль> <email (необязательно)>"
+
+#~ msgid "Register your nickname"
+#~ msgstr "Зарегистрировать свой ник."
+
+#~ msgid "Drop your nickname."
+#~ msgstr "Удалить свой ник."
+
+#~ msgid ""
+#~ "Update details for your nickname. For possible details see '/details'."
+#~ msgstr ""
+#~ "Обновить профиль своего ника. Подробности смотрите через '/details'."
+
+#~ msgid "<detail> <value>"
+#~ msgstr "<параметр> <значение>"
+
+#~ msgid "Request a list of details you can set for your registered nickname."
+#~ msgstr "Запросить, какие данные можно менять для своего ника."
 
 #~ msgid "Ping timeout"
 #~ msgstr "Таймаут пинга"

@@ -172,13 +172,9 @@ predeterminado será a versión do xogo correspondente.
 .br
 Por exemplo: \fBversions_accepted="*"\fP aceptará calquera versión.
 .TP 
-\fBuser_handler\fP
-O nome do xestor de usuarios a empregar. Os xestores de usuarios dispoñíbeis
-actualmente son \fBforum\fP —para conectar wesnothd á base de datos dun foro
-phpbb— e \fBsample\fP —unha mostra de exemplo da interface do xestor de
-usuarios, hai que estar tolo para utilizala en algo de verdade—. O valor
-predeterminado é \fBforum\fP. Tamén hai que engadir unha sección
-\fB[user_handler]\fP, véxase a continuación.
+\fBdeny_unregistered_login\fP
+Whether to prevent users who are not registered with the \fBuser_handler\fP
+being used from logging in. (default: false)
 .
 .SS "Etiquetas globais:"
 .
@@ -218,63 +214,52 @@ solicitudes dos clientes conectados ao servidor indicado. Acepta as mesmas
 claves que \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP configura o xestor de usuarios. As palabras clave
-dispoñíbeis variarán dependendo do xestor de usuarios que se estableza
-mediante a palabra clave \fBuser_handler\fP. Se non hai ningunha sección
-\fB[user_handler]\fP na configuración, o servidor executarase sen ningún
-servizo de rexistro de alcumes.
+\fB[user_handler]\fP Configures the user handler. Available keys vary depending
+on which user handler is set with the \fBuser_handler\fP key. If no
+\fB[user_handler]\fP section is present in the configuration the server will
+run without any nick registration service. All additional tables that are
+needed for the forum_user_handler to function can be found in
+table_definitions.sql in the Wesnoth source repository.
 .RS
 .TP 
 \fBdb_host\fP
-O nome do servidor da base de datos (para «user_handler=forum»).
+The hostname of the database server
 .TP 
 \fBdb_name\fP
-O nome da base de datos (para «user_handler=forum»).
+The name of the database
 .TP 
 \fBdb_user\fP
-O nome do usuario co que iniciar sesión na base de datos (para
-«user_handler=forum»).
+The name of the user under which to log into the database
 .TP 
 \fBdb_password\fP
-O contrasinal de dito usuario (para «user_handler=forum»).
+This user's password
 .TP 
 \fBdb_users_table\fP
-O nome da táboa na que o foro phpbb almacena os datos do usuario (para
-«user_handler=forum»). O máis probábel é que dita táboa sexa
-<prefixo\-da\-táboa>_users (por exemplo, «phpbb3_users»).
+The name of the table in which your phpbb forums saves its user data. Most
+likely this will be <table\-prefix>_users (e.g. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
-O nome da táboa na que wesnothd gardará os seus propios datos dos usuarios
-(para «user_handler=forum»). Terás que crear a táboa manualmente, por
-exemplo mediante: \fBCREATE TABLE <nome\-da\-táboa>(username
-VARCHAR(255) PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0,
-user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);\fP
+The name of the table in which wesnothd will save its own data about users.
 .TP 
-\fBuser_expiration\fP
-O tempo en días tras o cal caducan os alcumes rexistrados (para
-«user_handler=sample»).
+\fBdb_game_info_table\fP
+The name of the table in which wesnothd will save its own data about games.
+.TP 
+\fBdb_game_player_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+players in a game.
+.TP 
+\fBdb_game_modification_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+modifications used in a game.
+.TP 
+\fBdb_user_group_table\fP
+The name of the table in which your phpbb forums saves its user group
+data. Most likely this will be <table\-prefix>_user_group
+(e.g. phpbb3_user_group).
+.TP 
+\fBmp_mod_group\fP
+The ID of the forum group to be considered as having moderation authority.
 .RE
-.P
-\fB[mail]\fP configura un servidor SMTP mediante o cal o xestor de usuarios
-pode enviar correos electrónicos. Actualmente só o utiliza o xestor de
-usuarios de exemplo.
-.RS
-.TP 
-\fBserver\fP
-O nome do servidor de correo.
-.TP 
-\fBusername\fP
-O nome de usuario co que iniciar sesión no servidor de correo electrónico.
-.TP 
-\fBpassword\fP
-O contrasinal dese usuario.
-.TP 
-\fBfrom_address\fP
-O enderezo do remitente da mensaxe.
-.TP 
-\fBmail_port\fP
-O porto no que se executa o servidor de correo electrónico. O seu valor
-predeterminado é «25».
 .
 .SH "ESTADO AO SAÍR"
 .
@@ -303,3 +288,4 @@ COMERCIAL ou ADECUACIÓN PARA UN PROPÓSITO PARTICULAR.
 .SH "VÉXASE TAMÉN"
 .
 \fBwesnoth\fP(6)
+

@@ -165,12 +165,9 @@ corresponding wesnoth version)
 .br
 Example: \fBversions_accepted="*"\fP accepts any version string.
 .TP 
-\fBuser_handler\fP
-The name of the user handler to use. Currently available user handlers are
-\fBforum\fP (to connect wesnothd to a phpbb forum database) and \fBsample\fP (a
-sample implementation of the user handler interface, if you use this on
-anything real you are insane). The default value is \fBforum\fP. You must also
-add a \fB[user_handler]\fP section, see below.
+\fBdeny_unregistered_login\fP
+Whether to prevent users who are not registered with the \fBuser_handler\fP
+being used from logging in. (default: false)
 .
 .SS "Global tags:"
 .
@@ -213,57 +210,49 @@ as \fB[redirect]\fP.
 \fB[user_handler]\fP Configures the user handler. Available keys vary depending
 on which user handler is set with the \fBuser_handler\fP key. If no
 \fB[user_handler]\fP section is present in the configuration the server will
-run without any nick registration service.
+run without any nick registration service. All additional tables that are
+needed for the forum_user_handler to function can be found in
+table_definitions.sql in the Wesnoth source repository.
 .RS
 .TP 
 \fBdb_host\fP
-(for user_handler=forum) The hostname of the database server
+The hostname of the database server
 .TP 
 \fBdb_name\fP
-(for user_handler=forum) The name of the database
+The name of the database
 .TP 
 \fBdb_user\fP
-(for user_handler=forum) The name of the user under which to log into the
-database
+The name of the user under which to log into the database
 .TP 
 \fBdb_password\fP
-(for user_handler=forum) This user's password
+This user's password
 .TP 
 \fBdb_users_table\fP
-(for user_handler=forum) The name of the table in which your phpbb forums
-saves its user data. Most likely this will be <table\-prefix>_users
-(e.g. phpbb3_users).
+The name of the table in which your phpbb forums saves its user data. Most
+likely this will be <table\-prefix>_users (e.g. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about users. You will have to create this table manually, e.g.:
-\fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY KEY,
-user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
-NOT NULL DEFAULT 0);\fP
+The name of the table in which wesnothd will save its own data about users.
 .TP 
-\fBuser_expiration\fP
-(for user_handler=sample) The time after which a registered nick expires (in
-days).
+\fBdb_game_info_table\fP
+The name of the table in which wesnothd will save its own data about games.
+.TP 
+\fBdb_game_player_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+players in a game.
+.TP 
+\fBdb_game_modification_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+modifications used in a game.
+.TP 
+\fBdb_user_group_table\fP
+The name of the table in which your phpbb forums saves its user group
+data. Most likely this will be <table\-prefix>_user_group
+(e.g. phpbb3_user_group).
+.TP 
+\fBmp_mod_group\fP
+The ID of the forum group to be considered as having moderation authority.
 .RE
-.P
-\fB[mail]\fP Configures an SMTP server through which the user handler can send
-mail. Currently only used by the sample user handler.
-.RS
-.TP 
-\fBserver\fP
-The hostname of the mail server
-.TP 
-\fBusername\fP
-The user name under which to log into the mail server.
-.TP 
-\fBpassword\fP
-This user's password.
-.TP 
-\fBfrom_address\fP
-The reply\-to address of your mail.
-.TP 
-\fBmail_port\fP
-The port on which your mail server is running. Default is 25.
 .
 .SH "EXIT STATUS"
 .
@@ -291,3 +280,4 @@ for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 .SH "SEE ALSO"
 .
 \fBwesnoth\fP(6)
+

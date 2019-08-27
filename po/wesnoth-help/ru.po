@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-07-18 15:50+0300\n"
+"POT-Creation-Date: 2019-08-27 22:40+0300\n"
 "PO-Revision-Date: 2016-10-16 04:35+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: \n"
@@ -1172,7 +1172,7 @@ msgstr "Игра"
 
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:33 data/core/help.cfg:398
+#: data/core/help.cfg:33 data/core/help.cfg:454
 msgid "Traits"
 msgstr "Особенности"
 
@@ -1202,19 +1202,19 @@ msgstr "Эры"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:74 data/core/help.cfg:413
+#: data/core/help.cfg:74 data/core/help.cfg:469
 msgid "Terrains"
 msgstr "Местности"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:82 data/core/help.cfg:466
+#: data/core/help.cfg:82 data/core/help.cfg:522
 msgid "Add-ons"
 msgstr "Аддоны"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:88 data/core/help.cfg:539
+#: data/core/help.cfg:88 data/core/help.cfg:595
 msgid "Commands"
 msgstr "Команды"
 
@@ -1444,7 +1444,9 @@ msgid ""
 "text='time of day'</ref>) is assumed. The difficulty indicates how "
 "challenging the scenarios will be to a veteran player: at higher "
 "difficulties, the obstacles to victory will be higher and overcoming them "
-"will require more skillful play."
+"will require more skillful play. For example, at higher difficulties the "
+"enemy may have higher incomes, higher-level units, more castle hexes, and so "
+"on."
 msgstr ""
 "Игровой процесс Веснота состоит из серии сражений, под названием "
 "<italic>text='сценариев'</italic>, что бросают Ваши войска против войск "
@@ -1997,13 +1999,150 @@ msgstr ""
 "вручную (через пункт меню <bold>text='Обновить пелену'</bold>), либо в конце "
 "вашего хода. Эта возможность позволит вам отменить перемещение."
 
-#. [topic]: id=combat
+#. [topic]: id=saveload
+#: data/core/help.cfg:284
+msgid "Save-loading"
+msgstr ""
+
+#. [topic]: id=saveload
 #: data/core/help.cfg:285
+msgid ""
+"Random numbers are part of Wesnoth, attacks can fail and units can die due "
+"to bad luck. This is an expected part of the game, and one of the aims of "
+"the game is that a sufficiently skilled player should be able to complete "
+"all of the mainline campaigns, on hard, without needing to save-load. Going "
+"back to a previous turn to try a different strategy is a part of learning "
+"the game, but we recommend against reloading merely to try the same strategy "
+"again while hoping for better luck.\n"
+"\n"
+"One of the challenges of the game is to work out how to protect your heroes. "
+"Small risks quickly build up: if you have five important units, and they "
+"each have just a 1% chance of death each turn, you can "
+"<italic>text='expect'</italic> one of them to die about every 20 turns. So, "
+"you’ll rarely make it through a scenario without having it happen.\n"
+"\n"
+"The following points are under discussion on the forums. At least for the "
+"1.15.x series before 1.16.0 please assume that the forum threads are more "
+"authoritative than the text on this page.\n"
+"\n"
+"In the mainline campaigns, on hard:\n"
+"• A sufficiently skilled player will have a good chance to win each scenario "
+"on the first time that they see that scenario, without foreknowledge of what "
+"will happen.\n"
+"• This assumes that the player picks up all of the clues given in the "
+"dialogue.\n"
+"• There are more experience points available than on easy, and the player "
+"will be able to train enough troops to cope with losing some L2 or L3 "
+"units.\n"
+"\n"
+"That said, it’s a game; the best way to play it is whichever way gives you "
+"the most enjoyment."
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:301
+msgid "Learning from Losses"
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:302
+msgid ""
+"<italic>text='Why did I lose that scenario?'</italic>\n"
+"\n"
+"One of the most difficult parts of Wesnoth is understanding why a scenario "
+"was lost.\n"
+"\n"
+"When you first start playing, you will probably lose some scenarios. That is "
+"normal, and is part of learning the game. When that happens, try to learn "
+"from your mistakes: watch the replay, try to understand what you did wrong, "
+"then <ref>dst='saveload' text='restart the scenario'</ref> and try again.\n"
+"\n"
+"Some common reasons for losing a scenario are:\n"
+"\n"
+"• Playing a campaign at too high a <ref>dst='..gameplay' text='difficulty "
+"level'</ref>. Try restarting the scenario at an easier difficulty.\n"
+"\n"
+"• Playing a poor strategy: for example, recruiting the wrong types of units, "
+"fighting at the wrong <ref>dst='time_of_day' text='time of day'</ref>, not "
+"taking advantage of terrain features or units’ special abilities, and so "
+"on.\n"
+"\n"
+"• Missing clues. Often there will be hints in the campaign’s story and "
+"dialog about what to expect from a difficult scenario and how to prepare for "
+"it. If you have a loyal mage on your side, take the time to listen to its "
+"advice; it may save your life.\n"
+"\n"
+"• Barely scraping a victory in a previous scenario. At all difficulties "
+"except “Beginner” (TODO: and “Easy”?), campaigns assume that you will have "
+"some <italic>text='carryover gold'</italic> and some advanced units on your "
+"<italic>text='recall list.'</italic> (These concepts are explained in the "
+"tutorial.) If you win a scenario but lose most of your advanced units and "
+"much of your gold, the following scenario may be very difficult to beat, "
+"even for a more experienced player. If you find yourself in this situation, "
+"you may try to go back a scenario or two and win them more convincingly, or "
+"change to an easier difficulty. (However, remember that <italic>text='some'</"
+"italic> losses are expected, particularly at higher difficulties.)\n"
+"\n"
+"• Poor gold management. At higher difficulties, managing gold — capturing "
+"villages to increase the income, and using low-level units and fresh "
+"recruits to reduce the spending — becomes important. If you use many high-"
+"level units, you might win a scenario easily but have not enough gold "
+"carryover for the next scenario. (This would be an example of “barely "
+"scraping a victory”.)\n"
+"\n"
+"<header>text='Unlikely reasons'</header>\n"
+"\n"
+"In addition to the common reasons, listed above, there are a few other "
+"reasons which are unlikely, though not impossible. They are:\n"
+"\n"
+"• You may have played a strategy that the campaign developer did not "
+"anticipate, and ended up with a set of high-level units not suitable for the "
+"next scenario.\n"
+"\n"
+"• You may have found a scenario that can only be won on the second or third "
+"time through, whether by requiring above-average luck or by expecting the "
+"players to have foreknowledge — to know what surprises are coming up before "
+"they happen. (It is under discussion whether foreknowledge is expected at "
+"the highest difficulties. Requiring above-average luck, however, would "
+"qualify as a bug.)\n"
+"\n"
+"• Unusually-bad luck. Whether an attack hits or misses is random, so it "
+"could happen that the enemy was very lucky and had many hits, while you were "
+"very unlucky and had many misses. However, this is a very rare occurrence, "
+"virtually unheard of in all but the shortest, smallest scenarios. In fact, "
+"losses are more commonly caused by playing a <italic>text='bad'</italic> "
+"strategy despite having <italic>text='above-average'</italic> luck, than by "
+"playing a <italic>text='good'</italic> strategy but having "
+"<italic>text='below-average'</italic> luck. Moreover, merely having “below-"
+"average” luck does not excuse a loss; having below-average luck is perfectly "
+"normal, and scenarios are designed to be winnable even with below-average "
+"luck. It is only exceedingly bad luck, over multiple turns, that we mean "
+"here.\n"
+"\n"
+"Be wary of attributing a loss to any of these reasons. If you are not a "
+"veteran player, it is far more likely that your loss was caused by one of "
+"the <italic>text='common'</italic> errors, listed above, and is not "
+"indicative of a bug in the campaign. However, if you still think you found a "
+"bug, then by all means, report it!\n"
+"\n"
+"The “Damage Calculations” dialog shows some statistics that can help "
+"determine whether a match was very lucky or very unlucky. However, reading "
+"the statistics is no substitute to watching the replay and looking for "
+"strategic mistakes, or small bits of luck at critical points in the "
+"engagement.\n"
+"\n"
+"TODO: link to a forum thread where new players can post their replays and "
+"get review/corrections (like https://forums.wesnoth.org/viewtopic.php?"
+"f=3&t=39944 but specifically for new players)?\n"
+msgstr ""
+
+#. [topic]: id=combat
+#: data/core/help.cfg:341
 msgid "Combat"
 msgstr "Битва"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:286
+#: data/core/help.cfg:342
 msgid ""
 "\n"
 "\n"
@@ -2014,7 +2153,7 @@ msgstr ""
 "<header>text='Порядок и число атак'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:286
+#: data/core/help.cfg:342
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -2039,7 +2178,7 @@ msgstr ""
 "и огненные шары."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:288
+#: data/core/help.cfg:344
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2072,7 +2211,7 @@ msgstr ""
 "ударить лишь дважды (но с уроном 9 за каждый успешный удар)."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:290
+#: data/core/help.cfg:346
 msgid ""
 "\n"
 "\n"
@@ -2083,7 +2222,7 @@ msgstr ""
 "<header>text='Шанс попадания'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:292
+#: data/core/help.cfg:348
 msgid ""
 "\n"
 "\n"
@@ -2105,7 +2244,7 @@ msgstr ""
 "попасть по атакующему зависит от типа местности, на которой стоит атакующий."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:294
+#: data/core/help.cfg:350
 msgid ""
 "\n"
 "\n"
@@ -2124,7 +2263,7 @@ msgstr ""
 "от местности, но только при атаке."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:296
+#: data/core/help.cfg:352
 msgid ""
 "\n"
 "\n"
@@ -2135,7 +2274,7 @@ msgstr ""
 "<header>text=Урон</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:298
+#: data/core/help.cfg:354
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2168,7 +2307,7 @@ msgstr ""
 "кнопку <bold>text='Вычисление повреждений'</bold> в окне атаки."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:300
+#: data/core/help.cfg:356
 msgid ""
 "\n"
 "\n"
@@ -2186,12 +2325,12 @@ msgstr ""
 "этой способностью атакует."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:308
+#: data/core/help.cfg:364
 msgid "Damage Types and Resistance"
 msgstr "Типы урона и сопротивление"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:309
+#: data/core/help.cfg:365
 msgid ""
 "\n"
 "\n"
@@ -2209,7 +2348,7 @@ msgstr ""
 "какого-либо типа атаки, то он получит от этой атаки на 100% больше урона."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:309
+#: data/core/help.cfg:365
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -2225,7 +2364,7 @@ msgstr ""
 "разную сопротивляемость против каждого типа атаки."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:311
+#: data/core/help.cfg:367
 msgid ""
 "\n"
 "\n"
@@ -2240,7 +2379,7 @@ msgstr ""
 "мистическому."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:313
+#: data/core/help.cfg:369
 msgid ""
 "\n"
 "\n"
@@ -2254,12 +2393,12 @@ msgstr ""
 "ущерба. Это так даже для 100% сопротивления защищающегося данному типу урона."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:321
+#: data/core/help.cfg:377
 msgid "Orbs"
 msgstr "Шары"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:322
+#: data/core/help.cfg:378
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -2268,19 +2407,19 @@ msgstr ""
 "шар означает:"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:324
+#: data/core/help.cfg:380
 msgid " green if it hasn’t moved this turn,"
 msgstr " зеленый, если боец еще не совершал хода,"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:325
+#: data/core/help.cfg:381
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr ""
 " желтый, если он уже ходил, но все еще может двигаться дальше или атаковать, "
 "или"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:326
+#: data/core/help.cfg:382
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
@@ -2288,22 +2427,22 @@ msgstr ""
 "ход бойца."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:327
+#: data/core/help.cfg:383
 msgid " blue if the unit is an ally you do not control."
 msgstr " синий, если боец — ваш союзник, которым вы не можете управлять."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:328
+#: data/core/help.cfg:384
 msgid " Enemy units have no orb on top of their energy bar."
 msgstr " У бойцов противника над полоской здоровья находится красный шар."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:335
+#: data/core/help.cfg:391
 msgid "Time of Day"
 msgstr "Время суток"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:336
+#: data/core/help.cfg:392
 #, fuzzy
 #| msgid ""
 #| "The time of day affects the damage of certain units as follows:\n"
@@ -2332,7 +2471,7 @@ msgstr ""
 " Сумеречные бойцы наносят -25% урона днём и ночью."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:341
+#: data/core/help.cfg:397
 msgid ""
 "\n"
 "\n"
@@ -2350,21 +2489,21 @@ msgstr ""
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:345 data/core/macros/schedules.cfg:14
+#: data/core/help.cfg:401 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "Рассвет"
 
 #. [time]: id=morning
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:346 data/core/macros/schedules.cfg:26
+#: data/core/help.cfg:402 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "Утро"
 
 #. [time]: id=afternoon
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:347 data/core/macros/schedules.cfg:44
+#: data/core/help.cfg:403 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "День"
@@ -2372,27 +2511,27 @@ msgstr "День"
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:348 data/core/macros/schedules.cfg:53
+#: data/core/help.cfg:404 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "Закат"
 
 #. [time]: id=first_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:349 data/core/macros/schedules.cfg:65
+#: data/core/help.cfg:405 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "Первая стража"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:350 data/core/macros/schedules.cfg:89
+#: data/core/help.cfg:406 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "Вторая стража"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:352
+#: data/core/help.cfg:408
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!\n"
@@ -2400,7 +2539,7 @@ msgstr ""
 "Помните, что некоторые сценарии происходят в подземелье, где всегда ночь!\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:354
+#: data/core/help.cfg:410
 msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night.\n"
@@ -2409,7 +2548,7 @@ msgstr ""
 "промежуточными между днем и ночью\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:356
+#: data/core/help.cfg:412
 #, fuzzy
 #| msgid ""
 #| "Some role-playing scenarios take place indoors — these regions are "
@@ -2422,7 +2561,7 @@ msgstr ""
 "освещенность также промежуточная."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:358
+#: data/core/help.cfg:414
 msgid ""
 "Finally, units with the <ref>dst='ability_illuminationilluminates' "
 "text='illuminates'</ref> ability and terrain features such as "
@@ -2431,12 +2570,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:365
+#: data/core/help.cfg:421
 msgid "Healing"
 msgstr "Лечение"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:366
+#: data/core/help.cfg:422
 msgid ""
 "\n"
 "\n"
@@ -2449,7 +2588,7 @@ msgstr ""
 "был атакован, излечивается на 2 ЗД на следующем ходу."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:366
+#: data/core/help.cfg:422
 msgid ""
 "In combat, your units will inevitably take damage. There are several ways to "
 "heal your units. However, with the exception of resting, these do not stack; "
@@ -2460,7 +2599,7 @@ msgstr ""
 "складываются; только один способ лечения может использоваться за ход."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:368
+#: data/core/help.cfg:424
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2478,7 +2617,7 @@ msgstr ""
 "восстанавливает 8 ЗД."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:369
+#: data/core/help.cfg:425
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2496,7 +2635,7 @@ msgstr ""
 "(например, тролли) могут автоматически восстанавливать 8 ЗД за ход."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:370
+#: data/core/help.cfg:426
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2520,7 +2659,7 @@ msgstr ""
 "находящихся союзников или сдерживать урон от отравления."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:371
+#: data/core/help.cfg:427
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2541,7 +2680,7 @@ msgstr ""
 "лечения, если у них есть и это умение)."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:372
+#: data/core/help.cfg:428
 msgid ""
 "\n"
 "• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
@@ -2555,7 +2694,7 @@ msgstr ""
 "зависимости от того, ваш это ход или нет."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:373
+#: data/core/help.cfg:429
 msgid ""
 "\n"
 "\n"
@@ -2570,7 +2709,7 @@ msgstr ""
 "вариант. Наконец, бойцы полностью восстанавливаются между сценариями."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:375
+#: data/core/help.cfg:431
 msgid ""
 "\n"
 "\n"
@@ -2581,7 +2720,7 @@ msgstr ""
 "<bold>text='Продвинутый'</bold>"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:377
+#: data/core/help.cfg:433
 msgid ""
 "\n"
 "\n"
@@ -2601,12 +2740,12 @@ msgstr ""
 "сторон."
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:385
+#: data/core/help.cfg:441
 msgid "Wrap Up"
 msgstr "Итоги"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:386
+#: data/core/help.cfg:442
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -2621,12 +2760,12 @@ msgstr ""
 "кампанию <italic>text='Наследник престола'</italic>. Наслаждайтесь, и удачи!"
 
 #. [topic]: id=license
-#: data/core/help.cfg:391
+#: data/core/help.cfg:447
 msgid "License"
 msgstr "Лицензия"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:400
+#: data/core/help.cfg:456
 msgid ""
 "\n"
 "\n"
@@ -2643,7 +2782,7 @@ msgstr ""
 "бойцов. Обычно они назначаются бойцам случайным образом при вербовке."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:400
+#: data/core/help.cfg:456
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
@@ -2656,7 +2795,7 @@ msgstr ""
 "его<italic>text='расой'</italic>."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:402
+#: data/core/help.cfg:458
 msgid ""
 "\n"
 "\n"
@@ -2673,7 +2812,7 @@ msgstr ""
 "<ref>dst='traits_strong' text='сильный'</ref>."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:404
+#: data/core/help.cfg:460
 msgid ""
 "\n"
 "\n"
@@ -2697,7 +2836,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:414
+#: data/core/help.cfg:470
 msgid ""
 "\n"
 "\n"
@@ -2710,7 +2849,7 @@ msgstr ""
 "<italic>text='смешанным'</italic>."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:414
+#: data/core/help.cfg:470
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
@@ -2719,7 +2858,7 @@ msgstr ""
 "передвижения бойцов, так и на степень их защищённости."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:416
+#: data/core/help.cfg:472
 msgid ""
 "\n"
 "\n"
@@ -2730,7 +2869,7 @@ msgstr ""
 "<header>text='Базовые типы рельефа местности'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:418
+#: data/core/help.cfg:474
 msgid ""
 "\n"
 "\n"
@@ -2747,7 +2886,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:422
+#: data/core/help.cfg:478
 msgid ""
 "\n"
 "\n"
@@ -2763,7 +2902,7 @@ msgstr ""
 "эффекты освещения."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:424
+#: data/core/help.cfg:480
 msgid ""
 "\n"
 "\n"
@@ -2774,7 +2913,7 @@ msgstr ""
 "<header>text='Смешанные типы рельефа местности'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:426
+#: data/core/help.cfg:482
 msgid ""
 "\n"
 "\n"
@@ -2797,7 +2936,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:430
+#: data/core/help.cfg:486
 msgid ""
 "\n"
 "\n"
@@ -2822,7 +2961,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:434
+#: data/core/help.cfg:490
 msgid ""
 "\n"
 "\n"
@@ -2840,7 +2979,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:438
+#: data/core/help.cfg:494
 msgid ""
 "\n"
 "\n"
@@ -2857,7 +2996,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:442
+#: data/core/help.cfg:498
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2879,7 +3018,7 @@ msgstr ""
 "(в теме оформления по умолчанию)."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:444
+#: data/core/help.cfg:500
 msgid ""
 "\n"
 "\n"
@@ -2896,7 +3035,7 @@ msgstr ""
 "этого пункта из контекстного меню."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:446
+#: data/core/help.cfg:502
 msgid ""
 "\n"
 "\n"
@@ -2907,7 +3046,7 @@ msgstr ""
 "<header>text='Потолки защиты'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:448
+#: data/core/help.cfg:504
 msgid ""
 "\n"
 "\n"
@@ -2923,7 +3062,7 @@ msgstr ""
 "потолок."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:450
+#: data/core/help.cfg:506
 msgid ""
 "\n"
 "\n"
@@ -2940,7 +3079,7 @@ msgstr ""
 "уровень для смешанной местности не может превысить потолок."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:452
+#: data/core/help.cfg:508
 msgid ""
 "\n"
 "\n"
@@ -2954,7 +3093,7 @@ msgstr ""
 "может быть выше)."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:454
+#: data/core/help.cfg:510
 msgid ""
 "\n"
 "\n"
@@ -2967,7 +3106,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:467
+#: data/core/help.cfg:523
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -2980,12 +3119,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:477
+#: data/core/help.cfg:533
 msgid "Using Add-ons"
 msgstr "Использование аддонов"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:478
+#: data/core/help.cfg:534
 msgid ""
 "\n"
 "\n"
@@ -2996,7 +3135,7 @@ msgstr ""
 "<header>text=Кампании и сценарии</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:478
+#: data/core/help.cfg:534
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
@@ -3005,7 +3144,7 @@ msgstr ""
 "режиме игры."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:480
+#: data/core/help.cfg:536
 msgid ""
 "\n"
 "\n"
@@ -3022,7 +3161,7 @@ msgstr ""
 "<italic>text='Кампании'</italic> на заглавном экране."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:482
+#: data/core/help.cfg:538
 msgid ""
 "\n"
 "\n"
@@ -3033,7 +3172,7 @@ msgstr ""
 "<header>text='Кампании, сценарии и наборы карт для мультиплеера'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:484
+#: data/core/help.cfg:540
 msgid ""
 "\n"
 "\n"
@@ -3048,7 +3187,7 @@ msgstr ""
 "кампании. Бывают также наборы, содержащие отдельные сценарии мультиплеера."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:486
+#: data/core/help.cfg:542
 msgid ""
 "\n"
 "\n"
@@ -3059,7 +3198,7 @@ msgstr ""
 "<header>text='Эры и фракции мультиплеера'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:488
+#: data/core/help.cfg:544
 msgid ""
 "\n"
 "\n"
@@ -3083,7 +3222,7 @@ msgstr ""
 "выбирая себе сторону и команду."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:492
+#: data/core/help.cfg:548
 msgid ""
 "\n"
 "\n"
@@ -3096,7 +3235,7 @@ msgstr ""
 "eras_section'</ref> в помощи."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:494
+#: data/core/help.cfg:550
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3112,7 +3251,7 @@ msgstr ""
 "<header>text='Модификации мультиплеера'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:496
+#: data/core/help.cfg:552
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3136,7 +3275,7 @@ msgstr ""
 "игры."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:498
+#: data/core/help.cfg:554
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3145,14 +3284,14 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<big>Cores</big>"
+"<header>text='Cores'</header>"
 msgstr ""
 "\n"
 "\n"
 "<header>text='Ресурсы для авторов'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:500
+#: data/core/help.cfg:556
 msgid ""
 "\n"
 "\n"
@@ -3166,7 +3305,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:504
+#: data/core/help.cfg:560
 msgid ""
 "\n"
 "\n"
@@ -3177,7 +3316,7 @@ msgstr ""
 "<header>text='Ресурсы для авторов'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:506
+#: data/core/help.cfg:562
 msgid ""
 "\n"
 "\n"
@@ -3196,12 +3335,12 @@ msgstr ""
 "при скачивании."
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:515
+#: data/core/help.cfg:571
 msgid "Installing Add-ons"
 msgstr "Установка аддонов"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:516
+#: data/core/help.cfg:572
 #, fuzzy
 #| msgid ""
 #| "User-made add-ons can be obtained and updated through the "
@@ -3244,11 +3383,11 @@ msgid ""
 "add-ons of specific categories by clicking on the <bold>text='Type'</bold> "
 "dropdown.\n"
 "\n"
-"To install an add-on, select it from the list and click the <b>+</b> icon, "
-"or simply double-click on the add-on’s title. If the window is too small to "
-"show them inline, the <bold>text='Addon Details'</bold> button provides you "
-"with additional details about the add-on, such as its full description, "
-"installation status, and available translations."
+"To install an add-on, select it from the list and click the <bold>text='+'</"
+"bold> icon, or simply double-click on the add-on’s title. If the window is "
+"too small to show them inline, the <bold>text='Addon Details'</bold> button "
+"provides you with additional details about the add-on, such as its full "
+"description, installation status, and available translations."
 msgstr ""
 "Пользовательские аддоны могут быть получен через подменю "
 "<italic>text='Аддоны'</italic> гланого меню. Соединившись с сервером аддонов "
@@ -3272,12 +3411,12 @@ msgstr ""
 "— его полное описание, статус установки и доступные переводы."
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:529
+#: data/core/help.cfg:585
 msgid "Removing Add-ons"
 msgstr "Удаление аддонов"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:530
+#: data/core/help.cfg:586
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -3299,14 +3438,14 @@ msgstr ""
 "используя ваш файловый менеджер."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:545
+#: data/core/help.cfg:601
 msgid "General Commands"
 msgstr "Основные команды"
 
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:547 data/core/help.cfg:590 data/core/help.cfg:628
+#: data/core/help.cfg:603 data/core/help.cfg:646 data/core/help.cfg:684
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3319,7 +3458,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:549
+#: data/core/help.cfg:605
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3330,7 +3469,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:552
+#: data/core/help.cfg:608
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3345,7 +3484,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:556
+#: data/core/help.cfg:612
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3373,7 +3512,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:559
+#: data/core/help.cfg:615
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -3384,7 +3523,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:562
+#: data/core/help.cfg:618
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3396,7 +3535,7 @@ msgstr ""
 
 # ?
 #. [topic]: id=general_commands
-#: data/core/help.cfg:565
+#: data/core/help.cfg:621
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3407,7 +3546,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:568
+#: data/core/help.cfg:624
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3418,7 +3557,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:571
+#: data/core/help.cfg:627
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3429,7 +3568,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:574
+#: data/core/help.cfg:630
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3440,7 +3579,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:577
+#: data/core/help.cfg:633
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3451,7 +3590,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:580
+#: data/core/help.cfg:636
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3460,12 +3599,12 @@ msgstr ""
 "Сохранить игру и выйти из сценария (без подтверждения)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:589
+#: data/core/help.cfg:645
 msgid "Multiplayer Commands"
 msgstr "Команды многопользовательской игры"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:592
+#: data/core/help.cfg:648
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3480,7 +3619,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:595
+#: data/core/help.cfg:651
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3501,7 +3640,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:598
+#: data/core/help.cfg:654
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -3514,7 +3653,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:601
+#: data/core/help.cfg:657
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -3527,7 +3666,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:604
+#: data/core/help.cfg:660
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -3542,7 +3681,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:607
+#: data/core/help.cfg:663
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3556,7 +3695,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:610
+#: data/core/help.cfg:666
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3569,7 +3708,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:613
+#: data/core/help.cfg:669
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -3580,7 +3719,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:616
+#: data/core/help.cfg:672
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3593,7 +3732,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:619
+#: data/core/help.cfg:675
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -3604,12 +3743,12 @@ msgstr ""
 "разрешит сообщения от всех."
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:627
+#: data/core/help.cfg:683
 msgid "Debug Mode Commands"
 msgstr "Команды режима отладки"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:630
+#: data/core/help.cfg:686
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3621,7 +3760,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:633
+#: data/core/help.cfg:689
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3632,7 +3771,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:636
+#: data/core/help.cfg:692
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3643,7 +3782,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:639
+#: data/core/help.cfg:695
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3654,7 +3793,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:642
+#: data/core/help.cfg:698
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3665,7 +3804,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:645
+#: data/core/help.cfg:701
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3676,7 +3815,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:648
+#: data/core/help.cfg:704
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3687,7 +3826,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:651
+#: data/core/help.cfg:707
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3698,7 +3837,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:654
+#: data/core/help.cfg:710
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3710,7 +3849,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:657
+#: data/core/help.cfg:713
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -3808,18 +3947,45 @@ msgstr ""
 "Этот боец излечивает 8 ЗД каждый ход. Если он отравлен, он вместо лечения "
 "избавляется от яда."
 
+#. [heals]: id=regenerates_4
+#: data/core/macros/abilities.cfg:83
+#, fuzzy
+#| msgid "regenerates"
+msgid "regenerates +4"
+msgstr "регенерация"
+
+#. [heals]: id=regenerates_4
+#: data/core/macros/abilities.cfg:84
+#, fuzzy
+#| msgid "female^regenerates"
+msgid "female^regenerates +4"
+msgstr "регенерация"
+
+#. [heals]: id=regenerates_4
+#: data/core/macros/abilities.cfg:85
+#, fuzzy
+#| msgid ""
+#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
+#| "remove the poison instead of healing."
+msgid ""
+"The unit will heal itself 4 HP per turn. If it is poisoned, it will remove "
+"the poison instead of healing."
+msgstr ""
+"Этот боец излечивает 8 ЗД каждый ход. Если он отравлен, он вместо лечения "
+"избавляется от яда."
+
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:91
+#: data/core/macros/abilities.cfg:104
 msgid "steadfast"
 msgstr "стойкий"
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:92
+#: data/core/macros/abilities.cfg:105
 msgid "female^steadfast"
 msgstr "стойкая"
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:93
+#: data/core/macros/abilities.cfg:106
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
@@ -3828,17 +3994,17 @@ msgstr ""
 "50%. Уязвимости не затрагиваются."
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:106
+#: data/core/macros/abilities.cfg:119
 msgid "leadership"
 msgstr "лидерство"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:107
+#: data/core/macros/abilities.cfg:120
 msgid "female^leadership"
 msgstr "лидерство"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:108
+#: data/core/macros/abilities.cfg:121
 #, fuzzy
 #| msgid ""
 #| "This unit can lead our own units that are next to it, making them fight "
@@ -3864,17 +4030,17 @@ msgstr ""
 "25% больше урона за каждую 1 разницы в уровнях."
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:125
+#: data/core/macros/abilities.cfg:138
 msgid "skirmisher"
 msgstr "неуловимый"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:126
+#: data/core/macros/abilities.cfg:139
 msgid "female^skirmisher"
 msgstr "неуловимая"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:127
+#: data/core/macros/abilities.cfg:140
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
@@ -3883,17 +4049,17 @@ msgstr ""
 "контроля."
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:140
+#: data/core/macros/abilities.cfg:153
 msgid "illuminates"
 msgstr "освещает"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:141
+#: data/core/macros/abilities.cfg:154
 msgid "female^illuminates"
 msgstr "освещает"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:142
+#: data/core/macros/abilities.cfg:155
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -3908,17 +4074,17 @@ msgstr ""
 "сумерки, и дерётся в сумерки так, как если бы дрался днём."
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:154
+#: data/core/macros/abilities.cfg:167
 msgid "teleport"
 msgstr "телепорт"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:155
+#: data/core/macros/abilities.cfg:168
 msgid "female^teleport"
 msgstr "телепорт"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:156
+#: data/core/macros/abilities.cfg:169
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
@@ -3927,17 +4093,17 @@ msgstr ""
 "деревнями вместо хода на одну клетку."
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:185
+#: data/core/macros/abilities.cfg:198
 msgid "ambush"
 msgstr "засада"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:186
+#: data/core/macros/abilities.cfg:199
 msgid "female^ambush"
 msgstr "засада"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:187
+#: data/core/macros/abilities.cfg:200
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -3951,12 +4117,12 @@ msgstr ""
 "первым обнаруживший его, немедленно теряет все оставшиеся ходы."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:204 data/core/macros/abilities.cfg:205
+#: data/core/macros/abilities.cfg:217 data/core/macros/abilities.cfg:218
 msgid "nightstalk"
 msgstr "невидимка"
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:206
+#: data/core/macros/abilities.cfg:219
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -3970,17 +4136,17 @@ msgstr ""
 "первым обнаруживший его, немедленно теряет все оставшиеся ходы."
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:223
+#: data/core/macros/abilities.cfg:236
 msgid "concealment"
 msgstr "скрытность"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:224
+#: data/core/macros/abilities.cfg:237
 msgid "female^concealment"
 msgstr "скрытность"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:225
+#: data/core/macros/abilities.cfg:238
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it.\n"
@@ -3996,17 +4162,17 @@ msgstr ""
 "ходы."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:242
+#: data/core/macros/abilities.cfg:255
 msgid "submerge"
 msgstr "погружается"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:243
+#: data/core/macros/abilities.cfg:256
 msgid "female^submerge"
 msgstr "погружается"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:244
+#: data/core/macros/abilities.cfg:257
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -4023,17 +4189,17 @@ msgstr ""
 "оставшиеся ходы."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:261
+#: data/core/macros/abilities.cfg:274
 msgid "feeding"
 msgstr "пожиратель"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:262
+#: data/core/macros/abilities.cfg:275
 msgid "female^feeding"
 msgstr "пожирательница"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:263
+#: data/core/macros/abilities.cfg:276
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -4042,12 +4208,12 @@ msgstr ""
 "убивает врага (кроме тех, на кого не действует чума)."
 
 #. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:274
+#: data/core/macros/abilities.cfg:287
 msgid "berserk"
 msgstr "берсерк"
 
 #. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:275
+#: data/core/macros/abilities.cfg:288
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
@@ -4056,12 +4222,12 @@ msgstr ""
 "погибнет, или пока не пройдут 30 раундов боя."
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:285
+#: data/core/macros/abilities.cfg:298
 msgid "backstab"
 msgstr "бьёт в спину"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:286
+#: data/core/macros/abilities.cfg:299
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -4073,12 +4239,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:304 data/core/macros/abilities.cfg:315
+#: data/core/macros/abilities.cfg:317 data/core/macros/abilities.cfg:328
 msgid "plague"
 msgstr "чума"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:305
+#: data/core/macros/abilities.cfg:318
 #, fuzzy
 #| msgid ""
 #| "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -4094,7 +4260,7 @@ msgstr ""
 "в деревнях)."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:316
+#: data/core/macros/abilities.cfg:329
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -4105,12 +4271,12 @@ msgstr ""
 "в деревнях)."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:326
+#: data/core/macros/abilities.cfg:339
 msgid "slows"
 msgstr "замедляет"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:327
+#: data/core/macros/abilities.cfg:340
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -4122,12 +4288,12 @@ msgstr ""
 "замедлен, к его описанию в правой части экрана добавляется значок улитки."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:336
+#: data/core/macros/abilities.cfg:349
 msgid "petrifies"
 msgstr "окаменение"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:337
+#: data/core/macros/abilities.cfg:350
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
@@ -4136,24 +4302,24 @@ msgstr ""
 "могут перемещаться и атаковать."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:346
+#: data/core/macros/abilities.cfg:359
 msgid "marksman"
 msgstr "меткий"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:347
+#: data/core/macros/abilities.cfg:360
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 "При нападении данная атака всегда имеет шанс не менее 60% нанести ущерб."
 
 #. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:359
+#: data/core/macros/abilities.cfg:372
 msgid "magical"
 msgstr "магия"
 
 #. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:360
+#: data/core/macros/abilities.cfg:373
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
@@ -4162,12 +4328,12 @@ msgstr ""
 "обороняющегося."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:371
+#: data/core/macros/abilities.cfg:384
 msgid "swarm"
 msgstr "рой"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:372
+#: data/core/macros/abilities.cfg:385
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -4180,12 +4346,12 @@ msgstr ""
 "только 3/4 от числа возможных ударов."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:381
+#: data/core/macros/abilities.cfg:394
 msgid "charge"
 msgstr "наскок"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:382
+#: data/core/macros/abilities.cfg:395
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
@@ -4194,12 +4360,12 @@ msgstr ""
 "также будет получать двойной урон от ответного удара атакуемого."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:394
+#: data/core/macros/abilities.cfg:407
 msgid "drains"
 msgstr "высасывает"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:395
+#: data/core/macros/abilities.cfg:408
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -4208,23 +4374,23 @@ msgstr ""
 "половину нанесенного ущерба (округляется вниз)."
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:404
+#: data/core/macros/abilities.cfg:417
 msgid "first strike"
 msgstr "бьёт первым"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:405
+#: data/core/macros/abilities.cfg:418
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr "Боец с этой атакой всегда наносит первый удар, даже если защищается."
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:414
+#: data/core/macros/abilities.cfg:427
 msgid "poison"
 msgstr "яд"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:415
+#: data/core/macros/abilities.cfg:428
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -4815,22 +4981,22 @@ msgstr ""
 "подобными типами местности."
 
 #. [trait]: id=loyal
-#: data/core/macros/traits.cfg:8
+#: data/core/macros/traits.cfg:12
 msgid "loyal"
 msgstr "верный"
 
 #. [trait]: id=loyal
-#: data/core/macros/traits.cfg:9
+#: data/core/macros/traits.cfg:13
 msgid "female^loyal"
 msgstr "верная"
 
 #. [trait]: id=loyal
-#: data/core/macros/traits.cfg:10
+#: data/core/macros/traits.cfg:14
 msgid "Zero upkeep"
 msgstr "Нулевое содержание"
 
 #. [trait]: id=loyal
-#: data/core/macros/traits.cfg:11
+#: data/core/macros/traits.cfg:15
 msgid ""
 "\n"
 "\n"
@@ -4852,7 +5018,7 @@ msgstr ""
 "отпускать такие бойцов, либо посылать их на глупую смерть."
 
 #. [trait]: id=loyal
-#: data/core/macros/traits.cfg:11
+#: data/core/macros/traits.cfg:15
 msgid ""
 "<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
 "upkeep cost at the end of every turn, which is equal to their level. Loyal "
@@ -4863,25 +5029,25 @@ msgstr ""
 "ходу. Верным бойцам этого не требуется."
 
 #. [trait]: id=undead
-#: data/core/macros/traits.cfg:25
+#: data/core/macros/traits.cfg:55
 msgid "undead"
 msgstr "мертвец"
 
 #. [trait]: id=undead
-#: data/core/macros/traits.cfg:26
+#: data/core/macros/traits.cfg:56
 msgid "female^undead"
 msgstr "мертвец"
 
 #. [trait]: id=undead
 #. [trait]: id=mechanical
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:27 data/core/macros/traits.cfg:53
-#: data/core/macros/traits.cfg:79
+#: data/core/macros/traits.cfg:57 data/core/macros/traits.cfg:83
+#: data/core/macros/traits.cfg:109
 msgid "Immune to drain, poison, and plague"
 msgstr "Устойчив к отравлению, высасыванию и чуме"
 
 #. [trait]: id=undead
-#: data/core/macros/traits.cfg:28
+#: data/core/macros/traits.cfg:58
 msgid ""
 "\n"
 "\n"
@@ -4898,7 +5064,7 @@ msgstr ""
 "используют яд в своих атаках."
 
 #. [trait]: id=undead
-#: data/core/macros/traits.cfg:28
+#: data/core/macros/traits.cfg:58
 msgid ""
 "<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
 msgstr ""
@@ -4906,17 +5072,17 @@ msgstr ""
 "них также не действует."
 
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:51
+#: data/core/macros/traits.cfg:81
 msgid "mechanical"
 msgstr "механизм"
 
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:52
+#: data/core/macros/traits.cfg:82
 msgid "female^mechanical"
 msgstr "механизм"
 
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:54
+#: data/core/macros/traits.cfg:84
 msgid ""
 "\n"
 "\n"
@@ -4931,7 +5097,7 @@ msgstr ""
 "действуют."
 
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:54
+#: data/core/macros/traits.cfg:84
 msgid ""
 "<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
 "plague."
@@ -4940,17 +5106,17 @@ msgstr ""
 "на них также не действует."
 
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:77
+#: data/core/macros/traits.cfg:107
 msgid "elemental"
 msgstr "стихийный"
 
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:78
+#: data/core/macros/traits.cfg:108
 msgid "female^elemental"
 msgstr "стихийная"
 
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:80
+#: data/core/macros/traits.cfg:110
 msgid ""
 "\n"
 "\n"
@@ -4965,7 +5131,7 @@ msgstr ""
 "не действуют."
 
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:80
+#: data/core/macros/traits.cfg:110
 msgid ""
 "<italic>text='Elemental'</italic> units are immune to poison, drain, and "
 "plague."
@@ -4974,17 +5140,17 @@ msgstr ""
 "чума на них также не действует."
 
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:102
+#: data/core/macros/traits.cfg:132
 msgid "strong"
 msgstr "сильный"
 
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:103
+#: data/core/macros/traits.cfg:133
 msgid "female^strong"
 msgstr "сильная"
 
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:104
+#: data/core/macros/traits.cfg:134
 msgid ""
 "\n"
 "\n"
@@ -5001,7 +5167,7 @@ msgstr ""
 "сильный удар стал убийственным."
 
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:104
+#: data/core/macros/traits.cfg:134
 msgid ""
 "<italic>text='Strong'</italic> units do 1 more damage for every successful "
 "strike in melee combat, and have 1 additional hitpoint."
@@ -5010,17 +5176,17 @@ msgstr ""
 "бою наносят ущерба на 1 единицу больше, и у них также на 1 ЗД больше."
 
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:123
+#: data/core/macros/traits.cfg:153
 msgid "dextrous"
 msgstr "ловкий"
 
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:124
+#: data/core/macros/traits.cfg:154
 msgid "female^dextrous"
 msgstr "ловкая"
 
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:125
+#: data/core/macros/traits.cfg:155
 msgid ""
 "\n"
 "\n"
@@ -5037,7 +5203,7 @@ msgstr ""
 "собратьев. Эти эльфы наносят дополнительную единицу ущерба с каждой стрелой."
 
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:125
+#: data/core/macros/traits.cfg:155
 msgid ""
 "<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
 "strike in ranged combat."
@@ -5046,17 +5212,17 @@ msgstr ""
 "каждом успешном попадании из дальнего оружия."
 
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:140
+#: data/core/macros/traits.cfg:170
 msgid "quick"
 msgstr "быстрый"
 
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:141
+#: data/core/macros/traits.cfg:171
 msgid "female^quick"
 msgstr "быстрая"
 
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:142
+#: data/core/macros/traits.cfg:172
 msgid ""
 "\n"
 "\n"
@@ -5076,7 +5242,7 @@ msgstr ""
 "для удержания спорных позиций."
 
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:142
+#: data/core/macros/traits.cfg:172
 msgid ""
 "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
 "hitpoints than usual."
@@ -5085,17 +5251,17 @@ msgstr ""
 "движения, но у них на 5% меньше здоровья, чем обычно."
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:160
+#: data/core/macros/traits.cfg:190
 msgid "intelligent"
 msgstr "умный"
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:161
+#: data/core/macros/traits.cfg:191
 msgid "female^intelligent"
 msgstr "умная"
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:162
+#: data/core/macros/traits.cfg:192
 msgid ""
 "\n"
 "\n"
@@ -5116,24 +5282,24 @@ msgstr ""
 "бойцов с более полезными особенностями."
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:162
+#: data/core/macros/traits.cfg:192
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Умные бойцы требуют на 20% меньше опыта, чем обычно необходимо для "
 "достижения нового уровня."
 
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:176
+#: data/core/macros/traits.cfg:206
 msgid "resilient"
 msgstr "выносливый"
 
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:177
+#: data/core/macros/traits.cfg:207
 msgid "female^resilient"
 msgstr "выносливая"
 
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:178
+#: data/core/macros/traits.cfg:208
 msgid ""
 "\n"
 "\n"
@@ -5151,7 +5317,7 @@ msgstr ""
 "удержании стратегически важных позиций против соперников."
 
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:178
+#: data/core/macros/traits.cfg:208
 msgid ""
 "<italic>text='Resilient'</italic> units have an additional 4 hitpoints, and "
 "gain 1 more per level."
@@ -5160,22 +5326,22 @@ msgstr ""
 "на каждый уровень больше, чем обычно."
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:197
+#: data/core/macros/traits.cfg:227
 msgid "healthy"
 msgstr "живучий"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:198
+#: data/core/macros/traits.cfg:228
 msgid "female^healthy"
 msgstr "живучая"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:199
+#: data/core/macros/traits.cfg:229
 msgid "Always rest heals"
 msgstr "Всегда отдыхает, чтобы лечиться"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:200
+#: data/core/macros/traits.cfg:230
 msgid ""
 "\n"
 "\n"
@@ -5191,7 +5357,7 @@ msgstr ""
 "предыдущем ходу."
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:200
+#: data/core/macros/traits.cfg:230
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when traveling."
@@ -5200,42 +5366,42 @@ msgstr ""
 "восстанавливать силы даже во время путешествий."
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:222 data/core/macros/traits.cfg:239
+#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
 msgid "fearless"
 msgstr "бесстрашный"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:223 data/core/macros/traits.cfg:240
+#: data/core/macros/traits.cfg:253 data/core/macros/traits.cfg:270
 msgid "female^fearless"
 msgstr "бесстрашная"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:224 data/core/macros/traits.cfg:241
+#: data/core/macros/traits.cfg:254 data/core/macros/traits.cfg:271
 msgid "Fights normally during unfavorable times of day/night"
 msgstr "Бьется нормально во время неблагоприятного времени суток"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:225 data/core/macros/traits.cfg:242
+#: data/core/macros/traits.cfg:255 data/core/macros/traits.cfg:272
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr "Над этими смелыми ребятами не властна смена дня и ночи."
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:255
+#: data/core/macros/traits.cfg:285
 msgid "feral"
 msgstr "дикий"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:256
+#: data/core/macros/traits.cfg:286
 msgid "female^feral"
 msgstr "дикая"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:257
+#: data/core/macros/traits.cfg:287
 msgid "Receives only 50% defense in land-based villages"
 msgstr "Получает только 50% защиты в деревнях"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:258
+#: data/core/macros/traits.cfg:288
 msgid ""
 "Dwellings of sentient beings are not easily used for cover by feral "
 "creatures of low intelligence. As a result, <italic>text='feral'</italic> "
@@ -5247,17 +5413,17 @@ msgstr ""
 "рейтинг защиты не более 50%, независимо от типа местности."
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:274
+#: data/core/macros/traits.cfg:304
 msgid "weak"
 msgstr "слабый"
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:275
+#: data/core/macros/traits.cfg:305
 msgid "female^weak"
 msgstr "слабая"
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:276
+#: data/core/macros/traits.cfg:306
 msgid ""
 "Units with the <italic>text='weak'</italic> trait receive a 1 point decrease "
 "in hitpoints and melee damage."
@@ -5266,17 +5432,17 @@ msgstr ""
 "меньше урона в ближнем бою."
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:293
+#: data/core/macros/traits.cfg:323
 msgid "slow"
 msgstr "медленный"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:294
+#: data/core/macros/traits.cfg:324
 msgid "female^slow"
 msgstr "медленная"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:295
+#: data/core/macros/traits.cfg:325
 msgid ""
 "\n"
 "\n"
@@ -5290,7 +5456,7 @@ msgstr ""
 "на скорость, но зато получают небольшой плюс к здоровью."
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:295
+#: data/core/macros/traits.cfg:325
 msgid ""
 "<italic>text='Slow'</italic> units have 1 less movement point but 5% more "
 "hitpoints."
@@ -5299,17 +5465,17 @@ msgstr ""
 "получают на 5% больше здоровья."
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:313
+#: data/core/macros/traits.cfg:343
 msgid "dim"
 msgstr "глупый"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:314
+#: data/core/macros/traits.cfg:344
 msgid "female^dim"
 msgstr "глупая"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:315
+#: data/core/macros/traits.cfg:345
 msgid ""
 "\n"
 "\n"
@@ -5322,7 +5488,7 @@ msgstr ""
 "видов. Есть причины, по которым эти виды слабы, и эта — не последняя."
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:315
+#: data/core/macros/traits.cfg:345
 msgid ""
 "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
 "experience required to advance."
@@ -5331,17 +5497,17 @@ msgstr ""
 "нужно на 20% больше опыта."
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:329
+#: data/core/macros/traits.cfg:359
 msgid "aged"
 msgstr "старый"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:330
+#: data/core/macros/traits.cfg:360
 msgid "female^aged"
 msgstr "старая"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:331
+#: data/core/macros/traits.cfg:361
 msgid ""
 "Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
 "suffer from a 1 point decrease in movement and melee damage."
@@ -5922,44 +6088,23 @@ msgid ""
 "friend and foe, making them a useful asset to aid in an army’s charge."
 msgstr ""
 
-#. [race]: id=roc, description=
-#: data/core/units.cfg:140
-#, fuzzy
-#| msgid "race^Orc"
-msgid "race^Roc"
-msgstr "Орк"
-
-#. [race]: id=roc, description=
-#: data/core/units.cfg:141
-#, fuzzy
-#| msgid "race+female^Orc"
-msgid "race+female^Roc"
-msgstr "Орчиха"
-
-#. [race]: id=roc, description=
-#: data/core/units.cfg:142
-#, fuzzy
-#| msgid "race^Orcs"
-msgid "race^Rocs"
-msgstr "Орки"
-
 #. [race]: id=goblin
-#: data/core/units.cfg:153
+#: data/core/units.cfg:141
 msgid "race^Goblin"
 msgstr "Гоблин"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:154
+#: data/core/units.cfg:142
 msgid "race+female^Goblin"
 msgstr "Гоблинша"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:155
+#: data/core/units.cfg:143
 msgid "race^Goblins"
 msgstr "Гоблины"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:156
+#: data/core/units.cfg:144
 #, fuzzy
 #| msgid ""
 #| "Goblins are, despite their appearance, born as siblings to the orcs and "
@@ -6013,22 +6158,22 @@ msgstr ""
 "удовлетворение, как показатель их силы и мастерства."
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:173
+#: data/core/units.cfg:161
 msgid "race^Gryphon"
 msgstr "Грифон"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:174
+#: data/core/units.cfg:162
 msgid "race+female^Gryphon"
 msgstr "Грифонша"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:175
+#: data/core/units.cfg:163
 msgid "race^Gryphons"
 msgstr "Грифоны"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:176
+#: data/core/units.cfg:164
 msgid ""
 "Gryphons are broad, powerful beasts with traits shared from both terrestrial "
 "predators and birds of prey. While occasionally tamed and ridden by the "
@@ -6049,22 +6194,22 @@ msgstr ""
 "столь же неразгаданными, как и происхождение гифонов."
 
 #. [race]: id=human
-#: data/core/units.cfg:194
+#: data/core/units.cfg:182
 msgid "race^Human"
 msgstr "Человек"
 
 #. [race]: id=human
-#: data/core/units.cfg:195
+#: data/core/units.cfg:183
 msgid "race+female^Human"
 msgstr "Человек"
 
 #. [race]: id=human
-#: data/core/units.cfg:196
+#: data/core/units.cfg:184
 msgid "race^Humans"
 msgstr "Люди"
 
 #. [race]: id=human
-#: data/core/units.cfg:197
+#: data/core/units.cfg:185
 #, fuzzy
 #| msgid ""
 #| "The race of men is an extremely diverse one. Although they originally "
@@ -6185,28 +6330,28 @@ msgstr ""
 "друг друга."
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:212
+#: data/core/units.cfg:200
 #, fuzzy
 #| msgid "race^Human"
 msgid "race^Dunefolk Human"
 msgstr "Человек"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:213
+#: data/core/units.cfg:201
 #, fuzzy
 #| msgid "race+female^Human"
 msgid "race+female^Dunefolk Human"
 msgstr "Человек"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:214
+#: data/core/units.cfg:202
 #, fuzzy
 #| msgid "race+plural^Undead"
 msgid "race+plural^Dunefolk"
 msgstr "Мертвецы"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:215
+#: data/core/units.cfg:203
 msgid ""
 "An offshoot of a forgotten nomadic civilization, the Dunefolk lay claim to "
 "the river valleys and oases of the Sandy Wastes. How they came to inhabit "
@@ -6264,22 +6409,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=lizard
-#: data/core/units.cfg:236
+#: data/core/units.cfg:224
 msgid "race^Saurian"
 msgstr "Ящер"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:237
+#: data/core/units.cfg:225
 msgid "race+female^Saurian"
 msgstr "Ящерица"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:238
+#: data/core/units.cfg:226
 msgid "race^Saurians"
 msgstr "Ящеры"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:239
+#: data/core/units.cfg:227
 msgid ""
 "Saurians are lizard-like creatures. Smaller and more slender than humans, "
 "they rarely stand taller than a ten year old child, though from tip of snout "
@@ -6349,17 +6494,17 @@ msgid ""
 msgstr ""
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:265
+#: data/core/units.cfg:253
 msgid "race^Mechanical"
 msgstr "Механизмы"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:266
+#: data/core/units.cfg:254
 msgid "race+plural^Mechanical"
 msgstr "Механизмы"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:267
+#: data/core/units.cfg:255
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -6372,24 +6517,24 @@ msgstr ""
 "некоторые получают эти способности в результате магического вмешательства."
 
 #. [race]: id=merman
-#: data/core/units.cfg:276
+#: data/core/units.cfg:264
 msgid "race^Merman"
 msgstr "Водяной"
 
 #. [race]: id=merman
-#: data/core/units.cfg:277
+#: data/core/units.cfg:265
 msgid "race^Mermaid"
 msgstr "Русалка"
 
 #. [race]: id=merman
-#: data/core/units.cfg:278
+#: data/core/units.cfg:266
 #, fuzzy
 #| msgid "race^Troll"
 msgid "race^Merfolk"
 msgstr "Тролль"
 
 #. [race]: id=merman
-#: data/core/units.cfg:280
+#: data/core/units.cfg:268
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -6413,22 +6558,22 @@ msgstr ""
 "замедляется."
 
 #. [race]: id=monster
-#: data/core/units.cfg:288
+#: data/core/units.cfg:276
 msgid "race^Monster"
 msgstr "Монстр"
 
 #. [race]: id=monster
-#: data/core/units.cfg:289
+#: data/core/units.cfg:277
 msgid "race+female^Monster"
 msgstr "Монстр"
 
 #. [race]: id=monster
-#: data/core/units.cfg:290
+#: data/core/units.cfg:278
 msgid "race^Monsters"
 msgstr "Монстры"
 
 #. [race]: id=monster
-#: data/core/units.cfg:291
+#: data/core/units.cfg:279
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -6440,22 +6585,22 @@ msgstr ""
 "рассказах."
 
 #. [race]: id=naga
-#: data/core/units.cfg:298
+#: data/core/units.cfg:286
 msgid "race^Naga"
 msgstr "Наг"
 
 #. [race]: id=naga
-#: data/core/units.cfg:299
+#: data/core/units.cfg:287
 msgid "race^Nagini"
 msgstr "Нагиня"
 
 #. [race]: id=naga
-#: data/core/units.cfg:300
+#: data/core/units.cfg:288
 msgid "race^Nagas"
 msgstr "Наги"
 
 #. [race]: id=naga
-#: data/core/units.cfg:301
+#: data/core/units.cfg:289
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -6484,22 +6629,22 @@ msgstr ""
 "целом, наги любят болота и реки так же, как и открытые моря и океаны."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:309
+#: data/core/units.cfg:297
 msgid "race^Ogre"
 msgstr "Огр"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:310
+#: data/core/units.cfg:298
 msgid "race+female^Ogre"
 msgstr "Огриха"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:311
+#: data/core/units.cfg:299
 msgid "race^Ogres"
 msgstr "Огры"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:312
+#: data/core/units.cfg:300
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -6532,22 +6677,22 @@ msgstr ""
 "или случайность."
 
 #. [race]: id=orc
-#: data/core/units.cfg:320
+#: data/core/units.cfg:308
 msgid "race^Orc"
 msgstr "Орк"
 
 #. [race]: id=orc
-#: data/core/units.cfg:321
+#: data/core/units.cfg:309
 msgid "race+female^Orc"
 msgstr "Орчиха"
 
 #. [race]: id=orc
-#: data/core/units.cfg:322
+#: data/core/units.cfg:310
 msgid "race^Orcs"
 msgstr "Орки"
 
 #. [race]: id=orc
-#: data/core/units.cfg:323
+#: data/core/units.cfg:311
 #, fuzzy
 #| msgid ""
 #| "In appearance, orcs are half men and half beasts. They are taller, "
@@ -6710,7 +6855,7 @@ msgstr ""
 "силовые умения, например, стрельбу из лука или ночные убийства."
 
 #. [race]: id=orc
-#: data/core/units.cfg:334
+#: data/core/units.cfg:322
 msgid ""
 "\n"
 "\n"
@@ -6719,22 +6864,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=troll
-#: data/core/units.cfg:343
+#: data/core/units.cfg:331
 msgid "race^Troll"
 msgstr "Тролль"
 
 #. [race]: id=troll
-#: data/core/units.cfg:344
+#: data/core/units.cfg:332
 msgid "race+female^Troll"
 msgstr "Троллиха"
 
 #. [race]: id=troll
-#: data/core/units.cfg:345
+#: data/core/units.cfg:333
 msgid "race^Trolls"
 msgstr "Тролли"
 
 #. [race]: id=troll
-#: data/core/units.cfg:346
+#: data/core/units.cfg:334
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -6807,22 +6952,22 @@ msgstr ""
 "востоке Веснота, а также везде, куда где находятся орды орков."
 
 #. [race]: id=undead
-#: data/core/units.cfg:366
+#: data/core/units.cfg:354
 msgid "race^Undead"
 msgstr "Мертвецы"
 
 #. [race]: id=undead
-#: data/core/units.cfg:367
+#: data/core/units.cfg:355
 msgid "race+female^Undead"
 msgstr "Мертвецы"
 
 #. [race]: id=undead
-#: data/core/units.cfg:368
+#: data/core/units.cfg:356
 msgid "race+plural^Undead"
 msgstr "Мертвецы"
 
 #. [race]: id=undead
-#: data/core/units.cfg:369
+#: data/core/units.cfg:357
 #, fuzzy
 #| msgid ""
 #| "Undead are not really a single race of creatures, although often treated "
@@ -6898,22 +7043,22 @@ msgstr ""
 "Континент лишь незадолго до Халдрика I, эльфы и гномы слышали о них и прежде."
 
 #. [race]: id=wolf
-#: data/core/units.cfg:382
+#: data/core/units.cfg:370
 msgid "race^Wolf"
 msgstr "Волк"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:383
+#: data/core/units.cfg:371
 msgid "race+female^Wolf"
 msgstr "Волчица"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:384
+#: data/core/units.cfg:372
 msgid "race^Wolves"
 msgstr "Волки"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:385
+#: data/core/units.cfg:373
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -6925,17 +7070,17 @@ msgid ""
 msgstr ""
 
 #. [race]: id=wose
-#: data/core/units.cfg:394
+#: data/core/units.cfg:382
 msgid "race^Wose"
 msgstr "Древень"
 
 #. [race]: id=wose
-#: data/core/units.cfg:395
+#: data/core/units.cfg:383
 msgid "race^Woses"
 msgstr "Древни"
 
 #. [race]: id=wose
-#: data/core/units.cfg:396
+#: data/core/units.cfg:384
 #, fuzzy
 #| msgid ""
 #| "The mighty wose resides within the deepest forests of the known world. To "
@@ -7067,18 +7212,47 @@ msgid "Parse error when parsing help text: "
 msgstr "Синтаксическая ошибка при загрузке помощи: "
 
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Multiplayer Modifications'</header>"
-msgid ""
-"\n"
-"\n"
-"<big>Multiplayer Modifications</big>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Модификации мультиплеера'</header>"
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Creator Resources'</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Cores</big>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Ресурсы для авторов'</header>"
+
+#, fuzzy
+#~| msgid "race^Orc"
+#~ msgid "race^Roc"
+#~ msgstr "Орк"
+
+#, fuzzy
+#~| msgid "race+female^Orc"
+#~ msgid "race+female^Roc"
+#~ msgstr "Орчиха"
+
+#, fuzzy
+#~| msgid "race^Orcs"
+#~ msgid "race^Rocs"
+#~ msgstr "Орки"
+
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Multiplayer Modifications'</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<big>Multiplayer Modifications</big>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Модификации мультиплеера'</header>"
 
 #, fuzzy
 #~| msgid ""
@@ -7882,20 +8056,6 @@ msgstr ""
 
 #~ msgid "The language spoken by the drakes."
 #~ msgstr "Язык, на котором говорят дрэйки."
-
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "\n"
-#~| "<header>text='Creator Resources'</header>"
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Cores'</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Ресурсы для авторов'</header>"
 
 #, fuzzy
 #~| msgid ""

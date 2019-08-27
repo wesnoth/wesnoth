@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-07-18 15:51+0300\n"
+"POT-Creation-Date: 2019-08-27 22:41+0300\n"
 "PO-Revision-Date: 2019-02-04 16:58+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -339,71 +339,6 @@ msgstr "手柄：用于加速的摇杆编号"
 msgid "Joystick: deadzone of the thruster"
 msgstr "手柄：用于加速的摇杆的死区大小"
 
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:28
-msgid "Lvl 0"
-msgstr ""
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:31
-msgid "Undead"
-msgstr ""
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:36
-#: src/help/help_topic_generators.cpp:439
-#: src/help/help_topic_generators.cpp:462
-msgid "Traits"
-msgstr "特质"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:39
-#, fuzzy
-#| msgid "Attack"
-#| msgid_plural "Attacks"
-msgid "Attacks"
-msgstr "攻击手段"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:51
-msgid "Choose a Corpse"
-msgstr ""
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:66
-#, fuzzy
-#| msgid "Recruits"
-msgid "Recruit"
-msgstr "新兵"
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:67
-#: data/scenario-test.cfg:1074
-msgid "Cancel"
-msgstr "取消"
-
-#. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:78
-msgid "HP: "
-msgstr ""
-
-#. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:78
-msgid "MP: "
-msgstr ""
-
-#. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:78
-msgid "XP: "
-msgstr ""
-
-#. [lua]: postshow
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:141
-#, fuzzy
-#| msgid "There are no save files to load"
-msgid "There are no corpses available."
-msgstr "没有存档文件供载入"
-
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [lua]: postshow
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:145
-#: src/menu_events.cpp:315
-msgid "You do not have enough gold to recruit that unit"
-msgstr "你没有足够的金币，不能征募该单位"
-
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
@@ -452,37 +387,37 @@ msgid "Artwork and Graphics"
 msgstr "美工与图像"
 
 #. [about]
-#: data/core/about.cfg:749
+#: data/core/about.cfg:753
 msgid "Music"
 msgstr "音乐"
 
 #. [about]
-#: data/core/about.cfg:786
+#: data/core/about.cfg:790
 msgid "Sound Effects"
 msgstr "音效"
 
 #. [about]
-#: data/core/about.cfg:810
+#: data/core/about.cfg:814
 msgid "Campaign Design"
 msgstr "战役设计"
 
 #. [about]
-#: data/core/about.cfg:896
+#: data/core/about.cfg:900
 msgid "Multiplayer Maps and Balancing"
 msgstr "多人地图与平衡性调整"
 
 #. [about]
-#: data/core/about.cfg:941
+#: data/core/about.cfg:945
 msgid "Packagers"
 msgstr "打包人员"
 
 #. [about]
-#: data/core/about.cfg:1048
+#: data/core/about.cfg:1052
 msgid "Miscellaneous Contributors"
 msgstr "其他贡献者"
 
 #. [about]
-#: data/core/about.cfg:1742
+#: data/core/about.cfg:1746
 msgid "Bots"
 msgstr "机器人"
 
@@ -737,23 +672,23 @@ msgid "Turkish Translation"
 msgstr "土耳其文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1680
+#: data/core/about_i18n.cfg:1683
 msgid "Ukrainian Translation"
 msgstr "乌克兰文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1696
+#: data/core/about_i18n.cfg:1699
 msgid "Valencian (southern Catalan) Translation"
 msgstr "瓦伦西亚文（南加泰罗尼亚）翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1709
+#: data/core/about_i18n.cfg:1712
 msgid "Vietnamese Translation"
 msgstr "越南文翻译"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1729
+#: data/core/about_i18n.cfg:1732
 msgid "RACV’s Translation"
 msgstr "RACV的翻译"
 
@@ -2914,8 +2849,21 @@ msgstr ""
 "亚西尔,亚赞,耶齐德,尤努斯,尤沙,尤斯里,优素福,扎法尔,扎菲尔,扎希德,查希尔,扎伊"
 "德,扎伊姆,扎伊纳,扎里夫,扎卡里亚,扎基,扎卡万,齐亚德,祖巴伊尔,祖海尔"
 
+#: data/core/macros/names.cfg:144
+msgid ""
+"Abiha,Afaf,A'isha,Ajda,Aliya,Amira,Ashraqat,Atikah,Azra,Boutheina,Bushra,"
+"Chaima,Cynthia,Dalal,Dalia,Eliana,Esma,Farida,Fatima,Feyrouz,Habiba,Hafsa,"
+"Hajra,Halima,Hamida,Hanifa,Havva,Hayat,Hessa,Ibtisam,Ibtissam,Inaam,Jamila,"
+"Jawahir,Jena,Jumana,Kareena,Karima,Katya,Khadija,Khairunnisa,Khawla,Khawlah,"
+"Lama,Lamia,Latifa,Layal,Layan,Leila,Lina,Lulwa,Madiha,Maha,Mahmuna,Mai,"
+"Malika,Marwa,Maryam,Maya,Maysoon,Melissa,Nadia,Nafisa,Nahla,Naila,Najat,"
+"Nasim,Nasrin,Nejla,Nezha,Niusha,Qistina,Rahima,Rana,Rashida,Reem,Ruqayya,"
+"Saadia,Sabiha,Safiya,Sahar,Saida,Sajida,Sakhra,Salma,Samira,Sarah,Shahd,"
+"Shatha,Sherine,Shumaila,Sumaya,Taslima,Umm,Yara,Yasmin,Zahra,Zakiya,Zaynab"
+msgstr ""
+
 #. Generator for male dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:145
+#: data/core/macros/names.cfg:146
 msgid ""
 "\n"
 "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{name_mid}\n"
@@ -3013,7 +2961,7 @@ msgstr ""
 "德|扎伊姆|扎伊纳|扎里夫|扎卡里亚|扎基|扎卡万|齐亚德|祖巴伊尔|祖海尔\n"
 
 #. Generator for female dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:156
+#: data/core/macros/names.cfg:157
 msgid ""
 "\n"
 "main={name_long}|{prefix}{suffix}|{name_mid}{connector}{surname}\n"
@@ -3123,7 +3071,7 @@ msgstr ""
 "亚西尔|亚赞|耶齐德|尤努斯|尤沙|尤斯里|优素福|扎法尔|扎菲尔|扎希德|查希尔|扎伊"
 "德|扎伊姆|扎伊纳|扎里夫|扎卡里亚|扎基|扎卡万|齐亚德|祖巴伊尔|祖海尔\n"
 
-#: data/core/macros/names.cfg:176
+#: data/core/macros/names.cfg:177
 msgid ""
 "Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
 "Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
@@ -3150,7 +3098,7 @@ msgstr ""
 "兹,希斯拉普,匝尔克兹,匝普德"
 
 #. Generator for saurian names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:178
+#: data/core/macros/names.cfg:179
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -3174,7 +3122,7 @@ msgstr ""
 "雷特西斯|希拉兹|希|希拉特拉斯|希拉特雷兹|希兹|赞多尔|泽德里克斯|希尔雷克斯|希"
 "兹阿兹|希斯拉普|匝尔克兹|匝普德\n"
 
-#: data/core/macros/names.cfg:187
+#: data/core/macros/names.cfg:188
 msgid ""
 "Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
 "Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
@@ -3192,7 +3140,7 @@ msgstr ""
 "劳,希修提尔,塔伽洛阿,塔纳阿,坦甲洛阿,坦加,陶玛斯,提奇提奇,提尼,提尼劳,提尼洛,"
 "托尼瓦,托尼温,维兹,伏德尼克,伏鲁卡萨"
 
-#: data/core/macros/names.cfg:188
+#: data/core/macros/names.cfg:189
 msgid ""
 "Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
 "Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
@@ -3205,7 +3153,7 @@ msgstr ""
 "蒂拉·玛丽丝,希莉珂丝皮娅,提佳塔,瓦提,薇-艾娃,薇恩·艾墨尔,薇特-艾玛"
 
 #. Generator for merman names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:190
+#: data/core/macros/names.cfg:191
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -3225,7 +3173,7 @@ msgstr ""
 "尼洛|托尼瓦|托尼温|维兹|伏德尼克|伏鲁卡萨\n"
 
 #. Generator for mermaid names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:197
+#: data/core/macros/names.cfg:198
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -3240,7 +3188,7 @@ msgstr ""
 "丝|玛玛·瓦塔|玛丽娜|米兰达|米丽娅|莫尔菲|帕丝诺帕|佩娜吉拉|佩希诺伊|兰|希德"
 "娜|斯蒂拉·玛丽丝|希莉珂丝皮娅|提佳塔|瓦提|薇-艾娃|薇恩·艾墨尔|薇特-艾玛\n"
 
-#: data/core/macros/names.cfg:206
+#: data/core/macros/names.cfg:207
 msgid ""
 "Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
 "Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
@@ -3257,7 +3205,7 @@ msgstr ""
 "斯,斯勒尔,斯诺尔,索伊尔,索克尔,斯瑞尔,崔克斯欧兹,维拉尔,维萨尔,维拉尼斯,希布"
 "拉克,希玛雷尔,希纳斯,希纳莫斯,希欧普空,扎尔斯普,兹雷克,兹普斯克,兹斯克"
 
-#: data/core/macros/names.cfg:207
+#: data/core/macros/names.cfg:208
 msgid ""
 "Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
 "Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
@@ -3276,7 +3224,7 @@ msgstr ""
 "夏玛莉娅,希娜,希娜希娅,希纳玛丝,希欧普科内,扎尔丝帕,扎尔可,兹普丝可,兹丝可"
 
 #. Generator for male naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:209
+#: data/core/macros/names.cfg:210
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3297,7 +3245,7 @@ msgstr ""
 "克\n"
 
 #. Generator for female naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:215
+#: data/core/macros/names.cfg:216
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3317,7 +3265,7 @@ msgstr ""
 "拉可|夏玛莉娅|希娜|希娜希娅|希纳玛丝|希欧普科内|扎尔丝帕|扎尔可|兹普丝可|兹丝"
 "可\n"
 
-#: data/core/macros/names.cfg:223
+#: data/core/macros/names.cfg:224
 msgid ""
 "Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
 "Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
@@ -3334,7 +3282,7 @@ msgstr ""
 "克,特拉布克,特拉空,乌卡,乌克阿克"
 
 #. Generator for ogre names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:225
+#: data/core/macros/names.cfg:226
 msgid ""
 "\n"
 "main={prefix}{suffix}\n"
@@ -3350,7 +3298,7 @@ msgstr ""
 "卡|卡马克|马克隆|马卡克|马库克|莫克内克|纳伽克|欧尔克|欧尔克特|雷克纳克|塔寇"
 "拉克|特拉布克|特拉空|乌卡|乌克阿克\n"
 
-#: data/core/macros/names.cfg:233
+#: data/core/macros/names.cfg:234
 msgid ""
 "Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
 "Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
@@ -3423,7 +3371,7 @@ msgstr ""
 "孚什纳克"
 
 #. Generator for orc names
-#: data/core/macros/names.cfg:235
+#: data/core/macros/names.cfg:236
 msgid ""
 "\n"
 "main={starting_consonnant}{vowel}{consonnant}{vowel}{ending_consonnant}|"
@@ -3476,7 +3424,7 @@ msgstr ""
 "鲁特|孚鲁卡姆|乏迪什|乏姆克|孚尔戈|孚罗姆|乏纳克姆|乏纳戈姆|乏巴戈姆|乏格姆|"
 "孚什纳克\n"
 
-#: data/core/macros/names.cfg:247
+#: data/core/macros/names.cfg:248
 msgid ""
 "Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
 "Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
@@ -3490,7 +3438,7 @@ msgstr ""
 "拉,乌克,乏克,佐格,组格"
 
 #. Generator for troll names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:249
+#: data/core/macros/names.cfg:250
 msgid ""
 "\n"
 "main={short_name}|{short_name}|{short_name}|{short_name} {short_name}\n"
@@ -3508,7 +3456,7 @@ msgstr ""
 "夫|斯图|塔格|图鲁格|图鲁夫|苏尔|托格|托尔格|托克|苏克|塔|塔克·拉|尤格|阿|乌"
 "格|乌拉|乌克|乏克|佐格|组格\n"
 
-#: data/core/macros/names.cfg:260
+#: data/core/macros/names.cfg:261
 msgid ""
 "Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
 "Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
@@ -3537,7 +3485,7 @@ msgstr ""
 "塔姆,塔姆塔姆格姆托姆托姆,沃壤玛尔丁,沃达多尔普"
 
 #. Generator for wose names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:262
+#: data/core/macros/names.cfg:263
 msgid ""
 "\n"
 "main={prefix}{centre}{centre}{suffix}|{prefix}{centre}{centre}{centre}"
@@ -3565,7 +3513,7 @@ msgstr ""
 "特姆坦恩德姆本|特姆坦农格特姆|通德恩孔腾孔|特鲁姆巴杜姆|塔姆腾塔塔格朗姆|塔姆"
 "腾朗格塔姆|塔姆塔姆格姆托姆托姆|沃壤玛尔丁|沃达多尔普\n"
 
-#: data/core/macros/names.cfg:271
+#: data/core/macros/names.cfg:272
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
@@ -3575,7 +3523,7 @@ msgstr ""
 "尔,森,西尔,塔尔,沃特,维特,约克"
 
 #. Generator for the base names of features assigned by the random map generator; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
-#: data/core/macros/names.cfg:273
+#: data/core/macros/names.cfg:274
 msgid ""
 "\n"
 "main={prefix}{middle}{suffix}\n"
@@ -4403,7 +4351,7 @@ msgstr "否"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:628
+#: src/hotkey/command_executor.cpp:632
 msgid "Screenshot"
 msgstr "截屏"
 
@@ -4448,7 +4396,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr "无效废弃级别$level|（应为1-4）"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:905
+#: data/lua/wml-tags.lua:912
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "无效废弃级别（应为1-4）"
 
@@ -4533,6 +4481,10 @@ msgstr ""
 msgid "OK"
 msgstr "确定"
 
+#: data/scenario-test.cfg:1074
+msgid "Cancel"
+msgstr "取消"
+
 #. [language]
 #: data/scenario-test.cfg:4155
 msgid "very long"
@@ -4544,92 +4496,92 @@ msgid "electrical"
 msgstr "电子"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:426 data/themes/_initial.cfg:586
+#: data/themes/_initial.cfg:428 data/themes/_initial.cfg:588
 msgid "Play"
 msgstr "开始播放"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:427 data/themes/_initial.cfg:587
+#: data/themes/_initial.cfg:429 data/themes/_initial.cfg:589
 msgid "continuous replay"
 msgstr "连续回放"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:441 data/themes/_initial.cfg:600
+#: data/themes/_initial.cfg:443 data/themes/_initial.cfg:602
 msgid "Stop"
 msgstr "停止播放"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:442
+#: data/themes/_initial.cfg:444
 msgid "pause after current move"
 msgstr "播放完当前一手后暂停"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:457 data/themes/_initial.cfg:614
+#: data/themes/_initial.cfg:459 data/themes/_initial.cfg:616
 msgid "Reset"
 msgstr "重置"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:458 data/themes/_initial.cfg:615
+#: data/themes/_initial.cfg:460 data/themes/_initial.cfg:617
 msgid "reset to beginning"
 msgstr "重置到开局状态"
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:473 data/themes/_initial.cfg:628
+#: data/themes/_initial.cfg:475 data/themes/_initial.cfg:630
 msgid "Next Turn"
 msgstr "下一回合"
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:474 data/themes/_initial.cfg:629
+#: data/themes/_initial.cfg:476 data/themes/_initial.cfg:631
 msgid "play turn"
 msgstr "播放此回合"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:489 data/themes/_initial.cfg:642
+#: data/themes/_initial.cfg:491 data/themes/_initial.cfg:644
 msgid "Next Side"
 msgstr "下一阵营"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:490 data/themes/_initial.cfg:643
+#: data/themes/_initial.cfg:492 data/themes/_initial.cfg:645
 msgid "play side turn"
 msgstr "播放阵营回合"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:504 data/themes/_initial.cfg:656
+#: data/themes/_initial.cfg:506 data/themes/_initial.cfg:658
 msgid "Next Move"
 msgstr "下一手"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:505 data/themes/_initial.cfg:657
+#: data/themes/_initial.cfg:507 data/themes/_initial.cfg:659
 msgid "play single move"
 msgstr "播放一手"
 
 #. [menu]: id=show-what
-#: data/themes/_initial.cfg:517 data/themes/_initial.cfg:669
+#: data/themes/_initial.cfg:519 data/themes/_initial.cfg:671
 msgid "Point of view"
 msgstr "视角"
 
 #. [action]: id=button-continue
-#: data/themes/_initial.cfg:528
+#: data/themes/_initial.cfg:530
 msgid "Continue Play"
 msgstr "继续播放"
 
 #. [action]: id=button-continue
-#: data/themes/_initial.cfg:529
+#: data/themes/_initial.cfg:531
 msgid "Exit the replay mode and continue playing normally."
 msgstr "退出回放模式并继续游戏。"
 
 #. [action]: id=skip-animation, type=checkbox
-#: data/themes/_initial.cfg:541 data/themes/_initial.cfg:681
+#: data/themes/_initial.cfg:543 data/themes/_initial.cfg:683
 msgid "Skip animation"
 msgstr "跳过动画"
 
 #. [label]: id=replay-label
-#: data/themes/_initial.cfg:571
+#: data/themes/_initial.cfg:573
 msgid "Replay"
 msgstr "游戏录像"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:601
+#: data/themes/_initial.cfg:603
 msgid "pause"
 msgstr "暂停"
 
@@ -5759,7 +5711,7 @@ msgid "Do you really wish to continue?"
 msgstr "真的希望继续吗？"
 
 #: src/addon/client.cpp:459 src/addon/manager_ui.cpp:174
-#: src/game_initialization/multiplayer.cpp:233
+#: src/game_initialization/multiplayer.cpp:227
 msgid "Confirm"
 msgstr "确认"
 
@@ -5933,46 +5885,29 @@ msgstr "好友与忽略列表"
 msgid "version"
 msgstr "版本"
 
-#: src/chat_command_handler.cpp:174
-msgid "registering with password *** and no email address"
-msgstr "以密码***注册，未使用电子邮件地址"
-
-#: src/chat_command_handler.cpp:179
-msgid "registering with password *** and email address $email"
-msgstr "以密码***和电子邮件地址$email|注册"
-
-#: src/chat_command_handler.cpp:182 src/chat_command_handler.cpp:193
-#: src/chat_command_handler.cpp:211 src/chat_command_handler.cpp:225
+#: src/chat_command_handler.cpp:170
 msgid "nick registration"
 msgstr "昵称注册"
 
-#: src/chat_command_handler.cpp:193
-msgid "dropping your username"
-msgstr "正在废弃你的用户名"
-
-#: src/chat_command_handler.cpp:211
-msgid "setting $var to $value"
-msgstr "正在设置$var|为$value"
-
-#: src/chat_command_handler.cpp:225
+#: src/chat_command_handler.cpp:170
 msgid "requesting information for user $nick"
 msgstr "正在请求用户$nick|的信息"
 
-#: src/chat_command_handler.hpp:66
+#: src/chat_command_handler.hpp:51
 msgid "(A) — admin command"
 msgstr "(A) — 管理员命令"
 
-#: src/chat_command_handler.hpp:73 src/menu_events.cpp:1159
+#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1159
 msgid "(admin only)"
 msgstr "（管理员专用）"
 
-#: src/chat_command_handler.hpp:88
+#: src/chat_command_handler.hpp:73
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr "向服务器发起一次查询。无参数时，服务器将把可用的命令告知你。"
 
-#: src/chat_command_handler.hpp:92
+#: src/chat_command_handler.hpp:77
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -5980,50 +5915,50 @@ msgstr ""
 "将一位玩家或观察者封禁并踢出。如果他在服务器上而并不在当前游戏中，那么他只会"
 "被封禁。"
 
-#: src/chat_command_handler.hpp:93 src/chat_command_handler.hpp:96
-#: src/chat_command_handler.hpp:98 src/chat_command_handler.hpp:100
-#: src/chat_command_handler.hpp:102 src/chat_command_handler.hpp:123
-#: src/chat_command_handler.hpp:125 src/chat_command_handler.hpp:127
-#: src/chat_command_handler.hpp:138
+#: src/chat_command_handler.hpp:78 src/chat_command_handler.hpp:81
+#: src/chat_command_handler.hpp:83 src/chat_command_handler.hpp:85
+#: src/chat_command_handler.hpp:87 src/chat_command_handler.hpp:108
+#: src/chat_command_handler.hpp:110 src/chat_command_handler.hpp:112
+#: src/chat_command_handler.hpp:116
 msgid "<nickname>"
 msgstr "<昵称>"
 
-#: src/chat_command_handler.hpp:95
+#: src/chat_command_handler.hpp:80
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr "将一位用户解封。他并不一定要在当前游戏中，但一定要在服务器上。"
 
-#: src/chat_command_handler.hpp:98
+#: src/chat_command_handler.hpp:83
 msgid "Kick a player or observer."
 msgstr "将一位玩家或观察者踢出。"
 
-#: src/chat_command_handler.hpp:100
+#: src/chat_command_handler.hpp:85
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "将一位观察者禁言。无参数时，显示当前禁言状态。"
 
-#: src/chat_command_handler.hpp:102
+#: src/chat_command_handler.hpp:87
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr "将一位观察者解除禁言。无参数时，解除所有人的禁言。"
 
-#: src/chat_command_handler.hpp:104
+#: src/chat_command_handler.hpp:89
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "将所有观察者禁言/解除禁言。（禁言状态开关）"
 
-#: src/chat_command_handler.hpp:108
+#: src/chat_command_handler.hpp:93
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
 msgstr ""
 "将滥用情形及违反规则的情况等报告给服务器管理员。请确保提及相关的昵称等。"
 
-#: src/chat_command_handler.hpp:112
+#: src/chat_command_handler.hpp:97
 msgid "<message>"
 msgstr "<信息>"
 
-#: src/chat_command_handler.hpp:112
+#: src/chat_command_handler.hpp:97
 msgid "Send an emotion or personal action in chat."
 msgstr "在交谈中发送感情表达或个人动作信息。"
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:100
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
@@ -6031,97 +5966,72 @@ msgstr ""
 "发送私密信息。如果你正在观察或参与一场进行中的游戏，那么你不能向该游戏中的玩"
 "家发送私密信息。"
 
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:102
 msgid "<nickname> <message>"
 msgstr "<昵称> <信息>"
 
-#: src/chat_command_handler.hpp:121
+#: src/chat_command_handler.hpp:106
 msgid "<level> <domain>"
 msgstr "<等级> <域>"
 
-#: src/chat_command_handler.hpp:121
+#: src/chat_command_handler.hpp:106
 msgid "Change the log level of a log domain."
 msgstr "更改日志域的日志等级。"
 
-#: src/chat_command_handler.hpp:123
+#: src/chat_command_handler.hpp:108
 msgid "Add a nickname to your ignores list."
 msgstr "将一个昵称加入你的忽略列表。"
 
-#: src/chat_command_handler.hpp:125
+#: src/chat_command_handler.hpp:110
 msgid "Add a nickname to your friends list."
 msgstr "将一个昵称加入你的好友列表。"
 
-#: src/chat_command_handler.hpp:127
+#: src/chat_command_handler.hpp:112
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "将一个昵称从你的忽略或好友列表中移除。"
 
-#: src/chat_command_handler.hpp:129
+#: src/chat_command_handler.hpp:114
 msgid "Display version information."
 msgstr "显示版本信息。"
 
-#: src/chat_command_handler.hpp:131
-msgid "<password> <email (optional)>"
-msgstr "<密码> <电子邮件（可选）>"
-
-#: src/chat_command_handler.hpp:131
-msgid "Register your nickname"
-msgstr "注册你的昵称"
-
-#: src/chat_command_handler.hpp:133
-msgid "Drop your nickname."
-msgstr "废弃你的昵称。"
-
-#: src/chat_command_handler.hpp:135
-msgid "Update details for your nickname. For possible details see '/details'."
-msgstr "更新你的昵称的详细信息。可以录入的详细信息种类请参见‘/details’。"
-
-#: src/chat_command_handler.hpp:136
-msgid "<detail> <value>"
-msgstr "<详细信息类型> <值>"
-
-#: src/chat_command_handler.hpp:138
+#: src/chat_command_handler.hpp:116
 msgid "Request information about a nickname."
 msgstr "请求一个昵称的有关信息。"
 
-#: src/chat_command_handler.hpp:140
-msgid "Request a list of details you can set for your registered nickname."
-msgstr ""
-"你可以为你注册好的昵称录入详细信息，此命令请求这些可用的详细信息类型列表。"
-
-#: src/chat_command_handler.hpp:142 src/chat_command_handler.hpp:145
-#: src/chat_command_handler.hpp:147
+#: src/chat_command_handler.hpp:118 src/chat_command_handler.hpp:121
+#: src/chat_command_handler.hpp:123
 msgid "<room>"
 msgstr "<房间>"
 
-#: src/chat_command_handler.hpp:142
+#: src/chat_command_handler.hpp:118
 msgid "Join a room."
 msgstr "加入房间。"
 
-#: src/chat_command_handler.hpp:145
+#: src/chat_command_handler.hpp:121
 msgid "Part a room."
 msgstr "离开房间。"
 
-#: src/chat_command_handler.hpp:147
+#: src/chat_command_handler.hpp:123
 msgid "List room members."
 msgstr "列出房间成员。"
 
-#: src/chat_command_handler.hpp:149
+#: src/chat_command_handler.hpp:125
 msgid "List available rooms."
 msgstr "列出可用的房间。"
 
-#: src/chat_command_handler.hpp:151
+#: src/chat_command_handler.hpp:127
 msgid "<room> <msg>"
 msgstr "<房间> <信息>"
 
-#: src/chat_command_handler.hpp:151
+#: src/chat_command_handler.hpp:127
 msgid "Room message."
 msgstr "房间内信息。"
 
-#: src/chat_command_handler.hpp:153
+#: src/chat_command_handler.hpp:129
 msgid "<room> <type> [value]"
 msgstr "<房间> <类型> [值]"
 
-#: src/chat_command_handler.hpp:153
+#: src/chat_command_handler.hpp:129
 msgid "Room query."
 msgstr "房间查询。"
 
@@ -6173,7 +6083,7 @@ msgstr "$elem|已废弃并已移除。"
 msgid "Chat message"
 msgstr "聊天信息"
 
-#: src/desktop/windows_tray_notification.cpp:125 src/game_config.cpp:572
+#: src/desktop/windows_tray_notification.cpp:125 src/game_config.cpp:574
 msgid "The Battle for Wesnoth"
 msgstr "韦诺之战"
 
@@ -6205,7 +6115,7 @@ msgstr "%b %d"
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
-#: src/game_config.cpp:520
+#: src/game_config.cpp:522
 msgid "Invalid color in range: "
 msgstr "范围内颜色无效："
 
@@ -6314,32 +6224,32 @@ msgstr "$login|的游戏"
 msgid "Team"
 msgstr "团队"
 
-#: src/game_initialization/connect_engine.cpp:991
+#: src/game_initialization/connect_engine.cpp:990
 msgid "Anonymous player"
 msgstr "匿名玩家"
 
-#: src/game_initialization/connect_engine.cpp:996
-#: src/game_initialization/connect_engine.cpp:1294
+#: src/game_initialization/connect_engine.cpp:995
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "Computer Player"
 msgstr "电脑玩家"
 
-#: src/game_initialization/connect_engine.cpp:1038
+#: src/game_initialization/connect_engine.cpp:1037
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1289
 msgid "Network Player"
 msgstr "网络玩家"
 
-#: src/game_initialization/connect_engine.cpp:1293
+#: src/game_initialization/connect_engine.cpp:1292
 msgid "Local Player"
 msgstr "本地玩家"
 
-#: src/game_initialization/connect_engine.cpp:1295
+#: src/game_initialization/connect_engine.cpp:1294
 msgid "Nobody"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1298
+#: src/game_initialization/connect_engine.cpp:1297
 msgid "Reserved"
 msgstr "保留"
 
@@ -6490,17 +6400,17 @@ msgstr "连接超时"
 msgid "Invalid address specified for multiplayer server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:121
+#: src/game_initialization/multiplayer.cpp:118
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
 msgstr "此服务器接受版本‘$required_version|’，而你使用的版本是‘$your_version|’"
 
-#: src/game_initialization/multiplayer.cpp:131
+#: src/game_initialization/multiplayer.cpp:128
 msgid "Server-side redirect loop"
 msgstr "服务器端重定向循环"
 
-#: src/game_initialization/multiplayer.cpp:206
+#: src/game_initialization/multiplayer.cpp:200
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6509,29 +6419,29 @@ msgstr ""
 "昵称‘$nick’未激活。除非你使用电子邮件或请管理员进行激活，否则你不能取得此昵称"
 "的所有权。"
 
-#: src/game_initialization/multiplayer.cpp:215
+#: src/game_initialization/multiplayer.cpp:209
 msgid "Do you want to continue?"
 msgstr "你要继续吗？"
 
-#: src/game_initialization/multiplayer.cpp:217
+#: src/game_initialization/multiplayer.cpp:211
 msgid "Warning"
 msgstr "警告"
 
-#: src/game_initialization/multiplayer.cpp:260
-#: src/game_initialization/multiplayer.cpp:276
-#: src/game_initialization/multiplayer.cpp:279
+#: src/game_initialization/multiplayer.cpp:254
+#: src/game_initialization/multiplayer.cpp:270
+#: src/game_initialization/multiplayer.cpp:273
 msgid "Bad data received from server"
 msgstr "从服务器处收到损坏的数据"
 
-#: src/game_initialization/multiplayer.cpp:312
+#: src/game_initialization/multiplayer.cpp:306
 msgid "You must login first."
 msgstr "你必须先登录。"
 
-#: src/game_initialization/multiplayer.cpp:314
+#: src/game_initialization/multiplayer.cpp:308
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "昵称“$nick|”已被使用了。"
 
-#: src/game_initialization/multiplayer.cpp:316
+#: src/game_initialization/multiplayer.cpp:310
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -6539,43 +6449,43 @@ msgstr ""
 "昵称“$nick|”包含无效字符。只允许使用字母或数字（至少要有一个字母或数字），下"
 "划线和连字符。"
 
-#: src/game_initialization/multiplayer.cpp:320
+#: src/game_initialization/multiplayer.cpp:314
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "昵称“$nick|”太长了。昵称长度不得超过20个字符。"
 
-#: src/game_initialization/multiplayer.cpp:323
+#: src/game_initialization/multiplayer.cpp:317
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "昵称“$nick|”是被保留的，无法由玩家使用。"
 
-#: src/game_initialization/multiplayer.cpp:325
+#: src/game_initialization/multiplayer.cpp:319
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "昵称“$nick|”未在此服务器上注册。"
 
-#: src/game_initialization/multiplayer.cpp:326
+#: src/game_initialization/multiplayer.cpp:320
 msgid " This server disallows unregistered nicknames."
 msgstr " 此服务器不允许使用没有注册的昵称。"
 
-#: src/game_initialization/multiplayer.cpp:329
+#: src/game_initialization/multiplayer.cpp:323
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr "昵称“$nick|”在此服务器的论坛上被封禁了。"
 
-#: src/game_initialization/multiplayer.cpp:331
+#: src/game_initialization/multiplayer.cpp:325
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "昵称“$nick|”在此服务器的论坛上被封禁了。"
 
-#: src/game_initialization/multiplayer.cpp:335
+#: src/game_initialization/multiplayer.cpp:329
 #, fuzzy
 #| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "你的IP地址在此服务器的论坛上被封禁了。"
 
-#: src/game_initialization/multiplayer.cpp:337
+#: src/game_initialization/multiplayer.cpp:331
 msgid "Your IP address is banned on this server’s forums."
 msgstr "你的IP地址在此服务器的论坛上被封禁了。"
 
-#: src/game_initialization/multiplayer.cpp:341
+#: src/game_initialization/multiplayer.cpp:335
 #, fuzzy
 #| msgid ""
 #| "The email address for the nickname ‘$nick’ is banned on this server’s "
@@ -6585,33 +6495,33 @@ msgid ""
 "for $duration|."
 msgstr "昵称“$nick|”对应的电子邮件地址在此服务器的论坛上被封禁了。"
 
-#: src/game_initialization/multiplayer.cpp:343
+#: src/game_initialization/multiplayer.cpp:337
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr "昵称“$nick|”对应的电子邮件地址在此服务器的论坛上被封禁了。"
 
-#: src/game_initialization/multiplayer.cpp:346
-#: src/game_initialization/multiplayer.cpp:348
+#: src/game_initialization/multiplayer.cpp:340
+#: src/game_initialization/multiplayer.cpp:342
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "昵称“$nick|”已在此服务器上注册过了。"
 
-#: src/game_initialization/multiplayer.cpp:349
+#: src/game_initialization/multiplayer.cpp:343
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr ""
 "<b>警告</b>：已经有客户端使用这个昵称登录。如果继续登录将踢走那个客户端！"
 
-#: src/game_initialization/multiplayer.cpp:352
+#: src/game_initialization/multiplayer.cpp:346
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "登录过程中发生错误（服务器没有可用的种子，无法与你连接）。"
 
-#: src/game_initialization/multiplayer.cpp:355
+#: src/game_initialization/multiplayer.cpp:349
 msgid "The password you provided was incorrect."
 msgstr "你提供的密码是不正确的。"
 
-#: src/game_initialization/multiplayer.cpp:357
+#: src/game_initialization/multiplayer.cpp:351
 msgid "You have made too many login attempts."
 msgstr "你尝试登录的次数太多了。"
 
@@ -6861,76 +6771,76 @@ msgstr "是"
 msgid "Reference to unknown topic: "
 msgstr "引用了未知主题："
 
-#: src/help/help_impl.cpp:350
+#: src/help/help_impl.cpp:349
 msgid "Only available during a scenario."
 msgstr "仅在场景中可用。"
 
-#: src/help/help_impl.cpp:367
+#: src/help/help_impl.cpp:366
 msgid "Schedule"
 msgstr "日程表"
 
-#: src/help/help_impl.cpp:459
+#: src/help/help_impl.cpp:458
 msgid "<header>text='Units with this special attack'</header>"
 msgstr "<header>text=‘拥有此特攻的单位'</header>"
 
-#: src/help/help_impl.cpp:523
+#: src/help/help_impl.cpp:522
 msgid "<header>text='Units with this ability'</header>"
 msgstr "<header>text='拥有此技能的单位'</header>"
 
-#: src/help/help_impl.cpp:553
+#: src/help/help_impl.cpp:552
 msgid "Era:"
 msgstr "时代："
 
-#: src/help/help_impl.cpp:561
+#: src/help/help_impl.cpp:560
 msgid "Factions"
 msgstr "派系"
 
-#: src/help/help_impl.cpp:610
+#: src/help/help_impl.cpp:609
 msgid "Races: "
 msgstr "种族："
 
-#: src/help/help_impl.cpp:619 src/help/help_impl.cpp:970
+#: src/help/help_impl.cpp:618 src/help/help_impl.cpp:969
 msgid "Alignments: "
 msgstr "立场："
 
-#: src/help/help_impl.cpp:626
+#: src/help/help_impl.cpp:625
 msgid "Leaders"
 msgstr "首领"
 
-#: src/help/help_impl.cpp:635
+#: src/help/help_impl.cpp:634
 msgid "Recruits"
 msgstr "新兵"
 
-#: src/help/help_impl.cpp:696 src/units/types.cpp:480
+#: src/help/help_impl.cpp:695 src/units/types.cpp:479
 msgid "No description available."
 msgstr "无可用描述。"
 
-#: src/help/help_impl.cpp:700 src/help/help_impl.cpp:702
+#: src/help/help_impl.cpp:699 src/help/help_impl.cpp:701
 msgid "Availability: "
 msgstr "可用性："
 
-#: src/help/help_impl.cpp:700
+#: src/help/help_impl.cpp:699
 msgid "Must-have"
 msgstr "必备"
 
-#: src/help/help_impl.cpp:702
+#: src/help/help_impl.cpp:701
 msgid "Unavailable"
 msgstr "不可用"
 
-#: src/help/help_impl.cpp:782 src/help/help_impl.cpp:958
+#: src/help/help_impl.cpp:781 src/help/help_impl.cpp:957
 #: src/help/help_topic_generators.cpp:400
 msgid "race^Miscellaneous"
 msgstr "杂项"
 
-#: src/help/help_impl.cpp:970 src/reports.cpp:382
+#: src/help/help_impl.cpp:969 src/reports.cpp:382
 msgid "Alignment: "
 msgstr "立场："
 
-#: src/help/help_impl.cpp:977
+#: src/help/help_impl.cpp:976
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='此种族的单位'</header>"
 
-#: src/help/help_impl.cpp:1320
+#: src/help/help_impl.cpp:1287
 msgid "corrupted original file"
 msgstr "损坏的原始文件"
 
@@ -6981,6 +6891,11 @@ msgstr "变体："
 #: src/help/help_topic_generators.cpp:402 src/reports.cpp:203
 msgid "Race: "
 msgstr "种族："
+
+#: src/help/help_topic_generators.cpp:439
+#: src/help/help_topic_generators.cpp:462
+msgid "Traits"
+msgstr "特质"
 
 #: src/help/help_topic_generators.cpp:472
 msgid "Abilities: "
@@ -7103,15 +7018,15 @@ msgstr "视野消耗"
 msgid "Jamming Cost"
 msgstr "干扰消耗"
 
-#: src/hotkey/command_executor.cpp:391
+#: src/hotkey/command_executor.cpp:395
 msgid "Do you really want to surrender the game?"
 msgstr "你真的想要投降吗？"
 
-#: src/hotkey/command_executor.cpp:391
+#: src/hotkey/command_executor.cpp:395
 msgid "Surrender"
 msgstr "投降"
 
-#: src/hotkey/command_executor.cpp:804
+#: src/hotkey/command_executor.cpp:808
 msgid "Map-Screenshot"
 msgstr "地图-截屏"
 
@@ -7127,11 +7042,11 @@ msgstr "已启用加速！"
 msgid "Accelerated speed disabled!"
 msgstr "已禁用加速！"
 
-#: src/hotkey/hotkey_handler.cpp:413
+#: src/hotkey/hotkey_handler.cpp:414
 msgid "Back to Turn "
 msgstr "回到回合"
 
-#: src/hotkey/hotkey_handler.cpp:419
+#: src/hotkey/hotkey_handler.cpp:420
 msgid "Back to Start"
 msgstr "回到开头"
 
@@ -7267,6 +7182,10 @@ msgstr "你没有可供征募的单位。"
 #| msgid "No unit recalled"
 msgid "No unit recruited"
 msgstr "未召回任何单位"
+
+#: src/menu_events.cpp:315
+msgid "You do not have enough gold to recruit that unit"
+msgstr "你没有足够的金币，不能征募该单位"
 
 #: src/menu_events.cpp:351
 msgid "You are separated from your soldiers and may not recall them"
@@ -7723,32 +7642,36 @@ msgstr "无镜像"
 msgid "No Ally Mirror"
 msgstr "无友方镜像"
 
-#: src/mp_ui_alerts.cpp:66
-msgid "A player has joined"
-msgstr "一位玩家加入了"
+#: src/mp_ui_alerts.cpp:67
+msgid "A game ($name|, $scenario|) has been created"
+msgstr ""
 
-#: src/mp_ui_alerts.cpp:66 src/mp_ui_alerts.cpp:80 src/mp_ui_alerts.cpp:149
-#: src/mp_ui_alerts.cpp:160
+#: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
+#: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
 msgid "Wesnoth"
 msgstr "韦诺"
 
-#: src/mp_ui_alerts.cpp:80
+#: src/mp_ui_alerts.cpp:82
+msgid "A player has joined"
+msgstr "一位玩家加入了"
+
+#: src/mp_ui_alerts.cpp:96
 msgid "A player has left"
 msgstr "一位玩家离开了"
 
-#: src/mp_ui_alerts.cpp:149
+#: src/mp_ui_alerts.cpp:165
 msgid "Ready to start!"
 msgstr "准备开始！"
 
-#: src/mp_ui_alerts.cpp:160
+#: src/mp_ui_alerts.cpp:176
 msgid "Game has begun!"
 msgstr "游戏开始！"
 
-#: src/mp_ui_alerts.cpp:170
+#: src/mp_ui_alerts.cpp:186
 msgid "$name has taken control"
 msgstr "$name|接管了控制权"
 
-#: src/mp_ui_alerts.cpp:170
+#: src/mp_ui_alerts.cpp:186
 msgid "Turn changed"
 msgstr "回合改变了"
 
@@ -7767,7 +7690,7 @@ msgstr ""
 msgid "time left for current turn"
 msgstr "本回合剩余时间"
 
-#: src/play_controller.cpp:249 src/replay_controller.cpp:114
+#: src/play_controller.cpp:249
 msgid "current local time"
 msgstr "当前本地时间"
 
@@ -8369,75 +8292,75 @@ msgstr "在$pos"
 msgid "Value: '$value' Previous: '$previous_value'"
 msgstr "当前值：“$value|” 之前值：“$previous_value|”"
 
-#: src/serialization/string_utils.cpp:572
+#: src/serialization/string_utils.cpp:543
 msgid "prefix_milli^m"
 msgstr "m"
 
-#: src/serialization/string_utils.cpp:573
+#: src/serialization/string_utils.cpp:544
 msgid "prefix_micro^µ"
 msgstr "µ"
 
-#: src/serialization/string_utils.cpp:574
+#: src/serialization/string_utils.cpp:545
 msgid "prefix_nano^n"
 msgstr "n"
 
-#: src/serialization/string_utils.cpp:575
+#: src/serialization/string_utils.cpp:546
 msgid "prefix_pico^p"
 msgstr "p"
 
-#: src/serialization/string_utils.cpp:576
+#: src/serialization/string_utils.cpp:547
 msgid "prefix_femto^f"
 msgstr "f"
 
-#: src/serialization/string_utils.cpp:577
+#: src/serialization/string_utils.cpp:548
 msgid "prefix_atto^a"
 msgstr "a"
 
-#: src/serialization/string_utils.cpp:578
+#: src/serialization/string_utils.cpp:549
 msgid "prefix_zepto^z"
 msgstr "z"
 
-#: src/serialization/string_utils.cpp:579
+#: src/serialization/string_utils.cpp:550
 msgid "prefix_yocto^y"
 msgstr "y"
 
-#: src/serialization/string_utils.cpp:591
+#: src/serialization/string_utils.cpp:562
 msgid "prefix_kibi^K"
 msgstr "K"
 
-#: src/serialization/string_utils.cpp:592
+#: src/serialization/string_utils.cpp:563
 msgid "prefix_kilo^k"
 msgstr "k"
 
-#: src/serialization/string_utils.cpp:594
+#: src/serialization/string_utils.cpp:565
 msgid "prefix_mega^M"
 msgstr "M"
 
-#: src/serialization/string_utils.cpp:595
+#: src/serialization/string_utils.cpp:566
 msgid "prefix_giga^G"
 msgstr "G"
 
-#: src/serialization/string_utils.cpp:596
+#: src/serialization/string_utils.cpp:567
 msgid "prefix_tera^T"
 msgstr "T"
 
-#: src/serialization/string_utils.cpp:597
+#: src/serialization/string_utils.cpp:568
 msgid "prefix_peta^P"
 msgstr "P"
 
-#: src/serialization/string_utils.cpp:598
+#: src/serialization/string_utils.cpp:569
 msgid "prefix_exa^E"
 msgstr "E"
 
-#: src/serialization/string_utils.cpp:599
+#: src/serialization/string_utils.cpp:570
 msgid "prefix_zetta^Z"
 msgstr "Z"
 
-#: src/serialization/string_utils.cpp:600
+#: src/serialization/string_utils.cpp:571
 msgid "prefix_yotta^Y"
 msgstr "Y"
 
-#: src/serialization/string_utils.cpp:614
+#: src/serialization/string_utils.cpp:585
 msgid "infix_binary^i"
 msgstr "i"
 
@@ -8574,76 +8497,76 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span>移动力"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span>移动力"
 
-#: src/units/types.cpp:546 src/units/types.hpp:181
+#: src/units/types.cpp:545 src/units/types.hpp:180
 msgid "chaotic"
 msgstr "混沌"
 
-#: src/units/types.cpp:546 src/units/types.hpp:179
+#: src/units/types.cpp:545 src/units/types.hpp:178
 msgid "lawful"
 msgstr "守序"
 
-#: src/units/types.cpp:546 src/units/types.hpp:182
+#: src/units/types.cpp:545 src/units/types.hpp:181
 msgid "liminal"
 msgstr "边缘"
 
-#: src/units/types.cpp:546 src/units/types.hpp:180
+#: src/units/types.cpp:545 src/units/types.hpp:179
 msgid "neutral"
 msgstr "中立"
 
-#: src/units/types.cpp:547 src/units/types.cpp:913
+#: src/units/types.cpp:546 src/units/types.cpp:912
 msgid "female^chaotic"
 msgstr "混沌"
 
-#: src/units/types.cpp:547 src/units/types.cpp:911
+#: src/units/types.cpp:546 src/units/types.cpp:910
 msgid "female^lawful"
 msgstr "守序"
 
-#: src/units/types.cpp:547 src/units/types.cpp:912
+#: src/units/types.cpp:546 src/units/types.cpp:911
 msgid "female^neutral"
 msgstr "中立"
 
-#: src/units/types.cpp:548 src/units/types.cpp:914
+#: src/units/types.cpp:547 src/units/types.cpp:913
 msgid "female^liminal"
 msgstr "边缘"
 
-#: src/units/unit.cpp:1835
+#: src/units/unit.cpp:1854
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|：$effect_description"
 
-#: src/units/unit.cpp:1841
+#: src/units/unit.cpp:1860
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span>生命"
 
-#: src/units/unit.cpp:1851
+#: src/units/unit.cpp:1870
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span>行动数"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span>行动数"
 
-#: src/units/unit.cpp:1857
+#: src/units/unit.cpp:1876
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span>视野"
 
-#: src/units/unit.cpp:1861
+#: src/units/unit.cpp:1880
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span>干扰"
 
-#: src/units/unit.cpp:1866
+#: src/units/unit.cpp:1885
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span>升级所需经验"
 
-#: src/units/unit.cpp:1870
+#: src/units/unit.cpp:1889
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span>每回合攻击数"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span>每回合攻击数"
 
-#: src/units/unit.cpp:1877
+#: src/units/unit.cpp:1896
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span>召回费用"
 
-#: src/units/unit.cpp:2294
+#: src/units/unit.cpp:2296
 msgid "$effect_description per level"
 msgstr "每一等级$effect_description"
 
@@ -8667,7 +8590,7 @@ msgstr "崩前$year|年"
 msgid "$year AF"
 msgstr "崩后$year|年"
 
-#: src/wesnothd_connection.cpp:403
+#: src/wesnothd_connection.cpp:418
 msgid "Disconnected from server."
 msgstr "已与服务器断开链接。"
 
@@ -8690,6 +8613,54 @@ msgstr "隐藏$player的计划"
 #: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr "白板选项"
+
+#, fuzzy
+#~| msgid "Attack"
+#~| msgid_plural "Attacks"
+#~ msgid "Attacks"
+#~ msgstr "攻击手段"
+
+#, fuzzy
+#~| msgid "Recruits"
+#~ msgid "Recruit"
+#~ msgstr "新兵"
+
+#, fuzzy
+#~| msgid "There are no save files to load"
+#~ msgid "There are no corpses available."
+#~ msgstr "没有存档文件供载入"
+
+#~ msgid "registering with password *** and no email address"
+#~ msgstr "以密码***注册，未使用电子邮件地址"
+
+#~ msgid "registering with password *** and email address $email"
+#~ msgstr "以密码***和电子邮件地址$email|注册"
+
+#~ msgid "dropping your username"
+#~ msgstr "正在废弃你的用户名"
+
+#~ msgid "setting $var to $value"
+#~ msgstr "正在设置$var|为$value"
+
+#~ msgid "<password> <email (optional)>"
+#~ msgstr "<密码> <电子邮件（可选）>"
+
+#~ msgid "Register your nickname"
+#~ msgstr "注册你的昵称"
+
+#~ msgid "Drop your nickname."
+#~ msgstr "废弃你的昵称。"
+
+#~ msgid ""
+#~ "Update details for your nickname. For possible details see '/details'."
+#~ msgstr "更新你的昵称的详细信息。可以录入的详细信息种类请参见‘/details’。"
+
+#~ msgid "<detail> <value>"
+#~ msgstr "<详细信息类型> <值>"
+
+#~ msgid "Request a list of details you can set for your registered nickname."
+#~ msgstr ""
+#~ "你可以为你注册好的昵称录入详细信息，此命令请求这些可用的详细信息类型列表。"
 
 #, fuzzy
 #~| msgid "Connection timed out"

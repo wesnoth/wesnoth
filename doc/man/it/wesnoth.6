@@ -102,8 +102,8 @@ informazioni sulla shell di comando).
 abilita alcuni meccanismi di debug Lua
 .TP 
 \fB\-e[\fP\fIfile\fP\fB],\ \-\-editor[\fP\fI=file\fP\fB]\fP
-start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
-to \fB\-l\fP \fB\-\-load\fP.
+avvia il gioco direttamente dall’editor per le partite. Se \fIfile\fP è
+specificato, equivale a \fB\-l\fP \fB\-\-load\fP.
 .TP 
 \fB\-\-fps\fP
 mostra, in un angolo dello schermo, il numero di immagini per secondo che il
@@ -156,8 +156,9 @@ fornisce un elenco dei log domains definiti ( soltanto quelli contenenti
 \fIfiltro\fP, se usata) e termina
 .TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
-the number of frames per second the game can show, the value should be
-between \fB1\fP and \fB1000\fP, the default is the monitor's refresh rate.
+il numero di immagini al secondo che il gioco può mostrare, il valore
+dovrebbe essere compreso tra \fI1\fP e \fI1000\fP; il valore predefinito è pari
+alla frequenza di aggiornamento del monitor.
 .TP 
 \fB\-m, \-\-multiplayer\fP
 esegue una partita multigiocatore. Ci sono opzioni aggiuntive che possono
@@ -207,13 +208,14 @@ eseguita come una coroutine e periodicamente risvegliata con gli
 aggiornamenti.
 .TP 
 \fB\-p,\ \-\-preprocess\fP\fI\ file/cartella sorgente\fP\fB\ \fP\fIcartella destinazione\fP
-preprocesses a specified file/folder. For each file(s) a plain .cfg file and
-a processed .cfg file will be written in specified target directory. If a
-folder is specified, it will be preprocessed recursively based on the known
-preprocessor rules. The common macros from the "data/core/macros" directory
-will be preprocessed before the specified resources.  Example: \fB\-p
-~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
-preprocessor visit:
+pre\-processa uno specifico file/cartella. Per ogni file, saranno scritti
+nella directory destinazione specificata un file .cfg piatto e un file .cfg
+processato. Se viene specificata una cartella, sarà pre\-processata
+ricorsivamente in base alle regole di pre\-processing note. Le macro comuni
+della directory "data/core/macros" saranno pre\-processate prima delle
+risorse specificate. Esempio: \fB\-p ~/wesnoth/data/campaigns/tutorial
+~/result\fP. Per ulteriori dettagli a riguardo de pre\-processore puoi
+consultare
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
@@ -250,20 +252,20 @@ specifica il \fInometuente\fP con il quale connettersi al proxy.
 specifica la \fIpassword\fP con la quale connettersi al proxy.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
-sets the screen resolution. Example: \fB\-r\fP \fB800x600\fP.
+imposta la risoluzione dello schermo. Esempio:\fB\-r\fP \fB800x600\fP.
 .TP 
 \fB\-\-render\-image\fP\fI\ immagine\fP\fB\ \fP\fIoutput\fP
-takes a valid wesnoth 'image path string' with image path functions, and
-outputs to a .png file. Image path functions are documented at
-https://wiki.wesnoth.org/ImagePathFunctionWML.
+prenda una stringa valida 'image path string' con funzioni immagine per
+wesnoth e restituisce un file in formato .png. Le funzioni per cartella
+immagini sono documentate in https://wiki.wesnoth.org/ImagePathFunctionWML.
 .TP 
 \fB\-R,\ \-\-report\fP
 inizializza le cartelle di gioco, stampa le informazioni di compilazione
 utilizzate per i report dei bugs, indi esce.
 .TP 
-\fB\-\-rng\-seed\fP\fI\ number\fP
-seeds the random number generator with \fInumber\fP.  Example: \fB\-\-rng\-seed\fP
-\fB0\fP.
+\fB\-\-rng\-seed\fP\fI\ seme\fP
+inizializza il generatore di numeri casuali con il numero \fIseme\fP. Ad
+esempio:\fB\-\-rng\-seed\fP \fB0\fP.
 .TP 
 \fB\-\-screenshot\fP\fI\ mappa\fP\fB\ \fP\fIoutput\fP
 salva una schermata della \fImappa\fP nel file \fIoutput\fP senza inizializzare
@@ -274,8 +276,8 @@ uno schermo.
 client.
 .TP 
 \fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
-connects to the specified host if any, otherwise connect to the first server
-in preferences. Example: \fB\-\-server\fP \fBserver.wesnoth.org\fP.
+si connette al server specificato se fornito, se no si connette al primo
+server delle preferenze. Esempio:\fB\-\-server\fP \fBserver.wesnoth.org\fP.
 .TP 
 \fB\-\-showgui\fP
 esegue il gioco con l’interfaccia grafica, sovrascrivendo ogni implicito
@@ -368,7 +370,7 @@ Le opzioni multigiocatore specifiche delle squadre sono indicate da
 squadra. Normalmente è 1 o 2 ma dipende dal numero di giocatori possibili
 nello scenario scelto.
 .TP 
-\fB\-\-ai\-config\fP\fI\ number\fP\fB:\fP\fIvalue\fP
+\fB\-\-ai_config\fP\fI\ numero\fP\fB:\fP\fIvalore\fP
 seleziona un file di configurazione da caricare per il controllo dell’IA di
 questa squadra.
 .TP 
@@ -389,9 +391,9 @@ usa questa opzione per giocare nell’era selezionata invece che in quella
 \fBdata/multiplayer/eras.cfg\fP.
 .TP 
 \fB\-\-exit\-at\-end\fP
-exits once the scenario is over, without displaying victory/defeat dialog
-which normally requires the user to click End Scenario.  This is also used
-for scriptable benchmarking.
+esce quando lo scenario è finito, senza mostrare la finestra delle
+vittorie/sconfitte, che normalmente richiede che l’utente prema il pulsante
+OK. Anche questa opzione è usata per eseguire dei benchmark tramite script.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
 ignora le impostazioni della mappa, utilizza invece i valori di default.

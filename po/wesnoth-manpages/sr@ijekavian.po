@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manpages\n"
-"POT-Creation-Date: 2019-07-18 15:50+0300\n"
+"POT-Creation-Date: 2019-08-27 22:41+0300\n"
 "PO-Revision-Date: 2012-01-14 14:50+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -1458,7 +1458,7 @@ msgid ""
 msgstr "поставља број потеза за изабрани сценарио. Подразумијевано је B<50>."
 
 #. type: SH
-#: doc/man/wesnoth.6:505 doc/man/wesnothd.6:265
+#: doc/man/wesnoth.6:505 doc/man/wesnothd.6:257
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr "ИЗЛАЗНО СТАЊЕ"
@@ -1491,7 +1491,7 @@ msgid ""
 msgstr ""
 
 #. type: SH
-#: doc/man/wesnoth.6:523 doc/man/wesnothd.6:269
+#: doc/man/wesnoth.6:523 doc/man/wesnothd.6:261
 #, no-wrap
 msgid "AUTHOR"
 msgstr "АУТОР"
@@ -1520,20 +1520,20 @@ msgstr ""
 "E<lt>cyril@bouthors.orgE<gt>."
 
 #. type: Plain text
-#: doc/man/wesnoth.6:532 doc/man/wesnothd.6:276
+#: doc/man/wesnoth.6:532 doc/man/wesnothd.6:268
 #, fuzzy
 #| msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgid "Visit the official homepage: https://www.wesnoth.org/"
 msgstr "Посјетите званичну домаћу страницу: http://www.wesnoth.org/"
 
 #. type: SH
-#: doc/man/wesnoth.6:533 doc/man/wesnothd.6:277
+#: doc/man/wesnoth.6:533 doc/man/wesnothd.6:269
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "АУТОРСКА ПРАВА"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:536 doc/man/wesnothd.6:280
+#: doc/man/wesnoth.6:536 doc/man/wesnothd.6:272
 #, fuzzy
 #| msgid ""
 #| "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
@@ -1543,7 +1543,7 @@ msgstr ""
 "E<lt>davidnwhite@verizon.netE<gt>."
 
 #. type: Plain text
-#: doc/man/wesnoth.6:539 doc/man/wesnothd.6:283
+#: doc/man/wesnoth.6:539 doc/man/wesnothd.6:275
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -1554,7 +1554,7 @@ msgstr ""
 "за КОМЕРЦИЈАЛНУ ВРИЈЕДНОСТ или ИСПУЊАВАЊЕ ОДРЕЂЕНЕ ПОТРЕБЕ."
 
 #. type: SH
-#: doc/man/wesnoth.6:540 doc/man/wesnothd.6:284
+#: doc/man/wesnoth.6:540 doc/man/wesnothd.6:276
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "ПОГЛЕДАТИ ЈОШ"
@@ -2048,23 +2048,15 @@ msgstr "Примјер: B<versions_accepted=\"*\"> прихвата било к�
 #. type: TP
 #: doc/man/wesnothd.6:168
 #, no-wrap
-msgid "B<user_handler>"
-msgstr "B<user_handler>"
+msgid "B<deny_unregistered_login>"
+msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:173
 msgid ""
-"The name of the user handler to use. Currently available user handlers are "
-"B<forum> (to connect wesnothd to a phpbb forum database) and B<sample> (a "
-"sample implementation of the user handler interface, if you use this on "
-"anything real you are insane). The default value is B<forum>. You must also "
-"add a B<[user_handler]> section, see below."
+"Whether to prevent users who are not registered with the B<user_handler> "
+"being used from logging in. (default: false)"
 msgstr ""
-"Име руковаоца корисницима. Тренутно доступни су B<forum> (сервер се повезује "
-"са пхпББ базом података форума) и B<sample> (примјерна изведба сучеља "
-"руковаоца корисницима, луди сте ако ово употријебите негдје заозбиљно). "
-"Подразумијевана вриједност је B<forum>. Такође морате додати одјељак "
-"B<[user_handler]>, в. испод."
 
 #. type: SS
 #: doc/man/wesnothd.6:174
@@ -2171,11 +2163,19 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:221
+#, fuzzy
+#| msgid ""
+#| "B<[user_handler]> Configures the user handler. Available keys vary "
+#| "depending on which user handler is set with the B<user_handler> key. If "
+#| "no B<[user_handler]> section is present in the configuration the server "
+#| "will run without any nick registration service."
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
 "B<[user_handler]> section is present in the configuration the server will "
-"run without any nick registration service."
+"run without any nick registration service. All additional tables that are "
+"needed for the forum_user_handler to function can be found in "
+"table_definitions.sql in the Wesnoth source repository."
 msgstr ""
 "B<[user_handler]> подешава руковалац корисницима. Доступност кључева зависи "
 "од тога који је руковалац постављен кључем B<user_handler>. Ако у постави "
@@ -2190,8 +2190,10 @@ msgstr "B<db_host>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:225
-msgid "(for user_handler=forum) The hostname of the database server"
-msgstr "(за user_handler=forum) име домаћина сервера базе података"
+#, fuzzy
+#| msgid "The hostname of the mail server"
+msgid "The hostname of the database server"
+msgstr "Име домаћина удаљеног сервера"
 
 #. type: TP
 #: doc/man/wesnothd.6:225
@@ -2201,8 +2203,10 @@ msgstr "B<db_name>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:228
-msgid "(for user_handler=forum) The name of the database"
-msgstr "(за user_handler=forum) име базе података"
+#, fuzzy
+#| msgid "The hostname of the mail server"
+msgid "The name of the database"
+msgstr "Име домаћина удаљеног сервера"
 
 #. type: TP
 #: doc/man/wesnothd.6:228
@@ -2212,9 +2216,11 @@ msgstr "B<db_user>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:231
-msgid ""
-"(for user_handler=forum) The name of the user under which to log into the "
-"database"
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the user under which to log into the "
+#| "database"
+msgid "The name of the user under which to log into the database"
 msgstr ""
 "(за user_handler=forum) име корисника под којим се пријављује у базу података"
 
@@ -2226,8 +2232,10 @@ msgstr "B<db_password>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:234
-msgid "(for user_handler=forum) This user's password"
-msgstr "(за user_handler=forum) лозинка задатог корисника"
+#, fuzzy
+#| msgid "This user's password."
+msgid "This user's password"
+msgstr "Корисникова лозинка."
 
 #. type: TP
 #: doc/man/wesnothd.6:234
@@ -2237,10 +2245,14 @@ msgstr "B<db_users_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:237
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the table in which your phpbb forums "
+#| "saves its user data. Most likely this will be E<lt>table-"
+#| "prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
-"(for user_handler=forum) The name of the table in which your phpbb forums "
-"saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
-"(e.g. phpbb3_users)."
+"The name of the table in which your phpbb forums saves its user data. Most "
+"likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgstr ""
 "(за user_handler=forum) име табеле у којој пхпББ форуми уписују податке о "
 "корисницима. Највјероватније ће то бити E<lt>prefiks-tabeleE<gt>_users (нпр. "
@@ -2253,101 +2265,88 @@ msgid "B<db_extra_table>"
 msgstr "B<db_extra_table>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:241
+#: doc/man/wesnothd.6:240
 msgid ""
-"(for user_handler=forum) The name of the table in which wesnothd will save "
-"its own data about users. You will have to create this table manually, e.g.: "
-"B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) PRIMARY KEY, "
-"user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
-"NOT NULL DEFAULT 0);>"
+"The name of the table in which wesnothd will save its own data about users."
 msgstr ""
-"(за user_handler=forum) име табеле у коју wesnothd уписује своје податке о "
-"корисницима. Ову табелу мораћете ручно да направите, нпр.: B<CREATE TABLE "
-"E<lt>ime-tabeleE<gt>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT "
-"UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT "
-"0);>"
 
 #. type: TP
-#: doc/man/wesnothd.6:241
+#: doc/man/wesnothd.6:240
+#, fuzzy, no-wrap
+#| msgid "B<db_users_table>"
+msgid "B<db_game_info_table>"
+msgstr "B<db_users_table>"
+
+#. type: Plain text
+#: doc/man/wesnothd.6:243
+msgid ""
+"The name of the table in which wesnothd will save its own data about games."
+msgstr ""
+
+#. type: TP
+#: doc/man/wesnothd.6:243
+#, fuzzy, no-wrap
+#| msgid "B<db_users_table>"
+msgid "B<db_game_player_info_table>"
+msgstr "B<db_users_table>"
+
+#. type: Plain text
+#: doc/man/wesnothd.6:246
+msgid ""
+"The name of the table in which wesnothd will save its own data about the "
+"players in a game."
+msgstr ""
+
+#. type: TP
+#: doc/man/wesnothd.6:246
 #, no-wrap
-msgid "B<user_expiration>"
-msgstr "B<user_expiration>"
+msgid "B<db_game_modification_info_table>"
+msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:244
+#: doc/man/wesnothd.6:249
 msgid ""
-"(for user_handler=sample) The time after which a registered nick expires (in "
-"days)."
+"The name of the table in which wesnothd will save its own data about the "
+"modifications used in a game."
 msgstr ""
-"(за user_handler=sample) вријеме по којем регистровани надимак истиче (у "
-"данима)."
-
-#. type: Plain text
-#: doc/man/wesnothd.6:248
-msgid ""
-"B<[mail]> Configures an SMTP server through which the user handler can send "
-"mail. Currently only used by the sample user handler."
-msgstr ""
-"B<[mail]> подешава СМТП сервер кроз који руковалац корисницима шаље пошту. "
-"Тренутно само за примјерни руковалац."
 
 #. type: TP
 #: doc/man/wesnothd.6:249
-#, no-wrap
-msgid "B<server>"
-msgstr "B<server>"
+#, fuzzy, no-wrap
+#| msgid "B<db_users_table>"
+msgid "B<db_user_group_table>"
+msgstr "B<db_users_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:252
-msgid "The hostname of the mail server"
-msgstr "Име домаћина удаљеног сервера"
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the table in which your phpbb forums "
+#| "saves its user data. Most likely this will be E<lt>table-"
+#| "prefixE<gt>_users (e.g. phpbb3_users)."
+msgid ""
+"The name of the table in which your phpbb forums saves its user group data. "
+"Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
+"phpbb3_user_group)."
+msgstr ""
+"(за user_handler=forum) име табеле у којој пхпББ форуми уписују податке о "
+"корисницима. Највјероватније ће то бити E<lt>prefiks-tabeleE<gt>_users (нпр. "
+"phpbb3_users)."
 
 #. type: TP
 #: doc/man/wesnothd.6:252
 #, no-wrap
-msgid "B<username>"
-msgstr "B<username>"
+msgid "B<mp_mod_group>"
+msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:255
-msgid "The user name under which to log into the mail server."
-msgstr "Корисничко име за пријављивање на поштански сервер."
-
-#. type: TP
-#: doc/man/wesnothd.6:255
-#, no-wrap
-msgid "B<password>"
-msgstr "B<password>"
+msgid ""
+"The ID of the forum group to be considered as having moderation authority."
+msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:258
-msgid "This user's password."
-msgstr "Корисникова лозинка."
-
-#. type: TP
-#: doc/man/wesnothd.6:258
-#, no-wrap
-msgid "B<from_address>"
-msgstr "B<from_address>"
-
-#. type: Plain text
-#: doc/man/wesnothd.6:261
-msgid "The reply-to address of you mail."
-msgstr "Адреса за одговоре на вашу пошту."
-
-#. type: TP
-#: doc/man/wesnothd.6:261
-#, no-wrap
-msgid "B<mail_port>"
-msgstr "B<mail_port>"
-
-#. type: Plain text
-#: doc/man/wesnothd.6:264
-msgid "The port on which your mail server is running. Default is 25."
-msgstr "Порт на којем слуша поштански сервер. Подразумијевано 25."
-
-#. type: Plain text
-#: doc/man/wesnothd.6:268
+#: doc/man/wesnothd.6:260
 msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
@@ -2356,7 +2355,7 @@ msgstr ""
 "на грешку у опцијама командне линије."
 
 #. type: Plain text
-#: doc/man/wesnothd.6:274
+#: doc/man/wesnothd.6:266
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
@@ -2372,11 +2371,97 @@ msgstr ""
 "E<lt>cyril@bouthors.orgE<gt>."
 
 #. type: Plain text
-#: doc/man/wesnothd.6:286
+#: doc/man/wesnothd.6:279
 #, fuzzy
 #| msgid "B<wesnoth>(6)."
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)."
+
+#, no-wrap
+#~ msgid "B<user_handler>"
+#~ msgstr "B<user_handler>"
+
+#~ msgid ""
+#~ "The name of the user handler to use. Currently available user handlers "
+#~ "are B<forum> (to connect wesnothd to a phpbb forum database) and "
+#~ "B<sample> (a sample implementation of the user handler interface, if you "
+#~ "use this on anything real you are insane). The default value is B<forum>. "
+#~ "You must also add a B<[user_handler]> section, see below."
+#~ msgstr ""
+#~ "Име руковаоца корисницима. Тренутно доступни су B<forum> (сервер се "
+#~ "повезује са пхпББ базом података форума) и B<sample> (примјерна изведба "
+#~ "сучеља руковаоца корисницима, луди сте ако ово употријебите негдје "
+#~ "заозбиљно). Подразумијевана вриједност је B<forum>. Такође морате додати "
+#~ "одјељак B<[user_handler]>, в. испод."
+
+#~ msgid "(for user_handler=forum) The hostname of the database server"
+#~ msgstr "(за user_handler=forum) име домаћина сервера базе података"
+
+#~ msgid "(for user_handler=forum) The name of the database"
+#~ msgstr "(за user_handler=forum) име базе података"
+
+#~ msgid "(for user_handler=forum) This user's password"
+#~ msgstr "(за user_handler=forum) лозинка задатог корисника"
+
+#~ msgid ""
+#~ "(for user_handler=forum) The name of the table in which wesnothd will "
+#~ "save its own data about users. You will have to create this table "
+#~ "manually, e.g.: B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) "
+#~ "PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
+#~ "user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
+#~ msgstr ""
+#~ "(за user_handler=forum) име табеле у коју wesnothd уписује своје податке "
+#~ "о корисницима. Ову табелу мораћете ручно да направите, нпр.: B<CREATE "
+#~ "TABLE E<lt>ime-tabeleE<gt>(username VARCHAR(255) PRIMARY KEY, "
+#~ "user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator "
+#~ "TINYINT(4) NOT NULL DEFAULT 0);>"
+
+#, no-wrap
+#~ msgid "B<user_expiration>"
+#~ msgstr "B<user_expiration>"
+
+#~ msgid ""
+#~ "(for user_handler=sample) The time after which a registered nick expires "
+#~ "(in days)."
+#~ msgstr ""
+#~ "(за user_handler=sample) вријеме по којем регистровани надимак истиче (у "
+#~ "данима)."
+
+#~ msgid ""
+#~ "B<[mail]> Configures an SMTP server through which the user handler can "
+#~ "send mail. Currently only used by the sample user handler."
+#~ msgstr ""
+#~ "B<[mail]> подешава СМТП сервер кроз који руковалац корисницима шаље "
+#~ "пошту. Тренутно само за примјерни руковалац."
+
+#, no-wrap
+#~ msgid "B<server>"
+#~ msgstr "B<server>"
+
+#, no-wrap
+#~ msgid "B<username>"
+#~ msgstr "B<username>"
+
+#~ msgid "The user name under which to log into the mail server."
+#~ msgstr "Корисничко име за пријављивање на поштански сервер."
+
+#, no-wrap
+#~ msgid "B<password>"
+#~ msgstr "B<password>"
+
+#, no-wrap
+#~ msgid "B<from_address>"
+#~ msgstr "B<from_address>"
+
+#~ msgid "The reply-to address of you mail."
+#~ msgstr "Адреса за одговоре на вашу пошту."
+
+#, no-wrap
+#~ msgid "B<mail_port>"
+#~ msgstr "B<mail_port>"
+
+#~ msgid "The port on which your mail server is running. Default is 25."
+#~ msgstr "Порт на којем слуша поштански сервер. Подразумијевано 25."
 
 #, fuzzy
 #~| msgid ""

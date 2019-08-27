@@ -142,11 +142,9 @@ wesnoth のバージョンに一致する)
 .br
 例: \fBversions_accepted="*"\fP で、どのようなバージョン文字列も受けつける。
 .TP 
-\fBuser_handler\fP
-使用するユーザーハンドラの名前。現在利用可能なユーザーハンドラは \fBforum\fP (wesnothd を phpbb
-フォーラムデータベースに接続する) と \fBsample\fP
-(ユーザーハンドラインターフェースのサンプル実装。もし何かしら本当にこれを使用するならあなたは発狂する)。既定値は \fBforum\fP。下記の
-\fB[user_handler]\fP セクションも追加しなければならならい。
+\fBdeny_unregistered_login\fP
+Whether to prevent users who are not registered with the \fBuser_handler\fP
+being used from logging in. (default: false)
 .
 .SS グローバルタグ:
 .
@@ -181,55 +179,52 @@ Y (年) で %d は数字。もし時間修飾子がない場合は分(m)が指�
 \fB[redirect]\fP と同じキーを受けつける。
 .RE
 .P
-\fB[user_handler]\fP でユーザーハンドラを指定する。利用可能なキーは \fBuser_handler\fP
-キーに設定されているユーザーハンドラによって変化する。もし \fB[user_handler]\fP
-セクションが設定中に存在しなければ、サーバーはニックネーム登録サービスなしで実行される。
+\fB[user_handler]\fP Configures the user handler. Available keys vary depending
+on which user handler is set with the \fBuser_handler\fP key. If no
+\fB[user_handler]\fP section is present in the configuration the server will
+run without any nick registration service. All additional tables that are
+needed for the forum_user_handler to function can be found in
+table_definitions.sql in the Wesnoth source repository.
 .RS
 .TP 
 \fBdb_host\fP
-(user_handler=forum のとき) データベースサーバーのホスト名
+The hostname of the database server
 .TP 
 \fBdb_name\fP
-(user_handler=forum のとき) データベース名
+The name of the database
 .TP 
 \fBdb_user\fP
-(user_handler=forum のとき) データベースにログインするユーザー名
+The name of the user under which to log into the database
 .TP 
 \fBdb_password\fP
-(user_handler=forum のとき) このユーザーのパスワード
+This user's password
 .TP 
 \fBdb_users_table\fP
-(user_handler=forum のとき) あなたの phpbb フォーラムがユーザーデータを保存するテーブル名。最もありそうなのは
-<table\-prefix>_users (例えば phpbb3_users)。
+The name of the table in which your phpbb forums saves its user data. Most
+likely this will be <table\-prefix>_users (e.g. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
-(user_handler=forum のとき) wesnothd
-がユーザーについてのデータを保存するテーブル名。このテーブルは手動で作成しなければならない。例: \fBCREATE TABLE
-<table\-name>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
-UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
-0);\fP
+The name of the table in which wesnothd will save its own data about users.
 .TP 
-\fBuser_expiration\fP
-(user_handler=sample のとき) 登録されたニックネームが期限切れになる時間(単位は日)。
+\fBdb_game_info_table\fP
+The name of the table in which wesnothd will save its own data about games.
+.TP 
+\fBdb_game_player_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+players in a game.
+.TP 
+\fBdb_game_modification_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+modifications used in a game.
+.TP 
+\fBdb_user_group_table\fP
+The name of the table in which your phpbb forums saves its user group
+data. Most likely this will be <table\-prefix>_user_group
+(e.g. phpbb3_user_group).
+.TP 
+\fBmp_mod_group\fP
+The ID of the forum group to be considered as having moderation authority.
 .RE
-.P
-\fB[mail]\fP で SMTP サーバユーザーハンドラがメールを送れるサーバーを設定する。現在はサンプルのユーザーハンドラとしてのみ使用される。
-.RS
-.TP 
-\fBserver\fP
-メールサーバーのホスト名
-.TP 
-\fBusername\fP
-メールサーバーにログインするユーザー名。
-.TP 
-\fBpassword\fP
-このユーザーのパスワード。
-.TP 
-\fBfrom_address\fP
-あなたのメールの返信先アドレス。
-.TP 
-\fBmail_port\fP
-あなたのメールサーバーが動作しているポート。既定値は 25。
 .
 .SH 終了ステータス
 .
@@ -257,3 +252,4 @@ for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 .SH 関連項目
 .
 \fBwesnoth\fP(6)
+

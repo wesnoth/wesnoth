@@ -169,13 +169,9 @@ correspondant à celle de wesnoth).
 .br
 Exemple\ : \fBversions_accepted="*"\fP autorise tout type de version.
 .TP 
-\fBuser_handler\fP
-Nom de l'identifiant utilisateur à utiliser. Les identifiants disponibles
-sont \fBforum\fP (pour connecter wesnothd à une base de données pour forum
-phpbb) et \fBsample\fP (une implémentation minimale de l'interface
-utilisateur\ ; courrez vous faire soigner si vous l'utilisez). La valeur par
-défaut est \fBforum\fP. Vous devrez aussi ajouter une section \fB[user_handler]\fP
-comme indiqué ci\-dessous.
+\fBdeny_unregistered_login\fP
+Whether to prevent users who are not registered with the \fBuser_handler\fP
+being used from logging in. (default: false)
 .
 .SS "Balises globales\ : "
 .
@@ -215,60 +211,52 @@ de rediriger les requêtes des clients vers le serveur spécifié. Fonctionne
 comme \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configure l'identifiant utilisateur. Les options
-disponibles dépendent de la configuration de la clé \fBuser_handler\fP. S'il
-n'y a aucune section \fB [user_handler]\fP dans la configuration, le serveur
-fonctionnera sans aucun service d'enregistrement d'alias.
+\fB[user_handler]\fP Configures the user handler. Available keys vary depending
+on which user handler is set with the \fBuser_handler\fP key. If no
+\fB[user_handler]\fP section is present in the configuration the server will
+run without any nick registration service. All additional tables that are
+needed for the forum_user_handler to function can be found in
+table_definitions.sql in the Wesnoth source repository.
 .RS
 .TP 
 \fBdb_host\fP
-(pour user_handler=forum) Nom d'hôte du serveur de base de données
+The hostname of the database server
 .TP 
 \fBdb_name\fP
-(pour user_handler=forum) Nom de la base de donnée
+The name of the database
 .TP 
 \fBdb_user\fP
-(pour user_handler=forum) Nom d'utilisateur se connectant à la base de
-données
+The name of the user under which to log into the database
 .TP 
 \fBdb_password\fP
-(pour user_handler=forum) Mot de passe de l'utilisateur
+This user's password
 .TP 
 \fBdb_users_table\fP
-(pour user_handler=forum) Nom de la table des données utilisateurs de vos
-forums phpbb, probablement sous la forme
-<table\-prefix>_users. Exemple\ : phpbb3_users.
+The name of the table in which your phpbb forums saves its user data. Most
+likely this will be <table\-prefix>_users (e.g. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
-(pour user_handler=forum) Nom de la table dans laquelle wesnothd
-sauvegardera ses données utilisateurs. Vous devrez créer cette table
-manuellement. Exemple\ : CREATE TABLE <table\-name>(username
-VARCHAR(255) PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0,
-user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);
+The name of the table in which wesnothd will save its own data about users.
 .TP 
-\fBuser_expiration\fP
-(for user_handler=sample) Temps de validité de l'alias ('nick', en anglais),
-en jours.
+\fBdb_game_info_table\fP
+The name of the table in which wesnothd will save its own data about games.
+.TP 
+\fBdb_game_player_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+players in a game.
+.TP 
+\fBdb_game_modification_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+modifications used in a game.
+.TP 
+\fBdb_user_group_table\fP
+The name of the table in which your phpbb forums saves its user group
+data. Most likely this will be <table\-prefix>_user_group
+(e.g. phpbb3_user_group).
+.TP 
+\fBmp_mod_group\fP
+The ID of the forum group to be considered as having moderation authority.
 .RE
-.P
-\fB[mail]\fP Configure un serveur SMTP pour permettre à l'utilisateur d'envoyer
-des mails. Actuellement uniquement utilisé pour l'identifiant 'sample'.
-.RS
-.TP 
-\fBserver\fP
-Nom d'hôte du serveur mail
-.TP 
-\fBusername\fP
-Nom d'utilisateur utilisé pour vous connecter au serveur mail.
-.TP 
-\fBpassword\fP
-Mot de passe de cet utilisateur
-.TP 
-\fBfrom_address\fP
-Adresse de réponse de votre mail.
-.TP 
-\fBmail_port\fP
-Port de votre serveur mail (par défaut\ : 25).
 .
 .SH "STATUT DE SORTIE"
 .
@@ -298,3 +286,4 @@ UTILISATION PARTICULIÈRE.
 .SH "VOIR AUSSI"
 .
 \fBwesnoth\fP(6)
+

@@ -84,8 +84,7 @@ Deprecated, use \fB\-\-userdata\-path\fP.
 開啟一些 Lua 偵錯機制
 .TP 
 \fB\-e[\fP\fIfile\fP\fB],\ \-\-editor[\fP\fI=file\fP\fB]\fP
-start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
-to \fB\-l\fP \fB\-\-load\fP.
+啟動遊戲內建的地圖編輯器。如果指定 \fIfile\fP，則等同 \fB\-l\fP \fB\-\-load\fP。
 .TP 
 \fB\-\-fps\fP
 在螢幕一角的顯示游戲幀幅數。
@@ -122,8 +121,7 @@ to \fB\-l\fP \fB\-\-load\fP.
 列表預設日誌網域（只列出 \fIfilter\fP 的日誌網域）及退出
 .TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
-the number of frames per second the game can show, the value should be
-between \fB1\fP and \fB1000\fP, the default is the monitor's refresh rate.
+遊戲每秒能顯示的幀數，數值為 \fB1\fP 至 \fB1000\fP 之間，預設為螢幕刷新率。
 .TP 
 \fB\-m, \-\-multiplayer\fP
 執行一個多人對戰游戲。有更多選項可以與 \fB\-\-multiplayer\fP 一起使用，範例如下。
@@ -164,14 +162,11 @@ Bug。部分確認為穩定的功能即使不開啟此功能也會啟用。
 文件應該傳回一個函數，該函數將運行且週期性地喚醒並更新。
 .TP 
 \fB\-p,\ \-\-preprocess\fP\fI\ source\-file/folder\fP\fB\ \fP\fItarget\-directory\fP
-preprocesses a specified file/folder. For each file(s) a plain .cfg file and
-a processed .cfg file will be written in specified target directory. If a
-folder is specified, it will be preprocessed recursively based on the known
-preprocessor rules. The common macros from the "data/core/macros" directory
-will be preprocessed before the specified resources.  Example: \fB\-p
-~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
-preprocessor visit:
-https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
+預先處理指定的檔案/資料夾。每個檔案未處理及已處理的 .cfg
+檔將會寫入於指定的目標目錄中。如果指定的是資料夾，將會按照處理規則預先處理。"data/core/macros"
+目錄裡的巨集指令在指定資源之前就會預先處理。例如：\fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP
+預先處理器更詳細的資訊請參閱
+https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor。
 .TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
 \fB\-\-preprocess\fP 指令中用逗號來定義列表。如果在列表中出現 \fBSKIP_CORE\fP 則 "data/core" 目錄將不會被預先處理。
@@ -200,19 +195,17 @@ https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 指定用於登入代理伺服器的 \fIpassword\fP。
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
-sets the screen resolution. Example: \fB\-r\fP \fB800x600\fP.
+設定螢幕解析度。例如：\fB\-r\fP \fB800x600\fP。
 .TP 
 \fB\-\-render\-image\fP\fI\ image\fP\fB\ \fP\fIoutput\fP
-takes a valid wesnoth 'image path string' with image path functions, and
-outputs to a .png file. Image path functions are documented at
-https://wiki.wesnoth.org/ImagePathFunctionWML.
+取一個包含圖形路徑函數的韋諾 '圖形路徑字串'值，並輸出一個 .png 檔。圖形路徑函數的文件可參閱
+https://wiki.wesnoth.org/ImagePathFunctionWML。
 .TP 
 \fB\-R,\ \-\-report\fP
 初始化遊戲目錄，建構並輸出回報臭蟲的訊息，退出。
 .TP 
 \fB\-\-rng\-seed\fP\fI\ number\fP
-seeds the random number generator with \fInumber\fP.  Example: \fB\-\-rng\-seed\fP
-\fB0\fP.
+包含數字 \fInumber\fP 的隨機種子生成器。例如：\fB\-\-rng\-seed\fP \fB0\fP。
 .TP 
 \fB\-\-screenshot\fP\fI\ map\fP\fB\ \fP\fIoutput\fP
 不初始化螢幕的情況下將 \fImap\fP 螢幕截圖儲存至 \fIoutput\fP。
@@ -221,8 +214,7 @@ seeds the random number generator with \fInumber\fP.  Example: \fB\-\-rng\-seed\
 （實驗性）指定一個包含控制客戶端 Lua 腳本的 \fIfile\fP。
 .TP 
 \fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
-connects to the specified host if any, otherwise connect to the first server
-in preferences. Example: \fB\-\-server\fP \fBserver.wesnoth.org\fP.
+如果指定了主機的話，連接到指定的主機。否則，連接到偏好設定中的第一個伺服器。例如：\fB\-\-server\fP \fBserver.wesnoth.org\fP。
 .TP 
 \fB\-\-showgui\fP
 以圖形界面的方式執行遊戲，覆蓋任何 \fB\-\-nogui\fP。
@@ -310,9 +302,7 @@ selects the controller for this side. Available values: \fBhuman\fP, \fBai\fP an
 檔案中描述。
 .TP 
 \fB\-\-exit\-at\-end\fP
-exits once the scenario is over, without displaying victory/defeat dialog
-which normally requires the user to click End Scenario.  This is also used
-for scriptable benchmarking.
+當章節結束時直接退出而不顯示需要玩家點選'結束章節'的勝利/失敗對話框。這個選項也可以用在腳本化的性能基準測試。
 .TP 
 \fB\-\-ignore\-map\-settings\fP
 不使用地圖設定，而使用預設值。

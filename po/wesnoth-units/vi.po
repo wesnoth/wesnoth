@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-07-18 12:51 UTC\n"
+"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
 "PO-Revision-Date: 2014-06-24 22:42+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -61,15 +61,15 @@ msgstr "mực"
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Guardian.cfg:27
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Sentinel.cfg:28
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Warden.cfg:27
-#: data/core/units/dunefolk/Apothecary.cfg:27
-#: data/core/units/dunefolk/Cataphract.cfg:31
-#: data/core/units/dunefolk/Herbalist.cfg:25
-#: data/core/units/dunefolk/Marauder.cfg:31
-#: data/core/units/dunefolk/Piercer.cfg:34
-#: data/core/units/dunefolk/Raider.cfg:27 data/core/units/dunefolk/Rider.cfg:22
-#: data/core/units/dunefolk/Sunderer.cfg:29
+#: data/core/units/dunefolk/Alchemist.cfg:31
+#: data/core/units/dunefolk/Apothecary.cfg:32
+#: data/core/units/dunefolk/Cataphract.cfg:28
+#: data/core/units/dunefolk/Herbalist.cfg:33
+#: data/core/units/dunefolk/Luminary.cfg:34
+#: data/core/units/dunefolk/Rider.cfg:22
+#: data/core/units/dunefolk/Sunderer.cfg:27
 #: data/core/units/dunefolk/Swiftrider.cfg:22
-#: data/core/units/dunefolk/Windrider.cfg:23
+#: data/core/units/dunefolk/Windrider.cfg:27
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
 msgid "mace"
 msgstr "chùy"
@@ -107,22 +107,6 @@ msgstr "chùy"
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:48
 msgid "staff"
 msgstr "gậy"
-
-#. [attack]: type=impact
-#: data/campaigns/Delfadors_Memoirs/units/Wose_Shaman.cfg:34
-#: data/campaigns/Wings_of_Victory/units/Wose_Shaman.cfg:34
-#: data/core/units/wose/Ancient.cfg:34 data/core/units/wose/Elder.cfg:34
-#: data/core/units/wose/Wose.cfg:29
-msgid "crush"
-msgstr "xô đẩy"
-
-#. [attack]: type=impact
-#: data/campaigns/Delfadors_Memoirs/units/Wose_Shaman.cfg:43
-#: data/campaigns/Wings_of_Victory/units/Wose_Shaman.cfg:43
-#: data/core/units/elves/Enchantress.cfg:36 data/core/units/elves/Shaman.cfg:37
-#: data/core/units/elves/Sorceress.cfg:38
-msgid "entangle"
-msgstr "bẫy"
 
 #. [attack]: type=blade
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:23
@@ -166,6 +150,7 @@ msgstr "sóng bóng tối"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:74
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:73
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:38
+#: data/core/units/dunefolk/Skirmisher.cfg:38
 #: data/core/units/humans/Outlaw.cfg:31
 #: data/core/units/humans/Outlaw_Footpad.cfg:33
 #: data/core/units/humans/Outlaw_Fugitive.cfg:36
@@ -180,8 +165,8 @@ msgstr "dây văng đá"
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:41
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:32
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Undead_Horseman.cfg:39
-#: data/core/units/dunefolk/Explorer.cfg:24
-#: data/core/units/dunefolk/Ranger.cfg:25 data/core/units/dunefolk/Rover.cfg:24
+#: data/core/units/dunefolk/Explorer.cfg:30
+#: data/core/units/dunefolk/Ranger.cfg:39 data/core/units/dunefolk/Rover.cfg:27
 #: data/core/units/dwarves/Explorer.cfg:33
 #: data/core/units/dwarves/Fighter.cfg:41
 #: data/core/units/dwarves/Pathfinder.cfg:36
@@ -248,18 +233,14 @@ msgstr "chùy gai"
 #: data/campaigns/tutorial/units/Fighteress.cfg:25
 #: data/campaigns/tutorial/units/Warrior.cfg:25
 #: data/campaigns/tutorial/units/Warrioress.cfg:26
-#: data/core/units/dunefolk/Blademaster.cfg:26
-#: data/core/units/dunefolk/Soldier.cfg:25
-#: data/core/units/dunefolk/Swordsman.cfg:25
-#: data/core/units/dunefolk/Warmaster.cfg:32
-#: data/core/units/elves/Archer.cfg:23 data/core/units/elves/Avenger.cfg:38
-#: data/core/units/elves/Captain.cfg:34 data/core/units/elves/Champion.cfg:23
-#: data/core/units/elves/Fighter.cfg:22 data/core/units/elves/Hero.cfg:22
-#: data/core/units/elves/High_Lord.cfg:46 data/core/units/elves/Lord.cfg:26
-#: data/core/units/elves/Marksman.cfg:29 data/core/units/elves/Marshal.cfg:33
-#: data/core/units/elves/Outrider.cfg:32 data/core/units/elves/Ranger.cfg:35
-#: data/core/units/elves/Rider.cfg:32 data/core/units/elves/Scout.cfg:32
-#: data/core/units/elves/Sharpshooter.cfg:24
+#: data/core/units/dunefolk/Paragon.cfg:26 data/core/units/elves/Archer.cfg:23
+#: data/core/units/elves/Avenger.cfg:38 data/core/units/elves/Captain.cfg:34
+#: data/core/units/elves/Champion.cfg:23 data/core/units/elves/Fighter.cfg:22
+#: data/core/units/elves/Hero.cfg:22 data/core/units/elves/High_Lord.cfg:46
+#: data/core/units/elves/Lord.cfg:26 data/core/units/elves/Marksman.cfg:29
+#: data/core/units/elves/Marshal.cfg:33 data/core/units/elves/Outrider.cfg:32
+#: data/core/units/elves/Ranger.cfg:35 data/core/units/elves/Rider.cfg:32
+#: data/core/units/elves/Scout.cfg:32 data/core/units/elves/Sharpshooter.cfg:24
 #: data/core/units/humans/Horse_Knight.cfg:23
 #: data/core/units/humans/Horse_Paladin.cfg:39
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:44
@@ -289,8 +270,8 @@ msgstr "kiếm"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:466
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:523
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:580
-#: data/core/units/dunefolk/Marauder.cfg:39
-#: data/core/units/dunefolk/Raider.cfg:35 data/core/units/elves/Archer.cfg:32
+#: data/core/units/dunefolk/Marauder.cfg:40
+#: data/core/units/dunefolk/Raider.cfg:38 data/core/units/elves/Archer.cfg:32
 #: data/core/units/elves/Avenger.cfg:47 data/core/units/elves/Captain.cfg:43
 #: data/core/units/elves/Champion.cfg:32 data/core/units/elves/Fighter.cfg:31
 #: data/core/units/elves/Hero.cfg:31 data/core/units/elves/Marshal.cfg:42
@@ -302,6 +283,8 @@ msgstr "kiếm"
 #: data/core/units/humans/Woodsman_Poacher.cfg:42
 #: data/core/units/humans/Woodsman_Ranger.cfg:53
 #: data/core/units/humans/Woodsman_Trapper.cfg:48
+#: data/core/units/nagas/Bladewhirler.cfg:37
+#: data/core/units/nagas/Dervish.cfg:39 data/core/units/nagas/Slasher.cfg:33
 #: data/core/units/orcs/Archer.cfg:33 data/core/units/orcs/Archer.cfg:42
 #: data/core/units/orcs/Warlord.cfg:33
 #: data/core/units/undead/Skele_Banebow.cfg:40
@@ -318,27 +301,19 @@ msgstr "cung"
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:132
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:23
 #: data/core/units/drakes/Burner.cfg:25
-#: data/core/units/dunefolk/Elder_Falcon.cfg:26
-#: data/core/units/dunefolk/Falcon.cfg:25
 #: data/core/units/goblins/Direwolf_Rider.cfg:41
 #: data/core/units/gryphons/Gryphon.cfg:28
 #: data/core/units/gryphons/Gryphon_Master.cfg:28
 #: data/core/units/gryphons/Gryphon_Rider.cfg:27
-#: data/core/units/monsters/Roc.cfg:25
+#: data/core/units/monsters/Elder_Falcon.cfg:26
+#: data/core/units/monsters/Falcon.cfg:25 data/core/units/monsters/Roc.cfg:27
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
-#: data/core/units/monsters/Young_Roc.cfg:25
 #: data/core/units/undead/Corpse_Ghoul.cfg:25
 #: data/core/units/undead/Corpse_Necrophage.cfg:26
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:33
 #: data/core/units/undead/Spirit_Shadow.cfg:62
 msgid "claws"
 msgstr "móng vuốt"
-
-#. [attack]: type=blade
-#: data/campaigns/Legend_of_Wesmere/units/ogres/Great_Ogre.cfg:40
-#: data/core/units/ogres/Ogre.cfg:25 data/core/units/ogres/Young_Ogre.cfg:24
-msgid "cleaver"
-msgstr "dao phay"
 
 #. [attack]: type=blade
 #: data/campaigns/Secrets_of_the_Ancients/units/Bone_Captain.cfg:34
@@ -643,6 +618,9 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:24
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:29
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:26
+#: data/core/units/dunefolk/Burner.cfg:28
+#: data/core/units/dunefolk/Firetrooper.cfg:29
+#: data/core/units/dunefolk/Scorcher.cfg:29
 #: data/core/units/dwarves/Dragonguard.cfg:37
 #: data/core/units/dwarves/Thunderer.cfg:49
 #: data/core/units/dwarves/Thunderguard.cfg:38
@@ -653,8 +631,8 @@ msgstr ""
 #: data/core/units/humans/Woodsman_Huntsman.cfg:36
 #: data/core/units/humans/Woodsman_Poacher.cfg:33
 #: data/core/units/humans/Woodsman_Trapper.cfg:39
-#: data/core/units/orcs/Archer.cfg:24 data/core/units/orcs/Assassin.cfg:26
-#: data/core/units/orcs/Slayer.cfg:26
+#: data/core/units/nagas/Slasher.cfg:24 data/core/units/orcs/Archer.cfg:24
+#: data/core/units/orcs/Assassin.cfg:26 data/core/units/orcs/Slayer.cfg:26
 #: data/core/units/undead/Skele_Banebow.cfg:31
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:29
 msgid "dagger"
@@ -720,8 +698,11 @@ msgstr ""
 #: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:31
 #: data/core/units/drakes/Clasher.cfg:33 data/core/units/drakes/Thrasher.cfg:31
-#: data/core/units/dunefolk/Spearguard.cfg:25
-#: data/core/units/dunefolk/Spearmaster.cfg:26
+#: data/core/units/dunefolk/Harrier.cfg:27
+#: data/core/units/dunefolk/Skirmisher.cfg:26
+#: data/core/units/dunefolk/Spearguard.cfg:26
+#: data/core/units/dunefolk/Spearmaster.cfg:29
+#: data/core/units/dunefolk/Strider.cfg:27
 #: data/core/units/dwarves/Guardsman.cfg:28
 #: data/core/units/dwarves/Sentinel.cfg:38
 #: data/core/units/dwarves/Stalwart.cfg:33
@@ -930,9 +911,7 @@ msgstr "Tiên nữ cánh chuồn"
 #. [attack]: type=pierce
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:30
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:31
-#: data/core/units/dunefolk/Cataphract.cfg:23
-#: data/core/units/dunefolk/Piercer.cfg:26
-#: data/core/units/dunefolk/Sunderer.cfg:21
+#: data/core/units/dunefolk/Cataphract.cfg:37
 #: data/core/units/humans/Horse_Grand_Knight.cfg:33
 #: data/core/units/humans/Horse_Knight.cfg:32
 #: data/core/units/humans/Horse_Lancer.cfg:23
@@ -942,8 +921,8 @@ msgstr "thương"
 
 #. [attack]: type=impact
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:40
-#: data/core/units/dunefolk/Blademaster.cfg:38
-#: data/core/units/dunefolk/Swordsman.cfg:37
+#: data/core/units/dunefolk/Spearguard.cfg:38
+#: data/core/units/dunefolk/Spearmaster.cfg:41
 msgid "shield bash"
 msgstr "đập bằng khiên"
 
@@ -975,6 +954,8 @@ msgstr "búa"
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Pathfinder.cfg:41
+#: data/core/units/dunefolk/Harrier.cfg:39
+#: data/core/units/dunefolk/Strider.cfg:39
 msgid "bolas"
 msgstr ""
 
@@ -1553,33 +1534,52 @@ msgstr ""
 "chiến đấu trong hàng thế kỷ, trong bộ áo giáp da mạ gốm với lưỡi kiếm truyền "
 "thống được lắp trên mu mỗi bàn tay."
 
+#. [unit_type]: id=Dune Alchemist, race=dunefolk
+#: data/core/units/dunefolk/Alchemist.cfg:4
+#, fuzzy
+#| msgid "Drake Blademaster"
+msgid "Dune Alchemist"
+msgstr "Kiếm sĩ người rồng"
+
+#. [unit_type]: id=Dune Alchemist, race=dunefolk
+#: data/core/units/dunefolk/Alchemist.cfg:21
+msgid ""
+"To the Dunefolk, alchemy is less a form of philosophy or science, and more "
+"of an extension of the phytology that is practiced by herbalists. However, "
+"in contrast to their brethrens’ focus on herbs for medicine and healing, "
+"Alchemists utilize various plants and naturally occurring venoms to concoct "
+"potent poisons. Though useful for weakening tough enemies, the Alchemists’ "
+"art is viewed warily by other Dunefolk, for it is often employed for "
+"espionage and assassination. Nevertheless, almost every caravan will contain "
+"at least one Alchemist for precisely this reason — the political advantage "
+"from the threat of nearly untraceable poisons is not to be underestimated."
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/dunefolk/Alchemist.cfg:40
+msgid "blowgun"
+msgstr ""
+
 #. [unit_type]: id=Dune Apothecary, race=dunefolk
 #: data/core/units/dunefolk/Apothecary.cfg:4
 msgid "Dune Apothecary"
 msgstr ""
 
 #. [unit_type]: id=Dune Apothecary, race=dunefolk
-#: data/core/units/dunefolk/Apothecary.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Some men excel at medicine the way others do at strength of arms, and the "
-#| "Tabib are those whose knowledge is without peer outside of the Khalifate. "
-#| "Their remedies cannot only heal wounds but remove infection and poison as "
-#| "well, often to the disbelief of the injured. Hardened by years of "
-#| "travels, many are able to treat themselves."
+#: data/core/units/dunefolk/Apothecary.cfg:21
 msgid ""
-"Some men excel at medicine the way others do at strength of arms, and the "
-"Apothecaries are those whose knowledge is without peer outside of the "
-"Dunefolk. Their remedies can not only heal wounds but remove infection and "
-"poison as well, often to the disbelief of the injured. Hardened by years of "
-"travels, many are able to treat themselves."
+"Even in the absence of battle, infection and injury are common plights in "
+"the harsh desert sands. Dunefolk healers, in particular, require vast "
+"knowledge of herbs and medicine in comparison with healers of other races; "
+"the lack of magic combined with the meager plantlife in the desert results "
+"in great difficulty in treating the plethora of ailments and poisons that "
+"plague the dune peoples. Apothecaries are typically more knowledgeable and "
+"well-traveled compared to their less experienced brethren, but the title is "
+"usually applied to those who undertake the complex task of tending to "
+"valuable medicinal plants. The Dunefolk have no means of healing without the "
+"necessary materials, and thus Apothecaries possess a special role in "
+"supporting the remedial arts of their kind."
 msgstr ""
-"Một số người giỏi y thuật theo cách những người khác vẫn làm với sức mạnh "
-"của cánh tay, và Tabib là những người mà hiểu biết của họ không có đối thủ "
-"ngang hàng bên ngoài Khalifate. Những phương thuốc của họ không chỉ trị "
-"thương mà còn loại bỏ nhiễm trùng và độc tố, mà những người bị thương cũng "
-"không thể tin nổi. Được rèn luyện qua hàng năm trời hành trình, nhiều người "
-"có khả năng điều trị cho chính họ."
 
 #. [unit_type]: id=Dune Blademaster, race=dunefolk
 #: data/core/units/dunefolk/Blademaster.cfg:4
@@ -1589,25 +1589,39 @@ msgid "Dune Blademaster"
 msgstr "Kiếm sĩ người rồng"
 
 #. [unit_type]: id=Dune Blademaster, race=dunefolk
-#: data/core/units/dunefolk/Blademaster.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Distinguished for their bravery and skill, Shuja are the leaders among "
-#| "the Khalif's ranks. Their exploits are well known among their cohorts, "
-#| "inspiring soldiers to fight for their cause. Despite this, they are often "
-#| "found leading from the front, taking down their foes with sword and "
-#| "shield."
+#: data/core/units/dunefolk/Blademaster.cfg:22
 msgid ""
-"Distinguished for their bravery and skill, Blademasters are the leaders "
-"among the Dunefolk's ranks. Their exploits are well known among their "
-"cohorts, inspiring soldiers to fight for their cause. Despite this, they are "
-"often found leading from the front, taking down their foes with sword and "
-"shield."
+"Dunefolk swordsmen are known for playing a game called the ‘Laeqad "
+"Challenge’, in which Laeqads—thick, sturdy reeds that are several sword-"
+"lengths in height—are hurled at them like javelins and they attempt to split "
+"the reed length-wise in midair. The trick to the game is that the reed is "
+"not circularly symmetric: most of the stalk is quite hard, but there is a "
+"thin line across the cross section that is softer and easier to cut. For "
+"even an experienced swordsman, splitting an entire Laeqad down its length "
+"would be an extraordinary achievement; most would be hard-pressed to cut "
+"even a single sword length, given the precise aim required to line up the "
+"blade with the reed’s soft spot. For a Blademaster, however, splitting "
+"several Laeqads in quick succession is quite ordinary, and some are even "
+"able to cut through two or three reeds simultaneously with a single sword "
+"swish.\n"
+"\n"
+"This game has more practical implications in real battles. No matter how "
+"elusive or well-armored the fighter, against a Blademaster, it often seems "
+"like the defense does not even exist. These warriors are undoubtedly the "
+"masters of offensive swordsmanship and are capable of subverting even the "
+"strongest fortifications."
 msgstr ""
-"Nổi tiếng vì lòng dũng cảm và năng lực, các Shuja là những người lãnh đạo "
-"trong hàng ngũ Khalifate. Họ nổi tiếng trong đội quân với những kỳ công, "
-"truyền cảm hứng cho binh lính chiến đấu. Bất kể điều này, người ta thường "
-"thấy họ dẫn đầu mặt trận, hạ gục kẻ thù bằng kiếm và khiên."
+
+#. [attack]: type=blade
+#: data/core/units/dunefolk/Blademaster.cfg:30
+#: data/core/units/dunefolk/Blademaster.cfg:39
+#: data/core/units/dunefolk/Captain.cfg:31
+#: data/core/units/dunefolk/Soldier.cfg:22
+#: data/core/units/dunefolk/Swordsman.cfg:22
+#: data/core/units/dunefolk/Swordsman.cfg:31
+#: data/core/units/dunefolk/Warmaster.cfg:32
+msgid "scimitar"
+msgstr ""
 
 #. [unit_type]: id=Dune Burner, race=dunefolk
 #: data/core/units/dunefolk/Burner.cfg:4
@@ -1617,27 +1631,50 @@ msgid "Dune Burner"
 msgstr "Người rồng thiêu đốt"
 
 #. [unit_type]: id=Dune Burner, race=dunefolk
-#: data/core/units/dunefolk/Burner.cfg:23
+#: data/core/units/dunefolk/Burner.cfg:17
 msgid ""
-"Utilizing various resources found in the Dunefolk domain, a highly flammable "
-"substance can be made. The Burners are those charged with making and "
-"carrying this dangerous mixture into battle. While the use of fire in "
-"warfare is not a novel concept, the effectiveness of their work is."
+"An oft forgotten hazard of traversing the desert is the freezing cold that "
+"descends upon the sands during the night. To combat this, the Dunefolk "
+"typically make use of the highly flammable sap of the Sanbaar tree, which "
+"burns slowly and gently in small quantities. In larger amounts, however, "
+"Sanbaar sap is very nearly combustible and burns extremely violently. The "
+"Dunefolk quickly realized the applicability of such a substance to warfare "
+"and regularly employ fire spouting weapons to sow chaos among their enemies."
 msgstr ""
-
-#. [attack]: type=fire
-#: data/core/units/dunefolk/Burner.cfg:28
-#: data/core/units/dunefolk/Firetrooper.cfg:29
-#: data/core/units/dunefolk/Scorcher.cfg:28
-msgid "naphtha attack"
-msgstr "lửa dầu"
 
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Burner.cfg:37
 #: data/core/units/dunefolk/Firetrooper.cfg:38
-#: data/core/units/dunefolk/Scorcher.cfg:37
-msgid "fire arrow"
-msgstr "mũi tên lửa"
+#: data/core/units/dunefolk/Scorcher.cfg:38
+msgid "flamethrower"
+msgstr ""
+
+#. [female]
+#: data/core/units/dunefolk/Burner.cfg:89
+#, fuzzy
+#| msgid "Drake Burner"
+msgid "female^Dune Burner"
+msgstr "Người rồng thiêu đốt"
+
+#. [unit_type]: id=Dune Captain, race=dunefolk
+#: data/core/units/dunefolk/Captain.cfg:4
+#, fuzzy
+#| msgid "Elvish Captain"
+msgid "Dune Captain"
+msgstr "Thủ lĩnh thần tiên"
+
+#. [unit_type]: id=Dune Captain, race=dunefolk
+#: data/core/units/dunefolk/Captain.cfg:25
+msgid ""
+"Traditionally hailing from noble or military families, Dune Captains are the "
+"core of any Dunefolk platoon. Usually a position filled based on heritage "
+"rather than merit, Captains are those who are often relatively weak with the "
+"blade, but still reasonably trained in tactics. Unlike other leaders, the "
+"Captains’ abilities lie largely in directing their troops to strategically "
+"advantageous positions rather than directly raising their morale. The "
+"presence of such a commander is rarely inspiring for most Soldiers, but they "
+"are still quick to follow the expert tactical direction of their officers."
+msgstr ""
 
 #. [unit_type]: id=Dune Cataphract, race=dunefolk
 #: data/core/units/dunefolk/Cataphract.cfg:4
@@ -1645,55 +1682,31 @@ msgid "Dune Cataphract"
 msgstr ""
 
 #. [unit_type]: id=Dune Cataphract, race=dunefolk
-#: data/core/units/dunefolk/Cataphract.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The Mufariq are eminent horsemen, amassing titles and accolades that are "
-#| "as distinguishing for them as the scrollwork on their armor. Having honed "
-#| "their skill with a lance in years of battle, the Mufariq are an "
-#| "unstoppable force of nature. Fleeing enemies swiftly discover that hills "
-#| "do not deter these riders in the slightest, and the displaced air of a "
-#| "descending mace is the last sound they hear."
+#: data/core/units/dunefolk/Cataphract.cfg:17
 msgid ""
-"The Cataphract are eminent horsemen, amassing titles and accolades that are "
-"as distinguishing for them as the scrollwork on their armor. Having honed "
-"their skill with a lance in years of battle, the Cataphract are an "
-"unstoppable force of nature. Fleeing enemies swiftly discover that hills do "
-"not deter these riders in the slightest, and the displaced air of a "
+"Cataphracts are eminent horsemen, riders of mounts that are possessed less "
+"of speed or endurance, but tremendous power instead. Bearing a lance along "
+"with their signature maces, these warriors are most often the secondary "
+"strike force after a primary assault. After enemy forces are already "
+"occupied and weakened by a flank of swordsmen, a common and terrifying sight "
+"is a group of Cataphracts lining up, lances pitched at the ready. A gap is "
+"made amongst the Dunefolk ranks, and in a single charge, these mighty "
+"horsemen pierce straight through enemy formations, dealing a lethal blow in "
+"a single stroke. Those who try to flee swiftly discover that neither sand "
+"nor hills deter these riders in the slightest, and the displaced air of a "
 "descending mace is the last sound they hear."
 msgstr ""
-"Mufariq là những kỵ sĩ kiệt xuất, tích lũy hàng loạt danh hiệu và tước vị "
-"giúp phân biệt họ với những người khác giống như nếp cuộn trên áo giáp của "
-"họ. Tôi luyện năng lực sử dụng thương trong nhiều năm chiến đấu, các Mufariq "
-"là một lực lượng không thể ngăn chặn được. Những kẻ thù đang chạy trốn nhanh "
-"chóng nhận ra rằng đồi không cản trở các kỵ binh này dù là mức độ nhỏ nhất, "
-"và không khí bị xê dịch của một cây chùy đang giáng xuống là âm thanh cuối "
-"cùng chúng nghe thấy."
-
-#. [unit_type]: id=Elder Falcon, race=falcon
-#: data/core/units/dunefolk/Elder_Falcon.cfg:4
-msgid "Elder Falcon"
-msgstr "Chim ưng trưởng thành"
-
-#. [unit_type]: id=Elder Falcon, race=falcon
-#: data/core/units/dunefolk/Elder_Falcon.cfg:18
-msgid ""
-"Elder Falcons bear the telltale scars of veteran warriors from protecting "
-"their masters, their bodies proof of repeated dives into a swirling melee. "
-"Stronger and faster than their younger kin, they are rumored to hit with "
-"enough force to remove an enemy's head. "
-msgstr ""
-"Chim ưng trưởng thành mang những vết sẹo đặc trưng của các chiến binh kỳ cựu "
-"từ việc bảo vệ chủ nhân của mình, bằng chứng của những lần bổ nhào liên tục "
-"để cận chiến. Mạnh hơn và nhanh hơn các đồng loại trẻ tuổi, người ta đồn "
-"rằng chúng có thể đánh với lực đủ để làm bay đầu kẻ thù."
 
 #. [attack]: type=pierce
-#: data/core/units/dunefolk/Elder_Falcon.cfg:35
-#: data/core/units/dunefolk/Falcon.cfg:34 data/core/units/monsters/Roc.cfg:34
-#: data/core/units/monsters/Young_Roc.cfg:34
-msgid "beak"
-msgstr "mỏ"
+#: data/core/units/dunefolk/Cataphract.cfg:49
+#: data/core/units/dunefolk/Explorer.cfg:39
+#: data/core/units/dunefolk/Ranger.cfg:48 data/core/units/dunefolk/Rider.cfg:31
+#: data/core/units/dunefolk/Rover.cfg:36
+#: data/core/units/dunefolk/Sunderer.cfg:36
+#: data/core/units/dunefolk/Swiftrider.cfg:31
+#: data/core/units/dunefolk/Windrider.cfg:36
+msgid "composite bow"
+msgstr "cung tổ hợp"
 
 #. [unit_type]: id=Dune Explorer, race=dunefolk
 #: data/core/units/dunefolk/Explorer.cfg:4
@@ -1704,58 +1717,15 @@ msgstr "Người lùn thăm dò"
 
 #. [unit_type]: id=Dune Explorer, race=dunefolk
 #: data/core/units/dunefolk/Explorer.cfg:16
-#, fuzzy
-#| msgid ""
-#| "Muharib are often utilized as heavy scouts, no longer just probing the "
-#| "enemy but conducting raids on the supply lines or eliminating patrols. "
-#| "Often away from the main body of the army for long periods of time, "
-#| "Muharib have no issue pilfering these supplies, and so they tend to be "
-#| "more well-equipped than most."
 msgid ""
-"Explorers are often utilized as heavy scouts, no longer just probing the "
-"enemy but conducting raids on the supply lines or eliminating patrols. Often "
-"away from the main body of the army for long periods of time, Explorers have "
-"no issue pilfering these supplies, and so they tend to be more well-equipped "
-"than most."
+"A slow-moving caravan out in the open desert is a prime target for bandits "
+"or marauders. In order to protect themselves, the Dunefolk employ Explorers "
+"to scout and repel potential threats. In doing so, these fleet fighters not "
+"only protect their vulnerable caravans, but pilfer the supplies of supposed "
+"raiders for themselves. When employed for warfare, Explorers no longer act "
+"only as scouts for probing enemies, but are skilled enough to be effective "
+"flankers or potent shock attackers."
 msgstr ""
-"Muharib thường được sử dụng làm trinh sát, không chỉ thăm dò kẻ thù mà còn "
-"tiến hành đột kích vào hàng ngũ tiếp tế hoặc trừ khử các đội tuần tra. "
-"Thường ở xa so với lực lượng quân đội chính trong những khoảng thời gian "
-"dài, các Muharib không gặp khó khăn gì trong việc chôm chỉa những nguồn tiếp "
-"tế này, do đó họ có xu hướng được vũ trang tốt hơn hầu hết các đơn vị khác."
-
-#. [attack]: type=pierce
-#: data/core/units/dunefolk/Explorer.cfg:32
-#: data/core/units/dunefolk/Ranger.cfg:33 data/core/units/dunefolk/Rider.cfg:30
-#: data/core/units/dunefolk/Rover.cfg:32
-#: data/core/units/dunefolk/Swiftrider.cfg:30
-#: data/core/units/dunefolk/Windrider.cfg:31
-msgid "composite bow"
-msgstr "cung tổ hợp"
-
-#. [unit_type]: id=Falcon, race=falcon
-#: data/core/units/dunefolk/Falcon.cfg:4
-msgid "Falcon"
-msgstr "Chim ưng"
-
-#. [unit_type]: id=Falcon, race=falcon
-#: data/core/units/dunefolk/Falcon.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Seen as status symbols of the nobles, falcons are precious possessions "
-#| "normally used for sport. The same techniques are employed to rend and "
-#| "tear the enemies of the Khalifate, and their great speed is a boon to "
-#| "scouting out the land."
-msgid ""
-"Seen as status symbols of the nobles, falcons are precious possessions "
-"normally used for sport. The same techniques are employed to rend and tear "
-"foes on the battlefield, and their great speed is a boon to scouting out the "
-"land."
-msgstr ""
-"Được xem là biểu tượng địa vị của tầng lớp quý tộc, chim ưng là những tài "
-"sản quý giá thường được sử dụng để giải trí. Chim ưng cũng được sử dụng để "
-"xé xác những kẻ thù của Khalifate, và tốc độ tuyệt vời của chúng là một "
-"thuận lợi để trinh sát các vùng đất."
 
 #. [unit_type]: id=Dune Firetrooper, race=dunefolk
 #: data/core/units/dunefolk/Firetrooper.cfg:4
@@ -1763,65 +1733,46 @@ msgid "Dune Firetrooper"
 msgstr ""
 
 #. [unit_type]: id=Dune Firetrooper, race=dunefolk
-#: data/core/units/dunefolk/Firetrooper.cfg:24
-#, fuzzy
-#| msgid ""
-#| "Qatif-al-nar who have shut out the world for their experiments are given "
-#| "the honorific Tineen, as both a sign of respect and of fear. No longer "
-#| "cognizant of the value of life, Tineen are caught up in the power of "
-#| "their caged fire and likely to test their latest naphtha jar at the first "
-#| "opportunity."
+#: data/core/units/dunefolk/Firetrooper.cfg:18
 msgid ""
-"Scorchers who have shut out the world for their experiments are given the "
-"title of Firetrooper, as both a sign of respect and of fear. No longer "
-"cognizant of the value of life, Firetroopers are caught up in the power of "
-"their caged fire and likely to test their latest naphtha jar at the first "
-"opportunity."
+"By refining Sanbaar sap through a very specific distillation process, it "
+"becomes possible to produce exceedingly flammable naphtha which burns even "
+"more violently than the sap it was derived from. Such a substance is, of "
+"course, extremely dangerous due to its highly combustible nature. Even "
+"Scorchers will shy away from its use since the potential for self injury is "
+"very high, but a few daring souls choose to use pure naphtha as their weapon "
+"of choice. The resulting destruction is more than enough to justify the use "
+"of such a hazardous chemical."
 msgstr ""
-"Các Qatif-al-nar đã phá phách thế giới vì những thử nghiệm của mình được "
-"trao danh hiệu kính cẩn Tineen, một biểu trưng của lòng kính trọng và sự sợ "
-"hãi. Không còn nhận thức về giá trị của cuộc sống, các Tineen bị cuốn vào "
-"sức mạnh của ngọn lửa bị giam giữ, và nhiều khả năng sẽ kiểm tra lọ dầu cuối "
-"cùng của họ ở ngay cơ hội đầu tiên."
+
+#. [female]
+#: data/core/units/dunefolk/Firetrooper.cfg:91
+msgid "female^Dune Firetrooper"
+msgstr ""
 
 #. [unit_type]: id=Dune Harrier, race=dunefolk
 #: data/core/units/dunefolk/Harrier.cfg:4
 #, fuzzy
 #| msgid "Drake Warrior"
-msgid "Dune Harrier"
+msgid "female^Dune Harrier"
 msgstr "Chiến binh người rồng"
 
 #. [unit_type]: id=Dune Harrier, race=dunefolk
-#: data/core/units/dunefolk/Harrier.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Mighwar hold themselves to a higher standard than the ranks of the "
-#| "Monawish from which they ascended. Not content to merely draw the enemy "
-#| "out, they combine their speed with an aggression that sends the Mighwar "
-#| "dancing through the ranks of the enemy, swords ripping and tearing at "
-#| "those around them. "
+#: data/core/units/dunefolk/Harrier.cfg:21
 msgid ""
-"Harriers hold themselves to a higher standard than the ranks of the "
-"Skirmishers from which they ascended. Not content to merely draw the enemy "
-"out, they combine their speed with an aggression that sends the Harriers "
-"dancing through the ranks of the enemy, swords ripping and tearing at those "
-"around them. "
+"While Dune Harriers can fulfill a similar role to Striders in hampering "
+"enemy forces, their name is actually derived from the harrier falcons they "
+"employ to maintain contact with the bulk of a Dunefolk army. Most commonly "
+"found operating behind enemy lines, Harriers are usually tasked with "
+"providing useful intelligence on enemy troop movements. However, when the "
+"time is right, these agile warriors gather together and strike at the rear "
+"of weakened supply lines or flanks. A rain of bolas followed by a piercing "
+"thrust of spears is often enough to severely cripple the target, allowing "
+"the main Dunefolk force to close in and finish the job. The choice to stand "
+"and fight is not an easy one either: Harriers are considerably skilled in "
+"wielding their spears, and their falcons can provide an extra attack when "
+"absolutely necessary."
 msgstr ""
-"Mighwar mang một tiêu chuẩn cao hơn hàng ngũ Monawish, mà từ đó họ đã thăng "
-"tiến. Không bằng lòng khi chỉ nhử kẻ thù ra, họ kết hợp tốc độ với một cuộc "
-"công kích, nhảy múa qua đội hình của kẻ thù, kiếm chém xối xả vào những kẻ "
-"thù xung quanh."
-
-#. [attack]: type=blade
-#: data/core/units/dunefolk/Harrier.cfg:28
-#: data/core/units/dunefolk/Skirmisher.cfg:27
-#: data/core/units/humans/Horse_Grand_Knight.cfg:24
-#: data/core/units/humans/Loyalist_Cavalier.cfg:37
-#: data/core/units/humans/Loyalist_General.cfg:43
-#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:38
-#: data/core/units/humans/Loyalist_Royal_Guard.cfg:27
-msgid "longsword"
-msgstr "kiếm dài"
 
 #. [unit_type]: id=Dune Herbalist, race=dunefolk
 #: data/core/units/dunefolk/Herbalist.cfg:4
@@ -1831,33 +1782,46 @@ msgid "Dune Herbalist"
 msgstr "Đấu sĩ tay đôi"
 
 #. [unit_type]: id=Dune Herbalist, race=dunefolk
-#: data/core/units/dunefolk/Herbalist.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Hakim are learned individuals who have given up their urban life in order "
-#| "to assist the Khalifate armies in their travels. Their motivations are "
-#| "many; some look to it as an adventure or as a steady source of pay, while "
-#| "others feel it to be a requirement of their faith. Regardless, Hakim are "
-#| "highly respected by all. They are trained with the advanced medical "
-#| "techniques and possess a potent clutch of medicines and herbs, which "
-#| "allows them to quickly heal even the most gravely wounded allies."
+#: data/core/units/dunefolk/Herbalist.cfg:21
 msgid ""
-"Herbalists are learned individuals who have given up their urban life in "
-"order to assist the Dunefolk armies in their travels. Their motivations are "
-"many; some look to it as an adventure or as a steady source of pay, while "
-"others feel it to be a duty to their society. Regardless, Herbalists are "
-"highly respected by all. They are trained with the advanced medical "
-"techniques and possess a potent clutch of medicines and herbs, which allows "
-"them to quickly heal even the most gravely wounded allies."
+"As those responsible for caring for the ill and wounded among the Dunefolk, "
+"Herbalists possess both the medicinal skills to heal a variety of "
+"afflictions and the skill to seek and gather restorative herbs. Their "
+"motivations are many; some look to it as an adventure or as a steady source "
+"of pay while others feel it to be a duty to their society. No matter the "
+"reason, Herbalists are an invaluable part of Dunefolk society and are "
+"especially useful for their ability to administer quick treatments in the "
+"midst of battle or while traveling in the desert.\n"
+"\n"
+"Even among the nomadic Dunefolk, healers journey a great deal in search of "
+"the various flora and fauna that supply their work. Hardened by their "
+"travels, many of these men are even able to heal themselves."
 msgstr ""
-"Hakim là các cá nhân có học thức, những người đã từ bỏ cuộc sống thành thị "
-"để hỗ trợ quân đội Khalifate trong cuộc hành trình của mình. Động cơ của họ "
-"khá đa dạng, một số người xem đó là một cuộc phiêu lưu hoặc một nguồn thu "
-"nhập ổn định, trong khi những người khác cảm thấy thế là một yêu cầu cho "
-"niềm tin của mình. Dù sao đi nữa, Hakim đều được tất cả mọi người kính "
-"trọng. Họ được đào tạo những kỹ thuật y học cao cấp và sở hữu một kho thuốc "
-"và thảo dược hiệu nghiệm, cho phép họ điều trị nhanh chóng kể cả những đồng "
-"minh bị thương nghiêm trọng nhất."
+
+#. [unit_type]: id=Dune Luminary, race=dunefolk
+#: data/core/units/dunefolk/Luminary.cfg:4
+#, fuzzy
+#| msgid "Drake Burner"
+msgid "Dune Luminary"
+msgstr "Người rồng thiêu đốt"
+
+#. [unit_type]: id=Dune Luminary, race=dunefolk
+#: data/core/units/dunefolk/Luminary.cfg:21
+msgid ""
+"On the surface, it is not entirely clear what distinguishes a Luminary from "
+"other healers among the Dunefolk. Certainly, a Luminary may be marginally "
+"more knowledgeable, well-traveled, or skilled in combat compared to "
+"Herbalists or Apothecaries, but the difference is usually modest at best. "
+"Nevertheless, ‘Luminary’ is a formal title granted to the highest order of "
+"Dunefolk healers and grants these men both the greatest esteem and the "
+"greatest envy.\n"
+"\n"
+"There is some speculation that a secret order exists among the Luminaries. "
+"These so called ‘Eminents’ hoard a great deal of forbidden knowledge and "
+"advise many Dunefolk leaders from the shadows. Such a thing has never been "
+"proven, but the fact remains that some Luminaries seem to hold much more "
+"influence than their abilities should afford."
+msgstr ""
 
 #. [unit_type]: id=Dune Marauder, race=dunefolk
 #: data/core/units/dunefolk/Marauder.cfg:4
@@ -1865,56 +1829,65 @@ msgid "Dune Marauder"
 msgstr ""
 
 #. [unit_type]: id=Dune Marauder, race=dunefolk
-#: data/core/units/dunefolk/Marauder.cfg:26
-#, fuzzy
-#| msgid ""
-#| "Those Qanas who prove to be particularly skilled are formed into units of "
-#| "Hadaf, which are often used to raid enemy depots and towns for supplies. "
-#| "This greater autonomy often means that these horsemen are gone for weeks "
-#| "at a time, returning to camp only for supplies and to pass on news of "
-#| "their exploits."
+#: data/core/units/dunefolk/Marauder.cfg:17
 msgid ""
-"Those Raiders who prove to be particularly skilled are formed into units of "
-"Marauders, which are often used to raid enemy depots and towns for supplies. "
-"This greater autonomy often means that these horsemen are gone for weeks at "
-"a time, returning to camp only for supplies and to pass on news of their "
-"exploits."
-msgstr ""
-"Những Qanas đã chứng tỏ được tài năng đặc biệt tạo thành các đơn vị Hadaf, "
-"lực lượng thường được sử dụng để đột kích các kho chứa và thành phố của kẻ "
-"thù nhằm chiếm nguồn quân nhu. Quyền tự quản lớn hơn thường có nghĩa là vào "
-"một thời điểm nào đó, các kỵ sĩ này ra đi hàng tuần liền, chỉ trở về doanh "
-"trại để chuyển nguồn quân nhu và tin tức về những chiến công của họ."
-
-#. [unit_type]: id=Dune Piercer, race=dunefolk
-#: data/core/units/dunefolk/Piercer.cfg:4
-msgid "Dune Piercer"
+"Some find themselves well suited to the life of a Raider and may even form "
+"their own clans with like-minded individuals. Ever roaming the deserts for "
+"unwary travelers or vulnerable caravans, these horsemen make their "
+"livelihood off of scavenging and pilfering. Having no particular specialty, "
+"Marauders are neither the strongest warriors, nor the most dexterous "
+"archers; nevertheless, they are among the most dangerous enemies out in the "
+"desert due to their sheer maneuverability. A coordinated Marauder attack can "
+"wipe out even medium-sized camps before any response is possible, and "
+"against stronger foes, guerrilla tactics may allow them to prevail where "
+"brute force does not. For this reason, they are sometimes hired by small "
+"armies or wealthier caravans as a deterrent to unwanted raids."
 msgstr ""
 
-#. [unit_type]: id=Dune Piercer, race=dunefolk
-#: data/core/units/dunefolk/Piercer.cfg:21
+#. [attack]: type=fire
+#: data/core/units/dunefolk/Marauder.cfg:31
+#: data/core/units/dunefolk/Raider.cfg:29
+#: data/core/units/goblins/Pillager.cfg:41
+msgid "torch"
+msgstr "đuốc"
+
+#. [unit_type]: id=Dune Paragon, race=dunefolk
+#: data/core/units/dunefolk/Paragon.cfg:4
 #, fuzzy
-#| msgid ""
-#| "The Khaiyal understand the psychological impact of a charging horse, and "
-#| "reinforce this by cladding themselves in heavy armor. Majestic at rest, a "
-#| "Khaiyal at the charge with lance in hand is often impetus enough to break "
-#| "men. On the rare occurrences that their charge fails to rout their foe, "
-#| "the Khaiyal ride into the resulting melee with their maces in hand, "
-#| "trusting their armor to keep them safe."
+#| msgid "Dragoon"
+msgid "Dune Paragon"
+msgstr "Long kỵ binh"
+
+#. [unit_type]: id=Dune Paragon, race=dunefolk
+#: data/core/units/dunefolk/Paragon.cfg:18
 msgid ""
-"The Piercer understand the psychological impact of a charging horse, and "
-"reinforce this by cladding themselves in heavy armor. Majestic at rest, a "
-"Piercer at the charge with lance in hand is often impetus enough to break "
-"men. On the rare occurrences that their charge fails to rout their foe, the "
-"Piercer ride into the resulting melee with their maces in hand, trusting "
-"their armor to keep them safe."
+"In many Dunefolk city-states, the process for selecting the next generation "
+"of leaders is a long process that takes place over many years. In each "
+"generation, a few particularly talented youths among the nobility are "
+"trained separately from their peers. Eat, sleep, and train, these warriors "
+"learn to live and breathe swordsmanship as their core identity more than "
+"even an extension of themselves. From adolescence, ten years of intense "
+"training paves the path to the final test, a series of duels to the death "
+"between pairs of these fighters. When the dust settles and the process is "
+"ended, eight are left remaining. These men are granted the title Kal, or "
+"collectively, Kalai.\n"
+"\n"
+"Among the Dunefolk, while great leaders are required to have mastered the "
+"blade, the ruling caste is required to know far more than mere swordplay. "
+"Gruelling training is usually followed by either several years of nomadic "
+"roving through the deserts or dedication of the mind to the sciences, the "
+"purpose of which is to find a self-motivated path toward enlightened wisdom. "
+"No matter the case, at the end of the second training period, the remaining "
+"Kalai return and demonstrate their knowledge to the elders of the current "
+"ruling caste. Those who are found worthy are then called Paragon, warriors "
+"of great strength and acuity who may then be considered as candidates to "
+"lead the next generation of Dunefolk."
 msgstr ""
-"Các Khaiyal hiểu tác động tâm lý của một con ngựa xung kích, và tăng cường "
-"thêm cho mình bằng cách mặc áo giáp nặng. Oai vệ trước những người còn lại, "
-"một Khaiyal tấn công với thương trong tay thường đủ xung lực để xuyên qua "
-"người. Vào những lúc hiếm hoi khi đòn xung kích của họ không thể đánh tan "
-"tác địch thủ, các Khaiyal cưỡi ngựa xông vào cận chiến bằng chùy, tin tưởng "
-"áo giáp sẽ giữ cho họ an toàn."
+
+#. [attack]: type=impact
+#: data/core/units/dunefolk/Paragon.cfg:38
+msgid "pommel strike"
+msgstr ""
 
 #. [unit_type]: id=Dune Raider, race=dunefolk
 #: data/core/units/dunefolk/Raider.cfg:4
@@ -1924,29 +1897,17 @@ msgid "Dune Raider"
 msgstr "Kỵ binh bạo sói"
 
 #. [unit_type]: id=Dune Raider, race=dunefolk
-#: data/core/units/dunefolk/Raider.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Those horsemen who are not skilled enough to join the ranks of the Faris "
-#| "or quick enough with a bow for the Saree are instead placed with the "
-#| "Qanas. Far from being a sign of failure, the Qanas were created as a "
-#| "mounted counterpart to the Muharib, supporting the foot troops with mace "
-#| "or bow as needed. Qanas are often used to draw enemies into a position "
-#| "where they will be surrounded and crushed by Faris."
+#: data/core/units/dunefolk/Raider.cfg:16
 msgid ""
-"Those horsemen who are not skilled enough to join the ranks of the Sunderers "
-"or quick enough with a bow for the Swiftriders are instead placed with the "
-"Raiders. Far from being a sign of failure, the Raiders were created as a "
-"mounted counterpart to the Explorers, supporting the foot troops with mace "
-"or bow as needed. Raiders are often used to draw enemies into a position "
-"where they will be surrounded and crushed by Sunderers."
+"Though rarely found in organized armies, Raiders are a staple among the "
+"nomadic Dunefolk, who regularly ambush rival caravans and camps at night. In "
+"these scenarios, raw power is of little concern. The greatest importance is "
+"placed on speed—striking quickly, spreading as much chaos with their torches "
+"in the shortest time possible, allows these riders to get in and out of the "
+"blitz without any fear of counterattack. Raiders are the fastest of the "
+"Dunefolk, capable of outpacing nearly anything they might encounter in the "
+"sandy deserts."
 msgstr ""
-"Những kỵ sĩ không đủ năng lực để gia nhập hàng ngũ Faris hoặc đủ nhanh nhẹn "
-"với cung cho Saree được đặt vào hàng ngũ Qanas để thay thế. Không phải là "
-"một biểu hiện của thất bại, các Qanas được tạo như một lực lượng tương tự "
-"với Muharib, hỗ trợ bộ binh bằng chùy hoặc cung khi cần thiết. Qanas thường "
-"được sử dụng để kéo kẻ thù vào một vị trí ở đó chúng sẽ bị các Faris bao vây "
-"và tiêu diệt."
 
 #. [unit_type]: id=Dune Ranger, race=dunefolk
 #: data/core/units/dunefolk/Ranger.cfg:4
@@ -1957,28 +1918,37 @@ msgstr "Kẻ giang hồ"
 
 #. [unit_type]: id=Dune Ranger, race=dunefolk
 #: data/core/units/dunefolk/Ranger.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Batal are the elite of the Muharib, engaging in constant hit and run "
-#| "attacks against an enemy army. Nimble as a goat and strong as a ram, they "
-#| "prefer to coordinate multiple attacks at the same time, sending foes "
-#| "running from their arrows only to be cut down by their axes. Given their "
-#| "penchant for taking on only the most daring missions, Batal are often "
-#| "heroes to the common troopers, an image they do not try to dissuade."
 msgid ""
-"Rangers are the elite of the Explorers, engaging in constant hit and run "
-"attacks against an enemy army. Nimble as a goat and strong as a ram, they "
-"prefer to coordinate multiple attacks at the same time, sending foes running "
-"from their arrows only to be cut down by their axes. Given their penchant "
-"for taking on only the most daring missions, Rangers are often heroes to the "
-"common troopers, an image they do not try to dissuade."
+"From the journal of Balah, the Dune Watcher:\n"
+"\n"
+"“... Today was the sixth day. Six days of pursuit through the desert without "
+"sleep, without rest... but, I require neither. The Bloodeye Roc has pilfered "
+"too many of my herd for its ravenous feasting. I must be rid of it before "
+"the caravan starves. I have tracked it thus far, and no matter how far it "
+"flees, I shall follow.\n"
+"\n"
+"... blast it! The creature was only a couple hundred paces away, but the sun "
+"was in my eyes! I managed to land a few arrows on the foul thing, but only "
+"enough to slow it. Still, it seems to be tiring faster than I. With any "
+"luck, I will catch it before it can reach the mountains.\n"
+"\n"
+"... Day eleven. I cornered the creature after it landed on the hillside, but "
+"there were three more that I was not accounting for. Rocs are ferocious "
+"creatures in close quarters; fighting one is already no simple task, but "
+"four at once? I am lucky I brought my second axe, otherwise I would have "
+"sustained severe injury during that battle. As it is, I am waiting for the "
+"gauze to set on my leg before I return to slay the final two. Perhaps then "
+"it will finally be time to eat and get some rest.\n"
+"\n"
+"... it comes as a surprise to even me that I traveled nearly halfway across "
+"the Northern Dunes in my twenty-one day expedition. It would take the "
+"caravan nearly three months to make that trip, but I do suppose the "
+"circumstances around my joruney were somewhat extenuating. On the bright "
+"side, I was able to procure some salted roc meat along the way, which should "
+"make for a fine treat for the children. It will also be nice to see some of "
+"the other Rangers again. My tale might not be that impressive to them, but "
+"at least it is an improvement over my previous encounter with the wyvern...”"
 msgstr ""
-"Batal là lực lượng tinh nhuệ của Muharib, thực hiện những cuộc tấn công đánh "
-"và chạy liên tục chống lại quân đội kẻ thù. Nhanh nhẹn và mạnh mẽ, họ thích "
-"phối hợp nhiều đòn tấn công một lúc, khiến những kẻ thù đang chạy khỏi tên "
-"bắn tiếp tục bị rìu của họ đốn hạ. Với thiên hướng chỉ nhận những nhiệm vụ "
-"táo bạo nhất, Batal thường là các anh hùng đối với những binh lính thông "
-"thường, một hình ảnh mà không ai dám can ngăn."
 
 #. [unit_type]: id=Dune Rider, race=dunefolk
 #: data/core/units/dunefolk/Rider.cfg:4
@@ -1988,24 +1958,18 @@ msgid "Dune Rider"
 msgstr "Kỵ binh bạo sói"
 
 #. [unit_type]: id=Dune Rider, race=dunefolk
-#: data/core/units/dunefolk/Rider.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Rami are excellent horsemen, able to shoot from horseback better than "
-#| "most men can manage from foot. Disdaining the use of heavy armor, Rami "
-#| "use their superior speed and agility to circle and harass their foes, "
-#| "whittling down their numbers with relentless arrows."
+#: data/core/units/dunefolk/Rider.cfg:16
 msgid ""
-"Riders are excellent horsemen, able to shoot from horseback better than most "
-"men can manage from foot. Disdaining the use of heavy armor, Riders use "
-"their superior speed and agility to circle and harass their foes, whittling "
-"down their numbers with relentless arrows."
+"The Dunefolk are prominent horse breeders who raise many different varieties "
+"of mounts to fulfill various purposes. Those who are used for hard labor are "
+"bred for power, while those for journeys or caravans are bred for endurance. "
+"For warfare, a mix of traits is usually best, though the ability to easily "
+"and rapidly traverse sand is of utmost importance. The riders of these "
+"horses primarily function as scouts and messengers, or occasionally as "
+"supporting forces for weakened lines. The crucial trait of maneuverability "
+"is what allows these horsemen to be so effective and versatile out on the "
+"rolling dunes."
 msgstr ""
-"Rami là các kỵ sĩ xuất sắc, có khả năng bắn từ lưng ngựa tốt hơn hầu hết "
-"những người làm vậy trên mặt đất. Khinh thường việc sử dụng áo giáp nặng, "
-"các Rami sử dụng tốc độ và tính nhanh nhẹn siêu việt của mình để bao vây và "
-"quấy nhiễu kẻ thù, làm tiêu hao quân số của chúng bằng những mũi tên không "
-"thương xót."
 
 #. [unit_type]: id=Dune Rover, race=dunefolk
 #: data/core/units/dunefolk/Rover.cfg:4
@@ -2023,12 +1987,14 @@ msgstr ""
 #| "they fight best at dawn or dusk, corresponding to the time when desert "
 #| "temperatures are the most reasonable."
 msgid ""
-"Rovers in many ways represent the ideal Dunefolk unit; flexible, mobile, "
-"equally effective in defense and offense as well as in ranged or close "
-"combat. They are most comfortable operating in terrain and environments "
-"common to them; the deserts and hills of their southern lands. Moreover they "
-"fight best at dawn or dusk, corresponding to the time when desert "
-"temperatures are the most reasonable."
+"Originating from the nomadic wanderers of the open deserts, Rovers, in many "
+"ways, represent the ideal Dunefolk soldier: flexible, mobile, equally "
+"effective in defense and offense as well as in ranged or close combat. They "
+"are hardy inhabitants of the deserts and hills that they call home and "
+"experienced hunters and trackers. While lacking training as formal soldiers, "
+"the skills Rovers employ for survival in the desert translate readily to "
+"warfare. Their unique trait of fighting best at dawn or dusk corresponds "
+"with the time when desert temperatures are the most habitable."
 msgstr ""
 "Jundi theo nhiều cách, đại diện cho đơn vị Khalifate lí tưởng: linh hoạt, cơ "
 "động, hiệu quả cân bằng trong phòng thủ và tấn công cũng như trong chiến đấu "
@@ -2038,58 +2004,49 @@ msgstr ""
 "điểm khi nhiệt độ sa mạc ở mức dễ chịu nhất."
 
 #. [unit_type]: id=Dune Scorcher, race=dunefolk
-#: data/core/units/dunefolk/Scorcher.cfg:4
+#: data/core/units/dunefolk/Scorcher.cfg:5
 msgid "Dune Scorcher"
 msgstr ""
 
 #. [unit_type]: id=Dune Scorcher, race=dunefolk
-#: data/core/units/dunefolk/Scorcher.cfg:23
-#, fuzzy
-#| msgid ""
-#| "Qatif-al-nar spend so much time experimenting with their weapons that "
-#| "they smell constantly of ash and flame. Regarded with wariness by their "
-#| "fellow troops, Qatif-al-nar can be easily located in battle by the "
-#| "cleared charred area around them, a testament to the success of their "
-#| "experiments."
+#: data/core/units/dunefolk/Scorcher.cfg:18
 msgid ""
-"Scorchers spend so much time experimenting with their weapons that they "
-"smell constantly of ash and flame. Regarded with wariness by their fellow "
-"troops, Scorchers can be easily located in battle by the cleared charred "
-"area around them, a testament to the success of their experiments."
+"The Scorcher’s name is derived not from the destruction they wreak on "
+"adversarial formations, but on their own singed appearance. By experimenting "
+"endlessly with their equipment, most Scorchers inevitably overstep their "
+"bounds and are seared by the highly volatile Sanbaar sap that soaks their "
+"weapons. Bearing their burns as a mark of pride in their work, these archers "
+"relish igniting great swaths of flame on the battlefield, though this "
+"sometimes results in unintended friendly fire as well."
 msgstr ""
-"Qatif-al-nar dành nhiều thời gian thử nghiệm vũ khí đến nỗi họ luôn luôn "
-"đánh hơi được tro và khói lửa. Được đồng đội nhìn với vẻ thận trọng, có thể "
-"dễ dàng định vị các Qatif-al-nar khi chiến đấu bằng khu vực bị cháy trụi "
-"xung quanh họ, một bằng chứng cho sự thành công của các thử nghiệm."
+
+#. [female]
+#: data/core/units/dunefolk/Scorcher.cfg:91
+#, fuzzy
+#| msgid "female^Necromancer"
+msgid "female^Dune Scorcher"
+msgstr "Pháp sư gọi hồn"
 
 #. [unit_type]: id=Dune Skirmisher, race=dunefolk
 #: data/core/units/dunefolk/Skirmisher.cfg:4
 #, fuzzy
 #| msgid "Saurian Skirmisher"
-msgid "Dune Skirmisher"
+msgid "female^Dune Skirmisher"
 msgstr "Thằn lằn đột kích"
 
 #. [unit_type]: id=Dune Skirmisher, race=dunefolk
-#: data/core/units/dunefolk/Skirmisher.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Those Jundi who are proficient at scouting are elevated into the ranks of "
-#| "the Monawish. Discarding their bow, the Monawish focus on developing "
-#| "their swiftness of foot to allow them to flow in and out of combat. They "
-#| "are often used to harry the flanks of opposing forces, and it is said to "
-#| "be easier to catch the wind in your hand than to catch a Monawish."
+#: data/core/units/dunefolk/Skirmisher.cfg:17
 msgid ""
-"Those Rovers who are proficient at scouting are elevated into the ranks of "
-"the Skirmishers. Discarding their bow, Skirmishers focus on developing their "
-"swiftness of foot to allow them to flow in and out of combat. They are often "
-"used to harry the flanks of opposing forces, and it is said to be easier to "
-"catch the wind in your hand than to catch a Skirmisher."
+"Born and raised out on the open sands, Dune Skirmishers are accustomed to "
+"the harsh, arid desert heat and inhospitable terrain. Compared to even other "
+"Dunefolk, Skirmishers are unnaturally agile on the unstable dunes, allowing "
+"them to safeguard their herds and hunt the barrens with ease. When applied "
+"to battle, the same agility allows them to both slip through enemy lines and "
+"avoid all manner of attack. These skills make Skirmishers effective "
+"saboteurs, capable of cutting of escape routes and supply lines, "
+"assassinating key units, or pincering an enemy formation into a "
+"disadvantageous position."
 msgstr ""
-"Những Jundi giỏi trinh sát được thăng cấp vào hàng ngũ Monawish. Vứt bỏ "
-"cung, các Monawish tập trung phát triển khả năng di chuyển mau lẹ để cho "
-"phép họ luồn vào và ra khỏi trận chiến. Họ thường được sử dụng để quấy nhiễu "
-"sườn của các lực lượng đối lập, và người ta nói rằng dễ bắt gió trong tay "
-"hơn bắt một Monawish."
 
 #. [unit_type]: id=Dune Soldier, race=dunefolk
 #: data/core/units/dunefolk/Soldier.cfg:4
@@ -2097,30 +2054,16 @@ msgid "Dune Soldier"
 msgstr ""
 
 #. [unit_type]: id=Dune Soldier, race=dunefolk
-#: data/core/units/dunefolk/Soldier.cfg:19
-#, fuzzy
-#| msgid ""
-#| "The Arif form the backbone of any Khalifate foot advance. Many come from "
-#| "noble or military families, and have spent most of their lives training "
-#| "their craft. Given their intense focus on swordplay, they are often sent "
-#| "against fortified enemy positions to create a breach for the remaining "
-#| "troops to exploit. The sight of Arif on the march, shields high, has "
-#| "caused many a defender to worry about the strength of their walls."
+#: data/core/units/dunefolk/Soldier.cfg:16
 msgid ""
-"The Soldier forms the backbone of any Dunefolk foot advance. Many come from "
-"noble or military families, and have spent most of their lives training "
-"their craft. Given their intense focus on swordplay, they are often sent "
-"against fortified enemy positions to create a breach for the remaining "
-"troops to exploit. The sight of Soldiers on the march, shields high, has "
-"caused many a defender to worry about the strength of their walls."
+"While most Dunefolk castes serve an additional practical purpose beyond only "
+"direct warfare, Dune Soldiers are among the few who are completely dedicated "
+"to military purposes. By train intensely to hone their skill in swordplay, "
+"Soldiers learn to navigate tricky fights in close quarters and repel ranged "
+"assaults with their shields. A typical Dunefolk formation makes use of this "
+"adeptness by placing Soldiers in a spaced pattern, allowing them to draw out "
+"clustered enemy lines and overwhelm their foes in pseudo single combat."
 msgstr ""
-"Arif tạo thành trụ cột của mọi lực lượng bộ binh Khalifate. Nhiều người đến "
-"từ các gia đình quý tộc hoặc quân sự, và đã dành hầu hết cuộc đời rèn luyện "
-"chuyên môn. Tập trung cao độ vào kiếm thuật, họ thường được phái đi chiến "
-"đấu tại những vị trí được củng cố của kẻ thù để tạo ra một lỗ hổng cho các "
-"binh lính còn lại khai thác. Cảnh tượng các chiến binh Arif đang hành quân "
-"với những tấm khiên giơ cao đã khiến cho nhiều người phòng thủ phải lo lắng "
-"về sức mạnh của những bức tường của mình."
 
 #. [unit_type]: id=Dune Spearguard, race=dunefolk
 #: data/core/units/dunefolk/Spearguard.cfg:4
@@ -2128,27 +2071,19 @@ msgid "Dune Spearguard"
 msgstr ""
 
 #. [unit_type]: id=Dune Spearguard, race=dunefolk
-#: data/core/units/dunefolk/Spearguard.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Although the Khalifate armies are known for their astonishing mobility "
-#| "and fierce attack, they can be able defenders. Mudafi excel at holding "
-#| "their ground, keeping opponents at bay with long, razor sharp spears. "
-#| "Their preferred strategy is to gradually wear down enemies, until they "
-#| "can be defeated in a vicious counter stroke."
+#: data/core/units/dunefolk/Spearguard.cfg:16
 msgid ""
-"Although the Dunefolk armies are known for their astonishing mobility and "
-"fierce attack, they can be able defenders. Spearguard excel at holding their "
-"ground, keeping opponents at bay with long, razor sharp spears. Their "
-"preferred strategy is to gradually wear down enemies, until they can be "
-"defeated in a vicious counter stroke."
+"The push and pull of any battle requires varying degrees of offense and "
+"defense. The Dunefolk no doubt value offense as the greater of the two and "
+"focus their greatest efforts on training skilled swordsmen, but in any band "
+"of warriors, a small number of soldiers opt to trade in their sword and "
+"instead fulfill the vital duties of the Spearguard. Guarding crucial supply "
+"lines and vantage points, Spearguards are most often positioned slightly "
+"behind the main line and used as a supporting force or a deterrent to "
+"flanking attacks. Though these fighters tend to see less direct combat than "
+"their sword-wielding brethren, they are highly skilled with spear and shield "
+"and more than capable of repelling most advances."
 msgstr ""
-"Mặc dù quân đội Khalifate được biết đến với tính cơ động đáng kinh ngạc và "
-"khả năng tấn công mãnh liệt, học cũng có thể là những người phòng thủ tốt. "
-"Các Mudafi giỏi trong việc trấn giữ vị trí, dồn kẻ thù vào nước đường cùng "
-"với những cây giáo dài, sắc như dao cạo. Chiến lược được ưa thích của họ là "
-"từ từ tiêu hao sinh lực địch, đến khi chúng có thể bị đánh bại trong một đòn "
-"phản công bất ngờ."
 
 #. [unit_type]: id=Dune Spearmaster, race=dunefolk
 #: data/core/units/dunefolk/Spearmaster.cfg:4
@@ -2158,30 +2093,51 @@ msgid "Dune Spearmaster"
 msgstr "Kiếm sĩ người rồng"
 
 #. [unit_type]: id=Dune Spearmaster, race=dunefolk
-#: data/core/units/dunefolk/Spearmaster.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Spread across the Khalifate's lands are lonely towers and garrisons that "
-#| "provide shelter to caravans and locals from bandits and monsters. These "
-#| "bastions are defended by the most determined of soldiers, who have often "
-#| "faced off against overwhelming odds only to repel the invaders. In an "
-#| "army they can be trusted to hold any position or line, long after lesser "
-#| "soldiers and men have fled in terror."
+#: data/core/units/dunefolk/Spearmaster.cfg:17
 msgid ""
-"Spread across the Dunefolk's lands are lonely towers and garrisons that "
-"provide shelter to caravans and locals from bandits and monsters. These "
-"bastions are defended by the most determined of soldiers, who have often "
-"faced off against overwhelming odds only to repel the invaders. In an army "
-"they can be trusted to hold any position or line, long after lesser soldiers "
-"and men have fled in terror."
+"Among the Dunefolk armies, the highest prestige goes to the master swordsmen "
+"leading every assault. Though honored for their service in battle, those who "
+"wield the spear and shield are largely forgotten beyond that: the path of a "
+"spearman is to fulfill the least desirable role in combat without glory or "
+"recognition. When a Dunefolk assault fails and a retreat must be had, a rank "
+"of Spearguards is usually left behind to hold back the counterassault. "
+"Though providing a formidable defense, the shield line is inevitably "
+"overwhelmed and most of the Spearguards lost to the maw of war. On the off "
+"chance that one manages to survive and find his way back to the recuperating "
+"army, he is often reprimanded for failing to stand his ground and die with "
+"the rest of his unnamed brethren. Nevertheless, after a minor scolding, the "
+"warrior is accepted back and carries his hard won experience into the next "
+"battle.\n"
+"\n"
+"It is not a formal title, but ‘Spearmaster’ is what Spearguards call their "
+"companions who manage to return from the usually suicidal defense that the "
+"Dunefolk mount to guard their retreats. Hardly a term of praise or "
+"distinction, it is still a modicum of recognition for those who were "
+"prepared to die as nameless martyrs to protect their brethren."
 msgstr ""
-"Trải rộng khắp các vùng đất của Khalifate là những tòa tháp và doanh trại "
-"cung cấp nơi trú ẩn cho các đoàn người hành hương và người dân địa phương "
-"khỏi trộm cướp và quái vật. Các pháo đài này được bảo vệ bởi những binh lính "
-"kiên quyết nhất, những người thường đã đối mặt với những tỷ lệ áp đảo chỉ để "
-"đẩy lùi những kẻ xâm lược. Trong một quân đội, chúng có thể được tin cậy để "
-"giữ bất kỳ vị trí hoặc hàng ngũ nào, lâu sau khi binh lính và mọi người đã "
-"chạy trốn trong khiếp sợ."
+
+#. [unit_type]: id=Dune Strider, race=dunefolk
+#: data/core/units/dunefolk/Strider.cfg:4
+#, fuzzy
+#| msgid "female^Fugitive"
+msgid "female^Dune Strider"
+msgstr "Kẻ trốn tránh"
+
+#. [unit_type]: id=Dune Strider, race=dunefolk
+#: data/core/units/dunefolk/Strider.cfg:17
+msgid ""
+"The power of any Dunefolk assault is inhibited by one major drawback: "
+"organized Dunefolk forces tend to be rather slow. Because of this, enemy "
+"forces often have the ability to regroup and call upon reinforcements, in "
+"which case a second assault becomes much more difficult. To combat this, "
+"Dune Striders exchange their rudimentary slings with heavy bolas, allowing "
+"them to slow retreating lines from the side and prevent a clean escape. The "
+"same tactic can be applied in the opposite scenario of a Dunefolk retreat; "
+"an advancing army can be hampered, allowing injured Dunefolk warriors time "
+"to recuperate. The danger of such a tactic is that despite their "
+"elusiveness, Striders are fairly fragile in direct combat and are easily "
+"taken down if left exposed."
+msgstr ""
 
 #. [unit_type]: id=Dune Sunderer, race=dunefolk
 #: data/core/units/dunefolk/Sunderer.cfg:4
@@ -2190,28 +2146,18 @@ msgstr ""
 
 #. [unit_type]: id=Dune Sunderer, race=dunefolk
 #: data/core/units/dunefolk/Sunderer.cfg:16
-#, fuzzy
-#| msgid ""
-#| "Those Khaiyal who distinguish themselves in battle are given the "
-#| "opportunity to prove themselves worthy of becoming a Faris. Those who "
-#| "pass the trial are given the traditional barding for their horse, "
-#| "distinguishing them from the rest of the Khalifate cavalry. Consummate "
-#| "horsemen, the Faris have long claimed they need only a single lance "
-#| "strike to kill a man."
 msgid ""
-"Those Piercers who distinguish themselves in battle are given the "
-"opportunity to prove themselves worthy of becoming a Sunderer. Those who "
-"pass the trial are given the traditional barding for their horse, "
-"distinguishing them from the rest of the Dunefolk cavalry. Consummate "
-"horsemen, the Sunderers have long claimed they need only a single lance "
-"strike to kill a man."
+"Among the many different type of Dune horsemen, there are those who most "
+"enjoy the frantic melee at the heart of battle. Those who are so disposed—"
+"and skilled enough to survive multiple skirmishes—are recruited into the "
+"ranks of the Sunderers. As sturdy, robust warriors, these men usually bear "
+"short-ranged maces, a rather odd choice of weaponry for most riders. That is "
+"not to say Sunderers are impotent in any way: though not typically effective "
+"chargers, even a small group of Sunderers is powerful enough to breach any "
+"enemy line through sheer force. In a situation that requires it, these "
+"horsemen possess enough skill with the bow to weaken enemy forces or pick "
+"off fleeing stragglers."
 msgstr ""
-"Các Khaiyal có năng lực chiến đấu nổi trội được cho cơ hội để chứng tỏ bản "
-"thân mình xứng đáng trở thành Faris. Những người đã vượt qua thử thách được "
-"trao tặng một tấm giáp sắt truyền thống cho ngựa, phân biệt họ với những "
-"người còn lại của lực lượng kỵ binh Khalifate. Là những kỵ sĩ tài giỏi, các "
-"Faris từ lâu đã khẳng định họ chỉ cần một một đòn đánh bằng thương duy nhất "
-"để giết đối thủ."
 
 #. [unit_type]: id=Dune Swiftrider, race=dunefolk
 #: data/core/units/dunefolk/Swiftrider.cfg:4
@@ -2219,23 +2165,16 @@ msgid "Dune Swiftrider"
 msgstr ""
 
 #. [unit_type]: id=Dune Swiftrider, race=dunefolk
-#: data/core/units/dunefolk/Swiftrider.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Rami who demonstrate exceptional skill with the bow are made into Saree, "
-#| "spending hours every day practicing and building a rapport with their "
-#| "steed. This has made them the fastest riders in the Khalifate armies, and "
-#| "a wise Khalid uses this to their advantage."
+#: data/core/units/dunefolk/Swiftrider.cfg:16
 msgid ""
-"Riders who demonstrate exceptional skill with the bow are made into "
-"Swiftriders, spending hours every day practicing and building a rapport with "
-"their steed. This has made them the fastest riders in the Dunefolk armies, "
-"and a wise Warmaster uses this to their advantage."
+"Swiftriders are those who favor archery over melee weaponry. Fleet and "
+"elusive, these horsemen are experts at harassing less mobile foes with hails "
+"of arrows. As excellent skirmishers in the desert, Swiftriders are most "
+"often used as combat scouts or to hunt down fleeing enemies. Though not "
+"usually trained for infiltration or spying, these equestrians’ ability to "
+"pass messages from afar with their long-ranged arrows is of great use to "
+"maintain communication among the Dunefolk armies."
 msgstr ""
-"Những Rami chứng minh được năng lực ngoại lệ với cung tạo thành lực lượng "
-"Saree, dành hàng giờ mỗi ngày tập luyện và xây dựng mối quan hệ với con "
-"chiến mã của họ. Điều này đã khiến họ trở thành những kỵ binh nhanh nhất "
-"trong quân đội Khalifate, và một Khalid khôn ngoan sẽ sử dụng lợi thế này."
 
 #. [unit_type]: id=Dune Swordsman, race=dunefolk
 #: data/core/units/dunefolk/Swordsman.cfg:4
@@ -2245,26 +2184,20 @@ msgid "Dune Swordsman"
 msgstr "Lính kiếm"
 
 #. [unit_type]: id=Dune Swordsman, race=dunefolk
-#: data/core/units/dunefolk/Swordsman.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Armed with their sword, shield and faith, Ghazi are warriors of some "
-#| "renown among the Khalifate armies. They have further refined their combat "
-#| "arts, adding a powerful shield bash to knock back unsuspecting enemies. "
-#| "Though few in number, their presence can be decisive in dislodging even "
-#| "the most hardened redoubt."
+#: data/core/units/dunefolk/Swordsman.cfg:16
 msgid ""
-"Armed with their sword and shield, Swordsman are warriors of some renown "
-"among the Dunefolk armies. They have further refined their combat arts, "
-"adding a powerful shield bash to knock back unsuspecting enemies. Though few "
-"in number, their presence can be decisive in dislodging even the most "
-"hardened redoubt."
+"In a direct clash of large armies, the Dunefolk commonly encounter either "
+"densely packed ‘Shield Walls’ or heavily fortified enemy positions. Striking "
+"against these highly organized fronts can be quite challenging; an enemy "
+"formation might leave only small, brief gaps between shields and armor, "
+"while threatening a counterstrike with a thrust of spears and projectiles. "
+"Thus, Dunefolk swordplay places a heavy emphasis on power and more "
+"importantly, precision. A warrior might find only one chance to strike at an "
+"enemy, but an experienced Dune Swordsman is more than likely to seize the "
+"opportunity and make his strike count. Honing in with nearly unnatural "
+"accuracy, a contingent of of Swordsmen is enough to crack even the sternest "
+"of defenses."
 msgstr ""
-"Được trang bị kiếm, khiên và niềm tin, Ghazi là những chiến binh có tiếng "
-"tăm trong quân đội Khalifate. Họ đã tôi luyện hơn nữa thuật chiến đấu của "
-"mình, thêm một cú đập bằng khiên mạnh mẽ để hạ gục những kẻ thù không ngờ "
-"vực. Dù ít về quân số, sự có mặt của họ có thể là yếu tố quyết định để đánh "
-"bật kẻ thù khỏi những đốn trú khó khăn nhất."
 
 #. [unit_type]: id=Dune Warmaster, race=dunefolk
 #: data/core/units/dunefolk/Warmaster.cfg:4
@@ -2275,31 +2208,16 @@ msgstr "Kiếm sĩ người rồng"
 
 #. [unit_type]: id=Dune Warmaster, race=dunefolk
 #: data/core/units/dunefolk/Warmaster.cfg:26
-#, fuzzy
-#| msgid ""
-#| "Among every generation, a warrior elevates himself above his peers and "
-#| "foes; They seem to be able to alter the destiny of the world themselves. "
-#| "Often given the name Khalid, after a legendary leader of old, these "
-#| "individuals are celebrated for the piety and skill. Their travels and "
-#| "travails are told endlessly around the campfire with the reverent tones "
-#| "of those that speak of living legends."
 msgid ""
-"Among every generation, a warrior elevates himself above his peers and foes; "
-"They seem to be able to alter the destiny of the world themselves. Often "
-"given the name Warmaster, these individuals are celebrated for their "
-"strength and skill. Their travels and travails are told endlessly around the "
-"campfire with the reverent tones of those that speak of living legends."
-msgstr ""
-"Trong mọi thế hệ, luôn có một chiến binh nổi trội hơn đồng đội và địch thủ. "
-"Họ dường như có thể thay đổi được vận mệnh của thế giới. Thường được gọi "
-"bằng cái tên Khalid, theo tên một vị lãnh tụ huyền thoại ngày xưa, các cá "
-"nhân này được tán dương vì lòng trung thành và tài năng. Những cuộc hành "
-"trình và công việc của họ được kể không ngớt quanh lửa trại với giọng điệu "
-"tôn kính của những người nói về những huyền thoại sống."
-
-#. [attack]: type=impact
-#: data/core/units/dunefolk/Warmaster.cfg:44
-msgid "pommel strike"
+"In direct contrast with other Dunefolk commanders, Warmasters focus heavily "
+"on rousing their troops and maintaining high morale. These generals are "
+"often found at the forefront of battle, leading by example and fighting and "
+"bleeding alongside their soldiers. While Warmasters usually leave the finer "
+"details of strategy to their Captains, they are certainly capable tacticians "
+"as well; many a battle has been won on an inventive or surprise maneuver "
+"that is often the creative byproduct of combat experience rather than formal "
+"training. Said to be a veteran of a thousand battles, a Warmaster is an "
+"expert leader that should never be underestimated."
 msgstr ""
 
 #. [unit_type]: id=Dune Windrider, race=dunefolk
@@ -2308,28 +2226,20 @@ msgid "Dune Windrider"
 msgstr ""
 
 #. [unit_type]: id=Dune Windrider, race=dunefolk
-#: data/core/units/dunefolk/Windrider.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The elite of the Saree are the Jawal, horse archers of such speed and "
-#| "dexterity that rumors are always spread that they have elven blood. "
-#| "Irritated at such mystical nonsense, the Jawal can frequently be found "
-#| "demonstrating their exceptional skill at the forefront of battle, riding "
-#| "with great speed through the lines of battle to rain arrows down upon the "
-#| "enemy."
+#: data/core/units/dunefolk/Windrider.cfg:17
 msgid ""
-"The elite of the Swiftriders are the Windriders, horse archers of such speed "
-"and dexterity that rumors are always spread that they have elven blood. "
-"Irritated at such mystical nonsense, the Windriders can frequently be found "
-"demonstrating their exceptional skill at the forefront of battle, riding "
-"with great speed through the lines of battle to rain arrows down upon the "
-"enemy."
+"Archery on horseback presents a number of additional challenges that very "
+"few are able to overcome. What separates the renowned Windrider caste from "
+"other bowmen is their ability to not only master these difficulties, but "
+"turn them into benefits instead. Making great use of their steeds’ "
+"incredible speed, a Windrider is actually a better archer when mounted as "
+"compared to on land. The extra momentum from riding on horseback provides "
+"additional force to their already potent shots, and by riding in meandering "
+"patterns, these bowmen are able to curve the trajectories of their arrows, "
+"reaching targets they might not be able to otherwise. Having honed their "
+"craft to its apex, Windriders are undisputed masters of ranged combat among "
+"the Dunefolk."
 msgstr ""
-"Thành phần ưu tú của Saree là Jawal, những cung thủ cưỡi ngựa có tốc độ và "
-"sự khéo léo cao đến mức luôn có tin đồn lan truyền rằng họ có dòng máu thần "
-"tiên. Khó chịu trước những lời hoang đường vô lý đó, các Jawal thường thể "
-"hiện năng lực ngoại lệ của mình ở tiền tuyến, cưỡi ngựa với tốc độ cao xuyên "
-"qua hàng ngũ chiến đấu để trút những mũi tên vào kẻ thù."
 
 #. [unit_type]: id=Wyvern Rider, race=monster, description=
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:4
@@ -2664,6 +2574,13 @@ msgstr ""
 "người tinh thông phép thuật cũng bí ẩn; mặc dù có thể nói rằng họ được mọi "
 "người kính trọng, nhưng người ta chỉ biết rất ít về vai trò và mục đích thực "
 "sự của họ trong xã hội đó."
+
+#. [attack]: type=impact
+#: data/core/units/elves/Enchantress.cfg:36 data/core/units/elves/Shaman.cfg:37
+#: data/core/units/elves/Sorceress.cfg:38
+#: data/core/units/wose/Wose_Shaman.cfg:49
+msgid "entangle"
+msgstr "bẫy"
 
 #. [unit_type]: id=Elvish Fighter, race=elf
 #: data/core/units/elves/Fighter.cfg:4
@@ -3147,11 +3064,6 @@ msgstr ""
 "mùa màng của kẻ thù. Chúng cũng mang theo lưới để hả hê phá phách những kẻ "
 "đang định tập hợp lực lượng để phòng thủ hay phản công."
 
-#. [attack]: type=fire
-#: data/core/units/goblins/Pillager.cfg:41
-msgid "torch"
-msgstr "đuốc"
-
 #. [attack]: type=impact
 #: data/core/units/goblins/Pillager.cfg:50
 #: data/core/units/merfolk/Entangler.cfg:34
@@ -3308,6 +3220,15 @@ msgstr ""
 "là tốc độ, những chiến binh này tạo nên nòng cốt của các lực lượng kỵ binh "
 "hùng mạnh. Một đại hiệp sĩ dẫn đầu một cuộc xung kích là cảnh tượng kinh "
 "hoàng với bộ binh, và thường là đủ để chọc thủng thẳng qua một phòng tuyến."
+
+#. [attack]: type=blade
+#: data/core/units/humans/Horse_Grand_Knight.cfg:24
+#: data/core/units/humans/Loyalist_Cavalier.cfg:37
+#: data/core/units/humans/Loyalist_General.cfg:43
+#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:38
+#: data/core/units/humans/Loyalist_Royal_Guard.cfg:27
+msgid "longsword"
+msgstr "kiếm dài"
 
 #. [unit_type]: id=Knight, race=human
 #: data/core/units/humans/Horse_Knight.cfg:4
@@ -5154,6 +5075,54 @@ msgstr ""
 "những xúc tu mạnh mẽ, hoặc phun mực đen có chất độc từ xa. Cách tốt nhất để "
 "sống sót khi gặp những quái vật này là ở yên trên bờ."
 
+#. [unit_type]: id=Elder Falcon, race=falcon
+#: data/core/units/monsters/Elder_Falcon.cfg:4
+msgid "Elder Falcon"
+msgstr "Chim ưng trưởng thành"
+
+#. [unit_type]: id=Elder Falcon, race=falcon
+#: data/core/units/monsters/Elder_Falcon.cfg:18
+msgid ""
+"Elder Falcons bear the telltale scars of veteran warriors from protecting "
+"their masters, their bodies proof of repeated dives into a swirling melee. "
+"Stronger and faster than their younger kin, they are rumored to hit with "
+"enough force to remove an enemy's head. "
+msgstr ""
+"Chim ưng trưởng thành mang những vết sẹo đặc trưng của các chiến binh kỳ cựu "
+"từ việc bảo vệ chủ nhân của mình, bằng chứng của những lần bổ nhào liên tục "
+"để cận chiến. Mạnh hơn và nhanh hơn các đồng loại trẻ tuổi, người ta đồn "
+"rằng chúng có thể đánh với lực đủ để làm bay đầu kẻ thù."
+
+#. [attack]: type=pierce
+#: data/core/units/monsters/Elder_Falcon.cfg:35
+#: data/core/units/monsters/Falcon.cfg:34 data/core/units/monsters/Roc.cfg:36
+msgid "beak"
+msgstr "mỏ"
+
+#. [unit_type]: id=Falcon, race=falcon
+#: data/core/units/monsters/Falcon.cfg:4
+msgid "Falcon"
+msgstr "Chim ưng"
+
+#. [unit_type]: id=Falcon, race=falcon
+#: data/core/units/monsters/Falcon.cfg:17
+#, fuzzy
+#| msgid ""
+#| "Seen as status symbols of the nobles, falcons are precious possessions "
+#| "normally used for sport. The same techniques are employed to rend and "
+#| "tear the enemies of the Khalifate, and their great speed is a boon to "
+#| "scouting out the land."
+msgid ""
+"Seen as status symbols of the nobles, falcons are precious possessions "
+"normally used for sport. The same techniques are employed to rend and tear "
+"foes on the battlefield, and their great speed is a boon to scouting out the "
+"land."
+msgstr ""
+"Được xem là biểu tượng địa vị của tầng lớp quý tộc, chim ưng là những tài "
+"sản quý giá thường được sử dụng để giải trí. Chim ưng cũng được sử dụng để "
+"xé xác những kẻ thù của Khalifate, và tốc độ tuyệt vời của chúng là một "
+"thuận lợi để trinh sát các vùng đất."
+
 #. [unit_type]: id=Fire Dragon, race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:4
 msgid "Fire Dragon"
@@ -5249,7 +5218,7 @@ msgid "Giant Scorpion"
 msgstr "Bọ cạp khổng lồ"
 
 #. [unit_type]: id=Giant Scorpion, race=monster
-#: data/core/units/monsters/Giant_Scorpion.cfg:41
+#: data/core/units/monsters/Giant_Scorpion.cfg:42
 msgid ""
 "A normal scorpion is dangerous enough — the deadliness of one the size of a "
 "man needs little explanation."
@@ -5258,19 +5227,18 @@ msgstr ""
 "cạp có kích thước bằng cả một người thì không cần giải thích nhiều."
 
 #. [attack]: type=pierce
-#: data/core/units/monsters/Giant_Scorpion.cfg:46
-#: data/core/units/monsters/Giant_Scorpling.cfg:31
+#: data/core/units/monsters/Giant_Scorpion.cfg:47
+#: data/core/units/monsters/Giant_Scorpling.cfg:32
 msgid "sting"
 msgstr "nọc"
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Giant_Scorpion.cfg:58
-#: data/core/units/monsters/Giant_Scorpling.cfg:43
+#: data/core/units/monsters/Giant_Scorpion.cfg:59
+#: data/core/units/monsters/Giant_Scorpling.cfg:44
 msgid "pincers"
 msgstr "càng"
 
 #. [variation]
-#: data/core/units/monsters/Giant_Scorpion.cfg:110
 #: data/core/units/monsters/Giant_Scorpion.cfg:111
 msgid "Sand Scuttler"
 msgstr ""
@@ -5291,7 +5259,7 @@ msgid "Giant Scorpling"
 msgstr "Bọ cạp khổng lồ"
 
 #. [unit_type]: id=Giant Scorpling, race=monster
-#: data/core/units/monsters/Giant_Scorpling.cfg:26
+#: data/core/units/monsters/Giant_Scorpling.cfg:27
 msgid ""
 "One of the most potent known venoms is that of the monstrous scorpions of "
 "the frontier. Fetching a high price by assassins and apothecaries alike, "
@@ -5351,7 +5319,7 @@ msgid ""
 "makes them the tool of choice for ambitious but inexperienced summoners."
 msgstr ""
 
-#. [unit_type]: id=Roc, race=roc, description=
+#. [unit_type]: id=Roc, race=monster, description=
 #: data/core/units/monsters/Roc.cfg:4
 msgid "Roc"
 msgstr ""
@@ -5483,12 +5451,52 @@ msgid ""
 "from venturing too far onto the mountains they are said to inhabit."
 msgstr ""
 
-#. [unit_type]: id=Young Roc, race=roc, description=
-#: data/core/units/monsters/Young_Roc.cfg:4
+#. [unit_type]: id=Naga Bladewhirler, race=naga
+#: data/core/units/nagas/Bladewhirler.cfg:4
+msgid "Naga Bladewhirler"
+msgstr ""
+
+#. [unit_type]: id=Naga Bladewhirler, race=naga
+#: data/core/units/nagas/Bladewhirler.cfg:18
+msgid ""
+"Experienced warriors of the Southern Naga often find work as mercenaries, "
+"usually hired by neighboring Dunefolk to control key waterways near the "
+"coastline. Though generally amicable with their wealthy employers, this "
+"friendliness should not be mistaken for loyalty. Bladewhirlers, in "
+"particular, are known for readily switching between rival city-state "
+"factions at the start of each shipping season, when demand for water-based "
+"protection is the highest. By encouraging a healthy amount of competition, "
+"these nagas ensure that their services are always sought after by one tribe "
+"or another."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/nagas/Bladewhirler.cfg:28
+#: data/core/units/nagas/Dervish.cfg:30
 #, fuzzy
-#| msgid "Young Ogre"
-msgid "Young Roc"
-msgstr "Quỷ khổng lồ trẻ tuổi"
+#| msgid "war blade"
+msgid "curved blade"
+msgstr "kiếm"
+
+#. [unit_type]: id=Naga Dervish, race=naga
+#: data/core/units/nagas/Dervish.cfg:4
+msgid "Naga Dervish"
+msgstr ""
+
+#. [unit_type]: id=Naga Dervish, race=naga
+#: data/core/units/nagas/Dervish.cfg:19
+msgid ""
+"While they sometimes still stand in as sellswords for potential Dunefolk "
+"allies, Naga Dervishes are more often the keepers of trade routes and "
+"resource beds close to waterways. For the right fee or exchange of goods, a "
+"Dervish will guarantee safe travel or free access to valuable supplies in "
+"his territory. Rubbed the wrong way and a Dervish becomes a fearsome foe—not "
+"because of their personal strength in combat, but instead due to the "
+"numerous allies that he can call upon to quash any potential nuisance. "
+"Though perfectly capable warriors when the time is necessary, these "
+"experienced mercenaries know perfectly well that the best methods for "
+"generating money are those that do not place themselves in danger."
+msgstr ""
 
 #. [unit_type]: id=Naga Fighter, race=naga
 #: data/core/units/nagas/Fighter.cfg:4
@@ -5557,6 +5565,54 @@ msgstr ""
 "những đối thủ hùng mạnh trên địa hình trống trải, mà khả năng bơi lội còn "
 "cho chúng sự linh hoạt nguy hiểm chết người."
 
+#. [unit_type]: id=Naga Ringcaster, race=naga
+#: data/core/units/nagas/Ringcaster.cfg:4
+#, fuzzy
+#| msgid "Naga Fighter"
+msgid "Naga Ringcaster"
+msgstr "Đấu sĩ người rắn"
+
+#. [unit_type]: id=Naga Ringcaster, race=naga
+#: data/core/units/nagas/Ringcaster.cfg:17
+msgid ""
+"The blade ring, or chakram, is the signature weapon of the southern Naga and "
+"their renowned Ringcasters. These nagas choose their tools with great care: "
+"the process of forging a chakram underwater is quite tricky and usually "
+"results in weapons with a fair bit of variance. Each Ringcaster picks a "
+"specific set of chakrams that suits them, whether it be rings with high "
+"uniformity for faster spinning, blades with a slight bit of wobble for "
+"unpredictability, or lopsided rings for curved trajectories. As different as "
+"each blade ring is coming out of the forge, each Ringcaster has a different "
+"fighting style to which their tools are tailored."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/nagas/Ringcaster.cfg:28
+#: data/core/units/nagas/Ringcaster.cfg:37 data/core/units/nagas/Zephyr.cfg:41
+#: data/core/units/nagas/Zephyr.cfg:50
+msgid "chakram"
+msgstr ""
+
+#. [unit_type]: id=Naga Slasher, race=naga
+#: data/core/units/nagas/Slasher.cfg:4
+#, fuzzy
+#| msgid "Naga Fighter"
+msgid "Naga Slasher"
+msgstr "Đấu sĩ người rắn"
+
+#. [unit_type]: id=Naga Slasher, race=naga
+#: data/core/units/nagas/Slasher.cfg:18
+msgid ""
+"In contrast to the heavily melee-focused style of their northern brethren, "
+"young Naga of the southern tribes prefer to carry small bows, with which "
+"they used to pepper their prey with arrows. While finishing off any water-"
+"based enemies usually must be done at close range, softening foes with "
+"ranged attacks is usually much less dangerous than rushing headlong directly "
+"into the fray. Sometimes viewed as cowardly by more proper Naga warriors, "
+"these fighters are nonetheless effective when it comes time to engage in "
+"warfare."
+msgstr ""
+
 #. [unit_type]: id=Naga Warrior, race=naga
 #: data/core/units/nagas/Warrior.cfg:4
 msgid "Naga Warrior"
@@ -5601,6 +5657,51 @@ msgstr ""
 "và xoay cơ thể để tránh đòn. Điều này khiến chúng trở nên nguy hiểm trên "
 "cạn, nhưng sức cản của nước gây trở ngại lớn cho khả năng này."
 
+#. [unit_type]: id=Naga Zephyr, race=naga
+#: data/core/units/nagas/Zephyr.cfg:4
+#, fuzzy
+#| msgid "Naga Fighter"
+msgid "Naga Zephyr"
+msgstr "Đấu sĩ người rắn"
+
+#. [unit_type]: id=Naga Zephyr, race=naga
+#: data/core/units/nagas/Zephyr.cfg:18
+msgid ""
+"The Southern Naga commonly recount a curious story about the Wind Spirit, "
+"Zefra and the aetherial chakram:\n"
+"\n"
+"In the distant past, there was a chakram wielder who was possessed of "
+"legendary skill. It is said that he could cleave the very seas with a flurry "
+"of blades, fell a hundred foes before a single could reach him, and deflect "
+"a thousand arrows without being struck. Called by the name of Xylrix, "
+"tempest, he was a warrior whose arrogance was as great as his talent. He was "
+"always more than willing to boast his prowess to any and all who would watch "
+"him. Then one day, while flaunting himself to a band of young Nagini, he "
+"chose a sacred Allnai tree as his target.\n"
+"\n"
+"‘Watch,’ he bellowed, and split the tree straight in two.\n"
+"\n"
+"In that moment, a great wind surrounded him and the Wind Spirit’s voice "
+"echoed in his ears, ‘You think yourself mighty for slaying my hapless "
+"offspring? Though talent you possess, no mortal should trifle with the "
+"divinity that guides them.’\n"
+"\n"
+"He retorted, ‘Come, spirit. I am not afraid. No weapon, steel, water, or "
+"wind, shall stand up to my rings.’\n"
+"\n"
+"The wind whirled ever faster, a torrent of gale force spiraling and "
+"spiraling in a gyrating dance of fury. He felt himself lifted from the "
+"ground, spinning at a tremendous rate, rendered utterly hapless at the mercy "
+"of Zefra’s wrath. Face upturned in terror, he let go of his blades and "
+"suddenly saw it in the whirling tempest—the twirling motion of the ringed "
+"chakrams, patterned in the very wind itself.\n"
+"\n"
+"As quickly as the storm came, it vanished, leaving Xylrix to contemplate his "
+"broken weapons. When he finally returned to his home many days later, he "
+"announced his new name: Zephyr, a warrior who serves the Wind on which his "
+"blades fly."
+msgstr ""
+
 #. [unit_type]: id=Ogre, race=ogre
 #: data/core/units/ogres/Ogre.cfg:4
 msgid "Ogre"
@@ -5618,6 +5719,11 @@ msgstr ""
 "có hình dáng rất giống con người, dù to lớn và méo mó. Chúng có thể chậm hơn "
 "hoặc kém thông minh hơn con người, nhưng sức mạnh của chúng thì không thể "
 "đánh giá thấp."
+
+#. [attack]: type=blade
+#: data/core/units/ogres/Ogre.cfg:25 data/core/units/ogres/Young_Ogre.cfg:24
+msgid "cleaver"
+msgstr "dao phay"
 
 #. [unit_type]: id=Young Ogre, race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:4
@@ -6835,6 +6941,12 @@ msgstr ""
 "Những câu chuyện như thế là tất cả những gì mà người ta biết về thần rừng cổ "
 "thụ."
 
+#. [attack]: type=impact
+#: data/core/units/wose/Ancient.cfg:34 data/core/units/wose/Elder.cfg:34
+#: data/core/units/wose/Wose.cfg:29 data/core/units/wose/Wose_Shaman.cfg:40
+msgid "crush"
+msgstr "xô đẩy"
+
 #. [unit_type]: id=Elder Wose, race=wose
 #: data/core/units/wose/Elder.cfg:4
 msgid "Elder Wose"
@@ -6897,6 +7009,511 @@ msgstr ""
 "\n"
 "Thần rừng hoàn toàn không hiếu chiến, nhưng có một sức mạnh đáng kinh ngạc. "
 "Tuy nhiên họ không quen cũng như không nhanh nhẹn khi di chuyển."
+
+#. [unit_type]: id=Wose Sapling
+#: data/core/units/wose/Wose_Sapling.cfg:7
+msgid "Wose Sapling"
+msgstr ""
+
+#. [unit_type]: id=Wose Shaman, race=wose
+#: data/core/units/wose/Wose_Shaman.cfg:4
+#, fuzzy
+#| msgid "Troll Shaman"
+msgid "Wose Shaman"
+msgstr "Pháp sư quỷ núi"
+
+#. [unit_type]: id=Wose Shaman, race=wose
+#: data/core/units/wose/Wose_Shaman.cfg:27
+msgid ""
+"These woses are able to command forest plants such as vines and creepers to "
+"hinder their enemies."
+msgstr ""
+
+#, fuzzy
+#~| msgid ""
+#~| "Some men excel at medicine the way others do at strength of arms, and "
+#~| "the Tabib are those whose knowledge is without peer outside of the "
+#~| "Khalifate. Their remedies cannot only heal wounds but remove infection "
+#~| "and poison as well, often to the disbelief of the injured. Hardened by "
+#~| "years of travels, many are able to treat themselves."
+#~ msgid ""
+#~ "Some men excel at medicine the way others do at strength of arms, and the "
+#~ "Apothecaries are those whose knowledge is without peer outside of the "
+#~ "Dunefolk. Their remedies can not only heal wounds but remove infection "
+#~ "and poison as well, often to the disbelief of the injured. Hardened by "
+#~ "years of travels, many are able to treat themselves."
+#~ msgstr ""
+#~ "Một số người giỏi y thuật theo cách những người khác vẫn làm với sức mạnh "
+#~ "của cánh tay, và Tabib là những người mà hiểu biết của họ không có đối "
+#~ "thủ ngang hàng bên ngoài Khalifate. Những phương thuốc của họ không chỉ "
+#~ "trị thương mà còn loại bỏ nhiễm trùng và độc tố, mà những người bị thương "
+#~ "cũng không thể tin nổi. Được rèn luyện qua hàng năm trời hành trình, "
+#~ "nhiều người có khả năng điều trị cho chính họ."
+
+#, fuzzy
+#~| msgid ""
+#~| "Distinguished for their bravery and skill, Shuja are the leaders among "
+#~| "the Khalif's ranks. Their exploits are well known among their cohorts, "
+#~| "inspiring soldiers to fight for their cause. Despite this, they are "
+#~| "often found leading from the front, taking down their foes with sword "
+#~| "and shield."
+#~ msgid ""
+#~ "Distinguished for their bravery and skill, Blademasters are the leaders "
+#~ "among the Dunefolk's ranks. Their exploits are well known among their "
+#~ "cohorts, inspiring soldiers to fight for their cause. Despite this, they "
+#~ "are often found leading from the front, taking down their foes with sword "
+#~ "and shield."
+#~ msgstr ""
+#~ "Nổi tiếng vì lòng dũng cảm và năng lực, các Shuja là những người lãnh đạo "
+#~ "trong hàng ngũ Khalifate. Họ nổi tiếng trong đội quân với những kỳ công, "
+#~ "truyền cảm hứng cho binh lính chiến đấu. Bất kể điều này, người ta thường "
+#~ "thấy họ dẫn đầu mặt trận, hạ gục kẻ thù bằng kiếm và khiên."
+
+#~ msgid "naphtha attack"
+#~ msgstr "lửa dầu"
+
+#~ msgid "fire arrow"
+#~ msgstr "mũi tên lửa"
+
+#, fuzzy
+#~| msgid ""
+#~| "The Mufariq are eminent horsemen, amassing titles and accolades that are "
+#~| "as distinguishing for them as the scrollwork on their armor. Having "
+#~| "honed their skill with a lance in years of battle, the Mufariq are an "
+#~| "unstoppable force of nature. Fleeing enemies swiftly discover that hills "
+#~| "do not deter these riders in the slightest, and the displaced air of a "
+#~| "descending mace is the last sound they hear."
+#~ msgid ""
+#~ "The Cataphract are eminent horsemen, amassing titles and accolades that "
+#~ "are as distinguishing for them as the scrollwork on their armor. Having "
+#~ "honed their skill with a lance in years of battle, the Cataphract are an "
+#~ "unstoppable force of nature. Fleeing enemies swiftly discover that hills "
+#~ "do not deter these riders in the slightest, and the displaced air of a "
+#~ "descending mace is the last sound they hear."
+#~ msgstr ""
+#~ "Mufariq là những kỵ sĩ kiệt xuất, tích lũy hàng loạt danh hiệu và tước vị "
+#~ "giúp phân biệt họ với những người khác giống như nếp cuộn trên áo giáp "
+#~ "của họ. Tôi luyện năng lực sử dụng thương trong nhiều năm chiến đấu, các "
+#~ "Mufariq là một lực lượng không thể ngăn chặn được. Những kẻ thù đang chạy "
+#~ "trốn nhanh chóng nhận ra rằng đồi không cản trở các kỵ binh này dù là mức "
+#~ "độ nhỏ nhất, và không khí bị xê dịch của một cây chùy đang giáng xuống là "
+#~ "âm thanh cuối cùng chúng nghe thấy."
+
+#, fuzzy
+#~| msgid ""
+#~| "Muharib are often utilized as heavy scouts, no longer just probing the "
+#~| "enemy but conducting raids on the supply lines or eliminating patrols. "
+#~| "Often away from the main body of the army for long periods of time, "
+#~| "Muharib have no issue pilfering these supplies, and so they tend to be "
+#~| "more well-equipped than most."
+#~ msgid ""
+#~ "Explorers are often utilized as heavy scouts, no longer just probing the "
+#~ "enemy but conducting raids on the supply lines or eliminating patrols. "
+#~ "Often away from the main body of the army for long periods of time, "
+#~ "Explorers have no issue pilfering these supplies, and so they tend to be "
+#~ "more well-equipped than most."
+#~ msgstr ""
+#~ "Muharib thường được sử dụng làm trinh sát, không chỉ thăm dò kẻ thù mà "
+#~ "còn tiến hành đột kích vào hàng ngũ tiếp tế hoặc trừ khử các đội tuần "
+#~ "tra. Thường ở xa so với lực lượng quân đội chính trong những khoảng thời "
+#~ "gian dài, các Muharib không gặp khó khăn gì trong việc chôm chỉa những "
+#~ "nguồn tiếp tế này, do đó họ có xu hướng được vũ trang tốt hơn hầu hết các "
+#~ "đơn vị khác."
+
+#, fuzzy
+#~| msgid ""
+#~| "Qatif-al-nar who have shut out the world for their experiments are given "
+#~| "the honorific Tineen, as both a sign of respect and of fear. No longer "
+#~| "cognizant of the value of life, Tineen are caught up in the power of "
+#~| "their caged fire and likely to test their latest naphtha jar at the "
+#~| "first opportunity."
+#~ msgid ""
+#~ "Scorchers who have shut out the world for their experiments are given the "
+#~ "title of Firetrooper, as both a sign of respect and of fear. No longer "
+#~ "cognizant of the value of life, Firetroopers are caught up in the power "
+#~ "of their caged fire and likely to test their latest naphtha jar at the "
+#~ "first opportunity."
+#~ msgstr ""
+#~ "Các Qatif-al-nar đã phá phách thế giới vì những thử nghiệm của mình được "
+#~ "trao danh hiệu kính cẩn Tineen, một biểu trưng của lòng kính trọng và sự "
+#~ "sợ hãi. Không còn nhận thức về giá trị của cuộc sống, các Tineen bị cuốn "
+#~ "vào sức mạnh của ngọn lửa bị giam giữ, và nhiều khả năng sẽ kiểm tra lọ "
+#~ "dầu cuối cùng của họ ở ngay cơ hội đầu tiên."
+
+#, fuzzy
+#~| msgid ""
+#~| "Mighwar hold themselves to a higher standard than the ranks of the "
+#~| "Monawish from which they ascended. Not content to merely draw the enemy "
+#~| "out, they combine their speed with an aggression that sends the Mighwar "
+#~| "dancing through the ranks of the enemy, swords ripping and tearing at "
+#~| "those around them. "
+#~ msgid ""
+#~ "Harriers hold themselves to a higher standard than the ranks of the "
+#~ "Skirmishers from which they ascended. Not content to merely draw the "
+#~ "enemy out, they combine their speed with an aggression that sends the "
+#~ "Harriers dancing through the ranks of the enemy, swords ripping and "
+#~ "tearing at those around them. "
+#~ msgstr ""
+#~ "Mighwar mang một tiêu chuẩn cao hơn hàng ngũ Monawish, mà từ đó họ đã "
+#~ "thăng tiến. Không bằng lòng khi chỉ nhử kẻ thù ra, họ kết hợp tốc độ với "
+#~ "một cuộc công kích, nhảy múa qua đội hình của kẻ thù, kiếm chém xối xả "
+#~ "vào những kẻ thù xung quanh."
+
+#, fuzzy
+#~| msgid ""
+#~| "Hakim are learned individuals who have given up their urban life in "
+#~| "order to assist the Khalifate armies in their travels. Their motivations "
+#~| "are many; some look to it as an adventure or as a steady source of pay, "
+#~| "while others feel it to be a requirement of their faith. Regardless, "
+#~| "Hakim are highly respected by all. They are trained with the advanced "
+#~| "medical techniques and possess a potent clutch of medicines and herbs, "
+#~| "which allows them to quickly heal even the most gravely wounded allies."
+#~ msgid ""
+#~ "Herbalists are learned individuals who have given up their urban life in "
+#~ "order to assist the Dunefolk armies in their travels. Their motivations "
+#~ "are many; some look to it as an adventure or as a steady source of pay, "
+#~ "while others feel it to be a duty to their society. Regardless, "
+#~ "Herbalists are highly respected by all. They are trained with the "
+#~ "advanced medical techniques and possess a potent clutch of medicines and "
+#~ "herbs, which allows them to quickly heal even the most gravely wounded "
+#~ "allies."
+#~ msgstr ""
+#~ "Hakim là các cá nhân có học thức, những người đã từ bỏ cuộc sống thành "
+#~ "thị để hỗ trợ quân đội Khalifate trong cuộc hành trình của mình. Động cơ "
+#~ "của họ khá đa dạng, một số người xem đó là một cuộc phiêu lưu hoặc một "
+#~ "nguồn thu nhập ổn định, trong khi những người khác cảm thấy thế là một "
+#~ "yêu cầu cho niềm tin của mình. Dù sao đi nữa, Hakim đều được tất cả mọi "
+#~ "người kính trọng. Họ được đào tạo những kỹ thuật y học cao cấp và sở hữu "
+#~ "một kho thuốc và thảo dược hiệu nghiệm, cho phép họ điều trị nhanh chóng "
+#~ "kể cả những đồng minh bị thương nghiêm trọng nhất."
+
+#, fuzzy
+#~| msgid ""
+#~| "Those Qanas who prove to be particularly skilled are formed into units "
+#~| "of Hadaf, which are often used to raid enemy depots and towns for "
+#~| "supplies. This greater autonomy often means that these horsemen are gone "
+#~| "for weeks at a time, returning to camp only for supplies and to pass on "
+#~| "news of their exploits."
+#~ msgid ""
+#~ "Those Raiders who prove to be particularly skilled are formed into units "
+#~ "of Marauders, which are often used to raid enemy depots and towns for "
+#~ "supplies. This greater autonomy often means that these horsemen are gone "
+#~ "for weeks at a time, returning to camp only for supplies and to pass on "
+#~ "news of their exploits."
+#~ msgstr ""
+#~ "Những Qanas đã chứng tỏ được tài năng đặc biệt tạo thành các đơn vị "
+#~ "Hadaf, lực lượng thường được sử dụng để đột kích các kho chứa và thành "
+#~ "phố của kẻ thù nhằm chiếm nguồn quân nhu. Quyền tự quản lớn hơn thường có "
+#~ "nghĩa là vào một thời điểm nào đó, các kỵ sĩ này ra đi hàng tuần liền, "
+#~ "chỉ trở về doanh trại để chuyển nguồn quân nhu và tin tức về những chiến "
+#~ "công của họ."
+
+#, fuzzy
+#~| msgid ""
+#~| "The Khaiyal understand the psychological impact of a charging horse, and "
+#~| "reinforce this by cladding themselves in heavy armor. Majestic at rest, "
+#~| "a Khaiyal at the charge with lance in hand is often impetus enough to "
+#~| "break men. On the rare occurrences that their charge fails to rout their "
+#~| "foe, the Khaiyal ride into the resulting melee with their maces in hand, "
+#~| "trusting their armor to keep them safe."
+#~ msgid ""
+#~ "The Piercer understand the psychological impact of a charging horse, and "
+#~ "reinforce this by cladding themselves in heavy armor. Majestic at rest, a "
+#~ "Piercer at the charge with lance in hand is often impetus enough to break "
+#~ "men. On the rare occurrences that their charge fails to rout their foe, "
+#~ "the Piercer ride into the resulting melee with their maces in hand, "
+#~ "trusting their armor to keep them safe."
+#~ msgstr ""
+#~ "Các Khaiyal hiểu tác động tâm lý của một con ngựa xung kích, và tăng "
+#~ "cường thêm cho mình bằng cách mặc áo giáp nặng. Oai vệ trước những người "
+#~ "còn lại, một Khaiyal tấn công với thương trong tay thường đủ xung lực để "
+#~ "xuyên qua người. Vào những lúc hiếm hoi khi đòn xung kích của họ không "
+#~ "thể đánh tan tác địch thủ, các Khaiyal cưỡi ngựa xông vào cận chiến bằng "
+#~ "chùy, tin tưởng áo giáp sẽ giữ cho họ an toàn."
+
+#, fuzzy
+#~| msgid ""
+#~| "Those horsemen who are not skilled enough to join the ranks of the Faris "
+#~| "or quick enough with a bow for the Saree are instead placed with the "
+#~| "Qanas. Far from being a sign of failure, the Qanas were created as a "
+#~| "mounted counterpart to the Muharib, supporting the foot troops with mace "
+#~| "or bow as needed. Qanas are often used to draw enemies into a position "
+#~| "where they will be surrounded and crushed by Faris."
+#~ msgid ""
+#~ "Those horsemen who are not skilled enough to join the ranks of the "
+#~ "Sunderers or quick enough with a bow for the Swiftriders are instead "
+#~ "placed with the Raiders. Far from being a sign of failure, the Raiders "
+#~ "were created as a mounted counterpart to the Explorers, supporting the "
+#~ "foot troops with mace or bow as needed. Raiders are often used to draw "
+#~ "enemies into a position where they will be surrounded and crushed by "
+#~ "Sunderers."
+#~ msgstr ""
+#~ "Những kỵ sĩ không đủ năng lực để gia nhập hàng ngũ Faris hoặc đủ nhanh "
+#~ "nhẹn với cung cho Saree được đặt vào hàng ngũ Qanas để thay thế. Không "
+#~ "phải là một biểu hiện của thất bại, các Qanas được tạo như một lực lượng "
+#~ "tương tự với Muharib, hỗ trợ bộ binh bằng chùy hoặc cung khi cần thiết. "
+#~ "Qanas thường được sử dụng để kéo kẻ thù vào một vị trí ở đó chúng sẽ bị "
+#~ "các Faris bao vây và tiêu diệt."
+
+#, fuzzy
+#~| msgid ""
+#~| "Batal are the elite of the Muharib, engaging in constant hit and run "
+#~| "attacks against an enemy army. Nimble as a goat and strong as a ram, "
+#~| "they prefer to coordinate multiple attacks at the same time, sending "
+#~| "foes running from their arrows only to be cut down by their axes. Given "
+#~| "their penchant for taking on only the most daring missions, Batal are "
+#~| "often heroes to the common troopers, an image they do not try to "
+#~| "dissuade."
+#~ msgid ""
+#~ "Rangers are the elite of the Explorers, engaging in constant hit and run "
+#~ "attacks against an enemy army. Nimble as a goat and strong as a ram, they "
+#~ "prefer to coordinate multiple attacks at the same time, sending foes "
+#~ "running from their arrows only to be cut down by their axes. Given their "
+#~ "penchant for taking on only the most daring missions, Rangers are often "
+#~ "heroes to the common troopers, an image they do not try to dissuade."
+#~ msgstr ""
+#~ "Batal là lực lượng tinh nhuệ của Muharib, thực hiện những cuộc tấn công "
+#~ "đánh và chạy liên tục chống lại quân đội kẻ thù. Nhanh nhẹn và mạnh mẽ, "
+#~ "họ thích phối hợp nhiều đòn tấn công một lúc, khiến những kẻ thù đang "
+#~ "chạy khỏi tên bắn tiếp tục bị rìu của họ đốn hạ. Với thiên hướng chỉ nhận "
+#~ "những nhiệm vụ táo bạo nhất, Batal thường là các anh hùng đối với những "
+#~ "binh lính thông thường, một hình ảnh mà không ai dám can ngăn."
+
+#, fuzzy
+#~| msgid ""
+#~| "Rami are excellent horsemen, able to shoot from horseback better than "
+#~| "most men can manage from foot. Disdaining the use of heavy armor, Rami "
+#~| "use their superior speed and agility to circle and harass their foes, "
+#~| "whittling down their numbers with relentless arrows."
+#~ msgid ""
+#~ "Riders are excellent horsemen, able to shoot from horseback better than "
+#~ "most men can manage from foot. Disdaining the use of heavy armor, Riders "
+#~ "use their superior speed and agility to circle and harass their foes, "
+#~ "whittling down their numbers with relentless arrows."
+#~ msgstr ""
+#~ "Rami là các kỵ sĩ xuất sắc, có khả năng bắn từ lưng ngựa tốt hơn hầu hết "
+#~ "những người làm vậy trên mặt đất. Khinh thường việc sử dụng áo giáp nặng, "
+#~ "các Rami sử dụng tốc độ và tính nhanh nhẹn siêu việt của mình để bao vây "
+#~ "và quấy nhiễu kẻ thù, làm tiêu hao quân số của chúng bằng những mũi tên "
+#~ "không thương xót."
+
+#, fuzzy
+#~| msgid ""
+#~| "Qatif-al-nar spend so much time experimenting with their weapons that "
+#~| "they smell constantly of ash and flame. Regarded with wariness by their "
+#~| "fellow troops, Qatif-al-nar can be easily located in battle by the "
+#~| "cleared charred area around them, a testament to the success of their "
+#~| "experiments."
+#~ msgid ""
+#~ "Scorchers spend so much time experimenting with their weapons that they "
+#~ "smell constantly of ash and flame. Regarded with wariness by their fellow "
+#~ "troops, Scorchers can be easily located in battle by the cleared charred "
+#~ "area around them, a testament to the success of their experiments."
+#~ msgstr ""
+#~ "Qatif-al-nar dành nhiều thời gian thử nghiệm vũ khí đến nỗi họ luôn luôn "
+#~ "đánh hơi được tro và khói lửa. Được đồng đội nhìn với vẻ thận trọng, có "
+#~ "thể dễ dàng định vị các Qatif-al-nar khi chiến đấu bằng khu vực bị cháy "
+#~ "trụi xung quanh họ, một bằng chứng cho sự thành công của các thử nghiệm."
+
+#, fuzzy
+#~| msgid ""
+#~| "Those Jundi who are proficient at scouting are elevated into the ranks "
+#~| "of the Monawish. Discarding their bow, the Monawish focus on developing "
+#~| "their swiftness of foot to allow them to flow in and out of combat. They "
+#~| "are often used to harry the flanks of opposing forces, and it is said to "
+#~| "be easier to catch the wind in your hand than to catch a Monawish."
+#~ msgid ""
+#~ "Those Rovers who are proficient at scouting are elevated into the ranks "
+#~ "of the Skirmishers. Discarding their bow, Skirmishers focus on developing "
+#~ "their swiftness of foot to allow them to flow in and out of combat. They "
+#~ "are often used to harry the flanks of opposing forces, and it is said to "
+#~ "be easier to catch the wind in your hand than to catch a Skirmisher."
+#~ msgstr ""
+#~ "Những Jundi giỏi trinh sát được thăng cấp vào hàng ngũ Monawish. Vứt bỏ "
+#~ "cung, các Monawish tập trung phát triển khả năng di chuyển mau lẹ để cho "
+#~ "phép họ luồn vào và ra khỏi trận chiến. Họ thường được sử dụng để quấy "
+#~ "nhiễu sườn của các lực lượng đối lập, và người ta nói rằng dễ bắt gió "
+#~ "trong tay hơn bắt một Monawish."
+
+#, fuzzy
+#~| msgid ""
+#~| "The Arif form the backbone of any Khalifate foot advance. Many come from "
+#~| "noble or military families, and have spent most of their lives training "
+#~| "their craft. Given their intense focus on swordplay, they are often sent "
+#~| "against fortified enemy positions to create a breach for the remaining "
+#~| "troops to exploit. The sight of Arif on the march, shields high, has "
+#~| "caused many a defender to worry about the strength of their walls."
+#~ msgid ""
+#~ "The Soldier forms the backbone of any Dunefolk foot advance. Many come "
+#~ "from noble or military families, and have spent most of their lives "
+#~ "training their craft. Given their intense focus on swordplay, they are "
+#~ "often sent against fortified enemy positions to create a breach for the "
+#~ "remaining troops to exploit. The sight of Soldiers on the march, shields "
+#~ "high, has caused many a defender to worry about the strength of their "
+#~ "walls."
+#~ msgstr ""
+#~ "Arif tạo thành trụ cột của mọi lực lượng bộ binh Khalifate. Nhiều người "
+#~ "đến từ các gia đình quý tộc hoặc quân sự, và đã dành hầu hết cuộc đời rèn "
+#~ "luyện chuyên môn. Tập trung cao độ vào kiếm thuật, họ thường được phái đi "
+#~ "chiến đấu tại những vị trí được củng cố của kẻ thù để tạo ra một lỗ hổng "
+#~ "cho các binh lính còn lại khai thác. Cảnh tượng các chiến binh Arif đang "
+#~ "hành quân với những tấm khiên giơ cao đã khiến cho nhiều người phòng thủ "
+#~ "phải lo lắng về sức mạnh của những bức tường của mình."
+
+#, fuzzy
+#~| msgid ""
+#~| "Although the Khalifate armies are known for their astonishing mobility "
+#~| "and fierce attack, they can be able defenders. Mudafi excel at holding "
+#~| "their ground, keeping opponents at bay with long, razor sharp spears. "
+#~| "Their preferred strategy is to gradually wear down enemies, until they "
+#~| "can be defeated in a vicious counter stroke."
+#~ msgid ""
+#~ "Although the Dunefolk armies are known for their astonishing mobility and "
+#~ "fierce attack, they can be able defenders. Spearguard excel at holding "
+#~ "their ground, keeping opponents at bay with long, razor sharp spears. "
+#~ "Their preferred strategy is to gradually wear down enemies, until they "
+#~ "can be defeated in a vicious counter stroke."
+#~ msgstr ""
+#~ "Mặc dù quân đội Khalifate được biết đến với tính cơ động đáng kinh ngạc "
+#~ "và khả năng tấn công mãnh liệt, học cũng có thể là những người phòng thủ "
+#~ "tốt. Các Mudafi giỏi trong việc trấn giữ vị trí, dồn kẻ thù vào nước "
+#~ "đường cùng với những cây giáo dài, sắc như dao cạo. Chiến lược được ưa "
+#~ "thích của họ là từ từ tiêu hao sinh lực địch, đến khi chúng có thể bị "
+#~ "đánh bại trong một đòn phản công bất ngờ."
+
+#, fuzzy
+#~| msgid ""
+#~| "Spread across the Khalifate's lands are lonely towers and garrisons that "
+#~| "provide shelter to caravans and locals from bandits and monsters. These "
+#~| "bastions are defended by the most determined of soldiers, who have often "
+#~| "faced off against overwhelming odds only to repel the invaders. In an "
+#~| "army they can be trusted to hold any position or line, long after lesser "
+#~| "soldiers and men have fled in terror."
+#~ msgid ""
+#~ "Spread across the Dunefolk's lands are lonely towers and garrisons that "
+#~ "provide shelter to caravans and locals from bandits and monsters. These "
+#~ "bastions are defended by the most determined of soldiers, who have often "
+#~ "faced off against overwhelming odds only to repel the invaders. In an "
+#~ "army they can be trusted to hold any position or line, long after lesser "
+#~ "soldiers and men have fled in terror."
+#~ msgstr ""
+#~ "Trải rộng khắp các vùng đất của Khalifate là những tòa tháp và doanh trại "
+#~ "cung cấp nơi trú ẩn cho các đoàn người hành hương và người dân địa phương "
+#~ "khỏi trộm cướp và quái vật. Các pháo đài này được bảo vệ bởi những binh "
+#~ "lính kiên quyết nhất, những người thường đã đối mặt với những tỷ lệ áp "
+#~ "đảo chỉ để đẩy lùi những kẻ xâm lược. Trong một quân đội, chúng có thể "
+#~ "được tin cậy để giữ bất kỳ vị trí hoặc hàng ngũ nào, lâu sau khi binh "
+#~ "lính và mọi người đã chạy trốn trong khiếp sợ."
+
+#, fuzzy
+#~| msgid ""
+#~| "Those Khaiyal who distinguish themselves in battle are given the "
+#~| "opportunity to prove themselves worthy of becoming a Faris. Those who "
+#~| "pass the trial are given the traditional barding for their horse, "
+#~| "distinguishing them from the rest of the Khalifate cavalry. Consummate "
+#~| "horsemen, the Faris have long claimed they need only a single lance "
+#~| "strike to kill a man."
+#~ msgid ""
+#~ "Those Piercers who distinguish themselves in battle are given the "
+#~ "opportunity to prove themselves worthy of becoming a Sunderer. Those who "
+#~ "pass the trial are given the traditional barding for their horse, "
+#~ "distinguishing them from the rest of the Dunefolk cavalry. Consummate "
+#~ "horsemen, the Sunderers have long claimed they need only a single lance "
+#~ "strike to kill a man."
+#~ msgstr ""
+#~ "Các Khaiyal có năng lực chiến đấu nổi trội được cho cơ hội để chứng tỏ "
+#~ "bản thân mình xứng đáng trở thành Faris. Những người đã vượt qua thử "
+#~ "thách được trao tặng một tấm giáp sắt truyền thống cho ngựa, phân biệt họ "
+#~ "với những người còn lại của lực lượng kỵ binh Khalifate. Là những kỵ sĩ "
+#~ "tài giỏi, các Faris từ lâu đã khẳng định họ chỉ cần một một đòn đánh bằng "
+#~ "thương duy nhất để giết đối thủ."
+
+#, fuzzy
+#~| msgid ""
+#~| "Rami who demonstrate exceptional skill with the bow are made into Saree, "
+#~| "spending hours every day practicing and building a rapport with their "
+#~| "steed. This has made them the fastest riders in the Khalifate armies, "
+#~| "and a wise Khalid uses this to their advantage."
+#~ msgid ""
+#~ "Riders who demonstrate exceptional skill with the bow are made into "
+#~ "Swiftriders, spending hours every day practicing and building a rapport "
+#~ "with their steed. This has made them the fastest riders in the Dunefolk "
+#~ "armies, and a wise Warmaster uses this to their advantage."
+#~ msgstr ""
+#~ "Những Rami chứng minh được năng lực ngoại lệ với cung tạo thành lực lượng "
+#~ "Saree, dành hàng giờ mỗi ngày tập luyện và xây dựng mối quan hệ với con "
+#~ "chiến mã của họ. Điều này đã khiến họ trở thành những kỵ binh nhanh nhất "
+#~ "trong quân đội Khalifate, và một Khalid khôn ngoan sẽ sử dụng lợi thế này."
+
+#, fuzzy
+#~| msgid ""
+#~| "Armed with their sword, shield and faith, Ghazi are warriors of some "
+#~| "renown among the Khalifate armies. They have further refined their "
+#~| "combat arts, adding a powerful shield bash to knock back unsuspecting "
+#~| "enemies. Though few in number, their presence can be decisive in "
+#~| "dislodging even the most hardened redoubt."
+#~ msgid ""
+#~ "Armed with their sword and shield, Swordsman are warriors of some renown "
+#~ "among the Dunefolk armies. They have further refined their combat arts, "
+#~ "adding a powerful shield bash to knock back unsuspecting enemies. Though "
+#~ "few in number, their presence can be decisive in dislodging even the most "
+#~ "hardened redoubt."
+#~ msgstr ""
+#~ "Được trang bị kiếm, khiên và niềm tin, Ghazi là những chiến binh có tiếng "
+#~ "tăm trong quân đội Khalifate. Họ đã tôi luyện hơn nữa thuật chiến đấu của "
+#~ "mình, thêm một cú đập bằng khiên mạnh mẽ để hạ gục những kẻ thù không ngờ "
+#~ "vực. Dù ít về quân số, sự có mặt của họ có thể là yếu tố quyết định để "
+#~ "đánh bật kẻ thù khỏi những đốn trú khó khăn nhất."
+
+#, fuzzy
+#~| msgid ""
+#~| "Among every generation, a warrior elevates himself above his peers and "
+#~| "foes; They seem to be able to alter the destiny of the world themselves. "
+#~| "Often given the name Khalid, after a legendary leader of old, these "
+#~| "individuals are celebrated for the piety and skill. Their travels and "
+#~| "travails are told endlessly around the campfire with the reverent tones "
+#~| "of those that speak of living legends."
+#~ msgid ""
+#~ "Among every generation, a warrior elevates himself above his peers and "
+#~ "foes; They seem to be able to alter the destiny of the world themselves. "
+#~ "Often given the name Warmaster, these individuals are celebrated for "
+#~ "their strength and skill. Their travels and travails are told endlessly "
+#~ "around the campfire with the reverent tones of those that speak of living "
+#~ "legends."
+#~ msgstr ""
+#~ "Trong mọi thế hệ, luôn có một chiến binh nổi trội hơn đồng đội và địch "
+#~ "thủ. Họ dường như có thể thay đổi được vận mệnh của thế giới. Thường được "
+#~ "gọi bằng cái tên Khalid, theo tên một vị lãnh tụ huyền thoại ngày xưa, "
+#~ "các cá nhân này được tán dương vì lòng trung thành và tài năng. Những "
+#~ "cuộc hành trình và công việc của họ được kể không ngớt quanh lửa trại với "
+#~ "giọng điệu tôn kính của những người nói về những huyền thoại sống."
+
+#, fuzzy
+#~| msgid ""
+#~| "The elite of the Saree are the Jawal, horse archers of such speed and "
+#~| "dexterity that rumors are always spread that they have elven blood. "
+#~| "Irritated at such mystical nonsense, the Jawal can frequently be found "
+#~| "demonstrating their exceptional skill at the forefront of battle, riding "
+#~| "with great speed through the lines of battle to rain arrows down upon "
+#~| "the enemy."
+#~ msgid ""
+#~ "The elite of the Swiftriders are the Windriders, horse archers of such "
+#~ "speed and dexterity that rumors are always spread that they have elven "
+#~ "blood. Irritated at such mystical nonsense, the Windriders can frequently "
+#~ "be found demonstrating their exceptional skill at the forefront of "
+#~ "battle, riding with great speed through the lines of battle to rain "
+#~ "arrows down upon the enemy."
+#~ msgstr ""
+#~ "Thành phần ưu tú của Saree là Jawal, những cung thủ cưỡi ngựa có tốc độ "
+#~ "và sự khéo léo cao đến mức luôn có tin đồn lan truyền rằng họ có dòng máu "
+#~ "thần tiên. Khó chịu trước những lời hoang đường vô lý đó, các Jawal "
+#~ "thường thể hiện năng lực ngoại lệ của mình ở tiền tuyến, cưỡi ngựa với "
+#~ "tốc độ cao xuyên qua hàng ngũ chiến đấu để trút những mũi tên vào kẻ thù."
+
+#, fuzzy
+#~| msgid "Young Ogre"
+#~ msgid "Young Roc"
+#~ msgstr "Quỷ khổng lồ trẻ tuổi"
 
 #~ msgid ""
 #~ "Champions among their fellow troops, the dwarven sentinels form the "

@@ -137,8 +137,9 @@ fifo 的伺服器指令。
 .br
 例如: \fBversions_accepted="*"\fP 允許所有版本連接。
 .TP 
-\fBuser_handler\fP
-希望使用的用戶處理程序的名稱。目前可選的有\fBforum\fP（將wesnothd與phpbb論壇的資料庫連接起來）和\fBsample\fP（一個用戶處理介面的執行樣本，如果您真的在實際中使用它，那您一定是瘋了）。預設值是\fBforum\fP，同時您必須添加一個\fB[user_handler]\fP小節，請看下面。
+\fBdeny_unregistered_login\fP
+Whether to prevent users who are not registered with the \fBuser_handler\fP
+being used from logging in. (default: false)
 .
 .SS 全球標籤:
 .
@@ -171,53 +172,52 @@ fifo 的伺服器指令。
 \fB[proxy]\fP 這個標簽告訴伺服器扮演代理伺服器角色，把使用者連接重定向到另一台伺服器。與\fB[redirect]\fP接受一樣的參數。
 .RE
 .P
-\fB[user_handler]\fP
-配置用戶處理程序。可設置的主鍵取決於通過\fBuser_handler\fP設置的用戶資料處理器是哪一個。如果配置檔案中沒有\fB[user_handler]\fP小節，則伺服器在運行中將不提供任何暱稱註冊服務。
+\fB[user_handler]\fP Configures the user handler. Available keys vary depending
+on which user handler is set with the \fBuser_handler\fP key. If no
+\fB[user_handler]\fP section is present in the configuration the server will
+run without any nick registration service. All additional tables that are
+needed for the forum_user_handler to function can be found in
+table_definitions.sql in the Wesnoth source repository.
 .RS
 .TP 
 \fBdb_host\fP
-（如果user_handler=forum）資料庫伺服器的主機名
+The hostname of the database server
 .TP 
 \fBdb_name\fP
-（如果user_handler=forum）資料庫名
+The name of the database
 .TP 
 \fBdb_user\fP
-（如果user_handler=forum）資料庫登錄用戶名
+The name of the user under which to log into the database
 .TP 
 \fBdb_password\fP
-（如果user_handler=forum）這個用戶的密碼
+This user's password
 .TP 
 \fBdb_users_table\fP
-（如果user_handler=forum）phpbb
-論壇中存放用戶資料的表名。很可能是<table\-prefix>_users（例如phpbb3_users）。
+The name of the table in which your phpbb forums saves its user data. Most
+likely this will be <table\-prefix>_users (e.g. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
-（如果user_handler=forum）wesnothd存放自用的用戶資料的表名。您必須自己手動創建這個表，例如：\fBCREATE TABLE
-<table\-name>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
-UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
-0);\fP
+The name of the table in which wesnothd will save its own data about users.
 .TP 
-\fBuser_expiration\fP
-（如果user_handler=sample）註冊暱稱的失效時間（單位是天數）。
+\fBdb_game_info_table\fP
+The name of the table in which wesnothd will save its own data about games.
+.TP 
+\fBdb_game_player_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+players in a game.
+.TP 
+\fBdb_game_modification_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+modifications used in a game.
+.TP 
+\fBdb_user_group_table\fP
+The name of the table in which your phpbb forums saves its user group
+data. Most likely this will be <table\-prefix>_user_group
+(e.g. phpbb3_user_group).
+.TP 
+\fBmp_mod_group\fP
+The ID of the forum group to be considered as having moderation authority.
 .RE
-.P
-\fB[mail]\fP 設置一個SMTP伺服器，通過用戶處理程序可以發送郵件。目前只在樣本用戶處理程序中使用。
-.RS
-.TP 
-\fBserver\fP
-郵件伺服器的主機名
-.TP 
-\fBusername\fP
-登錄到郵件伺服器的使用者名稱。
-.TP 
-\fBpassword\fP
-使用者密碼。
-.TP 
-\fBfrom_address\fP
-您電子信箱的回覆地址。
-.TP 
-\fBmail_port\fP
-郵件伺服器的埠口。預設值為25。
 .
 .SH 退出狀態碼
 .
@@ -245,3 +245,4 @@ or FITNESS FOR A PARTICULAR PURPOSE.
 .SH 參見
 .
 \fBwesnoth\fP(6)
+
