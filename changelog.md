@@ -20,6 +20,8 @@
    * Additional animations for the Wose Shaman (PR#4229)
    * Move Wose Shaman from DM and WoV to core (PR#4226)
    * Move Wose Sapling from TRoW to core (PR#4226)
+ ### WML engine
+   * Support for the deprecated "&image.png=text" syntax for [option]message= has been removed - use the DescriptionWML attributes instead.
  ### Miscellaneous and bug fixes
    * use the 1.15 add-ons server
    * Fix a crash if the credits (including all add-ons) are very long (PR#4207)
