@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 22:41+0300\n"
-"PO-Revision-Date: 2019-07-08 08:28+0200\n"
+"PO-Revision-Date: 2019-08-29 08:38+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth Spanish translation\n"
 "Language: es\n"
@@ -8587,26 +8587,30 @@ msgstr "Ocultar planes de $player"
 msgid "Whiteboard Options"
 msgstr "Opciones del modo pizarra"
 
-#, fuzzy
-#~| msgid "Attack"
-#~| msgid_plural "Attacks"
-#~ msgid "Attacks"
-#~ msgstr "Ataque"
+#~ msgid ""
+#~ "Liminal units only reach their full strength during twilight.\n"
+#~ "\n"
+#~ "Day: −25% Damage\n"
+#~ "Night: −25% Damage"
+#~ msgstr ""
+#~ "Las unidades crepusculares luchan mejor durante el crepúsculo, al alba y "
+#~ "durante el ocaso.\n"
+#~ "\n"
+#~ "Día: −25% del daño\n"
+#~ "Noche: −25% del daño"
 
-#, fuzzy
-#~ msgid "Choose a Corpse"
-#~ msgstr "Escoger arma:"
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr ""
+#~ "No hay disponibles opciones de personalización para la era, partida o "
+#~ "modificación seleccionada."
 
-#~ msgid "Recruit"
-#~ msgstr "Reclutar"
+#~ msgid "Defaults"
+#~ msgstr "Predeterminados"
 
-#~ msgid "XP: "
-#~ msgstr "PX: "
-
-#, fuzzy
-#~| msgid "There are no save files to load"
-#~ msgid "There are no corpses available."
-#~ msgstr "No hay archivos guardados para cargar"
+#~ msgid "Connected Players"
+#~ msgstr "Jugadores conectados"
 
 #~ msgid "registering with password *** and no email address"
 #~ msgstr ""
@@ -8646,14 +8650,46 @@ msgstr "Opciones del modo pizarra"
 #~ "Solicita una lista de detalles que puede establecer para su nombre de "
 #~ "usuario registrado."
 
-#~ msgid "Ping timeout"
-#~ msgstr "Tiempo de expiración de ping"
+#~ msgid "Can't droid a local ai side: '$side'."
+#~ msgstr "No se puede automatizar una IA local del bando: «$side»."
+
+#~ msgid "Empty"
+#~ msgstr "Vacío"
+
+#~ msgid "battery"
+#~ msgstr "batería"
 
 #~ msgid ""
-#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
-#~ "disable"
+#~ "In many campaign scenarios, you may issue simple instructions for your "
+#~ "computer-controlled allies using the right-click context menu."
 #~ msgstr ""
-#~ "Número de segundos a esperar ping antes de que venza. Desactivar con 0"
+#~ "En muchos escenarios de campaña, puede darle instrucciones simples a sus "
+#~ "aliados controlados por la computadora utilizando el menú contextual al "
+#~ "hacer clic derecho."
+
+#~ msgid "An invalid defender weapon got selected."
+#~ msgstr "Se ha seleccionado un arma defensora inválida."
+
+#~ msgid "Advances to:"
+#~ msgstr "Se convierte en:"
+
+#~ msgid "(this turn left)"
+#~ msgid_plural "(%d turns left)"
+#~ msgstr[0] "(este turno restante)"
+#~ msgstr[1] "(%d turnos restantes)"
+
+#~ msgid "S"
+#~ msgstr "S"
+
+#~ msgid "C"
+#~ msgstr "C"
+
+#~ msgid "Unit with negative HP found"
+#~ msgstr "Se ha encontrado una unidad con PV negativos"
+
+# Desconozco el contexto. Podría ser perdida.
+#~ msgid "(missing)"
+#~ msgstr "(ausente)"
 
 #~ msgid ""
 #~ "Wesnoth has many different sagas waiting to be played. Fight to regain "
@@ -8694,59 +8730,12 @@ msgstr "Opciones del modo pizarra"
 #~ "7 Facciones luchando en 46 mapas/escenarios Multijugador,\n"
 #~ "Más de 500 Complementos.)"
 
-#~ msgid ""
-#~ "Liminal units only reach their full strength during twilight.\n"
-#~ "\n"
-#~ "Day: −25% Damage\n"
-#~ "Night: −25% Damage"
-#~ msgstr ""
-#~ "Las unidades crepusculares luchan mejor durante el crepúsculo, al alba y "
-#~ "durante el ocaso.\n"
-#~ "\n"
-#~ "Día: −25% del daño\n"
-#~ "Noche: −25% del daño"
-
-#~ msgid "(this turn left)"
-#~ msgid_plural "(%d turns left)"
-#~ msgstr[0] "(este turno restante)"
-#~ msgstr[1] "(%d turnos restantes)"
-
-#~ msgid ""
-#~ "In many campaign scenarios, you may issue simple instructions for your "
-#~ "computer-controlled allies using the right-click context menu."
-#~ msgstr ""
-#~ "En muchos escenarios de campaña, puede darle instrucciones simples a sus "
-#~ "aliados controlados por la computadora utilizando el menú contextual al "
-#~ "hacer clic derecho."
-
-#~ msgid "An invalid defender weapon got selected."
-#~ msgstr "Se ha seleccionado un arma defensora inválida."
-
-#~ msgid "Empty"
-#~ msgstr "Vacío"
-
 # Desconozco el contexto. Podría ser perdida.
 #~ msgid "$era_name (missing)"
 #~ msgstr "$era_name (ausente)"
 
-# Desconozco el contexto. Podría ser perdida.
-#~ msgid "(missing)"
-#~ msgstr "(ausente)"
-
-#~ msgid "S"
-#~ msgstr "S"
-
-#~ msgid "C"
-#~ msgstr "C"
-
 #~ msgid "none"
 #~ msgstr "ninguna"
-
-#~ msgid "Can't droid a local ai side: '$side'."
-#~ msgstr "No se puede automatizar una IA local del bando: «$side»."
-
-#~ msgid "Advances to:"
-#~ msgstr "Se convierte en:"
 
 #~ msgid "None"
 #~ msgstr "Ninguno"
@@ -8761,24 +8750,14 @@ msgstr "Opciones del modo pizarra"
 #~ "<span color=\"$color\">$number_or_percent movement</span> puntos de "
 #~ "movimiento"
 
+#~ msgid "Ping timeout"
+#~ msgstr "Tiempo de expiración de ping"
+
 #~ msgid ""
-#~ "There are no custom options available for the selected era, game, or "
-#~ "modification."
+#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
+#~ "disable"
 #~ msgstr ""
-#~ "No hay disponibles opciones de personalización para la era, partida o "
-#~ "modificación seleccionada."
-
-#~ msgid "Defaults"
-#~ msgstr "Predeterminados"
-
-#~ msgid "Connected Players"
-#~ msgstr "Jugadores conectados"
-
-#~ msgid "battery"
-#~ msgstr "batería"
-
-#~ msgid "Unit with negative HP found"
-#~ msgstr "Se ha encontrado una unidad con PV negativos"
+#~ "Número de segundos a esperar ping antes de que venza. Desactivar con 0"
 
 #~ msgid "Size:"
 #~ msgstr "Tamaño:"
@@ -9756,6 +9735,9 @@ msgstr "Opciones del modo pizarra"
 #~ msgid "Scroll To"
 #~ msgstr "Desplazar a"
 
+#~ msgid "Recruit"
+#~ msgstr "Reclutar"
+
 #~ msgid "Select unit:"
 #~ msgstr "Seleccionar unidad:"
 
@@ -9767,6 +9749,9 @@ msgstr "Opciones del modo pizarra"
 
 #~ msgid "level"
 #~ msgstr "nivel"
+
+#~ msgid "XP: "
+#~ msgstr "PX: "
 
 #~ msgid "Connecting"
 #~ msgstr "Conectando"
@@ -10489,6 +10474,10 @@ msgstr "Opciones del modo pizarra"
 #, fuzzy
 #~ msgid "It is invisible!"
 #~ msgstr "invisible: "
+
+#, fuzzy
+#~ msgid "Choose a Map to Open"
+#~ msgstr "Escoger arma:"
 
 #, fuzzy
 #~ msgid "Choose a Mask to Apply"
