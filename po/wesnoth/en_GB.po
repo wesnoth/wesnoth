@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 22:41+0300\n"
-"PO-Revision-Date: 2019-07-08 12:17+1000\n"
+"PO-Revision-Date: 2019-08-28 19:00+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -2714,6 +2714,15 @@ msgid ""
 "Saadia,Sabiha,Safiya,Sahar,Saida,Sajida,Sakhra,Salma,Samira,Sarah,Shahd,"
 "Shatha,Sherine,Shumaila,Sumaya,Taslima,Umm,Yara,Yasmin,Zahra,Zakiya,Zaynab"
 msgstr ""
+"Abiha,Afaf,A'isha,Ajda,Aliya,Amira,Ashraqat,Atikah,Azra,Boutheina,Bushra,"
+"Chaima,Cynthia,Dalal,Dalia,Eliana,Esma,Farida,Fatima,Feyrouz,Habiba,Hafsa,"
+"Hajra,Halima,Hamida,Hanifa,Havva,Hayat,Hessa,Ibtisam,Ibtissam,Inaam,Jamila,"
+"Jawahir,Jena,Jumana,Kareena,Karima,Katya,Khadija,Khairunnisa,Khawla,Khawlah,"
+"Lama,Lamia,Latifa,Layal,Layan,Leila,Lina,Lulwa,Madiha,Maha,Mahmuna,Mai,"
+"Malika,Marwa,Maryam,Maya,Maysoon,Melissa,Nadia,Nafisa,Nahla,Naila,Najat,"
+"Nasim,Nasrin,Nejla,Nezha,Niusha,Qistina,Rahima,Rana,Rashida,Reem,Ruqayya,"
+"Saadia,Sabiha,Safiya,Sahar,Saida,Sajida,Sakhra,Salma,Samira,Sarah,Shahd,"
+"Shatha,Sherine,Shumaila,Sumaya,Taslima,Umm,Yara,Yasmin,Zahra,Zakiya,Zaynab"
 
 #. Generator for male dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:146
@@ -3688,21 +3697,14 @@ msgstr ""
 
 #. [language]
 #: data/english.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Lawful units fight better during the day, and worse at night.\n"
-#| "\n"
-#| "Day: +25% Damage\n"
-#| "Night: −25% Damage"
 msgid ""
 "Liminal units fight best during the twilight times of day.\n"
 "\n"
 "Twilight: +25% Damage"
 msgstr ""
-"Lawful units fight better during the day, and worse at night.\n"
+"Liminal units fight best during the twilight times of day.\n"
 "\n"
-"Day: +25% Damage\n"
-"Night: −25% Damage"
+"Twilight: +25% Damage"
 
 #. [language]
 #: data/english.cfg:22
@@ -4140,10 +4142,8 @@ msgstr "Defeat:"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
-#, fuzzy
-#| msgid "%d%% of gold carried over to the next scenario."
 msgid "$percent|% of gold carried over to the next scenario."
-msgstr "%d%% of gold carried over to the next scenario."
+msgstr "$percent|% of gold carried over to the next scenario."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [objective]: condition=win
@@ -4156,13 +4156,13 @@ msgstr "Defeat enemy leader(s)"
 #. [heals]: id=aura of death 8
 #: data/scenario-test.cfg:886 data/scenario-test.cfg:914
 msgid "aura of seath ("
-msgstr ""
+msgstr "aura of seath ("
 
 #. [heals]: id=aura of death 4
 #. [heals]: id=aura of death 8
 #: data/scenario-test.cfg:887 data/scenario-test.cfg:915
 msgid "female^aura of death ("
-msgstr ""
+msgstr "aura of death ("
 
 #: data/scenario-test.cfg:1073 src/game_initialization/depcheck.cpp:491
 msgid "OK"
@@ -6155,7 +6155,7 @@ msgstr "Connection timed out"
 
 #: src/game_initialization/multiplayer.cpp:71
 msgid "Invalid address specified for multiplayer server"
-msgstr ""
+msgstr "Invalid address specified for multiplayer server"
 
 #: src/game_initialization/multiplayer.cpp:118
 msgid ""
@@ -7040,10 +7040,8 @@ msgid "Switch a side to/from AI control."
 msgstr "Switch a side to/from AI control."
 
 #: src/menu_events.cpp:1191
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "do not translate the on/off/full^[<side> [on/off/full]]"
-msgstr "[<side> [on/off]]"
+msgstr "[<side> [on/off/full]]"
 
 #: src/menu_events.cpp:1192
 msgid "Switch a side to/from idle state."
@@ -7255,11 +7253,11 @@ msgstr "Could not find label or unit containing the string ‘$search’."
 
 #: src/menu_events.cpp:1434
 msgid "Can't droid invalid side: '$side'."
-msgstr "Can't droid invalid side: '$side'."
+msgstr "Can't use droid on invalid side: '$side'."
 
 #: src/menu_events.cpp:1437
 msgid "Can't droid networked side: '$side'."
-msgstr "Can't droid networked side: '$side'."
+msgstr "Can't use droid on networked side: '$side'."
 
 #: src/menu_events.cpp:1447
 msgid "Side '$side' controller is now controlled by: AI."
@@ -7267,34 +7265,29 @@ msgstr "Side '$side' controller is now controlled by: AI."
 
 #: src/menu_events.cpp:1449
 msgid "Side '$side' is already droided."
-msgstr "Side '$side' is already droided."
+msgstr "Side '$side' is already AI controlled."
 
 #: src/menu_events.cpp:1456
 msgid "Side '$side' controller is now controlled by: human."
 msgstr "Side '$side' controller is now controlled by: human."
 
 #: src/menu_events.cpp:1458
-#, fuzzy
-#| msgid "Side '$side' is already droided."
 msgid "Side '$side' is already not droided."
-msgstr "Side '$side' is already droided."
+msgstr "Side '$side' is already human controlled."
 
 #: src/menu_events.cpp:1465
-#, fuzzy
-#| msgid "Side '$side' controller is now controlled by: AI."
 msgid "Side '$side' controller is now fully controlled by: AI."
-msgstr "Side '$side' controller is now controlled by: AI."
+msgstr "Side '$side' controller is now fully controlled by: AI."
 
 #: src/menu_events.cpp:1467
-#, fuzzy
-#| msgid "Side '$side' is already droided."
 msgid "Side '$side' is already fully AI controlled."
-msgstr "Side '$side' is already droided."
+msgstr "Side '$side' is already fully AI controlled."
 
 #: src/menu_events.cpp:1470
 msgid ""
 "Invalid action provided for side '$side'. Valid actions are: on, off, full."
 msgstr ""
+"Invalid action provided for side '$side'. Valid actions are: on, off, full."
 
 #: src/menu_events.cpp:1493
 msgid "Can't idle invalid side: '$side'."
@@ -7416,7 +7409,7 @@ msgstr "No Ally Mirror"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "A game ($name|, $scenario|) has been created"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176

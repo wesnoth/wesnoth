@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 22:40+0300\n"
-"PO-Revision-Date: 2019-07-08 12:38+1000\n"
+"PO-Revision-Date: 2019-08-28 11:26+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -1567,18 +1567,6 @@ msgstr "Fungus"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2726
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mushroom groves'</italic> are vast underground forests of "
-#| "giant mushrooms,\n"
-#| "which thrive in the damp darkness. Most units have trouble negotiating "
-#| "the spongy floor of smaller fungi, but they have plenty of cover behind "
-#| "the larger stalks. Mounted units, however, become completely mired and "
-#| "lack proper freedom of movement in combat. Undead units have a natural "
-#| "affinity for decay and function quite well in mushroom forests.\n"
-#| "\n"
-#| "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
-#| "receive only 20%."
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -1591,12 +1579,11 @@ msgid ""
 "receive only 20%."
 msgstr ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
-"giant mushrooms,\n"
-"which thrive in the damp darkness. Most units have trouble negotiating the "
-"spongy floor of smaller fungi, but they have plenty of cover behind the "
-"larger stalks. Mounted units, however, become completely mired and lack "
-"proper freedom of movement in combat. Undead units have a natural affinity "
-"for decay and function quite well in mushroom forests.\n"
+"giant mushrooms, which thrive in the damp darkness. Most units have trouble "
+"negotiating the spongy floor of smaller fungi, but they have plenty of cover "
+"behind the larger stalks. Mounted units, however, become completely mired "
+"and lack proper freedom of movement in combat. Undead units have a natural "
+"affinity for decay and function quite well in mushroom forests.\n"
 "\n"
 "Most units receive 50% to 60% defence in mushroom groves, whereas cavalry "
 "receive only 20%."
@@ -1664,17 +1651,6 @@ msgstr ""
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:2781
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Hills'</italic> represent any reasonably rough terrain,\n"
-#| "with enough dips and rises in the ground to provide some cover. Hills are "
-#| "difficult for most troops to navigate. Dwarves, trolls, and orcs have "
-#| "enough familiarity with the terrain that they can pass through it without "
-#| "being slowed down. Cavalry have enough trouble navigating the terrain "
-#| "that any defensive aid lent by cover is negated.\n"
-#| "\n"
-#| "Most units have about 50% defense in hills, whereas cavalry are limited "
-#| "to 40%. Dwarves enjoy 60% defense in hills."
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
 "enough dips and rises in the ground to provide some cover. Hills are "
@@ -1686,8 +1662,8 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
-"<italic>text='Hills'</italic> represent any reasonably rough terrain,\n"
-"with enough dips and rises in the ground to provide some cover. Hills are "
+"<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
+"enough dips and rises in the ground to provide some cover. Hills are "
 "difficult for most troops to navigate. Dwarves, trolls, and orcs have enough "
 "familiarity with the terrain that they can pass through it without being "
 "slowed down. Cavalry have enough trouble navigating the terrain that any "
@@ -1974,12 +1950,12 @@ msgstr "Search"
 
 #. [label]: id=no_options_notice
 #: data/gui/macros/custom_options_tree.cfg:26
-#, fuzzy
-#| msgid "Configure settings for the selected custom modifications."
 msgid ""
 "There are no custom options available for the selected era, game, or "
 "modification."
-msgstr "Configure settings for the selected custom modifications."
+msgstr ""
+"There are no custom options available for the selected era, game, or "
+"modification."
 
 #. [button]: id=reset_option_values
 #. [button]: id=btn_reset_hotkeys
@@ -3896,17 +3872,13 @@ msgstr "When a new turn has begun"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
-#, fuzzy
-#| msgid "Game data:"
 msgid "Game created:"
-msgstr "Game data:"
+msgstr "Game created:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
-#, fuzzy
-#| msgid "When a new turn has begun"
 msgid "When a new game has been created"
-msgstr "When a new turn has begun"
+msgstr "When a new game has been created"
 
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:235
@@ -4740,16 +4712,12 @@ msgstr "Limit FPS"
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:275
-#, fuzzy
-#| msgid ""
-#| "Disabling this increases CPU usage to 100% but may slightly improve "
-#| "performance at high resolutions"
 msgid ""
 "Disabling this increases CPU usage, but may slightly improve performance "
 "(requires restart to take effect)"
 msgstr ""
-"Disabling this increases CPU usage to 100% but may slightly improve "
-"performance at high resolutions"
+"Disabling this increases CPU usage, but may slightly improve performance "
+"(requires restart to take effect)"
 
 #. [button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:290
@@ -5042,16 +5010,21 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hitpoints inflicted/taken."
 msgstr ""
+"Difference of actual outcome to expected outcome, as a percentage.\n"
+"The first number in parentheses is the expected number of hit-points "
+"inflicted/taken.\n"
+"The sum (or difference) of the two numbers in parentheses is the actual "
+"number of hit-points inflicted/taken."
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:553
 msgid "stats dialog^Ratio of actual to expected"
-msgstr ""
+msgstr "Ratio of actual to expected"
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:568
 msgid "Hits"
-msgstr ""
+msgstr "Hits"
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:571
@@ -5061,6 +5034,9 @@ msgid ""
 "Values between 0 and 50 suggest the number of hits was less than expected.\n"
 "Values between 50 and 100 suggest the number of hits was more than expected."
 msgstr ""
+"Estimate of how much randomness of battles favoured or penalised this side.\n"
+"Values between 0 and 50 suggest the number of hits was less than expected.\n"
+"Values between 50 and 100 suggest the number of hits was more than expected."
 
 #. [button]: id=cancel
 #: data/gui/window/story_viewer.cfg:131
@@ -5630,11 +5606,11 @@ msgstr "Installed"
 
 #: src/gui/dialogs/addon/manager.cpp:186
 msgid "addons_view^Upgradable"
-msgstr "Upgradable"
+msgstr "Upgrade Available"
 
 #: src/gui/dialogs/addon/manager.cpp:187
 msgid "addons_view^Publishable"
-msgstr "Publishable"
+msgstr "Ready to Publish"
 
 #: src/gui/dialogs/addon/manager.cpp:188
 msgid "addons_view^Not Installed"
@@ -5746,11 +5722,11 @@ msgstr "Published, not tracking local version"
 
 #: src/gui/dialogs/addon/manager.cpp:273
 msgid "addon_state^Installed ($local_version|), upgradable"
-msgstr "Installed ($local_version|), upgradable"
+msgstr "Installed ($local_version|), upgrade available"
 
 #: src/gui/dialogs/addon/manager.cpp:274
 msgid "addon_state^Published ($local_version| installed), upgradable"
-msgstr "Published ($local_version| installed), upgradable"
+msgstr "Published ($local_version| installed), upgrade available"
 
 #: src/gui/dialogs/addon/manager.cpp:280
 msgid "addon_state^Installed ($local_version|), outdated on server"
@@ -6519,11 +6495,11 @@ msgstr "This Turn"
 
 #: src/gui/dialogs/statistics_dialog.cpp:217
 msgid "Actual hit rates, by chance to hit:"
-msgstr ""
+msgstr "Actual hit rates, by chance to hit:"
 
 #: src/gui/dialogs/statistics_dialog.cpp:219
 msgid "(no attacks have taken place yet)"
-msgstr ""
+msgstr "(no attacks have taken place yet)"
 
 #: src/gui/dialogs/statistics_dialog.cpp:328
 msgid ""
@@ -6534,6 +6510,11 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hits inflicted/taken."
 msgstr ""
+"Difference of actual outcome to expected outcome, as a percentage.\n"
+"The first number in parentheses is the expected number of hits inflicted/"
+"taken.\n"
+"The sum (or difference) of the two numbers in parentheses is the actual "
+"number of hits inflicted/taken."
 
 #: src/gui/dialogs/statistics_dialog.cpp:372
 msgid "Recruits"
@@ -6613,11 +6594,11 @@ msgstr "No default gui defined."
 
 #: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Installed, upgradable"
-msgstr "Installed, upgradable"
+msgstr "Installed, upgrade available"
 
 #: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Published, upgradable"
-msgstr "Published, upgradable"
+msgstr "Published, upgrade available"
 
 #: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Installed, outdated on server"
@@ -7568,11 +7549,11 @@ msgstr "Speak to All"
 
 #: src/hotkey/hotkey_command.cpp:278
 msgid "Help about save-loading"
-msgstr ""
+msgstr "Help about save-loading"
 
 #: src/hotkey/hotkey_command.cpp:278
 msgid "Hint: save-loading is unnecessary"
-msgstr ""
+msgstr "Hint: save-loading is unnecessary"
 
 #: src/hotkey/hotkey_command.cpp:279
 msgid "View Chat Log"

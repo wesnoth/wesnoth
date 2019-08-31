@@ -4,7 +4,7 @@
      * S20: Improve leveling of units and give player a note about it (Issue#4219)
      * S21: Better indication that the book has gone missing (Issue#4220)
  ### Language and i18n
-   * Updated translations: French, Portuguese (Brazil)
+   * Updated translations: British English, French, Portuguese (Brazil)
    * Set up for translating the Wings of Victory campaign (PR#4265)
    * Changed the :help command's output to split over multiple lines
    * Added translatable explanations of :droid, :help and :idle's arguments

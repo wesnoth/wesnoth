@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "POT-Creation-Date: 2019-08-27 22:41+0300\n"
-"PO-Revision-Date: 2019-07-08 12:39+1000\n"
+"PO-Revision-Date: 2019-08-28 11:35+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -981,15 +981,14 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:368
-#, fuzzy, no-wrap
-#| msgid "B<--scenario>I<\\ value>"
+#, no-wrap
 msgid "B<-S,--use-schema>I<\\ path>"
-msgstr "B<--scenario>I<\\ value>"
+msgstr "B<-S,--use-schema>I<\\ path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:372
 msgid "sets the WML schema for use with B<-V,--validate>."
-msgstr ""
+msgstr "sets the WML schema for use with B<-V,--validate>."
 
 #. type: TP
 #: doc/man/wesnoth.6:372
@@ -1074,50 +1073,47 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:403
-#, fuzzy, no-wrap
-#| msgid "B<--data-path>"
+#, no-wrap
 msgid "B<--validate>I<\\ path>"
-msgstr "B<--data-path>"
+msgstr "B<--validate>I<\\ path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:406
 msgid "validates a file against the WML schema."
-msgstr ""
+msgstr "validates a file against the WML schema."
 
 #. type: TP
 #: doc/man/wesnoth.6:406
 #, no-wrap
 msgid "B<--validate-addon>I<\\ addon_id>"
-msgstr ""
+msgstr "B<--validate-addon>I<\\ addon_id>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:409
 msgid "validates the WML of the given addon as you play."
-msgstr ""
+msgstr "validates the WML of the given add-on as you play."
 
 #. type: TP
 #: doc/man/wesnoth.6:409
-#, fuzzy, no-wrap
-#| msgid "B<--validcache>"
+#, no-wrap
 msgid "B<--validate-core>"
-msgstr "B<--validcache>"
+msgstr "B<--validate-core>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:412
 msgid "validates the core WML as you play."
-msgstr ""
+msgstr "validates the core WML as you play."
 
 #. type: TP
 #: doc/man/wesnoth.6:412
-#, fuzzy, no-wrap
-#| msgid "B<--validcache>"
+#, no-wrap
 msgid "B<--validate-schema \\ path>"
-msgstr "B<--validcache>"
+msgstr "B<--validate-schema \\ path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:415
 msgid "validates a file as a WML schema."
-msgstr ""
+msgstr "validates a file as a WML schema."
 
 #. type: TP
 #: doc/man/wesnoth.6:415
@@ -1935,7 +1931,7 @@ msgstr "Example: B<versions_accepted=\"*\"> accepts any version string."
 #: doc/man/wesnothd.6:168
 #, no-wrap
 msgid "B<deny_unregistered_login>"
-msgstr ""
+msgstr "B<deny_unregistered_login>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:173
@@ -1943,6 +1939,8 @@ msgid ""
 "Whether to prevent users who are not registered with the B<user_handler> "
 "being used from logging in. (default: false)"
 msgstr ""
+"Whether to prevent users who are not registered with the B<user_handler> "
+"being used from logging in. (default: false)"
 
 #. type: SS
 #: doc/man/wesnothd.6:174
@@ -2050,12 +2048,6 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:221
-#, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. Available keys vary "
-#| "depending on which user handler is set with the B<user_handler> key. If "
-#| "no B<[user_handler]> section is present in the configuration the server "
-#| "will run without any nick registration service."
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
@@ -2067,7 +2059,9 @@ msgstr ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
 "B<[user_handler]> section is present in the configuration the server will "
-"run without any nick registration service."
+"run without any nick registration service. All additional tables that are "
+"needed for the forum_user_handler to function can be found in "
+"table_definitions.sql in the Wesnoth source repository."
 
 #. type: TP
 #: doc/man/wesnothd.6:222
@@ -2077,10 +2071,8 @@ msgstr "B<db_host>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:225
-#, fuzzy
-#| msgid "The hostname of the mail server"
 msgid "The hostname of the database server"
-msgstr "The hostname of the mail server"
+msgstr "The host name of the database server"
 
 #. type: TP
 #: doc/man/wesnothd.6:225
@@ -2090,10 +2082,8 @@ msgstr "B<db_name>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:228
-#, fuzzy
-#| msgid "The hostname of the mail server"
 msgid "The name of the database"
-msgstr "The hostname of the mail server"
+msgstr "The name of the database"
 
 #. type: TP
 #: doc/man/wesnothd.6:228
@@ -2103,14 +2093,8 @@ msgstr "B<db_user>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:231
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the user under which to log into the "
-#| "database"
 msgid "The name of the user under which to log into the database"
-msgstr ""
-"(for user_handler=forum) The name of the user under which to log into the "
-"database"
+msgstr "The name of the user under which to log into the database"
 
 #. type: TP
 #: doc/man/wesnothd.6:231
@@ -2120,10 +2104,8 @@ msgstr "B<db_password>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:234
-#, fuzzy
-#| msgid "This user's password."
 msgid "This user's password"
-msgstr "This user's password."
+msgstr "This user's password"
 
 #. type: TP
 #: doc/man/wesnothd.6:234
@@ -2133,18 +2115,12 @@ msgstr "B<db_users_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:237
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which your phpbb forums "
-#| "saves its user data. Most likely this will be E<lt>table-"
-#| "prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forums saves its user data. Most "
 "likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgstr ""
-"(for user_handler=forum) The name of the table in which your phpbb forums "
-"saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
-"(e.g. phpbb3_users)."
+"The name of the table in which your phpbb forums saves its user data. Most "
+"likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 
 #. type: TP
 #: doc/man/wesnothd.6:237
@@ -2157,26 +2133,26 @@ msgstr "B<db_extra_table>"
 msgid ""
 "The name of the table in which wesnothd will save its own data about users."
 msgstr ""
+"The name of the table in which wesnothd will save its own data about users."
 
 #. type: TP
 #: doc/man/wesnothd.6:240
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_game_info_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_game_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:243
 msgid ""
 "The name of the table in which wesnothd will save its own data about games."
 msgstr ""
+"The name of the table in which wesnothd will save its own data about games."
 
 #. type: TP
 #: doc/man/wesnothd.6:243
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_game_player_info_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_game_player_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:246
@@ -2184,12 +2160,14 @@ msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "players in a game."
 msgstr ""
+"The name of the table in which wesnothd will save its own data about the "
+"players in a game."
 
 #. type: TP
 #: doc/man/wesnothd.6:246
 #, no-wrap
 msgid "B<db_game_modification_info_table>"
-msgstr ""
+msgstr "B<db_game_modification_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:249
@@ -2197,41 +2175,38 @@ msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "modifications used in a game."
 msgstr ""
+"The name of the table in which wesnothd will save its own data about the "
+"modifications used in a game."
 
 #. type: TP
 #: doc/man/wesnothd.6:249
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_user_group_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_user_group_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:252
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which your phpbb forums "
-#| "saves its user data. Most likely this will be E<lt>table-"
-#| "prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forums saves its user group data. "
 "Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
 "phpbb3_user_group)."
 msgstr ""
-"(for user_handler=forum) The name of the table in which your phpbb forums "
-"saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
-"(e.g. phpbb3_users)."
+"The name of the table in which your phpbb forums saves its user group data. "
+"Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
+"phpbb3_user_group)."
 
 #. type: TP
 #: doc/man/wesnothd.6:252
 #, no-wrap
 msgid "B<mp_mod_group>"
-msgstr ""
+msgstr "B<mp_mod_group>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:255
 msgid ""
 "The ID of the forum group to be considered as having moderation authority."
 msgstr ""
+"The ID of the forum group to be considered as having moderation authority."
 
 #. type: Plain text
 #: doc/man/wesnothd.6:260
@@ -2262,7 +2237,6 @@ msgstr ""
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
 
-#, no-wrap
 #~ msgid "B<user_handler>"
 #~ msgstr "B<user_handler>"
 
@@ -2301,7 +2275,6 @@ msgstr "B<wesnoth>(6)"
 #~ "PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
 #~ "user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
 
-#, no-wrap
 #~ msgid "B<user_expiration>"
 #~ msgstr "B<user_expiration>"
 
@@ -2319,29 +2292,24 @@ msgstr "B<wesnoth>(6)"
 #~ "B<[mail]> Configures an SMTP server through which the user handler can "
 #~ "send mail. Currently only used by the sample user handler."
 
-#, no-wrap
 #~ msgid "B<server>"
 #~ msgstr "B<server>"
 
-#, no-wrap
 #~ msgid "B<username>"
 #~ msgstr "B<username>"
 
 #~ msgid "The user name under which to log into the mail server."
 #~ msgstr "The user name under which to log into the mail server."
 
-#, no-wrap
 #~ msgid "B<password>"
 #~ msgstr "B<password>"
 
-#, no-wrap
 #~ msgid "B<from_address>"
 #~ msgstr "B<from_address>"
 
 #~ msgid "The reply-to address of you mail."
 #~ msgstr "The reply-to address of your mail."
 
-#, no-wrap
 #~ msgid "B<mail_port>"
 #~ msgstr "B<mail_port>"
 

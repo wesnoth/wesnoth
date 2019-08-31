@@ -282,6 +282,9 @@ msgid ""
 "killed and not immediately raised as a corpse, its corpse type will be "
 "permanantly added to the recruit list instead."
 msgstr ""
+"<span color='cyan'>Special Note: </span>In this campaign, if a unit is "
+"killed and not immediately raised as a corpse, its corpse type will be "
+"permanantly added to the recruit list instead."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:325
@@ -2961,7 +2964,7 @@ msgstr "Gryphons... live at this height. We should be cautious."
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:361
 msgid "Yesss. The danger I sssensed is here."
-msgstr ""
+msgstr "Yesss. The danger I sssensed is here."
 
 #. [scenario]: id=16_The_Mage
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:13
@@ -3827,12 +3830,12 @@ msgstr "Well met Fizztsars. Now these creatures will certainly fall."
 #. [message]: speaker=Fizztsars
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:591
 msgid "Except for the male of oursss with them. He will come with usss."
-msgstr ""
+msgstr "Except for the male of oursss with them. He will come with usss."
 
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:595
 msgid "No! I will not return yet, I still have sssecrets to learn!"
-msgstr ""
+msgstr "No! I will not return yet, I still have sssecrets to learn!"
 
 #. [unit]: type=Dwarvish Dragonguard, id=Thrigalurd
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:622
@@ -4188,24 +4191,24 @@ msgstr ""
 #. [unit_type]: id=SotA Walking Corpse_Dummy, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:89
 msgid "All Corpses"
-msgstr ""
+msgstr "All Corpses"
 
 #. [unit_type]: id=SotA Walking Corpse_Dummy, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:101
 msgid "Choose this “unit” to get a list of available corpses."
-msgstr ""
+msgstr "Choose this “unit” to get a list of available corpses."
 
 #. [unit_type]: id=SotA Flying Corpse_Gryphon
 #. [unit_type]: id=SotA Flying Corpse_Bat
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:153
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:310
 msgid "Flying Corpse"
-msgstr ""
+msgstr "Flying Corpse"
 
 #. [unit_type]: id=SotA Swimming Corpse
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:201
 msgid "Swimming Corpse"
-msgstr ""
+msgstr "Swimming Corpse"
 
 #: data/campaigns/Secrets_of_the_Ancients/utils/characters.cfg:7
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:7
@@ -4304,32 +4307,32 @@ msgstr "I will miss you."
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:307
 msgid "Now I will never learn the sssecret of exssstending my ssspan."
-msgstr ""
+msgstr "Now I will never learn the sssecret of exssstending my ssspan."
 
 #. [message]: speaker=Carcyn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:323
 msgid "I'm going to miss him."
-msgstr ""
+msgstr "I'm going to miss him."
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:329
 msgid "Unfortunate. He was useful."
-msgstr ""
+msgstr "Unfortunate. He was useful."
 
 #. [message]: speaker=Shynal
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:340
 msgid "Yes, he was helpful."
-msgstr ""
+msgstr "Yes, he was helpful."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:346
 msgid "Indeed, he will be missed."
-msgstr ""
+msgstr "Indeed, he will be missed."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:360
 msgid "Don't worry, my pet. I can save you."
-msgstr ""
+msgstr "Don't worry, my pet. I can save you."
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:416
@@ -4533,6 +4536,19 @@ msgid ""
 "                (Troll),\n"
 "                (Dwarf)"
 msgstr ""
+"(Bat),\n"
+"                (Rat),\n"
+"                (Wolf),\n"
+"                (Human),\n"
+"                (Mounted),\n"
+"                (Wolf Rider),,\n"
+"                (Saurian),\n"
+"                (Wose),\n"
+"                (Goblin),\n"
+"                (Gryphon),\n"
+"                (Spider),\n"
+"                (Troll),\n"
+"                (Dwarf)"
 
 #. [split]
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:63
@@ -4552,66 +4568,78 @@ msgid ""
 "                You can now raise troll corpses!,\n"
 "                You can now raise dwarf corpses!"
 msgstr ""
+"You can now raise bat corpses!,\n"
+"                You can now raise rat corpses!,\n"
+"                You can now raise wolf corpses!,\n"
+"                You can now raise human corpses!,\n"
+"                You can now raise mounted corpses!,\n"
+"                You can now raise wolf rider corpses!,\n"
+"                You can now raise swimming corpses!,\n"
+"                You can now raise saurian corpses!,\n"
+"                You can now raise wose corpses!,\n"
+"                You can now raise goblin corpses!,\n"
+"                You can now raise gryphon corpses!,\n"
+"                You can now raise spider corpses!,\n"
+"                You can now raise troll corpses!,\n"
+"                You can now raise dwarf corpses!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:346
 msgid "A lua error has occurred, and a corpse cannot be recruited."
-msgstr ""
+msgstr "A lua error has occurred, and a corpse cannot be recruited."
 
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:30
 msgid "Lvl 0"
-msgstr ""
+msgstr "Lvl 0"
 
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:33
 msgid "Undead"
-msgstr ""
+msgstr "Undead"
 
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:38
 msgid "Traits"
-msgstr ""
+msgstr "Traits"
 
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:41
 msgid "Attacks"
-msgstr ""
+msgstr "Attacks"
 
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:53
 msgid "Choose a Corpse"
-msgstr ""
+msgstr "Choose a Corpse"
 
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:68
 msgid "Recruit"
-msgstr ""
+msgstr "Recruit"
 
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:69
 msgid "Cancel"
-msgstr ""
+msgstr "Cancel"
 
 #. [lua]: select
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:80
 msgid "HP: "
-msgstr ""
+msgstr "HP: "
 
 #. [lua]: select
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:80
 msgid "MP: "
-msgstr ""
+msgstr "MP: "
 
 #. [lua]: select
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:80
 msgid "XP: "
-msgstr ""
+msgstr "XP: "
 
 #. [lua]: postshow
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:143
 msgid "There are no corpses available."
-msgstr ""
+msgstr "There are no corpses available."
 
 #. [lua]: postshow
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:147
-#, fuzzy
-#| msgid "You don't have enough gold to raise that unit."
 msgid "You do not have enough gold to recruit that unit"
-msgstr "You don't have enough gold to raise that unit."
+msgstr "You do not have enough gold to recruit that unit"
 
 #~ msgid "Translations"
 #~ msgstr "Translations"
