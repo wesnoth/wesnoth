@@ -132,6 +132,8 @@ void help_text_area::set_items()
 				TRY(img);
 				TRY(bold);
 				TRY(italic);
+				TRY(underline);
+				TRY(strikethrough);
 				TRY(header);
 				TRY(jump);
 				TRY(format);
@@ -230,6 +232,24 @@ void help_text_area::handle_italic_cfg(const config &cfg)
 	add_text_item(text, "", false, -1, false, true);
 }
 
+void help_text_area::handle_underline_cfg(const config &cfg)
+{
+	const std::string text = cfg["text"];
+	if (text.empty()) {
+		throw parse_error("Underline markup must have text attribute.");
+	}
+	add_text_item(text, "", false, -1, false, false, true);
+}
+
+void help_text_area::handle_strikethrough_cfg(const config &cfg)
+{
+	const std::string text = cfg["text"];
+	if (text.empty()) {
+		throw parse_error("Strikethrough markup must have text attribute.");
+	}
+	add_text_item(text, "", false, -1, false, false, false, true);
+}
+
 void help_text_area::handle_header_cfg(const config &cfg)
 {
 	const std::string text = cfg["text"];
@@ -285,13 +305,16 @@ void help_text_area::handle_format_cfg(const config &cfg)
 	}
 	bool bold = cfg["bold"].to_bool();
 	bool italic = cfg["italic"].to_bool();
+	bool underline = cfg["underline"].to_bool();
+	bool strikethrough = cfg["strikethrough"].to_bool();
 	int font_size = cfg["font_size"].to_int(normal_font_size);
 	color_t color = help::string_to_color(cfg["color"]);
-	add_text_item(text, "", false, font_size, bold, italic, color);
+	add_text_item(text, "", false, font_size, bold, italic, underline, strikethrough, color);
 }
 
 void help_text_area::add_text_item(const std::string& text, const std::string& ref_dst,
 								   bool broken_link, int _font_size, bool bold, bool italic,
+								   bool underline, bool strikethrough,
 								   color_t text_color
 )
 {
@@ -309,20 +332,24 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 		down_one_line();
 		std::string rest_text = text;
 		rest_text.erase(0, first_word_start + 1);
-		add_text_item(rest_text, ref_dst, broken_link, _font_size, bold, italic, text_color);
+		add_text_item(rest_text, ref_dst, broken_link, _font_size, bold, italic,
+			      underline, strikethrough, text_color);
 		return;
 	}
 	const std::string first_word = get_first_word(text);
 	int state = 0;
 	state |= bold ? TTF_STYLE_BOLD : 0;
 	state |= italic ? TTF_STYLE_ITALIC : 0;
+	state |= underline ? TTF_STYLE_UNDERLINE : 0;
+	state |= strikethrough ? TTF_STYLE_STRIKETHROUGH : 0;
 	if (curr_loc_.first != get_min_x(curr_loc_.second, curr_row_height_)
 		&& remaining_width < font::line_width(first_word, scaled_font_size, state)) {
 		// The first word does not fit, and we are not at the start of
 		// the line. Move down.
 		down_one_line();
 		std::string s = remove_first_space(text);
-		add_text_item(s, ref_dst, broken_link, _font_size, bold, italic, text_color);
+		add_text_item(s, ref_dst, broken_link, _font_size, bold, italic,
+			      underline, strikethrough, text_color);
 	}
 	else {
 		std::vector<std::string> parts = split_in_width(text, font_size, remaining_width);
@@ -366,7 +393,8 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 					   < get_remaining_width())) {
 				s = remove_first_space(s);
 			}
-			add_text_item(s, ref_dst, broken_link, _font_size, bold, italic, text_color);
+			add_text_item(s, ref_dst, broken_link, _font_size, bold, italic,
+				      underline, strikethrough, text_color);
 
 		}
 	}

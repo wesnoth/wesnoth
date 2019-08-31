@@ -97,10 +97,14 @@ private:
 	// Create appropriate items from configs. Items will be added to the
 	// internal vector. These methods check that the necessary
 	// attributes are specified.
+	//
+	// These are called by the TRY() macro in help_text_area::set_items().
 	void handle_ref_cfg(const config &cfg);
 	void handle_img_cfg(const config &cfg);
 	void handle_bold_cfg(const config &cfg);
 	void handle_italic_cfg(const config &cfg);
+	void handle_underline_cfg(const config &cfg);
+	void handle_strikethrough_cfg(const config &cfg);
 	void handle_header_cfg(const config &cfg);
 	void handle_jump_cfg(const config &cfg);
 	void handle_format_cfg(const config &cfg);
@@ -115,6 +119,7 @@ private:
 	void add_text_item(const std::string& text, const std::string& ref_dst="",
 					   bool broken_link = false,
 					   int font_size=-1, bool bold=false, bool italic=false,
+					   bool underline=false, bool strikethrough=false,
 					   color_t color=font::NORMAL_COLOR);
 
 	/// Add an image item with the specified attributes.
