@@ -84,13 +84,22 @@ void game_board::set_all_units_user_end_turn() {
 }
 
 void game_board::heal_all_survivors() {
-	for (unit_map::iterator it = units_.begin(); it != units_.end(); it++) {
-		unit_ptr un =  it.get_shared_ptr();
-		if (teams_[un->side() - 1].persistent()) {
-			un->new_turn();
-			un->new_scenario();
+	for (auto& u : units_) {
+		if (get_team(u.side()).persistent()) {
+			u.new_turn();
+			u.new_scenario();
 		}
 	}
+
+	for(auto& t : teams_) {
+		if(t.persistent()) {
+			for(auto& up : t.recall_list()) {
+				up->new_scenario();
+				up->new_turn();
+			}
+		}
+	}
+
 }
 
 void game_board::check_victory(bool & continue_level, bool & found_player, bool & found_network_player, bool & cleared_villages, std::set<unsigned> & not_defeated, bool remove_from_carryover_on_defeat)
