@@ -143,6 +143,8 @@ public:
 	// NOTE: this used to be a const object reference, but it messed up with the
 	// translation engine upon changing the language in the same session.
 	t_string unit_description() const;
+	bool has_special_notes() const;
+	const std::vector<t_string>& special_notes() const;
 	int hitpoints() const { return hitpoints_; }
 	double hp_bar_scaling() const { return hp_bar_scaling_; }
 	double xp_bar_scaling() const { return xp_bar_scaling_; }
@@ -296,6 +298,7 @@ private:
 	std::string base_id_;   /// The id of the top ancestor of this unit_type.
 	t_string type_name_;
 	t_string description_;
+	std::vector<t_string> special_notes_;
 	int hitpoints_;
 	double hp_bar_scaling_, xp_bar_scaling_;
 	int level_;

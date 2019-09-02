@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-help"
+
 #include "help/help_topic_generators.hpp"
 
 #include "font/sdl_ttf.hpp"             // for line_width
@@ -544,7 +546,13 @@ std::string unit_topic_generator::operator()() const {
 	}
 
 	// Print the detailed description about the unit.
-		ss << "\n\n" << detailed_description;
+	ss << "\n\n" << detailed_description;
+	if(type_.has_special_notes()) {
+		ss << "\n\n" << _("Special Notes:") << '\n';
+		for(const auto& note : type_.special_notes()) {
+			ss << "• " << note << '\n';
+		}
+	}
 
 	// Print the different attacks a unit has, if it has any.
 	if (!type_.attacks().empty()) {

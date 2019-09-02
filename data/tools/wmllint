@@ -155,7 +155,7 @@
 #
 # A comment of the form
 #
-# #wmllint: match {ABILITY_FOO} with {SPECIAL_NOTES_IOO}
+# #wmllint: match {ABILITY_FOO} with {NOTE_FOO}
 #
 # will declare an ability macro and a special-notes macro to be tied
 # together for reference-checking purposes.
@@ -1035,44 +1035,45 @@ def standard_unit_filter():
 
 # Associations for the ability sanity checks.
 notepairs = [
-    ("movement_type=mounted", "{SPECIAL_NOTES_DEFENSE_CAP}"),
-    ("movement_type=undeadspirit", "{SPECIAL_NOTES_SPIRIT}"),
-    ("type=arcane", "{SPECIAL_NOTES_ARCANE}"),
-    ("{ABILITY_HEALS}", "{SPECIAL_NOTES_HEALS}"),
-    ("{ABILITY_EXTRA_HEAL}", "{SPECIAL_NOTES_EXTRA_HEAL}"),
-    ("{ABILITY_UNPOISON}", "{SPECIAL_NOTES_UNPOISON}"),
-    ("{ABILITY_CURES}", "{SPECIAL_NOTES_CURES}"),
-    ("{ABILITY_REGENERATES}", "{SPECIAL_NOTES_REGENERATES}"),
-    ("{ABILITY_STEADFAST}", "{SPECIAL_NOTES_STEADFAST}"),
-    ("{ABILITY_LEADERSHIP}", "{SPECIAL_NOTES_LEADERSHIP}"),
-    ("{ABILITY_SKIRMISHER}", "{SPECIAL_NOTES_SKIRMISHER}"),
-    ("{ABILITY_ILLUMINATES}", "{SPECIAL_NOTES_ILLUMINATES}"),
-    ("{ABILITY_TELEPORT}", "{SPECIAL_NOTES_TELEPORT}"),
-    ("{ABILITY_AMBUSH}", "{SPECIAL_NOTES_AMBUSH}"),
-    ("{ABILITY_NIGHTSTALK}", "{SPECIAL_NOTES_NIGHTSTALK}"),
-    ("{ABILITY_CONCEALMENT}", "{SPECIAL_NOTES_CONCEALMENT}"),
-    ("{ABILITY_SUBMERGE}", "{SPECIAL_NOTES_SUBMERGE}"),
-    ("{ABILITY_FEEDING}", "{SPECIAL_NOTES_FEEDING}"),
-    ("{ABILITY_INSPIRE}", "{SPECIAL_NOTES_INSPIRE}"),
-    ("{ABILITY_INITIATIVE}", "{SPECIAL_NOTES_INITIATIVE}"),
-    ("{ABILITY_DISTRACT}", "{SPECIAL_NOTES_DISTRACT}"),
-    ("{ABILITY_DISENGAGE}", "{SPECIAL_NOTES_DISENGAGE}"),
-    ("{ABILITY_FORMATION}", "{SPECIAL_NOTES_FORMATION}"),
-    ("{WEAPON_SPECIAL_BERSERK}", "{SPECIAL_NOTES_BERSERK}"),
-    ("{WEAPON_SPECIAL_BACKSTAB}", "{SPECIAL_NOTES_BACKSTAB}"),
-    ("{WEAPON_SPECIAL_PLAGUE", "{SPECIAL_NOTES_PLAGUE}"), # No } deliberately
-    ("{WEAPON_SPECIAL_SLOW}", "{SPECIAL_NOTES_SLOW}"),
-    ("{WEAPON_SPECIAL_PETRIFY}", "{SPECIAL_NOTES_PETRIFY}"),
-    ("{WEAPON_SPECIAL_MARKSMAN}", "{SPECIAL_NOTES_MARKSMAN}"),
-    ("{WEAPON_SPECIAL_MAGICAL}", "{SPECIAL_NOTES_MAGICAL}"),
-    ("{WEAPON_SPECIAL_SWARM}", "{SPECIAL_NOTES_SWARM}"),
-    ("{WEAPON_SPECIAL_CHARGE}", "{SPECIAL_NOTES_CHARGE}"),
-    ("{WEAPON_SPECIAL_DRAIN}", "{SPECIAL_NOTES_DRAIN}"),
-    ("{WEAPON_SPECIAL_FIRSTSTRIKE}", "{SPECIAL_NOTES_FIRSTSTRIKE}"),
-    ("{WEAPON_SPECIAL_POISON}", "{SPECIAL_NOTES_POISON}"),
-    ("{WEAPON_SPECIAL_STUN}", "{SPECIAL_NOTES_STUN}"),
-    ("{WEAPON_SPECIAL_SHOCK}", "{SPECIAL_NOTES_SHOCK}"),
-    ("{WEAPON_SPECIAL_DAZE}", "{SPECIAL_NOTES_DAZE}"),
+    ("movement_type=mounted", "{NOTE_DEFENSE_CAP}"),
+    ("movement_type=undeadspirit", "{NOTE_SPIRIT}"),
+    ("type=arcane", "{NOTE_ARCANE}"),
+    ("{ABILITY_HEALS}", "{NOTE_HEALS}"),
+    ("{ABILITY_EXTRA_HEAL}", "{NOTE_EXTRA_HEAL}"),
+    ("{ABILITY_UNPOISON}", "{NOTE_UNPOISON}"),
+    ("{ABILITY_CURES}", "{NOTE_CURES}"),
+    ("{ABILITY_REGENERATES}", "{NOTE_REGENERATES}"),
+    ("{ABILITY_SELF_HEAL}", "{NOTE_SELF_HEAL}"),
+    ("{ABILITY_STEADFAST}", "{NOTE_STEADFAST}"),
+    ("{ABILITY_LEADERSHIP}", "{NOTE_LEADERSHIP}"),
+    ("{ABILITY_SKIRMISHER}", "{NOTE_SKIRMISHER}"),
+    ("{ABILITY_ILLUMINATES}", "{NOTE_ILLUMINATES}"),
+    ("{ABILITY_TELEPORT}", "{NOTE_TELEPORT}"),
+    ("{ABILITY_AMBUSH}", "{NOTE_AMBUSH}"),
+    ("{ABILITY_NIGHTSTALK}", "{NOTE_NIGHTSTALK}"),
+    ("{ABILITY_CONCEALMENT}", "{NOTE_CONCEALMENT}"),
+    ("{ABILITY_SUBMERGE}", "{NOTE_SUBMERGE}"),
+    ("{ABILITY_FEEDING}", "{NOTE_FEEDING}"),
+    ("{ABILITY_INSPIRE}", "{NOTE_INSPIRE}"),
+    ("{ABILITY_INITIATIVE}", "{NOTE_INITIATIVE}"),
+    ("{ABILITY_DISTRACT}", "{NOTE_DISTRACT}"),
+    ("{ABILITY_DISENGAGE}", "{NOTE_DISENGAGE}"),
+    ("{ABILITY_FORMATION}", "{NOTE_FORMATION}"),
+    ("{WEAPON_SPECIAL_BERSERK}", "{NOTE_BERSERK}"),
+    ("{WEAPON_SPECIAL_BACKSTAB}", "{NOTE_BACKSTAB}"),
+    ("{WEAPON_SPECIAL_PLAGUE", "{NOTE_PLAGUE}"), # No } deliberately
+    ("{WEAPON_SPECIAL_SLOW}", "{NOTE_SLOW}"),
+    ("{WEAPON_SPECIAL_PETRIFY}", "{NOTE_PETRIFY}"),
+    ("{WEAPON_SPECIAL_MARKSMAN}", "{NOTE_MARKSMAN}"),
+    ("{WEAPON_SPECIAL_MAGICAL}", "{NOTE_MAGICAL}"),
+    ("{WEAPON_SPECIAL_SWARM}", "{NOTE_SWARM}"),
+    ("{WEAPON_SPECIAL_CHARGE}", "{NOTE_CHARGE}"),
+    ("{WEAPON_SPECIAL_DRAIN}", "{NOTE_DRAIN}"),
+    ("{WEAPON_SPECIAL_FIRSTSTRIKE}", "{NOTE_FIRSTSTRIKE}"),
+    ("{WEAPON_SPECIAL_POISON}", "{NOTE_POISON}"),
+    ("{WEAPON_SPECIAL_STUN}", "{NOTE_STUN}"),
+    ("{WEAPON_SPECIAL_SHOCK}", "{NOTE_SHOCK}"),
+    ("{WEAPON_SPECIAL_DAZE}", "{NOTE_DAZE}"),
     ]
 
 # This dictionary will pair macros with the characters they recall or create,
@@ -1470,21 +1471,19 @@ def global_sanity_check(filename, lines):
                     nt = note_trait[note]
                     if nt not in traits and nt not in missing_traits:
                         missing_traits.append(nt)
-                if (notes or traits) and not has_special_notes:
-                    missing_notes = ["{SPECIAL_NOTES}"] + missing_notes
                 # If the unit didn't specify hitpoints, there is some wacky
                 # stuff going on (possibly pseudo-[base_unit] behavior via
                 # macro generation) so disable some of the consistency checks.
                 if not hitpoints_specified:
                     continue
                 if notecheck and missing_notes:
-                    print('"%s", line %d: unit %s is missing notes +%s' \
-                          % (filename, in_unit_type, unit_id, "+".join(missing_notes)))
+                    print('"%s", line %d: unit %s is missing notes %s' \
+                          % (filename, in_unit_type, unit_id, " ".join(missing_notes)))
                 if missing_traits:
                     print('"%s", line %d: unit %s is missing traits %s' \
-                          % (filename, in_unit_type, unit_id, "+".join(missing_traits)))
+                          % (filename, in_unit_type, unit_id, " ".join(missing_traits)))
                 if notecheck and not (notes or traits) and has_special_notes:
-                    print('"%s", line %d: unit %s has superfluous {SPECIAL_NOTES}' \
+                    print('"%s", line %d: unit %s has superfluous {NOTE_*}' \
                          % (filename, in_unit_type, unit_id))
                 if "[theme]" not in nav.ancestors() and "[base_unit]" not in nav.ancestors() and not unit_race:
                     print('"%s", line %d: unit %s has no race' \
@@ -1496,6 +1495,8 @@ def global_sanity_check(filename, lines):
             base_unit = ""
             has_special_notes = False
             unit_race = None
+        elif nav.element == "[special_note]":
+            has_special_notes = True
         if '[unit_type]' in nav.ancestors() and "[filter_attack]" not in nav.ancestors():
             try:
                 (key, prefix, value, comment) = parse_attribute(nav.text)
@@ -1531,7 +1532,7 @@ def global_sanity_check(filename, lines):
             precomment = nav.text
             if '#' in nav.text:
                 precomment = nav.text[:nav.text.find("#")]
-            if "{SPECIAL_NOTES}" in precomment:
+            if "{NOTE" in precomment:
                 has_special_notes = True
             for (p, q) in notepairs:
                 if p in precomment:
@@ -3371,7 +3372,7 @@ In your case, your system interprets your arguments as:
                                 print(fn + ":")
                             spellcheck(fn, d)
                 except ImportError:
-                    print("wmllint: spell check unavailable, install python3-enchant to enable", file=sys.stderr)
+                    print("wmllint: spell check unavailable, install python-enchant to enable", file=sys.stderr)
         if failed_any_dirs:
             sys.exit(1)
     except KeyboardInterrupt:
