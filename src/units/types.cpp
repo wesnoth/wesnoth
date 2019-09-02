@@ -241,6 +241,10 @@ void unit_type::build_help_index(
 	icon_ = cfg_["image_icon"].str();
 	small_profile_ = cfg_["small_profile"].str();
 	profile_ = cfg_["profile"].str();
+	
+	for(const config& sn : cfg_.child_range("special_note")) {
+		special_notes_.push_back(sn["note"]);
+	}
 
 	adjust_profile(profile_);
 
@@ -480,6 +484,15 @@ t_string unit_type::unit_description() const
 	} else {
 		return description_;
 	}
+}
+
+bool unit_type::has_special_notes() const
+{
+	return !special_notes_.empty();
+}
+
+const std::vector<t_string>& unit_type::special_notes() const {
+	return special_notes_;
 }
 
 const std::vector<unit_animation>& unit_type::animations() const
