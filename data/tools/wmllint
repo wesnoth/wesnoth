@@ -2553,7 +2553,7 @@ def maptransform(filename, baseline, inmap, y):
 
 def is_map(filename):
     "Is this file a map?"
-    return filename.endswith(".map")
+    return filename.endswith(".map") or filename.endswith(".mask")
 
 if 0: # Not used, as there are currently no defined map transforms
     class maptransform_error(BaseException):
