@@ -2320,7 +2320,7 @@ def hack_syntax(filename, lines):
 
             break
         elif "[attack]" in lines[i]:
-            j = i;
+            j = i
             have_description = False
             while '[/attack]' not in lines[j]:
                 if lines[j].strip().startswith("description"):
@@ -2491,7 +2491,7 @@ def hack_syntax(filename, lines):
             in_textdomain = False
         if in_binary_path or in_textdomain:
             if '~' in lines[i]:
-                tilde = re.search('(^\s*path) *= *([^#]{0,5})(~/?(data/)?add-ons/)', lines[i])
+                tilde = re.search(r'(^\s*path) *= *([^#]{0,5})(~/?(data/)?add-ons/)', lines[i])
                 if tilde:
                     lines[i] = tilde.group(1) + '=' + tilde.group(2) + 'data/add-ons/' + lines[i][tilde.end():]
                     print('"%s", line %d: %s -> data/add-ons/ -- [textdomain] and [binary_path] paths do not accept "~" for userdata'\
@@ -2556,7 +2556,7 @@ def is_map(filename):
     return filename.endswith(".map")
 
 if 0: # Not used, as there are currently no defined map transforms
-    class maptransform_error:
+    class maptransform_error(BaseException):
         "Error object to be thrown by maptransform."
         def __init__(self, infile, inline, type):
             self.infile = infile
@@ -2910,7 +2910,7 @@ def inner_spellcheck(nav, value, spelldict):
         while lowered and lowered[-1] in "_-*).,:;?!& \t":
             lowered = lowered[:-1]
         if lowered and spelldict.check(lowered):
-            continue;
+            continue
         while lowered and lowered[-1] in "_-*').,:;?!& \t":
             lowered = lowered[:-1]
         # Not interested in interpolations or numeric literals
@@ -3232,14 +3232,14 @@ is not necessary; also, frontslashes will also be recognized as directory separa
 
                 moreugly = input('Press "H" if you need more help, or Enter to exit: ')
                 if moreugly.lower().startswith('h'):
-                    print("""
+                    print(r"""
         Explanation:
 
-Windows' use of the backslash as a directory separator is clashing with the use of the backslash as an escape. As an escape, the backslash tells your system that you want a normally special character to be its literal self (or sometimes, that you want a normally ordinary character to have a special meaning). Your system interprets '\\"' as an escape for a literal quote character. Two quotes together are also interpreted as a literal quote.
+Windows' use of the backslash as a directory separator is clashing with the use of the backslash as an escape. As an escape, the backslash tells your system that you want a normally special character to be its literal self (or sometimes, that you want a normally ordinary character to have a special meaning). Your system interprets '\"' as an escape for a literal quote character. Two quotes together are also interpreted as a literal quote.
 
-'"Campaign\\"' is interpreted as 'Campaign"' instead of 'Campaign\\'.
-'"My Folder\\"Campaign' is interpreted as 'My Folder"Campaign' (not 'My Folder\Campaign').
-'"My Folder\Campaign\\" "My Folder\Another_Campaign"' is interpreted as 'My Folder\Campaign" My' and 'Folder\Another_Campaign'.
+'"Campaign\"' is interpreted as 'Campaign"' instead of 'Campaign\'.
+'"My Folder\"Campaign' is interpreted as 'My Folder"Campaign' (not 'My Folder\Campaign').
+'"My Folder\Campaign\" "My Folder\Another_Campaign"' is interpreted as 'My Folder\Campaign" My' and 'Folder\Another_Campaign'.
 
 In your case, your system interprets your arguments as:
 
