@@ -70,6 +70,8 @@
    * Secrets of the Ancients:
      * Added ability to recruit different kinds of walking corpses during the campaign.
      * Unit type naming convention cleanup.
+   * Son of the Black Eye:
+     * S03: remove unused objective note
    * The Hammer of Thursagan:
      * Removed scenarios 4 (Troll Bridge), 5 (Invaders), and 7 (Mages and Drakes)
      * Reworked scenario 8 (Fear) and rebalanced other scenarios
