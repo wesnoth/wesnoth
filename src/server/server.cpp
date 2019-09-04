@@ -212,7 +212,7 @@ const std::string help_msg =
 	" k[ick]ban <mask> <time> <reason>, help, games, metrics,"
 	" netstats [all], [lobby]msg <message>, motd [<message>],"
 	" pm|privatemsg <nickname> <message>, requests, sample, searchlog <mask>,"
-	" signout, stats, status [<mask>], unban <ipmask>\n"
+	" signout, stats, status [<mask>], stopgame <nick>, unban <ipmask>\n"
 	"Specific strings (those not in between <> like the command names)"
 	" are case insensitive.";
 
@@ -403,6 +403,7 @@ void server::setup_handlers()
 	SETUP_HANDLER("sl", &server::searchlog_handler);
 	SETUP_HANDLER("dul", &server::dul_handler);
 	SETUP_HANDLER("deny_unregistered_login", &server::dul_handler);
+	SETUP_HANDLER("stopgame", &server::stopgame);
 
 #undef SETUP_HANDLER
 }
@@ -2816,6 +2817,26 @@ void server::dul_handler(const std::string& /*issuer_name*/,
 	} catch(const utf8::invalid_utf8_exception& e) {
 		ERR_SERVER << "While handling dul (deny unregistered logins), caught an invalid utf8 exception: " << e.what()
 				   << std::endl;
+	}
+}
+
+void server::stopgame(const std::string& /*issuer_name*/,
+		const std::string& /*query*/,
+		std::string& parameters,
+		std::ostringstream* out)
+{
+	auto player = player_connections_.get<name_t>().find(parameters);
+
+	if(player != player_connections_.get<name_t>().end()){
+		std::shared_ptr<game> g = player->get_game();
+		if(g){
+			*out << "Player '" << parameters << "' is in game with id '" << g->id() << "' named '" << g->name() << "'.  Ending game...";
+			delete_game(g->id());
+		} else {
+			*out << "Player '" << parameters << "' is not currently in a game.";
+		}
+	} else {
+		*out << "Player '" << parameters << "' is not currently logged in.";
 	}
 }
 
