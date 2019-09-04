@@ -34,6 +34,7 @@
      * Update campaign description
      * Highlight narrator and gameplay explanations with colors
      * S1: create Sir Gerrick if player skips scenario with debug
+     * S4: revise end of scenario dialogue
      * S5: add narrator warning when siding with bandits and reduce difficulty
      * S6b: create Urza Afalas if player skips S5 with debug
      * S6b: kill elves on side 1 if player got to this scenario with debug
