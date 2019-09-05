@@ -1472,6 +1472,18 @@ void console_handler::do_droid()
 			} else {
 				print(get_cmd(), VGETTEXT("Side '$side' is already fully AI controlled.", symbols));
 			}
+		} else if(action == "") {
+			if(menu_handler_.board().get_team(side).is_ai() || menu_handler_.board().get_team(side).is_droid()) {
+				menu_handler_.board().get_team(side).make_human();
+				menu_handler_.board().get_team(side).make_proxy_human();
+				changed = true;
+				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: human.", symbols));
+			} else {
+				menu_handler_.board().get_team(side).make_human();
+				menu_handler_.board().get_team(side).make_droid();
+				changed = true;
+				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: AI.", symbols));
+			}
 		} else {
 			print(get_cmd(), VGETTEXT("Invalid action provided for side '$side'. Valid actions are: on, off, full.", symbols));
 		}
