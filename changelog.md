@@ -10,6 +10,8 @@
    * Added translatable explanations of :droid, :help and :idle's arguments
  ### WML engine
    * Ranges can now have upper limit "infinity" instead of using a big number like "99" or "99999"
+ ### Miscellaneous and bug fixes
+   * Fixed :droid's arguments not all being optional (Issue#4308)
 
 ## Version 1.15.1
  ### Editor
