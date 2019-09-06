@@ -3371,7 +3371,7 @@ In your case, your system interprets your arguments as:
                                 print(fn + ":")
                             spellcheck(fn, d)
                 except ImportError:
-                    print("wmllint: spell check unavailable, install python-enchant to enable", file=sys.stderr)
+                    print("wmllint: spell check unavailable, install python3-enchant to enable", file=sys.stderr)
         if failed_any_dirs:
             sys.exit(1)
     except KeyboardInterrupt:
