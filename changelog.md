@@ -3,8 +3,14 @@
    * Delfador's Memoirs:
      * S20: Improve leveling of units and give player a note about it (Issue#4219)
      * S21: Better indication that the book has gone missing (Issue#4220)
+   * Eastern Invasion
+     * Updated to use the new mushroom terrains (PR #4335)
    * Heir to the Throne:
      * S04: Sea Orc uses now a portrait
+   * Northern Rebirth
+     * Updated to use the new mushroom terrains
+   * Under the Burning Suns
+     * Updated to use the new mushroom terrains (PR #4336)
    * Wings of Victory:
      * S01: Make easier on easy and improve flow of enemies
      * Slight dialog improvements
@@ -14,6 +20,9 @@
    * Set up for translating the Wings of Victory campaign (PR#4265)
    * Changed the :help command's output to split over multiple lines
    * Added translatable explanations of :droid, :help and :idle's arguments
+ ### Terrains
+   * Added new ^Tf mushroom terrain whose statistics are fungus+base terrain, as suggested by the existing graphics (PR #4299)
+   * Added Tb mushroom base terrain, which can be used alone or as Tb^Tf when a terrain with the fungus-only stats is wanted
  ### User interface
    * Draw ellipses during draw/sheath animations. (Issue#1527)
  ### WML engine
