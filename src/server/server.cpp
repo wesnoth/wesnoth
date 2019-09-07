@@ -212,7 +212,7 @@ const std::string help_msg =
 	" k[ick]ban <mask> <time> <reason>, help, games, metrics,"
 	" netstats [all], [lobby]msg <message>, motd [<message>],"
 	" pm|privatemsg <nickname> <message>, requests, sample, searchlog <mask>,"
-	" signout, stats, status [<mask>], stopgame <nick>, unban <ipmask>\n"
+	" signout, stats, status [<mask>], stopgame <nick> [<reason>], unban <ipmask>\n"
 	"Specific strings (those not in between <> like the command names)"
 	" are case insensitive.";
 
@@ -2825,22 +2825,24 @@ void server::stopgame(const std::string& /*issuer_name*/,
 		std::string& parameters,
 		std::ostringstream* out)
 {
-	auto player = player_connections_.get<name_t>().find(parameters);
+	const std::string nick = parameters.substr(0, parameters.find(' '));
+	const std::string reason = parameters.length() > nick.length()+1 ? parameters.substr(nick.length()+1) : "";
+	auto player = player_connections_.get<name_t>().find(nick);
 
 	if(player != player_connections_.get<name_t>().end()){
 		std::shared_ptr<game> g = player->get_game();
 		if(g){
-			*out << "Player '" << parameters << "' is in game with id '" << g->id() << "' named '" << g->name() << "'.  Ending game...";
-			delete_game(g->id());
+			*out << "Player '" << nick << "' is in game with id '" << g->id() << "' named '" << g->name() << "'.  Ending game for reason: '" << reason << "'...";
+			delete_game(g->id(), reason);
 		} else {
-			*out << "Player '" << parameters << "' is not currently in a game.";
+			*out << "Player '" << nick << "' is not currently in a game.";
 		}
 	} else {
-		*out << "Player '" << parameters << "' is not currently logged in.";
+		*out << "Player '" << nick << "' is not currently logged in.";
 	}
 }
 
-void server::delete_game(int gameid)
+void server::delete_game(int gameid, const std::string& reason)
 {
 	// Set the availability status for all quitting users.
 	auto range_pair = player_connections_.get<game_t>().equal_range(gameid);
@@ -2872,7 +2874,13 @@ void server::delete_game(int gameid)
 	static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
 
 	for(const auto& it : range_vctor) {
-		send_to_player(it->socket(), leave_game_doc);
+		if(reason != "") {
+			simple_wml::document leave_game_doc_reason("[leave_game]\n[/leave_game]\n", simple_wml::INIT_STATIC);
+			leave_game_doc_reason.child("leave_game")->set_attr_dup("reason", reason.c_str());
+			send_to_player(it->socket(), leave_game_doc_reason);
+		} else {
+			send_to_player(it->socket(), leave_game_doc);
+		}
 		send_to_player(it->socket(), games_and_users_list_);
 	}
 }
