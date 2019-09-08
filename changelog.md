@@ -3,6 +3,9 @@
    * Delfador's Memoirs:
      * S20: Improve leveling of units and give player a note about it (Issue#4219)
      * S21: Better indication that the book has gone missing (Issue#4220)
+   * Wings of Victory:
+     * S01: Make easier on easy and improve flow of enemies
+     * Slight dialog improvements
  ### Language and i18n
    * Updated translations: British English, French, Italian,
      Portuguese (Brazil), Spanish
