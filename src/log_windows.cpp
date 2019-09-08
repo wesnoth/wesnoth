@@ -149,7 +149,7 @@ void log_init_panic(const std::string& msg)
 
 	// It may seem excessive to quit over something like this, but it's a good
 	// indicator of possible configuration issues with the user data dir that
-	// may cause much weirder symptoms later (see http://r.wesnoth.org/t42970
+	// may cause much weirder symptoms later (see https://r.wesnoth.org/t42970
 	// for an example).
 	exit(1);
 }
