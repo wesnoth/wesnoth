@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-06-30 15:14+0300\n"
-"PO-Revision-Date: 2019-07-16 10:01-0300\n"
+"PO-Revision-Date: 2019-09-05 16:10-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
 "Language: pt_BR\n"
@@ -2898,6 +2898,18 @@ msgstr "Fungos"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2720
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Mushroom groves'</italic> are vast underground forests of "
+#| "giant mushrooms,\n"
+#| "which thrive in the damp darkness. Most units have trouble negotiating "
+#| "the spongy floor of smaller fungi, but they have plenty of cover behind "
+#| "the larger stalks. Mounted units, however, become completely mired and "
+#| "lack proper freedom of movement in combat. Undead units have a natural "
+#| "affinity for decay and function quite well in mushroom forests.\n"
+#| "\n"
+#| "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
+#| "receive only 20%."
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms,\n"
@@ -2994,6 +3006,17 @@ msgstr ""
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:2776
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Hills'</italic> represent any reasonably rough terrain,\n"
+#| "with enough dips and rises in the ground to provide some cover. Hills are "
+#| "difficult for most troops to navigate. Dwarves, trolls, and orcs have "
+#| "enough familiarity with the terrain that they can pass through it without "
+#| "being slowed down. Cavalry have enough trouble navigating the terrain "
+#| "that any defensive aid lent by cover is negated.\n"
+#| "\n"
+#| "Most units have about 50% defense in hills, whereas cavalry are limited "
+#| "to 40%. Dwarves enjoy 60% defense in hills."
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain,\n"
 "with enough dips and rises in the ground to provide some cover. Hills are "
@@ -9451,7 +9474,7 @@ msgstr "Publicado ($local_version| installed), atualizável"
 # File: src/gui/dialogs/addon/description.cpp, line: 86
 #: src/gui/dialogs/addon/manager.cpp:281
 msgid "addon_state^Installed ($local_version|), outdated on server"
-msgstr "Instalado ($local_version|), versão do servidor dasatualizáda"
+msgstr "Instalado ($local_version|), versão do servidor desatualizada"
 
 #
 # File: src/gui/dialogs/addon/description.cpp, line: 87
@@ -9460,7 +9483,7 @@ msgstr "Instalado ($local_version|), versão do servidor dasatualizáda"
 #: src/gui/dialogs/addon/manager.cpp:282
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr ""
-"Publicado ($local_version| installed), versão do servidor dasatualizáda"
+"Publicado ($local_version| installed), versão do servidor desatualizada"
 
 #: src/gui/dialogs/addon/manager.cpp:288 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
@@ -12839,16 +12862,6 @@ msgstr ""
 "A chave '$deprecated_key' foi renomeada para '$key'. Suporte para "
 "'$deprecated_key' será removido na versão $removal_version."
 
-#~ msgid "Rusty Open Gate"
-#~ msgstr "Portão Aberto Enferrujado"
-
-#
-# File: data/core/terrain.cfg, line: 901
-# File: data/core/terrain.cfg, line: 901
-# File: data/core/terrain.cfg, line: 901
-#~ msgid "Wooden Open Door"
-#~ msgstr "Porta Aberta de Madeira"
-
 #~ msgid ""
 #~ "There are no custom options available for the selected era, game, or "
 #~ "modification."
@@ -12862,6 +12875,16 @@ msgstr ""
 # File: data/gui/default/window/editor_set_starting_position.cfg, line: 50
 #~ msgid "Connected Players"
 #~ msgstr "Jogadores Conectados"
+
+#~ msgid "Rusty Open Gate"
+#~ msgstr "Portão Aberto Enferrujado"
+
+#
+# File: data/core/terrain.cfg, line: 901
+# File: data/core/terrain.cfg, line: 901
+# File: data/core/terrain.cfg, line: 901
+#~ msgid "Wooden Open Door"
+#~ msgstr "Porta Aberta de Madeira"
 
 #~ msgid "Deterministic mode"
 #~ msgstr "Modo determinista"
@@ -12913,6 +12936,15 @@ msgstr ""
 #~ "\n"
 #~ "O forum do Battle for Wesnoth pode ser acessado em https://forums.wesnoth."
 #~ "org/"
+
+#
+# File: src/game_preferences_display.cpp, line: 195
+# File: src/game_preferences_display.cpp, line: 195
+# File: src/game_preferences_display.cpp, line: 195
+#, fuzzy
+#~| msgid "Show team colors"
+#~ msgid "The team color"
+#~ msgstr "Mostrar cores dos times"
 
 #
 # File: src/game_preferences_display.cpp, line: 750
@@ -12973,6 +13005,11 @@ msgstr ""
 # File: src/hotkeys.cpp, line: 157
 #~ msgid "No era information found."
 #~ msgstr "Nenhuma informação sobre era encontrada."
+
+#, fuzzy
+#~| msgid "Available at titlescreen"
+#~ msgid "Quit to Titlescreen"
+#~ msgstr "Disponível na tela inicial"
 
 #
 # File: data/gui/default/window/mp_login.cfg, line: 260
