@@ -2146,6 +2146,9 @@ void complex_fight(attack_prediction_mode mode,
 			pm->dump();
 		} while(--rounds && pm->dead_prob() < 0.99);
 
+		self_hit = std::min(self_hit, 1.0);
+		opp_hit = std::min(opp_hit, 1.0);
+
 		self_not_hit = original_self_not_hit * (1.0 - self_hit);
 		opp_not_hit = original_opp_not_hit * (1.0 - opp_hit);
 
