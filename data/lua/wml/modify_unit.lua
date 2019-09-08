@@ -120,7 +120,7 @@ local function simple_modify_unit(cfg)
 		end
 		---------- SIMPLE ATTRIBUTES  ----------
 		for i, name in ipairs(simple_attributes) do
-			if cfg[name] then
+			if cfg[name] ~= nil then
 				u[name] = cfg[name]
 			end
 		end
