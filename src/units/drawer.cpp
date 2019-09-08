@@ -17,6 +17,7 @@
 #include "display.hpp"
 #include "display_context.hpp"
 #include "formatter.hpp"
+#include "game_display.hpp"
 #include "preferences/game.hpp"
 #include "halo.hpp"
 #include "map/map.hpp"
@@ -49,7 +50,11 @@ unit_drawer::unit_drawer(display & thedisp) :
 	zoom_factor(disp.get_zoom_factor()),
 	hex_size(disp.hex_size()),
 	hex_size_by_2(disp.hex_size()/2)
-{}
+{
+	if(const game_display* game_display = dynamic_cast<class game_display*>(&disp)) {
+		units_that_can_reach_goal = game_display->units_that_can_reach_goal();
+	}
+}
 
 void unit_drawer::redraw_unit (const unit & u) const
 {
@@ -79,6 +84,9 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 	std::string ellipse=u.image_ellipse();
 
+	const bool is_highlighted_enemy = units_that_can_reach_goal.count(loc) > 0;
+	const bool is_selected_hex = (loc == sel_hex || is_highlighted_enemy);
+
 	if(hidden || is_blindfolded || !u.is_visible_to_team(viewing_team_ref, show_everything)) {
 		ac.clear_haloes();
 		if(ac.anim_) {
@@ -107,7 +115,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 	if(u.invisible(loc) && params.highlight_ratio > 0.6) {
 		params.highlight_ratio = 0.6;
 	}
-	if (loc == sel_hex && params.highlight_ratio == 1.0) {
+	if (is_selected_hex && params.highlight_ratio == 1.0) {
 		params.highlight_ratio = 1.5;
 	}
 
@@ -182,7 +190,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 	surface ellipse_back(nullptr);
 	int ellipse_floating = 0;
 	// Always show the ellipse for selected units
-	if(draw_bars && (preferences::show_side_colors() || sel_hex == loc)) {
+	if(draw_bars && (preferences::show_side_colors() || is_selected_hex)) {
 		if(adjusted_params.submerge > 0.0) {
 			// The division by 2 seems to have no real meaning,
 			// It just works fine with the current center of ellipse
@@ -198,15 +206,15 @@ void unit_drawer::redraw_unit (const unit & u) const
 			// check if the unit has a ZoC or can recruit
 			const std::string nozoc    = !emit_zoc      ? "nozoc-"    : "";
 			const std::string leader   = can_recruit    ? "leader-"   : "";
-			const std::string selected = sel_hex == loc ? "selected-" : "";
+			const std::string selected = is_selected_hex? "selected-" : "";
 			const std::string tc       = team::get_side_color_id(side);
 
 			const std::string ellipse_top = formatter() << ellipse << "-" << leader << nozoc << selected << "top.png~RC(ellipse_red>" << tc << ")";
 			const std::string ellipse_bot = formatter() << ellipse << "-" << leader << nozoc << selected << "bottom.png~RC(ellipse_red>" << tc << ")";
 
 			// Load the ellipse parts recolored to match team color
-			ellipse_back.assign(image::get_image(image::locator(ellipse_top), image::SCALED_TO_ZOOM));
-			ellipse_front.assign(image::get_image(image::locator(ellipse_bot), image::SCALED_TO_ZOOM));
+			ellipse_back = image::get_image(image::locator(ellipse_top), image::SCALED_TO_ZOOM);
+			ellipse_front = image::get_image(image::locator(ellipse_bot), image::SCALED_TO_ZOOM);
 		}
 	}
 	if (ellipse_back != nullptr) {
@@ -230,8 +238,8 @@ void unit_drawer::redraw_unit (const unit & u) const
 		int yoff;
 		if(cfg_offset_x.empty() && cfg_offset_y.empty()) {
 			const surface unit_img = image::get_image(u.default_anim_image(), image::SCALED_TO_ZOOM);
-			xoff = unit_img.null() ? 0 : (hex_size - unit_img->w)/2;
-			yoff = unit_img.null() ? 0 : (hex_size - unit_img->h)/2;
+			xoff = !unit_img ? 0 : (hex_size - unit_img->w)/2;
+			yoff = !unit_img ? 0 : (hex_size - unit_img->h)/2;
 		}
 		else {
 			xoff = cfg_offset_x.to_int();
@@ -294,7 +302,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 		const int bar_shift = static_cast<int>(-5*zoom_factor);
 		const int hp_bar_height = static_cast<int>(max_hitpoints * u.hp_bar_scaling());
 
-		const fixed_t bar_alpha = (loc == mouse_hex || loc == sel_hex) ? ftofxp(1.0): ftofxp(0.8);
+		const fixed_t bar_alpha = (loc == mouse_hex || is_selected_hex) ? ftofxp(1.0): ftofxp(0.8);
 
 		draw_bar(*energy_file, xsrc+xoff+bar_shift, ysrc+yoff+adjusted_params.y,
 			loc, hp_bar_height, unit_energy,hp_color, bar_alpha);
@@ -309,7 +317,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 		if (can_recruit) {
 			surface crown(image::get_image(u.leader_crown(),image::SCALED_TO_ZOOM));
-			if(!crown.null()) {
+			if(crown) {
 				//if(bar_alpha != ftofxp(1.0)) {
 				//	crown = adjust_surface_alpha(crown, bar_alpha);
 				//}
@@ -407,7 +415,7 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 
 	if(unfilled < height && alpha >= ftofxp(0.3)) {
 		const uint8_t r_alpha = std::min<unsigned>(unsigned(fxpmult(alpha,255)),255);
-		surface filled_surf = create_compatible_surface(bar_surf, bar_loc.w, height - unfilled);
+		surface filled_surf(bar_loc.w, height - unfilled);
 		SDL_Rect filled_area = sdl::create_rect(0, 0, bar_loc.w, height-unfilled);
 		sdl::fill_surface_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
 		disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf);
@@ -430,14 +438,12 @@ const SDL_Rect& unit_drawer::calculate_energy_bar(surface surf) const
 
 	int first_row = -1, last_row = -1, first_col = -1, last_col = -1;
 
-	surface image(make_neutral_surface(surf));
-
-	const_surface_lock image_lock(image);
+	const_surface_lock image_lock(surf);
 	const uint32_t* const begin = image_lock.pixels();
 
-	for(int y = 0; y != image->h; ++y) {
-		const uint32_t* const i1 = begin + image->w*y;
-		const uint32_t* const i2 = i1 + image->w;
+	for(int y = 0; y != surf->h; ++y) {
+		const uint32_t* const i1 = begin + surf->w*y;
+		const uint32_t* const i2 = i1 + surf->w;
 		const uint32_t* const itor = std::find_if(i1,i2,is_energy_color());
 		const int count = std::count_if(itor,i2,is_energy_color());
 

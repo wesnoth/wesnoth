@@ -174,7 +174,7 @@ public:
 	{
 		return unit_ptr(new unit(*this));
 	}
-	
+
 	unit_ptr shared_from_this()
 	{
 		return unit_ptr(this);
@@ -664,7 +664,9 @@ public:
 
 	/**
 	 * Gets whether this unit is currently hidden on the map.
-	 * @todo document hiddenness
+	 *
+	 * Hidden units are not drawn on the main map or the minimap. They are
+	 * an implementation detail. For the [hides] ability, see invisible().
 	 */
 	bool get_hidden() const
 	{
@@ -1574,17 +1576,28 @@ public:
 	}
 
 	/**
-	 * Gets the names and descriptions of this unit's abilities.
+	 * Gets the names and descriptions of this unit's abilities. Location-independent variant
+	 * with all abilities shown as active.
 	 *
-	 * @param active_list         If nullptr, then all abilities are forced active. If not, this vector
-	 *                            will be the same length as the returned one and will indicate whether or
-	 *                            not the corresponding ability is active.
-	 *
-	 * @returns                   A list of triples consisting of (in order) id, base name, male or female
-	 *                            name as appropriate for the unit, and description.
+	 * @returns                   A list of quadruples consisting of (in order) id, base name,
+	 *                            male or female name as appropriate for the unit, and description.
 	 */
 	std::vector<std::tuple<std::string, t_string, t_string, t_string>>
-	ability_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
+	ability_tooltips() const;
+
+	/**
+	 * Gets the names and descriptions of this unit's abilities.
+	 *
+	 * @param active_list         This vector will be the same length as the returned one and will
+	 *                            indicate whether or not the corresponding ability is active.
+	 *
+	 * @param loc                 The location on which to resolve the ability.
+	 *
+	 * @returns                   A list of quadruples consisting of (in order) id, base name,
+	 *                            male or female name as appropriate for the unit, and description.
+	 */
+	std::vector<std::tuple<std::string, t_string, t_string, t_string>>
+	ability_tooltips(boost::dynamic_bitset<>& active_list, const map_location& loc) const;
 
 	/** Get a list of all abilities by ID. */
 	std::vector<std::string> get_ability_list() const;
@@ -1610,7 +1623,7 @@ public:
 	void remove_ability_by_id(const std::string& ability);
 
 	bool abilities_filter_matches(const config& cfg, bool attacker, int res) const;
-	bool ability_filter_fighter(const std::string& ability, const std::string& filter_attacker , const config& cfg,const map_location& loc) const;
+	bool ability_filter_fighter(const std::string& ability, const std::string& filter_attacker , const config& cfg, const map_location& loc, const unit& u2) const;
 
 private:
 	/**

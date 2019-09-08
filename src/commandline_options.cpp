@@ -144,6 +144,10 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	validate_schema(),
 	validate_wml(),
 	validate_with(),
+	do_diff(),
+	do_patch(),
+	diff_left(),
+	diff_right(),
 	version(false),
 	report(false),
 	windowed(false),
@@ -163,8 +167,8 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("bunzip2", po::value<std::string>(), "decompresses a file (<arg>.bz2) in bzip2 format and stores it without the .bz2 suffix. <arg>.bz2 will be removed.")
 		("bzip2", po::value<std::string>(), "compresses a file (<arg>) in bzip2 format, stores it as <arg>.bz2 and removes <arg>.")
 		("clock", "Adds the option to show a clock for testing the drawing timer.")
-		("config-dir", po::value<std::string>(), "sets the path of the userdata directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. DEPRECATED: use userdata-path and userconfig-path instead.")
-		("config-path", "prints the path of the userdata directory and exits. DEPRECATED: use userdata-path and userconfig-path instead.")
+		("config-dir", po::value<std::string>(), "sets the path of the userdata directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. DEPRECATED: use userdata-dir instead.")
+		("config-path", "prints the path of the userdata directory and exits. DEPRECATED: use userdata-path instead.")
 		("core", po::value<std::string>(), "overrides the loaded core with the one whose id is specified.")
 		("data-dir", po::value<std::string>(), "overrides the data directory with the one specified.")
 		("data-path", "prints the path of the data directory and exits.")
@@ -277,15 +281,18 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("log-strict", po::value<std::string>(), "sets the strict level of the logger. any messages sent to log domains of this level or more severe will cause the unit test to fail regardless of the victory result.")
 		("noreplaycheck", "don't try to validate replay of unit test.")
 		("mp-test", "load the test mp scenarios.")
+		;
+
+	po::options_description parsing_opts("WML parsing options");
+	testing_opts.add_options()
 		("use-schema,S", po::value<std::string>(), "specify a schema to validate WML against (defaults to the core schema)")
 		("validate,V", po::value<std::string>(), "validate a specified WML file against a schema")
 		("validate-addon", po::value<std::string>(), "validate the specified addon's WML against the schema")
 		("validate-core", "validate the core WML against the schema")
 		("validate-schema", po::value<std::string>(), "validate a specified WML schema")
-		;
-
-	po::options_description preprocessor_opts("Preprocessor mode options");
-	preprocessor_opts.add_options()
+		("diff,D", po::value<two_strings>()->multitoken(), "diff two preprocessed WML documents")
+		("output,o", po::value<std::string>(), "output to specified file")
+		("patch,P", po::value<two_strings>()->multitoken(), "apply a patch to a preprocessed WML document")
 		("preprocess,p", po::value<two_strings>()->multitoken(), "requires two arguments: <file/folder> <target directory>. Preprocesses a specified file/folder. The preprocessed file(s) will be written in the specified target directory: a plain cfg file and a processed cfg file.")
 		("preprocess-defines", po::value<std::string>(), "comma separated list of defines to be used by '--preprocess' command. If 'SKIP_CORE' is in the define list the data/core won't be preprocessed. Example: --preprocess-defines=FOO,BAR")
 		("preprocess-input-macros", po::value<std::string>(), "used only by the '--preprocess' command. Specifies source file <arg> that contains [preproc_define]s to be included before preprocessing.")
@@ -304,7 +311,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	//hidden_.add_options()
 	//	("example-hidden-option", "")
 	//	;
-	visible_.add(general_opts).add(campaign_opts).add(display_opts).add(logging_opts).add(multiplayer_opts).add(testing_opts).add(preprocessor_opts).add(proxy_opts);
+	visible_.add(general_opts).add(campaign_opts).add(display_opts).add(logging_opts).add(multiplayer_opts).add(testing_opts).add(parsing_opts).add(proxy_opts);
 
 	all_.add(visible_).add(hidden_);
 
@@ -428,6 +435,22 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		preprocess = true;
 		preprocess_path = vm["preprocess"].as<two_strings>().first;
 		preprocess_target = vm["preprocess"].as<two_strings>().second;
+	}
+	if (vm.count("diff"))
+	{
+		do_diff = true;
+		diff_left = vm["diff"].as<two_strings>().first;
+		diff_right = vm["diff"].as<two_strings>().second;
+	}
+	if (vm.count("patch"))
+	{
+		do_patch = true;
+		diff_left = vm["patch"].as<two_strings>().first;
+		diff_right = vm["patch"].as<two_strings>().second;
+	}
+	if (vm.count("output"))
+	{
+		output_file = vm["output"].as<std::string>();
 	}
 	if (vm.count("preprocess-defines"))
 		preprocess_defines = utils::split(vm["preprocess-defines"].as<std::string>(), ',');

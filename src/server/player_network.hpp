@@ -15,8 +15,8 @@
 
 #pragma once
 
-#include "player.hpp"
-#include "simple_wml.hpp"
+#include "server/player.hpp"
+#include "server/simple_wml.hpp"
 
 #include "utils/functional.hpp"
 #include "log.hpp"

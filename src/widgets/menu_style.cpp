@@ -1,7 +1,7 @@
 /*
    wesnoth menu styles Copyright (C) 2006 - 2018 by Patrick Parker <patrick_x99@hotmail.com>
    wesnoth menu Copyright (C) 2003-5 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -66,7 +66,7 @@ void menu::style::scale_images(int max_width, int max_height)
 surface menu::style::get_item_image(const image::locator& img_loc) const
 {
 	surface surf = image::get_image(img_loc);
-	if(!surf.null())
+	if(surf)
 	{
 		int scale = 100;
 		if(max_img_w_ > 0 && surf->w > max_img_w_) {
@@ -88,7 +88,7 @@ bool menu::imgsel_style::load_image(const std::string &img_sub)
 	std::string path = img_base_ + "-" + img_sub + ".png";
 	const surface image = image::get_image(path);
 	img_map_[img_sub] = image;
-	return(!image.null());
+	return image.get() != nullptr;
 }
 
 bool menu::imgsel_style::load_images()

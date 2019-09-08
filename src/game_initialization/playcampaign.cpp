@@ -370,7 +370,7 @@ LEVEL_RESULT campaign_controller::play_game()
 				if(state_.mp_settings().saved_game == mp_game_settings::SAVED_GAME_MODE::MIDGAME) {
 					state_.mp_settings().saved_game = mp_game_settings::SAVED_GAME_MODE::SCENARIO_START;
 				}
-				
+
 				state_.mp_settings().use_map_settings = starting_pos["force_lock_settings"].to_bool(!is_mp);
 
 				ng::connect_engine_ptr connect_engine(new ng::connect_engine(state_, false, mp_info_));

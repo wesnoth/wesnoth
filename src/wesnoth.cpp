@@ -66,7 +66,7 @@
 #include <fenv.h>
 #endif // _MSC_VER
 
-#include <SDL.h> // for SDL_Init, SDL_INIT_TIMER
+#include <SDL2/SDL.h> // for SDL_Init, SDL_INIT_TIMER
 
 #include <boost/iostreams/categories.hpp>   // for input, output
 #include <boost/iostreams/copy.hpp>         // for copy
@@ -497,11 +497,44 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		std::cout << "\n========= BUILD INFORMATION =========\n\n" << game_config::full_build_report();
 		return 0;
 	}
-	
+
 	if(cmdline_opts.validate_schema) {
 		schema_validation::schema_self_validator validator;
 		validator.set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
 		return handle_validate_command(*cmdline_opts.validate_schema, validator, {});
+	}
+	
+	if(cmdline_opts.do_diff) {
+		config left, right;
+		std::ifstream in_left(cmdline_opts.diff_left);
+		std::ifstream in_right(cmdline_opts.diff_right);
+		read(left, in_left);
+		read(right, in_right);
+		std::ostream* os = &std::cout;
+		if(cmdline_opts.output_file) {
+			os = new std::ofstream(*cmdline_opts.output_file);
+		}
+		config_writer out(*os, compression::format::NONE);
+		out.write(right.get_diff(left));
+		if(os != &std::cout) delete os;
+		return 0;
+	}
+	
+	if(cmdline_opts.do_patch) {
+		config base, diff;
+		std::ifstream in_base(cmdline_opts.diff_left);
+		std::ifstream in_diff(cmdline_opts.diff_right);
+		read(base, in_base);
+		read(diff, in_diff);
+		base.apply_diff(diff);
+		std::ostream* os = &std::cout;
+		if(cmdline_opts.output_file) {
+			os = new std::ofstream(*cmdline_opts.output_file);
+		}
+		config_writer out(*os, compression::format::NONE);
+		out.write(base);
+		if(os != &std::cout) delete os;
+		return 0;
 	}
 
 	// Options changing their behavior dependent on some others should be checked below.
@@ -510,7 +543,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		handle_preprocess_command(cmdline_opts);
 		return 0;
 	}
-	
+
 	if(cmdline_opts.validate_wml) {
 		std::string schema_path;
 		if(cmdline_opts.validate_with) {
@@ -1036,6 +1069,8 @@ int main(int argc, char** argv)
 		   args[k] == "-R" ||
 		   args[k] == "--screenshot" ||
 		   args[k] == "--data-path" ||
+		   args[k] == "--diff" ||
+		   args[k] == "--patch" ||
 		   args[k] == "--userdata-path" ||
 		   args[k] == "--userconfig-path" ||
 		   args[k].compare(0, 11, "--validate=") == 0  ||
@@ -1076,11 +1111,11 @@ int main(int argc, char** argv)
 
 	// Mac's touchpad generates touch events too.
 	// Ignore them until Macs have a touchscreen: https://forums.libsdl.org/viewtopic.php?p=45758
-#if defined(__APPLE__) && !defined(__IPHONEOS__) 
+#if defined(__APPLE__) && !defined(__IPHONEOS__)
 	SDL_EventState(SDL_FINGERMOTION, SDL_DISABLE);
 	SDL_EventState(SDL_FINGERDOWN, SDL_DISABLE);
 	SDL_EventState(SDL_FINGERUP, SDL_DISABLE);
-#endif	
+#endif
 
 	// declare this here so that it will always be at the front of the event queue.
 	events::event_context global_context;

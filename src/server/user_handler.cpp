@@ -27,25 +27,6 @@
 #include <ctime>
 #include <sstream>
 
-bool user_handler::send_mail(const std::string& to_user,
-		const std::string& /*subject*/, const std::string& /*message*/) {
-
-	//If this user is registered at all
-	if(!user_exists(to_user)) {
-		throw error("Could not send email. No user with the name '" + to_user + "' exists.");
-	}
-
-	// If this user did not provide an email
-	if(get_mail(to_user).empty()) {
-		throw error("Could not send email. The email address of the user '" + to_user + "' is empty.");
-	}
-
-	throw user_handler::error("This server is configured not to send email.");
-}
-
-void user_handler::init_mailer(const config &) {
-}
-
 std::string user_handler::create_unsecure_nonce(int length) {
 	srand(static_cast<unsigned>(std::time(nullptr)));
 

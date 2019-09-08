@@ -299,6 +299,10 @@ void mp_lobby::update_gamelist_diff()
 		const mp::game_info& game = *lobby_info_.games()[i];
 
 		if(game.display_status == mp::game_info::NEW) {
+			// call void do_notify(notify_mode mode, const std::string& sender, const std::string& message)
+			// sender will be the game_info.scenario (std::string) and message will be game_info.name (std::string)
+			do_notify(mp::NOTIFY_GAME_CREATED, game.scenario, game.name);
+
 			LOG_LB << "Adding game to listbox " << game.id << "\n";
 
 			if(list_i != gamelistbox_->get_item_count()) {
@@ -968,7 +972,7 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 	join_data["id"] = std::to_string(game.id);
 	join_data["observe"] = try_obsv;
 
-	if(!join_data.empty() && try_join && game.password_required) {
+	if(!join_data.empty() && game.password_required) {
 		std::string password;
 
 		if(!gui2::dialogs::mp_join_game_password_prompt::execute(password)) {

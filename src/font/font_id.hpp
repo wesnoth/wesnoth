@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2016 - 2018 by Chris Beck<render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
 #include <string>
 #include <tuple>
 
-#include <SDL_ttf.h>
+#include <SDL2/SDL_ttf.h>
 
 /***
  * Note: This is specific to SDL_TTF code path

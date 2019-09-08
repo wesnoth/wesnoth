@@ -44,23 +44,8 @@ protected:
 	void do_display();
 	void do_version();
 
-	/** Ask the server to register the currently used nick. */
-	void do_register();
-
-	/** Ask the server do drop the currently used (and registered) nick. */
-	void do_drop();
-
-	/** Update details for the currently used username. */
-	void do_set();
-
 	/** Request information about a user from the server. */
 	void do_info();
-
-	/**
-	* Request a list of details that can be set for a username
-	* as these might vary depending on the configuration of the server.
-	*/
-	void do_details();
 
 	std::string get_flags_description() const {
 		return _("(A) — admin command");
@@ -127,17 +112,8 @@ protected:
 			_("Remove a nickname from your ignores or friends list."), _("<nickname>"));
 		register_command("version", &chat_command_handler::do_version,
 			_("Display version information."));
-		register_command("register", &chat_command_handler::do_register,
-			_("Register your nickname"), _("<password> <email (optional)>"));
-		register_command("drop", &chat_command_handler::do_drop,
-			_("Drop your nickname."));
-		register_command("set", &chat_command_handler::do_set,
-			_("Update details for your nickname. For possible details see '/details'."),
-			_("<detail> <value>"));
 		register_command("info", &chat_command_handler::do_info,
 			_("Request information about a nickname."), _("<nickname>"));
-		register_command("details", &chat_command_handler::do_details,
-			_("Request a list of details you can set for your registered nickname."));
 		register_command("join", &chat_command_handler::do_network_send_req_arg,
 			_("Join a room."), _("<room>"));
 		register_alias("join", "j");

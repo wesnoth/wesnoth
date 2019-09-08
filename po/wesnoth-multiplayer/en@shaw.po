@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-17 18:31 UTC\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
 "PO-Revision-Date: 2009-10-09 19:50-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -108,7 +108,12 @@ msgid "Grand total: <b>%d</b>"
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:87
+#: data/multiplayer/eras.lua:93
+msgid "Sides %s and %d are tied."
+msgstr ""
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:95
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgstr ""
 
@@ -349,35 +354,35 @@ msgid "teamname^South"
 msgstr "𐑕𐑬𐑔"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:289
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
 #, fuzzy
 msgid "Defeat enemy leader(s)"
 msgstr "𐑛𐑧𐑔 𐑝 𐑿𐑼 𐑑𐑰𐑥 𐑤𐑰𐑛𐑼𐑟."
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:293
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:292
 msgid ""
 "The Great Mage Sulla has transported your armies to this bizarre nexus, and "
 "demands that you amuse her by doing battle."
 msgstr ""
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:296
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:295
 msgid ""
 "Units may not move into a hex with a rock cairn. They may, however, be "
 "recruited to, and move from, such hexes."
 msgstr ""
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:299
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:298
 msgid ""
 "Beginning on turn 4, the Great Mage Sulla will begin to unite the two halves "
 "of the battlefield. The process will be complete by the end of turn 6."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:312
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:329
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:311
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:328
 msgid "The Aethermaw growls."
 msgstr ""
 
@@ -414,7 +419,7 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:35
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:40
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:32
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:60
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:107
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:31
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:31
 #: data/multiplayer/scenarios/3p_Morituri.cfg:31
@@ -448,7 +453,7 @@ msgstr "𐑰𐑕𐑑"
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:24
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:24
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:21
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:72
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:119
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:42
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:42
 #: data/multiplayer/scenarios/3p_Morituri.cfg:42
@@ -679,10 +684,12 @@ msgid ""
 "skills alone were what kept the area’s goblins alive despite human and "
 "elvish menaces. Rumor had it that his wolf had slain fifty men and a hundred "
 "Elves.\n"
+"\n"
 "Thus, when he heard of the awful monster that was inhabiting the area, it "
 "was only natural that he ride out alone to face it. All the other goblins "
 "expected him to slay the creature easily and drag back its carcass to feast "
 "on.\n"
+"\n"
 "He was in for quite a shock. As soon as he saw the Basilisk, Blum Duk "
 "cowered in fright. He tried to wheel his wolf around to run away, but it "
 "wouldn’t move. As the creature stalked towards him, he screamed his last "
@@ -702,12 +709,12 @@ msgstr ""
 "(𐑦𐑯𐑕𐑒𐑮𐑲𐑚𐑛 𐑚𐑲 𐑧𐑤𐑝𐑦𐑖 𐑐𐑦𐑤𐑦𐑡𐑻)"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:154
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:156
 msgid "Rah Ihn Mar"
 msgstr "𐑮𐑭 ·𐑰𐑯 𐑥𐑸"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:156
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:158
 #, fuzzy
 msgid ""
 "Rah Ihn Mar, Champion of the Burning Hills, made his way to the Ruaskkolin "
@@ -729,8 +736,13 @@ msgstr ""
 "𐑣𐑨𐑛 𐑚𐑰𐑯 𐑕𐑰𐑯 𐑧𐑯𐑑𐑼𐑦𐑙 𐑞 𐑮𐑰𐑗𐑩𐑯 𐑚𐑳𐑑 𐑩 𐑛𐑱 𐑩𐑜𐑴. 𐑚𐑻𐑯𐑦𐑙 𐑓𐑹 𐑝𐑧𐑯𐑡𐑩𐑯𐑕, 𐑮𐑭 ·𐑰𐑯 𐑥𐑸 𐑚𐑩𐑜𐑨𐑯 𐑞 "
 "𐑣𐑳𐑯𐑑....."
 
+#. [side]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:162
+msgid "Turin's Monster of the Lake"
+msgstr ""
+
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:163
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:165
 msgid ""
 "He had lived there for ages upon ages, in the depths of the water, preying "
 "upon the various fish and frogs and merfolk that entered his domain. It was "
@@ -747,22 +759,27 @@ msgstr ""
 "𐑣𐑨𐑛 𐑩𐑮𐑲𐑝𐑛.\n"
 "(𐑦𐑯𐑕𐑒𐑮𐑲𐑚𐑛 𐑚𐑲 𐑑𐑘𐑫𐑮𐑦𐑯)"
 
+#. [side]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:170
+msgid "The Spider"
+msgstr ""
+
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:171
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:173
 msgid ""
 "It would seem that no one knows the tale of this brave spider.\n"
 "(inscribed by WinnerA)"
 msgstr ""
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:179
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:181
 msgid ""
 "The tale of this unlucky highwayman is yet to be told.\n"
 "(inscribed by WinnerB)"
 msgstr ""
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:187
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:189
 #, fuzzy
 msgid ""
 "A brave hero of Wesnoth’s Golden Age, this great rider and commander of men "
@@ -781,25 +798,27 @@ msgstr ""
 "(𐑦𐑯𐑕𐑒𐑮𐑲𐑚𐑛 𐑚𐑲 Fynmiir)"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:192
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:194
 #, fuzzy
 msgid "Bramwythl"
 msgstr "Bramwythl"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:194
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:196
 #, fuzzy
 msgid ""
 "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
-"other Woses. More than any other Wose, he enjoyed simply standing alone in "
+"other woses. More than any other wose, he enjoyed simply standing alone in "
 "the sun, arms upraised, admiring the beauty of the empty sky. Once, even, he "
 "confided in a fellow that his greatest wish was to be able to bask forever "
 "in the sun’s glory.\n"
+"\n"
 "However, not long after, the local wose community heard of the approach of a "
 "horrible monster, powerful enough to easily destroy the few woses that lived "
-"in the area. They quickly moved off (quickly for Woses, anyway), but "
+"in the area. They quickly moved off (quickly for woses, anyway), but "
 "Bramwythl was left behind — in their haste, no one had remembered to find "
 "him and tell him of the danger.\n"
+"\n"
 "He was taken quite unawares by the Basilisk, and turned to stone before he "
 "even recognized the beast. His petrified form still stands there today, "
 "warmed by the sun’s rays, under an open sky. His greatest wish has been "
@@ -820,13 +839,13 @@ msgstr ""
 "(𐑦𐑯𐑕𐑒𐑮𐑲𐑚𐑛 𐑚𐑲 𐑧𐑤𐑝𐑦𐑖 𐑐𐑦𐑤𐑦𐑡𐑻)"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:201
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:205
 #, fuzzy
 msgid "Talael Ryndoc"
 msgstr "Talael Ryndoc"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:204
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:208
 #, fuzzy
 msgid ""
 "General Talael Ryndoc came to this place to fight a duel with the Grand "
@@ -836,13 +855,13 @@ msgstr ""
 "Corryn, 𐑚𐑳𐑑 𐑞 𐑑𐑵 𐑥𐑧𐑯 𐑯𐑧𐑝𐑼 𐑓𐑬𐑯𐑛 𐑢𐑳𐑯 𐑩𐑯𐑳𐑞𐑼. "
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:207
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:211
 #, fuzzy
 msgid "Aethec Corryn"
 msgstr "Aethec Corryn"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:210
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:214
 #, fuzzy
 msgid ""
 "The last words spoken by Grand Marshal Aethec Corryn: “Talael Ryndoc! I am "
@@ -860,13 +879,13 @@ msgstr ""
 "𐑐𐑼𐑣𐑨𐑐𐑕 𐑣𐑰 𐑖𐑫𐑛 𐑯𐑪𐑑 𐑣𐑨𐑝 𐑖𐑬𐑑𐑩𐑛 𐑒𐑢𐑲𐑑 𐑕𐑴 𐑤𐑬𐑛𐑤𐑦.... "
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:216
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:220
 #, fuzzy
 msgid "Rilhon"
 msgstr "Rilhon"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:218
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:222
 #, fuzzy
 msgid ""
 "This brave warrior, known as Rilhon among the Naga, heard tell of a fabulous "
@@ -892,7 +911,7 @@ msgstr ""
 "(𐑦𐑯𐑕𐑒𐑮𐑲𐑚𐑛 𐑚𐑲 𐑐𐑨𐑑𐑻𐑕𐑩𐑯)"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:226
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:230
 #, fuzzy
 msgid ""
 "Through waves and rocky channels\n"
@@ -993,55 +1012,55 @@ msgstr ""
 "𐑯𐑴𐑑: 𐑿 𐑯𐑰𐑛 𐑑 𐑿𐑕 𐑥𐑨𐑐 𐑕𐑧𐑑𐑦𐑙𐑟 𐑓𐑹 𐑞 𐑕𐑦𐑯𐑺𐑰𐑴 𐑑 𐑢𐑻𐑒 𐑮𐑲𐑑."
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:22
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:34
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:21
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:33
 msgid "teamname^Revolt"
 msgstr "𐑮𐑦𐑝𐑴𐑤𐑑"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:52
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:72
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:50
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:70
 msgid "teamname^Human"
 msgstr "𐑣𐑿𐑥𐑩𐑯"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:107
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:105
 #, fuzzy
 msgid "Death of your leader"
 msgstr "𐑛𐑧𐑔 𐑝 𐑿𐑼 𐑑𐑰𐑥 𐑤𐑰𐑛𐑼𐑟."
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:108
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:106
 msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
 msgstr ""
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:111
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:109
 #, fuzzy
 msgid "Death of both of your team’s leaders"
 msgstr "𐑛𐑧𐑔 𐑝 𐑿𐑼 𐑑𐑰𐑥 𐑤𐑰𐑛𐑼𐑟."
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:112
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:110
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr ""
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:133
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:131
 #, fuzzy
 msgid "Survive and defeat all enemy waves"
 msgstr "𐑕𐑻𐑝𐑲𐑝 𐑷𐑤 𐑧𐑯𐑩𐑥𐑦 𐑩𐑑𐑨𐑒𐑕."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:153
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:151
 msgid "Dark Forecast — a random survival scenario"
 msgstr "𐑛𐑸𐑒 𐑓𐑹𐑒𐑭𐑕𐑑 - 𐑩 𐑮𐑨𐑯𐑛𐑩𐑥 𐑕𐑻𐑝𐑲𐑝𐑩𐑤 𐑕𐑦𐑯𐑺𐑰𐑴"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:158
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:156
 #, fuzzy
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
@@ -1087,13 +1106,13 @@ msgstr ""
 "- WML 𐑦𐑥𐑐𐑤𐑩𐑥𐑧𐑯𐑑𐑱𐑖𐑩𐑯"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:178
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:176
 #, fuzzy
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "𐑕𐑴 𐑞𐑦𐑕 𐑦𐑟 𐑞 𐑩𐑒𐑻𐑕𐑑 𐑝𐑨𐑤𐑰 - 𐑩 𐑤𐑨𐑯𐑛 𐑬𐑼𐑟 𐑓𐑹 𐑞 𐑑𐑱𐑒𐑦𐑙."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:182
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:180
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -1103,21 +1122,21 @@ msgstr ""
 "𐑜𐑴𐑦𐑙 𐑑 𐑚𐑰 𐑩𐑯𐑩𐑐𐑴𐑟𐑛. 𐑢𐑰 𐑥𐑳𐑕𐑑 𐑚𐑰 𐑐𐑮𐑦𐑐𐑺𐑛 𐑓𐑹 𐑞 𐑕𐑻𐑐𐑮𐑲𐑟𐑦𐑟 𐑝 𐑞𐑦𐑕 𐑤𐑨𐑯𐑛."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:186
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:184
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
 msgstr "𐑞𐑧𐑯 𐑤𐑧𐑑 𐑳𐑕 𐑛𐑦𐑕𐑒𐑳𐑝𐑼 𐑢𐑪𐑑 𐑤𐑲𐑟 𐑦𐑯 𐑢𐑱𐑑𐑦𐑙 𐑯 𐑑𐑰𐑡 𐑞𐑧𐑥 𐑯𐑪𐑑 𐑑 𐑩𐑐𐑴𐑟 𐑬𐑼 𐑒𐑤𐑱𐑥."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:205
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:203
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
 msgstr "𐑳𐑜! 𐑣𐑬 𐑒𐑨𐑯 𐑞𐑦𐑕 𐑚𐑰? 𐑛𐑦𐑓𐑰𐑑𐑩𐑛 𐑚𐑲 𐑥𐑽 𐑚𐑸𐑚𐑺𐑦𐑩𐑯𐑟! 𐑥𐑲 𐑜𐑪𐑛𐑟 𐑣𐑨𐑝 𐑓𐑹𐑕𐑱𐑒𐑩𐑯 𐑥𐑰..."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:219
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:217
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
@@ -1126,7 +1145,7 @@ msgstr ""
 "𐑥𐑴𐑥𐑩𐑯𐑑𐑕 𐑢𐑦𐑞 𐑐𐑘𐑫𐑼 𐑣𐑱𐑑."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:241
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:239
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
@@ -1141,7 +1160,7 @@ msgid "Changes the gold worth of the enemy spawns by a certain percentage"
 msgstr ""
 
 #. [lua]: final_spawn
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:310
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:315
 msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
@@ -1150,7 +1169,7 @@ msgstr ""
 "𐑓𐑦𐑯𐑦𐑖 𐑞𐑧𐑥 𐑪𐑓 𐑦𐑯 𐑑𐑲𐑥, 𐑢𐑰 𐑖𐑨𐑤 𐑚𐑰 𐑝𐑦𐑒𐑑𐑹𐑦𐑩𐑕."
 
 #. [lua]: final_spawn
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:338
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:345
 msgid ""
 "The screams and pleas for mercy are finally silenced, as you remove your "
 "blood soaked blade from the last of the rebels. There will be no more "
@@ -1161,27 +1180,27 @@ msgstr ""
 "𐑓𐑲𐑯𐑩𐑤𐑦 𐑻𐑯𐑛 𐑕𐑑𐑩𐑚𐑦𐑤𐑦𐑑𐑰."
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:459
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:469
 msgid "Clear Weather"
 msgstr "𐑒𐑤𐑽 𐑢𐑧𐑞𐑼"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:465
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:475
 msgid "Drought"
 msgstr "𐑛𐑮𐑬𐑑"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:477
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:487
 msgid "Heavy Rains"
 msgstr "𐑣𐑧𐑝𐑦 𐑮𐑱𐑯𐑟"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:483
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:493
 msgid "Snowfall"
 msgstr "𐑕𐑯𐑴𐑓𐑭𐑤"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:489
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:499
 msgid "Heavy Snowfall"
 msgstr "𐑣𐑧𐑝𐑦 𐑕𐑯𐑴𐑓𐑭𐑤"
 
@@ -1293,99 +1312,99 @@ msgstr ""
 
 #. [unit]: type=Young Ogre
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:89
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:166
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:205
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:277
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:330
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:462
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:160
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:197
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:266
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:315
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:439
 msgid "Big Baby Bo"
 msgstr ""
 
 #. [unit]: type=Drake Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:102
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:101
 msgid "Rawffus the Dim"
 msgstr ""
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:154
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:149
 msgid "Kolbur"
 msgstr ""
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:179
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:172
 msgid "Vilhelm Viskitynnyri"
 msgstr ""
 
 #. [unit]: type=Woodsman
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:239
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:250
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:684
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:695
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:229
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:240
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:647
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:658
 msgid "Clockwork Boy"
 msgstr ""
 
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:302
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:289
 msgid "Neki the Brutal"
 msgstr ""
 
 #. [unit]: type=Elvish Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:343
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:327
 msgid "Drowsk Calbeht"
 msgstr ""
 
 #. [unit]: type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:405
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:385
 msgid "Rzrrt the Dauntless"
 msgstr ""
 
 #. [unit]: type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:445
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:423
 msgid "Sorrek, Chosen of Death"
 msgstr ""
 
 #. [unit]: type=Young Ogre
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:534
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:611
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:650
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:722
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:774
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:906
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:507
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:578
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:615
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:684
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:732
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:856
 msgid "Big Baby Dro"
 msgstr ""
 
 #. [unit]: type=Drake Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:547
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:519
 msgid "Gawffus the Dim"
 msgstr ""
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:599
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:567
 msgid "Rublok"
 msgstr ""
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:624
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:590
 msgid "Ulysses Mantyjuuri"
 msgstr ""
 
 #. [unit]: type=Orcish Leader
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:746
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:706
 msgid "Neki the Brute"
 msgstr ""
 
 #. [unit]: type=Elvish Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:787
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:744
 msgid "Claiomh Dubh"
 msgstr ""
 
 #. [unit]: type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:849
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:802
 msgid "Tyxrrn the Dauntless"
 msgstr ""
 
 #. [unit]: type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:889
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:840
 msgid "Rukhos, Chosen of Death"
 msgstr ""
 
@@ -1642,7 +1661,7 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
-msgid "A strange place. Designed by Doc Paterson"
+msgid "A strange place. Designed by Doc Paterson."
 msgstr ""
 
 #. [side]
@@ -1735,14 +1754,14 @@ msgid ""
 msgstr ""
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:118
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:161
 msgid ""
 "The map contains mausoleums and campfires that shift the time of the day by "
 "one step toward night and day, respectively."
 msgstr ""
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:121
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:164
 msgid ""
 "The tile in the centre, which contains the casket of the titular "
 "necromancer, is always covered in pitch black fog."
@@ -1775,12 +1794,12 @@ msgstr "3p — Alirok 𐑥𐑸𐑖"
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_4p_Hamlets
-#. [multiplayer]: id=multiplayer_Loris_River
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #. [multiplayer]: id=multiplayer_8p_Morituri
+#. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -1964,8 +1983,8 @@ msgstr "4p — Isar's 𐑒𐑮𐑪𐑕"
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
-"1+4 vs. 2+3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
-"villages."
+"1 &amp; 4 vs. 2 &amp; 3 (northeast vs. southwest). Designed for 75 starting "
+"gold, 20 villages."
 msgstr ""
 "𐑩 𐑝𐑧𐑮𐑦 𐑕𐑥𐑷𐑤 2 𐑝𐑻𐑕𐑩𐑟. 2 𐑥𐑨𐑐. 𐑒𐑤𐑴𐑟 𐑒𐑢𐑹𐑑𐑼𐑟 𐑓𐑲𐑑𐑦𐑙 𐑥𐑰𐑯𐑟 𐑞 𐑕𐑩𐑒𐑕𐑧𐑕𐑓𐑩𐑤 𐑮𐑴𐑑𐑱𐑖𐑩𐑯 𐑝 "
 "𐑿𐑯𐑦𐑑𐑕 𐑯 𐑐𐑤𐑨𐑯𐑦𐑙 𐑝 𐑥𐑵𐑝𐑟 𐑦𐑟 𐑦𐑥𐑐𐑹𐑑𐑩𐑯𐑑. 𐑑𐑰𐑥𐑟 𐑕𐑧𐑑 𐑓𐑹 𐑐𐑤𐑱𐑼𐑟 1&4 𐑝𐑻𐑕𐑩𐑟. 2&3 (𐑯𐑹𐑔𐑰𐑕𐑑 "
@@ -2056,7 +2075,7 @@ msgstr "4p — 𐑤𐑹𐑦𐑕 𐑮𐑦𐑝𐑼"
 #| "corners. Designed for players 1&4 vs. 2&3. There are 28 villages."
 msgid ""
 "2 vs. 2 map centered around a river with keeps in opposite corners. Designed "
-"for players 1+4 vs. 2+3. There are 28 villages."
+"for players 1 &amp; 4 vs. 2 &amp; 3. There are 28 villages."
 msgstr ""
 "𐑩 25x25 2 𐑝𐑻𐑕𐑩𐑟. 2 𐑥𐑨𐑐 𐑕𐑧𐑯𐑑𐑼𐑛 𐑩𐑮𐑬𐑯𐑛 𐑩 𐑮𐑦𐑝𐑼 𐑢𐑦𐑞 𐑒𐑰𐑐𐑕 𐑦𐑯 𐑪𐑐𐑴𐑕𐑦𐑑 𐑒𐑹𐑯𐑼𐑟. 𐑛𐑩𐑟𐑲𐑯𐑛 "
 "𐑓𐑹 𐑐𐑤𐑱𐑼𐑟 1&4 𐑝𐑻𐑕𐑩𐑟. 2&3. 𐑞𐑺 𐑸 28 𐑝𐑦𐑤𐑦𐑡𐑦𐑟."
@@ -2087,7 +2106,8 @@ msgstr "𐑮𐑧𐑒𐑩𐑥𐑧𐑯𐑛𐑩𐑛 𐑕𐑧𐑑𐑦𐑙 𐑝 2 �
 #, fuzzy
 msgid ""
 "A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
-"east vs. west (1+4 vs. 2+3), but works well with any teams or FFA."
+"east vs. west (1 &amp; 4 vs. 2 &amp; 3), but works well with any teams or "
+"FFA."
 msgstr ""
 "𐑩 35X27 2 𐑝𐑻𐑕𐑩𐑟. 2 𐑥𐑨𐑐 𐑢𐑦𐑞 5 𐑕𐑧𐑐𐑼𐑩𐑑 𐑐𐑭𐑞𐑟 𐑝 𐑦𐑯𐑜𐑱𐑡𐑥𐑩𐑯𐑑. 𐑚𐑨𐑤𐑩𐑯𐑕𐑑 𐑑 𐑚𐑰 𐑐𐑤𐑱𐑛 𐑰𐑕𐑑 "
 "𐑝𐑻𐑕𐑩𐑟. 𐑢𐑧𐑕𐑑 (1&4 𐑝𐑻𐑕𐑩𐑟. 2&3), 𐑚𐑳𐑑 𐑢𐑻𐑒𐑕 𐑢𐑧𐑤 𐑢𐑦𐑞 𐑧𐑯𐑦 𐑑𐑰𐑥𐑟 𐑹 FFA."
@@ -2556,6 +2576,16 @@ msgid ""
 msgstr ""
 "𐑩 ·𐑢𐑧𐑕𐑯𐑷𐑔 𐑚𐑧𐑯𐑗𐑥𐑸𐑒, 𐑿𐑟 --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#. [multiplayer]: id=multiplayer_test_lua_mapgen
+#: data/multiplayer/scenarios/test_lua_mapgen.cfg:16
+msgid "Lua Mapgen Maritime"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_test_lua_mapgen
+#: data/multiplayer/scenarios/test_lua_mapgen.cfg:17
+msgid "Testing new lua mapgen features"
+msgstr ""
 
 #, fuzzy
 #~| msgid "Age of Heroes"

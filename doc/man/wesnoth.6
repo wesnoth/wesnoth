@@ -104,6 +104,12 @@ information about command mode).
 .B --debug-lua
 enables some Lua debugging mechanisms
 .TP
+.BI -D,--diff \ left-file \  right-file
+diffs the two WML files; does not preprocess them first (to do that, run them through
+.B -p
+first). Outputs the diff as DiffWML on standard output or to the file indicated by
+.IR --output .
+.TP
 .BI -e[ file ],\ --editor[ =file ]
 start the in-game map editor directly. If
 .I file
@@ -227,6 +233,9 @@ don't try to validate replay of unit test. Only relevant when used with
 .B --nosound
 runs the game without sounds and music.
 .TP
+.BI --output \ file
+output to the specified file. Applicable to diffing operations.
+.TP
 .BI --password \ password
 uses
 .I password
@@ -238,6 +247,11 @@ when connecting to a server, ignoring other preferences. Unsafe.
 which defines a Wesnoth plugin. Similar to
 .BR --script ,
 but Lua file should return a function which will be run as a coroutine and periodically woken up with updates.
+.TP
+.BI -P,--patch \ base-file \  patch-file
+applies a DiffWML patch to a WML file; does not preprocess either of the files.
+Outputs the patched WML to standard output or to the file indicated by
+.IR --output .
 .TP
 .BI -p,\ --preprocess \ source-file/folder \  target-directory
 preprocesses a specified file/folder. For each file(s) a plain .cfg file and a processed .cfg
@@ -450,9 +464,10 @@ and
 .TP
 .BI --controller \ number : value
 selects the controller for this side. Available values:
-.B human
+.BR human ,
+.B ai
 and
-.BR ai .
+.BR null .
 .TP
 .BI --era \ value
 use this option to play in the selected era instead of the

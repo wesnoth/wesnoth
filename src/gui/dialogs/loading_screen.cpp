@@ -34,7 +34,6 @@
 
 #include <chrono>
 #include <cstdlib>
-#include <limits>
 
 static lg::log_domain log_loadscreen("loadscreen");
 #define ERR_LS LOG_STREAM(err, log_loadscreen)
@@ -72,11 +71,10 @@ namespace dialogs
 {
 REGISTER_DIALOG(loading_screen)
 
-loading_screen* loading_screen::current_load = nullptr;
+loading_screen* loading_screen::singleton_ = nullptr;
 
 loading_screen::loading_screen(std::function<void()> f)
 	: animation_counter_(0)
-	, next_animation_time_(std::numeric_limits<uint32_t>::max())
 	, load_func_(f)
 	, worker_result_()
 	, cursor_setter_()
@@ -100,7 +98,7 @@ loading_screen::loading_screen(std::function<void()> f)
 	}
 
 	current_visible_stage_ = visible_stages_.end();
-	current_load = this;
+	singleton_ = this;
 }
 
 void loading_screen::pre_show(window& window)
@@ -133,8 +131,6 @@ void loading_screen::pre_show(window& window)
 	// Add a draw callback to handle the animation, et al.
 	window.connect_signal<event::DRAW>(
 		std::bind(&loading_screen::draw_callback, this), event::dispatcher::front_child);
-
-	set_next_animation_time();
 }
 
 void loading_screen::post_show(window& /*window*/)
@@ -144,8 +140,8 @@ void loading_screen::post_show(window& /*window*/)
 
 void loading_screen::progress(loading_stage stage)
 {
-	if(current_load && stage != loading_stage::none) {
-		current_load->current_stage_.store(stage, std::memory_order_release);
+	if(singleton_ && stage != loading_stage::none) {
+		singleton_->current_stage_.store(stage, std::memory_order_release);
 	}
 }
 
@@ -175,16 +171,10 @@ void loading_screen::draw_callback()
 		progress_stage_label_->set_label(iter->second);
 	}
 
-	//if(SDL_GetTicks() < next_animation_time_) {
-	//	return;
-	//}
-
 	++animation_counter_;
 	if(animation_counter_ % 2 == 0) {
 		animation_label_->set_label(animation_stages_[(animation_counter_ / 2) % animation_stages_.size()]);
 	}
-
-	//set_next_animation_time();
 }
 
 loading_screen::~loading_screen()
@@ -207,14 +197,14 @@ loading_screen::~loading_screen()
 #endif
 	}
 
-	current_load = nullptr;
+	singleton_ = nullptr;
 }
 
 void loading_screen::display(std::function<void()> f)
 {
 	const bool use_loadingscreen_animation = !preferences::disable_loadingscreen_animation();
 
-	if(current_load || CVideo::get_singleton().faked()) {
+	if(singleton_ || CVideo::get_singleton().faked()) {
 		f();
 	} else if(use_loadingscreen_animation) {
 		loading_screen(f).show();
@@ -228,11 +218,6 @@ bool loading_screen::loading_complete() const
 {
 	using namespace std::chrono_literals;
 	return worker_result_.wait_for(0ms) == std::future_status::ready;
-}
-
-void loading_screen::set_next_animation_time()
-{
-	next_animation_time_ = SDL_GetTicks() + 100;
 }
 
 } // namespace dialogs

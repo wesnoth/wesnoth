@@ -13,9 +13,10 @@
 
 #pragma once
 
+#include "global.hpp"
 #include "utils/const_clone.hpp"
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 class CVideo;
 
@@ -25,15 +26,17 @@ public:
 	surface() : surface_(nullptr)
 	{}
 
-	surface(SDL_Surface* surf) : surface_(surf)
-	{}
+	surface(SDL_Surface* surf);
+
+	/** Allocates a new surface with the given dimensions. */
+	surface(int w, int h);
 
 	surface(const surface& s) : surface_(s.get())
 	{
 		add_surface_ref(surface_);
 	}
 
-	surface(surface&& s) : surface_(s.get())
+	surface(surface&& s) noexcept : surface_(s.get())
 	{
 		s.surface_ = nullptr;
 	}
@@ -43,23 +46,19 @@ public:
 		free_surface();
 	}
 
-	void assign(SDL_Surface* surf)
-	{
-		assign_surface_internal(surf);
-	}
-
-	void assign(const surface& s)
-	{
-		assign_surface_internal(s.get());
-	}
-
 	surface& operator=(const surface& s)
 	{
-		assign(s);
+		assign_surface_internal(s.get());
 		return *this;
 	}
 
-	surface& operator=(surface&& s)
+	surface& operator=(SDL_Surface* surf)
+	{
+		assign_surface_internal(surf);
+		return *this;
+	}
+
+	surface& operator=(surface&& s) noexcept
 	{
 		free_surface();
 		surface_ = s.surface_;
@@ -70,13 +69,36 @@ public:
 	// Intended to be used when SDL has already freed the surface
 	void clear_without_free() { surface_ = nullptr; }
 
+	/**
+	 * Check that the surface is neutral bpp 32.
+	 *
+	 * The surface may have an empty alpha channel.
+	 *
+	 * @returns                       The status @c true if neutral, @c false if not.
+	 */
+	bool is_neutral() const;
+
+	/**
+	 * Converts this surface to a neutral format if it is not already.
+	 *
+	 * @returns                       A reference to this object for chaining convenience.
+	 */
+	surface& make_neutral();
+
+	/**
+	 * Makes a copy of this surface. The copy will be in the 'neutral' pixel format.
+	 *
+	 * Note this is creates a new, duplicate surface in memory. Making a copy of this
+	 * 'surface' object will *not* duplicate the surface itself since we only hold a
+	 * pointer to the actual surface.
+	 */
+	surface clone() const;
+
 	operator SDL_Surface*() const { return surface_; }
 
 	SDL_Surface* get() const { return surface_; }
 
 	SDL_Surface* operator->() const { return surface_; }
-
-	bool null() const { return surface_ == nullptr; }
 
 private:
 	static void add_surface_ref(SDL_Surface* surf)
@@ -86,16 +108,13 @@ private:
 		}
 	}
 
-	void assign_surface_internal(SDL_Surface* surf)
-	{
-		add_surface_ref(surf); // Needs to be done before assignment to avoid corruption on "a = a;"
-		free_surface();
-		surface_ = surf;
-	}
+	void assign_surface_internal(SDL_Surface* surf);
 
 	void free_surface();
 
 	SDL_Surface* surface_;
+
+	static const SDL_PixelFormat neutral_pixel_format;
 };
 
 bool operator<(const surface& a, const surface& b);

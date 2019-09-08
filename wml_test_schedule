@@ -110,6 +110,7 @@
 # Pathfinding
 #
 0 store_locations_one
+0 store_locations_range
 # This test occasionally takes too long... (FIXME):       0 characterize_pathfinding_one
 # The following tests segfault becasue of http://gna.org/bugs/?23188
 0 characterize_pathfinding_reach_1
@@ -119,6 +120,27 @@
 0 characterize_pathfinding_reach_5
 0 characterize_pathfinding_reach_6
 0 characterize_pathfinding_reach_7
+#
+# Movement types, and modifying them
+#
+0 test_elf_movement
+0 test_orc_movement
+0 test_elf_fast_cave_movement
+0 test_elf_fast_hills_movement
+0 test_elf_fast_cave_and_hills_movement
+0 test_orc_fast_cave_movement
+0 test_orc_fast_forest_movement
+0 test_elf_slow_cave_movement
+0 test_elf_longsighted_movement
+0 test_orc_longsighted_movement
+0 test_elf_longsighted_fast_cave_movement
+0 test_elf_fast_cave_longsighted_movement
+0 test_elf_vision
+0 test_elf_fast_cave_vision
+0 test_elf_fast_hills_vision
+0 test_elf_longsighted_cave_vision
+0 test_elf_longsighted_cave_and_hills_vision
+0 test_elf_longsighted_cave_slow_cave_vision
 #
 # Attack calculations & codepath tests
 #

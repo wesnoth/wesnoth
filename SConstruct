@@ -482,7 +482,7 @@ for env in [test_env, client_env, env]:
 
     if "clang" in env["CXX"]:
 # Silence warnings about unused -I options and unknown warning switches.
-        env.AppendUnique(CCFLAGS = Split("-Qunused-arguments -Wno-unknown-warning-option -Wmismatched-tags -Wno-conditional-uninitialized"))
+        env.AppendUnique(CCFLAGS = Split("-Qunused-arguments -Wno-unknown-warning-option -Wmismatched-tags -Wno-conditional-uninitialized -Wno-unused-lambda-capture"))
 
         if env['pedantic']:
             env.AppendUnique(CXXFLAGS = Split("-Wdocumentation -Wno-documentation-deprecated-sync"))
@@ -522,7 +522,7 @@ for env in [test_env, client_env, env]:
 
         if env['harden'] and env["PLATFORM"] != 'win32':
             env.AppendUnique(CCFLAGS = ["-fPIE", "-fstack-protector-strong"])
-            if not env["have_fortify"] and "-O0" not in env["opt"]:
+            if not env.get("have_fortify") and "-O0" not in env["opt"]:
                 env.AppendUnique(CPPDEFINES = ["_FORTIFY_SOURCE=2"])
 
             if env["enable_lto"] == True:
@@ -722,6 +722,10 @@ def CopyFilter(fn):
 
 env["copy_filter"] = CopyFilter
 
+def MoFileFilter(fn):
+    "Don't install .mo files for manual and manpages. They're built only to catch broken po files"
+    return not "wesnoth-manual.mo" in str(fn) and not "wesnoth-manpages.mo" in str(fn)
+
 linguas = Split(File("po/LINGUAS").get_contents().decode("utf-8"))
 
 def InstallManpages(env, component):
@@ -737,14 +741,14 @@ env.InstallBinary(wesnoth)
 env.InstallData("datadir", "wesnoth", [Dir(sub) for sub in installable_subs])
 env.InstallData("docdir",  "wesnoth", [Glob("doc/manual/*.html"), Dir("doc/manual/styles"), Dir("doc/manual/images")])
 if env["nls"]:
-    env.InstallData("localedir", "wesnoth", Dir("translations"))
+    env.InstallData("localedir", "wesnoth", Dir("translations"), copy_filter = MoFileFilter)
     env.InstallData("datadir", "wesnoth", "l10n-track")
 InstallManpages(env, "wesnoth")
 if have_client_prereqs and have_X and env["desktop_entry"]:
      env.InstallData("icondir", "wesnoth", "packaging/icons")
-     env.InstallData("desktopdir", "wesnoth", "packaging/wesnoth.desktop")
+     env.InstallData("desktopdir", "wesnoth", "packaging/org.wesnoth.Wesnoth.desktop")
 if have_client_prereqs and "linux" in sys.platform and env["appdata_file"]:
-     env.InstallData("appdatadir", "wesnoth", "packaging/wesnoth.appdata.xml")
+     env.InstallData("appdatadir", "wesnoth", "packaging/org.wesnoth.Wesnoth.appdata.xml")
 
 # Python tools
 env.InstallData("bindir", "pytools", [os.path.join("data", "tools", tool) for tool in pythontools])

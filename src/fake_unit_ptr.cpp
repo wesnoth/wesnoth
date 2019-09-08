@@ -114,7 +114,7 @@ fake_unit_ptr::~fake_unit_ptr()
 	// fake_unit from the managers's fake_units_ dequeue in the event of an
 	// exception.
 	if(my_manager_) {
-		//my_manager_ points to resources::fake_units, the next line fixes a bug whre this code would attempt to access a freed fake_unit_manager object, see https://github.com/wesnoth/wesnoth/issues/3008 
+		//my_manager_ points to resources::fake_units, the next line fixes a bug whre this code would attempt to access a freed fake_unit_manager object, see https://github.com/wesnoth/wesnoth/issues/3008
 		if(resources::fake_units != nullptr) {
 			remove_from_fake_unit_manager();
 		}

@@ -22,6 +22,7 @@
 #include "random.hpp"
 #include "seed_rng.hpp"
 #include "deprecation.hpp"
+#include "language.hpp"                 // for get_language
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"
@@ -387,6 +388,12 @@ static int intf_format_list(lua_State* L)
 	return 1;
 }
 
+static int intf_get_language(lua_State* L)
+{
+	lua_push(L, get_language().localename);
+	return 1;
+}
+
 /**
 * Dumps a wml table or userdata wml object into a pretty string.
 * - Arg 1: wml table or vconfig userdata
@@ -590,6 +597,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "deprecated_message",       &intf_deprecated_message              },
 		{ "have_file",                &lua_fileops::intf_have_file          },
 		{ "read_file",                &lua_fileops::intf_read_file          },
+		{ "canonical_path",           &lua_fileops::intf_canonical_path     },
 		{ "textdomain",               &lua_common::intf_textdomain   		},
 		{ "tovconfig",                &lua_common::intf_tovconfig		},
 		{ "get_dialog_value",         &lua_gui2::intf_get_dialog_value		},
@@ -625,6 +633,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "format",                   &intf_format                   },
 		{ "format_conjunct_list",     &intf_format_list<true>        },
 		{ "format_disjunct_list",     &intf_format_list<false>       },
+		{ "get_language",             &intf_get_language             },
 		{ nullptr, nullptr }
 	};
 
@@ -635,7 +644,7 @@ lua_kernel_base::lua_kernel_base()
 	luaL_setfuncs(L, callbacks, 0);
 	//lua_cpp::set_functions(L, cpp_callbacks, 0);
 	lua_setglobal(L, "wesnoth");
-	
+
 	static luaL_Reg const wml_callbacks[]= {
 		{ "load",      &intf_load_wml},
 		{ "parse",     &intf_parse_wml},

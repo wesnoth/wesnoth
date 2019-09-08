@@ -44,7 +44,6 @@ pango_text::pango_text()
 	: context_(pango_font_map_create_context(pango_cairo_font_map_get_default()), g_object_unref)
 	, layout_(pango_layout_new(context_.get()), g_object_unref)
 	, rect_()
-	, sublayouts_()
 	, surface_()
 	, text_()
 	, markedup_text_(false)
@@ -284,7 +283,6 @@ point pango_text::get_column_line(const point& position) const
 bool pango_text::set_text(const std::string& text, const bool markedup)
 {
 	if(markedup != markedup_text_ || text != text_) {
-		sublayouts_.clear();
 		if(layout_ == nullptr) {
 			layout_.reset(pango_layout_new(context_.get()));
 		}
@@ -632,20 +630,7 @@ void pango_text::render(PangoLayout& layout, const PangoRectangle& rect, const s
 	std::unique_ptr<cairo_t, std::function<void(cairo_t*)>> cr(cairo_create(cairo_surface.get()), cairo_destroy);
 
 	if(cairo_status(cr.get()) == CAIRO_STATUS_INVALID_SIZE) {
-		if(!is_surface_split()) {
-			split_surface();
-
-			PangoRectangle upper_rect = calculate_size(*sublayouts_[0]);
-			PangoRectangle lower_rect = calculate_size(*sublayouts_[1]);
-
-			render(*sublayouts_[0], upper_rect, 0u, stride);
-			render(*sublayouts_[1], lower_rect, upper_rect.height * stride, stride);
-
-			return;
-		} else {
-			// If this occurs in practice, it can be fixed by implementing recursive splitting.
-			throw std::length_error("Text is too long to render");
-		}
+		throw std::length_error("Text is too long to render");
 	}
 
 	//
@@ -701,11 +686,40 @@ void pango_text::rerender(const bool force)
 		this->create_surface_buffer(stride * height);
 
 		if (surface_buffer_.empty()) {
-			surface_.assign(create_neutral_surface(0, 0));
+			surface_ = surface(0, 0);
 			return;
 		}
 
-		render(*layout_, rect_, 0u, stride);
+		try {
+			// Try rendering the whole text in one go
+			render(*layout_, rect_, 0u, stride);
+		} catch (std::length_error&) {
+			// Try rendering line-by-line, this is a workaround for cairo
+			// surfaces being limited to approx 2**15 pixels in height. If this
+			// also throws a length_error then leave it to the caller to
+			// handle.
+			std::size_t cumulative_height = 0u;
+
+			auto start_of_line = text_.cbegin();
+			while (start_of_line != text_.cend()) {
+				auto end_of_line = std::find(start_of_line, text_.cend(), '\n');
+
+				auto part_layout = std::unique_ptr<PangoLayout, std::function<void(void*)>> { pango_layout_new(context_.get()), g_object_unref};
+				auto line = utils::string_view(&*start_of_line, std::distance(start_of_line, end_of_line));
+				set_markup(line, *part_layout);
+				copy_layout_properties(*layout_, *part_layout);
+
+				auto part_rect = calculate_size(*part_layout);
+				render(*part_layout, part_rect, cumulative_height * stride, stride);
+				cumulative_height += part_rect.height;
+
+				start_of_line = end_of_line;
+				if (start_of_line != text_.cend()) {
+					// skip over the \n
+					++start_of_line;
+				}
+			}
+		}
 
 		// The cairo surface is in CAIRO_FORMAT_ARGB32 which uses
 		// pre-multiplied alpha. SDL doesn't use that so the pixels need to be
@@ -719,11 +733,11 @@ void pango_text::rerender(const bool force)
 		}
 
 #if SDL_VERSION_ATLEAST(2, 0, 6)
-		surface_.assign(SDL_CreateRGBSurfaceWithFormatFrom(
-			&surface_buffer_[0], width, height, 32, stride, SDL_PIXELFORMAT_ARGB8888));
+		surface_ = SDL_CreateRGBSurfaceWithFormatFrom(
+			&surface_buffer_[0], width, height, 32, stride, SDL_PIXELFORMAT_ARGB8888);
 #else
-		surface_.assign(SDL_CreateRGBSurfaceFrom(
-			&surface_buffer_[0], width, height, 32, stride, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000));
+		surface_ = SDL_CreateRGBSurfaceFrom(
+			&surface_buffer_[0], width, height, 32, stride, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000);
 #endif
 	}
 }
@@ -731,7 +745,7 @@ void pango_text::rerender(const bool force)
 void pango_text::create_surface_buffer(const std::size_t size) const
 {
 	// Clear surface.
-	surface_.assign(nullptr);
+	surface_ = nullptr;
 
 	// Resize buffer appropriately and clear all existing data (essentially sets all pixel values to 0).
 	surface_buffer_.assign(size, 0);
@@ -832,27 +846,6 @@ bool pango_text::validate_markup(utils::string_view text, char** raw_text, std::
 			<< "' has unescaped ampersands '&', escaped them.\n";
 
 	return true;
-}
-
-void pango_text::split_surface()
-{
-	auto text_parts = utils::vertical_split(text_);
-
-	PangoLayout* upper_layout = pango_layout_new(context_.get());
-	PangoLayout* lower_layout = pango_layout_new(context_.get());
-
-	set_markup(text_parts.first, *upper_layout);
-	set_markup(text_parts.second, *lower_layout);
-
-	copy_layout_properties(*layout_, *upper_layout);
-	copy_layout_properties(*layout_, *lower_layout);
-
-	sublayouts_.emplace_back(upper_layout, g_object_unref);
-	sublayouts_.emplace_back(lower_layout, g_object_unref);
-
-	// Freeing the old layout causes all text to use
-	// default line spacing in the future.
-	// layout_.reset(nullptr);
 }
 
 void pango_text::copy_layout_properties(PangoLayout& src, PangoLayout& dst)

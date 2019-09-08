@@ -44,6 +44,7 @@ function wesnoth.wml_actions.role(cfg)
 		recall = {}
 		recall.x = original.x
 		recall.y = original.y
+		recall.location_id = original.location_id
 		recall.show = original.show
 		recall.fire_event = original.fire_event
 		recall.check_passability = original.check_passability

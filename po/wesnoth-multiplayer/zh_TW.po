@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Traditional Chinese Translations
-# Copyright (C) 2005-2018 Wesnoth development team
+# Copyright (C) 2005-2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # 楊綮銘 <steven2880@gmail.com>, 2008.
 # YP_Lin <yenpinlin@gmail.com>, 2010.
@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-17 18:31 UTC\n"
-"PO-Revision-Date: 2018-09-30 22:57+0800\n"
+"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
+"PO-Revision-Date: 2019-07-21 10:12+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
 "X-Poedit-Bookmarks: 123,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -117,7 +117,12 @@ msgid "Grand total: <b>%d</b>"
 msgstr "主要得分: <b>%d</b>"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:87
+#: data/multiplayer/eras.lua:93
+msgid "Sides %s and %d are tied."
+msgstr "陣營 %s 和 %d 勢均力敵。"
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:95
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgstr "<span foreground=‘%s’>陣營 %d</span> 有此優勢。"
 
@@ -397,26 +402,26 @@ msgid "teamname^South"
 msgstr "南軍"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:289
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
 msgid "Defeat enemy leader(s)"
 msgstr "擊敗敵軍首領"
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:293
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:292
 msgid ""
 "The Great Mage Sulla has transported your armies to this bizarre nexus, and "
 "demands that you amuse her by doing battle."
 msgstr "大法師蘇拉已把你的軍隊運送到這個詭異的交會點，並要求你以作戰取悅他。"
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:296
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:295
 msgid ""
 "Units may not move into a hex with a rock cairn. They may, however, be "
 "recruited to, and move from, such hexes."
 msgstr "單位不能移動到有岩石塚的格子中，但可以被招募到格子裡然後再移動出來。"
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:299
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:298
 msgid ""
 "Beginning on turn 4, the Great Mage Sulla will begin to unite the two halves "
 "of the battlefield. The process will be complete by the end of turn 6."
@@ -425,8 +430,8 @@ msgstr ""
 "完成。"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:312
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:329
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:311
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:328
 msgid "The Aethermaw growls."
 msgstr "伊瑟瑪低吼著。"
 
@@ -474,7 +479,7 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:35
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:40
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:32
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:60
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:107
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:31
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:31
 #: data/multiplayer/scenarios/3p_Morituri.cfg:31
@@ -508,7 +513,7 @@ msgstr "東軍"
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:24
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:24
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:21
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:72
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:119
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:42
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:42
 #: data/multiplayer/scenarios/3p_Morituri.cfg:42
@@ -728,10 +733,12 @@ msgid ""
 "skills alone were what kept the area’s goblins alive despite human and "
 "elvish menaces. Rumor had it that his wolf had slain fifty men and a hundred "
 "Elves.\n"
+"\n"
 "Thus, when he heard of the awful monster that was inhabiting the area, it "
 "was only natural that he ride out alone to face it. All the other goblins "
 "expected him to slay the creature easily and drag back its carcass to feast "
 "on.\n"
+"\n"
 "He was in for quite a shock. As soon as he saw the Basilisk, Blum Duk "
 "cowered in fright. He tried to wheel his wolf around to run away, but it "
 "wouldn’t move. As the creature stalked towards him, he screamed his last "
@@ -751,12 +758,12 @@ msgstr ""
 "（【精靈劫掠者】題）"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:154
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:156
 msgid "Rah Ihn Mar"
 msgstr "拉．伊亨．瑪"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:156
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:158
 msgid ""
 "Rah Ihn Mar, Champion of the Burning Hills, made his way to the Ruaskkolin "
 "Lake region in pursuit of the Elvish Hero Terowydlithrol, known among Elves "
@@ -776,8 +783,13 @@ msgstr ""
 "前一天剛剛被人看到進入了這一區域。胸中燃燒著復仇的火焰，拉．伊亨．瑪開始了狩"
 "獵……"
 
+#. [side]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:162
+msgid "Turin's Monster of the Lake"
+msgstr "杜林的湖中怪獸"
+
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:163
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:165
 msgid ""
 "He had lived there for ages upon ages, in the depths of the water, preying "
 "upon the various fish and frogs and merfolk that entered his domain. It was "
@@ -793,8 +805,13 @@ msgstr ""
 "湖的新主人到來了。\n"
 "（【杜林】題）"
 
+#. [side]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:170
+msgid "The Spider"
+msgstr "蜘蛛"
+
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:171
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:173
 msgid ""
 "It would seem that no one knows the tale of this brave spider.\n"
 "(inscribed by WinnerA)"
@@ -803,7 +820,7 @@ msgstr ""
 "（【勝利者A】題）"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:179
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:181
 msgid ""
 "The tale of this unlucky highwayman is yet to be told.\n"
 "(inscribed by WinnerB)"
@@ -812,7 +829,7 @@ msgstr ""
 "（【勝利者B】題）"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:187
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:189
 msgid ""
 "A brave hero of Wesnoth’s Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
@@ -830,23 +847,25 @@ msgstr ""
 "（【菲恩米爾】題）"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:192
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:194
 msgid "Bramwythl"
 msgstr "布拉姆維斯爾"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:194
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:196
 msgid ""
 "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
-"other Woses. More than any other Wose, he enjoyed simply standing alone in "
+"other woses. More than any other wose, he enjoyed simply standing alone in "
 "the sun, arms upraised, admiring the beauty of the empty sky. Once, even, he "
 "confided in a fellow that his greatest wish was to be able to bask forever "
 "in the sun’s glory.\n"
+"\n"
 "However, not long after, the local wose community heard of the approach of a "
 "horrible monster, powerful enough to easily destroy the few woses that lived "
-"in the area. They quickly moved off (quickly for Woses, anyway), but "
+"in the area. They quickly moved off (quickly for woses, anyway), but "
 "Bramwythl was left behind — in their haste, no one had remembered to find "
 "him and tell him of the danger.\n"
+"\n"
 "He was taken quite unawares by the Basilisk, and turned to stone before he "
 "even recognized the beast. His petrified form still stands there today, "
 "warmed by the sun’s rays, under an open sky. His greatest wish has been "
@@ -857,22 +876,24 @@ msgstr ""
 "想。他比其他的樹人更喜歡獨自一人站在陽光之下，就只是伸展雙臂，對空蕩蕩的藍天"
 "之美表示敬意。甚至有一次，他向一位同伴吐露心聲說，他最大的願望，就是能夠永遠"
 "沐浴在太陽的榮光之下。\n"
+"\n"
 "然而不久之後，當地的樹人團體聽說一隻可怕的怪物就要來了。這怪物很強大，能輕而"
 "易舉地把這片區域內為數不多的樹人全部都毀掉。他們很快地離開了（至少對樹人而言"
 "很快），但布拉姆維斯爾卻被留下了——其他樹人太匆忙了，沒有人想到要去找他，並告"
 "訴他危險即將來臨。\n"
+"\n"
 "他被蛇怪出其不意地襲擊了，甚至在他能辨認出這野獸之前，就被變成了石頭。直至今"
 "天，他被石化的身體仍然站在那裡，在開闊的天空之下被陽光溫暖著。他最大的願望實"
 "現了。\n"
 "（【精靈劫掠者】題）"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:201
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:205
 msgid "Talael Ryndoc"
 msgstr "塔拉埃爾‧林多克"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:204
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:208
 msgid ""
 "General Talael Ryndoc came to this place to fight a duel with the Grand "
 "Marshal Aethec Corryn, but the two men never found one another."
@@ -881,12 +902,12 @@ msgstr ""
 "到過對方。 "
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:207
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:211
 msgid "Aethec Corryn"
 msgstr "艾西克‧科林"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:210
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:214
 msgid ""
 "The last words spoken by Grand Marshal Aethec Corryn: “Talael Ryndoc! I am "
 "through searching for you! I shall make my way back to Haldric’s Hall, and "
@@ -902,12 +923,12 @@ msgstr ""
 "也許他不應該喊得這麼響…… "
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:216
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:220
 msgid "Rilhon"
 msgstr "里爾洪"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:218
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:222
 msgid ""
 "This brave warrior, known as Rilhon among the Naga, heard tell of a fabulous "
 "treasure that had been lost in these watery caves— a spear whose head was "
@@ -931,7 +952,7 @@ msgstr ""
 "（【帕特森 】題）"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:226
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:230
 msgid ""
 "Through waves and rocky channels\n"
 "blue and white\n"
@@ -1021,52 +1042,52 @@ msgstr ""
 "注意：您需要使用地圖設置，以便這個章節能夠正確運作。"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:22
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:34
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:21
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:33
 msgid "teamname^Revolt"
 msgstr "反抗者"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:52
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:72
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:50
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:70
 msgid "teamname^Human"
 msgstr "人類"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:107
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:105
 msgid "Death of your leader"
 msgstr "你的首領死亡"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:108
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:106
 msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
 msgstr "因為你的團隊裡只有一位領導者，敵人的攻勢不會全開。"
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:111
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:109
 msgid "Death of both of your team’s leaders"
 msgstr "你的兩位首領皆死亡"
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:112
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:110
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr "由於你的團隊裡有兩位領導者，敵人的攻勢會火力全開。"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:133
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:131
 msgid "Survive and defeat all enemy waves"
 msgstr "撐過敵軍所有的攻擊且存活下來"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:153
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:151
 msgid "Dark Forecast — a random survival scenario"
 msgstr "黑暗預想 — 一個隨機的生存場景"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:158
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:156
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
 "archenemies.\n"
@@ -1108,12 +1129,12 @@ msgstr ""
 "• WML 執行"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:178
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:176
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "所以說這是被詛咒的山谷 — 一個我們要征服的土地。"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:182
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:180
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -1123,21 +1144,21 @@ msgstr ""
 "們必須為這片土地上一切不可知的事物作好準備。"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:186
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:184
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
 msgstr "那就讓我們看看是什麼東西在等著我們，還要教導他們不要反對我們的主張。"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:205
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:203
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
 msgstr "哦呃！怎麼會這樣？敗給微不足道的野蠻人！神哪，你拋棄了我..."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:219
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:217
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
@@ -1146,7 +1167,7 @@ msgstr ""
 "了完完全全的憎恨。"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:241
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:239
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
@@ -1161,7 +1182,7 @@ msgid "Changes the gold worth of the enemy spawns by a certain percentage"
 msgstr "按照比例修正敵軍產生的金幣"
 
 #. [lua]: final_spawn
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:310
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:315
 msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
@@ -1170,7 +1191,7 @@ msgstr ""
 "那我們就贏了。"
 
 #. [lua]: final_spawn
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:338
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:345
 msgid ""
 "The screams and pleas for mercy are finally silenced, as you remove your "
 "blood soaked blade from the last of the rebels. There will be no more "
@@ -1180,27 +1201,27 @@ msgstr ""
 "再也不會有來自本地敗類的阻力，您的統治終於得到了穩定。"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:459
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:469
 msgid "Clear Weather"
 msgstr "晴天"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:465
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:475
 msgid "Drought"
 msgstr "乾旱"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:477
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:487
 msgid "Heavy Rains"
 msgstr "大雨"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:483
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:493
 msgid "Snowfall"
 msgstr "降雪"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:489
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:499
 msgid "Heavy Snowfall"
 msgstr "大雪"
 
@@ -1305,99 +1326,99 @@ msgstr ""
 
 #. [unit]: type=Young Ogre
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:89
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:166
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:205
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:277
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:330
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:462
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:160
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:197
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:266
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:315
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:439
 msgid "Big Baby Bo"
 msgstr "大寶阿波"
 
 #. [unit]: type=Drake Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:102
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:101
 msgid "Rawffus the Dim"
 msgstr "蠢蛋拉弗斯"
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:154
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:149
 msgid "Kolbur"
 msgstr "科巴爾"
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:179
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:172
 msgid "Vilhelm Viskitynnyri"
 msgstr "必爾哈姆 威斯基提尼爾"
 
 #. [unit]: type=Woodsman
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:239
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:250
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:684
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:695
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:229
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:240
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:647
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:658
 msgid "Clockwork Boy"
 msgstr "發條男孩"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:302
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:289
 msgid "Neki the Brutal"
 msgstr "野蠻尼基"
 
 #. [unit]: type=Elvish Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:343
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:327
 msgid "Drowsk Calbeht"
 msgstr "多爾斯 卡爾本"
 
 #. [unit]: type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:405
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:385
 msgid "Rzrrt the Dauntless"
 msgstr "勇敢拉茲"
 
 #. [unit]: type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:445
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:423
 msgid "Sorrek, Chosen of Death"
 msgstr "索雷克，死亡之選"
 
 #. [unit]: type=Young Ogre
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:534
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:611
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:650
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:722
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:774
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:906
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:507
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:578
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:615
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:684
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:732
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:856
 msgid "Big Baby Dro"
 msgstr "大寶阿多"
 
 #. [unit]: type=Drake Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:547
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:519
 msgid "Gawffus the Dim"
 msgstr "蠢蛋高弗斯"
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:599
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:567
 msgid "Rublok"
 msgstr "盧伯克"
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:624
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:590
 msgid "Ulysses Mantyjuuri"
 msgstr "尤里西斯 麥提裘里"
 
 #. [unit]: type=Orcish Leader
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:746
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:706
 msgid "Neki the Brute"
 msgstr "殘忍尼基"
 
 #. [unit]: type=Elvish Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:787
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:744
 msgid "Claiomh Dubh"
 msgstr "克勞爾 迪波"
 
 #. [unit]: type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:849
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:802
 msgid "Tyxrrn the Dauntless"
 msgstr "勇敢提肯"
 
 #. [unit]: type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:889
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:840
 msgid "Rukhos, Chosen of Death"
 msgstr "盧茍司，死亡之選"
 
@@ -1646,8 +1667,8 @@ msgstr "2p — 千刺駐紮"
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
-msgid "A strange place. Designed by Doc Paterson"
-msgstr "一個奇異的地方。由Doc Paterson設計"
+msgid "A strange place. Designed by Doc Paterson."
+msgstr "一個奇異的地方。由Doc Paterson設計。"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:93
@@ -1738,14 +1759,14 @@ msgstr ""
 "樹叢之間低語。你們的指揮官不在乎這裡周圍的邪氣，依舊選擇這邊為戰場。"
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:118
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:161
 msgid ""
 "The map contains mausoleums and campfires that shift the time of the day by "
 "one step toward night and day, respectively."
 msgstr "此地圖包含墳墓上及營火上將會分別在時段上有影響增減攻守的效果。"
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:121
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:164
 msgid ""
 "The tile in the centre, which contains the casket of the titular "
 "necromancer, is always covered in pitch black fog."
@@ -1775,12 +1796,12 @@ msgstr "3p — 埃爾洛克沼澤"
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_4p_Hamlets
-#. [multiplayer]: id=multiplayer_Loris_River
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #. [multiplayer]: id=multiplayer_8p_Morituri
+#. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -1953,8 +1974,8 @@ msgstr "4p — 伊薩爾交叉口"
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
-"1+4 vs. 2+3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
-"villages."
+"1 &amp; 4 vs. 2 &amp; 3 (northeast vs. southwest). Designed for 75 starting "
+"gold, 20 villages."
 msgstr ""
 "這是一張非常小的2v2對戰地圖。在近距離對戰中，如何支援前線、計劃您的行動將顯得"
 "非常重要。隊伍設定是1號和4號對2號和3號（東北對西南）。起始資源建議75個金幣，"
@@ -2040,10 +2061,10 @@ msgstr "4p — 洛里斯河"
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
 msgid ""
 "2 vs. 2 map centered around a river with keeps in opposite corners. Designed "
-"for players 1+4 vs. 2+3. There are 28 villages."
+"for players 1 &amp; 4 vs. 2 &amp; 3. There are 28 villages."
 msgstr ""
-"這是一個2對2的地圖，中間是河流，雙方的要塞處在對角綫上。適合玩家1和玩家4對陣"
-"玩家2和玩家3。地圖上有28座村莊。"
+"這是一個2對2的地圖，中間是河流，雙方的要塞處在對角綫上。適合玩家1號和玩家4號"
+"對陣玩家2號和玩家3號。地圖上有28座村莊。"
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
@@ -2069,7 +2090,8 @@ msgstr "地圖上有28座村莊。建議設置每座村莊提供2個金幣。"
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
 msgid ""
 "A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
-"east vs. west (1+4 vs. 2+3), but works well with any teams or FFA."
+"east vs. west (1 &amp; 4 vs. 2 &amp; 3), but works well with any teams or "
+"FFA."
 msgstr ""
 "這是個2對2地圖，有五條交戰路線。建議玩家組隊為東部對陣西部（即玩家1、4對玩家"
 "2、3），但是其他組隊方式或自由對戰（FFA）也没有問題。"
@@ -2492,7 +2514,7 @@ msgstr ""
 #. [multiplayer]: id=wesbench_shroud_walk
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:9
 msgid "Wesnoth Benchmark: Walking through Shroud"
-msgstr "韋諾之戰標準圖：穿越迷霧"
+msgstr "韋諾之戰標準圖：穿越黑幕"
 
 #. [multiplayer]: id=wesbench_shroud_walk
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:10
@@ -2502,6 +2524,16 @@ msgid ""
 msgstr ""
 "這是韋諾之戰標準圖，命令行參數為：--no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end。"
+
+#. [multiplayer]: id=multiplayer_test_lua_mapgen
+#: data/multiplayer/scenarios/test_lua_mapgen.cfg:16
+msgid "Lua Mapgen Maritime"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_test_lua_mapgen
+#: data/multiplayer/scenarios/test_lua_mapgen.cfg:17
+msgid "Testing new lua mapgen features"
+msgstr ""
 
 #, fuzzy
 #~| msgid "Age of Heroes"

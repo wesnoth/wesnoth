@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -103,7 +103,7 @@ void button::load_images() {
 	surface active_image(image::get_image(button_image_name_ + "-active.png"+ button_image_path_suffix_));
 	surface disabled_image;
 	if (filesystem::file_exists(game_config::path + "/images/" + button_image_name_ + "-disabled.png"))
-		disabled_image.assign((image::get_image(button_image_name_ + "-disabled.png"+ button_image_path_suffix_)));
+		disabled_image = image::get_image(button_image_name_ + "-disabled.png"+ button_image_path_suffix_);
 	surface pressed_disabled_image, pressed_active_image, touched_image;
 
 	if (!button_overlay_image_name_.empty()) {
@@ -113,51 +113,51 @@ void button::load_images() {
 			button_overlay_image_name_.resize(button_overlay_image_name_.length() - size_postfix.length());
 		}
 
-		overlayImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + ".png"+ button_image_path_suffix_));
-		overlayPressedImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png"+ button_image_path_suffix_));
+		overlayImage_ = image::get_image(button_overlay_image_name_ + size_postfix + ".png"+ button_image_path_suffix_);
+		overlayPressedImage_ = image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png"+ button_image_path_suffix_);
 
 		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-active.png"))
-			overlayActiveImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-active.png"+ button_image_path_suffix_));
+			overlayActiveImage_ = image::get_image(button_overlay_image_name_ + size_postfix + "-active.png"+ button_image_path_suffix_);
 
 		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled.png"))
-			overlayDisabledImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-disabled.png"+ button_image_path_suffix_));
-		if (overlayDisabledImage_.null())
+			overlayDisabledImage_ = image::get_image(button_overlay_image_name_ + size_postfix + "-disabled.png"+ button_image_path_suffix_);
+		if (!overlayDisabledImage_)
 			overlayDisabledImage_ = image::get_image(button_overlay_image_name_ + size_postfix + ".png~GS()" + button_image_path_suffix_);
 
 		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled-pressed.png"))
-			overlayPressedDisabledImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-disabled-pressed.png"+ button_image_path_suffix_));
-		if (overlayPressedDisabledImage_.null())
+			overlayPressedDisabledImage_ = image::get_image(button_overlay_image_name_ + size_postfix + "-disabled-pressed.png"+ button_image_path_suffix_);
+		if (!overlayPressedDisabledImage_)
 			overlayPressedDisabledImage_ = image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png~GS()"+ button_image_path_suffix_);
 	} else {
-		overlayImage_.assign(nullptr);
+		overlayImage_ = nullptr;
 	}
 
 	if (disabled_image == nullptr) {
 		disabled_image = image::get_image(button_image_name_ + ".png~GS()" + button_image_path_suffix_);
 	}
 
-	if (pressed_image.null())
-		pressed_image.assign(button_image);
+	if (!pressed_image)
+		pressed_image = button_image;
 
-	if (active_image.null())
-		active_image.assign(button_image);
+	if (!active_image)
+		active_image = button_image;
 
 	if (type_ == TYPE_CHECK || type_ == TYPE_RADIO) {
-		touched_image.assign(image::get_image(button_image_name_ + "-touched.png"+ button_image_path_suffix_));
-		if (touched_image.null())
-			touched_image.assign(pressed_image);
+		touched_image = image::get_image(button_image_name_ + "-touched.png"+ button_image_path_suffix_);
+		if (!touched_image)
+			touched_image = pressed_image;
 
-		pressed_active_image.assign(image::get_image(button_image_name_ + "-active-pressed.png"+ button_image_path_suffix_));
-		if (pressed_active_image.null())
-			pressed_active_image.assign(pressed_image);
+		pressed_active_image = image::get_image(button_image_name_ + "-active-pressed.png"+ button_image_path_suffix_);
+		if (!pressed_active_image)
+			pressed_active_image = pressed_image;
 
 		if (filesystem::file_exists(game_config::path + "/images/" + button_image_name_ + size_postfix + "-disabled-pressed.png"))
-			pressed_disabled_image.assign(image::get_image(button_image_name_ + "-disabled-pressed.png"+ button_image_path_suffix_));
-		if (pressed_disabled_image.null())
+			pressed_disabled_image = image::get_image(button_image_name_ + "-disabled-pressed.png"+ button_image_path_suffix_);
+		if (!pressed_disabled_image)
 			pressed_disabled_image = image::get_image(button_image_name_ + "-pressed.png~GS()"+ button_image_path_suffix_);
 	}
 
-	if (button_image.null()) {
+	if (!button_image) {
 		std::string err_msg = "error initializing button images! file name: ";
 		err_msg += button_image_name_;
 		err_msg += ".png";
@@ -173,19 +173,19 @@ void button::load_images() {
 	}
 
 	if(type_ == TYPE_PRESS || type_ == TYPE_TURBO) {
-		image_.assign(scale_surface(button_image,location().w,location().h));
-		pressedImage_.assign(scale_surface(pressed_image,location().w,location().h));
-		activeImage_.assign(scale_surface(active_image,location().w,location().h));
-		disabledImage_.assign(scale_surface(disabled_image,location().w,location().h));
+		image_ = scale_surface(button_image,location().w,location().h);
+		pressedImage_ = scale_surface(pressed_image,location().w,location().h);
+		activeImage_ = scale_surface(active_image,location().w,location().h);
+		disabledImage_ = scale_surface(disabled_image,location().w,location().h);
 	} else {
-		image_.assign(scale_surface(button_image,button_image->w,button_image->h));
-		activeImage_.assign(scale_surface(active_image,button_image->w,button_image->h));
-		disabledImage_.assign(scale_surface(disabled_image,button_image->w,button_image->h));
-		pressedImage_.assign(scale_surface(pressed_image,button_image->w,button_image->h));
+		image_ = scale_surface(button_image,button_image->w,button_image->h);
+		activeImage_ = scale_surface(active_image,button_image->w,button_image->h);
+		disabledImage_ = scale_surface(disabled_image,button_image->w,button_image->h);
+		pressedImage_ = scale_surface(pressed_image,button_image->w,button_image->h);
 		if (type_ == TYPE_CHECK || type_ == TYPE_RADIO) {
-			pressedDisabledImage_.assign(scale_surface(pressed_disabled_image,button_image->w,button_image->h));
-			pressedActiveImage_.assign(scale_surface(pressed_active_image, button_image->w, button_image->h));
-			touchedImage_.assign(scale_surface(touched_image, button_image->w, button_image->h));
+			pressedDisabledImage_ = scale_surface(pressed_disabled_image,button_image->w,button_image->h);
+			pressedActiveImage_ = scale_surface(pressed_active_image, button_image->w, button_image->h);
+			touchedImage_ = scale_surface(touched_image, button_image->w, button_image->h);
 		}
 	}
 
@@ -350,31 +350,29 @@ void button::draw_contents()
 		button_color = font::GRAY_COLOR;
 	}
 
-	if (!overlayImage_.null()) {
+	if (overlayImage_) {
 
-		surface noverlay = make_neutral_surface(
-				enabled() ? overlayImage_ : overlayDisabledImage_);
+		surface* noverlay = enabled() ? &overlayImage_ : &overlayDisabledImage_;
 
-		if (!overlayPressedImage_.null()) {
+		if (overlayPressedImage_) {
 			switch (state_) {
 			case ACTIVE:
-				if (!overlayActiveImage_.null())
-					noverlay = make_neutral_surface(overlayActiveImage_);
+				if (overlayActiveImage_)
+					noverlay = &overlayActiveImage_;
 				break;
 			case PRESSED:
 			case PRESSED_ACTIVE:
 			case TOUCHED_NORMAL:
 			case TOUCHED_PRESSED:
-				noverlay = make_neutral_surface( enabled() ?
-						overlayPressedImage_ : overlayPressedDisabledImage_);
+				noverlay = enabled() ? &overlayPressedImage_ : &overlayPressedDisabledImage_;
 				break;
 			default:
 				break;
 			}
 		}
 
-		surface nimage = make_neutral_surface(image);
-		sdl_blit(noverlay, nullptr, nimage, nullptr);
+		surface nimage = image.clone();
+		sdl_blit(*noverlay, nullptr, nimage, nullptr);
 		image = nimage;
 	}
 

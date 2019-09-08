@@ -179,8 +179,6 @@ void CVideo::make_fake()
 #else
 	frameBuffer = SDL_CreateRGBSurface(0, 16, 16, 24, 0xFF0000, 0xFF00, 0xFF, 0);
 #endif
-
-	image::set_pixel_format(frameBuffer->format);
 }
 
 void CVideo::make_test_fake(const unsigned width, const unsigned height)
@@ -190,8 +188,6 @@ void CVideo::make_test_fake(const unsigned width, const unsigned height)
 #else
 	frameBuffer = SDL_CreateRGBSurface(0, width, height, 32, 0xFF0000, 0xFF00, 0xFF, 0);
 #endif
-
-	image::set_pixel_format(frameBuffer->format);
 
 	fake_interactive = true;
 	refresh_rate_ = 1;
@@ -204,17 +200,14 @@ void CVideo::update_framebuffer()
 	}
 
 	surface fb = SDL_GetWindowSurface(*window);
-	if(!frameBuffer) {
-		frameBuffer = fb;
-	} else {
-		if(sdl_get_version() >= version_info(2, 0, 6)) {
-			// Because SDL has already freed the old framebuffer,
-			// ensure that we won't attempt to free it.
-			frameBuffer.clear_without_free();
-		}
 
-		frameBuffer.assign(fb);
+	if(frameBuffer && sdl_get_version() >= version_info(2, 0, 6)) {
+		// Because SDL has already freed the old framebuffer,
+		// ensure that we won't attempt to free it.
+		frameBuffer.clear_without_free();
 	}
+
+	frameBuffer = fb;
 }
 
 void CVideo::init_window()
@@ -256,9 +249,6 @@ void CVideo::init_window()
 	event_handler_.join_global();
 
 	update_framebuffer();
-	if(frameBuffer) {
-		image::set_pixel_format(frameBuffer->format);
-	}
 }
 
 void CVideo::set_window_mode(const MODE_EVENT mode, const point& size)
@@ -291,9 +281,6 @@ void CVideo::set_window_mode(const MODE_EVENT mode, const point& size)
 	}
 
 	update_framebuffer();
-	if(frameBuffer) {
-		image::set_pixel_format(frameBuffer->format);
-	}
 }
 
 SDL_Rect CVideo::screen_area(bool as_pixels) const

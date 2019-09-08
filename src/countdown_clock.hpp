@@ -13,7 +13,7 @@
 
 #pragma once
 #include "events.hpp"
-#include <SDL_timer.h>
+#include <SDL2/SDL_timer.h>
 
 class team;
 class countdown_clock : public events::pump_monitor

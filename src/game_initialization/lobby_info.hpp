@@ -142,7 +142,7 @@ public:
 		return users_;
 	}
 
-	bool gamelist_initialized() const 
+	bool gamelist_initialized() const
 	{
 		return gamelist_initialized_;
 	}
@@ -183,7 +183,7 @@ enum notify_mode {
 	NOTIFY_WHISPER_OTHER_WINDOW,
 	NOTIFY_LOBBY_JOIN,
 	NOTIFY_LOBBY_QUIT,
-	NOTIFY_COUNT
+	NOTIFY_GAME_CREATED
 };
 
 void do_notify(notify_mode mode, const std::string& sender = "", const std::string& message = "");

@@ -47,12 +47,14 @@ import os, glob, sys, re, subprocess, argparse, tempfile, shutil
 import atexit
 
 tempdirs_to_clean = []
-
+tmpfiles_to_clean = []
 
 @atexit.register
 def cleaner():
     for temp_dir in tempdirs_to_clean:
         shutil.rmtree(temp_dir, ignore_errors=True)
+    for temp_file in tmpfiles_to_clean:
+        os.remove(temp_file)
 
 
 class WMLError(Exception):
@@ -371,11 +373,13 @@ class Parser:
         """
         Parse a chunk of binary WML.
         """
-        temp = tempfile.NamedTemporaryFile(prefix="wmlparser_",
-                                           suffix=".cfg")
-        temp.write(binary)
-        temp.flush()
-        self.path = temp.name
+        td, tmpfilePath = tempfile.mkstemp(prefix="wmlparser_",
+                                            suffix=".cfg")
+        with open(tmpfilePath, 'wb') as temp:
+            temp.write(binary)
+        os.close(td)
+        self.path = tmpfilePath
+        tmpfiles_to_clean.append(tmpfilePath)
         if not self.no_preprocess:
             self.preprocess(defines)
         return self.parse()
@@ -503,13 +507,12 @@ class Parser:
         Parse a WML fragment outside of strings.
         """
         if not line: return
+        if line.lstrip(b" \t").startswith(b"#textdomain "):
+            self.textdomain = line.lstrip(b" \t")[12:].strip().decode("utf8")
+            return
         if not self.temp_key_nodes:
             line = line.lstrip()
             if not line: return
-
-            if line.startswith(b"#textdomain "):
-                self.textdomain = line[12:].strip().decode("utf8")
-                return
 
             # Is it a tag?
             if line.startswith(b"["):
@@ -519,7 +522,7 @@ class Parser:
                 self.handle_attribute(line)
         else:
             for i, segment in enumerate(line.split(b"+")):
-                segment = segment.lstrip(b" ")
+                segment = segment.lstrip(b" \t")
 
                 if i > 0:
                     # If the last segment is empty (there was a plus sign
@@ -755,6 +758,11 @@ if __name__ == "__main__":
         def test(input, expected, note):
             test2(input, expected, note, lambda p: p.root.debug())
 
+        def test_with_preprocessor(input, expected, note):
+            if not args.wesnoth:
+                print("SKIPPED WITHOUT PREPROCESSOR " + note)
+                return
+            test(input, expected, note)
 
         test(
 """
@@ -865,7 +873,7 @@ a, b, c = 1, 2
 [/test]
 """, "multi assign 3")
 
-        test(
+        test_with_preprocessor(
 """
 #textdomain A
 #define X
@@ -935,7 +943,7 @@ foo="bar"+
 foo='bar' .. 'baz'
 """, "multi line string")
 
-        test(
+        test_with_preprocessor(
 """
 #define baz
 
@@ -947,7 +955,7 @@ foo="bar"+{baz}
 foo='bar' .. 'baz'
 """, "defined multi line string")
 
-        test(
+        test_with_preprocessor(
 """
 foo="bar" + "baz" # blah
 """,
@@ -955,7 +963,7 @@ foo="bar" + "baz" # blah
 foo='bar' .. 'baz'
 """, "comment after +")
 
-        test(
+        test_with_preprocessor(
 """
 #define baz
 "baz"
@@ -966,7 +974,7 @@ foo="bar" {baz}
 foo='bar' .. 'baz'
 """, "defined string concatenation")
 
-        test(
+        test_with_preprocessor(
 """
 #define A BLOCK
 [{BLOCK}]

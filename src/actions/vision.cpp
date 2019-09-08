@@ -103,7 +103,7 @@ clearer_info::clearer_info(const unit & viewer) :
 	underlying_id(viewer.underlying_id()),
 	sight_range(viewer.vision()),
 	slowed(viewer.get_state(unit::STATE_SLOWED)),
-	costs(viewer.movement_type().get_vision())
+	costs(viewer.movement_type().get_vision().make_standalone())
 {
 }
 
@@ -114,7 +114,7 @@ clearer_info::clearer_info(const config & cfg) :
 	underlying_id(cfg["underlying_id"].to_size_t()),
 	sight_range(cfg["vision"].to_int()),
 	slowed(cfg.child_or_empty("status")["slowed"].to_bool()),
-	costs(cfg.child_or_empty("vision_costs"))
+	costs(movetype::read_terrain_costs(cfg.child_or_empty("vision_costs")))
 {
 }
 
@@ -129,7 +129,7 @@ void clearer_info::write(config & cfg) const
 	cfg["vision"] = sight_range;
 	if ( slowed )
 		cfg.add_child("status")["slowed"] = true;
-	costs.write(cfg, "vision_costs");
+	costs->write(cfg, "vision_costs");
 }
 
 
@@ -437,7 +437,7 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
 		                                find_it->get_location();
 
 	return clear_unit(view_loc, view_team, viewer.underlying_id,
-	                  viewer.sight_range, viewer.slowed, viewer.costs,
+	                  viewer.sight_range, viewer.slowed, *viewer.costs,
 	                  real_loc, nullptr, nullptr, nullptr, nullptr, instant);
 }
 

@@ -31,30 +31,14 @@ class unit_map;
 class unit;
 struct map_location;
 
-struct team_data
+class display_context
 {
-	team_data() :
-		units(0),
-		upkeep(0),
-		villages(0),
-		expenses(0),
-		net_income(0),
-		gold(0),
-		teamname()
-	{
-	}
-
-	int units, upkeep, villages, expenses, net_income, gold;
-	std::string teamname;
-};
-
-class display_context {
 public:
 	virtual const std::vector<team> & teams() const = 0;
 	virtual const gamemap & map() const = 0;
 	virtual const unit_map & units() const = 0;
 	virtual const std::vector<std::string> & hidden_label_categories() const = 0;
-	std::vector<std::string> & hidden_label_categories_ref();
+	virtual std::vector<std::string> & hidden_label_categories() = 0;
 	const team& get_team(int side) const;
 
 	// this one is only a template function to prevent compilation erros when class team is an incomplete type.
@@ -99,8 +83,6 @@ public:
 
 	int side_upkeep(int side_num) const ;
 
-	team_data calculate_team_data(const class team& tm) const;
-
 	// Accessor from team.cpp
 
 	/// Check if we are an observer in this game
@@ -109,4 +91,11 @@ public:
 	// Dtor
 
 	virtual ~display_context() {}
+};
+
+struct team_data
+{
+	team_data(const display_context& dc, const team& tm);
+
+	int side = 0, units = 0, upkeep = 0, expenses = 0, net_income = 0;
 };

@@ -105,7 +105,7 @@ public:
 
 		}
 	};
-	
+
 	/** Overlays another map onto this one at the given position. */
 	void overlay(const gamemap& m, map_location loc, const std::vector<overlay_rule>& rules = std::vector<overlay_rule>(), bool is_odd = false, bool ignore_special_locations = false);
 
@@ -120,7 +120,7 @@ public:
 			const std::vector<overlay_rule>& rules,
 			bool is_odd,
 			bool ignore_special_locations);
-	
+
 	/** Effective map width. */
 	int w() const { return w_; }
 

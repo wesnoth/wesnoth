@@ -1,3 +1,5 @@
+local _ = wesnoth.textdomain 'wesnoth-sota'
+
 -- After preshow, this variable will hold the unit_types being shown in the listbox.
 local listedZombies = {}
 -- These two variables will be passed back to the WML engine.

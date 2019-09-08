@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2016 - 2018 by Chris Beck<render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 
 #include "log.hpp"
 
-#include <SDL_ttf.h>
+#include <SDL2/SDL_ttf.h>
 
 #include <string>
 #include <vector>
@@ -185,7 +185,7 @@ const std::vector<surface>& text_surface::get_surfaces() const
 		TTF_Font* ttfont = sdl_ttf::get_font(font_id(chunk.subset, font_size_, style_));
 
 		surface s = surface(TTF_RenderUTF8_Blended(ttfont, chunk.text.c_str(), color_.to_sdl()));
-		if(!s.null())
+		if(s)
 			surfs_.push_back(s);
 	}
 

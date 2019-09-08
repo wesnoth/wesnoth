@@ -42,7 +42,7 @@ static lg::log_domain log_engine("engine");
 namespace game_events {
 
 namespace builtin_conditions {
-	std::vector<std::pair<int,int>> default_counts = utils::parse_ranges("1-99999");
+	std::vector<std::pair<int,int>> default_counts = utils::parse_ranges("1-infinity");
 
 	bool have_unit(const vconfig& cfg)
 	{

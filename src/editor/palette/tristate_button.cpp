@@ -48,33 +48,33 @@ tristate_button::tristate_button(CVideo& video,
 		button_image_name = "buttons/button_selectable/button_selectable_38_";
 	}
 
-	baseImage_.assign(
-			image::get_image(button_image_name + "base.png"));
-	activeBaseImage_.assign(
-			image::get_image(button_image_name + "base-active.png"));
-	touchedBaseImage_.assign(
-			image::get_image(button_image_name + "base-touched.png"));
+	baseImage_ =
+			image::get_image(button_image_name + "base.png");
+	activeBaseImage_ =
+			image::get_image(button_image_name + "base-active.png");
+	touchedBaseImage_ =
+			image::get_image(button_image_name + "base-touched.png");
 
-	touchedBothImage_.assign(
-			image::get_image(button_image_name + "border-touched-both.png"));
-	touchedUpImage_.assign(
-			image::get_image(button_image_name + "border-touched-up.png"));
-	touchedDownImage_.assign(
-			image::get_image(button_image_name + "border-touched-down.png"));
+	touchedBothImage_ =
+			image::get_image(button_image_name + "border-touched-both.png");
+	touchedUpImage_ =
+			image::get_image(button_image_name + "border-touched-up.png");
+	touchedDownImage_ =
+			image::get_image(button_image_name + "border-touched-down.png");
 
-	pressedUpImage_.assign(
-			image::get_image(button_image_name + "border-pressed-up.png"));
-	pressedDownImage_.assign(
-			image::get_image(button_image_name + "border-pressed-down.png"));
-	pressedBothImage_.assign(
-			image::get_image(button_image_name + "border-pressed-both.png"));
+	pressedUpImage_ =
+			image::get_image(button_image_name + "border-pressed-up.png");
+	pressedDownImage_ =
+			image::get_image(button_image_name + "border-pressed-down.png");
+	pressedBothImage_ =
+			image::get_image(button_image_name + "border-pressed-both.png");
 
-	pressedUpActiveImage_.assign(
-			image::get_image(button_image_name + "border-active-pressed-up.png"));
-	pressedDownActiveImage_.assign(
-			image::get_image(button_image_name + "border-active-pressed-down.png"));
-	pressedBothActiveImage_.assign(
-			image::get_image(button_image_name + "border-active-pressed-both.png"));
+	pressedUpActiveImage_ =
+			image::get_image(button_image_name + "border-active-pressed-up.png");
+	pressedDownActiveImage_ =
+			image::get_image(button_image_name + "border-active-pressed-down.png");
+	pressedBothActiveImage_ =
+			image::get_image(button_image_name + "border-active-pressed-both.png");
 
 	//TODO
 //	if (button_image.null()) {
@@ -215,20 +215,16 @@ void tristate_button::draw_contents() {
 
 	const SDL_Rect& loc = location();
 
-	surface scalled_item;
-	scalled_item.assign(scale_surface(itemImage_,
-			36, 36));
+	surface scaled_item = scale_surface(itemImage_, 36, 36);
 
-	surface nitem = make_neutral_surface(scalled_item);
-	surface nbase = make_neutral_surface(base);
+	surface nbase = base.clone();
 
 	//TODO avoid magic numbers
 	SDL_Rect r {1, 1, 0, 0};
-	sdl_blit(nitem, nullptr, nbase, &r);
+	sdl_blit(scaled_item, nullptr, nbase, &r);
 
-	if (!overlay.null()) {
-		surface noverlay = make_neutral_surface(overlay);
-		sdl_blit(noverlay, nullptr, nbase, nullptr);
+	if (overlay) {
+		sdl_blit(overlay, nullptr, nbase, nullptr);
 	}
 
 	bg_restore();

@@ -76,7 +76,7 @@ public:
 	~loading_screen();
 
 	static void display(std::function<void()> f);
-	static bool displaying() { return current_load != nullptr; }
+	static bool displaying() { return singleton_ != nullptr; }
 
 	static void progress(loading_stage stage = loading_stage::none);
 
@@ -99,11 +99,9 @@ private:
 	/** Callback to handle drawing the progress animation. */
 	void draw_callback();
 
-	void set_next_animation_time();
+	static loading_screen* singleton_;
 
 	int animation_counter_;
-	uint32_t next_animation_time_;
-
 	std::function<void()> load_func_;
 	std::future<void> worker_result_;
 	std::unique_ptr<cursor::setter> cursor_setter_;
@@ -112,8 +110,6 @@ private:
 
 	label* progress_stage_label_;
 	label* animation_label_;
-
-	static loading_screen* current_load;
 
 	std::atomic<loading_stage> current_stage_;
 

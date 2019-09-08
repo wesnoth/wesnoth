@@ -1,23 +1,23 @@
 # Turkish translations for Battle for Wesnoth package.
-# Copyright (C) 2008 Wesnoth development team
+# Copyright (C) 2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # İhsan Haluk AKIN <ihsan_akin@yahoo.com>, 2006.
-# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, 2009.
+# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tb\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-03-17 18:31 UTC\n"
-"PO-Revision-Date: 2009-02-23 19:45+0200\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2019-08-27 19:41 UTC\n"
+"PO-Revision-Date: 2019-06-08 01:41+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
-"Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
+"Language-Team: Turkish\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
@@ -31,10 +31,8 @@ msgstr "İKH"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:18
-#, fuzzy
-#| msgid "(Beginner)"
 msgid "Beginner"
-msgstr "(Acemi)"
+msgstr "Acemi"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:18
@@ -43,10 +41,8 @@ msgstr "Binici"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:19
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(Tecrübeli)"
+msgstr "Meydan Okuma"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:19
@@ -55,23 +51,21 @@ msgstr "Şövalye"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
-#, fuzzy
 msgid ""
 "An evil mage is threatening the small village of Maghre and its inhabitants. "
 "The village’s mage sends to his warrior brother for help, but not all goes "
 "as planned. Can you help?\n"
 "\n"
 msgstr ""
-"Kötü bir büyücü küçük Magre kentini ve ahalisini tehdit ediyor. Kent meclisi "
-"büyücü Biyarn’ı kardeşinden yardım istemeye gönderdi, fakat işler yolunda "
-"gitmedi. Ona yardım edebilir misin?\n"
+"Kötü bir büyücü küçük bir Magre köyünü ve ahalisini tehdit ediyor. Köyün "
+"büyücüsü yardım istemek için savaşçı kardeşine gönderildi, fakat işler "
+"yolunda gitmedi. Ona yardım edebilir misin?\n"
 "\n"
-"(Acemi seviyesi, 4 senaryo; ‘Zor’ sürüm daha deneyimli oyuncular içindir.)"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:23
-msgid "(Novice level, 4 scenarios.)"
-msgstr ""
+msgid "(Rookie level, 4 scenarios.)"
+msgstr "(Toy seviyesi. 4 senaryo)"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:30
@@ -81,7 +75,7 @@ msgstr "Seferberlik Tasarımı"
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:39
 msgid "Prose and Story Edits"
-msgstr ""
+msgstr "Nesir ve Öykü Düzenlemeleri"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:48
@@ -117,7 +111,7 @@ msgid ""
 "them not, until the day a dark mage settled in the region and began seeking "
 "sacrifices for his evil summonings."
 msgstr ""
-"Wesnoth krallığının iyice doğusunda kalan Magre kenti ahalisi huzur içinde "
+"Vesnot krallığının iyice doğusunda kalan Magre kenti ahalisi huzur içinde "
 "yaşar, kente dışardan pek gelen giden olmazdı. Savaşlardan ve savaş "
 "söylentilerinden de haberleri olmazdı. Taa ki, bir kara büyücünün şeytani "
 "emellerine ulaşmak amacıyla yeni kurbanlar aramak için bölgelerine gelişine "
@@ -125,7 +119,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:54
-#, fuzzy
 msgid ""
 "Skeletons and zombies killed cattle and fired fields. <i>“Fear and obey "
 "Mordak the Mage!”</i> they cried in fell voices as they did their foul "
@@ -134,23 +127,14 @@ msgid ""
 "more than a day’s ride distant, and messengers sent to seek his help did not "
 "return."
 msgstr ""
-"İskeletler ve zombiler çığlık çığlığa 'Büyücü Mordak’tan korkun ve ona itaat "
-"edin' diye bağırarak sürüleri katledip tarlaları ateşe verdiler. "
+"İskeletler ve zombiler çığlık çığlığa <i>“Büyücü Mordak’tan korkun ve ona "
+"itaat edin”</i> diye bağırarak sürüleri katledip tarlaları ateşe verdiler. "
 "Çiftliklerde insan kalmadı. Anna babalar geceleri korkarken çocukları gündüz "
-"de korkar oldu. En yakın karakol bir günlük uzaklıktaydı. Yardım istemek "
-"için gönderdikleri adamlar bir daha geri dönmedi."
+"de korkar oldu. En yakın bey bir günlük uzaklıktaydı. Yardım istemek için "
+"gönderdikleri adamlar bir daha geri dönmedi."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:58
-#, fuzzy
-#| msgid ""
-#| "There was a man named Bjarn who had shown talent as a mage when he was "
-#| "young, gone to the great Academy on the Isle of Alduin, and returned to "
-#| "work his magic in the land where he was born. The people looked to him "
-#| "for help and leadership. He found weapons half-forgotten from the times "
-#| "of their sires and grandsires hanging in many houses, and bade the "
-#| "villagers to take them down and clean and oil them. He set the smiths of "
-#| "Maghre to making spearheads and ax-blades for the rest."
 msgid ""
 "There was a man named Baran who had shown talent as a mage when he was "
 "young, gone to the great Academy on the Isle of Alduin, and returned to work "
@@ -160,25 +144,17 @@ msgid ""
 "them down and clean and oil them. He set the smiths of Maghre to making "
 "spearheads and ax-blades for the rest."
 msgstr ""
-"Biyarn adında bir adam vardı. Gençken bir büyücü gibi hünerler "
+"Baran adında bir adam vardı. Gençken bir büyücü gibi hünerler "
 "sergilediğinden Alduin Adasındaki büyük akademiye gönderilmişti. Döndüğünde "
 "büyülerini doğduğu topraklar için kullanmak istemiş, halk büyük yardımlarını "
-"görünce onu lider yapmışlardı. Biyarn, bir çok evde duvarlara asılmış olarak "
-"babadan dededen kalma unutulmuş silahlar bulmuş ve ahaliden onları ortaya "
+"görünce onu lider yapmışlardı. Bir çok evde duvarlara asılmış olarak babadan "
+"dededen kalma unutulmuş silahlar bulmuş ve ahaliden onları ortaya "
 "çıkarmalarını, temizleyip yağlamalarını istemişti. Ayrıca, Magre "
 "demircilerinden boş zamanlarında mızrak uçları ve keskin baltalar "
 "yapmalarını istemişti."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:62
-#, fuzzy
-#| msgid ""
-#| "Now Bjarn had a brother named Arne who had also left Maghre to seek his "
-#| "fortune, and had become the leader of a small band of horsemen who hired "
-#| "out as guards to merchant caravans. Fortunate it was for all that when "
-#| "Bjarn was but an apprentice mage, he had made a pair of amulets for "
-#| "himself and his brother, with which they might call to each other when in "
-#| "dire need. Bjarn sent out that call."
 msgid ""
 "Now Baran had a brother named Arvith who had also left Maghre to seek his "
 "fortune, and had become the leader of a small band of horsemen who hired out "
@@ -187,11 +163,11 @@ msgid ""
 "brother, with which they might call to each other when in dire need. Baran "
 "sent out that call."
 msgstr ""
-"Biyarn’ın bir de kardeşi vardı, fakat o Magre’de kalmak istememiş, macera "
+"Baran’ın bir de kardeşi vardı, fakat o Magre’de kalmak istememiş, macera "
 "aramaya gitmişti. Zamanla atlılardan oluşan bir ekip kurmuş, kervanlara "
-"ücret karşılığı muhafızlık yapar olmuştu. Biyarn daha bir büyücü çırağıyken "
+"ücret karşılığı muhafızlık yapar olmuştu. Baran daha bir büyücü çırağıyken "
 "kendisi ve abisi için birer tılsım hazırlamıştı. Bunlar sayesinde ihtiyaç "
-"duyduklarında birbirlerini yardıma çağırabiliyorlardı. Biyarn bir gün böyle "
+"duyduklarında birbirlerini yardıma çağırabiliyorlardı. Baran bir gün böyle "
 "bir çağrı gönderdi."
 
 #. [part]
@@ -209,18 +185,25 @@ msgid ""
 "spoken since that evil day at Toen Caric. If he will not come for me, "
 "perhaps he will return to aid our village in its hour of desperate need."
 msgstr ""
+"12 V, 363 VY\n"
+"Magreli Baran'ın günlüğünden alıntı\n"
+"\n"
+"Eğer bu Mordak’la yüzleşebilirsem sanırım sihrim ondan daha güçlü olabilir. "
+"Ama tepelerde bekliyor, hizmetçileri tarafından iyi korunuyor ve onun "
+"köleleriyle bıçak ve çubuklarla savaşması için korkmuş köylüler topladım. "
+"Kardeşime ihtiyacım var. Savaş konusunda kafaca daima benden daha iyiydi.\n"
+"\n"
+"Aramaya kulak verecek mi? Muskayı tutup tutmadığını bilmiyorum; Toen "
+"Kerik'teki kötü günden beri konuşmadık. Benim için gelmeyecekse bile, belki "
+"de umutsuz bir ihtiyaç anında köyümüze yardım etmeye gelecektir."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:75
-#, fuzzy
-#| msgid ""
-#| "Heeding the call of his amulet, Arne gathered such men as he could and "
-#| "hurried to Maghre to help Bjarn."
 msgid ""
 "Heeding the call of his amulet, Arvith gathered such men as he could and "
 "hurried to Maghre to help Baran."
 msgstr ""
-"Tılsımında çağrı beliren Arne, adamlarını toplayıp Magre’ye Biyarn’ın "
+"Tılsımında çağrı beliren Arvit, adamlarını toplayıp Magre’ye, Baran’ın "
 "yardımına koştu."
 
 #. [side]
@@ -277,22 +260,22 @@ msgstr "Efran"
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:151
 msgid "Faren"
-msgstr ""
+msgstr "Faren"
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:154
 msgid "Tarek"
-msgstr ""
+msgstr "Tarık"
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:155
 msgid "Hann"
-msgstr ""
+msgstr "Han"
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:156
 msgid "Magrid"
-msgstr ""
+msgstr "Magrid"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:161
@@ -302,13 +285,11 @@ msgstr "Kara Büyücü Mordak’ı öldür"
 #. [objective]: condition=lose
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:165
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:292
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:307
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:336
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:143
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:288
-#, fuzzy
-#| msgid "Death of Arne"
 msgid "Death of Arvith"
-msgstr "Arne’nin ölümü"
+msgstr "Arvit’in ölümü"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:176
@@ -316,56 +297,51 @@ msgid ""
 "Use footpads as fodder to protect your loyal units and attack during the day "
 "to minimize the damage your forces take."
 msgstr ""
+"Sadık birimlerinizi korumak için haydutları yem olarak kullanın ve "
+"kuvvetlerinizin aldığı hasarı en aza indirgemek için gündüz saldırın."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:186
 msgid "Greetings, brother, and welcome home."
-msgstr ""
+msgstr "Selamlar kardeşim, eve hoşgeldin."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:191
 msgid "Hail."
-msgstr ""
+msgstr "Merhaba."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:196
 msgid "Is that all, Arvith? I understand, but..."
-msgstr ""
+msgstr "Hepsi bu mu, Arvit? Anlıyorum. ama..."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:201
 msgid "You called, and I came; be content with that. What ails Maghre?"
-msgstr ""
+msgstr "Sen çağırdın, ben de geldim. Bununla yetin. Sana ne oldu Magre?"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:206
-#, fuzzy
-#| msgid ""
-#| "A dark mage has come upon us; his creatures call him Mordak. They have "
-#| "been terrorizing outlying farms, and we fear they may soon attack the "
-#| "village itself! The villagers of Maghre have taken up weapons but they "
-#| "are not trained fighters; but we need your men, and you to lead them."
 msgid ""
 "A dark mage has come upon us; his creatures call him Mordak. They have been "
 "terrorizing outlying farms, and we fear they may soon attack the village "
 "itself! The villagers of Maghre have taken up weapons but they are not "
 "trained fighters; we need your men, and you to lead them."
 msgstr ""
-"Bir kara büyücü ile başımız dertte; yaratıklar ona Mordak diyor. Kent "
-"civarındaki çiftliklerde terör estiriyorlar. Kente de saldıracaklarından "
-"korkuyoruz. Magre ahalisini silahlandırdım, fakat savaş tecrübeleri yok. "
-"Adamlarının ve senin onlara liderlik etmesini istiyorum."
+"Bir kara büyücü ile başımız dertte; yaratıklar ona Mordak diyor. Civardaki "
+"çiftliklerde terör estiriyorlar. Yakında köye de saldıracaklarından "
+"korkuyoruz. Magre ahalisini silahlandırdım, fakat eğitimli değiller. "
+"Adamlarına ve senin onlara liderlik etmene ihtiyacımız var."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:211
-#, fuzzy
 msgid ""
 "I can feel Mordak’s foul touch on the hidden currents of the earth and air. "
 "He is somewhere due north of here, I would say not more than two days’ ride."
 msgstr ""
 "Mordak’ın topraktaki ve havadaki gizli akımlara dokunuşlarını "
-"hissedebiliyorum. Kentin kuzeyinde süvari hızıyla iki günlük mesafede "
-"olmalı; başka bir şey söyleyemeyeceğim."
+"hissedebiliyorum. Buranın kuzeyinde bir yerlerde, atlarla iki günden fazla "
+"sürmeyeceğini söyleyebilirm."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:216
@@ -373,58 +349,53 @@ msgid ""
 "All right. I will do this for the village. Can you keep the mage off our "
 "backs?"
 msgstr ""
+"Tamam. Bunu köy için yapacağım. Büyücüyü sırtımızdan uzak tutabilir misin?"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:221
-#, fuzzy
 msgid ""
 "I will go stealthily with a handful of our best scouts and woodsmen. While "
 "you demonstrate against him and kill his creatures, I will try to defeat "
 "Mordak himself with magic at an unguarded moment. You shall be the right "
 "hand, I the left... aye, brother?"
 msgstr ""
-"İyi ki senin gibi bir kardeşim var. En iyi gözcülerimizi avcılarımızın "
-"yardımıyla gizlice gideceğim. Sen onun yaratıklarını meşgul ederken ben "
-"korunmasız bir anını kollayıp büyüyle Mordak’ı yenmeye çalışacağım. Tek "
-"başımıza yapamayacağımız şeylerin birlikte üstesinden gelebiliriz."
+"En iyi gözcülerimizin ve avcılarımızın birkaçıyla gizlice gideceğim. Sen "
+"onun yaratıklarını meşgul ederken ben korunmasız bir anını kollayıp büyüyle "
+"Mordak’ı yenmeye çalışacağım. Sen sağ tarafı alacaksın, ben solu... tamam mı "
+"kardeşim?"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:226
 msgid "... Aye. Just make sure you’re there when we need you."
-msgstr ""
+msgstr "... Elbette. Sadece ihtiyacımız olduğunda orada ol yeter."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:237
-#, fuzzy
-#| msgid ""
-#| "Bjarn should be in position by now. Press them, distract the adept so "
-#| "Bjarn can spring his trap!"
 msgid ""
 "Baran should be in position by now. Press them, distract the adept so Baran "
 "can spring his trap!"
 msgstr ""
-"Biyarn şu sıralar yerini almış olmalı. Hepsini gebertin, yalnız liderlerine "
-"yaklaşmayın. Biyarn’ın tuzağını bozmayalım!"
+"Baran şu sıralar yerini almış olmalı. Hepsini gebertin, yalnız liderlerini "
+"şaşırtın ki. Baran’ın tuzağını çalışsın!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:248
 msgid "Baran has not made his attack!"
-msgstr ""
+msgstr "Baran saldırı yapmadı!"
 
 #. [message]: role=Mercenary
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:253
 msgid "Could he have abandoned us?"
-msgstr ""
+msgstr "Bizi terk etmiş olabilir mi?"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:258
-#, fuzzy
 msgid ""
 "No... No. This is something else. I’m worried about him... but right now it "
 "means we have to deal with this Mordak ourselves."
 msgstr ""
-"Biyarn saldırısını yapmadı! Onun için endişeleniyorum... Bu Mordak’la "
-"kendimiz ilgileneceğiz anlaşılan!"
+"Hayır ... Hayır. Bu başka bir şey. Onun için endişeleniyorum ... ama şu anda "
+"bu Mordak ile kendimiz ilgileneceğiz anlaşılan."
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:270
@@ -438,33 +409,24 @@ msgstr "İyi işti, adamlarım! Fakat kardeşime ne oldu?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:280
-#, fuzzy
 msgid "Worried about him, are you? E-he-he... hergh... gaargh..."
-msgstr "Onun için endişelisin, değil mi? A-haha..ahh...garrrk..."
+msgstr "Onun için endişelisin, değil mi? E-he-he...herg...gaark..."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:290
-#, fuzzy
-#| msgid ""
-#| "There’s nothing more to be had from this one; we will have to search for "
-#| "Bjarn ourselves!"
 msgid ""
 "There’s nothing more to be had from this one; we will have to search for "
 "Baran ourselves!"
 msgstr ""
-"Bundan daha kötüsünü düşünemiyorum; Biyarn’ı kendimiz aramak zorundayız!"
+"Bundan daha kötüsünü düşünemiyorum; Baran’ı kendimiz aramak zorundayız!"
 
 #. [message]: role=Reporter
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:312
-#, fuzzy
-#| msgid ""
-#| "Sir, our scouts report that Bjarn was seen captured and carried away "
-#| "further north!"
 msgid ""
 "Sir, our scouts report that Baran was seen captured and carried away further "
 "north!"
 msgstr ""
-"Efendim, gözcülerimizin bildirdiğine göre Biyarn yakalanmış ve onu kuzeye "
+"Efendim, gözcülerimizin bildirdiğine göre Baran yakalanmış ve onu kuzeye "
 "götürmüşler!"
 
 #. [message]: speaker=Arvith
@@ -474,19 +436,18 @@ msgstr "Buna nasıl cüret ederler! Hemen peşlerine düşelim."
 
 #. [message]: speaker=Mordak
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:338
-#, fuzzy
 msgid "Your brother’s plan to ambush me has failed. He is our prisoner now."
-msgstr "Kardeşinin pusu planı başarısız oldu. Şimdi benim esirim."
+msgstr ""
+"Kardeşinin beni pusuya düşürme planı başarısız oldu. O şimdi benim esirim."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:343
-#, fuzzy
 msgid ""
 "My brother, kidnapped? I have failed you, Baran! And even now Mordak’s "
 "forces descend upon the village!"
 msgstr ""
-"Kardeşim kaçırıldı mı? Ben de başaramadım Biyarn! Kenti Mordak’ın elinden "
-"kurtarma şansımız kalmadı."
+"Kardeşim, kaçırıldı mı? Başarısız oldum Baran! Mordak’ın güçleri şimdi köye "
+"iniyor!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:359
@@ -508,7 +469,7 @@ msgstr "Kovalama"
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:27
 msgid "Arvith and his band rode north in search of his missing brother."
-msgstr ""
+msgstr "Arvit kayıp kardeşini bulmak için ekibiyle kuzeye at sürdü. "
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:34
@@ -528,6 +489,20 @@ msgid ""
 "warning against it. Supposedly the place is haunted by lost souls who hunger "
 "for the living, and anyone who dies there is doomed to join them."
 msgstr ""
+"16 V, 363 VY\n"
+"Magreli Arvit'in günlüğünden alıntı\n"
+"\n"
+"Baran'ı üç gün aradık ve hiçbir şey bulamadan döndük. Önsezilerime göre en "
+"iyisi kara büyücünün kölelerinin güvenle saklanabileceği sınır bölgelerine "
+"gitmekti; ama her yerde daha fazla tarım arazisi bulduk. İlk başta aramanın "
+"faydasız olabileceğini düşündüm, ancak ilk günün sonunda bir parça iz "
+"bulduk. İzlerin bazıları iskelet ayağıyla yapılmıştı.\n"
+"\n"
+"Şimdi emin olmaya yeterince yakınız: bu izler Gri Orman'a doğru ilerliyor. "
+"Magre'den veya diğer köylerden hiç kimsenin son zamanlarda o ormana "
+"gittiğini duymadık. Nesiller boyunca buna karşı uyaran öyküler aktarıldı. "
+"Güya, yaşama açlık duyan kayıp ruhların dadandığı bir yermiş ve orada ölen "
+"herkes onlara katılmaya mahkummuş."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:43
@@ -547,6 +522,20 @@ msgid ""
 "\n"
 "Besides... I want my brother back."
 msgstr ""
+"16 V, 363 VY\n"
+"Magreli Arvit'in günlüğünden alıntı\\n\n"
+"\n"
+"Ama şimdi batıl inançlarımdan kurtuldum; Bu tür hikayelerin arkasındaki "
+"gerçekleri tahmin edebilecek kadar yer gördüm. Orman, elflere ev sahipliği "
+"yapar — hikayelerin hiç bir temeli yoksa, dostça olmayanlara. Adamlarım için "
+"endişeleniyorum; atlar ormanlarda iyi savaşmazlar ve elfler kendi "
+"bölgelerinde daha tehlikeli olacaktır. Ancak yapılması gerekenler ve "
+"cevaplanması gereken sorular var. Daha büyük bir şey oluyor. Kasaba halkını "
+"terörize eden kara büyücü yeni bir şey değil, ancak öldürüldüğünde "
+"hizmetkarları neden dağılmadı? Şimdi nereye gidiyorlar? Ve en önemlisi, "
+"neden Baran'ı yanlarına aldılar?\n"
+"\n"
+"Ayrıca ... Kardeşimi geri istiyorum."
 
 #. [side]: type=Elvish Rider, id=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:88
@@ -560,10 +549,8 @@ msgstr "Nil-Galyon"
 
 #. [side]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:170
-#, fuzzy
-#| msgid "Catch the kidnappers"
 msgid "Kidnappers"
-msgstr "Adam kaçıranları yakalayın"
+msgstr "Adam kaçıranlar"
 
 #. [side]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:174
@@ -573,7 +560,7 @@ msgstr "Muf Toras"
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:261
 msgid "Fight your way through the woods before the kidnappers escape"
-msgstr "Biyarn’ı kaçıranlar kaçamadan ormandan çıkış yolunu bul"
+msgstr "Kaçıranlar kaçamadan ormandan çıkış yolunu bul"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:278
@@ -583,7 +570,7 @@ msgstr "Adam kaçıranları yakalayın"
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:288
 msgid "Kill the Dark Adept before his reinforcements arrive"
-msgstr "Destek gelmeden Kara Üstadı öldür"
+msgstr "Desteği gelmeden Kara Üstadı öldür"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:304
@@ -591,6 +578,8 @@ msgid ""
 "The Elvish forces are spread out. Seek to fight them one at a time with "
 "several of your units."
 msgstr ""
+"Elf kuvvetleri etrafa yayılır. Birimlerinizi her defasında biriyle savaşa "
+"sokmaya çalışın."
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:317
@@ -598,19 +587,24 @@ msgid ""
 "Use horsemen or footpads to quickly explore the shrouded woods to locate the "
 "kidnappers."
 msgstr ""
+"Kaçıranları bulmak amacıyla orman örtüsünü hızla keşfetmek için binicileri "
+"veya kapkaççıları kullanın."
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:332
 msgid ""
 "Separate the Dark Adept from his guards and attack in force for an easy kill."
 msgstr ""
+"Kara Üstadı koruyularından ayırıp çabucak öldürmek için tüm gücünüzle "
+"saldırın."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:375
 msgid ""
 "Come on, men. A stroll through such lovely green woods, what could be finer?"
 msgstr ""
-"İleri adamlarım. Böyle yemyeşil güzel bir ormanda dolaşmak gibisi var mı?"
+"İleri adamlarım. Böyle güzel yeşil ormanlarda dolaşmaktan daha güzel ne "
+"olabilir?"
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:380
@@ -619,9 +613,8 @@ msgstr "Hey sen! Dur ve kendini tanıt."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:385
-#, fuzzy
 msgid "We’re chasing after some men who kidnapped my brother!"
-msgstr "Kardeşimi kaçıran adamların peşinden gidiyoruz!"
+msgstr "Kardeşimi kaçıran adamların peşine düştük!"
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:390
@@ -629,19 +622,18 @@ msgid ""
 "Those men told me their prisoner had attempted to murder their master, and "
 "warned that evil men would follow him. Advance no further, or you will die."
 msgstr ""
-"Bana efendilerini öldürmeye çalışan bir mahkumu götürdüklerini ve kötü "
-"adamların peşlerinde olduğunu söylediler. Buradan öteye geçemezsin yoksa "
-"sizi öldürürüz."
+"Bana efendilerini öldürmeye çalışan bir mahkumu götürdüklerini söyledi ve "
+"kötü adamların peşlerini bırakmayacakları konusunda uyardı. Daha ileri "
+"gitmeyin yoksa ölürsünüz."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:395
-#, fuzzy
 msgid ""
 "So much for those ghost stories. Mere elves will not stop me from freeing "
 "Baran!"
 msgstr ""
-"Bu hayalet hikayeleri de fazla oldu. Hiçbir elf kardeşimi kurtarmaktan beni "
-"alıkoyamaz!"
+"Bu hayalet hikayeleri de fazla oldu. Hiçbir elf kardeşim Baran'ı "
+"kurtarmaktan beni alıkoyamaz!"
 
 #. [message]: role=Mercenary
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:400
@@ -650,8 +642,9 @@ msgid ""
 "will have us at a disadvantage; our horses will not maneuver well in the "
 "trees."
 msgstr ""
-"En azından hayalet değilmişler. Fakat ağaçlar arasında atlarımız iyi manevra "
-"yapamadığından burada elfler üstün durumda."
+"En azından hayaletlerle yüzleşmek zorunda kalmayacağımıza sevindim. Ancak "
+"ağaçlar arasında atlarımız iyi manevra yapamadığından burada elfler üstün "
+"durumda."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:405
@@ -660,135 +653,131 @@ msgid ""
 "woods. We have faced and won through greater perils than those amateurs can "
 "offer."
 msgstr ""
-"Peh, sadece yollarına çıktık; mızrakçılarımız ve okçularımız ormanın "
-"derinlerinde gayet iyi savaşır. Bu amatörlerden çok daha iyileriyle "
-"karşılaştık ve hep üstün geldik."
+"Peh, sadece yolda kal; mızrakçılarımız ve okçularımız ormanın derinlerinde "
+"gayet iyi savaşır. Bu amatörlerden çok daha tehlikeli olanlarla karşılaştık "
+"ve hep üstün geldik."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:437
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:445
 msgid "I see them! There they are!"
 msgstr "Onları görüyorum! İşte oradalar!"
 
 #. [message]: speaker=Muff Toras
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:442
-#, fuzzy
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:450
 msgid ""
-"Curses! If they had been an hour slower our master’s reinforcements would "
+"Curses! If they had been an hour slower, our master’s reinforcements would "
 "already be here to meet us."
 msgstr ""
-"Hay lanet! Bir saat daha geç kalsalar n'olurdu? Hiç olmaza destek kuvvetleri "
-"gelmiş olurdu."
+"Hay lanet! Bir saat daha geç kalsalar n'olurdu? Hiç olmaza destek "
+"kuvvetlerimiz gelmiş olurdu."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:454
-#, fuzzy
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:462
 msgid "Come on, men, let’s catch those kidnappers!"
 msgstr "Haydi askerlerim, şu adam kaçıranları yakalayalım!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:468
-#, fuzzy
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:476
 msgid ""
 "Hah! You have captured me, but it will avail you nothing. I sent your "
 "precious brother the mage north with half my men a day since; he will be "
 "safely locked away in our master’s dungeons by now."
 msgstr ""
-"Hah! Beni yakalamış olmanın size bir faydası olmaz. Zavallı büyücü kardeşini "
-"dün adamlarımın yarısıyla kuzeye gönderdim. Şimdi efendimin zindanına "
-"atılmıştır bile."
+"Hah! Beni yakalamış olmanın size bir faydası olmaz. Kıymetli büyücü "
+"kardeşini dün adamlarımın yarısıyla kuzeye gönderdim. Şimdi efendimin "
+"zindanına atılmıştır bile."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:473
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:481
 msgid ""
 "My blade is at your throat. Give us the way to my brother now, or I will "
 "spill your wretched blood on the ground."
 msgstr ""
-"Kardeşimi nasıl bulacağımızı söyle yoksa gırtlağına dayadığım şu kılıcı daha "
-"fazla zaptedemeyeceğim!"
+"Kardeşimi nasıl bulacağımızı söyle yoksa gırtlağına dayadığım bu kılıç sefil "
+"kanını yere saçacak."
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:476
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:484
 msgid "Sithrak"
 msgstr "Sitrak"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:477
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:485
 msgid "Eleben"
 msgstr "Eleben"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:478
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:486
 msgid "Jarlom"
 msgstr "Jarlom"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:479
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:487
 msgid "Hamik"
 msgstr "Hamik"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:483
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:491
 msgid "Akranbral"
 msgstr "Akranbal"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:484
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:492
 msgid "Drakanal"
 msgstr "Darkanal"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:485
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:493
 msgid "Xaskanat"
 msgstr "Kazkanat"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:486
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:494
 msgid "Katklagad"
 msgstr "Katkalag"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:492
-#, fuzzy
-#| msgid ""
-#| "Three days ride to the northeast, in a deserted castle. The passwords to "
-#| "the guards are $first_password_$first_password_number and "
-#| "$second_password_$second_password_number|."
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:500
 msgid ""
 "Three days ride to the northeast, in a deserted castle. The passwords to the "
 "guards are $first_password_$first_password and $second_password_"
 "$second_password|."
 msgstr ""
-"Kuzeydoğuda iki günlük at sürüşü mesafesinde, metruk bir kalede. "
-"Koruyuculara verilecek parolalar $first_password_$first_password_number ve "
-"$second_password_$second_password_number|."
+"Kuzeydoğuda üç günlük at sürüşü mesafesinde, metruk bir kalede. Muhafızlara "
+"verilecek parolalar $first_password_$first_password ve $second_password_"
+"$second_password|."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:500
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:508
 msgid "Bind him and take him with us. If he has played us false, he will die."
 msgstr ""
 "Bağlayın şunu! Bizimle gelecek. Eğer bize yalan söylemişse bunu canıyla öder."
 
 #. [message]: role=Mercenary
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:512
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:520
 msgid ""
 "Captain, what are we riding into? I thought you wanted nothing to do with "
 "Baran any more, not since Toen Caric."
 msgstr ""
+"Yüzbaşım, nereye gidiyoruz? Toen Karik'ten bu yana, Baran'la hiçbir şey "
+"yapmak istemediğini sanıyordum."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:517
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:525
 msgid ""
 "I’m no longer sure. What’s between us remains, but knowing someone else has "
 "lain hands on him changes things. Mount up, and let’s get moving."
 msgstr ""
+"Artık emin değilim. Aramızda kalsın, ama düşmanın eline düşmüş olması bazı "
+"şeyleri değiştiriyor. Atına bin de gidelim."
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:532
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:540
 msgid "Brena"
 msgstr "Brenan"
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:542
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:549
 msgid ""
 "Greetings. I am Brena, a knight errant. I saw you pursuing and fighting the "
 "foul undead. Are there more of them to be destroyed?"
@@ -797,16 +786,15 @@ msgstr ""
 "takip ettiğinizi ve onlarla döğüştüğünüzü gördüm. Onlardan başka var mı?"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:547
-#, fuzzy
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:554
 msgid ""
 "Aye. We think there’s a nest of them north-east of here. They’ve captured my "
 "brother."
 msgstr ""
-"Elbette. Buranın kuzeydoğusunda sürüyle var sanırım. Kardeşimi kaçırdılar."
+"Elbette. Buranın kuzeydoğusunda yuvalanmışlar sanırım. Kardeşimi kaçırdılar."
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:552
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:559
 msgid ""
 "I bear a great hatred towards their kind. I will follow and fight them with "
 "you, if you permit."
@@ -815,70 +803,70 @@ msgstr ""
 "yanınızda döğüşmek istiyorum."
 
 #. [message]: role=Mercenary
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:557
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:564
 msgid "He would only slow us down!"
 msgstr "O bizi sadece yavaşlatır!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:562
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:569
 msgid "It is my place to decide this."
 msgstr "Burada karar verecek olan benim."
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:564
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:571
 msgid "Oh, all right then. Come along with us."
-msgstr "Pekala, bizimle gel."
+msgstr "Oh, tamam o zaman. Bizimle gel."
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:568
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:575
 msgid "Thank you. My comrades and I will help you on your noble quest."
 msgstr ""
 "Teşekkürler. Arkadaşlarım ve ben asil maceranızda size yardım edeceğiz."
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:573
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:580
 msgid "I am sorry. We have not the time to spare."
 msgstr "Üzgünüm. Fazla size ayıracak vaktimiz yok."
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:577
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:584
 msgid ""
 "Take this, then, for I see that you are on a quest. My comrades will help "
 "you whenever you call for them."
 msgstr ""
-"O zaman bunu alın, sizin bir şey aradığınızı görüyorum. Arkadaşlarıma ne "
+"O zaman bunu alın, çünkü bir görevde olduğunuzu görüyorum. Arkadaşlarıma ne "
 "zaman ihtiyaç duyarsanız çağırmanız yeter, hemen yardıma gelirler."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:592
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:599
 msgid "You receive 70 pieces of gold!"
 msgstr "70 altın aldınız!"
 
 #. [message]: speaker=Muff Toras
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:615
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:622
 msgid "My reinforcements are here!"
-msgstr "Destek kuvvetleri geldi!"
+msgstr "Destek kuvvetlerim geldi!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:620
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:627
 msgid "He escaped us..."
 msgstr "Bizden kaçmayı başardı..."
 
 #. [message]: speaker=Nil-Galion
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:632
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:639
 msgid ""
 "Foolish human, you have killed me but you will not catch the undead in time. "
 "I have fulfilled my contract, and will be reanimated soon to become a lord "
 "of their armies."
 msgstr ""
 "Aptal insan beni öldürdün ama yarı ölülere zamanında yetişemeyeceksin. "
-"Onlarla bir anlaşma imzaladım. Yakında mezarımdan kaldırılacak ve onların "
+"Onlarla bir anlaşma yaptım. Yakında yeniden canlandırılacak ve onların "
 "ordusunun bir komutanı olacağım."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:642
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:649
 msgid "Follow their back trail!"
-msgstr "Peşlerini bırakmayın!"
+msgstr "Bıraktıkları izleri takip edin!"
 
 #. [scenario]: id=03_Guarded_Castle
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:5
@@ -907,6 +895,22 @@ msgid ""
 "man rumored to be this mage’s brother. If that is true, he will stop at "
 "nothing, no more than would I if they held Mordak."
 msgstr ""
+"19 V, 363 VY\n"
+"Klansız Rotarik'in günlüğünden alıntı\n"
+"\n"
+"Mordak’ın hizmetkarlarının sonuncusu ölümünün haberi ile birlikte bu sabah "
+"geldi. Yanlarındaki paket o kadar iyi bağlanmış ki, bir insana benzemiyordu. "
+"Mordak her zaman pervasızdı. Bu çaresiz plan onundu ve sanırım hala bir "
+"önrmi olsaydı yaşadığımız her şey için onu suçlayabilirdim. Orkların "
+"gazabını da üzerimize çeken oydu. Fakat yine de, yapmak istediklerini "
+"yapmayı başardı. Olanların sonucuna hala inanamıyorum.\n"
+"\n"
+"Büyücüyü hayatımız pahasına Tairaç'a ulaştırmayı umuyorduk. Savaşbeyinin bu "
+"adamdan ne istediğini bilmiyorum, ama tarifine uyuyor. Mordak’ın planının, "
+"at savaşçılarının ortaya çıkması için mükemmel olmasa bile işe yarayacağını "
+"farz ediyorum. Şimdi buraya geliyorlar, bu büyücünün kardeşi olduğu söylenen "
+"bir adam tarafından yönetiliyor. Eğer bu doğruysa, hiçbir zaman durmayacak, "
+"Mordak ellerinde olsaydı ben de durmazdım."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:34
@@ -924,6 +928,18 @@ msgid ""
 "be different, but we are broken... and these two men are whole. In each "
 "other, in the ties that bind them, they have strength."
 msgstr ""
+"19 V, 363 VY\n"
+"Klansız Rotarik'in günlüğünden alıntı\n"
+"\n"
+"Bu harap kaleyi güçlendirmek için elimden geleni yaptım. Bizimle gelen "
+"orklar geçitlerin başında duruyorlar ve ben bütün hizmetçilerimi iç "
+"tapınakta topluyorum. Ama kötü kader beni bekliyor. Bu at savaşçısını yensem "
+"bile, orklar yine de benim için gelecekler; sınır bölgelerini araştırıyor ve "
+"bizi bulmak için kuzeydeki çiftliklere baskın yapıyorlardı.\n"
+"\n"
+"Yine de bazı nedenlerden dolayı bu kardeşlerden daha çok korkuyorum. Mordak "
+"burada olsaydı farklı olurdu, ama biz ayrıldık ... ve bu iki adam bir bütün. "
+"Birbirlerine bağlılıkları onları güçlü kılıyor."
 
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:86
@@ -933,15 +949,16 @@ msgstr "Roterik"
 #. [unit]: role=Guard, id=Guard_leader, type=Assassin
 #. [unit]: role=Guard, type=Bandit
 #. [unit]: role=Guard2, id=Guard2_leader, type=Rogue
+#. [unit]: role=Guard2, type=Thug
 #. [unit]: role=Guard2, type=Bandit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:94
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:102
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:111
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:119
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:552
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:562
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:571
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:581
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:591
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:600
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:610
 msgid "Guard"
 msgstr "Muhafız"
 
@@ -959,363 +976,380 @@ msgstr "Nago-Brek"
 msgid "Castle Guard"
 msgstr "Kale Muhafızı"
 
-#. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:277
-#, fuzzy
-#| msgid "Rescue Bjarn"
-msgid "Rescue Baran"
-msgstr "Biyarn'ı kurtar"
+#. [time]: id=indoors_dark_castle
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:235
+msgid "Indoors (dark castle)"
+msgstr "İçerde (kara kale)"
+
+#. [time]: id=indoors_dark_castle_lit
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:250
+msgid "Indoors (lit)"
+msgstr "İçerde (aydınlık)"
 
 #. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:289
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:306
+msgid "Rescue Baran"
+msgstr "Baran'ı kurtar"
+
+#. [objective]: condition=win
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:318
 msgid "Kill the dark sorcerer to get the cell key"
 msgstr "Hücre anahtarını almak için kara büyücüyü öldür"
 
 #. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:303
-#, fuzzy
-#| msgid "Move Arne to the cell with his brother to free him"
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:332
 msgid "Move Arvith to the cell with his brother to free him"
-msgstr "Arne’yi kardeşinin bulunduğu hücreye götür"
+msgstr "Arvit'i erkek kardeşinin hücresine götürerek onu serbest bırakın"
 
 #. [objective]: condition=lose
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:316
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:345
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:147
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:292
-#, fuzzy
-#| msgid "Death of Bjarn"
 msgid "Death of Baran"
-msgstr "Biyarn’ın ölümü"
+msgstr "Baran’ın ölümü"
 
 #. [objectives]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:328
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:357
 msgid ""
 "When facing an unknown situation, take into account details from story and "
 "dialog to inform your strategy."
 msgstr ""
+"Bilinmeyen bir durumla karşı karşıya kaldığınızda, stratejinizi belirlemek "
+"için öykü ve iletişim kutusundaki ayrıntıları dikkate alın."
 
 #. [objectives]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:337
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:366
 msgid ""
 "The dark sorcerer is a strong unit; attack him with multiple units at once "
 "and try to force him off his keep."
 msgstr ""
+"Kara Sihirbaz güçlü bir birim: bir kerede çok sayıda birimle saldır ve "
+"içkaleden ayrılmaya zorla."
 
 #. [objectives]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:347
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:376
 msgid ""
 "Markings or decorations on hexes may indicate something to be found. If you "
 "can, it is usually a good idea to investigate."
 msgstr ""
+"Altıgenlerdeki işaretler veya süslemeler bulunacak şeyleri belirtiyor "
+"olabilir. Yapabilirsen incelemeyi ihmal etme."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:384
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:413
 msgid ""
 "Arvith and his men halt outside of the castle, gazing for a moment at the "
 "hulking mass of stone looming in the fog. There is movement in the mist."
 msgstr ""
+"Arvit ve adamları kalenin dışında durdu ve bir anlığına siste ortaya çıkan "
+"taş kütlesine baktılar. Sisin içinde hareket vardı."
 
 #. [message]: speaker=Guard_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:389
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:418
 msgid "Halt! Friend or foe? Give the password."
-msgstr "Dur! Dost musun Düşman mı? Parolayı söyle."
+msgstr "Dur! Dost musun düşman mı? Parolayı söyle."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:394
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:423
 msgid "The password is"
 msgstr "Parola..."
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:397
-#, fuzzy
-#| msgid "Sithrak"
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:426
 msgid "Sithrak!"
-msgstr "Sitrak"
+msgstr "Sitrak!"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:400
-#, fuzzy
-#| msgid "Eleben"
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:429
 msgid "Eleben!"
-msgstr "Eleben"
+msgstr "Eleben!"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:403
-#, fuzzy
-#| msgid "Jarlom"
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:432
 msgid "Jarlom!"
-msgstr "Jarlom"
+msgstr "Jarlom!"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:406
-#, fuzzy
-#| msgid "Hamik"
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:435
 msgid "Hamik!"
-msgstr "Hamik"
+msgstr "Hamik!"
 
 #. [message]: speaker=Guard_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:419
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:448
 msgid "Pass, friend."
 msgstr "Doğru, geçin."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:434
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:463
 msgid ""
 "The adept didn’t lead us astray after all. I’ll keep my word, distasteful as "
 "it may be; cut him loose, and let’s be rid of him."
 msgstr ""
+"Kara Üstat sonuçta bizi yanıltmadı. Sözümü tutacağım, tatsız olacak ama; onu "
+"serbest bırak, ondan kurtulalım."
 
 #. [message]: speaker=Guard_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:445
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:474
 msgid "Wrong! Die!"
 msgstr "Yanlış! Geber!"
 
 #. [message]: speaker=Knago-Brek
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:463
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:492
 msgid ""
 "Haha! We not kill people for long time. Weapon wants blood. We now kill "
-"humans!!"
+"humans!"
 msgstr ""
 "Haha! Uzun zamandır insan öldürmemişdik. Silahlar kan istiyor. Artık insan "
-"öldüreceğiz!!"
+"öldüreceğiz!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:468
-#, fuzzy
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:497
 msgid ""
-"My sword-arm has a say in who will do the dying. Come on, men, let’s kill "
-"some orcs."
+"My sword-arm shall have a say in who will do the dying. Come on, men, let’s "
+"kill some orcs."
 msgstr ""
-"Kimin ölüp kimin kalacağına adamlarım karar verecek. Haydi askerlerim, biraz "
-"ork öldürelim."
+"Kimin ölüp kimin kalacağına kılıcım karar verecek. Haydi, biraz ork "
+"öldürelim."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:480
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:509
 msgid "One less braggart orc in the world."
-msgstr ""
+msgstr "Dünya palavracı bir orktan daha kurtuldu."
 
 #. [message]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:489
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:518
 msgid "Captain, what are <i>orcs</i> doing this far south?"
-msgstr ""
+msgstr "Yüzbaşım, <i>orklar</i> bu kadar güneyde ne yapıyor?"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:494
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:523
 msgid "Good question. Perhaps my brother will have found out."
-msgstr ""
+msgstr "İyi soru. Belki kardeşim öğrenir bunu."
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:594
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:623
 msgid "Are you our relief arriving? Does this mean we get to leave here now?"
 msgstr ""
 "Nöbeti devralmaya mı geldiniz? Herşey tamam mı? Buradan gidebilir miyiz?"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:599
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:628
 msgid "Um, yes. Fine. You can go."
 msgstr "Hımm, evet. Herşey yolunda görünüyor, gidebilirsiniz."
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:604
-#, fuzzy
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:633
 msgid "Um, you’re supposed to give the password."
 msgstr "Hımm, parola vermen gerekiyordu."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:609
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:638
 msgid "Oh, of course. I had nearly forgotten."
 msgstr "Ah, elbette. Neredeyse unutuyordum."
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:612
-#, fuzzy
-#| msgid "Akranbral"
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:641
 msgid "Akranbral!"
-msgstr "Akranbal"
+msgstr "Akranbal!"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:615
-#, fuzzy
-#| msgid "Drakanal"
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:644
 msgid "Drakanal!"
-msgstr "Darkanal"
+msgstr "Darkanal!"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:618
-#, fuzzy
-#| msgid "Xaskanat"
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:647
 msgid "Xaskanat!"
-msgstr "Kazkanat"
+msgstr "Kazkanat!"
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:621
-#, fuzzy
-#| msgid "Katklagad"
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:650
 msgid "Katklagad!"
-msgstr "Katkalag"
+msgstr "Katkalag!"
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:634
-#, fuzzy
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:663
 msgid "Thanks! Irritating little formality, isn’t it?"
 msgstr "Teşekkürler! Rahatsızlık veren ufak bir formalite değil mi?"
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:644
-#, fuzzy
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:673
 msgid "That’s the wrong password! These aren’t our relief! Get them!"
 msgstr ""
 "Bu yanlış parola! Bunlar nöbeti devredeceğimiz kişiler değil! Haklayın "
 "şunları!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:652
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:681
 msgid ""
 "I think I should better support my men at the front to make sure we can free "
 "my brother."
 msgstr "Kardeşimi kurtarmak için adamlarımla birlikte önden gitsem iyi olacak."
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:664
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:693
 msgid "Your hand or Tairach’s, death is still death... (argh)"
-msgstr ""
+msgstr "Elinizden veya Tayrak'tan, ölüm yine de ölümdür... (argh)"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:674
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:703
 msgid "‘Tairach’? Who or what is Tairach?"
-msgstr ""
+msgstr "‘Tayrak’? Tayrak kim ya da ne?"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:679
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:708
 msgid "There’s a key in his robes."
-msgstr "Pelerininde bir anahtar var."
+msgstr "Cübbesinde bir anahtar var."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:689
-#, fuzzy
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:718
 msgid ""
 "That may well be the key to the cell they’re holding Baran in! I will take "
 "it."
+msgstr "Bu Baran’ı tuttukları hücrenin anahtarı olmalı! Ben anahtarı alıyorum."
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:746
+msgid "It may be important, I best take it."
+msgstr "İşe yarayabilir, en iyisi alayım onu."
+
+#. [message]: speaker=unit
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:764
+msgid "This castle seems as dark as a cave!"
+msgstr "Kale bir mağara kadar karanlık görünüyor."
+
+#. [message]: speaker=narrator
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:770
+#, fuzzy
+#| msgid ""
+#| "This castle is under a constant, <i>chaotic</i> time of day (equivalent "
+#| "to permanent night). Place your units carefully, as your troops will be "
+#| "weaker and enemy units stronger."
+msgid ""
+"This castle is under a constant, <i>chaotic</i> time of day (equivalent to "
+"permanent night), except for illuminated hexes adjacent to lit stone walls "
+"(neutral time of day). Place your units carefully, as your troops will be "
+"weaker and enemy units stronger."
 msgstr ""
-"Bu Biyarn’ı tuttukları hücrenin anahtarı olmalı! Ben anahtarı alıyorum."
-
-#. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:737
-msgid "Look what I have found in here! I can count a hundred pieces of gold."
-msgstr "Bakın burada ne buldum! Sayamayacağım kadar çok altın."
-
-#. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:751
-msgid "Look what I have found in here! I can count fifty pieces of gold."
-msgstr "Bakın burada ne buldum! Elli altın saydım."
+"Bu kale günün sabit bir <i>kaypak</i> zamanı (sürekli geceye eşdeğer) "
+"altında. Birimleriniz daha zayıf, düşman birimleri daha güçlü olacak gibi "
+"görünüyor, birimleri dikkatlice yerleştirin."
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:790
-#, fuzzy
-#| msgid "I found Bjarn. He is in this cell."
+msgid "Look what I have found in here! I can count a hundred pieces of gold."
+msgstr "Bakın burada ne buldum! Yüz altın sayabildim."
+
+#. [message]: speaker=unit
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:804
+msgid "Look what I have found in here! I can count fifty pieces of gold."
+msgstr "Bakın burada ne buldum! Elli altın sayabildim."
+
+#. [message]: speaker=unit
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:843
 msgid "I found Baran. He is in this cell."
-msgstr "Biyarn’ı buldum. Bir hücrede."
+msgstr "Baran’ı buldum. Bu hücrede."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:801
-#, fuzzy
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:854
 msgid "It’s good to see you, Arvith."
-msgstr "Sağ salim döndüğüne sevindim."
+msgstr "Seni görmek güzel, Arvit."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:806
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:859
 msgid "And you too, brother."
-msgstr ""
+msgstr "Ve sen de, kardeşim."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:812
-#, fuzzy
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:865
 msgid ""
 "You must be one of Arvith’s men. Please help me get out of this dungeon."
 msgstr ""
-"Sen Arne’nin adamlarından biri olmalısın. Lütfen bu zindandan çıkmama yardım "
-"et."
+"Sen Arvit’nin adamlarından biri olmalısın. Lütfen bu zindandan çıkmama "
+"yardım et."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:819
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:872
 msgid ""
 "The accursed dark sorcerer Rotharik has imprisoned me behind this magically "
 "enhanced iron gate. It can only be opened with the correct key. You must get "
 "it from him to free me."
 msgstr ""
 "Kahrolası Kara Büyücü Rotarik bu sihirli demir kapıyı üzerime kilitledi. "
-"Kapı sadece ondaki anahtarla açılıyor. Ondan anahtarı almalısın."
+"Kapı sadece ondaki anahtarla açılıyor. Beni serbest bırakmak için ondan "
+"anahtarı almalısın."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:831
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:884
 msgid ""
 "I have already met, and killed, the sorcerer. Is this the key to which you "
 "referred?"
 msgstr ""
+"Kara Sihirbazla karşılaştım ve onu öldürdüm. Bahsettiğiniz anahtar bu mu?"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:835
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:888
 msgid ""
 "Yes, it is. Come, unlock this cell door, and let us depart this place, "
 "brother!"
-msgstr ""
+msgstr "Evet öyle. Gel, şu hücre kapısını aç ve bu yerden ayrılalım, kardeşim!"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:889
-#, fuzzy
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:942
 msgid "Thank you for saving me. I... was not certain you would come."
-msgstr "Beni kurtardığın için sağol. Nerede ise kurtulma ümidimi yitiriyordum."
+msgstr "Beni kurtardığın için sağol. Ben ... geleceğinden emin değildim."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:894
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:947
 msgid "Have you no faith in your brother, Baran?"
-msgstr ""
+msgstr "Kardeşine hiç inancın yok mu, Baran?"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:899
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:952
 msgid ""
 "It’s not that. Perhaps I deserved to rot here. I failed you. I failed you "
 "again."
 msgstr ""
+"Öyle değil. Belki de burada çürümeyi hak ettim. Seni hayal kırıklığına "
+"uğrattım. Seni tekrar başarısızlığa uğrattım."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:904
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:957
 msgid ""
 "That is as may be. But you are my brother still. And... I never doubted you "
 "would have come for me."
 msgstr ""
+"Olabilir ama sen hala benim kardeşimsin. Ve ... Benim için geleceğinden hiç "
+"şüphem yoktu."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:909
-#, fuzzy
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:962
 msgid ""
 "It was no great trial, after all. A few elves, one or two dark sorcerers, a "
 "gang of orcs and some undead. Really just a day’s work for the company."
 msgstr ""
-"Rica ederim, bir kaç elf, bir-iki tane kara büyücü, bir avuç ork ve biraz da "
-"yarı ölü. Bizim gibi işi bilenler için çocuk oyuncağı."
+"Rica ederim, bir kaç elf, bir-iki tane kara büyücü, bir ork çetesi ve biraz "
+"da yarı ölü. Bizim gibi işi bilenler için çocuk oyuncağı."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:914
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:967
 msgid "Thank you for coming to my aid. Let us return to the village."
 msgstr "Yardımıma geldiğin için teşekkürler. Haydi köyümüze geri dönelim."
 
 #. [unit]: id=Rotharik, type=Orcish Assassin
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:948
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:1001
 msgid "Minion of Tairach"
-msgstr ""
+msgstr "Tayrak'ın kölesi"
 
 #. [message]: speaker=Rotharik
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:960
-#, fuzzy
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:1013
 msgid "You are too late! Your brother is already dead! Muahahaha...!"
-msgstr "Çok geç kaldın! Kardeşin çoktan öldü! Muhahahha..."
+msgstr "Çok geç kaldın! Kardeşin çoktan öldü! Muhahahha...!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:965
-#, fuzzy
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:1018
 msgid "Argh!!"
-msgstr "Aaah!!!"
+msgstr "Aaah!!"
 
 #. [scenario]: id=04_Return_to_the_Village
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:5
@@ -1341,6 +1375,18 @@ msgid ""
 "way around it we traveled through some truly beautiful countryside. It has "
 "given us plenty of time to talk."
 msgstr ""
+"27 V, 363 VY\n"
+"Magreli Baran'in günlüğünden alıntı\\n\n"
+"\n"
+"Neredeyse evdeyim. Geçen hafta karışık duygularla doluydum — zaman zaman "
+"mutlu, zaman zaman mutsuz. Zindanın dışında ve güneş ışığında ölüm tehlikesi "
+"olmadan bulumak harika birşey.\n"
+"\n"
+"Arvith hücremden kurtardığı zaman beni affetti. Geçen haftayı bir zamanlar "
+"sahip olduğumuz aramızdaki rahatlık duygusunu yeniden  oluşturmakla "
+"geçirdik. Zamanımızı geri kazanabildiğimiz için çok şanslıyız - Gri Ormandan "
+"oldukça uzaklaştık ve seyahatimiz boyunca gerçekten güzel bir kırsal alanda "
+"seyahat ettik. Bu bize konuşmak için bolca zaman verdi."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:34
@@ -1363,6 +1409,21 @@ msgid ""
 "merely a remnant of my time locked away in that dungeon, or is it a sign of "
 "something real?"
 msgstr ""
+"27 V, 363 VY\n"
+"Magreli Baran'in günlüğünden alıntı\\n\n"
+"\n"
+"Şu an daha rahat olmama rağmen, düşüncelerim genellikle Toen Karik'e döndü. "
+"Orkları büyük bir kayıp olmadan kovabilmeliydik — Arvith'in tasarladığı "
+"kıskaç saldırısı günü kurtardı. Adamlarımı geride bırakmak benim "
+"umursamazlığımdı — savaşbeyini yaraladım ve onu alandan kaçmaya zorladım, "
+"ancak bedeli ağır oldu. Emrimdekilerle kalsaydım onlar kurtulabilirdi.\n"
+"\n"
+"Ölümlerini yanlış bulduğu için Arvit'i suçlayamam çünkü yaptığım yanlıştı ve "
+"asla geri alamam, ama zamanın bazı şeyleri iyileştirdiğini düşünüyorum. Köye "
+"tekrar kardeş olarak dönüyoruz.\n"
+"\n"
+"Ama hala sıkıntılıyım. Merak ediyorum ... Hissetteiklerim acaba o zindanda "
+"kilitli kaldığım zamandan mı kaldı yoksa gerçek bir şeyin işareti mi?"
 
 #. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:87
@@ -1373,7 +1434,7 @@ msgstr "Tayrak"
 #. [side]: type=Longbowman, id=Reeve Hoban
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:116
 msgid "Reeve Hoban"
-msgstr ""
+msgstr "Muhtar Hoban"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:139
@@ -1386,15 +1447,16 @@ msgid ""
 "Recruit or Recall some high-move units to be able to see as far as possible "
 "through the fog for approaching units."
 msgstr ""
+"Siste yaklaşan birimleri olabildiğince uzaktan görebilmek için yüksek hızlı "
+"birimleri alın veya geri çağırın."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:171
-#, fuzzy
 msgid ""
 "There. The village is just across those hills, and already I see men coming "
 "to greet us!"
 msgstr ""
-"Orada. Köyün şu tepelerin arkasında... Hey, bizi karşılamaya gelenler var!"
+"Orada. Köy şu tepelerin arkasında... Hey, bizi karşılamaya gelenler var!"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:176
@@ -1406,52 +1468,49 @@ msgstr ""
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:181
-#, fuzzy
 msgid "Men! Ready your arms!"
 msgstr "Adamlarım! Silah başına!"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:186
-#, fuzzy
 msgid "We should find Reeve Hoban. Maybe he knows what is going on here."
 msgstr ""
-"Oraya gidip Vekil Hoban’la konuşmalıyız. Belki burada neler olup bittiğini "
-"biliyordur."
+"Muhtar Hoban'ı bulmalıyız.. Belki burada neler olup bittiğini biliyordur."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:201
 msgid "We’re almost there!"
-msgstr ""
+msgstr "Neredeyse vardık!"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:206
 msgid "That warlord! It’s..."
-msgstr ""
+msgstr "Bu savaşbeyi! O..."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:211
 msgid "Yes, I’d know that face anywhere. Especially after what you did to it."
-msgstr ""
+msgstr "Evet, o yüzü her yerde tanırım. Özellikle de yaptıklarından sonra."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:216
 msgid "The warlord from Toen Caric."
-msgstr ""
+msgstr "Toen Karik'teki savaşbeyi."
 
 #. [message]: speaker=Tairach
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:221
 msgid "You! The mage who scarred me with fire! KILL THEM!"
-msgstr ""
+msgstr "Sen! Beni ateşle yaralayan büyücü! ÖLDÜR ONLARI!"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:226
 msgid "Let’s finish what we started, brother."
-msgstr ""
+msgstr "Başladımız işi bitirelim, kardeşim."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:231
 msgid "Aye. I’ll be the right arm, and you’ll be the left. Let’s go!"
-msgstr ""
+msgstr "Evet. Ben sağ tarafı alacağım ve sen de solu. Haydi gidelim!"
 
 #. [message]: speaker=Reeve Hoban
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:250
@@ -1477,8 +1536,7 @@ msgstr ""
 msgid ""
 "The orcish warlord aims to enslave us. We will not be able to hold out for "
 "much longer."
-msgstr ""
-"Bir Ork Savaş Lordu bizi esir almak istiyor. Uzun süre dayanamayacağız."
+msgstr "Bir Ork savaşbeyi bizi esir almak istiyor. Uzun süre dayanamayacağız."
 
 #. [message]: speaker=Reeve Hoban
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:270
@@ -1492,22 +1550,38 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:284
 msgid "Slay the Orcish Warlord to free the village"
-msgstr "Ork Savaş Lordunu öldür ve kasabayı kurtar"
+msgstr "Ork Savaşbeyini öldür ve kasabayı kurtar"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:300
 msgid "You can use Reeve Hoban’s keep to recruit or recall additional units."
 msgstr ""
+"Muhtar Hoban'ın içkalesini birimlerinizi çağırmak veya askere almak için "
+"kullanabilirsiniz."
+
+#. [message]: speaker=Tairach
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:341
+msgid "Today, you shall pay for disfiguring my face, mage!"
+msgstr "Bugün, yüzümü mahvetmenin bedelini ödeyeceksin, büyücü!"
+
+#. [message]: speaker=Baran
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:346
+msgid ""
+"I have already paid with the lives of my men at Toen Caric. It is time I "
+"righted that mistake and finished this once and for all."
+msgstr ""
+"Toen Karik'te adamlarımın hayatıyla çoktan ödedim. O hatayı düzelttiğim ve "
+"bunu bir kez ve herkes için bitirdiğim zamandı."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:310
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:355
 msgid ""
 "It is finished. We’ve defeated him at last. It was good to have you at my "
 "side, Baran."
-msgstr ""
+msgstr "Bitti. Sonunda onu mağlup ettik. Benim tarafımda olman güzeldi, Baran."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:315
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:360
 msgid ""
 "So much has been destroyed. It will be difficult to repair all that the orcs "
 "and undead have wrecked. And they could come again."
@@ -1516,7 +1590,7 @@ msgstr ""
 "etmek zor olacak. İnşallah bu bir daha olmaz."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:320
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:365
 msgid ""
 "I must go back to earning my living. But we have our amulets, little "
 "brother. If you are beset again, I will come."
@@ -1525,22 +1599,19 @@ msgstr ""
 "Tekrar ihtiyacın olursa haber ver yeter."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:338
-#, fuzzy
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:383
 msgid "I don’t think we can rescue anyone from these villages. It is too late."
 msgstr "Bu köylerden kimseyi kurtarabileceğimizi sanmıyorum. Artık çok geç."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:343
-#, fuzzy
+#: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:388
 msgid "I was too weak to protect these people. Oh, why did this happen to me?!"
-msgstr "İnsanları yeterince koruyamadım. Ah nedir bu başıma gelen?!?"
+msgstr "İnsanları yeterince koruyamadım. Ah nedir bu başıma gelen?!"
 
 #. [scenario]: id=05_Epilogue
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:5
-#, fuzzy
 msgid "A Tale of Two Brothers — Epilogue"
-msgstr "İki Kardeşin Hikayesi - Sonsöz"
+msgstr "İki Kardeşin Hikayesi — Sonsöz"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:18
@@ -1558,6 +1629,18 @@ msgid ""
 "But as the company and I are passing through this part of the kingdom with a "
 "new patron, I have asked leave of him to visit my brother and he gave it."
 msgstr ""
+"22 IX, 365 VY\n"
+"Magreli Arvit'in günlüğünden alıntı\n"
+"\n"
+"Maghre, son gördüğümden çok daha iyi görünüyor. Baran iki yılda harikalar "
+"yarattı. Köy yeniden inşa edildi ve çevredeki tarım arazileri yeni sahipler "
+"buldu ve yeniden düzenlendi. Kardeşimin endişelerine rağmen, insanlarımız "
+"şimdiye kadar yeni bir tehditle karşılaşmadılar.\n"
+"\n"
+"O iki yıl boyunca uzak kalmak daha zor oldu, ama Baran ile haberleşiyoruz ve "
+"tekrar görüşmek için çok az fırsatımız oldu. Ama krallığın bu bölgesinden iş "
+"için yeni bir patronumla geçerken, kardeşimi ziyaret etmek için izin istedim "
+"ve o da verdi."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:27
@@ -1572,10 +1655,19 @@ msgid ""
 "\n"
 "In the meantime, though, it’s good to relax and enjoy the peace."
 msgstr ""
+"22 IX, 365 VY\n"
+"Magreli Arvit'in günlüğünden alıntı\n"
+"\n"
+"Bu patron, her şeyden önce bir elf. Arkadaş olacağımızı hiç düşünmedim, ama "
+"diğerlerinden daha az kibirli. İsmi Kalenz. Çok görmüş geçirmiş; bunu sadece "
+"gözlerine bakarak söyleyebilirim. Yakında maaşımız için çalışmamız "
+"gerekecek.\n"
+"\n"
+"Bu arada, yine de rahatlamak ve huzurun tadını çıkarmak iyidir."
 
 #: data/campaigns/Two_Brothers/utils/characters.cfg:6
 msgid "Arvith"
-msgstr ""
+msgstr "Arvit"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/utils/characters.cfg:21
@@ -1585,16 +1677,16 @@ msgstr "Artık her şey bitti ve ben ölüyorum..."
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/utils/characters.cfg:39
 msgid "It is over, I am vanquished."
-msgstr "Bittim, ölüyorum."
+msgstr "Bitti, yenildim."
 
 #. [unit]: id=Baran, type=Red Mage
 #: data/campaigns/Two_Brothers/utils/characters.cfg:128
 msgid "Baran"
-msgstr ""
+msgstr "Baran"
 
 #: data/campaigns/Two_Brothers/utils/macros.cfg:4
 msgid "Hint:"
-msgstr ""
+msgstr "İpucu:"
 
 #~ msgid "$first_password_1|!"
 #~ msgstr "$first_password_1|!"

@@ -783,8 +783,8 @@ linechanges = (
         ("portraits/orcs/transparent/grunt-5.png", "portraits/orcs/grunt-5.png"),
         ("portraits/orcs/transparent/grunt-6.png", "portraits/orcs/grunt-6.png"),
         ("portraits/orcs/transparent/grunt.png", "portraits/orcs/grunt.png"),
-        ("portraits/orcs/transparent/leader-2.png", "portraits/orcs/leader-2.png"),
-        ("portraits/orcs/transparent/leader.png", "portraits/orcs/leader.png"),
+        ("portraits/orcs/transparent/leader-2.png", "portraits/orcs/ruler-2.png"),
+        ("portraits/orcs/transparent/leader.png", "portraits/orcs/ruler.png"),
         ("portraits/orcs/transparent/slayer.png", "portraits/orcs/slayer.png"),
         ("portraits/orcs/transparent/slurbow.png", "portraits/orcs/slurbow.png"),
         ("portraits/orcs/transparent/sovereign.png", "portraits/orcs/sovereign.png"),
@@ -924,7 +924,11 @@ linechanges = (
         ("Tineen", "Dune Firetrooper"),
         ("Rami", "Dune Rider"),
         ("Saree", "Dune Swiftrider"),
-        ("Jawal", "Dune Windrider")
+        ("Jawal", "Dune Windrider"),
+
+        # Changed in 1.15.0: separate portrait for leader
+        ("portraits/orcs/leader.png", "portraits/orcs/ruler.png"),
+        ("portraits/orcs/leader-2.png", "portraits/orcs/ruler-2.png")
 
         )
 
@@ -1338,6 +1342,90 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
         if key == 'id':
             scenario_to_filename[value] = filename
 
+def global_sanity_check_events(filename, lines):
+    """Part of global_sanity_check which finds each [event] tag.
+
+    To handle nested events, this is an multi-pass implementation. This
+    function will make one complete pass itself. Each subfunction called is
+    given its own copy of the iterator, to do its own pass on the contents of
+    the event without changing the iterator for this function.
+    """
+    deathcheck = True
+    for nav in WmllintIterator(lines, filename):
+        if "wmllint: deathcheck off" in nav.text:
+            deathcheck = False
+        elif "wmllint: deathcheck on" in nav.text:
+            deathcheck = True
+        # Now the tests. These run even when the opening tag is on a line which
+        # turns that specific check off, in case the check is re-enabled before
+        # the closing tag.
+        if "[event]" in nav.text:
+            sanity_check_speaks_in_death_event(nav.copy(), deathcheck)
+
+def sanity_check_speaks_in_death_event(opening_tag, deathcheck):
+    """Detect units that speak in their death events
+
+    Given an iterator pointing to an [event]'s opening tag, check whether it's
+    a die event, and if so check whether the already-dead unit speaks during
+    it.
+
+    This will move the iterator that is passed into it, the caller should make
+    a copy if required.
+
+    opening_tag -- an iterator on the [event] tag's line
+    deathcheck -- the status of the global "deathcheck on/off" flag at
+    the start of this event
+    """
+    filter_subject = None
+    die_event = False
+    if not opening_tag.hasNext():
+        # Either this is an empty tag, or the closing tag must be
+        # missing. There will be a separate error reported for that.
+        return
+    opening_tag.__next__()
+    event_scope = opening_tag.iterScope()
+    base_depth = len(event_scope.ancestors())
+
+    # First pass - find out if the event is a death event, and if it has a
+    # filter. Here the base_depth is used to ignore nested events and other
+    # tags that have a [filter] subtag.
+    for nav in event_scope.copy():
+        ancestors = nav.ancestors()
+        if len(ancestors) == base_depth + 1:
+            fields = parse_attribute(nav.text)
+            if fields:
+                (key, prefix, value, comment) = fields
+                if key == 'name' and value == 'die':
+                    die_event = True
+        if len(ancestors) == base_depth + 2:
+            if ancestors[-1] == "[filter]":
+                fields = parse_attribute(nav.text)
+                if fields:
+                    (key, prefix, value, comment) = fields
+                    if key == 'id':
+                        filter_subject = value
+
+    # Second pass - check if the subject speaks in this event. This will
+    # descend in to nested events, but as the unit is already dead it shouldn't
+    # speak in those either.
+    if die_event and filter_subject:
+        for nav in event_scope:
+            if "wmllint: deathcheck off" in nav.text:
+                deathcheck = False
+                continue
+            elif "wmllint: deathcheck on" in nav.text:
+                deathcheck = True
+            parent = nav.ancestors()[-1]
+            if parent == "[message]":
+                # Who is speaking?
+                fields = parse_attribute(nav.text)
+                if fields:
+                    (key, prefix, value, comment) = fields
+                    if key in ("id", "speaker"):
+                        if deathcheck and ((value == filter_subject) or (value == "unit")):
+                            print('"%s", line %d: %s speaks in his/her "die" event rather than "last breath"' \
+                                  % (nav.fname, nav.lineno+1, value))
+
 def global_sanity_check(filename, lines):
     "Perform sanity and consistency checks on input files."
     # Sanity-check abilities and traits against notes macros.
@@ -1450,47 +1538,10 @@ def global_sanity_check(filename, lines):
                     traits.append(p)
                 if q in precomment:
                     notes.append(q)
-    # Detect units that speak in their death events
-    filter_subject = None
-    die_event = False
-    deathcheck = True
-    for nav in WmllintIterator(lines, filename):
-        if "wmllint: deathcheck off" in nav.text:
-            deathcheck = False
-            continue
-        elif "wmllint: deathcheck on" in nav.text:
-            deathcheck = True
-        if "[/event]" in nav.text:
-            filter_subject = None
-            die_event = False
-        elif not nav.ancestors():
-            continue
-        elif "[event]" in nav.ancestors():
-            parent = nav.ancestors()[-1]
-            if parent == "[event]":
-                # Check if it's a death event
-                fields = parse_attribute(nav.text)
-                if fields:
-                    (key, prefix, value, comment) = fields
-                    if key == 'name' and value == 'die':
-                        die_event = True
-            elif die_event and not filter_subject and parent == "[filter]":
-                # Check to see if it has a filter subject
-                if "id" in nav.text:
-                    try:
-                        (key,prefix,value,comment) = parse_attribute(nav.text)
-                        filter_subject = value
-                    except TypeError:
-                        pass
-            elif die_event and filter_subject and parent == "[message]":
-                # Who is speaking?
-                fields = parse_attribute(nav.text)
-                if fields:
-                    (key, prefix, value, comment) = fields
-                    if key in ("id", "speaker"):
-                        if deathcheck and ((value == filter_subject) or (value == "unit")):
-                            print('"%s", line %d: %s speaks in his/her "die" event rather than "last breath"' \
-                                  % (filename, nav.lineno+1, value))
+
+    # Sanity-check all the [event] tags
+    global_sanity_check_events(filename, lines)
+
     # Collect information on defined movement types and races
     for nav in WmllintIterator(lines, filename):
         above = nav.ancestors()
@@ -2269,7 +2320,7 @@ def hack_syntax(filename, lines):
 
             break
         elif "[attack]" in lines[i]:
-            j = i;
+            j = i
             have_description = False
             while '[/attack]' not in lines[j]:
                 if lines[j].strip().startswith("description"):
@@ -2440,7 +2491,7 @@ def hack_syntax(filename, lines):
             in_textdomain = False
         if in_binary_path or in_textdomain:
             if '~' in lines[i]:
-                tilde = re.search('(^\s*path) *= *([^#]{0,5})(~/?(data/)?add-ons/)', lines[i])
+                tilde = re.search(r'(^\s*path) *= *([^#]{0,5})(~/?(data/)?add-ons/)', lines[i])
                 if tilde:
                     lines[i] = tilde.group(1) + '=' + tilde.group(2) + 'data/add-ons/' + lines[i][tilde.end():]
                     print('"%s", line %d: %s -> data/add-ons/ -- [textdomain] and [binary_path] paths do not accept "~" for userdata'\
@@ -2502,10 +2553,10 @@ def maptransform(filename, baseline, inmap, y):
 
 def is_map(filename):
     "Is this file a map?"
-    return filename.endswith(".map")
+    return filename.endswith(".map") or filename.endswith(".mask")
 
 if 0: # Not used, as there are currently no defined map transforms
-    class maptransform_error:
+    class maptransform_error(BaseException):
         "Error object to be thrown by maptransform."
         def __init__(self, infile, inline, type):
             self.infile = infile
@@ -2859,7 +2910,7 @@ def inner_spellcheck(nav, value, spelldict):
         while lowered and lowered[-1] in "_-*).,:;?!& \t":
             lowered = lowered[:-1]
         if lowered and spelldict.check(lowered):
-            continue;
+            continue
         while lowered and lowered[-1] in "_-*').,:;?!& \t":
             lowered = lowered[:-1]
         # Not interested in interpolations or numeric literals
@@ -3181,14 +3232,14 @@ is not necessary; also, frontslashes will also be recognized as directory separa
 
                 moreugly = input('Press "H" if you need more help, or Enter to exit: ')
                 if moreugly.lower().startswith('h'):
-                    print("""
+                    print(r"""
         Explanation:
 
-Windows' use of the backslash as a directory separator is clashing with the use of the backslash as an escape. As an escape, the backslash tells your system that you want a normally special character to be its literal self (or sometimes, that you want a normally ordinary character to have a special meaning). Your system interprets '\\"' as an escape for a literal quote character. Two quotes together are also interpreted as a literal quote.
+Windows' use of the backslash as a directory separator is clashing with the use of the backslash as an escape. As an escape, the backslash tells your system that you want a normally special character to be its literal self (or sometimes, that you want a normally ordinary character to have a special meaning). Your system interprets '\"' as an escape for a literal quote character. Two quotes together are also interpreted as a literal quote.
 
-'"Campaign\\"' is interpreted as 'Campaign"' instead of 'Campaign\\'.
-'"My Folder\\"Campaign' is interpreted as 'My Folder"Campaign' (not 'My Folder\Campaign').
-'"My Folder\Campaign\\" "My Folder\Another_Campaign"' is interpreted as 'My Folder\Campaign" My' and 'Folder\Another_Campaign'.
+'"Campaign\"' is interpreted as 'Campaign"' instead of 'Campaign\'.
+'"My Folder\"Campaign' is interpreted as 'My Folder"Campaign' (not 'My Folder\Campaign').
+'"My Folder\Campaign\" "My Folder\Another_Campaign"' is interpreted as 'My Folder\Campaign" My' and 'Folder\Another_Campaign'.
 
 In your case, your system interprets your arguments as:
 
@@ -3320,7 +3371,7 @@ In your case, your system interprets your arguments as:
                                 print(fn + ":")
                             spellcheck(fn, d)
                 except ImportError:
-                    print("wmllint: spell check unavailable, install python-enchant to enable", file=sys.stderr)
+                    print("wmllint: spell check unavailable, install python3-enchant to enable", file=sys.stderr)
         if failed_any_dirs:
             sys.exit(1)
     except KeyboardInterrupt:

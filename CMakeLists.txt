@@ -203,7 +203,7 @@ endif(NOT DEFINED CXX_FLAGS_USER)
 set(COMPILER_FLAGS "-std=c++${CXX_STD} -Wall -Wextra -Werror=non-virtual-dtor -Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wold-style-cast -Wtrampolines")
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-	set(COMPILER_FLAGS "${COMPILER_FLAGS} -Qunused-arguments -Wno-unknown-warning-option -Wmismatched-tags -Wno-conditional-uninitialized")
+	set(COMPILER_FLAGS "${COMPILER_FLAGS} -Qunused-arguments -Wno-unknown-warning-option -Wmismatched-tags -Wno-conditional-uninitialized -Wno-unused-lambda-capture")
 endif()
 
 ### Set strict compiler flags.
@@ -596,12 +596,12 @@ endif(ENABLE_CAMPAIGN_SERVER AND NOT ENABLE_GAME)
 # Install desktop file so wesnoth appears in the application start menu with an icon
 #
 if(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
-	install(FILES packaging/wesnoth.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications )
+	install(FILES packaging/org.wesnoth.Wesnoth.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications )
 	install(DIRECTORY packaging/icons/hicolor DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons )
 endif(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
 
 if(ENABLE_APPDATA_FILE AND ENABLE_GAME)
-	install(FILES packaging/wesnoth.appdata.xml DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/metainfo )
+	install(FILES packaging/org.wesnoth.Wesnoth.appdata.xml DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/metainfo )
 endif(ENABLE_APPDATA_FILE AND ENABLE_GAME)
 
 if(ENABLE_SERVER AND FIFO_DIR)

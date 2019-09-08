@@ -25,6 +25,7 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "serialization/string_utils.hpp"
 #include "utils/math.hpp"
 
 #include <boost/functional/hash_fwd.hpp>
@@ -315,88 +316,44 @@ map_location map_location::rotate_right_around_center(const map_location & cente
 
 bool map_location::matches_range(const std::string& xloc, const std::string &yloc) const
 {
-	if(std::find(xloc.begin(),xloc.end(),',') != xloc.end()
-	|| std::find(yloc.begin(),yloc.end(),',') != yloc.end()) {
-		std::vector<std::string> xlocs = utils::split(xloc);
-		std::vector<std::string> ylocs = utils::split(yloc);
+	const auto xlocs = utils::split(xloc);
+	const auto ylocs = utils::split(yloc);
 
-		std::size_t size;
-		for(size = xlocs.size(); size < ylocs.size(); ++size) {
-			xlocs.emplace_back();
-		}
-		while(size > ylocs.size()) {
-			ylocs.emplace_back();
-		}
-		for(std::size_t i = 0; i != size; ++i) {
-			if(matches_range(xlocs[i],ylocs[i]))
-				return true;
-		}
-		return false;
+	if(xlocs.size() == 0 && ylocs.size() == 0) {
+		return true;
 	}
-	if(!xloc.empty()) {
-		const std::string::const_iterator dash =
-		             std::find(xloc.begin(),xloc.end(),'-');
-		if(dash != xloc.begin() && dash != xloc.end()) {
-			const std::string beg(xloc.begin(),dash);
-			const std::string end(dash+1,xloc.end());
 
-			int top = -1, bot = -1;
+	// Warn if both x and y were given, but they have different numbers of commas;
+	// the missing entries will be assumed to be 1-infinity.
+	//
+	// No warning if only x or only y was given, as matching only that coordinate seems sane.
+	if(xlocs.size() != ylocs.size() && xlocs.size() && ylocs.size()) {
+		ERR_CF << "Different size lists when pairing coordinate ranges: " << xloc << " vs " << yloc << "\n";
+	}
 
-			try {
-				bot = std::stoi(beg) - 1;
-				top = std::stoi(end) - 1;
-			} catch(const std::invalid_argument&) {
-				ERR_CF << "Invalid map coordinate: " << end << ", " << beg << "\n";
-			}
-
-			if(x < bot || x > top)
-				return false;
-		} else {
-			int xval = -1;
-
-			try {
-				xval = std::stoi(xloc) - 1;
-			} catch(const std::invalid_argument&) {
-				ERR_CF << "Invalid map coordinate: " << xloc << "\n";
-			}
-
-			if(xval != x)
-				return false;
+	std::size_t i = 0;
+	for(; i < xlocs.size() && i < ylocs.size(); ++i) {
+		const auto xr = utils::parse_range(xlocs[i]);
+		const auto yr = utils::parse_range(ylocs[i]);
+		// The ranges are 1-based, but the coordinates are 0-based. Thus the +1 s.
+		if(xr.first <= x+1 && x+1 <= xr.second
+			&& yr.first <= y+1 && y+1 <= yr.second) {
+			return true;
 		}
 	}
-	if(!yloc.empty()) {
-		const std::string::const_iterator dash =
-		             std::find(yloc.begin(),yloc.end(),'-');
-
-		if(dash != yloc.begin() && dash != yloc.end()) {
-			const std::string beg(yloc.begin(),dash);
-			const std::string end(dash+1,yloc.end());
-
-			int top = -1, bot = -1;
-
-			try {
-				bot = std::stoi(beg) - 1;
-				top = std::stoi(end) - 1;
-			} catch(const std::invalid_argument&) {
-				ERR_CF << "Invalid map coordinate: " << end << ", " << beg << "\n";
-			}
-
-			if(y < bot || y > top)
-				return false;
-		} else {
-			int yval = -1;
-
-			try {
-				yval = std::stoi(yloc) - 1;
-			} catch(const std::invalid_argument&) {
-				ERR_CF << "Invalid map coordinate: " << yloc << "\n";
-			}
-
-			if(yval != y)
-				return false;
+	for(; i < xlocs.size(); ++i) {
+		const auto xr = utils::parse_range(xlocs[i]);
+		if(xr.first <= x+1 && x+1 <= xr.second) {
+			return true;
 		}
 	}
-	return true;
+	for(; i < ylocs.size(); ++i) {
+		const auto yr = utils::parse_range(ylocs[i]);
+		if(yr.first <= y+1 && y+1 <= yr.second) {
+			return true;
+		}
+	}
+	return false;
 }
 
 map_location map_location::get_direction(map_location::DIRECTION dir, unsigned int n) const

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
 
 #include <deque>                        // for deque
 #include <string>                       // for string
-#include <SDL_events.h>                 // for SDL_Event
+#include <SDL2/SDL_events.h>                 // for SDL_Event
 #include "help_menu.hpp"				// for help_menu
 #include "help_text_area.hpp"           // for help_text_area
 #include "widgets/button.hpp"           // for button

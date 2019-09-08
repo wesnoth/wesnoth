@@ -23,6 +23,8 @@
 #include "language.hpp"
 #include "map/map.hpp"
 #include "mouse_events.hpp"
+#include "pathfind/pathfind.hpp"
+#include "picture.hpp"
 #include "reports.hpp"
 #include "color.hpp"
 #include "team.hpp"
@@ -228,8 +230,12 @@ static config unit_side(reports::context & rc, const unit* u)
 	std::stringstream text;
 	text << " " << u->side();
 
-	add_image(report, flag_icon + mods, u_team.side_name(), "");
-	add_text(report, text.str(), "", "");
+	std::ostringstream tooltip;
+	if (!u_team.side_name().empty()) {
+		tooltip << _("Side:") << " <b>" <<  u_team.side_name() << "</b>";
+	}
+	add_image(report, flag_icon + mods, tooltip.str(), "");
+	add_text(report, text.str(), tooltip.str(), "");
 	return report;
 }
 REPORT_GENERATOR(unit_side, rc)
@@ -395,14 +401,13 @@ REPORT_GENERATOR(selected_unit_alignment, rc)
 	return unit_alignment(rc, u, hex_to_show_alignment_at);
 }
 
-
-static config unit_abilities(const unit* u)
+static config unit_abilities(const unit* u, const map_location& loc)
 {
 	if (!u) return config();
 	config res;
 
 	boost::dynamic_bitset<> active;
-	const std::vector<std::tuple<std::string, t_string,t_string,t_string>> &abilities = u->ability_tooltips(&active);
+	const std::vector<std::tuple<std::string, t_string,t_string,t_string>> &abilities = u->ability_tooltips(active, loc);
 	const std::size_t abilities_size = abilities.size();
 	for ( std::size_t i = 0; i != abilities_size; ++i )
 	{
@@ -433,12 +438,20 @@ static config unit_abilities(const unit* u)
 REPORT_GENERATOR(unit_abilities, rc)
 {
 	const unit *u = get_visible_unit(rc);
-	return unit_abilities(u);
+	const map_location& mouseover_hex = rc.screen().mouseover_hex();
+
+	return unit_abilities(u, mouseover_hex);
 }
 REPORT_GENERATOR(selected_unit_abilities, rc)
 {
 	const unit *u = get_selected_unit(rc);
-	return unit_abilities(u);
+
+	const map_location& mouseover_hex = rc.screen().mouseover_hex();
+	const unit *visible_unit = get_visible_unit(rc);
+	if(visible_unit && u && visible_unit->id() != u->id() && mouseover_hex.valid())
+		return unit_abilities(u, mouseover_hex);
+	else
+		return unit_abilities(u, u->get_location());
 }
 
 
@@ -590,7 +603,7 @@ REPORT_GENERATOR(unit_defense,rc)
 	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
 	const map_location& mouseover_hex = rc.screen().mouseover_hex();
 	const map_location& displayed_unit_hex = rc.screen().displayed_unit_hex();
-	const map_location& hex = (mouseover_hex.valid() && !viewing_team.shrouded(mouseover_hex)) ? mouseover_hex : displayed_unit_hex; 
+	const map_location& hex = (mouseover_hex.valid() && !viewing_team.shrouded(mouseover_hex)) ? mouseover_hex : displayed_unit_hex;
 	return unit_defense(rc, u, hex);
 }
 REPORT_GENERATOR(selected_unit_defense, rc)
@@ -613,10 +626,17 @@ static config unit_vision(const unit* u)
 	if (!u) return config();
 
 	// TODO
-	std::ostringstream str;
+	std::ostringstream str, tooltip;
 	if (u->vision() != u->total_movement()) {
-		str << _("vision: ") << u->vision(); }
-	return text_report(str.str(), str.str());
+		str << _("vision:") << ' ' << u->vision();
+		tooltip << _("vision:") << ' ' << u->vision() << '\n';
+	}
+	if (u->jamming() != 0) {
+		if (static_cast<std::streamoff>(str.tellp()) == 0)
+			str << _("jamming:") << ' ' << u->jamming();
+		tooltip << _("jamming:") << ' ' << u->jamming() << '\n';
+	}
+	return text_report(str.str(), tooltip.str());
 }
 REPORT_GENERATOR(unit_vision, rc)
 {
@@ -629,7 +649,7 @@ REPORT_GENERATOR(selected_unit_vision, rc)
 	return unit_vision(u);
 }
 
-static config unit_moves(reports::context & rc, const unit* u)
+static config unit_moves(reports::context & rc, const unit* u, bool is_visible_unit)
 {
 	if (!u) return config();
 	std::ostringstream str, tooltip;
@@ -657,7 +677,7 @@ static config unit_moves(reports::context & rc, const unit* u)
 
 	for (const terrain_movement& tm : terrain_moves) {
 		tooltip << tm.name << ": ";
-		
+
 		std::string color;
 		//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
 		const bool cannot_move = tm.moves > u->total_movement();
@@ -680,18 +700,39 @@ static config unit_moves(reports::context & rc, const unit* u)
 
 	int grey = 128 + static_cast<int>((255 - 128) * movement_frac);
 	color_t c = color_t(grey, grey, grey);
-	str << span_color(c) << u->movement_left() << '/' << u->total_movement() << naps;
+	int numerator = u->movement_left();
+	if(is_visible_unit) {
+		const pathfind::marked_route& route = game_display::get_singleton()->get_route();
+		if(route.steps.size() > 0) {
+			numerator -= route.move_cost;
+			if(numerator < 0) {
+				// Multi-turn move
+				// TODO: what to show in this case?
+				numerator = 0;
+			}
+
+			// If the route captures a village, assume that uses up all remaining MP.
+			const auto& end = route.marks.find(route.steps.back());
+			if(end != route.marks.end() && end->second.capture) {
+				numerator = 0;
+			}
+		} else {
+			// TODO: if the mouseover hex is unreachable (for example, a deep water hex
+			// and the current unit is a land unit), what to show?
+		}
+	}
+	str << span_color(c) << numerator << '/' << u->total_movement() << naps;
 	return text_report(str.str(), tooltip.str());
 }
 REPORT_GENERATOR(unit_moves, rc)
 {
 	const unit *u = get_visible_unit(rc);
-	return unit_moves(rc, u);
+	return unit_moves(rc, u, true);
 }
 REPORT_GENERATOR(selected_unit_moves, rc)
 {
 	const unit *u = get_selected_unit(rc);
-	return unit_moves(rc, u);
+	return unit_moves(rc, u, false);
 }
 
 static inline const color_t attack_info_percent_color(int resistance)
@@ -702,10 +743,15 @@ static inline const color_t attack_info_percent_color(int resistance)
 	return font::YELLOW_COLOR;
 }
 
-static int attack_info(reports::context & rc, const attack_type &at, config &res, const unit &u, const map_location &hex)
+static int attack_info(reports::context & rc, const attack_type &at, config &res, const unit &u, const map_location &hex, const unit* sec_u = nullptr, const_attack_ptr sec_u_weapon = nullptr)
 {
 	std::ostringstream str, tooltip;
 	int damage = 0;
+
+	struct string_with_tooltip {
+		std::string str;
+		std::string tooltip;
+	};
 
 	{
 		auto ctx = at.specials_context(unit_const_ptr(&u), hex, u.side() == rc.screen().playing_side());
@@ -796,14 +842,22 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 			tooltip << '\t' << _("With specials: ") << num_attacks << '\n';
 		}
 
-		add_text(res, flush(str), flush(tooltip));
+		const string_with_tooltip damage_and_num_attacks {flush(str), flush(tooltip)};
 
 		std::string range = string_table["range_" + at.range()];
 		std::string lang_type = string_table["type_" + at.type()];
 
-		str << span_color(font::weapon_details_color) << "  " << "  "
-			<< range << font::weapon_details_sep
-			<< lang_type << "</span>\n";
+		// SCALE_INTO_SHARP() is needed in case the 72x72 images/misc/missing-image.png is substituted.
+		const std::string range_png = std::string("icons/profiles/") + at.range() + "_attack.png~SCALE_INTO_SHARP(16,16)";
+		const std::string type_png = std::string("icons/profiles/") + at.type() + ".png~SCALE_INTO_SHARP(16,16)";
+		const bool range_png_exists = image::locator(range_png).file_exists();
+		const bool type_png_exists = image::locator(type_png).file_exists();
+
+		if(!range_png_exists || !type_png_exists) {
+			str << span_color(font::weapon_details_color) << "  " << "  "
+				<< range << font::weapon_details_sep
+				<< lang_type << "</span>\n";
+		}
 
 		tooltip << _("Weapon range: ") << "<b>" << range << "</b>\n"
 			<< _("Damage type: ")  << "<b>" << lang_type << "</b>\n"
@@ -842,7 +896,23 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 				<< " :  \t" // spaces to align the tab to a multiple of 8
 				<< utils::join(resist.second, " " + font::unicode_bullet + " ") << '\n';
 		}
-		add_text(res, flush(str), flush(tooltip));
+		const string_with_tooltip damage_versus {flush(str), flush(tooltip)};
+
+#if 0
+		// We wanted to use the attack icon here, but couldn't find a good layout.
+		// The default images are 60x60 and have a 2-pixel transparent border. Trim it.
+		// The first SCALE() accounts for theoretically possible add-ons attack images larger than 60x60.
+		const std::string attack_icon = at.icon() + "~SCALE_INTO_SHARP(60,60)~CROP(2,2,56,56)~SCALE_INTO_SHARP(32,32)";
+		add_image(res, attack_icon, at.name());
+		add_text(res, " ", "");
+#endif
+
+		// The icons are 16x16. We add 5px padding for alignment reasons (placement of the icon in relation to ascender and descender letters).
+		const std::string spacer = "misc/blank.png~CROP(0, 0, 16, 21)"; // 21 == 16+5
+		if (range_png_exists) add_image(res, spacer + "~BLIT(" + range_png + ",0,5)", damage_versus.tooltip);
+		if (type_png_exists) add_image(res, spacer + "~BLIT(" + type_png + ",0,5)", damage_versus.tooltip);
+		add_text(res, damage_and_num_attacks.str, damage_and_num_attacks.tooltip);
+		add_text(res, damage_versus.str, damage_versus.tooltip); // This string is usually empty
 
 		const std::string &accuracy_parry = at.accuracy_parry_description();
 		if (!accuracy_parry.empty())
@@ -864,7 +934,11 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	}
 
 	{
-		auto ctx = at.specials_context_for_listing(u.side() == rc.screen().playing_side());
+		//If we have a second unit, do the 2-unit specials_context
+		bool attacking = (u.side() == rc.screen().playing_side());
+		auto ctx = (sec_u == nullptr) ? at.specials_context_for_listing(attacking) :
+						at.specials_context(unit_const_ptr(&u), unit_const_ptr(sec_u), hex, sec_u->get_location(), attacking, sec_u_weapon);
+
 		boost::dynamic_bitset<> active;
 		const std::vector<std::pair<t_string, t_string>> &specials = at.special_tooltips(&active);
 		const std::size_t specials_size = specials.size();
@@ -884,6 +958,15 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 			tooltip << '\n' << description;
 
 			add_text(res, flush(str), flush(tooltip), help_page);
+		}
+		if(!specials.empty()) {
+			// Add some padding so the end of the specials list
+			// isn't too close vertically to the attack icons of
+			// the next attack. Also for symmetry with the padding
+			// above the list of specials (below the attack icon line).
+			const std::string spacer = "misc/blank.png~CROP(0, 0, 1, 5)";
+			add_image(res, spacer, "");
+			add_text(res, "\n", "");
 		}
 	}
 	return damage;
@@ -914,6 +997,7 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 	if (!attacker || !defender) return config();
 
 	const unit* u = show_attacker ? attacker : defender;
+	const unit* sec_u = !show_attacker ? attacker : defender;
 	const map_location unit_loc = show_attacker ? attacker_pos : defender->get_location();
 
 	std::ostringstream str, tooltip;
@@ -936,6 +1020,8 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 
 		const battle_context_unit_stats& context_unit_stats =
 				show_attacker ? weapon.get_attacker_stats() : weapon.get_defender_stats();
+		const battle_context_unit_stats& other_context_unit_stats =
+				!show_attacker ? weapon.get_attacker_stats() : weapon.get_defender_stats();
 
 		int total_damage = 0;
 		int base_damage = 0;
@@ -945,7 +1031,7 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 
 		color_t dmg_color = font::weapon_color;
 		if (context_unit_stats.weapon) {
-			base_damage = attack_info(rc, *context_unit_stats.weapon, res, *u, unit_loc);
+			base_damage = attack_info(rc, *context_unit_stats.weapon, res, *u, unit_loc, sec_u, other_context_unit_stats.weapon);
 			total_damage = context_unit_stats.damage;
 			num_blows = context_unit_stats.num_blows;
 			chance_to_hit = context_unit_stats.chance_to_hit;
@@ -1127,6 +1213,7 @@ static config tod_stats_at(reports::context & rc, const map_location& hex)
 	const map_location& tod_schedule_hex = (hex.valid() && !display::get_singleton()->shrouded(hex)) ? hex : map_location::null_location();
 	const std::vector<time_of_day>& schedule = rc.tod().times(tod_schedule_hex);
 
+	tooltip << _("Time of day schedule:") << " \n";
 	int current = rc.tod().get_current_time(tod_schedule_hex);
 	int i = 0;
 	for (const time_of_day& tod : schedule) {
@@ -1175,7 +1262,7 @@ static config time_of_day_at(reports::context & rc, const map_location& mouseove
 	if (l != 0) {
 		liminal_color = (l > 0) ? "green" : "red";
 	}
-	tooltip << tod.name << '\n'
+	tooltip << _("Time of day:") << " <b>" << tod.name << "</b>\n"
 		<< _("Lawful units: ") << "<span foreground=\"" << lawful_color  << "\">"
 		<< utils::signed_percent(b)  << "</span>\n"
 		<< _("Neutral units: ") << utils::signed_percent(0)  << '\n'
@@ -1353,7 +1440,7 @@ REPORT_GENERATOR(upkeep, rc)
 	std::ostringstream str;
 	int viewing_side = rc.screen().viewing_side();
 	const team &viewing_team = rc.dc().get_team(viewing_side);
-	team_data td = rc.dc().calculate_team_data(viewing_team);
+	team_data td(rc.dc(), viewing_team);
 	str << td.expenses << " (" << td.upkeep << ")";
 	return gray_inactive(rc,str.str(), _("Upkeep") + "\n\n" + _("The expenses incurred at the end of every turn to maintain your army. The first number is the amount of gold that will be deducted. The second is the total cost of upkeep, including that covered by villages — in other words, the amount of gold that would be deducted if you lost all villages."));
 }
@@ -1362,7 +1449,7 @@ REPORT_GENERATOR(expenses, rc)
 {
 	int viewing_side = rc.screen().viewing_side();
 	const team &viewing_team = rc.dc().get_team(viewing_side);
-	team_data td = rc.dc().calculate_team_data(viewing_team);
+	team_data td(rc.dc(), viewing_team);
 	return gray_inactive(rc,std::to_string(td.expenses));
 }
 
@@ -1371,7 +1458,7 @@ REPORT_GENERATOR(income, rc)
 	std::ostringstream str;
 	int viewing_side = rc.screen().viewing_side();
 	const team &viewing_team = rc.dc().get_team(viewing_side);
-	team_data td = rc.dc().calculate_team_data(viewing_team);
+	team_data td(rc.dc(), viewing_team);
 	char const *end = naps;
 	if (viewing_side != rc.screen().playing_side()) {
 		if (td.net_income < 0) {

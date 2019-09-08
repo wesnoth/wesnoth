@@ -98,7 +98,8 @@ if "update-po" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS o
         for lingua in linguas:
             update_po = env.MsgInitMerge(
                 os.path.join(domain, lingua),
-                os.path.join(domain, domain)
+                os.path.join(domain, domain),
+                MSGINIT_LINGUA = lingua
                 )
             env.Precious(update_po)
             NoClean(update_po)

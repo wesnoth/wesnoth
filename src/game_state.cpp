@@ -33,7 +33,7 @@
 #include "gui/dialogs/loading_screen.hpp"
 
 #include "utils/functional.hpp"
-#include <SDL_timer.h>
+#include <SDL2/SDL_timer.h>
 
 #include <algorithm>
 #include <set>
@@ -225,7 +225,7 @@ void game_state::init(const config& level, play_controller & pc)
 			// Labels from players in your ignore list default to hidden
 			if(preferences::is_ignored(board_.teams_[i].current_player())) {
 				std::string label_cat = "side:" + std::to_string(i + 1);
-				board_.hidden_label_categories_ref().push_back(label_cat);
+				board_.hidden_label_categories().push_back(label_cat);
 			}
 		}
 	}

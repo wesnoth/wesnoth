@@ -21,8 +21,8 @@
 #include "serialization/string_utils.hpp"
 #include "sound_music_track.hpp"
 
-#include <SDL.h> // Travis doesn't like this, although it works on my machine -> '#include <SDL_sound.h>
-#include <SDL_mixer.h>
+#include <SDL2/SDL.h> // Travis doesn't like this, although it works on my machine -> '#include <SDL2/SDL_sound.h>
+#include <SDL2/SDL_mixer.h>
 
 #include <list>
 #include <sstream>
@@ -191,6 +191,12 @@ std::vector<std::shared_ptr<sound::music_track>>::const_iterator find_track(cons
 
 namespace sound
 {
+void flush_cache()
+{
+	sound_cache.clear();
+	music_cache.clear();
+}
+
 boost::optional<unsigned int> get_current_track_index()
 {
 	if(current_track_index >= current_track_list.size()){
@@ -585,7 +591,7 @@ void play_music()
 	music_start_time = 1; // immediate (same as effect as SDL_GetTicks())
 	want_new_music = true;
 	no_fading = false;
-	fadingout_time = current_track->ms_after();
+	fadingout_time = previous_track != nullptr ? previous_track->ms_after() : 0;
 }
 
 void play_track(unsigned int i)
@@ -609,7 +615,8 @@ static void play_new_music()
 		return;
 	}
 
-	const std::string& filename = current_track->file_path();
+	const std::string localized = filesystem::get_localized_path(current_track->file_path());
+	const std::string& filename = localized.empty() ? current_track->file_path() : localized;
 
 	auto itor = music_cache.find(filename);
 	if(itor == music_cache.end()) {
@@ -887,9 +894,10 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 
 		temp_chunk.group = group;
 		const std::string& filename = filesystem::get_binary_file_location("sounds", file);
+		const std::string localized = filesystem::get_localized_path(filename);
 
 		if(!filename.empty()) {
-			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(filename);
+			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(localized.empty() ? filename : localized);
 			temp_chunk.set_data(Mix_LoadWAV_RW(rwops.release(), true)); // SDL takes ownership of rwops
 		} else {
 			ERR_AUDIO << "Could not load sound file '" << file << "'." << std::endl;

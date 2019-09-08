@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "user_handler.hpp"
+#include "server/user_handler.hpp"
 
 #include <vector>
 #include <memory>
@@ -43,14 +43,6 @@ class fuh : public user_handler {
 		fuh(const config& c);
 		~fuh();
 
-		// Throws user_handler::error
-		void add_user(const std::string& name, const std::string& mail, const std::string& password);
-
-		// Throws user_handler::error
-		void remove_user(const std::string& name);
-
-		void clean_up() {}
-
 		bool login(const std::string& name, const std::string& password, const std::string& seed);
 
 		/**
@@ -70,31 +62,37 @@ class fuh : public user_handler {
 		bool user_is_moderator(const std::string& name);
 		void set_is_moderator(const std::string& name, const bool& is_moderator);
 
-		BAN_TYPE user_is_banned(const std::string& name, const std::string& addr);
+		ban_info user_is_banned(const std::string& name, const std::string& addr);
 
 		// Throws user_handler::error
 		std::string user_info(const std::string& name);
 
-		// Throws user_handler::error
-		void set_user_detail(const std::string& user, const std::string& detail, const std::string& value);
-		std::string get_valid_details();
-
 		bool use_phpbb_encryption() const { return true; }
+
+		std::string get_uuid();
+		void db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name);
+		void db_update_game_start(const std::string& uuid, int game_id, const std::string& map_name, const std::string& era_name);
+		void db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location);
+		void db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, const std::string& is_host, const std::string& faction);
+		void db_insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name);
+		void db_set_oos_flag(const std::string& uuid, int game_id);
 
 	private:
 		std::string get_hash(const std::string& user);
-		std::string get_mail(const std::string& user);
-		/*std::vector<std::string> get_friends(const std::string& user);
-		std::vector<std::string> get_ignores(const std::string& user);*/
 		std::time_t get_lastlogin(const std::string& user);
 		std::time_t get_registrationdate(const std::string& user);
 		bool is_inactive(const std::string& user);
 
 		void set_lastlogin(const std::string& user, const std::time_t& lastlogin);
 
-		std::string db_name_, db_host_, db_user_, db_password_, db_users_table_, db_banlist_table_, db_extra_table_;
+		template<typename T>
+		ban_info retrieve_ban_info(BAN_TYPE, T detail);
 
-		typedef std::unique_ptr<MYSQL_RES, decltype(&mysql_free_result)> mysql_result;
+		std::time_t retrieve_ban_duration_internal(const std::string& col, const std::string& detail);
+		std::time_t retrieve_ban_duration_internal(const std::string& col, unsigned int detail);
+
+		std::string db_name_, db_host_, db_user_, db_password_, db_users_table_, db_banlist_table_, db_extra_table_, db_game_info_table_, db_game_player_info_table_, db_game_modification_info_table_, db_user_group_table_;
+		unsigned int mp_mod_group_;
 
 		MYSQL *conn;
 
@@ -112,4 +110,7 @@ class fuh : public user_handler {
 
 		// Same as user_exists() but checks if we have a row for this user in the extra table
 		bool extra_row_exists(const std::string& name);
+		
+		bool is_user_in_group(const std::string& name, unsigned int group_id);
 };
+

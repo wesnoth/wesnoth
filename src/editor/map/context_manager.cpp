@@ -684,7 +684,7 @@ void context_manager::init_map_generators(const config& game_config)
 			ERR_ED << "Scenario \"" << i["name"] << "\" with id " << i["id"]
 					<< " has map_generation= but no [generator] tag" << std::endl;
 		} else {
-			map_generators_.emplace_back(create_map_generator(i["map_generation"], generator_cfg));
+			map_generators_.emplace_back(create_map_generator(i["map_generation"].empty() ? i["scenario_generation"] : i["map_generation"], generator_cfg));
 		}
 	}
 }

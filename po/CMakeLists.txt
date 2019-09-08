@@ -30,6 +30,7 @@ set(NORMAL_DOMAINS
 	wesnoth-tutorial
 	wesnoth-units
 	wesnoth-utbs
+	wesnoth-wov
 )
 
 # All available domains.
@@ -259,8 +260,11 @@ if(ENABLE_NLS)
 				COMMENT "mo-update [${DOMAIN}-${LINGUA}]: Creating mo file."
 			)
 
-			install(FILES ${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LINGUA}/LC_MESSAGES/${DOMAIN}.mo
+			list(FIND NORMAL_DOMAINS ${DOMAIN} IS_NORMAL_DOMAIN)
+			if(IS_NORMAL_DOMAIN GREATER -1)
+				install(FILES ${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LINGUA}/LC_MESSAGES/${DOMAIN}.mo
 					DESTINATION ${LOCALE_INSTALL}/${LINGUA}/LC_MESSAGES)
+			endif()
 
 			set(mo-update-SRC ${mo-update-SRC}
 				${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LINGUA}/LC_MESSAGES/${DOMAIN}.mo

@@ -18,6 +18,7 @@ class config;
 
 #include "exceptions.hpp"
 
+#include <ctime>
 #include <string>
 
 /**
@@ -43,30 +44,6 @@ class user_handler {
 		}
 
 		/**
-		 * Adds a user.
-		 *
-		 * Throws an error containing the error message if adding fails
-		 * (e.g. because a user with the same name already exists).
-		 */
-		virtual void add_user(const std::string& name, const std::string& mail, const std::string& password) =0;
-
-		/**
-		 * Removes a user.
-		 *
-		 * Throws an error containing the error message if removing fails
-		 * (e.g. no user with the given name exists).
-		 */
-		virtual void remove_user(const std::string& name) =0;
-
-		/**
-		 * Called by the server once a day.
-		 *
-		 * Could for example be used for removing users that have not logged in
-		 * for a certain amount of time.
-		 */
-		virtual void clean_up() =0;
-
-		/**
 		 * Return true if the given password matches the password for the given user.
 		 *
 		 * Password could also be a hash
@@ -86,16 +63,6 @@ class user_handler {
 		 */
 		virtual std::string user_info(const std::string& name) =0;
 
-		/**
-		 * Set data for a given user name.
-		 *
-		 * Should throw an error on invalid data.
-		 */
-		virtual void set_user_detail(const std::string& user, const std::string& detail, const std::string& value) =0;
-
-		/** List of details that can be set for this user_handler. */
-		virtual std::string get_valid_details() =0;
-
 		/** Returns true if a user with the given name exists. */
 		virtual bool user_exists(const std::string& name) =0;
 
@@ -108,12 +75,32 @@ class user_handler {
 		/** Mark this user as a moderator */
 		virtual void set_is_moderator(const std::string& name, const bool& is_moderator) =0;
 
+		/** Ban type values */
 		enum BAN_TYPE
 		{
-			BAN_NONE,
-			BAN_USER,
-			BAN_IP,
-			BAN_EMAIL,
+			BAN_NONE,		/**< Not a ban */
+			BAN_USER,		/**< User account/name ban */
+			BAN_IP,			/**< IP address ban */
+			BAN_EMAIL,		/**< Account email address ban */
+		};
+
+		/** Ban status description */
+		struct ban_info
+		{
+			BAN_TYPE type;			/**< Ban type */
+			std::time_t duration;	/**< Ban duration (0 if permanent) */
+
+			ban_info()
+				: type(BAN_NONE)
+				, duration(0)
+			{
+			}
+
+			ban_info(BAN_TYPE ptype, std::time_t pduration)
+				: type(ptype)
+				, duration(pduration)
+			{
+			}
 		};
 
 		/**
@@ -123,14 +110,11 @@ class user_handler {
 		 *       subclass. Regular IP ban checks are done by @a server_base
 		 *       instead.
 		 */
-		virtual BAN_TYPE user_is_banned(const std::string& name, const std::string& addr="") = 0;
+		virtual ban_info user_is_banned(const std::string& name, const std::string& addr="") = 0;
 
 		struct error : public game::error {
 			error(const std::string& message) : game::error(message) {}
 		};
-
-		/** Initiate the mailer object. */
-		void init_mailer(const config &c);
 
 		/** Create a random string of digits for password encryption. */
 		std::string create_unsecure_nonce(int length = 8);
@@ -150,19 +134,11 @@ class user_handler {
 		 */
 		virtual bool use_phpbb_encryption() const =0;
 
-	protected:
-
-		/**
-		 * Sends an email to the specified address. Requires access to an SMTP server.
-		 *
-		 * Throws an error if the mail could not be sent.
-		 */
-		bool send_mail(const std::string& to_user, const std::string& subject, const std::string& message);
-
-		/**
-		 * Used in send_mail().
-		 *
-		 * Should return an empty string when not used.
-		 */
-		virtual std::string get_mail(const std::string& user) =0;
+		virtual std::string get_uuid() =0;
+		virtual void db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name) =0;
+		virtual void db_update_game_start(const std::string& uuid, int game_id, const std::string& map_name, const std::string& era_name) =0;
+		virtual void db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location) =0;
+		virtual void db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, const std::string& is_host, const std::string& faction) =0;
+		virtual void db_insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name) =0;
+		virtual void db_set_oos_flag(const std::string& uuid, int game_id) =0;
 };

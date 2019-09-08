@@ -26,6 +26,7 @@
 #include "utils/general.hpp"
 #include <cassert>
 #include <array>
+#include <limits>
 #include <stdexcept>
 
 #include <boost/algorithm/string.hpp>
@@ -382,35 +383,6 @@ std::vector<std::string> parenthetical_split(const std::string& val,
 	return res;
 }
 
-std::pair<string_view, string_view> vertical_split(const std::string& val)
-{
-	// Count the number of lines.
-	int num_lines = std::count(val.begin(), val.end(), '\n') + 1;
-
-	if(num_lines < 2) {
-		throw std::logic_error("utils::vertical_split: the string contains only one line");
-	}
-
-	// Split the string at the point where we have encountered
-	// (number of lines / 2 - 1) line separators.
-	int split_point = 0;
-	int num_found_line_separators = 0;
-	for(std::size_t i = 0; i < val.size(); ++i) {
-		if(val[i] == '\n') {
-			++num_found_line_separators;
-			if(num_found_line_separators >= num_lines / 2 - 1) {
-				split_point = i;
-				break;
-			}
-		}
-	}
-
-	assert(split_point != 0);
-
-	return { string_view(val.data(), split_point),
-		string_view(&val[split_point + 1], val.size() - (split_point + 1)) };
-}
-
 // Modify a number by string representing integer difference, or optionally %
 int apply_modifier( const int number, const std::string &amount, const int minimum ) {
 	// wassert( amount.empty() == false );
@@ -524,9 +496,30 @@ std::string half_signed_value(int val)
 
 static void si_string_impl_stream_write(std::stringstream &ss, double input) {
 	std::streamsize oldprec = ss.precision();
+#ifdef _MSC_VER
+	// For MSVC, default mode misbehaves, so we use fixed instead.
 	ss.precision(1);
 	ss << std::fixed
 	   << input;
+#else
+	// In default mode, precision sets the number of significant figures.
+
+	// 999.5 and above will render as 1000+, however, only numbers above 1000 will use 4 digits
+	// Rounding everything from 100 up (at which point we stop using decimals anyway) avoids this.
+	if (input >= 100) {
+		input = std::round(input);
+	}
+
+	// When in binary mode, numbers of up to 1023.9999 can be passed
+	// We should render those with 4 digits, instead of as 1e+3.
+	// Input should be an integer number now, but doubles can do strange things, so check the halfway point instead.
+	if (input >= 999.5) {
+		ss.precision(4);
+	} else {
+		ss.precision(3);
+	}
+	ss << input;
+#endif
 	ss.precision(oldprec);
 }
 
@@ -534,6 +527,10 @@ std::string si_string(double input, bool base2, const std::string& unit) {
 	const double multiplier = base2 ? 1024 : 1000;
 
 	typedef std::array<std::string, 9> strings9;
+
+	if(input < 0){
+		return font::unicode_minus + si_string(std::abs(input), base2, unit);
+	}
 
 	strings9 prefixes;
 	strings9::const_iterator prefix;
@@ -809,11 +806,18 @@ std::pair<int, int> parse_range(const std::string& str)
 	const std::string b = dash != str.end() ? std::string(dash + 1, str.end()) : a;
 	std::pair<int,int> res {0,0};
 	try {
-		res = std::make_pair(std::stoi(a), std::stoi(b));
+		if (b == "infinity") {
+			res = std::make_pair(std::stoi(a), std::numeric_limits<int>::max());
+		} else {
+			res = std::make_pair(std::stoi(a), std::stoi(b));
+		}
+
 		if (res.second < res.first) {
 			res.second = res.first;
 		}
-	} catch(const std::invalid_argument&) {}
+	} catch(const std::invalid_argument&) {
+	    ERR_GENERAL << "Invalid range: "<< str << std::endl;
+	}
 
 	return res;
 }

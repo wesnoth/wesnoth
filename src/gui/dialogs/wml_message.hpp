@@ -228,7 +228,7 @@ struct wml_message_input
  */
 struct wml_message_portrait
 {
-	/// FIlename of the portrait.
+	/// Filename of the portrait.
 	std::string portrait;
 	/// Does the portrait need to be mirrored?
 	bool mirror;

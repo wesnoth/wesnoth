@@ -45,7 +45,7 @@ public:
 	height_map generate_height_map(size_t width, size_t height,
 			size_t iterations, size_t hill_size,
 			size_t island_size, size_t island_off_center);
-			
+
 	height_map generate_height_map(size_t width, size_t height,
 			size_t iterations, size_t hill_size,
 			size_t island_size, size_t center_x, size_t center_y);

@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
                  2004 - 2015 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -239,21 +239,21 @@ void scrollbar::draw_contents()
 	switch (state_) {
 
 	case NORMAL:
-		top_img.assign(image::get_image(scrollbar_top));
-		mid_img.assign(image::get_image(scrollbar_mid));
-		bottom_img.assign(image::get_image(scrollbar_bottom));
+		top_img = image::get_image(scrollbar_top);
+		mid_img = image::get_image(scrollbar_mid);
+		bottom_img = image::get_image(scrollbar_bottom);
 		break;
 
 	case ACTIVE:
-		top_img.assign(image::get_image(scrollbar_top_hl));
-		mid_img.assign(image::get_image(scrollbar_mid_hl));
-		bottom_img.assign(image::get_image(scrollbar_bottom_hl));
+		top_img = image::get_image(scrollbar_top_hl);
+		mid_img = image::get_image(scrollbar_mid_hl);
+		bottom_img = image::get_image(scrollbar_bottom_hl);
 		break;
 
 	case DRAGGED:
-		top_img.assign(image::get_image(scrollbar_top_pressed));
-		mid_img.assign(image::get_image(scrollbar_mid_pressed));
-		bottom_img.assign(image::get_image(scrollbar_bottom_pressed));
+		top_img = image::get_image(scrollbar_top_pressed);
+		mid_img = image::get_image(scrollbar_mid_pressed);
+		bottom_img = image::get_image(scrollbar_bottom_pressed);
 		break;
 
 	case UNINIT:
@@ -280,8 +280,8 @@ void scrollbar::draw_contents()
 		mid_height = 1;
 	}
 
-	if(mid_scaled_.null() || mid_scaled_->h != mid_height) {
-		mid_scaled_.assign(scale_surface(mid_img, mid_img->w, mid_height));
+	if(!mid_scaled_ || mid_scaled_->h != mid_height) {
+		mid_scaled_ = scale_surface(mid_img, mid_img->w, mid_height);
 	}
 
 	SDL_Rect groove = groove_area();
@@ -290,11 +290,11 @@ void scrollbar::draw_contents()
 		groove_height = 1;
 	}
 
-	if (groove_scaled_.null() || groove_scaled_->h != groove_height) {
-		groove_scaled_.assign(scale_surface(mid_grv, mid_grv->w, groove_height));
+	if (!groove_scaled_ || groove_scaled_->h != groove_height) {
+		groove_scaled_ = scale_surface(mid_grv, mid_grv->w, groove_height);
 	}
 
-	if (mid_scaled_.null() || groove_scaled_.null()) {
+	if (!mid_scaled_ || !groove_scaled_) {
 		std::cerr << "Failure during scrollbar image scale.\n";
 		return;
 	}
@@ -388,7 +388,7 @@ void scrollbar::handle_event(const SDL_Event& event)
 
 	if (new_state != state_) {
 		set_dirty();
-		mid_scaled_.assign(nullptr);
+		mid_scaled_ = nullptr;
 		state_ = new_state;
 	}
 }

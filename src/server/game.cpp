@@ -116,6 +116,7 @@ game::game(player_connections& player_connections,
 	, num_turns_(0)
 	, all_observers_muted_(false)
 	, bans_()
+	, name_bans_()
 	, players_not_advanced_()
 	, termination_()
 	, save_replays_(save_replays)
@@ -298,6 +299,8 @@ void game::start_game(const socket_ptr& starter)
 	DBG_GAME << debug_sides_info() << std::endl;
 	DBG_GAME << "****" << std::endl;
 
+	// If the game was already started we're actually advancing.
+	const bool advance = started_;
 	started_ = true;
 	// Prevent inserting empty keys when reading.
 	const simple_wml::node& multiplayer = get_multiplayer(level_.root());
@@ -305,7 +308,7 @@ void game::start_game(const socket_ptr& starter)
 	const bool save = multiplayer["savegame"].to_bool();
 	LOG_GAME
 		<< client_address(starter) << "\t" << player_connections_.find(starter)->name() << "\t"
-		<< "started" << (save ? " reloaded" : "") << " game:\t\"" << name_ << "\" (" << id_
+		<< (advance ? "advanced" : "started") << (save ? " reloaded" : "") << " game:\t\"" << name_ << "\" (" << id_
 		// << ") with: " << list_users(players_, __func__) << ". Settings: map: " << s["id"]
 		<< ") with: " << list_users(players_, __func__)
 		<< ". Settings: map: " << multiplayer["mp_scenario"]
@@ -701,10 +704,12 @@ bool game::describe_slots()
 	return true;
 }
 
-bool game::player_is_banned(const socket_ptr& sock) const
+bool game::player_is_banned(const socket_ptr& sock, const std::string& name) const
 {
 	auto ban = std::find(bans_.begin(), bans_.end(), client_address(sock));
-	return ban != bans_.end();
+	auto name_ban = std::find(name_bans_.begin(), name_bans_.end(), name);
+
+	return ban != bans_.end() || name_ban != name_bans_.end();
 }
 
 void game::mute_all_observers()
@@ -857,7 +862,7 @@ socket_ptr game::ban_user(const simple_wml::node& ban, const socket_ptr& banner)
 	} else if(user == banner) {
 		send_server_message("Don't ban yourself, silly.", banner);
 		return socket_ptr();
-	} else if(player_is_banned(user)) {
+	} else if(player_is_banned(user, username.to_string())) {
 		send_server_message("'" + username.to_string() + "' is already banned.", banner);
 		return socket_ptr();
 	} else if(player_connections_.find(user)->info().is_moderator()) {
@@ -869,6 +874,7 @@ socket_ptr game::ban_user(const simple_wml::node& ban, const socket_ptr& banner)
 	         << client_address(user) << ")\tfrom game:\t\"" << name_ << "\" (" << id_ << ")\n";
 
 	bans_.push_back(client_address(user));
+	name_bans_.push_back(username.to_string());
 	send_and_record_server_message(username.to_string() + " has been banned.");
 
 	if(is_member(user)) {
@@ -897,7 +903,7 @@ void game::unban_user(const simple_wml::node& unban, const socket_ptr& unbanner)
 		return;
 	}
 
-	if(!player_is_banned(user)) {
+	if(!player_is_banned(user, username.to_string())) {
 		send_server_message("'" + username.to_string() + "' is not banned.", unbanner);
 		return;
 	}
@@ -908,6 +914,7 @@ void game::unban_user(const simple_wml::node& unban, const socket_ptr& unbanner)
 		<< id_ << ")\n";
 
 	bans_.erase(std::remove(bans_.begin(), bans_.end(), client_address(user)), bans_.end());
+	name_bans_.erase(std::remove(name_bans_.begin(), name_bans_.end(), username.to_string()), name_bans_.end());
 	send_and_record_server_message(username.to_string() + " has been unbanned.");
 }
 
@@ -1444,7 +1451,7 @@ bool game::add_player(const socket_ptr& player, bool observer)
 		send_user_list();
 	}
 
-	const std::string clones = has_same_ip(player, observer);
+	const std::string clones = has_same_ip(player);
 	if(!clones.empty()) {
 		send_and_record_server_message(
 			player_connections_.find(user)->info().name() + " has the same IP as: " + clones);
@@ -1609,6 +1616,7 @@ void game::new_scenario(const socket_ptr& sender)
 			players_not_advanced_.insert(user_ptr);
 		}
 	}
+	started_ = false;
 }
 
 void game::load_next_scenario(const socket_ptr& user)
@@ -1718,9 +1726,9 @@ bool game::controls_side(const std::vector<int>& sides, const socket_ptr& player
 	return false;
 }
 
-std::string game::has_same_ip(const socket_ptr& user, bool observer) const
+std::string game::has_same_ip(const socket_ptr& user) const
 {
-	const user_vector users = observer ? players_ : all_game_users();
+	const user_vector users = all_game_users();
 	const std::string ip = client_address(user);
 
 	std::string clones;
@@ -1816,6 +1824,16 @@ static bool is_invalid_filename_char(char c)
 	);
 }
 
+std::string game::get_replay_filename()
+{
+	std::stringstream name;
+	name << (*starting_pos(level_.root()))["name"] << " Turn " << current_turn() << " (" << id_ << ").bz2";
+	std::string filename(name.str());
+	std::replace(filename.begin(), filename.end(), ' ', '_');
+	filename.erase(std::remove_if(filename.begin(), filename.end(), is_invalid_filename_char), filename.end());
+	return filename;
+}
+
 void game::save_replay()
 {
 	if(!save_replays_ || !started_ || history_.empty()) {
@@ -1832,9 +1850,6 @@ void game::save_replay()
 	}
 
 	history_.clear();
-
-	std::stringstream name;
-	name << (*starting_pos(level_.root()))["name"] << " Turn " << current_turn();
 
 	std::stringstream replay_data;
 	try {
@@ -1858,16 +1873,10 @@ void game::save_replay()
 			<< (has_old_replay ? "" : "\t[command]\n\t\t[start]\n\t\t[/start]\n\t[/command]\n")
 			<< replay_commands << "[/replay]\n";
 
-		name << " (" << id_ << ").bz2";
-
 		std::string replay_data_str = replay_data.str();
 		simple_wml::document replay(replay_data_str.c_str(), simple_wml::INIT_STATIC);
 
-		std::string filename(name.str());
-
-		std::replace(filename.begin(), filename.end(), ' ', '_');
-		filename.erase(std::remove_if(filename.begin(), filename.end(), is_invalid_filename_char), filename.end());
-
+		std::string filename = get_replay_filename();
 		DBG_GAME << "saving replay: " << filename << std::endl;
 
 		filesystem::scoped_ostream os(filesystem::ostream_file(replay_save_path_ + filename));

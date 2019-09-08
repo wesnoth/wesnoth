@@ -366,9 +366,6 @@ public:
 	//function which, when given a 1-based side will return the color used by that side.
 	static const color_range get_side_color_range(int side);
 
-	static color_t get_side_rgb(int side) { return(get_side_color_range(side).mid()); }
-	static color_t get_side_rgb_max(int side) { return(get_side_color_range(side).max()); }
-	static color_t get_side_rgb_min(int side) { return(get_side_color_range(side).min()); }
 	static color_t get_side_color(int side);
 	static color_t get_minimap_color(int side);
 

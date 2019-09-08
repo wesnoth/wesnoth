@@ -33,7 +33,7 @@
 #include <vector>
 #include <thread>
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 #include <boost/range/adaptor/reversed.hpp>
 
@@ -84,6 +84,14 @@ void context::add_handler(sdl_handler* ptr)
 	 * won't be called for the event that caused them to be added.
 	 */
 	staging_handlers.push_back(ptr);
+}
+
+bool context::has_handler(const sdl_handler* ptr) const
+{
+	if(handlers.cend() != std::find(handlers.cbegin(), handlers.cend(), ptr)) {
+		return true;
+	}
+	return staging_handlers.cend() != std::find(staging_handlers.cbegin(), staging_handlers.cend(), ptr);
 }
 
 bool context::remove_handler(sdl_handler* ptr)
@@ -234,6 +242,49 @@ sdl_handler::sdl_handler(const bool auto_join)
 	}
 }
 
+sdl_handler::sdl_handler(const sdl_handler &that)
+	: has_joined_(that.has_joined_)
+	, has_joined_global_(that.has_joined_global_)
+{
+	if(has_joined_global_) {
+		assert(!event_contexts.empty());
+		event_contexts.front().add_handler(this);
+	} else if(has_joined_) {
+		bool found_context = false;
+		for(auto &context : boost::adaptors::reverse(event_contexts)) {
+			if(context.has_handler(&that)) {
+				found_context = true;
+				context.add_handler(this);
+				break;
+			}
+		}
+
+		if (!found_context) {
+			throw std::logic_error("Copy-constructing a sdl_handler that has_joined_ but can't be found by searching contexts");
+		}
+	}
+}
+
+sdl_handler &sdl_handler::operator=(const sdl_handler &that)
+{
+	if(that.has_joined_global_) {
+		join_global();
+	} else if(that.has_joined_) {
+		for(auto &context : boost::adaptors::reverse(event_contexts)) {
+			if(context.has_handler(&that)) {
+				join(context);
+				break;
+			}
+		}
+	} else if(has_joined_) {
+		leave();
+	} else if(has_joined_global_) {
+		leave_global();
+	}
+
+	return *this;
+}
+
 sdl_handler::~sdl_handler()
 {
 	if(has_joined_) {
@@ -281,8 +332,7 @@ void sdl_handler::join_same(sdl_handler* parent)
 	}
 
 	for(auto& context : boost::adaptors::reverse(event_contexts)) {
-		handler_list& handlers = context.handlers;
-		if(std::find(handlers.begin(), handlers.end(), parent) != handlers.end()) {
+		if(context.has_handler(parent)) {
 			join(context);
 			return;
 		}
@@ -486,7 +536,7 @@ void pump()
 	}
 
 	// remove all inputs, draw events and only keep the last of the resize events
-	// This will turn horrible after ~38 days when the uint32_t wraps.
+	// This will turn horrible after ~49 days when the uint32_t wraps.
 	if(resize_found || SDL_GetTicks() <= last_resize_event.window.timestamp + resize_timeout) {
 		events.erase(std::remove_if(events.begin(), events.end(), remove_on_resize), events.end());
 	} else if(SDL_GetTicks() > last_resize_event.window.timestamp + resize_timeout && !last_resize_event_used) {
@@ -520,7 +570,7 @@ void pump()
 				if(event.motion.state & SDL_BUTTON(SDL_BUTTON_RIGHT))
 				{
 					SDL_Rect r = CVideo::get_singleton().screen_area();
-					
+
 					// TODO: Check if SDL_FINGERMOTION is actually signaled for COMPLETE motions (I doubt, but tbs)
 					SDL_Event touch_event;
 					touch_event.type = SDL_FINGERMOTION;
@@ -534,7 +584,7 @@ void pump()
 					touch_event.tfinger.y = static_cast<float>(event.motion.y) / r.h;
 					touch_event.tfinger.pressure = 1;
 					::SDL_PushEvent(&touch_event);
-					
+
 					event.motion.state = SDL_BUTTON(SDL_BUTTON_LEFT);
 					event.motion.which = SDL_TOUCH_MOUSEID;
 				}
@@ -545,7 +595,7 @@ void pump()
 				{
 					event.button.button = SDL_BUTTON_LEFT;
 					event.button.which = SDL_TOUCH_MOUSEID;
-					
+
 					SDL_Rect r = CVideo::get_singleton().screen_area();
 					SDL_Event touch_event;
 					touch_event.type = (event.type == SDL_MOUSEBUTTONDOWN) ? SDL_FINGERDOWN : SDL_FINGERUP;

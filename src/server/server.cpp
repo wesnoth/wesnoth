@@ -38,7 +38,6 @@
 #include "server/metrics.hpp"
 #include "server/player.hpp"
 #include "server/player_network.hpp"
-#include "server/sample_user_handler.hpp"
 #include "server/simple_wml.hpp"
 #include "server/user_handler.hpp"
 
@@ -213,7 +212,7 @@ const std::string help_msg =
 	" k[ick]ban <mask> <time> <reason>, help, games, metrics,"
 	" netstats [all], [lobby]msg <message>, motd [<message>],"
 	" pm|privatemsg <nickname> <message>, requests, sample, searchlog <mask>,"
-	" signout, stats, status [<mask>], unban <ipmask>\n"
+	" signout, stats, status [<mask>], stopgame <nick>, unban <ipmask>\n"
 	"Specific strings (those not in between <> like the command names)"
 	" are case insensitive.";
 
@@ -230,6 +229,7 @@ server::server(int port,
 #ifndef _WIN32
 	, input_path_()
 #endif
+	, uuid_("")
 	, config_file_(config_file)
 	, cfg_(read_config())
 	, accepted_versions_()
@@ -246,7 +246,6 @@ server::server(int port,
 	, last_user_seen_time_(std::time(nullptr))
 	, restart_command()
 	, max_ip_log_size_(0)
-	, uh_name_()
 	, deny_unregistered_login_(false)
 	, save_replays_(false)
 	, replay_save_path_()
@@ -260,9 +259,7 @@ server::server(int port,
 	, join_lobby_response_("[join_lobby]\n[/join_lobby]\n", simple_wml::INIT_COMPRESSED)
 	, games_and_users_list_("[gamelist]\n[/gamelist]\n", simple_wml::INIT_STATIC)
 	, metrics_()
-	, last_ping_(std::time(nullptr))
 	, dump_stats_timer_(io_service_)
-	, last_uh_clean_(last_ping_)
 	, cmd_handlers_()
 	, timer_(io_service_)
 	, lan_server_timer_(io_service_)
@@ -406,6 +403,7 @@ void server::setup_handlers()
 	SETUP_HANDLER("sl", &server::searchlog_handler);
 	SETUP_HANDLER("dul", &server::dul_handler);
 	SETUP_HANDLER("deny_unregistered_login", &server::dul_handler);
+	SETUP_HANDLER("stopgame", &server::stopgame);
 
 #undef SETUP_HANDLER
 }
@@ -456,7 +454,6 @@ void server::load_config()
 	admin_passwd_ = cfg_["passwd"].str();
 	motd_ = cfg_["motd"].str();
 	lan_server_ = cfg_["lan_server"].to_time_t(0);
-	uh_name_ = cfg_["user_handler"].str();
 
 	deny_unregistered_login_ = cfg_["deny_unregistered_login"].to_bool();
 
@@ -523,21 +520,12 @@ void server::load_config()
 	// nullptr every time we want to use it.
 	user_handler_.reset();
 
-	if(const config& user_handler = cfg_.child("user_handler")) {
-		if(uh_name_ == "sample") {
-			user_handler_.reset(new suh(user_handler));
-		}
 #ifdef HAVE_MYSQLPP
-		else if(uh_name_ == "forum" || uh_name_.empty()) {
-			user_handler_.reset(new fuh(user_handler));
-		}
-#endif
-		// Initiate the mailer class with the [mail] tag
-		// from the config file
-		if(user_handler_) {
-			user_handler_->init_mailer(cfg_.child("mail"));
-		}
+	if(const config& user_handler = cfg_.child("user_handler")) {
+		user_handler_.reset(new fuh(user_handler));
+		uuid_ = user_handler_->get_uuid();
 	}
+#endif
 }
 
 bool server::ip_exceeds_connection_limit(const std::string& ip) const
@@ -583,16 +571,6 @@ void server::dump_stats(const boost::system::error_code& ec)
 			   << "\tnumber_of_games = " << games().size() << "\tnumber_of_users = " << player_connections_.size()
 			   << "\n";
 	start_dump_stats();
-}
-
-void server::clean_user_handler(const std::time_t& now)
-{
-	if(!user_handler_) {
-		return;
-	}
-
-	last_uh_clean_ = now;
-	user_handler_->clean_up();
 }
 
 void server::handle_new_client(socket_ptr socket)
@@ -723,16 +701,19 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 	}
 
 	const bool is_moderator = user_handler_ && user_handler_->user_is_moderator(username);
-	const user_handler::BAN_TYPE auth_ban = user_handler_
-		? user_handler_->user_is_banned(username, client_address(socket))
-		: user_handler::BAN_NONE;
+	user_handler::ban_info auth_ban;
 
-	if(auth_ban) {
+	if(user_handler_) {
+		auth_ban = user_handler_->user_is_banned(username, client_address(socket));
+	}
+
+	if(auth_ban.type) {
 		std::string ban_type_desc;
 		std::string ban_reason;
 		const char* msg_numeric;
+		std::string ban_duration = std::to_string(auth_ban.duration);
 
-		switch(auth_ban) {
+		switch(auth_ban.type) {
 		case user_handler::BAN_USER:
 			ban_type_desc = "account";
 			msg_numeric = MP_NAME_AUTH_BAN_USER_ERROR;
@@ -754,10 +735,18 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 			ban_reason = ban_type_desc;
 		}
 
+		ban_reason += " (" + ban_duration + ")";
+
 		if(!is_moderator) {
 			LOG_SERVER << client_address(socket) << "\t" << username << "\tis banned by user_handler (" << ban_type_desc
 					   << ")\n";
-			async_send_error(socket, "You are banned from this server: " + ban_reason, msg_numeric);
+			if(auth_ban.duration) {
+				// Temporary ban
+				async_send_error(socket, "You are banned from this server: " + ban_reason, msg_numeric, {{"duration", ban_duration}});
+			} else {
+				// Permanent ban
+				async_send_error(socket, "You are banned from this server: " + ban_reason, msg_numeric);
+			}
 			return false;
 		} else {
 			LOG_SERVER << client_address(socket) << "\t" << username << "\tis banned by user_handler (" << ban_type_desc
@@ -792,6 +781,16 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 	LOG_SERVER << client_address(socket) << "\t" << username << "\thas logged on"
 			   << (registered ? " to a registered account" : "") << "\n";
 
+	std::shared_ptr<game> last_sent;
+	for(const auto& record : player_connections_.get<game_t>()) {
+		auto g_ptr { record.get_game() };
+		if(g_ptr != last_sent) {
+			// Note: This string is parsed by the client to identify lobby join messages!
+			g_ptr->send_server_message_to_all(username + " has logged into the lobby");
+			last_sent = g_ptr;
+		}
+	}
+
 	if(is_moderator) {
 		LOG_SERVER << "Admin automatically recognized: IP: " << client_address(socket) << "\tnick: " << username
 				   << std::endl;
@@ -802,7 +801,7 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 			"If you no longer want to be automatically authenticated use '/query signout'.");
 	}
 
-	if(auth_ban) {
+	if(auth_ban.type) {
 		send_server_message(socket, "You are currently banned by the forum administration.");
 	}
 
@@ -851,7 +850,7 @@ bool server::authenticate(
 			// This name is registered and no password provided
 			if(password.empty()) {
 				if(!name_taken) {
-					send_password_request(socket, "The nickname '" + username + "' is registered on this server.",  
+					send_password_request(socket, "The nickname '" + username + "' is registered on this server.",
 						username, version, MP_PASSWORD_REQUEST);
 				} else {
 					send_password_request(socket,
@@ -909,7 +908,7 @@ bool server::authenticate(
 						"You have made too many failed login attempts.", MP_TOO_MANY_ATTEMPTS_ERROR);
 				} else {
 					send_password_request(socket,
-						"The password you provided for the nickname '" + username + "' was incorrect.", username,version, 
+						"The password you provided for the nickname '" + username + "' was incorrect.", username,version,
 						MP_INCORRECT_PASSWORD_ERROR);
 				}
 
@@ -1195,67 +1194,6 @@ void server::handle_nickserv(socket_ptr socket, simple_wml::node& nickserv)
 		return;
 	}
 
-	if(nickserv.child("register")) {
-		try {
-			(user_handler_->add_user(player_connections_.find(socket)->name(),
-					(*nickserv.child("register"))["mail"].to_string(),
-					(*nickserv.child("register"))["password"].to_string()));
-
-			std::stringstream msg;
-			msg << "Your username has been registered." <<
-					// Warn that providing an email address might be a good idea
-					((*nickserv.child("register"))["mail"].empty()
-						? " It is recommended that you provide an email address for password recovery."
-						: "");
-
-			send_server_message(socket, msg.str());
-
-			// Mark the player as registered and send the other clients
-			// an update to display this change
-			player_connections_.find(socket)->info().mark_registered();
-
-			simple_wml::document diff;
-			make_change_diff(games_and_users_list_.root(), nullptr, "user",
-					player_connections_.find(socket)->info().config_address(), diff);
-			send_to_lobby(diff);
-
-		} catch(const user_handler::error& e) {
-			send_server_message(socket,
-				"There was an error registering your username. The error message was: " + e.message);
-		}
-
-		return;
-	}
-
-	// A user requested to update his password or mail
-	if(nickserv.child("set")) {
-		if(!(user_handler_->user_exists(player_connections_.find(socket)->name()))) {
-			send_server_message(socket, "You are not registered. Please register first.");
-			return;
-		}
-
-		const simple_wml::node& set = *(nickserv.child("set"));
-
-		try {
-			user_handler_->set_user_detail(
-				player_connections_.find(socket)->name(), set["detail"].to_string(), set["value"].to_string());
-
-			send_server_message(socket, "Your details have been updated.");
-
-		} catch(const user_handler::error& e) {
-			send_server_message(socket,
-				"There was an error updating your details. The error message was: " + e.message);
-		}
-
-		return;
-	}
-
-	// A user requested information about another user
-	if(nickserv.child("details")) {
-		send_server_message(socket, "Valid details for this server are: " + user_handler_->get_valid_details());
-		return;
-	}
-
 	// A user requested a list of which details can be set
 	if(nickserv.child("info")) {
 		try {
@@ -1269,41 +1207,6 @@ void server::handle_nickserv(socket_ptr socket, simple_wml::node& nickserv)
 			);
 		}
 
-		return;
-	}
-
-	// A user requested to delete his nick
-	if(nickserv.child("drop")) {
-		if(!(user_handler_->user_exists(player_connections_.find(socket)->name()))) {
-			send_server_message(socket, "You are not registered.");
-			return;
-		}
-
-		// With the current policy of dissallowing to log in with a
-		// registered username without the password we should never get
-		// to call this
-		if(!(player_connections_.find(socket)->info().registered())) {
-			send_server_message(socket, "You are not logged in.");
-			return;
-		}
-
-		try {
-			user_handler_->remove_user(player_connections_.find(socket)->name());
-			send_server_message(socket, "Your username has been dropped.");
-
-			// Mark the player as not registered and send the other clients
-			// an update to display this change.
-			player_connections_.find(socket)->info().mark_registered(false);
-
-			simple_wml::document diff;
-			make_change_diff(games_and_users_list_.root(), nullptr, "user",
-				player_connections_.find(socket)->info().config_address(), diff);
-
-			send_to_lobby(diff);
-		} catch(const user_handler::error& e) {
-			send_server_message(socket,
-				"There was an error dropping your username. The error message was: " + e.message);
-		}
 		return;
 	}
 }
@@ -1360,6 +1263,7 @@ void server::create_game(player_record& host_record, simple_wml::node& create_ga
 {
 	const std::string game_name = create_game["name"].to_string();
 	const std::string game_password = create_game["password"].to_string();
+	const std::string initial_bans = create_game["ignored"].to_string();
 
 	DBG_SERVER << client_address(host_record.socket()) << "\t" << host_record.info().name()
 			   << "\tcreates a new game: \"" << game_name << "\".\n";
@@ -1373,16 +1277,29 @@ void server::create_game(player_record& host_record, simple_wml::node& create_ga
 
 	wesnothd::game& g = *host_record.get_game();
 
+	DBG_SERVER << "initial bans: " << initial_bans << "\n";
+	if(initial_bans != "") {
+		g.set_name_bans(utils::split(initial_bans,','));
+	}
+
 	if(game_password.empty() == false) {
 		g.set_password(game_password);
 	}
 
 	create_game.copy_into(g.level().root());
+
+	if(user_handler_) {
+		user_handler_->db_insert_game_info(uuid_, g.id(), game_config::wesnoth_version.str(), g.name());
+	}
 }
 
 void server::cleanup_game(game* game_ptr)
 {
 	metrics_.game_terminated(game_ptr->termination_reason());
+
+	if(user_handler_){
+		user_handler_->db_update_game_end(uuid_, game_ptr->id(), game_ptr->get_replay_filename());
+	}
 
 	simple_wml::node* const gamelist = games_and_users_list_.child("gamelist");
 	assert(gamelist != nullptr);
@@ -1443,7 +1360,7 @@ void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
 		send_server_message(socket, "Only registered users are allowed to join this game.");
 		async_send_doc(socket, games_and_users_list_);
 		return;
-	} else if(g->player_is_banned(socket)) {
+	} else if(g->player_is_banned(socket, player_connections_.find(socket)->info().name())) {
 		DBG_SERVER << client_address(socket)
 				   << "\tReject banned player: " << player_connections_.find(socket)->info().name()
 				   << "\tfrom game:\t\"" << g->name() << "\" (" << game_id << ").\n";
@@ -1451,7 +1368,7 @@ void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
 		send_server_message(socket, "You are banned from this game.");
 		async_send_doc(socket, games_and_users_list_);
 		return;
-	} else if(!observer && !g->password_matches(password)) {
+	} else if(!g->password_matches(password)) {
 		WRN_SERVER << client_address(socket) << "\t" << player_connections_.find(socket)->info().name()
 				   << "\tattempted to join game:\t\"" << g->name() << "\" (" << game_id << ") with bad password\n";
 		async_send_doc(socket, leave_game_doc);
@@ -1622,8 +1539,9 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			return;
 		}
 
-		g.new_scenario(socket);
 		g.save_replay();
+
+		g.new_scenario(socket);
 		g.reset_last_synced_context_id();
 
 		// Record the full scenario in g.level()
@@ -1694,24 +1612,34 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		g.send_data(data, socket);
 		g.start_game(socket);
 
+		if(user_handler_) {
+			const simple_wml::node& multiplayer = *g.level().root().child("multiplayer");
+			user_handler_->db_update_game_start(uuid_, g.id(), multiplayer["mp_scenario"].to_string(), multiplayer["mp_era"].to_string());
+
+			const simple_wml::node::child_list& sides = g.get_sides_list();
+			for(unsigned side_index = 0; side_index < sides.size(); ++side_index) {
+				const simple_wml::node& side = *sides[side_index];
+				user_handler_->db_insert_game_player_info(uuid_, g.id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_string(), side["faction"].to_string());
+			}
+
+			const std::string mods = multiplayer["active_mods"].to_string();
+			if(mods != "") {
+				for(const std::string mod : utils::split(mods, ',')){
+					user_handler_->db_insert_modification_info(uuid_, g.id(), mod);
+				}
+			}
+		}
+
 		// update the game having changed in the lobby
 		update_game_in_lobby(g);
 		return;
-	} else if(data.child("update_game")) {
-		g.update_game();
-		update_game_in_lobby(g);
-		return;
 	} else if(data.child("leave_game")) {
-		// May be better to just let remove_player() figure out when a game ends.
-		if((g.is_player(socket) && g.nplayers() == 1) || (g.is_owner(socket) && (!g.started() || g.nplayers() == 0))) {
-			// Remove the player in delete_game() with all other remaining
-			// ones so he gets the updated gamelist.
+		if(g.remove_player(socket)) {
 			delete_game(g.id());
 		} else {
 			auto description = g.description();
-			g.remove_player(socket);
 
-			player_connections_.modify(player_connections_.find(socket), player_record::enter_lobby);
+			player_connections_.modify(player_connections_.find(socket), std::bind(&player_record::enter_lobby, _1));
 			if(!g_ptr.expired()) {
 				g.describe_slots();
 			}
@@ -1788,7 +1716,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			: g.kick_member(*data.child("kick"), socket));
 
 		if(user) {
-			player_connections_.modify(player_connections_.find(user), player_record::enter_lobby);
+			player_connections_.modify(player_connections_.find(user), std::bind(&player_record::enter_lobby, _1));
 			if(g.describe_slots()) {
 				update_game_in_lobby(g, user);
 			}
@@ -1818,6 +1746,9 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			g.set_termination_reason((*info)["condition"].to_string());
 			if((*info)["condition"].to_string() == "out of sync") {
 				g.send_server_message_to_all(player.name() + " reports out of sync errors.");
+				if(user_handler_){
+					user_handler_->db_set_oos_flag(uuid_, g.id());
+				}
 			}
 		}
 
@@ -1862,7 +1793,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			   << data.output();
 }
 
-using SendQueue = std::map<socket_ptr, std::deque<std::shared_ptr<simple_wml::document>>>;
+using SendQueue = std::map<socket_ptr, std::queue<std::shared_ptr<simple_wml::document>>>;
 SendQueue send_queue;
 
 static void handle_send_to_player(socket_ptr socket)
@@ -1871,7 +1802,7 @@ static void handle_send_to_player(socket_ptr socket)
 		send_queue.erase(socket);
 	} else {
 		async_send_doc(socket, *(send_queue[socket].front()), handle_send_to_player, handle_send_to_player);
-		send_queue[socket].pop_front();
+		send_queue[socket].pop();
 	}
 }
 
@@ -1882,7 +1813,7 @@ void send_to_player(socket_ptr socket, simple_wml::document& doc)
 		send_queue[socket];
 		async_send_doc(socket, doc, handle_send_to_player, handle_send_to_player);
 	} else {
-		send_queue[socket].push_back(std::shared_ptr<simple_wml::document>(doc.clone()));
+		send_queue[socket].emplace(doc.clone());
 	}
 }
 
@@ -1910,8 +1841,9 @@ void server::remove_player(socket_ptr socket)
 	}
 
 	const std::shared_ptr<game> g = iter->get_game();
+	bool game_ended = false;
 	if(g) {
-		g->remove_player(socket, true, false);
+		game_ended = g->remove_player(socket, true, false);
 	}
 
 	const simple_wml::node::child_list& users = games_and_users_list_.root().children("user");
@@ -1945,6 +1877,8 @@ void server::remove_player(socket_ptr socket)
 
 	if(lan_server_ && player_connections_.size() == 0)
 		start_lan_server_timer();
+
+	if(game_ended) delete_game(g->id());
 }
 
 void server::send_to_lobby(simple_wml::document& data, socket_ptr exclude) const
@@ -2886,6 +2820,26 @@ void server::dul_handler(const std::string& /*issuer_name*/,
 	}
 }
 
+void server::stopgame(const std::string& /*issuer_name*/,
+		const std::string& /*query*/,
+		std::string& parameters,
+		std::ostringstream* out)
+{
+	auto player = player_connections_.get<name_t>().find(parameters);
+
+	if(player != player_connections_.get<name_t>().end()){
+		std::shared_ptr<game> g = player->get_game();
+		if(g){
+			*out << "Player '" << parameters << "' is in game with id '" << g->id() << "' named '" << g->name() << "'.  Ending game...";
+			delete_game(g->id());
+		} else {
+			*out << "Player '" << parameters << "' is not currently in a game.";
+		}
+	} else {
+		*out << "Player '" << parameters << "' is not currently logged in.";
+	}
+}
+
 void server::delete_game(int gameid)
 {
 	// Set the availability status for all quitting users.
@@ -2911,7 +2865,7 @@ void server::delete_game(int gameid)
 	// This will call cleanup_game() deleter since there won't
 	// be any references to that game from player_connections_ anymore
 	for(const auto& it : range_vctor) {
-		player_connections_.get<game_t>().modify(it, player_record::enter_lobby);
+		player_connections_.get<game_t>().modify(it, std::bind(&player_record::enter_lobby, _1));
 	}
 
 	// send users in the game a notification to leave the game since it has ended

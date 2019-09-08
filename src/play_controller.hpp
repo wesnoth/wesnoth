@@ -34,6 +34,7 @@ class game_data;
 class team;
 class unit;
 class replay;
+class replay_controller;
 class saved_game;
 struct mp_game_settings;
 class game_classification;
@@ -224,7 +225,8 @@ public:
 
 	class hotkey_handler;
 
-	virtual bool is_replay() { return false; }
+	virtual replay_controller * get_replay_controller() const { return nullptr; }
+	bool is_replay() const { return get_replay_controller() != nullptr; }
 
 	t_string get_scenario_name() const
 	{

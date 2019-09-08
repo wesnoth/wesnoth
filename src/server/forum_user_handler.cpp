@@ -42,8 +42,19 @@ fuh::fuh(const config& c)
 	, db_users_table_(c["db_users_table"].str())
 	, db_banlist_table_(c["db_banlist_table"].str())
 	, db_extra_table_(c["db_extra_table"].str())
+	, db_game_info_table_(c["db_game_info_table"].str())
+	, db_game_player_info_table_(c["db_game_player_info_table"].str())
+	, db_game_modification_info_table_(c["db_game_modification_info_table"].str())
+	, db_user_group_table_(c["db_user_group_table"].str())
+	, mp_mod_group_(0)
 	, conn(mysql_init(nullptr))
 {
+	try {
+		mp_mod_group_ = std::stoi(c["mp_mod_group"].str());
+	} catch(...) {
+		ERR_UH << "Failed to convert the mp_mod_group value of '" << c["mp_mod_group"].str() << "' into an int!  Defaulting to " << mp_mod_group_ << "." << std::endl;
+	}
+	mysql_options(conn, MYSQL_SET_CHARSET_NAME, "utf8mb4");
 	if(!conn || !mysql_real_connect(conn, db_host_.c_str(),  db_user_.c_str(), db_password_.c_str(), db_name_.c_str(), 0, nullptr, 0)) {
 		ERR_UH << "Could not connect to database: " << mysql_errno(conn) << ": " << mysql_error(conn) << std::endl;
 	}
@@ -51,14 +62,6 @@ fuh::fuh(const config& c)
 
 fuh::~fuh() {
 	mysql_close(conn);
-}
-
-void fuh::add_user(const std::string& /*name*/, const std::string& /*mail*/, const std::string& /*password*/) {
-	throw error("For now please register at https://forums.wesnoth.org");
-}
-
-void fuh::remove_user(const std::string& /*name*/) {
-	throw error("'Dropping your nickname is currently impossible");
 }
 
 // The hashing code is basically taken from forum_auth.cpp
@@ -153,9 +156,9 @@ bool fuh::user_is_moderator(const std::string& name) {
 	if(!user_exists(name)) return false;
 
 	try {
-		return get_writable_detail_for_user<int>(name, "user_is_moderator") == 1;
+		return get_writable_detail_for_user<int>(name, "user_is_moderator") == 1 || (mp_mod_group_ != 0 && is_user_in_group(name, mp_mod_group_));
 	} catch (const sql_error& e) {
-		ERR_UH << "Could not query user_is_moderator for user '" << name << "' :" << e.message << std::endl;
+		ERR_UH << "Could not query user_is_moderator/MP Moderators group for user '" << name << "' :" << e.message << std::endl;
 		// If the database is down mark nobody as a mod
 		return false;
 	}
@@ -172,7 +175,7 @@ void fuh::set_is_moderator(const std::string& name, const bool& is_moderator) {
 	}
 }
 
-fuh::BAN_TYPE fuh::user_is_banned(const std::string& name, const std::string& addr)
+fuh::ban_info fuh::user_is_banned(const std::string& name, const std::string& addr)
 {
 	//
 	// NOTE: glob IP and email address bans are NOT supported yet since they
@@ -186,17 +189,20 @@ fuh::BAN_TYPE fuh::user_is_banned(const std::string& name, const std::string& ad
 	const std::string& is_extant_ban_sql =
 		"ban_exclude = 0 AND (ban_end = 0 OR ban_end >=" + std::to_string(std::time(nullptr)) + ")";
 
+	// TODO: retrieve full ban info in a single statement instead of issuing
+	//       separate queries to check for a ban's existence and its duration.
+
 	try {
 		if(!addr.empty() && prepared_statement<bool>("SELECT 1 FROM `" + db_banlist_table_ + "` WHERE UPPER(ban_ip) = UPPER(?) AND " + is_extant_ban_sql, addr)) {
 			LOG_UH << "User '" << name << "' ip " << addr << " banned by IP address\n";
-			return BAN_IP;
+			return retrieve_ban_info(BAN_IP, addr);
 		}
 	} catch(const sql_error& e) {
 		ERR_UH << "Could not check forum bans on address '" << addr << "' :" << e.message << '\n';
-		return BAN_NONE;
+		return {};
 	}
 
-	if(!user_exists(name)) return BAN_NONE;
+	if(!user_exists(name)) return {};
 
 	try {
 		auto uid = get_detail_for_user<unsigned int>(name, "user_id");
@@ -205,21 +211,67 @@ fuh::BAN_TYPE fuh::user_is_banned(const std::string& name, const std::string& ad
 			ERR_UH << "Invalid user id for user '" << name << "'\n";
 		} else if(prepared_statement<bool>("SELECT 1 FROM `" + db_banlist_table_ + "` WHERE ban_userid = ? AND " + is_extant_ban_sql, uid)) {
 			LOG_UH << "User '" << name << "' uid " << uid << " banned by uid\n";
-			return BAN_USER;
+			return retrieve_ban_info(BAN_USER, uid);
 		}
 
 		auto email = get_detail_for_user<std::string>(name, "user_email");
 
 		if(!email.empty() && prepared_statement<bool>("SELECT 1 FROM `" + db_banlist_table_ + "` WHERE UPPER(ban_email) = UPPER(?) AND " + is_extant_ban_sql, email)) {
 			LOG_UH << "User '" << name << "' email " << email << " banned by email address\n";
-			return BAN_EMAIL;
+			return retrieve_ban_info(BAN_EMAIL, email);
 		}
 
 	} catch(const sql_error& e) {
 		ERR_UH << "Could not check forum bans on user '" << name << "' :" << e.message << '\n';
 	}
 
-	return BAN_NONE;
+	return {};
+}
+
+template<typename T>
+fuh::ban_info fuh::retrieve_ban_info(fuh::BAN_TYPE type, T detail)
+{
+	std::string col;
+
+	switch(type) {
+	case BAN_USER:
+		col = "ban_userid";
+		break;
+	case BAN_EMAIL:
+		col = "ban_email";
+		break;
+	case BAN_IP:
+		col = "ban_ip";
+		break;
+	default:
+		return {};
+	}
+
+	try {
+		return { type, retrieve_ban_duration_internal(col, detail) };
+	} catch(const sql_error& e) {
+		//
+		// NOTE:
+		// If retrieve_ban_internal() fails to fetch the ban row, odds are the ban was
+		// lifted in the meantime (it's meant to be called by user_is_banned(), so we
+		// assume the ban expires in one second instead of returning 0 (permanent ban)
+		// just to err on the safe side (returning BAN_NONE would be a terrible idea,
+		// for that matter).
+		//
+		return { type, 1 };
+	}
+}
+
+std::time_t fuh::retrieve_ban_duration_internal(const std::string& col, const std::string& detail)
+{
+	const std::time_t end_time = prepared_statement<int>("SELECT `ban_end` FROM `" + db_banlist_table_ + "` WHERE UPPER(" + col + ") = UPPER(?)", detail);
+	return end_time ? end_time - std::time(nullptr) : 0;
+}
+
+std::time_t fuh::retrieve_ban_duration_internal(const std::string& col, unsigned int detail)
+{
+	const std::time_t end_time = prepared_statement<int>("SELECT `ban_end` FROM `" + db_banlist_table_ + "` WHERE " + col + " = ?", detail);
+	return end_time ? end_time - std::time(nullptr) : 0;
 }
 
 std::string fuh::user_info(const std::string& name) {
@@ -250,28 +302,11 @@ std::string fuh::user_info(const std::string& name) {
 	return info.str();
 }
 
-void fuh::set_user_detail(const std::string& /*user*/, const std::string& /*detail*/, const std::string& /*value*/) {
-	throw error("For now this is a 'read-only' user_handler");
-}
-
-std::string fuh::get_valid_details() {
-	return "For now this is a 'read-only' user_handler";
-}
-
 std::string fuh::get_hash(const std::string& user) {
 	try {
 		return get_detail_for_user<std::string>(user, "user_password");
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not retrieve password for user '" << user << "' :" << e.message << std::endl;
-		return "";
-	}
-}
-
-std::string fuh::get_mail(const std::string& user) {
-	try {
-		return get_detail_for_user<std::string>(user, "user_email");
-	} catch (const sql_error& e) {
-		ERR_UH << "Could not retrieve email for user '" << user << "' :" << e.message << std::endl;
 		return "";
 	}
 }
@@ -314,7 +349,10 @@ inline T fuh::prepared_statement(const std::string& sql, Args&&... args)
 		WRN_UH << "caught sql error: " << e.message << std::endl;
 		WRN_UH << "trying to reconnect and retry..." << std::endl;
 		//Try to reconnect and execute query again
-		if(!mysql_real_connect(conn, db_host_.c_str(),  db_user_.c_str(), db_password_.c_str(), db_name_.c_str(), 0, nullptr, 0)) {
+		mysql_close(conn);
+		conn = mysql_init(nullptr);
+		mysql_options(conn, MYSQL_SET_CHARSET_NAME, "utf8mb4");
+		if(!conn || !mysql_real_connect(conn, db_host_.c_str(),  db_user_.c_str(), db_password_.c_str(), db_name_.c_str(), 0, nullptr, 0)) {
 			ERR_UH << "Could not connect to database: " << mysql_errno(conn) << ": " << mysql_error(conn) << std::endl;
 			throw sql_error("Error querying database.");
 		}
@@ -351,6 +389,15 @@ void fuh::write_detail(const std::string& name, const std::string& detail, T&& v
 	}
 }
 
+bool fuh::is_user_in_group(const std::string& name, unsigned int group_id) {
+	try {
+		return prepared_statement<bool>("SELECT 1 FROM `" + db_users_table_ + "` u, `" + db_user_group_table_ + "` ug WHERE UPPER(u.username)=UPPER(?) AND u.USER_ID = ug.USER_ID AND ug.GROUP_ID = ?", name, group_id);
+	} catch (const sql_error& e) {
+		ERR_UH << "Could not execute test query for user group '" << group_id << "' and username '" << name << "'" << e.message << std::endl;
+		return false;
+	}
+}
+
 bool fuh::extra_row_exists(const std::string& name) {
 
 	// Make a test query for this username
@@ -359,6 +406,69 @@ bool fuh::extra_row_exists(const std::string& name) {
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not execute test query for user '" << name << "' :" << e.message << std::endl;
 		return false;
+	}
+}
+
+std::string fuh::get_uuid(){
+	try {
+		return prepared_statement<std::string>("SELECT UUID()");
+	} catch (const sql_error& e) {
+		ERR_UH << "Could not retrieve a UUID:" << e.message << std::endl;
+		return "";
+	}
+}
+
+void fuh::db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name){
+	try {
+		prepared_statement<void>("INSERT INTO `" + db_game_info_table_ + "`(INSTANCE_UUID, GAME_ID, INSTANCE_VERSION, GAME_NAME) VALUES(?, ?, ?, ?)",
+		uuid, game_id, version, name);
+	} catch (const sql_error& e) {
+		ERR_UH << "Could not insert into table `" + db_game_info_table_ + "`:" << e.message << std::endl;
+	}
+}
+
+void fuh::db_update_game_start(const std::string& uuid, int game_id, const std::string& map_name, const std::string& era_name){
+	try {
+		prepared_statement<void>("UPDATE `" + db_game_info_table_ + "` SET START_TIME = CURRENT_TIMESTAMP, MAP_NAME = ?, ERA_NAME = ? WHERE INSTANCE_UUID = ? AND GAME_ID = ?",
+		map_name, era_name, uuid, game_id);
+	} catch (const sql_error& e) {
+		ERR_UH << "Could not update the game's starting information on table `" + db_game_info_table_ + "`:" << e.message << std::endl;
+	}
+}
+
+void fuh::db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location){
+	try {
+		prepared_statement<void>("UPDATE `" + db_game_info_table_ + "` SET END_TIME = CURRENT_TIMESTAMP, REPLAY_NAME = ? WHERE INSTANCE_UUID = ? AND GAME_ID = ?",
+		replay_location, uuid, game_id);
+	} catch (const sql_error& e) {
+		ERR_UH << "Could not update the game's ending information on table `" + db_game_info_table_ + "`:" << e.message << std::endl;
+	}
+}
+
+void fuh::db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, const std::string& is_host, const std::string& faction){
+	try {
+		prepared_statement<void>("INSERT INTO `" + db_game_player_info_table_ + "`(INSTANCE_UUID, GAME_ID, USER_ID, SIDE_NUMBER, IS_HOST, FACTION) VALUES(?, ?, IFNULL((SELECT user_id FROM `"+db_users_table_+"` WHERE username = ?), -1), ?, ?, ?)",
+		uuid, game_id, username, side_number, is_host, faction);
+	} catch (const sql_error& e) {
+		ERR_UH << "Could not insert the game's player information on table `" + db_game_player_info_table_ + "`:" << e.message << std::endl;
+	}
+}
+
+void fuh::db_insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name){
+	try {
+		prepared_statement<void>("INSERT INTO `" + db_game_modification_info_table_ + "`(INSTANCE_UUID, GAME_ID, MODIFICATION_NAME) VALUES(?, ?, ?)",
+		uuid, game_id, modification_name);
+	} catch (const sql_error& e) {
+		ERR_UH << "Could not insert the game's modification information on table `" + db_game_modification_info_table_ + "`:" << e.message << std::endl;
+	}
+}
+
+void fuh::db_set_oos_flag(const std::string& uuid, int game_id){
+	try {
+		prepared_statement<void>("UPDATE `" + db_game_info_table_ + "` SET OOS = 'Y' WHERE INSTANCE_UUID = ? AND GAME_ID = ?",
+		uuid, game_id);
+	} catch (const sql_error& e) {
+		ERR_UH << "Could not update the game's OOS flag on table `" + db_game_info_table_ + "`:" << e.message << std::endl;
 	}
 }
 

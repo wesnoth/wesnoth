@@ -27,7 +27,7 @@ class version_info;
 /**
  * Exception thrown when the WML parser fails to read a .pbl file.
  */
-struct invalid_pbl_exception
+struct invalid_pbl_exception : public std::exception
 {
 	/**
 	 * Constructor.
@@ -44,6 +44,20 @@ struct invalid_pbl_exception
 
 	/** Error message to display. */
 	const std::string message;
+
+	/** Destructor.
+	 * Virtual to allow for subclassing.
+	 */
+	virtual ~invalid_pbl_exception() noexcept {}
+
+	/** Returns a pointer to the (constant) error description.
+	 *  @return A pointer to a const char*. The underlying memory
+	 *          is in posession of the Exception object. Callers must
+	 *          not attempt to free the memory.
+	 */
+	virtual const char* what() const noexcept {
+		return message.c_str();
+	}
 };
 
 bool remove_local_addon(const std::string& addon);

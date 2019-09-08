@@ -75,7 +75,7 @@ void item_palette::draw_item(const overlay& item, surface& image, std::stringstr
 	}
 
 	if(image->w != item_size_ || image->h != item_size_) {
-		image.assign(scale_surface(image, item_size_, item_size_));
+		image = scale_surface(image, item_size_, item_size_);
 	}
 
 	tooltip_text << item.name;

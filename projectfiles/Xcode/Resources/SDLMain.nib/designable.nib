@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -459,7 +460,7 @@ cyBMaWNlbnNlLgo
 </mutableString>
                                             <attributes>
                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" metaFont="label"/>
+                                                <font key="NSFont" metaFont="system" size="10"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural">
                                                     <tabStops>
                                                         <textTab alignment="left" location="0.0">
@@ -593,17 +594,17 @@ cyBMaWNlbnNlLgo
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" drawsBackground="NO" id="Pg7-qf-R9o">
                             <rect key="frame" x="1" y="1" width="455" height="406"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" id="503">
-                                    <rect key="frame" x="0.0" y="-2" width="455" height="2259"/>
+                                    <rect key="frame" x="0.0" y="-2" width="455" height="2149"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="455" height="406"/>
                                     <size key="maxSize" width="897" height="100000"/>
                                     <attributedString key="textStorage">
-                                        <fragment content="Version 1.14.4">
+                                        <fragment content="Version 1.15.1:">
                                             <attributes>
                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="10" name="HelveticaNeue-Bold"/>
@@ -711,74 +712,21 @@ cyBMaWNlbnNlLgo
                                         </fragment>
                                         <fragment>
                                             <mutableString key="content">
- * Security Fixes
-   * Fixed Lua being able to escape sandboxing via load/loadstring (CVE-2018-1999023).
- * Add-ons server
-   * Made it so plain-text .po catalogues in add-ons are detected and added to
-     the list of translations for them.
- * Campaigns
-   * Dead Water:
-     * In 'Tirigaz', take the situation into account of orcs being killed either
-       first or by undead.
-   * Delfador's Memoirs:
-     * Fix hero units costing upkeep (issue #3722)
-   * Eastern Invasion:
-     * Fixed missing prisoners and loss of recallable units in 'Captured'.
-   * Northern Rebirth:
-     * Level 0 units are not available anymore after scenario 5
-   * Secrets of the Ancients:
-     * Adjust gender of enemies to better match story in S11 &amp; 21 (issue #3294)
-     * Simplify dialog to fix possible confusion in S16 (issue #3291)
-     * Have nagas be able to recruit in S21 (issue #3293)
-   * The South Guard:
-     * S4: undead leader won't leave the castle anymore
-     * S5: the untypical situation that one can defeat the lich before finding
-       Urza Afalas is now handled
-   * Under the Burning Suns:
-     * S11: added custom graphics for the citadel.
-     * S12: clarified the alien bodies' weaknesses.
-     * Various visual improvements.
  * Editor
-   * Fixed saving a map as a scenario not enabling scenario editor tools.
- * Graphics
-   * New attack animation for the Peasant.
-   * Tweaked the Ruffian's attack animation timing.
+   * Fix buttons in the editor being inactive
  * Language and i18n
-   * Updated translations: British English, Bulgarian, Chinese (Simplified),
-     Chinese (Traditional), Czech, French, German, Hungarian, Japanese,
-     Scottish Gaelic, Slovak, Spanish
- * Lua API
-   * Upgrade to Lua 5.3.5.
+   * Updated translations: German, Portuguese (Brazil)
  * Multiplayer server
-   * Fixed lobby and whisper messages not having a maximum length.
- * User interface
-   * Improved the layout of the Statistics dialog.
-   * Allow changing dropdown menu selections with the scrollwheel (FR #3251).
-   * Fixed lobby chat box scrolling to top on a new message if it isn't at the
-     bottom (issue #2789).
-   * Fixed the unit preview pane not showing the default race icon when detailing
-     a single unit's stats.
-   * Sort units secondarily by XP in the unit list dialog.
-   * Whiteboard related bugfixes
- * WML engine
-   * Fixed errors about WESNOTH_VERSION not being defined when trying to load
-     add-ons that have preprocessor errors (issues #1924, #1634).
+   * Add support for storing game information in wesnoth's mysql database (PR#4204)
+   * When the forum user handler is enabled, the Multiplayer Moderators group is now also used when determining if someone is a moderator. (PR#4136)
+ * Units
+   * Fix typo in the Dune Ranger's advancements
+   * Additional animations for the Wose Shaman (PR#4229)
+   * Move Wose Shaman from DM and WoV to core (PR#4226)
+   * Move Wose Sapling from TRoW to core (PR#4226)
  * Miscellaneous and bug fixes
-   * Added an advanced preference to enable experimental PRNG combat.
-   * Campfires use illumination instead of a different ToD.
-   * Linux builds now enable security hardening by default.
-   * Fixed MP admins being unable to observe private games.
-   * Fixed MP faction, leader, and leader gender changes persisting even if the
-     selection dialog is dismissed.
-   * Fixed an issue with positioned sound sources ignoring the volume set in
-     Preferences after going off the audible radius and back (issue #3280).
-   * Fixed wmllint choking on gzipped binary files (e.g. gzipped tarballs).
-   * Fixed wmllint crashing on nonexistent paths provided in the command line
-     (issue #3286).
-   * Slight changes to the objectives dialogue (pr #3309)
-   * Greatly improved touch control support.
-   * Fixed wmlindent crashing on nonexistent paths provided in the command line
-     (issue #3346).
+   * use the 1.15 add-ons server
+   * Fix a crash if the credits (including all add-ons) are very long (PR#4207)
 
 </mutableString>
                                             <attributes>
@@ -886,7 +834,7 @@ cyBMaWNlbnNlLgo
                                                 </paragraphStyle>
                                             </attributes>
                                         </fragment>
-                                        <fragment content="Version 1.14.3">
+                                        <fragment content="Version 1.15.0:">
                                             <attributes>
                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="10" name="HelveticaNeue-Bold"/>
@@ -995,754 +943,148 @@ cyBMaWNlbnNlLgo
                                         <fragment>
                                             <mutableString key="content">
  * AI
-   * Fixed crash in presence of units with negative hitpoints (issue #3042).
-   * Efficiency improvements to filter evaluations in the Goto Micro AI and some
-     AI helper functions
+   * Micro AIs
+     * Add [avoid] tag functionality to Multipack Wolves, Wolves, Swarm and Goto Micro AIs
+     * Support named locations for [micro_ai] tag location keys
+     * Goto and Assassin: fix MAIs not working with tunnels when using custom path finding cost functions
+   * Experimental AI
+     * Deprecate EXPERIMENTAL_AI macro: use ai_algorithm=experimental_ai in the [ai] tag instead
+     * Convert to using external candidate actions
+     * Significantly speed up recruiting evaluation
+     * Recruiting: add optional 'enemy_types' parameter
+     * Adjustments to candidate action scores
+     * Variety of internal evaluation improvements
+   * All Lua AIs
+     * Fix bug crashing some AIs when units with chance-to-hit specials without id are on map
+       (same as what had already been done for the Fast Micro AI)
+     * Do not use hard-coded values for modifiable parameters in wesnoth.game_config
+     * Fix experience for killing level 0 units
+     * Distinguish between healing locations and villages
+     * Significant amount of internal cleanup, including some efficiency improvements
+   * ai_helper library
+     * New functions get_healing_locations(), get_reachmap(), get_avoid_map() and get_locations_no_borders()
+     * get_closest_enemy(): change return values (breaks backward compatibility)
+     * find_best_move(): return nil instead of {} if no move found (may break backward compatibility in rare cases)
+     * Deprecate filter(), choose() and xyoff()
+     * move_unit_out_of_way(): prevent potential for divide-by-zero
+   * Default AI
+     * Remove attack_depth aspect (had been non-functional for a long time already)
+     * [goal]name=protect_unit: do not protect units hidden from the AI
+     * General code clean-up, in particular of TODOs left over from 1.7 and 1.9
  * Campaigns
-   * Dead Water:
-     * Fix possibility of villagers blocking pickup of sword in S10 The Flaming
-       Sword (issue #3207).
-   * Descent Into Darkness:
-     * New Parthyn map in S1 and S6.
-   * Northern Rebirth:
-     * Reduced starting gold and income in scenarios 10 to 13
+   * A Tale of Two Brothers:
+     * S2 'Chase': improved behavior of undead side leader with custom AI
+   * Delfador's Memoirs:
+     * S08: Show carryover report to make it clear the scenario has ended
+     * S09 &amp; 10: Increase difficulty
+     * S12: Allow respective recruits when the loyalists &amp; mages join Delfador
    * Secrets of the Ancients:
-     * Fix S09 Training Session not ending when all dark adepts die (issue #3192)
-   * Tutorial:
-     * S2: made enemy starting gold equal to that of the player.
+     * Added ability to recruit different kinds of walking corpses during the campaign.
+     * Unit type naming convention cleanup.
+   * The Hammer of Thursagan:
+     * Removed scenarios 4 (Troll Bridge), 5 (Invaders), and 7 (Mages and Drakes)
+     * Reworked scenario 8 (Fear) and rebalanced other scenarios
+     * Added new character and updated some dialogue
    * Under the Burning Suns:
-     * Added portrait and updated sprite for Giant Ant.
+     * Refactor code in various scenarios to be more readable
+     * Various bugfixes (objectives, allied vision, unit spawns, event firing)
+     * S8: change water to rise based on timer, not player movement
+   * Wings of Victory:
+     * New campaign added to mainline (Intermediate level, 11 scenarios).
+   * Deprecate AI Controller and remove it from mainline campaign scenarios
+ * Engine
+   * Windows 7 is now the minimum supported Windows version.
+   * Add command-line arguments for detecting invalid WML.
+   * Revise mechanics of the liminal alignment to match up with the intended meaning.
+   * Healing animation is shown when the patient is invisible. (PR #3643)
  * Language and i18n
-   * Updated translations: British English, Chinese (Traditional), Czech, French,
-     Italian, Japanese, Scottish Gaelic, Spanish
- * Multiplayer server
-   * Fixed lan_server option not causing the server to exit once vacated, e.g.
-     when using the Host Networked Game option from the Multiplayer menu in the
-     game (issue #3206).
- * Music and sound effects
-   * The music now changes immediately when you load a save file (issue #2602).
-   * Fixed Lua errors when setting a music track that cannot be found when the
-     playlist is already empty, e.g. if there's no music installed for the
-     game (issue #3194).
- * WML engine
-   * Removed validation to ensure units cannot have negative hitpoints. We
-     learned that the ability to create such units is documented, and thus
-     disallowing it was an API change. Since API changes aren't allowed in
-     the stable branch, we have reverted it.
- * Miscellaneous and bug fixes
-   * Fixed an occasional crash at the loading screen related to multi-thread
-     access of the image cache.
-   * [kill] animate=yes no longer scrolls to units through fog or shroud, thus
-     matching 1.12's behavior again.
-   * [message] displays the unit type name when a nameless unit speaks and no
-     custom caption= is specified (issue #3211).
-   * do_not_list=yes units are no longer excluded from the debug mode-only
-     Create Unit dialog.
-   * Fixed a rare issue where disabled attacks could cause the wrong attack to
-     be initially selected in the Unit Attack dialog. This bug also had the
-     potential to cause units to the wrong attack when  engaging or viewing
-     damage calculations.
-   * Fixed [scenario] map_file= being unusable in most circumstances.
-
-</mutableString>
-                                            <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" size="10" name="HelveticaNeue"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                    <tabStops>
-                                                        <textTab alignment="left" location="0.0">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="56">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="112">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="168">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="224">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="280">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="336">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="392">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="448">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="504">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="560">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="616">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="672">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="728">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="784">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="840">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="896">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="952">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1008">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1064">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1120">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1176">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1232">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1288">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1344">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1400">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1456">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1512">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1568">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1624">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1680">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1736">
-                                                            <options/>
-                                                        </textTab>
-                                                    </tabStops>
-                                                </paragraphStyle>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content="Version 1.14.2:">
-                                            <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" size="10" name="HelveticaNeue-Bold"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                    <tabStops>
-                                                        <textTab alignment="left" location="0.0">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="56">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="112">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="168">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="224">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="280">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="336">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="392">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="448">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="504">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="560">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="616">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="672">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="728">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="784">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="840">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="896">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="952">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1008">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1064">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1120">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1176">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1232">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1288">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1344">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1400">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1456">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1512">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1568">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1624">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1680">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1736">
-                                                            <options/>
-                                                        </textTab>
-                                                    </tabStops>
-                                                </paragraphStyle>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment>
-                                            <mutableString key="content">
- * Campaigns
-   * Northern Rebirth:
-     * In 'Infested Caves', fixed various issues with AI balancing.
-   * Sceptre of Fire:
-     * In 'Caverns of Flame', fixed various issues with the volcano eruption.
-   * Under the Burning Suns:
-     * Various Quenoth unit graphics updates.
- * Language and i18n
-   * Updated translations: British English, Chinese (Simplified), Czech, French,
-     Galician, German, Italian, Japanese, Scottish Gaelic, Spanish, Ukrainian.
- * User interface
-   * List boxes (MP lobby game list in particular) now keep the scroll position
-     when they change, instead of keeping the selected item visible (issue #3016).
-   * Fixed MP lobby player list scrolling to top when it changes
-   * Fixed the first unit sometimes not being selected when opening the Recall
-     dialog.
-   * Added a button to access the version info dialog to Preferences.
- * Miscellaneous and bug fixes
-   * Fixed memory leak in terrain filter code. In a huge map with Silver Mages,
-     it could leak several gigabytes of memory in a long session.
-   * Fixed: unit halo remained after undoing a recall (issue #3065)
-   * Fixed: unit halo intensity doubled during AMLA animation
-   * Various fixes for the Planning Mode.
-
-</mutableString>
-                                            <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" size="10" name="HelveticaNeue"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                    <tabStops>
-                                                        <textTab alignment="left" location="0.0">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="56">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="112">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="168">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="224">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="280">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="336">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="392">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="448">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="504">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="560">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="616">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="672">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="728">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="784">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="840">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="896">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="952">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1008">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1064">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1120">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1176">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1232">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1288">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1344">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1400">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1456">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1512">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1568">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1624">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1680">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1736">
-                                                            <options/>
-                                                        </textTab>
-                                                    </tabStops>
-                                                </paragraphStyle>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content="Version 1.14.1:">
-                                            <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" size="10" name="HelveticaNeue-Bold"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                    <tabStops>
-                                                        <textTab alignment="left" location="0.0">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="56">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="112">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="168">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="224">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="280">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="336">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="392">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="448">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="504">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="560">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="616">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="672">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="728">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="784">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="840">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="896">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="952">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1008">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1064">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1120">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1176">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1232">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1288">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1344">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1400">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1456">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1512">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1568">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1624">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1680">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1736">
-                                                            <options/>
-                                                        </textTab>
-                                                    </tabStops>
-                                                </paragraphStyle>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment>
-                                            <mutableString key="content">
- * Campaigns
-   * Eastern Invasion:
-     * In 'Captured', fixed units incorrectly costing upkeep after leveling up.
- * Language and i18n
-   * Updated translations: British English, Chinese (Simplified), Czech, French,
-     Galician, German, Italian, Japanese, Scottish Gaelic, Slovak, Spanish.
- * Performance
-   * Added an option to disable the FPS limiter for a slight performance boost.
- * User interface
-   * Removed individual Join/Observe buttons for each game in the MP Lobby.
-   * Highlight the titles of MP games with vacant slots.
-   * Improved MP Lobby layout on low resolutions.
-   * Improved reporting of network errors in the MP lobby (issue #3005).
- * Miscellaneous and bug fixes
-   * Removed misleading tooltip text stating registered nicknames are optional for
-     the official MP server.
-   * Attempting to save a screenshot with an unsupported format now shows an error
-     message, instead of saving the screenshot as BMP with the requested extension.
-   * Implemented a workaround for an unhandled std::bad_cast from string comparison
-     functions that caused a crash-to-desktop when opening Preferences among others
-     (issue #3050).
-
-</mutableString>
-                                            <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" size="10" name="HelveticaNeue"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                    <tabStops>
-                                                        <textTab alignment="left" location="0.0">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="56">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="112">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="168">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="224">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="280">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="336">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="392">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="448">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="504">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="560">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="616">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="672">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="728">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="784">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="840">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="896">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="952">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1008">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1064">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1120">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1176">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1232">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1288">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1344">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1400">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1456">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1512">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1568">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1624">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1680">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1736">
-                                                            <options/>
-                                                        </textTab>
-                                                    </tabStops>
-                                                </paragraphStyle>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content="Version 1.14.0:">
-                                            <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" size="10" name="HelveticaNeue-Bold"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                    <tabStops>
-                                                        <textTab alignment="left" location="0.0">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="56">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="112">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="168">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="224">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="280">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="336">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="392">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="448">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="504">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="560">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="616">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="672">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="728">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="784">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="840">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="896">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="952">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1008">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1064">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1120">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1176">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1232">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1288">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1344">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1400">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1456">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1512">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1568">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1624">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1680">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="1736">
-                                                            <options/>
-                                                        </textTab>
-                                                    </tabStops>
-                                                </paragraphStyle>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment>
-                                            <string key="content">
- * Campaigns
-   * Under the Burning Suns
-     * New set of Quenoth faction and character portraits by LordBob.
-     * Updated sprites for several Quenoth units.
- * Language and i18n
-   * Updated translations: Czech, French, Galician, German, Japanese, Polish,
-     Scottish Gaelic, Slovak, Spanish.
+   * Updated translations: British English, Bulgarian, Chinese (Simplified),
+     Chinese (Traditional), Czech, Dutch, French, Galician, German, Hungarian,
+     Italian, Japanese, Lithuanian, Polish, Portuguese (Brazil), Russian,
+     Scottish Gaelic, Slovak, Spanish, Turkish, Ukrainian.
+ * Lua API
+   * Allow specifying custom flags (in particular teleport) when using a custom cost function in wesnoth.find_path
+   * Add wml.load() and wml.parse() functions
+   * wml.tostring() now outputs a string that can be parsed back to WML without loss of data.
+   * Add wml.clone() function that performs a deep copy of a config or vconfig.
+   * Organize API functions into several new (sub)modules: gui, wesnoth.units, wesnoth.interface
+   * Allow WML tag names injected with wml.tag to start with underscores.
  * User Interface
-   * Implemented MP chat message history saving (issue #1194, issue #2802).
+   * Don't show in the sidebar the time of day schedule of a shrouded hex. (issue #3638)
+   * Make unit_weapons report display weapon specials as active/inactive correctly. (issue #4071)
+   * macOS: Dark GUI on macOS Mojave and later when dark appearance is enabled.
+   * Observers are now required to enter a game's password as well, rather than just players needing to enter the password.
+ * Packaging
+   * OpenMP support has been removed. It is no longer an optional build-time dependency.
+ * Units
+   * Saurian warriors are now female. (issue #3392)
+   * Giant Scorpion now has 20% resistance to arcane and 0% to all other resists
+   * Added Sand Scuttler variation to the Giant Scorpion with same resists as original unit
+   * Move Fire Dragon portrait from TRoW and SoF to core
+   * Move Orcish Leader portraits to Orcish Ruler and use grunt variation portrait for Leader
+   * Increased Mermaid Initiate advancement line hitpoints (Diviner 41-&gt;45, Enchantress 38-&gt;39, Priestess 31-&gt;35, Siren 49-&gt;51)
+   * The Dunefolk faction was overhauled to improve balance against the six Default factions
+ * WML engine
+   * Support formula= key in [variable] ConditionalWML
+   * Support to_location in [move_unit], taking a special location ID
+   * Support dir in [move_unit] to perform relative movements
+   * Support location_id in [teleport], [recall], [unstore_unit] for the target location
+   * Support a comma-separated list for location_id key in SLF
+   * Support [filter_weapon] in leadership and resistance abilities,
+     which activates the ability only when the affected unit is using
+     a matching weapon.
+   * Support [filter_second_weapon] in leadership and resistance abilities,
+     which activates the ability only when the affected unit's opponent
+     is using a matching weapon.
+   * Support ['specials'] in abilities except plagues, heal_on_hit and swarm , which emulate the weapon
+     specials with [affect_adjacent] in option and the possibility to affect all weapons filtered(used with
+     'Initiative' in httt or 'Formation' in utbs). (don't put filter_weapon in 'filter_self/opponent' like
+     in  true weapons specials).
+   * Support WFL and percentages in [random_placement]num_items=
+   * Support [or] in [filter_wml] and similar places
+   * Support globbing in [filter_wml] via glob_on_* keys
+   * Add trunc as a valid value for [set_variable]round=
+   * Remove support for speaker=id in SUF (but retain in [message])
+   * Support saner units for some formatting options in [message]
+   * Support underline=yes|no in [message]
+   * Support [set_variable]root=cube and root=_integer_
+   * Support force_scroll in [move_units_fake] (default no)
+   * Support facing= in [role][auto_recall]
+   * Support lists for special and special_active in SWF
+   * Support usage and alignment in SUF
+   * Deprecate [replace_map]map= in favor of map_data=
+   * Add u and v variables in ~ADJUST_ALPHA() and ~CHAN()
+   * Add clear_shroud in [move_unit] to clear shroud as the unit moves
+   * Support male_voice and female_voice in [message]
+   * Support [break], [continue], and [return] in [random_placement]
+   * [remove_sound_source] now accepts a comma-separated ID list
+   * Support [filter_team] in [side] in addition to team_name=
+   * Support an optional EXTRA_WML argument to {REMOVE_LABEL}.
+   * Support [disallow_end_turn]reason=
+   * The {SPECIAL_NOTES_*} macros now start with a newline and a bullet point.
+   * Support [unit]jamming=
+   * Support [movetype]flying= and deprecate [movetype]flies=, for consistency with [unit]flying=
  * Miscellaneous and bug fixes
-   * macOS user data directory is now ~/Library/Application Support/Wesnoth_1.14</string>
+   * Rest healing now happens on turn 2. (issue #3562)
+   * Normal healing now happens on turn 1 for all sides except the first. (issue #3562)
+   * [change_theme] no longer requires running a separate action to update the
+     UI afterwards (e.g. [redraw]) and the status panels are updated immediately.
+     as well.
+   * Re-added the Font Scaling preference.
+   * Enabled wesnothd and campaignd to accept IPv6 connections too
+   * Added support for directly supplying IPv6 address of the server to multiplayer client and addon client. It must be done like this: ```[ipv6_address]``` or ```[ipv6_address]:port```
+   * Show ability of a selected unit as active/inactive with respect to mouseover hex. (issue #3912)
+   * macOS: Wesnoth now uses the app sandboxing feature, which means there is a new location for saves. All saves will be migrated during first launch automatically. For info about backwards compatibility see: https://gist.github.com/hrubymar10/eb5afd896f933a46fac344ced940e020
+   * The sidebar, recall dialog, etc now show attack's range (melee/ranged) and
+     damage type (arcane/blade/cold/...) using icons. (PR #3732, #3740)
+   * Add hit count statistics to the statistics dialog. (PR #4070)
+   * Added FULL option for :droid command. (PR#4147)
+   * Observers must now also enter the password before observing a game that is password protected. (PR#4140)
+   * A message is now displayed when observers share IP addresses. (PR#4138)
+   * Game bans are now also enforced by username. (PR#4139)
+   * Usernames on the host's ignore list are automatically banned. (PR#4143)
+
+</mutableString>
                                             <attributes>
                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="10" name="HelveticaNeue"/>
@@ -1848,10 +1190,7 @@ cyBMaWNlbnNlLgo
                                                 </paragraphStyle>
                                             </attributes>
                                         </fragment>
-                                        <fragment>
-                                            <string key="content">
-
-For full players_changelog please visit:</string>
+                                        <fragment content="For full players_changelog please visit:">
                                             <attributes>
                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="10" name="LucidaGrande"/>
@@ -2066,7 +1405,7 @@ Cg
                                                 </paragraphStyle>
                                             </attributes>
                                         </fragment>
-                                        <fragment content="https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md">
+                                        <fragment content="https://github.com/wesnoth/wesnoth/blob/master/changelog.md">
                                             <attributes>
                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="11" name="LucidaGrande"/>
@@ -2177,7 +1516,7 @@ Cg
                                     <attributedString key="userComments">
                                         <fragment content="jhjhj">
                                             <attributes>
-                                                <font key="NSFont" metaFont="smallSystem"/>
+                                                <font key="NSFont" metaFont="label" size="11"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                             </attributes>
                                         </fragment>
@@ -2189,7 +1528,7 @@ Cg
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="511">
+                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.00028686173264486515" horizontal="NO" id="511">
                             <rect key="frame" x="440" y="1" width="16" height="406"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>

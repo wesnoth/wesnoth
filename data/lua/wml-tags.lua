@@ -267,7 +267,7 @@ end
 
 function wml_actions.lua(cfg)
 	cfg = wml.shallow_literal(cfg)
-	--fixme untested 
+	--fixme untested
 	local bytecode, message = load(cfg.code or "", cfg.name or "")
 	if not bytecode then error("~lua:" .. message, 0) end
 	bytecode(wml.get_child(cfg, "args"))
@@ -347,6 +347,10 @@ function wml_actions.select_unit(cfg)
 	wesnoth.select_unit(u.x, u.y, cfg.highlight, cfg.fire_event)
 end
 
+local function get_overlay_object_id(overlay)
+	return "overlay_" .. overlay
+end
+
 function wml_actions.unit_overlay(cfg)
 	local img = cfg.image or helper.wml_error( "[unit_overlay] missing required image= attribute" )
 	for i,u in ipairs(wesnoth.get_units(cfg)) do
@@ -356,7 +360,8 @@ function wml_actions.unit_overlay(cfg)
 		end
 		if has_already == false then
 			u:add_modification("object", {
-				id = cfg.object_id,
+				id = cfg.object_id or get_overlay_object_id(img),
+				duration = cfg.duration,
 				wml.tag.effect {
 					apply_to = "overlay",
 					add = img,
@@ -368,18 +373,20 @@ end
 
 function wml_actions.remove_unit_overlay(cfg)
 	local img = cfg.image or helper.wml_error( "[remove_unit_overlay] missing required image= attribute" )
-
-	-- Loop through all matching units.
 	for i,u in ipairs(wesnoth.get_units(cfg)) do
-		local ucfg = u.__cfg
-		local t = utils.parenthetical_split(ucfg.overlays)
-		-- Remove the specified image from the overlays.
-		for i = #t,1,-1 do
-			if t[i] == img then table.remove(t, i) end
+		local has_already = false
+		for i, w in ipairs(u.overlays) do
+			if w == img then has_already = true end
 		end
-		-- Reassemble the list of remaining overlays.
-		ucfg.overlays = table.concat(t, ',')
-		wesnoth.put_unit(ucfg)
+		if has_already then
+			u:add_modification("object", {
+				id = cfg.object_id,
+				wml.tag.effect {
+					apply_to = "overlay",
+					remove = img,
+				}
+			})
+		end
 	end
 end
 
@@ -1001,7 +1008,7 @@ function wml_actions.terrain_mask(cfg)
 	end
 	local rules = {}
 	for rule in wml.child_range(cfg, 'rule') do
-		rules[#rules] = rule
+		rules[#rules + 1] = rule
 	end
 	if cfg.mask_file then
 		mask = wesnoth.read_file(cfg.mask_file)
@@ -1011,4 +1018,11 @@ function wml_actions.terrain_mask(cfg)
 		rules = rules,
 		ignore_special_locations = cfg.ignore_special_locations,
 	})
+end
+
+function wml_actions.remove_trait(cfg)
+	local obj_id = cfg.trait_id
+	for _,unit in ipairs(wesnoth.get_units(cfg)) do
+		wesnoth.remove_modifications(unit, {id = obj_id}, "trait")
+	end
 end

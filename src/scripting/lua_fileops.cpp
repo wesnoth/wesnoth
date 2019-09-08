@@ -62,7 +62,7 @@ static std::string get_calling_file(lua_State* L)
 }
 /// resolves @a filename to an absolute path
 /// @returns true if the filename was successfully resolved.
-static bool resolve_filename(std::string& filename, std::string currentdir, std::string* rel = nullptr)
+static bool canonical_path(std::string& filename, std::string currentdir)
 {
 	if(filename.size() < 2) {
 		return false;
@@ -104,6 +104,16 @@ static bool resolve_filename(std::string& filename, std::string currentdir, std:
 	if(filename.find("..") != std::string::npos) {
 		return false;
 	}
+	return true;
+}
+
+/// resolves @a filename to an absolute path
+/// @returns true if the filename was successfully resolved.
+static bool resolve_filename(std::string& filename, std::string currentdir, std::string* rel = nullptr)
+{
+	if(!canonical_path(filename, currentdir)) {
+		return false;
+	}
 	std::string p = filesystem::get_wml_location(filename);
 	if(p.empty()) {
 		return false;
@@ -115,6 +125,16 @@ static bool resolve_filename(std::string& filename, std::string currentdir, std:
 	return true;
 }
 
+int intf_canonical_path(lua_State *L)
+{
+	std::string m = luaL_checkstring(L, 1);
+	if(canonical_path(m, get_calling_file(L))) {
+		lua_push(L, m);
+		return 1;
+	} else {
+		return luaL_argerror(L, 1, "invalid path");
+	}
+}
 /**
  * Checks if a file exists (not necessarily a Lua script).
  * - Arg 1: string containing the file name.

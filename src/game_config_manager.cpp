@@ -36,6 +36,7 @@
 #include "game_version.hpp"
 #include "theme.hpp"
 #include "picture.hpp"
+#include "sound.hpp"
 #include "serialization/schema_validator.hpp"
 
 static lg::log_domain log_config("config");
@@ -404,7 +405,17 @@ void game_config_manager::load_addons_cfg()
 
 		if(have_addon_pbl_info(addon_id)) {
 			// Publishing info needs to be read from disk.
-			metadata = get_addon_pbl_info(addon_id);
+			try {
+				metadata = get_addon_pbl_info(addon_id);
+			} catch(const invalid_pbl_exception& e) {
+				const std::string log_msg = formatter()
+				<< "The provided addon has an invalid pbl file"
+				<< " for addon "
+				<< addon_id;
+
+				error_addons.push_back(e.message);
+				error_log.push_back(log_msg);
+			}
 		} else if(filesystem::file_exists(info_cfg)) {
 			// Addon server-generated info can be fetched from cache.
 			config temp;
@@ -525,6 +536,7 @@ void game_config_manager::reload_changed_game_config()
 	init_game_config(FORCE_RELOAD);
 
 	image::flush_cache();
+	sound::flush_cache();
 }
 
 void game_config_manager::load_game_config_for_editor()

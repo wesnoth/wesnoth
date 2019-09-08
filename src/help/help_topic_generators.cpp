@@ -34,7 +34,7 @@
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <map>                          // for map, etc
 #include <set>
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 static lg::log_domain log_help("help");
 #define WRN_HP LOG_STREAM(warn, log_help)
@@ -557,9 +557,9 @@ std::string unit_topic_generator::operator()() const {
 		// Dummy element, icons are below.
 		first_row.push_back(item("", 0));
 		push_header(first_row, _("unit help^Name"));
-		push_header(first_row, _("Type"));
 		push_header(first_row, _("Strikes"));
 		push_header(first_row, _("Range"));
+		push_header(first_row, _("Type"));
 		push_header(first_row, _("Special"));
 		table.push_back(first_row);
 		// Print information about every attack.
@@ -568,21 +568,37 @@ std::string unit_topic_generator::operator()() const {
 			std::string lang_type = string_table["type_" + attack.type()];
 			std::vector<item> row;
 			std::stringstream attack_ss;
+
+			// Attack icon
 			attack_ss << "<img>src='" << attack.icon() << "'</img>";
 			row.emplace_back(attack_ss.str(),image_width(attack.icon()));
-			push_tab_pair(row, lang_weapon);
-			push_tab_pair(row, lang_type);
 			attack_ss.str(clear_stringstream);
+
+			// Attack name
+			push_tab_pair(row, lang_weapon);
+
+			// damage x strikes
 			attack_ss << attack.damage() << font::weapon_numbers_sep << attack.num_attacks()
 				<< " " << attack.accuracy_parry_description();
 			push_tab_pair(row, attack_ss.str());
 			attack_ss.str(clear_stringstream);
+
+			// Padding for range and damage type icons
+			const auto padding = 5; // TODO amount of padding?
+
+			// Range, with icon
+			const std::string range_icon = "icons/profiles/" + attack.range() + "_attack.png";
 			if (attack.min_range() > 1 || attack.max_range() > 1) {
 				attack_ss << attack.min_range() << "-" << attack.max_range() << ' ';
 			}
 			attack_ss << string_table["range_" + attack.range()];
-			push_tab_pair(row, attack_ss.str());
+			push_tab_pair(row, attack_ss.str(), range_icon, padding);
 			attack_ss.str(clear_stringstream);
+
+			// Damage type, with icon
+			const std::string type_icon = "icons/profiles/" + attack.type() + ".png";
+			push_tab_pair(row, lang_type, type_icon, padding);
+
 			// Show this attack's special, if it has any. Cross
 			// reference it to the section describing the special.
 			std::vector<std::pair<t_string, t_string>> specials = attack.special_tooltips();
@@ -694,7 +710,7 @@ std::string unit_topic_generator::operator()() const {
 			}
 
 			if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
-				terrain_movement_info movement_info = 
+				terrain_movement_info movement_info =
 				{
 					info.name(),
 					info.id(),
@@ -841,7 +857,7 @@ std::string unit_topic_generator::operator()() const {
 
 			table.push_back(row);
 		}
-		
+
 		ss << generate_table(table);
 	} else {
 		WRN_HP << "When building unit help topics, the display object was null and we couldn't get the terrain info we need.\n";

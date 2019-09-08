@@ -266,6 +266,9 @@ void builder_window::read(const config& cfg)
  * @end{table}
  * @end{tag}{name="linked_group"}
  * A linked group needs to have at least one size fixed.
+ * All widgets that are defined with linked_group=foo, where foo is the id of
+ * the linked_group, will have the same width (if fixed_width) and the same
+ * height (if fixed_height).
  * @begin{tag}{name="tooltip"}{min=0}{max=1}
  * A tooltip and helptip section have the following field:
  * @begin{table}{config}

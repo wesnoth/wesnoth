@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2016 - 2018 by Chris Beck<render787@gmail.com>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@
 #include "sdl/surface.hpp"
 #include "serialization/unicode.hpp"
 
-#include <SDL_ttf.h>
+#include <SDL2/SDL_ttf.h>
 
 #include <map>
 #include <string>
@@ -305,8 +305,8 @@ static surface render_text(const std::string& text, int fontsize, const color_t&
 		surface surf = surfaces.front().front();
 		return surf;
 	} else {
-		surface res(create_compatible_surface(surfaces.front().front(),width,height));
-		if (res.null())
+		surface res(width,height);
+		if (!res)
 			return res;
 
 		std::size_t ypos = 0;
@@ -341,7 +341,7 @@ SDL_Rect draw_text_line(surface& gui_surface, const SDL_Rect& area, int size,
 		   int x, int y, bool use_tooltips, int style)
 {
 	size = preferences::font_scaled(size);
-	if (gui_surface.null()) {
+	if (!gui_surface) {
 		const text_surface& u = text_cache::find(text_surface(text, size, color, style));
 		return sdl::create_rect(0, 0, u.width(), u.height());
 	}

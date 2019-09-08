@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include <SDL_events.h>
+#include <SDL2/SDL_events.h>
 #include <vector>
 #include <list>
 #include <functional>
@@ -51,6 +51,8 @@ public:
 	context(const context&) = delete;
 
 	void add_handler(sdl_handler* ptr);
+	/** Returns true if @a ptr is found in either the handlers or staging_handlers lists */
+	bool has_handler(const sdl_handler* ptr) const;
 	bool remove_handler(sdl_handler* ptr);
 	void cycle_focus();
 	void set_focus(const sdl_handler* ptr);
@@ -95,8 +97,19 @@ public:
 
 	virtual bool has_joined() { return has_joined_;}
 	virtual bool has_joined_global() { return has_joined_global_;}
+
+	/**
+	 * Moving would require two instances' context membership to be handled,
+	 * it's simpler to delete these and require the two instances to be
+	 * separately constructed / destructed.
+	 */
+	sdl_handler &operator=(sdl_handler &&) = delete;
+	sdl_handler(sdl_handler &&) = delete;
+
 protected:
 	sdl_handler(const bool auto_join=true);
+	sdl_handler(const sdl_handler &);
+	sdl_handler &operator=(const sdl_handler &);
 	virtual ~sdl_handler();
 	virtual std::vector<sdl_handler*> handler_members()
 	{

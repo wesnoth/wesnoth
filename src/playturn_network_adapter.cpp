@@ -130,7 +130,7 @@ playturn_network_adapter::playturn_network_adapter(source_type source)
 	, data_front_()
 	, next_(data_.front().ordered_end())
 	, next_command_num_(0)
-	
+
 {
 
 }

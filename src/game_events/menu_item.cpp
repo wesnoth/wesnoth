@@ -80,6 +80,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const config& cfg)
 	, use_hotkey_(cfg["use_hotkey"].to_bool(true))
 	, use_wml_menu_(cfg["use_hotkey"].str() != "only")
 	, is_synced_(cfg["synced"].to_bool(true))
+	, persistent_(cfg["persistent"].to_bool(true))
 {
 	if(cfg.has_attribute("needs_select")) {
 		deprecated_message("needs_select", DEP_LEVEL::INDEFINITE, {1, 15, 0});
@@ -108,6 +109,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const vconfig& definition)
 	, use_hotkey_(true)
 	, use_wml_menu_(true)
 	, is_synced_(true)
+	, persistent_(true)
 {
 	// On the off-chance that update() doesn't do it, add the hotkey here.
 	// (Update can always modify it.)
@@ -132,6 +134,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const vconfig& definition, c
 	, use_hotkey_(original.use_hotkey_)
 	, use_wml_menu_(original.use_wml_menu_)
 	, is_synced_(original.is_synced_)
+	, persistent_(original.persistent_)
 {
 	// Apply WML.
 	update(definition);
@@ -293,6 +296,10 @@ void wml_menu_item::update(const vconfig& vcfg)
 
 	if(vcfg.has_attribute("synced")) {
 		is_synced_ = vcfg["synced"].to_bool(true);
+	}
+
+	if(vcfg.has_attribute("persistent")) {
+		persistent_ = vcfg["persistent"].to_bool(true);
 	}
 
 	if(const vconfig& child = vcfg.child("show_if")) {

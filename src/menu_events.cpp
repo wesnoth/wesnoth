@@ -81,6 +81,7 @@
 #include "units/udisplay.hpp"
 #include "units/unit.hpp"
 #include "whiteboard/manager.hpp"
+#include "sound.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -159,10 +160,10 @@ void menu_handler::unit_list()
 
 void menu_handler::status_table()
 {
-	int selected_index;
+	int selected_side;
 
-	if(gui2::dialogs::game_stats::execute(board(), gui_->viewing_team(), selected_index)) {
-		gui_->scroll_to_leader(teams()[selected_index].side());
+	if(gui2::dialogs::game_stats::execute(board(), gui_->viewing_team(), selected_side)) {
+		gui_->scroll_to_leader(selected_side);
 	}
 }
 
@@ -277,7 +278,12 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 
 	if(dlg.show()) {
 		map_location recruit_hex = last_hex;
-		do_recruit(sample_units[dlg.get_selected_index()]->id(), side_num, recruit_hex);
+		int index = dlg.get_selected_index();
+		if (index < 0) {
+			gui2::show_transient_message("", _("No unit recruited"));
+			return;
+		}
+		do_recruit(sample_units[index]->id(), side_num, recruit_hex);
 	}
 }
 
@@ -434,6 +440,9 @@ void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 {
 	wb::future_map future; // use unit positions as if all planned actions were executed
 
+	mouse_handler& mh = pc_.get_mouse_handler_base();
+	const map_location& hex_under_mouse = mh.hovered_hex();
+
 	gui_->unhighlight_reach();
 
 	// Compute enemy movement positions
@@ -446,14 +455,15 @@ void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 			const pathfind::paths& path
 					= pathfind::paths(u, false, true, teams()[gui_->viewing_team()], 0, false, ignore_units);
 
-			gui_->highlight_another_reach(path);
+			gui_->highlight_another_reach(path, hex_under_mouse);
 		}
+
+		// Need to recompute ellipses for highlighted enemy units
+		gui_->invalidate(u.get_location());
 	}
 
 	// Find possible unit (no matter whether friend or foe) under the
 	// mouse cursor.
-	mouse_handler& mh = pc_.get_mouse_handler_base();
-	const map_location& hex_under_mouse = mh.hovered_hex();
 	const bool selected_hex_has_unit = mh.hex_hosts_unit(hex_under_mouse);
 
 	if(selected_hex_has_unit) {
@@ -639,13 +649,14 @@ void menu_handler::rename_unit()
 unit_map::iterator menu_handler::current_unit()
 {
 	const mouse_handler& mousehandler = pc_.get_mouse_handler_base();
+	const bool see_all = gui_->show_everything() || (pc_.is_replay() && pc_.get_replay_controller()->see_all());
 
-	unit_map::iterator res = board().find_visible_unit(mousehandler.get_last_hex(), teams()[gui_->viewing_team()]);
+	unit_map::iterator res = board().find_visible_unit(mousehandler.get_last_hex(), teams()[gui_->viewing_team()], see_all);
 	if(res != units().end()) {
 		return res;
 	}
 
-	return board().find_visible_unit(mousehandler.get_selected_hex(), teams()[gui_->viewing_team()]);
+	return board().find_visible_unit(mousehandler.get_selected_hex(), teams()[gui_->viewing_team()], see_all);
 }
 
 // Helpers for create_unit()
@@ -788,7 +799,7 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 		if(team_only) {
 			team_name = gui_->labels().team_name();
 		} else {
-			color = team::get_side_rgb(gui_->viewing_side());
+			color = team::get_side_color(gui_->viewing_side());
 		}
 		const terrain_label* res = gui_->labels().set_label(loc, label, gui_->viewing_team(), team_name, color);
 		if(res) {
@@ -955,7 +966,7 @@ void menu_handler::execute_gotos(mouse_handler& mousehandler, int side)
 void menu_handler::toggle_ellipses()
 {
 	preferences::set_ellipses(!preferences::ellipses());
-	gui_->invalidate_all();
+	gui_->invalidate_all(); // TODO can fewer tiles be invalidated?
 }
 
 void menu_handler::toggle_grid()
@@ -1177,9 +1188,15 @@ protected:
 
 		register_command("refresh", &console_handler::do_refresh, _("Refresh gui."));
 		register_command("droid", &console_handler::do_droid, _("Switch a side to/from AI control."),
-				_("do not translate the on/off^[<side> [on/off]]"));
+				// TRANSLATORS: These are the arguments accepted by the "droid" command,
+				// which must be a side-number and then optionally one of "on", "off" or "full".
+				// As with the command's name, "on", "off" and "full" are hardcoded, and shouldn't change in the translation.
+				_("[<side> [on/off/full]]\n“on” = enable but retain vision, “full” = as if it’s controlled by another player"));
 		register_command("idle", &console_handler::do_idle, _("Switch a side to/from idle state."),
-				_("do not translate the on/off^[<side> [on/off]]"));
+				// TRANSLATORS: These are the arguments accepted by the "idle" command,
+				// which must be a side-number and then optionally "on" or "off".
+				// As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
+				_("command_idle^[<side> [on/off]]"));
 		register_command("theme", &console_handler::do_theme);
 		register_command("control", &console_handler::do_control,
 				_("Assign control of a side to a different player or observer."), _("<side> <nickname>"), "N");
@@ -1189,7 +1206,7 @@ protected:
 		register_command("foreground", &console_handler::do_foreground, _("Debug foreground terrain."), "", "D");
 		register_command(
 				"layers", &console_handler::do_layers, _("Debug layers from terrain under the mouse."), "", "D");
-		register_command("fps", &console_handler::do_fps, _("Show fps."));
+		register_command("fps", &console_handler::do_fps, _("Show fps (Frames Per Second)."));
 		register_command("benchmark", &console_handler::do_benchmark);
 		register_command("save", &console_handler::do_save, _("Save game."));
 		register_alias("save", "w");
@@ -1401,6 +1418,7 @@ std::vector<std::string> menu_handler::get_commands_list()
 void console_handler::do_refresh()
 {
 	image::flush_cache();
+	sound::flush_cache();
 
 	menu_handler_.gui_->create_buttons();
 	menu_handler_.gui_->redraw_everything();
@@ -1408,47 +1426,73 @@ void console_handler::do_refresh()
 
 void console_handler::do_droid()
 {
-	// :droid [<side> [on/off]]
+	// :droid [<side> [on/off/full]]
 	const std::string side_s = get_arg(1);
-	const std::string action = get_arg(2);
+	std::string action = get_arg(2);
+	std::transform(action.begin(), action.end(), action.begin(), tolower);
 	// default to the current side if empty
 	const unsigned int side = side_s.empty() ? team_num_ : lexical_cast_default<unsigned int>(side_s);
 
+	utils::string_map symbols;
+	symbols["side"] = std::to_string(side);
+
 	if(side < 1 || side > menu_handler_.teams().size()) {
-		utils::string_map symbols;
-		symbols["side"] = side_s;
 		command_failed(VGETTEXT("Can't droid invalid side: '$side'.", symbols));
 		return;
 	} else if(menu_handler_.board().get_team(side).is_network()) {
-		utils::string_map symbols;
-		symbols["side"] = std::to_string(side);
 		command_failed(VGETTEXT("Can't droid networked side: '$side'.", symbols));
 		return;
-	} else if(menu_handler_.board().get_team(side).is_local_human()) {
-		utils::string_map symbols;
-		symbols["side"] = std::to_string(side);
-		if(menu_handler_.board().get_team(side).is_droid() ? action == "on" : action == "off") {
-			print(get_cmd(), VGETTEXT("Side '$side' is already droided.", symbols));
-			return;
+	} else if(menu_handler_.board().get_team(side).is_local()) {
+		bool changed = false;
+
+		if(action == "on") {
+			if(!menu_handler_.board().get_team(side).is_human() || !menu_handler_.board().get_team(side).is_droid()) {
+				menu_handler_.board().get_team(side).make_human();
+				menu_handler_.board().get_team(side).make_droid();
+				changed = true;
+				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: AI.", symbols));
+			} else {
+				print(get_cmd(), VGETTEXT("Side '$side' is already droided.", symbols));
+			}
+		} else if(action == "off") {
+			if(!menu_handler_.board().get_team(side).is_human() || !menu_handler_.board().get_team(side).is_proxy_human()) {
+				menu_handler_.board().get_team(side).make_human();
+				menu_handler_.board().get_team(side).make_proxy_human();
+				changed = true;
+				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: human.", symbols));
+			} else {
+				print(get_cmd(), VGETTEXT("Side '$side' is already not droided.", symbols));
+			}
+		} else if(action == "full") {
+			if(!menu_handler_.board().get_team(side).is_ai() || !menu_handler_.board().get_team(side).is_droid()) {
+				menu_handler_.board().get_team(side).make_ai();
+				menu_handler_.board().get_team(side).make_droid();
+				changed = true;
+				print(get_cmd(), VGETTEXT("Side '$side' controller is now fully controlled by: AI.", symbols));
+			} else {
+				print(get_cmd(), VGETTEXT("Side '$side' is already fully AI controlled.", symbols));
+			}
+		} else if(action == "") {
+			if(menu_handler_.board().get_team(side).is_ai() || menu_handler_.board().get_team(side).is_droid()) {
+				menu_handler_.board().get_team(side).make_human();
+				menu_handler_.board().get_team(side).make_proxy_human();
+				changed = true;
+				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: human.", symbols));
+			} else {
+				menu_handler_.board().get_team(side).make_human();
+				menu_handler_.board().get_team(side).make_droid();
+				changed = true;
+				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: AI.", symbols));
+			}
+		} else {
+			print(get_cmd(), VGETTEXT("Invalid action provided for side '$side'. Valid actions are: on, off, full.", symbols));
 		}
-		menu_handler_.board().get_team(side).toggle_droid();
-		if(team_num_ == side) {
+
+		if(team_num_ == side && changed) {
 			if(playsingle_controller* psc = dynamic_cast<playsingle_controller*>(&menu_handler_.pc_)) {
 				psc->set_player_type_changed();
 			}
 		}
-		if (menu_handler_.board().get_team(side).is_droid()) {
-			print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: AI.", symbols));
-		} else {
-			print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: human.", symbols));
-		}
-	} else if(menu_handler_.board().get_team(side).is_local_ai()) {
-		//		menu_handler_.board().get_team(side).make_human();
-		//		menu_handler_.change_controller(std::to_string(side),"human");
-
-		utils::string_map symbols;
-		symbols["side"] = side_s;
-		command_failed(VGETTEXT("Can't droid a local ai side: '$side'.", symbols));
 	}
 	menu_handler_.textbox_info_.close(*menu_handler_.gui_);
 }

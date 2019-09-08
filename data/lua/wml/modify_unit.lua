@@ -8,12 +8,12 @@ local wml_actions = wesnoth.wml_actions
 --  second part of this file
 
 local function split_to_array(str, sep)
-    -- Split string @str into a table using the delimiter @sep (default: ',')
+	-- Split string @str into a table using the delimiter @sep (default: ',')
 
-    local sep, fields = sep or ",", {}
-    local pattern = string.format("([^%s]+)", sep)
-    string.gsub(str, pattern, function(c) fields[#fields+1] = c end)
-    return fields
+	local sep, fields = sep or ",", {}
+	local pattern = string.format("([^%s]+)", sep)
+	string.gsub(str, pattern, function(c) fields[#fields+1] = c end)
+	return fields
 end
 
 local function make_set(t)
@@ -52,6 +52,7 @@ local known_tags = make_set {
 	"advancement",
 	"trait",
 	"filter",
+	"status",
 }
 
 local function is_simple(cfg)
@@ -135,6 +136,11 @@ local function simple_modify_unit(cfg)
 				end
 				u:add_modification(tagname, tagcontent);
 			end
+			if tagname == "status" then
+				for i, v in pairs(tagcontent) do
+					u.status[i] = v
+				end
+			end
 		end
 
 		-- handle 'type' last.
@@ -152,7 +158,7 @@ local function simple_modify_unit(cfg)
 
 	local this_unit = utils.start_var_scope("this_unit")
 	for i, u in ipairs(get_all_units(filter)) do
-		wml.variables["this_unit"] = u.__cfg	
+		wml.variables["this_unit"] = u.__cfg
 		handle_unit(u)
 	end
 	utils.end_var_scope("this_unit", this_unit)

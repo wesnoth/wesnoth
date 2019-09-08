@@ -1,4 +1,39 @@
-## Version 1.15.0-dev
+## Version 1.15.1+dev
+ ### Campaigns
+   * Delfador's Memoirs:
+     * S20: Improve leveling of units and give player a note about it (Issue#4219)
+     * S21: Better indication that the book has gone missing (Issue#4220)
+ ### Language and i18n
+   * Updated translations: British English, French, Italian,
+     Portuguese (Brazil), Spanish
+   * Set up for translating the Wings of Victory campaign (PR#4265)
+   * Changed the :help command's output to split over multiple lines
+   * Added translatable explanations of :droid, :help and :idle's arguments
+ ### WML engine
+   * Ranges can now have upper limit "infinity" instead of using a big number like "99" or "99999"
+ ### Miscellaneous and bug fixes
+   * Fixed :droid's arguments not all being optional (Issue#4308)
+
+## Version 1.15.1
+ ### Editor
+   * Fix buttons in the editor being inactive
+ ### Language and i18n
+   * Updated translations: German, Portuguese (Brazil)
+ ### Multiplayer server
+   * Add support for storing game information in wesnoth's mysql database (PR#4204)
+   * When the forum user handler is enabled, the Multiplayer Moderators group is now also used when determining if someone is a moderator. (PR#4136)
+ ### Units
+   * Fix typo in the Dune Ranger's advancements
+   * Additional animations for the Wose Shaman (PR#4229)
+   * Move Wose Shaman from DM and WoV to core (PR#4226)
+   * Move Wose Sapling from TRoW to core (PR#4226)
+ ### WML engine
+   * Support for the deprecated "&image.png=text" syntax for [option]message= has been removed - use the DescriptionWML attributes instead.
+ ### Miscellaneous and bug fixes
+   * use the 1.15 add-ons server
+   * Fix a crash if the credits (including all add-ons) are very long (PR#4207)
+
+## Version 1.15.0
  ### AI
    * Micro AIs
      * Add [avoid] tag functionality to Multipack Wolves, Wolves, Swarm and Goto Micro AIs
@@ -29,11 +64,27 @@
      * [goal]name=protect_unit: do not protect units hidden from the AI
      * General code clean-up, in particular of TODOs left over from 1.7 and 1.9
  ### Campaigns
-   * A Tale of Two Brothers
+   * A Tale of Two Brothers:
      * S2 'Chase': improved behavior of undead side leader with custom AI
+   * Delfador's Memoirs:
+     * S08: Show carryover report to make it clear the scenario has ended
+     * S09 & 10: Increase difficulty
+     * S12: Allow respective recruits when the loyalists & mages join Delfador
    * Secrets of the Ancients:
      * Added ability to recruit different kinds of walking corpses during the campaign.
      * Unit type naming convention cleanup.
+   * Son of the Black Eye:
+     * S03: remove unused objective note
+   * The Hammer of Thursagan:
+     * Removed scenarios 4 (Troll Bridge), 5 (Invaders), and 7 (Mages and Drakes)
+     * Reworked scenario 8 (Fear) and rebalanced other scenarios
+     * Added new character and updated some dialogue
+   * Under the Burning Suns:
+     * Refactor code in various scenarios to be more readable
+     * Various bugfixes (objectives, allied vision, unit spawns, event firing)
+     * S8: change water to rise based on timer, not player movement
+   * Wings of Victory:
+     * New campaign added to mainline (Intermediate level, 11 scenarios).
    * Deprecate AI Controller and remove it from mainline campaign scenarios
  ### Engine
    * Windows 7 is now the minimum supported Windows version.
@@ -42,8 +93,9 @@
    * Healing animation is shown when the patient is invisible. (PR #3643)
  ### Language and i18n
    * Updated translations: British English, Bulgarian, Chinese (Simplified),
-     Chinese (Traditional), Czech, French, Galician, German, Hungarian, Italian,
-     Japanese, Polish, Russian, Scottish Gaelic, Slovak, Spanish, Ukrainian.
+     Chinese (Traditional), Czech, Dutch, French, Galician, German, Hungarian,
+     Italian, Japanese, Lithuanian, Polish, Portuguese (Brazil), Russian,
+     Scottish Gaelic, Slovak, Spanish, Turkish, Ukrainian.
  ### Lua API
    * Allow specifying custom flags (in particular teleport) when using a custom cost function in wesnoth.find_path
    * Add wml.load() and wml.parse() functions
@@ -53,10 +105,19 @@
    * Allow WML tag names injected with wml.tag to start with underscores.
  ### User Interface
    * Don't show in the sidebar the time of day schedule of a shrouded hex. (issue #3638)
+   * Make unit_weapons report display weapon specials as active/inactive correctly. (issue #4071)
+   * macOS: Dark GUI on macOS Mojave and later when dark appearance is enabled.
+   * Observers are now required to enter a game's password as well, rather than just players needing to enter the password.
  ### Packaging
    * OpenMP support has been removed. It is no longer an optional build-time dependency.
  ### Units
    * Saurian warriors are now female. (issue #3392)
+   * Giant Scorpion now has 20% resistance to arcane and 0% to all other resists
+   * Added Sand Scuttler variation to the Giant Scorpion with same resists as original unit
+   * Move Fire Dragon portrait from TRoW and SoF to core
+   * Move Orcish Leader portraits to Orcish Ruler and use grunt variation portrait for Leader
+   * Increased Mermaid Initiate advancement line hitpoints (Diviner 41->45, Enchantress 38->39, Priestess 31->35, Siren 49->51)
+   * The Dunefolk faction was overhauled to improve balance against the six Default factions
  ### WML engine
    * Support formula= key in [variable] ConditionalWML
    * Support to_location in [move_unit], taking a special location ID
@@ -94,6 +155,9 @@
    * Support [filter_team] in [side] in addition to team_name=
    * Support an optional EXTRA_WML argument to {REMOVE_LABEL}.
    * Support [disallow_end_turn]reason=
+   * The {SPECIAL_NOTES_*} macros now start with a newline and a bullet point.
+   * Support [unit]jamming=
+   * Support [movetype]flying= and deprecate [movetype]flies=, for consistency with [unit]flying=
  ### Miscellaneous and bug fixes
    * Rest healing now happens on turn 2. (issue #3562)
    * Normal healing now happens on turn 1 for all sides except the first. (issue #3562)
@@ -103,8 +167,163 @@
    * Re-added the Font Scaling preference.
    * Enabled wesnothd and campaignd to accept IPv6 connections too
    * Added support for directly supplying IPv6 address of the server to multiplayer client and addon client. It must be done like this: ```[ipv6_address]``` or ```[ipv6_address]:port```
+   * Show ability of a selected unit as active/inactive with respect to mouseover hex. (issue #3912)
+   * macOS: Wesnoth now uses the app sandboxing feature, which means there is a new location for saves. All saves will be migrated during first launch automatically. For info about backwards compatibility see: https://gist.github.com/hrubymar10/eb5afd896f933a46fac344ced940e020
+   * The sidebar, recall dialog, etc now show attack's range (melee/ranged) and
+     damage type (arcane/blade/cold/...) using icons. (PR #3732, #3740)
+   * Add hit count statistics to the statistics dialog. (PR #4070)
+   * Added FULL option for :droid command. (PR#4147)
+   * Observers must now also enter the password before observing a game that is password protected. (PR#4140)
+   * A message is now displayed when observers share IP addresses. (PR#4138)
+   * Game bans are now also enforced by username. (PR#4139)
+   * Usernames on the host's ignore list are automatically banned. (PR#4143)
 
-## Version 1.14.5+dev
+## Version 1.14.8+dev
+ ### AI:
+   * Fixed a rare crash in attack prediction (issue #4068)
+ ### Campaigns
+   * A Tale of Two Brothers:
+     * S3: modify castle illumination tip on easy mode
+   * Dead Water:
+     * S3: modify starting dialogue
+   * Descent into Darkness:
+     * Update campaign description
+     * Update maps for S1 and S6
+     * S4: reduce difficulty on easy and normal modes
+     * S11: reduce difficulty just after Malin turns into lich
+   * Eastern Invasion:
+     * S9: add dialogue on victory
+   * Heir to the Throne:
+     * Remove 'Princess' as a direct address
+   * Legend of Wesmere:
+     * S23: Landar's normal death dialogue now (properly) not used
+   * Northern Rebirth:
+     * Remove 'Princess' as a direct address
+   * Sceptre of Fire:
+     * S5: tell player that gryphon riders can now be recruited
+     * S9: objectives changed to be more accurate upon moving to the volcano
+   * Secrets of the Ancients:
+     * Fixed number of scenarios in campaign listing
+   * Son of the Black Eye:
+     * S10: add dialogue on victory
+   * The Rise of Wesnoth:
+     * Tweaked dialogue in various scenarios
+     * Fixed number of scenarios in campaign listing
+     * S17a: prevent time over defeat if player chooses to defeat remaining saurians
+   * The South Guard:
+     * Update campaign description
+     * Highlight narrator and gameplay explanations with colors
+     * S1: create Sir Gerrick if player skips scenario with debug
+     * S4: revise end of scenario dialogue
+     * S5: add narrator warning when siding with bandits and reduce difficulty
+     * S6b: create Urza Afalas if player skips S5 with debug
+     * S6b: kill elves on side 1 if player got to this scenario with debug
+     * S8b: fixed bug with shifted ToD schedules near campfires
+   * Under the Burning Suns:
+     * Various bugfixes (objectives, allied vision, unit spawns, event firing)
+     * Updated various maps
+     * Add additional animations to cutscenes and events
+     * S2: add dehydration explanation to objectives
+ ### Graphics
+   * Own portraits for higher level bats
+   * New Water Serpent and Cuttlefish portrait
+   * New Wolf, Great Wolf and Direwolf portraits
+   * Additional wolf/dog portrait for custom units
+   * Separate Mudcrawler portrait
+   * New Walking Corpse portrait for mounted variation
+   * The mushroom terrain graphics have changed to match the terrain statistics.
+     (PR #4185)
+ ### Language and i18n
+   * Updated translations: British English, Chinese (Traditional), Dutch,
+     German, Spanish, Turkish, Portuguese (Brazil), Ukrainian
+ ### Multiplayer
+   * A new Land:
+     * Help menu can be accessed in any turn and doesn't pause the game
+     * Bottleneck in the spider's caves removed
+     * Swapped positions of Gryphon and Drake
+     * Guards can't be tricked off position, leaders won't destroy buildings
+     * Guards and Spiders are loyal – AI income has been adjusted accordingly
+     * AI income increases gradually in lategame (very slowly)
+ ### WML engine
+   * Fixed [music] ms_after= affecting the previous track instead of the intended one
+ ### Miscellaneous and bug fixes
+   * Update various references of mermen to merfolk or mer
+   * Adjust several maps to use different castle graphics
+   * OpenMP support has been removed
+
+## Version 1.14.8
+ * Skipped due to need to reupload a broken 1.14.7 macOS App Store package as 1.14.8
+
+## Version 1.14.7
+ ### Campaigns
+   * A Tale of Two Brothers:
+     * S3: Changed castle to permanent chaotic ToD and rebalanced scenario accordingly
+     * S4: Added dialogue between Baran and Tairach when they engage in combat
+   * Dead Water:
+     * S3: Added event to make Storm Trident more obvious
+   * Descent into Darkness:
+     * Complete revision of all dialogue and story text
+     * Revised and rebalanced gameplay in all scenarios
+     * S3 and S11: New scenarios completely rewritten from scratch
+   * Eastern Invasion:
+     * S1: Removed early finish bonus for fleeing
+     * S2: Modified Dacyn's dialogue upon undead arrival
+     * S7a: Require Dacyn to cross the river
+     * S9: add snow to map
+     * S10: show objectives after defeating enemy leaders
+     * S11: show objectives after finding gold and releasing prisoners
+   * Legend of Wesmere:
+     * Disabled side shuffling in MP (checking the box does nothing)
+     * Fixed missing persistent data at the end of chapter 3
+     * Rebalanced gold values in all scenarios
+     * S3: remove shroud from enemy sides upon Kalenz's arrival
+     * S4: (MP only) free Cleodil at scenario start
+   * Northern Rebirth:
+     * Eryssa now must survive if she joins the player
+     * Father Morvin and Sister Thera will now respawn at Tallin's location if they die to prevent illogical gameplay
+     * Gold in S10-13 is adjusted if Krash is dead
+     * S1: Spawn 2 Troll Whelps instead of 4 and a normal Troll
+     * S4: Have Hamel describe Ghouls if Camerin is dead
+     * S5: Add gates to map instead of images and overlays
+     * S8: add text and updated objectives when rescuing Eryssa
+     * S12a: Update objectives to make it clear that gold is not received if Sisal dies
+   * The Rise of Wesnoth:
+     * Fixed various typos
+     * S17c: Modified Burin's description of trolls
+   * The South Guard:
+     * Fixed various typos
+   * Tutorial:
+     * Remove swamp from map for part 2
+     * Warn player about water when stepping on any shallow water hex
+     * Change quintain to level 0
+     * Allow Konrad and Li'sar to level up and add corresponding dialogue for part 2
+   * Under the Burning Suns:
+     * Added embellishments to various maps
+ ### Language and i18n
+   * Updated translations: British English, Chinese (Traditional), Dutch,
+     French, Italian, Japanese, Lithuanian, Spanish.
+ ### Multiplayer
+   * Dark Forecast: AI units are "discovered" (added to the help if not already known)
+   * Dark Forecast: fixed bug where additional boss spawns would not occur after the initial wave
+ ### Multiplayer server
+   * Forum user handler ban durations are now reported back to banned players.
+ ### Units
+   * Updated descriptions for Goblin Knight and Wolf Rider
+   * Add new descriptions for Quenoth faction
+ ### User interface
+   * Add jamming to the vision tooltip in the sidebar. (PR #3327)
+   * Fix undoing a recall not un-drawing parts of the sprite that go beyond the unit's hex (issue #3325)
+   * Fix crash when the recruit filter matched nothing. (PR #3969)
+   * "Show Enemy Moves" now highlights enemy units that can reach the highlighted hex. (PR #3961)
+   * The time of day graphics for midday and midnight have been updated to match the rest of the
+     summer/winter time of day schedules. (issue #2677)
+ ### Miscellaneous and bug fixes
+   * Fix auxiliary attack end event handlers defined by FORCE_CHANCE_TO_HIT breaking if one or more of the
+     affected units are removed by another attack end event handler (issue #3982).
+   * The statistics dialog no longer forgets to reset stats when using "Reset Replay" ("Stop") in replay
+     mode or "Back to turn" in networked MP games (issue #2852).
+
+## Version 1.14.6
  ### AI
    * Fixed crash when the AI simulates a fight between two units which can slow but aren't yet slowed, then
      simulates another fight for one of them in Monte Carlo mode (issue #3650).
@@ -155,11 +374,13 @@
      * S2: Wolf riders are not initially recruited, to not hinder the player
        from reaching the island in time
  ### Language and i18n
-   * Updated translations: Chinese (Traditional), French, German, Italian,
-     Russian, Spanish, Ukrainian.
+   * Updated translations: British English, Chinese (Simplified),
+     Chinese (Traditional), Czech, French, German, Italian, Japanese,
+     Lithuanian, Russian, Scottish Gaelic, Slovak, Spanish, Ukrainian.
  ### Lua API
    * Fix wesnoth.set_dialog_callback calling the function immediately when used in the previous callback. (issue #3794)
    * Fix wesnoth.set_dialog_value not triggering re-layout. (issue #3572)
+   * wml.tostring() now outputs a string that can be parsed back to WML without loss of data.
  ### Miscellaneous and bug fixes
    * Fix crash with custom themes on desktop PCs. (issue #3599)
    * Add --campaign-skip-story command line switch for skipping directly to turn 1. (issue #3472)
@@ -170,6 +391,10 @@
    * GUI.pyw can now terminate a running maintenance script
    * Fix SDL_DestroyRenderer assertion failure under XMonad. (part of issue #3716)
    * Fix map item names not being translated in the scenario editor.
+   * Usernames specified in the MP UI and command line are now stripped of leading and trailing whitespace, including newlines.
+   * Show ability of a selected unit as active/inactive with respect to mouseover hex. (issue #3912)
+   * macOS: Wesnoth now uses the app sandboxing feature, which means there is a new location for saves. All saves will be migrated during first launch automatically. For info about backwards compatibility see: https://gist.github.com/hrubymar10/eb5afd896f933a46fac344ced940e020
+   * Many units lacking animations now have at least a defense animations
  ### Multiplayer server
    * Fix stale temporary bans continuing to have an effect on players until cleared by
      phpBB on the next ban/unban operation.
@@ -200,6 +425,7 @@
    * The "Recruit Unit" dialog is searchable by unit type name. (PR #3787)
    * Add text filter to hotkeys preferences. (PR #3759)
    * Hide leader in status table if it's unfogged but invisible. (PR #3854)
+   * macOS: Dark GUI on macOS Mojave and later when dark appearance is enabled.
 
 ## Version 1.14.5
  ### AI
@@ -971,8 +1197,8 @@
    * Add wesnoth.format_conjunct_list and wesnoth.format_disjunct_list.
    * New global "wml" table groups together all the functions for working
      with WML tables, and its subtable "wml.variable" groups functions
-	 for working with WML variables. Most of these are functions previously
-	 found only in helper.lua; they no longer need a require to use.
+     for working with WML variables. Most of these are functions previously
+     found only in helper.lua; they no longer need a require to use.
    * Warnings for using deprecated Lua functions now only appear in debug mode.
    * wesnoth.game_config is now accessible in application and mapgen kernels,
      though some of its contents are missing.
@@ -1036,8 +1262,8 @@
    * Fix a crash when attempting to call a non-existent function
    * The following previously FormulaAI-exclusive functions are now also
      available in filter formulas (SUF, SLF, SSF, SWF):
-	 adjacent_locs, location_in_radius, get_unit_type, unit_at, defense_on,
-	 chance_to_hit, movement_cost
+     adjacent_locs, location_in_radius, get_unit_type, unit_at, defense_on,
+     chance_to_hit, movement_cost
    * New builtin functions for manipulating locations
      (available to all formulas):
      adjacent_locs, are_adjacent, relative_dir, direction_from,
@@ -1051,7 +1277,7 @@
      parameters.
    * New [credits_group] tag can be used by non-campaign addons to group several
      [about] tags under a single header. This is a toplevel tag, not a subtag
-	 of [era] or [modification].
+     of [era] or [modification].
    * An empty id key in SUF no longer matches all units;
      instead, it matches none.
    * Fix [primary_attack] and [secondary_attack] in [kill]

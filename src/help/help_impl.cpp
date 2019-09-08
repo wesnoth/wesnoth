@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -51,7 +51,7 @@
 #include <iterator>                     // for back_insert_iterator, etc
 #include <map>                          // for map, etc
 #include <set>
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 static lg::log_domain log_display("display");
 #define WRN_DP LOG_STREAM(warn, log_display)
@@ -181,9 +181,8 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 		}
 
 		generate_sections(help_cfg, (*section_cfg)["sections_generator"], sec, level);
-		//TODO: harmonize topics/sections sorting
 		if ((*section_cfg)["sort_sections"] == "yes") {
-			std::sort(sec.sections.begin(),sec.sections.end(), section_less());
+			sec.sections.sort(section_less());
 		}
 
 		bool sort_topics = false;
@@ -325,22 +324,8 @@ std::string generate_topic_text(const std::string &generator, const config *help
 	return empty_string;
 }
 
-topic_text::~topic_text()
+topic_text& topic_text::operator=(std::shared_ptr<topic_generator> g)
 {
-	if (generator_ && --generator_->count == 0)
-		delete generator_;
-}
-
-topic_text::topic_text(const topic_text& t): parsed_text_(t.parsed_text_), generator_(t.generator_)
-{
-	if (generator_)
-		++generator_->count;
-}
-
-topic_text &topic_text::operator=(topic_generator *g)
-{
-	if (generator_ && --generator_->count == 0)
-		delete generator_;
 	generator_ = g;
 	return *this;
 }
@@ -349,9 +334,8 @@ const std::vector<std::string>& topic_text::parsed_text() const
 {
 	if (generator_) {
 		parsed_text_ = parse_text((*generator_)());
-		if (--generator_->count == 0)
-			delete generator_;
-		generator_ = nullptr;
+		// This caches the result, so doesn't need the generator any more
+		generator_.reset();
 	}
 	return parsed_text_;
 }
@@ -855,7 +839,7 @@ void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*l
 		topic terrain_topic;
 		terrain_topic.title = info.editor_name();
 		terrain_topic.id    = hidden_symbol(hidden) + terrain_prefix + info.id();
-		terrain_topic.text  = new terrain_topic_generator(info);
+		terrain_topic.text  = std::make_shared<terrain_topic_generator>(info);
 
 		t_translation::ter_list base_terrains = tdata->underlying_union_terrain(t);
 		for (const t_translation::terrain_code& base : base_terrains) {
@@ -900,7 +884,7 @@ void generate_unit_sections(const config* /*help_cfg*/, section& sec, int level,
 			const std::string var_ref = hidden_symbol(var_type.hide_help()) + variation_prefix + var_type.id() + "_" + variation_id;
 
 			topic var_topic(topic_name, var_ref, "");
-			var_topic.text = new unit_topic_generator(var_type, variation_id);
+			var_topic.text = std::make_shared<unit_topic_generator>(var_type, variation_id);
 			base_unit.topics.push_back(var_topic);
 		}
 
@@ -933,11 +917,12 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		if (desc_type != FULL_DESCRIPTION)
 			continue;
 
-		const std::string type_name = type.type_name();
+		const std::string debug_suffix = (game_config::debug ? " (" + type.id() + ")" : "");
+		const std::string type_name = type.type_name() + (type.id() == type.type_name().str() ? "" : debug_suffix);
 		const std::string real_prefix = type.show_variations_in_help() ? ".." : "";
 		const std::string ref_id = hidden_symbol(type.hide_help()) + real_prefix + unit_prefix +  type.id();
 		topic unit_topic(type_name, ref_id, "");
-		unit_topic.text = new unit_topic_generator(type);
+		unit_topic.text = std::make_shared<unit_topic_generator>(type);
 		topics.push_back(unit_topic);
 
 		if (!type.hide_help()) {
@@ -1057,18 +1042,16 @@ std::string generate_contents_links(const section &sec, const std::vector<topic>
 {
 		std::stringstream res;
 
-		section_list::const_iterator s;
-		for (s = sec.sections.begin(); s != sec.sections.end(); ++s) {
-			if (is_visible_id((*s)->id)) {
-				std::string link = make_link((*s)->title, ".."+(*s)->id);
+		for (auto &s : sec.sections) {
+			if (is_visible_id(s.id)) {
+				std::string link = make_link(s.title, ".."+s.id);
 				res << font::unicode_bullet << " " << link << "\n";
 			}
 		}
 
-		std::vector<topic>::const_iterator t;
-		for (t = topics.begin(); t != topics.end(); ++t) {
-			if (is_visible_id(t->id)) {
-				std::string link = make_link(t->title, t->id);
+		for (auto &t : topics) {
+			if (is_visible_id(t.id)) {
+				std::string link = make_link(t.title, t.id);
 				res << font::unicode_bullet << " " << link << "\n";
 			}
 		}
@@ -1085,34 +1068,6 @@ bool topic::operator<(const topic &t) const
 	return id < t.id;
 }
 
-section::~section()
-{
-	std::for_each(sections.begin(), sections.end(), delete_section());
-}
-
-section::section(const section &sec) :
-	title(sec.title),
-	id(sec.id),
-	topics(sec.topics),
-	sections(),
-	level(sec.level)
-{
-	std::transform(sec.sections.begin(), sec.sections.end(),
-				   std::back_inserter(sections), create_section());
-}
-
-section& section::operator=(const section &sec)
-{
-	title = sec.title;
-	id = sec.id;
-	level = sec.level;
-	topics.insert(topics.end(), sec.topics.begin(), sec.topics.end());
-	std::transform(sec.sections.begin(), sec.sections.end(),
-				   std::back_inserter(sections), create_section());
-	return *this;
-}
-
-
 bool section::operator==(const section &sec) const
 {
 	return sec.id == id;
@@ -1125,13 +1080,12 @@ bool section::operator<(const section &sec) const
 
 void section::add_section(const section &s)
 {
-	sections.push_back(new section(s));
+	sections.emplace_back(s);
 }
 
 void section::clear()
 {
 	topics.clear();
-	std::for_each(sections.begin(), sections.end(), delete_section());
 	sections.clear();
 }
 
@@ -1144,9 +1098,8 @@ const topic *find_topic(const section &sec, const std::string &id)
 	if (tit != sec.topics.end()) {
 		return &(*tit);
 	}
-	section_list::const_iterator sit;
-	for (sit = sec.sections.begin(); sit != sec.sections.end(); ++sit) {
-		const topic *t = find_topic(*(*sit), id);
+	for (const auto &s : sec.sections) {
+		const auto t = find_topic(s, id);
 		if (t != nullptr) {
 			return t;
 		}
@@ -1156,13 +1109,13 @@ const topic *find_topic(const section &sec, const std::string &id)
 
 const section *find_section(const section &sec, const std::string &id)
 {
-	section_list::const_iterator sit =
+	const auto &sit =
 		std::find_if(sec.sections.begin(), sec.sections.end(), has_id(id));
 	if (sit != sec.sections.end()) {
-		return *sit;
+		return &*sit;
 	}
-	for (sit = sec.sections.begin(); sit != sec.sections.end(); ++sit) {
-		const section *s = find_section(*(*sit), id);
+	for (const auto &subsection : sec.sections) {
+		const auto s = find_section(subsection, id);
 		if (s != nullptr) {
 			return s;
 		}
@@ -1477,9 +1430,18 @@ unsigned image_width(const std::string &filename)
 	return 0;
 }
 
-void push_tab_pair(std::vector<std::pair<std::string, unsigned int>> &v, const std::string &s)
+void push_tab_pair(std::vector<help::item> &v, const std::string &s, const boost::optional<std::string> &image, unsigned padding)
 {
-	v.emplace_back(s, font::line_width(s, normal_font_size));
+	help::item item(s, font::line_width(s, normal_font_size));
+	if (image) {
+		// If the image doesn't exist, don't add padding.
+		auto width = image_width(image.get());
+		padding = (width ? padding : 0);
+
+		item.first = "<img>src='" + image.get() + "'</img>" + (padding ? jump(padding) : "") + s;
+		item.second += width + padding;
+	}
+	v.emplace_back(item);
 }
 
 std::string generate_table(const table_spec &tab, const unsigned int spacing)
