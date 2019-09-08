@@ -53,7 +53,7 @@
    * New Walking Corpse portrait for mounted variation
  ### Language and i18n
    * Updated translations: British English, Chinese (Traditional), Dutch,
-     French, German, Spanish, Turkish, Portuguese (Brazil), Ukrainian
+     French, German, Italian, Spanish, Turkish, Portuguese (Brazil), Ukrainian
    * Changed the :help command's output to split over multiple lines
    * Added translatable explanations of :droid, :help and :idle's arguments
  ### Multiplayer

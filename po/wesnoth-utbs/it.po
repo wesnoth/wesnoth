@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-06-30 12:14 UTC\n"
-"PO-Revision-Date: 2019-03-20 19:39+0100\n"
+"PO-Revision-Date: 2019-09-07 18:04+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -1134,6 +1134,8 @@ msgid ""
 "Your units become dehydrated during the day, losing hitpoints and damage "
 "when they are not on a water hex"
 msgstr ""
+"Le tue unità si disidrateranno durante il giorno, perdendo punti ferita e "
+"punti danno quando non stazionano su un esagono di acqua"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:218
@@ -1141,16 +1143,20 @@ msgid ""
 "Units are refreshed at the start of your turn when they are on a water or "
 "oasis hex"
 msgstr ""
+"Le unità si rinfrescano all’inizio del tuo turno quando sono un un esagono "
+"di tipo acqua o oasi"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:221
 msgid "Healers can prevent dehydration from getting worse, but cannot heal it"
 msgstr ""
+"I curatori possono prevenire il peggioramento della disidratazione, ma non "
+"possono curarla"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:224
 msgid "Healers are unable to heal adjacent units during the day"
-msgstr ""
+msgstr "I curatori non sono capaci di curare le unità vicine durante il giorno"
 
 #. [label]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:248
@@ -1678,17 +1684,12 @@ msgstr ""
 
 #. [message]: speaker=Vengeful Lord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1287
-#, fuzzy
-#| msgid ""
-#| "Elf with a bow, I remember you. You thought me defeated, but I am back "
-#| "even more powerful than before. Death reigns eternal, your scorched bones "
-#| "and lifeless body will join my host."
 msgid ""
 "Elf of the sands, I remember you. You thought me defeated, but I am back "
 "even more powerful than before. Death reigns eternal, your scorched bones "
 "and lifeless body will join my host."
 msgstr ""
-"Elfo con l’arco mi ricordo di te. Mi credevi sconfitto, ma sono tornato "
+"Elfo delle sabbie, mi ricordo di te. Mi credevi sconfitto, ma sono tornato "
 "anche più potente di prima. La morte regna sull’eternità, e presto le tue "
 "ossa scarnificate e il tuo corpo senza vita obbediranno a un nuovo padrone."
 
@@ -7858,10 +7859,8 @@ msgstr ""
 
 #. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2039
-#, fuzzy
-#| msgid "Break the circle"
 msgid "Break the circle."
-msgstr "Spezza il cerchio"
+msgstr "Spezza il cerchio."
 
 #. [command]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2058
@@ -11013,10 +11012,6 @@ msgstr ""
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1858
-#, fuzzy
-#| msgid ""
-#| "I have followed you this far Kaleh, I will not abandon you now. But I "
-#| "admit that my faith is shaken. If that is not our god, than what is it?"
 msgid ""
 "I have followed you this far Kaleh, I will not abandon you now. But I admit "
 "that my faith is shaken. If that is not our god, then what is it?"
@@ -15712,33 +15707,6 @@ msgstr "Tauroch Guardiano"
 
 #. [unit_type]: id=Tauroch Protector, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Protector.cfg:37
-#, fuzzy
-#| msgid ""
-#| "From the journal of Syniel, the sand skipper:\n"
-#| "\n"
-#| "The orcs ambushed me near the oasis at twilight. I had to flee into the "
-#| "desert, but even there, the wolves were nearly fast enough to keep up "
-#| "with me. I ran and ran for hours until I could barely feel my legs and "
-#| "still, they hounded me under the bright moonlight. I thought that I was "
-#| "dead for sure, but as Eloh would have it, I came across a young Tauroch "
-#| "that had wandered away from her pack. She must have sensed my trouble, "
-#| "for she came to me swiftly and fought beside me all through the long "
-#| "night; beyond exhaustion, we somehow managed to drive off dozens of orcs "
-#| "and wolves by ourselves. By dawn, we were alone, but wounded and weary to "
-#| "our bones with nothing but sand in sight. I used what little remained of "
-#| "my supplies to tend to the Tauroch’s wounds, then I succumbed to fatigue "
-#| "and I remember little after that.\n"
-#| "\n"
-#| "-----------------------\n"
-#| "\n"
-#| "I woke up today in the village, tired, but alive. My friends told me that "
-#| "the Tauroch had carried me through the desert for many hours at no little "
-#| "cost to herself, for she was in worse condition than I by the time we had "
-#| "arrived. I can only be grateful that I managed to survive that dreadful "
-#| "night, for it is only by Eloh’s grace that I happened upon such a loyal "
-#| "companion. She is my savior, my watchful guardian, a blessing from the "
-#| "Goddess herself. I think I will call her Nala, meaning ‘Protector’ in our "
-#| "tongue. I am sure we will have many more adventures together."
 msgid ""
 "From the journal of Syniel, the Sand Skipper:\n"
 "\n"
@@ -15768,19 +15736,19 @@ msgid ""
 msgstr ""
 "Dal giornale di Syniel, lo skipper delle sabbie:\n"
 "\n"
-"Gli orchi mi hanno teso un’imboscata al crepuscolo, vicino all’oasi. Dovevo "
-"fuggire nel deserto, ma anche lì, i lupi erano quasi abbastanza veloci da "
-"tenere il mio passo. Ho corso e corso per ore fino a riuscire a malapena a "
-"sentire le mie gambe e ancora allora, continuavano a darmi la caccia sotto "
-"la luce della luna. Pensavo che sarei sicuramente morto, ma per volontà di "
-"Eloh, mi sono imbattuto in una giovane tauroch che si era allontanato dal "
-"suo branco. Deve aver percepito il mio problema, perché lei è venuta "
-"rapidamente da me e combattuto al mio fianco per tutta la lunga notte. "
-"Nonostante la stanchezza, in qualche modo siamo riusciti a far fuori decine "
-"di orchi e lupi da soli. All’alba eravamo soli, sebbene feriti e stanchi "
-"fino al midollo, con nient’altro che sabbia in vista. Ho usato quello che "
-"poco rimaneva delle mie scorte per curare le ferite della tauroch, poi ho "
-"ceduto alla fatica e ricordo poco del resto.\n"
+"Gli orchi mi hanno teso un’imboscata al crepuscolo, vicino all’oasi. Ho "
+"dovuto fuggire nel deserto, ma anche lì, i lupi erano quasi abbastanza "
+"veloci da tenere il mio passo. Ho corso e corso per ore fino a riuscire a "
+"malapena a sentire le mie gambe e ancora allora, continuavano a darmi la "
+"caccia sotto la luce della luna. Pensavo che sarei sicuramente morto, ma per "
+"volontà di Eloh, mi sono imbattuto in una giovane tauroch che si era "
+"allontanata dal suo branco. Deve aver percepito il mio problema, perché è "
+"venuta rapidamente da me e ha combattuto al mio fianco per tutta la lunga "
+"notte. Nonostante la stanchezza, in qualche modo siamo riusciti a far fuori "
+"decine di orchi e lupi da soli. All’alba eravamo soli, sebbene feriti e "
+"stanchi fino al midollo, con nient’altro che sabbia in vista. Ho usato "
+"quello che poco rimaneva delle mie scorte per curare le ferite della "
+"tauroch, poi ho ceduto alla fatica e ricordo poco del resto.\n"
 "\n"
 "-----------------------\n"
 "\n"
