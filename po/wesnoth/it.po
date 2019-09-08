@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 22:41+0300\n"
-"PO-Revision-Date: 2019-03-11 22:01+0100\n"
+"PO-Revision-Date: 2019-09-07 14:59+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -122,10 +122,6 @@ msgstr "Invecchiamento dei messaggi di chat"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid ""
-#| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#| "0 to disable"
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
@@ -4425,10 +4421,6 @@ msgstr "liv"
 
 #. [tip]
 #: data/tips.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Use the map editor's <i>Areas</i> menu to define regions later addressed "
-#| "by event or ai coding."
 msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
@@ -4444,10 +4436,6 @@ msgstr "<i>― Guida alla progettazione di Wesnoth </i>"
 
 #. [tip]
 #: data/tips.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use "
-#| "of advanced features."
 msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
@@ -4457,17 +4445,13 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Scenarios saved from the editor in their default folder can be selected "
-#| "in the mp create screen's <i>User Scenarios</i> section."
 msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” screen."
 msgstr ""
 "Gli scenari salvati dall’editor nelle cartelle di default possono essere "
-"selezionati nella sezione <i>Scenari degli utenti</i> nella schermata di "
-"creazione delle mappe."
+"selezionati nella sezione <i>Scenari degli utenti</i> nella schermata "
+"multigiocatore “Crea Partita”."
 
 #. [tip]
 #: data/tips.cfg:16
@@ -6135,7 +6119,7 @@ msgstr "Giocatore in locale"
 
 #: src/game_initialization/connect_engine.cpp:1294
 msgid "Nobody"
-msgstr ""
+msgstr "Nessuno"
 
 #: src/game_initialization/connect_engine.cpp:1297
 msgid "Reserved"
@@ -8596,21 +8580,30 @@ msgstr "Nascondi i piani di $player"
 msgid "Whiteboard Options"
 msgstr "Opzioni della lavagna"
 
-#, fuzzy
-#~| msgid "Attack"
-#~| msgid_plural "Attacks"
-#~ msgid "Attacks"
-#~ msgstr "Attacco"
+#~ msgid ""
+#~ "Liminal units only reach their full strength during twilight.\n"
+#~ "\n"
+#~ "Day: −25% Damage\n"
+#~ "Night: −25% Damage"
+#~ msgstr ""
+#~ "Le unità liminali attaccano a piena potenza soltanto nelle fasi "
+#~ "crepuscolari.\n"
+#~ "\n"
+#~ "Giorno: −25% danni\n"
+#~ "Notte: −25% danni"
 
-#, fuzzy
-#~| msgid "Recruits"
-#~ msgid "Recruit"
-#~ msgstr "Unità reclutate"
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr ""
+#~ "Nonn sono disponibili opzioni di personalizzazione per l’era, il gioco o "
+#~ "la modifica selezionati."
 
-#, fuzzy
-#~| msgid "There are no save files to load"
-#~ msgid "There are no corpses available."
-#~ msgstr "Non sono presenti salvataggi da caricare"
+#~ msgid "Defaults"
+#~ msgstr "Impostazioni predefinite"
+
+#~ msgid "Connected Players"
+#~ msgstr "Giocatori connessi"
 
 #~ msgid "registering with password *** and no email address"
 #~ msgstr ""
@@ -8647,6 +8640,26 @@ msgstr "Opzioni della lavagna"
 #~ msgstr ""
 #~ "Richiedi un elenco di dettagli da impostare per il nickname da te "
 #~ "registrato."
+
+#~ msgid "Can't droid a local ai side: '$side'."
+#~ msgstr "Impossibile automatizzare una squadra con IA locale: «$side»."
+
+#~ msgid "Empty"
+#~ msgstr "Vuota"
+
+#~ msgid ""
+#~ "In many campaign scenarios, you may issue simple instructions for your "
+#~ "computer-controlled allies using the right-click context menu."
+#~ msgstr ""
+#~ "In molti scenari legati a varie campagne, puoi dare semplici istruzioni "
+#~ "ai tuoi alleati controllati dal computer utilizzando il menù contestuale "
+#~ "che appare facendo clic col tasto destro."
+
+#~ msgid "An invalid defender weapon got selected."
+#~ msgstr "È stata selezionata un’arma di difesa non valida."
+
+#~ msgid "Advances to:"
+#~ msgstr "Avanza come:"
 
 #~ msgid "Ping timeout"
 #~ msgstr "Timeout del ping"
@@ -8698,36 +8711,10 @@ msgstr "Opzioni della lavagna"
 #~ "7 fazioni in battaglia lungo 46 mappe/scenari multigiocatore,\n"
 #~ "oltre 500 estensioni.)"
 
-#~ msgid ""
-#~ "Liminal units only reach their full strength during twilight.\n"
-#~ "\n"
-#~ "Day: −25% Damage\n"
-#~ "Night: −25% Damage"
-#~ msgstr ""
-#~ "Le unità liminali attaccano a piena potenza soltanto nelle fasi "
-#~ "crepuscolari.\n"
-#~ "\n"
-#~ "Giorno: −25% danni\n"
-#~ "Notte: −25% danni"
-
 #~ msgid "(this turn left)"
 #~ msgid_plural "(%d turns left)"
 #~ msgstr[0] "(ultimo turno)"
 #~ msgstr[1] "(%d turni rimasti)"
-
-#~ msgid ""
-#~ "In many campaign scenarios, you may issue simple instructions for your "
-#~ "computer-controlled allies using the right-click context menu."
-#~ msgstr ""
-#~ "In molti scenari legati a varie campagne, puoi dare semplici istruzioni "
-#~ "ai tuoi alleati controllati dal computer utilizzando il menù contestuale "
-#~ "che appare facendo clic col tasto destro."
-
-#~ msgid "An invalid defender weapon got selected."
-#~ msgstr "È stata selezionata un’arma di difesa non valida."
-
-#~ msgid "Empty"
-#~ msgstr "Vuota"
 
 #~ msgid "$era_name (missing)"
 #~ msgstr "$era_name (mancante)"
@@ -8744,12 +8731,6 @@ msgstr "Opzioni della lavagna"
 #~ msgid "none"
 #~ msgstr "nessuno"
 
-#~ msgid "Can't droid a local ai side: '$side'."
-#~ msgstr "Impossibile automatizzare una squadra con IA locale: «$side»."
-
-#~ msgid "Advances to:"
-#~ msgstr "Avanza come:"
-
 #~ msgid "None"
 #~ msgstr "Nessuno"
 
@@ -8758,19 +8739,6 @@ msgstr "Opzioni della lavagna"
 #~ "<span color=\"$color\">$number_or_percent movement</span> points"
 #~ msgstr[0] "<span color=\"$color\">$number_or_percent</span> punto movimento"
 #~ msgstr[1] "<span color=\"$color\">$number_or_percent</span> punti movimento"
-
-#~ msgid ""
-#~ "There are no custom options available for the selected era, game, or "
-#~ "modification."
-#~ msgstr ""
-#~ "Nonn sono disponibili opzioni di personalizzazione per l’era, il gioco o "
-#~ "la modifica selezionati."
-
-#~ msgid "Defaults"
-#~ msgstr "Impostazioni predefinite"
-
-#~ msgid "Connected Players"
-#~ msgstr "Giocatori connessi"
 
 #~ msgid "Unit with negative HP found"
 #~ msgstr "Trovata unità con PF negativi"

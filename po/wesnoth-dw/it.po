@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 19:40 UTC\n"
-"PO-Revision-Date: 2019-03-12 18:55+0100\n"
+"PO-Revision-Date: 2019-09-07 15:58+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:13
@@ -167,14 +167,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:55
-#, fuzzy
-#| msgid ""
-#| "Under the cover of darkness, the mermen slid into the bay, intending to "
-#| "launch a surprise attack at dawn. But the orcs were prepared for this, "
-#| "and had hastily devised a surprise of their own. Ships at the mouth of "
-#| "the bay that had seemed but derelict hulks disgorged hordes of orcs. More "
-#| "of them poured forth from the city. The merfolk were trapped, and found "
-#| "themselves vastly outnumbered."
 msgid ""
 "Under the cover of darkness, the merfolk slid into the bay, intending to "
 "launch a surprise attack at dawn. But the orcs were prepared for this, and "
@@ -193,17 +185,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:60
-#, fuzzy
-#| msgid ""
-#| "Kai Laudiss’s army fought fiercely, slaying five orcs for every warrior "
-#| "they lost. The kai himself fought with reckless abandon; foes fell with "
-#| "each swing of his great mace. The orcs discovered that trapped mermen "
-#| "were tougher than they had imagined, and found themselves fleeing into "
-#| "the forest to escape their vengeful spears. As the kai had intended, it "
-#| "was a defeat the orcs would not soon forget; but the cost was heavy. Kai "
-#| "Laudiss was felled by a poisoned orcish dart, and the greater part of his "
-#| "army was destroyed. When the remaining soldiers returned to Jotha, "
-#| "Krellis, the young son of Kai Laudiss, learned that he had become kai."
 msgid ""
 "Kai Laudiss’s army fought fiercely, slaying five orcs for every warrior they "
 "lost. The kai himself fought with reckless abandon; foes fell with each "
@@ -216,15 +197,16 @@ msgid ""
 "son of Kai Laudiss, learned that he had become kai."
 msgstr ""
 "L’esercito di Kai Laudiss combatté fieramente, uccidendo cinque orchi per "
-"ogni loro guerriero perso. Lo stesso kai combatté con avventato slancio; i "
+"ogni loro guerriero perso. Lo stesso kai combatté con avventato slancio e i "
 "nemici cadevano ad ogni colpo della sua grande mazza. Gli orchi scoprirono "
 "che i nereidi intrappolati erano più tenaci di quanto immaginassero, e si "
 "ritrovarono a fuggire nella foresta per scappare dalle loro vendicative "
 "lance. Come il kai aveva progettato, fu una sconfitta che gli orchi non "
-"avrebbero dimenticato velocemente; ma il costo fu pesante. Kai Laudiss fu "
-"abbattuto da una freccia avvelenata, e la gran parte del suo esercito fu "
-"distrutta. Quando i soldati residui ritornarono a Jotha, Krellis, il giovane "
-"figlio di Kai Laudiss, venne a sapere di essere diventato il nuovo kai."
+"avrebbero dimenticato velocemente: ma lo scotto da pagare fu pesante. Kai "
+"Laudiss fu abbattuto da una freccia avvelenata, e la gran parte del suo "
+"esercito fu distrutta. Quando i soldati residui ritornarono a Jotha, "
+"Krellis, il giovane figlio di Kai Laudiss, venne a sapere di essere "
+"diventato lui il nuovo kai."
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:65
@@ -947,16 +929,12 @@ msgstr "Vrunt"
 
 #. [message]: speaker=Gashnok
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:210
-#, fuzzy
-#| msgid ""
-#| "Smells like lots of death in the south. There must be a good feast near "
-#| "that merman town."
 msgid ""
 "Smells like lots of death in the south near that merman town. Hey, Vrunt, "
 "you think the wolves like eatin’ merfish?"
 msgstr ""
-"C’è odore di morte al sud. Deve esserci stata una bella festa vicino a "
-"quella città nereidi."
+"C’è forte odore di morte a sud, vicino alla città dei nereidi. Ehi, Vrunt, "
+"pensi che ai lupi piaccia mangiare dei nereidi?"
 
 #. [message]: speaker=Vrunt
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:215
@@ -964,6 +942,8 @@ msgid ""
 "Talking or not, fish are fish. Wolves’ll probably love them. Besides, look "
 "there! Some fresh ones are coming our way!"
 msgstr ""
+"Parlante o no, un pesce è un pesce. AI lupi probabilmente piacerà. Inoltre,"
+"guarda qui! Alcuni nuovi ci stanno venendo incontro!"
 
 #. [message]: speaker=Gashnok
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:220
@@ -971,6 +951,8 @@ msgid ""
 "They look mighty good to me. Might even have a taste later, myself. Let’s "
 "get ’em, boys!"
 msgstr ""
+"A me sembrano squisiti. Penso che poi ne assaggerò anche io un pezzetto. "
+"Prendiamoli ragazzi!"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:225
@@ -1026,7 +1008,7 @@ msgstr "Sembra spaventoso. Lasciamolo prendere a qualcun altro."
 #. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:372
 msgid "Let me have that trident. I want to control lightning!"
-msgstr "Lasciami prendere quel tridente. Voglio controllare i fulmini!"
+msgstr "Fammi prendere quel tridente. Voglio controllare i fulmini!"
 
 #. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:381
@@ -2496,12 +2478,6 @@ msgstr ""
 
 #. [message]: speaker=Mal-Govon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:308
-#, fuzzy
-#| msgid ""
-#| "What I remember, you old fool, is you leaving behind the smoldering "
-#| "bodies of the orcs you had hired to steal my sword. Now, you bring "
-#| "mermen. When they lay expiring like gasping fish on the shore, will you "
-#| "not flee again? Do not speak to <i>me</i> of fear."
 msgid ""
 "What I remember, you old fool, is you leaving behind the smoldering bodies "
 "of the orcs you had hired to steal my sword. Now, you bring mer to do your "
@@ -2754,8 +2730,6 @@ msgstr ""
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1130
-#, fuzzy
-#| msgid "CURSE you mermen!"
 msgid "CURSE you merfolk!"
 msgstr "Siate MALEDETTI nereidi!"
 
@@ -2938,10 +2912,6 @@ msgstr "Forse no, ma aspetta."
 
 #. [message]: speaker=Mel Daveth
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:484
-#, fuzzy
-#| msgid ""
-#| "The mermen...they came back! Bring back the search parties! Call back the "
-#| "hordes!"
 msgid ""
 "The merfolk...they came back! Bring back the search parties! Call back the "
 "hordes!"
@@ -3229,12 +3199,6 @@ msgstr "Re bambino"
 
 #. [unit_type]: id=Merman Child King, race=merman
 #: data/campaigns/Dead_Water/units/Child_King.cfg:17
-#, fuzzy
-#| msgid ""
-#| "When a merman king dies, the next in line becomes king however young he "
-#| "is. It is his job to lead his troops in combat if necessary. Good "
-#| "soldiers will do as they are told, but a very young king will get little "
-#| "real respect."
 msgid ""
 "When a mer king dies, the next in line becomes king however young he is. It "
 "is his job to lead his troops in combat if necessary. Good soldiers will do "

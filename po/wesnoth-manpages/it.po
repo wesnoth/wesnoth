@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2019-08-27 22:41+0300\n"
-"PO-Revision-Date: 2019-02-12 20:52+0100\n"
+"PO-Revision-Date: 2019-09-07 18:08+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.0.6\n"
 
 # type: TH
 #. type: TH
@@ -1351,16 +1351,12 @@ msgstr "B<--controller>I<\\ numero>B<:>I<valore>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:457
-#, fuzzy
-#| msgid ""
-#| "selects the controller for this side. Available values: B<human> and "
-#| "B<ai>."
 msgid ""
 "selects the controller for this side. Available values: B<human>, B<ai> and "
 "B<null>."
 msgstr ""
 "seleziona il tipo di controllo per questa squadra. Valori disponibili: "
-"B<human> e B<ai>."
+"B<human> , B<ai> e B<null>."
 
 # type: TP
 #. type: TP
@@ -2633,6 +2629,14 @@ msgstr "B<wesnoth>(6)"
 #~ "La porta su cui il tuo server di posta è in ascolto. Omettendo un valore, "
 #~ "viene usata la 25."
 
+# type: TP
+#~ msgid "B<--path>"
+#~ msgstr "B<--path>"
+
+# type: Plain text
+#~ msgid "prints the name of the game data directory and exits."
+#~ msgstr "stampa il nome della cartella contenente i dati del gioco ed esce."
+
 # type: Plain text
 #~ msgid ""
 #~ "sets the severity level of the log domains.  B<all> can be used to match "
@@ -2642,14 +2646,6 @@ msgstr "B<wesnoth>(6)"
 #~ "imposta il livello di severità dei domini di debug. Puoi usare B<all> per "
 #~ "qualsiasi dominio di debug. Livelli disponibili: B<error>,\\ B<warning>,"
 #~ "\\ B<info>,\\ B<debug>. Normalmente è usato il livello B<error>."
-
-# type: TP
-#~ msgid "B<--path>"
-#~ msgstr "B<--path>"
-
-# type: Plain text
-#~ msgid "prints the name of the game data directory and exits."
-#~ msgstr "stampa il nome della cartella contenente i dati del gioco ed esce."
 
 #~ msgid "2017"
 #~ msgstr "2017"

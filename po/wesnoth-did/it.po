@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 19:40 UTC\n"
-"PO-Revision-Date: 2019-03-20 18:57+0100\n"
+"PO-Revision-Date: 2019-09-07 15:44+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [scenario]: id=11_Descent_into_Darkness
 #. [campaign]: id=Descent_into_Darkness
@@ -68,6 +68,12 @@ msgid ""
 "sacrificing his own soul in the process.\n"
 "\n"
 msgstr ""
+"La città di Parthyn è situata al confine settentrionale e ogni anno è "
+"oggetto di razzia da parte delle tribù degli orchi che stazionano nei suoi "
+"pressi. Malin Keshar, un mago reietto, cerca di proteggere la sua casa e di "
+"vendicarsi degli orchi ad ogni costo, anche se questo significa sacrificare "
+"la propria anima durante il precorso.\n"
+"\n"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:25
@@ -204,15 +210,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:53
-#, fuzzy
-#| msgid ""
-#| "The silence was broken by the irregular shuffle of a man emerging from "
-#| "the trees. He stood before them, a hunched figure with a rasping voice "
-#| "reminiscent of crackling bones. <i>“I am Darken Volk. While I know you do "
-#| "not love my kind, I think it is vital that we put aside our differences "
-#| "for the moment. The orcish menace grows in the north and they will soon "
-#| "return in even greater force. You cannot hope to defend against them "
-#| "without my... help.”</i>"
 msgid ""
 "The silence was broken by the irregular shuffle of a man emerging from the "
 "trees. He stood before them, a hunched figure with a rasping voice "
@@ -229,7 +226,8 @@ msgstr ""
 "gente come me, penso che per il momento sia vitale mettere da parte i "
 "dissidi. La minaccia degli orchi sta crescendo al nord e presto ritorneranno "
 "con forze ancora maggiori. Dubito che una città di confine possa resistere "
-"senza il mio... aiuto.»</i>"
+"senza il mio... aiuto. Per il momento, comunque, tutto quello che chiedo è "
+"di potermi rinfrescare nella vostra città»</i>"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:57
@@ -347,10 +345,8 @@ msgstr "Morte di Malin Keshar"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:197
-#, fuzzy
-#| msgid "Death of Malin Keshar"
 msgid "Death of Dela Keshar"
-msgstr "Morte di Malin Keshar"
+msgstr "Morte di Dela Keshar"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:201
@@ -359,10 +355,6 @@ msgstr "Morte di Drogan"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:218
-#, fuzzy
-#| msgid ""
-#| "Was it really a good idea to send out a raiding party so soon after the "
-#| "orcs just attacked us? Even father is no longer here..."
 msgid ""
 "Was it really a good idea to send out a raiding party so soon after the orcs "
 "just attacked us? Even Father is no longer here..."
@@ -440,11 +432,6 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:272
-#, fuzzy
-#| msgid ""
-#| "No, Drogan. I raised this corpse with the skills Darken Volk taught me "
-#| "before he left. While I have no love for it, without the help of the "
-#| "dead, we consign ourselves and our families to orcish stewpots!"
 msgid ""
 "No, Drogan. I raised this corpse with the skills Darken Volk taught me "
 "before he left. While I have no love for it, we cannot hope to repel the "
@@ -452,8 +439,7 @@ msgid ""
 msgstr ""
 "No, Drogan. Ho rianimato questo cadavere grazie alle arti che Darken Volk mi "
 "ha insegnato prima di andarsene. Anche se non mi piace farlo, senza l’aiuto "
-"del morto avremmo consegnato noi stessi e le nostre famiglie ai calderoni "
-"degli orchi!"
+"del morto avremmo avuto alcuna speranza di respingere gli orchi!"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:277
@@ -471,11 +457,6 @@ msgstr "Che cosa? Sono tutto meno che malvagio, Drogan!"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:287
-#, fuzzy
-#| msgid ""
-#| "You say that, brother, but you have been very close-mouthed about why the "
-#| "mages sent you home from Alduin. I am beginning to think that you were "
-#| "already dabbling in this witchcraft even before you met that necromancer!"
 msgid ""
 "You say that, Brother, but you have been very close-mouthed about why the "
 "mages sent you home from Alduin. I am beginning to think that you were "
@@ -484,7 +465,7 @@ msgstr ""
 "Questo lo dici tu, fratello, ma sei stato molto reticente sui motivi per cui "
 "i maghi ti hanno rimandato a casa da Alduin. Sto cominciando a pensare che "
 "tu abbia iniziato a dilettarti in questa stregoneria ben prima che "
-"incontrassi il negromante!!"
+"incontrassi il negromante!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:292
@@ -633,12 +614,6 @@ msgstr ""
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:505
-#, fuzzy
-#| msgid ""
-#| "That was bravely done, lad, holding the orcs off by yourself. But I fear "
-#| "the raiding party brings grave news from the north. More warlords have "
-#| "begun to mass armies in the hills, no more than a few days north of the "
-#| "Great River. I do not know if we possess the strength to fight them off."
 msgid ""
 "That was bravely done, lad, holding the orcs off by yourself. But I fear the "
 "raiding party brings grave news from the north. More warlords have begun to "
@@ -1675,13 +1650,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:35
-#, fuzzy
-#| msgid ""
-#| "Malin and Darken Volk continue their raids on the orcs and eventually "
-#| "force the usually fractious Whitefang chieftains to unite in opposition. "
-#| "The orcs pursue the two necromancers east toward the mouth of the river "
-#| "men call the Longlier and Elves call the Arkan-thoria, where they manage "
-#| "to surround the humans and force a fight."
 msgid ""
 "Malin and Darken Volk continue their raids on the orcs and eventually force "
 "the usually fractious Whitefang chieftains to unite in opposition. The orcs "
@@ -2454,15 +2422,6 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:854
-#, fuzzy
-#| msgid ""
-#| "O Gods, how did it come to this? My own sister determined to personally "
-#| "see to my demise. Banished from Parthyn, my country, my home... spurned "
-#| "by my people, whom I have given everything for... nothing has gone right "
-#| "ever since I got into an argument with that fat, orc-loving toad Zephrin "
-#| "and tried to curse him. I was only testing my new spell on him! It was "
-#| "only supposed to be a simple curse! How was I supposed to know it would "
-#| "kill him? Blasted Academy."
 msgid ""
 "O gods, how did it come to this? My own sister determined to personally see "
 "to my demise. Banished from Parthyn, my country, my home... spurned by my "
@@ -3130,17 +3089,17 @@ msgstr "Aspetta, non mi stai abbandonando, vero?"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1046
-#, fuzzy
-#| msgid "Escape via the tunnel in the northeast cellar"
 msgid ""
 "Escape the manor (Malin reaches the tunnel in the northeast cellar before "
 "Darken Volk)"
-msgstr "Fuggi attraverso la galleria nel sotterraneo di nord-est"
+msgstr ""
+"Fuggi dal maniero (Malin raggiunge la galleria nel sotterraneo di nord-est "
+"prima di Darken Volk)"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1050
 msgid "Darken Volk reaches the tunnel before Malin does"
-msgstr ""
+msgstr "Darken Volk raggiunge il tunnel prima che lo faccia Malin"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:1074
@@ -3298,10 +3257,6 @@ msgstr "Perché non dici nulla! Non t ne importa nulla?!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:318
-#, fuzzy
-#| msgid ""
-#| "... you can’t abandon me too, not the way they did... father, Drogan, "
-#| "Dela..."
 msgid ""
 "... you can’t abandon me too, not the way they did... Father, Drogan, Dela..."
 msgstr ""
@@ -5380,16 +5335,6 @@ msgstr "Baronessa di frontiera"
 
 #. [unit_type]: id=Frontier Baroness, race=human
 #: data/campaigns/Descent_Into_Darkness/units/Frontier_Baroness.cfg:23
-#, fuzzy
-#| msgid ""
-#| "At Wesnoth’s frontiers, all able-bodied men and women must be able to "
-#| "defend their homes at need. Men are most often trained in the use of "
-#| "sword or bow and are used as soldiers who withstand the brunt of orcish "
-#| "assaults to hold the raiders at bay. Women, instead, learn to use the "
-#| "staff and sling and are most effective as scouts and ambushers. The most "
-#| "proficient are powerful skirmishers and are highly adept at "
-#| "reconnaissance, allowing them to often outmaneuver and entrap orcish "
-#| "raiders."
 msgid ""
 "At Wesnoth’s frontiers, all able-bodied men and women must be able to defend "
 "their homes in times of need. Men are most often trained in the use of sword "
@@ -5465,6 +5410,9 @@ msgstr "Lich"
 #~ "dall’incursione degli orchi.\n"
 #~ "\n"
 
+#~ msgid "Escape the manor"
+#~ msgstr "Fuggi dal maniero"
+
 #~ msgid "Campaign Maintenance"
 #~ msgstr "Manutenzione della campagna"
 
@@ -5496,11 +5444,6 @@ msgstr "Lich"
 #~ "precoce e inaspettata contro Parthyn. Malin vide suo padre, colpito al "
 #~ "petto da una freccia, cadere senza vita sul terreno."
 
-#, fuzzy
-#~| msgid "Kill the orc leaders"
-#~ msgid "Kill the orc leader"
-#~ msgstr "Uccidi i comandanti degli orchi"
-
 #~ msgid "Orcs break through the river fort defenses"
 #~ msgstr "Gli orchi spezzano le difese del forte sul fiume"
 
@@ -5522,25 +5465,16 @@ msgstr "Lich"
 #~ "Il gruppo di incursori torna e gli orchi fuggono di fronte alle forze "
 #~ "superiori."
 
-#, fuzzy
-#~| msgid "The orcs are dead!"
-#~ msgid "The orcs are broken, dead or fled."
-#~ msgstr "Gli orchi sono morti!"
-
 #~ msgid ""
 #~ "The mages taught me enough. You won’t truly banish me, will you, Drogan?"
 #~ msgstr ""
 #~ "I maghi mi hanno insegnato abbastanza. Non vorrai bandirmi sul serio, "
 #~ "vero Drogan?"
 
-#, fuzzy
-#~| msgid ""
-#~| "Begone, now. I’ve no wish to be forced to send the soldiers after you. "
-#~| "Your father would turn in his grave did he see the end to which you’ve "
-#~| "come."
 #~ msgid ""
 #~ "Begone, now. I’ve no wish to be forced to send the soldiers after you. "
-#~ "Your father would be ashamed to see the end to which you’ve come."
+#~ "Your father would turn in his grave did he see the end to which you’ve "
+#~ "come."
 #~ msgstr ""
 #~ "Vattene immediatamente. Non voglio esser costretto a farti scortare dai "
 #~ "soldati. Tuo padre si vergognerebbe nel vedere che fine hai fatto."
@@ -5917,11 +5851,6 @@ msgstr "Lich"
 #~ "In fuga dalla sua città natale, Malin si dirige a ovest. Presto si "
 #~ "riunisce al suo maestro."
 
-#, fuzzy
-#~| msgid "General Taylor"
-#~ msgid "Taylor"
-#~ msgstr "Generale Taylor"
-
 #~ msgid "Townperson"
 #~ msgstr "Cittadino"
 
@@ -5932,26 +5861,11 @@ msgstr "Lich"
 #~ "Signore! Dei non-morti stanno uscendo dalla foresta! Svegliate le guardie "
 #~ "immediatamente!"
 
-#, fuzzy
-#~| msgid ""
-#~| "Sir! Undead creatures are coming out of the forest! Wake the guard "
-#~| "immediately!"
-#~ msgid "Undead creatures are coming out of the forest! To arms, men!"
-#~ msgstr ""
-#~ "Signore! Dei non-morti stanno uscendo dalla foresta! Svegliate le guardie "
-#~ "immediatamente!"
-
 #~ msgid "What in the name of all demons of hell was this thing?"
 #~ msgstr "Per tutti i demoni dell’inferno, cos’era questa cosa?"
 
 #~ msgid "Find the mage Lord Karres"
 #~ msgstr "Trova il mago lord Karres"
-
-#~ msgid "Find the book"
-#~ msgstr "Trova il libro"
-
-#~ msgid "Escape the manor"
-#~ msgstr "Fuggi dal maniero"
 
 #~ msgid ""
 #~ "All of the training you gave me, that was just so I would help you get "
@@ -6053,15 +5967,37 @@ msgstr "Lich"
 #~ msgid "<big>AAAaaaggghhhh!! ...</big>"
 #~ msgstr "<big>AAAaaaggghhhh!! ...</big>"
 
-#, fuzzy
-#~| msgid ""
-#~| "Your doom is at hand, lich! It is nigh time you answered for your crimes "
-#~| "against humanity!"
 #~ msgid ""
-#~ "Your doom is at hand, foul lich! I shall bring you down by my own hand."
+#~ "<i>“As for me, I have placed some spells on my journal to help keep it "
+#~ "from harm, and I will make it conspicuous on this battlefield. I hope "
+#~ "that it will eventually make its way into the hands of someone in Tath "
+#~ "who is willing to learn.”</i>"
 #~ msgstr ""
-#~ "La tua fine è vicina, lich! È quasi la volta che tu risponda per i tuoi "
-#~ "crimini contro l’umanità!"
+#~ "<i>“Per quello che mi riguarda, ho piazzato un paio di incantesimi sul "
+#~ "mio diario per evitare danni e lo renderò evidente su questo campo di "
+#~ "battaglia. Spero che vada a finire nelle mani di qualcuno a Tath che "
+#~ "abbia voglia di imparare.”</i>"
+
+#~ msgid ""
+#~ "The book’s author had left it for a foolish hero to pick up, and the "
+#~ "spells protecting it had been strong enough to resist the mages of Tath. "
+#~ "Mal Keshar had already made several copies of the book and had no further "
+#~ "need of the original; if he allowed another foolish hero to take it, "
+#~ "would another student eventually follow in his footsteps? Could the "
+#~ "author’s plan work? Might liches eventually be accepted in society, if he "
+#~ "simply waited?"
+#~ msgstr ""
+#~ "L’autore del libro lo aveva lasciato perchè un eroe sciocco lo "
+#~ "raccogliesse, e gli incantesimi di protezione erano stati stati "
+#~ "abbastanza forti da resistere al maghi di Tath.Mal Keshar aveva già "
+#~ "realizzato diverse copie del libro e non aveva più bisogno "
+#~ "dell’originale: se avesse lasciato che un altro eroe sciocco lo "
+#~ "prendesse, un altro studente avrebbe seguito le sue orme? Avrebbe potuto "
+#~ "funzionare il piano dell’autore? Forse i lich avrebbero potuto essere "
+#~ "accettati nella società, se avesse semplicemente aspettato?"
+
+#~ msgid "Make Into a Lich"
+#~ msgstr "Trasforma in lich"
 
 #~ msgid ""
 #~ "The only doom at hand is yours, if you do not leave now. Go back to your "
@@ -6136,120 +6072,6 @@ msgstr "Lich"
 #~ "seguaci avete ucciso. Orchi, all’attacco! C’è una borsa d’oro pronta per "
 #~ "chi mi porterà il suo teschio."
 
-#~ msgid ""
-#~ "It matters not who the lich was. He embraced death over life, and we have "
-#~ "done our duty to defend life."
-#~ msgstr ""
-#~ "Non ha alcuna importanza chi sia stato il lich. Ha abbracciato la morte "
-#~ "rispetto alla vita, e e noi abbiamo fatto il nostro dovere di difensori "
-#~ "della vita."
-
-#~ msgid "Probably an outlaw like us. Does it matter?"
-#~ msgstr "Probabilmente un fuorilegge come noi. Ha importanza?"
-
-#~ msgid "No, I guess not."
-#~ msgstr "No, penso di no."
-
-#~ msgid ""
-#~ "Once he chose this unlife for himself and his soldiers, he forfeited any "
-#~ "claim to our compassion. Does it even matter who he was?"
-#~ msgstr ""
-#~ "Quando scelse questa non-vita per sé e per i suoi soldati, rinunciò a "
-#~ "ogni diritto alla compassione. È davvero importante chi fosse?"
-
-#~ msgid "No, I suppose it does not."
-#~ msgstr "Già, non ha importanza."
-
-#~ msgid "Hearing the crack of his bones was satisfying."
-#~ msgstr ""
-#~ "Il suono delle sue ossa che si spezzavano è stato molto gratificante."
-
-#~ msgid ""
-#~ "Who do you think he was before becoming the bones crushed by our hammers?"
-#~ msgstr ""
-#~ "Chi pensi che sia stato prima di diventare questo mucchi di ossa "
-#~ "sfracellate dai nostri martelli?"
-
-#~ msgid ""
-#~ "Probably some angst-ridden mage that could not make it at that magic "
-#~ "academy those humans have. And when he did dark magic and got outlawed "
-#~ "from Wesnoth, he came to hide in these caves."
-#~ msgstr ""
-#~ "Probabilmente qualche mago angosciato che non è riuscito a farlo in "
-#~ "quella specie di scuola magica degli umani. Quando praticano la magia "
-#~ "oscura diventano dei fuorilegge per Wesnoth, e quindi vengono a "
-#~ "nascondersi in queste grotte."
-
-#, fuzzy
-#~| msgid "I guess we’ll never know for sure."
-#~ msgid "I guess we'll never know for sure."
-#~ msgstr "Penso che non lo sapremo mai con certezza."
-
-#~ msgid "Finally, my father and my people are avenged!"
-#~ msgstr "Finalmente, mio padre e la mia gente sono stati vendicati!"
-
-#~ msgid "Who cares!"
-#~ msgstr "A chi importa!"
-
-#~ msgid ""
-#~ "Despite his increased magical powers, Malin holds on to his short sword "
-#~ "as his melee weapon of choice."
-#~ msgstr ""
-#~ "Nonostante i suoi accresciuti poteri magici, Malin continua a usare la "
-#~ "spada corta come arma ravvicinata preferita."
-
-#~ msgid ""
-#~ "On the frontiers of Wesnoth, all able-bodied men and women must be able "
-#~ "to defend the town at need. While the men are most often trained in the "
-#~ "use of sword or bow, the women learn the use of staff and sling. The most "
-#~ "proficient are more than a match for any orcs foolish enough to engage "
-#~ "them in combat."
-#~ msgstr ""
-#~ "Alle frontiere di Wesnoth, ogni uomo o donna abile deve essere pronto a "
-#~ "difendere la città in caso di necessità. Mentre gli uomini di solito "
-#~ "vengono addestrati nell’uso della spada o dell’arco, le donne imparano "
-#~ "l’uso del bastone e della fionda. Le più brave sono una vera sfida per "
-#~ "qualsiasi orco abbastanza stupido da impegnarle in combattimento."
-
-#~ msgid ""
-#~ "As dawn breaks, the city guards force their way into the manor and "
-#~ "capture the two necromancers."
-#~ msgstr ""
-#~ "All’alba, le guardie della città si fanno strada nel maniero e catturano "
-#~ "i due negromanti."
-
-#~ msgid ""
-#~ "<i>“As for me, I have placed some spells on my journal to help keep it "
-#~ "from harm, and I will make it conspicuous on this battlefield. I hope "
-#~ "that it will eventually make its way into the hands of someone in Tath "
-#~ "who is willing to learn.”</i>"
-#~ msgstr ""
-#~ "<i>“Per quello che mi riguarda, ho piazzato un paio di incantesimi sul "
-#~ "mio diario per evitare danni e lo renderò evidente su questo campo di "
-#~ "battaglia. Spero che vada a finire nelle mani di qualcuno a Tath che "
-#~ "abbia voglia di imparare.”</i>"
-
-#~ msgid ""
-#~ "The book’s author had left it for a foolish hero to pick up, and the "
-#~ "spells protecting it had been strong enough to resist the mages of Tath. "
-#~ "Mal Keshar had already made several copies of the book and had no further "
-#~ "need of the original; if he allowed another foolish hero to take it, "
-#~ "would another student eventually follow in his footsteps? Could the "
-#~ "author’s plan work? Might liches eventually be accepted in society, if he "
-#~ "simply waited?"
-#~ msgstr ""
-#~ "L’autore del libro lo aveva lasciato perchè un eroe sciocco lo "
-#~ "raccogliesse, e gli incantesimi di protezione erano stati stati "
-#~ "abbastanza forti da resistere al maghi di Tath.Mal Keshar aveva già "
-#~ "realizzato diverse copie del libro e non aveva più bisogno "
-#~ "dell’originale: se avesse lasciato che un altro eroe sciocco lo "
-#~ "prendesse, un altro studente avrebbe seguito le sue orme? Avrebbe potuto "
-#~ "funzionare il piano dell’autore? Forse i lich avrebbero potuto essere "
-#~ "accettati nella società, se avesse semplicemente aspettato?"
-
-#~ msgid "Make Into a Lich"
-#~ msgstr "Trasforma in lich"
-
 #~ msgid "Burn it."
 #~ msgstr "Brucialo."
 
@@ -6296,6 +6118,89 @@ msgstr "Lich"
 #~ "Circolano delle voci che la fortuna arrida a quelle pattuglie. Che quando "
 #~ "vengono attaccate di notte dagli orchi, a combatterli ci siano più lame "
 #~ "che soltanto quelle della pattuglia."
+
+#~ msgid ""
+#~ "It matters not who the lich was. He embraced death over life, and we have "
+#~ "done our duty to defend life."
+#~ msgstr ""
+#~ "Non ha alcuna importanza chi sia stato il lich. Ha abbracciato la morte "
+#~ "rispetto alla vita, e e noi abbiamo fatto il nostro dovere di difensori "
+#~ "della vita."
+
+#~ msgid "Probably an outlaw like us. Does it matter?"
+#~ msgstr "Probabilmente un fuorilegge come noi. Ha importanza?"
+
+#~ msgid "No, I guess not."
+#~ msgstr "No, penso di no."
+
+#~ msgid ""
+#~ "Once he chose this unlife for himself and his soldiers, he forfeited any "
+#~ "claim to our compassion. Does it even matter who he was?"
+#~ msgstr ""
+#~ "Quando scelse questa non-vita per sé e per i suoi soldati, rinunciò a "
+#~ "ogni diritto alla compassione. È davvero importante chi fosse?"
+
+#~ msgid "No, I suppose it does not."
+#~ msgstr "Già, non ha importanza."
+
+#~ msgid "Hearing the crack of his bones was satisfying."
+#~ msgstr ""
+#~ "Il suono delle sue ossa che si spezzavano è stato molto gratificante."
+
+#~ msgid ""
+#~ "Who do you think he was before becoming the bones crushed by our hammers?"
+#~ msgstr ""
+#~ "Chi pensi che sia stato prima di diventare questo mucchi di ossa "
+#~ "sfracellate dai nostri martelli?"
+
+#~ msgid ""
+#~ "Probably some angst-ridden mage that could not make it at that magic "
+#~ "academy those humans have. And when he did dark magic and got outlawed "
+#~ "from Wesnoth, he came to hide in these caves."
+#~ msgstr ""
+#~ "Probabilmente qualche mago angosciato che non è riuscito a farlo in "
+#~ "quella specie di scuola magica degli umani. Quando praticano la magia "
+#~ "oscura diventano dei fuorilegge per Wesnoth, e quindi vengono a "
+#~ "nascondersi in queste grotte."
+
+#~ msgid "I guess we’ll never know for sure."
+#~ msgstr "Penso che non lo sapremo mai con certezza."
+
+#~ msgid "Finally, my father and my people are avenged!"
+#~ msgstr "Finalmente, mio padre e la mia gente sono stati vendicati!"
+
+#~ msgid "Who cares!"
+#~ msgstr "A chi importa!"
+
+#~ msgid ""
+#~ "Despite his increased magical powers, Malin holds on to his short sword "
+#~ "as his melee weapon of choice."
+#~ msgstr ""
+#~ "Nonostante i suoi accresciuti poteri magici, Malin continua a usare la "
+#~ "spada corta come arma ravvicinata preferita."
+
+#~ msgid ""
+#~ "On the frontiers of Wesnoth, all able-bodied men and women must be able "
+#~ "to defend the town at need. While the men are most often trained in the "
+#~ "use of sword or bow, the women learn the use of staff and sling. The most "
+#~ "proficient are more than a match for any orcs foolish enough to engage "
+#~ "them in combat."
+#~ msgstr ""
+#~ "Alle frontiere di Wesnoth, ogni uomo o donna abile deve essere pronto a "
+#~ "difendere la città in caso di necessità. Mentre gli uomini di solito "
+#~ "vengono addestrati nell’uso della spada o dell’arco, le donne imparano "
+#~ "l’uso del bastone e della fionda. Le più brave sono una vera sfida per "
+#~ "qualsiasi orco abbastanza stupido da impegnarle in combattimento."
+
+#~ msgid ""
+#~ "As dawn breaks, the city guards force their way into the manor and "
+#~ "capture the two necromancers."
+#~ msgstr ""
+#~ "All’alba, le guardie della città si fanno strada nel maniero e catturano "
+#~ "i due negromanti."
+
+#~ msgid "Find the book"
+#~ msgstr "Trova il libro"
 
 #~ msgid "short sword"
 #~ msgstr "spada corta"
