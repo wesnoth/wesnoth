@@ -588,7 +588,7 @@ void game::transfer_side_control(const socket_ptr& sock, const simple_wml::node&
 
 	if(newplayer == old_player) {
 		std::stringstream msg;
-		msg << "That's already " << newplayer_name << "'s side, silly.";
+		msg << "Side " << side_num << " is already controlled by " << newplayer_name << ".";
 		send_server_message(msg.str(), sock);
 		return;
 	}
