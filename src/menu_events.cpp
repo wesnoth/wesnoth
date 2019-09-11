@@ -1192,7 +1192,7 @@ protected:
 				// which must be a side-number and then optionally "on" or "off".
 				// As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
 				_("command_idle^[<side> [on/off]]"));
-		register_command("theme", &console_handler::do_theme);
+		register_command("theme", &console_handler::do_theme, _("Change the in-game theme."));
 		register_command("control", &console_handler::do_control,
 				_("Assign control of a side to a different player or observer."), _("<side> <nickname>"), "N");
 		register_command("controller", &console_handler::do_controller, _("Query the controller status of a side."),
@@ -1240,7 +1240,9 @@ protected:
 				"set_var", &console_handler::do_set_var, _("Set a scenario variable."), _("<var>=<value>"), "DS");
 		register_command("show_var", &console_handler::do_show_var, _("Show a scenario variable."), _("<var>"), "D");
 		register_command("unit", &console_handler::do_unit,
-				_("Modify a unit variable. (Only top level keys are supported.)"), "", "DS");
+				// TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
+				_("Modify a unit variable. (Only top level keys are supported, and advances=<number>.)"),
+				_("<var>=<value>"), "DS");
 
 		// register_command("buff", &console_handler::do_buff,
 		//    _("Add a trait to a unit."), "", "D");
@@ -1248,11 +1250,11 @@ protected:
 		//    _("Remove a trait from a unit. (Does not work yet.)"), "", "D");
 		register_command("discover", &console_handler::do_discover, _("Discover all units in help."), "");
 		register_command("undiscover", &console_handler::do_undiscover, _("'Undiscover' all units in help."), "");
-		register_command("create", &console_handler::do_create, _("Create a unit."), "", "DS");
+		register_command("create", &console_handler::do_create, _("Create a unit."), _("<unit type id>"), "DS");
 		register_command("fog", &console_handler::do_fog, _("Toggle fog for the current player."), "", "DS");
 		register_command("shroud", &console_handler::do_shroud, _("Toggle shroud for the current player."), "", "DS");
-		register_command("gold", &console_handler::do_gold, _("Give gold to the current player."), "", "DS");
-		register_command("throw", &console_handler::do_event, _("Fire a game event."), "", "DS");
+		register_command("gold", &console_handler::do_gold, _("Give gold to the current player."), _("<amount>"), "DS");
+		register_command("throw", &console_handler::do_event, _("Fire a game event."), _("<event name>"), "DS");
 		register_alias("throw", "fire");
 		register_command("show_coordinates", &console_handler::do_toggle_draw_coordinates,
 				_("Toggle overlaying of x,y coordinates on hexes."));
