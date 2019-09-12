@@ -127,7 +127,9 @@ void game_stats::pre_show(window& window)
 		row_data_stats.emplace("team_leader_image", column_stats);
 
 		column_stats["label"] = leader_name + "\n" + controller_name(team);
+		column_stats["tooltip"] = team::get_side_color_name_for_UI(team.side());
 		row_data_stats.emplace("team_leader_name", column_stats);
+		column_stats.erase("tooltip");
 
 		column_stats["label"] = team.user_team_name().empty() ? team.team_name() : team.user_team_name().str();
 		row_data_stats.emplace("team_name", column_stats);
