@@ -18,6 +18,7 @@
 #include "font/pango/escape.hpp"
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
+#include "formula/string_utils.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
@@ -214,6 +215,16 @@ REPORT_GENERATOR(selected_unit_race, rc)
 	return unit_race(u);
 }
 
+static std::string side_tooltip(const team& team)
+{
+	if(team.side_name().empty())
+		return "";
+
+	return VGETTEXT("Side: <b>$side_name</b> ($color_name)",
+			{{"side_name", team.side_name()},
+			 {"color_name", team::get_side_color_name_for_UI(team.side()) }});
+}
+
 static config unit_side(reports::context & rc, const unit* u)
 {
 	if (!u) return config();
@@ -230,12 +241,9 @@ static config unit_side(reports::context & rc, const unit* u)
 	std::stringstream text;
 	text << " " << u->side();
 
-	std::ostringstream tooltip;
-	if (!u_team.side_name().empty()) {
-		tooltip << _("Side:") << " <b>" <<  u_team.side_name() << "</b>";
-	}
-	add_image(report, flag_icon + mods, tooltip.str(), "");
-	add_text(report, text.str(), tooltip.str(), "");
+	const std::string& tooltip = side_tooltip(u_team);
+	add_image(report, flag_icon + mods, tooltip, "");
+	add_text(report, text.str(), tooltip, "");
 	return report;
 }
 REPORT_GENERATOR(unit_side, rc)
@@ -1637,7 +1645,7 @@ REPORT_GENERATOR(side_playing, rc)
 	std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
 	if (flag_icon.empty())
 		flag_icon = game_config::images::flag_icon;
-	return image_report(flag_icon + mods, active_team.side_name());
+	return image_report(flag_icon + mods, side_tooltip(active_team));
 }
 
 REPORT_GENERATOR(observers, rc)

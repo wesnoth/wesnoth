@@ -370,6 +370,7 @@ public:
 	static color_t get_minimap_color(int side);
 
 	static std::string get_side_color_id(unsigned side);
+	static const t_string get_side_color_name_for_UI(unsigned side);
 	static std::string get_side_color_id_from_config(const config& cfg);
 	static std::string get_side_highlight_pango(int side);
 
