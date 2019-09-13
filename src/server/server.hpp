@@ -182,7 +182,7 @@ private:
 	/** Process commands from admins and users. */
 	std::string process_command(std::string cmd, std::string issuer_name);
 
-	void delete_game(int);
+	void delete_game(int, const std::string& reason="");
 
 	void update_game_in_lobby(const wesnothd::game& g, const socket_ptr& exclude=socket_ptr());
 
