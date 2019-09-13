@@ -96,6 +96,12 @@ void lobby_player_info::pre_show(window& window)
 						this,
 						std::ref(window)));
 
+	connect_signal_mouse_left_click(
+			find_widget<button>(&window, "stopgame", false),
+			std::bind(&lobby_player_info::stopgame_button_callback,
+						this,
+						std::ref(window)));
+
 	find_widget<label>(&window, "player_name", false).set_label(info_.name);
 
 	std::stringstream loc;
@@ -202,6 +208,23 @@ void lobby_player_info::kick_ban_button_callback(window& w)
 {
 	do_kick_ban(true);
 	w.close();
+}
+
+void lobby_player_info::stopgame_button_callback(window& w)
+{
+	do_stopgame();
+	w.close();
+}
+
+void lobby_player_info::do_stopgame()
+{
+	std::stringstream ss;
+	ss << "stopgame " << info_.name;
+	if(!reason_->get_value().empty()) {
+		ss << " " << reason_->get_value();
+	}
+
+	chat_.send_command("query", ss.str());
 }
 
 void lobby_player_info::do_kick_ban(bool ban)
