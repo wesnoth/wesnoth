@@ -68,6 +68,10 @@ private:
 
 	void kick_ban_button_callback(window& w);
 
+	void stopgame_button_callback(window& w);
+
+	void do_stopgame();
+
 	void do_kick_ban(bool ban);
 
 	events::chat_handler& chat_;
