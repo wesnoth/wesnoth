@@ -200,7 +200,12 @@ mapchanges = (
     ("^Vch",  "^Vc"),
     ("^Vcm",  "^Vc"),
     ("Ggf,",  "Gg^Emf"),
-    ("Qv,",  "Mv"),
+    ("Qv",    "Mv"),
+    # 1.13.11
+    ("Xol,",  "Xos^Efs"),
+    # 1.15.2
+    ("^Ufi",  "^Tfi"), # Alternative: Tb^Ii
+    ("^Uf",   "^Tf"),  # Alternative: Tb
     )
 
 # Base terrain aliasing changes.
@@ -215,11 +220,13 @@ aliaschanges = (
     ("Ww",   "Wst"),
     ("Wo",   "Wdt"),
     ("Wwr",  "Wrt"),
-    ("^Uf",  "Uft"),
+    ("^Uf",  "Tt"),
     # Vi -> Vit in 1.11.8, Vit -> Vt in 1.11.9.
     ("Vit",  "Vt"),
     # 1.11.9:
     ("Vi",   "Vt"),
+    # 1.15.2:
+    ("Uft",  "Tt"),
     )
 
 # Global changes meant to be done on all lines.  Suppressed by noconvert.
