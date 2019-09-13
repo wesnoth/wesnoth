@@ -67,12 +67,17 @@ story_viewer::story_viewer(const std::string& scenario_name, const config& cfg_p
 	update_current_part_ptr();
 }
 
-story_viewer::~story_viewer()
+void story_viewer::clear_image_timer()
 {
 	if(timer_id_ != 0) {
 		remove_timer(timer_id_);
 		timer_id_ = 0;
 	}
+}
+
+story_viewer::~story_viewer()
+{
+	clear_image_timer();
 }
 
 void story_viewer::pre_show(window& window)
@@ -294,7 +299,8 @@ void story_viewer::display_part(window& window)
 	text_label.set_label(part_text);
 
 	begin_fade_draw(true);
-
+	// if the previous page was skipped, it is possible that we already have a timer running.
+	clear_image_timer();
 	//
 	// Floating images (handle this last)
 	//

@@ -52,6 +52,8 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
+	void clear_image_timer();
+
 	void update_current_part_ptr();
 
 	void display_part(window& window);
