@@ -475,6 +475,7 @@ void server::load_config()
 		disallowed_names_.push_back("computer");
 		disallowed_names_.push_back("ai");
 		disallowed_names_.push_back("ai?");
+		disallowed_names_.push_back("moderator");
 	} else {
 		disallowed_names_ = utils::split(cfg_["disallow_names"]);
 	}
