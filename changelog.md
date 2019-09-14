@@ -201,6 +201,8 @@
      * S9: add dialogue on victory
    * Heir to the Throne:
      * Remove 'Princess' as a direct address
+     * S15, S23: Add explicit hints on EASY. (PR #4329)
+     * S15: Improve one branch of the victory dialog. (PR #4334)
    * Legend of Wesmere:
      * S23: Landar's normal death dialogue now (properly) not used
    * Northern Rebirth:
@@ -256,6 +258,7 @@
    * Update various references of mermen to merfolk or mer
    * Adjust several maps to use different castle graphics
    * OpenMP support has been removed
+   * Clarify descriptions of income and upkeep in the help and in tooltips. (PR #4337)
 
 ## Version 1.14.8
  * Skipped due to need to reupload a broken 1.14.7 macOS App Store package as 1.14.8
