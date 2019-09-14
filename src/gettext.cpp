@@ -510,7 +510,8 @@ std::string strftime(const std::string& format, const std::tm* time)
 	std::basic_ostringstream<char> dummy;
 	std::lock_guard<std::mutex> lock(get_mutex());
 	dummy.imbue(get_manager().get_locale());
-	dummy << std::put_time(time, format.c_str());
+	// Revert to use of boost (from 1.14) instead of std::put_time() because the latter does not appear to handle locale properly in Linux
+	dummy << bl::as::ftime(format) << mktime(const_cast<std::tm*>(time));
 
 	return dummy.str();
 }
