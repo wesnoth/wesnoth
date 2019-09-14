@@ -154,7 +154,7 @@ std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	// TRANSLATORS: whiteboard menu entry: move planned action down queue
 	{ HOTKEY_WB_BUMP_DOWN_ACTION, "wbbumpdownaction", N_("whiteboard^Move Action Down"), false, scope_game, HKCAT_WHITEBOARD, "" },
 	// TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
-	{ HOTKEY_WB_SUPPOSE_DEAD, "wbsupposedead", N_("whiteboard^Suppose Dead"), false, scope_game, HKCAT_WHITEBOARD, "" },
+	{ HOTKEY_WB_SUPPOSE_DEAD, "wbsupposedead", N_("whiteboard^Suppose Dead"), true, scope_game, HKCAT_WHITEBOARD, "" },
 
 	{ HOTKEY_QUIT_TO_DESKTOP, "quit-to-desktop", N_("Quit to Desktop"), false, scope_game | scope_editor | scope_main, HKCAT_GENERAL, "" },
 	{ HOTKEY_EDITOR_MAP_CLOSE, "editor-close-map", N_("Close Map"), false, scope_editor, HKCAT_GENERAL, "" },

@@ -279,6 +279,7 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 		case hotkey::HOTKEY_WB_SUPPOSE_DEAD:
 		{
 			//@todo re-enable this once we figure out a decent UI for suppose_dead
+			//@todo when re-enabling this, change 'true' to 'false' in master_hotkey_list for this hotkey
 			return false;
 		}
 
