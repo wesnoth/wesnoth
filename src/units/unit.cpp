@@ -620,7 +620,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		set_attr_changed(UA_NOTES);
 		special_notes_.clear();
 		for(const config& c : cfg_range) {
-			special_notes_.emplace_back(c["note"]);
+			special_notes_.emplace_back(c["note"].t_str());
 		}
 	}
 
@@ -1941,7 +1941,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		
 		if(config::const_child_itors cfg_range = effect.child_range("add_special_note")) {
 			for(const config& c : cfg_range) {
-				special_notes_.emplace_back(c["note"]);
+				special_notes_.emplace_back(c["note"].t_str());
 			}
 		}
 		
