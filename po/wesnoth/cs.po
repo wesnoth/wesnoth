@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-06-30 15:14+0300\n"
-"PO-Revision-Date: 2019-02-15 21:56+0100\n"
+"PO-Revision-Date: 2019-08-26 03:14+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -124,15 +124,11 @@ msgstr "Stárnutí zpráv chatu"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid ""
-#| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#| "0 to disable"
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
 msgstr ""
-"Počet minut, po němž je smazána zpráva z chatu ve hře. Deaktivace hodnotou 0"
+"Počet minut, po němž je smazána zpráva z chatu ve hře. Deaktivace hodnotou 0."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:103
@@ -222,7 +218,7 @@ msgstr "Zobrazovat speciální grafické efekty u jednotek"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:178
 msgid "Show deprecation messages in-game"
-msgstr ""
+msgstr "Zobrazovat ve hře zprávy o zastarání"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:179
@@ -231,6 +227,9 @@ msgid ""
 "will still be shown in the log, even if this is disabled. In addition, the "
 "deprecation log-domain controls how many messages are printed."
 msgstr ""
+"Zobrazovat varování o zastaralých příkazech ve hře v oblasti chatu. Tyto "
+"zprávy budou nadále zobrazeny v logu a to i v případě, že je toto nastavení "
+"zakázáno. Kromě toho doména logu určuje, kolik zpráv bude vypsáno."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:186
@@ -4308,10 +4307,6 @@ msgstr "úr"
 
 #. [tip]
 #: data/tips.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Use the map editor's <i>Areas</i> menu to define regions later addressed "
-#| "by event or ai coding."
 msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
@@ -4326,29 +4321,21 @@ msgstr "<i>― Průvodce taktikou Wesnothu</i>"
 
 #. [tip]
 #: data/tips.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use "
-#| "of advanced features."
 msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
 msgstr ""
-"Abyste mohli použít pokročilé vlastnosti, vytvořte v editoru <i>Nový scénář</"
-"i> v menu <i>Soubor</i>."
+"Abyste mohli použít pokročilé vlastnosti, vyberte v menu <i>Soubor</i> "
+"možnost <i>Nový scénář</i>."
 
 #. [tip]
 #: data/tips.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Scenarios saved from the editor in their default folder can be selected "
-#| "in the mp create screen's <i>User Scenarios</i> section."
 msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” screen."
 msgstr ""
 "Scénáře uložené v editoru do výchozího umístění můžete vybrat v sekci "
-"<i>Uživatelský scénář</i>."
+"<i>Uživatelský scénář</i> při vytváření nové hry pro více hráčů."
 
 #. [tip]
 #: data/tips.cfg:16
@@ -5254,28 +5241,20 @@ msgid "Requesting distribution terms..."
 msgstr "Žádám o podmínky používání..."
 
 #: src/addon/client.cpp:127
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
-#| "cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
 msgstr ""
-"Rozšíření <i>$addon_title</i> obsahuje neplatný název souboru nebo složky a "
-"nebude instalováno."
+"Rozšíření <i>$addon_title</i> má neplatné id '$addon_id' a nemůže být "
+"publikováno."
 
 #: src/addon/client.cpp:153
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
-#| "cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
 msgstr ""
 "Rozšíření <i>$addon_title</i> obsahuje neplatný název souboru nebo složky a "
-"nebude instalováno."
+"nemůže být publikováno."
 
 #: src/addon/client.cpp:161
 msgid ""
@@ -6003,7 +5982,7 @@ msgstr "Místní hráč"
 
 #: src/game_initialization/connect_engine.cpp:1317
 msgid "Nobody"
-msgstr ""
+msgstr "Nikdo"
 
 #: src/game_initialization/connect_engine.cpp:1320
 msgid "Reserved"
@@ -6087,7 +6066,7 @@ msgstr "Neznámý věk"
 #: src/game_initialization/lobby_data.cpp:353
 #: src/game_initialization/lobby_data.cpp:386
 msgid "scenario_abbreviation^S"
-msgstr "S"
+msgstr "scenario_abbreviation^S"
 
 #: src/game_initialization/lobby_data.cpp:372
 msgid "Remote scenario"
@@ -6096,7 +6075,7 @@ msgstr "Vzdálený scénář"
 #: src/game_initialization/lobby_data.cpp:394
 #: src/game_initialization/lobby_data.cpp:417
 msgid "campaign_abbreviation^C"
-msgstr "C"
+msgstr "campaign_abbreviation^C"
 
 #: src/game_initialization/lobby_data.cpp:422
 msgid "Unknown scenario"
@@ -6223,36 +6202,30 @@ msgid " This server disallows unregistered nicknames."
 msgstr " Tento server nepovoluje použití neregistrovaných přezdívek."
 
 #: src/game_initialization/multiplayer.cpp:332
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
-msgstr "Přezdívka '$nick' je na fórum tohoto serveru serveru zablokována."
+msgstr ""
+"Přezdívka '$nick' je na fórum tohoto serveru serveru zablokována na "
+"$duration|."
 
 #: src/game_initialization/multiplayer.cpp:334
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Přezdívka '$nick' je na fórum tohoto serveru serveru zablokována."
 
 #: src/game_initialization/multiplayer.cpp:338
-#, fuzzy
-#| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums for $duration|."
-msgstr "Tvoje IP adresa je zablokovaná na fórum tohoto serveru."
+msgstr "Tvoje IP adresa je zablokovaná na fórum tohoto serveru na $duration|."
 
 #: src/game_initialization/multiplayer.cpp:340
 msgid "Your IP address is banned on this server’s forums."
 msgstr "Tvoje IP adresa je zablokovaná na fórum tohoto serveru."
 
 #: src/game_initialization/multiplayer.cpp:344
-#, fuzzy
-#| msgid ""
-#| "The email address for the nickname ‘$nick’ is banned on this server’s "
-#| "forums."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
 msgstr ""
 "Emailová adresa pro přezdívku '$nick' je na fórum tohoto serveru serveru "
-"zablokována."
+"zablokována na $duration|."
 
 #: src/game_initialization/multiplayer.cpp:346
 msgid ""
@@ -6953,10 +6926,8 @@ msgid "You have no units available to recruit."
 msgstr "Nemáš žádné jednotky k naverbování."
 
 #: src/menu_events.cpp:282
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recruited"
-msgstr "Žádná jednotka nebyla přivolána"
+msgstr "Žádná jednotka nebyla naverbována"
 
 #: src/menu_events.cpp:314
 msgid "You do not have enough gold to recruit that unit"
@@ -7278,11 +7249,11 @@ msgstr ""
 
 #: src/menu_events.cpp:1447
 msgid "Side '$side' controller is now controlled by: AI."
-msgstr ""
+msgstr "Strana '$side' je nyní řízena počítačem."
 
 #: src/menu_events.cpp:1449
 msgid "Side '$side' controller is now controlled by: human."
-msgstr ""
+msgstr "Strana '$side' je nyní řízena člověkem."
 
 #: src/menu_events.cpp:1457
 msgid "Can't droid a local ai side: '$side'."
@@ -7548,12 +7519,12 @@ msgid "Save and abort game"
 msgstr "Ulož a ukonči hru"
 
 #: src/playturn.cpp:297
-#, fuzzy
-#| msgid "$player has left the game. What do you want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
-msgstr "$player opustil(a) hru. Co s tím chceš dělat?"
+msgstr ""
+"$player, který kontroloval stranu $side_drop opustil(a) hru. Co s tím chceš "
+"dělat?"
 
 #: src/quit_confirmation.cpp:59
 msgid "Quit"
@@ -7573,7 +7544,7 @@ msgstr "Typ: "
 
 #: src/reports.cpp:235
 msgid "Side:"
-msgstr ""
+msgstr "Strana:"
 
 #: src/reports.cpp:257
 msgid "Level: "
@@ -7679,16 +7650,12 @@ msgid "Defense: "
 msgstr "Obrana: "
 
 #: src/reports.cpp:620 src/reports.cpp:621
-#, fuzzy
-#| msgid "vision: "
 msgid "vision:"
-msgstr "vidění: "
+msgstr "vidění:"
 
 #: src/reports.cpp:625 src/reports.cpp:626
-#, fuzzy
-#| msgid "jamming"
 msgid "jamming:"
-msgstr "rušení"
+msgstr "rušení:"
 
 #: src/reports.cpp:655
 msgid "Movement Costs:"
@@ -7788,16 +7755,12 @@ msgstr[1] "Útoky"
 msgstr[2] "Útoků"
 
 #: src/reports.cpp:1144
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day schedule:"
-msgstr "Denní doba: "
+msgstr "Rozvrh denní doby:"
 
 #: src/reports.cpp:1176
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day:"
-msgstr "Denní doba: "
+msgstr "Denní doba:"
 
 #: src/reports.cpp:1177 src/reports.cpp:1219
 msgid "Lawful units: "
@@ -8179,13 +8142,11 @@ msgstr ""
 "Jednotka byla vytvořena pomocí ladícího příkazu během kola hráče $player"
 
 #: src/synced_user_choice.cpp:330
-#, fuzzy
-#| msgid "waiting for $desc from side(s)$sides"
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "čeká se na $desc hrajícího za stranu $sides"
-msgstr[1] "čeká se na $desc hrajícího za stranu $sides"
-msgstr[2] "čeká se na $desc hrajícího za stranu $sides"
+msgstr[1] "čeká se na $desc hrajícího za strany $sides"
+msgstr[2] "čeká se na $desc hrajícího za strany $sides"
 
 #. TRANSLATORS: In networked games, this text is shown for other clients,
 #. while they wait for an action from another player.
@@ -8216,11 +8177,11 @@ msgstr "Zkratka(y): "
 
 #: src/time_of_day.cpp:45
 msgid "Stub Time of Day"
-msgstr "Denní doba"
+msgstr "Útržek denní doby"
 
 #: src/time_of_day.cpp:46
 msgid "This Time of Day is only a Stub!"
-msgstr ""
+msgstr "Tato denní doba je pouze útržek!"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:356
