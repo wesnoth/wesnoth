@@ -17,7 +17,6 @@
 
 #include "game_config_manager.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/auxiliary/old_markup.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/settings.hpp"
@@ -102,27 +101,11 @@ void faction_select::pre_show(window& window)
 		// flag_rgb here is unrelated to any handling in the unit class
 		const std::string flag_rgb = !side["flag_rgb"].empty() ? side["flag_rgb"].str() : "magenta";
 
-		// Handle legacy DescriptionWML format.
-		if(name.find_first_of("=") != std::string::npos) {
-			gui2::legacy_menu_item parsed(name, "Use separate name= and image= keys. Multiple text columns are no longer supported.");
+		item["label"] = (formatter() << side["image"] << "~RC(" << flag_rgb << ">" << tc_color_ << ")").str();
+		data.emplace("faction_image", item);
 
-			if(!side.has_attribute("image")) {
-				item["label"] = (formatter() << parsed.icon() << "~RC(" << flag_rgb << ">" << tc_color_ << ")").str();
-				data.emplace("faction_image", item);
-			}
-
-			item["label"] = parsed.label();
-			if(!parsed.description().empty()) {
-				item["label"] += " " + parsed.description();
-			}
-			data.emplace("faction_name", item);
-		} else {
-			item["label"] = (formatter() << side["image"] << "~RC(" << flag_rgb << ">" << tc_color_ << ")").str();
-			data.emplace("faction_image", item);
-
-			item["label"] = name;
-			data.emplace("faction_name", item);
-		}
+		item["label"] = name;
+		data.emplace("faction_name", item);
 
 		list.add_row(data);
 	}

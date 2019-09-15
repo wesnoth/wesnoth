@@ -23,6 +23,7 @@
      * This tag is supported both in `[unit]` and in `[unit_type]`. If used in `[unit]`, it will override the type's notes.
      * Standard special notes should now be added with `{NOTE_*}` instead of `{SPECIAL_NOTES_*}`.
      * In `[effect]apply_to=profile`, `[add_special_note]` and `[remove_special_note]` are supported.
+   * Support for the deprecated "&image.png=text" syntax has been removed in all contexts - use the DescriptionWML attributes instead.
  ### Miscellaneous and bug fixes
    * Fixed :droid's arguments not all being optional (Issue#4308)
    * Chat is now enable in single-player and hotseat multiplayer. (Issue#1111)

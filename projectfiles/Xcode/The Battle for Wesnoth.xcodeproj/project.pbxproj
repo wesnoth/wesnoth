@@ -344,8 +344,6 @@
 		46F92E402174F6A400602C1C /* generate_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F92CF32174F6A300602C1C /* generate_map.cpp */; };
 		46F92E412174F6A400602C1C /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F92CF92174F6A300602C1C /* chat_log.cpp */; };
 		46F92E422174F6A400602C1C /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F92CF92174F6A300602C1C /* chat_log.cpp */; };
-		46F92E432174F6A400602C1C /* old_markup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F92CFB2174F6A300602C1C /* old_markup.cpp */; };
-		46F92E442174F6A400602C1C /* old_markup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F92CFB2174F6A300602C1C /* old_markup.cpp */; };
 		46F92E452174F6A400602C1C /* tips.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F92CFC2174F6A300602C1C /* tips.cpp */; };
 		46F92E462174F6A400602C1C /* tips.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F92CFC2174F6A300602C1C /* tips.cpp */; };
 		46F92E472174F6A400602C1C /* walker_tree_node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F92D012174F6A300602C1C /* walker_tree_node.cpp */; };
@@ -1760,10 +1758,8 @@
 		46F92CF72174F6A300602C1C /* core_selection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = core_selection.hpp; sourceTree = "<group>"; };
 		46F92CF82174F6A300602C1C /* help_browser.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = help_browser.hpp; sourceTree = "<group>"; };
 		46F92CF92174F6A300602C1C /* chat_log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chat_log.cpp; sourceTree = "<group>"; };
-		46F92CFB2174F6A300602C1C /* old_markup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = old_markup.cpp; sourceTree = "<group>"; };
 		46F92CFC2174F6A300602C1C /* tips.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tips.cpp; sourceTree = "<group>"; };
 		46F92CFD2174F6A300602C1C /* field.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = field.hpp; sourceTree = "<group>"; };
-		46F92CFE2174F6A300602C1C /* old_markup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = old_markup.hpp; sourceTree = "<group>"; };
 		46F92CFF2174F6A300602C1C /* typed_formula.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = typed_formula.hpp; sourceTree = "<group>"; };
 		46F92D012174F6A300602C1C /* walker_tree_node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = walker_tree_node.cpp; sourceTree = "<group>"; };
 		46F92D022174F6A300602C1C /* walker_widget.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = walker_widget.hpp; sourceTree = "<group>"; };
@@ -3626,10 +3622,8 @@
 		46F92CFA2174F6A300602C1C /* auxiliary */ = {
 			isa = PBXGroup;
 			children = (
-				46F92CFB2174F6A300602C1C /* old_markup.cpp */,
 				46F92CFC2174F6A300602C1C /* tips.cpp */,
 				46F92CFD2174F6A300602C1C /* field.hpp */,
-				46F92CFE2174F6A300602C1C /* old_markup.hpp */,
 				46F92CFF2174F6A300602C1C /* typed_formula.hpp */,
 				46F92D002174F6A300602C1C /* iterator */,
 				46F92D0D2174F6A300602C1C /* find_widget.hpp */,
@@ -5297,7 +5291,6 @@
 				B5599B230EC62181008DD061 /* mouse_handler_base.cpp in Sources */,
 				46F92E2B2174F6A400602C1C /* synced_choice_wait.cpp in Sources */,
 				B52EE91A12135AC300CFBDAB /* move.cpp in Sources */,
-				46F92E432174F6A400602C1C /* old_markup.cpp in Sources */,
 				620A387115E9364F00A4F513 /* move.cpp in Sources */,
 				46F92E132174F6A400602C1C /* player_list_helper.cpp in Sources */,
 				F468E6AD16DF872200A31A5A /* movetype.cpp in Sources */,
@@ -5794,7 +5787,6 @@
 				91E356BD1CACC8A100774252 /* engine_cpp.cpp in Sources */,
 				46F92DB62174F6A300602C1C /* message.cpp in Sources */,
 				91E356BE1CACC8A100774252 /* recruitment.cpp in Sources */,
-				46F92E442174F6A400602C1C /* old_markup.cpp in Sources */,
 				46F92E562174F6A400602C1C /* vertical_scrollbar.cpp in Sources */,
 				91E356BF1CACC8A100774252 /* ca_move_to_targets.cpp in Sources */,
 				91E356C01CACC8A100774252 /* stage_rca.cpp in Sources */,
