@@ -1358,13 +1358,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Gui\Auxiliary\Iterator\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Gui\Auxiliary\Iterator\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\auxiliary\old_markup.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Gui\Auxiliary\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Gui\Auxiliary\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)Gui\Auxiliary\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|x64'">$(IntDir)Gui\Auxiliary\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|x64'">$(IntDir)Gui\Auxiliary\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\gui\auxiliary\tips.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)Gui\Auxiliary\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|x64'">$(IntDir)Gui\Auxiliary\</ObjectFileName>
@@ -3751,7 +3744,6 @@
     <ClInclude Include="..\..\src\gui\auxiliary\iterator\walker_grid.hpp" />
     <ClInclude Include="..\..\src\gui\auxiliary\iterator\walker_tree_node.hpp" />
     <ClInclude Include="..\..\src\gui\auxiliary\iterator\walker_widget.hpp" />
-    <ClInclude Include="..\..\src\gui\auxiliary\old_markup.hpp" />
     <ClInclude Include="..\..\src\gui\auxiliary\tips.hpp" />
     <ClInclude Include="..\..\src\gui\auxiliary\typed_formula.hpp" />
     <ClInclude Include="..\..\src\gui\core\canvas.hpp" />
