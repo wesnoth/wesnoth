@@ -66,6 +66,8 @@
      * Guards can't be tricked off position, leaders won't destroy buildings
      * Guards and Spiders are loyal – AI income has been adjusted accordingly
      * AI income increases gradually in lategame (very slowly)
+ ### Packaging
+   * added HighContrast icon
  ### WML engine
    * Fixed [music] ms_after= affecting the previous track instead of the intended one
  ### Miscellaneous and bug fixes
