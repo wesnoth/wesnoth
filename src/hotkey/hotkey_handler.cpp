@@ -162,6 +162,10 @@ void play_controller::hotkey_handler::cycle_back_units(){
 	mouse_handler_.cycle_back_units(browse());
 }
 
+void play_controller::hotkey_handler::speak(){
+	menu_handler_.speak();
+}
+
 void play_controller::hotkey_handler::show_chat_log(){
 	menu_handler_.show_chat_log();
 }
@@ -350,6 +354,9 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 	case hotkey::HOTKEY_LOAD_GAME:
 		return !play_controller_.is_networked_mp(); // Can only load games if not in a network game
 
+	case hotkey::HOTKEY_SPEAK:
+	case hotkey::HOTKEY_SPEAK_ALLY:
+	case hotkey::HOTKEY_SPEAK_ALL:
 	case hotkey::HOTKEY_CHAT_LOG:
 		return true;
 

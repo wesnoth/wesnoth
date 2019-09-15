@@ -98,6 +98,7 @@ public:
 	virtual void save_map() override;
 	virtual void load_game() override;
 	virtual void preferences() override;
+	virtual void speak() override;
 	virtual void show_chat_log() override;
 	virtual void show_help() override;
 	virtual void cycle_units() override;

@@ -32,7 +32,6 @@ public:
 	hotkey_handler(playmp_controller &, saved_game &);
 	~hotkey_handler();
 
-	virtual void speak() override;
 	virtual void whisper() override;
 	virtual void shout() override;
 	virtual void start_network() override;

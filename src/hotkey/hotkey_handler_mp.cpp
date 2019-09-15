@@ -26,10 +26,6 @@ playmp_controller::hotkey_handler::hotkey_handler(playmp_controller & pc, saved_
 
 playmp_controller::hotkey_handler::~hotkey_handler(){}
 
-void playmp_controller::hotkey_handler::speak(){
-	menu_handler_.speak();
-}
-
 void playmp_controller::hotkey_handler::whisper(){
 	menu_handler_.whisper();
 }
@@ -65,7 +61,8 @@ bool playmp_controller::hotkey_handler::can_execute_command(const hotkey::hotkey
 		case hotkey::HOTKEY_SPEAK:
 		case hotkey::HOTKEY_SPEAK_ALLY:
 		case hotkey::HOTKEY_SPEAK_ALL:
-			res = playmp_controller_.is_networked_mp();
+		case hotkey::HOTKEY_CHAT_LOG:
+			res = true;
 			break;
 		case hotkey::HOTKEY_START_NETWORK:
 			res = is_observer() && playmp_controller_.network_processing_stopped_;
