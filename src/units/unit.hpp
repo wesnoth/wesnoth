@@ -133,6 +133,7 @@ private:
 		UA_UNDEAD_VARIATION,
 		//note that UA_ATTACKS only tracks added/deleted attacks, not modified attacks.
 		UA_ATTACKS,
+		UA_NOTES,
 		UA_PROFILE,
 		UA_SMALL_PROFILE,
 		UA_ABILITIES,
@@ -413,6 +414,12 @@ public:
 	t_string unit_description() const
 	{
 		return description_;
+	}
+	
+	/** The unit's special notes. */
+	const std::vector<t_string>& unit_special_notes() const
+	{
+		return special_notes_;
 	}
 
 	/** The gender of this unit. */
@@ -1808,6 +1815,7 @@ private:
 	advancements_list advancements_;
 
 	t_string description_;
+	std::vector<t_string> special_notes_;
 
 	std::unique_ptr<std::string> usage_;
 	std::unique_ptr<std::string> halo_;

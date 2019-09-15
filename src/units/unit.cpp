@@ -357,6 +357,7 @@ unit::unit(const unit& o)
 	, abilities_(o.abilities_)
 	, advancements_(o.advancements_)
 	, description_(o.description_)
+	, special_notes_(o.special_notes_)
 	, usage_(copy_or_null(o.usage_))
 	, halo_(copy_or_null(o.halo_))
 	, ellipse_(copy_or_null(o.ellipse_))
@@ -437,6 +438,7 @@ unit::unit()
 	, abilities_()
 	, advancements_()
 	, description_()
+	, special_notes_()
 	, usage_()
 	, halo_()
 	, ellipse_()
@@ -610,6 +612,15 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		attacks_.clear();
 		for(const config& c : cfg_range) {
 			attacks_.emplace_back(new attack_type(c));
+		}
+	}
+
+	// Don't use the unit_type's special notes if this config has its own defined
+	if(config::const_child_itors cfg_range = cfg.child_range("special_note")) {
+		set_attr_changed(UA_NOTES);
+		special_notes_.clear();
+		for(const config& c : cfg_range) {
+			special_notes_.emplace_back(c["note"]);
 		}
 	}
 
@@ -964,6 +975,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	type_ = &new_type;
 	type_name_ = new_type.type_name();
 	description_ = new_type.unit_description();
+	special_notes_ = new_type.special_notes();
 	undead_variation_ = new_type.undead_variation();
 	max_experience_ = new_type.experience_needed(true);
 	level_ = new_type.level();
@@ -1456,6 +1468,11 @@ void unit::write(config& cfg, bool write_all) const
 	if(description_ != type().unit_description()) {
 		cfg["description"] = description_;
 	}
+	if(write_all || get_attr_changed(UA_NOTES)) {
+		for(const t_string& note : special_notes_) {
+			cfg.add_child("special_note")["note"] = note;
+		}
+	}
 
 	if(halo_.get()) {
 		cfg["halo"] = *halo_;
@@ -1920,6 +1937,22 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 
 		if(const config::attribute_value* v = effect.get("description")) {
 			description_ = *v;
+		}
+		
+		if(config::const_child_itors cfg_range = effect.child_range("add_special_note")) {
+			for(const config& c : cfg_range) {
+				special_notes_.emplace_back(c["note"]);
+			}
+		}
+		
+		if(config::const_child_itors cfg_range = effect.child_range("remove_special_note")) {
+			// TODO: Test that this works properly
+			for(const config& c : cfg_range) {
+				auto iter = std::find(special_notes_.begin(), special_notes_.end(), c["note"].t_str());
+				if(iter != special_notes_.end()) {
+					special_notes_.erase(iter);
+				}
+			}
 		}
 	} else if(apply_to == "new_attack") {
 		set_attr_changed(UA_ATTACKS);
