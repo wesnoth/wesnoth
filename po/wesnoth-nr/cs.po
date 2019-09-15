@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 19:41 UTC\n"
-"PO-Revision-Date: 2019-02-15 21:14+0100\n"
+"PO-Revision-Date: 2019-08-26 04:14+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:9
@@ -574,16 +574,12 @@ msgstr "Pán potřebuje pro vlky maso. Lidi dobré maso."
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:408
-#, fuzzy
-#| msgid ""
-#| "I die now, you orcish scum, but I die free! More will come after me. We "
-#| "will rise again and again until we work a fitting vengeance on you!"
 msgid ""
 "I die now, you orcish scum, but I die free! More will come after me. We will "
 "rise again until our vengeance has wiped your stain from our land!"
 msgstr ""
-"Umírám, ty skřetí zmetku, ale volný! Po mně přijdou další. Povstaneme znova "
-"a znova, dokud se na vás dost nepomstíme!"
+"Umírám, ty skřetí zmetku, ale volný! Po mně přijdou další. Znovu povstaneme, "
+"dokud naše pomsta nevymaže vaši špínu z naší země!"
 
 #. [message]: speaker=Al'Tar
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:420
@@ -827,31 +823,23 @@ msgstr "Mal Tath"
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:229
-#, fuzzy
-#| msgid "Find the Dwarves"
 msgid "Find the dwarves"
 msgstr "Nalezni trpaslíky"
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:239
-#, fuzzy
-#| msgid "Move Tallin to a Dwarvish castle keep or..."
 msgid "Move Tallin to the dwarvish area to meet with Lord Hamel"
-msgstr "Přesuň Tallina do trpasličí tvrze nebo..."
+msgstr "Přesuň Tallina do trpasličího, aby se setkal s Lordem Hamelem"
 
 #. [objectives]
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:248
-#, fuzzy
-#| msgid "Clear the Caves"
 msgid "Clear the caves"
 msgstr "Vyčisti doly"
 
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:254
-#, fuzzy
-#| msgid "Phew, they are defeated at last."
 msgid "The dwarves are defeated"
-msgstr "Uf, konečně jsou poraženi."
+msgstr "Trpaslíci jsou poraženi"
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:280
@@ -1336,10 +1324,8 @@ msgstr ""
 
 #. [scenario]: id=02_02_Meeting_With_Dwarves
 #: data/campaigns/Northern_Rebirth/scenarios/02_02_Meeting_With_Dwarves.cfg:5
-#, fuzzy
-#| msgid "Find the Dwarves"
 msgid "Meeting With Dwarves"
-msgstr "Nalezni trpaslíky"
+msgstr "Setkej se s trpaslíky"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/02_02_Meeting_With_Dwarves.cfg:18
@@ -10696,12 +10682,6 @@ msgstr ""
 msgid "Arthian"
 msgstr "Arthian"
 
-#~ msgid "Death of Tallin."
-#~ msgstr "Tallin zemře."
-
-#~ msgid "Help Tallin defeat the enemy leaders or"
-#~ msgstr "Pomoz Tallinovi porazit nepřátelské vůdce nebo"
-
 #~ msgid ""
 #~ "I am sorry, Elenia, we tried our best. (<i>Sigh</i>) I will never forget "
 #~ "you, Eryssa."
@@ -10711,6 +10691,12 @@ msgstr "Arthian"
 
 #~ msgid "You wretches are going to pay for this! FORWARD, MEN!"
 #~ msgstr "Za tohle zaplatíte, neřádi! KUPŘEDU!"
+
+#~ msgid "Help Tallin defeat the enemy leaders or"
+#~ msgstr "Pomoz Tallinovi porazit nepřátelské vůdce nebo"
+
+#~ msgid "Death of Tallin."
+#~ msgstr "Tallin zemře."
 
 #~ msgid "Clear the mines"
 #~ msgstr "Vyčisti doly"
