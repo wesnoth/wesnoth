@@ -14,6 +14,8 @@
    * Set up for translating the Wings of Victory campaign (PR#4265)
    * Changed the :help command's output to split over multiple lines
    * Added translatable explanations of :droid, :help and :idle's arguments
+ ### User interface
+   * Draw ellipses during draw/sheath animations. (Issue#1527)
  ### WML engine
    * Ranges can now have upper limit "infinity" instead of using a big number like "99" or "99999"
    * Print a deprecation warning for `[terrain_type]`'s partly-implemented `vision_alias`
