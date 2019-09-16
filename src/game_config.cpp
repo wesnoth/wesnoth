@@ -156,6 +156,7 @@ static std::vector<color_t> blue_white_scale;
 static std::vector<color_t> blue_white_scale_text;
 
 std::map<std::string, color_range> team_rgb_range;
+// Map [color_range]id to [color_range]name, or "" if no name
 std::map<std::string, t_string> team_rgb_name;
 
 std::map<std::string, std::vector<color_t>> team_rgb_colors;
