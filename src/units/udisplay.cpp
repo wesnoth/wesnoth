@@ -520,8 +520,8 @@ void unit_draw_weapon(const map_location& loc, unit& attacker,
 	unit_animator animator;
 	attacker.set_facing(loc.get_relative_dir(defender_loc));
 	defender->set_facing(defender_loc.get_relative_dir(loc));
-	animator.add_animation(&attacker,"draw_weapon",loc,defender_loc,0,false,"",{0,0,0},unit_animation::hit_type::HIT,attack,secondary_attack,0);
-	animator.add_animation(defender,"draw_weapon",defender_loc,loc,0,false,"",{0,0,0},unit_animation::hit_type::MISS,secondary_attack,attack,0);
+	animator.add_animation(&attacker,"draw_weapon",loc,defender_loc,0,true,"",{0,0,0},unit_animation::hit_type::HIT,attack,secondary_attack,0);
+	animator.add_animation(defender,"draw_weapon",defender_loc,loc,0,true,"",{0,0,0},unit_animation::hit_type::MISS,secondary_attack,attack,0);
 	animator.start_animations();
 	animator.wait_for_end();
 
@@ -537,10 +537,10 @@ void unit_sheath_weapon(const map_location& primary_loc, unit* primary_unit,
 	}
 	unit_animator animator;
 	if(primary_unit) {
-		animator.add_animation(primary_unit,"sheath_weapon",primary_loc,secondary_loc,0,false,"",{0,0,0},unit_animation::hit_type::INVALID,primary_attack,secondary_attack,0);
+		animator.add_animation(primary_unit,"sheath_weapon",primary_loc,secondary_loc,0,true,"",{0,0,0},unit_animation::hit_type::INVALID,primary_attack,secondary_attack,0);
 	}
 	if(secondary_unit) {
-		animator.add_animation(secondary_unit,"sheath_weapon",secondary_loc,primary_loc,0,false,"",{0,0,0},unit_animation::hit_type::INVALID,secondary_attack,primary_attack,0);
+		animator.add_animation(secondary_unit,"sheath_weapon",secondary_loc,primary_loc,0,true,"",{0,0,0},unit_animation::hit_type::INVALID,secondary_attack,primary_attack,0);
 	}
 
 	if(primary_unit || secondary_unit) {
