@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 #  expand-terrain-macros.py - Expand "meta-macros" for terrain WML
 #
@@ -35,56 +35,30 @@
 #  !!! ONLY USE THIS IF YOU KNOW WHAT YOU ARE DOING !!!
 
 import sys
-import getopt
+import argparse
 
-def printUsage():
-    print "Usage: expand-terrain-macros.py [OPTIONS] filename1\
- [filename2 [...]]\n"
-    print """Options:
-  -i  Insert the expanded sections into the input file(s) immediately after
-      their macro definitions.
-  -a  Append the expanded sections to the input file(s)
-  -r  Replace the input file(s) with the resulting output. Previously generated
-      expansions will be removed. Implies -i if nothing else is specified.
+parser = argparse.ArgumentParser(description="",
+epilog="If no options are specified, only the expanded sections will be printed to stdout")
+group = parser.add_mutually_exclusive_group()
+group.add_argument("-i", "--insert", action="store_true",
+help="Insert the expanded sections into the input file(s) immediately after their macro definitions.")
+group.add_argument("-a", "--append", action="store_true",
+help="Append the expanded sections to the input file(s).")
+parser.add_argument("-r", "--replace", action="store_true",
+help="Replace the input file(s) with the resulting output. Previously generated expansions will be removed. Implies -i if nothing else is specified.")
+parser.add_argument("filenames", nargs="+")
+args = parser.parse_args()
 
-If no options are specified, only the expanded sections will be printed to
-stdout"""
-
-insert = False
-append = False
-replace = False
-
-try:
-    (opts, args) = getopt.getopt(sys.argv[1:], 'iar')
-except getopt.GetoptError, e:
-    print 'Error parsing command-line arguments: %s' % e
-    printUsage()
-    sys.exit(1)
-for (option, parameter) in opts:
-    if option == '-i':
-        insert = True
-    if option == '-a':
-        append = True
-    if option == '-r':
-        replace = True
+insert = args.insert
+append = args.append
+replace = args.replace
 
 if replace and not append:
     insert = True
 
-if insert and append:
-    print "Error: cannot use -i and -a at the same time"
-    printUsage()
-    sys.exit(1)
-
-
-if len(args) == 0:
-    printUsage()
-    sys.exit(1)
-
-for filename in args:
-    f = file(filename)
-    content = f.readlines()
-    f.close()
+for filename in args.filenames:
+    with open(filename) as f:
+        content = f.readlines()
 
     changed = False
     output = []
@@ -113,7 +87,7 @@ for filename in args:
                 if len(split_param) == 3:
                     optional_params.append(split_param[0])
                 elif len(split_param) != 1:
-                    print "Error in line:\n" + line
+                    print("Error in line:\n" + line)
                     sys.exit(1)
 
                 params.append(split_param)
@@ -127,8 +101,8 @@ for filename in args:
                 result.append("#generated from: " + line.strip())
             result.append("#Please do not modify")
 
-            for i in xrange(2**len(optional_params) - 2, -1, -1):
-                enabled_map = dict([(param, i & (1<<index) != 0) for index, param in enumerate(optional_params)])
+            for i in range(2**len(optional_params) - 2, -1, -1):
+                enabled_map = {param: i & (1<<index) != 0 for index, param in enumerate(optional_params)}
 
                 suffix = ""
                 params_external = []
@@ -164,20 +138,19 @@ for filename in args:
                 appended += result
             else:
                 for r in result:
-                    print r
+                    print(r)
 
     if (insert or append) and not replace:
         for line in output:
-            print line
+            print(line)
         if append:
             for line in appended:
-                print line
+                print(line)
 
     elif replace and changed:
-        f = open(filename, 'w')
-        for line in output:
-            f.write(line+"\n")
-        if append:
-            for line in appended:
+        with open(filename, 'w') as f:
+            for line in output:
                 f.write(line+"\n")
-        f.close()
+            if append:
+                for line in appended:
+                    f.write(line+"\n")

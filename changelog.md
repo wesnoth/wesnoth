@@ -24,6 +24,7 @@
  ### Miscellaneous and bug fixes
    * Fixed :droid's arguments not all being optional (Issue#4308)
    * Chat is now enable in single-player and hotseat multiplayer. (Issue#1111)
+   * Ported the "expand-terrain-macros" tool to Python 3
 
 ## Version 1.15.1
  ### Editor

@@ -2,4 +2,4 @@
 # expand-terrain-macros.py tool.  Here's a canned invocation that will rebuild all.
 
 rebuild:
-	for i in *; do python ../../../data/tools/expand-terrain-macros.py -a -r $$i; done
+	for i in *; do python3 ../../../data/tools/expand-terrain-macros.py -a -r $$i; done
