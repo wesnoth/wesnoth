@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 # codelist
 # given list of integers, one per line, outputs a minimal list of ranges
 # describing the list
@@ -40,4 +40,4 @@ def printbyrange(lst):
     return out[:-1]
 
 codepoints = [int(x.strip()) for x in sys.stdin.readlines()]
-print printbyrange(rangeify(codepoints))
+print(printbyrange(rangeify(codepoints)))
