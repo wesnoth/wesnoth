@@ -171,8 +171,12 @@ fifo 的伺服器指令。
 \fB[proxy]\fP 這個標簽告訴伺服器扮演代理伺服器角色，把使用者連接重定向到另一台伺服器。與\fB[redirect]\fP接受一樣的參數。
 .RE
 .P
-\fB[user_handler]\fP
-配置用戶處理程序。可設置的主鍵取決於通過\fBuser_handler\fP設置的用戶資料處理器是哪一個。如果配置檔案中沒有\fB[user_handler]\fP小節，則伺服器在運行中將不提供任何暱稱註冊服務。
+\fB[user_handler]\fP Configures the user handler. Available keys vary depending
+on which user handler is set with the \fBuser_handler\fP key. If no
+\fB[user_handler]\fP section is present in the configuration the server will
+run without any nick registration service. All additional tables that are
+needed for the forum_user_handler to function can be found in
+table_definitions.sql in the Wesnoth source repository.
 .RS
 .TP 
 \fBdb_host\fP
@@ -192,10 +196,29 @@ fifo 的伺服器指令。
 論壇中存放用戶資料的表名。很可能是<table\-prefix>_users（例如phpbb3_users）。
 .TP 
 \fBdb_extra_table\fP
-（如果user_handler=forum）wesnothd存放自用的用戶資料的表名。您必須自己手動創建這個表，例如：\fBCREATE TABLE
-<table\-name>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
-UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
-0);\fP
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about users. You will have to create this table manually.
+.TP 
+\fBdb_game_info_table\fP
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about games.
+.TP 
+\fBdb_game_player_info_table\fP
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about the players in a game.
+.TP 
+\fBdb_game_modification_info_table\fP
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about the modifications used in a game.
+.TP 
+\fBdb_user_group_table\fP
+(for user_handler=forum) The name of the table in which your phpbb forums
+saves its user group data. Most likely this will be
+<table\-prefix>_user_group (e.g. phpbb3_user_group).
+.TP 
+\fBmp_mod_group\fP
+(for user_handler=forum) The ID of the forum group to be considered as
+having moderation authority.
 .TP 
 \fBuser_expiration\fP
 （如果user_handler=sample）註冊暱稱的失效時間（單位是天數）。

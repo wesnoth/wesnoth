@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-03-11 16:09+0300\n"
+"POT-Creation-Date: 2019-09-16 11:32+0300\n"
 "PO-Revision-Date: 2019-09-11 17:35-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -1383,7 +1383,7 @@ msgstr "O Jogo"
 # File: data/core/help.cfg, line: 357
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:33 data/core/help.cfg:398
+#: data/core/help.cfg:33 data/core/help.cfg:404
 msgid "Traits"
 msgstr "Características"
 
@@ -1441,7 +1441,7 @@ msgstr "Eras"
 # File: data/core/help.cfg, line: 491
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:74 data/core/help.cfg:413
+#: data/core/help.cfg:74 data/core/help.cfg:419
 msgid "Terrains"
 msgstr "Terrenos"
 
@@ -1454,7 +1454,7 @@ msgstr "Terrenos"
 # File: data/core/help.cfg, line: 793
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:82 data/core/help.cfg:466
+#: data/core/help.cfg:82 data/core/help.cfg:472
 msgid "Add-ons"
 msgstr "Add-ons"
 
@@ -1467,7 +1467,7 @@ msgstr "Add-ons"
 # File: data/core/help.cfg, line: 854
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:88 data/core/help.cfg:539
+#: data/core/help.cfg:88 data/core/help.cfg:545
 msgid "Commands"
 msgstr "Comandos"
 
@@ -1957,15 +1957,23 @@ msgstr "Receita e Manutenção"
 # File: data/core/help.cfg, line: 324
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:220
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Income is simple. You have a base income of 2 gold per turn. For every "
+#| "village you control, you gain one additional gold each turn. (In general "
+#| "this is configurable but in campaigns it is almost always one gold per "
+#| "village.) Thus, if you have ten villages, you would normally gain 12 gold "
+#| "each turn. Your upkeep costs are subtracted from this income, as detailed "
+#| "below."
 msgid ""
 "\n"
 "\n"
 "Income is simple. You have a base income of 2 gold per turn. For every "
-"village you control, you gain one additional gold each turn. (In general "
-"this is configurable but in campaigns it is almost always one gold per "
-"village.) Thus, if you have ten villages, you would normally gain 12 gold "
-"each turn. Your upkeep costs are subtracted from this income, as detailed "
-"below."
+"village you control, you gain one additional gold each turn. Thus, if you "
+"have ten villages, you would normally gain 12 gold each turn. Your upkeep "
+"costs are subtracted from this income, as detailed below."
 msgstr ""
 "\n"
 "\n"
@@ -1999,7 +2007,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 326
 # File: data/core/help.cfg, line: 326
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:222
+#: data/core/help.cfg:224
 msgid ""
 "\n"
 "\n"
@@ -2024,7 +2032,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 328
 # File: data/core/help.cfg, line: 328
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:224
+#: data/core/help.cfg:226
 msgid ""
 "\n"
 "\n"
@@ -2038,12 +2046,25 @@ msgstr ""
 "unidades que, ao todo, soman 12 níveis e dez aldeias, a sua receita seria "
 "dez de ouro a cada turno."
 
+#. [topic]: id=income_and_upkeep
+#: data/core/help.cfg:230
+msgid ""
+"\n"
+"\n"
+"In general, the base income, the amount of gold you get per village per "
+"turn, and the number of unit levels each village can support are "
+"configurable, but in campaigns they are almost always the values described "
+"above. The <italic>text='Scenario Settings'</italic> tab of the "
+"<italic>text='Status Table'</italic> dialog shows the values for the current "
+"scenario."
+msgstr ""
+
 #
 # File: data/core/help.cfg, line: 330
 # File: data/core/help.cfg, line: 330
 # File: data/core/help.cfg, line: 330
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:226
+#: data/core/help.cfg:232
 msgid ""
 "\n"
 "\n"
@@ -2069,7 +2090,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 200
 # File: data/core/help.cfg, line: 200
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:235
+#: data/core/help.cfg:241
 msgid "Hitpoints and Experience"
 msgstr "Pontos de Vida e Experiência"
 
@@ -2078,7 +2099,7 @@ msgstr "Pontos de Vida e Experiência"
 # File: data/core/help.cfg, line: 201
 # File: data/core/help.cfg, line: 201
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:236
+#: data/core/help.cfg:242
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -2098,7 +2119,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 205
 # File: data/core/help.cfg, line: 205
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:240
+#: data/core/help.cfg:246
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -2113,7 +2134,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 206
 # File: data/core/help.cfg, line: 206
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:242
+#: data/core/help.cfg:248
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -2131,7 +2152,7 @@ msgstr ""
 # File: src/help.cpp, line: 1389
 # File: src/help.cpp, line: 1389
 #. [topic]: id=advancement
-#: data/core/help.cfg:249
+#: data/core/help.cfg:255
 msgid "Advancement"
 msgstr "Avança para"
 
@@ -2140,7 +2161,7 @@ msgstr "Avança para"
 # File: data/core/help.cfg, line: 296
 # File: data/core/help.cfg, line: 296
 #. [topic]: id=advancement
-#: data/core/help.cfg:250
+#: data/core/help.cfg:256
 msgid ""
 "\n"
 "\n"
@@ -2162,7 +2183,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 296
 # File: data/core/help.cfg, line: 296
 #. [topic]: id=advancement
-#: data/core/help.cfg:250
+#: data/core/help.cfg:256
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they’re fighting. If a unit kills another in "
@@ -2180,7 +2201,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 298
 # File: data/core/help.cfg, line: 298
 #. [topic]: id=advancement
-#: data/core/help.cfg:252
+#: data/core/help.cfg:258
 msgid ""
 "\n"
 "\n"
@@ -2216,7 +2237,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 213
 # File: data/core/help.cfg, line: 213
 #. [topic]: id=movement
-#: data/core/help.cfg:261
+#: data/core/help.cfg:267
 msgid "Movement"
 msgstr "Movimento"
 
@@ -2225,7 +2246,7 @@ msgstr "Movimento"
 # File: data/core/help.cfg, line: 214
 # File: data/core/help.cfg, line: 214
 #. [topic]: id=movement
-#: data/core/help.cfg:262
+#: data/core/help.cfg:268
 msgid ""
 "\n"
 "\n"
@@ -2258,7 +2279,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 214
 # File: data/core/help.cfg, line: 214
 #. [topic]: id=movement
-#: data/core/help.cfg:262
+#: data/core/help.cfg:268
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -2294,7 +2315,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 216
 # File: data/core/help.cfg, line: 216
 #. [topic]: id=movement
-#: data/core/help.cfg:264
+#: data/core/help.cfg:270
 msgid ""
 "\n"
 "\n"
@@ -2322,7 +2343,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 218
 # File: data/core/help.cfg, line: 218
 #. [topic]: id=movement
-#: data/core/help.cfg:266
+#: data/core/help.cfg:272
 msgid ""
 "\n"
 "\n"
@@ -2342,7 +2363,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 227
 # File: data/core/help.cfg, line: 227
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:275
+#: data/core/help.cfg:281
 msgid "Shroud and Fog of War"
 msgstr "Escuridão e Névoa de Guerra"
 
@@ -2351,7 +2372,7 @@ msgstr "Escuridão e Névoa de Guerra"
 # File: data/core/help.cfg, line: 228
 # File: data/core/help.cfg, line: 228
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:276
+#: data/core/help.cfg:282
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -2404,7 +2425,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 237
 # File: data/core/help.cfg, line: 237
 #. [topic]: id=combat
-#: data/core/help.cfg:285
+#: data/core/help.cfg:291
 msgid "Combat"
 msgstr "Combate"
 
@@ -2413,7 +2434,7 @@ msgstr "Combate"
 # File: data/core/help.cfg, line: 238
 # File: data/core/help.cfg, line: 238
 #. [topic]: id=combat
-#: data/core/help.cfg:286
+#: data/core/help.cfg:292
 msgid ""
 "\n"
 "\n"
@@ -2428,7 +2449,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 238
 # File: data/core/help.cfg, line: 238
 #. [topic]: id=combat
-#: data/core/help.cfg:286
+#: data/core/help.cfg:292
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -2458,7 +2479,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 240
 # File: data/core/help.cfg, line: 240
 #. [topic]: id=combat
-#: data/core/help.cfg:288
+#: data/core/help.cfg:294
 msgid ""
 "\n"
 "\n"
@@ -2485,7 +2506,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 248
 # File: data/core/help.cfg, line: 248
 #. [topic]: id=combat
-#: data/core/help.cfg:290
+#: data/core/help.cfg:296
 msgid ""
 "\n"
 "\n"
@@ -2500,7 +2521,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 244
 # File: data/core/help.cfg, line: 244
 #. [topic]: id=combat
-#: data/core/help.cfg:292
+#: data/core/help.cfg:298
 msgid ""
 "\n"
 "\n"
@@ -2529,7 +2550,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 246
 # File: data/core/help.cfg, line: 246
 #. [topic]: id=combat
-#: data/core/help.cfg:294
+#: data/core/help.cfg:300
 msgid ""
 "\n"
 "\n"
@@ -2552,7 +2573,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 248
 # File: data/core/help.cfg, line: 248
 #. [topic]: id=combat
-#: data/core/help.cfg:296
+#: data/core/help.cfg:302
 msgid ""
 "\n"
 "\n"
@@ -2567,7 +2588,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 250
 # File: data/core/help.cfg, line: 250
 #. [topic]: id=combat
-#: data/core/help.cfg:298
+#: data/core/help.cfg:304
 msgid ""
 "\n"
 "\n"
@@ -2594,7 +2615,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 252
 # File: data/core/help.cfg, line: 252
 #. [topic]: id=combat
-#: data/core/help.cfg:300
+#: data/core/help.cfg:306
 msgid ""
 "\n"
 "\n"
@@ -2616,7 +2637,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 260
 # File: data/core/help.cfg, line: 260
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:308
+#: data/core/help.cfg:314
 msgid "Damage Types and Resistance"
 msgstr "Tipos de Danos, e Resistência"
 
@@ -2625,7 +2646,7 @@ msgstr "Tipos de Danos, e Resistência"
 # File: data/core/help.cfg, line: 261
 # File: data/core/help.cfg, line: 261
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:309
+#: data/core/help.cfg:315
 msgid ""
 "\n"
 "\n"
@@ -2648,7 +2669,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 261
 # File: data/core/help.cfg, line: 261
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:309
+#: data/core/help.cfg:315
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -2669,7 +2690,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 263
 # File: data/core/help.cfg, line: 263
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:311
+#: data/core/help.cfg:317
 msgid ""
 "\n"
 "\n"
@@ -2688,7 +2709,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 265
 # File: data/core/help.cfg, line: 265
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:313
+#: data/core/help.cfg:319
 msgid ""
 "\n"
 "\n"
@@ -2707,7 +2728,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 187
 # File: data/core/help.cfg, line: 187
 #. [topic]: id=orbs
-#: data/core/help.cfg:321
+#: data/core/help.cfg:327
 msgid "Orbs"
 msgstr "Esferas"
 
@@ -2716,7 +2737,7 @@ msgstr "Esferas"
 # File: data/core/help.cfg, line: 188
 # File: data/core/help.cfg, line: 188
 #. [topic]: id=orbs
-#: data/core/help.cfg:322
+#: data/core/help.cfg:328
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -2729,7 +2750,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 189
 # File: data/core/help.cfg, line: 189
 #. [topic]: id=orbs
-#: data/core/help.cfg:324
+#: data/core/help.cfg:330
 msgid " green if it hasn’t moved this turn,"
 msgstr " verde se ainda não se moveu neste turno,"
 
@@ -2738,7 +2759,7 @@ msgstr " verde se ainda não se moveu neste turno,"
 # File: data/core/help.cfg, line: 190
 # File: data/core/help.cfg, line: 190
 #. [topic]: id=orbs
-#: data/core/help.cfg:325
+#: data/core/help.cfg:331
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr ""
 " amarela se ela já se moveu, mas ainda pode se mover mais ou atacar, ou"
@@ -2748,7 +2769,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 191
 # File: data/core/help.cfg, line: 191
 #. [topic]: id=orbs
-#: data/core/help.cfg:326
+#: data/core/help.cfg:332
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
@@ -2760,7 +2781,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 192
 # File: data/core/help.cfg, line: 192
 #. [topic]: id=orbs
-#: data/core/help.cfg:327
+#: data/core/help.cfg:333
 msgid " blue if the unit is an ally you do not control."
 msgstr " azul se a unidade é um aliado que você não controla."
 
@@ -2769,7 +2790,7 @@ msgstr " azul se a unidade é um aliado que você não controla."
 # File: data/core/help.cfg, line: 193
 # File: data/core/help.cfg, line: 193
 #. [topic]: id=orbs
-#: data/core/help.cfg:328
+#: data/core/help.cfg:334
 msgid " Enemy units have no orb on top of their energy bar."
 msgstr ""
 " Unidades inimigas não não possuem esferas no topo de suas barras de energia."
@@ -2779,7 +2800,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 273
 # File: data/core/help.cfg, line: 273
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:335
+#: data/core/help.cfg:341
 msgid "Time of Day"
 msgstr "Período do Dia"
 
@@ -2788,7 +2809,7 @@ msgstr "Período do Dia"
 # File: data/core/help.cfg, line: 274
 # File: data/core/help.cfg, line: 274
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:336
+#: data/core/help.cfg:342
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 "\n"
@@ -2815,7 +2836,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 278
 # File: data/core/help.cfg, line: 278
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:341
+#: data/core/help.cfg:347
 msgid ""
 "\n"
 "\n"
@@ -2845,7 +2866,7 @@ msgstr ""
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:345 data/core/macros/schedules.cfg:14
+#: data/core/help.cfg:351 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "Amanhecer"
@@ -2859,7 +2880,7 @@ msgstr "Amanhecer"
 # File: data/core/macros/schedules.cfg, line: 17
 #. [time]: id=morning
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:346 data/core/macros/schedules.cfg:26
+#: data/core/help.cfg:352 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "Manhã"
@@ -2873,7 +2894,7 @@ msgstr "Manhã"
 # File: data/core/macros/schedules.cfg, line: 26
 #. [time]: id=afternoon
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:347 data/core/macros/schedules.cfg:44
+#: data/core/help.cfg:353 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "Tarde"
@@ -2891,7 +2912,7 @@ msgstr "Tarde"
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:348 data/core/macros/schedules.cfg:53
+#: data/core/help.cfg:354 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "Anoitecer"
@@ -2905,7 +2926,7 @@ msgstr "Anoitecer"
 # File: data/core/macros/schedules.cfg, line: 46
 #. [time]: id=first_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:349 data/core/macros/schedules.cfg:65
+#: data/core/help.cfg:355 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "Noite"
@@ -2919,7 +2940,7 @@ msgstr "Noite"
 # File: data/core/macros/schedules.cfg, line: 58
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:350 data/core/macros/schedules.cfg:89
+#: data/core/help.cfg:356 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "Madrugada"
@@ -2929,7 +2950,7 @@ msgstr "Madrugada"
 # File: data/core/help.cfg, line: 288
 # File: data/core/help.cfg, line: 288
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:352
+#: data/core/help.cfg:358
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!\n"
@@ -2938,7 +2959,7 @@ msgstr ""
 "perpétua!\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:354
+#: data/core/help.cfg:360
 msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night.\n"
@@ -2947,7 +2968,7 @@ msgstr ""
 "intermediários entre o dia e a noite.\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:356
+#: data/core/help.cfg:362
 msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate.\n"
@@ -2956,7 +2977,7 @@ msgstr ""
 "igualmente intermediários.\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:358
+#: data/core/help.cfg:364
 msgid ""
 "Finally, units with the <ref>dst='ability_illuminationilluminates' "
 "text='illuminates'</ref> ability and terrain features such as "
@@ -2973,7 +2994,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 307
 # File: data/core/help.cfg, line: 307
 #. [topic]: id=healing
-#: data/core/help.cfg:365
+#: data/core/help.cfg:371
 msgid "Healing"
 msgstr "Curando"
 
@@ -2982,7 +3003,7 @@ msgstr "Curando"
 # File: data/core/help.cfg, line: 308
 # File: data/core/help.cfg, line: 308
 #. [topic]: id=healing
-#: data/core/help.cfg:366
+#: data/core/help.cfg:372
 msgid ""
 "\n"
 "\n"
@@ -2995,7 +3016,7 @@ msgstr ""
 "foi atacada cura 2 de HP no seu próximo turno."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:366
+#: data/core/help.cfg:372
 msgid ""
 "In combat, your units will inevitably take damage. There are several ways to "
 "heal your units. However, with the exception of resting, these do not stack; "
@@ -3010,7 +3031,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 310
 # File: data/core/help.cfg, line: 310
 #. [topic]: id=healing
-#: data/core/help.cfg:368
+#: data/core/help.cfg:374
 msgid ""
 "\n"
 "• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
@@ -3028,7 +3049,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 311
 # File: data/core/help.cfg, line: 311
 #. [topic]: id=healing
-#: data/core/help.cfg:369
+#: data/core/help.cfg:375
 msgid ""
 "\n"
 "• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
@@ -3046,7 +3067,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 312
 # File: data/core/help.cfg, line: 312
 #. [topic]: id=healing
-#: data/core/help.cfg:370
+#: data/core/help.cfg:376
 msgid ""
 "\n"
 "• <bold>text='Healing units'</bold>: Units with the "
@@ -3068,7 +3089,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 313
 # File: data/core/help.cfg, line: 313
 #. [topic]: id=healing
-#: data/core/help.cfg:371
+#: data/core/help.cfg:377
 msgid ""
 "\n"
 "• <bold>text='Curing units'</bold>: Units with the "
@@ -3083,7 +3104,7 @@ msgstr ""
 "preferencia será em curar o envenenamento)."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:372
+#: data/core/help.cfg:378
 msgid ""
 "\n"
 "• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
@@ -3101,7 +3122,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 314
 # File: data/core/help.cfg, line: 314
 #. [topic]: id=healing
-#: data/core/help.cfg:373
+#: data/core/help.cfg:379
 msgid ""
 "\n"
 "\n"
@@ -3117,7 +3138,7 @@ msgstr ""
 "completamente de um cenário para o outro."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:375
+#: data/core/help.cfg:381
 msgid ""
 "\n"
 "\n"
@@ -3128,7 +3149,7 @@ msgstr ""
 "<bold>text='Avançado'</bold>"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:377
+#: data/core/help.cfg:383
 msgid ""
 "\n"
 "\n"
@@ -3152,7 +3173,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 338
 # File: data/core/help.cfg, line: 338
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:385
+#: data/core/help.cfg:391
 msgid "Wrap Up"
 msgstr "Conclusão"
 
@@ -3161,7 +3182,7 @@ msgstr "Conclusão"
 # File: data/core/help.cfg, line: 339
 # File: data/core/help.cfg, line: 339
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:386
+#: data/core/help.cfg:392
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -3181,7 +3202,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 350
 # File: data/core/help.cfg, line: 350
 #. [topic]: id=license
-#: data/core/help.cfg:391
+#: data/core/help.cfg:397
 msgid "License"
 msgstr "Licença"
 
@@ -3190,7 +3211,7 @@ msgstr "Licença"
 # File: data/core/help.cfg, line: 359
 # File: data/core/help.cfg, line: 359
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:400
+#: data/core/help.cfg:406
 msgid ""
 "\n"
 "\n"
@@ -3208,7 +3229,7 @@ msgstr ""
 "característica. "
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:400
+#: data/core/help.cfg:406
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
@@ -3225,7 +3246,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 359
 # File: data/core/help.cfg, line: 359
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:402
+#: data/core/help.cfg:408
 msgid ""
 "\n"
 "\n"
@@ -3246,7 +3267,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 361
 # File: data/core/help.cfg, line: 361
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:404
+#: data/core/help.cfg:410
 msgid ""
 "\n"
 "\n"
@@ -3269,7 +3290,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:414
+#: data/core/help.cfg:420
 msgid ""
 "\n"
 "\n"
@@ -3286,7 +3307,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 492
 # File: data/core/help.cfg, line: 492
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:414
+#: data/core/help.cfg:420
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
@@ -3299,7 +3320,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 248
 # File: data/core/help.cfg, line: 248
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:416
+#: data/core/help.cfg:422
 msgid ""
 "\n"
 "\n"
@@ -3310,7 +3331,7 @@ msgstr ""
 "<header>text='Tipos de Terrenos Básicos'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:418
+#: data/core/help.cfg:424
 msgid ""
 "\n"
 "\n"
@@ -3328,7 +3349,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:422
+#: data/core/help.cfg:428
 msgid ""
 "\n"
 "\n"
@@ -3347,7 +3368,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 248
 # File: data/core/help.cfg, line: 248
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:424
+#: data/core/help.cfg:430
 msgid ""
 "\n"
 "\n"
@@ -3358,7 +3379,7 @@ msgstr ""
 "<header>text='Tipos de Terrenos Misturados'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:426
+#: data/core/help.cfg:432
 msgid ""
 "\n"
 "\n"
@@ -3382,7 +3403,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:430
+#: data/core/help.cfg:436
 msgid ""
 "\n"
 "\n"
@@ -3407,7 +3428,7 @@ msgstr ""
 "voam (como é de se esperar).\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:434
+#: data/core/help.cfg:440
 msgid ""
 "\n"
 "\n"
@@ -3425,7 +3446,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:438
+#: data/core/help.cfg:444
 msgid ""
 "\n"
 "\n"
@@ -3442,7 +3463,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:442
+#: data/core/help.cfg:448
 msgid ""
 "\n"
 "\n"
@@ -3457,7 +3478,7 @@ msgstr ""
 "superior direito da interface (na interface padrão)"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:444
+#: data/core/help.cfg:450
 msgid ""
 "\n"
 "\n"
@@ -3478,7 +3499,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 248
 # File: data/core/help.cfg, line: 248
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:446
+#: data/core/help.cfg:452
 msgid ""
 "\n"
 "\n"
@@ -3489,7 +3510,7 @@ msgstr ""
 "<header>text='Limite de Defesa'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:448
+#: data/core/help.cfg:454
 msgid ""
 "\n"
 "\n"
@@ -3505,7 +3526,7 @@ msgstr ""
 "menor valor máximo."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:450
+#: data/core/help.cfg:456
 msgid ""
 "\n"
 "\n"
@@ -3523,7 +3544,7 @@ msgstr ""
 "defesa não pode ser excedido."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:452
+#: data/core/help.cfg:458
 msgid ""
 "\n"
 "\n"
@@ -3541,7 +3562,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 248
 # File: data/core/help.cfg, line: 248
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:454
+#: data/core/help.cfg:460
 msgid ""
 "\n"
 "\n"
@@ -3554,7 +3575,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:467
+#: data/core/help.cfg:473
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -3572,7 +3593,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 804
 # File: data/core/help.cfg, line: 804
 #. [topic]: id=using_addons
-#: data/core/help.cfg:477
+#: data/core/help.cfg:483
 msgid "Using Add-ons"
 msgstr "Usando Add-ons"
 
@@ -3581,7 +3602,7 @@ msgstr "Usando Add-ons"
 # File: data/core/help.cfg, line: 248
 # File: data/core/help.cfg, line: 248
 #. [topic]: id=using_addons
-#: data/core/help.cfg:478
+#: data/core/help.cfg:484
 msgid ""
 "\n"
 "\n"
@@ -3592,7 +3613,7 @@ msgstr ""
 "<header>text='Campanhas e Cenários'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:478
+#: data/core/help.cfg:484
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
@@ -3601,7 +3622,7 @@ msgstr ""
 "todos os modos de jogo."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:480
+#: data/core/help.cfg:486
 msgid ""
 "\n"
 "\n"
@@ -3622,7 +3643,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 809
 # File: data/core/help.cfg, line: 809
 #. [topic]: id=using_addons
-#: data/core/help.cfg:482
+#: data/core/help.cfg:488
 msgid ""
 "\n"
 "\n"
@@ -3633,7 +3654,7 @@ msgstr ""
 "<header>text='Campanhas, Cenários e Pacotes de Mapas Multiplayer'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:484
+#: data/core/help.cfg:490
 msgid ""
 "\n"
 "\n"
@@ -3652,7 +3673,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 813
 # File: data/core/help.cfg, line: 813
 #. [topic]: id=using_addons
-#: data/core/help.cfg:486
+#: data/core/help.cfg:492
 msgid ""
 "\n"
 "\n"
@@ -3663,7 +3684,7 @@ msgstr ""
 "<header>text='Eras e Facções Multiplayer'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:488
+#: data/core/help.cfg:494
 msgid ""
 "\n"
 "\n"
@@ -3688,7 +3709,7 @@ msgstr ""
 "era quando estiverem determinando os lados e times da partida."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:492
+#: data/core/help.cfg:498
 msgid ""
 "\n"
 "\n"
@@ -3705,7 +3726,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 248
 # File: data/core/help.cfg, line: 248
 #. [topic]: id=using_addons
-#: data/core/help.cfg:494
+#: data/core/help.cfg:500
 msgid ""
 "\n"
 "\n"
@@ -3716,7 +3737,7 @@ msgstr ""
 "<header>text='Modificações'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:496
+#: data/core/help.cfg:502
 msgid ""
 "\n"
 "\n"
@@ -3735,7 +3756,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 248
 # File: data/core/help.cfg, line: 248
 #. [topic]: id=using_addons
-#: data/core/help.cfg:498
+#: data/core/help.cfg:504
 msgid ""
 "\n"
 "\n"
@@ -3746,7 +3767,7 @@ msgstr ""
 "<header>text='Cores'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:500
+#: data/core/help.cfg:506
 msgid ""
 "\n"
 "\n"
@@ -3773,7 +3794,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 248
 # File: data/core/help.cfg, line: 248
 #. [topic]: id=using_addons
-#: data/core/help.cfg:504
+#: data/core/help.cfg:510
 msgid ""
 "\n"
 "\n"
@@ -3784,7 +3805,7 @@ msgstr ""
 "<header>text='Recursos do Criador</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:506
+#: data/core/help.cfg:512
 msgid ""
 "\n"
 "\n"
@@ -3808,12 +3829,12 @@ msgstr ""
 # File: data/core/help.cfg, line: 830
 # File: data/core/help.cfg, line: 830
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:515
+#: data/core/help.cfg:521
 msgid "Installing Add-ons"
 msgstr "Instalando Add-ons"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:516
+#: data/core/help.cfg:522
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3866,12 +3887,12 @@ msgstr ""
 # File: data/core/help.cfg, line: 844
 # File: data/core/help.cfg, line: 844
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:529
+#: data/core/help.cfg:535
 msgid "Removing Add-ons"
 msgstr "Removendo Add-ons"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:530
+#: data/core/help.cfg:536
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -3898,7 +3919,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 860
 # File: data/core/help.cfg, line: 860
 #. [topic]: id=general_commands
-#: data/core/help.cfg:545
+#: data/core/help.cfg:551
 msgid "General Commands"
 msgstr "Comandos Gerais"
 
@@ -3915,7 +3936,7 @@ msgstr "Comandos Gerais"
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:547 data/core/help.cfg:590 data/core/help.cfg:628
+#: data/core/help.cfg:553 data/core/help.cfg:596 data/core/help.cfg:634
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3932,7 +3953,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 864
 # File: data/core/help.cfg, line: 864
 #. [topic]: id=general_commands
-#: data/core/help.cfg:549
+#: data/core/help.cfg:555
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3947,7 +3968,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 867
 # File: data/core/help.cfg, line: 867
 #. [topic]: id=general_commands
-#: data/core/help.cfg:552
+#: data/core/help.cfg:558
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3966,7 +3987,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 871
 # File: data/core/help.cfg, line: 871
 #. [topic]: id=general_commands
-#: data/core/help.cfg:556
+#: data/core/help.cfg:562
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -3986,7 +4007,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:559
+#: data/core/help.cfg:565
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -4001,7 +4022,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 874
 # File: data/core/help.cfg, line: 874
 #. [topic]: id=general_commands
-#: data/core/help.cfg:562
+#: data/core/help.cfg:568
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -4016,7 +4037,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 877
 # File: data/core/help.cfg, line: 877
 #. [topic]: id=general_commands
-#: data/core/help.cfg:565
+#: data/core/help.cfg:571
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -4031,7 +4052,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 880
 # File: data/core/help.cfg, line: 880
 #. [topic]: id=general_commands
-#: data/core/help.cfg:568
+#: data/core/help.cfg:574
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -4047,7 +4068,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 883
 # File: data/core/help.cfg, line: 883
 #. [topic]: id=general_commands
-#: data/core/help.cfg:571
+#: data/core/help.cfg:577
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -4062,7 +4083,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 886
 # File: data/core/help.cfg, line: 886
 #. [topic]: id=general_commands
-#: data/core/help.cfg:574
+#: data/core/help.cfg:580
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -4077,7 +4098,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 889
 # File: data/core/help.cfg, line: 889
 #. [topic]: id=general_commands
-#: data/core/help.cfg:577
+#: data/core/help.cfg:583
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -4092,7 +4113,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 892
 # File: data/core/help.cfg, line: 892
 #. [topic]: id=general_commands
-#: data/core/help.cfg:580
+#: data/core/help.cfg:586
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -4105,7 +4126,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 901
 # File: data/core/help.cfg, line: 901
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:589
+#: data/core/help.cfg:595
 msgid "Multiplayer Commands"
 msgstr "Comandos para Multiplayer"
 
@@ -4114,7 +4135,7 @@ msgstr "Comandos para Multiplayer"
 # File: data/core/help.cfg, line: 904
 # File: data/core/help.cfg, line: 904
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:592
+#: data/core/help.cfg:598
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -4135,7 +4156,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 907
 # File: data/core/help.cfg, line: 907
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:595
+#: data/core/help.cfg:601
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -4156,7 +4177,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:598
+#: data/core/help.cfg:604
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -4170,7 +4191,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:601
+#: data/core/help.cfg:607
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -4187,7 +4208,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 910
 # File: data/core/help.cfg, line: 910
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:604
+#: data/core/help.cfg:610
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -4207,7 +4228,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 913
 # File: data/core/help.cfg, line: 913
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:607
+#: data/core/help.cfg:613
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -4227,7 +4248,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 916
 # File: data/core/help.cfg, line: 916
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:610
+#: data/core/help.cfg:616
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -4244,7 +4265,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 919
 # File: data/core/help.cfg, line: 919
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:613
+#: data/core/help.cfg:619
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -4259,7 +4280,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 922
 # File: data/core/help.cfg, line: 922
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:616
+#: data/core/help.cfg:622
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -4277,7 +4298,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 925
 # File: data/core/help.cfg, line: 925
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:619
+#: data/core/help.cfg:625
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -4292,7 +4313,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 933
 # File: data/core/help.cfg, line: 933
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:627
+#: data/core/help.cfg:633
 msgid "Debug Mode Commands"
 msgstr "Comandos do Modo Debug"
 
@@ -4301,7 +4322,7 @@ msgstr "Comandos do Modo Debug"
 # File: data/core/help.cfg, line: 936
 # File: data/core/help.cfg, line: 936
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:630
+#: data/core/help.cfg:636
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -4318,7 +4339,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 939
 # File: data/core/help.cfg, line: 939
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:633
+#: data/core/help.cfg:639
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -4333,7 +4354,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 942
 # File: data/core/help.cfg, line: 942
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:636
+#: data/core/help.cfg:642
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -4348,7 +4369,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 945
 # File: data/core/help.cfg, line: 945
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:639
+#: data/core/help.cfg:645
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -4363,7 +4384,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 948
 # File: data/core/help.cfg, line: 948
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:642
+#: data/core/help.cfg:648
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -4378,7 +4399,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 951
 # File: data/core/help.cfg, line: 951
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:645
+#: data/core/help.cfg:651
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -4393,7 +4414,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 954
 # File: data/core/help.cfg, line: 954
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:648
+#: data/core/help.cfg:654
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -4408,7 +4429,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 957
 # File: data/core/help.cfg, line: 957
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:651
+#: data/core/help.cfg:657
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -4423,7 +4444,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 960
 # File: data/core/help.cfg, line: 960
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:654
+#: data/core/help.cfg:660
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -4440,7 +4461,7 @@ msgstr ""
 # File: data/core/help.cfg, line: 963
 # File: data/core/help.cfg, line: 963
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:657
+#: data/core/help.cfg:663
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"

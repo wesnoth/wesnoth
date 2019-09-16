@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-06-30 15:14+0300\n"
+"POT-Creation-Date: 2019-09-16 11:33+0300\n"
 "PO-Revision-Date: 2012-04-02 21:53+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -701,8 +701,7 @@ msgid ""
 "limited to 40%. Dwarves, by dint of their small size, enjoy 60% defense in "
 "rockbound caves.\n"
 "\n"
-"Occasionally caves are <ref>dst='terrain_illuminated_cave' "
-"text='illuminated'</ref>."
+"Occasionally caves are <italic>text='illuminated'</italic>."
 msgstr ""
 
 #. [terrain_type]: id=mine_rails
@@ -1606,8 +1605,8 @@ msgid ""
 "down and hindered in defense. Dwarves and trolls, who make their homes in "
 "caves, both have a relatively easy time navigating this terrain, especially "
 "dwarves, who by dint of their small size can navigate many obstacles that "
-"other races cannot. Occasionally caves are "
-"<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>.\n"
+"other races cannot. Occasionally caves are <italic>text='illuminated'</"
+"italic>.\n"
 "\n"
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness. This provides an attack bonus "
@@ -1929,7 +1928,7 @@ msgstr "Ootel sõnumeid"
 #: data/gui/window/gamestate_inspector.cfg:397
 #: data/gui/window/generator_settings.cfg:190
 #: data/gui/window/help_browser.cfg:188
-#: data/gui/window/lobby_player_info.cfg:282
+#: data/gui/window/lobby_player_info.cfg:294
 #: data/gui/window/lua_interpreter.cfg:130 data/gui/window/message.cfg:135
 #: data/gui/window/mp_alerts_options.cfg:249
 #: data/gui/window/preferences.cfg:429
@@ -2394,7 +2393,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:293
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:460
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Modifications"
@@ -2708,7 +2707,7 @@ msgstr "Kirjeldus:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:478
+#: src/gui/dialogs/multiplayer/lobby.cpp:482
 #, fuzzy
 #| msgid "Experience modifier"
 msgid "Experience modifier:"
@@ -2786,7 +2785,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#: src/gui/dialogs/multiplayer/lobby.cpp:479
+#: src/gui/dialogs/multiplayer/lobby.cpp:483
 #, fuzzy
 #| msgid "Gold per village"
 msgid "Gold per village:"
@@ -2811,7 +2810,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
-#: data/gui/window/editor_edit_side.cfg:373 src/gui/dialogs/game_stats.cpp:74
+#: data/gui/window/editor_edit_side.cfg:373 src/gui/dialogs/game_stats.cpp:71
 msgid "controller^Human"
 msgstr ""
 
@@ -2867,7 +2866,7 @@ msgstr "Kaardigeneraator"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
-#: src/gui/dialogs/multiplayer/lobby.cpp:477
+#: src/gui/dialogs/multiplayer/lobby.cpp:481
 msgid "Settings"
 msgstr "Seaded"
 
@@ -3309,7 +3308,7 @@ msgstr "Kulda küla kohta"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:251
+#: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:252
 #, fuzzy
 #| msgid "Current room"
 msgid "Current Status"
@@ -3324,7 +3323,7 @@ msgstr "Kooparada"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
-#: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:251
+#: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:252
 #, fuzzy
 #| msgid "Editor Settings"
 msgid "Scenario Settings"
@@ -3669,8 +3668,8 @@ msgstr "Mitmemängija ooteruum"
 msgid "Player Info — "
 msgstr "Mängija info -"
 
-#. [button]: id=add_to_friends
 #. [button]: id=add_friend
+#. [button]: id=add_to_friends
 #: data/gui/window/lobby_player_info.cfg:94
 #: data/gui/window/preferences/05_multiplayer.cfg:263
 #, fuzzy
@@ -3678,8 +3677,8 @@ msgstr "Mängija info -"
 msgid "Add Friend"
 msgstr "Lisa sõbraks"
 
-#. [button]: id=add_to_ignores
 #. [button]: id=add_ignored
+#. [button]: id=add_to_ignores
 #: data/gui/window/lobby_player_info.cfg:105
 #: data/gui/window/preferences/05_multiplayer.cfg:276
 msgid "Block"
@@ -3704,8 +3703,8 @@ msgstr "Modereerimine"
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:173
-msgid "Kick / ban reason:"
-msgstr "Väljaviskamise / bloki põhjus:"
+msgid "Reason:"
+msgstr "Põhjus:"
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:198
@@ -3730,6 +3729,13 @@ msgstr "Viska välja"
 #| msgid "Kick/ban"
 msgid "Kick + Ban"
 msgstr "Väljaviskamine / blokk"
+
+#. [button]: id=stopgame
+#: data/gui/window/lobby_player_info.cfg:274
+#, fuzzy
+#| msgid "Load Game"
+msgid "Stop Game"
+msgstr "Lae mäng"
 
 #. [label]
 #: data/gui/window/logging.cfg:93
@@ -3795,8 +3801,8 @@ msgstr ""
 msgid "Event"
 msgstr ""
 
-#. [label]
 #. [widget]: id=label
+#. [label]
 #: data/gui/window/mp_alerts_options.cfg:154
 #: data/gui/window/preferences.cfg:346
 msgid "Sound"
@@ -3926,9 +3932,21 @@ msgstr ""
 msgid "When a new turn has begun"
 msgstr ""
 
-#. [button]: id=revert_to_defaults
+#. [grid]
+#: data/gui/window/mp_alerts_options.cfg:200
+#, fuzzy
+#| msgid "Cave Path"
+msgid "Game created:"
+msgstr "Kooparada"
+
+#. [grid]
+#: data/gui/window/mp_alerts_options.cfg:200
+msgid "When a new game has been created"
+msgstr ""
+
 #. [button]: id=btn_reset_hotkeys
 #. [button]: id=orb_defaults
+#. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:293
 #: data/gui/window/select_orb_colors.cfg:102
@@ -4241,7 +4259,7 @@ msgstr "Määra parool, mille mänguga liituda soovijad peavad sisestama."
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:480
+#: src/gui/dialogs/multiplayer/lobby.cpp:484
 #, fuzzy
 #| msgid "Map size: "
 msgid "Map size:"
@@ -5527,30 +5545,26 @@ msgid "Details:"
 msgstr ""
 
 #: src/build_info.cpp:268
-msgid "feature^Experimental OpenMP support"
-msgstr ""
-
-#: src/build_info.cpp:273
 msgid "feature^JPG screenshots"
 msgstr ""
 
-#: src/build_info.cpp:280
+#: src/build_info.cpp:275
 msgid "feature^Lua console completion"
 msgstr ""
 
-#: src/build_info.cpp:285
+#: src/build_info.cpp:280
 msgid "feature^Legacy bidirectional rendering"
 msgstr ""
 
-#: src/build_info.cpp:292
+#: src/build_info.cpp:287
 msgid "feature^D-Bus notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:301
+#: src/build_info.cpp:296
 msgid "feature^Win32 notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:307
+#: src/build_info.cpp:302
 msgid "feature^Cocoa notifications back end"
 msgstr ""
 
@@ -6040,7 +6054,7 @@ msgid "Attacker vulnerability vs"
 msgstr ""
 
 #: src/gui/dialogs/campaign_selection.cpp:318
-#: src/gui/dialogs/multiplayer/lobby.cpp:461
+#: src/gui/dialogs/multiplayer/lobby.cpp:465
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "active_modifications^None"
@@ -6223,27 +6237,27 @@ msgstr "Versioon: "
 msgid "Modifications: "
 msgstr "Muuda ekraani lahutusvõimet."
 
-#: src/gui/dialogs/game_stats.cpp:74
+#: src/gui/dialogs/game_stats.cpp:71
 msgid "controller^AI"
 msgstr ""
 
-#: src/gui/dialogs/game_stats.cpp:74
+#: src/gui/dialogs/game_stats.cpp:71
 msgid "controller^Idle"
 msgstr ""
 
-#: src/gui/dialogs/game_stats.cpp:110 src/gui/dialogs/label_settings.cpp:67
+#: src/gui/dialogs/game_stats.cpp:109 src/gui/dialogs/label_settings.cpp:78
 #, fuzzy
 #| msgid "Unknown era"
 msgid "Unknown"
 msgstr "Tundmatu ajastu"
 
-#: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/game_stats.cpp:195 src/gui/dialogs/game_stats.cpp:198
+#: src/gui/dialogs/multiplayer/lobby.cpp:479
 msgid "no"
 msgstr "ei"
 
-#: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/game_stats.cpp:195 src/gui/dialogs/game_stats.cpp:198
+#: src/gui/dialogs/multiplayer/lobby.cpp:479
 msgid "yes"
 msgstr "jah"
 
@@ -6264,13 +6278,13 @@ msgstr ""
 msgid "version^N/A"
 msgstr "Versioon"
 
-#: src/gui/dialogs/label_settings.cpp:49
+#: src/gui/dialogs/label_settings.cpp:54
 #, fuzzy
 #| msgid "Set Team Label"
 msgid "Team Labels"
 msgstr "Määra meeskonna silt"
 
-#: src/gui/dialogs/label_settings.cpp:72
+#: src/gui/dialogs/label_settings.cpp:84
 msgid "Side $side_number ($name)"
 msgstr ""
 
@@ -6438,71 +6452,71 @@ msgid ""
 "Do you want to try to install them?"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:396
+#: src/gui/dialogs/multiplayer/lobby.cpp:400
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Mängud: näitan $num_shown  $num_total-st"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:416
+#: src/gui/dialogs/multiplayer/lobby.cpp:420
 msgid "$game_name (Era: $era_name)"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:446
+#: src/gui/dialogs/multiplayer/lobby.cpp:450
 msgid "era_or_mod^not installed"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:449
+#: src/gui/dialogs/multiplayer/lobby.cpp:453
 #, fuzzy
 #| msgid "Era:"
 msgid "Era"
 msgstr "Ajastu:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:481
+#: src/gui/dialogs/multiplayer/lobby.cpp:485
 #, fuzzy
 #| msgid "Reloaded game"
 msgid "Reloaded:"
 msgstr "Uuesti laetud"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:482
+#: src/gui/dialogs/multiplayer/lobby.cpp:486
 msgid "Shared vision:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:483
+#: src/gui/dialogs/multiplayer/lobby.cpp:487
 msgid "Shuffle sides:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:484
+#: src/gui/dialogs/multiplayer/lobby.cpp:488
 #, fuzzy
 #| msgid "Time limit"
 msgid "Time limit:"
 msgstr "Ajapiirang"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:485
+#: src/gui/dialogs/multiplayer/lobby.cpp:489
 #, fuzzy
 #| msgid "Use map settings"
 msgid "Use map settings:"
 msgstr "Kaardi seaded"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:493
+#: src/gui/dialogs/multiplayer/lobby.cpp:497
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:518
+#: src/gui/dialogs/multiplayer/lobby.cpp:522
 msgid "Observers allowed"
 msgstr "Vaatlejad lubatud"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:521
+#: src/gui/dialogs/multiplayer/lobby.cpp:525
 msgid "Observers not allowed"
 msgstr "Vaatlejad keelatud"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:796
+#: src/gui/dialogs/multiplayer/lobby.cpp:800
 #, fuzzy
 #| msgid "Lobby"
 msgid "lobby"
 msgstr "Ooteruum"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:956
+#: src/gui/dialogs/multiplayer/lobby.cpp:960
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -7971,7 +7985,7 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/picture.cpp:538
+#: src/picture.cpp:524
 msgid "language code for localized resources^en_US"
 msgstr "et_EE,et"
 
@@ -8051,6 +8065,9 @@ msgid ""
 msgstr ""
 "Võti '$deprecated_key' on nüüd nime all '$key'. Võtme '$deprecated_key' "
 "toetus kaob alates versioonist $removal_version."
+
+#~ msgid "Kick / ban reason:"
+#~ msgstr "Väljaviskamise / bloki põhjus:"
 
 #, fuzzy
 #~| msgid "Speed: "
@@ -8193,9 +8210,6 @@ msgstr ""
 
 #~ msgid "Moderating"
 #~ msgstr "Modereerimine"
-
-#~ msgid "Reason:"
-#~ msgstr "Põhjus:"
 
 #~ msgid "Time:"
 #~ msgstr "Aeg:"

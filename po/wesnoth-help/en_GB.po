@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-03-11 16:09+0300\n"
+"POT-Creation-Date: 2019-09-16 11:32+0300\n"
 "PO-Revision-Date: 2019-08-28 11:12+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -1180,7 +1180,7 @@ msgstr "Gameplay"
 
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:33 data/core/help.cfg:398
+#: data/core/help.cfg:33 data/core/help.cfg:404
 msgid "Traits"
 msgstr "Traits"
 
@@ -1210,19 +1210,19 @@ msgstr "Eras"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:74 data/core/help.cfg:413
+#: data/core/help.cfg:74 data/core/help.cfg:419
 msgid "Terrains"
 msgstr "Terrains"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:82 data/core/help.cfg:466
+#: data/core/help.cfg:82 data/core/help.cfg:472
 msgid "Add-ons"
 msgstr "Add-ons"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:88 data/core/help.cfg:539
+#: data/core/help.cfg:88 data/core/help.cfg:545
 msgid "Commands"
 msgstr "Commands"
 
@@ -1625,15 +1625,23 @@ msgstr "Income and Upkeep"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:220
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Income is simple. You have a base income of 2 gold per turn. For every "
+#| "village you control, you gain one additional gold each turn. (In general "
+#| "this is configurable but in campaigns it is almost always one gold per "
+#| "village.) Thus, if you have ten villages, you would normally gain 12 gold "
+#| "each turn. Your upkeep costs are subtracted from this income, as detailed "
+#| "below."
 msgid ""
 "\n"
 "\n"
 "Income is simple. You have a base income of 2 gold per turn. For every "
-"village you control, you gain one additional gold each turn. (In general "
-"this is configurable but in campaigns it is almost always one gold per "
-"village.) Thus, if you have ten villages, you would normally gain 12 gold "
-"each turn. Your upkeep costs are subtracted from this income, as detailed "
-"below."
+"village you control, you gain one additional gold each turn. Thus, if you "
+"have ten villages, you would normally gain 12 gold each turn. Your upkeep "
+"costs are subtracted from this income, as detailed below."
 msgstr ""
 "\n"
 "\n"
@@ -1658,46 +1666,59 @@ msgstr ""
 "<italic>text='income'</italic> and <italic>text='upkeep'</italic>."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:222
-msgid ""
-"\n"
-"\n"
-"Upkeep is also fairly simple. Each unit requires an amount of Upkeep equal "
-"to its level. You can support as many levels worth of units as you have "
-"villages, without paying any upkeep. However, for each level of unit beyond "
-"the number of villages you have, you must pay one gold per turn. For "
-"example, if you have twelve level one units and ten villages, you would have "
-"to pay two gold each turn in upkeep."
-msgstr ""
-"\n"
-"\n"
-"Upkeep is also fairly simple. Each unit requires an amount of Upkeep equal "
-"to its level. You can support as many levels worth of units as you have "
-"villages, without paying any upkeep. However, for each level of unit beyond "
-"the number of villages you have, you must pay one gold per turn. For "
-"example, if you have twelve level one units and ten villages, you would have "
-"to pay two gold each turn in upkeep."
-
-#. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:224
 msgid ""
 "\n"
 "\n"
-"Upkeep costs are subtracted from your income, so in the case of twelve "
-"levels of units and ten villages, your resultant Income would be 10 gold per "
-"turn."
+"Upkeep is also fairly simple. Each unit requires an amount of Upkeep equal "
+"to its level. You can support as many levels worth of units as you have "
+"villages, without paying any upkeep. However, for each level of unit beyond "
+"the number of villages you have, you must pay one gold per turn. For "
+"example, if you have twelve level one units and ten villages, you would have "
+"to pay two gold each turn in upkeep."
 msgstr ""
 "\n"
 "\n"
-"Upkeep costs are subtracted from your income, so in the case of twelve "
-"levels of units and ten villages, your resultant Income would be 10 gold per "
-"turn."
+"Upkeep is also fairly simple. Each unit requires an amount of Upkeep equal "
+"to its level. You can support as many levels worth of units as you have "
+"villages, without paying any upkeep. However, for each level of unit beyond "
+"the number of villages you have, you must pay one gold per turn. For "
+"example, if you have twelve level one units and ten villages, you would have "
+"to pay two gold each turn in upkeep."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:226
 msgid ""
 "\n"
 "\n"
+"Upkeep costs are subtracted from your income, so in the case of twelve "
+"levels of units and ten villages, your resultant Income would be 10 gold per "
+"turn."
+msgstr ""
+"\n"
+"\n"
+"Upkeep costs are subtracted from your income, so in the case of twelve "
+"levels of units and ten villages, your resultant Income would be 10 gold per "
+"turn."
+
+#. [topic]: id=income_and_upkeep
+#: data/core/help.cfg:230
+msgid ""
+"\n"
+"\n"
+"In general, the base income, the amount of gold you get per village per "
+"turn, and the number of unit levels each village can support are "
+"configurable, but in campaigns they are almost always the values described "
+"above. The <italic>text='Scenario Settings'</italic> tab of the "
+"<italic>text='Status Table'</italic> dialog shows the values for the current "
+"scenario."
+msgstr ""
+
+#. [topic]: id=income_and_upkeep
+#: data/core/help.cfg:232
+msgid ""
+"\n"
+"\n"
 "There are two important exceptions to upkeep: units with the loyal trait and "
 "leaders never incur upkeep. Units you begin the scenario with (such as "
 "Delfador), or units who join you during a scenario (such as the horseman in "
@@ -1715,12 +1736,12 @@ msgstr ""
 "playing (such as Konrad) will almost always be a leader."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:235
+#: data/core/help.cfg:241
 msgid "Hitpoints and Experience"
 msgstr "Hit-Points and Experience"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:236
+#: data/core/help.cfg:242
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -1735,7 +1756,7 @@ msgstr ""
 "experience by fighting enemies."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:240
+#: data/core/help.cfg:246
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -1746,7 +1767,7 @@ msgstr ""
 "have)."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:242
+#: data/core/help.cfg:248
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -1759,12 +1780,12 @@ msgstr ""
 "<ref>dst='advancement' text='advance'</ref>."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:249
+#: data/core/help.cfg:255
 msgid "Advancement"
 msgstr "Advancement"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:250
+#: data/core/help.cfg:256
 msgid ""
 "\n"
 "\n"
@@ -1781,7 +1802,7 @@ msgstr ""
 "some cases, you will be given a choice of advancement options."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:250
+#: data/core/help.cfg:256
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they’re fighting. If a unit kills another in "
@@ -1794,7 +1815,7 @@ msgstr ""
 "level 1, 16 for level 2, 24 for level 3, and so forth."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:252
+#: data/core/help.cfg:258
 msgid ""
 "\n"
 "\n"
@@ -1823,12 +1844,12 @@ msgstr ""
 "more useful to try to advance your lower level units."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:261
+#: data/core/help.cfg:267
 msgid "Movement"
 msgstr "Movement"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:262
+#: data/core/help.cfg:268
 msgid ""
 "\n"
 "\n"
@@ -1855,7 +1876,7 @@ msgstr ""
 "<bold>text='Terrain Modifiers'</bold>."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:262
+#: data/core/help.cfg:268
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -1885,7 +1906,7 @@ msgstr ""
 "movement, but will still allow it to attack."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:264
+#: data/core/help.cfg:270
 msgid ""
 "\n"
 "\n"
@@ -1908,7 +1929,7 @@ msgstr ""
 "zones of control."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:266
+#: data/core/help.cfg:272
 msgid ""
 "\n"
 "\n"
@@ -1923,12 +1944,12 @@ msgstr ""
 "not on the map to block their progress."
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:275
+#: data/core/help.cfg:281
 msgid "Shroud and Fog of War"
 msgstr "Shroud and Fog of War"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:276
+#: data/core/help.cfg:282
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -1973,12 +1994,12 @@ msgstr ""
 "movement."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:285
+#: data/core/help.cfg:291
 msgid "Combat"
 msgstr "Combat"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:286
+#: data/core/help.cfg:292
 msgid ""
 "\n"
 "\n"
@@ -1987,68 +2008,68 @@ msgstr ""
 "\n"
 "\n"
 "<header>text='Order and Number of Strikes'</header>"
-
-#. [topic]: id=combat
-#: data/core/help.cfg:286
-msgid ""
-"Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
-"between units in adjacent hexes. Click on your unit, and click on the enemy "
-"you want to attack: your unit will move towards the enemy unit, and when "
-"they are next to each other, combat will begin. The attacker and defender "
-"alternate strikes until each has used their allotted number of strikes. The "
-"attacker chooses one of its weapons to attack with, and the defender "
-"retaliates with one of its attacks of the same type. There are two types of "
-"attacks: <italic>text='melee'</italic>, which usually involves weapons such "
-"as swords, axes or fangs; and <italic>text='ranged'</italic>, which usually "
-"involves weapons such as bows, spears and fireballs."
-msgstr ""
-"Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
-"between units in adjacent hexes. Click on your unit, and click on the enemy "
-"you want to attack: your unit will move towards the enemy unit, and when "
-"they are next to each other, combat will begin. The attacker and defender "
-"alternate strikes until each has used their allotted number of strikes. The "
-"attacker chooses one of its weapons to attack with, and the defender "
-"retaliates with one of its attacks of the same type. There are two types of "
-"attacks: <italic>text='melee'</italic>, which usually involves weapons such "
-"as swords, axes or fangs; and <italic>text='ranged'</italic>, which usually "
-"involves weapons such as bows, spears and fireballs."
-
-#. [topic]: id=combat
-#: data/core/help.cfg:288
-msgid ""
-"\n"
-"\n"
-"The attacker gets the first strike, then the defender retaliates. Each "
-"strike either hits, doing a given amount of damage, or misses, doing no "
-"damage at all. Strikes alternate until each unit has used up all of its "
-"strikes. The number of strikes a unit has varies; for instance, an elvish "
-"fighter with a 5×4 attack may strike 4 times, each successful strike dealing "
-"5 damage, while an orcish grunt with a 9×2 attack can only strike twice (but "
-"at 9 damage for each hit)."
-msgstr ""
-"\n"
-"\n"
-"The attacker gets the first strike, then the defender retaliates. Each "
-"strike either hits, doing a given amount of damage, or misses, doing no "
-"damage at all. Strikes alternate until each unit has used up all of its "
-"strikes. The number of strikes a unit has varies; for instance, an elvish "
-"fighter with a 5×4 attack may strike 4 times, each successful strike dealing "
-"5 damage, while an orcish grunt with a 9×2 attack can only strike twice (but "
-"at 9 damage for each hit)."
-
-#. [topic]: id=combat
-#: data/core/help.cfg:290
-msgid ""
-"\n"
-"\n"
-"<header>text='Chance to Hit'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Chance to Hit'</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:292
+msgid ""
+"Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
+"between units in adjacent hexes. Click on your unit, and click on the enemy "
+"you want to attack: your unit will move towards the enemy unit, and when "
+"they are next to each other, combat will begin. The attacker and defender "
+"alternate strikes until each has used their allotted number of strikes. The "
+"attacker chooses one of its weapons to attack with, and the defender "
+"retaliates with one of its attacks of the same type. There are two types of "
+"attacks: <italic>text='melee'</italic>, which usually involves weapons such "
+"as swords, axes or fangs; and <italic>text='ranged'</italic>, which usually "
+"involves weapons such as bows, spears and fireballs."
+msgstr ""
+"Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
+"between units in adjacent hexes. Click on your unit, and click on the enemy "
+"you want to attack: your unit will move towards the enemy unit, and when "
+"they are next to each other, combat will begin. The attacker and defender "
+"alternate strikes until each has used their allotted number of strikes. The "
+"attacker chooses one of its weapons to attack with, and the defender "
+"retaliates with one of its attacks of the same type. There are two types of "
+"attacks: <italic>text='melee'</italic>, which usually involves weapons such "
+"as swords, axes or fangs; and <italic>text='ranged'</italic>, which usually "
+"involves weapons such as bows, spears and fireballs."
+
+#. [topic]: id=combat
+#: data/core/help.cfg:294
+msgid ""
+"\n"
+"\n"
+"The attacker gets the first strike, then the defender retaliates. Each "
+"strike either hits, doing a given amount of damage, or misses, doing no "
+"damage at all. Strikes alternate until each unit has used up all of its "
+"strikes. The number of strikes a unit has varies; for instance, an elvish "
+"fighter with a 5×4 attack may strike 4 times, each successful strike dealing "
+"5 damage, while an orcish grunt with a 9×2 attack can only strike twice (but "
+"at 9 damage for each hit)."
+msgstr ""
+"\n"
+"\n"
+"The attacker gets the first strike, then the defender retaliates. Each "
+"strike either hits, doing a given amount of damage, or misses, doing no "
+"damage at all. Strikes alternate until each unit has used up all of its "
+"strikes. The number of strikes a unit has varies; for instance, an elvish "
+"fighter with a 5×4 attack may strike 4 times, each successful strike dealing "
+"5 damage, while an orcish grunt with a 9×2 attack can only strike twice (but "
+"at 9 damage for each hit)."
+
+#. [topic]: id=combat
+#: data/core/help.cfg:296
+msgid ""
+"\n"
+"\n"
+"<header>text='Chance to Hit'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Chance to Hit'</header>"
+
+#. [topic]: id=combat
+#: data/core/help.cfg:298
 msgid ""
 "\n"
 "\n"
@@ -2071,63 +2092,63 @@ msgstr ""
 "attacker in return depends on what terrain the attacker is in."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:294
-msgid ""
-"\n"
-"\n"
-"There are two exceptions to this rule: <ref>dst='weaponspecial_magical' "
-"text='magical attacks'</ref> and <ref>dst='weaponspecial_marksman' "
-"text='marksmen'</ref>. Magical attacks always have a 70% chance to hit, "
-"regardless of terrain, and, when used offensively, marksmen always have at "
-"least a 60% chance to hit, regardless of terrain."
-msgstr ""
-"\n"
-"\n"
-"There are two exceptions to this rule: <ref>dst='weaponspecial_magical' "
-"text='magical attacks'</ref> and <ref>dst='weaponspecial_marksman' "
-"text='marksmen'</ref>. Magical attacks always have a 70% chance to hit, "
-"regardless of terrain, and, when used offensively, marksmen always have at "
-"least a 60% chance to hit, regardless of terrain."
-
-#. [topic]: id=combat
-#: data/core/help.cfg:296
-msgid ""
-"\n"
-"\n"
-"<header>text=Damage</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text=Damage</header>"
-
-#. [topic]: id=combat
-#: data/core/help.cfg:298
-msgid ""
-"\n"
-"\n"
-"Each strike which hits causes a base amount of damage depending on the "
-"attack type. For instance, an elvish fighter with a 5×4 attack does 5 base "
-"damage. This is usually modified by two things: "
-"<ref>dst='damage_types_and_resistance' text='resistance'</ref> and "
-"<ref>dst='time_of_day' text='time of day'</ref>. To see how base damage is "
-"modified by the circumstances, select <bold>text='Damage Calculations'</"
-"bold> in the attack selection menu."
-msgstr ""
-"\n"
-"\n"
-"Each strike which hits causes a base amount of damage depending on the "
-"attack type. For instance, an elvish fighter with a 5×4 attack does 5 base "
-"damage. This is usually modified by two things: "
-"<ref>dst='damage_types_and_resistance' text='resistance'</ref> and "
-"<ref>dst='time_of_day' text='time of day'</ref>. To see how base damage is "
-"modified by the circumstances, select <bold>text='Damage Calculations'</"
-"bold> in the attack selection menu."
-
-#. [topic]: id=combat
 #: data/core/help.cfg:300
 msgid ""
 "\n"
 "\n"
+"There are two exceptions to this rule: <ref>dst='weaponspecial_magical' "
+"text='magical attacks'</ref> and <ref>dst='weaponspecial_marksman' "
+"text='marksmen'</ref>. Magical attacks always have a 70% chance to hit, "
+"regardless of terrain, and, when used offensively, marksmen always have at "
+"least a 60% chance to hit, regardless of terrain."
+msgstr ""
+"\n"
+"\n"
+"There are two exceptions to this rule: <ref>dst='weaponspecial_magical' "
+"text='magical attacks'</ref> and <ref>dst='weaponspecial_marksman' "
+"text='marksmen'</ref>. Magical attacks always have a 70% chance to hit, "
+"regardless of terrain, and, when used offensively, marksmen always have at "
+"least a 60% chance to hit, regardless of terrain."
+
+#. [topic]: id=combat
+#: data/core/help.cfg:302
+msgid ""
+"\n"
+"\n"
+"<header>text=Damage</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text=Damage</header>"
+
+#. [topic]: id=combat
+#: data/core/help.cfg:304
+msgid ""
+"\n"
+"\n"
+"Each strike which hits causes a base amount of damage depending on the "
+"attack type. For instance, an elvish fighter with a 5×4 attack does 5 base "
+"damage. This is usually modified by two things: "
+"<ref>dst='damage_types_and_resistance' text='resistance'</ref> and "
+"<ref>dst='time_of_day' text='time of day'</ref>. To see how base damage is "
+"modified by the circumstances, select <bold>text='Damage Calculations'</"
+"bold> in the attack selection menu."
+msgstr ""
+"\n"
+"\n"
+"Each strike which hits causes a base amount of damage depending on the "
+"attack type. For instance, an elvish fighter with a 5×4 attack does 5 base "
+"damage. This is usually modified by two things: "
+"<ref>dst='damage_types_and_resistance' text='resistance'</ref> and "
+"<ref>dst='time_of_day' text='time of day'</ref>. To see how base damage is "
+"modified by the circumstances, select <bold>text='Damage Calculations'</"
+"bold> in the attack selection menu."
+
+#. [topic]: id=combat
+#: data/core/help.cfg:306
+msgid ""
+"\n"
+"\n"
 "A few units have special <ref>dst='..abilities_section' text='abilities'</"
 "ref> which affect damage dealt in combat. The most common of these is "
 "<ref>dst='weaponspecial_charge' text='charge'</ref>, which doubles the "
@@ -2141,12 +2162,12 @@ msgstr ""
 "damage dealt by both attacker and defender when the unit with charge attacks."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:308
+#: data/core/help.cfg:314
 msgid "Damage Types and Resistance"
 msgstr "Damage Types and Resistance"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:309
+#: data/core/help.cfg:315
 msgid ""
 "\n"
 "\n"
@@ -2165,7 +2186,7 @@ msgstr ""
 "damage when hit by that type."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:309
+#: data/core/help.cfg:315
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -2182,7 +2203,7 @@ msgstr ""
 "they take from certain damage types."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:311
+#: data/core/help.cfg:317
 msgid ""
 "\n"
 "\n"
@@ -2197,7 +2218,7 @@ msgstr ""
 "damage."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:313
+#: data/core/help.cfg:319
 msgid ""
 "\n"
 "\n"
@@ -2212,12 +2233,12 @@ msgstr ""
 "type."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:321
+#: data/core/help.cfg:327
 msgid "Orbs"
 msgstr "Orbs"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:322
+#: data/core/help.cfg:328
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -2226,39 +2247,39 @@ msgstr ""
 "units you control, this orb is:"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:324
+#: data/core/help.cfg:330
 msgid " green if it hasn’t moved this turn,"
 msgstr " green if it hasn’t moved this turn,"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:325
+#: data/core/help.cfg:331
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr " yellow if it has moved, but could still move further or attack, or"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:326
+#: data/core/help.cfg:332
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:327
+#: data/core/help.cfg:333
 msgid " blue if the unit is an ally you do not control."
 msgstr " blue if the unit is an ally you do not control."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:328
+#: data/core/help.cfg:334
 msgid " Enemy units have no orb on top of their energy bar."
 msgstr " Enemy units have no orb on top of their energy bar."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:335
+#: data/core/help.cfg:341
 msgid "Time of Day"
 msgstr "Time of Day"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:336
+#: data/core/help.cfg:342
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 "\n"
@@ -2281,7 +2302,7 @@ msgstr ""
 "daytime."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:341
+#: data/core/help.cfg:347
 msgid ""
 "\n"
 "\n"
@@ -2300,21 +2321,21 @@ msgstr ""
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:345 data/core/macros/schedules.cfg:14
+#: data/core/help.cfg:351 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "Dawn"
 
 #. [time]: id=morning
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:346 data/core/macros/schedules.cfg:26
+#: data/core/help.cfg:352 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "Morning"
 
 #. [time]: id=afternoon
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:347 data/core/macros/schedules.cfg:44
+#: data/core/help.cfg:353 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "Afternoon"
@@ -2322,55 +2343,55 @@ msgstr "Afternoon"
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:348 data/core/macros/schedules.cfg:53
+#: data/core/help.cfg:354 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "Dusk"
 
 #. [time]: id=first_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:349 data/core/macros/schedules.cfg:65
+#: data/core/help.cfg:355 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "First Watch"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:350 data/core/macros/schedules.cfg:89
+#: data/core/help.cfg:356 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "Second Watch"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:352
-msgid ""
-"Keep in mind that some scenarios take place underground, where it is "
-"perpetually night!\n"
-msgstr ""
-"Keep in mind that some scenarios take place underground, where it is "
-"perpetually night!\n"
-
-#. [topic]: id=time_of_day
-#: data/core/help.cfg:354
-msgid ""
-"Some underground locations are illuminated. They are perpetually "
-"intermediate between day and night.\n"
-msgstr ""
-"Some underground locations are illuminated. They are perpetually "
-"intermediate between day and night.\n"
-
-#. [topic]: id=time_of_day
-#: data/core/help.cfg:356
-msgid ""
-"Some role-playing scenarios take place indoors — these regions are similarly "
-"intermediate.\n"
-msgstr ""
-"Some role-playing scenarios take place indoors — these regions are similarly "
-"intermediate.\n"
-
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:358
 msgid ""
+"Keep in mind that some scenarios take place underground, where it is "
+"perpetually night!\n"
+msgstr ""
+"Keep in mind that some scenarios take place underground, where it is "
+"perpetually night!\n"
+
+#. [topic]: id=time_of_day
+#: data/core/help.cfg:360
+msgid ""
+"Some underground locations are illuminated. They are perpetually "
+"intermediate between day and night.\n"
+msgstr ""
+"Some underground locations are illuminated. They are perpetually "
+"intermediate between day and night.\n"
+
+#. [topic]: id=time_of_day
+#: data/core/help.cfg:362
+msgid ""
+"Some role-playing scenarios take place indoors — these regions are similarly "
+"intermediate.\n"
+msgstr ""
+"Some role-playing scenarios take place indoors — these regions are similarly "
+"intermediate.\n"
+
+#. [topic]: id=time_of_day
+#: data/core/help.cfg:364
+msgid ""
 "Finally, units with the <ref>dst='ability_illuminationilluminates' "
 "text='illuminates'</ref> ability and terrain features such as "
 "<ref>dst='terrain_lava' text='lava'</ref> change the time of day bonus "
@@ -2380,126 +2401,126 @@ msgstr ""
 "text='illuminates'</ref> ability and terrain features such as "
 "<ref>dst='terrain_lava' text='lava'</ref> change the time of day bonus "
 "around them."
-
-#. [topic]: id=healing
-#: data/core/help.cfg:365
-msgid "Healing"
-msgstr "Healing"
-
-#. [topic]: id=healing
-#: data/core/help.cfg:366
-msgid ""
-"\n"
-"\n"
-"• <bold>text='Resting'</bold>: A unit which neither moves, attacks, nor is "
-"attacked will heal 2 HP in its next turn."
-msgstr ""
-"\n"
-"\n"
-"• <bold>text='Resting'</bold>: A unit which neither moves, attacks, nor is "
-"attacked will heal 2 HP in its next turn."
-
-#. [topic]: id=healing
-#: data/core/help.cfg:366
-msgid ""
-"In combat, your units will inevitably take damage. There are several ways to "
-"heal your units. However, with the exception of resting, these do not stack; "
-"only one can occur per turn."
-msgstr ""
-"In combat, your units will inevitably take damage. There are several ways to "
-"heal your units. However, with the exception of resting, these do not stack; "
-"only one can occur per turn."
-
-#. [topic]: id=healing
-#: data/core/help.cfg:368
-msgid ""
-"\n"
-"• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
-"<ref>dst='terrain_oasis' text='oasis'</ref> will heal 8HP. If the unit is "
-"poisoned, the poison will be cured instead."
-msgstr ""
-"\n"
-"• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
-"<ref>dst='terrain_oasis' text='oasis'</ref> will heal 8HP. If the unit is "
-"poisoned, the poison will be cured instead."
-
-#. [topic]: id=healing
-#: data/core/help.cfg:369
-msgid ""
-"\n"
-"• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
-"Certain units (such as trolls) will automatically heal 8HP every turn. If "
-"the unit is poisoned, the poison will be cured instead."
-msgstr ""
-"\n"
-"• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
-"Certain units (such as trolls) will automatically heal 8HP every turn. If "
-"the unit is poisoned, the poison will be cured instead."
-
-#. [topic]: id=healing
-#: data/core/help.cfg:370
-msgid ""
-"\n"
-"• <bold>text='Healing units'</bold>: Units with the "
-"<ref>dst='ability_healingheals +4' text='Heals'</ref> ability will heal each "
-"allied adjacent unit, usually <ref>dst='ability_healingheals +4' text='4HP'</"
-"ref> or <ref>dst='ability_healingheals +8' text='8HP'</ref> per turn, or "
-"prevent Poison from causing that unit damage."
-msgstr ""
-"\n"
-"• <bold>text='Healing units'</bold>: Units with the "
-"<ref>dst='ability_healingheals +4' text='Heals'</ref> ability will heal each "
-"allied adjacent unit, usually <ref>dst='ability_healingheals +4' text='4HP'</"
-"ref> or <ref>dst='ability_healingheals +8' text='8HP'</ref> per turn, or "
-"prevent Poison from causing that unit damage."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:371
-msgid ""
-"\n"
-"• <bold>text='Curing units'</bold>: Units with the "
-"<ref>dst='ability_curingcures' text='cures'</ref> ability will cure Poison "
-"in all allied adjacent units (in preference to healing, if it has that "
-"ability as well)."
-msgstr ""
-"\n"
-"• <bold>text='Curing units'</bold>: Units with the "
-"<ref>dst='ability_curingcures' text='cures'</ref> ability will cure Poison "
-"in all allied adjacent units (in preference to healing, if it has that "
-"ability as well)."
+msgid "Healing"
+msgstr "Healing"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:372
 msgid ""
 "\n"
-"• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
-"text='advances'</ref>, it will heal fully. This can happen as soon as your "
-"unit gains enough experience, whether it is your turn or not."
+"\n"
+"• <bold>text='Resting'</bold>: A unit which neither moves, attacks, nor is "
+"attacked will heal 2 HP in its next turn."
 msgstr ""
 "\n"
-"• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
-"text='advances'</ref>, it will heal fully. This can happen as soon as your "
-"unit gains enough experience, whether it is your turn or not."
+"\n"
+"• <bold>text='Resting'</bold>: A unit which neither moves, attacks, nor is "
+"attacked will heal 2 HP in its next turn."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:373
+#: data/core/help.cfg:372
+msgid ""
+"In combat, your units will inevitably take damage. There are several ways to "
+"heal your units. However, with the exception of resting, these do not stack; "
+"only one can occur per turn."
+msgstr ""
+"In combat, your units will inevitably take damage. There are several ways to "
+"heal your units. However, with the exception of resting, these do not stack; "
+"only one can occur per turn."
+
+#. [topic]: id=healing
+#: data/core/help.cfg:374
 msgid ""
 "\n"
-"\n"
-"Resting can be combined with other forms of healing, but villages, "
-"regeneration, healing and curing cannot combine with each other: the best "
-"option will be used. Finally, units heal fully between scenarios."
+"• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
+"<ref>dst='terrain_oasis' text='oasis'</ref> will heal 8HP. If the unit is "
+"poisoned, the poison will be cured instead."
 msgstr ""
 "\n"
-"\n"
-"Resting can be combined with other forms of healing, but villages, "
-"regeneration, healing and curing cannot combine with each other: the best "
-"option will be used. Finally, units heal fully between scenarios."
+"• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
+"<ref>dst='terrain_oasis' text='oasis'</ref> will heal 8HP. If the unit is "
+"poisoned, the poison will be cured instead."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:375
 msgid ""
 "\n"
+"• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
+"Certain units (such as trolls) will automatically heal 8HP every turn. If "
+"the unit is poisoned, the poison will be cured instead."
+msgstr ""
+"\n"
+"• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
+"Certain units (such as trolls) will automatically heal 8HP every turn. If "
+"the unit is poisoned, the poison will be cured instead."
+
+#. [topic]: id=healing
+#: data/core/help.cfg:376
+msgid ""
+"\n"
+"• <bold>text='Healing units'</bold>: Units with the "
+"<ref>dst='ability_healingheals +4' text='Heals'</ref> ability will heal each "
+"allied adjacent unit, usually <ref>dst='ability_healingheals +4' text='4HP'</"
+"ref> or <ref>dst='ability_healingheals +8' text='8HP'</ref> per turn, or "
+"prevent Poison from causing that unit damage."
+msgstr ""
+"\n"
+"• <bold>text='Healing units'</bold>: Units with the "
+"<ref>dst='ability_healingheals +4' text='Heals'</ref> ability will heal each "
+"allied adjacent unit, usually <ref>dst='ability_healingheals +4' text='4HP'</"
+"ref> or <ref>dst='ability_healingheals +8' text='8HP'</ref> per turn, or "
+"prevent Poison from causing that unit damage."
+
+#. [topic]: id=healing
+#: data/core/help.cfg:377
+msgid ""
+"\n"
+"• <bold>text='Curing units'</bold>: Units with the "
+"<ref>dst='ability_curingcures' text='cures'</ref> ability will cure Poison "
+"in all allied adjacent units (in preference to healing, if it has that "
+"ability as well)."
+msgstr ""
+"\n"
+"• <bold>text='Curing units'</bold>: Units with the "
+"<ref>dst='ability_curingcures' text='cures'</ref> ability will cure Poison "
+"in all allied adjacent units (in preference to healing, if it has that "
+"ability as well)."
+
+#. [topic]: id=healing
+#: data/core/help.cfg:378
+msgid ""
+"\n"
+"• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
+"text='advances'</ref>, it will heal fully. This can happen as soon as your "
+"unit gains enough experience, whether it is your turn or not."
+msgstr ""
+"\n"
+"• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
+"text='advances'</ref>, it will heal fully. This can happen as soon as your "
+"unit gains enough experience, whether it is your turn or not."
+
+#. [topic]: id=healing
+#: data/core/help.cfg:379
+msgid ""
+"\n"
+"\n"
+"Resting can be combined with other forms of healing, but villages, "
+"regeneration, healing and curing cannot combine with each other: the best "
+"option will be used. Finally, units heal fully between scenarios."
+msgstr ""
+"\n"
+"\n"
+"Resting can be combined with other forms of healing, but villages, "
+"regeneration, healing and curing cannot combine with each other: the best "
+"option will be used. Finally, units heal fully between scenarios."
+
+#. [topic]: id=healing
+#: data/core/help.cfg:381
+msgid ""
+"\n"
 "\n"
 "<bold>text='Advanced'</bold>"
 msgstr ""
@@ -2508,7 +2529,7 @@ msgstr ""
 "<bold>text='Advanced'</bold>"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:377
+#: data/core/help.cfg:383
 msgid ""
 "\n"
 "\n"
@@ -2527,12 +2548,12 @@ msgstr ""
 "sides will be healed once on each of said allied sides’ turns."
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:385
+#: data/core/help.cfg:391
 msgid "Wrap Up"
 msgstr "Wrap Up"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:386
+#: data/core/help.cfg:392
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -2547,12 +2568,12 @@ msgstr ""
 "<italic>text='Heir to the Throne'</italic> campaign. Have fun, and good luck!"
 
 #. [topic]: id=license
-#: data/core/help.cfg:391
+#: data/core/help.cfg:397
 msgid "License"
 msgstr "Licence"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:400
+#: data/core/help.cfg:406
 msgid ""
 "\n"
 "\n"
@@ -2569,7 +2590,7 @@ msgstr ""
 "any traits. "
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:400
+#: data/core/help.cfg:406
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
@@ -2582,7 +2603,7 @@ msgstr ""
 "italic>."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:402
+#: data/core/help.cfg:408
 msgid ""
 "\n"
 "\n"
@@ -2599,7 +2620,7 @@ msgstr ""
 "text='resilient'</ref>, and <ref>dst='traits_strong' text='strong'</ref>."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:404
+#: data/core/help.cfg:410
 msgid ""
 "\n"
 "\n"
@@ -2622,7 +2643,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:414
+#: data/core/help.cfg:420
 msgid ""
 "\n"
 "\n"
@@ -2635,44 +2656,44 @@ msgstr ""
 "<italic>text='mixed'</italic>."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:414
+#: data/core/help.cfg:420
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
 msgstr ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
-
-#. [topic]: id=..terrains_section
-#: data/core/help.cfg:416
-msgid ""
-"\n"
-"\n"
-"<header>text='Basic Terrain Types'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Basic Terrain Types'</header>"
-
-#. [topic]: id=..terrains_section
-#: data/core/help.cfg:418
-msgid ""
-"\n"
-"\n"
-"Basic terrain types include Flat, Hills, Mountains, Sands, Water and Swamps. "
-"There are many more besides these — a list of the terrain types you have "
-"discovered can be found at the end of this page.\n"
-"\n"
-msgstr ""
-"\n"
-"\n"
-"Basic terrain types include Flat, Hills, Mountains, Sands, Water and Swamps. "
-"There are many more besides these — a list of the terrain types you have "
-"discovered can be found at the end of this page.\n"
-"\n"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:422
+msgid ""
+"\n"
+"\n"
+"<header>text='Basic Terrain Types'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Basic Terrain Types'</header>"
+
+#. [topic]: id=..terrains_section
+#: data/core/help.cfg:424
+msgid ""
+"\n"
+"\n"
+"Basic terrain types include Flat, Hills, Mountains, Sands, Water and Swamps. "
+"There are many more besides these — a list of the terrain types you have "
+"discovered can be found at the end of this page.\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Basic terrain types include Flat, Hills, Mountains, Sands, Water and Swamps. "
+"There are many more besides these — a list of the terrain types you have "
+"discovered can be found at the end of this page.\n"
+"\n"
+
+#. [topic]: id=..terrains_section
+#: data/core/help.cfg:428
 msgid ""
 "\n"
 "\n"
@@ -2687,7 +2708,7 @@ msgstr ""
 "terrain types may have unique properties like illumination effects as well."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:424
+#: data/core/help.cfg:430
 msgid ""
 "\n"
 "\n"
@@ -2698,7 +2719,7 @@ msgstr ""
 "<header>text='Mixed Terrain Types'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:426
+#: data/core/help.cfg:432
 msgid ""
 "\n"
 "\n"
@@ -2721,7 +2742,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:430
+#: data/core/help.cfg:436
 msgid ""
 "\n"
 "\n"
@@ -2746,7 +2767,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:434
+#: data/core/help.cfg:440
 msgid ""
 "\n"
 "\n"
@@ -2763,7 +2784,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:438
+#: data/core/help.cfg:444
 msgid ""
 "\n"
 "\n"
@@ -2780,7 +2801,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:442
+#: data/core/help.cfg:448
 msgid ""
 "\n"
 "\n"
@@ -2795,7 +2816,7 @@ msgstr ""
 "the upper right (under the default theme)."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:444
+#: data/core/help.cfg:450
 msgid ""
 "\n"
 "\n"
@@ -2812,7 +2833,7 @@ msgstr ""
 "the context menu."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:446
+#: data/core/help.cfg:452
 msgid ""
 "\n"
 "\n"
@@ -2823,7 +2844,7 @@ msgstr ""
 "<header>text='Defence Caps'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:448
+#: data/core/help.cfg:454
 msgid ""
 "\n"
 "\n"
@@ -2838,7 +2859,7 @@ msgstr ""
 "— their defence cannot exceed the cap."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:450
+#: data/core/help.cfg:456
 msgid ""
 "\n"
 "\n"
@@ -2855,7 +2876,7 @@ msgstr ""
 "the mixed rating cannot exceed the cap."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:452
+#: data/core/help.cfg:458
 msgid ""
 "\n"
 "\n"
@@ -2868,7 +2889,7 @@ msgstr ""
 "defence rating on that terrain (it cannot be larger)."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:454
+#: data/core/help.cfg:460
 msgid ""
 "\n"
 "\n"
@@ -2881,7 +2902,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:467
+#: data/core/help.cfg:473
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -2894,63 +2915,63 @@ msgstr ""
 "\n"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:477
+#: data/core/help.cfg:483
 msgid "Using Add-ons"
 msgstr "Using Add-ons"
-
-#. [topic]: id=using_addons
-#: data/core/help.cfg:478
-msgid ""
-"\n"
-"\n"
-"<header>text='Campaigns and Scenarios'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Campaigns and Scenarios'</header>"
-
-#. [topic]: id=using_addons
-#: data/core/help.cfg:478
-msgid ""
-"The game supports different types of add-on content, which are not all "
-"available in every gameplay mode."
-msgstr ""
-"The game supports different types of add-on content, which are not all "
-"available in every gameplay mode."
-
-#. [topic]: id=using_addons
-#: data/core/help.cfg:480
-msgid ""
-"\n"
-"\n"
-"Single-player campaigns are collections of scenarios that fit together to "
-"tell a story. Both stand-alone scenarios—if intended to be played as such—"
-"and regular campaigns are available from the <italic>text='Campaigns'</"
-"italic> menu at the title screen."
-msgstr ""
-"\n"
-"\n"
-"Single-player campaigns are collections of scenarios that fit together to "
-"tell a story. Both stand-alone scenarios—if intended to be played as such—"
-"and regular campaigns are available from the <italic>text='Campaigns'</"
-"italic> menu at the title screen."
-
-#. [topic]: id=using_addons
-#: data/core/help.cfg:482
-msgid ""
-"\n"
-"\n"
-"<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:484
 msgid ""
 "\n"
 "\n"
+"<header>text='Campaigns and Scenarios'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Campaigns and Scenarios'</header>"
+
+#. [topic]: id=using_addons
+#: data/core/help.cfg:484
+msgid ""
+"The game supports different types of add-on content, which are not all "
+"available in every gameplay mode."
+msgstr ""
+"The game supports different types of add-on content, which are not all "
+"available in every gameplay mode."
+
+#. [topic]: id=using_addons
+#: data/core/help.cfg:486
+msgid ""
+"\n"
+"\n"
+"Single-player campaigns are collections of scenarios that fit together to "
+"tell a story. Both stand-alone scenarios—if intended to be played as such—"
+"and regular campaigns are available from the <italic>text='Campaigns'</"
+"italic> menu at the title screen."
+msgstr ""
+"\n"
+"\n"
+"Single-player campaigns are collections of scenarios that fit together to "
+"tell a story. Both stand-alone scenarios—if intended to be played as such—"
+"and regular campaigns are available from the <italic>text='Campaigns'</"
+"italic> menu at the title screen."
+
+#. [topic]: id=using_addons
+#: data/core/help.cfg:488
+msgid ""
+"\n"
+"\n"
+"<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
+
+#. [topic]: id=using_addons
+#: data/core/help.cfg:490
+msgid ""
+"\n"
+"\n"
 "<italic>text='Multiplayer'</italic> games can be played in fully customized, "
 "scripted scenarios or even specially designed campaigns. There are also "
 "packs providing sets of individual multiplayer scenarios."
@@ -2962,7 +2983,7 @@ msgstr ""
 "packs providing sets of individual multiplayer scenarios."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:486
+#: data/core/help.cfg:492
 msgid ""
 "\n"
 "\n"
@@ -2973,7 +2994,7 @@ msgstr ""
 "<header>text='Multiplayer Eras and Factions'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:488
+#: data/core/help.cfg:494
 msgid ""
 "\n"
 "\n"
@@ -2998,7 +3019,7 @@ msgstr ""
 "that era when setting up their sides and teams."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:492
+#: data/core/help.cfg:498
 msgid ""
 "\n"
 "\n"
@@ -3011,7 +3032,7 @@ msgstr ""
 "eras_section'</ref> of the help."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:494
+#: data/core/help.cfg:500
 msgid ""
 "\n"
 "\n"
@@ -3022,7 +3043,7 @@ msgstr ""
 "<header>text='Modifications'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:496
+#: data/core/help.cfg:502
 msgid ""
 "\n"
 "\n"
@@ -3037,55 +3058,55 @@ msgstr ""
 "modifications when creating a new game."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:498
-msgid ""
-"\n"
-"\n"
-"<header>text='Cores'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Cores'</header>"
-
-#. [topic]: id=using_addons
-#: data/core/help.cfg:500
-msgid ""
-"\n"
-"\n"
-"Cores enable total conversion of The Battle for Wesnoth. A core can replace "
-"all the content in Wesnoth: when a different core is loaded, the regular "
-"units, terrains and the like do not exist.\n"
-"\n"
-"Cores allow a significantly different game experience: for example, a World "
-"War II campaign, or even a different game altogether, as long as it can be "
-"represented as a hexagonal map with ’units’ in some way."
-msgstr ""
-"\n"
-"\n"
-"Cores enable total conversion of The Battle for Wesnoth. A core can replace "
-"all the content in Wesnoth: when a different core is loaded, the regular "
-"units, terrains and the like do not exist.\n"
-"\n"
-"Cores allow a significantly different game experience: for example, a World "
-"War II campaign, or even a different game altogether, as long as it can be "
-"represented as a hexagonal map with ’units’ in some way."
-
-#. [topic]: id=using_addons
 #: data/core/help.cfg:504
 msgid ""
 "\n"
 "\n"
-"<header>text='Creator Resources'</header>"
+"<header>text='Cores'</header>"
 msgstr ""
 "\n"
 "\n"
-"<header>text='Creator Resources'</header>"
+"<header>text='Cores'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:506
 msgid ""
 "\n"
 "\n"
+"Cores enable total conversion of The Battle for Wesnoth. A core can replace "
+"all the content in Wesnoth: when a different core is loaded, the regular "
+"units, terrains and the like do not exist.\n"
+"\n"
+"Cores allow a significantly different game experience: for example, a World "
+"War II campaign, or even a different game altogether, as long as it can be "
+"represented as a hexagonal map with ’units’ in some way."
+msgstr ""
+"\n"
+"\n"
+"Cores enable total conversion of The Battle for Wesnoth. A core can replace "
+"all the content in Wesnoth: when a different core is loaded, the regular "
+"units, terrains and the like do not exist.\n"
+"\n"
+"Cores allow a significantly different game experience: for example, a World "
+"War II campaign, or even a different game altogether, as long as it can be "
+"represented as a hexagonal map with ’units’ in some way."
+
+#. [topic]: id=using_addons
+#: data/core/help.cfg:510
+msgid ""
+"\n"
+"\n"
+"<header>text='Creator Resources'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Creator Resources'</header>"
+
+#. [topic]: id=using_addons
+#: data/core/help.cfg:512
+msgid ""
+"\n"
+"\n"
 "Content authors can use resource packs available on the add-ons server to "
 "enrich their own content with existing assets such as images, music, and "
 "code. These are not generally intended for direct use in-game; however, "
@@ -3101,12 +3122,12 @@ msgstr ""
 "installation during download."
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:515
+#: data/core/help.cfg:521
 msgid "Installing Add-ons"
 msgstr "Installing Add-ons"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:516
+#: data/core/help.cfg:522
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3154,12 +3175,12 @@ msgstr ""
 "description, installation status, and available translations."
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:529
+#: data/core/help.cfg:535
 msgid "Removing Add-ons"
 msgstr "Removing Add-ons"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:530
+#: data/core/help.cfg:536
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -3182,14 +3203,14 @@ msgstr ""
 "your platform."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:545
+#: data/core/help.cfg:551
 msgid "General Commands"
 msgstr "General Commands"
 
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:547 data/core/help.cfg:590 data/core/help.cfg:628
+#: data/core/help.cfg:553 data/core/help.cfg:596 data/core/help.cfg:634
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3202,7 +3223,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:549
+#: data/core/help.cfg:555
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3212,7 +3233,7 @@ msgstr ""
 "Clear chat messages.\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:552
+#: data/core/help.cfg:558
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3228,7 +3249,7 @@ msgstr ""
 
 # TODO: "bewteen" -> "between" in the original
 #. [topic]: id=general_commands
-#: data/core/help.cfg:556
+#: data/core/help.cfg:562
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -3247,73 +3268,73 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:559
-msgid ""
-"\n"
-"Display the controller status of a side.\n"
-"\n"
-msgstr ""
-"\n"
-"Display the controller status of a side.\n"
-"\n"
-
-#. [topic]: id=general_commands
-#: data/core/help.cfg:562
-msgid ""
-"\n"
-"Toggle the display of the current frames per second.\n"
-"\n"
-msgstr ""
-"\n"
-"Toggle the display of the current frames per second.\n"
-"\n"
-
-#. [topic]: id=general_commands
 #: data/core/help.cfg:565
 msgid ""
 "\n"
-"Switch a log domain to a different log level.\n"
+"Display the controller status of a side.\n"
 "\n"
 msgstr ""
 "\n"
-"Switch a log domain to a different log level.\n"
+"Display the controller status of a side.\n"
 "\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:568
 msgid ""
 "\n"
-"Redraws the screen and reloads any image files that have been changed.\n"
+"Toggle the display of the current frames per second.\n"
 "\n"
 msgstr ""
 "\n"
-"Redraws the screen and reloads any image files that have been changed.\n"
+"Toggle the display of the current frames per second.\n"
 "\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:571
 msgid ""
 "\n"
-"Bring up theme selection menu.\n"
+"Switch a log domain to a different log level.\n"
 "\n"
 msgstr ""
 "\n"
-"Bring up theme selection menu.\n"
+"Switch a log domain to a different log level.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:574
 msgid ""
 "\n"
-"Quit the scenario (without prompting).\n"
+"Redraws the screen and reloads any image files that have been changed.\n"
 "\n"
 msgstr ""
 "\n"
-"Quit the scenario (without prompting).\n"
+"Redraws the screen and reloads any image files that have been changed.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:577
 msgid ""
 "\n"
+"Bring up theme selection menu.\n"
+"\n"
+msgstr ""
+"\n"
+"Bring up theme selection menu.\n"
+
+#. [topic]: id=general_commands
+#: data/core/help.cfg:580
+msgid ""
+"\n"
+"Quit the scenario (without prompting).\n"
+"\n"
+msgstr ""
+"\n"
+"Quit the scenario (without prompting).\n"
+
+#. [topic]: id=general_commands
+#: data/core/help.cfg:583
+msgid ""
+"\n"
 "Save the game (without prompting).\n"
 "\n"
 msgstr ""
@@ -3321,7 +3342,7 @@ msgstr ""
 "Save the game (without prompting).\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:580
+#: data/core/help.cfg:586
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3330,12 +3351,12 @@ msgstr ""
 "Save the game and quit the scenario (without prompting)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:589
+#: data/core/help.cfg:595
 msgid "Multiplayer Commands"
 msgstr "Multiplayer Commands"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:592
+#: data/core/help.cfg:598
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3351,109 +3372,109 @@ msgstr ""
 
 # 2 full stops
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:595
-msgid ""
-"\n"
-"Change the controller for side (write here the number of the side) to "
-"username (write here the nickname of the player or observer). You can check "
-"what side belongs to which player in the <bold>text='Scenario Settings'</"
-"bold> dialog (Press the <bold>text='More'</bold> button in the "
-"<bold>text='Status Table'</bold> (alt+s by default) to get there.). The host "
-"can change control of any side.\n"
-"\n"
-msgstr ""
-"\n"
-"Change the controller for side (write here the number of the side) to "
-"username (write here the nickname of the player or observer). You can check "
-"what side belongs to which player in the <bold>text='Scenario Settings'</"
-"bold> dialog (Press the <bold>text='More'</bold> button in the "
-"<bold>text='Status Table'</bold> (alt+s by default) to get there.). The host "
-"can change control of any side.\n"
-"\n"
-
-#. [topic]: id=mp_commands
-#: data/core/help.cfg:598
-msgid ""
-"\n"
-"Launch a dialog to assist the host in changing the human controllers of "
-"sides.\n"
-"\n"
-msgstr ""
-"\n"
-"Launch a dialog to assist the host in changing the human controllers of "
-"sides.\n"
-"\n"
-
-#. [topic]: id=mp_commands
 #: data/core/help.cfg:601
 msgid ""
 "\n"
-"Toggle the idle state for a side. The host may make a side idle after a "
-"network disconnection.\n"
+"Change the controller for side (write here the number of the side) to "
+"username (write here the nickname of the player or observer). You can check "
+"what side belongs to which player in the <bold>text='Scenario Settings'</"
+"bold> dialog (Press the <bold>text='More'</bold> button in the "
+"<bold>text='Status Table'</bold> (alt+s by default) to get there.). The host "
+"can change control of any side.\n"
 "\n"
 msgstr ""
 "\n"
-"Toggle the idle state for a side. The host may make a side idle after a "
-"network disconnection.\n"
+"Change the controller for side (write here the number of the side) to "
+"username (write here the nickname of the player or observer). You can check "
+"what side belongs to which player in the <bold>text='Scenario Settings'</"
+"bold> dialog (Press the <bold>text='More'</bold> button in the "
+"<bold>text='Status Table'</bold> (alt+s by default) to get there.). The host "
+"can change control of any side.\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:604
 msgid ""
 "\n"
-"Kick a user in multiplayer. They will be able to rejoin the game. If you "
-"just want to change control of their side(s) use the :control command "
-"instead.\n"
+"Launch a dialog to assist the host in changing the human controllers of "
+"sides.\n"
 "\n"
 msgstr ""
 "\n"
-"Kick a user in multiplayer. They will be able to rejoin the game. If you "
-"just want to change control of their side(s) use the :control command "
-"instead.\n"
+"Launch a dialog to assist the host in changing the human controllers of "
+"sides.\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:607
 msgid ""
 "\n"
-"Send a private message to a user. When in a game, it is not possible to send "
-"private messages to players who are currently controlling a side in the same "
-"game.\n"
+"Toggle the idle state for a side. The host may make a side idle after a "
+"network disconnection.\n"
 "\n"
 msgstr ""
 "\n"
-"Send a private message to a user. When in a game, it is not possible to send "
-"private messages to players who are currently controlling a side in the same "
-"game.\n"
+"Toggle the idle state for a side. The host may make a side idle after a "
+"network disconnection.\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:610
 msgid ""
 "\n"
-"Mute a specific observer. If no username is supplied the muted usernames are "
-"displayed.\n"
+"Kick a user in multiplayer. They will be able to rejoin the game. If you "
+"just want to change control of their side(s) use the :control command "
+"instead.\n"
 "\n"
 msgstr ""
 "\n"
-"Mute a specific observer. If no username is supplied the muted usernames are "
-"displayed.\n"
+"Kick a user in multiplayer. They will be able to rejoin the game. If you "
+"just want to change control of their side(s) use the :control command "
+"instead.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:613
 msgid ""
 "\n"
-"Toggle muting/silencing of all observers on/off.\n"
+"Send a private message to a user. When in a game, it is not possible to send "
+"private messages to players who are currently controlling a side in the same "
+"game.\n"
 "\n"
 msgstr ""
 "\n"
-"Toggle muting/silencing of all observers on/off.\n"
+"Send a private message to a user. When in a game, it is not possible to send "
+"private messages to players who are currently controlling a side in the same "
+"game.\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:616
 msgid ""
 "\n"
+"Mute a specific observer. If no username is supplied the muted usernames are "
+"displayed.\n"
+"\n"
+msgstr ""
+"\n"
+"Mute a specific observer. If no username is supplied the muted usernames are "
+"displayed.\n"
+
+#. [topic]: id=mp_commands
+#: data/core/help.cfg:619
+msgid ""
+"\n"
+"Toggle muting/silencing of all observers on/off.\n"
+"\n"
+msgstr ""
+"\n"
+"Toggle muting/silencing of all observers on/off.\n"
+"\n"
+
+#. [topic]: id=mp_commands
+#: data/core/help.cfg:622
+msgid ""
+"\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
 "Can be used on users not in the game but on the server.\n"
 "\n"
@@ -3464,7 +3485,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:619
+#: data/core/help.cfg:625
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -3473,62 +3494,62 @@ msgstr ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
 "observers is cleared."
-
-#. [topic]: id=debug_commands
-#: data/core/help.cfg:627
-msgid "Debug Mode Commands"
-msgstr "Debug Mode Commands"
-
-#. [topic]: id=debug_commands
-#: data/core/help.cfg:630
-msgid ""
-"\n"
-"Brings up a menu for choosing a scenario to immediately advance to in a "
-"campaign.\n"
-"\n"
-msgstr ""
-"\n"
-"Brings up a menu for choosing a scenario to immediately advance to in a "
-"campaign.\n"
-"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:633
-msgid ""
-"\n"
-"Create a unit of the specified type on the selected hex.\n"
-"\n"
-msgstr ""
-"\n"
-"Create a unit of the specified type on the selected hex.\n"
-"\n"
+msgid "Debug Mode Commands"
+msgstr "Debug Mode Commands"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:636
 msgid ""
 "\n"
-"Toggle fog/shroud for the current side.\n"
+"Brings up a menu for choosing a scenario to immediately advance to in a "
+"campaign.\n"
 "\n"
 msgstr ""
 "\n"
-"Toggle fog/shroud for the current side.\n"
+"Brings up a menu for choosing a scenario to immediately advance to in a "
+"campaign.\n"
 "\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:639
 msgid ""
 "\n"
-"Adds the specified amount to the current side’s gold.\n"
+"Create a unit of the specified type on the selected hex.\n"
 "\n"
 msgstr ""
 "\n"
-"Adds the specified amount to the current side’s gold.\n"
+"Create a unit of the specified type on the selected hex.\n"
 "\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:642
 msgid ""
 "\n"
+"Toggle fog/shroud for the current side.\n"
+"\n"
+msgstr ""
+"\n"
+"Toggle fog/shroud for the current side.\n"
+"\n"
+
+#. [topic]: id=debug_commands
+#: data/core/help.cfg:645
+msgid ""
+"\n"
+"Adds the specified amount to the current side’s gold.\n"
+"\n"
+msgstr ""
+"\n"
+"Adds the specified amount to the current side’s gold.\n"
+"\n"
+
+#. [topic]: id=debug_commands
+#: data/core/help.cfg:648
+msgid ""
+"\n"
 "Immediately advances to the next scenario in a campaign.\n"
 "\n"
 msgstr ""
@@ -3537,7 +3558,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:645
+#: data/core/help.cfg:651
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3548,7 +3569,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:648
+#: data/core/help.cfg:654
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3559,31 +3580,31 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:651
-msgid ""
-"\n"
-"Manually fire the specified event.\n"
-"\n"
-msgstr ""
-"\n"
-"Manually fire the specified event.\n"
-"\n"
-
-#. [topic]: id=debug_commands
-#: data/core/help.cfg:654
-msgid ""
-"\n"
-"Modifies the specified property of the selected unit. Example: :unit "
-"hitpoints=100\n"
-"\n"
-msgstr ""
-"\n"
-"Modifies the specified property of the selected unit. Example: :unit "
-"hitpoints=100\n"
-"\n"
-
-#. [topic]: id=debug_commands
 #: data/core/help.cfg:657
+msgid ""
+"\n"
+"Manually fire the specified event.\n"
+"\n"
+msgstr ""
+"\n"
+"Manually fire the specified event.\n"
+"\n"
+
+#. [topic]: id=debug_commands
+#: data/core/help.cfg:660
+msgid ""
+"\n"
+"Modifies the specified property of the selected unit. Example: :unit "
+"hitpoints=100\n"
+"\n"
+msgstr ""
+"\n"
+"Modifies the specified property of the selected unit. Example: :unit "
+"hitpoints=100\n"
+"\n"
+
+#. [topic]: id=debug_commands
+#: data/core/help.cfg:663
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"

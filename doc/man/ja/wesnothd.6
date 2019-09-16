@@ -181,9 +181,12 @@ Y (年) で %d は数字。もし時間修飾子がない場合は分(m)が指�
 \fB[redirect]\fP と同じキーを受けつける。
 .RE
 .P
-\fB[user_handler]\fP でユーザーハンドラを指定する。利用可能なキーは \fBuser_handler\fP
-キーに設定されているユーザーハンドラによって変化する。もし \fB[user_handler]\fP
-セクションが設定中に存在しなければ、サーバーはニックネーム登録サービスなしで実行される。
+\fB[user_handler]\fP Configures the user handler. Available keys vary depending
+on which user handler is set with the \fBuser_handler\fP key. If no
+\fB[user_handler]\fP section is present in the configuration the server will
+run without any nick registration service. All additional tables that are
+needed for the forum_user_handler to function can be found in
+table_definitions.sql in the Wesnoth source repository.
 .RS
 .TP 
 \fBdb_host\fP
@@ -203,11 +206,29 @@ Y (年) で %d は数字。もし時間修飾子がない場合は分(m)が指�
 <table\-prefix>_users (例えば phpbb3_users)。
 .TP 
 \fBdb_extra_table\fP
-(user_handler=forum のとき) wesnothd
-がユーザーについてのデータを保存するテーブル名。このテーブルは手動で作成しなければならない。例: \fBCREATE TABLE
-<table\-name>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
-UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
-0);\fP
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about users. You will have to create this table manually.
+.TP 
+\fBdb_game_info_table\fP
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about games.
+.TP 
+\fBdb_game_player_info_table\fP
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about the players in a game.
+.TP 
+\fBdb_game_modification_info_table\fP
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about the modifications used in a game.
+.TP 
+\fBdb_user_group_table\fP
+(for user_handler=forum) The name of the table in which your phpbb forums
+saves its user group data. Most likely this will be
+<table\-prefix>_user_group (e.g. phpbb3_user_group).
+.TP 
+\fBmp_mod_group\fP
+(for user_handler=forum) The ID of the forum group to be considered as
+having moderation authority.
 .TP 
 \fBuser_expiration\fP
 (user_handler=sample のとき) 登録されたニックネームが期限切れになる時間(単位は日)。

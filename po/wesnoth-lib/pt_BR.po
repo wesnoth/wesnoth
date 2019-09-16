@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-06-30 15:14+0300\n"
+"POT-Creation-Date: 2019-09-16 11:33+0300\n"
 "PO-Revision-Date: 2019-09-05 16:10-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -1243,6 +1243,20 @@ msgstr "Caverna Rochosa"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:967
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
+#| "water and wind, carrying erosive particles that carve the rock. It "
+#| "resembles a scraggy underground cavern which shoulders defense, but is "
+#| "hard for most units to traverse. Only settlers of caves, such as dwarves "
+#| "and trolls, are fully capable of navigating such topography.\n"
+#| "\n"
+#| "Most units have about 50% defense in rocky caves, whereas cavalry are "
+#| "limited to 40%. Dwarves, by dint of their small size, enjoy 60% defense "
+#| "in rockbound caves.\n"
+#| "\n"
+#| "Occasionally caves are <ref>dst='terrain_illuminated_cave' "
+#| "text='illuminated'</ref>."
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -1254,8 +1268,7 @@ msgid ""
 "limited to 40%. Dwarves, by dint of their small size, enjoy 60% defense in "
 "rockbound caves.\n"
 "\n"
-"Occasionally caves are <ref>dst='terrain_illuminated_cave' "
-"text='illuminated'</ref>."
+"Occasionally caves are <italic>text='illuminated'</italic>."
 msgstr ""
 "<italic>text='Caverna rochosa'</italic> são formadas pela ação do vento e da "
 "água erudinto as paredes das cavernas. A maioria das unidades possuem "
@@ -2937,6 +2950,24 @@ msgstr ""
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2732
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Cave'</italic> terrain represents any underground cavern "
+#| "with enough room for a unit to pass.\n"
+#| "Most units are wholly unfamiliar with the terrain, and thus are both "
+#| "slowed down and hindered in defense. Dwarves and trolls, who make their "
+#| "homes in caves, both have a relatively easy time navigating this terrain, "
+#| "especially dwarves, who by dint of their small size can navigate many "
+#| "obstacles that other races cannot. Occasionally caves are "
+#| "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>.\n"
+#| "\n"
+#| "Rare patches of the underground world are illuminated by light from the "
+#| "surface shining down into the gloomy darkness. This provides an attack "
+#| "bonus for lawful units and removes the attack bonus from chaotic units. "
+#| "In all other regards this terrain is functionally identical to normal "
+#| "cave terrains.\n"
+#| "\n"
+#| "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -2944,8 +2975,8 @@ msgid ""
 "down and hindered in defense. Dwarves and trolls, who make their homes in "
 "caves, both have a relatively easy time navigating this terrain, especially "
 "dwarves, who by dint of their small size can navigate many obstacles that "
-"other races cannot. Occasionally caves are "
-"<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>.\n"
+"other races cannot. Occasionally caves are <italic>text='illuminated'</"
+"italic>.\n"
 "\n"
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness. This provides an attack bonus "
@@ -3501,7 +3532,7 @@ msgstr "Esperando mensagens"
 #: data/gui/window/gamestate_inspector.cfg:397
 #: data/gui/window/generator_settings.cfg:190
 #: data/gui/window/help_browser.cfg:188
-#: data/gui/window/lobby_player_info.cfg:282
+#: data/gui/window/lobby_player_info.cfg:294
 #: data/gui/window/lua_interpreter.cfg:130 data/gui/window/message.cfg:135
 #: data/gui/window/mp_alerts_options.cfg:249
 #: data/gui/window/preferences.cfg:429
@@ -4301,7 +4332,7 @@ msgstr "Ordenar por ordem cronológica aproximada dos eventos da história"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:293
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:460
 msgid "Modifications"
 msgstr "Modificações"
 
@@ -4841,7 +4872,7 @@ msgstr "Descrição:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:478
+#: src/gui/dialogs/multiplayer/lobby.cpp:482
 msgid "Experience modifier:"
 msgstr "Modificador de experiência:"
 
@@ -4939,7 +4970,7 @@ msgstr "Ouro:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#: src/gui/dialogs/multiplayer/lobby.cpp:479
+#: src/gui/dialogs/multiplayer/lobby.cpp:483
 msgid "Gold per village:"
 msgstr "Ouro por aldeia:"
 
@@ -4964,7 +4995,7 @@ msgstr "Controlador:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
-#: data/gui/window/editor_edit_side.cfg:373 src/gui/dialogs/game_stats.cpp:74
+#: data/gui/window/editor_edit_side.cfg:373 src/gui/dialogs/game_stats.cpp:71
 msgid "controller^Human"
 msgstr "Humano"
 
@@ -5040,7 +5071,7 @@ msgstr "Escolha um gerador de mapa:"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
-#: src/gui/dialogs/multiplayer/lobby.cpp:477
+#: src/gui/dialogs/multiplayer/lobby.cpp:481
 msgid "Settings"
 msgstr "Preferências"
 
@@ -5743,7 +5774,7 @@ msgstr ""
 # File: data/gui/default/window/lobby_main.cfg, line: 338
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:251
+#: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:252
 msgid "Current Status"
 msgstr "Estatísticas Atuais"
 
@@ -5765,7 +5796,7 @@ msgstr "Estatísticas do Jogo"
 # File: src/hotkeys.cpp, line: 149
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
-#: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:251
+#: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:252
 msgid "Scenario Settings"
 msgstr "Configurações do Cenário"
 
@@ -6264,15 +6295,15 @@ msgstr "Informações do Jogador — "
 # File: data/gui/default/window/mp_cmd_wrapper.cfg, line: 170
 # File: data/gui/default/window/mp_cmd_wrapper.cfg, line: 170
 # File: data/gui/default/window/mp_cmd_wrapper.cfg, line: 170
-#. [button]: id=add_to_friends
 #. [button]: id=add_friend
+#. [button]: id=add_to_friends
 #: data/gui/window/lobby_player_info.cfg:94
 #: data/gui/window/preferences/05_multiplayer.cfg:263
 msgid "Add Friend"
 msgstr "Adicionar como Amigo"
 
-#. [button]: id=add_to_ignores
 #. [button]: id=add_ignored
+#. [button]: id=add_to_ignores
 #: data/gui/window/lobby_player_info.cfg:105
 #: data/gui/window/preferences/05_multiplayer.cfg:276
 msgid "Block"
@@ -6306,13 +6337,13 @@ msgid "Moderator Controls"
 msgstr "Controles de Moderador"
 
 #
-# File: data/gui/default/window/lobby_player_info.cfg, line: 155
-# File: data/gui/default/window/lobby_player_info.cfg, line: 155
-# File: data/gui/default/window/lobby_player_info.cfg, line: 155
+# File: data/gui/default/window/mp_cmd_wrapper.cfg, line: 271
+# File: data/gui/default/window/mp_cmd_wrapper.cfg, line: 271
+# File: data/gui/default/window/mp_cmd_wrapper.cfg, line: 271
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:173
-msgid "Kick / ban reason:"
-msgstr "Razão da expulsão / banimento:"
+msgid "Reason:"
+msgstr "Razão:"
 
 #
 # File: data/gui/default/window/lobby_player_info.cfg, line: 175
@@ -6352,6 +6383,23 @@ msgstr "Expulsar"
 #: data/gui/window/lobby_player_info.cfg:262
 msgid "Kick + Ban"
 msgstr "Expulsar + banir"
+
+#
+# File: data/gui/default/window/game_load.cfg, line: 50
+# File: src/gui/dialogs/mp_create_game.cpp, line: 99
+# File: src/hotkeys.cpp, line: 93
+# File: data/gui/default/window/game_load.cfg, line: 50
+# File: src/gui/dialogs/mp_create_game.cpp, line: 99
+# File: src/hotkeys.cpp, line: 93
+# File: data/gui/default/window/game_load.cfg, line: 50
+# File: src/gui/dialogs/mp_create_game.cpp, line: 99
+# File: src/hotkeys.cpp, line: 93
+#. [button]: id=stopgame
+#: data/gui/window/lobby_player_info.cfg:274
+#, fuzzy
+#| msgid "Load Game"
+msgid "Stop Game"
+msgstr "Carregar Jogo"
 
 #
 # File: data/gui/default/window/formula_debugger.cfg, line: 94
@@ -6436,8 +6484,8 @@ msgstr ""
 msgid "Event"
 msgstr "Evento"
 
-#. [label]
 #. [widget]: id=label
+#. [label]
 #: data/gui/window/mp_alerts_options.cfg:154
 #: data/gui/window/preferences.cfg:346
 msgid "Sound"
@@ -6579,13 +6627,27 @@ msgstr "Turno mudou:"
 msgid "When a new turn has begun"
 msgstr "Quando um novo turno começou"
 
+#. [grid]
+#: data/gui/window/mp_alerts_options.cfg:200
+#, fuzzy
+#| msgid "Game data:"
+msgid "Game created:"
+msgstr "Dados do jogo:"
+
+#. [grid]
+#: data/gui/window/mp_alerts_options.cfg:200
+#, fuzzy
+#| msgid "When a new turn has begun"
+msgid "When a new game has been created"
+msgstr "Quando um novo turno começou"
+
 #
 # File: src/hotkey_preferences_display.cpp, line: 169
 # File: src/hotkey_preferences_display.cpp, line: 169
 # File: src/hotkey_preferences_display.cpp, line: 169
-#. [button]: id=revert_to_defaults
 #. [button]: id=btn_reset_hotkeys
 #. [button]: id=orb_defaults
+#. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:293
 #: data/gui/window/select_orb_colors.cfg:102
@@ -7000,7 +7062,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:480
+#: src/gui/dialogs/multiplayer/lobby.cpp:484
 msgid "Map size:"
 msgstr "Tamanho do mapa:"
 
@@ -8909,30 +8971,26 @@ msgid "Details:"
 msgstr "Detalhes:"
 
 #: src/build_info.cpp:268
-msgid "feature^Experimental OpenMP support"
-msgstr "Suporte para MP aberto esperimental"
-
-#: src/build_info.cpp:273
 msgid "feature^JPG screenshots"
 msgstr "Capturas de tela JPG"
 
-#: src/build_info.cpp:280
+#: src/build_info.cpp:275
 msgid "feature^Lua console completion"
 msgstr "Console Lua Concluído"
 
-#: src/build_info.cpp:285
+#: src/build_info.cpp:280
 msgid "feature^Legacy bidirectional rendering"
 msgstr "Renderização bidirecional legado"
 
-#: src/build_info.cpp:292
+#: src/build_info.cpp:287
 msgid "feature^D-Bus notifications back end"
 msgstr "D-Bus notificações de back end"
 
-#: src/build_info.cpp:301
+#: src/build_info.cpp:296
 msgid "feature^Win32 notifications back end"
 msgstr "Win32 notificações de back end"
 
-#: src/build_info.cpp:307
+#: src/build_info.cpp:302
 msgid "feature^Cocoa notifications back end"
 msgstr "Cocoa notificações de back end"
 
@@ -9659,7 +9717,7 @@ msgstr "Vulnerabilidades do atacante vs"
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 #: src/gui/dialogs/campaign_selection.cpp:318
-#: src/gui/dialogs/multiplayer/lobby.cpp:461
+#: src/gui/dialogs/multiplayer/lobby.cpp:465
 msgid "active_modifications^None"
 msgstr "Nenhum"
 
@@ -9935,11 +9993,11 @@ msgstr "Versão: "
 msgid "Modifications: "
 msgstr "Modificações: "
 
-#: src/gui/dialogs/game_stats.cpp:74
+#: src/gui/dialogs/game_stats.cpp:71
 msgid "controller^AI"
 msgstr "AI"
 
-#: src/gui/dialogs/game_stats.cpp:74
+#: src/gui/dialogs/game_stats.cpp:71
 msgid "controller^Idle"
 msgstr "Ocioso"
 
@@ -9947,7 +10005,7 @@ msgstr "Ocioso"
 # File: src/hotkeys.cpp, line: 423
 # File: src/hotkeys.cpp, line: 423
 # File: src/hotkeys.cpp, line: 423
-#: src/gui/dialogs/game_stats.cpp:110 src/gui/dialogs/label_settings.cpp:67
+#: src/gui/dialogs/game_stats.cpp:109 src/gui/dialogs/label_settings.cpp:78
 msgid "Unknown"
 msgstr "Desconhecido"
 
@@ -9955,8 +10013,8 @@ msgstr "Desconhecido"
 # File: src/game_preferences_display.cpp, line: 1073
 # File: src/game_preferences_display.cpp, line: 1090
 # File: src/game_preferences_display.cpp, line: 1090
-#: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/game_stats.cpp:195 src/gui/dialogs/game_stats.cpp:198
+#: src/gui/dialogs/multiplayer/lobby.cpp:479
 msgid "no"
 msgstr "não"
 
@@ -9964,8 +10022,8 @@ msgstr "não"
 # File: src/game_preferences_display.cpp, line: 1071
 # File: src/game_preferences_display.cpp, line: 1088
 # File: src/game_preferences_display.cpp, line: 1088
-#: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/game_stats.cpp:195 src/gui/dialogs/game_stats.cpp:198
+#: src/gui/dialogs/multiplayer/lobby.cpp:479
 msgid "yes"
 msgstr "sim"
 
@@ -9994,11 +10052,11 @@ msgstr "N/A"
 # File: src/hotkeys.cpp, line: 114
 # File: src/hotkeys.cpp, line: 114
 # File: src/hotkeys.cpp, line: 114
-#: src/gui/dialogs/label_settings.cpp:49
+#: src/gui/dialogs/label_settings.cpp:54
 msgid "Team Labels"
 msgstr "Nome do Time"
 
-#: src/gui/dialogs/label_settings.cpp:72
+#: src/gui/dialogs/label_settings.cpp:84
 msgid "Side $side_number ($name)"
 msgstr "Lado $side_number ($name)"
 
@@ -10224,11 +10282,11 @@ msgstr ""
 # File: src/gui/dialogs/lobby_main.cpp, line: 662
 # File: src/gui/dialogs/lobby_main.cpp, line: 662
 # File: src/gui/dialogs/lobby_main.cpp, line: 662
-#: src/gui/dialogs/multiplayer/lobby.cpp:396
+#: src/gui/dialogs/multiplayer/lobby.cpp:400
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Jogos: mostrando $num_shown de $num_total"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:416
+#: src/gui/dialogs/multiplayer/lobby.cpp:420
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Era: $era_name)"
 
@@ -10236,7 +10294,7 @@ msgstr "$game_name (Era: $era_name)"
 # File: src/gui/dialogs/addon/description.cpp, line: 47
 # File: src/gui/dialogs/addon/description.cpp, line: 47
 # File: src/gui/dialogs/addon/description.cpp, line: 47
-#: src/gui/dialogs/multiplayer/lobby.cpp:446
+#: src/gui/dialogs/multiplayer/lobby.cpp:450
 msgid "era_or_mod^not installed"
 msgstr "Não instalado"
 
@@ -10244,7 +10302,7 @@ msgstr "Não instalado"
 # File: data/gui/default/window/mp_create_game.cfg, line: 185
 # File: data/gui/default/window/mp_create_game.cfg, line: 185
 # File: data/gui/default/window/mp_create_game.cfg, line: 185
-#: src/gui/dialogs/multiplayer/lobby.cpp:449
+#: src/gui/dialogs/multiplayer/lobby.cpp:453
 msgid "Era"
 msgstr "Era"
 
@@ -10252,15 +10310,15 @@ msgstr "Era"
 # File: data/gui/default/window/lobby_main.cfg, line: 179
 # File: data/gui/default/window/lobby_main.cfg, line: 179
 # File: data/gui/default/window/lobby_main.cfg, line: 179
-#: src/gui/dialogs/multiplayer/lobby.cpp:481
+#: src/gui/dialogs/multiplayer/lobby.cpp:485
 msgid "Reloaded:"
 msgstr "Recarregado:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:482
+#: src/gui/dialogs/multiplayer/lobby.cpp:486
 msgid "Shared vision:"
 msgstr "Visão compartilhada:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:483
+#: src/gui/dialogs/multiplayer/lobby.cpp:487
 msgid "Shuffle sides:"
 msgstr "Times embaralhados:"
 
@@ -10268,7 +10326,7 @@ msgstr "Times embaralhados:"
 # File: data/gui/default/window/lobby_main.cfg, line: 186
 # File: data/gui/default/window/lobby_main.cfg, line: 186
 # File: data/gui/default/window/lobby_main.cfg, line: 186
-#: src/gui/dialogs/multiplayer/lobby.cpp:484
+#: src/gui/dialogs/multiplayer/lobby.cpp:488
 msgid "Time limit:"
 msgstr "Tempo limite:"
 
@@ -10279,11 +10337,11 @@ msgstr "Tempo limite:"
 # File: data/gui/default/window/mp_create_game.cfg, line: 321
 # File: data/gui/default/window/lobby_main.cfg, line: 178
 # File: data/gui/default/window/mp_create_game.cfg, line: 321
-#: src/gui/dialogs/multiplayer/lobby.cpp:485
+#: src/gui/dialogs/multiplayer/lobby.cpp:489
 msgid "Use map settings:"
 msgstr "Usar configurações do mapa:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:493
+#: src/gui/dialogs/multiplayer/lobby.cpp:497
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -10295,7 +10353,7 @@ msgstr ""
 # File: src/gui/dialogs/lobby_main.cpp, line: 705
 # File: src/gui/dialogs/lobby_main.cpp, line: 705
 # File: src/gui/dialogs/lobby_main.cpp, line: 705
-#: src/gui/dialogs/multiplayer/lobby.cpp:518
+#: src/gui/dialogs/multiplayer/lobby.cpp:522
 msgid "Observers allowed"
 msgstr "Observadores permitidos"
 
@@ -10303,7 +10361,7 @@ msgstr "Observadores permitidos"
 # File: src/gui/dialogs/lobby_main.cpp, line: 708
 # File: src/gui/dialogs/lobby_main.cpp, line: 708
 # File: src/gui/dialogs/lobby_main.cpp, line: 708
-#: src/gui/dialogs/multiplayer/lobby.cpp:521
+#: src/gui/dialogs/multiplayer/lobby.cpp:525
 msgid "Observers not allowed"
 msgstr "Observadores não permitidos"
 
@@ -10311,11 +10369,11 @@ msgstr "Observadores não permitidos"
 # File: data/gui/default/window/lobby_main.cfg, line: 339
 # File: data/gui/default/window/lobby_main.cfg, line: 339
 # File: data/gui/default/window/lobby_main.cfg, line: 339
-#: src/gui/dialogs/multiplayer/lobby.cpp:796
+#: src/gui/dialogs/multiplayer/lobby.cpp:800
 msgid "lobby"
 msgstr "saguão"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:956
+#: src/gui/dialogs/multiplayer/lobby.cpp:960
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -12736,7 +12794,7 @@ msgstr "Comando não Reconhecido"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/picture.cpp:538
+#: src/picture.cpp:524
 msgid "language code for localized resources^en_US"
 msgstr "pt_BR,pt"
 
@@ -12861,6 +12919,16 @@ msgid ""
 msgstr ""
 "A chave '$deprecated_key' foi renomeada para '$key'. Suporte para "
 "'$deprecated_key' será removido na versão $removal_version."
+
+#
+# File: data/gui/default/window/lobby_player_info.cfg, line: 155
+# File: data/gui/default/window/lobby_player_info.cfg, line: 155
+# File: data/gui/default/window/lobby_player_info.cfg, line: 155
+#~ msgid "Kick / ban reason:"
+#~ msgstr "Razão da expulsão / banimento:"
+
+#~ msgid "feature^Experimental OpenMP support"
+#~ msgstr "Suporte para MP aberto esperimental"
 
 #~ msgid ""
 #~ "There are no custom options available for the selected era, game, or "
@@ -13163,13 +13231,6 @@ msgstr ""
 # File: data/gui/default/window/mp_cmd_wrapper.cfg, line: 241
 #~ msgid "Moderating"
 #~ msgstr "Moderando"
-
-#
-# File: data/gui/default/window/mp_cmd_wrapper.cfg, line: 271
-# File: data/gui/default/window/mp_cmd_wrapper.cfg, line: 271
-# File: data/gui/default/window/mp_cmd_wrapper.cfg, line: 271
-#~ msgid "Reason:"
-#~ msgstr "Razão:"
 
 #
 # File: data/gui/default/window/mp_cmd_wrapper.cfg, line: 323

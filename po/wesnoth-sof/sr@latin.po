@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-sof\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-06-30 12:14 UTC\n"
+"POT-Creation-Date: 2019-09-16 08:33 UTC\n"
 "PO-Revision-Date: 2011-12-10 10:17+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -173,10 +173,10 @@ msgstr "Glildur"
 #. [side]: type=Elvish Marshal, id=Crintil
 #. [side]: type=Elvish Captain, id=Glildur
 #. [side]
-#. [side]: type=Elvish Captain, id=Glindur
 #. [side]: type=Elvish Marshal, id=Gaenlar
 #. [side]: type=Elvish Marshal, id=Glinan
 #. [side]: type=Elvish Captain, id=Kalnar
+#. [side]: type=Elvish Captain, id=Glindur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:91
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:43
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:39
@@ -692,8 +692,8 @@ msgstr "Zatvaranje kapija"
 msgid "Glindur"
 msgstr "Glindur"
 
-#. [side]
 #. [side]: type=Troll Warrior, type=Troll
+#. [side]
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:55
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:234
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:261
@@ -892,8 +892,7 @@ msgstr ""
 "kroz kameni zid patuljačke izrade. Odbijamo, sad zatvorite te kapije!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:448
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:466
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:449
 msgid ""
 "But what about this entrance? The elves can come through it just as easily "
 "as the main gate, and it cannot be closed!"
@@ -903,8 +902,7 @@ msgstr ""
 
 # |, no-check-spell, no-hybdl
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:452
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:470
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:453
 msgid ""
 "I think it can be sealed up somehow... Yes, look, activating that glyph "
 "seems to have closed up the gap."
@@ -913,16 +911,32 @@ msgstr ""
 "te glife zatvorilo pukot’nu."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:513
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:496
 msgid "We have everyone positioned on the glyphs! What do we do now?"
 msgstr "Postavili smo ratnika na svaku glifu! Šta da radimo sada?"
 
 # |, no-check-spell, no-hybdl
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:517
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:508
 msgid ""
 "Just watch. The gates wi’ close very soon. Then the elves outside — and, "
 "unfortunately, our dwarves who are still out there — wi’ become irrelevant."
+msgstr ""
+"Samo čekaj. Kapija će se brzo zatvor’t’. Onda će vilenjaci i, nažalost, naši "
+"patuljc’ koji ostanu tamo, bit’ nevažn’."
+
+# |, no-check-spell, no-hybdl
+#. [message]: speaker=Baglur
+#. all the dwarves are inside, although there might still be some elves inside too
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:515
+#, fuzzy
+#| msgid ""
+#| "Just watch. The gates wi’ close very soon. Then the elves outside — and, "
+#| "unfortunately, our dwarves who are still out there — wi’ become "
+#| "irrelevant."
+msgid ""
+"Just watch. The gates wi’ close very soon. Then the elves outside wi’ become "
+"irrelevant."
 msgstr ""
 "Samo čekaj. Kapija će se brzo zatvor’t’. Onda će vilenjaci i, nažalost, naši "
 "patuljc’ koji ostanu tamo, bit’ nevažn’."

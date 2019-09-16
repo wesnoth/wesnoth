@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-06-30 12:14 UTC\n"
+"POT-Creation-Date: 2019-09-16 08:33 UTC\n"
 "PO-Revision-Date: 2019-06-29 21:06+0800\n"
 "Last-Translator: Li, Kwunron <likwueron>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -156,11 +156,11 @@ msgstr "南疆哨所"
 msgid "Urza Mathin"
 msgstr "烏薩．馬辛"
 
-#. [side]: type=Outlaw, id=Jera Ilras
 #. [side]: type=Bandit, id=Urza Mathin
 #. [side]: type=Outlaw, id=Urza Nalmath
 #. [side]: type=Rogue, id=Urza Fastik
 #. [side]: type=Outlaw, id=Urza Afalas
+#. [side]: type=Outlaw, id=Jera Ilras
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:61
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:65
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:60
@@ -1452,13 +1452,13 @@ msgstr "淚滴谷"
 msgid "Mal A’kai"
 msgstr "麥爾．亞凱"
 
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
-#. [side]: type=Soulless, id=Gruth
-#. [side]: type=Lich, id=Mal M'Brin
 #. [side]
 #. [side]: type=Ancient Lich, id=Mal M'Brin
 #. [side]: type=Soulless, id=Groth
 #. [side]: type=Lich, id=Mal Tera
+#. [side]: type=Soulless, id=Gruth
+#. [side]: type=Lich, id=Mal M'Brin
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:66
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:96
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:141
@@ -1672,9 +1672,9 @@ msgstr "也許，但至少你，不會再來禍害我們了！"
 msgid "Mebrin! Are you there? We have come to seek your aid!"
 msgstr "莫布林！你在嗎？我們有求於您！"
 
-#. [message]: speaker=narrator
 #. [message]: speaker=Kramak
 #. [message]: speaker=Ethiliel
+#. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:635
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:646
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:395
@@ -1690,33 +1690,50 @@ msgstr "莫布林！你在哪裡？！"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:652
-msgid "His home is empty... There are footprints leading away to the south..."
+#, fuzzy
+#| msgid ""
+#| "His home is empty... There are footprints leading away to the south..."
+msgid ""
+"His home is empty... There are several sets of footprints leading away to "
+"the south..."
 msgstr "屋內空無一人......有很多往南方腳印......"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:657
-msgid "Maybe whoever summoned these undead knows where he is?"
-msgstr "妳看召喚這些不死族的人知道他的下落嗎？"
+msgid "Perhaps he was taken by the undead?"
+msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:662
+#, fuzzy
+#| msgid ""
+#| "There is no blood here, so he must have been taken by surprise. But I "
+#| "suspect the undead would have slain him and made him one of them."
 msgid ""
-"There is no blood here, so he must have been taken by surprise. But I "
-"suspect the undead would have slain him and made him one of them."
+"I am not sure. There is no blood here and very little sign of struggle. If "
+"it had been the undead, I suspect they would have slain him and made him one "
+"of them."
 msgstr ""
 "沒有血跡，一定是有人綁走他了。但是不死族的話，大概會將他殺害並且成為他們的其"
 "中一份子了。"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:667
-msgid "Maybe the bandits who have been summoning the undead took him?"
+#, fuzzy
+#| msgid "Maybe the bandits who have been summoning the undead took him?"
+msgid "Then maybe the bandits who have been summoning the undead took him?"
 msgstr "會不會是能召喚不死族的強盜們？"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:672
+#, fuzzy
+#| msgid ""
+#| "We cannot be sure. I still find it strange that there is no sign of a "
+#| "battle here. Ethiliel, what do you think?"
 msgid ""
-"We cannot be sure. I still find it strange that there is no sign of a battle "
-"here. Ethiliel, what do you think?"
+"We cannot be sure. I should think that he would have put up a fight, but if "
+"he were ambushed or taken by surprise, he may not have had the chance. "
+"Ethiliel, what do you think?"
 msgstr ""
 "我們無法確認。而且我發現事情不單純，因為這邊沒有戰鬥的痕跡。依茜麗兒，妳怎麼"
 "看？"
@@ -1745,10 +1762,15 @@ msgstr "我們得趕路了。<i>還有別做出讓她更生氣的事情...</i>"
 
 #. [message]: speaker=Necro
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:732
+#, fuzzy
+#| msgid ""
+#| "So the elves finally come to defend their valley. Pity, they showed up a "
+#| "little late. We will stop them here and prevent them from reclaiming the "
+#| "knowledge that was once theirs!"
 msgid ""
-"So the elves finally come to defend their valley. Pity, they showed up a "
-"little late. We will stop them here and prevent them from reclaiming the "
-"knowledge that was once theirs!"
+"So the elves finally come to defend their valley. Pity, they showed up too "
+"late. We will stop them here and prevent them from reclaiming the knowledge "
+"that was once theirs!"
 msgstr ""
 "所以，精靈來保衛他們的山谷了。可憐，他們來的太晚了。我們會在這阻止他們奪回曾"
 "是他們的知識！"
@@ -1771,8 +1793,8 @@ msgstr "來吧，我的護衛！我們得加緊腳步，追蹤莫布林的足跡
 msgid "Choice in the Fog"
 msgstr "霧中抉擇"
 
-#. [side]: type=Outlaw, id=Urza Afalas
 #. [unit]: type=Outlaw, id=Urza Afalas
+#. [side]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:55
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:473
 msgid "Urza Afalas"
@@ -5003,9 +5025,16 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:124
+#, fuzzy
+#| msgid ""
+#| "<i>“These are our terms: no human will be permitted in the forests or "
+#| "hills of the Aetherwood, and likewise, we elves will not traverse the "
+#| "plains and farmlands belonging to you humans. No more will the elves send "
+#| "ambassadors or councilors to Westin, and no more will men wander the "
+#| "green woods.”</i>"
 msgid ""
 "<i>“These are our terms: no human will be permitted in the forests or hills "
-"of the Aetherwood, and likewise, we elves will not traverse the plains and "
+"of the Aethenwood, and likewise, we elves will not traverse the plains and "
 "farmlands belonging to you humans. No more will the elves send ambassadors "
 "or councilors to Westin, and no more will men wander the green woods.”</i>"
 msgstr ""
@@ -5027,11 +5056,19 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:132
+#, fuzzy
+#| msgid ""
+#| "Thus, an uneasy peace was established between man and elf. For many "
+#| "weeks, the South Guard patrolled the borders of the elven woods and "
+#| "watched over the growing farms and villages. The threat from the elves "
+#| "was enough to keep the villagers from entering the now forbidding "
+#| "Aetherwood, and despite the palpable tension at the forest border, the "
+#| "truce was maintained without incident."
 msgid ""
 "Thus, an uneasy peace was established between man and elf. For many weeks, "
 "the South Guard patrolled the borders of the elven woods and watched over "
 "the growing farms and villages. The threat from the elves was enough to keep "
-"the villagers from entering the now forbidding Aetherwood, and despite the "
+"the villagers from entering the now forbidding Aethenwood, and despite the "
 "palpable tension at the forest border, the truce was maintained without "
 "incident."
 msgstr ""
@@ -5139,6 +5176,9 @@ msgid ""
 msgstr ""
 "迪奧蘭忙於探望傷兵，帶領手下修復城市的牆垛工事。慢慢的，當韋斯汀復原後，日常"
 "生活開始回到克拉什省，而南疆哨所亦重新巡邏鄉間。"
+
+#~ msgid "Maybe whoever summoned these undead knows where he is?"
+#~ msgstr "妳看召喚這些不死族的人知道他的下落嗎？"
 
 #~ msgid ""
 #~ "Thugs are the mainstay of the bandit armies. They do not have a "

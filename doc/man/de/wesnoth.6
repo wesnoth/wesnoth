@@ -76,7 +76,8 @@ angegeben ist wird das erste Szenario gestartet.
 Überspringt den [story] Teil eines Szenarios und Dialoge im \fBstart\fP event.
 .TP 
 \fB\-\-clock\fP
-Adds the option to show a clock for testing the drawing timer.
+(Entwickleroption) Fügt dem Hauptmenü einen neuen Button hinzu, mit welchem
+man eine Uhr mit GUI2\-Elementen zum Testen aufrufen kann.
 .TP 
 \fB\-\-config\-dir\fP\fI\ Name\fP
 Alte Option, bitte \fB\-\-userdata\-dir\fP benutzen.
@@ -168,9 +169,9 @@ werden können.
 Startet die Multiplayer Test Szenarios.
 .TP 
 \fB\-\-new\-widgets\fP
-there is a new WIP widget toolkit, this option enables it. This is very
-experimental, don't fill bug reports since most are known. Parts of the
-library are deemed stable and will work without this switch.
+(Entwickleroption) Es gibt ein neues widget toolkit, mit dieser Option wird
+der experimentelle Teil aktiviert. Bitte keine Bugs dafür melden, die
+meisten sind bekannt.
 .TP 
 \fB\-\-nodelay\fP
 Das Spiel wird ohne Verzögerungen ausgeführt. Wird zum Ausführen grafischer
@@ -201,10 +202,11 @@ Deaktiviert jegliche Soundeffekte im Spiel.
 Benutzt das angegebene \fIPasswort\fP um sich zu einem Server zu verbinden,
 andere Einstellungen werden ignoriert. Ist unsicher.
 .TP 
-\fB\-\-plugin\fP\fI\ Skript\fP
-(experimental) load a \fIscript\fP which defines a Wesnoth plugin. Similar to
-\fB\-\-script\fP, but Lua file should return a function which will be run as a
-coroutine and periodically woken up with updates.
+\fB\-\-plugin\fP\fI\ Skript\-Datei\fP
+(experimentell) lädt eine \fISkript\-Datei\fP welche ein Wesnoth Plugin
+definiert. Ähnlich zur Option \fB\-\-script\fP, aber die Lua\-Datei soll hierbei
+eine Funktion zurpckliefern. Diese wird als Korutine ausgeführt und
+regelmäßig aufgerufen.
 .TP 
 \fB\-p,\ \-\-preprocess\fP\fI\ Quelldatei/Verzeichnis\fP\fB\ \fP\fIZielverzeichnis\fP
 Eine angegebene Datei/Verzeichnis vorverarbeiten. Wenn ein Verzeichnis
@@ -271,7 +273,8 @@ Erzeugt ein Bildschirmfoto der \fIKarte\fP und speichert ihn in einer Datei
 namens \fIAusgabe\fP ohne die Graphische Oberfläche zu initialisieren.
 .TP 
 \fB\-\-script\fP\fI\ Dateiname\fP
-(experimental)  \fIfile\fP containing a Lua script to control the client.
+(experimentell) Eine \fIDatei\fP mit Luaanweisungen, welche den Wesnoth\-Client
+steuern.
 .TP 
 \fB\-s[\fP\fIHost\fP\fB],\ \-\-server[\fP\fI=Host\fP\fB]\fP
 Verbindet sich, falls angegeben, mit dem entsprechenden Rechner, oder aber
@@ -299,9 +302,10 @@ der Liste im Spiel angezeigt zu werden, gültige Werte sind \fB0\fP bis \fB100\f
 Startet das angegebene Testszenario als Unit Test. Impliziert \fB\-\-nogui\fP.
 .TP 
 \fB\-\-unsafe\-scripts\fP
-makes the \fBpackage\fP package available to lua scripts, so that they can load
-arbitrary packages. Do not do this with untrusted scripts! This action gives
-lua the same permissions as the wesnoth executable.
+(Entwickleroption) Lua kann nun das Paket \fBpackage\fP benutzen, wodurch
+wiederum beliebige Pakete geladen werden können. Nicht mit fremden Skripten
+verwenden! Dadurch wird die Sandbox aufgebrochen, Lua hat dann dieselben
+Zugriffsrechte wie Wesnoth.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ Name\fP
 Setzt das Konfigurationsverzeichnis des Benutzers auf \fIName\fP in $HOME oder
@@ -364,8 +368,9 @@ KI\-Algorithmen definieren. Unter anderem gibt es die Werte \fBidle_ai\fP und
 \fBexperimental_ai\fP.
 .TP 
 \fB\-\-controller\fP\fI\ Nummer\fP\fB:\fP\fI\ Wert\fP
-selects the controller for this side. Available values: \fBhuman\fP, \fBai\fP and
-\fBnull\fP.
+Bestimmt, wer die gewählte Partei kontrolliert. Mögliche Werte sind \fBhuman\fP
+für einen Menschen, \fBai\fP für einen KI\-Spieler und \fBnull\fP um eine Seite zu
+deaktivieren.
 .TP 
 \fB\-\-era\fP\fI\ Wert\fP
 Bestimmt, welche Ära für diese Partie anstelle der \fBStandard\fP Ära genutzt

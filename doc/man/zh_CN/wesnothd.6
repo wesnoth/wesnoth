@@ -172,8 +172,12 @@ wesnothd \- 韦诺之战（Battle for \fBWesnoth\fP）多人网络守护进程
 这个标签用于告诉服务器扮演代理服务器角色，把连接在本服务器上的用户的请求转发到指定的服务器。与\fB[redirect]\fP接受一样的主键。
 .RE
 .P
-\fB[user_handler]\fP
-配置用户数据处理器。可设置的主键取决于通过\fBuser_handler\fP设置的用户数据处理器是哪一个。如果配置文件中没有\fB[user_handler]\fP小节，则服务器在运行中将不提供任何昵称注册服务。
+\fB[user_handler]\fP Configures the user handler. Available keys vary depending
+on which user handler is set with the \fBuser_handler\fP key. If no
+\fB[user_handler]\fP section is present in the configuration the server will
+run without any nick registration service. All additional tables that are
+needed for the forum_user_handler to function can be found in
+table_definitions.sql in the Wesnoth source repository.
 .RS
 .TP 
 \fBdb_host\fP
@@ -193,10 +197,29 @@ wesnothd \- 韦诺之战（Battle for \fBWesnoth\fP）多人网络守护进程
 论坛中存放用户数据的表名。很可能是<table\-prefix>_users（例如phpbb3_users）。
 .TP 
 \fBdb_extra_table\fP
-（如果user_handler=forum）wesnothd存放自用的用户数据的表名。您必须自己手动创建这个表，例如：\fBCREATE TABLE
-<table\-name>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
-UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
-0);\fP
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about users. You will have to create this table manually.
+.TP 
+\fBdb_game_info_table\fP
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about games.
+.TP 
+\fBdb_game_player_info_table\fP
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about the players in a game.
+.TP 
+\fBdb_game_modification_info_table\fP
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about the modifications used in a game.
+.TP 
+\fBdb_user_group_table\fP
+(for user_handler=forum) The name of the table in which your phpbb forums
+saves its user group data. Most likely this will be
+<table\-prefix>_user_group (e.g. phpbb3_user_group).
+.TP 
+\fBmp_mod_group\fP
+(for user_handler=forum) The ID of the forum group to be considered as
+having moderation authority.
 .TP 
 \fBuser_expiration\fP
 （如果user_handler=sample）注册昵称的失效时间（天数）。

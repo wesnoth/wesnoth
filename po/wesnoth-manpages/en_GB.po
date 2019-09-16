@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
-"POT-Creation-Date: 2019-06-30 15:14+0300\n"
+"POT-Creation-Date: 2019-09-16 11:33+0300\n"
 "PO-Revision-Date: 2019-07-08 12:39+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -1302,7 +1302,7 @@ msgstr ""
 "is set."
 
 #. type: SH
-#: doc/man/wesnoth.6:489 doc/man/wesnothd.6:265
+#: doc/man/wesnoth.6:489 doc/man/wesnothd.6:279
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr "EXIT STATUS"
@@ -1338,7 +1338,7 @@ msgstr ""
 "test timed out, when used with the deprecated B<--timeout> option."
 
 #. type: SH
-#: doc/man/wesnoth.6:507 doc/man/wesnothd.6:269
+#: doc/man/wesnoth.6:507 doc/man/wesnothd.6:283
 #, no-wrap
 msgid "AUTHOR"
 msgstr "AUTHOR"
@@ -1367,24 +1367,24 @@ msgstr ""
 "E<lt>cyril@bouthors.orgE<gt>."
 
 #. type: Plain text
-#: doc/man/wesnoth.6:516 doc/man/wesnothd.6:276
+#: doc/man/wesnoth.6:516 doc/man/wesnothd.6:290
 msgid "Visit the official homepage: https://www.wesnoth.org/"
 msgstr "Visit the official homepage: https://www.wesnoth.org/"
 
 #. type: SH
-#: doc/man/wesnoth.6:517 doc/man/wesnothd.6:277
+#: doc/man/wesnoth.6:517 doc/man/wesnothd.6:291
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "COPYRIGHT"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:520 doc/man/wesnothd.6:280
+#: doc/man/wesnoth.6:520 doc/man/wesnothd.6:294
 msgid "Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2018 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:523 doc/man/wesnothd.6:283
+#: doc/man/wesnoth.6:523 doc/man/wesnothd.6:297
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -1395,7 +1395,7 @@ msgstr ""
 "for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 
 #. type: SH
-#: doc/man/wesnoth.6:524 doc/man/wesnothd.6:284
+#: doc/man/wesnoth.6:524 doc/man/wesnothd.6:298
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "SEE ALSO"
@@ -1999,11 +1999,19 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:221
+#, fuzzy
+#| msgid ""
+#| "B<[user_handler]> Configures the user handler. Available keys vary "
+#| "depending on which user handler is set with the B<user_handler> key. If "
+#| "no B<[user_handler]> section is present in the configuration the server "
+#| "will run without any nick registration service."
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
 "B<[user_handler]> section is present in the configuration the server will "
-"run without any nick registration service."
+"run without any nick registration service. All additional tables that are "
+"needed for the forum_user_handler to function can be found in "
+"table_definitions.sql in the Wesnoth source repository."
 msgstr ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
@@ -2082,28 +2090,129 @@ msgid "B<db_extra_table>"
 msgstr "B<db_extra_table>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:241
+#: doc/man/wesnothd.6:240
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the table in which your phpbb forums "
+#| "saves its user data. Most likely this will be E<lt>table-"
+#| "prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
-"its own data about users. You will have to create this table manually, e.g.: "
-"B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) PRIMARY KEY, "
-"user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
-"NOT NULL DEFAULT 0);>"
+"its own data about users. You will have to create this table manually."
 msgstr ""
-"(for user_handler=forum) The name of the table in which wesnothd will save "
-"its own data about users. You will have to create this table manually, e.g.: "
-"B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) PRIMARY KEY, "
-"user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
-"NOT NULL DEFAULT 0);>"
+"(for user_handler=forum) The name of the table in which your phpbb forums "
+"saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
+"(e.g. phpbb3_users)."
 
 #. type: TP
-#: doc/man/wesnothd.6:241
+#: doc/man/wesnothd.6:240
+#, fuzzy, no-wrap
+#| msgid "B<db_users_table>"
+msgid "B<db_game_info_table>"
+msgstr "B<db_users_table>"
+
+#. type: Plain text
+#: doc/man/wesnothd.6:243
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the user under which to log into the "
+#| "database"
+msgid ""
+"(for user_handler=forum) The name of the table in which wesnothd will save "
+"its own data about games."
+msgstr ""
+"(for user_handler=forum) The name of the user under which to log into the "
+"database"
+
+#. type: TP
+#: doc/man/wesnothd.6:243
+#, fuzzy, no-wrap
+#| msgid "B<db_users_table>"
+msgid "B<db_game_player_info_table>"
+msgstr "B<db_users_table>"
+
+#. type: Plain text
+#: doc/man/wesnothd.6:246
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the user under which to log into the "
+#| "database"
+msgid ""
+"(for user_handler=forum) The name of the table in which wesnothd will save "
+"its own data about the players in a game."
+msgstr ""
+"(for user_handler=forum) The name of the user under which to log into the "
+"database"
+
+#. type: TP
+#: doc/man/wesnothd.6:246
+#, no-wrap
+msgid "B<db_game_modification_info_table>"
+msgstr ""
+
+#. type: Plain text
+#: doc/man/wesnothd.6:249
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the user under which to log into the "
+#| "database"
+msgid ""
+"(for user_handler=forum) The name of the table in which wesnothd will save "
+"its own data about the modifications used in a game."
+msgstr ""
+"(for user_handler=forum) The name of the user under which to log into the "
+"database"
+
+#. type: TP
+#: doc/man/wesnothd.6:249
+#, fuzzy, no-wrap
+#| msgid "B<db_users_table>"
+msgid "B<db_user_group_table>"
+msgstr "B<db_users_table>"
+
+#. type: Plain text
+#: doc/man/wesnothd.6:252
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the table in which your phpbb forums "
+#| "saves its user data. Most likely this will be E<lt>table-"
+#| "prefixE<gt>_users (e.g. phpbb3_users)."
+msgid ""
+"(for user_handler=forum) The name of the table in which your phpbb forums "
+"saves its user group data. Most likely this will be E<lt>table-"
+"prefixE<gt>_user_group (e.g. phpbb3_user_group)."
+msgstr ""
+"(for user_handler=forum) The name of the table in which your phpbb forums "
+"saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
+"(e.g. phpbb3_users)."
+
+#. type: TP
+#: doc/man/wesnothd.6:252
+#, no-wrap
+msgid "B<mp_mod_group>"
+msgstr ""
+
+#. type: Plain text
+#: doc/man/wesnothd.6:255
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the user under which to log into the "
+#| "database"
+msgid ""
+"(for user_handler=forum) The ID of the forum group to be considered as "
+"having moderation authority."
+msgstr ""
+"(for user_handler=forum) The name of the user under which to log into the "
+"database"
+
+#. type: TP
+#: doc/man/wesnothd.6:255
 #, no-wrap
 msgid "B<user_expiration>"
 msgstr "B<user_expiration>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:244
+#: doc/man/wesnothd.6:258
 msgid ""
 "(for user_handler=sample) The time after which a registered nick expires (in "
 "days)."
@@ -2112,7 +2221,7 @@ msgstr ""
 "days)."
 
 #. type: Plain text
-#: doc/man/wesnothd.6:248
+#: doc/man/wesnothd.6:262
 msgid ""
 "B<[mail]> Configures an SMTP server through which the user handler can send "
 "mail. Currently only used by the sample user handler."
@@ -2121,62 +2230,62 @@ msgstr ""
 "mail. Currently only used by the sample user handler."
 
 #. type: TP
-#: doc/man/wesnothd.6:249
+#: doc/man/wesnothd.6:263
 #, no-wrap
 msgid "B<server>"
 msgstr "B<server>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:252
+#: doc/man/wesnothd.6:266
 msgid "The hostname of the mail server"
 msgstr "The hostname of the mail server"
 
 #. type: TP
-#: doc/man/wesnothd.6:252
+#: doc/man/wesnothd.6:266
 #, no-wrap
 msgid "B<username>"
 msgstr "B<username>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:255
+#: doc/man/wesnothd.6:269
 msgid "The user name under which to log into the mail server."
 msgstr "The user name under which to log into the mail server."
 
 #. type: TP
-#: doc/man/wesnothd.6:255
+#: doc/man/wesnothd.6:269
 #, no-wrap
 msgid "B<password>"
 msgstr "B<password>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:258
+#: doc/man/wesnothd.6:272
 msgid "This user's password."
 msgstr "This user's password."
 
 #. type: TP
-#: doc/man/wesnothd.6:258
+#: doc/man/wesnothd.6:272
 #, no-wrap
 msgid "B<from_address>"
 msgstr "B<from_address>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:261
+#: doc/man/wesnothd.6:275
 msgid "The reply-to address of you mail."
 msgstr "The reply-to address of your mail."
 
 #. type: TP
-#: doc/man/wesnothd.6:261
+#: doc/man/wesnothd.6:275
 #, no-wrap
 msgid "B<mail_port>"
 msgstr "B<mail_port>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:264
+#: doc/man/wesnothd.6:278
 msgid "The port on which your mail server is running. Default is 25."
 msgstr "The port on which your mail server is running. Default is 25."
 
 #. type: Plain text
-#: doc/man/wesnothd.6:268
+#: doc/man/wesnothd.6:282
 msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
@@ -2185,7 +2294,7 @@ msgstr ""
 "status of 2 indicates an error with the command line options."
 
 #. type: Plain text
-#: doc/man/wesnothd.6:274
+#: doc/man/wesnothd.6:288
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
@@ -2200,9 +2309,22 @@ msgstr ""
 "Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 #. type: Plain text
-#: doc/man/wesnothd.6:286
+#: doc/man/wesnothd.6:300
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
+
+#~ msgid ""
+#~ "(for user_handler=forum) The name of the table in which wesnothd will "
+#~ "save its own data about users. You will have to create this table "
+#~ "manually, e.g.: B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) "
+#~ "PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
+#~ "user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
+#~ msgstr ""
+#~ "(for user_handler=forum) The name of the table in which wesnothd will "
+#~ "save its own data about users. You will have to create this table "
+#~ "manually, e.g.: B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) "
+#~ "PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
+#~ "user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
 
 #~ msgid "B<--path>"
 #~ msgstr "B<--path>"

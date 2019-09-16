@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-06-30 15:14+0300\n"
+"POT-Creation-Date: 2019-09-16 11:33+0300\n"
 "PO-Revision-Date: 2019-02-02 18:41+0100\n"
 "Last-Translator: Syll <syll-dev@laposte.net>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
@@ -368,10 +368,11 @@ msgstr "empoisonné"
 msgid "Gold carryover:"
 msgstr "Or conservé :"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [note]
 #. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:272
-#: data/lua/wml/objectives.lua:39
+#: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:337
 msgid "Notes:"
 msgstr "Remarques :"
 
@@ -401,38 +402,38 @@ msgid "Artwork and Graphics"
 msgstr "Illustrations et graphismes"
 
 #. [about]
-#: data/core/about.cfg:749
+#: data/core/about.cfg:753
 msgid "Music"
 msgstr "Musique"
 
 #. [about]
-#: data/core/about.cfg:786
+#: data/core/about.cfg:790
 msgid "Sound Effects"
 msgstr "Effets sonores"
 
 # Benoît : c'est une chaîne propre à une campagne et non pas au niveau global
 #. [about]
-#: data/core/about.cfg:810
+#: data/core/about.cfg:814
 msgid "Campaign Design"
 msgstr "Conception de la campagne"
 
 #. [about]
-#: data/core/about.cfg:896
+#: data/core/about.cfg:900
 msgid "Multiplayer Maps and Balancing"
 msgstr "Cartes multijoueurs et équilibrage"
 
 #. [about]
-#: data/core/about.cfg:941
+#: data/core/about.cfg:945
 msgid "Packagers"
 msgstr "Empaqueteurs"
 
 #. [about]
-#: data/core/about.cfg:1048
+#: data/core/about.cfg:1052
 msgid "Miscellaneous Contributors"
 msgstr "Autres contributeurs"
 
 #. [about]
-#: data/core/about.cfg:1736
+#: data/core/about.cfg:1740
 msgid "Bots"
 msgstr "Bots"
 
@@ -642,68 +643,68 @@ msgid "Portuguese (Brazil) Translation"
 msgstr "Traduction portugaise (Brésil)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1377
+#: data/core/about_i18n.cfg:1381
 msgid "Romanian Translation"
 msgstr "Traduction roumaine"
 
 #. [about]
-#: data/core/about_i18n.cfg:1385
+#: data/core/about_i18n.cfg:1389
 msgid "Russian Translation"
 msgstr "Traduction russe"
 
 #. [about]
-#: data/core/about_i18n.cfg:1477
+#: data/core/about_i18n.cfg:1481
 msgid "Scottish Gaelic Translation"
 msgstr "Traduction gaélique écossaise"
 
 #. [about]
-#: data/core/about_i18n.cfg:1486
+#: data/core/about_i18n.cfg:1490
 msgid "Serbian Translation"
 msgstr "Traduction serbe"
 
 #. [about]
-#: data/core/about_i18n.cfg:1505
+#: data/core/about_i18n.cfg:1509
 msgid "Slovak Translation"
 msgstr "Traduction slovaque"
 
 #. [about]
-#: data/core/about_i18n.cfg:1534
+#: data/core/about_i18n.cfg:1538
 msgid "Slovenian Translation"
 msgstr "Traduction slovène"
 
 #. [about]
-#: data/core/about_i18n.cfg:1550
+#: data/core/about_i18n.cfg:1554
 msgid "Spanish Translation"
 msgstr "Traduction espagnole"
 
 #. [about]
-#: data/core/about_i18n.cfg:1632
+#: data/core/about_i18n.cfg:1636
 msgid "Swedish Translation"
 msgstr "Traduction suédoise"
 
 #. [about]
-#: data/core/about_i18n.cfg:1673
+#: data/core/about_i18n.cfg:1677
 msgid "Turkish Translation"
 msgstr "Traduction turque"
 
 #. [about]
-#: data/core/about_i18n.cfg:1695
+#: data/core/about_i18n.cfg:1702
 msgid "Ukrainian Translation"
 msgstr "Traduction ukrainienne"
 
 #. [about]
-#: data/core/about_i18n.cfg:1711
+#: data/core/about_i18n.cfg:1718
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Traduction valencienne (Catalan du sud)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1724
+#: data/core/about_i18n.cfg:1731
 msgid "Vietnamese Translation"
 msgstr "Traduction vietnamienne"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1744
+#: data/core/about_i18n.cfg:1751
 msgid "RACV’s Translation"
 msgstr "Traduction RACV"
 
@@ -4203,6 +4204,13 @@ msgid "unhealable"
 msgstr "insoignable"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [lua]: wesnoth.wml_actions.message
+#: data/lua/wml/message.lua:395 src/scripting/game_lua_kernel.cpp:2787
+#: src/scripting/game_lua_kernel.cpp:2822
+msgid "input"
+msgstr "entrée"
+
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:74
 msgid "Victory:"
@@ -4212,6 +4220,13 @@ msgstr "Victoire :"
 #: data/lua/wml/objectives.lua:37
 msgid "Defeat:"
 msgstr "Défaite :"
+
+#. [lua]: generate_objectives
+#: data/lua/wml/objectives.lua:57
+msgid "(this turn left)"
+msgid_plural "(%d turns left)"
+msgstr[0] "(dernier tour restant)"
+msgstr[1] "(%d tours restants)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
@@ -6014,7 +6029,7 @@ msgstr "$elem a été déprécié et supprimé."
 msgid "Chat message"
 msgstr "Message"
 
-#: src/desktop/windows_tray_notification.cpp:125 src/game_config.cpp:588
+#: src/desktop/windows_tray_notification.cpp:125 src/game_config.cpp:590
 msgid "The Battle for Wesnoth"
 msgstr "Bataille pour Wesnoth"
 
@@ -6048,7 +6063,7 @@ msgstr "%d %b"
 msgid "%b %d %Y"
 msgstr "%d %b %y"
 
-#: src/game_config.cpp:536
+#: src/game_config.cpp:538
 msgid "Invalid color in range: "
 msgstr "Plage de couleur non valide : "
 
@@ -6308,7 +6323,7 @@ msgid "mp_game_available_slots^Full"
 msgstr "Pleine"
 
 #: src/game_initialization/lobby_data.cpp:460
-#: src/game_initialization/lobby_data.cpp:462 src/savegame.cpp:631
+#: src/game_initialization/lobby_data.cpp:462 src/savegame.cpp:618
 msgid "Turn"
 msgstr "Tour"
 
@@ -6691,39 +6706,39 @@ msgstr "Aucun fichier sauvegardé à charger"
 msgid "No visible sides found."
 msgstr "Aucun camp visible trouvé."
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:104
+#: src/gui/dialogs/multiplayer/player_info.cpp:110
 msgid "In game:"
 msgstr "En jeu :"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:106
+#: src/gui/dialogs/multiplayer/player_info.cpp:112
 msgid "(observing)"
 msgstr "(observateur)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:108
+#: src/gui/dialogs/multiplayer/player_info.cpp:114
 msgid "(playing)"
 msgstr "(joueur)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:111
+#: src/gui/dialogs/multiplayer/player_info.cpp:117
 msgid "In lobby"
 msgstr "Dans le vestibule"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:140
+#: src/gui/dialogs/multiplayer/player_info.cpp:146
 msgid "On friends list"
 msgstr "Dans la liste d'amis"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:145
+#: src/gui/dialogs/multiplayer/player_info.cpp:151
 msgid "On ignores list"
 msgstr "Dans la liste des ignorés"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:150
+#: src/gui/dialogs/multiplayer/player_info.cpp:156
 msgid "Neither a friend nor ignored"
 msgstr "Ni amis ni ignorés"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:155
+#: src/gui/dialogs/multiplayer/player_info.cpp:161
 msgid "You"
 msgstr "Vous"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:158
+#: src/gui/dialogs/multiplayer/player_info.cpp:164
 msgid "Error"
 msgstr "Erreur"
 
@@ -6743,76 +6758,76 @@ msgstr "oui"
 msgid "Reference to unknown topic: "
 msgstr "Référence à un sujet inconnu : "
 
-#: src/help/help_impl.cpp:374
+#: src/help/help_impl.cpp:359
 msgid "Only available during a scenario."
 msgstr "Seulement disponible pendant un scénario."
 
-#: src/help/help_impl.cpp:399
+#: src/help/help_impl.cpp:384
 msgid "Schedule"
 msgstr "Planification"
 
-#: src/help/help_impl.cpp:491
+#: src/help/help_impl.cpp:476
 msgid "<header>text='Units with this special attack'</header>"
 msgstr "<header>text='Unités ayant ce type d\\'attaque spéciale'</header>"
 
-#: src/help/help_impl.cpp:555
+#: src/help/help_impl.cpp:540
 msgid "<header>text='Units with this ability'</header>"
 msgstr "<header>text='Unités ayant cette capacité'</header>"
 
-#: src/help/help_impl.cpp:585
+#: src/help/help_impl.cpp:570
 msgid "Era:"
 msgstr "Ère :"
 
-#: src/help/help_impl.cpp:593
+#: src/help/help_impl.cpp:578
 msgid "Factions"
 msgstr "Factions"
 
-#: src/help/help_impl.cpp:642
+#: src/help/help_impl.cpp:627
 msgid "Races: "
 msgstr "Races : "
 
-#: src/help/help_impl.cpp:651 src/help/help_impl.cpp:1002
+#: src/help/help_impl.cpp:636 src/help/help_impl.cpp:987
 msgid "Alignments: "
 msgstr "Alignements : "
 
-#: src/help/help_impl.cpp:658
+#: src/help/help_impl.cpp:643
 msgid "Leaders"
 msgstr "Chefs :"
 
-#: src/help/help_impl.cpp:667
+#: src/help/help_impl.cpp:652
 msgid "Recruits"
 msgstr "Recrues"
 
-#: src/help/help_impl.cpp:728 src/units/types.cpp:479
+#: src/help/help_impl.cpp:713 src/units/types.cpp:479
 msgid "No description available."
 msgstr "Aucune description n'est disponible."
 
-#: src/help/help_impl.cpp:732 src/help/help_impl.cpp:734
+#: src/help/help_impl.cpp:717 src/help/help_impl.cpp:719
 msgid "Availability: "
 msgstr "Disponibilité : "
 
-#: src/help/help_impl.cpp:732
+#: src/help/help_impl.cpp:717
 msgid "Must-have"
 msgstr "Incontournable"
 
-#: src/help/help_impl.cpp:734
+#: src/help/help_impl.cpp:719
 msgid "Unavailable"
 msgstr "Indisponible"
 
-#: src/help/help_impl.cpp:814 src/help/help_impl.cpp:990
+#: src/help/help_impl.cpp:799 src/help/help_impl.cpp:975
 #: src/help/help_topic_generators.cpp:400
 msgid "race^Miscellaneous"
 msgstr "Divers"
 
-#: src/help/help_impl.cpp:1002 src/reports.cpp:382
+#: src/help/help_impl.cpp:987 src/reports.cpp:382
 msgid "Alignment: "
 msgstr "Alignement : "
 
-#: src/help/help_impl.cpp:1009
+#: src/help/help_impl.cpp:994
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Unités de cette race'</header>"
 
-#: src/help/help_impl.cpp:1352
+#: src/help/help_impl.cpp:1337
 msgid "corrupted original file"
 msgstr "fichier original corrompu"
 
@@ -7026,11 +7041,11 @@ msgstr "Retour au début"
 msgid "(press $hotkey to deactivate)"
 msgstr "(appuyez sur $hotkey pour le désactiver)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:144 src/menu_events.cpp:1960
+#: src/hotkey/hotkey_handler_sp.cpp:144 src/menu_events.cpp:1966
 msgid "Planning mode activated!"
 msgstr "Mode de planification activé !"
 
-#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:1963
+#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:1969
 msgid "Planning mode deactivated!"
 msgstr "Mode de planification désactivé !"
 
@@ -7087,15 +7102,21 @@ msgstr ""
 "Liste des commandes disponibles et aide sur ces commandes. Utilisez « help "
 "all » pour inclure les commandes actuellement indisponibles."
 
-#: src/map_command_handler.hpp:218
-msgid "do not translate the 'all'^[all|<command>]"
-msgstr "[all|<commande>]"
+#. TRANSLATORS: These are the arguments accepted by the "help" command,
+#. which are either "all" or the name of another command.
+#. As with the command's name, "all" is hardcoded, and shouldn't change in the translation.
+#: src/map_command_handler.hpp:221
+msgid ""
+"[all|<command>]\n"
+"“all” = overview of all commands, <command> = name of a specific command "
+"(provides more detail)"
+msgstr ""
 
-#: src/map_command_handler.hpp:263
+#: src/map_command_handler.hpp:266
 msgid "Missing argument $arg_id"
 msgstr "Argument $arg_id manquant"
 
-#: src/map_command_handler.hpp:311
+#: src/map_command_handler.hpp:314
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
@@ -7103,26 +7124,30 @@ msgstr ""
 "Commandes disponibles $flags_description :\n"
 "$list_of_commands"
 
-#: src/map_command_handler.hpp:311 src/map_command_handler.hpp:312
-#: src/map_command_handler.hpp:336
+#: src/map_command_handler.hpp:314 src/map_command_handler.hpp:315
+#: src/map_command_handler.hpp:345
 msgid "help"
 msgstr "aide"
 
-#: src/map_command_handler.hpp:312
+#: src/map_command_handler.hpp:315
 msgid "Type $help_command <command> for more info."
 msgstr "Tapez $help_command <commande> pour plus d'informations."
 
-#: src/map_command_handler.hpp:323
+#: src/map_command_handler.hpp:326
 msgid " No help available."
 msgstr " Aucune aide disponible."
 
-#: src/map_command_handler.hpp:329
+#: src/map_command_handler.hpp:332
 msgid "Usage:"
 msgstr "Usage :"
 
-#: src/map_command_handler.hpp:334
-msgid "aliases:"
-msgstr "alias :"
+#. TRANSLATORS: alternative names for command-line commands, only shown if
+#. there is at least one of them.
+#: src/map_command_handler.hpp:343
+msgid "command^Alias:"
+msgid_plural "Aliases:"
+msgstr[0] ""
+msgstr[1] ""
 
 #: src/menu_events.cpp:176
 msgid "Save Map As"
@@ -7259,80 +7284,93 @@ msgstr "Rafraîchir l'IHM."
 msgid "Switch a side to/from AI control."
 msgstr "Passer le contrôle d'un camp à l'IA ou le reprendre."
 
-#: src/menu_events.cpp:1186 src/menu_events.cpp:1188
-msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr "[<camp> [on/off]]"
+#. TRANSLATORS: These are the arguments accepted by the "droid" command,
+#. which must be a side-number and then optionally one of "on", "off" or "full".
+#. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
+#: src/menu_events.cpp:1189
+msgid ""
+"[<side> [on/off]]\n"
+"“on” = enable control by the AI, “off” = side is controlled by the player"
+msgstr ""
 
-#: src/menu_events.cpp:1187
+#: src/menu_events.cpp:1190
 msgid "Switch a side to/from idle state."
 msgstr "Mettre un camp en pause ou l'en sortir."
 
-#: src/menu_events.cpp:1191
+#. TRANSLATORS: These are the arguments accepted by the "idle" command,
+#. which must be a side-number and then optionally "on" or "off".
+#. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
+#: src/menu_events.cpp:1194
+#, fuzzy
+#| msgid "do not translate the on/off^[<side> [on/off]]"
+msgid "command_idle^[<side> [on/off]]"
+msgstr "[<camp> [on/off]]"
+
+#: src/menu_events.cpp:1197
 msgid "<side> <nickname>"
 msgstr "<camp> <pseudo>"
 
-#: src/menu_events.cpp:1191
+#: src/menu_events.cpp:1197
 msgid "Assign control of a side to a different player or observer."
 msgstr "Donner le contrôle d'un camp à un autre joueur ou à un observateur."
 
-#: src/menu_events.cpp:1192
+#: src/menu_events.cpp:1198
 msgid "Query the controller status of a side."
 msgstr "Indiquer l'état du contrôle d'un camp."
 
-#: src/menu_events.cpp:1193
+#: src/menu_events.cpp:1199
 msgid "<side>"
 msgstr "<camp>"
 
-#: src/menu_events.cpp:1194
+#: src/menu_events.cpp:1200
 msgid "Clear chat history."
 msgstr "Effacer l'historique de la discussion."
 
-#: src/menu_events.cpp:1195
+#: src/menu_events.cpp:1201
 msgid "Debug foreground terrain."
 msgstr "Déboguer les terrains de premier plan."
 
-#: src/menu_events.cpp:1197
+#: src/menu_events.cpp:1203
 msgid "Debug layers from terrain under the mouse."
 msgstr "Déboguer les calques des terrains sous la souris."
 
-# ips est plus correct mais tellement moins habituel
-#: src/menu_events.cpp:1198
-msgid "Show fps."
-msgstr "Montrer les fps."
+#: src/menu_events.cpp:1204
+msgid "Show fps (Frames Per Second)."
+msgstr ""
 
-#: src/menu_events.cpp:1200
+#: src/menu_events.cpp:1206
 msgid "Save game."
 msgstr "Sauvegarder le jeu."
 
-#: src/menu_events.cpp:1202
+#: src/menu_events.cpp:1208
 msgid "Quit game."
 msgstr "Quitter le jeu."
 
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1211
 msgid "Save and quit."
 msgstr "Sauvegarder et quitter le jeu."
 
-#: src/menu_events.cpp:1207
+#: src/menu_events.cpp:1213
 msgid "Ignore replay errors."
 msgstr "Ignorer les erreurs du film."
 
-#: src/menu_events.cpp:1208
+#: src/menu_events.cpp:1214
 msgid "Disable autosaves."
 msgstr "Désactiver les sauvegardes automatiques."
 
-#: src/menu_events.cpp:1210
+#: src/menu_events.cpp:1216
 msgid "<id>"
 msgstr "<id>"
 
-#: src/menu_events.cpp:1210
+#: src/menu_events.cpp:1216
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "Avancer au prochain scénario, ou à celui identifié par 'id'"
 
-#: src/menu_events.cpp:1212
+#: src/menu_events.cpp:1218
 msgid "Choose next scenario"
 msgstr "Choisir le scénario suivant"
 
-#: src/menu_events.cpp:1215
+#: src/menu_events.cpp:1221
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
@@ -7340,11 +7378,11 @@ msgstr ""
 "Changer le numéro du tour (et le moment de la journée), ou l'incrémenter de "
 "un si aucun nombre n'est spécifié."
 
-#: src/menu_events.cpp:1215
+#: src/menu_events.cpp:1221
 msgid "[turn]"
 msgstr "[tour]"
 
-#: src/menu_events.cpp:1218
+#: src/menu_events.cpp:1224
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
@@ -7352,204 +7390,204 @@ msgstr ""
 "Changer le nombre de tours maximum, ou désactiver la limite de tours si "
 "aucun nombre n'est spécifié ou s'il vaut –1."
 
-#: src/menu_events.cpp:1218
+#: src/menu_events.cpp:1224
 msgid "[limit]"
 msgstr "[limite]"
 
-#: src/menu_events.cpp:1220
+#: src/menu_events.cpp:1226
 msgid "Turn debug mode on."
 msgstr "Activer le mode débogage."
 
-#: src/menu_events.cpp:1221
+#: src/menu_events.cpp:1227
 msgid "Turn debug mode off."
 msgstr "Désactiver le mode débogage."
 
-#: src/menu_events.cpp:1223 src/menu_events.cpp:1227
+#: src/menu_events.cpp:1229 src/menu_events.cpp:1233
 msgid "<command>[;<command>...]"
 msgstr "<commande>[;<commande>...]"
 
-#: src/menu_events.cpp:1223
+#: src/menu_events.cpp:1229
 msgid "Execute a Lua statement."
 msgstr "Exécuter une instruction Lua."
 
-#: src/menu_events.cpp:1225
+#: src/menu_events.cpp:1231
 msgid "Grant higher privileges to Lua scripts."
 msgstr "Accorder des droits plus élevés aux scripts Lua."
 
-#: src/menu_events.cpp:1226
+#: src/menu_events.cpp:1232
 msgid "Set the command used by the custom command hotkey"
 msgstr "Définir la commande lancée par le raccourci « commande personnalisée »"
 
-#: src/menu_events.cpp:1229
+#: src/menu_events.cpp:1235
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr ""
 "Ouvrir une boîte de dialogue permettant de modifier les camps multijoueurs."
 
-#: src/menu_events.cpp:1230
+#: src/menu_events.cpp:1236
 msgid "Launch the gamestate inspector"
 msgstr "Lancer le débogueur d'état de partie"
 
-#: src/menu_events.cpp:1232
+#: src/menu_events.cpp:1238
 msgid "<name>[=<command>]"
 msgstr "<nom>[=<commande>]"
 
-#: src/menu_events.cpp:1232
+#: src/menu_events.cpp:1238
 msgid "Set or show alias to a command"
 msgstr "Créer ou afficher l'alias d'une commande"
 
-#: src/menu_events.cpp:1234
+#: src/menu_events.cpp:1240
 msgid "<var>=<value>"
 msgstr "<variable>=<valeur>"
 
-#: src/menu_events.cpp:1234
+#: src/menu_events.cpp:1240
 msgid "Set a scenario variable."
 msgstr "Modifier la valeur d'une variable du scénario."
 
-#: src/menu_events.cpp:1235
+#: src/menu_events.cpp:1241
 msgid "<var>"
 msgstr "<variable>"
 
-#: src/menu_events.cpp:1235
+#: src/menu_events.cpp:1241
 msgid "Show a scenario variable."
 msgstr "Afficher une variable du scénario."
 
-#: src/menu_events.cpp:1237
+#: src/menu_events.cpp:1243
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 "Modifier la valeur d'une variable d'unité. (Seules les clés de premier "
 "niveau sont prises en charge.)"
 
-#: src/menu_events.cpp:1243
+#: src/menu_events.cpp:1249
 msgid "Discover all units in help."
 msgstr "« Découvrir » toutes les unités dans l'aide."
 
-#: src/menu_events.cpp:1244
+#: src/menu_events.cpp:1250
 msgid "'Undiscover' all units in help."
 msgstr "« Oublier » toutes les unités dans l'aide."
 
-#: src/menu_events.cpp:1245
+#: src/menu_events.cpp:1251
 msgid "Create a unit."
 msgstr "Créer une unité."
 
-#: src/menu_events.cpp:1246
+#: src/menu_events.cpp:1252
 msgid "Toggle fog for the current player."
 msgstr "Activer/désactiver le brouillard pour le joueur en train de jouer."
 
-#: src/menu_events.cpp:1247
+#: src/menu_events.cpp:1253
 msgid "Toggle shroud for the current player."
 msgstr "Activer/désactiver le voile pour le joueur en train de jouer."
 
-#: src/menu_events.cpp:1248
+#: src/menu_events.cpp:1254
 msgid "Give gold to the current player."
 msgstr "Donner de l'or au joueur en train de jouer."
 
-#: src/menu_events.cpp:1249
+#: src/menu_events.cpp:1255
 msgid "Fire a game event."
 msgstr "Déclencher un événement du jeu."
 
-#: src/menu_events.cpp:1252
+#: src/menu_events.cpp:1258
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Activer/désactiver l'affichage des coordonnées x,y sur les hexagones."
 
-#: src/menu_events.cpp:1255
+#: src/menu_events.cpp:1261
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr ""
 "Activer/désactiver l'affichage des codes des terrains sur les hexagones."
 
 # Aucune idée de ce à quoi ça fait référence : si quelqu'un a une idée pour affiner la traduction...
-#: src/menu_events.cpp:1258
+#: src/menu_events.cpp:1264
 msgid "Toggle overlaying of number of bitmaps on hexes."
 msgstr "Activer/désactiver l'affichage du nombre de bitmaps sur les hexagones."
 
-#: src/menu_events.cpp:1260
+#: src/menu_events.cpp:1266
 msgid "Toggle planning mode."
 msgstr "Activer/désactiver le mode de planification."
 
-#: src/menu_events.cpp:1263
+#: src/menu_events.cpp:1269
 msgid "Access whiteboard options dialog."
 msgstr "Accéder aux options de planification."
 
-#: src/menu_events.cpp:1383
+#: src/menu_events.cpp:1389
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr ""
 "Impossible de trouver une note ou une unité contenant le texte : « $search »."
 
-#: src/menu_events.cpp:1426
+#: src/menu_events.cpp:1432
 msgid "Can't droid invalid side: '$side'."
 msgstr "Impossible de robotiser ce camp (invalide) : « $side »."
 
-#: src/menu_events.cpp:1431
+#: src/menu_events.cpp:1437
 msgid "Can't droid networked side: '$side'."
 msgstr "Impossible de robotiser ce camp (distant) : « $side »."
 
-#: src/menu_events.cpp:1437
+#: src/menu_events.cpp:1443
 msgid "Side '$side' is already droided."
 msgstr "Le camp '$side' est déjà contrôlé par l'IA."
 
-#: src/menu_events.cpp:1447
+#: src/menu_events.cpp:1453
 msgid "Side '$side' controller is now controlled by: AI."
 msgstr "Le camp '$side' est dorénavant contrôlé par l'IA."
 
-#: src/menu_events.cpp:1449
+#: src/menu_events.cpp:1455
 msgid "Side '$side' controller is now controlled by: human."
 msgstr "Le camp '$side' est dorénavant contrôlé par un humain."
 
-#: src/menu_events.cpp:1457
+#: src/menu_events.cpp:1463
 msgid "Can't droid a local ai side: '$side'."
 msgstr "Impossible de robotiser ce camp (IA locale) : « $side »."
 
-#: src/menu_events.cpp:1473
+#: src/menu_events.cpp:1479
 msgid "Can't idle invalid side: '$side'."
 msgstr "Impossible de mettre en pause ce camp (invalide) : « $side »."
 
-#: src/menu_events.cpp:1478
+#: src/menu_events.cpp:1484
 msgid "Can't idle networked side: '$side'."
 msgstr "Impossible de mettre en pause ce camp (distant) : « $side »."
 
-#: src/menu_events.cpp:1483
+#: src/menu_events.cpp:1489
 msgid "Can't idle local ai side: '$side'."
 msgstr "Impossible de mettre en pause ce camp (IA locale) : « $side »."
 
-#: src/menu_events.cpp:1543
+#: src/menu_events.cpp:1549
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Impossible de changer le contrôle de ce camp incorrect : « $side »."
 
-#: src/menu_events.cpp:1553
+#: src/menu_events.cpp:1559
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Impossible de changer le contrôle de ce camp hors-limites : « $side »."
 
-#: src/menu_events.cpp:1570
+#: src/menu_events.cpp:1576
 msgid "Can't query control of invalid side: '$side'."
 msgstr ""
 "Impossible de demander l'état du contrôle de ce camp incorrect : « $side »."
 
-#: src/menu_events.cpp:1577
+#: src/menu_events.cpp:1583
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr ""
 "Impossible de demander l'état du contrôle de ce camp hors-limites : "
 "« $side »."
 
-#: src/menu_events.cpp:1698
+#: src/menu_events.cpp:1704
 msgid "Choose Scenario (Debug!)"
 msgstr "Choisir un scénario (débogage !)"
 
-#: src/menu_events.cpp:1734
+#: src/menu_events.cpp:1740
 msgid "Debug mode activated!"
 msgstr "Mode débogage activé !"
 
-#: src/menu_events.cpp:1737
+#: src/menu_events.cpp:1743
 msgid "Debug mode not available in network games"
 msgstr "Mode débogage indisponible lors des parties réseau"
 
-#: src/menu_events.cpp:1744
+#: src/menu_events.cpp:1750
 msgid "Debug mode deactivated!"
 msgstr "Mode débogage désactivé !"
 
-#: src/menu_events.cpp:1764
+#: src/menu_events.cpp:1770
 msgid "WARNING! Unsafe Lua Mode"
 msgstr "ATTENTION ! Mode Lua non sécurisé"
 
-#: src/menu_events.cpp:1765
+#: src/menu_events.cpp:1771
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -7563,15 +7601,15 @@ msgstr ""
 "\n"
 "Ne continuez pas à moins de savoir ce que vous faites."
 
-#: src/menu_events.cpp:1770
+#: src/menu_events.cpp:1776
 msgid "Unsafe mode enabled!"
 msgstr "Mode non sécurisé activé !"
 
-#: src/menu_events.cpp:1819
+#: src/menu_events.cpp:1825
 msgid "Variable not found"
 msgstr "Variable non trouvée"
 
-#: src/menu_events.cpp:1867
+#: src/menu_events.cpp:1873
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
@@ -7579,19 +7617,19 @@ msgstr ""
 "Alignement invalide : « $alignment » doit être « lawful », « neutral », "
 "« chaotic » ou « liminal »."
 
-#: src/menu_events.cpp:1893
+#: src/menu_events.cpp:1899
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "Souhaitez-vous effacer de l'aide toutes les unités découvertes ?"
 
-#: src/menu_events.cpp:1907
+#: src/menu_events.cpp:1913
 msgid "Invalid unit type"
 msgstr "Type d'unité incorrect"
 
-#: src/menu_events.cpp:1914
+#: src/menu_events.cpp:1920
 msgid "Invalid location"
 msgstr "Emplacement non valide"
 
-#: src/menu_events.cpp:1987 src/menu_events.cpp:2013
+#: src/menu_events.cpp:1993 src/menu_events.cpp:2019
 msgid "prompt^Command:"
 msgstr "Commande :"
 
@@ -7619,32 +7657,36 @@ msgstr "Pas de miroir"
 msgid "No Ally Mirror"
 msgstr "Pas de miroir allié"
 
-#: src/mp_ui_alerts.cpp:66
-msgid "A player has joined"
-msgstr "Un joueur a rejoint la partie"
+#: src/mp_ui_alerts.cpp:67
+msgid "A game ($name|, $scenario|) has been created"
+msgstr ""
 
-#: src/mp_ui_alerts.cpp:66 src/mp_ui_alerts.cpp:80 src/mp_ui_alerts.cpp:149
-#: src/mp_ui_alerts.cpp:160
+#: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
+#: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
 msgid "Wesnoth"
 msgstr "Wesnoth"
 
-#: src/mp_ui_alerts.cpp:80
+#: src/mp_ui_alerts.cpp:82
+msgid "A player has joined"
+msgstr "Un joueur a rejoint la partie"
+
+#: src/mp_ui_alerts.cpp:96
 msgid "A player has left"
 msgstr "Un joueur a quitté la partie"
 
-#: src/mp_ui_alerts.cpp:149
+#: src/mp_ui_alerts.cpp:165
 msgid "Ready to start!"
 msgstr "Prêt à commencer !"
 
-#: src/mp_ui_alerts.cpp:160
+#: src/mp_ui_alerts.cpp:176
 msgid "Game has begun!"
 msgstr "Le jeu a commencé !"
 
-#: src/mp_ui_alerts.cpp:170
+#: src/mp_ui_alerts.cpp:186
 msgid "$name has taken control"
 msgstr "$name commence à jouer"
 
-#: src/mp_ui_alerts.cpp:170
+#: src/mp_ui_alerts.cpp:186
 msgid "Turn changed"
 msgstr "Changement"
 
@@ -7663,7 +7705,7 @@ msgstr ""
 msgid "time left for current turn"
 msgstr "temps restant pour ce tour"
 
-#: src/play_controller.cpp:244 src/replay_controller.cpp:114
+#: src/play_controller.cpp:244
 msgid "current local time"
 msgstr "heure locale"
 
@@ -7741,35 +7783,51 @@ msgstr ""
 "Une déconnexion réseau est survenue et le jeu ne peut pas continuer. Voulez-"
 "vous sauvegarder la partie ?"
 
-#: src/playsingle_controller.cpp:437
+#: src/playsingle_controller.cpp:349
+#, fuzzy
+#| msgid "Do you really want to surrender the game?"
+msgid ""
+"\n"
+"Do you want to save the game?"
+msgstr "Voulez-vous vraiment vous rendre ?"
+
+#: src/playsingle_controller.cpp:349
+#, fuzzy
+#| msgid "The game has been saved."
+msgid ""
+"This game has been ended.\n"
+"Reason: "
+msgstr "Le jeu a été sauvegardé."
+
+#: src/playsingle_controller.cpp:440
 msgid "It is now $name|’s turn"
 msgstr "C'est maintenant à $name| de jouer."
 
-#: src/playturn.cpp:276
+#: src/playturn.cpp:277
 msgid "Give control to their ally $player"
 msgstr "Donner le contrôle à l'allié $player"
 
-#: src/playturn.cpp:285
+#: src/playturn.cpp:286
 msgid "Give control to observer $player"
 msgstr "Donner le contrôle à l'observateur $player"
 
-#: src/playturn.cpp:290
+#: src/playturn.cpp:291
 msgid "Replace with AI"
 msgstr "Remplacer par l'ordinateur"
 
-#: src/playturn.cpp:291
+#: src/playturn.cpp:292
 msgid "Replace with local player"
 msgstr "Remplacer par un joueur local"
 
-#: src/playturn.cpp:292
+#: src/playturn.cpp:293
 msgid "Set side to idle"
 msgstr "Mettre ce camp en pause"
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:294
 msgid "Save and abort game"
 msgstr "Sauvegarder puis arrêter le jeu"
 
-#: src/playturn.cpp:297
+#: src/playturn.cpp:298
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -8075,11 +8133,18 @@ msgid "Units"
 msgstr "Unités"
 
 #: src/reports.cpp:1344
+#, fuzzy
+#| msgid ""
+#| "The expenses incurred at the end of every turn to maintain your army. The "
+#| "first number is the amount of gold that will be deducted. The second is "
+#| "the total cost of upkeep, including that covered by villages — in other "
+#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
-"first number is the amount of gold that will be deducted. The second is the "
-"total cost of upkeep, including that covered by villages — in other words, "
-"the amount of gold that would be deducted if you lost all villages."
+"first number is the amount of gold that will be deducted. It is equal to the "
+"number of unit levels not supported by villages. The second is the total "
+"cost of upkeep, including that covered by villages — in other words, the "
+"amount of gold that would be deducted if you lost all villages."
 msgstr ""
 "La dépense nécessaire à la fin de chaque tour pour l'entretien de votre "
 "armée. Le premier nombre est la quantité d'or qui sera prélevée. Le second "
@@ -8092,13 +8157,19 @@ msgid "Upkeep"
 msgstr "Entretien"
 
 #: src/reports.cpp:1381
-msgid "Income"
+#, fuzzy
+#| msgid "Income"
+msgid "Net Income"
 msgstr "Revenu"
 
 #: src/reports.cpp:1381
+#, fuzzy
+#| msgid ""
+#| "The amount of gold you gain each turn from your controlled villages, or "
+#| "the amount of gold you will lose each turn for unit upkeep."
 msgid ""
-"The amount of gold you gain each turn from your controlled villages, or the "
-"amount of gold you will lose each turn for unit upkeep."
+"The net amount of gold you gain or lose each turn, taking into account "
+"income from controlled villages and payment of upkeep."
 msgstr ""
 "La quantité d'or que vous gagnez (ou perdez) à chaque tour. Il s'agit de "
 "l'or que rapportent les villages que vous contrôlez, duquel est retiré l'or "
@@ -8138,8 +8209,8 @@ msgstr "%a %d %b %H:%M %Y"
 msgid " replay"
 msgstr " film"
 
-#: src/save_index.cpp:313 src/savegame.cpp:69 src/savegame.cpp:594
-#: src/savegame.cpp:596
+#: src/save_index.cpp:313 src/savegame.cpp:68 src/savegame.cpp:581
+#: src/savegame.cpp:583
 msgid "Auto-Save"
 msgstr "Sauvegarde automatique"
 
@@ -8196,43 +8267,38 @@ msgstr ""
 "Les noms des sauvegardes ne devraient pas finir par « .gz » ou « .bz2 ». "
 "Merci de retirer l'extension."
 
-#: src/savegame.cpp:469
+#: src/savegame.cpp:456
 msgid "Saved"
 msgstr "Sauvegardé"
 
-#: src/savegame.cpp:469
+#: src/savegame.cpp:456
 msgid "The game has been saved."
 msgstr "Le jeu a été sauvegardé."
 
-#: src/savegame.cpp:499 src/savegame.cpp:519
+#: src/savegame.cpp:486 src/savegame.cpp:506
 msgid "Could not write to file"
 msgstr "Erreur d'écriture dans le fichier"
 
-#: src/savegame.cpp:554
+#: src/savegame.cpp:541
 msgid "Save Replay"
 msgstr "Sauvegarder le film"
 
-#: src/savegame.cpp:559
+#: src/savegame.cpp:546
 msgid "replay"
 msgstr "revoir la partie"
 
-#: src/savegame.cpp:577
+#: src/savegame.cpp:564
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "La sauvegarde automatique a échoué. Essayez de faire une sauvegarde manuelle."
 
-#: src/savegame.cpp:624
+#: src/savegame.cpp:611
 msgid "Save Game"
 msgstr "Sauvegarder le jeu"
 
-#: src/savegame.cpp:638
+#: src/savegame.cpp:625
 msgid "Game state is corrupted"
 msgstr "L'état de la partie est corrompu"
-
-#: src/scripting/game_lua_kernel.cpp:2787
-#: src/scripting/game_lua_kernel.cpp:2822
-msgid "input"
-msgstr "entrée"
 
 #: src/serialization/parser.cpp:153
 msgid "Unexpected characters at line start"
@@ -8585,7 +8651,7 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> attaques par tour"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> coût de rappel"
 
-#: src/units/unit.cpp:2222
+#: src/units/unit.cpp:2205
 msgid "$effect_description per level"
 msgstr "$effect_description par niveau"
 
@@ -8638,6 +8704,16 @@ msgstr "Masquer les planifications de $player"
 msgid "Whiteboard Options"
 msgstr "Options de planification"
 
+#~ msgid "do not translate the 'all'^[all|<command>]"
+#~ msgstr "[all|<commande>]"
+
+#~ msgid "aliases:"
+#~ msgstr "alias :"
+
+# ips est plus correct mais tellement moins habituel
+#~ msgid "Show fps."
+#~ msgstr "Montrer les fps."
+
 #~ msgid "Empty"
 #~ msgstr "Vide"
 
@@ -8657,11 +8733,6 @@ msgstr "Options de planification"
 
 #~ msgid "Advances to:"
 #~ msgstr "Évolue en :"
-
-#~ msgid "(this turn left)"
-#~ msgid_plural "(%d turns left)"
-#~ msgstr[0] "(dernier tour restant)"
-#~ msgstr[1] "(%d tours restants)"
 
 #~ msgid "S"
 #~ msgstr "S"

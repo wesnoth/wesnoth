@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.10\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-06-30 12:14 UTC\n"
+"POT-Creation-Date: 2019-09-16 08:33 UTC\n"
 "PO-Revision-Date: 2015-02-16 19:06+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none\n"
@@ -347,10 +347,10 @@ msgstr "Vai man atkāpties?"
 msgid "female^Should I retreat?"
 msgstr "Vai man atkāpties?"
 
-#. [message]: speaker=Galdrad
 #. [message]: speaker=Delfador
+#. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:550
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:794
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:793
 msgid "Good idea!"
 msgstr "Laba doma!"
 
@@ -1755,22 +1755,13 @@ msgstr ""
 "dziedēt tikai ar 4 veselības punktiem gājienā, bet ciemati spēj dziedēt ar 8 "
 "(jebkurai vienībai)."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:720
-msgid ""
-"Beware of those orcs crossing the river! If they get into the forest they’ll "
-"be hard to dislodge!"
-msgstr ""
-"Uzmanies no orkiem, kas šķērso upi! Ja tie iekļūs mežā, būs grūti no tiem "
-"tikt vaļā!"
-
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:728
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:726
 msgid "Tracking Unused Units"
 msgstr "<big>Meklē neizmantotas vienības</big>"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:730
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:728
 msgid ""
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
 "unit to the next. If you press <b>space</b>, you can mark the currently "
@@ -1785,12 +1776,12 @@ msgstr ""
 "droši pabeigt gājienu."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:739
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:737
 msgid "Victory Conditions"
 msgstr "<big>Uzvaras nosacījumi</big>"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:741
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:739
 #, fuzzy
 #| msgid ""
 #| "In this scenario, you only need to defeat the orc leader to win. (Victory "
@@ -1805,14 +1796,14 @@ msgstr ""
 "nosacījumus var aplūkot <b>Izvēlne</b> un <b>Scenārija uzdevumi</b>)."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:750
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:748
 #, fuzzy
 #| msgid "Recruit the Right Unit Types"
 msgid "Recruit the Right Units"
 msgstr "<big>Iesauc vienības ar apdomu</big>"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:752
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:750
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
@@ -1821,26 +1812,35 @@ msgstr ""
 "īpaši efektīvi pret kājniekiem, vilku jātniekiem un orku vadoni."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:761
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:759
 msgid "Hurry up and defeat the orcs before they become entrenched!"
 msgstr ""
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:788
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:787
 #, fuzzy
 #| msgid "I have no more money to recruit!"
 msgid "I have enough gold to recruit more units!"
 msgstr "Man vairs nav naudas, lai iesauktu!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:789
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:788
 #, fuzzy
 #| msgid "I have no more money to recruit!"
 msgid "female^I have enough gold to recruit more units!"
 msgstr "Man vairs nav naudas, lai iesauktu!"
 
+#. [then]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:833
+msgid ""
+"Beware of those orcs crossing the river! If they get into the forest they’ll "
+"be hard to dislodge!"
+msgstr ""
+"Uzmanies no orkiem, kas šķērso upi! Ja tie iekļūs mežā, būs grūti no tiem "
+"tikt vaļā!"
+
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:835
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:873
 msgid ""
 "That unit is about one kill (8 experience points) away from gaining a level! "
 "Do not let it die!"
@@ -1849,7 +1849,7 @@ msgstr ""
 "sasniegšanas! Neļauj tam krist!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:857
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:895
 msgid ""
 "Their leader has moved into that village! He’s not as stupid as I thought. "
 "The village heals him each turn and provides good defense."
@@ -1858,7 +1858,7 @@ msgstr ""
 "viņu dziedē katrā gājienā un dod labu aizsardzību."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:868
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:906
 msgid ""
 "That unit has captured our village! You’d better get him out; it heals him "
 "each turn and provides good defense."
@@ -1868,7 +1868,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:881
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:919
 msgid ""
 "Using me to attack is risky! I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
@@ -1877,7 +1877,7 @@ msgstr ""
 "uzbrukumiem no attāluma, bet es ceru, ka tev ir plāns gadījumam, ja netrāpu!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:897
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:935
 #, fuzzy
 #| msgid ""
 #| "You are close to killing their leader! The unit who finishes him will "
@@ -1893,19 +1893,19 @@ msgstr ""
 "iegūs 16 pieredzes punktus, jo viņš ir otrā līmeņa cīnītājs."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:901
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:939
 msgid "You have almost finished the tutorial"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:903
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:941
 msgid ""
 "In a campaign you may have ten or even twenty scenarios to build your army, "
 "but this tutorial will conclude after you defeat Thrag."
 msgstr ""
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:929
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:967
 #, fuzzy
 #| msgid ""
 #| "We will miss $deadguy.name| because he had $deadguy.experience experience "
@@ -1918,7 +1918,7 @@ msgstr ""
 "punkti. Viņš būtu sasniedzis otro līmeni."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:935
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:973
 #, fuzzy
 #| msgid ""
 #| "We will miss $deadguy.name| because she had $deadguy.experience "
@@ -1931,7 +1931,7 @@ msgstr ""
 "punkti. Viņa būtu sasniegusi otro līmeni."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:964
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1002
 #, fuzzy
 #| msgid ""
 #| "We will miss $deadguy.name|, but at least he was not one of our "
@@ -1944,7 +1944,7 @@ msgstr ""
 "karotājiem!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:970
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1008
 #, fuzzy
 #| msgid ""
 #| "We will miss $deadguy.name|, but at least she was not one of our "
@@ -1957,7 +1957,7 @@ msgstr ""
 "cīnītājām!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:987
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1025
 #, fuzzy
 #| msgid ""
 #| "Second level units are powerful, but not invulnerable! Goodbye, $deadguy."
@@ -1969,7 +1969,7 @@ msgstr ""
 "$deadguy.name|."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1001
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1039
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy’s reach!"
 msgstr ""
@@ -1977,7 +1977,7 @@ msgstr ""
 "ienaidnieks nevar aizsniegt!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1013
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1051
 msgid ""
 "Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
 "with many units at once during the day."
@@ -1987,7 +1987,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1027
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1065
 msgid ""
 "Advancing a level has fully healed me! I am able to heal units 8 hitpoints "
 "per turn, instead of just 4, and may also cure them of poison if they cannot "
@@ -1998,7 +1998,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1041
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1079
 msgid ""
 "Advancing a level has fully healed me! I cannot heal adjacent units anymore, "
 "but to compensate, I have a new, powerful faerie fire attack that deals 7 "
@@ -2007,7 +2007,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1055
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1093
 #, fuzzy
 #| msgid ""
 #| "Advancing a level has fully healed me!\n"
@@ -2026,7 +2026,7 @@ msgstr ""
 "mani, lai atbrīvotos no grūti uzveicamiem pretiniekiem."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1056
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1094
 #, fuzzy
 #| msgid ""
 #| "female^Advancing a level has fully healed me!\n"
@@ -2045,7 +2045,7 @@ msgstr ""
 "mani, lai atbrīvotos no grūti uzveicamiem pretiniekiem."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1069
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1107
 #, fuzzy
 #| msgid ""
 #| "Advancing a level has fully healed me!\n"
@@ -2063,7 +2063,7 @@ msgstr ""
 "var redzēt tikai, ja viņi ir tieši man blakus."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1070
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1108
 #, fuzzy
 #| msgid ""
 #| "Advancing a level has fully healed me!\n"
@@ -2081,7 +2081,7 @@ msgstr ""
 "var redzēt tikai, ja viņi ir tieši man blakus."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1084
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1122
 #, fuzzy
 #| msgid ""
 #| "Advancing a level has fully healed me!\n"
@@ -2100,7 +2100,7 @@ msgstr ""
 "bojājumus, tāpēc novieto mani saprātīgi."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1097
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1135
 #, fuzzy
 #| msgid ""
 #| "Advancing a level has fully healed me!\n"
@@ -2116,7 +2116,7 @@ msgstr ""
 "uzbrukumos."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1110
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1148
 #, fuzzy
 #| msgid ""
 #| "Advancing a level has fully healed me!\n"
@@ -2132,7 +2132,7 @@ msgstr ""
 "uzbrukumos."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1111
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1149
 #, fuzzy
 #| msgid ""
 #| "Advancing a level has fully healed me!\n"
@@ -2148,29 +2148,29 @@ msgstr ""
 "uzbrukumos."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1120
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1158
 #, fuzzy
 #| msgid "You took too long! We’ll never be rid of these orcs!"
 msgid "You took too long! Now we’ll never be rid of these orcs!"
 msgstr "Tu ievilki pārāk ilgi! Mēs netiksim galā ar orkiem!"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1136
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1174
 msgid "That... was foolish. Next time I should be more careful."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1137
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1175
 msgid "female^That... was foolish. Next time I should be more careful."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1160
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1198
 msgid "Agh! Now who will teach you how to defeat these orcs!"
 msgstr ""
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1186
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1224
 msgid ""
 "You have beaten the orcs! You may want to try one of the rookie-level "
 "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</i> "
@@ -2180,7 +2180,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1191
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1229
 msgid ""
 "You can also refer to the in-game help browser if you ever need to refresh "
 "your memory on gameplay mechanics."

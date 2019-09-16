@@ -207,10 +207,12 @@ m (хвилини), h (години), D (дні), M (місяці) чи Y (ро�
 \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Налаштовує обробника користувачів. Доступні ключі
-відрізняються залежно від обробник, який встановлений ключем
-\fBuser_handler\fP. Якщо в конфігурації відсутня секція \fB[user_handler]\fP,
-сервер буде працювати без служби реєстрації ніків.
+\fB[user_handler]\fP Configures the user handler. Available keys vary depending
+on which user handler is set with the \fBuser_handler\fP key. If no
+\fB[user_handler]\fP section is present in the configuration the server will
+run without any nick registration service. All additional tables that are
+needed for the forum_user_handler to function can be found in
+table_definitions.sql in the Wesnoth source repository.
 .RS
 .TP 
 \fBdb_host\fP
@@ -231,11 +233,29 @@ m (хвилини), h (години), D (дні), M (місяці) чи Y (ро�
 (e.g. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
-(for user_handler=forum) Назва таблиці в якій wesnothd буде зберігати його
-власну інформацію про користувачів. Ви повинні створити цю таблицю вручну,
-наприклад: \fBCREATE TABLE <назва\-таблиці>(username VARCHAR(255)
-PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0,
-user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);\fP
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about users. You will have to create this table manually.
+.TP 
+\fBdb_game_info_table\fP
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about games.
+.TP 
+\fBdb_game_player_info_table\fP
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about the players in a game.
+.TP 
+\fBdb_game_modification_info_table\fP
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about the modifications used in a game.
+.TP 
+\fBdb_user_group_table\fP
+(for user_handler=forum) The name of the table in which your phpbb forums
+saves its user group data. Most likely this will be
+<table\-prefix>_user_group (e.g. phpbb3_user_group).
+.TP 
+\fBmp_mod_group\fP
+(for user_handler=forum) The ID of the forum group to be considered as
+having moderation authority.
 .TP 
 \fBuser_expiration\fP
 (for user_handler=sample) Час, після якого зареєстрований нік видаляється (в

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-06-30 12:14 UTC\n"
+"POT-Creation-Date: 2019-09-16 08:33 UTC\n"
 "PO-Revision-Date: 2018-09-12 07:30+0000\n"
 "Last-Translator: tamanegi, 2019\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -151,10 +151,10 @@ msgstr "Glildur"
 #. [side]: type=Elvish Marshal, id=Crintil
 #. [side]: type=Elvish Captain, id=Glildur
 #. [side]
-#. [side]: type=Elvish Captain, id=Glindur
 #. [side]: type=Elvish Marshal, id=Gaenlar
 #. [side]: type=Elvish Marshal, id=Glinan
 #. [side]: type=Elvish Captain, id=Kalnar
+#. [side]: type=Elvish Captain, id=Glindur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:91
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:43
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:39
@@ -656,8 +656,8 @@ msgstr "門の封鎖"
 msgid "Glindur"
 msgstr "Glindur"
 
-#. [side]
 #. [side]: type=Troll Warrior, type=Troll
+#. [side]
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:55
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:234
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:261
@@ -856,8 +856,7 @@ msgstr ""
 "ぶっとばせるかな？ 降伏などせんぞ――さぁ、門を閉じよう！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:448
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:466
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:449
 msgid ""
 "But what about this entrance? The elves can come through it just as easily "
 "as the main gate, and it cannot be closed!"
@@ -866,8 +865,7 @@ msgstr ""
 "すし、ここは閉じられません！"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:452
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:470
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:453
 msgid ""
 "I think it can be sealed up somehow... Yes, look, activating that glyph "
 "seems to have closed up the gap."
@@ -876,15 +874,30 @@ msgstr ""
 "いている部分を閉鎖することができそうです。"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:513
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:496
 msgid "We have everyone positioned on the glyphs! What do we do now?"
 msgstr "俺達は皆を刻印へ移動させた！ 次はどうすればいい？"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:517
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:508
 msgid ""
 "Just watch. The gates wi’ close very soon. Then the elves outside — and, "
 "unfortunately, our dwarves who are still out there — wi’ become irrelevant."
+msgstr ""
+"見守るだけです。門はすぐに閉まります。そして、外にいるエルフ達と、不幸にも外"
+"に取り残されたドワーフ達は――関係ない。"
+
+#. [message]: speaker=Baglur
+#. all the dwarves are inside, although there might still be some elves inside too
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:515
+#, fuzzy
+#| msgid ""
+#| "Just watch. The gates wi’ close very soon. Then the elves outside — and, "
+#| "unfortunately, our dwarves who are still out there — wi’ become "
+#| "irrelevant."
+msgid ""
+"Just watch. The gates wi’ close very soon. Then the elves outside wi’ become "
+"irrelevant."
 msgstr ""
 "見守るだけです。門はすぐに閉まります。そして、外にいるエルフ達と、不幸にも外"
 "に取り残されたドワーフ達は――関係ない。"

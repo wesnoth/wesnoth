@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-06-30 12:14 UTC\n"
+"POT-Creation-Date: 2019-09-16 08:33 UTC\n"
 "PO-Revision-Date: 2006-12-22 21:33+0100\n"
 "Last-Translator: YbeRn00b <asgeiraakre@gmail.com>\n"
 "Language-Team: none\n"
@@ -144,11 +144,11 @@ msgstr "Vaktpostene i sør"
 msgid "Urza Mathin"
 msgstr "Urza Mathin"
 
-#. [side]: type=Outlaw, id=Jera Ilras
 #. [side]: type=Bandit, id=Urza Mathin
 #. [side]: type=Outlaw, id=Urza Nalmath
 #. [side]: type=Rogue, id=Urza Fastik
 #. [side]: type=Outlaw, id=Urza Afalas
+#. [side]: type=Outlaw, id=Jera Ilras
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:61
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:65
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:60
@@ -1532,13 +1532,13 @@ msgstr "Tårenes dal"
 msgid "Mal A’kai"
 msgstr "Mal A'kai"
 
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
-#. [side]: type=Soulless, id=Gruth
-#. [side]: type=Lich, id=Mal M'Brin
 #. [side]
 #. [side]: type=Ancient Lich, id=Mal M'Brin
 #. [side]: type=Soulless, id=Groth
 #. [side]: type=Lich, id=Mal Tera
+#. [side]: type=Soulless, id=Gruth
+#. [side]: type=Lich, id=Mal M'Brin
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:66
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:96
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:141
@@ -1781,9 +1781,9 @@ msgstr "Med deg død er i det minste et hinder borte for godt."
 msgid "Mebrin! Are you there? We have come to seek your aid!"
 msgstr "Mebrin! Vi søker din hjelp!"
 
-#. [message]: speaker=narrator
 #. [message]: speaker=Kramak
 #. [message]: speaker=Ethiliel
+#. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:635
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:646
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:395
@@ -1800,23 +1800,27 @@ msgstr "Mebrin! Er du her?!"
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:652
 #, fuzzy
-msgid "His home is empty... There are footprints leading away to the south..."
+msgid ""
+"His home is empty... There are several sets of footprints leading away to "
+"the south..."
 msgstr ""
 "Huset hans er tomt... men det leder fotspor sørover. Kan Mebrin ha blitt "
 "bortført?"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:657
-msgid "Maybe whoever summoned these undead knows where he is?"
-msgstr ""
-"Jeg vil tro at de som påkaller de vandøde har en finger med i spillet..."
+#, fuzzy
+#| msgid "Perhaps we can cross on the ice?"
+msgid "Perhaps he was taken by the undead?"
+msgstr "Vil isen kunne bære oss over til den andre siden?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:662
 #, fuzzy
 msgid ""
-"There is no blood here, so he must have been taken by surprise. But I "
-"suspect the undead would have slain him and made him one of them."
+"I am not sure. There is no blood here and very little sign of struggle. If "
+"it had been the undead, I suspect they would have slain him and made him one "
+"of them."
 msgstr ""
 "Det er ikke spor etter blod. Mebrin må være kidnappet, og jeg tror han "
 "fortsatt lever. De vandøde ville slaktet han og gjort han til sin slave, så "
@@ -1824,15 +1828,18 @@ msgstr ""
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:667
-msgid "Maybe the bandits who have been summoning the undead took him?"
+#, fuzzy
+#| msgid "Maybe the bandits who have been summoning the undead took him?"
+msgid "Then maybe the bandits who have been summoning the undead took him?"
 msgstr ""
 "Men bandittene som påkaller de vandøde kan vel tenkes å stå bak bortføringen?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:672
 msgid ""
-"We cannot be sure. I still find it strange that there is no sign of a battle "
-"here. Ethiliel, what do you think?"
+"We cannot be sure. I should think that he would have put up a fight, but if "
+"he were ambushed or taken by surprise, he may not have had the chance. "
+"Ethiliel, what do you think?"
 msgstr ""
 
 #. [message]: speaker=Deoran
@@ -1862,9 +1869,9 @@ msgstr ""
 #. [message]: speaker=Necro
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:732
 msgid ""
-"So the elves finally come to defend their valley. Pity, they showed up a "
-"little late. We will stop them here and prevent them from reclaiming the "
-"knowledge that was once theirs!"
+"So the elves finally come to defend their valley. Pity, they showed up too "
+"late. We will stop them here and prevent them from reclaiming the knowledge "
+"that was once theirs!"
 msgstr ""
 
 #. [message]: speaker=Deoran
@@ -1885,8 +1892,8 @@ msgstr ""
 msgid "Choice in the Fog"
 msgstr "Et valg i skodden"
 
-#. [side]: type=Outlaw, id=Urza Afalas
 #. [unit]: type=Outlaw, id=Urza Afalas
+#. [side]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:55
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:473
 msgid "Urza Afalas"
@@ -5014,7 +5021,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "<i>“These are our terms: no human will be permitted in the forests or hills "
-"of the Aetherwood, and likewise, we elves will not traverse the plains and "
+"of the Aethenwood, and likewise, we elves will not traverse the plains and "
 "farmlands belonging to you humans. No more will the elves send ambassadors "
 "or councilors to Westin, and no more will men wander the green woods.”</i>"
 msgstr ""
@@ -5043,7 +5050,7 @@ msgid ""
 "Thus, an uneasy peace was established between man and elf. For many weeks, "
 "the South Guard patrolled the borders of the elven woods and watched over "
 "the growing farms and villages. The threat from the elves was enough to keep "
-"the villagers from entering the now forbidding Aetherwood, and despite the "
+"the villagers from entering the now forbidding Aethenwood, and despite the "
 "palpable tension at the forest border, the truce was maintained without "
 "incident."
 msgstr ""
@@ -5139,6 +5146,10 @@ msgstr ""
 "Deoran brukte dagene på å besøke sine skadede soldater og beordne "
 "gjenreisningen av den hardt rammede byen. Da snøen endelig smeltet, kom en "
 "budbringer fra Kong Haldrik."
+
+#~ msgid "Maybe whoever summoned these undead knows where he is?"
+#~ msgstr ""
+#~ "Jeg vil tro at de som påkaller de vandøde har en finger med i spillet..."
 
 #, fuzzy
 #~ msgid ""
@@ -6390,9 +6401,6 @@ msgstr ""
 #~ "Dette ser ut som en forlatt, underjordisk dvergevei. Den ser ikke ut til "
 #~ "å være vedlikeholdt på en stund, og en kraftig strøm krysser den ikke "
 #~ "langt foran oss."
-
-#~ msgid "Perhaps we can cross on the ice?"
-#~ msgstr "Vil isen kunne bære oss over til den andre siden?"
 
 #~ msgid "It looks thin - tread carefully."
 #~ msgstr "Den ser tynn ut, trå forsiktig!"

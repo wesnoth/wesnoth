@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-03-11 16:09+0300\n"
+"POT-Creation-Date: 2019-09-16 11:32+0300\n"
 "PO-Revision-Date: 2019-03-28 17:30+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -1102,7 +1102,7 @@ msgstr "遊戲教學"
 
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:33 data/core/help.cfg:398
+#: data/core/help.cfg:33 data/core/help.cfg:404
 msgid "Traits"
 msgstr "特質"
 
@@ -1132,19 +1132,19 @@ msgstr "時代"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:74 data/core/help.cfg:413
+#: data/core/help.cfg:74 data/core/help.cfg:419
 msgid "Terrains"
 msgstr "地形"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:82 data/core/help.cfg:466
+#: data/core/help.cfg:82 data/core/help.cfg:472
 msgid "Add-ons"
 msgstr "模組"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:88 data/core/help.cfg:539
+#: data/core/help.cfg:88 data/core/help.cfg:545
 msgid "Commands"
 msgstr "指令"
 
@@ -1504,15 +1504,23 @@ msgstr "收入和支出"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:220
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Income is simple. You have a base income of 2 gold per turn. For every "
+#| "village you control, you gain one additional gold each turn. (In general "
+#| "this is configurable but in campaigns it is almost always one gold per "
+#| "village.) Thus, if you have ten villages, you would normally gain 12 gold "
+#| "each turn. Your upkeep costs are subtracted from this income, as detailed "
+#| "below."
 msgid ""
 "\n"
 "\n"
 "Income is simple. You have a base income of 2 gold per turn. For every "
-"village you control, you gain one additional gold each turn. (In general "
-"this is configurable but in campaigns it is almost always one gold per "
-"village.) Thus, if you have ten villages, you would normally gain 12 gold "
-"each turn. Your upkeep costs are subtracted from this income, as detailed "
-"below."
+"village you control, you gain one additional gold each turn. Thus, if you "
+"have ten villages, you would normally gain 12 gold each turn. Your upkeep "
+"costs are subtracted from this income, as detailed below."
 msgstr ""
 "\n"
 "\n"
@@ -1534,7 +1542,7 @@ msgstr ""
 "italic>和<italic>text='支出'</italic>。"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:222
+#: data/core/help.cfg:224
 msgid ""
 "\n"
 "\n"
@@ -1553,7 +1561,7 @@ msgstr ""
 "您就得每回合支付2個金幣。"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:224
+#: data/core/help.cfg:226
 msgid ""
 "\n"
 "\n"
@@ -1567,7 +1575,20 @@ msgstr ""
 "將會是每回合10個金幣。"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:226
+#: data/core/help.cfg:230
+msgid ""
+"\n"
+"\n"
+"In general, the base income, the amount of gold you get per village per "
+"turn, and the number of unit levels each village can support are "
+"configurable, but in campaigns they are almost always the values described "
+"above. The <italic>text='Scenario Settings'</italic> tab of the "
+"<italic>text='Status Table'</italic> dialog shows the values for the current "
+"scenario."
+msgstr ""
+
+#. [topic]: id=income_and_upkeep
+#: data/core/help.cfg:232
 msgid ""
 "\n"
 "\n"
@@ -1587,12 +1608,12 @@ msgstr ""
 "官。"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:235
+#: data/core/help.cfg:241
 msgid "Hitpoints and Experience"
 msgstr "生命值和經驗值"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:236
+#: data/core/help.cfg:242
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -1605,7 +1626,7 @@ msgstr ""
 "的單位一開始沒有經驗值，必須與敵人戰鬥才可以獲得。"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:240
+#: data/core/help.cfg:246
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -1615,7 +1636,7 @@ msgstr ""
 "值）。"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:242
+#: data/core/help.cfg:248
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -1627,12 +1648,12 @@ msgstr ""
 "ref>時經驗條會顯示為白色。"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:249
+#: data/core/help.cfg:255
 msgid "Advancement"
 msgstr "升級"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:250
+#: data/core/help.cfg:256
 msgid ""
 "\n"
 "\n"
@@ -1647,7 +1668,7 @@ msgstr ""
 "足夠的經驗值就可立即升級，生命全滿。有些情况下，您還會遇到升級選項。"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:250
+#: data/core/help.cfg:256
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they’re fighting. If a unit kills another in "
@@ -1659,7 +1680,7 @@ msgstr ""
 "8點，2等級單位16點，3等級單位24點等等。"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:252
+#: data/core/help.cfg:258
 msgid ""
 "\n"
 "\n"
@@ -1684,12 +1705,12 @@ msgstr ""
 "次獲得AMLA的難度會逐漸變大，所以讓您的低等級單位升級一般會更有用處。"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:261
+#: data/core/help.cfg:267
 msgid "Movement"
 msgstr "移動"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:262
+#: data/core/help.cfg:268
 msgid ""
 "\n"
 "\n"
@@ -1712,7 +1733,7 @@ msgstr ""
 "<bold>text='單位描述'</bold>，然後查看<bold>text='地形影響'</bold>。"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:262
+#: data/core/help.cfg:268
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -1737,7 +1758,7 @@ msgstr ""
 "的單位進入一個您還没有占領的村莊時也會花完所有移動數，但仍然能夠攻撃。"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:264
+#: data/core/help.cfg:270
 msgid ""
 "\n"
 "\n"
@@ -1757,7 +1778,7 @@ msgstr ""
 "ref>的能力可以忽視控制區域的效用。"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:266
+#: data/core/help.cfg:272
 msgid ""
 "\n"
 "\n"
@@ -1771,12 +1792,12 @@ msgstr ""
 "的部隊不影響對手移動的情况下，對手可以移動到的區域。"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:275
+#: data/core/help.cfg:281
 msgid "Shroud and Fog of War"
 msgstr "戰場黑幕和戰爭迷霧"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:276
+#: data/core/help.cfg:282
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -1814,12 +1835,12 @@ msgstr ""
 "動的功能。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:285
+#: data/core/help.cfg:291
 msgid "Combat"
 msgstr "戰鬥"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:286
+#: data/core/help.cfg:292
 msgid ""
 "\n"
 "\n"
@@ -1830,7 +1851,7 @@ msgstr ""
 "<header>text='攻撃順序與次數'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:286
+#: data/core/help.cfg:292
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -1851,7 +1872,7 @@ msgstr ""
 "<italic>text='遠程'</italic>，武器通常是弓，矛和火球。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:288
+#: data/core/help.cfg:294
 msgid ""
 "\n"
 "\n"
@@ -1871,7 +1892,7 @@ msgstr ""
 "傷害，獸人步兵9×2的進攻代表他只能攻擊2次（但每次撃中敵人會造成9點傷害）。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:290
+#: data/core/help.cfg:296
 msgid ""
 "\n"
 "\n"
@@ -1882,7 +1903,7 @@ msgstr ""
 "<header>text=命中率</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:292
+#: data/core/help.cfg:298
 msgid ""
 "\n"
 "\n"
@@ -1903,7 +1924,7 @@ msgstr ""
 "幾率取决於攻撃者所處的地形。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:294
+#: data/core/help.cfg:300
 msgid ""
 "\n"
 "\n"
@@ -1920,7 +1941,7 @@ msgstr ""
 "有70%的命中率，而精準在進攻中也無視地形，且最少有60%的命中率。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:296
+#: data/core/help.cfg:302
 msgid ""
 "\n"
 "\n"
@@ -1931,7 +1952,7 @@ msgstr ""
 "<header>text=傷害</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:298
+#: data/core/help.cfg:304
 msgid ""
 "\n"
 "\n"
@@ -1952,7 +1973,7 @@ msgstr ""
 "在攻撃選單中選擇<bold>text='傷害計算'</bold>。"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:300
+#: data/core/help.cfg:306
 msgid ""
 "\n"
 "\n"
@@ -1968,12 +1989,12 @@ msgstr ""
 "會使戰鬥中的進攻方和防守方都輸出雙倍的傷害。"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:308
+#: data/core/help.cfg:314
 msgid "Damage Types and Resistance"
 msgstr "傷害種類和抗性"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:309
+#: data/core/help.cfg:315
 msgid ""
 "\n"
 "\n"
@@ -1990,7 +2011,7 @@ msgstr ""
 "則被撃中時增加100%的傷害。"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:309
+#: data/core/help.cfg:315
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -2004,7 +2025,7 @@ msgstr ""
 "單位有著不同的抗性所以在遇到不同的攻擊類型時也會有不同的傷害。"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:311
+#: data/core/help.cfg:317
 msgid ""
 "\n"
 "\n"
@@ -2018,7 +2039,7 @@ msgstr ""
 "法攻擊。"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:313
+#: data/core/help.cfg:319
 msgid ""
 "\n"
 "\n"
@@ -2031,50 +2052,50 @@ msgstr ""
 "每次成功的攻撃至少會造成1點的傷害，即使防禦者對這種攻撃有100%的抗性。"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:321
+#: data/core/help.cfg:327
 msgid "Orbs"
 msgstr "行動圖示"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:322
+#: data/core/help.cfg:328
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
 msgstr "行動圖示位於士兵左上角，能量條上方當這個圖示顏色是："
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:324
+#: data/core/help.cfg:330
 msgid " green if it hasn’t moved this turn,"
 msgstr " 綠色表示該單位這回合還沒有移動過，"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:325
+#: data/core/help.cfg:331
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr " 黃色表示該單位已經移動過，但仍然可以繼續移動或是攻擊，"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:326
+#: data/core/help.cfg:332
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr " 紅色表示該單位不能移動，或玩家已經結束了這一回合。"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:327
+#: data/core/help.cfg:333
 msgid " blue if the unit is an ally you do not control."
 msgstr " 藍色表示該單位是您不能控制的同盟單位。"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:328
+#: data/core/help.cfg:334
 msgid " Enemy units have no orb on top of their energy bar."
 msgstr " 敵方單位的血條不會顯示行動圖示。"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:335
+#: data/core/help.cfg:341
 msgid "Time of Day"
 msgstr "時段"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:336
+#: data/core/help.cfg:342
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 "\n"
@@ -2094,7 +2115,7 @@ msgstr ""
 "• <bold>text='閾界'</bold>單位的攻擊力在白天跟晚上都−25%。"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:341
+#: data/core/help.cfg:347
 msgid ""
 "\n"
 "\n"
@@ -2112,21 +2133,21 @@ msgstr ""
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:345 data/core/macros/schedules.cfg:14
+#: data/core/help.cfg:351 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "黎明"
 
 #. [time]: id=morning
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:346 data/core/macros/schedules.cfg:26
+#: data/core/help.cfg:352 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "上午"
 
 #. [time]: id=afternoon
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:347 data/core/macros/schedules.cfg:44
+#: data/core/help.cfg:353 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "下午"
@@ -2134,48 +2155,48 @@ msgstr "下午"
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:348 data/core/macros/schedules.cfg:53
+#: data/core/help.cfg:354 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "黄昏"
 
 #. [time]: id=first_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:349 data/core/macros/schedules.cfg:65
+#: data/core/help.cfg:355 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "夜晚"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:350 data/core/macros/schedules.cfg:89
+#: data/core/help.cfg:356 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "凌晨"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:352
+#: data/core/help.cfg:358
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!\n"
 msgstr "請記住，有些章節是發生在地下的，那裏一直是夜晚。\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:354
+#: data/core/help.cfg:360
 msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night.\n"
 msgstr "有些地下的位置是被照亮的。那邊永遠是介於日夜之間。\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:356
+#: data/core/help.cfg:362
 msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate.\n"
 msgstr "有些區域在章節裡面是在室內 - 那邊一樣算是日夜之間。\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:358
+#: data/core/help.cfg:364
 msgid ""
 "Finally, units with the <ref>dst='ability_illuminationilluminates' "
 "text='illuminates'</ref> ability and terrain features such as "
@@ -2187,12 +2208,12 @@ msgstr ""
 "段加成。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:365
+#: data/core/help.cfg:371
 msgid "Healing"
 msgstr "治療"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:366
+#: data/core/help.cfg:372
 msgid ""
 "\n"
 "\n"
@@ -2205,7 +2226,7 @@ msgstr ""
 "開始時恢復2點生命值。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:366
+#: data/core/help.cfg:372
 msgid ""
 "In combat, your units will inevitably take damage. There are several ways to "
 "heal your units. However, with the exception of resting, these do not stack; "
@@ -2215,7 +2236,7 @@ msgstr ""
 "息之外，這些治療是不能加疊的；一個回合只能有一種治療方式。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:368
+#: data/core/help.cfg:374
 msgid ""
 "\n"
 "• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
@@ -2228,7 +2249,7 @@ msgstr ""
 "治癒。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:369
+#: data/core/help.cfg:375
 msgid ""
 "\n"
 "• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
@@ -2240,7 +2261,7 @@ msgstr ""
 "魔）每回合自動恢復8點生命值。如果該單位中毒，則中毒狀態會先被治癒。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:370
+#: data/core/help.cfg:376
 msgid ""
 "\n"
 "• <bold>text='Healing units'</bold>: Units with the "
@@ -2256,7 +2277,7 @@ msgstr ""
 "ref>，或阻止中毒狀態在該回合造成傷害。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:371
+#: data/core/help.cfg:377
 msgid ""
 "\n"
 "• <bold>text='Curing units'</bold>: Units with the "
@@ -2270,7 +2291,7 @@ msgstr ""
 "以治癒優先）。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:372
+#: data/core/help.cfg:378
 msgid ""
 "\n"
 "• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
@@ -2283,7 +2304,7 @@ msgstr ""
 "的回合。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:373
+#: data/core/help.cfg:379
 msgid ""
 "\n"
 "\n"
@@ -2297,7 +2318,7 @@ msgstr ""
 "會自動選擇治療方式。最後，單位能在下一章時完全恢復生命值。"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:375
+#: data/core/help.cfg:381
 msgid ""
 "\n"
 "\n"
@@ -2308,7 +2329,7 @@ msgstr ""
 "<bold>text='進階'</bold>"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:377
+#: data/core/help.cfg:383
 msgid ""
 "\n"
 "\n"
@@ -2326,12 +2347,12 @@ msgstr ""
 "營的回合各被治療一次。"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:385
+#: data/core/help.cfg:391
 msgid "Wrap Up"
 msgstr "總結"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:386
+#: data/core/help.cfg:392
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -2345,12 +2366,12 @@ msgstr ""
 "<italic>text='王位繼承人'</italic>這個戰役了。希望您玩得開心，祝您好運！"
 
 #. [topic]: id=license
-#: data/core/help.cfg:391
+#: data/core/help.cfg:397
 msgid "License"
 msgstr "授權"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:400
+#: data/core/help.cfg:406
 msgid ""
 "\n"
 "\n"
@@ -2366,7 +2387,7 @@ msgstr ""
 "有任何特質。 "
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:400
+#: data/core/help.cfg:406
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
@@ -2377,7 +2398,7 @@ msgstr ""
 "獲得的特質大部分取決於單位的<italic>text='種族'</italic>。"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:402
+#: data/core/help.cfg:408
 msgid ""
 "\n"
 "\n"
@@ -2394,7 +2415,7 @@ msgstr ""
 "text='強壯'</ref>。"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:404
+#: data/core/help.cfg:410
 msgid ""
 "\n"
 "\n"
@@ -2416,7 +2437,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:414
+#: data/core/help.cfg:420
 msgid ""
 "\n"
 "\n"
@@ -2429,7 +2450,7 @@ msgstr ""
 "italic>。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:414
+#: data/core/help.cfg:420
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
@@ -2438,7 +2459,7 @@ msgstr ""
 "中的閃避能力。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:416
+#: data/core/help.cfg:422
 msgid ""
 "\n"
 "\n"
@@ -2449,7 +2470,7 @@ msgstr ""
 "<header>text='基本地形類型'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:418
+#: data/core/help.cfg:424
 msgid ""
 "\n"
 "\n"
@@ -2465,7 +2486,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:422
+#: data/core/help.cfg:428
 msgid ""
 "\n"
 "\n"
@@ -2479,7 +2500,7 @@ msgstr ""
 "位的資訊頁面。基礎地形也可能會有獨特的特性，例如照明效果等等。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:424
+#: data/core/help.cfg:430
 msgid ""
 "\n"
 "\n"
@@ -2490,7 +2511,7 @@ msgstr ""
 "<header>text='混合地形類型'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:426
+#: data/core/help.cfg:432
 msgid ""
 "\n"
 "\n"
@@ -2511,7 +2532,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:430
+#: data/core/help.cfg:436
 msgid ""
 "\n"
 "\n"
@@ -2534,7 +2555,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:434
+#: data/core/help.cfg:440
 msgid ""
 "\n"
 "\n"
@@ -2550,7 +2571,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:438
+#: data/core/help.cfg:444
 msgid ""
 "\n"
 "\n"
@@ -2566,7 +2587,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:442
+#: data/core/help.cfg:448
 msgid ""
 "\n"
 "\n"
@@ -2580,7 +2601,7 @@ msgstr ""
 "合地形是由什麼組成（預設主題下）。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:444
+#: data/core/help.cfg:450
 msgid ""
 "\n"
 "\n"
@@ -2595,7 +2616,7 @@ msgstr ""
 "中看到混合地形所產生的效果，或是點選右鍵從選單中來查看。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:446
+#: data/core/help.cfg:452
 msgid ""
 "\n"
 "\n"
@@ -2606,7 +2627,7 @@ msgstr ""
 "<header>text='閃避率上限'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:448
+#: data/core/help.cfg:454
 msgid ""
 "\n"
 "\n"
@@ -2620,7 +2641,7 @@ msgstr ""
 "類型的混合地形時就會被限制-他們的閃避率不能超過此上限。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:450
+#: data/core/help.cfg:456
 msgid ""
 "\n"
 "\n"
@@ -2635,7 +2656,7 @@ msgstr ""
 "是森林丘陵的40%，因為混合地形的閃避率不能超過閃避率上限。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:452
+#: data/core/help.cfg:458
 msgid ""
 "\n"
 "\n"
@@ -2648,7 +2669,7 @@ msgstr ""
 "（不會更高）。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:454
+#: data/core/help.cfg:460
 msgid ""
 "\n"
 "\n"
@@ -2661,7 +2682,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:467
+#: data/core/help.cfg:473
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -2673,12 +2694,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:477
+#: data/core/help.cfg:483
 msgid "Using Add-ons"
 msgstr "使用模組"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:478
+#: data/core/help.cfg:484
 msgid ""
 "\n"
 "\n"
@@ -2689,14 +2710,14 @@ msgstr ""
 "<header>text='戰役和章節'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:478
+#: data/core/help.cfg:484
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
 msgstr "遊戲支援各種類型的模組，但不是每個遊戲模式都可以使用這些模組。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:480
+#: data/core/help.cfg:486
 msgid ""
 "\n"
 "\n"
@@ -2711,7 +2732,7 @@ msgstr ""
 "戰役都可以在主選單的<italic>text='戰役'</italic>裡選取。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:482
+#: data/core/help.cfg:488
 msgid ""
 "\n"
 "\n"
@@ -2722,7 +2743,7 @@ msgstr ""
 "<header>text='多人對戰戰役、章節與地圖包'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:484
+#: data/core/help.cfg:490
 msgid ""
 "\n"
 "\n"
@@ -2736,7 +2757,7 @@ msgstr ""
 "戰役。那裡也有許多多人對戰的章節可供下載。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:486
+#: data/core/help.cfg:492
 msgid ""
 "\n"
 "\n"
@@ -2747,7 +2768,7 @@ msgstr ""
 "<header>text='多人對戰時代與陣營'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:488
+#: data/core/help.cfg:494
 msgid ""
 "\n"
 "\n"
@@ -2769,7 +2790,7 @@ msgstr ""
 "家可以從該時代選擇可選的陣營並分隊分組。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:492
+#: data/core/help.cfg:498
 msgid ""
 "\n"
 "\n"
@@ -2782,7 +2803,7 @@ msgstr ""
 "代。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:494
+#: data/core/help.cfg:500
 msgid ""
 "\n"
 "\n"
@@ -2793,7 +2814,7 @@ msgstr ""
 "<header>text='模組'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:496
+#: data/core/help.cfg:502
 msgid ""
 "\n"
 "\n"
@@ -2807,7 +2828,7 @@ msgstr ""
 "時選擇及設定這些模組。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:498
+#: data/core/help.cfg:504
 msgid ""
 "\n"
 "\n"
@@ -2818,7 +2839,7 @@ msgstr ""
 "<header>text='核心'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:500
+#: data/core/help.cfg:506
 msgid ""
 "\n"
 "\n"
@@ -2839,7 +2860,7 @@ msgstr ""
 "的遊戲，只要這個遊戲可以使用六角格和某種'單位'就可以。"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:504
+#: data/core/help.cfg:510
 msgid ""
 "\n"
 "\n"
@@ -2850,7 +2871,7 @@ msgstr ""
 "<header>text='製作者資源'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:506
+#: data/core/help.cfg:512
 msgid ""
 "\n"
 "\n"
@@ -2867,12 +2888,12 @@ msgstr ""
 "載相對應的資源包。"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:515
+#: data/core/help.cfg:521
 msgid "Installing Add-ons"
 msgstr "安裝模組"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:516
+#: data/core/help.cfg:522
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -2913,12 +2934,12 @@ msgstr ""
 "細節，像是完整描述、安裝狀態及支援的語言。"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:529
+#: data/core/help.cfg:535
 msgid "Removing Add-ons"
 msgstr "移除模組"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:530
+#: data/core/help.cfg:536
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -2937,14 +2958,14 @@ msgstr ""
 "除，為了避免相關資料意外遺失。如果有必要，您可以手動刪除信息檔及模組。"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:545
+#: data/core/help.cfg:551
 msgid "General Commands"
 msgstr "一般指令"
 
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:547 data/core/help.cfg:590 data/core/help.cfg:628
+#: data/core/help.cfg:553 data/core/help.cfg:596 data/core/help.cfg:634
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -2956,7 +2977,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:549
+#: data/core/help.cfg:555
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -2967,7 +2988,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:552
+#: data/core/help.cfg:558
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2982,7 +3003,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:556
+#: data/core/help.cfg:562
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -3000,7 +3021,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:559
+#: data/core/help.cfg:565
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -3011,7 +3032,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:562
+#: data/core/help.cfg:568
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3022,7 +3043,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:565
+#: data/core/help.cfg:571
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3033,7 +3054,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:568
+#: data/core/help.cfg:574
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3044,7 +3065,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:571
+#: data/core/help.cfg:577
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3055,7 +3076,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:574
+#: data/core/help.cfg:580
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3066,7 +3087,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:577
+#: data/core/help.cfg:583
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3077,7 +3098,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:580
+#: data/core/help.cfg:586
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3086,12 +3107,12 @@ msgstr ""
 "儲存遊戲並退出任務（無提示視窗）。"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:589
+#: data/core/help.cfg:595
 msgid "Multiplayer Commands"
 msgstr "多人對戰指令"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:592
+#: data/core/help.cfg:598
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3105,7 +3126,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:595
+#: data/core/help.cfg:601
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3124,7 +3145,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:598
+#: data/core/help.cfg:604
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -3136,7 +3157,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:601
+#: data/core/help.cfg:607
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -3148,7 +3169,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:604
+#: data/core/help.cfg:610
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -3162,7 +3183,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:607
+#: data/core/help.cfg:613
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3175,7 +3196,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:610
+#: data/core/help.cfg:616
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3188,7 +3209,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:613
+#: data/core/help.cfg:619
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -3199,7 +3220,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:616
+#: data/core/help.cfg:622
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3211,7 +3232,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:619
+#: data/core/help.cfg:625
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -3221,12 +3242,12 @@ msgstr ""
 "允許一個指定的觀察者可以發言。如果没有指定觀察者，則所有觀察者皆可發言。"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:627
+#: data/core/help.cfg:633
 msgid "Debug Mode Commands"
 msgstr "偵錯模式指令"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:630
+#: data/core/help.cfg:636
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3238,7 +3259,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:633
+#: data/core/help.cfg:639
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3250,7 +3271,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:636
+#: data/core/help.cfg:642
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3261,7 +3282,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:639
+#: data/core/help.cfg:645
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3272,7 +3293,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:642
+#: data/core/help.cfg:648
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3283,7 +3304,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:645
+#: data/core/help.cfg:651
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3294,7 +3315,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:648
+#: data/core/help.cfg:654
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3305,7 +3326,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:651
+#: data/core/help.cfg:657
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3316,7 +3337,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:654
+#: data/core/help.cfg:660
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3328,7 +3349,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:657
+#: data/core/help.cfg:663
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-06-30 15:14+0300\n"
+"POT-Creation-Date: 2019-09-16 11:33+0300\n"
 "PO-Revision-Date: 2017-05-31 13:43+0000\n"
 "Last-Translator: GunChleoc, 2018\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -690,6 +690,20 @@ msgstr "Uamh chreagach"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:967
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
+#| "water and wind, carrying erosive particles that carve the rock. It "
+#| "resembles a scraggy underground cavern which shoulders defense, but is "
+#| "hard for most units to traverse. Only settlers of caves, such as dwarves "
+#| "and trolls, are fully capable of navigating such topography.\n"
+#| "\n"
+#| "Most units have about 50% defense in rocky caves, whereas cavalry are "
+#| "limited to 40%. Dwarves, by dint of their small size, enjoy 60% defense "
+#| "in rockbound caves.\n"
+#| "\n"
+#| "Occasionally caves are <ref>dst='terrain_illuminated_cave' "
+#| "text='illuminated'</ref>."
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -701,8 +715,7 @@ msgid ""
 "limited to 40%. Dwarves, by dint of their small size, enjoy 60% defense in "
 "rockbound caves.\n"
 "\n"
-"Occasionally caves are <ref>dst='terrain_illuminated_cave' "
-"text='illuminated'</ref>."
+"Occasionally caves are <italic>text='illuminated'</italic>."
 msgstr ""
 "Chaidh <italic>text='uamhan creagach'</italic> a chruthachadh le uisge is "
 "gaoth a bheireas mìrean bleithe a ghearras a’ chlach. Tha iad coltach ri "
@@ -1602,6 +1615,24 @@ msgstr ""
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2732
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Cave'</italic> terrain represents any underground cavern "
+#| "with enough room for a unit to pass.\n"
+#| "Most units are wholly unfamiliar with the terrain, and thus are both "
+#| "slowed down and hindered in defense. Dwarves and trolls, who make their "
+#| "homes in caves, both have a relatively easy time navigating this terrain, "
+#| "especially dwarves, who by dint of their small size can navigate many "
+#| "obstacles that other races cannot. Occasionally caves are "
+#| "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>.\n"
+#| "\n"
+#| "Rare patches of the underground world are illuminated by light from the "
+#| "surface shining down into the gloomy darkness. This provides an attack "
+#| "bonus for lawful units and removes the attack bonus from chaotic units. "
+#| "In all other regards this terrain is functionally identical to normal "
+#| "cave terrains.\n"
+#| "\n"
+#| "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -1609,8 +1640,8 @@ msgid ""
 "down and hindered in defense. Dwarves and trolls, who make their homes in "
 "caves, both have a relatively easy time navigating this terrain, especially "
 "dwarves, who by dint of their small size can navigate many obstacles that "
-"other races cannot. Occasionally caves are "
-"<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>.\n"
+"other races cannot. Occasionally caves are <italic>text='illuminated'</"
+"italic>.\n"
 "\n"
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness. This provides an attack bonus "
@@ -2050,7 +2081,7 @@ msgstr "Teachdaireachdan a’ feitheamh"
 #: data/gui/window/gamestate_inspector.cfg:397
 #: data/gui/window/generator_settings.cfg:190
 #: data/gui/window/help_browser.cfg:188
-#: data/gui/window/lobby_player_info.cfg:282
+#: data/gui/window/lobby_player_info.cfg:294
 #: data/gui/window/lua_interpreter.cfg:130 data/gui/window/message.cfg:135
 #: data/gui/window/mp_alerts_options.cfg:249
 #: data/gui/window/preferences.cfg:429
@@ -2479,7 +2510,7 @@ msgstr "Seòrsaich a-rèir tuairmse air òrdugh thachartasan nan sgeulachdan"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:293
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:460
 msgid "Modifications"
 msgstr "Atharraichean"
 
@@ -2767,7 +2798,7 @@ msgstr "Tuairisgeul:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:478
+#: src/gui/dialogs/multiplayer/lobby.cpp:482
 msgid "Experience modifier:"
 msgstr "Atharraichear eòlais:"
 
@@ -2829,7 +2860,7 @@ msgstr "Òr:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#: src/gui/dialogs/multiplayer/lobby.cpp:479
+#: src/gui/dialogs/multiplayer/lobby.cpp:483
 msgid "Gold per village:"
 msgstr "Òr gach baile:"
 
@@ -2850,7 +2881,7 @@ msgstr "Smachdair:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
-#: data/gui/window/editor_edit_side.cfg:373 src/gui/dialogs/game_stats.cpp:74
+#: data/gui/window/editor_edit_side.cfg:373 src/gui/dialogs/game_stats.cpp:71
 msgid "controller^Human"
 msgstr "Daonna"
 
@@ -2900,7 +2931,7 @@ msgstr "Tagh gineadair mapa:"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:877
-#: src/gui/dialogs/multiplayer/lobby.cpp:477
+#: src/gui/dialogs/multiplayer/lobby.cpp:481
 msgid "Settings"
 msgstr "Roghainnean"
 
@@ -3331,7 +3362,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:251
+#: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:252
 msgid "Current Status"
 msgstr "An staid an-dràsta"
 
@@ -3342,7 +3373,7 @@ msgstr "Stadastaireachd a’ gheama"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
-#: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:251
+#: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:252
 msgid "Scenario Settings"
 msgstr "Roghainnean a’ chnàmh-sgeòil"
 
@@ -3650,15 +3681,15 @@ msgstr "Lobaidh ioma-chluicheadair"
 msgid "Player Info — "
 msgstr "Fios cluicheadair – "
 
-#. [button]: id=add_to_friends
 #. [button]: id=add_friend
+#. [button]: id=add_to_friends
 #: data/gui/window/lobby_player_info.cfg:94
 #: data/gui/window/preferences/05_multiplayer.cfg:263
 msgid "Add Friend"
 msgstr "Cuir caraid ris"
 
-#. [button]: id=add_to_ignores
 #. [button]: id=add_ignored
+#. [button]: id=add_to_ignores
 #: data/gui/window/lobby_player_info.cfg:105
 #: data/gui/window/preferences/05_multiplayer.cfg:276
 msgid "Block"
@@ -3681,8 +3712,8 @@ msgstr "Gnìomhan nam maor"
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:173
-msgid "Kick / ban reason:"
-msgstr "Adhbhar bròige / toirmisg:"
+msgid "Reason:"
+msgstr ""
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:198
@@ -3703,6 +3734,13 @@ msgstr "Thoir a’ bhròg air"
 #: data/gui/window/lobby_player_info.cfg:262
 msgid "Kick + Ban"
 msgstr "Bròg + Toirmeasg"
+
+#. [button]: id=stopgame
+#: data/gui/window/lobby_player_info.cfg:274
+#, fuzzy
+#| msgid "Load Game"
+msgid "Stop Game"
+msgstr "Luchdaich geama"
 
 #. [label]
 #: data/gui/window/logging.cfg:93
@@ -3766,8 +3804,8 @@ msgstr ""
 msgid "Event"
 msgstr "Tachartas"
 
-#. [label]
 #. [widget]: id=label
+#. [label]
 #: data/gui/window/mp_alerts_options.cfg:154
 #: data/gui/window/preferences.cfg:346
 msgid "Sound"
@@ -3873,9 +3911,23 @@ msgstr "Cuairt air atharrachadh:"
 msgid "When a new turn has begun"
 msgstr "Nuair a thòisich cuairt ùr"
 
-#. [button]: id=revert_to_defaults
+#. [grid]
+#: data/gui/window/mp_alerts_options.cfg:200
+#, fuzzy
+#| msgid "Game data:"
+msgid "Game created:"
+msgstr "Dàta a’ gheama:"
+
+#. [grid]
+#: data/gui/window/mp_alerts_options.cfg:200
+#, fuzzy
+#| msgid "When a new turn has begun"
+msgid "When a new game has been created"
+msgstr "Nuair a thòisich cuairt ùr"
+
 #. [button]: id=btn_reset_hotkeys
 #. [button]: id=orb_defaults
+#. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:293
 #: data/gui/window/select_orb_colors.cfg:102
@@ -4151,7 +4203,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:480
+#: src/gui/dialogs/multiplayer/lobby.cpp:484
 msgid "Map size:"
 msgstr "Meud a’ mhapa:"
 
@@ -5357,30 +5409,26 @@ msgid "Details:"
 msgstr "Fiosrachadh: "
 
 #: src/build_info.cpp:268
-msgid "feature^Experimental OpenMP support"
-msgstr "Taic dheuchainneach ri OpenMP"
-
-#: src/build_info.cpp:273
 msgid "feature^JPG screenshots"
 msgstr "Glacaidhean-sgrìn JPG"
 
-#: src/build_info.cpp:280
+#: src/build_info.cpp:275
 msgid "feature^Lua console completion"
 msgstr "Coileanadh consoil Lua"
 
-#: src/build_info.cpp:285
+#: src/build_info.cpp:280
 msgid "feature^Legacy bidirectional rendering"
 msgstr "Reandaradh dà-chomhaireach dìleabach"
 
-#: src/build_info.cpp:292
+#: src/build_info.cpp:287
 msgid "feature^D-Bus notifications back end"
 msgstr "Backend nam brathan D-Bus"
 
-#: src/build_info.cpp:301
+#: src/build_info.cpp:296
 msgid "feature^Win32 notifications back end"
 msgstr "Backend nam brathan Win32"
 
-#: src/build_info.cpp:307
+#: src/build_info.cpp:302
 msgid "feature^Cocoa notifications back end"
 msgstr "Backend nam brathan Cocoa"
 
@@ -5864,7 +5912,7 @@ msgid "Attacker vulnerability vs"
 msgstr "Ionnsaighear so-leònta a thaobh"
 
 #: src/gui/dialogs/campaign_selection.cpp:318
-#: src/gui/dialogs/multiplayer/lobby.cpp:461
+#: src/gui/dialogs/multiplayer/lobby.cpp:465
 msgid "active_modifications^None"
 msgstr "Chan eil gin"
 
@@ -6047,25 +6095,25 @@ msgstr "Tionndadh: "
 msgid "Modifications: "
 msgstr "Atharraichean: "
 
-#: src/gui/dialogs/game_stats.cpp:74
+#: src/gui/dialogs/game_stats.cpp:71
 msgid "controller^AI"
 msgstr "IF"
 
-#: src/gui/dialogs/game_stats.cpp:74
+#: src/gui/dialogs/game_stats.cpp:71
 msgid "controller^Idle"
 msgstr "’Na thàmh"
 
-#: src/gui/dialogs/game_stats.cpp:110 src/gui/dialogs/label_settings.cpp:67
+#: src/gui/dialogs/game_stats.cpp:109 src/gui/dialogs/label_settings.cpp:78
 msgid "Unknown"
 msgstr "Chan eil fhios"
 
-#: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/game_stats.cpp:195 src/gui/dialogs/game_stats.cpp:198
+#: src/gui/dialogs/multiplayer/lobby.cpp:479
 msgid "no"
 msgstr "dheth"
 
-#: src/gui/dialogs/game_stats.cpp:196 src/gui/dialogs/game_stats.cpp:199
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/game_stats.cpp:195 src/gui/dialogs/game_stats.cpp:198
+#: src/gui/dialogs/multiplayer/lobby.cpp:479
 msgid "yes"
 msgstr "air"
 
@@ -6082,11 +6130,11 @@ msgstr "’Ga ruith air $os"
 msgid "version^N/A"
 msgstr "chan eil fhios"
 
-#: src/gui/dialogs/label_settings.cpp:49
+#: src/gui/dialogs/label_settings.cpp:54
 msgid "Team Labels"
 msgstr "Leubailean nan sgioba"
 
-#: src/gui/dialogs/label_settings.cpp:72
+#: src/gui/dialogs/label_settings.cpp:84
 msgid "Side $side_number ($name)"
 msgstr "Taobh $side_number ($name)"
 
@@ -6237,43 +6285,43 @@ msgstr ""
 "\n"
 "A bheil thu airson an stàladh?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:396
+#: src/gui/dialogs/multiplayer/lobby.cpp:400
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Geamannan: a’ sealltainn $num_shown a-mach à $num_total"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:416
+#: src/gui/dialogs/multiplayer/lobby.cpp:420
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Linn: $era_name)"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:446
+#: src/gui/dialogs/multiplayer/lobby.cpp:450
 msgid "era_or_mod^not installed"
 msgstr "gun stàladh"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:449
+#: src/gui/dialogs/multiplayer/lobby.cpp:453
 msgid "Era"
 msgstr "Linn"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:481
+#: src/gui/dialogs/multiplayer/lobby.cpp:485
 msgid "Reloaded:"
 msgstr "Air ath-luchdadh:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:482
+#: src/gui/dialogs/multiplayer/lobby.cpp:486
 msgid "Shared vision:"
 msgstr "Sealladh co-roinnte:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:483
+#: src/gui/dialogs/multiplayer/lobby.cpp:487
 msgid "Shuffle sides:"
 msgstr "Measgaich na taobhan:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:484
+#: src/gui/dialogs/multiplayer/lobby.cpp:488
 msgid "Time limit:"
 msgstr "Cuingeachadh ùine:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:485
+#: src/gui/dialogs/multiplayer/lobby.cpp:489
 msgid "Use map settings:"
 msgstr "Cleachd roghainnean a’ mhapa:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:493
+#: src/gui/dialogs/multiplayer/lobby.cpp:497
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -6281,19 +6329,19 @@ msgstr ""
 "Feumaidh tu tuilleadan no dhà a stàladh\n"
 "mus gabh thu pàirt sa gheama seo."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:518
+#: src/gui/dialogs/multiplayer/lobby.cpp:522
 msgid "Observers allowed"
 msgstr "Amhairc cheadaichte"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:521
+#: src/gui/dialogs/multiplayer/lobby.cpp:525
 msgid "Observers not allowed"
 msgstr "Chan eil amhairc ceadaichte"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:796
+#: src/gui/dialogs/multiplayer/lobby.cpp:800
 msgid "lobby"
 msgstr "lobaidh"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:956
+#: src/gui/dialogs/multiplayer/lobby.cpp:960
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -7631,7 +7679,7 @@ msgstr "Àithne neo-aithnichte"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/picture.cpp:538
+#: src/picture.cpp:524
 msgid "language code for localized resources^en_US"
 msgstr "gd"
 
@@ -7720,3 +7768,9 @@ msgstr ""
 "Chaidh an iuchair “$deprecated_key” ath-ainmeachadh gu “$key|.” Thèid gach "
 "taic ri “$deprecated_key” a thoirt air falbh leis an tionndadh "
 "$removal_version."
+
+#~ msgid "Kick / ban reason:"
+#~ msgstr "Adhbhar bròige / toirmisg:"
+
+#~ msgid "feature^Experimental OpenMP support"
+#~ msgstr "Taic dheuchainneach ri OpenMP"

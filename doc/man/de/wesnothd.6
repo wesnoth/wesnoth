@@ -220,10 +220,12 @@ den angegebenen Server weiterzuleiten. Es werden die gleichen Schlüssel wie
 bei \fB[redirect]\fP akzeptiert.
 .RE
 .P
-\fB[user_handler]\fP Dies Konfiguriert die Nutzerverwaltung. Die verwendbaren
-Schlüssel hängen davon ab, welche Nutzerverwaltung beim \fBuser_handler\fP
-Schlüssel festgelegt wurde. Ist kein \fB[user_handler]\fP\-Bereich vorhanden, so
-ist es nicht möglich registrierte Nutzernamen auf dem Server zu verwenden.
+\fB[user_handler]\fP Configures the user handler. Available keys vary depending
+on which user handler is set with the \fBuser_handler\fP key. If no
+\fB[user_handler]\fP section is present in the configuration the server will
+run without any nick registration service. All additional tables that are
+needed for the forum_user_handler to function can be found in
+table_definitions.sql in the Wesnoth source repository.
 .RS
 .TP 
 \fBdb_host\fP
@@ -245,12 +247,29 @@ Nutzerdaten ablegt. Dies ist höchstwahrscheinlich
 <table\-prefix>_users (z.B. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
-(für user_handler=forum) Der Name der Tabelle, in der wesnothd spezifische
-Nutzerdaten abgelegt werden sollen. Diese Tabelle muss manuell angelegt
-werden. Dies erfolgt z.B. mit einem Befehl wie diesem: \fBCREATE TABLE
-<table\-name>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
-UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
-0);\fP
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about users. You will have to create this table manually.
+.TP 
+\fBdb_game_info_table\fP
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about games.
+.TP 
+\fBdb_game_player_info_table\fP
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about the players in a game.
+.TP 
+\fBdb_game_modification_info_table\fP
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about the modifications used in a game.
+.TP 
+\fBdb_user_group_table\fP
+(for user_handler=forum) The name of the table in which your phpbb forums
+saves its user group data. Most likely this will be
+<table\-prefix>_user_group (e.g. phpbb3_user_group).
+.TP 
+\fBmp_mod_group\fP
+(for user_handler=forum) The ID of the forum group to be considered as
+having moderation authority.
 .TP 
 \fBuser_expiration\fP
 (für user_handler=sample) Zeit (in Tagen) nach der ein registrierter

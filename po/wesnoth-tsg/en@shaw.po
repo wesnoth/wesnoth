@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2019-06-30 12:14 UTC\n"
+"POT-Creation-Date: 2019-09-16 08:33 UTC\n"
 "PO-Revision-Date: 2009-10-13 01:20-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -162,11 +162,11 @@ msgstr "·𐑕𐑬𐑔 ·𐑜𐑸𐑛"
 msgid "Urza Mathin"
 msgstr "·𐑻𐑟𐑩 ·𐑥𐑨𐑔𐑦𐑯"
 
-#. [side]: type=Outlaw, id=Jera Ilras
 #. [side]: type=Bandit, id=Urza Mathin
 #. [side]: type=Outlaw, id=Urza Nalmath
 #. [side]: type=Rogue, id=Urza Fastik
 #. [side]: type=Outlaw, id=Urza Afalas
+#. [side]: type=Outlaw, id=Jera Ilras
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:61
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:65
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:60
@@ -1642,13 +1642,13 @@ msgstr "𐑝𐑱𐑤 𐑝 𐑑𐑽𐑟"
 msgid "Mal A’kai"
 msgstr "𐑥𐑨𐑤 𐑩'𐑒𐑲"
 
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
-#. [side]: type=Soulless, id=Gruth
-#. [side]: type=Lich, id=Mal M'Brin
 #. [side]
 #. [side]: type=Ancient Lich, id=Mal M'Brin
 #. [side]: type=Soulless, id=Groth
 #. [side]: type=Lich, id=Mal Tera
+#. [side]: type=Soulless, id=Gruth
+#. [side]: type=Lich, id=Mal M'Brin
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Dark Sorcerer, id=Mal A'kai
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:66
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:96
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:141
@@ -1903,9 +1903,9 @@ msgstr "𐑿, 𐑨𐑑 𐑤𐑰𐑕𐑑, 𐑢𐑦𐑤 𐑑𐑮𐑳𐑚𐑩𐑤 �
 msgid "Mebrin! Are you there? We have come to seek your aid!"
 msgstr "·𐑥𐑧𐑚𐑮𐑦𐑯! 𐑸 𐑿 𐑞𐑺? 𐑢𐑰 𐑣𐑨𐑝 𐑒𐑳𐑥 𐑑 𐑕𐑰𐑒 𐑿𐑼 𐑲𐑛!"
 
-#. [message]: speaker=narrator
 #. [message]: speaker=Kramak
 #. [message]: speaker=Ethiliel
+#. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:635
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:646
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:395
@@ -1925,15 +1925,17 @@ msgstr "·𐑥𐑧𐑚𐑮𐑦𐑯! 𐑢𐑺 𐑸 𐑿?!"
 #| msgid ""
 #| "His home is empty... There are footprints leading away to the south... "
 #| "What can have happened here?"
-msgid "His home is empty... There are footprints leading away to the south..."
+msgid ""
+"His home is empty... There are several sets of footprints leading away to "
+"the south..."
 msgstr ""
 "𐑣𐑦𐑟 𐑣𐑴𐑥 𐑦𐑟 𐑧𐑥𐑐𐑑𐑦... 𐑞𐑺 𐑸 𐑓𐑫𐑑𐑐𐑮𐑦𐑯𐑑𐑕 𐑤𐑰𐑛𐑦𐑙 𐑩𐑢𐑱 𐑑 𐑞 𐑕𐑬𐑔... 𐑢𐑪𐑑 𐑒𐑨𐑯 𐑣𐑨𐑝 𐑣𐑨𐑐𐑩𐑯𐑛 "
 "𐑣𐑽?"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:657
-msgid "Maybe whoever summoned these undead knows where he is?"
-msgstr "𐑥𐑱𐑚𐑰 𐑣𐑵𐑧𐑝𐑼 𐑕𐑳𐑥𐑩𐑯𐑛 𐑞𐑰𐑟 𐑳𐑯𐑛𐑧𐑛 𐑯𐑴𐑟 𐑢𐑺 𐑣𐑰 𐑦𐑟?"
+msgid "Perhaps he was taken by the undead?"
+msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:662
@@ -1943,22 +1945,26 @@ msgstr "𐑥𐑱𐑚𐑰 𐑣𐑵𐑧𐑝𐑼 𐑕𐑳𐑥𐑩𐑯𐑛 𐑞𐑰�
 #| "But the undead would have slain him and made him one of them. Who then "
 #| "can have taken him?"
 msgid ""
-"There is no blood here, so he must have been taken by surprise. But I "
-"suspect the undead would have slain him and made him one of them."
+"I am not sure. There is no blood here and very little sign of struggle. If "
+"it had been the undead, I suspect they would have slain him and made him one "
+"of them."
 msgstr ""
 "𐑞𐑺 𐑦𐑟 𐑯𐑴 𐑚𐑤𐑳𐑛 𐑣𐑽, 𐑘𐑧𐑑 𐑯𐑴 ·𐑥𐑧𐑚𐑮𐑦𐑯. 𐑕𐑳𐑥𐑢𐑳𐑯 𐑥𐑳𐑕𐑑 𐑣𐑨𐑝 𐑒𐑦𐑛𐑯𐑨𐑐𐑑 𐑣𐑦𐑥. 𐑚𐑳𐑑 𐑞 𐑳𐑯𐑛𐑧𐑛 "
 "𐑢𐑫𐑛 𐑣𐑨𐑝 𐑕𐑤𐑱𐑯 𐑣𐑦𐑥 𐑯 𐑥𐑱𐑛 𐑣𐑦𐑥 𐑢𐑳𐑯 𐑝 𐑞𐑧𐑥. 𐑣𐑵 𐑞𐑧𐑯 𐑒𐑨𐑯 𐑣𐑨𐑝 𐑑𐑱𐑒𐑩𐑯 𐑣𐑦𐑥?"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:667
-msgid "Maybe the bandits who have been summoning the undead took him?"
+#, fuzzy
+#| msgid "Maybe the bandits who have been summoning the undead took him?"
+msgid "Then maybe the bandits who have been summoning the undead took him?"
 msgstr "𐑥𐑱𐑚𐑰 𐑞 𐑚𐑨𐑯𐑛𐑩𐑑𐑕 𐑣𐑵 𐑣𐑨𐑝 𐑚𐑰𐑯 𐑕𐑳𐑥𐑩𐑯𐑦𐑙 𐑞 𐑳𐑯𐑛𐑧𐑛 𐑑𐑫𐑒 𐑣𐑦𐑥?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:672
 msgid ""
-"We cannot be sure. I still find it strange that there is no sign of a battle "
-"here. Ethiliel, what do you think?"
+"We cannot be sure. I should think that he would have put up a fight, but if "
+"he were ambushed or taken by surprise, he may not have had the chance. "
+"Ethiliel, what do you think?"
 msgstr ""
 
 #. [message]: speaker=Deoran
@@ -1990,9 +1996,9 @@ msgstr ""
 #. [message]: speaker=Necro
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:732
 msgid ""
-"So the elves finally come to defend their valley. Pity, they showed up a "
-"little late. We will stop them here and prevent them from reclaiming the "
-"knowledge that was once theirs!"
+"So the elves finally come to defend their valley. Pity, they showed up too "
+"late. We will stop them here and prevent them from reclaiming the knowledge "
+"that was once theirs!"
 msgstr ""
 
 #. [message]: speaker=Deoran
@@ -2013,8 +2019,8 @@ msgstr ""
 msgid "Choice in the Fog"
 msgstr "𐑗𐑶𐑕 𐑦𐑯 𐑞 𐑓𐑪𐑜"
 
-#. [side]: type=Outlaw, id=Urza Afalas
 #. [unit]: type=Outlaw, id=Urza Afalas
+#. [side]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:55
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:473
 msgid "Urza Afalas"
@@ -5339,7 +5345,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "<i>“These are our terms: no human will be permitted in the forests or hills "
-"of the Aetherwood, and likewise, we elves will not traverse the plains and "
+"of the Aethenwood, and likewise, we elves will not traverse the plains and "
 "farmlands belonging to you humans. No more will the elves send ambassadors "
 "or councilors to Westin, and no more will men wander the green woods.”</i>"
 msgstr ""
@@ -5368,7 +5374,7 @@ msgid ""
 "Thus, an uneasy peace was established between man and elf. For many weeks, "
 "the South Guard patrolled the borders of the elven woods and watched over "
 "the growing farms and villages. The threat from the elves was enough to keep "
-"the villagers from entering the now forbidding Aetherwood, and despite the "
+"the villagers from entering the now forbidding Aethenwood, and despite the "
 "palpable tension at the forest border, the truce was maintained without "
 "incident."
 msgstr ""
@@ -5479,6 +5485,9 @@ msgstr ""
 "·𐑛𐑰𐑴𐑮𐑨𐑯 𐑕𐑐𐑧𐑯𐑑 𐑣𐑦𐑟 𐑛𐑱𐑟 𐑝𐑦𐑟𐑩𐑑𐑦𐑙 𐑞 𐑢𐑵𐑯𐑛𐑩𐑛 𐑯 𐑛𐑲𐑮𐑧𐑒𐑑𐑦𐑙 𐑞 𐑥𐑧𐑯 𐑨𐑟 𐑞𐑱 𐑮𐑰𐑚𐑦𐑤𐑑 𐑞 𐑖𐑨𐑑𐑻𐑛 "
 "𐑢𐑷𐑤𐑟 𐑯 𐑮𐑨𐑥𐑐𐑸𐑑𐑕 𐑝 𐑞 𐑕𐑦𐑑𐑦. 𐑓𐑲𐑯𐑩𐑤𐑦, 𐑨𐑟 𐑞 𐑕𐑯𐑴 𐑥𐑧𐑤𐑑𐑩𐑛 𐑯 𐑞 𐑮𐑴𐑛𐑟 𐑚𐑹 𐑞𐑺 𐑚𐑻𐑛𐑩𐑯𐑟 𐑩𐑜𐑱𐑯, "
 "𐑩 𐑥𐑧𐑕𐑩𐑯𐑡𐑼 𐑒𐑱𐑥 𐑓𐑮𐑪𐑥 𐑒𐑦𐑙 ·𐑣𐑭𐑤𐑛𐑮𐑦𐑒."
+
+#~ msgid "Maybe whoever summoned these undead knows where he is?"
+#~ msgstr "𐑥𐑱𐑚𐑰 𐑣𐑵𐑧𐑝𐑼 𐑕𐑳𐑥𐑩𐑯𐑛 𐑞𐑰𐑟 𐑳𐑯𐑛𐑧𐑛 𐑯𐑴𐑟 𐑢𐑺 𐑣𐑰 𐑦𐑟?"
 
 #, fuzzy
 #~ msgid ""
