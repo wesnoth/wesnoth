@@ -599,7 +599,6 @@ std::vector<topic> generate_faction_topics(const config & era, const bool sort_g
 				if (const unit_race *r = unit_types.find_race(type.race_id())) {
 					races.insert(make_link(r->plural_name(), std::string("..") + race_prefix + r->id()));
 				}
-				DBG_HP << type.alignment() << " -> " << type.alignment_description(type.alignment(), type.genders().front()) << "\n";
 				alignments.insert(make_link(type.alignment_description(type.alignment(), type.genders().front()), "time_of_day"));
 			}
 		}

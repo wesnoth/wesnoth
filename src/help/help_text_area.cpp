@@ -31,6 +31,11 @@
 static lg::log_domain log_display("display");
 #define WRN_DP LOG_STREAM(warn, log_display)
 
+static lg::log_domain log_help("help");
+#define ERR_HP LOG_STREAM(err, log_help)
+#define WRN_HP LOG_STREAM(warn, log_help)
+#define DBG_HP LOG_STREAM(debug, log_help)
+
 namespace help {
 
 help_text_area::help_text_area(CVideo &video, const section &toplevel) :
@@ -60,6 +65,7 @@ void help_text_area::show_topic(const topic &t)
 	shown_topic_ = &t;
 	set_items();
 	set_dirty(true);
+	DBG_HP << "Showing topic: " << t.id << ": " << t.title << std::endl;
 }
 
 
