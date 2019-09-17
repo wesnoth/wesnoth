@@ -259,7 +259,7 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 void unit_preview_pane::set_displayed_type(const unit_type& type)
 {
 	// Sets the current type id for the profile button callback to use
-	current_type_ = type.id();
+	current_type_ = type;
 
 	if(icon_type_) {
 		std::string mods;
@@ -401,7 +401,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 void unit_preview_pane::set_displayed_unit(const unit& u)
 {
 	// Sets the current type id for the profile button callback to use
-	current_type_ = u.type_id();
+	current_type_ = u.type();
 
 	if(icon_type_) {
 		std::string mods = u.image_mods();
@@ -546,11 +546,8 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 
 void unit_preview_pane::profile_button_callback()
 {
-	if(get_window()) {
-		const unit_type* ut = unit_types.find(current_type_);
-		if(ut != nullptr) {
-			help::show_unit_description(*ut);
-		}
+	if(get_window() && current_type_) {
+		help::show_unit_description(*current_type_);
 	}
 }
 
