@@ -252,6 +252,14 @@ void unit_recall::pre_show(window& window)
 		// of certain options to filter on.
 		std::string filter_text = unit->type_name() + " " + name + " " + std::to_string(unit->level());
 
+		if(recallable) {
+			// This is to allow filtering for recallable units by typing "vvv" in the search box.
+			// That's intended to be easy to type and unlikely to match unit or type names.
+			//
+			// TODO: document this. (Also, implement a "Hide non-recallable units" checkbox.)
+			filter_text += " " + std::string("vvv");
+		}
+
 		std::string traits;
 		for(const std::string& trait : unit->trait_names()) {
 			traits += (traits.empty() ? "" : "\n") + trait;
