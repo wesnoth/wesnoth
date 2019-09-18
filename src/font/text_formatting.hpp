@@ -38,6 +38,11 @@ namespace font {
 std::string span_color(const color_t& color);
 
 /**
+ * Like span_color(const color_t&), but append the data string and a "</span>" tag.
+ */
+std::string span_color(const color_t& color, const std::string& data);
+
+/**
  * Returns a hex color string from a color range.
  *
  * @param id           The id of the color range.
