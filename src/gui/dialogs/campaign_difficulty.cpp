@@ -76,6 +76,14 @@ config generate_difficulty_config(const config& source)
 	// Populate local config with difficulty children
 	result.append_children(source, "difficulty");
 
+	// Issue deprecation warnings about the old difficulties syntax
+	if(result.empty() && source.has_attribute("difficulties")) {
+		deprecated_message("[campaign]difficulties", DEP_LEVEL::REMOVED, {1, 15, 0}, "Use [difficulty] instead.");
+		if(source.has_attribute("difficulty_descriptions")) {
+			deprecated_message("[campaign]difficulty_descriptions", DEP_LEVEL::REMOVED, {1, 15, 0}, "Use [difficulty] instead.");
+		}
+	}
+
 	return result;
 }
 
