@@ -33,6 +33,7 @@
 #include "game_board.hpp"
 #include "gettext.hpp"
 #include "replay_helper.hpp"
+#include "play_controller.hpp"
 #include "resources.hpp"
 #include "synced_context.hpp"
 #include "team.hpp"
@@ -40,6 +41,7 @@
 #include "units/unit.hpp"
 #include "units/ptr.hpp"
 #include "utils/functional.hpp"
+#include "whiteboard/manager.hpp"
 
 #include <boost/dynamic_bitset.hpp>
 
@@ -194,10 +196,18 @@ void unit_recall::pre_show(window& window)
 
 		std::string mods = unit->image_mods();
 
+		int wb_gold = 0;
+		if(resources::controller) {
+			if(const std::shared_ptr<wb::manager>& whiteb = resources::controller->get_whiteboard()) {
+				wb::future_map future; // So gold takes into account planned spending
+				wb_gold = whiteb->get_spent_gold_for(team_.side());
+			}
+		}
+
 		// Note: Our callers apply [filter_recall], but leave it to us
 		// to apply cost-based filtering.
 		const int recall_cost = (unit->recall_cost() > -1 ? unit->recall_cost() : team_.recall_cost());
-		const bool recallable = (recall_cost <= team_.gold());
+		const bool recallable = (recall_cost <= team_.gold() - wb_gold);
 
 		if(unit->can_recruit()) {
 			mods += "~BLIT(" + unit::leader_crown() + ")";
