@@ -34,6 +34,8 @@
 #include "utils/general.hpp"
 #include "video.hpp" // non_interactive()
 
+#include <SDL2/SDL_messagebox.h> // for SDL_ShowSimpleMessageBox()
+
 #include <sys/stat.h> // for setting the permissions of the preferences file
 #ifndef _WIN32
 #include <unistd.h>
@@ -101,9 +103,37 @@ base_manager::base_manager()
 		read(prefs, *stream);
 #endif
 	} catch(const config::error& e) {
-		ERR_CFG << "Error loading preference, message: "
-				<< e.what()
-				<< std::endl;
+		std::ostringstream str;
+#ifdef DEFAULT_PREFS_PATH
+		str << "Error loading preferences files "
+			<< filesystem::get_default_prefs_file()
+			<< " and "
+			<< filesystem::get_prefs_file();
+#else
+		str << "Error loading preferences file "
+			<< filesystem::get_prefs_file();
+#endif
+		str << ": " << e.what() << std::endl;
+		str << "Hint: To quickly work around the problem, rename those files.\n";
+		ERR_CFG << str.str();
+
+		// Show an SDL error dialog; this code is called from do_gameloop (via
+		// the title_screen constructor) before GUI2 has fully initialized.
+		//
+		// gettext hasn't been initialized either, so these messages aren't marked
+		// for translation.
+		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
+				"The Battle for Wesnoth",
+				str.str().c_str(),
+				nullptr);
+
+		// The preferences file is corrupt.  Exit now to avoid overwriting the
+		// corrupt file with a new one, discarding all the user's settings
+		// in the process.
+		//
+		// TODO: Make this nicer.  See
+		// https://github.com/wesnoth/wesnoth/issues/1326#issuecomment-531505468
+		std::exit(1);
 	}
 	preferences::load_credentials();
 }
