@@ -79,12 +79,29 @@ static void dump_recall_list_to_console(const T& units)
 	}
 }
 
-static std::string format_level_string(const int level)
+static const color_t inactive_row_color(0x96, 0x96, 0x96);
+
+static const inline std::string maybe_inactive(const std::string& str, bool active)
+{
+	if(active)
+		return str;
+	else
+		return font::span_color(inactive_row_color, str);
+}
+
+static std::string format_level_string(const int level, bool recallable)
 {
 	std::string lvl = std::to_string(level);
 
-	if(level < 1) {
-		return "<span color='#969696'>" + lvl + "</span>";
+	if(!recallable) {
+		// Same logic as when recallable, but always in inactive_row_color.
+		if(level < 2) {
+			return font::span_color(inactive_row_color, lvl);
+		} else {
+			return font::span_color(inactive_row_color, "<b>" + lvl + "</b>");
+		}
+	} else if(level < 1) {
+		return font::span_color(inactive_row_color, lvl);
 	} else if(level == 1) {
 		return lvl;
 	} else if(level == 2) {
@@ -177,6 +194,11 @@ void unit_recall::pre_show(window& window)
 
 		std::string mods = unit->image_mods();
 
+		// Note: Our callers apply [filter_recall], but leave it to us
+		// to apply cost-based filtering.
+		const int recall_cost = (unit->recall_cost() > -1 ? unit->recall_cost() : team_.recall_cost());
+		const bool recallable = (recall_cost <= team_.gold());
+
 		if(unit->can_recruit()) {
 			mods += "~BLIT(" + unit::leader_crown() + ")";
 		}
@@ -185,34 +207,45 @@ void unit_recall::pre_show(window& window)
 			mods += "~BLIT(" + overlay + ")";
 		}
 
+		if(!recallable) {
+			mods += "~GS()";
+		}
+
 		column["use_markup"] = "true";
 
 		column["label"] = unit->absolute_image() + mods;
 		row_data.emplace("unit_image", column);
 
-		column["label"] = unit->type_name();
+		column["label"] = maybe_inactive(unit->type_name(), recallable);
 		row_data.emplace("unit_type", column);
 
-		column["label"] = format_cost_string(unit->recall_cost(), team_.recall_cost());
+		column["label"] = 
+			recallable
+			? "themes/gold.png" 
+			: "themes/gold.png~GS()";
+		row_data.emplace("gold_icon", column);
+
+		column["label"] =
+			recallable
+			? format_cost_string(unit->recall_cost(), team_.recall_cost())
+			: maybe_inactive(std::to_string(recall_cost), recallable);
 		row_data.emplace("unit_recall_cost", column);
 
 		const std::string& name = !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
-		column["label"] = name;
+		column["label"] = maybe_inactive(name, recallable);
 		row_data.emplace("unit_name", column);
 
-		column["label"] = format_level_string(unit->level());
+		column["label"] = format_level_string(unit->level(), recallable);
 		row_data.emplace("unit_level", column);
 
 		std::stringstream exp_str;
-		exp_str << font::span_color(unit->xp_color());
 		if(unit->can_advance()) {
 			exp_str << unit->experience() << "/" << unit->max_experience();
 		} else {
 			exp_str << font::unicode_en_dash;
 		}
-		exp_str << "</span>";
 
-		column["label"] = exp_str.str();
+		column["label"] = font::span_color(recallable ? unit->xp_color() : inactive_row_color, exp_str.str());
 		row_data.emplace("unit_experience", column);
 
 		// Since the table widgets use heavy formatting, we save a bare copy
@@ -225,7 +258,9 @@ void unit_recall::pre_show(window& window)
 			filter_text += " " + trait;
 		}
 
-		column["label"] = !traits.empty() ? traits : font::unicode_en_dash;
+		column["label"] = maybe_inactive(
+					!traits.empty() ? traits : font::unicode_en_dash,
+					recallable);
 		row_data.emplace("unit_traits", column);
 
 		list.add_row(row_data);

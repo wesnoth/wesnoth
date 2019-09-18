@@ -600,7 +600,8 @@ public:
 		return unit_value_;
 	}
 
-	/** How much gold it costs to recall this unit. */
+	/** How much gold it costs to recall this unit, or -1 if the side's default
+	 * recall cost is used. */
 	int recall_cost() const
 	{
 		return recall_cost_;
