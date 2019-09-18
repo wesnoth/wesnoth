@@ -219,11 +219,7 @@ void unit_recall::pre_show(window& window)
 		column["label"] = maybe_inactive(unit->type_name(), recallable);
 		row_data.emplace("unit_type", column);
 
-		column["label"] = 
-			recallable
-			? "themes/gold.png" 
-			: "themes/gold.png~GS()";
-		row_data.emplace("gold_icon", column);
+		// gold_icon is handled below
 
 		column["label"] =
 			recallable
@@ -271,8 +267,13 @@ void unit_recall::pre_show(window& window)
 					recallable);
 		row_data.emplace("unit_traits", column);
 
-		list.add_row(row_data);
 		filter_options_.push_back(filter_text);
+		grid& grid = list.add_row(row_data);
+		if(!recallable) {
+			image *gold_icon = dynamic_cast<image*>(grid.find("gold_icon", false));
+			assert(gold_icon);
+			gold_icon->set_image(gold_icon->get_image() + "~GS()");
+		}
 	}
 
 	list.register_translatable_sorting_option(0, [this](const int i) { return recall_list_[i]->type_name().str(); });
