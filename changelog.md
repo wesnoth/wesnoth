@@ -29,7 +29,7 @@
    * Chat is now enable in single-player and hotseat multiplayer. (Issue#1111)
    * Ported the "expand-terrain-macros" tool to Python 3
    * It's now possible to chat with oneself in SP campaigns. Chat is shown in replays. (Issue#1111)
-   * Removed the unused "scoutDefault" Python tool
+   * Removed unused "scoutDefault" and "journeylifter" Python tools
 
 ## Version 1.15.1
  ### Editor
