@@ -33,7 +33,7 @@ public:
 	//after the call dst contains one child when returned true otherwise it's empty.
 	bool read(config& dst);
 	//returns false if there is still data in the internal buffer.
-	bool is_at_end();
+	bool is_at_end() const;
 	void set_source(source_type source);
 	//returns a function to be passed to set_source.
 	static source_type get_source_from_config(config& src);

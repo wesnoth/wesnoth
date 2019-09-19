@@ -971,7 +971,7 @@ struct dialog_tester<screenshot_notification>
 template<>
 struct dialog_tester<theme_list>
 {
-	static theme_info make_theme(std::string name)
+	static theme_info make_theme(const std::string& name)
 	{
 		theme_info ti;
 		ti.id = name;

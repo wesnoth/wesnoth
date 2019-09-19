@@ -67,7 +67,7 @@ static std::string format_level_string(const int level)
 
 }
 
-static std::string format_if_leader(unit_const_ptr u, const std::string str)
+static std::string format_if_leader(unit_const_ptr u, const std::string& str)
 {
 	return (*u).can_recruit() ? "<span color='#cdad00'>" + str + "</span>" : str;
 }

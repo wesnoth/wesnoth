@@ -46,7 +46,7 @@ bool kde_style = false;
 
 struct wnotify
 {
-	wnotify(uint32_t id_arg, std::string owner_arg, std::string message_arg)
+	wnotify(uint32_t id_arg, const std::string & owner_arg, const std::string & message_arg)
 		: id(id_arg)
 		, owner(owner_arg)
 		, message(message_arg)

@@ -920,7 +920,7 @@ void display::render_buttons()
 }
 
 
-gui::button::TYPE display::string_to_button_type(std::string type)
+gui::button::TYPE display::string_to_button_type(const std::string& type)
 {
 	gui::button::TYPE res = gui::button::TYPE_PRESS;
 	if (type == "checkbox") { res = gui::button::TYPE_CHECK; }

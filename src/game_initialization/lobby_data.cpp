@@ -184,7 +184,7 @@ std::string make_short_name(const std::string& long_name)
 	return ss.str();
 }
 
-std::string make_game_type_marker(std::string text, bool color_for_missing)
+std::string make_game_type_marker(const std::string& text, bool color_for_missing)
 {
 	if(color_for_missing) {
 		return formatter() << "<b><span color='#f00'>[" << text << "]</span></b> ";

@@ -82,7 +82,7 @@ public:
 
 	bool jump_to_editor() const { return jump_to_editor_; }
 
-	void select_mp_server(std::string server) { multiplayer_server_ = server; }
+	void select_mp_server(const std::string& server) { multiplayer_server_ = server; }
 	bool play_multiplayer(mp_selection res);
 	bool play_multiplayer_commandline();
 	bool change_language();

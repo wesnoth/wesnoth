@@ -392,7 +392,7 @@ public:
 	std::shared_ptr<gui::button> find_action_button(const std::string& id);
 	std::shared_ptr<gui::button> find_menu_button(const std::string& id);
 
-	static gui::button::TYPE string_to_button_type(std::string type);
+	static gui::button::TYPE string_to_button_type(const std::string& type);
 	void create_buttons();
 
 	void layout_buttons();

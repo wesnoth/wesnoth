@@ -1408,8 +1408,8 @@ public:
 			unsigned int rounds,
 			double a_hit_chance,
 			double b_hit_chance,
-			std::vector<combat_slice> a_split,
-			std::vector<combat_slice> b_split,
+			const std::vector<combat_slice>& a_split,
+			const std::vector<combat_slice>& b_split,
 			double a_initially_slowed_chance,
 			double b_initially_slowed_chance);
 
@@ -1464,8 +1464,8 @@ monte_carlo_combat_matrix::monte_carlo_combat_matrix(unsigned int a_max_hp,
 		unsigned int rounds,
 		double a_hit_chance,
 		double b_hit_chance,
-		std::vector<combat_slice> a_split,
-		std::vector<combat_slice> b_split,
+		const std::vector<combat_slice>& a_split,
+		const std::vector<combat_slice>& b_split,
 		double a_initially_slowed_chance,
 		double b_initially_slowed_chance)
 	: combat_matrix(a_max_hp,
