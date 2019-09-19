@@ -1,6 +1,7 @@
 ## Version 1.14.8+dev
  ### AI:
    * Fixed a rare crash in attack prediction (issue #4068)
+   * Experimental AI: fixed guardians being used for village actions
  ### Campaigns
    * A Tale of Two Brothers:
      * S3: modify castle illumination tip on easy mode

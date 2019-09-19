@@ -899,11 +899,16 @@ function ai_helper.get_live_units(filter)
     return wesnoth.get_units { { "not", { status = "petrified" } }, { "and", filter } }
 end
 
-function ai_helper.get_units_with_moves(filter)
+function ai_helper.get_units_with_moves(filter, exclude_guardians)
+    -- Optional input: @exclude_guardians: set to 'true' to exclude units with ai_special=guardian
     -- Note: the order of the filters and the [and] tags are important for speed reasons
+    local exclude_status = 'petrified'
+    if exclude_guardians then
+        exclude_status = exclude_status .. ',guardian'
+    end
     return wesnoth.get_units {
         { "and", { formula = "moves > 0" } },
-        { "not", { status = "petrified" } },
+        { "not", { status = exclude_status } },
         { "and", filter }
     }
 end

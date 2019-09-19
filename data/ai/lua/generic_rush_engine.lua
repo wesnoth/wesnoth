@@ -267,9 +267,7 @@ return {
             if AH.print_eval() then print_time('     - Evaluating grab_villages CA:') end
 
             -- Check if there are units with moves left
-            local units = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'no',
-                formula = 'movement_left > 0'
-            }
+            local units = AH.get_units_with_moves({ side = wesnoth.current.side, canrecruit = 'no' }, true)
             if (not units[1]) then
                 if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
                 return 0
@@ -513,10 +511,7 @@ return {
         ------- Retreat CA --------------
 
         function generic_rush:retreat_injured_units_eval()
-            local units = wesnoth.get_units {
-                side = wesnoth.current.side,
-                formula = 'movement_left > 0'
-            }
+            local units = AH.get_units_with_moves({ side = wesnoth.current.side }, true)
             local unit, loc = R.retreat_injured_units(units)
             if unit then
                 self.data.retreat_unit = unit
@@ -563,11 +558,7 @@ return {
                 return 0
             end
 
-            local units = wesnoth.get_units {
-                side = wesnoth.current.side,
-                canrecruit = false,
-                formula = 'movement_left > 0'
-            }
+            local units = AH.get_units_with_moves({ side = wesnoth.current.side, canrecruit = 'no' }, true)
 
             if not units[1] then
                 return 0
@@ -577,11 +568,7 @@ return {
         end
 
         function generic_rush:village_hunt_exec()
-            local unit = wesnoth.get_units({
-                side = wesnoth.current.side,
-                canrecruit = false,
-                formula = 'movement_left > 0'
-            })[1]
+            local unit = AH.get_units_with_moves({ side = wesnoth.current.side, canrecruit = 'no' }, true)[1]
 
             local villages = wesnoth.get_villages()
             local target, best_cost = nil, AH.no_path
