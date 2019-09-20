@@ -41,6 +41,10 @@ struct ingame_wesnothd_error : public wesnothd_error ,public lua_jailbreak_excep
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(ingame_wesnothd_error)
 };
 
+struct leavegame_wesnothd_error : ingame_wesnothd_error
+{
+    leavegame_wesnothd_error(const std::string& error) : ingame_wesnothd_error(error) {}
+};
 
 ///an error occurred inside the underlying network communication code (boost asio)
 ///TODO: find a short name
