@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 """
 wmlflip -- coordinate transformation for .cfg macro calls.
 
@@ -34,8 +34,8 @@ options to pacify the argument parser.
 More transformations would be easy to write.
 """
 
-import sys, os, time, getopt, cStringIO, re
-from wesnoth.wmltools import *
+import sys, os, time, getopt, io, re
+from wesnoth.wmltools3 import *
 
 class ParseArgs:
     "Mine macro argument locations out of a .cfg file."
@@ -56,20 +56,20 @@ class ParseArgs:
             return self.fp.read(1)
     def ungetchar(self, c):
         if verbose:
-            print "pushing back", c
+            print("pushing back", c)
         self.pushback = c
     def parse_until(self, enders):
         "Parse until we reach specified terminator."
         if self.verbose:
             self.lead += "*"
-            print self.lead + " parse_until(%s) starts" % enders
+            print(self.lead + " parse_until(%s) starts" % enders)
         while True:
             c = self.getchar()
             if self.verbose:
-                print self.lead + "I see", c
+                print(self.lead + "I see", c)
             if c in enders:
                 if self.verbose:
-                    print self.lead + "parse_until(%s) ends" % enders
+                    print(self.lead + "parse_until(%s) ends" % enders)
                     self.lead = self.lead[:-1]
                 return c
             elif c == '{':
@@ -78,7 +78,7 @@ class ParseArgs:
         "We see a start of call."
         if self.verbose:
             self.lead += "*"
-            print self.lead + "parse_call()"
+            print(self.lead + "parse_call()")
         self.namestack.append(["", []])
         # Fill in the name of the called macro
         while True:
@@ -88,12 +88,12 @@ class ParseArgs:
             else:
                 break
         if self.verbose:
-            print self.lead + "name", self.namestack[-1]
+            print(self.lead + "name", self.namestack[-1])
         # Discard if no arguments
         if c == '}':
             self.namestack.pop()
             if self.verbose:
-                print self.lead + "parse_call() ends"
+                print(self.lead + "parse_call() ends")
                 self.lead = self.lead[:-1]
             return
         # If non-space, this is something like a filename include;
@@ -103,7 +103,7 @@ class ParseArgs:
                 c =  self.getchar()
                 if c == '}':
                     if self.verbose:
-                        print self.lead + "parse_call() ends"
+                        print(self.lead + "parse_call() ends")
                         self.lead = self.lead[:-1]
                     return
         # It's a macro call with arguments;
@@ -115,21 +115,21 @@ class ParseArgs:
         # Record the scope we just parsed
         self.parsed.append(self.namestack.pop())
         if self.verbose:
-            print self.lead + "parse_call() ends"
+            print(self.lead + "parse_call() ends")
             self.lead = self.lead[:-1]
     def parse_actual(self):
         "Parse an actual argument."
         # Skip leading whitespace
         if self.verbose:
             self.lead += "*"
-            print self.lead + "parse_actual() begins"
+            print(self.lead + "parse_actual() begins")
         while True:
             c = self.getchar()
             if not c.isspace():
                 break
         if c == '}':
             if self.verbose:
-                print "** parse_actual() returns False"
+                print("** parse_actual() returns False")
                 self.lead = self.lead[:-1]
             return False
         # Looks like we have a real argument
@@ -146,7 +146,7 @@ class ParseArgs:
             argend = self.fp.tell()
         elif c == '"':
             if verbose:
-                print self.lead + "starting string argument"
+                print(self.lead + "starting string argument")
             self.parse_until(['"'])
             argend = self.fp.tell()
         else:
@@ -155,7 +155,7 @@ class ParseArgs:
             self.ungetchar(ender)
         self.namestack[-1][1].append((argstart, argend))
         if self.verbose:
-            print self.lead + "parse_actual() returns True"
+            print(self.lead + "parse_actual() returns True")
             self.lead = self.lead[:-1]
         return True
 
@@ -186,15 +186,14 @@ def relevant_macros():
 def transformables(filename, relevant, verbose):
     "Return a list of transformable (X,Y) regions in the specified file."
     # Grab the content
-    fp = open(filename, "r")
-    content = fp.read()
-    fp.close()
+    with open(filename, "r") as fp:
+        content = fp.read()
 
     # Get argument offsets from it.
-    calls = ParseArgs(cStringIO.StringIO(content), verbose)
+    calls = ParseArgs(io.StringIO(content), verbose)
 
     # Filter out irrelevant calls.
-    parsed = filter(lambda x: x[0] in relevant, calls.parsed)
+    parsed = [x for x in calls.parsed if x[0] in relevant]
 
     # Extract coordinate pair locations from macro arguments.
     pairs = []
@@ -215,7 +214,7 @@ def transformables(filename, relevant, verbose):
     # Sort by start of the x coordinate, then reverse the list,
     # so later changes won't screw up earlier ones.
     # Presumes that coordinate pairs are never interleaved.
-    pairs.sort(lambda p, q: cmp(p[0][0], q[0][0]))
+    pairs.sort(key=lambda element: element[0][0])
     pairs.reverse()
 
     # Return the file content as a string and the transformable extents in it.
@@ -224,12 +223,13 @@ def transformables(filename, relevant, verbose):
 def mapsize(filename):
     "Return the size of a specified mapfile."
     x = y = 0
-    for line in open(filename):
-        if "," in line:
-            y += 1
-            nx = line.count(",") + 1
-            assert(x == 0 or x == nx)
-            x = nx
+    with open(filename) as f:
+        for line in f:
+            if "," in line:
+                y += 1
+                nx = line.count(",") + 1
+                assert(x == 0 or x == nx)
+                x = nx
     return (x, y)
 
 if __name__ == '__main__':
@@ -237,7 +237,7 @@ if __name__ == '__main__':
     verbose = 0
     mapfile = None
     translate = False
-    (options, arguments) = getopt.getopt(sys.argv[1:], "m:txyv")
+    (options, arguments) = getopt.getopt(sys.argv[1:], "m:txyvh")
 
     for (switch, val) in options:
         if switch in ('-h', '--help'):
@@ -250,23 +250,23 @@ if __name__ == '__main__':
         elif switch in ('-x'):
             flip_x = True
         elif switch in ('-y'):
-            print >>sys.stderr, "Vertical flip is not yet supported."
+            print("Vertical flip is not yet supported.", file=sys.stderr)
             sys.exit(0)
         elif switch == '-v':
             verbose += 1
     if verbose:
-        print "Debugging output enabled."
+        print("Debugging output enabled.")
 
     if mapfile:
         (mx, my) = mapsize(mapfile)
-        print >>sys.stderr, "%s is %d wide by %d high" % (mapfile, mx, my)
+        print("%s is %d wide by %d high" % (mapfile, mx, my), file=sys.stderr)
 
     if arguments and not flip_x and not translate:
-        print >>sys.stderr, "No coordinate transform is specified."
+        print("No coordinate transform is specified.", file=sys.stderr)
         sys.exit(0)
 
     if flip_x and not mapfile:
-        print >>sys.stderr, "X flip transformation needs to know the map size.."
+        print("X flip transformation needs to know the map size..", file=sys.stderr)
         sys.exit(0)
 
     if translate:
@@ -279,7 +279,7 @@ if __name__ == '__main__':
         # For each file named on the command line...
         for filename in arguments:
             if verbose:
-                print >>sys.stderr, "Processing file", filename
+                print("Processing file", filename, file=sys.stderr)
 
             (content, pairs) = transformables(filename, relevant, verbose > 1)
 
@@ -310,13 +310,12 @@ if __name__ == '__main__':
                 # This is generic again
                 target.append((xn, yn))
                 if verbose:
-                    print "(%d, %d) -> (%d, %d)" % (x, y, xn, yn)
+                    print("(%d, %d) -> (%d, %d)" % (x, y, xn, yn))
 
             # Perform the actual transformation
             for (((xs, xe), (ys, ye)), (xn, yn)) in zip(pairs, target):
                 content = content[:ys] + repr(yn) + content[ye:]
                 content = content[:xs] + repr(xn) + content[xe:]
 
-            fp = open(filename, "w")
-            fp.write(content)
-            fp.close()
+            with open(filename, "w") as fp:
+                fp.write(content)

@@ -38,7 +38,7 @@
  ### Miscellaneous and bug fixes
    * Fixed :droid's arguments not all being optional (Issue#4308)
    * Chat is now enable in single-player and hotseat multiplayer. (Issue#1111)
-   * Ported the "expand-terrain-macros" tool to Python 3
+   * Ported the "expand-terrain-macros" and "wmlflip" tools to Python 3
    * It's now possible to chat with oneself in SP campaigns. Chat is shown in replays. (Issue#1111)
    * Removed unused "scoutDefault" and "journeylifter" Python tools
 
