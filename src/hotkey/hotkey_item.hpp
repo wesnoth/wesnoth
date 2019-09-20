@@ -251,7 +251,7 @@ public:
 		keycode_ = keycode;
 	}
 
-	void set_text(std::string text)
+	void set_text(const std::string& text)
 	{
 		text_ = text;
 		boost::algorithm::to_lower(text_);

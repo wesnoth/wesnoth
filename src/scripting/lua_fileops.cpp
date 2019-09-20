@@ -62,7 +62,7 @@ static std::string get_calling_file(lua_State* L)
 }
 /// resolves @a filename to an absolute path
 /// @returns true if the filename was successfully resolved.
-static bool canonical_path(std::string& filename, std::string currentdir)
+static bool canonical_path(std::string& filename, const std::string& currentdir)
 {
 	if(filename.size() < 2) {
 		return false;
@@ -109,7 +109,7 @@ static bool canonical_path(std::string& filename, std::string currentdir)
 
 /// resolves @a filename to an absolute path
 /// @returns true if the filename was successfully resolved.
-static bool resolve_filename(std::string& filename, std::string currentdir, std::string* rel = nullptr)
+static bool resolve_filename(std::string& filename, const std::string& currentdir, std::string* rel = nullptr)
 {
 	if(!canonical_path(filename, currentdir)) {
 		return false;

@@ -168,7 +168,7 @@ bool check_names_legal_internal(const config& dir, std::string current_prefix, s
 	return badlist ? badlist->empty() : true;
 }
 
-bool check_case_insensitive_duplicates_internal(const config& dir, std::string prefix, std::vector<std::string>* badlist){
+bool check_case_insensitive_duplicates_internal(const config& dir, const std::string& prefix, std::vector<std::string>* badlist){
 	typedef std::pair<bool, std::string> printed_and_original;
 	std::map<std::string, printed_and_original> filenames;
 	bool inserted;

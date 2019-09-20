@@ -140,12 +140,12 @@ public:
 	// Setter methods
 	//
 
-	void set_game_name(std::string name)
+	void set_game_name(const std::string& name)
 	{
 		parameters_.name = name;
 	}
 
-	void set_game_password(std::string name)
+	void set_game_password(const std::string& name)
 	{
 		parameters_.password = name;
 	}

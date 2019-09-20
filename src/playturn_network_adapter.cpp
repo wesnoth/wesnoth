@@ -59,7 +59,7 @@ void playturn_network_adapter::read_from_network()
 	//there should be no attributes left.
 }
 
-bool playturn_network_adapter::is_at_end()
+bool playturn_network_adapter::is_at_end() const
 {
 	assert(!data_.empty());
 	if (data_.size() > 1) return false;
