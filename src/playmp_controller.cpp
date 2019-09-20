@@ -25,6 +25,7 @@
 #include "mp_ui_alerts.hpp"
 #include "playturn.hpp"
 #include "preferences/general.hpp"
+#include "preferences/game.hpp"
 #include "game_initialization/playcampaign.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
@@ -254,6 +255,15 @@ void playmp_controller::linger()
 		} catch (const savegame::load_game_exception&) {
 			LOG_NG << "caught load-game-exception" << std::endl;
 			// this should not happen, the option to load a game is disabled
+			throw;
+		} catch (const leavegame_wesnothd_error& e) {
+			scoped_savegame_snapshot snapshot(*this);
+			savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
+			if(e.message == "") {
+				save.save_game_interactive(_("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"), savegame::savegame::YES_NO);
+			} else {
+				save.save_game_interactive(_("This game has been ended.\nReason: ")+e.message+_("\nDo you want to save the game?"), savegame::savegame::YES_NO);
+			}
 			throw;
 		} catch (const ingame_wesnothd_error&) {
 			LOG_NG << "caught network-error-exception" << std::endl;

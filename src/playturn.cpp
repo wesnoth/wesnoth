@@ -157,7 +157,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	}
 	else if (cfg.child("leave_game")) {
 		const bool has_reason = cfg.child("leave_game").has_attribute("reason");
-		throw ingame_wesnothd_error(has_reason ? cfg.child("leave_game")["reason"].str() : "");
+		throw leavegame_wesnothd_error(has_reason ? cfg.child("leave_game")["reason"].str() : "");
 	}
 	else if (const config &turn = cfg.child("turn"))
 	{

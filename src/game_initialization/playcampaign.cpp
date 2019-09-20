@@ -45,6 +45,7 @@
 #include "terrain/type_data.hpp"
 #include "wml_exception.hpp"
 #include "formula/string_utils.hpp"
+#include "wesnothd_connection.hpp"
 
 #define LOG_G LOG_STREAM(info, lg::general)
 
@@ -289,6 +290,9 @@ LEVEL_RESULT campaign_controller::play_game()
 			{
 				res = playmp_scenario(end_level);
 			}
+		} catch(const leavegame_wesnothd_error&) {
+			LOG_NG << "The game was remotely ended\n";
+			return LEVEL_RESULT::QUIT;
 		} catch(const game::load_game_failed& e) {
 			gui2::show_error_message(_("The game could not be loaded: ") + e.message);
 			return LEVEL_RESULT::QUIT;
