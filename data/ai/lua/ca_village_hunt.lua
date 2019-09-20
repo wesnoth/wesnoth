@@ -30,10 +30,7 @@ function ca_village_hunt:evaluation(cfg, data)
         return 0
     end
 
-    local units = AH.get_units_with_moves {
-        side = wesnoth.current.side,
-        canrecruit = false
-    }
+    local units = AH.get_units_with_moves({ side = wesnoth.current.side, canrecruit = 'no' }, true)
 
     if not units[1] then
         if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
@@ -45,10 +42,7 @@ function ca_village_hunt:evaluation(cfg, data)
 end
 
 function ca_village_hunt:execution(cfg, data)
-    local unit = AH.get_units_with_moves({
-        side = wesnoth.current.side,
-        canrecruit = false
-    })[1]
+    local unit = AH.get_units_with_moves({ side = wesnoth.current.side, canrecruit = 'no' }, true)[1]
 
     if AH.print_exec() then AH.print_ts('   Executing village_hunt CA') end
 

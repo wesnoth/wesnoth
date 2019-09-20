@@ -13,7 +13,7 @@ function ca_grab_villages:evaluation(cfg, data)
     if AH.print_eval() then AH.print_ts('     - Evaluating grab_villages CA:') end
 
     -- Check if there are units with moves left
-    local units = AH.get_units_with_moves { side = wesnoth.current.side, canrecruit = 'no' }
+    local units = AH.get_units_with_moves({ side = wesnoth.current.side, canrecruit = 'no' }, true)
     if (not units[1]) then
         if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
         return 0

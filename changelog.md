@@ -1,4 +1,6 @@
 ## Version 1.15.1+dev
+ ### AI:
+   * Experimental AI: fix guardians being used for village actions
  ### Campaigns
    * Delfador's Memoirs:
      * S20: Improve leveling of units and give player a note about it (Issue#4219)
