@@ -67,6 +67,8 @@
      * Guards can't be tricked off position, leaders won't destroy buildings
      * Guards and Spiders are loyal – AI income has been adjusted accordingly
      * AI income increases gradually in lategame (very slowly)
+   * 5P Wildlands:
+     * fix default village_gold being too hight, disadvantaging player 5
  ### Packaging
    * added HighContrast icon
  ### WML engine
