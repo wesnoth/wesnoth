@@ -354,9 +354,11 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 	team& current_team = board().get_team(side_num);
 
 	std::vector<unit_const_ptr> recall_list_team;
+	bool empty;
 	{
 		wb::future_map future; // ensures recall list has planned recalls removed
 		recall_list_team = actions::get_recalls(side_num, last_hex);
+		empty = current_team.recall_list().empty();
 	}
 
 	DBG_WB << "menu_handler::recall: Contents of wb-modified recall list:\n";
@@ -364,7 +366,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 		DBG_WB << unit->name() << " [" << unit->id() << "]\n";
 	}
 
-	if(current_team.recall_list().empty()) {
+	if(empty) {
 		gui2::show_transient_message("",
 			_("There are no troops available to recall.\n(You must have veteran survivors from a previous scenario.)"));
 		return;
