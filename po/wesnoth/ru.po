@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-09-16 11:33+0300\n"
-"PO-Revision-Date: 2019-01-27 23:07+0400\n"
+"PO-Revision-Date: 2019-09-17 12:14+0300\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 2.2.3\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -68,7 +68,7 @@ msgstr "Большой текстовый файл"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
 msgid "Confirm deleting saves"
-msgstr "Подтверждать удаление сохранений"
+msgstr "Подтвердите удаление сохранений"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:33
@@ -93,7 +93,7 @@ msgstr "Показывать бой"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:61
 msgid "Auto-open whisper windows in lobby"
-msgstr "Автоматически открывать окна личных сообщений в холле"
+msgstr "Автоматически показывать личные сообщения в лобби"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:68
@@ -119,15 +119,11 @@ msgstr "Устарение сообщений в чате"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid ""
-#| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#| "0 to disable"
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
 msgstr ""
-"Время ожидания до очистки игрового чата в минутах. 0 — отключить очистку"
+"Время ожидания до очистки игрового чата в минутах. 0 — отключить очистку."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:103
@@ -137,7 +133,7 @@ msgstr "12-часовой формат времени"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:110
 msgid "Confirm loading saves from a different version"
-msgstr "Подтверждать загрузку сохранений из других версий"
+msgstr "Подтвердите загрузку сохранений из других версий"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:117
@@ -194,7 +190,7 @@ msgstr "Запись логов"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:162
 msgid "Allow damage calculation with Monte Carlo simulation"
-msgstr "Разрешить расчет повреждений с помощью моделирования Монте-Карло"
+msgstr "Расчет урона алгоритмом моделирования Монте-Карло"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:163
@@ -202,8 +198,8 @@ msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
 msgstr ""
-"Разрешить окну расчета ущерба имитировать бои вместо использования точных "
-"вычислений вероятности"
+"Имитировать бои в окне расчете урона вместо использования точных вычислений "
+"вероятности"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:170
@@ -252,8 +248,8 @@ msgstr ""
 "процентами.\n"
 "\n"
 "Примечание: эта опция влияет только на однопользовательский режим, и опция "
-"'Сохранить случайный результат’ также должна быть включена при создании игры "
-"для работы в этом режиме."
+"'Сохранить зерно случайных чисел’ также должна быть включена при создании "
+"игры для работы в этом режиме."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:197
@@ -3628,7 +3624,7 @@ msgstr "Непроходимо"
 #. [color_range]: id=impassable
 #: data/core/team-colors.cfg:218
 msgid "Impassable"
-msgstr "Непроницаемо"
+msgstr "Недостижимо"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
@@ -4288,7 +4284,7 @@ msgstr "Точка зрения"
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:528
 msgid "Continue Play"
-msgstr "Продолжить проигрывание"
+msgstr "Играть"
 
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:529
@@ -4425,16 +4421,12 @@ msgstr "ур"
 
 #. [tip]
 #: data/tips.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Use the map editor's <i>Areas</i> menu to define regions later addressed "
-#| "by event or ai coding."
 msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
 msgstr ""
 "Используйте меню <i>Области</i> в редакторе карт, чтобы определить регионы "
-"для использования в событиях или кодировании ai."
+"для кода событиий или искусственного интеллекта."
 
 #. [tip]
 #: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
@@ -4443,10 +4435,6 @@ msgstr "<i>— Веснотское руководство по дизайну</
 
 #. [tip]
 #: data/tips.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use "
-#| "of advanced features."
 msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
@@ -4456,16 +4444,12 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Scenarios saved from the editor in their default folder can be selected "
-#| "in the mp create screen's <i>User Scenarios</i> section."
 msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” screen."
 msgstr ""
 "Сценарии, сохраненные редактором в папке по умолчанию, могут быть выбраны в "
-"секции <i>Пользовательские сценарии</i> экрана создания мп."
+"секции <i>Пользовательские сценарии</i> при создании игры мультиплеера."
 
 #. [tip]
 #: data/tips.cfg:16
@@ -4854,7 +4838,7 @@ msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr ""
-"Если Вас атакуют с разных сторон, подумайте над тем, чтобы отослать на "
+"Если Вас атакуют с разных направлений, подумайте над тем, чтобы отослать на "
 "некоторые фронты менее ценных бойцов, чтобы задержать противника."
 
 #. [tip]
@@ -5007,7 +4991,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:180
 msgid "<i>Arcane</i> attacks are very powerful against undead."
-msgstr "<i>Мистическая</i> атака особенно сильна против мертвецов."
+msgstr "<i>Мистическая</i> атака особенно сильна против нежити."
 
 #. [tip]
 #: data/tips.cfg:181
@@ -5116,7 +5100,7 @@ msgid ""
 "less retaliation damage, so it’s quicker to heal them."
 msgstr ""
 "<i>Замедляющая</i> способность чрезвычайно полезна, из-за широкого спектра "
-"эффектов, которые она оказывает на противника. Мертвецы будут получать лишь "
+"эффектов, которые она оказывает на противника. Нежить будет получать лишь "
 "половину жизней от <i>высасывания</i>, <i>наскок</i> и <i>удар в спину</i> "
 "не будут иметь никакого эффекта, и способность <i>берсерка</i> будет "
 "ослаблена. Быстрые враги будут вынуждены спасаться бегством, а медленные "
@@ -5281,8 +5265,6 @@ msgstr ""
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:225
-#, fuzzy
-#| msgid "an advancement choice"
 msgid "waiting for^an advancement choice"
 msgstr "выбор продвижения"
 
@@ -5308,7 +5290,7 @@ msgstr "В замке нет свободных полей для этого б�
 
 #: src/actions/create.cpp:360 src/actions/create.cpp:496
 msgid "An unrecognized error has occurred."
-msgstr "Произошла непонятная ошибка."
+msgstr "Произошла нераспознанная ошибка."
 
 #: src/actions/create.cpp:474
 msgid "You do not have a leader to recruit with."
@@ -5386,7 +5368,7 @@ msgstr "Подключение к $server_address|..."
 
 #: src/addon/client.cpp:89
 msgid "Downloading list of add-ons..."
-msgstr "Скачиваю список аддонов..."
+msgstr "Скачивание списка аддонов..."
 
 #: src/addon/client.cpp:103
 msgid "Requesting distribution terms..."
@@ -5436,7 +5418,7 @@ msgstr ""
 
 #: src/addon/client.cpp:184
 msgid "Sending add-on <i>$addon_title</i>..."
-msgstr "Отправляю аддон <i>$addon_title</i>..."
+msgstr "Отправка аддона <i>$addon_title</i>..."
 
 #: src/addon/client.cpp:217
 msgid "Removing add-on <i>$addon_title</i> from the server..."
@@ -5444,7 +5426,7 @@ msgstr "Удаляю аддон <i>$addon_title</i> с сервера..."
 
 #: src/addon/client.cpp:244
 msgid "Downloading add-on <i>$addon_title</i>..."
-msgstr "Скачиваю аддон <i>$addon_title</i>..."
+msgstr "Скачивание аддона <i>$addon_title</i>..."
 
 #: src/addon/client.cpp:258
 msgid ""
@@ -5705,11 +5687,11 @@ msgstr "версия"
 
 #: src/chat_command_handler.cpp:174
 msgid "registering with password *** and no email address"
-msgstr "регистрируем с паролем *** и без е-мэйла"
+msgstr "регистрация с паролем *** и без е-мэйла"
 
 #: src/chat_command_handler.cpp:179
 msgid "registering with password *** and email address $email"
-msgstr "регистрируем с паролем *** на е-мэйл $email"
+msgstr "регистрация с паролем *** на е-мэйл $email"
 
 #: src/chat_command_handler.cpp:182 src/chat_command_handler.cpp:193
 #: src/chat_command_handler.cpp:211 src/chat_command_handler.cpp:225
@@ -5777,7 +5759,7 @@ msgstr ""
 #: src/chat_command_handler.hpp:102
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
-"Разрешить наблюдателю говорить. Без параметра — разрешает говорить всем "
+"Разрешить наблюдателю говорить. Без параметра — разрешить говорить всем "
 "наблюдателям."
 
 #: src/chat_command_handler.hpp:104
@@ -6126,7 +6108,7 @@ msgstr "Локальный игрок"
 
 #: src/game_initialization/connect_engine.cpp:1317
 msgid "Nobody"
-msgstr ""
+msgstr "Пусто"
 
 #: src/game_initialization/connect_engine.cpp:1320
 msgid "Reserved"
@@ -6209,7 +6191,7 @@ msgstr "Неизвестная эра"
 #: src/game_initialization/lobby_data.cpp:353
 #: src/game_initialization/lobby_data.cpp:386
 msgid "scenario_abbreviation^S"
-msgstr "Сторона"
+msgstr "Сценарий"
 
 #: src/game_initialization/lobby_data.cpp:372
 msgid "Remote scenario"
@@ -6246,7 +6228,7 @@ msgstr "Ход"
 
 #: src/game_initialization/lobby_data.cpp:475
 msgid "vision^none"
-msgstr "видение отсутствует"
+msgstr "обзор отсутствует"
 
 #: src/game_initialization/lobby_data.cpp:484
 msgid "time limit^none"
@@ -6345,36 +6327,28 @@ msgid " This server disallows unregistered nicknames."
 msgstr " Этот сервер не разрешает использовать незарегистрированные ники."
 
 #: src/game_initialization/multiplayer.cpp:332
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
-msgstr "Ник ‘$nick’ забанен на форумах этого сервера."
+msgstr "Ник ‘$nick’ забанен на форумах этого сервера на $duration|."
 
 #: src/game_initialization/multiplayer.cpp:334
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Ник ‘$nick’ забанен на форумах этого сервера."
 
 #: src/game_initialization/multiplayer.cpp:338
-#, fuzzy
-#| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums for $duration|."
-msgstr "Ваш IP-адрес забанен на форумах этого сервера."
+msgstr "Ваш IP-адрес забанен на форумах этого сервера на $duration|."
 
 #: src/game_initialization/multiplayer.cpp:340
 msgid "Your IP address is banned on this server’s forums."
 msgstr "Ваш IP-адрес забанен на форумах этого сервера."
 
 #: src/game_initialization/multiplayer.cpp:344
-#, fuzzy
-#| msgid ""
-#| "The email address for the nickname ‘$nick’ is banned on this server’s "
-#| "forums."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
 msgstr ""
 "Адрес электронной почты для псевдонима ‘$nick’ забанен на форумах этого "
-"сервера."
+"сервера на $duration|."
 
 #: src/game_initialization/multiplayer.cpp:346
 msgid ""
@@ -6753,7 +6727,7 @@ msgstr "Худший из"
 
 #: src/help/help_topic_generators.cpp:158
 msgid "Base Terrain: "
-msgstr "Местность: "
+msgstr "Базовая местность: "
 
 #: src/help/help_topic_generators.cpp:177
 msgid "Movement properties: "
@@ -6823,14 +6797,14 @@ msgstr "Ходов: "
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:521
 msgid "Vision:"
-msgstr "Видение: "
+msgstr "Обзор: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:527
 msgid "Jamming:"
-msgstr "Помехи: "
+msgstr "Помехи обзора: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
@@ -6883,7 +6857,7 @@ msgstr "Сопротивляемости "
 
 #: src/help/help_topic_generators.cpp:629
 msgid "Attack Type"
-msgstr "Типа атаки"
+msgstr "Тип атаки"
 
 #: src/help/help_topic_generators.cpp:630
 msgid "Resistance"
@@ -6907,15 +6881,15 @@ msgstr "Цена хода"
 
 #: src/help/help_topic_generators.cpp:669
 msgid "Defense Cap"
-msgstr "Защита"
+msgstr "Макс защита"
 
 #: src/help/help_topic_generators.cpp:674
 msgid "Vision Cost"
-msgstr "Цена видимости"
+msgstr "Цена обзора"
 
 #: src/help/help_topic_generators.cpp:678
 msgid "Jamming Cost"
-msgstr "Цена помехи"
+msgstr "Цена помех обзора"
 
 #: src/hotkey/command_executor.cpp:391
 msgid "Do you really want to surrender the game?"
@@ -6923,7 +6897,7 @@ msgstr "Вы действительно хотите признать пораж
 
 #: src/hotkey/command_executor.cpp:391
 msgid "Surrender"
-msgstr "Признать поражение"
+msgstr "Сдаться"
 
 #: src/hotkey/command_executor.cpp:803
 msgid "Map-Screenshot"
@@ -7090,8 +7064,6 @@ msgid "You have no units available to recruit."
 msgstr "Нет бойцов для вербовки."
 
 #: src/menu_events.cpp:282
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recruited"
 msgstr "Ни один боец не призван"
 
@@ -7598,7 +7570,7 @@ msgstr "Обнаружена территория с ценой движения
 #. from another player. This text will be embedded into a sentence.
 #: src/persist_var.cpp:58
 msgid "waiting for^a global variable"
-msgstr ""
+msgstr "глобальной переменной"
 
 #: src/play_controller.cpp:242
 msgid "time left for current turn"
@@ -7606,7 +7578,7 @@ msgstr "осталось времени на этот ход"
 
 #: src/play_controller.cpp:244
 msgid "current local time"
-msgstr "осталось времени"
+msgstr "текущее локальное время"
 
 #: src/play_controller.cpp:994
 msgid ""
@@ -7747,7 +7719,7 @@ msgstr "Тип: "
 
 #: src/reports.cpp:235
 msgid "Side:"
-msgstr ""
+msgstr "Сторона:"
 
 #: src/reports.cpp:257
 msgid "Level: "
@@ -7759,7 +7731,7 @@ msgstr "Продвижения:"
 
 #: src/reports.cpp:275
 msgid "No advancement"
-msgstr "Не продвигается"
+msgstr "Нет продвижений"
 
 #: src/reports.cpp:315
 msgid "Trait: "
@@ -7848,16 +7820,12 @@ msgid "Defense: "
 msgstr "Защита: "
 
 #: src/reports.cpp:620 src/reports.cpp:621
-#, fuzzy
-#| msgid "vision: "
 msgid "vision:"
-msgstr "видение: "
+msgstr "обзор: "
 
 #: src/reports.cpp:625 src/reports.cpp:626
-#, fuzzy
-#| msgid "Warning: "
 msgid "jamming:"
-msgstr "Предупреждение: "
+msgstr "помехи обзора: "
 
 #: src/reports.cpp:655
 msgid "Movement Costs:"
@@ -7869,7 +7837,7 @@ msgstr "Оружие: "
 
 #: src/reports.cpp:754 src/reports.cpp:970
 msgid "Damage: "
-msgstr "Ущерб: "
+msgstr "Урон: "
 
 #: src/reports.cpp:758
 msgid "Base damage: "
@@ -7893,7 +7861,7 @@ msgstr "Замедлен: "
 
 #: src/reports.cpp:775
 msgid "Attacks: "
-msgstr "Виды атак: "
+msgstr "Атак: "
 
 #: src/reports.cpp:779
 msgid "Max swarm bonus: "
@@ -7921,11 +7889,11 @@ msgstr "Дальность оружия: "
 
 #: src/reports.cpp:817
 msgid "Damage type: "
-msgstr "Тип повреждений: "
+msgstr "Тип урона: "
 
 #: src/reports.cpp:818
 msgid "Damage versus: "
-msgstr "Тип повреждений: "
+msgstr "Урон против: "
 
 #: src/reports.cpp:862
 msgid "Accuracy:"
@@ -7933,7 +7901,7 @@ msgstr "Точность:"
 
 #: src/reports.cpp:867
 msgid "Parry:"
-msgstr "Защита:"
+msgstr "Парирование:"
 
 #: src/reports.cpp:889
 msgid "Weapon special: "
@@ -7955,14 +7923,10 @@ msgstr[1] "Атаки"
 msgstr[2] "Атаки"
 
 #: src/reports.cpp:1144
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day schedule:"
 msgstr "Время суток: "
 
 #: src/reports.cpp:1176
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day:"
 msgstr "Время суток: "
 
@@ -8367,7 +8331,7 @@ msgstr[2] "ожидание $desc от сторон $sides"
 #. This text will be embedded into a sentence.
 #: src/synced_user_choice.hpp:42
 msgid "waiting for^input"
-msgstr ""
+msgstr "ввода"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8513,11 +8477,11 @@ msgstr[2] "<span color=\"$color\">$number_or_percent</span> ходов"
 
 #: src/units/unit.cpp:1797
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
-msgstr "<span color=\"$color\">$number_or_percent</span> видения"
+msgstr "<span color=\"$color\">$number_or_percent</span> обзор"
 
 #: src/units/unit.cpp:1801
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
-msgstr "<span color=\"$color\">$number_or_percent</span> помех"
+msgstr "<span color=\"$color\">$number_or_percent</span> помех обзора"
 
 #: src/units/unit.cpp:1806
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
@@ -9834,12 +9798,12 @@ msgstr "Настройки планировщика"
 #, fuzzy
 #~| msgid "vision: "
 #~ msgid " vision"
-#~ msgstr "видение: "
+#~ msgstr "обзор: "
 
 #, fuzzy
 #~| msgid "Warning: "
 #~ msgid " jamming"
-#~ msgstr "Предупреждение: "
+#~ msgstr "помехи обзора: "
 
 #~ msgid "Show your ignores and friends list."
 #~ msgstr "Показать списки друзей и игнора."

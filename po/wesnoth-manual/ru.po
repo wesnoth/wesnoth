@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: man\n"
 "POT-Creation-Date: 2018-03-27 04:20+0300\n"
-"PO-Revision-Date: 2015-12-30 00:09+0300\n"
+"PO-Revision-Date: 2019-09-19 15:34+0300\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 2.2.3\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 # type: Attribute 'lang' of: <book>
@@ -77,11 +77,11 @@ msgid ""
 "Orcish tribe to victory against the humans who dared despoil your lands."
 msgstr ""
 "В Весноте вы можете играть на самые различные сюжеты. Вы можете сражаться "
-"против орков, мертвецов и бандитов на границах Королевства Веснот; сражаться "
+"против орков, нежити и бандитов на границах Королевства Веснот; сражаться "
 "бок о бок с драконами на скалистых вершинах, эльфами в зелёных лесах "
 "Этенвуда, гномами в огромных подземных залах Кнагла, или даже с водяными в "
 "заливе Жемчуга. Вы можете сражаться за возвращение трона Веснота или "
-"использовать ужасную власть над мертвецами, чтобы доминировать над землями "
+"использовать ужасную власть над нежитью, чтобы доминировать над землями "
 "смертных, или вести своё славное оркское племя к победе против людей, "
 "посмевших разорить ваши земли."
 
@@ -212,7 +212,7 @@ msgid ""
 msgstr ""
 "В мире Веснота проживают люди, эльфы, гномы, орки, дрейки, ящеры, водяные, "
 "наги и другие ещё более таинственные и удивительные существа. В проклятых "
-"землях бродят мертвецы и летают привидения и призраки, в руинах таятся "
+"землях бродит нежить и летают привидения и призраки, в руинах таятся "
 "различные монстры. Каждая раса привыкла к какой-то определённой территории. "
 "Люди предпочитают жить на равнинах. На холмах, в горах и подземных пещерах "
 "чувствуют себя как дома орки и гномы. Леса — безраздельные владения эльфов. "
@@ -263,15 +263,11 @@ msgstr ""
 
 #. type: Content of: <book><chapter><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:90
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/main-menu-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/main-menu-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/main-menu-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/ru/main-menu-1.14.7.jpg\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><simpara><inlinemediaobject><textobject><phrase>
@@ -378,13 +374,6 @@ msgstr "Загрузить"
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:153
-#, fuzzy
-#| msgid ""
-#| "Click this button to load a previously saved game. You will be shown a "
-#| "dialogue listing saved games. Select the game and click Ok to load and "
-#| "continue, or Cancel to return to the Main Menu. If you select a replay "
-#| "game, you can check the Replay check box. The loaded game will make all "
-#| "the moves from the beginning while you watch."
 msgid ""
 "Click this button to load a previously saved game. You will be shown a "
 "dialogue listing saved games. Select the game and click Ok to load and "
@@ -476,11 +465,6 @@ msgstr "Титры"
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:215
-#, fuzzy
-#| msgid ""
-#| "Click this button for a list of major Wesnoth contributors. You will "
-#| "often be able to reach them in real time at irc.freenode.org:6667 on "
-#| "#wesnoth."
 msgid ""
 "Click this button for a list of major Wesnoth contributors. You will often "
 "be able to reach them in real time at irc.freenode.org:6667 on #wesnoth or "
@@ -489,7 +473,8 @@ msgid ""
 msgstr ""
 "Нажмите эту кнопку, чтобы увидеть список основных участников проекта. Обычно "
 "вы можете связаться с ними самими по IRC, на irc.freenode.org:6667, канал "
-"#wesnoth."
+"#wesnoth. Либо через Discord <ulink url=\"https://discord.gg/battleforwesnoth"
+"\">https://discord.gg/battleforwesnoth</ulink>"
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:223
@@ -562,6 +547,8 @@ msgid ""
 "Click this button to view game version and technical information. It may be "
 "useful when troubleshooting issues."
 msgstr ""
+"Нажмите на эту кнопку для просмотра версии игры и другой технической "
+"информации. Это может быть полезно для устранения неполадок."
 
 # type: Content of: <book><chapter><section><title>
 #. type: Content of: <book><chapter><section><title>
@@ -593,10 +580,8 @@ msgstr "Игра одного сценария против компьютера
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:292
-#, fuzzy
-#| msgid "Message another player (in multiplayer)"
 msgid "There are also campaigns that can be played in multiplayer."
-msgstr "Сообщение другому игроку (в сетевой игре)"
+msgstr "Также существует кампании для мультиплеера."
 
 # type: Content of: <book><chapter><section><section><title>
 #. type: Content of: <book><chapter><section><section><title>
@@ -659,18 +644,6 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:313
-#, fuzzy
-#| msgid ""
-#| "In general multiplayer games are played against other players via the "
-#| "Internet (you can also run them on your LAN if you have one). All these "
-#| "games are co-ordinated through the Wesnoth multiplayer server. "
-#| "Multiplayer games can take anywhere from 1 hour to 10 hours, depending on "
-#| "how many players there are (and the size of the map). The average time is "
-#| "between 3 to 7 hours. Games can be saved and loaded as many times as you "
-#| "like. So, it&#8217;s possible for some games to last 1 or 2 weeks, even "
-#| "though the play time is only a few hours. You cannot carry over units in "
-#| "multiplayer from one scenario to the next, so building up your army&#8217;"
-#| "s strength is possible only within the scenario."
 msgid ""
 "In general multiplayer games are played against other players via the "
 "Internet (you can also run them on your LAN if you have one). All these "
@@ -689,9 +662,9 @@ msgstr ""
 "до десяти часов, в зависимости от количества игроков и размера карты. "
 "Среднее время — 3-7 часов. Игры могут быть сохранены и загружены любое "
 "количество раз, так что некоторые игры могут длиться одну или две недели, "
-"хотя фактическое время игры составляет лишь несколько часов. В сетевой игре "
-"нельзя брать бойцов из прошлого сценария в следующий, так что построение "
-"мощной армии возможно только в пределах одного сценария."
+"хотя фактическое время игры составляет лишь несколько часов. В игре с одним "
+"сценарием нельзя будет взять бойцов в следующие игры, так что построение "
+"армии возможно только в пределах этого сценария."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -705,15 +678,11 @@ msgstr ""
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:326
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/multiplayer-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/multiplayer-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/multiplayer-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/ru/multiplayer-1.14.7.jpg\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -730,14 +699,6 @@ msgstr "Логин"
 # type: Content of: <book><chapter><section><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><section><simpara>
 #: doc/manual/manual.en.xml:333
-#, fuzzy
-#| msgid ""
-#| "This will be your name on the multiplayer server. If you have an account "
-#| "on the <ulink url=\"http://www.wesnoth.org/forum\">Wesnoth forums</"
-#| "ulink>, you may use the same username and password for joining the "
-#| "official server. A password box will pop up if a password is required for "
-#| "the current username. You cannot use a registered name without the "
-#| "password."
 msgid ""
 "This will be your name on the multiplayer server. If you have an account on "
 "the <ulink url=\"https://forums.wesnoth.org/\">Wesnoth forums</ulink>, you "
@@ -745,12 +706,12 @@ msgid ""
 "password box will pop up if a password is required for the current username. "
 "You cannot use a registered name without the password."
 msgstr ""
-"Это будет вашим прозвищем на сервере. Если у вас есть учётная запись на "
-"<ulink url=\"http://www.wesnoth.org/forum\">форумах Веснота</ulink>, то вы "
-"можете использовать те же логин и пароль для подключения к официальному "
-"серверу. Если для текущего пользователя необходим пароль, появится форма "
-"запроса пароля. Вы не сможете использовать зарегистрированный логин, не зная "
-"его пароль."
+"Это будет вашим ником на сервере. Если у вас есть учётная запись на <ulink "
+"url=\"https://forums.wesnoth.org/\">форумах Веснота</ulink>, то вы можете "
+"использовать те же логин и пароль для подключения к официальному серверу. "
+"Если для текущего пользователя необходим пароль, появится форма запроса "
+"пароля. Вы не сможете использовать зарегистрированный логин, не зная его "
+"пароль."
 
 # type: Content of: <book><chapter><section><section><section><title>
 #. type: Content of: <book><chapter><section><section><section><title>
@@ -796,19 +757,14 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><section><simpara>
 #: doc/manual/manual.en.xml:351
-#, fuzzy
-#| msgid ""
-#| "A complete list of official and user setup servers is listed at this "
-#| "website: <ulink url=\"http://wesnoth.org/wiki/MultiplayerServers"
-#| "\">Multiplayer servers</ulink>."
 msgid ""
 "A complete list of official and user setup servers is listed at this "
 "website: <ulink url=\"https://wiki.wesnoth.org/MultiplayerServers"
 "\">Multiplayer servers</ulink>."
 msgstr ""
 "Полный список официальных и пользовательских серверов доступен на этом "
-"сайте: <ulink url=\"http://wesnoth.org/wiki/MultiplayerServers\">Multiplayer "
-"servers</ulink>."
+"сайте: <ulink url=\"http://wesnoth.org/wiki/MultiplayerServers\">Серверы "
+"мультиплеера</ulink>."
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><section><simpara>
@@ -900,15 +856,11 @@ msgstr "Экран игры"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:391
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/game-screen-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/game-screen-1.13.11+dev.jpg\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/game-screen-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/ru/game-screen-1.14.7.jpg\"/> </"
 "imageobject>"
 
 # type: Content of: <book><chapter><section><section><title>
@@ -935,15 +887,11 @@ msgstr ""
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:402
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/top_pane-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/top_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/top_pane-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/ru/top_pane-1.14.7.jpg\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -1014,15 +962,11 @@ msgstr "Текущее или оставшееся (в сетевых играх
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:456
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/right_pane-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/right_pane-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/right_pane-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/ru/right_pane-1.14.7.jpg\"/> </"
 "imageobject>"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -2007,14 +1951,11 @@ msgstr ":"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1165
-#, fuzzy
-#| msgid ""
-#| "<ulink url=\"http://www.wesnoth.org/wiki/CommandMode\">Command mode</"
-#| "ulink>"
 msgid ""
 "<ulink url=\"https://wiki.wesnoth.org/CommandMode\">Command mode</ulink>"
 msgstr ""
-"<ulink url=\"http://www.wesnoth.org/wiki/CommandMode/ru\">Команды</ulink>"
+"<ulink url=\"http://www.wesnoth.org/wiki/CommandMode/ru\">Режим команд</"
+"ulink>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -2105,15 +2046,11 @@ msgstr "Вербовка и Призыв"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: doc/manual/manual.en.xml:1254
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/recruit-1.11.9.jpg\"/> </"
-#| "imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/recruit-1.13.11+dev.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/recruit-1.11.9.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/ru/recruit-1.14.7.jpg\"/> </"
 "imageobject>"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -2770,16 +2707,12 @@ msgstr "Дикий"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:1650
-#, fuzzy
-#| msgid ""
-#| "Units with the Feral trait only receive 50% defense in villages "
-#| "regardless of the base terrain the village is on."
 msgid ""
 "Units with the Feral trait only receive 50% defense in villages regardless "
 "of the base terrain the village is on (Bats, Falcons)."
 msgstr ""
-"Дикие бойцы получают только 50% защиты в деревне, вне зависимости от того, "
-"на какой земле находится деревня."
+"Дикие бойцы (летучие мыши, соколы) получают только 50% защиты в деревне, вне "
+"зависимости от того, на какой земле находится деревня."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1657
@@ -2918,7 +2851,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:1748
 msgid "Undead"
-msgstr "Мертвец"
+msgstr "Нежить"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
@@ -2930,9 +2863,9 @@ msgid ""
 "again, poison has no effect upon them. This can make them invaluable in "
 "dealing with foes who use poison in conjunction with their attacks."
 msgstr ""
-"Мертвецы невосприимчивы к яду, высасывание и чума также не действует на них. "
-"Мертвецы обычно имеют особенность <emphasis>Мертвец</emphasis> и только её. "
-"Поскольку мертвецы — это умершие и поднявшиеся вновь тела, яд на них не "
+"Нежить невосприимчива к яду, высасывание и чума также не действует на нее. "
+"Нежить обычно имеет особенность <emphasis>нежить</emphasis> и только её. "
+"Поскольку нежить — это умершие и поднявшиеся вновь тела, яд на них не "
 "действует. Это может сделать их неоценимыми против тех бойцов, которые "
 "используют яд при своих атаках."
 
@@ -3088,7 +3021,7 @@ msgid ""
 "doesn&#8217;t work on Undead or units in villages."
 msgstr ""
 "Когда боец убит Чумной атакой, то он заменяется на Ходячий труп на стороне "
-"бойца, убившего его. Это не действует на мертвецов и бойцов в деревнях."
+"бойца, убившего его. Это не действует на нежить и бойцов в деревнях."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:1868 doc/manual/manual.en.xml:2513
@@ -3785,29 +3718,22 @@ msgstr "Если боец принадлежит вашим союзникам, 
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: doc/manual/manual.en.xml:2361
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/orb-red.jpg\"/> </imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/orb-none.jpg\"/> </imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/orb-red.jpg\"/> </imageobject>"
+"<imageobject> <imagedata fileref=\"images/orb-none.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
 #: doc/manual/manual.en.xml:2364
-#, fuzzy
-#| msgid "Yellow orb"
 msgid "No orb"
-msgstr "Жёлтый шар"
+msgstr "Нет шара"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:2368
-#, fuzzy
-#| msgid "Enemy units have a red orb on the top of their energy bar"
 msgid "Enemy units have no orb on the top of their energy bar"
-msgstr "Вражеские бойцы имеют красный шар над полоской здоровья"
+msgstr "У вражеских бойцов нет шара над полоской здоровья"
 
 # type: Content of: <book><chapter><section><section><title>
 #. type: Content of: <book><chapter><section><section><title>
@@ -3898,13 +3824,6 @@ msgstr ""
 # type: Content of: <book><chapter><section><simpara>
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:2406
-#, fuzzy
-#| msgid ""
-#| "Different types of attacks do different amounts of damage, and a certain "
-#| "number of strikes may be made with each weapon. For instance, an Elvish "
-#| "Fighter does 5 points of damage with its sword every time it hits, and "
-#| "can strike 4 blows with the sword in one exchange. This is written as 5–"
-#| "4, meaning 5 damage per hit, and 4 strikes."
 msgid ""
 "Different types of attacks do different amounts of damage, and a certain "
 "number of strikes may be made with each weapon. For instance, an Elvish "
@@ -4022,7 +3941,7 @@ msgid ""
 msgstr ""
 "<emphasis role=\"strong\">Мистическое</emphasis>: эта атака рассеивает "
 "магию, которая движет магическими существами, например, зомби, привидения и "
-"другие мертвецы и духи. Пример: магическая атака белого мага."
+"прочей нежитью и духами. Пример: магическая атака белого мага."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:2466
@@ -4058,8 +3977,8 @@ msgstr ""
 "Примеры: Чешуя дрейков защищает их от большинства типов атак, за исключением "
 "колющего оружия и холода. Человеческая кавалерия обычно хорошо защищена от "
 "большинства атак, за исключением колющего оружия, что является их слабым "
-"местом. Мертвецы имеют высокую сопротивляемость к колющему и режущему "
-"оружию, но очень уязвимы к крушащему и мистическому оружию."
+"местом. Нежить имеет высокую сопротивляемость к колющему и режущему оружию, "
+"но очень уязвима к крушащему и мистическому оружию."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -4602,12 +4521,6 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:2690
-#, fuzzy
-#| msgid ""
-#| "In particular, use your ranged weapons if the enemy has no ranged attack. "
-#| "The computer&#8217;s default choice only looks for the most damage you "
-#| "can deal, so using it will often result in your units taking more damage "
-#| "than necessary."
 msgid ""
 "In particular, use your ranged weapons if the enemy has no ranged attack. "
 "Using it will often reduce the damage which your units take until the enemy "
@@ -4635,12 +4548,12 @@ msgid ""
 "When its weak time is about to arise, your advance will push forth."
 msgstr ""
 "Помните, что порядочные бойцы (например, люди) лучше сражаются днём, "
-"хаотичные бойцы (например, орки или мертвецы) лучше сражаются ночью, а "
-"теневые — во время сумерек. В идеале, вам лучше встретиться с противником "
-"тогда, когда вы сильны, а он слаб. Когда время благоприятно для противника, "
-"часто бывает оправдано укрепить ваши ряды и держать оборонительную позицию. "
-"Когда приближается неудачное для него время, начинайте продвигать ваши "
-"войска вперёд."
+"хаотичные бойцы (например, орки или нежить) лучше сражаются ночью, а теневые "
+"— во время сумерек. В идеале, вам лучше встретиться с противником тогда, "
+"когда вы сильны, а он слаб. Когда время благоприятно для противника, часто "
+"бывает оправдано укрепить ваши ряды и держать оборонительную позицию. Когда "
+"приближается неудачное для него время, начинайте продвигать ваши войска "
+"вперёд."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -4956,10 +4869,10 @@ msgid ""
 msgstr ""
 "Некоторые бойцы имеют повышенную сопротивляемость или, наоборот, уязвимость "
 "к определённым типам атак. Конные бойцы слабы против колющих атак. Для "
-"мертвецов разрушительны огненная и мистическая атаки. Чтобы видеть, "
-"насколько данный боец уязвим к определённому типу атаки, кликните на нём "
-"правой клавишей, выберите «Описание бойца», затем «Сопротивляемость». Это "
-"покажет вам его сопротивляемости различным типам атак."
+"нежити разрушительны огненная и мистическая атаки. Чтобы видеть, насколько "
+"данный боец уязвим к определённому типу атаки, кликните на нём правой "
+"клавишей, выберите «Описание бойца», затем «Сопротивляемость». Это покажет "
+"вам его сопротивляемости различным типам атак."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
