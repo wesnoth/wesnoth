@@ -7000,18 +7000,18 @@ msgid "Switch a side to/from AI control."
 msgstr "Předá/odejme ovládání strany AI."
 
 #: src/menu_events.cpp:1191
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "do not translate the on/off/full^[<side> [on/off/full]]"
-msgstr "[<strana> on/off]"
+msgstr ""
 
 #: src/menu_events.cpp:1192
 msgid "Switch a side to/from idle state."
 msgstr "Označit stranu jako nečinnou."
 
 #: src/menu_events.cpp:1193
+#, fuzzy
+#| msgid "do not translate the 'all'^[all|<command>]"
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr "[<strana> on/off]"
+msgstr "[all|<příkaz>]"
 
 #: src/menu_events.cpp:1196
 msgid "<side> <nickname>"
@@ -7830,8 +7830,10 @@ msgid "Upkeep"
 msgstr "Výdaje"
 
 #: src/reports.cpp:1482
+#, fuzzy
+#| msgid "income"
 msgid "Income"
-msgstr "Příjmy"
+msgstr "příjmy"
 
 #: src/reports.cpp:1482
 msgid ""
@@ -8418,6 +8420,12 @@ msgstr "Nastavení plánovacího módu"
 #~ msgid "Connected Players"
 #~ msgstr "Připojených hráčů"
 
+#~ msgid "(this turn left)"
+#~ msgid_plural "(%d turns left)"
+#~ msgstr[0] "(zbývá tento tah)"
+#~ msgstr[1] "(zbývají %d tahy)"
+#~ msgstr[2] "(zbývá %d tahů)"
+
 #~ msgid "registering with password *** and no email address"
 #~ msgstr "registruji s heslem *** a bez e-mailové adresy"
 
@@ -8452,8 +8460,32 @@ msgstr "Nastavení plánovacího módu"
 #~ "Vyžádá seznam podrobností, které můžete nastavit pro vaši registrovanou "
 #~ "přezdívku."
 
+#, fuzzy
+#~| msgid "do not translate the on/off^[<side> [on/off]]"
+#~ msgid "command_idle^[<side> [on/off]]"
+#~ msgstr "[<strana> on/off]"
+
 #~ msgid "Can't droid a local ai side: '$side'."
 #~ msgstr "Kontrolu nad stranou „$side“ nelze předat počítači."
+
+#, fuzzy
+#~| msgid "Do you really want to surrender the game?"
+#~ msgid ""
+#~ "\n"
+#~ "Do you want to save the game?"
+#~ msgstr "Opravdu se chcete v této hře vzdát?"
+
+#, fuzzy
+#~| msgid "The game has been saved."
+#~ msgid ""
+#~ "This game has been ended.\n"
+#~ "Reason: "
+#~ msgstr "Hra byla uložena."
+
+#, fuzzy
+#~| msgid "Income"
+#~ msgid "Net Income"
+#~ msgstr "Příjmy"
 
 #~ msgid "Empty"
 #~ msgstr "Prázdný"
@@ -8473,12 +8505,6 @@ msgstr "Nastavení plánovacího módu"
 
 #~ msgid "Advances to:"
 #~ msgstr "Povyšuje na:"
-
-#~ msgid "(this turn left)"
-#~ msgid_plural "(%d turns left)"
-#~ msgstr[0] "(zbývá tento tah)"
-#~ msgstr[1] "(zbývají %d tahy)"
-#~ msgstr[2] "(zbývá %d tahů)"
 
 #~ msgid "S"
 #~ msgstr "S"

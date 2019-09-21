@@ -2451,11 +2451,16 @@ msgstr ""
 msgid "B<db_extra_table>"
 msgstr "B<db_extra_table>"
 
+# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:240
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the user under which to log into the "
+#| "database"
 msgid ""
 "The name of the table in which wesnothd will save its own data about users."
-msgstr ""
+msgstr "(pro user_handler=forum) Uživatelské jméno pro přihlášení k databázi"
 
 # type: TP
 #. type: TP
@@ -2465,11 +2470,16 @@ msgstr ""
 msgid "B<db_game_info_table>"
 msgstr "B<db_users_table>"
 
+# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:243
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the user under which to log into the "
+#| "database"
 msgid ""
 "The name of the table in which wesnothd will save its own data about games."
-msgstr ""
+msgstr "(pro user_handler=forum) Uživatelské jméno pro přihlášení k databázi"
 
 # type: TP
 #. type: TP
@@ -2479,12 +2489,17 @@ msgstr ""
 msgid "B<db_game_player_info_table>"
 msgstr "B<db_users_table>"
 
+# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:246
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the user under which to log into the "
+#| "database"
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "players in a game."
-msgstr ""
+msgstr "(pro user_handler=forum) Uživatelské jméno pro přihlášení k databázi"
 
 #. type: TP
 #: doc/man/wesnothd.6:246
@@ -2492,12 +2507,17 @@ msgstr ""
 msgid "B<db_game_modification_info_table>"
 msgstr ""
 
+# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:249
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the user under which to log into the "
+#| "database"
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "modifications used in a game."
-msgstr ""
+msgstr "(pro user_handler=forum) Uživatelské jméno pro přihlášení k databázi"
 
 # type: TP
 #. type: TP
@@ -2530,11 +2550,16 @@ msgstr ""
 msgid "B<mp_mod_group>"
 msgstr ""
 
+# type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:255
+#, fuzzy
+#| msgid ""
+#| "(for user_handler=forum) The name of the user under which to log into the "
+#| "database"
 msgid ""
 "The ID of the forum group to be considered as having moderation authority."
-msgstr ""
+msgstr "(pro user_handler=forum) Uživatelské jméno pro přihlášení k databázi"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:260
@@ -2604,18 +2629,19 @@ msgstr "B<wesnoth>(6)."
 #~ msgstr "(pro user_handler=forum) Heslo pro databázi"
 
 # type: Plain text
+#, fuzzy
+#~| msgid ""
+#~| "(for user_handler=forum) The name of the table in which your phpbb "
+#~| "forums saves its user data. Most likely this will be E<lt>table-"
+#~| "prefixE<gt>_users (e.g. phpbb3_users)."
 #~ msgid ""
 #~ "(for user_handler=forum) The name of the table in which wesnothd will "
 #~ "save its own data about users. You will have to create this table "
-#~ "manually, e.g.: B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) "
-#~ "PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
-#~ "user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
+#~ "manually."
 #~ msgstr ""
-#~ "(pro user_handler=forum) Název tabulky, v níž bude wesnothd ukládat svá "
-#~ "vlastní data o uživatelích. Tuto tabulku budete muset vytvořit ručně - "
-#~ "například: B<CREATE TABLE E<lt>jméno_tabulkyE<gt>(username VARCHAR(255) "
-#~ "PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
-#~ "user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
+#~ "(pro user_handler=forum) Název tabulky, v níž ukládá vaše fórum (typu "
+#~ "phpbb) data o uživatelích. Pravděpodobně to je E<lt>prefixE<gt>_users "
+#~ "(například phpbb3_users)."
 
 # type: TP
 #, no-wrap
@@ -2674,6 +2700,20 @@ msgstr "B<wesnoth>(6)."
 # type: Plain text
 #~ msgid "The port on which your mail server is running. Default is 25."
 #~ msgstr "Port, na němž běží emailový server. Výchozí hodnota 25."
+
+# type: Plain text
+#~ msgid ""
+#~ "(for user_handler=forum) The name of the table in which wesnothd will "
+#~ "save its own data about users. You will have to create this table "
+#~ "manually, e.g.: B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) "
+#~ "PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
+#~ "user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
+#~ msgstr ""
+#~ "(pro user_handler=forum) Název tabulky, v níž bude wesnothd ukládat svá "
+#~ "vlastní data o uživatelích. Tuto tabulku budete muset vytvořit ručně - "
+#~ "například: B<CREATE TABLE E<lt>jméno_tabulkyE<gt>(username VARCHAR(255) "
+#~ "PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
+#~ "user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
 
 # type: TP
 #~ msgid "B<--path>"

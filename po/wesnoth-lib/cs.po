@@ -1619,6 +1619,24 @@ msgstr ""
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2737
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Cave'</italic> terrain represents any underground cavern "
+#| "with enough room for a unit to pass.\n"
+#| "Most units are wholly unfamiliar with the terrain, and thus are both "
+#| "slowed down and hindered in defense. Dwarves and trolls, who make their "
+#| "homes in caves, both have a relatively easy time navigating this terrain, "
+#| "especially dwarves, who by dint of their small size can navigate many "
+#| "obstacles that other races cannot. Occasionally caves are "
+#| "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>.\n"
+#| "\n"
+#| "Rare patches of the underground world are illuminated by light from the "
+#| "surface shining down into the gloomy darkness. This provides an attack "
+#| "bonus for lawful units and removes the attack bonus from chaotic units. "
+#| "In all other regards this terrain is functionally identical to normal "
+#| "cave terrains.\n"
+#| "\n"
+#| "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -7792,6 +7810,14 @@ msgstr ""
 "Klíč '$deprecated_key' byl přejmenován na '$key' a ve verzi $removal_version "
 "bude odstraněna podpora původního tvaru."
 
+#~ msgid "Reason:"
+#~ msgstr "Příčina:"
+
+#, fuzzy
+#~| msgid "Load Game"
+#~ msgid "Stop Game"
+#~ msgstr "Načti hru"
+
 #~ msgid "feature^Experimental OpenMP support"
 #~ msgstr "Experimentální podpora OpenMP"
 
@@ -7934,9 +7960,6 @@ msgstr ""
 
 #~ msgid "Moderating"
 #~ msgstr "Moderování"
-
-#~ msgid "Reason:"
-#~ msgstr "Příčina:"
 
 #~ msgid "Time:"
 #~ msgstr "Čas:"
