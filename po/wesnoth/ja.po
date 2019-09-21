@@ -118,16 +118,10 @@ msgstr "チャットメッセージの寿命"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid ""
-#| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#| "0 to disable"
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
 msgstr ""
-"チャットメッセージを消去するまでの時間（分）です。0で時間経過による消去を無効"
-"化します。"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:103
@@ -4389,16 +4383,10 @@ msgstr "Lv"
 
 #. [tip]
 #: data/tips.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Use the map editor's <i>Areas</i> menu to define regions later addressed "
-#| "by event or ai coding."
 msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
 msgstr ""
-"マップエディタの<i>領域</i>メニューを使うことで、領域を定義することができま"
-"す。領域はイベントやAIをコーディングする際に役に立ちます。"
 
 #. [tip]
 #: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
@@ -4407,29 +4395,17 @@ msgstr "<i>― Wesnoth デザインガイド</i>"
 
 #. [tip]
 #: data/tips.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use "
-#| "of advanced features."
 msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
 msgstr ""
-"エディタの<i>ファイル</i>メニューから<i>新しいシナリオ</i>を作成することで、"
-"高度な機能を利用することができます。"
 
 #. [tip]
 #: data/tips.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Scenarios saved from the editor in their default folder can be selected "
-#| "in the mp create screen's <i>User Scenarios</i> section."
 msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” screen."
 msgstr ""
-"エディタでデフォルトフォルダに保存されたシナリオは、マルチプレイヤーゲームの"
-"<i>ユーザーシナリオ</i>から利用することができます。"
 
 #. [tip]
 #: data/tips.cfg:16
@@ -7092,10 +7068,8 @@ msgstr "陣営の待機状態を切り替えます。"
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1194
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "command_idle^[<side> [on/off]]"
-msgstr "[<陣営> [on/off]]"
+msgstr ""
 
 #: src/menu_events.cpp:1197
 msgid "<side> <nickname>"
@@ -7566,20 +7540,16 @@ msgstr ""
 "このゲームを保存しますか？"
 
 #: src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "Do you really want to surrender the game?"
 msgid ""
 "\n"
 "Do you want to save the game?"
-msgstr "降参しますか？"
+msgstr ""
 
 #: src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "The game has been saved."
 msgid ""
 "This game has been ended.\n"
 "Reason: "
-msgstr "ゲームは保存されました。"
+msgstr ""
 
 #: src/playsingle_controller.cpp:440
 msgid "It is now $name|’s turn"
@@ -7897,12 +7867,6 @@ msgid "Units"
 msgstr "ユニット"
 
 #: src/reports.cpp:1344
-#, fuzzy
-#| msgid ""
-#| "The expenses incurred at the end of every turn to maintain your army. The "
-#| "first number is the amount of gold that will be deducted. The second is "
-#| "the total cost of upkeep, including that covered by villages — in other "
-#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -7910,31 +7874,20 @@ msgid ""
 "cost of upkeep, including that covered by villages — in other words, the "
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
-"自軍を維持するため、毎ターンの終わりに払う費用です。最初の数字は、差し引かれ"
-"るゴールドです。2 番目の数字は、村による免除を含めた維持費の合計です。つま"
-"り、自軍が村を失えば、より多くのゴールドを失ってしまうことになります。"
 
 #: src/reports.cpp:1344
 msgid "Upkeep"
 msgstr "維持費"
 
 #: src/reports.cpp:1381
-#, fuzzy
-#| msgid "Income"
 msgid "Net Income"
-msgstr "収入"
+msgstr ""
 
 #: src/reports.cpp:1381
-#, fuzzy
-#| msgid ""
-#| "The amount of gold you gain each turn from your controlled villages, or "
-#| "the amount of gold you will lose each turn for unit upkeep."
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
-"各ターンに所有する村から自軍が得るゴールドです。マイナスの場合は、各ターンに"
-"ユニットの維持費によって自軍が失うゴールドです。"
 
 #: src/reports.cpp:1549
 msgid "Observers:"
@@ -8440,15 +8393,3 @@ msgstr "$player の計画を非表示"
 #: src/whiteboard/manager.cpp:1143
 msgid "Whiteboard Options"
 msgstr "行動予定オプション"
-
-#~ msgid "do not translate the 'all'^[all|<command>]"
-#~ msgstr "[all|<コマンド>]"
-
-#~ msgid "aliases:"
-#~ msgstr "エイリアス："
-
-#~ msgid "Show fps."
-#~ msgstr "FPSを表示します。"
-
-#~ msgid "Empty"
-#~ msgstr "なし"

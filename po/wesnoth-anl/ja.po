@@ -24,16 +24,10 @@ msgstr "4p — 新天地"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
-#, fuzzy
-#| msgid ""
-#| "This 4p survival scenario allows you to construct buildings and terraform "
-#| "the land. Use map settings. The recommended starting gold is 100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. The recommended starting gold is 100."
 msgstr ""
-"この4pサバイバルシナリオでは建物を建てたり、地形を作りかえることができる。"
-"マップ設定を使用する必要があり、推奨ゴールドは100である。"
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:26
@@ -91,10 +85,8 @@ msgstr "囚人たち"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:266
-#, fuzzy
-#| msgid "teamname^Prisoners"
 msgid "teamname^Monsters"
-msgstr "囚人たち"
+msgstr ""
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:462
@@ -346,10 +338,8 @@ msgstr "新天地 - ヘルプ"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:95
-#, fuzzy
-#| msgid "Select a topic."
 msgid "Select a topic:"
-msgstr "項目を選んでください。"
+msgstr ""
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:98
@@ -560,10 +550,8 @@ msgstr ""
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:37
-#, fuzzy
-#| msgid "You must survive until turn 25."
 msgid "You must survive until turn 25"
-msgstr "25 ターンまで生き延びなければならない。"
+msgstr ""
 
 #. [set_menu_item]: id=anl_choose_new_recruit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:45
@@ -867,6 +855,3 @@ msgstr "コスト: 7g"
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:577
 msgid "Clear the Ground"
 msgstr "地面をきれいにする"
-
-#~ msgid "Right-click on your leader during your turn for help"
-#~ msgstr "自分のターン中にリーダーを右クリックするとヘルプが表示されます"
