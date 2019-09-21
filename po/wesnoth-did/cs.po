@@ -19,15 +19,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-09-16 08:32 UTC\n"
-"PO-Revision-Date: 2019-09-11 11:57+0200\n"
-"Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
+"PO-Revision-Date: 2019-09-17 22:02+0200\n"
+"Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: čeština <hrubymar10@gmail.com>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Gtranslator 3.30.1\n"
 
 #. [scenario]: id=11_Descent_into_Darkness
 #. [campaign]: id=Descent_into_Darkness
@@ -4466,8 +4466,8 @@ msgstr "Noc bez konce $timesForever"
 msgid ""
 "To turn a necromancer into a lich, right-click on it while it is in a castle."
 msgstr ""
-"Chcete-li přeměnit temného učedníka na licha, tak na něj klepněte pravým "
-"tlačítkem když je v tvrzi."
+"Chcete-li přeměnit temného učedníka na licha, klepněte na něj pravým "
+"tlačítkem, když je v tvrzi."
 
 #. [set_menu_item]: id=lichify
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:243
@@ -4495,14 +4495,12 @@ msgstr "Příliš bláhový hrdina"
 #. [message]: speaker=Too Foolish Hero
 #. the text that the "Too Foolish Hero" speaks is identical to that in the start event and can probably be copied over
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:394
-#, fuzzy
-#| msgid ""
-#| "Your doom is at hand, foul lich! I shall bring you down by my own hand."
 msgid ""
 "Your doom is at hand, lich! It is nigh time you answered for your evil "
 "crimes!"
 msgstr ""
-"Tvá zkáza je na dosah, hnusný lichi. Srazím tě k zemi mou vlastní rukou."
+"Tvůj osud se naplnil, lichu! Blíží se čas, kdy se budeš zodpovídat ze svých "
+"zločinů!"
 
 #. [modify_side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:399
@@ -4514,15 +4512,12 @@ msgstr "Lidé"
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:455
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:957
-#, fuzzy
-#| msgid ""
-#| "You have preyed on too many of my boys. I have come here to end this, "
-#| "once and for all."
 msgid ""
 "You have preyed on too many of my men. Our territory will be much more "
 "secure without your undead pestering us."
 msgstr ""
-"Pobil jsi příliš mnoho mých chlapců. Přišel jsem to ukončit jednou provždy."
+"Padlo ti za oběť příliš mnoho mých mužů. Náš kraj bude mnohem bezpečnější "
+"bez tvých nemrtvých, kteří nás obtěžují."
 
 #. [modify_side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:460
@@ -4539,6 +4534,9 @@ msgid ""
 "deeds, ensnaring the living with your dark sorceries and molding them into "
 "your slaves. Your wretched unlife ends here!"
 msgstr ""
+"Konečně jsme tě našli, lichu! Už dlouho slýcháme o tvých ohavných skutcích, "
+"jak si podmaňuješ živé svými temnými čáry a přetváříš je na své otroky. Tvůj "
+"mrzký neživot tu končí!"
 
 #. [modify_side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:521
@@ -4556,6 +4554,8 @@ msgid ""
 "Been a long time since I’ve smashed me some undead. Ye gots ye plenty o’ "
 "bones for me hammer ta break."
 msgstr ""
+"Je to už dávno, co jsem naposled rozmlátil nějaké nemrtvé. Máš pro mé "
+"kladivo spoustu kostí na zlámání."
 
 #. [modify_side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:583
@@ -4573,6 +4573,10 @@ msgid ""
 "into one of your nasty creations. With your death, your annoying minions "
 "will pester us no longer!"
 msgstr ""
+"Konečně jsem našel tvé doupě, lichu! Mnoho let jsi útočil na můj kmen "
+"a páchal velké škody na našich domovech. Zavraždil jsi mého otce a jeho tělo "
+"proměnil v jedno ze svých odporných stvoření. Až zemřeš, tví otravní pohůnci "
+"už nás nebudou déle obtěžovat!"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:655
@@ -4580,6 +4584,8 @@ msgid ""
 "I almost feel as if the universe is mocking me by sending me this many "
 "imbeciles..."
 msgstr ""
+"Skoro mi připadá, jako by si vesmír ze mně dělal legraci, když mi posílá "
+"tolik imbecilů..."
 
 #. [unit]: type=Royal Guard, id=Foolish Hero
 #. [unit]: type=Highwayman, id=Foolish Hero
@@ -4596,10 +4602,8 @@ msgstr "Bláhový hrdina"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:883
-#, fuzzy
-#| msgid "I will destroy you like the last foolish hero."
 msgid "I will destroy you like the last foolish hero who challenged me."
-msgstr "Zničím tě stejně, jako minulého bláhového hrdinu."
+msgstr "Zničím tě, stejně jako předchozího bláhového hrdinu, který mne vyzval."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:890
@@ -4631,17 +4635,17 @@ msgid ""
 "At this point, I would be more surprised if these foolish heroes stopped "
 "showing up."
 msgstr ""
+"V tuto chvíli bych byl více překvapen, kdyby se tihle bláhoví hrdinové "
+"přestali objevovat."
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:943
-#, fuzzy
-#| msgid ""
-#| "Your doom is at hand, foul lich! I shall bring you down by my own hand."
 msgid ""
 "Your doom is at hand, lich! It is nigh time you answered for your crimes "
 "against humanity!"
 msgstr ""
-"Tvá zkáza je na dosah, hnusný lichi. Srazím tě k zemi mou vlastní rukou."
+"Tvůj osud se naplnil, lichu! Blíží se čas, kdy se budeš zodpovídat ze svých "
+"zločinů proti lidskosti!"
 
 #. [message]: speaker=Mal Keshar
 #. cityfolk - just a person from the city, e.g. Weldyn
@@ -4650,13 +4654,13 @@ msgid ""
 "Narrow-minded and obtuse, as one would expect of cityfolk. Go back to your "
 "manors and taverns before I decide to kill you."
 msgstr ""
+"Omezení a zabednění, jak by jeden čekal od lidí z města. Vraťte se na svá "
+"sídla a do svých hostinců dřív, než se rozhodnu vás zabít."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:962
-#, fuzzy
-#| msgid "Not even real soldiers. I will sweep you aside."
 msgid "Not even real soldiers. How meaningless."
-msgstr "Dokonce ani skuteční vojáci... Zametu s tebou."
+msgstr "Dokonce ani skuteční vojáci. Jak nesmyslné."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:975
@@ -4664,6 +4668,8 @@ msgid ""
 "Life or death, it is all the same. There are always those who try to kill "
 "me. Ever do they fail."
 msgstr ""
+"Život nebo smrt, je to úplně jedno. Vždycky se najdou takoví, kteří mě "
+"zkouší zabít. A pokaždé selžou."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:989
@@ -4671,6 +4677,8 @@ msgid ""
 "And it has been some time since I’ve had a supply of dwarven corpses to work "
 "with. I suppose I can put your hammers to good use in the mines."
 msgstr ""
+"A už je to nějaký čas, co jsem měl k dispozici zásobu trpasličích těl. "
+"Počítám, že vaše kladiva můžu dobře využít v dolech."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1002
@@ -4681,6 +4689,11 @@ msgid ""
 "vengeance? Hah! The irony of this would be hysterical if I could still feel "
 "such an emotion."
 msgstr ""
+"Skřeti klanu Bílého tesáku! To vy jste vyplenili mou rodnou zemi srovnali se "
+"zemí můj domov. To vy jste mne přinutili uchýlit se k nekromancii, abych se "
+"chránil. To vy jste ukončili můj smrtelný život a donutili stát se lichem. "
+"A vy toužíte po pomstě? Ha! Taková ironie by byla k popukání, kdybych byl "
+"ještě schopen podobného citu."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1014
@@ -4688,6 +4701,9 @@ msgid ""
 "Mal Keshar has had time to study the book, learning how his apprentices can "
 "become liches with less reliance on luck than Malin’s own transformation."
 msgstr ""
+"Mal Kešar měl čas studovat knihu a naučil se, jak se mohou jeho učedníci "
+"stát lichy, aniž by při tom bylo potřeba tolik spoléhat na štěstí jako při "
+"Malinově přeměně."
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1073
@@ -4700,7 +4716,7 @@ msgstr "To je grimoár zla!"
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1078
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1106
 msgid "It might be linked to the lich’s power! Try burning it."
-msgstr ""
+msgstr "Může být spojen s lichovo mocí! Zkus jej spálit."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1083
@@ -4714,33 +4730,25 @@ msgstr "<small>(předstírá bolest)</small> Aaargh!"
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1088
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1116
 msgid "It’s not catching fire!"
-msgstr "Nechytá to oheň!"
+msgstr "Nechce to chytnout!"
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1093
-#, fuzzy
-#| msgid ""
-#| "But it seems to be hurting the lich. Bring it with us, retreat and let "
-#| "the mages destroy this."
 msgid ""
 "Still, it seems to be hurting the lich. Let us retreat and bring it with us. "
 "The mages may be able to destroy this and put an end to this lich."
 msgstr ""
-"Ale zdá se, že to ubližuje lichovi. Přineste to sebou, vzdalte se a nechte "
-"to mágy zničit."
+"Přesto se zdá, že to ubližuje lichovi. Ustupme a vezměme to sebou. Mágové "
+"mohou být schopni to zničit a skončit tak s tímhle lichem."
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1121
-#, fuzzy
-#| msgid ""
-#| "But it seems to be hurting the lich. Bring it with us, retreat and let "
-#| "the mages destroy this."
 msgid ""
 "Still, it seems to be hurting the lich. Let us retreat and bring it with us. "
 "We may yet find another way to destroy it and put an end to this lich."
 msgstr ""
-"Ale zdá se, že to ubližuje lichovi. Přineste to sebou, vzdalte se a nechte "
-"to mágy zničit."
+"Přesto se zdá, že to ubližuje lichovi. Ustupme a vezměme to sebou. Ještě "
+"můžeme najít jiný způsob, jak to zničit a skončit tak s tímhle lichem."
 
 #. [message]: role=speakinghero
 #. "faerie fire" as in the elvish sylph's attack
@@ -4749,12 +4757,12 @@ msgid ""
 "It must be connected to the lich’s power. Perhaps if we burn it with faerie "
 "fire, the lich will be destroyed. Let us take it and retreat."
 msgstr ""
+"Musí být spojen s lichovo mocí. Možná, když jej spálíme kouzelným ohněm, tak "
+"bude lich zničen. Vezměme jej a ustupme."
 
 #. [message]: speaker=unit
 #. regular english: That's an evil grimoire!
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1144
-#, fuzzy
-#| msgid "That’s an evil grimoire!"
 msgid "That be an evil grimoire!"
 msgstr "To je grimoár zla!"
 
@@ -4762,13 +4770,13 @@ msgstr "To je grimoár zla!"
 #. regular english: Try destroying the darned thing.
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1150
 msgid "Try destroyin’ the blasted thing."
-msgstr ""
+msgstr "Zkus tu zpropadenou věc zničit."
 
 #. [message]: speaker=unit
 #. regular english: My axe can't cut the paper. It's protected by magic!
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1161
 msgid "Me axe kinna cut tha paper. It be protected by magic!"
-msgstr ""
+msgstr "Má sekera ten papír neprotne. Je to chráněno kouzlem!"
 
 #. [message]: role=speakinghero
 #. regular english: Yes, but the lich still seems to be hurt. Let's take it and retreat. Maybe the forge can destroy it.
@@ -4777,14 +4785,14 @@ msgid ""
 "Aye, but the lich still seems ta be hurtin’. Let’s take it ’n retreat. Maybe "
 "tha forge ken destroy it."
 msgstr ""
+"Dobře, ale přesto se zdá, že lich trpí. Vezměme to a ustupme. Možná to "
+"kovárna pomůže zničit."
 
 #. [message]: speaker=unit
 #. this orc has bad grammar on purpose
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1176
-#, fuzzy
-#| msgid "The skull on that book looks good."
 msgid "Me like skull on book. It look good."
-msgstr "Lebka na této knize vypadá dobře."
+msgstr "Mně líbí lebka na knize. To vypadat dobře."
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1181
@@ -4795,12 +4803,12 @@ msgstr "Idiote."
 #. still the same orc, still has bad grammar. Uuuuuh is a whine-like sound, indicating disappointment.
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1192
 msgid "Uuuuuh, I can’t pull skull off book, but lich scream."
-msgstr ""
+msgstr "Ajajaj, já nemůžu lebka sundat z knihy, ale lich křičet."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1197
 msgid "Defend the book, my minions! Aaargh!"
-msgstr ""
+msgstr "Braňte knihu, moji služebníci! Aaargh!"
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1202
@@ -4808,6 +4816,8 @@ msgid ""
 "The book must be connected to the lich’s power! Take it and retreat. Once we "
 "smash that book, the lich should be destroyed."
 msgstr ""
+"Ta kniha musí být spojena s lichovo mocí! Vezmi ji a stáhni se. Až tu knihu "
+"zničíme, mělo by být po lichovi."
 
 #. [story]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1208
@@ -4820,6 +4830,8 @@ msgid ""
 "The foolish hero was tricked, and left believing both that the book could be "
 "destroyed, and that the lich might be weakened by doing so."
 msgstr ""
+"Bláhový hrdina byl oklamán a ponechán ve víře, že kniha může být zničena "
+"a lich tím oslaben."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1214
@@ -4831,6 +4843,11 @@ msgid ""
 "intrigued, the foolish hero left the ruined lair behind, book stowed away "
 "safely — and secretly — in his pack."
 msgstr ""
+"Po ústupu ven z jeskyně se bláhový hrdina pokoušel knihu zničit. Žádný "
+"z pokusů neudělal víc než malý důlek nebo ožehnutí, přesto každý vyvolal "
+"další výkřik z ústí jeskyně. Nakonec se vchod do jeskyně zřítil a všechno "
+"ztichlo. Spokojený a trochu zvědavý, nechal bláhový hrdina zničené doupě za "
+"sebou, s knihou ukrytou bezpečně – a tajně – ve svém batohu."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1218
@@ -4840,6 +4857,10 @@ msgid ""
 "orcish raiders. Undead no longer trouble the watches and memories of the "
 "lich fade to mere legend."
 msgstr ""
+"Roky plynou. Každé léto v čase, kdy horské cesty a vysoké průsmyky "
+"vysvléknou svůj zimní háv, lidé, elfové a trpaslící hlídkují, aby se "
+"ubránili skřetím nájezdníkům. Nemrtví už stráže neobtěžují a vzpomínky na "
+"licha blednou na pouhou pověst."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1222
@@ -4848,25 +4869,24 @@ msgid ""
 "It is said that that when attacked by orcs at night, the darkness itself "
 "descends to repel the assailants."
 msgstr ""
+"Kolují zvěsti o duchu štěstěny, který ochraňuje tyto stráže. Říká se, že "
+"když jsou v noci napadeny skřety, sama temnota sestoupí, aby zahnala "
+"útočníky."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1297
 msgid "Slain by those who were once my countrymen..."
-msgstr ""
+msgstr "Zavražděn těmi, kdo kdysi byli mými krajany..."
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1307
-#, fuzzy
-#| msgid "His evil deeds have come to an end, and he has meet his doom."
 msgid "His evil deeds have come to an end."
-msgstr "Jeho zlé skutky skončily a on se setkal s jeho osudem."
+msgstr "Jeho zlé skutky skončily."
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1312
-#, fuzzy
-#| msgid "Who do you think he was before starting down the path of darkness?"
 msgid "Who do you think he was before he was corrupted by the darkness?"
-msgstr "Kdo si myslíte že byl, než se vydal na cestu temnoty?"
+msgstr "Co myslíte, kdo to byl před tím, než ho zkazila temnota?"
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1317
@@ -4875,6 +4895,9 @@ msgid ""
 "to our mercy. Let us return home; the town will need us to help defend "
 "against the orcish raids."
 msgstr ""
+"Na tom nezáleží. Dal přednost smrti před životem a tím se zřekl práva na "
+"naše milosrdenství. Vraťme se domů; město nás bude potřebovat na pomoc "
+"s obranou proti skřetím nájezdům."
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1322
@@ -4886,7 +4909,7 @@ msgstr "Ano, pane."
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1368
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1406
 msgid "Darkness descends... and I..."
-msgstr ""
+msgstr "Padá temnota... a já..."
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1340
@@ -4904,17 +4927,21 @@ msgid ""
 "Likely one of those arrogant mages who think themselves superior to everyone "
 "else. He probably learned necromancy just to subjugate people like us."
 msgstr ""
+"Asi jeden z těch namyšlených mágů, kteří se považují za lepší než všichni "
+"ostatní. Pravděpodobně se naučil nekromancii jen proto, aby si podrobil lidi "
+"jako my."
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1355
 msgid "So he was an evil tyrant. How dreadful."
-msgstr ""
+msgstr "Takže to byl zlý tyran. Jak strašné."
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1360
 msgid ""
 "Probably. Anyway, there is no use in dwelling upon one so wicked. Let us go."
 msgstr ""
+"Pravděpodobně. Každopádně nemá smysl zabývat se někým tak zkaženým. Pojďme."
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1378
@@ -4923,16 +4950,12 @@ msgstr "To je konec jeho zlých skutků."
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1383
-#, fuzzy
-#| msgid ""
-#| "I wonder who he was in life, before falling into the evil ways that led "
-#| "him to today."
 msgid ""
 "I wonder who this lich was in life before he turned to the evil that is "
 "undeath."
 msgstr ""
-"Zajímalo by mne, kdo byl zaživa - předtím, než se dal na stezku zla, která "
-"ho dovedla až ke dnešku."
+"Rád bych věděl, kdo byl ten lich v životě před tím, než se obrátil ke zlu, "
+"kterým je nemrtvo."
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1388
@@ -4941,11 +4964,14 @@ msgid ""
 "but himself. A necromancer’s only purpose is to work for their own gain, "
 "nothing else."
 msgstr ""
+"Sobecký člověk, bažící pouze po moci a při tom naprosto nevšímavý "
+"k čemukoliv krom sama sebe. Jediným cílem nekromantů je pracovat pro vlastní "
+"prospěch, nic jiného."
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1393
 msgid "Pure evil, that is what they are."
-msgstr ""
+msgstr "Čiré zlo, to jsou oni."
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1398
@@ -4953,18 +4979,19 @@ msgid ""
 "Indeed. We need not afford this one any compassion. Let us leave this "
 "miserable place."
 msgstr ""
+"Samozřejmě. Nemusíme s ním mít žádné slitování. Opusťme toto bezútěšné místo."
 
 #. [message]: role=speakinghero
 #. regular english - the lich is nothing but a pile of bones now
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1417
 msgid "Tha lich be nae but a pile o’ bones now."
-msgstr ""
+msgstr "Teď už je z licha jen hromádka kostí."
 
 #. [message]: role=second
 #. regular english - I wonder what kind of human he was in life
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1423
 msgid "I wonder what kind o’ human he did be in life."
-msgstr ""
+msgstr "Rád bych věděl, co to bylo za člověka, když ještě žil."
 
 #. [message]: role=speakinghero
 #. regular english - I guess he was some crazy mage who wanted to make other humans his slaves. Why else do you think he would turn to dark magic?
@@ -4973,28 +5000,30 @@ msgid ""
 "Me guess be that he be some loonie mage who wanted ta make other humans inta "
 "’is slaves. Why else d’ye think tha lad woul’ turn ta dark magic?"
 msgstr ""
+"Hádám že to byl nějaký šílený mág, který si chtěl z ostatních lidí udělat "
+"otroky. Proč myslíš, že by se jinak obrátil k temné magii?"
 
 #. [message]: role=second
 #. regular english - I don't know. You think the lich's castle can be useful
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1435
 msgid "I dinna know. Ye think tha lich’s castle ken be useful?"
-msgstr ""
+msgstr "Nevím. Myslíš, že může být lichův hrad užitečný?"
 
 #. [message]: role=speakinghero
 #. regular english - Yes. Let's get to work.
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1441
 msgid "Aye. Let’s git to workin’."
-msgstr "Uf! Rychle do práce."
+msgstr "Ano. Dejme se do práce."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1449
 msgid "Felled by an orc... so it ends... like this..."
-msgstr ""
+msgstr "Poražen skřety... tak to končí... takhle..."
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1459
 msgid "The lich is dead! I have finally avenged my father."
-msgstr ""
+msgstr "Lich je mrtev! Konečně jsem pomstil svého otce."
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1464
@@ -5008,11 +5037,15 @@ msgid ""
 "stupid quest for revenge upon us. Amusing that he was more bothersome in "
 "death than in life. Annoying that it took so long to kill him."
 msgstr ""
+"Jen nějaký úzkostí hnaný mág, který se uchýlil k temné magii, když se "
+"zavázal k dost hloupému úkolu pomstít se na nás. Je legrační, že byl víc "
+"nepříjemný jako mrtvý než jako živý. Bylo otravné, že zabít ho trvalo tak "
+"dlouho."
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1493
 msgid "Boss, look! The lich dropped a shiny book!"
-msgstr ""
+msgstr "Šéfe, podívej! Lich upustil zářící knihu!"
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1498
@@ -5039,6 +5072,15 @@ msgid ""
 "I can still hear his infernal cackling ringing in my head. Sure thing, "
 "Zephrin, right... like my whole life was some sort of work of fiction!</i>"
 msgstr ""
+"<i>Ta hloupá vzpomínka se vrátila, aby mě dnes znovu trápila. Bylo to "
+"tenkrát na Akademii, když jsme se se Zephrinem dohadovali o skřetech. Stále "
+"si pamatuji jeho chraptivý hlas, který mi říkal, ‚Zábavná historka, Maline, "
+"ale určitě bys tam měl dát zřeknutí se odpovědnosti. Víš jak, ať každý "
+"pochopí, že při výrobě tohoto příběhu nebylo ublíženo žádným skřetům, "
+"hahaha.‘\n"
+"\n"
+"Stále slyším jeho děsný chechot, který mi zní v hlavě. Jistě, Zephrine, "
+"ano... jako by celý můj život byl něco na způsob smyšleného příběhu!</i>"
 
 #. [message]: role=speakinghero
 #. Bah is an exclamation of disgust or irritation
@@ -5047,11 +5089,13 @@ msgid ""
 "Bah! Do these people believe that we are fools? They must think we are all "
 "actors in a poorly written drama! I’ve had enough of this. I’m going home."
 msgstr ""
+"Pcha! Věří tihle lidé, že jsme blázni? Musí si myslet, že jsme všichni herci "
+"v nevalně napsané divadelní hře! Už toho mám dost. Jdu domů."
 
 #. [message]: role=speakinghero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1525
 msgid "Anyway, round up the wolves. I’m going home."
-msgstr ""
+msgstr "Tak jako tak, sežeňte dohromady vlky. Jdu domů."
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:1545
@@ -5062,22 +5106,20 @@ msgstr "... Takže můj boj proti skřetům je ztracen!"
 #. [unit_type]: id=Apprentice Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:4
 msgid "Apprentice Mage"
-msgstr "Mág začátečník"
+msgstr "Mág učedník"
 
 #. [unit_type]: id=Apprentice Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Trained in swordsmanship as a boy and the magical arts as a young man, "
-#| "Malin Keshar is talented at both but an expert in neither."
 msgid ""
 "Trained in swordsmanship as a boy and the magical arts as a young man, Malin "
 "Keshar is talented at both but an expert in neither. Although not as "
 "powerful as other fighters in direct combat, Malin’s sharp wit often allows "
 "him to outsmart his foes without putting himself in much danger."
 msgstr ""
-"Cvičen v šermu jako chlapec a magických uměních jako mladý muž, Malin Kešar "
-"je zdatný v obojím, ale skutečně dobrý ani v jednom."
+"Cvičen v šermu jako chlapec a magických uměních jako mladý muž, Malin Kešar "
+"je zdatný v obojím, ale skutečně dobrý není ani v jednom. Přestože v souboji "
+"tělo na tělo není tak silný jako ostatní bojovníci, Malinův ostrovtip mu "
+"často dovoluje vyzrát nad nepřáteli, aniž by se vystavil velkému nebezpečí."
 
 #. [attack]: type=impact
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:33
@@ -5087,7 +5129,7 @@ msgstr "magická vlna"
 #. [unit_type]: id=Apprentice Necromancer, race=human
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:4
 msgid "Apprentice Necromancer"
-msgstr "Nekromant začátečník"
+msgstr "Nekromant učedník"
 
 #. [unit_type]: id=Apprentice Necromancer, race=human
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:16
@@ -5098,6 +5140,11 @@ msgid ""
 "little time for him to improve his swordsmanship, but he still holds on to "
 "his short sword as his melee weapon of choice."
 msgstr ""
+"Pod vedením Darkena Volka se Malin stal odborníkem ve využívání nekromancie "
+"jednak jako nástroje pro vyvolání armády nemrtvých, jednak jako prostředku "
+"pro zvýšení jeho vlastní osobní moci. Malinovo zaměření na zlepšení jeho "
+"magických dovedností mu nenechalo moc času na zdokonalení šermu, ale při "
+"výběru zbraně na blízko se stále drží svého krátkého meče."
 
 #. [unit_type]: id=Dark Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/Dark_Mage.cfg:4
@@ -5132,6 +5179,13 @@ msgid ""
 "powerful skirmishers and are highly adept at reconnaissance, allowing them "
 "to often outmaneuver and entrap orcish raiders."
 msgstr ""
+"V pohraničí Wesnothu musí být všichni tělesně zdatní muži a ženy v časech "
+"nouze schopni bránit své domovy. Muži jsou většinou cvičeni v používání meče "
+"nebo luku a jako vojáci, kteří odolají náporu skřetích útoků, využíváni "
+"k tomu, aby zadržovali nájezdníky. Naproti tomu ženy se učí používat hůl "
+"a prak a jsou nejužitečnější jako zvědové a útočníci ze zálohy. Ty "
+"nejschopnější jsou zdatné harcovnice a značně zkušené v průzkumu, což jim "
+"často dovoluje přechytračit a chytit do pasti skřetí nájezdníky."
 
 #: data/campaigns/Descent_Into_Darkness/utils/characters.cfg:28
 msgid "Dela Keshar"
