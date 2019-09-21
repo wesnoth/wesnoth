@@ -1595,7 +1595,6 @@ bool unit::abilities_filter_matches(const config& cfg, bool attacker, int res) c
 bool unit::ability_filter_fighter(const std::string& ability, const std::string& filter_attacker , const config& cfg, const map_location& loc, const unit& u2, const_attack_ptr weapon) const
 {
 	const config &filter = cfg.child(filter_attacker);
-
 	if(!filter) {
 		return true;
 	}
