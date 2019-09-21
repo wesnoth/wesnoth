@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-09-16 11:33+0300\n"
-"PO-Revision-Date: 2019-08-28 19:11+1000\n"
+"PO-Revision-Date: 2019-09-17 11:35+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -5901,11 +5901,11 @@ msgstr "%A, %I:%M %p"
 
 #: src/format_time_summary.cpp:61
 msgid "%b %d"
-msgstr "%b %d"
+msgstr "%d %b"
 
 #: src/format_time_summary.cpp:65
 msgid "%b %d %Y"
-msgstr "%b %d %Y"
+msgstr "%d %b %Y"
 
 #: src/game_config.cpp:538
 msgid "Invalid color in range: "
@@ -6926,6 +6926,9 @@ msgid ""
 "“all” = overview of all commands, <command> = name of a specific command "
 "(provides more detail)"
 msgstr ""
+"[all|<command>]\n"
+"“all” = overview of all commands, <command> = name of a specific command "
+"(provides more detail)"
 
 #: src/map_command_handler.hpp:266
 msgid "Missing argument $arg_id"
@@ -6961,8 +6964,8 @@ msgstr "Usage:"
 #: src/map_command_handler.hpp:343
 msgid "command^Alias:"
 msgid_plural "Aliases:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Alias:"
+msgstr[1] "Aliases:"
 
 #: src/menu_events.cpp:176
 msgid "Save Map As"
@@ -7096,6 +7099,8 @@ msgid ""
 "[<side> [on/off]]\n"
 "“on” = enable control by the AI, “off” = side is controlled by the player"
 msgstr ""
+"[<side> [on/off]]\n"
+"“on” = enable control by the AI, “off” = side is controlled by the player"
 
 #: src/menu_events.cpp:1190
 msgid "Switch a side to/from idle state."
@@ -7105,8 +7110,6 @@ msgstr "Switch a side to/from idle state."
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1194
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "command_idle^[<side> [on/off]]"
 msgstr "[<side> [on/off]]"
 
@@ -7140,7 +7143,7 @@ msgstr "Debug layers from terrain under the mouse."
 
 #: src/menu_events.cpp:1204
 msgid "Show fps (Frames Per Second)."
-msgstr ""
+msgstr "Show FPS (Frames Per Second)."
 
 #: src/menu_events.cpp:1206
 msgid "Save game."
@@ -7454,7 +7457,7 @@ msgstr "No Ally Mirror"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "A game ($name|, $scenario|) has been created"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
@@ -7577,20 +7580,20 @@ msgstr ""
 "want to save the game?"
 
 #: src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "Do you really want to surrender the game?"
 msgid ""
 "\n"
 "Do you want to save the game?"
-msgstr "Do you really want to surrender the game?"
+msgstr ""
+"\n"
+"Do you want to save the game?"
 
 #: src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "The game has been saved."
 msgid ""
 "This game has been ended.\n"
 "Reason: "
-msgstr "The game has been saved."
+msgstr ""
+"This game has been ended.\n"
+"Reason: "
 
 #: src/playsingle_controller.cpp:440
 msgid "It is now $name|’s turn"
@@ -7913,12 +7916,6 @@ msgid "Units"
 msgstr "Units"
 
 #: src/reports.cpp:1344
-#, fuzzy
-#| msgid ""
-#| "The expenses incurred at the end of every turn to maintain your army. The "
-#| "first number is the amount of gold that will be deducted. The second is "
-#| "the total cost of upkeep, including that covered by villages — in other "
-#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -7927,31 +7924,26 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 "The expenses incurred at the end of every turn to maintain your army. The "
-"first number is the amount of gold that will be deducted. The second is the "
-"total cost of upkeep, including that covered by villages — in other words, "
-"the amount of gold that would be deducted if you lost all villages."
+"first number is the amount of gold that will be deducted. It is equal to the "
+"number of unit levels not supported by villages. The second is the total "
+"cost of upkeep, including that covered by villages — in other words, the "
+"amount of gold that would be deducted if you lost all villages."
 
 #: src/reports.cpp:1344
 msgid "Upkeep"
 msgstr "Upkeep"
 
 #: src/reports.cpp:1381
-#, fuzzy
-#| msgid "Income"
 msgid "Net Income"
-msgstr "Income"
+msgstr "Net Income"
 
 #: src/reports.cpp:1381
-#, fuzzy
-#| msgid ""
-#| "The amount of gold you gain each turn from your controlled villages, or "
-#| "the amount of gold you will lose each turn for unit upkeep."
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
-"The amount of gold you gain each turn from your controlled villages, or the "
-"amount of gold you will lose each turn for unit upkeep."
+"The net amount of gold you gain or lose each turn, taking into account "
+"income from controlled villages and payment of upkeep."
 
 #: src/reports.cpp:1549
 msgid "Observers:"
