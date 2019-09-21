@@ -41,6 +41,7 @@
    * Ported the "expand-terrain-macros" and "wmlflip" tools to Python 3
    * It's now possible to chat with oneself in SP campaigns. Chat is shown in replays. (Issue#1111)
    * Removed unused "scoutDefault" and "journeylifter" Python tools
+   * Fixed wmlscope not correctly performing expansion of square braces in filenames in some conditions
 
 ## Version 1.15.1
  ### Editor

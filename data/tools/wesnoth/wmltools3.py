@@ -67,8 +67,16 @@ if no expansion could be performed"""
                 match_range = re.match("(\d+)~(\d+)", token) # range syntax, eg [1~4]
                 if match_range:
                     before, after = int(match_range.group(1)), int(match_range.group(2))
+                    # does one of the limits have leading zeros? If so, detect the length of the numbers used
+                    if match_range.group(1).startswith("0") or match_range.group(2).startswith("0"):
+                        leading_zeros = max(len(match_range.group(1)), len(match_range.group(2)))
+                    else:
+                        leading_zeros = 0
                     incr = 1 if before <= after else -1 # to allow iterating in reversed order, eg. [4~1]
-                    substitutions[i].extend([Substitution(str(n), match.start(0), match.end(0)) for n in range(before, after + incr, incr)])
+                    # previously this code used a mere casting to str
+                    # string formatting allows proper handling of leading zeros, if any
+                    fmt_string = "{:0" + str(leading_zeros) + "d}"
+                    substitutions[i].extend([Substitution(fmt_string.format(n), match.start(0), match.end(0)) for n in range(before, after + incr, incr)])
                     continue
                 substitutions[i].append(Substitution(token, match.start(0), match.end(0))) # no operator found
 
@@ -81,7 +89,8 @@ if no expansion could be performed"""
         for sub_array in substitutions:
             new_string = path
             for sub in reversed(sub_array): # to avoid creating "holes" in the strings
-                yield new_string[:sub.start] + sub.sub + new_string[sub.end:] # these are the expanded strings
+                new_string = new_string[:sub.start] + sub.sub + new_string[sub.end:] # these are the expanded strings
+            yield new_string
 
 def is_root(dirname):
     "Is the specified path the filesystem root?"
