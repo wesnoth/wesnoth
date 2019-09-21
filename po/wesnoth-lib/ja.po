@@ -700,17 +700,6 @@ msgid ""
 "Occasionally caves are <ref>dst='terrain_illuminated_cave' "
 "text='illuminated'</ref>."
 msgstr ""
-"<italic>text='岩に囲まれた洞窟'</italic>は、風雨の働きによって岩石が侵食され"
-"て形作られました。でこぼこの地下洞窟に似ており、多くのユニットにとって、回避"
-"率は上がるものの、通過するのは困難な地形です。ドワーフとトロルのような洞窟の"
-"住人のみ、この地形をうまく通過する十分な能力を有しています。\n"
-"\n"
-"岩に囲まれた洞窟において、多くのユニットの回避率は50%となり、騎兵は40%に制限"
-"されます。しかし、ドワーフはその短身により、60%の回避率の恩恵に与ることができ"
-"ます。\n"
-"\n"
-"時折、洞窟の中には<ref>dst='terrain_illuminated_cave' text='照らされている場"
-"所'</ref>があります。"
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -1614,20 +1603,6 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
-"<italic>text='洞窟'</italic>地形はユニットが通れるほどの広さがある地下の洞窟"
-"です。\n"
-"ほとんどのユニットは洞窟に適しておらず、移動は遅く、回避率も低くなります。洞"
-"窟を住処とするドワーフとトロルは、比較的楽に洞窟を移動することができます。特"
-"にドワーフは、体の小ささを活かして他の種族が通れないような場所を通っていきま"
-"す。洞窟の中にはときおり、<ref>dst='terrain_illuminated_cave' text='照らされ"
-"ている'</ref>場所があります。\n"
-"\n"
-"地下世界の一部は地表からの光で照らされていることがあります。その場所では、秩"
-"序ユニットには攻撃ボーナスが与えられ、混沌ユニットの攻撃ボーナスは失われま"
-"す。照らされた洞窟のその他の性質については、通常の洞窟地形と同じです。\n"
-"\n"
-"洞窟地形ではほとんどのユニットは20〜40%の回避率となりますが、ドワーフは50%と"
-"なります。"
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:2750
@@ -3672,7 +3647,7 @@ msgstr "管理者の操作"
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:173
 msgid "Kick / ban reason:"
-msgstr "キック / バンの理由："
+msgstr ""
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:198
@@ -3864,17 +3839,13 @@ msgstr "新しいターンが始まった時"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
-#, fuzzy
-#| msgid "Game data:"
 msgid "Game created:"
-msgstr "ゲームデータ："
+msgstr ""
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
-#, fuzzy
-#| msgid "When a new turn has begun"
 msgid "When a new game has been created"
-msgstr "新しいターンが始まった時"
+msgstr ""
 
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:235
@@ -4357,10 +4328,8 @@ msgstr "陣営が属するチームを変更します"
 
 #. [menu_button]: id=side_color
 #: data/gui/window/mp_staging.cfg:304
-#, fuzzy
-#| msgid "The team color"
 msgid "This side’s color"
-msgstr "チームカラーを選択します"
+msgstr ""
 
 #. [button]: id=ok
 #: data/gui/window/mp_staging.cfg:422
@@ -7725,71 +7694,3 @@ msgid ""
 msgstr ""
 "キー「$deprecated_key」は「$key」に名前が変更されました。「$deprecated_key」"
 "のサポートはバージョン$removal_versionで削除されます。"
-
-#, fuzzy
-#~| msgid "Rusty Gate"
-#~ msgid "Rusty Open Gate"
-#~ msgstr "錆びた門"
-
-#, fuzzy
-#~| msgid "Wooden Door"
-#~ msgid "Wooden Open Door"
-#~ msgstr "木の扉"
-
-#, fuzzy
-#~| msgid "Players:"
-#~ msgid "Sort players:"
-#~ msgstr "プレイヤー数："
-
-#, fuzzy
-#~| msgid "Refresh WML"
-#~ msgid "Refresh"
-#~ msgstr "WMLのリフレッシュ"
-
-#, fuzzy
-#~| msgid "Scroll speed:"
-#~ msgid "Speed:"
-#~ msgstr "スクロール速度："
-
-#, fuzzy
-#~| msgid "Make units move and fight faster"
-#~ msgid "Units move and fight speed"
-#~ msgstr "ユニットの移動と戦闘を高速化します"
-
-#, fuzzy
-#~| msgid "Available at main menu"
-#~ msgid "Available at titlescreen"
-#~ msgstr "メインメニュー"
-
-#, fuzzy
-#~| msgid "Scenarios"
-#~ msgid "Scenario"
-#~ msgstr "シナリオ"
-
-#, fuzzy
-#~| msgid "Campaigns"
-#~ msgid "Campaign"
-#~ msgstr "キャンペーン"
-
-#~ msgid "feature^Experimental OpenMP support"
-#~ msgstr "実験的なOpenMPのサポート"
-
-#, fuzzy
-#~| msgid "url^None"
-#~ msgid "None"
-#~ msgstr "なし"
-
-#, fuzzy
-#~| msgid "Settings"
-#~ msgid "Settings:"
-#~ msgstr "設定"
-
-#, fuzzy
-#~| msgid "Registered Users Only"
-#~ msgid "Registered users only:"
-#~ msgstr "登録済みユーザー限定"
-
-#, fuzzy
-#~| msgid "No eras found."
-#~ msgid "No era information found."
-#~ msgstr "時代が存在しません。"
