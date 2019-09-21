@@ -279,8 +279,8 @@ void attack_unit_and_advance(const map_location& attacker,
  * Returns the bonus percentage (possibly 0 if there's no leader adjacent).
  */
 int under_leadership(const unit &u, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr);
-bool leadership_affects_self(const std::string& ability,const unit_map& units, const map_location& loc, bool attacker=true, const_attack_ptr weapon=nullptr,const_attack_ptr opp_weapon=nullptr);
-bool leadership_affects_opponent(const std::string& ability,const unit_map& units, const map_location& loc, bool attacker=true, const_attack_ptr weapon=nullptr,const_attack_ptr opp_weapon=nullptr);
+bool leadership_affects_self(const std::string& ability,const unit_map& units, const map_location& loc, bool attacker=true);
+bool leadership_affects_opponent(const std::string& ability,const unit_map& units, const map_location& loc, bool attacker=true);
 std::pair<int, bool> ability_leadership(const std::string& ability, const unit_map& units, const map_location& loc, const map_location& opp_loc, bool attacker=true, int abil_value=0, bool backstab_pos=false, const_attack_ptr weapon=nullptr, const_attack_ptr opp_weapon=nullptr);
 bool bool_leadership(const std::string& ability,const unit_map& units, const map_location& loc, const map_location& opp_loc, bool attacker=true, const_attack_ptr weapon=nullptr, const_attack_ptr opp_weapon=nullptr);
 
