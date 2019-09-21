@@ -11,7 +11,7 @@ Here is a list of the general howto for the screenshots:
 
 1) Take the "original" version as PNG or BMP.
 
-2) Take the fullscreen screenshots in 1024x768.
+2) Take the screenshots in 1024x768.
 
 3) Afterwards, convert the fullscreen screenshots to JPEG and change the
 resolution to 640x480 and set quality level to 80%. This is the command to use
@@ -29,7 +29,7 @@ convert multiplayer-1.13.11+dev.bmp multiplayer-1.13.11+dev.png
 ```
 
 5) Send the files in once you translated the strings in the po file. In the
-translation use your locale as prefix/foldername. So if you were eg translating
+translation use your locale as prefix/foldername. So if you were e.g. translating
 to German, you would use 'de' as foldername where the images are in and the
 filename for the game-screen screenshot would be this:
     * de/game-screen-1.13.11+dev.jpg
@@ -47,7 +47,7 @@ As a hint where you could create the screenshots:
 * `multiplayer-1.13.11+dev.png`: just the dialog that pops up when clicking on
   'multiplayer' in the main menu, take care to set the player name to the
   default value 'player' (or whatever it is in your lang, since this one is a
-  translatable string)
+  translatable string), and avoid the cursor being shown.
 * `recruit-1.13.11+dev.png`: start a skirmish game and select default era and
   rebels as your race, click on recruit and take a screenshot of the dialog
-  popping up
+  popping up. Click onto a unit, so that the search field loses focus.
