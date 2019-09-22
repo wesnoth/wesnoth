@@ -1,4 +1,4 @@
-## Version 1.14.8+dev
+## Version 1.14.9
  ### AI:
    * Fixed a rare crash in attack prediction (issue #4068)
    * Experimental AI: fixed guardians being used for village actions
