@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-09-16 11:33+0300\n"
-"PO-Revision-Date: 2019-08-04 22:45+0200\n"
+"PO-Revision-Date: 2019-09-22 03:48+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -346,7 +346,6 @@ msgstr "Joystick: Achsen-Nummer des Schubhebels"
 msgid "Joystick: deadzone of the thruster"
 msgstr "Joystick: Totbereich des Schubhebels"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
@@ -361,7 +360,6 @@ msgstr "vergiftet"
 msgid "Gold carryover:"
 msgstr "Mitgebrachtes Gold:"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [note]
 #. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:272
@@ -3605,7 +3603,6 @@ msgstr "Höhle"
 msgid "Fungus"
 msgstr "Pilzhain"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
 #: data/core/team-colors.cfg:188 src/terrain/terrain.cpp:176
 msgid "Village"
@@ -3636,13 +3633,11 @@ msgstr "Unbegehbar"
 msgid "Impassable"
 msgstr "Unpassierbar"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
 #: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:467
 msgid "Fog"
 msgstr "Nebel"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
 #: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:470
 #: src/game_initialization/lobby_data.cpp:473
@@ -4091,7 +4086,6 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nein"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
 #: src/hotkey/command_executor.cpp:627
@@ -4132,7 +4126,6 @@ msgstr ""
 msgid "(Note: You should use $replacement instead in new code)"
 msgstr "(Anmerkung: Sie sollten stattdessen $replacement in Ihrem Code nutzen)"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:194 src/deprecation.cpp:69
 msgid "Invalid deprecation level $level (should be 1-4)"
@@ -4143,31 +4136,26 @@ msgstr "Ungültige Deprekationsstufe $level (nur 1-4 erlaubt)"
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Ungültige Deprekationsstufe (nur 1-4 erlaubt)"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1061
 msgid "female^poisoned"
 msgstr "vergiftet"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1068
 msgid "female^slowed"
 msgstr "verlangsamt"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1068
 msgid "slowed"
 msgstr "verlangsamt"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1074
 msgid "female^petrified"
 msgstr "versteinert"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1074
 msgid "petrified"
@@ -4183,14 +4171,12 @@ msgstr "unheilbar"
 msgid "unhealable"
 msgstr "unheilbar"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
 #: data/lua/wml/message.lua:395 src/scripting/game_lua_kernel.cpp:2787
 #: src/scripting/game_lua_kernel.cpp:2822
 msgid "input"
 msgstr "Eingabe"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:74
 msgid "Victory:"
@@ -4213,7 +4199,6 @@ msgstr[1] "(%d Runden verbleiben)"
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% Goldstücke werden ins nächste Szenario übernommen."
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:156
 #: src/game_initialization/mp_game_utils.cpp:76
@@ -7131,6 +7116,9 @@ msgid ""
 "“all” = overview of all commands, <command> = name of a specific command "
 "(provides more detail)"
 msgstr ""
+"[all|<Befehl>]\n"
+"»all« = Überblick über alle Befehle, <Befehl> = Name eines Befehls (zeigt "
+"mehr Information an)"
 
 #: src/map_command_handler.hpp:266
 msgid "Missing argument $arg_id"
@@ -7166,8 +7154,8 @@ msgstr "Aufruf:"
 #: src/map_command_handler.hpp:343
 msgid "command^Alias:"
 msgid_plural "Aliases:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Alias:"
+msgstr[1] "Aliase:"
 
 #: src/menu_events.cpp:176
 msgid "Save Map As"
@@ -7312,6 +7300,8 @@ msgid ""
 "[<side> [on/off]]\n"
 "“on” = enable control by the AI, “off” = side is controlled by the player"
 msgstr ""
+"[<Partei> [on/off]]\n"
+"»on« = KI spielt für den Spieler, »off« = Partei wird vom Spieler gesteuert"
 
 #: src/menu_events.cpp:1190
 msgid "Switch a side to/from idle state."
@@ -7321,8 +7311,6 @@ msgstr "Ruhezustand für Partei aktivieren/deaktivieren."
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1194
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "command_idle^[<side> [on/off]]"
 msgstr "[<Partei> [on/off]]"
 
@@ -7358,7 +7346,7 @@ msgstr "Ebenen des Geländes unter der Maus auf Fehler testen."
 
 #: src/menu_events.cpp:1204
 msgid "Show fps (Frames Per Second)."
-msgstr ""
+msgstr "FPS anzeigen (Frames pro Sekunde)."
 
 #: src/menu_events.cpp:1206
 msgid "Save game."
@@ -7703,7 +7691,7 @@ msgstr "Keine Spiegelung (nur Verbündete)"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "Ein neues Spiel wurde eröffnet: $name|, $scenario|"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
@@ -7845,20 +7833,20 @@ msgstr ""
 "Möchtet Ihr den Spielstand speichern?"
 
 #: src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "Do you really want to surrender the game?"
 msgid ""
 "\n"
 "Do you want to save the game?"
-msgstr "Möchtet Ihr das Spiel wirklich aufgeben?"
+msgstr ""
+"\n"
+"Möchtet Ihr den Spielstand speichern?"
 
 #: src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "The game has been saved."
 msgid ""
 "This game has been ended.\n"
 "Reason: "
-msgstr "Der Spielstand wurde gespeichert."
+msgstr ""
+"Dieses Spiel wurde beendet.\n"
+"Grund: "
 
 #: src/playsingle_controller.cpp:440
 msgid "It is now $name|’s turn"
@@ -8211,12 +8199,6 @@ msgid "Units"
 msgstr "Einheiten"
 
 #: src/reports.cpp:1344
-#, fuzzy
-#| msgid ""
-#| "The expenses incurred at the end of every turn to maintain your army. The "
-#| "first number is the amount of gold that will be deducted. The second is "
-#| "the total cost of upkeep, including that covered by villages — in other "
-#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8224,33 +8206,29 @@ msgid ""
 "cost of upkeep, including that covered by villages — in other words, the "
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
-"Die Kosten die nach jeder Runde abgezogen werden, um Eure Armee zu "
-"verwalten. Die erste Zahl ist die Menge an Gold, die abgezogen wird. Die "
-"zweite Zahl sind die Gesamten Unterhaltskosten, auch die, welche durch "
-"Dörfer gedeckt sind - mit anderen Worten: die Menge an Gold, die abgezogen "
-"würde, wenn Sie alle Dörfer verlören."
+"Die Kosten, welche jede Runde anfallen um Eure Armee zu verwalten. Die erste "
+"Zahl ist die Menge an Gold, die tatsächlich fällig wird – die Einheiten, für "
+"deren Versorgungskosten nicht die Dörfer aufkommen. Die zweite Zahl sind die "
+"gesamten Unterhaltskosten, auch die, welche durch Dörfer gedeckt sind – mit "
+"anderen Worten: die Menge an Gold, die abgezogen würde, wenn Ihr alle Dörfer "
+"verlöret."
 
 #: src/reports.cpp:1344
 msgid "Upkeep"
 msgstr "Ausgaben"
 
 #: src/reports.cpp:1381
-#, fuzzy
-#| msgid "Income"
 msgid "Net Income"
-msgstr "Einkommen"
+msgstr "Netto-Einkommen"
 
 #: src/reports.cpp:1381
-#, fuzzy
-#| msgid ""
-#| "The amount of gold you gain each turn from your controlled villages, or "
-#| "the amount of gold you will lose each turn for unit upkeep."
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
-"Die Menge an Gold, die sie durch Dörfer unter Ihrer Kontrolle einnehmen, "
-"oder die Menge an Gold, die Sie jede Runde durch Unterhaltskosten verlieren."
+"Die Menge an Gold, welche Ihr pro Runde einnehmt bzw. verliert. Dies hängt "
+"von der Anzahl der Dörfern unter Euer Kontrolle und den Ausgaben zum Decken "
+"der Unterhaltskosten Eurer Einheiten ab."
 
 #: src/reports.cpp:1549
 msgid "Observers:"

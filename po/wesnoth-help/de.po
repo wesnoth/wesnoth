@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-09-16 11:32+0300\n"
-"PO-Revision-Date: 2019-07-03 11:57+0200\n"
+"PO-Revision-Date: 2019-09-22 02:15+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -1667,16 +1667,6 @@ msgstr "Einkommen + Unterhalt"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:220
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Income is simple. You have a base income of 2 gold per turn. For every "
-#| "village you control, you gain one additional gold each turn. (In general "
-#| "this is configurable but in campaigns it is almost always one gold per "
-#| "village.) Thus, if you have ten villages, you would normally gain 12 gold "
-#| "each turn. Your upkeep costs are subtracted from this income, as detailed "
-#| "below."
 msgid ""
 "\n"
 "\n"
@@ -1688,10 +1678,9 @@ msgstr ""
 "\n"
 "\n"
 "Einkommen: Grundsätzlich erhaltet Ihr 2 Goldstücke pro Runde. Für jedes "
-"Dorf, das Ihr unter Kontrolle habt, gibt es ein weiteres Goldstück (dies "
-"kann variieren, in Kampagnen sind 1 Goldstück aber üblich). Bei 10 eigenen "
-"Dörfern würdet Ihr also in jeder Runde 12 Goldstücke gewinnen. Von dem "
-"Betrag werden die Unterhaltskosten für Eure Truppen abgezogen."
+"Dorf, das Ihr unter Kontrolle habt, gibt es ein weiteres Goldstück. Bei 10 "
+"eigenen Dörfern würdet Ihr also in jeder Runde 12 Goldstücke gewinnen. Von "
+"dem Betrag werden die Unterhaltskosten für Eure Truppen abgezogen."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:220
@@ -1755,6 +1744,13 @@ msgid ""
 "<italic>text='Status Table'</italic> dialog shows the values for the current "
 "scenario."
 msgstr ""
+"\n"
+"\n"
+"Das Grundeinkommen, die Anzahl der Goldstücke welche man für jedes Dorf "
+"erhält, und die von Dörfern gedeckten Unterhaltskosten sind einstellbar. In "
+"Kampagnen handelt es sich aber fast immer um die oben erwähnten Werte. In "
+"der <italic>text='Spielübersicht'</italic> können die Werte eingesehen "
+"werden."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:232

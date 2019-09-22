@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-09-16 08:32 UTC\n"
-"PO-Revision-Date: 2019-08-14 08:06+0200\n"
+"PO-Revision-Date: 2019-09-22 02:41+0200\n"
 "Last-Translator: German translation team <irc://irc.freenode.net/#wesnoth-"
 "de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -4316,10 +4316,6 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. Relgorn is a Dwarvish Lord
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:595
-#, fuzzy
-#| msgid ""
-#| "Temper your anger. Relgorn’s manner may be rough, but surely there is "
-#| "nothing wrong with his suggestion?"
 msgid ""
 "Temper your anger. Lord Relgorn’s manner may be rough, but surely there is "
 "nothing wrong with his suggestion?"
@@ -4617,6 +4613,9 @@ msgid ""
 "The dwarves are your allies in this scenario. If you help their leader "
 "survive the battle, he may provide you with useful information."
 msgstr ""
+"Die Zwerge sind in diesem Szenario Eure Verbündeten. Wenn Ihr ihrem Anführer "
+"helft, diese Schlacht zu überstehen, wir er Euch möglicherweise einige "
+"Informationen geben können."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:498
@@ -4717,6 +4716,10 @@ msgid ""
 "last spring and come to these caves to seek the Sceptre of Fire. With the "
 "Sceptre, we hope to put the war to an end."
 msgstr ""
+"Uns ist es etwas besser ergangen. Letzten Frühling sind wir aus den "
+"Aethenwälder geflohen und jetzt sind wir in diese Höhle gekommen um das "
+"Zepter des Feuers zu suchen. Wir hoffen, mit dem Zepter dem Krieg ein Ende "
+"setzen zu können."
 
 #. [message]: speaker=Geldar
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:632
@@ -4733,8 +4736,9 @@ msgstr ""
 #. Relgorn is the dwarvish leader from the previous scenario
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:638
 msgid "Lord Relgorn’s troops are fighting at our side, sir."
-msgstr ""
+msgstr "Relgorns Truppen kämpfen an userer Seite."
 
+# Gardisten = der Einheitentyp
 #. [message]: speaker=Geldar
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:643
 msgid ""
@@ -4742,6 +4746,9 @@ msgid ""
 "resolute defense. Please accept the service o’ my clan’s defenders, to "
 "protect you and your quest."
 msgstr ""
+"Prinz, sie sind hervorragende Kämpfer. Aber die Verteidigungsfähigkeiten von "
+"Gardisten ist unter Zwergen unübertroffen. Ich möchte euch einen Teil meiner "
+"Wächter mitgeben. Diese tapferen Krieger werden euch beschützen."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:648
@@ -4759,20 +4766,12 @@ msgstr "Ihr könnt nun die legendären Zwergenwächter rekrutieren."
 
 #. [message]: speaker=Geldar
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:663
-#, fuzzy
-#| msgid ""
-#| "Northeast o’ my keep, young human, the tunnels converge towards the "
-#| "deepest reaches of the underground kingdom. The Sceptre can only be "
-#| "there. Please accept the service of my guardsmen. These elite warriors "
-#| "will protect you."
 msgid ""
 "Northeast o’ my keep, Delfador, the tunnels converge towards the deepest "
 "reaches o’ the underground kingdom. The Sceptre can only be there."
 msgstr ""
 "Im Nordenosten, junger Mensch, laufen die Stollen zusammen und führen in die "
-"tiefsten Tiefen dieses Reiches. Nur dort kann sich das Zepter befinden. Ich "
-"möchte euch einen Teil meiner Wächter mitgeben. Diese tapferen Krieger "
-"werden euch beschützen."
+"tiefsten Tiefen dieses Reiches. Nur dort kann sich das Zepter befinden."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:669
@@ -6095,10 +6094,8 @@ msgstr "Gelangt zum Ende des Flusses"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:84
-#, fuzzy
-#| msgid "Move Konrad to the north side of the river"
 msgid "Move Konrad to the cave"
-msgstr "Führt Konrad zur nördlichen Seite des Flusses"
+msgstr "Führt Konrad zur Höhle"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:92
@@ -8421,6 +8418,8 @@ msgid ""
 "If you reduce Lord Bayar, Sir Ruga, Sir Daryn, or Sir Alric to 0HP, you’ll "
 "receive a reward!"
 msgstr ""
+"Wenn ihr Bayars, Rugas oder Daryns Lebenspunkte auf 0 reduziert, erhaltet "
+"Ihr einen Bonus."
 
 #. [message]: speaker=Bayar
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:339
