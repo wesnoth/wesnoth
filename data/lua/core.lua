@@ -202,11 +202,16 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 			return elem(...)
 		end
 	elseif type(elem) == "table" then
+		-- Don't clobber the old metatable.
+		local old_mt = getmetatable(elem)
 		local mt = {
 			__index = function(self, key)
 				if not msg_shown then
 					msg_shown = true
 					wesnoth.deprecated_message(elem_name, level, version, message)
+				end
+				if type(old_mt) == "table" and old_mt.__index ~= nil then
+					return old_mt.__index(self, key)
 				end
 				return elem[key]
 			end,
@@ -215,14 +220,12 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 					msg_shown = true
 					wesnoth.deprecated_message(elem_name, level, version, message)
 				end
+				if type(old_mt) == "table" and old_mt.__newindex ~= nil then
+					return old_mt.__newindex(self, key, val)
+				end
 				elem[key] = val
 			end,
 		}
-		-- Don't clobber the old metatable.
-		local old_mt = getmetatable(elem)
-		if type(old_mt) == "table" then
-			setmetatable(mt, old_mt)
-		end
 		return setmetatable({}, mt)
 	else
 		wesnoth.log('warn', "Attempted to deprecate something that is not a table or function: " ..
