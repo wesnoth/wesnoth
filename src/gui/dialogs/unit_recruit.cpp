@@ -141,6 +141,13 @@ void unit_recruit::pre_show(window& window)
 		const std::string cost_string = std::to_string(recruit->cost());
 
 		column["use_markup"] = "true";
+		if(!can_afford) {
+			// Just set the tooltip on every single element in this row.
+			if(wb_gold > 0)
+				column["tooltip"] = _("This unit cannot be recruited because you will not have enough gold at this point in your plan.");
+			else
+				column["tooltip"] = _("This unit cannot be recruited because you do not have enough gold.");
+		}
 
 		column["label"] = image_string + (can_afford ? "" : "~GS()");
 		row_data.emplace("unit_image", column);
