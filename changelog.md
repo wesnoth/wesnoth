@@ -51,7 +51,7 @@
      * S2: add dehydration explanation to objectives
  ### Graphics
    * Own portraits for higher level bats
-   * New Water Serpent and Cuttlefish portrait
+   * New Water Serpent and Cuttlefish portraits
    * New Wolf, Great Wolf and Direwolf portraits
    * Additional wolf/dog portrait for custom units
    * Separate Mudcrawler portrait
@@ -70,10 +70,10 @@
      * Guards can't be tricked off position, leaders won't destroy buildings
      * Guards and Spiders are loyal – AI income has been adjusted accordingly
      * AI income increases gradually in lategame (very slowly)
-   * 5P Wildlands:
-     * fix default village_gold being too hight, disadvantaging player 5
+   * The Wilderlands:
+     * Fixed default village_gold being too high, disadvantaging player 5
  ### Packaging
-   * added HighContrast icon
+   * Added HighContrast icon variant
  ### WML engine
    * Fixed [music] ms_after= affecting the previous track instead of the intended one
  ### Miscellaneous and bug fixes
