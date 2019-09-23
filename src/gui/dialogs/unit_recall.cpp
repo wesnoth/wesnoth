@@ -219,6 +219,12 @@ void unit_recall::pre_show(window& window)
 
 		if(!recallable) {
 			mods += "~GS()";
+
+			// Just set the tooltip on every single element in this row.
+			if(wb_gold > 0)
+				column["tooltip"] = _("This unit cannot be recalled because you will not have enough gold at this point in your plan.");
+			else
+				column["tooltip"] = _("This unit cannot be recalled because you do not have enough gold.");
 		}
 
 		column["use_markup"] = "true";
