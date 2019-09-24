@@ -130,9 +130,6 @@ static const blacklist_pattern_list default_blacklist{
 	}
 };
 
-/** Some tasks to run on startup. */
-void init();
-
 /**
  * Populates 'files' with all the files and
  * 'dirs' with all the directories in dir.
