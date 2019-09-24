@@ -207,9 +207,10 @@
    * Game bans are now also enforced by username. (PR#4139)
    * Usernames on the host's ignore list are automatically banned. (PR#4143)
 
-## Version 1.14.8+dev
+## Version 1.14.9
  ### AI:
    * Fixed a rare crash in attack prediction (issue #4068)
+   * Experimental AI: fixed guardians being used for village actions
  ### Campaigns
    * A Tale of Two Brothers:
      * S3: modify castle illumination tip on easy mode
@@ -262,13 +263,14 @@
    * Additional wolf/dog portrait for custom units
    * Separate Mudcrawler portrait
    * New Walking Corpse portrait for mounted variation
-   * The mushroom terrain graphics have changed to match the terrain statistics.
-     (PR #4185)
  ### Language and i18n
-   * Updated translations: British English, Chinese (Traditional), Dutch,
-     German, Spanish, Turkish, Portuguese (Brazil), Ukrainian
+   * Updated translations: British English, Chinese (Traditional), Czech, Dutch,
+     French, German, Italian, Japanese, Portuguese (Brazil), Russian, Spanish,
+     Turkish, Ukrainian
+   * Changed the :help command's output to split over multiple lines
+   * Added translatable explanations of :droid, :help and :idle's arguments
  ### Multiplayer
-   * A new Land:
+   * A New Land:
      * Help menu can be accessed in any turn and doesn't pause the game
      * Bottleneck in the spider's caves removed
      * Swapped positions of Gryphon and Drake
