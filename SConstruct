@@ -390,7 +390,6 @@ if env["prereqs"]:
     have_client_prereqs = have_server_prereqs & have_sdl_other() & conf.CheckLib("vorbisfile") & conf.CheckOgg() & \
         conf.CheckPNG() & \
         conf.CheckJPG() & \
-        conf.CheckPKG("gobject-2.0") & \
         conf.CheckCairo(min_version = "1.10") & \
         conf.CheckPango("cairo", require_version = "1.22.0") & \
         conf.CheckPKG("fontconfig") & \

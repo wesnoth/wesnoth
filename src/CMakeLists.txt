@@ -78,7 +78,6 @@ set(game-external-libs
 	${sdl_image-lib}
 	${sdl_mixer-lib}
 	${sdl_ttf-lib}
-	${GOBJECT_LIBRARIES}
 	${PANGOCAIRO_LIBRARIES}
 	${FONTCONFIG_LIBRARIES}
 	${LIBDBUS_LIBRARIES}
