@@ -343,9 +343,9 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	if (vm.count("core"))
 		core_id = vm["core"].as<std::string>();
 	if (vm.count("config-dir"))
-		userdata_dir = vm["config-dir"].as<std::string>(); //TODO: complain and remove
+		throw boost::program_options::error("config-dir is deprecated, use userdata-dir instead.");
 	if (vm.count("config-path"))
-		userdata_path = true; //TODO: complain and remove
+		throw boost::program_options::error("config-path is deprecated, use userdata-path instead.");
 	if (vm.count("controller"))
 		multiplayer_controller = parse_to_uint_string_tuples_(vm["controller"].as<std::vector<std::string>>());
 	if (vm.count("data-dir"))
