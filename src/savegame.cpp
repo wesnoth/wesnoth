@@ -631,7 +631,7 @@ void ingame_savegame::write_game(config_writer &out) {
 	gamestate().write_carryover(out);
 	out.write_child("snapshot",gamestate().get_starting_point());
 
-	if(preferences::save_replays()) {
+	if(preferences::save_file_includes_replay()) {
 		out.write_child("replay_start", gamestate().replay_start());
 		out.open_child("replay");
 		gamestate().get_replay().write(out);

@@ -175,6 +175,9 @@ class acquaintance;
 	bool save_replays();
 	void set_save_replays(bool value);
 
+	bool save_file_includes_replay();
+	void set_save_file_includes_replay(bool value);
+
 	bool delete_saves();
 	void set_delete_saves(bool value);
 

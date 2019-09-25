@@ -789,6 +789,16 @@ bool save_replays()
 	return preferences::get("save_replays", true);
 }
 
+bool save_file_includes_replay()
+{
+	return preferences::get("save_file_includes_replay", true);
+}
+
+void set_save_file_includes_replay(bool value)
+{
+	preferences::set("save_file_includes_replay", value);
+}
+
 void set_delete_saves(bool value)
 {
 	preferences::set("delete_saves", value);
