@@ -5,13 +5,15 @@
    * Delfador's Memoirs:
      * S20: Improve leveling of units and give player a note about it (Issue#4219)
      * S21: Better indication that the book has gone missing (Issue#4220)
-   * Eastern Invasion
+   * Eastern Invasion:
      * Updated to use the new mushroom terrains (PR #4335)
    * Heir to the Throne:
      * S04: Sea Orc uses now a portrait
-   * Northern Rebirth
+   * Northern Rebirth:
      * Updated to use the new mushroom terrains
-   * Under the Burning Suns
+   * The Rise of Wesnoth:
+     * Updated to use the new mushroom terrains
+   * Under the Burning Suns:
      * Updated to use the new mushroom terrains (PR #4336)
    * Wings of Victory:
      * S01: Make easier on easy and improve flow of enemies
