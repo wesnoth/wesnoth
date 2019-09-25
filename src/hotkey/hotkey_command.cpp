@@ -135,9 +135,9 @@ std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_REPLAY_NEXT_TURN, "replaynextturn", N_("Next Turn"), false, scope_game, HKCAT_REPLAY, "" },
 	{ HOTKEY_REPLAY_NEXT_SIDE, "replaynextside", N_("Next Side"), false, scope_game, HKCAT_REPLAY, "" },
 	{ HOTKEY_REPLAY_NEXT_MOVE, "replaynextmove", N_("Next Move"), false, scope_game, HKCAT_REPLAY, "" },
-	{ HOTKEY_REPLAY_SHOW_EVERYTHING, "replayshoweverything", N_("Full Map"), false, scope_game, HKCAT_REPLAY, "" },
-	{ HOTKEY_REPLAY_SHOW_EACH, "replayshoweach", N_("Each Team"), false, scope_game, HKCAT_REPLAY, "" },
-	{ HOTKEY_REPLAY_SHOW_TEAM1, "replayshowteam1", N_("Human Team"), false, scope_game, HKCAT_REPLAY, "" },
+	{ HOTKEY_REPLAY_SHOW_EVERYTHING, "replayshoweverything", N_("View: Full Map"), false, scope_game, HKCAT_REPLAY, "" },
+	{ HOTKEY_REPLAY_SHOW_EACH, "replayshoweach", N_("View: Each Team"), false, scope_game, HKCAT_REPLAY, "" },
+	{ HOTKEY_REPLAY_SHOW_TEAM1, "replayshowteam1", N_("View: Human Team"), false, scope_game, HKCAT_REPLAY, "" },
 	{ HOTKEY_REPLAY_SKIP_ANIMATION, "replayskipanimation", N_("Skip Animation"), false, scope_game, HKCAT_REPLAY, "" },
 	{ HOTKEY_REPLAY_EXIT, "replayexit", N_("End Replay"), false, scope_game, HKCAT_REPLAY, "" },
 	// Whiteboard commands
