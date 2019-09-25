@@ -200,6 +200,8 @@ game_stringfixes = {
 "wesnoth-tsg": (
 # fixes added in 1.14.4+dev
 ("Bury me deeply my friends...", "Bury me deeply, my friends..."),
+# fix added in 1.14.9+dev
+("patrol the villages once again. ","patrol the villages once again."),
 ),
 
 "wesnoth-trow" : (
