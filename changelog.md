@@ -27,6 +27,9 @@
    * Added Tb mushroom base terrain, which can be used alone or as Tb^Tf when a terrain with the fungus-only stats is wanted
  ### User interface
    * Draw ellipses during draw/sheath animations. (Issue#1527)
+   * In the combat dialog and elsewhere, clicking the "Profile" button opens
+     the help on the correct unit variation (e.g., Walking Corpse (Swimmer)).
+     (Issue#4142)
  ### Lua API
    * Accessing wesnoth.theme_items.unit_status no longer prevents the unit
      status (poisoned/slowed/etc) from being shown in the sidebar. (Issue#4079)
@@ -38,13 +41,14 @@
      * Standard special notes should now be added with `{NOTE_*}` instead of `{SPECIAL_NOTES_*}`.
      * In `[effect]apply_to=profile`, `[add_special_note]` and `[remove_special_note]` are supported.
    * Support for the deprecated "&image.png=text" syntax has been removed in all contexts - use the DescriptionWML attributes instead.
+   * Fix infinite recursion in SUF with [hides] and [filter_vision]. (Issue#1389)
  ### Miscellaneous and bug fixes
    * Fixed :droid's arguments not all being optional (Issue#4308)
-   * Chat is now enable in single-player and hotseat multiplayer. (Issue#1111)
    * Ported the "expand-terrain-macros" and "wmlflip" tools to Python 3
    * It's now possible to chat with oneself in SP campaigns. Chat is shown in replays. (Issue#1111)
    * Removed unused "scoutDefault", "journeylifter" and "wescamp_import" Python tools
    * Fixed wmlscope not correctly performing expansion of square braces in filenames in some conditions
+   * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
 
 ## Version 1.15.1
  ### Editor
