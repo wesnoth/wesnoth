@@ -162,7 +162,7 @@
      is using a matching weapon.
    * Support ['specials'] in abilities except plagues, heal_on_hit and swarm , which emulate the weapon
      specials with [affect_adjacent] in option and the possibility to affect all weapons filtered(used with
-      'Initiative' in httt or 'Formation' in utbs). (don't put filter_weapon in 'filter_self/opponent' like
+     'Initiative' in httt or 'Formation' in utbs). (don't put filter_weapon in 'filter_self/opponent' like
      in  true weapons specials).
    * Support WFL and percentages in [random_placement]num_items=
    * Support [or] in [filter_wml] and similar places
