@@ -984,7 +984,7 @@ const t_string team::get_side_color_name_for_UI(unsigned side)
 	if(rgb_name.empty())
 		// TRANSLATORS: $color_id is the internal identifier of a side color, for example, 'lightred'.
 		// Translate the quotation marks only.
-		return VGETTEXT("\"$color_id\"", {{ "color_id", color_id }});
+		return VGETTEXT("“$color_id”", {{ "color_id", color_id }});
 	else
 		return rgb_name;
 }
