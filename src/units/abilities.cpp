@@ -708,7 +708,10 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 	{
 		const bool active = special_active(sp.cfg, AFFECT_EITHER, is_backstab);
 
-		const std::string& name = sp.cfg["name"].str();
+		const std::string& name =
+			active
+			? sp.cfg["name"].str()
+			: default_value(sp.cfg, "name_inactive", "name").str();
 		if (!name.empty()) {
 			if (!res.empty()) res += ", ";
 			if (only_active && !active) res += font::span_color(font::inactive_details_color);
