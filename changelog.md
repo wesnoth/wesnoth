@@ -220,6 +220,11 @@
    * Usernames on the host's ignore list are automatically banned. (PR#4143)
 
 ## Version 1.14.9+dev
+ ### Campaigns
+   * Legend of Wesmere:
+     * Fix various date inconsistencies in historical references
+   * Sceptre of Fire:
+     * S1: Fix reference to LoW events
  ### Lua API
    * wesnoth.deprecate_api was fixed to correctly wrap tables with metatables. (Issue#4079)
 
