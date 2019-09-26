@@ -210,6 +210,10 @@
    * Game bans are now also enforced by username. (PR#4139)
    * Usernames on the host's ignore list are automatically banned. (PR#4143)
 
+## Version 1.14.9+dev
+ ### Lua API
+   * wesnoth.deprecate_api was fixed to correctly wrap tables with metatables. (Issue#4079)
+
 ## Version 1.14.9
  ### AI:
    * Fixed a rare crash in attack prediction (issue #4068)
