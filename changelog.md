@@ -35,6 +35,7 @@
      * Standard special notes should now be added with `{NOTE_*}` instead of `{SPECIAL_NOTES_*}`.
      * In `[effect]apply_to=profile`, `[add_special_note]` and `[remove_special_note]` are supported.
    * Support for the deprecated "&image.png=text" syntax has been removed in all contexts - use the DescriptionWML attributes instead.
+   * weapons like abilities support now filter_weapon in 'filter_self/opponent/attacker/defender' like in  true weapons specials and no filter_weapon/filter_second_weapon like in 'leadership' anymore.
  ### Miscellaneous and bug fixes
    * Fixed :droid's arguments not all being optional (Issue#4308)
    * Chat is now enable in single-player and hotseat multiplayer. (Issue#1111)
@@ -161,7 +162,8 @@
      is using a matching weapon.
    * Support ['specials'] in abilities except plagues, heal_on_hit and swarm , which emulate the weapon
      specials with [affect_adjacent] in option and the possibility to affect all weapons filtered(used with
-     'Initiative' in httt or 'Formation' in utbs).
+      'Initiative' in httt or 'Formation' in utbs). (don't put filter_weapon in 'filter_self/opponent' like
+     in  true weapons specials).
    * Support WFL and percentages in [random_placement]num_items=
    * Support [or] in [filter_wml] and similar places
    * Support globbing in [filter_wml] via glob_on_* keys
