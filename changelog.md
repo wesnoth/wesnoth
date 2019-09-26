@@ -30,6 +30,7 @@
    * In the combat dialog and elsewhere, clicking the "Profile" button opens
      the help on the correct unit variation (e.g., Walking Corpse (Swimmer)).
      (Issue#4142)
+   * The attack dialog now shows the correct name of an inactive weapon special. (Issue#4352)
  ### Lua API
    * Accessing wesnoth.theme_items.unit_status no longer prevents the unit
      status (poisoned/slowed/etc) from being shown in the sidebar. (Issue#4079)
