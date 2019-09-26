@@ -1,4 +1,9 @@
 ## Version 1.14.9+dev
+ ### Campaigns
+   * Legend of Wesmere:
+     * Fix various date inconsistencies in historical references
+   * Sceptre of Fire:
+     * S1: Fix reference to LoW events
 
 ## Version 1.14.9
  ### AI:
