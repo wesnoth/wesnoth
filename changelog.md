@@ -27,6 +27,9 @@
    * Added Tb mushroom base terrain, which can be used alone or as Tb^Tf when a terrain with the fungus-only stats is wanted
  ### User interface
    * Draw ellipses during draw/sheath animations. (Issue#1527)
+ ### Lua API
+   * Accessing wesnoth.theme_items.unit_status no longer prevents the unit
+     status (poisoned/slowed/etc) from being shown in the sidebar. (Issue#4079)
  ### WML engine
    * Ranges can now have upper limit "infinity" instead of using a big number like "99" or "99999"
    * Print a deprecation warning for `[terrain_type]`'s partly-implemented `vision_alias`
