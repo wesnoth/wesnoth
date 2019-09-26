@@ -31,7 +31,8 @@
      the help on the correct unit variation (e.g., Walking Corpse (Swimmer)).
      (Issue#4142)
    * The attack dialog now shows the correct name of an inactive weapon special. (Issue#4352)
-   * Tooltips of sidebar, top bar, and status table now show a side's color's name in words (Issue#1217)
+   * Tooltips of sidebar, top bar, and status table now show a side's color's name in words,
+     for the colorblind. (Issue#1217)
    * In the recruit dialog and recall dialog, units that are too expensive to recruit/recall
      are grayed out. (PR#4362, part of Issue#1282)
  ### Lua API
