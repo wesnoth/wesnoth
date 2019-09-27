@@ -18,6 +18,8 @@
    * Wings of Victory:
      * S01: Make easier on easy and improve flow of enemies
      * Slight dialog improvements
+ ### Editor
+   * Added an editor-only overlay for deprecated terrains (PR#4347)
  ### Language and i18n
    * Updated translations: British English, Czech, French, Italian, Japanese,
      Portuguese (Brazil), Russian, Spanish
