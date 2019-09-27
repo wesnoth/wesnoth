@@ -1615,7 +1615,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 
 		if(user_handler_) {
 			const simple_wml::node& multiplayer = *g.level().root().child("multiplayer");
-			user_handler_->db_update_game_start(uuid_, g.id(), multiplayer["mp_scenario"].to_string(), multiplayer["mp_era"].to_string());
+			user_handler_->db_update_game_start(uuid_, g.id(), multiplayer["mp_scenario"].to_string(), multiplayer["mp_era"].to_string(), g.is_reload());
 
 			const simple_wml::node::child_list& sides = g.get_sides_list();
 			for(unsigned side_index = 0; side_index < sides.size(); ++side_index) {
