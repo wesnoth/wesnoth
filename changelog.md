@@ -221,10 +221,14 @@
 
 ## Version 1.14.9+dev
  ### Campaigns
+   * Heir to the Throne:
+     * Modify campaign starting date
    * Legend of Wesmere:
      * Fix various date inconsistencies in historical references
    * Sceptre of Fire:
      * S1: Fix reference to LoW events
+   * The South Guard:
+     * Change Halidel to be Deoran's great-grandfather
  ### Lua API
    * wesnoth.deprecate_api was fixed to correctly wrap tables with metatables. (Issue#4079)
 
