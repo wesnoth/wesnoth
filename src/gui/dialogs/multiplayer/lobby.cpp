@@ -475,7 +475,7 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 		}
 	}
 
-	// TODO: move to some general are of the code.
+	// TODO: move to some general area of the code.
 	const auto yes_or_no = [](bool val) { return val ? _("yes") : _("no"); };
 
 	ss << "\n<big>" << colorize(_("Settings"), font::TITLE_COLOR) << "</big>\n";

@@ -427,10 +427,10 @@ void fuh::db_insert_game_info(const std::string& uuid, int game_id, const std::s
 	}
 }
 
-void fuh::db_update_game_start(const std::string& uuid, int game_id, const std::string& map_name, const std::string& era_name){
+void fuh::db_update_game_start(const std::string& uuid, int game_id, const std::string& map_name, const std::string& era_name, bool reload){
 	try {
-		prepared_statement<void>("UPDATE `" + db_game_info_table_ + "` SET START_TIME = CURRENT_TIMESTAMP, MAP_NAME = ?, ERA_NAME = ? WHERE INSTANCE_UUID = ? AND GAME_ID = ?",
-		map_name, era_name, uuid, game_id);
+		prepared_statement<void>("UPDATE `" + db_game_info_table_ + "` SET START_TIME = CURRENT_TIMESTAMP, MAP_NAME = ?, ERA_NAME = ?, RELOAD = ? WHERE INSTANCE_UUID = ? AND GAME_ID = ?",
+		map_name, era_name, std::string(reload?"Y":"N"), uuid, game_id);
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not update the game's starting information on table `" + db_game_info_table_ + "`:" << e.message << std::endl;
 	}
