@@ -983,7 +983,7 @@ const t_string team::get_side_color_name_for_UI(unsigned side)
 	const auto& rgb_name = game_config::team_rgb_name[color_id];
 	if(rgb_name.empty())
 		// TRANSLATORS: $color_id is the internal identifier of a side color, for example, 'lightred'.
-		// Translate the quotation marks only.
+		// Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
 		return VGETTEXT("“$color_id”", {{ "color_id", color_id }});
 	else
 		return rgb_name;
