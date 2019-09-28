@@ -55,7 +55,7 @@
    * Fixed :droid's arguments not all being optional (Issue#4308)
    * Ported the "expand-terrain-macros" and "wmlflip" tools to Python 3
    * It's now possible to chat with oneself in SP campaigns. Chat is shown in replays. (Issue#1111)
-   * Removed unused "scoutDefault", "journeylifter" and "wescamp_import" Python tools
+   * Removed unused "scoutDefault", "journeylifter", "wescamp_import" and "wmlvalidator" Python tools
    * Fixed wmlscope not correctly performing expansion of square braces in filenames in some conditions
    * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
 
