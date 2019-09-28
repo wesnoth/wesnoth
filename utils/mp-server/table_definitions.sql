@@ -38,7 +38,7 @@ CREATE TABLE extra
 (
     username varchar(100) NOT NULL,
     user_lastvisit int(10) unsigned NOT NULL DEFAULT '0',
-    user_is_moderator bit(1) NOT NULL DEFAULT '0',
+    user_is_moderator bit(1) NOT NULL DEFAULT 0,
     PRIMARY KEY (username)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
