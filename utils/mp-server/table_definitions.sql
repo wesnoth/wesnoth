@@ -67,6 +67,7 @@ create table game_info
     ERA_NAME           VARCHAR(255),
     REPLAY_NAME        VARCHAR(255),
     OOS                CHAR(1) NOT NULL DEFAULT 'N',
+    RELOAD             CHAR(1),
     primary key (INSTANCE_UUID, GAME_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

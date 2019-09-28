@@ -2072,4 +2072,11 @@ const game::version_range& game::get_player_versions() const
 	assert(player_versions_);
 	return *player_versions_;
 }
+
+bool game::is_reload() const
+{
+	const simple_wml::node& multiplayer = get_multiplayer(level_.root());
+	return multiplayer.has_attr("savegame") && multiplayer["savegame"].to_bool();
+}
+
 } // namespace wesnothd
