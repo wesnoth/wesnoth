@@ -1,6 +1,11 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # encoding: utf-8
-import wmldata, os, glob, sys
+
+try:
+    from . import wmldata
+except ImportError:
+    import wmldata
+import os, glob, sys
 import re
 
 """
@@ -19,7 +24,7 @@ class Error(Exception):
 
     def __init__(self, parser, text):
         self.text = "%s:%d: %s" % (parser.filename, parser.line, text)
-        for i in xrange(len(parser.texts)):
+        for i in range(len(parser.texts)):
             parent = parser.texts[-1 - i]
             self.text += "\n " + " " * i + "from %s:%d" % (parent.filename, parent.line)
 
@@ -97,15 +102,14 @@ class Parser:
         line endings.
         """
         try:
-            text = file(filename).read()
+            with open(filename, encoding="utf8") as f:
+                text = f.read()
+        except UnicodeDecodeError:
+            with open(filename, encoding="latin1") as f:
+                text = f.read()
         except IOError:
             sys.stderr.write("Cannot open file %s!\n" % filename)
             return ""
-        try:
-            u = text.decode("utf8")
-        except UnicodeDecodeError:
-            u = text.decode("latin1")
-        text = u
         text = text.replace("\r\n", "\n").replace("\t", " ").replace("\r", "\n")
         if text == "" or text[-1] != "\n":
             text += "\n"
@@ -644,7 +648,7 @@ class Parser:
         values += [value]
 
         data = []
-        for i in xrange(len(variables)):
+        for i in range(len(variables)):
             try:
                 key = wmldata.DataText(variables[i], values[i], translatable)
                 key.set_meta(filename, line)
@@ -822,7 +826,7 @@ Convert a DataSub into JSON
 
 If verbose, insert a linebreak after every brace and comma (put every item on its own line), otherwise, condense everything into a single line.
 """
-    print "{",
+    print("{", end=" ")
     first = True
     sdepth1 = "\n" + " " * depth
     sdepth2 = sdepth1 + " "
@@ -833,11 +837,11 @@ If verbose, insert a linebreak after every brace and comma (put every item on it
             sys.stdout.write(",")
         if verbose:
             sys.stdout.write(sdepth2)
-        print'"%s":' % child.name,
+        print('"%s":' % child.name, end=" ")
         if child.get_type() == "DataSub":
             jsonify(child, verbose, depth + 1)
         else:
-            print json.dumps(child.get_value()),
+            print(json.dumps(child.get_value()), end=" ")
     if verbose:
         sys.stdout.write(sdepth1)
     sys.stdout.write("}")
@@ -849,25 +853,22 @@ def xmlify(tree, verbose=False, depth=0):
         sdepth = "  " * depth
     for child in tree.children():
         if child.get_type() == "DataSub":
-            print '%s<%s>' % (sdepth, child.name)
+            print('%s<%s>' % (sdepth, child.name))
             xmlify(child, verbose, depth + 1)
-            print '%s</%s>' % (sdepth, child.name)
+            print('%s</%s>' % (sdepth, child.name))
         else:
             if "\n" in child.get_value() or "\r" in child.get_value():
-                print sdepth + '<' + child.name + '>' + \
-            '<![CDATA[' + child.get_value() + ']]>' + '</' + child.name + '>'
+                print(sdepth + '<' + child.name + '>' + \
+            '<![CDATA[' + child.get_value() + ']]>' + '</' + child.name + '>')
             else:
-                print sdepth + '<' + child.name + '>' + \
-            escape(child.get_value())  + '</' + child.name + '>'
+                print(sdepth + '<' + child.name + '>' + \
+            escape(child.get_value())  + '</' + child.name + '>')
 
 if __name__ == "__main__":
     import argparse, subprocess
     try: import psyco
     except ImportError: pass
     else: psyco.full()
-
-    # Hack to make us not crash when we encounter characters that aren't ASCII
-    sys.stdout = __import__("codecs").getwriter('utf-8')(sys.stdout)
 
     argumentparser = argparse.ArgumentParser("usage: %(prog)s [options]")
     argumentparser.add_argument("-p", "--path",  help = "specify wesnoth data path")
@@ -893,7 +894,7 @@ if __name__ == "__main__":
         path = args.path
     else:
         try:
-            p = subprocess.Popen(["wesnoth", "--path"], stdout = subprocess.PIPE)
+            p = subprocess.Popen(["wesnoth", "--data-path"], stdout = subprocess.PIPE, encoding="utf8")
             path = p.stdout.read().strip()
             path = os.path.join(path, "data")
         except OSError:
@@ -907,7 +908,7 @@ if __name__ == "__main__":
     if args.verbose:
         wmlparser.verbose = True
         def gt(domain, x):
-            print "gettext: '%s' '%s'" % (domain, x)
+            print("gettext: '%s' '%s'" % (domain, x))
             return x
         wmlparser.gettext = gt
 

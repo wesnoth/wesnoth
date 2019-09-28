@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # encoding: utf-8
 
 """
@@ -15,9 +15,7 @@ textdomain stuff in here is therefore only useful to CampGen, as that does
 not allow composed strings like above.
 """
 
-from __future__ import print_function
 import re, sys
-import wmlparser
 import codecs
 
 class Data:
@@ -45,13 +43,12 @@ class Data:
         if write:
             # The input usually is utf8, but it also may be not - for example
             # if a .png image is transmitted over WML. As this is only for
-            # display purposes, we ask Python to replace any garbage - and then
-            # re-encode as utf8 for console output.
-            text = result.decode("utf8", "replace")
-            text = text.encode("utf8", "replace")
-            sys.stdout.write(text)
-            sys.stdout.write("\n")
-
+            # display purposes, we ask Python to replace any garbage.
+            if isinstance(result, bytes):
+                text = result.decode("utf8", "replace")
+            else:
+                text = result
+            print(text)
         else: return result
 
     def copy(self):
@@ -273,14 +270,14 @@ class DataSub(Data):
         if ifdef:
             result.append("#endif\n")
 
-        bytes = ""
+        output = b""
         for r in result:
             if r is not None:
                 # For networking, we need actual bytestream here, not unicode.
-                if type(r) is unicode: r = r.encode("utf8")
-                bytes += str(r)
+                if type(r) is str: r = r.encode("utf8")
+                output += bytes(r)
 
-        return bytes
+        return output
 
     def is_empty(self):
         return len(self.data) == 0
@@ -369,7 +366,7 @@ class DataSub(Data):
 
     def compare(self, other):
         if len(self.data) != len(other.data): return False
-        for i in xrange(self.data):
+        for i in range(self.data):
             if not self.data[i].compare(other.data[i]): return False
         return True
 
@@ -592,7 +589,7 @@ class DataSub(Data):
         value = str(value)
         # read existing values
         q = []
-        for d in xrange(3):
+        for d in range(3):
             q += [self.get_quantity(name, d, value)]
         q[difficulty] = value
 
@@ -605,7 +602,7 @@ class DataSub(Data):
         if q[0] == q[1] == q[2]:
             self.set_text_val(name, value)
         else:
-            for d in xrange(3):
+            for d in range(3):
                 ifdef = self.get_or_create_ifdef(["EASY", "NORMAL", "HARD"][d])
                 ifdef.set_text_val(name, q[d])
 
@@ -642,14 +639,3 @@ class DataIfDef(DataSub):
         copy = DataSub.copy(self)
         copy.type = self.type
         return copy
-
-def read_file(filename, root_name = "WML"):
-    """
-    Read in a file from disk and return a WML data object, with the WML in the
-    file placed under an entry with the name root_name.
-    """
-    parser = wmlparser.Parser(None)
-    parser.parse_file(filename)
-    data = DataSub(root_name)
-    parser.parse_top(data)
-    return data
