@@ -38,7 +38,7 @@ CREATE TABLE extra
 (
     username varchar(100) NOT NULL,
     user_lastvisit int(10) unsigned NOT NULL DEFAULT '0',
-    user_is_moderator tinyint(4) NOT NULL DEFAULT '0',
+    user_is_moderator bit(1) NOT NULL DEFAULT '0',
     PRIMARY KEY (username)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -66,8 +66,8 @@ create table game_info
     MAP_NAME           VARCHAR(255),
     ERA_NAME           VARCHAR(255),
     REPLAY_NAME        VARCHAR(255),
-    OOS                CHAR(1) NOT NULL DEFAULT 'N',
-    RELOAD             CHAR(1),
+    OOS                BIT(1) NOT NULL DEFAULT 1,
+    RELOAD             BIT(1),
     primary key (INSTANCE_UUID, GAME_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -84,7 +84,7 @@ create table game_player_info
     GAME_ID       INT UNSIGNED NOT NULL,
     USER_ID       INT NOT NULL,
     SIDE_NUMBER   SMALLINT UNSIGNED NOT NULL,
-    IS_HOST       VARCHAR(255) NOT NULL,
+    IS_HOST       BIT(1) NOT NULL,
     FACTION       VARCHAR(255) NOT NULL,
     primary key (INSTANCE_UUID, GAME_ID, SIDE_NUMBER)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

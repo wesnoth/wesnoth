@@ -452,10 +452,10 @@ void fuh::db_insert_game_info(const std::string& uuid, int game_id, const std::s
 	}
 }
 
-void fuh::db_update_game_start(const std::string& uuid, int game_id, const std::string& map_name, const std::string& era_name, bool reload){
+void fuh::db_update_game_start(const std::string& uuid, int game_id, const std::string& map_name, const std::string& era_name, int reload){
 	try {
 		prepared_statement<void>("update `" + db_game_info_table_ + "` set START_TIME = CURRENT_TIMESTAMP, MAP_NAME = ?, ERA_NAME = ?, RELOAD = ? where INSTANCE_UUID = ? and GAME_ID = ?",
-		map_name, era_name, std::string(reload?"Y":"N"), uuid, game_id);
+		map_name, era_name, reload, uuid, game_id);
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not update the game's starting information on table `" + db_game_info_table_ + "`:" << e.message << std::endl;
 	}
@@ -470,7 +470,7 @@ void fuh::db_update_game_end(const std::string& uuid, int game_id, const std::st
 	}
 }
 
-void fuh::db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, const std::string& is_host, const std::string& faction){
+void fuh::db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction){
 	try {
 		prepared_statement<void>("insert into `" + db_game_player_info_table_ + "`(INSTANCE_UUID, GAME_ID, USER_ID, SIDE_NUMBER, IS_HOST, FACTION) values(?, ?, IFNULL((select user_id from `"+db_users_table_+"` where username = ?), -1), ?, ?, ?)",
 		uuid, game_id, username, side_number, is_host, faction);
@@ -490,7 +490,7 @@ void fuh::db_insert_modification_info(const std::string& uuid, int game_id, cons
 
 void fuh::db_set_oos_flag(const std::string& uuid, int game_id){
 	try {
-		prepared_statement<void>("UPDATE `" + db_game_info_table_ + "` SET OOS = 'Y' WHERE INSTANCE_UUID = ? AND GAME_ID = ?",
+		prepared_statement<void>("UPDATE `" + db_game_info_table_ + "` SET OOS = 1 WHERE INSTANCE_UUID = ? AND GAME_ID = ?",
 		uuid, game_id);
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not update the game's OOS flag on table `" + db_game_info_table_ + "`:" << e.message << std::endl;
