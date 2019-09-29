@@ -462,15 +462,15 @@ std::vector<std::string> frame_parsed_parameters::debug_strings() const
 	}
 
 	if(!boost::indeterminate(auto_vflip_)) {
-		v.emplace_back("auto_vflip=" + utils::bool_string(auto_vflip_));
+		v.emplace_back("auto_vflip=" + utils::bool_string(static_cast<bool>(auto_vflip_)));
 	}
 
 	if(!boost::indeterminate(auto_hflip_)) {
-		v.emplace_back("auto_hflip=" + utils::bool_string(auto_hflip_));
+		v.emplace_back("auto_hflip=" + utils::bool_string(static_cast<bool>(auto_hflip_)));
 	}
 
 	if(!boost::indeterminate(primary_frame_)) {
-		v.emplace_back("primary_frame=" + utils::bool_string(primary_frame_));
+		v.emplace_back("primary_frame=" + utils::bool_string(static_cast<bool>(primary_frame_)));
 	}
 
 	if(!layer_.get_original().empty()) {
@@ -829,7 +829,7 @@ const frame_parameters unit_frame::merge_parameters(int current_time, const fram
 	}
 
 	// Convert the tribool to bool
-	const bool primary = result.primary_frame == true || boost::logic::indeterminate(result.primary_frame);
+	const bool primary = static_cast<bool>(result.primary_frame) == true || boost::logic::indeterminate(result.primary_frame);
 
 	/** The engine provides a default image to use for the unit when none is available */
 	result.image = current_val.image.is_void() || current_val.image.get_filename().empty()

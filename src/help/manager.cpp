@@ -70,7 +70,7 @@ bool help_manager::content_update_needed() const
 		toplevel_section_ == nullptr ||
 		preferences::encountered_units().size() != static_cast<std::size_t>(num_last_encountered_units_) ||
 		preferences::encountered_terrains().size() != static_cast<std::size_t>(num_last_encountered_terrains_) ||
-		last_debug_state_ != game_config::debug ||
+		static_cast<bool>(last_debug_state_) != game_config::debug ||
 		num_last_encountered_units_ < 0;
 }
 
