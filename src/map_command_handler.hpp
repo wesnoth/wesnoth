@@ -127,7 +127,7 @@ public:
 		command_handler handler;
 		std::string help; //long help text
 		std::string usage; //only args info
-		std::string flags;
+		std::string flags; //< see implementation of get_command_flags_description() for meaning of flags
 		explicit command(command_handler h, const std::string& help = "",
 			const std::string& usage = "", const std::string& flags = "")
 			: handler(h), help(help), usage(usage), flags(flags)

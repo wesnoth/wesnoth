@@ -163,7 +163,7 @@ public:
 	boost::optional<std::string> replace_map(const gamemap & r);
 
 	bool change_terrain(const map_location &loc, const std::string &t,
-	                    const std::string & mode, bool replace_if_failed); //used only by lua
+	                    const std::string & mode, bool replace_if_failed); //used only by lua and debug commands
 
 	// Global accessor from unit.hpp
 
