@@ -26,7 +26,7 @@
 #include "color.hpp"
 #include "preferences/credentials.hpp"
 
-#include <SDL_timer.h>
+#include <SDL2/SDL_timer.h>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)

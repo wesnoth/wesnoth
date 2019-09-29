@@ -22,7 +22,7 @@
 #include "utils/math.hpp"
 #include "game_version.hpp"
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 #include <cstdlib>
 #include <map>

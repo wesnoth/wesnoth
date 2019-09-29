@@ -68,7 +68,7 @@ class manager;
 #include "utils/functional.hpp"
 #include "video.hpp"
 
-#include <SDL_rect.h>
+#include <SDL2/SDL_rect.h>
 #include <boost/circular_buffer.hpp>
 
 #include <chrono>

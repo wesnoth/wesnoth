@@ -31,7 +31,7 @@
 
 #include <boost/range/adaptor/reversed.hpp>
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 /**
  * @todo The items below are not implemented yet.

@@ -17,8 +17,8 @@
 #include "sdl/texture.hpp"
 #include "video.hpp"
 
-#include <SDL_rect.h>
-#include <SDL_render.h>
+#include <SDL2/SDL_rect.h>
+#include <SDL2/SDL_render.h>
 
 #include <cassert>
 

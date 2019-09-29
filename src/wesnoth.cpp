@@ -65,7 +65,7 @@
 #include <fenv.h>
 #endif // _MSC_VER
 
-#include <SDL.h> // for SDL_Init, SDL_INIT_TIMER
+#include <SDL2/SDL.h> // for SDL_Init, SDL_INIT_TIMER
 
 #include <boost/iostreams/categories.hpp>   // for input, output
 #include <boost/iostreams/copy.hpp>         // for copy

@@ -34,7 +34,7 @@
 
 #include "utils/functional.hpp"
 
-#include <SDL_image.h>
+#include <SDL2/SDL_image.h>
 
 #include <cassert>
 #include <ios>

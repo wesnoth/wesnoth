@@ -47,7 +47,7 @@
 
 #include "utils/functional.hpp"
 #include <boost/range/adaptors.hpp>
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"

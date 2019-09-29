@@ -19,7 +19,7 @@
 #include "lua_jailbreak_exception.hpp"
 #include "ogl/context.hpp"
 
-#include <SDL_render.h>
+#include <SDL2/SDL_render.h>
 
 #include <memory>
 #include <utility>

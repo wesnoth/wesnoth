@@ -17,7 +17,7 @@
 
 #include "gui/widgets/window.hpp"
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 namespace gui2
 {

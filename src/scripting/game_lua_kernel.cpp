@@ -123,7 +123,7 @@
 #include <utility>                      // for pair
 #include <algorithm>
 #include <vector>                       // for vector, etc
-#include <SDL_timer.h>                  // for SDL_GetTicks
+#include <SDL2/SDL_timer.h>                  // for SDL_GetTicks
 #include "lua/lauxlib.h"                // for luaL_checkinteger, etc
 #include "lua/lua.h"                    // for lua_setfield, etc
 
@@ -1029,7 +1029,7 @@ static utils::string_view luaW_tostring(lua_State *L, int index)
 	const char* str = lua_tolstring (L, index, &len);
 	return utils::string_view(str, len);
 }
- 
+
 /**
  * Reaplces part of rhe map.
  * - Arg 1: map location.
@@ -1108,7 +1108,7 @@ int game_lua_kernel::intf_terrain_mask(lua_State *L)
 			lua_pop(L, 1);
 		}
 	}
-	
+
 
 	gamemap mask_map(board().map().tdata(), "");
 	mask_map.read(t_str, false);

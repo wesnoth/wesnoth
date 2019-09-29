@@ -36,7 +36,7 @@
 #include "sdl/texture.hpp"
 #include "utils/general.hpp"
 
-#include <SDL_image.h>
+#include <SDL2/SDL_image.h>
 
 #include "utils/functional.hpp"
 

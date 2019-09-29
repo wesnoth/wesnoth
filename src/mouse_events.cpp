@@ -41,7 +41,7 @@
 #include "whiteboard/manager.hpp"  // for manager, etc
 #include "whiteboard/typedefs.hpp" // for whiteboard_lock
 
-#include <SDL_mouse.h> // for SDL_GetMouseState
+#include <SDL2/SDL_mouse.h> // for SDL_GetMouseState
 #include <cassert>     // for assert
 #include <new>         // for bad_alloc
 #include <ostream>     // for operator<<, basic_ostream, etc

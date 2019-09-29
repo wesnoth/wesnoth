@@ -18,7 +18,7 @@
 #include "hotkey/hotkey_command.hpp"
 #include "utils/functional.hpp"
 
-#include <SDL_events.h>
+#include <SDL2/SDL_events.h>
 
 #include <list>
 #include <map>

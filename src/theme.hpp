@@ -23,7 +23,7 @@
 #include "config.hpp"
 #include "generic_event.hpp"
 
-#include <SDL_rect.h>
+#include <SDL2/SDL_rect.h>
 
 struct _rect { std::size_t x1,y1,x2,y2; };
 

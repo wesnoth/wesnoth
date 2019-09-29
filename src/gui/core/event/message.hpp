@@ -23,7 +23,7 @@
 
 #include "gui/widgets/helper.hpp"
 
-#include <SDL_rect.h>
+#include <SDL2/SDL_rect.h>
 
 namespace gui2
 {

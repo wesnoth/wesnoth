@@ -15,7 +15,7 @@
 
 #include "gui/dialogs/modeless_dialog.hpp"
 
-#include <SDL_keycode.h>
+#include <SDL2/SDL_keycode.h>
 
 #include <functional>
 #include <memory>
@@ -99,4 +99,3 @@ private:
 
 } // namespace dialogs
 } // namespace gui2
-

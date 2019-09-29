@@ -24,7 +24,7 @@
 #include <boost/algorithm/string.hpp>
 #include "utils/functional.hpp"
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <key.hpp>
 #include <serialization/unicode.hpp>
 

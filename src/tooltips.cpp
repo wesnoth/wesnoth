@@ -21,7 +21,7 @@
 #include "sdl/rect.hpp"
 #include "video.hpp"
 
-#include <SDL_rect.h> // Travis doesn't like this, although it works on my machine -> '#include <SDL_sound.h>
+#include <SDL2/SDL_rect.h> // Travis doesn't like this, although it works on my machine -> '#include <SDL2/SDL_sound.h>
 
 #include <map>
 

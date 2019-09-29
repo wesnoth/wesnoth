@@ -15,7 +15,7 @@
 
 #include "ogl/context.hpp"
 
-#include <SDL_video.h>
+#include <SDL2/SDL_video.h>
 
 namespace gl
 {
