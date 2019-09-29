@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # vim: tabstop=4: shiftwidth=4: expandtab: softtabstop=4: autoindent:
 
 """
@@ -18,18 +18,12 @@ page which can be used in the wiki.
 
 [1] https://wesnoth.org/wiki/Wiki_grabber
 """
-from __future__ import with_statement     # For python < 2.6
 
 import operator
 import os
 import sys
 import re
-
-try:
-    import argparse
-except ImportError:
-    print 'Please install argparse by running "easy_install argparse"'
-    sys.exit(1)
+import argparse
 
 if __name__ == "__main__":
     # setup and parse command line arguments
@@ -132,7 +126,12 @@ if __name__ == "__main__":
         page = get_value(data, "@page")
         order = get_value(data, "@order")
         if order is None:
-            order = 10000
+            # in Python 2, this was an int with value 10000
+            # when compared to strings, ints were always lower
+            # in Python 3 such comparison raises an error
+            # for this reason, order is now an empty strings
+            # when compared with other strings, empty ones are always lower
+            order = ""
 
         return [page, order]
 
@@ -501,15 +500,15 @@ if __name__ == "__main__":
             header = process_header(res[0][0])
             body = process_body(res[0][1])
         else:
-            print "File: " + current_file
-            print "Block:\n" + current_block
-            print "\n\nInvalid wiki block, discarded."
+            print("File: " + current_file)
+            print("Block:\n" + current_block)
+            print("\n\nInvalid wiki block, discarded.")
             return
 
         if not header[0]:
-            print "File: " + current_file
-            print "Block:\n" + current_block
-            print "\n\nNo page defined, dropped."
+            print("File: " + current_file)
+            print("Block:\n" + current_block)
+            print("\n\nNo page defined, dropped.")
             return
 
         if not header[0] in file_map:
@@ -520,7 +519,7 @@ if __name__ == "__main__":
     def create_output():
         """Generates the output"""
 
-        for file, data_list in file_map.iteritems():
+        for file, data_list in file_map.items():
             data_list.sort(key=operator.itemgetter(0))
             with open(os.path.join(output_directory, file), "w") as fd:
                 for i in data_list:
@@ -571,7 +570,7 @@ if __name__ == "__main__":
         global macro_map
 
         if not macro.group(1) in macro_map:
-            print "Macro '%s' is not defined." % macro.group(1)
+            print("Macro '%s' is not defined." % macro.group(1))
             return macro.group(0)
 
         return macro_map[macro.group(1)]
@@ -586,7 +585,7 @@ if __name__ == "__main__":
         return data
 
     def create_macro_old(macro):
-        print "Found old style macro '%s'" % macro.group(1)
+        print("Found old style macro '%s'" % macro.group(1))
         create_macro(macro)
 
     def create_macro(macro):
@@ -595,7 +594,7 @@ if __name__ == "__main__":
         global macro_map
 
         if macro.group(1) in macro_map:
-            print "Macro '%s' is being redefined." % macro.group(1)
+            print("Macro '%s' is being redefined." % macro.group(1))
 
         macro_map[macro.group(1)] = macro.group(2)
 
