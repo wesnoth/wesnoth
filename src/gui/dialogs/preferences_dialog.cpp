@@ -813,9 +813,10 @@ listbox& preferences_dialog::setup_hotkey_list(window& window)
 	hotkey_list.clear();
 	visible_hotkeys_.clear();
 
-	std::string text_game_feature_on = "<span color='#0f0'>" + _("game_initial^G") + "</span>";
-	std::string text_editor_feature_on = "<span color='#0f0'>" + _("editor_initial^E") + "</span>";
-	std::string text_title_feature_on = "<span color='#0f0'>" + _("title_initial^T") + "</span>";
+	// These translated initials should match those used in data/gui/window/preferences/02_hotkeys.cfg
+	std::string text_game_feature_on = "<span color='#0f0'>" + _("game_hotkeys^G") + "</span>";
+	std::string text_editor_feature_on = "<span color='#0f0'>" + _("editor_hotkeys^E") + "</span>";
+	std::string text_title_feature_on = "<span color='#0f0'>" + _("titlescreen_hotkeys^T") + "</span>";
 
 	for(const auto& hotkey_item : hotkey::get_hotkey_commands()) {
 		if(hotkey_item.hidden) {
