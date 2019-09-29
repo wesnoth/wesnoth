@@ -1,45 +1,46 @@
 -- a minimal users table, if not using a phpbb3 installation
--- CREATE TABLE users
+-- create table users
 -- (
---     user_id int(10) unsigned NOT NULL AUTO_INCREMENT,
---     user_type tinyint(2) NOT NULL DEFAULT '0',
---     username varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
---     user_password varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
---     user_email varchar(100) COLLATE utf8_bin NOT NULL DEFAULT '',
---     PRIMARY KEY (user_id),
---     KEY user_type (user_type)
+--     USER_ID       INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+--     USER_TYPE     TINYINT(2) NOT NULL DEFAULT 0,
+--     USERNAME      VARCHAR(255) COLLATE utf8_bin NOT NULL DEFAULT '',
+--     USER_PASSWORD VARCHAR(255) COLLATE utf8_bin NOT NULL DEFAULT '',
+--     USER_EMAIL    VARCHAR(100) COLLATE utf8_bin NOT NULL DEFAULT '',
+--     PRIMARY KEY (USER_ID),
+--     KEY USER_TYPE (USER_TYPE)
 -- ) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- a minimal groups table, if not using a phpbb3 installation
--- CREATE TABLE user_groups
+-- create table user_groups
 -- (
---     group_id mediumint(8) unsigned NOT NULL,
---     user_id mediumint(8) unsigned NOT NULL,
---     PRIMARY KEY (user_id, group_id)
+--     GROUP_ID MEDIUMINT(8) UNSIGNED NOT NULL,
+--     USER_ID  MEDIUMINT(8) UNSIGNED NOT NULL,
+--     PRIMARY KEY (USER_ID, GROUP_ID)
 -- ) ENGINE=InnoDB;
 
 -- table which the forum inserts bans into, which wesnothd checks during login
--- CREATE TABLE ban
+-- create table ban
 -- (
---     ban_userid varchar(100) NOT NULL,
---     ban_end int(10) unsigned NOT NULL DEFAULT '0',
---     ban_ip varchar(100) DEFAULT NULL,
---     ban_email varchar(100) DEFAULT NULL,
---     ban_exclude int(10) unsigned NOT NULL DEFAULT '0',
---     PRIMARY KEY (ban_userid)
+--     BAN_USERID  VARCHAR(100) NOT NULL,
+--     BAN_END     INT(10) UNSIGNED NOT NULL DEFAULT 0,
+--     BAN_IP      VARCHAR(100) DEFAULT NULL,
+--     BAN_EMAIL   VARCHAR(100) DEFAULT NULL,
+--     BAN_EXCLUDE INT(10) UNSIGNED NOT NULL DEFAULT 0,
+--     PRIMARY KEY (BAN_USERID)
 -- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 ------
 
 -- extra information as necessary per user
--- user_lastvisit is used by the phpbb extension displaying the last time the user logged in to the MP server
--- user_is_moderator determines people who have the abilities granted to MP Moderators
-CREATE TABLE extra
+-- USERNAME: who this information is about
+-- USER_LASTVISIT: used by the phpbb extension displaying the last time the user logged in to the MP server
+-- USER_IS_MODERATOR: determines people who have the abilities granted to MP Moderators
+create table extra
 (
-    username varchar(100) NOT NULL,
-    user_lastvisit int(10) unsigned NOT NULL DEFAULT '0',
-    user_is_moderator bit(1) NOT NULL DEFAULT 0,
-    PRIMARY KEY (username)
+    USERNAME          VARCHAR(100) NOT NULL,
+    USER_LASTVISIT    INT(10) UNSIGNED NOT NULL DEFAULT 0,
+    USER_IS_MODERATOR BIT(1) NOT NULL DEFAULT 0,
+    PRIMARY KEY (USERNAME)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- information about a single game
@@ -56,19 +57,19 @@ CREATE TABLE extra
 -- OOS: Y/N flag of whether the game encountered an OOS error
 create table game_info
 (
-    INSTANCE_UUID      CHAR(36) NOT NULL,
-    GAME_ID            INT UNSIGNED NOT NULL,
-    INSTANCE_VERSION   VARCHAR(255) NOT NULL,
-    GAME_NAME          VARCHAR(255) NOT NULL,
-    CREATE_TIME        TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    START_TIME         TIMESTAMP NULL DEFAULT NULL,
-    END_TIME           TIMESTAMP NULL DEFAULT NULL,
-    MAP_NAME           VARCHAR(255),
-    ERA_NAME           VARCHAR(255),
-    REPLAY_NAME        VARCHAR(255),
-    OOS                BIT(1) NOT NULL DEFAULT 1,
-    RELOAD             BIT(1),
-    primary key (INSTANCE_UUID, GAME_ID)
+    INSTANCE_UUID    CHAR(36) NOT NULL,
+    GAME_ID          INT UNSIGNED NOT NULL,
+    INSTANCE_VERSION VARCHAR(255) NOT NULL,
+    GAME_NAME        VARCHAR(255) NOT NULL,
+    CREATE_TIME      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    START_TIME       TIMESTAMP NULL DEFAULT NULL,
+    END_TIME         TIMESTAMP NULL DEFAULT NULL,
+    MAP_NAME         VARCHAR(255),
+    ERA_NAME         VARCHAR(255),
+    REPLAY_NAME      VARCHAR(255),
+    OOS              BIT(1) NOT NULL DEFAULT 0,
+    RELOAD           BIT(1),
+    PRIMARY KEY (INSTANCE_UUID, GAME_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- information about the players in a particular game present in game_info
@@ -86,14 +87,14 @@ create table game_player_info
     SIDE_NUMBER   SMALLINT UNSIGNED NOT NULL,
     IS_HOST       BIT(1) NOT NULL,
     FACTION       VARCHAR(255) NOT NULL,
-    primary key (INSTANCE_UUID, GAME_ID, SIDE_NUMBER)
+    PRIMARY KEY (INSTANCE_UUID, GAME_ID, SIDE_NUMBER)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- information about any modifications that the game present in game_info has enabled
 create table game_modification_info
 (
-    INSTANCE_UUID                  CHAR(36) NOT NULL,
-    GAME_ID                        INT UNSIGNED NOT NULL,
-    MODIFICATION_NAME              VARCHAR(255) NOT NULL,
-    primary key (INSTANCE_UUID, GAME_ID, MODIFICATION_NAME)
+    INSTANCE_UUID     CHAR(36) NOT NULL,
+    GAME_ID           INT UNSIGNED NOT NULL,
+    MODIFICATION_NAME VARCHAR(255) NOT NULL,
+    PRIMARY KEY (INSTANCE_UUID, GAME_ID, MODIFICATION_NAME)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
