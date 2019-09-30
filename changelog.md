@@ -39,6 +39,7 @@
      for the colorblind. (Issue#1217)
    * In the recruit dialog and recall dialog, units that are too expensive to recruit/recall
      are grayed out. (PR#4362, part of Issue#1282)
+   * Hide the "Suppose Dead" key from the hotkeys list (it does nothing since 1.9.12)
  ### Lua API
    * Accessing wesnoth.theme_items.unit_status no longer prevents the unit
      status (poisoned/slowed/etc) from being shown in the sidebar. (Issue#4079)
@@ -59,6 +60,7 @@
    * Removed unused "scoutDefault", "journeylifter", "wescamp_import" and "wmlvalidator" Python tools
    * Fixed wmlscope not correctly performing expansion of square braces in filenames in some conditions
    * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
+   * Add help text for some debug commands (part of Issue#2500)
 
 ## Version 1.15.1
  ### Editor
@@ -236,6 +238,13 @@
      * Change Halidel to be Deoran's great-grandfather
  ### Lua API
    * wesnoth.deprecate_api was fixed to correctly wrap tables with metatables. (Issue#4079)
+ ### User interface
+   * Draw ellipses during draw/sheath animations. (Issue#1527)
+   * In the combat dialog and elsewhere, clicking the "Profile" button opens
+     the help on the correct unit variation (e.g., Walking Corpse (Swimmer)).
+     (Issue#4142)
+ ### Miscellaneous and bug fixes
+   * Add help text for some debug commands (part of Issue#2500)
 
 ## Version 1.14.9
  ### AI:
