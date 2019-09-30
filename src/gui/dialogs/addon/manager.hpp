@@ -50,12 +50,18 @@ private:
 	struct addon_order
 	{
 		std::string label;
+		/// The value used in the preferences file
+		std::string as_preference;
 		int column_index; // -1 if there is no such column
 		addon_list::addon_sort_func sort_func_asc;
 		addon_list::addon_sort_func sort_func_desc;
 
-		addon_order(std::string label_, int column, addon_list::addon_sort_func sort_func_asc_, addon_list::addon_sort_func sort_func_desc_)
-			: label(label_), column_index(column), sort_func_asc(sort_func_asc_), sort_func_desc(sort_func_desc_)
+		addon_order(std::string label_, std::string as_preference_, int column, addon_list::addon_sort_func sort_func_asc_, addon_list::addon_sort_func sort_func_desc_)
+			: label(label_)
+			, as_preference(as_preference_)
+			, column_index(column)
+			, sort_func_asc(sort_func_asc_)
+			, sort_func_desc(sort_func_desc_)
 		{}
 	};
 
@@ -138,7 +144,7 @@ private:
 
 	void apply_filters(window& window);
 	void order_addons(window& window);
-	void on_order_changed(window& window, unsigned int sort_column, listbox::SORT_ORDER order);
+	void on_order_changed(window& window, unsigned int sort_column, preferences::SORT_ORDER order);
 	void show_help();
 
 	boost::dynamic_bitset<> get_name_filter_visibility(const window& window) const;

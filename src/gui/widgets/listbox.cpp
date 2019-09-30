@@ -39,6 +39,8 @@
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
+using SORT_ORDER = preferences::SORT_ORDER;
+
 namespace gui2
 {
 // ------------ WIDGET -----------{
@@ -594,20 +596,20 @@ void listbox::order_by_column(unsigned column, widget& widget)
 
 	for(auto& pair : orders_) {
 		if(pair.first != nullptr && pair.first != &selectable) {
-			pair.first->set_value(SORT_NONE);
+			pair.first->set_value(preferences::SORT_ORDER::NONE);
 		}
 	}
 
-	SORT_ORDER order = static_cast<SORT_ORDER>(selectable.get_value());
+	SORT_ORDER order {static_cast<SORT_ORDER::type>(selectable.get_value())};
 
-	if(static_cast<unsigned int>(order) > orders_[column].second.size()) {
+	if(static_cast<unsigned int>(order.v) > orders_[column].second.size()) {
 		return;
 	}
 
-	if(order == SORT_NONE) {
+	if(order == SORT_ORDER::NONE) {
 		order_by(std::less<unsigned>());
 	} else {
-		order_by(orders_[column].second[order - 1]);
+		order_by(orders_[column].second[order.v - 1]);
 	}
 
 	if(callback_order_change_ != nullptr) {
@@ -650,7 +652,7 @@ void listbox::set_active_sorting_option(const order_pair& sort_by, const bool se
 	// Set the sorting toggle widgets' value (in this case, its state) to the given sorting
 	// order. This is necessary since the widget's value is used to determine the order in
 	// @ref order_by_column in lieu of a direction being passed directly.
-	w.set_value(static_cast<int>(sort_by.second));
+	w.set_value(static_cast<int>(sort_by.second.v));
 
 	order_by_column(sort_by.first, dynamic_cast<widget&>(w));
 
@@ -664,19 +666,19 @@ const listbox::order_pair listbox::get_active_sorting_option()
 	for(unsigned int column = 0; column < orders_.size(); ++column) {
 		selectable_item* w = orders_[column].first;
 
-		if(w && w->get_value() != SORT_NONE) {
-			return std::make_pair(column, static_cast<SORT_ORDER>(w->get_value()));
+		if(w && w->get_value() != SORT_ORDER::NONE) {
+			return std::make_pair(column, static_cast<SORT_ORDER::type>(w->get_value()));
 		}
 	}
 
-	return std::make_pair(-1, SORT_NONE);
+	return std::make_pair(-1, SORT_ORDER::NONE);
 }
 
 void listbox::mark_as_unsorted()
 {
 	for(auto& pair : orders_) {
 		if(pair.first != nullptr) {
-			pair.first->set_value(SORT_NONE);
+			pair.first->set_value(SORT_ORDER::NONE);
 		}
 	}
 }
