@@ -906,7 +906,7 @@ static std::string format_prob(double prob)
 		return "0%";
 	}
 	std::ostringstream res;
-	res << std::setprecision(prob < 0.1 ? 2 : 3) << 100.0 * prob << "%";
+	res << std::setprecision(prob < 0.01 ? 1 : prob < 0.1 ? 2 : 3) << 100.0 * prob << "%";
 	return res.str();
 }
 
