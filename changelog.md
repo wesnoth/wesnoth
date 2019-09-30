@@ -244,6 +244,7 @@
      the help on the correct unit variation (e.g., Walking Corpse (Swimmer)).
      (Issue#4142)
  ### Miscellaneous and bug fixes
+   * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
    * Add help text for some debug commands (part of Issue#2500)
 
 ## Version 1.14.9
