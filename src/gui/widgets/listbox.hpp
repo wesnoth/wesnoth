@@ -20,6 +20,8 @@
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 
+#include "preferences/general.hpp"
+
 #include <boost/dynamic_bitset.hpp>
 #include <functional>
 
@@ -279,13 +281,7 @@ public:
 	/** Registers a special sorting function specifically for translatable values. */
 	void register_translatable_sorting_option(const int col, translatable_sorter_func_t f);
 
-	enum SORT_ORDER {
-		SORT_NONE,
-		SORT_ASCENDING,
-		SORT_DESCENDING,
-	};
-
-	using order_pair = std::pair<int, SORT_ORDER>;
+	using order_pair = std::pair<int, preferences::SORT_ORDER>;
 
 	/**
 	 * Sorts the listbox by a pre-set sorting option. The corresponding header widget will also be toggled.
@@ -306,7 +302,7 @@ public:
 	void mark_as_unsorted();
 
 	/** Registers a callback to be called when the active sorting option changes. */
-	void set_callback_order_change(std::function<void(unsigned, SORT_ORDER)> callback)
+	void set_callback_order_change(std::function<void(unsigned, preferences::SORT_ORDER)> callback)
 	{
 		callback_order_change_ = callback;
 	}
@@ -378,7 +374,7 @@ private:
 	typedef std::vector<std::pair<selectable_item*, generator_sort_array>> torder_list;
 	torder_list orders_;
 
-	std::function<void(unsigned, SORT_ORDER)> callback_order_change_;
+	std::function<void(unsigned, preferences::SORT_ORDER)> callback_order_change_;
 
 	/**
 	 * Resizes the content.

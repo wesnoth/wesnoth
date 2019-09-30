@@ -54,8 +54,8 @@ namespace dialogs
 {
 
 // Index 2 is by-level
-static listbox::order_pair sort_last    {-1, listbox::SORT_NONE};
-static listbox::order_pair sort_default { 2, listbox::SORT_DESCENDING};
+static listbox::order_pair sort_last    {-1, preferences::SORT_ORDER::NONE};
+static listbox::order_pair sort_default { 2, preferences::SORT_ORDER::DESCENDING};
 
 REGISTER_DIALOG(unit_recall)
 
