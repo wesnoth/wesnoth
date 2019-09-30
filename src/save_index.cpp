@@ -233,18 +233,19 @@ std::string save_info::format_time_summary() const
 
 bool save_info_less_time::operator()(const save_info& a, const save_info& b) const
 {
+	const std::string replay_str = " " + _("replay");
 	if(a.modified() > b.modified()) {
 		return true;
 	} else if(a.modified() < b.modified()) {
 		return false;
-	} else if(a.name().find(_(" replay")) == std::string::npos && b.name().find(_(" replay")) != std::string::npos) {
+	} else if(a.name().find(replay_str) == std::string::npos && b.name().find(replay_str) != std::string::npos) {
 		// Special funky case; for files created in the same second,
 		// a replay file sorts less than a non-replay file.  Prevents
 		// a timing-dependent bug where it may look like, at the end
 		// of a scenario, the replay and the autosave for the next
 		// scenario are displayed in the wrong order.
 		return true;
-	} else if(a.name().find(_(" replay")) != std::string::npos && b.name().find(_(" replay")) == std::string::npos) {
+	} else if(a.name().find(replay_str) != std::string::npos && b.name().find(replay_str) == std::string::npos) {
 		return false;
 	} else {
 		return a.name() > b.name();
