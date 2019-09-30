@@ -673,7 +673,9 @@ void mp_create_game::update_details(window& win)
 
 	if(create_engine_.current_level_type() == ng::level::TYPE::RANDOM_MAP) {
 		// If the current random map doesn't have data, generate it
-		if(create_engine_.generator_assigned() && create_engine_.current_level().data()["map_data"].empty()) {
+		if(create_engine_.generator_assigned() &&
+			create_engine_.current_level().data()["map_data"].empty() &&
+			create_engine_.current_level().data()["map_file"].empty()) {
 			create_engine_.init_generated_level_data();
 		}
 
