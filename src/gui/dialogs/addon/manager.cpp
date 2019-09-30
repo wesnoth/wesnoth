@@ -206,25 +206,25 @@ const std::vector<std::pair<ADDON_TYPE, std::string>> addon_manager::type_filter
 };
 
 const std::vector<addon_manager::addon_order> addon_manager::all_orders_{
-	{N_("addons_order^Name ($order)"), 0,
+	{N_("addons_order^Name ($order)"), "name", 0,
 	[](const addon_info& a, const addon_info& b) { return a.title < b.title; },
 	[](const addon_info& a, const addon_info& b) { return a.title > b.title; }},
-	{N_("addons_order^Author ($order)"), 1,
+	{N_("addons_order^Author ($order)"), "author", 1,
 	[](const addon_info& a, const addon_info& b) { return a.author < b.author; },
 	[](const addon_info& a, const addon_info& b) { return a.author > b.author; }},
-	{N_("addons_order^Size ($order)"), 2,
+	{N_("addons_order^Size ($order)"), "size", 2,
 	[](const addon_info& a, const addon_info& b) { return a.size < b.size; },
 	[](const addon_info& a, const addon_info& b) { return a.size > b.size; }},
-	{N_("addons_order^Downloads ($order)"), 3,
+	{N_("addons_order^Downloads ($order)"), "downloads", 3,
 	[](const addon_info& a, const addon_info& b) { return a.downloads < b.downloads; },
 	[](const addon_info& a, const addon_info& b) { return a.downloads > b.downloads; }},
-	{N_("addons_order^Type ($order)"), 4,
+	{N_("addons_order^Type ($order)"), "type", 4,
 	[](const addon_info& a, const addon_info& b) { return a.display_type() < b.display_type(); },
 	[](const addon_info& a, const addon_info& b) { return a.display_type() > b.display_type(); }},
-	{N_("addons_order^Last updated ($datelike_order)"), -1,
+	{N_("addons_order^Last updated ($datelike_order)"), "last_updated", -1,
 	[](const addon_info& a, const addon_info& b) { return a.updated < b.updated; },
 	[](const addon_info& a, const addon_info& b) { return a.updated > b.updated; }},
-	{N_("addons_order^First uploaded ($datelike_order)"), -1,
+	{N_("addons_order^First uploaded ($datelike_order)"), "first_uploaded", -1,
 	[](const addon_info& a, const addon_info& b) { return a.created < b.created; },
 	[](const addon_info& a, const addon_info& b) { return a.created > b.created; }}
 };
@@ -368,6 +368,21 @@ void addon_manager::pre_show(window& window)
 	}
 
 	order_dropdown.set_values(order_dropdown_entries);
+	{
+		const std::string saved_order_name = preferences::addon_manager_saved_order_name();
+		const listbox::SORT_ORDER saved_order_direction =
+			static_cast<listbox::SORT_ORDER>(preferences::addon_manager_saved_order_direction());
+
+		if(!saved_order_name.empty()) {
+			auto order_it = std::find_if(all_orders_.begin(), all_orders_.end(),
+				[&saved_order_name](const addon_order& order) {return order.as_preference == saved_order_name;});
+			int index = 2 * (std::distance(all_orders_.begin(), order_it));
+			if(saved_order_direction == listbox::SORT_DESCENDING) {
+				++index;
+			}
+			find_widget<menu_button>(&window, "order_dropdown", false).set_value(index, false);
+		}
+	}
 
 	connect_signal_notify_modified(order_dropdown,
 		std::bind(&addon_manager::order_addons, this, std::ref(window)));
@@ -618,6 +633,8 @@ void addon_manager::order_addons(window& window)
 	}
 
 	find_widget<addon_list>(&window, "addons", false).set_addon_order(func);
+	preferences::set_addon_manager_saved_order_name(order_struct.as_preference);
+	preferences::set_addon_manager_saved_order_direction(order);
 }
 
 void addon_manager::on_order_changed(window& window, unsigned int sort_column, listbox::SORT_ORDER order)
@@ -630,6 +647,8 @@ void addon_manager::on_order_changed(window& window, unsigned int sort_column, l
 		++index;
 	}
 	order_menu.set_value(index);
+	preferences::set_addon_manager_saved_order_name(order_it->as_preference);
+	preferences::set_addon_manager_saved_order_direction(order);
 }
 
 template<void(addon_manager::*fptr)(const addon_info& addon, window& window)>

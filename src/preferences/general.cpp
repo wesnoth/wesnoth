@@ -1074,4 +1074,25 @@ void set_damage_prediction_allow_monte_carlo_simulation(bool value)
 	set("damage_prediction_allow_monte_carlo_simulation", value);
 }
 
+std::string addon_manager_saved_order_name()
+{
+	return get("addon_manager_saved_order_name");
+}
+
+void set_addon_manager_saved_order_name(const std::string& value)
+{
+	set("addon_manager_saved_order_name", value);
+}
+
+int addon_manager_saved_order_direction()
+{
+	return std::atoi(get("addon_manager_saved_order_direction").c_str());
+}
+
+void set_addon_manager_saved_order_direction(const int& value)
+{
+	set("addon_manager_saved_order_direction", std::to_string(value));
+}
+
+
 } // end namespace preferences

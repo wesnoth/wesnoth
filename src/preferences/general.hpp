@@ -283,4 +283,11 @@ namespace preferences {
 	bool damage_prediction_allow_monte_carlo_simulation();
 	void set_damage_prediction_allow_monte_carlo_simulation(bool value);
 
+	std::string addon_manager_saved_order_name();
+	void set_addon_manager_saved_order_name(const std::string& value);
+
+	// Actually gui2::listbox::SORT_ORDER
+	int addon_manager_saved_order_direction();
+	void set_addon_manager_saved_order_direction(const int& value);
+
 } // end namespace preferences

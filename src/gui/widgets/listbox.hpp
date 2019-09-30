@@ -279,6 +279,7 @@ public:
 	/** Registers a special sorting function specifically for translatable values. */
 	void register_translatable_sorting_option(const int col, translatable_sorter_func_t f);
 
+	/// The int values of this enum are serialized by preferences::set_addon_manager_saved_order_direction(), don't change them!
 	enum SORT_ORDER {
 		SORT_NONE,
 		SORT_ASCENDING,
