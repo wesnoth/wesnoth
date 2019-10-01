@@ -708,7 +708,7 @@ void mp_create_game::update_details(window& win)
 			create_engine_.get_state().classification().campaign = "";
 
 			find_widget<stacked_widget>(&win, "minimap_stack", false).select_layer(0);
-			const std::string map_data = current_scenario->data()["map_file"].empty()
+			const std::string map_data = !current_scenario->data()["map_data"].empty()
 				? current_scenario->data()["map_data"]
 				: filesystem::read_map(current_scenario->data()["map_file"]);
 			find_widget<minimap>(&win, "minimap", false).set_map_data(map_data);
