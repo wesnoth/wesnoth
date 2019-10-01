@@ -90,6 +90,11 @@ game_stringfixes = {
 ("there was no hale orc in sight,", "There was no hale orc in sight,"),
 ),
 
+"wesnoth-ei": (
+# conversion added in 1.15.1+dev
+("We are soldiers of the king of Wesnoth.", "We are soldiers of the King of Wesnoth."),
+),
+
 "wesnoth-editor" : (
 # conversion added in 1.11.10+dev
 ("Choose file", "Choose File"),
