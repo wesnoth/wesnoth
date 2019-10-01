@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-09-16 11:33+0300\n"
-"PO-Revision-Date: 2019-09-15 13:50-0300\n"
+"PO-Revision-Date: 2019-09-22 15:05-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: pt_BR\n"
@@ -5225,13 +5225,13 @@ msgid ""
 "There are no custom options available for the selected era, game, or "
 "modification."
 msgstr ""
+"Não há opções de personalização disponíveis para a era, jogo ou modificação "
+"selecionada."
 
 #. [button]: id=reset_option_values
 #: data/gui/macros/custom_options_tree.cfg:249
-#, fuzzy
-#| msgid "theme^Default"
 msgid "Defaults"
-msgstr "Padrão"
+msgstr "Padrões"
 
 #
 # File: src/multiplayer_connect.cpp, line: 647
@@ -5242,10 +5242,8 @@ msgstr "Padrão"
 # File: src/multiplayer_connect.cpp, line: 1658
 #. [label]
 #: data/gui/macros/player_list_panel.cfg:29
-#, fuzzy
-#| msgid "Computer Player"
 msgid "Connected Players"
-msgstr "Computador"
+msgstr "Jogadores Conectados"
 
 #
 # File: src/addon/manager_ui.cpp, line: 204
@@ -5457,12 +5455,10 @@ msgstr "Derrota:"
 # File: data/lua/wml/objectives.lua, line: 1496
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:57
-#, fuzzy
-#| msgid "(this turn left)"
 msgid "(this turn left)"
 msgid_plural "(%d turns left)"
-msgstr[0] "(resta um turno)"
-msgstr[1] "(resta um turno)"
+msgstr[0] "(só mais este turno)"
+msgstr[1] "(%d turnos restantes)"
 
 #
 # File: data/core/macros/objective-utils.cfg, line: 29
@@ -5473,10 +5469,8 @@ msgstr[1] "(resta um turno)"
 # File: data/lua/wml/objectives.lua, line: 1547
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
-#, fuzzy
-#| msgid "No gold carried over to the next scenario."
 msgid "%d%% of gold carried over to the next scenario."
-msgstr "Nenhum ouro transferido para o próximo cenário."
+msgstr "%d%% de ouro tranferido para o próximo cenário."
 
 #
 # File: src/multiplayer_connect.cpp, line: 1857
@@ -10693,6 +10687,9 @@ msgid ""
 "“all” = overview of all commands, <command> = name of a specific command "
 "(provides more detail)"
 msgstr ""
+"[all|<command>]\n"
+"“all” = mostra todos os comandos, <command> = nome de um comando específico "
+"(dá mais detalhes)"
 
 #
 # File: src/menu_events.cpp, line: 1532
@@ -10758,8 +10755,8 @@ msgstr "Uso:"
 #: src/map_command_handler.hpp:343
 msgid "command^Alias:"
 msgid_plural "Aliases:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Apelido:"
+msgstr[1] "Apelidos:"
 
 #
 # File: src/menu_events.cpp, line: 418
@@ -11013,6 +11010,9 @@ msgid ""
 "[<side> [on/off]]\n"
 "“on” = enable control by the AI, “off” = side is controlled by the player"
 msgstr ""
+"[<side> [on/off]]\n"
+"“on” = transfere o controle do lado para a AI, “off” = o lado é controlado "
+"pelo jogador"
 
 #
 # File: src/menu_events.cpp, line: 1963
@@ -11030,10 +11030,8 @@ msgstr "Mudar um lado para/de sem controlador."
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1194
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "command_idle^[<side> [on/off]]"
-msgstr "[<lado> [on/off]]"
+msgstr "[<side> [on/off]]"
 
 #
 # File: src/menu_events.cpp, line: 1966
@@ -11086,7 +11084,7 @@ msgstr "Debug camadas de terreno debaio do mouse."
 
 #: src/menu_events.cpp:1204
 msgid "Show fps (Frames Per Second)."
-msgstr ""
+msgstr "Mostrar fps (Frames Por Segundo)."
 
 #
 # File: src/menu_events.cpp, line: 1977
@@ -11457,10 +11455,8 @@ msgstr "O lado '$side' agora está sob o controle de: Humano."
 # File: src/menu_events.cpp, line: 2577
 # File: src/menu_events.cpp, line: 2577
 #: src/menu_events.cpp:1463
-#, fuzzy
-#| msgid "Can't droid invalid side: '$side'."
 msgid "Can't droid a local ai side: '$side'."
-msgstr "Não é possível 'droid' no time inválido: '$side'."
+msgstr "Não é possível 'droid' num aldo para a aai local: '$side'."
 
 #
 # File: src/menu_events.cpp, line: 2578
@@ -11670,7 +11666,7 @@ msgstr "Sem facções iguais entre aliados"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "Um jogo ($name|, $scenario|) foi criado"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
@@ -11869,24 +11865,24 @@ msgstr ""
 # File: src/dialogs.cpp, line: 109
 # File: src/dialogs.cpp, line: 114
 #: src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "Do you really want to surrender the game?"
 msgid ""
 "\n"
 "Do you want to save the game?"
-msgstr "Você realmente deseja se render?"
+msgstr ""
+"\n"
+"Você realmente deseja salvar o jogo?"
 
 #
 # File: src/savegame.cpp, line: 965
 # File: src/savegame.cpp, line: 965
 # File: src/savegame.cpp, line: 965
 #: src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "The game has been saved."
 msgid ""
 "This game has been ended.\n"
 "Reason: "
-msgstr "O jogo foi salvo."
+msgstr ""
+"Este jogo foi terminado.\n"
+"Razão: "
 
 #
 # File: src/playsingle_controller.cpp, line: 712
@@ -12543,12 +12539,6 @@ msgid "Units"
 msgstr "Unidades"
 
 #: src/reports.cpp:1344
-#, fuzzy
-#| msgid ""
-#| "The expenses incurred at the end of every turn to maintain your army. The "
-#| "first number is the amount of gold that will be deducted. The second is "
-#| "the total cost of upkeep, including that covered by villages — in other "
-#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -12557,9 +12547,11 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 "Os gastos no final de cada turno para manter o seu exército. O primeiro "
-"número é a quantidade de ouro que será deduzida. O segundo é o custo total "
-"de manutenção, incluindo o valor reduzido pelas vilas — em outras palavras, "
-"o valor de ouro que seria deduzido caso você não controlasse nenhuma aldeia."
+"número é a quantidade de ouro que será deduzida, sendo que esta quantidade é "
+"igual ao número de níveis de unidades que excede o suporte de aldeias. O "
+"segundo é o custo total de manutenção, incluindo o valor reduzido pelas "
+"vilas — em outras palavras, o valor de ouro que seria deduzido caso você não "
+"controlasse nenhuma aldeia."
 
 #
 # File: src/leader_scroll_dialog.cpp, line: 50
@@ -12586,22 +12578,16 @@ msgstr "Manutenção"
 # File: src/multiplayer_connect.cpp, line: 1070
 # File: src/multiplayer_wait.cpp, line: 520
 #: src/reports.cpp:1381
-#, fuzzy
-#| msgid "Income"
 msgid "Net Income"
-msgstr "Receita"
+msgstr "Receita Positiva"
 
 #: src/reports.cpp:1381
-#, fuzzy
-#| msgid ""
-#| "The amount of gold you gain each turn from your controlled villages, or "
-#| "the amount of gold you will lose each turn for unit upkeep."
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
-"A quantidade de ouro que você ganha a cada turno das aldeias que você "
-"controla, ou a quantidade de ouro que você perde a cada turno pela "
+"A receita de ouro, positiva ou negativa, que você ganha a cada trno levando "
+"em consideração suas aldeias controladas e o pagamento do custo de "
 "manutenção."
 
 #
