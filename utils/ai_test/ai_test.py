@@ -1,9 +1,9 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 from subprocess import Popen, PIPE
 from time import clock, time
 import datetime
 import sqlite3
-import ConfigParser
+import configparser
 import os
 import string
 import random
@@ -48,7 +48,7 @@ def construct_command_line(cfg, test, switched_side):
 	repeats = cfg.getint('default', 'repeat')
 	repeats_param = '--multiplayer-repeat ' + str(repeats)
 	if repeats > 1:
-		print 'Be patient, ' + str(repeats) + ' repeats are going to take a while.'
+		print('Be patient, ' + str(repeats) + ' repeats are going to take a while.')
 
 	side1 = test.ai_config1 if not switched_side else test.ai_config2
 	side2 = test.ai_config2 if not switched_side else test.ai_config1
@@ -82,7 +82,7 @@ def do_filter(str, substring):
 
 def run_game(cfg, test, switched_side):
 	command_line = construct_command_line(cfg, test, switched_side)
-	print 'Running: ' + command_line
+	print('Running: ' + command_line)
 
 	game_results = []
 	game_result = None
@@ -90,7 +90,7 @@ def run_game(cfg, test, switched_side):
 	faction2 = ''
 	debugout = ''
 
-	p = Popen(command_line, shell=True, bufsize=10000000, stdout=PIPE, stderr=PIPE)
+	p = Popen(command_line, shell=True, bufsize=10000000, stdout=PIPE, stderr=PIPE, encoding="utf8")
 
 	for line in p.stderr:
 		l = filter_non_printable(line.strip())
@@ -111,7 +111,7 @@ def run_game(cfg, test, switched_side):
 			test.version_string = s
 			continue
 
-		n, s = do_filter(l , 'info ai/testing: AI_IDENTIFIER1:')
+		n, s = do_filter(l , 'info ai/testing: AI_IDENTIFIER 1:')
 		if(n > -1):
 			if switched_side:
 				test.ai_ident2 = s
@@ -126,7 +126,7 @@ def run_game(cfg, test, switched_side):
 			game_result['is_success'] = False
 			continue
 
-		n, s = do_filter(l , 'info ai/testing: AI_IDENTIFIER2:')
+		n, s = do_filter(l , 'info ai/testing: AI_IDENTIFIER 2:')
 		if(n > -1):
 			if switched_side:
 				test.ai_ident1 = s
@@ -140,8 +140,8 @@ def run_game(cfg, test, switched_side):
 				winner = 1
 			else:
 				winner = 2
-			print 'AND THE WINNER IS: ' + str(winner)
-			if game_result.has_key('winner'):
+			print('AND THE WINNER IS: ' + str(winner))
+			if 'winner' in game_result:
 				game_result['is_success'] = False
 				break
 			game_result['winner'] = winner
@@ -150,8 +150,8 @@ def run_game(cfg, test, switched_side):
 
 		n, s = do_filter(l , 'info ai/testing: DRAW:')
 		if(n > -1):
-			print 'AND THE WINNER IS: DRAW'
-			if game_result.has_key('winner'):
+			print('AND THE WINNER IS: DRAW')
+			if 'winner' in game_result:
 				game_result['is_success'] = False
 				break
 			game_result['winner'] = 0
@@ -164,9 +164,9 @@ def run_game(cfg, test, switched_side):
 			# so we do some checking here and adding
 			# game_result to game_results.
 
-			print 'AND THE VICTORY_TURN IS: ' + s
+			print('AND THE VICTORY_TURN IS: ' + s)
 
-			if game_result.has_key('end_turn'):
+			if 'end_turn' in game_result:
 				game_result['is_success'] = False
 				break
 
@@ -183,7 +183,7 @@ def run_game(cfg, test, switched_side):
 		n, s = do_filter(l , 'error')
 		if(n > -1):
 			# forward errors from stderr.
-			print 'stderr give: error ' + s
+			print('stderr give: error ' + s)
 			continue
 
 
@@ -192,14 +192,14 @@ def run_game(cfg, test, switched_side):
 	return game_results
 
 def print_error(debugout):
-	print 'Warning: not success!'
-	print '===================='
-	print 'stderr:'
-	print debugout
-	print '===================='
+	print('Warning: not success!')
+	print('====================')
+	print('stderr:')
+	print(debugout)
+	print('====================')
 
 def save_result_logfile(cfg, test, game_result, log_file):
-	print 'Saving to log file....'
+	print('Saving to log file....')
 	log_file.write('"' + test.ai_config1 + '", "' +
 			test.ai_config2 + '", "' +
 			test.ai_ident1 + '", "' +
@@ -214,10 +214,10 @@ def save_result_logfile(cfg, test, game_result, log_file):
 			str(game_result['winner']) + '"\n');
 
 	log_file.flush();
-	print 'Saved to log file'
+	print('Saved to log file')
 
 def save_result_database(cfg, test, game_result, sqlite_file):
-	print 'Saving to DB....'
+	print('Saving to DB....')
 	query = ('INSERT INTO games("test_id","faction1","faction2","switched_side","is_success","end_turn","winner")' +
 			'VALUES (?,?,?,?,?,?,?)')
 
@@ -233,7 +233,7 @@ def save_result_database(cfg, test, game_result, sqlite_file):
 		game_result['winner']))
 	conn.commit()
 	conn.close()
-	print 'Saved to DB'
+	print('Saved to DB')
 
 def executions(cfg, test):
 	structured = cfg.getboolean('default', 'structured_test')
@@ -242,7 +242,7 @@ def executions(cfg, test):
 		i = 1
 		for faction1 in factions:
 			for faction2 in factions:
-				print 'EXECUTION: ' + str(i) + '/36 --- ' + faction1 + ' against ' + faction2
+				print('EXECUTION: ' + str(i) + '/36 --- ' + faction1 + ' against ' + faction2)
 				test.faction1 = faction1
 				test.faction2 = faction2
 				game_results = run_game(cfg, test, False)
@@ -257,7 +257,7 @@ def executions(cfg, test):
 
 		for i in range(0, n):
 			switched_side = (random.randint(0, 1) == 1) if randomize else False
-			print 'EXECUTION ' + str(i + 1)
+			print('EXECUTION ' + str(i + 1))
 			game_results = run_game(cfg, test, switched_side)
 			yield game_results
 
@@ -268,7 +268,7 @@ def executions(cfg, test):
 
 # main
 
-cfg = ConfigParser.ConfigParser()
+cfg = configparser.ConfigParser(interpolation=None)
 cfg.read('ai_test.cfg')
 
 ai1 = cfg.get('default', 'ai_config1').strip()
@@ -285,7 +285,7 @@ test = Test(ai1, ai2, faction1, faction2, map, title)
 
 # only 'test the test' with GUI / start one game then exit
 if len(sys.argv) > 1 and sys.argv[1] == '-p':
-	executions(cfg, test).next()
+	next(executions(cfg, test))
 	sys.exit(0)
 
 log_file = None
@@ -327,11 +327,11 @@ for game_results in executions(cfg, test):
 			ai1_won = ai1_won + 1
 		elif game_result['winner'] == 2:
 			ai2_won = ai2_won + 1
-	print '\n=====Status====='
-	print 'Total games: ' + str(total)
-	print 'AI1(' + ai1 + ') won: ' + str(ai1_won) + "/" + str(ai1_won * 100 / total) + '%'
-	print 'AI2(' + ai2 + ') won: ' + str(ai2_won) + "/" + str(ai2_won * 100 / total) + '%'
-	print 'Draws: ' + str(draw) + "/" + str(draw * 100 / total) + '%\n'
+	print('\n=====Status=====')
+	print('Total games: ' + str(total))
+	print('AI1(' + ai1 + ') won: ' + str(ai1_won) + "/" + str(ai1_won * 100 / total) + '%')
+	print('AI2(' + ai2 + ') won: ' + str(ai2_won) + "/" + str(ai2_won * 100 / total) + '%')
+	print('Draws: ' + str(draw) + "/" + str(draw * 100 / total) + '%\n')
 if sqlite_file:
 	conn = sqlite3.connect(sqlite_file)
 	cur = conn.cursor()
