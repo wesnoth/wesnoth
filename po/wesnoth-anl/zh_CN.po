@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-09-16 08:32 UTC\n"
-"PO-Revision-Date: 2019-02-04 17:06+0800\n"
+"PO-Revision-Date: 2019-09-23 22:32+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
@@ -29,16 +29,11 @@ msgstr "4p — 新世界"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
-#, fuzzy
-#| msgid ""
-#| "This 4p survival scenario allows you to construct buildings and terraform "
-#| "the land. Use map settings. The recommended starting gold is 100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. The recommended starting gold is 100."
 msgstr ""
-"在这个4玩家的生存场景里，你可以建造建筑以及改变地形。请使用地图设置。推荐起始"
-"金币数为100。"
+"在这个4玩家的生存场景里，你可以建造建筑以及改变地形。推荐起始金币数为100。"
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:26
@@ -96,10 +91,8 @@ msgstr "囚徒"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:266
-#, fuzzy
-#| msgid "teamname^Prisoners"
 msgid "teamname^Monsters"
-msgstr "囚徒"
+msgstr "怪物"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:462
@@ -340,10 +333,8 @@ msgstr "新世界——帮助"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:95
-#, fuzzy
-#| msgid "Select a topic."
 msgid "Select a topic:"
-msgstr "选择一个主题。"
+msgstr "选择一个主题："
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:98
@@ -431,7 +422,7 @@ msgid ""
 "Give 20 gold to another player"
 msgstr ""
 "<span color='green'>捐助资金</span>\n"
-"捐助另一玩家20枚金币。"
+"给另一玩家20枚金币"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:351
@@ -507,49 +498,47 @@ msgstr "我们的交涉完成了——精灵将在战斗中给您协助。您想
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:5
 msgid "In this scenario you build up an economy"
-msgstr ""
+msgstr "在此场景中你需要进行经济建设"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:9
 msgid "Move any unit next to captives and they will join your side"
-msgstr ""
+msgstr "将任一单位移动至俘虏身边，他们就会加入你的阵营"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:13
 msgid "Right-click on a leader to read about the game mechanics"
-msgstr ""
+msgstr "右击一位首领以阅读有关游戏机制的信息"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:17
 msgid "Rules:"
-msgstr ""
+msgstr "规则："
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:21
 msgid "Goal:"
-msgstr ""
+msgstr "目标："
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:25
 msgid "Hint:"
-msgstr ""
+msgstr "提示："
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:29
 msgid "Hints:"
-msgstr ""
+msgstr "提示："
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:33
 msgid "Defeat all enemy leaders"
-msgstr ""
+msgstr "击败所有敌方首领"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:37
-#, fuzzy
-#| msgid "You must survive until turn 25."
 msgid "You must survive until turn 25"
-msgstr "你必须坚持到第25回合。"
+msgstr "你必须存活至第25回合"
 
 #. [set_menu_item]: id=anl_choose_new_recruit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:45
@@ -853,6 +842,3 @@ msgstr "花费：7枚金币"
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:577
 msgid "Clear the Ground"
 msgstr "清出空地"
-
-#~ msgid "Right-click on your leader during your turn for help"
-#~ msgstr "在你的回合中，右键点击你的首领以获取帮助"
