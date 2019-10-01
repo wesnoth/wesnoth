@@ -2045,4 +2045,11 @@ void game::send_server_message(const char* message, const socket_ptr& sock, simp
 		send_to_player(sock, doc);
 	}
 }
+
+bool game::is_reload() const
+{
+	const simple_wml::node& multiplayer = get_multiplayer(level_.root());
+	return multiplayer.has_attr("savegame") && multiplayer["savegame"].to_bool();
+}
+
 } // namespace wesnothd

@@ -76,11 +76,9 @@ set(game-external-libs
 	${CRYPTO_LIBRARY}
 	${Boost_SYSTEM_LIBRARIES}
 	${Boost_RANDOM_LIBRARY}
-	${Boost_THREAD_LIBRARY}
 	${sdl_image-lib}
 	${sdl_mixer-lib}
 	${sdl_ttf-lib}
-	${GOBJECT_LIBRARIES}
 	${PANGOCAIRO_LIBRARIES}
 	${FONTCONFIG_LIBRARIES}
 	${LIBDBUS_LIBRARIES}

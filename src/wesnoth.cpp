@@ -1092,8 +1092,6 @@ int main(int argc, char** argv)
 
 	assert(!args.empty());
 
-	filesystem::init();
-
 	if(SDL_Init(SDL_INIT_TIMER) < 0) {
 		fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
 		return (1);

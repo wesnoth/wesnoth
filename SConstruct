@@ -367,7 +367,6 @@ if env["prereqs"]:
         conf.CheckBoost("random", require_version = boost_version) & \
         conf.CheckBoost("smart_ptr", header_only = True) & \
 	CheckAsio(conf) & \
-	conf.CheckBoost("thread") & \
         conf.CheckBoost("locale") & \
         conf.CheckBoost("filesystem") \
             and Info("Base prerequisites are met")) \
@@ -393,7 +392,6 @@ if env["prereqs"]:
     have_client_prereqs = have_client_prereqs & conf.CheckJPG()
 #    have_client_prereqs = have_client_prereqs & conf.CheckOpenGL()
 #    have_client_prereqs = have_client_prereqs & conf.CheckGLEW()
-    have_client_prereqs = have_client_prereqs & conf.CheckPKG("gobject-2.0")
     have_client_prereqs = have_client_prereqs & conf.CheckCairo(min_version = "1.10")
     have_client_prereqs = have_client_prereqs & conf.CheckPango("cairo", require_version = "1.22.0")
     have_client_prereqs = have_client_prereqs & conf.CheckPKG("fontconfig")

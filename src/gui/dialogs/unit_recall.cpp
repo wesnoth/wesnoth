@@ -33,6 +33,7 @@
 #include "game_board.hpp"
 #include "gettext.hpp"
 #include "replay_helper.hpp"
+#include "play_controller.hpp"
 #include "resources.hpp"
 #include "synced_context.hpp"
 #include "team.hpp"
@@ -40,6 +41,7 @@
 #include "units/unit.hpp"
 #include "units/ptr.hpp"
 #include "utils/functional.hpp"
+#include "whiteboard/manager.hpp"
 
 #include <boost/dynamic_bitset.hpp>
 
@@ -79,12 +81,29 @@ static void dump_recall_list_to_console(const T& units)
 	}
 }
 
-static std::string format_level_string(const int level)
+static const color_t inactive_row_color(0x96, 0x96, 0x96);
+
+static const inline std::string maybe_inactive(const std::string& str, bool active)
+{
+	if(active)
+		return str;
+	else
+		return font::span_color(inactive_row_color, str);
+}
+
+static std::string format_level_string(const int level, bool recallable)
 {
 	std::string lvl = std::to_string(level);
 
-	if(level < 1) {
-		return "<span color='#969696'>" + lvl + "</span>";
+	if(!recallable) {
+		// Same logic as when recallable, but always in inactive_row_color.
+		if(level < 2) {
+			return font::span_color(inactive_row_color, lvl);
+		} else {
+			return font::span_color(inactive_row_color, "<b>" + lvl + "</b>");
+		}
+	} else if(level < 1) {
+		return font::span_color(inactive_row_color, lvl);
 	} else if(level == 1) {
 		return lvl;
 	} else if(level == 2) {
@@ -177,6 +196,19 @@ void unit_recall::pre_show(window& window)
 
 		std::string mods = unit->image_mods();
 
+		int wb_gold = 0;
+		if(resources::controller) {
+			if(const std::shared_ptr<wb::manager>& whiteb = resources::controller->get_whiteboard()) {
+				wb::future_map future; // So gold takes into account planned spending
+				wb_gold = whiteb->get_spent_gold_for(team_.side());
+			}
+		}
+
+		// Note: Our callers apply [filter_recall], but leave it to us
+		// to apply cost-based filtering.
+		const int recall_cost = (unit->recall_cost() > -1 ? unit->recall_cost() : team_.recall_cost());
+		const bool recallable = (recall_cost <= team_.gold() - wb_gold);
+
 		if(unit->can_recruit()) {
 			mods += "~BLIT(" + unit::leader_crown() + ")";
 		}
@@ -185,39 +217,60 @@ void unit_recall::pre_show(window& window)
 			mods += "~BLIT(" + overlay + ")";
 		}
 
+		if(!recallable) {
+			mods += "~GS()";
+
+			// Just set the tooltip on every single element in this row.
+			if(wb_gold > 0)
+				column["tooltip"] = _("This unit cannot be recalled because you will not have enough gold at this point in your plan.");
+			else
+				column["tooltip"] = _("This unit cannot be recalled because you do not have enough gold.");
+		}
+
 		column["use_markup"] = "true";
 
 		column["label"] = unit->absolute_image() + mods;
 		row_data.emplace("unit_image", column);
 
-		column["label"] = unit->type_name();
+		column["label"] = maybe_inactive(unit->type_name(), recallable);
 		row_data.emplace("unit_type", column);
 
-		column["label"] = format_cost_string(unit->recall_cost(), team_.recall_cost());
+		// gold_icon is handled below
+
+		column["label"] =
+			recallable
+			? format_cost_string(unit->recall_cost(), team_.recall_cost())
+			: maybe_inactive(std::to_string(recall_cost), recallable);
 		row_data.emplace("unit_recall_cost", column);
 
 		const std::string& name = !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
-		column["label"] = name;
+		column["label"] = maybe_inactive(name, recallable);
 		row_data.emplace("unit_name", column);
 
-		column["label"] = format_level_string(unit->level());
+		column["label"] = format_level_string(unit->level(), recallable);
 		row_data.emplace("unit_level", column);
 
 		std::stringstream exp_str;
-		exp_str << font::span_color(unit->xp_color());
 		if(unit->can_advance()) {
 			exp_str << unit->experience() << "/" << unit->max_experience();
 		} else {
 			exp_str << font::unicode_en_dash;
 		}
-		exp_str << "</span>";
 
-		column["label"] = exp_str.str();
+		column["label"] = font::span_color(recallable ? unit->xp_color() : inactive_row_color, exp_str.str());
 		row_data.emplace("unit_experience", column);
 
 		// Since the table widgets use heavy formatting, we save a bare copy
 		// of certain options to filter on.
 		std::string filter_text = unit->type_name() + " " + name + " " + std::to_string(unit->level());
+
+		if(recallable) {
+			// This is to allow filtering for recallable units by typing "vvv" in the search box.
+			// That's intended to be easy to type and unlikely to match unit or type names.
+			//
+			// TODO: document this. (Also, implement a "Hide non-recallable units" checkbox.)
+			filter_text += " " + std::string("vvv");
+		}
 
 		std::string traits;
 		for(const std::string& trait : unit->trait_names()) {
@@ -225,11 +278,18 @@ void unit_recall::pre_show(window& window)
 			filter_text += " " + trait;
 		}
 
-		column["label"] = !traits.empty() ? traits : font::unicode_en_dash;
+		column["label"] = maybe_inactive(
+					!traits.empty() ? traits : font::unicode_en_dash,
+					recallable);
 		row_data.emplace("unit_traits", column);
 
-		list.add_row(row_data);
 		filter_options_.push_back(filter_text);
+		grid& grid = list.add_row(row_data);
+		if(!recallable) {
+			image *gold_icon = dynamic_cast<image*>(grid.find("gold_icon", false));
+			assert(gold_icon);
+			gold_icon->set_image(gold_icon->get_image() + "~GS()");
+		}
 	}
 
 	list.register_translatable_sorting_option(0, [this](const int i) { return recall_list_[i]->type_name().str(); });

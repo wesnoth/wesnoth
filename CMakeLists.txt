@@ -75,7 +75,7 @@ else()
 	set(CRYPTO_LIBRARY "-framework Security")
 endif()
 
-find_package(Boost 1.56 REQUIRED COMPONENTS iostreams program_options regex system thread random)
+find_package(Boost 1.56 REQUIRED COMPONENTS iostreams program_options regex system random)
 
 # no, gettext executables are not required when NLS is deactivated
 find_package(Gettext)
@@ -514,7 +514,6 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 	find_package( SDL2_ttf 2.0.12 REQUIRED )
 	find_package(VorbisFile REQUIRED)
 	find_package( PkgConfig REQUIRED )
-	pkg_check_modules( GOBJECT REQUIRED gobject-2.0 )
 	pkg_check_modules( CAIRO REQUIRED cairo>=1.10 )
 	pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.22.0 )
 	pkg_check_modules( FONTCONFIG REQUIRED fontconfig>=2.4.1 )

@@ -211,18 +211,10 @@ public:
 
 static static_runner static_bfs_path_imbuer;
 
-typedef DWORD(WINAPI* GetFinalPathNameByHandleWPtr)(HANDLE, LPWSTR, DWORD, DWORD);
-static GetFinalPathNameByHandleWPtr dyn_GetFinalPathNameByHandle;
-
 bool is_filename_case_correct(const std::string& fname, const boost::iostreams::file_descriptor_source& fd)
 {
-	if(dyn_GetFinalPathNameByHandle == nullptr) {
-		// Windows XP. Just assume that the case is correct.
-		return true;
-	}
-
 	wchar_t real_path[MAX_PATH];
-	dyn_GetFinalPathNameByHandle(fd.handle(), real_path, MAX_PATH - 1, VOLUME_NAME_NONE);
+	GetFinalPathNameByHandleW(fd.handle(), real_path, MAX_PATH - 1, VOLUME_NAME_NONE);
 
 	std::string real_name = filesystem::base_name(unicode_cast<std::string>(std::wstring(real_path)));
 	return real_name == filesystem::base_name(fname);
@@ -238,15 +230,6 @@ bool is_filename_case_correct(const std::string& /*fname*/, const boost::iostrea
 
 namespace filesystem
 {
-void init()
-{
-#ifdef _WIN32
-	HMODULE kernel32 = GetModuleHandle(TEXT("Kernel32.dll"));
-	// Note that this returns a null pointer on Windows XP!
-	dyn_GetFinalPathNameByHandle
-			= reinterpret_cast<GetFinalPathNameByHandleWPtr>(GetProcAddress(kernel32, "GetFinalPathNameByHandleW"));
-#endif
-}
 
 static void push_if_exists(std::vector<std::string>* vec, const bfs::path& file, bool full)
 {

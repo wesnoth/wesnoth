@@ -118,16 +118,10 @@ msgstr "チャットメッセージの寿命"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid ""
-#| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#| "0 to disable"
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
 msgstr ""
-"チャットメッセージを消去するまでの時間（分）です。0で時間経過による消去を無効"
-"化します。"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:103
@@ -4390,16 +4384,10 @@ msgstr "Lv"
 
 #. [tip]
 #: data/tips.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Use the map editor's <i>Areas</i> menu to define regions later addressed "
-#| "by event or ai coding."
 msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
 msgstr ""
-"マップエディタの<i>領域</i>メニューを使うことで、領域を定義することができま"
-"す。領域はイベントやAIをコーディングする際に役に立ちます。"
 
 #. [tip]
 #: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
@@ -4408,29 +4396,17 @@ msgstr "<i>― Wesnoth デザインガイド</i>"
 
 #. [tip]
 #: data/tips.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use "
-#| "of advanced features."
 msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
 msgstr ""
-"エディタの<i>ファイル</i>メニューから<i>新しいシナリオ</i>を作成することで、"
-"高度な機能を利用することができます。"
 
 #. [tip]
 #: data/tips.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Scenarios saved from the editor in their default folder can be selected "
-#| "in the mp create screen's <i>User Scenarios</i> section."
 msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” screen."
 msgstr ""
-"エディタでデフォルトフォルダに保存されたシナリオは、マルチプレイヤーゲームの"
-"<i>ユーザーシナリオ</i>から利用することができます。"
 
 #. [tip]
 #: data/tips.cfg:16
@@ -6868,7 +6844,7 @@ msgstr ""
 
 #: src/map_command_handler.hpp:218
 msgid "do not translate the 'all'^[all|<command>]"
-msgstr "[all|<コマンド>]"
+msgstr ""
 
 #: src/map_command_handler.hpp:263
 msgid "Missing argument $arg_id"
@@ -6901,7 +6877,7 @@ msgstr "使用方法："
 
 #: src/map_command_handler.hpp:334
 msgid "aliases:"
-msgstr "エイリアス："
+msgstr ""
 
 #: src/menu_events.cpp:177
 msgid "Save Map As"
@@ -7028,10 +7004,8 @@ msgid "Switch a side to/from AI control."
 msgstr "陣営の操作を AI または手動に切り替えます。"
 
 #: src/menu_events.cpp:1191
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "do not translate the on/off/full^[<side> [on/off/full]]"
-msgstr "[<陣営> [on/off]]"
+msgstr ""
 
 #: src/menu_events.cpp:1192
 msgid "Switch a side to/from idle state."
@@ -7039,7 +7013,7 @@ msgstr "陣営の待機状態を切り替えます。"
 
 #: src/menu_events.cpp:1193
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr "[<陣営> [on/off]]"
+msgstr ""
 
 #: src/menu_events.cpp:1196
 msgid "<side> <nickname>"
@@ -7071,7 +7045,7 @@ msgstr "マウス下の地形レイヤーをデバッグします。"
 
 #: src/menu_events.cpp:1203
 msgid "Show fps."
-msgstr "FPSを表示します。"
+msgstr ""
 
 #: src/menu_events.cpp:1205
 msgid "Save game."
@@ -7850,15 +7824,14 @@ msgid ""
 "total cost of upkeep, including that covered by villages — in other words, "
 "the amount of gold that would be deducted if you lost all villages."
 msgstr ""
-"自軍を維持するため、毎ターンの終わりに払う費用です。最初の数字は、差し引かれ"
-"るゴールドです。2 番目の数字は、村による免除を含めた維持費の合計です。つま"
-"り、自軍が村を失えば、より多くのゴールドを失ってしまうことになります。"
 
 #: src/reports.cpp:1445
 msgid "Upkeep"
 msgstr "維持費"
 
 #: src/reports.cpp:1482
+#, fuzzy
+#| msgid "income"
 msgid "Income"
 msgstr "収入"
 
@@ -7867,8 +7840,6 @@ msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
 msgstr ""
-"各ターンに所有する村から自軍が得るゴールドです。マイナスの場合は、各ターンに"
-"ユニットの維持費によって自軍が失うゴールドです。"
 
 #: src/reports.cpp:1650
 msgid "Observers:"
@@ -8380,21 +8351,27 @@ msgstr "$player の計画を非表示"
 msgid "Whiteboard Options"
 msgstr "行動予定オプション"
 
-#, fuzzy
-#~| msgid "Attack"
-#~| msgid_plural "Attacks"
-#~ msgid "Attacks"
-#~ msgstr "攻撃"
+#~ msgid ""
+#~ "Liminal units only reach their full strength during twilight.\n"
+#~ "\n"
+#~ "Day: −25% Damage\n"
+#~ "Night: −25% Damage"
+#~ msgstr ""
+#~ "薄明ユニットは周囲が薄明かりの時のみ本来の力を出せます。\n"
+#~ "\n"
+#~ "日中：−25% ダメージ\n"
+#~ "夜間：−25% ダメージ"
 
-#, fuzzy
-#~| msgid "Recruits"
-#~ msgid "Recruit"
-#~ msgstr "雇用"
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr "選択した時代・ゲーム・Mod にはオプション設定はありません。"
 
-#, fuzzy
-#~| msgid "There are no save files to load"
-#~ msgid "There are no corpses available."
-#~ msgstr "セーブデータが １ つもありません"
+#~ msgid "Defaults"
+#~ msgstr "デフォルト"
+
+#~ msgid "Connected Players"
+#~ msgstr "参加中のプレイヤー"
 
 #~ msgid "registering with password *** and no email address"
 #~ msgstr "emailアドレスの指定無し、パスワード *** で登録中…"
@@ -8430,87 +8407,6 @@ msgstr "行動予定オプション"
 #~ msgstr ""
 #~ "あなたの登録済みニックネームに対して、設定可能な項目のリストを要求します。"
 
-#, fuzzy
-#~| msgid "Connection timed out"
-#~ msgid "Ping timeout"
-#~ msgstr "接続がタイムアウトしました"
-
-#, fuzzy
-#~| msgid ""
-#~| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#~| "0 to disable"
-#~ msgid ""
-#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
-#~ "disable"
-#~ msgstr ""
-#~ "チャットメッセージを消去するまでの時間（分）です。0で時間経過による消去を"
-#~ "無効化します。"
-
-#~ msgid ""
-#~ "Liminal units only reach their full strength during twilight.\n"
-#~ "\n"
-#~ "Day: −25% Damage\n"
-#~ "Night: −25% Damage"
-#~ msgstr ""
-#~ "薄明ユニットは周囲が薄明かりの時のみ本来の力を出せます。\n"
-#~ "\n"
-#~ "日中：−25% ダメージ\n"
-#~ "夜間：−25% ダメージ"
-
-#, fuzzy
-#~| msgid ""
-#~| "In this scenario, you may issue instructions to an allied side by right-"
-#~| "clicking on a unit that belongs to it."
-#~ msgid ""
-#~ "In many campaign scenarios, you may issue simple instructions for your "
-#~ "computer-controlled allies using the right-click context menu."
-#~ msgstr ""
-#~ "このシナリオでは、右クリックのコンテキストメニューを使って同盟軍へ指示する"
-#~ "ことができます。"
-
-#, fuzzy
-#~| msgid "An invalid attacker weapon got selected."
-#~ msgid "An invalid defender weapon got selected."
-#~ msgstr "無効な攻撃側武器が選択されました。"
-
-#~ msgid "Empty"
-#~ msgstr "なし"
-
-#, fuzzy
-#~| msgid "(observing)"
-#~ msgid "(missing)"
-#~ msgstr "（観戦中）"
-
-#, fuzzy
-#~| msgid "none set."
-#~ msgid "none"
-#~ msgstr "目標指示は設定されていません。"
-
 #~ msgid "Can't droid a local ai side: '$side'."
 #~ msgstr ""
 #~ "ローカルのAI陣営「$side」をコンピュータに操作させることはできません。"
-
-#, fuzzy
-#~| msgid "Advances to: "
-#~ msgid "Advances to:"
-#~ msgstr "レベルアップ先："
-
-#, fuzzy
-#~| msgid "<span color=\"$color\">$number_or_percent</span> movement point"
-#~| msgid_plural ""
-#~| "<span color=\"$color\">$number_or_percent</span> movement points"
-#~ msgid "<span color=\"$color\">$number_or_percent movement</span> point"
-#~ msgid_plural ""
-#~ "<span color=\"$color\">$number_or_percent movement</span> points"
-#~ msgstr[0] "<span color=\"$color\">$number_or_percent</span> 移動力"
-
-#~ msgid ""
-#~ "There are no custom options available for the selected era, game, or "
-#~ "modification."
-#~ msgstr "選択した時代・ゲーム・Mod にはオプション設定はありません。"
-
-#~ msgid "Defaults"
-#~ msgstr "デフォルト"
-
-#~ msgid "Connected Players"
-#~ msgstr "参加中のプレイヤー"

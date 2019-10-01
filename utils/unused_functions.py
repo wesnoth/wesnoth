@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 """
 This script is used to detect functions in the source code which are no longer
@@ -19,16 +19,13 @@ def nm(filename):
     return os.popen("nm -C %s" % filename).read()
 
 output1 = []
-for o in glob.glob("src/*.o") + glob.glob("src/*/*.o") + \
-         glob.glob("src/*/*/*.o") + glob.glob("src/*/*/*/*.o"):
+for o in glob.glob("build/release/*.o") + glob.glob("build/release/*/*.o") + \
+         glob.glob("build/release/*/*/*.o") + glob.glob("build/release/*/*/*/*.o"):
     output1.append((o, nm(o)))
 
-output2 = nm("src/wesnoth")
-output2 += nm("src/campaignd")
-output2 += nm("src/exploder")
-output2 += nm("src/cutter")
-output2 += nm("src/wesnothd")
-output2 += nm("src/test")
+output2 = nm("wesnoth")
+output2 += nm("campaignd")
+output2 += nm("wesnothd")
 
 def extract(line):
     return line[line.find(" T ") + 3:]
@@ -47,6 +44,7 @@ for o in output1:
             found += [symbol]
 
     if found:
-        print "%s:" % o[0]
-        print "\n".join(found)
-        print
+        print("%s:" % o[0])
+        print("\n".join(found))
+        print()
+

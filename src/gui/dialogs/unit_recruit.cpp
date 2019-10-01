@@ -13,6 +13,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "font/text_formatting.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/unit_recruit.hpp"
 #include "gui/widgets/button.hpp"
@@ -52,9 +53,11 @@ unit_recruit::unit_recruit(std::vector<const unit_type*>& recruit_list, team& te
 	});
 }
 
-static std::string can_afford_unit(const std::string& text, const bool can_afford)
+static const color_t inactive_row_color(0x96, 0x96, 0x96);
+
+static inline std::string can_afford_unit(const std::string& text, const bool can_afford)
 {
-	return can_afford ? text : "<span color='#ff0000'>" + text + "</span>";
+	return can_afford ? text : font::span_color(inactive_row_color, text);
 }
 
 // Compare unit_create::filter_text_change
@@ -138,8 +141,15 @@ void unit_recruit::pre_show(window& window)
 		const std::string cost_string = std::to_string(recruit->cost());
 
 		column["use_markup"] = "true";
+		if(!can_afford) {
+			// Just set the tooltip on every single element in this row.
+			if(wb_gold > 0)
+				column["tooltip"] = _("This unit cannot be recruited because you will not have enough gold at this point in your plan.");
+			else
+				column["tooltip"] = _("This unit cannot be recruited because you do not have enough gold.");
+		}
 
-		column["label"] = image_string;
+		column["label"] = image_string + (can_afford ? "" : "~GS()");
 		row_data.emplace("unit_image", column);
 
 		column["label"] = can_afford_unit(recruit->type_name(), can_afford);
@@ -148,7 +158,12 @@ void unit_recruit::pre_show(window& window)
 		column["label"] = can_afford_unit(cost_string, can_afford);
 		row_data.emplace("unit_cost", column);
 
-		list.add_row(row_data);
+		grid& grid = list.add_row(row_data);
+		if(!can_afford) {
+			image *gold_icon = dynamic_cast<image*>(grid.find("gold_icon", false));
+			assert(gold_icon);
+			gold_icon->set_image(gold_icon->get_image() + "~GS()");
+		}
 	}
 
 	list_item_clicked(window);

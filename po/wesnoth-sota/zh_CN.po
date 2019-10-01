@@ -1,14 +1,15 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
 # Copyright (C) 2005-2019 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# CloudiDust <cloudidust@gmail.com>, 2017.
+# CloudiDust <cloudidust@gmail.com>, 2017, 2019.
+# termanary, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 19:41 UTC\n"
-"PO-Revision-Date: 2019-02-08 15:50+0800\n"
+"PO-Revision-Date: 2019-07-27 17:09+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #. [campaign]: id=Secrets of the Ancients
 #. [editor_group]: id=sota
@@ -62,12 +63,6 @@ msgstr "困难"
 
 #. [campaign]: id=Secrets of the Ancients
 #: data/campaigns/Secrets_of_the_Ancients/_main.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Rediscover the secrets known by the lich lords of the Green Isle. They "
-#| "knew how to live forever, so why can't you?\n"
-#| "\n"
-#| "(Hard level, 21 scenarios.)\n"
 msgid ""
 "Rediscover the secrets known by the lich lords of the Green Isle. They knew "
 "how to live forever, so why can't you?\n"
@@ -266,7 +261,7 @@ msgstr "洛温"
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:306
 msgid "I suspected some of the rats would show themselves."
-msgstr "我怀就知道有些老鼠会出现。"
+msgstr "我还就知道有些老鼠会出现。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:316
@@ -547,8 +542,8 @@ msgid ""
 "\n"
 "Well, I might as well do my experiment and worry about leaving later."
 msgstr ""
-"他们肯定是守着墓地不让<b>我</b>进来！也许艾谬卡瑟确实在怀疑我。我已经在里面，"
-"真是太好了，但我该怎么出去呢？\n"
+"他们肯定是守着墓地不让<b>我</b>进来！也许艾谬卡瑟确实在怀疑我。但我已经在里面"
+"了，真是太好了，但我该怎么出去呢？\n"
 "\n"
 "好吧，我不如就先做试验，等会儿再担心该怎么离开好了。"
 
@@ -624,8 +619,8 @@ msgid ""
 "I would do better if I had weapons, and I bet I can find some in the "
 "guardhouse. Go take it, my companions."
 msgstr ""
-"要是我有武器的话就能干得更好了，我打赌可以在卫兵室里找到一些。去占领它，我的"
-"伙伴们。"
+"要是我有武器的话就更好了，我打赌可以在卫兵室里找到一些。去占领它，我的伙伴"
+"们。"
 
 #. [message]: speaker=Caradoc
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:921
@@ -806,9 +801,10 @@ msgstr ""
 "的傀儡身上。我在看起来适合的位置缝上了肌肉，并用法术强化了联结，并因此提升了"
 "这造物的力量。起先，每一块新血肉都会引起这躯体的防御机制的强烈反应。但最终，"
 "反应变弱了，而躯体在这新结构下稳定了下来，虽说此时它已经化了脓而且无法辨认"
-"了。躯体内的心智发觉自己变成了这种模样，胡言乱语起来。但这强盗确实希望我遭到"
-"比死更糟糕的命运，所以这并不显得不公平。"
+"了。躯体内的心智发觉自己变成了这种模样，胡言乱语起来。但这强盗诅咒我不得好"
+"死，所以这显得很公平。"
 
+# 原文真的没有问题吗？很不通顺
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:52
 msgid ""
@@ -839,7 +835,7 @@ msgstr ""
 "\n"
 "旅途起初很顺利，但出发后一天破晓时，风完全停了，而我们被困住了。留给付费旅客"
 "的食物足够支撑几天，但我的同伴们吃不到任何东西，那些还活着的很快就饿了。当第"
-"二天晚上，一位船员消失时，我便猜测了原因。我没猜错。"
+"二天晚上，一位船员消失时，我便猜测到了原因。我没猜错。"
 
 #. [time]: id=lower_deck
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:77
@@ -892,7 +888,7 @@ msgid ""
 "shadows, and he smelled foul."
 msgstr ""
 "我在货舱里发现了简林。或者说，呃……他的一部分。他死了。我没有留下来找出是谁杀"
-"了他，但有人在阴影里潜行，他散发出了邪恶之气。"
+"了他，但我发现有人在阴影里潜行，他散发出了邪恶之气。"
 
 #. [message]: speaker=Rudic
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:501
@@ -904,10 +900,11 @@ msgstr ""
 "杀人的偷渡者？我可不允许他待在船上！把剩下的船员聚集起来，让他们上这儿来。我"
 "们要狩猎了。所有旅客都得待在船舱里，现在。"
 
+# 黑袍嘛，前文说主角穿黑色斗蓬
 #. [message]: speaker=Rudic
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:562
 msgid "You! Dark girl. Why are you not in your cabin?"
-msgstr "你！黑色的姑娘。为什么你不呆在船舱里？"
+msgstr "你！黑衣服的姑娘。为什么你不呆在船舱里？"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:566
@@ -1117,7 +1114,7 @@ msgstr "我们完了。"
 #. [message]: speaker=Shadow
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:393
 msgid "Girl. You will follow."
-msgstr "姑娘。你将会跟我走。"
+msgstr "姑娘。跟我走。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:397
@@ -1127,7 +1124,7 @@ msgstr "<b>你</b>究竟是什么人？"
 #. [message]: speaker=Shadow
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:401
 msgid "Spirit and shadow. You will follow."
-msgstr "灵魂与暗影。你将会跟我走。"
+msgstr "灵魂与暗影。跟我走吧。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:405
@@ -1384,8 +1381,8 @@ msgid ""
 msgstr ""
 "我知道很多关于你的事。我的鬼魂们已经监视了你一段时间了，而你和我有共同的目"
 "标，也就是抵御死亡。我一直希望有几名学生可以从那保守的学院里把自己解放出来，"
-"但看起来你就是唯一的那一个了。幸运的是，你很有创造性，甚至做到了一些我都没能"
-"做到的事情。你有些有用的造物——我相信你称呼它们为食尸鬼？"
+"但看起来你就是唯一的那一个了。幸运的是，你很有创造力，甚至做到了一些我都没能"
+"做到的事情。你有些有用的造物——我听说你称呼它们为食尸鬼？"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:195
@@ -1410,7 +1407,7 @@ msgstr ""
 "唉，并不是这样。如果苏生得够快，鬼魂可以保留一些记忆，而且在获得一些作战经验"
 "之后，它们是不错的侦察员和士兵，但你可不会想让自己变成一个鬼魂。你看到瓦希-戈"
 "恩拿着的剑了吗？要把那块金属和灵魂绑定，需要复杂的仪式，而如果没有肉身，就不"
-"能进行那仪式。要是不能和世界交互，那会非常让人沮丧的。没关系；我有个别的主"
+"能进行那仪式。要是不能和世界交互，那会非常让人沮丧的。没关系；我有个新的主"
 "意。"
 
 #. [message]: speaker=Ras-Tabahn
@@ -1442,10 +1439,9 @@ msgid ""
 msgstr ""
 "啊……是的，我想没有。那今天就让我来教你一些我知道的东西，来看看是不是能让你决"
 "定信不信任我。不过，信任问题不是最重要的问题。最重要的问题是我们能不能联手。"
-"听着。古老的韦福克人的死灵术技艺在代代传承之中渐渐精进。需要知道的东西比一个"
-"人可以在一生中学习的更多。如果你独自研究，有一天你会和我一样老，而死亡会像追"
-"逐我一样无情地追逐你。然而，要是我们合并各自的研究成果，我们就有机会在一切太"
-"晚之前完成研究。"
+"听着。古老的韦福克人的死灵术技艺在代代传承之中渐渐精进。穷其一生，也难以企及"
+"其根本。如果你独自研究，有一天你会和我一样老，而死亡会像追逐我一样无情地追逐"
+"你。然而，要是我们合并各自的研究成果，我们就有机会在一切太晚之前完成研究。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:215
@@ -1453,7 +1449,7 @@ msgid ""
 "For you, you mean. I am only nineteen. Still, you make a good case. We can "
 "work together for now."
 msgstr ""
-"你的意思是对你而言。我只有十九岁。但你所说的确实有道理。我们暂且可以联手。"
+"你说的是对你而言。我只有十九岁。但你所说的确实有道理。我们暂且可以联手。"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:219
@@ -1468,8 +1464,8 @@ msgid ""
 msgstr ""
 "棒极了。我的提议是这样的。首先，我们暂时先分头行动，你按照我的指示苏生一批鬼"
 "魂。与此同时，我会尝试教一些本地的农民学会这门魔法技艺。对那些没受过教育的乌"
-"合之众，我没什么期待，但希望有几个还是足够聪明，可以提升我们的火力。当我们重"
-"聚时，你将会演示给我看如何制造那些步履蹒跚的食尸鬼。实际上我并不急，他们的味"
+"合之众，我没什么期待，但希望有几个还是足够聪明，可以增强我们的实力。当我们重"
+"聚时，你可以演示给我看如何制造那些步履蹒跚的食尸鬼。实际上我并不急，他们的味"
 "道太糟糕了。"
 
 #. [message]: speaker=Ardonna
@@ -1485,7 +1481,7 @@ msgstr "有趣，不过对我们而言很方便。"
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:231
 msgid "Why can’t I just raise some of the goblins outside?"
-msgstr "我为什么不能就去苏生几只外面的地精呢？"
+msgstr "为什么我就不能去苏生外面的几只地精呢？"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:235
@@ -1500,8 +1496,8 @@ msgid ""
 msgstr ""
 "那些地精太弱了，在他们的灵魂变得足够强大而有用之前，要花的时间太长。你要去苏"
 "生精灵武士。在进入灰色丛林几里的敌方，有一片数百年前的内战里留下的古老战场。"
-"在那里你将会沿着一条老旧的精灵道路前行，并苏生一批鬼魂。而与此同时我会拜访卡"
-"辛，那附近的一座城镇。我们会在泰河岸边，精灵之路终结的敌方见面，而那时我将会"
+"在那里你将会沿着一条老旧的精灵之路前行，并苏生一批鬼魂。而与此同时我会拜访卡"
+"辛，那附近的一座城镇。我们会在泰河岸边，精灵之路终结的地方见面，而那时我将会"
 "解释我们下一步该去哪儿。"
 
 #. [message]: speaker=Ardonna
@@ -1563,10 +1559,11 @@ msgstr "瑞达"
 msgid "Inn"
 msgstr "客栈"
 
+# Tackle有渔网的意思，且该位置在地图中靠近海边
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:121
 msgid "Tackle Shop"
-msgstr "索具店"
+msgstr "渔具店"
 
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:126
@@ -1620,10 +1617,12 @@ msgstr "或者说……您懂的。十分感谢您把我们弄出来，先生。
 msgid "You are Carcyn the Third I presume?"
 msgstr "我猜你是卡辛三世？"
 
+# threw me in this hole
+# 推进火坑
 #. [message]: speaker=Carcyn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:266
 msgid "Don’t remind me. My father is the one who threw me in this hole."
-msgstr "不用管我。是我爸让我当上这角色的。"
+msgstr "不用管我。是我爸把我推进这火坑的。"
 
 #. [message]: speaker=Carcyn Fisher
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:270
@@ -1636,8 +1635,8 @@ msgid ""
 "Not a chance! I’ve waited all my life to see someone put you in your place. "
 "Here is someone you can’t push around!"
 msgstr ""
-"不说个鬼！我等了一辈子，等着看某人把你治得服服帖帖的。这儿就有个你不能随意推"
-"搡的人！"
+"不说个鬼！我等了一辈子，等着看有人把你治得服服帖帖的。这儿就有个你不能随意呼"
+"来唤去的人！"
 
 #. [message]: speaker=Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:278
@@ -1650,8 +1649,8 @@ msgid ""
 "The only Carcyn now. I’ve waited all my life to see someone to put my father "
 "in his place. I guess you did that."
 msgstr ""
-"现在是唯一的卡辛了。我等了一辈子，等着看有人把我爸治得服服帖帖的。我猜你做到"
-"了。"
+"现在是唯一的卡辛了。我等了一辈子，等着看有人把我爸治得服服帖帖的。我觉得你做"
+"到了。"
 
 #. [message]: speaker=Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:288
@@ -1712,7 +1711,7 @@ msgid ""
 "You will allow this."
 msgstr ""
 "我可不是向了<b>你</b>提供这些，而是向你们的年轻人提供这些。我会派我的手下前往"
-"这镇上所有的住家和公共场所，并复述我的提议。而你将会允许我这么做。"
+"这镇上所有的住家和公共场所，并复述我的提议。而你会允许我这么做的。"
 
 #. [message]: speaker=Carcyn Fisher
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:346
@@ -1762,10 +1761,10 @@ msgid ""
 "on, they came across three farmsteads on the riverbank that had clearly been "
 "raided."
 msgstr ""
-"拉斯-塔班的提议引诱了一大群渴望成为法师的年轻人。这种训练是学习黑魔法的非法训"
-"练的事实，并不重要。更重要的是这样便可以逃离早已由父母确定的艰苦的未来。拉斯-"
-"塔班在卡辛城外的森林里花了几天时间教他们如何拜访灵界并引出其一小部分力量。他"
-"们继续前进之后不久，便在河岸上碰见了三块明显被劫掠过的农场。"
+"拉斯-塔班的提议引诱了一大群渴望成为法师的年轻人。事实上，这种训练是学习黑魔法"
+"的非法训练，但那并不重要。更重要的是这样便可以逃离早已由父母确定的毫无自由的"
+"未来。拉斯-塔班在卡辛城外的森林里花了几天时间教他们如何拜访灵界并引出其一小部"
+"分力量。他们继续前进之后不久，便在河岸上碰见了三块明显被劫掠过的农场。"
 
 #. [objective]: condition=win
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:138
@@ -1799,6 +1798,10 @@ msgstr ""
 "你在此场景中将无法挣取金币，但在前一场景中遗留下来的金币将可以在下一场景中使"
 "用。"
 
+# 前面刚说no matter,所以我认为
+# ‘就’ 和 ‘却’ ， 有待商榷
+# ‘就’ 可以表现塔班的性格，
+# ‘却’符合场景
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:348
 msgid ""
@@ -1810,7 +1813,7 @@ msgid ""
 msgstr ""
 "我很好奇这里发生了什么。好吧，无所谓。对这些家庭来说是坏事，对我们来说就是好"
 "事。我会让他们苏生，而你们要发起进攻。练习使用冰冻术和生命能量攻击。你们每个"
-"人都可以选择我们军队中的一名士兵来保护自己，而我会为你叫醒它。之后，我就不会"
+"人都可以选择我们军队中的一名士兵来保护自己，而我会为你召唤它。之后，我就不会"
 "帮忙了。我希望你们中的绝大部分人在这场战斗中活下来，所以试着别死掉。"
 
 #. [message]: speaker=Ras-Tabahn
@@ -1826,7 +1829,7 @@ msgstr "我们能帮什么忙吗？"
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:364
 msgid "plural^As you wish. (<i>Cough, cough</i>)"
-msgstr "如你们所愿。（<b>咳，咳</b>）"
+msgstr "想去就去吧。（<b>咳，咳</b>）"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:374
@@ -1846,7 +1849,7 @@ msgstr "我能帮什么忙吗？"
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:383
 msgid "As you wish. (<i>Cough, cough</i>)"
-msgstr "如你所愿。（<b>咳，咳</b>）"
+msgstr "想去就去吧。（<b>咳，咳</b>）"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:391
@@ -1999,13 +2002,13 @@ msgstr "马上就干，老师。"
 #. [message]: speaker=Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:465
 msgid "Are you feeling well?"
-msgstr "您觉得还好吗？"
+msgstr "您感觉还好吗？"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:469
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:503
 msgid "Yes, yes. I’m quite all right."
-msgstr "是，是。我觉得很不错。"
+msgstr "好，好。我感觉很好。"
 
 #. [message]: speaker=Shynal
 #. [message]: id=Carcyn,Shynal
@@ -2046,7 +2049,7 @@ msgstr ""
 #. [message]: id=Carcyn,Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:499
 msgid "Right away sir. Are you feeling well?"
-msgstr "马上就干，老师。您觉得还好吗？"
+msgstr "马上就干，老师。您感觉还好吗？"
 
 #. [message]: id=Carcyn,Shynal
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:508
@@ -2108,8 +2111,8 @@ msgstr ""
 "但相信他是不是一个聪明的选择呢，这一点仍然是个问题。如他所说，现在我并不需要"
 "相信他，但如果我们要一起旅行，那么信任就变得必要了。他向我展示了鬼魂那样非凡"
 "的东西，在获得我的信任方面，这一点对他很是有利。经过考虑之后，我决定信任他，"
-"但只是暂时的。现在而言，我们的弱点都不少，而他肯定知道攻击我是不明智的。然"
-"而，如果他要先于我而变得坚不可摧，那我的聪明做法就该是保持警惕了。"
+"但那只是暂时的。现在而言，我们的弱点都不少，而他肯定知道攻击我是不明智的。然"
+"而，如果他要先于我而变得更强大，那我聪明的做法就该是保持警惕了。"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:38
@@ -2122,11 +2125,11 @@ msgid ""
 "walls that were now crumbled ruins, and the clash of combatants who were now "
 "bleached white bones jutting from the wreckage."
 msgstr ""
-"我一踏上那曾经发生战斗的场所，便轻易认出它来。诸多要塞隔着如今已被淹没的盆地"
-"相望。路边是缓流的水洼，每一处表面上都有腐烂的污泥。武器、盔甲以及更不易辨认"
-"的残物浮现在沼泽中。我能轻易地想象出巨大的攻城器械用巨石轰击如今已然成为一片"
-"坍塌废墟的城墙的情景，以及现在已是废墟之上突兀而出的森森白骨的士兵们互相砍杀"
-"的景象。"
+"我一踏上那曾经发生过战斗的场所，便一眼认出了它来。诸多要塞隔着如今已被淹没的"
+"盆地相望。路边是缓流的水洼，每一处表面上都有腐烂的污泥。武器、盔甲以及更不易"
+"辨认的残物浮现在沼泽中。我能轻易地想象出巨大的攻城器械用巨石轰击如今已然成为"
+"一片坍塌废墟的城墙的情景，以及现在已是废墟之上突兀而出的森森白骨的士兵们互相"
+"砍杀的景象。"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:45
@@ -2187,14 +2190,16 @@ msgstr "嘶嘶，首先，把分成付给我们。"
 msgid "Wait, who approaches?"
 msgstr "等等，是谁来了？"
 
+# 原翻译有歧义
+# 对诸位友好的 / 蜥蜴没有威胁
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:144
 msgid ""
 "I am a mage and not a threat to you gentle... reptiles. I wish only to "
 "animate some spirits, so I won’t disturb your salvage operation."
 msgstr ""
-"我是一名法师，对诸位友好的……蜥蜴没有威胁。我只想苏生一些灵魂，如此我便不会打"
-"扰你们的抢收行动。"
+"我是一名法师，不会伤害诸位友好的……蜥蜴。我只想苏生一些灵魂，这样我便不会打扰"
+"你们的抢收行动。"
 
 #. [message]: speaker=Krissaz
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:148
@@ -2270,7 +2275,7 @@ msgstr ""
 msgid ""
 "Actually, I am searching for that secret now. But could you follow the "
 "orders of a woman?"
-msgstr "实际上，我正在搜寻这一秘密。但你能服从一个女人的命令吗？"
+msgstr "实际上，我正在搜寻这一秘密。但你能听从一个女人的命令吗？"
 
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:228
@@ -2281,8 +2286,8 @@ msgid ""
 "know you are female, I will find it easier as it isss the way of my kind."
 msgstr ""
 "我注目过繁星之间的黑暗，而并没有被那虚无所吓，但你的心中却有另一种黑暗，我的"
-"部族害怕这黑暗，也禁止我们接触它。我服从于你的力量。现在我知道你是女性了，我"
-"觉得服从于你更加容易，因为这就是我们一族的做法。"
+"部族害怕这黑暗，也禁止我们接触它。我听从你的命令。现在我知道你是女性了，我觉"
+"得服从于你更加容易，因为这就是我们一族的做法。"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:232
@@ -2330,7 +2335,7 @@ msgstr ""
 "的同伴。我怀疑拉斯-塔班还并没有到达指定的地点，但我还是想要加快速度，于是我们"
 "便以我们最快的速度沿着精灵之路向北前行。幸运的是，这路并没有年久失修，虽然在"
 "有些敌方它被长出的植物所覆盖，只留下一些鹅卵石，标记着路的位置。第二天，我们"
-"仍然在丛林深处，那时，我饿们遇到了一名精灵女巫。"
+"仍然在丛林深处，那时，我们遇到了一名精灵女巫。"
 
 #. [side]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:47
@@ -2348,6 +2353,7 @@ msgstr "伊丝忒馨妮尔"
 msgid "Move Ardonna to the northeast corner of the map"
 msgstr "移动阿冬娜至地图东北角"
 
+# 原文第二句非常奇怪？
 #. [message]: speaker=Isthiniel
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:318
 msgid ""
@@ -2378,7 +2384,7 @@ msgid ""
 "that drives me. However, the woods themselves are disturbed, and they will "
 "cast you out on their own. I can feel them awaken."
 msgstr ""
-"攻击？不，我不能攻击你。我大多数族人都不会来这儿；我只因职责驱使而来到此地。"
+"攻击？不，我不会攻击你。我大多数族人都不会来这儿；我只因职责驱使而来到此地。"
 "不过，丛林自身已经被打扰了，他们将会自己把你赶出去。我能感到他们已经苏醒了。"
 
 #. [unit]: type=Ancient Wose, id=Dolmathengalin
@@ -2742,7 +2748,7 @@ msgstr ""
 "雪中升起薄雾，悬岩之上的冰锥融化，滴下最纯净的水。我觉得一切都很新奇，但拉斯-"
 "塔班的咳嗽很频繁。由于呼吸不畅，有时他只能说短语了。当然他已经很老了——至少有"
 "50岁了——但我也很确定他病了。他骨瘦如柴，让我相信他是得了肺痨，但他不想谈论这"
-"事，而宁愿拒绝承认自己的问题很严重。"
+"事，而宁愿否认自己的问题很严重。"
 
 #. [side]: type=Gryphon
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:44
@@ -2923,7 +2929,7 @@ msgstr ""
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:346
 msgid "Why would you do such a thing?"
-msgstr "你为什么要做这种事？"
+msgstr "你为什么要这样做？"
 
 #. [message]: speaker=Crelanu
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:350
@@ -3055,7 +3061,7 @@ msgid ""
 msgstr ""
 "我的提议是你将自己的意志投射到另一个物体里——例如你的手杖，这样它就成为你的一"
 "部分了。如果你在你的身体死亡的瞬间投射，那么你的完整意识都会追随你的意识而流"
-"去，因为它并不会有别的敌方可去。"
+"去，因为它并不会有别的地方可去。"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/17_Mortality.cfg:152
@@ -3351,7 +3357,7 @@ msgid ""
 "I had heard that mountains sometimes breathed fire like dragons, but that "
 "seemed a fanciful tale. From the look of this, that may actually be true."
 msgstr ""
-"我听说这些山有时会和火龙一样喷涂火焰，但那似乎只是个想象中的传说罢了。但看看"
+"我听说这些山有时会和火龙一样喷吐火焰，但那似乎只是个想象中的传说罢了。但看看"
 "这个，那传说或许是真的。"
 
 #. [message]: speaker=Ras-Tabahn
@@ -3452,7 +3458,7 @@ msgstr "现在，我们在哪儿？"
 msgid ""
 "We are in a Dwarvish burial chamber it seems. That is good. We could always "
 "use some more soldiers."
-msgstr "看起来我们在一座矮人墓穴里。很好。我们总是能用到更多的士兵的。"
+msgstr "看起来我们在一座矮人墓穴里。很好。我们总是能用到更多的士兵。"
 
 #. [unit]: type=Dwarvish Sentinel, id=Aigondur
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:694
@@ -3698,10 +3704,6 @@ msgstr "克雷拉努！他还是缠着我们不放。再提醒我一下，我们
 
 #. [message]: speaker=Gwendir
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:857
-#, fuzzy
-#| msgid ""
-#| "Ardonna of Tarrynth and Rassin Tabin, you stand convicted of necromancy, "
-#| "and sentenced to death!"
 msgid ""
 "Ardonna of Tarrynth and Rassin Tabin, you stand convicted of necromancy, and "
 "are sentenced to death!"
@@ -3767,17 +3769,6 @@ msgstr "尾声"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/22_Epilogue.cfg:16
-#, fuzzy
-#| msgid ""
-#| "10 VII, 23 YW — Final Entry\n"
-#| "\n"
-#| "We prevailed today on the field, but our victory was somewhat bitter. "
-#| "<i>Everyone</i> was afraid or angry and immediately attacked us instead "
-#| "of listening to our news. I realize now... the world is not ready for our "
-#| "knowledge. I give up on all of them. I am going to live in the old troll "
-#| "city and learn the applications of mountain fire. In some future time, "
-#| "less conservative attitudes will dominate, and I can certainly afford to "
-#| "wait. In the meantime, we are doing what we can to hasten that day."
 msgid ""
 "10 VII, 23 YW — Final Entry\n"
 "\n"
@@ -3796,23 +3787,15 @@ msgstr ""
 "韦元23年7月10日——最后一篇\n"
 "\n"
 "今天我们在战场上获胜了，但我们的胜利多少有些苦涩。<b>所有人</b>都很害怕，很愤"
-"怒，他们马上开始攻击我们，而根本没听我们的消息。我现在认识到了……世界还没有准"
-"备好接受我们的知识。我放弃了他们所有人。我要到那巨魔老城里生活，学习山中之火"
-"的用法。在未来的某时，不那么保守的态度会占据主流，而我当然是等得起的。在此期"
-"间，我们将尽自己所能，让那一天快点儿到来。"
+"怒，他们马上开始攻击我们，而根本没听我们带来的消息。我现在认识到了……世界还没"
+"有准备好接受我们的知识。他们不明白，我们已经征服了最本能的恐惧：死亡。相反，"
+"当他们看着我们时，只凭着外貌便进行判断，这让他们都陷入了无知的恐慌之中。我放"
+"弃了他们所有人。现在，我应该撤退——或许去到那巨魔老城里生活，学习山中之火的用"
+"法。在未来的某时，不那么保守的态度或许会占据主流，而我们的知识将被善加利用。"
+"而我当然是等得起的。在此期间，我们将尽自己所能，让那一天快点儿到来。"
 
 #. [then]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/22_Epilogue.cfg:31
-#, fuzzy
-#| msgid ""
-#| "Ras-Tabahn is going to rebuild his strength and continue to Elensefar. "
-#| "Most of the others are going with him. I wish them success. Vendraxis now "
-#| "knows what he must learn to replicate our metamorphosis. He will use the "
-#| "years left to him in study and practice while he attempts to change the "
-#| "attitudes of his people. As for me, I have placed some spells on my "
-#| "journal to help keep it from harm, and I will make it conspicuous on this "
-#| "battlefield. I hope that it will eventually make its way into the hands "
-#| "of someone in Tath who is willing to learn the secrets of the ancients."
 msgid ""
 "Ras-Tabahn is going to rebuild his strength and continue to Elensefar. Most "
 "of the others are going with him. I wish them success. Vendraxis now knows "
@@ -3827,20 +3810,14 @@ msgid ""
 msgstr ""
 "拉斯-塔班将要重建他的部队，并继续前往埃仁撒伐。其他人之中的大部分也会跟他走。"
 "我祝愿他们成功。文德拉克西斯现在已经知晓，要重现我们的变换过程，他需要学习什"
-"么了。他将会用自己的余生去学习，去练习，并尝试去改变他的族人的态度。至于我，"
-"我在我的日志之上施加了一些咒语，让它免遭损毁，并且我将会把它放在这战场上的醒"
-"目之处。我希望它最终落入愿意学习古人之密的某个塔斯人手中。"
+"么了。他将会用自己的余生去学习，去练习，同时尝试去改变他的族人的态度。至于"
+"我，我将会把我的日志放在这战场上的醒目之处。我怀疑大多数人都会很害怕它，以至"
+"于会尝试摧毁它。但我在日志之上施加了一些咒语来保护它。这样一来，它就能存在足"
+"够长的时间，落到某个更为开明的人手中。特别是塔斯，那是很多法师的家园。只要有"
+"一个人愿意学习古人之密就行。"
 
 #. [else]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/22_Epilogue.cfg:34
-#, fuzzy
-#| msgid ""
-#| "Ras-Tabahn is going to rebuild his strength and continue to Elensefar. "
-#| "Most of the others are going with him. I wish them success. As for me, I "
-#| "have placed some spells on my journal to help keep it from harm, and I "
-#| "will make it conspicuous on this battlefield. I hope that it will "
-#| "eventually make its way into the hands of someone in Tath who is willing "
-#| "to learn the secrets of the ancients."
 msgid ""
 "Ras-Tabahn is going to rebuild his strength and continue to Elensefar. Most "
 "of the others are going with him. I wish them success. As for me, I will "
@@ -3852,9 +3829,10 @@ msgid ""
 "ancients."
 msgstr ""
 "拉斯-塔班将要重建他的部队，并继续前往埃仁撒伐。其他人之中的大部分也会跟他走。"
-"我祝愿他们成功。至于我，我在我的日志之上施加了一些咒语，让它免遭损毁，并且我"
-"将会把它放在这战场上的醒目之处。我希望它最终落入愿意学习古人之密的某个塔斯人"
-"手中。"
+"我祝愿他们成功。至于我，我将会把我的日志放在这战场上的醒目之处。我怀疑大多数"
+"人都会很害怕它，以至于会尝试摧毁它。但我在日志之上施加了一些咒语来保护它。这"
+"样一来，它就能存在足够长的时间，落到某个更为开明的人手中。特别是塔斯，那是很"
+"多法师的家园。只要有一个人愿意学习古人之密就行。"
 
 #. [unit_type]: id=Bone Bird, race=undead, description=
 #: data/campaigns/Secrets_of_the_Ancients/units/Bone_Bird.cfg:4
@@ -4408,21 +4386,3 @@ msgstr ""
 #| msgid "You don't have enough gold to raise that unit."
 msgid "You do not have enough gold to recruit that unit"
 msgstr "你的金币不足，不能复苏该单位。"
-
-#, fuzzy
-#~| msgid "You may watch."
-#~ msgid "You kids may watch."
-#~ msgstr "你就看着吧。"
-
-#, fuzzy
-#~| msgid ""
-#~| "This is going to cost us, but I want to keep some gold around for "
-#~| "emergencies — I think 50 is about right. Help me collect some. "
-#~| "(<i>Cough, cough</i>)"
-#~ msgid ""
-#~ "This is going to cost us, but I want to keep some gold around for "
-#~ "emergencies — I think 50 is about right. You kids help me collect some. "
-#~ "(<i>Cough, cough</i>)"
-#~ msgstr ""
-#~ "这会花掉我们很多钱，不过我想要留点儿金币以备急用——我觉得50枚就差不多了。帮"
-#~ "我收集些金币吧。（<b>咳</b>）"

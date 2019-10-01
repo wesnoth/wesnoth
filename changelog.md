@@ -5,20 +5,24 @@
    * Delfador's Memoirs:
      * S20: Improve leveling of units and give player a note about it (Issue#4219)
      * S21: Better indication that the book has gone missing (Issue#4220)
-   * Eastern Invasion
+   * Eastern Invasion:
      * Updated to use the new mushroom terrains (PR #4335)
    * Heir to the Throne:
      * S04: Sea Orc uses now a portrait
-   * Northern Rebirth
+   * Northern Rebirth:
      * Updated to use the new mushroom terrains
-   * Under the Burning Suns
+   * The Rise of Wesnoth:
+     * Updated to use the new mushroom terrains
+   * Under the Burning Suns:
      * Updated to use the new mushroom terrains (PR #4336)
    * Wings of Victory:
      * S01: Make easier on easy and improve flow of enemies
      * Slight dialog improvements
+ ### Editor
+   * Added an editor-only overlay for deprecated terrains (PR#4347)
  ### Language and i18n
-   * Updated translations: British English, Czech, French, Italian,
-     Portuguese (Brazil), Spanish
+   * Updated translations: British English, Czech, Chinese (Simplified), French,
+     Italian, Japanese, Portuguese (Brazil), Russian, Spanish
    * Set up for translating the Wings of Victory campaign (PR#4265)
    * Changed the :help command's output to split over multiple lines
    * Added translatable explanations of :droid, :help and :idle's arguments
@@ -27,6 +31,18 @@
    * Added Tb mushroom base terrain, which can be used alone or as Tb^Tf when a terrain with the fungus-only stats is wanted
  ### User interface
    * Draw ellipses during draw/sheath animations. (Issue#1527)
+   * In the combat dialog and elsewhere, clicking the "Profile" button opens
+     the help on the correct unit variation (e.g., Walking Corpse (Swimmer)).
+     (Issue#4142)
+   * The attack dialog now shows the correct name of an inactive weapon special. (Issue#4352)
+   * Tooltips of sidebar, top bar, and status table now show a side's color's name in words,
+     for the colorblind. (Issue#1217)
+   * In the recruit dialog and recall dialog, units that are too expensive to recruit/recall
+     are grayed out. (PR#4362, part of Issue#1282)
+   * Hide the "Suppose Dead" key from the hotkeys list (it does nothing since 1.9.12)
+ ### Lua API
+   * Accessing wesnoth.theme_items.unit_status no longer prevents the unit
+     status (poisoned/slowed/etc) from being shown in the sidebar. (Issue#4079)
  ### WML engine
    * Ranges can now have upper limit "infinity" instead of using a big number like "99" or "99999"
    * Print a deprecation warning for `[terrain_type]`'s partly-implemented `vision_alias`
@@ -35,14 +51,17 @@
      * Standard special notes should now be added with `{NOTE_*}` instead of `{SPECIAL_NOTES_*}`.
      * In `[effect]apply_to=profile`, `[add_special_note]` and `[remove_special_note]` are supported.
    * Support for the deprecated "&image.png=text" syntax has been removed in all contexts - use the DescriptionWML attributes instead.
+   * Fix infinite recursion in SUF with [hides] and [filter_vision]. (Issue#1389)
    * weapons like abilities support now filter_weapon in 'filter_self/opponent/attacker/defender' like in  true weapons specials and no filter_weapon/filter_second_weapon like in 'leadership' anymore.
  ### Miscellaneous and bug fixes
    * Fixed :droid's arguments not all being optional (Issue#4308)
-   * Chat is now enable in single-player and hotseat multiplayer. (Issue#1111)
-   * Ported the "expand-terrain-macros" and "wmlflip" tools to Python 3
+   * Ported the "expand-terrain-macros", "wmlflip", "wmlparser", "umc-dev/build/update_version",
+     "wiki_grabber", "ai_test" and "unused_functions" tools to Python 3
    * It's now possible to chat with oneself in SP campaigns. Chat is shown in replays. (Issue#1111)
-   * Removed unused "scoutDefault" and "journeylifter" Python tools
+   * Removed unused "scoutDefault", "journeylifter", "wescamp_import" and "wmlvalidator" Python tools
    * Fixed wmlscope not correctly performing expansion of square braces in filenames in some conditions
+   * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
+   * Add help text for some debug commands (part of Issue#2500)
 
 ## Version 1.15.1
  ### Editor
@@ -208,9 +227,31 @@
    * Game bans are now also enforced by username. (PR#4139)
    * Usernames on the host's ignore list are automatically banned. (PR#4143)
 
-## Version 1.14.8+dev
+## Version 1.14.9+dev
+ ### Campaigns
+   * Heir to the Throne:
+     * Modify campaign starting date
+   * Legend of Wesmere:
+     * Fix various date inconsistencies in historical references
+   * Sceptre of Fire:
+     * S1: Fix reference to LoW events
+   * The South Guard:
+     * Change Halidel to be Deoran's great-grandfather
+ ### Lua API
+   * wesnoth.deprecate_api was fixed to correctly wrap tables with metatables. (Issue#4079)
+ ### User interface
+   * Draw ellipses during draw/sheath animations. (Issue#1527)
+   * In the combat dialog and elsewhere, clicking the "Profile" button opens
+     the help on the correct unit variation (e.g., Walking Corpse (Swimmer)).
+     (Issue#4142)
+ ### Miscellaneous and bug fixes
+   * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
+   * Add help text for some debug commands (part of Issue#2500)
+
+## Version 1.14.9
  ### AI:
    * Fixed a rare crash in attack prediction (issue #4068)
+   * Experimental AI: fixed guardians being used for village actions
  ### Campaigns
    * A Tale of Two Brothers:
      * S3: modify castle illumination tip on easy mode
@@ -258,26 +299,29 @@
      * S2: add dehydration explanation to objectives
  ### Graphics
    * Own portraits for higher level bats
-   * New Water Serpent and Cuttlefish portrait
+   * New Water Serpent and Cuttlefish portraits
    * New Wolf, Great Wolf and Direwolf portraits
    * Additional wolf/dog portrait for custom units
    * Separate Mudcrawler portrait
    * New Walking Corpse portrait for mounted variation
-   * The mushroom terrain graphics have changed to match the terrain statistics.
-     (PR #4185)
  ### Language and i18n
-   * Updated translations: British English, Chinese (Traditional), Dutch,
-     German, Spanish, Turkish, Portuguese (Brazil), Ukrainian
+   * Updated translations: British English, Chinese (Traditional), Czech, Dutch,
+     French, German, Italian, Japanese, Portuguese (Brazil), Russian, Spanish,
+     Turkish, Ukrainian
+   * Changed the :help command's output to split over multiple lines
+   * Added translatable explanations of :droid, :help and :idle's arguments
  ### Multiplayer
-   * A new Land:
+   * A New Land:
      * Help menu can be accessed in any turn and doesn't pause the game
      * Bottleneck in the spider's caves removed
      * Swapped positions of Gryphon and Drake
      * Guards can't be tricked off position, leaders won't destroy buildings
      * Guards and Spiders are loyal – AI income has been adjusted accordingly
      * AI income increases gradually in lategame (very slowly)
+   * The Wilderlands:
+     * Fixed default village_gold being too high, disadvantaging player 5
  ### Packaging
-   * added HighContrast icon
+   * Added HighContrast icon variant
  ### WML engine
    * Fixed [music] ms_after= affecting the previous track instead of the intended one
  ### Miscellaneous and bug fixes

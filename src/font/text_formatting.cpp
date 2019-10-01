@@ -27,6 +27,11 @@ std::string span_color(const color_t& color)
 	return formatter() << "<span color='" << color.to_hex_string() << "'>";
 }
 
+std::string span_color(const color_t& color, const std::string& data)
+{
+	return span_color(color) + data + "</span>";
+}
+
 std::string get_pango_color_from_id(const std::string& id)
 {
 	const auto color = game_config::team_rgb_colors.find(id);

@@ -320,6 +320,8 @@ public:
 	 */
 	bool controls_side(const std::vector<int>& sides, const socket_ptr& player) const;
 
+	bool is_reload() const;
+
 private:
 	// forbidden operations
 	game(const game&) = delete;

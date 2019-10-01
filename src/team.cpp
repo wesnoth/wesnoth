@@ -21,6 +21,7 @@
 
 #include "ai/manager.hpp"
 #include "color.hpp"
+#include "formula/string_utils.hpp"     // for VGETTEXT
 #include "game_data.hpp"
 #include "game_events/pump.hpp"
 #include "lexical_cast.hpp"
@@ -974,6 +975,18 @@ std::string team::get_side_color_id(unsigned side)
 		// Side index was invalid! Coloring will fail!
 		return "";
 	}
+}
+
+const t_string team::get_side_color_name_for_UI(unsigned side)
+{
+	const std::string& color_id = team::get_side_color_id(side);
+	const auto& rgb_name = game_config::team_rgb_name[color_id];
+	if(rgb_name.empty())
+		// TRANSLATORS: $color_id is the internal identifier of a side color, for example, 'lightred'.
+		// Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
+		return VGETTEXT("“$color_id”", {{ "color_id", color_id }});
+	else
+		return rgb_name;
 }
 
 std::string team::get_side_color_id_from_config(const config& cfg)
