@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 19:41 UTC\n"
-"PO-Revision-Date: 2019-02-07 15:06+0800\n"
+"PO-Revision-Date: 2019-07-27 16:49+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:45
@@ -574,7 +574,7 @@ msgstr "兰达尔死亡"
 #. [message]: id=Velon
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:432
 msgid "We surrender!"
-msgstr "我们投降"
+msgstr "我们投降！"
 
 #. [message]: id=Graur-Tan
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:436
@@ -741,18 +741,13 @@ msgstr ""
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:479
-#, fuzzy
-#| msgid ""
-#| "Our troubles will be yours, too, whether either of us will it or not. The "
-#| "orcs have come down from the north like a flood; if we squabble among "
-#| "ourselves they will feast on our discord."
 msgid ""
 "Our troubles will be yours, too, whether either of us wills it or not. The "
 "orcs have come down from the north like a flood; if we squabble among "
 "ourselves they will feast on our discord."
 msgstr ""
-"不论我们愿不愿意，我们的麻烦也将会成为你们的麻烦。兽人们从北方像洪水般冲来。"
-"如果我们鹬蚌相争，他们正好坐乘渔翁之利。"
+"不论我们，也不论你们愿不愿意，我们的麻烦都会成为你们的麻烦。兽人们从北方像洪"
+"水般冲来。如果我们鹬蚌相争，他们正好坐收渔翁之利。"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:483
@@ -880,12 +875,12 @@ msgstr "精灵渣滓拒绝投降，督军。我们已经按计划进攻了。"
 #. [message]: id=Mutaf-uru
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:481
 msgid "Were you able to breach their citadel?"
-msgstr "你怎样才能攻破他们的城堡？"
+msgstr "你攻破他们的城堡了吗？"
 
 #. [message]: id=Urudin
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:489
 msgid "Yes. We slaughtered them in great numbers."
-msgstr "是的。我们要把他们都宰光！"
+msgstr "是的。我们宰了他们很多人。"
 
 #. [message]: id=Urudin
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:498
@@ -922,7 +917,7 @@ msgstr "该死的树毛人和他们该死的弓！我们必须等候大军。"
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:791
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:304
 msgid "Defeat all enemy leaders."
-msgstr "击败所有敌方首领"
+msgstr "击败所有敌方首领。"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:803
@@ -1507,7 +1502,7 @@ msgstr ""
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:280
 msgid "For an elf, you think like a dwarf! I think I like you! "
-msgstr "作为一个精灵，你像一个矮人般思考！我想我欣赏你！"
+msgstr "作为精灵，你的思考方式很矮人嘛！我想我欣赏你！"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:280
@@ -1999,8 +1994,8 @@ msgid ""
 "fighting ever since we were forced out of our home country, in all kinds of "
 "lands. And, we are willing to die in order to defeat foul orcs!"
 msgstr ""
-"我们这些跟随卡雷兹的人证明这完全可以。我们自从被赶出家园后无论在什么地形都一"
-"直在战斗。而且，我们愿意为击败邪恶的兽人而血染黄沙。"
+"我们这些跟随卡雷兹的人证明这完全可以。我们自从被赶出家园后，一直都在战斗。而"
+"且，我们愿意为击败邪恶的兽人而献身！"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:66
@@ -2799,8 +2794,8 @@ msgid ""
 "against the river monsters, and fight trolls and yetis to come here for "
 "nothing!"
 msgstr ""
-"但是怎么做到呢？别告诉我我们得一路恶战蜥蜴人，横渡阿坎-索丽亚，鏖战河怪还有巨"
-"魔和雪人来到这儿却只能空手而归？"
+"但是怎么做到呢？可别告诉我，我们一路恶战蜥蜴人，横渡阿坎-索丽亚，鏖战河怪、巨"
+"魔还有雪人来到这儿，却只能空手而归！"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:132
@@ -3204,7 +3199,7 @@ msgstr "确实没办法。 把愤怒发泄到敌人身上吧，兰达尔。"
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:320
 msgid "I shall. But when our need is not so dire, there must be a reckoning..."
-msgstr " 我会的。要不是处境危急，我一定把账跟他们算算清……"
+msgstr "我会的。但等到危机过去，我一定要把账跟他们算算清……"
 
 #. [message]: id=Tan-Grub
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:326
@@ -3370,8 +3365,8 @@ msgid ""
 "Friends, today we have won a great victory, though it lost us good men. Let "
 "this be the beginning of a new alliance between our people."
 msgstr ""
-"朋友们，今天我们赢得一个伟大的胜利，虽然我们也付出惨重的代价。让这成为两族人"
-"民新联盟的起点吧！"
+"朋友们，今天我们赢得一场伟大的胜利，虽然有很多优秀的战士牺牲了。让这成为两族"
+"人民新联盟的起点吧。"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/15_The_Treaty.cfg:22
@@ -4409,7 +4404,7 @@ msgstr "盖乐诺"
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:414
 msgid ""
 "My lord Kalenz, you are in great danger! You must leave here immediately."
-msgstr "卡雷兹阁下，您现在有大危险！您必须立即离开！"
+msgstr "卡雷兹阁下，您现在很危险！您必须立即离开。"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:418

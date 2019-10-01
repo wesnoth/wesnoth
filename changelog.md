@@ -21,8 +21,8 @@
  ### Editor
    * Added an editor-only overlay for deprecated terrains (PR#4347)
  ### Language and i18n
-   * Updated translations: British English, Czech, French, Italian, Japanese,
-     Portuguese (Brazil), Russian, Spanish
+   * Updated translations: British English, Czech, Chinese (Simplified), French,
+     Italian, Japanese, Portuguese (Brazil), Russian, Spanish
    * Set up for translating the Wings of Victory campaign (PR#4265)
    * Changed the :help command's output to split over multiple lines
    * Added translatable explanations of :droid, :help and :idle's arguments

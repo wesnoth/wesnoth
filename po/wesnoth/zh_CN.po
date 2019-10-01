@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 22:41+0300\n"
-"PO-Revision-Date: 2019-02-04 16:58+0800\n"
+"PO-Revision-Date: 2019-09-23 22:31+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -118,14 +118,10 @@ msgstr "聊天信息过期"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid ""
-#| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#| "0 to disable"
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
-msgstr "在清除游戏中的某条聊天信息之前，等待的分钟数。设为0则禁用此功能"
+msgstr "在清除游戏中的一条聊天信息之前，等待的分钟数。设为0则禁用此功能。"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:103
@@ -4328,10 +4324,8 @@ msgstr "官方韦诺服务器"
 
 #. [server]
 #: data/game_config.cfg:8
-#, fuzzy
-#| msgid "Official Wesnoth Server"
 msgid "Alternate Wesnoth Server"
-msgstr "官方韦诺服务器"
+msgstr "备选韦诺服务器"
 
 #. [label]: id=title
 #: data/gui/window/install_dependencies.cfg:37
@@ -4700,10 +4694,6 @@ msgstr "Lv"
 
 #. [tip]
 #: data/tips.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Use the map editor's <i>Areas</i> menu to define regions later addressed "
-#| "by event or ai coding."
 msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
@@ -4718,27 +4708,19 @@ msgstr "<b>——韦诺设计指南</b>"
 
 #. [tip]
 #: data/tips.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use "
-#| "of advanced features."
 msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
-msgstr "使用编辑器的<b>文件</b>菜单来创建一个<b>新场景</b>以使用高级特性。"
+msgstr "在地图编辑器中，选择<b>文件</b>菜单中的<b>新场景</b>以使用高级特性。"
 
 #. [tip]
 #: data/tips.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Scenarios saved from the editor in their default folder can be selected "
-#| "in the mp create screen's <i>User Scenarios</i> section."
 msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” screen."
 msgstr ""
-"编辑器中保存在默认文件夹下的场景可以在多人游戏创建界面的<b>用户场景</b>区域中"
-"选择。"
+"通过编辑器保存在默认文件夹下的场景可以在多人“创建游戏”界面的<b>自定义场景</b>"
+"区域中选择。"
 
 #. [tip]
 #: data/tips.cfg:16
@@ -5485,8 +5467,6 @@ msgstr ""
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:234
-#, fuzzy
-#| msgid "an advancement choice"
 msgid "waiting for^an advancement choice"
 msgstr "升级选择"
 
@@ -6247,7 +6227,7 @@ msgstr "本地玩家"
 
 #: src/game_initialization/connect_engine.cpp:1294
 msgid "Nobody"
-msgstr ""
+msgstr "无人"
 
 #: src/game_initialization/connect_engine.cpp:1297
 msgid "Reserved"
@@ -6466,34 +6446,28 @@ msgid " This server disallows unregistered nicknames."
 msgstr " 此服务器不允许使用没有注册的昵称。"
 
 #: src/game_initialization/multiplayer.cpp:323
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
-msgstr "昵称“$nick|”在此服务器的论坛上被封禁了。"
+msgstr "昵称“$nick|”在此服务器的论坛上被封禁了，封禁时长为$duration|。"
 
 #: src/game_initialization/multiplayer.cpp:325
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "昵称“$nick|”在此服务器的论坛上被封禁了。"
 
 #: src/game_initialization/multiplayer.cpp:329
-#, fuzzy
-#| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums for $duration|."
-msgstr "你的IP地址在此服务器的论坛上被封禁了。"
+msgstr "你的IP地址在此服务器的论坛上被封禁了，封禁时长为$duration|。"
 
 #: src/game_initialization/multiplayer.cpp:331
 msgid "Your IP address is banned on this server’s forums."
 msgstr "你的IP地址在此服务器的论坛上被封禁了。"
 
 #: src/game_initialization/multiplayer.cpp:335
-#, fuzzy
-#| msgid ""
-#| "The email address for the nickname ‘$nick’ is banned on this server’s "
-#| "forums."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
-msgstr "昵称“$nick|”对应的电子邮件地址在此服务器的论坛上被封禁了。"
+msgstr ""
+"昵称“$nick|”对应的电子邮件地址在此服务器的论坛上被封禁了，封禁时长为"
+"$duration|。"
 
 #: src/game_initialization/multiplayer.cpp:337
 msgid ""
@@ -7114,7 +7088,7 @@ msgstr ""
 
 #: src/map_command_handler.hpp:218
 msgid "do not translate the 'all'^[all|<command>]"
-msgstr "[all|<命令>]"
+msgstr ""
 
 #: src/map_command_handler.hpp:263
 msgid "Missing argument $arg_id"
@@ -7147,7 +7121,7 @@ msgstr "用法："
 
 #: src/map_command_handler.hpp:334
 msgid "aliases:"
-msgstr "别名："
+msgstr ""
 
 #: src/menu_events.cpp:177
 msgid "Save Map As"
@@ -7178,10 +7152,8 @@ msgid "You have no units available to recruit."
 msgstr "你没有可供征募的单位。"
 
 #: src/menu_events.cpp:283
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recruited"
-msgstr "未召回任何单位"
+msgstr "未征募任何单位"
 
 #: src/menu_events.cpp:315
 msgid "You do not have enough gold to recruit that unit"
@@ -7275,16 +7247,16 @@ msgid "Switch a side to/from AI control."
 msgstr "对某一阵营开启/关闭AI控制。"
 
 #: src/menu_events.cpp:1191
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "do not translate the on/off/full^[<side> [on/off/full]]"
-msgstr "[<阵营> [on/off]]"
+msgstr ""
 
 #: src/menu_events.cpp:1192
 msgid "Switch a side to/from idle state."
 msgstr "对某一阵营开启/关闭空闲状态。"
 
 #: src/menu_events.cpp:1193
+#, fuzzy
+#| msgid "command_idle^[<side> [on/off]]"
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<阵营> [on/off]]"
 
@@ -7318,7 +7290,7 @@ msgstr "调试鼠标所指向的地形中的各层。"
 
 #: src/menu_events.cpp:1203
 msgid "Show fps."
-msgstr "显示FPS。"
+msgstr ""
 
 #: src/menu_events.cpp:1205
 msgid "Save game."
@@ -7644,7 +7616,7 @@ msgstr "无友方镜像"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "游戏（$name|, $scenario|）已创建"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
@@ -7684,7 +7656,7 @@ msgstr "遇到了移动消耗小于1的地形。"
 #. from another player. This text will be embedded into a sentence.
 #: src/persist_var.cpp:58
 msgid "waiting for^a global variable"
-msgstr ""
+msgstr "全局变量"
 
 #: src/play_controller.cpp:247
 msgid "time left for current turn"
@@ -7811,7 +7783,7 @@ msgstr "类型："
 
 #: src/reports.cpp:235
 msgid "Side:"
-msgstr ""
+msgstr "阵营："
 
 #: src/reports.cpp:257
 msgid "Level: "
@@ -7910,14 +7882,10 @@ msgid "Defense: "
 msgstr "防御："
 
 #: src/reports.cpp:631 src/reports.cpp:632
-#, fuzzy
-#| msgid "vision: "
 msgid "vision:"
 msgstr "视野："
 
 #: src/reports.cpp:636 src/reports.cpp:637
-#, fuzzy
-#| msgid "Jamming:"
 msgid "jamming:"
 msgstr "干扰："
 
@@ -8016,14 +7984,10 @@ msgstr[0] "攻击手段"
 msgstr[1] "攻击手段"
 
 #: src/reports.cpp:1216
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day schedule:"
-msgstr "时段："
+msgstr "时段日程："
 
 #: src/reports.cpp:1265
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day:"
 msgstr "时段："
 
@@ -8079,31 +8043,44 @@ msgid "Units"
 msgstr "单位"
 
 #: src/reports.cpp:1445
+#, fuzzy
+#| msgid ""
+#| "The expenses incurred at the end of every turn to maintain your army. The "
+#| "first number is the amount of gold that will be deducted. It is equal to "
+#| "the number of unit levels not supported by villages. The second is the "
+#| "total cost of upkeep, including that covered by villages — in other "
+#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. The second is the "
 "total cost of upkeep, including that covered by villages — in other words, "
 "the amount of gold that would be deducted if you lost all villages."
 msgstr ""
-"用于维护你的军队，而在每回合结束时产生的开销。第一个数字是将会减去的金币数"
-"量。第二个是总维护费用，包括由村庄支付的费用——换句话说，是当你失去所有村庄"
-"时，将会被减去的金币数量。"
+"为了维护你的军队而在每回合结束时产生的开销。第一个数字是将会减去的金币数量。"
+"该数量与村庄无法支持的单位等级数相等。第二个是总维护费用，包括由村庄支付的费"
+"用——换句话说，是当你失去所有村庄时，将会被减去的金币数量。"
 
 #: src/reports.cpp:1445
 msgid "Upkeep"
 msgstr "维护费用"
 
 #: src/reports.cpp:1482
+#, fuzzy
+#| msgid "income"
 msgid "Income"
 msgstr "收入"
 
 #: src/reports.cpp:1482
+#, fuzzy
+#| msgid ""
+#| "The net amount of gold you gain or lose each turn, taking into account "
+#| "income from controlled villages and payment of upkeep."
 msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
 msgstr ""
-"每回合从你所控制的村庄中获得的金币总数，或每回合由于单位维护而会损失的金币总"
-"数。"
+"每回合你所获得或失去的金币的净数量，该数量计入了你所控制的村庄提供的收入以及"
+"维护费用的支出。"
 
 #: src/reports.cpp:1650
 msgid "Observers:"
@@ -8406,7 +8383,7 @@ msgstr[1] "等待$sides|阵营的$desc"
 #. This text will be embedded into a sentence.
 #: src/synced_user_choice.hpp:42
 msgid "waiting for^input"
-msgstr ""
+msgstr "输入"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8614,21 +8591,32 @@ msgstr "隐藏$player的计划"
 msgid "Whiteboard Options"
 msgstr "白板选项"
 
-#, fuzzy
-#~| msgid "Attack"
-#~| msgid_plural "Attacks"
-#~ msgid "Attacks"
-#~ msgstr "攻击手段"
+#~ msgid ""
+#~ "Liminal units only reach their full strength during twilight.\n"
+#~ "\n"
+#~ "Day: −25% Damage\n"
+#~ "Night: −25% Damage"
+#~ msgstr ""
+#~ "边缘单位只有在晨昏时段才能发挥出最大潜能。\n"
+#~ "\n"
+#~ "昼间：−25%伤害\n"
+#~ "夜间：−25%伤害"
 
-#, fuzzy
-#~| msgid "Recruits"
-#~ msgid "Recruit"
-#~ msgstr "新兵"
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr "没有可用于选定的时代、游戏或模组的自定义选项。"
 
-#, fuzzy
-#~| msgid "There are no save files to load"
-#~ msgid "There are no corpses available."
-#~ msgstr "没有存档文件供载入"
+#~ msgid "Defaults"
+#~ msgstr "默认"
+
+#~ msgid "Connected Players"
+#~ msgstr "已连线玩家"
+
+#~ msgid "(this turn left)"
+#~ msgid_plural "(%d turns left)"
+#~ msgstr[0] "（余下此回合）"
+#~ msgstr[1] "（余下%d回合）"
 
 #~ msgid "registering with password *** and no email address"
 #~ msgstr "以密码***注册，未使用电子邮件地址"
@@ -8662,84 +8650,45 @@ msgstr "白板选项"
 #~ msgstr ""
 #~ "你可以为你注册好的昵称录入详细信息，此命令请求这些可用的详细信息类型列表。"
 
-#, fuzzy
-#~| msgid "Connection timed out"
-#~ msgid "Ping timeout"
-#~ msgstr "连接超时"
-
-#, fuzzy
-#~| msgid ""
-#~| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#~| "0 to disable"
 #~ msgid ""
-#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
-#~ "disable"
-#~ msgstr "在清除游戏中的某条聊天信息之前，等待的分钟数。设为0则禁用此功能"
-
-#~ msgid ""
-#~ "Liminal units only reach their full strength during twilight.\n"
-#~ "\n"
-#~ "Day: −25% Damage\n"
-#~ "Night: −25% Damage"
+#~ "[all|<command>]\n"
+#~ "“all” = overview of all commands, <command> = name of a specific command "
+#~ "(provides more detail)"
 #~ msgstr ""
-#~ "边缘单位只有在晨昏时段才能发挥出最大潜能。\n"
-#~ "\n"
-#~ "昼间：−25%伤害\n"
-#~ "夜间：−25%伤害"
+#~ "[all|<命令>]\n"
+#~ "“all” = 对全部命令的综述，<命令> = 指定命令的名称（提供更多细节信息）"
 
-#, fuzzy
-#~| msgid ""
-#~| "In this scenario, you may issue instructions to an allied side by right-"
-#~| "clicking on a unit that belongs to it."
+#~ msgid "command^Alias:"
+#~ msgid_plural "Aliases:"
+#~ msgstr[0] "别名："
+#~ msgstr[1] "别名："
+
 #~ msgid ""
-#~ "In many campaign scenarios, you may issue simple instructions for your "
-#~ "computer-controlled allies using the right-click context menu."
+#~ "[<side> [on/off]]\n"
+#~ "“on” = enable control by the AI, “off” = side is controlled by the player"
 #~ msgstr ""
-#~ "在此场景中，通过右击属于你的同盟阵营的单位，你可以向该阵营发出指令。"
+#~ "[<阵营> [on/off]]\n"
+#~ "“on” = 启用AI控制，“off” = 该阵营由玩家控制"
 
-#, fuzzy
-#~| msgid "An invalid attacker weapon got selected."
-#~ msgid "An invalid defender weapon got selected."
-#~ msgstr "选中了无效的进攻武器。"
-
-#~ msgid "Empty"
-#~ msgstr "空置"
-
-#, fuzzy
-#~| msgid "(observing)"
-#~ msgid "(missing)"
-#~ msgstr "（观察中）"
-
-#, fuzzy
-#~| msgid "none set."
-#~ msgid "none"
-#~ msgstr "命令已清除。"
+#~ msgid "Show fps (Frames Per Second)."
+#~ msgstr "显示FPS（每秒帧数）。"
 
 #~ msgid "Can't droid a local ai side: '$side'."
 #~ msgstr "无法托管本地AI阵营：“$side|”。"
 
-#, fuzzy
-#~| msgid "Advances to: "
-#~ msgid "Advances to:"
-#~ msgstr "升级为："
-
-#, fuzzy
-#~| msgid "<span color=\"$color\">$number_or_percent</span> movement point"
-#~| msgid_plural ""
-#~| "<span color=\"$color\">$number_or_percent</span> movement points"
-#~ msgid "<span color=\"$color\">$number_or_percent movement</span> point"
-#~ msgid_plural ""
-#~ "<span color=\"$color\">$number_or_percent movement</span> points"
-#~ msgstr[0] "<span color=\"$color\">$number_or_percent</span>移动力"
-#~ msgstr[1] "<span color=\"$color\">$number_or_percent</span>移动力"
+#~ msgid ""
+#~ "\n"
+#~ "Do you want to save the game?"
+#~ msgstr ""
+#~ "\n"
+#~ "你想要保存游戏吗？"
 
 #~ msgid ""
-#~ "There are no custom options available for the selected era, game, or "
-#~ "modification."
-#~ msgstr "没有可用于选定的时代、游戏或模组的自定义选项。"
+#~ "This game has been ended.\n"
+#~ "Reason: "
+#~ msgstr ""
+#~ "游戏已结束。\n"
+#~ "原因："
 
-#~ msgid "Defaults"
-#~ msgstr "默认"
-
-#~ msgid "Connected Players"
-#~ msgstr "已连线玩家"
+#~ msgid "Net Income"
+#~ msgstr "净收入"

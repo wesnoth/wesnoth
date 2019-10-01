@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 22:40+0300\n"
-"PO-Revision-Date: 2019-02-07 15:12+0800\n"
+"PO-Revision-Date: 2019-07-27 16:38+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -680,6 +680,7 @@ msgstr "岩石洞穴"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:973
+#, fuzzy
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -1583,6 +1584,7 @@ msgstr ""
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2737
+#, fuzzy
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -3646,7 +3648,7 @@ msgstr "管理员控制"
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:173
 msgid "Kick / ban reason:"
-msgstr "剔出/封禁理由："
+msgstr ""
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:198
@@ -3838,14 +3840,12 @@ msgstr "当新的回合开始时"
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
 #, fuzzy
-#| msgid "Game data:"
 msgid "Game created:"
 msgstr "游戏数据："
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
 #, fuzzy
-#| msgid "When a new turn has begun"
 msgid "When a new game has been created"
 msgstr "当新的回合开始时"
 
@@ -4326,10 +4326,8 @@ msgstr "此阵营所属的队伍"
 
 #. [menu_button]: id=side_color
 #: data/gui/window/mp_staging.cfg:304
-#, fuzzy
-#| msgid "The team color"
 msgid "This side’s color"
-msgstr "队伍颜色"
+msgstr "此阵营的颜色"
 
 #. [button]: id=ok
 #: data/gui/window/mp_staging.cfg:422
@@ -5430,63 +5428,63 @@ msgstr "$prefix|，或$next"
 
 #: src/formula/string_utils.cpp:285 src/formula/string_utils.cpp:314
 msgid "timespan^expired"
-msgstr ""
+msgstr "过期"
 
 #: src/formula/string_utils.cpp:291
 msgid "timespan^$num year"
-msgstr ""
+msgstr "$num|年"
 
 #: src/formula/string_utils.cpp:291
 msgid "timespan^$num years"
-msgstr ""
+msgstr "$num|年"
 
 #: src/formula/string_utils.cpp:292
 msgid "timespan^$num month"
-msgstr ""
+msgstr "$num|月"
 
 #: src/formula/string_utils.cpp:292
 msgid "timespan^$num months"
-msgstr ""
+msgstr "$num|月"
 
 #: src/formula/string_utils.cpp:293
 msgid "timespan^$num week"
-msgstr ""
+msgstr "$num|周"
 
 #: src/formula/string_utils.cpp:293
 msgid "timespan^$num weeks"
-msgstr ""
+msgstr "$num|周"
 
 #: src/formula/string_utils.cpp:294
 msgid "timespan^$num day"
-msgstr ""
+msgstr "$num|日"
 
 #: src/formula/string_utils.cpp:294
 msgid "timespan^$num days"
-msgstr ""
+msgstr "$num|日"
 
 #: src/formula/string_utils.cpp:295
 msgid "timespan^$num hour"
-msgstr ""
+msgstr "$num|时"
 
 #: src/formula/string_utils.cpp:295
 msgid "timespan^$num hours"
-msgstr ""
+msgstr "$num|时"
 
 #: src/formula/string_utils.cpp:296
 msgid "timespan^$num minute"
-msgstr ""
+msgstr "$num|分"
 
 #: src/formula/string_utils.cpp:296
 msgid "timespan^$num minutes"
-msgstr ""
+msgstr "$num|分"
 
 #: src/formula/string_utils.cpp:297
 msgid "timespan^$num second"
-msgstr ""
+msgstr "$num|秒"
 
 #: src/formula/string_utils.cpp:297
 msgid "timespan^$num seconds"
-msgstr ""
+msgstr "$num|秒"
 
 #: src/gui/core/canvas.cpp:612
 msgid "Line doesn't fit on canvas."
@@ -6387,7 +6385,7 @@ msgstr "&#9679;"
 #: src/gui/dialogs/preferences_dialog.cpp:850
 #: src/gui/dialogs/preferences_dialog.cpp:920
 msgid "No hotkey selected"
-msgstr ""
+msgstr "未选定热键"
 
 #: src/gui/dialogs/preferences_dialog.cpp:881
 msgid ""
@@ -6634,7 +6632,7 @@ msgstr "没有已定义的界面构件。"
 
 #: src/gui/widgets/slider.cpp:466
 msgid "The number of value_labels and values don't match."
-msgstr "value_labels的数量与值的数量不匹配。"
+msgstr "value_label的数量与值（value）的数量不匹配。"
 
 #: src/gui/widgets/stacked_widget.cpp:278
 msgid "No stack layers defined."
@@ -7637,69 +7635,5 @@ msgstr ""
 "$removal_version|中移除。"
 
 #, fuzzy
-#~| msgid "Rusty Gate"
-#~ msgid "Rusty Open Gate"
-#~ msgstr "锈门"
-
-#, fuzzy
-#~| msgid "Wooden Door"
-#~ msgid "Wooden Open Door"
-#~ msgstr "木门"
-
-#, fuzzy
-#~| msgid "Players:"
-#~ msgid "Sort players:"
-#~ msgstr "玩家："
-
-#, fuzzy
-#~| msgid "Refresh WML"
-#~ msgid "Refresh"
-#~ msgstr "刷新WML"
-
-#, fuzzy
-#~| msgid "Scroll speed:"
-#~ msgid "Speed:"
-#~ msgstr "滚屏速度："
-
-#, fuzzy
-#~| msgid "Make units move and fight faster"
-#~ msgid "Units move and fight speed"
-#~ msgstr "加快单位的移动和战斗速度"
-
-#, fuzzy
-#~| msgid "Available at main menu"
-#~ msgid "Available at titlescreen"
-#~ msgstr "主菜单中可用"
-
-#, fuzzy
-#~| msgid "Scenarios"
-#~ msgid "Scenario"
-#~ msgstr "场景"
-
-#, fuzzy
-#~| msgid "Campaigns"
-#~ msgid "Campaign"
-#~ msgstr "战役"
-
-#~ msgid "feature^Experimental OpenMP support"
-#~ msgstr "实验性OpenMP支持"
-
-#, fuzzy
-#~| msgid "url^None"
-#~ msgid "None"
-#~ msgstr "无"
-
-#, fuzzy
-#~| msgid "Settings"
-#~ msgid "Settings:"
-#~ msgstr "设置"
-
-#, fuzzy
-#~| msgid "Registered Users Only"
-#~ msgid "Registered users only:"
-#~ msgstr "仅注册用户"
-
-#, fuzzy
-#~| msgid "No eras found."
-#~ msgid "No era information found."
-#~ msgstr "未找到时代。"
+#~ msgid "Stop Game"
+#~ msgstr "载入游戏"

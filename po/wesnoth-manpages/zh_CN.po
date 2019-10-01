@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "POT-Creation-Date: 2019-08-27 22:41+0300\n"
-"PO-Revision-Date: 2019-02-07 18:27+0800\n"
+"PO-Revision-Date: 2019-07-27 16:42+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -1166,14 +1166,10 @@ msgstr "B<--controller>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:457
-#, fuzzy
-#| msgid ""
-#| "selects the controller for this side. Available values: B<human> and "
-#| "B<ai>."
 msgid ""
 "selects the controller for this side. Available values: B<human>, B<ai> and "
 "B<null>."
-msgstr "选择该阵营的控制者。可选值有：B<human>和B<ai>。"
+msgstr "选择该阵营的控制者。可选值有：B<human>，B<ai>和B<null>。"
 
 #. type: TP
 #: doc/man/wesnoth.6:457
@@ -1960,11 +1956,6 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnothd.6:221
 #, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. Available keys vary "
-#| "depending on which user handler is set with the B<user_handler> key. If "
-#| "no B<[user_handler]> section is present in the configuration the server "
-#| "will run without any nick registration service."
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
@@ -2059,36 +2050,37 @@ msgstr "B<db_extra_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:240
+#, fuzzy
 msgid ""
 "The name of the table in which wesnothd will save its own data about users."
-msgstr ""
+msgstr "（如果user_handler=forum）数据库登录用户名"
 
 #. type: TP
 #: doc/man/wesnothd.6:240
 #, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
 msgid "B<db_game_info_table>"
 msgstr "B<db_users_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:243
+#, fuzzy
 msgid ""
 "The name of the table in which wesnothd will save its own data about games."
-msgstr ""
+msgstr "（如果user_handler=forum）数据库登录用户名"
 
 #. type: TP
 #: doc/man/wesnothd.6:243
 #, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
 msgid "B<db_game_player_info_table>"
 msgstr "B<db_users_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:246
+#, fuzzy
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "players in a game."
-msgstr ""
+msgstr "（如果user_handler=forum）数据库登录用户名"
 
 #. type: TP
 #: doc/man/wesnothd.6:246
@@ -2098,25 +2090,21 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:249
+#, fuzzy
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "modifications used in a game."
-msgstr ""
+msgstr "（如果user_handler=forum）数据库登录用户名"
 
 #. type: TP
 #: doc/man/wesnothd.6:249
 #, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
 msgid "B<db_user_group_table>"
 msgstr "B<db_users_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:252
 #, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which your phpbb forums "
-#| "saves its user data. Most likely this will be E<lt>table-"
-#| "prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forums saves its user group data. "
 "Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
@@ -2133,9 +2121,10 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:255
+#, fuzzy
 msgid ""
 "The ID of the forum group to be considered as having moderation authority."
-msgstr ""
+msgstr "（如果user_handler=forum）数据库登录用户名"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:260
@@ -2190,17 +2179,14 @@ msgstr "B<wesnoth>(6)"
 #~ msgid "(for user_handler=forum) This user's password"
 #~ msgstr "（如果user_handler=forum）这个用户的密码"
 
+#, fuzzy
 #~ msgid ""
 #~ "(for user_handler=forum) The name of the table in which wesnothd will "
 #~ "save its own data about users. You will have to create this table "
-#~ "manually, e.g.: B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) "
-#~ "PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
-#~ "user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
+#~ "manually."
 #~ msgstr ""
-#~ "（如果user_handler=forum）wesnothd存放自用的用户数据的表名。您必须自己手动"
-#~ "创建这个表，例如：B<CREATE TABLE E<lt>table-nameE<gt>(username "
-#~ "VARCHAR(255) PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
-#~ "user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
+#~ "（如果user_handler=forum）phpbb 论坛中存放用户数据的表名。很可能是"
+#~ "E<lt>table-prefixE<gt>_users（例如phpbb3_users）。"
 
 #, no-wrap
 #~ msgid "B<user_expiration>"
@@ -2246,28 +2232,3 @@ msgstr "B<wesnoth>(6)"
 
 #~ msgid "The port on which your mail server is running. Default is 25."
 #~ msgstr "邮件服务器的端口。默认值为25。"
-
-#, fuzzy
-#~| msgid ""
-#~| "sets the severity level of the log domains.  B<all> can be used to match "
-#~| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#~| "B<debug>.  By default the B<error> level is used and the B<info> level "
-#~| "for the B<server> domain."
-#~ msgid ""
-#~ "sets the severity level of the log domains.  B<all> can be used to match "
-#~ "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#~ "B<debug>.  By default the B<error> level is used."
-#~ msgstr ""
-#~ "设置日志域的严重度级别。B<all>可以用来匹配任意日志域。可选的级别有："
-#~ "B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>。默认的级别是B<error>，对"
-#~ "B<server>域而言，默认级别是B<info>。"
-
-#, fuzzy
-#~| msgid "B<--data-path>"
-#~ msgid "B<--path>"
-#~ msgstr "B<--data-path>"
-
-#, fuzzy
-#~| msgid "prints the path of the data directory and exits."
-#~ msgid "prints the name of the game data directory and exits."
-#~ msgstr "打印数据目录的路径并退出。"
