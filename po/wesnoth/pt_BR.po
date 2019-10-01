@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 22:41+0300\n"
-"PO-Revision-Date: 2019-09-15 13:50-0300\n"
+"PO-Revision-Date: 2019-09-22 15:05-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: pt_BR\n"
@@ -10915,8 +10915,10 @@ msgstr "Mudar um lado para/de sem controlador."
 # File: src/menu_events.cpp, line: 1963
 # File: src/menu_events.cpp, line: 1963
 #: src/menu_events.cpp:1193
+#, fuzzy
+#| msgid "do not translate the on/off/full^[<side> [on/off/full]]"
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr "[<lado> [on/off]]"
+msgstr "[<lado> [on/off/full]]"
 
 #
 # File: src/menu_events.cpp, line: 1966
@@ -11566,7 +11568,7 @@ msgstr "Sem facções iguais entre aliados"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "Um jogo ($name|, $scenario|) foi criado"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
@@ -12409,6 +12411,13 @@ msgid "Units"
 msgstr "Unidades"
 
 #: src/reports.cpp:1445
+#, fuzzy
+#| msgid ""
+#| "The expenses incurred at the end of every turn to maintain your army. The "
+#| "first number is the amount of gold that will be deducted. It is equal to "
+#| "the number of unit levels not supported by villages. The second is the "
+#| "total cost of upkeep, including that covered by villages — in other "
+#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. The second is the "
@@ -12416,9 +12425,11 @@ msgid ""
 "the amount of gold that would be deducted if you lost all villages."
 msgstr ""
 "Os gastos no final de cada turno para manter o seu exército. O primeiro "
-"número é a quantidade de ouro que será deduzida. O segundo é o custo total "
-"de manutenção, incluindo o valor reduzido pelas vilas — em outras palavras, "
-"o valor de ouro que seria deduzido caso você não controlasse nenhuma aldeia."
+"número é a quantidade de ouro que será deduzida, sendo que esta quantidade é "
+"igual ao número de níveis de unidades que excede o suporte de aldeias. O "
+"segundo é o custo total de manutenção, incluindo o valor reduzido pelas "
+"vilas — em outras palavras, o valor de ouro que seria deduzido caso você não "
+"controlasse nenhuma aldeia."
 
 #
 # File: src/leader_scroll_dialog.cpp, line: 50
@@ -12432,29 +12443,35 @@ msgid "Upkeep"
 msgstr "Manutenção"
 
 #
-# File: src/leader_scroll_dialog.cpp, line: 51
-# File: src/menu_events.cpp, line: 197
-# File: src/multiplayer_connect.cpp, line: 1070
-# File: src/multiplayer_wait.cpp, line: 520
-# File: src/leader_scroll_dialog.cpp, line: 51
-# File: src/menu_events.cpp, line: 197
-# File: src/multiplayer_connect.cpp, line: 1070
-# File: src/multiplayer_wait.cpp, line: 520
-# File: src/leader_scroll_dialog.cpp, line: 51
-# File: src/menu_events.cpp, line: 197
-# File: src/multiplayer_connect.cpp, line: 1070
-# File: src/multiplayer_wait.cpp, line: 520
+# File: data/themes/default.cfg, line: 260
+# File: data/themes/dfool.cfg, line: 294
+# File: data/themes/experimental.cfg, line: 233
+# File: data/themes/widescreen.cfg, line: 312
+# File: data/themes/default.cfg, line: 253
+# File: data/themes/dfool.cfg, line: 294
+# File: data/themes/experimental.cfg, line: 233
+# File: data/themes/widescreen.cfg, line: 312
+# File: data/themes/default.cfg, line: 253
+# File: data/themes/dfool.cfg, line: 294
+# File: data/themes/experimental.cfg, line: 233
+# File: data/themes/widescreen.cfg, line: 312
 #: src/reports.cpp:1482
+#, fuzzy
+#| msgid "income"
 msgid "Income"
-msgstr "Receita"
+msgstr "receita"
 
 #: src/reports.cpp:1482
+#, fuzzy
+#| msgid ""
+#| "The net amount of gold you gain or lose each turn, taking into account "
+#| "income from controlled villages and payment of upkeep."
 msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
 msgstr ""
-"A quantidade de ouro que você ganha a cada turno das aldeias que você "
-"controla, ou a quantidade de ouro que você perde a cada turno pela "
+"A receita de ouro, positiva ou negativa, que você ganha a cada trno levando "
+"em consideração suas aldeias controladas e o pagamento do custo de "
 "manutenção."
 
 #
@@ -13413,62 +13430,60 @@ msgstr "Esconder planos para $player"
 msgid "Whiteboard Options"
 msgstr "Opções do Quadro-Branco"
 
-#~ msgid "Lvl 0"
-#~ msgstr "Lvl 0"
+#
+# File: data/english.cfg, line: 17
+# File: data/english.cfg, line: 17
+# File: data/english.cfg, line: 17
+#~ msgid ""
+#~ "Liminal units only reach their full strength during twilight.\n"
+#~ "\n"
+#~ "Day: −25% Damage\n"
+#~ "Night: −25% Damage"
+#~ msgstr ""
+#~ "Unidades de liminar só atingem sua força total durante períodos de "
+#~ "penumbra.\n"
+#~ "\n"
+#~ "Dia: −25% Dano\n"
+#~ "Noite: −25% Dano"
 
-#~ msgid "Undead"
-#~ msgstr "Morto-vivo"
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr ""
+#~ "Não há opções de personalização disponíveis para a era, jogo ou "
+#~ "modificação selecionada."
+
+#~ msgid "Defaults"
+#~ msgstr "Padrões"
 
 #
-# File: src/attack_prediction_display.cpp, line: 104
-# File: src/attack_prediction_display.cpp, line: 236
-# File: src/attack_prediction_display.cpp, line: 104
-# File: src/attack_prediction_display.cpp, line: 236
-# File: src/attack_prediction_display.cpp, line: 104
-# File: src/attack_prediction_display.cpp, line: 236
-#~ msgid "Attacks"
-#~ msgstr "Ataques"
+# File: src/multiplayer_connect.cpp, line: 647
+# File: src/multiplayer_connect.cpp, line: 1658
+# File: src/multiplayer_connect.cpp, line: 647
+# File: src/multiplayer_connect.cpp, line: 1658
+# File: src/multiplayer_connect.cpp, line: 647
+# File: src/multiplayer_connect.cpp, line: 1658
+#~ msgid "Connected Players"
+#~ msgstr "Jogadores Conectados"
 
 #
-# File: src/mouse_events.cpp, line: 922
-# File: src/mouse_events.cpp, line: 922
-# File: src/mouse_events.cpp, line: 922
-#~ msgid "Choose a Corpse"
-#~ msgstr "Escolha um corpo"
+# File: data/lua/wml/objectives.lua, line: 11937
+# File: data/lua/wml/objectives.lua, line: 1496
+# File: data/lua/wml/objectives.lua, line: 1496
+#~ msgid "(this turn left)"
+#~ msgid_plural "(%d turns left)"
+#~ msgstr[0] "(só mais este turno)"
+#~ msgstr[1] "(%d turnos restantes)"
 
 #
-# File: src/dialogs.cpp, line: 466
-# File: src/dialogs.cpp, line: 466
-# File: src/dialogs.cpp, line: 466
-#~ msgid "Recruit"
-#~ msgstr "Recrutar"
-
-#
-# File: src/dialogs.cpp, line: 1196
-# File: src/dialogs.cpp, line: 1196
-# File: src/dialogs.cpp, line: 1196
-#~ msgid "HP: "
-#~ msgstr "HP: "
-
-#~ msgid "MP: "
-#~ msgstr "MP: "
-
-#
-# File: src/dialogs.cpp, line: 1199
-# File: src/dialogs.cpp, line: 1199
-# File: src/dialogs.cpp, line: 1199
-#~ msgid "XP: "
-#~ msgstr "XP: "
-
-#
-# File: src/game_controller.cpp, line: 410
-# File: src/game_controller.cpp, line: 428
-# File: src/game_controller.cpp, line: 410
-# File: src/game_controller.cpp, line: 428
-# File: src/game_controller.cpp, line: 410
-# File: src/game_controller.cpp, line: 428
-#~ msgid "There are no corpses available."
-#~ msgstr "Não há nenhum corpo disponível."
+# File: data/core/macros/objective-utils.cfg, line: 29
+# File: data/lua/wml/objectives.lua, line: 11988
+# File: data/core/macros/objective-utils.cfg, line: 29
+# File: data/lua/wml/objectives.lua, line: 1547
+# File: data/core/macros/objective-utils.cfg, line: 29
+# File: data/lua/wml/objectives.lua, line: 1547
+#~ msgid "%d%% of gold carried over to the next scenario."
+#~ msgstr "%d%% de ouro tranferido para o próximo cenário."
 
 #
 # File: src/menu_events.cpp, line: 2372
@@ -13543,6 +13558,146 @@ msgstr "Opções do Quadro-Branco"
 #~ msgstr ""
 #~ "Solicita a lista de detalhes que você pode definir para o seu apelido."
 
+#~ msgid ""
+#~ "[all|<command>]\n"
+#~ "“all” = overview of all commands, <command> = name of a specific command "
+#~ "(provides more detail)"
+#~ msgstr ""
+#~ "[all|<command>]\n"
+#~ "“all” = mostra todos os comandos, <command> = nome de um comando "
+#~ "específico (dá mais detalhes)"
+
+#~ msgid "command^Alias:"
+#~ msgid_plural "Aliases:"
+#~ msgstr[0] "Apelido:"
+#~ msgstr[1] "Apelidos:"
+
+#~ msgid ""
+#~ "[<side> [on/off]]\n"
+#~ "“on” = enable control by the AI, “off” = side is controlled by the player"
+#~ msgstr ""
+#~ "[<side> [on/off]]\n"
+#~ "“on” = transfere o controle do lado para a AI, “off” = o lado é "
+#~ "controlado pelo jogador"
+
+#
+# File: src/menu_events.cpp, line: 1963
+# File: src/menu_events.cpp, line: 1963
+# File: src/menu_events.cpp, line: 1963
+#~ msgid "command_idle^[<side> [on/off]]"
+#~ msgstr "[<side> [on/off]]"
+
+#~ msgid "Show fps (Frames Per Second)."
+#~ msgstr "Mostrar fps (Frames Por Segundo)."
+
+#
+# File: src/menu_events.cpp, line: 2578
+# File: src/menu_events.cpp, line: 2577
+# File: src/menu_events.cpp, line: 2577
+#~ msgid "Can't droid a local ai side: '$side'."
+#~ msgstr "Não é possível 'droid' num aldo para a aai local: '$side'."
+
+#
+# File: src/dialogs.cpp, line: 105
+# File: src/dialogs.cpp, line: 109
+# File: src/dialogs.cpp, line: 114
+# File: src/dialogs.cpp, line: 105
+# File: src/dialogs.cpp, line: 109
+# File: src/dialogs.cpp, line: 114
+# File: src/dialogs.cpp, line: 105
+# File: src/dialogs.cpp, line: 109
+# File: src/dialogs.cpp, line: 114
+#~ msgid ""
+#~ "\n"
+#~ "Do you want to save the game?"
+#~ msgstr ""
+#~ "\n"
+#~ "Você realmente deseja salvar o jogo?"
+
+#
+# File: src/savegame.cpp, line: 965
+# File: src/savegame.cpp, line: 965
+# File: src/savegame.cpp, line: 965
+#~ msgid ""
+#~ "This game has been ended.\n"
+#~ "Reason: "
+#~ msgstr ""
+#~ "Este jogo foi terminado.\n"
+#~ "Razão: "
+
+#
+# File: src/leader_scroll_dialog.cpp, line: 51
+# File: src/menu_events.cpp, line: 197
+# File: src/multiplayer_connect.cpp, line: 1070
+# File: src/multiplayer_wait.cpp, line: 520
+# File: src/leader_scroll_dialog.cpp, line: 51
+# File: src/menu_events.cpp, line: 197
+# File: src/multiplayer_connect.cpp, line: 1070
+# File: src/multiplayer_wait.cpp, line: 520
+# File: src/leader_scroll_dialog.cpp, line: 51
+# File: src/menu_events.cpp, line: 197
+# File: src/multiplayer_connect.cpp, line: 1070
+# File: src/multiplayer_wait.cpp, line: 520
+#~ msgid "Net Income"
+#~ msgstr "Receita Positiva"
+
+#~ msgid "Lvl 0"
+#~ msgstr "Lvl 0"
+
+#~ msgid "Undead"
+#~ msgstr "Morto-vivo"
+
+#
+# File: src/attack_prediction_display.cpp, line: 104
+# File: src/attack_prediction_display.cpp, line: 236
+# File: src/attack_prediction_display.cpp, line: 104
+# File: src/attack_prediction_display.cpp, line: 236
+# File: src/attack_prediction_display.cpp, line: 104
+# File: src/attack_prediction_display.cpp, line: 236
+#~ msgid "Attacks"
+#~ msgstr "Ataques"
+
+#
+# File: src/mouse_events.cpp, line: 922
+# File: src/mouse_events.cpp, line: 922
+# File: src/mouse_events.cpp, line: 922
+#~ msgid "Choose a Corpse"
+#~ msgstr "Escolha um corpo"
+
+#
+# File: src/dialogs.cpp, line: 466
+# File: src/dialogs.cpp, line: 466
+# File: src/dialogs.cpp, line: 466
+#~ msgid "Recruit"
+#~ msgstr "Recrutar"
+
+#
+# File: src/dialogs.cpp, line: 1196
+# File: src/dialogs.cpp, line: 1196
+# File: src/dialogs.cpp, line: 1196
+#~ msgid "HP: "
+#~ msgstr "HP: "
+
+#~ msgid "MP: "
+#~ msgstr "MP: "
+
+#
+# File: src/dialogs.cpp, line: 1199
+# File: src/dialogs.cpp, line: 1199
+# File: src/dialogs.cpp, line: 1199
+#~ msgid "XP: "
+#~ msgstr "XP: "
+
+#
+# File: src/game_controller.cpp, line: 410
+# File: src/game_controller.cpp, line: 428
+# File: src/game_controller.cpp, line: 410
+# File: src/game_controller.cpp, line: 428
+# File: src/game_controller.cpp, line: 410
+# File: src/game_controller.cpp, line: 428
+#~ msgid "There are no corpses available."
+#~ msgstr "Não há nenhum corpo disponível."
+
 #
 # File: data/advanced_preferences.cfg, line: 60
 # File: data/advanced_preferences.cfg, line: 60
@@ -13562,33 +13717,6 @@ msgstr "Opções do Quadro-Branco"
 #~ msgstr ""
 #~ "Número de segundos aguardando a resposta de um ping antes de acabar o "
 #~ "tempo. 0 para Desabilitado."
-
-#
-# File: data/english.cfg, line: 17
-# File: data/english.cfg, line: 17
-# File: data/english.cfg, line: 17
-#~ msgid ""
-#~ "Liminal units only reach their full strength during twilight.\n"
-#~ "\n"
-#~ "Day: −25% Damage\n"
-#~ "Night: −25% Damage"
-#~ msgstr ""
-#~ "Unidades de liminar só atingem sua força total durante períodos de "
-#~ "penumbra.\n"
-#~ "\n"
-#~ "Dia: −25% Dano\n"
-#~ "Noite: −25% Dano"
-
-#
-# File: data/lua/wml/objectives.lua, line: 11937
-# File: data/lua/wml/objectives.lua, line: 1496
-# File: data/lua/wml/objectives.lua, line: 1496
-#, fuzzy
-#~| msgid "(this turn left)"
-#~ msgid "(this turn left)"
-#~ msgid_plural "(%d turns left)"
-#~ msgstr[0] "(resta um turno)"
-#~ msgstr[1] "(resta um turno)"
 
 #
 # File: data/hardwired/tips.cfg, line: 200
@@ -13645,15 +13773,6 @@ msgstr "Opções do Quadro-Branco"
 #~ msgstr "nada"
 
 #
-# File: src/menu_events.cpp, line: 2578
-# File: src/menu_events.cpp, line: 2577
-# File: src/menu_events.cpp, line: 2577
-#, fuzzy
-#~| msgid "Can't droid invalid side: '$side'."
-#~ msgid "Can't droid a local ai side: '$side'."
-#~ msgstr "Não é possível 'droid' no time inválido: '$side'."
-
-#
 # File: src/reports.cpp, line: 245
 # File: src/reports.cpp, line: 245
 # File: src/reports.cpp, line: 245
@@ -13678,18 +13797,6 @@ msgstr "Opções do Quadro-Branco"
 #~ "<span color=\"$color\">$number_or_percent movement</span> points"
 #~ msgstr[0] "por turno"
 #~ msgstr[1] "por turno"
-
-#
-# File: src/multiplayer_connect.cpp, line: 647
-# File: src/multiplayer_connect.cpp, line: 1658
-# File: src/multiplayer_connect.cpp, line: 647
-# File: src/multiplayer_connect.cpp, line: 1658
-# File: src/multiplayer_connect.cpp, line: 647
-# File: src/multiplayer_connect.cpp, line: 1658
-#, fuzzy
-#~| msgid "Computer Player"
-#~ msgid "Connected Players"
-#~ msgstr "Computador"
 
 #
 # File: src/multiplayer_create.cpp, line: 664
