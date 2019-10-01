@@ -1514,12 +1514,14 @@ void console_handler::do_terrain()
 	const mouse_handler& mousehandler = menu_handler_.pc_.get_mouse_handler_base();
 	const map_location& loc = mousehandler.get_last_hex();
 
-	bool result = menu_handler_.board().change_terrain(loc, terrain_type, mode_str, false);
-	if(result) {
-		menu_handler_.gui_->invalidate(loc);
-		menu_handler_.gui_->needs_rebuild(result);
-		menu_handler_.gui_->maybe_rebuild();
-	}
+	synced_context::run_and_throw("debug_terrain",
+		config {
+			"x", loc.wml_x(),
+			"y", loc.wml_y(),
+			"terrain_type", terrain_type,
+			"mode_str", mode_str,
+		}
+	);
 }
 
 void console_handler::do_idle()

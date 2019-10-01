@@ -442,6 +442,26 @@ namespace
 	}
 }
 
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_terrain, child, use_undo, /*show*/, /*error_handler*/)
+{
+	if(use_undo) {
+		resources::undo_stack->clear();
+	}
+	debug_cmd_notification("terrain");
+
+	map_location loc(child);
+	const std::string& terrain_type = child["terrain_type"];
+	const std::string& mode_str = child["mode_str"];
+
+	bool result = resources::gameboard->change_terrain(loc, terrain_type, mode_str, false);
+	if(result) {
+		display::get_singleton()->invalidate(loc);
+		game_display::get_singleton()->needs_rebuild(result);
+		game_display::get_singleton()->maybe_rebuild();
+	}
+	return true;
+}
+
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_handler*/)
 {
 	if(use_undo) {
