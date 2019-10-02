@@ -233,6 +233,8 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 
 	set_idle_anim_rate(preferences::idle_anim_rate());
 
+	if(preferences::tile_size() > 0)
+		zoom_ = preferences::tile_size();
 	zoom_index_ = std::distance(zoom_levels.begin(), std::find(zoom_levels.begin(), zoom_levels.end(), zoom_));
 
 	image::set_zoom(zoom_);
@@ -2045,6 +2047,7 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 		last_zoom_ = zoom_;
 	}
 
+	preferences::set_tile_size(zoom_);
 	image::set_zoom(zoom_);
 
 	labels().recalculate_labels();
