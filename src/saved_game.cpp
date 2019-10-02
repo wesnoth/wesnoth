@@ -341,9 +341,9 @@ void saved_game::load_mod(const std::string& type, const std::string& id, size_t
 			this->starting_point_.add_child_at_total("lua", modlua, pos++);
 		}
 
-		// Copy unit_type_fix
-		for(const config& modlua : cfg.child_range("unit_type_fix")) {
-			this->starting_point_.add_child_at_total("unit_type_fix", modlua, pos++);
+		// Copy modify_unit_type
+		for(const config& modlua : cfg.child_range("modify_unit_type")) {
+			this->starting_point_.add_child_at_total("modify_unit_type", modlua, pos++);
 		}
 
 		// Copy load_resource

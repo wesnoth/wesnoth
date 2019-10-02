@@ -97,7 +97,7 @@ static void copy_persistent(const config& src, config& dst)
 
 	static const std::set<std::string> tags {
 			"terrain_graphics",
-			"unit_type_fix",
+			"modify_unit_type",
 			"lua"};
 
 	for (const std::string& attr : attrs)
@@ -168,8 +168,8 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 {
 	copy_persistent(level, level_);
 
-	for(const config& unit_type_fix : level_.child_range("unit_type_fix")) {
-		unit_types.apply_scenario_fix(unit_type_fix);
+	for(const config& modify_unit_type : level_.child_range("modify_unit_type")) {
+		unit_types.apply_scenario_fix(modify_unit_type);
 	}
 	resources::controller = this;
 	resources::persist = &persist_;
