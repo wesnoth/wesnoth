@@ -105,7 +105,9 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	const std::vector<std::string> filter_name = utils::split(filter["name"]);
 	const std::vector<std::string> filter_type = utils::split(filter["type"]);
 	const std::vector<std::string> filter_special = utils::split(filter["special"]);
+	const std::vector<std::string> filter_special_tags = utils::split(filter["special_type"]);
 	const std::vector<std::string> filter_special_active = utils::split(filter["special_active"]);
+	const std::vector<std::string> filter_special_active_tags = utils::split(filter["special_type_active"]);
 	const std::string filter_formula = filter["formula"];
 
 	if ( !filter_range.empty() && std::find(filter_range.begin(), filter_range.end(), attack.range()) == filter_range.end() )
@@ -135,7 +137,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if(!filter_special.empty()) {
 		bool found = false;
 		for(auto& special : filter_special) {
-			if(attack.get_special_bool(special, true)) {
+			if(attack.get_special_bool(special, true, true, false)) {
 				found = true;
 				break;
 			}
@@ -148,7 +150,33 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if(!filter_special_active.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_active) {
-			if(attack.get_special_bool(special, false)) {
+			if(attack.get_special_bool(special, false, true, false)) {
+				found = true;
+				break;
+			}
+		}
+		if(!found) {
+			return false;
+		}
+	}
+
+	if(!filter_special_tags.empty()) {
+		bool found = false;
+		for(auto& special : filter_special_tags) {
+			if(attack.get_special_bool(special, true, false)) {
+				found = true;
+				break;
+			}
+		}
+		if(!found) {
+			return false;
+		}
+	}
+
+	if(!filter_special_active_tags.empty()) {
+		bool found = false;
+		for(auto& special : filter_special_active_tags) {
+			if(attack.get_special_bool(special, false, false)) {
 				found = true;
 				break;
 			}
