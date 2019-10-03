@@ -61,6 +61,7 @@
    * Fixed wmlscope not correctly performing expansion of square braces in filenames in some conditions
    * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
    * Add help text for some debug commands (part of Issue#2500)
+   * Improve the terrain code's encapsulation and documentation (PR#4411)
 
 ## Version 1.15.1
  ### Editor
