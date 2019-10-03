@@ -9,7 +9,7 @@
    * The South Guard:
      * Change Halidel to be Deoran's great-grandfather
  ### Language and i18n
-   * Updated translations: Chinese (Simplified), Portuguese (Brazil)
+   * Updated translations: Chinese (Simplified), Korean, Portuguese (Brazil)
 
 ## Version 1.14.9
  ### AI:
