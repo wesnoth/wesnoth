@@ -27,6 +27,11 @@ static lg::log_domain log_config("config");
 #define LOG_G LOG_STREAM(info, lg::general())
 #define DBG_G LOG_STREAM(debug, lg::general())
 
+/**
+ * Insert second vector into first when the terrain _ref^base is encountered
+ */
+void merge_alias_lists(t_translation::ter_list& first, const t_translation::ter_list& second);
+
 terrain_type::terrain_type() :
 		minimap_image_(),
 		minimap_image_overlay_(),
@@ -303,6 +308,10 @@ bool terrain_type::operator==(const terrain_type& other) const {
 		&& name_.base_str()       == other.name_.base_str()
 		&& editor_name_.base_str() == other.editor_name_.base_str()
 		&& number_                == other.number_
+		&& mvt_type_              == other.mvt_type_
+		&& vision_type_           == other.vision_type_
+		&& def_type_              == other.def_type_
+		&& union_type_            == other.union_type_
 		&& height_adjust_         == other.height_adjust_
 		&& height_adjust_set_     == other.height_adjust_set_
 		&& submerge_              == other.submerge_
@@ -314,60 +323,11 @@ bool terrain_type::operator==(const terrain_type& other) const {
 		&& village_               == other.village_
 		&& castle_                == other.castle_
 		&& keep_                  == other.keep_
+		&& combined_              == other.combined_
+		&& overlay_               == other.overlay_
 		&& editor_default_base_   == other.editor_default_base_
 		&& hide_in_editor_        == other.hide_in_editor_
 		&& hide_help_             == other.hide_help_;
-}
-
-void create_terrain_maps(const config::const_child_itors &cfgs,
-                         t_translation::ter_list& terrain_list,
-                         std::map<t_translation::terrain_code, terrain_type>& letter_to_terrain)
-{
-	for (const config &terrain_data : cfgs)
-	{
-		terrain_type terrain(terrain_data);
-		DBG_G << "create_terrain_maps: " << terrain.number() << " "
-			<< terrain.id() << " " << terrain.name() << " : " << terrain.editor_group() << "\n";
-
-		std::pair<std::map<t_translation::terrain_code, terrain_type>::iterator, bool> res;
-		res = letter_to_terrain.emplace(terrain.number(), terrain);
-		if (!res.second) {
-			terrain_type& curr = res.first->second;
-			if(terrain == curr) {
-				LOG_G << "Merging terrain " << terrain.number()
-					<< ": " << terrain.id() << " (" << terrain.name() << ")\n";
-				std::vector<std::string> eg1 = utils::split(curr.editor_group());
-				std::vector<std::string> eg2 = utils::split(terrain.editor_group());
-				std::set<std::string> egs;
-				bool clean_merge = true;
-				for (std::string& t : eg1) {
-					clean_merge &= egs.insert(t).second;
-				}
-				for (std::string& t : eg2) {
-					clean_merge &= egs.insert(t).second;
-				}
-
-				std::string joined = utils::join(egs);
-				curr.set_editor_group(joined);
-				if(clean_merge) {
-					LOG_G << "Editor groups merged to: " << joined << "\n";
-				} else {
-					LOG_G << "Merged terrain " << terrain.number()
-					<< ": " << terrain.id() << " (" << terrain.name() << ") "
-					<< "with duplicate editor groups [" << terrain.editor_group() << "] "
-					<< "and [" << curr.editor_group() << "]\n";
-				}
-			} else {
-				ERR_G << "Duplicate terrain code definition found for " << terrain.number() << "\n"
-					<< "Failed to add terrain " << terrain.id() << " (" << terrain.name() << ") "
-					<< "[" << terrain.editor_group() << "]" << "\n"
-					<< "which conflicts with  " << curr.id() << " (" << curr.name() << ") "
-					<< "[" << curr.editor_group() << "]" << "\n\n";
-			}
-		} else {
-			terrain_list.push_back(terrain.number());
-		}
-	}
 }
 
 void merge_alias_lists(t_translation::ter_list& first, const t_translation::ter_list& second)
@@ -385,6 +345,13 @@ void merge_alias_lists(t_translation::ter_list& first, const t_translation::ter_
 			revert = true;
 			continue;
 		}
+
+		// This only works for a subset of the possible cases, and doesn't work for
+		// worst(best(a,b),c,d) terrain. Part of the reason that it doesn't work is that
+		// movetype.cpp starts with a default value of either UNREACHABLE or zero, which
+		// when inverted would drown out the values in best(a,b). Another part of the reason
+		// is that the insertion of a plus or minus before the base terrain is commented out
+		// in this function.
 
 		if(*i == t_translation::BASE) {
 			t_translation::ter_list::iterator insert_it = first.erase(i);

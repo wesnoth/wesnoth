@@ -287,10 +287,8 @@ int movetype::terrain_info::data::calc_value(
 	const t_translation::ter_list & underlying = params_.use_move ?
 			tdata->underlying_mvt_terrain(terrain) :
 			tdata->underlying_def_terrain(terrain);
-	assert(!underlying.empty());
 
-
-	if ( underlying.size() == 1  &&  underlying.front() == terrain )
+	if (terrain_type::is_indivisible(terrain, underlying))
 	{
 		// This is not an alias; get the value directly.
 		int result = params_.default_value;

@@ -162,7 +162,7 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
 		}
 
 		const terrain_type& info = tdata->get_terrain_info(terrain);
-		if(info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
+		if(info.is_indivisible() && info.is_nonnull()) {
 			terrain_moves.emplace(info.name(), get(terrain));
 		}
 	}

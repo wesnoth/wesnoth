@@ -157,7 +157,7 @@ void gamemap::read(const std::string& data, const bool allow_invalid)
 			// Is the terrain valid?
 			t_translation::terrain_code t = tiles_.get(x, y);
 			if(tdata_->map().count(t) == 0) {
-				if(!tdata_->try_merge_terrains(t)) {
+				if(!tdata_->is_known(t)) {
 					std::stringstream ss;
 					ss << "Unknown tile in map: (" << t_translation::write_terrain_code(t)
 						   << ") '" << t << "'";
