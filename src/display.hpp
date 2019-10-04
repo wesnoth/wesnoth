@@ -635,6 +635,7 @@ public:
 
 private:
 	void read(const config& cfg);
+	bool validate_zoom_level_and_set_index(unsigned int &new_zoom, int &new_zoom_index);
 
 public:
 	/** Init the flag list and the team colors used by ~TC */
@@ -646,6 +647,7 @@ public:
 	{
 		reports_object_ = &reports_object;
 	}
+
 private:
 	void init_flags_for_side_internal(std::size_t side, const std::string& side_color);
 

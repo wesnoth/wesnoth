@@ -233,9 +233,12 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 
 	set_idle_anim_rate(preferences::idle_anim_rate());
 
-	if(preferences::tile_size() > 0)
+	if(preferences::tile_size() > 0) {
 		zoom_ = preferences::tile_size();
-	zoom_index_ = std::distance(zoom_levels.begin(), std::find(zoom_levels.begin(), zoom_levels.end(), zoom_));
+		validate_zoom_level_and_set_index(zoom_, zoom_index_);
+	} else {
+		zoom_index_ = std::distance(zoom_levels.begin(), std::find(zoom_levels.begin(), zoom_levels.end(), zoom_));
+	}
 
 	image::set_zoom(zoom_);
 
@@ -1997,25 +2000,9 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 		return false;
 	}
 
-	// Confirm this is indeed a valid zoom level.
-	if(validate_value_and_set_index) {
-		auto iter = std::lower_bound(zoom_levels.begin(), zoom_levels.end(), new_zoom);
-
-		if(iter == zoom_levels.end()) {
-			// This should never happen, since the value was already clamped earlier
-			return false;
-		} else if(iter != zoom_levels.begin()) {
-			float diff = *iter - *(iter - 1);
-			float lower = (new_zoom - *(iter - 1)) / diff;
-			float upper = (*iter - new_zoom) / diff;
-			if(lower < upper) {
-				// It's actually closer to the previous element.
-				iter--;
-			}
-		}
-
-		new_zoom = *iter;
-		zoom_index_ = std::distance(zoom_levels.begin(), iter);
+	// Confirm this is indeed a valid zoom level (zoom_index_ doesn't get updated if new_zoom is not valid)
+	if(validate_value_and_set_index && !validate_zoom_level_and_set_index(new_zoom, zoom_index_)) {
+		return false;
 	}
 
 	const SDL_Rect& outside_area = map_outside_area();
@@ -2058,6 +2045,28 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 	// This prevents some graphic glitches from occurring.
 	draw();
 
+	return true;
+}
+
+bool display::validate_zoom_level_and_set_index(unsigned int& new_zoom, int &new_zoom_index)
+{
+	auto iter = std::lower_bound(zoom_levels.begin(), zoom_levels.end(), new_zoom);
+
+	if(iter == zoom_levels.end()) {
+		// This should never happen, since the value was already clamped earlier
+		return false;
+	} else if(iter != zoom_levels.begin()) {
+		float diff = *iter - *(iter - 1);
+		float lower = (new_zoom - *(iter - 1)) / diff;
+		float upper = (*iter - new_zoom) / diff;
+		if(lower < upper) {
+			// It's actually closer to the previous element.
+			iter--;
+		}
+	}
+
+	new_zoom = *iter;
+	new_zoom_index = std::distance(zoom_levels.begin(), iter);
 	return true;
 }
 
