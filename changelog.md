@@ -45,6 +45,7 @@
    * Hide the "Suppose Dead" key from the hotkeys list (it does nothing since 1.9.12)
    * Sidebar: In replays with "View: Full Map", show all enemy units in "Damage versus:" tooltip
    * Multiplayer Create Game screen now shows map previews for scenarios that use map_file=. (PR#4407)
+   * Remember zoom level between play sessions (#1518) and add zoom options to context menu (#1213)
  ### Lua API
    * Accessing wesnoth.theme_items.unit_status no longer prevents the unit
      status (poisoned/slowed/etc) from being shown in the sidebar. (Issue#4079)
