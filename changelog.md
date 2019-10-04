@@ -8,6 +8,8 @@
      * S1: Fix reference to LoW events
    * The South Guard:
      * Change Halidel to be Deoran's great-grandfather
+   * Tutorial:
+     * S2: Make the first grunt cross the bridge, otherwise the scenario is too hard
  ### Language and i18n
    * Updated translations: Chinese (Simplified), Italian, Korean,
      Portuguese (Brazil)
