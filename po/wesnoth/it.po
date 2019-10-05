@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-09-16 11:33+0300\n"
-"PO-Revision-Date: 2019-09-07 14:59+0200\n"
+"PO-Revision-Date: 2019-09-24 11:16+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -7065,6 +7065,9 @@ msgid ""
 "“all” = overview of all commands, <command> = name of a specific command "
 "(provides more detail)"
 msgstr ""
+"[all|<comando>]\n"
+"“all” = panoramica di tutti i comandi, <comando> = nome di uno specifico "
+"comando (riporta ulteriori dettagli)"
 
 #: src/map_command_handler.hpp:266
 msgid "Missing argument $arg_id"
@@ -7100,8 +7103,8 @@ msgstr "Uso:"
 #: src/map_command_handler.hpp:343
 msgid "command^Alias:"
 msgid_plural "Aliases:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Alias"
+msgstr[1] "Alias"
 
 #: src/menu_events.cpp:176
 msgid "Save Map As"
@@ -7240,6 +7243,9 @@ msgid ""
 "[<side> [on/off]]\n"
 "“on” = enable control by the AI, “off” = side is controlled by the player"
 msgstr ""
+"[<squadra> [on/off]]\n"
+"“on” = abilita il controllo dell’IA, “off” = la squadra è controllata dal "
+"giocatore"
 
 #: src/menu_events.cpp:1190
 msgid "Switch a side to/from idle state."
@@ -7249,8 +7255,6 @@ msgstr "Assegna/togli alla squadra lo stato “Inattiva”."
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1194
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "command_idle^[<side> [on/off]]"
 msgstr "[<squadra> [on/off]]"
 
@@ -7285,7 +7289,7 @@ msgstr "Debug degli strati di terreno sotto il mouse."
 
 #: src/menu_events.cpp:1204
 msgid "Show fps (Frames Per Second)."
-msgstr ""
+msgstr "Mostra fps (Frame per Secondo)."
 
 #: src/menu_events.cpp:1206
 msgid "Save game."
@@ -7615,7 +7619,7 @@ msgstr "Nessuno Specchio Alleato"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "È stata creata una partita ($name|, $scenario|)"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
@@ -7739,20 +7743,20 @@ msgstr ""
 "proseguire. Vuoi salvare la partita?"
 
 #: src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "Do you really want to surrender the game?"
 msgid ""
 "\n"
 "Do you want to save the game?"
-msgstr "Vuoi davvero arrenderti?"
+msgstr ""
+"\n"
+"Vuoi salvare la partita?"
 
 #: src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "The game has been saved."
 msgid ""
 "This game has been ended.\n"
 "Reason: "
-msgstr "La partita è stata salvata."
+msgstr ""
+"Questa partita è stata terminata.\n"
+"Motivo: "
 
 #: src/playsingle_controller.cpp:440
 msgid "It is now $name|’s turn"
@@ -8079,12 +8083,6 @@ msgid "Units"
 msgstr "Unità"
 
 #: src/reports.cpp:1344
-#, fuzzy
-#| msgid ""
-#| "The expenses incurred at the end of every turn to maintain your army. The "
-#| "first number is the amount of gold that will be deducted. The second is "
-#| "the total cost of upkeep, including that covered by villages — in other "
-#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8093,33 +8091,28 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 "Spese necessarie per mantenere la tua armata alla fine di ogni turno. Il "
-"primo numero rappresenta il quantitativo di oro che verrà scalato; il "
-"secondo il costo totale di mantenimento, incluso quello coperto dai "
-"villaggi, in altre parole, il quantitativo di oro che sarebbe dedotto se tu "
-"perdessi tutti i villaggi."
+"primo numero rappresenta il quantitativo di oro che verrà scalato e "
+"corrisponde al numero di livelli delle unità non sostentate dai villaggi; il "
+"secondo numero rappresenta il costo totale di mantenimento, incluso quello "
+"coperto dai villaggi. In altre parole, il quantitativo di oro che sarebbe "
+"dedotto se tu perdessi tutti i villaggi."
 
 #: src/reports.cpp:1344
 msgid "Upkeep"
 msgstr "Mantenimento"
 
 #: src/reports.cpp:1381
-#, fuzzy
-#| msgid "Income"
 msgid "Net Income"
 msgstr "Entrate"
 
 #: src/reports.cpp:1381
-#, fuzzy
-#| msgid ""
-#| "The amount of gold you gain each turn from your controlled villages, or "
-#| "the amount of gold you will lose each turn for unit upkeep."
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
-"Il quantitativo di oro che guadagni ad ogni turno come introito dei villaggi "
-"da te controllati, o il quantitativo di oro che perderai ad ogni turno per "
-"il mantenimento delle unità."
+"Il quantitativo di oro che guadagni o perdi ad ogni turno, tenendo conto "
+"degli introiti dei villaggi da te controllati e dell’oro necessario per il "
+"mantenimento delle unità."
 
 #: src/reports.cpp:1549
 msgid "Observers:"
