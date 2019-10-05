@@ -616,8 +616,8 @@ void game_display::float_label(const map_location& loc, const std::string& text,
 	flabel.set_font_size(font::SIZE_XLARGE);
 	flabel.set_color(color);
 	flabel.set_position(get_location_x(loc)+zoom_/2, get_location_y(loc));
-	flabel.set_move(0, -2 * turbo_speed());
-	flabel.set_lifetime(60/turbo_speed());
+	flabel.set_move(0, -0.1 * turbo_speed());
+	flabel.set_lifetime(1000/turbo_speed());
 	flabel.set_scroll_mode(font::ANCHOR_LABEL_MAP);
 
 	font::add_floating_label(flabel);

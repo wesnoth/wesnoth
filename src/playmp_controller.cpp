@@ -154,7 +154,7 @@ void playmp_controller::play_human_turn()
 					flabel.set_color(color);
 					SDL_Rect rect = gui_->map_area();
 					flabel.set_position(rect.w/2, rect.h/2);
-					flabel.set_lifetime(150);
+					flabel.set_lifetime(2500);
 					flabel.set_clip_rect(rect);
 
 					font::add_floating_label(flabel);

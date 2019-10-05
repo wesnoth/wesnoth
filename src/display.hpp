@@ -587,7 +587,7 @@ public:
 	/** Holds options for calls to function 'announce' (@ref announce). */
 	struct announce_options
 	{
-		/** Lifetime measured in frames. */
+		/** Lifetime measured in milliseconds. */
 		int lifetime;
 
 		/**
@@ -598,7 +598,7 @@ public:
 		bool discard_previous;
 
 		announce_options()
-			: lifetime(100)
+			: lifetime(1600)
 			, discard_previous(false)
 		{
 		}
