@@ -13,6 +13,16 @@
  ### Language and i18n
    * Updated translations: Chinese (Simplified), Italian, Korean,
      Portuguese (Brazil)
+ ### Lua API
+   * wesnoth.deprecate_api was fixed to correctly wrap tables with metatables. (Issue#4079)
+ ### User interface
+   * Draw ellipses during draw/sheath animations. (Issue#1527)
+   * In the combat dialog and elsewhere, clicking the "Profile" button opens
+     the help on the correct unit variation (e.g., Walking Corpse (Swimmer)).
+     (Issue#4142)
+ ### Miscellaneous and bug fixes
+   * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
+   * Add help text for some debug commands (part of Issue#2500)
 
 ## Version 1.14.9
  ### AI:
