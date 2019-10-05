@@ -42,6 +42,8 @@ static lg::log_domain log_preprocessor("preprocessor");
 
 static std::string current_file_str = "CURRENT_FILE";
 static std::string current_dir_str = "CURRENT_DIRECTORY";
+static std::string left_curly_str = "LEFT_BRACE";
+static std::string right_curly_str = "RIGHT_BRACE";
 
 // map associating each filename encountered to a number
 static std::map<std::string, int> file_number_map;
@@ -1476,6 +1478,12 @@ bool preprocessor_data::get_chunk()
 			} else if(symbol == current_dir_str && strings_.size() - token.stack_pos == 1) {
 				pop_token();
 				put(filesystem::directory_name(parent_.get_current_file()));
+			} else if(symbol == left_curly_str && strings_.size() - token.stack_pos == 1) {
+				pop_token();
+				put("{");
+			} else if(symbol == right_curly_str && strings_.size() - token.stack_pos == 1) {
+				pop_token();
+				put("}");
 			} else if(local_defines_ && (arg = local_defines_->find(symbol)) != local_defines_->end()) {
 				if(strings_.size() - token.stack_pos != 1) {
 					std::ostringstream error;
