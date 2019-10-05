@@ -26,6 +26,7 @@
 #include "lexical_cast.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
+#include "playsingle_controller.hpp"
 #include "preferences/game.hpp"
 #include "resources.hpp"
 #include "serialization/string_utils.hpp"
@@ -590,6 +591,12 @@ void team::change_controller_by_wml(const std::string& new_controller_string)
 
 	if(!resources::controller->is_replay()) {
 		set_local(choice["is_local"].to_bool());
+	}
+
+	if(playsingle_controller* pc =  dynamic_cast<playsingle_controller*>(resources::controller)) {
+		if(pc->current_side() == side() && new_controller != controller()) {
+			pc->set_player_type_changed();
+		}
 	}
 
 	change_controller(new_controller);
