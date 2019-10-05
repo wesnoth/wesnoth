@@ -49,7 +49,7 @@
    * Special notes for units now use a new system, with a `[special_note]note=` tag.
      * This tag is supported both in `[unit]` and in `[unit_type]`. If used in `[unit]`, it will override the type's notes.
      * Standard special notes should now be added with `{NOTE_*}` instead of `{SPECIAL_NOTES_*}`.
-     * In `[effect]apply_to=profile`, `[add_special_note]` and `[remove_special_note]` are supported.
+     * In `[effect]apply_to=profile`, `[special_note]` is now supported to add/remove special notes.
    * Support for the deprecated "&image.png=text" syntax has been removed in all contexts - use the DescriptionWML attributes instead.
    * Fix infinite recursion in SUF with [hides] and [filter_vision]. (Issue#1389)
  ### Miscellaneous and bug fixes
