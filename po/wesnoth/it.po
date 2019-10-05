@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 22:41+0300\n"
-"PO-Revision-Date: 2019-09-07 14:59+0200\n"
+"PO-Revision-Date: 2019-09-24 11:16+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -7182,18 +7182,19 @@ msgid "Switch a side to/from AI control."
 msgstr "Dai/togli all’IA il controllo di una squadra."
 
 #: src/menu_events.cpp:1191
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "do not translate the on/off/full^[<side> [on/off/full]]"
-msgstr "[<squadra> [on/off]]"
+msgstr ""
 
 #: src/menu_events.cpp:1192
 msgid "Switch a side to/from idle state."
 msgstr "Assegna/togli alla squadra lo stato “Inattiva”."
 
+# tra i "sergenti" va tradotto?
 #: src/menu_events.cpp:1193
+#, fuzzy
+#| msgid "do not translate the 'all'^[all|<command>]"
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr "[<squadra> [on/off]]"
+msgstr "[all|<comando>]"
 
 #: src/menu_events.cpp:1196
 msgid "<side> <nickname>"
@@ -7575,7 +7576,7 @@ msgstr "Nessuno Specchio Alleato"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "È stata creata una partita ($name|, $scenario|)"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
@@ -8023,6 +8024,13 @@ msgid "Units"
 msgstr "Unità"
 
 #: src/reports.cpp:1445
+#, fuzzy
+#| msgid ""
+#| "The expenses incurred at the end of every turn to maintain your army. The "
+#| "first number is the amount of gold that will be deducted. It is equal to "
+#| "the number of unit levels not supported by villages. The second is the "
+#| "total cost of upkeep, including that covered by villages — in other "
+#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. The second is the "
@@ -8030,27 +8038,34 @@ msgid ""
 "the amount of gold that would be deducted if you lost all villages."
 msgstr ""
 "Spese necessarie per mantenere la tua armata alla fine di ogni turno. Il "
-"primo numero rappresenta il quantitativo di oro che verrà scalato; il "
-"secondo il costo totale di mantenimento, incluso quello coperto dai "
-"villaggi, in altre parole, il quantitativo di oro che sarebbe dedotto se tu "
-"perdessi tutti i villaggi."
+"primo numero rappresenta il quantitativo di oro che verrà scalato e "
+"corrisponde al numero di livelli delle unità non sostentate dai villaggi; il "
+"secondo numero rappresenta il costo totale di mantenimento, incluso quello "
+"coperto dai villaggi. In altre parole, il quantitativo di oro che sarebbe "
+"dedotto se tu perdessi tutti i villaggi."
 
 #: src/reports.cpp:1445
 msgid "Upkeep"
 msgstr "Mantenimento"
 
 #: src/reports.cpp:1482
+#, fuzzy
+#| msgid "income"
 msgid "Income"
-msgstr "Entrate"
+msgstr "entrate"
 
 #: src/reports.cpp:1482
+#, fuzzy
+#| msgid ""
+#| "The net amount of gold you gain or lose each turn, taking into account "
+#| "income from controlled villages and payment of upkeep."
 msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
 msgstr ""
-"Il quantitativo di oro che guadagni ad ogni turno come introito dei villaggi "
-"da te controllati, o il quantitativo di oro che perderai ad ogni turno per "
-"il mantenimento delle unità."
+"Il quantitativo di oro che guadagni o perdi ad ogni turno, tenendo conto "
+"degli introiti dei villaggi da te controllati e dell’oro necessario per il "
+"mantenimento delle unità."
 
 #: src/reports.cpp:1650
 msgid "Observers:"
@@ -8605,6 +8620,11 @@ msgstr "Opzioni della lavagna"
 #~ msgid "Connected Players"
 #~ msgstr "Giocatori connessi"
 
+#~ msgid "(this turn left)"
+#~ msgid_plural "(%d turns left)"
+#~ msgstr[0] "(ultimo turno)"
+#~ msgstr[1] "(%d turni rimasti)"
+
 #~ msgid "registering with password *** and no email address"
 #~ msgstr ""
 #~ "registrazione con password *** e nessun indirizzo di posta elettronica"
@@ -8641,8 +8661,53 @@ msgstr "Opzioni della lavagna"
 #~ "Richiedi un elenco di dettagli da impostare per il nickname da te "
 #~ "registrato."
 
+#~ msgid ""
+#~ "[all|<command>]\n"
+#~ "“all” = overview of all commands, <command> = name of a specific command "
+#~ "(provides more detail)"
+#~ msgstr ""
+#~ "[all|<comando>]\n"
+#~ "“all” = panoramica di tutti i comandi, <comando> = nome di uno specifico "
+#~ "comando (riporta ulteriori dettagli)"
+
+#~ msgid "command^Alias:"
+#~ msgid_plural "Aliases:"
+#~ msgstr[0] "Alias"
+#~ msgstr[1] "Alias"
+
+#~ msgid ""
+#~ "[<side> [on/off]]\n"
+#~ "“on” = enable control by the AI, “off” = side is controlled by the player"
+#~ msgstr ""
+#~ "[<squadra> [on/off]]\n"
+#~ "“on” = abilita il controllo dell’IA, “off” = la squadra è controllata dal "
+#~ "giocatore"
+
+#~ msgid "command_idle^[<side> [on/off]]"
+#~ msgstr "[<squadra> [on/off]]"
+
+#~ msgid "Show fps (Frames Per Second)."
+#~ msgstr "Mostra fps (Frame per Secondo)."
+
 #~ msgid "Can't droid a local ai side: '$side'."
 #~ msgstr "Impossibile automatizzare una squadra con IA locale: «$side»."
+
+#~ msgid ""
+#~ "\n"
+#~ "Do you want to save the game?"
+#~ msgstr ""
+#~ "\n"
+#~ "Vuoi salvare la partita?"
+
+#~ msgid ""
+#~ "This game has been ended.\n"
+#~ "Reason: "
+#~ msgstr ""
+#~ "Questa partita è stata terminata.\n"
+#~ "Motivo: "
+
+#~ msgid "Net Income"
+#~ msgstr "Entrate"
 
 #~ msgid "Empty"
 #~ msgstr "Vuota"
@@ -8710,11 +8775,6 @@ msgstr "Opzioni della lavagna"
 #~ "1 campagna multigiocatore con 14 scenari,\n"
 #~ "7 fazioni in battaglia lungo 46 mappe/scenari multigiocatore,\n"
 #~ "oltre 500 estensioni.)"
-
-#~ msgid "(this turn left)"
-#~ msgid_plural "(%d turns left)"
-#~ msgstr[0] "(ultimo turno)"
-#~ msgstr[1] "(%d turni rimasti)"
 
 #~ msgid "$era_name (missing)"
 #~ msgstr "$era_name (mancante)"
