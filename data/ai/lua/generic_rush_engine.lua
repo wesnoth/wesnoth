@@ -429,46 +429,50 @@ return {
                 return 0
             end
 
+            local avoid_map = LS.of_pairs(ai.aspects.avoid)
+
             -- Go through all possible attacks with poisoners
             local max_rating, best_attack = -9e99, {}
             for i,a in ipairs(attacks) do
-                local attacker = wesnoth.get_unit(a.src.x, a.src.y)
-                local defender = wesnoth.get_unit(a.target.x, a.target.y)
+                if (not avoid_map:get(a.dst.x, a.dst.y)) then
+                    local attacker = wesnoth.get_unit(a.src.x, a.src.y)
+                    local defender = wesnoth.get_unit(a.target.x, a.target.y)
 
-                -- Don't try to poison a unit that cannot be poisoned
-                local cant_poison = defender.status.poisoned or defender.status.unpoisonable
+                    -- Don't try to poison a unit that cannot be poisoned
+                    local cant_poison = defender.status.poisoned or defender.status.unpoisonable
 
-                -- For now, we also simply don't poison units on villages (unless standard combat CA does it)
-                local on_village = wesnoth.get_terrain_info(wesnoth.get_terrain(defender.x, defender.y)).village
+                    -- For now, we also simply don't poison units on villages (unless standard combat CA does it)
+                    local on_village = wesnoth.get_terrain_info(wesnoth.get_terrain(defender.x, defender.y)).village
 
-                -- Also, poisoning units that would level up through the attack or could level on their turn as a result is very bad
-                local about_to_level = defender.max_experience - defender.experience <= (wesnoth.unit_types[attacker.type].level * 2)
+                    -- Also, poisoning units that would level up through the attack or could level on their turn as a result is very bad
+                    local about_to_level = defender.max_experience - defender.experience <= (wesnoth.unit_types[attacker.type].level * 2)
 
-                if (not cant_poison) and (not on_village) and (not about_to_level) then
-                    -- Strongest enemy gets poisoned first
-                    local rating = defender.hitpoints
+                    if (not cant_poison) and (not on_village) and (not about_to_level) then
+                        -- Strongest enemy gets poisoned first
+                        local rating = defender.hitpoints
 
-                    -- Always attack enemy leader, if possible
-                    if defender.canrecruit then rating = rating + 1000 end
+                        -- Always attack enemy leader, if possible
+                        if defender.canrecruit then rating = rating + 1000 end
 
-                    -- Enemies that can regenerate are not good targets
-                    if wesnoth.unit_ability(defender, 'regenerate') then rating = rating - 1000 end
+                        -- Enemies that can regenerate are not good targets
+                        if wesnoth.unit_ability(defender, 'regenerate') then rating = rating - 1000 end
 
-                    -- More priority to enemies on strong terrain
-                    local defender_defense = 100 - wesnoth.unit_defense(defender, wesnoth.get_terrain(defender.x, defender.y))
-                    rating = rating + defender_defense / 4.
+                        -- More priority to enemies on strong terrain
+                        local defender_defense = 100 - wesnoth.unit_defense(defender, wesnoth.get_terrain(defender.x, defender.y))
+                        rating = rating + defender_defense / 4.
 
-                    -- For the same attacker/defender pair, go to strongest terrain
-                    local attack_defense = 100 - wesnoth.unit_defense(attacker, wesnoth.get_terrain(a.dst.x, a.dst.y))
-                    rating = rating + attack_defense / 2.
-                    --print('rating', rating)
+                        -- For the same attacker/defender pair, go to strongest terrain
+                        local attack_defense = 100 - wesnoth.unit_defense(attacker, wesnoth.get_terrain(a.dst.x, a.dst.y))
+                        rating = rating + attack_defense / 2.
+                        --print('rating', rating)
 
-                    -- And from village everything else being equal
-                    local is_village = wesnoth.get_terrain_info(wesnoth.get_terrain(a.dst.x, a.dst.y)).village
-                    if is_village then rating = rating + 0.5 end
+                        -- And from village everything else being equal
+                        local is_village = wesnoth.get_terrain_info(wesnoth.get_terrain(a.dst.x, a.dst.y)).village
+                        if is_village then rating = rating + 0.5 end
 
-                    if rating > max_rating then
-                        max_rating, best_attack = rating, a
+                        if rating > max_rating then
+                            max_rating, best_attack = rating, a
+                        end
                     end
                 end
             end
