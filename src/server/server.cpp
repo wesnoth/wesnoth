@@ -1664,8 +1664,9 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			return;
 		}
 
-		g.new_scenario(socket);
 		g.save_replay();
+
+		g.new_scenario(socket);
 		g.reset_last_synced_context_id();
 
 		// Record the full scenario in g.level()
@@ -1755,10 +1756,6 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		}
 
 		// update the game having changed in the lobby
-		update_game_in_lobby(g);
-		return;
-	} else if(data.child("update_game")) {
-		g.update_game();
 		update_game_in_lobby(g);
 		return;
 	} else if(data.child("leave_game")) {
@@ -1914,6 +1911,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 	} else if(
 		data.child("error") ||
 		data.child("side_secured") ||
+		data.child("update_game") ||
 		data.root().has_attr("failed") ||
 		data.root().has_attr("side")
 	) {

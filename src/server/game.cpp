@@ -1624,6 +1624,7 @@ void game::new_scenario(const socket_ptr& sender)
 			players_not_advanced_.insert(user_ptr);
 		}
 	}
+	started_ = false;
 }
 
 void game::load_next_scenario(const socket_ptr& user)
