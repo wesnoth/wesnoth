@@ -1,4 +1,8 @@
 ## Version 1.14.9+dev
+ ### AI:
+   * Experimental AI: fix poisoners ignoring [avoid] tag
+   * Fix bug crashing some AIs when units with chance-to-hit specials without id are on map
+   * Lua AIs: several minor behind-the-scenes bug fixes
  ### Campaigns
    * Heir to the Throne:
      * Modify campaign starting date
