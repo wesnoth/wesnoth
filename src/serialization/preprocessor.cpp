@@ -40,10 +40,10 @@ static lg::log_domain log_preprocessor("preprocessor");
 #define LOG_PREPROC LOG_STREAM(info, log_preprocessor)
 #define DBG_PREPROC LOG_STREAM(debug, log_preprocessor)
 
-static std::string current_file_str = "CURRENT_FILE";
-static std::string current_dir_str = "CURRENT_DIRECTORY";
-static std::string left_curly_str = "LEFT_BRACE";
-static std::string right_curly_str = "RIGHT_BRACE";
+static const std::string current_file_str = "CURRENT_FILE";
+static const std::string current_dir_str = "CURRENT_DIRECTORY";
+static const std::string left_curly_str = "LEFT_BRACE";
+static const std::string right_curly_str = "RIGHT_BRACE";
 
 // map associating each filename encountered to a number
 static std::map<std::string, int> file_number_map;
