@@ -40,7 +40,7 @@ return {
                 for i,u in ipairs(units) do total_hp = total_hp + u.hitpoints end
                 local leader = wesnoth.get_units { side = s.side, canrecruit = 'yes' }[1]
                 if leader then
-                    print('   Player ' .. s.side .. ' (' .. leader.type .. '): ' .. #units .. ' Units with total HP: ' .. total_hp)
+                    std_print('   Player ' .. s.side .. ' (' .. leader.type .. '): ' .. #units .. ' Units with total HP: ' .. total_hp)
                 end
             end
         end
