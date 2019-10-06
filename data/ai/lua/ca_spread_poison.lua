@@ -1,6 +1,7 @@
 ------- Spread Poison CA --------------
 
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local LS = wesnoth.require "location_set"
 
 local SP_attack
 
@@ -33,47 +34,51 @@ function ca_spread_poison:evaluation(cfg, data)
         return 0
     end
 
+    local avoid_map = LS.of_pairs(ai.aspects.avoid)
+
     -- Go through all possible attacks with poisoners
     local max_rating, best_attack = - math.huge
     for i,a in ipairs(attacks) do
-        local attacker = wesnoth.get_unit(a.src.x, a.src.y)
-        local defender = wesnoth.get_unit(a.target.x, a.target.y)
+        if (not avoid_map:get(a.dst.x, a.dst.y)) then
+            local attacker = wesnoth.get_unit(a.src.x, a.src.y)
+            local defender = wesnoth.get_unit(a.target.x, a.target.y)
 
-        -- Don't try to poison a unit that cannot be poisoned
-        local cant_poison = defender.status.poisoned or defender.status.unpoisonable
+            -- Don't try to poison a unit that cannot be poisoned
+            local cant_poison = defender.status.poisoned or defender.status.unpoisonable
 
-        -- For now, we also simply don't poison units on healing locations (unless standard combat CA does it)
-        local defender_terrain = wesnoth.get_terrain(defender.x, defender.y)
-        local healing = wesnoth.get_terrain_info(defender_terrain).healing
+            -- For now, we also simply don't poison units on healing locations (unless standard combat CA does it)
+            local defender_terrain = wesnoth.get_terrain(defender.x, defender.y)
+            local healing = wesnoth.get_terrain_info(defender_terrain).healing
 
-        -- Also, poisoning units that would level up through the attack or could level on their turn as a result is very bad
-        local about_to_level = defender.max_experience - defender.experience <= (attacker.level * 2 * wesnoth.game_config.combat_experience)
+            -- Also, poisoning units that would level up through the attack or could level on their turn as a result is very bad
+            local about_to_level = defender.max_experience - defender.experience <= (attacker.level * 2 * wesnoth.game_config.combat_experience)
 
-        if (not cant_poison) and (healing == 0) and (not about_to_level) then
-            -- Strongest enemy gets poisoned first
-            local rating = defender.hitpoints
+            if (not cant_poison) and (healing == 0) and (not about_to_level) then
+                -- Strongest enemy gets poisoned first
+                local rating = defender.hitpoints
 
-            -- Always attack enemy leader, if possible
-            if defender.canrecruit then rating = rating + 1000 end
+                -- Always attack enemy leader, if possible
+                if defender.canrecruit then rating = rating + 1000 end
 
-            -- Enemies that can regenerate are not good targets
-            if defender:ability('regenerate') then rating = rating - 1000 end
+                -- Enemies that can regenerate are not good targets
+                if defender:ability('regenerate') then rating = rating - 1000 end
 
-            -- More priority to enemies on strong terrain
-            local defender_defense = 100 - defender:defense(defender_terrain)
-            rating = rating + defender_defense / 4.
+                -- More priority to enemies on strong terrain
+                local defender_defense = 100 - defender:defense(defender_terrain)
+                rating = rating + defender_defense / 4.
 
-            -- For the same attacker/defender pair, go to strongest terrain
-            local attacker_terrain = wesnoth.get_terrain(a.dst.x, a.dst.y)
-            local attacker_defense = 100 - attacker:defense(attacker_terrain)
-            rating = rating + attacker_defense / 2.
+                -- For the same attacker/defender pair, go to strongest terrain
+                local attacker_terrain = wesnoth.get_terrain(a.dst.x, a.dst.y)
+                local attacker_defense = 100 - attacker:defense(attacker_terrain)
+                rating = rating + attacker_defense / 2.
 
-            -- And from village everything else being equal
-            local is_village = wesnoth.get_terrain_info(attacker_terrain).village
-            if is_village then rating = rating + 0.5 end
+                -- And from village everything else being equal
+                local is_village = wesnoth.get_terrain_info(attacker_terrain).village
+                if is_village then rating = rating + 0.5 end
 
-            if rating > max_rating then
-                max_rating, best_attack = rating, a
+                if rating > max_rating then
+                    max_rating, best_attack = rating, a
+                end
             end
         end
     end
