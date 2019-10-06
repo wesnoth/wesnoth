@@ -1013,13 +1013,11 @@ function battle_calcs.attack_combo_stats(tmp_attackers, tmp_dsts, defender, cach
             --    if (p > 0) then
             --        local dhp_norm = (hp - av) / defender.max_hitpoints * wesnoth.unit_types[defender.type].cost
             --        local dvar = p * dhp_norm^2
-                    --print(hp,p,av, dvar)
             --        outcome_variance = outcome_variance + dvar
             --        n_outcomes = n_outcomes + 1
             --    end
             --end
             --outcome_variance = outcome_variance / n_outcomes
-            --print('outcome_variance', outcome_variance)
 
             -- Note that this is a variance, not a standard deviations (as in, it's squared),
             -- so it does not matter much for low-variance attacks, but takes on large values for
