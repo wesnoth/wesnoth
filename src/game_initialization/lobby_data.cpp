@@ -31,6 +31,7 @@
 #include "terrain/type_data.hpp"
 #include "wml_exception.hpp"
 #include "game_version.hpp"
+#include "mp_game_settings.hpp"
 
 #include <iterator>
 
@@ -213,7 +214,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 	, time_limit()
 	, vacant_slots()
 	, current_turn(0)
-	, reloaded(game["savegame"].to_bool())
+	, reloaded(game["savegame"].to_enum<mp_game_settings::SAVED_GAME_MODE>(mp_game_settings::SAVED_GAME_MODE::NONE) != mp_game_settings::SAVED_GAME_MODE::NONE)
 	, started(false)
 	, fog(game["mp_fog"].to_bool())
 	, shroud(game["mp_shroud"].to_bool())

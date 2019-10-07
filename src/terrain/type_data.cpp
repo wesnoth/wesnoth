@@ -14,9 +14,14 @@
 
 #include "terrain/type_data.hpp"
 
-#include "terrain/terrain.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <map>
+
+#include "log.hpp"
+#define ERR_G LOG_STREAM(err, lg::general())
+#define LOG_G LOG_STREAM(info, lg::general())
+#define DBG_G LOG_STREAM(debug, lg::general())
 
 terrain_type_data::terrain_type_data(const config & game_config)
 	: terrainList_()
@@ -26,31 +31,75 @@ terrain_type_data::terrain_type_data(const config & game_config)
 {
 }
 
+void terrain_type_data::lazy_initialization() const
+{
+	if(initialized_)
+		return;
+
+	for (const config &terrain_data : game_config_.child_range("terrain_type"))
+	{
+		terrain_type terrain(terrain_data);
+		DBG_G << "create_terrain_maps: " << terrain.number() << " "
+			<< terrain.id() << " " << terrain.name() << " : " << terrain.editor_group() << "\n";
+
+		std::pair<std::map<t_translation::terrain_code, terrain_type>::iterator, bool> res;
+		res = tcodeToTerrain_.emplace(terrain.number(), terrain);
+		if (!res.second) {
+			terrain_type& curr = res.first->second;
+			if(terrain == curr) {
+				LOG_G << "Merging terrain " << terrain.number()
+					<< ": " << terrain.id() << " (" << terrain.name() << ")\n";
+				std::vector<std::string> eg1 = utils::split(curr.editor_group());
+				std::vector<std::string> eg2 = utils::split(terrain.editor_group());
+				std::set<std::string> egs;
+				bool clean_merge = true;
+				for (std::string& t : eg1) {
+					clean_merge &= egs.insert(t).second;
+				}
+				for (std::string& t : eg2) {
+					clean_merge &= egs.insert(t).second;
+				}
+				std::string joined = utils::join(egs);
+
+				if(clean_merge) {
+					LOG_G << "Editor groups merged to: " << joined << "\n";
+				} else {
+					LOG_G << "Merged terrain " << terrain.number()
+					<< ": " << terrain.id() << " (" << terrain.name() << ") "
+					<< "with duplicate editor groups [" << terrain.editor_group() << "] "
+					<< "and [" << curr.editor_group() << "]\n";
+				}
+				curr.set_editor_group(joined);
+			} else {
+				ERR_G << "Duplicate terrain code definition found for " << terrain.number() << "\n"
+					<< "Failed to add terrain " << terrain.id() << " (" << terrain.name() << ") "
+					<< "[" << terrain.editor_group() << "]" << "\n"
+					<< "which conflicts with  " << curr.id() << " (" << curr.name() << ") "
+					<< "[" << curr.editor_group() << "]" << "\n\n";
+			}
+		} else {
+			terrainList_.push_back(terrain.number());
+		}
+	}
+	initialized_ = true;
+}
+
 const t_translation::ter_list & terrain_type_data::list() const
 {
-	if (!initialized_) {
-		create_terrain_maps(game_config_.child_range("terrain_type"), terrainList_, tcodeToTerrain_);
-		initialized_ = true;
-	}
-
+	lazy_initialization();
 	return terrainList_;
 }
 
 
 const std::map<t_translation::terrain_code, terrain_type> & terrain_type_data::map() const
 {
-	if (!initialized_) {
-		create_terrain_maps(game_config_.child_range("terrain_type"), terrainList_, tcodeToTerrain_);
-		initialized_ = true;
-	}
-
+	lazy_initialization();
 	return tcodeToTerrain_;
 }
 
-
 const terrain_type& terrain_type_data::get_terrain_info(const t_translation::terrain_code & terrain) const
 {
-	auto i = find_or_merge(terrain);
+	auto i = find_or_create(terrain);
 
 	if(i != tcodeToTerrain_.end()) {
 		return i->second;
@@ -62,7 +111,7 @@ const terrain_type& terrain_type_data::get_terrain_info(const t_translation::ter
 
 const t_translation::ter_list& terrain_type_data::underlying_mvt_terrain(const t_translation::terrain_code & terrain) const
 {
-	auto i = find_or_merge(terrain);
+	auto i = find_or_create(terrain);
 
 	if(i == tcodeToTerrain_.end()) {
 		// TODO: At least in some cases (for example when this is called from lua) it
@@ -78,7 +127,7 @@ const t_translation::ter_list& terrain_type_data::underlying_mvt_terrain(const t
 
 const t_translation::ter_list& terrain_type_data::underlying_def_terrain(const t_translation::terrain_code & terrain) const
 {
-	auto i = find_or_merge(terrain);
+	auto i = find_or_create(terrain);
 
 	if(i == tcodeToTerrain_.end()) {
 		static t_translation::ter_list result(1);
@@ -91,8 +140,7 @@ const t_translation::ter_list& terrain_type_data::underlying_def_terrain(const t
 
 const t_translation::ter_list& terrain_type_data::underlying_union_terrain(const t_translation::terrain_code & terrain) const
 {
-	const std::map<t_translation::terrain_code,terrain_type>::const_iterator i =
-		tcodeToTerrain_.find(terrain);
+	auto i = find_or_create(terrain);
 
 	if(i == tcodeToTerrain_.end()) {
 		static t_translation::ter_list result(1);
@@ -105,9 +153,9 @@ const t_translation::ter_list& terrain_type_data::underlying_union_terrain(const
 
 
 
-std::string terrain_type_data::get_terrain_string(const t_translation::terrain_code& terrain) const
+t_string terrain_type_data::get_terrain_string(const t_translation::terrain_code& terrain) const
 {
-	std::string str =
+	t_string str =
 		get_terrain_info(terrain).description();
 
 	str += get_underlying_terrain_string(terrain);
@@ -115,11 +163,11 @@ std::string terrain_type_data::get_terrain_string(const t_translation::terrain_c
 	return str;
 }
 
-std::string terrain_type_data::get_terrain_editor_string(const t_translation::terrain_code& terrain) const
+t_string terrain_type_data::get_terrain_editor_string(const t_translation::terrain_code& terrain) const
 {
-	std::string str =
+	t_string str =
 		get_terrain_info(terrain).editor_name();
-	const std::string desc =
+	const t_string& desc =
 		get_terrain_info(terrain).description();
 
 	if(str != desc) {
@@ -132,8 +180,9 @@ std::string terrain_type_data::get_terrain_editor_string(const t_translation::te
 	return str;
 }
 
-std::string terrain_type_data::get_underlying_terrain_string(const t_translation::terrain_code& terrain) const
+t_string terrain_type_data::get_underlying_terrain_string(const t_translation::terrain_code& terrain) const
 {
+	// lazy_initialization() is handled in underlying_union_terrain
 	std::string str;
 
 	const t_translation::ter_list& underlying = underlying_union_terrain(terrain);
@@ -152,17 +201,24 @@ std::string terrain_type_data::get_underlying_terrain_string(const t_translation
 	return str;
 }
 
-terrain_type_data::tcodeToTerrain_t::const_iterator terrain_type_data::find_or_merge(t_translation::terrain_code terrain) const
+terrain_type_data::tcodeToTerrain_t::const_iterator terrain_type_data::find_or_create(t_translation::terrain_code terrain) const
 {
+	lazy_initialization();
 	auto i = tcodeToTerrain_.find(terrain);
 	if (i != tcodeToTerrain_.end()) {
 		return i;
 	}
 	else {
+		DBG_G << "find_or_create: creating terrain " << terrain << std::endl;
 		auto base_iter    = tcodeToTerrain_.find(t_translation::terrain_code(terrain.base, t_translation::NO_LAYER));
 		auto overlay_iter = tcodeToTerrain_.find(t_translation::terrain_code(t_translation::NO_LAYER, terrain.overlay));
 
 		if(base_iter == tcodeToTerrain_.end() || overlay_iter == tcodeToTerrain_.end()) {
+			// This line is easily reachable, after the player has played multiple
+			// campaigns. The code for showing movetypes for discovered terrains in the
+			// sidebar will query every terrain listed in
+			// preferences::encountered_terrains(), even those that are campaign-specific.
+			// ERR_G << "couldn't find base or overlay for " << terrain << std::endl;
 			return tcodeToTerrain_.end();
 		}
 
@@ -172,29 +228,32 @@ terrain_type_data::tcodeToTerrain_t::const_iterator terrain_type_data::find_or_m
 	}
 }
 
-bool terrain_type_data::try_merge_terrains(const t_translation::terrain_code& terrain)
+bool terrain_type_data::is_known(const t_translation::terrain_code& terrain) const
 {
-	return find_or_merge(terrain) != tcodeToTerrain_.end();
+	// These can't be combined in to a single line, because find_or_create
+	// can change the value of tcodeToTerrain_.end().
+	const auto t = find_or_create(terrain);
+	return t != tcodeToTerrain_.end();
 }
 
-t_translation::terrain_code terrain_type_data::merge_terrains(const t_translation::terrain_code & old_t, const t_translation::terrain_code & new_t, const merge_mode mode, bool replace_if_failed) {
+t_translation::terrain_code terrain_type_data::merge_terrains(const t_translation::terrain_code & old_t, const t_translation::terrain_code & new_t, const merge_mode mode, bool replace_if_failed) const {
 	t_translation::terrain_code result = t_translation::NONE_TERRAIN;
 
 	if(mode == OVERLAY) {
 		const t_translation::terrain_code t = t_translation::terrain_code(old_t.base, new_t.overlay);
-		if (try_merge_terrains(t)) {
+		if (is_known(t)) {
 			result = t;
 		}
 	}
 	else if(mode == BASE) {
 		const t_translation::terrain_code t = t_translation::terrain_code(new_t.base, old_t.overlay);
-		if (try_merge_terrains(t)) {
+		if (is_known(t)) {
 			result = t;
 		}
 	}
 	else if(mode == BOTH && new_t.base != t_translation::NO_LAYER) {
 		// We need to merge here, too, because the dest terrain might be a combined one.
-		if (try_merge_terrains(new_t)) {
+		if (is_known(new_t)) {
 			result = new_t;
 		}
 	}
@@ -202,12 +261,9 @@ t_translation::terrain_code terrain_type_data::merge_terrains(const t_translatio
 	// if merging of overlay and base failed, and replace_if_failed is set,
 	// replace the terrain with the complete new terrain (if given)
 	// or with (default base)^(new overlay)
-	if(result == t_translation::NONE_TERRAIN && replace_if_failed && tcodeToTerrain_.count(new_t) > 0) {
+	if(result == t_translation::NONE_TERRAIN && replace_if_failed && is_known(new_t)) {
 		if(new_t.base != t_translation::NO_LAYER) {
-			// Same as above
-			if (try_merge_terrains(new_t)) {
-				result = new_t;
-			}
+			result = new_t;
 		}
 		else if (get_terrain_info(new_t).default_base() != t_translation::NONE_TERRAIN) {
 			result = get_terrain_info(new_t).terrain_with_default_base();

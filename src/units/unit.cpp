@@ -1939,18 +1939,15 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			description_ = *v;
 		}
 		
-		if(config::const_child_itors cfg_range = effect.child_range("add_special_note")) {
+		if(config::const_child_itors cfg_range = effect.child_range("special_note")) {
 			for(const config& c : cfg_range) {
-				special_notes_.emplace_back(c["note"].t_str());
-			}
-		}
-		
-		if(config::const_child_itors cfg_range = effect.child_range("remove_special_note")) {
-			// TODO: Test that this works properly
-			for(const config& c : cfg_range) {
-				auto iter = std::find(special_notes_.begin(), special_notes_.end(), c["note"].t_str());
-				if(iter != special_notes_.end()) {
-					special_notes_.erase(iter);
+				if(!c["remove"].to_bool()) {
+					special_notes_.emplace_back(c["note"].t_str());
+				} else {
+					auto iter = std::find(special_notes_.begin(), special_notes_.end(), c["note"].t_str());
+					if(iter != special_notes_.end()) {
+						special_notes_.erase(iter);
+					}
 				}
 			}
 		}

@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 19:40 UTC\n"
-"PO-Revision-Date: 2019-09-07 16:38+0200\n"
+"PO-Revision-Date: 2019-09-24 13:21+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:9
@@ -564,7 +564,7 @@ msgstr "Sconfiggi il condottiero nemico"
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:43
 msgid "Death of Sir Kaylan"
-msgstr "Morte di Sir Kaylan"
+msgstr "Morte di Ser Kaylan"
 
 #. [label]
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:57
@@ -574,7 +574,7 @@ msgstr "Porto Acquacupa"
 #. [side]: type=Grand Knight, id=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:78
 msgid "Sir Kaylan"
-msgstr "Sir Kaylan"
+msgstr "Ser Kaylan"
 
 #. [side]: type=Orcish Warrior, id=Mokolo Qimur
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:105
@@ -4331,6 +4331,10 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:583
+#, fuzzy
+#| msgid ""
+#| "Temper your anger. Lord Relgorn’s manner may be rough, but surely there "
+#| "is nothing wrong with his suggestion?"
 msgid ""
 "Temper your anger. Relgorn’s manner may be rough, but surely there is "
 "nothing wrong with his suggestion?"
@@ -4746,15 +4750,18 @@ msgstr "Come faremo?"
 
 #. [message]: speaker=Geldar
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:623
+#, fuzzy
+#| msgid ""
+#| "Northeast o’ my keep, Delfador, the tunnels converge towards the deepest "
+#| "reaches o’ the underground kingdom. The Sceptre can only be there."
 msgid ""
 "Northeast o’ my keep, young human, the tunnels converge towards the deepest "
 "reaches of the underground kingdom. The Sceptre can only be there. Please "
 "accept the service of my guardsmen. These elite warriors will protect you."
 msgstr ""
-"A nord-est del mio castello, giovane umano, i tunnel convergono verso le "
+"A nord-est del mio castello, Delfador, i tunnel convergono verso le "
 "propaggini più profonde del regno sotterraneo. Lo Scettro può trovarsi "
-"soltanto laggiù. Vi prego di accettare la scorta dei miei guardiani: questi "
-"guerrieri scelti vi proteggeranno."
+"soltanto laggiù."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:633
@@ -6110,10 +6117,8 @@ msgstr "Prosegui fino alla fine del fiume"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:84
-#, fuzzy
-#| msgid "Move Konrad to the north side of the river"
 msgid "Move Konrad to the cave"
-msgstr "Sposta Konrad sulla riva settentrionale del fiume"
+msgstr "Sposta Konrad alla caverna"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:92
@@ -8268,21 +8273,21 @@ msgstr "Signori delle pianure"
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:121
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:206
 msgid "Sir Alric"
-msgstr "Sir Alric"
+msgstr "Ser Alric"
 
 #. [then]
 #. [side]: type=Grand Knight, id=Sir Ruga
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:149
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:197
 msgid "Sir Ruga"
-msgstr "Sir Ruga"
+msgstr "Ser Ruga"
 
 #. [then]
 #. [side]: type=Grand Knight, id=Sir Daryn
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:177
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:188
 msgid "Sir Daryn"
-msgstr "Sir Daryn"
+msgstr "Ser Daryn"
 
 #. [then]
 #. [side]: type=Grand Knight, id=Bayar
@@ -8698,7 +8703,7 @@ msgstr "Heford"
 #. [side]: type=Cavalier, id=Sir Kalm
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:141
 msgid "Sir Kalm"
-msgstr "Sir Kalm"
+msgstr "Ser Kalm"
 
 #. [message]: speaker=Asheviere
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:225
@@ -9600,6 +9605,53 @@ msgstr ""
 "Nel mentre, osservava tristemente l’avvento del regno di terrore di "
 "Asheviere su quelle terre..."
 
+#~ msgid ""
+#~ "The dwarves are your allies in this scenario. If you help their leader "
+#~ "survive the battle, he may provide you with useful information."
+#~ msgstr ""
+#~ "In questo scenario, i nani sono tuoi alleati. Se fai in modo che il loro "
+#~ "condottiero sopravviva alla battaglia, potrebbe rivelarti delle "
+#~ "informazioni utili."
+
+#~ msgid ""
+#~ "We have fared little better ourselves, friend. We have fled the "
+#~ "Aethenwood last spring and come to these caves to seek the Sceptre of "
+#~ "Fire. With the Sceptre, we hope to put the war to an end."
+#~ msgstr ""
+#~ "Anche noi abbiamo fatto poco meglio, amico mio. Siamo fuggiti dalla "
+#~ "Foresta di Aethen la scorsa primavera e siamo venuti in queste caverne "
+#~ "per trovare lo Scettro di Fuoco. Con lo Scettro, potremmo pensare di "
+#~ "porre fine alla guerra."
+
+#~ msgid "Lord Relgorn’s troops are fighting at our side, sir."
+#~ msgstr "I soldati di Lord Relgorn combattono ora al nostro fianco, signore."
+
+#~ msgid ""
+#~ "And fine troops they are, Prince, but no dwarf can match a guardsman’s "
+#~ "resolute defense. Please accept the service o’ my clan’s defenders, to "
+#~ "protect you and your quest."
+#~ msgstr ""
+#~ "E sono delle ottime truppe, Principe, ma nessun nano eguagliare la difesa "
+#~ "risoluta di un guardiano. Vi prego di accettare i servigi dei guardiani "
+#~ "del mio clan, per proteggere tu e i tui compagni."
+
+#~ msgid "Defeat one more enemy unit"
+#~ msgid_plural "Defeat $units_to_slay enemy units"
+#~ msgstr[0] "Sconfiggi un’altra unità nemica"
+#~ msgstr[1] "Sconfiggi $units_to_slay unità nemiche"
+
+#~ msgid "Still $units_to_slay clan member to defeat!"
+#~ msgid_plural "Still $units_to_slay clan members to defeat!"
+#~ msgstr[0] "Soltanto un altro membro dei clan da sconfiggere!"
+#~ msgstr[1] "Altri $units_to_slay membri dei clan da sconfiggere!"
+
+#~ msgid ""
+#~ "If you reduce Lord Bayar, Sir Ruga, Sir Daryn, or Sir Alric to 0HP, "
+#~ "you’ll receive a reward!"
+#~ msgstr ""
+#~ "Se riduci a 0 i PF di Lord Bayar, Ser Ruga, Ser Daryn o Ser Alric, "
+#~ "riceverai una ricompensa!"
+
 #~ msgid "Reach the cave"
 #~ msgstr "Raggiungi la caverna"
 
@@ -9617,16 +9669,6 @@ msgstr ""
 
 #~ msgid "Li'sar"
 #~ msgstr "Li'sar"
-
-#~ msgid "Defeat one more enemy unit"
-#~ msgid_plural "Defeat $units_to_slay enemy units"
-#~ msgstr[0] "Sconfiggi un’altra unità nemica"
-#~ msgstr[1] "Sconfiggi $units_to_slay unità nemiche"
-
-#~ msgid "Still $units_to_slay clan member to defeat!"
-#~ msgid_plural "Still $units_to_slay clan members to defeat!"
-#~ msgstr[0] "Soltanto un altro membro dei clan da sconfiggere!"
-#~ msgstr[1] "Altri $units_to_slay membri dei clan da sconfiggere!"
 
 #~ msgid ""
 #~ "A noble by birth, the Princess has learnt swordplay with the greatest "

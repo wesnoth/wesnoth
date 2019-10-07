@@ -1,6 +1,7 @@
 ## Version 1.15.1+dev
  ### AI:
    * Experimental AI: fix guardians being used for village actions
+   * Experimental AI: fix poisoners ignoring [avoid] tag
  ### Campaigns
    * Delfador's Memoirs:
      * S20: Improve leveling of units and give player a note about it (Issue#4219)
@@ -22,10 +23,11 @@
    * Added an editor-only overlay for deprecated terrains (PR#4347)
  ### Language and i18n
    * Updated translations: British English, Czech, Chinese (Simplified), French,
-     Italian, Japanese, Portuguese (Brazil), Russian, Spanish
+     Italian, Japanese, Korean, Portuguese (Brazil), Russian, Spanish
    * Set up for translating the Wings of Victory campaign (PR#4265)
    * Changed the :help command's output to split over multiple lines
    * Added translatable explanations of :droid, :help and :idle's arguments
+   * Allow carets in translatable strings - 'hint^Tb^Tf' will show 'Tb^Tf' to the user
  ### Terrains
    * Added new ^Tf mushroom terrain whose statistics are fungus+base terrain, as suggested by the existing graphics (PR #4299)
    * Added Tb mushroom base terrain, which can be used alone or as Tb^Tf when a terrain with the fungus-only stats is wanted
@@ -49,7 +51,7 @@
    * Special notes for units now use a new system, with a `[special_note]note=` tag.
      * This tag is supported both in `[unit]` and in `[unit_type]`. If used in `[unit]`, it will override the type's notes.
      * Standard special notes should now be added with `{NOTE_*}` instead of `{SPECIAL_NOTES_*}`.
-     * In `[effect]apply_to=profile`, `[add_special_note]` and `[remove_special_note]` are supported.
+     * In `[effect]apply_to=profile`, `[special_note]` is now supported to add/remove special notes.
    * Support for the deprecated "&image.png=text" syntax has been removed in all contexts - use the DescriptionWML attributes instead.
    * Fix infinite recursion in SUF with [hides] and [filter_vision]. (Issue#1389)
    * weapons like abilities support now [filter_weapon] in [filter_student/opponent/attacker/defender] tag like in  true weapons specials and no [filter_weapon/filter_second_weapon] like in [leadership] anymore.
@@ -62,6 +64,7 @@
    * Fixed wmlscope not correctly performing expansion of square braces in filenames in some conditions
    * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
    * Add help text for some debug commands (part of Issue#2500)
+   * Improve the terrain code's encapsulation and documentation (PR#4411)
 
 ## Version 1.15.1
  ### Editor
@@ -237,6 +240,11 @@
      * S1: Fix reference to LoW events
    * The South Guard:
      * Change Halidel to be Deoran's great-grandfather
+   * Tutorial:
+     * S2: Make the first grunt cross the bridge, otherwise the scenario is too hard
+ ### Language and i18n
+   * Updated translations: Chinese (Simplified), Italian, Korean,
+     Portuguese (Brazil)
  ### Lua API
    * wesnoth.deprecate_api was fixed to correctly wrap tables with metatables. (Issue#4079)
  ### User interface

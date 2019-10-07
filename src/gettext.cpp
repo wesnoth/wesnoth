@@ -405,7 +405,7 @@ std::string dsgettext (const char * domainname, const char *msgid)
 {
 	std::string msgval = dgettext (domainname, msgid);
 	if (msgval == msgid) {
-		const char* firsthat = std::strrchr (msgid, '^');
+		const char* firsthat = std::strchr (msgid, '^');
 		if (firsthat == nullptr)
 			msgval = msgid;
 		else
@@ -420,7 +420,7 @@ std::string dsngettext (const char * domainname, const char *singular, const cha
 	std::lock_guard<std::mutex> lock(get_mutex());
 	std::string msgval = bl::dngettext(domainname, singular, plural, n, get_manager().get_locale());
 	if (msgval == singular) {
-		const char* firsthat = std::strrchr (singular, '^');
+		const char* firsthat = std::strchr (singular, '^');
 		if (firsthat == nullptr)
 			msgval = singular;
 		else
