@@ -54,6 +54,11 @@
      * In `[effect]apply_to=profile`, `[special_note]` is now supported to add/remove special notes.
    * Support for the deprecated "&image.png=text" syntax has been removed in all contexts - use the DescriptionWML attributes instead.
    * Fix infinite recursion in SUF with [hides] and [filter_vision]. (Issue#1389)
+   * the {TRAIT_LOYAL} trait now adds the loyal overlay.
+   * the ellipse, overlay & image_mods attributes of units are now reset when a unit advances, this means those
+     attributes should now be default changed via [effect].
+   * new tag [modify_unit_type] that goes into [campaign]/[era]/[modification] and can change some
+     unit type properties like advancement and recruitcosts.
  ### Miscellaneous and bug fixes
    * Fixed :droid's arguments not all being optional (Issue#4308)
    * Ported the "expand-terrain-macros", "wmlflip", "wmlparser", "umc-dev/build/update_version",
@@ -64,6 +69,8 @@
    * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
    * Add help text for some debug commands (part of Issue#2500)
    * Improve the terrain code's encapsulation and documentation (PR#4411)
+   * Fix duration=scenario for units on the recall list.
+   * fix maps with scenario_generation= unavailable in the editor.
 
 ## Version 1.15.1
  ### Editor
@@ -154,6 +161,13 @@
    * Add wml.clone() function that performs a deep copy of a config or vconfig.
    * Organize API functions into several new (sub)modules: gui, wesnoth.units, wesnoth.interface
    * Allow WML tag names injected with wml.tag to start with underscores.
+   * Add a map helper object usable in lua map generators, that supports fast filters.
+     Similar to standard location filters.
+   * The lua map generators can now access (read, not write) game variables, from the end of the previous
+     scenario in campaigns
+   * The [lua] tag now supports a name= attribute, that is used a a name for the lua code in in stacktraces
+   * add wesnoth.generate_default_map to be usabel in lua map generators which just invokes the default map generator.
+   * added game_config.combat experience
  ### User Interface
    * Don't show in the sidebar the time of day schedule of a shrouded hex. (issue #3638)
    * Make unit_weapons report display weapon specials as active/inactive correctly. (issue #4071)
@@ -209,6 +223,11 @@
    * The {SPECIAL_NOTES_*} macros now start with a newline and a bullet point.
    * Support [unit]jamming=
    * Support [movetype]flying= and deprecate [movetype]flies=, for consistency with [unit]flying=
+   * Add [set_menu_item] persistent=yes/no.
+   * [modify_unit] has now a faster lua implementaion for the most common cases.
+   * [unit] moves=-1 no longer removes attacks.
+   * [item] supports a z_order attribute that describes in which order the items are drawn.
+   * New terrain_mask implementation, adds alignment= attibute to terrain_mask.
  ### Miscellaneous and bug fixes
    * Rest healing now happens on turn 2. (issue #3562)
    * Normal healing now happens on turn 1 for all sides except the first. (issue #3562)
