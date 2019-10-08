@@ -280,7 +280,7 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 		map_location recruit_hex = last_hex;
 		int index = dlg.get_selected_index();
 		if (index < 0) {
-			gui2::show_transient_message("", _("No unit recruited"));
+			gui2::show_transient_message("", _("No unit recruited."));
 			return;
 		}
 		do_recruit(sample_units[index]->id(), side_num, recruit_hex);
@@ -312,7 +312,7 @@ bool menu_handler::do_recruit(const std::string& name, int side_num, map_locatio
 			? pc_.get_whiteboard()->get_spent_gold_for(side_num)
 			: 0))
 	{
-		gui2::show_transient_message("", _("You do not have enough gold to recruit that unit"));
+		gui2::show_transient_message("", _("You do not have enough gold to recruit that unit."));
 		return false;
 	}
 
@@ -348,7 +348,7 @@ bool menu_handler::do_recruit(const std::string& name, int side_num, map_locatio
 void menu_handler::recall(int side_num, const map_location& last_hex)
 {
 	if(pc_.get_disallow_recall()) {
-		gui2::show_transient_message("", _("You are separated from your soldiers and may not recall them"));
+		gui2::show_transient_message("", _("You are separated from your soldiers and may not recall them."));
 		return;
 	}
 
@@ -369,11 +369,11 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 
 	if(empty) {
 		gui2::show_transient_message("",
-			_("There are no troops available to recall\n(You must have veteran survivors from a previous scenario)"));
+			_("There are no troops available to recall.\n(You must have veteran survivors from a previous scenario.)"));
 		return;
 	}
 	if(recall_list_team.empty()) {
-		gui2::show_transient_message("", _("You currently can't recall at the highlighted location"));
+		gui2::show_transient_message("", _("You currently can't recall at the highlighted location."));
 		return;
 	}
 
@@ -385,7 +385,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 
 	int res = dlg.get_selected_index();
 	if (res < 0) {
-		gui2::show_transient_message("", _("No unit recalled"));
+		gui2::show_transient_message("", _("No unit recalled."));
 		return;
 	}
 	int unit_cost = current_team.recall_cost();
@@ -402,8 +402,8 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 	if(current_team.gold() - wb_gold < unit_cost) {
 		utils::string_map i18n_symbols;
 		i18n_symbols["cost"] = std::to_string(unit_cost);
-		std::string msg = VNGETTEXT("You must have at least 1 gold piece to recall a unit",
-				"You must have at least $cost gold pieces to recall this unit", unit_cost, i18n_symbols);
+		std::string msg = VNGETTEXT("You must have at least 1 gold piece to recall a unit.",
+				"You must have at least $cost gold pieces to recall this unit.", unit_cost, i18n_symbols);
 		gui2::show_transient_message("", msg);
 		return;
 	}
