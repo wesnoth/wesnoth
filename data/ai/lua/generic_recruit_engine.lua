@@ -785,7 +785,7 @@ return {
             local randomness = params.randomness or 0.1
 
             -- Bonus for higher-level units, as unit cost is penalized otherwise
-            local high_level_fraction = 0.33
+            local high_level_fraction = params.high_level_fraction or 0
             local all_units = AH.get_live_units {
                 side = wesnoth.current.side,
                 { "not", { canrecruit = "yes" }}

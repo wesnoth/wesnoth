@@ -35,6 +35,7 @@ wesnoth.require("ai/lua/generic_recruit_engine.lua").init(dummy_engine, params)
 local ca_recruit_rushers = {}
 
 function ca_recruit_rushers:evaluation(cfg, data)
+    params.high_level_fraction = cfg.high_level_fraction
     return dummy_engine:recruit_rushers_eval()
 end
 
