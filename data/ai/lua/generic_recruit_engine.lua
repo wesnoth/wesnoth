@@ -804,7 +804,15 @@ return {
             if (min_recruit_level < 1) then min_recruit_level = 1 end
             local unit_deficit = {}
             for i=min_recruit_level+1,max_recruit_level do
-                unit_deficit[i] = high_level_fraction ^ (i - min_recruit_level) * #all_units - (level_count[i] or 0)
+                -- If no non-leader units are on the map yet, we set up the situation as if there were
+                -- one of each level. This is in order to get the situation for the first recruit right.
+                local n_units = #all_units
+                local n_units_this_level = level_count[i] or 0
+                if (n_units == 0) then
+                    n_units = max_recruit_level - min_recruit_level
+                    n_units_this_level = 1
+                end
+                unit_deficit[i] = high_level_fraction ^ (i - min_recruit_level) * n_units - n_units_this_level
             end
 
             for i, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
