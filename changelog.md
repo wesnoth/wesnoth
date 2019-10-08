@@ -266,6 +266,8 @@
      Portuguese (Brazil)
  ### Lua API
    * wesnoth.deprecate_api was fixed to correctly wrap tables with metatables. (Issue#4079)
+ ### Multiplayer
+   * Auction X: Exclude the center side from "shuffle sides"
  ### User interface
    * Draw ellipses during draw/sheath animations. (Issue#1527)
    * In the combat dialog and elsewhere, clicking the "Profile" button opens
