@@ -635,7 +635,6 @@ public:
 
 private:
 	void read(const config& cfg);
-	bool validate_zoom_level_and_set_index(unsigned int &new_zoom, int &new_zoom_index);
 
 public:
 	/** Init the flag list and the team colors used by ~TC */

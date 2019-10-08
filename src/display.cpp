@@ -89,6 +89,31 @@ namespace {
 unsigned int display::zoom_ = DefaultZoom;
 unsigned int display::last_zoom_ = SmallZoom;
 
+// Factored out of set_zoom() so it can be re-used in constructor (loading from preferences)
+// new_zoom is the zoom factor (corresponding to display::zoom_)
+// new_zoom_index is the index of zoom_levels corresponding to zoom (corresponding to display::zoom_index_)
+// Returns true when validated and and zoom_index set and false if zoom cannot be validated (in which case parameters remain unchanged)
+static bool validate_zoom_level_and_set_index(unsigned int& new_zoom, int& new_zoom_index)
+{
+	auto iter = std::lower_bound(zoom_levels.begin(), zoom_levels.end(), new_zoom);
+
+	if(iter == zoom_levels.end()) {
+		return false;
+	} else if(iter != zoom_levels.begin()) {
+		float diff = *iter - *(iter - 1);
+		float lower = (new_zoom - *(iter - 1)) / diff;
+		float upper = (*iter - new_zoom) / diff;
+		if(lower < upper) {
+			// It's actually closer to the previous element.
+			iter--;
+		}
+	}
+
+	new_zoom = *iter;
+	new_zoom_index = std::distance(zoom_levels.begin(), iter);
+	return true;
+}
+
 void display::parse_team_overlays()
 {
 	const team& curr_team = dc_->teams()[playing_team()];
@@ -2045,28 +2070,6 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 	// This prevents some graphic glitches from occurring.
 	draw();
 
-	return true;
-}
-
-bool display::validate_zoom_level_and_set_index(unsigned int& new_zoom, int &new_zoom_index)
-{
-	auto iter = std::lower_bound(zoom_levels.begin(), zoom_levels.end(), new_zoom);
-
-	if(iter == zoom_levels.end()) {
-		// This should never happen, since the value was already clamped earlier
-		return false;
-	} else if(iter != zoom_levels.begin()) {
-		float diff = *iter - *(iter - 1);
-		float lower = (new_zoom - *(iter - 1)) / diff;
-		float upper = (*iter - new_zoom) / diff;
-		if(lower < upper) {
-			// It's actually closer to the previous element.
-			iter--;
-		}
-	}
-
-	new_zoom = *iter;
-	new_zoom_index = std::distance(zoom_levels.begin(), iter);
 	return true;
 }
 
