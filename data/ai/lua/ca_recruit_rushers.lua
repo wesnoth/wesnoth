@@ -36,6 +36,7 @@ local ca_recruit_rushers = {}
 
 function ca_recruit_rushers:evaluation(cfg, data)
     params.high_level_fraction = cfg.high_level_fraction
+    params.randomness = cfg.randomness
     return dummy_engine:recruit_rushers_eval()
 end
 
