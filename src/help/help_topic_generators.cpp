@@ -724,19 +724,11 @@ std::string unit_topic_generator::operator()() const {
 				font::line_width(m.name, normal_font_size) + (high_res ? 32 : 16) );
 
 			//defense  -  range: +10 % .. +70 %
-			std::string color;
-			if (m.defense <= 10) {
-				color = "red";
-			} else if (m.defense <= 30) {
-				color = "yellow";
-			} else if (m.defense <= 50) {
-				color = "white";
-			} else {
-				color = "green";
-			}
+			// passing false to select the more saturated red-to-green scale
+			std::string color = game_config::red_to_green(m.defense, false).to_hex_string();
 
 			std::stringstream str;
-			str << "<format>color=" << color << " text='"<< m.defense << "%'</format>";
+			str << "<format>color='" << color << "' text='"<< m.defense << "%'</format>";
 			std::string markup = str.str();
 			str.str(clear_stringstream);
 			str << m.defense << "%";
