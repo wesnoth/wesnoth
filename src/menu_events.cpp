@@ -301,6 +301,8 @@ bool menu_handler::do_recruit(const std::string& name, int side_num, map_locatio
 
 	// search for the unit to be recruited in recruits
 	if(!utils::contains(actions::get_recruits(side_num, loc), name)) {
+		gui2::show_transient_message("", VGETTEXT("You cannot recruit a $unit_type_name at this time",
+				utils::string_map { { "unit_type_name", u_type->type_name() }}));
 		return false;
 	}
 
