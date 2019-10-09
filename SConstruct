@@ -73,6 +73,7 @@ opts.AddVariables(
     PathVariable('datadirname', 'sets the name of data directory', "wesnoth$version_suffix", PathVariable.PathAccept),
     PathVariable('desktopdir', 'sets the desktop entry directory to a non-default location', "$datarootdir/applications", PathVariable.PathAccept),
     PathVariable('icondir', 'sets the icons directory to a non-default location', "$datarootdir/icons", PathVariable.PathAccept),
+    PathVariable('mimedir', 'sets the mimetype directory to a non-default location', "$datarootdir/mime/packages", PathVariable.PathAccept),
     PathVariable('appdatadir', 'sets the appdata directory to a non-default location', "$datarootdir/metainfo", PathVariable.PathAccept),
     BoolVariable('internal_data', 'Set to put data in Mac OS X application fork', False),
     PathVariable('localedirname', 'sets the locale data directory to a non-default location', "translations", PathVariable.PathAccept),
@@ -745,6 +746,8 @@ InstallManpages(env, "wesnoth")
 if have_client_prereqs and have_X and env["desktop_entry"]:
      env.InstallData("icondir", "wesnoth", "packaging/icons")
      env.InstallData("desktopdir", "wesnoth", "packaging/org.wesnoth.Wesnoth.desktop")
+     env.InstallData("desktopdir", "wesnoth", "packaging/org.wesnoth.Wesnoth_Editor.desktop")
+     env.InstallData("mimedir", "wesnoth", "packaging/org.wesnoth.Wesnoth.xml")
 if have_client_prereqs and "linux" in sys.platform and env["appdata_file"]:
      env.InstallData("appdatadir", "wesnoth", "packaging/org.wesnoth.Wesnoth.appdata.xml")
 

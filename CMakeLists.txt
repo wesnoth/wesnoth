@@ -595,8 +595,10 @@ endif(ENABLE_CAMPAIGN_SERVER AND NOT ENABLE_GAME)
 # Install desktop file so wesnoth appears in the application start menu with an icon
 #
 if(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
-	install(FILES packaging/org.wesnoth.Wesnoth.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications )
 	install(DIRECTORY packaging/icons/hicolor DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons )
+	install(FILES packaging/org.wesnoth.Wesnoth.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications )
+	install(FILES packaging/org.wesnoth.Wesnoth_Editor.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications )
+	install(FILES packaging/org.wesnoth.Wesnoth.xml DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/mime/packages )
 endif(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
 
 if(ENABLE_APPDATA_FILE AND ENABLE_GAME)

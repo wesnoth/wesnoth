@@ -1,0 +1,12 @@
+[Desktop Entry]
+NoDisplay=True
+Version=1.0
+Type=Application
+Name=Battle for Wesnoth (Map Editor)
+GenericName=Map editor of a strategy game
+GenericName[de]=Karteneditor eines Strategiespiels
+Comment=Map Editor of a turn-based strategy game
+Comment[de]=Karteneditor eines rundenbasierten Strategiespiels
+Icon=wesnoth_editor-icon
+Exec=sh -c "wesnoth -e -l %u >/dev/null 2>&1"
+MimeType=application/x-wesnoth-map;
