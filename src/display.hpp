@@ -732,11 +732,18 @@ protected:
 	CVideo& screen_;
 	size_t currentTeam_;
 	bool dont_show_all_; //const team *viewpoint_;
+	/// Position of the top-left corner of the viewport, in pixels.
+	///
+	/// Dependent on zoom_.. For example, ypos_==72 only means we're one
+	/// hex below the top of the map when zoom_ == 72 (the default value).
 	int xpos_, ypos_;
 	bool view_locked_;
 	theme theme_;
+	/// The current zoom, in pixels (on screen) per 72 pixels (in the
+	/// graphic assets), i.e., 72 means 100%.
 	static unsigned int zoom_;
 	int zoom_index_;
+	/// The previous value of zoom_.
 	static unsigned int last_zoom_;
 	const std::unique_ptr<fake_unit_manager> fake_unit_man_;
 	const std::unique_ptr<terrain_builder> builder_;

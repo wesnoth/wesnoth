@@ -86,10 +86,10 @@ public:
 	/** Overlays another map onto this one at the given position. */
 	void overlay(const gamemap& m, const config& rules, map_location loc);
 
-	/** Effective map width. */
+	/** Effective map width, in hexes. */
 	int w() const { return w_; }
 
-	/** Effective map height. */
+	/** Effective map height, in hexes. */
 	int h() const { return h_; }
 
 	/** Size of the map border. */
