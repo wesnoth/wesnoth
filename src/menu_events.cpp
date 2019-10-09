@@ -295,55 +295,64 @@ void menu_handler::repeat_recruit(int side_num, const map_location& last_hex)
 	}
 }
 
-bool menu_handler::do_recruit(const std::string& name, int side_num, map_location& loc)
+std::string menu_handler::can_recruit(const std::string& name, int side_num, map_location& loc, map_location& recruited_from)
 {
 	team& current_team = board().get_team(side_num);
 
-	// search for the unit to be recruited in recruits
-	if(!utils::contains(actions::get_recruits(side_num, loc), name)) {
-		gui2::show_transient_message("", VGETTEXT("You cannot recruit a $unit_type_name at this time",
-				utils::string_map { { "unit_type_name", u_type->type_name() }}));
-		return false;
+	const unit_type* u_type = unit_types.find(name);
+	if(u_type == nullptr) {
+		return _("Internal error. Please report this as a bug! Details:\n")
+			+ "menu_handler::can_recruit: u_type == nullptr for " + name;
 	}
 
-	const unit_type* u_type = unit_types.find(name);
-	assert(u_type);
+	// search for the unit to be recruited in recruits
+	if(!utils::contains(actions::get_recruits(side_num, loc), name)) {
+		return VGETTEXT("You cannot recruit a $unit_type_name at this time.",
+				utils::string_map { { "unit_type_name", u_type->type_name() }});
+	}
 
 	if(u_type->cost() > current_team.gold() - (pc_.get_whiteboard()
 			? pc_.get_whiteboard()->get_spent_gold_for(side_num)
 			: 0))
 	{
-		gui2::show_transient_message("", _("You do not have enough gold to recruit that unit."));
-		return false;
+		return _("You do not have enough gold to recruit that unit.");
 	}
 
 	current_team.last_recruit(name);
 	const events::command_disabler disable_commands;
 
-	map_location recruited_from = map_location::null_location();
-
-	std::string msg;
 	{
 		wb::future_map_if_active future; /* start planned unit map scope if in planning mode */
-		msg = actions::find_recruit_location(side_num, loc, recruited_from, name);
+		std::string msg = actions::find_recruit_location(side_num, loc, recruited_from, name);
+		if(!msg.empty()) {
+			return msg;
+		}
 	} // end planned unit map scope
 
-	if(!msg.empty()) {
-		gui2::show_transient_message("", msg);
-		return false;
-	}
+	return "";
+}
 
-	if(!pc_.get_whiteboard() || !pc_.get_whiteboard()->save_recruit(name, side_num, loc)) {
+bool menu_handler::do_recruit(const std::string& name, int side_num, map_location& loc)
+{
+	map_location recruited_from = map_location::null_location();
+	const std::string res = can_recruit(name, side_num, loc, recruited_from);
+	team& current_team = board().get_team(side_num);
+
+	if(res.empty() && (!pc_.get_whiteboard() || !pc_.get_whiteboard()->save_recruit(name, side_num, loc))) {
 		// MP_COUNTDOWN grant time bonus for recruiting
 		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
 		// Do the recruiting.
 
-		synced_context::run_and_throw("recruit", replay_helper::get_recruit(u_type->id(), loc, recruited_from));
+		synced_context::run_and_throw("recruit", replay_helper::get_recruit(name, loc, recruited_from));
 		return true;
+	} else if(res.empty()) {
+		return false;
+	} else {
+		gui2::show_transient_message("", res);
+		return false;
 	}
 
-	return false;
 }
 
 void menu_handler::recall(int side_num, const map_location& last_hex)
