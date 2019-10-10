@@ -287,14 +287,9 @@ void display::init_flags() {
 	image::set_team_colors(&side_colors);
 }
 
-void display::reinit_flags_for_side(std::size_t side)
+void display::reinit_flags_for_team(const team& t)
 {
-	if (!dc_ || side >= dc_->teams().size()) {
-		ERR_DP << "Cannot rebuild flags for inexistent or unconfigured side " << side << '\n';
-		return;
-	}
-
-	init_flags_for_side_internal(side, dc_->teams()[side].color());
+	init_flags_for_side_internal(t.side() - 1, t.color());
 }
 
 void display::init_flags_for_side_internal(std::size_t n, const std::string& side_color)

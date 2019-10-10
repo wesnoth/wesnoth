@@ -133,7 +133,7 @@ static int impl_side_set(lua_State *L)
 	const auto& reinit_flag_for_team = [&L] (const team& t) -> void {
 		auto* disp = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).get_display();
 		if(disp) {
-			disp->reinit_flags_for_side(t.side() - 1);
+			disp->reinit_flags_for_team(t);
 		}
 	};
 	// Find the corresponding attribute.

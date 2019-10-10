@@ -641,7 +641,7 @@ public:
 	void init_flags();
 
 	/** Rebuild the flag list (not team colors) for a single side. */
-	void reinit_flags_for_side(std::size_t side);
+	void reinit_flags_for_team(const team&);
 	void reset_reports(reports& reports_object)
 	{
 		reports_object_ = &reports_object;
