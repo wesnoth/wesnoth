@@ -254,7 +254,7 @@ bool menu_handler::has_friends() const
 
 void menu_handler::recruit(int side_num, const map_location& last_hex)
 {
-	std::vector<const unit_type*> sample_units;
+	std::map<const unit_type*, std::string> sample_units;
 
 	std::set<std::string> recruits = actions::get_recruits(side_num, last_hex);
 
@@ -265,7 +265,9 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 			return;
 		}
 
-		sample_units.push_back(type);
+		map_location ignored;
+		map_location recruit_hex = last_hex;
+		sample_units[type] = (can_recruit(type->id(), side_num, recruit_hex, ignored));
 	}
 
 	if(sample_units.empty()) {
@@ -315,7 +317,7 @@ std::string menu_handler::can_recruit(const std::string& name, int side_num, map
 			? pc_.get_whiteboard()->get_spent_gold_for(side_num)
 			: 0))
 	{
-		return _("You do not have enough gold to recruit that unit.");
+		return _("You do not have enough gold to recruit this unit.");
 	}
 
 	current_team.last_recruit(name);
