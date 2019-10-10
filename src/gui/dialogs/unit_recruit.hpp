@@ -29,9 +29,9 @@ class unit_recruit : public modal_dialog
 public:
 	unit_recruit(std::vector<const unit_type*>& recruit_list, team& team);
 
-	int get_selected_index() const
+	const unit_type *get_selected_unit_type() const
 	{
-		return selected_index_;
+		return selected_index_ < 0 ? nullptr : recruit_list_[selected_index_];
 	}
 
 private:
