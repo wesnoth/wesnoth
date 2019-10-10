@@ -134,28 +134,15 @@ void unit_recruit::pre_show(window& window)
 		std::string	image_string = recruit->image() + "~RC(" + recruit->flag_rgb() + ">"
 			+ team_.color() + ")";
 
-		int wb_gold = 0;
-		if(resources::controller) {
-			if(const std::shared_ptr<wb::manager>& whiteb = resources::controller->get_whiteboard()) {
-				wb::future_map future; // So gold takes into account planned spending
-				wb_gold = whiteb->get_spent_gold_for(team_.side());
-			}
-		}
-
-		/// TODO: The name is historical. This is false whenever the unit is not recruitable, not just for gold issues.
-		const bool can_afford = (error.empty() && recruit->cost() <= team_.gold() - wb_gold);
+		/// TODO: The name is historical. This is false whenever the unit is not recruitable.
+		const bool can_afford = error.empty();
 
 		const std::string cost_string = std::to_string(recruit->cost());
 
 		column["use_markup"] = "true";
 		if(!error.empty()) {
-			column["tooltip"] = error;
-		} else if(!can_afford) {
 			// Just set the tooltip on every single element in this row.
-			if(wb_gold > 0)
-				column["tooltip"] = _("This unit cannot be recruited because you will not have enough gold at this point in your plan.");
-			else
-				column["tooltip"] = _("This unit cannot be recruited because you do not have enough gold.");
+			column["tooltip"] = error;
 		}
 
 		column["label"] = image_string + (can_afford ? "" : "~GS()");

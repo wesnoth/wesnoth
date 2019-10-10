@@ -298,6 +298,9 @@ void menu_handler::repeat_recruit(int side_num, const map_location& last_hex)
 	}
 }
 
+// TODO: Return multiple strings here, in case more than one error applies? For
+// example, if you start AOI S5 with 0GP and recruit a Mage, two reasons apply,
+// leader not on keep (extrarecruit=Mage) and not enough gold.
 std::string menu_handler::can_recruit(const std::string& name, int side_num, map_location& loc, map_location& recruited_from)
 {
 	team& current_team = board().get_team(side_num);
@@ -314,11 +317,19 @@ std::string menu_handler::can_recruit(const std::string& name, int side_num, map
 				utils::string_map { { "unit_type_name", u_type->type_name() }});
 	}
 
-	if(u_type->cost() > current_team.gold() - (pc_.get_whiteboard()
-			? pc_.get_whiteboard()->get_spent_gold_for(side_num)
-			: 0))
+	// TODO take a wb::future_map RAII as unit_recruit::pre_show does
+	int wb_gold = 0;
 	{
-		return _("You do not have enough gold to recruit this unit.");
+		wb::future_map future;
+		wb_gold = (pc_.get_whiteboard() ? pc_.get_whiteboard()->get_spent_gold_for(side_num) : 0);
+	}
+	if(u_type->cost() > current_team.gold() - wb_gold)
+	{
+		if(wb_gold > 0)
+			// TRANSLATORS: "plan" refers to Planning Mode
+			return _("At this point in your plan, you will not have enough gold to recruit this unit.");
+		else
+			return _("You do not have enough gold to recruit this unit.");
 	}
 
 	current_team.last_recruit(name);
