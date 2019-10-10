@@ -1620,7 +1620,8 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			const simple_wml::node::child_list& sides = g.get_sides_list();
 			for(unsigned side_index = 0; side_index < sides.size(); ++side_index) {
 				const simple_wml::node& side = *sides[side_index];
-				user_handler_->db_insert_game_player_info(uuid_, g.id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_bool(), side["faction"].to_string());
+				std::string version = player_connections_.get<name_t>().find(side["player_id"].to_string())->info().version();
+				user_handler_->db_insert_game_player_info(uuid_, g.id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_bool(), side["faction"].to_string(), version);
 			}
 
 			const std::string mods = multiplayer["active_mods"].to_string();
