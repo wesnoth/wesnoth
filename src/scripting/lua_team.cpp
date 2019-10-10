@@ -130,6 +130,12 @@ static int impl_side_set(lua_State *L)
 	team &t = luaW_checkteam(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 
+	const auto& reinit_flag_for_team = [&L] (const team& t) -> void {
+		auto* disp = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).get_display();
+		if(disp) {
+			disp->reinit_flags_for_side(t.side() - 1);
+		}
+	};
 	// Find the corresponding attribute.
 	modify_int_attrib("gold", t.set_gold(value));
 	modify_tstring_attrib("objectives", t.set_objectives(value, true));
@@ -141,16 +147,17 @@ static int impl_side_set(lua_State *L)
 	modify_bool_attrib("objectives_changed", t.set_objectives_changed(value));
 	modify_bool_attrib("hidden", t.set_hidden(value));
 	modify_bool_attrib("scroll_to_leader", t.set_scroll_to_leader(value));
+	modify_string_attrib("flag", {
+		t.set_flag(value);
+		reinit_flag_for_team(t);
+	});
 	modify_string_attrib("flag_icon", t.set_flag_icon(value));
 	modify_tstring_attrib("user_team_name", t.change_team(t.team_name(), value));
 	modify_string_attrib("team_name", t.change_team(value, t.user_team_name()));
 	modify_string_attrib("controller", t.change_controller_by_wml(value));
 	modify_string_attrib("color", {
-		auto* disp = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).get_display();
 		t.set_color(value);
-		if(disp) {
-			disp->reinit_flags_for_side(t.side());
-		}
+		reinit_flag_for_team(t);
 	});
 	modify_string_attrib("defeat_condition", t.set_defeat_condition_string(value));
 	modify_int_attrib("carryover_percentage", t.set_carryover_percentage(value));
