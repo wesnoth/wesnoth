@@ -42,15 +42,20 @@ namespace dialogs
 
 REGISTER_DIALOG(unit_recruit)
 
-unit_recruit::unit_recruit(std::vector<const unit_type*>& recruit_list, team& team)
-	: recruit_list_(recruit_list)
+unit_recruit::unit_recruit(std::map<const unit_type*, std::string>& recruit_map, team& team)
+	: recruit_list_()
+	, recruit_map_(recruit_map)
 	, team_(team)
 	, selected_index_(0)
 {
+	for(const auto& pair : recruit_map) {
+		recruit_list_.push_back(pair.first);
+	}
 	// Ensure the recruit list is sorted by name
 	std::sort(recruit_list_.begin(), recruit_list_.end(), [](const unit_type* t1, const unit_type* t2) {
 		return t1->type_name().str() < t2->type_name().str();
 	});
+
 }
 
 static const color_t inactive_row_color(0x96, 0x96, 0x96);
@@ -122,6 +127,7 @@ void unit_recruit::pre_show(window& window)
 
 	for(const auto& recruit : recruit_list_)
 	{
+		const std::string& error = recruit_map_[recruit];
 		std::map<std::string, string_map> row_data;
 		string_map column;
 
@@ -136,12 +142,15 @@ void unit_recruit::pre_show(window& window)
 			}
 		}
 
-		const bool can_afford = recruit->cost() <= team_.gold() - wb_gold;
+		/// TODO: The name is historical. This is false whenever the unit is not recruitable, not just for gold issues.
+		const bool can_afford = (error.empty() && recruit->cost() <= team_.gold() - wb_gold);
 
 		const std::string cost_string = std::to_string(recruit->cost());
 
 		column["use_markup"] = "true";
-		if(!can_afford) {
+		if(!error.empty()) {
+			column["tooltip"] = error;
+		} else if(!can_afford) {
 			// Just set the tooltip on every single element in this row.
 			if(wb_gold > 0)
 				column["tooltip"] = _("This unit cannot be recruited because you will not have enough gold at this point in your plan.");
