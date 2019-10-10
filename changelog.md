@@ -44,6 +44,7 @@
      are grayed out. (PR#4362, part of Issue#1282)
    * Hide the "Suppose Dead" key from the hotkeys list (it does nothing since 1.9.12)
    * Status table: In replays with "View: Full Map", show all sides' gold status (Issue#4410)
+   * Sidebar: In replays with "View: Full Map", show all enemy units in "Damage versus:" tooltip
  ### Lua API
    * Accessing wesnoth.theme_items.unit_status no longer prevents the unit
      status (poisoned/slowed/etc) from being shown in the sidebar. (Issue#4079)

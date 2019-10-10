@@ -27,6 +27,7 @@
 #include "pathfind/pathfind.hpp"
 #include "picture.hpp"
 #include "reports.hpp"
+#include "resources.hpp"
 #include "color.hpp"
 #include "team.hpp"
 #include "terrain/movement.hpp"
@@ -884,8 +885,8 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 			if (!unit_team.is_enemy(enemy.side()))
 				continue;
 			const map_location &loc = enemy.get_location();
-			if (viewing_team.fogged(loc) ||
-				(viewing_team.is_enemy(enemy.side()) && enemy.invisible(loc)))
+			const bool see_all = game_config::debug || rc.screen().show_everything();
+			if (!enemy.is_visible_to_team(viewing_team, see_all))
 				continue;
 			bool new_type = seen_types.insert(enemy.type_id()).second;
 			if (new_type) {
