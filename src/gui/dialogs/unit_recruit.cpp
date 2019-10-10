@@ -60,9 +60,9 @@ unit_recruit::unit_recruit(std::map<const unit_type*, std::string>& recruit_map,
 
 static const color_t inactive_row_color(0x96, 0x96, 0x96);
 
-static inline std::string can_afford_unit(const std::string& text, const bool can_afford)
+static inline std::string gray_if_unrecruitable(const std::string& text, const bool is_recruitable)
 {
-	return can_afford ? text : font::span_color(inactive_row_color, text);
+	return is_recruitable ? text : font::span_color(inactive_row_color, text);
 }
 
 // Compare unit_create::filter_text_change
@@ -134,8 +134,7 @@ void unit_recruit::pre_show(window& window)
 		std::string	image_string = recruit->image() + "~RC(" + recruit->flag_rgb() + ">"
 			+ team_.color() + ")";
 
-		/// TODO: The name is historical. This is false whenever the unit is not recruitable.
-		const bool can_afford = error.empty();
+		const bool is_recruitable = error.empty();
 
 		const std::string cost_string = std::to_string(recruit->cost());
 
@@ -145,17 +144,17 @@ void unit_recruit::pre_show(window& window)
 			column["tooltip"] = error;
 		}
 
-		column["label"] = image_string + (can_afford ? "" : "~GS()");
+		column["label"] = image_string + (is_recruitable ? "" : "~GS()");
 		row_data.emplace("unit_image", column);
 
-		column["label"] = can_afford_unit(recruit->type_name(), can_afford);
+		column["label"] = gray_if_unrecruitable(recruit->type_name(), is_recruitable);
 		row_data.emplace("unit_type", column);
 
-		column["label"] = can_afford_unit(cost_string, can_afford);
+		column["label"] = gray_if_unrecruitable(cost_string, is_recruitable);
 		row_data.emplace("unit_cost", column);
 
 		grid& grid = list.add_row(row_data);
-		if(!can_afford) {
+		if(!is_recruitable) {
 			image *gold_icon = dynamic_cast<image*>(grid.find("gold_icon", false));
 			assert(gold_icon);
 			gold_icon->set_image(gold_icon->get_image() + "~GS()");
