@@ -43,7 +43,6 @@
    * In the recruit dialog and recall dialog, units that are too expensive to recruit/recall
      are grayed out. (PR#4362, part of Issue#1282)
    * Hide the "Suppose Dead" key from the hotkeys list (it does nothing since 1.9.12)
-   * Status table: In replays with "View: Full Map", show all sides' gold status (Issue#4410)
    * Sidebar: In replays with "View: Full Map", show all enemy units in "Damage versus:" tooltip
  ### Lua API
    * Accessing wesnoth.theme_items.unit_status no longer prevents the unit
@@ -276,6 +275,7 @@
    * In the combat dialog and elsewhere, clicking the "Profile" button opens
      the help on the correct unit variation (e.g., Walking Corpse (Swimmer)).
      (Issue#4142)
+   * Status table: In replays with "View: Full Map", show all sides' gold status (Issue#4410)
  ### Miscellaneous and bug fixes
    * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
    * Add help text for some debug commands (part of Issue#2500)
