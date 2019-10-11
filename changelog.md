@@ -21,6 +21,7 @@
      * Slight dialog improvements
  ### Editor
    * Added an editor-only overlay for deprecated terrains (PR#4347)
+   * Re-enabled and updated the editor topics in the help browser (PR#4414)
  ### Language and i18n
    * Updated translations: British English, Czech, Chinese (Simplified), French,
      Italian, Japanese, Korean, Portuguese (Brazil), Russian, Spanish
@@ -42,6 +43,8 @@
    * In the recruit dialog and recall dialog, units that are too expensive to recruit/recall
      are grayed out. (PR#4362, part of Issue#1282)
    * Hide the "Suppose Dead" key from the hotkeys list (it does nothing since 1.9.12)
+   * Sidebar: In replays with "View: Full Map", show all enemy units in "Damage versus:" tooltip
+   * Multiplayer Create Game screen now shows map previews for scenarios that use map_file=. (PR#4407)
  ### Lua API
    * Accessing wesnoth.theme_items.unit_status no longer prevents the unit
      status (poisoned/slowed/etc) from being shown in the sidebar. (Issue#4079)
@@ -54,6 +57,12 @@
      * In `[effect]apply_to=profile`, `[special_note]` is now supported to add/remove special notes.
    * Support for the deprecated "&image.png=text" syntax has been removed in all contexts - use the DescriptionWML attributes instead.
    * Fix infinite recursion in SUF with [hides] and [filter_vision]. (Issue#1389)
+   * The {TRAIT_LOYAL} trait now adds the loyal overlay.
+   * The ellipse, overlay & image_mods attributes of units are now reset when a unit advances. This means those
+     attributes should now by default changed via [effect].
+   * New tag [modify_unit_type] that goes into [campaign]/[era]/[modification] and can change some
+     unit type properties like advancement and recruit costs.
+   * New debug command :terrain for changing the terrain of the selected hex (PR#4405)
    * weapons like abilities support now [filter_weapon] in [filter_student/opponent/attacker/defender] tag like in  true weapons specials and no [filter_weapon/filter_second_weapon] like in [leadership] anymore.
  ### Miscellaneous and bug fixes
    * Fixed :droid's arguments not all being optional (Issue#4308)
@@ -65,6 +74,8 @@
    * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
    * Add help text for some debug commands (part of Issue#2500)
    * Improve the terrain code's encapsulation and documentation (PR#4411)
+   * Fix duration=scenario objects expiry for units on the recall list at scenario end.
+   * Fix maps with scenario_generation= were unavailable in the editor.
 
 ## Version 1.15.1
  ### Editor
@@ -155,6 +166,13 @@
    * Add wml.clone() function that performs a deep copy of a config or vconfig.
    * Organize API functions into several new (sub)modules: gui, wesnoth.units, wesnoth.interface
    * Allow WML tag names injected with wml.tag to start with underscores.
+   * Add a map helper object usable in lua map generators, that supports fast filters.
+     Similar to standard location filters.
+   * The lua map generators can now access (read, not write) game variables, from the end of the previous
+     scenario in campaigns
+   * The [lua] tag now supports a name= attribute, that is used a a name for the lua code in in stack traces
+   * Add wesnoth.generate_default_map to be usable in lua map generators which just invokes the default map generator.
+   * Add game_config.combat_experience
  ### User Interface
    * Don't show in the sidebar the time of day schedule of a shrouded hex. (issue #3638)
    * Make unit_weapons report display weapon specials as active/inactive correctly. (issue #4071)
@@ -210,6 +228,11 @@
    * The {SPECIAL_NOTES_*} macros now start with a newline and a bullet point.
    * Support [unit]jamming=
    * Support [movetype]flying= and deprecate [movetype]flies=, for consistency with [unit]flying=
+   * Add [set_menu_item] persistent=yes/no.
+   * [modify_unit] now has a faster lua implementaion for the most common cases.
+   * [unit] moves=-1 no longer removes attacks.
+   * [item] supports a z_order attribute that describes in which order the items are drawn.
+   * New terrain_mask implementation, adds alignment= attibute to terrain_mask.
  ### Miscellaneous and bug fixes
    * Rest healing now happens on turn 2. (issue #3562)
    * Normal healing now happens on turn 1 for all sides except the first. (issue #3562)
@@ -247,11 +270,16 @@
      Portuguese (Brazil)
  ### Lua API
    * wesnoth.deprecate_api was fixed to correctly wrap tables with metatables. (Issue#4079)
+ ### Multiplayer
+   * Auction X: Exclude the center side from "shuffle sides"
+ ### Units
+   * Sun Singer and Sun Sylph: modify faerie fire colors
  ### User interface
    * Draw ellipses during draw/sheath animations. (Issue#1527)
    * In the combat dialog and elsewhere, clicking the "Profile" button opens
      the help on the correct unit variation (e.g., Walking Corpse (Swimmer)).
      (Issue#4142)
+   * Status table: In replays with "View: Full Map", show all sides' gold status (Issue#4410)
  ### Miscellaneous and bug fixes
    * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
    * Add help text for some debug commands (part of Issue#2500)

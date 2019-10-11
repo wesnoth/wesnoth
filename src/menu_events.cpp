@@ -1103,6 +1103,7 @@ protected:
 
 	void do_refresh();
 	void do_droid();
+	void do_terrain();
 	void do_idle();
 	void do_theme();
 	void do_control();
@@ -1194,6 +1195,9 @@ protected:
 				// which must be a side-number and then optionally one of "on", "off" or "full".
 				// As with the command's name, "on", "off" and "full" are hardcoded, and shouldn't change in the translation.
 				_("[<side> [on/off/full]]\n“on” = enable but retain vision, “full” = as if it’s controlled by another player"));
+		register_command("terrain", &console_handler::do_terrain, _("Change terrain type of current hex"),
+				// TRANSLATORS: [both|base|overlay] are hardcoded literal arguments and shouldn't be translated.
+				_("<terrain type> [both|base|overlay]"), "DS");
 		register_command("idle", &console_handler::do_idle, _("Switch a side to/from idle state."),
 				// TRANSLATORS: These are the arguments accepted by the "idle" command,
 				// which must be a side-number and then optionally "on" or "off".
@@ -1499,6 +1503,25 @@ void console_handler::do_droid()
 		}
 	}
 	menu_handler_.textbox_info_.close(*menu_handler_.gui_);
+}
+
+void console_handler::do_terrain()
+{
+	// :terrain [<terrain type> [both|base|overlay]]
+	const std::string terrain_type = get_arg(1);
+	const std::string mode_str = get_arg(2);
+
+	const mouse_handler& mousehandler = menu_handler_.pc_.get_mouse_handler_base();
+	const map_location& loc = mousehandler.get_last_hex();
+
+	synced_context::run_and_throw("debug_terrain",
+		config {
+			"x", loc.wml_x(),
+			"y", loc.wml_y(),
+			"terrain_type", terrain_type,
+			"mode_str", mode_str,
+		}
+	);
 }
 
 void console_handler::do_idle()
