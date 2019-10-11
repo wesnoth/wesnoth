@@ -9,6 +9,9 @@ cache:
   directories:
     - $HOME/build-cache
 
+git:
+  depth: 5
+
 matrix:
   include:
     - compiler: gcc
