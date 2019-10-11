@@ -8,8 +8,13 @@ assignees: ''
 
 ---
 
-### Text Issues
-For each affected line, include:
-* The affected file's name
-* The relevant line number
-* If proposing a fix, copy the whole line here with the fix in bold (wrap the changed text in double asterisks, `**like so**`).
+### Text Issues: Typos, grammar mistakes, suggested improvemetns
+
+* Is the text in English? If not, what language is it in?
+
+* What campaign does the text appear in? If it's not in a campaign, say where it is:
+
+* Please quote the text verbatim. You can use `**bold**` to point out the mistaken part:
+
+* _(optional)_ What do you propose to change the text to?
+
