@@ -29,5 +29,8 @@ A clear and concise description of what you expected to happen.
 ### Screenshots
 If applicable, add screenshots to help explain your problem.
 
+### Savefiles
+If applicable, attach savefiles to help explain your problem. (To find savefiles, start Wesnoth, click on the `i` button at the bottom left corner of the title screen, and open the `Saved games` directory.)
+
 ### Additional context
 Add any other context (compiler logs, console output, etc) about the problem here.
