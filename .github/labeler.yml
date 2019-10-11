@@ -1,14 +1,29 @@
 Campaigns:
   - data/campaigns/**/*
-  
+
 macOS:
   - projectfiles/Xcode/**/*
   - src/macosx/*
-  
+
 Unit Tests:
   - data/test/**/*
 
-UI: ["src/gui/**/*", "data/gui/**/*", "data/schema/gui.cfg"]
-Units: ["src/units/**/*", "data/core/units/**/*", "data/core/images/units/**/*"]
-Terrain: ["src/terrain/**/*", "data/core/terrain.cfg", "data/core/terrain_graphics/*", "data/images/terrain/**/*"]
-Lua API: ["src/scripting/**/*", "data/lua/**/*"]
+UI:
+  - src/gui/**/*
+  - data/gui/**/*
+  - data/schema/gui.cfg
+
+Units:
+  - src/units/**/*
+  - data/core/units/**/*
+  - data/core/images/units/**/*
+
+Terrain:
+  - src/terrain/**/*
+  - data/core/terrain.cfg
+  - data/core/terrain_graphics/*
+  - data/images/terrain/**/*
+
+Lua API:
+  - src/scripting/**/*
+  - data/lua/**/*
