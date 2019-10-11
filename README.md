@@ -1,7 +1,6 @@
-[![Build Status](https://travis-ci.org/wesnoth/wesnoth.svg?branch=master)](https://travis-ci.org/wesnoth/wesnoth)
-[![Build status](https://ci.appveyor.com/api/projects/status/github/wesnoth/wesnoth?branch=master&svg=true)](https://ci.appveyor.com/account/wesnoth/projects)
+[![Build Status](https://travis-ci.com/wesnoth/wesnoth.svg?branch=master)](https://travis-ci.org/wesnoth/wesnoth)
+[![Build status](https://ci.appveyor.com/api/projects/status/6017w5c9nhfxsuo5?svg=true)](https://ci.appveyor.com/project/wesnoth/wesnoth-7lnpw)
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
-[![Coverity Scan](https://img.shields.io/coverity/scan/1063.svg)](https://scan.coverity.com/projects/wesnoth)
 
 About
 =====
