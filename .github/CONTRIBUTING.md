@@ -92,7 +92,7 @@ public:
         }
     }
 
-    /* Keep class method brackets on their own line, and always utilize const for methods and
+    /** Keep class method brackets on their own line, and always utilize const for methods and
      * variables when possible.
      *
      * For documenting functions, we loosely follow Doxygen conventions. You don't need to document
@@ -103,7 +103,7 @@ public:
      */
     void exclaim(const std::string& speaker) const
     {
-        std::cerr << speaker ": They're taking the Hobbits to Isengard!" << std::endl;
+        std::cerr << speaker << ": They're taking the Hobbits to Isengard!" << std::endl;
     }
 
 private:
