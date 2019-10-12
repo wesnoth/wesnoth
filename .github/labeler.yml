@@ -6,7 +6,7 @@ Audio:
   - data/core/sounds/**/*
   - sounds/*
 
-Building: 
+Building:
   - projectfiles/**/*
   - source_lists/*
 
@@ -28,6 +28,7 @@ Docs:
 
 Editor:
   - data/core/editor/*
+  - src/editor/**/*
 
 Graphics:
   - images/**/*
@@ -56,6 +57,10 @@ MP:
 Packaging:
   - packaging/**/*
 
+Schema:
+  - utils/travis/schema_validation.sh
+  - data/schema/**/*
+
 Scons:
   - SConstruct
   - scons/*
@@ -70,31 +75,9 @@ Services:
 Terrain:
   - src/terrain/**/*
   - data/core/terrain.cfg
+  - data/core/terrain-graphics.cfg
   - data/core/terrain_graphics/*
   - data/images/terrain/**/*
-
-Unit Tests:
-  - data/test/**/*
-
-UI:
-  - src/gui/**/*
-  - data/gui/**/*
-  - data/schema/gui.cfg
-  - data/themes/*
-
-Units:
-  - src/units/**/*
-  - data/core/units/**/*
-  - data/core/images/units/**/*
-
-Schema:
-  - utils/travis/schema_validation.sh
-  - data/schema/**/*
-
-Terrain:
-  - data/core/terrain-graphics/*
-  - data/core/terrain.cfg
-  - data/core/terrain-graphics.cfg
 
 Translations:
   - po/**/*
@@ -103,11 +86,19 @@ Translations:
 Travis:
   - utils/travis/**/*
 
+UI:
+  - src/gui/**/*
+  - data/gui/**/*
+  - data/schema/gui.cfg
+  - data/themes/*
+
+Unit Tests:
+  - data/test/**/*
+
 Units:
+  - src/units/**/*
   - data/core/units/**/*
+  - data/core/images/units/**/*
 
 WML Tools:
   - data/tools/**/*
-
-Xcode:
-  - projectfiles/Xcode/**/*
