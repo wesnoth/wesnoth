@@ -22,7 +22,7 @@ If you encounter an engine bug such as a crash, scripting error, etc., report it
 
 ### Feature Requests
 
-We accept suggestions for campaign improvements, WML or Lua API changes, and other game enhancements here on GitHub. In general, we recommend that you attempt to implement your idea yourself and submit a pull request containing relevant information to your feature.
+We accept suggestions for campaign improvements, WML or Lua API changes, and other game enhancements here on GitHub. We encourage you to attempt to implement your idea yourself and submit a pull request containing relevant information to your feature.
 
 ### Information to Include
 
