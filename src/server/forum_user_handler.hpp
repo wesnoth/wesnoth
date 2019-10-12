@@ -73,7 +73,7 @@ class fuh : public user_handler {
 		void db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name);
 		void db_update_game_start(const std::string& uuid, int game_id, const std::string& map_name, const std::string& era_name, int reload);
 		void db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location);
-		void db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version);
+		void db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source);
 		void db_insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name);
 		void db_set_oos_flag(const std::string& uuid, int game_id);
 
