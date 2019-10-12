@@ -1,14 +1,6 @@
-Contents
-========
+# Building Wesnoth from Source
 
-  1. Prerequisites
-  2. Build Environment
-  3. SCons Build
-  4. CMake Build
-  5. Build Options
-
-
-## 1. Prerequisites
+## Prerequisites
 
 Wesnoth requires a compiler with sufficient C++14 support such as GCC 5.0 and
 later, or Clang 3.8 and later.
@@ -52,7 +44,7 @@ features:
    of the user interface.
 
 
-## 2. Build Environment
+## Build Environment
 
 You can obtain the source code tarball for the latest version from
 <https://www.wesnoth.org/downloads>.
@@ -86,7 +78,7 @@ For Windows users, a Visual C++ 2013 solution is included in _projectfiles/VC12_
 For OS X users, an XCode project is included in _projectfiles/XCode_.
 
 
-## 3. SCons Build
+## SCons Build
 
 Unlike CMake or the classic "autotools" build-system (configure && make),
 configuration and building are done in the same step with SCons.
@@ -110,7 +102,7 @@ Building the MP server only:
 The `install` target will install any binaries that were previously compiled
 (use su or sudo if necessary to write files into the installation prefix):
 
-    # scons install
+    $ scons install
 
 SCons takes a `prefix=` argument that specifies where to install the game and
 its resource files. The prefix defaults to `/usr/local`; for production builds,
@@ -119,7 +111,7 @@ you may wish to use `/usr` instead:
     $ scons prefix=/usr
 
 
-## 4. CMake Build
+## CMake Build
 
 Unlike SCons, CMake has separate configuration and build steps. Configuration
 is done using CMake itself, and the actual build is done using `make`.
@@ -154,7 +146,7 @@ and their cached values on a console and graphical UI, respectively.
     $ cmake-gui ..
 
 
-## 5. Build Options
+## Build Options
 
 A full list of options supported by SCons along with their descriptions and
 defaults is available by running `scons --help` from the Wesnoth source. For
@@ -169,82 +161,18 @@ With SCons, boolean options take `yes` or `true` for a true value, and `no` or
 `false` for a false value. CMake uses `ON` for a true value, and `OFF` for a
 false value.
 
-Some of the most important options follow.
+### Some of the most important options follow.
 
- * build=<build type>                          (SCons)
-   CMAKE_BUILD_TYPE=<build type>               (CMake)
-
-   Selects a specific build configuration when compiling. `release` produces
-   the default, optimized (-O3) build for regular use. `debug` produces a
-   slower and larger unoptimized (-O0) build with full debug symbols, which is
-   often needed for obtaining detailed backtraces when reporting bugs.
-
- * ENABLE_GAME=<boolean>                       (CMake)
-
-   Whether to build the game client binary. Use command line target selection
-   selection with SCons instead.
-
- * ENABLE_SERVER=<boolean>                     (CMake)
-
-   Whether to build the MP server binary. Use command line target selection
-   selection with SCons instead.
-
- * prefix=<full path>                          (SCons)
-   CMAKE_INSTALL_PREFIX=<full path>            (CMake)
-
-   Installation prefix for binaries, resources, and documentation files.
-
- * nls=<boolean>                               (SCons)
-   ENABLE_NLS=<boolean>                        (CMake)
-
-   Whether to compile and install translations.
-
- * strict=<boolean>                            (SCons)
-   ENABLE_STRICT_COMPILATION=<boolean>         (CMake)
-
-   Whether to treat compiler warnings as errors or not. Primarily intended for
-   developers.
-
- * prefsdir=<directory name>                   (SCons)
-   PREFERENCES_DIR=<directory name>            (CMake)
-
-   Hardcoded user preferences and user data directory. The default is to leave
-   this unspecified so that Wesnoth will use separate XDG paths such as
-   .config/wesnoth and .local/share/wesnoth/<version> for its user preferences
-   and data, respectively.
-
- * cxxtool=<program>                           (SCons)
-   CMAKE_CXX_COMPILER=<program>                (CMake)
-
-   Specifies which C++ compiler to use. By default, the system's default C++
-   compiler will be automatically selected during configuration.
-
- * ccache=<boolean>                            (SCons)
-
-   Whether to run the compiler through ccache first. Useful if the compiler
-   executable is not a symbolic link to ccache. Requires ccache to be
-   installed first.
-
-   If using CMake, use CMAKE_CXX_COMPILER instead.
-
- * extra_flags_<buildtype>=<flags>             (SCons)
-   extra_flags_config=<flags>                  (SCons)
-   CXX_FLAGS_USER=<flags>                      (CMake)
-
-   Additional compiler flags to use when compiling a specific build type
-   (SCons-only). To apply the same flags to all builds, use extra_flags_config
-   (SCons) or CXX_FLAGS_USER (CMake) without a build type suffix.
-
-   Alternatively, you may specify your flags in the CXXFLAGS environment
-   variable.
-
- * fifodir=<full path>                         (SCons)
-   FIFO_DIR=<full path>                        (CMake)
-
-   server_uid=<UID> server_gid=<GID>           (SCons)
-   SERVER_UID=<UID> SERVER_GID=<GID>           (CMake)
-
-   Directory and owner id for the wesnothd control FIFO file. This is relevant
-   only if you wish to be able to communicate with a local wesnothd instance
-   through a named pipe. You must run wesnothd with the same UID specified at
-   build time for this to work.
+| Scons                                                                  | CMake                                                              | Description                                                                                                                                                                                                                                                                                        |
+|------------------------------------------------------------------------|--------------------------------------------------------------------| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `build=<build type>`                                                   | `CMAKE_BUILD_TYPE=<build type>`                                    | Selects a specific build configuration when compiling. `release`  produces the default, optimized (-O3) build for regular use. `debug`  produces a slower and larger unoptimized (-O0) build with full debug symbols, which is often needed for obtaining detailed backtraces when reporting bugs. |
+|                                                                        | `ENABLE_GAME=<boolean>`                                            | Whether to build the game client binary. Use command line target selection selection with SCons instead.                                                                                                                                                                                           |
+|                                                                        | `ENABLE_SERVER=<boolean>`                                          | Whether to build the MP server binary. Use command line target selection with SCons instead.                                                                                                                                                                                                       |
+| `prefix=<full path>`                                                   | `CMAKE_INSTALL_PREFIX=<full path>`                                 | Installation prefix for binaries, resources, and documentation files.                                                                                                                                                                                                                              |
+| `nls=<boolean>`                                                        | `ENABLE_NLS=<boolean>`                                             | Whether to compile and install translations.                                                                                                                                                                                                                                                       |
+| `strict=<boolean>`                                                     | `ENABLE_STRICT_COMPILATION=<boolean>`                              | Whether to treat compiler warnings as errors or not. Primarily intended for developers.                                                                                                                                                                                                            |
+| `prefsdir=<directory name>`                                            | `PREFERENCES_DIR=<directory name>`                                 | Hardcoded user preferences and user data directory. The default is to leave this unspecified so that Wesnoth will use separate XDG paths such as .config/wesnoth and .local/share/wesnoth/<version>  for its user preferences and data, respectively.                                              |
+| `cxxtool=<program>`                                                    | `CMAKE_CXX_COMPILER=<program>`                                     | Specifies which C++ compiler to use. By default, the system's default C++ compiler will be automatically selected during configuration.                                                                                                                                                            |
+| `ccache=<boolean>`                                                     |                                                                    | Whether to run the compiler through ccache first. Useful if the compiler executable is not a symbolic link to ccache. Requires ccache to be installed first.  If using CMake, use CMAKE_CXX_COMPILER instead.                                                                                      |
+| `extra_flags_<buildtype> =<flags>` `extra_flags_config=<flags>`        | `CXX_FLAGS_USER=<flags>`                                           | Additional compiler flags to use when compiling a specific build type (SCons-only). To apply the same flags to all builds, use extra_flags_config (SCons) or CXX_FLAGS_USER (CMake) without a build type suffix.  Alternatively, you may specify your flags in the CXXFLAGS environment variable.  |
+| `fifodir=<full path>` `server_uid=<UID>` `server_gid=<GID>`            | `FIFO_DIR=<full path>` `SERVER_UID=<UID>` `SERVER_GID=<GID>`       | Directory and owner id for the wesnothd control FIFO file. This is relevant only if you wish to be able to communicate with a local wesnothd instance through a named pipe. You must run wesnothd with the same UID specified at build time for this to work.                                      |
