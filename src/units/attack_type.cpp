@@ -137,6 +137,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		return false;
 
 	if(!filter_special.empty()) {
+		deprecated_message("special=", DEP_LEVEL::PREEMPTIVE, {1, 16, 0}, "Please use special_id or special_type instead");
 		bool found = false;
 		for(auto& special : filter_special) {
 			if(attack.get_special_bool(special, true)) {
@@ -164,6 +165,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 
 
 	if(!filter_special_active.empty()) {
+		deprecated_message("special_active=", DEP_LEVEL::PREEMPTIVE, {1, 16, 0}, "Please use special_id_active or special_type_active instead");
 		bool found = false;
 		for(auto& special : filter_special_active) {
 			if(attack.get_special_bool(special, false)) {
