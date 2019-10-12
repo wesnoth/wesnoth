@@ -51,6 +51,7 @@ Generally, we follow these conventions in our C++ code:
 #include <algorithm>
 #include <array>
 #include <iostream>
+#include <string>
 #include <vector>
 
 // Classes should have scope specifiers (public, protected, private), but structs can omit them.
@@ -70,7 +71,7 @@ public:
 
     // Use leading commas in the ctor list
     // Use the T& foo or T* foo reference and pointer styles, not T &foo or T *foo.
-    explicit my_class(const alias_t& ref)
+    explicit my_class(alias_t& ref)
         : the_array_of_doom_()
         , vec_ptr_(nullptr) // Use nullptr instead of NULL or 0
     {
@@ -91,11 +92,18 @@ public:
         }
     }
 
-    // Keep class method brackets on their own line, and always utilize const for methods and
-    // variables when possible.
-    void exclaim() const
+    /* Keep class method brackets on their own line, and always utilize const for methods and
+     * variables when possible.
+     *
+     * For documenting functions, we loosely follow Doxygen conventions. You don't need to document
+     * every single function, but important ones should optimally have at least a one-line comment
+     * explaining what it does.
+     *
+     * @param speaker        The person speaking
+     */
+    void exclaim(const std::string& speaker) const
     {
-        std::cerr << "They're taking the Hobbits to Isengard!" << std::endl;
+        std::cerr << speaker ": They're taking the Hobbits to Isengard!" << std::endl;
     }
 
 private:
@@ -103,7 +111,7 @@ private:
     // like std::array as opposed to C equivalents (such as int[])
     std::array<int, 8> the_array_of_doom_;
 
-    const alias_t* vec_ptr_;
+    alias_t* vec_ptr_;
 
     // Use static or constexpr for constants. Don't use macros.
     static const int how_far_to_mount_doom_ = 1000;
