@@ -32,6 +32,10 @@ We have several issue templates to choose from when opening a bug report. Please
 
 TODO: stuff about PRs.
 
+### Code Standard
+
+Wesnoth's engine conforms to the C++14 standard. We encourage the use of standard library APIs over third-party libraries whenever possible. However, third-party libraries are preferred over adding new, custom in-engine APIs, when appropriate.
+
 ### Code Formatting
 
 If your pull request touches the engine's C++ source code, we recommend (but don't require) you run `clang-format` on your changes before submission (Visual Studio Code gives you a handy context menu option to do so). This ensures that your code remains formatted according to our conventions.
@@ -45,7 +49,7 @@ Generally, we follow these conventions in our C++ code:
 // Use angle brackets for system and external includes.
 // Includes should also be sorted alphabetically.
 #include <array>
-#include <string>
+#include <iostream>
 
 // Classes should have scope specifiers (public, protected, private), but structs can omit them.
 struct my_struct
@@ -60,7 +64,7 @@ class my_class
 {
 public:
     // Use using directives over typedefs. They're easier to read.
-    using alias_t = std::vector<std::my_struct>;
+    using alias_t = std::vector<my_struct>;
 
     // Use leading commas in the ctor list
     // Use the T& foo or T* foo reference and pointer styles, not T &foo or T *foo.
@@ -68,7 +72,7 @@ public:
         : the_array_of_doom_()
         , vec_ptr_(nullptr) // Use nullptr instead of NULL or 0
     {
-        // Use C++ casts (static_cast and dynamic_cast) instead of C-style casts like (float)how_far_to_mount_doom_.
+        // Use C++ casts (static_cast and dynamic_cast) instead of C-style casts.
         // Do try and avoid reinterpret_cast and const_cast if at all possible.
         const float cast_test = static_cast<float>(how_far_to_mount_doom_);
 
@@ -77,9 +81,11 @@ public:
             vec_ptr_ = &ref;
 
             // Use lambdas for short functions like this.
-            // We also encourage the use of auto in lambdas and other places where typenames are long
-            // and can be inferred.
-            std::sort(ref.being(), ref.end(), [](const auto& a, const auto& b) { return a.member && !b.member; });
+            // We also encourage the use of auto in lambdas and other places where
+            // type names are long and can be inferred.
+            std::sort(ref.being(), ref.end(), [](const auto& a, const auto& b) {
+                return a.member && !b.member;
+            });
         }
     }
 
@@ -101,12 +107,3 @@ private:
     static const int how_far_to_mount_doom_ = 1000;
 }
 ```
-
-- We use modern C++11 and later features. Use standard library APIs whenever possible over hand-rolled or third-party libraries.
-- No spaces after `if` - ie, use `if()` and `while()`, not `if ()` and `while ()`.
-- Keep opening brackets on the same line for conditional and control blocks. Put them on new lines for class, struct, and namespace declarations.
-- Avoid C-style code, like casts (`(int)1.0`), arrays (`int[] foo;`), or function pointers (`void (*foo)()`). Use `static_cast`, `std::array`, or `std::function`, respectively.
-- Use `nullptr`, not `NULL` or `0`.
-- Do not use macros for constants. Use `constexpr` or `static`.
-- Use `const` as much as possible, where applicable.
-- End *non-public* class data members with an underscore.
