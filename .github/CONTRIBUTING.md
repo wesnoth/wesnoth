@@ -12,27 +12,7 @@ The Discord server is mirrored to freenode IRC, channels: [`#wesnoth`](https://w
 
 Art and music submissions are accepted usually to fill in missing or outdated assets. If you are interested in contributing, we recommend that you contact us first to determine the best resources for you to work on based on need and interest. We also commission larger projects such as character portraits, story art, and music tracks.
 
-## Bug Reports
-
-Please report any bugs here on GitHub (preferred) or on the forums.
-
-### Bugs in User-Made Content
-
-If you encounter an engine bug such as a crash, scripting error, etc., report it here. Otherwise, issues with user-made content should be reported to their respective creators on the forums. You can usually find a thread for the add-on in question in the [Scenario & Campaign Development](http://www.wesnoth.org/forum/viewforum.php?f=8), [Faction & Era Development](http://www.wesnoth.org/forum/viewforum.php?f=19) or [Multiplayer Development](http://www.wesnoth.org/forum/viewforum.php?f=15) sections.
-
-### Feature Requests
-
-We accept suggestions for campaign improvements, WML or Lua API changes, and other game enhancements here on GitHub. We encourage you to attempt to implement your idea yourself and submit a pull request containing relevant information to your feature.
-
-### Information to Include
-
-We have several issue templates to choose from when opening a bug report. Please choose the one that best fits the bug. You do not need to include everything (we don't need screenshots for a compiling issue, for example), but the more information you can provide, the better. We need at least enough information to replicate the bug before we can track down the root cause.
-
-## Pull Requests
-
-TODO: stuff about PRs.
-
-### Code Standard
+## Engine
 
 Wesnoth's engine conforms to the C++14 standard. We encourage the use of standard library APIs over third-party libraries whenever possible. However, third-party libraries are preferred over adding new, custom in-engine APIs, when appropriate.
 
@@ -117,3 +97,23 @@ private:
     static const int how_far_to_mount_doom_ = 1000;
 };
 ```
+
+## Bug Reports
+
+Please report any bugs here on GitHub (preferred) or on the forums.
+
+### Bugs in User-Made Content
+
+If you encounter an engine bug such as a crash, scripting error, etc., report it here. Otherwise, issues with user-made content should be reported to their respective creators on the forums. You can usually find a thread for the add-on in question in the [Scenario & Campaign Development](http://www.wesnoth.org/forum/viewforum.php?f=8), [Faction & Era Development](http://www.wesnoth.org/forum/viewforum.php?f=19) or [Multiplayer Development](http://www.wesnoth.org/forum/viewforum.php?f=15) sections.
+
+### Feature Requests
+
+We accept suggestions for campaign improvements, WML or Lua API changes, and other game enhancements here on GitHub. We encourage you to attempt to implement your idea yourself and submit a pull request containing relevant information to your feature.
+
+### Information to Include
+
+We have several issue templates to choose from when opening a bug report. Please choose the one that best fits the bug. You do not need to include everything (we don't need screenshots for a compiling issue, for example), but the more information you can provide, the better. We need at least enough information to replicate the bug before we can track down the root cause.
+
+## Pull Requests
+
+TODO: stuff about PRs.
