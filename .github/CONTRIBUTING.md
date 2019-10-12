@@ -48,8 +48,10 @@ Generally, we follow these conventions in our C++ code:
 
 // Use angle brackets for system and external includes.
 // Includes should also be sorted alphabetically.
+#include <algorithm>
 #include <array>
 #include <iostream>
+#include <vector>
 
 // Classes should have scope specifiers (public, protected, private), but structs can omit them.
 struct my_struct
@@ -57,7 +59,7 @@ struct my_struct
     // Public members do not need a trailing underscore.
     // Inline initialization is acceptable over a constructor.
     bool member = false;
-}
+};
 
 // Put braces on new lines after class and struct declarations.
 class my_class
@@ -99,11 +101,11 @@ public:
 private:
     // End private class members with an underscore. Additionally, use C++ standard
     // like std::array as opposed to C equivalents (such as int[])
-    std::array<int> the_array_of_doom_;
+    std::array<int, 8> the_array_of_doom_;
 
     const alias_t* vec_ptr_;
 
     // Use static or constexpr for constants. Don't use macros.
     static const int how_far_to_mount_doom_ = 1000;
-}
+};
 ```
