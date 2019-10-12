@@ -83,7 +83,7 @@ public:
             // Use lambdas for short functions like this.
             // We also encourage the use of auto in lambdas and other places where
             // type names are long and can be inferred.
-            std::sort(ref.being(), ref.end(), [](const auto& a, const auto& b) {
+            std::sort(ref.begin(), ref.end(), [](const auto& a, const auto& b) {
                 return a.member && !b.member;
             });
         }
