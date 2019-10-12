@@ -4,7 +4,9 @@ Wesnoth was built with the hard work of volunteers all over the world! Everyone 
 
 ## Contacting Us
 
-The best place to get in touch with the development team is on our [Discord server](https://discord.gg/battleforwesnoth) or on the [Wesnoth forums](https://forums.wesnoth.org/).
+The best place to get in touch with the development team is on our [official Discord community server](https://discord.gg/battleforwesnoth) or on the [Wesnoth forums](https://forums.wesnoth.org/).
+
+The Discord server is mirrored to freenode IRC, channels: [`#wesnoth`](https://webchat.freenode.net/#wesnoth) (general discussions), [`#wesnoth-umc-dev`](https://webchat.freenode.net/#wesnoth-umc-dev) (questions about creating add-ons), [`#wesnoth-dev`](https://webchat.freenode.net/#wesnoth-dev)  (development of wesnoth mainline).
 
 ## Art and Music
 
