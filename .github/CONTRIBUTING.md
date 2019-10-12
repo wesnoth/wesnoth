@@ -34,9 +34,73 @@ TODO: stuff about PRs.
 
 ### Code Formatting
 
-If your pull request touches the engine's C++ source code, we recommend (but don't require) you run `.clang-format` on your changes before submission (Visual Studio Code gives you a handy context menu option to do so). This ensures that your code remains formatted according to our conventions.
+If your pull request touches the engine's C++ source code, we recommend (but don't require) you run `clang-format` on your changes before submission (Visual Studio Code gives you a handy context menu option to do so). This ensures that your code remains formatted according to our conventions.
 
-Generally, we follow a few rules:
+Generally, we follow these conventions in our C++ code:
+
+```cpp
+// Use pragma once instead of an include guard. Those are clumsy.
+#pragma once
+
+// Use angle brackets for system and external includes.
+// Includes should also be sorted alphabetically.
+#include <array>
+#include <string>
+
+// Classes should have scope specifiers (public, protected, private), but structs can omit them.
+struct my_struct
+{
+    // Public members do not need a trailing underscore.
+    // Inline initialization is acceptable over a constructor.
+    bool member = false;
+}
+
+// Put braces on new lines after class and struct declarations.
+class my_class
+{
+public:
+    // Use using directives over typedefs. They're easier to read.
+    using alias_t = std::vector<std::my_struct>;
+
+    // Use leading commas in the ctor list
+    // Use the T& foo or T* foo reference and pointer styles, not T &foo or T *foo.
+    explicit my_class(const alias_t& ref)
+        : the_array_of_doom_()
+        , vec_ptr_(nullptr) // Use nullptr instead of NULL or 0
+    {
+        // Use C++ casts (static_cast and dynamic_cast) instead of C-style casts like (float)how_far_to_mount_doom_.
+        // Do try and avoid reinterpret_cast and const_cast if at all possible.
+        const float cast_test = static_cast<float>(how_far_to_mount_doom_);
+
+        // Don't put a space after conditional keywords, and keep their opening brackets on the same line.
+        if(!ref.empty()) {
+            vec_ptr_ = &ref;
+
+            // Use lambdas for short functions like this.
+            // We also encourage the use of auto in lambdas and other places where typenames are long
+            // and can be inferred.
+            std::sort(ref.being(), ref.end(), [](const auto& a, const auto& b) { return a.member && !b.member; });
+        }
+    }
+
+    // Keep class method brackets on their own line, and always utilize const for methods and
+    // variables when possible.
+    void exclaim() const
+    {
+        std::cerr << "They're taking the Hobbits to Isengard!" << std::endl;
+    }
+
+private:
+    // End private class members with an underscore. Additionally, use C++ standard
+    // like std::array as opposed to C equivalents (such as int[])
+    std::array<int> the_array_of_doom_;
+
+    const alias_t* vec_ptr_;
+
+    // Use static or constexpr for constants. Don't use macros.
+    static const int how_far_to_mount_doom_ = 1000;
+}
+```
 
 - We use modern C++11 and later features. Use standard library APIs whenever possible over hand-rolled or third-party libraries.
 - No spaces after `if` - ie, use `if()` and `while()`, not `if ()` and `while ()`.
