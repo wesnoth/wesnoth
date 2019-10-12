@@ -1,5 +1,6 @@
 AI:
   - data/ai/**/*
+  - src/ai/**/*
 
 Audio:
   - data/core/music/*
@@ -9,6 +10,13 @@ Audio:
 Building:
   - projectfiles/**/*
   - source_lists/*
+  - CMakeLists.txt
+  - cmake/*
+  - src/CMakeLists.txt
+  - SConstruct
+  - scons/*
+  - src/SConscript
+  - src/SConstruct
 
 Campaign:
   - data/campaigns/**/*
@@ -37,6 +45,8 @@ Graphics:
 Help:
   - data/tips.cfg
   - data/core/help.cfg
+  - src/help/*
+  - src/gui/dialogs/help_browser.*
 
 Input:
   - data/core/hotkeys.cfg
@@ -60,6 +70,7 @@ Packaging:
 Schema:
   - utils/travis/schema_validation.sh
   - data/schema/**/*
+  - src/serialization/schema/*
 
 SCons:
   - SConstruct
