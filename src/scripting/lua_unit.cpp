@@ -240,6 +240,28 @@ static int impl_unit_equality(lua_State* L)
 }
 
 /**
+ * Turns a lua proxy unit to string. (__tostring metamethod)
+ */
+static int impl_unit_tostring(lua_State* L)
+{
+	const unit& u = luaW_checkunit(L, 1);
+	std::ostringstream str;
+
+	str << "unit: <";
+	if(!u.id().empty()) {
+		str << u.id() << " ";
+	} else {
+		str << u.type_id() << " ";
+	}
+	// This will say 0,0 (or -999,-999?) for units on the recall list
+	str << "at (" << u.get_location() << ")";
+	str << '>';
+
+	lua_push(L, str.str());
+	return 1;
+}
+
+/**
  * Gets some data on a unit (__index metamethod).
  * - Arg 1: full userdata containing the unit id.
  * - Arg 2: string containing the name of the property.
@@ -620,6 +642,8 @@ namespace lua_units {
 		lua_setfield(L, -2, "__gc");
 		lua_pushcfunction(L, impl_unit_equality);
 		lua_setfield(L, -2, "__eq");
+		lua_pushcfunction(L, impl_unit_tostring);
+		lua_setfield(L, -2, "__tostring");
 		lua_pushcfunction(L, impl_unit_get);
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, impl_unit_set);
