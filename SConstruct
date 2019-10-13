@@ -415,7 +415,7 @@ if env["prereqs"]:
             client_env.Append(CPPDEFINES = ["HAVE_HISTORY"])
 
     if env["forum_user_handler"]:
-        mysql_config = check_output(["mysql_config", "--libs", "--cflags"]).replace("\n", " ").replace("-DNDEBUG", "")
+        mysql_config = check_output(["mysql_config", "--libs", "--cflags"]).decode("utf-8").replace("\n", " ").replace("-DNDEBUG", "")
         mysql_flags = env.ParseFlags(mysql_config)
         env.Append(CPPDEFINES = ["HAVE_MYSQLPP"])
         env.MergeFlags(mysql_flags)
