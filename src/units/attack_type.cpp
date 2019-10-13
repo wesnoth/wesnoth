@@ -18,17 +18,19 @@
  */
 
 #include "units/attack_type.hpp"
+
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "formula/string_utils.hpp"
 #include "formula/function_gamestate.hpp"
+#include "deprecation.hpp"
+#include "game_version.hpp"
 
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "gettext.hpp"
 #include "utils/math.hpp"
-
 #include <cassert>
 
 static lg::log_domain log_config("config");
