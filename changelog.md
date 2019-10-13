@@ -19,6 +19,9 @@
      Portuguese (Brazil)
  ### Lua API
    * wesnoth.deprecate_api was fixed to correctly wrap tables with metatables. (Issue#4079)
+ ### Music and sound effects
+   * Removed accidental silence of two seconds after the first track of each scenario
+     (Issue#4459)
  ### Units
    * Sun Singer and Sun Sylph: modify faerie fire colors
  ### User interface
