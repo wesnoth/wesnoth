@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-09-16 11:33+0300\n"
-"PO-Revision-Date: 2019-02-02 18:41+0100\n"
+"PO-Revision-Date: 2019-09-30 23:56+0200\n"
 "Last-Translator: Syll <syll-dev@laposte.net>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -121,10 +121,6 @@ msgstr "Durée de vie des messages de la discussion"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid ""
-#| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#| "0 to disable"
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
@@ -4465,10 +4461,6 @@ msgstr "nv"
 # Attention cohérence avec la traduction du menu dans wesnoth-editor/fr.po
 #. [tip]
 #: data/tips.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Use the map editor's <i>Areas</i> menu to define regions later addressed "
-#| "by event or ai coding."
 msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
@@ -4485,16 +4477,12 @@ msgstr "<i>— Guide de conception de Wesnoth</i>"
 # Attention cohérence avec la traduction du menu dans wesnoth-editor/fr.po
 #. [tip]
 #: data/tips.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use "
-#| "of advanced features."
 msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
 msgstr ""
-"Créez un <i>Nouveau scénario</i> dans le menu <i>Fichier</i> de l'éditeur "
-"pour accéder à des fonctionnalités avancées."
+"Dans l'éditeur de carte, créez un <i>Nouveau scénario</i> dans le menu "
+"<i>Fichier</i> de l'éditeur pour accéder à des fonctionnalités avancées."
 
 #. [tip]
 #: data/tips.cfg:12
@@ -5350,8 +5338,6 @@ msgstr ""
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:225
-#, fuzzy
-#| msgid "an advancement choice"
 msgid "waiting for^an advancement choice"
 msgstr "un choix d'avancement"
 
@@ -6205,7 +6191,7 @@ msgstr "Joueur local"
 
 #: src/game_initialization/connect_engine.cpp:1317
 msgid "Nobody"
-msgstr ""
+msgstr "Personne"
 
 #: src/game_initialization/connect_engine.cpp:1320
 msgid "Reserved"
@@ -6434,36 +6420,29 @@ msgid " This server disallows unregistered nicknames."
 msgstr " Ce serveur n'accepte pas les pseudonymes inconnus."
 
 #: src/game_initialization/multiplayer.cpp:332
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
-msgstr "Le pseudonyme « $nick » est banni des forums de ce serveur."
+msgstr ""
+"Le pseudonyme « $nick » est banni des forums de ce serveur pour $duration|."
 
 #: src/game_initialization/multiplayer.cpp:334
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Le pseudonyme « $nick » est banni des forums de ce serveur."
 
 #: src/game_initialization/multiplayer.cpp:338
-#, fuzzy
-#| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums for $duration|."
-msgstr "Votre adresse IP est bannie des forums de ce serveur."
+msgstr "Votre adresse IP est bannie des forums de ce serveur pour $duration|."
 
 #: src/game_initialization/multiplayer.cpp:340
 msgid "Your IP address is banned on this server’s forums."
 msgstr "Votre adresse IP est bannie des forums de ce serveur."
 
 #: src/game_initialization/multiplayer.cpp:344
-#, fuzzy
-#| msgid ""
-#| "The email address for the nickname ‘$nick’ is banned on this server’s "
-#| "forums."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
 msgstr ""
 "L'adresse électronique du pseudonyme « $nick » est bannie des forums de ce "
-"serveur."
+"serveur pour $duration|."
 
 #: src/game_initialization/multiplayer.cpp:346
 msgid ""
@@ -7146,8 +7125,8 @@ msgstr "Usage :"
 #: src/map_command_handler.hpp:343
 msgid "command^Alias:"
 msgid_plural "Aliases:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Alias:"
+msgstr[1] "Alias:"
 
 #: src/menu_events.cpp:176
 msgid "Save Map As"
@@ -7178,10 +7157,8 @@ msgid "You have no units available to recruit."
 msgstr "Il n'y a pas d'unité à recruter."
 
 #: src/menu_events.cpp:282
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recruited"
-msgstr "Aucune unité rappelée"
+msgstr "Aucune unité recrutée"
 
 #: src/menu_events.cpp:314
 msgid "You do not have enough gold to recruit that unit"
@@ -7301,8 +7278,6 @@ msgstr "Mettre un camp en pause ou l'en sortir."
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1194
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "command_idle^[<side> [on/off]]"
 msgstr "[<camp> [on/off]]"
 
@@ -7336,7 +7311,7 @@ msgstr "Déboguer les calques des terrains sous la souris."
 
 #: src/menu_events.cpp:1204
 msgid "Show fps (Frames Per Second)."
-msgstr ""
+msgstr "Affiche les IPS (Images par seconde)."
 
 #: src/menu_events.cpp:1206
 msgid "Save game."
@@ -7659,7 +7634,7 @@ msgstr "Pas de miroir allié"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "Une partie ($name|, $scenario|) a été créée"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
@@ -7699,7 +7674,7 @@ msgstr "Un terrain avec un coût de mouvement inférieur à 1 a été détecté.
 #. from another player. This text will be embedded into a sentence.
 #: src/persist_var.cpp:58
 msgid "waiting for^a global variable"
-msgstr ""
+msgstr "une variable globale"
 
 #: src/play_controller.cpp:242
 msgid "time left for current turn"
@@ -7784,20 +7759,20 @@ msgstr ""
 "vous sauvegarder la partie ?"
 
 #: src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "Do you really want to surrender the game?"
 msgid ""
 "\n"
 "Do you want to save the game?"
-msgstr "Voulez-vous vraiment vous rendre ?"
+msgstr ""
+"\n"
+"Voulez-vous sauvegarder la partie ?"
 
 #: src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "The game has been saved."
 msgid ""
 "This game has been ended.\n"
 "Reason: "
-msgstr "Le jeu a été sauvegardé."
+msgstr ""
+"La partie a été terminée.\n"
+"Raison :"
 
 #: src/playsingle_controller.cpp:440
 msgid "It is now $name|’s turn"
@@ -7853,7 +7828,7 @@ msgstr "Type : "
 
 #: src/reports.cpp:235
 msgid "Side:"
-msgstr ""
+msgstr "Camp:"
 
 #: src/reports.cpp:257
 msgid "Level: "
@@ -7959,10 +7934,8 @@ msgid "Defense: "
 msgstr "Défense : "
 
 #: src/reports.cpp:620 src/reports.cpp:621
-#, fuzzy
-#| msgid "vision: "
 msgid "vision:"
-msgstr "vision : "
+msgstr "vision :"
 
 #: src/reports.cpp:625 src/reports.cpp:626
 #, fuzzy
@@ -8072,10 +8045,8 @@ msgid "Time of day schedule:"
 msgstr "Moment de la journée : "
 
 #: src/reports.cpp:1176
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day:"
-msgstr "Moment de la journée : "
+msgstr "Moment de la journée :"
 
 #: src/reports.cpp:1177 src/reports.cpp:1219
 msgid "Lawful units: "
@@ -8157,23 +8128,17 @@ msgid "Upkeep"
 msgstr "Entretien"
 
 #: src/reports.cpp:1381
-#, fuzzy
-#| msgid "Income"
 msgid "Net Income"
-msgstr "Revenu"
+msgstr "Revenu net"
 
 #: src/reports.cpp:1381
-#, fuzzy
-#| msgid ""
-#| "The amount of gold you gain each turn from your controlled villages, or "
-#| "the amount of gold you will lose each turn for unit upkeep."
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
-"La quantité d'or que vous gagnez (ou perdez) à chaque tour. Il s'agit de "
-"l'or que rapportent les villages que vous contrôlez, duquel est retiré l'or "
-"nécessaire à l'entretien de vos unités."
+"La quantité nette d'or que vous gagnez (ou perdez) à chaque tour. prenant en "
+"compte l'or que rapportent les villages que vous contrôlez, duquel est "
+"retiré l'or nécessaire à l'entretien de vos unités."
 
 #: src/reports.cpp:1549
 msgid "Observers:"
@@ -8488,7 +8453,7 @@ msgstr[1] "En attente de $desc pour les camps $sides"
 #. This text will be embedded into a sentence.
 #: src/synced_user_choice.hpp:42
 msgid "waiting for^input"
-msgstr ""
+msgstr "saisie"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
