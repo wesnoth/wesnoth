@@ -75,6 +75,7 @@
    * Improve the terrain code's encapsulation and documentation (PR#4411)
    * Fix duration=scenario objects expiry for units on the recall list at scenario end.
    * Fix maps with scenario_generation= were unavailable in the editor.
+   * Fix sidebar abilities display leaking shrouded information. (Issue#4456)
 
 ## Version 1.15.1
  ### Editor

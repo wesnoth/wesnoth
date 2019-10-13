@@ -447,9 +447,12 @@ static config unit_abilities(const unit* u, const map_location& loc)
 REPORT_GENERATOR(unit_abilities, rc)
 {
 	const unit *u = get_visible_unit(rc);
+	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
 	const map_location& mouseover_hex = rc.screen().mouseover_hex();
+	const map_location& displayed_unit_hex = rc.screen().displayed_unit_hex();
+	const map_location& hex = (mouseover_hex.valid() && !viewing_team.shrouded(mouseover_hex)) ? mouseover_hex : displayed_unit_hex;
 
-	return unit_abilities(u, mouseover_hex);
+	return unit_abilities(u, hex);
 }
 REPORT_GENERATOR(selected_unit_abilities, rc)
 {
@@ -457,7 +460,8 @@ REPORT_GENERATOR(selected_unit_abilities, rc)
 
 	const map_location& mouseover_hex = rc.screen().mouseover_hex();
 	const unit *visible_unit = get_visible_unit(rc);
-	if(visible_unit && u && visible_unit->id() != u->id() && mouseover_hex.valid())
+	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
+	if (visible_unit && u && visible_unit->id() != u->id() && mouseover_hex.valid() && !viewing_team.shrouded(mouseover_hex))
 		return unit_abilities(u, mouseover_hex);
 	else
 		return unit_abilities(u, u->get_location());
