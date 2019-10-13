@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 22:41+0300\n"
-"PO-Revision-Date: 2019-02-02 18:41+0100\n"
+"PO-Revision-Date: 2019-09-30 23:56+0200\n"
 "Last-Translator: Syll <syll-dev@laposte.net>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -121,10 +121,6 @@ msgstr "Durée de vie des messages de la discussion"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid ""
-#| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#| "0 to disable"
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
@@ -4459,10 +4455,6 @@ msgstr "nv"
 # Attention cohérence avec la traduction du menu dans wesnoth-editor/fr.po
 #. [tip]
 #: data/tips.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Use the map editor's <i>Areas</i> menu to define regions later addressed "
-#| "by event or ai coding."
 msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
@@ -4479,16 +4471,12 @@ msgstr "<i>— Guide de conception de Wesnoth</i>"
 # Attention cohérence avec la traduction du menu dans wesnoth-editor/fr.po
 #. [tip]
 #: data/tips.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use "
-#| "of advanced features."
 msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
 msgstr ""
-"Créez un <i>Nouveau scénario</i> dans le menu <i>Fichier</i> de l'éditeur "
-"pour accéder à des fonctionnalités avancées."
+"Dans l'éditeur de carte, créez un <i>Nouveau scénario</i> dans le menu "
+"<i>Fichier</i> de l'éditeur pour accéder à des fonctionnalités avancées."
 
 #. [tip]
 #: data/tips.cfg:12
@@ -5344,8 +5332,6 @@ msgstr ""
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:234
-#, fuzzy
-#| msgid "an advancement choice"
 msgid "waiting for^an advancement choice"
 msgstr "un choix d'avancement"
 
@@ -6153,7 +6139,7 @@ msgstr "Joueur local"
 
 #: src/game_initialization/connect_engine.cpp:1294
 msgid "Nobody"
-msgstr ""
+msgstr "Personne"
 
 #: src/game_initialization/connect_engine.cpp:1297
 msgid "Reserved"
@@ -6386,36 +6372,29 @@ msgid " This server disallows unregistered nicknames."
 msgstr " Ce serveur n'accepte pas les pseudonymes inconnus."
 
 #: src/game_initialization/multiplayer.cpp:323
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
-msgstr "Le pseudonyme « $nick » est banni des forums de ce serveur."
+msgstr ""
+"Le pseudonyme « $nick » est banni des forums de ce serveur pour $duration|."
 
 #: src/game_initialization/multiplayer.cpp:325
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Le pseudonyme « $nick » est banni des forums de ce serveur."
 
 #: src/game_initialization/multiplayer.cpp:329
-#, fuzzy
-#| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums for $duration|."
-msgstr "Votre adresse IP est bannie des forums de ce serveur."
+msgstr "Votre adresse IP est bannie des forums de ce serveur pour $duration|."
 
 #: src/game_initialization/multiplayer.cpp:331
 msgid "Your IP address is banned on this server’s forums."
 msgstr "Votre adresse IP est bannie des forums de ce serveur."
 
 #: src/game_initialization/multiplayer.cpp:335
-#, fuzzy
-#| msgid ""
-#| "The email address for the nickname ‘$nick’ is banned on this server’s "
-#| "forums."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
 msgstr ""
 "L'adresse électronique du pseudonyme « $nick » est bannie des forums de ce "
-"serveur."
+"serveur pour $duration|."
 
 #: src/game_initialization/multiplayer.cpp:337
 msgid ""
@@ -7120,10 +7099,8 @@ msgid "You have no units available to recruit."
 msgstr "Il n'y a pas d'unité à recruter."
 
 #: src/menu_events.cpp:283
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recruited"
-msgstr "Aucune unité rappelée"
+msgstr "Aucune unité recrutée"
 
 #: src/menu_events.cpp:315
 msgid "You do not have enough gold to recruit that unit"
@@ -7227,18 +7204,18 @@ msgid "Switch a side to/from AI control."
 msgstr "Passer le contrôle d'un camp à l'IA ou le reprendre."
 
 #: src/menu_events.cpp:1191
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "do not translate the on/off/full^[<side> [on/off/full]]"
-msgstr "[<camp> [on/off]]"
+msgstr ""
 
 #: src/menu_events.cpp:1192
 msgid "Switch a side to/from idle state."
 msgstr "Mettre un camp en pause ou l'en sortir."
 
 #: src/menu_events.cpp:1193
+#, fuzzy
+#| msgid "do not translate the 'all'^[all|<command>]"
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr "[<camp> [on/off]]"
+msgstr "[all|<commande>]"
 
 #: src/menu_events.cpp:1196
 msgid "<side> <nickname>"
@@ -7613,7 +7590,7 @@ msgstr "Pas de miroir allié"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "Une partie ($name|, $scenario|) a été créée"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
@@ -7653,7 +7630,7 @@ msgstr "Un terrain avec un coût de mouvement inférieur à 1 a été détecté.
 #. from another player. This text will be embedded into a sentence.
 #: src/persist_var.cpp:58
 msgid "waiting for^a global variable"
-msgstr ""
+msgstr "une variable globale"
 
 #: src/play_controller.cpp:247
 msgid "time left for current turn"
@@ -7791,7 +7768,7 @@ msgstr "Type : "
 
 #: src/reports.cpp:235
 msgid "Side:"
-msgstr ""
+msgstr "Camp:"
 
 #: src/reports.cpp:257
 msgid "Level: "
@@ -7897,10 +7874,8 @@ msgid "Defense: "
 msgstr "Défense : "
 
 #: src/reports.cpp:631 src/reports.cpp:632
-#, fuzzy
-#| msgid "vision: "
 msgid "vision:"
-msgstr "vision : "
+msgstr "vision :"
 
 #: src/reports.cpp:636 src/reports.cpp:637
 #, fuzzy
@@ -8010,10 +7985,8 @@ msgid "Time of day schedule:"
 msgstr "Moment de la journée : "
 
 #: src/reports.cpp:1265
-#, fuzzy
-#| msgid "Time of day: "
 msgid "Time of day:"
-msgstr "Moment de la journée : "
+msgstr "Moment de la journée :"
 
 #: src/reports.cpp:1266 src/reports.cpp:1320
 msgid "Lawful units: "
@@ -8071,6 +8044,12 @@ msgid "Units"
 msgstr "Unités"
 
 #: src/reports.cpp:1445
+#, fuzzy
+#| msgid ""
+#| "The expenses incurred at the end of every turn to maintain your army. The "
+#| "first number is the amount of gold that will be deducted. The second is "
+#| "the total cost of upkeep, including that covered by villages — in other "
+#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. The second is the "
@@ -8088,17 +8067,23 @@ msgid "Upkeep"
 msgstr "Entretien"
 
 #: src/reports.cpp:1482
+#, fuzzy
+#| msgid "income"
 msgid "Income"
-msgstr "Revenu"
+msgstr "revenu"
 
 #: src/reports.cpp:1482
+#, fuzzy
+#| msgid ""
+#| "The net amount of gold you gain or lose each turn, taking into account "
+#| "income from controlled villages and payment of upkeep."
 msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
 msgstr ""
-"La quantité d'or que vous gagnez (ou perdez) à chaque tour. Il s'agit de "
-"l'or que rapportent les villages que vous contrôlez, duquel est retiré l'or "
-"nécessaire à l'entretien de vos unités."
+"La quantité nette d'or que vous gagnez (ou perdez) à chaque tour. prenant en "
+"compte l'or que rapportent les villages que vous contrôlez, duquel est "
+"retiré l'or nécessaire à l'entretien de vos unités."
 
 #: src/reports.cpp:1650
 msgid "Observers:"
@@ -8418,7 +8403,7 @@ msgstr[1] "En attente de $desc pour les camps $sides"
 #. This text will be embedded into a sentence.
 #: src/synced_user_choice.hpp:42
 msgid "waiting for^input"
-msgstr ""
+msgstr "saisie"
 
 #: src/terrain/terrain.cpp:181
 msgid "Allied village"
@@ -8634,32 +8619,35 @@ msgstr "Masquer les planifications de $player"
 msgid "Whiteboard Options"
 msgstr "Options de planification"
 
-#, fuzzy
-#~| msgid "undead"
-#~ msgid "Undead"
-#~ msgstr "mort-vivant"
+#~ msgid ""
+#~ "Liminal units only reach their full strength during twilight.\n"
+#~ "\n"
+#~ "Day: −25% Damage\n"
+#~ "Night: −25% Damage"
+#~ msgstr ""
+#~ "Les unités liminales disposent de toutes leurs forces uniquement durant "
+#~ "le demi-jour.\n"
+#~ "\n"
+#~ "Jour : -25 % de dégâts\n"
+#~ "Nuit : -25 % de dégâts"
 
-#, fuzzy
-#~| msgid "Attack"
-#~| msgid_plural "Attacks"
-#~ msgid "Attacks"
-#~ msgstr "Attaque"
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr ""
+#~ "Aucune option personnalisable pour l'ère, la partie ou la modification "
+#~ "sélectionnée."
 
-#, fuzzy
-#~| msgid "Choose a Map to Open"
-#~ msgid "Choose a Corpse"
-#~ msgstr "Choisir une arme : "
+#~ msgid "Defaults"
+#~ msgstr "Valeurs par défaut"
 
-#~ msgid "Recruit"
-#~ msgstr "Recruter"
+#~ msgid "Connected Players"
+#~ msgstr "Joueurs connectés"
 
-#~ msgid "XP: "
-#~ msgstr "XP : "
-
-#, fuzzy
-#~| msgid "There are no save files to load"
-#~ msgid "There are no corpses available."
-#~ msgstr "Aucun fichier sauvegardé à charger"
+#~ msgid "(this turn left)"
+#~ msgid_plural "(%d turns left)"
+#~ msgstr[0] "(dernier tour restant)"
+#~ msgstr[1] "(%d tours restants)"
 
 #~ msgid "registering with password *** and no email address"
 #~ msgstr ""
@@ -8698,15 +8686,69 @@ msgstr "Options de planification"
 #~ "Demander une liste des détails que vous pouvez établir pour votre "
 #~ "pseudonyme enregistré."
 
-#~ msgid "Ping timeout"
-#~ msgstr "Temps d'expiration de réponse"
+#~ msgid "command^Alias:"
+#~ msgid_plural "Aliases:"
+#~ msgstr[0] "Alias:"
+#~ msgstr[1] "Alias:"
+
+#~| msgid "do not translate the on/off^[<side> [on/off]]"
+#~ msgid "command_idle^[<side> [on/off]]"
+#~ msgstr "[<camp> [on/off]]"
+
+#~ msgid "Show fps (Frames Per Second)."
+#~ msgstr "Affiche les IPS (Images par seconde)."
+
+#~ msgid "Can't droid a local ai side: '$side'."
+#~ msgstr "Impossible de robotiser ce camp (IA locale) : « $side »."
+
+#~| msgid "Do you really want to surrender the game?"
+#~ msgid ""
+#~ "\n"
+#~ "Do you want to save the game?"
+#~ msgstr ""
+#~ "\n"
+#~ "Voulez-vous sauvegarder la partie ?"
+
+#~| msgid "The game has been saved."
+#~ msgid ""
+#~ "This game has been ended.\n"
+#~ "Reason: "
+#~ msgstr ""
+#~ "La partie a été terminée.\n"
+#~ "Raison :"
+
+#~| msgid "Income"
+#~ msgid "Net Income"
+#~ msgstr "Revenu net"
+
+#~ msgid "Empty"
+#~ msgstr "Vide"
+
+#~ msgid "battery"
+#~ msgstr "batterie"
 
 #~ msgid ""
-#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
-#~ "disable"
+#~ "In many campaign scenarios, you may issue simple instructions for your "
+#~ "computer-controlled allies using the right-click context menu."
 #~ msgstr ""
-#~ "Nombre de secondes à attendre avant l'expiration du temps de réponse. "
-#~ "Désactiver avec 0"
+#~ "Dans la plupart des scénarios des campagnes, vous pouvez donner des "
+#~ "instructions simples à vos alliés contrôlés par l'ordinateur via le menu "
+#~ "contextuel en faisant un clic-droit."
+
+#~ msgid "An invalid defender weapon got selected."
+#~ msgstr "Arme de défense sélectionnée non valide."
+
+#~ msgid "Advances to:"
+#~ msgstr "Évolue en :"
+
+#~ msgid "S"
+#~ msgstr "S"
+
+#~ msgid "C"
+#~ msgstr "C"
+
+#~ msgid "(missing)"
+#~ msgstr " (manquant)"
 
 #~ msgid ""
 #~ "Wesnoth has many different sagas waiting to be played. Fight to regain "
@@ -8746,57 +8788,11 @@ msgstr "Options de planification"
 #~ "7 factions belligérantes pour 46 cartes/scénarios multijoueurs,\n"
 #~ "plus de 500 extensions.)"
 
-#~ msgid ""
-#~ "Liminal units only reach their full strength during twilight.\n"
-#~ "\n"
-#~ "Day: −25% Damage\n"
-#~ "Night: −25% Damage"
-#~ msgstr ""
-#~ "Les unités liminales disposent de toutes leurs forces uniquement durant "
-#~ "le demi-jour.\n"
-#~ "\n"
-#~ "Jour : -25 % de dégâts\n"
-#~ "Nuit : -25 % de dégâts"
-
-#~ msgid "(this turn left)"
-#~ msgid_plural "(%d turns left)"
-#~ msgstr[0] "(dernier tour restant)"
-#~ msgstr[1] "(%d tours restants)"
-
-#~ msgid ""
-#~ "In many campaign scenarios, you may issue simple instructions for your "
-#~ "computer-controlled allies using the right-click context menu."
-#~ msgstr ""
-#~ "Dans la plupart des scénarios des campagnes, vous pouvez donner des "
-#~ "instructions simples à vos alliés contrôlés par l'ordinateur via le menu "
-#~ "contextuel en faisant un clic-droit."
-
-#~ msgid "An invalid defender weapon got selected."
-#~ msgstr "Arme de défense sélectionnée non valide."
-
-#~ msgid "Empty"
-#~ msgstr "Vide"
-
 #~ msgid "$era_name (missing)"
 #~ msgstr "$era_name (manquant)"
 
-#~ msgid "(missing)"
-#~ msgstr " (manquant)"
-
-#~ msgid "S"
-#~ msgstr "S"
-
-#~ msgid "C"
-#~ msgstr "C"
-
 #~ msgid "none"
 #~ msgstr "aucune"
-
-#~ msgid "Can't droid a local ai side: '$side'."
-#~ msgstr "Impossible de robotiser ce camp (IA locale) : « $side »."
-
-#~ msgid "Advances to:"
-#~ msgstr "Évolue en :"
 
 #~ msgid "None"
 #~ msgstr "Aucune"
@@ -8809,21 +8805,15 @@ msgstr "Options de planification"
 #~ msgstr[1] ""
 #~ "<span color=\"$color\">$number_or_percent</span> points de mouvement"
 
+#~ msgid "Ping timeout"
+#~ msgstr "Temps d'expiration de réponse"
+
 #~ msgid ""
-#~ "There are no custom options available for the selected era, game, or "
-#~ "modification."
+#~ "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
+#~ "disable"
 #~ msgstr ""
-#~ "Aucune option personnalisable pour l'ère, la partie ou la modification "
-#~ "sélectionnée."
-
-#~ msgid "Defaults"
-#~ msgstr "Valeurs par défaut"
-
-#~ msgid "Connected Players"
-#~ msgstr "Joueurs connectés"
-
-#~ msgid "battery"
-#~ msgstr "batterie"
+#~ "Nombre de secondes à attendre avant l'expiration du temps de réponse. "
+#~ "Désactiver avec 0"
 
 #~ msgid ""
 #~ "$elem has been deprecated and will be removed in the next version "
@@ -9878,6 +9868,9 @@ msgstr "Options de planification"
 #~ msgid "Scroll To"
 #~ msgstr "Aller à"
 
+#~ msgid "Recruit"
+#~ msgstr "Recruter"
+
 #~ msgid "Select unit:"
 #~ msgstr "Sélectionner l'unité : "
 
@@ -9889,6 +9882,9 @@ msgstr "Options de planification"
 
 #~ msgid "level"
 #~ msgstr "niveau"
+
+#~ msgid "XP: "
+#~ msgstr "XP : "
 
 #, fuzzy
 #~| msgid "Connecting..."
@@ -10327,180 +10323,237 @@ msgstr "Options de planification"
 #~ msgid "cancel"
 #~ msgstr "annuler"
 
+#~| msgid "Select Scenario"
 #~ msgid "Select Hex"
 #~ msgstr "Sélectionner le scénario"
 
+#~| msgid "Attacker"
 #~ msgid "Move/Attack"
 #~ msgstr "Attaquant"
 
 #~ msgid "Animate Map"
 #~ msgstr "Animer la carte"
 
+#~| msgid "Next Turn"
 #~ msgid "Next Unit"
 #~ msgstr "Tour suivant"
 
+#~| msgid "End Turn"
 #~ msgid "End Unit Turn"
 #~ msgstr "Fin du tour"
 
+#~| msgid "Map_Screenshot"
 #~ msgid "Map Screenshot"
 #~ msgstr "Capture d'écran de la carte"
 
+#~| msgid "Description"
 #~ msgid "Terrain Description"
 #~ msgstr "Description"
 
+#~| msgid "Description"
 #~ msgid "Unit Description"
 #~ msgstr "Description"
 
+#~| msgid "Delete: $addon_title"
 #~ msgid "Delete Unit"
 #~ msgstr "Effacer l'extension : $addon_title"
 
+#~| msgid "Share Maps"
 #~ msgid "Save Map"
 #~ msgstr "Partager les cartes"
 
+#~| msgid "Recruit"
 #~ msgid "Repeat Recruit"
 #~ msgstr "Recruter"
 
+#~| msgid "Mouse scrolling"
 #~ msgid "Mouse Scrolling"
 #~ msgstr "Défilement avec la souris"
 
+#~| msgid "Status"
 #~ msgid "Status Table"
 #~ msgstr "État"
 
+#~| msgid "Create Unit (Debug!)"
 #~ msgid "Change Side (Debug!)"
 #~ msgstr "Créer une unité (Débug !)"
 
+#~| msgid "Create Unit (Debug!)"
 #~ msgid "Kill Unit (Debug!)"
 #~ msgstr "Créer une unité (Débug !)"
 
+#~| msgid "Scenario Settings"
 #~ msgid "Scenario Objectives"
 #~ msgstr "Paramètres du scénario"
 
+#~| msgid "Host Networked Game"
 #~ msgid "Pause Network Game"
 #~ msgstr "Héberger un jeu en réseau"
 
+#~| msgid "Host Networked Game"
 #~ msgid "Continue Network Game"
 #~ msgstr "Héberger un jeu en réseau"
 
 #~ msgid "Quit Game"
 #~ msgstr "Quitter le jeu"
 
+#~| msgid "Place Label"
 #~ msgid "Set Label"
 #~ msgstr "Placer une note"
 
+#~| msgid "Save Replay"
 #~ msgid "Play Replay"
 #~ msgstr "Sauvegarder le film"
 
+#~| msgid "Save Replay"
 #~ msgid "Reset Replay"
 #~ msgstr "Sauvegarder le film"
 
+#~| msgid "Save Replay"
 #~ msgid "Stop Replay"
 #~ msgstr "Sauvegarder le film"
 
+#~| msgid "Full Heal"
 #~ msgid "Full Map"
 #~ msgstr "Soins complets"
 
+#~| msgid "Team"
 #~ msgid "Each Team"
 #~ msgstr "Équipe"
 
+#~| msgid "Team"
 #~ msgid "Team 1"
 #~ msgstr "Équipe"
 
+#~| msgid "Skip animation"
 #~ msgid "Skip Animation"
 #~ msgstr "Passer les animations"
 
+#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Execute Action"
 #~ msgstr "Options de planification"
 
+#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Execute All Actions"
 #~ msgstr "Options de planification"
 
+#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Delete Action"
 #~ msgstr "Options de planification"
 
+#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Move Action Up"
 #~ msgstr "Options de planification"
 
+#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Move Action Down"
 #~ msgstr "Options de planification"
 
+#~| msgid "Time of Day"
 #~ msgid "Switch Time of Day"
 #~ msgstr "Moment de la journée"
 
+#~| msgid "Share Maps"
 #~ msgid "Switch Map"
 #~ msgstr "Partager les cartes"
 
+#~| msgid "Time of Day"
 #~ msgid "Custom Time of Day Creator"
 #~ msgstr "Moment de la journée"
 
+#~| msgid "Load Game"
 #~ msgid "Load Map"
 #~ msgstr "Charger un jeu"
 
+#~| msgid "Select Scenario"
 #~ msgid "Save Scenario As"
 #~ msgstr "Sélectionner le scénario"
 
+#~| msgid "Save the Map As"
 #~ msgid "Save All Maps"
 #~ msgstr "Sauvegarder la carte sous"
 
+#~| msgid "Skip animation"
 #~ msgid "Map Information"
 #~ msgstr "Passer les animations"
 
+#~| msgid "(New Side)"
 #~ msgid "Add New Side"
 #~ msgstr "Équipe suivante"
 
+#~| msgid "Next Turn"
 #~ msgid "Next Tool"
 #~ msgstr "Tour suivant"
 
+#~| msgid "Starting position: "
 #~ msgid "Starting Positions Tool"
 #~ msgstr "Commencer le positionnement : "
 
+#~| msgid "Label: "
 #~ msgid "Label Tool"
 #~ msgstr "Note : "
 
+#~| msgid "Village gold: "
 #~ msgid "Village Tool"
 #~ msgstr "Or par village : "
 
+#~| msgid "Recruit"
 #~ msgid "Can Recruit"
 #~ msgstr "Recruter"
 
+#~| msgid "Advance Unit"
 #~ msgid "Change Unit ID"
 #~ msgstr "Unité promue"
 
+#~| msgid "Next Turn"
 #~ msgid "Next Brush"
 #~ msgstr "Tour suivant"
 
+#~| msgid "Select unit:"
 #~ msgid "Select All"
 #~ msgstr "Sélectionner l'unité : "
 
+#~| msgid "Select an add-on to update:"
 #~ msgid "Select Inverse"
 #~ msgstr "Sélectionner une extension à mettre à jour :"
 
+#~| msgid "Select unit:"
 #~ msgid "Select None"
 #~ msgstr "Sélectionner l'unité : "
 
+#~| msgid "Invalid location"
 #~ msgid "Flip Selection"
 #~ msgstr "Emplacement non valide"
 
+#~| msgid "Randomize time of day in begin"
 #~ msgid "Randomize Tiles in Selection"
 #~ msgstr "Rendre aléatoire le début du moment de la journée"
 
+#~| msgid "Animate Map"
 #~ msgid "Rotate Map"
 #~ msgstr "Animer la carte"
 
+#~| msgid "Animate Map"
 #~ msgid "Generate Map"
 #~ msgstr "Animer la carte"
 
+#~| msgid "Create Game"
 #~ msgid "Create Mask"
 #~ msgstr "Créer une partie"
 
+#~| msgid "Refresh gui."
 #~ msgid "Refresh Display"
 #~ msgstr "Rafraîchit l'IHM."
 
+#~| msgid "Latin Translation"
 #~ msgid "Update Terrain Transitions"
 #~ msgstr "Traduction latine"
 
+#~| msgid "End Scenario"
 #~ msgid "Edit Scenario"
 #~ msgstr "Fin du scénario"
 
+#~| msgid "Next Side"
 #~ msgid "Edit Side"
 #~ msgstr "Équipe suivante"
 
@@ -10508,45 +10561,59 @@ msgstr "Options de planification"
 #~ msgid "Remove Side"
 #~ msgstr "déplacements"
 
+#~| msgid "Update All"
 #~ msgid "Speak to Ally"
 #~ msgstr "Tout mettre à jour"
 
+#~| msgid "Update All"
 #~ msgid "Speak to All"
 #~ msgstr "Tout mettre à jour"
 
+#~| msgid "Chat Log"
 #~ msgid "View Chat Log"
 #~ msgstr "Historique des discussions"
 
+#~| msgid "User-Command#3"
 #~ msgid "Enter User Command"
 #~ msgstr "Commande utilisateur #3"
 
+#~| msgid "Refresh gui."
 #~ msgid "Refresh WML"
 #~ msgstr "Rafraîchit l'IHM."
 
+#~| msgid "Show next tip of the day"
 #~ msgid "Next Tip of the Day"
 #~ msgstr "Astuce suivante"
 
+#~| msgid "Show previous tip of the day"
 #~ msgid "Previous Tip of the Day"
 #~ msgstr "Voir la précédente astuce du jour"
 
+#~| msgid "Tutorial"
 #~ msgid "Start Tutorial"
 #~ msgstr "Didacticiel"
 
+#~| msgid "Campaign"
 #~ msgid "Start Campaign"
 #~ msgstr "Campagne"
 
+#~| msgid "Multiplayer"
 #~ msgid "Start Multiplayer Game"
 #~ msgstr "Multijoueur"
 
+#~| msgid "Update add-ons"
 #~ msgid "Manage Add-ons"
 #~ msgstr "Mettre à jour les extensions"
 
+#~| msgid "Start the map editor"
 #~ msgid "Start Editor"
 #~ msgstr "Ouvrir l'éditeur de cartes"
 
+#~| msgid "Credits"
 #~ msgid "Show Credits"
 #~ msgstr "Crédits"
 
+#~| msgid "Show replay"
 #~ msgid "Show Helptip"
 #~ msgstr "Revoir les actions passées"
 
@@ -10600,66 +10667,86 @@ msgstr "Options de planification"
 #~ msgid "Multiplayer_AI^Experimental AI"
 #~ msgstr "IA expérimentale"
 
+#~| msgid "Enemy unit sighted!"
+#~| msgid_plural "$enemies enemy units sighted!"
 #~ msgid "Enemy unit weight  (default: 100)"
 #~ msgstr "Unité ennemie en vue !"
 
 #~ msgid "Orcs"
 #~ msgstr "Orcs"
 
+#~| msgid "Move leader here"
 #~ msgid "Move Konrad here"
 #~ msgstr "Déplacer le chef ici"
 
+#~| msgid "race^Humans"
 #~ msgid "Humans"
 #~ msgstr "Humains"
 
+#~| msgid "Elves"
 #~ msgid "Wolves"
 #~ msgstr "Elfes"
 
+#~| msgid "help"
 #~ msgid "Whelps"
 #~ msgstr "aide"
 
 #~ msgid "End scenario"
 #~ msgstr "Fin du scénario"
 
+#~| msgid "Save the Map As"
 #~ msgid "Take the pass"
 #~ msgstr "Sauvegarder la carte sous"
 
+#~| msgid "Defeat"
 #~ msgid "Defeat Rowck"
 #~ msgstr "Défaite"
 
+#~| msgid "Defeat enemy leader"
 #~ msgid "Death of the bat leader"
 #~ msgstr "Vaincre le chef ennemi"
 
+#~| msgid "race^Saurians"
 #~ msgid "Saurians"
 #~ msgstr "Sauriens"
 
+#~| msgid "race^Gryphon"
 #~ msgid "Place Side 1 Footpad"
 #~ msgstr "Gryphon"
 
+#~| msgid "race^Gryphons"
 #~ msgid "Gryphons"
 #~ msgstr "Gryphons"
 
+#~| msgid "Forward >"
 #~ msgid "Coward 1"
 #~ msgstr "Suivant >"
 
+#~| msgid "Forward >"
 #~ msgid "coward r=5"
 #~ msgstr "Suivant >"
 
+#~| msgid "Forward >"
 #~ msgid "Coward 2"
 #~ msgstr "Suivant >"
 
+#~| msgid "Forward >"
 #~ msgid "Coward 3"
 #~ msgstr "Suivant >"
 
+#~| msgid "Forward >"
 #~ msgid "Coward 4"
 #~ msgstr "Suivant >"
 
+#~| msgid "Faction"
 #~ msgid "Station 1"
 #~ msgstr "Faction"
 
+#~| msgid "Faction"
 #~ msgid "Station 2"
 #~ msgstr "Faction"
 
+#~| msgid "Forward >"
 #~ msgid "Coward"
 #~ msgstr "Suivant >"
 
@@ -10669,33 +10756,43 @@ msgstr "Options de planification"
 #~ "Victoire :\n"
 #~ "@Vaincre le(s) chef(s) ennemi(s)"
 
+#~| msgid "teleport"
 #~ msgid "Healer Support"
 #~ msgstr "téléportation"
 
+#~| msgid "Notes:"
 #~ msgid "Notes"
 #~ msgstr "Remarques :"
 
+#~| msgid "Clear all orders"
 #~ msgid "Defeat all lurkers"
 #~ msgstr "Annuler tous les ordres"
 
+#~| msgid "Message:"
 #~ msgid "Messenger"
 #~ msgstr "Message : "
 
+#~| msgid "Move leader here"
 #~ msgid "AI moves Messenger here"
 #~ msgstr "Déplacer le chef ici"
 
+#~| msgid "Defeat enemy leader"
 #~ msgid "Defeat the messenger"
 #~ msgstr "Vaincre le chef ennemi"
 
+#~| msgid "Language"
 #~ msgid "Langzhar"
 #~ msgstr "Langue"
 
+#~| msgid "Move leader here"
 #~ msgid "Move Rossauba here"
 #~ msgstr "Déplacer le chef ici"
 
+#~| msgid "Take it"
 #~ msgid "I made it"
 #~ msgstr "Prenez-le"
 
+#~| msgid "Recruit"
 #~ msgid "Recruiting"
 #~ msgstr "Recruter"
 
@@ -10703,21 +10800,27 @@ msgstr "Options de planification"
 #~ msgid "Swarm"
 #~ msgstr "déferlement"
 
+#~| msgid "race^Bats"
 #~ msgid "Bats"
 #~ msgstr "Chauves-souris"
 
+#~| msgid "race^Gryphon"
 #~ msgid "Place Side 1 Gryphon"
 #~ msgstr "Gryphon"
 
+#~| msgid "race^Wolves"
 #~ msgid "More Wolves"
 #~ msgstr "Loups"
 
+#~| msgid "Wesnoth Developers"
 #~ msgid "AI Developer"
 #~ msgstr "Développeurs de Wesnoth"
 
+#~| msgid "Invalid location"
 #~ msgid "AI Location:"
 #~ msgstr "Emplacement non valide"
 
+#~| msgid "firststrike"
 #~ msgid "first"
 #~ msgstr "initiative"
 
@@ -10730,18 +10833,26 @@ msgstr "Options de planification"
 #~ msgid "Multiplayer_AI^RCA AI"
 #~ msgstr "RCA IA"
 
+#~| msgid "invisible: "
 #~ msgid "invisible"
 #~ msgstr "invisible : "
 
+#~| msgid "female^slowed"
 #~ msgid "female^invisible"
 #~ msgstr "ralentie"
 
+#~| msgid "Fire a game event."
 #~ msgid "I triggered a moveto event."
 #~ msgstr "Déclenche un événement."
 
+#~| msgid "drains"
 #~ msgid "drains 20%"
 #~ msgstr "drain"
 
+#~| msgid ""
+#~| "Drain:\n"
+#~| "This unit drains health from living units, healing itself for half the "
+#~| "amount of damage it deals (rounded down)."
 #~ msgid ""
 #~ "Drain 20%:\n"
 #~ "This unit drains health from living units, healing itself for 20% of the "
@@ -10751,12 +10862,18 @@ msgstr "Options de planification"
 #~ "Cette unité draine la vie des unités vivantes et se régénère de la moitié "
 #~ "des dégâts causés (arrondis à l'inférieur)."
 
+#~| msgid "invisible: "
 #~ msgid "It is invisible!"
 #~ msgstr "invisible : "
 
+#~| msgid "drains"
 #~ msgid "drains 100%"
 #~ msgstr "drain"
 
+#~| msgid ""
+#~| "Drain:\n"
+#~| "This unit drains health from living units, healing itself for half the "
+#~| "amount of damage it deals (rounded down)."
 #~ msgid ""
 #~ "Drain 100%:\n"
 #~ "This unit drains health from living units, healing itself for 100% of the "
@@ -10766,18 +10883,27 @@ msgstr "Options de planification"
 #~ "Cette unité draine la vie des unités vivantes et se régénère de la moitié "
 #~ "des dégâts causés (arrondis à l'inférieur)."
 
+#~| msgid "Choose weapon:"
+#~ msgid "Choose a Map to Open"
+#~ msgstr "Choisir une arme : "
+
+#~| msgid "Choose the game to load"
 #~ msgid "Choose a Mask to Apply"
 #~ msgstr "Choisissez le jeu à charger"
 
+#~| msgid "Choose weapon:"
 #~ msgid "Choose Target Map"
 #~ msgstr "Choisir une arme : "
 
+#~| msgid "The map already exists. Do you want to overwrite it?"
 #~ msgid "The file already exists. Do you want to overwrite it?"
 #~ msgstr "Cette carte existe déjà. Voulez-vous l'écraser ?"
 
+#~| msgid "No era information found."
 #~ msgid "No random map generators found."
 #~ msgstr "Aucune information sur l'ère trouvée."
 
+#~| msgid "Installation failed"
 #~ msgid "Map creation failed."
 #~ msgstr "L'installation a échoué"
 
@@ -14502,6 +14628,9 @@ msgstr "Options de planification"
 
 #~ msgid "Zero upkeep"
 #~ msgstr "Sans entretien"
+
+#~ msgid "undead"
+#~ msgstr "mort-vivant"
 
 #~ msgid "Immune to drain, poison and plague"
 #~ msgstr "Immunisé contre le poison, la peste et le drain de vie"
