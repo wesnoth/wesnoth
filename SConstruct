@@ -421,7 +421,7 @@ if env["prereqs"]:
         found_connector = False
         for sql_config in ["mariadb_config", "mysql_config"]:
             try:
-                mysql_config = check_output([sql_config, "--libs", "--cflags"]).replace("\n", " ").replace("-DNDEBUG", "")
+                mysql_config = check_output([sql_config, "--libs", "--cflags"]).decode("utf-8").replace("\n", " ").replace("-DNDEBUG", "")
                 mysql_flags = env.ParseFlags(mysql_config)
                 env.Append(CPPDEFINES = ["HAVE_MYSQLPP"])
                 env.MergeFlags(mysql_flags)
