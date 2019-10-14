@@ -27,7 +27,7 @@ namespace dialogs
 class unit_recruit : public modal_dialog
 {
 public:
-	/// @param recruit_list maps unit typs to strings. The strings are ""
+	/// @param recruit_map maps unit typs to strings. The strings are ""
 	/// if the unit can be recalled and an error message string otherwise.
 	unit_recruit(std::map<const unit_type*, std::string>& recruit_map, team& team);
 
@@ -49,7 +49,7 @@ private:
 
 	void show_help();
 
-	/// A vector of unit types in the order listed. Used by unit_recruit::post_show.
+	/// A vector of unit types in the order listed in the UI. Used by unit_recruit::post_show.
 	std::vector<const unit_type*> recruit_list_;
 	std::map<const unit_type*, std::string>& recruit_map_;
 
