@@ -63,7 +63,7 @@
    * New tag [modify_unit_type] that goes into [campaign]/[era]/[modification] and can change some
      unit type properties like advancement and recruit costs.
    * New debug command :terrain for changing the terrain of the selected hex (PR#4405)
-   * weapons like abilities support now [filter_weapon] in [filter_student/opponent/attacker/defender] tags like in  true weapons specials and no [filter_weapon/filter_second_weapon] like in [leadership] and [resistance] abilities anymore (PR #4435)
+   * weapons like abilities support now [filter_weapon] in [filter_student/opponent/attacker/defender] tags like in  true weapons specials and [filter_weapon/filter_second_weapon] like in [leadership] and [resistance] abilities are deprecated (PR #4435)
  ### Miscellaneous and bug fixes
    * Fixed :droid's arguments not all being optional (Issue#4308)
    * Ported the "expand-terrain-macros", "wmlflip", "wmlparser", "umc-dev/build/update_version",
