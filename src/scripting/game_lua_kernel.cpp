@@ -2135,7 +2135,7 @@ int game_lua_kernel::intf_print(lua_State *L) {
 	font::floating_label flabel(text);
 	flabel.set_font_size(size);
 	flabel.set_color(color);
-	flabel.set_position(rect.w/2,rect.h/2);
+	flabel.set_position(rect.x + rect.w/2, rect.y + rect.h/2);
 	flabel.set_lifetime(lifetime);
 	flabel.set_clip_rect(rect);
 
