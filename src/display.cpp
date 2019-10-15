@@ -89,29 +89,27 @@ namespace {
 unsigned int display::zoom_ = DefaultZoom;
 unsigned int display::last_zoom_ = SmallZoom;
 
-// Factored out of set_zoom() so it can be re-used in constructor (loading from preferences)
-// new_zoom is the zoom factor (corresponding to display::zoom_)
-// new_zoom_index is the index of zoom_levels corresponding to zoom (corresponding to display::zoom_index_)
-// Returns true when validated and and zoom_index set and false if zoom cannot be validated (in which case parameters remain unchanged)
-static bool validate_zoom_level_and_set_index(unsigned int& new_zoom, int& new_zoom_index)
+// Returns index of zoom_levels which is closest match to input tile_size
+// Assumption: zoom_levels is a sorted vector of ascending tile sizes
+// (game_config is set-up this way as of October 2019 but there is no documentation stating it has to be so)
+int get_zoom_levels_index(unsigned int zoom_level)
 {
-	auto iter = std::lower_bound(zoom_levels.begin(), zoom_levels.end(), new_zoom);
+	zoom_level = utils::clamp(zoom_level, MinZoom, MaxZoom);	// ensure zoom_level is within zoom_levels bounds
+	auto iter = std::lower_bound(zoom_levels.begin(), zoom_levels.end(), zoom_level);
 
-	if(iter == zoom_levels.end()) {
-		return false;
-	} else if(iter != zoom_levels.begin()) {
+	// find closest match
+	if(iter != zoom_levels.begin() && iter != zoom_levels.end()) {
 		float diff = *iter - *(iter - 1);
-		float lower = (new_zoom - *(iter - 1)) / diff;
-		float upper = (*iter - new_zoom) / diff;
+		float lower = (zoom_level - *(iter - 1)) / diff;
+		float upper = (*iter - zoom_level) / diff;
+
+		// the previous element is closer to zoom_level than the current one
 		if(lower < upper) {
-			// It's actually closer to the previous element.
 			iter--;
 		}
 	}
 
-	new_zoom = *iter;
-	new_zoom_index = std::distance(zoom_levels.begin(), iter);
-	return true;
+	return std::distance(zoom_levels.begin(), iter);
 }
 
 void display::parse_team_overlays()
@@ -258,12 +256,13 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 
 	set_idle_anim_rate(preferences::idle_anim_rate());
 
-	if(preferences::tile_size() > 0) {
-		zoom_ = preferences::tile_size();
-		validate_zoom_level_and_set_index(zoom_, zoom_index_);
-	} else {
-		zoom_index_ = std::distance(zoom_levels.begin(), std::find(zoom_levels.begin(), zoom_levels.end(), zoom_));
-	}
+	unsigned int tile_size = preferences::tile_size();
+	if(tile_size < MinZoom || tile_size > MaxZoom)
+		tile_size = DefaultZoom;
+	zoom_index_ = get_zoom_levels_index(tile_size);
+	zoom_ = zoom_levels[zoom_index_];
+	if(zoom_ != preferences::tile_size())	// correct saved tile_size if necessary
+		preferences::set_tile_size(zoom_);
 
 	image::set_zoom(zoom_);
 
@@ -2025,9 +2024,9 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 		return false;
 	}
 
-	// Confirm this is indeed a valid zoom level (zoom_index_ doesn't get updated if new_zoom is not valid)
-	if(validate_value_and_set_index && !validate_zoom_level_and_set_index(new_zoom, zoom_index_)) {
-		return false;
+	if(validate_value_and_set_index) {
+		zoom_index_ = get_zoom_levels_index (new_zoom);
+		new_zoom = zoom_levels[zoom_index_];
 	}
 
 	const SDL_Rect& outside_area = map_outside_area();
