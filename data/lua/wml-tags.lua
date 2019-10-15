@@ -395,7 +395,7 @@ function wml_actions.store_unit(cfg)
 
 	for i,u in ipairs(units) do
 		utils.vwriter.write(writer, u.__cfg)
-		if kill_units then wesnoth.erase_unit(u) end
+		if kill_units then u:erase() end
 	end
 
 	if (not filter.x or filter.x == "recall") and (not filter.y or filter.y == "recall") then
@@ -404,7 +404,7 @@ function wml_actions.store_unit(cfg)
 			ucfg.x = "recall"
 			ucfg.y = "recall"
 			utils.vwriter.write(writer, ucfg)
-			if kill_units then wesnoth.erase_unit(u) end
+			if kill_units then u:erase() end
 		end
 	end
 end
@@ -536,8 +536,8 @@ function wml_actions.petrify(cfg)
 	for index, unit in ipairs(wesnoth.get_units(cfg)) do
 		unit.status.petrified = true
 		-- Extract unit and put it back to update animation (not needed for recall units)
-		wesnoth.extract_unit(unit)
-		wesnoth.put_unit(unit)
+		unit:extract()
+		unit:to_map()
 	end
 
 	for index, unit in ipairs(wesnoth.get_recall_units(cfg)) do
@@ -549,8 +549,8 @@ function wml_actions.unpetrify(cfg)
 	for index, unit in ipairs(wesnoth.get_units(cfg)) do
 		unit.status.petrified = false
 		-- Extract unit and put it back to update animation (not needed for recall units)
-		wesnoth.extract_unit(unit)
-		wesnoth.put_unit(unit)
+		unit:extract()
+		unit:to_map()
 	end
 
 	for index, unit in ipairs(wesnoth.get_recall_units(cfg)) do
