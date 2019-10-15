@@ -89,7 +89,7 @@ namespace {
 unsigned int display::zoom_ = DefaultZoom;
 unsigned int display::last_zoom_ = SmallZoom;
 
-// Returns index of zoom_levels which is closest match to input tile_size
+// Returns index of zoom_levels which is closest match to input zoom_level
 // Assumption: zoom_levels is a sorted vector of ascending tile sizes
 // (game_config is set-up this way as of October 2019 but there is no documentation stating it has to be so)
 int get_zoom_levels_index(unsigned int zoom_level)
