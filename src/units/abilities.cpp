@@ -717,11 +717,9 @@ bool attack_type::get_special_bool(const std::string& special, bool simple_check
 	std::vector<special_match> special_id_matches;
 	if(special_id && special_tags){
 		get_special_children(special_tag_matches, special_id_matches, other_attack_->specials_, special);
-	}
-	else if (special_id && !special_tags){
+	} else if (special_id && !special_tags){
 		get_special_children_id(special_id_matches, other_attack_->specials_, special);
-	}
-	else if (!special_id && special_tags){
+	} else if (!special_id && special_tags){
 		get_special_children_tags(special_tag_matches, other_attack_->specials_, special);
 	}
 	if(special_tags){
