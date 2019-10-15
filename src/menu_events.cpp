@@ -255,7 +255,7 @@ bool menu_handler::has_friends() const
 
 void menu_handler::recruit(int side_num, const map_location& last_hex)
 {
-	std::map<const unit_type*, std::string> sample_units;
+	std::map<const unit_type*, t_string> sample_units;
 
 	std::set<std::string> recruits = actions::get_recruits(side_num, last_hex);
 
@@ -301,7 +301,7 @@ void menu_handler::repeat_recruit(int side_num, const map_location& last_hex)
 // TODO: Return multiple strings here, in case more than one error applies? For
 // example, if you start AOI S5 with 0GP and recruit a Mage, two reasons apply,
 // leader not on keep (extrarecruit=Mage) and not enough gold.
-std::string menu_handler::can_recruit(const std::string& name, int side_num, map_location& loc, map_location& recruited_from)
+t_string menu_handler::can_recruit(const std::string& name, int side_num, map_location& loc, map_location& recruited_from)
 {
 	team& current_team = board().get_team(side_num);
 
