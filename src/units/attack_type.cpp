@@ -107,8 +107,8 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	const std::vector<std::string> filter_name = utils::split(filter["name"]);
 	const std::vector<std::string> filter_type = utils::split(filter["type"]);
 	const std::vector<std::string> filter_special = utils::split(filter["special"]);
-	const std::vector<std::string> filter_special_id = utils::split(filter["special_id"]);/// param special_id If true, match special against the id of special tags.
-	const std::vector<std::string> filter_special_type = utils::split(filter["special_type"]);/// param special_tags If true, match special against the tag name of special tags.
+	const std::vector<std::string> filter_special_id = utils::split(filter["special_id"]);
+	const std::vector<std::string> filter_special_type = utils::split(filter["special_type"]);
 	const std::vector<std::string> filter_special_active = utils::split(filter["special_active"]);
 	const std::vector<std::string> filter_special_id_active = utils::split(filter["special_id_active"]);
 	const std::vector<std::string> filter_special_type_active = utils::split(filter["special_type_active"]);
@@ -151,7 +151,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 			return false;
 		}
 	}
-	
+	/// param special_id, return true if match special against the id of special tags.
 	if(!filter_special_id.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_id) {
@@ -165,7 +165,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		}
 	}
 
-
+	/// return True if the special is active.
 	if(!filter_special_active.empty()) {
 		deprecated_message("special_active=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id_active or special_type_active instead");
 		bool found = false;
@@ -179,7 +179,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 			return false;
 		}
 	}
-	
+	/// param special_id, return true if match special against the id of special tags, and special active.
 	if(!filter_special_id_active.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_id_active) {
@@ -192,7 +192,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 			return false;
 		}
 	}
-
+	/// param special_tags return true if match special against the tag name of special tags.
 	if(!filter_special_type.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_type) {
@@ -205,7 +205,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 			return false;
 		}
 	}
-
+	/// param special_tags If true and special active, match special against the tag name of special tags.
 	if(!filter_special_type_active.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_type_active) {
