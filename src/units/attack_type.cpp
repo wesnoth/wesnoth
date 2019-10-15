@@ -179,7 +179,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 			return false;
 		}
 	}
-	/// param special_id, return true if match special against the id of special tags, and special active.
+	/// param special_id_active, return true if match special against the id of special tags, and special active.
 	if(!filter_special_id_active.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_id_active) {
@@ -192,7 +192,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 			return false;
 		}
 	}
-	/// param special_tags return true if match special against the tag name of special tags.
+	/// param special_type return true if match special against the tag name of special tags.
 	if(!filter_special_type.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_type) {
@@ -205,7 +205,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 			return false;
 		}
 	}
-	/// param special_tags If true and special active, match special against the tag name of special tags.
+	/// param special_type_active return true if match special against the tag name of special tags,  and special active.
 	if(!filter_special_type_active.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_type_active) {
