@@ -64,6 +64,7 @@
    * New tag [modify_unit_type] that goes into [campaign]/[era]/[modification] and can change some
      unit type properties like advancement and recruit costs.
    * New debug command :terrain for changing the terrain of the selected hex (PR#4405)
+   * New predefined macros `{LEFT_BRACE}` and `{RIGHT_BRACE}` (PR#4432)
  ### Miscellaneous and bug fixes
    * Fixed :droid's arguments not all being optional (Issue#4308)
    * Ported the "expand-terrain-macros", "wmlflip", "wmlparser", "umc-dev/build/update_version",
@@ -76,6 +77,8 @@
    * Improve the terrain code's encapsulation and documentation (PR#4411)
    * Fix duration=scenario objects expiry for units on the recall list at scenario end.
    * Fix maps with scenario_generation= were unavailable in the editor.
+   * Passing relative paths to --user-data-dir is deprecated (part of PR#4449),
+     * On windows, relative paths that start with `.\` are not deprecated
 
 ## Version 1.15.1
  ### Editor
@@ -280,9 +283,12 @@
      the help on the correct unit variation (e.g., Walking Corpse (Swimmer)).
      (Issue#4142)
    * Status table: In replays with "View: Full Map", show all sides' gold status (Issue#4410)
+   * Zooming in doesn't move the center of the viewport when the map is wider/taller
+     than the available width/height (PR#4442)
  ### Miscellaneous and bug fixes
    * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
    * Add help text for some debug commands (part of Issue#2500)
+   * More deprecation warnings logged by default (part of PR#4449)
 
 ## Version 1.14.9
  ### AI:
