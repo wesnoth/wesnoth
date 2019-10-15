@@ -42,7 +42,7 @@ namespace dialogs
 
 REGISTER_DIALOG(unit_recruit)
 
-unit_recruit::unit_recruit(std::map<const unit_type*, std::string>& recruit_map, team& team)
+unit_recruit::unit_recruit(std::map<const unit_type*, t_string>& recruit_map, team& team)
 	: recruit_list_()
 	, recruit_map_(recruit_map)
 	, team_(team)
@@ -127,7 +127,7 @@ void unit_recruit::pre_show(window& window)
 
 	for(const auto& recruit : recruit_list_)
 	{
-		const std::string& error = recruit_map_[recruit];
+		const t_string& error = recruit_map_[recruit];
 		std::map<std::string, string_map> row_data;
 		string_map column;
 
