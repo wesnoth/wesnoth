@@ -360,6 +360,7 @@
    * Added HighContrast icon variant
  ### WML engine
    * Fixed [music] ms_after= affecting the previous track instead of the intended one
+   * The message of [print] is now shown centered within the map area
  ### Miscellaneous and bug fixes
    * Update various references of mermen to merfolk or mer
    * Adjust several maps to use different castle graphics
