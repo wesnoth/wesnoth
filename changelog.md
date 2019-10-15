@@ -48,6 +48,7 @@
  ### Lua API
    * Accessing wesnoth.theme_items.unit_status no longer prevents the unit
      status (poisoned/slowed/etc) from being shown in the sidebar. (Issue#4079)
+   * side.flag is now writable. `wesnoth.set_side_id` remains supported. (Issue#4396)
  ### WML engine
    * Ranges can now have upper limit "infinity" instead of using a big number like "99" or "99999"
    * Print a deprecation warning for `[terrain_type]`'s partly-implemented `vision_alias`
@@ -63,7 +64,9 @@
    * New tag [modify_unit_type] that goes into [campaign]/[era]/[modification] and can change some
      unit type properties like advancement and recruit costs.
    * New debug command :terrain for changing the terrain of the selected hex (PR#4405)
-   * weapons like abilities support now [filter_weapon] in [filter_student/opponent/attacker/defender] tags like in  true weapons specials and [filter_weapon/filter_second_weapon] like in [leadership] and [resistance] abilities are deprecated (PR #4435)
+   * New predefined macros `{LEFT_BRACE}` and `{RIGHT_BRACE}` (PR#4432)
+   * weapons like abilities support now [filter_weapon] in [filter_student/opponent/attacker/defender] tags like in  true weapons specials and [filter_weapon/filter_second_weapon] 
+     like in [leadership] and [resistance] abilities are useless(but not deprecated because usable in [leadership] and [resistance] (PR #4435)
  ### Miscellaneous and bug fixes
    * Fixed :droid's arguments not all being optional (Issue#4308)
    * Ported the "expand-terrain-macros", "wmlflip", "wmlparser", "umc-dev/build/update_version",
@@ -76,6 +79,8 @@
    * Improve the terrain code's encapsulation and documentation (PR#4411)
    * Fix duration=scenario objects expiry for units on the recall list at scenario end.
    * Fix maps with scenario_generation= were unavailable in the editor.
+   * Passing relative paths to --user-data-dir is deprecated (part of PR#4449),
+     * On windows, relative paths that start with `.\` are not deprecated
 
 ## Version 1.15.1
  ### Editor
@@ -280,9 +285,12 @@
      the help on the correct unit variation (e.g., Walking Corpse (Swimmer)).
      (Issue#4142)
    * Status table: In replays with "View: Full Map", show all sides' gold status (Issue#4410)
+   * Zooming in doesn't move the center of the viewport when the map is wider/taller
+     than the available width/height (PR#4442)
  ### Miscellaneous and bug fixes
    * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
    * Add help text for some debug commands (part of Issue#2500)
+   * More deprecation warnings logged by default (part of PR#4449)
 
 ## Version 1.14.9
  ### AI:
@@ -360,6 +368,7 @@
    * Added HighContrast icon variant
  ### WML engine
    * Fixed [music] ms_after= affecting the previous track instead of the intended one
+   * The message of [print] is now shown centered within the map area
  ### Miscellaneous and bug fixes
    * Update various references of mermen to merfolk or mer
    * Adjust several maps to use different castle graphics

@@ -287,14 +287,9 @@ void display::init_flags() {
 	image::set_team_colors(&side_colors);
 }
 
-void display::reinit_flags_for_side(std::size_t side)
+void display::reinit_flags_for_team(const team& t)
 {
-	if (!dc_ || side >= dc_->teams().size()) {
-		ERR_DP << "Cannot rebuild flags for inexistent or unconfigured side " << side << '\n';
-		return;
-	}
-
-	init_flags_for_side_internal(side, dc_->teams()[side].color());
+	init_flags_for_side_internal(t.side() - 1, t.color());
 }
 
 void display::init_flags_for_side_internal(std::size_t n, const std::string& side_color)
@@ -2021,13 +2016,28 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 		zoom_index_ = std::distance(zoom_levels.begin(), iter);
 	}
 
+	const SDL_Rect& outside_area = map_outside_area();
 	const SDL_Rect& area = map_area();
 
 	// Turn the zoom factor to a double in order to avoid rounding errors.
 	double zoom_factor = static_cast<double>(new_zoom) / static_cast<double>(zoom_);
 
+	// INVARIANT: xpos_ + area.w == xend where xend is as in bounds_check_position()
+	//
+	// xpos_: Position of the leftmost visible map pixel of the viewport, in pixels.
+	// Affected by the current zoom: this->zoom_ pixels to the hex.
+	//
+	// xpos_ + area.w/2: Position of the center of the viewport, in pixels.
+	//
+	// (xpos_ + area.w/2) * new_zoom/zoom_: Position of the center of the
+	// viewport, as it would be under new_zoom.
+	//
+	// (xpos_ + area.w/2) * new_zoom/zoom_ - area.w/2: Position of the
+	// leftmost visible map pixel, as it would be under new_zoom.
 	xpos_ = std::round(((xpos_ + area.w / 2) * zoom_factor) - (area.w / 2));
 	ypos_ = std::round(((ypos_ + area.h / 2) * zoom_factor) - (area.h / 2));
+	xpos_ -= (outside_area.w - area.w) / 2;
+	ypos_ -= (outside_area.h - area.h) / 2;
 
 	zoom_ = new_zoom;
 	bounds_check_position(xpos_, ypos_);

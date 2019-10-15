@@ -1,33 +1,113 @@
-Campaigns:
+AI:
+  - data/ai/**/*
+  - src/ai/**/*
+
+Audio:
+  - data/core/music/*
+  - data/core/sounds/**/*
+  - sounds/*
+
+Building:
+  - projectfiles/**/*
+  - source_lists/*
+  - CMakeLists.txt
+  - cmake/*
+  - src/CMakeLists.txt
+  - SConstruct
+  - scons/*
+  - src/SConscript
+  - src/SConstruct
+
+Campaign:
   - data/campaigns/**/*
+
+CMake:
+  - CMakeLists.txt
+  - cmake/*
+  - src/CMakeLists.txt
+
+Docker:
+  - .dockerignore
+  - docker/*
+  - utils/travis/docker_run.sh
+
+Docs:
+  - doc/**/*
+
+Editor:
+  - data/core/editor/*
+  - src/editor/**/*
+
+Graphics:
+  - images/**/*
+  - data/core/images/**/*
+
+Help:
+  - data/tips.cfg
+  - data/core/help.cfg
+  - src/help/*
+  - src/gui/dialogs/help_browser.*
+
+Input:
+  - data/core/hotkeys.cfg
+
+Lua API:
+  - src/scripting/**/*
+  - data/lua/**/*
 
 macOS:
   - projectfiles/Xcode/**/*
   - src/macosx/*
 
-Unit Tests:
-  - data/test/**/*
+MP:
+  - data/multiplayer/**/*
+
+Packaging:
+  - packaging/**/*
+
+Schema:
+  - utils/travis/schema_validation.sh
+  - data/schema/**/*
+  - src/serialization/schema/*
+
+SCons:
+  - SConstruct
+  - scons/*
+  - src/SConscript
+  - src/SConstruct
+
+Services:
+  - src/campaign_server/*
+  - src/server/*
+  - utils/mp-server/*
+
+Terrain:
+  - src/terrain/**/*
+  - data/core/terrain.cfg
+  - data/core/terrain-graphics.cfg
+  - data/core/terrain_graphics/*
+  - data/images/terrain/**/*
+
+Translations:
+  - po/**/*
+  - data/languages/*
+
+Travis:
+  - utils/travis/**/*
 
 UI:
   - src/gui/**/*
   - data/gui/**/*
   - data/schema/gui.cfg
+  - data/themes/*
+
+Unit Tests:
+  - data/test/**/*
 
 Units:
   - src/units/**/*
   - data/core/units/**/*
   - data/core/images/units/**/*
 
-Terrain:
-  - src/terrain/**/*
-  - data/core/terrain.cfg
-  - data/core/terrain_graphics/*
-  - data/images/terrain/**/*
-
-Lua API:
-  - src/scripting/**/*
-  - data/lua/**/*
-
-Services:
-  - src/campaign_server/*
-  - src/server/*
+WML Tools:
+  - data/tools/**/*

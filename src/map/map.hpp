@@ -121,10 +121,10 @@ public:
 			bool is_odd,
 			bool ignore_special_locations);
 
-	/** Effective map width. */
+	/** Effective map width, in hexes. */
 	int w() const { return w_; }
 
-	/** Effective map height. */
+	/** Effective map height, in hexes. */
 	int h() const { return h_; }
 
 	/** Size of the map border. */

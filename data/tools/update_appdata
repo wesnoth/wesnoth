@@ -1,0 +1,37 @@
+#!/bin/env python
+
+import sys, requests, argparse
+from xml.dom import minidom
+
+def fetch_date(version):
+    tag_info = requests.get("https://api.github.com/repos/wesnoth/wesnoth/git/refs/tags/"+version)
+    tag_info.raise_for_status()
+    url = tag_info.json()["object"]["url"]
+    result = requests.get(url)
+    result.raise_for_status()
+    return result.json()["tagger"]["date"]
+
+def update_appdata(version, appdata_path):
+    date = fetch_date(version)
+
+    doc = minidom.parse(appdata_path)
+    releases = doc.getElementsByTagName("releases")
+    if releases:
+        releases = releases[0]
+    else:
+        releases = doc.getElementsByTagName("component")[-1].appendChild(doc.createElement("releases"))
+
+    release = doc.createElement("release")
+    release.setAttribute("version", version)
+    release.setAttribute("date", date)
+    releases.insertBefore(release, releases.firstChild)
+
+    doc.writexml(open(appdata_path, "w"))
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('version', metavar='VERSION')
+    parser.add_argument('appdata', metavar='APPDATA_FILE')
+
+    args = parser.parse_args()
+    update_appdata(args.version, args.appdata)

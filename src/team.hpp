@@ -254,6 +254,7 @@ public:
 
 	CONTROLLER controller() const { return info_.controller; }
 	const std::string& color() const { return info_.color; }
+	/// @note Call display::reinit_flag_for_side() after calling this
 	void set_color(const std::string& color) { info_.color = color; }
 	bool is_empty() const { return info_.controller == CONTROLLER::EMPTY; }
 
@@ -300,6 +301,7 @@ public:
 	const std::string& flag() const { return info_.flag; }
 	const std::string& flag_icon() const { return info_.flag_icon; }
 
+	/// @note Call display::reinit_flag_for_side() after calling this
 	void set_flag(const std::string& flag) { info_.flag = flag; }
 	void set_flag_icon(const std::string& flag_icon) { info_.flag_icon = flag_icon; }
 
