@@ -107,8 +107,8 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	const std::vector<std::string> filter_name = utils::split(filter["name"]);
 	const std::vector<std::string> filter_type = utils::split(filter["type"]);
 	const std::vector<std::string> filter_special = utils::split(filter["special"]);
-	const std::vector<std::string> filter_special_id = utils::split(filter["special_id"]);
-	const std::vector<std::string> filter_special_type = utils::split(filter["special_type"]);
+	const std::vector<std::string> filter_special_id = utils::split(filter["special_id"]);/// param special_id If true, match special against the id of special tags.
+	const std::vector<std::string> filter_special_type = utils::split(filter["special_type"]);/// param special_tags If true, match special against the tag name of special tags.
 	const std::vector<std::string> filter_special_active = utils::split(filter["special_active"]);
 	const std::vector<std::string> filter_special_id_active = utils::split(filter["special_id_active"]);
 	const std::vector<std::string> filter_special_type_active = utils::split(filter["special_type_active"]);
