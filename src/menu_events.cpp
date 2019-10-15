@@ -1028,6 +1028,12 @@ void menu_handler::end_unit_turn(mouse_handler& mousehandler, int side_num)
 		if(un->user_end_turn()) {
 			mousehandler.cycle_units(false);
 		}
+
+		// If cycle_units hasn't found a new unit to cycle to then the original unit is still selected, but
+		// in a state where left-clicking on it does nothing. Make it respond to mouse clicks again.
+		if(un == units().find(mousehandler.get_selected_hex())) {
+			mousehandler.deselect_hex();
+		}
 	}
 }
 
