@@ -29,7 +29,7 @@ class unit_recruit : public modal_dialog
 public:
 	/// @param recruit_map maps unit typs to strings. The strings are ""
 	/// if the unit can be recalled and an error message string otherwise.
-	unit_recruit(std::map<const unit_type*, std::string>& recruit_map, team& team);
+	unit_recruit(std::map<const unit_type*, t_string>& recruit_map, team& team);
 
 	const unit_type *get_selected_unit_type() const
 	{
@@ -51,7 +51,7 @@ private:
 
 	/// A vector of unit types in the order listed in the UI. Used by unit_recruit::post_show.
 	std::vector<const unit_type*> recruit_list_;
-	std::map<const unit_type*, std::string>& recruit_map_;
+	std::map<const unit_type*, t_string>& recruit_map_;
 
 	team& team_;
 
