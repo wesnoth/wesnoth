@@ -43,7 +43,7 @@ lua_unit::~lua_unit()
 {
 }
 
-unit* lua_unit::get()
+unit* lua_unit::get() const
 {
 	if (ptr) return ptr.get();
 	if (c_ptr) return c_ptr;
@@ -54,7 +54,7 @@ unit* lua_unit::get()
 	if (!ui.valid()) return nullptr;
 	return ui.get_shared_ptr().get(); //&*ui would not be legal, must get new shared_ptr by copy ctor because the unit_map itself is holding a boost shared pointer.
 }
-unit_ptr lua_unit::get_shared()
+unit_ptr lua_unit::get_shared() const
 {
 	if (ptr) return ptr;
 	if (side) {
@@ -244,7 +244,8 @@ static int impl_unit_equality(lua_State* L)
  */
 static int impl_unit_tostring(lua_State* L)
 {
-	const unit& u = luaW_checkunit(L, 1);
+	const lua_unit* lu = luaW_tounit_ref(L, 1);
+	unit &u = *lu->get();
 	std::ostringstream str;
 
 	str << "unit: <";
@@ -253,8 +254,11 @@ static int impl_unit_tostring(lua_State* L)
 	} else {
 		str << u.type_id() << " ";
 	}
-	// This will say 0,0 (or -999,-999?) for units on the recall list
-	str << "at (" << u.get_location() << ")";
+	if(int side = lu->on_recall_list()) {
+		str << "at (side " << side << " recall list)";
+	} else {
+		str << "at (" << u.get_location() << ")";
+	}
 	str << '>';
 
 	lua_push(L, str.str());
