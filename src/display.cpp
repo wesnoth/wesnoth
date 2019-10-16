@@ -91,7 +91,6 @@ unsigned int display::last_zoom_ = SmallZoom;
 
 // Returns index of zoom_levels which is closest match to input zoom_level
 // Assumption: zoom_levels is a sorted vector of ascending tile sizes
-// (game_config is set-up this way as of October 2019 but there is no documentation stating it has to be so)
 int get_zoom_levels_index(unsigned int zoom_level)
 {
 	zoom_level = utils::clamp(zoom_level, MinZoom, MaxZoom);	// ensure zoom_level is within zoom_levels bounds
