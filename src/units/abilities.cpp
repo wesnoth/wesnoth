@@ -448,7 +448,8 @@ bool unit::ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bo
 	if(!cfg.has_child(filter_tag_name)) {
 		return true;
 	}
-		const config& filter_student_name= cfg.child("filter_student");
+	
+	const config& filter_student_name= cfg.child("filter_student");
 	if(filter_student_name){
         const config& filter_weapon_name= filter_student_name.child("filter_weapon");
         if(filter_weapon_name){
@@ -476,6 +477,7 @@ bool unit::ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bo
             return true;
 	}
 	}
+	
 	const config& filter = cfg.child(filter_tag_name);
 	if(!weapon) {
 		return false;
