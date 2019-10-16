@@ -194,7 +194,7 @@ config default_map_generator::create_scenario(boost::optional<uint32_t> randomse
 
 			config& label = res.add_child("label");
 			label["text"] = i->second;
-			label["category"] = _("villages");
+			label["category"] = _("Villages");
 			i->first.write(label);
 		}
 	}
