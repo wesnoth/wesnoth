@@ -445,7 +445,11 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 bool unit::ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bool is_opp) const
 {
 	const std::string filter_tag_name = is_opp ? "filter_second_weapon" : "filter_weapon";
-	if(!cfg.has_child(filter_tag_name)) {
+	const config& filter_student_name= cfg.child("filter_student");
+	const config& filter_opponent_name= cfg.child("filter_opponent");
+	const config& filter_attacker_name= cfg.child("filter_attacker");
+	const config& filter_defender_name= cfg.child("filter_defender");
+	if(!cfg.has_child(filter_tag_name) || filter_weapon_student || filter_weapon_opponent || filter_attacker_name || filter_defender_name) {
 		return true;
 	}
 	const config& filter = cfg.child(filter_tag_name);
