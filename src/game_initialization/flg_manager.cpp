@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "game_initialization/flg_manager.hpp"
 
 #include "config.hpp"
@@ -324,7 +326,7 @@ void flg_manager::update_available_leaders()
 			available_leaders_.erase(pos, available_leaders_.end());
 
 			if(available_leaders_.size() > 1) {
-				available_leaders_.insert(available_leaders_.begin() + random_pos, "random");
+				available_leaders_.insert(available_leaders_.begin() + random_pos, _("Random"));
 			}
 		}
 	}
