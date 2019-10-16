@@ -41,7 +41,7 @@
    * Tooltips of sidebar, top bar, and status table now show a side's color's name in words,
      for the colorblind. (Issue#1217)
    * In the recruit dialog and recall dialog, units that are too expensive to recruit/recall
-     are grayed out. (PR#4362, part of Issue#1282)
+     are grayed out. (PR#4362, PR#4444, part of Issue#1282)
    * Hide the "Suppose Dead" key from the hotkeys list (it does nothing since 1.9.12)
    * Sidebar: In replays with "View: Full Map", show all enemy units in "Damage versus:" tooltip
    * Multiplayer Create Game screen now shows map previews for scenarios that use map_file=. (PR#4407)
