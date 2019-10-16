@@ -59,12 +59,12 @@ void mouse_action_unit::move(editor_display& disp, const map_location& hex)
 			rect.h = disp.hex_size();
 			rect.w = disp.hex_size();
 			std::stringstream str;
-			str << N_("Identifier: ") << unit_it->id()     << "\n"
-				<< N_("Name: ")    << unit_it->name()      << "\n"
-				<< N_("Type: ")    << unit_it->type_name() << "\n"
-				<< N_("Level: ")   << unit_it->level()     << "\n"
-				<< N_("Cost: ")    << unit_it->cost()      << "\n"
-				<< N_("Recruit: ") << utils::join(unit_it->recruits()) << "\n";
+			str << _("Identifier: ") << unit_it->id()     << "\n"
+				<< _("Name: ")    << unit_it->name()      << "\n"
+				<< _("Type: ")    << unit_it->type_name() << "\n"
+				<< _("Level: ")   << unit_it->level()     << "\n"
+				<< _("Cost: ")    << unit_it->cost()      << "\n"
+				<< _("Recruit: ") << utils::join(unit_it->recruits()) << "\n";
 			tooltips::clear_tooltips();
 			tooltips::add_tooltip(rect, str.str());
 		}
