@@ -602,6 +602,16 @@ void set_UI_volume(int vol)
 	sound::set_UI_volume(UI_volume());
 }
 
+unsigned int tile_size()
+{
+	return prefs["tile_size"].to_unsigned();
+}
+
+void set_tile_size(const unsigned int size)
+{
+	prefs["tile_size"] = size;
+}
+
 bool turn_bell()
 {
 	return get("turn_bell", true);

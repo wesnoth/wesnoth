@@ -141,6 +141,9 @@ namespace preferences {
 	bool stop_music_in_background();
 	void set_stop_music_in_background(bool ison);
 
+	unsigned int tile_size();
+	void set_tile_size(const unsigned int size);
+
 	bool turn_bell();
 	bool set_turn_bell(bool ison);
 

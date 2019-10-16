@@ -89,6 +89,28 @@ namespace {
 unsigned int display::zoom_ = DefaultZoom;
 unsigned int display::last_zoom_ = SmallZoom;
 
+// Returns index of zoom_levels which is closest match to input zoom_level
+// Assumption: zoom_levels is a sorted vector of ascending tile sizes
+int get_zoom_levels_index(unsigned int zoom_level)
+{
+	zoom_level = utils::clamp(zoom_level, MinZoom, MaxZoom);	// ensure zoom_level is within zoom_levels bounds
+	auto iter = std::lower_bound(zoom_levels.begin(), zoom_levels.end(), zoom_level);
+
+	// find closest match
+	if(iter != zoom_levels.begin() && iter != zoom_levels.end()) {
+		float diff = *iter - *(iter - 1);
+		float lower = (zoom_level - *(iter - 1)) / diff;
+		float upper = (*iter - zoom_level) / diff;
+
+		// the previous element is closer to zoom_level than the current one
+		if(lower < upper) {
+			iter--;
+		}
+	}
+
+	return std::distance(zoom_levels.begin(), iter);
+}
+
 void display::parse_team_overlays()
 {
 	const team& curr_team = dc_->teams()[playing_team()];
@@ -233,7 +255,13 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 
 	set_idle_anim_rate(preferences::idle_anim_rate());
 
-	zoom_index_ = std::distance(zoom_levels.begin(), std::find(zoom_levels.begin(), zoom_levels.end(), zoom_));
+	unsigned int tile_size = preferences::tile_size();
+	if(tile_size < MinZoom || tile_size > MaxZoom)
+		tile_size = DefaultZoom;
+	zoom_index_ = get_zoom_levels_index(tile_size);
+	zoom_ = zoom_levels[zoom_index_];
+	if(zoom_ != preferences::tile_size())	// correct saved tile_size if necessary
+		preferences::set_tile_size(zoom_);
 
 	image::set_zoom(zoom_);
 
@@ -1995,25 +2023,9 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 		return false;
 	}
 
-	// Confirm this is indeed a valid zoom level.
 	if(validate_value_and_set_index) {
-		auto iter = std::lower_bound(zoom_levels.begin(), zoom_levels.end(), new_zoom);
-
-		if(iter == zoom_levels.end()) {
-			// This should never happen, since the value was already clamped earlier
-			return false;
-		} else if(iter != zoom_levels.begin()) {
-			float diff = *iter - *(iter - 1);
-			float lower = (new_zoom - *(iter - 1)) / diff;
-			float upper = (*iter - new_zoom) / diff;
-			if(lower < upper) {
-				// It's actually closer to the previous element.
-				iter--;
-			}
-		}
-
-		new_zoom = *iter;
-		zoom_index_ = std::distance(zoom_levels.begin(), iter);
+		zoom_index_ = get_zoom_levels_index (new_zoom);
+		new_zoom = zoom_levels[zoom_index_];
 	}
 
 	const SDL_Rect& outside_area = map_outside_area();
@@ -2045,6 +2057,7 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 		last_zoom_ = zoom_;
 	}
 
+	preferences::set_tile_size(zoom_);
 	image::set_zoom(zoom_);
 
 	labels().recalculate_labels();
@@ -2058,7 +2071,7 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 	return true;
 }
 
-void display::set_default_zoom()
+void display::toggle_default_zoom()
 {
 	if (zoom_ != DefaultZoom) {
 		last_zoom_ = zoom_;

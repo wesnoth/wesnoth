@@ -97,13 +97,14 @@ public:
 	~lua_unit();
 
 	bool on_map() const { return !ptr && side == 0; }
+	/// @return If this unit is on any side's recall list, the number of that side (1-based). Otherwise, return 0.
 	int on_recall_list() const { return side; }
 
-	unit* get();
-	unit_ptr get_shared();
+	unit* get() const;
+	unit_ptr get_shared() const;
 
-	unit* operator->() {return get();}
-	unit& operator*() {return *get();}
+	unit* operator->() const {return get();}
+	unit& operator*() const {return *get();}
 
 	void clear_ref() { uid = 0; ptr = unit_ptr(); side = 0; c_ptr = nullptr; }
 	// Clobbers loc

@@ -18,13 +18,19 @@ Wesnoth's engine conforms to the C++14 standard. We encourage the use of standar
 
 ### Code Formatting
 
-If your pull request touches the engine's C++ source code, we recommend (but don't require) you run `clang-format` on your changes before submission (Visual Studio Code gives you a handy context menu option to do so). This ensures that your code remains formatted according to our conventions.
+All C++, WML and Lua files are in UTF-8, as we use Gettext-style translations, and translatable strings use some punctuation that's outside of the ASCII subset. More details are in the [Typography Style Guide](https://wiki.wesnoth.org/GettextForWesnothDevelopers).
+
+If your pull request touches the engine's C++ source code, we recommend (but don't require) you run `clang-format` on your changes before submission (Visual Studio Code gives you a handy context menu option to do so). This ensures that your code remains formatted according to our conventions. Make a local commit before running `clang-format`, in case more code than expected gets changed.
 
 Generally, we follow these conventions in our C++ code:
 
 ```cpp
 // Use pragma once instead of an include guard. Those are clumsy.
 #pragma once
+
+// Includes for files from the src/... directories should use double-quotes.
+#include "help/help.hpp"
+#include "gettext.hpp"
 
 // Use angle brackets for system and external includes.
 // Includes should also be sorted alphabetically.
@@ -42,6 +48,7 @@ struct my_struct
     bool member = false;
 };
 
+// Class names are lower-case with underscores between words.
 // Put braces on new lines after class and struct declarations.
 class my_class
 {
@@ -51,13 +58,14 @@ public:
 
     // Use leading commas in the ctor list
     // Use the T& foo or T* foo reference and pointer styles, not T &foo or T *foo.
+    // Use the "explicit" keyword for single-argument constructors.
     explicit my_class(alias_t& ref)
         : the_array_of_doom_()
         , vec_ptr_(nullptr) // Use nullptr instead of NULL or 0
     {
         // Use C++ casts (static_cast and dynamic_cast) instead of C-style casts.
         // Do try and avoid reinterpret_cast and const_cast if at all possible.
-        const float cast_test = static_cast<float>(how_far_to_mount_doom_);
+        const float cast_test = static_cast<float>(how_far_to_destination_);
 
         // Don't put a space after conditional keywords, and keep their opening brackets on the same line.
         if(!ref.empty()) {
@@ -72,18 +80,30 @@ public:
         }
     }
 
-    /** Keep class method brackets on their own line, and always utilize const for methods and
+    /**
+     * Keep class method brackets on their own line, and always utilize const for methods and
      * variables when possible.
      *
      * For documenting functions, we loosely follow Doxygen conventions. You don't need to document
      * every single function, but important ones should optimally have at least a one-line comment
      * explaining what it does.
      *
-     * @param speaker        The person speaking
+     * This returns a translatable string, using gettext's _ function.
+     *
+     * @param speaker_id        The person speaking
      */
-    void exclaim(const std::string& speaker) const
+    t_string exclaim(const std::string& speaker_id) const
     {
-        std::cerr << speaker << ": They're taking the Hobbits to Isengard!" << std::endl;
+        if(how_far_to_destination_ < 100) {
+            if(speaker_id == "signboard") {
+                return _("Oldwood — enter at own risk");
+            } else {
+                // TRANSLATORS: The lake is the small underground one in S06 Temple in the Deep
+                return _("Hmm, someone has written underneath “Fire-carrying trespassers will be thrown in the lake.”");
+            }
+        } else {
+            return _("Clearwater — just keep following the river");
+        }
     }
 
 private:
@@ -94,7 +114,7 @@ private:
     alias_t* vec_ptr_;
 
     // Use static or constexpr for constants. Don't use macros.
-    static const int how_far_to_mount_doom_ = 1000;
+    static const int how_far_to_destination_ = 1000;
 };
 ```
 

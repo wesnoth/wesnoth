@@ -466,7 +466,7 @@ void mp_staging::update_leader_display(ng::side_engine_ptr side, grid& row_grid)
 		current_leader = formatter() << side->cfg()["name"] << " (<i>" << current_leader << "</i>)";
 	}
 
-	find_widget<label>(&row_grid, "leader_type", false).set_label(current_leader);
+	find_widget<label>(&row_grid, "leader_type", false).set_label(current_leader == "random" ? _("Random") : current_leader);
 	find_widget<label>(&row_grid, "leader_faction", false).set_label("<span color='#a69275'>" + current_faction + "</span>");
 
 	// Gender

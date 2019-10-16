@@ -41,10 +41,11 @@
    * Tooltips of sidebar, top bar, and status table now show a side's color's name in words,
      for the colorblind. (Issue#1217)
    * In the recruit dialog and recall dialog, units that are too expensive to recruit/recall
-     are grayed out. (PR#4362, part of Issue#1282)
+     are grayed out. (PR#4362, PR#4444, part of Issue#1282)
    * Hide the "Suppose Dead" key from the hotkeys list (it does nothing since 1.9.12)
    * Sidebar: In replays with "View: Full Map", show all enemy units in "Damage versus:" tooltip
    * Multiplayer Create Game screen now shows map previews for scenarios that use map_file=. (PR#4407)
+   * Remember zoom level between play sessions (#1518) and add zoom options to context menu (#1213)
  ### Lua API
    * Accessing wesnoth.theme_items.unit_status no longer prevents the unit
      status (poisoned/slowed/etc) from being shown in the sidebar. (Issue#4079)
@@ -65,6 +66,7 @@
      unit type properties like advancement and recruit costs.
    * New debug command :terrain for changing the terrain of the selected hex (PR#4405)
    * New predefined macros `{LEFT_BRACE}` and `{RIGHT_BRACE}` (PR#4432)
+   * Weapon filtering `special=*` deprecated, replaced by new `special_id=*` and `special_type=*` (Issue#3915)
    * weapons like abilities support now [filter_weapon] in [filter_student/opponent/attacker/defender] tags like in  true weapons specials and [filter_weapon/filter_second_weapon] 
      like in [leadership] and [resistance] abilities are useless(but not deprecated because usable in [leadership] and [resistance] (PR #4435)
  ### Miscellaneous and bug fixes
