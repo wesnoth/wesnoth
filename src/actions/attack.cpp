@@ -1607,16 +1607,11 @@ bool unit::ability_filter_fighter(const std::string& ability, const std::string&
 
 static bool ability_apply_filter(const unit_map::const_iterator un, const unit_map::const_iterator up, const std::string& ability, const config& cfg, const map_location& loc, const map_location& opp_loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
-	if(!up->ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc, *un, opp_weapon)){
-		return true;
-	}
-	if(!un->ability_filter_fighter(ability, "filter_student", cfg, loc, *up, weapon)){
-		return true;
-	}
-	if((attacker && !un->ability_filter_fighter(ability, "filter_attacker", cfg, loc, *up, weapon)) || (!attacker && !up->ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc, *un, opp_weapon))){
-		return true;
-	}
-	if((!attacker && !un->ability_filter_fighter(ability, "filter_defender", cfg, loc, *up, weapon)) || (attacker && !up->ability_filter_fighter(ability, "filter_defender", cfg, opp_loc, *un, opp_weapon))){
+    bool filter_opponent = up->ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc, *un, opp_weapon);
+    bool filter_student = un->ability_filter_fighter(ability, "filter_student", cfg, loc, *up, weapon);
+    bool filter_attacker = !(attacker && !un->ability_filter_fighter(ability, "filter_attacker", cfg, loc, *up, weapon)) || !(!attacker && !up->ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc, *un, opp_weapon));
+    bool filter_defender = !(!attacker && !un->ability_filter_fighter(ability, "filter_defender", cfg, loc, *up, weapon)) || !(attacker && !up->ability_filter_fighter(ability, "filter_defender", cfg, opp_loc, *un, opp_weapon));
+	if(!filter_student || !filter_opponent || !filter_attacker || !filter_defender) {
 		return true;
 	}
 	return false;
