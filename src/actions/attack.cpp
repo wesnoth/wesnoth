@@ -1607,24 +1607,24 @@ bool unit::ability_filter_fighter(const std::string& ability, const std::string&
 
 static bool ability_apply_filter(const unit_map::const_iterator un, const unit_map::const_iterator up, const std::string& ability, const config& cfg, const map_location& loc, const map_location& opp_loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
-    bool filter_opponent = up->ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc, *un, opp_weapon);
-    bool filter_student = un->ability_filter_fighter(ability, "filter_student", cfg, loc, *up, weapon);
-    bool filter_attacker = !(attacker && !un->ability_filter_fighter(ability, "filter_attacker", cfg, loc, *up, weapon)) || !(!attacker && !up->ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc, *un, opp_weapon));
-    bool filter_defender = !(!attacker && !un->ability_filter_fighter(ability, "filter_defender", cfg, loc, *up, weapon)) || !(attacker && !up->ability_filter_fighter(ability, "filter_defender", cfg, opp_loc, *un, opp_weapon));
-	if(!filter_student || !filter_opponent || !filter_attacker || !filter_defender) {
+    bool filter_opponent = !up->ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc, *un, opp_weapon);
+    bool filter_student = !un->ability_filter_fighter(ability, "filter_student", cfg, loc, *up, weapon);
+    bool filter_attacker = (attacker && !un->ability_filter_fighter(ability, "filter_attacker", cfg, loc, *up, weapon)) || (!attacker && !up->ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc, *un, opp_weapon));
+    bool filter_defender = (!attacker && !un->ability_filter_fighter(ability, "filter_defender", cfg, loc, *up, weapon)) || (attacker && !up->ability_filter_fighter(ability, "filter_defender", cfg, opp_loc, *un, opp_weapon));
+	if(filter_student || filter_opponent || filter_attacker || filter_defender) {
 		return true;
 	}
 	return false;
 }
 
-bool leadership_affects_self(const std::string& ability,const unit_map& units, const map_location& loc, bool attacker)
+bool leadership_affects_self(const std::string& ability,const unit_map& units, const map_location& loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
 	const unit_map::const_iterator un = units.find(loc);
 	if(un == units.end()) {
 		return false;
 	}
 
-	unit_ability_list abil = un->get_abilities(ability);
+	unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
 		const std::string& apply_to = (*i->first)["apply_to"];
 		if(apply_to.empty() || apply_to == "both" || apply_to == "self") {
@@ -1641,14 +1641,14 @@ bool leadership_affects_self(const std::string& ability,const unit_map& units, c
 	return false;
 }
 
-bool leadership_affects_opponent(const std::string& ability,const unit_map& units, const map_location& loc, bool attacker)
+bool leadership_affects_opponent(const std::string& ability,const unit_map& units, const map_location& loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
 	const unit_map::const_iterator un = units.find(loc);
 	if(un == units.end()) {
 		return false;
 	}
 
-	unit_ability_list abil = un->get_abilities(ability);
+	unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
 		const std::string& apply_to = (*i->first)["apply_to"];
 		if(apply_to == "both" || apply_to == "opponent") {
@@ -1674,7 +1674,7 @@ std::pair<int, bool> ability_leadership(const std::string& ability,const unit_ma
 		return {abil_value, false};
 	}
 
-	unit_ability_list abil = un->get_abilities(ability);
+	unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
 		const config &filter = (*i->first).child("filter_opponent");
 		const config &filter_student = (*i->first).child("filter_student");
@@ -1712,7 +1712,7 @@ bool bool_leadership(const std::string& ability,const unit_map& units, const map
 		return false;
 	}
 
-	unit_ability_list abil = un->get_abilities(ability);
+	unit_ability_list abil = un->get_abilities(ability,weapon, opp_weapon);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
 		const std::string& active_on = (*i->first)["active_on"];
 		if(!(active_on.empty() || (attacker && active_on == "offense") || (!attacker && active_on == "defense")) || ability_apply_filter(un, up, ability, *i->first, loc, opp_loc, attacker, weapon, opp_weapon)) {
@@ -1733,11 +1733,11 @@ bool attack_type::bool_ability(const std::string& ability) const
 	bool abil_bool= get_special_bool(ability);
 	const unit_map& units = display::get_singleton()->get_units();
 
-	if(leadership_affects_self(ability, units, self_loc_, is_attacker_)) {
+	if(leadership_affects_self(ability, units, self_loc_, is_attacker_, shared_from_this(), other_attack_)) {
 		abil_bool = get_special_bool(ability) || bool_leadership(ability, units, self_loc_, other_loc_, is_attacker_, shared_from_this(), other_attack_);
 	}
 
-	if(leadership_affects_opponent(ability, units, other_loc_, !is_attacker_)) {
+	if(leadership_affects_opponent(ability, units, other_loc_, !is_attacker_, other_attack_, shared_from_this())) {
 		abil_bool = get_special_bool(ability) || bool_leadership(ability, units, other_loc_, self_loc_, !is_attacker_, other_attack_, shared_from_this());
 	}
 	return abil_bool;
@@ -1748,11 +1748,11 @@ std::pair<int, bool> attack_type::combat_ability(const std::string& ability, int
 {
 	const unit_map& units = display::get_singleton()->get_units();
 
-	if(leadership_affects_self(ability, units, self_loc_, is_attacker_)) {
+	if(leadership_affects_self(ability, units, self_loc_, is_attacker_, shared_from_this(), other_attack_)) {
 		return ability_leadership(ability, units, self_loc_, other_loc_, is_attacker_, abil_value, backstab_pos, shared_from_this(), other_attack_);
 	}
 
-	if(leadership_affects_opponent(ability, units, other_loc_, !is_attacker_)) {
+	if(leadership_affects_opponent(ability, units, other_loc_, !is_attacker_, other_attack_, shared_from_this())) {
 		return ability_leadership(ability, units, other_loc_,self_loc_, !is_attacker_, abil_value, backstab_pos, other_attack_, shared_from_this());
 	}
 	return {abil_value, false};
