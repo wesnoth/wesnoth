@@ -73,7 +73,11 @@ public:
 
 	// In unit_abilities.cpp:
 
-	bool get_special_bool(const std::string& special, bool simple_check=false) const;
+	/// @return True iff the special @a special is active.
+	/// @param simple_check If true, check whether the unit has the special. Else, check whether the special is currently active.
+	/// @param special_id If true, match @a special against the @c id of special tags.
+	/// @param special_tags If true, match @a special against the tag name of special tags.
+	bool get_special_bool(const std::string& special, bool simple_check=false, bool special_id=true, bool special_tags=true) const;
 	unit_ability_list get_specials(const std::string& special) const;
 	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::string weapon_specials(bool only_active=false, bool is_backstab=false) const;
