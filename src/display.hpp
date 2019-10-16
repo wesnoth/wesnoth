@@ -513,7 +513,7 @@ public:
 	static bool zoom_at_min();
 
 	/** Sets the zoom amount to the default. */
-	void set_default_zoom();
+	void toggle_default_zoom();
 
 	bool view_locked() const { return view_locked_; }
 

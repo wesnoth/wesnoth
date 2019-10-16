@@ -2071,7 +2071,7 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 	return true;
 }
 
-void display::set_default_zoom()
+void display::toggle_default_zoom()
 {
 	if (zoom_ != DefaultZoom) {
 		last_zoom_ = zoom_;

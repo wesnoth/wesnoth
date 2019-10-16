@@ -695,7 +695,7 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 			toolkit_->set_mouseover_overlay(*gui_);
 			return true;
 		case HOTKEY_ZOOM_DEFAULT:
-			gui_->set_default_zoom();
+			gui_->toggle_default_zoom();
 			get_current_map_context().get_labels().recalculate_labels();
 			toolkit_->set_mouseover_overlay(*gui_);
 			return true;

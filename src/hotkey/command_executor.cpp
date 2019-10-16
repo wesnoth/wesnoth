@@ -799,7 +799,7 @@ void command_executor_default::zoom_out()
 void command_executor_default::zoom_default()
 {
 	if(!get_display().view_locked()) {
-		get_display().set_default_zoom();
+		get_display().toggle_default_zoom();
 	}
 }
 
