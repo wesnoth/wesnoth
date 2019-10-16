@@ -1607,10 +1607,10 @@ bool unit::ability_filter_fighter(const std::string& ability, const std::string&
 
 static bool ability_apply_filter(const unit_map::const_iterator un, const unit_map::const_iterator up, const std::string& ability, const config& cfg, const map_location& loc, const map_location& opp_loc, bool attacker, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
-    bool filter_opponent = !up->ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc, *un, opp_weapon);
-    bool filter_student = !un->ability_filter_fighter(ability, "filter_student", cfg, loc, *up, weapon);
-    bool filter_attacker = (attacker && !un->ability_filter_fighter(ability, "filter_attacker", cfg, loc, *up, weapon)) || (!attacker && !up->ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc, *un, opp_weapon));
-    bool filter_defender = (!attacker && !un->ability_filter_fighter(ability, "filter_defender", cfg, loc, *up, weapon)) || (attacker && !up->ability_filter_fighter(ability, "filter_defender", cfg, opp_loc, *un, opp_weapon));
+	bool filter_opponent = !up->ability_filter_fighter(ability, "filter_opponent", cfg, opp_loc, *un, opp_weapon);
+	bool filter_student = !un->ability_filter_fighter(ability, "filter_student", cfg, loc, *up, weapon);
+	bool filter_attacker = (attacker && !un->ability_filter_fighter(ability, "filter_attacker", cfg, loc, *up, weapon)) || (!attacker && !up->ability_filter_fighter(ability, "filter_attacker", cfg, opp_loc, *un, opp_weapon));
+	bool filter_defender = (!attacker && !un->ability_filter_fighter(ability, "filter_defender", cfg, loc, *up, weapon)) || (attacker && !up->ability_filter_fighter(ability, "filter_defender", cfg, opp_loc, *un, opp_weapon));
 	if(filter_student || filter_opponent || filter_attacker || filter_defender) {
 		return true;
 	}
@@ -1712,7 +1712,7 @@ bool bool_leadership(const std::string& ability,const unit_map& units, const map
 		return false;
 	}
 
-	unit_ability_list abil = un->get_abilities(ability,weapon, opp_weapon);
+	unit_ability_list abil = un->get_abilities(ability, weapon, opp_weapon);
 	for(unit_ability_list::iterator i = abil.begin(); i != abil.end();) {
 		const std::string& active_on = (*i->first)["active_on"];
 		if(!(active_on.empty() || (attacker && active_on == "offense") || (!attacker && active_on == "defense")) || ability_apply_filter(un, up, ability, *i->first, loc, opp_loc, attacker, weapon, opp_weapon)) {
