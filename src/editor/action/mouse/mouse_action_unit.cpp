@@ -63,7 +63,7 @@ void mouse_action_unit::move(editor_display& disp, const map_location& hex)
 			const auto& recruits = unit_it->recruits();
 			std::vector<t_string> recruit_type_names;
 			std::transform(recruits.begin(), recruits.end(), std::back_inserter(recruit_type_names),
-				[](const std::string& type_id) -> std::string {
+				[](const std::string& type_id) -> t_string {
 					const unit_type *new_unit_type = unit_types.find(type_id);
 					if(!new_unit_type) return VGETTEXT("(Unknown unit type: $type)", { { "type", type_id } });
 					return new_unit_type->type_name();
