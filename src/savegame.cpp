@@ -544,6 +544,7 @@ replay_savegame::replay_savegame(saved_game &gamestate, const compression::forma
 
 std::string replay_savegame::create_initial_filename(unsigned int) const
 {
+	// TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
 	return formatter() << gamestate().classification().label << " " << _("replay");
 }
 
