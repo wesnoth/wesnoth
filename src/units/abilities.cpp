@@ -442,7 +442,6 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 bool unit::ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bool is_opp) const
 {
 	const std::string filter_tag_name = is_opp ? "filter_second_weapon" : "filter_weapon";
-
 	if(!cfg.has_child(filter_tag_name)) {
 		return true;
 	}
