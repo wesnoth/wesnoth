@@ -783,7 +783,44 @@ return {
             local defense_weight = 1/hp_ratio^0.5
             local move_weight = math.max((distance_to_enemy/20)^2, 0.25)
             local randomness = params.randomness or 0.1
+
+            -- Bonus for higher-level units, as unit cost is penalized otherwise
+            local high_level_fraction = params.high_level_fraction or 0
+            local all_units = AH.get_live_units {
+                side = wesnoth.current.side,
+                { "not", { canrecruit = "yes" }}
+            }
+            local level_count = {}
+            for _,unit in ipairs(all_units) do
+                local level = unit.level
+                level_count[level] = (level_count[level] or 0) + 1
+            end
+            local min_recruit_level, max_recruit_level = math.huge, -math.huge
             for i, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
+                local level = wesnoth.unit_types[recruit_id].level
+                if (level < min_recruit_level) then min_recruit_level = level end
+                if (level > max_recruit_level) then max_recruit_level = level end
+            end
+            if (min_recruit_level < 1) then min_recruit_level = 1 end
+            local unit_deficit = {}
+            for i=min_recruit_level+1,max_recruit_level do
+                -- If no non-leader units are on the map yet, we set up the situation as if there were
+                -- one of each level. This is in order to get the situation for the first recruit right.
+                local n_units = #all_units
+                local n_units_this_level = level_count[i] or 0
+                if (n_units == 0) then
+                    n_units = max_recruit_level - min_recruit_level
+                    n_units_this_level = 1
+                end
+                unit_deficit[i] = high_level_fraction ^ (i - min_recruit_level) * n_units - n_units_this_level
+            end
+
+            for i, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
+                local level_bonus = 0
+                local level = wesnoth.unit_types[recruit_id].level
+                if (level > min_recruit_level) and (unit_deficit[level] > 0) then
+                    level_bonus = 0.25 * unit_deficit[level]^2
+                end
                 local scores = recruit_scores[recruit_id]
                 local offense_score = (scores["offense"]/best_scores["offense"])^0.5
                 local defense_score = (scores["defense"]/best_scores["defense"])^0.5
@@ -815,10 +852,10 @@ return {
                     end
                 end
 
-                local score = offense_score*offense_weight + defense_score*defense_weight + move_score*move_weight + bonus
+                local score = offense_score*offense_weight + defense_score*defense_weight + move_score*move_weight + bonus + level_bonus
 
                 if AH.print_eval() then
-                    std_print(recruit_id .. " score: " .. offense_score*offense_weight .. " + " .. defense_score*defense_weight .. " + " .. move_score*move_weight  .. " + " .. bonus  .. " = " .. score)
+                    std_print(recruit_id .. " score: " .. offense_score*offense_weight .. " + " .. defense_score*defense_weight .. " + " .. move_score*move_weight  .. " + " .. bonus  .. " + " .. level_bonus  .. " = " .. score)
                 end
                 if score > best_score and wesnoth.unit_types[recruit_id].cost <= gold_limit then
                     best_score = score

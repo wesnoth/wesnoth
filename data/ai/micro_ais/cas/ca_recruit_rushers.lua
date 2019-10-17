@@ -9,6 +9,7 @@ wesnoth.require("ai/lua/generic_recruit_engine.lua").init(internal_recruit_cas, 
 local ca_recruit_rushers = {}
 
 function ca_recruit_rushers:evaluation(cfg)
+    internal_params.high_level_fraction = cfg.high_level_fraction
     internal_params.randomness = cfg.randomness
     internal_params.score_function = function() return cfg.ca_score end
     return internal_recruit_cas:recruit_rushers_eval()
