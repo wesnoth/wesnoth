@@ -4,11 +4,6 @@ also belong here. Other utils are in utils/.
 
 == Scripts ==
 
-=== journeylifter ===
-
-A program for converting campaigns to use trackplacer-format journey files.
-All mainline campaigns have already been converted; this is for lifting UMC.
-
 === rmtrans ===
 
 Remove nearly transparent pixels from images using GIMP. It currently affects
