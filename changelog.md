@@ -289,6 +289,7 @@
    * Status table: In replays with "View: Full Map", show all sides' gold status (Issue#4410)
    * Zooming in doesn't move the center of the viewport when the map is wider/taller
      than the available width/height (PR#4442)
+   * Help pages for unit types show base abilities and AMLA abilities separately. (#2907)
  ### Miscellaneous and bug fixes
    * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
    * Add help text for some debug commands (part of Issue#2500)
