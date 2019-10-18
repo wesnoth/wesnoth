@@ -448,28 +448,14 @@ bool unit::ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bo
 	const config& filter_student_name= cfg.child("filter_student");
 	if(filter_student_name){
         const config& filter_weapon_name= filter_student_name.child("filter_weapon");
-        if(filter_weapon_name){
+        if(filter_weapon_name && !is_opp){
             return true;
         }
 	}
 	const config& filter_opponent_name= cfg.child("filter_opponent");
 	if(filter_opponent_name){
         const config& filter_weapon_name= filter_opponent_name.child("filter_weapon");
-        if(filter_weapon_name){
-            return true;
-        }
-	}
-	const config& filter_attacker_name= cfg.child("filter_attacker");
-	if(filter_attacker_name){
-        const config& filter_weapon_name= filter_attacker_name.child("filter_weapon");
-        if(filter_weapon_name){
-            return true;
-        }
-	}
-	const config& filter_defender_name= cfg.child("filter_defender");
-	if(filter_defender_name){
-        const config& filter_weapon_name= filter_defender_name.child("filter_weapon");
-        if(filter_weapon_name){
+        if(filter_weapon_name && is_opp){
             return true;
         }
 	}
