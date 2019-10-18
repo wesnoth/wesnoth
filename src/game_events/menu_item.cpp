@@ -225,8 +225,11 @@ void wml_menu_item::to_config(config& cfg) const
 	cfg["id"] = item_id_;
 	cfg["image"] = image_;
 	cfg["description"] = description_;
-	cfg["needs_select"] = needs_select_;
 	cfg["synced"] = is_synced_;
+
+	if(needs_select_) {
+		cfg["needs_select"] = true;
+	}
 
 	if(use_hotkey_ && use_wml_menu_) {
 		cfg["use_hotkey"] = true;
