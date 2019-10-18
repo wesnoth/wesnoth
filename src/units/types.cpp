@@ -291,7 +291,7 @@ void unit_type::build_help_index(
 			}
 
 			for(const config::any_child& ab : abil_cfg.all_children_range()) {
-				abilities_.emplace_back(ab.cfg);
+				adv_abilities_.emplace_back(ab.cfg);
 			}
 		}
 	}
