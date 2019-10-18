@@ -91,6 +91,7 @@
      * On windows, relative paths that start with `.\` are not deprecated
    * Removed incomplete joystick support.
    * Removed option to disable unit and item halos.
+   * Added support to wmlxgettext for double-quote characters in translatable raw strings
 
 ## Version 1.15.1
  ### Editor
