@@ -13,6 +13,8 @@
  ### Translations
    * Updated translations: Catalan, Chinese (Traditional), French, Portuguese (Brazil),
      Spanish
+ ### Miscellaneous and Bug Fixes
+   * Added support to wmlxgettext for double-quote characters in translatable raw strings
 
 ## Version 1.14.15
  ### Add-ons client
