@@ -46,10 +46,12 @@
    * Sidebar: In replays with "View: Full Map", show all enemy units in "Damage versus:" tooltip
    * Multiplayer Create Game screen now shows map previews for scenarios that use map_file=. (PR#4407)
    * Remember zoom level between play sessions (#1518) and add zoom options to context menu (#1213)
+   * Sidebar shows number of attacks left, for units that can attack multiple times per turn (#2667)
  ### Lua API
    * Accessing wesnoth.theme_items.unit_status no longer prevents the unit
      status (poisoned/slowed/etc) from being shown in the sidebar. (Issue#4079)
    * side.flag is now writable. `wesnoth.set_side_id` remains supported. (Issue#4396)
+   * Units now have a `__tostring` method that shows their id and location.
  ### WML engine
    * Ranges can now have upper limit "infinity" instead of using a big number like "99" or "99999"
    * Print a deprecation warning for `[terrain_type]`'s partly-implemented `vision_alias`
