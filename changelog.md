@@ -29,6 +29,7 @@
    * In the combat dialog and elsewhere, clicking the "Profile" button opens
      the help on the correct unit variation (e.g., Walking Corpse (Swimmer)).
      (Issue#4142)
+   * Ensure enough space to display turn numbers in the hundreds.
  ### Miscellaneous and bug fixes
    * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
    * Add help text for some debug commands (part of Issue#2500)
