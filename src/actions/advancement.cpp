@@ -284,7 +284,7 @@ void advance_unit_at(const advance_unit_params& params)
 			WRN_NG << "Unit has too many (" << u->experience() << ") XP left; cascade leveling goes on still." << std::endl;
 		}
 	}
-	ERR_NG << "unit at " << params.loc_ << "tried to advance more than 20 times. Advancing was aborted" << std::endl;
+	ERR_NG << "unit at " << params.loc_ << " tried to advance more than 20 times. Advancing was aborted" << std::endl;
 }
 
 unit_ptr get_advanced_unit(const unit &u, const std::string& advance_to)
