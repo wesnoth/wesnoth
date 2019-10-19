@@ -1,7 +1,11 @@
 ## Version 1.15.1+dev
  ### AI:
-   * Experimental AI: fix guardians being used for village actions
-   * Experimental AI: fix poisoners ignoring [avoid] tag
+   * Experimental AI:
+     * Fix guardians being used for village actions
+     * Fix poisoners ignoring `[avoid]` tag
+     * Recruitment: add optional parameter `high_level_fraction` to make the ExpAI
+       recruit units of level 2 or higher
+     * Recruitment: adopt optional `randomness` parameter from the Rush Recruitment Micro AI
  ### Campaigns
    * Delfador's Memoirs:
      * S20: Improve leveling of units and give player a note about it (Issue#4219)
