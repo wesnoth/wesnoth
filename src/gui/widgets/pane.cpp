@@ -109,7 +109,7 @@ pane::pane(const builder_grid_ptr item_builder)
 	, items_()
 	, item_builder_(item_builder)
 	, item_id_generator_(0)
-	, placer_(placer_base::build(placer_base::tgrow_direction::vertical, 1))
+	, placer_(placer_base::build(placer_base::grow_direction::vertical, 1))
 {
 	connect_signal<event::REQUEST_PLACEMENT>(
 			std::bind(
