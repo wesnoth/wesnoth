@@ -6,6 +6,8 @@
    * Delfador's Memoirs:
      * S20: Improve leveling of units and give player a note about it (Issue#4219)
      * S21: Better indication that the book has gone missing (Issue#4220)
+   * Descent into Darkness:
+     * Use set colors for each faction throughout the campaign
    * Eastern Invasion:
      * Updated to use the new mushroom terrains (PR #4335)
    * Heir to the Throne:
