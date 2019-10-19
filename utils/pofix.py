@@ -146,6 +146,9 @@ game_stringfixes = {
 # fixes added in 1.14.3+dev
 ("Whatever.... I still think we should make an effort", "Whatever... I still think we should make an effort"),
 ("That is so very encouraging....","That is so very encouraging..."),
+# fixes added in 1.15.1+dev
+("This unit's grasp of melee tactics", "This unit’s grasp of melee tactics"),
+("mount Elnar", "Mount Elnar"),
 ),
 
 "wesnoth-low" : (
