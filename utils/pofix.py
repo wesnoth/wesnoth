@@ -148,6 +148,9 @@ game_stringfixes = {
 ("That is so very encouraging....","That is so very encouraging..."),
 # fix added in 1.14.4+dev
 ("can now aid those around her in the art of combat.", "can aid those around her in the art of combat."),
+# fixes added in 1.14.9+dev
+("This unit's grasp of melee tactics", "This unit’s grasp of melee tactics"),
+("mount Elnar", "Mount Elnar"),
 ),
 
 "wesnoth-low" : (
