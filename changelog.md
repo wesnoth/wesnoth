@@ -29,6 +29,7 @@
    * Added an editor-only overlay for deprecated terrains (PR#4347)
    * Re-enabled and updated the editor topics in the help browser (PR#4414)
  ### Language and i18n
+   * New translations: Ancient Greek
    * Updated translations: British English, Czech, Chinese (Simplified), French,
      Italian, Japanese, Korean, Portuguese (Brazil), Russian, Spanish
    * Set up for translating the Wings of Victory campaign (PR#4265)
