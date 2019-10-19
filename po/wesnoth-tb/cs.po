@@ -10,13 +10,14 @@
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2006, 2007.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2019.
+# Michal Žejdl <lachim@emer.cz>, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-06-30 12:14 UTC\n"
-"PO-Revision-Date: 2019-02-15 21:30+0100\n"
+"PO-Revision-Date: 2019-10-18 22:08+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -24,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Gtranslator 3.30.1\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
@@ -664,16 +665,12 @@ msgstr "Vidím je! Tam jsou!"
 
 #. [message]: speaker=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:440
-#, fuzzy
-#| msgid ""
-#| "Curses! If they had been an hour slower our master’s reinforcements would "
-#| "already be here to meet us."
 msgid ""
 "Curses! If they had been an hour slower, our master’s reinforcements would "
 "already be here to meet us."
 msgstr ""
-"Proklatě! Kdyby sem dorazili o hodinku později, už bysme se tu setkali s "
-"posilami od mého pána."
+"Proklatě! Kdyby se o hodinu opozdili, už bychom se tu setkali s posilami od "
+"mého pána."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:452
@@ -851,7 +848,7 @@ msgstr "Mé posily dorazily!"
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:618
 msgid "He escaped us..."
-msgstr "Unikl nám ..."
+msgstr "Unikl nám..."
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:630
@@ -981,12 +978,12 @@ msgstr "Hradní stráž"
 #. [time]: id=indoors_dark_castle
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:235
 msgid "Indoors (dark castle)"
-msgstr ""
+msgstr "Uvnitř (temný hrad)"
 
 #. [time]: id=indoors_dark_castle_lit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:250
 msgid "Indoors (lit)"
-msgstr ""
+msgstr "Uvnitř (osvětlený)"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:306
@@ -1097,28 +1094,20 @@ msgstr "Špatně! Zemři!"
 
 #. [message]: speaker=Knago-Brek
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:492
-#, fuzzy
-#| msgid ""
-#| "Haha! We not kill people for long time. Weapon wants blood. We now kill "
-#| "humans!!"
 msgid ""
 "Haha! We not kill people for long time. Weapon wants blood. We now kill "
 "humans!"
 msgstr ""
-"Chachá! Já dlouho nezabil člověky. Zbraň chce krev. Teď my zabijeme člověky!"
+"Chachá! My dlouho nezabíjet lidi. Zbraň chce krev. My teď zabíjet člověky!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:497
-#, fuzzy
-#| msgid ""
-#| "My sword-arm has a say in who will do the dying. Come on, men, let’s kill "
-#| "some orcs."
 msgid ""
 "My sword-arm shall have a say in who will do the dying. Come on, men, let’s "
 "kill some orcs."
 msgstr ""
-"Má ruka třímající meč bude ta, kdo řekne, kdo tady umře. Vpřed muži, "
-"pobijeme nějaké ty skřety."
+"Má ruka třímající meč bude ta, která řekne, kdo tady umře. Vpřed muži, "
+"pobijme nějaké ty skřety."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:509
@@ -1224,7 +1213,7 @@ msgstr "Může to být důležité, měl bych to vzít."
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:764
 msgid "This castle seems as dark as a cave!"
-msgstr ""
+msgstr "Ten hrad se zdá temný jako jeskyně!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:770
@@ -1234,6 +1223,10 @@ msgid ""
 "(neutral time of day). Place your units carefully, as your troops will be "
 "weaker and enemy units stronger."
 msgstr ""
+"V tomto hradu je stále <i>chaotická</i> denní doba (odpovídající trvalé "
+"noci) vyjma ozářených políček sousedících s osvětlenými kamennými zdmi "
+"(neutrální denní doba). Umisťuj své jednotky opatrně, protože tvé oddíly "
+"budou slabší a nepřátelské jednotky silnější."
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:790
@@ -1499,12 +1492,12 @@ msgstr "Ano, tuhle tvář bych poznal všude. Zvlášť potom, co jsi s ní udě
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:216
 msgid "The warlord from Toen Caric."
-msgstr "Vojevůdce od Toen Cariku!"
+msgstr "Vojevůdce od Toen Cariku."
 
 #. [message]: speaker=Tairach
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:221
 msgid "You! The mage who scarred me with fire! KILL THEM!"
-msgstr "<b>Ty!</b> To tys mě poznamenal ohněm! <b>Zabte je!</b>"
+msgstr "Ty! To tys mě poznamenal ohněm! ZABTE JE!"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:226
@@ -1567,7 +1560,7 @@ msgstr ""
 #. [message]: speaker=Tairach
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:341
 msgid "Today, you shall pay for disfiguring my face, mage!"
-msgstr ""
+msgstr "Dnes zaplatíš za zohavení mé tváře, mágu!"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:346
@@ -1575,6 +1568,8 @@ msgid ""
 "I have already paid with the lives of my men at Toen Caric. It is time I "
 "righted that mistake and finished this once and for all."
 msgstr ""
+"Už jsem zaplatil životy mých mužů na Toen Cariku. Je čas, abych tuto chybu "
+"napravil a skončil to jednou provždy."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:355

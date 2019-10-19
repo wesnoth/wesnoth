@@ -12,13 +12,14 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Honza <Honza-mistic@seznam.cz>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2019.
+# Michal Žejdl <lachim@emer.cz>, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-09-16 08:32 UTC\n"
-"PO-Revision-Date: 2019-08-26 04:09+0200\n"
+"PO-Revision-Date: 2019-10-19 10:36+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -26,7 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Gtranslator 3.30.1\n"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:9
@@ -2700,7 +2701,7 @@ msgid ""
 msgstr ""
 "Pokud bojujeme proti nemrtvým, obvykle poléváme naše zbraně svěcenou vodou. "
 "Obvykle vystačí až do konce bitvy a oni před našimi čepelemi v hrůze "
-"prchají ... dá-li se něco takového o nemrtvých říci."
+"prchají..., dá-li se něco takového o nemrtvých říci."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:245
@@ -4352,7 +4353,7 @@ msgstr ""
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:264
 msgid "Why are you down here? Are those... troll carcasses?"
-msgstr "Proč jsi tady? To jsou ... trollí mršiny?"
+msgstr "Proč jsi tady? To jsou... trollí mršiny?"
 
 #. [message]: speaker=Ulfdain
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:268
@@ -4941,7 +4942,7 @@ msgid ""
 "I think... I think if I were to concentrate a bit I could tell you where it "
 "is."
 msgstr ""
-"Myslím ... myslím, že kdybych se trochu soustředil, mohl bych ti říct, kde "
+"Myslím..., myslím, že kdybych se trochu soustředil, mohl bych ti říct, kde "
 "je."
 
 #. [floating_text]
@@ -4955,6 +4956,8 @@ msgid ""
 "That noise was made by no troll! What manner of beast makes its den in these "
 "forsaken caves?"
 msgstr ""
+"To nebyl zvuk trolla! Jaké zvíře si udělá pelech v těchto opuštěných "
+"jeskyních?"
 
 #. [message]: race=merman
 #. Comic relief
@@ -4964,6 +4967,9 @@ msgid ""
 "places are anathema to my kind. Whatever monsters may abide in these depths, "
 "are known not to my kin."
 msgstr ""
+"Jak bych mohl vědět, milosti? Bez řeky, co by tu tekla, jsou taková horká, "
+"suchá místa prokletím mého druhu. Ať už v těchto hlubinách dlí jakékoli "
+"příšery, má rodina je nezná."
 
 #. [message]: race=merman
 #. Comic relief
@@ -4974,6 +4980,11 @@ msgid ""
 "gladly die for you, milord, but I would that you didn't spend my life for "
 "nothing, looking for another dwarf to rescue when there is none."
 msgstr ""
+"Ani nevím, vaše výstřednosti, co dělám v jeskyni. Ještě žádný Mořan "
+"nevstoupil do jeskyní pod horou a dožil se toho, aby o tom mohl vyprávět. "
+"S radostí bych pro vás zemřel, milosti, ale raději bych, kdybyste pro nic za "
+"nic neprobendil můj život při zachraňování dalšího ztraceného trpaslíka, "
+"když tu žádný není."
 
 #. [message]: race=dwarf
 #. "sowl" is a rare word synonymous with "sully", meaning "contaminate".
@@ -4986,6 +4997,11 @@ msgid ""
 "sowling the air? I beseech that we not tarry ’ere any more than we ha’ to, "
 "lest the forming abysses claim us."
 msgstr ""
+"Lorde Konráde, ono dunění nezpůsobil žádný živý tvor. To, co jsme slyšeli, "
+"jsou ozvy samotného skalního podloží, které se pod námi sesedá a drolí. "
+"Nemáte pocit, že vedro zesílilo? Není dýchání obtížnější díky popílku "
+"znečišťujícímu ovzduší? Zapřísahám vás, abychom tu už nemeškali déle, než "
+"musíme, aby nás snad tvořící se propasti nepohltily."
 
 #. [message]: type=Arch Mage,Great Mage,Silver Mage
 #. "din" means "loud noise". It refers to an ambient sound of collapsing cave walls.
@@ -4996,6 +5012,10 @@ msgid ""
 "this cave even now. We must tread with caution, for the very ground we stand "
 "on may turn against us."
 msgstr ""
+"Princi Konráde, tento hlomoz nezpůsobilo nic živého. Byl to zvuk samotné "
+"země, která kolem nás vře, ohně a lávy, které i teď proráží do této jeskyně. "
+"Musíme našlapovat obezřetně, neboť sama zem, na které stojíme, se může "
+"obrátit proti nám."
 
 #. [message]: id=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:681
@@ -5005,15 +5025,17 @@ msgid ""
 "the Sceptre and return to the surface with haste, before the lava under our "
 "feet consumes us."
 msgstr ""
+"Konráde, to musela být propadající se podlaha. Dostalo se mi varování "
+"o takových nebezpečích, když jsem se připravovala na cestu sem. Nesmíme tu "
+"prodlévat; zajděme pro žezlo a vraťme se spěšně na povrch, než nás pohltí "
+"láva pod našima nohama."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:697
 msgid ""
 "I sense we are quite near the Sceptre; in fact, we should be able to see it "
 "right about now..."
-msgstr ""
-"Mám pocit, že jsem docela blízko žezlo; Ve skutečnosti, měli bychom být "
-"schopni ho vidět právě teď..."
+msgstr "Tuším, že jsme docela blízko žezla; vlastně bychom ho už měli vidět..."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:727
 msgid "I sense the path to the Sceptre is to the east of me."
@@ -5297,14 +5319,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:292
-#, fuzzy
-#| msgid ""
-#| "Prince Konrad, you and your friends keep talking about avoiding the Arkan-"
-#| "thoria. But we can lead you down this river. With the help of us merfolk, "
-#| "you could reach the home of the North Elves much sooner by the river "
-#| "road, rather than by taking either one of the land routes. I can not "
-#| "promise you that it will be a safe journey, because I do not know what "
-#| "lies ahead, but it is an option and you should consider it, my lord."
 msgid ""
 "Prince Konrad, you need not avoid the Arkan-thoria. We merfolk can lead you "
 "downstream; with our vanguard, your company will vanquish any foe, and reach "
@@ -5312,11 +5326,11 @@ msgid ""
 "can not promise a perilless journey, but it is an option for you to "
 "consider, my lord."
 msgstr ""
-"Princi Konráde, neustále se v hovoru vracíš k tomu, že je třeba vyhnout se "
-"Arkan-thorii. Ale my tě můžeme vést řekou. S pomocí mořského lidu bys mohl "
-"dosáhnout domova severních elfů podél řeky mnohem rychleji než pozemní "
-"cestou. Nemohu ti slíbit, že to bude cesta bezpečná, nevím co nás čeká, ale "
-"je to možnost, kterou není radno nezvážit, můj pane."
+"Princi Konráde, nemusíš se vyhýbat Arkan-thorii. My mořští lidé tě můžeme "
+"vést dolů po proudu; tvá společnost v čele s námi přemůže každého nepřítele "
+"a dosáhne domova severních elfů mnohem dříve než kteroukoli suchou cestou. "
+"Nemohu slíbit putování bez nebezpečí, ale je to pro tebe možnost na zvážení, "
+"můj pane."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:302
@@ -5542,7 +5556,7 @@ msgid ""
 "powerful force amongst my people at times. The sword has been lost in orcish "
 "territory ever since."
 msgstr ""
-"Jeho kolegové maršálové ... no, dalo by se říci, že nijak nespěchali pomoci "
+"Jeho kolegové maršálové... no, dalo by se říci, že nijak nespěchali pomoci "
 "Ila'alionovi, když bránil tuto pláň proti skřetímu výpadu. Neschvalovali "
 "jeho aroganci nositele meče a pobouření bývá někdy mezi mým lidem velkou "
 "silou. Od té doby byl meč ztracen ve skřetím území."
@@ -5867,10 +5881,8 @@ msgstr "Dostaň se na konec řeky"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:84
-#, fuzzy
-#| msgid "Move Konrad to the north side of the river"
 msgid "Move Konrad to the cave"
-msgstr "Přesuň Konráda na severní stranu řeky"
+msgstr "Přesuň Konráda do jeskyně"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:92
@@ -6208,8 +6220,8 @@ msgid ""
 "I wonder why the drakes haven’t finished him by now? It is strange that "
 "there are not any drakes in that area."
 msgstr ""
-"Jak to že s ním drakonidé ještě nic neudělali? Zvláštní, v té oblasti se "
-"nevyskytují žádní drakonidi."
+"Rád bych věděl, proč ho doteď drakonidé nedorazili? Je zvláštní, že v té "
+"oblasti žádní nejsou."
 
 #. [message]: type=Water Serpent
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:745
@@ -6250,7 +6262,7 @@ msgid ""
 "Li’sar, do I have to remind you again that it is Konrad, not you, who is the "
 "rightful heir?"
 msgstr ""
-"Lisar, musím ti snad opět připomenizt, že právoplatným dědicem nejsi ty, ale "
+"Lisar, musím ti snad opět připomenout, že právoplatným dědicem nejsi ty, ale "
 "Konrád?"
 
 #. [message]: speaker=Li'sar
@@ -6692,7 +6704,7 @@ msgstr "..."
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:537
 msgid "...and Delfador, of course. And Kalenz... and.."
-msgstr "... a Delfador, ovšem. A Kalenz ... a ..."
+msgstr "... a Delfador, ovšem. A Kalenz... a..."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:542
@@ -6914,6 +6926,9 @@ msgid ""
 "powerful, and under different circumstances, might have provided us with "
 "some insights about these caves."
 msgstr ""
+"Je politováníhodné, že nám drakonidé nedůvěřovali. Keh Ohn se zdál být "
+"vznešený a mocný a za jiných okolností nám mohl o těchto jeskyních "
+"poskytnout nějakou představu."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:198
@@ -6945,16 +6960,13 @@ msgstr ""
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:257
-#, fuzzy
-#| msgid ""
-#| "Change is coming to the human lands. We rush to Elensiria seeking "
-#| "assistance, and the perils of the Longlier presented the quickest route."
 msgid ""
 "Change is coming to the human lands. We rush to Elensiria seeking "
 "assistance, and the perils of the Arkan-thoria presented the quickest route."
 msgstr ""
-"Do zemí lidí přichází změny. Spěcháme do Elensirie hledat pomoc a "
-"nejrychlejší cesta, která se naskytla byl riskantní pochod to přes Longlier."
+"Do zemí lidí přichází změny. Spěcháme do Elensirie hledat pomoc "
+"a nejrychlejší cesta, která se naskytla, byl riskantní přechod přes Arkan-"
+"thorii."
 
 #. [message]: speaker=Bona-Melodia
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:262
@@ -7157,7 +7169,7 @@ msgstr ""
 msgid ""
 "That was many years ago, I'm afraid. Now, we really must be moving along ..."
 msgstr ""
-"To už bylo, obávám se, před mnoha lety. Teď už ale opravdu musíme jít ..."
+"To už bylo, obávám se, před mnoha lety. Teď už ale opravdu musíme jít..."
 
 #. [message]: speaker=Haralamdum
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:550
@@ -7903,23 +7915,19 @@ msgstr "Zkouška klanů"
 
 #. [lua]: wesnoth.wml_actions.show_countdown
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:25
-#, fuzzy
-#| msgid "Defeat $units_to_slay enemy units"
 msgid "Defeat one more enemy unit"
 msgid_plural "Defeat $units_to_slay enemy units"
-msgstr[0] "Poraz $units_to_slay nepřátelských jednotek"
-msgstr[1] "Poraz $units_to_slay nepřátelských jednotek"
+msgstr[0] "Poraz ještě jednu nepřátelskou jednotku"
+msgstr[1] "Poraz $units_to_slay nepřátelské jednotky"
 msgstr[2] "Poraz $units_to_slay nepřátelských jednotek"
 
 #. [lua]: wesnoth.wml_actions.show_countdown
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:28
-#, fuzzy
-#| msgid "Still $units_to_slay clan members to defeat!"
 msgid "Still $units_to_slay clan member to defeat!"
 msgid_plural "Still $units_to_slay clan members to defeat!"
-msgstr[0] "Zbývá porazit $units_to_slay klanových bojovníků!"
-msgstr[1] "Zbývá porazit $units_to_slay klanových bojovníků!"
-msgstr[2] "Zbývá porazit $units_to_slay klanových bojovníků!"
+msgstr[0] "Zbývá porazit $units_to_slay člena klanu!"
+msgstr[1] "Zbývá porazit $units_to_slay členy klanu!"
+msgstr[2] "Zbývá porazit $units_to_slay členů klanu!"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:70
@@ -8091,6 +8099,8 @@ msgid ""
 "If you reduce Lord Bayar, Sir Ruga, Sir Daryn, or Sir Alric to 0HP, you’ll "
 "receive a reward!"
 msgstr ""
+"Jestliže snížíš život lorda Bayara, sira Rugy, sira Daryna nebo sira Alrica "
+"na 0 bodů, tak dostaneš odměnu!"
 
 #. [message]: speaker=Bayar
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:339

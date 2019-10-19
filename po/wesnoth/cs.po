@@ -12,13 +12,14 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2019.
+# Michal Žejdl <lachim@emer.cz>, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-09-16 11:33+0300\n"
-"PO-Revision-Date: 2019-08-26 03:14+0200\n"
+"PO-Revision-Date: 2019-10-15 04:28+0200\n"
 "Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
@@ -26,7 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Gtranslator 3.30.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -5098,6 +5099,9 @@ msgid ""
 "of 20 gold. In a campaign, always check if recalling a unit of the same type "
 "may be cheaper."
 msgstr ""
+"Cena za naverbování některých jednotek může přesáhnout obvyklý výdaj 20 "
+"zlatých za přivolání. Během tažení pokaždé ověř, zda přivolání jednotky "
+"stejného typu nemůže být levnější."
 
 #. [tip]
 #: data/tips.cfg:253
@@ -5105,6 +5109,9 @@ msgid ""
 "You must accept some losses in battle. It is not uncommon for beginners to "
 "lose sight of victory as they attempt to keep every unit alive."
 msgstr ""
+"V bitvě se musíš smířit s nějakými ztrátami. U začátečníků není neobvyklé, "
+"že ztratí ze zřetele vítězství, zatímco se pokoušejí udržet naživu každou "
+"jednotku."
 
 #. [tip]
 #: data/tips.cfg:254
@@ -5114,7 +5121,7 @@ msgstr "<i>― královna Ašvíra, 503 YW</i>"
 #. [tip]
 #: data/tips.cfg:257
 msgid "Using lower-level units can be very cost-effective."
-msgstr ""
+msgstr "Použití jednotek nižší úrovně může být cenově velmi výhodné."
 
 #. [tip]
 #: data/tips.cfg:261
@@ -5123,6 +5130,9 @@ msgid ""
 "<i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can make a "
 "big difference in a campaign."
 msgstr ""
+"Některé jednotky vyšší úrovně mají nenapodobitelné schopnosti jako například "
+"<i>velení</i>, <i>uzdravování</i> nebo <i>noční lovec</i>. Včasné získání "
+"těchto jednotek může v tažení způsobit velký rozdíl."
 
 #. [tip]
 #: data/tips.cfg:262
@@ -7259,10 +7269,8 @@ msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Přepíná zobrazení terénních kódů na políčkách."
 
 #: src/menu_events.cpp:1264
-#, fuzzy
-#| msgid "Toggle overlaying of terrain codes on hexes."
 msgid "Toggle overlaying of number of bitmaps on hexes."
-msgstr "Přepíná zobrazení terénních kódů na políčkách."
+msgstr "Přepíná zobrazení počtu bitmap na políčkách."
 
 #: src/menu_events.cpp:1266
 msgid "Toggle planning mode."
