@@ -1,4 +1,4 @@
-## Version 1.15.1+dev
+## Version 1.15.2
  ### AI:
    * Experimental AI:
      * Fix guardians being used for village actions
