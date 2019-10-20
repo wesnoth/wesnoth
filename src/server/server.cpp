@@ -615,6 +615,9 @@ void server::read_version(socket_ptr socket, std::shared_ptr<simple_wml::documen
 		const simple_wml::string_span& version_str_span = (*version)["version"];
 		const std::string version_str(version_str_span.begin(), version_str_span.end());
 
+		const simple_wml::string_span& source_str_span = (*version)["client_source"];
+		const std::string source_str(source_str_span.begin(), source_str_span.end());
+
 		// Check if it is an accepted version.
 		auto accepted_it = std::find_if(accepted_versions_.begin(), accepted_versions_.end(),
 			std::bind(&utils::wildcard_string_match, version_str, _1));
@@ -622,7 +625,7 @@ void server::read_version(socket_ptr socket, std::shared_ptr<simple_wml::documen
 		if(accepted_it != accepted_versions_.end()) {
 			LOG_SERVER << client_address(socket) << "\tplayer joined using accepted version " << version_str
 					   << ":\ttelling them to log in.\n";
-			async_send_doc(socket, login_response_, std::bind(&server::login, this, _1, version_str));
+			async_send_doc(socket, login_response_, std::bind(&server::login, this, _1, version_str, source_str));
 			return;
 		}
 
@@ -659,23 +662,23 @@ void server::read_version(socket_ptr socket, std::shared_ptr<simple_wml::documen
 	}
 }
 
-void server::login(socket_ptr socket, std::string version)
+void server::login(socket_ptr socket, std::string version, std::string source)
 {
-	async_receive_doc(socket, std::bind(&server::handle_login, this, _1, _2, version));
+	async_receive_doc(socket, std::bind(&server::handle_login, this, _1, _2, version, source));
 }
 
-void server::handle_login(socket_ptr socket, std::shared_ptr<simple_wml::document> doc, std::string version)
+void server::handle_login(socket_ptr socket, std::shared_ptr<simple_wml::document> doc, std::string version, std::string source)
 {
 	if(const simple_wml::node* const login = doc->child("login")) {
-		if(!is_login_allowed(socket, login, version)) {
-			server::login(socket, version); // keep reading logins from client until we get a successful one
+		if(!is_login_allowed(socket, login, version, source)) {
+			server::login(socket, version, source); // keep reading logins from client until we get a successful one
 		}
 	} else {
 		async_send_error(socket, "You must login first.", MP_MUST_LOGIN);
 	}
 }
 
-bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const login, const std::string& version)
+bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const login, const std::string& version, const std::string& source)
 {
 	// Check if the username is valid (all alpha-numeric plus underscore and hyphen)
 	std::string username = (*login)["username"].to_string();
@@ -712,7 +715,7 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 	// Check for password
 
 	bool registered;
-	if(!authenticate(socket, username, (*login)["password"].to_string(), version, name_taken, registered))
+	if(!authenticate(socket, username, (*login)["password"].to_string(), version, source, name_taken, registered))
 		return true; // it's a failed login but we don't want to call server::login again
 					 // because send_password_request() will handle the next network write and read instead
 
@@ -790,13 +793,14 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 		}
 	}
 
-	async_send_doc(socket, join_lobby_response_, [this, username, registered, version](socket_ptr socket) {
+	async_send_doc(socket, join_lobby_response_, [this, username, registered, version, source](socket_ptr socket) {
 		simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
 		add_player(socket, wesnothd::player(
 				username,
 				player_cfg,
 				registered,
 				version,
+				source,
 				default_max_messages_,
 				default_time_period_,
 				user_handler_ && user_handler_->user_is_moderator(username)
@@ -849,7 +853,7 @@ bool server::is_login_allowed(socket_ptr socket, const simple_wml::node* const l
 }
 
 bool server::authenticate(
-		socket_ptr socket, const std::string& username, const std::string& password, const std::string& version, bool name_taken, bool& registered)
+		socket_ptr socket, const std::string& username, const std::string& password, const std::string& version, const std::string& source, bool name_taken, bool& registered)
 {
 	// Current login procedure  for registered nicks is:
 	// - Client asks to log in with a particular nick
@@ -879,13 +883,13 @@ bool server::authenticate(
 			if(password.empty()) {
 				if(!name_taken) {
 					send_password_request(socket, "The nickname '" + username + "' is registered on this server.",
-						username, version, MP_PASSWORD_REQUEST);
+						username, version, source, MP_PASSWORD_REQUEST);
 				} else {
 					send_password_request(socket,
 						"The nickname '" + username + "' is registered on this server."
 						"\n\nWARNING: There is already a client using this username, "
 						"logging in will cause that client to be kicked!",
-						username, version, MP_PASSWORD_REQUEST_FOR_LOGGED_IN_NAME, true
+						username, version, source, MP_PASSWORD_REQUEST_FOR_LOGGED_IN_NAME, true
 					);
 				}
 
@@ -895,7 +899,7 @@ bool server::authenticate(
 			// A password (or hashed password) was provided, however
 			// there is no seed
 			if(seeds_[socket.get()].empty()) {
-				send_password_request(socket, "Please try again.", username, version, MP_NO_SEED_ERROR);
+				send_password_request(socket, "Please try again.", username, version, source, MP_NO_SEED_ERROR);
 				return false;
 			}
 
@@ -936,7 +940,7 @@ bool server::authenticate(
 						"You have made too many failed login attempts.", MP_TOO_MANY_ATTEMPTS_ERROR);
 				} else {
 					send_password_request(socket,
-						"The password you provided for the nickname '" + username + "' was incorrect.", username,version,
+						"The password you provided for the nickname '" + username + "' was incorrect.", username,version,source,
 						MP_INCORRECT_PASSWORD_ERROR);
 				}
 
@@ -962,6 +966,7 @@ void server::send_password_request(socket_ptr socket,
 		const std::string& msg,
 		const std::string& user,
 		const std::string& version,
+		const std::string& source,
 		const char* error_code,
 		bool force_confirmation)
 {
@@ -980,7 +985,7 @@ void server::send_password_request(socket_ptr socket,
 			"cannot log in due to an error in the hashing algorithm. "
 			"Logging into your forum account on https://forums.wesnoth.org "
 			"may fix this problem.");
-		login(socket, version);
+		login(socket, version, source);
 		return;
 	}
 
@@ -998,7 +1003,7 @@ void server::send_password_request(socket_ptr socket,
 		e.set_attr("error_code", error_code);
 	}
 
-	async_send_doc(socket, doc, std::bind(&server::login, this, _1, version));
+	async_send_doc(socket, doc, std::bind(&server::login, this, _1, version, source));
 }
 
 void server::add_player(socket_ptr socket, const wesnothd::player& player)
@@ -1744,7 +1749,19 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			const simple_wml::node::child_list& sides = g.get_sides_list();
 			for(unsigned side_index = 0; side_index < sides.size(); ++side_index) {
 				const simple_wml::node& side = *sides[side_index];
-				user_handler_->db_insert_game_player_info(uuid_, g.id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_bool(), side["faction"].to_string());
+				const auto player = player_connections_.get<name_t>().find(side["player_id"].to_string());
+				std::string version;
+				std::string source;
+
+				// if "Nobody" is chosen for a side, for example
+				if(player == player_connections_.get<name_t>().end()){
+					version = "";
+					source = "";
+				} else {
+					version = player->info().version();
+					source = player->info().source();
+				}
+				user_handler_->db_insert_game_player_info(uuid_, g.id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_bool(), side["faction"].to_string(), version, source);
 			}
 
 			const std::string mods = multiplayer["active_mods"].to_string();

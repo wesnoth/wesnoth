@@ -43,6 +43,8 @@
 
 #include "utils/functional.hpp"
 
+#include <fstream>
+
 static lg::log_domain log_mp("mp/main");
 #define DBG_MP LOG_STREAM(debug, log_mp)
 #define ERR_MP LOG_STREAM(err, log_mp)
@@ -156,6 +158,23 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 			config cfg;
 			config res;
 			cfg["version"] = game_config::version;
+
+			// TODO: retest with below string values - dist doesn't exist
+			std::string info;
+			std::ifstream infofile("./data/dist");
+			if(infofile.is_open()){
+				infofile >> info;
+				infofile.close();
+
+				if(info == "Default" || info == "Steam" || info == "SourceForge" || info == "Flatpak"
+				 || info == "macOS App Store" || info == "Linux repository" || info == "iOS" || info == "Android") {
+					 cfg["client_source"] = info;
+				} else {
+					cfg["client_source"] = "dist file has wrong value!";
+				}
+			} else {
+				cfg["client_source"] = "failed to read dist file!";
+			}
 			res.add_child("version", std::move(cfg));
 			sock->send_data(res);
 		}

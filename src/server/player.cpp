@@ -16,11 +16,12 @@
 #include "lexical_cast.hpp"
 
 wesnothd::player::player(const std::string& n, simple_wml::node& cfg,
-                         bool registered, const std::string& version, const size_t max_messages,
+                         bool registered, const std::string& version, const std::string& source, const size_t max_messages,
                          const size_t time_period,
                          const bool moderator)
   : name_(n)
   , version_(version)
+  , source_(source)
   , cfg_(cfg)
   , registered_(registered)
   , flood_start_(0)
