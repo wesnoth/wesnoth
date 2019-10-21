@@ -354,7 +354,7 @@ void halo_impl::remove(int handle)
 
 void halo_impl::unrender(std::set<map_location> invalidated_locations)
 {
-	if(preferences::show_haloes() == false || haloes.empty()) {
+	if(haloes.empty()) {
 		return;
 	}
 	//assert(invalidated_haloes.empty());
@@ -429,7 +429,7 @@ void halo_impl::unrender(std::set<map_location> invalidated_locations)
 
 void halo_impl::render()
 {
-	if(preferences::show_haloes() == false || haloes.empty() ||
+	if(haloes.empty() ||
 			invalidated_haloes.empty()) {
 		return;
 	}

@@ -49,36 +49,12 @@
 #include "config_attribute_value.hpp"
 #include "exceptions.hpp"
 
-#ifdef HAVE_CXX14
-#	ifdef __clang__ // Check this first, because clang also defines __GNUC__
-#		ifdef __apple_build_version__ // Apple clang
-#			if (__clang_major__ == 5 && __clang_minor__ >= 1) || __clang_major__ > 5 // Apple clang 5.1+
-#				define USE_HETEROGENOUS_LOOKUPS
-#			endif
-#		else // Non-Apple clang
-#			if (__clang_major__ == 3 && __clang_minor__ >= 4) || __clang_major__ > 3 // clang 3.4+
-#				define USE_HETEROGENOUS_LOOKUPS
-#			endif
-#		endif
-#	elif defined(__GNUC__) && __GNUC__ >= 5 // GCC 5.0+
-#		define USE_HETEROGENOUS_LOOKUPS
-#	endif
-#endif
-
-#if defined(_MSC_VER) && _MSC_VER >= 1900 // MSVC 2015
-#	define USE_HETEROGENOUS_LOOKUPS
-#endif
-
-#ifdef USE_HETEROGENOUS_LOOKUPS
 #if BOOST_VERSION > 106100
 #include <boost/utility/string_view.hpp>
 using config_key_type = boost::string_view;
 #else
 #include <boost/utility/string_ref.hpp>
 using config_key_type = boost::string_ref;
-#endif
-#else
-using config_key_type = const std::string &;
 #endif
 
 class config;
@@ -141,11 +117,7 @@ public:
 	{ return this != &invalid; }
 
 	typedef std::vector<std::unique_ptr<config>> child_list;
-	typedef std::map<std::string, child_list
-#ifdef USE_HETEROGENOUS_LOOKUPS
-		, std::less<>
-#endif
-	> child_map;
+	typedef std::map<std::string, child_list, std::less<>> child_map;
 
 	struct const_child_iterator;
 
@@ -249,9 +221,7 @@ public:
 	typedef std::map<
 		std::string
 		, attribute_value
-#ifdef USE_HETEROGENOUS_LOOKUPS
 		, std::less<>
-#endif
 	> attribute_map;
 	typedef attribute_map::value_type attribute;
 	struct const_attribute_iterator;
@@ -405,7 +375,6 @@ public:
 	 */
 	const attribute_value& operator[](config_key_type key) const;
 
-#ifdef USE_HETEROGENOUS_LOOKUPS
 	/**
 	* Returns a reference to the attribute with the given @a key.
 	* Creates it if it does not exist.
@@ -423,7 +392,6 @@ public:
 	{
 		return operator[](config_key_type(key));
 	}
-#endif
 
 	/**
 	* Returns a reference to the attribute with the given @a key.

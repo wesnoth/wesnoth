@@ -169,7 +169,7 @@ class WmlStr02:
                    'please report a bug if you encounter this error message')
         pywmlx.state.machine._pending_wmlstring = (
             pywmlx.state.machine.PendingWmlString(
-                lineno, loc_string, loc_multiline, loc_translatable
+                lineno, loc_string, loc_multiline, loc_translatable, israw=True
             )
         )
         return (xline, _nextstate)
@@ -249,7 +249,7 @@ class WmlStr01:
             xline = xline [ match.end(): ]
         pywmlx.state.machine._pending_wmlstring = (
             pywmlx.state.machine.PendingWmlString(
-                lineno, match.group(2), loc_multiline, loc_translatable
+                lineno, match.group(2), loc_multiline, loc_translatable, israw=False
             )
         )
         return (xline, _nextstate)

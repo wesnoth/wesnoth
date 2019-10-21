@@ -26,13 +26,6 @@ def valid_file_path(path):
 if __name__ == "__main__":
     import argparse
 
-    try:
-        import psyco
-        psyco.full()
-
-    except ImportError:
-        pass
-
     argumentparser = argparse.ArgumentParser()
     argumentparser.add_argument("-a", "--address", help="specify server address",
         default="add-ons.wesnoth.org")

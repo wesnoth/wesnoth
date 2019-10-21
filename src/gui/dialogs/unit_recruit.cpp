@@ -42,22 +42,27 @@ namespace dialogs
 
 REGISTER_DIALOG(unit_recruit)
 
-unit_recruit::unit_recruit(std::vector<const unit_type*>& recruit_list, team& team)
-	: recruit_list_(recruit_list)
+unit_recruit::unit_recruit(std::map<const unit_type*, t_string>& recruit_map, team& team)
+	: recruit_list_()
+	, recruit_map_(recruit_map)
 	, team_(team)
 	, selected_index_(0)
 {
+	for(const auto& pair : recruit_map) {
+		recruit_list_.push_back(pair.first);
+	}
 	// Ensure the recruit list is sorted by name
 	std::sort(recruit_list_.begin(), recruit_list_.end(), [](const unit_type* t1, const unit_type* t2) {
 		return t1->type_name().str() < t2->type_name().str();
 	});
+
 }
 
 static const color_t inactive_row_color(0x96, 0x96, 0x96);
 
-static inline std::string can_afford_unit(const std::string& text, const bool can_afford)
+static inline std::string gray_if_unrecruitable(const std::string& text, const bool is_recruitable)
 {
-	return can_afford ? text : font::span_color(inactive_row_color, text);
+	return is_recruitable ? text : font::span_color(inactive_row_color, text);
 }
 
 // Compare unit_create::filter_text_change
@@ -122,44 +127,34 @@ void unit_recruit::pre_show(window& window)
 
 	for(const auto& recruit : recruit_list_)
 	{
+		const t_string& error = recruit_map_[recruit];
 		std::map<std::string, string_map> row_data;
 		string_map column;
 
 		std::string	image_string = recruit->image() + "~RC(" + recruit->flag_rgb() + ">"
 			+ team_.color() + ")";
 
-		int wb_gold = 0;
-		if(resources::controller) {
-			if(const std::shared_ptr<wb::manager>& whiteb = resources::controller->get_whiteboard()) {
-				wb::future_map future; // So gold takes into account planned spending
-				wb_gold = whiteb->get_spent_gold_for(team_.side());
-			}
-		}
-
-		const bool can_afford = recruit->cost() <= team_.gold() - wb_gold;
+		const bool is_recruitable = error.empty();
 
 		const std::string cost_string = std::to_string(recruit->cost());
 
 		column["use_markup"] = "true";
-		if(!can_afford) {
+		if(!error.empty()) {
 			// Just set the tooltip on every single element in this row.
-			if(wb_gold > 0)
-				column["tooltip"] = _("This unit cannot be recruited because you will not have enough gold at this point in your plan.");
-			else
-				column["tooltip"] = _("This unit cannot be recruited because you do not have enough gold.");
+			column["tooltip"] = error;
 		}
 
-		column["label"] = image_string + (can_afford ? "" : "~GS()");
+		column["label"] = image_string + (is_recruitable ? "" : "~GS()");
 		row_data.emplace("unit_image", column);
 
-		column["label"] = can_afford_unit(recruit->type_name(), can_afford);
+		column["label"] = gray_if_unrecruitable(recruit->type_name(), is_recruitable);
 		row_data.emplace("unit_type", column);
 
-		column["label"] = can_afford_unit(cost_string, can_afford);
+		column["label"] = gray_if_unrecruitable(cost_string, is_recruitable);
 		row_data.emplace("unit_cost", column);
 
 		grid& grid = list.add_row(row_data);
-		if(!can_afford) {
+		if(!is_recruitable) {
 			image *gold_icon = dynamic_cast<image*>(grid.find("gold_icon", false));
 			assert(gold_icon);
 			gold_icon->set_image(gold_icon->get_image() + "~GS()");

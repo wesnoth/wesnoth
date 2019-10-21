@@ -190,9 +190,17 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	const int resistance_modifier = defender.unit_.damage_from(*weapon, !attacker.stats_.is_attacker, defender.unit_.get_location(), opp_weapon);
 	if(resistance_modifier != 100) {
 		if(attacker.stats_.is_attacker) {
-			ss << _("Defender resistance vs") << " ";
+			if(resistance_modifier < 100) {
+				ss << _("Defender resistance vs") << " ";
+			} else {
+				ss << _("Defender vulnerability vs") << " ";
+			}
 		} else {
-			ss << _("Attacker vulnerability vs") << " ";
+			if(resistance_modifier < 100) {
+				ss << _("Attacker resistance vs") << " ";
+			} else {
+				ss << _("Attacker vulnerability vs") << " ";
+			}
 		}
 
 		ss << string_table["type_" + weapon->type()];

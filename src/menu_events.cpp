@@ -205,8 +205,7 @@ void menu_handler::show_chat_log()
 {
 	config c;
 	c["name"] = "prototype of chat log";
-	gui2::dialogs::chat_log chat_log_dialog(vconfig(c), *resources::recorder);
-	chat_log_dialog.show();
+	gui2::dialogs::chat_log::display(vconfig(c), *resources::recorder);
 	// std::string text = resources::recorder->build_chat_log();
 	// gui::show_dialog(*gui_,nullptr,_("Chat Log"),"",gui::CLOSE_ONLY,nullptr,nullptr,"",&text);
 }
@@ -255,7 +254,7 @@ bool menu_handler::has_friends() const
 
 void menu_handler::recruit(int side_num, const map_location& last_hex)
 {
-	std::vector<const unit_type*> sample_units;
+	std::map<const unit_type*, t_string> sample_units;
 
 	std::set<std::string> recruits = actions::get_recruits(side_num, last_hex);
 
@@ -266,7 +265,9 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 			return;
 		}
 
-		sample_units.push_back(type);
+		map_location ignored;
+		map_location recruit_hex = last_hex;
+		sample_units[type] = (can_recruit(type->id(), side_num, recruit_hex, ignored));
 	}
 
 	if(sample_units.empty()) {
@@ -278,12 +279,12 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 
 	if(dlg.show()) {
 		map_location recruit_hex = last_hex;
-		int index = dlg.get_selected_index();
-		if (index < 0) {
+		const unit_type *type = dlg.get_selected_unit_type();
+		if (!type) {
 			gui2::show_transient_message("", _("No unit recruited."));
 			return;
 		}
-		do_recruit(sample_units[index]->id(), side_num, recruit_hex);
+		do_recruit(type->id(), side_num, recruit_hex);
 	}
 }
 
@@ -296,53 +297,75 @@ void menu_handler::repeat_recruit(int side_num, const map_location& last_hex)
 	}
 }
 
-bool menu_handler::do_recruit(const std::string& name, int side_num, map_location& loc)
+// TODO: Return multiple strings here, in case more than one error applies? For
+// example, if you start AOI S5 with 0GP and recruit a Mage, two reasons apply,
+// leader not on keep (extrarecruit=Mage) and not enough gold.
+t_string menu_handler::can_recruit(const std::string& name, int side_num, map_location& loc, map_location& recruited_from)
 {
 	team& current_team = board().get_team(side_num);
 
-	// search for the unit to be recruited in recruits
-	if(!utils::contains(actions::get_recruits(side_num, loc), name)) {
-		return false;
+	const unit_type* u_type = unit_types.find(name);
+	if(u_type == nullptr) {
+		return _("Internal error. Please report this as a bug! Details:\n")
+			+ "menu_handler::can_recruit: u_type == nullptr for " + name;
 	}
 
-	const unit_type* u_type = unit_types.find(name);
-	assert(u_type);
+	// search for the unit to be recruited in recruits
+	if(!utils::contains(actions::get_recruits(side_num, loc), name)) {
+		return VGETTEXT("You cannot recruit a $unit_type_name at this time.",
+				utils::string_map { { "unit_type_name", u_type->type_name() }});
+	}
 
-	if(u_type->cost() > current_team.gold() - (pc_.get_whiteboard()
-			? pc_.get_whiteboard()->get_spent_gold_for(side_num)
-			: 0))
+	// TODO take a wb::future_map RAII as unit_recruit::pre_show does
+	int wb_gold = 0;
 	{
-		gui2::show_transient_message("", _("You do not have enough gold to recruit that unit."));
-		return false;
+		wb::future_map future;
+		wb_gold = (pc_.get_whiteboard() ? pc_.get_whiteboard()->get_spent_gold_for(side_num) : 0);
+	}
+	if(u_type->cost() > current_team.gold() - wb_gold)
+	{
+		if(wb_gold > 0)
+			// TRANSLATORS: "plan" refers to Planning Mode
+			return _("At this point in your plan, you will not have enough gold to recruit this unit.");
+		else
+			return _("You do not have enough gold to recruit this unit.");
 	}
 
 	current_team.last_recruit(name);
 	const events::command_disabler disable_commands;
 
-	map_location recruited_from = map_location::null_location();
-
-	std::string msg;
 	{
 		wb::future_map_if_active future; /* start planned unit map scope if in planning mode */
-		msg = actions::find_recruit_location(side_num, loc, recruited_from, name);
+		std::string msg = actions::find_recruit_location(side_num, loc, recruited_from, name);
+		if(!msg.empty()) {
+			return msg;
+		}
 	} // end planned unit map scope
 
-	if(!msg.empty()) {
-		gui2::show_transient_message("", msg);
-		return false;
-	}
+	return "";
+}
 
-	if(!pc_.get_whiteboard() || !pc_.get_whiteboard()->save_recruit(name, side_num, loc)) {
+bool menu_handler::do_recruit(const std::string& name, int side_num, map_location& loc)
+{
+	map_location recruited_from = map_location::null_location();
+	const std::string res = can_recruit(name, side_num, loc, recruited_from);
+	team& current_team = board().get_team(side_num);
+
+	if(res.empty() && (!pc_.get_whiteboard() || !pc_.get_whiteboard()->save_recruit(name, side_num, loc))) {
 		// MP_COUNTDOWN grant time bonus for recruiting
 		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
 		// Do the recruiting.
 
-		synced_context::run_and_throw("recruit", replay_helper::get_recruit(u_type->id(), loc, recruited_from));
+		synced_context::run_and_throw("recruit", replay_helper::get_recruit(name, loc, recruited_from));
 		return true;
+	} else if(res.empty()) {
+		return false;
+	} else {
+		gui2::show_transient_message("", res);
+		return false;
 	}
 
-	return false;
 }
 
 void menu_handler::recall(int side_num, const map_location& last_hex)
@@ -1003,6 +1026,12 @@ void menu_handler::end_unit_turn(mouse_handler& mousehandler, int side_num)
 
 		if(un->user_end_turn()) {
 			mousehandler.cycle_units(false);
+		}
+
+		// If cycle_units hasn't found a new unit to cycle to then the original unit is still selected, but
+		// in a state where left-clicking on it does nothing. Make it respond to mouse clicks again.
+		if(un == units().find(mousehandler.get_selected_hex())) {
+			mousehandler.deselect_hex();
 		}
 	}
 }
@@ -1893,15 +1922,13 @@ void console_handler::do_show_var()
 void console_handler::do_inspect()
 {
 	vconfig cfg = vconfig::empty_vconfig();
-	gui2::dialogs::gamestate_inspector inspect_dialog(
-			resources::gamedata->get_variables(), *resources::game_events, *resources::gameboard);
-	inspect_dialog.show();
+	gui2::dialogs::gamestate_inspector::display(
+		resources::gamedata->get_variables(), *resources::game_events, *resources::gameboard);
 }
 
 void console_handler::do_control_dialog()
 {
-	gui2::dialogs::mp_change_control mp_change_control(menu_handler_);
-	mp_change_control.show();
+	gui2::dialogs::mp_change_control::display(menu_handler_);
 }
 
 void console_handler::do_unit()

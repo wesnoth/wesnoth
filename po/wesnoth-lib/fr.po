@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 22:40+0300\n"
-"PO-Revision-Date: 2019-08-21 16:31+0200\n"
+"PO-Revision-Date: 2019-10-06 17:36+0200\n"
 "Last-Translator: Syll <syll-dev@laposte.net>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -686,6 +686,19 @@ msgstr "Caverne accidentée"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:973
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
+#| "water and wind, carrying erosive particles that carve the rock. It "
+#| "resembles a scraggy underground cavern which shoulders defense, but is "
+#| "hard for most units to traverse. Only settlers of caves, such as dwarves "
+#| "and trolls, are fully capable of navigating such topography.\n"
+#| "\n"
+#| "Most units have about 50% defense in rocky caves, whereas cavalry are "
+#| "limited to 40%. Dwarves, by dint of their small size, enjoy 60% defense "
+#| "in rockbound caves.\n"
+#| "\n"
+#| "Occasionally caves are <italic>text='illuminated'</italic>."
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -712,8 +725,7 @@ msgstr ""
 "leur petite taille, bénéficient de 60% de défense dans les cavernes "
 "accidentées.\n"
 "\n"
-"Parfois les cavernes sont <ref>dst='terrain_illuminated_cave' "
-"text='illuminées'</ref>."
+"Parfois les cavernes sont <ref>text='illuminées'</ref>."
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -1632,6 +1644,24 @@ msgstr ""
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2737
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Cave'</italic> terrain represents any underground cavern "
+#| "with enough room for a unit to pass.\n"
+#| "Most units are wholly unfamiliar with the terrain, and thus are both "
+#| "slowed down and hindered in defense. Dwarves and trolls, who make their "
+#| "homes in caves, both have a relatively easy time navigating this terrain, "
+#| "especially dwarves, who by dint of their small size can navigate many "
+#| "obstacles that other races cannot. Occasionally caves are "
+#| "<italic>text='illuminated'</italic>.\n"
+#| "\n"
+#| "Rare patches of the underground world are illuminated by light from the "
+#| "surface shining down into the gloomy darkness. This provides an attack "
+#| "bonus for lawful units and removes the attack bonus from chaotic units. "
+#| "In all other regards this terrain is functionally identical to normal "
+#| "cave terrains.\n"
+#| "\n"
+#| "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -1657,12 +1687,12 @@ msgstr ""
 "les cavernes, ont tous deux plus de facilité à se déplacer dans ce type de "
 "terrain, surtout les nains qui profitent de leur petite taille pour passer "
 "des obstacles qui bloquent les autres races. Les cavernes sont parfois "
-"<ref>dst='terrain_illuminated_cave' text='illuminées'</ref>.\n"
+"<italic>text='illuminées'</italic>.\n"
 "\n"
 "Parfois certaines cavernes sont illuminées par de la lumière venant de la "
 "surface. Cela fournit un bonus d'attaque aux unités loyales et enlève le "
 "bonus des unités chaotiques. À cela près, les terrains illuminés sont "
-"identiques aux <ref>dst='terrain_cave' text='cavernes'</ref> normales.\n"
+"identiques aux cavernes normales.\n"
 "\n"
 "La plupart des unités ont 20% à 40% de défense dans les cavernes. Les nains "
 "ont 50%."
@@ -3942,17 +3972,13 @@ msgstr "Lorsqu'un nouveau tour a commencé"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
-#, fuzzy
-#| msgid "Game data:"
 msgid "Game created:"
-msgstr "Données du jeu :"
+msgstr "Partie créée :"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:200
-#, fuzzy
-#| msgid "When a new turn has begun"
 msgid "When a new game has been created"
-msgstr "Lorsqu'un nouveau tour a commencé"
+msgstr "Lorsqu'une nouvelle partie a commencé"
 
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:235
@@ -7836,6 +7862,12 @@ msgstr ""
 "La clef « $deprecated_key » a été remplacée par « $key ». « $deprecated_key "
 "» ne sera plus maintenue à partir de la version $removal_version."
 
+#~ msgid "Reason:"
+#~ msgstr "Raison :"
+
+#~ msgid "Stop Game"
+#~ msgstr "Arrêter une partie"
+
 #~ msgid "feature^Experimental OpenMP support"
 #~ msgstr "Support OpenMP expérimental"
 
@@ -7984,9 +8016,6 @@ msgstr ""
 
 #~ msgid "Moderating"
 #~ msgstr "Modération"
-
-#~ msgid "Reason:"
-#~ msgstr "Raison :"
 
 #~ msgid "Time:"
 #~ msgstr "Temps :"

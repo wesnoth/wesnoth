@@ -362,6 +362,17 @@ static int process_command_args(const commandline_options& cmdline_opts)
 {
 	// Options that don't change behavior based on any others should be checked alphabetically below.
 
+	if(cmdline_opts.log) {
+		for(const auto& log_pair : cmdline_opts.log.get()) {
+			const std::string log_domain = log_pair.second;
+			const int severity = log_pair.first;
+			if(!lg::set_log_domain_severity(log_domain, severity)) {
+				std::cerr << "unknown log domain: " << log_domain << '\n';
+				return 2;
+			}
+		}
+	}
+
 	if(cmdline_opts.userconfig_dir) {
 		filesystem::set_user_config_dir(*cmdline_opts.userconfig_dir);
 	}
@@ -451,17 +462,6 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	if(cmdline_opts.help) {
 		std::cout << cmdline_opts;
 		return 0;
-	}
-
-	if(cmdline_opts.log) {
-		for(const auto& log_pair : cmdline_opts.log.get()) {
-			const std::string log_domain = log_pair.second;
-			const int severity = log_pair.first;
-			if(!lg::set_log_domain_severity(log_domain, severity)) {
-				std::cerr << "unknown log domain: " << log_domain << '\n';
-				return 2;
-			}
-		}
 	}
 
 	if(cmdline_opts.logdomains) {
@@ -747,13 +747,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 		return 1;
 	}
 
-	if(preferences::joystick_support_enabled()) {
-		res = game->init_joystick();
-		if(res == false) {
-			std::cerr << "could not initialize joystick\n";
-		}
-	}
-
 	check_fpu();
 	const cursor::manager cursor_manager;
 	cursor::set(cursor::WAIT);
@@ -797,11 +790,11 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	plugins_manager plugins_man(new application_lua_kernel);
 
-	plugins_context::Reg const callbacks[] {
+	const plugins_context::reg_vec callbacks {
 		{"play_multiplayer", std::bind(&game_launcher::play_multiplayer, game.get(), game_launcher::MP_CONNECT)},
 	};
 
-	plugins_context::aReg const accessors[] {
+	const plugins_context::areg_vec accessors {
 		{"command_line", std::bind(&commandline_options::to_config, &cmdline_opts)},
 	};
 

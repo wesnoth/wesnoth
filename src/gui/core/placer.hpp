@@ -53,7 +53,7 @@ public:
 	/***** ***** Types. ***** *****/
 
 	/** The direction the placer should grow towards. */
-	MAKE_ENUM(tgrow_direction,
+	MAKE_ENUM(grow_direction,
 		(horizontal, "horizontal")
 		(vertical, "vertical")
 	)
@@ -75,7 +75,7 @@ public:
 	 *                            only horizontally or vertically placed items
 	 *                            the value should be 1.
 	 */
-	static placer_base* build(const tgrow_direction grow_direction,
+	static placer_base* build(const grow_direction grow_direction,
 						   const unsigned parallel_items);
 
 	virtual ~placer_base();

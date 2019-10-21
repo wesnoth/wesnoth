@@ -26,11 +26,7 @@ class game_save : public modal_dialog
 public:
 	game_save(std::string& filename, const std::string& title);
 
-	static bool
-	execute(std::string& filename, const std::string& title)
-	{
-		return game_save(filename, title).show();
-	}
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(game_save)
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

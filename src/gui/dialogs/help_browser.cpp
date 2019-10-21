@@ -55,7 +55,8 @@ void help_browser::pre_show(window& window)
 	tree_view& topic_tree = find_widget<tree_view>(&window, "topic_tree", false);
 	multi_page& topic_pages = find_widget<multi_page>(&window, "topic_text_pages", false);
 
-	topic_tree.set_selection_change_callback(std::bind(&help_browser::on_topic_select, this, std::ref(window)));
+	connect_signal_notify_modified(topic_tree,
+		std::bind(&help_browser::on_topic_select, this, std::ref(window)));
 
 	window.keyboard_capture(&topic_tree);
 

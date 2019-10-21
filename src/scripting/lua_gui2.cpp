@@ -768,7 +768,7 @@ int intf_set_dialog_callback(lua_State* L)
 		static dialog_callback_wrapper wrapper;
 		connect_signal_notify_modified(*l, std::bind(&dialog_callback_wrapper::forward, wrapper, w, _3, _4));
 	} else if(gui2::tree_view* tv = dynamic_cast<gui2::tree_view*>(w)) {
-		tv->set_selection_change_callback(&dialog_callback);
+		connect_signal_notify_modified(*tv, std::bind(dialog_callback, _1));
 	} else {
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 	}
@@ -917,8 +917,7 @@ int show_lua_console(lua_State* /*L*/, lua_kernel_base* lk)
 
 int show_gamestate_inspector(const vconfig& cfg, const game_data& data, const game_state& state)
 {
-	gui2::dialogs::gamestate_inspector inspect_dialog(data.get_variables(), *state.events_manager_, state.board_, cfg["name"]);
-	inspect_dialog.show();
+	gui2::dialogs::gamestate_inspector::display(data.get_variables(), *state.events_manager_, state.board_, cfg["name"]);
 	return 0;
 }
 

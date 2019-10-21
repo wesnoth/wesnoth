@@ -43,7 +43,7 @@ lua_unit::~lua_unit()
 {
 }
 
-unit* lua_unit::get()
+unit* lua_unit::get() const
 {
 	if (ptr) return ptr.get();
 	if (c_ptr) return c_ptr;
@@ -54,7 +54,7 @@ unit* lua_unit::get()
 	if (!ui.valid()) return nullptr;
 	return ui.get_shared_ptr().get(); //&*ui would not be legal, must get new shared_ptr by copy ctor because the unit_map itself is holding a boost shared pointer.
 }
-unit_ptr lua_unit::get_shared()
+unit_ptr lua_unit::get_shared() const
 {
 	if (ptr) return ptr;
 	if (side) {
@@ -236,6 +236,32 @@ static int impl_unit_equality(lua_State* L)
 	unit& right = luaW_checkunit(L, 2);
 	const bool equal = left.underlying_id() == right.underlying_id();
 	lua_pushboolean(L, equal);
+	return 1;
+}
+
+/**
+ * Turns a lua proxy unit to string. (__tostring metamethod)
+ */
+static int impl_unit_tostring(lua_State* L)
+{
+	const lua_unit* lu = luaW_tounit_ref(L, 1);
+	unit &u = *lu->get();
+	std::ostringstream str;
+
+	str << "unit: <";
+	if(!u.id().empty()) {
+		str << u.id() << " ";
+	} else {
+		str << u.type_id() << " ";
+	}
+	if(int side = lu->on_recall_list()) {
+		str << "at (side " << side << " recall list)";
+	} else {
+		str << "at (" << u.get_location() << ")";
+	}
+	str << '>';
+
+	lua_push(L, str.str());
 	return 1;
 }
 
@@ -620,6 +646,8 @@ namespace lua_units {
 		lua_setfield(L, -2, "__gc");
 		lua_pushcfunction(L, impl_unit_equality);
 		lua_setfield(L, -2, "__eq");
+		lua_pushcfunction(L, impl_unit_tostring);
+		lua_setfield(L, -2, "__tostring");
 		lua_pushcfunction(L, impl_unit_get);
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, impl_unit_set);

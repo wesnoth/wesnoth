@@ -475,7 +475,7 @@ std::string find_recruit_location(const int side, map_location& recruit_location
 
 	case RECRUIT_NO_ABLE_LEADER:
 		LOG_NG << "No leader is able to recruit '" << unit_type << "' on side " << side << ".\n";
-		return _("None of your leaders are able to recruit that unit.");
+		return _("None of your leaders are able to recruit this unit.");
 
 	case RECRUIT_NO_KEEP_LEADER:
 		LOG_NG << "No leader able to recruit '" << unit_type << "' is on a keep.\n";

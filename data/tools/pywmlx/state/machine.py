@@ -248,11 +248,13 @@ class PendingLuaString:
 
 
 class PendingWmlString:
-    def __init__(self, lineno, wmlstring, ismultiline, istranslatable):
+    def __init__(self, lineno, wmlstring, ismultiline, istranslatable, israw):
+        """The israw argument indicates a << >> delimited string"""
         self.lineno = lineno
         self.wmlstring = wmlstring.replace('\\', r'\\')
         self.ismultiline = ismultiline
         self.istranslatable = istranslatable
+        self.israw = israw
 
     def addline(self, value):
         self.wmlstring = self.wmlstring + '\n' + value.replace('\\', r'\\')
@@ -275,7 +277,10 @@ class PendingWmlString:
                 # so, using "if errcode != 1"
                 # we will add the translatable string ONLY if it is NOT empty
                 _linenosub += 1
-                self.wmlstring = re.sub('""', r'\"', self.wmlstring)
+                if self.israw:
+                    self.wmlstring = re.sub('"', r'\"', self.wmlstring)
+                else:
+                    self.wmlstring = re.sub('""', r'\"', self.wmlstring)
                 pywmlx.nodemanip.addNodeSentence(self.wmlstring,
                                              ismultiline=self.ismultiline,
                                              lineno=self.lineno,

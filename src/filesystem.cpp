@@ -21,6 +21,7 @@
 #include "filesystem.hpp"
 
 #include "config.hpp"
+#include "deprecation.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -620,6 +621,17 @@ void set_user_data_dir(std::string newprefdir)
 	} else {
 		if(newprefdir.empty()) {
 			newprefdir = "Wesnoth" + get_version_path_suffix();
+		} else {
+#ifdef PREFERENCES_DIR
+			if (newprefdir != PREFERENCES_DIR)
+#endif
+			{
+				// TRANSLATORS: translate the part inside <...> only
+				deprecated_message(_("--userdata-dir=<relative path that doesn't start with a period>"),
+					DEP_LEVEL::FOR_REMOVAL,
+					{1, 17, 0},
+					_("Use an absolute path, or a relative path that starts with a period and a backslash"));
+			}
 		}
 
 		PWSTR docs_path = nullptr;
@@ -681,6 +693,11 @@ void set_user_data_dir(std::string newprefdir)
 		if(newprefdir[0] == '/') {
 			user_data_dir = newprefdir;
 		} else {
+			// TRANSLATORS: translate the part inside <...> only
+			deprecated_message(_("--userdata-dir=<relative path>"),
+				DEP_LEVEL::FOR_REMOVAL,
+				{1, 17, 0},
+				_("Use absolute paths. Relative paths are deprecated because they are interpreted relative to $HOME"));
 			user_data_dir = home / newprefdir;
 		}
 	}
@@ -695,6 +712,11 @@ void set_user_data_dir(std::string newprefdir)
 	if(newprefdir[0] == '/') {
 		user_data_dir = newprefdir;
 	} else {
+		// TRANSLATORS: translate the part inside <...> only
+		deprecated_message(_("--userdata-dir=<relative path>"),
+			DEP_LEVEL::FOR_REMOVAL,
+			{1, 17, 0},
+			_("Use absolute paths. Relative paths are deprecated because they are interpreted relative to $HOME"));
 		user_data_dir = home / newprefdir;
 	}
 #endif

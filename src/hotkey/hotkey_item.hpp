@@ -342,15 +342,6 @@ protected:
 };
 
 /**
- * @todo not implemented
- */
-class hotkey_joystick: public hotkey_base
-{
-protected:
-	int button_;
-};
-
-/**
  * Create and instantiate a hotkey from a config element.
  * @param cfg The config element to read for data.
  * @return The new instance of the hotkey item.

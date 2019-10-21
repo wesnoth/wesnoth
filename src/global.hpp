@@ -33,20 +33,15 @@
 
 #define UNUSED(x)  ((void)(x))     /* to avoid warnings */
 
-// To allow using some optional C++14 and C++17 features
-#if __cplusplus >= 201402L
-#define HAVE_CXX14
+// To allow using some optional C++17 features
 #if __cplusplus >= 201703L
 #define HAVE_CXX17
-#endif
 #endif
 
 // Some C++11 features are not available on all supported platforms
 #if defined(_MSC_VER)
 // MSVC supports these starting in MSVC 2015
 #if _MSC_VER >= 1900
-#define HAVE_REF_QUALIFIERS 1
-#define HAVE_INHERITING_CTORS 1
 #else
 #endif
 // MSVC supports these starting in 2017?
@@ -67,9 +62,6 @@
 #if defined(__clang__)
 #include <ciso646> // To ensure standard library version macros are defined
 
-// Clang has convenient feature detection macros \o/
-#define HAVE_REF_QUALIFIERS __has_feature(cxx_reference_qualified_functions)
-#define HAVE_INHERITING_CTORS __has_feature(cxx_inheriting_constructors)
 // All supported versions of clang have these
 #define FALLTHROUGH [[clang::fallthrough]]
 // Use GCC-style attribute because the __has_cpp_attribute feature-checking macro doesn't exist in clang 3.5
@@ -79,8 +71,6 @@
 
 #if defined(__GNUC__) && !defined(__clang__)
 // GCC supports these from 4.8 up
-#define HAVE_REF_QUALIFIERS 1
-#define HAVE_INHERITING_CTORS 1
 
 // Deprecated is supported from 4.9 up
 #if __GNUC__ >= 5 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 9)

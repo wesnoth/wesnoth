@@ -70,8 +70,7 @@ public:
 			const std::map<std::string /* widget id */, string_map>& data,
 			const int index = -1)
 	{
-		ptr_t new_node(new tree_view_node(id, this, get_tree_view(), data));
-		return add_child_impl(std::move(new_node), index);
+		return add_child_impl(std::make_shared<tree_view_node>(id, this, get_tree_view(), data), index);
 	}
 
 	/**

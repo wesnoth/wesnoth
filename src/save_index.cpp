@@ -233,6 +233,9 @@ std::string save_info::format_time_summary() const
 
 bool save_info_less_time::operator()(const save_info& a, const save_info& b) const
 {
+	// This translatable string must be same one as in replay_savegame::create_initial_filename.
+	// TODO: we really shouldn't be relying on translatable strings like this, especially since
+	// old savefiles may have been created in a different language than the current UI language
 	const std::string replay_str = " " + _("replay");
 	if(a.modified() > b.modified()) {
 		return true;

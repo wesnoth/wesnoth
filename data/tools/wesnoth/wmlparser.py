@@ -866,9 +866,6 @@ def xmlify(tree, verbose=False, depth=0):
 
 if __name__ == "__main__":
     import argparse, subprocess
-    try: import psyco
-    except ImportError: pass
-    else: psyco.full()
 
     argumentparser = argparse.ArgumentParser("usage: %(prog)s [options]")
     argumentparser.add_argument("-p", "--path",  help = "specify wesnoth data path")

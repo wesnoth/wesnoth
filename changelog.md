@@ -1,11 +1,19 @@
-## Version 1.15.1+dev
+## Version 1.15.2+dev
+
+## Version 1.15.2
  ### AI:
-   * Experimental AI: fix guardians being used for village actions
-   * Experimental AI: fix poisoners ignoring [avoid] tag
+   * Experimental AI:
+     * Fix guardians being used for village actions
+     * Fix poisoners ignoring `[avoid]` tag
+     * Recruitment: add optional parameter `high_level_fraction` to make the ExpAI
+       recruit units of level 2 or higher
+     * Recruitment: adopt optional `randomness` parameter from the Rush Recruitment Micro AI
  ### Campaigns
    * Delfador's Memoirs:
      * S20: Improve leveling of units and give player a note about it (Issue#4219)
      * S21: Better indication that the book has gone missing (Issue#4220)
+   * Descent into Darkness:
+     * Use set colors for each faction throughout the campaign
    * Eastern Invasion:
      * Updated to use the new mushroom terrains (PR #4335)
    * Heir to the Throne:
@@ -23,12 +31,14 @@
    * Added an editor-only overlay for deprecated terrains (PR#4347)
    * Re-enabled and updated the editor topics in the help browser (PR#4414)
  ### Language and i18n
+   * New translations: Ancient Greek
    * Updated translations: British English, Czech, Chinese (Simplified), French,
      Italian, Japanese, Korean, Portuguese (Brazil), Russian, Spanish
    * Set up for translating the Wings of Victory campaign (PR#4265)
    * Changed the :help command's output to split over multiple lines
    * Added translatable explanations of :droid, :help and :idle's arguments
    * Allow carets in translatable strings - 'hint^Tb^Tf' will show 'Tb^Tf' to the user
+   * Removed translations: Old English (`ang`), Friulian (`fur_IT`) and Asturian (`ast`)
  ### Terrains
    * Added new ^Tf mushroom terrain whose statistics are fungus+base terrain, as suggested by the existing graphics (PR #4299)
    * Added Tb mushroom base terrain, which can be used alone or as Tb^Tf when a terrain with the fungus-only stats is wanted
@@ -41,13 +51,17 @@
    * Tooltips of sidebar, top bar, and status table now show a side's color's name in words,
      for the colorblind. (Issue#1217)
    * In the recruit dialog and recall dialog, units that are too expensive to recruit/recall
-     are grayed out. (PR#4362, part of Issue#1282)
+     are grayed out. (PR#4362, PR#4444, part of Issue#1282)
    * Hide the "Suppose Dead" key from the hotkeys list (it does nothing since 1.9.12)
    * Sidebar: In replays with "View: Full Map", show all enemy units in "Damage versus:" tooltip
    * Multiplayer Create Game screen now shows map previews for scenarios that use map_file=. (PR#4407)
+   * Remember zoom level between play sessions (#1518) and add zoom options to context menu (#1213)
+   * Sidebar shows number of attacks left, for units that can attack multiple times per turn (#2667)
  ### Lua API
    * Accessing wesnoth.theme_items.unit_status no longer prevents the unit
      status (poisoned/slowed/etc) from being shown in the sidebar. (Issue#4079)
+   * side.flag is now writable. `wesnoth.set_side_id` remains supported. (Issue#4396)
+   * Units now have a `__tostring` method that shows their id and location.
  ### WML engine
    * Ranges can now have upper limit "infinity" instead of using a big number like "99" or "99999"
    * Print a deprecation warning for `[terrain_type]`'s partly-implemented `vision_alias`
@@ -63,6 +77,8 @@
    * New tag [modify_unit_type] that goes into [campaign]/[era]/[modification] and can change some
      unit type properties like advancement and recruit costs.
    * New debug command :terrain for changing the terrain of the selected hex (PR#4405)
+   * New predefined macros `{LEFT_BRACE}` and `{RIGHT_BRACE}` (PR#4432)
+   * Weapon filtering `special=*` deprecated, replaced by new `special_id=*` and `special_type=*` (Issue#3915)
  ### Miscellaneous and bug fixes
    * Fixed :droid's arguments not all being optional (Issue#4308)
    * Ported the "expand-terrain-macros", "wmlflip", "wmlparser", "umc-dev/build/update_version",
@@ -75,6 +91,11 @@
    * Improve the terrain code's encapsulation and documentation (PR#4411)
    * Fix duration=scenario objects expiry for units on the recall list at scenario end.
    * Fix maps with scenario_generation= were unavailable in the editor.
+   * Passing relative paths to --user-data-dir is deprecated (part of PR#4449),
+     * On windows, relative paths that start with `.\` are not deprecated
+   * Removed incomplete joystick support.
+   * Removed option to disable unit and item halos.
+   * Added support to wmlxgettext for double-quote characters in translatable raw strings
    * Fix sidebar abilities display leaking shrouded information. (Issue#4456)
 
 ## Version 1.15.1
@@ -280,9 +301,13 @@
      the help on the correct unit variation (e.g., Walking Corpse (Swimmer)).
      (Issue#4142)
    * Status table: In replays with "View: Full Map", show all sides' gold status (Issue#4410)
+   * Zooming in doesn't move the center of the viewport when the map is wider/taller
+     than the available width/height (PR#4442)
+   * Help pages for unit types show base abilities and AMLA abilities separately. (#2907)
  ### Miscellaneous and bug fixes
    * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
    * Add help text for some debug commands (part of Issue#2500)
+   * More deprecation warnings logged by default (part of PR#4449)
 
 ## Version 1.14.9
  ### AI:
@@ -360,6 +385,7 @@
    * Added HighContrast icon variant
  ### WML engine
    * Fixed [music] ms_after= affecting the previous track instead of the intended one
+   * The message of [print] is now shown centered within the map area
  ### Miscellaneous and bug fixes
    * Update various references of mermen to merfolk or mer
    * Adjust several maps to use different castle graphics
@@ -1011,6 +1037,7 @@
    * Removed (optional) requirement of libpng from SCons and CMake and the
      associated options as Wesnoth now uses SDL_image to write PNG files.
    * Fixed assertion when saving game events mid-event.
+
 
 ## Version 1.13.12
  ### Security fixes

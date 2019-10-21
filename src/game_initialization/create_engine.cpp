@@ -425,10 +425,6 @@ std::string create_engine::select_campaign_difficulty(int set_value)
 		difficulties.push_back(d["define"]);
 	}
 
-	if(difficulties.empty()) {
-		difficulties = utils::split(current_level().data()["difficulties"]);
-	}
-
 	// No difficulties found. Exit
 	if(difficulties.empty()) {
 		return "";
