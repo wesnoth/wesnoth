@@ -12,6 +12,7 @@
      * S1: Fix reference to LoW events
    * The South Guard:
      * Change Halidel to be Deoran's great-grandfather
+     * S7b/S8b: reduce enemy gold values
    * Tutorial:
      * S2: Make the first grunt cross the bridge, otherwise the scenario is too hard
  ### Language and i18n
