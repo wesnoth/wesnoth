@@ -19,21 +19,21 @@
    * Updated translations: Chinese (Simplified), Czech, French, Italian, Korean,
      Portuguese (Brazil)
  ### Lua API
-   * wesnoth.deprecate_api was fixed to correctly wrap tables with metatables. (Issue#4079)
+   * wesnoth.deprecate_api was fixed to correctly wrap tables with metatables (issue #4079).
  ### Music and sound effects
    * Removed accidental silence of two seconds after the first track of each scenario
-     (Issue#4459)
+     (issue #4459).
  ### Units
    * Sun Singer and Sun Sylph: modify faerie fire colors
  ### User interface
-   * Draw ellipses during draw/sheath animations. (Issue#1527)
+   * Draw ellipses during draw/sheath animations (issue #1527).
    * In the combat dialog and elsewhere, clicking the "Profile" button opens
-     the help on the correct unit variation (e.g., Walking Corpse (Swimmer)).
-     (Issue#4142)
+     the help on the correct unit variation (e.g., Walking Corpse (Swimmer))
+     (issue #4142).
    * Ensure enough space to display turn numbers in the hundreds.
  ### Miscellaneous and bug fixes
-   * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
-   * Add help text for some debug commands (part of Issue#2500)
+   * New help topic outlining common (and less commons) reasons for losing a scenario (PR #4217).
+   * Add help text for some debug commands (part of issue #2500).
 
 ## Version 1.14.9
  ### AI:
