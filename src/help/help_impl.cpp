@@ -15,6 +15,7 @@
 #include "help/help_impl.hpp"
 
 #include "about.hpp"                    // for get_text
+#include "actions/attack.hpp"           // for time_of_day bonus
 #include "display.hpp"                  // for display
 #include "display_context.hpp"          // for display_context
 #include "game_config.hpp"              // for debug, menu_contract, etc
@@ -347,9 +348,10 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 
 	if (! resources::tod_manager) {
 		toplevel << _("Only available during a scenario.");
-		topics.emplace_back("Time of Day Schedule", "..schedule", toplevel.str());
+		topics.emplace_back(_("Time of Day Schedule"), "..schedule", toplevel.str());
 		return topics;
 	}
+
 	const std::vector<time_of_day>& times = resources::tod_manager->times();
 	for (const time_of_day& time : times)
 	{
@@ -358,17 +360,20 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 		std::stringstream text;
 
 		toplevel << make_link(time.name.str(), id) << jump_to(160) <<
-				image << jump(30) << time.lawful_bonus << '\n';
+				image << jump(30) << '\n';
 
 		text << image << '\n' <<
 				time.description.str() << '\n' <<
-				"Lawful Bonus: " << time.lawful_bonus << '\n' <<
+				_("Lawful Bonus:") << ' ' << generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::LAWFUL, false, resources::tod_manager->get_max_liminal_bonus()) << '\n' <<
+				_("Neutral Bonus:") << ' ' << generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::NEUTRAL, false, resources::tod_manager->get_max_liminal_bonus()) << '\n' <<
+				_("Chaotic Bonus:") << ' ' << generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::CHAOTIC, false, resources::tod_manager->get_max_liminal_bonus()) << '\n' <<
+				_("Liminal Bonus:") << ' ' << generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::LIMINAL, false, resources::tod_manager->get_max_liminal_bonus()) << '\n' <<
 				'\n' << make_link(_("Schedule"), "..schedule");
 
 		topics.emplace_back(time.name.str(), id, text.str());
 	}
 
-	topics.emplace_back("Time of Day Schedule", "..schedule", toplevel.str());
+	topics.emplace_back(_("Time of Day Schedule"), "..schedule", toplevel.str());
 	return topics;
 }
 
