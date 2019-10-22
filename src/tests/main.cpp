@@ -25,7 +25,7 @@
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_monitor.hpp>
-#if BOOST_VERSION >= 106000
+#if BOOST_VERSION >= 105900
 #include <boost/test/unit_test_parameters.hpp>
 #else
 #include <boost/test/detail/unit_test_parameters.hpp>
