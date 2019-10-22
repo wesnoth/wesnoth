@@ -15,6 +15,7 @@
 #include "help/help_impl.hpp"
 
 #include "about.hpp"                    // for get_text
+#include "actions/attack.hpp"           // for time_of_day bonus
 #include "display.hpp"                  // for display
 #include "display_context.hpp"          // for display_context
 #include "game_config.hpp"              // for debug, menu_contract, etc
@@ -346,27 +347,11 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 	std::vector<topic> topics;
 	std::stringstream toplevel;
 
-	// HACK: Wesnoth 1.14 only, to avoid breaking a string freeze in the middle
-	//       of the RC phase. The string already exists in the wesnoth-help
-	//       (WML) textdomain and it's used for the help sections tree on the
-	//       left. It was supposed to be used here as well but someone forgot
-	//       to mark the string translatable. Future versions will just use the
-	//       regular textdomain for this file.
-	const std::string& tod_schedule_heading =
-			translation::dsgettext("wesnoth-help", "Time of Day Schedule");
-
 	if (! resources::tod_manager) {
 		toplevel << _("Only available during a scenario.");
-		topics.emplace_back(tod_schedule_heading, "..schedule", toplevel.str());
+		topics.emplace_back(_("Time of Day Schedule"), "..schedule", toplevel.str());
 		return topics;
 	}
-
-	// HACK: Wesnoth 1.14 only, to avoid breaking a string freeze in the middle
-	//       of the RC phase. The string already exists in the wesnoth-lib
-	//       textdomain and it's used for a similar purpose in the Editor UI.
-	//       Future versions will just use the regular textdomain for this file.
-	const std::string& lawful_bonus_label =
-			translation::dsgettext("wesnoth-lib", "Lawful Bonus:");
 
 	const std::vector<time_of_day>& times = resources::tod_manager->times();
 	for (const time_of_day& time : times)
@@ -376,17 +361,20 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 		std::stringstream text;
 
 		toplevel << make_link(time.name.str(), id) << jump_to(160) <<
-				image << jump(30) << time.lawful_bonus << '\n';
+				image << jump(30) << '\n';
 
 		text << image << '\n' <<
 				time.description.str() << '\n' <<
-				lawful_bonus_label << ' ' << time.lawful_bonus << '\n' <<
+				_("Lawful Bonus:") << ' ' << generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::LAWFUL, false) << '\n' <<
+				_("Neutral Bonus:") << ' ' << generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::NEUTRAL, false) << '\n' <<
+				_("Chaotic Bonus:") << ' ' << generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::CHAOTIC, false) << '\n' <<
+				_("Liminal Bonus:") << ' ' << generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::LIMINAL, false) << '\n' <<
 				'\n' << make_link(_("Schedule"), "..schedule");
 
 		topics.emplace_back(time.name.str(), id, text.str());
 	}
 
-	topics.emplace_back(tod_schedule_heading, "..schedule", toplevel.str());
+	topics.emplace_back(_("Time of Day Schedule"), "..schedule", toplevel.str());
 	return topics;
 }
 
