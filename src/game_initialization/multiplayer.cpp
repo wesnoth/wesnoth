@@ -159,7 +159,6 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 			config res;
 			cfg["version"] = game_config::version;
 
-			// TODO: retest with below string values - dist doesn't exist
 			std::string info;
 			std::ifstream infofile("./data/dist");
 			if(infofile.is_open()){
@@ -167,13 +166,14 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 				infofile.close();
 
 				if(info == "Default" || info == "Steam" || info == "SourceForge" || info == "Flatpak"
-				 || info == "macOS App Store" || info == "Linux repository" || info == "iOS" || info == "Android") {
+				 || info == "macOS App Store" || info == "Linux repository" || info == "iOS" || info == "Android"
+				 || info == "BSD repository") {
 					 cfg["client_source"] = info;
 				} else {
-					cfg["client_source"] = "dist file has wrong value!";
+					cfg["client_source"] = "Default";
 				}
 			} else {
-				cfg["client_source"] = "failed to read dist file!";
+				cfg["client_source"] = "Default";
 			}
 			res.add_child("version", std::move(cfg));
 			sock->send_data(res);
