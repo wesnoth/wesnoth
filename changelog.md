@@ -76,6 +76,7 @@
    * New predefined macros `{LEFT_BRACE}` and `{RIGHT_BRACE}` (PR#4432)
    * Weapon filtering `special=*` deprecated, replaced by new `special_id=*` and `special_type=*` (Issue#3915)
  ### Miscellaneous and bug fixes
+   * Fixed: Statistics dialog title shows empty parentheses (#Issue#4080)
    * Fixed :droid's arguments not all being optional (Issue#4308)
    * Ported the "expand-terrain-macros", "wmlflip", "wmlparser", "umc-dev/build/update_version",
      "wiki_grabber", "ai_test" and "unused_functions" tools to Python 3
