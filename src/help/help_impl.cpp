@@ -365,6 +365,10 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 	{
 		const std::string id = "time_of_day_" + time.id;
 		const std::string image = "<img>src='" + time.image + "'</img>";
+		const std::string image_lawful = "<img>src='icons/alignments/alignment_lawful_30.png'</img>";
+		const std::string image_neutral = "<img>src='icons/alignments/alignment_neutral_30.png'</img>";
+		const std::string image_chaotic = "<img>src='icons/alignments/alignment_chaotic_30.png'</img>";
+		const std::string image_liminal = "<img>src='icons/alignments/alignment_liminal_30.png'</img>";
 		std::stringstream text;
 
 		const int lawful_bonus = generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::LAWFUL, false, resources::tod_manager->get_max_liminal_bonus());
@@ -373,16 +377,16 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 		const int liminal_bonus = generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::LIMINAL, false, resources::tod_manager->get_max_liminal_bonus());
 
 		toplevel << make_link(time.name.str(), id) << jump_to(160) << image << jump(30) <<
-			time_of_day_bonus_colored(lawful_bonus) << " / " <<
-			time_of_day_bonus_colored(neutral_bonus) << " / " <<
-			time_of_day_bonus_colored(chaotic_bonus) << " / " <<
-			time_of_day_bonus_colored(liminal_bonus) << '\n';
+			image_lawful << time_of_day_bonus_colored(lawful_bonus) << " / " <<
+			image_neutral << time_of_day_bonus_colored(neutral_bonus) << " / " <<
+			image_chaotic << time_of_day_bonus_colored(chaotic_bonus) << " / " <<
+			image_liminal << time_of_day_bonus_colored(liminal_bonus) << '\n';
 
 		text << image << '\n' << time.description.str() << '\n' <<
-			_("Lawful Bonus:") << ' ' << time_of_day_bonus_colored(lawful_bonus) << '\n' <<
-			_("Neutral Bonus:") << ' ' << time_of_day_bonus_colored(neutral_bonus) << '\n' <<
-			_("Chaotic Bonus:") << ' ' << time_of_day_bonus_colored(chaotic_bonus) << '\n' <<
-			_("Liminal Bonus:") << ' ' << time_of_day_bonus_colored(liminal_bonus) << '\n' <<
+			image_lawful << _("Lawful Bonus:") << ' ' << time_of_day_bonus_colored(lawful_bonus) << '\n' <<
+			image_neutral << _("Neutral Bonus:") << ' ' << time_of_day_bonus_colored(neutral_bonus) << '\n' <<
+			image_chaotic << _("Chaotic Bonus:") << ' ' << time_of_day_bonus_colored(chaotic_bonus) << '\n' <<
+			image_liminal << _("Liminal Bonus:") << ' ' << time_of_day_bonus_colored(liminal_bonus) << '\n' <<
 			'\n' << make_link(_("Schedule"), "..schedule");
 
 		topics.emplace_back(time.name.str(), id, text.str());
