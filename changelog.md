@@ -31,6 +31,10 @@
      the help on the correct unit variation (e.g., Walking Corpse (Swimmer))
      (issue #4142).
    * Ensure enough space to display turn numbers in the hundreds.
+ ### Packaging
+   * The Wesnoth client now looks for the data/dist file when logging into the multiplayer server.
+     This file should contain one of the following values based on where the package is for:
+     Default, Steam, SourceForge, Flatpak, macOS App Store, Linux repository, iOS, Android, BSD repository
  ### Miscellaneous and bug fixes
    * New help topic outlining common (and less commons) reasons for losing a scenario (PR #4217).
    * Add help text for some debug commands (part of issue #2500).
