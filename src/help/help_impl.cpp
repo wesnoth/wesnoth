@@ -378,9 +378,9 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 		const int liminal_bonus = generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::LIMINAL, false);
 
 		toplevel << make_link(time.name.str(), id) << jump_to(160) << image << jump(30) <<
-			image_lawful << time_of_day_bonus_colored(lawful_bonus) << " / " <<
-			image_neutral << time_of_day_bonus_colored(neutral_bonus) << " / " <<
-			image_chaotic << time_of_day_bonus_colored(chaotic_bonus) << " / " <<
+			image_lawful << time_of_day_bonus_colored(lawful_bonus) << jump_to(390) <<
+			image_neutral << time_of_day_bonus_colored(neutral_bonus) << jump_to(450) <<
+			image_chaotic << time_of_day_bonus_colored(chaotic_bonus) << jump_to(520) <<
 			image_liminal << time_of_day_bonus_colored(liminal_bonus) << '\n';
 
 		text << image << '\n' << time.description.str() << '\n' <<
