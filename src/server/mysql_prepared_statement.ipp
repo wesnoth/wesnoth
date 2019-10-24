@@ -26,7 +26,7 @@
 
 #include <mysql/mysql.h>
 #if defined(MYSQL_VERSION_ID) && MYSQL_VERSION_ID >= 80000
-#define my_bool bool
+using my_bool = bool;
 #endif
 
 #include "exceptions.hpp"
