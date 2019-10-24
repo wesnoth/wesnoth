@@ -50,8 +50,7 @@ static lg::log_domain log_display("display");
 #define WRN_DP LOG_STREAM(warn, log_display)
 
 static lg::log_domain log_help("help");
-#define WRN_HP LOG_STREAM(warn, log_help)
-#define DBG_HP LOG_STREAM(debug, log_help)
+#define ERR_HELP LOG_STREAM(err, log_help)
 
 namespace help {
 
@@ -234,11 +233,12 @@ void show_help(const section &toplevel_sec,
 			CVideo::delay(10);
 		}
 	}
-	catch (parse_error& /*e*/) {
-		// Disabled due to issue #2587
+	catch (const parse_error& e) {
+		ERR_HELP << _("Parse error when parsing help text:") << " " << e.message << std::endl;
 #if 0
+		// Displaying in the UI is disabled due to issue #2587
 		std::stringstream msg;
-		msg << _("Parse error when parsing help text: ") << "'" << e.message << "'";
+		msg << _("Parse error when parsing help text:") << " '" << e.message << "'";
 		gui2::show_transient_message("", msg.str());
 #endif
 	}
