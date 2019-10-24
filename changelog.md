@@ -1,4 +1,15 @@
 ## Version 1.15.2+dev
+ ### AI:
+ ### Campaigns
+ ### Editor
+ ### Language and i18n
+ ### Terrains
+ ### User interface
+ ### Lua API
+ ### WML engine
+ ### Miscellaneous and bug fixes
+   * Fix --userdata-dir deprecation warning being printed when starting wesnoth without arguments
+     when -DPREFERENCES_DIR="..." was defined at compile time.
 
 ## Version 1.15.2
  ### AI:
