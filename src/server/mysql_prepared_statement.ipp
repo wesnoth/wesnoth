@@ -39,7 +39,7 @@ struct sql_error : public game::error
 // MYSQL_BIND structure returned. It's caller's responsibility
 // to ensure that argument's lifetime doesn't end before mysql
 // is done with those MYSQL_BINDs
-static MYSQL_BIND make_bind(const std::string& str, my_bool* is_null = 0)
+static MYSQL_BIND make_bind(const std::string& str, bool* is_null = 0)
 {
 	MYSQL_BIND result;
 	memset(&result, 0, sizeof (MYSQL_BIND));
@@ -52,7 +52,7 @@ static MYSQL_BIND make_bind(const std::string& str, my_bool* is_null = 0)
 	return result;
 }
 
-static MYSQL_BIND make_bind(char* str, std::size_t* len, my_bool* is_null = 0)
+static MYSQL_BIND make_bind(char* str, std::size_t* len, bool* is_null = 0)
 {
 	MYSQL_BIND result;
 	memset(&result, 0, sizeof (MYSQL_BIND));
@@ -65,7 +65,7 @@ static MYSQL_BIND make_bind(char* str, std::size_t* len, my_bool* is_null = 0)
 	return result;
 }
 
-static MYSQL_BIND make_bind(int& i, my_bool* is_null = 0)
+static MYSQL_BIND make_bind(int& i, bool* is_null = 0)
 {
 	MYSQL_BIND result;
 	memset(&result, 0, sizeof (MYSQL_BIND));
@@ -76,7 +76,7 @@ static MYSQL_BIND make_bind(int& i, my_bool* is_null = 0)
 	return result;
 }
 
-static MYSQL_BIND make_bind(unsigned int& i, my_bool* is_null = 0)
+static MYSQL_BIND make_bind(unsigned int& i, bool* is_null = 0)
 {
 	MYSQL_BIND result;
 	memset(&result, 0, sizeof (MYSQL_BIND));
@@ -99,7 +99,7 @@ template<> std::string fetch_result<std::string>(MYSQL_STMT* stmt, const std::st
 	char* buf = nullptr;
 	std::string result;
 	std::size_t len = 0;
-	my_bool is_null;
+	bool is_null;
 	MYSQL_BIND result_bind[1] = { make_bind(buf, &len, &is_null) };
 
 	if(mysql_stmt_bind_result(stmt, result_bind) != 0)
@@ -136,7 +136,7 @@ template<> std::string fetch_result<std::string>(MYSQL_STMT* stmt, const std::st
 template<typename T> T fetch_result_long_internal_(MYSQL_STMT* stmt, const std::string& sql)
 {
 	T result;
-	my_bool is_null;
+	bool is_null;
 	MYSQL_BIND result_bind[1] = { make_bind(result, &is_null) };
 
 	if(mysql_stmt_bind_result(stmt, result_bind) != 0)
@@ -169,7 +169,7 @@ template<> unsigned int fetch_result<unsigned int>(MYSQL_STMT* stmt, const std::
 template<> bool fetch_result<bool>(MYSQL_STMT* stmt, const std::string& sql)
 {
 	int result;
-	my_bool is_null;
+	bool is_null;
 	MYSQL_BIND result_bind[1] = { make_bind(result, &is_null) };
 
 	if(mysql_stmt_bind_result(stmt, result_bind) != 0)
