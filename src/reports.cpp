@@ -1168,6 +1168,7 @@ static config time_of_day_at(reports::context & rc, const map_location& mouseove
 	std::string chaotic_color("white");
 	std::string liminal_color("white");
 
+	// Use same red/green colouring scheme as time_of_day_bonus_colored() in help/help_impl.cpp for consistency
 	if (b != 0) {
 		lawful_color  = (b > 0) ? "green" : "red";
 		chaotic_color = (b < 0) ? "green" : "red";
