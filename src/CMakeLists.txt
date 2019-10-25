@@ -76,6 +76,7 @@ set(game-external-libs
 	${CRYPTO_LIBRARY}
 	${Boost_SYSTEM_LIBRARIES}
 	${Boost_RANDOM_LIBRARY}
+	${Boost_THREAD_LIBRARY}
 	${sdl_image-lib}
 	${sdl_mixer-lib}
 	${sdl_ttf-lib}
