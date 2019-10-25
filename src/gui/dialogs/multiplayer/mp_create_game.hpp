@@ -44,7 +44,7 @@ class mp_create_game : public modal_dialog, private plugin_executor
 	typedef std::pair<ng::level::TYPE, std::string> level_type_info;
 
 public:
-	mp_create_game(const config& cfg, saved_game& state, bool local_mode, mp::user_info* host_info = nullptr);
+	mp_create_game(const config& cfg, saved_game& state, bool local_mode, bool official_server, mp::user_info* host_info = nullptr);
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
@@ -115,7 +115,9 @@ private:
 	listbox* mod_list_;
 	menu_button* eras_menu_button_;
 
+	// These items are mutually exclusive, however, they are derived by different means within the calling functions in MP code.
 	bool local_mode_;
+	bool official_server_;
 
 	mp::user_info* host_info_;
 

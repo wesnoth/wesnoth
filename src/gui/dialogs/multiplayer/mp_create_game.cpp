@@ -65,7 +65,7 @@ namespace prefs = preferences;
 
 REGISTER_DIALOG(mp_create_game)
 
-mp_create_game::mp_create_game(const config& cfg, saved_game& state, bool local_mode, mp::user_info* host_info)
+mp_create_game::mp_create_game(const config& cfg, saved_game& state, bool local_mode, bool official_server, mp::user_info* host_info)
 	: cfg_(cfg)
 	, create_engine_(state)
 	, config_engine_()
@@ -94,6 +94,7 @@ mp_create_game::mp_create_game(const config& cfg, saved_game& state, bool local_
 	, mod_list_()
 	, eras_menu_button_()
 	, local_mode_(local_mode)
+	, official_server_(official_server)
 	, host_info_(host_info)
 {
 	level_types_ = {
@@ -304,7 +305,7 @@ void mp_create_game::pre_show(window& win)
 	bind_status_label<slider>(&win, action_bonus_->id());
 
 	//
-	// Disable certain settings if we're playing a local game.
+	// Disable certain settings depending on local game, or official vs unofficial servers.
 	//
 
 	// Don't allow a 'registered users only' game if the host themselves isn't registered.
@@ -318,6 +319,15 @@ void mp_create_game::pre_show(window& win)
 
 		observers_->widget_set_enabled(win, false, false);
 		strict_sync_->widget_set_enabled(win, false, false);
+	}
+	// Disallow unregistered users if on official server
+	else if(official_server_) {
+		registered_users_->widget_set_enabled(win, false, false);
+		registered_users_->set_widget_value(win, true);
+	}
+	// Allow unregistered users by default for unofficial servers
+	else {
+		registered_users_->set_widget_value(win, false);
 	}
 
 	//

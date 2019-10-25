@@ -417,10 +417,11 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 /** Helper struct to manage the MP workflow arguments. */
 struct mp_workflow_helper
 {
-	mp_workflow_helper(const config& gc, saved_game& state, wesnothd_connection* connection, mp::lobby_info* li)
+	mp_workflow_helper(const config& gc, saved_game& state, wesnothd_connection* connection, bool is_official_server, mp::lobby_info* li)
 		: game_config(gc)
 		, state(state)
 		, connection(connection)
+		, official_server(is_official_server)
 		, lobby_info(li)
 	{}
 
@@ -429,6 +430,7 @@ struct mp_workflow_helper
 	saved_game& state;
 
 	wesnothd_connection* connection;
+	bool official_server;
 
 	mp::lobby_info* lobby_info;
 };
@@ -528,7 +530,7 @@ void enter_create_mode(mp_workflow_helper_ptr helper)
 		bool local_mode = helper->connection == nullptr;
 		mp::user_info* host_info = helper->lobby_info->get_user(preferences::login());
 
-		gui2::dialogs::mp_create_game dlg(helper->game_config, helper->state, local_mode, host_info);
+		gui2::dialogs::mp_create_game dlg(helper->game_config, helper->state, local_mode, helper->official_server, host_info);
 		dlg.show();
 
 		// The Create Game dialog also has a LOAD_GAME retval besides OK.
@@ -654,9 +656,10 @@ void start_client(const config& game_config,	saved_game& state, const std::strin
 
 	mp_workflow_helper_ptr workflow_helper;
 	bool re_enter = false;
+	bool is_official_server = host == preferences::server_list().front().address;
 
 	do {
-		workflow_helper.reset(new mp_workflow_helper(*game_config_ptr, state, connection.get(), nullptr));
+		workflow_helper.reset(new mp_workflow_helper(*game_config_ptr, state, connection.get(), is_official_server, nullptr));
 
 		// A return of false means a config reload was requested, so do that and then loop.
 		re_enter = !enter_lobby_mode(workflow_helper, installed_addons, lobby_config);
@@ -709,7 +712,7 @@ void start_local_game(const config& game_config, saved_game& state)
 
 	// TODO: should lobby_info take a nullptr in this case, or should we pass the installed_addons data here too?
 	lobby_info li({});
-	mp_workflow_helper_ptr workflow_helper = std::make_shared<mp_workflow_helper>(game_config, state, nullptr, &li);
+	mp_workflow_helper_ptr workflow_helper = std::make_shared<mp_workflow_helper>(game_config, state, nullptr, false, &li);
 
 	enter_create_mode(workflow_helper);
 }
