@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-#define GETTEXT_DOMAIN "wesnoth-help"
-
 #include "help/help_impl.hpp"
 
 #include "about.hpp"                    // for get_text
