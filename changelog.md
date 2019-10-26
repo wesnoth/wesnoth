@@ -1,6 +1,8 @@
 ## Version 1.15.2+dev
  ### AI:
  ### Campaigns
+   * Secrets of the Ancients:
+     * Prevent hero death from triggering new corpse recruitable dialog (issue #4503)
  ### Editor
  ### Language and i18n
  ### Terrains
