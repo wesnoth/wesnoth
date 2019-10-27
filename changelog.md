@@ -7,7 +7,7 @@
  ### Language and i18n
  ### Terrains
  ### Units
-     * Add mushroom defense cap to mounted and some flying units
+   * Add mushroom defense cap to mounted and some flying units
  ### User interface
  ### Lua API
  ### WML engine
