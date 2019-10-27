@@ -2,4 +2,4 @@
 
 cd steamrt
 docker build -t steamos-wesnoth .
-docker run -it -v $(pwd)/../../..:/wesnoth -v $(pwd)/../steambuild:/output steamos-wesnoth
+docker run -it -v "$PWD"/../../..:/wesnoth -v "$PWD"/../steambuild:/output steamos-wesnoth
