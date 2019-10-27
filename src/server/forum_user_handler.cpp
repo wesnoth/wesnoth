@@ -427,10 +427,10 @@ void fuh::db_insert_game_info(const std::string& uuid, int game_id, const std::s
 	}
 }
 
-void fuh::db_update_game_start(const std::string& uuid, int game_id, const std::string& map_name, const std::string& era_name, int reload){
+void fuh::db_update_game_start(const std::string& uuid, int game_id, const std::string& map_name, const std::string& era_name, int reload, int observers, int is_public, int has_password){
 	try {
-		prepared_statement<void>("UPDATE `" + db_game_info_table_ + "` SET START_TIME = CURRENT_TIMESTAMP, MAP_NAME = ?, ERA_NAME = ?, RELOAD = ? WHERE INSTANCE_UUID = ? AND GAME_ID = ?",
-		map_name, era_name, reload, uuid, game_id);
+		prepared_statement<void>("UPDATE `" + db_game_info_table_ + "` SET START_TIME = CURRENT_TIMESTAMP, MAP_NAME = ?, ERA_NAME = ?, RELOAD = ?, OBSERVERS = ?, PUBLIC = ?, PASSWORD = ? WHERE INSTANCE_UUID = ? AND GAME_ID = ?",
+		map_name, era_name, reload, observers, is_public, has_password, uuid, game_id);
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not update the game's starting information on table `" + db_game_info_table_ + "`:" << e.message << std::endl;
 	}
@@ -445,10 +445,10 @@ void fuh::db_update_game_end(const std::string& uuid, int game_id, const std::st
 	}
 }
 
-void fuh::db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source){
+void fuh::db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user){
 	try {
-		prepared_statement<void>("INSERT INTO `" + db_game_player_info_table_ + "`(INSTANCE_UUID, GAME_ID, USER_ID, SIDE_NUMBER, IS_HOST, FACTION, CLIENT_VERSION, CLIENT_SOURCE) VALUES(?, ?, IFNULL((SELECT user_id FROM `"+db_users_table_+"` WHERE username = ?), -1), ?, ?, ?, ?, ?)",
-		uuid, game_id, username, side_number, is_host, faction, version, source);
+		prepared_statement<void>("INSERT INTO `" + db_game_player_info_table_ + "`(INSTANCE_UUID, GAME_ID, USER_ID, SIDE_NUMBER, IS_HOST, FACTION, CLIENT_VERSION, CLIENT_SOURCE, USER_NAME) VALUES(?, ?, IFNULL((SELECT user_id FROM `"+db_users_table_+"` WHERE username = ?), -1), ?, ?, ?, ?, ?, ?)",
+		uuid, game_id, username, side_number, is_host, faction, version, source, current_user);
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not insert the game's player information on table `" + db_game_player_info_table_ + "`:" << e.message << std::endl;
 	}
