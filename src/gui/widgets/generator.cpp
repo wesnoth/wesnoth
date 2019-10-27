@@ -65,28 +65,39 @@ bool one_item::deselect_item(const unsigned index)
 
 void one_item::delete_item(const unsigned index)
 {
-	/** @todo do_select_item needs to test for shown flag. */
+	if(!is_selected(index))
+		return;
 
-	if(is_selected(index)) {
-		do_deselect_item(index);
+	do_deselect_item(index);
 
-		if(get_selected_item_count() == 0) {
-			// Are there items left?
-			const unsigned item_count = get_item_count();
-			const unsigned visible_index = get_ordered_index(index);
+	//Writes an ordered list of the visible items
+	boost::dynamic_bitset<> shown_items(get_item_count());
+	for(unsigned int i = 0; i < shown_items.size(); i++)
+	{
+		const unsigned int ordered_i = get_ordered_index(i);
+		shown_items[ordered_i] = get_item_shown(i);
+	}
 
-			if(item_count > 1) {
-				// Is the last item deselected?
-				if(visible_index == item_count - 1) {
-					// Select the second last.
-					do_select_item(get_item_at_ordered(visible_index - 1));
-				} else {
-					// Select the next item.
-					do_select_item(get_item_at_ordered(visible_index + 1));
-				}
+	if(shown_items.count() <= 1 || get_selected_item_count() > 0)
+		return;
+
+	const unsigned int ordered_index = get_ordered_index(index);
+	unsigned int next_index = shown_items.find_next(ordered_index);
+
+	//Looks for the first previous visible item
+	if(next_index == shown_items.npos)
+	{
+		for(int i = ordered_index - 1; i >= 0; i--)
+		{
+			if(shown_items[i] == 1)
+			{
+				next_index = i;
+				break;
 			}
 		}
 	}
+
+	do_select_item(get_item_at_ordered(next_index));
 }
 
 void no_item::set_item_shown(const unsigned index, const bool show)
