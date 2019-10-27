@@ -23,9 +23,9 @@
 #include <ctime>
 #include <functional>
 #include <iosfwd>
+#include <memory>
 #include <string>
 #include <vector>
-#include <memory>
 
 #include "exceptions.hpp"
 #include "serialization/string_utils.hpp"
@@ -172,19 +172,46 @@ std::string get_user_config_dir();
 std::string get_user_data_dir();
 std::string get_cache_dir();
 
+struct other_version_dir
+{
+	/**
+	 * Here the version is given as a string instead of a version_info, because the
+	 * logic of how many components are significant ("1.16" rather than
+	 * "1.16.0") is encapsulated in find_other_version_saves_dirs().
+	 */
+	std::string version;
+	std::string path;
+
+	// constructor because emplace_back() doesn't use aggregate initialization
+	other_version_dir(const std::string& v, const std::string& p)
+		: version(v)
+		, path(p)
+	{
+	}
+};
+
+/**
+ * Searches for directories containing saves created by other versions of Wesnoth.
+ *
+ * The directories returned will exist, but might not contain any saves. Changes to
+ * the filesystem (by running other versions or by deleting old directories) may
+ * change the results returned by the function.
+ */
+std::vector<other_version_dir> find_other_version_saves_dirs();
+
 std::string get_cwd();
 std::string get_exe_dir();
 
 bool make_directory(const std::string& dirname);
 bool delete_directory(const std::string& dirname, const bool keep_pbl = false);
-bool delete_file(const std::string &filename);
+bool delete_file(const std::string& filename);
 
 bool looks_like_pbl(const std::string& file);
 
 // Basic disk I/O:
 
 /** Basic disk I/O - read file. */
-std::string read_file(const std::string &fname);
+std::string read_file(const std::string& fname);
 filesystem::scoped_istream istream_file(const std::string& fname, bool treat_failure_as_error = true);
 filesystem::scoped_ostream ostream_file(const std::string& fname, bool create_directory = true);
 /** Throws io_exception if an error occurs. */

@@ -111,6 +111,7 @@
 #include "language.hpp"
 #include "map/map.hpp"
 #include "replay.hpp"
+#include "save_index.hpp"
 #include "saved_game.hpp"
 #include "terrain/type_data.hpp"
 #include "tests/utils/fake_display.hpp"
@@ -740,7 +741,9 @@ template<>
 struct dialog_tester<game_load>
 {
 	config cfg;
-	savegame::load_game_metadata data;
+	// It would be good to have a test directory instead of using the same directory as the player,
+	// however this code will support that - default_saves_dir() will respect --userdata-dir.
+	savegame::load_game_metadata data{savegame::save_index_class::default_saves_dir()};
 	dialog_tester()
 	{
 		/** @todo Would be nice to add real data to the config. */

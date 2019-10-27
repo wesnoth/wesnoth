@@ -19,6 +19,7 @@
    * Add mushroom defense cap to mounted and some flying units
    * Dwarvish Lord and Steelclad: reduce hitpoints by 3 and reduce impact and pierce resistance to 20%
  ### User interface
+   * The load-game dialog can now see the directories used by Wesnoth 1.14, 1.12, etc.
  ### Lua API
  ### WML engine
  ### Packaging

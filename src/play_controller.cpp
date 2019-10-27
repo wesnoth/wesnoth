@@ -47,9 +47,10 @@
 #include "replay.hpp"
 #include "reports.hpp"
 #include "resources.hpp"
-#include "savegame.hpp"
-#include "saved_game.hpp"
 #include "save_blocker.hpp"
+#include "save_index.hpp"
+#include "saved_game.hpp"
+#include "savegame.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
 #include "sound.hpp"
@@ -909,7 +910,7 @@ void play_controller::save_map()
 
 void play_controller::load_game()
 {
-	savegame::loadgame load(game_config_, saved_game_);
+	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), game_config_, saved_game_);
 	load.load_game_ingame();
 }
 

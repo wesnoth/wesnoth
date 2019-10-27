@@ -50,6 +50,7 @@
 #include "preferences/general.hpp"              // for disable_preferences_save, etc
 #include "preferences/display.hpp"
 #include "savegame.hpp"                 // for clean_saves, etc
+#include "save_index.hpp"
 #include "scripting/application_lua_kernel.hpp"
 #include "sdl/surface.hpp"                // for surface
 #include "serialization/compression.hpp"  // for format::NONE
@@ -185,14 +186,14 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	{
 		jump_to_editor_ = true;
 		if (!cmdline_opts_.editor->empty())
-			load_data_.reset(new savegame::load_game_metadata{ *cmdline_opts_.editor });
+			load_data_.reset(new savegame::load_game_metadata{ savegame::save_index_class::default_saves_dir(), *cmdline_opts_.editor });
 	}
 	if (cmdline_opts_.fps)
 		preferences::set_show_fps(true);
 	if (cmdline_opts_.fullscreen)
 		video().set_fullscreen(true);
 	if (cmdline_opts_.load)
-		load_data_.reset(new savegame::load_game_metadata{ *cmdline_opts_.load });
+		load_data_.reset(new savegame::load_game_metadata{ savegame::save_index_class::default_saves_dir(), *cmdline_opts_.load });
 	if (cmdline_opts_.max_fps) {
 		int fps = utils::clamp(*cmdline_opts_.max_fps, 1, 1000);
 		fps = 1000 / fps;
@@ -522,7 +523,7 @@ int game_launcher::unit_test()
 	savegame::replay_savegame save(state_, compression::NONE);
 	save.save_game_automatic(false, "unit_test_replay"); //false means don't check for overwrite
 
-	load_data_.reset(new savegame::load_game_metadata{ "unit_test_replay" , "", true, true, false });
+	load_data_.reset(new savegame::load_game_metadata{ savegame::save_index_class::default_saves_dir(), "unit_test_replay" , "", true, true, false });
 
 	if (!load_game()) {
 		std::cerr << "Failed to load the replay!" << std::endl;
@@ -601,7 +602,7 @@ bool game_launcher::load_game()
 
 	DBG_GENERAL << "Current campaign type: " << state_.classification().campaign_type << std::endl;
 
-	savegame::loadgame load(game_config_manager::get()->game_config(), state_);
+	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), game_config_manager::get()->game_config(), state_);
 	if (load_data_) {
 		std::unique_ptr<savegame::load_game_metadata> load_data = std::move(load_data_);
 		load.data() = std::move(*load_data);

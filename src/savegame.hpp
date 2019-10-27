@@ -18,6 +18,7 @@
 #include "config.hpp"
 #include "filesystem.hpp"
 #include "lua_jailbreak_exception.hpp"
+#include "save_index.hpp"
 #include "saved_game.hpp"
 #include "serialization/compression.hpp"
 
@@ -26,17 +27,33 @@
 class config_writer;
 class version_info;
 
-namespace savegame {
+namespace savegame
+{
 /** converts saves from older versions of wesnoth*/
 void convert_old_saves(config& cfg);
-/** Returns true if there is already a savegame with that name. */
+
+/**
+ * Returns true if there is already a savegame with this name, looking only in the default save
+ * directory. Only expected to be used to check whether a subsequent save would overwrite an
+ * existing file, therefore only expected to be used for the default save dir.
+ */
 bool save_game_exists(std::string name, compression::format compressed);
 
-/** Delete all autosaves of a certain scenario. */
+/**
+ * Delete all autosaves of a certain scenario from the default save directory.
+ *
+ * This is only expected to be called when the player starts the next scenario (or finishes the
+ * campaign, in the case of the last scenario), so it's expected to correspond to the next scenario
+ * being written to the default save directory.
+ */
 void clean_saves(const std::string& label);
 
-struct load_game_metadata {
-	/** Name of the savefile to be loaded. */
+struct load_game_metadata
+{
+	/** There may be different instances of the index for different directories */
+	std::shared_ptr<save_index_class> manager;
+
+	/** Name of the savefile to be loaded (not including the directory). */
 	std::string filename;
 
 	/** The difficulty the save is meant to be loaded with. */
@@ -57,10 +74,11 @@ struct load_game_metadata {
 	/** Config information of the savefile to be loaded. */
 	config load_config;
 
-	explicit load_game_metadata(const std::string& fname = "", const std::string& hard = "",
+	explicit load_game_metadata(std::shared_ptr<save_index_class> index,
+	        const std::string& fname = "", const std::string& hard = "",
 			bool replay = false, bool stop = false, bool change = false,
 			const config& summary = config(), const config& info = config())
-		: filename(fname), difficulty(hard)
+		: manager(index), filename(fname), difficulty(hard)
 		, show_replay(replay), cancel_orders(stop), select_difficulty(change)
 		, summary(summary), load_config(info)
 	{
@@ -75,13 +93,7 @@ class load_game_exception
 	: public lua_jailbreak_exception, public std::exception
 {
 public:
-	load_game_exception(const std::string& fname)
-		: lua_jailbreak_exception()
-		, data_(fname)
-	{
-	}
-
-	load_game_exception(load_game_metadata&& data)
+	explicit load_game_exception(load_game_metadata&& data)
 		: lua_jailbreak_exception()
 		, data_(data)
 	{
@@ -96,7 +108,7 @@ private:
 class loadgame
 {
 public:
-	loadgame(const config& game_config, saved_game& gamestate);
+	loadgame(const std::shared_ptr<save_index_class>& index, const config& game_config, saved_game& gamestate);
 	virtual ~loadgame() {}
 
 	/* In any of the following three function, a bool value of false indicates
@@ -143,6 +155,9 @@ private:
  * The base class for all savegame stuff.
  * This should not be used directly, as it does not directly produce usable saves.
  * Instead, use one of the derived classes.
+ *
+ * Saves are only created in filesystem::get_saves_dir() - files can be loaded
+ * from elsewhere, but writes are only to that directory.
  */
 class savegame
 {
@@ -206,6 +221,13 @@ protected:
 
 	/** Title of the savegame dialog */
 	std::string title_;
+
+	/** Will (at the time of writing) be save_index_class::default_saves_dir().
+		There may be different instances the index for different directories, however
+		writing is only expected to happen in the default save directory.
+
+		Making this a class member anyway, while I'm refactoring. */
+	std::shared_ptr<save_index_class> save_index_manager_;
 
 private:
 	/** Subclass-specific part of filename building. */
