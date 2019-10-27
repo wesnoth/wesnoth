@@ -294,6 +294,11 @@ public:
 		return password_.empty() || passwd == password_;
 	}
 
+	bool has_password() const
+	{
+		return !password_.empty();
+	}
+
 	const std::string& termination_reason() const
 	{
 		static const std::string aborted = "aborted";
