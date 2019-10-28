@@ -241,14 +241,14 @@ std::string suh::get_uuid(){
 void suh::db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name){
 	std::cout << uuid << " - " << game_id << " - " << version << " - " << name << std::endl;
 }
-void suh::db_update_game_start(const std::string& uuid, int game_id, const std::string& map_name, const std::string& era_name, int reload){
-	std::cout << uuid << " - " << game_id << " - " << map_name << " - " << era_name << " - " << reload << std::endl;
+void suh::db_update_game_start(const std::string& uuid, int game_id, const std::string& map_name, const std::string& era_name, int reload, int observers, int is_public, int has_password){
+	std::cout << uuid << " - " << game_id << " - " << map_name << " - " << era_name << " - " << reload << " - " << observers << " - " << is_public << " - " << has_password << std::endl;
 }
 void suh::db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location){
 	std::cout << uuid << " - " << game_id << " - " << replay_location << std::endl;
 }
-void suh::db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source){
-	std::cout << uuid << " - " << game_id << " - " << username << " - " << side_number << " - " << is_host << " - " << faction << " - " << version << " - " << source << std::endl;
+void suh::db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user){
+	std::cout << uuid << " - " << game_id << " - " << username << " - " << side_number << " - " << is_host << " - " << faction << " - " << version << " - " << source << " - " << current_user << std::endl;
 }
 void suh::db_insert_modification_info(const std::string& uuid, int game_id, const std::string& modification_name){
 	std::cout << uuid << " - " << game_id << " - " << modification_name << std::endl;
