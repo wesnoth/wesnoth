@@ -22,7 +22,7 @@ fi
 
 if [ "$TRAVIS_OS_NAME" = "osx" ]; then
     if [ "$TOOL" = "xcodebuild" ]; then
-        brew install ccache
+        HOMEBREW_NO_AUTO_UPDATE=1 brew install ccache
         travis_wait ./projectfiles/Xcode/Fix_Xcode_Dependencies
     else
         travis_wait ./utils/travis/install_deps.sh
