@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-09-16 11:33+0300\n"
-"PO-Revision-Date: 2019-07-21 10:06+0800\n"
+"PO-Revision-Date: 2019-10-19 20:15+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -6752,7 +6752,7 @@ msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
-"目前可使用的指令列表和特殊指令說明。如果您要查詢目前不可用的命令，請使用"
+"目前可使用的指令列表和特殊指令說明。如果您要查詢目前不可用的命令，請使用 "
 "\"help all\"。"
 
 #. TRANSLATORS: These are the arguments accepted by the "help" command,
@@ -6764,6 +6764,8 @@ msgid ""
 "“all” = overview of all commands, <command> = name of a specific command "
 "(provides more detail)"
 msgstr ""
+"[all|<command>]\n"
+"“all” = 對全部指令的總述, <command> = 指令的名稱（提供更多細節）"
 
 #: src/map_command_handler.hpp:266
 msgid "Missing argument $arg_id"
@@ -6799,8 +6801,8 @@ msgstr "用量："
 #: src/map_command_handler.hpp:343
 msgid "command^Alias:"
 msgid_plural "Aliases:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "命令："
+msgstr[1] "命令："
 
 #: src/menu_events.cpp:176
 msgid "Save Map As"
@@ -6933,6 +6935,8 @@ msgid ""
 "[<side> [on/off]]\n"
 "“on” = enable control by the AI, “off” = side is controlled by the player"
 msgstr ""
+"[<陣營> [on/off]]\n"
+"“on” = 啟動AI控制，“off” = 該陣營由玩家控制"
 
 #: src/menu_events.cpp:1190
 msgid "Switch a side to/from idle state."
@@ -6942,8 +6946,6 @@ msgstr "切換一陣營至閒置狀態。"
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1194
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "command_idle^[<side> [on/off]]"
 msgstr "[<陣營> [on/off]]"
 
@@ -6977,7 +6979,7 @@ msgstr "偵錯滑鼠游標所指的地形圖層。"
 
 #: src/menu_events.cpp:1204
 msgid "Show fps (Frames Per Second)."
-msgstr ""
+msgstr "顯示 FPS（每秒顯示影格數）。"
 
 #: src/menu_events.cpp:1206
 msgid "Save game."
@@ -7281,7 +7283,7 @@ msgstr "不使用盟友鏡像"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "遊戲（$name|, $scenario|）已經被建立"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
@@ -7396,20 +7398,20 @@ msgid ""
 msgstr "網路連線已中斷，將無法進行遊戲。您要儲存此遊戲嗎？"
 
 #: src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "Do you really want to surrender the game?"
 msgid ""
 "\n"
 "Do you want to save the game?"
-msgstr "您確定要投降嗎？"
+msgstr ""
+"\n"
+"您確定要儲存遊戲嗎？"
 
 #: src/playsingle_controller.cpp:349
-#, fuzzy
-#| msgid "The game has been saved."
 msgid ""
 "This game has been ended.\n"
 "Reason: "
-msgstr "遊戲已儲存。"
+msgstr ""
+"此遊戲已經結束。\n"
+"原因："
 
 #: src/playsingle_controller.cpp:440
 msgid "It is now $name|’s turn"
@@ -7723,12 +7725,6 @@ msgid "Units"
 msgstr "部隊"
 
 #: src/reports.cpp:1344
-#, fuzzy
-#| msgid ""
-#| "The expenses incurred at the end of every turn to maintain your army. The "
-#| "first number is the amount of gold that will be deducted. The second is "
-#| "the total cost of upkeep, including that covered by villages — in other "
-#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -7736,29 +7732,25 @@ msgid ""
 "cost of upkeep, including that covered by villages — in other words, the "
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
-"每回合結束時因軍隊維護而產生的開銷。第一個數字是將會被扣除的金幣。第二個數字"
-"是總維護費，這包含因佔領村莊而減免的部份——換句話說，如果你失去所有村莊，你就"
-"必須支付這麼多的金幣。"
+"每回合結束時因營運部隊而產生的開銷。第一個數字是將會被扣除的金幣。該數字等同"
+"於村莊無法負荷的單位等級。第二個數字是總維護費，這包含因佔領村莊而減免的部份"
+"——換句話說，如果你失去所有村莊，你就必須支付這麼多的金幣。"
 
 #: src/reports.cpp:1344
 msgid "Upkeep"
 msgstr "支出"
 
 #: src/reports.cpp:1381
-#, fuzzy
-#| msgid "Income"
 msgid "Net Income"
-msgstr "收入"
+msgstr "淨收入"
 
 #: src/reports.cpp:1381
-#, fuzzy
-#| msgid ""
-#| "The amount of gold you gain each turn from your controlled villages, or "
-#| "the amount of gold you will lose each turn for unit upkeep."
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
-msgstr "每回合你能從控制的村莊中獲得的金幣，或是每回合因維護費而損失的金幣。"
+msgstr ""
+"每回合你所獲得或失去的金幣數量，透過你所控制村莊的收入及支出的開銷將會計算出"
+"該數量"
 
 #: src/reports.cpp:1549
 msgid "Observers:"

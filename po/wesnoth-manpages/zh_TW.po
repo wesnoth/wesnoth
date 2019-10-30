@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "POT-Creation-Date: 2019-09-16 11:33+0300\n"
-"PO-Revision-Date: 2019-03-12 19:22+0800\n"
+"PO-Revision-Date: 2019-10-26 22:36+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -1098,14 +1098,10 @@ msgstr "B<--controller>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:441
-#, fuzzy
-#| msgid ""
-#| "selects the controller for this side. Available values: B<human> and "
-#| "B<ai>."
 msgid ""
 "selects the controller for this side. Available values: B<human>, B<ai> and "
 "B<null>."
-msgstr "選擇這個陣營的控制者。可選值有：B<human> 和 B<ai>。"
+msgstr "選擇這個陣營的控制者。可選值有：B<human>、B<ai> 和 B<null>。"
 
 #. type: TP
 #: doc/man/wesnoth.6:441
@@ -1910,12 +1906,6 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:221
-#, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. Available keys vary "
-#| "depending on which user handler is set with the B<user_handler> key. If "
-#| "no B<[user_handler]> section is present in the configuration the server "
-#| "will run without any nick registration service."
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
@@ -1926,7 +1916,8 @@ msgid ""
 msgstr ""
 "B<[user_handler]> 配置用戶處理程序。可設置的主鍵取決於通過B<user_handler>設置"
 "的用戶資料處理器是哪一個。如果配置檔案中沒有B<[user_handler]>小節，則伺服器在"
-"運行中將不提供任何暱稱註冊服務。"
+"運行中將不提供任何暱稱註冊服務。在 Wesnoth 原始碼儲存庫中的 "
+"table_definitions.sql 可以找到 forum_user_handler 中所運作的所有資源列表。"
 
 #. type: TP
 #: doc/man/wesnothd.6:222
@@ -1938,7 +1929,7 @@ msgstr "B<db_host>"
 #. type: Plain text
 #: doc/man/wesnothd.6:225
 msgid "(for user_handler=forum) The hostname of the database server"
-msgstr "（如果user_handler=forum）資料庫伺服器的主機名"
+msgstr "（對於 user_handler=forum）資料庫伺服器的主機名稱"
 
 #. type: TP
 #: doc/man/wesnothd.6:225
@@ -1950,7 +1941,7 @@ msgstr "B<db_name>"
 #. type: Plain text
 #: doc/man/wesnothd.6:228
 msgid "(for user_handler=forum) The name of the database"
-msgstr "（如果user_handler=forum）資料庫名"
+msgstr "（對於 user_handler=forum）資料庫名稱"
 
 #. type: TP
 #: doc/man/wesnothd.6:228
@@ -1964,7 +1955,7 @@ msgstr "B<db_user>"
 msgid ""
 "(for user_handler=forum) The name of the user under which to log into the "
 "database"
-msgstr "（如果user_handler=forum）資料庫登錄用戶名"
+msgstr "（對於 user_handler=forum）資料庫下所記錄的用戶名"
 
 #. type: TP
 #: doc/man/wesnothd.6:231
@@ -1976,7 +1967,7 @@ msgstr "B<db_password>"
 #. type: Plain text
 #: doc/man/wesnothd.6:234
 msgid "(for user_handler=forum) This user's password"
-msgstr "（如果user_handler=forum）這個用戶的密碼"
+msgstr "（對於 user_handler=forum）這個用戶的密碼"
 
 #. type: TP
 #: doc/man/wesnothd.6:234
@@ -1992,8 +1983,8 @@ msgid ""
 "saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
 "(e.g. phpbb3_users)."
 msgstr ""
-"（如果user_handler=forum）phpbb 論壇中存放用戶資料的表名。很可能是E<lt>table-"
-"prefixE<gt>_users（例如phpbb3_users）。"
+"（對於 user_handler=forum）phpbb 論壇中存放用戶資料的表名。很可能是"
+"E<lt>table-prefixE<gt>_users（例如phpbb3_users）。"
 
 #. type: TP
 #: doc/man/wesnothd.6:237
@@ -2004,114 +1995,91 @@ msgstr "B<db_extra_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:240
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which your phpbb forums "
-#| "saves its user data. Most likely this will be E<lt>table-"
-#| "prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about users. You will have to create this table manually."
 msgstr ""
-"（如果user_handler=forum）phpbb 論壇中存放用戶資料的表名。很可能是E<lt>table-"
-"prefixE<gt>_users（例如phpbb3_users）。"
+"（對於 user_handler = forum）wesnothd 將在其中保存其自己的有關用戶的數據列表"
+"名稱。 您必須手動建立此表單。"
 
 #. type: TP
 #: doc/man/wesnothd.6:240
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_game_info_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_game_info_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:243
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the user under which to log into the "
-#| "database"
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about games."
-msgstr "（如果user_handler=forum）資料庫登錄用戶名"
+msgstr ""
+"（對於 user_handler = forum）wesnothd 將在其中保存其自己的有關遊戲的數據列表"
+"名稱。"
 
 #. type: TP
 #: doc/man/wesnothd.6:243
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_game_player_info_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_game_player_info_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:246
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the user under which to log into the "
-#| "database"
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about the players in a game."
-msgstr "（如果user_handler=forum）資料庫登錄用戶名"
+msgstr ""
+"（對於 user_handler = forum）wesnothd 將在其中保存其自己的有關玩家在遊戲中的"
+"數據列表名稱。"
 
 #. type: TP
 #: doc/man/wesnothd.6:246
 #, no-wrap
 msgid "B<db_game_modification_info_table>"
-msgstr ""
+msgstr "B<db_game_modification_info_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:249
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the user under which to log into the "
-#| "database"
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about the modifications used in a game."
-msgstr "（如果user_handler=forum）資料庫登錄用戶名"
+msgstr ""
+"（對於 user_handler = forum）wesnothd 將在其中保存其自己的有關在遊戲中使用模"
+"組的數據列表名稱。"
 
 #. type: TP
 #: doc/man/wesnothd.6:249
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_user_group_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_user_group_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:252
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the table in which your phpbb forums "
-#| "saves its user data. Most likely this will be E<lt>table-"
-#| "prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "(for user_handler=forum) The name of the table in which your phpbb forums "
 "saves its user group data. Most likely this will be E<lt>table-"
 "prefixE<gt>_user_group (e.g. phpbb3_user_group)."
 msgstr ""
-"（如果user_handler=forum）phpbb 論壇中存放用戶資料的表名。很可能是E<lt>table-"
-"prefixE<gt>_users（例如phpbb3_users）。"
+"（對於 user_handler=forum）phpbb 論壇中存放用戶群組資料的表名。很可能是 "
+"E<lt>table-prefixE<gt>_user_group（例如 phpbb3_user_group）。"
 
 #. type: TP
 #: doc/man/wesnothd.6:252
 #, no-wrap
 msgid "B<mp_mod_group>"
-msgstr ""
+msgstr "B<mp_mod_group>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:255
-#, fuzzy
-#| msgid ""
-#| "(for user_handler=forum) The name of the user under which to log into the "
-#| "database"
 msgid ""
 "(for user_handler=forum) The ID of the forum group to be considered as "
 "having moderation authority."
-msgstr "（如果user_handler=forum）資料庫登錄用戶名"
+msgstr "（ 對於user_handler = forum）被視為具有審核權限的論壇組的 ID。"
 
 #. type: TP
 #: doc/man/wesnothd.6:255
@@ -2125,7 +2093,7 @@ msgstr "B<user_expiration>"
 msgid ""
 "(for user_handler=sample) The time after which a registered nick expires (in "
 "days)."
-msgstr "（如果user_handler=sample）註冊暱稱的失效時間（單位是天數）。"
+msgstr "（對於 user_handler=sample）註冊暱稱的失效時間（單位是天數）。"
 
 # type: Plain text
 #. type: Plain text

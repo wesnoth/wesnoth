@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-09-16 11:32+0300\n"
-"PO-Revision-Date: 2019-03-28 17:30+0800\n"
+"PO-Revision-Date: 2019-10-19 20:33+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
@@ -1504,16 +1504,6 @@ msgstr "收入和支出"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:220
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Income is simple. You have a base income of 2 gold per turn. For every "
-#| "village you control, you gain one additional gold each turn. (In general "
-#| "this is configurable but in campaigns it is almost always one gold per "
-#| "village.) Thus, if you have ten villages, you would normally gain 12 gold "
-#| "each turn. Your upkeep costs are subtracted from this income, as detailed "
-#| "below."
 msgid ""
 "\n"
 "\n"
@@ -1525,9 +1515,8 @@ msgstr ""
 "\n"
 "\n"
 "收入規則很簡單。每回合您都會得到2個金幣的基本收入。您所占領的每個村莊每回合也"
-"會給您1個金幣的額外收入。（這個數值是可以更動的，但在戰役中都是1個金幣）因此"
-"如果您占領了十個村莊，每回合就會有12個金幣的收入。支出則由您的收入來支付。以"
-"下是詳細信息。"
+"會給您1個金幣的額外收入。因此如果您占領了十個村莊，每回合就會有12個金幣的收"
+"入。支出則由您的收入來支付。以下是詳細信息。"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:220
@@ -1586,6 +1575,12 @@ msgid ""
 "<italic>text='Status Table'</italic> dialog shows the values for the current "
 "scenario."
 msgstr ""
+"\n"
+"\n"
+"一般情況，基本收入就是每回合每座村莊所加總的收入，以及每座村莊所負荷的單位等"
+"級數量，這個數值是可以調整的。在戰役中，這個數量就是上述所述的值。在"
+"<italic>text='狀態列表'</italic>中的<italic>text='章節設定'</italic>分頁裡會"
+"顯示目前章節所設定的值。"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:232
