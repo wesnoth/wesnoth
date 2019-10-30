@@ -7,7 +7,7 @@
      * Prevent hero death from triggering new corpse recruitable dialog (issue #4503)
  ### Editor
  ### Language and i18n
-   * Updated translations: French
+   * Updated translations: Chinese (Traditional), French
  ### Terrains
  ### Units
    * Add mushroom defense cap to mounted and some flying units
