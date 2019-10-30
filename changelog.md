@@ -4,6 +4,8 @@
    * Fix bug crashing some AIs when units with chance-to-hit specials without id are on map
    * Lua AIs: several minor behind-the-scenes bug fixes
  ### Campaigns
+   * Descent into Darkness:
+     * S1: reduced difficulty
    * Heir to the Throne:
      * Modify campaign starting date
    * Legend of Wesmere:
