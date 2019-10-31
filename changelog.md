@@ -14,6 +14,7 @@
  ### Terrains
  ### Units
    * Add mushroom defense cap to mounted and some flying units
+   * Dwarvish Lord and Steelclad: reduce hitpoints by 3 and reduce impact and pierce resistance to 20%
  ### User interface
  ### Lua API
  ### WML engine
