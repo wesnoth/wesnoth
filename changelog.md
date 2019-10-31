@@ -5,6 +5,7 @@
      * S2: add extra events
      * S4: add extra events
      * S5: adjust enemy recruits and gold
+     * S6: add extra events
    * Secrets of the Ancients:
      * Prevent hero death from triggering new corpse recruitable dialog (issue #4503)
  ### Editor
