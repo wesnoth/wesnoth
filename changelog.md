@@ -2,6 +2,7 @@
  ### AI:
  ### Campaigns
    * Descent into Darkness:
+     * S2: add extra events
      * S5: adjust enemy recruits and gold
    * Secrets of the Ancients:
      * Prevent hero death from triggering new corpse recruitable dialog (issue #4503)
