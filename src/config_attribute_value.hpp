@@ -172,6 +172,8 @@ public:
 	operator int() const { return to_int(); }
 	operator std::string() const { return str(); }
 	operator t_string() const { return t_str(); }
+	// This is to prevent int conversion being used when an attribute value is tested in an int statement
+	explicit operator bool() const {return to_bool(); }
 
 	/// Tests for an attribute that was never set.
 	bool blank() const;
