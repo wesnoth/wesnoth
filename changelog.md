@@ -4,6 +4,7 @@
    * Descent into Darkness:
      * Remove dark adepts from recruit list
      * Add special units and AMLA paths
+     * Revised dialogue
      * S2: add extra events
      * S4: add extra events
      * S5: adjust enemy recruits and gold
