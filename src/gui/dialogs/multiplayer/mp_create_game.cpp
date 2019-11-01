@@ -132,7 +132,7 @@ void mp_create_game::pre_show(window& win)
 {
 	find_widget<minimap>(&win, "minimap", false).set_config(&cfg_);
 
-	find_widget<text_box>(&win, "game_name", false).set_value(ng::configure_engine::game_name_default());
+	find_widget<text_box>(&win, "game_name", false).set_value(local_mode_ ? "" : ng::configure_engine::game_name_default());
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&win, "random_map_regenerate", false),
@@ -314,14 +314,11 @@ void mp_create_game::pre_show(window& win)
 	}
 
 	if(local_mode_) {
+		find_widget<text_box>(&win, "game_name", false).set_active(false);
 		find_widget<text_box>(&win, "game_password", false).set_active(false);
 
 		observers_->widget_set_enabled(win, false, false);
 		strict_sync_->widget_set_enabled(win, false, false);
-	}
-
-	if(host_info_ && !host_info_->registered) {
-		registered_users_->widget_set_enabled(win, false, false);
 	}
 
 	//

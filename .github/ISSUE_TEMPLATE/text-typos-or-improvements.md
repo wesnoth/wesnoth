@@ -8,6 +8,17 @@ assignees: ''
 
 ---
 
+Note: The house style of Wesnoth uses a good many words and constructions that
+are archaic, poetic, or dialectal. If you speak modern English as a second
+language you may incorrectly read these as errors. Please see
+[NotSpellingMistakes](https://wiki.wesnoth.org/NotSpellingMistakes) for a list
+of things you will encounter that may look like spelling or usage errors but
+are not.
+
+Note that the mainline campaigns are now using correct typography,
+including sexed quotes and en and em dashes. These will appear as three byte
+sequences if you are not using a viewer that supports UTF-8. 
+
 ### Text Issues: Typos, grammar mistakes, suggested improvemetns
 
 * Is the text in English? If not, what language is it in?

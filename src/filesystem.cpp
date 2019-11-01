@@ -605,9 +605,11 @@ static bool is_path_relative_to_cwd(const std::string& str)
 
 void set_user_data_dir(std::string newprefdir)
 {
+	bool relative_ok = false;
 #ifdef PREFERENCES_DIR
 	if(newprefdir.empty()) {
 		newprefdir = PREFERENCES_DIR;
+		relative_ok = true;
 	}
 #endif
 
@@ -693,11 +695,13 @@ void set_user_data_dir(std::string newprefdir)
 		if(newprefdir[0] == '/') {
 			user_data_dir = newprefdir;
 		} else {
-			// TRANSLATORS: translate the part inside <...> only
-			deprecated_message(_("--userdata-dir=<relative path>"),
-				DEP_LEVEL::FOR_REMOVAL,
-				{1, 17, 0},
-				_("Use absolute paths. Relative paths are deprecated because they are interpreted relative to $HOME"));
+			if(!relative_ok) {
+				// TRANSLATORS: translate the part inside <...> only
+				deprecated_message(_("--userdata-dir=<relative path>"),
+					DEP_LEVEL::FOR_REMOVAL,
+					{1, 17, 0},
+					_("Use absolute paths. Relative paths are deprecated because they are interpreted relative to $HOME"));
+			}
 			user_data_dir = home / newprefdir;
 		}
 	}
@@ -712,11 +716,13 @@ void set_user_data_dir(std::string newprefdir)
 	if(newprefdir[0] == '/') {
 		user_data_dir = newprefdir;
 	} else {
-		// TRANSLATORS: translate the part inside <...> only
-		deprecated_message(_("--userdata-dir=<relative path>"),
-			DEP_LEVEL::FOR_REMOVAL,
-			{1, 17, 0},
-			_("Use absolute paths. Relative paths are deprecated because they are interpreted relative to $HOME"));
+		if(!relative_ok) {
+			// TRANSLATORS: translate the part inside <...> only
+			deprecated_message(_("--userdata-dir=<relative path>"),
+				DEP_LEVEL::FOR_REMOVAL,
+				{1, 17, 0},
+				_("Use absolute paths. Relative paths are deprecated because they are interpreted relative to $HOME"));
+		}
 		user_data_dir = home / newprefdir;
 	}
 #endif

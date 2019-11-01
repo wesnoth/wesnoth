@@ -34,8 +34,6 @@
 #include "video.hpp"
 #include "wml_exception.hpp"
 
-#include <iterator>
-
 namespace gui2
 {
 

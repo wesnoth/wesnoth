@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2019-08-27 22:41+0300\n"
-"PO-Revision-Date: 2019-07-21 10:06+0800\n"
+"PO-Revision-Date: 2019-10-19 20:15+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -6712,7 +6712,7 @@ msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
-"目前可使用的指令列表和特殊指令說明。如果您要查詢目前不可用的命令，請使用"
+"目前可使用的指令列表和特殊指令說明。如果您要查詢目前不可用的命令，請使用 "
 "\"help all\"。"
 
 #: src/map_command_handler.hpp:218
@@ -6876,18 +6876,18 @@ msgid "Switch a side to/from AI control."
 msgstr "切換一陣營由AI控制。"
 
 #: src/menu_events.cpp:1191
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "do not translate the on/off/full^[<side> [on/off/full]]"
-msgstr "[<陣營> [on/off]]"
+msgstr ""
 
 #: src/menu_events.cpp:1192
 msgid "Switch a side to/from idle state."
 msgstr "切換一陣營至閒置狀態。"
 
 #: src/menu_events.cpp:1193
+#, fuzzy
+#| msgid "do not translate the 'all'^[all|<command>]"
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr "[<陣營> [on/off]]"
+msgstr "[all|<指令>]"
 
 #: src/menu_events.cpp:1196
 msgid "<side> <nickname>"
@@ -7242,7 +7242,7 @@ msgstr "不使用盟友鏡像"
 
 #: src/mp_ui_alerts.cpp:67
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "遊戲（$name|, $scenario|）已經被建立"
 
 #: src/mp_ui_alerts.cpp:68 src/mp_ui_alerts.cpp:82 src/mp_ui_alerts.cpp:96
 #: src/mp_ui_alerts.cpp:165 src/mp_ui_alerts.cpp:176
@@ -7668,29 +7668,44 @@ msgid "Units"
 msgstr "部隊"
 
 #: src/reports.cpp:1445
+#, fuzzy
+#| msgid ""
+#| "The expenses incurred at the end of every turn to maintain your army. The "
+#| "first number is the amount of gold that will be deducted. It is equal to "
+#| "the number of unit levels not supported by villages. The second is the "
+#| "total cost of upkeep, including that covered by villages — in other "
+#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. The second is the "
 "total cost of upkeep, including that covered by villages — in other words, "
 "the amount of gold that would be deducted if you lost all villages."
 msgstr ""
-"每回合結束時因軍隊維護而產生的開銷。第一個數字是將會被扣除的金幣。第二個數字"
-"是總維護費，這包含因佔領村莊而減免的部份——換句話說，如果你失去所有村莊，你就"
-"必須支付這麼多的金幣。"
+"每回合結束時因營運部隊而產生的開銷。第一個數字是將會被扣除的金幣。該數字等同"
+"於村莊無法負荷的單位等級。第二個數字是總維護費，這包含因佔領村莊而減免的部份"
+"——換句話說，如果你失去所有村莊，你就必須支付這麼多的金幣。"
 
 #: src/reports.cpp:1445
 msgid "Upkeep"
 msgstr "支出"
 
 #: src/reports.cpp:1482
+#, fuzzy
+#| msgid "income"
 msgid "Income"
 msgstr "收入"
 
 #: src/reports.cpp:1482
+#, fuzzy
+#| msgid ""
+#| "The net amount of gold you gain or lose each turn, taking into account "
+#| "income from controlled villages and payment of upkeep."
 msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
-msgstr "每回合你能從控制的村莊中獲得的金幣，或是每回合因維護費而損失的金幣。"
+msgstr ""
+"每回合你所獲得或失去的金幣數量，透過你所控制村莊的收入及支出的開銷將會計算出"
+"該數量"
 
 #: src/reports.cpp:1650
 msgid "Observers:"
@@ -8202,32 +8217,32 @@ msgstr "對 $player 隱藏計劃"
 msgid "Whiteboard Options"
 msgstr "白板選項"
 
-#, fuzzy
-#~| msgid "undead"
-#~ msgid "Undead"
-#~ msgstr "不死"
+#~ msgid ""
+#~ "Liminal units only reach their full strength during twilight.\n"
+#~ "\n"
+#~ "Day: −25% Damage\n"
+#~ "Night: −25% Damage"
+#~ msgstr ""
+#~ "邊緣單位只有適合在清晨及傍晚戰鬥。\n"
+#~ "\n"
+#~ "白天：-25% 傷害值\n"
+#~ "晚上：−25% 傷害值"
 
-#, fuzzy
-#~| msgid "Attack"
-#~| msgid_plural "Attacks"
-#~ msgid "Attacks"
-#~ msgstr "攻撃"
+#~ msgid ""
+#~ "There are no custom options available for the selected era, game, or "
+#~ "modification."
+#~ msgstr "這裡沒有自訂選項中可以選擇的時代、遊戲或模組。"
 
-#, fuzzy
-#~| msgid "Choose weapon:"
-#~ msgid "Choose a Corpse"
-#~ msgstr "選擇武器："
+#~ msgid "Defaults"
+#~ msgstr "預設"
 
-#~ msgid "Recruit"
-#~ msgstr "招募"
+#~ msgid "Connected Players"
+#~ msgstr "已連線玩家"
 
-#~ msgid "XP: "
-#~ msgstr "經驗值："
-
-#, fuzzy
-#~| msgid "There are no save files to load"
-#~ msgid "There are no corpses available."
-#~ msgstr "沒有可讀取的存檔"
+#~ msgid "(this turn left)"
+#~ msgid_plural "(%d turns left)"
+#~ msgstr[0] "(只剩下本回合)"
+#~ msgstr[1] "(只剩下%d回合)"
 
 #~ msgid "registering with password *** and no email address"
 #~ msgstr "以密碼 *** 註冊，未輸入電子郵件"
@@ -8261,29 +8276,50 @@ msgstr "白板選項"
 #~ msgstr "取得您註冊帳號的詳細資訊。"
 
 #~ msgid ""
-#~ "Liminal units only reach their full strength during twilight.\n"
-#~ "\n"
-#~ "Day: −25% Damage\n"
-#~ "Night: −25% Damage"
+#~ "[all|<command>]\n"
+#~ "“all” = overview of all commands, <command> = name of a specific command "
+#~ "(provides more detail)"
 #~ msgstr ""
-#~ "邊緣單位只有適合在清晨及傍晚戰鬥。\n"
-#~ "\n"
-#~ "白天：-25% 傷害值\n"
-#~ "晚上：−25% 傷害值"
+#~ "[all|<command>]\n"
+#~ "“all” = 對全部指令的總述, <command> = 指令的名稱（提供更多細節）"
+
+#~ msgid "command^Alias:"
+#~ msgid_plural "Aliases:"
+#~ msgstr[0] "命令："
+#~ msgstr[1] "命令："
 
 #~ msgid ""
-#~ "There are no custom options available for the selected era, game, or "
-#~ "modification."
-#~ msgstr "這裡沒有自訂選項中可以選擇的時代、遊戲或模組。"
+#~ "[<side> [on/off]]\n"
+#~ "“on” = enable control by the AI, “off” = side is controlled by the player"
+#~ msgstr ""
+#~ "[<陣營> [on/off]]\n"
+#~ "“on” = 啟動AI控制，“off” = 該陣營由玩家控制"
 
-#~ msgid "Defaults"
-#~ msgstr "預設"
+#~ msgid "command_idle^[<side> [on/off]]"
+#~ msgstr "[<陣營> [on/off]]"
 
-#~ msgid "Connected Players"
-#~ msgstr "已連線玩家"
+#~ msgid "Show fps (Frames Per Second)."
+#~ msgstr "顯示 FPS（每秒顯示影格數）。"
 
 #~ msgid "Can't droid a local ai side: '$side'."
 #~ msgstr "無法託管本地 AI 陣營：'$side'。"
+
+#~ msgid ""
+#~ "\n"
+#~ "Do you want to save the game?"
+#~ msgstr ""
+#~ "\n"
+#~ "您確定要儲存遊戲嗎？"
+
+#~ msgid ""
+#~ "This game has been ended.\n"
+#~ "Reason: "
+#~ msgstr ""
+#~ "此遊戲已經結束。\n"
+#~ "原因："
+
+#~ msgid "Net Income"
+#~ msgstr "淨收入"
 
 #~ msgid "Empty"
 #~ msgstr "空位"
@@ -8329,11 +8365,6 @@ msgstr "白板選項"
 #~ "1個多人戰役共14個章節，\n"
 #~ "7個陣營在46張多人地圖/章節上互戰，\n"
 #~ "500多個模組。)"
-
-#~ msgid "(this turn left)"
-#~ msgid_plural "(%d turns left)"
-#~ msgstr[0] "(只剩下本回合)"
-#~ msgstr[1] "(只剩下%d回合)"
 
 #~ msgid ""
 #~ "In many campaign scenarios, you may issue simple instructions for your "
@@ -9335,6 +9366,9 @@ msgstr "白板選項"
 #~ msgid "Scroll To"
 #~ msgstr "移動到"
 
+#~ msgid "Recruit"
+#~ msgstr "招募"
+
 #~ msgid "Select unit:"
 #~ msgstr "選擇單位："
 
@@ -9346,6 +9380,9 @@ msgstr "白板選項"
 
 #~ msgid "level"
 #~ msgstr "等級"
+
+#~ msgid "XP: "
+#~ msgstr "經驗值："
 
 #, fuzzy
 #~| msgid "Connecting..."
@@ -9651,6 +9688,9 @@ msgstr "白板選項"
 
 #~ msgid "Attack Enemy"
 #~ msgstr "攻撃敵人"
+
+#~ msgid "Choose weapon:"
+#~ msgstr "選擇武器："
 
 #~ msgid "English strings edition"
 #~ msgstr "英文翻譯團隊"
@@ -10448,36 +10488,47 @@ msgstr "白板選項"
 #~ msgid "A map without a header is not supported"
 #~ msgstr "不支援不含標題的地圖"
 
+#~| msgid "Easy"
 #~ msgid "(Easy)"
 #~ msgstr "簡單"
 
+#~| msgid "Normal"
 #~ msgid "(Normal)"
 #~ msgstr "普通"
 
+#~| msgid "Hard"
 #~ msgid "(Hard)"
 #~ msgstr "困難"
 
+#~| msgid "Players: "
 #~ msgid "Players"
 #~ msgstr "玩家： "
 
+#~| msgid "Enemy village"
 #~ msgid "Enemies"
 #~ msgstr "敵人(敵方)"
 
+#~| msgid "Difficulty: "
 #~ msgid "Difficulty: Easy"
 #~ msgstr "難度： "
 
+#~| msgid "Difficulty: "
 #~ msgid "Difficulty: Normal"
 #~ msgstr "難度： "
 
+#~| msgid "Difficulty: "
 #~ msgid "Difficulty: Hard"
 #~ msgstr "難度： "
 
+#~| msgid "Campaign: $campaign_name"
 #~ msgid "Main campaign define"
 #~ msgstr "戰役: $campaign_name"
 
+#~| msgid "Campaign Design"
 #~ msgid "Extra campaign define"
 #~ msgstr "戰役設計"
 
+#~| msgid "Multiplayer"
 #~ msgid "Multiplayer define"
 #~ msgstr "多人對戰"
 
@@ -10502,6 +10553,7 @@ msgstr "白板選項"
 #~ msgid "Add-on '$addon|' deleted."
 #~ msgstr "模組'$addon|'已移除"
 
+#~| msgid "Invalid location"
 #~ msgid "Invalid WML found"
 #~ msgstr "無效位置"
 
@@ -12875,6 +12927,9 @@ msgstr "白板選項"
 
 #~ msgid "Zero upkeep"
 #~ msgstr "無支出"
+
+#~ msgid "undead"
+#~ msgstr "不死"
 
 #~ msgid "Immune to drain, poison and plague"
 #~ msgstr "免疫吸血、毒素和瘟疫"

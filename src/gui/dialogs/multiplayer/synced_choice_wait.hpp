@@ -28,6 +28,9 @@ class synched_choice_wait : public modal_dialog, public events::observer
 public:
 	explicit synched_choice_wait(user_choice_manager& mgr);
 	~synched_choice_wait();
+
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(synched_choice_wait)
+
 private:
 	user_choice_manager& mgr_;
 	label* message_;

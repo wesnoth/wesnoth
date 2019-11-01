@@ -25,6 +25,9 @@
 #include <boost/scope_exit.hpp>
 
 #include <mysql/mysql.h>
+#if defined(MYSQL_VERSION_ID) && MYSQL_VERSION_ID >= 80000
+using my_bool = bool;
+#endif
 
 #include "exceptions.hpp"
 

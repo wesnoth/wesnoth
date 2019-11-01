@@ -1,0 +1,5 @@
+#!/bin/sh -xe
+
+cd steamrt
+docker build -t steamos-wesnoth .
+docker run -it -v "$PWD"/../../..:/wesnoth -v "$PWD"/../steambuild:/output steamos-wesnoth

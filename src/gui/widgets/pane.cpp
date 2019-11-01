@@ -109,7 +109,7 @@ pane::pane(const builder_grid_ptr item_builder)
 	, items_()
 	, item_builder_(item_builder)
 	, item_id_generator_(0)
-	, placer_(placer_base::build(placer_base::tgrow_direction::vertical, 1))
+	, placer_(placer_base::build(placer_base::grow_direction::vertical, 1))
 {
 	connect_signal<event::REQUEST_PLACEMENT>(
 			std::bind(
@@ -422,7 +422,7 @@ namespace implementation
 builder_pane::builder_pane(const config& cfg)
 	: builder_widget(cfg)
 	, grow_direction(
-			  lexical_cast<placer_base::tgrow_direction>(cfg["grow_direction"]))
+			  lexical_cast<placer_base::grow_direction>(cfg["grow_direction"]))
 	, parallel_items(cfg["parallel_items"])
 	, item_definition(new builder_grid(cfg.child("item_definition", "[pane]")))
 {

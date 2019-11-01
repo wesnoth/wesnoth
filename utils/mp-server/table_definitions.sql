@@ -39,7 +39,7 @@ create table extra
 (
     USERNAME          VARCHAR(100) NOT NULL,
     USER_LASTVISIT    INT(10) UNSIGNED NOT NULL DEFAULT 0,
-    USER_IS_MODERATOR BIT(1) NOT NULL DEFAULT 0,
+    USER_IS_MODERATOR TINYINT(1) NOT NULL DEFAULT 0,
     PRIMARY KEY (USERNAME)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -69,6 +69,9 @@ create table game_info
     REPLAY_NAME      VARCHAR(255),
     OOS              BIT(1) NOT NULL DEFAULT 0,
     RELOAD           BIT(1),
+    OBSERVERS        BIT(1),
+    PASSWORD         BIT(1),
+    PUBLIC           BIT(1),
     PRIMARY KEY (INSTANCE_UUID, GAME_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -79,14 +82,19 @@ create table game_info
 -- IS_HOST: if USER_ID is the game's host
 -- FACTION: the faction being played by this side
 -- STATUS: the status of the side, currently only updated at game end
+-- CLIENT_VERSION: the version of the wesnoth client used to connect
+-- CLIENT_SOURCE: where the wesnoth client was downloaded from - SourceForge, Steam, etc
 create table game_player_info
 (
-    INSTANCE_UUID CHAR(36) NOT NULL,
-    GAME_ID       INT UNSIGNED NOT NULL,
-    USER_ID       INT NOT NULL,
-    SIDE_NUMBER   SMALLINT UNSIGNED NOT NULL,
-    IS_HOST       BIT(1) NOT NULL,
-    FACTION       VARCHAR(255) NOT NULL,
+    INSTANCE_UUID  CHAR(36) NOT NULL,
+    GAME_ID        INT UNSIGNED NOT NULL,
+    USER_ID        INT NOT NULL,
+    SIDE_NUMBER    SMALLINT UNSIGNED NOT NULL,
+    IS_HOST        BIT(1) NOT NULL,
+    FACTION        VARCHAR(255) NOT NULL,
+    CLIENT_VERSION VARCHAR(255) NOT NULL DEFAULT '',
+    CLIENT_SOURCE  VARCHAR(255) NOT NULL DEFAULT '',
+    USER_NAME      VARCHAR(255) NOT NULL DEFAULT '',
     PRIMARY KEY (INSTANCE_UUID, GAME_ID, SIDE_NUMBER)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

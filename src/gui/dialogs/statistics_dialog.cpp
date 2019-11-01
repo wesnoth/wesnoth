@@ -71,7 +71,7 @@ void statistics_dialog::pre_show(window& window)
 	// Set title
 	//
 	label& title = find_widget<label>(&window, "title", false);
-	title.set_label((formatter() << title.get_label() << " (" << current_team_.side_name() << ")").str());
+	title.set_label((formatter() << title.get_label() << (current_team_.side_name().empty() ? "" : " (" + current_team_.side_name() + ")")).str());
 
 	//
 	// Set up scenario menu

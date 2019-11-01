@@ -440,8 +440,7 @@ bool manager::enable_mods_dialog(const std::vector<std::string>& mods, const std
 		items.push_back(depinfo_.find_child("modification", "id", mod)["name"]);
 	}
 
-	gui2::dialogs::depcheck_confirm_change dialog(true, items, requester);
-	return dialog.show();
+	return gui2::dialogs::depcheck_confirm_change::execute(true, items, requester);
 }
 
 bool manager::disable_mods_dialog(const std::vector<std::string>& mods, const std::string& requester)
@@ -451,8 +450,7 @@ bool manager::disable_mods_dialog(const std::vector<std::string>& mods, const st
 		items.push_back(depinfo_.find_child("modification", "id", mod)["name"]);
 	}
 
-	gui2::dialogs::depcheck_confirm_change dialog(false, items, requester);
-	return dialog.show();
+	return gui2::dialogs::depcheck_confirm_change::execute(false, items, requester);
 }
 
 std::string manager::change_era_dialog(const std::vector<std::string>& eras)

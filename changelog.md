@@ -1,11 +1,48 @@
-## Version 1.15.1+dev
+## Version 1.15.2+dev
  ### AI:
-   * Experimental AI: fix guardians being used for village actions
-   * Experimental AI: fix poisoners ignoring [avoid] tag
+ ### Campaigns
+   * Descent into Darkness:
+     * Remove dark adepts from recruit list
+     * Add special units and AMLA paths
+     * Revised dialogue
+     * S2: add extra events
+     * S4: add extra events
+     * S5: adjust enemy recruits and gold
+     * S6: add extra events
+   * Secrets of the Ancients:
+     * Prevent hero death from triggering new corpse recruitable dialog (issue #4503)
+ ### Editor
+ ### Language and i18n
+   * Updated translations: Chinese (Traditional), French
+ ### Terrains
+ ### Units
+   * Add mushroom defense cap to mounted and some flying units
+   * Dwarvish Lord and Steelclad: reduce hitpoints by 3 and reduce impact and pierce resistance to 20%
+ ### User interface
+ ### Lua API
+ ### WML engine
+ ### Packaging
+   * The Wesnoth client now looks for the data/dist file when logging into the multiplayer server.
+     This file should contain one of the following values based on where the package is for:
+     Default, Steam, SourceForge, Flatpak, macOS App Store, Linux repository, iOS, Android, BSD repository
+ ### Miscellaneous and bug fixes
+   * Fix --userdata-dir deprecation warning being printed when starting wesnoth without arguments
+     when -DPREFERENCES_DIR="..." was defined at compile time.
+
+## Version 1.15.2
+ ### AI:
+   * Experimental AI:
+     * Fix guardians being used for village actions
+     * Fix poisoners ignoring `[avoid]` tag
+     * Recruitment: add optional parameter `high_level_fraction` to make the ExpAI
+       recruit units of level 2 or higher
+     * Recruitment: adopt optional `randomness` parameter from the Rush Recruitment Micro AI
  ### Campaigns
    * Delfador's Memoirs:
-     * S20: Improve leveling of units and give player a note about it (Issue#4219)
-     * S21: Better indication that the book has gone missing (Issue#4220)
+     * S20: Improve leveling of units and give player a note about it (issue #4219)
+     * S21: Better indication that the book has gone missing (issue #4220)
+   * Descent into Darkness:
+     * Use set colors for each faction throughout the campaign
    * Eastern Invasion:
      * Updated to use the new mushroom terrains (PR #4335)
    * Heir to the Throne:
@@ -20,67 +57,73 @@
      * S01: Make easier on easy and improve flow of enemies
      * Slight dialog improvements
  ### Editor
-   * Added an editor-only overlay for deprecated terrains (PR#4347)
-   * Re-enabled and updated the editor topics in the help browser (PR#4414)
+   * Added an editor-only overlay for deprecated terrains (PR #4347)
+   * Re-enabled and updated the editor topics in the help browser (PR #4414)
  ### Language and i18n
+   * New translations: Ancient Greek
    * Updated translations: British English, Czech, Chinese (Simplified), French,
      Italian, Japanese, Korean, Portuguese (Brazil), Russian, Spanish
-   * Set up for translating the Wings of Victory campaign (PR#4265)
+   * Set up for translating the Wings of Victory campaign (PR #4265)
    * Changed the :help command's output to split over multiple lines
    * Added translatable explanations of :droid, :help and :idle's arguments
    * Allow carets in translatable strings - 'hint^Tb^Tf' will show 'Tb^Tf' to the user
+   * Removed translations: Old English (`ang`), Friulian (`fur_IT`) and Asturian (`ast`)
  ### Terrains
    * Added new ^Tf mushroom terrain whose statistics are fungus+base terrain, as suggested by the existing graphics (PR #4299)
    * Added Tb mushroom base terrain, which can be used alone or as Tb^Tf when a terrain with the fungus-only stats is wanted
  ### User interface
-   * Draw ellipses during draw/sheath animations. (Issue#1527)
+   * Draw ellipses during draw/sheath animations (issue #1527).
    * In the combat dialog and elsewhere, clicking the "Profile" button opens
-     the help on the correct unit variation (e.g., Walking Corpse (Swimmer)).
-     (Issue#4142)
-   * The attack dialog now shows the correct name of an inactive weapon special. (Issue#4352)
+     the help on the correct unit variation (e.g., Walking Corpse (Swimmer)) (issue #4142).
+   * The attack dialog now shows the correct name of an inactive weapon special (issue #4352).
    * Tooltips of sidebar, top bar, and status table now show a side's color's name in words,
-     for the colorblind. (Issue#1217)
+     for the colorblind (issue #1217).
    * In the recruit dialog and recall dialog, units that are too expensive to recruit/recall
-     are grayed out. (PR#4362, PR#4444, part of Issue#1282)
+     are grayed out (PR #4362, PR #4444, part of issue #1282).
    * Hide the "Suppose Dead" key from the hotkeys list (it does nothing since 1.9.12)
    * Sidebar: In replays with "View: Full Map", show all enemy units in "Damage versus:" tooltip
-   * Multiplayer Create Game screen now shows map previews for scenarios that use map_file=. (PR#4407)
-   * Remember zoom level between play sessions (#1518) and add zoom options to context menu (#1213)
+   * Multiplayer Create Game screen now shows map previews for scenarios that use map_file= (PR #4407).
+   * Remember zoom level between play sessions (issue #1518) and add zoom options to context menu (issue #1213)
+   * Sidebar shows number of attacks left, for units that can attack multiple times per turn (issue #2667)
  ### Lua API
    * Accessing wesnoth.theme_items.unit_status no longer prevents the unit
-     status (poisoned/slowed/etc) from being shown in the sidebar. (Issue#4079)
-   * side.flag is now writable. `wesnoth.set_side_id` remains supported. (Issue#4396)
+     status (poisoned/slowed/etc) from being shown in the sidebar (issue #4079).
+   * side.flag is now writable. `wesnoth.set_side_id` remains supported (issue #4396).
+   * Units now have a `__tostring` method that shows their id and location.
  ### WML engine
    * Ranges can now have upper limit "infinity" instead of using a big number like "99" or "99999"
    * Print a deprecation warning for `[terrain_type]`'s partly-implemented `vision_alias`
-   * Special notes for units now use a new system, with a `[special_note]note=` tag.
+   * Special notes for units now use a new system, with a `[special_note]note=` tag:
      * This tag is supported both in `[unit]` and in `[unit_type]`. If used in `[unit]`, it will override the type's notes.
      * Standard special notes should now be added with `{NOTE_*}` instead of `{SPECIAL_NOTES_*}`.
      * In `[effect]apply_to=profile`, `[special_note]` is now supported to add/remove special notes.
    * Support for the deprecated "&image.png=text" syntax has been removed in all contexts - use the DescriptionWML attributes instead.
-   * Fix infinite recursion in SUF with [hides] and [filter_vision]. (Issue#1389)
+   * Fix infinite recursion in SUF with [hides] and [filter_vision] (issue #1389).
    * The {TRAIT_LOYAL} trait now adds the loyal overlay.
    * The ellipse, overlay & image_mods attributes of units are now reset when a unit advances. This means those
      attributes should now by default changed via [effect].
    * New tag [modify_unit_type] that goes into [campaign]/[era]/[modification] and can change some
      unit type properties like advancement and recruit costs.
-   * New debug command :terrain for changing the terrain of the selected hex (PR#4405)
-   * New predefined macros `{LEFT_BRACE}` and `{RIGHT_BRACE}` (PR#4432)
-   * Weapon filtering `special=*` deprecated, replaced by new `special_id=*` and `special_type=*` (Issue#3915)
+   * New debug command :terrain for changing the terrain of the selected hex (PR #4405).
+   * New predefined macros `{LEFT_BRACE}` and `{RIGHT_BRACE}` (PR #4432).
+   * Weapon filtering `special=*` deprecated, replaced by new `special_id=*` and `special_type=*` (issue #3915).
  ### Miscellaneous and bug fixes
-   * Fixed :droid's arguments not all being optional (Issue#4308)
-   * Ported the "expand-terrain-macros", "wmlflip", "wmlparser", "umc-dev/build/update_version",
-     "wiki_grabber", "ai_test" and "unused_functions" tools to Python 3
-   * It's now possible to chat with oneself in SP campaigns. Chat is shown in replays. (Issue#1111)
-   * Removed unused "scoutDefault", "journeylifter", "wescamp_import" and "wmlvalidator" Python tools
+   * Fixed :droid's arguments not all being optional (issue #4308).
+   * Ported the expand-terrain-macros, wmlflip, wmlparser, umc-dev/build/update_version,
+     wiki_grabber, ai_test and unused_functions tools to Python 3
+   * It's now possible to chat with oneself in SP campaigns. Chat is shown in replays (issue #1111).
+   * Removed unused scoutDefault, journeylifter, wescamp_import and wmlvalidator Python tools
    * Fixed wmlscope not correctly performing expansion of square braces in filenames in some conditions
-   * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
-   * Add help text for some debug commands (part of Issue#2500)
-   * Improve the terrain code's encapsulation and documentation (PR#4411)
+   * New help topic outlining common (and less common) reasons for losing a scenario (PR #4217).
+   * Add help text for some debug commands (part of issue #2500).
+   * Improve the terrain code's encapsulation and documentation (PR #4411).
    * Fix duration=scenario objects expiry for units on the recall list at scenario end.
-   * Fix maps with scenario_generation= were unavailable in the editor.
-   * Passing relative paths to --user-data-dir is deprecated (part of PR#4449),
-     * On windows, relative paths that start with `.\` are not deprecated
+   * Fix maps with scenario_generation= being unavailable in the editor.
+   * Passing relative paths to --user-data-dir is deprecated (part of PR #4449). However, on Windows relative paths
+     that start with `.\` are not deprecated.
+   * Removed incomplete joystick support.
+   * Removed option to disable unit and item halos.
+   * Added support to wmlxgettext for double-quote characters in translatable raw strings
 
 ## Version 1.15.1
  ### Editor
@@ -88,18 +131,18 @@
  ### Language and i18n
    * Updated translations: German, Portuguese (Brazil)
  ### Multiplayer server
-   * Add support for storing game information in wesnoth's mysql database (PR#4204)
-   * When the forum user handler is enabled, the Multiplayer Moderators group is now also used when determining if someone is a moderator. (PR#4136)
+   * Add support for storing game information in wesnoth's mysql database (PR #4204)
+   * When the forum user handler is enabled, the Multiplayer Moderators group is now also used when determining if someone is a moderator (PR #4136)
  ### Units
    * Fix typo in the Dune Ranger's advancements
-   * Additional animations for the Wose Shaman (PR#4229)
-   * Move Wose Shaman from DM and WoV to core (PR#4226)
-   * Move Wose Sapling from TRoW to core (PR#4226)
+   * Additional animations for the Wose Shaman (PR #4229)
+   * Move Wose Shaman from DM and WoV to core (PR #4226)
+   * Move Wose Sapling from TRoW to core (PR #4226)
  ### WML engine
    * Support for the deprecated "&image.png=text" syntax for [option]message= has been removed - use the DescriptionWML attributes instead.
  ### Miscellaneous and bug fixes
    * use the 1.15 add-ons server
-   * Fix a crash if the credits (including all add-ons) are very long (PR#4207)
+   * Fix a crash if the credits (including all add-ons) are very long (PR #4207)
 
 ## Version 1.15.0
  ### AI
@@ -268,6 +311,7 @@
      * S1: Fix reference to LoW events
    * The South Guard:
      * Change Halidel to be Deoran's great-grandfather
+     * S7b/S8b: reduce enemy gold values and modify dialogue upon allied unit death
    * Tutorial:
      * S2: Make the first grunt cross the bridge, otherwise the scenario is too hard
  ### Language and i18n
@@ -287,6 +331,7 @@
    * Status table: In replays with "View: Full Map", show all sides' gold status (Issue#4410)
    * Zooming in doesn't move the center of the viewport when the map is wider/taller
      than the available width/height (PR#4442)
+   * Help pages for unit types show base abilities and AMLA abilities separately. (#2907)
  ### Miscellaneous and bug fixes
    * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
    * Add help text for some debug commands (part of Issue#2500)
@@ -1020,6 +1065,7 @@
    * Removed (optional) requirement of libpng from SCons and CMake and the
      associated options as Wesnoth now uses SDL_image to write PNG files.
    * Fixed assertion when saving game events mid-event.
+
 
 ## Version 1.13.12
  ### Security fixes

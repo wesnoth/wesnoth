@@ -64,6 +64,7 @@
 #pragma warning (pop)
 #endif
 
+#include <array>
 #include <cassert>                     // for assert
 #include <cstdlib>                     // for rand
 #include <exception>                    // for exception
@@ -92,7 +93,7 @@ namespace
 	static std::vector<const unit*> units_with_cache;
 
 	static const std::string leader_crown_path = "misc/leader-crown.png";
-	static std::string internalized_attrs[] {
+	static std::array<std::string, 60> internalized_attrs {{
 		"type",
 		"id",
 		"name",
@@ -154,7 +155,7 @@ namespace
 		"language_name",
 		"image",
 		"image_icon"
-	};
+	}};
 
 	struct internalized_attrs_sorter
 	{
@@ -172,8 +173,8 @@ namespace
 		config::const_attribute_iterator cur = cfg.begin();
 		config::const_attribute_iterator end = cfg.end();
 
-		const std::string* cur_known = std::begin(internalized_attrs);
-		const std::string* end_known = std::end(internalized_attrs);
+		auto cur_known = internalized_attrs.begin();
+		auto end_known = internalized_attrs.end();
 
 		while(cur_known != end_known) {
 			if(cur == end) {
@@ -2669,7 +2670,7 @@ std::string get_checksum(const unit& u)
 	config wcfg;
 	u.write(unit_config);
 
-	const std::string main_keys[] {
+	const std::array<std::string, 22> main_keys {{
 		"advances_to",
 		"alignment",
 		"cost",
@@ -2691,28 +2692,26 @@ std::string get_checksum(const unit& u)
 		"resting",
 		"undead_variation",
 		"upkeep",
-		"zoc",
-		""
-	};
+		"zoc"
+	}};
 
-	for(int i = 0; !main_keys[i].empty(); ++i) {
-		wcfg[main_keys[i]] = unit_config[main_keys[i]];
+	for(const std::string& main_key : main_keys) {
+		wcfg[main_key] = unit_config[main_key];
 	}
 
-	const std::string attack_keys[] {
+	const std::array<std::string, 5> attack_keys {{
 		"name",
 		"type",
 		"range",
 		"damage",
-		"number",
-		""
-	};
+		"number"
+	}};
 
 	for(const config& att : unit_config.child_range("attack")) {
 		config& child = wcfg.add_child("attack");
 
-		for(int i = 0; !attack_keys[i].empty(); ++i) {
-			child[attack_keys[i]] = att[attack_keys[i]];
+		for(const std::string& attack_key : attack_keys) {
+			child[attack_key] = att[attack_key];
 		}
 
 		for(const config& spec : att.child_range("specials")) {
@@ -2740,19 +2739,18 @@ std::string get_checksum(const unit& u)
 		child.recursive_clear_value("name");
 	}
 
-	const std::string child_keys[] {
+	const std::array<std::string, 6> child_keys {{
 		"advance_from",
 		"defense",
 		"movement_costs",
 		"vision_costs",
 		"jamming_costs",
-		"resistance",
-		""
-	};
+		"resistance"
+	}};
 
-	for(int i = 0; !child_keys[i].empty(); ++i) {
-		for(const config& c : unit_config.child_range(child_keys[i])) {
-			wcfg.add_child(child_keys[i], c);
+	for(const std::string& child_key : child_keys) {
+		for(const config& c : unit_config.child_range(child_key)) {
+			wcfg.add_child(child_key, c);
 		}
 	}
 

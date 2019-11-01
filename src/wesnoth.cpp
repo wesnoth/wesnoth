@@ -747,13 +747,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 		return 1;
 	}
 
-	if(preferences::joystick_support_enabled()) {
-		res = game->init_joystick();
-		if(res == false) {
-			std::cerr << "could not initialize joystick\n";
-		}
-	}
-
 	check_fpu();
 	const cursor::manager cursor_manager;
 	cursor::set(cursor::WAIT);
@@ -797,11 +790,11 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	plugins_manager plugins_man(new application_lua_kernel);
 
-	plugins_context::Reg const callbacks[] {
+	const plugins_context::reg_vec callbacks {
 		{"play_multiplayer", std::bind(&game_launcher::play_multiplayer, game.get(), game_launcher::MP_CONNECT)},
 	};
 
-	plugins_context::aReg const accessors[] {
+	const plugins_context::areg_vec accessors {
 		{"command_line", std::bind(&commandline_options::to_config, &cmdline_opts)},
 	};
 

@@ -44,6 +44,8 @@
 
 #include "utils/functional.hpp"
 
+#include <fstream>
+
 static lg::log_domain log_mp("mp/main");
 #define DBG_MP LOG_STREAM(debug, log_mp)
 #define ERR_MP LOG_STREAM(err, log_mp)
@@ -147,6 +149,23 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 			config cfg;
 			config res;
 			cfg["version"] = game_config::wesnoth_version.str();
+
+			std::string info;
+			std::ifstream infofile("./data/dist");
+			if(infofile.is_open()){
+				infofile >> info;
+				infofile.close();
+
+				if(info == "Default" || info == "Steam" || info == "SourceForge" || info == "Flatpak"
+				 || info == "macOS App Store" || info == "Linux repository" || info == "iOS" || info == "Android"
+				 || info == "BSD repository") {
+					 cfg["client_source"] = info;
+				} else {
+					cfg["client_source"] = "Default";
+				}
+			} else {
+				cfg["client_source"] = "Default";
+			}
 			res.add_child("version", std::move(cfg));
 			sock->send_data(res);
 		}
@@ -651,8 +670,7 @@ bool goto_mp_connect(ng::connect_engine& engine, wesnothd_connection* connection
 {
 	lobby_info li({});
 
-	gui2::dialogs::mp_staging dlg(engine, li, connection);
-	return dlg.show();
+	return gui2::dialogs::mp_staging::execute(engine, li, connection);
 }
 
 bool goto_mp_wait(saved_game& state, wesnothd_connection* connection, bool observe)

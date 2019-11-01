@@ -367,6 +367,7 @@ if env["prereqs"]:
         conf.CheckBoost("random", require_version = boost_version) & \
         conf.CheckBoost("smart_ptr", header_only = True) & \
 	CheckAsio(conf) & \
+	conf.CheckBoost("thread") & \
         conf.CheckBoost("locale") & \
         conf.CheckBoost("filesystem") \
             and Info("Base prerequisites are met")) \

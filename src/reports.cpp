@@ -1134,6 +1134,16 @@ static config unit_weapons(reports::context & rc, const unit *u, const map_locat
 		add_text(res,  span_color(font::weapon_details_color)
 				+ attack_headline + "</span>" + '\n', "");
 
+		const auto left = u->attacks_left(false), max = u->max_attacks();
+		if(max != 1) {
+			// TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
+			const std::string line = VGETTEXT("Remaining: $left/$max",
+							{{"left", std::to_string(left)},
+							 {"max",  std::to_string(max)}});
+			add_text(res, "  " + span_color(font::weapon_details_color, line) + "\n",
+				_("This unit can attack multiple times per turn."));
+		}
+
 		for (const attack_type &at : u->attacks())
 		{
 			attack_info(rc, at, res, *u, hex);

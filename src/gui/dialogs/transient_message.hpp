@@ -31,6 +31,8 @@ public:
 					   const bool message_use_markup,
 					   const std::string& image);
 
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(transient_message)
+
 private:
 	bool hide_title_;
 	bool hide_image_;

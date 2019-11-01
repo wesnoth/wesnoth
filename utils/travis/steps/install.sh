@@ -20,11 +20,11 @@ fi
 
 if [ "$TRAVIS_OS_NAME" = "osx" ]; then
     if [ "$TOOL" = "xcodebuild" ]; then
-        brew install ccache
+        HOMEBREW_NO_AUTO_UPDATE=1 brew install ccache
         travis_wait ./projectfiles/Xcode/Fix_Xcode_Dependencies
     else
-        brew install scons cairo pango moreutils sdl2_image sdl2_ttf sdl2_mixer glew ccache
-        brew reinstall libffi
+        HOMEBREW_NO_AUTO_UPDATE=1 brew install scons cairo pango moreutils sdl2_image sdl2_ttf sdl2_mixer glew ccache
+        HOMEBREW_NO_AUTO_UPDATE=1 brew reinstall libffi
     fi
 else
     if [ "$NLS" != "true" ]; then
