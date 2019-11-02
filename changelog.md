@@ -18,7 +18,6 @@
  ### Units
    * Add mushroom defense cap to mounted and some flying units
    * Dwarvish Lord and Steelclad: reduce hitpoints by 3 and reduce impact and pierce resistance to 20%
-   * Add various new death, standing, and idle animations
  ### User interface
  ### Lua API
  ### WML engine
@@ -324,6 +323,7 @@
    * Auction X: Exclude the center side from "shuffle sides"
  ### Units
    * Sun Singer and Sun Sylph: modify faerie fire colors
+   * Add various new death, standing, and idle animations
  ### User interface
    * Draw ellipses during draw/sheath animations. (Issue#1527)
    * In the combat dialog and elsewhere, clicking the "Profile" button opens
