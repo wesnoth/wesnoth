@@ -27,6 +27,7 @@
      (issue #4459).
  ### Units
    * Sun Singer and Sun Sylph: modify faerie fire colors
+   * Add various new death, standing, and idle animations
  ### User interface
    * Draw ellipses during draw/sheath animations (issue #1527).
    * In the combat dialog and elsewhere, clicking the "Profile" button opens
