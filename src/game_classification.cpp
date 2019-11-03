@@ -80,6 +80,10 @@ std::string game_classification::get_tagname() const
 		return this->campaign.empty() ? "multiplayer" : "scenario";
 	}
 
+	if(this->campaign_type == CAMPAIGN_TYPE::TUTORIAL) {
+		return "scenario";
+	}
+
 	return this->campaign_type.to_string();
 }
 
