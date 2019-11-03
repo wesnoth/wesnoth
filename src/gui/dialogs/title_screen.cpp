@@ -374,9 +374,9 @@ void title_screen::pre_show(window& win)
 	register_button(win, "cores", hotkey::TITLE_SCREEN__CORES,
 		std::bind(&title_screen::button_callback_cores, this));
 
-	if(game_config_manager::get()->game_config().child_range("core").size() <= 1) {
+	//if(game_config_manager::get()->game_config().child_range("core").size() <= 1) {
 		find_widget<button>(&win, "cores", false).set_visible(widget::visibility::invisible);
-	}
+	//}
 
 	//
 	// Language
