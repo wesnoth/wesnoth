@@ -15,6 +15,8 @@
  ### Language and i18n
    * Updated translations: Chinese (Traditional), French
  ### Terrains
+ ### User interface
+   * Core add-ons are now only accessible via hotkey.
  ### Units
    * Add mushroom defense cap to mounted and some flying units
    * Dwarvish Lord and Steelclad: reduce hitpoints by 3 and reduce impact and pierce resistance to 20%
