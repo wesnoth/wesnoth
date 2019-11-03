@@ -15,7 +15,6 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
-#include "gui/widgets/text_box_base.hpp"
 
 #include "game_initialization/create_engine.hpp"
 
@@ -75,8 +74,6 @@ private:
 
 	void mod_toggled(window& window);
 
-	void filter_text_changed(text_box_base* textbox, const std::string &text);
-
 	ng::create_engine& engine_;
 
 	/** The chosen campaign. */
@@ -92,8 +89,6 @@ private:
 	CAMPAIGN_ORDER current_sorting_;
 
 	bool currently_sorted_asc_;
-
-	std::vector<std::string> last_search_words_;
 };
 
 } // namespace dialogs

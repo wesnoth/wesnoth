@@ -24,7 +24,6 @@
 #include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
-#include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
@@ -156,36 +155,11 @@ void campaign_selection::sort_campaigns(window& window, campaign_selection::CAMP
 		tree.clear();
 	}
 
-	boost::dynamic_bitset<> show_items;
-	show_items.resize(levels.size(), true);
-
-	if(!last_search_words_.empty()) {
-		for(unsigned i = 0; i < levels.size(); ++i) {
-			bool found = false;
-			for(const auto& word : last_search_words_) {
-				found = translation::ci_search(levels[i]->name(), word);
-
-				if(!found) {
-					break;
-				}
-			}
-
-			show_items[i] = found;
-		}
+	for(const auto& campaign : levels) {
+		add_campaign_to_tree(window, campaign->data());
 	}
 
-	bool exists_in_filtered_result = false;
-	for(unsigned i = 0; i < levels.size(); ++i) {
-		if(show_items[i]) {
-			add_campaign_to_tree(window, levels[i]->data());
-
-			if (!exists_in_filtered_result) {
-				exists_in_filtered_result = levels[i]->id() == was_selected;
-			}
-		}
-	}
-
-	if(!was_selected.empty() && exists_in_filtered_result) {
+	if(!was_selected.empty()) {
 		find_widget<tree_view_node>(&window, was_selected, false).select_node();
 	} else {
 		campaign_selected(window);
@@ -227,25 +201,8 @@ void campaign_selection::toggle_sorting_selection(window& window, CAMPAIGN_ORDER
 	sort_campaigns(window, current_sorting_, currently_sorted_asc_);
 }
 
-void campaign_selection::filter_text_changed(text_box_base* textbox, const std::string& text)
-{
-	const std::vector<std::string> words = utils::split(text, ' ');
-
-	if(words == last_search_words_) {
-		return;
-	}
-
-	last_search_words_ = words;
-	window& window = *textbox->get_window();
-	sort_campaigns(window, current_sorting_, currently_sorted_asc_);
-}
-
 void campaign_selection::pre_show(window& window)
 {
-	text_box* filter = find_widget<text_box>(&window, "filter_box", false, true);
-	filter->set_text_changed_callback(
-			std::bind(&campaign_selection::filter_text_changed, this, _1, _2));
-
 	/***** Setup campaign tree. *****/
 	tree_view& tree = find_widget<tree_view>(&window, "campaign_tree", false);
 
@@ -261,8 +218,7 @@ void campaign_selection::pre_show(window& window)
 	connect_signal_notify_modified(sort_time,
 		std::bind(&campaign_selection::toggle_sorting_selection, this, std::ref(window), DATE));
 
-	window.keyboard_capture(filter);
-	window.add_to_keyboard_chain(&tree);
+	window.keyboard_capture(&tree);
 
 	/***** Setup campaign details. *****/
 	multi_page& pages = find_widget<multi_page>(&window, "campaign_details", false);
