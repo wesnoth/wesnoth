@@ -144,8 +144,6 @@ void game_load::pre_show(window& window)
 			std::bind(&game_load::browse_button_callback, this));
 
 	menu_button& dir_list = find_widget<menu_button>(&window, "dirList", false);
-	dir_list.set_use_markup(true);
-	dir_list.set_active(true);
 
 	set_save_dir_list(dir_list);
 
@@ -163,26 +161,21 @@ void game_load::set_save_dir_list(menu_button& dir_list)
 	}
 
 	std::vector<config> options;
-	// The first option in the list is the current version's save dir
-	{
-		config option;
-		option["label"] = _("Normal saves directory");
-		option["path"] = "";
-		options.push_back(std::move(option));
-	}
 
-	for(const auto& known_dir : filesystem::find_other_version_saves_dirs()) {
+	// The first option in the list is the current version's save dir
+	options.emplace_back("label",  _("Normal saves directory"), "path", "");
+
+	for(const auto& known_dir : other_dirs) {
 		if(!known_dir.path.empty()) {
-			config option;
-			option["label"] = known_dir.version;
-			option["path"] = known_dir.path;
-			option["details"] = formatter() << "<span color='#777777'>(" << known_dir.path << ")</span>";
-			options.push_back(std::move(option));
+			options.emplace_back(
+				"label", known_dir.version,
+				"path", known_dir.path,
+				"details", formatter() << "<span color='#777777'>(" << known_dir.path << ")</span>"
+			);
 		}
 	}
 
-	dir_list.set_values(options, 0);
-	dir_list.set_visible(widget::visibility::visible);
+	dir_list.set_values(options);
 }
 
 void game_load::populate_game_list(window& window)
