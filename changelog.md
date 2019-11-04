@@ -6,6 +6,7 @@
      * Add special units and AMLA paths
      * Revised dialogue
      * S2: add extra events
+     * S3: reworked scenario
      * S4: add extra events
      * S5: adjust enemy recruits and gold
      * S6: add extra events
