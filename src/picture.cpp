@@ -943,7 +943,7 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 	case SCALED_TO_HEX:
 		// we light before scaling to reuse the unscaled cache
 		res = get_lighted_image(i_locator, ls, HEXED);
-		res = scale_surface(res, zoom, zoom);
+		res = scale_surface_nn(res, zoom, zoom);
 		break;
 	default:
 		break;
