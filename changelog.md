@@ -24,6 +24,8 @@
    * Dwarvish Lord and Steelclad: reduce hitpoints by 3 and reduce impact and pierce resistance to 20%
  ### User interface
    * The load-game dialog can now see the directories used by Wesnoth 1.14, 1.12, etc.
+   * The search box in the Campaigns menu now takes campaign abbreviations and descriptions (in the current language)
+     into account.
  ### Lua API
  ### WML engine
  ### Packaging

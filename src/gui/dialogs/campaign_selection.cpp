@@ -163,7 +163,9 @@ void campaign_selection::sort_campaigns(window& window, campaign_selection::CAMP
 		for(unsigned i = 0; i < levels.size(); ++i) {
 			bool found = false;
 			for(const auto& word : last_search_words_) {
-				found = translation::ci_search(levels[i]->name(), word);
+				found = translation::ci_search(levels[i]->name(), word) ||
+				        translation::ci_search(levels[i]->description(), word) ||
+				        translation::ci_search(levels[i]->data()["abbrev"], word);
 
 				if(!found) {
 					break;
