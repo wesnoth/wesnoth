@@ -18,6 +18,7 @@
 
 #include "desktop/open.hpp"
 #include "filesystem.hpp"
+#include "font/pango/escape.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_classification.hpp"
@@ -145,6 +146,7 @@ void game_load::pre_show(window& window)
 
 	menu_button& dir_list = find_widget<menu_button>(&window, "dirList", false);
 
+	dir_list.set_use_markup(true);
 	set_save_dir_list(dir_list);
 
 	connect_signal_notify_modified(dir_list, std::bind(&game_load::handle_dir_select, this, std::ref(window)));
@@ -163,14 +165,14 @@ void game_load::set_save_dir_list(menu_button& dir_list)
 	std::vector<config> options;
 
 	// The first option in the list is the current version's save dir
-	options.emplace_back("label",  _("Normal saves directory"), "path", "");
+	options.emplace_back("label",  _("game_version^Current Version"), "path", "");
 
 	for(const auto& known_dir : other_dirs) {
 		if(!known_dir.path.empty()) {
 			options.emplace_back(
-				"label", known_dir.version,
+				"label", VGETTEXT("game_version^Wesnoth $version", utils::string_map{{"version", known_dir.version}}),
 				"path", known_dir.path,
-				"details", formatter() << "<span color='#777777'>(" << known_dir.path << ")</span>"
+				"details", formatter() << "<span color='#777777'>" << font::escape_text(known_dir.path) << "</span>"
 			);
 		}
 	}

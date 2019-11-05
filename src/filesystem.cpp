@@ -870,7 +870,7 @@ std::vector<other_version_dir> find_other_version_saves_dirs()
 #endif
 		
 		if(bfs::exists(path)) {
-			result.emplace_back(suffix, path.generic_string());
+			result.emplace_back(suffix, path.string());
 		}
 	}
 
