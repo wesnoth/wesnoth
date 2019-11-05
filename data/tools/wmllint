@@ -1498,7 +1498,8 @@ def global_sanity_check(filename, lines):
             unit_race = None
         elif nav.element == "[special_note]":
             has_special_notes = True
-        if '[unit_type]' in nav.ancestors() and "[filter_attack]" not in nav.ancestors():
+        # the glob pattern matches any WML tag starting with filter, including [filter] itself
+        if '[unit_type]' in nav.ancestors() and not nav.glob_ancestors("[[]filter*[]]"):
             try:
                 (key, prefix, value, comment) = parse_attribute(nav.text)
                 if key == "id":
