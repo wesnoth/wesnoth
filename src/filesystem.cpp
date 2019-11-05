@@ -827,6 +827,10 @@ std::string get_cache_dir()
 
 std::vector<other_version_dir> find_other_version_saves_dirs()
 {
+#if !defined(_WIN32) && !defined(_X11) && !defined(__APPLE__)
+	// By all means, this situation doesn't make sense
+	return {};
+#else
 	const auto& w_ver = game_config::wesnoth_version;
 	const auto& ms_ver = game_config::min_savegame_version;
 
@@ -846,13 +850,32 @@ std::vector<other_version_dir> find_other_version_saves_dirs()
 		version.set_major_version(w_ver.major_version());
 		version.set_minor_version(minor);
 		auto suffix = get_version_path_suffix(version);
-		auto path = get_user_data_path().parent_path() / suffix / "saves";
+
+		bfs::path path;
+
+		//
+		// NOTE:
+		// This is a bit of a naive approach. We assume on all platforms that
+		// get_user_data_path() will return something resembling the default
+		// configuration and that --user-data-dir wasn't used. We will get
+		// false negatives when any of these conditions don't hold true.
+		//
+
+#if defined(_WIN32)
+		path = get_user_data_path().parent_path() / ("Wesnoth" + suffix) / "saves";
+#elif defined(_X11)
+		path = get_user_data_path().parent_path() / suffix / "saves";
+#elif defined(__APPLE__)
+		path = get_user_data_path().parent_path() / ("Wesnoth_" + suffix) / "saves";
+#endif
+		
 		if(bfs::exists(path)) {
 			result.emplace_back(suffix, path.generic_string());
 		}
 	}
 
 	return result;
+#endif
 }
 
 std::string get_cwd()
