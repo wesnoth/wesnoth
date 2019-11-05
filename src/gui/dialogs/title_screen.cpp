@@ -75,37 +75,34 @@ namespace dialogs
  * This shows the title screen.
  *
  * @begin{table}{dialog_widgets}
- * tutorial & & button & m &
+ * tutorial & & button & o &
  *         The button to start the tutorial. $
  *
- * campaign & & button & m &
+ * campaign & & button & o &
  *         The button to start a campaign. $
  *
- * multiplayer & & button & m &
+ * multiplayer & & button & o &
  *         The button to start multiplayer mode. $
  *
- * load & & button & m &
+ * load & & button & o &
  *         The button to load a saved game. $
  *
- * editor & & button & m &
+ * editor & & button & o &
  *         The button to start the editor. $
  *
- * addons & & button & m &
+ * addons & & button & o &
  *         The button to start managing the addons. $
  *
- * cores & & button & m &
- *         The button to start managing the cores. $
- *
- * language & & button & m &
+ * language & & button & o &
  *         The button to select the game language. $
  *
- * credits & & button & m &
+ * credits & & button & o &
  *         The button to show Wesnoth's contributors. $
  *
  * quit & & button & m &
  *         The button to quit Wesnoth. $
  *
- * tips & & multi_page & m &
+ * tips & & multi_page & o &
  *         A multi_page to hold all tips, when this widget is used the area of
  *         the tips doesn't need to be resized when the next or previous button
  *         is pressed. $
@@ -117,10 +114,10 @@ namespace dialogs
  *         The source (the one who's quoted or the book referenced) of the
  *         current tip. $
  *
- * next_tip & & button & m &
+ * next_tip & & button & o &
  *         The button show the next tip of the day. $
  *
- * previous_tip & & button & m &
+ * previous_tip & & button & o &
  *         The button show the previous tip of the day. $
  *
  * logo & & image & o &
@@ -159,7 +156,11 @@ static void register_button(window& win, const std::string& id, hotkey::HOTKEY_C
 		win.register_hotkey(hk, std::bind(callback));
 	}
 
-	connect_signal_mouse_left_click(find_widget<button>(&win, id, false), std::bind(callback));
+	auto b = find_widget<button>(&win, id, false, false);
+	if(b != nullptr)
+	{
+		connect_signal_mouse_left_click(*b, std::bind(callback));
+	}
 }
 
 static void launch_lua_console()
@@ -266,29 +267,30 @@ void title_screen::pre_show(window& win)
 	//
 	// Tip-of-the-day browser
 	//
-	multi_page& tip_pages = find_widget<multi_page>(&win, "tips", false);
+	multi_page* tip_pages = find_widget<multi_page>(&win, "tips", false, false);
 
-	std::vector<game_tip> tips = tip_of_the_day::shuffle(settings::tips);
-	if(tips.empty()) {
-		WRN_CF << "There are no tips of day available." << std::endl;
+	if(tip_pages != nullptr) {
+		std::vector<game_tip> tips = tip_of_the_day::shuffle(settings::tips);
+		if(tips.empty()) {
+			WRN_CF << "There are no tips of day available." << std::endl;
+		}
+		for(const auto& tip : tips)	{
+			string_map widget;
+			std::map<std::string, string_map> page;
+
+			widget["use_markup"] = "true";
+
+			widget["label"] = tip.text();
+			page.emplace("tip", widget);
+
+			widget["label"] = tip.source();
+			page.emplace("source", widget);
+
+			tip_pages->add_page(page);
+		}
+
+		update_tip(win, true);
 	}
-
-	for(const auto& tip : tips)	{
-		string_map widget;
-		std::map<std::string, string_map> page;
-
-		widget["use_markup"] = "true";
-
-		widget["label"] = tip.text();
-		page.emplace("tip", widget);
-
-		widget["label"] = tip.source();
-		page.emplace("source", widget);
-
-		tip_pages.add_page(page);
-	}
-
-	update_tip(win, true);
 
 	register_button(win, "next_tip", hotkey::TITLE_SCREEN__NEXT_TIP,
 		std::bind(&title_screen::update_tip, this, std::ref(win), true));
@@ -404,6 +406,8 @@ void title_screen::pre_show(window& win)
 	// Quit
 	//
 	register_button(win, "quit", hotkey::HOTKEY_QUIT_TO_DESKTOP, [&win]() { win.set_retval(QUIT_GAME); });
+	// A sanity check, exit immediately if the .cfg file didn't have a "quit" button.
+	find_widget<button>(&win, "quit", false, true);
 
 	//
 	// Debug clock
@@ -411,9 +415,10 @@ void title_screen::pre_show(window& win)
 	register_button(win, "clock", hotkey::HOTKEY_NULL,
 		std::bind(&title_screen::show_debug_clock_window, this));
 
-	find_widget<button>(&win, "clock", false).set_visible(show_debug_clock_button
-		? widget::visibility::visible
-		: widget::visibility::invisible);
+	auto clock = find_widget<button>(&win, "clock", false, false);
+	if(clock) {
+		clock->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
+	}
 }
 
 void title_screen::on_resize(window& win)
@@ -423,25 +428,28 @@ void title_screen::on_resize(window& win)
 
 void title_screen::update_tip(window& win, const bool previous)
 {
-	multi_page& tips = find_widget<multi_page>(&win, "tips", false);
-	if(tips.get_page_count() == 0) {
+	multi_page* tip_pages = find_widget<multi_page>(&win, "tips", false, false);
+	if(tip_pages == nullptr) {
+		return;
+	}
+	if(tip_pages->get_page_count() == 0) {
 		return;
 	}
 
-	int page = tips.get_selected_page();
+	int page = tip_pages->get_selected_page();
 	if(previous) {
 		if(page <= 0) {
-			page = tips.get_page_count();
+			page = tip_pages->get_page_count();
 		}
 		--page;
 	} else {
 		++page;
-		if(static_cast<unsigned>(page) >= tips.get_page_count()) {
+		if(static_cast<unsigned>(page) >= tip_pages->get_page_count()) {
 			page = 0;
 		}
 	}
 
-	tips.select_page(page);
+	tip_pages->select_page(page);
 
 	/**
 	 * @todo Look for a proper fix.
