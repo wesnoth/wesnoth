@@ -266,7 +266,7 @@ version_table_manager::version_table_manager()
 	// Features table.
 	//
 
-	features.emplace_back(N_("feature^JPG screenshots"));
+	features.emplace_back(N_("feature^JPEG screenshots"));
 #ifdef SDL_IMAGE_VERSION_ATLEAST
 #if SDL_IMAGE_VERSION_ATLEAST(2, 0, 2)
 	features.back().enabled = true;
