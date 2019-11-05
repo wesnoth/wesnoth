@@ -41,6 +41,7 @@
  ### Miscellaneous and bug fixes
    * New help topic outlining common (and less commons) reasons for losing a scenario (PR #4217).
    * Add help text for some debug commands (part of issue #2500).
+   * Make wmllint recognize `[load_resource]` (issue #4538).
 
 ## Version 1.14.9
  ### AI:
