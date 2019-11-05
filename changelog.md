@@ -33,6 +33,7 @@
  ### Miscellaneous and bug fixes
    * Fix --userdata-dir deprecation warning being printed when starting wesnoth without arguments
      when -DPREFERENCES_DIR="..." was defined at compile time.
+   * Make wmllint recognize `[load_resource]` (issue #4538).
 
 ## Version 1.15.2
  ### AI:
@@ -342,6 +343,7 @@
    * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
    * Add help text for some debug commands (part of Issue#2500)
    * More deprecation warnings logged by default (part of PR#4449)
+   * Make wmllint recognize `[load_resource]` (issue #4538).
 
 ## Version 1.14.9
  ### AI:

@@ -1731,6 +1731,7 @@ def global_sanity_check(filename, lines):
     in_facet = False
     in_sound_source = False
     in_remove_sound_source = False
+    in_load_resource = False
     in_message = False
     in_option = False
     #last index is true: we're currently directly in an [event]
@@ -1839,6 +1840,10 @@ def global_sanity_check(filename, lines):
             in_remove_sound_source = True
         elif "[/remove_sound_source]" in lines[i]:
             in_remove_sound_source = False
+        elif "[load_resource]" in lines[i]:
+            in_load_resource = True
+        elif "[/load_resource]" in lines[i]:
+            in_load_resource = False
         elif "[message]" in lines[i]:
             in_message = True
         elif "[/message]" in lines[i]:
@@ -2119,7 +2124,8 @@ def global_sanity_check(filename, lines):
                     elif preamble_seen and subtag_depth > 0 and not ignore_id \
                          and not in_object and not in_cfg and not in_aspect \
                          and not in_facet and not in_sound_source \
-                         and not in_remove_sound_source and not in_stage \
+                         and not in_remove_sound_source and not in_load_resource \
+                         and not in_stage \
                          and not in_goal and not in_set_menu_item \
                          and not in_clear_menu_item and not directly_in_event[-1] \
                          and not in_time_area and not in_trait and not in_checkbox \
