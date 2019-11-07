@@ -280,6 +280,7 @@ void saved_game::expand_scenario()
 			update_label();
 			set_defaults();
 		} else {
+			ERR_NG << "Couldn't find [" << classification().get_tagname() << "] with id=" << carryover_["next_scenario"] << std::endl;
 			this->starting_point_type_ = STARTING_POINT_INVALID;
 			this->starting_point_.clear();
 		}
