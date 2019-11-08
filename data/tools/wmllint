@@ -874,12 +874,12 @@ linechanges = (
         # renamed dunefolk units
         # images
         ("units/dunefolk/arif.png", "units/dunefolk/soldier.png"),
-        ("units/dunefolk/batal.png", "units/dunefolk/ranger.png"),
+        ("units/dunefolk/batal.png", "units/dunefolk/wayfarer.png"),
         ("units/dunefolk/faris.png", "units/dunefolk/sunderer.png"),
         ("units/dunefolk/ghazi.png", "units/dunefolk/swordsman.png"),
         ("units/dunefolk/hadaf.png", "units/dunefolk/marauder.png"),
         ("units/dunefolk/hakim.png", "units/dunefolk/herbalist.png"),
-        ("units/dunefolk/jawal.png", "units/dunefolk/windrider.png"),
+        ("units/dunefolk/jawal.png", "units/dunefolk/windbolt.png"),
         ("units/dunefolk/jundi.png", "units/dunefolk/rover.png"),
         ("units/dunefolk/khaiyal.png", "units/dunefolk/piercer.png"),
         ("units/dunefolk/khalid.png", "units/dunefolk/warmaster.png"),
@@ -893,11 +893,18 @@ linechanges = (
         ("units/dunefolk/qatif-al-nar.png", "units/dunefolk/scorcher.png"),
         ("units/dunefolk/rami.png", "units/dunefolk/rider.png"),
         ("units/dunefolk/rasikh.png", "units/dunefolk/spearmaster.png"),
-        ("units/dunefolk/saree.png", "units/dunefolk/swiftrider.png"),
+        ("units/dunefolk/saree.png", "units/dunefolk/horse-archer.png"),
         ("units/dunefolk/shuja.png", "units/dunefolk/blademaster.png"),
         ("units/dunefolk/tabib.png", "units/dunefolk/apothecary.png"),
         ("units/dunefolk/tineen.png", "units/dunefolk/firetrooper.png"),
         ("images/portraits/dunefolk/hakim.png", "images/portraits/dunefolk/herbalist.png"),
+
+        # second round of renaming
+        ("units/dunefolk/ranger.png", "units/dunefolk/wayfarer.png"),
+        ("units/dunefolk/windrider.png", "units/dunefolk/windbolt.png"),
+        ("units/dunefolk/swiftrider.png", "units/dunefolk/horse-archer.png"),
+        ("units/nagas/slasher.png", "units/nagas/dirkfang.png"),
+        ("units/nagas/bladewhirler.png", "units/nagas/ophidian.png"),
 
         # unit ids
         ("Arif", "Dune Soldier"),
@@ -912,7 +919,7 @@ linechanges = (
         ("Monawish", "Dune Skirmisher"),
         ("Mighwar", "Dune Harrier"),
         ("Muharib", "Dune Explorer"),
-        ("Batal", "Dune Ranger"),
+        ("Batal", "Dune Wayfarer"),
         ("Khaiyal", "Dune Piercer"),
         ("Faris", "Dune Sunderer"),
         ("Mufariq", "Dune Cataphract"),
@@ -923,8 +930,15 @@ linechanges = (
         ("Qatif_al_nar", "Dune Scorcher"),
         ("Tineen", "Dune Firetrooper"),
         ("Rami", "Dune Rider"),
-        ("Saree", "Dune Swiftrider"),
-        ("Jawal", "Dune Windrider"),
+        ("Saree", "Dune Horse Archer"),
+        ("Jawal", "Dune Windbolt"),
+
+        # second round of renaming
+        ("Dune Ranger", "Dune Wayfarer"),
+        ("Dune Swiftrider", "Dune Horse Archer"),
+        ("Dune Windrider", "Dune Windbolt"),
+        ("Naga Slasher", "Naga Dirkfang"),
+        ("Naga Bladewhirler", "Naga Ophidian"),
 
         # Changed in 1.15.0: separate portrait for leader
         ("portraits/orcs/leader.png", "portraits/orcs/ruler.png"),
