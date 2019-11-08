@@ -5,11 +5,9 @@
      * Remove dark adepts from recruit list
      * Add special units and AMLA paths
      * Revised dialogue
-     * S2: add extra events
+     * Increased map interactability
      * S3: reworked scenario
-     * S4: add extra events
      * S5: adjust enemy recruits and gold
-     * S6: add extra events
    * Secrets of the Ancients:
      * Prevent hero death from triggering new corpse recruitable dialog (issue #4503)
  ### Editor
