@@ -171,8 +171,7 @@ void game_load::set_save_dir_list(menu_button& dir_list)
 		if(!known_dir.path.empty()) {
 			options.emplace_back(
 				"label", VGETTEXT("game_version^Wesnoth $version", utils::string_map{{"version", known_dir.version}}),
-				"path", known_dir.path,
-				"details", formatter() << "<span color='#777777'>" << font::escape_text(known_dir.path) << "</span>"
+				"path", known_dir.path
 			);
 		}
 	}
