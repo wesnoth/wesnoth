@@ -12,7 +12,7 @@
      * Prevent hero death from triggering new corpse recruitable dialog (issue #4503)
  ### Editor
  ### Language and i18n
-   * Updated translations: Chinese (Traditional), French
+   * Updated translations: Chinese (Traditional), French, Russian
  ### Terrains
  ### User interface
    * "Core" type add-ons are now only accessible via hotkey.
