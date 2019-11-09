@@ -20,7 +20,7 @@
  ### Units
    * Add mushroom defense cap to mounted and some flying units
    * Dwarvish Lord and Steelclad: reduce hitpoints by 3 and reduce impact and pierce resistance to 20%
-   * Dunefolk: rebalancing of various units
+   * Dunefolk: rebalancing and renaming of various units
  ### User interface
    * The load-game dialog can now see the directories used by Wesnoth 1.14, 1.12, etc.
    * The search box in the Campaigns menu now takes campaign abbreviations and descriptions (in the current language)
