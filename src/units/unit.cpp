@@ -2268,7 +2268,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 	}
 
 	bool set_poisoned = false; // Tracks if the poisoned state was set after the type or variation was changed.
-	config last_effect;
+	config type_effect, variation_effect;
 	std::vector<t_string> effects_description;
 	for(const config& effect : mod.child_range("effect")) {
 		// Apply SUF.
@@ -2291,10 +2291,15 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 				times --;
 
 				bool was_poisoned = get_state(STATE_POISONED);
-				if(apply_to == "variation" || apply_to == "type") {
-					// Apply unit type/variation changes last to avoid double applying effects on advance.
+				// Apply unit type/variation changes last to avoid double applying effects on advance.
+				if(apply_to == "type") {
 					set_poisoned = false;
-					last_effect = effect;
+					type_effect = effect;
+					continue;
+				}
+				if(apply_to == "variation") {
+					set_poisoned = false;
+					variation_effect = effect;
 					continue;
 				}
 
@@ -2334,15 +2339,27 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		}
 	}
 	// Apply variations -- only apply if we are adding this for the first time.
-	if(!last_effect.empty() && no_add == false) {
-		std::string description;
-		if(resources::lua_kernel) {
-			description = resources::lua_kernel->apply_effect(last_effect["apply_to"], *this, last_effect, true);
-		} else if(builtin_effects.count(last_effect["apply_to"])) {
-			apply_builtin_effect(last_effect["apply_to"], last_effect);
-			description = describe_builtin_effect(last_effect["apply_to"], last_effect);
+	if((!type_effect.empty() || !variation_effect.empty()) && no_add == false) {
+		if(!type_effect.empty()) {
+			std::string description;
+			if(resources::lua_kernel) {
+				description = resources::lua_kernel->apply_effect(type_effect["apply_to"], *this, type_effect, true);
+			} else if(builtin_effects.count(type_effect["apply_to"])) {
+				apply_builtin_effect(type_effect["apply_to"], type_effect);
+				description = describe_builtin_effect(type_effect["apply_to"], type_effect);
+			}
+			effects_description.push_back(description);
 		}
-		effects_description.push_back(description);
+		if(!variation_effect.empty()) {
+			std::string description;
+			if(resources::lua_kernel) {
+				description = resources::lua_kernel->apply_effect(variation_effect["apply_to"], *this, variation_effect, true);
+			} else if(builtin_effects.count(variation_effect["apply_to"])) {
+				apply_builtin_effect(variation_effect["apply_to"], variation_effect);
+				description = describe_builtin_effect(variation_effect["apply_to"], variation_effect);
+			}
+			effects_description.push_back(description);
+		}
 		if(set_poisoned)
 			// An effect explicitly set the poisoned state, and this
 			// should override the unit being immune to poison.
