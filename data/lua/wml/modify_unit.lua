@@ -146,9 +146,9 @@ local function simple_modify_unit(cfg)
 		end
 
 		-- handle 'type' and 'variation' last.
-		if not cfg.type and not cfg.variation then
+		if cfg.type == "" then
 			u.experience = u.max_experience
-		elseif cfg.type then
+		elseif cfg.type or cfg.variation then
 			u.experience = 0
 			u:transform(cfg.type or u.type, cfg.variation)
 		end
