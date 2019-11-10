@@ -46,6 +46,7 @@ local known_attributes = make_set {
 	"resting",
 	"canrecruit",
 	"type",
+	"variation",
 }
 
 local known_tags = make_set {
@@ -88,7 +89,7 @@ local function simple_modify_unit(cfg)
 	-- todo: investigate the follwoing attrtibutes:
 	--       id, ellipse, recall_cost, alpha, flying,
 	--       hidden, halo, description, overlays, unrenamable
-	-- and tags: [status] [variables]
+	-- and tags: [variables]
 	local simple_attributes = {
 		"side",
 		"name",
@@ -144,12 +145,12 @@ local function simple_modify_unit(cfg)
 			end
 		end
 
-		-- handle 'type' last.
-		if cfg.type == "" then
+		-- handle 'type' and 'variation' last.
+		if not cfg.type and not cfg.variation then
 			u.experience = u.max_experience
 		elseif cfg.type then
 			u.experience = 0
-			u:transform(cfg.type)
+			u:transform(cfg.type or u.type, cfg.variation)
 		end
 
 		-- always do an advancement here (not only when experience/max_experience/type was modified)
