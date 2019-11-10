@@ -102,6 +102,7 @@ private:
 	field_bool* observers_;
 	field_bool* registered_users_;
 	field_bool* strict_sync_;
+	field_bool* private_replay_;
 
 	field_integer* turns_;
 	field_integer* gold_;
