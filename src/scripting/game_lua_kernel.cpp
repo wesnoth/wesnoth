@@ -2510,7 +2510,8 @@ int game_lua_kernel::intf_unit_ability(lua_State *L)
 /**
  * Changes a unit to the given unit type.
  * - Arg 1: unit userdata.
- * - Arg 2: string.
+ * - Arg 2: unit type name
+ * - Arg 3: (optional) unit variation name
  */
 static int intf_transform_unit(lua_State *L)
 {
@@ -2518,6 +2519,11 @@ static int intf_transform_unit(lua_State *L)
 	char const *m = luaL_checkstring(L, 2);
 	const unit_type *utp = unit_types.find(m);
 	if (!utp) return luaL_argerror(L, 2, "unknown unit type");
+	if(lua_isstring(L, 3)) {
+		const std::string& m2 = lua_tostring(L, 3);
+		if(!utp->has_variation(m2)) return luaL_argerror(L, 2, "unknown unit variation");
+		utp = &utp->get_variation(m2);
+	}
 	u.advance_to(*utp);
 
 	return 0;

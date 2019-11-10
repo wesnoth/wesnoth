@@ -926,6 +926,8 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	const unit_type& old_type = type();
 	// Adjust the new type for gender and variation.
 	const unit_type& new_type = u_type.get_gender_unit_type(gender_).get_variation(variation_);
+	// In cast u_type was already a variation, make sure our variation is set correctly.
+	variation_ = new_type.variation_id();
 
 	// Reset the scalar values first
 	trait_names_.clear();
