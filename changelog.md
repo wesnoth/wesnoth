@@ -30,6 +30,7 @@
    * unit:transform() now takes an optional variation parameter
  ### WML engine
    * Support upkeep in StandardUnitFilter
+   * [effect]apply_to=variation now supports heal_full
  ### Packaging
    * The Wesnoth client now looks for the data/dist file when logging into the multiplayer server.
      This file should contain one of the following values based on where the package is for:
