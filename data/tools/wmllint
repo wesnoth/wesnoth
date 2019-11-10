@@ -1469,10 +1469,26 @@ def global_sanity_check(filename, lines):
             has_special_notes = False
             in_unit_type = nav.lineno + 1
             hitpoints_specified = False
+            unit_usage = ""
+            temp_movetypes = []
+            temp_races = []
+            temp_advances = []
             continue
         elif nav.element == "[/unit_type]":
             #print('"%s", %d: unit has traits %s and notes %s' \
             #      % (filename, in_unit_type, traits, notes))
+            if unit_id and unit_usage:
+                usage[unit_id] = unit_usage
+            if unit_id and temp_movetypes:
+                for movetype in temp_movetypes:
+                    # movetype, race and advance are 3-element tuples, expand them
+                    unit_movetypes.append((unit_id, *movetype))
+            if unit_id and temp_races:
+                for race in temp_races:
+                    unit_races.append((unit_id, *race))
+            if unit_id and temp_advances:
+                for advance in temp_advances:
+                    advances.append((unit_id, *advance)) 
             if unit_id and base_unit:
                 derived_units.append((filename, nav.lineno + 1, unit_id, base_unit))
             if unit_id and not base_unit:
@@ -1510,6 +1526,10 @@ def global_sanity_check(filename, lines):
             base_unit = ""
             has_special_notes = False
             unit_race = None
+            unit_usage = ""
+            temp_movetypes = []
+            temp_races = []
+            temp_advances = []
         elif nav.element == "[special_note]":
             has_special_notes = True
         # the glob pattern matches any WML tag starting with filter, including [filter] itself

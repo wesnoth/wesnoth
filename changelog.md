@@ -40,6 +40,7 @@
    * Removed map scaling algorithm customization. Nearest-neighbor scaling will now
      always be used.
    * Make wmllint ignore race= keys if they are part of filters inside [unit_type] (issue #4105)
+   * Removed a few assserts from wmllint and postponed a few unit sanity checks to the closing of a [unit_type] tag (issue #4102)
 
 ## Version 1.15.2
  ### AI:
