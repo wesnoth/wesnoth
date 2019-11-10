@@ -1132,6 +1132,41 @@ public:
 	};
 
 	using upkeep_t = boost::variant<upkeep_full, upkeep_loyal, int>;
+	
+	/** Visitor helper class to parse the upkeep value from a config. */
+	class upkeep_parser_visitor : public boost::static_visitor<upkeep_t>
+	{
+	public:
+		template<typename N>
+		std::enable_if_t<std::is_arithmetic<N>::value, upkeep_t>
+		operator()(N n) const
+		{
+			if(n == 0) return upkeep_loyal();
+			if(n < 0) throw std::invalid_argument(std::to_string(n));
+			return n;
+		}
+		
+		template<typename B>
+		std::enable_if_t<std::is_convertible<B, bool>::value && !std::is_arithmetic<B>::value, upkeep_t>
+		operator()(B b) const
+		{
+			throw std::invalid_argument(b.str());
+		}
+		
+		upkeep_t operator()(boost::blank) const
+		{
+			return upkeep_full();
+		}
+		
+		upkeep_t operator()(const std::string& s) const
+		{
+			if(s == "loyal" || s == "free")
+				return upkeep_loyal();
+			if(s == "full")
+				return upkeep_full();
+			throw std::invalid_argument(s);
+		}
+	};
 
 	/**
 	 * Gets the raw variant controlling the upkeep value.

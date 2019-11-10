@@ -2635,16 +2635,10 @@ void unit::parse_upkeep(const config::attribute_value& upkeep)
 		return;
 	}
 
-	// TODO: create abetter way to check whether it is actually an int.
-	int upkeep_int = upkeep.to_int(-99);
-	if(upkeep_int != -99) {
-		upkeep_ = upkeep_int;
-	} else if(upkeep == upkeep_loyal::type() || upkeep == "free") {
-		upkeep_ = upkeep_loyal();
-	} else if(upkeep == upkeep_full::type()) {
-		upkeep_ = upkeep_full();
-	} else {
-		WRN_UT << "Found invalid upkeep=\"" << upkeep <<  "\" in a unit" << std::endl;
+	try {
+		upkeep_ = upkeep.apply_visitor(upkeep_parser_visitor());
+	} catch(std::invalid_argument& e) {
+		WRN_UT << "Found invalid upkeep=\"" << e.what() <<  "\" in a unit" << std::endl;
 		upkeep_ = upkeep_full();
 	}
 }
