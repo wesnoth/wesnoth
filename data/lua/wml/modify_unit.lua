@@ -7,12 +7,13 @@ local wml_actions = wesnoth.wml_actions
 --  in the first part of this file and the fallback (old) implementation in the
 --  second part of this file
 
-local function split_to_array(str, sep)
+local function split_to_array(str)
 	-- Split string @str into a table using the delimiter @sep (default: ',')
 
-	local sep, fields = sep or ",", {}
-	local pattern = string.format("([^%s]+)", sep)
-	string.gsub(str, pattern, function(c) fields[#fields+1] = c end)
+	local fields = {}
+	for c in utils.split(str) do
+		fields[#fields+1] = c
+	end
 	return fields
 end
 
