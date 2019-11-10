@@ -28,6 +28,7 @@
      into account.
  ### Lua API
  ### WML engine
+   * Support upkeep in StandardUnitFilter
  ### Packaging
    * The Wesnoth client now looks for the data/dist file when logging into the multiplayer server.
      This file should contain one of the following values based on where the package is for:
