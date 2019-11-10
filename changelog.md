@@ -27,6 +27,7 @@
    * The search box in the Campaigns menu now takes campaign abbreviations and descriptions (in the current language)
      into account.
  ### Lua API
+   * unit:transform() now takes an optional variation parameter
  ### WML engine
    * Support upkeep in StandardUnitFilter
  ### Packaging
