@@ -15,6 +15,8 @@
    * Updated translations: Chinese (Traditional), French, Portuguese (Brazil),
      Russian
  ### Terrains
+   * Add Stone Walls variation Catacombs (Xot) including some overlays
+   * Fixes and touchups to mushroom terrains Tb and Tf
  ### User interface
    * "Core" type add-ons are now only accessible via hotkey.
    * Removed "Classic" in-game theme.
