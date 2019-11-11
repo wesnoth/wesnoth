@@ -20,6 +20,7 @@
  ### User interface
    * "Core" type add-ons are now only accessible via hotkey.
    * Removed "Classic" in-game theme.
+   * Textboxes now have a hover effect.
  ### Units
    * Add mushroom defense cap to mounted and some flying units
    * Dwarvish Lord and Steelclad: reduce hitpoints by 3 and reduce impact and pierce resistance to 20%
