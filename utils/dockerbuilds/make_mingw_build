@@ -1,0 +1,5 @@
+#!/bin/sh -xe
+
+cd mingw
+docker build -t mingw-wesnoth .
+docker run -it -v "$PWD"/../../..:/wesnoth -v "$PWD"/../mingwbuild:/output mingw-wesnoth

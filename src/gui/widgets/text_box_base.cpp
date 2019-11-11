@@ -61,6 +61,11 @@ text_box_base::text_box_base(const implementation::builder_styled_widget& builde
 	connect_signal<event::LOSE_KEYBOARD_FOCUS>(
 			std::bind(&text_box_base::signal_handler_lose_keyboard_focus, this, _2));
 
+	connect_signal<event::MOUSE_ENTER>(
+			std::bind(&text_box_base::signal_handler_mouse_enter, this, _2, _3));
+	connect_signal<event::MOUSE_LEAVE>(
+			std::bind(&text_box_base::signal_handler_mouse_leave, this, _2, _3));
+
 	toggle_cursor_timer(true);
 }
 
@@ -656,4 +661,27 @@ void text_box_base::signal_handler_lose_keyboard_focus(const event::ui_event eve
 	set_state(ENABLED);
 }
 
+void text_box_base::signal_handler_mouse_enter(const event::ui_event event,
+											   bool& handled)
+{
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+
+	if(state_ != FOCUSED) {
+		set_state(HOVERED);
+	}
+
+	handled = true;
+}
+
+void text_box_base::signal_handler_mouse_leave(const event::ui_event event,
+											   bool& handled)
+{
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+
+	if(state_ != FOCUSED) {
+		set_state(ENABLED);
+	}
+
+	handled = true;
+}
 } // namespace gui2

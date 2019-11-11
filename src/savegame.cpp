@@ -61,7 +61,8 @@ namespace savegame {
 bool save_game_exists(std::string name, compression::format compressed)
 {
 	name += compression::format_extension(compressed);
-	return filesystem::file_exists(filesystem::get_saves_dir() + "/" + name);
+	auto manager = save_index_class::default_saves_dir();
+	return filesystem::file_exists(manager->dir() + "/" + name);
 }
 
 void clean_saves(const std::string& label)
@@ -69,18 +70,19 @@ void clean_saves(const std::string& label)
 	const std::string prefix = label + "-" + _("Auto-Save");
 	LOG_SAVE << "Cleaning saves with prefix '" << prefix << "'\n";
 
-	for(const auto& save : get_saves_list()) {
+	auto manager = save_index_class::default_saves_dir();
+	for(const auto& save : manager->get_saves_list()) {
 		if(save.name().compare(0, prefix.length(), prefix) == 0) {
 			LOG_SAVE << "Deleting savegame '" << save.name() << "'\n";
-			delete_game(save.name());
+			manager->delete_game(save.name());
 		}
 	}
 }
 
-loadgame::loadgame(const config& game_config, saved_game& gamestate)
+loadgame::loadgame(const std::shared_ptr<save_index_class>& index, const config& game_config, saved_game& gamestate)
 	: game_config_(game_config)
 	, gamestate_(gamestate)
-	, load_data_()
+	, load_data_(index)
 {}
 
 bool loadgame::show_difficulty_dialog()
@@ -136,11 +138,16 @@ bool loadgame::load_game_ingame()
 		}
 	}
 
+	if(!load_data_.manager) {
+		ERR_SAVE << "Null pointer in save index" << std::endl;
+		return false;
+	}
+
 	load_data_.show_replay |= is_replay_save(load_data_.summary);
 
 	// Confirm the integrity of the file before throwing the exception.
 	// Use the summary in the save_index for this.
-	const config & summary = save_index_manager.get(load_data_.filename);
+	const config & summary = load_data_.manager->get(load_data_.filename);
 
 	if (summary["corrupt"].to_bool(false)) {
 		gui2::show_error_message(
@@ -177,8 +184,13 @@ bool loadgame::load_game()
 		}
 	}
 
+	if(!load_data_.manager) {
+		ERR_SAVE << "Null pointer in save index" << std::endl;
+		return false;
+	}
+
 	std::string error_log;
-	read_save_file(load_data_.filename, load_data_.load_config, &error_log);
+	read_save_file(load_data_.manager->dir(), load_data_.filename, load_data_.load_config, &error_log);
 
 	convert_old_saves(load_data_.load_config);
 
@@ -276,6 +288,11 @@ bool loadgame::load_multiplayer_game()
 		return false;
 	}
 
+	if(!load_data_.manager) {
+		ERR_SAVE << "Null pointer in save index" << std::endl;
+		return false;
+	}
+
 	// read_save_file needs to be called before we can verify the classification so the data has
 	// been populated. Since we do that, we report any errors in that process first.
 	std::string error_log;
@@ -283,7 +300,7 @@ bool loadgame::load_multiplayer_game()
 		cursor::setter cur(cursor::WAIT);
 		log_scope("load_game");
 
-		read_save_file(load_data_.filename, load_data_.load_config, &error_log);
+		read_save_file(load_data_.manager->dir(), load_data_.filename, load_data_.load_config, &error_log);
 		copy_era(load_data_.load_config);
 	}
 
@@ -328,6 +345,7 @@ void loadgame::copy_era(config &cfg)
 savegame::savegame(saved_game& gamestate, const compression::format compress_saves, const std::string& title)
 	: filename_()
 	, title_(title)
+	, save_index_manager_(save_index_class::default_saves_dir())
 	, gamestate_(gamestate)
 	, error_message_(_("The game could not be saved: "))
 	, show_confirmation_(false)
@@ -448,7 +466,7 @@ bool savegame::save_game(const std::string& filename)
 		// a player saves a game and exits the game or reloads the cache, the leader image will
 		// only be available within that specific binary context (when playing another game from
 		// the came campaign, for example).
-		save_index_manager.rebuild(filename_);
+		save_index_manager_->rebuild(filename_);
 
 		end = SDL_GetTicks();
 		LOG_SAVE << "Milliseconds to save " << filename_ << ": " << end - start << std::endl;
@@ -506,7 +524,7 @@ void savegame::finish_save_game(const config_writer &out)
 		if(!out.good()) {
 			throw game::save_game_failed(_("Could not write to file"));
 		}
-		save_index_manager.remove(gamestate_.classification().label);
+		save_index_manager_->remove(gamestate_.classification().label);
 	} catch(const filesystem::io_exception& e) {
 		throw game::save_game_failed(e.what());
 	}
@@ -516,7 +534,7 @@ void savegame::finish_save_game(const config_writer &out)
 filesystem::scoped_ostream savegame::open_save_game(const std::string &label)
 {
 	try {
-		return filesystem::ostream_file(filesystem::get_saves_dir() + "/" + label);
+		return filesystem::ostream_file(save_index_manager_->dir() + "/" + label);
 	} catch(const filesystem::io_exception& e) {
 		throw game::save_game_failed(e.what());
 	}
@@ -573,7 +591,8 @@ void autosave_savegame::autosave(const bool disable_autosave, const int autosave
 
 	save_game_automatic();
 
-	remove_old_auto_saves(autosave_max, infinite_autosaves);
+	auto manager = save_index_class::default_saves_dir();
+	manager->delete_old_auto_saves(autosave_max, infinite_autosaves);
 }
 
 std::string autosave_savegame::create_initial_filename(unsigned int turn_number) const

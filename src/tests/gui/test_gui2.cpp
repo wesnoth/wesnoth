@@ -34,7 +34,6 @@
 #include "gui/dialogs/addon/connect.hpp"
 #include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/addon/manager.hpp"
-#include "gui/dialogs/advanced_graphics_options.hpp"
 #include "gui/dialogs/attack_predictions.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
@@ -111,6 +110,7 @@
 #include "language.hpp"
 #include "map/map.hpp"
 #include "replay.hpp"
+#include "save_index.hpp"
 #include "saved_game.hpp"
 #include "terrain/type_data.hpp"
 #include "tests/utils/fake_display.hpp"
@@ -421,7 +421,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	/* The modal_dialog classes. */
 	test<addon_connect>();
 	//test<addon_manager>();
-	test<advanced_graphics_options>();
 	//test<attack_predictions>();
 	test<campaign_difficulty>();
 	test<campaign_selection>();
@@ -740,7 +739,9 @@ template<>
 struct dialog_tester<game_load>
 {
 	config cfg;
-	savegame::load_game_metadata data;
+	// It would be good to have a test directory instead of using the same directory as the player,
+	// however this code will support that - default_saves_dir() will respect --userdata-dir.
+	savegame::load_game_metadata data{savegame::save_index_class::default_saves_dir()};
 	dialog_tester()
 	{
 		/** @todo Would be nice to add real data to the config. */

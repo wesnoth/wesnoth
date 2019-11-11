@@ -5,22 +5,35 @@
      * Remove dark adepts from recruit list
      * Add special units and AMLA paths
      * Revised dialogue
-     * S2: add extra events
-     * S4: add extra events
+     * Increased map interactability
+     * S3: reworked scenario
      * S5: adjust enemy recruits and gold
-     * S6: add extra events
    * Secrets of the Ancients:
      * Prevent hero death from triggering new corpse recruitable dialog (issue #4503)
  ### Editor
  ### Language and i18n
-   * Updated translations: Chinese (Traditional), French
+   * Updated translations: Chinese (Traditional), French, Portuguese (Brazil),
+     Russian
  ### Terrains
+   * Add Stone Walls variation Catacombs (Xot) including some overlays
+   * Fixes and touchups to mushroom terrains Tb and Tf
+ ### User interface
+   * "Core" type add-ons are now only accessible via hotkey.
+   * Removed "Classic" in-game theme.
+   * Textboxes now have a hover effect.
  ### Units
    * Add mushroom defense cap to mounted and some flying units
    * Dwarvish Lord and Steelclad: reduce hitpoints by 3 and reduce impact and pierce resistance to 20%
+   * Dunefolk: rebalancing and renaming of various units
  ### User interface
+   * The load-game dialog can now see the directories used by Wesnoth 1.14, 1.12, etc.
+   * The search box in the Campaigns menu now takes campaign abbreviations and descriptions (in the current language)
+     into account.
  ### Lua API
+   * unit:transform() now takes an optional variation parameter
  ### WML engine
+   * Support upkeep in StandardUnitFilter
+   * [effect]apply_to=variation now supports heal_full
  ### Packaging
    * The Wesnoth client now looks for the data/dist file when logging into the multiplayer server.
      This file should contain one of the following values based on where the package is for:
@@ -28,6 +41,11 @@
  ### Miscellaneous and bug fixes
    * Fix --userdata-dir deprecation warning being printed when starting wesnoth without arguments
      when -DPREFERENCES_DIR="..." was defined at compile time.
+   * Make wmllint recognize `[load_resource]` (issue #4538).
+   * Removed map scaling algorithm customization. Nearest-neighbor scaling will now
+     always be used.
+   * Make wmllint ignore race= keys if they are part of filters inside [unit_type] (issue #4105)
+   * Removed a few assserts from wmllint and postponed a few unit sanity checks to the closing of a [unit_type] tag (issue #4102)
 
 ## Version 1.15.2
  ### AI:
@@ -323,6 +341,7 @@
    * Auction X: Exclude the center side from "shuffle sides"
  ### Units
    * Sun Singer and Sun Sylph: modify faerie fire colors
+   * Add various new death, standing, and idle animations
  ### User interface
    * Draw ellipses during draw/sheath animations. (Issue#1527)
    * In the combat dialog and elsewhere, clicking the "Profile" button opens
@@ -336,6 +355,7 @@
    * New help topic outlining common (and less commons) reasons for losing a scenario. (PR#4217)
    * Add help text for some debug commands (part of Issue#2500)
    * More deprecation warnings logged by default (part of PR#4449)
+   * Make wmllint recognize `[load_resource]` (issue #4538).
 
 ## Version 1.14.9
  ### AI:

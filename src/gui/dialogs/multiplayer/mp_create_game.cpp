@@ -17,6 +17,9 @@
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
 
 #include "filesystem.hpp"
+#include "formatter.hpp"
+#include "formula/string_utils.hpp"
+#include "game_config.hpp"
 #include "game_config_manager.hpp"
 #include "game_initialization/lobby_data.hpp"
 #include "gettext.hpp"
@@ -27,12 +30,8 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/integer_selector.hpp"
-#include "gui/widgets/menu_button.hpp"
-#include "preferences/game.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "formatter.hpp"
-#include "formula/string_utils.hpp"
-#include "game_config.hpp"
+#include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
@@ -42,8 +41,10 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "log.hpp"
-#include "savegame.hpp"
 #include "map_settings.hpp"
+#include "preferences/game.hpp"
+#include "save_index.hpp"
+#include "savegame.hpp"
 
 #include <boost/algorithm/string.hpp>
 
@@ -789,7 +790,7 @@ void mp_create_game::update_map_settings()
 
 void mp_create_game::load_game_callback(window& window)
 {
-	savegame::loadgame load(cfg_, create_engine_.get_state());
+	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), cfg_, create_engine_.get_state());
 
 	if(!load.load_multiplayer_game()) {
 		return;

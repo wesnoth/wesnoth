@@ -874,12 +874,12 @@ linechanges = (
         # renamed dunefolk units
         # images
         ("units/dunefolk/arif.png", "units/dunefolk/soldier.png"),
-        ("units/dunefolk/batal.png", "units/dunefolk/ranger.png"),
+        ("units/dunefolk/batal.png", "units/dunefolk/wayfarer.png"),
         ("units/dunefolk/faris.png", "units/dunefolk/sunderer.png"),
         ("units/dunefolk/ghazi.png", "units/dunefolk/swordsman.png"),
         ("units/dunefolk/hadaf.png", "units/dunefolk/marauder.png"),
         ("units/dunefolk/hakim.png", "units/dunefolk/herbalist.png"),
-        ("units/dunefolk/jawal.png", "units/dunefolk/windrider.png"),
+        ("units/dunefolk/jawal.png", "units/dunefolk/windbolt.png"),
         ("units/dunefolk/jundi.png", "units/dunefolk/rover.png"),
         ("units/dunefolk/khaiyal.png", "units/dunefolk/piercer.png"),
         ("units/dunefolk/khalid.png", "units/dunefolk/warmaster.png"),
@@ -893,11 +893,18 @@ linechanges = (
         ("units/dunefolk/qatif-al-nar.png", "units/dunefolk/scorcher.png"),
         ("units/dunefolk/rami.png", "units/dunefolk/rider.png"),
         ("units/dunefolk/rasikh.png", "units/dunefolk/spearmaster.png"),
-        ("units/dunefolk/saree.png", "units/dunefolk/swiftrider.png"),
+        ("units/dunefolk/saree.png", "units/dunefolk/horse-archer.png"),
         ("units/dunefolk/shuja.png", "units/dunefolk/blademaster.png"),
         ("units/dunefolk/tabib.png", "units/dunefolk/apothecary.png"),
         ("units/dunefolk/tineen.png", "units/dunefolk/firetrooper.png"),
         ("images/portraits/dunefolk/hakim.png", "images/portraits/dunefolk/herbalist.png"),
+
+        # second round of renaming
+        ("units/dunefolk/ranger.png", "units/dunefolk/wayfarer.png"),
+        ("units/dunefolk/windrider.png", "units/dunefolk/windbolt.png"),
+        ("units/dunefolk/swiftrider.png", "units/dunefolk/horse-archer.png"),
+        ("units/nagas/slasher.png", "units/nagas/dirkfang.png"),
+        ("units/nagas/bladewhirler.png", "units/nagas/ophidian.png"),
 
         # unit ids
         ("Arif", "Dune Soldier"),
@@ -912,7 +919,7 @@ linechanges = (
         ("Monawish", "Dune Skirmisher"),
         ("Mighwar", "Dune Harrier"),
         ("Muharib", "Dune Explorer"),
-        ("Batal", "Dune Ranger"),
+        ("Batal", "Dune Wayfarer"),
         ("Khaiyal", "Dune Piercer"),
         ("Faris", "Dune Sunderer"),
         ("Mufariq", "Dune Cataphract"),
@@ -923,8 +930,15 @@ linechanges = (
         ("Qatif_al_nar", "Dune Scorcher"),
         ("Tineen", "Dune Firetrooper"),
         ("Rami", "Dune Rider"),
-        ("Saree", "Dune Swiftrider"),
-        ("Jawal", "Dune Windrider"),
+        ("Saree", "Dune Horse Archer"),
+        ("Jawal", "Dune Windbolt"),
+
+        # second round of renaming
+        ("Dune Ranger", "Dune Wayfarer"),
+        ("Dune Swiftrider", "Dune Horse Archer"),
+        ("Dune Windrider", "Dune Windbolt"),
+        ("Naga Slasher", "Naga Dirkfang"),
+        ("Naga Bladewhirler", "Naga Ophidian"),
 
         # Changed in 1.15.0: separate portrait for leader
         ("portraits/orcs/leader.png", "portraits/orcs/ruler.png"),
@@ -1455,10 +1469,26 @@ def global_sanity_check(filename, lines):
             has_special_notes = False
             in_unit_type = nav.lineno + 1
             hitpoints_specified = False
+            unit_usage = ""
+            temp_movetypes = []
+            temp_races = []
+            temp_advances = []
             continue
         elif nav.element == "[/unit_type]":
             #print('"%s", %d: unit has traits %s and notes %s' \
             #      % (filename, in_unit_type, traits, notes))
+            if unit_id and unit_usage:
+                usage[unit_id] = unit_usage
+            if unit_id and temp_movetypes:
+                for movetype in temp_movetypes:
+                    # movetype, race and advance are 3-element tuples, expand them
+                    unit_movetypes.append((unit_id, *movetype))
+            if unit_id and temp_races:
+                for race in temp_races:
+                    unit_races.append((unit_id, *race))
+            if unit_id and temp_advances:
+                for advance in temp_advances:
+                    advances.append((unit_id, *advance)) 
             if unit_id and base_unit:
                 derived_units.append((filename, nav.lineno + 1, unit_id, base_unit))
             if unit_id and not base_unit:
@@ -1496,9 +1526,14 @@ def global_sanity_check(filename, lines):
             base_unit = ""
             has_special_notes = False
             unit_race = None
+            unit_usage = ""
+            temp_movetypes = []
+            temp_races = []
+            temp_advances = []
         elif nav.element == "[special_note]":
             has_special_notes = True
-        if '[unit_type]' in nav.ancestors() and "[filter_attack]" not in nav.ancestors():
+        # the glob pattern matches any WML tag starting with filter, including [filter] itself
+        if '[unit_type]' in nav.ancestors() and not nav.glob_ancestors("[[]filter*[]]"):
             try:
                 (key, prefix, value, comment) = parse_attribute(nav.text)
                 if key == "id":
@@ -1731,6 +1766,7 @@ def global_sanity_check(filename, lines):
     in_facet = False
     in_sound_source = False
     in_remove_sound_source = False
+    in_load_resource = False
     in_message = False
     in_option = False
     #last index is true: we're currently directly in an [event]
@@ -1839,6 +1875,10 @@ def global_sanity_check(filename, lines):
             in_remove_sound_source = True
         elif "[/remove_sound_source]" in lines[i]:
             in_remove_sound_source = False
+        elif "[load_resource]" in lines[i]:
+            in_load_resource = True
+        elif "[/load_resource]" in lines[i]:
+            in_load_resource = False
         elif "[message]" in lines[i]:
             in_message = True
         elif "[/message]" in lines[i]:
@@ -2119,7 +2159,8 @@ def global_sanity_check(filename, lines):
                     elif preamble_seen and subtag_depth > 0 and not ignore_id \
                          and not in_object and not in_cfg and not in_aspect \
                          and not in_facet and not in_sound_source \
-                         and not in_remove_sound_source and not in_stage \
+                         and not in_remove_sound_source and not in_load_resource \
+                         and not in_stage \
                          and not in_goal and not in_set_menu_item \
                          and not in_clear_menu_item and not directly_in_event[-1] \
                          and not in_time_area and not in_trait and not in_checkbox \
@@ -2316,11 +2357,17 @@ def hack_syntax(filename, lines):
                 print('"%s", line %d: %s -> %s -- DO NOT PREFIX PATHS WITH "userdata/"' \
                       % (filename, i+1, userdata.group(), userdata.group(1)))
         lines[i] = precomment + comment
+
     # Ensure that every attack has a translatable description.
+    in_filter_wml = False
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
 
             break
+        elif "[filter_wml]" in lines[i]:
+            in_filter_wml = True
+        elif "[/filter_wml]" in lines[i]:
+            in_filter_wml = False
         elif "[attack]" in lines[i]:
             j = i
             have_description = False
@@ -2342,7 +2389,7 @@ def hack_syntax(filename, lines):
                             description = '"' + description + '"\n'
                         # Skip the insertion if this is a dummy declaration
                         # or one modifying an attack inherited from a base unit.
-                        if "no-icon" not in comment:
+                        if "no-icon" not in comment and not in_filter_wml:
                             new_line = leader(syntactic) + "description=_"+description
                             if verbose:
                                 print('"%s", line %d: inserting %s' % (filename, i+1, repr(new_line)))

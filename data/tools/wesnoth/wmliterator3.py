@@ -24,6 +24,7 @@ Limitations:
 
 from functools import total_ordering
 import sys, re, copy, codecs
+import fnmatch
 keyPattern = re.compile('(\w+)(,\s?\w+)*\s*=')
 keySplit = re.compile(r'[=,\s]')
 tagPattern = re.compile(r'(^|(?<![\w|}]))(\[/?\+?[a-z _]+\])')
@@ -376,6 +377,14 @@ Important Attributes:
     def ancestors(self):
         """Return a list of tags enclosing this location, outermost first."""
         return tuple([x.element for x in self.scopes])
+
+    def glob_ancestors(self, pattern):
+        """Returns True if at least one ancestor matches the supplied
+        case-sensitive glob pattern"""
+        for scope in self.scopes:
+            if fnmatch.fnmatchcase(scope.element, pattern):
+                return True
+        return False
 
     def hasNext(self):
         """Some loops may wish to check this method instead of calling next()

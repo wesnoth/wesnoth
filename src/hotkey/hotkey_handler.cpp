@@ -549,5 +549,6 @@ hotkey::ACTION_STATE play_controller::hotkey_handler::get_action_state(hotkey::H
 
 void play_controller::hotkey_handler::load_autosave(const std::string& filename)
 {
-	throw savegame::load_game_exception(filename);
+	throw savegame::load_game_exception(
+			savegame::load_game_metadata{savegame::save_index_class::default_saves_dir(), filename});
 }

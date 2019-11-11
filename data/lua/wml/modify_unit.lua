@@ -7,12 +7,13 @@ local wml_actions = wesnoth.wml_actions
 --  in the first part of this file and the fallback (old) implementation in the
 --  second part of this file
 
-local function split_to_array(str, sep)
+local function split_to_array(str)
 	-- Split string @str into a table using the delimiter @sep (default: ',')
 
-	local sep, fields = sep or ",", {}
-	local pattern = string.format("([^%s]+)", sep)
-	string.gsub(str, pattern, function(c) fields[#fields+1] = c end)
+	local fields = {}
+	for c in utils.split(str) do
+		fields[#fields+1] = c
+	end
 	return fields
 end
 
@@ -45,6 +46,7 @@ local known_attributes = make_set {
 	"resting",
 	"canrecruit",
 	"type",
+	"variation",
 }
 
 local known_tags = make_set {
@@ -87,7 +89,7 @@ local function simple_modify_unit(cfg)
 	-- todo: investigate the follwoing attrtibutes:
 	--       id, ellipse, recall_cost, alpha, flying,
 	--       hidden, halo, description, overlays, unrenamable
-	-- and tags: [status] [variables]
+	-- and tags: [variables]
 	local simple_attributes = {
 		"side",
 		"name",
@@ -143,12 +145,12 @@ local function simple_modify_unit(cfg)
 			end
 		end
 
-		-- handle 'type' last.
+		-- handle 'type' and 'variation' last.
 		if cfg.type == "" then
 			u.experience = u.max_experience
-		elseif cfg.type then
+		elseif cfg.type or cfg.variation then
 			u.experience = 0
-			u:transform(cfg.type)
+			u:transform(cfg.type or u.type, cfg.variation)
 		end
 
 		-- always do an advancement here (not only when experience/max_experience/type was modified)
