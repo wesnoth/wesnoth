@@ -276,6 +276,7 @@ public:
 		ENABLED,
 		DISABLED,
 		FOCUSED,
+		HOVERED,
 	};
 
 private:
@@ -517,6 +518,9 @@ private:
 
 	void signal_handler_receive_keyboard_focus(const event::ui_event event);
 	void signal_handler_lose_keyboard_focus(const event::ui_event event);
+
+	void signal_handler_mouse_enter(const event::ui_event event, bool& handled);
+	void signal_handler_mouse_leave(const event::ui_event event, bool& handled);
 };
 
 } // namespace gui2
