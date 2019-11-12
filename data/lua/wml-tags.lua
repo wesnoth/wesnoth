@@ -105,11 +105,12 @@ function wml_actions.store_gold(cfg)
 	if team then wml.variables[cfg.variable or "gold"] = team.gold end
 end
 
-function wml_actions.clear_variable(cfg)
+function wml_actions.clear_variable(cfg, variables)
 	local names = cfg.name or
 		helper.wml_error "[clear_variable] missing required name= attribute."
+	if variables == nil then variables = wml.variables end
 	for w in utils.split(names) do
-		wml.variables[utils.trim(w)] = nil
+		variables[utils.trim(w)] = nil
 	end
 end
 

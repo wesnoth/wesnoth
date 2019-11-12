@@ -40,6 +40,7 @@
 
 // Registry key
 static const char * Team = "side";
+static const char teamVar[] = "side variables";
 
 /**
  * Gets some data on a side (__index metamethod).
@@ -100,6 +101,13 @@ static int impl_side_get(lua_State *L)
 			lua_pushstring(L, r.c_str());
 			lua_rawseti(L, -2, i++);
 		}
+		return 1;
+	}
+	if(strcmp(m, "variables") == 0) {
+		lua_createtable(L, 1, 0);
+		lua_pushvalue(L, 1);
+		lua_rawseti(L, -2, 1);
+		luaL_setmetatable(L, teamVar);
 		return 1;
 	}
 
@@ -212,10 +220,67 @@ static int impl_side_equal(lua_State *L)
 	return 1;
 }
 
+/**
+ * Gets the variable of a side (__index metamethod).
+ * - Arg 1: table containing the userdata containing the side id.
+ * - Arg 2: string containing the name of the status.
+ * - Ret 1: boolean.
+ */
+static int impl_side_variables_get(lua_State *L)
+{
+	if(!lua_istable(L, 1)) {
+		return luaW_type_error(L, 1, "side variables");
+	}
+	lua_rawgeti(L, 1, 1);
+	const team& side = luaW_checkteam(L, -1);
+	
+	char const *m = luaL_checkstring(L, 2);
+	return_cfgref_attrib("__cfg", side.variables());
+
+	variable_access_const v(m, side.variables());
+	return luaW_pushvariable(L, v) ? 1 : 0;
+}
+
+/**
+ * Sets the variable of a side (__newindex metamethod).
+ * - Arg 1: table containing the userdata containing the side id.
+ * - Arg 2: string containing the name of the status.
+ * - Arg 3: scalar.
+ */
+static int impl_side_variables_set(lua_State *L)
+{
+	if(!lua_istable(L, 1)) {
+		return luaW_type_error(L, 1, "side variables");
+	}
+	lua_rawgeti(L, 1, 1);
+	team& side = luaW_checkteam(L, -1);
+	
+	char const *m = luaL_checkstring(L, 2);
+	if(strcmp(m, "__cfg") == 0) {
+		side.variables() = luaW_checkconfig(L, 3);
+		return 0;
+	}
+	config& vars = side.variables();
+	if(lua_isnoneornil(L, 3)) {
+		try {
+			variable_access_throw(m, vars).clear(false);
+		} catch(const invalid_variablename_exception&) {
+		}
+		return 0;
+	}
+	variable_access_create v(m, vars);
+	luaW_checkvariable(L, v, 3);
+	return 0;
+}
+
 namespace lua_team {
 
 	std::string register_metatable(lua_State * L)
 	{
+		std::ostringstream cmd_out;
+
+		cmd_out << "Adding getside metatable...\n";
+		
 		luaL_newmetatable(L, Team);
 
 		static luaL_Reg const callbacks[] {
@@ -232,7 +297,18 @@ namespace lua_team {
 		luaW_getglobal(L, "wesnoth", "match_side");
 		lua_setfield(L, -2, "matches");
 
-		return "Adding getside metatable...\n";
+		// Create the side variables metatable.
+		cmd_out << "Adding side variables metatable...\n";
+
+		luaL_newmetatable(L, teamVar);
+		lua_pushcfunction(L, impl_side_variables_get);
+		lua_setfield(L, -2, "__index");
+		lua_pushcfunction(L, impl_side_variables_set);
+		lua_setfield(L, -2, "__newindex");
+		lua_pushstring(L, "side variables");
+		lua_setfield(L, -2, "__metatable");
+		
+		return cmd_out.str();
 	}
 }
 
