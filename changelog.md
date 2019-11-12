@@ -32,7 +32,7 @@
    * Dunefolk: rebalancing and renaming of various units
  ### User interface
    * The load-game dialog can now see the directories used by Wesnoth 1.14, 1.12, etc.
-   * The search box in the Campaigns menu now takes campaign abbreviations and descriptions (in the current language)
+   * The search box in the Campaigns menu now takes campaign abbreviations and descriptions
      into account.
  ### Lua API
    * unit:transform() now takes an optional variation parameter
