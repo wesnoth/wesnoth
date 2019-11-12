@@ -21,6 +21,8 @@
    * "Core" type add-ons are now only accessible via hotkey.
    * Removed "Classic" in-game theme.
    * Textboxes now have a hover effect.
+   * Added the Private Replay checkbox to the Multiplayer Create Game screen. This separates
+     whether observers are allowed from whether the replay will be publicly available.
  ### Units
    * Add mushroom defense cap to mounted and some flying units
    * Decreased hitpoints of Dwarvish Lord from 79 to 74
