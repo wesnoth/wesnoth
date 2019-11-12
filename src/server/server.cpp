@@ -1744,7 +1744,10 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 
 		if(user_handler_) {
 			const simple_wml::node& m = *g.level().root().child("multiplayer");
-			user_handler_->db_update_game_start(uuid_, g.id(), m["mp_scenario"].to_string(), m["mp_era"].to_string(), g.is_reload(), m["observer"].to_bool(), !m["private_replay"].to_bool(), g.has_password());
+			// 1.14.9 and earlier also use whether observers are allowed to determine if the replay should be public
+			// 1.14.10+ have a separate attribute for that
+			bool is_public = m["private_replay"].to_string() == "" ? m["observer"].to_bool() : !m["private_replay"].to_bool();
+			user_handler_->db_update_game_start(uuid_, g.id(), m["mp_scenario"].to_string(), m["mp_era"].to_string(), g.is_reload(), m["observer"].to_bool(), is_public, g.has_password());
 
 			const simple_wml::node::child_list& sides = g.get_sides_list();
 			for(unsigned side_index = 0; side_index < sides.size(); ++side_index) {
