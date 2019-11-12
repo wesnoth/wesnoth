@@ -34,7 +34,7 @@
      the help on the correct unit variation (e.g., Walking Corpse (Swimmer))
      (issue #4142).
    * Ensure enough space to display turn numbers in the hundreds.
-   * The search box in the Campaigns menu now takes campaign abbreviations and descriptions (in the current language)
+   * The search box in the Campaigns menu now takes campaign abbreviations and descriptions
      into account.
  ### Packaging
    * The Wesnoth client now looks for the data/dist file when logging into the multiplayer server.

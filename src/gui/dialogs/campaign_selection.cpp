@@ -164,8 +164,11 @@ void campaign_selection::sort_campaigns(window& window, campaign_selection::CAMP
 			bool found = false;
 			for(const auto& word : last_search_words_) {
 				found = translation::ci_search(levels[i]->name(), word) ||
+						translation::ci_search(levels[i]->data()["name"].t_str().base_str(), word) ||
 				        translation::ci_search(levels[i]->description(), word) ||
-				        translation::ci_search(levels[i]->data()["abbrev"], word);
+						translation::ci_search(levels[i]->data()["description"].t_str().base_str(), word) ||
+				        translation::ci_search(levels[i]->data()["abbrev"], word) ||
+						translation::ci_search(levels[i]->data()["abbrev"].t_str().base_str(), word);
 
 				if(!found) {
 					break;
