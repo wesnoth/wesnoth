@@ -225,6 +225,11 @@ public:
 		parameters_.registered_users_only = val;
 	}
 
+	void set_private_replay(bool val)
+	{
+		parameters_.private_replay = val;
+	}
+
 	void set_oos_debug(bool val)
 	{
 		state_.classification().oos_debug = val;

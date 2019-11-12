@@ -221,6 +221,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 	, shuffle_sides(game["shuffle_sides"].to_bool(true))
 	, use_map_settings(game["mp_use_map_settings"].to_bool())
 	, registered_users_only(game["registered_users_only"].to_bool())
+	, private_replay(game["private_replay"].to_bool())
 	, verified(true)
 	, password_required(game["password"].to_bool())
 	, have_era(true)
