@@ -36,6 +36,8 @@
    * Ensure enough space to display turn numbers in the hundreds.
    * The search box in the Campaigns menu now takes campaign abbreviations and descriptions
      into account.
+   * Added the Private Replay checkbox to the Multiplayer Create Game screen. This separates
+     whether observers are allowed from whether the replay will be publicly available.
  ### Packaging
    * The Wesnoth client now looks for the data/dist file when logging into the multiplayer server.
      This file should contain one of the following values based on where the package is for:
