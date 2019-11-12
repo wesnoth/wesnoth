@@ -23,7 +23,10 @@
    * Textboxes now have a hover effect.
  ### Units
    * Add mushroom defense cap to mounted and some flying units
-   * Dwarvish Lord and Steelclad: reduce hitpoints by 3 and reduce impact and pierce resistance to 20%
+   * Dwarvish Lord: reduce hitpoints by 5
+   * Dwarvish Steelclad: reduce hitpoints by 4
+   * Dwarvish Thunderguard and Pathfinder: increase hitpoints by 3
+   * Dwarvish Stalwart and Sentinel: increase melee damage by 1
    * Dunefolk: rebalancing and renaming of various units
  ### User interface
    * The load-game dialog can now see the directories used by Wesnoth 1.14, 1.12, etc.
