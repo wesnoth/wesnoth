@@ -47,6 +47,7 @@
    * Support upkeep in StandardUnitFilter
    * [effect]apply_to=variation now supports heal_full
    * Support [set/clear_variable] inside [modify_unit/side]
+   * Support [variables] in [modify_side], as in [modify_unit]
  ### Packaging
    * The Wesnoth client now looks for the data/dist file when logging into the multiplayer server.
      This file should contain one of the following values based on where the package is for:
