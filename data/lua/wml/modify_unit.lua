@@ -134,7 +134,7 @@ local function simple_modify_unit(cfg)
 		if cfg.ai_special == "guardian" then
 			u.status.guardian = true
 		end
-		if cfg.unrenamable then
+		if cfg.unrenamable ~= nil then
 			u.renamable = not cfg.unrenamable
 		end
 		---------- SIMPLE ATTRIBUTES  ----------
