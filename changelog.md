@@ -41,6 +41,8 @@
    * unit:transform() now takes an optional variation parameter
    * Support side.variables for access to side variables, similar to unit.variables
    * New read-write keys in unit userdata: ellipse, halo, description, renamable
+   * New functions for working with WML: wml.merge, wml.diff, wml.patch
+   * wesnoth.wml_matches_filter renamed to wml.matches_filter (the old name still works)
  ### WML engine
    * Support upkeep in StandardUnitFilter
    * [effect]apply_to=variation now supports heal_full

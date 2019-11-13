@@ -293,6 +293,42 @@ static int intf_wml_matches_filter(lua_State* L)
 	return 1;
 }
 
+static int intf_wml_merge(lua_State* L) {
+	config base = luaW_checkconfig(L, 1);
+	config merge = luaW_checkconfig(L, 2);
+	const std::string mode = lua_isstring(L, 3) ? luaL_checkstring(L, 3) : "merge";
+	if(mode == "append") {
+		base.merge_attributes(merge);
+		base.append_children(merge);
+	} else {
+		if(mode == "replace") {
+			for(const auto& c : merge.all_children_range()) {
+				base.clear_children(c.key);
+			}
+		} else if(mode != "merge") {
+			return luaL_argerror(L, 3, "invalid merge mode - must be merge, append, or replace");
+		}
+		base.merge_with(merge);
+	}
+	luaW_pushconfig(L, base);
+	return 1;
+}
+
+static int intf_wml_diff(lua_State* L) {
+	config lhs = luaW_checkconfig(L, 1);
+	config rhs = luaW_checkconfig(L, 2);
+	luaW_pushconfig(L, lhs.get_diff(rhs));
+	return 1;
+}
+
+static int intf_wml_patch(lua_State* L) {
+	config base = luaW_checkconfig(L, 1);
+	config patch = luaW_checkconfig(L, 2);
+	base.apply_diff(patch);
+	luaW_pushconfig(L, base);
+	return 1;
+}
+
 /**
 * Logs a message
 * Arg 1: (optional) Logger
@@ -649,6 +685,10 @@ lua_kernel_base::lua_kernel_base()
 		{ "load",      &intf_load_wml},
 		{ "parse",     &intf_parse_wml},
 		{ "clone",     &intf_clone_wml},
+		{ "merge",     &intf_wml_merge},
+		{ "diff",     &intf_wml_diff},
+		{ "patch",     &intf_wml_patch},
+		{ "matches_filter", &intf_wml_matches_filter},
 		{ nullptr, nullptr },
 	};
 	lua_newtable(L);
