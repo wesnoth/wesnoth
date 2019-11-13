@@ -1530,8 +1530,6 @@ def global_sanity_check(filename, lines):
             temp_movetypes = []
             temp_races = []
             temp_advances = []
-        elif nav.element == "[special_note]":
-            has_special_notes = True
         # the glob pattern matches any WML tag starting with filter, including [filter] itself
         if '[unit_type]' in nav.ancestors() and not nav.glob_ancestors("[[]filter*[]]"):
             try:
