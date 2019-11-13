@@ -629,13 +629,11 @@ lua_kernel_base::lua_kernel_base()
 
 	static luaL_Reg const callbacks[] {
 		{ "compare_versions",         &intf_compare_versions         		},
-		{ "debug",                    &intf_wml_tostring                           },
 		{ "deprecated_message",       &intf_deprecated_message              },
 		{ "have_file",                &lua_fileops::intf_have_file          },
 		{ "read_file",                &lua_fileops::intf_read_file          },
 		{ "canonical_path",           &lua_fileops::intf_canonical_path     },
 		{ "textdomain",               &lua_common::intf_textdomain   		},
-		{ "tovconfig",                &lua_common::intf_tovconfig		},
 		{ "get_dialog_value",         &lua_gui2::intf_get_dialog_value		},
 		{ "set_dialog_tooltip",       &lua_gui2::intf_set_dialog_tooltip	},
 		{ "set_dialog_active",        &lua_gui2::intf_set_dialog_active		},
@@ -689,6 +687,8 @@ lua_kernel_base::lua_kernel_base()
 		{ "diff",     &intf_wml_diff},
 		{ "patch",     &intf_wml_patch},
 		{ "matches_filter", &intf_wml_matches_filter},
+		{ "tostring",       &intf_wml_tostring},
+		{ "tovconfig",      &lua_common::intf_tovconfig},
 		{ nullptr, nullptr },
 	};
 	lua_newtable(L);
