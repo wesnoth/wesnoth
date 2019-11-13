@@ -59,6 +59,7 @@ local known_tags = make_set {
 	"object",
 	"advancement",
 	"trait",
+	"effect",
 	"filter",
 	"status",
 	"set_variable",
@@ -152,6 +153,13 @@ local function simple_modify_unit(cfg)
 					tagcontent = wml.parsed(tagcontent)
 				end
 				u:add_modification(tagname, tagcontent);
+			elseif tagname == "effect" then
+				local apply_to = tagcontent.apply_to
+				if wesnoth.effects[apply_to] then
+					wesnoth.effects[apply_to](u, tagcontent)
+				else
+					helper.wml_error("[modify_unit] had invalid [effect]apply_to value")
+				end
 			elseif tagname == "status" then
 				for i, v in pairs(tagcontent) do
 					u.status[i] = v
