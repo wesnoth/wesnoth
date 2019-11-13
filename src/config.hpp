@@ -472,7 +472,9 @@ public:
 		const std::string &value) const
 	{ return const_cast<config *>(this)->find_child(key, name, value); }
 
+private:
 	void clear_children_impl(config_key_type key);
+public:
 	template<typename... T>
 	void clear_children(T... keys) {
 		for(auto key : {keys...}) {
