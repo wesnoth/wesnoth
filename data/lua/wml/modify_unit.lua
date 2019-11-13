@@ -53,6 +53,7 @@ local known_attributes = make_set {
 	"description",
 	"hidden",
 	"unrenamable",
+	"rebuild",
 }
 
 local known_tags = make_set {
@@ -179,9 +180,11 @@ local function simple_modify_unit(cfg)
 			u:transform(cfg.type or u.type, cfg.variation)
 		end
 
-		-- always do an advancement here (not only when experience/max_experience/type was modified)
-		-- for compatability with old code.
-		u:advance()
+		-- by default always do an advancement here (not only when experience/max_experience/type was modified)
+		-- for compatibility with old code.
+		if cfg.experience or cfg.max_experience or cfg.rebuild ~= false then
+			u:advance()
+		end
 	end
 
 	local this_unit = utils.start_var_scope("this_unit")
