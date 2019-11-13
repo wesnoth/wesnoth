@@ -82,8 +82,7 @@ bool have_focus = true;
 
 bool use_color_cursors()
 {
-	return false;
-	/*return game_config::editor == false && preferences::use_color_cursors();*/
+	return game_config::editor == false && preferences::use_color_cursors();
 }
 
 SDL_Cursor* create_cursor(surface surf)
