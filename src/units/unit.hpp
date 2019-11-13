@@ -415,6 +415,12 @@ public:
 	{
 		return description_;
 	}
+
+	/** A detailed description of this unit. */
+	void set_unit_description(const t_string& new_desc)
+	{
+		description_ = new_desc;
+	}
 	
 	/** The unit's special notes. */
 	const std::vector<t_string>& unit_special_notes() const

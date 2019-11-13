@@ -315,6 +315,8 @@ static int impl_unit_get(lua_State *L)
 	return_string_attrib("type", u.type_id());
 	return_string_attrib("image_mods", u.effect_image_mods());
 	return_string_attrib("usage", u.usage());
+	return_string_attrib("ellipse", u.image_ellipse());
+	return_string_attrib("halo", u.image_halo());
 	return_int_attrib("hitpoints", u.hitpoints());
 	return_int_attrib("max_hitpoints", u.max_hitpoints());
 	return_int_attrib("experience", u.experience());
@@ -325,7 +327,9 @@ static int impl_unit_get(lua_State *L)
 	return_int_attrib("max_attacks", u.max_attacks());
 	return_int_attrib("attacks_left", u.attacks_left());
 	return_tstring_attrib("name", u.name());
+	return_tstring_attrib("description", u.unit_description());
 	return_bool_attrib("canrecruit", u.can_recruit());
+	return_bool_attrib("renamable", !u.unrenamable());
 	return_int_attrib("level", u.level());
 	return_int_attrib("cost", u.cost());
 
@@ -435,13 +439,17 @@ static int impl_unit_set(lua_State *L)
 	modify_int_attrib("level", u.set_level(value));
 	modify_bool_attrib("resting", u.set_resting(value));
 	modify_tstring_attrib("name", u.set_name(value));
+	modify_tstring_attrib("description", u.set_unit_description(value));
 	modify_string_attrib("role", u.set_role(value));
 	modify_string_attrib("facing", u.set_facing(map_location::parse_direction(value)));
 	modify_string_attrib("usage", u.set_usage(value));
 	modify_string_attrib("undead_variation", u.set_undead_variation(value));
+	modify_string_attrib("ellipse", u.set_image_ellipse(value));
+	modify_string_attrib("halo", u.set_image_halo(value));
 	modify_bool_attrib("hidden", u.set_hidden(value));
 	modify_bool_attrib("zoc", u.set_emit_zoc(value));
 	modify_bool_attrib("canrecruit", u.set_can_recruit(value));
+	modify_bool_attrib("renamable", u.set_unrenamable(!value));
 
 	modify_vector_string_attrib("extra_recruit", u.set_recruits(value));
 	modify_vector_string_attrib("advances_to", u.set_advances_to(value));

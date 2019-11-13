@@ -47,6 +47,12 @@ local known_attributes = make_set {
 	"canrecruit",
 	"type",
 	"variation",
+	"ellipse",
+	"halo",
+	"recall_cost",
+	"description",
+	"hidden",
+	"unrenamable",
 }
 
 local known_tags = make_set {
@@ -89,11 +95,14 @@ end
 
 local function simple_modify_unit(cfg)
 	local filter = wml.get_child(cfg, "filter") or helper.wml_error "[modify_unit] missing required [filter] tag"
-	-- todo: investigate the follwoing attrtibutes:
-	--       id, ellipse, recall_cost, alpha, flying,
-	--       hidden, halo, description, overlays, unrenamable
-	-- and tags: [variables]
+	-- todo: investigate the following attrtibutes:
+	--       id, alpha, flying, overlays
 	local simple_attributes = {
+		"ellipse",
+		"halo",
+		"recall_cost",
+		"description",
+		"hidden",
 		"side",
 		"name",
 		"role",
@@ -106,7 +115,7 @@ local function simple_modify_unit(cfg)
 		"experience",
 		"max_experience",
 		"resting",
-		"canrecruit"
+		"canrecruit",
 	}
 
 	local function handle_unit(u)
@@ -122,6 +131,9 @@ local function simple_modify_unit(cfg)
 		end
 		if cfg.ai_special == "guardian" then
 			u.status.guardian = true
+		end
+		if cfg.unrenamable then
+			u.renamable = not cfg.unrenamable
 		end
 		---------- SIMPLE ATTRIBUTES  ----------
 		for i, name in ipairs(simple_attributes) do
