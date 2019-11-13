@@ -62,7 +62,7 @@ function wml_actions.object(cfg)
 	if not silent then
 		wml_actions.redraw{}
 		local name = tostring(cfg.name or "")
-		wesnoth.show_popup_dialog(name, text, cfg.image)
+		gui.show_popup(name, text, cfg.image)
 	end
 
 	for cmd in wml.child_range(cfg, command_type) do

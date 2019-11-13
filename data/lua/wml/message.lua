@@ -295,7 +295,7 @@ local function message_user_choice(cfg, speaker, options, text_input, sound)
 			wesnoth.add_sound_source(speech)
 		end
 
-		local option_chosen, ti_content = wesnoth.show_message_dialog(msg_cfg, options, text_input)
+		local option_chosen, ti_content = gui.show_narration(msg_cfg, options, text_input)
 
 		if voice then
 			wesnoth.remove_sound_source("wml_message_speaker")

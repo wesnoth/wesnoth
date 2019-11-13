@@ -795,7 +795,7 @@ function wml_actions.remove_event(cfg)
 end
 
 function wml_actions.inspect(cfg)
-	wesnoth.gamestate_inspector(cfg)
+	gui.show_inspector(cfg)
 end
 
 function wml_actions.label( cfg )
@@ -958,7 +958,7 @@ end
 
 function wesnoth.wml_actions.story(cfg)
 	local title = cfg.title or helper.wml_error "Missing title key in [story] ActionWML"
-	wesnoth.show_story(cfg, title)
+	gui.show_story(cfg, title)
 end
 
 function wesnoth.wml_actions.cancel_action(cfg)
