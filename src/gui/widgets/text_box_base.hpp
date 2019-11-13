@@ -289,6 +289,8 @@ private:
 
 	virtual void reset_cursor_state();
 
+	void update_mouse_cursor(bool enable);
+
 	/**
 	 * Current state of the widget.
 	 *

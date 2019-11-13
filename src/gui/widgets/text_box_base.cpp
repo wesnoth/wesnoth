@@ -16,6 +16,7 @@
 
 #include "gui/widgets/text_box_base.hpp"
 
+#include "cursor.hpp"
 #include "desktop/clipboard.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/timer.hpp"
@@ -72,6 +73,7 @@ text_box_base::text_box_base(const implementation::builder_styled_widget& builde
 text_box_base::~text_box_base()
 {
 	toggle_cursor_timer(false);
+	update_mouse_cursor(false);
 }
 
 void text_box_base::set_active(const bool active)
@@ -670,6 +672,8 @@ void text_box_base::signal_handler_mouse_enter(const event::ui_event event,
 		set_state(HOVERED);
 	}
 
+	update_mouse_cursor(true);
+
 	handled = true;
 }
 
@@ -682,6 +686,23 @@ void text_box_base::signal_handler_mouse_leave(const event::ui_event event,
 		set_state(ENABLED);
 	}
 
+	update_mouse_cursor(false);
+
 	handled = true;
 }
+
+void text_box_base::update_mouse_cursor(bool enable)
+{
+	// Someone else may set the mouse cursor for us to something unusual (e.g.
+	// the WAIT cursor) so we ought to mess with that only if it's set to
+	// NORMAL or IBEAM.
+
+	if(enable && cursor::get() == cursor::NORMAL) {
+		cursor::set(cursor::IBEAM);
+	} else if(!enable && cursor::get() == cursor::IBEAM) {
+		cursor::set(cursor::NORMAL);
+	}
+}
+
+
 } // namespace gui2
