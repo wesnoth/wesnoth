@@ -43,6 +43,7 @@
    * New read-write keys in unit userdata: ellipse, halo, description, renamable
    * New functions for working with WML: wml.merge, wml.diff, wml.patch
    * wesnoth.wml_matches_filter renamed to wml.matches_filter (the old name still works)
+   * wml.load() will no longer load files from the core data directory
  ### WML engine
    * Support upkeep in StandardUnitFilter
    * [effect]apply_to=variation now supports heal_full

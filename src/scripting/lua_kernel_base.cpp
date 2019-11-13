@@ -453,6 +453,9 @@ static int intf_wml_tostring(lua_State* L) {
 static int intf_load_wml(lua_State* L)
 {
 	std::string file = luaL_checkstring(L, 1);
+	if(file.empty() || file[0] != '~') {
+		return luaL_argerror(L, 1, "security error: only userdata WML files may be loaded from Lua");
+	}
 	bool preprocess = true;
 	preproc_map defines_map;
 	if(lua_type(L, 2) == LUA_TBOOLEAN) {
