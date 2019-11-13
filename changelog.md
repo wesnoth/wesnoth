@@ -21,7 +21,7 @@
  ### User interface
    * "Core" type add-ons are now only accessible via hotkey.
    * Removed "Classic" in-game theme.
-   * Textboxes now have a hover effect.
+   * Textboxes now have a hover effect as well as an I-beam cursor.
    * Added the Private Replay checkbox to the Multiplayer Create Game screen. This separates
      whether observers are allowed from whether the replay will be publicly available.
  ### Units
