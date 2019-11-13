@@ -2,6 +2,7 @@
  ### AI:
  ### Campaigns
    * Descent into Darkness:
+     * Add new portrait for Dela Keshar
      * Remove dark adepts from recruit list
      * Add special units and AMLA paths
      * Revised dialogue
