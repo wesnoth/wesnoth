@@ -31,9 +31,9 @@ else
         echo "po/" >> .dockerignore
     fi
 
-    echo "FROM wesnoth/wesnoth:$LTS-$BRANCH" > docker/Dockerfile-travis-"$LTS"-"$BRANCH"
-    echo "COPY ./ /home/wesnoth-travis/" >> docker/Dockerfile-travis-"$LTS"-"$BRANCH"
-    echo "WORKDIR /home/wesnoth-travis" >> docker/Dockerfile-travis-"$LTS"-"$BRANCH"
+    echo "FROM wesnoth/wesnoth:$LTS-$BRANCH" > utils/dockerbuilds/travis/Dockerfile-travis-"$LTS"-"$BRANCH"
+    echo "COPY ./ /home/wesnoth-travis/" >> utils/dockerbuilds/travis/Dockerfile-travis-"$LTS"-"$BRANCH"
+    echo "WORKDIR /home/wesnoth-travis" >> utils/dockerbuilds/travis/Dockerfile-travis-"$LTS"-"$BRANCH"
 
-    docker build -t wesnoth-repo:"$LTS"-"$BRANCH" -f docker/Dockerfile-travis-"$LTS"-"$BRANCH" .
+    docker build -t wesnoth-repo:"$LTS"-"$BRANCH" -f utils/dockerbuilds/travis/Dockerfile-travis-"$LTS"-"$BRANCH" .
 fi

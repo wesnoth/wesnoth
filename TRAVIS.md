@@ -1,10 +1,10 @@
 To create the base image with Wesnoth's dependencies:
 
-  docker build -t wesnoth:16.04 -f docker/Dockerfile-base docker
+  docker build -t wesnoth:16.04 -f utils/dockerbuilds/travis/Dockerfile-base docker
 
 To create the image that travis will run during a build:
 
-  docker build -t wesnoth-repo:16.04 -f docker/Dockerfile-travis .
+  docker build -t wesnoth-repo:16.04 -f utils/dockerbuilds/travis/Dockerfile-travis .
 
 To push a new base image to Docker Hub
 
