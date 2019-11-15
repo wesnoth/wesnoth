@@ -43,6 +43,9 @@
    * New read-write keys in unit userdata: ellipse, halo, description, renamable
    * New functions for working with WML: wml.merge, wml.diff, wml.patch
    * wesnoth.wml_matches_filter renamed to wml.matches_filter (the old name still works)
+   * Moved to units module: wesnoth.create_unit, wesnoth.get_unit, wesnoth.get_units, wesnoth.get_recall_units
+   * The wesnoth.units module now acts like a metatable for unit userdata.
+   * wesnoth.units.find (formerly wesnoth.get_units) now supports x="recall",y="recall"
  ### WML engine
    * Support upkeep in StandardUnitFilter
    * [effect]apply_to=variation now supports heal_full

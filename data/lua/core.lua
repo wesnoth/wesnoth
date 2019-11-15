@@ -462,7 +462,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.interface = {
 		delay = wesnoth.delay,
 		float_label = wesnoth.float_label,
-		select_unit = wesnoth.select_unit,
+		select_unit = wesnoth.units.select,
 		highlight_hex = wesnoth.highlight_hex,
 		deselect_hex = wesnoth.deselect_hex,
 		get_selected_hex = wesnoth.get_selected_tile,
@@ -507,25 +507,6 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	end
 
 	--[========[Units module]========]
-	-- TODO: Eventually this could actually be the units metatable, allowing people to add new methods to it.
-	wesnoth.units = {}
-	wesnoth.units.matches = wesnoth.match_unit
-	wesnoth.units.to_recall = wesnoth.put_recall_unit
-	wesnoth.units.to_map = wesnoth.put_unit
-	wesnoth.units.erase = wesnoth.erase_unit
-	wesnoth.units.clone = wesnoth.copy_unit
-	wesnoth.units.extract = wesnoth.extract_unit
-	wesnoth.units.advance = wesnoth.advance_unit
-	wesnoth.units.add_modification = wesnoth.add_modification
-	wesnoth.units.remove_modifications = wesnoth.remove_modifications
-	wesnoth.units.resistance = wesnoth.unit_resistance
-	wesnoth.units.defense = wesnoth.unit_defense
-	wesnoth.units.movement = wesnoth.unit_movement_cost
-	wesnoth.units.vision = wesnoth.unit_vision_cost
-	wesnoth.units.jamming = wesnoth.unit_jamming_cost
-	wesnoth.units.ability = wesnoth.unit_ability
-	wesnoth.units.transform = wesnoth.transform_unit
-	wesnoth.units.select = wesnoth.select_unit
 
 	--! Modifies all the units satisfying the given @a filter.
 	--! @param vars key/value pairs that need changing.
@@ -540,6 +521,21 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 				u[k] = v
 			end
 		end
+	end
+	
+	--! This function is deprecated, do not call directly.
+	function wesnoth.get_recall_units(filter)
+		filter = filter or {}
+		if getmetatable(filter) == 'wml object' then
+			filter = filter.__literal
+			filter.x = 'recall'
+			filter.y = 'recall'
+			filter = wml.tovconfig(filter)
+		else
+			filter.x = 'recall'
+			filter.y = 'recall'
+		end
+		return wesnoth.units.find(filter)
 	end
 end
 
@@ -597,7 +593,6 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	-- Interface module
 	wesnoth.delay = wesnoth.deprecate_api('wesnoth.delay', 'wesnoth.interface.delay', 1, nil, wesnoth.interface.delay)
 	wesnoth.float_label = wesnoth.deprecate_api('wesnoth.float_label', 'wesnoth.interface.float_label', 1, nil, wesnoth.interface.float_label)
-	wesnoth.select_unit = wesnoth.deprecate_api('wesnoth.select_unit', 'wesnoth.interface.select_unit', 1, nil, wesnoth.interface.select_unit)
 	wesnoth.highlight_hex = wesnoth.deprecate_api('wesnoth.highlight_hex', 'wesnoth.interface.highlight_hex', 1, nil, wesnoth.interface.highlight_hex)
 	wesnoth.deselect_hex = wesnoth.deprecate_api('wesnoth.deselect_hex', 'wesnoth.interface.deselect_hex', 1, nil, wesnoth.interface.deselect_hex)
 	wesnoth.get_selected_tile = wesnoth.deprecate_api('wesnoth.get_selected_tile', 'wesnoth.interface.get_selected_hex', 1, nil, wesnoth.interface.get_selected_hex)
@@ -629,6 +624,10 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.unit_ability = wesnoth.deprecate_api('wesnoth.unit_ability', 'wesnoth.units.ability', 1, nil, wesnoth.units.ability)
 	wesnoth.transform_unit = wesnoth.deprecate_api('wesnoth.transform_unit', 'wesnoth.units.transform', 1, nil, wesnoth.units.transform)
 	wesnoth.select_unit = wesnoth.deprecate_api('wesnoth.select_unit', 'wesnoth.units.select', 1, nil, wesnoth.units.select)
+	wesnoth.create_unit = wesnoth.deprecate_api('wesnoth.create_unit', 'wesnoth.units.create', 1, nil, wesnoth.units.create)
+	wesnoth.get_unit = wesnoth.deprecate_api('wesnoth.get_unit', 'wesnoth.units.get', 1, nil, wesnoth.units.get)
+	wesnoth.get_units = wesnoth.deprecate_api('wesnoth.get_units', 'wesnoth.units.find', 1, nil, wesnoth.units.find)
+	wesnoth.get_recall_units = wesnoth.deprecate_api('wesnoth.get_units', 'wesnoth.units.find with x="recall", y="recall"', 1, nil, wesnoth.get_recall_units)
 end
 wesnoth.tovconfig = wesnoth.deprecate_api('wesnoth.tovconfig', 'wml.tovconfig', 1, nil, wml.tovconfig)
 wesnoth.debug = wesnoth.deprecate_api('wesnoth.debug', 'wml.tostring', 1, nil, wml.tostring)
