@@ -3276,7 +3276,6 @@ static int intf_remove_modifications(lua_State *L)
 static int intf_advance_unit(lua_State *L)
 {
 	events::command_disabler command_disabler;
-	//TODO: check whether the unit is on the map.
 	unit& u = luaW_checkunit(L, 1, true);
 	advance_unit_params par(u.get_location());
 	if(lua_isboolean(L, 2)) {

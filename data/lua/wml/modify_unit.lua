@@ -182,7 +182,8 @@ local function simple_modify_unit(cfg)
 
 		-- by default always do an advancement here (not only when experience/max_experience/type was modified)
 		-- for compatibility with old code.
-		if cfg.experience or cfg.max_experience or cfg.rebuild ~= false then
+		-- Skip for recall list units
+		if u.valid == 'map' and (cfg.experience or cfg.max_experience or cfg.rebuild ~= false) then
 			u:advance()
 		end
 	end
