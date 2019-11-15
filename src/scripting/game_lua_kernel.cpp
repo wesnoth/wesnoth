@@ -4340,6 +4340,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		// Static functions
 		{"create", &intf_create_unit},
 		{"find", &dispatch<&game_lua_kernel::intf_get_units>},
+		{"find_on_recall", &dispatch<&game_lua_kernel::intf_get_recall_units>},
 		{"get", &dispatch<&game_lua_kernel::intf_get_unit>},
 		{ nullptr, nullptr }
 	};

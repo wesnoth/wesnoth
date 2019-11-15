@@ -522,20 +522,6 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			end
 		end
 	end
-	
-	function wesnoth.units.find_on_recall(filter)
-		filter = filter or {}
-		if getmetatable(filter) == 'wml object' then
-			filter = filter.__literal
-			filter.x = 'recall'
-			filter.y = 'recall'
-			filter = wml.tovconfig(filter)
-		else
-			filter.x = 'recall'
-			filter.y = 'recall'
-		end
-		return wesnoth.units.find(filter)
-	end
 end
 
 --[========[GUI2 Dialog Manipulations]========]
