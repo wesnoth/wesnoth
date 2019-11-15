@@ -21,7 +21,7 @@ function wolves_multipacks_functions.assign_packs(cfg)
 
     local pack_size = cfg.pack_size or 3
 
-    local wolves = wesnoth.get_units { side = wesnoth.current.side, type = cfg.type or "Wolf" }
+    local wolves = wesnoth.units.find { side = wesnoth.current.side, type = cfg.type or "Wolf" }
     local packs = {}
 
     -- Find wolves that already have a pack number assigned
@@ -37,7 +37,7 @@ function wolves_multipacks_functions.assign_packs(cfg)
     -- Do not change numbers of existing packs -> pack numbers might not be consecutive afterward
     for pack_number,pack in pairs(packs) do
         if (#pack == 1) then
-            local wolf = wesnoth.get_unit(pack[1].x, pack[1].y)
+            local wolf = wesnoth.units.get(pack[1].x, pack[1].y)
             MAIUV.delete_mai_unit_variables(wolf, cfg.ai_id)
             packs[pack_number] = nil
         end

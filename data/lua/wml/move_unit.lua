@@ -59,7 +59,7 @@ function wesnoth.wml_actions.move_unit(cfg)
 	if check_passability == nil then check_passability = true end
 	cfg = wml.literal(cfg)
 	cfg.to_location, cfg.to_x, cfg.to_y, cfg.fire_event, cfg.clear_shroud = nil
-	local units = wesnoth.get_units(cfg)
+	local units = wesnoth.units.find(cfg)
 
 	for current_unit_index, current_unit in ipairs(units) do
 		if not fire_event or current_unit.valid then
@@ -88,7 +88,7 @@ function wesnoth.wml_actions.move_unit(cfg)
 			elseif current_unit.x > x then current_unit.facing = "sw"
 			end
 
-			wesnoth.extract_unit(current_unit)
+			current_unit:extract()
 			local current_unit_cfg = current_unit.__cfg
 			wesnoth.wml_actions.move_unit_fake {
 				type = current_unit_cfg.type,
@@ -102,7 +102,7 @@ function wesnoth.wml_actions.move_unit(cfg)
 			}
 			local x2, y2 = current_unit.x, current_unit.y
 			current_unit.x, current_unit.y = x, y
-			wesnoth.put_unit(current_unit)
+			current_unit:to_map()
 			
 			if unshroud then
 				wesnoth.wml_actions.redraw {clear_shroud=true}

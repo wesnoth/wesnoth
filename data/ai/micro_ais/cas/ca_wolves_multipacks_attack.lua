@@ -36,7 +36,7 @@ function ca_wolves_multipacks_attack:execution(cfg)
             local wolves, attacks = {}, {}
             for _,pack_wolf in ipairs(pack) do
                 -- Wolf might have moved in previous attack -> use id to identify it
-                local wolf = wesnoth.get_units { id = pack_wolf.id }[1]
+                local wolf = wesnoth.units.find { id = pack_wolf.id }[1]
                 if wolf and (wolf.attacks_left > 0) then table.insert(wolves, wolf) end
             end
 
@@ -88,14 +88,14 @@ function ca_wolves_multipacks_attack:execution(cfg)
                     for _,h in pairs(attack_map_hexes[attack_ind]) do number_hexes = number_hexes + 1 end
                     local rating = math.min(number_wolves, number_hexes)
 
-                    local target = wesnoth.get_unit(attack_ind % 1000, math.floor(attack_ind / 1000))
+                    local target = wesnoth.units.get(attack_ind % 1000, math.floor(attack_ind / 1000))
                     rating = rating - target.hitpoints / 100.
 
                     -- Also, any target sitting next to a wolf of the same pack that has
                     -- no attacks left is priority targeted (in order to stick with
                     -- the same target for all wolves of the pack)
                     for xa,ya in H.adjacent_tiles(target.x, target.y) do
-                        local adj_unit = wesnoth.get_unit(xa, ya)
+                        local adj_unit = wesnoth.units.get(xa, ya)
                         if adj_unit then
                             local unit_pack_number = MAIUV.get_mai_unit_variables(adj_unit, cfg.ai_id, "pack_number")
                             if (unit_pack_number == pack_number)
@@ -129,8 +129,8 @@ function ca_wolves_multipacks_attack:execution(cfg)
                     WMPF.clear_label(best_attack.src.x, best_attack.src.y)
                 end
 
-                local attacker = wesnoth.get_unit(best_attack.src.x, best_attack.src.y)
-                local defender = wesnoth.get_unit(best_attack.target.x, best_attack.target.y)
+                local attacker = wesnoth.units.get(best_attack.src.x, best_attack.src.y)
+                local defender = wesnoth.units.get(best_attack.target.x, best_attack.target.y)
 
                 AH.robust_move_and_attack(ai, attacker, best_attack.dst, defender)
 
@@ -154,7 +154,7 @@ function ca_wolves_multipacks_attack:execution(cfg)
             local wolves_moves, wolves_no_moves = {}, {}
             for _,pack_wolf in ipairs(pack) do
                 -- Wolf might have moved in previous attack -> use id to identify it
-                local wolf = wesnoth.get_units { id = pack_wolf.id }[1]
+                local wolf = wesnoth.units.find { id = pack_wolf.id }[1]
                 if wolf then
                     if (wolf.moves > 0) then
                         table.insert(wolves_moves, wolf)

@@ -141,7 +141,7 @@ function wesnoth.wml_actions.persistent_carryover_unstore(cfg)
 		end
 		for i = 1, vars["side_store.unit.length"] do
 			vars[string.format("side_store.unit[%d].side", i - 1)] = num
-			local u = wesnoth.get_unit(vars[string.format("side_store.unit[%d].id", i - 1)])
+			local u = wesnoth.units.get(vars[string.format("side_store.unit[%d].id", i - 1)])
 
 			if u then
 				vars[string.format("side_store.unit[%d].x", i - 1)] = u.x

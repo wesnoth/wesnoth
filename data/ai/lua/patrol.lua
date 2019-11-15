@@ -5,7 +5,7 @@ function patrol_gen(n, wp)
     -- n is the name of the unit, like Kiressh
     -- wp - a table of waypoint tables of form {x,y}
 
-    local unit = wesnoth.get_units({name=n})[1]
+    local unit = wesnoth.units.find({name=n})[1]
 
     local x, y = unit.x, unit.y
     local wpn = 1 --WayPoint Number - we have to remember which waypoint we are heading to

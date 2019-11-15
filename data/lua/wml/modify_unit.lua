@@ -85,10 +85,10 @@ end
 
 -- gets map and recalllist units.
 local function get_all_units(filter)
-	local res = wesnoth.get_units(filter)
+	local res = wesnoth.units.find(filter)
 	if (not filter.x or filter.x == "recall") and (not filter.y or filter.y == "recall") then
 		--append recall units to result.
-		for i, u in ipairs(wesnoth.get_recall_units(filter)) do
+		for i, u in ipairs(wesnoth.units.find_on_recall(filter)) do
 			res[#res + 1] = u
 		end
 	end
@@ -247,8 +247,8 @@ function wml_actions.modify_unit(cfg)
 					mod = wml.parsed(mod)
 				end
 				local unit = wml.variables[unit_path]
-				unit = wesnoth.create_unit(unit)
-				wesnoth.add_modification(unit, current_tag, mod)
+				unit = wesnoth.units.create(unit)
+				unit:add_modification(current_tag, mod)
 				unit = unit.__cfg;
 				wml.variables[unit_path] = unit
 			elseif current_tag == "effect" then
@@ -256,7 +256,7 @@ function wml_actions.modify_unit(cfg)
 				local apply_to = mod.apply_to
 				if wesnoth.effects[apply_to] then
 					local unit = wml.variables[unit_path]
-					unit = wesnoth.create_unit(unit)
+					unit = wesnoth.units.create(unit)
 					wesnoth.effects[apply_to](unit, mod)
 					unit = unit.__cfg;
 					wml.variables[unit_path] = unit
@@ -264,11 +264,11 @@ function wml_actions.modify_unit(cfg)
 					helper.wml_error("[modify_unit] had invalid [effect]apply_to value")
 				end
 			elseif current_tag == "set_variable" then
-				local unit = wesnoth.create_unit(wml.variables[unit_path])
+				local unit = wesnoth.units.create(wml.variables[unit_path])
 				wesnoth.wml_actions.set_variable(current_table[2], unit.variables)
 				wml.variables[unit_path] = unit.__cfg
 			elseif current_tag == "clear_variable" then
-				local unit = wesnoth.create_unit(wml.variables[unit_path])
+				local unit = wesnoth.units.create(wml.variables[unit_path])
 				wesnoth.wml_actions.clear_variable(current_table[2], unit.variables)
 				wml.variables[unit_path] = unit.__cfg
 			else

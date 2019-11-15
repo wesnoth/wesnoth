@@ -40,8 +40,8 @@ function ca_spread_poison:evaluation(cfg, data)
     local max_rating, best_attack = - math.huge
     for i,a in ipairs(attacks) do
         if (not avoid_map:get(a.dst.x, a.dst.y)) then
-            local attacker = wesnoth.get_unit(a.src.x, a.src.y)
-            local defender = wesnoth.get_unit(a.target.x, a.target.y)
+            local attacker = wesnoth.units.get(a.src.x, a.src.y)
+            local defender = wesnoth.units.get(a.target.x, a.target.y)
 
             -- Don't try to poison a unit that cannot be poisoned
             local cant_poison = defender.status.poisoned or defender.status.unpoisonable
@@ -93,7 +93,7 @@ function ca_spread_poison:evaluation(cfg, data)
 end
 
 function ca_spread_poison:execution(cfg, data)
-    local attacker = wesnoth.get_unit(SP_attack.src.x, SP_attack.src.y)
+    local attacker = wesnoth.units.get(SP_attack.src.x, SP_attack.src.y)
     -- If several attacks have poison, this will always find the last one
     local is_poisoner, poison_weapon = AH.has_weapon_special(attacker, "poison")
 

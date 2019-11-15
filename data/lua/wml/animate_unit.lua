@@ -7,12 +7,12 @@ local function add_animation(anim, cfg)
 	local filter = wml.get_child(cfg, "filter")
 	local unit
 	if filter then
-		unit = wesnoth.get_units{
+		unit = wesnoth.units.find{
 			limit = 1,
 			T["and"](filter)
 		}[1]
 	else
-		unit = wesnoth.get_unit(
+		unit = wesnoth.units.get(
 			wesnoth.current.event_context.x1,
 			wesnoth.current.event_context.y1
 		)

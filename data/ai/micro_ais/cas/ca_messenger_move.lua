@@ -36,7 +36,7 @@ function ca_messenger_move:execution(cfg)
         if sub_cost > messenger.moves then
             break
         else
-            local unit_in_way = wesnoth.get_unit(step[1], step[2])
+            local unit_in_way = wesnoth.units.get(step[1], step[2])
             if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then
                 unit_in_way = nil
             end
@@ -55,14 +55,14 @@ function ca_messenger_move:execution(cfg)
     -- Now compare how long it would take from the end of both of these options
     local x_current, y_current = messenger.x, messenger.y
 
-    local unit_in_way = wesnoth.get_unit(next_hop[1], next_hop[2])
+    local unit_in_way = wesnoth.units.get(next_hop[1], next_hop[2])
     if (unit_in_way == messenger) then unit_in_way = nil end
     if unit_in_way then unit_in_way:extract() end
 
     messenger.loc = { next_hop[1], next_hop[2] }
     local _, cost1 = AH.find_path_with_shroud(messenger, x, y, { ignore_units = 'yes' })
 
-    local unit_in_way2 = wesnoth.get_unit(optimum_hop[1], optimum_hop[2])
+    local unit_in_way2 = wesnoth.units.get(optimum_hop[1], optimum_hop[2])
     if (unit_in_way2 == messenger) then unit_in_way2 = nil end
     if unit_in_way2 then unit_in_way2:extract() end
 

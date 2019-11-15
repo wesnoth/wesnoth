@@ -3,7 +3,7 @@ local T = wml.tag
 function wesnoth.wml_actions.heal_unit(cfg)
 	local healers = wml.get_child(cfg, "filter_second")
 	if healers then
-		healers = wesnoth.get_units{
+		healers = wesnoth.units.find{
 			ability_type = "heals",
 			T["and"](healers)
 		}
@@ -13,9 +13,9 @@ function wesnoth.wml_actions.heal_unit(cfg)
 
 	local who = wml.get_child(cfg, "filter")
 	if who then
-		who = wesnoth.get_units(who)
+		who = wesnoth.units.find(who)
 	else
-		who = wesnoth.get_units{
+		who = wesnoth.units.find{
 			x = wesnoth.current.event_context.x1,
 			y = wesnoth.current.event_context.y1
 		}

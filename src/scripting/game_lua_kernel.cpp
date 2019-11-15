@@ -618,7 +618,7 @@ int game_lua_kernel::intf_match_unit(lua_State *L)
 
 	if(unit* u_adj = luaW_tounit(L, 3)) {
 		if(int side = u.on_recall_list()) {
-			WRN_LUA << "wesnoth.match_unit called with a secondary unit (3rd argument), ";
+			WRN_LUA << "wesnoth.units.matches called with a secondary unit (3rd argument), ";
 			WRN_LUA << "but unit to match was on recall list. ";
 			WRN_LUA << "Thus the 3rd argument is ignored.\n";
 			team &t = board().get_team(side);
@@ -2734,7 +2734,7 @@ int game_lua_kernel::intf_scroll_to_tile(lua_State *L)
 int game_lua_kernel::intf_select_hex(lua_State *L)
 {
 	events::command_disabler command_disabler;
-	deprecated_message("wesnoth.select_hex", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Use wesnoth.select_unit and/or wesnoth.highlight_hex instead.");
+	deprecated_message("wesnoth.select_hex", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Use wesnoth.units.select and/or wesnoth.interface.highlight_hex instead.");
 
 	// Need this because check_location may change the stack
 	// By doing this now, we ensure that it won't do so when

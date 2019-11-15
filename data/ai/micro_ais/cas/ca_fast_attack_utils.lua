@@ -134,7 +134,7 @@ function ca_fast_attack_utils.get_unit_copy(id, gamedata)
     -- already, otherwise store in there
 
     if (not gamedata.unit_copies[id]) then
-        local unit_proxy = wesnoth.get_units { id = id }[1]
+        local unit_proxy = wesnoth.units.find { id = id }[1]
         gamedata.unit_copies[id] = unit_proxy:clone()
     end
 

@@ -53,7 +53,7 @@ local function bandits_found(x,y)
 		local loc_i = helper.rand("1.."..#locs)
 
 		wml_actions.move_unit_fake({x = string.format("%d,%d", x, locs[loc_i][1]), y = string.format("%d,%d", y, locs[loc_i][2]), type = bandit, side = "4"})
-		wesnoth.put_unit(locs[loc_i][1], locs[loc_i][2], { type = bandit, side = "4", random_traits = "yes", generate_name = "yes", upkeep = "loyal" })
+		wesnoth.units.to_map({ type = bandit, side = "4", random_traits = "yes", generate_name = "yes", upkeep = "loyal" }, locs[loc_i][1], locs[loc_i][2])
 	end
 
 	if not boss_found and visited > 2 then

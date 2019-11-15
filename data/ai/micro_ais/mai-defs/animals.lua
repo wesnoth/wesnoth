@@ -92,12 +92,12 @@ local save_rabbit_spawn, save_rabbit_despawn
 local function register_rabbit_commands()
 	function wesnoth.custom_synced_commands.rabbit_despawn(cfg)
 		--TODO: maybe we only want to allow erasing of unit of certain types/sides/locations?
-		wesnoth.erase_unit(cfg.x, cfg.y)
+		wesnoth.units.erase(cfg.x, cfg.y)
 	end
 
 	function wesnoth.custom_synced_commands.rabbit_spawn(cfg)
 		--TODO: maybe we only want to allow creation of unit of certain types/sides/locations?
-		wesnoth.put_unit({ side = wesnoth.current.side, type = cfg.rabbit_type}, cfg.x, cfg.y)
+		wesnoth.units.to_map({ side = wesnoth.current.side, type = cfg.rabbit_type}, cfg.x, cfg.y)
 	end
 end
 

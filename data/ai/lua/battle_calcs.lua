@@ -791,7 +791,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
 
     -- We also need the leader (well, the location at least)
     -- because if there's no other difference, prefer location _between_ the leader and the defender
-    local leader = wesnoth.get_units { side = attacker.side, canrecruit = 'yes' }[1]
+    local leader = wesnoth.units.find { side = attacker.side, canrecruit = 'yes' }[1]
 
     ------ All the attacker contributions: ------
     -- Add up rating for the attacking unit
@@ -815,7 +815,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     -- Equivalently, if attack is adjacent to an unoccupied healing location, that's bad
     for xa,ya in H.adjacent_tiles(dst[1], dst[2]) do
         local healing = wesnoth.get_terrain_info(wesnoth.get_terrain(xa, ya)).healing
-        if (healing > 0) and (not wesnoth.get_unit(xa, ya)) then
+        if (healing > 0) and (not wesnoth.units.get(xa, ya)) then
             damage = damage + 1.25 * healing
         end
     end
@@ -939,7 +939,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     -- Add a very small penalty for attack hexes occupied by other units
     -- Note: it must be checked previously that the unit on the hex can move away
     if (dst[1] ~= attacker.x) or (dst[2] ~= attacker.y) then
-        if wesnoth.get_unit(dst[1], dst[2]) then
+        if wesnoth.units.get(dst[1], dst[2]) then
             defender_value = defender_value + occupied_hex_penalty
         end
     end
@@ -1159,7 +1159,7 @@ function battle_calcs.get_attack_map_unit(unit, cfg)
     -- MP left off the map (for enemy pathfinding)
     local units_MP = {}
     if (unit.side ~= wesnoth.current.side) then
-        local all_units = wesnoth.get_units { side = wesnoth.current.side }
+        local all_units = wesnoth.units.find { side = wesnoth.current.side }
         for _,unit in ipairs(all_units) do
             if (unit.moves > 0) then
                 table.insert(units_MP, unit)
@@ -1466,7 +1466,7 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
     local blocked_hexes = LS.create()
     if units[1] and (units[1].side == wesnoth.current.side) then
         for xa,ya in H.adjacent_tiles(enemy.x, enemy.y) do
-            local unit_in_way = wesnoth.get_unit(xa, ya)
+            local unit_in_way = wesnoth.units.get(xa, ya)
             if unit_in_way then
                 -- Units on the same side are blockers if they cannot move away
                 if (unit_in_way.side == wesnoth.current.side) then

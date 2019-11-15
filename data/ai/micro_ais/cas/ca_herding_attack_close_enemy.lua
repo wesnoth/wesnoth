@@ -2,7 +2,7 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local M = wesnoth.map
 
 local function get_sheep(cfg)
-    local sheep = wesnoth.get_units {
+    local sheep = wesnoth.units.find {
         side = wesnoth.current.side,
         { "and", wml.get_child(cfg, "filter_second") }
     }

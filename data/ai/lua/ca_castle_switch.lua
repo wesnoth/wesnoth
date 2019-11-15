@@ -35,7 +35,7 @@ function ca_castle_switch:evaluation(cfg, data)
         return 0
     end
 
-    local leader = wesnoth.get_units {
+    local leader = wesnoth.units.find {
             side = wesnoth.current.side,
             canrecruit = 'yes',
             formula = '(movement_left = total_movement) and (hitpoints = max_hitpoints)'
@@ -168,7 +168,7 @@ function ca_castle_switch:evaluation(cfg, data)
             }
             local should_wait = false
             for i,loc in ipairs(castle) do
-                local unit = wesnoth.get_unit(loc[1], loc[2])
+                local unit = wesnoth.units.get(loc[1], loc[2])
                 if (not AH.is_visible_unit(wesnoth.current.side, unit)) then
                     should_wait = false
                     break
@@ -190,7 +190,7 @@ function ca_castle_switch:evaluation(cfg, data)
 end
 
 function ca_castle_switch:execution(cfg, data)
-    local leader = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'yes' }[1]
+    local leader = wesnoth.units.find { side = wesnoth.current.side, canrecruit = 'yes' }[1]
 
     if AH.print_exec() then AH.print_ts('   Executing castle_switch CA') end
     if AH.show_messages() then wesnoth.wml_actions.message { speaker = leader.id, message = 'Switching castles' } end

@@ -213,7 +213,7 @@ end
 -- @a x,y: the location where to spawn the units on the map.
 local function place_units(unittypes, x, y)
 	for i,v in ipairs(unittypes) do
-		local u = wesnoth.create_unit { type = v, generate_name = true, side = 2 }
+		local u = wesnoth.units.create { type = v, generate_name = true, side = 2 }
 		u:add_modification("object", {
 			T.effect {
 				apply_to = "movement_costs",
@@ -262,13 +262,13 @@ end
 -- convert all 'veteran' units from side 2 to the more aggressive side 1
 -- this must happen before the new units are created from spawns.
 on_event("new turn", function()
-	for i, unit in ipairs(wesnoth.get_units { side = 2 }) do
+	for i, unit in ipairs(wesnoth.units.find { side = 2 }) do
 		unit.side = 1
 	end
 end)
 
 on_event("prestart", function()
-	local leaders = wesnoth.get_units { side = "3,4", canrecruit= true}
+	local leaders = wesnoth.units.find { side = "3,4", canrecruit= true}
 	if #leaders < 2 then
 		create_timed_spaws(5, 11, 50, 5, 4, 21)
 	else

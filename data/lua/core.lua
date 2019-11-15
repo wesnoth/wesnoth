@@ -480,7 +480,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	--! Fakes the move of a unit satisfying the given @a filter to position @a x, @a y.
 	--! @note Usable only during WML actions.
 	function wesnoth.interface.move_unit_fake(filter, to_x, to_y)
-		local moving_unit = wesnoth.get_units(filter)[1]
+		local moving_unit = wesnoth.units.find(filter)[1]
 		local from_x, from_y = moving_unit.x, moving_unit.y
 
 		wesnoth.interface.scroll_to_hex(from_x, from_y)
@@ -512,7 +512,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	--! @param vars key/value pairs that need changing.
 	--! @note Usable only during WML actions.
 	function wesnoth.units.modify(filter, vars)
-		local units = wesnoth.get_units(filter)
+		local units = wesnoth.units.find(filter)
 		for u in pairs(units) do
 			for k, v in pairs(vars) do
 				-- Minor TODO: What if you want to change values of subtags?
@@ -523,8 +523,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		end
 	end
 	
-	--! This function is deprecated, do not call directly.
-	function wesnoth.get_recall_units(filter)
+	function wesnoth.units.find_on_recall(filter)
 		filter = filter or {}
 		if getmetatable(filter) == 'wml object' then
 			filter = filter.__literal
@@ -627,7 +626,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.create_unit = wesnoth.deprecate_api('wesnoth.create_unit', 'wesnoth.units.create', 1, nil, wesnoth.units.create)
 	wesnoth.get_unit = wesnoth.deprecate_api('wesnoth.get_unit', 'wesnoth.units.get', 1, nil, wesnoth.units.get)
 	wesnoth.get_units = wesnoth.deprecate_api('wesnoth.get_units', 'wesnoth.units.find', 1, nil, wesnoth.units.find)
-	wesnoth.get_recall_units = wesnoth.deprecate_api('wesnoth.get_units', 'wesnoth.units.find with x="recall", y="recall"', 1, nil, wesnoth.get_recall_units)
+	wesnoth.get_recall_units = wesnoth.deprecate_api('wesnoth.get_units', 'wesnoth.units.find_on_recall', 1, nil, wesnoth.units.find_on_recall)
 end
 wesnoth.tovconfig = wesnoth.deprecate_api('wesnoth.tovconfig', 'wml.tovconfig', 1, nil, wml.tovconfig)
 wesnoth.debug = wesnoth.deprecate_api('wesnoth.debug', 'wml.tostring', 1, nil, wml.tostring)

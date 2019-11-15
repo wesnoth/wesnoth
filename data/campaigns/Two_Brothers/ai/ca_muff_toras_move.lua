@@ -5,7 +5,7 @@ local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local muff_toras_move = {}
 
 function muff_toras_move:evaluation()
-    local muff_toras = wesnoth.get_units { id = 'Muff Toras' }[1]
+    local muff_toras = wesnoth.units.find { id = 'Muff Toras' }[1]
 
     if muff_toras and (muff_toras.moves > 0) then
         return 15000
@@ -15,8 +15,8 @@ function muff_toras_move:evaluation()
 end
 
 function muff_toras_move:execution()
-    local muff_toras = wesnoth.get_units { id = 'Muff Toras' }[1]
-    local units = wesnoth.get_units { side = 3, { 'not', { id = 'Muff Toras' } } }
+    local muff_toras = wesnoth.units.find { id = 'Muff Toras' }[1]
+    local units = wesnoth.units.find { side = 3, { 'not', { id = 'Muff Toras' } } }
     local enemies = AH.get_attackable_enemies()
     local enemy_attack_map = BC.get_attack_map(enemies)
 

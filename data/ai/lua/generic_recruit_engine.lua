@@ -45,7 +45,7 @@ return {
             -- gained from regeneration
             local effective_hp = wesnoth.unit_types[recruit_id].max_hitpoints
 
-            local unit = wesnoth.create_unit {
+            local unit = wesnoth.units.create {
                 type = recruit_id,
                 random_traits = false,
                 name = "X",
@@ -250,7 +250,7 @@ return {
                 return analysis[ally_type]
             end
 
-            local unit = wesnoth.create_unit {
+            local unit = wesnoth.units.create {
                 type = enemy_type,
                 random_traits = false,
                 name = "X",
@@ -260,7 +260,7 @@ return {
             local flat_defense = unit:defense("Gt")
             local best_defense = get_best_defense(unit)
 
-            local recruit = wesnoth.create_unit {
+            local recruit = wesnoth.units.create {
                 type = ally_type,
                 random_traits = false,
                 name = "X",
@@ -336,7 +336,7 @@ return {
 
         function do_recruit_eval(data)
             -- Check if leader is on keep
-            local leader = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'yes' }[1]
+            local leader = wesnoth.units.find { side = wesnoth.current.side, canrecruit = 'yes' }[1]
 
             if (not leader) or (not wesnoth.get_terrain_info(wesnoth.get_terrain(leader.x, leader.y)).keep) then
                 return 0
@@ -352,7 +352,7 @@ return {
             get_current_castle(leader, data)
             local no_space = true
             for i,c in ipairs(data.castle.locs) do
-                local unit = wesnoth.get_unit(c[1], c[2])
+                local unit = wesnoth.units.get(c[1], c[2])
                 if (not AH.is_visible_unit(wesnoth.current.side, unit)) then
                     no_space = false
                     break
@@ -566,7 +566,7 @@ return {
             end
 
             local recruit_type
-            local leader = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'yes' }[1]
+            local leader = wesnoth.units.find { side = wesnoth.current.side, canrecruit = 'yes' }[1]
             repeat
                 recruit_data.recruit.best_hex, recruit_data.recruit.target_hex = ai_cas:find_best_recruit_hex(leader, recruit_data)
                 recruit_type = ai_cas:find_best_recruit(attack_type_count, unit_attack_type_count, recruit_effectiveness, recruit_vulnerability, attack_range_count, unit_attack_range_count, most_common_range_count)
@@ -577,7 +577,7 @@ return {
 
                 -- If the recruited unit cannot reach the target hex, return it to the pool of targets
                 if recruit_data.recruit.target_hex and recruit_data.recruit.target_hex[1] then
-                    local unit = wesnoth.get_unit(recruit_data.recruit.best_hex[1], recruit_data.recruit.best_hex[2])
+                    local unit = wesnoth.units.get(recruit_data.recruit.best_hex[1], recruit_data.recruit.best_hex[2])
                     local path, cost = wesnoth.find_path(unit, recruit_data.recruit.target_hex[1], recruit_data.recruit.target_hex[2], {viewing_side=0, max_cost=unit.max_moves+1})
                     if cost > unit.max_moves then
                         -- The last village added to the list should be the one we tried to aim for, check anyway
@@ -634,7 +634,7 @@ return {
 
                 for i,c in ipairs(data.castle.locs) do
                     local rating = 0
-                    local unit = wesnoth.get_unit(c[1], c[2])
+                    local unit = wesnoth.units.get(c[1], c[2])
                     if (not AH.is_visible_unit(wesnoth.current.side, unit)) then
                         for j,e in ipairs(enemy_leaders) do
                             rating = rating + 1 / M.distance_between(c[1], c[2], e.x, e.y) ^ 2.
@@ -713,7 +713,7 @@ return {
 
                 -- Use time to enemy to encourage recruiting fast units when the opponent is far away (game is beginning or we're winning)
                 -- Base distance on
-                local recruit_unit = wesnoth.create_unit {
+                local recruit_unit = wesnoth.units.create {
                     type = recruit_id,
                     x = best_hex[1],
                     y = best_hex[2],
@@ -953,7 +953,7 @@ return {
                 for _,loc in ipairs(data.castle.locs) do
                     local dist = M.distance_between(v[1], v[2], loc[1], loc[2])
                     if (dist <= fastest_unit_speed) then
-                        if (not wesnoth.get_unit(loc[1], loc[2])) then
+                        if (not wesnoth.units.get(loc[1], loc[2])) then
                            table.insert(close_castle_hexes, loc)
                         end
                     end
@@ -1031,7 +1031,7 @@ return {
                         movetypes[movetype] = wesnoth.unit_types[id].max_moves
                     end
                     num_recruits = num_recruits + 1
-                    test_units[num_recruits] =  wesnoth.create_unit({
+                    test_units[num_recruits] = wesnoth.units.create({
                         type = id,
                         side = wesnoth.current.side,
                         random_traits = false,

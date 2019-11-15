@@ -21,7 +21,7 @@ function wml_actions.harm_unit(cfg)
 
 	local this_unit = utils.start_var_scope("this_unit")
 
-	for index, unit_to_harm in ipairs(wesnoth.get_units(filter)) do
+	for index, unit_to_harm in ipairs(wesnoth.units.find(filter)) do
 		if unit_to_harm.valid then
 			-- block to support $this_unit
 			wml.variables["this_unit"] = nil -- clearing this_unit
@@ -36,7 +36,7 @@ function wml_actions.harm_unit(cfg)
 			local harmer_filter = wml.get_child(cfg, "filter_second")
 			local experience = cfg.experience
 			local resistance_multiplier = tonumber(cfg.resistance_multiplier) or 1
-			if harmer_filter then harmer = wesnoth.get_units(harmer_filter)[1] end
+			if harmer_filter then harmer = wesnoth.units.find(harmer_filter)[1] end
 			-- end of block to support $this_unit
 
 			if animate then
@@ -91,7 +91,7 @@ function wml_actions.harm_unit(cfg)
 				amount,
 				cfg.alignment or "neutral",
 				wesnoth.get_time_of_day( { unit_to_harm.x, unit_to_harm.y, true } ).lawful_bonus,
-				wesnoth.unit_resistance( unit_to_harm, cfg.damage_type or "dummy" ),
+				unit_to_harm:resistance( cfg.damage_type or "dummy" ),
 				resistance_multiplier
 			)
 
@@ -130,8 +130,8 @@ function wml_actions.harm_unit(cfg)
 			set_status("unhealable", _"unhealable", _"female^unhealable")
 
 			-- Extract unit and put it back to update animation if status was changed
-			wesnoth.extract_unit(unit_to_harm)
-			wesnoth.put_unit(unit_to_harm)
+			unit_to_harm:extract()
+			unit_to_harm:to_map()
 
 			if add_tab then
 				text = string.format("%s%s", "\t", text)

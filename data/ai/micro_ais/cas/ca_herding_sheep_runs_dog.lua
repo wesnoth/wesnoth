@@ -23,7 +23,7 @@ function ca_herding_sheep_runs_dog:execution(cfg)
     local sheep = get_next_sheep(cfg)
 
     -- Get the first dog that the sheep is adjacent to
-    local dog = wesnoth.get_units { side = wesnoth.current.side, { "and", wml.get_child(cfg, "filter") },
+    local dog = wesnoth.units.find { side = wesnoth.current.side, { "and", wml.get_child(cfg, "filter") },
         { "filter_adjacent", { x = sheep.x, y = sheep.y } }
     }[1]
 

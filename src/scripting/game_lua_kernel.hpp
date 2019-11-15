@@ -189,7 +189,7 @@ public:
 		we are currently operating on a unit& and removing it might cause memory corruptions
 		note that we don't check for the dtor of lua owned units because we assume that
 		we operate on such a unit that the lua function that invoked the operation on that unit
-		(like wesnoth.add_modification, wesnoth.match_unit ..) have a local copy of that
+		(like wesnoth.units.add_modification, wesnoth.units.matches ..) have a local copy of that
 		lua_unit* userdata in its stack that prevents it from being collected.
 	*/
 	int map_locked_;
