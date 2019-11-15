@@ -26,6 +26,7 @@ BOOST_TEST="${11}"
 LTO="${12}"
 SAN="${13}"
 VALIDATE="${14}"
+TYPE="${15}"
 
 if [ "$OPT" == "-O0" ]; then
     STRICT="true"
@@ -53,6 +54,8 @@ echo "MP_TEST: $MP_TEST"
 echo "BOOST_TEST: $BOOST_TEST"
 echo "LTO: $LTO"
 echo "SAN: $SAN"
+echo "VALIDATE: $VALIDATE"
+echo "TYPE: $TYPE"
 
 echo "STRICT: $STRICT"
 echo "build_timeout(mins): $build_timeout"
@@ -65,6 +68,11 @@ if [ "$NLS" == "true" ]; then
     make clean
 
     scons translations build=release --debug=time nls=true jobs=2
+elif [ "$TYPE" == "mingw" ]; then
+    scons wesnoth wesnothd build=release \
+        cxx_std=$CXXSTD opt="$OPT" strict="$STRICT" \
+        nls=false enable_lto="$LTO" sanitize="$SAN" jobs=2 --debug=time \
+        arch=x86-64 prefix=/windows/mingw64 gtkdir=/windows/mingw64 host=x86_64-w64-mingw32
 else
     SECONDS=0
 

@@ -44,5 +44,5 @@ else
     					 --volume "$HOME"/build-cache:/home/wesnoth-travis/build \
                --volume "$HOME"/.ccache:/root/.ccache \
                --tty wesnoth-repo:"$LTS"-"$BRANCH" \
-               unbuffer ./utils/travis/docker_run.sh "$NLS" "$TOOL" "$CC" "$CXX" "$CXXSTD" "$OPT" "$WML_TESTS" "$WML_TEST_TIME" "$PLAY_TEST" "$MP_TEST" "$BOOST_TEST" "$LTO" "$SAN" "$VALIDATE"
+               unbuffer ./utils/travis/docker_run.sh "$NLS" "$TOOL" "$CC" "$CXX" "$CXXSTD" "$OPT" "$WML_TESTS" "$WML_TEST_TIME" "$PLAY_TEST" "$MP_TEST" "$BOOST_TEST" "$LTO" "$SAN" "$VALIDATE" "$LTS"
 fi
