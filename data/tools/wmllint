@@ -948,7 +948,11 @@ linechanges = (
 
 def validate_on_pop(tagstack, closer, filename, lineno):
     "Validate the stack at the time a new close tag is seen."
-    (tag, attributes) = tagstack[-1]
+    (tag, attributes, subtags) = tagstack[-1]
+    # append the closer to the subtags of the parent tag
+    # don't do it if we're closing a root tag
+    if len(tagstack) > 1:
+        tagstack[-2][2].append(closer)
     ancestors = [x[0] for x in tagstack]
     if verbose >= 3:
         print('"%s", line %d: closing %s I see %s with %s' % (filename, lineno, closer, tag, attributes))
@@ -956,7 +960,9 @@ def validate_on_pop(tagstack, closer, filename, lineno):
     # to deserialize an empty unit.  The final "and attributes" is a blatant
     # hack; some campaigns like to generate entire side declarations with
     # macros.
-    if "scenario" in ancestors and closer == "side" and "type" not in attributes and ("no_leader" not in attributes or attributes["no_leader"] != "yes") and "multiplayer" not in ancestors and attributes:
+    if "scenario" in ancestors and closer == "side" and "type" not in attributes and \
+       ("no_leader" not in attributes or attributes["no_leader"] != "yes") and \
+       "multiplayer" not in ancestors and "leader" not in subtags and attributes:
         print('"%s", line %d: [side] without type attribute' % (filename, lineno))
     # This assumes that conversion will always happen in units/ files.
     if "units" not in filename and closer == "unit" and "race" in attributes:
@@ -2808,7 +2814,7 @@ def translator(filename, mapxforms, textxform):
                     tag = instance.group(1)
                     closer = instance.group(0)[1] == '/'
                     if not closer:
-                        tagstack.append((tag, {}))
+                        tagstack.append((tag, {}, []))
                     else:
                         if len(tagstack) == 0:
                             print('"%s", line %d: closer [/%s] with tag stack empty.' % (filename, lineno+1, tag))
