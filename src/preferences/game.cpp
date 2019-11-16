@@ -380,28 +380,43 @@ void _set_lobby_joins(int show)
 	}
 }
 
-const std::vector<game_config::server_info>& server_list()
+const std::vector<game_config::server_info>& builtin_servers_list()
 {
-	static std::vector<game_config::server_info> pref_servers;
-	if(pref_servers.empty()) {
-		std::vector<game_config::server_info> &game_servers = game_config::server_list;
-		VALIDATE(!game_servers.empty(), _("No server has been defined."));
-		pref_servers.insert(pref_servers.begin(), game_servers.begin(), game_servers.end());
-		for(const config &server : get_prefs()->child_range("server")) {
-			game_config::server_info sinf;
-			sinf.name = server["name"].str();
-			sinf.address = server["address"].str();
-			pref_servers.push_back(sinf);
-		}
-	}
+	static std::vector<game_config::server_info> pref_servers = game_config::server_list;
 	return pref_servers;
+}
+
+std::vector<game_config::server_info> user_servers_list()
+{
+	std::vector<game_config::server_info> pref_servers;
+
+	for(const config &server : get_prefs()->child_range("server")) {
+		game_config::server_info sinf;
+		sinf.name = server["name"].str();
+		sinf.address = server["address"].str();
+		pref_servers.push_back(sinf);
+	}
+
+	return pref_servers;
+}
+
+void set_user_servers_list(const std::vector<game_config::server_info>& value)
+{
+	config& prefs = *get_prefs();
+	prefs.clear_children("server");
+
+	for(const auto& svinfo : value) {
+		config& sv_cfg = prefs.add_child("server");
+		sv_cfg["name"] = svinfo.name;
+		sv_cfg["address"] = svinfo.address;
+	}
 }
 
 std::string network_host()
 {
 	const std::string res = preferences::get("host");
 	if(res.empty()) {
-		return server_list().front().address;
+		return builtin_servers_list().front().address;
 	} else {
 		return res;
 	}

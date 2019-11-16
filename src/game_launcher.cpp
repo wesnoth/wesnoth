@@ -819,7 +819,7 @@ bool game_launcher::play_multiplayer(mp_selection res)
 			// The prompt saves its input to preferences.
 			multiplayer_server_ = preferences::network_host();
 
-			if(multiplayer_server_ != preferences::server_list().front().address) {
+			if(multiplayer_server_ != preferences::builtin_servers_list().front().address) {
 				preferences::set_network_host(multiplayer_server_);
 			}
 		}
