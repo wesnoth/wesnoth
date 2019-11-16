@@ -26,6 +26,8 @@
    * Added the Private Replay checkbox to the Multiplayer Create Game screen. This separates
      whether observers are allowed from whether the replay will be publicly available.
    * Reworked styling of progress bars and the network transfer progress dialog.
+   * Moved the MP server list from a separate dialog to the Connect to Server dialog proper
+     and added functionality for managing player-defined servers (issue #4564).
  ### Units
    * Add mushroom defense cap to mounted and some flying units
    * Decreased hitpoints of Dwarvish Lord from 79 to 74
