@@ -145,7 +145,7 @@ local function simple_modify_unit(cfg)
 		end
 
 		---------- TAGS ----------
-		bool found_recall = false, found_variables = false
+		local found_recall, found_variables = false, false
 		for i, t in ipairs(wml.shallow_parsed(cfg)) do
 			local tagname, tagcontent = t[1], t[2]
 			if tagname == "object" or tagname == "trait" or tagname == "advancement" then
