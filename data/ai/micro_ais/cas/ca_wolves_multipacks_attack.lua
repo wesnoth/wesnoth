@@ -36,7 +36,7 @@ function ca_wolves_multipacks_attack:execution(cfg)
             local wolves, attacks = {}, {}
             for _,pack_wolf in ipairs(pack) do
                 -- Wolf might have moved in previous attack -> use id to identify it
-                local wolf = wesnoth.units.find { id = pack_wolf.id }[1]
+                local wolf = wesnoth.units.find_on_map { id = pack_wolf.id }[1]
                 if wolf and (wolf.attacks_left > 0) then table.insert(wolves, wolf) end
             end
 
@@ -154,7 +154,7 @@ function ca_wolves_multipacks_attack:execution(cfg)
             local wolves_moves, wolves_no_moves = {}, {}
             for _,pack_wolf in ipairs(pack) do
                 -- Wolf might have moved in previous attack -> use id to identify it
-                local wolf = wesnoth.units.find { id = pack_wolf.id }[1]
+                local wolf = wesnoth.units.find_on_map { id = pack_wolf.id }[1]
                 if wolf then
                     if (wolf.moves > 0) then
                         table.insert(wolves_moves, wolf)

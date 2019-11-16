@@ -25,14 +25,14 @@ res.turns_over_advantage = function()
 			local r, g, b = 255, 255, 255
 			if     team.__cfg.color == 1 then r, g, b = 255,   0,   0
 			elseif team.__cfg.color == 2 then r, g, b =   0,   0, 255 end
-			if # wesnoth.units.find( { side = side } ) == 0 then
+			if # wesnoth.units.find_on_map( { side = side } ) == 0 then
 				side_comparison = side_comparison .. string.format( tostring( _ "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>") .. "\n",
 				r, g, b, side)
 			else
 				local income = team.total_income * income_factor
 				local units = 0
 				-- Calc the total unit-score here
-				for i, unit in ipairs( wesnoth.units.find { side = side } ) do
+				for i, unit in ipairs( wesnoth.units.find_on_map { side = side } ) do
 					if not unit.__cfg.canrecruit then
 						wesnoth.fire("unit_worth", { id = unit.id })
 						units = units + wml.variables["unit_worth"]

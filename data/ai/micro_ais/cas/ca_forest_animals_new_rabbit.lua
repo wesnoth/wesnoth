@@ -42,12 +42,12 @@ function ca_forest_animals_new_rabbit:execution(cfg)
     end
     table.sort(holes, function(a, b) return a.random > b.random end)
 
-    local rabbits = wesnoth.units.find { side = wesnoth.current.side, type = cfg.rabbit_type }
+    local rabbits = wesnoth.units.find_on_map { side = wesnoth.current.side, type = cfg.rabbit_type }
     number = number - #rabbits
     number = math.min(number, #holes)
 
     -- Now we simply take the first 'number' (randomized) holes
-    local tmp_unit = wesnoth.units.find { side = wesnoth.current.side }[1]
+    local tmp_unit = wesnoth.units.find_on_map { side = wesnoth.current.side }[1]
     for i = 1,number do
         local x, y = -1, -1
         if tmp_unit then

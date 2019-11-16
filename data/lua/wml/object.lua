@@ -18,7 +18,7 @@ function wml_actions.object(cfg)
 
 	local filter = wml.get_child(cfg, "filter")
 	if filter then
-		unit = wesnoth.units.find(filter)[1]
+		unit = wesnoth.units.find_on_map(filter)[1]
 	else
 		unit = wesnoth.units.get(context.x1, context.y1)
 	end
@@ -81,7 +81,7 @@ end
 
 function wml_actions.remove_object(cfg)
 	local obj_id = cfg.object_id
-	for _,unit in ipairs(wesnoth.units.find(cfg)) do
+	for _,unit in ipairs(wesnoth.units.find_on_map(cfg)) do
 		unit:remove_modifications({id = obj_id})
 	end
 end

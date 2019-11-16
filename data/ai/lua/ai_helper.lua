@@ -1058,7 +1058,7 @@ end
 
 function ai_helper.get_live_units(filter)
     -- Note: the order of the filters and the [and] tags are important for speed reasons
-    return wesnoth.units.find { { "not", { status = "petrified" } }, { "and", filter } }
+    return wesnoth.units.find_on_map { { "not", { status = "petrified" } }, { "and", filter } }
 end
 
 function ai_helper.get_units_with_moves(filter, exclude_guardians)
@@ -1068,7 +1068,7 @@ function ai_helper.get_units_with_moves(filter, exclude_guardians)
     if exclude_guardians then
         exclude_status = exclude_status .. ',guardian'
     end
-    return wesnoth.units.find {
+    return wesnoth.units.find_on_map {
         { "and", { formula = "moves > 0" } },
         { "not", { status = exclude_status } },
         { "and", filter }
@@ -1077,7 +1077,7 @@ end
 
 function ai_helper.get_units_with_attacks(filter)
     -- Note: the order of the filters and the [and] tags are important for speed reasons
-    return wesnoth.units.find {
+    return wesnoth.units.find_on_map {
         { "and", { formula = "attacks_left > 0 and size(attacks) > 0" } },
         { "not", { status = "petrified" } },
         { "and", filter }
@@ -1109,7 +1109,7 @@ function ai_helper.get_visible_units(viewing_side, filter)
     end
 
     local units = {}
-    local all_units = wesnoth.units.find()
+    local all_units = wesnoth.units.find_on_map()
     for _,unit in ipairs(all_units) do
         if unit:matches(filter_plus_vision) then
             table.insert(units, unit)
@@ -1169,7 +1169,7 @@ function ai_helper.get_attackable_enemies(filter, side, cfg)
     end
 
     local enemies = {}
-    local all_units = wesnoth.units.find()
+    local all_units = wesnoth.units.find_on_map()
     for _,unit in ipairs(all_units) do
         if wesnoth.is_enemy(side, unit.side)
            and (not unit.status.petrified)
@@ -1221,7 +1221,7 @@ function ai_helper.get_closest_enemy(loc, side, cfg)
 
     local x, y
     if not loc then
-        local leader = wesnoth.units.find { side = side, canrecruit = 'yes' }[1]
+        local leader = wesnoth.units.find_on_map { side = side, canrecruit = 'yes' }[1]
         x, y = leader.x, leader.y
     else
         x, y = loc[1], loc[2]
@@ -1316,7 +1316,7 @@ function ai_helper.get_dst_src(units, cfg)
     --   all parameters for wesnoth.find_reach
 
     if (not units) then
-        units = wesnoth.units.find { side = wesnoth.current.side }
+        units = wesnoth.units.find_on_map { side = wesnoth.current.side }
     end
 
     return ai_helper.get_dst_src_units(units, cfg)
@@ -1328,7 +1328,7 @@ function ai_helper.get_enemy_dst_src(enemies, cfg)
     --   all parameters for wesnoth.find_reach
 
     if (not enemies) then
-        enemies = wesnoth.units.find {
+        enemies = wesnoth.units.find_on_map {
             { "filter_side", { { "enemy_of", { side = wesnoth.current.side} } } }
         }
     end
@@ -1558,7 +1558,7 @@ function ai_helper.find_path_with_shroud(unit, x, y, cfg)
     if wesnoth.sides[viewing_side] and wesnoth.sides[viewing_side].shroud then
         local extracted_units = {}
         if (not cfg) or (not cfg.ignore_units) then
-            local all_units = wesnoth.units.find()
+            local all_units = wesnoth.units.find_on_map()
             for _,u in ipairs(all_units) do
                 if (u.side ~= viewing_side)
                     and (not ai_helper.is_visible_unit(viewing_side, u))
@@ -1777,7 +1777,7 @@ function ai_helper.get_attacks(units, cfg)
 
     -- Note: the remainder is optimized for speed, so we only get_units once,
     -- do not use WML filters, etc.
-    local all_units = wesnoth.units.find()
+    local all_units = wesnoth.units.find_on_map()
 
     local enemy_map, my_unit_map, other_unit_map = LS.create(), LS.create(), LS.create()
     for i,unit in ipairs(all_units) do
@@ -1990,7 +1990,7 @@ function ai_helper.get_attack_combos(units, enemy, cfg)
     -- TODO: generalize it so that it works not only for units with moves=0, but blocked units etc.
     local blocked_hexes = LS.create()
     if units[1] and (units[1].side == wesnoth.current.side) then
-        local all_units = wesnoth.units.find { side = wesnoth.current.side }
+        local all_units = wesnoth.units.find_on_map { side = wesnoth.current.side }
         for _,unit in ipairs(all_units) do
             if (unit.moves == 0) then
                 blocked_hexes:insert(unit.x, unit.y)

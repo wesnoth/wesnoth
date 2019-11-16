@@ -59,7 +59,7 @@ function wesnoth.wml_actions.move_unit(cfg)
 	if check_passability == nil then check_passability = true end
 	cfg = wml.literal(cfg)
 	cfg.to_location, cfg.to_x, cfg.to_y, cfg.fire_event, cfg.clear_shroud = nil
-	local units = wesnoth.units.find(cfg)
+	local units = wesnoth.units.find_on_map(cfg)
 
 	for current_unit_index, current_unit in ipairs(units) do
 		if not fire_event or current_unit.valid then

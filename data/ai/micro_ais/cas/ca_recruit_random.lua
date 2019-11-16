@@ -10,7 +10,7 @@ function ca_recruit_random:evaluation(cfg)
     -- Random recruiting from all the units the side has
 
     -- Check if leader is on keep
-    local leader = wesnoth.units.find { side = wesnoth.current.side, canrecruit = 'yes' }[1]
+    local leader = wesnoth.units.find_on_map { side = wesnoth.current.side, canrecruit = 'yes' }[1]
     if (not leader) or (not wesnoth.get_terrain_info(wesnoth.get_terrain(leader.x, leader.y)).keep) then
         return 0
     end

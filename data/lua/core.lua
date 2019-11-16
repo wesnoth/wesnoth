@@ -480,7 +480,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	--! Fakes the move of a unit satisfying the given @a filter to position @a x, @a y.
 	--! @note Usable only during WML actions.
 	function wesnoth.interface.move_unit_fake(filter, to_x, to_y)
-		local moving_unit = wesnoth.units.find(filter)[1]
+		local moving_unit = wesnoth.units.find_on_map(filter)[1]
 		local from_x, from_y = moving_unit.x, moving_unit.y
 
 		wesnoth.interface.scroll_to_hex(from_x, from_y)
@@ -521,6 +521,15 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 				u[k] = v
 			end
 		end
+	end
+
+	-- gets map and recalllist units.
+	function wesnoth.units.find(filter)
+		local res = wesnoth.units.find_on_map(filter)
+		for i, u in ipairs(wesnoth.units.find_on_recall(filter)) do
+			table.insert(res, u)
+		end
+		return res
 	end
 end
 
@@ -611,7 +620,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.select_unit = wesnoth.deprecate_api('wesnoth.select_unit', 'wesnoth.units.select', 1, nil, wesnoth.units.select)
 	wesnoth.create_unit = wesnoth.deprecate_api('wesnoth.create_unit', 'wesnoth.units.create', 1, nil, wesnoth.units.create)
 	wesnoth.get_unit = wesnoth.deprecate_api('wesnoth.get_unit', 'wesnoth.units.get', 1, nil, wesnoth.units.get)
-	wesnoth.get_units = wesnoth.deprecate_api('wesnoth.get_units', 'wesnoth.units.find', 1, nil, wesnoth.units.find)
+	wesnoth.get_units = wesnoth.deprecate_api('wesnoth.get_units', 'wesnoth.units.find_on_map', 1, nil, wesnoth.units.find_on_map)
 	wesnoth.get_recall_units = wesnoth.deprecate_api('wesnoth.get_units', 'wesnoth.units.find_on_recall', 1, nil, wesnoth.units.find_on_recall)
 end
 wesnoth.tovconfig = wesnoth.deprecate_api('wesnoth.tovconfig', 'wml.tovconfig', 1, nil, wml.tovconfig)

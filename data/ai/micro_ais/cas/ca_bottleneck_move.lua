@@ -16,8 +16,8 @@ local function bottleneck_is_my_territory(map, enemy_map)
     -- Get copy of leader to do pathfinding from each hex to the
     -- front-line hexes, both own (stored in @map) and enemy (@enemy_map) front-line hexes
     -- If there is no leader, use first unit found
-    local unit = wesnoth.units.find { side = wesnoth.current.side, canrecruit = 'yes' }[1]
-    if (not unit) then unit = wesnoth.units.find { side = wesnoth.current.side }[1] end
+    local unit = wesnoth.units.find_on_map { side = wesnoth.current.side, canrecruit = 'yes' }[1]
+    if (not unit) then unit = wesnoth.units.find_on_map { side = wesnoth.current.side }[1] end
     local dummy_unit = unit:clone()
 
     local territory_map = LS.create()
@@ -269,7 +269,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
 
     -- Healing map: positions next to healers
     -- Healers get moved with higher priority, so don't need to check their MP
-    local healers = wesnoth.units.find { side = wesnoth.current.side, ability = "healing" }
+    local healers = wesnoth.units.find_on_map { side = wesnoth.current.side, ability = "healing" }
     BD_healing_map = LS.create()
     for _,healer in ipairs(healers) do
         for xa,ya in H.adjacent_tiles(healer.x, healer.y) do
@@ -294,7 +294,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
     --   1. the rating of the unit on the target hex (if there is one)
     --   2. the rating of the currently considered unit on its current hex
 
-    local all_units = wesnoth.units.find { side = wesnoth.current.side }
+    local all_units = wesnoth.units.find_on_map { side = wesnoth.current.side }
     local current_rating_map = LS.create()
 
     for _,unit in ipairs(all_units) do
@@ -433,7 +433,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
         BD_bottleneck_moves_done = true
     else
         -- If there's another unit in the best location, moving it out of the way becomes the best move
-        local unit_in_way = wesnoth.units.find { x = best_hex[1], y = best_hex[2],
+        local unit_in_way = wesnoth.units.find_on_map { x = best_hex[1], y = best_hex[2],
             { "not", { id = best_unit.id } }
         }[1]
         if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then

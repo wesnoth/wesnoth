@@ -12,7 +12,7 @@ res.quick_4mp_leaders = function(args)
 	end
 
 	local trait_quick = args[1][2]
-	for i, unit in ipairs(wesnoth.units.find { canrecruit = true, T.filter_wml { max_moves = 4 } }) do
+	for i, unit in ipairs(wesnoth.units.find_on_map { canrecruit = true, T.filter_wml { max_moves = 4 } }) do
 		if not unit.variables.dont_make_me_quick then
 			unit:add_modification("trait", trait_quick )
 			unit.moves = unit.max_moves
@@ -58,14 +58,14 @@ res.turns_over_advantage = function()
 			elseif team.__cfg.color == 7 then r, g, b = 255, 165,   0
 			elseif team.__cfg.color == 8 then r, g, b = 255, 255, 255
 			elseif team.__cfg.color == 9 then r, g, b =   0, 128, 128 end
-			if # wesnoth.units.find( { side = side } ) == 0 then
+			if # wesnoth.units.find_on_map( { side = side } ) == 0 then
 				side_comparison = side_comparison .. string.format( tostring( _ "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>") .. "\n",
 				r, g, b, side)
 			else
 				local income = team.total_income * income_factor
 				local units = 0
 				-- Calc the total unit-score here
-				for i, unit in ipairs( wesnoth.units.find { side = side } ) do
+				for i, unit in ipairs( wesnoth.units.find_on_map { side = side } ) do
 					if not unit.__cfg.canrecruit then
 						wesnoth.fire("unit_worth", { id = unit.id })
 						units = units + wml.variables["unit_worth"]

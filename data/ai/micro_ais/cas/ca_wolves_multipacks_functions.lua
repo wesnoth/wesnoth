@@ -21,7 +21,7 @@ function wolves_multipacks_functions.assign_packs(cfg)
 
     local pack_size = cfg.pack_size or 3
 
-    local wolves = wesnoth.units.find { side = wesnoth.current.side, type = cfg.type or "Wolf" }
+    local wolves = wesnoth.units.find_on_map { side = wesnoth.current.side, type = cfg.type or "Wolf" }
     local packs = {}
 
     -- Find wolves that already have a pack number assigned

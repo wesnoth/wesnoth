@@ -45,7 +45,7 @@
    * wesnoth.wml_matches_filter renamed to wml.matches_filter (the old name still works)
    * Moved to units module: wesnoth.create_unit, wesnoth.get_unit, wesnoth.get_units, wesnoth.get_recall_units
    * The wesnoth.units module now acts like a metatable for unit userdata.
-   * wesnoth.units.find (formerly wesnoth.get_units) now supports x="recall",y="recall"
+   * New wesnoth.units.find gets units on either the map or any side's recall list.
  ### WML engine
    * Support upkeep in StandardUnitFilter
    * [effect]apply_to=variation now supports heal_full

@@ -7,7 +7,7 @@ local function add_animation(anim, cfg)
 	local filter = wml.get_child(cfg, "filter")
 	local unit
 	if filter then
-		unit = wesnoth.units.find{
+		unit = wesnoth.units.find_on_map{
 			limit = 1,
 			T["and"](filter)
 		}[1]

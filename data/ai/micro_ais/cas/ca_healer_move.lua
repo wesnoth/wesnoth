@@ -11,7 +11,7 @@ function ca_healer_move:evaluation(cfg, data)
     -- find an appropriate hex to back up other units
     local score = data.HS_healer_move_score or 105000
 
-    local all_healers = wesnoth.units.find {
+    local all_healers = wesnoth.units.find_on_map {
         side = wesnoth.current.side,
         ability = "healing",
         { "and", wml.get_child(cfg, "filter") }
@@ -27,7 +27,7 @@ function ca_healer_move:evaluation(cfg, data)
     end
     if (not healers[1]) then return 0 end
 
-    local all_healees = wesnoth.units.find {
+    local all_healees = wesnoth.units.find_on_map {
         side = wesnoth.current.side,
         { "and", wml.get_child(cfg, "filter_second") }
     }

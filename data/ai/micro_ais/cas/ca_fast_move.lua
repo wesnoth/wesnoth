@@ -23,7 +23,7 @@ function ca_fast_move:execution(cfg)
         if (not unit.status.guardian) then table.insert(units, unit) end
     end
 
-    local leader = wesnoth.units.find { side = wesnoth.current.side, canrecruit = 'yes' }[1]
+    local leader = wesnoth.units.find_on_map { side = wesnoth.current.side, canrecruit = 'yes' }[1]
 
     local goals = {}
 

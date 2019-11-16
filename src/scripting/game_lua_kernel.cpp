@@ -559,12 +559,6 @@ int game_lua_kernel::intf_get_displayed_unit(lua_State *L)
 int game_lua_kernel::intf_get_units(lua_State *L)
 {
 	vconfig filter = luaW_checkvconfig(L, 1, true);
-	
-	if(filter["x"] == "recall" || filter["y"] == "recall") {
-		lua_pop(L, 1);
-		return intf_get_recall_units(L);
-	}
-
 	unit_filter filt(filter);
 	std::vector<const unit*> units;
 
@@ -4339,7 +4333,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{"remove_modifications", &intf_remove_modifications},
 		// Static functions
 		{"create", &intf_create_unit},
-		{"find", &dispatch<&game_lua_kernel::intf_get_units>},
+		{"find_on_map", &dispatch<&game_lua_kernel::intf_get_units>},
 		{"find_on_recall", &dispatch<&game_lua_kernel::intf_get_recall_units>},
 		{"get", &dispatch<&game_lua_kernel::intf_get_unit>},
 		{ nullptr, nullptr }

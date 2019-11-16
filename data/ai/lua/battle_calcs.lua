@@ -791,7 +791,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
 
     -- We also need the leader (well, the location at least)
     -- because if there's no other difference, prefer location _between_ the leader and the defender
-    local leader = wesnoth.units.find { side = attacker.side, canrecruit = 'yes' }[1]
+    local leader = wesnoth.units.find_on_map { side = attacker.side, canrecruit = 'yes' }[1]
 
     ------ All the attacker contributions: ------
     -- Add up rating for the attacking unit
@@ -1159,7 +1159,7 @@ function battle_calcs.get_attack_map_unit(unit, cfg)
     -- MP left off the map (for enemy pathfinding)
     local units_MP = {}
     if (unit.side ~= wesnoth.current.side) then
-        local all_units = wesnoth.units.find { side = wesnoth.current.side }
+        local all_units = wesnoth.units.find_on_map { side = wesnoth.current.side }
         for _,unit in ipairs(all_units) do
             if (unit.moves > 0) then
                 table.insert(units_MP, unit)

@@ -14,14 +14,14 @@ end
 function ca_ogres_flee:execution()
     local units = AH.get_units_with_moves { side = wesnoth.current.side }
 
-    local units_noMP = wesnoth.units.find { side = wesnoth.current.side,
+    local units_noMP = wesnoth.units.find_on_map { side = wesnoth.current.side,
         formula = 'movement_left = 0'
     }
 
     local width, height = wesnoth.get_map_size()
 
     -- Need the enemy map and enemy attack map if avoid_enemies is set
-    local enemies = wesnoth.units.find {  { "filter_side", { {"enemy_of", {side = wesnoth.current.side} } } } }
+    local enemies = wesnoth.units.find_on_map {  { "filter_side", { {"enemy_of", {side = wesnoth.current.side} } } } }
     local enemy_attack_map = BC.get_attack_map(enemies)
 
     local max_rating, best_hex, best_unit = - math.huge

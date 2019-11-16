@@ -137,12 +137,12 @@ end
 
 function wml_actions.fire_event(cfg)
 	local u1 = wml.get_child(cfg, "primary_unit")
-	u1 = u1 and wesnoth.units.find(u1)[1]
+	u1 = u1 and wesnoth.units.find_on_map(u1)[1]
 	local x1, y1 = 0, 0
 	if u1 then x1, y1 = u1.x, u1.y end
 
 	local u2 = wml.get_child(cfg, "secondary_unit")
-	u2 = u2 and wesnoth.units.find(u2)[1]
+	u2 = u2 and wesnoth.units.find_on_map(u2)[1]
 	local x2, y2 = 0, 0
 	if u2 then x2, y2 = u2.x, u2.y end
 
@@ -169,7 +169,7 @@ end
 
 function wml_actions.allow_extra_recruit(cfg)
 	local recruits = cfg.extra_recruit or helper.wml_error("[allow_extra_recruit] missing required extra_recruit= attribute")
-	for index, unit in ipairs(wesnoth.units.find(cfg)) do
+	for index, unit in ipairs(wesnoth.units.find_on_map(cfg)) do
 		local v = unit.extra_recruit
 		for recruit in utils.split(recruits) do
 			table.insert(v, recruit)
@@ -201,7 +201,7 @@ end
 
 function wml_actions.disallow_extra_recruit(cfg)
 	local recruits = cfg.extra_recruit or helper.wml_error("[disallow_extra_recruit] missing required extra_recruit= attribute")
-	for index, unit in ipairs(wesnoth.units.find(cfg)) do
+	for index, unit in ipairs(wesnoth.units.find_on_map(cfg)) do
 		local v = unit.extra_recruit
 		for w in utils.split(recruits) do
 			for i, r in ipairs(v) do
@@ -234,7 +234,7 @@ function wml_actions.set_extra_recruit(cfg)
 		table.insert(v, w)
 	end
 
-	for index, unit in ipairs(wesnoth.units.find(cfg)) do
+	for index, unit in ipairs(wesnoth.units.find_on_map(cfg)) do
 		unit.extra_recruit = v
 	end
 end
@@ -248,7 +248,7 @@ function wml_actions.store_map_dimensions(cfg)
 end
 
 function wml_actions.unit_worth(cfg)
-	local u = wesnoth.units.find(cfg)[1] or
+	local u = wesnoth.units.find_on_map(cfg)[1] or
 		helper.wml_error "[unit_worth]'s filter didn't match any unit"
 	local ut = wesnoth.unit_types[u.type]
 	local hp = u.hitpoints / u.max_hitpoints
@@ -324,7 +324,7 @@ function wml_actions.scroll_to(cfg)
 end
 
 function wml_actions.scroll_to_unit(cfg)
-	local u = wesnoth.units.find(cfg)[1]
+	local u = wesnoth.units.find_on_map(cfg)[1]
 	if not u then return end
 	if not utils.optional_side_filter(cfg, "for_side", "for_side") then return end
 	wesnoth.scroll_to_tile(u.x, u.y, cfg.check_fogged, cfg.immediate)
@@ -343,7 +343,7 @@ function wml_actions.unlock_view(cfg)
 end
 
 function wml_actions.select_unit(cfg)
-	local u = wesnoth.units.find(cfg)[1]
+	local u = wesnoth.units.find_on_map(cfg)[1]
 	if not u then return end
 	wesnoth.interface.select_unit(u.x, u.y, cfg.highlight, cfg.fire_event)
 end
@@ -354,7 +354,7 @@ end
 
 function wml_actions.unit_overlay(cfg)
 	local img = cfg.image or helper.wml_error( "[unit_overlay] missing required image= attribute" )
-	for i,u in ipairs(wesnoth.units.find(cfg)) do
+	for i,u in ipairs(wesnoth.units.find_on_map(cfg)) do
 		local has_already = false
 		for i, w in ipairs(u.overlays) do
 			if w == img then has_already = true end
@@ -374,7 +374,7 @@ end
 
 function wml_actions.remove_unit_overlay(cfg)
 	local img = cfg.image or helper.wml_error( "[remove_unit_overlay] missing required image= attribute" )
-	for i,u in ipairs(wesnoth.units.find(cfg)) do
+	for i,u in ipairs(wesnoth.units.find_on_map(cfg)) do
 		local has_already = false
 		for i, w in ipairs(u.overlays) do
 			if w == img then has_already = true end
@@ -403,23 +403,17 @@ function wml_actions.store_unit(cfg)
 
 	--cache the needed units here, since the filter might reference the to-be-cleared variable(s)
 	local units = wesnoth.units.find(filter)
-	local recall_units = wesnoth.units.find{x = 'recall', wml.tag["and"](filter)}
 
 	local writer = utils.vwriter.init(cfg, "unit")
 
 	for i,u in ipairs(units) do
+		local ucfg = u.__cfg
+		if u.valid == 'recall' then
+			ucfg.x = 'recall'
+			ucfg.y = 'recall'
+		end
 		utils.vwriter.write(writer, u.__cfg)
 		if kill_units then u:erase() end
-	end
-
-	if (not filter.x or filter.x == "recall") and (not filter.y or filter.y == "recall") then
-		for i,u in ipairs(recall_units) do
-			local ucfg = u.__cfg
-			ucfg.x = "recall"
-			ucfg.y = "recall"
-			utils.vwriter.write(writer, ucfg)
-			if kill_units then u:erase() end
-		end
 	end
 end
 
@@ -459,7 +453,7 @@ function wml_actions.store_reachable_locations(cfg)
 
 	local reach = location_set.create()
 
-	for i,unit in ipairs(wesnoth.units.find(unit_filter)) do
+	for i,unit in ipairs(wesnoth.units.find_on_map(unit_filter)) do
 		local unit_reach
 		if moves == "max" then
 			local saved_moves = unit.moves
@@ -491,14 +485,14 @@ function wml_actions.store_reachable_locations(cfg)
 end
 
 function wml_actions.hide_unit(cfg)
-	for i,u in ipairs(wesnoth.units.find(cfg)) do
+	for i,u in ipairs(wesnoth.units.find_on_map(cfg)) do
 		u.hidden = true
 	end
 	wml_actions.redraw {}
 end
 
 function wml_actions.unhide_unit(cfg)
-	for i,u in ipairs(wesnoth.units.find(cfg)) do
+	for i,u in ipairs(wesnoth.units.find_on_map(cfg)) do
 		u.hidden = false
 	end
 	wml_actions.redraw {}
@@ -547,7 +541,7 @@ function wml_actions.floating_text(cfg)
 end
 
 function wml_actions.petrify(cfg)
-	for index, unit in ipairs(wesnoth.units.find(cfg)) do
+	for index, unit in ipairs(wesnoth.units.find_on_map(cfg)) do
 		unit.status.petrified = true
 		-- Extract unit and put it back to update animation (not needed for recall units)
 		unit:extract()
@@ -560,7 +554,7 @@ function wml_actions.petrify(cfg)
 end
 
 function wml_actions.unpetrify(cfg)
-	for index, unit in ipairs(wesnoth.units.find(cfg)) do
+	for index, unit in ipairs(wesnoth.units.find_on_map(cfg)) do
 		unit.status.petrified = false
 		-- Extract unit and put it back to update animation (not needed for recall units)
 		unit:extract()
@@ -575,7 +569,7 @@ end
 function wml_actions.transform_unit(cfg)
 	local transform_to = cfg.transform_to
 
-	for index, unit in ipairs(wesnoth.units.find(cfg)) do
+	for index, unit in ipairs(wesnoth.units.find_on_map(cfg)) do
 
 		if transform_to then
 			unit:transform(transform_to)
@@ -618,7 +612,7 @@ function wml_actions.store_side(cfg)
 end
 
 function wml_actions.add_ai_behavior(cfg)
-	local unit = wesnoth.units.find(wml.get_child(cfg, "filter"))[1] or
+	local unit = wesnoth.units.find_on_map(wml.get_child(cfg, "filter"))[1] or
 		helper.wml_error("[add_ai_behavior]: no unit specified")
 
 	local side = cfg.side or
@@ -687,7 +681,7 @@ function wml_actions.store_villages( cfg )
 end
 
 function wml_actions.put_to_recall_list(cfg)
-	local units = wesnoth.units.find(cfg)
+	local units = wesnoth.units.find_on_map(cfg)
 
 	for i, unit in ipairs(units) do
 		if cfg.heal then
@@ -884,7 +878,7 @@ end
 wml_actions.teleport = function(cfg)
 	local context = wesnoth.current.event_context
 	local filter = wml.get_child(cfg, "filter") or { x = context.x1, y = context.y1 }
-	local unit = wesnoth.units.find(filter)[1]
+	local unit = wesnoth.units.find_on_map(filter)[1]
 	if not unit then
 		-- No error if no unit matches.
 		return
@@ -966,7 +960,7 @@ function wesnoth.wml_actions.cancel_action(cfg)
 end
 
 function wesnoth.wml_actions.store_unit_defense(cfg)
-	local unit = wesnoth.units.find(cfg)[1] or helper.wml_error "[store_unit_defense]'s filter didn't match any unit"
+	local unit = wesnoth.units.find_on_map(cfg)[1] or helper.wml_error "[store_unit_defense]'s filter didn't match any unit"
 	local terrain = cfg.terrain
 	local defense
 
@@ -1023,7 +1017,7 @@ end
 
 function wml_actions.remove_trait(cfg)
 	local obj_id = cfg.trait_id
-	for _,unit in ipairs(wesnoth.units.find(cfg)) do
+	for _,unit in ipairs(wesnoth.units.find_on_map(cfg)) do
 		unit:remove_modifications({id = obj_id}, "trait")
 	end
 end

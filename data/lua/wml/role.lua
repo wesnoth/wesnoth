@@ -53,7 +53,7 @@ function wesnoth.wml_actions.role(cfg)
 
 	if not reassign then
 		if search_map then
-			local unit = wesnoth.units.find{role=role}[1]
+			local unit = wesnoth.units.find_on_map{role=role}[1]
 			if unit then
 				return
 			end
@@ -76,7 +76,7 @@ function wesnoth.wml_actions.role(cfg)
 			if #types > 0 then
 				filter.type = types[i]
 			end
-			local unit = wesnoth.units.find(filter)[1]
+			local unit = wesnoth.units.find_on_map(filter)[1]
 			if unit then
 				unit.role = role
 				return

@@ -336,7 +336,7 @@ return {
 
         function do_recruit_eval(data)
             -- Check if leader is on keep
-            local leader = wesnoth.units.find { side = wesnoth.current.side, canrecruit = 'yes' }[1]
+            local leader = wesnoth.units.find_on_map { side = wesnoth.current.side, canrecruit = 'yes' }[1]
 
             if (not leader) or (not wesnoth.get_terrain_info(wesnoth.get_terrain(leader.x, leader.y)).keep) then
                 return 0
@@ -566,7 +566,7 @@ return {
             end
 
             local recruit_type
-            local leader = wesnoth.units.find { side = wesnoth.current.side, canrecruit = 'yes' }[1]
+            local leader = wesnoth.units.find_on_map { side = wesnoth.current.side, canrecruit = 'yes' }[1]
             repeat
                 recruit_data.recruit.best_hex, recruit_data.recruit.target_hex = ai_cas:find_best_recruit_hex(leader, recruit_data)
                 recruit_type = ai_cas:find_best_recruit(attack_type_count, unit_attack_type_count, recruit_effectiveness, recruit_vulnerability, attack_range_count, unit_attack_range_count, most_common_range_count)

@@ -225,7 +225,7 @@ local function get_speaker(cfg)
 	elseif cfg.speaker ~= nil then
 		speaker = wesnoth.units.get(cfg.speaker)
 	else
-		speaker = wesnoth.units.find(cfg)[1]
+		speaker = wesnoth.units.find_on_map(cfg)[1]
 	end
 
 	return speaker

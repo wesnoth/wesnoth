@@ -13,7 +13,7 @@ local ca_transport = {}
 -- Also unload units onto best hexes adjacent to landing site
 
 function ca_transport:evaluation()
-    local units = wesnoth.units.find { side = wesnoth.current.side, formula = 'movement_left > 0' }
+    local units = wesnoth.units.find_on_map { side = wesnoth.current.side, formula = 'movement_left > 0' }
 
     for i,u in ipairs(units) do
         if u.variables.destination_x and u.variables.destination_y then
@@ -25,7 +25,7 @@ function ca_transport:evaluation()
 end
 
 function ca_transport:execution()
-    local units = wesnoth.units.find {}
+    local units = wesnoth.units.find_on_map {}
 
     -- Need all transport units plus maps of all units, all transport units and
     -- all other units (as those block hexes accessible to transport units)
