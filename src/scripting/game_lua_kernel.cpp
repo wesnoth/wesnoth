@@ -2421,11 +2421,16 @@ static int intf_unit_resistance(lua_State *L)
 {
 	const unit& u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
-	bool a = luaW_toboolean(L, 3);
-
+	bool a = false;
 	map_location loc = u.get_location();
-	if (!lua_isnoneornil(L, 4)) {
-		loc = luaW_checklocation(L, 4);
+	
+	if(lua_isboolean(L, 3) {
+		a = luaW_toboolean(L, 3);
+		if(!lua_isnoneornil(L, 4)) {
+			loc = luaW_checklocation(L, 4);
+		}
+	} else if(!lua_isnoneornil(L, 3)) {
+		loc = luaW_checklocation(L, 3);
 	}
 
 	lua_pushinteger(L, u.resistance_against(m, a, loc));
