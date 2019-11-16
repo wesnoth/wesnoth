@@ -302,7 +302,7 @@ local function message_user_choice(cfg, speaker, options, text_input, sound)
 		end
 
 		if option_chosen == -2 then -- Pressed Escape (only if no input)
-			wesnoth.skip_messages()
+			wesnoth.interface.skip_messages()
 		end
 
 		local result_cfg = {}
@@ -372,7 +372,7 @@ function wesnoth.wml_actions.message(cfg)
 	-- Check if there is any input to be made, if not the message may be skipped
 	local has_input = text_input ~= nil or #options > 0
 
-	if not has_input and wesnoth.is_skipping_messages() then
+	if not has_input and wesnoth.interface.is_skipping_messages() then
 		-- No input to get and the user is not interested either
 		log("Skipping [message] because user not interested", "debug")
 		return
@@ -410,17 +410,17 @@ function wesnoth.wml_actions.message(cfg)
 		-- Nothing to do here
 	elseif speaker == "narrator" then
 		-- Narrator, so deselect units
-		wesnoth.deselect_hex()
+		wesnoth.interface.deselect_hex()
 		-- The speaker is expected to be either nil or a unit later
 		speaker = nil
 		wesnoth.fire("redraw")
 	else
 		-- Check ~= false, because the default if omitted should be true
 		if cfg.scroll ~= false then
-			wesnoth.scroll_to_tile(speaker.x, speaker.y, true, false, true)
+			wesnoth.interface.scroll_to_hex(speaker.x, speaker.y, true, false, true)
 		end
 
-		wesnoth.highlight_hex(speaker.x, speaker.y)
+		wesnoth.interface.highlight_hex(speaker.x, speaker.y)
 		wesnoth.fire("redraw")
 	end
 
@@ -448,7 +448,7 @@ function wesnoth.wml_actions.message(cfg)
 
 	-- Unhilight the speaker
 	if speaker and not cfg.highlight == false then
-		wesnoth.deselect_hex()
+		wesnoth.interface.deselect_hex()
 	end
 
 	if #options > 0 then

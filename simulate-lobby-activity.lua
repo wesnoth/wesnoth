@@ -52,7 +52,7 @@ return function()
   -- Reached the lobby. Random delay before we start actually simulating activity.
   -- This is here to avoid a situation where activity arrives in bursts after a script
   -- has launched, say, 100 copies of Wesnoth at the same time.
-  wesnoth.delay(wesnoth.random(15000))
+  wesnoth.interface.delay(wesnoth.random(15000))
 
   events, context, info = coroutine.yield()
 
@@ -82,7 +82,7 @@ return function()
       end
     end
 
-    wesnoth.delay(15000)
+    wesnoth.interface.delay(15000)
 
     events, context, info = coroutine.yield()
   end

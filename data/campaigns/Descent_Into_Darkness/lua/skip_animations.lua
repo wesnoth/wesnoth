@@ -15,7 +15,7 @@ for i, action_id in ipairs(skippable_actions) do
 
 	skip_actions[action_id] = wesnoth.wml_actions[action_id]
 	wesnoth.wml_actions[action_id] = function(cfg)
-		if wesnoth.is_skipping_messages() then
+		if wesnoth.interface.is_skipping_messages() then
 			return
 		end
 

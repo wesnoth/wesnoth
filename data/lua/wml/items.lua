@@ -4,7 +4,7 @@ local wml_actions = wesnoth.wml_actions
 local scenario_items = {}
 local next_item_name = 0
 local function add_overlay(x, y, cfg)
-	wesnoth.add_tile_overlay(x, y, cfg)
+	wesnoth.interface.add_hex_overlay(x, y, cfg)
 	local items = scenario_items[x * 10000 + y]
 	if not items then
 		items = {}
@@ -27,7 +27,7 @@ end
 local function remove_overlay(x, y, name)
 	local items = scenario_items[x * 10000 + y]
 	if not items then return end
-	wesnoth.remove_tile_overlay(x, y, name)
+	wesnoth.interface.remove_hex_overlay(x, y, name)
 	if name then
 		for i = #items,1,-1 do
 			local item = items[i]

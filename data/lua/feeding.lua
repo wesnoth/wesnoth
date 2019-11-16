@@ -28,7 +28,7 @@ on_event("die", function()
 			u_killer_cfg.max_hitpoints = u_killer_cfg.max_hitpoints + 1
 			u_killer_cfg.hitpoints = u_killer_cfg.hitpoints + 1
 			wesnoth.units.to_map(u_killer_cfg)
-			wesnoth.float_label(ec.x2, ec.y2, _ "+1 max HP", "0,255,0")
+			wesnoth.interface.float_label(ec.x2, ec.y2, _ "+1 max HP", "0,255,0")
 			return
 		end
 	end
@@ -41,5 +41,5 @@ on_event("die", function()
 		},
 	})
 	u_killer.hitpoints = u_killer.hitpoints + 1
-	wesnoth.float_label(ec.x2, ec.y2, _ "+1 max HP", "0,255,0")
+	wesnoth.interface.float_label(ec.x2, ec.y2, _ "+1 max HP", "0,255,0")
 end)

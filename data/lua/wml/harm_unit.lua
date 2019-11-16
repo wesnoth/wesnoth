@@ -41,7 +41,7 @@ function wml_actions.harm_unit(cfg)
 
 			if animate then
 				if animate ~= "defender" and harmer and harmer.valid then
-					wesnoth.scroll_to_tile(harmer.x, harmer.y, true)
+					wesnoth.interface.scroll_to_hex(harmer.x, harmer.y, true)
 					wml_actions.animate_unit {
 						flag = "attack",
 						hits = true,
@@ -52,7 +52,7 @@ function wml_actions.harm_unit(cfg)
 						T.facing { x = unit_to_harm.x, y = unit_to_harm.y },
 					}
 				end
-				wesnoth.scroll_to_tile(unit_to_harm.x, unit_to_harm.y, true)
+				wesnoth.interface.scroll_to_hex(unit_to_harm.x, unit_to_harm.y, true)
 			end
 
 			-- the two functions below are taken straight from the C++ engine,
@@ -160,7 +160,7 @@ function wml_actions.harm_unit(cfg)
 				end
 			end
 
-			wesnoth.float_label( unit_to_harm.x, unit_to_harm.y, string.format( "<span foreground='red'>%s</span>", text ) )
+			wesnoth.interface.float_label( unit_to_harm.x, unit_to_harm.y, string.format( "<span foreground='red'>%s</span>", text ) )
 
 			local function calc_xp( level ) -- to calculate the experience in case of kill
 				if level == 0 then return math.ceil(wesnoth.game_config.kill_experience / 2)
@@ -183,7 +183,7 @@ function wml_actions.harm_unit(cfg)
 			end
 
 			if animate then
-				wesnoth.delay(delay)
+				wesnoth.interface.delay(delay)
 			end
 
 			if variable then

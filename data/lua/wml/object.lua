@@ -52,7 +52,7 @@ function wml_actions.object(cfg)
 
 		if not silent then
 			unit:select(false)
-			wesnoth.highlight_hex(unit.x, unit.y)
+			wesnoth.interface.highlight_hex(unit.x, unit.y)
 		end
 
 		-- Mark this item as used up

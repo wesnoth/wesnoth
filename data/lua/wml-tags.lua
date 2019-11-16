@@ -316,9 +316,9 @@ function wml_actions.scroll_to(cfg)
 	local loc = wesnoth.get_locations( cfg )[1]
 	if not loc then return end
 	if not utils.optional_side_filter(cfg) then return end
-	wesnoth.scroll_to_tile(loc[1], loc[2], cfg.check_fogged, cfg.immediate)
+	wesnoth.interface.scroll_to_hex(loc[1], loc[2], cfg.check_fogged, cfg.immediate)
 	if cfg.highlight then
-		wesnoth.highlight_hex(loc[1], loc[2])
+		wesnoth.interface.highlight_hex(loc[1], loc[2])
 		wml_actions.redraw{}
 	end
 end
@@ -327,19 +327,19 @@ function wml_actions.scroll_to_unit(cfg)
 	local u = wesnoth.units.find_on_map(cfg)[1]
 	if not u then return end
 	if not utils.optional_side_filter(cfg, "for_side", "for_side") then return end
-	wesnoth.scroll_to_tile(u.x, u.y, cfg.check_fogged, cfg.immediate)
+	wesnoth.interface.scroll_to_hex(u.x, u.y, cfg.check_fogged, cfg.immediate)
 	if cfg.highlight then
-		wesnoth.highlight_hex(u.x, u.y)
+		wesnoth.interface.highlight_hex(u.x, u.y)
 		wml_actions.redraw{}
 	end
 end
 
 function wml_actions.lock_view(cfg)
-	wesnoth.lock_view(true)
+	wesnoth.interface.lock(true)
 end
 
 function wml_actions.unlock_view(cfg)
-	wesnoth.lock_view(false)
+	wesnoth.interface.lock(false)
 end
 
 function wml_actions.select_unit(cfg)
@@ -528,7 +528,7 @@ function wml_actions.delay(cfg)
 	local delay = tonumber(cfg.time) or
 		helper.wml_error "[delay] missing required time= attribute."
 	local accelerate = cfg.accelerate or false
-	wesnoth.delay(delay, accelerate)
+	wesnoth.interface.delay(delay, accelerate)
 end
 
 function wml_actions.floating_text(cfg)
@@ -536,7 +536,7 @@ function wml_actions.floating_text(cfg)
 	local text = cfg.text or helper.wml_error("[floating_text] missing required text= attribute")
 
 	for i, loc in ipairs(locs) do
-		wesnoth.float_label(loc[1], loc[2], text, cfg.color)
+		wesnoth.interface.float_label(loc[1], loc[2], text, cfg.color)
 	end
 end
 
@@ -708,11 +708,11 @@ function wml_actions.disallow_end_turn(cfg)
 end
 
 function wml_actions.clear_menu_item(cfg)
-	wesnoth.clear_menu_item(cfg.id)
+	wesnoth.interface.clear_menu_item(cfg.id)
 end
 
 function wml_actions.set_menu_item(cfg)
-	wesnoth.set_menu_item(cfg.id, cfg)
+	wesnoth.interface.set_menu_item(cfg.id, cfg)
 end
 
 function wml_actions.place_shroud(cfg)
@@ -760,12 +760,12 @@ function wml_actions.scroll(cfg)
 		end
 	end
 	if have_human or #sides == 0 then
-		wesnoth.scroll(cfg.x or 0, cfg.y or 0)
+		wesnoth.interface.scroll(cfg.x or 0, cfg.y or 0)
 	end
 end
 
 function wml_actions.color_adjust(cfg)
-	wesnoth.color_adjust(cfg)
+	wesnoth.interface.color_adjust(cfg)
 end
 
 function wml_actions.end_turn(cfg)
@@ -864,8 +864,8 @@ wml_actions.unstore_unit = function(cfg)
 		if color == nil and cfg.red and cfg.blue and cfg.green then
 			color = cfg.red .. "," .. cfg.green .. "," .. cfg.blue
 		end
-		if text ~= nil and not wesnoth.is_skipping_messages() then
-			wesnoth.float_label(x, y, text, color)
+		if text ~= nil and not wesnoth.interface.is_skipping_messages() then
+			wesnoth.interface.float_label(x, y, text, color)
 		end
 		if advance then
 			unit:advance(animate, cfg.fire_event)
@@ -947,7 +947,7 @@ function wesnoth.wml_actions.change_theme(cfg)
 end
 
 function wesnoth.wml_actions.zoom(cfg)
-	wesnoth.zoom(cfg.factor, cfg.relative)
+	wesnoth.interface.zoom(cfg.factor, cfg.relative)
 end
 
 function wesnoth.wml_actions.story(cfg)
