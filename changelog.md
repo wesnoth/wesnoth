@@ -54,7 +54,6 @@
    * [effect]apply_to=variation now supports heal_full
    * Support [set/clear_variable] inside [modify_unit/side]
    * Support [variables] in [modify_side], as in [modify_unit]
-   * [modify_unit] now accepts rebuild=no which will avoid a rebuild of the unit if possible (not guaranteed)
  ### Packaging
    * The Wesnoth client now looks for the data/dist file when logging into the multiplayer server.
      This file should contain one of the following values based on where the package is for:
