@@ -310,7 +310,7 @@
    * Support male_voice and female_voice in [message]
    * Support [break], [continue], and [return] in [random_placement]
    * [remove_sound_source] now accepts a comma-separated ID list
-   * Support [filter_team] in [side] in addition to team_name=
+   * Support [filter_team] in [item] in addition to team_name=
    * Support an optional EXTRA_WML argument to {REMOVE_LABEL}.
    * Support [disallow_end_turn]reason=
    * The {SPECIAL_NOTES_*} macros now start with a newline and a bullet point.
