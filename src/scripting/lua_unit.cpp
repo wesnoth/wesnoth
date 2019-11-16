@@ -488,6 +488,11 @@ static int impl_unit_set(lua_State *L)
 		modify_int_attrib("x", loc.set_wml_x(value); u.set_location(loc));
 		modify_int_attrib("y", loc.set_wml_y(value); u.set_location(loc));
 		modify_string_attrib("id", u.set_id(value));
+		if(strcmp(m, "loc") == 0) {
+			luaW_tolocation(L, 3, loc);
+			u.set_location(loc);
+			return 0;
+		}
 	} else {
 		const bool is_key_x = strcmp(m, "x") == 0;
 		const bool is_key_y = strcmp(m, "y") == 0;
