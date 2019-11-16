@@ -4,4 +4,4 @@ cd steamrt
 docker build -t steamos-wesnoth .
 rm -rf ../steambuild
 mkdir ../steambuild
-docker run -it -v "$PWD"/../../..:/wesnoth -v "$PWD"/../steambuild:/output --tmpfs /build:exec -u $UID steamos-wesnoth
+docker run -it -v "$PWD"/../../..:/wesnoth -v "$PWD"/../steambuild:/output --tmpfs /build:exec -u "$UID" steamos-wesnoth
