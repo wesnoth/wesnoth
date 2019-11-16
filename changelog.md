@@ -49,7 +49,7 @@
    * New wesnoth.units.find gets units on either the map or any side's recall list.
    * Moved to interface module: wesnoth.scroll, wesnoth.zoom, wesnoth.get_mouseover_tile
    * wesnoth.interface.get_displayed_unit aliased to wesnoth.unit.get_hovered
-   * unit portrait is now writable
+   * unit portrait and recall_filter are now writable
  ### WML engine
    * Support upkeep in StandardUnitFilter
    * [effect]apply_to=variation now supports heal_full

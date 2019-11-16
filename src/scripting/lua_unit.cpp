@@ -451,6 +451,7 @@ static int impl_unit_set(lua_State *L)
 	modify_bool_attrib("zoc", u.set_emit_zoc(value));
 	modify_bool_attrib("canrecruit", u.set_can_recruit(value));
 	modify_bool_attrib("renamable", u.set_unrenamable(!value));
+	modify_cfg_attrib("recall_filter", u.set_recall_filter(cfg));
 
 	modify_vector_string_attrib("extra_recruit", u.set_recruits(value));
 	modify_vector_string_attrib("advances_to", u.set_advances_to(value));
@@ -625,10 +626,7 @@ static int impl_unit_variables_set(lua_State *L)
 		return luaL_argerror(L, 2, "unknown unit");
 	}
 	char const *m = luaL_checkstring(L, 2);
-	if(strcmp(m, "__cfg") == 0) {
-		u->variables() = luaW_checkconfig(L, 3);
-		return 0;
-	}
+	modify_cfg_attrib("__cfg", u->variables() = cfg);
 	config& vars = u->variables();
 	if(lua_isnoneornil(L, 3)) {
 		try {

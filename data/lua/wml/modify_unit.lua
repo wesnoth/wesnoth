@@ -26,6 +26,7 @@ local function make_set(t)
 end
 
 local known_attributes = make_set {
+	"mode",
 	"x",
 	"y",
 	"ai_special",
@@ -69,6 +70,8 @@ local known_tags = make_set {
 	"set_variable",
 	-- todo: "set_variables",
 	"clear_variable",
+	"filter_recall",
+	"variables",
 }
 
 local function is_simple(cfg)
@@ -142,6 +145,7 @@ local function simple_modify_unit(cfg)
 		end
 
 		---------- TAGS ----------
+		bool found_recall = false, found_variables = false
 		for i, t in ipairs(wml.shallow_parsed(cfg)) do
 			local tagname, tagcontent = t[1], t[2]
 			if tagname == "object" or tagname == "trait" or tagname == "advancement" then
@@ -162,6 +166,12 @@ local function simple_modify_unit(cfg)
 				for i, v in pairs(tagcontent) do
 					u.status[i] = v
 				end
+			elseif not found_recall and tagname == "filter_recall" then
+				u.recall_filter = wml.merge(u.recall_filter, tagcontent, cfg.mode or "merge")
+				found_recall = true -- Ignore all but the first
+			elseif not found_variables and tagname == "variables" then
+				u.variables.__cfg = wml.merge(u.variables.__cfg, tagcontent, cfg.mode or "merge")
+				found_variables = true -- Ignore all but the first
 			elseif tagname == "set_variable" then
 				wesnoth.wml_actions.set_variable(tagcontent, u.variables)
 			elseif tagname == "clear_variable" then

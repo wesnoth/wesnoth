@@ -625,6 +625,12 @@ public:
 		return filter_recall_;
 	}
 
+	/** Sets the filter constraints upon which units this unit may recall, if able. */
+	void set_recall_filter(const config& filter)
+	{
+		filter_recall_ = filter;
+	}
+
 	/**
 	 * Gets this unit's role.
 	 *
