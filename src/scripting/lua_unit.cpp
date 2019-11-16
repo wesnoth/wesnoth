@@ -403,6 +403,7 @@ static int impl_unit_get(lua_State *L)
 	return_string_attrib("race", u.race()->id());
 	return_string_attrib("gender", gender_string(u.gender()));
 	return_string_attrib("variation", u.variation());
+	return_string_attrib("undead_variation", u.undead_variation());
 	return_bool_attrib("zoc", u.get_emit_zoc());
 	return_string_attrib("facing", map_location::write_direction(u.facing()));
 	return_string_attrib("portrait", u.big_profile() == u.absolute_image()
