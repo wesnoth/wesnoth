@@ -33,6 +33,8 @@ matrix:
       env: TOOL=cmake CXXSTD=14 NLS=false LTS=1604 BRANCH=master
 
     - env: CXXSTD=14 NLS=false LTS=mingw BRANCH=master STRICT=false
+    
+    - env: CXXSTD=14 NLS=false LTS=steamrt BRANCH=master CC=gcc-5 CXX=g++-5
 
     - os: osx
       compiler: clang
