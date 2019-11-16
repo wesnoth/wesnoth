@@ -4181,7 +4181,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "find_vacant_tile",          &dispatch<&game_lua_kernel::intf_find_vacant_tile           >        },
 		{ "fire_event",                &dispatch2<&game_lua_kernel::intf_fire_event, false         >        },
 		{ "fire_event_by_id",          &dispatch2<&game_lua_kernel::intf_fire_event, true          >        },
-		{ "gamestate_inspector",       &dispatch<&game_lua_kernel::intf_gamestate_inspector        >        },
 		{ "get_all_vars",              &dispatch<&game_lua_kernel::intf_get_all_vars               >        },
 		{ "get_end_level_data",        &dispatch<&game_lua_kernel::intf_get_end_level_data         >        },
 		{ "get_locations",             &dispatch<&game_lua_kernel::intf_get_locations              >        },
@@ -4256,6 +4255,11 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	}
 
 	lua_setglobal(L, "wesnoth");
+	
+	lua_getglobal(L, "gui");
+	lua_pushcfunction(L, &dispatch<&game_lua_kernel::intf_gamestate_inspector>);
+	lua_setfield(L, -2, "show_inspector");
+	lua_pop(L, 1);
 
 	// Create the getside metatable.
 	cmd_log_ << lua_team::register_metatable(L);

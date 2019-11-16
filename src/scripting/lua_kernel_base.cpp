@@ -599,7 +599,7 @@ lua_kernel_base::lua_kernel_base()
 		lua_setfield(L, -3, function);
 	}
 	lua_pop(L, 1);
-
+	
 	// Delete dofile and loadfile.
 	lua_pushnil(L);
 	lua_setglobal(L, "dofile");
@@ -639,7 +639,6 @@ lua_kernel_base::lua_kernel_base()
 		{ "set_dialog_active",        &lua_gui2::intf_set_dialog_active		},
 		{ "set_dialog_visible",       &lua_gui2::intf_set_dialog_visible    },
 		{ "add_dialog_tree_node",     &lua_gui2::intf_add_dialog_tree_node	},
-		{ "add_widget_definition",    &lua_gui2::intf_add_widget_definition },
 		{ "set_dialog_callback",      &lua_gui2::intf_set_dialog_callback	},
 		{ "set_dialog_canvas",        &lua_gui2::intf_set_dialog_canvas		},
 		{ "set_dialog_focus",         &lua_gui2::intf_set_dialog_focus      },
@@ -650,12 +649,6 @@ lua_kernel_base::lua_kernel_base()
 		{ "require",                  &dispatch<&lua_kernel_base::intf_require>          },
 		{ "kernel_type",              &dispatch<&lua_kernel_base::intf_kernel_type>          },
 		{ "show_dialog",              &lua_gui2::show_dialog   },
-		{ "show_menu",                &lua_gui2::show_menu  },
-		{ "show_message_dialog",      &lua_gui2::show_message_dialog },
-		{ "show_popup_dialog",        &lua_gui2::show_popup_dialog   },
-		{ "show_story",               &lua_gui2::show_story          },
-		{ "show_message_box",         &lua_gui2::show_message_box    },
-		{ "show_lua_console",	      &dispatch<&lua_kernel_base::intf_show_lua_console> },
 		{ "compile_formula",          &lua_formula_bridge::intf_compile_formula},
 		{ "eval_formula",             &lua_formula_bridge::intf_eval_formula},
 		{ "name_generator",           &intf_name_generator           },
@@ -679,6 +672,7 @@ lua_kernel_base::lua_kernel_base()
 	//lua_cpp::set_functions(L, cpp_callbacks, 0);
 	lua_setglobal(L, "wesnoth");
 
+	cmd_log_ << "Adding wml module...\n";
 	static luaL_Reg const wml_callbacks[]= {
 		{ "load",      &intf_load_wml},
 		{ "parse",     &intf_parse_wml},
@@ -694,6 +688,21 @@ lua_kernel_base::lua_kernel_base()
 	lua_newtable(L);
 	luaL_setfuncs(L, wml_callbacks, 0);
 	lua_setglobal(L, "wml");
+
+	cmd_log_ << "Adding gui module...\n";
+	static luaL_Reg const gui_callbacks[]= {
+		{ "show_menu",          &lua_gui2::show_menu },
+		{ "show_narration",     &lua_gui2::show_message_dialog },
+		{ "show_popup",         &lua_gui2::show_popup_dialog },
+		{ "show_story",         &lua_gui2::show_story },
+		{ "show_prompt",        &lua_gui2::show_message_box },
+		{ "show_lua_console",	&dispatch<&lua_kernel_base::intf_show_lua_console> },
+		{ "add_widget_definition",    &lua_gui2::intf_add_widget_definition },
+		{ nullptr, nullptr },
+	};
+	lua_newtable(L);
+	luaL_setfuncs(L, gui_callbacks, 0);
+	lua_setglobal(L, "gui");
 
 	// Override the print function
 	cmd_log_ << "Redirecting print function...\n";

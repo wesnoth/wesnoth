@@ -1,19 +1,19 @@
 -- Note: This file is loaded automatically by the engine.
 
-function wesnoth.alert(title, msg)
+function gui.alert(title, msg)
 	if not msg then
 		msg = title;
 		title = "";
 	end
-	wesnoth.show_message_box(title, msg, "ok", true)
+	gui.show_prompt(title, msg, "ok", true)
 end
 
-function wesnoth.confirm(title, msg)
+function gui.confirm(title, msg)
 	if not msg then
 		msg = title;
 		title = "";
 	end
-	return wesnoth.show_message_box(title, msg, "yes_no", true)
+	return gui.show_prompt(title, msg, "yes_no", true)
 end
 
 
@@ -519,21 +519,6 @@ end
 
 --[========[GUI2 Dialog Manipulations]========]
 
-gui = {}
-
-gui.show_menu = wesnoth.show_menu
-gui.show_narration = wesnoth.show_message_dialog
-gui.show_popup = wesnoth.show_popup_dialog
-gui.show_story = wesnoth.show_story
-gui.show_prompt = wesnoth.show_message_box
-gui.alert = wesnoth.alert
-gui.confirm = wesnoth.confirm
-gui.show_lua_console = wesnoth.show_lua_console
-if wesnoth.kernel_type() == "Game Lua Kernel" then
-	gui.show_inspector = wesnoth.gamestate_inspector
-end
-gui.add_widget_definition = wesnoth.add_widget_definition
-
 --! Displays a WML message box with attributes from table @attr and options
 --! from table @options.
 --! @return the index of the selected option.
@@ -621,7 +606,7 @@ wesnoth.show_menu = wesnoth.deprecate_api('wesnoth.show_menu', 'gui.show_menu', 
 wesnoth.show_message_dialog = wesnoth.deprecate_api('wesnoth.show_message_dialog', 'gui.show_narration', 1, nil, gui.show_narration)
 wesnoth.show_popup_dialog = wesnoth.deprecate_api('wesnoth.show_popup_dialog', 'gui.show_popup', 1, nil, gui.show_popup)
 wesnoth.show_story = wesnoth.deprecate_api('wesnoth.show_story', 'gui.show_story', 1, nil, gui.show_story)
-wesnoth.show_prompt = wesnoth.deprecate_api('wesnoth.show_message_box', 'gui.show_prompt', 1, nil, gui.show_prompt)
+wesnoth.show_message_box = wesnoth.deprecate_api('wesnoth.show_message_box', 'gui.show_prompt', 1, nil, gui.show_prompt)
 wesnoth.alert = wesnoth.deprecate_api('wesnoth.alert', 'gui.alert', 1, nil, gui.alert)
 wesnoth.confirm = wesnoth.deprecate_api('wesnoth.confirm', 'gui.confirm', 1, nil, gui.confirm)
 wesnoth.show_lua_console = wesnoth.deprecate_api('wesnoth.show_lua_console', 'gui.show_lua_console', 1, nil, gui.show_lua_console)
