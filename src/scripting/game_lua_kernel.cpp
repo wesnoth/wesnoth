@@ -2424,7 +2424,7 @@ static int intf_unit_resistance(lua_State *L)
 	bool a = false;
 	map_location loc = u.get_location();
 	
-	if(lua_isboolean(L, 3) {
+	if(lua_isboolean(L, 3)) {
 		a = luaW_toboolean(L, 3);
 		if(!lua_isnoneornil(L, 4)) {
 			loc = luaW_checklocation(L, 4);
