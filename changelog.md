@@ -46,6 +46,8 @@
    * Moved to units module: wesnoth.create_unit, wesnoth.get_unit, wesnoth.get_units, wesnoth.get_recall_units
    * The wesnoth.units module now acts like a metatable for unit userdata.
    * New wesnoth.units.find gets units on either the map or any side's recall list.
+   * Moved to interface module: wesnoth.scroll, wesnoth.zoom, wesnoth.get_mouseover_tile
+   * wesnoth.interface.get_displayed_unit aliased to wesnoth.unit.get_hovered
  ### WML engine
    * Support upkeep in StandardUnitFilter
    * [effect]apply_to=variation now supports heal_full

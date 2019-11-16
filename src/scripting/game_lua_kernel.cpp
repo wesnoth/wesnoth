@@ -4166,17 +4166,13 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "unsynced",                 &intf_do_unsynced              },
 		{ "add_event_handler",         &dispatch<&game_lua_kernel::intf_add_event                  >        },
 		{ "add_fog",                   &dispatch2<&game_lua_kernel::intf_toggle_fog, false         >        },
-		{ "add_tile_overlay",          &dispatch<&game_lua_kernel::intf_add_tile_overlay           >        },
 		{ "add_time_area",             &dispatch<&game_lua_kernel::intf_add_time_area              >        },
 		{ "add_sound_source",          &dispatch<&game_lua_kernel::intf_add_sound_source           >        },
 		{ "allow_end_turn",            &dispatch<&game_lua_kernel::intf_allow_end_turn             >        },
 		{ "allow_undo",                &dispatch<&game_lua_kernel::intf_allow_undo                 >        },
 		{ "append_ai",                 &intf_append_ai                                                      },
 		{ "cancel_action",             &dispatch<&game_lua_kernel::intf_cancel_action              >        },
-		{ "clear_menu_item",           &dispatch<&game_lua_kernel::intf_clear_menu_item            >        },
 		{ "clear_messages",            &dispatch<&game_lua_kernel::intf_clear_messages             >        },
-		{ "color_adjust",              &dispatch<&game_lua_kernel::intf_color_adjust               >        },
-		{ "delay",                     &dispatch<&game_lua_kernel::intf_delay                      >        },
 		{ "end_turn",                  &dispatch<&game_lua_kernel::intf_end_turn                   >        },
 		{ "end_level",                 &dispatch<&game_lua_kernel::intf_end_level                  >        },
 		{ "find_cost_map",             &dispatch<&game_lua_kernel::intf_find_cost_map              >        },
@@ -4185,14 +4181,11 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "find_vacant_tile",          &dispatch<&game_lua_kernel::intf_find_vacant_tile           >        },
 		{ "fire_event",                &dispatch2<&game_lua_kernel::intf_fire_event, false         >        },
 		{ "fire_event_by_id",          &dispatch2<&game_lua_kernel::intf_fire_event, true          >        },
-		{ "float_label",               &dispatch<&game_lua_kernel::intf_float_label                >        },
 		{ "gamestate_inspector",       &dispatch<&game_lua_kernel::intf_gamestate_inspector        >        },
 		{ "get_all_vars",              &dispatch<&game_lua_kernel::intf_get_all_vars               >        },
 		{ "get_end_level_data",        &dispatch<&game_lua_kernel::intf_get_end_level_data         >        },
 		{ "get_locations",             &dispatch<&game_lua_kernel::intf_get_locations              >        },
 		{ "get_map_size",              &dispatch<&game_lua_kernel::intf_get_map_size               >        },
-		{ "get_mouseover_tile",        &dispatch<&game_lua_kernel::intf_get_mouseover_tile         >        },
-		{ "get_selected_tile",         &dispatch<&game_lua_kernel::intf_get_selected_tile          >        },
 		{ "get_sides",                 &dispatch<&game_lua_kernel::intf_get_sides                  >        },
 		{ "get_sound_source",          &dispatch<&game_lua_kernel::intf_get_sound_source           >        },
 		{ "get_starting_location",     &dispatch<&game_lua_kernel::intf_get_starting_location      >        },
@@ -4203,11 +4196,8 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "get_side_variable",         &dispatch<&game_lua_kernel::intf_get_side_variable          >        },
 		{ "get_villages",              &dispatch<&game_lua_kernel::intf_get_villages               >        },
 		{ "get_village_owner",         &dispatch<&game_lua_kernel::intf_get_village_owner          >        },
-		{ "get_displayed_unit",        &dispatch<&game_lua_kernel::intf_get_displayed_unit         >        },
-		{ "highlight_hex",             &dispatch<&game_lua_kernel::intf_highlight_hex              >        },
 		{ "is_enemy",                  &dispatch<&game_lua_kernel::intf_is_enemy                   >        },
 		{ "label",                     &dispatch<&game_lua_kernel::intf_label                      >        },
-		{ "lock_view",                 &dispatch<&game_lua_kernel::intf_lock_view                  >        },
 		{ "log_replay",                &dispatch<&game_lua_kernel::intf_log_replay                 >        },
 		{ "log",                       &dispatch<&game_lua_kernel::intf_log                        >        },
 		{ "match_location",            &dispatch<&game_lua_kernel::intf_match_location             >        },
@@ -4219,22 +4209,15 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "redraw",                    &dispatch<&game_lua_kernel::intf_redraw                     >        },
 		{ "remove_event_handler",      &dispatch<&game_lua_kernel::intf_remove_event               >        },
 		{ "remove_fog",                &dispatch2<&game_lua_kernel::intf_toggle_fog, true          >        },
-		{ "remove_tile_overlay",       &dispatch<&game_lua_kernel::intf_remove_tile_overlay        >        },
 		{ "remove_time_area",          &dispatch<&game_lua_kernel::intf_remove_time_area           >        },
 		{ "remove_sound_source",       &dispatch<&game_lua_kernel::intf_remove_sound_source        >        },
 		{ "replace_schedule",          &dispatch<&game_lua_kernel::intf_replace_schedule           >        },
-		{ "scroll",                    &dispatch<&game_lua_kernel::intf_scroll                     >        },
-		{ "scroll_to_tile",            &dispatch<&game_lua_kernel::intf_scroll_to_tile             >        },
 		{ "select_hex",                &dispatch<&game_lua_kernel::intf_select_hex                 >        },
 		{ "set_time_of_day",           &dispatch<&game_lua_kernel::intf_set_time_of_day            >        },
-		{ "deselect_hex",              &dispatch<&game_lua_kernel::intf_deselect_hex               >        },
-		{ "skip_messages",             &dispatch<&game_lua_kernel::intf_skip_messages              >        },
 		{ "is_fogged",                 &dispatch2<&game_lua_kernel::intf_get_fog_or_shroud, true   >        },
 		{ "is_shrouded",               &dispatch2<&game_lua_kernel::intf_get_fog_or_shroud, false  >        },
-		{ "is_skipping_messages",      &dispatch<&game_lua_kernel::intf_is_skipping_messages       >        },
 		{ "set_end_campaign_credits",  &dispatch<&game_lua_kernel::intf_set_end_campaign_credits   >        },
 		{ "set_end_campaign_text",     &dispatch<&game_lua_kernel::intf_set_end_campaign_text      >        },
-		{ "set_menu_item",             &dispatch<&game_lua_kernel::intf_set_menu_item              >        },
 		{ "set_next_scenario",         &dispatch<&game_lua_kernel::intf_set_next_scenario          >        },
 		{ "set_side_id",               &dispatch<&game_lua_kernel::intf_set_side_id                >        },
 		{ "set_terrain",               &dispatch<&game_lua_kernel::intf_set_terrain                >        },
@@ -4246,9 +4229,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "synchronize_choice",        &intf_synchronize_choice                                             },
 		{ "synchronize_choices",       &intf_synchronize_choices                                            },
 		{ "terrain_mask",              &dispatch<&game_lua_kernel::intf_terrain_mask               >        },
-		{ "zoom",                      &dispatch<&game_lua_kernel::intf_zoom                       >        },
 		{ "teleport",                  &dispatch<&game_lua_kernel::intf_teleport                   >        },
-		{ "view_locked",               &dispatch<&game_lua_kernel::intf_view_locked                >        },
 		{ "place_shroud",              &dispatch2<&game_lua_kernel::intf_shroud_op, true  >                 },
 		{ "remove_shroud",             &dispatch2<&game_lua_kernel::intf_shroud_op, false >                 },
 		{ nullptr, nullptr }
@@ -4341,12 +4322,43 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{"find_on_map", &dispatch<&game_lua_kernel::intf_get_units>},
 		{"find_on_recall", &dispatch<&game_lua_kernel::intf_get_recall_units>},
 		{"get", &dispatch<&game_lua_kernel::intf_get_unit>},
+		{"get_hovered", &dispatch<&game_lua_kernel::intf_get_displayed_unit>},
 		{ nullptr, nullptr }
 	};
 	lua_getglobal(L, "wesnoth");
 	lua_newtable(L);
 	luaL_setfuncs(L, unit_callbacks, 0);
 	lua_setfield(L, -2, "units");
+	lua_pop(L, 1);
+	
+	// Create the interface module
+	cmd_log_ << "Adding interface module...\n";
+	static luaL_Reg const intf_callbacks[] {
+		{"add_hex_overlay", &dispatch<&game_lua_kernel::intf_add_tile_overlay>},
+		{"remove_hex_overlay", &dispatch<&game_lua_kernel::intf_remove_tile_overlay>},
+		{"color_adjust", &dispatch<&game_lua_kernel::intf_color_adjust>},
+		{"delay", &dispatch<&game_lua_kernel::intf_delay>},
+		{"deselect_hex", &dispatch<&game_lua_kernel::intf_deselect_hex>},
+		{"highlight_hex", &dispatch<&game_lua_kernel::intf_highlight_hex>},
+		{"float_label", &dispatch<&game_lua_kernel::intf_float_label>},
+		{"get_displayed_unit", &dispatch<&game_lua_kernel::intf_get_displayed_unit>},
+		{"get_hovered_hex", &dispatch<&game_lua_kernel::intf_get_mouseover_tile>},
+		{"get_selected_hex", &dispatch<&game_lua_kernel::intf_get_selected_tile>},
+		{"lock", &dispatch<&game_lua_kernel::intf_lock_view>},
+		{"is_locked", &dispatch<&game_lua_kernel::intf_view_locked>},
+		{"scroll", &dispatch<&game_lua_kernel::intf_scroll>},
+		{"scroll_to_hex", &dispatch<&game_lua_kernel::intf_scroll_to_tile>},
+		{"skip_messages", &dispatch<&game_lua_kernel::intf_skip_messages>},
+		{"is_skipping_messages", &dispatch<&game_lua_kernel::intf_is_skipping_messages>},
+		{"zoom", &dispatch<&game_lua_kernel::intf_zoom>},
+		{"clear_menu_item", &dispatch<&game_lua_kernel::intf_clear_menu_item>},
+		{"set_menu_item", &dispatch<&game_lua_kernel::intf_set_menu_item>},
+		{ nullptr, nullptr }
+	};
+	lua_getglobal(L, "wesnoth");
+	lua_newtable(L);
+	luaL_setfuncs(L, intf_callbacks, 0);
+	lua_setfield(L, -2, "interface");
 	lua_pop(L, 1);
 
 	// Create the playlist table with its metatable
@@ -4398,9 +4410,9 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_pop(L, 1);
 
 	// Create the theme_items table.
-	cmd_log_ << "Adding theme_items table...\n";
+	cmd_log_ << "Adding game_display table...\n";
 
-	lua_getglobal(L, "wesnoth");
+	luaW_getglobal(L, "wesnoth", "interface");
 	lua_newtable(L);
 	lua_createtable(L, 0, 2);
 	lua_pushcfunction(L, &dispatch<&game_lua_kernel::impl_theme_items_get>);
@@ -4408,7 +4420,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_pushcfunction(L, &dispatch<&game_lua_kernel::impl_theme_items_set>);
 	lua_setfield(L, -2, "__newindex");
 	lua_setmetatable(L, -2);
-	lua_setfield(L, -2, "theme_items");
+	lua_setfield(L, -2, "game_display");
 	lua_pop(L, 1);
 
 	lua_settop(L, 0);
