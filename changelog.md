@@ -15,6 +15,7 @@
  ### Language and i18n
    * Updated translations: Chinese (Traditional), French, Portuguese (Brazil),
      Russian
+   * Fix Rename Unit dialog having untranslated text (issue #4569).
  ### Terrains
    * Add Stone Walls variation Catacombs (Xot) including some overlays
    * Fixes and touchups to mushroom terrains Tb and Tf

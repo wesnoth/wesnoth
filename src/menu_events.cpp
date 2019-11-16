@@ -661,8 +661,8 @@ void menu_handler::rename_unit()
 	}
 
 	std::string name = un->name();
-	const std::string title(N_("Rename Unit"));
-	const std::string label(N_("Name:"));
+	const std::string title(_("Rename Unit"));
+	const std::string label(_("Name:"));
 
 	if(gui2::dialogs::edit_text::execute(title, label, name)) {
 		resources::recorder->add_rename(name, un->get_location());
