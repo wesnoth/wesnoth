@@ -53,6 +53,10 @@ local known_attributes = make_set {
 	"description",
 	"hidden",
 	"unrenamable",
+	"profile",
+	"zoc",
+	"usage",
+	"upkeep",
 }
 
 local known_tags = make_set {
@@ -105,6 +109,9 @@ local function simple_modify_unit(cfg)
 		"max_experience",
 		"resting",
 		"canrecruit",
+		"zoc",
+		"usage",
+		"upkeep",
 	}
 
 	local function handle_unit(u)
@@ -120,6 +127,9 @@ local function simple_modify_unit(cfg)
 		end
 		if cfg.ai_special == "guardian" then
 			u.status.guardian = true
+		end
+		if cfg.profile ~= nil then
+			u.portrait = profile
 		end
 		if cfg.unrenamable ~= nil then
 			u.renamable = not cfg.unrenamable

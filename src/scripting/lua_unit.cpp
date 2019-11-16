@@ -440,6 +440,7 @@ static int impl_unit_set(lua_State *L)
 	modify_bool_attrib("resting", u.set_resting(value));
 	modify_tstring_attrib("name", u.set_name(value));
 	modify_tstring_attrib("description", u.set_unit_description(value));
+	modify_string_attrib("portrait", u.set_big_profile(value));
 	modify_string_attrib("role", u.set_role(value));
 	modify_string_attrib("facing", u.set_facing(map_location::parse_direction(value)));
 	modify_string_attrib("usage", u.set_usage(value));
