@@ -391,10 +391,9 @@ std::vector<game_config::server_info> user_servers_list()
 	std::vector<game_config::server_info> pref_servers;
 
 	for(const config &server : get_prefs()->child_range("server")) {
-		game_config::server_info sinf;
-		sinf.name = server["name"].str();
-		sinf.address = server["address"].str();
-		pref_servers.push_back(sinf);
+		pref_servers.emplace_back();
+		pref_servers.back().name = server["name"].str();
+		pref_servers.back().address = server["address"].str();
 	}
 
 	return pref_servers;
