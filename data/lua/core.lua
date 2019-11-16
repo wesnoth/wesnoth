@@ -491,6 +491,8 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	end
 
 	--[========[Units module]========]
+	
+	wesnoth.units.scroll_to = wesnoth.interface.scroll_to_hex
 
 	--! Modifies all the units satisfying the given @a filter.
 	--! @param vars key/value pairs that need changing.
