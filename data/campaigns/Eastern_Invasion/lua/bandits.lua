@@ -35,7 +35,7 @@ end
 
 local function bandits_found(x,y)
 	local bandit_types = vars.bandit_types
-	local bandit_villages = wml.array_access.get("bandit_villages")
+	local bandit_villages = wml.array_variables["bandit_villages"]
 	local boss_found = vars.boss_found
 	local visited = vars.villages_visited
 	local rand1 = helper.rand("3,4")

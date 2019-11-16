@@ -16,7 +16,7 @@ function ca_forest_animals_new_rabbit:execution(cfg)
 
     -- Get the locations of all items on that map (which could be rabbit holes)
     wesnoth.wml_actions.store_items { variable = 'holes_wml' }
-    local all_items = wml.array_access.get('holes_wml')
+    local all_items = wml.array_variables['holes_wml']
     wesnoth.wml_actions.clear_variable { name = 'holes_wml' }
 
     -- Eliminate all holes that have an enemy within 'rabbit_enemy_distance' hexes

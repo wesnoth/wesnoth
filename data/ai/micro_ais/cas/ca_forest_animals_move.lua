@@ -43,7 +43,7 @@ function ca_forest_animals_move:execution(cfg)
 
     -- Get the locations of all the rabbit holes
     wesnoth.wml_actions.store_items { variable = 'holes_wml' }
-    local all_items = wml.array_access.get('holes_wml')
+    local all_items = wml.array_variables['holes_wml']
     wesnoth.wml_actions.clear_variable { name = 'holes_wml' }
 
     -- If cfg.rabbit_hole_img is set, only items with that image or halo count as holes
