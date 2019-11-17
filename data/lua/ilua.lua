@@ -84,8 +84,13 @@ function ilua.val2str(val)
         else
             return '{'..ilua.join(val,',')..'}'
         end
-    --elseif tp == 'userdata' then
-        
+    elseif tp == 'userdata' then
+        local mt = getmetatable(val)
+        if mt.__len and mt.__pairs then
+            return '{'..ilua.join(val,',')..'}'
+        else
+            return tostring(val)
+        end
     elseif tp == 'string' then
         return "'"..val.."'"
     elseif tp == 'number' then
