@@ -25,6 +25,7 @@
    * Textboxes now have a hover effect as well as an I-beam cursor.
    * Added the Private Replay checkbox to the Multiplayer Create Game screen. This separates
      whether observers are allowed from whether the replay will be publicly available.
+   * Reworked styling of progress bars and the network transfer progress dialog.
  ### Units
    * Add mushroom defense cap to mounted and some flying units
    * Decreased hitpoints of Dwarvish Lord from 79 to 74
