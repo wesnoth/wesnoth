@@ -63,7 +63,7 @@ lua_mapgen::filter& luaW_check_mgfilter(lua_State *L, int index);
 
 void lua_mgfilter_setmetatable(lua_State *L);
 
-int intf_terainfilter_create(lua_State *L);
+int intf_terrainfilter_create(lua_State *L);
 
 int intf_mg_get_locations(lua_State* L);
 int intf_mg_get_tiles_radius(lua_State* L);

@@ -222,8 +222,8 @@ mapgen_lua_kernel::mapgen_lua_kernel(const config* vars)
 	static luaL_Reg const callbacks[] {
 		{ "find_path",           &intf_find_path           },
 		{ "random",              &intf_random              },
-		{ "create_filter",       &intf_terainfilter_create },
-		{ "create_map",          &intf_terainmap_create    },
+		{ "create_filter",       &intf_terrainfilter_create },
+		{ "create_map",          &intf_terrainmap_create    },
 		{ "default_generate_height_map", &intf_default_generate_height_map },
 		{ "generate_default_map",        &intf_default_generate            },
 		{ "get_variable", &dispatch<&mapgen_lua_kernel::intf_get_variable> },

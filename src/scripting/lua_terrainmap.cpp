@@ -30,7 +30,7 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
-static const char terrinmapKey[] = "terrainmap";
+static const char terrainmapKey[] = "terrainmap";
 static const char maplocationKey[] = "special_locations";
 
 using std::string_view;
@@ -92,8 +92,8 @@ int impl_slocs_get(lua_State* L)
 	//todo: calling map.special_locations[1] will return the underlying map
 	//      object instead of the first starting position, because the lua
 	//      special locations is actually a table with the map object at
-	//      index 1. The probably easiest way to fix this inconsitency is
-	//      to just disallow all integerindicies here.
+	//      index 1. The probably easiest way to fix this inconsistency is
+	//      to just disallow all integer indices here.
 	mapgen_gamemap& m = luaW_check_slocs(L, 1);
 	string_view id = luaL_checkstring(L, 2);
 	auto res = m.special_location(std::string(id));
@@ -193,7 +193,7 @@ map_location mapgen_gamemap::special_location(const std::string& id) const
 
 bool luaW_isterrainmap(lua_State* L, int index)
 {
-	return luaL_testudata(L, index, terrinmapKey) != nullptr;
+	return luaL_testudata(L, index, terrainmapKey) != nullptr;
 }
 
 
@@ -216,7 +216,7 @@ mapgen_gamemap& luaW_checkterrainmap(lua_State *L, int index)
 
 void lua_terrainmap_setmetatable(lua_State *L)
 {
-	luaL_setmetatable(L, terrinmapKey);
+	luaL_setmetatable(L, terrainmapKey);
 }
 
 template<typename... T>
@@ -229,13 +229,13 @@ mapgen_gamemap* luaW_pushmap(lua_State *L, T&&... params)
 
 /**
  * Create a map.
- * - Arg 1: string descripbing the map data.
+ * - Arg 1: string describing the map data.
  * - or:
  * - Arg 1: int, width
  * - Arg 2: int, height
  * - Arg 3: string, terrain
 */
-int intf_terainmap_create(lua_State *L)
+int intf_terrainmap_create(lua_State *L)
 {
 	if(lua_isnumber(L, 1) && lua_isnumber(L, 2)) {
 		int w = lua_tonumber(L, 1);
@@ -254,7 +254,7 @@ int intf_terainmap_create(lua_State *L)
 /**
  * Destroys a map object before it is collected (__gc metamethod).
  */
-static int impl_terainmap_collect(lua_State *L)
+static int impl_terrainmap_collect(lua_State *L)
 {
 	mapgen_gamemap *u = static_cast<mapgen_gamemap*>(lua_touserdata(L, 1));
 	u->mapgen_gamemap::~mapgen_gamemap();
@@ -267,7 +267,7 @@ static int impl_terainmap_collect(lua_State *L)
  * - Arg 2: string containing the name of the property.
  * - Ret 1: something containing the attribute.
  */
-static int impl_terainmap_get(lua_State *L)
+static int impl_terrainmap_get(lua_State *L)
 {
 	mapgen_gamemap& tm = luaW_checkterrainmap(L, 1);
 	char const *m = luaL_checkstring(L, 2);
@@ -293,7 +293,7 @@ static int impl_terainmap_get(lua_State *L)
  * - Arg 2: string containing the name of the property.
  * - Arg 3: something containing the attribute.
  */
-static int impl_terainmap_set(lua_State *L)
+static int impl_terrainmap_set(lua_State *L)
 {
 	mapgen_gamemap& tm = luaW_checkterrainmap(L, 1);
 	UNUSED(tm);
@@ -397,11 +397,11 @@ static std::vector<gamemap::overlay_rule> read_rules_vector(lua_State *L, int in
 	return rules;
 }
 /**
- * Reaplces part of the map.
+ * Replaces part of the map.
  * - Arg 1: map location.
  * - Arg 2: map data string.
  * - Arg 3: table for optional named arguments
- *   - is_odd: boolen, if Arg2 has the odd mapo format (as if it was cut from a odd map location)
+ *   - is_odd: boolean, if Arg2 has the odd map format (as if it was cut from a odd map location)
  *   - ignore_special_locations: boolean
  *   - rules: table of tables
 */
@@ -448,18 +448,18 @@ namespace lua_terrainmap {
 	{
 		std::ostringstream cmd_out;
 
-		cmd_out << "Adding terrainmamap metatable...\n";
+		cmd_out << "Adding terrainmap metatable...\n";
 
-		luaL_newmetatable(L, terrinmapKey);
-		lua_pushcfunction(L, impl_terainmap_collect);
+		luaL_newmetatable(L, terrainmapKey);
+		lua_pushcfunction(L, impl_terrainmap_collect);
 		lua_setfield(L, -2, "__gc");
-		lua_pushcfunction(L, impl_terainmap_get);
+		lua_pushcfunction(L, impl_terrainmap_get);
 		lua_setfield(L, -2, "__index");
-		lua_pushcfunction(L, impl_terainmap_set);
+		lua_pushcfunction(L, impl_terrainmap_set);
 		lua_setfield(L, -2, "__newindex");
-		lua_pushstring(L, "terainmap");
+		lua_pushstring(L, "terrainmap");
 		lua_setfield(L, -2, "__metatable");
-		// terainmap methods
+		// terrainmap methods
 		lua_pushcfunction(L, intf_set_terrain);
 		lua_setfield(L, -2, "set_terrain");
 		lua_pushcfunction(L, intf_get_terrain);
@@ -471,7 +471,7 @@ namespace lua_terrainmap {
 		lua_pushcfunction(L, &mapgen_gamemap::intf_mg_terrain_mask);
 		lua_setfield(L, -2, "terrain_mask");
 
-		cmd_out << "Adding terrainmamap2 metatable...\n";
+		cmd_out << "Adding terrainmap2 metatable...\n";
 
 		luaL_newmetatable(L, maplocationKey);
 		lua_pushcfunction(L, impl_slocs_get);

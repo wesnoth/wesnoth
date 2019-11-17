@@ -40,9 +40,9 @@ static lg::log_domain log_scripting_lua_mapgen("scripting/lua/mapgen");
 #define ERR_LMG LOG_STREAM(err, log_scripting_lua_mapgen)
 //general helper functions for parsing
 
-struct inalid_lua_argument : public std::exception
+struct invalid_lua_argument : public std::exception
 {
-	explicit inalid_lua_argument(const std::string& msg) : errormessage_(msg) {}
+	explicit invalid_lua_argument(const std::string& msg) : errormessage_(msg) {}
 	const char* what() const noexcept { return errormessage_.c_str(); }
 
 private:
@@ -589,7 +589,7 @@ public:
 };
 
 // todo: maybe invent a gerneral macro for this string_switch implementation.
-enum filter_keys { F_AND, F_OR, F_NAND, F_NOR, F_X, F_Y, F_FIND_IN, F_ADJACENT, F_TERRAIN, F_RADUIS, F_FORMULA, F_CACHED };
+enum filter_keys { F_AND, F_OR, F_NAND, F_NOR, F_X, F_Y, F_FIND_IN, F_ADJACENT, F_TERRAIN, F_RADIUS, F_FORMULA, F_CACHED };
 //todoc++14: std::unordered_map doesn'tsupport herterogrnous lookup.
 //todo consider renaming and -> all ,or ->any, nor -> none, nand -> notall
 static const std::unordered_map<std::string, filter_keys> keys {
@@ -604,14 +604,14 @@ static const std::unordered_map<std::string, filter_keys> keys {
 	{ "terrain", F_TERRAIN },
 	{ "cached", F_CACHED },
 	{ "formula", F_FORMULA },
-	{ "radius", F_RADUIS }
+	{ "radius", F_RADIUS }
 };
 
 std::unique_ptr<filter_impl> build_filter(lua_State* L, int res_index, knows_sets_t& ks)
 {
 	LOG_LMG << "buildfilter: start\n";
 	if(!lua_istable(L, -1)) {
-		throw inalid_lua_argument("buildfilter: expected table");
+		throw invalid_lua_argument("buildfilter: expected table");
 	}
 	lua_rawgeti(L, -1, 1);
 	std::string s = std::string(luaW_tostring(L, -1));
@@ -619,7 +619,7 @@ std::unique_ptr<filter_impl> build_filter(lua_State* L, int res_index, knows_set
 	auto it = keys.find(s);
 	if(it == keys.end()) {
 		//fixme use proper exception type.
-		throw inalid_lua_argument(std::string("buildfilter: invalid filter type ") + s);
+		throw invalid_lua_argument(std::string("buildfilter: invalid filter type ") + s);
 	}
 	auto key = it->second;
 	lua_pop(L, 1);
@@ -643,7 +643,7 @@ std::unique_ptr<filter_impl> build_filter(lua_State* L, int res_index, knows_set
 		return std::make_unique<adjacent_filter>(L, res_index, ks);
 	case F_TERRAIN:
 		return std::make_unique<terrain_filter>(L, res_index, ks);
-	case F_RADUIS:
+	case F_RADIUS:
 		return std::make_unique<radius_filter>(L, res_index, ks);
 	case F_CACHED:
 		return std::make_unique<cached_filter>(L, res_index, ks);
@@ -790,7 +790,7 @@ static lua_mapgen::filter* luaW_push_mgfilter(lua_State *L, T&&... params)
 /**
  * Create a filter.
 */
-int intf_terainfilter_create(lua_State *L)
+int intf_terrainfilter_create(lua_State *L)
 {
 	try {
 		int res_index = 0;
@@ -804,7 +804,7 @@ int intf_terainfilter_create(lua_State *L)
 		luaW_push_mgfilter(L, std::move(res));
 		return 1;
 	}
-	catch(const inalid_lua_argument& e) {
+	catch(const invalid_lua_argument& e) {
 		return luaL_argerror(L, 1, e.what());
 	}
 }
@@ -816,7 +816,7 @@ int intf_terainfilter_create(lua_State *L)
  * - Arg 2: string containing the name of the property.
  * - Ret 1: something containing the attribute.
  */
-static int impl_terainfilter_get(lua_State *L)
+static int impl_terrainfilter_get(lua_State *L)
 {
 	lua_mapgen::filter& f = luaW_check_mgfilter(L, 1);
 	UNUSED(f);
@@ -829,7 +829,7 @@ static int impl_terainfilter_get(lua_State *L)
  * - Arg 2: string containing the name of the property.
  * - Arg 3: something containing the attribute.
  */
-static int impl_terainfilter_set(lua_State *L)
+static int impl_terrainfilter_set(lua_State *L)
 {
 	lua_mapgen::filter& f = luaW_check_mgfilter(L, 1);
 	UNUSED(f);
@@ -852,7 +852,7 @@ static int intf_clearcache(lua_State *L)
 /**
  * Destroys a map object before it is collected (__gc metamethod).
  */
-static int impl_terainfilter_collect(lua_State *L)
+static int impl_terrainfilter_collect(lua_State *L)
 {
 	lua_mapgen::filter& f = luaW_check_mgfilter(L, 1);
 	f.~filter();
@@ -868,15 +868,15 @@ namespace lua_terrainfilter {
 		cmd_out << "Adding terrainmamap metatable...\n";
 
 		luaL_newmetatable(L, terrinfilterKey);
-		lua_pushcfunction(L, impl_terainfilter_collect);
+		lua_pushcfunction(L, impl_terrainfilter_collect);
 		lua_setfield(L, -2, "__gc");
-		lua_pushcfunction(L, impl_terainfilter_get);
+		lua_pushcfunction(L, impl_terrainfilter_get);
 		lua_setfield(L, -2, "__index");
-		lua_pushcfunction(L, impl_terainfilter_set);
+		lua_pushcfunction(L, impl_terrainfilter_set);
 		lua_setfield(L, -2, "__newindex");
 		lua_pushstring(L, "terrain_filter");
 		lua_setfield(L, -2, "__metatable");
-		// terainmap methods
+		// terrainmap methods
 		lua_pushcfunction(L, intf_clearcache);
 		lua_setfield(L, -2, "clear_cache");
 

@@ -26,7 +26,7 @@ struct map_location;
 
 // this clas is similar to the orginal gamemap class but they have no 'is' rlation:
 //  mapgen_gamemap, unlike gamemap offers 'raw' access to the data
-//  gamemap, unlike mapgen_gamemap uses terain type data.
+//  gamemap, unlike mapgen_gamemap uses terrain type data.
 class mapgen_gamemap
 {
 public:
@@ -118,7 +118,7 @@ void lua_terrainmap_setmetatable(lua_State *L);
 
 mapgen_gamemap* luaW_pushmap(lua_State *L, mapgen_gamemap&& u);
 
-int intf_terainmap_create(lua_State *L);
+int intf_terrainmap_create(lua_State *L);
 
 namespace lua_terrainmap {
 	std::string register_metatables(lua_State *L);
