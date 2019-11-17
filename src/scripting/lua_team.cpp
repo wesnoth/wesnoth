@@ -15,6 +15,7 @@
 #include "scripting/lua_team.hpp"
 
 #include "scripting/lua_common.hpp"
+#include "scripting/push_check.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "team.hpp"
 #include "resources.hpp" // for gameboard
@@ -124,6 +125,24 @@ static int impl_side_get(lua_State *L)
 		return 1;
 	}
 	return 0;
+}
+
+/**
+ * Turns a lua proxy side to string. (__tostring metamethod)
+ */
+static int impl_side_tostring(lua_State* L)
+{
+	const team& team = luaW_checkteam(L, 1);
+	std::ostringstream str;
+
+	str << "side: <" << team.side();
+	if(!team.side_name().empty()) {
+		str << " " << team.side_name();
+	}
+	str << '>';
+
+	lua_push(L, str.str());
+	return 1;
 }
 
 /**
@@ -287,6 +306,7 @@ namespace lua_team {
 			{ "__index", 	    &impl_side_get},
 			{ "__newindex",	    &impl_side_set},
 			{ "__eq",	        &impl_side_equal},
+			{ "__tostring",     &impl_side_tostring},
 			{ nullptr, nullptr }
 		};
 		luaL_setfuncs(L, callbacks, 0);

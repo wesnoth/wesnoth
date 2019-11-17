@@ -24,6 +24,7 @@
 #include "scripting/lua_common.hpp"
 
 #include "config.hpp"
+#include "scripting/push_check.hpp"
 #include "scripting/lua_unit.hpp"
 #include "tstring.hpp"                  // for t_string
 #include "variable.hpp" // for vconfig
@@ -72,6 +73,15 @@ static int impl_gettext(lua_State *L)
 	} else {
 		luaW_pushtstring(L, t_string(m, d));
 	}
+	return 1;
+}
+
+static int impl_gettext_tostr(lua_State* L)
+{
+	char* d = static_cast<char*>(lua_touserdata(L, 1));
+	using namespace std::literals;
+	std::string str = "textdomain: "s + d;
+	lua_push(L, str);
 	return 1;
 }
 
@@ -403,6 +413,7 @@ std::string register_gettext_metatable(lua_State *L)
 
 	static luaL_Reg const callbacks[] {
 		{ "__call", 	    &impl_gettext},
+		{ "__tostring",     &impl_gettext_tostr},
 		{ nullptr, nullptr }
 	};
 	luaL_setfuncs(L, callbacks, 0);

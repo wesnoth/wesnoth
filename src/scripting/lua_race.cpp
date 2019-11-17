@@ -16,6 +16,7 @@
 
 #include "units/race.hpp"
 #include "scripting/lua_common.hpp"
+#include "scripting/push_check.hpp"
 #include "units/types.hpp"
 
 #include <string>
@@ -41,12 +42,8 @@ static const char * Gen = "name generator";
  */
 static int impl_race_get(lua_State* L)
 {
+	const unit_race& race = luaW_checkrace(L, 1);
 	char const* m = luaL_checkstring(L, 2);
-	lua_pushstring(L, "id");
-	lua_rawget(L, 1);
-	const unit_race* raceptr = unit_types.find_race(lua_tostring(L, -1));
-	if(!raceptr) return luaL_argerror(L, 1, "unknown race");
-	const unit_race& race = *raceptr;
 
 	return_tstring_attrib("description", race.description());
 	return_tstring_attrib("name", race.name());
@@ -89,6 +86,18 @@ static int impl_race_get(lua_State* L)
 	return 0;
 }
 
+/**
+ * Turns a lua proxy race to string. (__tostring metamethod)
+ */
+static int impl_race_tostring(lua_State* L)
+{
+	const unit_race& race = luaW_checkrace(L, 1);
+	std::ostringstream str;
+	str << "race: <" << race.id() << '>';
+	lua_push(L, str.str());
+	return 1;
+}
+
 namespace lua_race {
 
 	std::string register_metatable(lua_State * L)
@@ -97,6 +106,7 @@ namespace lua_race {
 
 		static luaL_Reg const callbacks[] {
 			{ "__index", 	    &impl_race_get},
+			{ "__tostring",     &impl_race_tostring},
 			{ nullptr, nullptr }
 		};
 		luaL_setfuncs(L, callbacks, 0);
@@ -127,4 +137,16 @@ void luaW_pushracetable(lua_State *L)
 		luaW_pushrace(L, race.second);
 		lua_setfield(L, -2, race.first.c_str());
 	}
+}
+
+const unit_race& luaW_checkrace(lua_State* L, int idx)
+{
+	lua_pushstring(L, "id");
+	lua_rawget(L, idx);
+	const unit_race* raceptr = unit_types.find_race(lua_tostring(L, -1));
+	if(!raceptr) {
+		luaL_argerror(L, idx, "unknown race");
+		throw "UNREACHABLE";
+	}
+	return *raceptr;
 }
