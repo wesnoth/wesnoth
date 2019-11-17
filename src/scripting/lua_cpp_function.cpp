@@ -76,6 +76,8 @@ void register_metatable ( lua_State* L )
 	lua_setfield(L, -2, "__gc");
 	lua_pushcfunction(L, intf_tostring);
 	lua_setfield(L, -2, "__tostring");
+	lua_pushstring(L, "function");
+	lua_setfield(L, -2, "__metatable");
 	lua_pushvalue(L, -1); //make a copy of this table, set it to be its own __index table
 	lua_setfield(L, -2, "__index");
 

@@ -120,7 +120,7 @@ static int impl_side_get(lua_State *L)
 	return_int_attrib("net_income", d().net_income);
 
 	return_cfg_attrib("__cfg", t.write(cfg));
-	if(luaW_getmetafield(L, 1, m)) {
+	if(luaW_getglobal(L, "wesnoth", "sides", m)) {
 		return 1;
 	}
 	return 0;
@@ -293,9 +293,6 @@ namespace lua_team {
 
 		lua_pushstring(L, Team);
 		lua_setfield(L, -2, "__metatable");
-		// Side methods
-		luaW_getglobal(L, "wesnoth", "match_side");
-		lua_setfield(L, -2, "matches");
 
 		// Create the side variables metatable.
 		cmd_out << "Adding side variables metatable...\n";

@@ -756,50 +756,6 @@ int game_lua_kernel::intf_get_variable(lua_State *L)
 }
 
 /**
- * Gets a side specific WML variable.
- * - Arg 1: integer side number.
- * - Arg 2: string containing the variable name.
- * - Ret 1: value of the variable, if any.
- */
-int game_lua_kernel::intf_get_side_variable(lua_State *L)
-{
-
-	unsigned side_index = luaL_checkinteger(L, 1) - 1;
-	if(side_index >= teams().size()) {
-		return luaL_argerror(L, 1, "invalid side number");
-	}
-	char const *m = luaL_checkstring(L, 2);
-	variable_access_const v(m, teams()[side_index].variables());
-	return luaW_pushvariable(L, v) ? 1 : 0;
-}
-
-/**
- * Gets a side specific WML variable.
- * - Arg 1: integer side number.
- * - Arg 2: string containing the variable name.
- * - Arg 3: boolean/integer/string/table containing the value.
- */
-int game_lua_kernel::intf_set_side_variable(lua_State *L)
-{
-	unsigned side = luaL_checkinteger(L, 1);
-	if(side > teams().size() || side == 0) {
-		return luaL_argerror(L, 1, "invalid side number");
-	}
-	char const *m = luaL_checkstring(L, 2);
-	config& vars = game_state_.board_.get_team(side).variables();
-	if(lua_isnoneornil(L, 3)) {
-		try {
-			variable_access_throw(m, vars).clear(false);
-		} catch(const invalid_variablename_exception&) {
-		}
-		return 0;
-	}
-	variable_access_create v(m, vars);
-	luaW_checkvariable(L, v, 3);
-	return 0;
-}
-
-/**
  * Sets a WML variable.
  * - Arg 1: string containing the variable name.
  * - Arg 2: boolean/integer/string/table containing the value.
@@ -932,10 +888,19 @@ int game_lua_kernel::intf_highlight_hex(lua_State *L)
  */
 int game_lua_kernel::intf_is_enemy(lua_State *L)
 {
-	unsigned side_1 = luaL_checkinteger(L, 1) - 1;
-	unsigned side_2 = luaL_checkinteger(L, 2) - 1;
-	if (side_1 >= teams().size() || side_2 >= teams().size()) return 0;
-	lua_pushboolean(L, teams()[side_1].is_enemy(side_2 + 1));
+	unsigned side_1, side_2;
+	if(team* t = luaW_toteam(L, 1)) {
+		side_1 = t->side();
+	} else {
+		side_1 = luaL_checkinteger(L, 1);
+	}
+	if(team* t = luaW_toteam(L, 2)) {
+		side_2 = t->side();
+	} else {
+		side_2 = luaL_checkinteger(L, 2);
+	}
+	if (side_1 > teams().size() || side_2 > teams().size()) return 0;
+	lua_pushboolean(L, board().get_team(side_1).is_enemy(side_2));
 	return 1;
 }
 
@@ -1346,7 +1311,12 @@ int game_lua_kernel::intf_get_selected_tile(lua_State *L)
 */
 int game_lua_kernel::intf_get_starting_location(lua_State* L)
 {
-	const int side = luaL_checkinteger(L, 1);
+	int side;
+	if(team* t = luaW_toteam(L, 1)) {
+		side = t->side();
+	} else {
+		side = luaL_checkinteger(L, 1);
+	}
 	if(side < 1 || static_cast<int>(teams().size()) < side)
 		return luaL_argerror(L, 1, "out of bounds");
 	const map_location& starting_pos = board().map().starting_position(side);
@@ -3075,17 +3045,22 @@ int game_lua_kernel::intf_match_side(lua_State *L)
 
 int game_lua_kernel::intf_set_side_id(lua_State *L)
 {
-	int team_i = luaL_checkinteger(L, 1) - 1;
+	int team_i;
+	if(team* t = luaW_toteam(L, 1)) {
+		team_i = t->side();
+	} else {
+		team_i = luaL_checkinteger(L, 1);
+	}
 	std::string flag = luaL_optlstring(L, 2, "", nullptr);
 	std::string color = luaL_optlstring(L, 3, "", nullptr);
 
 	if(flag.empty() && color.empty()) {
 		return 0;
 	}
-	if(team_i < 0 || static_cast<std::size_t>(team_i) >= teams().size()) {
+	if(team_i < 1 || static_cast<std::size_t>(team_i) > teams().size()) {
 		return luaL_error(L, "set_side_id: side number %d out of range", team_i);
 	}
-	team& side = teams()[team_i];
+	team& side = board().get_team(team_i);
 
 	if(!color.empty()) {
 		side.set_color(color);
@@ -3100,7 +3075,12 @@ int game_lua_kernel::intf_set_side_id(lua_State *L)
 
 static int intf_modify_ai(lua_State *L, const char* action)
 {
-	int side_num = luaL_checkinteger(L, 1);
+	int side_num;
+	if(team* t = luaW_toteam(L, 1)) {
+		side_num = t->side();
+	} else {
+		side_num = luaL_checkinteger(L, 1);
+	}
 	std::string path = luaL_checkstring(L, 2);
 	config cfg {
 		"action", action,
@@ -3123,7 +3103,12 @@ static int intf_modify_ai(lua_State *L, const char* action)
 
 static int intf_switch_ai(lua_State *L)
 {
-	int side_num = luaL_checkinteger(L, 1);
+	int side_num;
+	if(team* t = luaW_toteam(L, 1)) {
+		side_num = t->side();
+	} else {
+		side_num = luaL_checkinteger(L, 1);
+	}
 	if(lua_isstring(L, 2)) {
 		std::string file = luaL_checkstring(L, 2);
 		if(!ai::manager::get_singleton().add_ai_for_side_from_file(side_num, file)) {
@@ -3139,7 +3124,12 @@ static int intf_switch_ai(lua_State *L)
 
 static int intf_append_ai(lua_State *L)
 {
-	int side_num = luaL_checkinteger(L, 1);
+	int side_num;
+	if(team* t = luaW_toteam(L, 1)) {
+		side_num = t->side();
+	} else {
+		side_num = luaL_checkinteger(L, 1);
+	}
 	config cfg = luaW_checkconfig(L, 2);
 	if(!cfg.has_child("ai")) {
 		cfg = config {"ai", cfg};
@@ -3159,6 +3149,14 @@ static int intf_append_ai(lua_State *L)
 	}
 	ai::manager::get_singleton().append_active_ai_for_side(side_num, cfg.child("ai"));
 	return 0;
+}
+
+int game_lua_kernel::intf_get_side(lua_State* L)
+{
+	unsigned i = luaL_checkinteger(L, 1);
+	if(i < 1 || i > teams().size()) return 0;
+	luaW_pushteam(L, board().get_team(i));
+	return 1;
 }
 
 /**
@@ -3610,7 +3608,12 @@ static int intf_debug_ai(lua_State *L)
 	if (!game_config::debug) { // This function works in debug mode only
 		return 0;
 	}
-	int side = lua_tointeger(L, 1);
+	int side;
+	if(team* t = luaW_toteam(L, 1)) {
+		side = t->side();
+	} else {
+		side = luaL_checkinteger(L, 1);
+	}
 	lua_pop(L, 1);
 
 	ai::component* c = ai::manager::get_singleton().get_active_ai_holder_for_side_dbg(side).get_component(nullptr, "");
@@ -4154,7 +4157,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	static luaL_Reg const callbacks[] {
 		{ "add_known_unit",           &intf_add_known_unit           },
 		{ "create_animator",          &dispatch<&game_lua_kernel::intf_create_animator>          },
-		{ "debug_ai",                 &intf_debug_ai                 },
 		{ "eval_conditional",         &intf_eval_conditional         },
 		{ "get_era",                  &intf_get_era                  },
 		{ "get_traits",               &intf_get_traits               },
@@ -4170,7 +4172,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "add_sound_source",          &dispatch<&game_lua_kernel::intf_add_sound_source           >        },
 		{ "allow_end_turn",            &dispatch<&game_lua_kernel::intf_allow_end_turn             >        },
 		{ "allow_undo",                &dispatch<&game_lua_kernel::intf_allow_undo                 >        },
-		{ "append_ai",                 &intf_append_ai                                                      },
 		{ "cancel_action",             &dispatch<&game_lua_kernel::intf_cancel_action              >        },
 		{ "clear_messages",            &dispatch<&game_lua_kernel::intf_clear_messages             >        },
 		{ "end_turn",                  &dispatch<&game_lua_kernel::intf_end_turn                   >        },
@@ -4185,22 +4186,17 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "get_end_level_data",        &dispatch<&game_lua_kernel::intf_get_end_level_data         >        },
 		{ "get_locations",             &dispatch<&game_lua_kernel::intf_get_locations              >        },
 		{ "get_map_size",              &dispatch<&game_lua_kernel::intf_get_map_size               >        },
-		{ "get_sides",                 &dispatch<&game_lua_kernel::intf_get_sides                  >        },
 		{ "get_sound_source",          &dispatch<&game_lua_kernel::intf_get_sound_source           >        },
-		{ "get_starting_location",     &dispatch<&game_lua_kernel::intf_get_starting_location      >        },
 		{ "get_terrain",               &dispatch<&game_lua_kernel::intf_get_terrain                >        },
 		{ "get_terrain_info",          &dispatch<&game_lua_kernel::intf_get_terrain_info           >        },
 		{ "get_time_of_day",           &dispatch<&game_lua_kernel::intf_get_time_of_day            >        },
 		{ "get_variable",              &dispatch<&game_lua_kernel::intf_get_variable               >        },
-		{ "get_side_variable",         &dispatch<&game_lua_kernel::intf_get_side_variable          >        },
 		{ "get_villages",              &dispatch<&game_lua_kernel::intf_get_villages               >        },
 		{ "get_village_owner",         &dispatch<&game_lua_kernel::intf_get_village_owner          >        },
-		{ "is_enemy",                  &dispatch<&game_lua_kernel::intf_is_enemy                   >        },
 		{ "label",                     &dispatch<&game_lua_kernel::intf_label                      >        },
 		{ "log_replay",                &dispatch<&game_lua_kernel::intf_log_replay                 >        },
 		{ "log",                       &dispatch<&game_lua_kernel::intf_log                        >        },
 		{ "match_location",            &dispatch<&game_lua_kernel::intf_match_location             >        },
-		{ "match_side",                &dispatch<&game_lua_kernel::intf_match_side                 >        },
 		{ "message",                   &dispatch<&game_lua_kernel::intf_message                    >        },
 		{ "open_help",                 &dispatch<&game_lua_kernel::intf_open_help                  >        },
 		{ "play_sound",                &dispatch<&game_lua_kernel::intf_play_sound                 >        },
@@ -4218,13 +4214,10 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "set_end_campaign_credits",  &dispatch<&game_lua_kernel::intf_set_end_campaign_credits   >        },
 		{ "set_end_campaign_text",     &dispatch<&game_lua_kernel::intf_set_end_campaign_text      >        },
 		{ "set_next_scenario",         &dispatch<&game_lua_kernel::intf_set_next_scenario          >        },
-		{ "set_side_id",               &dispatch<&game_lua_kernel::intf_set_side_id                >        },
 		{ "set_terrain",               &dispatch<&game_lua_kernel::intf_set_terrain                >        },
 		{ "set_variable",              &dispatch<&game_lua_kernel::intf_set_variable               >        },
-		{ "set_side_variable",         &dispatch<&game_lua_kernel::intf_set_side_variable          >        },
 		{ "set_village_owner",         &dispatch<&game_lua_kernel::intf_set_village_owner          >        },
 		{ "simulate_combat",           &dispatch<&game_lua_kernel::intf_simulate_combat            >        },
-		{ "switch_ai",                 &intf_switch_ai                                                      },
 		{ "synchronize_choice",        &intf_synchronize_choice                                             },
 		{ "synchronize_choices",       &intf_synchronize_choices                                            },
 		{ "terrain_mask",              &dispatch<&game_lua_kernel::intf_terrain_mask               >        },
@@ -4232,19 +4225,11 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "place_shroud",              &dispatch2<&game_lua_kernel::intf_shroud_op, true  >                 },
 		{ "remove_shroud",             &dispatch2<&game_lua_kernel::intf_shroud_op, false >                 },
 		{ nullptr, nullptr }
-	};
-	std::vector<lua_cpp::Reg> const cpp_callbacks {
-		{"add_ai_component", std::bind(intf_modify_ai, _1, "add")},
-		{"delete_ai_component", std::bind(intf_modify_ai, _1, "delete")},
-		{"change_ai_component", std::bind(intf_modify_ai, _1, "change")},
-		{nullptr, nullptr}
-	};
-	lua_getglobal(L, "wesnoth");
+	};lua_getglobal(L, "wesnoth");
 	if (!lua_istable(L,-1)) {
 		lua_newtable(L);
 	}
 	luaL_setfuncs(L, callbacks, 0);
-	lua_cpp::set_functions(L, cpp_callbacks);
 
 	if(play_controller_.get_classification().campaign_type == game_classification::CAMPAIGN_TYPE::TEST) {
 		static luaL_Reg const test_callbacks[] {
@@ -4333,6 +4318,35 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_newtable(L);
 	luaL_setfuncs(L, unit_callbacks, 0);
 	lua_setfield(L, -2, "units");
+	lua_pop(L, 1);
+	
+	// Create sides module
+	cmd_log_ << "Adding sides module...\n";
+	static luaL_Reg const side_callbacks[] {
+		{ "get_starting_location", &dispatch<&game_lua_kernel::intf_get_starting_location> },
+		{ "is_enemy", &dispatch<&game_lua_kernel::intf_is_enemy> },
+		{ "matches", &dispatch<&game_lua_kernel::intf_match_side> },
+		{ "set_id", &dispatch<&game_lua_kernel::intf_set_side_id> },
+		{ "append_ai", &intf_append_ai },
+		{ "debug_ai", &intf_debug_ai },
+		{ "switch_ai", &intf_switch_ai },
+		// Static functions
+		{ "find", &dispatch<&game_lua_kernel::intf_get_sides> },
+		{ "get", &dispatch<&game_lua_kernel::intf_get_side> },
+		{ nullptr, nullptr }
+	};
+	std::vector<lua_cpp::Reg> const cpp_side_callbacks {
+		{"add_ai_component", std::bind(intf_modify_ai, _1, "add")},
+		{"delete_ai_component", std::bind(intf_modify_ai, _1, "delete")},
+		{"change_ai_component", std::bind(intf_modify_ai, _1, "change")},
+		{nullptr, nullptr}
+	};
+	
+	lua_getglobal(L, "wesnoth");
+	lua_newtable(L);
+	luaL_setfuncs(L, side_callbacks, 0);
+	lua_cpp::set_functions(L, cpp_side_callbacks);
+	lua_setfield(L, -2, "sides");
 	lua_pop(L, 1);
 	
 	// Create the interface module
@@ -4447,23 +4461,6 @@ void game_lua_kernel::initialize(const config& level)
 	lua_State *L = mState;
 	assert(level_lua_.empty());
 	level_lua_.append_children(level, "lua");
-	// Create the sides table.
-	// note:
-	// This table is redundant to the return value of wesnoth.get_sides({}).
-	// Still needed for backwards compatibility.
-	lua_settop(L, 0);
-	lua_getglobal(L, "wesnoth");
-
-	lua_pushstring(L, "get_sides");
-	lua_rawget(L, -2);
-	lua_createtable(L, 0, 0);
-
-	if (!protected_call(1, 1, std::bind(&lua_kernel_base::log_error, this, _1, _2))) {
-		cmd_log_ << "Failed to compute wesnoth.sides\n";
-	} else {
-		lua_setfield(L, -2, "sides");
-		cmd_log_ << "Added wesnoth.sides\n";
-	}
 
 	//Create the races table.
 	cmd_log_ << "Adding races table...\n";

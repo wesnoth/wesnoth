@@ -190,7 +190,7 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 		error(wesnoth.format(_"Invalid deprecation level $level (should be 1-4)", err_params))
 	end
 	local msg_shown = false
-	if type(elem) == "function" then
+	if type(elem) == "function" or getmetatable(elem) == "function" then
 		return function(...)
 			if not msg_shown then
 				msg_shown = true
@@ -517,6 +517,30 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		end
 		return res
 	end
+
+	--[========[Sides module]========]
+	
+	local sides_mt = {
+		__metatable = "sides",
+		__index = function(_, key)
+			-- Only called if the key doesn't exist, so return nil if it's not a number
+			if type(key) == 'number' then
+				return wesnoth.sides.get(key)
+			end
+		end,
+		__len = function(_)
+			return #wesnoth.sides.find{}
+		end
+	}
+	setmetatable(wesnoth.sides, sides_mt)
+	
+	-- Deprecated functions
+	function wesnoth.set_side_variable(side, var, val)
+		wesnoth.sides[side].variables[var] = val
+	end
+	function wesnoth.get_side_variable(side, var)
+		return wesnoth.sides[side].variables[var]
+	end
 end
 
 --[========[GUI2 Dialog Manipulations]========]
@@ -600,6 +624,19 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.get_unit = wesnoth.deprecate_api('wesnoth.get_unit', 'wesnoth.units.get', 1, nil, wesnoth.units.get)
 	wesnoth.get_units = wesnoth.deprecate_api('wesnoth.get_units', 'wesnoth.units.find_on_map', 1, nil, wesnoth.units.find_on_map)
 	wesnoth.get_recall_units = wesnoth.deprecate_api('wesnoth.get_units', 'wesnoth.units.find_on_recall', 1, nil, wesnoth.units.find_on_recall)
+	wesnoth.get_side_variable = wesnoth.deprecate_api('wesnoth.get_side_variable', 'wesnoth.sides[].variables', 1, nil, wesnoth.get_side_variable)
+	wesnoth.set_side_variable = wesnoth.deprecate_api('wesnoth.set_side_variable', 'wesnoth.sides[].variables', 1, nil, wesnoth.set_side_variable)
+	wesnoth.get_starting_location = wesnoth.deprecate_api('wesnoth.get_starting_location', 'wesnoth.sides.get_starting_location', 1, nil, wesnoth.sides.get_starting_location)
+	wesnoth.is_enemy = wesnoth.deprecate_api('wesnoth.is_enemy', 'wesnoth.sides.is_enemy', 1, nil, wesnoth.sides.is_enemy)
+	wesnoth.match_side = wesnoth.deprecate_api('wesnoth.match_side', 'wesnoth.sides.matches', 1, nil, wesnoth.sides.matches)
+	wesnoth.set_side_id = wesnoth.deprecate_api('wesnoth.set_side_id', 'wesnoth.sides.set_id', 1, nil, wesnoth.sides.set_id)
+	wesnoth.append_ai = wesnoth.deprecate_api('wesnoth.append_ai', 'wesnoth.sides.append_ai', 1, nil, wesnoth.sides.append_ai)
+	wesnoth.debug_ai = wesnoth.deprecate_api('wesnoth.debug_ai', 'wesnoth.sides.debug_ai', 1, nil, wesnoth.sides.debug_ai)
+	wesnoth.switch_ai = wesnoth.deprecate_api('wesnoth.switch_ai', 'wesnoth.sides.switch_ai', 1, nil, wesnoth.sides.switch_ai)
+	wesnoth.add_ai_component = wesnoth.deprecate_api('wesnoth.add_ai_component', 'wesnoth.sides.add_ai_component', 1, nil, wesnoth.sides.add_ai_component)
+	wesnoth.delete_ai_component = wesnoth.deprecate_api('wesnoth.delete_ai_component', 'wesnoth.sides.delete_ai_component', 1, nil, wesnoth.sides.delete_ai_component)
+	wesnoth.change_ai_component = wesnoth.deprecate_api('wesnoth.change_ai_component', 'wesnoth.sides.change_ai_component', 1, nil, wesnoth.sides.change_ai_component)
+	wesnoth.get_sides = wesnoth.deprecate_api('wesnoth.get_sides', 'wesnoth.sides.find', 1, nil, wesnoth.sides.find)
 end
 wesnoth.tovconfig = wesnoth.deprecate_api('wesnoth.tovconfig', 'wml.tovconfig', 1, nil, wml.tovconfig)
 wesnoth.debug = wesnoth.deprecate_api('wesnoth.debug', 'wml.tostring', 1, nil, wml.tostring)

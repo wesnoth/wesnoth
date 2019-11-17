@@ -51,6 +51,9 @@
    * Moved to interface module: wesnoth.scroll, wesnoth.zoom, wesnoth.get_mouseover_tile
    * wesnoth.interface.get_displayed_unit aliased to wesnoth.unit.get_hovered
    * unit portrait and recall_filter are now writable
+   * Moved to new sides module: wesnoth.get_sides, wesnoth.is_enemy, wesnoth.match_side, wesnoth.get_starting_location, wesnoth.set_side_id, all AI-related functions
+   * Functions that previously only took a side index as the first parameter now also accept the side proxy userdata.
+   * The wesnoth.sides module acts like a metatable for the side userdata.
  ### WML engine
    * Support upkeep in StandardUnitFilter
    * [effect]apply_to=variation now supports heal_full
