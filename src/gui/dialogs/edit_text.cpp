@@ -71,9 +71,6 @@ void edit_text::on_text_change()
 	text_box& text = find_widget<text_box>(get_window(), "text", false);
 	button& ok_button = find_widget<button>(get_window(), "ok", false);
 
-	auto clean_value = text.get_value();
-	boost::trim(clean_value);
-
 	ok_button.set_active(!boost::trim_copy(text.get_value()).empty());
 }
 
