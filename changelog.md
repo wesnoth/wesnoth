@@ -20,6 +20,7 @@
    * Add Stone Walls variation Catacombs (Xot) including some overlays
    * Fixes and touchups to mushroom terrains Tb and Tf
  ### User interface
+   * Moved tutorial to campaigns menu
    * "Core" type add-ons are now only accessible via hotkey.
    * Removed "Classic" in-game theme.
    * Textboxes now have a hover effect as well as an I-beam cursor.
