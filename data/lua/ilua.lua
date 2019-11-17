@@ -75,12 +75,19 @@ function ilua.join(tbl,delim,limit,depth)
     return sub(res,2)
 end
 
+-- Need to save this locally because the debug module will be disabled right after this file is loaded
+-- The or clause is so that it doesn't totally break if someone decides to force-reload ilua during a session.
+local rawgetmetatable = debug.getmetatable or getmetatable
+local function getmetatable(t)
+    return rawgetmetatable(t) or {}
+end
+
 function ilua.val2str(val)
     local tp = type(val)
     if tp == 'function' then
         return tostring(val)
     elseif tp == 'table' then
-        if val.__tostring  then
+        if getmetatable(val).__tostring  then
             return tostring(val)
         else
             return '{'..ilua.join(val,',')..'}'

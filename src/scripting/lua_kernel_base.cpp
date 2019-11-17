@@ -587,18 +587,6 @@ lua_kernel_base::lua_kernel_base()
 		lua_setfield(L, -3, function);
 	}
 	lua_pop(L, 1);
-
-	// Disable functions from debug which we don't want.
-	lua_getglobal(L, "debug");
-	lua_pushnil(L);
-	while(lua_next(L, -2) != 0) {
-		lua_pop(L, 1);
-		char const* function = lua_tostring(L, -1);
-		if(strcmp(function, "traceback") == 0 || strcmp(function, "getinfo") == 0) continue;	//traceback is needed for our error handler
-		lua_pushnil(L);										//getinfo is needed for ilua strict mode
-		lua_setfield(L, -3, function);
-	}
-	lua_pop(L, 1);
 	
 	// Delete dofile and loadfile.
 	lua_pushnil(L);
@@ -809,6 +797,19 @@ lua_kernel_base::lua_kernel_base()
 		cmd_log_ << "Error: failed to load ilua.\n";
 	}
 	lua_settop(L, 0);
+
+	// Disable functions from debug which we don't want.
+	// We do this last because ilua needs to be able to use debug.getmetatable
+	lua_getglobal(L, "debug");
+	lua_pushnil(L);
+	while(lua_next(L, -2) != 0) {
+		lua_pop(L, 1);
+		char const* function = lua_tostring(L, -1);
+		if(strcmp(function, "traceback") == 0 || strcmp(function, "getinfo") == 0) continue;	//traceback is needed for our error handler
+		lua_pushnil(L);										//getinfo is needed for ilua strict mode
+		lua_setfield(L, -3, function);
+	}
+	lua_pop(L, 1);
 }
 
 lua_kernel_base::~lua_kernel_base()
