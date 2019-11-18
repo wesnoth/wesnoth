@@ -1104,7 +1104,7 @@ lua_ai_context::~lua_ai_context()
 	lua_pop(L, 1);
 }
 
-void lua_ai_action_handler::handle(const config &cfg, bool read_only, lua_object_ptr l_obj)
+void lua_ai_action_handler::handle(const config &cfg, const config &filter_own, bool read_only, lua_object_ptr l_obj)
 {
 	int initial_top = lua_gettop(L);//get the old stack size
 
@@ -1122,8 +1122,14 @@ void lua_ai_action_handler::handle(const config &cfg, bool read_only, lua_object
 	luaW_pushconfig(L, cfg);
 	lua_getfield(L, iState, "data");
 
+	int num = 3;
+	if (!filter_own.empty()) {
+		luaW_pushconfig(L, filter_own);
+		num=4;
+	}
+
 	// Call the function
-	luaW_pcall(L, 3, l_obj ? 1 : 0, true);
+	luaW_pcall(L, num, l_obj ? 1 : 0, true);
 	if (l_obj) {
 		l_obj->store(L, -1);
 	}

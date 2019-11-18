@@ -30,7 +30,7 @@ local XP_attack
 
 local ca_attack_highxp = {}
 
-function ca_attack_highxp:evaluation(cfg, data)
+function ca_attack_highxp:evaluation(cfg, data, filter_own)
     -- Note: (most of) the code below is set up to maximize speed. Do not
     -- "simplify" this unless you understand exactly what that means
 
@@ -38,7 +38,7 @@ function ca_attack_highxp:evaluation(cfg, data)
     local max_unit_level = 0
     local units = {}
     for _,unit in ipairs(attacks_aspect.own) do
-        if (unit.attacks_left > 0) and (#unit.attacks > 0) and (not unit.canrecruit) then
+        if (unit.attacks_left > 0) and (#unit.attacks > 0) and (not unit.canrecruit) and unit:matches(filter_own) then
             table.insert(units, unit)
 
             local level = unit.level
