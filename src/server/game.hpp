@@ -315,6 +315,8 @@ public:
 
 	void handle_controller_choice(const simple_wml::node& data);
 
+	void handle_add_side_wml(const simple_wml::node& req);
+
 	void reset_last_synced_context_id()
 	{
 		last_choice_request_id_ = -1;
